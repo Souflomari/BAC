@@ -221,6 +221,76 @@ ci-dessus.)*
 
 ---
 
+## 2022 — session normale — Exercice 2 (Partie 2)
+Source: https://www.alloschool.com/element/136621
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-84516, page(s) 4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image ; le résumé HTML
+  d'AlloSchool pour `element/136621` annonce à tort « Sciences Mathématiques
+  B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 3,5 points ;
+  **Partie 2** = 2,25 points ($0{,}5+0{,}5+0{,}25+0{,}5+0{,}5$, barème en
+  marge)
+- Images lues (reproductibilité) : `.../course-422/upload-84516/0004-big.jpg`
+- Pages du scan : 4 (sur 8)
+- Portée : **Partie 2 (désintégration de l'iode 131)**. Mention en tête de
+  l'exercice : « Les parties 1 et 2 sont indépendantes ». La **Partie 1
+  (propagation des ondes sonores)** du même exercice est sous
+  `ondes-mecaniques-progressives.md`. Recoupe `noyaux-masse-energie` (Q2 :
+  énergie libérée $|\Delta E|$ par défaut de masse) — signalé là-bas, classé
+  ici (question dominante : demi-vie, activité, loi de décroissance).
+
+**Partie 2 : Désintégration de l'iode 131.**
+
+*(Cadrage de la partie, transcrit intégralement : « L'iode131
+($^{131}_{53}\text{I}$) est radioactif $\beta^-$. Il est utilisé à faibles
+doses dans des applications médicales visant l'étude du dysfonctionnement de
+la thyroïde ou le traitement de certaines maladies liées à cette glande. La
+désintégration d'un noyau d'iode 131 produit un noyau $^A_Z X$. On se
+propose, dans cette partie, d'étudier la désintégration de l'iode 131. »)*
+
+**Données :**
+
+| Élément | Tellure | Xénon | Césium |
+|---|---|---|---|
+| Quelques isotopes de l'élément | $^{131}_{52}\text{Te}$, $^{132}_{52}\text{Te}$ | $^{130}_{54}\text{Xe}$, $^{131}_{54}\text{Xe}$ | $^{127}_{55}\text{Cs}$, $^{132}_{55}\text{Cs}$ |
+
+- Masse du noyau d'iode 131 : $m(^{131}_{53}\text{I}) = 130{,}906125\ \text{u}$ ;
+- Masse du noyau $^A_Z X$ : $m(^A_Z X) = 130{,}905082\ \text{u}$ ;
+- Masse de la particule $\beta^-$ : $m(\beta^-) = 5{,}48580 \cdot 10^{-4}\ \text{u}$ ;
+- Unité de masse atomique : $1\text{u} = 931{,}5\ \text{MeV.c}^{-2}$.
+
+1. (0,5) Écrire l'équation de désintégration de l'iode131 en identifiant le
+   noyau $^A_Z X$ produit au cours de cette désintégration.
+2. (0,5) Calculer, en MeV, l'énergie libérée $|\Delta E|$ par la
+   désintégration d'un noyau d'iode 131.
+3. On injecte à un patient, à un instant choisi comme origine des dates, une
+   dose d'une solution d'iode 131 dont l'activité à cet instant est $a_0$.
+   La courbe de la figure 3 représente les variations de l'activité $a(t)$
+   de cette dose en fonction du temps.
+   1. **3.1.** (0,25) Déterminer graphiquement la demi-vie $t_{1/2}$ de
+      l'iode 131.
+   2. **3.2.** (0,5) Calculer le nombre $N_0$ de noyaux d'iode présents dans
+      la dose à $t = 0$.
+   3. **3.3.** (0,5) En utilisant la loi de décroissance radioactive,
+      déterminer, en jours, l'instant $t_1$ où 95% des noyaux d'iode 131 se
+      sont désintégrés.
+
+*Figure 3 (courbe) :* activité $a\ (\text{Bq})$ en fonction de
+$t\ (\text{jour})$, sur quadrillage régulier. Axe des ordonnées gradué
+(traits principaux chiffrés) $10^{6},\ 2\cdot10^{6},\ 3\cdot10^{6},\
+4\cdot10^{6}$ ; axe des abscisses $t\ (\text{jour})$ gradué $8,\ 16,\ 24$.
+Courbe de décroissance exponentielle : part d'une valeur proche de
+$4\cdot10^{6}\ \text{Bq}$ au voisinage de $t = 0$, décroît en passant au
+voisinage du repère $2\cdot10^{6}\ \text{Bq}$ vers $t \approx 8$ jours
+*(lecture à confirmer)*, puis continue de décroître pour se rapprocher de
+l'axe des abscisses vers $t \approx 24$–$30$ jours *(lecture à confirmer)*.
+Légende : « Figure 3 ».
+
+---
+
 ## 2023 — session normale — Exercice 2, §1 (Désintégration du tritium)
 Source: https://www.alloschool.com/element/142476
 Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan

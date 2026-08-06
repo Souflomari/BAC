@@ -115,3 +115,13 @@ de liaison, partagé avec le §1 : voir `decroissance-radioactive.md`.)*
   - Exercice classé dans `decroissance-radioactive.md` (question dominante :
     demi-vie, activité, nombre de noyaux désintégrés), pas d'entrée dédiée
     autonome écrite ici pour éviter la duplication.
+
+- **2022 N — Exercice 2 (Partie 2)** (désintégration de l'iode 131),
+  transcrit sous `decroissance-radioactive.md` :
+  - Q2 (0,5) : calcul, en MeV, de l'énergie libérée $|\Delta E|$ par la
+    désintégration d'un noyau d'iode 131, à partir des masses données
+    ($m(^{131}_{53}\text{I})$, $m(^A_Z X)$, $m(\beta^-)$,
+    $1\text{u} = 931{,}5\ \text{MeV.c}^{-2}$).
+  - Exercice classé dans `decroissance-radioactive.md` (question dominante :
+    demi-vie, activité, loi de décroissance), pas d'entrée dédiée autonome
+    écrite ici pour éviter la duplication.

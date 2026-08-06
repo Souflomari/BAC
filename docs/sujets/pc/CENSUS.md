@@ -62,7 +62,7 @@ hub : `https://www.alloschool.com/section/4585` (annonce 2008→2025, N+R, compl
 | 2020 | R | — | `element/109751` | sourcé-listé |
 | 2021 | N | NS28F | `element/127287` · `upload-84195` (8 p.) | sourcé-confirmé |
 | 2021 | R | — | `element/127290` | sourcé-listé |
-| 2022 | N | — | `element/136621` · `upload-84516` (8 p.) | sourcé-confirmé |
+| 2022 | N | NS 28F | `element/136621` · `upload-84516` (8 p.) | sourcé-confirmé |
 | 2022 | R | — | `element/136624` | sourcé-listé |
 | 2023 | N | — | `element/142476` · `upload-85304` (6 p.) | sourcé-confirmé |
 | 2023 | R | — | `element/142484` | sourcé-listé |
@@ -181,6 +181,24 @@ Ex1-§2, Ex1-§3, Ex2-§1, Ex2-§2, Ex3-§1, Ex3-§2, Ex3-§3, Ex4-PI, Ex4-PII) 
 sans aucune entrée préexistante avant cette passe. **2023 N passe à carte
 complète (2026-08-06).**
 
+**2022 N (NS 28F)** — 4 exercices, barème 7+3,5+4,5+5 = 20 (couverture p.1,
+`element/136621` · `upload-84516`, 8 p. ; en-tête image confirmé SPC/BIOF,
+NS 28F — le résumé HTML d'AlloSchool annonce à tort « Sciences
+Mathématiques B », README §3)
+| Ex | Sujet | Slug(s) |
+|----|-------|---------|
+| 1 | Chromage d'une plaque d'acier par électrolyse (P1) + propriétés d'une solution aqueuse d'acide propanoïque, dosage inclus (P2) | `electrolyse` ✓ (P1) + `reactions-acido-basiques` ✓ (P2, cross `etat-equilibre`) |
+| 2 | Propagation des ondes sonores dans l'air, mesure de retard (P1) + désintégration de l'iode 131 (P2) | `ondes-mecaniques-progressives` ✓ (P1) + `decroissance-radioactive` ✓ (P2, cross `noyaux-masse-energie`) |
+| 3 | Réponse d'un dipôle RC à un échelon de tension (1) + oscillations libres dans un circuit RLC série (2) | `rc-charge` ✓ (§1) + `rlc-serie` ✓ (§2) |
+| 4 | Chute d'une bille dans un liquide visqueux, huile de ricin (P1) + mouvement d'un satellite artificiel (P2) | `chute-mouvements-plans` ✓ (P1 et P2 — satellite classé ici et **pas** sous `atome-mecanique-newton`, même raisonnement que 2025 N Ex IV-P1, voir note de routage dans `chute-mouvements-plans.md`) |
+
+**Transcrit (non vérifié) le 2026-08-06 : 8 nouvelles entrées** (Ex1-P1,
+Ex1-P2, Ex2-P1, Ex2-P2, Ex3-§1, Ex3-§2, Ex4-P1, Ex4-P2) + 2 notes de
+cross-list (`etat-equilibre`, `noyaux-masse-energie`) + 1 addendum à la
+« Note de routage » de `chute-mouvements-plans.md` (satellite artificiel,
+précédent 2022 N ajouté). Sujet sans aucune entrée préexistante avant cette
+passe. **2022 N passe à carte complète (2026-08-06).**
+
 ### Sujets à carte partielle (4) — seul l'exercice transcrit est consigné
 
 | Sujet | Exercice consigné | Slug(s) | Reste du sujet |
@@ -193,13 +211,13 @@ complète (2026-08-06).**
 **2025 N (NS28F) est passé à carte complète (2026-08-06)** — voir la table
 ci-dessus (§ Sujets à carte complète).
 
-### Sujets sans carte (19 sourcés + 7 hors atteinte)
+### Sujets sans carte (18 sourcés + 7 hors atteinte)
 
 - **Couverture lue en v0.3, carte non consignée (relevé perdu)** : 2008 N,
-  2009 N, 2013 N, 2014 N, 2016 N, 2022 N, 2014 R, 2016 R —
+  2009 N, 2013 N, 2014 N, 2016 N, 2014 R, 2016 R —
   `contenu à transcrire` (une lecture de couverture chacun suffit pour la
-  carte ; pipeline JPG→Read, bases `upload-` connues). **2024 N et 2023 N en
-  sont sortis (2026-08-06) : carte complète, voir § Sujets à carte
+  carte ; pipeline JPG→Read, bases `upload-` connues). **2024 N, 2023 N et
+  2022 N en sont sortis (2026-08-06) : carte complète, voir § Sujets à carte
   complète.**
 - **Sourcé-listé, jamais ouvert** : 2017 R, 2018 R, 2019 R, 2020 R, 2021 R,
   2022 R, 2023 R, 2024 R, 2025 R — `contenu à transcrire` (confirmer
@@ -216,19 +234,19 @@ couverture univoque). `Cross/(?)` = cross-lists + mappings incertains.
 
 | Slug | Dédiés | Cross/(?) | Années-sessions (dédiés puis cross/?) |
 |------|:-----:|:--------:|----------------------------------------|
-| `rlc-serie` | 7 | 0 | 2018 N, 2019 N, 2020 N, 2021 N, 2023 N, 2024 N, 2025 N |
-| `chute-mouvements-plans` | 7 | 0 | 2018 N, 2019 N, 2020 N, 2021 N, 2023 N, 2024 N, 2025 N |
-| `rc-charge` | 4 | 0 | 2018 N, 2019 N, 2021 N, 2025 N |
-| `reactions-acido-basiques` | 7 | 3 | 2019 N, 2020 N, 2021 N, 2018 N, 2023 N, 2024 N, 2025 N · (?) 2015 N, 2017 N |
-| `decroissance-radioactive` | 5 | 1 | 2019 N, 2021 N, 2023 N, 2024 N, 2025 N · cross 2020 N |
+| `rlc-serie` | 8 | 0 | 2018 N, 2019 N, 2020 N, 2021 N, 2022 N, 2023 N, 2024 N, 2025 N |
+| `chute-mouvements-plans` | 8 | 0 | 2018 N, 2019 N, 2020 N, 2021 N, 2022 N, 2023 N, 2024 N, 2025 N |
+| `rc-charge` | 5 | 0 | 2018 N, 2019 N, 2021 N, 2022 N, 2025 N |
+| `reactions-acido-basiques` | 8 | 3 | 2019 N, 2020 N, 2021 N, 2018 N, 2022 N, 2023 N, 2024 N, 2025 N · (?) 2015 N, 2017 N |
+| `decroissance-radioactive` | 6 | 1 | 2019 N, 2021 N, 2022 N, 2023 N, 2024 N, 2025 N · cross 2020 N |
 | `dipole-rl` | 4 | 0 | 2017 N, 2020 N, 2023 N, 2024 N |
 | `ondes-em-modulation` | 4 | 0 | 2017 N, 2021 N, 2023 N, 2025 N |
 | `piles` | 2 | 1 | 2017 N, 2020 N · (?) 2012 N |
-| `electrolyse` | 2 | 0 | 2018 N, 2019 N |
+| `electrolyse` | 3 | 0 | 2018 N, 2019 N, 2022 N |
 | `ondes-mecaniques-periodiques` | 1 | 2 | 2019 N · (?) 2017 N, 2020 N |
-| `ondes-mecaniques-progressives` | 2 | 1 | 2018 N, 2024 N · (?) 2020 N |
+| `ondes-mecaniques-progressives` | 3 | 1 | 2018 N, 2022 N, 2024 N · (?) 2020 N |
 | `propagation-onde-lumineuse` | 1 | 0 | 2021 N |
-| `noyaux-masse-energie` | 2 | 2 | 2020 N, 2023 N · cross 2019 N, 2025 N |
+| `noyaux-masse-energie` | 2 | 3 | 2020 N, 2023 N · cross 2019 N, 2022 N, 2025 N |
 | `lois-de-newton` | 1 | 1 | 2019 N · (?) 2017 N |
 | `rotation-axe-fixe` | 2 | 0 | 2011 R, 2024 N (même type de montage : poulie/cylindre + R.F.D. rotation) |
 | `systemes-oscillants` | 3 | 1 | 2018 N, 2023 N, 2025 N · (?) 2017 N |
@@ -236,7 +254,7 @@ couverture univoque). `Cross/(?)` = cross-lists + mappings incertains.
 | `transformations-lentes-rapides` | 1 | 1 | 2010 N · cross 2021 N |
 | `controle-catalyse` | 1 | 2 | 2025 N · cross 2018 N, 2023 N |
 | `transformations-deux-sens` | 1 | 0 | 2012 N |
-| `etat-equilibre` | 2 | 5 | 2015 N, 2023 N · cross 2019/2020/2021 N, 2024 N, 2025 N |
+| `etat-equilibre` | 2 | 6 | 2015 N, 2023 N · cross 2019/2020/2021 N, 2022 N, 2024 N, 2025 N |
 | `evolution-spontanee` | 1 | 1 | 2012 N · cross 2020 N |
 | `esterification-hydrolyse` | 2 | 2 | 2018 N, 2023 N · (?) 2012 N, 2025 N |
 | `aspects-energetiques` | 0 | 4 | cross 2018 N, 2023 N, 2025 N · (?) 2017 N (pendule torsion — entrée autonome cible) |
@@ -269,11 +287,12 @@ couverture univoque). `Cross/(?)` = cross-lists + mappings incertains.
   « chaque année » (RC/RLC, ondes, nucléaire, acide-base) monteront
   mécaniquement quand les 26 cartes manquantes seront relevées.
 - **Trous systématiques** : (1) les **rattrapages** — 3 couvertures lues sur
-  18, 9 URLs listées jamais ouvertes, 6 jamais cherchés ; (2) les normales
-  **2022–2024** sourcées mais sans carte ; (3) l'anomalie **2011 N** (INDEX
-  v0.3 revendique 18 couvertures normales lues mais aucune URL 2011 N n'est
-  consignée — à re-résoudre) ; (4) les **corrigés 2025** non publiés au
-  dernier sourcing.
+  18, 9 URLs listées jamais ouvertes, 6 jamais cherchés ; (2) l'anomalie
+  **2011 N** (INDEX v0.3 revendique 18 couvertures normales lues mais aucune
+  URL 2011 N n'est consignée — à re-résoudre) ; (3) les **corrigés 2025**
+  non publiés au dernier sourcing. (Les normales 2022–2024, autrefois
+  sourcées mais sans carte, sont désormais **toutes trois** à carte
+  complète — 2024 N et 2023 N le 2026-08-06, 2022 N la même date, voir §7.)
 - **Prochain incrément B1 (avant B2)** : ~35 fetchs suffisent — re-résoudre
   2011 N + 6 rattrapages manquants, ouvrir les 9 R listés, lire les 19
   couvertures sans carte — pour porter l'énumération à ~100 % des sujets
@@ -322,3 +341,39 @@ carte complète » ci-dessus. Points notables :
   le résumé HTML d'AlloSchool pour `element/142476` annonce à tort « 2ème
   BAC Sciences Mathématiques B » (même piège de fidélité que 2018 N et
   2024 N, README §3).
+
+## 7. Passe 2026-08-06 — harvest complet du 2022 N (NS 28F)
+
+**2022 N est passé de « couverture lue en v0.3, carte non consignée » à
+carte complète : 8 nouvelles entrées `transcrit (non vérifié)` + 2 notes
+de cross-list**, sur les 4 exercices/20 points du sujet (barème
+$7+3{,}5+4{,}5+5=20$ recoupé et conforme à la couverture p.1). Détail dans
+`README.md` §4 (chaque fichier `<slug>.md`) et dans la table « Sujets à
+carte complète » ci-dessus. Points notables :
+- l'exercice 1 (« chromage d'une plaque d'acier par électrolyse » +
+  « propriétés d'une solution aqueuse d'acide propanoïque ») a été
+  partitionné entre `electrolyse.md` (Partie 1) et
+  `reactions-acido-basiques.md` (Partie 2, réaction acide/eau **et** dosage
+  pH-métrique regroupés dans la même entrée, comme pour le précédent
+  2025 N Ex I-P1) ;
+- l'exercice 2 (« ondes sonores » + « désintégration de l'iode 131 ») a été
+  partitionné entre `ondes-mecaniques-progressives.md` (Partie 1 — mesure
+  de retard/célérité, sans longueur d'onde imposée, classement conforme à
+  la note de classement en tête de ce fichier) et
+  `decroissance-radioactive.md` (Partie 2, cross `noyaux-masse-energie`
+  pour la question d'énergie libérée) ;
+- l'exercice 3 (« RC » + « RLC série ») a été partitionné entre
+  `rc-charge.md` (section 1) et `rlc-serie.md` (section 2), sur le même
+  montage (figure 1) — précédent direct : 2018 N Ex III et 2019 N Ex III ;
+- l'exercice 4 (« chute d'une bille dans un liquide visqueux » +
+  « mouvement d'un satellite artificiel ») a été transcrit **intégralement
+  dans `chute-mouvements-plans.md`** (Partie 1 et Partie 2) : la Partie 2
+  (satellite) suit le même raisonnement de routage que 2025 N Ex IV-P1
+  (**pas** `atome-mecanique-newton.md` — voir la « Note de routage », dont
+  l'en-tête a été complété avec ce nouveau précédent) ;
+- l'en-tête du scan a été lu directement au pixel et confirme sans
+  ambiguïté la filière Sciences Physiques (SPC), BIOF, option française
+  (« شعبة العلوم التجريبية: مسلك العلوم الفيزيائية - خيار فرنسية », NS 28F,
+  3 h, coef 7) — le résumé HTML d'AlloSchool pour `element/136621` annonce
+  à tort « Sciences Mathématiques B » (même piège de fidélité que 2018 N,
+  2023 N et 2024 N, README §3).

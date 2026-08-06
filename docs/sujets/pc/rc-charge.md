@@ -451,3 +451,79 @@ l'origine, passant par les points $(2\,;\,2)$ et $(4\,;\,4)$ — pente
 apparente $1\ \text{V.s}^{-1}$, cohérente avec $I_0/C_0$ — et se prolongeant
 en ligne droite jusqu'au coin supérieur droit du cadre *(valeur exacte du
 coin non chiffrée sur le scan — lecture à confirmer)*.
+
+---
+
+## 2022 — session normale — Exercice 3 (1. Réponse d'un dipôle RC à un échelon de tension)
+Source: https://www.alloschool.com/element/136621
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-84516, page(s) 5. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image ; le résumé HTML
+  d'AlloSchool pour `element/136621` annonce à tort « Sciences Mathématiques
+  B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 4,5 points ;
+  **section 1 (réponse RC)** = 1,5 point ($0{,}25+0{,}5+0{,}5+0{,}25$,
+  barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-84516/0005-big.jpg`
+- Pages du scan : 5 (sur 8)
+- Portée : **section 1 (réponse d'un dipôle RC à un échelon de tension)** de
+  l'exercice 3. La **section 2 (oscillations libres dans un circuit RLC
+  série)** du même exercice est sous `rlc-serie.md` (même montage, figure 1).
+
+**EXERCICE 3 (4,5 points).**
+
+*(Cadrage de l'exercice, transcrit intégralement : « Cet exercice se
+propose : - de déterminer la capacité d'un condensateur ; - de déterminer
+l'inductance d'une bobine ; - d'effectuer une étude énergétique d'un circuit
+RLC série. »)*
+
+On réalise le montage électrique schématisé sur la figure 1. Ce montage est
+constitué des éléments suivants :
+- un générateur idéal de tension de force électromotrice $E$ ;
+- un condensateur de capacité $C$ initialement déchargé ;
+- une bobine d'inductance $L$ et de résistance $r$ ;
+- un conducteur ohmique de résistance $R$ ;
+- un interrupteur $K$ à double position.
+
+**1. Réponse d'un dipôle RC à un échelon de tension**
+
+À un instant choisi comme origine des dates $t = 0$, on place l'interrupteur
+$K$ sur la position (1). Les courbes $(C_1)$ et $(C_2)$ de la figure 2
+représentent l'évolution de la tension $u_C(t)$ aux bornes du condensateur
+et celle de l'intensité $i(t)$ du courant électrique qui circule dans le
+circuit.
+
+La droite $(T)$ étant la tangente à la courbe $(C_1)$ au point d'abscisse
+$t = 0$.
+
+1. **1.1.** (0,25) Montrer que l'équation différentielle vérifiée par la
+   tension $u_C(t)$ s'écrit sous la forme :
+   $\dfrac{du_C}{dt} + \dfrac{1}{RC}u_C = \dfrac{E}{RC}$.
+2. **1.2.** La solution de cette équation différentielle est de la forme :
+   $u_C(t) = E\left(1 - e^{-t/RC}\right)$.
+   1. **1.2.1.** (0,5) Établir l'expression de l'intensité du courant $i(t)$
+      en fonction de $E$, $R$, $C$ et $t$.
+   2. **1.2.2.** (0,5) En exploitant les courbes de la figure 2, déterminer
+      la valeur de $R$.
+   3. **1.2.3.** (0,25) Montrer que la capacité $C$ du condensateur est :
+      $C = 50\ \mu\text{F}$.
+
+*Figure 1 (schéma) :* boucle comportant, en haut, un conducteur ohmique $R$
+(rectangle) suivi d'un interrupteur $K$ à double position, de bornes « (1) »
+et « (2) ». À gauche, le générateur $E$ (symbole cercle, flèche de tension).
+Au centre, le condensateur (tension $u_C$ fléchée) monté entre le nœud
+(1)/$K$ et le bas du circuit. À droite de la position (2), une bobine
+étiquetée « $(L,r)$ ». Légende : « Figure 1 ».
+
+*Figure 2 (deux courbes côte à côte) :* à gauche, $u_C\ (\text{V})$ en
+fonction de $t\ (\text{ms})$ ; axe des ordonnées gradué $0,\ 3,\ 6,\ 9,\ 12$ ;
+axe des abscisses gradué $0,\ 50,\ 100,\ 150,\ 200$. Courbe $(C_1)$
+croissante, concave, partant de $0$ et tendant asymptotiquement vers un
+palier à $u_C = 12\ \text{V}$ ; une droite en pointillés $(T)$, tangente à
+l'origine, est tracée. À droite, $i\ (\text{mA})$ en fonction de
+$t\ (\text{ms})$ ; mêmes graduations d'axes ($0,\ 3,\ 6,\ 9,\ 12$ en
+ordonnée ; $0,\ 50,\ 100,\ 150,\ 200$ en abscisse). Courbe $(C_2)$
+décroissante, partant d'une valeur proche de $12\ \text{mA}$ à $t = 0$ et
+décroissant de façon exponentielle vers $0$. Légende : « Figure 2 ».

@@ -636,3 +636,89 @@ puis redescend vers un second minimum en fin de tracé *(positions
 temporelles exactes des extremums non chiffrées sur l'axe — lecture à
 confirmer, seules les échelles « 5V » / « 0,5 ms » sont des valeurs
 imprimées)*. Légende : « Figure 4 ».
+
+---
+
+## 2022 — session normale — Exercice 3 (2. Oscillations libres dans un circuit RLC série)
+Source: https://www.alloschool.com/element/136621
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-84516, page(s) 5 (fin)–6. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image ; le résumé HTML
+  d'AlloSchool pour `element/136621` annonce à tort « Sciences Mathématiques
+  B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 4,5 points ;
+  **section 2 (oscillations RLC)** = 3,0 points ($0{,}25+0{,}5+0{,}5+0{,}5$
+  pour 2.1, $0{,}5+0{,}75$ pour 2.2, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-84516/0005-big.jpg`
+  (fin, chapeau 2), `.../0006-big.jpg`
+- Pages du scan : 5 (fin) et 6 (sur 8)
+- Portée : **section 2 (oscillations libres dans un circuit RLC série)** de
+  l'exercice 3. La **section 1 (réponse d'un dipôle RC à un échelon de
+  tension)** du même exercice est sous `rc-charge.md` (même montage,
+  figure 1, non reproduite ici).
+
+**2. Oscillations libres dans un circuit RLC série**
+
+Après avoir totalement chargé le condensateur de capacité
+$C = 50\ \mu\text{F}$, on bascule l'interrupteur $K$ sur la position (2) à
+un instant choisi comme nouvelle origine des dates $t = 0$. Ce condensateur
+se décharge alors dans la bobine d'inductance $L$ et de résistance $r$
+(figure 1).
+
+**2.1. Premier cas :**
+
+On suppose, dans ce cas, que la résistance de la bobine est négligeable.
+
+1. **2.1.1.** (0,25) Montrer que l'équation différentielle vérifiée par la
+   tension $u_C(t)$ s'écrit sous la forme :
+   $\dfrac{d^2u_C}{dt^2} + \dfrac{1}{LC}u_C = 0$.
+2. **2.1.2.** (0,5) Choisir, parmi les courbes $(C_1)$, $(C_2)$ et $(C_3)$
+   de la figure 3, la courbe qui représente l'évolution de la tension
+   $u_C(t)$. Justifier votre réponse.
+3. **2.1.3.** La solution de l'équation différentielle précédente est :
+   $u_C(t) = U_0\cos\!\left(\dfrac{2\pi}{T_0}t\right)$ où $U_0$ est la
+   valeur maximale de la tension et $T_0$ la période propre des
+   oscillations.
+   1. **a-** (0,5) Trouver l'expression de $T_0$ en fonction de $L$ et $C$.
+   2. **b-** (0,5) Montrer que la valeur de l'inductance est :
+      $L = 0{,}05\ \text{H}$. (on prend $\pi^2 = 10$).
+
+**2.2. Deuxième cas :**
+
+En réalité, la résistance de la bobine n'est pas négligeable. On visualise
+dans ce cas, à l'aide d'un système d'acquisition informatisé, les courbes
+représentant l'évolution de la tension $u_C(t)$ aux bornes du condensateur
+et celle de l'intensité du courant $i(t)$ qui traverse le circuit
+(figure 4).
+
+1. **2.2.1.** (0,5) Écrire l'expression de l'énergie totale $E_t$ du circuit
+   en fonction de $C$, $u_C(t)$, $L$ et $i(t)$.
+2. **2.2.2.** (0,75) En exploitant les courbes de la figure 4, trouver
+   l'énergie $\Delta E$ dissipée dans le circuit entre les instants
+   $t_0 = 0$ et $t_1 = 9\ \text{ms}$.
+
+*Figure 3 (trois courbes $u_C\ (\text{V})$ en fonction de $t\ (\text{ms})$) :*
+- **$(C_1)$** : axe des ordonnées gradué $12,\ 6,\ 0,\ -6,\ -12$ ; axe des
+  abscisses gradué $5,\ 10,\ 15$. Oscillation sinusoïdale d'**amplitude
+  constante** $\pm 12\ \text{V}$.
+- **$(C_2)$** : axe des ordonnées gradué $10,\ 5,\ 0,\ -5,\ -10$ ; axe des
+  abscisses gradué $5,\ 10,\ 15$. Oscillation sinusoïdale d'**amplitude
+  constante** $\pm 10\ \text{V}$.
+- **$(C_3)$** : axe des ordonnées gradué $12,\ 6,\ 0,\ -6,\ -12$ ; axe des
+  abscisses gradué $2{,}5,\ 7{,}5,\ 12{,}5$. Oscillation d'**amplitude
+  décroissante** (allure pseudopériodique amortie), extrema successifs de
+  moins en moins marqués.
+
+Légende commune : « Figure 3 ».
+
+*Figure 4 (deux courbes côte à côte) :* à gauche, $i\ (\text{mA})$ en
+fonction de $t\ (\text{ms})$ ; axe des ordonnées gradué
+$200,\ 100,\ 0,\ -100,\ -200$ ; axe des abscisses gradué
+$2{,}5,\ 5,\ 7{,}5,\ 10,\ 12{,}5$. Oscillation pseudopériodique d'amplitude
+décroissante. À droite, $u_C\ (\text{V})$ en fonction de $t\ (\text{ms})$ ;
+axe des ordonnées gradué $10,\ 5,\ 0,\ -5,\ -10$ ; mêmes graduations
+d'abscisse ($2{,}5,\ 5,\ 7{,}5,\ 10,\ 12{,}5$). Oscillation pseudopériodique
+d'amplitude décroissante, en phase avec la décroissance de $i(t)$. Légende :
+« Figure 4 ».

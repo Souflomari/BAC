@@ -173,3 +173,9 @@ $C_A = 5 \cdot 10^{-2}\ \text{mol.L}^{-1}$. Son pH est $pH = 3{,}05$.
     $K_{A2}$ des deux couples en présence (réaction entre un acide et la
     base conjuguée d'un autre couple — cas non encore rencontré dans la
     banque, distinct du cas « acide + eau » de l'entrée 2015 N ci-dessus).
+
+- **2022 N — Exercice 1 (Partie 2)** (solution aqueuse d'acide propanoïque),
+  transcrit sous `reactions-acido-basiques.md` :
+  - Q1.3 (0,75) : expression du quotient de réaction $Q_{r,\text{éq}}$ à
+    l'équilibre en fonction de $C_a$ et $[\text{H}_3\text{O}^+_{(aq)}]_{\text{éq}}$,
+    puis calcul de sa valeur (réaction acide propanoïque / eau).

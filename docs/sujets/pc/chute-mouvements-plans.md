@@ -37,6 +37,13 @@ Raison, documentée honnêtement pour la traçabilité :
 Voir aussi la note symétrique ajoutée dans `atome-mecanique-newton.md`
 (2026-08-06).
 
+La même logique de routage s'applique à l'entrée **2022 N Exercice 4
+Partie 2** (satellite artificiel), transcrite plus loin dans ce fichier —
+`atome-mecanique-newton.md` cite d'ailleurs déjà « satellite artificiel
+(2022 N, 2025 N — gravitation, orbite circulaire) » comme thème hors
+périmètre du chapitre atome, dès sa recherche antérieure (21 couvertures
+lues). Précédent direct pour ce classement.
+
 ---
 
 ## 2020 — session normale — Exercice V
@@ -875,3 +882,171 @@ de l'origine, une courte flèche pleine orientée vers le haut étiquetée
 en pointillés (bleue) part de O vers la gauche. L'axe $Z$ se poursuit en
 trait plein en dessous de O jusqu'au bas de la figure. Légende :
 « Figure 1 ».
+
+---
+
+## 2022 — session normale — Exercice 4 (Partie 1)
+Source: https://www.alloschool.com/element/136621
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-84516, page(s) 7. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image ; le résumé HTML
+  d'AlloSchool pour `element/136621` annonce à tort « Sciences Mathématiques
+  B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 5 points ;
+  **Partie 1** = 2,75 points ($0{,}5+0{,}75+0{,}5+0{,}25+0{,}75$, barème en
+  marge)
+- Images lues (reproductibilité) : `.../course-422/upload-84516/0007-big.jpg`
+- Pages du scan : 7 (sur 8)
+- Portée : **Partie 1 (chute d'une bille dans un liquide visqueux)**.
+  Mention en tête de l'exercice : « Les parties 1 et 2 sont indépendantes ».
+  La **Partie 2 (mouvement d'un satellite artificiel)** du même exercice est
+  transcrite ci-dessous (même fichier, voir la « Note de routage » en tête).
+
+**EXERCICE 4 (5 points) — Partie 1 : Etude de la chute d'une bille dans un
+liquide visqueux.**
+
+On se propose dans cette partie, de déterminer la masse volumique $\rho_r$
+d'huile de ricin.
+
+On libère, sans vitesse initiale, une bille homogène en acier dans une
+éprouvette remplie d'huile de ricin. Cette bille a une masse $m$ et une
+masse volumique $\rho_a$.
+
+On étudie le mouvement du centre d'inertie $G$ de la bille dans un repère
+$(O, \vec{k})$ lié à un référentiel terrestre considéré comme galiléen
+(figure 1).
+
+La bille est soumise, durant sa chute verticale dans le liquide, à l'action
+de trois forces :
+- son poids $\vec{P}$.
+- la poussée d'Archimède $\vec{F}_a$ de direction verticale, de sens vers
+  le haut et d'intensité $F_a = \rho_r.V.g$ où $V$ est le volume de la
+  bille et $g$ l'accélération de la pesanteur.
+- la force de frottement fluide, modélisée par le vecteur
+  $\vec{F} = -k.\vec{v}$ où $k$ est une constante positive et $\vec{v}$ le
+  vecteur vitesse de $G$ à un instant $t$.
+
+Un système d'acquisition informatisé permet d'obtenir la courbe de la
+figure 2 représentant l'évolution de la vitesse $v(t)$.
+
+La droite $(T)$ étant la tangente à la courbe au point d'abscisse $t = 0$.
+
+**Données :** $m = 10\ \text{g}$ ; $\rho_a = 7{,}8\ \text{g.cm}^{-3}$ ;
+$g = 10\ \text{m.s}^{-2}$.
+
+1. (0,5) La courbe de la figure 2 présente deux zones. Attribuer à chaque
+   zone le régime correspondant.
+2. (0,75) Par application de la deuxième loi de Newton, montrer que
+   l'équation différentielle du mouvement de $G$ s'écrit ainsi :
+   $\dfrac{dv}{dt} + \dfrac{1}{\tau}.v = g\!\left(1 - \dfrac{\rho_r}{\rho_a}\right)$
+   où $\tau$ est le temps caractéristique du mouvement qu'on exprimera en
+   fonction de $m$ et $k$.
+3. Déterminer graphiquement :
+   1. **3.1.** (0,5) la valeur de $\tau$ puis en déduire, dans le système
+      international d'unités, la valeur de $k$.
+   2. **3.2.** (0,25) la valeur de la vitesse limite $V_\ell$.
+4. (0,75) Trouver l'expression de la masse volumique $\rho_r$ de l'huile de
+   ricin en fonction de $\tau$, $g$, $\rho_a$ et $V_\ell$. Calculer sa
+   valeur.
+
+*Figure 1 (schéma) :* une éprouvette graduée verticale. En haut, une ligne
+en pointillés horizontale traverse l'éprouvette, marquée « $O$ » à gauche ;
+juste en dessous, la flèche $\vec{k}$ orientée vers le bas. Dans
+l'éprouvette, un petit cercle étiqueté « $G$ » est dessiné au niveau de $O$
+(position initiale de la bille), le reste de l'éprouvette étant grisé
+(liquide). En bas de l'éprouvette, l'axe se poursuit et se termine par une
+flèche étiquetée « $z$ », orientée vers le bas. Légende : « Figure1 ».
+
+*Figure 2 (courbe) :* $v\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$,
+sur quadrillage à double graduation. Axe des ordonnées gradué
+$0{,}2,\ 0{,}4,\ 0{,}6,\ 0{,}8$ ; axe des abscisses gradué
+$0{,}1,\ 0{,}2,\ 0{,}3$. Courbe croissante depuis l'origine, concave,
+tendant asymptotiquement vers un palier horizontal *(valeur exacte du
+palier — lecture à confirmer, proche du repère $0{,}8$)*. Une droite en
+pointillés $(T)$, tangente à la courbe à l'origine, est tracée. Deux zones
+sont annotées directement sur le graphe : « **zone1** », sur la portion
+initiale fortement courbée (avant $t \approx 0{,}2\ \text{s}$) ; « **zone2**
+», sur la portion suivante, plus proche du palier horizontal (après
+$t \approx 0{,}2\ \text{s}$) *(frontière exacte entre les deux zones —
+lecture à confirmer)*. Légende : « Figure 2 ».
+
+---
+
+## 2022 — session normale — Exercice 4 (Partie 2)
+Source: https://www.alloschool.com/element/136621
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-84516, page(s) 8. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image ; le résumé HTML
+  d'AlloSchool pour `element/136621` annonce à tort « Sciences Mathématiques
+  B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 5 points ;
+  **Partie 2** = 2,25 points ($0{,}5+0{,}5+0{,}5+0{,}75$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-84516/0008-big.jpg`
+- Pages du scan : 8 (sur 8)
+- Portée : **Partie 2 (mouvement d'un satellite artificiel)**. Classée ici,
+  **et non sous `atome-mecanique-newton.md`** — voir la « Note de routage »
+  en tête de ce fichier (même raisonnement que pour 2025 N Ex IV Partie 1,
+  précédent direct). Mention en tête de l'exercice : « Les parties 1 et 2
+  sont indépendantes ». La **Partie 1 (chute d'une bille dans un liquide
+  visqueux)** du même exercice est transcrite ci-dessus.
+
+**Partie 2 : Etude du mouvement d'un satellite artificiel.**
+
+*(Cadrage de la partie, transcrit intégralement : « Les satellites
+artificiels sont placés en orbite autour de la Terre, pour des utilisations
+variées telles la météorologie, les télécommunications, la recherche
+scientifique ainsi que le contrôle des frontières… L'objectif de cette
+partie est d'étudier quelques grandeurs caractérisant le mouvement d'un
+satellite artificiel autour de la Terre. »)*
+
+On étudie le mouvement d'un satellite artificiel $S$ de masse $m_s$ dans un
+référentiel géocentrique supposé galiléen.
+
+On admet que la Terre présente une distribution de masse à symétrie
+sphérique.
+
+On néglige toutes les forces exercées sur le satellite $S$ devant la force
+d'attraction universelle exercée par la Terre ainsi que les dimensions de
+$S$ devant la distance qui le sépare du centre $O$ de la Terre.
+
+**Données :**
+- Masse de la Terre : $M_T = 5{,}97 \cdot 10^{24}\ \text{kg}$ ;
+- Rayon de la Terre : $R_T = 6380\ \text{km}$ ;
+- Constante de gravitation universelle :
+  $G = 6{,}67 \cdot 10^{-11}\ \text{N.m}^2.\text{kg}^{-2}$.
+
+1. Ce satellite est placé sur une orbite circulaire de centre $O$ et de
+   rayon $r = R_T + h_1$, où $h_1 = 1000\ \text{km}$ (figure 3).
+   1. **1.1.** (0,5) Choisir, parmi les propositions suivantes, celle qui
+      est juste. L'expression de l'intensité de la force de gravitation
+      universelle exercée par la Terre sur le satellite est :
+
+      | | |
+      |---|---|
+      | A | $F_{T/S} = G\dfrac{M_T.m_s}{h_1^2}$ |
+      | B | $F_{T/S} = G\dfrac{M_T.m_s}{(R_T+h_1)^2}$ |
+      | C | $F_{T/S} = G\dfrac{M_T.m_s}{R_T^2}$ |
+      | D | $F_{T/S} = G\dfrac{(M_T.m_s)^2}{(R_T+h_1)^2}$ |
+
+   2. **1.2.** (0,5) En appliquant la deuxième loi de Newton, montrer que
+      l'expression de la vitesse $v$ de $S$ est :
+      $v = \sqrt{\dfrac{G.M_T}{R_T+h_1}}$.
+   3. **1.3.** (0,5) Vérifier que la période de révolution du mouvement de
+      $S$ autour de la Terre est : $T_1 \approx 1{,}75\ \text{h}$.
+2. (0,75) Le satellite $S$ est placé sur une autre orbite circulaire située
+   à une altitude $h_2$ de la surface de la Terre. Il a alors un mouvement
+   circulaire uniforme de période de révolution $T_2 = 24\ \text{h}$. En
+   utilisant la troisième loi de Kepler, déterminer l'altitude $h_2$.
+
+*Figure 3 (schéma) :* deux cercles concentriques centrés sur le point
+« $O$ », marqué au centre et étiqueté « Terre » juste en dessous. Le cercle
+intérieur, plein, représente la Terre, de rayon noté « $R_T$ » (segment
+radial étiqueté à l'intérieur du cercle). Le cercle extérieur, en
+pointillés, représente l'orbite du satellite ; un point sur ce cercle est
+étiqueté « $S$ ». Un segment radial en pointillés, étiqueté « $h_1$ »,
+relie le bord du cercle intérieur au point $S$ sur le cercle extérieur.
+Légende : « Figure 3 ».

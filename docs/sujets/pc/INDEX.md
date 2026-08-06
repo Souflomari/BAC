@@ -108,7 +108,7 @@ Format de toutes : **scanned-PDF + JPG par page** (aucun texte machine).
 | 2019 | `68300` | `68303` | `94419` | `94422` | **N-Sujet lu p.1–7** (upload-54757, 7 p.) |
 | 2020 | `109742` | `109745` | `109751` | `109757` | **N-Sujet lu p.1–7** (upload-80870, 7 p.) |
 | 2021 | `127287` | `136826` | `127290` | `136829` | **N-Sujet lu p.1–5** (upload-84195, 8 p.) |
-| 2022 | `136621` | `136832` | `136624` | `136835` | listé (non ré-ouvert) |
+| 2022 | `136621` | `136832` | `136624` | `136835` | **N-Sujet lu intégralement p.1–8** (upload-84516, 8 p., 2026-08-06) |
 | 2023 | `142476` | `142479` | `142484` | `142487` | **N-Sujet lu intégralement p.1–6** (upload-85304, 6 p., 2026-08-06) |
 | 2024 | `145763` | `145766` | `145769` | `145772` | N-Sujet PDF testé = scan |
 | 2025 | `145796` | — | `145799` | — | listé ; **corrigés non publiés** |
@@ -187,6 +187,18 @@ Notes :
   d'amplitude · Ex 4 = chute d'une balle (chute libre + frottement, Euler) +
   mouvement d'une balançoire (pendule pesant). Sujet **intégralement lu**
   (les 6 pages) et **intégralement transcrit** en cette passe.
+- **2022 N** (NS 28F, `element/136621` · `upload-84516`, 8 p., 2026-08-06) :
+  barème $7+3{,}5+4{,}5+5=20$ recoupé et conforme à la couverture p.1
+  (en-tête du scan confirmé SPC/BIOF ; le résumé HTML d'AlloSchool annonce à
+  tort « Sciences Mathématiques B », README §3). Ex 1 = chromage d'une
+  plaque d'acier par électrolyse (P1) + propriétés d'une solution aqueuse
+  d'acide propanoïque, dosage inclus (P2) · Ex 2 = propagation des ondes
+  sonores dans l'air, mesure de retard (P1) + désintégration de l'iode 131
+  (P2) · Ex 3 = réponse d'un dipôle RC à un échelon de tension (1) +
+  oscillations libres dans un circuit RLC série (2) · Ex 4 = chute d'une
+  bille dans un liquide visqueux, huile de ricin (P1) + mouvement d'un
+  satellite artificiel (P2). Sujet **intégralement lu** (les 8 pages) et
+  **intégralement transcrit** en cette passe (8 nouvelles entrées).
 
 ---
 

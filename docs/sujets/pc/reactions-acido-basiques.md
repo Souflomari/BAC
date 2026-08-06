@@ -601,3 +601,96 @@ $C_B = C_A$.
 
 *(Aucune figure dans ce §2 ; énoncé intégralement textuel.)*
 
+---
+
+## 2022 — session normale — Exercice 1 (Partie 2)
+Source: https://www.alloschool.com/element/136621
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-84516, page(s) 2 (fin)–3. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
+  التجريبية: مسلك العلوم الفيزيائية - خيار فرنسية » = Sciences Physiques,
+  BIOF, option française ; le résumé HTML d'AlloSchool pour `element/136621`
+  annonce à tort « Sciences Mathématiques B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 7 points ; **Partie 2**
+  = 4,75 points ($0{,}5+0{,}75+0{,}75+0{,}5$ pour la sous-partie 1,
+  $0{,}5+0{,}25+0{,}5+0{,}5+0{,}5$ pour la sous-partie 2-Dosage, barème en
+  marge)
+- Images lues (reproductibilité) : `.../course-422/upload-84516/0002-big.jpg`
+  (fin, chapeau), `.../0003-big.jpg`
+- Pages du scan : 2 (fin) et 3 (sur 8)
+- Portée : **Partie 2 (étude de quelques propriétés d'une solution aqueuse
+  d'acide propanoïque)**. Mention en tête de l'exercice : « Les parties 1 et
+  2 sont indépendantes ». La **Partie 1 (chromage d'une plaque d'acier par
+  électrolyse)** du même exercice est sous `electrolyse.md`. Recoupe
+  `etat-equilibre` (Q1.3 : quotient de réaction $Q_{r,\text{éq}}$ à
+  l'équilibre).
+
+**EXERCICE 1 (7 points) — Partie 2 : Étude de quelques propriétés d'une
+solution aqueuse d'acide propanoïque.**
+
+*(Cadrage de la partie, transcrit intégralement : « L'acide propanoïque, de
+formule $\text{C}_2\text{H}_5-\text{COOH}$, est utilisé comme conservateur
+alimentaire. On l'utilise aussi dans la synthèse des anti-inflammatoires.
+L'acide propanoïque intervient également dans de nombreuses synthèses
+organiques. L'objectif de cette partie est d'étudier quelques propriétés
+d'une solution aqueuse d'acide propanoïque. »)*
+
+**1. Solution aqueuse d'acide propanoïque**
+
+On prépare une solution aqueuse $S_a$ d'acide propanoïque de concentration
+$C_a = 5 \cdot 10^{-2}\ \text{mol.L}^{-1}$.
+
+La mesure du pH de la solution $S_a$ donne $pH = 3{,}1$.
+
+1. **1.1.** (0,5) Écrire l'équation de la réaction entre l'acide propanoïque
+   et l'eau.
+2. **1.2.** (0,75) Calculer le taux d'avancement final $\tau$ de cette
+   réaction. Que peut-on conclure ?
+3. **1.3.** (0,75) Exprimer le quotient de réaction $Q_{r,\text{éq}}$ à
+   l'équilibre en fonction de $C_a$ et $[\text{H}_3\text{O}^+_{(aq)}]_{\text{éq}}$.
+   Calculer sa valeur.
+4. **1.4.** (0,5) En déduire la valeur du $pK_A$ du couple
+   $\text{C}_2\text{H}_5\text{COOH}_{(aq)}/\text{C}_2\text{H}_5\text{COO}^-_{(aq)}$.
+
+**2-Dosage d'une solution aqueuse d'acide propanoïque**
+
+Pour vérifier la valeur de la concentration $C_a$ de la solution $S_a$, on
+réalise le dosage pH-métrique d'un volume $V_a = 20\ \text{mL}$ de la
+solution $S_a$ par une solution aqueuse $S_b$ d'hydroxyde de sodium
+$\text{Na}^+_{(aq)} + \text{HO}^-_{(aq)}$ de concentration
+$C_b = 5 \cdot 10^{-2}\ \text{mol.L}^{-1}$.
+
+Sur la figure 2, sont représentées la courbe donnant les variations du pH du
+milieu réactionnel en fonction du volume $V_b$ de la solution $S_b$ versée
+et la courbe $\dfrac{dpH}{dV_b} = f(V_b)$.
+
+1. **2.1.** (0,5) Écrire l'équation de la réaction du dosage.
+2. **2.2.** (0,25) Déterminer graphiquement le volume $V_{bE}$ de la
+   solution $S_b$ versé à l'équivalence.
+3. **2.3.** (0,5) Vérifier la valeur de la concentration $C_a$.
+4. **2.4.** (0,5) La solution $S_a$ a été préparée en diluant 10 fois une
+   solution aqueuse $S_0$ d'acide propanoïque. Déterminer la masse $m$
+   d'acide propanoïque pur dissout dans un litre de la solution $S_0$.
+
+   **On donne :** la masse molaire de l'acide propanoïque
+   $M = 74\ \text{g.mol}^{-1}$.
+5. **2.5.** (0,5) Pour un volume $V_b = 5\ \text{mL}$ de la solution $S_b$
+   versée, déterminer le pourcentage de la forme acide du couple
+   $\text{C}_2\text{H}_5\text{COOH}_{(aq)}/\text{C}_2\text{H}_5\text{COO}^-_{(aq)}$
+   dans le mélange réactionnel.
+
+*Figure 2 (courbe double) :* axe des ordonnées $pH$, gradué (traits
+principaux chiffrés) $0,\ 2,\ 4,\ 6,\ 8,\ 10,\ 12$, quadrillage secondaire
+fin ; axe des abscisses $V_b\ (\text{mL})$, gradué $5,\ 10,\ 15,\ 20,\ 25$.
+Courbe de dosage $pH = f(V_b)$ : croissante, départ vers $pH \approx 3$ à
+$V_b = 0$, montée lente jusqu'à un saut d'équivalence situé au voisinage du
+repère $V_b = 20\ \text{mL}$ *(position exacte du saut — lecture à
+confirmer)*, puis palier final proche de $pH \approx 12$. Une seconde
+courbe, $\dfrac{dpH}{dV_b} = f(V_b)$, superposée sur le même repère, présente
+un pic étroit et positif centré sensiblement au même $V_b$ que le saut de la
+courbe de pH, avec une flèche et l'étiquette « $\dfrac{dpH}{dV_b}$ »
+pointant vers ce pic *(amplitude et position exacte du pic — lecture à
+confirmer)*. Légende : « Figure 2 ».
+

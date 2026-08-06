@@ -133,3 +133,65 @@ l'instant $t_2$ » (en bas à droite). Un axe horizontal orienté vers la
 droite, gradué « $r(\text{cm})$ », part de $O$. Aucune valeur numérique
 autre que celles déjà données dans le tableau n'est chiffrée sur le schéma ;
 pas de légende numérotée imprimée sur cette figure.
+
+---
+
+## 2022 — session normale — Exercice 2 (Partie 1)
+Source: https://www.alloschool.com/element/136621
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-84516, page(s) 3 (fin)–4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image ; le résumé HTML
+  d'AlloSchool pour `element/136621` annonce à tort « Sciences Mathématiques
+  B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 3,5 points ;
+  **Partie 1** = 1,25 point ($0{,}25+0{,}25+0{,}25+0{,}5$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-84516/0003-big.jpg`
+  (fin, figure 1), `.../0004-big.jpg` (figure 2, questions)
+- Pages du scan : 3 (fin) et 4 (sur 8)
+- Portée : **Partie 1 (propagation des ondes sonores dans l'air)**. Mention
+  en tête de l'exercice : « Les parties 1 et 2 sont indépendantes ». La
+  **Partie 2 (désintégration de l'iode 131)** du même exercice est sous
+  `decroissance-radioactive.md`.
+- Classement (README §4) : exercice centré sur la **célérité** via une
+  **mesure de retard temporel** (distance $L$ fixe, sans longueur d'onde ni
+  fréquence imposées) → `-progressives`.
+
+**EXERCICE 2 (3,5 points) — Partie 1 : Propagation des ondes sonores dans
+l'air.**
+
+Pour déterminer la célérité des ondes sonores dans l'air, on réalise le
+montage expérimental représenté sur le schéma de la figure 1. Ce montage est
+constitué d'un émetteur $E$ et d'un récepteur $R$ d'ondes sonores distants
+de $L = 85\ \text{cm}$. Une onde sonore émise par $E$, se propageant dans
+l'air, est reçue par $R$.
+
+On visualise à l'aide d'un système d'acquisition informatisé, à la fois, le
+signal (a) émis et le signal (b) reçu (figure 2).
+
+1. Recopier le numéro de la question et répondre par vrai ou faux.
+   1. **1.1.** (0,25) L'onde sonore est une onde transversale.
+   2. **1.2.** (0,25) L'onde sonore ne se propage pas dans le vide.
+2. (0,25) Déterminer la durée $\Delta t$ mise par le signal pour arriver au
+   récepteur $R$.
+3. (0,5) Calculer la célérité $v$ des ondes sonores dans l'air.
+
+*Figure 1 (schéma) :* deux blocs rectangulaires étiquetés « $E$ » (Emetteur,
+à gauche) et « $R$ » (Récepteur, à droite), chacun dessiné avec une découpe
+en créneau sur le côté qui fait face à l'autre. Entre les deux, une flèche
+horizontale orientée vers la droite, étiquetée « Sens de propagation »
+au-dessus. En dessous, une double flèche horizontale reliant les deux blocs,
+étiquetée « $L$ ». Légende : « Figure 1 ».
+
+*Figure 2 (écran d'acquisition) :* grille quadrillée (environ huit colonnes
+sur six lignes) représentant l'affichage du système d'acquisition. Deux
+petits rectangles pleins (signaux) y sont dessinés : le signal **(a)**, en
+haut à gauche de la grille (étiqueté « (a) » en dessous) ; le signal
+**(b)**, plus bas et plus à droite (étiqueté « (b) » en dessous). Un repère
+d'échelle temporelle, en bas à droite de la grille, est matérialisé par une
+double flèche horizontale d'un carreau de large, étiquetée
+« $0{,}5\ \text{ms}$ ». Légende : « Figure 2 ». *(Le nombre exact de
+carreaux séparant les signaux (a) et (b) — nécessaire pour convertir le
+décalage horizontal en $\Delta t$ — n'a pas été recompté au pixel près dans
+cette passe : lecture à confirmer.)*

@@ -149,3 +149,82 @@ $m = 20{,}72\ \text{g}$.
    dibrome formé pendant $\Delta t$.
 
 *(Aucune figure dans cette partie ; énoncé intégralement textuel.)*
+
+---
+
+## 2022 — session normale — Exercice 1 (Partie 1)
+Source: https://www.alloschool.com/element/136621
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-422/upload-84516, page(s) 2. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (en-tête
+  du scan confirmé directement sur l'image : « شعبة العلوم التجريبية: مسلك
+  العلوم الفيزيائية - خيار فرنسية » = Sciences Physiques, BIOF, option
+  française ; le résumé HTML d'AlloSchool pour `element/136621` annonce à tort
+  « Sciences Mathématiques B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 7 points ; **Partie 1**
+  = 2,25 points ($0{,}5+0{,}5+0{,}5+0{,}75$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-84516/0002-big.jpg`
+- Pages du scan : 2 (sur 8)
+- Portée : **Partie 1 (chromage d'une plaque d'acier par électrolyse)**.
+  Mention en tête de l'exercice : « Les parties 1 et 2 sont indépendantes ».
+  La **Partie 2 (étude de quelques propriétés d'une solution aqueuse d'acide
+  propanoïque)** du même exercice est sous `reactions-acido-basiques.md`.
+
+**EXERCICE 1 (7 points) — Partie 1 : Chromage d'une plaque d'acier par
+électrolyse.**
+
+*(Cadrage de la partie, transcrit intégralement : « L'électrolyse est un
+processus de conversion de l'énergie électrique en énergie chimique. Parmi
+ses applications on trouve la couverture d'objets par une fine couche de
+métal et ce pour les protéger de la corrosion. On se propose, dans cette
+partie, d'étudier le chromage d'une plaque d'acier par électrolyse. »)*
+
+**Données :**
+- Les couples mis en jeu : $\text{Cr}^{3+}_{(aq)}/\text{Cr}_{(s)}$ et
+  $\text{O}_{2(g)}/\text{H}_2\text{O}_{(l)}$ ;
+- $1\text{F} = 96500\ \text{C.mol}^{-1}$ ;
+- Masse molaire du chrome : $M(\text{Cr}) = 52\ \text{g.mol}^{-1}$.
+
+Pour réaliser cette électrolyse, on plonge totalement une plaque en acier
+dans une solution aqueuse de chlorure de chrome (III)
+$\text{Cr}^{3+}_{(aq)} + 3\text{Cl}^-_{(aq)}$ et on la relie à l'un des pôles
+d'un générateur $G$. L'autre pôle du générateur est relié à une électrode en
+graphite (figure1). En fermant l'interrupteur $K$, un courant électrique
+d'intensité constante $I = 2\ \text{A}$ circule alors dans le circuit. On
+observe un dégagement de dioxygène $\text{O}_{2(g)}$ au niveau de l'électrode
+en graphite et un dépôt uniforme de chrome sur la plaque d'acier.
+
+1. (0,5) Identifier l'électrode qui joue le rôle de la cathode. Justifier
+   votre réponse.
+2. (0,5) Recopier le numéro de la question et choisir, parmi les réponses
+   proposées, celle qui est juste.
+   1. **2.1.** (0,5) L'équation de la réaction au niveau de l'électrode de
+      graphite s'écrit ainsi :
+
+      | | |
+      |---|---|
+      | A | $2\text{H}_2\text{O}_{(\ell)} \rightleftharpoons \text{O}_{2(g)} + 4\text{H}^+_{(aq)} + 4e^-$ |
+      | B | $\text{Cr}^{3+}_{(aq)} + 3e^- \rightleftharpoons \text{Cr}_{(s)}$ |
+      | C | $2\text{O}^{2-}_{(aq)} \rightleftharpoons \text{O}_{2(g)} + 4e^-$ |
+      | D | $2\text{H}_2\text{O}_{(\ell)} \rightleftharpoons \text{O}_{2(g)} + 2\text{H}_{2(g)}$ |
+
+   2. **2.2.** (0,5) L'équation de la réaction au niveau de la plaque d'acier
+      s'écrit ainsi :
+
+      | | |
+      |---|---|
+      | A | $2\text{H}_2\text{O}_{(\ell)} \rightleftharpoons \text{O}_{2(g)} + 4\text{H}^+_{(aq)} + 4e^-$ |
+      | B | $\text{Cr}^{3+}_{(aq)} + 3e^- \rightleftharpoons \text{Cr}_{(s)}$ |
+      | C | $\text{Cr}^{2+}_{(aq)} + 2e^- \rightleftharpoons \text{Cr}_{(s)}$ |
+      | D | $2\text{H}_2\text{O}_{(\ell)} \rightleftharpoons \text{O}_{2(g)} + 2\text{H}_{2(g)}$ |
+
+3. (0,75) L'électrolyse a duré $\Delta t = 2\ \text{h}$. Déterminer la masse
+   $m(\text{Cr})$ de chrome déposé sur la plaque d'acier.
+
+*Figure1 (schéma) :* un générateur $G$ (symbole cercle, en haut à gauche)
+relié par un fil à un interrupteur $K$ (en haut à droite). Un bécher contient
+la solution étiquetée $\text{Cr}^{3+}_{(aq)} + 3\text{Cl}^-_{(aq)}$, dans
+laquelle plongent deux électrodes reliées au circuit : à gauche, la
+**« Plaque en acier »** (petit rectangle blanc, relié au générateur $G$) ; à
+droite, l'**« Electrode en graphite »** (bande verticale grisée, reliée à
+l'interrupteur $K$). Légende : « Figure1 ».
