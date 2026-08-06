@@ -137,6 +137,40 @@ Soient $p$ un nombre premier impair et $a$ un entier premier avec $p$.
 
 ---
 
+## 2021 — session normale — Exercice 3
+Source: https://www.alloschool.com/element/127193
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-84150, page(s) 4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
+- Code sujet : NS 24F · Barème de l'exercice : 4 points
+- Images lues : `.../course-436/upload-84150/0001-big.jpg` (page de composantes), `.../course-436/upload-84150/0004-big.jpg` (énoncé complet Exercice 3)
+- Pages du scan : 4 (sur 4) — composantes p.1
+
+> **Note de lecture (mojibake)** : aucun — ce scan 2021 est rendu en Unicode correct ($\mathbb{Z}$, $\mathbb{Z}\times\mathbb{Z}$, congruence $\equiv$ à triple barre propre, crochets de modulo $[\,]$) ; pas de substitution de police.
+
+**Arithmétique (équation diophantienne $47x-43y=1$ par Bézout ; petit théorème de Fermat modulo $43$ ; système de congruences et théorème des restes chinois modulo $2021 = 43\times 47$).**
+
+**Partie I :** On considère dans $\mathbb{Z} \times \mathbb{Z}$ l'équation $(E)$ : $47x - 43y = 1$
+
+1. (0,25) Vérifier que le couple $(11,12)$ est une solution particulière de l'équation $(E)$
+2. (0,75) Résoudre dans $\mathbb{Z} \times \mathbb{Z}$ l'équation $(E)$
+
+**Partie II :** On considère dans $\mathbb{Z}$ l'équation $(F)$ : $x^{41} \equiv 4\ [43]$
+
+1. Soit $x \in \mathbb{Z}$ une solution de l'équation $(F)$
+   a) (0,5) Montrer que $x$ et $43$ sont premiers entre eux, en déduire que : $x^{42} \equiv 1\ [43]$
+   b) (0,5) Montrer que : $4x \equiv 1\ [43]$, en déduire que : $x \equiv 11\ [43]$
+2. (0,5) Donner l'ensemble des solutions dans $\mathbb{Z}$ de l'équation $(F)$
+
+**Partie III :** On considère dans $\mathbb{Z}$ le système à deux équations suivant $(S)$ : $\begin{cases} x^{41} \equiv 4\ [43] \\ x^{47} \equiv 10\ [47] \end{cases}$
+
+1. Soit $x$ une solution du système $(S)$
+   a) (0,5) Montrer que $x$ est solution du système $(S')$ : $\begin{cases} x \equiv 11\ [43] \\ x \equiv 10\ [47] \end{cases}$
+   b) (0,5) En déduire que : $x \equiv 527\ [2021]$ *(On pourra utiliser la partie I)*
+2. (0,5) Donner l'ensemble des solutions dans $\mathbb{Z}$ du système $(S)$
+
+---
+
 ## 2023 — session normale — Exercice 4
 Source: https://www.alloschool.com/element/142490
 Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-85316, page(s) 4. À faire vérifier (README §3).

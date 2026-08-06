@@ -224,3 +224,34 @@ On considère le nombre complexe : $u = 1 + (2 - \sqrt{3})\,i$
    b) (0,5) Montrer que pour tout entier $n$, le triangle $O A_n A_{n+1}$ est rectangle en $A_n$.
 
 ---
+
+## 2021 — session normale — Exercice 2
+Source: https://www.alloschool.com/element/127193
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-84150, page(s) 3–4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
+- Code sujet : NS 24F · Barème de l'exercice : 4 points
+- Images lues : `.../course-436/upload-84150/0001-big.jpg` (page de composantes), `.../course-436/upload-84150/0003-big.jpg` (énoncé Exercice 2, questions 1 à 2), `.../course-436/upload-84150/0004-big.jpg` (suite, questions 2-a à 3)
+- Pages du scan : 3–4 (sur 4) — composantes p.1
+
+> **Note de lecture (mojibake)** : aucun — ce scan 2021 est rendu en Unicode correct ($\mathbb{C}$, $\vec{u}$, $\vec{v}$, exponentielles $e^{i\frac{\pi}{3}}$, $\frac{\pi}{2}$) ; pas de substitution de police.
+
+**Nombres complexes (équation du 2ᵈ degré $z^2-(a+b+c)z+c(a+b)=0$ de racines $c$ et $a+b$ ; forme exponentielle ; centres $P$, $Q$ de deux rotations d'angles $\pm\frac{\pi}{2}$, nature du triangle $PDQ$, symétriques, cocyclicité de $K,P,Q,D$).**
+
+Soient $a$, $b$ et $c$ trois nombres complexes non nuls tel que : $a+b \neq c$
+
+1. a) (0,5) Résoudre dans l'ensemble $\mathbb{C}$ l'équation d'inconnue $z$
+   $$(E)\ :\ z^2 - (a+b+c)z + c(a+b) = 0$$
+   b) (0,5) On suppose dans cette question que : $a = i$, $b = e^{i\frac{\pi}{3}}$ et $c = a - b$
+   Écrire les deux solutions de l'équation $(E)$ sous forme exponentielle.
+2. Le plan complexe est rapporté à un repère orthonormé direct $(O, \vec{u}, \vec{v})$.
+   On considère les trois points $A(a)$, $B(b)$ et $C(c)$ qu'on suppose non alignés.
+   Soient $P(p)$ le centre de la rotation d'angle $\dfrac{\pi}{2}$ qui transforme $B$ en $A$ et $Q(q)$ le centre de la rotation d'angle $\left(-\dfrac{\pi}{2}\right)$ qui transforme $C$ en $A$ et $D(d)$ le milieu du segment $[BC]$
+   a) (1) Montrer que : $2p = b + a + (a-b)i$ et $2q = c + a + (c-a)i$
+   b) (0,5) Calculer : $\dfrac{p-d}{q-d}$
+   c) (0,5) En déduire la nature du triangle $PDQ$
+3. Soient $E$ le symétrique de $B$ par rapport à $P$ et $F$ le symétrique de $C$ par rapport à $Q$ et $K$ le milieu du segment $[EF]$
+   a) (0,5) Montrer que l'affixe de $K$ est $k = a + \dfrac{i}{2}(c-b)$
+   b) (0,5) Montrer que les points $K$, $P$, $Q$ et $D$ sont cocycliques.
+
+---
