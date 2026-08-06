@@ -69,7 +69,43 @@ $t = 1\ \text{ms}$ *(lecture d'échelle à confirmer)*.
 ## 2018 — session normale — Exercice III (partie I-1)
 Source: https://www.alloschool.com/element/57726
 Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-45118, page 5. À faire vérifier (README §3).
+course-422/upload-45118, pages 4–5. **Vérification adverse indépendante
+(second agent) effectuée le 2026-08-06 — entrée NON promue : écart de figure
+trouvé et corrigé, drapeau de pente adjugé et levé.** `element/57726`
+re-fetché, `course-422/upload-45118` (8 pages) re-dérivé de façon indépendante
+et **conforme** ; en-tête du scan **confirmé** (NS28F, 2018 session normale,
+Sciences Physiques BIOF option française, 3 h, coef 7 ; couverture p. 1 :
+« Exercice III (5 points) : - Détermination expérimentale de la capacité d'un
+condensateur - Etude d'un circuit RLC série »). Diff caractère par caractère
+des p. 4–5 — **aucun écart de valeur** ($C_1 = 7{,}5\ \mu\text{F}$, $C_2$
+inconnue, $I_0$, $R$, $K$, $t_0 = 0$, $u_{AB}$), libellés conformes.
+Numérotation imprimée : **1.1, 1.2, 1.3** (sous-questions du bloc « 1. En
+utilisant un générateur de courant »), restituée ici par la liste $1$–$3$ sous
+le titre gras, conformément à l'usage du fichier. Barème re-additionné sur la
+marge : $0{,}5+0{,}75+0{,}5 = 1{,}75$ point (l'exercice complet vaut $5$ points,
+le solde $0{,}5+0{,}5+0{,}5$ pour I-2 et $1{,}75$ pour la partie II).
+**Écart bloquant relevé — figure 1 :** la description disait « symbole flèche
+dans un cercle » pour le générateur de courant. Au zoom ×3, le symbole est un
+**cercle barré d'un trait horizontal**, la flèche $I_0$ étant tracée
+**à l'extérieur, à gauche** du cercle ; par ailleurs les condensateurs portent
+sur le schéma les étiquettes $C_1$ et $C_2$ (et non $(c_1)$/$(c_2)$, graphie
+réservée au texte). Description réécrite d'après l'image ; la topologie
+(boucle $I_0$–$R$–$K$ avec $C_1 \parallel C_2$ entre $A$ et $B$) était, elle,
+correcte.
+**Drapeau « pente exacte / $C_{eq}$ à confirmer » adjugé et levé :** régression
+sur $215$ pixels de la droite ⇒ pente $= 10{,}01\ \mu\text{C.V}^{-1}$,
+ordonnée à l'origine $-0{,}13\ \mu\text{C}$, résidu quadratique moyen
+$0{,}31$ px ; le quadrillage mesuré vaut $1$ V $\times$ $10\ \mu\text{C}$ par
+division sur $6\times6$ divisions, et la droite joint l'origine au coin
+$(6\ \text{V}\,;\,60\ \mu\text{C})$. ⇒ **$C_{eq} = 10\ \mu\text{F}$** et donc
+$C_2 = C_{eq} - C_1 = 10 - 7{,}5 = \mathbf{2{,}5\ \mu\text{F}}$.
+**Recoupement physique exact avec la sous-partie I-2** (déjà vérifiée,
+ci-dessous) : $\tau = R\,C_2 = 1600 \times 2{,}5\cdot10^{-6} = 4{,}0$ ms, soit
+précisément l'abscisse à laquelle la tangente à l'origine de la figure 4 coupe
+l'axe des temps — les deux méthodes du sujet donnent bien la même capacité.
+Corrections appliquées ⇒ **une re-lecture est requise avant promotion**
+(README §3). Observation non bloquante : le membre « (page suivante) » de la
+phrase de montage, omis à la transcription, a été rétabli.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 5 points (sous-partie
@@ -91,8 +127,8 @@ expérimentalement la valeur de la capacité d'un condensateur par deux méthode
 différentes. - Étudier un circuit RLC série. »)*
 
 Un premier groupe d'élèves d'une classe réalise, sous les directives du
-professeur, le montage expérimental de la figure 1 constitué des éléments
-suivants :
+professeur, le montage expérimental de la figure 1 (page suivante) constitué
+des éléments suivants :
 - un générateur idéal de courant qui alimente le circuit par un courant
   électrique d'intensité $I_0$ ;
 - un conducteur ohmique de résistance $R$ ;
@@ -112,16 +148,32 @@ condensateurs $(c_1)$ et $(c_2)$ en fonction de la tension $u_{AB}$
    $(c_1)$ et $(c_2)$.
 3. (0,5) En déduire la valeur de la capacité $C_2$.
 
-*Figure 1 (schéma) :* générateur idéal de courant $I_0$ (symbole flèche dans
-un cercle) en série avec un interrupteur $K$ et un conducteur ohmique $R$,
-alimentant deux bornes $A$ (en haut) et $B$ (en bas) ; entre $A$ et $B$, les
-deux condensateurs $(c_1)$ et $(c_2)$ sont montés en parallèle.
+*Figure 1 (schéma) :* boucle unique. Branche **de gauche**, de haut en bas : le
+générateur idéal de courant, dessiné par un **cercle barré horizontalement en
+son milieu**, avec une **flèche verticale montante tracée à l'extérieur, à sa
+gauche**, étiquetée « $I_0$ » ; puis, sous le cercle, le conducteur ohmique
+(rectangle vertical) étiqueté « R » à sa gauche. Branche **du haut** : depuis
+le sommet du générateur, un fil part vers la droite, porte l'interrupteur $K$
+(levier ouvert, étiquette « K » **au-dessus**) et rejoint le nœud **A** (point
+noir, étiquette « A » au-dessus). Branche **de droite** : de $A$, le fil
+descend et se dédouble en deux branches parallèles portant chacune un
+condensateur — celui de gauche étiqueté « $C_1$ » (étiquette à sa gauche),
+celui de droite « $C_2$ » (étiquette à sa droite) — qui se rejoignent et
+descendent vers le nœud **B** (point noir, étiquette « B » au-dessous).
+Branche **du bas** : de $B$, le fil repart vers la gauche jusqu'au bas du
+conducteur ohmique, fermant la boucle.
 
 *Figure 2 (courbe) :* $q\ (\mu\text{C})$ en fonction de $u_{AB}\ (\text{V})$,
-sur quadrillage ; axe des ordonnées gradué $10,\ 20$ ; axe des abscisses
-gradué $1,\ 2$. Droite croissante passant par l'origine (proportionnalité
-$q = C_{eq}\,u_{AB}$) *(pente exacte / valeur de $C_{eq}$ à confirmer par
-lecture du quadrillage)*.
+sur un quadrillage de **6 divisions en largeur et 6 divisions en hauteur**.
+Seules les valeurs $10$ et $20$ sont chiffrées en ordonnée, $1$ et $2$ en
+abscisse, plus le $0$ à l'origine : le pas du quadrillage vaut donc
+$1\ \text{V}$ horizontalement et $10\ \mu\text{C}$ verticalement, et le cadre
+va jusqu'à $6\ \text{V}$ / $60\ \mu\text{C}$. Droite croissante partant
+**exactement de l'origine** et rejoignant **exactement le coin supérieur droit
+du cadre** $(6\ \text{V}\,;\,60\ \mu\text{C})$, en passant par les
+intersections $(1\,;\,10)$, $(2\,;\,20)$, $(3\,;\,30)$… du quadrillage
+principal : la pente se lit donc **$10\ \mu\text{C.V}^{-1}$**, soit
+$C_{eq} = 10\ \mu\text{F}$ (lecture gridline-exacte, pas une estimation).
 
 ---
 
@@ -179,10 +231,13 @@ l'axe des abscisses vers $t = 4\ \text{ms}$ *(lecture d'échelle à confirmer)*.
 
 ## 2021 — session normale — Exercice IV (Partie I)
 Source: https://www.alloschool.com/element/127287
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-84195, page(s) 5–6. **Vérification adverse indépendante
-(second agent) effectuée le 2026-08-06 — entrée NON promue, une correction
-appliquée.** `element/127287` re-fetché, `course-422/upload-84195` (8 pages)
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK
+(agent-vérificateur, 2026-08-06) ; **figures re-lues indépendamment (passe 3,
+troisième agent, 2026-08-06) et jugées fidèles ; corrections confirmées.**
+Transcription issue du scan course-422/upload-84195, page(s) 5–6. Historique :
+vérification adverse (second agent) ayant relevé et corrigé un écart de
+figure — écart et correction **confirmés à la passe 3**.
+`element/127287` re-fetché, `course-422/upload-84195` (8 pages)
 re-dérivé de façon indépendante et **conforme** à la citation ; en-tête du
 scan **confirmé** (NS 28F, Sciences Physiques BIOF option française, 3 h,
 coef 7 ; couverture : « Exercice IV (4,75 points) — Réponse d'un dipôle RC à
@@ -206,11 +261,23 @@ $(500-1000)/6 = -83{,}3 = -1/(RC)$ recoupe le même résultat.
 plaçait l'étiquette « R » *au-dessus* du rectangle et « K » *en dessous* du
 fil ; sur le scan c'est l'inverse (« R » **sous** le rectangle, « K »
 **au-dessus** du fil). La topologie (boucle série E–R–D–K, flèches $i$ et
-$u_C$) était, elle, correcte. Description réécrite d'après l'image ⇒ **une
-re-lecture est requise avant promotion** (README §3). Observation non
-bloquante : le titre gras « Exercice IV — Les circuits des appareils
-électriques » n'est **pas** imprimé sur le scan (l'exercice n'y porte pas de
-titre propre) ; il est dérivé de la première phrase du chapeau.
+$u_C$) était, elle, correcte. Description réécrite d'après l'image.
+**Passe 3 (re-lecture indépendante, troisième agent, 2026-08-06)** — figures
+re-mesurées sur le scan sans réutiliser la lecture précédente : figure 1
+confirmée au zoom ×8 (« R » sous le rectangle, « K » au-dessus du fil, flèche
+« E » à gauche du cercle générateur, « D » à gauche du condensateur, flèche
+$u_C$ à sa droite, flèche $i$ en haut à gauche) ; figure 2 confirmée par
+régression sur 199 pixels de trace — la droite passe par $(0\,;\,996{,}5)$,
+$(6\,;\,503)$ et coupe l'axe des abscisses en $u_c = 12{,}12$ V, résidu
+quadratique moyen $0{,}37$ px, soit **exactement** $(0\,;\,1000) \to
+(6\,;\,500) \to (12\,;\,0)$ ; quadrillage principal mesuré : pas de $3$ V en
+abscisse et de $250$ V.s⁻¹ en ordonnée, seules les valeurs $0/6/12$ et
+$0/500/1000$ étant chiffrées. Le barème de la partie ($0{,}5+0{,}5$) et la
+partition $1{,}0+2{,}0+1{,}75 = 4{,}75$ ont été re-additionnés sur les p. 5–7.
+⇒ **entrée promue.** Observation non bloquante : le titre gras « Exercice IV —
+Les circuits des appareils électriques » n'est **pas** imprimé sur le scan
+(l'exercice n'y porte pas de titre propre) ; il est dérivé de la première
+phrase du chapeau — re-confirmé à la passe 3.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS 28F · Barème de l'exercice complet : 4,75 points · Barème de

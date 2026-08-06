@@ -53,10 +53,13 @@ maximale de l'enveloppe $\approx 3\ \text{V}$ et minimale $\approx 1\ \text{V}$
 
 ## 2021 — session normale — Exercice IV (Partie III)
 Source: https://www.alloschool.com/element/127287
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-84195, page(s) 6–7. **Vérification adverse indépendante
-(second agent) effectuée le 2026-08-06 — entrée NON promue : écart de figure
-trouvé et corrigé.** `element/127287` re-fetché, `course-422/upload-84195`
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK
+(agent-vérificateur, 2026-08-06) ; **figures re-lues indépendamment (passe 3,
+troisième agent, 2026-08-06) et jugées fidèles ; corrections confirmées.**
+Transcription issue du scan course-422/upload-84195, page(s) 6–7. Historique :
+vérification adverse (second agent) ayant trouvé et corrigé un écart de figure
+(amplitudes de la figure 6) — écart et correction **confirmés par mesure
+indépendante à la passe 3**. `element/127287` re-fetché, `course-422/upload-84195`
 (8 pages) re-dérivé de façon indépendante et **conforme** ; en-tête du scan
 **confirmé** (NS 28F, Sciences Physiques BIOF option française, 3 h, coef 7 ;
 couverture : « Exercice IV (4,75 points) »). Diff caractère par caractère des
@@ -92,8 +95,26 @@ $U_0 = 1{,}5$ V (d'où un taux $m = S_m/U_0 = 1/3 < 1$), $T_s \simeq 4$ div
 $= 8$ ms d'où $f_s \simeq 125$ Hz, et $F_p \simeq 1500$ Hz — soit
 $F_p \gg f_s$ : les deux conditions de la question 3 sont satisfaites, la
 modulation est de bonne qualité.
-Corrections appliquées ⇒ **une re-lecture est requise avant promotion**
-(README §3).
+**Passe 3 (re-lecture indépendante, troisième agent, 2026-08-06)** — figure 6
+re-mesurée sur le scan sans réutiliser le relevé précédent. Quadrillage
+retrouvé indépendamment : **10 divisions × 8 divisions**, pas de $34{,}5$ px,
+axe vertical central et axe horizontal central. Profil de densité d'encre par
+ligne : le faisceau de la porteuse s'étend **exactement** de $-1{,}48$ à
+$+1{,}51$ division de l'axe central (soit $3{,}0$ div crête à crête,
+**centrées sur l'axe**) ; au-dessus du faisceau, le seul tracé est $u_2$, dont
+les sommets se posent sur le trait $+2{,}00$ div et les creux sur le trait
+$+1{,}00$ div (soit $1{,}0$ div crête à crête, moyenne $+1{,}5$ div).
+⇒ $P_m = 1{,}5$ V, $S_m = 0{,}5$ V, $U_0 = 1{,}5$ V, $m = 1/3$ — **confirmés**.
+Comptage des oscillations de la porteuse par dénombrement des traversées d'un
+niveau propre : $60$ traversées $\Rightarrow$ **30 oscillations** sur les
+10 divisions, soit $3$/division et $F_p \simeq 30/20\ \text{ms} = 1500$ Hz ;
+période de $u_2$ mesurée $\simeq 4{,}2$ div $\simeq 8{,}4$ ms d'où
+$f_s \simeq 120$–$125$ Hz. Le comptage restant une lecture fine sur un tracé
+très resserré, **le drapeau « comptage exact — lecture à confirmer » est
+maintenu** sur ce seul point. Figure 5 re-confirmée au zoom ×5 (cadre
+englobant, rectangle « X », entrées $E_1$/$E_2$ à gauche avec flèches montantes
+$u_1$/$u_2$, sortie $S$ à droite avec flèche montante $u_s$, symbole de terre
+hachuré au milieu du rail). ⇒ **entrée promue.**
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS 28F · Barème de l'exercice complet : 4,75 points · Barème de

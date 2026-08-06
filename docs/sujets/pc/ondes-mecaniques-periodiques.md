@@ -68,20 +68,34 @@ Diff caractère par caractère des p. 3–4 (valeurs, unités, indices/exposants
 libellés et numérotation des 5 items du QCM et des 3 questions de la
 partie II, barème imprimé en marge par question) — **aucun écart de contenu**.
 Barème re-additionné : $5\times0{,}25 = 1{,}25$ et $0{,}5+0{,}5+0{,}75 = 1{,}75$,
-total $3{,}0$ = **couverture**. Figure jugée élément par élément au zoom
-(4 cercles concentriques ; point noir central avec « S » juste au-dessus ;
-deux traits verticaux en pointillés tombant bien des **deux cercles les plus
-extérieurs** ; double flèche horizontale cotée « 1cm » entre ces deux traits)
-— **fidèle à l'image**. Physique re-dérivée et cohérente ($\lambda = 1$ cm
-$\Rightarrow N = v/\lambda = 0{,}25/0{,}01 = 25$ Hz ; $\tau = d/v =
-0{,}05/0{,}25 = 0{,}2$ s, soit $5T$ puisque $d = 5\lambda$).
-**Seul écart relevé, corrigé par le vérificateur :** le scan compose l'indice
-de la source en **bas de casse** ($y_M(t) = y_s(\ldots)$) alors que l'entrée
-écrivait $y_S$ — normalisé en $y_s$ (5 occurrences : les 4 items du tableau
-de la question 5 + le rappel de portée). Écart purement typographique (même
-référent), mais correction appliquée ⇒ **une re-lecture est requise avant
-promotion** (README §3). Note hors périmètre : la même graphie $y_S$ subsiste
-dans `ondes-mecaniques-progressives.md` (cross-reference, l. 13).
+total $3{,}0$ = **couverture**.
+**Écart relevé et corrigé par le second agent (passe 2) :** le scan compose
+l'indice de la source en **bas de casse** ($y_M(t) = y_s(\ldots)$) alors que
+l'entrée écrivait $y_S$ — normalisé en $y_s$ (5 occurrences : les 4 items du
+tableau de la question 5 + le rappel de portée). Écart purement typographique
+(même référent). Note hors périmètre : la même graphie $y_S$ subsiste dans
+`ondes-mecaniques-progressives.md` (cross-reference, l. 13).
+
+**PASSE 3 — re-lecture indépendante (troisième agent, 2026-08-06) : ÉCART DE
+FIGURE ENCORE PRÉSENT, corrigé ; entrée TOUJOURS NON PROMUE.**
+`element/109742` re-fetché une troisième fois, `course-422/upload-80870`
+(7 pages) re-dérivé indépendamment et conforme. La correction de la passe 2
+sur $y_s$ est **confirmée** (zoom du tableau de l'item 5 : les quatre options
+portent bien un « s » bas de casse). **En revanche la description de figure
+« corrigée » à la passe 2 était encore fausse.** Relevé numérique sur le scan
+(centre du point noir localisé, puis balayages radiaux horizontal et vertical
+de part et d'autre) : les quatre crêtes ont pour rayons $29{,}5$, $59$,
+$88{,}5$ et $119$ px — pas radial constant $\simeq 29{,}7$ px. Les deux traits
+verticaux en pointillés se trouvent en revanche aux abscisses $r = 59$ px et
+$r = 119{,}5$ px du centre : ils tombent de la **crête 2** et de la **crête 4**,
+**pas** des « deux cercles les plus extérieurs » — la **crête 3 traverse
+l'intervalle coté**. La cote « 1cm » vaut donc **$2\lambda$** et non $\lambda$.
+*Conséquence pédagogique :* $\lambda = 0{,}5\ \text{cm}$ (et non $1$ cm) ; la
+question 2 donne $N = v/\lambda = 0{,}25/0{,}005 = \mathbf{50\ \text{Hz}}$ (et
+non $25$ Hz) ; la question 3 donne toujours $\tau = d/v = 0{,}05/0{,}25 =
+0{,}2$ s, mais $d = 5\ \text{cm} = 10\lambda$, soit $\tau = 10\,T$ avec
+$T = 1/N = 0{,}02$ s (et non $5T$). Description de figure réécrite d'après
+l'image ⇒ **une nouvelle re-lecture est requise avant promotion** (README §3).
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice : 3 points — Partie I (QCM,
@@ -162,10 +176,17 @@ $t_1$. Les lignes circulaires représentent les crêtes.
    mouvement de M par rapport à celui de la source S.
 
 *Figure (aspect de la surface de l'eau à l'instant $t_1$) :* quatre cercles
-concentriques centrés sur un point marqué **S** (point noir au centre,
-étiquette « S » juste au-dessus du point). Les cercles représentent les
-crêtes de l'onde circulaire se propageant depuis $S$. Une double flèche
-horizontale cotée **« 1cm »**, délimitée par deux traits verticaux en
-pointillés descendant des deux cercles les plus extérieurs, matérialise
-l'écart radial entre ces deux crêtes consécutives (valeur imprimée, pas une
-lecture d'échelle estimée).
+concentriques **régulièrement espacés** centrés sur un point marqué **S**
+(point noir au centre, étiquette « S » juste au-dessus du point). Les cercles
+représentent les crêtes de l'onde circulaire se propageant depuis $S$ ; en les
+numérotant de 1 (la plus intérieure) à 4 (la plus extérieure), les rayons
+relevés sur le scan sont dans le rapport $1:2:3:4$ — le pas radial est
+constant.
+
+Deux traits verticaux en pointillés descendent, l'un du point le plus à droite
+de la **crête 2**, l'autre du point le plus à droite de la **crête 4** (la plus
+extérieure) ; la **crête 3 passe entre ces deux traits**. Une double flèche
+horizontale cotée **« 1cm »** joint les deux traits, en bas de la figure. La
+cote imprimée couvre donc **deux intervalles entre crêtes consécutives** :
+$2\lambda = 1\ \text{cm}$, d'où $\lambda = 0{,}5\ \text{cm}$ (valeur déduite
+d'une cote imprimée, pas d'une lecture d'échelle estimée).

@@ -54,7 +54,37 @@ la borne $-$).
 ## 2018 — session normale — Exercice I (Partie I)
 Source: https://www.alloschool.com/element/57726
 Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-45118, page 2. À faire vérifier (README §3).
+course-422/upload-45118, page 2. **Vérification adverse indépendante
+(second agent) effectuée le 2026-08-06 — entrée NON promue, une correction
+appliquée.** `element/57726` re-fetché, `course-422/upload-45118` (8 pages)
+re-dérivé de façon indépendante et **conforme** à la citation ; en-tête du
+scan **confirmé** (NS28F, الدورة العادية 2018, الفيزياء والكيمياء, شعبة العلوم
+التجريبية : مسلك العلوم الفيزيائية – خيار فرنسية = Sciences Physiques BIOF
+option française, durée 3 h, coef 7 ; couverture p. 1 : « Exercice I
+(7 points) : - Electrolyse d'un composé ionique : le bromure de plomb -
+Etude de quelques réactions de l'acide lactique »). Diff caractère par
+caractère de la p. 2 — **toutes les valeurs, unités et exposants conformes**
+($\Delta t = 3600$ s, $m = 20{,}72$ g, $F = 9{,}65.10^{4}$ C.mol⁻¹,
+$V_m = 70{,}5$ L.mol⁻¹, $M(Pb) = 207{,}2$ g.mol⁻¹), libellés et numérotation
+des 4 questions conformes. Barème re-additionné sur la marge imprimée :
+$0{,}25+0{,}75+0{,}5+0{,}5 = 2{,}0$ point. Aucune figure dans la partie
+(énoncé intégralement textuel) — **confirmé**. Chimie re-dérivée et
+cohérente : réduction $Pb^{2+} + 2e^- \to Pb$ à la **cathode**, oxydation
+$2Br^- \to Br_2 + 2e^-$ à l'**anode** (c'est donc l'anode qui produit le
+dibrome, réponse de la question 1), bilan $Pb^{2+} + 2Br^- \to Pb + Br_2$ ;
+$n(Pb) = 20{,}72/207{,}2 = 0{,}100$ mol $\Rightarrow Q = 2nF = 1{,}93\cdot10^{4}$
+C et $I = Q/\Delta t \simeq 5{,}4$ A ; $n(Br_2) = n(Pb) = 0{,}100$ mol
+$\Rightarrow V = n\,V_m = 7{,}05$ L — valeurs rondes, jeu de données
+autocohérent.
+**Seul écart relevé, corrigé par le vérificateur — indices inventés :**
+l'entrée écrivait les couples $Pb^{2+}_{(aq)}/Pb_{(s)}$ et
+$Br_{2(g)}/Br^-_{(aq)}$ ; le scan imprime (zoom ×5 sur la ligne « Données »)
+$Pb^{2+}/Pb_{(s)}$ et $Br_{2(g)}/Br^-$ — **les deux mentions $(aq)$ ne
+figurent pas sur le sujet**. Divergence d'indice ⇒ bloquante au sens
+README §3 ; indices supprimés ⇒ **une re-lecture est requise avant promotion**.
+Observations non bloquantes : le scan compose « Electrolyse » et « Ecrire »
+sans accent sur la capitale (l'entrée accentue), et « Données: » sans espace
+avant le deux-points.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 7 points (Partie I :
@@ -82,7 +112,7 @@ $\Delta t = 3600\ \text{s}$, la masse de plomb déposé est :
 $m = 20{,}72\ \text{g}$.
 
 **Données :**
-- Les 2 couples mis en jeu : $Pb^{2+}_{(aq)}/Pb_{(s)}$ et $Br_{2(g)}/Br^-_{(aq)}$ ;
+- Les 2 couples mis en jeu : $Pb^{2+}/Pb_{(s)}$ et $Br_{2(g)}/Br^-$ ;
 - La constante de Faraday : $F = 9{,}65 \cdot 10^{4}\ \text{C.mol}^{-1}$ ;
 - Le volume molaire des gaz dans les conditions de l'expérience :
   $V_m = 70{,}5\ \text{L.mol}^{-1}$ ;

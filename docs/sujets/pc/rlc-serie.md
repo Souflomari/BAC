@@ -292,10 +292,13 @@ confirmées à la mesure de pixels lors de la vérification).
 
 ## 2021 — session normale — Exercice IV (Partie II)
 Source: https://www.alloschool.com/element/127287
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-84195, page(s) 6. **Vérification adverse indépendante
-(second agent) effectuée le 2026-08-06 — entrée NON promue : ÉCART DE FIGURE
-MAJEUR trouvé et corrigé.** `element/127287` re-fetché,
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK
+(agent-vérificateur, 2026-08-06) ; **figures re-lues indépendamment (passe 3,
+troisième agent, 2026-08-06) et jugées fidèles ; corrections confirmées.**
+Transcription issue du scan course-422/upload-84195, page(s) 6. Historique :
+vérification adverse (second agent) ayant trouvé et corrigé un **écart de
+figure majeur** ($T_0$) — écart et correction **confirmés par mesure
+indépendante à la passe 3**. `element/127287` re-fetché,
 `course-422/upload-84195` (8 pages) re-dérivé de façon indépendante et
 **conforme** ; en-tête du scan **confirmé** (NS 28F, Sciences Physiques BIOF
 option française, 3 h, coef 7 ; couverture : « Exercice IV (4,75 points) »).
@@ -330,8 +333,22 @@ extrema ne sont pas « au-delà de $72$ » de façon indéterminée, ils sont
 mesure : $108{,}5$ px pour $54{,}5$ px par graduation, soit $2{,}00$
 graduations). Recoupement physique **exact** avec la partie I : $Q_m = C\cdot E
 = 12\ \mu\text{F} \times 12\ \text{V} = 144\ \mu\text{C}$.
-Corrections appliquées ⇒ **une re-lecture est requise avant promotion**
-(README §3).
+**Passe 3 (re-lecture indépendante, troisième agent, 2026-08-06)** — figure 4
+re-mesurée à partir du scan, sans réutiliser le relevé précédent. Traits
+principaux horizontaux localisés aux ordonnées $+144$, $+72$, $0$, $-72$,
+$-144\ \mu\text{C}$ (pas mesuré $54{,}25$ px $= 72\ \mu\text{C}$, deux traits
+non chiffrés à $\pm 144$ **confirmés**), traits principaux verticaux à $0$,
+$7$, $14$, $21$, $28$, $35$ ms (pas mesuré $54{,}30$ px $= 7$ ms). Repères de
+la courbe relevés indépendamment : maximum tangent à $+144$ en $t = 0$ ; zéro
+descendant $5{,}33$ ms ; minimum tangent à $-144$ vers $10{,}7$ ms ; zéro
+montant $16{,}05$ ms ; **maximum suivant $21{,}25$ ms**, soit sur le repère
+chiffré $21$ ms à $0{,}25$ ms près — moins que l'épaisseur du trait de courbe
+(4–5 px) ; zéro descendant $26{,}65$ ms ; second minimum $\simeq 31{,}9$ ms.
+⇒ **$T_0 = 21$ ms confirmé** (et la lecture antérieure de $28$ ms
+définitivement écartée), $L \simeq 0{,}92$ H confirmé. Figure 3 re-confirmée
+au zoom ×6 (bobine en spires à gauche étiquetée « L », flèche $i$ en haut vers
+la droite, condensateur « D » à droite avec flèche $u_C$ vers le haut, aucun
+conducteur ohmique). ⇒ **entrée promue.**
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS 28F · Barème de l'exercice complet : 4,75 points · Barème de

@@ -222,7 +222,45 @@ tangentes *(coordonnées du point d'équivalence à confirmer par lecture)*.
 ## 2018 — session normale — Exercice I (Partie 2, sous-partie 1)
 Source: https://www.alloschool.com/element/57726
 Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-45118, page(s) 2–3. À faire vérifier (README §3).
+course-422/upload-45118, page(s) 2–3. **Vérification adverse indépendante
+(second agent) effectuée le 2026-08-06 — entrée NON promue : écart de figure
+trouvé et corrigé, drapeau de lecture adjugé et levé.** `element/57726`
+re-fetché, `course-422/upload-45118` (8 pages) re-dérivé de façon indépendante
+et **conforme** ; en-tête du scan **confirmé** (NS28F, 2018 session normale,
+Sciences Physiques BIOF option française, 3 h, coef 7 ; couverture :
+« Exercice I (7 points) »). Diff caractère par caractère des p. 2–3 —
+**aucun écart de contenu** : $25\ °C$, $\text{CH}_3-\text{CH(OH)}-\text{COOH}$,
+$K_A = 10^{-3,9}$, tableau des indicateurs ($3-4{,}4$ / $6-7{,}6$ /
+$7{,}2-8{,}8$), $V_A = 15$ mL, $C_B = 3.10^{-2}$ mol.L⁻¹, $V_B = 10$ mL de la
+question finale, libellés des 5 questions. Barème re-additionné sur la marge :
+$0{,}5+0{,}5+0{,}5+0{,}5+0{,}75 = 2{,}75$ point. Numérotation imprimée sur le
+scan : **1.1 à 1.5** (sous-questions du bloc « 1. Réaction de l'acide lactique
+avec l'hydroxyde de sodium ») — restituée ici par la liste $1$–$5$ sous le
+titre gras numéroté « 1. », conformément à l'usage du fichier.
+**Écart bloquant relevé — figure :** la description affirmait deux droites en
+pointillés « obliques, se croisant dans la zone du saut ». Le relevé numérique
+des tirets donne deux droites de pentes $0{,}885$ et $0{,}888$ unité de $pH$
+par mL : elles sont **parallèles** et ne se coupent jamais (méthode des
+**tangentes parallèles**). Description réécrite d'après l'image.
+**Drapeau « coordonnées du point d'équivalence à confirmer » adjugé et levé :**
+le segment quasi vertical de la courbe est centré sur le trait principal
+chiffré $V_B = 10$ mL, et la parallèle médiane aux deux tangentes recoupe la
+courbe à $pH = 7{,}99$, soit sur le trait principal $pH = 8$ ⇒ lecture
+**gridline-exacte** $V_{BE} = 10{,}0$ mL, $pH_E = 8{,}0$.
+Chimie re-dérivée et **cohérente** : $C_A = C_B\,V_{BE}/V_A = 3\cdot10^{-2}
+\times 10/15 = 2{,}0\cdot10^{-2}$ mol.L⁻¹ (valeur ronde) ; à l'équivalence
+$[A^-] = C_A V_A/(V_A+V_{BE}) = 1{,}2\cdot10^{-2}$ mol.L⁻¹ et, avec
+$K_b = K_e/K_A = 10^{-10,1}$, $pH_E$ **calculé** $= 7{,}99$ — recoupement exact
+avec la lecture graphique ; l'indicateur adéquat est donc le **rouge de
+crésol** ($7{,}2-8{,}8$, seule zone contenant $pH_E$), ce qui donne son sens à
+la question 4 ; enfin la question 5 se pose en $V_B = 10$ mL $= V_{BE}$, d'où
+$[A^-]/[AH] = 10^{\,pH_E - pK_A} = 10^{4,1} \approx 1{,}3\cdot10^{4} \gg 1$ et
+$A^-$ prédominant. Corrections appliquées ⇒ **une re-lecture est requise avant
+promotion** (README §3). Observations non bloquantes : le scan écrit
+« Ecrire », « Etude » sans accent sur la capitale, met « ci-dessous, » avec
+virgule avant « représente », et compose « … réactions biochimiques. on le
+trouve … » (point-minuscule) là où la citation de cadrage normalise la
+ponctuation.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 7 points (sous-partie
@@ -283,14 +321,34 @@ fonction du volume $V_B$ au cours du dosage.
 
 *Figure (courbe de dosage pH-métrique) :* axe des ordonnées $pH$ (flèche
 verticale, non gradué numériquement hormis les valeurs $2, 4, 6, 8, 10$ portées
-en repères sur le quadrillage) ; axe des abscisses $V_B\ (\text{mL})$ gradué
-$0,\ 2,\ 4,\ 6,\ 8,\ 10,\ 12,\ 14,\ 16$ (quadrillage fin visible au-delà). Courbe
-**croissante** : départ vers $pH \approx 2{,}8$ à $V_B = 0$, montée lente
-jusque vers $pH \approx 4$–$5$ au voisinage de $V_B \approx 8$, saut
-d'équivalence marqué (montée rapide) entre $V_B \approx 8$ et $V_B \approx 11$,
-puis palier vers un $pH$ élevé (proche du haut du cadre, au-delà de $10$) à
-partir de $V_B \approx 12$ jusqu'à la fin du tracé. Deux droites en pointillés
-sont tracées, obliques, se croisant dans la zone du saut (méthode des
-tangentes pour repérer le point d'équivalence) *(coordonnées exactes du point
-d'équivalence à confirmer par lecture — non chiffrées sur le scan)*.
+en repères sur le quadrillage) ; axe des abscisses $V_B\ (\text{mL})$ chiffré
+$0,\ 2,\ 4,\ 6,\ 8,\ 10,\ 12,\ 14,\ 16$, le cadre se prolongeant à droite par
+**deux traits principaux non chiffrés** ($18$ et $20$ mL). Le quadrillage
+principal est carré : un trait principal tous les $2$ mL en abscisse et tous
+les $2$ unités de $pH$ en ordonnée (le bas du cadre est la ligne $pH = 0$, le
+haut la ligne $pH = 12$), avec quadrillage secondaire fin entre eux.
+
+Courbe **croissante** : départ à $pH \approx 2{,}8$–$2{,}9$ pour $V_B = 0$, montée
+lente et régulière ($pH \approx 4{,}0$ vers $V_B = 5{,}5$ ; $pH \approx 4{,}5$
+vers $V_B = 8$), puis **saut d'équivalence très raide** : le tracé est
+quasi vertical entre $V_B \simeq 9{,}5$ ($pH \approx 5{,}2$) et
+$V_B \simeq 10{,}5$ ($pH \approx 10{,}8$) ; au-delà, remontée qui s'aplatit
+($pH \approx 11{,}4$ vers $V_B = 12{,}5$) vers un palier voisin de
+$pH \approx 11{,}9$ en fin de tracé.
+
+Deux droites en pointillés obliques sont tracées de part et d'autre du saut :
+elles sont **parallèles** (pentes mesurées $0{,}885$ et $0{,}888$ unité de
+$pH$ par mL) et **ne se coupent pas** — c'est la construction classique des
+**tangentes parallèles**. La première longe la branche supérieure (repérée de
+$(V_B \simeq 7{,}5\,;\,pH \simeq 8{,}1)$ à $(V_B \simeq 11{,}2\,;\,pH \simeq
+11{,}5)$), la seconde longe la branche inférieure (de $(V_B \simeq 8{,}7\,;\,
+pH \simeq 4{,}3)$ à $(V_B \simeq 12{,}5\,;\,pH \simeq 7{,}9)$).
+
+**Point d'équivalence (lecture levée) :** la portion verticale de la courbe
+tombe **sur le trait principal chiffré $V_B = 10$ mL**, et la parallèle
+médiane aux deux tangentes recoupe la courbe à $pH = 7{,}99$, c'est-à-dire sur
+le trait principal $pH = 8$. L'équivalence se lit donc à l'intersection des
+deux traits principaux chiffrés : $V_{BE} = 10{,}0\ \text{mL}$ et
+$pH_E = 8{,}0$ — valeurs non imprimées mais **exactement sur le quadrillage
+principal**, et non une estimation.
 

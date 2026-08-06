@@ -10,7 +10,7 @@
 > Cross-reference : **2020 N Exercice II** (« Propagation des ondes », QCM +
 > cuve à ondes) est transcrit intégralement sous `ondes-mecaniques-periodiques.md`
 > (la Partie II impose $\lambda$ et $N$) ; son item de QCM 5 porte sur la
-> relation de retard $y_M(t)=y_S(t-\tau)$, une notion `-progressives`.
+> relation de retard $y_M(t)=y_s(t-\tau)$, une notion `-progressives`.
 
 ---
 
