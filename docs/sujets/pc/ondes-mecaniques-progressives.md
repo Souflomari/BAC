@@ -6,6 +6,11 @@
 > Classement (README §4) : exercice centré sur **célérité** et **retard
 > temporel** de propagation (ondes ultrasonores), sans périodicité spatiale
 > imposée → `-progressives`.
+>
+> Cross-reference : **2020 N Exercice II** (« Propagation des ondes », QCM +
+> cuve à ondes) est transcrit intégralement sous `ondes-mecaniques-periodiques.md`
+> (la Partie II impose $\lambda$ et $N$) ; son item de QCM 5 porte sur la
+> relation de retard $y_M(t)=y_S(t-\tau)$, une notion `-progressives`.
 
 ---
 

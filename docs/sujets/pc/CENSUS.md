@@ -116,7 +116,7 @@ non confirmé par lecture des pages intérieures.
 | Ex | Sujet | Slug(s) |
 |----|-------|---------|
 | I | Dosage ammoniac + pile argent-chrome | `reactions-acido-basiques` ✓ + `piles` ✓ (cross `evolution-spontanee`) |
-| II | Propagation des ondes (QCM + cuve) | `ondes-mecaniques-periodiques` (?) / `ondes-mecaniques-progressives` (?) |
+| II | Propagation des ondes (QCM + cuve) | `ondes-mecaniques-periodiques` ✓ (transcrit non vérifié 2026-08-06 ; cross `ondes-mecaniques-progressives`) |
 | III | Polonium 210 (masse-énergie + décroissance) | `noyaux-masse-energie` ✓ (cross `decroissance-radioactive`) |
 | IV | Dipôle RL (échelon) + RLC (amortissement, entretien) | `dipole-rl` ✓ + `rlc-serie` (lu p.5–6, transcription à ajouter) |
 | V | Chute verticale bille, liquide visqueux (Euler) | `chute-mouvements-plans` ✓ |
