@@ -76,7 +76,10 @@ $0{,}15,\ 0{,}3,\ 0{,}45,\ 0{,}6$.
 
 ## 2019 — session normale — Exercice IV (Partie II)
 Source: https://www.alloschool.com/element/68300
-Statut: transcrit (non vérifié) — 2026-08-06. Vérification adverse indépendante
+Statut: vérifié — 2026-08-06, vérification adverse indépendante par un second
+agent puis **figure re-lue en 4ᵉ passe indépendante et jugée fidèle ;
+énoncé/valeurs diffé-conformes (2ᵉ passe) ; corrections des 2ᵉ/3ᵉ passes
+confirmées** (README §3). Vérification adverse indépendante
 (second agent) effectuée le 2026-08-06 : `element/68300` re-fetché,
 `course-422/upload-54757` (7 pages) re-dérivé et **conforme** ; en-tête du scan
 **confirmé** (NS28F, Sciences Physiques BIOF, 3 h, coef 7 ; Exercice IV
@@ -91,7 +94,8 @@ $V_{min} = \sqrt{30g/\sin 2\alpha} = 22{,}6$ m.s⁻¹) ; partition de périmètr
 **confirmée** (Partie I p. 6 = « I- Etude du mouvement sur la partie A'B' »,
 plan incliné + force motrice constante + 2ème loi ⇒ bien `lois-de-newton.md`).
 **(complété sur re-lecture : la phrase de cadrage du système (S), p. 5,
-a été relue et intégrée ci-dessous.)** **Non promu** : la description de la
+a été relue et intégrée ci-dessous.)** **Non promu à ce stade** (verdict de la
+2ᵉ passe, levé depuis — voir ci-dessous) : la description de la
 figure 1 comportait six erreurs de lecture (A' placé « en bas de la pente »,
 B placé « sur l'horizontale », tremplin arrêté à C au lieu de C', axe des x
 dit « gradué », axe « y » pris pour un repère global décoratif, P placé « sur »
@@ -107,7 +111,8 @@ s'arrêtant à C' ; axes de $(C, \vec{i_1}, \vec{j_1})$ **non gradués** — auc
 graduation, seulement des pointes de flèche ; axe vertical fléché vers le haut
 et noté « y », appartenant bien à ce repère ; P au niveau de l'axe horizontal
 — même hauteur que C, mesuré au pixel — et **non** sur la bande (π), qui est
-tracée en dessous). **Non promu (nouveau tour) :** deux écarts subsistaient et
+tracée en dessous). **Non promu à ce stade (nouveau tour)** (verdict de la
+3ᵉ passe, levé par la 4ᵉ — voir ci-dessous) **:** deux écarts subsistaient et
 ont été corrigés par ce tiers, dont la correction demande à son tour une
 re-lecture — (i) la clause « il n'y a pas d'autre repère sur la figure » était
 **fausse** et se contredisait avec la phrase décrivant l'axe $(A, \vec{i})$
@@ -117,6 +122,34 @@ prolonge **en ligne droite** la direction A'B' et s'écarte de la trajectoire,
 qui s'incurve vers le haut au-dessus du tremplin. Ajouté par ailleurs, comme
 précision de tracé vérifiée : l'axe horizontal est en trait plein jusqu'à sa
 pointe de flèche puis **prolongé en pointillés**, et P est sur ce prolongement.
+**Quatrième passe — re-lecture indépendante de la figure 1 par un quatrième
+relecteur (2026-08-06).** `element/68300` re-fetché et `course-422/upload-54757`
+(7 pages) re-dérivé sans reprendre le travail des relecteurs précédents ; p. 6
+re-lue au zoom (×6 à ×11) et **mesurée au pixel**, affirmation par affirmation.
+**Toutes les affirmations du bloc de description sont jugées fidèles** et
+**aucune correction n'a été nécessaire à cette passe** ; les deux corrections de
+la 3ᵉ passe sont confirmées — la flèche « x » après B est bien une **droite en
+pointillés** de pente $\approx 10{,}5°$, soit la direction A'B' (mesurée à
+$11{,}4°$ de A' $(201;713)$ à B' $(565;787)$), qui **diverge** de la
+trajectoire, laquelle s'incurve vers le haut ; et la figure porte **exactement
+deux** repères — un balayage de tout le cadre (lignes 540–880, colonnes
+160–1185) ne fait apparaître aucun troisième axe, le quart supérieur gauche
+(lignes 548–660, colonnes 175–700) étant entièrement vide. Autres mesures
+confirmant le bloc : A' = extrémité **haute** du tracé épais, pointe à
+$(201;713)$, contre B' à $(565;787)$ ; l'arc de β est centré sur B' (rayon
+$\approx 206$ px, extrémités $(359;750)$ et $(359;787)$, soit bien 10°) ;
+B $(565;760)$ à l'aplomb **exact** de B' et 27 px au-dessus de l'horizontale en
+pointillés (ligne 787) ; tremplin épais s'arrêtant à C' $(\approx 718;758)$,
+C $(714{,}5;737)$ à son aplomb ; axes de $(C,\vec{i_1},\vec{j_1})$ **sans aucune
+graduation** (aucune encre hors-axe entre les colonnes 772 et 946 pour l'axe
+horizontal, ni entre les lignes 576 et 687 pour l'axe vertical) ; axe vertical
+fléché vers le haut (pointe lignes 563–573) et noté « y » (colonnes 726–731) ;
+axe horizontal **plein** de C jusqu'à sa pointe de flèche (colonnes 940–958),
+puis **prolongé en pointillés** (tirets à partir de la colonne 974), P étant un
+point de ce prolongement à $(1036;738{,}5)$ contre C à $(714{,}5;737)$ — même
+hauteur à $1{,}5$ px ; bande (π) **en dessous** de cet axe (lignes 765–769,
+colonnes 976–1111), label « (π) » à sa droite (colonnes 1116–1129), P n'y
+touchant pas ; légende « Figure 1 » (lignes 829–855). **Promu `vérifié`.**
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice IV : 5 points (Partie I — plan
