@@ -50,3 +50,26 @@ Une urne contient dix boules : trois boules blanches, trois boules vertes et qua
 2. (0,75) Calculer $p(B)$ ; où $B$ est l'évènement « Obtenir trois boules blanches ou trois boules vertes »
 3. (0,75) Montrer que $p(C) = \dfrac{1}{2}$ ; où $C$ est l'évènement « Obtenir exactement une boule rouge »
 4. (0,75) Calculer $p(D)$ ; où $D$ est l'évènement « Obtenir au moins deux boules rouges »
+
+---
+
+## 2024 — session normale — Exercice 4
+Source: https://www.alloschool.com/element/144505
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-87124, page 3. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) (BIOF) — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 2 points
+- Images lues : `.../course-438/upload-87124/0003-big.jpg`
+- Pages du scan : 3 (sur 4)
+
+> **Note de lecture (mojibake)** : aucun (lecture directe du scan image).
+
+**Calcul des probabilités (tirage simultané de 2 boules, événements indépendants).**
+
+Une urne contient sept boules : quatre boules portant le numéro 1, deux boules portant le numéro 2 et une boule portant le numéro 3. Toutes les boules sont indiscernables au toucher.
+On tire simultanément au hasard deux boules de cette urne.
+
+1. (0,5) Montrer que $p(A) = \dfrac{1}{3}$, où $A$ est l'évènement « les deux boules tirées portent le même numéro »
+2. (0,5) Montrer que $p(B) = \dfrac{5}{21}$, où $B$ est l'évènement « La somme des numéros des boules tirées est 4 »
+3. (0,5) Calculer $p(A \cap B)$
+4. (0,5) Les événements $A$ et $B$ sont-ils indépendants ? Justifier.

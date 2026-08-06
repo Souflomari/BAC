@@ -80,3 +80,29 @@ Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\ve
    a) (0,25) Montrer que $z' = \dfrac{1}{2}az$
    b) (0,5) En déduire que $R(C) = B$ et que $R(A) = D$
    c) (0,5) Montrer que $\dfrac{b-a}{c-a} = \left(\dfrac{\sqrt{2}-1}{2}\right)a$, puis déduire une mesure de l'angle $(\overrightarrow{AC}, \overrightarrow{AB})$
+
+---
+
+## 2024 — session normale — Exercice 3
+Source: https://www.alloschool.com/element/144505
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-87124, page 3. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) (BIOF) — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 4 points
+- Images lues : `.../course-438/upload-87124/0003-big.jpg`
+- Pages du scan : 3 (sur 4)
+
+> **Note de lecture (mojibake)** : aucun (lecture directe du scan image).
+
+**Nombres complexes (module et argument, forme exponentielle, rotation, alignement, triangle rectangle).**
+
+Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\vec{v})$, on considère les points $A$ et $B$ d'affixes respectives $a = \sqrt{3}(1-i)$ et $b = 2 + \sqrt{3} + i$
+
+1. (0,5) Vérifier que $|a| = \sqrt{6}$ et que $\arg(a) \equiv \dfrac{-\pi}{4}\ [2\pi]$
+2. a) (0,75) Montrer que $\dfrac{b}{a} = \dfrac{3 + \sqrt{3}}{6} + \left(\dfrac{1 + \sqrt{3}}{2}\right)i$ puis vérifier que $\dfrac{b}{a} = \dfrac{3 + \sqrt{3}}{3}e^{i\frac{\pi}{3}}$
+   b) (0,75) En déduire une forme trigonométrique du complexe $b$ puis vérifier que $b^{24}$ est un nombre réel.
+3. Soit $R$ la rotation de centre $O$ et d'angle $\dfrac{\pi}{6}$, qui transforme chaque point $M$ du plan d'affixe $z$ en un point $M'$ d'affixe $z'$. On pose $R(B) = B'$, $R(A) = A'$ et $R(A') = A''$
+   a) (0,5) Vérifier que $z' = \dfrac{1}{2}(\sqrt{3} + i)z$ et que $\arg(a') \equiv \dfrac{-\pi}{12}\ [2\pi]$ où $a'$ est l'affixe du point $A'$
+   b) (0,5) Montrer que l'affixe du point $A''$ est $a'' = \sqrt{6}\,e^{i\frac{\pi}{12}}$ et en déduire que les points $O$, $A''$ et $B$ sont alignés.
+   c) (0,5) Montrer que $b'$, l'affixe du point $B'$, vérifie $b' = \left(\dfrac{3 + \sqrt{3}}{3}\right)\overline{a}$
+   d) (0,5) En déduire que le triangle $OAB'$ est rectangle en $O$

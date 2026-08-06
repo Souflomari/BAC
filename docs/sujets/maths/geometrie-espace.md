@@ -78,3 +78,28 @@ Dans l'espace rapporté à un repère orthonormé direct $(O,\vec{i},\vec{j},\ve
    b) (0,5) Montrer que le plan $(ABC)$ est tangent à la sphère $(S)$ en un point que l'on déterminera.
 4. (0,5) Soient $(Q_1)$ et $(Q_2)$ les deux plans parallèles à $(ABC)$ tels que chacun d'eux coupe $(S)$ suivant un cercle de rayon $\sqrt{5}$
    Déterminer une équation cartésienne pour chacun des deux plans $(Q_1)$ et $(Q_2)$
+
+---
+
+## 2024 — session normale — Exercice 2
+Source: https://www.alloschool.com/element/144505
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-87124, page 2. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) (BIOF) — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 3 points
+- Images lues : `.../course-438/upload-87124/0002-big.jpg`
+- Pages du scan : 2 (sur 4)
+
+> **Note de lecture (mojibake)** : aucun (lecture directe du scan image).
+
+**Géométrie de l'espace (équation d'un plan, sphère, section plane, droite perpendiculaire, médiatrice d'un segment).**
+
+Dans l'espace rapporté à un repère orthonormé $(O,\vec{i},\vec{j},\vec{k})$, on considère les deux points $A(-1,0,-1)$ et $B(1,2,-1)$, le plan $(P)$ passant par $A$ et de vecteur normal $\vec{n}(2,-2,1)$ et la sphère $(S)$ de centre $\Omega(2,-1,0)$ et de rayon $5$
+
+1. (0,25) Montrer que $2x - 2y + z + 3 = 0$ est une équation cartésienne du plan $(P)$
+2. (0,25) Déterminer une équation cartésienne de la sphère $(S)$
+3. a) (0,5) Vérifier que la distance du point $\Omega$ au plan $(P)$ est $d(\Omega,(P)) = 3$
+   b) (0,5) En déduire que le plan $(P)$ coupe la sphère $(S)$ suivant un cercle $(\Gamma)$ de rayon à déterminer.
+4. a) (0,5) Déterminer une représentation paramétrique de la droite $(\Delta)$ passant par $\Omega$ et perpendiculaire au plan $(P)$
+   b) (0,5) Montrer que le point $H(0,1,-1)$ est le centre du cercle $(\Gamma)$
+   c) (0,5) Montrer que la droite $(\Delta)$ est une médiatrice du segment $[AB]$
