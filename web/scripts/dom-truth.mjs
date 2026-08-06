@@ -770,7 +770,7 @@ try {
     checks++;
     if (pageErrors.length > 0) failures += fail(`hydration/page error(s) on deep-linked chapter: ${pageErrors[0].slice(0, 80)}`);
     else if (!r.dark) failures += fail(`dark theme LOST after landing directly on ?chapitre=3 (position: ${r.position})`);
-    else if (r.position !== "Chapitre 3 / 10") failures += fail(`chapter position wrong: "${r.position}" ≠ "Chapitre 3 / 10"`);
+    else if (r.position !== "Chapitre 3 / 11") failures += fail(`chapter position wrong: "${r.position}" ≠ "Chapitre 3 / 11"`);
     else console.log(`  ✓ no hydration error, dark survives, position correct ("${r.position}")`);
   }
 

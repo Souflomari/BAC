@@ -1,0 +1,431 @@
+# bank.yaml — la banque « S'entraîner » de rlc-serie (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r8-bac + r9-variation, exercises.yaml), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Chaque entrée est une transcription FIDÈLE d'une entrée
+# « vérifié » de docs/sujets/pc/rlc-serie.md. Raisonnement rédigé à la voix
+# experte de la maison sur 100 % des questions, en citant les rungs R1–R7 de
+# la leçon (lesson.md) là où c'est naturel ; barème transcrit tel quel dans
+# les énoncés (tag « (x,xx pt) » ajouté — la source docs/sujets ne porte que
+# « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
+# entre apostrophes simples dans steps[].math, notes sans backslash NI accent
+# — même discipline ASCII que chute-mouvements-plans/bank.yaml, l'exemplaire
+# le plus récent).
+#
+# NOTE ÉDITORIALE (pour la revue) — RECOUPEMENT AVEC LE SOMMET r8-bac
+# (exercises.yaml) : r8-bac est UNSOURCED (status: unsourced,
+# required_for_done: false) ; sa propre note de sourcing dit : « Un sujet
+# vérifié existe pour cette notion (2019 session normale, Exercice III partie
+# II, oscillations LC) mais couvre le cas NON amorti ; cet exercice traite le
+# cas amorti … remplacement ou re-scope à traiter dans une passe dédiée
+# (ADR 0019). » Deux constats à remonter à l'owner, SANS toucher à
+# exercises.yaml :
+#   1. bk-2019-n-x3 ci-dessous EST exactement ce sujet 2019 que r8-bac cite
+#      comme « existe mais mauvaise portée » — le confirme : 2019 ne couvre
+#      que le cas idéal (LC, sans R), comme r8-bac le dit déjà.
+#   2. bk-2018-n-x3 ET bk-2020-n-x4 (parties II+III) ci-dessous, en revanche,
+#      couvrent PRÉCISÉMENT la portée que r8-bac dit non sourcée : régime
+#      pseudo-périodique amorti PUIS entretien par générateur u_G = k·i(t)
+#      avec détermination de k. Les deux sont vérifiés (2026-07-11 et
+#      2026-08-06). La note de sourcing de r8-bac ne les mentionne pas — soit
+#      elle est antérieure à leur vérification dans docs/sujets, soit ils
+#      n'avaient pas encore été repérés. **Ce sont des candidats directs pour
+#      le remplacement/re-scope prévu par ADR 0019** : à arbitrer par l'owner
+#      / pedagogy-architect, PAS décidé ici (cette banque n'édite pas
+#      exercises.yaml).
+#
+# SCOPE NOTES (dépendances et techniques mobilisées au-delà de ce que la
+# leçon montre explicitement pas à pas — pontées au point d'usage dans le
+# raisonnement de la question concernée, PAS corrigées ni simplifiées ici) :
+#   - bk-2019-n-x3, q3 : exige $C = 10\ \mu\text{F}$, une valeur établie dans
+#     la PARTIE I du même sujet (charge du condensateur), transcrite sous une
+#     AUTRE notion — content/pc/rc-charge/bank.yaml (entrée bk-2019-n-x3
+#     là-bas). Le rung 2 de cette leçon donne la méthode ($T_0 = 2\pi\sqrt{LC}$)
+#     mais pas la valeur de $C$ : dépendance inter-notion, pontée au point
+#     d'usage, pas un trou de la leçon.
+#   - bk-2020-n-x4, q1c (partie II) et q2a (partie III) : exigent
+#     respectivement $L = 1\ \text{H}$ et $r = 10\ \Omega$, tous deux établis
+#     dans la PARTIE I du même sujet (réponse d'un dipôle RL à un échelon de
+#     tension), transcrite sous une AUTRE notion — content/pc/dipole-rl.md
+#     (non éditée ici, hors périmètre RLC). $r = 10\ \Omega$ est repris tel
+#     quel de la note de vérification du sujet 2020
+#     (docs/sujets/pc/rlc-serie.md : « r = u_L(∞)/I0 = 1/0,1 = 10 Ω »).
+#     Dépendance inter-notion, pontée au point d'usage.
+#   - bk-2020-n-x4, q1b : la résistance totale qui amortit les oscillations
+#     est $R + r$ — le conducteur ohmique externe ET la résistance PROPRE de
+#     la bobine — alors que le rung 5 de la leçon n'établit explicitement
+#     l'équation amortie qu'avec une seule résistance $R$. Pontage : on
+#     additionne les deux termes résistifs au même endroit de la loi des
+#     mailles.
+#   - bk-2020-n-x4, q2a : même extension pour la condition d'entretien, qui
+#     généralise en $k_0 = R + r$ (rung 7 : $k = R$, cas à une seule
+#     résistance).
+#   - bk-2018-n-x3, q2b : ce montage n'a PAS de conducteur ohmique séparé —
+#     seule la bobine $(L,r)$ dissipe. La condition d'entretien du rung 7
+#     ($k = R$) s'applique donc avec $r$ à la place de $R$ (c'est la seule
+#     résistance du circuit) : $k = r$.
+#   - bk-2018-n-x3, q2c : ce sujet ne donne PAS l'indication « on prend
+#     $\pi^2 = 10$ » (à la différence de 2019 et 2020). On utilise donc la
+#     valeur usuelle de $\pi^2$ — cohérent avec les exemples numériques de la
+#     leçon elle-même (R2, R6), qui ne s'appuient jamais sur cette
+#     simplification.
+
+notion: pc/rlc-serie
+
+entries:
+  # ── bk-2019-n-x3 — 2019 N, Exercice III (Partie II) : oscillations LC idéales ──
+  - id: bk-2019-n-x3
+    title: "Oscillations libres dans un circuit LC : identifier la courbe, période propre et bilan énergétique"
+    source:
+      year: 2019
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice III — II. Étude des oscillations électriques dans le circuit LC"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/68300 (Exercice III, Partie II —
+        oscillations électriques dans un circuit LC idéal, sans amortissement ;
+        barème de la partie = 2,5 pt sur les 4,5 pt de l'exercice complet, dont
+        la Partie I — charge du condensateur — est transcrite sous
+        rc-charge.md, bk-2019-n-x3 là-bas). Transcription vérifiée : re-fetch
+        indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-11 ;
+        docs/sujets/pc/rlc-serie.md, statut « vérifié »). SCOPE NOTE (voir
+        l'en-tête du fichier) : la question 3 (inductance $L$) exige la valeur
+        $C = 10\ \mu\text{F}$ établie dans la Partie I du même sujet, transcrite
+        sous une autre notion (rc-charge) — pontée au point d'usage. FLAG
+        RECOUPEMENT (voir l'en-tête du fichier) : ce sujet est exactement celui
+        que la note de sourcing de r8-bac (exercises.yaml) cite comme
+        « sujet vérifié existant mais de mauvaise portée » (r8-bac traite le
+        cas amorti ; ce sujet-ci ne couvre que le cas idéal, LC pur) — confirme
+        le diagnostic de r8-bac, ne le résout pas.
+    intro: |-
+      **Charge et décharge d'un condensateur — II. Étude des oscillations électriques dans le circuit LC (examen national, session normale 2019, Exercice III — Partie II).**
+
+      Une fois que le régime permanent est établi, on bascule l'interrupteur $K$ en position (2) à un instant choisi comme nouvelle origine des dates ($t=0$). On visualise, à l'aide d'un dispositif adéquat, les variations de la tension $u_c$ aux bornes du condensateur en fonction du temps.
+
+      **Figure 3 (trois courbes $u_c(\text{V})$ en fonction de $t(\text{ms})$, ordonnées graduées de $-10$ à $10$, abscisses avec repères $10$ et $20$) :**
+      - **(a)** : part de $u_c = +10\ \text{V}$ à $t=0$, oscillation d'amplitude **décroissante** (allure pseudopériodique) — premier minimum $\approx -6\ \text{V}$ vers $t\approx 10$, remontée à $\approx +4\ \text{V}$ vers $t\approx 20$.
+      - **(b)** : part de $u_c = +10\ \text{V}$ (maximum) à $t=0$, sinusoïde d'amplitude **constante** $10\ \text{V}$ ; minimum $-10\ \text{V}$ vers $t\approx 10$, maximum $+10\ \text{V}$ vers $t\approx 20$ (période $\approx 20\ \text{ms}$).
+      - **(c)** : sinusoïde d'amplitude constante $10\ \text{V}$, mais **déphasée** — à $t=0$ elle ne part pas d'un extremum (démarre près de zéro puis croît).
+    questions:
+      - id: q1
+        part: "II — Étude des oscillations électriques dans le circuit LC : établir le modèle"
+        stem: |-
+          **(0,25 pt)** Montrer que l'équation différentielle vérifiée par la tension $u_c(t)$ aux bornes du condensateur s'écrit : $\dfrac{d^{2}u_c}{dt^{2}} + \dfrac{1}{LC}\, u_c = 0$.
+        reasoning: |-
+          Même mécanisme qu'au rung 2, mais l'énoncé demande la relation directement en $u_c$ plutôt qu'en $q$ — les deux variables sont liées par $q = C u_c$. Circuit LC idéal (rien n'indique de résistance sur cette branche : c'est le cas $R \approx 0$ du rung 3) : la loi des mailles donne $u_C + u_L = 0$. On exprime le courant à partir de $u_c$ plutôt que l'inverse ($i = C\frac{du_c}{dt}$, la même relation $i = \frac{dq}{dt}$ du rung 1 réécrite avec $q = Cu_c$), puis $u_L$ suit — le même geste qu'au rung 2, juste réarrangé pour éliminer $q$ au profit de $u_c$.
+        steps:
+          - math: 'u_C + u_L = 0'
+            note: "Loi des mailles, cas ideal (R negligeable), comme au rung 2."
+          - math: 'i = \frac{dq}{dt} = C\frac{du_c}{dt}'
+            note: "On exprime le courant directement en u_c (q = C u_c), plutot qu'en q comme au rung 2."
+          - math: 'u_L = L\frac{di}{dt} = LC\frac{d^2u_c}{dt^2}'
+            note: "Tension bobine (rung 2), avec i deja exprime en u_c."
+          - math: '\boxed{\frac{d^2u_c}{dt^2} + \frac{1}{LC}\,u_c = 0}'
+            note: "Substitution dans la loi des mailles et division par LC : la forme demandee."
+      - id: q2a
+        stem: |-
+          **(0,5 pt)** L'une des trois courbes (a), (b) ou (c) de la figure 3 représente, pour cette expérience, l'évolution de la tension $u_c(t)$. Indiquer la courbe qui représente l'évolution de la tension $u_c(t)$ lors de cette expérience. Justifier votre réponse.
+        reasoning: |-
+          Deux critères, tous deux tirés de ce qu'on vient d'établir. D'abord l'équation de la question 1 ne contient aucun terme en $R$ — c'est le cas idéal du rung 3, amplitude **constante**, jamais amortie : la courbe (a), qui décroît, est donc exclue d'emblée. Ensuite la condition initiale : avant $t=0$, le régime permanent était établi avec $K$ en position (1), donc le condensateur était chargé au maximum — $u_c(0)$ doit être un **extremum**, exactement comme le cosinus du rung 2 qui démarre à son maximum quand $\varphi = 0$. La courbe (c), malgré son amplitude constante, ne part pas d'un extremum : elle est donc elle aussi exclue. Seule la courbe (b) satisfait les deux critères à la fois.
+
+          La courbe **(b)** représente $u_c(t)$ : amplitude constante (cohérent avec l'équation idéale, sans terme d'amortissement) et départ à l'extremum $+10\ \text{V}$ (cohérent avec la charge maximale acquise avant la bascule de $K$).
+      - id: q2b
+        stem: |-
+          **(0,25 pt)** Trouver la période propre $T_0$ de l'oscillateur LC.
+        reasoning: |-
+          Méthode du rung 6 : on repère deux maxima consécutifs sur la courbe identifiée (b) et on lit l'écart temporel. Le premier maximum est à $t=0$ (départ), le suivant vers $t\approx 20\ \text{ms}$ — c'est directement $T_0$, sans avoir besoin de passer par une soustraction puisque le premier maximum coïncide avec l'origine.
+
+          $$T_0 \approx 20\ \text{ms}$$
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Déterminer l'inductance $L$ de la bobine. (On prend $\pi^{2} = 10$).
+        reasoning: |-
+          On inverse la formule du rung 2, $T_0 = 2\pi\sqrt{LC}$, pour isoler $L$. Il manque une donnée que cette partie ne fournit pas : la capacité $C$. Elle a été déterminée dans la Partie I du même sujet (charge du condensateur à travers $R$, transcrite sous la notion rc-charge) : $C = 10\ \mu\text{F}$ — un pont entre les deux parties du même exercice, pas une donnée nouvelle à deviner.
+        steps:
+          - math: 'T_0 = 2\pi\sqrt{LC} \implies L = \frac{T_0^2}{4\pi^2 C}'
+            note: "On isole L (rung 2), avec T0 lu a la question precedente."
+          - math: 'L = \frac{(20\times10^{-3})^2}{4\times10\times10\times10^{-6}} = \frac{4\times10^{-4}}{4\times10^{-4}}'
+            note: "Application numerique : T0 = 20 ms, C = 10 microF (valeur venant de la Partie I, meme sujet, transcrite sous rc-charge), pi^2 = 10."
+          - math: '\boxed{L = 1\ \text{H}}'
+            note: "Valeur ronde, coherente avec l'ordre de grandeur d'une bobine de ce type de montage bac."
+      - id: q4a
+        part: "Exploitation énergétique de la courbe $u_c(t)$"
+        stem: |-
+          **(0,5 pt)** À l'aide de la courbe représentant l'évolution de la tension $u_c(t)$ pour cette expérience, trouver l'énergie totale $E_t$ du circuit.
+        reasoning: |-
+          Le circuit est idéal (rung 1) : l'énergie totale se calcule à n'importe quel instant, le plus simple étant un extremum de $u_c$, où le courant est nul et toute l'énergie est électrique. La courbe (b) atteint $\pm10\ \text{V}$ à ses extrema — on prend $U_0 = 10\ \text{V}$.
+        steps:
+          - math: 'E_t = \frac{1}{2}C\,U_0^2 = \frac{1}{2}\times10\times10^{-6}\times10^2'
+            note: "Au maximum de u_c, le courant est nul (rung 1) : toute l'energie est dans le condensateur."
+          - math: '\boxed{E_t = 5\times10^{-4}\ \text{J}}'
+            note: "Application numerique, avec C = 10 microF (Partie I) et U0 = 10 V (amplitude lue sur la courbe b)."
+      - id: q4b
+        stem: |-
+          **(0,5 pt)** En déduire l'énergie magnétique $E_{m1}$ emmagasinée dans la bobine à l'instant $t_1 = 12\ \text{ms}$.
+        reasoning: |-
+          Le rung 1 donne la relation-clé : l'énergie totale est conservée dans le cas idéal, donc $E_{m1} = E_t - E_{c1}$, où $E_{c1}$ est l'énergie électrique restante à $t_1$. Pour la trouver, on a besoin de $u_c(t_1)$ : la courbe (b) est le cosinus $u_c(t) = U_0\cos\!\left(\frac{2\pi t}{T_0}\right)$ identifié aux questions précédentes ($\varphi = 0$ car départ à l'extremum). On l'évalue à $t_1 = 12\ \text{ms}$.
+        steps:
+          - math: 'u_c(t_1) = U_0\cos\!\left(\frac{2\pi t_1}{T_0}\right) = 10\cos\!\left(\frac{2\pi\times12}{20}\right)'
+            note: "Forme cosinus identifiee (rung 2), evaluee a t1 = 12 ms avec T0 = 20 ms."
+          - math: 'u_c(t_1) = 10\cos(216^\circ) \approx 10\times(-0{,}809) \approx -8{,}09\ \text{V}'
+            note: "L'angle 216 degres depasse 180 : le cosinus est negatif, coherent avec la courbe qui redescend a cet instant."
+          - math: 'E_{c1} = \frac{1}{2}C\,u_c(t_1)^2 = \frac{1}{2}\times10\times10^{-6}\times8{,}09^2 \approx 3{,}27\times10^{-4}\ \text{J}'
+            note: "Energie electrique restant dans le condensateur a t1."
+          - math: '\boxed{E_{m1} = E_t - E_{c1} \approx 5\times10^{-4} - 3{,}27\times10^{-4} \approx 1{,}7\times10^{-4}\ \text{J}}'
+            note: "Conservation de l'energie totale (rung 1) : ce qui n'est pas dans le condensateur est dans la bobine."
+
+  # ── bk-2018-n-x3 — 2018 N, Exercice III (Partie II) : RLC série, pseudo-periode puis entretien ──
+  - id: bk-2018-n-x3
+    title: "Circuit RLC série : oscillations pseudopériodiques et entretien par générateur"
+    source:
+      year: 2018
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice III — II. Étude d'un circuit RLC série"
+    bareme_total: 1.75
+    duration_min: 11
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/57726 (Exercice III, Partie II —
+        circuit RLC série : oscillations pseudo-périodiques de la charge
+        $q(t)$, puis entretien par générateur $u_G = k\,i(t)$ ; barème de la
+        partie = 1,75 pt sur les 5 pt de l'exercice complet, dont les
+        sous-parties I-1 et I-2 — capacité d'un condensateur, décharge RC —
+        sont transcrites sous rc-charge.md). Transcription vérifiée : re-fetch
+        indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-11 ;
+        docs/sujets/pc/rlc-serie.md, statut « vérifié »). SCOPE NOTES (voir
+        l'en-tête du fichier) : ce montage n'a pas de conducteur ohmique
+        séparé — seule la résistance propre $r$ de la bobine dissipe, donc la
+        condition d'entretien du rung 7 ($k = R$) s'applique ici avec $r$ à la
+        place de $R$ ; et ce sujet ne fournit pas l'indication « $\pi^2 = 10$ »
+        (à la différence de 2019/2020), on utilise donc la valeur usuelle.
+        FLAG RECOUPEMENT (voir l'en-tête du fichier) : la portée de ce sujet
+        (régime pseudo-périodique puis entretien par générateur $k$) recoupe
+        de près celle que r8-bac (exercises.yaml, non sourcé) tente de
+        couvrir sans sujet réel identifié — candidat pour le remplacement
+        prévu par ADR 0019, à arbitrer par l'owner.
+    intro: |-
+      **Détermination expérimentale de la capacité d'un condensateur / Étude d'un circuit RLC série — II. Étude d'un circuit RLC série (examen national, session normale 2018, Exercice III — Partie II).**
+
+      Un élève de la même classe réalise le montage représenté sur la figure 5 qui comporte :
+      - un condensateur, totalement chargé, de capacité $C = 2{,}5\ \mu\text{F}$ ;
+      - une bobine d'inductance $L$ et de résistance $r$ ;
+      - un interrupteur $K$.
+
+      *Figure 5 (schéma) :* circuit série entre bornes $A$ et $B$ : condensateur $C$, interrupteur $K$, et bobine notée $(L, r)$.
+
+      Après fermeture du circuit, on visualise, à l'aide d'un système d'acquisition informatisé, des oscillations pseudopériodiques représentant les variations de la charge $q(t)$ du condensateur.
+    questions:
+      - id: q1
+        part: "II — Étude d'un circuit RLC série : régime observé"
+        stem: |-
+          **(0,25 pt)** Pourquoi observe-t-on des oscillations pseudopériodiques ?
+        reasoning: |-
+          Le rung 3 pose exactement cette question, et la réponse est celle du rung 4 : la bobine a une résistance propre $r$ non nulle (elle n'est pas idéale) — $r$ dissipe de l'énergie par effet Joule à chaque cycle (rung 3, « R est le frein »), donc l'amplitude des oscillations décroît d'un cycle à l'autre. C'est précisément la signature du régime pseudo-périodique (rung 4) : oscillations présentes, mais amplitude qui s'amortit progressivement.
+      - id: q2a
+        part: "Entretien des oscillations avec un générateur $u_G(t) = k\\,i(t)$"
+        stem: |-
+          **(0,5 pt)** Pour obtenir des oscillations électriques entretenues, un générateur $G$ délivrant une tension proportionnelle à l'intensité du courant $u_G(t) = k\, i(t)$ est inséré en série dans le circuit précédent. Établir l'équation différentielle vérifiée par la charge $q(t)$.
+        reasoning: |-
+          Même méthode qu'au rung 7 — loi des mailles avec le générateur inséré — mais avec une différence structurelle : ce montage n'a pas de conducteur ohmique séparé, la seule résistance du circuit est celle de la bobine elle-même, $r$. On remplace donc le $R$ générique du rung 7 par $r$ dans le même schéma de substitution.
+        steps:
+          - math: 'u_C + u_{bobine} = u_G \qquad \text{avec} \qquad u_{bobine} = L\frac{d^2q}{dt^2} + r\frac{dq}{dt}'
+            note: "Loi des mailles avec generateur (rung 7) ; ici la bobine porte elle-meme la seule resistance du circuit, r, il n'y a pas de R separe."
+          - math: '\frac{q}{C} + L\frac{d^2q}{dt^2} + r\frac{dq}{dt} = k\frac{dq}{dt}'
+            note: "Chaque tension remplacee par son expression en q, comme au rung 7."
+          - math: '\boxed{L\frac{d^2q}{dt^2} + (r-k)\frac{dq}{dt} + \frac{q}{C} = 0}'
+            note: "Meme structure qu'au rung 7, avec r a la place de R (seule resistance ici)."
+      - id: q2b
+        stem: |-
+          **(0,25 pt)** En ajustant le paramètre $k$ sur la valeur $k = 5$ (exprimée dans le système d'unités international), les oscillations deviennent sinusoïdales (figure 6). Déterminer la valeur de $r$.
+        reasoning: |-
+          Rung 7 : l'entretien (oscillations sinusoïdales à amplitude constante) annule le coefficient d'amortissement de l'équation qu'on vient d'établir. Ici ce coefficient est $(r-k)$ — pas $(R-k)$, puisqu'il n'y a pas de $R$ séparé dans ce montage. La condition est donc $r = k$, directement.
+        steps:
+          - math: 'r - k = 0 \implies r = k'
+            note: "Condition d'entretien (rung 7), generalisee : ici r joue le role que R joue au rung 7."
+          - math: '\boxed{r = 5\ \Omega}'
+            note: "Application numerique directe, k = 5 SI etant donne par l'enonce."
+      - id: q2c
+        stem: |-
+          **(0,75 pt)** En exploitant la courbe de la figure 6, trouver la valeur de l'inductance $L$ de la bobine.
+
+          *Figure 6 (courbe) :* $q\ (\mu\text{C})$ en fonction de $t\ (\text{ms})$ ; sinusoïde d'amplitude **constante** oscillant entre $+q_m$ et $-q_m$ ; les maxima successifs apparaissent vers $t\approx1\ \text{ms}$ puis $t\approx3\ \text{ms}$ (période $\approx2\ \text{ms}$).
+        reasoning: |-
+          Une fois l'entretien réalisé (question précédente), le circuit obéit à l'équation idéale du rung 2 — la période observée sur la figure 6 n'est plus une pseudo-période approchée, c'est exactement $T_0$. On la lit entre deux maxima consécutifs (rung 6) : $t\approx1\ \text{ms}$ et $t\approx3\ \text{ms}$, soit $T_0\approx2\ \text{ms}$. On inverse ensuite $T_0 = 2\pi\sqrt{LC}$ (rung 2) avec $C = 2{,}5\ \mu\text{F}$ donné. Ce sujet ne fournit pas l'indication « $\pi^2 = 10$ » utilisée ailleurs : on garde la valeur usuelle de $\pi^2$, comme dans les exemples numériques de la leçon elle-même.
+        steps:
+          - math: 'T_0 = t_2 - t_1 = 3 - 1 = 2\ \text{ms}'
+            note: "Deux maxima consecutifs sur la figure 6 (rung 6) ; sous entretien, c'est exactement T0, pas une pseudo-periode approchee."
+          - math: 'T_0 = 2\pi\sqrt{LC} \implies L = \frac{T_0^2}{4\pi^2 C}'
+            note: "On isole L (rung 2)."
+          - math: 'L = \frac{(2\times10^{-3})^2}{4\pi^2\times2{,}5\times10^{-6}} \approx \frac{4\times10^{-6}}{9{,}87\times10^{-5}}'
+            note: "Application numerique, avec la valeur usuelle de pi^2 (aucune indication pi^2 = 10 dans ce sujet)."
+          - math: '\boxed{L \approx 40\ \text{mH}}'
+            note: "Ordre de grandeur typique d'une bobine de ce type de montage bac."
+
+  # ── bk-2020-n-x4 — 2020 N, Exercice IV (Parties II et III) : decharge amortie puis entretien ──
+  - id: bk-2020-n-x4
+    title: "Décharge oscillante puis entretien des oscillations dans un circuit RLC série"
+    source:
+      year: 2020
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice IV — II. Décharge d'un condensateur dans un dipôle RL — III. Entretien des oscillations dans un circuit RLC série"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2020 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/109742 (Exercice IV, Parties II et III
+        — décharge oscillante d'un condensateur dans un dipôle RL puis
+        entretien des oscillations par générateur ; barème transcrit ici =
+        1,25 pt (partie II) + 2,25 pt (partie III) = 3,5 pt sur les 5 pt de
+        l'exercice complet, dont la Partie I — réponse d'un dipôle RL à un
+        échelon de tension — est transcrite sous dipole-rl.md). Transcription
+        vérifiée : 2026-08-06, vérification adverse indépendante par un
+        second agent, figures 3/4/5/6 jugées élément par élément sur le scan
+        et lectures graphiques arbitrées à la mesure de pixels
+        (docs/sujets/pc/rlc-serie.md, statut « vérifié »). Lectures
+        pixel-mesurées reprises telles quelles : figure 4 (pseudo-période
+        $T = 10\ \text{ms}$, extrema exactement sur les repères $5/10/15/20/25$,
+        zéros à mi-chemin) et figure 6 ($T_0 = 10\ \text{ms}$, $\varphi = \pi/2$,
+        amplitude $\pm8\ \text{mA}$, minima à $2{,}5/12{,}5/22{,}5\ \text{ms}$,
+        maxima à $7{,}5/17{,}5/27{,}5\ \text{ms}$). CROSS-CHECK effectué en
+        rédigeant ce raisonnement (indépendamment de la note de vérification
+        du sujet, puis comparé) : $C = T^2/(4\pi^2 L) = 2{,}5\ \mu\text{F}$
+        avec $T=10\ \text{ms}$, $L=1\ \text{H}$, $\pi^2=10$ — conforme ;
+        $k_0 = R + r = 100$ (SI) avec $R=90\ \Omega$, $r=10\ \Omega$ — conforme ;
+        $\varphi = \pi/2$ redérivé depuis « $i(0)=0$ en décroissant » —
+        conforme ; $E_t = \frac12 L I_m^2 = 3{,}2\times10^{-5}\ \text{J}$ —
+        conforme ; $i(t_1=16\ \text{ms}) \approx 4{,}7\ \text{mA}$ d'où
+        $E_{e1}\approx2{,}1\times10^{-5}\ \text{J}$ — conforme. Aucune
+        divergence avec la note de vérification du sujet. SCOPE NOTES (voir
+        l'en-tête du fichier) : q1c exige $L=1\ \text{H}$ et q2a exige
+        $r=10\ \Omega$, tous deux établis en Partie I (dipole-rl.md, hors
+        périmètre RLC, non éditée ici) ; q1b et q2a généralisent le rung 5 et
+        le rung 7 à une résistance totale $R+r$ (conducteur ohmique externe
+        ET résistance propre de la bobine), alors que la leçon ne traite
+        explicitement qu'une seule résistance. FLAG RECOUPEMENT (voir
+        l'en-tête du fichier) : ce sujet couvre exactement la portée
+        (amortissement puis entretien) que r8-bac (exercises.yaml, non
+        sourcé) tente de couvrir sans sujet réel identifié — candidat pour le
+        remplacement prévu par ADR 0019, à arbitrer par l'owner.
+    intro: |-
+      **Exercice IV — « Étude de l'amortissement et de l'entretien des oscillations dans un circuit RLC série » (examen national, session normale 2020, Exercice IV — Parties II et III).**
+
+      Le montage partage la bobine $(L, r)$ et la résistance $R = 90\ \Omega$ étudiées en Partie I (réponse d'un dipôle RL à un échelon de tension, hors périmètre ici).
+
+      **II - Décharge d'un condensateur dans un dipôle RL**
+
+      On monte en série, à un instant choisi comme nouvelle origine des dates $t = 0$, un condensateur de capacité $C$, totalement chargé, avec la bobine précédente et un conducteur ohmique de résistance $R = 90\ \Omega$ (figure 3). La courbe de la figure 4 représente l'évolution de la tension $u_c(t)$ aux bornes du condensateur.
+
+      *Figure 3 (schéma) :* boucle série : $R$ en haut (flèche de courant $i$), bobine $(L, r)$ à droite, branche basse = simple fil, condensateur $C$ à gauche. Pas d'interrupteur $K$ ni de flèche $u_L$ sur ce schéma.
+
+      *Figure 4 (courbe) :* $u_C\ (\text{V})$ en fonction de $t\ (\text{ms})$ ; aucune valeur numérique sur l'axe $u_C$ (seul $0$ est repéré). Oscillation pseudopériodique d'amplitude **décroissante** : la courbe part à $t=0$ de sa valeur la plus élevée, descend à un premier minimum (le plus profond) en $t=5$, remonte à un maximum (plus bas que le départ) en $t=10$, redescend à un second minimum (moins profond) en $t=15$, remonte à un maximum (plus bas que celui de $t=10$) en $t=20$, redescend à un troisième minimum (le moins profond) en $t=25$, puis remonte vers un dernier maximum en fin de tracé ($t\approx30$). Les extrema tombent exactement sur les repères $5, 10, 15, 20, 25$ et les passages par zéro à mi-chemin ($2{,}5$ ; $7{,}5$ ; $12{,}5$ ; $17{,}5$ ; $22{,}5$ ; $27{,}5\ \text{ms}$) : pseudo-période lue $T = 10\ \text{ms}$.
+
+      **III - Entretien des oscillations dans un circuit RLC série**
+
+      Pour entretenir les oscillations électriques dans le circuit précédent représenté sur la figure 3, on insère dans ce circuit un générateur $G$ délivrant une tension proportionnelle à l'intensité du courant : $u_G(t) = k \cdot i(t)$ (figure 5). La courbe de la figure 6 représente l'évolution de l'intensité $i(t)$ dans le circuit dans le cas où $k = k_0$.
+
+      *Figure 5 (schéma) :* même boucle série que la figure 3, avec en plus un générateur $G$ (cercle étiqueté « G ») inséré dans la branche basse.
+
+      *Figure 6 (courbe) :* $i\ (\text{mA})$ en fonction de $t\ (\text{ms})$ ; ordonnées $8, 4, 0, -4, -8$. Sinusoïde d'amplitude **constante**, oscillant entre $+8$ et $-8\ \text{mA}$. La courbe part de l'axe à $t=0$ ($i\approx0$) en décroissant immédiatement, atteint un minimum $-8\ \text{mA}$ en $t=2{,}5$, coupe l'axe en $t=5$, atteint un maximum $+8\ \text{mA}$ en $t=7{,}5$, coupe l'axe en $t=10$ — motif qui se répète avec minima à $12{,}5$ et $22{,}5\ \text{ms}$, maxima à $17{,}5$ et $27{,}5\ \text{ms}$. Période $T_0 = 10\ \text{ms}$.
+    questions:
+      - id: q1a
+        part: "II — Décharge d'un condensateur dans un dipôle RL : régime observé"
+        stem: |-
+          **(0,25 pt)** Quel est le régime d'oscillation mis en évidence par la courbe de la figure 4 ?
+        reasoning: |-
+          Rung 4 : la courbe oscille (elle change de signe plusieurs fois) mais chaque maximum successif est plus bas que le précédent — amplitude décroissante. C'est exactement la signature du régime pseudo-périodique : ni le régime périodique (amplitude constante, exclu ici), ni le régime apériodique (pas d'oscillation du tout, exclu aussi puisque la courbe croise bien l'axe plusieurs fois).
+
+          Le régime est **pseudo-périodique**.
+      - id: q1b
+        stem: |-
+          **(0,5 pt)** Établir l'équation différentielle vérifiée par la tension $u_c(t)$.
+        reasoning: |-
+          Même méthode qu'au rung 5 (loi des mailles, cas amorti, exprimé ici en $u_c$ comme à la question 1 du sujet 2019 ci-dessus), mais avec une extension : la résistance qui amortit n'est pas une seule $R$, ce sont **deux** contributions en série — le conducteur ohmique $R=90\ \Omega$ ET la résistance propre $r$ de la bobine $(L,r)$, que le rung 5 ne décompose jamais explicitement. On les additionne au même endroit de la loi des mailles, puisqu'elles jouent exactement le même rôle physique (dissiper par effet Joule).
+        steps:
+          - math: 'u_C + u_R + u_{bobine} = 0 \qquad \text{avec} \qquad u_{bobine} = L\frac{di}{dt} + r\,i'
+            note: "Loi des mailles (rung 5), pas de generateur dans cette partie ; deux resistances ici, R externe et r (resistance propre de la bobine), alors que le rung 5 n'en compte qu'une."
+          - math: 'u_c + Ri + ri + L\frac{di}{dt} = 0 \implies u_c + (R+r)i + L\frac{di}{dt} = 0'
+            note: "On regroupe les deux termes resistifs, R et r, qui jouent le meme role dans la loi des mailles."
+          - math: 'i = C\frac{du_c}{dt} \implies u_c + (R+r)C\frac{du_c}{dt} + LC\frac{d^2u_c}{dt^2} = 0'
+            note: "On exprime i en u_c (meme geste qu'au rung 2 et qu'a la question 1 du sujet 2019 ci-dessus)."
+          - math: '\boxed{\frac{d^2u_c}{dt^2} + \frac{R+r}{L}\frac{du_c}{dt} + \frac{1}{LC}\,u_c = 0}'
+            note: "Division par LC ; forme standard du cas amorti (rung 5), R+r jouant le role de la resistance totale."
+      - id: q1c
+        stem: |-
+          **(0,5 pt)** Sachant que la pseudopériode est égale à la période propre, trouver la capacité $C$ du condensateur. (On prend : $\pi^{2} = 10$).
+        reasoning: |-
+          L'énoncé donne ici l'approximation du rung 6 ($T \approx T_0$ pour un amortissement faible) comme une égalité à utiliser directement : $T_0 = T = 10\ \text{ms}$, lu sur la figure 4 par la méthode du rung 6 (extrema exactement espacés de $10\ \text{ms}$). On inverse ensuite $T_0 = 2\pi\sqrt{LC}$ (rung 2) pour isoler $C$, avec $L = 1\ \text{H}$ — une valeur établie en Partie I (réponse du dipôle RL, hors périmètre RLC, transcrite sous dipole-rl.md), pas une donnée de cette partie-ci.
+        steps:
+          - math: 'T_0 = T = 10\ \text{ms}'
+            note: "Pseudo-periode lue sur la figure 4 (rung 6), prise egale a T0 par hypothese de l'enonce."
+          - math: 'T_0 = 2\pi\sqrt{LC} \implies C = \frac{T_0^2}{4\pi^2 L}'
+            note: "On isole C (rung 2)."
+          - math: 'C = \frac{(10\times10^{-3})^2}{4\times10\times1} = \frac{10^{-4}}{40}'
+            note: "Application numerique, avec L = 1 H (etabli en Partie I, hors perimetre RLC, transcrite sous dipole-rl.md) et pi^2 = 10 donne par l'enonce."
+          - math: '\boxed{C = 2{,}5\ \mu\text{F}}'
+            note: "Valeur ronde, coherente avec les autres sujets de cette banque."
+      - id: q2a
+        part: "III — Entretien des oscillations dans un circuit RLC série"
+        stem: |-
+          **(0,5 pt)** Trouver, dans le système international d'unités, la valeur de $k_0$.
+        reasoning: |-
+          Le rung 7 donne la condition d'entretien pour une seule résistance ($k=R$). Ici, comme à la question 1b, deux résistances dissipent en série — $R$ et $r$ — donc la condition se généralise : le coefficient d'amortissement de la loi des mailles avec générateur est $(R+r-k)$, et l'entretien l'annule, soit $k_0 = R+r$. $R=90\ \Omega$ est donné dans cette partie ; $r=10\ \Omega$ vient de la Partie I (dipole-rl.md, hors périmètre RLC).
+        steps:
+          - math: 'u_C + u_R + u_{bobine} = u_G \implies L\frac{d^2q}{dt^2} + (R+r-k)\frac{dq}{dt} + \frac{q}{C} = 0'
+            note: "Meme substitution qu'au rung 7, avec R remplace par R+r (les deux resistances s'additionnent dans la loi des mailles, comme a la question 1b)."
+          - math: 'k_0 = R + r = 90 + 10'
+            note: "Entretien (rung 7) : on annule le coefficient (R+r-k) ; r = 10 ohms etabli en Partie I (dipole-rl.md, hors perimetre RLC)."
+          - math: '\boxed{k_0 = 100\ \text{(unites SI)}}'
+            note: "k0 est homogene a une resistance (u_G = k.i), donc s'exprime en ohms."
+      - id: q2b
+        stem: |-
+          **(0,75 pt)** Sachant que l'expression de l'intensité $i(t)$ dans le circuit s'écrit ainsi : $i(t) = I_m\cos\!\left(\dfrac{2\pi}{T_0}\, t + \varphi\right)$, déterminer les valeurs de $I_m$, $T_0$ et $\varphi$.
+        reasoning: |-
+          Sous entretien, le circuit obéit à l'équation idéale (rung 7) : $i(t)$ est un cosinus pur, exactement la forme donnée. $I_m$ se lit directement comme l'amplitude de la figure 6 ; $T_0$ se lit comme l'écart entre deux extrema consécutifs (rung 6) — et coïncide avec la pseudo-période de la figure 4, comme l'énoncé le suggère. Pour $\varphi$, on utilise la condition initiale : la courbe part de l'axe ($i(0)=0$) en décroissant, ce qui fixe le signe de $\varphi$ sans ambiguïté.
+        steps:
+          - math: 'I_m = 8{,}0\ \text{mA} = 8{,}0\times10^{-3}\ \text{A}'
+            note: "Lecture directe de l'amplitude sur la figure 6 (courbe entre +8 et -8 mA)."
+          - math: 'T_0 = 10\ \text{ms}'
+            note: "Ecart entre deux extrema consecutifs (rung 6) ; identique a la pseudo-periode mesuree sur la figure 4, comme l'enonce le suggere."
+          - math: 'i(0) = I_m\cos\varphi = 0 \quad \text{et} \quad \left.\frac{di}{dt}\right|_{t=0} < 0'
+            note: "La courbe part de zero en decroissant a t=0 (figure 6)."
+          - math: '\boxed{\varphi = \frac{\pi}{2}}'
+            note: "Seul phi = pi/2 donne a la fois cos(phi)=0 et une pente negative a l'origine (phi = -pi/2 donnerait une pente positive)."
+      - id: q2c
+        stem: |-
+          **(0,5 pt)** Déterminer l'énergie totale $E_t$ du circuit.
+        reasoning: |-
+          Comme au sujet 2019 ci-dessus (question 4a), le régime est maintenant équivalent au cas idéal (rung 1) : l'énergie totale est conservée et se calcule au moment le plus simple, ici le maximum du courant ($u_C = 0$, toute l'énergie est magnétique).
+        steps:
+          - math: 'E_t = \frac{1}{2}L\,I_m^2 = \frac{1}{2}\times1\times(8{,}0\times10^{-3})^2'
+            note: "Au maximum du courant, toute l'energie est dans la bobine (rung 1) ; en regime entretenu l'energie totale est constante, ce calcul vaut a tout instant."
+          - math: '\boxed{E_t \approx 3{,}2\times10^{-5}\ \text{J}}'
+            note: "Application numerique."
+      - id: q2d
+        stem: |-
+          **(0,5 pt)** Trouver l'énergie électrique $E_{e1}$ emmagasinée dans le condensateur à l'instant $t_1 = 16\ \text{ms}$.
+        reasoning: |-
+          Même geste qu'au sujet 2019 ci-dessus (question 4b) : conservation de l'énergie totale (rung 1), $E_{e1} = E_t - E_m(t_1)$. On calcule d'abord $E_m(t_1)$ à partir de $i(t_1)$, évalué avec l'expression identifiée à la question précédente.
+        steps:
+          - math: 'i(t_1) = I_m\cos\!\left(\frac{2\pi}{T_0}t_1+\varphi\right) = 8{,}0\times10^{-3}\cos\!\left(\frac{2\pi}{10}\times16+\frac{\pi}{2}\right)'
+            note: "On evalue i(t) a t1 = 16 ms avec les valeurs de la question precedente."
+          - math: 'i(t_1) \approx 8{,}0\times10^{-3}\times0{,}588 \approx 4{,}7\times10^{-3}\ \text{A}'
+            note: "L'angle vaut 3,7 pi radians, soit 306 degres apres reduction modulo 2 pi ; cosinus environ 0,588."
+          - math: 'E_m(t_1) = \frac{1}{2}L\,i(t_1)^2 = \frac{1}{2}\times1\times(4{,}7\times10^{-3})^2 \approx 1{,}1\times10^{-5}\ \text{J}'
+            note: "Energie magnetique a cet instant."
+          - math: '\boxed{E_{e1} = E_t - E_m(t_1) \approx 3{,}2\times10^{-5} - 1{,}1\times10^{-5} \approx 2{,}1\times10^{-5}\ \text{J}}'
+            note: "Conservation de l'energie totale (rung 1) : ce qui n'est pas dans la bobine est dans le condensateur."
