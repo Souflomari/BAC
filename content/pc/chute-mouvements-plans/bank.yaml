@@ -1,0 +1,521 @@
+# bank.yaml — la banque « S'entraîner » de chute-mouvements-plans (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, exercises.yaml), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Chaque entrée est une transcription FIDÈLE d'une entrée
+# « vérifié » de docs/sujets/pc/chute-mouvements-plans.md (re-fetch AlloSchool
+# + diff caractère par caractère par un second agent, puis re-lecture
+# indépendante des figures — jusqu'à quatre passes pour 2019 — README §3).
+# Raisonnement rédigé à la voix experte de la maison sur 100 % des questions,
+# en citant les rungs R1–R8 de la leçon (lesson.md) là où c'est naturel ;
+# barème transcrit tel quel dans les énoncés (tag « (x,xx pt) » ajouté — la
+# source docs/sujets ne porte que « (x,xx) ») ; conventions KaTeX (block
+# scalars pour la prose, KaTeX brut entre apostrophes simples dans
+# steps[].math, notes sans backslash).
+#
+# NOTE ÉDITORIALE (pour la revue) : les quatre sujets « vérifié » de cette
+# notion sont 2018 N, 2019 N, 2020 N, 2021 N. Le 2020 N (Exercice V, chute
+# d'une bille dans un liquide visqueux) sert AUSSI de sommet de leçon (r-bac,
+# exercises.yaml, marqueur [[exercise:r-bac]] à R11 « Exercice de type bac ») :
+# mêmes données, mêmes réponses numériques (v_ℓ ≈ 1,5 m/s, k/m ≈ 6,67 s⁻¹,
+# a₁ ≈ 9,0 m/s², v₃ ≈ 0,41 m/s), reprises ici à l'identique pour rester
+# cohérentes avec le sommet, avec un raisonnement rédigé à nouveau (pas une
+# copie de exercises.yaml). Il figure ici pour que la banque soit le corpus
+# complet des annales de la notion (BANK-SPEC §1) — recoupement assumé, même
+# disposition que reactions-acido-basiques bk-2021-n-x1 et rc-charge
+# bk-2019-n-x3. À l'arbitrage de l'owner si l'on préfère l'écarter de la
+# banque pour éviter le recoupement sur la même page.
+#
+# SCOPE NOTES (techniques mobilisées au-delà de ce que la leçon montre
+# explicitement pas à pas — pontées au point d'usage dans le raisonnement de
+# la question concernée, PAS corrigées ni simplifiées ici) :
+#   - bk-2018-n-x4, q1 : le bilan des forces inclut la poussée d'Archimède
+#     F_a = ρVg (troisième force). Le rung 7 de la leçon n'établit
+#     l'équation différentielle qu'avec un bilan à DEUX forces (poids +
+#     frottement) ; il ne traite jamais Archimède. Voir aussi le rung 9 du
+#     cours d'électrostatique/hydrostatique le cas échéant — hors périmètre
+#     ici. Le pont (ajout d'une troisième force constante au même schéma de
+#     projection) est fait dans le raisonnement de la question elle-même.
+#   - bk-2021-n-x5, q3 : la distance parcourue durant le régime initial de
+#     la phase 2 exige de découper la durée totale du vol en trois segments
+#     (chute libre phase 1, régime initial puis régime permanent de la
+#     phase 2) et de cumuler des distances calculées par des méthodes
+#     différentes selon le segment (rung 1 : y = ½gt² ; rung 7 : distance =
+#     vitesse quasi constante × durée en régime permanent). La leçon ne
+#     modélise nulle part cette décomposition multi-segments pas à pas ;
+#     elle compose deux résultats déjà établis mais ne les enchaîne jamais
+#     explicitement de cette façon. Ponté au point d'usage.
+#   - bk-2018-n-x4, q2 (et le fait que l'énoncé prête à τ une lecture par
+#     tangente à l'origine) et bk-2021-n-x5 (frottement quadratique, modèle
+#     F = -α.v².k⃗) restent, eux, strictement dans le rung 7 (les deux
+#     modèles de frottement et la lecture de τ par tangente à l'origine y
+#     sont explicitement enseignés) — mentionnés ici seulement pour
+#     mémoire, aucun pont nécessaire.
+
+notion: pc/chute-mouvements-plans
+
+entries:
+  # ── bk-2018-n-x4 — 2018 N, Exercice IV (Partie I) : bille, Archimède, Euler ──
+  - id: bk-2018-n-x4
+    title: "Chute d'une bille dans un liquide visqueux : poussée d'Archimède et méthode d'Euler"
+    source:
+      year: 2018
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice IV — Partie I- Étude du mouvement de chute verticale d'une bille dans un liquide visqueux"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/57726 (Exercice IV, Partie I — chute
+        verticale d'une bille dans un liquide visqueux avec poussée
+        d'Archimède non négligeable et méthode d'Euler ; barème de la partie
+        = 3,5 pt sur les 5,5 pt de l'exercice complet, qui comporte aussi une
+        Partie II sur un oscillateur solide-ressort, transcrite sous
+        systemes-oscillants.md). Transcription vérifiée : re-fetch
+        indépendant AlloSchool + diff caractère par caractère par un second
+        agent (docs/sujets/pc/chute-mouvements-plans.md, statut « vérifié »,
+        2026-08-06) ; figures 1 et 2 jugées conformes au zoom ; physique
+        re-dérivée et auto-cohérente (a₃ = 6,93 m.s⁻², v₄ = 0,161 m.s⁻¹,
+        v_Glim = 0,500 m.s⁻¹, τ = 0,054 s, tous corroborés par l'équation
+        numérique donnée à la question 4). SCOPE NOTE (voir l'en-tête du
+        fichier) : la question 1 exige d'inclure la poussée d'Archimède
+        F_a = ρVg dans le bilan des forces — le rung 7 de la leçon
+        (lesson.md) n'établit explicitement l'équation différentielle
+        qu'avec un bilan à deux forces (poids + frottement) ; le pont est
+        fait au point d'usage dans le raisonnement de la question 1.
+    intro: |-
+      **Étude du mouvement de chute verticale d'une bille dans un liquide visqueux, poussée d'Archimède non négligeable (examen national, session normale 2018, Exercice IV — Partie I).**
+
+      Afin de déterminer quelques caractéristiques du mouvement de chute d'une bille dans un liquide visqueux, on réalise l'expérience suivante :
+
+      On remplit une éprouvette graduée par un liquide visqueux et transparent, de masse volumique $\rho$, puis on libère, sans vitesse initiale dans ce liquide, une bille de masse $m = 2.10^{-2}\ \text{kg}$, de volume $V$ et de centre d'inertie G.
+
+      On étudie le mouvement du centre d'inertie G dans un repère $(O, \vec{j})$ lié à un référentiel terrestre considéré comme galiléen. La position instantanée du centre d'inertie G est repérée sur un axe vertical $\overrightarrow{Oy}$ orienté vers le bas (figure 1). On considère que la position de G à l'instant $t = 0$ est confondue avec l'origine de l'axe $Oy$ et que la poussée d'Archimède $\vec{F_a}$ n'est pas négligeable devant les autres forces exercées sur la bille.
+
+      La force de frottement fluide est modélisée par $\vec{f} = -k.\vec{v_G}$ ($\vec{v_G}$ étant le vecteur vitesse instantanée du centre d'inertie G et $k$ une constante positive).
+
+      On rappelle que l'intensité de la poussée d'Archimède vaut le poids du liquide déplacé : $F_a = \rho.V.g$, où $g$ est l'intensité de pesanteur.
+
+      Avec une caméra numérique et un logiciel adapté, on obtient, après traitement des données expérimentales, la courbe des variations de la vitesse instantanée du centre d'inertie de la bille en fonction du temps (voir figure 2).
+
+      **Figure 1 (schéma).** Une éprouvette graduée verticale, remplie de liquide visqueux, est posée sur un pied. L'axe $(O,\vec j)$ est tracé à gauche de l'éprouvette, $\vec j$ orienté vers le bas ; un cercle en pointillés, au niveau de $O$ (en haut du liquide), marque la position initiale du centre d'inertie $G$ de la bille à $t=0$ ; plus bas dans l'éprouvette, un disque noir plein représente la bille à un instant ultérieur de sa chute.
+
+      **Figure 2 (courbe).** $v_G$ (en m/s) en fonction de $t$ (en ms). La courbe part de l'origine, croît de façon concave, et tend asymptotiquement vers un palier horizontal à $v_{Glim} = 0{,}50\ \text{m.s}^{-1}$. Une droite en pointillés, tangente à la courbe à l'origine, coupe cette asymptote à $t = 54\ \text{ms}$.
+
+      **Tableau de mesures (pour la méthode d'Euler, pas $\Delta t = 0{,}005\ \text{s}$ entre deux lignes consécutives).**
+
+      | $t\ (\text{s})$ | $v_G\ (\text{m.s}^{-1})$ | $a_G\ (\text{m.s}^{-2})$ |
+      |:---:|:---:|:---:|
+      | ⋮ | ⋮ | ⋮ |
+      | $0{,}015$ | $0{,}126$ | $a_3$ |
+      | $0{,}020$ | $v_4$ | $6{,}28$ |
+      | $0{,}025$ | $0{,}192$ | $5{,}70$ |
+    questions:
+      - id: q1
+        part: "Partie I- Étude du mouvement de chute verticale d'une bille dans un liquide visqueux : établir le modèle"
+        stem: |-
+          **(1 pt)** En appliquant la deuxième loi de Newton, montrer que l'équation différentielle vérifiée par la vitesse s'écrit sous la forme : $\dfrac{dv_G}{dt} + \dfrac{1}{\tau}.v_G = A$, en précisant l'expression du temps caractéristique $\tau$ en fonction de $k$ et $m$ et l'expression de la constante $A$ en fonction de $g$, $m$, $\rho$ et $V$.
+        reasoning: |-
+          On suit la méthode du rung 7 — bilan, deuxième loi, projection — mais avec un bilan à **trois** forces, pas deux : le rung ne traite explicitement que poids + frottement, sans poussée d'Archimède. Ici l'énoncé précise que $\vec F_a$ n'est *pas* négligeable, donc on l'ajoute comme troisième force, constante, dirigée vers le haut (donc opposée au sens de l'axe $Oy$, orienté vers le bas comme au rung 7). On projette la deuxième loi sur cet axe, on divise par $m$, puis on regroupe : le terme en $v_G$ donne $1/\tau$ — exactement la même identification qu'au rung 7, inchangée par l'ajout d'Archimède, puisque seul le frottement dépend de $v_G$. Le terme constant, lui, absorbe désormais *deux* contributions — le poids et Archimède — plutôt qu'une seule ($A=g$ au rung 7) : c'est précisément là que la poussée d'Archimède change le résultat par rapport au cours.
+        steps:
+          - math: '\vec P + \vec f + \vec F_a = m\vec a'
+            note: "Deuxieme loi de Newton : trois forces cette fois (le rung 7 du cours n'en compte que deux)."
+          - math: 'm\frac{dv_G}{dt} = mg - k\,v_G - \rho V g'
+            note: "Projection sur (O, j) oriente vers le bas : poids +mg, frottement -k v_G, Archimede -rho V g (elle pointe vers le haut, contre le sens de l'axe)."
+          - math: '\frac{dv_G}{dt} = \left(g - \frac{\rho V g}{m}\right) - \frac{k}{m}\,v_G'
+            note: "On divise par m et on regroupe les termes constants d'un cote."
+          - math: '\boxed{\frac{dv_G}{dt} + \frac{1}{\tau}\,v_G = A} \qquad \text{avec} \qquad \tau = \frac{m}{k} \qquad \text{et} \qquad A = g - \frac{\rho V g}{m}'
+            note: "On identifie terme a terme : le coefficient de v_G donne 1/tau (inchange par rapport au rung 7), le terme constant donne A (qui, lui, contient desormais Archimede)."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Déterminer graphiquement la valeur de la vitesse limite $v_{Glim}$ et la valeur de $\tau$.
+        reasoning: |-
+          Même lecture graphique qu'au rung 7 et qu'au rung 8 (exemple travaillé, cette même bille) : la vitesse limite se lit à l'ordonnée du palier horizontal de la courbe $v_G(t)$ ; le temps caractéristique $\tau$ se lit à l'abscisse où la tangente à l'origine (pente $A$, l'équivalent local de $g$ ici) coupe cette asymptote. Sur la figure 2 fournie, le palier se situe à $v_{Glim}=0{,}50\ \text{m/s}$ et la tangente coupe l'asymptote à $t=54\ \text{ms}$.
+
+          $$v_{Glim} = 0{,}50\ \text{m.s}^{-1} \qquad \tau = 54\ \text{ms} = 0{,}054\ \text{s}$$
+      - id: q3
+        stem: |-
+          **(1 pt)** Trouver la valeur de $k$ et celle de $A$.
+        reasoning: |-
+          La question 1 a identifié $\tau=m/k$ et $A=g-\rho Vg/m$ — mais pour les *valeurs numériques*, pas besoin de connaître $\rho$, $V$ ni $g$ séparément : on dispose déjà de $m$ (donnée) et de $\tau$, $v_{Glim}$ (lus au graphe, question 2). $\tau=m/k$ s'inverse directement pour donner $k$. Et en régime permanent (rung 7 : « annuler l'accélération dans l'équation différentielle »), $0 = A - v_{Glim}/\tau$, donc $A = v_{Glim}/\tau$ — encore une fois, aucune résolution complète de l'équation différentielle, seulement une lecture au régime stabilisé.
+        steps:
+          - math: 'k = \frac{m}{\tau} = \frac{2\times10^{-2}}{0{,}054}'
+            note: "On inverse tau = m/k (identification de la question 1), avec m donne et tau lu au graphe (question 2)."
+          - math: '\boxed{k \approx 0{,}37\ \text{kg.s}^{-1}}'
+            note: "Application numerique."
+          - math: 'A = \frac{v_{Glim}}{\tau} = \frac{0{,}50}{0{,}054}'
+            note: "En regime permanent (rung 7), v_Glim = A tau ; on isole A avec les deux valeurs lues au graphe."
+          - math: '\boxed{A \approx 9{,}26\ \text{m.s}^{-2}}'
+            note: "Coherent avec l'equation numerique donnee a la question suivante : le pont se referme."
+      - id: q4
+        part: "Résolution numérique par la méthode d'Euler"
+        stem: |-
+          **(1 pt)** L'équation différentielle du mouvement de G s'écrit sous la forme numérique : $\dfrac{dv_G}{dt} = 9{,}26 - 18{,}52.v_G$.
+
+          En utilisant la méthode d'Euler et les données du tableau suivant, calculer la valeur approchée de $a_3$ et celle de $v_4$.
+        reasoning: |-
+          Geste central d'Euler (rung 8) : la pente $a_i$ ne se lit jamais dans le tableau, elle se **recalcule** à chaque instant à partir de $v_i$ courant, via l'équation différentielle numérique donnée. On calcule d'abord $a_3$ en évaluant cette équation en $v_3=0{,}126\ \text{m/s}$ (la ligne $t=0{,}015\ \text{s}$) ; puis on avance d'un pas $\Delta t=0{,}005\ \text{s}$ (l'écart entre deux lignes du tableau) avec la formule $v_{i+1}=v_i+a_i\Delta t$ pour obtenir $v_4$.
+        steps:
+          - math: 'a_3 = 9{,}26 - 18{,}52\times v_3 = 9{,}26 - 18{,}52\times 0{,}126'
+            note: "On evalue l'equation differentielle numerique en v_3 = 0,126 m/s (ligne t = 0,015 s du tableau)."
+          - math: '\boxed{a_3 \approx 6{,}93\ \text{m.s}^{-2}}'
+            note: "Deja bien en dessous de A = 9,26 : le frottement mord de plus en plus, exactement le mecanisme du rung 7."
+          - math: 'v_4 = v_3 + a_3\,\Delta t = 0{,}126 + 6{,}93\times 0{,}005'
+            note: "Recurrence d'Euler entre t = 0,015 s et t = 0,020 s, avec le pas Delta t = 0,005 s lu dans le tableau."
+          - math: '\boxed{v_4 \approx 0{,}161\ \text{m.s}^{-1}}'
+            note: "Coherent avec la suite du tableau (v = 0,192 m/s a t = 0,025 s), qui se reconstitue a l'identique par le meme geste."
+
+  # ── bk-2019-n-x4 — 2019 N, Exercice IV (Partie II) : saut, mouvement de projectile ──
+  - id: bk-2019-n-x4
+    title: "Saut en longueur à moto : mouvement d'un projectile après un tremplin"
+    source:
+      year: 2019
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice IV — II- Etude du mouvement de G lors de la phase du saut"
+    bareme_total: 2
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/68300 (Exercice IV, Partie II —
+        mouvement plan d'un projectile après un tremplin, sans frottement ;
+        barème de la partie = 2 pt sur les 5 pt de l'exercice complet, dont
+        la Partie I — plan incliné / force motrice / 2ᵉ loi — est transcrite
+        sous lois-de-newton.md). Transcription vérifiée : re-fetch
+        indépendant AlloSchool + diff caractère par caractère par un second
+        agent, PUIS la figure 1 relue indépendamment en quatre passes
+        successives (six corrections identifiées en 2ᵉ passe, deux
+        corrections supplémentaires en 3ᵉ passe, aucune correction en 4ᵉ
+        passe — qui promeut l'entrée après mesures au pixel ;
+        docs/sujets/pc/chute-mouvements-plans.md, statut « vérifié »,
+        2026-08-06). Physique re-dérivée et cohérente
+        ($V_C=\sqrt{19{,}02^2+6{,}18^2}=20{,}0$ m.s⁻¹, $\tan\alpha=6{,}18/19{,}02
+        \Rightarrow \alpha=18{,}0°$, retombée à $t=6{,}18/5=1{,}236$ s d'où
+        $CP=23{,}5$ m $<30$ m — saut non réussi ; $V_{min}=\sqrt{30g/\sin2\alpha}
+        \approx 22{,}6$ m.s⁻¹).
+    intro: |-
+      **Le saut en longueur à moto : mouvement du centre d'inertie d'un système mécanique (examen national, session normale 2019, Exercice IV — Partie II).**
+
+      Le saut en longueur à moto est une épreuve sportive de performance où il y a un véritable défi de sauter le plus loin à partir d'un espace défini. Cet exercice se propose d'étudier le mouvement du centre d'inertie G d'un système (S) formé d'un motard et d'une moto se déplaçant sur une piste de compétition.
+
+      Cette piste est formée d'une partie rectiligne A'B' inclinée d'un angle β par rapport à l'horizontale, d'un tremplin B'C' circulaire, et d'une zone d'atterrissage (π) plane et horizontale (figure 1). Dans tout l'exercice, les frottements sont négligés et l'étude du mouvement du centre d'inertie G est réalisée dans le référentiel terrestre considéré comme galiléen.
+
+      **Données :** l'angle $\beta = 10°$ ; intensité de la pesanteur $g = 10\ \text{m.s}^{-2}$ ; masse du système (S) : $m = 190\ \text{kg}$.
+
+      **Figure 1 (schéma — partie utile à cette Partie II).** À gauche, le plan incliné rectiligne A'B' ; puis le tremplin circulaire, de B' à C'. Le repère $(C, \vec{i_1}, \vec{j_1})$ a pour origine $C$, à l'aplomb de l'extrémité haute $C'$ du tremplin, sur la trajectoire en pointillés du centre d'inertie G : $\vec{j_1}$ est porté par l'axe vertical, fléché vers le haut ; $\vec{i_1}$ par l'axe horizontal, fléché vers la droite ; ces deux axes ne sont pas gradués. Le vecteur $\vec{V_C}$ part de $C$ en faisant l'angle $\alpha$ avec $\vec{i_1}$, tangent à la trajectoire. De $C$ part un arc en pointillés (la trajectoire du saut) qui monte, culmine, puis redescend et recoupe l'axe horizontal au point $P$ — $P$ est donc à la même hauteur que $C$ (d'où $y_G=0$ en $P$). La zone d'atterrissage (π), une bande horizontale, est tracée en dessous de cet axe, un peu plus bas que $P$.
+
+      **II- Etude du mouvement de G lors de la phase du saut**
+
+      À un instant choisi comme nouvelle origine des dates (t = 0), le système (S) quitte le tremplin lors du passage de G par le point C avec une vitesse $\vec{V_C}$ formant un angle $\alpha = 18°$ avec l'horizontale. (S) retombe en une position où le point G se confond avec le point P. On suppose que le système n'est soumis qu'à son poids au cours de cette phase. L'étude du mouvement est effectuée dans le repère orthonormé $(C, \vec{i_1}, \vec{j_1})$ indiqué sur la figure 1.
+    questions:
+      - id: q1
+        part: "II — Etude du mouvement de G lors de la phase du saut : établir le modèle"
+        stem: |-
+          **(0,5 pt)** En appliquant la deuxième loi de Newton, montrer que les équations différentielles vérifiées par les coordonnées $x_G(t)$ et $y_G(t)$ du centre d'inertie G dans le repère $(C, \vec{i_1}, \vec{j_1})$ s'écrivent ainsi : $\dfrac{dx_G}{dt} = V_C.\cos\alpha$ et $\dfrac{dy_G}{dt} = -g.t + V_C.\sin\alpha$
+        reasoning: |-
+          C'est très exactement la méthode du rung 2, transposée telle quelle : le système ne subit que son poids (frottements négligés), donc $\vec a_G=\vec g$, et cette accélération se projette en deux équations **indépendantes** sur le repère $(C,\vec i_1,\vec j_1)$ — $a_x=0$, $a_y=-g$ — parce que $\vec g$ est purement vertical. Ce que l'énoncé appelle ici « équations différentielles » sont en réalité les vitesses déjà primitivées une fois, avec pour condition initiale la vitesse $\vec V_C$ au passage par $C$ (l'instant $t=0$ de cette phase) : $v_{0x}=V_C\cos\alpha$ et $v_{0y}=V_C\sin\alpha$, la même décomposition qu'au rung 2.
+        steps:
+          - math: '\vec P = m\vec a_G \implies \vec a_G = \vec g'
+            note: "Seul le poids s'exerce (frottements negliges) : deuxieme loi de Newton, exactement comme au rung 2."
+          - math: 'a_x = 0 \qquad a_y = -g'
+            note: "Projection sur (C, i1, j1) : j1 vertical vers le haut, i1 horizontal, meme repere-type qu'au rung 2 (g purement vertical)."
+          - math: '\boxed{\frac{dx_G}{dt} = V_C\cos\alpha \qquad \frac{dy_G}{dt} = -g\,t + V_C\sin\alpha}'
+            note: "Premiere primitivation, avec la vitesse initiale V_C au point C decomposee comme au rung 2 : V_C cos(alpha) et V_C sin(alpha)."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Les expressions numériques des équations horaires $x_G(t)$ et $y_G(t)$ du mouvement de G s'écrivent ainsi : $x_G(t) = 19{,}02.t$ et $y_G(t) = -5.t^2 + 6{,}18.t$ ($x_G$ et $y_G$ exprimées en mètre et $t$ en seconde). Vérifier que la vitesse de G au point C est : $V_C = 20\ \text{m.s}^{-1}$.
+        reasoning: |-
+          On identifie d'abord les deux composantes de la vitesse initiale en comparant les équations horaires numériques aux formes générales du rung 2 : le coefficient de $t$ dans $x_G(t)$ est $v_{0x}=V_C\cos\alpha$, et celui dans $y_G(t)$ (à côté du terme en $t$, sachant que le coefficient de $t^2$ vaut $-g/2$) est $v_{0y}=V_C\sin\alpha$. Une fois les deux composantes connues, on remonte à la norme par Pythagore — la démarche inverse de la décomposition $v_{0x}=v_0\cos\alpha$, $v_{0y}=v_0\sin\alpha$ vue au rung 2.
+        steps:
+          - math: 'x_G(t) = V_C\cos\alpha \cdot t = 19{,}02\,t \implies V_C\cos\alpha = 19{,}02\ \text{m.s}^{-1}'
+            note: "On identifie le coefficient de t dans x_G(t) a V_C cos(alpha) (rung 2)."
+          - math: 'y_G(t) = V_C\sin\alpha \cdot t - \frac{g}{2}t^2 = 6{,}18\,t - 5\,t^2 \implies V_C\sin\alpha = 6{,}18\ \text{m.s}^{-1}'
+            note: "Meme identification sur y_G(t) : le coefficient de t donne V_C sin(alpha) (et -g/2 = -5 confirme au passage g = 10 m/s^2)."
+          - math: 'V_C = \sqrt{(V_C\cos\alpha)^2 + (V_C\sin\alpha)^2} = \sqrt{19{,}02^2 + 6{,}18^2}'
+            note: "Norme du vecteur vitesse : on remonte des deux composantes a V_C par Pythagore."
+          - math: '\boxed{V_C \approx 20{,}0\ \text{m.s}^{-1}}'
+            note: "Verification demandee par l'enonce."
+      - id: q3a
+        part: "Un saut réussi ou non ? (condition CP ≥ 30 m)"
+        stem: |-
+          **(0,5 pt)** On considère qu'un saut est réussi si la condition $CP \geq 30\ \text{m}$ est vérifiée. Montrer que le saut effectué dans ce cas n'est pas réussi.
+        reasoning: |-
+          Exactement la méthode « portée » du rung 4 : $P$ est le point où $G$ retombe à la même hauteur que $C$ (donc $y_G=0$), l'autre racine — en plus de $t=0$ — de $y_G(t)=0$. On la trouve en factorisant $y_G(t)$ ; puis $CP$ est la position horizontale $x_G$ à cet instant. On compare le résultat numérique aux $30\ \text{m}$ exigés : c'est en dessous, le saut échoue.
+        steps:
+          - math: 'y_G(t) = 0 \implies t\left(-5\,t + 6{,}18\right) = 0 \implies t = 0 \ \text{ou}\ t_P = \frac{6{,}18}{5}'
+            note: "Meme geste qu'au rung 4 pour la portee : le point d'atterrissage est l'autre racine de y(t) = 0."
+          - math: '\boxed{t_P \approx 1{,}236\ \text{s}}'
+            note: "Instant ou G repasse par la hauteur de C (P est a la meme hauteur que C, figure 1)."
+          - math: 'CP = x_G(t_P) = 19{,}02\times 1{,}236'
+            note: "La portee est la position horizontale a cet instant, comme au rung 4."
+          - math: '\boxed{CP \approx 23{,}5\ \text{m} < 30\ \text{m}}'
+            note: "La condition CP >= 30 m n'est pas verifiee : le saut n'est pas reussi."
+      - id: q3b
+        stem: |-
+          **(0,5 pt)** Déterminer la vitesse minimale $V_{min}$ avec laquelle doit passer G par le point C pour que le saut soit réussi.
+        reasoning: |-
+          On réutilise directement la formule de la portée établie au rung 4, $D=\dfrac{v_0^2\sin(2\alpha)}{g}$, en gardant l'angle $\alpha=18°$ fixé (rien dans l'énoncé ne le change) et en faisant varier seulement la vitesse au décollage $V_0=V_C$. La vitesse minimale est celle qui amène $D$ exactement au seuil de réussite, $D=30\ \text{m}$ : on résout pour $V_{min}$.
+        steps:
+          - math: 'D(\alpha, V_0) = \frac{V_0^2\sin(2\alpha)}{g}'
+            note: "Formule de la portee du rung 4, avec alpha = 18 degres fixe (seule la vitesse au tremplin change ici)."
+          - math: '30 = \frac{V_{min}^2\sin(2\times 18^\circ)}{g} \implies V_{min}^2 = \frac{30\,g}{\sin 36^\circ}'
+            note: "On impose CP = 30 m exactement (le seuil de reussite) et on isole V_min."
+          - math: 'V_{min}^2 = \frac{30\times 10}{0{,}588} \approx 510'
+            note: "Application numerique avec g = 10 et sin(36 degres) = 0,588."
+          - math: '\boxed{V_{min} \approx 22{,}6\ \text{m.s}^{-1}}'
+            note: "Racine carree ; c'est la vitesse minimale au tremplin pour reussir le saut."
+
+  # ── bk-2020-n-x5 — 2020 N, Exercice V : bille dans un liquide visqueux ──
+  # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir la note
+  # éditoriale en tête pour le recoupement assumé.
+  - id: bk-2020-n-x5
+    title: "Chute d'une bille dans un liquide visqueux : équation différentielle et méthode d'Euler"
+    source:
+      year: 2020
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice V — Étude du mouvement de chute verticale d'une bille dans un liquide visqueux"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2020 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/109742 (Exercice V — chute verticale
+        d'une bille dans un liquide visqueux, frottement fluide linéaire,
+        poussée d'Archimède négligée ; barème de l'exercice = 2,5 pt).
+        Transcription vérifiée : re-fetch indépendant AlloSchool + diff OK
+        (agent-vérificateur, 2026-07-11 ; docs/sujets/pc/chute-mouvements-plans.md,
+        statut « vérifié »). NB : ce même sujet sous-tend le sommet de leçon
+        r-bac (exercises.yaml, marqueur [[exercise:r-bac]] à R11 « Exercice
+        de type bac ») — recoupement assumé, même disposition que
+        reactions-acido-basiques bk-2021-n-x1 et rc-charge bk-2019-n-x3 ; le
+        raisonnement ci-dessous est rédigé de nouveau (voix maison), pas
+        copié de exercises.yaml. À l'arbitrage de l'owner si l'on préfère
+        écarter cette entrée de la banque pour éviter le recoupement sur la
+        même page.
+    intro: |-
+      **Étude du mouvement de chute verticale d'une bille dans un liquide visqueux (examen national, session normale 2020, Exercice V).**
+
+      On se propose d'étudier le mouvement de la chute verticale, avec frottement fluide, dans un liquide visqueux d'une bille homogène de masse $m$.
+
+      À l'aide d'une caméra numérique et d'un logiciel adéquat, on suit l'évolution de la vitesse du centre d'inertie $G$ de la bille lors de sa chute verticale dans un liquide visqueux. On étudie le mouvement de $G$ dans un référentiel terrestre supposé galiléen. On repère la position de $G$, à chaque instant $t$, par son ordonnée $y$ sur l'axe vertical $(O, \vec{j})$ orienté vers le bas (figure 1).
+
+      Les forces de frottement fluide exercées sur la bille sont modélisées par la force : $\vec{f} = -k\,v\,\vec{j}$ ; avec $v$ la vitesse instantanée de $G$ et $k$ une constante positive. On néglige la poussée d'Archimède par rapport aux autres forces exercées sur la bille.
+
+      **Données :** $g = 10\ \text{m.s}^{-2}$ ; $m = 2{,}5 \cdot 10^{-2}\ \text{kg}$.
+
+      **Figure 1 (schéma).** Axe vertical $(O, \vec{j})$ orienté vers le bas ; la bille (centre $G$) tombe dans le liquide visqueux le long d'une règle graduée ; ordonnée $y$ croissante vers le bas.
+
+      **Figure 2 (courbe).** $v\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$ ; courbe croissante depuis $0$ vers un palier (vitesse limite) au voisinage de $v_\ell \approx 1{,}5\ \text{m.s}^{-1}$ ; ordonnées graduées $0{,}3,\ 0{,}6,\ 0{,}9,\ 1{,}2,\ 1{,}5$ ; abscisses graduées $0{,}15,\ 0{,}3,\ 0{,}45,\ 0{,}6$.
+
+      **Tableau de mesures (pour la méthode d'Euler, pas $\Delta t = 0{,}015\ \text{s}$).**
+
+      | $t$ | $v\ (\text{m.s}^{-1})$ | $a\ (\text{m.s}^{-2})$ |
+      |-----|:---:|:---:|
+      | / | / | / |
+      | $t_1$ | $0{,}150$ | $a_1 = \ldots$ |
+      | $t_2$ | $0{,}285$ | $8{,}10$ |
+      | $t_3$ | $v_3 = \ldots$ | / |
+    questions:
+      - id: q1
+        part: "Étude du mouvement de chute avec frottement — établir le modèle"
+        stem: |-
+          **(0,5 pt)** En appliquant la deuxième loi de Newton sur la bille, montrer que l'équation différentielle du mouvement du centre d'inertie $G$ s'écrit : $\dfrac{dv}{dt} + \dfrac{k}{m}\,v = g$.
+        reasoning: |-
+          On applique la méthode du rung 7 — bilan des forces, deuxième loi, projection sur l'axe choisi. Seules deux forces s'exercent ici (la poussée d'Archimède est explicitement négligée, contrairement à d'autres sujets sur cette même expérience) : le poids $\vec P=m\vec g$ et le frottement $\vec f=-k\,v\,\vec j$. Avec l'axe $(O,\vec j)$ orienté vers le bas, le poids se projette positivement et le frottement négativement (il s'oppose au mouvement). On projette, on divise par $m$, et on range le terme en $v$ à gauche pour retrouver la forme demandée.
+        steps:
+          - math: 'm\vec a = \vec P + \vec f'
+            note: "Deuxieme loi de Newton ; deux forces seulement, Archimede negligee par hypothese."
+          - math: 'm\frac{dv}{dt} = mg - k\,v'
+            note: "Projection sur (O, j) oriente vers le bas : le poids +mg, le frottement -kv."
+          - math: '\frac{dv}{dt} = g - \frac{k}{m}\,v'
+            note: "On divise par la masse m."
+          - math: '\boxed{\frac{dv}{dt} + \frac{k}{m}\,v = g}'
+            note: "On range le terme en v a gauche : c'est la forme demandee."
+      - id: q2
+        stem: |-
+          **(0,25 pt)** Trouver l'expression de la vitesse limite $v_\ell$ de $G$ en fonction de $g$, $m$ et $k$.
+        reasoning: |-
+          La vitesse limite est celle du régime permanent (rung 7) : on annule l'accélération dans l'équation différentielle — un calcul d'une ligne, jamais une résolution complète — et on isole $v_\ell$. Physiquement, à cet instant le frottement a grandi jusqu'à compenser exactement le poids.
+        steps:
+          - math: '\frac{dv}{dt} = 0 \implies g - \frac{k}{m}\,v_\ell = 0'
+            note: "En regime permanent, l'acceleration s'annule dans l'equation differentielle."
+          - math: '\boxed{v_\ell = \frac{mg}{k}}'
+            note: "On isole la vitesse limite."
+      - id: q3
+        stem: |-
+          **(0,25 pt)** La courbe de la figure 2 représente l'évolution de la vitesse $v$ du centre d'inertie $G$ de la bille. Déterminer graphiquement la valeur de $v_\ell$.
+        reasoning: |-
+          En régime permanent, la courbe $v=f(t)$ atteint un palier horizontal (rung 7) : la vitesse limite se lit directement comme l'ordonnée de ce palier, sans aucun calcul, une simple lecture d'échelle.
+
+          $$v_\ell \approx 1{,}5\ \text{m.s}^{-1}$$
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Vérifier que, dans le système international d'unités, l'équation différentielle du mouvement de $G$ s'écrit ainsi : $\dfrac{dv}{dt} = 10 - 6{,}67\,v$.
+        reasoning: |-
+          L'équation établie à la question 1 est $\dfrac{dv}{dt}=g-\dfrac{k}{m}v$, et $g=10\ \text{m.s}^{-2}$ est déjà connu. Pour le coefficient $k/m$, pas besoin de $k$ isolément : en régime permanent $g=\dfrac{k}{m}v_\ell$ (question 2), donc $k/m=g/v_\ell$, avec $v_\ell$ lu à la question 3. On remplace, et le coefficient tombe.
+        steps:
+          - math: '\frac{k}{m} = \frac{g}{v_\ell} = \frac{10}{1{,}5} \approx 6{,}67\ \text{s}^{-1}'
+            note: "De v_lim = mg/k on tire k/m = g/v_lim, avec v_lim lu sur la figure."
+          - math: '\boxed{\frac{dv}{dt} = g - \frac{k}{m}\,v = 10 - 6{,}67\,v}'
+            note: "On substitue g = 10 et k/m = 6,67 : la forme annoncee est bien verifiee."
+      - id: q5a
+        part: "Résolution numérique par la méthode d'Euler"
+        stem: |-
+          **(0,5 pt)** À l'aide des données du tableau et de la méthode d'Euler, calculer l'accélération $a_1$ à l'instant $t_1$.
+        reasoning: |-
+          L'accélération à un instant ne se lit pas dans le tableau : elle se recalcule à partir de la vitesse de ce même instant (rung 8), via l'équation différentielle vérifiée à la question 4. On applique donc $a_1 = 10 - 6{,}67\,v_1$ avec $v_1 = 0{,}150\ \text{m.s}^{-1}$.
+        steps:
+          - math: 'a_1 = 10 - 6{,}67\,v_1 = 10 - 6{,}67\times 0{,}150'
+            note: "On evalue l'equation differentielle en v_1 = 0,150 m/s."
+          - math: '\boxed{a_1 \approx 9{,}0\ \text{m.s}^{-2}}'
+            note: "Deja un peu en dessous de g = 10 : la bille freine, le frottement a commence a mordre."
+      - id: q5b
+        stem: |-
+          **(0,5 pt)** Calculer la vitesse $v_3$ à l'instant $t_3$, sachant que le pas de calcul est $\Delta t = 0{,}015\ \text{s}$.
+        reasoning: |-
+          On avance d'un pas d'Euler depuis $t_2$ (rung 8) : $v_3=v_2+a_2\Delta t$. Le tableau fournit directement $v_2=0{,}285\ \text{m.s}^{-1}$ et $a_2=8{,}10\ \text{m.s}^{-2}$ — inutile de recalculer $a_2$. Réflexe d'homogénéité : $a_2\Delta t$ multiplie une accélération par un temps, donc c'est bien une vitesse.
+        steps:
+          - math: 'v_3 = v_2 + a_2\,\Delta t = 0{,}285 + 8{,}10\times 0{,}015'
+            note: "Recurrence d'Euler entre t2 et t3, avec les valeurs du tableau."
+          - math: '\boxed{v_3 \approx 0{,}41\ \text{m.s}^{-1}}'
+            note: "La suite des vitesses continue de croitre vers le palier v_ell = 1,5 m/s."
+
+  # ── bk-2021-n-x5 — 2021 N, Exercice V : parachutiste (chute libre puis frottement quadratique) ──
+  - id: bk-2021-n-x5
+    title: "Chute d'un parachutiste : chute libre puis frottement quadratique"
+    source:
+      year: 2021
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice V (2,75 points) — Étude du mouvement d'un parachutiste"
+    bareme_total: 2.75
+    duration_min: 17
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/127287 (Exercice V — mouvement d'un
+        parachutiste, chute libre puis frottement quadratique ; barème de
+        l'exercice = 2,75 pt, exercice complet). Transcription vérifiée :
+        re-fetch indépendant AlloSchool + diff caractère par caractère par un
+        second agent, PUIS les trois figures relues indépendamment par un
+        tiers, mesures au pixel (2026-08-06 ;
+        docs/sujets/pc/chute-mouvements-plans.md, statut « vérifié »). Écart
+        texte-vs-photo assumé et conservé dans l'intro ci-dessous : l'énoncé
+        écrit « hélicoptère en vol stationnaire » mais le cliché reproduit
+        sur le sujet montre un avion (aile horizontale, dérive verticale en
+        flèche) sous lequel trois silhouettes chutent — la vérification
+        confirme que c'est bien l'énoncé, et non la lecture de l'image, qui
+        porte cette incohérence ; les deux (texte et description de la
+        photo) sont transcrits fidèlement, sans correction de l'énoncé.
+        SCOPE NOTE (voir l'en-tête du fichier) : la question 3 exige de
+        décomposer la durée totale du vol en segments et de cumuler des
+        distances par des méthodes différentes selon le segment (rung 1
+        pour la phase 1, rung 7 pour le régime permanent de la phase 2) —
+        une composition que la leçon ne modélise pas explicitement pas à
+        pas ; le pont est fait au point d'usage dans le raisonnement de la
+        question 3.
+    intro: |-
+      **Étude du mouvement d'un parachutiste (examen national, session normale 2021, Exercice V).**
+
+      Le parachute est un dispositif destiné, après son ouverture, à freiner le mouvement d'un parachutiste en chute verticale dans l'air. Cet exercice se propose d'étudier un modèle simplifié du mouvement d'un parachutiste. Ce dernier se laisse tomber sans vitesse initiale d'un hélicoptère en vol stationnaire situé à une hauteur h au-dessus du sol. On étudie le mouvement du centre d'inertie G du système (S), constitué d'un parachutiste équipé de son parachute, dans le repère $(O, \vec{k})$ lié à un référentiel terrestre considéré comme galiléen (figure 1). On considère que la trajectoire de G est verticale et que l'accélération de la pesanteur reste constante.
+
+      **Données :** la masse du système (S) : $m = 100\ \text{kg}$ ; accélération de la pesanteur : $g = 10\ \text{m.s}^{-2}$ ; la hauteur h : $h = 660\ \text{m}$.
+
+      Le mouvement du système s'effectue en deux phases.
+
+      **Figure 1.** À gauche, un axe vertical porte l'origine $O$ en haut, puis, juste en dessous, le vecteur $\vec k$ dessiné comme une courte flèche orientée vers le bas ; l'axe se termine en bas par une pointe de flèche notée « z », confirmant l'axe $(O,\vec k)$ orienté vers le bas. À droite, une photographie en niveaux de gris d'un avion en vol (aile horizontale, dérive verticale en flèche à l'arrière — *l'énoncé écrit « hélicoptère en vol stationnaire », le cliché reproduit sur le sujet montre en réalité un avion ; les deux sont transcrits fidèlement, sans correction*), sous lequel trois silhouettes sont en chute (illustration de la phase 1) ; en dessous, un parachutiste suspendu à son parachute ouvert (illustration de la phase 2).
+
+      **1) Phase 1 : parachute fermé.** Le parachutiste se laisse tomber de l'hélicoptère sans vitesse initiale à un instant choisi comme origine des dates $t = 0$. La chute se fait durant cette phase avec le parachute fermé. On modélise l'évolution de la vitesse du centre d'inertie G du système (S) durant cette phase par la courbe de la figure 2.
+
+      **Figure 2 (courbe, phase 1).** $v\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$, sur papier quadrillé. Droite croissante passant par l'origine ; elle passe par $(1\ \text{s};10\ \text{m.s}^{-1})$, $(2\ \text{s};20\ \text{m.s}^{-1})$ et $(3\ \text{s};30\ \text{m.s}^{-1})$ : son coefficient directeur vaut $10\ \text{m.s}^{-2}$.
+
+      **2) Phase 2 : parachute ouvert.** Le parachutiste ouvre son parachute après une durée $\Delta t_1 = 4\ \text{s}$ depuis le début de sa chute. On choisit l'instant d'ouverture du parachute comme nouvelle origine des dates pour cette phase. Durant cette phase, le système est soumis à son poids et aux frottements de l'air modélisés par une force de contact $\vec{F} = -\alpha.v^2.\vec{k}$ avec $v$ la vitesse de G et $\alpha$ une constante positive. On modélise l'évolution de la vitesse de G durant cette phase par la courbe de la figure 3.
+
+      **Figure 3 (courbe, phase 2).** $v\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$, avec $t=0$ à l'ouverture du parachute, sur papier quadrillé. Courbe décroissante partant de $v_0 = 40\ \text{m.s}^{-1}$, décroissance rapide puis aplatissement sur un palier horizontal (vitesse limite) à $V_\ell = 5{,}0\ \text{m.s}^{-1}$ ; une ligne verticale en pointillés, placée exactement à $t = 30\ \text{s}$, sépare la courbe en deux zones annotées « Régime initial » (à gauche) et « Régime permanent » (à droite).
+    questions:
+      - id: q1a
+        part: "1) Phase 1 : parachute fermé"
+        stem: |-
+          **(0,5 pt)** Quelle est la nature du mouvement de G ? justifier votre réponse.
+        reasoning: |-
+          La figure 2 montre une droite passant par l'origine — une vitesse qui croît linéairement avec le temps, donc une accélération constante. C'est la signature graphique d'un mouvement rectiligne uniformément accéléré (le même critère qu'au rung 1 pour une chute verticale : une droite $v(t)$ signe un $a$ constant).
+
+          Le mouvement de $G$ est rectiligne (trajectoire verticale) et uniformément accéléré : sa vitesse croît proportionnellement au temps (droite passant par l'origine sur la figure 2), donc son accélération est constante.
+      - id: q1b
+        stem: |-
+          **(0,5 pt)** Peut-on considérer que le mouvement du parachutiste, durant cette phase, est une chute libre ? Justifier votre réponse.
+        reasoning: |-
+          On lit la pente de la droite de la figure 2 : elle vaut $10\ \text{m.s}^{-2}$ (confirmée par les points $(1;10)$, $(2;20)$, $(3;30)$), exactement $g$. Au rung 1, la chute libre se caractérise précisément par $a=g$ — pas approximativement, et sur toute la durée de la phase (la droite ne s'incurve jamais, contrairement à la courbe du rung 7 pour une chute avec frottement, qui s'aplatit vers un palier). On peut donc considérer cette phase comme une chute libre.
+
+          Oui : $a = 10\ \text{m.s}^{-2} = g$ sur toute la phase 1 (droite, jamais de courbure) — ce mouvement est assimilable à une chute libre.
+      - id: q2a
+        part: "2) Phase 2 : parachute ouvert"
+        stem: |-
+          **(0,5 pt)** Montrer que l'équation différentielle vérifiée par la vitesse $v$ s'écrit : $\dfrac{dv}{dt} + \dfrac{\alpha}{m}.v^2 = g$.
+        reasoning: |-
+          Même méthode qu'au rung 7, mais avec le second modèle de frottement présenté là-bas — quadratique, $f=k v^2$ — ici baptisé $\alpha$ plutôt que $k$ (l'énoncé réserve la lettre $k$ à autre chose : le vecteur unitaire de l'axe $\vec k$). Le poids et le frottement sont les deux seules forces ; le frottement s'oppose au mouvement, donc pointe en sens contraire du sens de la chute — c'est-à-dire contre le sens de $\vec k$, exactement comme au rung 7.
+        steps:
+          - math: 'm\vec a = \vec P + \vec F \qquad \text{avec} \qquad \vec F = -\alpha\,v^2\,\vec k'
+            note: "Deuxieme loi de Newton : poids et frottement quadratique (rung 7, modele f = k v^2, ici renomme alpha)."
+          - math: 'm\frac{dv}{dt} = mg - \alpha\,v^2'
+            note: "Projection sur l'axe (O, k), oriente vers le bas comme la chute : poids +mg, frottement -alpha v^2 (il s'oppose au mouvement)."
+          - math: '\boxed{\frac{dv}{dt} + \frac{\alpha}{m}\,v^2 = g}'
+            note: "On divise par m et on range le terme en v^2 a gauche."
+      - id: q2b
+        stem: |-
+          **(0,25 pt)** Trouver l'expression de la vitesse limite $V_\ell$ du mouvement en fonction de $m$, $g$ et $\alpha$.
+        reasoning: |-
+          Même geste qu'au rung 7 : on annule l'accélération dans l'équation différentielle, sans jamais la résoudre en entier. Mais comme le frottement dépend ici de $v^2$ (et non de $v$), l'égalité poids = frottement fait apparaître un carré, d'où une racine carrée à l'arrivée — exactement la remarque faite au rung 7 pour le modèle quadratique.
+        steps:
+          - math: '\frac{dv}{dt}=0 \implies g - \frac{\alpha}{m}V_\ell^2 = 0'
+            note: "Regime permanent : on annule l'acceleration, comme au rung 7."
+          - math: '\boxed{V_\ell = \sqrt{\frac{mg}{\alpha}}}'
+            note: "Racine carree car le frottement depend de v^2 (rung 7, cas quadratique) et non de v directement."
+      - id: q2c
+        stem: |-
+          **(0,25 pt)** Déterminer graphiquement $V_\ell$.
+        reasoning: |-
+          Comme au rung 7, la vitesse limite se lit directement au palier horizontal de la courbe $v=f(t)$, sans aucun calcul. Sur la figure 3, le palier se situe à la sous-graduation $5$.
+
+          $$V_\ell \approx 5{,}0\ \text{m.s}^{-1}$$
+      - id: q2d
+        stem: |-
+          **(0,25 pt)** En déduire la valeur de $\alpha$.
+        reasoning: |-
+          On isole $\alpha$ dans l'expression symbolique de la question précédente, en utilisant $V_\ell$ lu au graphe (question 2c) et $m$, $g$ donnés.
+        steps:
+          - math: '\alpha = \frac{mg}{V_\ell^2} = \frac{100\times 10}{5{,}0^2}'
+            note: "On inverse V_ell = racine(mg/alpha), avec V_ell lu au graphe."
+          - math: '\boxed{\alpha \approx 40\ \text{(unites SI)}}'
+            note: "Ordre de grandeur coherent pour un frottement quadratique dans l'air."
+      - id: q3
+        part: "3) Distance parcourue durant le régime initial de la phase 2"
+        stem: |-
+          **(0,5 pt)** Sachant que la durée totale du mouvement de G depuis le début de la chute jusqu'à l'arrivée au sol est $\Delta t = 70\ \text{s}$, trouver la distance $d$ parcourue par G durant le régime initial de la phase 2.
+        reasoning: |-
+          Aucune formule directe ne donne cette distance : il faut découper le vol en segments dont on connaît chacun la distance parcourue, puis retrancher du total. Trois morceaux : la phase 1, chute libre de durée $\Delta t_1=4\ \text{s}$, dont la distance se calcule par $\frac{1}{2}g\Delta t_1^2$ (rung 1) ; le régime permanent de la phase 2, où la vitesse est quasi constante à $V_\ell$ (rung 7) sur une durée qu'on obtient en comptant — durée totale $\Delta t=70\ \text{s}$, moins la phase 1, moins les $30\ \text{s}$ de régime initial de la phase 2 lus sur la figure 3 (la ligne pointillée verticale) ; et enfin le régime initial de la phase 2 lui-même, dont la distance $d$ est justement l'inconnue. La hauteur totale de chute $h$ se répartit entre ces trois segments, d'où $d = h - h_1 - h_{perm}$.
+        steps:
+          - math: 'h_1 = \frac{1}{2}g\,\Delta t_1^2 = \frac{1}{2}\times 10\times 4^2'
+            note: "Phase 1, chute libre (question 1b) : distance parcourue en un temps Delta t1, formule du rung 1."
+          - math: '\boxed{h_1 = 80\ \text{m}}'
+            note: "Hauteur perdue durant la phase 1 (parachute ferme)."
+          - math: 't_{perm} = \Delta t - \Delta t_1 - 30 = 70 - 4 - 30 = 36\ \text{s}'
+            note: "Duree du regime permanent de la phase 2 : duree totale du vol, moins la phase 1, moins les 30 s de regime initial de la phase 2 lus sur la figure 3."
+          - math: 'h_{perm} = V_\ell\times t_{perm} = 5{,}0\times 36'
+            note: "En regime permanent la vitesse est quasi constante (rung 7) : distance = vitesse x duree."
+          - math: '\boxed{h_{perm} = 180\ \text{m}}'
+            note: "Distance parcourue durant le regime permanent de la phase 2."
+          - math: '\boxed{d = h - h_1 - h_{perm} = 660 - 80 - 180 = 400\ \text{m}}'
+            note: "Ce qui reste de la hauteur totale une fois retirees la phase 1 et le regime permanent de la phase 2."
