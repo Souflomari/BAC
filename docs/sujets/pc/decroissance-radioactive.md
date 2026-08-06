@@ -167,3 +167,54 @@ noyau d'argent $^{107}_{47}\text{Ag}$ et une particule $^{A}_{Z}\text{e}$ avec
 
 *(Aucune figure dans cet exercice ; énoncé textuel + le tableau du QCM
 ci-dessus.)*
+
+---
+
+## 2024 — session normale — Exercice 3
+Source: https://www.alloschool.com/element/145763
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-87465, page(s) 4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
+  le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC
+  Sciences Mathématiques B » ; l'en-tête du scan, lu directement, confirme
+  sans ambiguïté SPC/BIOF — README §3, l'image fait foi)
+- Code sujet : NS28F · Barème de l'exercice : 2 points
+  ($0{,}5+0{,}5+0{,}5+0{,}5$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-87465/0004-big.jpg`
+- Pages du scan : 4 (sur 6)
+- Portée : exercice complet. Aucun volet masse-énergie (pas de masse
+  atomique, pas de MeV, pas de diagramme d'énergie) → pas de cross-list vers
+  `noyaux-masse-energie` cette fois-ci (à la différence du radon 2019 et du
+  cadmium 2025).
+
+**EXERCICE 3 (2 points) : Désintégration de l'iridium 192.**
+
+La curiethérapie est une technique qui consiste à traiter des tumeurs
+cancéreuses par insertion d'une source radioactive à proximité de ces
+tumeurs. L'un des éléments radioactifs utilisés pour cette technique est
+l'iridium 192 : $^{192}_{77}\text{Ir}$. La source radioactive émet des
+rayonnements qui détruisent les cellules tumorales qu'ils traversent.
+
+Lors du traitement d'une tumeur, l'iridium 192 donne, essentiellement par
+désintégration, un noyau de platine $^{192}_{78}\text{Pt}$ et une particule
+chargée avec émission d'un rayonnement $\gamma$ (gamma).
+
+**Donnée :** La demi-vie de l'iridium 192 :
+$t_{1/2} = 74\ \text{jours} = 6{,}3936 \cdot 10^{6}\ \text{s}$.
+
+1. (0,5) Déterminer la composition du noyau de l'iridium $^{192}_{77}\text{Ir}$.
+2. (0,5) Écrire l'équation de désintégration de l'iridium 192 en précisant le
+   type de cette désintégration.
+3. On suppose que le corps humain ne contient pas initialement de l'iridium.
+   À la date $t = 0$, on implante à un patient un fil métallique contenant
+   une source d'iridium 192. L'activité de cette source à cette date est :
+   $a_0 = 1{,}08 \cdot 10^{-2}\ \text{Bq}$.
+   1. **3-1.** (0,5) Calculer $N_0$ le nombre de noyaux d'iridium 192 se
+      trouvant dans cette source à $t = 0$.
+   2. **3-2.** (0,5) Déterminer $N_d$ le nombre de noyaux d'iridium 192
+      désintégrés au bout de deux ans ($\Delta t = 730\ \text{jours}$).
+      Commenter le résultat obtenu.
+
+*(Aucune figure dans cet exercice ; énoncé entièrement textuel + la donnée
+ci-dessus.)*

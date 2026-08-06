@@ -100,6 +100,11 @@ $$\text{C}_6\text{H}_5\text{COOH}_{(aq)} + \text{H}_2\text{O}_{(l)} \;\rightleft
   - Q1-6 (0,75) : concentration $C_{eq}$ de sulfite de sodium obtenue à
     l'équivalence, via le tableau d'avancement.
 
+- **2024 N — Ex 1 (Chimie) Partie 2** (dosage de la vitamine C), sous
+  `reactions-acido-basiques.md` :
+  - Q5-4 (0,5) : valeur de la constante d'équilibre $K$ associée à
+    l'équation de la réaction de dosage.
+
 > Recoupe aussi `transformations-deux-sens` (réactions limitées, sens direct /
 > inverse). **Résolu (v0.3)** : l'entrée dédiée **2015 N** ci-dessus fournit un
 > exercice national centré sur l'état d'équilibre ($\tau$, $Q_{r,\text{éq}}$,

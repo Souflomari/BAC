@@ -55,3 +55,65 @@ bobine. La droite $(T)$ représente la tangente à la courbe $(C_1)$ à $t = 0$
   depuis $u_L \approx 9\ \text{V}$ à $t = 0$ vers un palier au voisinage de
   $u_L \approx 1\ \text{V}$ *(lecture d'échelle à confirmer)* ; ordonnées graduées
   $2,\ 4,\ 6,\ 8$ ; abscisses graduées $0{,}01,\ 0{,}02,\ 0{,}03,\ 0{,}04$.
+
+---
+
+## 2024 — session normale — Exercice 4 (Partie 2)
+Source: https://www.alloschool.com/element/145763
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-87465, page(s) 5. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
+  le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC
+  Sciences Mathématiques B » ; l'en-tête du scan, lu directement, confirme
+  sans ambiguïté SPC/BIOF — README §3, l'image fait foi)
+- Code sujet : NS28F · Barème de l'exercice complet : 3,5 points ; **Partie 2**
+  = 1,5 point ($0{,}5+0{,}5+0{,}5$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-87465/0005-big.jpg`
+- Pages du scan : 5 (sur 6)
+- Portée : **Partie 2 — Réponse d'un dipôle RL à un échelon de tension**.
+  La **Partie 1 (décharge d'un condensateur dans un dipôle RL, oscillations
+  pseudopériodiques amorties)** du même exercice est sous `rlc-serie.md`
+  (même montage $R$, $(L,r)$, réutilisés ici avec un générateur idéal $E$ à
+  la place du condensateur $C$).
+
+**2- Réponse d'un dipôle RL à un échelon de tension.**
+
+On réalise le circuit schématisé dans la figure 3 en utilisant le générateur
+de tension de force électromotrice $E = 6\ \text{V}$ ; la bobine $(b)$ et le
+conducteur ohmique de résistance $R$ ajustable et l'interrupteur $K$,
+précédemment utilisés.
+
+On ajuste la valeur de la résistance $R$ à une valeur $R_1$ et on ferme
+l'interrupteur $K$ à l'instant $t_0 = 0$.
+
+1. **2-1.** (0,5) En appliquant la loi d'additivité des tensions, montrer
+   que : $\dfrac{di}{dt} = -\left(\dfrac{R_1+r}{L}\right)i + \dfrac{E}{L}$.
+2. **2-2.** La courbe de la figure 4 représente les variations de
+   $\dfrac{di}{dt}$ en fonction de l'intensité $i$. En s'aidant du graphe de
+   la figure 4 :
+   1. **2-2-1.** (0,5) Vérifier que la valeur de $L$ est : $L = 2\ \text{mH}$.
+   2. **2-2-2.** (0,5) Déterminer la valeur de la constante de temps $\tau$
+      du circuit.
+
+*Figure 3 (schéma) :* boucle rectangulaire. Branche gauche : générateur de
+tension idéale $E$ (cercle), avec une flèche de courant $i$ partant du haut
+du générateur et orientée vers la droite. Branche supérieure : interrupteur
+$K$ (à gauche), puis conducteur ohmique de résistance $R$ ajustable
+(rectangle traversé d'une flèche oblique, symbole rhéostat), étiqueté « R ».
+Branche droite (verticale) : bobine dessinée en spires, étiquetée « (L,r) »
+à gauche du symbole et « (b) » à droite. Branche inférieure : simple fil
+refermant la boucle. Légende : « Figure 3 ».
+
+*Figure 4 (courbe) :* axe des ordonnées $\dfrac{di}{dt}\ (10^{3}\
+\text{A.s}^{-1})$, gradué (traits principaux chiffrés) $1$ et $2$, origine
+$0$ ; axe des abscisses $i\ (\text{mA})$, gradué (traits principaux
+chiffrés) $1$ et $2$, origine $0$. Droite décroissante (segment de pente
+négative constante) : elle coupe l'axe des ordonnées à $i = 0$ en une valeur
+non chiffrée, un carreau principal au-dessus du repère $2$, soit
+approximativement $3\times10^{3}\ \text{A.s}^{-1}$ *(lecture à confirmer)*,
+et coupe l'axe des abscisses (à $\dfrac{di}{dt}=0$) en une valeur non
+chiffrée, un carreau principal au-delà du repère $2$, soit approximativement
+$i \approx 3\ \text{mA}$ *(lecture à confirmer)*, tout près du coin
+inférieur droit du cadre où débute la flèche de l'axe « $i(\text{mA})$ ».
+Légende : « Figure 4 ».

@@ -467,3 +467,94 @@ $V_{BE} = 9{,}6\ \text{mL}$.
 *(Aucune figure dans cette partie ; énoncé entièrement textuel, sans courbe ni
 schéma.)*
 
+---
+
+## 2024 — session normale — Exercice 1 (Chimie), Partie 2
+Source: https://www.alloschool.com/element/145763
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-87465, page(s) 2–3. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
+  le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC
+  Sciences Mathématiques B » ; l'en-tête du scan, lu directement, confirme
+  sans ambiguïté SPC/BIOF — README §3, l'image fait foi)
+- Code sujet : NS28F · Barème de l'exercice complet : 7 points ; **Partie 2**
+  = 4,75 points ($0{,}5+0{,}5+0{,}5+0{,}75+0{,}5+0{,}75+0{,}75+0{,}5$, barème
+  en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-87465/0002-big.jpg`
+  (données, figure 2), `.../0003-big.jpg` (questions)
+- Pages du scan : 2 (fin) et 3 (sur 6)
+- Portée : **Partie 2** (dosage pH-métrique d'une solution aqueuse de
+  vitamine C). La **Partie 1** (suivi temporel de la dégradation de la
+  vitamine C) du même exercice est sous `suivi-temporel-vitesse.md`. Recoupe
+  `etat-equilibre` (Q5-4 : constante d'équilibre $K$ de la réaction de
+  dosage).
+
+**Partie 2 : Dosage d'une solution aqueuse de la vitamine C.**
+
+Un comprimé de vitamine C contient $250\ \text{mg}$ d'acide ascorbique. Ce
+comprimé a été laissé plusieurs jours à l'air libre. La vitamine C qu'il
+contient a réagi avec le dioxygène de l'air. On souhaite déterminer la masse
+d'acide ascorbique restant dans le comprimé à l'aide d'un titrage
+pH-métrique.
+
+**Données :**
+- Toutes les mesures sont effectuées à $25\ °\text{C}$ ;
+- Produit ionique de l'eau : $K_e = 10^{-14}$ ;
+- L'acide ascorbique $\text{C}_6\text{H}_8\text{O}_6$ est noté $AH$ et le
+  couple acide/base associé est $AH_{(aq)}/A^-_{(aq)}$ ;
+- Masse molaire : $M(AH) = 176\ \text{g.mol}^{-1}$.
+
+On écrase le comprimé laissé à l'air libre et on le dissout dans l'eau,
+ainsi on obtient une solution aqueuse $S_A$ d'acide ascorbique $AH$ de
+concentration molaire $C_A$ et de volume $V_{SA} = 50{,}0\ \text{mL}$.
+
+On prend le volume $V_A = 15{,}0\ \text{mL}$ de $S_A$ auquel on ajoute
+progressivement un volume $V_B$ d'une solution aqueuse $S_B$ d'hydroxyde de
+sodium $\text{Na}^+_{(aq)} + \text{HO}^-_{(aq)}$ de concentration
+$C_B = 1{,}50 \cdot 10^{-2}\ \text{mol.L}^{-1}$.
+
+Seule la réaction acido-basique entre l'acide ascorbique $AH$ et l'hydroxyde
+de sodium sera prise en compte. La courbe $(C_1)$ de la figure 2 (page 2/6)
+représente les variations de $pH$ du mélange réactionnel en fonction de
+$V_B$ et la courbe $(C_2)$ représente les variations de $\dfrac{dpH}{dV_B}$
+en fonction de $V_B$.
+
+1. (0,5) Écrire l'équation modélisant la réaction qui a lieu lors de ce
+   dosage.
+2. (0,5) Déterminer graphiquement le volume $V_{BE}$ versé à l'équivalence.
+3. (0,5) Déterminer la valeur de $C_A$.
+4. (0,75) En déduire la masse $m$ restante de vitamine C dans le comprimé
+   laissé à l'air libre.
+5. *(le scan imprime le repère composé « 5/5-1- » pour amorcer cette
+   sous-question ; restitué ci-dessous comme 5. suivi de 5-1.)*
+   **5-1.** (0,5) À partir de l'expression de la constante d'acidité $K_A$ du
+   couple $AH_{(aq)}/A^-_{(aq)}$, établir l'expression de son $pK_A$ en
+   fonction du $pH$ du mélange réactionnel et des concentrations molaires
+   $[AH_{(aq)}]_{\text{éq}}$ et $[A^-_{(aq)}]_{\text{éq}}$ à l'équilibre.
+6. **5-2.** (0,75) Pour un volume $V_B$ versé de $S_B$ tel que
+   $0 < V_B < V_{BE}$, montrer, en s'aidant du tableau d'avancement de la
+   réaction de dosage, que :
+   $\dfrac{[AH_{(aq)}]_{\text{eq}}}{[A^-_{(aq)}]_{\text{eq}}} = \dfrac{V_{BE}}{V_B} - 1$.
+7. **5-3.** (0,75) On choisit $V_B = 8{,}5\ \text{mL}$. Déduire de ce qui
+   précède la valeur du $pK_A$ du couple $AH_{(aq)}/A^-_{(aq)}$.
+8. **5-4.** (0,5) Déterminer la valeur de la constante d'équilibre $K$
+   associée à l'équation de la réaction de dosage.
+
+*Figure 2 (courbe double, page 2/6) :* axe des ordonnées combiné
+$pH\,;\,\dfrac{dpH}{dV_B}$, gradué (traits principaux chiffrés) $0$, $2$,
+$4$ (pas de $2$, quadrillage secondaire fin) ; axe des abscisses
+$V_B\ (\text{mL})$, gradué (traits principaux chiffrés) $5$ et $10$
+(quadrillage secondaire fin, pas non chiffré). Courbe $(C_1)$
+(dosage $pH = f(V_B)$) : croissante, partant d'une valeur non chiffrée
+proche du repère $pH = 2$-$3$ à $V_B = 0$ *(lecture à confirmer)*, montée
+lente et régulière jusqu'à une valeur non chiffrée proche de $pH \approx
+4$–$5$ *(lecture à confirmer)*, puis saut quasi vertical situé entre les
+repères $5$ et $10$, plus proche du second *(position exacte non chiffrée —
+lecture à confirmer)*, avant un palier final à une valeur non chiffrée dans
+le haut du cadre *(lecture à confirmer)*. Courbe $(C_2)$ (dérivée
+$dpH/dV_B = f(V_B)$) : quasi nulle sur presque tout le domaine, avec un pic
+étroit et positif centré sur le même $V_B$ que le saut de $(C_1)$
+(amplitude non chiffrée). Étiquettes « $(C_1)$ » et « $(C_2)$ » portées
+directement sur le graphe, en retrait du pic/du saut. Légende : « Figure 2 ».
+

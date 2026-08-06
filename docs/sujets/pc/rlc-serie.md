@@ -479,3 +479,100 @@ touchant $u_C = 7$ (celui de $t_A$) et le maximum suivant, plus bas — lecture
 directement portée sur le scan (pas une estimation graphique) : c'est cette
 valeur qui répond à la question 2-2-1 (pseudopériode). Légende :
 « Figure 3 ».
+
+---
+
+## 2024 — session normale — Exercice 4 (Partie 1)
+Source: https://www.alloschool.com/element/145763
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-87465, page(s) 4–5. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
+  le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC
+  Sciences Mathématiques B » ; l'en-tête du scan, lu directement, confirme
+  sans ambiguïté SPC/BIOF — README §3, l'image fait foi)
+- Code sujet : NS28F · Barème de l'exercice complet : 3,5 points ; **Partie 1**
+  = 2,0 points ($0{,}25+0{,}5+0{,}5+0{,}75$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-87465/0004-big.jpg`
+  (chapeau, données, figures 1–2), `.../0005-big.jpg` (questions 1-1 à 1-4)
+- Pages du scan : 4 et 5 (sur 6)
+- Portée : **Partie 1 — Décharge d'un condensateur dans un dipôle RL**
+  (oscillations libres, amortissement, énergétique). Classée ici (et non
+  sous `dipole-rl.md`) car le circuit est un condensateur $C$ en série avec
+  une bobine $(L,r)$ (résistance interne non nulle) et un conducteur ohmique
+  $R$ : la courbe obtenue (figure 2) est une oscillation pseudopériodique
+  amortie — comportement RLC série libre, pas un régime RL du premier ordre.
+  Même intitulé et même montage physique que les précédents déjà classés
+  ici : **2020 N Exercice IV Partie II** et **2025 N Exercice 3 Partie 2**
+  (« Décharge d'un condensateur dans un dipôle RL »), tous deux sous
+  `rlc-serie.md` — précédent direct pour ce classement. La **Partie 2
+  (réponse d'un dipôle RL à un échelon de tension)**, qui suit dans le même
+  exercice, est sous `dipole-rl.md`. Reste dans le périmètre du cadre
+  `rlc_serie` (cf. rappel en tête de fichier) : aucune formule de
+  pseudo-période n'est demandée ici, seulement l'équation différentielle et
+  l'interprétation énergétique du régime amorti.
+
+**EXERCICE 4 (3,5 points) : Electricité.**
+
+*(Cadrage de l'exercice, transcrit intégralement : « Dans les circuits
+électriques, une bobine peut se comporter comme un conducteur ohmique ou
+différemment selon le type du courant électrique utilisé et les
+condensateurs peuvent stocker de l'énergie et la restituer en cas de
+besoin. »)*
+
+On se propose dans cet exercice d'étudier :
+- la décharge d'un condensateur dans un dipôle RL,
+- la réponse d'un dipôle RL à un échelon de tension.
+
+**1- Décharge d'un condensateur dans un dipôle RL.**
+
+Le circuit électrique de la figure 1 comporte :
+- un condensateur de capacité $C = 0{,}22\ \text{nF}$,
+- une bobine $(b)$ d'inductance $L$ et de résistance $r$,
+- un conducteur ohmique de résistance $R$ ajustable,
+- un interrupteur $K$.
+
+Le condensateur est initialement chargé totalement par un générateur de
+tension idéale de force électromotrice $E$. On ajuste la résistance $R$ à
+une valeur $R = R_0$. On ferme l'interrupteur $K$ à l'instant $t = 0$.
+
+La courbe de la figure 2 représente l'évolution temporelle de la tension
+$u_C(t)$ aux bornes du condensateur.
+
+1. **1-1.** (0,25) Expliquer de point de vue énergétique l'amortissement
+   observé des oscillations dans le circuit.
+2. **1-2.** (0,5) Établir l'équation différentielle vérifiée par la tension
+   $u_C(t)$ aux bornes du condensateur.
+3. **1-3.** (0,5) Indiquer, en justifiant, dans quel dipôle est
+   principalement emmagasinée l'énergie totale de l'oscillateur à l'instant
+   $t_1$ puis à l'instant $t_2$ (figure 2).
+4. **1-4.** (0,75) Calculer $E_j = |\Delta E_t|$ l'énergie dissipée par
+   effet Joule dans le circuit entre les instants $t = 0$ et $t = t_2$.
+
+*Figure 1 (schéma, circuit RLC série) :* boucle rectangulaire. Coin
+haut-gauche : interrupteur $K$ (symbole d'interrupteur ouvert). Branche
+supérieure : conducteur ohmique de résistance $R$ réglable (rectangle
+traversé d'une flèche oblique, symbole rhéostat), étiqueté « R » en
+dessous. Branche gauche (verticale) : condensateur $C$ (deux traits
+parallèles), étiqueté « C » à gauche, avec une flèche $u_C$ orientée vers le
+haut à côté. Branche droite (verticale) : bobine dessinée en spires,
+étiquetée « (L,r) » à gauche du symbole et « (b) » à droite. Branche
+inférieure : simple fil refermant la boucle. Légende : « Figure 1 ».
+
+*Figure 2 (courbe) :* $u_C\ (\text{V})$ en fonction de $t$ (axe non chiffré
+en unité, flèche horizontale simple « t »). Axe des ordonnées gradué (traits
+principaux chiffrés) $2$ et $-2$, origine $0$ ; quadrillage secondaire fin.
+Oscillation pseudopériodique d'amplitude **décroissante** : la courbe part,
+à $t = 0$, d'une valeur non chiffrée proche du bord supérieur du cadre,
+au-dessus du repère $2$ *(lecture à confirmer)*, décroît, coupe l'axe des
+abscisses en un point marqué par un trait vertical en pointillés court
+étiqueté « $t_1$ » (juste après $t=0$), continue de décroître jusqu'à un
+premier minimum en deçà du repère $-2$ *(valeur non chiffrée, lecture à
+confirmer)*, remonte à un maximum local (plus bas que le point de départ,
+autour de $3$ *(lecture à confirmer)*), redescend jusqu'à un second minimum
+— moins profond que le premier — marqué par un trait vertical en
+pointillés-tirets étiqueté « $t_2$ » (au niveau de ce second minimum),
+remonte ensuite à un nouveau maximum local (plus bas que le précédent),
+avant de sortir du cadre en fin de tracé. Les amplitudes successives
+diminuent régulièrement d'un extremum au suivant, signature de
+l'amortissement. Légende : « Figure 2 ».

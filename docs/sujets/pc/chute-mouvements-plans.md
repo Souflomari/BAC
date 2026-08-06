@@ -691,3 +691,93 @@ dans le sens du mouvement (vers la gauche sur le schéma). Une double flèche
 verticale en pointillés, étiquetée « $h$ », relie le cercle intérieur
 (Terre) au cercle extérieur (orbite), matérialisant l'altitude. Légende :
 « Figure 1 ».
+
+---
+
+## 2024 — session normale — Exercice 5 (Partie 1)
+Source: https://www.alloschool.com/element/145763
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-87465, page(s) 5–6. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
+  le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC
+  Sciences Mathématiques B » ; l'en-tête du scan, lu directement, confirme
+  sans ambiguïté SPC/BIOF — README §3, l'image fait foi)
+- Code sujet : NS28F · Barème de l'exercice complet : 5 points ; **Partie 1**
+  = 2,75 points ($0{,}75+0{,}25+0{,}25+0{,}5+1$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-87465/0005-big.jpg`
+  (chapeau, données, figure 1), `.../0006-big.jpg` (questions, figure 2)
+- Pages du scan : 5 et 6 (sur 6)
+- Portée : **Partie 1 — Chute verticale d'une bille dans un liquide** (avec
+  frottement fluide linéaire ET poussée d'Archimède non négligeable). La
+  **Partie 2 (mouvement d'un système mécanique : plan incliné + poulie)** du
+  même exercice est sous `rotation-axe-fixe.md`. Mention en tête de
+  l'exercice : « Les parties 1 et 2 sont indépendantes ».
+
+**EXERCICE 5 (5 points) : Mécanique.**
+
+*Les parties 1 et 2 sont indépendantes.*
+
+**Partie 1 : Chute verticale d'une bille dans un liquide.**
+
+On étudie le mouvement, dans un liquide $(L)$, d'une bille $(S)$ de centre
+d'inertie $G$, homogène, de masse $m_B$, de volume $V_B$ et de masse
+volumique $\rho_B$.
+
+On étudie le mouvement de $G$ dans un repère $(O,\vec{k})$ lié à un
+référentiel terrestre supposé galiléen. On repère la position de $G$ à
+chaque instant $t$ par la cote $z$ sur l'axe vertical $(O,\vec{k})$ dirigé
+vers le bas.
+
+À l'instant de date $t_0$, prise comme origine des dates ($t_0=0$), on lâche
+la bille dans le liquide $(L)$ sans vitesse initiale d'une position où la
+cote de $G$ est nulle ($z=0$) (figure 1).
+
+Au cours de la chute dans le liquide, la bille $(S)$ est soumise, en plus de
+son poids, à :
+- la force de frottement fluide : $\vec{f} = -\mu.\vec{v}$ où
+  $\vec{v} = v_z.\vec{k}$ et $\mu$ le coefficient de frottement fluide ;
+- la poussée d'Archimède : $\vec{F} = -\rho_L.V_B.\vec{g}$ où $g$ est
+  l'intensité de la pesanteur et $\rho_L$ la masse volumique du liquide $(L)$.
+
+**Données :** Intensité de la pesanteur : $g = 10\ \text{m.s}^{-2}$ ;
+$m_B = 5{,}0\ \text{g}$ ; $\rho_B = 5{,}526 \cdot 10^{3}\ \text{kg.m}^{-3}$.
+
+1. (0,75) En appliquant la deuxième loi de Newton, montrer que la vitesse
+   $v_z(t)$ de $G$ obéit à l'équation différentielle :
+   $\dfrac{dv_z}{dt} + \dfrac{1}{\tau}v_z = g\left(1-\dfrac{\rho_L}{\rho_B}\right)$
+   avec $\tau$ le temps caractéristique du mouvement de $(S)$.
+2. L'exploitation d'un enregistrement vidéo du mouvement de $G$ à l'aide
+   d'un logiciel adéquat, a permis d'obtenir la courbe de la figure 2
+   représentant l'évolution temporelle de la vitesse $v_z(t)$ de $G$. Dans
+   la figure 2, $(T)$ représente la tangente à la courbe au point
+   d'abscisse $t_0 = 0$.
+
+   Par exploitation de la courbe de la figure 2, déterminer la valeur de :
+   1. **2-1.** (0,25) la vitesse limite $v_\ell$ du mouvement de $G$.
+   2. **2-2.** (0,25) $\tau$ le temps caractéristique du mouvement de $G$.
+   3. **2-3.** (0,5) l'accélération $a_0$ du mouvement de $G$ à l'instant
+      $t_0 = 0$.
+3. (1) Déduire la valeur de $\mu$ et celle de $\rho_L$.
+
+*Figure 1 (schéma) :* à droite, une colonne verticale grisée figurant le
+liquide $(L)$, dans laquelle un disque noir plein, étiqueté « (S) »,
+représente la bille. À gauche de la colonne, un axe vertical orienté vers le
+bas porte, en haut, l'origine $O$ (marquée par un tiret) puis le vecteur
+$\vec{k}$ (courte flèche pleine orientée vers le bas) juste en dessous ;
+l'axe se termine en bas par une pointe de flèche étiquetée « z ». Une ligne
+horizontale en pointillés relie $O$ au haut de la colonne de liquide,
+marquant le niveau où $z = 0$ (position initiale de $G$). Légende :
+« Figure 1 ».
+
+*Figure 2 (courbe) :* $v_z\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$.
+Axe des ordonnées gradué (traits principaux chiffrés) $0{,}2$ et $0{,}4$,
+origine $0$ ; axe des abscisses gradué (traits principaux chiffrés) $0{,}1$
+et $0{,}2$, origine $0$. Courbe croissante et concave partant de l'origine
+$(0\,;\,0)$, tendant asymptotiquement vers un palier horizontal (vitesse
+limite) à une valeur non chiffrée au-dessus du repère $0{,}4$, de l'ordre de
+$0{,}6\ \text{m.s}^{-1}$ *(lecture à confirmer)*. La droite $(T)$, en
+pointillés, tangente à la courbe à l'origine, part de $(0\,;\,0)$ et monte
+avec une pente nettement plus raide que la courbe, passant au voisinage du
+repère $t = 0{,}1$ à une hauteur proche du palier de la courbe *(lecture à
+confirmer)*. Légende : « Figure 2 ».

@@ -64,3 +64,72 @@ décalées horizontalement — **Voie A** (en haut) et **Voie B** (en bas). Le
 décalage horizontal entre les débuts des deux salves matérialise le retard
 $\tau$, à mesurer en divisions puis à convertir via $2\ \text{ms/div}$ *(nombre
 de divisions du décalage à lire sur le scan)*.
+
+---
+
+## 2024 — session normale — Exercice 2
+Source: https://www.alloschool.com/element/145763
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-87465, page(s) 3–4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
+  le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC
+  Sciences Mathématiques B » ; l'en-tête du scan, lu directement, confirme
+  sans ambiguïté SPC/BIOF — README §3, l'image fait foi)
+- Code sujet : NS28F · Barème de l'exercice : 2,5 points
+  ($0{,}5+0{,}5+0{,}5+0{,}5+0{,}5$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-87465/0003-big.jpg`
+  (énoncé, figure, Q1–Q3 stem), `.../0004-big.jpg` (Q3-1, Q3-2)
+- Pages du scan : 3 (fin) et 4 (début) (sur 6)
+- Classement (README §4) : onde circulaire à la surface de l'eau, question
+  centrée sur la **célérité** (rapport rayon/temps, sans longueur d'onde ni
+  fréquence imposées) → `-progressives`.
+
+**EXERCICE 2 (2,5 points) : Propagation d'un signal à la surface de l'eau.**
+
+On se propose dans cet exercice d'étudier la propagation d'un signal
+mécanique à la surface de l'eau.
+
+Un caillou jeté, en un point O, dans une cuve contenant de l'eau de
+profondeur $h$, provoque la formation d'une onde circulaire qui se propage à
+la surface de l'eau. (Figure ci-dessous)
+
+1. (0,5) Choisir la proposition juste parmi les propositions suivantes :
+
+   | | |
+   |---|---|
+   | A | Une onde progressive périodique est caractérisée par sa célérité. |
+   | B | Un milieu est dispersif si la célérité de l'onde dépend de sa période T. |
+   | C | Lors de la diffraction dans un même milieu, la célérité de l'onde est modifiée. |
+   | D | Les ondes mécaniques progressives peuvent se propager dans le vide. |
+
+2. La figure suivante donne l'aspect de la surface de l'eau à deux instants
+   $t_1$ et $t_2$. Le tableau suivant donne les valeurs des rayons du front
+   d'onde à des instants donnés :
+
+   | $t(\text{s})$ | $0$ | $t_1$ | $t_2 = t_1 + 1{,}5$ |
+   |---------------|:---:|:-----:|:-------------------:|
+   | $r(\text{cm})$ | $0$ | $r_1 = 14$ | $r_2 = 56$ |
+
+   1. **2-1.** (0,5) Déterminer la valeur de la célérité $v$ de l'onde.
+   2. **2-2.** (0,5) En déduire la valeur de l'instant $t_2$.
+3. On peut estimer la célérité $v$ de l'onde qui se propage à la surface de
+   l'eau par la relation : $v = \sqrt{g.h}$ avec $g = 9{,}8\ \text{m.s}^{-2}$
+   étant l'intensité de la pesanteur et $h$ la profondeur de l'eau.
+   1. **3-1.** (0,5) En utilisant les équations aux dimensions, vérifier
+      l'homogénéité de cette relation.
+   2. **3-2.** (0,5) Calculer $h$.
+
+*Figure (schéma, vue de dessus de la surface de l'eau) :* à gauche, un
+caillou (petit disque) relié par une flèche oblique, étiquetée « Caillou »,
+au point $O$ (centre du dispositif, marqué par un point). À partir de $O$
+partent deux arcs de cercle concentriques matérialisant les fronts d'onde
+successifs : le premier, de petit rayon (étiqueté « $r_1$ », flèche partant
+de $O$), est relié par une flèche à un encadré « L'aspect à l'instant $t_1$ »
+(en haut à droite) ; le second, de plus grand rayon (étiqueté
+« $r_2(\text{cm})$ », flèche horizontale de $O$ vers la droite, atteignant
+l'arc extérieur), est relié par une flèche à un encadré « L'aspect à
+l'instant $t_2$ » (en bas à droite). Un axe horizontal orienté vers la
+droite, gradué « $r(\text{cm})$ », part de $O$. Aucune valeur numérique
+autre que celles déjà données dans le tableau n'est chiffrée sur le schéma ;
+pas de légende numérotée imprimée sur cette figure.

@@ -86,7 +86,7 @@ Mappings issus des entrées **vérifiées** de la banque (fichiers `<slug>.md`)
 et des **couvertures p.1** relevées dans INDEX. `(?)` = mapping de couverture
 non confirmé par lecture des pages intérieures.
 
-### Sujets à carte complète (6)
+### Sujets à carte complète (7)
 
 **2017 N (NS28F)** — 4 exercices
 | Ex | Sujet | Slug(s) |
@@ -145,6 +145,24 @@ cross-list vers une entrée déjà existante (`suivi-temporel-vitesse` →
 `controle-catalyse`). Ex I-P2 (`controle-catalyse`) était déjà `vérifié`
 depuis la passe v0.3 (2026-07-14), non retouché.
 
+**2024 N (NS28F)** — 5 exercices, barème 7+2,5+2+3,5+5 = 20 (couverture p.1,
+`element/145763` · `upload-87465`, 6 p. ; en-tête image confirmé SPC/BIOF,
+NS28F — le résumé HTML d'AlloSchool annonce à tort « Sciences Mathématiques
+B », README §3)
+| Ex | Sujet | Slug(s) |
+|----|-------|---------|
+| 1 | Suivi temporel dégradation vitamine C (P1) + dosage pH-métrique vitamine C (P2) | `suivi-temporel-vitesse` ✓ (P1) + `reactions-acido-basiques` ✓ (P2, cross `etat-equilibre`) |
+| 2 | Propagation d'un signal à la surface de l'eau | `ondes-mecaniques-progressives` ✓ |
+| 3 | Désintégration de l'iridium 192 | `decroissance-radioactive` ✓ (pas de volet masse-énergie cette fois) |
+| 4 | Décharge d'un condensateur dans un dipôle RL (P1) + réponse d'un dipôle RL à un échelon (P2) | `rlc-serie` ✓ (P1, précédent : même intitulé que 2020 N Ex IV-II / 2025 N Ex III-P2) + `dipole-rl` ✓ (P2) |
+| 5 | Chute verticale d'une bille dans un liquide (P1) + mouvement d'un système mécanique : plan incliné + poulie (P2) | `chute-mouvements-plans` ✓ (P1) + `rotation-axe-fixe` ✓ (P2, précédent : même montage que 2011 R) |
+
+**Transcrit (non vérifié) le 2026-08-06 : 8 nouvelles entrées** (Ex1-P1,
+Ex1-P2, Ex2, Ex3, Ex4-P1, Ex4-P2, Ex5-P1, Ex5-P2) + 1 note de cross-list
+(`etat-equilibre`, depuis Ex1-P2 Q5-4) + correction du header
+`rotation-axe-fixe.md` (l'entrée 2011 R n'est plus l'unique annale dédiée
+de ce thème). **2024 N passe à carte complète (2026-08-06).**
+
 ### Sujets à carte partielle (4) — seul l'exercice transcrit est consigné
 
 | Sujet | Exercice consigné | Slug(s) | Reste du sujet |
@@ -160,9 +178,10 @@ ci-dessus (§ Sujets à carte complète).
 ### Sujets sans carte (19 sourcés + 7 hors atteinte)
 
 - **Couverture lue en v0.3, carte non consignée (relevé perdu)** : 2008 N,
-  2009 N, 2013 N, 2014 N, 2016 N, 2022 N, 2023 N, 2024 N, 2014 R, 2016 R —
+  2009 N, 2013 N, 2014 N, 2016 N, 2022 N, 2023 N, 2014 R, 2016 R —
   `contenu à transcrire` (une lecture de couverture chacun suffit pour la
-  carte ; pipeline JPG→Read, bases `upload-` connues).
+  carte ; pipeline JPG→Read, bases `upload-` connues). **2024 N en est sorti
+  (2026-08-06) : carte complète, voir § Sujets à carte complète.**
 - **Sourcé-listé, jamais ouvert** : 2017 R, 2018 R, 2019 R, 2020 R, 2021 R,
   2022 R, 2023 R, 2024 R, 2025 R — `contenu à transcrire` (confirmer
   l'en-tête SPC à l'ouverture).
@@ -178,27 +197,27 @@ couverture univoque). `Cross/(?)` = cross-lists + mappings incertains.
 
 | Slug | Dédiés | Cross/(?) | Années-sessions (dédiés puis cross/?) |
 |------|:-----:|:--------:|----------------------------------------|
-| `rlc-serie` | 5 | 0 | 2018 N, 2019 N, 2020 N, 2021 N, 2025 N |
-| `chute-mouvements-plans` | 5 | 0 | 2018 N, 2019 N, 2020 N, 2021 N, 2025 N |
+| `rlc-serie` | 6 | 0 | 2018 N, 2019 N, 2020 N, 2021 N, 2024 N, 2025 N |
+| `chute-mouvements-plans` | 6 | 0 | 2018 N, 2019 N, 2020 N, 2021 N, 2024 N, 2025 N |
 | `rc-charge` | 4 | 0 | 2018 N, 2019 N, 2021 N, 2025 N |
-| `reactions-acido-basiques` | 5 | 3 | 2019 N, 2020 N, 2021 N, 2018 N, 2025 N · (?) 2015 N, 2017 N |
-| `decroissance-radioactive` | 3 | 1 | 2019 N, 2021 N, 2025 N · cross 2020 N |
-| `dipole-rl` | 2 | 0 | 2017 N, 2020 N |
+| `reactions-acido-basiques` | 6 | 3 | 2019 N, 2020 N, 2021 N, 2018 N, 2024 N, 2025 N · (?) 2015 N, 2017 N |
+| `decroissance-radioactive` | 4 | 1 | 2019 N, 2021 N, 2024 N, 2025 N · cross 2020 N |
+| `dipole-rl` | 3 | 0 | 2017 N, 2020 N, 2024 N |
 | `ondes-em-modulation` | 3 | 0 | 2017 N, 2021 N, 2025 N |
 | `piles` | 2 | 1 | 2017 N, 2020 N · (?) 2012 N |
 | `electrolyse` | 2 | 0 | 2018 N, 2019 N |
 | `ondes-mecaniques-periodiques` | 1 | 2 | 2019 N · (?) 2017 N, 2020 N |
-| `ondes-mecaniques-progressives` | 1 | 1 | 2018 N · (?) 2020 N |
+| `ondes-mecaniques-progressives` | 2 | 1 | 2018 N, 2024 N · (?) 2020 N |
 | `propagation-onde-lumineuse` | 1 | 0 | 2021 N |
 | `noyaux-masse-energie` | 1 | 2 | 2020 N · cross 2019 N, 2025 N |
 | `lois-de-newton` | 1 | 1 | 2019 N · (?) 2017 N |
-| `rotation-axe-fixe` | 1 | 0 | **2011 R** (seule annale dédiée trouvée) |
+| `rotation-axe-fixe` | 2 | 0 | 2011 R, 2024 N (même type de montage : poulie/cylindre + R.F.D. rotation) |
 | `systemes-oscillants` | 2 | 1 | 2018 N, 2025 N · (?) 2017 N |
-| `suivi-temporel-vitesse` | 1 | 3 | 2021 N · (?) 2010 N, 2025 N · cross 2025 N (via `controle-catalyse`) |
+| `suivi-temporel-vitesse` | 2 | 3 | 2021 N, 2024 N · (?) 2010 N, 2025 N · cross 2025 N (via `controle-catalyse`) |
 | `transformations-lentes-rapides` | 1 | 1 | 2010 N · cross 2021 N |
 | `controle-catalyse` | 1 | 1 | 2025 N · cross 2018 N |
 | `transformations-deux-sens` | 1 | 0 | 2012 N |
-| `etat-equilibre` | 1 | 4 | 2015 N · cross 2019/2020/2021 N, 2025 N |
+| `etat-equilibre` | 1 | 5 | 2015 N · cross 2019/2020/2021 N, 2024 N, 2025 N |
 | `evolution-spontanee` | 1 | 1 | 2012 N · cross 2020 N |
 | `esterification-hydrolyse` | 1 | 2 | 2018 N · (?) 2012 N, 2025 N |
 | `aspects-energetiques` | 0 | 3 | cross 2018 N, 2025 N · (?) 2017 N (pendule torsion — entrée autonome cible) |
