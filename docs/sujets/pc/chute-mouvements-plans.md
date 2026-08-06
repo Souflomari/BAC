@@ -76,15 +76,35 @@ $0{,}15,\ 0{,}3,\ 0{,}45,\ 0{,}6$.
 
 ## 2019 — session normale — Exercice IV (Partie II)
 Source: https://www.alloschool.com/element/68300
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-422/upload-54757, page(s) 6–7. À faire vérifier (README §3).
+Statut: transcrit (non vérifié) — 2026-08-06. Vérification adverse indépendante
+(second agent) effectuée le 2026-08-06 : `element/68300` re-fetché,
+`course-422/upload-54757` (7 pages) re-dérivé et **conforme** ; en-tête du scan
+**confirmé** (NS28F, Sciences Physiques BIOF, 3 h, coef 7 ; Exercice IV
+= 5 points, Partie I = 6 × 0,5 = 3 pts, Partie II = 4 × 0,5 = 2 pts) ; diff
+caractère par caractère de la p. 7 (valeurs, unités, indices/exposants,
+équations différentielles avec signes, libellés et numérotation, barème par
+question) — **aucun écart** ; physique re-dérivée et cohérente
+($V_C = \sqrt{19{,}02^2+6{,}18^2} = 20{,}0$ m.s⁻¹, $\tan\alpha = 6{,}18/19{,}02
+\Rightarrow \alpha = 18{,}0°$, coefficient $-5 = -g/2$ ; retombée à
+$t = 6{,}18/5 = 1{,}236$ s d'où $CP = 23{,}5$ m $< 30$ m, saut non réussi ;
+$V_{min} = \sqrt{30g/\sin 2\alpha} = 22{,}6$ m.s⁻¹) ; partition de périmètre
+**confirmée** (Partie I p. 6 = « I- Etude du mouvement sur la partie A'B' »,
+plan incliné + force motrice constante + 2ème loi ⇒ bien `lois-de-newton.md`).
+**(complété sur re-lecture : la phrase de cadrage du système (S), p. 5,
+a été relue et intégrée ci-dessous.)** **Non promu** : la description de la
+figure 1 comportait six erreurs de lecture (A' placé « en bas de la pente »,
+B placé « sur l'horizontale », tremplin arrêté à C au lieu de C', axe des x
+dit « gradué », axe « y » pris pour un repère global décoratif, P placé « sur »
+la bande (π)) — **corrigées ci-dessous** ; l'entrée repart pour un tour de
+vérification (README §3 : corriger et laisser en `transcrit (non vérifié)`).
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice IV : 5 points (Partie I — plan
   incliné / force motrice / 2ème loi, non transcrite ici, voir
   `lois-de-newton.md` : 3 points ; Partie II — saut/projectile, transcrite
   ici : 2 points)
-- Images lues : `.../course-422/upload-54757/0006-big.jpg, 0007-big.jpg`
-- Pages du scan : 6–7 (sur 7)
+- Images lues : `.../course-422/upload-54757/0005-big.jpg (cadrage), 0006-big.jpg, 0007-big.jpg`
+- Pages du scan : 6–7 (sur 7) — cadrage de l'exercice en p. 5
 - Mojibake : aucun
 
 *Thème : mouvement plan dans le champ de pesanteur uniforme — projectile
@@ -92,9 +112,19 @@ après un tremplin (sans frottement).*
 
 **Mouvement du centre d'inertie d'un système mécanique.**
 
-**Contexte (page 6, tel que lu — la phrase d'introduction du système (S)
-figure en page 5, non relue pour cette entrée, hors périmètre ; cf.
-`lois-de-newton.md` pour la Partie I complète) :**
+*(Titre porté par la page de garde. En tête de l'exercice, p. 5, le sujet
+écrit : « Etude du mouvement du centre d'inertie d'un système mécanique ».)*
+
+**Cadrage (page 5, complété sur re-lecture) :**
+
+*Le saut en longueur à moto est une épreuve sportive de performance où il y
+a un véritable défi de sauter le plus loin à partir d'un espace défini.*
+
+*Cet exercice se propose d'étudier le mouvement du centre d'inertie G d'un
+système (S) formé d'un motard et d'une moto se déplaçant sur une piste de
+compétition.*
+
+**Contexte (page 6) :**
 
 Cette piste est formée :
 - d'une partie rectiligne A'B' inclinée d'un angle β par rapport à
@@ -111,26 +141,43 @@ comme galiléen.
 - Intensité de la pesanteur : $g = 10\ \text{m.s}^{-2}$ ;
 - Masse du système (S) : $m = 190\ \text{kg}$.
 
-> **Figure 1 (description d'après le scan)** : schéma de la piste complète,
-> en trois éléments raccordés. À gauche, un plan incliné rectiligne A'B'
-> faisant un angle β avec l'horizontale (angle marqué à la base de la
-> pente) ; sur ce plan, une moto avec son pilote (le système (S)) est
-> dessinée en position initiale, avec le point A en haut de la pente
-> (portant le vecteur $\vec{i}$ orienté le long du plan incliné, dans le
-> sens de la descente) et le centre d'inertie G marqué sur le véhicule ; le
-> bas de la pente est noté A' (sommet côté pente) et se prolonge vers B'
-> (base réelle de la piste), avec un point B situé sur l'horizontale en
-> pointillés servant de référence. Un tremplin B'C' de forme courbe
-> (circulaire) relève ensuite la trajectoire de B' jusqu'au point C. Au
-> point C est défini le repère local $(C, \vec{i_1}, \vec{j_1})$ —
-> $\vec{j_1}$ vertical vers le haut, $\vec{i_1}$ horizontal — et le vecteur
-> vitesse $\vec{V_C}$ y fait l'angle α avec l'horizontale ($\vec{i_1}$). Une
-> trajectoire en arc pointillé part de C, survole un axe horizontal gradué
-> noté « x », et retombe au point P, situé sur la zone d'atterrissage (π)
-> représentée par une bande horizontale épaisse à droite du schéma. Un
-> repère vertical global (origine au-dessus de C, axe « y ») surmonte la
-> figure, apparemment pour fixer l'orientation d'ensemble du schéma.
-> Légende : « Figure 1 ».
+> **Figure 1 (description d'après le scan — corrigée sur re-lecture au
+> zoom)** : schéma de la piste complète, en trois éléments raccordés. Deux
+> lignes distinctes courent d'un bout à l'autre du schéma : le **tracé épais
+> de la piste**, qui porte les points « primés » A', B', C', et, juste
+> au-dessus, la **trajectoire en pointillés du centre d'inertie G**, qui
+> porte les points A, B, C.
+>
+> À gauche, le plan incliné rectiligne descend de **A' (extrémité haute,
+> en haut à gauche du schéma)** vers **B' (bas de la pente)** ; l'angle β
+> est marqué en bas de la pente, entre la piste et une droite horizontale
+> en pointillés. Sur ce plan est dessinée une moto avec son pilote (le
+> système (S)), le centre d'inertie G étant repéré au-dessus du véhicule.
+> Le point **A**, sur la trajectoire en pointillés à l'aplomb de A', porte
+> le vecteur $\vec{i}$ orienté le long du plan incliné dans le sens de la
+> descente ; **B est un point de cette même trajectoire en pointillés, à
+> l'aplomb de B'** — ce n'est pas un point de la droite horizontale. Une
+> courte flèche notée « x » marque, le long de la trajectoire après B,
+> l'axe du repère $(A, \vec{i})$ utilisé en partie I.
+>
+> Le tremplin circulaire relève ensuite la piste de **B' jusqu'à C'**
+> (extrémité haute du tremplin, sur le tracé épais). **C**, à l'aplomb de
+> C' sur la trajectoire, est l'origine du repère $(C, \vec{i_1},
+> \vec{j_1})$ : $\vec{j_1}$ est porté par l'axe **vertical**, fléché vers
+> le haut et **noté « y »** ; $\vec{i_1}$ est porté par l'axe
+> **horizontal**, fléché vers la droite et **noté « x »**. Ces deux axes
+> — **non gradués** — sont ceux dans lesquels sont exprimées $x_G(t)$ et
+> $y_G(t)$ ; il n'y a pas d'autre repère sur la figure. Le vecteur
+> $\vec{V_C}$ part de C en faisant l'angle α avec $\vec{i_1}$, tangent à la
+> trajectoire.
+>
+> De C part un arc en pointillés (la trajectoire du saut) qui monte,
+> culmine, puis redescend et **recoupe l'axe horizontal au point P** — P
+> est donc à la **même hauteur que C** (c'est ce qui rend $y_G = 0$ en P).
+> La zone d'atterrissage (π) est figurée par une **bande horizontale
+> épaisse tracée en dessous de cet axe**, à droite, avec le label « (π) »
+> à sa droite ; P n'est pas dessiné sur cette bande. Légende :
+> « Figure 1 ».
 
 *(Partie I — « Étude du mouvement sur la partie A'B' » : plan incliné,
 force motrice constante, deuxième loi de Newton — déjà transcrite sous
@@ -166,7 +213,31 @@ mouvement est effectuée dans le repère orthonormé $(C, \vec{i_1},
 
 ## 2021 — session normale — Exercice V
 Source: https://www.alloschool.com/element/127287
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-422/upload-84195, page(s) 7–8. À faire vérifier (README §3).
+Statut: transcrit (non vérifié) — 2026-08-06. Vérification adverse indépendante
+(second agent) effectuée le 2026-08-06 : `element/127287` re-fetché,
+`course-422/upload-84195` (8 pages) re-dérivé et **conforme** ; en-tête du scan
+**confirmé** (NS 28F, Sciences Physiques BIOF, 3 h, coef 7 ; page de garde :
+« Exercice V (2,75 points) — Etude du mouvement d'un parachutiste ») ; diff
+caractère par caractère des pp. 7–8 (valeurs, unités, indices/exposants, force
+$\vec{F} = -\alpha.v^2.\vec{k}$ signe et chapeaux vectoriels compris, libellés,
+numérotation 1.1/1.2/2.1→2.4/3, barème par question) — **aucun écart**, total
+$0{,}5{+}0{,}5{+}0{,}5{+}0{,}25{+}0{,}25{+}0{,}25{+}0{,}5 = 2{,}75$ pts
+**confirmé** ; physique re-dérivée et cohérente (phase 1 : pente de la fig. 2
+$= 10$ m.s⁻² $= g$ ⇒ chute libre, et $v(\Delta t_1) = g\Delta t_1 = 40$ m.s⁻¹ ;
+phase 2 : $V_\ell = \sqrt{mg/\alpha} = 5$ m.s⁻¹ ⇒ $\alpha = mg/V_\ell^2 = 40$ SI ;
+question 3 : $d = h - \frac{1}{2}g\Delta t_1^2 - V_\ell(\Delta t - \Delta t_1
+- 30) = 660 - 80 - 180 = 400$ m — les trois lectures graphiques se recoupent).
+**(corrigé sur re-lecture : fig. 3 — la courbe part exactement de
+$40$ m.s⁻¹, non de « ~44 » ; le palier vaut exactement $5$ m.s⁻¹, non
+« 5–6 » ; la séparation des régimes est exactement à $t = 30$ s — les trois
+drapeaux « lecture à confirmer » sont levés. Fig. 2 — droite confirmée par
+$(1;10)$, $(2;20)$, $(3;30)$.)** **Non promu** : la description de la figure 1
+affirmait un « hélicoptère en vol stationnaire d'où **un** personnage se laisse
+tomber » alors que le cliché reproduit sur le sujet montre un **avion** (aile
+horizontale, dérive arrière) sous lequel **trois** silhouettes sont en chute —
+le texte de l'énoncé avait été importé dans la description de l'image.
+**Corrigée ci-dessous** ; l'entrée repart pour un tour de vérification
+(README §3 : corriger et laisser en `transcrit (non vérifié)`).
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS 28F · Barème de l'exercice : 2,75 points (exercice complet)
@@ -232,40 +303,83 @@ figure 3.
 la chute jusqu'à l'arrivée au sol est $\Delta t = 70\ \text{s}$, trouver la
 distance $d$ parcourue par G durant le régime initial de la phase 2.
 
-> **Figure 1 (description d'après le scan)** : schéma vertical. En haut,
-> l'origine O avec le vecteur $\vec{k}$ orienté vers le bas ; à côté, un
-> dessin illustre un hélicoptère en vol stationnaire d'où un personnage se
-> laisse tomber (illustrant la phase de chute libre) ; plus bas sur le même
-> axe, un second dessin illustre un parachutiste avec son parachute ouvert
-> (illustrant la phase de freinage) ; tout en bas de l'axe, le repère se
-> termine par le label « z » accompagné d'une flèche pointant vers le bas,
-> confirmant que l'axe $(O, \vec{k})$ est orienté vers le bas. Légende :
+> **Figure 1 (description d'après le scan — corrigée sur re-lecture au
+> zoom)** : à gauche, une longue droite verticale porte, en haut,
+> l'origine **O** (marquée par un petit tiret sur l'axe) puis, juste en
+> dessous, le vecteur $\vec{k}$ dessiné comme une courte flèche **orientée
+> vers le bas** ; la droite se termine en bas par une pointe de flèche
+> accompagnée du label « z », confirmant que l'axe $(O, \vec{k})$ est
+> orienté vers le bas. À droite de l'axe, deux illustrations superposées :
+> en haut une **photographie en niveaux de gris d'un avion** en vol (aile
+> horizontale, dérive verticale à l'arrière — ce n'est pas un hélicoptère,
+> bien que l'énoncé parle d'un hélicoptère en vol stationnaire), sous
+> lequel **trois petites silhouettes** sont en chute, venant de sauter
+> (illustration de la phase 1) ; en dessous, un dessin d'un **parachutiste
+> suspendu à son parachute ouvert** (illustration de la phase 2). Légende :
 > « Figure 1 ».
 
-> **Figure 2 (courbe, phase 1) (description d'après le scan)** :
-> $v\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$. Droite passant par
-> l'origine, croissante, d'allure rectiligne (mouvement uniformément
-> accéléré) ; ordonnées graduées $10,\ 20,\ 30$ ; abscisses graduées
-> $1,\ 2,\ 3$ ; la droite passe approximativement par
-> $(3\ \text{s},\ 30\ \text{m.s}^{-1})$ *(lecture à confirmer pour les
-> valeurs intermédiaires)*.
+> **Figure 2 (courbe, phase 1) (description d'après le scan — lecture
+> confirmée sur re-lecture)** : $v\ (\text{m.s}^{-1})$ en fonction de
+> $t\ (\text{s})$, sur papier quadrillé. Droite croissante passant par
+> l'origine (mouvement rectiligne uniformément accéléré) ; ordonnées
+> graduées $10,\ 20,\ 30$ ; abscisses graduées $1,\ 2,\ 3$. La droite passe
+> par $(1\ \text{s};\ 10\ \text{m.s}^{-1})$, $(2\ \text{s};\
+> 20\ \text{m.s}^{-1})$ et $(3\ \text{s};\ 30\ \text{m.s}^{-1})$ : son
+> coefficient directeur vaut $10\ \text{m.s}^{-2}$, soit exactement $g$
+> — c'est le fondement de la réponse attendue en 1.2. Le tracé se prolonge
+> légèrement au-delà de $t = 3\ \text{s}$.
 
-> **Figure 3 (courbe, phase 2) (description d'après le scan)** :
-> $v\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$. Courbe décroissante
-> depuis une valeur initiale proche de $44\ \text{m.s}^{-1}$ *(lecture à
-> confirmer)*, décroissance rapide puis aplatissement vers un palier
-> (vitesse limite) au voisinage de $5$–$6\ \text{m.s}^{-1}$ *(lecture à
-> confirmer)* ; une ligne verticale en pointillés sépare la courbe en deux
-> zones annotées « Régime initial » (à gauche) et « Régime permanent » (à
-> droite), la séparation se situant au voisinage de $t \approx 30\ \text{s}$
-> *(lecture à confirmer)* ; ordonnées graduées $10,\ 20,\ 30,\ 40$ ;
-> abscisses graduées $10,\ 20,\ 30,\ 40,\ 50$.
+> **Figure 3 (courbe, phase 2) (description d'après le scan — lectures
+> corrigées/confirmées sur re-lecture)** : $v\ (\text{m.s}^{-1})$ en
+> fonction de $t\ (\text{s})$, sur papier quadrillé. Courbe décroissante
+> partant de $v_0 = 40\ \text{m.s}^{-1}$ *(corrigé : la courbe démarre
+> exactement sur la graduation 40, et non « ~44 » ; cohérent avec
+> $g.\Delta t_1 = 10 \times 4 = 40\ \text{m.s}^{-1}$)*, décroissance rapide
+> puis aplatissement sur un palier horizontal (vitesse limite) à
+> $V_\ell = 5\ \text{m.s}^{-1}$ *(corrigé : le palier coïncide avec la
+> sous-graduation 5, à mi-distance de 0 et 10 ; il donne
+> $\alpha = mg/V_\ell^2 = 40$ SI en 2.4 et $d = 400\ \text{m}$ en 3)* ; une
+> ligne verticale en pointillés placée **exactement à $t = 30\ \text{s}$**
+> *(confirmé)* sépare la courbe en deux zones annotées « Régime initial »
+> (à gauche) et « Régime permanent » (à droite) ; ordonnées graduées
+> $10,\ 20,\ 30,\ 40$ ; abscisses graduées $10,\ 20,\ 30,\ 40,\ 50$.
 
 ---
 
 ## 2018 — session normale — Exercice IV (Partie I)
 Source: https://www.alloschool.com/element/57726
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-422/upload-45118, page(s) 6–7. À faire vérifier (README §3).
+Statut: vérifié — 2026-08-06, vérification adverse indépendante par un second
+agent (README §3). `element/57726` re-fetché, `course-422/upload-45118`
+(8 pages) re-dérivé et **conforme** à la citation. En-tête du scan **confirmé
+sur l'image** (NS28F ; « شعبة العلوم التجريبية : مسلك العلوم الفيزيائية – خيار
+فرنسية » = Sciences Physiques BIOF ; 3 h ; coef 7 ; Exercice IV = 5,5 points ;
+barème en marge de la p. 7 : $1 + 0{,}5 + 1 + 1 = 3{,}5$ pts pour la Partie I,
+donc 2 pts pour la Partie II) — *NB : le résumé HTML d'AlloSchool annonce
+« Sciences Mathématiques B », contredit par le scan, qui fait foi (README §3).*
+Diff caractère par caractère des pp. 6–7 : valeurs, unités, indices et
+exposants ($m = 2.10^{-2}$ kg, $9{,}26$, $18{,}52$, $0{,}015/0{,}126$,
+$0{,}020/6{,}28$, $0{,}025/0{,}192/5{,}70$), signes et chapeaux vectoriels
+($\vec{f} = -k.\vec{v_G}$, $\vec{F_a}$, axe $\overrightarrow{Oy}$ vers le bas),
+libellés, numérotation et barème par question — **aucun écart**. Figures 1 et 2
+jugées au zoom sur le scan et **conformes**. Physique re-dérivée et
+**auto-cohérente** : Euler donne $a_3 = 9{,}26 - 18{,}52 \times 0{,}126
+= 6{,}93$ m.s⁻², puis $v_4 = 0{,}126 + 6{,}93 \times 0{,}005 = 0{,}161$ m.s⁻¹,
+et la ligne suivante du tableau se reconstitue exactement ($v_5 = 0{,}161
++ 6{,}28 \times 0{,}005 = 0{,}192$ ; $a_5 = 9{,}26 - 18{,}52 \times 0{,}192
+= 5{,}70$) ; $v_{Glim} = 9{,}26/18{,}52 = 0{,}500$ m.s⁻¹ et
+$\tau = 1/18{,}52 = 0{,}054$ s, valeurs que la figure 2 restitue au pixel près.
+Partition de périmètre **confirmée** : la Partie II p. 7 est bien
+« Etude énergétique d'un oscillateur mécanique (solide-ressort) »
+($K = 35$ N.m⁻¹, $x(t) = X_m\cos(2\pi t/T_0 + \varphi)$) ⇒ `systemes-oscillants.md`.
+**(corrigé sur re-lecture : fig. 2 — le palier vaut exactement
+$0{,}50\ \text{m.s}^{-1}$ et la tangente à l'origine coupe l'asymptote
+exactement à $t = 54\ \text{ms} = \tau$, lisible car le quadrillage est
+sous-gradué tous les 18 ms — le drapeau « lecture à confirmer » est levé ;
+fig. 1 — le cercle en pointillés est **au niveau de** O, non « juste sous »
+O, conformément à l'énoncé qui place G en O à $t = 0$.)** Écart non bloquant
+relevé et laissé en l'état : le scan imprime « On remplie » et « camera »
+(coquilles de l'original), normalisées en « On remplit » et « caméra » dans la
+transcription ci-dessous.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice IV : 5,5 points (Partie I —
@@ -342,22 +456,34 @@ vitesse instantanée du centre d'inertie de la bille en fonction du temps
 (solide-ressort) » : hors périmètre de ce slug, déjà transcrite sous
 `systemes-oscillants.md`, non reprise ici.)*
 
-> **Figure 1 (description d'après le scan)** : schéma d'une éprouvette
-> graduée verticale, remplie d'un liquide visqueux et transparent (teinté
-> en jaune sur le scan). En haut à gauche, le point O (origine) avec le
-> vecteur $\vec{j}$ orienté vers le bas ; un cercle en pointillés est
-> dessiné juste sous O, en haut du liquide (position initiale de la bille,
-> à $t=0$) ; plus bas dans l'éprouvette, un disque noir plein représente
-> la bille à un instant ultérieur de sa chute. En bas de l'axe, le label
-> « y » avec une flèche vers le bas complète le repère $(O, \vec{j})$.
-> Légende : « Figure 1 ».
+> **Figure 1 (description d'après le scan — vérifiée au zoom)** : schéma
+> d'une éprouvette graduée verticale, posée sur un pied, remplie presque
+> jusqu'en haut d'un liquide visqueux et transparent (teinté en jaune sur
+> le scan) ; la graduation est dessinée le long de la paroi. L'axe est
+> tracé **à gauche de l'éprouvette** : c'est une droite verticale portant
+> le point O (origine, marqué par un tiret) puis, juste en dessous, le
+> vecteur $\vec{j}$ dessiné comme une courte flèche orientée **vers le
+> bas** ; la droite se termine en bas par une pointe de flèche et le label
+> « y », complétant le repère $(O, \vec{j})$. Dans l'éprouvette, un
+> **cercle en pointillés est dessiné au niveau de O** (même hauteur que
+> l'origine, en haut du liquide) : c'est la position initiale de la bille,
+> à $t=0$, conformément à l'énoncé qui confond G avec l'origine de $Oy$ ;
+> plus bas dans l'éprouvette, un disque noir plein représente la bille à un
+> instant ultérieur de sa chute. Légende : « Figure 1 ».
 
-> **Figure 2 (courbe) (description d'après le scan)** :
-> $v_G\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{ms})$. Axe des
-> ordonnées gradué $0{,}1\ ;\ 0{,}2\ ;\ 0{,}3\ ;\ 0{,}4\ ;\ 0{,}5$ ; axe des
-> abscisses gradué $36\ ;\ 72\ ;\ 108\ ;\ 144$. Courbe croissante depuis
+> **Figure 2 (courbe) (description d'après le scan — lectures confirmées
+> sur re-lecture)** : $v_G\ (\text{m.s}^{-1})$ en fonction de
+> $t\ (\text{ms})$, sur quadrillage à double graduation. Axe des ordonnées
+> gradué $0{,}1\ ;\ 0{,}2\ ;\ 0{,}3\ ;\ 0{,}4\ ;\ 0{,}5$ (sous-graduation
+> tous les $0{,}05$) ; axe des abscisses gradué $36\ ;\ 72\ ;\ 108\ ;\ 144$
+> (sous-graduation tous les $18\ \text{ms}$). Courbe croissante depuis
 > l'origine, concave, tendant asymptotiquement vers un palier horizontal
-> au voisinage de $v_{Glim} \approx 0{,}5\ \text{m.s}^{-1}$ *(lecture à
-> confirmer)*. Une droite en pointillés, tangente à la courbe à l'origine,
-> est tracée et coupe l'asymptote horizontale à une abscisse permettant de
-> lire $\tau$ graphiquement (valeur non chiffrée sur le scan lui-même).
+> à $v_{Glim} = 0{,}50\ \text{m.s}^{-1}$ — le palier se confond avec la
+> graduation $0{,}5$, et la valeur est corroborée par l'équation numérique
+> de la question 4 ($9{,}26/18{,}52 = 0{,}500$). Une droite en pointillés,
+> tangente à la courbe à l'origine, est tracée : elle **coupe l'asymptote
+> horizontale $v_G = 0{,}5$ à $t = 54\ \text{ms}$** (soit trois
+> sous-graduations, ou une division et demie), ce qui donne
+> $\tau = 0{,}054\ \text{s}$ — également corroboré par
+> $1/18{,}52 = 0{,}0540\ \text{s}$. La valeur $54$ n'est pas chiffrée sur
+> le scan : elle se lit sur le quadrillage.
