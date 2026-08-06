@@ -73,8 +73,57 @@ et $+6\ \text{cm}$ ; période $T_0$ à lire graphiquement.
 
 ## 2025 — session normale — Exercice 4 (Partie 2)
 Source: https://www.alloschool.com/element/145796
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-87489, page(s) 6. À faire vérifier (README §3).
+Statut: transcrit (non vérifié) — ⚠️ **corrections de figure importantes
+appliquées** par agent-vérificateur-adversarial, 2026-08-06 : l'entrée **reste non
+vérifiée** et appelle impérativement une re-lecture indépendante (README §3).
+**Élément re-dérivé** : `element/145796` → `course-422/upload-87489`, **6 pages**
+(`0007-big.jpg` = 404) ; couverture p.1 relue — **NS28F**, SPC/BIOF, 3 h, coef 7 ;
+carte $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓.
+**Énoncé : conforme.** Diff caractère par caractère contre `0006-big.jpg`
+(p.6/6) : $m=250\ \text{g}$, ressort à spires non jointives de masse négligeable
+et de raideur $K$, glissement sans frottement, repère $R(O,\vec{i})$, « À
+l'équilibre, l'abscisse de $G$ est nul », écart $X_m$ **dans le sens positif**,
+lâché **sans vitesse initiale** à $(t=0)$,
+$x(t)=X_m\cos\!\left(\frac{2\pi}{T_0}t+\varphi\right)$, $\pi^2=10$, intervalle
+$t=1\ \text{s}$ → $t=2{,}5\ \text{s}$ — aucune divergence de valeur, unité ou
+indice. Barème marginal recompté **$0{,}5+0{,}75+0{,}5+0{,}75=2{,}5$** pts ;
+avec la Partie 1 ($3{,}0$) : $\mathbf{5{,}5}$ ✓.
+**Figure 3 : trois divergences bloquantes, corrigées ci-dessous.**
+1. ❌→✅ **Le sens de départ était inversé.** La courbe part bien de
+   $(0\,;\,0)$, mais elle **descend d'abord** : le **premier extremum est un
+   minimum** à $-12{,}5$, situé une demi-division après l'origine (soit
+   $T_0/4$), et ce n'est qu'ensuite qu'elle remonte vers le premier
+   maximum à $+12{,}5$. C'est d'ailleurs ce qu'impose l'énoncé : lâché **sans
+   vitesse initiale** depuis $x=+X_m$ ⇒ $\varphi=0$ et
+   $v_x(t)=-X_m\omega\sin(\omega t)<0$ juste après $t=0$.
+2. ❌→✅ **Le repère « 1 s » n'encadre pas deux maxima consécutifs.** Relevé au
+   pixel : sa double flèche s'étend **exactement d'un trait principal au
+   suivant** (une seule division), ses deux extrémités coïncidant avec deux
+   passages par zéro successifs — soit **une demi-période**. C'est l'étalon de
+   l'axe des temps : **1 division $=1\ \text{s}$**.
+3. ❌→✅ **La période propre ne vaut donc pas 1 s.** Extremums relevés aux
+   divisions 0,5 (min) / 1,5 (max) / 2,5 (min) / 3,5 (max) : **deux maxima
+   consécutifs sont séparés de 2 divisions**, donc
+   $T_0 = \mathbf{2\ \text{s}}$ (le cadre, large de 4 divisions, montre
+   exactement **deux périodes complètes**).
+**Drapeau « lecture à confirmer » adjugé** : valeur des minima — **levée** :
+les minima sont **tangents au trait principal du bas du cadre**, soit exactement
+$-12{,}5$ (2 divisions de $6{,}25$ sous l'axe), symétriques des maxima tangents
+à $+12{,}5$ — lecture au trait, non estimée.
+**Figure 2 : une divergence, corrigée.** « origine $O$ **sous le solide** » : au
+zoom, $O$ (point sur l'axe, étiqueté dessous) est **nettement à gauche du
+solide** ; c'est le **trait vertical pointillé étiqueté « x »** qui monte de
+l'axe jusqu'au solide. Autrement dit le solide est dessiné **à l'abscisse $x$**,
+$O$ étant la position d'équilibre. Le reste de la figure 2 est **conforme**
+(mur hachuré à gauche, ressort à spires, solide rectangulaire portant $G$ et
+étiqueté $(S)$, $\vec{i}$ vers la droite depuis $O$, axe fléché « x »).
+**Physique re-dérivée** : avec $T_0=2\ \text{s}$ et $v_{x,\max}=12{,}5\cdot10^{-2}\ \text{m.s}^{-1}$,
+$X_m=v_{x,\max}T_0/2\pi\approx4{,}0\cdot10^{-2}\ \text{m}$ (4 cm) et
+$K=4\pi^2m/T_0^2=4\times10\times0{,}250/4=\mathbf{2{,}5\ \text{N.m}^{-1}}$ — valeurs
+rondes ; et $t=1\ \text{s}=T_0/2$ (⇒ $x=-X_m$), $t=2{,}5\ \text{s}=1{,}25\,T_0$
+(⇒ $x=0$), ce qui donne à la Q3 une variation non triviale
+$\Delta E_{pe}=-\tfrac12KX_m^2$ — cohérent avec une question à 0,75 pt (la lecture
+erronée $T_0=1\ \text{s}$ aurait donné $\Delta E_{pe}=0$).
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 5,5 points ; **Partie 2**
@@ -129,28 +178,40 @@ l'évolution temporelle de la vitesse $v_x(t)$ de $G$.
 *Figure 2 (schéma) :* ressort horizontal à spires, fixé par son extrémité
 gauche à un mur (hachures verticales), l'autre extrémité attachée au solide
 $(S)$ (petit rectangle, centre d'inertie $G$ marqué par un point) posé sur un
-plan horizontal (trait continu). En dessous, l'axe $(O, \vec{i})$ : origine
-$O$ sous le solide, vecteur $\vec{i}$ (flèche courte) orienté vers la droite,
-puis une abscisse $x$ repérée par un trait vertical en pointillés plus loin
-sur la droite, prolongée par la flèche de l'axe orienté vers la droite,
-étiquetée « x ». Légende : « Figure 2 ».
+plan horizontal (trait continu). En dessous, l'axe $(O, \vec{i})$ : l'origine
+$O$ est un point de l'axe **étiqueté en dessous, nettement à gauche du
+solide** (c'est la position d'équilibre) ; le vecteur $\vec{i}$ (flèche
+courte) part de $O$ vers la droite ; **plus à droite, un trait vertical en
+pointillés monte de l'axe jusqu'au solide et est étiqueté « x » sous l'axe**
+— le solide est donc dessiné à l'abscisse $x$, pas en $O$ ; l'axe se
+prolonge vers la droite par une flèche également étiquetée « x ». Légende :
+« Figure 2 ».
 
 *Figure 3 (courbe) :* $v_x\ (10^{-2}\ \text{m.s}^{-1})$ en fonction de $t$
 (axe non chiffré en unité, flèche horizontale simple « t »), sur quadrillage
-à double graduation (traits principaux, sous-quadrillage fin bleu). Axe des
-ordonnées gradué aux traits principaux $12{,}5$, $6{,}25$, $0$ et $-6{,}25$
-(pas de trait chiffré en deçà de $-6{,}25$, bien que la courbe s'y prolonge —
-valeur minimale non chiffrée). Courbe sinusoïdale partant **exactement de
-l'origine** $(0\,;\,0)$ à $t = 0$, croissante, atteignant un premier maximum
-tangent au trait $12{,}5$, redescendant à travers zéro jusqu'à un premier
-minimum (symétrique, sous $-6{,}25$, non chiffré), puis remontant à un
-deuxième maximum tangent à $12{,}5$ — c'est à ce deuxième maximum que débute
-la double flèche horizontale étiquetée « $1\text{s}$ » tracée au-dessus de la
-courbe — puis redescendant à un deuxième minimum symétrique, puis remontant à
-un troisième maximum tangent à $12{,}5$, où se termine la double flèche
-« $1\text{s}$ » : cet intervalle entre deux maxima consécutifs, directement
-porté sur le scan, donne la période $T_0 = 1\ \text{s}$ *(lecture directe,
-pas une estimation)*. Légende : « Figure 3 ».
+à double graduation (traits principaux, sous-quadrillage fin bleu). Le cadre compte
+**4 divisions principales** en abscisse et **4 en ordonnée** (une division
+$= 6{,}25$). Axe des ordonnées gradué aux traits principaux $12{,}5$ (trait du
+haut du cadre), $6{,}25$, $0$ et $-6{,}25$ ; le trait du bas du cadre, non
+chiffré, vaut donc **$-12{,}5$**.
+
+Courbe sinusoïdale partant **exactement de l'origine** $(0\,;\,0)$ à $t = 0$,
+puis **décroissante** — conformément à l'énoncé (solide lâché sans vitesse
+initiale depuis $x = +X_m$, donc $v_x < 0$ juste après $t=0$). Extremums, tous
+tangents aux traits du haut et du bas du cadre :
+- division 0,5 : **premier minimum**, tangent au trait du bas ($-12{,}5$) ;
+- division 1,5 : premier maximum, tangent au trait du haut ($+12{,}5$) ;
+- division 2,5 : deuxième minimum ; division 3,5 : deuxième maximum.
+Le cadre montre donc **exactement deux périodes complètes**.
+
+Une **double flèche horizontale étiquetée « $1\ \text{s}$ »** est tracée
+au-dessus de la courbe, dans la moitié droite : elle s'étend **exactement d'un
+trait principal au suivant** (une division), ses extrémités coïncidant avec deux
+passages par zéro consécutifs, c'est-à-dire **une demi-période**. C'est
+**l'étalon de graduation de l'axe des temps — une division vaut $1\ \text{s}$ —
+et non la période propre**. La période se lit entre deux maxima consécutifs,
+soit **2 divisions : $T_0 = 2\ \text{s}$** *(lecture au trait, non estimée)*.
+Légende : « Figure 3 ».
 
 ---
 

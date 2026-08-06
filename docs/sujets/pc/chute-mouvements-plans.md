@@ -633,8 +633,41 @@ vitesse instantanée du centre d'inertie de la bille en fonction du temps
 
 ## 2025 — session normale — Exercice 4 (Partie 1)
 Source: https://www.alloschool.com/element/145796
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-87489, page(s) 5–6. À faire vérifier (README §3).
+Statut: transcrit (non vérifié) — **deux corrections de figure appliquées** par
+agent-vérificateur-adversarial, 2026-08-06 : l'entrée **reste non vérifiée** et
+appelle une re-lecture indépendante (README §3).
+**Élément re-dérivé** : `element/145796` → `course-422/upload-87489`, **6 pages**
+(`0007-big.jpg` = 404) ; couverture p.1 relue — **NS28F**, SPC/BIOF, 3 h, coef 7 ;
+carte $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓, dont « Exercice 4 : Mécanique
+(**5,5 points**) ».
+**Énoncé : conforme.** Diff caractère par caractère contre `0005-big.jpg`
+(titre, « Les parties 1 et 2 sont indépendantes », « Partie1 : Mouvement d'un
+satellite artificiel », chapeau complet, « (On note que dans la figure 1
+l'échelle n'est pas respectée) ») et `0006-big.jpg` (Données + questions) :
+$G=6{,}67\cdot10^{-11}\ \text{kg}^{-1}.\text{m}^3.\text{s}^{-2}$,
+$R_T=6380\ \text{km}$, $T=1\text{h}\,52\text{min}$, $h=1336\ \text{km}$,
+base de « **Freinet** » $(\vec{u};\vec{n})$ (orthographe du scan, conservée),
+$\dfrac{T^2}{(R_T+h)^3}=k$ — aucune divergence de valeur, unité, indice ou
+exposant. Barème marginal recompté
+**$0{,}5+0{,}5+0{,}75+0{,}75+0{,}5=3{,}0$** pts ; avec la Partie 2
+($2{,}5$) : $3{,}0+2{,}5=\mathbf{5{,}5}$ ✓.
+**Figure 1 : deux divergences, corrigées.** (i) « deux cercles concentriques **en
+pointillés** » — **seul le cercle extérieur** (orbite) est en pointillés ; le
+cercle intérieur (Terre) est un trait **plein et épais** (la phrase se
+contredisait elle-même). (ii) « $\vec{n}$, une flèche **pointillée** » — au zoom
+maximal, $\vec{n}$ **et** $\vec{u}$ sont **deux flèches pleines** à pointe
+noire partant de $G_S$ ; le **seul** élément en pointillés de la figure est la
+double flèche verticale « $h$ ». Le reste est **conforme** : $O$ marqué d'un point
+au centre, $G_S$ point noir sur l'orbite, $\vec{n}$ dirigée vers $O$, $\vec{u}$
+tangente, encadrés « Le satellite (S) » et « La Terre » reliés par des flèches,
+légende « Figure 1 ». Aucun drapeau « lecture à confirmer » dans cette partie
+(schéma sans échelle — le sujet le dit lui-même).
+**Physique re-dérivée (Kepler)** : $T=1\text{h}52\text{min}=6720\ \text{s}$,
+$R_T+h=7{,}716\cdot10^{6}\ \text{m}$ ⇒
+$m_T=\dfrac{4\pi^2(R_T+h)^3}{G\,T^2}=6{,}0\cdot10^{24}\ \text{kg}$ ✓ (masse de la
+Terre) ; $v_S=\sqrt{\dfrac{Gm_T}{R_T+h}}=7{,}2\cdot10^{3}\ \text{m.s}^{-1}$ et
+$2\pi(R_T+h)/v_S=6{,}7\cdot10^{3}\ \text{s}=T$ ✓ — les quatre données du sujet
+sont mutuellement cohérentes.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 5,5 points ; **Partie 1**
@@ -686,17 +719,18 @@ $(S)$ n'est soumis qu'à la force gravitationnelle exercée par la Terre.
       $G_S$ autour de la Terre.
 3. (0,5) Calculer alors la valeur de la masse $m_T$.
 
-*Figure 1 (schéma) :* deux cercles concentriques en pointillés, centrés sur
-le point « $O$ » (marqué au centre) — le cercle intérieur, plein et épais,
-représente la Terre (étiquetée « La Terre » dans un encadré relié par une
-flèche) ; le cercle extérieur, en pointillés, représente la trajectoire du
+*Figure 1 (schéma) :* deux cercles concentriques centrés sur le point « $O$ »
+(marqué par un point au centre) — le cercle **intérieur**, en **trait plein et
+épais**, représente la Terre (étiquetée « La Terre » dans un encadré relié par une
+flèche) ; le cercle **extérieur**, **en pointillés**, représente la trajectoire du
 satellite. Sur ce cercle extérieur, un point noir étiqueté « $G_S$ » (relié
-par une flèche à un encadré « Le satellite $(S)$ ») porte deux vecteurs :
-$\vec{n}$, une flèche pointillée dirigée vers le centre $O$ (vers
-l'intérieur), et $\vec{u}$, une flèche pleine tangente au cercle, orientée
-dans le sens du mouvement (vers la gauche sur le schéma). Une double flèche
-verticale en pointillés, étiquetée « $h$ », relie le cercle intérieur
-(Terre) au cercle extérieur (orbite), matérialisant l'altitude. Légende :
+par une flèche à un encadré « Le satellite $(S)$ ») porte deux vecteurs, tous
+deux tracés en **flèches pleines à pointe noire** :
+$\vec{n}$, dirigée vers le centre $O$ (vers l'intérieur), et $\vec{u}$,
+tangente au cercle, orientée vers le bas à gauche du schéma (sens du
+mouvement). Le **seul élément en pointillés** hors du cercle-orbite est une
+**double flèche verticale, étiquetée « $h$ »**, qui relie le cercle intérieur
+(Terre) au cercle extérieur (orbite) et matérialise l'altitude. Légende :
 « Figure 1 ».
 
 ---

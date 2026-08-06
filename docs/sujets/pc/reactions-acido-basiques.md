@@ -399,8 +399,36 @@ principal**, et non une estimation.
 
 ## 2025 — session normale — Exercice 1 (Chimie), Partie 1
 Source: https://www.alloschool.com/element/145796
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-87489, page(s) 2. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06, diff OK.
+**Élément re-dérivé** : `element/145796` → `course-422/upload-87489`, **6 pages**
+confirmées (`0007-big.jpg` = 404) ; **couverture p.1 relue** — code **NS28F**,
+« الامتحان الوطني الموحد للبكالوريا – المسالك الدولية – الدورة العادية 2025 »,
+matière الفيزياء والكيمياء, filière شعبة العلوم التجريبية مسلك العلوم الفيزيائية
+(خيار فرنسية) = SPC/BIOF, **3 h**, **coef 7** ; carte du sujet lue et sommée :
+Ex1 Chimie **7** + Ex2 Transformations nucléaires **2,5** + Ex3 Électricité **5**
++ Ex4 Mécanique **5,5** = **20** ✓.
+**Portée du diff** : intégralité de la Partie 1 sur l'image `0002-big.jpg`
+(en-tête « الصفحة 2 / 6 »), caractère par caractère — cadrage (« Les deux parties
+sont indépendantes » ; « - le dosage d'une solution acide; - le suivi cinétique
+d'une réaction d'estérification. »), $\text{NaHSO}_3$, $\text{Na}^+_{(aq)}+\text{HSO}_3^-{}_{(aq)}$,
+$500\ \text{g.L}^{-1}$, $25\ °\text{C}$, $K_e=10^{-14}$,
+$M(\text{NaHSO}_3)=104\ \text{g.mol}^{-1}$, couple $\text{HSO}_3^-/\text{SO}_3^{2-}$,
+$pK_A=7{,}2$, dilution **100 fois**, $V_A=20{,}0\ \text{mL}$,
+$C_B=0{,}10\ \text{mol.L}^{-1}$, $V_{BE}=9{,}6\ \text{mL}$,
+$C_0=4{,}80\ \text{mol.L}^{-1}$, $C_{eq}$, $2\text{Na}^+_{(aq)}+\text{SO}_3^{2-}_{(aq)}$ —
+**aucune divergence de valeur, unité, indice, exposant**.
+**Barèmes recomptés sur la marge du scan** : $0{,}5+0{,}75+0{,}25+0{,}75+0{,}75+0{,}75=\mathbf{3{,}75}$
+(Partie 1) ; Partie 2 relue sur `0003-big.jpg` : $0{,}75+0{,}5+0{,}75+0{,}75+0{,}5=\mathbf{3{,}25}$ ;
+$3{,}75+3{,}25=\mathbf{7}$ = le « EXERCICE 1 : Chimie (7 points) » du scan ✓.
+**Figures : aucune** — vérifié image en main, la Partie 1 est intégralement
+textuelle (la seule figure de l'EXERCICE 1, la courbe $x(t)$ des trois
+expériences, appartient à la Partie 2 et est en p.3) ; aucun drapeau
+« lecture à confirmer » à adjuger.
+**Chimie re-dérivée** : $C_A=C_BV_{BE}/V_A=0{,}10\times9{,}6/20{,}0=4{,}8\cdot10^{-2}\ \text{mol.L}^{-1}$,
+$C_0=100\,C_A=4{,}80\ \text{mol.L}^{-1}$ ✓ (valeur imprimée à la Q1-3) ;
+$C_0\,M=4{,}80\times104=499{,}2\approx500\ \text{g.L}^{-1}$ ✓ (l'étiquette de la
+Q1-4 est donc bien vérifiable) ; $K=K_A/K_e=10^{-7{,}2}/10^{-14}=10^{6{,}8}$ ✓
+(Q1-5 cohérente, réaction totale).
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 7 points ; **Partie 1**

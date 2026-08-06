@@ -413,8 +413,50 @@ $\simeq 10{,}5$ ms $= T_0/2$).
 
 ## 2025 — session normale — Exercice 3 (Partie 2)
 Source: https://www.alloschool.com/element/145796
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-87489, page(s) 4–5. À faire vérifier (README §3).
+Statut: transcrit (non vérifié) — ⚠️ **corrections de figure importantes
+appliquées** par agent-vérificateur-adversarial, 2026-08-06 : l'entrée **reste non
+vérifiée** et appelle impérativement une re-lecture indépendante (README §3).
+**Élément re-dérivé** : `element/145796` → `course-422/upload-87489`, **6 pages**
+(`0007-big.jpg` = 404) ; couverture p.1 relue — **NS28F**, SPC/BIOF, 3 h, coef 7 ;
+carte $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓.
+**Énoncé (texte) : conforme.** Diff caractère par caractère contre `0004-big.jpg`
+(chapeau « 2- Décharge d'un condensateur dans un dipôle RL », $u_C=U_0=10\ \text{V}$,
+position (2), $(t_0=0)$, Q2-1) et `0005-big.jpg` (Q2-2, Q2-2-1, Q2-2-2, Q2-3
+$\frac{dE_T}{dt}=-r.i^2$, Q2-4 $|E_{th}|$ entre $t=0$ et $t=t_A$) ; barème marginal
+recompté **$0{,}5\times5=2{,}5$** pts, et $1{,}0+2{,}5+1{,}5=\mathbf{5}$ ✓.
+**Figure 3 : trois divergences bloquantes, corrigées ci-dessous.**
+1. ❌→✅ **Le repère « $7\cdot10^{-5}\,\text{s}$ » n'encadre pas deux maxima
+   consécutifs.** Relevé au pixel : sa double flèche s'étend **exactement d'un
+   trait principal au suivant** (une seule division), entre les deux verticales
+   principales qui suivent $t_A$. C'est **l'étalon de l'axe des temps**
+   (non gradué) : **1 division $=7\cdot10^{-5}\ \text{s}$**.
+2. ❌→✅ **La pseudopériode ne vaut donc pas $7\cdot10^{-5}$ s.** Les extremums
+   tombent exactement sur les traits principaux, un sur deux (maxima aux
+   divisions 0, 4, 8 ; minima aux divisions 2, 6, 10) et les passages par zéro
+   aux divisions 1, 3, 5, 7, 9 : **deux maxima consécutifs sont séparés de
+   4 divisions**, soit $T=4\times7\cdot10^{-5}=\mathbf{2{,}8\cdot10^{-4}\ \text{s}}$.
+   **Recoupement physique décisif** : $T\simeq T_0=2\pi\sqrt{LC_0}$ avec
+   $C_0=1\ \mu\text{F}$ (Partie 1) et $L=2\ \text{mH}$ (valeur **donnée par le
+   sujet lui-même** en Partie 3, même bobine (b)) donne
+   $2\pi\sqrt{2\cdot10^{-3}\times10^{-6}}=2{,}81\cdot10^{-4}\ \text{s}$ ✓ ;
+   la lecture erronée ($7\cdot10^{-5}$ s) aurait exigé $L\approx0{,}12\ \text{mH}$,
+   incompatible avec l'énoncé.
+3. ❌→✅ **Il n'y a pas de « dernier maximum » en fin de tracé** : après le
+   troisième maximum la courbe redescend et le tracé **s'arrête sur le troisième
+   minimum, situé au bord droit du cadre**.
+**Drapeaux « lecture à confirmer » adjugés** : (a) valeur de départ — **levée** :
+$u_C(0)=\mathbf{10\ \text{V}}$ exactement (2,5 divisions de 4 V au-dessus de 0,
+mesuré au pixel), ce qui est précisément le $U_0=10\ \text{V}$ de l'énoncé ;
+(b) position de $t_B$ — **levée** : $t_B$ est le **passage par zéro descendant**
+qui suit le maximum $t_A$, exactement **une division ($T/4$) après $t_A$**, tous
+deux sur un trait principal (cohérent avec la Q2-2-2 : $i=C\frac{du_C}{dt}<0$
+entre $t_A$ et $t_B$) ; (c) profondeur du premier minimum — **maintenue** :
+$\approx-8{,}5\ \text{V}$, soit légèrement **sous** le trait principal non chiffré
+de $-8\ \text{V}$ ; la valeur n'est pas au trait, donc non affirmée.
+**Autres relevés confirmés** : le niveau **7** est marqué par un **trait pointillé
+bleu + son étiquette**, et **n'est pas un trait principal** (les traits principaux
+chiffrés sont 4, 0 et $-4$ ; ceux de $\pm8$ existent, non chiffrés) ; axe des
+abscisses non gradué, simple flèche « t » ; légende « Figure 3 ».
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 5 points ; **Partie 2**
@@ -455,30 +497,45 @@ tension $u_C(t)$ (figure 3).
 
 *Figure 3 (courbe) :* $u_C\ (\text{V})$ en fonction de $t$ (axe non chiffré
 en unité, flèche horizontale simple « t »), sur quadrillage à double
-graduation (traits principaux, sous-quadrillage fin bleu). Axe des ordonnées
-gradué aux traits principaux $7$ (trait pointillé horizontal bleu tracé à ce
-niveau), $4$, $0$ et $-4$ (traits non chiffrés au-delà, ni vers le haut ni
-vers le bas). Oscillation pseudopériodique d'amplitude **décroissante** :
-la courbe part, à $t = 0$, d'un premier maximum situé au-dessus du trait $7$
-*(valeur exacte non chiffrée — lecture à confirmer)*, descend jusqu'à un
-premier minimum, le plus profond du tracé, situé au-dessous du trait $-4$
-*(valeur exacte non chiffrée — lecture à confirmer)*, puis remonte jusqu'à un
-deuxième maximum qui touche **exactement** le trait pointillé $u_C = 7$ — ce
-maximum est celui repéré par l'abscisse $t_A$ (trait vertical pointillé
-descendant de ce maximum jusqu'à l'axe des abscisses, où il est étiqueté
-« $t_A$ »). La courbe redescend ensuite vers un deuxième minimum, moins
-profond que le premier, puis remonte vers un troisième maximum, plus bas que
-celui de $t_A$ ; l'abscisse $t_B$ est étiquetée juste après $t_A$, sur cette
-branche descendante qui suit le maximum de $t_A$ *(position exacte de $t_B$
-sur la courbe — zéro descendant ou point intermédiaire — à confirmer)*. La
-courbe se poursuit par un troisième minimum, moins profond que le deuxième,
-puis un dernier maximum visible en fin de tracé, plus bas que celui d'avant.
-Un repère à double flèche horizontale, étiqueté « $7 \cdot 10^{-5}\ \text{s}$ »
-et placé au-dessus de la courbe, encadre l'intervalle entre le maximum
-touchant $u_C = 7$ (celui de $t_A$) et le maximum suivant, plus bas — lecture
-directement portée sur le scan (pas une estimation graphique) : c'est cette
-valeur qui répond à la question 2-2-1 (pseudopériode). Légende :
-« Figure 3 ».
+graduation (traits principaux noirs, sous-quadrillage fin bleu). Le cadre
+compte **10 divisions principales** en abscisse. Axe des ordonnées : traits
+principaux chiffrés $4$, $0$ et $-4$ (une division $=4\ \text{V}$ ; les traits
+principaux de $+8$ et $-8$ existent mais ne sont pas chiffrés) ; le niveau
+$u_C = 7$ n'est **pas** un trait principal — il est matérialisé par un **trait
+pointillé horizontal bleu** portant l'étiquette « 7 ».
+
+Oscillation pseudopériodique d'amplitude **décroissante**, dont **tous les
+extremums tombent sur un trait principal, un trait sur deux** :
+- à $t = 0$ (sur l'axe des ordonnées) : **maximum initial $u_C = 10\ \text{V}$**
+  (2,5 divisions au-dessus de $0$) — c'est le $U_0$ de l'énoncé ;
+- division 1 : passage par zéro descendant ;
+- division 2 : **premier minimum, le plus profond du tracé**, un peu au-dessous
+  du trait principal non chiffré de $-8\ \text{V}$ (≈ $-8{,}5\ \text{V}$ —
+  *valeur non située sur un trait : lecture à confirmer*) ;
+- division 4 : **deuxième maximum, qui touche exactement le pointillé
+  $u_C = 7$** ; c'est ce maximum que repère l'abscisse **$t_A$** (trait vertical
+  pointillé descendant jusqu'à l'axe, où il est étiqueté « $t_A$ ») ;
+- division 5 : **$t_B$**, étiqueté de la même façon sous l'axe — c'est le
+  **passage par zéro descendant** qui suit $t_A$, soit exactement une division
+  ($T/4$) plus loin ;
+- division 6 : deuxième minimum, moins profond que le premier (≈ $-6\ \text{V}$ —
+  *hors trait : lecture à confirmer*) ;
+- division 8 : troisième maximum, plus bas que celui de $t_A$ (≈ $4{,}8\ \text{V}$ —
+  *hors trait : lecture à confirmer*) ;
+- division 9 : passage par zéro descendant ; division 10 : **troisième minimum,
+  au bord droit du cadre — le tracé s'arrête là** (il n'y a pas de maximum
+  au-delà).
+
+Un repère à **double flèche horizontale**, étiqueté « $7 \cdot 10^{-5}\ \text{s}$ »
+et tracé au-dessus de la courbe, s'étend **exactement d'un trait principal au
+suivant** (de la verticale de $t_B$ à la suivante) : c'est **l'étalon de
+graduation de l'axe des temps — une division vaut $7 \cdot 10^{-5}\ \text{s}$** —
+et non la pseudopériode. La pseudopériode se lit donc **entre deux maxima
+consécutifs, soit 4 divisions** :
+$T = 4 \times 7\cdot10^{-5} = 2{,}8\cdot10^{-4}\ \text{s}$ (lecture au trait,
+non estimée ; recoupée par $T_0 = 2\pi\sqrt{LC_0} = 2{,}81\cdot10^{-4}\ \text{s}$
+avec $C_0 = 1\ \mu\text{F}$ et $L = 2\ \text{mH}$, la valeur que le sujet donne
+lui-même en Partie 3 pour la même bobine (b)). Légende : « Figure 3 ».
 
 ---
 

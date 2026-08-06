@@ -193,8 +193,40 @@ de l'écran :
 
 ## 2025 — session normale — Exercice 3 (Partie 3)
 Source: https://www.alloschool.com/element/145796
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-87489, page(s) 5. À faire vérifier (README §3).
+Statut: transcrit (non vérifié) — **une correction de figure (mineure) appliquée**
+par agent-vérificateur-adversarial, 2026-08-06 : l'entrée **reste non vérifiée** et
+appelle une re-lecture indépendante (README §3).
+**Élément re-dérivé** : `element/145796` → `course-422/upload-87489`, **6 pages**
+(`0007-big.jpg` = 404) ; couverture p.1 relue — **NS28F**, SPC/BIOF, 3 h, coef 7 ;
+carte $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓.
+**Énoncé : conforme.** Diff caractère par caractère contre `0005-big.jpg`
+(p.5/6) : titre « 3- Sélection et démodulation d'une onde modulée en amplitude »,
+diode $D$ idéale, bobine $(b)$ « supposée aussi idéale », « le condensateur de
+capacité $C_0$ précédemment utilisé », $f_p=162\ \text{kHz}$, $L=2\ \text{mH}$,
+$\pi^2=10$, $f_s=5\ \text{kHz}$, $R_0=1{,}5\ \text{k}\Omega$ — aucune divergence de
+valeur, unité ou indice. Barème marginal recompté
+**$0{,}25+0{,}75+0{,}5=1{,}5$** pt, et $1{,}0+2{,}5+1{,}5=\mathbf{5}$ ✓.
+**Figure 4 : vérifiée élément par élément au zoom — une seule divergence,
+corrigée.** L'antenne était décrite « en **V inversé** » ; le scan porte un **mât
+vertical surmonté d'un V ouvert vers le haut** (deux traits obliques divergents).
+Tout le reste est **conforme** : étage 1 en cadre pointillé avec bobine $(b)$ en
+spires **en parallèle** avec le condensateur variable $C$ (flèche oblique) ;
+premier bloc « Amplification » (rectangle vertical) intercalé ; étage 2 en cadre
+pointillé avec diode $D$ (triangle + barre, pointe vers la droite) → nœud **B**,
+rhéostat $R$ (rectangle + flèche oblique) de B vers le rail du bas portant la
+masse **M** (symbole hachuré), nœud **N** avec $C_0$ en dérivation vers M,
+$C_2$ **en série** sur le fil horizontal, $R_2$ (rectangle) en dérivation vers M,
+puis second bloc « Amplification » et sortie fléchée « **HP** » ; légendes
+« Étage 1 », « Étage 2 », « Figure 4 ». Aucun drapeau « lecture à confirmer » dans
+cette partie (schéma sans grandeur graphique à lire).
+**Physique re-dérivée (cohérence interne)** : $C_1=\dfrac{1}{4\pi^2Lf_p^2}
+=\dfrac{1}{4\times10\times2\cdot10^{-3}\times(1{,}62\cdot10^{5})^2}
+\approx4{,}8\cdot10^{-10}\ \text{F}$ (≈ 476 pF), ordre de grandeur d'un
+condensateur d'accord ✓ ; $R_0C_0=1{,}5\cdot10^{-3}\ \text{s}$ à comparer à
+$1/f_p=6{,}2\cdot10^{-6}\ \text{s}$ et $1/f_s=2\cdot10^{-4}\ \text{s}$ : la double
+inégalité $1/f_p \ll R_0C_0 \ll 1/f_s$ **n'est pas satisfaite** (côté droit
+violé) — la Q3-3 admet donc une réponse justifiée « non », l'énoncé est
+cohérent.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 5 points ; **Partie 3**
@@ -230,8 +262,9 @@ utilisé.
 
 *Figure 4 (schéma) :* chaîne électronique en deux étages encadrés en
 pointillés, plus deux blocs « Amplification » (rectangles) intercalés.
-**Étage 1** (à gauche) : une antenne (symbole en V inversé, deux traits
-obliques) alimente un circuit constitué de la bobine $(b)$ (spires) montée
+**Étage 1** (à gauche) : une antenne (mât vertical surmonté d'un **V ouvert
+vers le haut** — deux traits obliques divergents) alimente un circuit
+constitué de la bobine $(b)$ (spires) montée
 en parallèle avec un condensateur variable $C$ (deux traits parallèles
 traversés d'une flèche oblique, symbole de capacité réglable) ; la sortie de
 cet étage entre dans le premier bloc « Amplification ». **Étage 2** (à

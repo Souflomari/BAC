@@ -385,8 +385,43 @@ abscisses exactement en $(12\,;\,0)$.
 
 ## 2025 — session normale — Exercice 3 (Partie 1)
 Source: https://www.alloschool.com/element/145796
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-87489, page(s) 4. À faire vérifier (README §3).
+Statut: transcrit (non vérifié) — **une correction de figure appliquée** par
+agent-vérificateur-adversarial, 2026-08-06 : l'entrée **reste non vérifiée** et
+appelle une re-lecture indépendante (README §3, « corriger et laisser en
+`transcrit (non vérifié)` »).
+**Élément re-dérivé** : `element/145796` → `course-422/upload-87489`, **6 pages**
+(`0007-big.jpg` = 404) ; couverture p.1 relue — **NS28F**, SPC/BIOF, 3 h, coef 7 ;
+carte du sujet $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓, dont « Exercice 3 : Électricité
+(**5 points**) ».
+**Énoncé : conforme.** Diff caractère par caractère contre `0004-big.jpg`
+(p.4/6) — cadrage intégral (« Les composantes électroniques telle que les
+diodes… de numérisation…. »), « 1- Charge d'un condensateur par une source de
+courant », $I_0=1\ \mu\text{A}$, $(t_0=0)$, position (1), $C_0=1\ \mu\text{F}$ ;
+barème marginal recompté **$0{,}5+0{,}5=1{,}0$** pt, et
+$1{,}0+2{,}5+1{,}5=\mathbf{5}$ pts sur les trois sous-parties ✓.
+**Figure 2 (courbe) : conforme, et le drapeau « lecture à confirmer » du coin est
+levé.** Grille mesurée au pixel : 5 divisions principales × 5 sur chaque axe,
+graduations chiffrées **2 et 4** seulement, la droite passe exactement par
+$(0;0)$, $(2;2)$ et $(4;4)$ (pente **1 V.s$^{-1}$** $=I_0/C_0$) et **se termine
+exactement au coin supérieur droit du cadre, qui vaut $(10\ \text{s}\,;\,10\ \text{V})$**
+(lecture au trait, non estimée : le cadre couvre 5 divisions de 2 unités sur
+chacun des deux axes) — valeur recoupée par l'énoncé de la Partie 2, qui bascule
+$K$ quand $u_C=U_0=10\ \text{V}$.
+**Figure 1 (schéma) : une divergence, corrigée.** Le générateur $G$ était décrit
+comme « symbole cercle contenant un **arc courbe** » ; le scan porte un **cercle
+traversé d'un trait horizontal droit** (diamètre) — vérifié par relevé de pixels
+(le trait occupe une seule et même rangée sur tout le diamètre, aucune courbure).
+Description rectifiée ci-dessous ; le point commun de l'interrupteur $K$ a
+également été précisé (c'est le nœud haut de $C_0$, marqué d'un point, le
+basculement se faisant vers (1) ou vers (2)). Tout le reste de la figure 1 a été
+vérifié élément par élément au zoom et **conforme** : $R$ (rectangle, étiquette
+au-dessus) sur la branche du haut, nœuds (1)/(2)/N/M, $u_C$ fléchée **vers le
+haut** à droite du condensateur, $i$ fléchée **vers le bas** sous le
+condensateur, bobine « (b) » $(L,r)$ en spires entre N et M, légende
+« Figure 1 ».
+**Physique re-dérivée** : $u_C(t)=\frac{I_0}{C_0}t$ ⇒ pente $=I_0/C_0$ ; la pente
+lue (1 V.s$^{-1}$) avec $I_0=1\ \mu\text{A}$ donne $C_0=1\ \mu\text{F}$ ✓ (Q1-2) ;
+et $u_C=10\ \text{V}$ au bout de 10 s = coin du cadre ✓.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 5 points ; **Partie 1**
@@ -430,13 +465,16 @@ $u_C(t)$ aux bornes du condensateur lors de sa charge (figure 2).
 
 *Figure 1 (schéma, commun aux trois parties de l'exercice) :* boucle
 comportant, de gauche à droite en partant du bas : le générateur $G$ (symbole
-cercle contenant un arc courbe — symbole générique de source), monté en
-série avec le conducteur ohmique $R$ (rectangle, étiquette « R » au-dessus)
-sur la branche du haut, jusqu'au nœud étiqueté « (1) » ; à droite de ce
+**cercle traversé d'un trait horizontal droit**, en diamètre — symbole du
+générateur de courant continu), sur la branche verticale de gauche, en série
+avec le conducteur ohmique $R$ (rectangle, étiquette « R » au-dessus) porté par
+la branche du haut, jusqu'au nœud étiqueté « (1) » ; à droite de ce
 nœud, un interrupteur à double position, actionné par le levier « K »
 (étiqueté au-dessus), pouvant basculer sur la position « (1) » (vers $R$–$G$)
 ou sur la position « (2) » (vers le nœud « N », à droite). Le condensateur
-$C_0$ est monté verticalement entre le nœud (1)/K et le nœud « M » en bas ;
+$C_0$ est monté verticalement entre **le point commun (pivot) de
+l'interrupteur K** — nœud marqué d'un point, sommet de la branche du
+condensateur — et le nœud « M » en bas ;
 sa tension $u_C$ est fléchée vers le haut à sa droite, et le courant $i$ est
 fléché vers le bas juste en dessous du condensateur. À droite, entre N (en
 haut) et M (en bas), la bobine « (b) » de caractéristiques $(L, r)$ est
@@ -449,8 +487,12 @@ non chiffrés au-delà) ; axe des abscisses gradué aux traits principaux $2$
 et $4$ (traits non chiffrés au-delà). Droite croissante partant exactement de
 l'origine, passant par les points $(2\,;\,2)$ et $(4\,;\,4)$ — pente
 apparente $1\ \text{V.s}^{-1}$, cohérente avec $I_0/C_0$ — et se prolongeant
-en ligne droite jusqu'au coin supérieur droit du cadre *(valeur exacte du
-coin non chiffrée sur le scan — lecture à confirmer)*.
+en ligne droite jusqu'au coin supérieur droit du cadre. Le cadre compte
+**5 divisions principales de 2 unités sur chacun des deux axes** : le coin
+supérieur droit, non chiffré sur le scan, vaut donc exactement
+$(10\ \text{s}\,;\,10\ \text{V})$ *(lecture au trait, adjugée à la vérification
+du 2026-08-06 ; recoupée par $u_C=U_0=10\ \text{V}$ au basculement de $K$,
+Partie 2)*.
 
 ---
 

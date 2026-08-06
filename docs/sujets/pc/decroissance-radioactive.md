@@ -114,8 +114,40 @@ exponentielle partant de $a_0 \approx 10^{11}\ \text{Bq}$ à $t = 0$
 
 ## 2025 — session normale — Exercice 2
 Source: https://www.alloschool.com/element/145796
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-87489, page(s) 3–4. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06, diff OK.
+**Élément re-dérivé** : `element/145796` → `course-422/upload-87489`, **6 pages**
+confirmées (`0007-big.jpg` = 404) ; **couverture p.1 relue** — **NS28F**, SPC/BIOF
+(شعبة العلوم التجريبية مسلك العلوم الفيزيائية — خيار فرنسية), 3 h, coef 7 ;
+carte du sujet : $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓, dont
+« Exercice 2 : Transformations nucléaires (**2,5 points**) — Désintégration d'un
+radioélément ».
+**Portée du diff** : exercice complet, caractère par caractère, sur les images
+`0003-big.jpg` (titre « EXERCICE 2 : Désintégration du cadmium 107 (2,5 points) »,
+chapeau, Données, QCM, Q2 — bas de la p.3/6) et `0004-big.jpg` (Q3 entière — haut
+de la p.4/6). Confirmés sans divergence : $^{107}_{48}\text{Cd}$,
+$^{107}_{47}\text{Ag}$, $^{A}_{Z}\text{e}$, rayonnement $\gamma$,
+$m(^{107}_{48}\text{Cd})=106{,}88045\ \text{u}$,
+$m(^{107}_{47}\text{Ag})=106{,}87947\ \text{u}$,
+$m(^{A}_{Z}\text{e})=5{,}486\cdot10^{-4}\ \text{u}$, $t_{1/2}=6{,}93$ heures,
+$1\text{u}=931{,}49\ \text{MeV.c}^{-2}$, $a_0=1{,}25\cdot10^{12}\ \text{Bq}$,
+$t_1=2\,t_{1/2}$, $t_2=3\,t_{1/2}$, $a_2=\frac{a_1}{2}$,
+$N_d=\frac{a_0t_{1/2}}{8\ln 2}$ — **et les quatre items A/B/C/D du QCM mot à mot**
+(A « 59 protons » ; B « …d'autant plus rapide que sa constante radioactive
+$\lambda$ est plus petite » ; C « diagramme $(N,Z)$ de Segré… perpendiculaire à
+l'axe des Z » ; D « …d'autant plus forte que son énergie de liaison par nucléon
+est petite »).
+**Barème recompté sur la marge** : $0{,}5+0{,}5+0{,}5+0{,}5+0{,}5=\mathbf{2{,}5}$
+= le total imprimé au titre ✓.
+**Figures : aucune** — vérifié image en main sur les deux pages ; le seul élément
+tabulaire est le cadre du QCM, reproduit fidèlement. Aucun drapeau
+« lecture à confirmer » à adjuger.
+**Physique re-dérivée** : $a=a_0e^{-\lambda t}$ ⇒ $a_1=a_0/4$, $a_2=a_0/8=a_1/2$ ✓
+(Q3-1) ; $N_d=N_1-N_2=(a_1-a_2)/\lambda=(a_0/8)\cdot t_{1/2}/\ln 2
+=\frac{a_0t_{1/2}}{8\ln2}$ ✓ — l'expression imprimée à la Q3-2 est exacte ;
+défaut de masse $\Delta m=106{,}88045-106{,}87947-5{,}486\cdot10^{-4}
+=4{,}314\cdot10^{-4}\ \text{u}>0$, soit $\approx0{,}402\ \text{MeV}$ par
+désintégration — **positif**, cohérent avec la transformation $Z:48\to47$ (émission
+$\beta^+$, particule $^{0}_{+1}\text{e}$), donc la Q3-3 est bien posée.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 2,5 points
