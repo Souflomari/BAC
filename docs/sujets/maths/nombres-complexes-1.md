@@ -137,3 +137,34 @@ Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\ve
 5. a) (0,75) Vérifier que $d - b = \dfrac{\sqrt{3} - 1}{2}(1 - i)$ ; en déduire un argument du nombre $d - b$
    b) (0,5) Ecrire le nombre $1 - b$ sous forme trigonométrique.
    c) (0,5) Déduire une mesure de l'angle $\left(\overrightarrow{BI}, \overrightarrow{BD}\right)$
+
+---
+
+## 2020 — session normale — Exercice 2
+Source: https://www.alloschool.com/element/109797
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-80918, page 2. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — شعبة العلوم التجريبية مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) (BIOF) — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 5 points
+- Images lues : `.../course-438/upload-80918/0002-big.jpg`
+- Pages du scan : 2 (sur 4)
+
+> **Note de lecture (mojibake)** : lecture directe du scan image. Le symbole de l'ensemble des nombres complexes $\mathbb{C}$ apparaît comme un cadre vide (glyphe non rendu par la police du scan) à la question 1) ; résolu en $\mathbb{C}$ d'après le contexte « des nombres complexes ». *(Titre AlloSchool trompeur : la fiche indique « Sciences et Technologies » ; l'en-tête arabe du scan — page 1 — atteste bien la filière Sciences Expérimentales, SVT et Sc. Physiques option française.)*
+
+**Nombres complexes (équation du second degré, discriminant, conjugué, forme trigonométrique, rotation, nature d'un triangle, alignement).**
+
+1) Dans l'ensemble $\mathbb{C}$ des nombres complexes, on considère l'équation :
+$$(E)\ :\ z^2 - 2\left(\sqrt{2} + \sqrt{6}\right)z + 16 = 0$$
+   a) (0,5) Vérifier que le discriminant de l'équation $(E)$ est $\Delta = -4\left(\sqrt{6} - \sqrt{2}\right)^2$
+   b) (1) En déduire les solutions de l'équation $(E)$.
+2) Soient les nombres complexes $a = \left(\sqrt{6} + \sqrt{2}\right) + i\left(\sqrt{6} - \sqrt{2}\right)$, $b = 1 + i\sqrt{3}$ et $c = \sqrt{2} + i\sqrt{2}$
+   a) (0,75) Vérifier que $b\bar{c} = a$, puis en déduire que $ac = 4b$
+   b) (0,5) Ecrire les nombres complexes $b$ et $c$ sous forme trigonométrique.
+   c) (0,5) En déduire que $a = 4\left(\cos\dfrac{\pi}{12} + i\sin\dfrac{\pi}{12}\right)$
+3) Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\vec{v})$, on considère les points $B$, $C$ et $D$ d'affixes respectives $b$, $c$ et $d$ telle que $d = a^4$. Soit $z$ l'affixe d'un point $M$ du plan et $z'$ l'affixe de $M'$ image de $M$ par la rotation $R$ de centre $O$ et d'angle $\dfrac{\pi}{12}$
+   a) (0,5) Vérifier que $z' = \dfrac{1}{4}az$
+   b) (0,25) Déterminer l'image du point $C$ par la rotation $R$
+   c) (0,25) Déterminer la nature du triangle $OBC$.
+   d) (0,75) Montrer que $a^4 = 128b$ et en déduire que les points $O$, $B$ et $D$ sont alignés
+
+---
