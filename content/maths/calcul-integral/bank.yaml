@@ -1,0 +1,135 @@
+# bank.yaml — la banque « S'entraîner » de calcul-integral (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : cette entrée ne porte aucun marqueur exercise
+# dans lesson.md — c'est la couche de VOLUME derrière le sommet de leçon
+# (r-bac + r-variation, exercises.yaml, marqueur exercise r-bac à R9), pas la
+# rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). UNE SEULE entrée : c'est le SEUL sujet « vérifié » recensé
+# pour la partie « calcul intégral » dans docs/sujets/maths/calcul-integral.md
+# — 2022, session normale, Exercice 4, filière SVT et Sciences Physiques
+# (BIOF), code NS 22F (AlloSchool element/136586, re-fetch indépendant +
+# diff conforme au scan, agent-vérificateur-adversarial, 2026-07-12).
+# Introuvable = absent, jamais inventé : aucun autre sujet vérifié n'existe à
+# ce jour pour cette notion, donc la banque ne compte qu'une carte.
+# Raisonnement rédigé À NEUF, à la voix experte de la maison, sur 100 % des
+# questions (jamais copié depuis exercises.yaml — voir NOTE ÉDITORIALE
+# ci-dessous) ; barème transcrit tel quel dans les énoncés ; conventions
+# KaTeX (block scalars pour la prose, KaTeX brut entre apostrophes simples
+# dans steps[].math — dérivée notée avec \prime, jamais une apostrophe
+# littérale — notes sans backslash).
+#
+# PARTITION DU SUJET (à lire avant toute conversion ultérieure) : l'exercice
+# 2022 complet s'intitule « Équations différentielles et calcul intégral »
+# et vaut 2,5 pts au total. Il se scinde en deux parties indépendantes sur le
+# même énoncé : la question 1 (a, b — 0,75 + 0,75 = 1,5 pt), reprise ici dans
+# son intégralité, porte sur le calcul intégral (primitive, intégration par
+# parties) ; la question 2 (a, b), qui résout l'équation différentielle
+# y'' - 2y' + y = 0 (1 pt), n'a AUCUN rapport avec cette notion et doit être
+# convertie séparément dans un bank.yaml SŒUR sous
+# content/maths/equations-differentielles/ (fichier non créé par cet auteur
+# — hors scope de cette tâche). `bareme_total` ci-dessous (1,5) est donc le
+# barème de la partie calcul intégral SEULE, pas celui de l'exercice complet
+# (2,5).
+#
+# NOTE ÉDITORIALE (recoupement, pour la revue — BANK-SPEC §1) : bk-2022-n-x4
+# transcrit EXACTEMENT le même sujet, la même fonction h(x) = (x+1)e^x, les
+# mêmes questions 1a/1b, les mêmes bornes et les mêmes résultats numériques
+# (I = 1/e, J = (e-2)/e) que le sommet de leçon r-bac (exercises.yaml,
+# marqueur exercise r-bac à R9 — exercises.yaml le dit explicitement dans son
+# propre en-tête : « r-bac est un sujet national vérifié »). Il figure ici
+# quand même, pour que la banque reste le corpus complet des annales
+# vérifiées de la notion : « la banque est le volume derrière le sommet,
+# jamais son remplacement » (BANK-SPEC §1). Même décision, prise dans le
+# même sens, que bk-2019-n-x2 de content/maths/nombres-complexes-1/bank.yaml,
+# bk-2023-n-x3 de content/maths/probabilites-conditionnelles/bank.yaml et
+# bk-2020-n-x1 de content/pc/piles/bank.yaml. Conséquence honnête : la
+# banque de « calcul-integral » ne compte qu'UNE entrée pour l'instant (la
+# rail affichera « 1 sujet », pas un pluriel de façade) tant qu'aucun autre
+# sujet vérifié n'est recensé pour la partie calcul intégral. À l'arbitrage
+# de l'owner si l'on préfère l'écarter de la banque pour éviter le
+# recoupement sur la même page. Le `reasoning` des deux questions ci-dessous
+# est rédigé indépendamment de celui d'exercises.yaml (voix distincte, mêmes
+# mathématiques, mêmes résultats numériques — vérifiés en double) : ce n'est
+# pas une recopie.
+
+notion: maths/calcul-integral
+
+entries:
+  # ── bk-2022-n-x4 — 2022 N, Exercice 4 (partie « calcul intégral ») :
+  # primitive d'un produit vérifiée par dérivation, puis IPP réutilisant I ──
+  # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir note
+  # éditoriale en tête de fichier.
+  - id: bk-2022-n-x4
+    title: "Primitive d'un produit en exponentielle, puis intégration par parties"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 4 — partie « calcul intégral »"
+    bareme_total: 1.5
+    duration_min: 9
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques, option française), Mathématiques (3 h, coef 7), code
+        NS 22F, Exercice 4 « Équations différentielles et calcul intégral »
+        — partie calcul intégral seulement (questions 1a et 1b, 1,5 pt sur
+        les 2,5 pts de l'exercice complet ; la partie équation différentielle,
+        question 2, appartient à une notion différente et n'est pas reprise
+        ici). Transcription vérifiée : re-fetch AlloSchool indépendant
+        element/136586 (course-438/upload-84495, p.3), diff conforme au
+        scan, statut « vérifié » dans docs/sujets/maths/calcul-integral.md.
+        NB : ce même sujet sous-tend aussi le sommet de leçon r-bac
+        (exercises.yaml, marqueur exercise r-bac à R9) — recoupement assumé,
+        voir NOTE ÉDITORIALE en tête de fichier ; c'est l'unique sujet
+        « vérifié » recensé à ce jour pour la partie calcul intégral de
+        cette notion, donc la banque ne compte qu'une entrée.
+    intro: |-
+      **Équations différentielles et calcul intégral (examen national, session normale 2022) — partie « calcul intégral ».**
+
+      On considère la fonction $h$ définie sur $\mathbb{R}$ par $h(x) = (x+1)e^x$.
+
+      Le sujet complet vaut 2,5 pts et enchaîne une équation différentielle et ce calcul intégral ; seule la partie « calcul intégral » (1,5 pt, questions 1a et 1b ci-dessous) est reprise ici.
+    questions:
+      - id: q1a
+        part: "Question 1a — Vérifier une primitive, puis calculer $I$"
+        stem: |-
+          **(0,75 pt)** Vérifier que la fonction $x \mapsto x\,e^x$ est une primitive de la fonction $h$ sur $\mathbb{R}$, puis calculer $I = \displaystyle\int_{-1}^{0} h(x)\,\mathrm{d}x$.
+        reasoning: |-
+          Deux tâches sont emboîtées ici, et il ne faut pas les confondre.
+
+          « Vérifier qu'une fonction proposée est une primitive » ne demande jamais d'intégrer : ça demande de **dériver** la fonction proposée et de retomber sur $h$. $x \mapsto x\,e^x$ est un produit, donc on applique la règle de dérivation d'un produit avec $u(x)=x$ et $v(x)=e^x$ (chapitre « Dérivation »).
+
+          Une fois la primitive $F(x)=x\,e^x$ confirmée, calculer $I$ ne demande rien de plus que la définition du R1 : $I = F(0)-F(-1)$. Le rung R1 a déjà réglé une inquiétude possible — le choix de la primitive ne change jamais le résultat, puisqu'une éventuelle constante additive s'annulerait dans la soustraction — donc on prend directement cette primitive, la plus simple à écrire, sans en chercher une autre. Le seul point à surveiller : le signe en $x=-1$, où $F(-1) = -1\times e^{-1} = -e^{-1}$ est négatif, et l'on soustrait ce nombre négatif.
+        steps:
+          - math: '\bigl(x\,e^x\bigr)^{\prime} = 1\cdot e^x + x\cdot e^x = (x+1)e^x = h(x)'
+            note: "On dérive la candidate x fois e^x (règle du produit) et on retrouve h(x) : c'est bien une primitive de h."
+          - math: 'I = \int_{-1}^{0} h(x)\,\mathrm{d}x = \bigl[x\,e^x\bigr]_{-1}^{0} = 0\cdot e^{0} - (-1)\cdot e^{-1}'
+            note: "Définition du R1 : F(0) moins F(-1), avec F(x) = x fois e^x."
+          - math: 'I = 0 - \bigl(-e^{-1}\bigr) = e^{-1} = \dfrac{1}{e}'
+            note: "En 0, x fois e^x vaut 0 ; en -1, il vaut -1/e. Donc I = 0 moins (-1/e) = 1/e."
+      - id: q1b
+        part: "Question 1b — Une intégration par parties : le calcul de $J$"
+        stem: |-
+          **(0,75 pt)** À l'aide d'une intégration par parties, calculer $J = \displaystyle\int_{-1}^{0} (x+1)^2 e^x\,\mathrm{d}x$.
+        reasoning: |-
+          $(x+1)^2 e^x$ est un produit de deux facteurs qui ne se primitivent pas facilement l'un sans l'autre — exactement le signal repéré au R7 pour sortir l'intégration par parties. Reste à décider lequel des deux facteurs on dérive et lequel on primitive.
+
+          Dériver $(x+1)^2$ donne $2(x+1)$ — un facteur de degré plus bas, donc plus simple. Primitiver $e^x$ redonne $e^x$ — immédiat. On pose donc $u=(x+1)^2$ (à dériver) et $v'=e^x$ (à primitiver), jamais l'inverse : prendre $u=e^x$ ne simplifierait rien, puisque dériver l'exponentielle la laisse identique à elle-même.
+
+          La formule du R7, $\int u\,v' = [uv] - \int u'v$, transforme alors $J$ en un terme de bord moins $\displaystyle\int_{-1}^{0} 2(x+1)e^x\,\mathrm{d}x$. Et ce n'est pas une nouvelle intégrale à calculer depuis zéro : $(x+1)e^x$, c'est exactement $h(x)$ — la fonction de la question 1a, déjà intégrée sur ce même intervalle. L'intégrale restante vaut donc $2I$, directement, sans reprendre le calcul depuis le départ.
+        steps:
+          - math: 'u = (x+1)^2,\quad u^{\prime} = 2(x+1),\qquad v^{\prime} = e^x,\quad v = e^x'
+            note: "On dérive (x+1) au carré (ça devient 2(x+1)) et on primitive e^x (ça reste e^x)."
+          - math: 'J = \bigl[(x+1)^2 e^x\bigr]_{-1}^{0} - \int_{-1}^{0} 2(x+1)e^x\,\mathrm{d}x'
+            note: "Formule du R7 : terme de bord moins l'intégrale du produit dérivé fois primitivé."
+          - math: '\bigl[(x+1)^2 e^x\bigr]_{-1}^{0} = (0+1)^2 e^{0} - (-1+1)^2 e^{-1} = 1 - 0 = 1'
+            note: "En 0 : 1 au carré fois 1 = 1. En -1 : 0 au carré fois 1/e = 0. Le terme de bord vaut 1."
+          - math: '\int_{-1}^{0} 2(x+1)e^x\,\mathrm{d}x = 2\int_{-1}^{0} (x+1)e^x\,\mathrm{d}x = 2\int_{-1}^{0} h(x)\,\mathrm{d}x = 2I'
+            note: "(x+1)e^x, c'est exactement h(x) : l'intégrale restante vaut 2 fois I, déjà calculé à la question 1a."
+          - math: 'J = 1 - 2I = 1 - \dfrac{2}{e} = \dfrac{e-2}{e}'
+            note: "Terme de bord (1) moins 2I (2/e). Résultat positif car e est environ 2,72, donc supérieur à 2."
