@@ -198,7 +198,7 @@ On pose $\dfrac{b}{a} = \lambda i$ avec $\lambda = \mathrm{Im}\!\left(\dfrac{b}{
 
 ## 2023 — session normale — Exercice 3
 Source: https://www.alloschool.com/element/142490
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-85316, page(s) 3–4. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 142490 → course-436/upload-85316 re-dérivé, 5 pages ; énoncé sur les images 0003 = p.3/5 et 0004 = p.4/5), diff caractère-par-caractère conforme au scan (valeurs, $u=1+(2-\sqrt3)i$, formes exponentielles $1-i$/$1+\sqrt3 i$, $\frac{(1-i)(1+\sqrt3 i)}{2\sqrt2}=e^{i\pi/12}$, $\tan\frac{\pi}{12}=2-\sqrt3$, $u=(\sqrt6-\sqrt2)e^{i\pi/12}$, système $x_{n+1}=x_n-(2-\sqrt3)y_n$ / $y_{n+1}=(2-\sqrt3)x_n+y_n$, récurrence $x_n+iy_n=u^n$, quotients $\frac{\cos(n\pi/12)}{(\cos\pi/12)^n}$, barème par question sommant à 3,5 pts, en-tête NS 24F) ; corps mathématique en Unicode propre (exponentielles, radicaux, trigonométrie). Seul $\mathbb{N}$ mojibaké et, dans l'Ex3, il n'apparaît qu'aux Q2/Q3 (p.4), rendu de façon incohérente — tiret-bas « _ » en indice de suite, case tofu « ⊓ » et coin « ⌐ » dans les quantificateurs — lu $\mathbb{N}$ par l'indexation des suites et laissé « (glyphe à confirmer) » (nb : le « N » capitale de la note de lecture concerne l'Ex1/Ex2 voisins sur p.3, non l'Ex3).
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : 3,5 points

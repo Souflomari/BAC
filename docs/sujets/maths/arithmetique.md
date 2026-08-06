@@ -173,7 +173,7 @@ Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan cour
 
 ## 2023 — session normale — Exercice 4
 Source: https://www.alloschool.com/element/142490
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-85316, page(s) 4. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 142490 → course-436/upload-85316 re-dérivé, 5 pages ; énoncé sur l'image 0004 = p.4/5), diff caractère-par-caractère conforme au scan (valeurs, exposants fractionnaires $\frac{p-1}{2}$ et $\frac{p}{2}$, congruences et modules $[p]$/$[8]$, coefficients binomiaux $C_p^k$ et $C_{p-1}^{k-1}$, bornes de sommation $k=\frac{p-1}{2}$, barème par question sommant à 3 pts, en-tête NS 24F) ; congruence $\equiv$ rendue en triple-barre propre partout (confirmé au zoom) ; les trois glyphes mojibake de $\mathbb{Z}$ résolus au zoom — case tofu « ⊔ » (énoncé « dans ⊔ »), coin « ⌐ » (Q4-b « ∈ ⌐ »), double-barre « ‖ » (Q5 « dans ‖ ») — tous forcés $\mathbb{Z}$ par la logique (équation entière en $x$ ; $2^{p/2}\cos(p\pi/4)$ entier) et laissés « (glyphe à confirmer) ».
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : 3 points
