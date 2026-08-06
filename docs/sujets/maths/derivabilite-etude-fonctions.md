@@ -86,6 +86,24 @@ dans `fonction-exponentielle.md`.)*
 
 ---
 
+## Cross-lists — dérivabilité dans le sujet 2020 SExp (session normale, NS 22F, `element/109797`)
+
+La dérivabilité est présente dans les deux volets d'analyse du sujet 2020
+SExp session normale, transcrits **in extenso** ailleurs (scan
+course-438/upload-80918, transcription 2026-08-06, non vérifiée) :
+
+- **Exercice 3, Q1-a/b** (« Limites, dérivabilité et calcul intégral ») :
+  dérivée $g'(x) = \dfrac{\sqrt{x}-1}{x}$ et croissance de
+  $g(x) = 2\sqrt{x} - 2 - \ln x$ sur $[1,+\infty[$ — au service d'un
+  encadrement puis d'une limite de croissances comparées.
+  → `limites-continuite.md`.
+- **Problème, Q4, Q5 et Q8** : dérivée $f'(x) = -\left(e^{x-2} - 1\right)^2$
+  et tableau de variations (Q4), dérivée seconde et point d'inflexion
+  $A(2,2)$ (Q5), fonction réciproque et $\left(f^{-1}\right)'(2 - \ln 3)$
+  (Q8). → `fonction-exponentielle.md`.
+
+---
+
 ## Note d'usage pour cette notion
 
 `derivabilite-etude-fonctions` ne possède aucune entrée « pleine » dans cette

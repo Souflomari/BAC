@@ -19,6 +19,53 @@
 > fonction réciproque, suite — questions 4 à 8) relève d'autres notions
 > (`derivabilite-etude-fonctions`, `suites-numeriques`) et n'est **pas**
 > repris ici.
+>
+> **[Mise à jour 2026-08-06.]** Le sujet **2020 SExp session normale**
+> (`element/109797`) comporte, lui, un exercice dédié : « Limites,
+> dérivabilité et calcul intégral » (Exercice 3, 4 pts) — **première entrée
+> pleine** de ce fichier, transcrite ci-dessous. Le constat « pas d'exercice
+> dédié » (et la ligne correspondante d'`INDEX.md` §3) datait d'avant
+> l'atteinte de ce sujet et reste vrai pour les autres années atteintes ; la
+> décision de sourcing par extrait (r-bac 2022) reste inchangée.
+
+---
+
+## 2020 — session normale — Exercice 3 *(filière SExp)*
+Source: https://www.alloschool.com/element/109797
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-80918, page(s) 3. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Expérimentales — شعبة العلوم التجريبية مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) *(SVT **et** Sciences Physiques, BIOF)* — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 4 points
+- Images lues : `.../course-438/upload-80918/0003-big.jpg`
+- Pages du scan : 3 (sur 4)
+- Intitulé composantes (page 1 du scan) : « Limites, dérivabilité et calcul intégral » — 4 points
+- Remarque (source) : la page AlloSchool `element/109797` est titrée « Maths
+  Sciences et Technologies » — mislabel ; l'en-tête arabe du scan (ligne de
+  filière ci-dessus, p. 1) fait foi.
+- Classement : intitulé mixte (« Limites, dérivabilité et calcul intégral »).
+  Dominante retenue : la majorité du barème (Q1, 2,5 pts sur 4) est un arc
+  dérivée → monotonie → encadrement qui culmine dans la question la plus
+  lourde de l'exercice (Q1-d, 1 pt), une limite de croissances comparées
+  $\lim_{x\to+\infty}\frac{(\ln x)^3}{x^2}$ obtenue par encadrement — cœur du
+  chapitre limites. Le calcul intégral (Q2, 1,5 pt : primitive vérifiée puis
+  intégrale directe, sans IPP ni aire) ne domine pas → entrée pleine ici,
+  cross-lists dans `calcul-integral.md` (Q2) et
+  `derivabilite-etude-fonctions.md` (Q1-a/b).
+- Recoupe : `calcul-integral` (Q2 — primitive et intégrale),
+  `derivabilite-etude-fonctions` (Q1-a/b — dérivée et monotonie).
+
+> **Note de lecture (mojibake)** : aucun
+
+**Limites, dérivabilité et calcul intégral (étude de $g(x) = 2\sqrt{x} - 2 - \ln x$ : croissances comparées par encadrement, primitive, intégrale).**
+
+On considère la fonction numérique $g$ définie sur $]0,+\infty[$ par $g(x) = 2\sqrt{x} - 2 - \ln x$
+
+1. a) (0,5) Montrer que pour tout $x$ de $]0,+\infty[$, $g'(x) = \dfrac{\sqrt{x} - 1}{x}$
+   b) (0,5) Montrer que $g$ est croissante sur $[1,+\infty[$
+   c) (0,5) en déduire que pour tout $x$ de $[1,+\infty[$, $0 \le \ln x \le 2\sqrt{x}$ *(remarquer que $2\sqrt{x} - 2 \le 2\sqrt{x}$)*
+   d) (1) Montrer que pour tout $x$ de $[1,+\infty[$, $0 \le \dfrac{(\ln x)^3}{x^2} \le \dfrac{8}{\sqrt{x}}$ et en déduire $\displaystyle\lim_{x \to +\infty} \dfrac{(\ln x)^3}{x^2}$
+2. a) (0,75) Montrer que la fonction $G : x \mapsto x\left(-1 + \dfrac{4}{3}\sqrt{x} - \ln x\right)$ est une primitive de $g$ sur $]0,+\infty[$
+   b) (0,75) Calculer l'intégrale $\displaystyle\int_1^4 g(x)\,dx$
 
 ---
 

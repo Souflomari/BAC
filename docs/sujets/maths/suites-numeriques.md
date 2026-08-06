@@ -4,8 +4,8 @@
 > vérifiées** — voir `README.md` §3. Provenance sur chaque entrée.
 > Les suites arrivent presque toujours en **fin de problème d'analyse** : une
 > suite récurrente $u_{n+1} = f(u_n)$ dont on étudie l'encadrement (récurrence),
-> la monotonie, la convergence et la limite. Les entrées SM 2019 et SExp 2024
-> ci-dessous sont des études de suite **autonomes et complètes** ; les autres
+> la monotonie, la convergence et la limite. Les entrées SM 2019, SExp 2020 et
+> SExp 2024 ci-dessous sont des études de suite **autonomes et complètes** ; les autres
 > études de suite de ce lot sont cross-listées (transcription in extenso dans
 > le fichier du problème).
 
@@ -38,6 +38,38 @@ On considère la suite numérique $(u_n)_{n \in \mathbb{N}}$ définie par : $u_0
    a) (0,5) Montrer que : $(\forall n \in \mathbb{N})\ ;\ u_{n+1} - u_n \le f(u_0)$
    b) (0,5) Montrer que : $(\forall n \in \mathbb{N})\ ;\ u_n \le u_0 + n\,f(u_0)$
    c) (0,25) En déduire $\displaystyle\lim_{n \to +\infty} u_n$
+
+---
+
+## 2020 — session normale — Exercice 1
+Source: https://www.alloschool.com/element/109797
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-80918, page(s) 2. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Expérimentales — شعبة العلوم التجريبية مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) *(SVT **et** Sciences Physiques, BIOF)* — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 4 points
+- Images lues : `.../course-438/upload-80918/0002-big.jpg`
+- Pages du scan : 2 (sur 4)
+- Intitulé composantes (page 1 du scan) : « Suites numériques » — 4 points
+- Remarque (source) : la page AlloSchool `element/109797` est titrée « Maths
+  Sciences et Technologies » — mislabel ; l'en-tête arabe du scan (ligne de
+  filière ci-dessus, p. 1) fait foi.
+- Remarque : le problème du même sujet (p. 3-4) ne comporte pas de volet
+  suites ; il est transcrit sous `fonction-exponentielle.md`.
+
+> **Note de lecture (mojibake)** : aucun
+
+**Suites numériques (suite récurrente homographique, positivité, majoration par une suite géométrique, limite, suite géométrique auxiliaire, terme général).**
+
+Soit $(u_n)$ la suite numérique définie par : $u_0 = \dfrac{3}{2}$ et $u_{n+1} = \dfrac{2u_n}{2u_n + 5}$ pour tout $n$ de $\mathbb{N}$
+
+1. (0,25) Calculer $u_1$
+2. (0,5) Montrer par récurrence que pour tout $n$ de $\mathbb{N}$, $u_n > 0$
+3. a) (1) Montrer que pour tout $n$ de $\mathbb{N}$, $0 < u_{n+1} \le \dfrac{2}{5}u_n$,
+   puis en déduire que pour tout $n$ de $\mathbb{N}$, $0 < u_n \le \dfrac{3}{2}\left(\dfrac{2}{5}\right)^n$
+   b) (0,5) Calculer $\lim u_n$
+4. On considère la suite numérique $(v_n)$ définie par $v_n = \dfrac{4u_n}{2u_n + 3}$ pour tout $n$ de $\mathbb{N}$.
+   a) (0,75) Montrer que $(v_n)$ est une suite géométrique de raison $\dfrac{2}{5}$
+   b) (1) Déterminer $v_n$ en fonction de $n$ et en déduire $u_n$ en fonction de $n$ pour tout $n$ de $\mathbb{N}$.
 
 ---
 

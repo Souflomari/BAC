@@ -53,6 +53,67 @@ et on note $(C)$ sa courbe représentative dans un repère orthonormé $(O;\vec{
 
 ---
 
+## 2020 — session normale — Problème  *(filière SExp)*
+Source: https://www.alloschool.com/element/109797
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-80918, page(s) 3-4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Expérimentales — شعبة العلوم التجريبية مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) *(SVT **et** Sciences Physiques, BIOF)* — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème du problème : 7 points
+- Images lues : `.../course-438/upload-80918/0003-big.jpg`, `.../0004-big.jpg`
+- Pages du scan : 3 et 4 (sur 4)
+- Intitulé composantes (page 1 du scan) : « Etude d'une fonction numérique » — 7 points
+- Remarque (source) : la page AlloSchool `element/109797` est titrée « Maths
+  Sciences et Technologies » — mislabel ; l'en-tête arabe du scan (ligne de
+  filière ci-dessus, p. 1) fait foi.
+- Classement : la fonction étudiée $f(x) = -x + \frac{5}{2} - \frac{1}{2}e^{x-2}\left(e^{x-2} - 4\right)$
+  est bâtie sur l'**exponentielle** ($\ln$ n'apparaît que dans des constantes :
+  $2 + \ln 3$, $2 + \ln 4$, $\ln 2 \simeq 0,7$…) → `fonction-exponentielle`.
+- Recoupe : `derivabilite-etude-fonctions` (Q4 tableau de variations, Q5 point
+  d'inflexion, Q8 fonction réciproque). **Pas de volet suites ni de calcul
+  intégral** dans ce problème (les suites sont l'Exercice 1 —
+  `suites-numeriques.md` — et l'intégrale est dans l'Exercice 3 —
+  `limites-continuite.md`).
+
+> **Note de lecture (mojibake)** : le symbole $\mathbb{R}$ est rendu par un
+> glyphe cassé (petit tiret / boîte vide « □ » / fragment « Γ ») à quatre
+> endroits du scan — l'intro (« définie sur … »), Q4-a, Q5 et Q8-a. Le
+> contexte l'impose partout ($e^{x-2}$ définie et dérivable sur tout
+> $\mathbb{R}$) ; transcrit $\mathbb{R}$, signalé en Q8-a. En Q7, le symbole
+> d'approximation de « on prend $\ln 2 \simeq 0,7$ et $\ln 3 \simeq 1,1$ »
+> est rendu par des barres verticales cassées (« ln 2||0,7 ») — transcrit
+> $\simeq$.
+
+**Étude d'une fonction avec $e^{x-2}$ (asymptote oblique, position relative, point d'inflexion, fonction réciproque).**
+
+On considère la fonction numérique $f$ définie sur $\mathbb{R}$ par $f(x) = -x + \dfrac{5}{2} - \dfrac{1}{2}e^{x-2}\left(e^{x-2} - 4\right)$
+et $(C)$ sa courbe représentative dans un repère orthonormé $(O,\vec{i}\,;\vec{j})$ *(unité : 2cm)*
+
+1. (0,5) Montrer que $\displaystyle\lim_{x \to -\infty} f(x) = +\infty$ et $\displaystyle\lim_{x \to +\infty} f(x) = -\infty$
+2. a) (0,5) Démontrer que la droite $(\Delta)$ d'équation $y = -x + \dfrac{5}{2}$ est une asymptote à la courbe $(C)$ au voisinage de $-\infty$
+   b) (0,75) Résoudre l'équation $e^{x-2} - 4 = 0$ puis montrer que la courbe $(C)$ est au dessus de $(\Delta)$ sur l'intervalle $]-\infty, 2 + \ln 4]$ et en dessous de $(\Delta)$ sur l'intervalle $[2 + \ln 4, +\infty[$
+3. (0,5) Montrer que $\displaystyle\lim_{x \to +\infty} \dfrac{f(x)}{x} = -\infty$ puis interpréter géométriquement le résultat
+4. a) (0,5) Montrer que pour tout $x$ de $\mathbb{R}$, $f'(x) = -\left(e^{x-2} - 1\right)^2$
+   b) (0,25) Dresser le tableau de variations de la fonction $f$
+5. (0,75) Calculer $f''(x)$ pour tout $x$ de $\mathbb{R}$ puis montrer que $A(2,2)$ est un point d'inflexion de $(C)$
+6. (0,5) Montrer que l'équation $f(x) = 0$ admet une solution unique $\alpha$ telle que $2 + \ln 3 < \alpha < 2 + \ln 4$
+7. (1) Construire $(\Delta)$ et $(C)$ dans le repère $(O,\vec{i}\,;\vec{j})$ ci-dessous *(on prend $\ln 2 \simeq 0,7$ et $\ln 3 \simeq 1,1$)*
+
+   > **Figure (description d'après le scan)** : la question 7 renvoie à un
+   > repère « ci-dessous », mais **aucun quadrillage ni repère n'est visible
+   > sur ce scan** : le bas de la page 3 (sous la ligne Q7) est un cadre
+   > rectangulaire vide, et la page 4 — qui porte en haut les questions
+   > 8-a/b/c — n'est ensuite qu'une grande zone blanche fermée par la marque
+   > de fin « ·/· » en rouge. Aucune grille imprimée n'est décelable
+   > (repère probablement perdu à la numérisation, ou grille non imprimée
+   > sur cet exemplaire). *(lecture à confirmer sur un autre exemplaire du
+   > sujet)*
+
+8. a) (0,5) Montrer que la fonction $f$ admet une fonction réciproque $f^{-1}$ définie sur $\mathbb{R}$ *(le symbole après « définie sur » est un glyphe cassé sur le scan — lecture $\mathbb{R}$ à confirmer, voir note mojibake)*
+   b) (0,75) Construire dans le même repère $(O,\vec{i}\,,\vec{j})$ la courbe représentative de la fonction $f^{-1}$ *(remarquer que la droite $(\Delta)$ est perpendiculaire à la première bissectrice du repère)*
+   c) (0,5) Calculer $\left(f^{-1}\right)'(2 - \ln 3)$ *(Remarquer que $f^{-1}(2 - \ln 3) = 2 + \ln 3$)*
+
+---
+
 ## 2022 — session normale — Problème  *(filière SExp)*
 Source: https://www.alloschool.com/element/136586
 Statut: corrigé (conforme au scan) — agent-vérificateur-adversarial, 2026-07-12 : re-fetch indépendant (element/136586 → course-438/upload-84495, p.3-4). Énoncé diffé conforme au scan, SAUF la description de la figure $(C_g)$ (Q5b) qui était erronée — elle indiquait « négative sur $]-\infty,\alpha[$, positive au-delà » (un seul changement de signe). Le scan montre $g$ s'annulant en DEUX points ($\alpha\approx-4,5$ et $0$), positive sur $]-\infty,\alpha[$, négative sur $]\alpha,0[$ (minimum $\approx-2$ vers $x=-2$), positive sur $]0,+\infty[$ — cohérent avec les DEUX points d'inflexion demandés en Q5c ($f''=\tfrac12 e^{x/2}g$). Description corrigée d'après le scan. Filière SExp et code NS 22F confirmés en-tête.
