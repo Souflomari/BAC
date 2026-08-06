@@ -152,3 +152,46 @@ Soient $\Omega$, $M_1$ et $M_2$ les points d'affixes respectivement $\alpha$, $z
    c) (0,25) En déduire que $\dfrac{z_1}{z_2}$ est un imaginaire pur si et seulement si $|z_1 - z_2| = 2$.
 3. a) (0,25) Montrer que : $(z_1 - z_2)^2 = \Delta$.
    b) (0,5) Déterminer l'ensemble $\Gamma$ des points $\Omega$ pour que le triangle $OM_1 M_2$ soit rectangle en $O$.
+
+---
+
+## 2025 — session normale — Exercice 2
+Source: https://www.alloschool.com/element/145783
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-87482, page(s) 3–4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
+- Code sujet : NS 24F · Barème de l'exercice : 3,5 points
+- Images lues : `.../course-436/upload-87482/0004-big.jpg` (énoncé, Partie I), `.../course-436/upload-87482/0005-big.jpg` (Partie II)
+- Pages du scan : 3–4 (sur 5)
+
+> **Note de lecture (mojibake)** : aucun — ce scan 2025 est rendu en Unicode correct ($\mathbb{C}$, $\mathrm{Im}$, exposants complexes $e^{i\alpha}$, $\lambda$) ; pas de substitution de police.
+
+**Nombres complexes (équation paramétrée du 2ᵈ degré à paramètre $\alpha$, discriminant, quotient $\frac{b}{a}$ imaginaire pur ; configuration : perpendicularité $(OH)\perp(AB)$, alignement, milieux, cocyclicité).**
+
+Soit $\alpha \in [0; 2\pi[$.
+
+On considère dans l'ensemble des nombres complexes $\mathbb{C}$ l'équation $(E_\alpha)$ d'inconnue $z$ :
+$$(E_\alpha)\ :\ z^2 - 2^\alpha e^{i\alpha}(1+2i)z + i\,2^{2\alpha+1}e^{i2\alpha} = 0$$
+
+**Partie I :**
+
+1. a) (0,25) Vérifier que le discriminant de l'équation $(E_\alpha)$ est : $\Delta_\alpha = \left(2^\alpha e^{i\alpha}(1-2i)\right)^2$
+   b) (0,5) En déduire les deux solutions $a$ et $b$ de l'équation $(E_\alpha)$ avec $|a| < |b|$.
+2. (0,25) Vérifier que $\dfrac{b}{a}$ est un imaginaire pur.
+
+**Partie II :**
+
+Le plan complexe est rapporté à un repère orthonormé direct $(O;\vec{u},\vec{v})$.
+On note par $M(z)$ le point d'affixe le nombre complexe $z$.
+On pose $\dfrac{b}{a} = \lambda i$ avec $\lambda = \mathrm{Im}\!\left(\dfrac{b}{a}\right)$.
+
+1. On considère les points $A(a)$, $B(b)$ et $H(h)$ avec $\dfrac{1}{h} = \dfrac{1}{a} + \dfrac{1}{b}$.
+   a) (0,5) Montrer que : $\dfrac{h}{b-a} = -\left(\dfrac{\lambda}{\lambda^2+1}\right)i$ puis en déduire que les droites $(OH)$ et $(AB)$ sont perpendiculaires.
+   b) (0,5) Montrer que : $\dfrac{h-a}{b-a} = \dfrac{1}{\lambda^2+1}$ puis en déduire que les points $H$, $A$ et $B$ sont alignés.
+2. Soient $I(m)$ le milieu du segment $[OH]$ et $J(n)$ le milieu du segment $[HB]$.
+   a) (0,5) Montrer que : $\dfrac{n}{m-a} = -\lambda i$
+   b) (0,5) En déduire que les droites $(OJ)$ et $(AI)$ sont perpendiculaires et que $OJ = |\lambda|\,AI$.
+   c) (0,25) Soit $K$ le point d'intersection des droites $(OJ)$ et $(AI)$. Montrer que les points $K$, $I$, $H$ et $J$ sont cocycliques.
+   d) (0,25) Montrer que les droites $(IJ)$ et $(OA)$ sont perpendiculaires.
+
+---

@@ -106,3 +106,33 @@ Soient $p$ et $q$ deux nombres premiers distincts et $r$ un entier naturel premi
    b) (0,5) En déduire que $p$ et $q$ divisent $r^{(p-1)(q-1)} - 1$.
    c) (0,5) Montrer que $pq$ divise $r^{(p-1)(q-1)} - 1$.
 2. (1) Résoudre dans $\mathbb{Z}$ l'équation $2024^{192}\, x \equiv 3\ [221]$. *(On donne : $221 = 13 \times 17$.)*
+
+---
+
+## 2025 — session normale — Exercice 3
+Source: https://www.alloschool.com/element/145783
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-87482, page(s) 4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
+- Code sujet : NS 24F · Barème de l'exercice : 3 points
+- Images lues : `.../course-436/upload-87482/0002-big.jpg` (consignes / composantes), `.../course-436/upload-87482/0005-big.jpg` (énoncé Exercice 3)
+- Pages du scan : 4 (sur 5) — consignes p.1
+
+> **Note de lecture (mojibake)** : aucun — ce scan 2025 est rendu en Unicode correct ($\mathbb{Z}$, $\mathbb{N}$, $\equiv$, exposants fractionnaires $\frac{p-1}{2}$) ; pas de substitution de police.
+
+**Arithmétique (critère d'Euler modulo $p$ premier impair, petit théorème de Fermat, équation diophantienne, résolution modulo 11).**
+
+Soient $p$ un nombre premier impair et $a$ un entier premier avec $p$.
+
+1. (0,5) Montrer que $a^{\frac{p-1}{2}} \equiv 1\ [p]$ ou $a^{\frac{p-1}{2}} \equiv -1\ [p]$.
+2. On considère dans $\mathbb{Z}$ l'équation : $ax^2 \equiv 1\ [p]$. Soit $x_0$ une solution de cette équation.
+   a) (0,5) Montrer que : $x_0^{\,p-1} \equiv 1\ [p]$
+   b) (0,25) En déduire que : $a^{\frac{p-1}{2}} \equiv 1\ [p]$
+3. Soit $n$ un entier naturel non nul.
+   a) (0,5) Montrer que si $p$ divise $2^{2n+1} - 1$ alors $2^{\frac{p-1}{2}} \equiv 1\ [p]$
+   b) (0,5) En déduire que l'équation $(E) : 11x + \left(2^{2n+1} - 1\right)y = 1$ admet au moins une solution dans $\mathbb{Z}^2$.
+4. On considère dans $\mathbb{Z}$ l'équation $(F) : x^2 + 5x + 2 \equiv 0\ [11]$.
+   a) (0,25) Montrer que : $(F) \iff 2(2x+5)^2 \equiv 1\ [11]$
+   b) (0,5) En déduire que l'équation $(F)$ n'admet pas de solution dans $\mathbb{Z}$.
+
+---

@@ -127,3 +127,38 @@ $$\forall\big((a,b),(c,d)\big) \in \big(\mathbb{C}\times\mathbb{C}^*\big)^2 \ ; 
    b) (0,5) Montrer que $(\mathbb{C}\times\mathbb{C}^*,\ T)$ est un groupe non commutatif.
 5. a) (0,5) Montrer que $\mathbb{R}\times\mathbb{R}^*$ est stable par la loi de composition interne $T$
    b) (0,5) Montrer que $\mathbb{R}\times\mathbb{R}^*$ est un sous-groupe du groupe $(\mathbb{C}\times\mathbb{C}^*,\ T)$
+
+---
+
+## 2025 — session normale — Exercice 4
+Source: https://www.alloschool.com/element/145783
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-87482, page(s) 5. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
+- Code sujet : NS 24F · Barème de l'exercice : 3,5 points
+- Images lues : `.../course-436/upload-87482/0002-big.jpg` (consignes / composantes), `.../course-436/upload-87482/0006-big.jpg` (énoncé Exercice 4)
+- Pages du scan : 5 (sur 5) — consignes p.1
+
+> **Note de lecture (mojibake)** : aucun — ce scan 2025 est rendu en Unicode correct ($\mathbb{R}$, $M_3(\mathbb{R})$, matrices $3\times 3$, $\varphi$) ; pas de substitution de police.
+
+**Structures algébriques (sous-ensemble $E = \{I + xA\}$ de $M_3(\mathbb{R})$ avec $A^2 = -2A$ : partie stable et groupe multiplicatif après retrait d'un élément, loi $T$, isomorphisme depuis $(\mathbb{R},+)$, corps commutatif).**
+
+On rappelle que $(M_3(\mathbb{R}),+,\times)$ est un anneau unitaire et non commutatif de zéro la matrice $O = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}$ et d'unité la matrice $I = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}$, et que $(M_3(\mathbb{R}),+,\cdot)$ est un espace vectoriel réel.
+
+Soient la matrice $A = \begin{pmatrix} -1 & -1 & 0 \\ -1 & -1 & 0 \\ -1 & 1 & -2 \end{pmatrix}$ et l'ensemble $E = \left\{ M(x) = I + xA\ /\ x \in \mathbb{R} \right\}$.
+
+1. a) (0,25) Vérifier que : $A^2 = -2A$
+   b) (0,25) En déduire que : $\forall(x,y) \in \mathbb{R}^2$ ; $M(x) \times M(y) = M(x + y - 2xy)$
+2. a) (0,25) Calculer $M\!\left(\dfrac{1}{2}\right) \times \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}$
+   b) (0,25) En déduire que la matrice $M\!\left(\dfrac{1}{2}\right)$ n'est pas inversible dans $(M_3(\mathbb{R}),\times)$.
+3. (0,25) Montrer que : $E - \left\{ M\!\left(\dfrac{1}{2}\right) \right\}$ est stable pour la multiplication dans $M_3(\mathbb{R})$
+   *(on pourra utiliser l'identité : $\left(x - \dfrac{1}{2}\right)\left(y - \dfrac{1}{2}\right) = -\dfrac{1}{2}\left(x + y - 2xy - \dfrac{1}{2}\right)$)*
+4. (1) Montrer que : $\left( E - \left\{ M\!\left(\dfrac{1}{2}\right) \right\}, \times \right)$ est un groupe commutatif.
+5. On munit $E$ de la loi de composition interne $T$ définie par :
+   $$\forall(x,y) \in \mathbb{R}^2\ ;\ M(x)\,T\,M(y) = M\!\left(x + y - \dfrac{1}{2}\right)$$
+   et on considère l'application $\varphi$ définie de $\mathbb{R}$ vers $E$ par : $\forall x \in \mathbb{R}$ ; $\varphi(x) = M\!\left(\dfrac{1-x}{2}\right)$.
+   a) (0,5) Montrer que $\varphi$ est un homomorphisme de $(\mathbb{R},+)$ vers $(E,T)$ et que $\varphi(\mathbb{R}) = E$.
+   b) (0,25) En déduire que $(E,T)$ est un groupe commutatif.
+6. (0,5) Montrer que $(E,T,\times)$ est un corps commutatif.
+
+---
