@@ -85,7 +85,7 @@ Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\ve
 
 ## 2024 — session normale — Exercice 3
 Source: https://www.alloschool.com/element/144505
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-87124, page 3. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 144505 → course-438/upload-87124 re-dérivé, document 4 pages), diff caractère-par-caractère conforme au scan (valeurs, affixes, exposants, barèmes par question et total 4 pts, énoncé) ; page Composantes (p.1) = **Exercice 3 — Nombres complexes — 4 points** confirmé ; maths re-dérivées (|a|=√6 et arg(a)=−π/4, b/a=(3+√3)/6+((1+√3)/2)i=(3+√3)/3·e^{iπ/3}, arg(b)=π/12 ⇒ b²⁴ réel, arg(a′)=−π/12, a″=√6·e^{iπ/12} ⇒ alignement O,A″,B, b′=(3+√3)/3·ā ⇒ OAB′ rectangle en O) ; barre de conjugaison sur a en 3c (et non un vecteur) confirmée au zoom et par le calcul ; filière Sciences Expérimentales (maslaks SVT et Sc. Physiques, option française) et code NS 22F confirmés sur l'en-tête du scan.
 
 - Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) (BIOF) — Mathématiques, 3 h, coef 7
 - Code sujet : NS 22F · Barème de l'exercice : 4 points
@@ -111,7 +111,7 @@ Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\ve
 
 ## 2021 — session normale — Exercice 3
 Source: https://www.alloschool.com/element/127180
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-84139, pages 2–3. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 127180 → course-438/upload-84139 re-dérivé, document 4 pages), diff caractère-par-caractère conforme au scan (valeurs, affixes, exposants, barèmes par question et total 5 pts, énoncé) ; anomalie de numérotation confirmée — le corps du scan (p.2) intitule l'exercice « Exercice 2 : (5 points) » (second « Exercice 2 » après les suites) alors que la page Composantes (p.1) le désigne **Exercice 3 — Nombres complexes — 5 points**, autorité retenue ; maths re-dérivées (z²−√3z+1=0 ⇒ a=e^{iπ/6}, ā·b=√3, homothétie de rapport √3, d−b=(√3−1)/2·(1−i)) ; filière Sciences Expérimentales (شعبة العلوم التجريبية, maslaks SVT et Sc. Physiques, option française) et code NS 22F confirmés sur l'en-tête du scan.
 
 - Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — شعبة العلوم التجريبية مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) (BIOF) — Mathématiques, 3 h, coef 7
 - Code sujet : NS 22F · Barème de l'exercice : 5 points
@@ -142,7 +142,7 @@ Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\ve
 
 ## 2020 — session normale — Exercice 2
 Source: https://www.alloschool.com/element/109797
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-80918, page 2. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 109797 → course-438/upload-80918 re-dérivé, document 4 pages), diff caractère-par-caractère conforme au scan (valeurs, affixes, exposants, discriminant, barèmes par question et total 5 pts, numérotation, énoncé) ; maths re-dérivées (Δ = −4(√6−√2)² = 16√3−32 conforme au développement de (E), identité b·c̄ = a puis ac = 4b, a = 4e^{iπ/12}, a⁴ = 128b ⇒ alignement O,B,D) ; glyphe ℂ (cadre vide/tofu à la q.1) résolu par contexte « des nombres complexes » et confirmé au zoom ; filière Sciences Expérimentales (شعبة العلوم التجريبية, maslaks SVT et Sc. Physiques, option française) et code NS 22F confirmés sur l'en-tête du scan.
 
 - Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — شعبة العلوم التجريبية مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) (BIOF) — Mathématiques, 3 h, coef 7
 - Code sujet : NS 22F · Barème de l'exercice : 5 points
