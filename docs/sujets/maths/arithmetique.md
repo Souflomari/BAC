@@ -202,12 +202,12 @@ Soit $p$ **un nombre premier impair**. On considère dans $\mathbb{Z}$ l'équati
 
 ## 2017 — session normale — Exercice 3
 Source: https://www.alloschool.com/element/57970
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-45343, page(s) 4. À faire vérifier (README §3).
+Statut: transcrit (non vérifié) — **provenance corrigée** par agent-vérificateur-adversarial, 2026-08-06 : l'EXERCICE3 n'est **pas** sur la p.4 mais **entièrement sur la p.3** du scan (image `0003-big.jpg`, en-tête « الصفحة 3 / 5 », sous la Partie 2 de l'EXERCICE2 ; la p.4 ne porte que la suite de l'EXERCICE4 d'analyse) — « Images lues » et « Pages du scan » rectifiés en conséquence ; l'énoncé lui-même a été re-fetché indépendamment (element/57970 → course-436/upload-45343 re-dérivé, 5 pages) et diffé caractère-par-caractère contre la **vraie p.3** : **conforme** (2017 premier, $2016=2^5 3^2 7$, « premier supérieur ou égal à 5 » en toutes lettres, $(x,y)\in\mathbb{N}^*\times\mathbb{N}^*$, $px+y^{p-1}=2017$, $p<2017$, $y^{p-1}\equiv 1\,[p]$, $p=7$, barème marginal 0,25 / 0,5 / 0,75 / 0,5 / 1 sommant à **3 pts**, en-tête NS 25) ; glyphes adjugés au zoom : « ¥ »=ℕ, « ´ »=×, « o »=≡ **confirmés** ; maths re-dérivées : $p\nmid y$ (sinon $p\mid 2017$ premier), Fermat ⇒ $2017\equiv 1\,[p]$ ⇒ $p\mid 2016=2^5\cdot 3^2\cdot 7$ ⇒ seul premier $\geq 5$ : $p=7$ ✓. Conformément au README §3 (« corriger et laisser en `transcrit (non vérifié)` »), l'entrée **reste non vérifiée** : cette correction de provenance appelle une re-lecture indépendante avant promotion.
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (الترجمة الفرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 25 · Barème de l'exercice : 3 points
-- Images lues : `.../course-436/upload-45343/0001-big.jpg` (page de composantes), `.../course-436/upload-45343/0004-big.jpg` (énoncé Exercice 3)
-- Pages du scan : 4 (sur 5) — composantes p.1
+- Images lues : `.../course-436/upload-45343/0001-big.jpg` (page de composantes), `.../course-436/upload-45343/0003-big.jpg` (énoncé Exercice 3)
+- Pages du scan : 3 (sur 5) — composantes p.1
 
 > **Note de lecture (mojibake)** : ce scan 2017 substitue les blackboard-bold — $\mathbb{N}$ rendu « ¥ » (glyphe de la legend fournie) ; la congruence $\equiv$ rendue par un petit rond « o » (glyphe de la legend fournie). Aucun $\mathbb{Z}$ ni $\geq$ dans cet exercice : l'énoncé écrit « supérieur ou égal à 5 » en toutes lettres.
 
@@ -227,7 +227,7 @@ Soit $p$ **un nombre premier supérieur ou égal à 5**
 
 ## 2018 — session normale — Exercice 2
 Source: https://www.alloschool.com/element/65508
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-52280, page(s) 1–2. À faire vérifier (README §3).
+Statut: **vérifié (contre source retypée)** — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element/65508 → course-436/upload-52280 re-dérivé, 4 pages ; EXERCICE 2 débutant sur l'image 0001 = p.1/4 et s'achevant sur l'image 0002 = p.2/4), diff caractère-par-caractère conforme au document ($p=3+4k$ avec $k\in\mathbb{N}^*$, exposants $p-5$ / $p-1$ / $62$, congruences et modules $[p]$ et $[67]$, identité $2+(k-1)(p-1)=k(p-5)$, résolution **dans $\mathbb{Z}$**, barème marginal 0,5 × 6 sommant à **3 pts**) ; aucun mojibake (Unicode propre) — aucun glyphe à adjuger ; **maths re-dérivées** : avec $p=3+4k$, $p-1=4k+2$ et $p-5=4k-2$, donc $2+(k-1)(4k+2)=4k^2-2k=k(4k-2)=k(p-5)$ ✓ ; $67=3+4\times 16$ premier ⇒ $p-5=62$ ✓ (l'exposant 62 de la Q3 est bien l'instance $p=67$) ; chaîne $x^{p-5}\equiv 1 \Rightarrow x\wedge p=1 \Rightarrow$ Fermat $x^{p-1}\equiv 1 \Rightarrow x^2\equiv 1$ cohérente, solution $x\equiv \pm 1\,[67]$ ; recoupement indépendant : le corrigé de la même compilation (element/65510 → upload-52282, p.5–6/17) conclut $S=\{1+67k\}\cup\{-1+67k\}$ et reprend à l'identique les données de l'énoncé. **Chasse au scan brut : négative** — voir le détail à l'entrée `structures-algebriques.md` 2018 Exercice 1 (hub section/4660 : 4 éléments 2018 seulement ; element/65508 = un seul upload ; corrigé 65510 = même retype éditeur, sans en-tête administratif ni code NS). ⚠️ **Source retypée non-officielle — conversion en banque soumise à arbitrage owner** (ni code NS, ni durée, ni coefficient confirmables ; fidélité au sujet officiel non établie).
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B), BIOF — d'après le titre du document (« Bac Sciences Mathématiques — National 2018 ») et la structure du programme (structures algébriques, arithmétique, complexes, analyse, dans cet ordre) ; **aucun code NS ni en-tête administratif arabe visible** sur les 4 pages du scan (document retype sans cachet officiel) — durée et coefficient non confirmables sur ce document.
 - Code sujet : non visible sur ce scan (document retype) · Barème de l'exercice : 3 points
