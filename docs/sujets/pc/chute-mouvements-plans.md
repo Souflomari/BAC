@@ -97,6 +97,26 @@ B placé « sur l'horizontale », tremplin arrêté à C au lieu de C', axe des 
 dit « gradué », axe « y » pris pour un repère global décoratif, P placé « sur »
 la bande (π)) — **corrigées ci-dessous** ; l'entrée repart pour un tour de
 vérification (README §3 : corriger et laisser en `transcrit (non vérifié)`).
+**Troisième passe — re-lecture indépendante des figures par un tiers
+(2026-08-06).** `element/68300` re-fetché et `course-422/upload-54757`
+(7 pages) re-dérivé sans reprendre le travail du vérificateur précédent ;
+p. 6 re-lue au zoom, élément par élément. **Les six corrections précédentes
+sont confirmées fidèles** (A' = extrémité haute en haut à gauche ; B sur la
+trajectoire en pointillés à l'aplomb de B', hors de l'horizontale ; tremplin
+s'arrêtant à C' ; axes de $(C, \vec{i_1}, \vec{j_1})$ **non gradués** — aucune
+graduation, seulement des pointes de flèche ; axe vertical fléché vers le haut
+et noté « y », appartenant bien à ce repère ; P au niveau de l'axe horizontal
+— même hauteur que C, mesuré au pixel — et **non** sur la bande (π), qui est
+tracée en dessous). **Non promu (nouveau tour) :** deux écarts subsistaient et
+ont été corrigés par ce tiers, dont la correction demande à son tour une
+re-lecture — (i) la clause « il n'y a pas d'autre repère sur la figure » était
+**fausse** et se contredisait avec la phrase décrivant l'axe $(A, \vec{i})$
+deux paragraphes plus haut : la figure porte bien **deux** repères ; (ii) la
+flèche « x » après B n'est **pas** tracée « le long de la trajectoire » — elle
+prolonge **en ligne droite** la direction A'B' et s'écarte de la trajectoire,
+qui s'incurve vers le haut au-dessus du tremplin. Ajouté par ailleurs, comme
+précision de tracé vérifiée : l'axe horizontal est en trait plein jusqu'à sa
+pointe de flèche puis **prolongé en pointillés**, et P est sur ce prolongement.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice IV : 5 points (Partie I — plan
@@ -142,7 +162,8 @@ comme galiléen.
 - Masse du système (S) : $m = 190\ \text{kg}$.
 
 > **Figure 1 (description d'après le scan — corrigée sur re-lecture au
-> zoom)** : schéma de la piste complète, en trois éléments raccordés. Deux
+> zoom, puis re-corrigée sur re-lecture indépendante par un tiers)** :
+> schéma de la piste complète, en trois éléments raccordés. Deux
 > lignes distinctes courent d'un bout à l'autre du schéma : le **tracé épais
 > de la piste**, qui porte les points « primés » A', B', C', et, juste
 > au-dessus, la **trajectoire en pointillés du centre d'inertie G**, qui
@@ -156,9 +177,12 @@ comme galiléen.
 > Le point **A**, sur la trajectoire en pointillés à l'aplomb de A', porte
 > le vecteur $\vec{i}$ orienté le long du plan incliné dans le sens de la
 > descente ; **B est un point de cette même trajectoire en pointillés, à
-> l'aplomb de B'** — ce n'est pas un point de la droite horizontale. Une
-> courte flèche notée « x » marque, le long de la trajectoire après B,
-> l'axe du repère $(A, \vec{i})$ utilisé en partie I.
+> l'aplomb de B'** — ce n'est pas un point de la droite horizontale.
+> **Au-delà de B**, une courte flèche en pointillés notée « x » prolonge
+> **en ligne droite la direction A'B'** et se termine par une pointe de
+> flèche : c'est l'axe des x du repère $(A, \vec{i})$ utilisé en partie I.
+> Elle **s'écarte donc de la trajectoire**, qui, elle, s'incurve vers le
+> haut au-dessus du tremplin.
 >
 > Le tremplin circulaire relève ensuite la piste de **B' jusqu'à C'**
 > (extrémité haute du tremplin, sur le tracé épais). **C**, à l'aplomb de
@@ -167,13 +191,24 @@ comme galiléen.
 > le haut et **noté « y »** ; $\vec{i_1}$ est porté par l'axe
 > **horizontal**, fléché vers la droite et **noté « x »**. Ces deux axes
 > — **non gradués** — sont ceux dans lesquels sont exprimées $x_G(t)$ et
-> $y_G(t)$ ; il n'y a pas d'autre repère sur la figure. Le vecteur
+> $y_G(t)$. L'axe vertical « y » appartient bien au repère $(C,
+> \vec{i_1}, \vec{j_1})$ : ce n'est pas un repère global décoratif. La
+> figure ne porte que **deux** repères — celui-ci et l'axe $(A, \vec{i})$
+> de la partie I décrit ci-dessus. Le vecteur
 > $\vec{V_C}$ part de C en faisant l'angle α avec $\vec{i_1}$, tangent à la
 > trajectoire.
 >
 > De C part un arc en pointillés (la trajectoire du saut) qui monte,
 > culmine, puis redescend et **recoupe l'axe horizontal au point P** — P
 > est donc à la **même hauteur que C** (c'est ce qui rend $y_G = 0$ en P).
+> *Précision de tracé : l'axe horizontal est dessiné en trait plein de C
+> jusqu'à sa pointe de flèche, puis **prolongé en pointillés** ; P se
+> trouve sur ce prolongement en pointillés, au-delà de la pointe de
+> flèche. Mesuré au pixel sur le scan : axe solide à la ligne 737, C à
+> 736,5, prolongement en pointillés et point P à 738–739 — P et C sont
+> donc à la même hauteur à 2–3 px près, soit la tolérance du tracé (la
+> bande (π), elle, est 30 px plus bas, lignes 765–769). L'arc de la
+> trajectoire se poursuit brièvement sous cette ligne après P.*
 > La zone d'atterrissage (π) est figurée par une **bande horizontale
 > épaisse tracée en dessous de cet axe**, à droite, avec le label « (π) »
 > à sa droite ; P n'est pas dessiné sur cette bande. Légende :
@@ -213,8 +248,11 @@ mouvement est effectuée dans le repère orthonormé $(C, \vec{i_1},
 
 ## 2021 — session normale — Exercice V
 Source: https://www.alloschool.com/element/127287
-Statut: transcrit (non vérifié) — 2026-08-06. Vérification adverse indépendante
-(second agent) effectuée le 2026-08-06 : `element/127287` re-fetché,
+Statut: vérifié — 2026-08-06, vérification adverse indépendante par un second
+agent puis **figures re-lues indépendamment (tiers) et jugées fidèles ;
+énoncé/valeurs déjà diffé-conformes (passe précédente)** (README §3).
+Vérification adverse indépendante (second agent) effectuée le 2026-08-06 :
+`element/127287` re-fetché,
 `course-422/upload-84195` (8 pages) re-dérivé et **conforme** ; en-tête du scan
 **confirmé** (NS 28F, Sciences Physiques BIOF, 3 h, coef 7 ; page de garde :
 « Exercice V (2,75 points) — Etude du mouvement d'un parachutiste ») ; diff
@@ -231,13 +269,42 @@ question 3 : $d = h - \frac{1}{2}g\Delta t_1^2 - V_\ell(\Delta t - \Delta t_1
 $40$ m.s⁻¹, non de « ~44 » ; le palier vaut exactement $5$ m.s⁻¹, non
 « 5–6 » ; la séparation des régimes est exactement à $t = 30$ s — les trois
 drapeaux « lecture à confirmer » sont levés. Fig. 2 — droite confirmée par
-$(1;10)$, $(2;20)$, $(3;30)$.)** **Non promu** : la description de la figure 1
+$(1;10)$, $(2;20)$, $(3;30)$.)** **Non promu à ce stade** (verdict de la
+2ᵉ passe, levé depuis par la 3ᵉ — voir ci-dessous) : la description de la
+figure 1
 affirmait un « hélicoptère en vol stationnaire d'où **un** personnage se laisse
 tomber » alors que le cliché reproduit sur le sujet montre un **avion** (aile
 horizontale, dérive arrière) sous lequel **trois** silhouettes sont en chute —
 le texte de l'énoncé avait été importé dans la description de l'image.
-**Corrigée ci-dessous** ; l'entrée repart pour un tour de vérification
+**Corrigée ci-dessous** ; l'entrée était repartie pour un tour de vérification
 (README §3 : corriger et laisser en `transcrit (non vérifié)`).
+**Troisième passe — re-lecture indépendante des figures par un tiers
+(2026-08-06), qui promeut l'entrée.** `element/127287` re-fetché et
+`course-422/upload-84195` (8 pages) re-dérivé sans reprendre le travail du
+vérificateur précédent ; les trois figures (toutes en p. 7) re-lues au zoom
+et à la mesure de pixels, élément par élément — **toutes conformes**.
+*Fig. 1* : axe vertical à gauche ; **O** en haut, marqué par un petit tiret
+en travers de l'axe ; **$\vec{k}$ bien dessiné comme une courte flèche à
+pointe pleine orientée vers le bas**, portée par l'axe juste sous O (le
+symbole « k » avec son accent vectoriel est écrit à gauche) ; l'axe se
+termine en bas par une pointe de flèche étiquetée « z » ⇒ orientation vers
+le bas confirmée. Cliché du haut : **avion** — long fuselage/aile horizontal
+avec une **grande dérive verticale en flèche à l'arrière** (à gauche de
+l'image, l'appareil volant vers la droite) ; **ni mât, ni disque rotor, ni
+poutre de queue** : ce n'est pas un hélicoptère, alors que l'énoncé écrit
+bien « un hélicoptère en vol stationnaire » — la note honnête texte-vs-photo
+est exacte et conservée. **Trois** silhouettes en chute sous l'appareil
+(comptées au zoom sous contraste rehaussé : deux nettement humaines, membres
+écartés, et une troisième plus lointaine). Vignette du bas : parachutiste
+suspendu à son parachute ouvert. *Fig. 2* : droite passant par l'origine,
+vérifiée au pixel en $(1;10)$, $(2;20)$, $(3;30)$ — pente $= 9{,}8$–$10$
+m.s⁻² $= g$ ; ordonnées $10, 20, 30$, abscisses $1, 2, 3$ ; tracé prolongé
+un peu au-delà de $t = 3$ s. *Fig. 3* : départ de la courbe **exactement sur
+la graduation 40** (sommet du tracé mesuré à $39{,}8$ m.s⁻¹) ; palier mesuré
+à $5{,}0$ m.s⁻¹ sur cinq colonnes ($t = 38$ à $54$ s), sur la sous-graduation
+5 ; verticale en pointillés **exactement confondue avec la ligne $t = 30$ s**
+(mesurée à $\pm 1$ px), « Régime initial » à gauche, « Régime permanent » à
+droite ; ordonnées $10, 20, 30, 40$, abscisses $10, 20, 30, 40, 50$.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS 28F · Barème de l'exercice : 2,75 points (exercice complet)
