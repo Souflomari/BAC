@@ -99,9 +99,9 @@ non confirmé par lecture des pages intérieures.
 **2018 N (NS28F)** — 4 exercices
 | Ex | Sujet | Slug(s) |
 |----|-------|---------|
-| I | Électrolyse PbBr₂ + acide lactique (dosage, estérification) | `electrolyse` + `reactions-acido-basiques` (?) + `esterification-hydrolyse` ✓ (cross `controle-catalyse`) |
+| I | Électrolyse PbBr₂ + acide lactique (dosage, estérification) | `electrolyse` ✓ (2026-08-06) + `reactions-acido-basiques` ✓ (2026-08-06) + `esterification-hydrolyse` ✓ (cross `controle-catalyse`) |
 | II | Onde ultrasonore (célérité, retard) | `ondes-mecaniques-progressives` ✓ |
-| III | Condensateur (charge/décharge) + RLC série | `rc-charge` ✓ + `rlc-serie` ✓ |
+| III | Condensateur (charge/décharge) + RLC série | `rc-charge` ✓ (I-1 + I-2 complets, 2026-08-06) + `rlc-serie` ✓ |
 | IV | Chute verticale d'une bille + oscillateur solide-ressort | `chute-mouvements-plans` + `systemes-oscillants` ✓ (cross `aspects-energetiques` ✓) |
 
 **2019 N (NS28F)** — 4 exercices
@@ -164,7 +164,7 @@ couverture univoque). `Cross/(?)` = cross-lists + mappings incertains.
 | `rlc-serie` | 4 | 0 | 2018 N, 2019 N, 2020 N, 2021 N |
 | `chute-mouvements-plans` | 4 | 0 | 2018 N, 2019 N, 2020 N, 2021 N |
 | `rc-charge` | 3 | 0 | 2018 N, 2019 N, 2021 N |
-| `reactions-acido-basiques` | 3 | 3 | 2019 N, 2020 N, 2021 N · (?) 2015 N, 2017 N, 2018 N |
+| `reactions-acido-basiques` | 4 | 2 | 2019 N, 2020 N, 2021 N, 2018 N · (?) 2015 N, 2017 N |
 | `decroissance-radioactive` | 2 | 1 | 2019 N, 2021 N · cross 2020 N |
 | `dipole-rl` | 2 | 0 | 2017 N, 2020 N |
 | `ondes-em-modulation` | 2 | 0 | 2017 N, 2021 N |
@@ -201,6 +201,11 @@ couverture univoque). `Cross/(?)` = cross-lists + mappings incertains.
   restent sans carte d'exercices.
 - **Banque transcrite existante : 29 entrées, toutes `vérifié`**
   (23 passe v0.2 vérifiées 2026-07-11 + 6 passe v0.3 vérifiées 2026-07-14).
+  **Ce chiffre est antérieur aux passes du 2026-08-06** (2021 N Ex IV
+  `rc-charge`/`rlc-serie`/`ondes-em-modulation`, puis le comblement des trous
+  de 2018 N sur `electrolyse`/`reactions-acido-basiques`/`rc-charge` — voir
+  `INDEX.md` §4 pour le détail à jour) ; non recompté ici pour ne pas
+  fabriquer un total non ré-audité.
 - **Notions rares (0–2 dédiés)** : `atome-mecanique-newton` (0 — probable
   `unsourced`), `aspects-energetiques` (0 dédié, cross seulement),
   `rotation-axe-fixe` (1, uniquement en rattrapage), et 14 autres slugs à

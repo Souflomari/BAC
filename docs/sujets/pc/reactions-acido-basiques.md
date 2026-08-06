@@ -217,3 +217,80 @@ rapidement de $\approx 8$ à $\approx 4$), palier final vers $pH \approx 2{,}7$.
 Deux tangentes parallèles (en pointillés) sont tracées pour la méthode des
 tangentes *(coordonnées du point d'équivalence à confirmer par lecture)*.
 
+---
+
+## 2018 — session normale — Exercice I (Partie 2, sous-partie 1)
+Source: https://www.alloschool.com/element/57726
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-45118, page(s) 2–3. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS28F · Barème de l'exercice complet : 7 points (sous-partie
+  dosage ≈ 2,75 points ; $0{,}5+0{,}5+0{,}5+0{,}5+0{,}75=2{,}75$, barème en
+  marge)
+- Images lues : `.../course-422/upload-45118/0002-big.jpg` (contexte/données),
+  `.../0003-big.jpg`
+- Pages du scan : 2 (fin) et 3 (sur 8)
+- Portée : la **sous-partie 1 (dosage pH-métrique de l'acide lactique par
+  l'hydroxyde de sodium)**, première moitié de la **Partie 2 « Étude de
+  quelques réactions de l'acide lactique »** de l'exercice I, est transcrite
+  ici. La sous-partie 2 de la même Partie 2 (estérification par le méthanol)
+  est déjà transcrite sous `esterification-hydrolyse.md`, qui signalait cette
+  sous-partie 1 comme non reprise — c'est chose faite. La Partie 1 du même
+  exercice (électrolyse du bromure de plomb) est sous `electrolyse.md`.
+
+**Partie II — Étude de quelques réactions de l'acide lactique.**
+
+*(Cadrage de l'exercice, transcrit intégralement : l'acide 2-hydroxypropanoïque
+est connu généralement sous le nom de l'acide lactique. C'est un acide
+organique qui entre dans beaucoup de réactions biochimiques ; on le trouve
+dans le lait et ses dérivés, dans des fruits et légumes. Il est utilisé comme
+conservateur des aliments et dans la préparation de certains produits
+pharmaceutiques contre des maladies de la peau. On se propose d'étudier en
+premier lieu la réaction de l'acide lactique avec l'hydroxyde de sodium, puis
+dans un deuxième temps sa réaction avec un alcool.)*
+
+**1. Réaction de l'acide lactique avec l'hydroxyde de sodium.**
+
+**Données :**
+- Toutes les mesures sont effectuées à $25\ °C$ ;
+- On représente l'acide lactique $\text{CH}_3\text{-CH(OH)-COOH}$ par $AH$ et
+  sa base conjuguée par $A^-$ ;
+- La constante d'acidité du couple $AH_{(aq)}/A^-_{(aq)}$ : $K_A = 10^{-3,9}$ ;
+- Zone de virage de quelques indicateurs colorés :
+
+  | Indicateur coloré | Hélianthine | B.B.T | rouge de crésol |
+  |--------------------|:-----------:|:-----:|:----------------:|
+  | Zone de virage | $3-4{,}4$ | $6-7{,}6$ | $7{,}2-8{,}8$ |
+
+On dose le volume $V_A = 15\ \text{mL}$ d'une solution aqueuse $(S_A)$ d'acide
+lactique $AH$ de concentration molaire $C_A$ par une solution aqueuse $(S_B)$
+d'hydroxyde de sodium de concentration molaire $C_B = 3 \cdot 10^{-2}\
+\text{mol.L}^{-1}$, en suivant les variations du $pH$ du mélange réactionnel en
+fonction du volume $V_B$ versé de la solution $(S_B)$.
+
+La courbe de la figure ci-dessous représente les variations du $pH$ en
+fonction du volume $V_B$ au cours du dosage.
+
+1. (0,5) Écrire l'équation de la réaction de dosage.
+2. (0,5) Déterminer les coordonnées $V_{BE}$ et $pH_E$ du point d'équivalence.
+3. (0,5) Calculer la concentration $C_A$ de la solution $(S_A)$.
+4. (0,5) Choisir, en justifiant la réponse, l'indicateur coloré adéquat pour
+   repérer l'équivalence.
+5. (0,75) Trouver le rapport $\dfrac{[A^-]}{[AH]}$ à l'ajout du volume
+   $V_B = 10\ \text{mL}$, puis déduire l'espèce chimique prédominante $AH$ ou
+   $A^-$.
+
+*Figure (courbe de dosage pH-métrique) :* axe des ordonnées $pH$ (flèche
+verticale, non gradué numériquement hormis les valeurs $2, 4, 6, 8, 10$ portées
+en repères sur le quadrillage) ; axe des abscisses $V_B\ (\text{mL})$ gradué
+$0,\ 2,\ 4,\ 6,\ 8,\ 10,\ 12,\ 14,\ 16$ (quadrillage fin visible au-delà). Courbe
+**croissante** : départ vers $pH \approx 2{,}8$ à $V_B = 0$, montée lente
+jusque vers $pH \approx 4$–$5$ au voisinage de $V_B \approx 8$, saut
+d'équivalence marqué (montée rapide) entre $V_B \approx 8$ et $V_B \approx 11$,
+puis palier vers un $pH$ élevé (proche du haut du cadre, au-delà de $10$) à
+partir de $V_B \approx 12$ jusqu'à la fin du tracé. Deux droites en pointillés
+sont tracées, obliques, se croisant dans la zone du saut (méthode des
+tangentes pour repérer le point d'équivalence) *(coordonnées exactes du point
+d'équivalence à confirmer par lecture — non chiffrées sur le scan)*.
+

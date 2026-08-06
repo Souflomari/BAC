@@ -66,6 +66,65 @@ $t = 1\ \text{ms}$ *(lecture d'échelle à confirmer)*.
 
 ---
 
+## 2018 — session normale — Exercice III (partie I-1)
+Source: https://www.alloschool.com/element/57726
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-45118, page 5. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS28F · Barème de l'exercice complet : 5 points (sous-partie
+  I-1 : 1,75 point ; $0{,}5+0{,}75+0{,}5=1{,}75$, barème en marge)
+- Images lues : `.../course-422/upload-45118/0004-big.jpg` (cadrage/montage),
+  `.../0005-big.jpg`
+- Pages du scan : 4 (fin) et 5 (sur 8)
+- Portée : la **sous-partie I-1 (détermination de la capacité $C_2$ par un
+  générateur de courant)** est transcrite ici. La sous-partie I-2 (réponse du
+  dipôle RC à un échelon = décharge, ci-dessous) et la Partie II (RLC, sous
+  `rlc-serie.md`) du même exercice sont déjà transcrites.
+
+**Détermination expérimentale de la capacité d'un condensateur — 1. En
+utilisant un générateur de courant.**
+
+*(Cadrage de l'exercice III, p. 4 : « Un professeur a consacré, avec ses
+élèves, une séance de travaux pratiques de physique pour : - Déterminer
+expérimentalement la valeur de la capacité d'un condensateur par deux méthodes
+différentes. - Étudier un circuit RLC série. »)*
+
+Un premier groupe d'élèves d'une classe réalise, sous les directives du
+professeur, le montage expérimental de la figure 1 constitué des éléments
+suivants :
+- un générateur idéal de courant qui alimente le circuit par un courant
+  électrique d'intensité $I_0$ ;
+- un conducteur ohmique de résistance $R$ ;
+- deux condensateurs $(c_1)$ et $(c_2)$ montés en parallèle, respectivement de
+  capacités $C_1 = 7{,}5\ \mu\text{F}$ et $C_2$ inconnue ;
+- un interrupteur $K$.
+
+À l'instant $t_0 = 0$, un élève ferme le circuit. À l'aide d'un système
+d'acquisition informatisé, le groupe d'élèves obtient la courbe des variations
+de la charge $q$ du condensateur équivalent à l'association des deux
+condensateurs $(c_1)$ et $(c_2)$ en fonction de la tension $u_{AB}$
+(figure 2).
+
+1. (0,5) Quel est l'intérêt de monter des condensateurs en parallèle ?
+2. (0,75) En exploitant la courbe de la figure 2, déterminer la valeur de la
+   capacité $C_{eq}$ du condensateur équivalent aux deux condensateurs
+   $(c_1)$ et $(c_2)$.
+3. (0,5) En déduire la valeur de la capacité $C_2$.
+
+*Figure 1 (schéma) :* générateur idéal de courant $I_0$ (symbole flèche dans
+un cercle) en série avec un interrupteur $K$ et un conducteur ohmique $R$,
+alimentant deux bornes $A$ (en haut) et $B$ (en bas) ; entre $A$ et $B$, les
+deux condensateurs $(c_1)$ et $(c_2)$ sont montés en parallèle.
+
+*Figure 2 (courbe) :* $q\ (\mu\text{C})$ en fonction de $u_{AB}\ (\text{V})$,
+sur quadrillage ; axe des ordonnées gradué $10,\ 20$ ; axe des abscisses
+gradué $1,\ 2$. Droite croissante passant par l'origine (proportionnalité
+$q = C_{eq}\,u_{AB}$) *(pente exacte / valeur de $C_{eq}$ à confirmer par
+lecture du quadrillage)*.
+
+---
+
 ## 2018 — session normale — Exercice III (partie I-2)
 Source: https://www.alloschool.com/element/57726
 Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-11)

@@ -48,3 +48,53 @@ droite) alimente un tube en U contenant la **solution d'iodure de zinc**. Deux
 électrodes en graphite plongent dans la solution : **Electrode B** (branche de
 gauche, reliée à la borne $+$) et **Electrode A** (branche de droite, reliée à
 la borne $-$).
+
+---
+
+## 2018 — session normale — Exercice I (Partie I)
+Source: https://www.alloschool.com/element/57726
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-45118, page 2. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS28F · Barème de l'exercice complet : 7 points (Partie I :
+  2 points ; $0{,}25+0{,}75+0{,}5+0{,}5=2{,}0$, barème en marge)
+- Images lues : `.../course-422/upload-45118/0002-big.jpg`
+- Pages du scan : 2 (sur 8)
+- Portée : la **Partie I (électrolyse du bromure de plomb)** est transcrite
+  ici ; l'énoncé précise « Les parties I et II sont indépendantes ». La
+  **Partie II (étude de quelques réactions de l'acide lactique)** du même
+  exercice se répartit entre `reactions-acido-basiques.md` (sous-partie 1,
+  dosage pH-métrique) et `esterification-hydrolyse.md` (sous-partie 2,
+  estérification, déjà transcrite).
+
+**Partie I- Électrolyse d'un composé ionique : le bromure de plomb.**
+
+On réalise l'électrolyse du bromure de plomb $Pb^{2+} + 2\,Br^-$ à haute
+température par un générateur fournissant un courant électrique d'intensité
+$I$ constante.
+
+Au cours de cette électrolyse, le métal plomb se dépose sur l'une des
+électrodes et au niveau de l'autre, il se forme le gaz dibrome.
+
+Au cours du fonctionnement de l'électrolyseur pendant la durée
+$\Delta t = 3600\ \text{s}$, la masse de plomb déposé est :
+$m = 20{,}72\ \text{g}$.
+
+**Données :**
+- Les 2 couples mis en jeu : $Pb^{2+}_{(aq)}/Pb_{(s)}$ et $Br_{2(g)}/Br^-_{(aq)}$ ;
+- La constante de Faraday : $F = 9{,}65 \cdot 10^{4}\ \text{C.mol}^{-1}$ ;
+- Le volume molaire des gaz dans les conditions de l'expérience :
+  $V_m = 70{,}5\ \text{L.mol}^{-1}$ ;
+- La masse molaire du plomb : $M(Pb) = 207{,}2\ \text{g.mol}^{-1}$.
+
+1. (0,25) Donner le nom de l'électrode (anode ou cathode) au niveau de
+   laquelle se forme le dibrome.
+2. (0,75) Écrire les équations des réactions aux électrodes, ainsi que
+   l'équation bilan lors de l'électrolyse.
+3. (0,5) Déterminer la valeur de l'intensité $I$ du courant électrique
+   passant dans le circuit pendant la durée $\Delta t$.
+4. (0,5) Calculer, dans les conditions de l'expérience, le volume $V$ du gaz
+   dibrome formé pendant $\Delta t$.
+
+*(Aucune figure dans cette partie ; énoncé intégralement textuel.)*

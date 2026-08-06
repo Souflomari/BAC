@@ -246,6 +246,24 @@ désormais `Statut: vérifié`.
 | `controle-catalyse` | cross-list | → `esterification-hydrolyse` (2018 N facteurs cinétiques) |
 | `evolution-spontanee` | cross-list | → `piles` (2020 N transformation spontanée) |
 
+**Passe 2026-08-06 — comblement des exercices restants de 2018 N / 2019 N**
+(harvest ciblé sur les deux `upload-ID` déjà résolus, aucun nouveau
+fetch d'`element/` requis pour 2019). Résultat du grep préalable :
+**2019 N (upload-54757) était déjà intégralement transcrit** (4 exercices ×
+2 parties, barèmes vérifiés par recoupement — aucune nouvelle entrée). Pour
+**2018 N (upload-45118)**, trois trous identifiés et comblés :
+
+| Slug | Entrées | Origine |
+|------|--------:|---------|
+| `electrolyse` | +1 | 2018 N Ex I-Partie I (électrolyse du bromure de plomb, p.2) |
+| `reactions-acido-basiques` | +1 | 2018 N Ex I-Partie 2 sous-partie 1 (dosage pH-métrique acide lactique / NaOH, p.2–3) |
+| `rc-charge` | +1 | 2018 N Ex III-I-1 (détermination de $C_2$ par générateur de courant, p.4–5) |
+
+Statut de ces 3 entrées : `transcrit (non vérifié)`, à passer au protocole
+README §3. Toutes les autres entrées déjà existantes pour ces deux papiers
+(Ex II, Ex IV des deux années ; Ex III-I-2/II de 2018 ; Ex I-P2sp2 de 2018)
+restent inchangées.
+
 ### Couverture par slug (25 slugs `content/pc/`) — état après cette passe
 
 | Slug | Année(s)/session transcrite(s) | Statut |
@@ -255,7 +273,7 @@ désormais `Statut: vérifié`.
 | `propagation-onde-lumineuse` | 2021 N | vérifié |
 | `decroissance-radioactive` | 2019 N, 2021 N | vérifié |
 | `noyaux-masse-energie` | 2020 N | vérifié |
-| `rc-charge` | 2019 N, 2018 N | vérifié |
+| `rc-charge` | 2019 N, 2018 N | vérifié + 1 entrée **transcrit (non vérifié)** (2018 N Ex III-I-1, 2026-08-06) |
 | `dipole-rl` | 2020 N | vérifié |
 | `rlc-serie` | 2019 N, 2018 N | vérifié |
 | `ondes-em-modulation` | 2017 N | vérifié |
@@ -271,10 +289,10 @@ désormais `Statut: vérifié`.
 | `transformations-deux-sens` | **2012 N** (estérification + réaction limitée) | **transcrit (non vérifié)** — dédié |
 | `etat-equilibre` | **2015 N** (+ 2019/2020/2021 N cross-list) | **transcrit (non vérifié)** — dédié |
 | `evolution-spontanee` | **2012 N** (pile Cu-Zn, $K$) | **transcrit (non vérifié)** — dédié |
-| `reactions-acido-basiques` | 2019 N, 2020 N, 2021 N | vérifié |
+| `reactions-acido-basiques` | 2019 N, 2020 N, 2021 N, 2018 N | vérifié + 1 entrée **transcrit (non vérifié)** (2018 N, 2026-08-06) |
 | `esterification-hydrolyse` | 2018 N | vérifié |
 | `piles` | 2020 N | vérifié |
-| `electrolyse` | 2019 N | vérifié |
+| `electrolyse` | 2019 N, 2018 N | vérifié + 1 entrée **transcrit (non vérifié)** (2018 N, 2026-08-06) |
 
 ---
 
@@ -335,7 +353,8 @@ absents de l'épreuve PC-SPC récente) :**
   partiellement (couverture) mais pages 2–3 non lues.
 - 2017 N Ex IV-I (skieur → `lois-de-newton`) et Ex IV-II (pendule torsion →
   `aspects-energetiques`) — pages 6 (intro skieur) lue, 7–8 non lues.
-- 2018 N Ex I-P1 (électrolyse bromure de plomb → `electrolyse`) — page 2 non lue.
+- ~~2018 N Ex I-P1 (électrolyse bromure de plomb → `electrolyse`) — page 2 non
+  lue.~~ **transcrit 2026-08-06** (page 2, `electrolyse.md`).
 - 2019 N Ex IV-II (tremplin + projectile → `chute-mouvements-plans`) — page 7 non
   lue.
 - 2020 N Ex IV-II/III (RLC amortissement/entretien → `rlc-serie`) — pages 5–6 lues,
@@ -343,6 +362,13 @@ absents de l'épreuve PC-SPC récente) :**
 - ~~2021 N Ex IV (RC + LC + modulation)~~ **transcrit 2026-08-06** — 3
   entrées (`rc-charge`, `rlc-serie`, `ondes-em-modulation`), pages 5–7. Ex V
   (parachutiste → `chute-mouvements-plans`) déjà transcrit et vérifié.
+- ~~2018 N Ex I-P2 sous-partie 1 (dosage pH-métrique acide lactique →
+  `reactions-acido-basiques`) — signalée non reprise dans
+  `esterification-hydrolyse.md`.~~ **transcrit 2026-08-06** (pages 2–3,
+  `reactions-acido-basiques.md`).
+- ~~2018 N Ex III-I-1 (détermination de $C_2$ par générateur de courant →
+  `rc-charge`) — seule I-2 (décharge) était transcrite.~~ **transcrit
+  2026-08-06** (page 5, `rc-charge.md`).
 
 ## 7. Prochaine passe recommandée
 1. **Années 2008–2016** : résoudre les `upload-<ID>` (fetch `element/<n>`) et lire
