@@ -108,3 +108,111 @@ $q_m$ non chiffrée sur l'axe, repérée par un trait). Abscisses graduées $1,\
 3,\ 4$ ; les maxima successifs apparaissent vers $t\approx 1\ \text{ms}$ puis
 $t\approx 3\ \text{ms}$ (période $\approx 2\ \text{ms}$) *(lecture d'échelle à
 confirmer)*.
+
+---
+
+## 2020 — session normale — Exercice IV (parties II et III)
+Source: https://www.alloschool.com/element/109742
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-80870, page(s) 5-6. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan : « الفيزياء والكيمياء » / « شعبة العلوم التجريبية مسلك
+  العلوم الفيزيائية (خيار فرنسية) »)
+- Code sujet : NS 28F · Barème de l'exercice complet (Ex IV) : 5 points ·
+  Barème de la portée RLC transcrite ici (parties II + III) : 3,5 points
+- Images lues : `.../course-422/upload-80870/0005-big.jpg`,
+  `.../0006-big.jpg` (et `0001-big.jpg` pour la couverture / le barème)
+- Pages du scan : 5 et 6 (sur 7)
+- Portée : Exercice IV du sujet 2020 N est composé de trois parties **I, II,
+  III** partageant le même montage (bobine $(L,r)$, résistance $R = 90\
+  \Omega$). **Partie I — « Réponse d'un dipôle RL à un échelon de tension »**
+  (figures 1-2, questions sur $i(t)$, $u_L(t)$, détermination de $r$ et $L$)
+  est **hors périmètre RLC** et transcrite sous `dipole-rl.md`. **Parties II
+  — « Décharge d'un condensateur dans un dipôle RL »** (oscillations
+  libres/pseudopériodiques, figure 3-4) et **III — « Entretien des
+  oscillations dans un circuit RLC série »** (régime sinusoïdal entretenu,
+  figure 5-6) forment le circuit RLC série proprement dit et sont
+  transcrites intégralement ci-dessous.
+
+**Réponse d'un dipôle RL à un échelon de tension — II. Décharge d'un
+condensateur dans un dipôle RL — III. Entretien des oscillations dans un
+circuit RLC série.**
+
+**II - Décharge d'un condensateur dans un dipôle RL**
+
+On monte en série, à un instant choisi comme nouvelle origine des dates
+$t = 0$, un condensateur de capacité $C$, totalement chargé, avec la bobine
+précédente et un conducteur ohmique de résistance $R = 90\ \Omega$. (figure 3).
+
+La courbe de la figure 4 représente l'évolution de la tension $u_c(t)$ aux
+bornes du condensateur.
+
+1. (0,25) Quel est le régime d'oscillation mis en évidence par la courbe de
+   la figure 4 ?
+2. (0,5) Établir l'équation différentielle vérifiée par la tension $u_c(t)$.
+3. (0,5) Sachant que la pseudopériode est égale à la période propre, trouver
+   la capacité $C$ du condensateur. (On prend : $\pi^{2} = 10$).
+
+**III - Entretien des oscillations dans un circuit RLC série**
+
+Pour entretenir les oscillations électriques dans le circuit précédent
+représenté sur la figure 3, on insère dans ce circuit un générateur $G$
+délivrant une tension proportionnelle à l'intensité du courant :
+$u_G(t) = k \cdot i(t)$. (Figure 5).
+
+La courbe de la figure 6 représente l'évolution de l'intensité $i(t)$ dans le
+circuit dans le cas où $k = k_0$.
+
+1. (0,5) Trouver, dans le système international d'unités, la valeur de $k_0$.
+2. (0,75) Sachant que l'expression de l'intensité $i(t)$ dans le circuit
+   s'écrit ainsi : $i(t) = I_m\cos\!\left(\dfrac{2\pi}{T_0}\, t + \varphi\right)$,
+   déterminer les valeurs de $I_m$, $T_0$ et $\varphi$.
+3. (0,5) Déterminer l'énergie totale $E_t$ du circuit.
+4. (0,5) Trouver l'énergie électrique $E_{e1}$ emmagasinée dans le
+   condensateur à l'instant $t_1 = 16\ \text{ms}$.
+
+*Figure 3 (schéma) :* boucle série (même disposition que la figure 1 de la
+partie I, avec $E$ remplacé par $C$) : coin haut-gauche, flèche $i$ vers la
+droite ; branche haute = $R$ (rectangle) ; coin haut-droit → descend vers la
+branche de droite = bobine $(L, r)$ (dessinée en spires) ; branche basse
+referme le circuit vers le coin bas-gauche ; branche gauche (remontant vers
+le coin haut-gauche) = condensateur $C$ (symbole à deux traits parallèles).
+
+*Figure 4 (courbe) :* $u_C$ (V) en fonction de $t$ (ms) ; **aucune valeur
+numérique** portée sur l'axe $u_C$ (seul le niveau $0$ est repéré) ; axe des
+temps gradué avec repères $5, 10, 15, 20, 25$. Oscillation pseudopériodique
+d'**amplitude décroissante** : la courbe part d'un maximum au voisinage de
+$t=0$ (le plus haut de la courbe), descend à un premier minimum (le plus
+profond de la courbe) au voisinage du repère $t=5$, remonte à un maximum
+(plus bas que celui de départ) au voisinage du repère $t=10$, redescend à un
+second minimum (moins profond que le premier) au voisinage du repère $t=15$,
+remonte à un maximum (plus bas que celui de $t=10$) au voisinage du repère
+$t=20$, puis redescend à un troisième minimum (le moins profond des trois) au
+voisinage du repère $t=25$, avant de remonter en fin de tracé. Les extrema
+successifs paraissent alignés sur les repères $5, 10, 15, 20, 25$, ce qui
+donnerait une pseudo-période lisible $T \approx 10\ \text{ms}$ *(lecture à
+confirmer)*.
+
+*Figure 5 (schéma) :* même boucle série que la figure 3 (condensateur $C$ à
+gauche, $R$ en haut avec flèche $i$, bobine $(L, r)$ à droite), mais la
+branche basse porte en plus un générateur $G$ (cercle libellé « G ») inséré
+en série entre le bas de la branche $C$ et le bas de la branche $(L, r)$.
+
+*Figure 6 (courbe) :* $i$ (mA) en fonction de $t$ (ms) ; axe des ordonnées
+gradué $8, 4, 0, -4, -8$ ; axe des temps gradué avec repères $5, 10, 15, 20,
+25$, quadrillage secondaire fin (bleu). Sinusoïde d'**amplitude constante**,
+oscillant entre $+8$ et $-8$ mA. À $t=0$, la courbe est légèrement **sous**
+l'axe (valeur négative proche de $0$). Elle descend à un premier minimum
+$-8\ \text{mA}$ un peu avant le repère $t=5$ *(lecture à confirmer)*, remonte
+en coupant l'axe au voisinage du repère $t=5$, atteint un maximum $+8\
+\text{mA}$ entre les repères $5$ et $10$ *(lecture à confirmer)*, redescend
+en coupant l'axe au voisinage du repère $t=10$, atteint un minimum $-8\
+\text{mA}$ entre $10$ et $15$ *(lecture à confirmer)*, remonte en coupant
+l'axe au voisinage de $t=15$, atteint un maximum $+8\ \text{mA}$ entre $15$
+et $20$ *(lecture à confirmer)*, redescend en coupant l'axe au voisinage de
+$t=20$, atteint un minimum $-8\ \text{mA}$ entre $20$ et $25$ *(lecture à
+confirmer)*, puis remonte en coupant l'axe au voisinage de $t=25$ et amorce
+un nouveau maximum en fin de tracé. Le motif se répète avec une période
+lisible $T_0 \approx 10\ \text{ms}$ (écart entre maxima/minima de même type
+successifs) *(lecture à confirmer)*.
