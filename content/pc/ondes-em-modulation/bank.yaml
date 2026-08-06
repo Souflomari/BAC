@@ -1,0 +1,257 @@
+# bank.yaml — la banque « S'entraîner » de ondes-em-modulation (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# exercise: dans lesson.md — c'est la couche de VOLUME derrière le sommet de
+# leçon (r-bac + r-variation, exercises.yaml), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Chaque entrée est une transcription FIDÈLE d'une entrée
+# « vérifié » de docs/sujets/pc/ondes-em-modulation.md. Raisonnement rédigé à
+# la voix experte de la maison sur 100 % des questions, en citant les rungs
+# R1–R5 de la leçon (lesson.md) là où c'est naturel ; barème transcrit tel
+# quel dans les énoncés (tag « (x,xx pt) » ajouté — la source docs/sujets ne
+# porte que « (x,xx) ») ; conventions KaTeX (block scalars pour la prose,
+# KaTeX brut entre apostrophes simples dans steps[].math, décimales
+# françaises écrites `X{,}Y` dans le KaTeX, notes sans backslash et en ASCII
+# pur — pas d'accents).
+#
+# NOTE ÉDITORIALE (pour la revue) : les deux SEULS sujets « vérifié » de
+# cette notion à ce jour sont 2017 N (Exercice III, Partie II) et 2021 N
+# (Exercice IV, Partie III) — voir docs/sujets/pc/ondes-em-modulation.md,
+# statuts en tête de chaque entrée. Les deux figurent ci-dessous ; aucun
+# autre sujet de cette notion n'est actuellement « vérifié ».
+#
+# RECOUPEMENT ASSUMÉ (bk-2017-n-x3) : ce même sujet 2017 N (Exercice III,
+# Partie II) sous-tend AUSSI le sommet de leçon r-bac (exercises.yaml, id
+# r-bac, rendu à R6 « Exercice de type bac ») — mêmes
+# données, mêmes trois questions, même barème (1,75 pt). Le raisonnement
+# ci-dessous est rédigé de nouveau (voix maison), pas copié de
+# exercises.yaml. Un point n'est PAS re-dérivé indépendamment ici : la
+# lecture de $T_p$ (période de la porteuse, figure 4) — le scan vérifié
+# donne l'enveloppe et les repères d'abscisse mais ne détaille pas ce
+# comptage ; la valeur $T_p = 0{,}5$ ms ($F_p = 2$ kHz) est reprise à
+# l'identique de r-bac (voir la note de sourcing de l'entrée ci-dessous).
+# Même disposition assumée que chute-mouvements-plans bk-2020-n-x5 et
+# rc-charge bk-2019-n-x3 — à l'arbitrage de l'owner si l'on préfère écarter
+# cette entrée de la banque pour éviter le recoupement sur la même page.
+# (r-variation, le second exercice du sommet R6, N'EST PAS un sujet réel —
+# sourcing.status: not-applicable dans exercises.yaml — donc aucun
+# recoupement de ce côté-là.)
+#
+# SCOPE NOTE (bk-2021-n-x4, questions q2a/q2b) : la leçon (rungs R2, R3)
+# enseigne la lecture de $F_p$, $f_s$, $S_m$ et $U_0$ à partir de
+# l'enveloppe de la tension de SORTIE modulée $u_s(t) = k\,u_1(t)\,u_2(t)$
+# (l'exemple travaillé de R2-R3, et bk-2017-n-x3 ci-dessus, procèdent
+# ainsi). Le sujet 2021 N est différent : l'oscilloscope y visualise
+# directement les DEUX tensions D'ENTRÉE $u_1(t)$ et $u_2(t)$ du
+# multiplieur, séparément — jamais la sortie. $F_p$ et $f_s$ se lisent donc
+# directement sur les deux tracés (comptage d'oscillations de $u_1$,
+# période de $u_2$), et $S_m$/$U_0$ se lisent directement sur les extrema
+# de $u_2$ seul, sans passer par la lecture d'enveloppe-produit du rung 3.
+# La leçon ne modélise nulle part, pas à pas, ce cas de figure (deux voies
+# affichées séparément plutôt que la sortie unique) ; le pont est fait au
+# point d'usage dans le raisonnement des questions concernées.
+
+notion: pc/ondes-em-modulation
+
+entries:
+  # ── bk-2017-n-x3 — 2017 N, Exercice III (Partie II) : forme canonique et taux de modulation ──
+  - id: bk-2017-n-x3
+    title: "Modulation d'amplitude par circuit multiplieur : forme canonique et taux de modulation"
+    source:
+      year: 2017
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice III — Partie II — Modulation d'amplitude"
+    bareme_total: 1.75
+    duration_min: 11
+    sourcing:
+      status: sourced
+      note: >-
+        2017 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28F, AlloSchool element/57711 (Exercice III,
+        Partie II — modulation d'amplitude par circuit multiplieur ; barème
+        de la partie = 1,75 pt sur les 5 pt de l'exercice complet, dont la
+        Partie I — établissement et rupture du courant dans un dipôle RL —
+        relève de dipole-rl.md, non transcrite là). Transcription vérifiée :
+        re-fetch indépendant AlloSchool + diff OK (agent-vérificateur,
+        docs/sujets/pc/ondes-em-modulation.md, statut « vérifié »,
+        2026-07-11). Figure 4 (oscillogramme) transcrite avec sa réserve
+        d'origine : la lecture d'échelle des extrema de l'enveloppe (3 V /
+        1 V) est marquée « à confirmer » dans la source vérifiée ; conservée
+        telle quelle ici, drapeau non levé pour ce sujet. La source vérifiée
+        donne les repères d'abscisse (5 ms, 15 ms) mais ne détaille pas la
+        période de l'oscillation rapide (porteuse) sur le scan ; comme dans
+        exercises.yaml (r-bac, même sujet), on retient $T_p = 0{,}5$ ms
+        (soit $F_p = 2$ kHz) pour que la question de lecture graphique reste
+        posable au niveau TP décrit par l'énoncé — valeur reprise à
+        l'identique de r-bac, pas re-dérivée indépendamment ici.
+        RECOUPEMENT ASSUMÉ avec le sommet de leçon r-bac (exercises.yaml,
+        marqueur exercise r-bac à R6) — voir la note éditoriale en tête de
+        fichier.
+    intro: |-
+      **Modulation d'amplitude (examen national, session normale 2017, Exercice III — Partie II).**
+
+      Pour étudier la modulation d'amplitude et vérifier la qualité de la modulation, au cours d'une séance de TP, le professeur a utilisé avec ses élèves, un circuit intégré multiplieur $(X)$ en appliquant une tension sinusoïdale $u_1(t) = P_m \cos(2\pi F_p\,t)$ à son entrée $E_1$ et une tension $u_2(t) = U_0 + s(t)$ à son entrée $E_2$, avec $U_0$ la composante continue de la tension et $s(t) = S_m \cos(2\pi f_s\,t)$ la tension modulante (figure 3).
+
+      La courbe de la figure 4 représente la tension de sortie $u_s(t) = k\,u_1(t)\,u_2(t)$, visualisée par les élèves sur l'écran d'un oscilloscope. $k$ est une constante positive caractérisant le multiplieur $X$.
+
+      **Figure 3 (schéma).** Circuit intégré multiplieur $(X)$ (symbole $\times$) avec deux entrées, $E_1$ (tension $u_1(t)$) et $E_2$ (tension $u_2(t)$), et une sortie $S$ (tension $u_s(t)$), le montage étant relié à la masse.
+
+      **Figure 4 (oscillogramme).** $u_s\ (\text{V})$ en fonction de $t\ (\text{ms})$ ; signal modulé en amplitude (enveloppe sinusoïdale) ; ordonnées graduées de $-3$ à $+3$ ; axe des abscisses marqué aux valeurs $5$ et $15\ \text{ms}$. Amplitude maximale de l'enveloppe $\approx 3\ \text{V}$ et minimale $\approx 1\ \text{V}$ *(lecture d'échelle à confirmer)*.
+    questions:
+      - id: q1
+        part: "Partie II — Modulation d'amplitude : établir la forme canonique"
+        stem: |-
+          **(0,75 pt)** Montrer, en précisant les expressions de $A$ et de $m$, que la tension $u_s(t)$ s'écrit sous la forme :
+
+          $$u_s(t) = A\left[1 + m \cos(2\pi f_s\,t)\right]\cos(2\pi F_p\,t)$$
+        reasoning: |-
+          Comme au rung 2 (la forme générale $s(t)=(U_0+s_m(t))\cos(2\pi f_p t)$), l'enjeu n'est pas de résoudre une équation mais de reconnaître la même structure dans le produit du multiplieur. On part de la définition $u_s = k\,u_1\,u_2$, on remplace $u_1$ et $u_2$ par leurs expressions, puis on met en facteur la composante continue $U_0$ à l'intérieur de $u_2$ — exactement le geste du rung 2. C'est cette mise en facteur qui fait apparaître d'un bloc l'amplitude globale $A$ (tout ce qui multiplie l'oscillation rapide $\cos(2\pi F_p t)$) et le taux de modulation $m$ (le rapport $S_m/U_0$, défini au rung 3). Il ne reste plus qu'à identifier terme à terme avec la forme canonique demandée.
+        steps:
+          - math: 'u_s(t) = k\,u_1(t)\,u_2(t) = k\,P_m\cos(2\pi F_p\,t)\left[U_0 + S_m\cos(2\pi f_s\,t)\right]'
+            note: "Definition du multiplieur (enonce) : on remplace u1 et u2 par leurs expressions."
+          - math: 'U_0 + S_m\cos(2\pi f_s\,t) = U_0\left[1 + \frac{S_m}{U_0}\cos(2\pi f_s\,t)\right]'
+            note: "Mise en facteur de U0 (rung 2) : c'est ce geste qui fait apparaitre A et m."
+          - math: 'u_s(t) = \underbrace{k\,P_m\,U_0}_{A}\left[1 + \underbrace{\frac{S_m}{U_0}}_{m}\cos(2\pi f_s\,t)\right]\cos(2\pi F_p\,t)'
+            note: "On reporte : la forme canonique demandee apparait, avec A et m identifies."
+          - math: '\boxed{A = k\,P_m\,U_0 \qquad m = \frac{S_m}{U_0}}'
+            note: "Reponse aux deux expressions demandees."
+      - id: q2
+        part: "En exploitant la courbe de la figure 4"
+        stem: |-
+          **(0,5 pt)** Trouver les fréquences $F_p$ de la porteuse et $f_s$ de la tension modulante.
+        reasoning: |-
+          Deux échelles de temps distinctes coexistent sur l'oscillogramme — précisément la distinction faite au rung 3 entre l'oscillation rapide (la porteuse, $F_p$) et l'enveloppe lente (la modulante, $f_s$). L'enveloppe accomplit une période complète entre les deux repères donnés sur l'axe des abscisses ; cette durée donne $T_s$, d'où $f_s = 1/T_s$. La porteuse, elle, est l'oscillation la plus rapide sous l'enveloppe ; sa période $T_p$ se lit séparément, sur un intervalle bien plus court, et donne $F_p = 1/T_p$.
+        steps:
+          - math: 'T_s = t_2 - t_1 = 15\ \text{ms} - 5\ \text{ms} = 10\ \text{ms} = 10\times10^{-3}\ \text{s}'
+            note: "Periode de l'enveloppe (rung 3), lue entre les deux reperes de l'axe des abscisses."
+          - math: 'f_s = \frac{1}{T_s} = \frac{1}{10\times10^{-3}} = 100\ \text{Hz}'
+            note: "Frequence de la tension modulante."
+          - math: 'F_p = \frac{1}{T_p} = \frac{1}{0{,}5\times10^{-3}} = 2000\ \text{Hz} = 2\ \text{kHz}'
+            note: "Frequence de la porteuse, a partir de Tp = 0,5 ms (valeur reprise de r-bac ; la figure verifiee ne detaille pas ce comptage fin)."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Déterminer le taux de modulation et en déduire la qualité de modulation.
+        reasoning: |-
+          L'enveloppe supérieure de la figure 4 vaut $A(1+m)$ à son maximum et $A(1-m)$ à son minimum — c'est directement la lecture de la forme établie à la question 1, prise à $\cos(2\pi f_s t) = +1$ puis $-1$. Le rapport de ces deux extrema élimine $A$ et ne laisse que $m$, sans qu'il soit nécessaire de connaître $A$ séparément. La qualité se tranche ensuite au seul critère du rung 3 : $m < 1$ signe une bonne modulation, $m \geq 1$ une surmodulation.
+        steps:
+          - math: 'U_{s,\max} = A(1+m) = 3\ \text{V} \qquad U_{s,\min} = A(1-m) = 1\ \text{V}'
+            note: "Lecture des extrema de l'enveloppe sur la figure 4 (drapeau d'echelle a confirmer, conserve)."
+          - math: 'm = \frac{U_{s,\max} - U_{s,\min}}{U_{s,\max} + U_{s,\min}} = \frac{3-1}{3+1} = 0{,}5'
+            note: "Le rapport des extrema elimine A (rung 3) ; il ne reste que m."
+          - math: '\boxed{m = 0{,}5 < 1 \implies \text{bonne modulation}}'
+            note: "Critere du rung 3 : m < 1, l'enveloppe reste positive et fidele au signal modulant."
+
+  # ── bk-2021-n-x4 — 2021 N, Exercice IV (Partie III) : lecture d'un oscillogramme a deux voies ──
+  - id: bk-2021-n-x4
+    title: "Modulation d'amplitude d'un signal : lecture d'un oscillogramme à deux voies"
+    source:
+      year: 2021
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice IV — III- Modulation d'amplitude d'un signal"
+    bareme_total: 1.75
+    duration_min: 11
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code NS 28F, AlloSchool element/127287 (Exercice IV, Partie
+        III — modulation d'amplitude par circuit multiplieur, oscilloscope
+        visualisant les deux tensions d'entrée $u_1(t)$/$u_2(t)$ plutôt que
+        la sortie ; barème de la partie = 1,75 pt sur les 4,75 pt de
+        l'exercice complet, dont la Partie I — dipôle RC — relève de
+        rc-charge.md et la Partie II — oscillations LC — de rlc-serie.md).
+        Transcription vérifiée en trois passes (docs/sujets/pc/ondes-em-modulation.md,
+        statut « vérifié », 2026-08-06) : (1) re-fetch indépendant AlloSchool
+        + diff caractère par caractère (agent-vérificateur) — aucun écart
+        sur le texte, barème re-additionné $0{,}25+0{,}5+0{,}5+0{,}5=1{,}75$
+        pt, partition de l'exercice $1{,}0+2{,}0+1{,}75=4{,}75$ confirmée ;
+        (2) vérification adverse par un second agent ayant détecté et
+        corrigé une inversion d'amplitude sur la figure 6 (c'est la
+        porteuse $u_1$, et non la modulante $u_2$, qui porte la plus grande
+        amplitude crête à crête) ; (3) re-lecture indépendante des figures
+        par un troisième agent (passe 3, 2026-08-06), sans réutiliser le
+        relevé de la passe 2 : quadrillage $10\times8$ divisions retrouvé
+        indépendamment, porteuse $u_1$ mesurée de $-1{,}48$ à $+1{,}51$
+        division (soit $3{,}0$ div crête à crête, centrée sur l'axe),
+        modulante $u_2$ mesurée entre les traits $+1{,}00$ et $+2{,}00$
+        division (soit $1{,}0$ div crête à crête, moyenne $+1{,}5$ div) —
+        correction de la passe 2 confirmée par mesure indépendante. Figure 5
+        (schéma du multiplieur) jugée fidèle au zoom aux passes 1 et 3.
+        Drapeau « lecture à confirmer » partiellement levé : les amplitudes
+        sont lisibles exactement sur le quadrillage (levé pour ce point) ;
+        le comptage exact des oscillations de la porteuse ($\simeq3$ par
+        division, $\simeq30$ à l'écran) reste une lecture fine sur un tracé
+        très resserré, et le drapeau est maintenu sur ce seul point —
+        conservé tel quel ci-dessous. SCOPE NOTE (questions q2a/q2b) : voir
+        la note éditoriale en tête de fichier — ce sujet fait lire $F_p$,
+        $f_s$, $S_m$ et $U_0$ directement sur les deux voies d'entrée
+        affichées séparément, un cas que la leçon (rungs R2, R3) ne
+        modélise jamais pas à pas sous cette forme (elle ne montre que la
+        lecture sur l'enveloppe de la sortie).
+    intro: |-
+      **Modulation d'amplitude d'un signal (examen national, session normale 2021, Exercice IV — Partie III).**
+
+      Pour obtenir un signal modulé en amplitude, on réalise le montage représenté sur le schéma de la figure 5 où le multiplieur $X$ est un circuit intégré possédant deux entrées $E_1$ et $E_2$ et une sortie $S$.
+
+      On applique :
+      - sur l'entrée $E_1$ une tension $u_1(t)$ ayant pour expression $u_1(t) = P_m \cos(2\pi F_p.t)$ ;
+      - sur l'entrée $E_2$ une tension $u_2(t)$ ayant pour expression $u_2(t) = U_0 + s(t)$ où $s(t) = S_m \cos(2\pi f_s.t)$ est la tension modulante et $U_0$ est la composante continue de cette tension.
+
+      On obtient à la sortie $S$ du multiplieur $X$ une tension $u_s(t)$ modulée en amplitude. On visualise la tension $u_1(t)$ sur la voie A de l'oscilloscope et la tension $u_2(t)$ sur la voie B (figure 6).
+
+      **Données.** Sensibilité verticale : $1\ \text{V/div}$. Sensibilité horizontale : $2\ \text{ms/div}$.
+
+      **Figure 5 (schéma).** Cadre englobant, à l'intérieur duquel le multiplieur $X$ est représenté par un rectangle étiqueté « X ». Deux lignes horizontales entrent par la gauche dans le rectangle : la ligne supérieure, étiquetée $E_1$, reliée par une flèche verticale montante $u_1$ à un rail de masse en bas du cadre ; la ligne inférieure, étiquetée $E_2$, reliée par une flèche verticale montante $u_2$ au même rail de masse. Une ligne horizontale sort par la droite du rectangle, étiquetée $S$, reliée par une flèche verticale montante $u_s$ au rail de masse. Le rail de masse porte le symbole de terre (hachures) en son milieu.
+
+      **Figure 6 (oscillogramme).** Écran d'oscilloscope quadrillé de **10 divisions en largeur et 8 divisions en hauteur**, avec un axe vertical central et un axe horizontal central. Deux tracés superposés, étiquetés « $u_2(t)$ » (en haut) et « $u_1(t)$ » (en bas) en bordure droite de l'écran :
+
+      - $u_1(t)$ — la **porteuse** : oscillation très rapide et très resserrée occupant toute la largeur de l'écran, **centrée sur l'axe horizontal central** et d'amplitude **$1,5$ division** (le faisceau s'étend exactement de $-1{,}5$ à $+1{,}5$ division, soit $3{,}0$ divisions crête à crête). Elle compte environ $3$ oscillations par division, soit une trentaine sur la largeur de l'écran *(comptage exact des oscillations — lecture à confirmer)*.
+      - $u_2(t)$ — la **modulante décalée** : oscillation nettement plus lente et de plus faible amplitude que la porteuse, entièrement située au-dessus de l'axe horizontal central, oscillant **exactement entre les traits $+1$ et $+2$ divisions** (soit $1,0$ division crête à crête, autour d'un niveau moyen de $+1,5$ division). Sa période vaut environ $4$ divisions.
+    questions:
+      - id: q1
+        part: "III- Modulation d'amplitude d'un signal : définir et exploiter la courbe"
+        stem: |-
+          **(0,25 pt)** Définir la modulation d'amplitude.
+        reasoning: |-
+          La définition attendue est celle du rung 2 : la modulation d'amplitude consiste à faire varier, au rythme du signal informatif basse fréquence $s(t)$, l'amplitude d'une tension porteuse sinusoïdale — tout en gardant sa fréquence $F_p$ rigoureusement constante. Ici il ne s'agit pas d'un calcul mais de restituer clairement les deux idées du rung 2 : ce qui varie (l'amplitude instantanée $U_0+s(t)$, qui suit fidèlement $s(t)$) et ce qui ne varie jamais (la fréquence $F_p$ de l'oscillation rapide).
+
+          La modulation d'amplitude est le procédé qui consiste à faire varier l'amplitude d'une tension porteuse sinusoïdale de fréquence fixe $F_p$, au rythme d'un signal informatif basse fréquence $s(t)$, la fréquence de l'oscillation rapide restant, elle, inchangée.
+      - id: q2a
+        part: "Déterminer graphiquement"
+        stem: |-
+          **(0,5 pt)** Déterminer graphiquement les fréquences $F_p$ et $f_s$.
+        reasoning: |-
+          Deux voies distinctes coexistent sur la figure 6 — exactement la distinction du rung 3 entre oscillation rapide (porteuse $u_1$) et oscillation lente (modulante $u_2$), mais ici lues chacune directement sur son propre tracé plutôt que sur l'enveloppe d'un signal unique (le sujet 2017 N ci-dessus, lui, procédait par enveloppe). Pour $f_s$, on lit la période de $u_2$ en divisions, convertie avec la sensibilité horizontale donnée ($2\ \text{ms/div}$). Pour $F_p$, on compte le nombre d'oscillations de $u_1$ sur une division puis on convertit en fréquence — un comptage fin, la source elle-même le signale comme une lecture délicate sur un tracé aussi resserré.
+        steps:
+          - math: 'T_s \approx 4\ \text{div} \times 2\ \text{ms/div} = 8\ \text{ms}'
+            note: "Periode de u2 (modulante) lue sur la figure 6, convertie avec la sensibilite horizontale (2 ms/div)."
+          - math: 'f_s = \frac{1}{T_s} = \frac{1}{8\times10^{-3}} \approx 125\ \text{Hz}'
+            note: "Frequence de la tension modulante."
+          - math: 'F_p \approx 3\ \text{oscillations/div} \times \frac{10\ \text{div}}{20\ \text{ms}} = \frac{30}{20\times10^{-3}} = 1500\ \text{Hz}'
+            note: "Comptage des oscillations de u1 (porteuse) sur l'ecran entier (10 div = 20 ms) ; lecture fine, drapeau maintenu dans la source."
+      - id: q2b
+        stem: |-
+          **(0,5 pt)** Déterminer graphiquement la valeur de $S_m$ et celle de $U_0$.
+        reasoning: |-
+          Sur la figure 6, l'oscillation $u_2$ (la modulante décalée) oscille entre les traits $+1$ et $+2$ division — sa valeur moyenne donne directement la composante continue $U_0$ (rung 2 : $u_2(t)=U_0+s(t)$), et l'écart entre son maximum et cette moyenne donne l'amplitude $S_m$ de la partie variable $s(t)$. La sensibilité verticale ($1\ \text{V/div}$) convertit ces divisions en volts.
+        steps:
+          - math: 'U_0 = \frac{2{,}00 + 1{,}00}{2}\ \text{div} \times 1\ \text{V/div} = 1{,}5\ \text{V}'
+            note: "Valeur moyenne de u2 (rung 2 : U0 est la composante continue) ; sensibilite verticale 1 V/div."
+          - math: 'S_m = (2{,}00 - 1{,}5)\ \text{div} \times 1\ \text{V/div} = 0{,}5\ \text{V}'
+            note: "Ecart entre le maximum de u2 et sa valeur moyenne U0."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** La modulation réalisée dans ce cas sera-t-elle de bonne qualité ? Justifier votre réponse.
+        reasoning: |-
+          Les deux conditions de bonne modulation du rung 3 se re-testent ici avec les valeurs lues aux questions précédentes. D'abord $F_p \gg f_s$ : la porteuse doit osciller beaucoup plus vite que la modulante pour que l'enveloppe se dessine nettement — sans cette condition, il n'y aurait pas assez d'oscillations de porteuse par cycle de modulante pour tracer une enveloppe lisible. Ensuite $m = S_m/U_0 < 1$ : l'amplitude instantanée $U_0+s(t)$ doit rester positive à tout instant, sans quoi l'oscillation rapide change brutalement de phase et l'enveloppe ne reproduit plus fidèlement le signal — c'est la surmodulation. On vérifie les deux avec $F_p \approx 1500\ \text{Hz}$, $f_s \approx 125\ \text{Hz}$, $S_m = 0{,}5\ \text{V}$ et $U_0 = 1{,}5\ \text{V}$.
+        steps:
+          - math: '\frac{F_p}{f_s} = \frac{1500}{125} = 12 \gg 1'
+            note: "Premiere condition du rung 3 : la porteuse oscille bien plus vite que la modulante."
+          - math: 'm = \frac{S_m}{U_0} = \frac{0{,}5}{1{,}5} = \frac{1}{3} \approx 0{,}33 < 1'
+            note: "Seconde condition du rung 3 : taux de modulation inferieur a 1, pas de surmodulation."
+          - math: '\boxed{\text{les deux conditions sont verifiees} \implies \text{bonne modulation}}'
+            note: "Conclusion : Fp >> fs et m < 1 sont toutes deux respectees."

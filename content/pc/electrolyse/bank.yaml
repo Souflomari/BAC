@@ -1,0 +1,231 @@
+# bank.yaml — la banque « S'entraîner » de electrolyse (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le
+# sommet de leçon (r-bac + r-variation, exercises.yaml), pas la rampe
+# embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Chaque entrée est une transcription FIDÈLE d'une entrée
+# « vérifié » de docs/sujets/pc/electrolyse.md (re-fetch AlloSchool + diff
+# indépendant — trois passes pour le sujet 2018, README §3). Raisonnement
+# rédigé à la voix experte de la maison sur 100 % des questions, en citant
+# les rungs R1–R4 de la leçon (lesson.md) là où c'est naturel ; barème
+# transcrit tel quel dans les énoncés (tag « (x,xx pt) » ajouté — la source
+# docs/sujets ne porte que « (x,xx) ») ; conventions KaTeX (block scalars
+# pour la prose, KaTeX brut entre apostrophes simples dans steps[].math,
+# notes de steps sans backslash, ASCII).
+#
+# NOTE ÉDITORIALE (recoupement, pour la revue) : docs/sujets/pc/electrolyse.md
+# recense DEUX sujets « vérifié » à ce jour. Le premier, 2019 N Exercice I
+# (Partie 1, électrolyse d'une solution aqueuse d'iodure de zinc), est
+# EXACTEMENT le même sujet que le sommet de leçon r-bac (exercises.yaml,
+# marqueur [[exercise:r-bac]] à R6 « Pour t'entraîner ») : mêmes données,
+# mêmes questions, mêmes réponses numériques (Δt ≈ 157 min). Il figure ici
+# pour que la banque soit le corpus complet des annales vérifiées de la
+# notion (BANK-SPEC §1) — recoupement assumé, même disposition que piles
+# bk-2020-n-x1 et rc-charge bk-2019-n-x3. Le raisonnement ci-dessous est
+# rédigé de nouveau (voix maison), pas copié de exercises.yaml. À
+# l'arbitrage de l'owner si l'on préfère écarter cette entrée de la banque
+# pour éviter le recoupement sur la même page. Le second sujet, 2018 N
+# Exercice I (Partie I, électrolyse du bromure de plomb), ne recoupe rien :
+# il est nouveau dans le corpus de cette notion, la banque compte donc
+# 2 entrées distinctes en pratique (la rail affichera « 2 sujets »).
+#
+# SCOPE NOTE (technique mobilisée au-delà de ce que la leçon montre
+# explicitement pas à pas — pontée au point d'usage dans le raisonnement de
+# la question concernée, PAS corrigée ni simplifiée ici) :
+#   - bk-2018-n-x1, q4 : convertir une quantité de matière de dibrome gazeux
+#     en volume exige la relation n = V/V_m (volume molaire des gaz).
+#     Aucun rung de cette leçon (lesson.md) n'introduit le volume molaire ni
+#     cette conversion — R4 chiffre uniquement des MASSES déposées ou
+#     dissoutes (n → m via la masse molaire), jamais un volume de gaz. Le
+#     pont (n(Br2) → V(Br2) via V_m, donnée dans l'énoncé) est fait au
+#     point d'usage dans le raisonnement de la question 4. Signalé pour
+#     l'orchestrateur / pedagogy-architect : soit R5 (applications) gagne
+#     une mention du volume molaire, soit la question reste balisée hors
+#     rung comme telle. Pas corrigé unilatéralement ici.
+
+notion: pc/electrolyse
+
+entries:
+  # ── bk-2018-n-x1 — 2018 N, Exercice I (Partie I) : électrolyse du bromure de plomb ──
+  - id: bk-2018-n-x1
+    title: "Électrolyse du bromure de plomb : anode, équations aux électrodes, intensité et volume de dibrome par la loi de Faraday"
+    source:
+      year: 2018
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice I — Partie I : électrolyse du bromure de plomb"
+    bareme_total: 2
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national PC BIOF, code NS28F
+        (Exercice I, Partie I — électrolyse du bromure de plomb à haute
+        température ; barème de la partie = 2 pt sur les 7 pt de l'exercice
+        complet, dont la Partie II — réactions de l'acide lactique — se
+        répartit entre reactions-acido-basiques.md et
+        esterification-hydrolyse.md). Transcription vérifiée en trois passes
+        indépendantes (README §3) : re-fetch AlloSchool element/57726 + diff
+        caractère par caractère (passe 1→2, correction des indices $(aq)$
+        inventés au couple $Pb^{2+}/Pb_{(s)}$ et $Br_{2(g)}/Br^-$ — absents
+        du scan), puis re-lecture indépendante d'un troisième agent
+        confirmant la notation corrigée conforme au scan (zoom ×9, crop au
+        pixel ; docs/sujets/pc/electrolyse.md, statut « vérifié »,
+        2026-08-06). Physique re-dérivée et cohérente : $n(Pb)=0{,}100$ mol
+        $\Rightarrow I \approx 5{,}4$ A ; $n(Br_2)=n(Pb) \Rightarrow
+        V(Br_2) \approx 7{,}05$ L. Aucun recoupement avec le sommet de leçon
+        (r-bac/exercises.yaml transcrit le sujet 2019, iodure de zinc — voir
+        l'en-tête du fichier).
+    intro: |-
+      **Électrolyse d'un composé ionique : le bromure de plomb (examen national, session normale 2018, Exercice I — Partie I).**
+
+      On réalise l'électrolyse du bromure de plomb $Pb^{2+} + 2\,Br^-$ à haute température par un générateur fournissant un courant électrique d'intensité $I$ constante.
+
+      Au cours de cette électrolyse, le métal plomb se dépose sur l'une des électrodes et au niveau de l'autre, il se forme le gaz dibrome.
+
+      Au cours du fonctionnement de l'électrolyseur pendant la durée $\Delta t = 3600\ \text{s}$, la masse de plomb déposé est : $m = 20{,}72\ \text{g}$.
+
+      **Données :** les 2 couples mis en jeu : $Pb^{2+}/Pb_{(s)}$ et $Br_{2(g)}/Br^-$ ; la constante de Faraday : $F = 9{,}65 \cdot 10^{4}\ \text{C.mol}^{-1}$ ; le volume molaire des gaz dans les conditions de l'expérience : $V_m = 70{,}5\ \text{L.mol}^{-1}$ ; la masse molaire du plomb : $M(Pb) = 207{,}2\ \text{g.mol}^{-1}$.
+
+      *(Aucune figure dans cette partie ; énoncé intégralement textuel.)*
+    questions:
+      - id: q1
+        part: "Partie I — Électrolyse d'un composé ionique : le bromure de plomb"
+        stem: |-
+          **(0,25 pt)** Donner le nom de l'électrode (anode ou cathode) au niveau de laquelle se forme le dibrome.
+        reasoning: |-
+          Comme au rung 1, l'anode et la cathode se distinguent par le mécanisme — ici, aucun schéma de branchement n'est même fourni, donc aucune polarité à lire. Il suffit de regarder les deux couples donnés : $Pb^{2+}/Pb_{(s)}$ est le couple du plomb, qui se dépose (donc une réduction) ; le dibrome ne peut venir que de l'autre couple, $Br_{2(g)}/Br^-$, où $Br_2$ est la forme oxydée. Former du $Br_2$ à partir de $Br^-$, c'est perdre des électrons — une oxydation — et l'électrode où se produit une oxydation est, par définition, l'anode (rung 1).
+
+          Le dibrome se forme donc à l'**anode**.
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Écrire les équations des réactions aux électrodes, ainsi que l'équation bilan lors de l'électrolyse.
+        reasoning: |-
+          Même geste qu'au rung 1 : une demi-équation par électrode, dans le sens que le mécanisme impose, puis la somme équilibrée en électrons. À l'anode (question 1), les ions bromure s'oxydent en dibrome. À la cathode — l'autre électrode, où le plomb se dépose, donc une réduction — les ions plomb captent des électrons. Les deux demi-équations échangent chacune $2\,e^-$ : ils s'annulent directement dans la somme, sans multiplier ni l'une ni l'autre.
+        steps:
+          - math: '2\,Br^- \rightarrow Br_{2(g)} + 2\,e^-'
+            note: "A l'anode : oxydation des ions bromure, degagement de dibrome."
+          - math: 'Pb^{2+} + 2\,e^- \rightarrow Pb_{(s)}'
+            note: "A la cathode : reduction des ions plomb, depot de plomb metal."
+          - math: 'Pb^{2+} + 2\,Br^- \rightarrow Pb_{(s)} + Br_{2(g)}'
+            note: "Bilan : les 2 electrons de chaque cote s'eliminent."
+      - id: q3
+        part: "Partie I — Loi de Faraday : intensité et volume de dibrome"
+        stem: |-
+          **(0,5 pt)** Déterminer la valeur de l'intensité $I$ du courant électrique passant dans le circuit pendant la durée $\Delta t$.
+        reasoning: |-
+          On remonte la chaîne du rung 4, dans le sens inverse de l'exemple travaillé de la leçon (qui partait d'un courant connu pour trouver une masse) : ici c'est la masse déposée qui est connue, et c'est le courant qu'il faut en tirer. La masse de plomb donne d'abord sa quantité de matière ; la demi-équation de la question 2 dit que chaque atome de plomb déposé a mobilisé **deux** électrons ; la constante de Faraday convertit ces électrons en quantité d'électricité $Q$ ; et $Q = I\,\Delta t$, à intensité constante, livre enfin $I$ une fois $\Delta t$ connu (donnée de l'énoncé).
+        steps:
+          - math: 'n(Pb) = \frac{m}{M(Pb)} = \frac{20{,}72}{207{,}2}'
+            note: "La masse de plomb deposee devient une quantite de matiere."
+          - math: '\boxed{n(Pb) = 0{,}100\ \text{mol}}'
+            note: "Valeur ronde, signe d'un jeu de donnees coherent."
+          - math: 'n(e^-) = 2\,n(Pb) = 0{,}200\ \text{mol}'
+            note: "Chaque atome de plomb depose a consomme 2 electrons (Pb2+ + 2e- -> Pb, question 2)."
+          - math: 'Q = n(e^-)\,F = 0{,}200\times 9{,}65\times10^{4}'
+            note: "Quantite d'electricite, par la constante de Faraday."
+          - math: '\boxed{Q = 1{,}93\times10^{4}\ \text{C}}'
+            note: "Application numerique."
+          - math: 'I = \frac{Q}{\Delta t} = \frac{1{,}93\times10^{4}}{3600}'
+            note: "On isole I dans Q = I.Delta t (intensite constante), avec Delta t donne dans l'enonce."
+          - math: '\boxed{I \approx 5{,}4\ \text{A}}'
+            note: "Intensite du courant impose par le generateur."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Calculer, dans les conditions de l'expérience, le volume $V$ du gaz dibrome formé pendant $\Delta t$.
+        reasoning: |-
+          SCOPE NOTE (voir l'en-tête du fichier) : convertir une quantité de matière de gaz en volume par le volume molaire $V_m$ n'est traité par aucun rung de cette leçon — R4 chiffre des masses déposées, jamais des volumes de gaz ; c'est une relation générale de chimie ($n = V/V_m$), mobilisée ici sans qu'aucun rung ne l'introduise. On commence par la stœchiométrie, qui elle relève bien du rung 1 : le bilan de la question 2 associe un $Br_2$ formé à chaque $Pb$ déposé (même nombre d'électrons échangés de chaque côté), donc $n(Br_2) = n(Pb) = 0{,}100\ \text{mol}$, déjà calculé à la question 3 — pas besoin de repasser par les électrons. Il reste à convertir cette quantité de matière en volume, avec le volume molaire donné dans l'énoncé.
+        steps:
+          - math: 'n(Br_2) = n(Pb) = 0{,}100\ \text{mol}'
+            note: "Bilan de la question 2 : un Br2 forme pour un Pb depose (meme nombre d'electrons echanges)."
+          - math: 'V = n(Br_2)\times V_m = 0{,}100\times 70{,}5'
+            note: "Conversion mole -> volume par le volume molaire des gaz, donne dans l'enonce (hors rungs de cette lecon)."
+          - math: '\boxed{V = 7{,}05\ \text{L}}'
+            note: "Volume de dibrome degage pendant Delta t."
+
+  # ── bk-2019-n-x1 — 2019 N, Exercice I (Partie 1) : électrolyse d'iodure de zinc ──
+  # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir la NOTE
+  # ÉDITORIALE en tête de fichier pour le recoupement assumé.
+  - id: bk-2019-n-x1
+    title: "Électrolyse d'une solution aqueuse d'iodure de zinc : anode, équations aux électrodes et durée par la loi de Faraday"
+    source:
+      year: 2019
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice I — Partie 1 : électrolyse d'une solution aqueuse d'iodure de zinc"
+    bareme_total: 2
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national PC BIOF, code NS28F
+        (Exercice I, Partie 1 — électrolyse d'une solution aqueuse d'iodure
+        de zinc entre deux électrodes de graphite A et B ; barème de la
+        partie = 2 pt sur les 7 pt de l'exercice complet, dont la Partie 2 —
+        étude conductimétrique de l'acide benzoïque — est transcrite sous
+        reactions-acido-basiques.md). Transcription vérifiée : re-fetch
+        indépendant AlloSchool element/68300 + diff OK (agent-vérificateur,
+        2026-07-11 ; docs/sujets/pc/electrolyse.md, statut « vérifié »).
+        FLAG RECOUPEMENT (voir l'en-tête du fichier) : ce même sujet
+        sous-tend le sommet de leçon r-bac (exercises.yaml, marqueur
+        [[exercise:r-bac]] à R6 « Pour t'entraîner ») — recoupement assumé,
+        même disposition que piles bk-2020-n-x1 ; le raisonnement ci-dessous
+        est rédigé de nouveau (voix maison), pas copié de exercises.yaml.
+    intro: |-
+      **Électrolyse d'une solution aqueuse d'iodure de zinc (examen national, session normale 2019, Exercice I — Partie 1).**
+
+      On réalise l'électrolyse d'une solution aqueuse d'iodure de zinc $\text{Zn}^{2+}_{(aq)} + 2\,\text{I}^-_{(aq)}$, en utilisant deux électrodes A et B en graphite. On observe un dégagement du gaz diiode au niveau d'une électrode et la formation d'un dépôt de zinc au niveau de l'autre électrode.
+
+      La figure ci-contre représente le schéma du dispositif expérimental utilisé pour réaliser cette électrolyse.
+
+      **Données :** $1\text{F} = 9{,}65 \cdot 10^{4}\ \text{C.mol}^{-1}$ ; les deux couples mis en jeu sont : $\text{Zn}^{2+}_{(aq)}/\text{Zn}_{(s)}$ et $\text{I}_{2(g)}/\text{I}^-_{(aq)}$ ; la masse molaire du zinc : $M(\text{Zn}) = 65{,}4\ \text{g.mol}^{-1}$.
+
+      **Figure (schéma du dispositif).** Un générateur $G$ (bornes $+$ à gauche, $-$ à droite) alimente un tube en U contenant la solution d'iodure de zinc. Deux électrodes en graphite plongent dans la solution : **Electrode B** (branche de gauche, reliée à la borne $+$) et **Electrode A** (branche de droite, reliée à la borne $-$).
+    questions:
+      - id: q1
+        part: "Partie 1 — Électrolyse d'une solution aqueuse d'iodure de zinc"
+        stem: |-
+          **(0,5 pt)** Parmi les deux électrodes A et B, préciser l'anode. Justifier la réponse.
+        reasoning: |-
+          L'anode se définit sans ambiguïté, en électrolyse comme en pile : c'est l'électrode où se produit l'oxydation (rung 1). Reste à savoir laquelle des deux, A ou B, est concernée — et c'est le générateur qui tranche (rung 2) : sa borne $+$ arrache des électrons à l'électrode qu'elle alimente, ce qui y force précisément une oxydation. Sur le schéma, la borne $+$ du générateur $G$ est reliée à l'**électrode B**. C'est donc B qui est l'anode ; l'électrode A, reliée à la borne $-$, est la cathode (siège de la réduction).
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Écrire l'équation de la réaction à chaque électrode et l'équation bilan lors de l'électrolyse.
+        reasoning: |-
+          À l'anode B (borne $+$), le générateur arrache des électrons : parmi les deux couples fournis, seul $\text{I}_2/\text{I}^-$ peut en céder ici, donc les ions iodure s'oxydent en diiode — cohérent avec le dégagement gazeux observé. À la cathode A (borne $-$), le générateur pousse des électrons : le couple $\text{Zn}^{2+}/\text{Zn}$ fonctionne alors en réduction, les ions zinc les captent et se déposent en métal — cohérent avec le dépôt observé. Les deux demi-équations échangent chacune $2\,e^-$ : ils s'annulent directement dans la somme, sans multiplier ni l'une ni l'autre.
+        steps:
+          - math: '2\,I^-_{(aq)} \rightarrow I_{2(g)} + 2\,e^-'
+            note: "Anode B (borne +) : oxydation des ions iodure."
+          - math: 'Zn^{2+}_{(aq)} + 2\,e^- \rightarrow Zn_{(s)}'
+            note: "Cathode A (borne -) : reduction des ions zinc."
+          - math: 'Zn^{2+}_{(aq)} + 2\,I^-_{(aq)} \rightarrow Zn_{(s)} + I_{2(g)}'
+            note: "Bilan : les 2 electrons de chaque cote s'eliminent."
+      - id: q3
+        part: "Partie 1 — Quantité d'électricité et durée de l'électrolyse"
+        stem: |-
+          **(0,75 pt)** Pendant la durée $\Delta t$ de l'électrolyse, un courant électrique d'intensité constante $I = 0{,}5\ \text{A}$ circule dans le circuit ; il se forme alors un dépôt de zinc de masse $m = 1{,}6\ \text{g}$. Déterminer $\Delta t$ en minutes.
+        reasoning: |-
+          On repart de la masse de zinc déposée pour remonter, étape par étape, jusqu'à la durée — la chaîne du rung 4, parcourue à l'envers cette fois (l'exemple travaillé de la leçon partait d'un courant connu pour trouver une masse). La demi-équation de la question 2, $Zn^{2+}+2\,e^-\rightarrow Zn$, dit que chaque atome de zinc déposé a mobilisé deux électrons : c'est ce facteur $2$ qui relie $n(Zn)$ à $n(e^-)$. La constante de Faraday convertit ensuite $n(e^-)$ en quantité d'électricité $Q$, et $Q=I\,\Delta t$ — à intensité constante — livre finalement $\Delta t$, qu'il ne reste plus qu'à convertir en minutes comme demandé.
+        steps:
+          - math: 'n(Zn) = \frac{m}{M(Zn)} = \frac{1{,}6}{65{,}4}'
+            note: "La masse de zinc deposee devient une quantite de matiere."
+          - math: '\boxed{n(Zn) \approx 2{,}45\times10^{-2}\ \text{mol}}'
+            note: "Application numerique."
+          - math: 'n(e^-) = 2\,n(Zn) \approx 4{,}89\times10^{-2}\ \text{mol}'
+            note: "Chaque atome de zinc depose a consomme 2 electrons (Zn2+ + 2e- -> Zn, question 2)."
+          - math: 'Q = n(e^-)\,F \approx 4{,}89\times10^{-2}\times 9{,}65\times10^{4}'
+            note: "Quantite d'electricite, par la constante de Faraday."
+          - math: '\boxed{Q \approx 4{,}72\times10^{3}\ \text{C}}'
+            note: "Application numerique."
+          - math: '\Delta t = \frac{Q}{I} = \frac{4{,}72\times10^{3}}{0{,}5}'
+            note: "On isole Delta t dans Q = I.Delta t, intensite constante donnee dans l'enonce."
+          - math: '\boxed{\Delta t \approx 9{,}44\times10^{3}\ \text{s}}'
+            note: "Duree en secondes."
+          - math: '\Delta t \approx \frac{9{,}44\times10^{3}}{60}'
+            note: "Conversion en minutes, demandee par l'enonce."
+          - math: '\boxed{\Delta t \approx 157\ \text{min}}'
+            note: "Soit environ 2 h 37 min."

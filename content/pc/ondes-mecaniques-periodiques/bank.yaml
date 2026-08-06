@@ -1,0 +1,295 @@
+# bank.yaml — la banque « S'entraîner » de ondes-mecaniques-periodiques (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, exercises.yaml), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Les DEUX entrées « vérifié » de
+# docs/sujets/pc/ondes-mecaniques-periodiques.md sont converties ici (aucune
+# omission) :
+#   - bk-2019-n-x2 — 2019 N, Exercice II (partie 1) — vérifié en une passe
+#     (agent-vérificateur, 2026-07-11) ;
+#   - bk-2020-n-x2 — 2020 N, Exercice II (3 pts) — vérifié à l'issue de
+#     QUATRE passes indépendantes (2026-08-06), la 3ᵉ et la 4ᵉ portant
+#     spécifiquement sur une correction de la lecture de figure (voir la note
+#     de sourcing de cette entrée pour le détail des 4 passes).
+# Raisonnement rédigé à la voix experte de la maison sur 100 % des questions,
+# en citant les rungs R1, R2, R4 et R5 de la leçon (lesson.md) là où c'est
+# naturel ; barème transcrit tel quel dans les énoncés (tag « (x,xx pt) »
+# ajouté — la source docs/sujets ne porte que « (x,xx) »), y compris pour les
+# cinq items du QCM de la Partie I de bk-2020-n-x2 — options A/B/C/D
+# transcrites mot pour mot, tableau conservé ; conventions KaTeX (block
+# scalars pour la prose, KaTeX brut entre apostrophes simples dans
+# steps[].math, notes en ASCII sans accent ni backslash).
+#
+# NOTE ÉDITORIALE — RECOUPEMENT AVEC LE SOMMET DE LEÇON (pour la revue) :
+# bk-2019-n-x2 EST le sujet qui sous-tend le sommet de leçon r-bac
+# (exercises.yaml, marqueur [[exercise:r-bac]] à R7 « Exercice de type
+# bac ») — même année, même session, même portée (Exercice II, Partie 1),
+# mêmes quatre questions, mêmes données et mêmes réponses numériques
+# (λ = 1,5 cm, V = 0,30 m/s, τ = 2T = 0,10 s). Repris ici pour que la banque
+# reste le corpus complet des annales « vérifié » de la notion (BANK-SPEC
+# §1) — recoupement assumé, même disposition que reactions-acido-basiques
+# bk-2021-n-x1, rc-charge bk-2019-n-x3, et chute-mouvements-plans
+# bk-2020-n-x5. Le raisonnement de bk-2019-n-x2 ci-dessous est rédigé de
+# nouveau (voix maison), pas copié de exercises.yaml. À l'arbitrage de
+# l'owner si l'on préfère écarter cette entrée de la banque pour éviter le
+# recoupement sur la même page.
+#
+# SCOPE NOTE (technique mobilisée au-delà de ce que la leçon montre
+# explicitement pas à pas — pontée au point d'usage dans le raisonnement de
+# la question concernée, PAS corrigée ni simplifiée ici) :
+#   - bk-2019-n-x2, q1, et bk-2020-n-x2, q2 : les deux demandent de
+#     justifier / reconnaître qu'une onde est TRANSVERSALE (perturbation
+#     perpendiculaire à la direction de propagation). Cette définition
+#     générale n'est formellement énoncée nulle part dans les rungs R0–R7 de
+#     cette leçon (lesson.md) : seule la définition de l'onde LONGITUDINALE
+#     y apparaît, au rung R4, à propos du son. Le raisonnement de chacune de
+#     ces deux questions la déduit par contraste avec R4 (perturbation
+#     parallèle ⟹ longitudinale, donc perpendiculaire ⟹ transversale) et par
+#     rappel du chapitre précédent (ondes-mecaniques-progressives), qui pose
+#     cette définition générale. Même disposition, sans flag, dans le
+#     raisonnement déjà en place pour r-bac q1 (exercises.yaml) — mentionné
+#     ici pour la revue, non corrigé.
+
+notion: pc/ondes-mecaniques-periodiques
+
+entries:
+  # ── bk-2019-n-x2 — 2019 N, Exercice II (partie 1) : cuve à ondes ──────────
+  # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir la note
+  # éditoriale en tête de fichier pour le recoupement assumé.
+  - id: bk-2019-n-x2
+    title: "Propagation d'une onde mécanique à la surface de l'eau"
+    source:
+      year: 2019
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice II (partie 1) — Propagation d'une onde mécanique"
+    bareme_total: 1.75
+    duration_min: 11
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/68300 (Exercice II, Partie 1 —
+        propagation d'une onde mécanique à la surface de l'eau dans une cuve
+        à ondes ; barème de la partie = 1,75 pt sur les 3,5 pt de l'exercice
+        complet, dont la Partie 2 — décroissance radioactive du radon 222 —
+        est transcrite sous decroissance-radioactive.md ; l'énoncé précise
+        que les deux parties sont indépendantes). Transcription vérifiée :
+        re-fetch indépendant AlloSchool + diff OK (agent-vérificateur,
+        2026-07-11 ; docs/sujets/pc/ondes-mecaniques-periodiques.md, statut
+        « vérifié »). NB : ce même sujet (même portée, mêmes quatre
+        questions, mêmes données) sous-tend le sommet de leçon r-bac
+        (exercises.yaml, marqueur [[exercise:r-bac]] à R7 « Exercice de type
+        bac ») — recoupement assumé, même disposition que
+        reactions-acido-basiques bk-2021-n-x1, rc-charge bk-2019-n-x3, et
+        chute-mouvements-plans bk-2020-n-x5 (voir la note éditoriale en tête
+        de ce fichier) ; le raisonnement ci-dessous est rédigé de nouveau
+        (voix maison), pas copié de exercises.yaml. Description de figure
+        reprise de la version réglée dans exercises.yaml (double flèche
+        cotée 1,5 cm entre deux crêtes voisines ; SM ≈ deux arches
+        complètes = 2λ), pas de la variante hédgée « la correspondance
+        exacte flèche ↔ longueur d'onde est à confirmer sur le scan » du
+        docs/sujets d'origine (règlement déjà effectué en amont pour r-bac).
+    intro: |-
+      **Propagation d'une onde mécanique à la surface de l'eau (examen national, session normale 2019, Exercice II — Partie 1).**
+
+      Pour étudier la propagation des ondes mécaniques à la surface de l'eau, on utilise une cuve à ondes. À l'aide d'un vibreur d'une cuve à ondes, on crée en un point $S$ de la surface libre de l'eau une onde progressive sinusoïdale de fréquence $N = 20\ \text{Hz}$. Cette onde se propage à $t = 0$ à partir du point $S$, sans amortissement et sans réflexion.
+
+      La figure ci-contre représente une coupe, dans un plan vertical, d'une partie de la surface de l'eau à l'instant de date $t_1$ : un profil sinusoïdal partant du point $S$ (à gauche) et s'étendant jusqu'au point $M$ (à droite), où la surface redevient plane — $M$ est le front de l'onde à l'instant $t_1$. Une double flèche horizontale, cotée $1{,}5\ \text{cm}$, est tracée au-dessus de deux crêtes voisines du profil. Entre $S$ et $M$, le profil présente environ deux arches complètes du motif sinusoïdal.
+    questions:
+      - id: q1
+        part: "Caractériser l'onde à la surface de l'eau"
+        stem: |-
+          **(0,5 pt)** L'onde qui se propage à la surface de l'eau est-elle transversale ou longitudinale ? Justifier.
+        reasoning: |-
+          Le critère est toujours le même : comparer la direction dans laquelle le milieu est perturbé à la direction dans laquelle l'onde avance. *(Cette définition générale de « onde transversale » vient du chapitre précédent, ondes-mecaniques-progressives — elle se déduit ici par contraste avec le rung R4 de cette leçon, qui définit l'onde longitudinale comme celle où la perturbation est parallèle à la propagation ; voir la SCOPE NOTE en tête de ce fichier.)* À la surface de l'eau, chaque point du milieu monte et descend verticalement — la surface se creuse et se bombe — tandis que l'onde progresse horizontalement de $S$ vers $M$. La perturbation est perpendiculaire à la direction de propagation : l'onde est transversale.
+      - id: q2
+        stem: |-
+          **(0,25 pt)** Déterminer la longueur d'onde $\lambda$ de l'onde étudiée.
+        reasoning: |-
+          D'après R2, $\lambda$ est la plus petite distance séparant deux points qui vibrent exactement de la même façon à chaque instant — sur une coupe figée dans le temps, c'est l'écart entre deux crêtes voisines. C'est précisément ce que mesure la double flèche cotée $1{,}5\ \text{cm}$, tracée au-dessus de deux crêtes voisines du profil : on lit $\lambda$ directement, sans calcul.
+
+          $$\lambda = 1{,}5\ \text{cm} = 1{,}5\times10^{-2}\ \text{m}$$
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Déduire la célérité $V$ de l'onde à la surface de l'eau.
+        reasoning: |-
+          La relation dérivée en R2, $\lambda = cT = c/f$, relie exactement les deux grandeurs dont on dispose ici : $\lambda$ vient d'être lue (question 2), et la fréquence $N$ est une donnée de l'énoncé. Il suffit d'isoler la célérité.
+        steps:
+          - math: 'V = \lambda \, N'
+            note: "On isole V dans la relation lambda = V/N = VT (rung R2), avec N donnee par l'enonce."
+          - math: 'V = 1{,}5\times10^{-2} \times 20'
+            note: "Application numerique : lambda = 1,5 cm = 1,5e-2 m, N = 20 Hz."
+          - math: '\boxed{V = 0{,}30\ \text{m.s}^{-1}}'
+            note: "Celerite de l'onde a la surface de l'eau."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Le point $M$, situé à la distance $d = SM$ du point $S$, est le front de l'onde à l'instant de date $t_1$. Exprimer le retard temporel $\tau$ du mouvement de $M$ par rapport au mouvement de $S$, en fonction de la période $T$ de l'onde. Calculer $\tau$.
+        reasoning: |-
+          Le mécanisme du retard (R1) donne $\tau = d/c$, avec ici $d = SM$. Pour l'exprimer en fonction de $T$ plutôt qu'en secondes brutes, on compte combien de longueurs d'onde tient la distance $SM$ : la figure montre environ deux arches complètes entre $S$ et $M$, donc $SM = 2\lambda$. Or R2 établit que l'onde avance exactement d'une longueur d'onde $\lambda$ pendant une période $T$ — parcourir $2\lambda$ prend donc $2T$. On retrouve ce résultat par le calcul en remplaçant $c = \lambda/T$ dans $\tau = d/c$ : $\lambda$ se simplifie et il ne reste que le compte de périodes.
+        steps:
+          - math: '\tau = \frac{d}{V} = \frac{SM}{\lambda/T} = \frac{SM}{\lambda}\,T'
+            note: "On remplace V = lambda/T (de lambda = VT, rung R2) : le retard vaut le nombre de longueurs d'onde SM/lambda multiplie par T."
+          - math: 'SM = 2\lambda \implies \tau = \frac{2\lambda}{\lambda}\,T = 2\,T'
+            note: "Lecture de la figure : SM vaut environ deux arches completes, soit 2 lambda. La longueur d'onde se simplifie."
+          - math: 'T = \frac{1}{N} = \frac{1}{20} = 0{,}05\ \text{s}'
+            note: "T est l'inverse de la frequence N donnee par l'enonce."
+          - math: '\boxed{\tau = 2\,T = 0{,}10\ \text{s}}'
+            note: "Retard du point M par rapport a S."
+
+  # ── bk-2020-n-x2 — 2020 N, Exercice II (3 pts) : QCM + cuve à ondes ───────
+  # Vérifié à l'issue de 4 passes indépendantes (voir sourcing.note) ; la
+  # lecture de la figure de la Partie II est le point qui a bougé au fil des
+  # passes : la cote imprimée « 1cm » couvre DEUX intervalles crête-à-crête
+  # (crête 2 à crête 4), pas un seul — d'où λ = 0,5 cm, N = 50 Hz, τ = 10T.
+  - id: bk-2020-n-x2
+    title: "Propagation des ondes : QCM et lecture de figure (cuve à ondes)"
+    source:
+      year: 2020
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice II — Propagation des ondes"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2020 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, code sujet NS28F, element/109742,
+        course-422/upload-80870 (7 pages), p. 3 (bas, Partie I QCM) et p. 4
+        (haut, Partie II cuve à ondes) — Exercice II complet (3 points) :
+        Partie I (QCM, 5 × 0,25 pt = 1,25 pt) + Partie II (cuve à ondes,
+        0,5 + 0,5 + 0,75 pt = 1,75 pt), total 3,0 pt, conforme au barème de
+        couverture (« Exercice II (3 points) — Propagation des ondes »).
+        Transcription vérifiée à l'issue de QUATRE passes indépendantes
+        (docs/sujets/pc/ondes-mecaniques-periodiques.md, statut « vérifié »,
+        2026-08-06) : passe 1, transcription initiale depuis le scan ; passe
+        2, diff caractère par caractère par un second agent — une correction
+        typographique relevée et appliquée (y_S devenu y_s, 5 occurrences,
+        même référent) ; passe 3, re-lecture indépendante de la figure par
+        un troisième agent — ÉCART DE FIGURE identifié et corrigé : la cote
+        « 1cm » imprimée ne couvre pas un seul intervalle entre crêtes mais
+        DEUX — elle relie la crête 2 et la crête 4 (pas les deux cercles les
+        plus extérieurs), et la crête 3 passe entre les deux traits
+        pointillés qui portent la cote — donc 1 cm = 2λ, pas λ ; passe 4,
+        mesure refaite de zéro par un quatrième agent, sans reprendre aucun
+        chiffre des passes précédentes (centre de S localisé au pixel,
+        balayages radiaux horizontal et vertical, rayons des 4 crêtes dans
+        le rapport 1:2:3:4, pas radial constant ≈ 29,7 px, écart entre les
+        deux traits = 2,05 × le pas radial) — figure jugée CONFORME, entrée
+        PROMUE. La banque enseigne donc λ = 0,5 cm = 5×10⁻³ m (et non 1 cm),
+        N = v/λ = 50 Hz (et non 25 Hz), et τ = d/v = 0,2 s = 10T (et non 5T,
+        d = 5 cm = 10λ). Re-dérivé ci-dessous, question par question.
+    intro: |-
+      **Propagation des ondes (examen national, session normale 2020, Exercice II — 3 points).**
+
+      Exercice en deux parties : Partie I, un QCM de 5 questions à 0,25 pt chacune (« Recopier le numéro de la question et écrire, parmi les affirmations proposées, la lettre qui correspond à la réponse juste ») ; Partie II, trois questions numériques sur une cuve à ondes, dont les données suivent.
+
+      **Données pour la Partie II.** La pointe $S$ d'un vibreur crée une onde progressive sinusoïdale de fréquence $N$ à la surface libre de l'eau d'une cuve à ondes. L'onde, ainsi créée, se propage sans amortissement ni réflexion avec une célérité $v = 0{,}25\ \text{m.s}^{-1}$.
+
+      *Figure (aspect de la surface de l'eau à l'instant $t_1$, valable pour la Partie II) :* quatre cercles concentriques, régulièrement espacés, centrés sur un point marqué $S$ (point noir au centre, étiquette « S » juste au-dessus). Les cercles représentent les crêtes de l'onde circulaire issue de $S$ ; en les numérotant de 1 (la plus intérieure) à 4 (la plus extérieure), leurs rayons sont dans le rapport $1:2:3:4$ — le pas radial est constant. Deux traits verticaux en pointillés descendent, l'un du point le plus à droite de la crête 2, l'autre du point le plus à droite de la crête 4 (la plus extérieure) ; la crête 3 passe entre ces deux traits. Une double flèche horizontale cotée « 1 cm » joint les deux traits, en bas de la figure : la cote imprimée couvre donc deux intervalles entre crêtes consécutives, pas un seul.
+    questions:
+      - id: q1
+        part: "I - Recopier le numéro de la question et écrire, parmi les affirmations proposées, la lettre qui correspond à la réponse juste (QCM)"
+        stem: |-
+          **(0,25 pt)** Lors de la propagation d'une onde :
+
+          | | | | |
+          |---|---|---|---|
+          | A | il y a transport de la matière et il n'y a pas transport de l'énergie | C | il n'y a ni transport de la matière ni transport de l'énergie |
+          | B | il y a transport de l'énergie et il n'y a pas transport de la matière | D | il y a transport de la matière et de l'énergie |
+        reasoning: |-
+          R1 pose la définition même de l'onde progressive : « une perturbation qui se propage de proche en proche dans un milieu de propagation, sans transport de matière, avec transport d'énergie ». C'est exactement l'option B. Les points du milieu oscillent sur place — ils ne sont jamais emportés par l'onde — mais l'énergie, elle, avance avec la perturbation.
+
+          **Réponse : B.**
+      - id: q2
+        stem: |-
+          **(0,25 pt)** Une onde est dite transversale si :
+
+          | | | | |
+          |---|---|---|---|
+          | A | la perturbation se fait dans la même direction que celle de la propagation | C | la perturbation se fait perpendiculairement à la direction de la propagation |
+          | B | elle se propage dans le vide | D | la propagation se fait sans amortissement |
+        reasoning: |-
+          Le critère général — perturbation perpendiculaire ou parallèle à la propagation — n'est pas formellement énoncé dans les rungs R0–R7 de cette leçon (seule l'onde longitudinale y est définie, au rung R4, à propos du son) ; il vient du chapitre précédent, ondes-mecaniques-progressives, et se déduit ici par contraste avec R4 (perturbation parallèle ⟹ longitudinale, donc perpendiculaire ⟹ transversale — voir la SCOPE NOTE en tête de ce fichier). L'option A décrit au contraire une onde longitudinale, B et D ne sont pas des critères de transversalité (une onde transversale peut très bien s'amortir, et le vide n'a rien à voir avec la direction de la perturbation). C'est l'option C.
+
+          **Réponse : C.**
+      - id: q3
+        stem: |-
+          **(0,25 pt)** Le son est une onde :
+
+          | | | | |
+          |---|---|---|---|
+          | A | électromagnétique | C | mécanique longitudinale |
+          | B | mécanique transversale | D | qui se propage dans le vide |
+        reasoning: |-
+          R4 le dit explicitement : le son est une onde mécanique (elle a besoin d'un milieu matériel, contrairement à une onde électromagnétique — donc pas A, pas D) et longitudinale (elle se propage par compressions et dilatations successives de l'air, dans la même direction que sa propagation — donc pas B). C'est l'option C.
+
+          **Réponse : C.**
+      - id: q4
+        stem: |-
+          **(0,25 pt)** Lors de la diffraction d'une onde :
+
+          | | | | |
+          |---|---|---|---|
+          | A | il y a modification de la fréquence | C | il y a modification de la célérité |
+          | B | il y a modification de la longueur d'onde | D | la fréquence, la longueur d'onde et la célérité ne sont pas modifiées |
+        reasoning: |-
+          R5 est explicite sur ce point précis : « L'onde diffractée garde exactement la même fréquence $f$, la même célérité $c$, et — puisque $\lambda = c/f$ — la même longueur d'onde $\lambda$ [...] La diffraction ne change qu'une chose : la géométrie de la propagation ». C'est l'option D — les options A, B et C décrivent chacune un changement que R5 exclut explicitement. Rétrécir l'ouverture change la façon dont l'onde se répand dans l'espace, jamais son rythme ($f$) ni son pas spatial ($\lambda$, $c$), parce que ni la source ni le milieu ne changent au passage de l'ouverture.
+
+          **Réponse : D.**
+      - id: q5
+        stem: |-
+          **(0,25 pt)** On considère un point M de la surface de l'eau où se propage une onde progressive. Ce point M reprend le même mouvement que celui de la source S avec un retard temporel $\tau$. La relation entre l'élongation du point M et celle de la source est :
+
+          | | | | |
+          |---|---|---|---|
+          | A | $y_M(t) = y_s(t+\tau)$ | C | $y_M(t) = y_s(t+2\tau)$ |
+          | B | $y_M(t) = y_s(t-2\tau)$ | D | $y_M(t) = y_s(t-\tau)$ |
+        reasoning: |-
+          C'est exactement la relation établie au rung R1 : le point $M$ rejoue le mouvement de la source avec un retard $\tau$, donc $y_M(t) = y_s(t - \tau)$ — l'élongation de $M$ à l'instant $t$ est celle que $S$ avait $\tau$ secondes plus tôt, pas plus tard (le retard soustrait du temps, il ne l'avance pas : A et C sont donc exclues), et une seule fois $\tau$, pas deux (B est donc exclue aussi). C'est l'option D.
+
+          **Réponse : D.**
+      - id: q6
+        part: "II - Cuve à ondes : exploitation de la figure"
+        stem: |-
+          **(0,5 pt)** En exploitant la figure ci-contre, déterminer la longueur d'onde $\lambda$.
+        reasoning: |-
+          D'après R2, $\lambda$ est la plus petite distance séparant deux points voisins qui vibrent exactement de la même façon — ici, l'écart entre deux crêtes consécutives. La figure ne permet pas de lire cet écart directement sur la cote imprimée : les deux traits pointillés qui portent la cote « 1 cm » ne tombent pas de deux crêtes voisines, mais de la crête 2 et de la crête 4, avec la crête 3 qui passe entre les deux. La cote couvre donc deux intervalles crête-à-crête consécutifs, soit $2\lambda$, et non $\lambda$.
+        steps:
+          - math: '1\ \text{cm} = 2\lambda'
+            note: "Les deux traits pointilles tombent des cretes 2 et 4, pas de deux cretes voisines : la crete 3 passe entre les deux, donc la cote imprimee couvre deux intervalles crete-a-crete consecutifs, soit 2 lambda (rung R2 : lambda est l'ecart entre deux points voisins qui vibrent a l'identique)."
+          - math: '\boxed{\lambda = \frac{1}{2} = 0{,}5\ \text{cm} = 5\times10^{-3}\ \text{m}}'
+            note: "On divise par 2, pas une lecture directe de la cote imprimee."
+      - id: q7
+        stem: |-
+          **(0,5 pt)** Trouver la fréquence N de l'onde.
+        reasoning: |-
+          La relation de R2, $\lambda = c/f$ (ici $\lambda = v/N$), relie la célérité — donnée par l'énoncé — à la fréquence, à trouver. On isole $N$.
+        steps:
+          - math: 'N = \frac{v}{\lambda}'
+            note: "On isole N dans lambda = v/N (rung R2), avec v donnee par l'enonce et lambda de la question precedente."
+          - math: 'N = \frac{0{,}25}{5\times10^{-3}}'
+            note: "Application numerique : v = 0,25 m/s, lambda = 5e-3 m (soit 0,5 cm)."
+          - math: '\boxed{N = 50\ \text{Hz}}'
+            note: "Frequence de l'onde."
+      - id: q8
+        stem: |-
+          **(0,75 pt)** On considère un point M de la surface de l'eau situé à une distance $d = 5\ \text{cm}$ de la source S. Calculer le retard temporel $\tau$ du mouvement de M par rapport à celui de la source S.
+        reasoning: |-
+          Le mécanisme du retard (R1) donne directement $\tau = d/v$, avec $d = 5\ \text{cm}$ la distance de $M$ à $S$ et $v$ la célérité donnée. On vérifie la cohérence en comptant, comme au rung R2, combien de périodes ce retard représente : $d = 5\ \text{cm}$ et $\lambda = 0{,}5\ \text{cm}$ (question précédente), donc $d = 10\lambda$ — l'onde met $10$ périodes $T$ à parcourir cette distance, donc $\tau = 10T$. Les deux calculs, direct et par comptage de périodes, doivent coïncider.
+        steps:
+          - math: '\tau = \frac{d}{v}'
+            note: "Mecanisme du retard (rung R1) : M rejoue S avec un retard egal a la distance divisee par la celerite."
+          - math: 'd = 5\ \text{cm} = 5\times10^{-2}\ \text{m}'
+            note: "Conversion de la distance en metres, coherente avec v en m/s."
+          - math: '\tau = \frac{5\times10^{-2}}{0{,}25}'
+            note: "Application numerique."
+          - math: '\boxed{\tau = 0{,}2\ \text{s}}'
+            note: "Retard du point M par rapport a S."
+          - math: 'T = \frac{1}{N} = \frac{1}{50} = 0{,}02\ \text{s} \implies \tau = 10\,T'
+            note: "Verification en nombre de periodes (rung R2) : d = 5 cm = 10 lambda (lambda = 0,5 cm), donc tau = 10 T. Coherent avec le calcul direct."
