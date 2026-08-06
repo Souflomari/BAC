@@ -3,8 +3,10 @@
 > Annales examen national, Mathématiques 2ème Bac. Transcriptions **non
 > vérifiées** — voir `README.md` §3. Provenance sur chaque entrée.
 > Problèmes d'analyse de l'épreuve **Sciences Expérimentales** bâtis sur $\ln$.
-> Chaque problème est **multi-chapitres** : il recoupe `calcul-integral`
-> (intégration par parties) et `suites-numeriques` (voir cross-lists en note).
+> Chaque problème est **multi-chapitres** : la plupart recoupent
+> `calcul-integral` (intégration par parties) et `suites-numeriques` (voir
+> cross-lists en note) ; le problème 2024 recoupe `calcul-integral` (aire)
+> mais ne comporte pas de volet suites.
 
 ---
 
@@ -93,3 +95,48 @@ Soit $(C_f)$ sa courbe représentative dans un repère orthonormé $(O,\vec{i},\
    a) (0,5) Montrer par récurrence que $\alpha < u_n < 1$, pour tout $n$ de $\mathbb{N}$
    b) (0,5) Montrer que la suite $(u_n)$ est croissante. *(on peut utiliser la question 4) b))*
    c) (0,75) En déduire que la suite $(u_n)$ est convergente et calculer sa limite.
+
+---
+
+## 2024 — session normale — Problème
+Source: https://www.alloschool.com/element/144505
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-87124, page(s) 4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Expérimentales — مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) *(SVT **et** Sciences Physiques, BIOF)* — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème du problème : 8 points
+- Images lues : `.../course-438/upload-87124/0004-big.jpg`
+- Pages du scan : 4 (sur 4) *(le problème tient sur la seule page 4)*
+- Intitulé composantes (page 1 du scan) : « Etude de fonctions numériques et calcul intégral » — 8 points
+- Classement : la fonction étudiée $f(x) = x + 1 - \ln\left(e^x - x\right)$ est bâtie sur $\ln$ (l'exponentielle apparaît à l'intérieur du logarithme ; la Partie I sur $u(x) = e^x$ sert à justifier $e^x - x > 0$, donc l'ensemble de définition du $\ln$).
+- Recoupe : `calcul-integral` (Partie I, Q3 — aire) et `derivabilite-etude-fonctions` (fonction réciproque, Partie II Q5). **Pas de volet suites** dans ce problème (les suites sont l'Exercice 1 autonome, voir `suites-numeriques.md`).
+
+> **Note de lecture (mojibake)** : aucun
+
+**Fonction logarithme (étude de $x + 1 - \ln(e^x - x)$ : branche parabolique, points fixes, fonction réciproque) et calcul d'aire.**
+
+**Partie I :** On considère les deux fonctions $u$ et $v$ définies sur $\mathbb{R}$ par : $u(x) = e^x$ et $v(x) = x$
+
+1. (0,5) Tracer dans un même repère orthonormé les courbes $(\mathcal{C}_u)$ et $(\mathcal{C}_v)$ des fonctions $u$ et $v$
+2. (0,25) Justifier graphiquement que $e^x - x > 0$ pour tout $x$ de $\mathbb{R}$
+3. (0,5) Calculer l'aire de la partie du plan délimitée par la courbe $(\mathcal{C}_u)$, la courbe $(\mathcal{C}_v)$ et les droites d'équations $x = 0$ et $x = 1$
+
+**Partie II :** On considère la fonction numérique $f$ définie par $f(x) = x + 1 - \ln\left(e^x - x\right)$.
+
+1. a) (0,25) Vérifier que $f$ est définie sur $\mathbb{R}$
+   b) (0,5) Montrer que pour tout $x \in \mathbb{R}$, $f(x) = 1 - \ln\left(1 - xe^{-x}\right)$
+   c) (0,5) En déduire que $\displaystyle\lim_{x \to +\infty} f(x) = 1$, puis interpréter géométriquement ce résultat.
+2. a) (0,25) Calculer $\displaystyle\lim_{x \to -\infty} f(x)$
+   b) (0,5) Vérifier que pour tout $x < 0$, $f(x) = x + 1 - \ln(-x) - \ln\left(1 - \dfrac{1}{xe^{-x}}\right)$
+   c) (0,75) Calculer $\displaystyle\lim_{x \to -\infty} \dfrac{f(x)}{x}$ puis déduire que la courbe $(\mathcal{C}_f)$ admet une branche parabolique de direction la droite d'équation $y = x$ au voisinage de $-\infty$
+3. a) (0,5) Montrer que pour tout $x \in \mathbb{R}$ : $f'(x) = \dfrac{1 - x}{e^x - x}$
+   b) (0,5) Étudier le signe de la fonction dérivée de $f$, puis déduire le tableau de variations de $f$ sur $\mathbb{R}$
+   c) (0,75) Montrer que l'équation $f(x) = 0$ admet une solution unique dans l'intervalle $]-1, 0[$
+4. La courbe $(\mathcal{C}_f)$ ci-contre est la représentation graphique de $f$ dans un repère orthonormé.
+
+   > **Figure (description d'après le scan)** : repère orthonormé quadrillé, axe des abscisses gradué de $-4$ à $4$, axe des ordonnées gradué de $-3$ à $4$. Deux tracés : **(1)** une droite passant par l'origine, de pente $1$ — la droite d'équation $y = x$, non étiquetée sur le scan ; **(2)** la courbe $(\mathcal{C}_f)$, étiquetée « $(\mathcal{C}_f)$ » vers $(3\,;\,1{,}2)$. La courbe monte depuis le coin inférieur gauche du cadre (où elle est **sous** la droite et plus pentue qu'elle), coupe la droite en un point du troisième quadrant d'abscisse $\approx -2{,}7$ *(lecture à confirmer)*, coupe l'axe des abscisses en un point unique d'abscisse comprise entre $-1$ et $0$, passe par le point $(0\,;\,1)$, atteint un maximum d'ordonnée $\approx 1{,}5$ en $x = 1$ *(lecture à confirmer)*, recoupe la droite en un point d'abscisse comprise entre $1$ et $2$, puis décroît lentement vers l'ordonnée $1$ (cohérent avec l'asymptote horizontale $y = 1$ de la question 1-c) en restant **sous** la droite. Les deux intersections courbe–droite correspondent aux solutions $\alpha$ et $\beta$ de la question 4-a).
+
+   a) (0,5) Justifier graphiquement que l'équation $f(x) = x$ admet deux solutions $\alpha$ et $\beta$.
+   b) (0,5) Montrer que : $e^{\alpha} - e^{\beta} = \alpha - \beta$
+5. Soit $g$ la restriction de la fonction $f$ sur l'intervalle $I = ]-\infty, 1]$
+   a) (0,5) Montrer que $g$ admet une fonction réciproque $g^{-1}$ définie sur un intervalle $J$ que l'on déterminera. *(Il n'est pas demandé de déterminer $g^{-1}(x)$)*
+   b) (0,75) Vérifier que $g^{-1}$ est dérivable en $1$ et calculer $\left(g^{-1}\right)'(1)$

@@ -43,3 +43,7 @@ fichiers des problèmes concernés (mêmes sources, mêmes provenances) :
 - **2019 — session normale — Exercice 4, Partie I Q5** (SM, NS 24F,
   `element/68482`) : $\displaystyle\int_0^\alpha f(x)\,dx = \dfrac{2}{3}\alpha(\alpha^2 - 3)$
   et aire en fonction de $\alpha$. → voir `fonction-exponentielle.md`.
+- **2024 — session normale — Problème, Partie I Q3** (SVT/Sc. Physiques, NS 22F,
+  `element/144505`) : aire de la partie du plan délimitée par $(\mathcal{C}_u)$
+  ($u(x) = e^x$), $(\mathcal{C}_v)$ ($v(x) = x$) et les droites d'équations
+  $x = 0$ et $x = 1$ (pas d'IPP dans ce problème). → voir `fonction-logarithme.md`.

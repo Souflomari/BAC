@@ -4,9 +4,10 @@
 > vérifiées** — voir `README.md` §3. Provenance sur chaque entrée.
 > Les suites arrivent presque toujours en **fin de problème d'analyse** : une
 > suite récurrente $u_{n+1} = f(u_n)$ dont on étudie l'encadrement (récurrence),
-> la monotonie, la convergence et la limite. L'entrée SM ci-dessous est une
-> étude de suite **autonome et complète** ; les autres études de suite de ce lot
-> sont cross-listées (transcription in extenso dans le fichier du problème).
+> la monotonie, la convergence et la limite. Les entrées SM 2019 et SExp 2024
+> ci-dessous sont des études de suite **autonomes et complètes** ; les autres
+> études de suite de ce lot sont cross-listées (transcription in extenso dans
+> le fichier du problème).
 
 ---
 
@@ -37,6 +38,35 @@ On considère la suite numérique $(u_n)_{n \in \mathbb{N}}$ définie par : $u_0
    a) (0,5) Montrer que : $(\forall n \in \mathbb{N})\ ;\ u_{n+1} - u_n \le f(u_0)$
    b) (0,5) Montrer que : $(\forall n \in \mathbb{N})\ ;\ u_n \le u_0 + n\,f(u_0)$
    c) (0,25) En déduire $\displaystyle\lim_{n \to +\infty} u_n$
+
+---
+
+## 2024 — session normale — Exercice 1
+Source: https://www.alloschool.com/element/144505
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-87124, page(s) 2. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Expérimentales — مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) *(SVT **et** Sciences Physiques, BIOF)* — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 3 points
+- Images lues : `.../course-438/upload-87124/0002-big.jpg`
+- Pages du scan : 2 (sur 4)
+- Intitulé composantes (page 1 du scan) : « Suites numériques » — 3 points
+- Remarque : le problème du même sujet (p. 4) ne comporte pas de volet suites ;
+  il est transcrit sous `fonction-logarithme.md`.
+
+> **Note de lecture (mojibake)** : aucun
+
+**Suites numériques (suite récurrente homographique, encadrement, monotonie, suite géométrique auxiliaire, limite).**
+
+On considère la suite $(u_n)$ définie par : $u_0 = 4$ et $u_{n+1} = \dfrac{4u_n - 2}{1 + u_n}$, pour tout entier naturel $n$
+
+1. a) (0,25) Vérifier que $u_{n+1} = 4 - \dfrac{6}{1 + u_n}$, pour tout entier naturel $n$
+   b) (0,5) Montrer par récurrence que $2 \le u_n \le 4$, pour tout entier naturel $n$
+2. a) (0,25) Montrer que $u_{n+1} - u_n = \dfrac{(u_n - 1)(2 - u_n)}{1 + u_n}$, pour tout entier naturel $n$
+   b) (0,5) Montrer que la suite $(u_n)$ est décroissante et en déduire que $(u_n)$ est convergente.
+3. Soit $(v_n)$ la suite numérique définie par $v_n = \dfrac{2 - u_n}{1 - u_n}$, pour tout entier naturel $n$
+   a) (0,5) Montrer que $(v_n)$ est une suite géométrique de raison $\dfrac{2}{3}$
+   b) (0,5) Montrer que $u_n = 1 + \dfrac{1}{1 - \left(\dfrac{2}{3}\right)^{n+1}}$, pour tout entier naturel $n$
+   c) (0,5) Calculer la limite de la suite $(u_n)$
 
 ---
 
