@@ -188,3 +188,63 @@ de l'écran :
   l'écran. Ses sommets dépassent légèrement le haut du faisceau formé par
   $u_1(t)$, ses creux y replongent — allure caractéristique d'un signal
   modulant à composante continue positive.
+
+---
+
+## 2025 — session normale — Exercice 3 (Partie 3)
+Source: https://www.alloschool.com/element/145796
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-87489, page(s) 5. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS28F · Barème de l'exercice complet : 5 points ; **Partie 3**
+  = 1,5 point ($0{,}25+0{,}75+0{,}5$)
+- Images lues (reproductibilité) : `.../course-422/upload-87489/0005-big.jpg`
+- Pages du scan : 5 (sur 6)
+- Portée : **3- Sélection et démodulation d'une onde modulée en amplitude**,
+  troisième partie de l'exercice III. Les **Parties 1 et 2** (charge d'un
+  condensateur par générateur de courant, puis décharge dans un dipôle RL)
+  du même exercice sont transcrites sous `rc-charge.md` et `rlc-serie.md`
+  respectivement ; la bobine $(b)$ de la figure 4 et le condensateur $C_0$
+  sont explicitement ceux des parties précédentes (« la bobine (b) (supposée
+  aussi idéale) et le condensateur de capacité $C_0$ précédemment
+  utilisé »).
+
+**3- Sélection et démodulation d'une onde modulée en amplitude**
+
+On utilise une chaine électronique simplifiée représentée sur la figure 4
+pour sélectionner et démoduler une onde électromagnétique modulée en
+amplitude.
+
+Dans cette chaine on utilise une diode $D$ considérée idéale, la bobine $(b)$
+(supposée aussi idéale) et le condensateur de capacité $C_0$ précédemment
+utilisé.
+
+1. **3-1.** (0,25) Quel est le rôle de l'étage 2 ?
+2. **3-2.** (0,75) Trouver la valeur $C_1$ à laquelle il faut ajuster la
+   capacité $C$ pour capter le signal modulé de fréquence $f_p = 162\
+   \text{kHz}$ sachant que $L = 2\ \text{mH}$ (on prend $\pi^2 = 10$).
+3. **3-3.** (0,5) La fréquence du signal modulant est $f_s = 5\ \text{kHz}$.
+   Si on ajuste $R$ à la valeur $R_0 = 1{,}5\ \text{k}\Omega$, aura-t-on une
+   démodulation de bonne qualité ? Justifier.
+
+*Figure 4 (schéma) :* chaîne électronique en deux étages encadrés en
+pointillés, plus deux blocs « Amplification » (rectangles) intercalés.
+**Étage 1** (à gauche) : une antenne (symbole en V inversé, deux traits
+obliques) alimente un circuit constitué de la bobine $(b)$ (spires) montée
+en parallèle avec un condensateur variable $C$ (deux traits parallèles
+traversés d'une flèche oblique, symbole de capacité réglable) ; la sortie de
+cet étage entre dans le premier bloc « Amplification ». **Étage 2** (à
+droite du premier bloc « Amplification », dans un second cadre en
+pointillés) : le signal entre par une diode $D$ (triangle + barre, pointant
+vers la droite) jusqu'au nœud « B » ; de B, une résistance réglable $R$
+(rectangle traversé d'une flèche oblique, symbole de rhéostat) descend
+jusqu'au point « M », relié à la masse (symbole hachuré) ; le fil continue
+horizontalement de B vers la droite jusqu'au nœud « N » ; de N, le
+condensateur $C_0$ (deux traits parallèles) descend également jusqu'à la
+masse M ; le fil continue de N vers la droite à travers le condensateur
+$C_2$ (deux traits parallèles, monté en série sur le fil horizontal) jusqu'à
+un dernier nœud, d'où la résistance $R_2$ (rectangle) descend vers la masse
+M ; enfin le fil horizontal sort de l'étage 2 et entre dans le second bloc
+« Amplification », dont la sortie porte une flèche étiquetée « HP »
+(haut-parleur). Légende : « Étage 1 », « Étage 2 », « Figure 4 ».

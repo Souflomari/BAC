@@ -380,3 +380,74 @@ $0$, $500$, $1000$ (traits horizontaux) ; abscisse $u_c\ (\text{V})$ graduée
 $0$, $6$, $12$. Droite décroissante partant exactement du point $(0\,;\,
 1000)$, passant exactement par $(6\,;\,500)$, et atteignant l'axe des
 abscisses exactement en $(12\,;\,0)$.
+
+---
+
+## 2025 — session normale — Exercice 3 (Partie 1)
+Source: https://www.alloschool.com/element/145796
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-87489, page(s) 4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS28F · Barème de l'exercice complet : 5 points ; **Partie 1**
+  = 1,0 point ($0{,}5+0{,}5$)
+- Images lues (reproductibilité) : `.../course-422/upload-87489/0004-big.jpg`
+- Pages du scan : 4 (sur 6)
+- Portée : **1- Charge d'un condensateur par une source de courant**,
+  première sous-partie de l'exercice III. Le circuit complet (figure 1)
+  comporte aussi la **décharge du même condensateur dans un dipôle RL**
+  (pseudopériodique), transcrite sous `rlc-serie.md` (même figure 1, non
+  reproduite là), et une troisième partie, **sélection et démodulation d'une
+  onde modulée en amplitude**, transcrite sous `ondes-em-modulation.md`.
+
+**EXERCICE 3 : Electricité (5 points).**
+
+*(Cadrage de l'exercice, transcrit intégralement : « Les composantes
+électroniques telle que les diodes, les bobines, les condensateurs se
+trouvent dans différents circuits électriques et électroniques de plusieurs
+appareils électriques qui sont utilisés dans le domaine industriel, de
+communication, de numérisation…. On se propose dans cet exercice d'étudier :
+- la charge d'un condensateur et sa décharge dans un dipôle RL ; - la
+sélection et la démodulation d'une onde modulée en amplitude. Le montage
+électrique représenté par le schéma de la figure 1 comporte un circuit de
+charge d'un condensateur et un autre de sa décharge. »)*
+
+**1- Charge d'un condensateur par une source de courant**
+
+On veut déterminer la capacité $C_0$ d'un condensateur, initialement
+déchargé, en utilisant le montage présenté sur la figure 1. Le générateur de
+courant $G$ débite un courant électrique d'intensité constante
+$I_0 = 1\ \mu\text{A}$.
+
+À un instant choisi comme origine des dates $(t_0 = 0)$, on met
+l'interrupteur $K$ en position (1). Un système d'acquisition informatisé
+adéquat permet d'obtenir la courbe d'évolution temporelle de la tension
+$u_C(t)$ aux bornes du condensateur lors de sa charge (figure 2).
+
+1. **1-1.** (0,5) Exprimer la tension $u_C(t)$ en fonction de $I_0$, $C_0$ et
+   $t$.
+2. **1-2.** (0,5) Vérifier que $C_0 = 1\ \mu\text{F}$.
+
+*Figure 1 (schéma, commun aux trois parties de l'exercice) :* boucle
+comportant, de gauche à droite en partant du bas : le générateur $G$ (symbole
+cercle contenant un arc courbe — symbole générique de source), monté en
+série avec le conducteur ohmique $R$ (rectangle, étiquette « R » au-dessus)
+sur la branche du haut, jusqu'au nœud étiqueté « (1) » ; à droite de ce
+nœud, un interrupteur à double position, actionné par le levier « K »
+(étiqueté au-dessus), pouvant basculer sur la position « (1) » (vers $R$–$G$)
+ou sur la position « (2) » (vers le nœud « N », à droite). Le condensateur
+$C_0$ est monté verticalement entre le nœud (1)/K et le nœud « M » en bas ;
+sa tension $u_C$ est fléchée vers le haut à sa droite, et le courant $i$ est
+fléché vers le bas juste en dessous du condensateur. À droite, entre N (en
+haut) et M (en bas), la bobine « (b) » de caractéristiques $(L, r)$ est
+dessinée en spires. Légende : « Figure 1 ».
+
+*Figure 2 (courbe) :* $u_C\ (\text{V})$ en fonction de $t\ (\text{s})$, sur
+quadrillage à double graduation (traits principaux noirs, sous-quadrillage
+fin bleu). Axe des ordonnées gradué aux traits principaux $2$ et $4$ (traits
+non chiffrés au-delà) ; axe des abscisses gradué aux traits principaux $2$
+et $4$ (traits non chiffrés au-delà). Droite croissante partant exactement de
+l'origine, passant par les points $(2\,;\,2)$ et $(4\,;\,4)$ — pente
+apparente $1\ \text{V.s}^{-1}$, cohérente avec $I_0/C_0$ — et se prolongeant
+en ligne droite jusqu'au coin supérieur droit du cadre *(valeur exacte du
+coin non chiffrée sur le scan — lecture à confirmer)*.

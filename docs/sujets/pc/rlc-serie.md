@@ -408,3 +408,74 @@ $t \simeq 31{,}5$ ms en fin de tracé.
 La **période propre se lit donc $T_0 = 21$ ms** (maximum à $t = 0$ et maximum
 suivant sur le repère $t = 21$ ; écart entre passages par zéro consécutifs
 $\simeq 10{,}5$ ms $= T_0/2$).
+
+---
+
+## 2025 — session normale — Exercice 3 (Partie 2)
+Source: https://www.alloschool.com/element/145796
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-87489, page(s) 4–5. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS28F · Barème de l'exercice complet : 5 points ; **Partie 2**
+  = 2,5 points ($0{,}5+0{,}5+0{,}5+0{,}5+0{,}5$)
+- Images lues (reproductibilité) : `.../course-422/upload-87489/0004-big.jpg`
+  (énoncé), `.../0005-big.jpg` (suite + figure 3)
+- Pages du scan : 4 (fin) et 5 (sur 6)
+- Portée : **2- Décharge d'un condensateur dans un dipôle RL**, deuxième
+  sous-partie de l'exercice III (même circuit, figure 1, que la **Partie 1
+  — charge par générateur de courant**, transcrite sous `rc-charge.md`, où
+  la figure 1 est décrite en détail). Classée ici (et non sous
+  `dipole-rl.md`) car la bobine $(L, r)$ possède une résistance interne $r$
+  non nulle et le circuit de décharge est le condensateur $C_0$ en série
+  avec cette bobine : la courbe obtenue (figure 3) est une oscillation
+  **pseudopériodique amortie**, comportement RLC série libre, pas un régime
+  RL du premier ordre. Même intitulé et même montage physique que le
+  précédent trouvé dans la banque : **2020 N Exercice IV Partie II**, « II -
+  Décharge d'un condensateur dans un dipôle RL », déjà classé sous
+  `rlc-serie.md` ci-dessus — précédent direct pour ce classement.
+
+**2- Décharge d'un condensateur dans un dipôle RL**
+
+Lorsque la tension entre les bornes du condensateur prend la valeur
+$u_C = U_0 = 10\ \text{V}$, on bascule l'interrupteur $K$ en position (2) à
+un instant pris comme nouvelle origine des dates $(t_0 = 0)$. Un système
+d'acquisition informatisé adéquat permet d'obtenir la courbe représentant la
+tension $u_C(t)$ (figure 3).
+
+1. **2-1.** (0,5) Établir l'équation différentielle vérifiée par $u_C(t)$.
+2. **2-2.** En exploitant la courbe de la figure 3, déterminer :
+   1. **2-2-1.** (0,5) la valeur de la pseudopériode des oscillations.
+   2. **2-2-2.** (0,5) le signe de l'intensité du courant $i$ entre l'instant
+      $t_A$ et l'instant $t_B$.
+3. **2-3.** (0,5) Montrer que : $\dfrac{dE_T}{dt} = -r.i^2$, avec $E_T$
+   l'énergie totale du circuit à un instant $t$.
+4. **2-4.** (0,5) Calculer $|E_{th}|$ l'énergie dissipée par effet Joule dans
+   le circuit entre les instants $t = 0$ et $t = t_A$.
+
+*Figure 3 (courbe) :* $u_C\ (\text{V})$ en fonction de $t$ (axe non chiffré
+en unité, flèche horizontale simple « t »), sur quadrillage à double
+graduation (traits principaux, sous-quadrillage fin bleu). Axe des ordonnées
+gradué aux traits principaux $7$ (trait pointillé horizontal bleu tracé à ce
+niveau), $4$, $0$ et $-4$ (traits non chiffrés au-delà, ni vers le haut ni
+vers le bas). Oscillation pseudopériodique d'amplitude **décroissante** :
+la courbe part, à $t = 0$, d'un premier maximum situé au-dessus du trait $7$
+*(valeur exacte non chiffrée — lecture à confirmer)*, descend jusqu'à un
+premier minimum, le plus profond du tracé, situé au-dessous du trait $-4$
+*(valeur exacte non chiffrée — lecture à confirmer)*, puis remonte jusqu'à un
+deuxième maximum qui touche **exactement** le trait pointillé $u_C = 7$ — ce
+maximum est celui repéré par l'abscisse $t_A$ (trait vertical pointillé
+descendant de ce maximum jusqu'à l'axe des abscisses, où il est étiqueté
+« $t_A$ »). La courbe redescend ensuite vers un deuxième minimum, moins
+profond que le premier, puis remonte vers un troisième maximum, plus bas que
+celui de $t_A$ ; l'abscisse $t_B$ est étiquetée juste après $t_A$, sur cette
+branche descendante qui suit le maximum de $t_A$ *(position exacte de $t_B$
+sur la courbe — zéro descendant ou point intermédiaire — à confirmer)*. La
+courbe se poursuit par un troisième minimum, moins profond que le deuxième,
+puis un dernier maximum visible en fin de tracé, plus bas que celui d'avant.
+Un repère à double flèche horizontale, étiqueté « $7 \cdot 10^{-5}\ \text{s}$ »
+et placé au-dessus de la courbe, encadre l'intervalle entre le maximum
+touchant $u_C = 7$ (celui de $t_A$) et le maximum suivant, plus bas — lecture
+directement portée sur le scan (pas une estimation graphique) : c'est cette
+valeur qui répond à la question 2-2-1 (pseudopériode). Légende :
+« Figure 3 ».

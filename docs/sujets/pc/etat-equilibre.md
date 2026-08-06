@@ -93,6 +93,13 @@ $$\text{C}_6\text{H}_5\text{COOH}_{(aq)} + \text{H}_2\text{O}_{(l)} \;\rightleft
   - Q2.3 : taux d'avancement final $\tau$ ;
   - Q2.4 : quotient de réaction à l'équilibre $Q_{r,\text{éq}} = 1{,}65 \cdot 10^{-5}$.
 
+- **2025 N — Ex I Partie 1** (dosage de l'hydrogénosulfite de sodium), sous
+  `reactions-acido-basiques.md` :
+  - Q1-5 (0,75) : valeur de la constante d'équilibre $K$ associée à
+    l'équation de la réaction de dosage ;
+  - Q1-6 (0,75) : concentration $C_{eq}$ de sulfite de sodium obtenue à
+    l'équivalence, via le tableau d'avancement.
+
 > Recoupe aussi `transformations-deux-sens` (réactions limitées, sens direct /
 > inverse). **Résolu (v0.3)** : l'entrée dédiée **2015 N** ci-dessus fournit un
 > exercice national centré sur l'état d'équilibre ($\tau$, $Q_{r,\text{éq}}$,

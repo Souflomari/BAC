@@ -55,3 +55,18 @@ particule $\alpha$.
 - $E = 1{,}955372 \cdot 10^{5}$ : noyau $^{210}_{84}\text{Po}$ ;
 - $E = 1{,}955318 \cdot 10^{5}$ : produits de désintégration
   $^{A}_{Z}\text{Pb} +\ ^{4}_{2}\text{He}$.
+
+---
+
+## Contenu « masse-énergie » présent dans les transcriptions existantes
+
+- **2025 N — Exercice 2** (désintégration du cadmium 107), transcrit sous
+  `decroissance-radioactive.md` :
+  - Q3-3 (0,5) : calcul, en MeV, de l'énergie libérée $E$ lors de la
+    désintégration de l'échantillon entre $t_1 = 2t_{1/2}$ et
+    $t_2 = 3t_{1/2}$, à partir des masses données
+    ($m(^{107}_{48}\text{Cd})$, $m(^{107}_{47}\text{Ag})$,
+    $m(^{A}_{Z}\text{e})$, $1\text{u} = 931{,}49\ \text{MeV.c}^{-2}$).
+  - Exercice classé dans `decroissance-radioactive.md` (question dominante :
+    demi-vie, activité, nombre de noyaux désintégrés), pas d'entrée dédiée
+    autonome écrite ici pour éviter la duplication.

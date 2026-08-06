@@ -5,6 +5,40 @@
 
 ---
 
+## Note de routage — 2025 N Ex IV Partie 1 (satellite artificiel)
+
+L'exercice ci-dessous (mouvement d'un satellite en orbite circulaire :
+deuxième loi de Newton, force gravitationnelle, 3ᵉ loi de Kepler) a été
+classé ici, **et non sous `atome-mecanique-newton.md`**, malgré une
+consigne de routage générale « satellites/atome → atome-mecanique-newton.md ».
+Raison, documentée honnêtement pour la traçabilité :
+
+- Le contenu du sommet `content/pc/atome-mecanique-newton/lesson.md` porte
+  spécifiquement sur le **modèle planétaire de l'électron** (force de
+  Coulomb, orbite de l'électron autour du noyau, limite de la mécanique
+  classique, quantification $\Delta E = h\nu$) — **pas** sur la gravitation
+  ni les satellites. Un exercice sur un satellite terrestre n'y enseigne
+  rien du programme propre à ce chapitre.
+- `docs/sujets/pc/atome-mecanique-newton.md` lui-même, à l'issue d'une
+  recherche antérieure (21 couvertures lues), concluait déjà explicitement
+  que le thème « satellite artificiel (2022 N, 2025 N — gravitation, orbite
+  circulaire) … relève de la **mécanique céleste**, pas du chapitre atome ».
+- `content/pc/atome-mecanique-newton/exercises.yaml` documente une décision
+  **verrouillée par le propriétaire du plan** : ce sommet reste
+  délibérément `unsourced` (le seul de la campagne PC), avec un exercice
+  interne non officiel (`r-bac`) explicitement `required_for_done: false`.
+  Y déverser un exercice de satellite casserait cette décision sans
+  justification pédagogique.
+- Le contenu « gravitation et mouvement circulaire, 3ᵉ loi de Kepler,
+  satellite géostationnaire » est en réalité déjà enseigné dans
+  `content/pc/chute-mouvements-plans/lesson.md` (rungs R9–R10), qui est
+  donc le sommet correctement adossé à cet exercice.
+
+Voir aussi la note symétrique ajoutée dans `atome-mecanique-newton.md`
+(2026-08-06).
+
+---
+
 ## 2020 — session normale — Exercice V
 Source: https://www.alloschool.com/element/109742
 Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-11)
@@ -587,3 +621,73 @@ vitesse instantanée du centre d'inertie de la bille en fonction du temps
 > $\tau = 0{,}054\ \text{s}$ — également corroboré par
 > $1/18{,}52 = 0{,}0540\ \text{s}$. La valeur $54$ n'est pas chiffrée sur
 > le scan : elle se lit sur le quadrillage.
+
+---
+
+## 2025 — session normale — Exercice 4 (Partie 1)
+Source: https://www.alloschool.com/element/145796
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-87489, page(s) 5–6. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS28F · Barème de l'exercice complet : 5,5 points ; **Partie 1**
+  = 3,0 points ($0{,}5+0{,}5+0{,}75+0{,}75+0{,}5$)
+- Images lues (reproductibilité) : `.../course-422/upload-87489/0005-big.jpg`
+  (intro), `.../0006-big.jpg` (données, questions, figure 1)
+- Pages du scan : 5 (fin) et 6 (sur 6)
+- Portée : **Partie 1 — Mouvement d'un satellite artificiel**. Voir la « Note
+  de routage » en tête de ce fichier : classée ici plutôt que sous
+  `atome-mecanique-newton.md`. La **Partie 2 (mouvement d'un oscillateur
+  solide-ressort)** du même exercice est transcrite sous
+  `systemes-oscillants.md` (cross `aspects-energetiques.md`). Mention en
+  tête de l'exercice : « Les parties 1 et 2 sont indépendantes ».
+
+**EXERCICE 4 : Mécanique (5,5 points) — Partie 1 : Mouvement d'un satellite
+artificiel.**
+
+On se propose d'étudier dans cette partie le mouvement d'un satellite
+artificiel autour de la Terre. Un satellite $(S)$ de centre d'inertie $G_S$
+et de masse $m_S$ est destiné à l'observation des océans.
+
+Dans le référentiel géocentrique considéré galiléen, $(S)$ décrit une orbite
+circulaire autour de la Terre avec une période de révolution $T$. $(S)$ se
+trouve à une altitude $h$ de la surface de la Terre (figure 1). (On note que
+dans la figure 1 l'échelle n'est pas respectée).
+
+On considère que la Terre est sphérique, de centre $O$, de rayon $R_T$, de
+masse $m_T$ et ayant une symétrie sphérique de répartition de masse et que
+$(S)$ n'est soumis qu'à la force gravitationnelle exercée par la Terre.
+
+**Données :**
+- Constante de gravitation universelle : $G = 6{,}67 \cdot 10^{-11}\
+  \text{kg}^{-1}.\text{m}^3.\text{s}^{-2}$ ;
+- Rayon de la Terre : $R_T = 6380\ \text{km}$ ;
+- Période de révolution : $T = 1\text{h}\,52\text{min}$ ;
+- L'altitude : $h = 1336\ \text{km}$.
+
+1. (0,5) Ecrire l'expression vectorielle de la force d'attraction
+   gravitationnelle $\vec{F}$ exercée par la Terre sur $(S)$ dans la base de
+   Freinet $(\vec{u}\,;\,\vec{n})$ (figure 1).
+2. En appliquant la deuxième loi de Newton :
+   1. **2-1.** (0,5) Montrer que le mouvement circulaire du centre d'inertie
+      $G_S$ autour de la Terre est uniforme.
+   2. **2-2.** (0,75) Déterminer $v_S$ la norme de la vitesse de $G_S$ en
+      fonction de $G$, $m_T$, $R_T$ et $h$.
+   3. **2-3.** (0,75) Déduire la relation :
+      $\dfrac{T^2}{(R_T + h)^3} = k$ ($k$ étant une constante), traduisant la
+      troisième loi de Kepler relative au mouvement du centre d'inertie
+      $G_S$ autour de la Terre.
+3. (0,5) Calculer alors la valeur de la masse $m_T$.
+
+*Figure 1 (schéma) :* deux cercles concentriques en pointillés, centrés sur
+le point « $O$ » (marqué au centre) — le cercle intérieur, plein et épais,
+représente la Terre (étiquetée « La Terre » dans un encadré relié par une
+flèche) ; le cercle extérieur, en pointillés, représente la trajectoire du
+satellite. Sur ce cercle extérieur, un point noir étiqueté « $G_S$ » (relié
+par une flèche à un encadré « Le satellite $(S)$ ») porte deux vecteurs :
+$\vec{n}$, une flèche pointillée dirigée vers le centre $O$ (vers
+l'intérieur), et $\vec{u}$, une flèche pleine tangente au cercle, orientée
+dans le sens du mouvement (vers la gauche sur le schéma). Une double flèche
+verticale en pointillés, étiquetée « $h$ », relie le cercle intérieur
+(Terre) au cercle extérieur (orbite), matérialisant l'altitude. Légende :
+« Figure 1 ».

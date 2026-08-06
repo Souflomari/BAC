@@ -264,6 +264,41 @@ README §3. Toutes les autres entrées déjà existantes pour ces deux papiers
 (Ex II, Ex IV des deux années ; Ex III-I-2/II de 2018 ; Ex I-P2sp2 de 2018)
 restent inchangées.
 
+**Passe 2026-08-06 — harvest complet du 2025 N (NS28F, `element/145796`,
+`course-422/upload-87489`, 6 pages).** Sujet sans aucune entrée préexistante
+hormis `controle-catalyse.md` (Ex1-P2, déjà `vérifié` depuis la passe v0.3).
+Couverture p.1 lue : Exercice 1 Chimie (7 pts, dosage + cinétique), Exercice
+2 Transformations nucléaires (2,5 pts), Exercice 3 Électricité (5 pts, RC/RL
++ modulation AM), Exercice 4 Mécanique (5,5 pts, satellite + oscillateur) —
+barème $7+2{,}5+5+5{,}5=20$ recoupé et conforme. Toutes les pages (2 à 6)
+lues (vision) ; 6 nouvelles entrées `transcrit (non vérifié)` + 4 notes de
+cross-list :
+
+| Slug | Entrée | Origine |
+|------|--------|---------|
+| `reactions-acido-basiques` | +1 | 2025 N Ex1-P1 (dosage hydrogénosulfite de sodium, p.2) |
+| `decroissance-radioactive` | +1 | 2025 N Ex2 (désintégration cadmium 107, p.3–4) |
+| `rc-charge` | +1 | 2025 N Ex3-P1 (charge par générateur de courant, p.4) |
+| `rlc-serie` | +1 | 2025 N Ex3-P2 (décharge dans dipôle RL, pseudopériodique, p.4–5) |
+| `ondes-em-modulation` | +1 | 2025 N Ex3-P3 (sélection/démodulation AM, p.5) |
+| `chute-mouvements-plans` | +1 | 2025 N Ex4-P1 (satellite artificiel, p.5–6) |
+| `systemes-oscillants` | +1 | 2025 N Ex4-P2 (oscillateur solide-ressort, p.6) |
+| `etat-equilibre` | cross-list | → `reactions-acido-basiques` (Q1-5, Q1-6) |
+| `noyaux-masse-energie` | cross-list | → `decroissance-radioactive` (Q3-3) |
+| `aspects-energetiques` | cross-list | → `systemes-oscillants` (Q3) |
+| `suivi-temporel-vitesse` | cross-list | → `controle-catalyse` (déjà vérifié) |
+
+**Décision de routage notable, documentée en tête de fichier et dans
+`atome-mecanique-newton.md`** : l'exercice 4-Partie 1 (satellite artificiel)
+a été classé sous `chute-mouvements-plans.md` et non sous
+`atome-mecanique-newton.md`, malgré une heuristique de routage qui aurait pu
+suggérer ce dernier — le contenu (gravitation, 3ᵉ loi de Kepler) correspond
+au rungs R9–R10 de `content/pc/chute-mouvements-plans/lesson.md`, tandis que
+`atome-mecanique-newton` reste une décision `unsourced` verrouillée par le
+propriétaire du plan (`content/pc/atome-mecanique-newton/exercises.yaml`).
+Toutes les 6 entrées portent `Statut: transcrit (non vérifié)`, à passer au
+protocole README §3.
+
 ### Couverture par slug (25 slugs `content/pc/`) — état après cette passe
 
 | Slug | Année(s)/session transcrite(s) | Statut |
@@ -271,25 +306,25 @@ restent inchangées.
 | `ondes-mecaniques-progressives` | 2018 N | vérifié |
 | `ondes-mecaniques-periodiques` | 2019 N | vérifié |
 | `propagation-onde-lumineuse` | 2021 N | vérifié |
-| `decroissance-radioactive` | 2019 N, 2021 N | vérifié |
-| `noyaux-masse-energie` | 2020 N | vérifié |
-| `rc-charge` | 2019 N, 2018 N | vérifié + 1 entrée **transcrit (non vérifié)** (2018 N Ex III-I-1, 2026-08-06) |
+| `decroissance-radioactive` | 2019 N, 2021 N | vérifié + 1 entrée **transcrit (non vérifié)** (2025 N Ex2, 2026-08-06) |
+| `noyaux-masse-energie` | 2020 N | vérifié (+ cross-list 2025 N Ex2-Q3-3, non dédié) |
+| `rc-charge` | 2019 N, 2018 N | vérifié + 2 entrées **transcrit (non vérifié)** (2018 N Ex III-I-1 ; 2025 N Ex3-P1, 2026-08-06) |
 | `dipole-rl` | 2020 N | vérifié |
-| `rlc-serie` | 2019 N, 2018 N | vérifié |
-| `ondes-em-modulation` | 2017 N | vérifié |
+| `rlc-serie` | 2019 N, 2018 N | vérifié + 1 entrée **transcrit (non vérifié)** (2025 N Ex3-P2, 2026-08-06) |
+| `ondes-em-modulation` | 2017 N | vérifié + 1 entrée **transcrit (non vérifié)** (2025 N Ex3-P3, 2026-08-06) |
 | `lois-de-newton` | 2019 N | vérifié |
-| `chute-mouvements-plans` | 2020 N | vérifié |
+| `chute-mouvements-plans` | 2020 N | vérifié + 1 entrée **transcrit (non vérifié)** (2025 N Ex4-P1 satellite, 2026-08-06 — voir note de routage dans le fichier, **pas** `atome-mecanique-newton`) |
 | `rotation-axe-fixe` | **2011 R** (grue/poulie) | **transcrit (non vérifié)** — dédié |
-| `systemes-oscillants` | 2018 N | vérifié |
-| `aspects-energetiques` | (2018 N, cross-list) | cross-list ; entrée autonome à sourcer |
-| `atome-mecanique-newton` | — | **NON SOURCÉ** (absent 2008–2025, 21 couvertures) |
+| `systemes-oscillants` | 2018 N | vérifié + 1 entrée **transcrit (non vérifié)** (2025 N Ex4-P2, 2026-08-06) |
+| `aspects-energetiques` | (2018 N, 2025 N — cross-list) | cross-list ; entrée autonome à sourcer |
+| `atome-mecanique-newton` | — | **NON SOURCÉ** (absent 2008–2025, 21 couvertures ; 2025 N Ex4-P1 confirmé hors périmètre, 2026-08-06) |
 | `transformations-lentes-rapides` | **2010 N** (+ 2021 N cross-list) | **transcrit (non vérifié)** — dédié |
-| `suivi-temporel-vitesse` | 2021 N | vérifié |
-| `controle-catalyse` | **2025 N** (+ 2018 N cross-list) | **transcrit (non vérifié)** — dédié |
+| `suivi-temporel-vitesse` | 2021 N | vérifié (+ cross-list 2025 N via `controle-catalyse`, non dédié) |
+| `controle-catalyse` | **2025 N** (+ 2018 N cross-list) | **vérifié** (2026-07-14) |
 | `transformations-deux-sens` | **2012 N** (estérification + réaction limitée) | **transcrit (non vérifié)** — dédié |
-| `etat-equilibre` | **2015 N** (+ 2019/2020/2021 N cross-list) | **transcrit (non vérifié)** — dédié |
+| `etat-equilibre` | **2015 N** (+ 2019/2020/2021/2025 N cross-list) | **transcrit (non vérifié)** — dédié |
 | `evolution-spontanee` | **2012 N** (pile Cu-Zn, $K$) | **transcrit (non vérifié)** — dédié |
-| `reactions-acido-basiques` | 2019 N, 2020 N, 2021 N, 2018 N | vérifié + 1 entrée **transcrit (non vérifié)** (2018 N, 2026-08-06) |
+| `reactions-acido-basiques` | 2019 N, 2020 N, 2021 N, 2018 N | vérifié + 2 entrées **transcrit (non vérifié)** (2018 N ; 2025 N Ex1-P1, 2026-08-06) |
 | `esterification-hydrolyse` | 2018 N | vérifié |
 | `piles` | 2020 N | vérifié |
 | `electrolyse` | 2019 N, 2018 N | vérifié + 1 entrée **transcrit (non vérifié)** (2018 N, 2026-08-06) |

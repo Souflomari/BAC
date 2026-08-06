@@ -67,3 +67,19 @@ gradué $4,\ 8,\ 12,\ 16,\ 20$. La courbe part de $\sigma = 0{,}25\ \text{S.m}^{
 à $t = 0$ et décroît (allure exponentielle) vers un palier au voisinage de
 $\sigma \approx 0{,}09\ \text{S.m}^{-1}$ *(lecture d'échelle à confirmer)*. La
 tangente $(T)$ (en pointillés) est tracée au point d'abscisse $t_1 = 4\ \text{min}$.
+
+---
+
+## Contenu « suivi temporel / temps de demi-réaction » présent dans les transcriptions existantes
+
+- **2025 N — Exercice 1 (Chimie), Partie 2** (suivi cinétique d'une
+  estérification acide éthanoïque + propan-1-ol, trois conditions
+  expérimentales — température et catalyseur $\text{H}_2\text{SO}_4$),
+  transcrit sous `controle-catalyse.md` (`Statut: vérifié`) :
+  - Q2-3 : temps de demi-réaction $t_{1/2}$ (définition graphique) ;
+  - Q2-4 (0,75) : détermination graphique de $t_{1/2}$ pour l'expérience (2) ;
+  - courbes $x(t)$ (avancement en mmol) pour trois expériences, dont la
+    comparaison des vitesses initiales fait l'objet de ce chapitre.
+  - Non repris ici en entrée autonome pour éviter la duplication : l'exercice
+    est classé dans `controle-catalyse.md` (question dominante : comparaison
+    de facteurs cinétiques température/catalyseur), cf. `README.md` §4.

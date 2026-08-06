@@ -86,7 +86,7 @@ Mappings issus des entrées **vérifiées** de la banque (fichiers `<slug>.md`)
 et des **couvertures p.1** relevées dans INDEX. `(?)` = mapping de couverture
 non confirmé par lecture des pages intérieures.
 
-### Sujets à carte complète (5)
+### Sujets à carte complète (6)
 
 **2017 N (NS28F)** — 4 exercices
 | Ex | Sujet | Slug(s) |
@@ -130,15 +130,32 @@ non confirmé par lecture des pages intérieures.
 | IV | RC (échelon) + LC + modulation d'amplitude | `rc-charge` + `rlc-serie` + `ondes-em-modulation` — **transcrit (non vérifié) 2026-08-06** (p.5–7, 3 entrées, README §3) |
 | V | Mouvement d'un parachutiste | `chute-mouvements-plans` |
 
-### Sujets à carte partielle (5) — seul l'exercice transcrit est consigné
+**2025 N (NS28F)** — 4 exercices, barème 7+2,5+5+5,5 = 20 (couverture p.1)
+| Ex | Sujet | Slug(s) |
+|----|-------|---------|
+| I | Dosage hydrogénosulfite de sodium + suivi cinétique estérification (température/catalyseur) | `reactions-acido-basiques` ✓ (P1, cross `etat-equilibre`) + `controle-catalyse` ✓ (P2, déjà vérifié, cross `suivi-temporel-vitesse`) |
+| II | Désintégration du cadmium 107 | `decroissance-radioactive` ✓ (cross `noyaux-masse-energie` pour Q3-3) |
+| III | Charge (générateur de courant) + décharge dans dipôle RL (pseudopériodique) + sélection/démodulation AM | `rc-charge` ✓ (P1) + `rlc-serie` ✓ (P2, précédent : même intitulé que 2020 N Ex IV-II) + `ondes-em-modulation` ✓ (P3) |
+| IV | Satellite artificiel (gravitation, 3ᵉ loi de Kepler) + oscillateur solide-ressort | `chute-mouvements-plans` ✓ (P1 — **pas** `atome-mecanique-newton`, voir note de routage dans ce fichier) + `systemes-oscillants` ✓ (P2, cross `aspects-energetiques`) |
+
+**Transcrit (non vérifié) le 2026-08-06 : 6 nouvelles entrées** (Ex I-P1, Ex II,
+Ex III-P1, Ex III-P2, Ex IV-P1, Ex IV-P2) + 3 notes de cross-list
+(`etat-equilibre`, `noyaux-masse-energie`, `aspects-energetiques`) + 1 note de
+cross-list vers une entrée déjà existante (`suivi-temporel-vitesse` →
+`controle-catalyse`). Ex I-P2 (`controle-catalyse`) était déjà `vérifié`
+depuis la passe v0.3 (2026-07-14), non retouché.
+
+### Sujets à carte partielle (4) — seul l'exercice transcrit est consigné
 
 | Sujet | Exercice consigné | Slug(s) | Reste du sujet |
 |-------|-------------------|---------|----------------|
 | 2010 N (NS28) | Chimie P1 : saponification, suivi conductimétrique, t½ | `transformations-lentes-rapides` ✓ (cross `suivi-temporel-vitesse` (?)) | carte non consignée — contenu à transcrire |
 | 2012 N (NS28) | Chimie P1 : acide éthanoïque + ammoniac (réaction limitée) + estérification linalol ; Chimie P2 : pile Cu-Zn, K, sens spontané | `transformations-deux-sens` ✓ (cross `esterification-hydrolyse` (?)) ; `evolution-spontanee` ✓ (cross `piles` (?)) | physique non consignée — à transcrire |
 | 2015 N (NS28) | Ex 1 (Chimie), 2e partie : acide benzoïque/eau — τ, Qr,éq, pKA | `etat-equilibre` ✓ (cross `reactions-acido-basiques` (?)) | carte non consignée — à transcrire |
-| 2025 N (NS28F) | Ex 1 (Chimie), P2 : cinétique estérification — température + catalyseur H₂SO₄ | `controle-catalyse` ✓ (cross `esterification-hydrolyse` (?), `suivi-temporel-vitesse` (?)) | carte non consignée — à transcrire |
 | 2011 R (RS28) | Mécanique, 1ère situation : grue/poulie — R.F.D. rotation, J∆ | `rotation-axe-fixe` ✓ | carte non consignée — à transcrire |
+
+**2025 N (NS28F) est passé à carte complète (2026-08-06)** — voir la table
+ci-dessus (§ Sujets à carte complète).
 
 ### Sujets sans carte (19 sourcés + 7 hors atteinte)
 
@@ -161,31 +178,31 @@ couverture univoque). `Cross/(?)` = cross-lists + mappings incertains.
 
 | Slug | Dédiés | Cross/(?) | Années-sessions (dédiés puis cross/?) |
 |------|:-----:|:--------:|----------------------------------------|
-| `rlc-serie` | 4 | 0 | 2018 N, 2019 N, 2020 N, 2021 N |
-| `chute-mouvements-plans` | 4 | 0 | 2018 N, 2019 N, 2020 N, 2021 N |
-| `rc-charge` | 3 | 0 | 2018 N, 2019 N, 2021 N |
-| `reactions-acido-basiques` | 4 | 2 | 2019 N, 2020 N, 2021 N, 2018 N · (?) 2015 N, 2017 N |
-| `decroissance-radioactive` | 2 | 1 | 2019 N, 2021 N · cross 2020 N |
+| `rlc-serie` | 5 | 0 | 2018 N, 2019 N, 2020 N, 2021 N, 2025 N |
+| `chute-mouvements-plans` | 5 | 0 | 2018 N, 2019 N, 2020 N, 2021 N, 2025 N |
+| `rc-charge` | 4 | 0 | 2018 N, 2019 N, 2021 N, 2025 N |
+| `reactions-acido-basiques` | 5 | 3 | 2019 N, 2020 N, 2021 N, 2018 N, 2025 N · (?) 2015 N, 2017 N |
+| `decroissance-radioactive` | 3 | 1 | 2019 N, 2021 N, 2025 N · cross 2020 N |
 | `dipole-rl` | 2 | 0 | 2017 N, 2020 N |
-| `ondes-em-modulation` | 2 | 0 | 2017 N, 2021 N |
+| `ondes-em-modulation` | 3 | 0 | 2017 N, 2021 N, 2025 N |
 | `piles` | 2 | 1 | 2017 N, 2020 N · (?) 2012 N |
 | `electrolyse` | 2 | 0 | 2018 N, 2019 N |
 | `ondes-mecaniques-periodiques` | 1 | 2 | 2019 N · (?) 2017 N, 2020 N |
 | `ondes-mecaniques-progressives` | 1 | 1 | 2018 N · (?) 2020 N |
 | `propagation-onde-lumineuse` | 1 | 0 | 2021 N |
-| `noyaux-masse-energie` | 1 | 1 | 2020 N · cross 2019 N |
+| `noyaux-masse-energie` | 1 | 2 | 2020 N · cross 2019 N, 2025 N |
 | `lois-de-newton` | 1 | 1 | 2019 N · (?) 2017 N |
 | `rotation-axe-fixe` | 1 | 0 | **2011 R** (seule annale dédiée trouvée) |
-| `systemes-oscillants` | 1 | 1 | 2018 N · (?) 2017 N |
-| `suivi-temporel-vitesse` | 1 | 2 | 2021 N · (?) 2010 N, 2025 N |
+| `systemes-oscillants` | 2 | 1 | 2018 N, 2025 N · (?) 2017 N |
+| `suivi-temporel-vitesse` | 1 | 3 | 2021 N · (?) 2010 N, 2025 N · cross 2025 N (via `controle-catalyse`) |
 | `transformations-lentes-rapides` | 1 | 1 | 2010 N · cross 2021 N |
 | `controle-catalyse` | 1 | 1 | 2025 N · cross 2018 N |
 | `transformations-deux-sens` | 1 | 0 | 2012 N |
-| `etat-equilibre` | 1 | 3 | 2015 N · cross 2019/2020/2021 N |
+| `etat-equilibre` | 1 | 4 | 2015 N · cross 2019/2020/2021 N, 2025 N |
 | `evolution-spontanee` | 1 | 1 | 2012 N · cross 2020 N |
 | `esterification-hydrolyse` | 1 | 2 | 2018 N · (?) 2012 N, 2025 N |
-| `aspects-energetiques` | 0 | 2 | cross 2018 N · (?) 2017 N (pendule torsion — entrée autonome cible) |
-| `atome-mecanique-newton` | 0 | 0 | **NON SOURCÉ** — absent des 21 couvertures lues 2008–2025 (candidat ship `unsourced`) |
+| `aspects-energetiques` | 0 | 3 | cross 2018 N, 2025 N · (?) 2017 N (pendule torsion — entrée autonome cible) |
+| `atome-mecanique-newton` | 0 | 0 | **NON SOURCÉ** — absent des 21 couvertures lues 2008–2025 (candidat ship `unsourced`) ; 2025 N Ex IV-P1 (satellite) confirmé **hors périmètre**, classé `chute-mouvements-plans` (voir note de routage) |
 
 ---
 
@@ -223,3 +240,18 @@ couverture univoque). `Cross/(?)` = cross-lists + mappings incertains.
   2011 N + 6 rattrapages manquants, ouvrir les 9 R listés, lire les 19
   couvertures sans carte — pour porter l'énumération à ~100 % des sujets
   atteignables.
+
+## 5. Passe 2026-08-06 — harvest complet du 2025 N (NS28F)
+
+**2025 N est passé de carte partielle (1 exercice/partie) à carte
+complète : 6 nouvelles entrées `transcrit (non vérifié)` + 4 notes de
+cross-list**, sur les 4 exercices/20 points du sujet (barème 7+2,5+5+5,5
+recoupé et conforme à la couverture p.1). Détail dans `README.md` §4 (chaque
+fichier `<slug>.md`) et dans la table « Sujets à carte complète » ci-dessus.
+Point notable : l'exercice IV-Partie 1 (satellite artificiel) a été classé
+sous `chute-mouvements-plans` et **pas** sous `atome-mecanique-newton`
+malgré une consigne de routage générale qui aurait pu suggérer ce dernier —
+`atome-mecanique-newton` reste `unsourced`, décision verrouillée
+(`content/pc/atome-mecanique-newton/exercises.yaml`) réaffirmée, pas
+contournée ; voir la note de routage dans `chute-mouvements-plans.md` et la
+note symétrique dans `atome-mecanique-newton.md`.

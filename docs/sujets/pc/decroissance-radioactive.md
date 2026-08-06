@@ -109,3 +109,61 @@ ordonnées graduées $2{,}5 \cdot 10^{10},\ 5 \cdot 10^{10},\ 7{,}5 \cdot 10^{10
 10^{11}$ ; abscisses graduées $20,\ 40,\ 60,\ 80,\ 100$. Courbe de décroissance
 exponentielle partant de $a_0 \approx 10^{11}\ \text{Bq}$ à $t = 0$
 *(lecture d'échelle à confirmer)*.
+
+---
+
+## 2025 — session normale — Exercice 2
+Source: https://www.alloschool.com/element/145796
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-87489, page(s) 3–4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS28F · Barème de l'exercice complet : 2,5 points
+  ($0{,}5+0{,}5+0{,}5+0{,}5+0{,}5$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-87489/0003-big.jpg`
+  (intro, données, QCM, Q2), `.../0004-big.jpg` (Q3)
+- Pages du scan : 3 (fin) et 4 (début) (sur 6)
+- Portée : exercice complet. La question 3-3 (énergie libérée $E$, calculée à
+  partir du défaut de masse) recoupe `noyaux-masse-energie` — signalé là-bas ;
+  classé ici (question dominante : demi-vie, activité, nombre de noyaux
+  désintégrés).
+
+**EXERCICE 2 : Désintégration du cadmium 107 (2,5 points).**
+
+On se propose dans cet exercice d'étudier la désintégration du cadmium 107.
+Le cadmium radioactif $^{107}_{48}\text{Cd}$, donne, en se désintégrant, le
+noyau d'argent $^{107}_{47}\text{Ag}$ et une particule $^{A}_{Z}\text{e}$ avec
+émission d'un rayonnement $\gamma$ (gamma).
+
+**Données :**
+- Masses : $m(^{107}_{48}\text{Cd}) = 106{,}88045\ \text{u}$ ;
+  $m(^{107}_{47}\text{Ag}) = 106{,}87947\ \text{u}$ ;
+  $m(^{A}_{Z}\text{e}) = 5{,}486 \cdot 10^{-4}\ \text{u}$ ;
+- Demi-vie du $^{107}_{48}\text{Cd}$ : $t_{1/2} = 6{,}93$ heures ;
+- $1\text{u} = 931{,}49\ \text{MeV.c}^{-2}$.
+
+1. Choisir parmi les affirmations suivantes l'affirmation juste : (0,5 pt)
+
+   | | |
+   |---|---|
+   | A | Dans le noyau $^{107}_{48}\text{Cd}$ il y a 59 protons. |
+   | B | La désintégration d'un échantillon radioactif est d'autant plus rapide que sa constante radioactive $\lambda$ est plus petite. |
+   | C | Dans le diagramme $(N, Z)$ de Segré, les isotopes sont sur une ligne perpendiculaire à l'axe des $Z$. |
+   | D | La cohésion du noyau est d'autant plus forte que son énergie de liaison par nucléon est petite. |
+
+2. (0,5) Écrire l'équation de désintégration d'un noyau de cadmium
+   $^{107}_{48}\text{Cd}$ en précisant le type de cette désintégration.
+3. Un laboratoire reçoit à la date $t = 0$ un échantillon de
+   $^{107}_{48}\text{Cd}$ d'activité $a_0 = 1{,}25 \cdot 10^{12}\ \text{Bq}$. À
+   l'instant $t_1 = 2\,t_{1/2}$ l'activité de cet échantillon est $a_1$ et à
+   l'instant $t_2 = 3\,t_{1/2}$ son activité est $a_2$.
+   1. **3-1.** (0,5) Établir l'expression $a_2 = \dfrac{a_1}{2}$.
+   2. **3-2.** (0,5) Montrer que l'expression de $N_d$, le nombre de noyaux
+      désintégrés entre les instants $t_1$ et $t_2$, est :
+      $N_d = \dfrac{a_0\,t_{1/2}}{8\ln 2}$.
+   3. **3-3.** (0,5) Déterminer, en unité MeV, la valeur de l'énergie libérée
+      $E$ lors de la désintégration de cet échantillon entre les instants
+      $t_1$ et $t_2$.
+
+*(Aucune figure dans cet exercice ; énoncé textuel + le tableau du QCM
+ci-dessus.)*

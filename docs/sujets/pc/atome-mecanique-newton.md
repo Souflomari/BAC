@@ -53,3 +53,18 @@ sessions rattrapage 2008–2010, 2012–2013, 2015, 2017–2025 ; sujets **SM**
 (Sciences Mathématiques) où le thème pourrait apparaître autrement (hors périmètre
 `content/pc/` toutefois). Si ces pistes restent vides, ship `unsourced` avec cette
 note.
+
+### Passe 2025 N — statut réaffirmé (2026-08-06, harvest complet du sujet)
+
+Le harvest intégral du sujet **2025 N** (`element/145796`, `course-422/upload-87489`,
+6 pages) a été effectué le 2026-08-06 (couverture déjà lue en v0.3). L'exercice 4
+Partie 1 de ce sujet (« Mouvement d'un satellite artificiel ») confirme la
+lecture de couverture antérieure : c'est un exercice de **gravitation /
+mécanique céleste** (2ᵉ loi de Newton appliquée à la force gravitationnelle,
+3ᵉ loi de Kepler), **sans aucune quantification, orbite électronique ni
+énergie de niveau** — rien du programme propre à ce chapitre. Il a donc été
+transcrit sous `chute-mouvements-plans.md` (voir la « Note de routage » en
+tête de ce fichier), **pas ici**, conformément à la conclusion déjà écrite
+ci-dessus et à la décision verrouillée `unsourced` de
+`content/pc/atome-mecanique-newton/exercises.yaml`. Statut `unsourced`
+inchangé.

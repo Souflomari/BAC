@@ -395,3 +395,75 @@ deux traits principaux chiffrés : $V_{BE} = 10{,}0\ \text{mL}$ et
 $pH_E = 8{,}0$ — valeurs non imprimées mais **exactement sur le quadrillage
 principal**, et non une estimation.
 
+---
+
+## 2025 — session normale — Exercice 1 (Chimie), Partie 1
+Source: https://www.alloschool.com/element/145796
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
+course-422/upload-87489, page(s) 2. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS28F · Barème de l'exercice complet : 7 points ; **Partie 1**
+  = 3,75 points ($0{,}5+0{,}75+0{,}25+0{,}75+0{,}75+0{,}75$, barème en marge) ;
+  le solde $3{,}25$ points pour la Partie 2 (déjà transcrite, voir portée
+  ci-dessous)
+- Images lues (reproductibilité) : `.../course-422/upload-87489/0002-big.jpg`
+- Pages du scan : 2 (sur 6)
+- Portée : **Partie 1** (dosage acido-basique de l'hydrogénosulfite de
+  sodium). La **Partie 2** (suivi cinétique d'une estérification, facteurs
+  température et catalyseur) du même exercice est déjà transcrite sous
+  `controle-catalyse.md` (2025 N Ex1 P2, `Statut: vérifié`), non reprise ici.
+  Mention en tête de l'exercice : « Les deux parties sont indépendantes ».
+  Recoupe `etat-equilibre` (Q1-5 : constante d'équilibre $K$).
+
+**Partie 1 : Dosage d'une solution aqueuse d'hydrogénosulfite de sodium.**
+
+*(Cadrage de l'exercice, transcrit intégralement : « Dans cet exercice on se
+propose d'étudier : - le dosage d'une solution acide ; - le suivi cinétique
+d'une réaction d'estérification. »)*
+
+L'hydrogénosulfite de sodium $\text{NaHSO}_3$ est utilisé pour le blanchiment
+de la pâte à papier. L'étiquette d'un flacon contenant une solution
+commerciale $(S_0)$ d'hydrogénosulfite de sodium
+$\text{Na}^+_{(aq)} + \text{HSO}_3^-_{(aq)}$ porte l'indication :
+$500\ \text{g.L}^{-1}$. La concentration molaire de $(S_0)$ est $C_0$.
+
+**Données :**
+- Toutes les mesures sont effectuées à $25\ °\text{C}$ ;
+- Le produit ionique de l'eau : $K_e = 10^{-14}$ ;
+- Masse molaire de l'hydrogénosulfite de sodium :
+  $M(\text{NaHSO}_3) = 104\ \text{g.mol}^{-1}$ ;
+- Le couple acide/base : $\text{HSO}_3^-_{(aq)}/\text{SO}_3^{2-}_{(aq)}$ ;
+- $pK_A(\text{HSO}_3^-_{(aq)}/\text{SO}_3^{2-}_{(aq)}) = 7{,}2$.
+
+Cette partie de l'exercice vise à vérifier par dosage acido-basique
+l'indication $500\ \text{g.L}^{-1}$ inscrite sur l'étiquette de la solution
+commerciale.
+
+Pour vérifier cette indication, on procède comme suit :
+- On dilue 100 fois la solution $(S_0)$ de concentration molaire $C_0$ et on
+  obtient ainsi une solution $(S_A)$ de concentration molaire $C_A$ ;
+- On prélève un volume $V_A = 20{,}0\ \text{mL}$ de $(S_A)$ que l'on dose avec
+  une solution aqueuse $(S_B)$ d'hydroxyde de sodium
+  $\text{Na}^+_{(aq)} + \text{HO}^-_{(aq)}$ de concentration molaire
+  $C_B = 0{,}10\ \text{mol.L}^{-1}$.
+
+Le volume de la solution $(S_B)$ versé à l'équivalence est
+$V_{BE} = 9{,}6\ \text{mL}$.
+
+1. **1-1.** (0,5) Écrire l'équation chimique modélisant la réaction de
+   dosage.
+2. **1-2.** (0,75) Déterminer la valeur de $C_A$.
+3. **1-3.** (0,25) Déduire que $C_0 = 4{,}80\ \text{mol.L}^{-1}$.
+4. **1-4.** (0,75) Justifier si l'indication inscrite sur l'étiquette du
+   flacon est vérifiée.
+5. **1-5.** (0,75) Déterminer la valeur de la constante d'équilibre $K$
+   associée à l'équation de la réaction de dosage.
+6. **1-6.** (0,75) En se basant sur le tableau d'avancement de la réaction de
+   dosage à l'équivalence, trouver la concentration molaire $C_{eq}$ de la
+   solution de sulfite de sodium $2\text{Na}^+_{(aq)} + \text{SO}_3^{2-}_{(aq)}$
+   obtenue à l'équivalence.
+
+*(Aucune figure dans cette partie ; énoncé entièrement textuel, sans courbe ni
+schéma.)*
+
