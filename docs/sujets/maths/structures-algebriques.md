@@ -162,3 +162,45 @@ Soient la matrice $A = \begin{pmatrix} -1 & -1 & 0 \\ -1 & -1 & 0 \\ -1 & 1 & -2
 6. (0,5) Montrer que $(E,T,\times)$ est un corps commutatif.
 
 ---
+
+## 2023 — session normale — Exercice 5
+Source: https://www.alloschool.com/element/142490
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-85316, page(s) 5. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
+- Code sujet : NS 24F · Barème de l'exercice : 3,5 points
+- Images lues : `.../course-436/upload-85316/0001-big.jpg` (page de consignes / composantes), `.../course-436/upload-85316/0005-big.jpg` (énoncé complet)
+- Pages du scan : 5 (sur 5) — consignes p.1
+
+> **Note de lecture (mojibake)** : substitution de police massive et **incohérente** des lettres blackboard — un même ensemble est rendu tantôt par une barre verticale « | » ($M_2(\mathbb{R})$), tantôt par un tiret bas « _ », une case tofu « ⊓ » / « □ », ou un coin « ⌐ ». Aucune correspondance glyphe→lettre fiable ; chaque occurrence est résolue par la logique de l'exercice *(glyphes à confirmer)* :
+> - **$\mathbb{R}$** en Partie I (l'anneau $M_2(\mathbb{R})$, l'espace vectoriel réel, le domaine de $E$ et le $\mathbb{R}^4$ de la Q3-a) — **forcé** car $M(\sqrt3,1) \in E$ exige des coefficients irrationnels, donc $E$ est bâti sur $\mathbb{R}^2$ ; et $\mathbb{R}^*$ en Partie II Q2 (car $F-\{0\}$ contient $\sqrt3 \notin \mathbb{Q}$, son groupe multiplicatif ambiant est $\mathbb{R}^*$).
+> - **$\mathbb{Q}$** pour $F$, $G$ et les domaines des Q1 et Q3 de la Partie II — **forcé** car l'assertion de la Q1 « $x + y\sqrt3 = 0 \iff x = y = 0$ » n'est vraie que sur $\mathbb{Q}$ (indépendance $\mathbb{Q}$-linéaire de $1$ et $\sqrt3$), et $F-\{0\}$ n'est un groupe multiplicatif que si $F = \mathbb{Q}[\sqrt3]$ est un **corps** — cohérent avec $E$ sur $\mathbb{R}$ qui, lui, possède des diviseurs de zéro (Partie I Q4) et n'est donc pas un corps.
+
+**Structures algébriques (ensemble de matrices $M(x,y)=\left(\begin{smallmatrix} x+y & y \\ 2y & x-y \end{smallmatrix}\right)$ avec $M(x,y)\,M(x',y')=M(xx'+3yy',\,xy'+yx')$ : sur $\mathbb{R}$ un anneau commutatif unitaire non intègre — pas un corps ; sur $\mathbb{Q}$ un corps commutatif $G \cong F = \mathbb{Q}[\sqrt3]$ via l'isomorphisme $\varphi$).**
+
+On rappelle que $(M_2(\mathbb{R}), +, \times)$ est un anneau non commutatif de zéro la matrice $O = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}$ et d'unité la matrice $I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$, et que $(M_2(\mathbb{R}), +, \cdot)$ est un espace vectoriel réel.
+
+On considère l'ensemble $E = \left\{ M(x,y) = \begin{pmatrix} x+y & y \\ 2y & x-y \end{pmatrix} \ /\ (x,y) \in \mathbb{R}^2 \right\}$
+
+**Partie I :**
+
+1. (0,5) Montrer que $E$ est un sous-groupe de $(M_2(\mathbb{R}), +)$.
+2. (0,25) Montrer que $E$ est un sous-espace vectoriel de $(M_2(\mathbb{R}), +, \cdot)$.
+3. a) (0,25) Vérifier que : $\forall(x, y, x', y') \in \mathbb{R}^4$ ; $M(x,y) \times M(x',y') = M(xx' + 3yy',\ xy' + yx')$
+   b) (0,5) En déduire que $(E, +, \times)$ est un anneau commutatif et unitaire.
+4. a) (0,25) Vérifier que : $M(\sqrt{3}, 1) \times M(-\sqrt{3}, 1) = O$
+   b) (0,25) En déduire que $(E, +, \times)$ n'est pas un corps.
+
+**Partie II :**
+
+Soient $F = \left\{ x + y\sqrt{3} \ /\ (x,y) \in \mathbb{Q}^2 \right\}$ *(glyphe à confirmer : $\mathbb{Q}$)* et $G = \left\{ M(x,y) = \begin{pmatrix} x+y & y \\ 2y & x-y \end{pmatrix} \ /\ (x,y) \in \mathbb{Q}^2 \right\}$ *(glyphe à confirmer : $\mathbb{Q}$)*.
+
+1. (0,25) Montrer que : $\forall(x,y) \in \mathbb{Q}^2$ *(glyphe à confirmer : $\mathbb{Q}$)* ; $x + y\sqrt{3} = 0$ si et seulement si $(x = 0$ et $y = 0)$.
+2. (0,25) Montrer que $F - \{0\}$ est un sous-groupe de $(\mathbb{R}^*, \times)$ *(glyphe à confirmer : $\mathbb{R}$)*.
+3. Soit $\varphi$ l'application définie de $F - \{0\}$ vers $E$ par : $\forall(x,y) \in \mathbb{Q}^2 - \{(0,0)\}$ *(glyphe à confirmer : $\mathbb{Q}$)* ; $\varphi(x + y\sqrt{3}) = M(x,y)$.
+   a) (0,25) Vérifier que : $\varphi(F - \{0\}) = G - \{O\}$
+   b) (0,25) Montrer que $\varphi$ est un homomorphisme de $(F - \{0\}, \times)$ vers $(E, \times)$.
+   c) (0,25) En déduire que $(G - \{O\}, \times)$ est un groupe commutatif.
+4. (0,25) Montrer que $(G, +, \times)$ est un corps commutatif.
+
+---

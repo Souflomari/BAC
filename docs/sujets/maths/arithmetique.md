@@ -136,3 +136,32 @@ Soient $p$ un nombre premier impair et $a$ un entier premier avec $p$.
    b) (0,5) En déduire que l'équation $(F)$ n'admet pas de solution dans $\mathbb{Z}$.
 
 ---
+
+## 2023 — session normale — Exercice 4
+Source: https://www.alloschool.com/element/142490
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-85316, page(s) 4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
+- Code sujet : NS 24F · Barème de l'exercice : 3 points
+- Images lues : `.../course-436/upload-85316/0001-big.jpg` (page de consignes / composantes), `.../course-436/upload-85316/0004-big.jpg` (énoncé complet)
+- Pages du scan : 4 (sur 5) — consignes p.1
+
+> **Note de lecture (mojibake)** : la congruence $\equiv$ est rendue correctement (triple barre propre) partout. En revanche $\mathbb{Z}$ est substitué par un assortiment de glyphes selon l'occurrence — une case tofu « ⊔ » (énoncé : « dans ⊔ l'équation »), un coin « ⌐ » (Q4-b : « $\in$ ⌐ »), et une double barre verticale « ‖ » (Q5 : « dans ‖ ») — les trois lus $\mathbb{Z}$ par la logique de l'exercice (équation en $x$ d'inconnue entière, et $2^{\frac{p}{2}}\cos(p\frac{\pi}{4})$ entier) *(glyphe à confirmer)*.
+
+**Arithmétique (résidus quadratiques : $x^2 \equiv 2\ [p]$ ; petit théorème de Fermat, critère d'Euler, $p \mid C_p^k$, formule de Moivre et développement de $(1+i)^p$ ; non-résolubilité pour $p \equiv 5\ [8]$).**
+
+Soit $p$ **un nombre premier impair**. On considère dans $\mathbb{Z}$ l'équation $(E) : x^2 \equiv 2\ [p]$.
+
+1. a) (0,25) Montrer que : $2^{p-1} \equiv 1\ [p]$
+   b) (0,25) En déduire que : $2^{\frac{p-1}{2}} \equiv 1\ [p]$ ou $2^{\frac{p-1}{2}} \equiv -1\ [p]$
+   *(On remarque que : $\left(2^{\frac{p-1}{2}} - 1\right)\left(2^{\frac{p-1}{2}} + 1\right) = 2^{p-1} - 1$)*
+2. Soit $x$ une solution de l'équation $(E)$.
+   a) (0,5) Montrer que $p$ et $x$ sont premiers entre eux.
+   b) (0,5) En déduire que : $2^{\frac{p-1}{2}} \equiv 1\ [p]$ *(On pourra utiliser le théorème de Fermat.)*
+3. (0,25) Montrer que pour tout $k \in \{1, 2, \ldots, p-1\}$, $p$ divise $C_p^k$.
+   *(On rappelle que : $\left(\forall k \in \{1, 2, \ldots, p-1\}\right)\ C_p^k = \dfrac{p!}{k!\,(p-k)!}$ et que $k\,C_p^k = p\,C_{p-1}^{k-1}$.)*
+4. a) (0,25) En utilisant la formule de Moivre, montrer que : $(1+i)^p = 2^{\frac{p}{2}}\cos\!\left(p\dfrac{\pi}{4}\right) + i\,2^{\frac{p}{2}}\sin\!\left(p\dfrac{\pi}{4}\right)$ *($i$ étant le nombre complexe tel que : $i^2 = -1$)*
+   b) (0,5) On admet que : $(1+i)^p = \displaystyle\sum_{k=0}^{k=\frac{p-1}{2}} (-1)^k C_p^{2k} + i \sum_{k=0}^{k=\frac{p-1}{2}} (-1)^k C_p^{2k+1}$. Montrer que : $2^{\frac{p}{2}}\cos\!\left(p\dfrac{\pi}{4}\right) \in \mathbb{Z}$ et $2^{\frac{p}{2}}\cos\!\left(p\dfrac{\pi}{4}\right) \equiv 1\ [p]$ *(on pourra utiliser la question 3-)*
+5. (0,5) En déduire que si $p \equiv 5\ [8]$ alors l'équation $(E)$ n'admet pas de solution dans $\mathbb{Z}$.
+
+---

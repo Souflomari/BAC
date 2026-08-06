@@ -195,3 +195,32 @@ On pose $\dfrac{b}{a} = \lambda i$ avec $\lambda = \mathrm{Im}\!\left(\dfrac{b}{
    d) (0,25) Montrer que les droites $(IJ)$ et $(OA)$ sont perpendiculaires.
 
 ---
+
+## 2023 — session normale — Exercice 3
+Source: https://www.alloschool.com/element/142490
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-85316, page(s) 3–4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
+- Code sujet : NS 24F · Barème de l'exercice : 3,5 points
+- Images lues : `.../course-436/upload-85316/0001-big.jpg` (page de consignes / composantes), `.../course-436/upload-85316/0003-big.jpg` (énoncé, questions 1–), `.../course-436/upload-85316/0004-big.jpg` (suite, questions 2–3)
+- Pages du scan : 3–4 (sur 5) — consignes p.1
+
+> **Note de lecture (mojibake)** : le corps mathématique est propre (exponentielles $e^{i\frac{\pi}{12}}$, radicaux, fonctions trigonométriques rendus correctement ; pas de congruence dans cet exercice). Seul $\mathbb{N}$ est substitué de façon incohérente : rendu « N » (capitale simple) sur la p.3, mais par une case tofu « ⊓ » / un coin « ⌐ » sur la p.4 dans les quantificateurs des suites (« $\forall n \in$ » et « pour tout $n \in$ ») ; lu $\mathbb{N}$ (indexation des suites) *(glyphe à confirmer)*.
+
+**Nombres complexes (forme exponentielle et $\tan\frac{\pi}{12}$ ; suites couplées $(x_n),(y_n)$ avec $x_n+iy_n=u^n$ et forme trigonométrique ; points $A_n$ d'affixe $u^n$ : alignement et triangle rectangle).**
+
+On considère le nombre complexe : $u = 1 + (2 - \sqrt{3})\,i$
+
+1. a) (0,5) Écrire sous forme exponentielle les nombres complexes : $1 - i$ et $1 + \sqrt{3}\,i$.
+   b) (0,25) Montrer que : $\dfrac{(1-i)(1+\sqrt{3}\,i)}{2\sqrt{2}} = e^{i\frac{\pi}{12}}$
+   c) (0,25) En déduire que : $\tan\!\left(\dfrac{\pi}{12}\right) = 2 - \sqrt{3}$
+   d) (0,5) Montrer que : $u = (\sqrt{6} - \sqrt{2})\,e^{i\frac{\pi}{12}}$
+2. On considère les deux suites numériques $(x_n)_{n \in \mathbb{N}}$ et $(y_n)_{n \in \mathbb{N}}$ définies par :
+   $$x_0 = 1, \quad y_0 = 0 \quad \text{et} \quad (\forall n \in \mathbb{N}) \ ; \ \begin{cases} x_{n+1} = x_n - (2 - \sqrt{3})\,y_n \\ y_{n+1} = (2 - \sqrt{3})\,x_n + y_n \end{cases}$$
+   a) (0,5) Montrer par récurrence que pour tout $n \in \mathbb{N}$, $x_n + i y_n = u^n$.
+   b) (0,5) En déduire que pour tout $n \in \mathbb{N}$ : $x_n = \dfrac{\cos\!\left(\frac{n\pi}{12}\right)}{\left(\cos\frac{\pi}{12}\right)^n}$ et $y_n = \dfrac{\sin\!\left(\frac{n\pi}{12}\right)}{\left(\cos\frac{\pi}{12}\right)^n}$
+3. Le plan complexe est rapporté à un repère orthonormé direct $(O; \vec{e_1}, \vec{e_2})$. Pour tout entier naturel $n$, on note $A_n$ le point d'affixe $u^n$.
+   a) (0,5) Déterminer les entiers $n$ pour lesquels les points $O$, $A_0$ et $A_n$ sont alignés.
+   b) (0,5) Montrer que pour tout entier $n$, le triangle $O A_n A_{n+1}$ est rectangle en $A_n$.
+
+---
