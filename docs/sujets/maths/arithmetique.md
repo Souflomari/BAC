@@ -111,7 +111,7 @@ Soient $p$ et $q$ deux nombres premiers distincts et $r$ un entier naturel premi
 
 ## 2025 — session normale — Exercice 3
 Source: https://www.alloschool.com/element/145783
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-87482, page(s) 4. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 145783 → course-436/upload-87482 re-dérivé ; énoncé EXERCICE3 sur l'image 0005 = p.4/5), diff caractère-par-caractère conforme au scan (valeurs, notation, indices, exposants fractionnaires $\frac{p-1}{2}$, congruences et modules $[p]$/$[11]$, l'équation $11x+(2^{2n+1}-1)y=1$ et $\mathbb{Z}^2$, barème par question sommant à 3 pts) ; équivalence $(F)\iff 2(2x+5)^2\equiv 1\ [11]$ re-dérivée et confirmée ; Unicode propre (pas de mojibake), équation et exposants confirmés au zoom (gemini) ; filière Sciences Mathématiques (A)/(B) خيار فرنسية et code NS 24F confirmés sur l'en-tête du scan.
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : 3 points

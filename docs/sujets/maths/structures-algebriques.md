@@ -132,7 +132,7 @@ $$\forall\big((a,b),(c,d)\big) \in \big(\mathbb{C}\times\mathbb{C}^*\big)^2 \ ; 
 
 ## 2025 — session normale — Exercice 4
 Source: https://www.alloschool.com/element/145783
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-87482, page(s) 5. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 145783 → course-436/upload-87482 re-dérivé ; énoncé EXERCICE4 sur l'image 0006 = p.5/5), diff caractère-par-caractère conforme au scan (valeurs, entrées des matrices $A$/$O$/$I$ $3\times3$, la matrice $A=\left(\begin{smallmatrix}-1&-1&0\\-1&-1&0\\-1&1&-2\end{smallmatrix}\right)$, exposants, loi $T$ et $\varphi(x)=M(\frac{1-x}{2})$, barème par question sommant à 3,5 pts) ; identités $A^2=-2A$ et $(x-\frac12)(y-\frac12)=-\frac12(x+y-2xy-\frac12)$ re-dérivées et confirmées ; Unicode propre (pas de mojibake) ; filière Sciences Mathématiques (A)/(B) خيار فرنسية et code NS 24F confirmés sur l'en-tête du scan.
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : 3,5 points

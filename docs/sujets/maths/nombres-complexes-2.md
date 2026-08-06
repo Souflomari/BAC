@@ -157,7 +157,7 @@ Soient $\Omega$, $M_1$ et $M_2$ les points d'affixes respectivement $\alpha$, $z
 
 ## 2025 — session normale — Exercice 2
 Source: https://www.alloschool.com/element/145783
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-436/upload-87482, page(s) 3–4. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 145783 → course-436/upload-87482 re-dérivé ; énoncé EXERCICE2 Partie I sur l'image 0004 = p.3/5, Partie II sur l'image 0005 = p.4/5), diff caractère-par-caractère conforme au scan (valeurs, exposants $2^\alpha e^{i\alpha}$/$2^{2\alpha+1}e^{i2\alpha}$, l'équation $(E_\alpha)$, le discriminant $\Delta_\alpha=(2^\alpha e^{i\alpha}(1-2i))^2$, affixes $\frac{b}{a}=\lambda i$/$\frac{h}{b-a}$/$\frac{n}{m-a}$, barème par question sommant à 3,5 pts) ; équation, discriminant et $b/a=2i$ imaginaire pur re-dérivés et confirmés, exposants confirmés au zoom (gemini) ; filière Sciences Mathématiques (A)/(B) خيار فرنسية et code NS 24F confirmés sur l'en-tête du scan.
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : 3,5 points
