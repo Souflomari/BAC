@@ -15,22 +15,56 @@
 # « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
 # entre apostrophes simples dans steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue) : les deux sujets « vérifié » de cette
-# notion sont 2018 N et 2019 N. Le 2019 N (Exercice III, Partie I — charge)
-# sert AUSSI de sommet de leçon (r-bac, exercises.yaml, marqueur
-# [[exercise:r-bac]] à R5) : mêmes données, mêmes réponses numériques
-# (Q = 100 µC, τ = 1 ms, C = 10 µF, R = 100 Ω), reprises ici à l'identique
-# pour rester cohérentes avec le sommet. Il figure ici pour que la banque
-# soit le corpus complet des annales de la notion (BANK-SPEC §1 : « la
-# banque est le volume derrière le sommet, jamais son remplacement ») —
-# recoupement assumé, même disposition que reactions-acido-basiques
-# bk-2021-n-x1. À l'arbitrage de l'owner si l'on préfère l'écarter de la
-# banque pour éviter le recoupement sur la même page.
+# NOTE ÉDITORIALE (pour la revue) : quatre sujets « vérifié » de cette notion
+# sont désormais banqués : 2018 N (deux sous-parties de l'Exercice III),
+# 2019 N et 2021 N.
 #
-# Le 2018 N (Exercice III, sous-partie I-2 — décharge à travers R seule)
-# n'apparaît nulle part ailleurs dans la notion : c'est la seule entrée qui
-# traite explicitement la décharge avec un raisonnement guidé question par
-# question (la leçon la couvre en R4, mais sans exercice chiffré associé).
+# Le 2019 N (Exercice III, Partie I — charge) sert AUSSI de sommet de leçon
+# (r-bac, exercises.yaml, marqueur [[exercise:r-bac]] à R5) : mêmes données,
+# mêmes réponses numériques (Q = 100 µC, τ = 1 ms, C = 10 µF, R = 100 Ω),
+# reprises ici à l'identique pour rester cohérentes avec le sommet. Il figure
+# ici pour que la banque soit le corpus complet des annales de la notion
+# (BANK-SPEC §1 : « la banque est le volume derrière le sommet, jamais son
+# remplacement ») — recoupement assumé, même disposition que
+# reactions-acido-basiques bk-2021-n-x1. À l'arbitrage de l'owner si l'on
+# préfère l'écarter de la banque pour éviter le recoupement sur la même page.
+#
+# Le 2018 N (Exercice III) est banqué en DEUX entrées sœurs, chacune une
+# sous-partie de la même expérience « déterminer C2 par deux méthodes » :
+# bk-2018-n-x3 (sous-partie I-2 — décharge à travers R seule, décrite avec
+# un raisonnement guidé question par question ; la leçon couvre la décharge
+# en R4, mais sans exercice chiffré associé) et bk-2018-n-x3b (sous-partie
+# I-1 — générateur de courant, ci-dessous). Les deux entrées se recoupent
+# PHYSIQUEMENT (même C2 = 2,5 µF, retrouvée par deux méthodes indépendantes)
+# — voir le renvoi croisé dans le sourcing.note de bk-2018-n-x3b.
+#
+# Le 2021 N (Exercice IV, Partie I — échelon de tension, lecture de
+# du_C/dt = f(u_C)) ne recoupe ni le sommet (r-bac = 2019, r-variation =
+# variation fraîche non sourcée) ni aucune autre entrée de cette banque.
+#
+# SCOPE NOTES (techniques mobilisées au-delà de ce que les rungs R0–R4 de la
+# leçon montrent explicitement pas à pas — pontées au point d'usage dans le
+# raisonnement de la question concernée, PAS corrigées ni simplifiées ici) :
+#   - bk-2018-n-x3b, q1 et q3 : l'association de deux condensateurs en
+#     parallèle (C_eq = C1 + C2, additivité des charges à tension commune)
+#     est une règle du cours sur les condensateurs que les rungs de cette
+#     leçon ne couvrent jamais — R0–R4 étudient un condensateur UNIQUE
+#     soumis à un échelon de tension, jamais une association série/parallèle.
+#     Pontée au point d'usage dans le raisonnement des deux questions.
+#   - bk-2018-n-x3b, contexte général : le montage utilise un générateur
+#     IDÉAL DE COURANT I0 (et non le générateur idéal de tension E de tous
+#     les rungs) pour charger les condensateurs. Aucune des trois questions
+#     ne demande d'établir ni de résoudre une équation différentielle sous
+#     ce régime — q2 ne fait que relire la relation q = C.u (rung 1,
+#     généralisée à C_eq) sur un graphe q = f(u_AB) où le courant constant
+#     I0 ne sert qu'à balayer u_AB ; aucun pont de mécanisme n'est donc
+#     requis, mentionné ici pour mémoire.
+#   - bk-2021-n-x4, q2 : lecture des coefficients (E, RC) d'une droite
+#     du_C/dt = f(u_C). Le rung 1 établit bien cette équation affine, mais
+#     la leçon ne trace jamais du_C/dt en fonction de u_C elle-même (ses
+#     courbes sont q(t), u_C(t) ou i(t) contre le temps, lues par tangente
+#     à l'origine ou méthode des 63 %, rung 3). Pontée au point d'usage
+#     dans le raisonnement de la question 2.
 
 notion: pc/rc-charge
 
@@ -198,3 +232,153 @@ entries:
             note: "Lecture graphique : la tangente a l'origine coupe l'axe des abscisses a t = tau."
           - math: 'C_2 = \frac{\tau}{R} = \frac{4{,}0\times10^{-3}}{1600} = 2{,}5\times10^{-6}\ \text{F} = 2{,}5\ \mu\text{F}'
             note: "On inverse tau = R C2 ; application numerique avec R = 1600 ohms."
+
+  # ── bk-2018-n-x3b — 2018 N, Exercice III (sous-partie I-1) : générateur de courant, C2 par q=f(u_AB) ──
+  # Sœur de bk-2018-n-x3 (sous-partie I-2, ci-dessus) : même exercice, même
+  # C2, deux méthodes de mesure différentes — voir le recoupement cité dans
+  # sourcing.note ci-dessous.
+  - id: bk-2018-n-x3b
+    title: "Détermination d'une capacité par un générateur de courant idéal : condensateurs en parallèle"
+    source:
+      year: 2018
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice III — I-1. En utilisant un générateur de courant"
+    bareme_total: 1.75
+    duration_min: 11
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/57726 (Exercice III, sous-partie I-1
+        — détermination expérimentale de la capacité C2 à l'aide d'un
+        générateur idéal de courant chargeant deux condensateurs C1 et C2
+        montés en parallèle ; barème de la sous-partie = 1,75 pt sur les 5 pt
+        de l'exercice complet, dont la sous-partie I-2 — décharge à travers R
+        seule, déjà banquée sous bk-2018-n-x3 — et la Partie II — circuit RLC
+        série, transcrite sous rlc-serie.md). Transcription vérifiée en trois
+        passes (docs/sujets/pc/rc-charge.md, statut « vérifié », 2026-08-06) :
+        transcription initiale, diff adverse par un second agent (symbole du
+        générateur de courant et étiquettes C1/C2 corrigés), puis re-lecture
+        indépendante par un troisième agent (figures 1 et 2 re-mesurées de
+        zéro sur le scan, conformes) — entrée promue. Recoupement physique
+        exact avec la sous-partie I-2 déjà banquée (bk-2018-n-x3) :
+        τ = R×C2 = 1600 × 2,5×10⁻⁶ = 4,0 ms, précisément l'abscisse où la
+        tangente à l'origine de la figure 4 coupe l'axe des temps — les deux
+        méthodes du sujet, générateur de courant ici et échelon de tension
+        là-bas, donnent la même capacité C2 = 2,5 µF.
+    intro: |-
+      **Détermination expérimentale de la capacité d'un condensateur — en utilisant un générateur de courant (examen national, session normale 2018, Exercice III — sous-partie I-1).**
+
+      Un professeur a consacré, avec ses élèves, une séance de travaux pratiques de physique pour déterminer expérimentalement la valeur de la capacité d'un condensateur par deux méthodes différentes, et étudier un circuit RLC série.
+
+      Un premier groupe d'élèves réalise le montage expérimental de la figure 1, constitué d'un générateur idéal de courant qui alimente le circuit par un courant électrique d'intensité $I_0$, d'un conducteur ohmique de résistance $R$, de deux condensateurs $(c_1)$ et $(c_2)$ montés en parallèle, respectivement de capacités $C_1 = 7{,}5\ \mu\text{F}$ et $C_2$ inconnue, et d'un interrupteur $K$.
+
+      À l'instant $t_0 = 0$, un élève ferme le circuit. À l'aide d'un système d'acquisition informatisé, le groupe d'élèves obtient la courbe des variations de la charge $q$ du condensateur équivalent à l'association des deux condensateurs $(c_1)$ et $(c_2)$ en fonction de la tension $u_{AB}$ (figure 2).
+
+      **Figure 1 (schéma).** Boucle unique. Branche de gauche, de haut en bas : le générateur idéal de courant, dessiné par un cercle barré horizontalement en son milieu, avec une flèche verticale montante tracée à l'extérieur, à sa gauche, étiquetée « $I_0$ » ; puis, sous le cercle, le conducteur ohmique (rectangle vertical) étiqueté « R » à sa gauche. Branche du haut : depuis le sommet du générateur, un fil part vers la droite, porte l'interrupteur $K$ (levier ouvert, étiquette « K » au-dessus) et rejoint le nœud A (point noir, étiquette « A » au-dessus). Branche de droite : de A, le fil descend et se dédouble en deux branches parallèles portant chacune un condensateur — celui de gauche étiqueté « $C_1$ » (étiquette à sa gauche), celui de droite « $C_2$ » (étiquette à sa droite) — qui se rejoignent et descendent vers le nœud B (point noir, étiquette « B » au-dessous). Branche du bas : de B, le fil repart vers la gauche jusqu'au bas du conducteur ohmique, fermant la boucle.
+
+      **Figure 2 (courbe).** $q\ (\mu\text{C})$ en fonction de $u_{AB}\ (\text{V})$, sur un quadrillage de 6 divisions en largeur et 6 divisions en hauteur ; seules les valeurs $10$ et $20$ sont chiffrées en ordonnée, $1$ et $2$ en abscisse, plus le $0$ à l'origine : le pas du quadrillage vaut donc $1\ \text{V}$ horizontalement et $10\ \mu\text{C}$ verticalement, et le cadre va jusqu'à $6\ \text{V}$ / $60\ \mu\text{C}$. Droite croissante partant exactement de l'origine et rejoignant exactement le coin supérieur droit du cadre $(6\ \text{V}\,;\,60\ \mu\text{C})$, en passant par les intersections $(1\,;\,10)$, $(2\,;\,20)$, $(3\,;\,30)$… du quadrillage principal : la pente se lit donc $10\ \mu\text{C.V}^{-1}$.
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** Quel est l'intérêt de monter des condensateurs en parallèle ?
+        reasoning: |-
+          Question de cours sur les condensateurs, hors des rungs de cette leçon : R0–R4 étudient un condensateur **unique** soumis à un échelon de tension, jamais une association de plusieurs condensateurs. En montant deux condensateurs en parallèle sous la même tension $u_{AB}$, les charges qu'ils portent s'additionnent — la capacité équivalente $C_{eq} = C_1 + C_2$ est donc strictement supérieure à celle de chaque condensateur pris isolément.
+
+          L'intérêt de l'association en parallèle est d'obtenir, à partir de composants disponibles, une capacité équivalente plus grande que celle de chacun des deux condensateurs pris séparément — donc de stocker davantage de charge sous une même tension.
+      - id: q2
+        stem: |-
+          **(0,75 pt)** En exploitant la courbe de la figure 2, déterminer la valeur de la capacité $C_{eq}$ du condensateur équivalent aux deux condensateurs $(c_1)$ et $(c_2)$.
+        reasoning: |-
+          On réutilise la relation rappelée au rung 1 — la charge posée sur les armatures fixe la tension, $q = Cu_C$ — généralisée ici au condensateur équivalent : $q = C_{eq}\,u_{AB}$ à chaque instant, quelle que soit la façon dont le courant $I_0$ les a chargés. Cette relation dit que $q$ est proportionnelle à $u_{AB}$, une droite passant par l'origine, et que son coefficient de proportionnalité **est** $C_{eq}$. Il suffit donc de lire la pente sur le graphe fourni : la droite rejoint exactement le coin $(6\ \text{V}\,;\,60\ \mu\text{C})$ du quadrillage en partant de l'origine.
+        steps:
+          - math: 'q = C_{eq}\,u_{AB}'
+            note: "Definition de la capacite (rung 1), generalisee au condensateur equivalent : q proportionnelle a u, droite par l'origine."
+          - math: 'C_{eq} = \frac{q}{u_{AB}} = \frac{60\times10^{-6}}{6}'
+            note: "Pente de la droite, lue sur le quadrillage : elle passe exactement par (6 V ; 60 microC)."
+          - math: '\boxed{C_{eq} = 10\times10^{-6}\ \text{F} = 10\ \mu\text{F}}'
+            note: "Resultat demande."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** En déduire la valeur de la capacité $C_2$.
+        reasoning: |-
+          Les deux condensateurs $(c_1)$ et $(c_2)$ sont montés en parallèle (figure 1) : pour cette association, les charges s'additionnent à tension commune, $q = q_1 + q_2 = C_1u_{AB} + C_2u_{AB}$, donc les capacités s'additionnent, $C_{eq} = C_1 + C_2$ — un résultat du cours sur les condensateurs, hors des rungs de cette leçon (qui ne traitent qu'un condensateur unique). On isole $C_2$, avec $C_{eq}$ tout juste lu (question 2) et $C_1$ donné par l'énoncé.
+        steps:
+          - math: 'C_{eq} = C_1 + C_2'
+            note: "Association en parallele : les capacites s'additionnent (regle du cours, hors rungs de cette lecon)."
+          - math: 'C_2 = C_{eq} - C_1 = 10 - 7{,}5'
+            note: "On isole C2, avec Ceq lu a la question 2 et C1 = 7,5 microF donne par l'enonce."
+          - math: '\boxed{C_2 = 2{,}5\ \mu\text{F}}'
+            note: "Coherent avec la sous-partie I-2 deja banquee (bk-2018-n-x3) : tau = R C2 = 4,0 ms retrouve la meme valeur par une autre methode."
+
+  # ── bk-2021-n-x4 — 2021 N, Exercice IV (Partie I) : échelon RC, lecture du_C/dt = f(u_C) ──
+  - id: bk-2021-n-x4
+    title: "Réponse d'un dipôle RC à un échelon de tension : équation différentielle et lecture graphique de C"
+    source:
+      year: 2021
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice IV — I. Réponse d'un dipôle RC à un échelon de tension"
+    bareme_total: 1
+    duration_min: 6
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS 28F, element/127287 (Exercice IV, Partie I —
+        réponse d'un dipôle RC à un échelon de tension ; barème de la partie
+        = 1,0 pt sur les 4,75 pt de l'exercice complet, qui comporte aussi
+        une Partie II sur les oscillations LC — transcrite sous
+        rlc-serie.md — et une Partie III sur la modulation d'amplitude —
+        transcrite sous ondes-em-modulation.md). Transcription vérifiée :
+        re-fetch indépendant AlloSchool + diff caractère par caractère
+        (agent-vérificateur, 2026-08-06), PUIS figures re-lues indépendamment
+        par un troisième agent (passe 3, 2026-08-06) — figure 1 confirmée au
+        zoom x8 (« R » sous le rectangle, « K » au-dessus du fil), figure 2
+        confirmée par régression sur 199 pixels de trace, exactement
+        (0 ; 1000) → (6 ; 500) → (12 ; 0) ; entrée promue
+        (docs/sujets/pc/rc-charge.md, statut « vérifié »).
+    intro: |-
+      **Réponse d'un dipôle RC à un échelon de tension (examen national, session normale 2021, Exercice IV — Partie I).**
+
+      Les circuits des appareils électriques, utilisés dans plusieurs domaines de la vie courante, sont constitués de condensateurs, de bobines, de conducteurs ohmiques, de circuits intégrés… Cette partie se propose d'étudier la réponse d'un dipôle RC à un échelon de tension.
+
+      On réalise le montage, représenté sur le schéma de la figure 1, constitué d'un générateur idéal de tension de force électromotrice $E$, d'un condensateur $D$ de capacité $C$ initialement déchargé, d'un conducteur ohmique de résistance $R = 10^{3}\ \Omega$, et d'un interrupteur $K$. On ferme l'interrupteur à un instant choisi comme origine des dates $t = 0$. Un système d'acquisition informatisé permet de tracer la courbe de la figure 2, représentant les variations de $\dfrac{du_c}{dt}$ en fonction de $u_c$ ; $u_c$ étant la tension à un instant $t$ aux bornes du condensateur et $\dfrac{du_c}{dt}$ sa dérivée par rapport au temps.
+
+      **Figure 1 (schéma).** Boucle série ; à gauche, un générateur idéal (symbole cercle) avec une flèche de tension orientée vers le haut, étiquetée « E », à sa gauche ; flèche de courant $i$ en haut à gauche, orientée vers la droite ; branche haute = conducteur ohmique (rectangle, étiquette « R » en dessous du rectangle) ; à droite, le condensateur (deux traits parallèles) avec l'étiquette « D » à sa gauche et une flèche $u_C$ orientée vers le haut à sa droite ; branche basse = interrupteur (deux plots et un levier ouvert), étiquette « K » au-dessus du fil, refermant la boucle vers le générateur.
+
+      **Figure 2 (courbe).** Ordonnée $\dfrac{du_c}{dt}\ (\text{V.s}^{-1})$ graduée $0$, $500$, $1000$ ; abscisse $u_c\ (\text{V})$ graduée $0$, $6$, $12$. Droite décroissante partant exactement du point $(0\,;\,1000)$, passant exactement par $(6\,;\,500)$, et atteignant l'axe des abscisses exactement en $(12\,;\,0)$.
+    questions:
+      - id: q1
+        part: "I — Réponse d'un dipôle RC à un échelon de tension : établir le modèle"
+        stem: |-
+          **(0,5 pt)** Montrer que l'équation différentielle vérifiée par la tension $u_c(t)$ s'écrit sous la forme : $\dfrac{du_c}{dt} = -\dfrac{1}{RC}u_c + \dfrac{E}{RC}$.
+        reasoning: |-
+          Même geste qu'en R1 de la leçon, avec les mêmes notations : loi des mailles sur la boucle série, $E = u_R + u_C$ en convention récepteur ; $u_R = Ri$ par la loi d'Ohm ; puis $i = C\dfrac{du_c}{dt}$, obtenu de $i = \dfrac{dq}{dt}$ et $q = Cu_c$ — exactement les deux relations rappelées au rung 1. On substitue, on isole la dérivée en divisant toute l'équation par $RC$ (l'étape que R1 fait pour retrouver $\dfrac{du_C}{dt} = \dfrac{E-u_C}{RC}$), puis on sépare le second membre en deux termes pour obtenir exactement la forme demandée ici.
+        steps:
+          - math: 'E = u_R + u_c'
+            note: "Loi des mailles sur la boucle serie, convention recepteur (rung 1)."
+          - math: 'u_R = R\,i = R\,C\frac{du_c}{dt}'
+            note: "Loi d'Ohm, avec i = C du_c/dt (de i = dq/dt et q = C u_c, rung 1)."
+          - math: 'RC\frac{du_c}{dt} + u_c = E'
+            note: "Meme equation qu'au rung 1, ici en notation u_c."
+          - math: '\boxed{\frac{du_c}{dt} = -\frac{1}{RC}\,u_c + \frac{E}{RC}}'
+            note: "On divise par RC et on separe les deux termes du second membre : forme demandee."
+      - id: q2
+        part: "I — Exploitation graphique de la courbe de la figure 2"
+        stem: |-
+          **(0,5 pt)** En exploitant la courbe de la figure 2, montrer que la capacité du condensateur est : $C = 12\ \mu\text{F}$.
+        reasoning: |-
+          Nouvelle lecture graphique, à ponter avec la question précédente : la leçon ne trace jamais $\dfrac{du_C}{dt}$ en fonction de $u_C$ elle-même — ses courbes sont $q(t)$, $u_C(t)$ ou $i(t)$ contre le temps, lues par la tangente à l'origine ou la méthode des $63\ \%$ (R3). Mais l'équation établie en question 1 EST la droite qu'on regarde ici : $\dfrac{du_c}{dt} = -\dfrac{1}{RC}u_c + \dfrac{E}{RC}$ est affine en $u_c$, de pente $-\dfrac{1}{RC}$ et d'ordonnée à l'origine $\dfrac{E}{RC}$. Deux lectures suffisent : à $u_c = 0$ (ordonnée à l'origine), on lit $\dfrac{E}{RC} = 1000\ \text{V.s}^{-1}$ ; là où la droite coupe l'axe des abscisses ($\dfrac{du_c}{dt}=0$), on lit directement $u_c = E = 12\ \text{V}$ — c'est le régime permanent, retrouvé ici par lecture graphique plutôt que par la limite $t\to\infty$ vue en R2. Une fois $E$ connu, on combine les deux lectures pour remonter à $RC$, puis à $C$ puisque $R$ est donnée.
+        steps:
+          - math: 'u_c = 0 \implies \frac{du_c}{dt} = \frac{E}{RC} = 1000\ \text{V.s}^{-1}'
+            note: "Ordonnee a l'origine de la droite (figure 2) : lecture directe."
+          - math: '\frac{du_c}{dt} = 0 \implies u_c = E = 12\ \text{V}'
+            note: "Abscisse ou la droite coupe l'axe : regime permanent, u_c = E (rung 2), retrouve ici par lecture graphique."
+          - math: 'RC = \frac{E}{1000} = \frac{12}{1000} = 1{,}2\times10^{-2}\ \text{s}'
+            note: "On combine les deux lectures : E/(RC) = 1000 et E = 12 donnent RC."
+          - math: 'C = \frac{RC}{R} = \frac{1{,}2\times10^{-2}}{10^{3}}'
+            note: "R = 10^3 ohms est donne dans l'enonce."
+          - math: '\boxed{C = 1{,}2\times10^{-5}\ \text{F} = 12\ \mu\text{F}}'
+            note: "Resultat demande."

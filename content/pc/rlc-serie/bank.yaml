@@ -73,6 +73,15 @@
 #     valeur usuelle de $\pi^2$ — cohérent avec les exemples numériques de la
 #     leçon elle-même (R2, R6), qui ne s'appuient jamais sur cette
 #     simplification.
+#   - bk-2021-n-x4, q5 : exige $C = 12\ \mu\text{F}$, une valeur établie dans
+#     la PARTIE I du même sujet (réponse d'un dipôle RC à un échelon de
+#     tension), transcrite sous une AUTRE notion — docs/sujets/pc/rc-charge.md
+#     (entrée 2021 N, statut « vérifié »), qui n'est PAS ENCORE convertie dans
+#     content/pc/rc-charge/bank.yaml au moment de cette entrée (ce fichier n'y
+#     couvre aujourd'hui que 2018 et 2019) : dépendance inter-notion pontée au
+#     point d'usage dans le raisonnement, comme pour bk-2019-n-x3 ci-dessus,
+#     mais sans entrée sœur côté rc-charge à citer pour l'instant — à
+#     surveiller quand cette entrée 2021 y sera ajoutée.
 
 notion: pc/rlc-serie
 
@@ -429,3 +438,120 @@ entries:
             note: "Energie magnetique a cet instant."
           - math: '\boxed{E_{e1} = E_t - E_m(t_1) \approx 3{,}2\times10^{-5} - 1{,}1\times10^{-5} \approx 2{,}1\times10^{-5}\ \text{J}}'
             note: "Conservation de l'energie totale (rung 1) : ce qui n'est pas dans la bobine est dans le condensateur."
+
+  # ── bk-2021-n-x4 — 2021 N, Exercice IV (Partie II) : oscillations non amorties dans un circuit LC ──
+  - id: bk-2021-n-x4
+    title: "Oscillations non amorties dans un circuit LC : régime, équation différentielle et détermination de l'inductance"
+    source:
+      year: 2021
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice IV — II. Oscillations électriques non amorties dans un circuit LC"
+    bareme_total: 2
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/127287 (Exercice IV, Partie II —
+        oscillations électriques non amorties dans un circuit LC ; barème de
+        la partie = 2,0 pt sur les 4,75 pt de l'exercice complet, dont la
+        Partie I — réponse d'un dipôle RC à un échelon de tension — est
+        transcrite sous rc-charge.md, et la Partie III — modulation
+        d'amplitude — sous ondes-em-modulation.md, hors périmètre RLC).
+        Transcription vérifiée : re-fetch indépendant AlloSchool + diff OK
+        (agent-vérificateur, 2026-08-06), PUIS relecture indépendante de la
+        figure 4 à deux passes supplémentaires par un second puis un
+        troisième agent (docs/sujets/pc/rlc-serie.md, statut « vérifié »).
+        MISE EN GARDE ÉDITORIALE — $T_0$ : une première lecture de la
+        figure 4 avait donné $T_0 = 28\ \text{ms}$ (repères pris
+        approximativement : zéro vers $t=7$, minimum vers $t=14$, zéro vers
+        $t=21$, maximum vers $t=28$). Cette lecture est RÉFUTÉE — un relevé
+        au pixel (passe 2, second agent) puis une re-mesure indépendante sans
+        reprendre le relevé précédent (passe 3, troisième agent) convergent
+        tous deux sur $T_0 = 21\ \text{ms}$ (maximum tangent à
+        $+144\ \mu\text{C}$ exactement à $t=0$, maximum suivant à
+        $21{,}25\ \text{ms}$ mesuré, soit à $0{,}25\ \text{ms}$ du repère
+        chiffré $t=21$ — moins que l'épaisseur du trait de courbe). Les
+        futurs éditeurs de cette entrée ne doivent PAS réintroduire
+        $T_0 = 28\ \text{ms}$ ni la valeur $L \approx 1{,}63\ \text{H}$ qui en
+        découlait — ces deux valeurs sont mortes ; la valeur correcte, reprise
+        ci-dessous, est $T_0 = 21\ \text{ms}$ et $L \approx 0{,}92\ \text{H}$.
+        SCOPE NOTE (voir l'en-tête du fichier) : la question 5 exige
+        $C = 12\ \mu\text{F}$, établie dans la Partie I du même sujet
+        (réponse RC), transcrite sous une autre notion —
+        docs/sujets/pc/rc-charge.md (entrée 2021 N, vérifiée), pas encore
+        convertie dans content/pc/rc-charge/bank.yaml au moment de cette
+        entrée — pontée au point d'usage, pas un trou de cette leçon.
+        Recoupement physique cité pour mémoire dans la note de vérification
+        du sujet (non requis pour répondre aux questions, la figure 4 donne
+        l'amplitude directement par lecture graphique) :
+        $Q_m = C\cdot E = 12\ \mu\text{F}\times12\ \text{V} = 144\ \mu\text{C}$,
+        exactement l'amplitude tangente aux traits non chiffrés de la
+        figure 4. FLAG RECOUPEMENT (voir l'en-tête du fichier, point 1) :
+        comme bk-2019-n-x3 ci-dessus, ce sujet ne couvre que le cas IDÉAL (LC
+        pur — la figure 3 confirme l'absence de tout conducteur ohmique dans
+        la boucle) ; il ne comble donc PAS la portée que r8-bac
+        (exercises.yaml, non sourcé) cherche à couvrir (cas amorti +
+        entretien) — même diagnostic que pour 2019, pas un candidat de
+        remplacement pour r8-bac.
+    intro: |-
+      **II- Oscillations électriques non amorties dans un circuit LC (examen national, session normale 2021, Exercice IV — Partie II).**
+
+      On réalise le montage représenté sur le schéma de la figure 3. Ce montage est constitué du condensateur précédent $D$, initialement chargé, et d'une bobine d'inductance $L$ et de résistance négligeable. Un système d'acquisition informatisé permet de tracer la courbe représentant l'évolution de la charge $q(t)$ du condensateur (figure 4).
+
+      *Figure 3 (schéma) :* boucle série ; à gauche, la bobine $L$ (dessinée en spires, étiquette « L » à côté) ; flèche de courant $i$ en haut, orientée vers la droite ; à droite, le condensateur $D$ (deux traits parallèles) avec une flèche $u_C$ orientée vers le haut à côté. Aucun conducteur ohmique dans la boucle.
+
+      *Figure 4 (courbe) :* $q\ (\mu\text{C})$ en fonction de $t\ (\text{ms})$ ; seules les valeurs $72$, $0$ et $-72$ sont chiffrées sur l'axe des ordonnées, mais le quadrillage principal est régulier (pas $72\ \mu\text{C}$), si bien qu'il existe deux traits principaux non chiffrés à $+144$ et $-144\ \mu\text{C}$ ; abscisse graduée $7$, $14$, $21$, $28\ \text{ms}$ (pas régulier de $7$ ms). Courbe sinusoïdale d'allure cosinus, d'amplitude **constante**, tangente exactement aux traits non chiffrés $+144$ et $-144\ \mu\text{C}$ : elle part de son **maximum** $Q_m = 144\ \mu\text{C}$ à $t=0$, atteint son minimum $-144\ \mu\text{C}$ vers $t\approx10{,}5\ \text{ms}$, et retrouve son **maximum** $+144\ \mu\text{C}$ **exactement sur le repère $t=21\ \text{ms}$** (lecture pixel-mesurée, confirmée à deux passes indépendantes — voir la note de sourcing).
+    questions:
+      - id: q1
+        part: "II — Oscillations électriques non amorties dans un circuit LC : identifier le régime"
+        stem: |-
+          **(0,25 pt)** Préciser, parmi les trois régimes d'oscillations, le régime mis en évidence par la courbe de la figure 4.
+        reasoning: |-
+          Même critère qu'au rung 4 : on regarde la forme générale de la courbe. La figure 4 est une sinusoïde (allure cosinus) d'amplitude **constante**, tangente aux mêmes traits $+144$ et $-144\ \mu\text{C}$ à chaque cycle — aucune décroissance visible d'un pic à l'autre. C'est la signature du régime **périodique** (rung 4), pas pseudo-périodique (qui demanderait une enveloppe décroissante) ni apériodique (qui ne oscillerait pas du tout). Cohérent avec la figure 3 : la boucle ne comporte aucun conducteur ohmique, seulement la bobine $L$ (résistance négligeable) et le condensateur $D$ — exactement le cas idéal $R \approx 0$ du rung 1.
+
+          Le régime est **périodique**.
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Établir l'équation différentielle vérifiée par la charge $q(t)$ du condensateur.
+        reasoning: |-
+          Même mécanisme qu'au rung 2 (et qu'à la question 1 du sujet 2019 ci-dessus, écrite en $u_c$ plutôt qu'en $q$) : circuit LC idéal — la figure 3 confirme l'absence de tout conducteur ohmique dans la boucle, donc $R \approx 0$ comme au rung 1. La loi des mailles donne $u_L + u_C = 0$, puis chaque tension s'exprime avec son origine physique établie au rung 1 et au rung 2 : $u_C = \frac{q}{C}$, et $u_L = L\frac{di}{dt}$ où $i = \frac{dq}{dt}$.
+        steps:
+          - math: 'u_L + u_C = 0'
+            note: "Loi des mailles, cas ideal comme au rung 2 ; figure 3 confirme l'absence de tout conducteur ohmique dans la boucle."
+          - math: 'u_C = \frac{q}{C} \qquad u_L = L\frac{di}{dt} = L\frac{d^2q}{dt^2}'
+            note: "Definitions du rung 1 et du rung 2, avec i = dq/dt substitue dans u_L."
+          - math: '\boxed{L\frac{d^2q}{dt^2} + \frac{q}{C} = 0}'
+            note: "Substitution dans la loi des mailles et regroupement : forme standard du cas ideal (rung 2)."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Trouver l'expression de la période propre $T_0$ de l'oscillateur en fonction de $L$ et de $C$ pour que l'expression $q(t) = Q_m \cos\!\left(\dfrac{2\pi}{T_0}\,t\right)$ soit solution de cette équation différentielle.
+        reasoning: |-
+          Même démarche que la vérification du rung 2 (derivation:verification-cosinus) : on injecte la forme cosinus proposée par l'énoncé — ici sans déphasage, cohérent avec la courbe de la figure 4 qui part bien de son maximum à $t=0$ — dans l'équation établie à la question précédente, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
+        steps:
+          - math: 'q(t) = Q_m\cos\!\left(\frac{2\pi}{T_0}\,t\right) \implies \frac{d^2q}{dt^2} = -\frac{4\pi^2}{T_0^2}\,q'
+            note: "Derivee seconde du cosinus propose par l'enonce (meme geste qu'au rung 2, derivation verification-cosinus)."
+          - math: '-\frac{4\pi^2 L}{T_0^2}\,q + \frac{q}{C} = 0 \implies \frac{4\pi^2 L}{T_0^2} = \frac{1}{C}'
+            note: "Substitution dans l'equation de la question precedente ; q se simplifie, il n'est jamais nul en permanence."
+          - math: '\boxed{T_0 = 2\pi\sqrt{LC}}'
+            note: "On isole T0 : meme expression qu'au rung 2, retrouvee ici par la meme methode de substitution."
+      - id: q4
+        stem: |-
+          **(0,25 pt)** Déterminer graphiquement la valeur de $T_0$.
+        reasoning: |-
+          Même méthode que dans les sujets précédents (rung 6, et question 2b du sujet 2019 ci-dessus) : on repère deux maxima consécutifs sur la courbe. Le premier maximum est à $t=0$ ($Q_m = 144\ \mu\text{C}$, exactement tangent au trait principal non chiffré supérieur) ; le maximum suivant tombe exactement sur le repère chiffré $t=21\ \text{ms}$ (figure 4, lecture pixel-mesurée — voir la note de sourcing pour l'historique de cette lecture). L'écart entre les deux, dont le premier coïncide avec l'origine, donne directement $T_0$ sans soustraction.
+
+          $$T_0 = 21\ \text{ms}$$
+      - id: q5
+        stem: |-
+          **(0,5 pt)** En déduire la valeur de $L$. (on prend $\pi^{2} = 10$).
+        reasoning: |-
+          On inverse la formule établie à la question 3, $T_0 = 2\pi\sqrt{LC}$ (même geste qu'au sujet 2019 ci-dessus, question 3), pour isoler $L$. Il manque une donnée que cette partie ne fournit pas : la capacité $C$. Elle a été déterminée dans la Partie I du même sujet (réponse d'un dipôle RC à un échelon de tension, transcrite sous une autre notion — rc-charge) : $C = 12\ \mu\text{F}$ — un pont entre les deux parties du même exercice, pas une donnée nouvelle à deviner.
+        steps:
+          - math: 'T_0 = 2\pi\sqrt{LC} \implies L = \frac{T_0^2}{4\pi^2 C}'
+            note: "On isole L (meme inversion qu'au sujet 2019 ci-dessus, question 3)."
+          - math: 'L = \frac{(21\times10^{-3})^2}{4\times10\times12\times10^{-6}} = \frac{441\times10^{-6}}{480\times10^{-6}}'
+            note: "Application numerique : T0 = 21 ms (question precedente), C = 12 microF (valeur venant de la Partie I, meme sujet, transcrite sous rc-charge), pi^2 = 10 donne par l'enonce."
+          - math: '\boxed{L \approx 0{,}92\ \text{H}}'
+            note: "Valeur coherente avec l'ordre de grandeur d'une bobine de ce type de montage bac ; c'est cette valeur, et non 1,63 H, que donnerait a tort l'ancienne lecture T0 = 28 ms."
