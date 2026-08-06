@@ -53,3 +53,7 @@ fichiers des problèmes concernés (mêmes sources, mêmes provenances) :
   `element/144505`) : aire de la partie du plan délimitée par $(\mathcal{C}_u)$
   ($u(x) = e^x$), $(\mathcal{C}_v)$ ($v(x) = x$) et les droites d'équations
   $x = 0$ et $x = 1$ (pas d'IPP dans ce problème). → voir `fonction-logarithme.md`.
+- **2021 — session normale — Problème, Q5** (SVT/Sc. Physiques, NS 22F,
+  `element/127180`) : par IPP, $\displaystyle\int_1^e x\ln x\, dx = \dfrac{1 + e^2}{4}$,
+  puis en déduire $\displaystyle\int_1^e f(x)\, dx$ avec $f(x) = 2x\ln x - 2x$
+  (pas de calcul d'aire dans ce problème). → voir `fonction-logarithme.md`.

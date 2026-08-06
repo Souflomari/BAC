@@ -104,6 +104,30 @@ course-438/upload-80918, transcription 2026-08-06, non vérifiée) :
 
 ---
 
+## Cross-lists — dérivabilité dans le sujet 2021 SExp (session normale, NS 22F, `element/127180`)
+
+La dérivabilité est présente dans le problème du sujet 2021 SExp session
+normale, transcrit **in extenso** sous `fonction-logarithme.md` (scan
+course-438/upload-84139, transcription 2026-08-06, non vérifiée) :
+
+- **Problème, Q3-a** : $\lim_{x\to 0^+} \dfrac{f(x)}{x}$ avec interprétation
+  géométrique — taux d'accroissement en $0$ de $f(x) = 2x\ln x - 2x$
+  (prolongée par $f(0) = 0$).
+- **Problème, Q3-b/c** : dérivée $f'(x)$ sur $]0,+\infty[$ et tableau de
+  variations de $f$ sur $[0,+\infty[$.
+- **Problème, Q7** : fonction réciproque $g^{-1}$ de la restriction $g$ de
+  $f$ à $[1,+\infty[$ (existence, intervalle $J$, construction de la courbe).
+- **Problème, Q8** : fonction $h$ définie par morceaux ($h(x) = x^3 + 3x$ si
+  $x \le 0$, $h(x) = 2x\ln x - 2x$ si $x > 0$) — continuité en $0$,
+  dérivabilité à gauche en $0$ avec interprétation géométrique, dérivabilité
+  en $0$.
+
+*(L'Exercice 1 du même sujet — « fonctions numériques », 2 pts — ne comporte
+aucun contenu de dérivabilité ; il est transcrit en entrée pleine sous
+`limites-continuite.md`.)*
+
+---
+
 ## Note d'usage pour cette notion
 
 `derivabilite-etude-fonctions` ne possède aucune entrée « pleine » dans cette

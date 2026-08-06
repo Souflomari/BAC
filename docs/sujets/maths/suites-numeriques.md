@@ -4,8 +4,8 @@
 > vérifiées** — voir `README.md` §3. Provenance sur chaque entrée.
 > Les suites arrivent presque toujours en **fin de problème d'analyse** : une
 > suite récurrente $u_{n+1} = f(u_n)$ dont on étudie l'encadrement (récurrence),
-> la monotonie, la convergence et la limite. Les entrées SM 2019, SExp 2020 et
-> SExp 2024 ci-dessous sont des études de suite **autonomes et complètes** ; les autres
+> la monotonie, la convergence et la limite. Les entrées SM 2019, SExp 2020,
+> SExp 2021 et SExp 2024 ci-dessous sont des études de suite **autonomes et complètes** ; les autres
 > études de suite de ce lot sont cross-listées (transcription in extenso dans
 > le fichier du problème).
 
@@ -70,6 +70,43 @@ Soit $(u_n)$ la suite numérique définie par : $u_0 = \dfrac{3}{2}$ et $u_{n+1}
 4. On considère la suite numérique $(v_n)$ définie par $v_n = \dfrac{4u_n}{2u_n + 3}$ pour tout $n$ de $\mathbb{N}$.
    a) (0,75) Montrer que $(v_n)$ est une suite géométrique de raison $\dfrac{2}{5}$
    b) (1) Déterminer $v_n$ en fonction de $n$ et en déduire $u_n$ en fonction de $n$ pour tout $n$ de $\mathbb{N}$.
+
+---
+
+## 2021 — session normale — Exercice 2
+Source: https://www.alloschool.com/element/127180
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-84139, page(s) 2. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Expérimentales — شعبة العلوم التجريبية مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) *(SVT **et** Sciences Physiques, BIOF)* — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 4 points
+- Images lues : `.../course-438/upload-84139/0002-big.jpg`
+- Pages du scan : 2 (sur 4)
+- Intitulé composantes (page 1 du scan) : « suites numériques » — 4 points
+- Remarque (source) : la page AlloSchool `element/127180` est titrée « Maths
+  Sciences et Technologies » — mislabel ; l'en-tête arabe du scan (ligne de
+  filière ci-dessus, p. 1) fait foi.
+- Remarque (numérotation) : sur la page 2 du scan, l'exercice de nombres
+  complexes qui **suit** celui-ci est étiqueté par erreur « Exercice 2 :
+  (5 points ) » — doublon d'étiquette ; la table des composantes (p. 1) fait
+  foi : les complexes sont l'Exercice 3, et l'exercice transcrit ici est bien
+  l'Exercice 2 (« suites numériques », 4 pts), premier « Exercice 2 » de la page.
+- Remarque : le problème du même sujet (p. 3-4) ne comporte pas de volet
+  suites ; il est transcrit sous `fonction-logarithme.md`.
+
+> **Note de lecture (mojibake)** : aucun
+
+**Suites numériques (suite récurrente homographique, encadrement, monotonie, majoration par une suite géométrique, limite, suite auxiliaire, terme général).**
+
+Soit $(u_n)$ la suite numérique définie par : $u_0 = \dfrac{1}{2}$ et $u_{n+1} = \dfrac{u_n}{3 - 2u_n}$ pour tout $n$ de $\mathbb{N}$
+
+1. (0,25) Calculer $u_1$
+2. (0,5) Montrer par récurrence que pour tout $n$ de $\mathbb{N}$, $0 < u_n \le \dfrac{1}{2}$
+3. a) (0,5) Montrer que pour tout $n$ de $\mathbb{N}$, $\dfrac{u_{n+1}}{u_n} \le \dfrac{1}{2}$
+   b) (0,5) En déduire la monotonie de la suite $(u_n)$
+4. a) (0,75) Montrer que pour tout $n$ de $\mathbb{N}$, $0 < u_n \le \left(\dfrac{1}{2}\right)^{n+1}$ ; puis calculer la limite de la suite $(u_n)$
+   b) (0,5) On pose $v_n = \ln\left(3 - 2u_n\right)$ pour tout $n$ de $\mathbb{N}$, calculer $\lim v_n$
+5. a) (0,5) Vérifier que pour tout $n$ de $\mathbb{N}$, $\dfrac{1}{u_{n+1}} - 1 = 3\left(\dfrac{1}{u_n} - 1\right)$
+   b) (0,5) En déduire $u_n$ en fonction de $n$ pour tout $n$ de $\mathbb{N}$
 
 ---
 

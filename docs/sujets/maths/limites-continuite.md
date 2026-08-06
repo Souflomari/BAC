@@ -27,6 +27,13 @@
 > dédié » (et la ligne correspondante d'`INDEX.md` §3) datait d'avant
 > l'atteinte de ce sujet et reste vrai pour les autres années atteintes ; la
 > décision de sourcing par extrait (r-bac 2022) reste inchangée.
+>
+> **[Mise à jour 2026-08-06 — sujet 2021.]** Le sujet **2021 SExp session
+> normale** (`element/127180`) comporte lui aussi un exercice court dont le
+> cœur analytique relève de ce chapitre : « fonctions numériques »
+> (Exercice 1, 2 pts — équations/inéquation avec $e^x$, limite en $0$,
+> existence d'une solution par TVI) — deuxième entrée pleine, transcrite
+> ci-dessous.
 
 ---
 
@@ -66,6 +73,47 @@ On considère la fonction numérique $g$ définie sur $]0,+\infty[$ par $g(x) = 
    d) (1) Montrer que pour tout $x$ de $[1,+\infty[$, $0 \le \dfrac{(\ln x)^3}{x^2} \le \dfrac{8}{\sqrt{x}}$ et en déduire $\displaystyle\lim_{x \to +\infty} \dfrac{(\ln x)^3}{x^2}$
 2. a) (0,75) Montrer que la fonction $G : x \mapsto x\left(-1 + \dfrac{4}{3}\sqrt{x} - \ln x\right)$ est une primitive de $g$ sur $]0,+\infty[$
    b) (0,75) Calculer l'intégrale $\displaystyle\int_1^4 g(x)\,dx$
+
+---
+
+## 2021 — session normale — Exercice 1 *(filière SExp)*
+Source: https://www.alloschool.com/element/127180
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-84139, page(s) 2. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Expérimentales — شعبة العلوم التجريبية مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) *(SVT **et** Sciences Physiques, BIOF)* — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 2 points
+- Images lues : `.../course-438/upload-84139/0002-big.jpg`
+- Pages du scan : 2 (sur 4)
+- Intitulé composantes (page 1 du scan) : « fonctions numériques » — 2 points
+- Remarque (source) : la page AlloSchool `element/127180` est titrée « Maths
+  Sciences et Technologies » — mislabel ; l'en-tête arabe du scan (ligne de
+  filière ci-dessus, p. 1) fait foi.
+- Remarque (numérotation) : la page 2 du scan porte deux étiquettes
+  « Exercice 2 » (l'exercice de nombres complexes y est étiqueté par erreur
+  « Exercice 2 : (5 points ) ») ; la table des composantes (p. 1) fait foi —
+  l'exercice transcrit ici est bien l'Exercice 1 (« fonctions numériques »,
+  2 pts), en tête de page.
+- Classement : intitulé composantes générique (« fonctions numériques »).
+  Le cœur analytique est limites + continuité (1 pt sur 2) : Q1-c est une
+  limite en $0$ (forme indéterminée levée par la factorisation issue de
+  Q1-a/b) et Q2 une existence de solution sur $[-1,0]$ par le théorème des
+  valeurs intermédiaires (continuité). Q1-a/b (équation et inéquation avec
+  $e^x$, 1 pt) sont la mécanique algébrique (changement de variable
+  $t = e^x$) au service de cette factorisation. Aucune dérivée dans
+  l'exercice → entrée pleine ici plutôt que dans
+  `derivabilite-etude-fonctions.md` (aucun contenu de dérivabilité).
+- Remarque : le problème du même sujet (p. 3-4) contient aussi des limites
+  et de la continuité (Q1, Q2, Q3-a, Q8-a) ; il est transcrit in extenso
+  sous `fonction-logarithme.md`.
+
+> **Note de lecture (mojibake)** : aucun
+
+**Fonctions numériques (équation et inéquation avec $e^x$, limite en $0$, existence d'une solution par TVI).**
+
+1. a) (0,5) Résoudre dans $\mathbb{R}$ l'équation : $e^{2x} - 4e^x + 3 = 0$
+   b) (0,5) Résoudre dans $\mathbb{R}$ l'inéquation : $e^{2x} - 4e^x + 3 \le 0$
+   c) (0,5) Calculer $\displaystyle\lim_{x \to 0} \dfrac{e^{2x} - 4e^x + 3}{e^{2x} - 1}$
+2. (0,5) Montrer que l'équation $e^{2x} + e^x + 4x = 0$ admet une solution dans l'intervalle $[-1, 0]$
 
 ---
 

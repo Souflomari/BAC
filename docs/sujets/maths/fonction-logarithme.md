@@ -5,8 +5,8 @@
 > Problèmes d'analyse de l'épreuve **Sciences Expérimentales** bâtis sur $\ln$.
 > Chaque problème est **multi-chapitres** : la plupart recoupent
 > `calcul-integral` (intégration par parties) et `suites-numeriques` (voir
-> cross-lists en note) ; le problème 2024 recoupe `calcul-integral` (aire)
-> mais ne comporte pas de volet suites.
+> cross-lists en note) ; les problèmes 2021 (IPP) et 2024 (aire) recoupent
+> `calcul-integral` mais ne comportent pas de volet suites.
 
 ---
 
@@ -51,6 +51,58 @@ Soit $(u_n)$ la suite numérique définie par : $u_0 = 1$ et $u_{n+1} = f(u_n)$ 
    b) (0,5) Montrer que la suite $(u_n)$ est croissante.
    c) (0,5) En déduire que la suite $(u_n)$ est convergente.
 2. (0,75) Calculer la limite de la suite $(u_n)$.
+
+---
+
+## 2021 — session normale — Problème
+Source: https://www.alloschool.com/element/127180
+Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-438/upload-84139, page(s) 3-4. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Expérimentales — شعبة العلوم التجريبية مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) *(SVT **et** Sciences Physiques, BIOF)* — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème du problème : 9 points
+- Images lues : `.../course-438/upload-84139/0003-big.jpg`, `.../0004-big.jpg`
+- Pages du scan : 3 et 4 (sur 4)
+- Intitulé composantes (page 1 du scan) : « Etude de fonctions numériques et calcul intégral » — 9 points
+- Remarque (source) : la page AlloSchool `element/127180` est titrée « Maths
+  Sciences et Technologies » — mislabel ; l'en-tête arabe du scan (ligne de
+  filière ci-dessus, p. 1) fait foi.
+- Classement : la fonction étudiée $f(x) = 2x\ln x - 2x$ (prolongée par
+  $f(0) = 0$) est bâtie sur $\ln$ ($e$ n'apparaît que comme borne
+  d'intégration et dans la constante $e^{\frac{3}{2}} \simeq 4.5$ du tracé)
+  → `fonction-logarithme`.
+- Recoupe : `calcul-integral` (Q5 — IPP puis intégrale de $f$),
+  `derivabilite-etude-fonctions` (Q3-a taux d'accroissement en $0$, Q3-b/c
+  dérivée et tableau de variations, Q7 fonction réciproque, Q8 dérivabilité
+  à gauche en $0$), `limites-continuite` (Q1, Q2, Q3-a, Q8-a). **Pas de
+  volet suites** dans ce problème (les suites sont l'Exercice 2 autonome,
+  voir `suites-numeriques.md`).
+
+> **Note de lecture (mojibake)** : aucun
+
+**Fonction logarithme (étude de $f(x) = 2x\ln x - 2x$ prolongée en $0$ : continuité à droite, branches infinies, tableau de variations, IPP, minimum et inégalité, fonction réciproque, fonction définie par morceaux).**
+
+Soit la fonction $f$ définie sur $[0, +\infty[$ par : $f(0) = 0$ et $f(x) = 2x\ln x - 2x$ si $x > 0$
+et $(C)$ sa courbe représentative dans un repère orthonormé $(O, \vec{i}, \vec{j})$ *(unité : 1cm)*
+
+1. (0,5) Montrer que $f$ est continue à droite au point $0$.
+2. a) (0,5) Calculer $\displaystyle\lim_{x \to +\infty} f(x)$
+   b) (0,5) Calculer $\displaystyle\lim_{x \to +\infty} \dfrac{f(x)}{x}$ puis interpréter géométriquement le résultat
+3. a) (0,75) Calculer $\displaystyle\lim_{x \to 0^+} \dfrac{f(x)}{x}$ et interpréter géométriquement le résultat
+   b) (0,5) Calculer $f'(x)$ pour tout $x$ de $]0, +\infty[$
+   c) (0,5) Dresser le tableau de variations de la fonction $f$ sur $[0, +\infty[$
+4. a) (0,5) Résoudre dans l'intervalle $]0, +\infty[$ les équations $f(x) = 0$ et $f(x) = x$
+   b) (1) Construire la courbe $(C)$ dans le repère $(O, \vec{i}, \vec{j})$ *(on prend $e^{\frac{3}{2}} \simeq 4.5$)*
+5. a) (0,5) En utilisant une intégration par parties, montrer que $\displaystyle\int_1^e x\ln x\, dx = \dfrac{1 + e^2}{4}$
+   b) (0,5) En déduire : $\displaystyle\int_1^e f(x)\, dx$
+6. a) (0,25) Déterminer le minimum de $f$ sur $]0, +\infty[$
+   b) (0,5) En déduire que pour tout $x$ de $]0, +\infty[$, $\ln x \ge \dfrac{x - 1}{x}$
+7. Soit $g$ la restriction de la fonction $f$ à l'intervalle $[1, +\infty[$
+   a) (0,5) Montrer que la fonction $g$ admet une fonction réciproque $g^{-1}$ définie sur un intervalle $J$ qu'on déterminera.
+   b) (0,75) Construire dans le même repère $(O, \vec{i}, \vec{j})$ la courbe représentative de la fonction $g^{-1}$
+8. On considère la fonction $h$ définie sur $\mathbb{R}$ par $\begin{cases} h(x) = x^3 + 3x & ;\ x \le 0 \\ h(x) = 2x\ln x - 2x & ;\ x > 0 \end{cases}$
+   a) (0,5) Etudier la continuité de $h$ au point $0$
+   b) (0,5) Etudier la dérivabilité de la fonction $h$ à gauche au point $0$ puis interpréter géométriquement le résultat.
+   c) (0,25) La fonction $h$ est-elle dérivable au point $0$ ? justifier.
 
 ---
 
