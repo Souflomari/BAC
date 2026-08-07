@@ -192,13 +192,62 @@ $-5\cdot10^{5}\ \text{s}^{-1} = -\dfrac{R_1+r}{L}$. Légende : « Figure 4 ».
 
 ## 2023 — session normale — Exercice 3, §1 (Réponse d'un dipôle RL à un échelon de tension)
 Source: https://www.alloschool.com/element/142476
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-85304, page(s) 4. **1ʳᵉ passe de vérification adversariale
-indépendante (agent-vérificateur-adversarial, 2026-08-07) : l'énoncé et le
-barème sont intégralement confirmés, MAIS la description de la figure 1
-plaçait $R$ sur la mauvaise branche et la figure 2 n'était pas étalonnée** ⇒
-README §3, l'entrée **reste `transcrit (non vérifié)`** et n'appelle plus
-qu'une **relecture de contrôle des deux paragraphes de figure**.
+Statut: vérifié — **2ᵉ passe : relecture de contrôle des deux paragraphes de
+figure laissés ouverts par la 1ʳᵉ passe**, par un re-lecteur indépendant
+(agent-relecteur-indépendant, 2026-08-07), mesures pixel refaites de zéro sans
+reprise des relevés précédents. **Les corrections de 1ʳᵉ passe sur la figure 1
+et l'étalonnage de la figure 2 sont CONFIRMÉS au pixel** ⇒ README §3, l'entrée
+passe à `Statut: vérifié`.
+
+**Élément re-dérivé (indépendamment)** : `element/142476` →
+`assets/documents/course-422/upload-85304`, **6 pages** (`0001`…`0006-big.jpg`
+ré-extraites du HTML de la page `element/` ; `<title>` = « Examen National
+Physique-Chimie **SPC 2023 Normale** - Sujet ») ; en-tête de `0004-big.jpg`
+(1240×1754) relu : **NS 28F**, page **4/6**, « EXERCICE 3 (5 points) ».
+
+**✅ Figure 1 — $R$ bien sur la branche DROITE, en série sous la bobine.**
+Relevé pixel : la boucle a pour côtés le fil supérieur $y=413{,}5$, le fil
+inférieur $y=652{,}5$, la branche gauche $x=989{,}5$ et la branche droite
+$x=1139$. Sur la branche droite, de haut en bas : fil, **spires de la bobine
+$(b)$** ($y\simeq435$–$525$, boucles débordant à droite jusqu'à $x=1156$), fil,
+puis le **rectangle $R$**, bornes $x=1128$–$1154$ et $y=543$–$600$, traversé en
+son milieu par le fil de branche $x=1139$ ⇒ **en série juste sous la bobine** ✓.
+Le **fil inférieur est nu** : encre continue sur $150$ px de $x=990$ à
+$x=1139$, aucun composant ✓. Générateur $E$ : **cercle** centré
+$(989\,;\,582)$, $\varnothing\simeq54$ px, **traversé par le fil de la branche**
+($x=989{,}5$, encre continue de $y=528$ à $y=621$) ; à sa gauche une **flèche
+verticale** de fût $x=957{,}5$ ($y=613\to562$) surmontée d'une **pointe pleine
+apex en haut** ($y=550$–$562$, largeur croissant vers le bas) ⇒ **vers le
+haut**, et la lettre « E » plus à gauche encore ($x\simeq946$–$952$) ✓. $K$ en
+haut de la branche gauche, symbole **ouvert** (deux disques de contact + segment
+oblique), « K » à gauche ✓.
+
+**✅ Figure 2 — étalonnage confirmé trait par trait.** *Cadre :* traits
+principaux noirs en abscisse $x=775{,}5\,/\,830{,}5\,/\,885{,}5\,/\,940{,}5\,/
+\,995\,/\,1050\,/\,1105$ ⇒ **6 divisions** ; en ordonnée $y=1001$ (axe) puis
+$946{,}5\,/\,892\,/\,837{,}5\,/\,782{,}5\,/\,728$, bord supérieur $y=701$ ⇒
+**5 divisions et demie** — coordonnées **identiques** à celles du corps de
+l'entrée. *Graduations :* sous l'axe **exactement deux tirets**, $x=830{,}5$ et
+$885{,}5$, et les seuls glyphes chiffrés relevés sont « 0 » ($x\,770$–$778$),
+« 2 » ($x\,821$–$829$), « 4 » ($x\,880$–$888$) ⇒ **1 div $=2\ \text{ms}$** ✓ ;
+à gauche de l'axe **exactement trois tirets**, $y=729$, $892$, $945$, dont
+seuls les deux derniers sont chiffrés (« 9,6 » à 1 div, « 19,2 » à 2 div) ⇒
+**1 div $=9{,}6\ \text{mA}$** ✓ et le tiret $y=729$ est bien **à 5 divisions de
+l'axe et non chiffré** ✓. *Palier :* en $x=1070$–$1100$ la courbe et le trait
+$y=728$ ne forment plus qu'une seule encre de 3 px, alors qu'en $x=960$–$1020$
+la courbe ($y\simeq731$–$739$) en est encore détachée ⇒ le palier **vient se
+confondre avec le trait non chiffré** ⇒ $I_0=5\times9{,}6=\mathbf{48\ \text{mA}}$
+✓. *Tangente $(T)$ :* trait **pointillé**, relevé à $x\simeq829{,}5$ pour
+$y=736$ et $x\simeq834$ pour $y=712$ ⇒ par interpolation elle coupe le palier
+$y=728$ en $x\simeq831$, c'est-à-dire **au trait chiffré « 2 »** ⇒
+$\tau\simeq\mathbf{2{,}0\ \text{ms}}$ ✓, d'où $R=E/I_0=500\ \Omega$ et
+$L=R\tau=\mathbf{1\ \text{H}}$ — exactement la Q1-2-2.
+
+*(Seule nuance relevée, non bloquante et sans effet sur aucune lecture : les
+« pas » annoncés dans le corps de l'entrée — $54{,}75$ px en abscisse, $54{,}6$
+px en ordonnée — sont mesurés ici à $54{,}9$ et $54{,}5$ px ; toutes les
+coordonnées de traits, elles, coïncident au pixel.)* **Aucune retouche : les
+deux paragraphes de figure sont fidèles.**
 
 **Portée du diff (2026-08-07).** Source re-dérivée de zéro :
 `element/142476` → `assets/documents/course-422/upload-85304`, **6 pages**

@@ -253,14 +253,55 @@ Légende : « Figure 3 ».
 
 ## 2023 — session normale — Exercice 4 (Partie II)
 Source: https://www.alloschool.com/element/142476
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-85304, page(s) 6. **1ʳᵉ passe de vérification adversariale
-indépendante (agent-vérificateur-adversarial, 2026-08-07) : l'énoncé, les
-données et le barème sont intégralement confirmés, MAIS deux affirmations de
-position dans la description de la figure 3 étaient fausses (arc $\theta$
-« près de $O$ » ; $\vec{k}$ « à gauche de la ligne pointillée »)** ⇒
-README §3, l'entrée **reste `transcrit (non vérifié)`** et n'appelle plus
-qu'une **relecture de contrôle du paragraphe de la figure 3**.
+Statut: vérifié — **2ᵉ passe : relecture de contrôle du paragraphe de la
+figure 3 laissé ouvert par la 1ʳᵉ passe**, par un re-lecteur indépendant
+(agent-relecteur-indépendant, 2026-08-07), relevé pixel refait de zéro.
+**Les deux corrections de 1ʳᵉ passe (arc $\theta$ à mi-tige, $\vec{k}$ tracé
+SUR la pointillée) sont CONFIRMÉES au pixel** ⇒ README §3, l'entrée passe à
+`Statut: vérifié`.
+
+**Élément re-dérivé (indépendamment)** : `element/142476` →
+`assets/documents/course-422/upload-85304`, **6 pages** (URLs ré-extraites du
+HTML de la page `element/`) ; en-tête de `0006-big.jpg` (1240×1754) relu :
+**NS 28F**, page **6/6**, Partie II.
+
+**✅ $\vec{k}$ est bien tracé SUR la ligne pointillée.** La verticale en
+pointillés occupe $x=1031$–$1032$ sur toute sa hauteur (tirets relevés en
+$y=850,\,880,\,890,\,920,\,940,\,950,\,960,\,980\ldots$) ; la **flèche
+$\vec{k}$** a son fût en $x=1031$–$1033$ et sa pointe pleine en $y=998$–$1004$
+(largeur $1029$–$1034$) — **exactement la même abscisse** ⇒ elle est **dans le
+prolongement de la pointillée, pas à côté** ✓. Elle part du point noir $G_0$
+($x\simeq1029$–$1035$, $y\simeq1033$–$1039$) et monte de $\simeq35$ px pour une
+hauteur $OG_0\simeq208$ px, soit **$\simeq1/6$–$1/5$ de la hauteur**. Seule
+l'**étiquette « k »** (avec son accent de vecteur) est à gauche, en
+$x\simeq1011$–$1016$ ✓.
+
+**✅ L'arc $\theta$ est à mi-tige, pas près de $O$.** $O$ (jonction
+pointillée / tige) relevé en $(1032{,}5\,;\,828)$ ; $G$ = disque plein centré
+$(1133{,}5\,;\,1008)$, $\varnothing\simeq14$ px ⇒ **$|OG|\simeq206$ px**.
+L'arc rejoint la pointillée en $(1032\,;\,941{,}5)$ — **rayon $\simeq113$ px** —
+et sa pointe touche la tige vers $(1085\,;\,920)$ — **rayon $\simeq106$ px** ;
+rayon moyen $\simeq110$ px ⇒ **$\simeq53$–$54\%$ de $|OG|$** ✓, très loin de
+« près de $O$ ». L'arc est bien **fléché du côté de la tige** (pointe pleine
+relevée en $x=1081$–$1089$, $y=918$–$927$, à l'extrémité haute-droite) et
+l'étiquette « $\theta$ » est **sous** l'arc ✓.
+
+**✅ L'étiquette d'axe est un « z » nu.** Au-dessus de $O$, courte flèche
+pleine vers le haut (pointe $x=1027$–$1037$ en $y\simeq800$, même abscisse
+$1032$) ; l'étiquette placée **à sa droite** est un **« z » simple, sans flèche
+de vecteur au-dessus** (vérifié en zoom ×16) ✓ — à distinguer du « Z » de la
+figure 1 (Partie I, p. 5). « O » est bien **à gauche** de la ligne
+($x\simeq1012$–$1023$) et « $(\Delta)$ » **à sa droite** ($x\simeq1043$–$1073$)
+✓. Tige rigide pleine de $O$ vers le bas-droite jusqu'à $G$, « G » à gauche du
+disque et « (S) » à droite ✓ ; **arc en pointillés** reliant $G_0$ à $G$ ✓.
+Figure 2 re-contrôlée : photographie couleur d'un enfant sur une balançoire,
+fond herbeux ✓.
+
+*(Seules nuances relevées, non bloquantes : $|OG|$ est mesuré ici à $206$ px
+— le corps de l'entrée annonce $\simeq203$ — et le rayon de l'arc varie de
+$106$ à $113$ px selon l'extrémité ; le ratio reste $\simeq54\%$ et la
+conclusion est inchangée.)* **Aucune retouche : le paragraphe de la figure 3
+est fidèle.**
 
 **Portée du diff (2026-08-07).** Source re-dérivée de zéro :
 `element/142476` → `assets/documents/course-422/upload-85304`, **6 pages**

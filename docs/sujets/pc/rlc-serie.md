@@ -717,14 +717,56 @@ fait l'objet de la question 1-3. Légende : « Figure 2 ».
 
 ## 2023 — session normale — Exercice 3, §2 (Circuit oscillant LC)
 Source: https://www.alloschool.com/element/142476
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-85304, page(s) 4. **1ʳᵉ passe de vérification adversariale
-indépendante (agent-vérificateur-adversarial, 2026-08-07) : l'énoncé, le
-barème et la figure 3 sont intégralement confirmés, MAIS la description de la
-figure 4 qualifiait le repère d'échelle de « double flèche » et n'en donnait
-pas la portée en divisions** ⇒ README §3, l'entrée **reste
-`transcrit (non vérifié)`** et n'appelle plus qu'une **relecture de contrôle
-du paragraphe de la figure 4**.
+Statut: vérifié — **2ᵉ passe : relecture de contrôle du paragraphe de la
+figure 4 laissé ouvert par la 1ʳᵉ passe**, par un re-lecteur indépendant
+(agent-relecteur-indépendant, 2026-08-07), mesures pixel refaites de zéro.
+**La correction de 1ʳᵉ passe sur la figure 4 — coin en L de deux flèches à une
+seule pointe, une division chacune — est CONFIRMÉE au pixel** ⇒ README §3,
+l'entrée passe à `Statut: vérifié`.
+
+**Élément re-dérivé (indépendamment)** : `element/142476` →
+`assets/documents/course-422/upload-85304`, **6 pages** (URLs ré-extraites du
+HTML de la page `element/` ; `<title>` = « Examen National Physique-Chimie
+**SPC 2023 Normale** - Sujet ») ; en-tête de `0004-big.jpg` (1240×1754) relu :
+**NS 28F**, page **4/6**, « EXERCICE 3 (5 points) ».
+
+**✅ Figure 4 — cadre.** Traits principaux en abscisse
+$x=779{,}5\,/\,838{,}5\,/\,898\,/\,957\,/\,1017\,/\,1075{,}5\,/\,1135{,}5$ ⇒
+**6 divisions** (pas $59{,}3$ px) ; en ordonnée $y=1372\,/\,1431\,/\,1490{,}5\,
+/\,1550\,/\,1609{,}5$ ⇒ **4 divisions**, l'axe des temps épais ($y=1489$–$1492$)
+au milieu — **coordonnées identiques** à celles du corps de l'entrée, au pixel.
+
+**✅ Figure 4 — le repère d'échelle : bien un coin en L, deux pointes uniques,
+une division chacune.** *Flèche verticale « 5V » :* fût $x=898$–$901$ montant
+de $y=1429$ à $y\simeq1384$, **une seule pointe pleine** ($y=1376$–$1383$,
+largeur $894$–$905$ au plus large), apex en $y\simeq1373$ — soit le trait
+principal $y=1372$ ⇒ **exactement 1 division**, et **aucune pointe à l'autre
+extrémité** (l'encre s'arrête net sur le trait $y=1431$) ⇒ ce **n'est pas une
+double flèche** ✓. *Flèche horizontale « 0,5 ms » :* fût $y=1429$–$1431$ de
+$x=898$ à $x\simeq950$, **une seule pointe** ($x=950$–$958$, $y=1425$–$1435$),
+apex en $x\simeq960$ — au-delà de $x=962$ il ne reste que l'unique pixel du
+trait principal $y=1431$ ; le trait principal suivant est en $x=957$ ⇒
+**exactement 1 division** ✓. *Sommet du L :* $(898\,;\,1430)$, soit
+**l'intersection de deux traits principaux**, à **2 divisions** à droite de
+l'axe des ordonnées et **1 division** au-dessus de l'axe des temps ✓.
+⇒ **1 div $=5\ \text{V}$ et 1 div $=0{,}5\ \text{ms}$**.
+
+**✅ Figure 4 — tracé.** Sinusoïde relevée colonne par colonne (encre noire
+épaisse, sous-quadrillage bleu écarté) : **maximum à $t=0$**, l'encre restant
+sur le trait supérieur $y\simeq1373$ pour $x=782$–$790$ ⇒ $u_C(0)=+2$ div
+$=\mathbf{+10\ \text{V}}$ ✓ ; passages à zéro relevés en $x\simeq838{,}5$,
+$957$, $1075{,}5$ ⇒ **$t=0{,}5\,/\,1{,}5\,/\,2{,}5\ \text{ms}$** ✓ ; minimum
+sur le trait inférieur ($y\simeq1608$, soit $-10$ V) vers $x\simeq898$
+($t=1{,}0$ ms) et de nouveau **au bord droit** $x=1135{,}5$ ($t=3{,}0$ ms) ;
+second maximum sur le trait supérieur vers $x\simeq1017$ ($t=2{,}0$ ms) ⇒
+**$T_0=4$ divisions $=\mathbf{2{,}0\ \text{ms}}$** et **une période et demie**
+affichée ✓. Referme la Q2-2-1 : $C=T_0^2/(4\pi^2L)=\mathbf{0{,}1\ \mu\text{F}}$.
+
+**✅ Figure 3** re-contrôlée au passage : boucle rectangulaire, condensateur $C$
+(deux traits parallèles) à gauche, flèche $i$ vers la droite au fil supérieur,
+bobine $(b)$ en spires à droite, fil nu en bas ✓.
+
+**Aucune retouche : le paragraphe de la figure 4 est fidèle.**
 
 **Portée du diff (2026-08-07).** Source re-dérivée de zéro :
 `element/142476` → `assets/documents/course-422/upload-85304`, **6 pages**

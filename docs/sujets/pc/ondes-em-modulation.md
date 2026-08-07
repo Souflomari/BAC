@@ -307,14 +307,68 @@ M ; enfin le fil horizontal sort de l'étage 2 et entre dans le second bloc
 
 ## 2023 — session normale — Exercice 3, §3 (Modulation d'amplitude d'un signal)
 Source: https://www.alloschool.com/element/142476
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-85304, page(s) 4–5. **1ʳᵉ passe de vérification
-adversariale indépendante (agent-vérificateur-adversarial, 2026-08-07) :
-l'énoncé et le barème sont confirmés, MAIS la description de la figure 5
-plaçait le repère d'échelle « juste sous » le renflement central (il est en
-fait au-dessus du resserrement suivant) et n'en donnait pas la portée en
-divisions** ⇒ README §3, l'entrée **reste `transcrit (non vérifié)`** et
-n'appelle plus qu'une **relecture de contrôle du paragraphe de la figure 5**.
+Statut: vérifié — **2ᵉ passe : relecture de contrôle du paragraphe de la
+figure 5 laissé ouvert par la 1ʳᵉ passe**, par un re-lecteur indépendant
+(agent-relecteur-indépendant, 2026-08-07), enveloppe re-mesurée de zéro par
+relevé d'encre colonne par colonne. **La correction de 1ʳᵉ passe est
+CONFIRMÉE : le sommet du L est bien au-dessus d'un RESSERREMENT, pas du
+renflement central** ⇒ README §3, l'entrée passe à `Statut: vérifié`.
+
+**Élément re-dérivé (indépendamment)** : `element/142476` →
+`assets/documents/course-422/upload-85304`, **6 pages** (URLs ré-extraites du
+HTML de la page `element/`) ; en-tête de `0005-big.jpg` (1240×1754) relu :
+**NS 28F**, page **5/6**.
+
+**✅ Figure 5 — cadre.** Traits principaux en abscisse tous les $56{,}6$ px de
+$x=464$ à $x=1143$ ⇒ **12 divisions** ; en ordonnée
+$y=271\,/\,325\,/\,379{,}5\,/\,433{,}5\,/\,488$ (axe épais, $487$–$489$)
+$/\,542\,/\,596{,}5\,/\,650\,/\,704{,}5$ ⇒ **8 divisions**, soit $\pm4$
+divisions autour de l'axe — **identique** au corps de l'entrée.
+
+**✅ Figure 5 — le repère d'échelle.** *Flèche verticale « 2V » :* fût
+$x=860$–$862$ de $y=379$ à $y\simeq334$, **une seule pointe** ($y=327$–$334$,
+largeur $856$–$867$), apex $y\simeq324$ — soit le trait principal $y=325$ ⇒
+**exactement 1 division $=2\ \text{V}$** ✓. *Flèche horizontale « 1 ms » :*
+fût $y=379$–$381$ de $x=862$ à $x\simeq908$, **une seule pointe**
+($x=908$–$916$, $y=376$–$381$), encre s'arrêtant en $x\simeq919$ — au-delà il
+ne reste que l'unique pixel du trait principal $y=380$ ; trait principal
+suivant en $x=917$ ⇒ **exactement 1 division $=1\ \text{ms}$** ✓. *Sommet du
+L :* $(861\,;\,380)$ = **intersection de deux traits principaux**, à
+**7 divisions** de l'axe des ordonnées et **2 divisions** au-dessus de l'axe
+des temps ⇒ **$t=7{,}0\ \text{ms}$** ✓.
+
+**✅ Figure 5 — l'enveloppe, et la position du repère.** Enveloppe reconstruite
+par les **creux successifs de la porteuse sur la demi-trace inférieure** (libre
+du repère et de ses cartouches ; cartouche « Figure 5 » écarté) — amplitude en
+volts, $t$ en ms :
+$0{,}12\!:\!6{,}0$ · $1{,}38\!:\!3{,}7$ · $2{,}37\!:\!\mathbf{2{,}0}$ ·
+$2{,}62\!:\!\mathbf{2{,}0}$ · $3{,}87\!:\!4{,}3$ · $4{,}90\!:\!\mathbf{6{,}0}$ ·
+$5{,}11\!:\!\mathbf{6{,}0}$ · $6{,}38\!:\!3{,}7$ · $7{,}14\!:\!2{,}2$ ·
+$7{,}37\!:\!\mathbf{2{,}0}$ · $7{,}62\!:\!\mathbf{2{,}0}$ · $8{,}36\!:\!3{,}0$ ·
+$9{,}88\!:\!\mathbf{6{,}0}$ · $10{,}13\!:\!6{,}0$ · $11{,}88\!:\!2{,}6$.
+⇒ **maximum $=6{,}0$ V (3 divisions) et minimum $=2{,}0$ V (1 division)** ✓ ;
+**renflements** centrés sur $t\simeq0$, **$5{,}0$** et $\simeq10$ ms,
+**resserrements** sur $t\simeq2{,}5$ et $\simeq7{,}5$ ms ⇒
+**$T_s\simeq\mathbf{5\ \text{ms}}$** ✓. **À $t=7{,}0$ ms — l'abscisse du sommet
+du L — l'amplitude vaut $\simeq2{,}4$ V, en pleine descente vers le plancher du
+resserrement ; le renflement central culmine 2 divisions plus à gauche, à
+$t\simeq5{,}0$ ms. La correction est donc exacte : le repère surplombe le
+resserrement, pas le renflement.** *Porteuse :* les sommets de la trace
+supérieure sont relevés en $t=0{,}25\,/\,0{,}51\,/\,0{,}74\,/\,1{,}24\,/
+\,1{,}50\,/\,1{,}75\,/\,2{,}23\ldots$ — **pas constant de $0{,}25$ ms** ⇒
+**$T_p=\mathbf{0{,}25\ \text{ms}}$**, soit $48$ oscillations sur les 12 ms et
+$\simeq20$ par période d'enveloppe ✓. D'où $f_p=4\ \text{kHz}$,
+$f_s=200\ \text{Hz}$, $m=0{,}5$ et $U_0=4\ \text{V}$ — la Q3-1 (**B**) et les
+deux « faux » de la Q3-2 sont refermés.
+
+*(Deux nuances de lecture relevées, non bloquantes, sur des valeurs déjà
+explicitement approchées : le corps de l'entrée écrit le 2ᵉ resserrement
+« vers $t\simeq7{,}4$ ms » et le 3ᵉ renflement « vers $t\simeq9{,}8$ ms » ; la
+présente mesure les place à $\simeq7{,}5$ et $\simeq10{,}0$ ms — écart
+$\simeq0{,}2$ ms, soit un cinquième de division, sans effet sur $T_s$, $f_s$ ni
+sur aucune conclusion. De même la pointe de la flèche « 1 ms » est mesurée ici
+à $x\simeq919$ et non $921$.)* **Aucune retouche : le paragraphe de la figure 5
+est fidèle.**
 
 **Portée du diff (2026-08-07).** Source re-dérivée de zéro :
 `element/142476` → `assets/documents/course-422/upload-85304`, **6 pages**
