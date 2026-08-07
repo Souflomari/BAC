@@ -709,38 +709,64 @@ $C_B = C_A$.
 
 ## 2022 — session normale — Exercice 1 (Partie 2)
 Source: https://www.alloschool.com/element/136621
-Statut: transcrit (non vérifié) — **corrigé le 2026-08-07 par la passe de
-vérification adversariale indépendante ; laissé non vérifié, la correction
-appelle une re-lecture de contrôle** (README §3).
-**Élément re-dérivé** : `element/136621` → `course-422/upload-84516`, **8 pages**
-(re-extrait du HTML de `element/` ; résumé HTML toujours faux sur la filière).
+Statut: vérifié — **4ᵉ passe : micro-re-lecture indépendante de la seule
+retouche restante (2026-08-07, orchestrateur)** : zoom direct sur la figure 2
+(crop 930–1110 × 900–1060 px, agrandi ×5) — le pic de la courbe dérivée culmine
+exactement sur la gridline « 20 » (V_bE = 20,0 mL confirmé) et la flèche
+« dpH/dV_b » pointe la **queue descendante** de la courbe, juste après le pic
+(≈ 21,7 mL, entre les gridlines 20 et 25, côté 20) — la re-correction
+21,5 → 21,7 de la 3ᵉ passe est fidèle ; contenu porteur inchangé (la flèche
+étiquette la courbe, pas le pic ; pas d'échelle d'ordonnée — drapeau maintenu).
+Historique : 3ᵉ passe (2026-08-07, agent-relecteur-de-contrôle) : les trois
+claims corrigés confirmés sur le fond, abscisse re-corrigée 21,5 → 21,7 mL.
+**Élément re-dérivé** (sans réutiliser « Images lues ») : `element/136621` →
+`course-422/upload-84516`, **8 pages**, URLs ré-extraites du HTML de `element/`
+(résumé HTML toujours faux sur la filière — l'image fait foi).
 **Couverture p.1 relue** : NS 28F, 3 h, coef 7, SPC/BIOF ; carte
 $7+3{,}5+4{,}5+5=\mathbf{20}$ ✓.
-**Barème marginal recompté au pixel (p.3)** : $0{,}5+0{,}75+0{,}75+0{,}5=2{,}5$
+**Barème marginal recontrôlé (p.3)** : $0{,}5+0{,}75+0{,}75+0{,}5=2{,}5$
 (sous-partie 1) et $0{,}5+0{,}25+0{,}5+0{,}5+0{,}5=2{,}25$ (sous-partie
 2-Dosage) ⇒ **4,75** ✓ ; $2{,}25+4{,}75=\mathbf{7}$ = total de l'Exercice 1 ✓.
-**Diff du texte** : $C_a=5\cdot10^{-2}\ \text{mol.L}^{-1}$, $pH=3{,}1$,
+**Contre-diff du texte** : $C_a=5\cdot10^{-2}\ \text{mol.L}^{-1}$, $pH=3{,}1$,
 $V_a=20\ \text{mL}$, $C_b=5\cdot10^{-2}\ \text{mol.L}^{-1}$,
 $M=74\ \text{g.mol}^{-1}$, « diluant **10 fois** », $V_b=5\ \text{mL}$, et les
 formules $\text{C}_2\text{H}_5\text{COOH}_{(aq)}/\text{C}_2\text{H}_5\text{COO}^-_{(aq)}$,
 $Q_{r,\text{éq}}$, $[\text{H}_3\text{O}^+_{(aq)}]_{\text{éq}}$,
 $\mathrm{d}pH/\mathrm{d}V_b$ — relus au zoom ×2, **aucune divergence**.
-**Figure 2 — mesurée au pixel.** Étalonnage relevé sur les traits imprimés :
-$28{,}4\ \text{px}$ = $2{,}5\ \text{mL}$ en abscisse et $1$ unité de $pH$ en
-ordonnée (chiffrage un trait sur deux). **Adjudication des deux « lecture à
-confirmer » — LEVÉES** : le sommet du pic de $\mathrm{d}pH/\mathrm{d}V_b$ est en
-colonne **251**, le trait imprimé « 20 » tombe en **250,7** ⇒ le pic et le saut
-de $pH$ sont **exactement sur $V_{bE}=20{,}0\ \text{mL}$** (écart 0,3 px
-= 0,03 mL), ce que confirme la chimie ($C_aV_a/C_b=20\ \text{mL}$). Départ
-mesuré $pH(V_b=0)=3{,}15$ (énoncé : 3,1 ✓) ; palier final mesuré $11{,}9$ ⇒
-$\approx12$ ✓. **Ce qui reste non lisible** : la courbe dérivée **n'a aucune
-échelle d'ordonnée** (axe unique, gradué en $pH$) — son amplitude n'est donc pas
-mesurable *par construction*, et non « à confirmer ».
-**Divergence trouvée et corrigée (position de flèche)** : la flèche partant de
-l'étiquette encadrée « $\mathrm{d}pH/\mathrm{d}V_b$ » a sa pointe mesurée en
-$(1003,999)$ px, soit $V_b\approx21{,}5\ \text{mL}$ **au ras de l'axe** — elle
-désigne la **queue descendante** de la courbe dérivée (elle identifie la
-courbe), et non le sommet du pic comme l'affirmait la transcription.
+**Étalonnage de la figure 2 re-relevé au pixel** (page 1240×1754, coordonnées
+pleine page) : traits majeurs d'abscisse en 758 ($V_b=0$, confondu avec l'axe
+des $pH$), 814,5 (5), 871,5 (10), 929 (15), **986 (20)**, 1042,5 (25), 1101
+(30) ⇒ **11,43 px/mL** ; traits majeurs d'ordonnée en 952 ($pH=0$), 894,5,
+837, 780,5, 723,5, 665,5, 608,5 ($pH=12$) ⇒ **28,6 px par unité de $pH$**
+(l'axe fléché $V_b$ est tracé une division *sous* le $pH=0$, en ligne 1008,5).
+**Claim corrigé n°1 — sommet du pic sur le trait « 20 » : CONFIRMÉ.** Le fût du
+pic de $\mathrm{d}pH/\mathrm{d}V_b$ est suivi ligne à ligne de $pH\!=\!0$ à
+$pH\!=\!2$ et son axe tombe en colonne **986,1** ; le trait imprimé « 20 » est
+en colonne **986,0** (barycentre d'encre) — écart **0,1 px = 0,01 mL**. Le pic
+et le saut de $pH$ sont donc **exactement sur $V_{bE}=20{,}0\ \text{mL}$**, ce
+que confirme la chimie ($C_aV_a/C_b = 20\ \text{mL}$). Départ mesuré
+$pH(V_b=0)=3{,}15$ (énoncé : 3,1 ✓) ; palier final $11{,}9 \Rightarrow
+\approx 12$ ✓.
+**Claim corrigé n°2 — absence d'échelle d'ordonnée : CONFIRMÉ.** Le repère n'a
+qu'**un seul axe vertical**, chiffré en $pH$ (7 étiquettes 0→12, une par trait
+majeur) ; la zone à droite du cadre ($x\in[1105,1180]$) ne porte **aucun tracé
+ni chiffrage** (86 px sombres sur 33 000, soit le bord de cadre seul). La
+courbe dérivée n'a donc **aucune échelle d'ordonnée** : son amplitude est
+non mesurable *par construction*, et non « à confirmer ». **Flag maintenu.**
+**Claim corrigé n°3 — la flèche désigne la queue, pas le pic : CONFIRMÉ sur le
+fond, valeur re-corrigée.** La pointe de la flèche issue de l'étiquette encadrée
+« $\mathrm{d}pH/\mathrm{d}V_b$ » est formée par la convergence de deux barbes
+(l'une quasi verticale en $x\!=\!1006$ de $y\!=\!987$ à 996, l'autre diagonale
+de $(1014,984)$ à $(1008,992)$) : **pointe en $(1005{,}5\,;\,996)$**, soit
+$V_b = (1005{,}5-757{,}3)/11{,}43 = \mathbf{21{,}7\ \text{mL}}$ — et non 21,5
+(qui exigerait la colonne 1003, où l'encre appartient à la courbe et non à la
+flèche). La pointe est à 12,5 px au-dessus de l'axe des abscisses (ligne
+1008,5) et à 3,5 px au-dessus du tracé de la queue (ligne ≈999,5 en
+$x\!=\!1005{,}5$) : elle **touche la queue descendante** de la courbe dérivée,
+au ras de l'axe — elle **identifie la courbe**, elle ne désigne pas le sommet du
+pic (colonne 986). La valeur **21,5 → 21,7 mL** a été rectifiée ici et dans la
+description de figure ; c'est la seule divergence résiduelle, non bloquante pour
+la physique de l'exercice.
 **Physique re-dérivée** : $\tau=10^{-3{,}1}/5\cdot10^{-2}=1{,}6\cdot10^{-2}$
 (**1,6 %** ⇒ acide faible, réaction limitée) ;
 $Q_{r,\text{éq}}=[\text{H}_3\text{O}^+]^2/(C_a-[\text{H}_3\text{O}^+])
@@ -838,7 +864,8 @@ $V_b = 20{,}0\ \text{mL}$** (sommet en colonne 251, trait « 20 » en colonne
 possède aucune échelle d'ordonnée** (le repère n'a qu'un seul axe vertical,
 gradué en $pH$). Une étiquette encadrée « $\dfrac{dpH}{dV_b}$ », placée en bas
 à droite du repère, porte une flèche dont la pointe tombe sur la **queue
-descendante** de la courbe dérivée, vers $V_b \approx 21{,}5\ \text{mL}$ au ras
-de l'axe des abscisses — elle sert à **identifier la courbe**, elle ne désigne
-pas le sommet du pic. Légende : « Figure 2 ».
+descendante** de la courbe dérivée, vers $V_b \approx 21{,}7\ \text{mL}$ au ras
+de l'axe des abscisses (pointe mesurée en $(1005{,}5\,;\,996)$ px, 2026-08-07)
+— elle sert à **identifier la courbe**, elle ne désigne pas le sommet du pic.
+Légende : « Figure 2 ».
 
