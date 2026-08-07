@@ -1,0 +1,363 @@
+# bank.yaml — la banque « S'entraîner » de ondes-mecaniques-progressives
+# (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, exercises.yaml), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Les TROIS entrées de docs/sujets/pc/ondes-mecaniques-
+# progressives.md portent toutes le statut « vérifié » et sont converties ici
+# (aucune omission, aucun sujet non vérifié à écarter) :
+#   - bk-2018-n-x2 — 2018 N, Exercice II — vérifié en une passe
+#     (agent-vérificateur, 2026-07-11) ;
+#   - bk-2022-n-x2 — 2022 N, Exercice 2 (Partie 1) — vérifié à l'issue d'une
+#     relecture de contrôle indépendante des corrections d'une passe
+#     adversariale antérieure (agent-relecteur-de-contrôle, 2026-08-07) ;
+#   - bk-2024-n-x2 — 2024 N, Exercice 2 — vérifié en 2ᵉ passe indépendante
+#     (agent-vérificateur-indépendant, 2026-08-07).
+# Raisonnement rédigé à la voix experte de la maison sur 100 % des questions,
+# en citant les rungs R1–R4 de la leçon (lesson.md) là où c'est naturel ;
+# barème transcrit tel quel dans les énoncés (tag « (x,xx pt) » ajouté — la
+# source docs/sujets ne porte que « (x,xx) »), y compris pour les quatre
+# items du QCM de bk-2024-n-x2 (options A/B/C/D transcrites mot pour mot,
+# tableau conservé) ; conventions KaTeX (block scalars pour la prose, KaTeX
+# brut entre apostrophes simples dans steps[].math, notes en ASCII sans
+# accent ni backslash).
+#
+# NOTE ÉDITORIALE — RECOUPEMENT AVEC LE SOMMET DE LEÇON (pour la revue) :
+# bk-2018-n-x2 EST le sujet qui sous-tend le sommet de leçon r-bac
+# (exercises.yaml, marqueur [[exercise:r-bac]] à R5 « Exercice de type
+# bac ») — même année, même session, même exercice (Exercice II), mêmes
+# quatre questions. Les valeurs numériques de bk-2018-n-x2 (décalage de
+# 2 divisions à l'écran, τ = 4,0 ms, V_p ≈ 1,3.10³ m/s) sont reprises à
+# l'identique de r-bac pour rester cohérentes avec le sommet ; le
+# raisonnement ci-dessous est rédigé de nouveau (voix maison), pas copié de
+# exercises.yaml. Recoupement assumé, même disposition que
+# chute-mouvements-plans bk-2020-n-x5 / r-bac et
+# ondes-mecaniques-periodiques bk-2019-n-x2 / r-bac. À l'arbitrage de
+# l'owner si l'on préfère écarter cette entrée de la banque pour éviter le
+# recoupement sur la même page.
+#
+# LACUNE DE SOURÇAGE SIGNALÉE — NON RÉSOLUE ICI (pour l'owner / la relecture
+# de contrôle) : contrairement aux entrées bk-2022-n-x2 et bk-2024-n-x2 de ce
+# même fichier (dont les fiches docs/sujets portent chacune une section
+# « Physique re-dérivée » avec re-mesure au pixel de la figure), la fiche
+# docs/sujets pour le sujet 2018 (« 2018 — session normale — Exercice II »)
+# décrit la figure 2 (oscillogramme) sans donner le nombre de divisions du
+# décalage effectivement lu sur le scan — elle porte littéralement la mention
+# « nombre de divisions du décalage à lire sur le scan » comme un point
+# resté ouvert. La valeur « 2 divisions » utilisée ci-dessous (et dans
+# r-bac) n'a donc jamais été confirmée par une mesure au pixel indépendante,
+# à la différence de bk-2022-n-x2 (5 divisions, confirmées à trois reprises
+# au pixel) ou de la physique re-dérivée de bk-2024-n-x2. Une passe de
+# vérification dédiée sur la figure 2 du sujet 2018 (sur le modèle de la
+# relecture de bk-2022-n-x2) fermerait ce point pour bk-2018-n-x2 ET pour
+# r-bac à la fois — signalé ici, non corrigé.
+#
+# SCOPE NOTES (techniques mobilisées au-delà de ce que la leçon montre
+# explicitement pas à pas — pontées au point d'usage dans le raisonnement de
+# la question concernée, PAS corrigées ni simplifiées ici) :
+#   - bk-2024-n-x2, q1 (QCM) : la proposition juste (B, « un milieu est
+#     dispersif si la célérité de l'onde dépend de sa période T ») mobilise
+#     la notion de milieu DISPERSIF, qui n'est construite nulle part dans les
+#     rungs R0–R5 de cette leçon (lesson.md) — le pointeur d'échelle de R1
+#     renvoie explicitement la périodicité (période, fréquence, longueur
+#     d'onde, et donc la dispersion) au chapitre suivant,
+#     ondes-mecaniques-periodiques. Le raisonnement l'atteint par élimination
+#     des trois autres propositions (directement tranchables avec R1 et R3),
+#     pas par une définition du cours actuel.
+#   - bk-2024-n-x2, q3-1 : la vérification d'homogénéité par équations aux
+#     dimensions est un outil transversal (toutes les notions de mécanique),
+#     jamais introduit par un rung de cette leçon. Ponté au point d'usage.
+
+notion: pc/ondes-mecaniques-progressives
+
+entries:
+  # ── bk-2018-n-x2 — 2018 N, Exercice II : ultrasons dans un liquide ────────
+  # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir la note
+  # éditoriale et la lacune de sourçage signalées en tête de ce fichier.
+  - id: bk-2018-n-x2
+    title: "Détermination de la célérité d'une onde ultrasonore dans un liquide"
+    source:
+      year: 2018
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice II — Détermination de la célérité d'une onde ultrasonore dans un liquide"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/57726 (Exercice II — détermination de
+        la célérité d'une onde ultrasonore dans le pétrole liquide, par
+        mesure d'un retard temporel entre deux récepteurs — l'un dans l'air,
+        l'autre dans le pétrole — reliés à un oscilloscope ; barème de
+        l'exercice = 2,5 pt). Transcription vérifiée : re-fetch indépendant
+        AlloSchool + diff OK (agent-vérificateur, 2026-07-11 ;
+        docs/sujets/pc/ondes-mecaniques-progressives.md, statut « vérifié »).
+        RECOUPEMENT ASSUMÉ (signalé, non résolu ici) : ce même sujet est
+        aussi le sommet de leçon r-bac (exercises.yaml, marqueur
+        [[exercise:r-bac]] à R5 « Exercice de type bac ») ; les valeurs
+        numériques ci-dessous (décalage de 2 divisions à l'écran,
+        $\tau=4{,}0\ \text{ms}$, $V_p\approx1{,}3\times10^3\ \text{m.s}^{-1}$)
+        sont reprises à l'identique de r-bac pour rester cohérentes avec le
+        sommet, avec un raisonnement rédigé à nouveau (voix maison), pas
+        copié de exercises.yaml. LACUNE DE SOURÇAGE SIGNALÉE (à l'arbitrage
+        de l'owner, non corrigée ici — voir l'en-tête du fichier) : ni la
+        fiche docs/sujets pour ce sujet 2018 ni exercises.yaml ne documentent
+        de mesure au pixel du décalage réel entre les deux salves sur
+        l'oscillogramme — contrairement aux entrées 2022 et 2024 de cette
+        même notion, qui portent chacune une section « Physique re-dérivée »
+        avec re-mesure au pixel de la figure.
+    intro: |-
+      **Détermination de la célérité d'une onde ultrasonore dans un liquide (examen national, session normale 2018, Exercice II).**
+
+      Les ondes mécaniques se propagent seulement dans un milieu matériel, et leur célérité (vitesse de propagation) croît avec la densité du milieu où elles se propagent.
+
+      Pour déterminer la valeur approximative de la célérité $V_p$ d'une onde ultrasonore dans le pétrole liquide, on réalise l'expérience suivante : dans une cuve contenant du pétrole, on fixe à l'une de ses extrémités deux émetteurs $E_1$ et $E_2$ qui sont reliés à un générateur GBF. À l'instant $t_0 = 0$, les deux émetteurs émettent chacun une onde ultrasonore, une se propage dans l'air et l'autre dans le pétrole. À l'autre extrémité de la cuve, on place deux récepteurs $R_1$ et $R_2$, l'un dans l'air et l'autre dans le pétrole. Les récepteurs sont à une distance $L$ des émetteurs. On visualise sur l'écran d'un oscilloscope les deux signaux reçus par $R_1$ et $R_2$.
+
+      **Données :** les deux ondes parcourent la même distance $L = 1{,}84\ \text{m}$ ; la célérité des ultrasons dans l'air $V_{air} = 340\ \text{m.s}^{-1}$ ; la sensibilité horizontale de l'oscilloscope $2\ \text{ms/div}$ ; sur l'écran, le décalage horizontal entre les débuts des deux salves mesure $2$ divisions.
+
+      **Figure 1 (schéma).** Cuve horizontale. À gauche, les émetteurs $E_1$ (en haut, dans l'air) et $E_2$ (en bas, dans le pétrole), reliés au GBF. À droite, les récepteurs $R_1$ (air) et $R_2$ (pétrole), reliés à l'oscilloscope. La partie haute de la cuve est de l'air, la partie basse (grisée) est le pétrole ; la distance émetteurs → récepteurs est notée $L$.
+
+      **Figure 2 (écran d'oscilloscope).** Deux salves (trains d'ondes ultrasonores) décalées horizontalement — Voie A (en haut) et Voie B (en bas). Le décalage horizontal entre les débuts des deux salves matérialise le retard $\tau$, à mesurer en divisions puis à convertir via $2\ \text{ms/div}$.
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** Les ondes ultrasonores sont-elles longitudinales ou transversales ? Justifier.
+        reasoning: |-
+          Les ultrasons sont des ondes sonores, seulement trop aiguës pour être entendues — R4 établit que le son se propage par compressions et dilatations successives du milieu, exactement le mécanisme du ressort étudié en R2. Le critère de R2 : on compare la direction du déplacement de la matière à la direction de propagation. Dans une compression qui court le long d'un milieu (air, liquide), les molécules oscillent dans l'axe même où la perturbation avance — les deux directions coïncident.
+
+          L'onde ultrasonore est donc longitudinale, et non transversale (qui exigerait un déplacement perpendiculaire à la propagation, comme sur une corde).
+      - id: q2
+        stem: |-
+          **(0,5 pt)** En exploitant la figure 2, déterminer la valeur du retard temporel $\tau$ entre les deux ondes reçues.
+        reasoning: |-
+          Même geste qu'en R4 pour la mesure au double microphone : le décalage horizontal entre les débuts des deux salves, compté en divisions sur l'écran, se convertit en temps grâce à la sensibilité horizontale (base de temps) de l'oscilloscope. Sur la figure 2, ce décalage vaut $2$ divisions.
+        steps:
+          - math: '\tau = 2\ \text{div}\times 2\ \text{ms/div}'
+            note: "Comptage du decalage horizontal entre les deux salves sur la figure 2, converti via la base de temps 2 ms/division."
+          - math: '\boxed{\tau = 4{,}0\ \text{ms} = 4{,}0\times10^{-3}\ \text{s}}'
+            note: "Retard entre l'onde recue dans l'air (plus lente) et celle recue dans le petrole."
+      - id: q3
+        stem: |-
+          **(0,75 pt)** Montrer que l'expression de $\tau$ s'écrit sous la forme :
+
+          $$\tau = L\left(\dfrac{1}{V_{air}} - \dfrac{1}{V_p}\right).$$
+        reasoning: |-
+          Les deux ondes partent ensemble, à $t_0=0$ (même source, le GBF), et parcourent la même distance $L$ — mais pas à la même célérité, donc pas dans le même temps : c'est exactement la relation de R3, $\tau=d/v$, appliquée séparément à chaque milieu. L'onde dans l'air met $t_{air}=L/V_{air}$, celle dans le pétrole met $t_p=L/V_p$. Comme le pétrole est plus dense que l'air, R3 dit que sa célérité y est plus grande — l'onde du pétrole arrive donc en premier, et le retard $\tau$ observé est celui de l'onde de l'air par rapport à celle du pétrole : la différence de ces deux durées.
+        steps:
+          - math: 't_{air} = \frac{L}{V_{air}} \qquad t_p = \frac{L}{V_p}'
+            note: "Duree de parcours de chaque onde sur la distance L (R3 : temps = distance / celerite)."
+          - math: '\tau = t_{air} - t_p = \frac{L}{V_{air}} - \frac{L}{V_p}'
+            note: "Le retard est la difference des durees : l'onde de l'air, plus lente, arrive apres celle du petrole."
+          - math: '\boxed{\tau = L\left(\frac{1}{V_{air}} - \frac{1}{V_p}\right)}'
+            note: "On met L en facteur."
+      - id: q4
+        stem: |-
+          **(0,75 pt)** Trouver la valeur approchée de la célérité $V_p$.
+        reasoning: |-
+          La relation de la question précédente relie $\tau$ (trouvé à la question 2), $L$ et $V_{air}$ (données) à la seule inconnue $V_p$ : on isole $1/V_p$, puis on inverse. Le résultat est une petite différence entre deux termes voisins, donc on garde plusieurs chiffres significatifs à chaque étape pour ne pas perdre la précision finale.
+        steps:
+          - math: '\frac{1}{V_p} = \frac{1}{V_{air}} - \frac{\tau}{L}'
+            note: "On isole 1/V_p dans la relation de la question precedente."
+          - math: '\frac{1}{V_p} = \frac{1}{340} - \frac{4{,}0\times10^{-3}}{1{,}84} \approx 2{,}94\times10^{-3} - 2{,}17\times10^{-3}'
+            note: "Application numerique : V_air = 340 m/s, tau = 4,0 ms, L = 1,84 m."
+          - math: '\frac{1}{V_p} \approx 7{,}7\times10^{-4}\ \text{s.m}^{-1}'
+            note: "On garde plusieurs chiffres significatifs : petite difference de deux termes voisins."
+          - math: '\boxed{V_p \approx 1{,}3\times10^{3}\ \text{m.s}^{-1}}'
+            note: "On inverse. Bien superieure a V_air = 340 m/s, coherent avec R3 : un milieu plus dense relaie la perturbation plus vite."
+
+  # ── bk-2022-n-x2 — 2022 N, Exercice 2 (Partie 1) : célérité du son dans l'air ──
+  - id: bk-2022-n-x2
+    title: "Célérité des ondes sonores dans l'air : mesure d'un retard temporel"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 2 (3,5 points) — Partie 1 : Propagation des ondes sonores dans l'air"
+    bareme_total: 1.25
+    duration_min: 8
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/136621, course-422/upload-84516
+        (Exercice 2, Partie 1 — propagation des ondes sonores dans l'air,
+        mesure d'un retard temporel par système d'acquisition informatisé ;
+        barème de la partie = 1,25 pt sur les 3,5 pt de l'exercice complet,
+        dont la Partie 2 — désintégration de l'iode 131 — est hors périmètre
+        de cette notion, transcrite sous decroissance-radioactive.md).
+        Transcription vérifiée en deux passes indépendantes : re-fetch
+        AlloSchool + diff caractère par caractère (agent-vérificateur), PUIS
+        re-lecture de contrôle indépendante des corrections de figure
+        (agent-relecteur-de-contrôle, 2026-08-07), diff OK
+        (docs/sujets/pc/ondes-mecaniques-progressives.md, statut
+        « vérifié »). Figure 2 re-mesurée au pixel à trois reprises : grille
+        10 colonnes × 8 lignes (pas 44,1 px vertical) avec axes médians
+        finement gradués ; écart (a)→(b) mesuré à 221,5 px = 5,02 divisions,
+        confirmé par la grille à exactement 5 divisions (bords sur le 2ᵉ et
+        le 7ᵉ trait vertical) ; flèche d'étalonnage « 0,5 ms » mesurée à
+        1023→1068 px, couvrant exactement une division (traits de grille en
+        1023 et 1067) — c'est un étalonnage, pas une période. Physique
+        re-dérivée et cohérente : $v=L/\Delta t=0{,}85/2{,}5\times10^{-3}
+        =\mathbf{340\ \text{m.s}^{-1}}$, valeur canonique de la célérité du
+        son dans l'air.
+    intro: |-
+      **Propagation des ondes sonores dans l'air : mesure d'un retard temporel (examen national, session normale 2022, Exercice 2 — Partie 1).**
+
+      Pour déterminer la célérité des ondes sonores dans l'air, on réalise le montage expérimental représenté sur le schéma de la figure 1. Ce montage est constitué d'un émetteur $E$ et d'un récepteur $R$ d'ondes sonores distants de $L = 85\ \text{cm}$. Une onde sonore émise par $E$, se propageant dans l'air, est reçue par $R$.
+
+      On visualise à l'aide d'un système d'acquisition informatisé, à la fois, le signal (a) émis et le signal (b) reçu (figure 2).
+
+      **Figure 1 (schéma).** Deux blocs rectangulaires étiquetés « $E$ » (Émetteur, à gauche) et « $R$ » (Récepteur, à droite), chacun dessiné avec une découpe en créneau sur le côté qui fait face à l'autre. Entre les deux, une flèche horizontale orientée vers la droite, étiquetée « Sens de propagation » au-dessus. En dessous, une double flèche horizontale reliant les deux blocs, étiquetée « $L$ ». Légende : « Figure 1 ».
+
+      **Figure 2 (écran d'acquisition).** Grille quadrillée de 10 colonnes sur 8 lignes (11 traits verticaux × 9 traits horizontaux) représentant l'affichage du système d'acquisition ; les deux axes médians (ligne horizontale centrale, trait vertical central) portent de fines graduations non chiffrées. Deux petits rectangles pleins (signaux), chacun large d'une division : le signal (a), en haut à gauche, bord gauche sur le 2ᵉ trait vertical, sommet sur le 2ᵉ trait horizontal (étiqueté « (a) » en dessous) ; le signal (b), une ligne plus bas et cinq colonnes plus à droite, bord gauche sur le 7ᵉ trait vertical, sommet sur le 3ᵉ trait horizontal (étiqueté « (b) » en dessous) — soit un décalage horizontal d'exactement 5 divisions entre (a) et (b). Un repère d'échelle temporelle, en bas à droite de la grille, est matérialisé par une double flèche horizontale large d'exactement une division, étiquetée « $0{,}5\ \text{ms}$ » : c'est un étalonnage, 1 division $= 0{,}5\ \text{ms}$ — ce n'est pas une période. Légende : « Figure 2 ».
+    questions:
+      - id: q1a
+        part: "1. Recopier le numéro de la question et répondre par vrai ou faux"
+        stem: |-
+          **1.1.** (0,25 pt) L'onde sonore est une onde transversale.
+        reasoning: |-
+          D'après R4, le son se propage par compressions et dilatations successives de l'air, dans la même direction que celle où il avance — exactement le mécanisme du ressort étudié en R2. C'est le critère « déplacement parallèle à la propagation » qui définit une onde longitudinale, pas transversale (qui exigerait un déplacement perpendiculaire, comme sur une corde).
+
+          L'affirmation est fausse : l'onde sonore est longitudinale.
+      - id: q1b
+        stem: |-
+          **1.2.** (0,25 pt) L'onde sonore ne se propage pas dans le vide.
+        reasoning: |-
+          Une onde sonore est une onde mécanique (R1) : elle a besoin d'un milieu matériel, déformable et élastique, pour se propager de proche en proche — sans matière à déformer, rien ne peut relayer la perturbation. R4 le rappelle explicitement pour le son.
+
+          L'affirmation est vraie : l'onde sonore ne se propage pas dans le vide.
+      - id: q2
+        stem: |-
+          **(0,25 pt)** Déterminer la durée $\Delta t$ mise par le signal pour arriver au récepteur $R$.
+        reasoning: |-
+          Même lecture que celle décrite en R4 pour la mesure au double microphone : le décalage horizontal entre les deux signaux, compté en divisions de la grille, se convertit en temps grâce à l'étalonnage donné par la double flèche « $0{,}5\ \text{ms}$ », qui couvre exactement une division. Sur la figure 2, le bord du signal (b) est exactement 5 divisions plus loin que celui du signal (a) : ce décalage, c'est $\Delta t$, le retard de R3 appliqué ici entre l'émission et la réception.
+        steps:
+          - math: '\Delta t = 5\ \text{divisions} \times 0{,}5\ \text{ms/division}'
+            note: "Comptage direct sur la grille (figure 2) : le bord du signal (b) est exactement 5 divisions apres celui du signal (a), etalonnage 0,5 ms par division."
+          - math: '\boxed{\Delta t = 2{,}5\ \text{ms}}'
+            note: "Retard entre l'emission (signal a) et la reception (signal b)."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Calculer la célérité $v$ des ondes sonores dans l'air.
+        reasoning: |-
+          On applique directement la définition de R3, $v=d/\Delta t$, avec ici $d=L$ (la distance émetteur-récepteur, donnée) et $\Delta t$ le retard trouvé à la question précédente — exactement la méthode déjà illustrée en R4 avec les deux microphones, qui donnait la même valeur numérique.
+        steps:
+          - math: 'v = \frac{L}{\Delta t} = \frac{0{,}85}{2{,}5\times10^{-3}}'
+            note: "Definition de la celerite (R3) : distance parcourue divisee par la duree mise pour la parcourir."
+          - math: '\boxed{v \approx 340\ \text{m.s}^{-1}}'
+            note: "Valeur canonique de la celerite du son dans l'air (coherente avec R4)."
+
+  # ── bk-2024-n-x2 — 2024 N, Exercice 2 : onde circulaire à la surface de l'eau ──
+  - id: bk-2024-n-x2
+    title: "Propagation d'un signal à la surface de l'eau : onde circulaire et célérité"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 2 — Propagation d'un signal à la surface de l'eau"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/145763, course-422/upload-87465
+        (Exercice 2 — propagation d'un signal mécanique circulaire à la
+        surface de l'eau ; barème de l'exercice = 2,5 pt). NB : le résumé
+        HTML d'AlloSchool pour cet élément annonce à tort « 2ème BAC Sciences
+        Mathématiques B » — l'en-tête du scan, lu directement, confirme sans
+        ambiguïté SPC/BIOF. Transcription vérifiée : 2ᵉ passe, vérificateur
+        indépendant (agent-vérificateur-indépendant, 2026-08-07), diff OK,
+        portant sur le titre, le chapeau, le QCM (options A/B/C/D relues
+        ligne à ligne au zoom ×1,6), le tableau de mesures (relu au zoom
+        ×2,2) et la figure (revue élément par élément au zoom ×2,8 :
+        l'encadré « Caillou » relié par une flèche au point $O$, les deux
+        fronts en demi-cercles concentriques tracés à droite d'une corde
+        verticale passant par $O$, l'étiquette « $r_2$ » sans unité, l'unité
+        portée seulement sur l'étiquette d'axe « $r(\text{cm})$ »). Barème
+        marginal recompté au scan : $0{,}5\times5=\mathbf{2{,}5}$. Physique
+        re-dérivée et cohérente :
+        $v=(r_2-r_1)/\Delta t=42/1{,}5=0{,}28\ \text{m.s}^{-1}$,
+        $t_1=r_1/v=0{,}5\ \text{s} \Rightarrow t_2=t_1+1{,}5=2{,}0\ \text{s}$,
+        $h=v^2/g=0{,}28^2/9{,}8\approx8{,}0\times10^{-3}\ \text{m}$.
+    intro: |-
+      **Propagation d'un signal à la surface de l'eau (examen national, session normale 2024, Exercice 2).**
+
+      On se propose dans cet exercice d'étudier la propagation d'un signal mécanique à la surface de l'eau.
+
+      Un caillou jeté, en un point $O$, dans une cuve contenant de l'eau de profondeur $h$, provoque la formation d'une onde circulaire qui se propage à la surface de l'eau. (Figure ci-dessous)
+
+      **Figure (schéma, vue de dessus de la surface de l'eau).** En haut à gauche, un encadré rectangulaire « Caillou » relié par une flèche oblique descendante au point $O$ (gros point noir, centre du dispositif) — le caillou lui-même n'est pas dessiné. Centrés sur $O$ et tracés à droite d'une corde verticale passant par $O$, deux demi-cercles concentriques matérialisent les fronts d'onde successifs : le premier, de petit rayon, est relié par une flèche à un encadré « L'aspect à l'instant $t_1$ » (en haut à droite) ; le second, de grand rayon, est relié par une flèche à un encadré « L'aspect à l'instant $t_2$ » (en bas à droite). Un axe horizontal fléché vers la droite part de $O$, traverse les deux demi-cercles et porte, en bout, l'étiquette « $r(\text{cm})$ ». Les rayons sont repérés par deux étiquettes posées sur cet axe : « $r_1$ » juste après le petit demi-cercle et « $r_2$ » juste après le grand (« $r_2$ » sans l'unité — celle-ci n'apparaît que sur l'étiquette de l'axe). Aucune valeur numérique autre que celles du tableau n'est chiffrée sur le schéma ; pas de légende numérotée imprimée sur cette figure.
+
+      **On peut estimer la célérité $v$ de l'onde qui se propage à la surface de l'eau par la relation :** $v = \sqrt{g.h}$, avec $g = 9{,}8\ \text{m.s}^{-2}$ l'intensité de la pesanteur et $h$ la profondeur de l'eau.
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** Choisir la proposition juste parmi les propositions suivantes :
+
+          | | |
+          |---|---|
+          | A | Une onde progressive périodique est caractérisée par sa célérité. |
+          | B | Un milieu est dispersif si la célérité de l'onde dépend de sa période T. |
+          | C | Lors de la diffraction dans un même milieu, la célérité de l'onde est modifiée. |
+          | D | Les ondes mécaniques progressives peuvent se propager dans le vide. |
+        reasoning: |-
+          On élimine d'abord ce qu'on peut trancher avec les rungs de cette leçon. Proposition D : R1 est explicite, une onde mécanique a besoin d'un milieu matériel pour exister — elle ne se propage jamais dans le vide. D est fausse. Proposition C : la diffraction change la direction ou la forme du front d'onde, mais ne change ni le milieu ni sa rigidité — or R3 établit que c'est seulement le milieu qui fixe la célérité ; la diffraction ne la modifie donc pas. C est fausse. Proposition A : R3 montre que la célérité caractérise toute onde progressive, périodique ou non — ce n'est donc pas un trait qui caractérise spécifiquement le caractère périodique de l'onde ; A est trop imprécise pour être la bonne réponse.
+
+          Reste B, qui est la définition usuelle d'un milieu dispersif — un milieu où la célérité dépend de la période (ou de la fréquence) de l'onde qui le traverse. Cette notion de dispersion n'est pas construite dans les rungs R0–R5 de cette leçon (le pointeur d'échelle de R1 renvoie explicitement la périodicité au chapitre suivant, « Ondes mécaniques progressives périodiques ») ; on la reconnaît ici par élimination des trois autres propositions, toutes tranchables avec R1 et R3. La proposition juste est donc B.
+      - id: q2a
+        part: "Exploitation du tableau des rayons du front d'onde"
+        stem: |-
+          **2-1.** (0,5 pt) Déterminer la valeur de la célérité $v$ de l'onde.
+        reasoning: |-
+          Exactement la méthode de R3–R4 : la célérité, c'est une distance parcourue par le front d'onde divisée par la durée mise pour la parcourir. Entre les instants $t_1$ et $t_2$, le front avance du rayon $r_1$ au rayon $r_2$ — la distance parcourue par le front pendant cet intervalle est donc $r_2-r_1$, et la durée est $t_2-t_1=1{,}5\ \text{s}$ (donnée directement dans la définition de $t_2$ du tableau). R3 établit que la célérité ne dépend que du milieu (ici, l'eau) : elle est donc la même entre $0$ et $t_1$ qu'entre $t_1$ et $t_2$, ce qui justifie de la calculer sur l'intervalle où l'on connaît une durée exploitable.
+        steps:
+          - math: 'v = \frac{r_2 - r_1}{t_2 - t_1} = \frac{56 - 14}{1{,}5}\ \text{cm.s}^{-1}'
+            note: "Definition de la celerite (R3) appliquee entre les instants t1 et t2 : distance parcourue par le front divisee par la duree."
+          - math: 'v = \frac{42}{1{,}5} = 28\ \text{cm.s}^{-1}'
+            note: "Application numerique."
+          - math: '\boxed{v = 0{,}28\ \text{m.s}^{-1}}'
+            note: "Conversion en unites SI (1 cm = 1e-2 m)."
+      - id: q2b
+        stem: |-
+          **2-2.** (0,5 pt) En déduire la valeur de l'instant $t_2$.
+        reasoning: |-
+          La célérité étant fixée par le milieu (R3), elle est aussi celle du trajet entre $t=0$ (où le front part de $r=0$, en $O$) et $t_1$. On isole donc $t_1$ à partir de $v=r_1/t_1$ (retard de R3 appliqué ici entre $O$ et le rayon $r_1$), puis on utilise la relation donnée dans le tableau, $t_2=t_1+1{,}5$, pour obtenir $t_2$.
+        steps:
+          - math: 't_1 = \frac{r_1}{v} = \frac{14\times10^{-2}}{0{,}28}'
+            note: "Meme celerite qu'a la question precedente (R3 : elle ne depend que du milieu), appliquee entre O (r=0, t=0) et r_1."
+          - math: '\boxed{t_1 = 0{,}5\ \text{s}}'
+            note: "Application numerique."
+          - math: 't_2 = t_1 + 1{,}5 = 0{,}5 + 1{,}5'
+            note: "Relation donnee dans le tableau de l'enonce."
+          - math: '\boxed{t_2 = 2{,}0\ \text{s}}'
+            note: "Instant correspondant au grand front (r_2 = 56 cm)."
+      - id: q3a
+        part: "Estimation de la célérité par la relation donnée dans l'énoncé"
+        stem: |-
+          **3-1.** (0,5 pt) En utilisant les équations aux dimensions, vérifier l'homogénéité de cette relation.
+        reasoning: |-
+          Cette vérification ne repose sur aucun rung de cette leçon — l'équation aux dimensions est un outil transversal (utilisé dans toutes les notions de mécanique), pas une technique introduite ici. On écrit les dimensions de chaque grandeur : $[g]=\text{L.T}^{-2}$ (accélération), $[h]=\text{L}$ (longueur). Le produit $g.h$ a donc pour dimension $\text{L}^2.\text{T}^{-2}$, et sa racine carrée $\text{L.T}^{-1}$ — exactement la dimension d'une vitesse, celle de $v$ dans la définition de R3 ($v=d/\Delta t$, une longueur sur un temps). La relation est donc homogène.
+        steps:
+          - math: '[g.h] = \text{L.T}^{-2}\times\text{L} = \text{L}^2.\text{T}^{-2}'
+            note: "Dimension du produit g fois h : g est une acceleration (L.T^-2), h une longueur (L)."
+          - math: '\left[\sqrt{g.h}\right] = \text{L.T}^{-1} = [v]'
+            note: "La racine carree donne la dimension d'une vitesse, coherente avec [v] = [d]/[Delta t] (R3)."
+      - id: q3b
+        stem: |-
+          **3-2.** (0,5 pt) Calculer $h$.
+        reasoning: |-
+          On isole $h$ dans la relation $v=\sqrt{g.h}$ donnée dans l'énoncé, en réutilisant la valeur de $v$ trouvée à la question 2-1 — une célérité fixée par le milieu (R3), donc la même tout au long de la propagation observée dans le tableau.
+        steps:
+          - math: 'v = \sqrt{g.h} \implies h = \frac{v^2}{g}'
+            note: "On isole h par elevation au carre des deux membres."
+          - math: 'h = \frac{0{,}28^2}{9{,}8}'
+            note: "Application numerique, avec v = 0,28 m/s trouve a la question 2-1."
+          - math: '\boxed{h \approx 8{,}0\times10^{-3}\ \text{m}}'
+            note: "Profondeur de l'eau dans la cuve."
