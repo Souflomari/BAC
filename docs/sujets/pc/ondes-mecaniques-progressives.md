@@ -69,30 +69,44 @@ de divisions du décalage à lire sur le scan)*.
 
 ## 2024 — session normale — Exercice 2
 Source: https://www.alloschool.com/element/145763
-Statut: transcrit (non vérifié) — **1ʳᵉ passe de vérification adversariale
-effectuée (agent-vérificateur-tiers, 2026-08-06)** : `element/145763` re-dérivé
-indépendamment → `course-422/upload-87465`, **6 pages** ; couverture p.1 relue —
-**NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte $7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓.
-**Énoncé : conforme.** Diff caractère par caractère contre `0003-big.jpg`
-(titre « Propagation d'un signal à la surface de l'eau », QCM A/B/C/D mot pour
-mot, tableau $0\,/\,t_1\,/\,t_2=t_1+1{,}5$ et $0\,/\,r_1=14\,/\,r_2=56$,
-$v=\sqrt{g.h}$, $g=9{,}8\ \text{m.s}^{-2}$) et `0004-big.jpg` (Q3-1, Q3-2) —
-aucune divergence de valeur, unité ou indice ; barème marginal recompté
-$0{,}5\times5=\mathbf{2{,}5}$ ✓. **Physique re-dérivée** :
-$v=(r_2-r_1)/1{,}5=42/1{,}5=28\ \text{cm.s}^{-1}=0{,}28\ \text{m.s}^{-1}$ ;
-$t_1=r_1/v=0{,}5\ \text{s}$ ⇒ $t_2=\mathbf{2{,}0\ \text{s}}$ ;
-$h=v^2/g=0{,}28^2/9{,}8=\mathbf{8{,}0\cdot10^{-3}\ \text{m}}$ — valeurs rondes,
-l'énoncé est cohérent ✓. **Deux inexactitudes dans la description de la figure
-ont été corrigées** (voir ci-dessous) ⇒ README §3 : l'entrée **reste
-`transcrit (non vérifié)`**.
-**❌→✅ (i) Il n'y a pas de « petit disque » figurant le caillou** : le scan porte
-un **encadré rectangulaire « Caillou »** dont une flèche pointe directement sur
-le **point $O$** (gros point noir). **❌→✅ (ii) L'étiquette du grand front n'est
-pas « $r_2(\text{cm})$ » mais « $r_2$ »** seule ; « $\mathbf{r(cm)}$ » est
-l'étiquette **de l'axe**, écrite plus à droite, au-dessus de la flèche
-horizontale. Précision ajoutée : les deux fronts d'onde sont des
-**demi-cercles** (ouverts vers la gauche, tracés à droite d'une corde verticale
-passant par $O$), pas des arcs quelconques.
+Statut: vérifié — **2ᵉ passe, vérificateur indépendant
+(agent-vérificateur-indépendant, 2026-08-07), diff OK.**
+**Élément re-dérivé** : `element/145763` → `course-422/upload-87465`, **6 pages**
+(`0007-big.jpg` = 404), URLs d'images ré-extraites du HTML de la page `element/` ;
+couverture p.1 relue — **NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte du sujet
+$7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓ (l'intitulé de couverture « Propagation d'un
+signal mécanique » et le titre d'exercice « … à la surface de l'eau » sont bien
+tous deux au scan).
+**Portée du diff** : `0003-big.jpg` (titre « EXERCICE 2 (2,5 points) :
+Propagation d'un signal à la surface de l'eau », chapeau, QCM A/B/C/D relu ligne
+à ligne au zoom ×1,6 — **mot pour mot**, tableau $0\,/\,t_1\,/\,t_2=t_1+1{,}5$ et
+$0\,/\,r_1=14\,/\,r_2=56$ relu au zoom ×2,2, $v=\sqrt{g.h}$,
+$g=9{,}8\ \text{m.s}^{-2}$, figure) et `0004-big.jpg` (Q3-1, Q3-2) — **aucune
+divergence de valeur, unité, indice ou exposant**. Barème marginal recompté au
+scan : $0{,}5\times5=\mathbf{2{,}5}$ ✓.
+**Figure — revue élément par élément au zoom ×2,8, les deux corrections de 1ʳᵉ
+passe confirmées** : (i) le caillou n'est **pas dessiné** — c'est un **encadré
+rectangulaire « Caillou »** (à gauche, au-dessus du niveau de $O$) d'où part une
+flèche oblique descendante qui pointe sur le **gros point noir $O$** ✓ ;
+(ii) l'étiquette du grand front est bien « $r_2$ » **seule**, l'unité
+n'apparaissant que sur l'étiquette d'axe « $\mathbf{r(cm)}$ » portée plus à
+droite au-dessus de la flèche horizontale ✓. Confirmé également : les deux fronts
+sont des **demi-cercles** centrés sur $O$, tracés à droite d'une **corde
+verticale passant par $O$** dont les extrémités sont exactement au-dessus et
+au-dessous de $O$ ; encadré « L'aspect à l'instant $t_1$ » en haut à droite relié
+au **petit** demi-cercle, encadré « L'aspect à l'instant $t_2$ » en bas à droite
+relié au **grand** ; axe horizontal fléché partant de $O$ et traversant les deux
+fronts ; « $r_1$ » juste après le petit, « $r_2$ » juste après le grand ; aucune
+valeur numérique portée sur le schéma et **aucune légende « Figure n »** ✓.
+Contrôle de la classe de défaut « flèche d'étalonnage lue comme période » :
+**sans objet** (aucun axe de temps gradué dans cet exercice).
+**Physique re-dérivée par le vérificateur** :
+$v=(r_2-r_1)/\Delta t=42/1{,}5=28\ \text{cm.s}^{-1}=\mathbf{0{,}28\ \text{m.s}^{-1}}$
+(Q2-1) ; $t_1=r_1/v=14/28=0{,}5$ s ⇒ $t_2=t_1+1{,}5=\mathbf{2{,}0\ \text{s}}$
+(Q2-2) ; $[\sqrt{g.h}]=\sqrt{\text{L}\,\text{T}^{-2}\cdot\text{L}}
+=\text{L}\,\text{T}^{-1}$ ✓ (Q3-1) ;
+$h=v^2/g=0{,}28^2/9{,}8=\mathbf{8{,}0\cdot10^{-3}\ \text{m}}$ (Q3-2) — valeurs
+rondes, l'énoncé est auto-cohérent ✓.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
   le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC

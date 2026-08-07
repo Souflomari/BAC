@@ -754,40 +754,58 @@ mouvement). Le **seul élément en pointillés** hors du cercle-orbite est une
 
 ## 2024 — session normale — Exercice 5 (Partie 1)
 Source: https://www.alloschool.com/element/145763
-Statut: transcrit (non vérifié) — **1ʳᵉ passe de vérification adversariale
-effectuée (agent-vérificateur-tiers, 2026-08-06)** : `element/145763` re-dérivé
-indépendamment → `course-422/upload-87465`, **6 pages** ; couverture p.1 relue —
-**NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte $7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓.
-**Énoncé : conforme.** Diff caractère par caractère contre `0005-big.jpg`
-(« Les parties 1 et 2 sont indépendantes », $\vec{f}=-\mu.\vec{v}$,
-$\vec{v}=v_z.\vec{k}$, $\vec{F}=-\rho_L.V_B.\vec{g}$, $g=10\ \text{m.s}^{-2}$,
-$m_B=5{,}0\ \text{g}$, $\rho_B=5{,}526\cdot10^{3}\ \text{kg.m}^{-3}$) et
-`0006-big.jpg` (équation différentielle, Q2-1 à Q3) ; barème marginal recompté
-$0{,}75+0{,}25+0{,}25+0{,}5+1=\mathbf{2{,}75}$ ✓, et $2{,}75+2{,}25=\mathbf{5}$ ✓.
-**Deux divergences de figure ont été trouvées et corrigées** ⇒ README §3 :
-l'entrée **reste `transcrit (non vérifié)`**.
-**❌→✅ (i) Figure 1 : l'axe vertical est à DROITE de la colonne de liquide**, pas
-à gauche (zoom ×4 : colonne grisée à gauche, axe fléché $O\!\to\!z$ à droite, la
-ligne pointillée horizontale reliant $O$ au sommet de la colonne).
-**❌→✅ (ii) Figure 2 : la vitesse limite vaut $0{,}70\ \text{m.s}^{-1}$, pas
-« de l'ordre de $0{,}6$ ».** Grille mesurée au pixel : traits principaux **noirs**
-en abscisse tous les $59{,}3$ px de $x=720{,}5$ à $1135{,}5$ ⇒ **7 divisions**,
-étiquettes **0,1** ($x=781$) et **0,2** ($x=840$) ⇒ 1 division $=0{,}1\ \text{s}$
-(cadre : $0{,}7$ s) ; en ordonnée de $y=607{,}5$ (axe) à $370{,}5$ ⇒ **4
-divisions**, étiquettes **0,2** ($y=548$) et **0,4** ($y=489{,}5$) ⇒ 1 division
-$=0{,}2\ \text{m.s}^{-1}$ (cadre : $0{,}8$ m.s$^{-1}$), **avec un trait bleu à
-chaque demi-division ($0{,}1$ m.s$^{-1}$)**. Le palier de la courbe se couche
-**exactement sur le trait bleu de $0{,}7\ \text{m.s}^{-1}$** ($y=400$ px).
-**Contrôle exponentiel (fait sur trois points de la trace)** :
-$v(0{,}1)=0{,}45$, $v(0{,}2)=0{,}61$, $v(0{,}3)=0{,}668$ ⇒
-$v_\ell(1-e^{-t/\tau})$ avec $v_\ell=0{,}70$ donne $\tau=0{,}097$, $0{,}098$ et
-$0{,}097$ s — **$\tau=0{,}1\ \text{s}$**, lecture au trait. La tangente $(T)$
-coupe l'asymptote **au repère $t=0{,}1$ s**, ce qui est la construction attendue
-en Q2-2 ✓. **Physique re-dérivée** : $a_0=v_\ell/\tau=\mathbf{7\ \text{m.s}^{-2}}$ ;
+Statut: vérifié — **2ᵉ passe, vérificateur indépendant
+(agent-vérificateur-indépendant, 2026-08-07), diff OK.**
+**Élément re-dérivé** : `element/145763` → `course-422/upload-87465`, **6 pages**
+(`0007-big.jpg` = 404), URLs d'images ré-extraites du HTML de la page `element/` ;
+couverture p.1 relue — **NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte du sujet
+$7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓.
+**Portée du diff** : `0005-big.jpg` (« Les parties 1 et 2 sont indépendantes »,
+repère $(O,\vec{k})$ dirigé vers le bas, $(t_0=0)$, $z=0$,
+$\vec{f}=-\mu.\vec{v}$ avec $\vec{v}=v_z.\vec{k}$,
+$\vec{F}=-\rho_L.V_B.\vec{g}$, données $g=10\ \text{m.s}^{-2}$,
+$m_B=5{,}0\ \text{g}$, $\rho_B=5{,}526\cdot10^{3}\ \text{kg.m}^{-3}$, figure 1)
+et `0006-big.jpg` (équation différentielle
+$\frac{dv_z}{dt}+\frac{1}{\tau}v_z=g(1-\frac{\rho_L}{\rho_B})$, Q2-1 à Q3,
+figure 2) — **aucune divergence de valeur, unité, indice ou exposant**. Barème
+marginal recompté au scan : $0{,}75+0{,}25+0{,}25+0{,}5+1=\mathbf{2{,}75}$ ✓, et
+$2{,}75+2{,}25=\mathbf{5}$ ✓.
+**Figure 1 — revue au zoom ×2,6, correction de 1ʳᵉ passe confirmée** : colonne
+grisée (parois noires, fond fermé) **à gauche**, disque noir plein = la bille,
+étiquette « (S) » **à droite de la colonne** à la hauteur de la bille ; **l'axe
+vertical est bien à DROITE de la colonne**, avec « O » en haut, la courte flèche
+pleine $\vec{k}$ **vers le bas** juste en dessous, et la pointe de flèche
+étiquetée « z » en bas ; **ligne horizontale en pointillés** reliant $O$ au
+sommet de la colonne ; légende « Figure 1 » ✓.
+**Figure 2 — re-mesurée intégralement, correction de 1ʳᵉ passe confirmée.**
+Étalonnage refait : traits principaux **noirs** en abscisse
+$x=720{,}5/780/839/898{,}5/957/1017/1076/1135{,}5$ px (pas $59{,}3$) ⇒
+**7 divisions**, étiquettes **0,1** et **0,2** ⇒ $1$ division $=0{,}1$ s, cadre
+$=0{,}7$ s ✓ ; en ordonnée $y=371/429{,}5/489{,}5/548/607{,}5$ (axe), étiquettes
+**0,4** et **0,2** ⇒ $1$ division $=0{,}2\ \text{m.s}^{-1}$, cadre
+$=0{,}8\ \text{m.s}^{-1}$ ✓ ; **traits bleus à chaque demi-division** relevés à
+$y=400{,}5\,/\,459\,/\,519\,/\,577{,}5$ px, soit $0{,}7$, $0{,}5$, $0{,}3$ et
+$0{,}1\ \text{m.s}^{-1}$ ✓. Le palier de la courbe est mesuré à $y=400$–$401$ px
+$\Rightarrow v_\ell=\mathbf{0{,}7005\ \text{m.s}^{-1}}$ : il se couche
+**exactement sur le trait bleu de $0{,}70$** (lecture au trait, pas une
+estimation).
+**Contrôle exponentiel refait sur toute la trace** : $v(0{,}050)=0{,}271$,
+$v(0{,}097)=0{,}433$, $v(0{,}212)=0{,}616$, $v(0{,}306)=0{,}670$,
+$v(0{,}414)=0{,}690$ — le modèle $v_\ell(1-e^{-t/\tau})$ avec
+$v_\ell=0{,}70$ et $\tau=0{,}1$ s prédit $0{,}275$, $0{,}442$, $0{,}605$,
+$0{,}665$, $0{,}687$ : accord à $\pm0{,}011$ sur toute la plage ✓.
+**Tangente $(T)$ (pointillés) re-suivie point par point** : elle part de
+$(0\,;\,0)$ et **coupe l'asymptote $v_\ell=0{,}70$ à $t=0{,}1000$ s** (mesuré par
+interpolation entre $x=778$ et $x=782$ px), c'est-à-dire exactement sur le trait
+principal $0{,}1$ s ⇒ $\tau=\mathbf{0{,}1\ \text{s}}$, lecture au trait — c'est
+la construction attendue en Q2-2 ✓.
+**Physique re-dérivée par le vérificateur** :
+$a_0=v_\ell/\tau=\mathbf{7\ \text{m.s}^{-2}}$ (Q2-3, cohérent avec la pente
+mesurée de $(T)$) ; $\tau=m_B/\mu$ ⇒
 $\mu=m_B/\tau=5{,}0\cdot10^{-3}/0{,}1=\mathbf{5\cdot10^{-2}\ \text{kg.s}^{-1}}$ ;
-$a_0=g(1-\rho_L/\rho_B)$ ⇒ $\rho_L=0{,}3\,\rho_B\simeq
-\mathbf{1{,}66\cdot10^{3}\ \text{kg.m}^{-3}}$ — les trois réponses sortent de
-lectures au trait, ce qui confirme l'étalonnage.
+$a_0=g\!\left(1-\rho_L/\rho_B\right)$ ⇒ $\rho_L=0{,}3\,\rho_B
+=\mathbf{1{,}66\cdot10^{3}\ \text{kg.m}^{-3}}$ (Q3) — les trois réponses sortent
+de **lectures au trait**, ce qui valide l'étalonnage par une voie indépendante.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
   le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC

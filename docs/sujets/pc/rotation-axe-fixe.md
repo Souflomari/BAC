@@ -93,14 +93,57 @@ $G_1$ est confondu avec $O$ à $t_0 = 0$.
 
 ## 2024 — session normale — Exercice 5 (Partie 2)
 Source: https://www.alloschool.com/element/145763
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-87465, page(s) 6. À faire vérifier (README §3).
+Statut: vérifié — **1ʳᵉ passe de vérification adversariale
+(agent-vérificateur-indépendant, 2026-08-07), diff OK.**
+**Élément re-dérivé** : `element/145763` → `course-422/upload-87465`, **6 pages**
+(`0007-big.jpg` = 404), URLs d'images ré-extraites du HTML de la page `element/`
+et non reprises du champ « Images lues » ; couverture p.1 relue — **NS 28F**,
+SPC/BIOF, 3 h, coef 7 ; carte du sujet $7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓.
+**Portée du diff** : `0006-big.jpg` intégral pour la Partie 2 (chapeau, les trois
+tirets de composition du système, données relues au zoom ×2 —
+$g=10\ \text{m.s}^{-2}$, $r=10\ \text{cm}$, $m=100\ \text{kg}$,
+$\alpha=45°$, $J_\Delta=2\cdot10^{-2}\ \text{kg.m}^2$ —, repère $(O,\vec{i})$,
+$\theta(t)=20t^2$, $a_G=4\ \text{m.s}^{-2}$, $\mathcal{M}=\frac{a_G}{r}
+(J_\Delta+m.r^2)+mgr\sin\alpha$, figure 3) — **aucune divergence de valeur,
+unité, indice ou exposant**. Barème marginal recompté au scan :
+$0{,}5+0{,}75+1=\mathbf{2{,}25}$ ✓, et $2{,}75+2{,}25=\mathbf{5}$ ✓.
+**Figure 3 : conforme**, revue élément par élément au zoom ×3,2 — plan incliné
+montant de $O$ (bas-gauche) au cylindre en haut à droite ; cercle à centre pointé
+portant « $(\Delta)$ » à l'intérieur et le symbole du cylindre juste en dessous ;
+flèche courbe **sens horaire** au-dessus du cylindre avec le « + » ; petit carré
+« (C) » sur la pente, $G$ pointé à l'intérieur ; câble étiqueté « câble » entre
+la charge et le cylindre ; **flèche « x » en pointillés** parallèle à la pente,
+dirigée vers le cylindre ; en $O$, $\vec{i}$ **flèche pleine** portée par la
+pente vers le haut et $\vec{j}$ **flèche pleine** perpendiculaire vers le
+haut-gauche, l'axe « y » associé étant en pointillés ; droite horizontale en
+pointillés partant de $O$ vers la droite ; angle $\alpha$ marqué par un arc entre
+cette horizontale et la pente ; légende « Figure 3 » ✓.
+**Question du glyphe — adjugée (voir la note de transcription ci-dessous).**
+(a) **Identité sémantique : certaine.** Les cinq occurrences désignent le même
+objet — les trois qui portent le glyphe « $\vec{\mathbf{i}}$ » sont chacune
+attachées au mot *cylindre* ou au câble qui s'y enroule, et les deux qui portent
+le symbole calligraphique sont le second membre du système $\{(C)\,;\,\cdot\}$ et
+l'étiquette de la poulie sur la figure 3. (b) **Le « $\vec{\mathbf{i}}$ » est un
+artefact de police : confirmé** — au zoom ×3 il est strictement identique au
+glyphe du vecteur unitaire $\vec{i}$ employé ailleurs, ce qui n'a aucun sens pour
+nommer un solide. (c) **Identité de la lettre calligraphique : NON certifiable
+sur ce scan** — au zoom ×18 (bbox 28×28 px) elle se lit comme une capitale
+calligraphique à cuvette gauche et deux boucles obliques, compatible avec
+$\mathcal{S}$ comme avec $\mathcal{E}$ ; aucune source texte n'a pu être trouvée
+pour trancher. Le drapeau est donc **maintenu** : $(\mathcal{S})$ reste une
+**convention de transcription signalée**, pas une affirmation.
+**Physique re-dérivée par le vérificateur** : $\ddot\theta=40\ \text{rad.s}^{-2}$
+⇒ $a_G=r\ddot\theta=0{,}10\times40=\mathbf{4\ \text{m.s}^{-2}}$ (Q1-1) ;
+$d=\frac12a_Gt^2=\frac12\times4\times2^2=\mathbf{8\ \text{m}}$ (Q1-2) ;
+$\mathcal{M}=\frac{4}{0{,}1}(2\cdot10^{-2}+100\times0{,}01)
++100\times10\times0{,}1\times\sin45°=40{,}8+70{,}7
+\simeq\mathbf{111{,}5\ \text{N.m}}$ (Q2) — l'énoncé est auto-cohérent ✓.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
   le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC
   Sciences Mathématiques B » ; l'en-tête du scan, lu directement, confirme
   sans ambiguïté SPC/BIOF — README §3, l'image fait foi)
-- Code sujet : NS28F · Barème de l'exercice complet : 5 points ; **Partie 2**
+- Code sujet : NS 28F · Barème de l'exercice complet : 5 points ; **Partie 2**
   = 2,25 points ($0{,}5+0{,}75+1$, barème en marge)
 - Images lues (reproductibilité) : `.../course-422/upload-87465/0006-big.jpg`
 - Pages du scan : 6 (sur 6)
@@ -130,19 +173,32 @@ figure 3 est constitué :
 - d'un câble inextensible de masse négligeable qui s'enroule sans
   glissement sur $(\mathcal{S})$ et attaché à la charge $(C)$.
 
-> **Note de transcription (glyphe) :** dans la liste à puces ci-dessus, le
-> scan imprime pour désigner le cylindre un symbole qui se lit, au zoom,
-> comme un « i » gras surmonté d'une flèche — $\vec{\mathbf{i}}$ —
-> visuellement identique au vecteur unitaire $\vec{i}$ utilisé par ailleurs
-> sur la figure 3 pour l'axe du plan incliné. Ce même objet est pourtant
-> désigné sans ambiguïté ailleurs par le symbole script « $(\mathcal{S})$ » :
-> dans la phrase « le système mécanique $\{(C)\,;\,(\mathcal{S})\}$ » (juste
-> après les données) et dans la légende de la figure 3. Il s'agit
-> vraisemblablement d'un artefact de rendu de police du scan (glyphe
-> calligraphique mal incorporé, retombant sur un caractère proche) plutôt que
-> de deux objets distincts. Transcrit ci-dessus comme $(\mathcal{S})$ par
-> cohérence avec ces deux autres occurrences non ambiguës — signalé, non
-> résolu par invention.
+> **Note de transcription (glyphe) — vérifiée et précisée le 2026-08-07.**
+> Le scan désigne le cylindre par **deux glyphes différents**, à cinq endroits :
+>
+> - **Trois occurrences** portent un symbole qui se lit, au zoom, comme un
+>   « i » gras surmonté d'une flèche — $\vec{\mathbf{i}}$ — **strictement
+>   identique au glyphe du vecteur unitaire $\vec{i}$** employé par ailleurs
+>   pour l'axe du plan incliné : dans la liste à puces ci-dessus
+>   (« d'un cylindre … de rayon $r$ »), dans « qui s'enroule sans glissement
+>   sur … », et plus bas dans « L'équation horaire du mouvement d'un point du
+>   cylindre … s'écrit ». Nommer un solide par le vecteur unitaire n'a aucun
+>   sens : **c'est un artefact de rendu de police** (glyphe calligraphique mal
+>   incorporé, retombant sur un caractère proche).
+> - **Deux occurrences** portent une **capitale calligraphique** : dans
+>   « le système mécanique $\{(C)\,;\,(\mathcal{S})\}$ » (deux fois : juste
+>   après les données, puis dans la question 2) et comme étiquette de la poulie
+>   sur la figure 3.
+>
+> **Identité de l'objet : certaine** — les cinq occurrences désignent le même
+> cylindre (chaîne sémantique vérifiée phrase par phrase).
+> **Identité de la lettre : non résolue.** Au zoom ×18 (boîte d'encre de
+> 28×28 px) la capitale calligraphique se lit comme une cuvette à gauche
+> surmontée de deux boucles obliques ; cette forme est compatible avec
+> $\mathcal{S}$ **comme avec** $\mathcal{E}$, et le scan ne permet pas de
+> trancher. Elle est transcrite ci-dessus $(\mathcal{S})$ **par convention
+> uniforme**, ce qui est signalé ici et non affirmé — à confirmer sur un
+> exemplaire de meilleure qualité ou sur une source texte.
 
 **Données :** Intensité de la pesanteur : $g = 10\ \text{m.s}^{-2}$ ;
 $r = 10\ \text{cm}$ ; $m = 100\ \text{kg}$ ; $\alpha = 45°$ ;

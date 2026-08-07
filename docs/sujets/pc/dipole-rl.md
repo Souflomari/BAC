@@ -60,39 +60,53 @@ bobine. La droite $(T)$ représente la tangente à la courbe $(C_1)$ à $t = 0$
 
 ## 2024 — session normale — Exercice 4 (Partie 2)
 Source: https://www.alloschool.com/element/145763
-Statut: transcrit (non vérifié) — **1ʳᵉ passe de vérification adversariale
-effectuée (agent-vérificateur-tiers, 2026-08-06)** : `element/145763` re-dérivé
-indépendamment → `course-422/upload-87465`, **6 pages** ; couverture p.1 relue —
-**NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte $7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓.
-**Énoncé : conforme.** Diff caractère par caractère contre `0005-big.jpg`
-($E=6\ \text{V}$, $R_1$, $t_0=0$,
+Statut: transcrit (non vérifié) — **2ᵉ passe, vérificateur indépendant
+(agent-vérificateur-indépendant, 2026-08-07) : tout est confirmé SAUF un point de
+la figure 3, corrigé ci-dessous** ⇒ README §3, l'entrée **reste
+`transcrit (non vérifié)`** et n'appelle plus qu'une **relecture de contrôle de ce
+seul point** (le sens de la flèche $i$).
+**❌→✅ Figure 3 : la flèche de courant $i$ est VERTICALE, orientée vers le HAUT**
+— et non « orientée vers la droite ». Zoom ×10 sur `0005-big.jpg` (x 840–910,
+y 450–530) : la pointe pleine est au sommet d'un fût **vertical** porté par la
+branche gauche, juste au-dessus du générateur, l'étiquette « i » étant à sa
+gauche ; une seconde flèche pleine verticale vers le haut, étiquetée « E », est
+tracée **à gauche du cercle, hors de la boucle** (elle n'était pas mentionnée).
+Le sens physique du courant est inchangé (montée par la branche gauche puis
+parcours vers la droite le long de la branche supérieure), mais un lecteur
+reconstruisant la figure d'après l'ancienne description l'aurait dessinée
+horizontale. Description corrigée dans le corps de l'entrée ; **à relire**.
+**Élément re-dérivé** : `element/145763` → `course-422/upload-87465`, **6 pages**
+(`0007-big.jpg` = 404), URLs d'images ré-extraites du HTML de la page `element/` ;
+couverture p.1 relue — **NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte du sujet
+$7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓.
+**Portée du diff** : `0005-big.jpg` ($E=6\ \text{V}$, « la bobine (b) et le
+conducteur ohmique de résistance R ajustable et l'interrupteur K, précédemment
+utilisés », $R_1$, $t_0=0$,
 $\frac{di}{dt}=-\left(\frac{R_1+r}{L}\right)i+\frac{E}{L}$, « Vérifier que la
-valeur de $L$ est : $L=2\ \text{mH}$ », constante de temps $\tau$) ; barème
-marginal recompté $0{,}5\times3=\mathbf{1{,}5}$ ✓. **Figure 3 (circuit) :
-conforme** au zoom ×4. **Mais la lecture de la figure 4 comportait une divergence
-bloquante, corrigée ci-dessous** ⇒ README §3 : l'entrée **reste
-`transcrit (non vérifié)`**.
-**❌→✅ L'intersection avec l'axe des abscisses n'est pas $i \approx 3\ \text{mA}$
-mais $i = 6\ \text{mA}$.** Grille mesurée au pixel : traits principaux en abscisse
-à $x=763{,}5/822{,}5/881{,}5/941/1000{,}5/1059{,}5/1119{,}5$ px (pas $59{,}3$) ⇒
-**6 divisions**, étiquettes **1** ($x=822$) et **2** ($x=882$) ⇒ 1 division
-$=1\ \text{mA}$ et **le bord droit du cadre vaut $6\ \text{mA}$** ; en ordonnée
-$y=697{,}5/756{,}5/816/875{,}5$ ⇒ **3 divisions**, étiquettes **2** ($y=756$),
-**1** ($y=815$), **0** ($y=879$) ⇒ **le bord supérieur vaut
-$3\cdot10^{3}\ \text{A.s}^{-1}$**. Le segment est donc tracé **de coin à coin** :
-de $(0\,;\,3\cdot10^{3}\ \text{A.s}^{-1})$ à $(6\ \text{mA}\,;\,0)$. Trace suivie
-colonne par colonne : $(1{,}46\,;\,2{,}28)$, $(1{,}98\,;\,2{,}03)$,
-$(2{,}47\,;\,1{,}76)$, $(3{,}48\,;\,1{,}27)$, $(4{,}49\,;\,0{,}76)$,
-$(4{,}98\,;\,0{,}51)$, $(5{,}94\,;\,0{,}04)$ ⇒ droite $\frac{di}{dt}=3-0{,}5\,i$
-(unités de la figure), les **deux ordonnées à l'origine sont donc au trait, non
-estimées** (drapeaux levés).
-**Physique re-dérivée** : $\left.\frac{di}{dt}\right|_{i=0}=\frac{E}{L}
-=3\cdot10^{3}$ ⇒ $L=6/3000=\mathbf{2\ \text{mH}}$ ✓ (c'est exactement la
-Q2-2-1) ; $I_{max}=E/(R_1+r)=6\ \text{mA}$ ⇒ $R_1+r=1000\ \Omega$ ;
-$\tau=L/(R_1+r)=\mathbf{2\cdot10^{-6}\ \text{s}}$, valeur qu'on retrouve
-directement comme l'inverse de la pente
-($|{\rm pente}|=3\cdot10^{3}/6\cdot10^{-3}=5\cdot10^{5}\ \text{s}^{-1}$) ✓.
-Avec la lecture erronée $i\approx3$ mA on aurait trouvé $\tau=1\ \mu$s.
+valeur de $L$ est : $L=2\ \text{mH}$ », constante de temps $\tau$) — **aucune
+divergence de valeur, unité, indice ou exposant**. Barème marginal recompté au
+scan : $0{,}5\times3=\mathbf{1{,}5}$ ✓, et $2{,}0+1{,}5=\mathbf{3{,}5}$ ✓.
+**Reste de la figure 3 : conforme** au zoom ×3 (rhéostat $R$ après $K$ sur la
+branche supérieure, bobine en spires à droite avec « (L,r) » à gauche et « (b) »
+à droite, fil nu en bas, légende « Figure 3 »).
+**Figure 4 — re-mesurée intégralement, correction de 1ʳᵉ passe confirmée.**
+Étalonnage refait : traits principaux en abscisse
+$x=763{,}5/822{,}5/881{,}5/941/1000{,}5/1059{,}5/1119{,}5$ px (pas $59{,}3$) ⇒
+**6 divisions**, étiquettes **1** et **2** aux 2ᵉ et 3ᵉ traits ⇒ $1$ division
+$=1$ mA et **bord droit $=6$ mA** ; en ordonnée $y=696/756/815/876$ ⇒
+**3 divisions**, étiquettes **2**, **1**, **0** ⇒ **bord supérieur
+$=3\cdot10^{3}\ \text{A.s}^{-1}$**. Le segment est tracé **de coin à coin**,
+du coin supérieur gauche $(0\,;\,3\cdot10^{3})$ au coin inférieur droit
+$(6\ \text{mA}\,;\,0)$ : **les deux ordonnées à l'origine sont au trait**
+(drapeaux levés). Contrôle de la classe de défaut « flèche d'étalonnage lue comme
+période » : **sans objet** (pas d'axe de temps ici).
+**Physique re-dérivée par le vérificateur** :
+$\left.\frac{di}{dt}\right|_{i=0}=\frac{E}{L}=3\cdot10^{3}$ ⇒
+$L=6/3000=\mathbf{2\ \text{mH}}$ ✓ (c'est exactement ce que demande la Q2-2-1) ;
+$I_{max}=E/(R_1+r)=6\ \text{mA}$ ⇒ $R_1+r=1000\ \Omega$ ;
+$\tau=L/(R_1+r)=\mathbf{2\cdot10^{-6}\ \text{s}}$, retrouvé comme l'inverse du
+module de la pente ($3\cdot10^{3}/6\cdot10^{-3}=5\cdot10^{5}\ \text{s}^{-1}$) ✓.
+La lecture erronée $i\simeq3$ mA aurait donné $\tau=1\ \mu$s.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
   le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC
@@ -128,8 +142,11 @@ l'interrupteur $K$ à l'instant $t_0 = 0$.
       du circuit.
 
 *Figure 3 (schéma) :* boucle rectangulaire. Branche gauche : générateur de
-tension idéale $E$ (cercle), avec une flèche de courant $i$ partant du haut
-du générateur et orientée vers la droite. Branche supérieure : interrupteur
+tension idéale $E$ (cercle traversé d'un trait vertical), avec, **à sa gauche et
+hors de la boucle, une flèche pleine verticale orientée vers le haut étiquetée
+« E »** ; sur le fil de cette même branche gauche, **juste au-dessus du
+générateur, une flèche de courant $i$ (pointe pleine) orientée vers le haut**,
+étiquetée « i » à sa gauche. Branche supérieure : interrupteur
 $K$ (à gauche), puis conducteur ohmique de résistance $R$ ajustable
 (rectangle traversé d'une flèche oblique, symbole rhéostat), étiqueté « R ».
 Branche droite (verticale) : bobine dessinée en spires, étiquetée « (L,r) »

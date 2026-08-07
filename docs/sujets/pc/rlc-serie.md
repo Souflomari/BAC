@@ -413,117 +413,71 @@ $\simeq 10{,}5$ ms $= T_0/2$).
 
 ## 2025 — session normale — Exercice 3 (Partie 2)
 Source: https://www.alloschool.com/element/145796
-Statut: transcrit (non vérifié) — **2ᵉ passe de vérification effectuée
-(agent-vérificateur-tiers, 2026-08-06)** : les **six corrections majeures** de la
-1ʳᵉ passe sont **toutes confirmées au pixel** (voir « Relevés indépendants »
-ci-dessous), mais **deux divergences résiduelles ont été trouvées et corrigées**
-(couleur du trait pointillé « 7 » ; profondeur du premier minimum). Conformément
-au README §3 (« corriger et **laisser en `transcrit (non vérifié)`** »), l'entrée
-**reste non vérifiée** : elle n'appelle plus qu'une **relecture de contrôle** de
-ces deux points, tout le reste étant doublement vérifié.
-**Élément re-dérivé (2ᵉ fois, indépendamment)** : `element/145796` →
-`course-422/upload-87489`, **6 pages**
-(`0007-big.jpg` = 404) ; couverture p.1 relue — **NS28F**, SPC/BIOF, 3 h, coef 7 ;
-carte $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓.
-**Énoncé (texte) : conforme.** Diff caractère par caractère contre `0004-big.jpg`
-(chapeau « 2- Décharge d'un condensateur dans un dipôle RL », $u_C=U_0=10\ \text{V}$,
-position (2), $(t_0=0)$, Q2-1) et `0005-big.jpg` (Q2-2, Q2-2-1, Q2-2-2, Q2-3
-$\frac{dE_T}{dt}=-r.i^2$, Q2-4 $|E_{th}|$ entre $t=0$ et $t=t_A$) ; barème marginal
-recompté **$0{,}5\times5=2{,}5$** pts, et $1{,}0+2{,}5+1{,}5=\mathbf{5}$ ✓.
-**Figure 3 : trois divergences bloquantes, corrigées ci-dessous.**
-1. ❌→✅ **Le repère « $7\cdot10^{-5}\,\text{s}$ » n'encadre pas deux maxima
-   consécutifs.** Relevé au pixel : sa double flèche s'étend **exactement d'un
-   trait principal au suivant** (une seule division), entre les deux verticales
-   principales qui suivent $t_A$. C'est **l'étalon de l'axe des temps**
-   (non gradué) : **1 division $=7\cdot10^{-5}\ \text{s}$**.
-2. ❌→✅ **La pseudopériode ne vaut donc pas $7\cdot10^{-5}$ s.** Les extremums
-   tombent exactement sur les traits principaux, un sur deux (maxima aux
-   divisions 0, 4, 8 ; minima aux divisions 2, 6, 10) et les passages par zéro
-   aux divisions 1, 3, 5, 7, 9 : **deux maxima consécutifs sont séparés de
-   4 divisions**, soit $T=4\times7\cdot10^{-5}=\mathbf{2{,}8\cdot10^{-4}\ \text{s}}$.
-   **Recoupement physique décisif** : $T\simeq T_0=2\pi\sqrt{LC_0}$ avec
-   $C_0=1\ \mu\text{F}$ (Partie 1) et $L=2\ \text{mH}$ (valeur **donnée par le
-   sujet lui-même** en Partie 3, même bobine (b)) donne
-   $2\pi\sqrt{2\cdot10^{-3}\times10^{-6}}=2{,}81\cdot10^{-4}\ \text{s}$ ✓ ;
-   la lecture erronée ($7\cdot10^{-5}$ s) aurait exigé $L\approx0{,}12\ \text{mH}$,
-   incompatible avec l'énoncé.
-3. ❌→✅ **Il n'y a pas de « dernier maximum » en fin de tracé** : après le
-   troisième maximum la courbe redescend et le tracé **s'arrête sur le troisième
-   minimum, situé au bord droit du cadre**.
-**Drapeaux « lecture à confirmer » adjugés** : (a) valeur de départ — **levée** :
-$u_C(0)=\mathbf{10\ \text{V}}$ exactement (2,5 divisions de 4 V au-dessus de 0,
-mesuré au pixel), ce qui est précisément le $U_0=10\ \text{V}$ de l'énoncé ;
-(b) position de $t_B$ — **levée** : $t_B$ est le **passage par zéro descendant**
-qui suit le maximum $t_A$, exactement **une division ($T/4$) après $t_A$**, tous
-deux sur un trait principal (cohérent avec la Q2-2-2 : $i=C\frac{du_C}{dt}<0$
-entre $t_A$ et $t_B$) ; (c) profondeur du premier minimum — **corrigée en 2ᵉ passe** :
-$\approx-8{,}3\ \text{V}$ (et non $-8{,}5$), soit légèrement **sous** le trait
-principal non chiffré de $-8\ \text{V}$ ; la valeur n'est pas au trait, donc non
-affirmée.
-**Autres relevés confirmés** : le niveau **7** est marqué par un **trait pointillé
-+ son étiquette**, et **n'est pas un trait principal** (les traits principaux
-chiffrés sont 4, 0 et $-4$ ; ceux de $\pm8$ existent, non chiffrés) ; axe des
-abscisses non gradué, simple flèche « t » ; légende « Figure 3 ».
-
----
-
-**2ᵉ passe — relevés indépendants au pixel (agent-vérificateur-tiers,
-`0004-big.jpg` + `0005-big.jpg`, 2026-08-06).**
-
-*Étalonnage de la figure 3.* Traits principaux **noirs** relevés en abscisse à
-$x=561\,/\,621\,/\,680{,}5\,/\,740\,/\,799{,}5\,/\,859\,/\,918\,/\,977{,}5\,/\,
-1037\,/\,1096{,}5\,/\,1155{,}5$ px (pas constant $59{,}5$ px) ⇒ **10 divisions
-principales** ✓ ; en ordonnée à $y=357{,}5\,/\,417\,/\,476{,}5\,/\,536\,/\,595{,}5$
-px (même pas), étiquettes relevées **7** ($y=371$), **4** ($y=417$), **0**
-($y=477$, axe épais), **−4** ($y=535$) ⇒ **1 division $=4$ V**, traits $\pm8$
-présents non chiffrés, et **le niveau 7 tombe entre deux traits** ✓.
-
-*Span mesuré de la double flèche.* Encre de la flèche relevée sur les rangées
-$y=361$–$367$, de $x=859$ à $x=918$ px : **59 px pour une division de 59,5 px**,
-c'est-à-dire **exactement une division principale**, du trait de $t_B$ au trait
-suivant. **⇒ « $7\cdot10^{-5}$ s » est bien l'étalon d'une division, pas la
-pseudopériode.** (Classe de défaut « flèche d'étalonnage lue comme période » :
-confirmée.)
-
-*Période re-dérivée du tracé.* Extremums mesurés (centre de l'encre) :
-div 0 → $+10{,}0$ V ; div 2 → $-8{,}3$ V ; div 4 → $+7{,}0$ V ; div 6 → $-5{,}9$ V ;
-div 8 → $+4{,}9$ V ; div 10 → $-4{,}1$ V. Passages par zéro aux divisions
-**1, 3, 5, 7, 9**. Deux maxima consécutifs : **4 divisions** ⇒
-$T=4\times7\cdot10^{-5}=\mathbf{2{,}8\cdot10^{-4}\ \text{s}}$ ✓.
-**Contrôle de décroissance** : le rapport d'un extremum au suivant vaut
-$0{,}83$–$0{,}84$ **de façon parfaitement régulière** sur les six extremums —
-la lecture est donc auto-cohérente.
-**Contrôle physique re-fait indépendamment** :
-$T_0=2\pi\sqrt{LC_0}=2\pi\sqrt{2\cdot10^{-3}\times1\cdot10^{-6}}
-=2{,}810\cdot10^{-4}$ s, à $0{,}4\,\%$ de la valeur lue ✓ (la lecture
-$7\cdot10^{-5}$ s aurait exigé $L=0{,}12$ mH).
-
-*Autres points confirmés.* $u_C(0)=\mathbf{10{,}0\ \text{V}}$ (encre à
-$y=330$ px pour $x=565$, soit $9{,}85$ V à la division 0,067 ; l'ajustement
-cosinus amorti redonne une amplitude initiale de $9{,}98$ V) ✓ ; $t_A$ =
-maximum de la division 4, au trait pointillé $7$ V ($y=372{,}5$, mesuré
-$+6{,}99$ V) ✓ ; **$t_B$ = passage par zéro descendant de la division 5**, soit
-exactement **une division $=T/4$ après $t_A$** ✓ ; **aucun maximum final** : la
-dernière encre est à $x=1154$ px (division 9,97), à $-4{,}1$ V, **sur le
-troisième minimum au bord droit du cadre** ✓.
-
-*Divergences résiduelles trouvées et corrigées en 2ᵉ passe (d'où le maintien en
-« non vérifié ») :*
-1. ❌→✅ **Le trait pointillé du niveau 7 est NOIR, pas bleu.** Mesure des
-   pixels d'encre de ce trait : RGB moyen $(3,\,3,\,36)$ — quasi noir — alors que
-   le sous-quadrillage fin, mesuré sur les mêmes rangées, donne
-   $(118,\,113,\,180)$, franchement bleu ; l'axe épais donne $(2,\,4,\,10)$. Au
-   zoom ×6 le trait se lit sans hésitation comme une **série de tirets noirs**,
-   du même ton que l'axe et que le petit tiret de repère porté par l'axe des
-   ordonnées.
-2. ❌→✅ **Premier minimum : $\approx-8{,}3$ V, non $-8{,}5$ V.** Le trait
-   principal non chiffré de $-8$ V est à $y=595{,}5$ px et l'échelle vaut
-   $14{,}875$ px/V ; l'encre du minimum occupe $y=600$–$601$ (centre $600{,}5$),
-   soit **5,0 px sous le trait $-8$ V $\Rightarrow -8{,}34$ V**. Une valeur de
-   $-8{,}5$ V exigerait $y=603{,}2$, où le scan est blanc. La décroissance
-   géométrique ($10 \to 8{,}3 \to 7{,}0 \to 5{,}9 \to 4{,}9 \to 4{,}1$) confirme
-   ce relevé. La valeur reste **hors trait**, donc toujours signalée
-   « lecture à confirmer ».
+Statut: vérifié — **3ᵉ passe, vérificateur indépendant
+(agent-vérificateur-indépendant, 2026-08-07), diff OK.**
+**Élément re-dérivé** : `element/145796` → `course-422/upload-87489`, **6 pages**
+(`0007-big.jpg` = 404), URLs d'images ré-extraites du HTML de la page `element/`
+et non reprises du champ « Images lues » ; couverture p.1 relue — **NS28F**,
+SPC/BIOF (شعبة العلوم التجريبية مسلك العلوم الفيزيائية (خيار فرنسية)), 3 h,
+coef 7 ; carte du sujet $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓.
+**Portée du diff** : `0004-big.jpg` (chapeau EXERCICE 3, figure 1, Partie 1,
+chapeau « 2- Décharge d'un condensateur dans un dipôle RL », $u_C=U_0=10\ \text{V}$,
+position (2), $(t_0=0)$, Q2-1) et `0005-big.jpg` (Q2-2, Q2-2-1, Q2-2-2,
+Q2-3 $\frac{dE_T}{dt}=-r.i^2$, Q2-4 $|E_{th}|$ entre $t=0$ et $t=t_A$, Partie 3
+avec $L=2\ \text{mH}$) — **aucune divergence de valeur, unité, indice ou
+exposant**. Barème marginal recompté au scan : $0{,}5\times5=\mathbf{2{,}5}$ pour
+la Partie 2, $0{,}5+0{,}5=1{,}0$ (P1) et $0{,}25+0{,}75+0{,}5=1{,}5$ (P3), total
+$\mathbf{5}$ ✓. *(Deux normalisations orthographiques bénignes relevées et
+acceptées : le scan imprime « effet joule » et « entre les instant » en Q2-4.)*
+**Figure 3 — re-mesurée intégralement, élément par élément.**
+*Étalonnage refait :* traits principaux **noirs** en abscisse à $x=561$ puis tous
+les $59{,}5$ px jusqu'à $1156$ ⇒ **10 divisions**, cadre confirmé ; en ordonnée
+$y=358\,/\,417{,}5\,/\,477$ (axe épais) $/\,536{,}5\,/\,595{,}5$, étiquettes 4, 0,
+$-4$ ⇒ **1 division $=4$ V** ; sous-quadrillage **bleu** (mesuré : RGB moyen
+$\approx(78,76,133)$) tous les $5{,}95$ px, soit 10 carreaux par division, les
+traits $\pm8$ V étant bien **noirs** ($\approx(60,60,86)$) et non chiffrés ✓.
+*Double flèche « $7\cdot10^{-5}$ s » :* encre relevée colonne par colonne sur les
+rangées $y=355$–$375$ ; pointe gauche à $x=860$, pointe droite à $x=917$
+(**57 px**), entre les deux traits principaux $x=859$ et $x=918$ — donc
+**exactement une division**, jamais deux ni quatre. **La classe de défaut
+« flèche d'étalonnage lue comme période » est confirmée sur cette figure.**
+*Période mesurée indépendamment :* extremums localisés à $x=561/680/799/918/1037/1156$
+px (demi-période constante **119 px**) ⇒ $T=238$ px $=\mathbf{4{,}00}$ divisions
+$\Rightarrow T=4\times7\cdot10^{-5}=\mathbf{2{,}8\cdot10^{-4}\ \text{s}}$.
+*Physique re-dérivée par le vérificateur :* $T_0=2\pi\sqrt{LC_0}
+=2\pi\sqrt{2\cdot10^{-3}\times1\cdot10^{-6}}=2{,}810\cdot10^{-4}$ s, soit
+$0{,}4\,\%$ de l'écart avec la lecture ($C_0=1\ \mu$F de la Partie 1, $L=2$ mH
+donné par le sujet en Partie 3 — relu sur `0005-big.jpg`) ✓ ; la lecture
+« $T=7\cdot10^{-5}$ s » exigerait $L=0{,}124$ mH, exclu.
+*Valeurs relevées (centre du trait, échelle $14{,}875$ px/V)* : $+10{,}0$ /
+$-8{,}3$ / $+7{,}0$ / $-5{,}9$ / $+4{,}9$ / $-4{,}1$ V, décroissance géométrique
+de rapport $0{,}836$ **constant sur les cinq rapports** (auto-cohérence de la
+lecture) ; $u_C(0)$ **au bord gauche = 10,0 V** (ajustement sinusoïdal sur les
+colonnes 566–575 : $9{,}91$–$9{,}95$ V pour $t>0$, extrapolation $10{,}0$) —
+c'est le $U_0$ de l'énoncé ; le maximum $t_A$ **touche le pointillé 7 V**
+($y=373$ mesuré pour le niveau 7, encre du sommet $y=372$–$377$) ; **fin de tracé
+sur le 3ᵉ minimum au bord droit** ($x=1153$–$1156$, $-4{,}05$ V, aucune encre de
+courbe au-delà : ce qui dépasse à droite est la flèche de l'axe $t$) ✓.
+**Drapeaux « lecture à confirmer » adjugés :** (a) $u_C(0)$ — **levée**, valeur au
+trait, $10\ \text{V}$ ; (b) position de $t_B$ — **levée** : le trait pointillé
+$t_B$ est sur le trait principal $x=859$, où la courbe fait son **passage par zéro
+descendant**, exactement **une division ($T/4$) après $t_A$** ($x=799$) —
+cohérent avec Q2-2-2 ($i=C\,du_C/dt<0$ entre $t_A$ et $t_B$) ; (c) premier
+minimum — **maintenue** (valeur hors trait) : brut mesuré $-8{,}40$ V, mais la
+même méthode donne $6{,}89$ V pour un maximum qui est **au trait à 7,00 V**, d'où
+un biais systématique de $-1{,}5$ px ; après correction sur ce repère
+$\Rightarrow \mathbf{-8{,}30\ \text{V}}$, en accord avec l'ajustement géométrique
+($-8{,}36$). **La valeur $-8{,}3$ de l'entrée est confirmée** ; les autres
+extremums hors trait ($-5{,}9$, $+4{,}9$, $-4{,}1$) sont confirmés au même titre
+et gardent leur drapeau.
+**Trait du niveau 7 : NOIR et pointillé — reconfirmé.** Rangée $y=373$ : couverture
+intermittente (148 colonnes sur 230 ⇒ tirets) et encre RGB $(22,24,51)$, contre
+$(78,76,133)$ pour les rangées de sous-quadrillage voisines ($y=364/370/376$),
+franchement bleues. Le niveau 7 **n'est pas** un trait principal (majeurs à
+$+8$ et $+4$).
+**Historique** : 1ʳᵉ passe (six corrections majeures de figure) et 2ᵉ passe (deux
+corrections résiduelles : couleur du pointillé 7 ; profondeur du 1ᵉʳ minimum)
+**toutes confirmées** par cette 3ᵉ passe indépendante, sans nouvelle divergence.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 5 points ; **Partie 2**
@@ -609,41 +563,54 @@ lui-même en Partie 3 pour la même bobine (b)). Légende : « Figure 3 ».
 
 ## 2024 — session normale — Exercice 4 (Partie 1)
 Source: https://www.alloschool.com/element/145763
-Statut: transcrit (non vérifié) — **1ʳᵉ passe de vérification adversariale
-effectuée (agent-vérificateur-tiers, 2026-08-06)** : `element/145763` re-dérivé
-indépendamment → `course-422/upload-87465`, **6 pages** ; couverture p.1 relue —
-**NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte $7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓.
-**Énoncé : conforme.** Diff caractère par caractère contre `0004-big.jpg`
-(cadrage « Dans les circuits électriques… en cas de besoin. », $C=0{,}22$ nF,
-bobine $(b)$ $(L,r)$, $R$ ajustable, $R=R_0$, $t=0$) et `0005-big.jpg`
-(Q1-1 à Q1-4, $E_j=|\Delta E_t|$) ; barème marginal recompté
-$0{,}25+0{,}5+0{,}5+0{,}75=\mathbf{2{,}0}$ ✓, et $2{,}0+1{,}5=\mathbf{3{,}5}$ ✓.
-**Figure 1 (circuit) : conforme**, revue élément par élément au zoom ×4.
-**Mais la description de la figure 2 comportait une divergence, corrigée
-ci-dessous** ⇒ README §3 : l'entrée **reste `transcrit (non vérifié)`**.
-**Étalonnage de la figure 2 (mesuré au pixel).** Traits principaux noirs en
-abscisse : $x=619{,}5$ (axe) puis tous les $59{,}3$ px jusqu'à $1153{,}5$ ⇒
-**9 divisions** ; en ordonnée : $y=1270$ (cadre haut), $1329{,}5$, $1388{,}5$,
-$1448$ (axe épais), $1507{,}5$, $1566{,}5$, $1626$ (cadre bas) ; étiquettes
-**2** ($y=1388$), **0** ($y=1449$), **−2** ($y=1506$) ⇒ **1 division $=2$ V**,
-donc **le cadre va de $-6$ V à $+6$ V** (traits de $\pm4$ et $\pm6$ non chiffrés).
-**Aucune double flèche d'étalonnage sur cette figure** : l'axe des temps est
-totalement non gradué (contrôle de la classe « flèche d'étalonnage lue comme
-période » — sans objet ici).
-**❌→✅ Le maximum local qui suit le premier minimum ne vaut pas « autour de 3 »**,
-mais $\simeq\mathbf{+4{,}8\ \text{V}}$ (encre à $y=1305$ px). Valeurs relevées :
-$u_C(0)=\mathbf{+6{,}0\ \text{V}}$ (le tracé **part exactement du trait supérieur
-du cadre**, drapeau levé) ; $t_1$ = **1ʳᵉ division**, premier passage par zéro
-descendant ; premier minimum $\simeq-5{,}4$ V (division 2) ; maximum
-$\simeq+4{,}8$ V (division 4) ; $t_2$ = **6ᵉ division**, second minimum
-$\simeq\mathbf{-4{,}3\ \text{V}}$ ; maximum suivant $\simeq+3{,}9$ V (division 8) ;
-le tracé atteint le bord droit (division 9) en repassant par zéro. La suite des
-extremums décroît d'un facteur **0,897 constant** d'un extremum au suivant (six
-valeurs) — la lecture est auto-cohérente. La pseudopériode vaut donc
-**4 divisions** ; $t_1$ est un **zéro** (énergie dans la bobine) et $t_2$ un
-**extremum** (énergie dans le condensateur), ce qui donne son sens à la Q1-3 ✓.
-**Q1-4 re-dérivée** : $E_j=\frac12C\left(u_C(0)^2-u_C(t_2)^2\right)
-=\frac12\times0{,}22\cdot10^{-9}\times(36-18{,}5)\simeq1{,}9\cdot10^{-9}$ J ✓.
+Statut: vérifié — **2ᵉ passe, vérificateur indépendant
+(agent-vérificateur-indépendant, 2026-08-07), diff OK.**
+**Élément re-dérivé** : `element/145763` → `course-422/upload-87465`, **6 pages**
+(`0007-big.jpg` = 404), URLs d'images ré-extraites du HTML de la page `element/` ;
+couverture p.1 relue — **NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte du sujet
+$7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓.
+**Portée du diff** : `0004-big.jpg` (cadrage « Dans les circuits électriques… en
+cas de besoin. », les deux tirets d'objet, $C=0{,}22$ nF, bobine $(b)$ $(L,r)$,
+$R$ ajustable, $R=R_0$, $t=0$, figures 1 et 2) et `0005-big.jpg` (Q1-1 à Q1-4,
+$E_j=|\Delta E_t|$) — **aucune divergence de valeur, unité, indice ou exposant**.
+Barème marginal recompté au scan : $0{,}25+0{,}5+0{,}5+0{,}75=\mathbf{2{,}0}$ (P1)
+et $0{,}5\times3=1{,}5$ (P2) ⇒ $\mathbf{3{,}5}$ ✓.
+**Figure 1 (circuit) : conforme**, revue élément par élément au zoom ×3 —
+boucle rectangulaire, $K$ puis rhéostat $R$ (rectangle + flèche oblique, « R »
+en dessous) sur la branche supérieure, $C$ à gauche avec la flèche $u_C$
+**vers le haut**, bobine en spires à droite avec « (L,r) » à gauche du symbole et
+« (b) » à droite, fil nu en bas, légende « Figure 1 ». *(Nuance de rédaction, non
+bloquante : $K$ est sur la **branche supérieure, portion gauche**, en série avant
+$R$ — la formule « coin haut-gauche » de la description reste acceptable.)*
+**Figure 2 — re-mesurée intégralement.** Étalonnage refait : traits principaux
+**noirs** en abscisse $x=619{,}5$ (axe) puis tous les $59{,}3$ px jusqu'à
+$1153{,}5$ ⇒ **9 divisions** ; en ordonnée $y=1270$ (cadre haut), $1329{,}5$,
+$1388{,}5$, $1448$ (axe épais), $1507{,}5$, $1566{,}5$, $1626$ (cadre bas),
+étiquettes **2**, **0**, **−2** ⇒ **1 division $=2$ V**, cadre $-6\to+6$ V ✓ ;
+sous-quadrillage **bleu à $11{,}86$ px, soit 5 carreaux par division** ✓
+(à ne pas confondre avec les 10 carreaux de la figure 1 de l'Ex 1 du même sujet).
+**Contrôle de la classe de défaut « flèche d'étalonnage lue comme période » :
+sans objet** — l'axe des temps ne porte **ni graduation ni double flèche**, rien
+qu'une simple flèche « t » (balayage complet du cadre fait).
+**Relevés** : $u_C(0)=\mathbf{+6{,}0\ \text{V}}$ — au zoom ×10 le tracé **naît
+exactement à l'angle formé par l'axe des ordonnées et le trait supérieur du
+cadre** (drapeau levé, lecture au trait) ; extremums aux divisions **paires**
+($x=619{,}5/738/857/975{,}5/1094$) et zéros aux divisions **impaires**
+($x=679{,}6/798/918/1036$, mesurés) ⇒ **pseudopériode $=4$ divisions** ;
+valeurs $+6{,}0$ / $-5{,}4$ / $\mathbf{+4{,}8}$ / $-4{,}3$ / $+3{,}9$ V,
+de rapport $0{,}897$–$0{,}901$ **constant** sur les quatre rapports
+(auto-cohérence) ; le tracé atteint le bord droit (division 9) **en repassant par
+zéro** ✓. **$t_1$** : court trait vertical en pointillés **chevauchant l'axe** à
+la division 1, sur le premier **zéro descendant** ✓ ; **$t_2$** : long trait en
+tirets à la division 6, descendant de l'axe **jusqu'au creux** du second minimum
+✓ — $t_1$ zéro (énergie dans la bobine) et $t_2$ extremum (énergie dans le
+condensateur), ce qui donne son sens à la Q1-3.
+**Physique re-dérivée par le vérificateur** : $E_j=\frac12C\!\left(u_C(0)^2
+-u_C(t_2)^2\right)=\frac12\times0{,}22\cdot10^{-9}\times(36-18{,}5)
+\simeq\mathbf{1{,}9\cdot10^{-9}\ \text{J}}$ ✓ (à $t=0$ comme à $t_2$ le courant
+est nul, donc toute l'énergie est capacitive).
+**Historique** : la correction de 1ʳᵉ passe (maximum de la division 4 à
+$+4{,}8$ V et non « autour de 3 ») est **confirmée** ; aucune nouvelle divergence.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
   le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC

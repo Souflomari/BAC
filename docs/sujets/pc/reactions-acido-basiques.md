@@ -499,36 +499,51 @@ schéma.)*
 
 ## 2024 — session normale — Exercice 1 (Chimie), Partie 2
 Source: https://www.alloschool.com/element/145763
-Statut: transcrit (non vérifié) — **1ʳᵉ passe de vérification adversariale
-effectuée (agent-vérificateur-tiers, 2026-08-06)** : `element/145763` re-dérivé
-indépendamment → `course-422/upload-87465`, **6 pages** ; couverture p.1 relue —
-**NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte $7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓.
-**Énoncé : conforme.** Diff caractère par caractère contre `0002-big.jpg`
-(250 mg, $K_e=10^{-14}$, $AH_{(aq)}/A^-_{(aq)}$, $M(AH)=176$ g.mol$^{-1}$,
-$V_{SA}=50{,}0$ mL) et `0003-big.jpg` ($V_A=15{,}0$ mL,
+Statut: vérifié — **2ᵉ passe, vérificateur indépendant
+(agent-vérificateur-indépendant, 2026-08-07), diff OK.**
+**Élément re-dérivé** : `element/145763` → `course-422/upload-87465`, **6 pages**
+(`0007-big.jpg` = 404), URLs d'images ré-extraites du HTML de la page `element/` ;
+couverture p.1 relue — **NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte du sujet
+$7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓.
+**Portée du diff** : `0002-big.jpg` (250 mg, 25 °C, $K_e=10^{-14}$,
+$AH_{(aq)}/A^-_{(aq)}$, $M(AH)=176$ g.mol$^{-1}$, $V_{SA}=50{,}0$ mL, figure 2)
+et `0003-big.jpg` ($V_A=15{,}0$ mL, $\text{Na}^+_{(aq)}+\text{HO}^-_{(aq)}$,
 $C_B=1{,}50\cdot10^{-2}$ mol.L$^{-1}$, repère composé « 5/5-1- » bien présent,
-$V_B=8{,}5$ mL) ; barème marginal recompté
+$V_B=8{,}5$ mL) — **aucune divergence de valeur, unité, indice ou exposant** ;
+l'alternance d'indices du scan est fidèlement reproduite (**« éq »** en 5-1,
+**« eq »** en 5-2). Barème marginal recompté au scan :
 $0{,}5+0{,}5+0{,}5+0{,}75+0{,}5+0{,}75+0{,}75+0{,}5=\mathbf{4{,}75}$ ✓, et
-$2{,}25+4{,}75=\mathbf{7}$ ✓. **Mais la description de la figure 2 comportait une
-divergence bloquante, corrigée ci-dessous** ⇒ README §3 : l'entrée **reste
-`transcrit (non vérifié)`**.
-**❌→✅ Figure 2 — le saut de $(C_1)$ n'est pas « entre 5 et 10 ».** Grille
-mesurée au pixel : traits principaux noirs en abscisse à
-$x=685{,}5/744{,}5/803{,}5/863{,}5/922{,}5/982/1041{,}5/1100{,}5$ px (pas
-$59{,}3$) et en ordonnée à $y=1243{,}5/1303/1362{,}5/1421{,}5/1481{,}5/1540{,}5/
-1600/1658{,}5$ px ; étiquettes relevées **5** ($x=743$), **10** ($x=804$),
-**4** ($y=1539$), **2** ($y=1600$), **0** ($y=1659$, axe). ⇒ **1 division
-$=5\ \text{mL}$ et 2 unités de pH** ; le cadre fait donc **35 mL × pH 14**.
-Le pic de $(C_2)$ et le saut de $(C_1)$ tombent **exactement sur le 5ᵉ trait
-principal, soit $V_{BE}=\mathbf{25\ \text{mL}}$** (et non « entre 5 et 10 »).
-**Contrôle chimique (fait indépendamment)** :
-$C_A=C_BV_{BE}/V_A=1{,}50\cdot10^{-2}\times25/15=2{,}5\cdot10^{-2}$ mol.L$^{-1}$ ;
-$m=C_AV_{SA}M=2{,}5\cdot10^{-2}\times0{,}0500\times176=\mathbf{0{,}22\ \text{g}}$
-sur les 250 mg initiaux — parfaitement cohérent avec l'énoncé ✓. Et
-$pK_A=pH+\log(V_{BE}/V_B-1)$ à $V_B=8{,}5$ mL avec $pH$ lu $\simeq3{,}78$ donne
-$pK_A\simeq\mathbf{4{,}07}$, valeur recoupée par la lecture directe à la
-demi-équivalence ($V_B=12{,}5$ mL ⇒ $pH\simeq4{,}05$) et par la valeur
-tabulée de l'acide ascorbique ($pK_{A1}=4{,}1$) ✓.
+$2{,}25+4{,}75=\mathbf{7}$ ✓.
+**Figure 2 — re-mesurée intégralement.** Étalonnage refait : traits principaux
+**noirs** en abscisse $x=685{,}5/744{,}5/803{,}5/863{,}5/922{,}5/982/1041{,}5/
+1100{,}5$ px (pas $59{,}3$) ⇒ **7 divisions**, étiquettes **5** et **10** aux 2ᵉ
+et 3ᵉ traits ⇒ $1$ division $=5$ mL, cadre $=\mathbf{35\ \text{mL}}$ ✓ ; en
+ordonnée $y=1243{,}5/1303/1362{,}5/1421{,}5/1481{,}5/1540{,}5/1600/1658{,}5$ px,
+étiquettes **4**, **2**, **0** (axe) ⇒ $1$ division $=2$ unités de pH, cadre
+$=\mathbf{pH\ 14}$ ✓ ; sous-quadrillage bleu fin.
+**Équivalence re-localisée au pixel** : le pic de $(C_2)$ occupe les colonnes
+$x=981$–$983$ (encre pleine hauteur, du bas du cadre à $y=1245$ = **bord
+supérieur**) et est **centré sur $x=982$**, c'est-à-dire exactement le 5ᵉ trait
+principal après l'axe ⇒ $V_{BE}=\mathbf{25{,}0\ \text{mL}}$ ; le saut de $(C_1)$
+est au même endroit (pH mesuré $5{,}4$ à $x=970$ et $10{,}4$ à $x=990$). La
+correction de 1ʳᵉ passe est **confirmée**.
+**Trace de $(C_1)$ re-relevée** : $pH(0)\simeq\mathbf{2{,}85}$ (encre à
+$y=1573{,}5$ px pour $V_B=0{,}3$ mL) — l'entrée annonce $\simeq2{,}8$, écart
+$0{,}05$ pH $=1{,}5$ px, **dans la tolérance du drapeau, qui est maintenu** ;
+$pH=4{,}00$ atteint vers $V_B=11{,}6$ mL et la courbe reste sur le trait $pH\,4$
+de $\simeq11{,}3$ à $\simeq12{,}2$ mL (la formule « $\simeq pH\,4$ vers 12–13 mL »
+est donc exacte) ; palier final $pH=\mathbf{11{,}45}$ au bord droit
+($V_B=35$ mL) — drapeau maintenu ; étiquettes $(C_1)$ / $(C_2)$ relevées à
+$x\simeq890$ et $\simeq956$, **à gauche du pic, $(C_1)$ au-dessus de $(C_2)$** ✓.
+**Chimie re-dérivée par le vérificateur** :
+$C_A=C_BV_{BE}/V_A=1{,}50\cdot10^{-2}\times25/15=\mathbf{2{,}5\cdot10^{-2}}$
+mol.L$^{-1}$ (Q3) ; $m=C_AV_{SA}M=2{,}5\cdot10^{-2}\times0{,}0500\times176
+=\mathbf{0{,}22\ \text{g}}$ sur les 250 mg initiaux (Q4) — cohérent avec un
+comprimé partiellement oxydé ✓ ; $pK_A=pH+\log(V_{BE}/V_B-1)$ à $V_B=8{,}5$ mL
+avec $pH$ mesuré $3{,}76$ ⇒ $pK_A=\mathbf{4{,}05}$ (Q5-3), recoupé par la lecture
+directe à la demi-équivalence ($V_B=12{,}5$ mL ⇒ $pH=4{,}05$) et par la valeur
+tabulée de l'acide ascorbique ($pK_{A1}=4{,}1$) ✓ ; l'étalonnage de la figure est
+donc validé par trois voies indépendantes.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
   le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC

@@ -72,34 +72,48 @@ tangente $(T)$ (en pointillés) est tracée au point d'abscisse $t_1 = 4\ \text{
 
 ## 2024 — session normale — Exercice 1 (Chimie), Partie 1
 Source: https://www.alloschool.com/element/145763
-Statut: transcrit (non vérifié) — **1ʳᵉ passe de vérification adversariale
-effectuée (agent-vérificateur-tiers, 2026-08-06)** : `element/145763` re-dérivé
-indépendamment → `course-422/upload-87465`, **6 pages** ; couverture p.1 relue —
-**NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte du sujet
-$7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓. **Énoncé (texte, valeurs, unités, barème) :
-conforme**, diff caractère par caractère contre `0002-big.jpg` ($V=200$ mL,
-$\theta$, $t_1=60$ h, affirmations a/b/c, unité mmol.L$^{-1}$.h$^{-1}$) ; barème
-marginal recompté $0{,}75+0{,}5+1=\mathbf{2{,}25}$ ✓. **Mais la description de la
-figure 1 comportait une divergence bloquante, corrigée ci-dessous** ⇒ conformément
-au README §3, l'entrée **reste `transcrit (non vérifié)`** et appelle un nouveau
-tour de lecture sur ce seul point.
-**❌→✅ Figure 1 — confusion entre la courbe et la tangente $(T)$.** L'ancienne
-description faisait partir **la courbe** de « une valeur légèrement au-dessus du
-repère $0{,}2$ » à $t=0$. Relevé au pixel : **la courbe part exactement de
-l'origine $(0\,;\,0)$** (encre suivie jusqu'au coin, $x=0{,}025$ mmol à $t=1{,}7$ h)
-— c'est **la droite $(T)$** qui coupe l'axe des ordonnées vers $0{,}26$ mmol.
-Grille mesurée : traits principaux à $x=785{,}5/844{,}5/904/963{,}5/1022{,}5/1082/
-1141{,}5$ px et $y=1066/1006{,}5/947{,}5/888/828{,}5/769{,}5$ px (pas $59{,}3$ px) ;
-étiquettes **40** ($x=845$) et **80** ($x=904$), **0,1** ($y=1007$) et **0,2**
-($y=947$) ⇒ **1 division $=40$ h et $0{,}1$ mmol**. Le **palier vaut donc
-$\simeq0{,}5$ mmol** (encre à $y=772$ px, le trait principal non chiffré de $0{,}5$
-étant à $769{,}5$) — et non « une valeur non chiffrée au-dessus de 0,2 » ; il
-n'y a **aucun trait pointillé** au niveau du palier (c'est la courbe elle-même qui
-s'aplatit). Point de tangence marqué « × » relevé à $t\simeq60$ h,
-$x\simeq0{,}41$ mmol ; pente de $(T)$ mesurée $2{,}5\cdot10^{-3}$ mmol.h$^{-1}$ ⇒
-$v_{vol}(t_1)=\frac1V\frac{dx}{dt}\simeq1{,}3\cdot10^{-2}$ mmol.L$^{-1}$.h$^{-1}$
-(la figure est bien exploitable pour la Q3) ; $x_{max}/2=0{,}25$ mmol donne
-$t_{1/2}\simeq24$ h (Q2).
+Statut: vérifié — **2ᵉ passe, vérificateur indépendant
+(agent-vérificateur-indépendant, 2026-08-07), diff OK.**
+**Élément re-dérivé** : `element/145763` → `course-422/upload-87465`, **6 pages**
+(`0007-big.jpg` = 404), URLs d'images ré-extraites du HTML de la page `element/`
+et non reprises du champ « Images lues » ; couverture p.1 relue — **NS 28F**,
+SPC/BIOF, 3 h, coef 7 ; carte du sujet $7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓.
+**Portée du diff** : `0002-big.jpg` intégral pour la Partie 1 (cadrage
+« L'acide ascorbique… à l'air ; … », $V=200$ mL, $\theta$, $t=t_1=60$ h,
+affirmations a/b/c mot pour mot, unité $\text{mmol.L}^{-1}.\text{h}^{-1}$,
+figure 1) — **aucune divergence de valeur, unité, indice ou exposant**. Barème
+marginal recompté au scan : $0{,}75+0{,}5+1=\mathbf{2{,}25}$ ✓ ; avec la Partie 2
+($4{,}75$, cf. `reactions-acido-basiques.md`) ⇒ $\mathbf{7}$ ✓.
+**Figure 1 — re-mesurée intégralement.** Étalonnage refait : traits principaux
+**noirs** en abscisse $x=785{,}5/844{,}5/904/963{,}5/1022{,}5/1082/1141{,}5$ px
+(pas $59{,}3$) ⇒ **6 divisions**, étiquettes **40** et **80** aux 2ᵉ et 3ᵉ traits
+⇒ $1$ division $=40$ h et **origine $t=0$ sur l'axe** ($x=785{,}5$), cadre
+$=240$ h ✓ ; en ordonnée $y=1066\,/\,1006{,}5\,/\,947{,}5\,/\,888\,/\,828{,}5\,/\,
+769{,}5$ px, étiquettes **0,1** et **0,2** ⇒ $1$ division $=0{,}1$ mmol, traits
+$0{,}3$–$0{,}4$–$0{,}5$ présents non chiffrés, bord supérieur à $y=739{,}5$ ⇒
+**5,5 divisions** ✓ ; sous-quadrillage **bleu** tous les $5{,}93$ px, soit
+**10 carreaux par division** ✓.
+**Départ de la courbe : re-vérifié colonne par colonne.** À $x=788$ px
+($t=1{,}7$ h) l'encre de la courbe est à $0{,}017$–$0{,}034$ mmol, et elle
+rejoint le coin : **la courbe part bien de l'origine $(0\,;\,0)$**. La droite
+$(T)$, elle, coupe l'axe des ordonnées à $\mathbf{0{,}2585}$ mmol (mesurée sur
+les colonnes 793→841 : $0{,}2715\to0{,}3541$ mmol). La confusion courbe/tangente
+signalée en 1ʳᵉ passe est donc **confirmée comme corrigée**.
+**Palier** : encre à $y\simeq772$ px contre $769{,}5$ pour le trait principal non
+chiffré de $0{,}5$ ⇒ $\mathbf{0{,}496}$ mmol, le tracé se couche **sur** ce trait
+et le suit jusqu'au bord droit ; **aucun trait pointillé** n'est ajouté ✓.
+**Drapeau « lecture à confirmer » adjugé** : ordonnée à l'origine de $(T)$ —
+**maintenue** (valeur hors trait) ; mesure indépendante $0{,}26$ mmol, l'entrée
+est confirmée.
+**Physique re-dérivée par le vérificateur** : pente de $(T)$
+$=2{,}56\cdot10^{-3}$ mmol.h$^{-1}$ ⇒ $v_{vol}(t_1)=\frac1V\frac{dx}{dt}
+=2{,}56\cdot10^{-3}/0{,}200=\mathbf{1{,}3\cdot10^{-2}}$ mmol.L$^{-1}$.h$^{-1}$
+(Q3) ; point de tangence « × » relevé à $t=60{,}4$ h, $x=0{,}411$ mmol, donc bien
+au $t_1=60$ h de l'énoncé ; $x_{max}/2=0{,}25$ mmol atteint à
+$t_{1/2}\simeq\mathbf{24}$ h (Q2) — la figure est exploitable pour les deux
+questions ✓.
+**Historique** : la correction de 1ʳᵉ passe (courbe partant de l'origine, palier
+à $0{,}5$ mmol) est **confirmée** ; aucune nouvelle divergence.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
   le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC
