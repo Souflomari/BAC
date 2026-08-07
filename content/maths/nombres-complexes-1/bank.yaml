@@ -6,23 +6,26 @@
 # de leçon (r-bac + r-variation, [[exercise:]] à R6), pas la rampe embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les six entrées sont des transcriptions FIDÈLES des six
+# exercises.yaml). Les sept entrées sont des transcriptions FIDÈLES des sept
 # entrées « vérifié » de docs/sujets/maths/nombres-complexes-1.md (re-fetch
 # AlloSchool indépendant + diff caractère-par-caractère, agent-vérificateur-
 # adversarial — 2026-07-12 pour 2019/2022/2023, 2026-08-06 pour 2020/2021/
-# 2024) — les SEULS sujets vérifiés recensés pour cette notion : 2019
-# (Exercice 2, 3 pts), 2020 (Exercice 2, 5 pts), 2021 (Exercice 3, 5 pts —
-# numérotée « Exercice 2 » par erreur dans le corps du scan, Composantes
-# fait autorité), 2022 (Exercice 2, 3 pts), 2023 (Exercice 2, 3 pts) et 2024
-# (Exercice 3, 4 pts), tous session normale, filière Sciences Expérimentales
-# (SVT et Sciences Physiques, BIOF). Aucun autre sujet n'est disponible —
-# introuvable = absent, jamais inventé. Raisonnement rédigé à la voix experte
+# 2024, 2026-08-07 pour 2018) — les SEULS sujets vérifiés recensés pour cette
+# notion : 2018 (Exercice 2, 3 pts — vérifié AVEC correction de fond sur
+# l'affixe $a$ de la question 2)b), voir le champ `sourcing.note` de
+# l'entrée), 2019 (Exercice 2, 3 pts), 2020 (Exercice 2, 5 pts), 2021
+# (Exercice 3, 5 pts — numérotée « Exercice 2 » par erreur dans le corps du
+# scan, Composantes fait autorité), 2022 (Exercice 2, 3 pts), 2023
+# (Exercice 2, 3 pts) et 2024 (Exercice 3, 4 pts), tous session normale,
+# filière Sciences Expérimentales (SVT et Sciences Physiques, BIOF). Aucun
+# autre sujet n'est disponible — introuvable = absent, jamais inventé.
+# Raisonnement rédigé à la voix experte
 # de la maison sur 100 % des questions ; barème transcrit tel quel dans les
 # énoncés ; conventions KaTeX (block scalars pour la prose, KaTeX brut entre
 # apostrophes simples dans steps[].math, notes sans backslash).
 #
 # SCOPE NOTE (divulgation honnête, authoring-side — reprend la note déjà
-# posée dans exercises.yaml) : les six sujets mobilisent tous la forme
+# posée dans exercises.yaml) : les sept sujets mobilisent tous la forme
 # trigonométrique/exponentielle et les formules de rotation (z' = e^{iθ}z, sa
 # version décentrée z' - ω = e^{iθ}(z - ω), argument d'un produit / d'un
 # quotient / d'un conjugué) — un registre que le corps de la leçon (R1–R5,
@@ -32,7 +35,7 @@
 # place au R5 (« coefficient réel ⇒ vecteurs colinéaires »), mais le mot
 # « homothétie » lui-même n'est pas un terme du corps R1–R5. Le rung R6 le
 # signale déjà pour r-bac (note de validation en pied de lesson.md,
-# checkpoint cp-bac-exponentielle) ; les champs `reasoning` des six entrées
+# checkpoint cp-bac-exponentielle) ; les champs `reasoning` des sept entrées
 # ci-dessous bridgent le même écart au point d'usage, en nommant
 # explicitement la propriété mobilisée chaque fois qu'elle sort du corps
 # R1–R5 actuel.
@@ -960,3 +963,122 @@ entries:
             note: "On reporte l'argument de b prime, pi sur 4 (question précédente), et celui de a, moins pi sur 4 (question 1)."
           - math: '\left(\overrightarrow{OA},\ \overrightarrow{OB''}\right) \equiv \dfrac{\pi}{2}\ [2\pi] \implies OAB'' \ \text{rectangle en}\ O'
             note: "Angle droit en O : le triangle est rectangle en O."
+
+  # ── bk-2018-n-x2 — 2018 N, Exercice 2 : équation, rotation, translation, triangle équilatéral ──
+  # Voir sourcing.note : correction de fond confirmée sur l'affixe a de la question 2)b) — SANS radical.
+  - id: bk-2018-n-x2
+    title: "Équation du second degré, rotation, translation et triangle équilatéral"
+    source:
+      year: 2018
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 2"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), AlloSchool NS22F, element/94699 (Exercice 2, « Nombres
+        complexes » ; barème 3 points). Transcription fidèle de l'entrée
+        « vérifié avec correction de fond » de
+        docs/sujets/maths/nombres-complexes-1.md, section « 2018 — session
+        normale — Exercice 2 » (re-fetch AlloSchool indépendant + diff
+        caractère-par-caractère conforme au scan, agent-vérificateur-
+        adversarial, 2026-08-07 ; re-lecture de confirmation indépendante,
+        2026-08-07). NB : l'affixe du point $A$ à la question 2)b) est
+        $a=-\tfrac12+\tfrac32 i$ (SANS radical), confirmée deux fois sur le
+        scan au zoom — et non $-\tfrac12+\tfrac{\sqrt3}{2}i$ comme un
+        premier brouillon l'avait transcrite par erreur avant vérification ;
+        la valeur corrigée est celle qui articule la question 1) (racine à
+        partie imaginaire positive de $2z^2+2z+5=0$) à la question 2)b) —
+        voir docs/sujets pour le détail du contrôle au pixel. Voir SCOPE
+        NOTE en tête de fichier : mobilise la forme
+        trigonométrique/exponentielle et les formules de rotation/
+        translation, au-delà du socle R1–R5 formel.
+    intro: |-
+      **Nombres complexes (examen national, session normale 2018, Sciences Expérimentales).**
+
+      Le fil de l'exercice : une équation du second degré dont l'une des racines devient l'affixe d'un point $A$, une rotation $R$ de centre $O$ et d'angle $\dfrac{2\pi}{3}$, puis une translation, jusqu'à un triangle équilatéral.
+    questions:
+      - id: q1
+        part: "Une équation du second degré dans ℂ"
+        stem: |-
+          **(0,75 pt)** Résoudre dans l'ensemble $\mathbb{C}$ des nombres complexes l'équation : $2z^2 + 2z + 5 = 0$
+        reasoning: |-
+          Coefficients réels, discriminant à calculer (même réflexe qu'à chaque équation du second degré dans $\mathbb{C}$) : ici $\Delta$ est strictement négatif, donc on écrit $\sqrt\Delta$ avec $i$, et les deux solutions sont conjuguées.
+
+          Garde en tête la solution à partie imaginaire **positive** : c'est exactement l'affixe $a$ du point $A$ qui porte toute la suite de l'exercice, à la question 2)b).
+        steps:
+          - math: '\Delta = 2^2 - 4\times2\times5 = 4-40 = -36'
+            note: "Discriminant de 2z carré plus 2z plus 5."
+          - math: '\Delta<0 \implies \sqrt\Delta = i\sqrt{36} = 6i'
+            note: "Delta négatif : sa racine s'écrit avec i (racine de 36 = 6)."
+          - math: 'z = \dfrac{-2 \pm 6i}{2\times2} = \dfrac{-2\pm6i}{4} = -\dfrac12 \pm \dfrac32 i'
+            note: "Formule (-b plus ou moins racine de Delta) sur 2a, avec a=2, b=2."
+          - math: 'S = \left\{\, -\dfrac12-\dfrac32 i\ ;\ -\dfrac12+\dfrac32 i \,\right\}'
+            note: "Deux solutions conjuguées. On garde -1/2 + 3/2 i, celle qui sert dans la suite."
+      - id: q2
+        part: "La rotation d'angle 2π/3 : forme trigonométrique, puis image d'un point"
+        stem: |-
+          Dans le plan complexe rapporté à un repère orthonormé direct $(O, \vec{u}, \vec{v})$, on considère la rotation $R$ de centre $O$ et d'angle $\dfrac{2\pi}{3}$
+
+          **(0,25 pt)** Ecrire sous forme trigonométrique le nombre complexe $d = -\dfrac{1}{2} + \dfrac{\sqrt{3}}{2}i$
+        reasoning: |-
+          On calcule module et argument à partir de la forme algébrique de $d$ (rung R4 pour le module ; l'argument se lit en comparant $\cos\theta=\text{Re}(d)/|d|$ et $\sin\theta=\text{Im}(d)/|d|$ à des valeurs remarquables). Ici les parties réelle et imaginaire correspondent exactement à l'angle $\dfrac{2\pi}{3}$ — pas un hasard : c'est l'angle même de la rotation $R$.
+        steps:
+          - math: '|d| = \sqrt{\left(-\dfrac12\right)^2+\left(\dfrac{\sqrt3}{2}\right)^2} = \sqrt{\dfrac14+\dfrac34} = 1'
+            note: "Module de d, rung R4."
+          - math: '\cos\theta=-\dfrac12,\ \sin\theta=\dfrac{\sqrt3}{2} \implies \theta=\dfrac{2\pi}{3}'
+            note: "Angle remarquable : deux pi sur trois."
+          - math: 'd = \cos\dfrac{2\pi}{3}+i\sin\dfrac{2\pi}{3}'
+            note: "Forme trigonométrique de d (module 1)."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** On considère le point $A$ d'affixe $a = -\dfrac{1}{2} + \dfrac{3}{2}i$ et le point $B$ image du point $A$ par la rotation $R$. Soit $b$ l'affixe du point $B$, montrer que $b = d \cdot a$
+        reasoning: |-
+          Une rotation de centre $O$ et d'angle $\theta$ se traduit sur les affixes par $z'=e^{i\theta}z$ — au-delà du socle R1–R5, déjà signalé en tête de banque. Ici $\theta=\dfrac{2\pi}{3}$, et la question précédente vient justement d'écrire $d$ sous la forme trigonométrique de cet angle, c'est-à-dire $d=e^{i2\pi/3}$. La formule de la rotation appliquée à $A$ donne donc directement $b=e^{i2\pi/3}a=d\cdot a$ — une lecture, pas un nouveau calcul.
+        steps:
+          - math: '(R,\ \text{centre } O,\ \text{angle } \dfrac{2\pi}{3}) \implies b = e^{i2\pi/3}\,a'
+            note: "Formule de la rotation, centre O, appliquée au point A pour obtenir son image B."
+          - math: 'd = \cos\dfrac{2\pi}{3}+i\sin\dfrac{2\pi}{3} = e^{i2\pi/3}'
+            note: "Rappel de la question précédente : d est exactement e puissance i deux pi sur trois."
+          - math: 'b = e^{i2\pi/3}\,a = d\cdot a'
+            note: "On remplace : b = d fois a."
+      - id: q4
+        part: "La translation de vecteur OA"
+        stem: |-
+          Soit $t$ la translation de vecteur $\overrightarrow{OA}$ et $C$ l'image de $B$ par la translation $t$ et $c$ l'affixe de $C$
+
+          **(0,75 pt)** Vérifier que $c = b + a$ et en déduire que $c = a\left(\dfrac{1}{2} + \dfrac{\sqrt{3}}{2}i\right)$ *(on pourra utiliser la question 2)b))*
+        reasoning: |-
+          Une translation de vecteur $\vec w$ transforme un point d'affixe $z$ en un point d'affixe $z'=z+z_{\vec w}$ (rung R5 : additionner l'affixe du vecteur, c'est additionner les deux vecteurs correspondants). Ici $\vec w=\overrightarrow{OA}$, et l'affixe d'un vecteur $\overrightarrow{OM}$ est celle de $M$ lui-même, donc $z_{\overrightarrow{OA}}=a$. Appliquée à $B$, la translation donne directement $c=b+a$.
+
+          Pour la seconde égalité, on remplace $b$ par $d\cdot a$ (question précédente) : $c=d\cdot a+a=a(d+1)$. Il ne reste qu'à substituer la forme algébrique de $d$ trouvée en 2)a).
+        steps:
+          - math: 'c = b + z_{\overrightarrow{OA}} = b+a'
+            note: "Translation de vecteur OA (R5) : on ajoute l'affixe a à celle de B."
+          - math: 'c = d\,a + a = a\,(d+1)'
+            note: "On remplace b par d fois a (question précédente) et on factorise par a."
+          - math: 'd+1 = \left(-\dfrac12+\dfrac{\sqrt3}{2}i\right)+1 = \dfrac12+\dfrac{\sqrt3}{2}i'
+            note: "On reporte la forme algébrique de d, question 2)a)."
+          - math: 'c = a\left(\dfrac12+\dfrac{\sqrt3}{2}i\right)'
+            note: "L'égalité annoncée."
+      - id: q5
+        stem: |-
+          **(0,75 pt)** Déterminer $\arg\left(\dfrac{c}{a}\right)$ puis en déduire que le triangle $OAC$ est équilatéral.
+        reasoning: |-
+          La question précédente donne $c=a\left(\dfrac12+\dfrac{\sqrt3}{2}i\right)$, donc $\dfrac{c}{a}=\dfrac12+\dfrac{\sqrt3}{2}i$ (dès que $a\neq0$, ce qui est le cas). C'est exactement le nombre $e^{i\pi/3}$ : module $1$, argument $\dfrac{\pi}{3}$ — un angle remarquable au-delà du socle R1–R5, comme pour $d$ à la question 2)a).
+
+          Deux informations en découlent (rung R5 : le quotient de deux affixes-vecteurs porte le rapport des longueurs et l'angle entre elles). Le module $1$ donne $|c|=|a|$, donc $OA=OC$ : le triangle est isocèle en $O$. L'argument $\dfrac{\pi}{3}$ est une mesure de l'angle $\left(\overrightarrow{OA},\overrightarrow{OC}\right)$. Un triangle isocèle dont l'angle au sommet vaut $\dfrac{\pi}{3}$ a nécessairement ses deux autres angles égaux à $\dfrac{\pi-\pi/3}{2}=\dfrac{\pi}{3}$ aussi : les trois angles valent $\dfrac{\pi}{3}$, le triangle est donc équilatéral.
+        steps:
+          - math: '\dfrac{c}{a} = \dfrac12+\dfrac{\sqrt3}{2}i'
+            note: "On divise l'égalité de la question précédente par a (non nul)."
+          - math: '\left|\dfrac{c}{a}\right| = \sqrt{\left(\dfrac12\right)^2+\left(\dfrac{\sqrt3}{2}\right)^2} = 1, \qquad \arg\left(\dfrac{c}{a}\right) = \dfrac{\pi}{3}'
+            note: "Module et argument de un demi plus racine de trois sur deux i : angle remarquable pi sur trois."
+          - math: '\left|\dfrac{c}{a}\right|=1 \implies |c|=|a| \implies OA=OC'
+            note: "Module du quotient égal à 1 : les deux longueurs OA et OC sont égales, triangle isocèle en O."
+          - math: '\left(\overrightarrow{OA},\ \overrightarrow{OC}\right) \equiv \dfrac{\pi}{3}\ [2\pi]'
+            note: "Argument du quotient des affixes-vecteurs : mesure de l'angle en O."
+          - math: 'OA=OC\ \text{et angle en}\ O = \dfrac{\pi}{3} \implies OAC\ \text{équilatéral}'
+            note: "Isocèle avec un angle au sommet de pi sur trois : les deux autres angles valent aussi pi sur trois (somme des angles = pi) — triangle équilatéral."

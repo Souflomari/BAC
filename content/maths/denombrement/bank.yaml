@@ -6,15 +6,16 @@
 # de leçon (r-bac + r-variation, [[exercise:]] à R8), pas la rampe embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les trois entrées sont des transcriptions FIDÈLES des trois
-# entrées « vérifié » de docs/sujets/maths/denombrement.md (re-fetch AlloSchool
-# indépendant + diff caractère-par-caractère, agent-vérificateur-adversarial,
-# 2026-07-12 pour 2019/2022, 2026-08-06 pour 2024) — les SEULS sujets vérifiés
-# recensés pour cette notion : 2019, 2022 et 2024, tous session normale,
-# filière Sciences Expérimentales (SVT et Sciences Physiques, BIOF) — 2019 et
-# 2022 en « Exercice 3 » sur leur copie (barème 3 points chacun), 2024 en
-# « Exercice 4 » (barème 2 points). Aucun autre sujet n'est disponible —
-# introuvable = absent, jamais inventé. Raisonnement rédigé à la voix experte
+# exercises.yaml). Les quatre entrées sont des transcriptions FIDÈLES des
+# quatre entrées « vérifié » de docs/sujets/maths/denombrement.md (re-fetch
+# AlloSchool indépendant + diff caractère-par-caractère, agent-vérificateur-
+# adversarial, 2026-07-12 pour 2019/2022, 2026-08-06 pour 2024, 2026-08-07
+# pour 2018) — les SEULS sujets vérifiés recensés pour cette notion : 2018,
+# 2019, 2022 et 2024, tous session normale, filière Sciences Expérimentales
+# (SVT et Sciences Physiques, BIOF) — 2018, 2019 et 2022 en « Exercice 3 »
+# sur leur copie (barème 3 points chacun), 2024 en « Exercice 4 » (barème 2
+# points). Aucun autre sujet n'est disponible — introuvable = absent, jamais
+# inventé. Raisonnement rédigé à la voix experte
 # de la maison sur 100 % des questions (citant les rungs R1/R5/R7 de
 # lesson.md), tous les comptages et probabilités re-dérivés et vérifiés à la
 # main avant transcription ; barème transcrit tel quel dans les énoncés ;
@@ -44,6 +45,19 @@
 # des trois probabilités déjà obtenues, sans dépendre d'un rung non écrit.
 # Signalé ici pour la revue pédagogique ; à absorber dans le corps de la
 # leçon (ou à faire pointer explicitement vers l'autre notion) si ce type de
+# question devient courant dans le corpus.
+#
+# SCOPE NOTE 2 (divulgation honnête, authoring-side) : la question 2 du sujet
+# 2018 (bk-2018-n-x3, q2/q3) introduit une variable aléatoire BINOMIALE
+# (répétition de la même expérience trois fois, avec remise dans l'urne
+# après chaque tirage). Le corps R1–R7 de lesson.md couvre le dénombrement
+# et l'équiprobabilité (R7), pas les variables aléatoires ni la loi
+# binomiale, qui n'y sont pas formellement introduites. Le raisonnement de
+# cette entrée construit le résultat directement à partir de la définition
+# d'une répétition d'épreuves indépendantes de même probabilité de succès —
+# sans dépendre d'un rung non écrit — et le signale explicitement au point
+# d'usage. Signalé ici pour la revue pédagogique ; à absorber dans le corps
+# de la leçon (ou à faire pointer vers la notion adéquate) si ce type de
 # question devient courant dans le corpus.
 
 notion: maths/denombrement
@@ -291,3 +305,88 @@ entries:
             note: "Les deux quantités diffèrent."
           - math: 'A\ \text{et}\ B\ \text{ne sont pas indépendants}'
             note: "Le critère d'indépendance n'est pas vérifié."
+
+  # ── bk-2018-n-x3 — 2018 N, Exercice 3 : urne à deux couleurs numérotées, dénombrement puis binomiale ──
+  # Voir SCOPE NOTE 2 en tête de fichier (question 2, variable binomiale non couverte par R1–R7).
+  - id: bk-2018-n-x3
+    title: "Urne à deux couleurs numérotées — dénombrement puis variable binomiale"
+    source:
+      year: 2018
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 3"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), AlloSchool NS22F, element/94699 (Exercice 3, « Calcul
+        des probabilités » ; barème 3 points). Transcription fidèle de
+        l'entrée « vérifié » de docs/sujets/maths/denombrement.md, section
+        « 2018 — session normale — Exercice 3 » (re-fetch AlloSchool
+        indépendant + diff caractère-par-caractère conforme au scan, agent-
+        vérificateur-adversarial, 2026-08-07). NB : la question 2 introduit
+        une variable aléatoire binomiale (répétition avec remise), notion
+        non couverte par le corps R1–R7 de lesson.md — voir SCOPE NOTE 2 en
+        tête de fichier.
+    intro: |-
+      **Calcul des probabilités (examen national, session normale 2018, Sciences Expérimentales).**
+
+      Une urne contient $9$ boules indiscernables au toucher : cinq boules rouges portant les nombres $1\ ;\ 1\ ;\ 2\ ;\ 2\ ;\ 2$ et quatre boules blanches portant les nombres $1\ ;\ 2\ ;\ 2\ ;\ 2$.
+
+      On tire au hasard et simultanément trois boules de l'urne. On considère les événements :
+      $A$ : « les trois boules tirées sont de même couleur » ;
+      $B$ : « les trois boules tirées portent le même nombre » ;
+      $C$ : « les trois boules tirées sont de même couleur et portent le même nombre ».
+
+      Même point de méthode que dans les autres sujets de cette banque : tirage simultané → combinaison (rung R5) ; boules indiscernables → équiprobabilité (rung R7) ; chaque probabilité est un quotient de dénombrements sur le même dénominateur $\text{card}(\Omega) = \binom{9}{3} = 84$.
+    questions:
+      - id: q1
+        part: "Partie A — Trois probabilités par dénombrement"
+        stem: |-
+          **(1,5 pt)** Montrer que $p(A) = \dfrac{1}{6}$, $p(B) = \dfrac{1}{4}$ et $p(C) = \dfrac{1}{42}$
+        reasoning: |-
+          **Pour $A$** (« même couleur ») : deux cas disjoints — les trois rouges, ou les trois blanches — donc principe additif (rung R1) : $\binom{5}{3}$ façons de prendre 3 rouges parmi les 5, plus $\binom{4}{3}$ façons de prendre 3 blanches parmi les 4.
+
+          **Pour $B$** (« même nombre ») : il faut d'abord regrouper les boules par nombre plutôt que par couleur, tous groupes confondus. Le nombre $1$ figure sur $2$ boules rouges et $1$ boule blanche, soit $3$ boules au total ; le nombre $2$ figure sur $3$ boules rouges et $3$ boules blanches, soit $6$ boules. Trois boules « même nombre » viennent donc soit des $3$ boules « nombre 1 », soit des $6$ boules « nombre 2 » — deux cas disjoints, principe additif à nouveau.
+
+          **Pour $C$** (« même couleur ET même nombre ») : on cherche, à l'intérieur d'une seule couleur, un nombre porté par exactement $3$ boules de cette couleur. Chez les rouges, le nombre $1$ n'a que $2$ boules (pas assez) et le nombre $2$ en a exactement $3$ — une seule façon de les prendre toutes. Même chose chez les blanches : le nombre $1$ n'a qu'$1$ boule, le nombre $2$ en a exactement $3$. Deux cas réalisables au total, disjoints, principe additif.
+        steps:
+          - math: '\text{card}(\Omega) = \binom{9}{3} = \dfrac{9\times8\times7}{3\times2\times1} = 84'
+            note: "Tirage simultané de 3 boules parmi 9 : dénominateur commun à toute la suite de l'exercice."
+          - math: '\text{card}(A) = \underbrace{\binom{5}{3}}_{\text{3 rouges}} + \underbrace{\binom{4}{3}}_{\text{3 blanches}} = 10+4 = 14 \implies p(A) = \dfrac{14}{84} = \dfrac16'
+            note: "Deux couleurs, deux cas incompatibles : principe additif (R1)."
+          - math: '\underbrace{2}_{\text{rouges portant 1}} + \underbrace{1}_{\text{blanches portant 1}} = 3, \qquad \underbrace{3}_{\text{rouges portant 2}} + \underbrace{3}_{\text{blanches portant 2}} = 6'
+            note: "On regroupe les boules par nombre, toutes couleurs confondues : 3 boules portent le 1, 6 portent le 2."
+          - math: '\text{card}(B) = \underbrace{\binom{3}{3}}_{\text{numéro 1}} + \underbrace{\binom{6}{3}}_{\text{numéro 2}} = 1+20 = 21 \implies p(B) = \dfrac{21}{84} = \dfrac14'
+            note: "Deux groupes de même nombre, deux cas incompatibles : principe additif (R1)."
+          - math: '\text{card}(C) = \underbrace{\binom{3}{3}}_{\text{rouges, numéro 2}} + \underbrace{\binom{3}{3}}_{\text{blanches, numéro 2}} = 1+1 = 2 \implies p(C) = \dfrac{2}{84} = \dfrac{1}{42}'
+            note: "Seuls les rouges numéro 2 (3 boules) et les blanches numéro 2 (3 boules) permettent une même couleur ET un même nombre à la fois."
+      - id: q2
+        part: "Partie B — Répétition avec remise : une loi binomiale"
+        stem: |-
+          On répète l'expérience précédente trois fois avec remise dans l'urne des trois boules tirées après chaque tirage, et on considère la variable aléatoire $X$ qui est égale au nombre de fois de réalisation de l'événement $A$
+
+          **(0,5 pt)** Déterminer les paramètres de la variable aléatoire binomiale $X$
+        reasoning: |-
+          On sort ici du terrain balisé par le corps de la leçon : R1 à R7 couvrent le dénombrement et l'équiprobabilité (R7), pas les variables aléatoires. Le principe reste pourtant simple à énoncer avec ce qu'on a déjà : on répète $n=3$ fois la même expérience, remise dans l'urne oblige — chaque répétition a donc exactement la même probabilité de succès, $p=p(A)=\dfrac16$ (question précédente), et les répétitions sont indépendantes les unes des autres puisqu'on repart à chaque fois de l'urne complète. C'est exactement la situation qui définit une loi binomiale $\mathcal B(n,p)$ : compter le nombre de succès sur $n$ répétitions indépendantes d'une même expérience à deux issues.
+        steps:
+          - math: 'n = 3\ \text{répétitions}, \qquad p = p(A) = \dfrac16\ \text{(question précédente)}'
+            note: "Trois répétitions indépendantes de la même expérience (remise), succès = réalisation de A."
+          - math: 'X \sim \mathcal{B}\!\left(3,\ \dfrac16\right)'
+            note: "Paramètres de la loi binomiale : n=3 répétitions, p=1/6 probabilité de succès à chaque répétition."
+      - id: q3
+        stem: |-
+          **(1 pt)** Montrer que $p(X = 1) = \dfrac{25}{72}$ et calculer $p(X = 2)$
+        reasoning: |-
+          Pour une variable binomiale $X\sim\mathcal B(n,p)$, $p(X=k) = \binom{n}{k}p^k(1-p)^{n-k}$ : on choisit lesquelles des $n$ répétitions sont des succès ($\binom{n}{k}$ façons), puis on multiplie la probabilité de $k$ succès par celle des $n-k$ échecs restants — principe multiplicatif, les répétitions étant indépendantes.
+
+          On applique cette formule avec $n=3$, $p=\dfrac16$ (question précédente), pour $k=1$ puis $k=2$.
+        steps:
+          - math: 'p(X=1) = \binom{3}{1}\left(\dfrac16\right)^1\left(\dfrac56\right)^2'
+            note: "Formule de la loi binomiale : un succès parmi 3, deux échecs."
+          - math: 'p(X=1) = 3\times\dfrac16\times\dfrac{25}{36} = \dfrac{75}{216} = \dfrac{25}{72}'
+            note: "On simplifie la fraction par 3 : 75 sur 216 égale 25 sur 72."
+          - math: 'p(X=2) = \binom{3}{2}\left(\dfrac16\right)^2\left(\dfrac56\right)^1 = 3\times\dfrac{1}{36}\times\dfrac56 = \dfrac{15}{216} = \dfrac{5}{72}'
+            note: "Même formule pour deux succès parmi 3, un échec ; on simplifie par 3."

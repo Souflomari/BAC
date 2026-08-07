@@ -7,17 +7,17 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les quatre entrées sont des transcriptions FIDÈLES des
-# quatre entrées « vérifié » de docs/sujets/maths/geometrie-espace.md
+# exercises.yaml). Les cinq entrées sont des transcriptions FIDÈLES des
+# cinq entrées « vérifié » de docs/sujets/maths/geometrie-espace.md
 # (re-fetch AlloSchool indépendant + diff caractère-par-caractère conforme
 # au scan, agent-vérificateur-adversarial, 2026-07-12 pour 2019/2022/2023,
-# 2026-08-06 pour 2024) — les SEULS sujets vérifiés recensés pour cette
-# notion : 2019, 2022, 2023 et 2024, tous session normale, filière Sciences
-# Expérimentales (SVT et Sciences Physiques, BIOF) — 2019, 2022 et 2023 en
-# « Exercice 1 » sur leur copie (l'exercice d'ouverture récurrent de
-# l'épreuve, barème 3 points chacun), 2024 en « Exercice 2 » (même
-# chapitre, barème 3 points). Aucun autre sujet n'est disponible —
-# introuvable = absent, jamais inventé. Raisonnement rédigé à
+# 2026-08-06 pour 2024, 2026-08-07 pour 2018) — les SEULS sujets vérifiés
+# recensés pour cette notion : 2018, 2019, 2022, 2023 et 2024, tous session
+# normale, filière Sciences Expérimentales (SVT et Sciences Physiques,
+# BIOF) — 2018, 2019, 2022 et 2023 en « Exercice 1 » sur leur copie
+# (l'exercice d'ouverture récurrent de l'épreuve, barème 3 points chacun),
+# 2024 en « Exercice 2 » (même chapitre, barème 3 points). Aucun autre
+# sujet n'est disponible — introuvable = absent, jamais inventé. Raisonnement rédigé à
 # la voix experte de la maison sur 100 % des questions ; barème transcrit
 # tel quel dans les énoncés ; conventions KaTeX (block scalars pour la
 # prose, KaTeX brut entre apostrophes simples dans steps[].math, notes sans
@@ -568,3 +568,113 @@ entries:
             note: "Test d'orthogonalité du R2 : produit scalaire nul, directions perpendiculaires."
           - math: 'H\in(\Delta),\ \ H\ \text{milieu de}\ [AB],\ \ \vec{u}_\Delta \perp \overrightarrow{AB} \implies \forall M\in(\Delta),\ MA=MB'
             note: "Δ passe par le milieu de [AB] et sa direction est orthogonale à AB : Δ est une médiatrice de [AB]."
+
+  # ── bk-2018-n-x1 — 2018 N, Exercice 1 : produit vectoriel, plan, sphère, droite orthogonale et cercle ──
+  - id: bk-2018-n-x1
+    title: "Produit vectoriel, plan, sphère et droite orthogonale au plan (ABC)"
+    source:
+      year: 2018
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 1"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques), Mathématiques, code NS 22F, AlloSchool element/94699
+        (Exercice 1, « Géométrie de l'espace » ; barème 3 points).
+        Transcription fidèle de l'entrée « vérifié » de
+        docs/sujets/maths/geometrie-espace.md, section « 2018 — session
+        normale — Exercice 1 » (re-fetch AlloSchool indépendant + diff
+        caractère-par-caractère conforme au scan, agent-vérificateur-
+        adversarial, 2026-08-07 ; re-lecture de confirmation indépendante,
+        2026-08-07).
+    intro: |-
+      **Géométrie de l'espace (examen national, session normale 2018, Sciences Expérimentales).**
+
+      Dans l'espace rapporté à un repère orthonormé direct $(O, \vec{i}, \vec{j}, \vec{k})$, on considère les points $A(0, -2, -2)$, $B(1, -2, -4)$ et $C(-3, -1, 2)$.
+
+      Le fil de l'exercice : produit vectoriel pour fabriquer une normale, équation du plan $(ABC)$, une sphère $(S)$ à ramener en forme centre-rayon, puis une droite $(\Delta)$, orthogonale au plan et passant par le centre $\Omega$, dont le point d'intersection avec $(ABC)$ s'avère être exactement le centre du cercle d'intersection cherché à la fin.
+    questions:
+      - id: q1
+        part: "Partie A — Du produit vectoriel à l'équation du plan $(ABC)$"
+        stem: |-
+          **(1 pt)** Montrer que $\overrightarrow{AB} \wedge \overrightarrow{AC} = 2\vec{i} + 2\vec{j} + \vec{k}$ et en déduire que $2x + 2y + z + 6 = 0$ est une équation cartésienne du plan $(ABC)$
+        reasoning: |-
+          Même geste qu'à chaque fois qu'on cherche une normale à un plan : on fabrique un vecteur orthogonal à deux vecteurs du plan avec le produit vectoriel (R3). On calcule d'abord $\overrightarrow{AB}$ et $\overrightarrow{AC}$ par « arrivée moins départ » (R1), puis on applique la formule composante par composante (R3), en surveillant les signes.
+
+          Ce vecteur $\overrightarrow{AB}\wedge\overrightarrow{AC}$, orthogonal aux deux vecteurs du plan, en est une normale (R6) : ses coordonnées deviennent directement les coefficients de $x,y,z$ dans l'équation cartésienne. Reste à fixer la constante en imposant qu'un point connu du plan — $A$, par exemple — la vérifie.
+        steps:
+          - math: '\overrightarrow{AB} = B-A = (1,\,0,\,-2), \qquad \overrightarrow{AC} = C-A = (-3,\,1,\,4)'
+            note: "Coordonnées arrivée moins départ (R1)."
+          - math: '\overrightarrow{AB}\wedge\overrightarrow{AC} = \big((0)(4)-(-2)(1),\ \ (-2)(-3)-(1)(4),\ \ (1)(1)-(0)(-3)\big)'
+            note: "Formule du produit vectoriel (R3) : chaque composante croise les deux autres coordonnées en diagonale, avec un signe."
+          - math: '\overrightarrow{AB}\wedge\overrightarrow{AC} = (2,\,2,\,1) = 2\vec{i}+2\vec{j}+\vec{k}'
+            note: "Ce vecteur, orthogonal à AB et à AC, servira de normale au plan (ABC)."
+          - math: '2x+2y+z+d=0,\quad A(0,-2,-2)\in(ABC):\ 0-4-2+d=0 \implies d=6'
+            note: "Coefficients = coordonnées du vecteur normal (2,2,1) (R6) ; d fixé par A."
+          - math: '(ABC):\ \ 2x+2y+z+6=0'
+            note: "Vérification : B(1,-2,-4) donne 2-4-4+6=0 ; C(-3,-1,2) donne -6-2+2+6=0."
+      - id: q2
+        part: "Partie B — La sphère $(S)$ : centre et rayon"
+        stem: |-
+          **(0,5 pt)** On considère la sphère $(S)$ dont une équation est $x^2 + y^2 + z^2 - 2x - 2z - 23 = 0$. Vérifier que la sphère $(S)$ a pour centre $\Omega(1, 0, 1)$ et pour rayon $R = 5$
+        reasoning: |-
+          L'équation de $(S)$ est donnée sous forme développée : on complète le carré dans chaque variable séparément (R9) — le même geste que pour d'autres sphères de cette banque. Ici $y$ n'apparaît que sous $y^2$, sans terme en $y$ seul : son groupe reste tel quel, sans carré à compléter.
+        steps:
+          - math: '(x^2-2x) + y^2 + (z^2-2z) - 23 = 0'
+            note: "On regroupe par variable avant de compléter chaque carré (R9) ; y² n'a pas de terme en y à absorber."
+          - math: '(x-1)^2-1 \;+\; y^2 \;+\; (z-1)^2-1 \;-\;23 = 0'
+            note: "Chaque groupe en x et en z devient un carré parfait ; on garde trace des termes constants soustraits."
+          - math: '(x-1)^2+y^2+(z-1)^2 = 1+1+23 = 25'
+            note: "On isole les carrés à gauche : le second membre vaut 25."
+          - math: '\Omega(1,\,0,\,1), \qquad R=\sqrt{25}=5'
+            note: "Centre = valeurs qui annulent chaque carré ; rayon = racine du second membre, pas 25 lui-même."
+      - id: q3
+        part: "Partie C — La droite $(\\Delta)$, orthogonale au plan, et son point $H$"
+        stem: |-
+          **(0,25 pt)** Vérifier que $\begin{cases} x = 1 + 2t \\ y = 2t \\ z = 1 + t \end{cases}\ ;(t \in \mathbb{R})$ est une représentation paramétrique de la droite $(\Delta)$ passant par le point $\Omega$ et orthogonale au plan $(ABC)$
+        reasoning: |-
+          Deux choses à vérifier, pas à redériver : que le point de paramètre $t=0$ est bien $\Omega$, et que le vecteur directeur lu sur les coefficients de $t$ est bien orthogonal au plan $(ABC)$, c'est-à-dire colinéaire à sa normale (R6/R7). Le vecteur directeur ici est $(2,2,1)$ : exactement la normale $\overrightarrow{AB}\wedge\overrightarrow{AC}$ trouvée à la question 1, sans qu'il y ait besoin de la recalculer.
+        steps:
+          - math: '\vec{u}_\Delta = (2,\,2,\,1) = \overrightarrow{AB}\wedge\overrightarrow{AC}'
+            note: "Le vecteur directeur lu sur les coefficients de t est exactement la normale au plan (ABC), trouvée à la question 1 : Δ est donc orthogonale au plan (R6/R7)."
+          - math: 't=0 \implies (x,y,z) = (1,\,0,\,1) = \Omega'
+            note: "Le point de paramètre t=0 est bien Ω, donné à la question 2."
+          - math: '(\Delta):\ \begin{cases} x=1+2t \\ y=2t \\ z=1+t \end{cases}'
+            note: "Les deux conditions demandées — passer par Ω, direction normale au plan — sont vérifiées."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Déterminer les coordonnées de $H$ point d'intersection de la droite $(\Delta)$ et du plan $(ABC)$
+        reasoning: |-
+          $(\Delta)$ passe par $\Omega$ et a pour direction $(2,2,1)$ — exactement la normale du plan $(ABC)$ (question 1) : le produit scalaire direction $\cdot$ normale vaut $\|\vec n\|^2=9\neq0$, donc $(\Delta)$ n'est pas parallèle au plan et le coupe en un unique point (R7). On le trouve en reportant les coordonnées paramétriques de $(\Delta)$ dans l'équation du plan $(ABC)$ (question 1), ce qui donne une équation du premier degré en $t$, puis on reporte la valeur trouvée dans la représentation paramétrique.
+        steps:
+          - math: '2(1+2t) + 2(2t) + (1+t) + 6 = 0'
+            note: "On reporte x, y, z de (Δ) dans l'équation du plan (ABC) : 2x+2y+z+6=0."
+          - math: '2+4t+4t+1+t+6 = 0 \iff 9t+9=0 \iff t=-1'
+            note: "On regroupe les termes en t et la constante, puis on isole t."
+          - math: 'H = (1+2(-1),\ 2(-1),\ 1+(-1)) = (-1,\,-2,\,0)'
+            note: "On reporte t=-1 dans la représentation paramétrique de (Δ)."
+      - id: q5
+        part: "Partie D — Distance au centre et section circulaire"
+        stem: |-
+          **(0,75 pt)** Vérifier que $d(\Omega, (ABC)) = 3$, puis montrer que le plan $(ABC)$ coupe la sphère $(S)$ selon un cercle de rayon $4$, dont on déterminera le centre.
+        reasoning: |-
+          On applique d'abord la formule de la distance d'un point à un plan (R8) : au numérateur, l'équation du plan évaluée en $\Omega$, en valeur absolue ; au dénominateur, la norme du vecteur normal.
+
+          Vient ensuite le même réflexe qu'au R9 : on compare cette distance au rayon $R=5$ de la sphère (question 2) — jamais l'inverse. Ici $d=3<R=5$, donc l'intersection est un cercle, de rayon $\sqrt{R^2-d^2}$ par le Pythagore du triangle $\Omega HM$ rectangle en $H$ (R9), où $H$ est le projeté orthogonal de $\Omega$ sur le plan.
+
+          Ce point $H$, c'est précisément celui qu'on vient de trouver à la question précédente : $(\Delta)$ passe par $\Omega$ et est orthogonale au plan $(ABC)$, donc son intersection avec ce plan *est*, par définition, le projeté orthogonal de $\Omega$ — le centre du cercle cherché. Pas besoin de le redéterminer.
+        steps:
+          - math: 'd(\Omega,(ABC)) = \dfrac{|2\times1 + 2\times0 + 1\times1 + 6|}{\sqrt{2^2+2^2+1^2}}'
+            note: "Formule R8 : |ax0+by0+cz0+d| au numérateur, norme du vecteur normal au dénominateur."
+          - math: 'd(\Omega,(ABC)) = \dfrac{|2+0+1+6|}{\sqrt{9}} = \dfrac{9}{3} = 3'
+            note: "On simplifie : 9 sur 3 égale 3."
+          - math: 'd(\Omega,(ABC)) = 3 < R = 5'
+            note: "On compare la distance calculée au rayon de la sphère (R9)."
+          - math: '(ABC)\cap(S)\ \text{est un cercle, de rayon}\ \sqrt{R^2-d^2} = \sqrt{25-9} = \sqrt{16} = 4'
+            note: "Cas d < R du critère R9 : intersection = cercle ; Pythagore du triangle ΩHM rectangle en H."
+          - math: 'H = (\Delta)\cap(ABC) = (-1,\,-2,\,0)'
+            note: "Δ passe par Ω et est orthogonale au plan : leur point d'intersection, déjà trouvé à la question précédente, est exactement le projeté orthogonal de Ω — le centre du cercle (R9)."
