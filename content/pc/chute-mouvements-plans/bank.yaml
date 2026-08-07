@@ -17,8 +17,13 @@
 # scalars pour la prose, KaTeX brut entre apostrophes simples dans
 # steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue) : les quatre sujets « vérifié » de cette
-# notion sont 2018 N, 2019 N, 2020 N, 2021 N. Le 2020 N (Exercice V, chute
+# NOTE ÉDITORIALE (pour la revue) : neuf sujets « vérifié » couvrent
+# désormais cette notion, 2018 N à 2025 N — 2018 N, 2019 N, 2020 N, 2021 N
+# (première vague) puis 2022 N (Partie 1 « bille » + Partie 2 « satellite »,
+# deux entrées sœurs bk-2022-n-x4 / bk-2022-n-x4b), 2023 N, 2024 N et 2025 N
+# (cinq entrées ajoutées en août 2026 : bk-2022-n-x4, bk-2022-n-x4b,
+# bk-2023-n-x4, bk-2024-n-x5, bk-2025-n-x4). La notion couvre donc désormais
+# la période 2018–2025 sans lacune connue. Le 2020 N (Exercice V, chute
 # d'une bille dans un liquide visqueux) sert AUSSI de sommet de leçon (r-bac,
 # exercises.yaml, marqueur [[exercise:r-bac]] à R11 « Exercice de type bac ») :
 # mêmes données, mêmes réponses numériques (v_ℓ ≈ 1,5 m/s, k/m ≈ 6,67 s⁻¹,
@@ -55,6 +60,26 @@
 #     modèles de frottement et la lecture de τ par tangente à l'origine y
 #     sont explicitement enseignés) — mentionnés ici seulement pour
 #     mémoire, aucun pont nécessaire.
+#   - bk-2022-n-x4, q2, ET bk-2024-n-x5, q1 : même lacune que bk-2018-n-x4
+#     q1 ci-dessus (poussée d'Archimède = troisième force, hors du bilan à
+#     deux forces du rung 7) — MAIS avec un pas supplémentaire qu'aucune
+#     entrée déjà bancarisée n'exigeait : ici la masse volumique DONNÉE est
+#     celle de la bille elle-même (ρ_a / ρ_B), jamais celle du liquide
+#     (l'inconnue à trouver), donc il faut d'abord exprimer le volume de la
+#     bille via sa propre masse volumique (V = m/ρ_bille, une définition de
+#     base, hors mécanique) avant de substituer dans F_a = ρ_liquide.V.g.
+#     Ponté au point d'usage dans le raisonnement de chaque question
+#     concernée.
+#   - bk-2023-n-x4, q3c (question 2-3 du sujet, méthode d'Euler « à
+#     l'envers ») : la question donne l'accélération a_(i-1) et demande la
+#     vitesse v_z(t_i) suivante — mais, contrairement à toutes les autres
+#     applications d'Euler déjà bancarisées (bk-2018-n-x4 q4, bk-2020-n-x5
+#     q5a/q5b, r-bac/r-variation d'exercises.yaml), qui partent toujours
+#     d'une vitesse CONNUE pour en déduire l'accélération via l'équation
+#     différentielle, ici il faut d'abord inverser cette même équation pour
+#     retrouver v_(i-1) À PARTIR de a_(i-1) donné, avant d'appliquer la
+#     récurrence d'Euler standard vers l'avant. Le rung 8 ne modélise
+#     jamais explicitement ce sens inverse ; ponté au point d'usage.
 
 notion: pc/chute-mouvements-plans
 
@@ -519,3 +544,586 @@ entries:
             note: "Distance parcourue durant le regime permanent de la phase 2."
           - math: '\boxed{d = h - h_1 - h_{perm} = 660 - 80 - 180 = 400\ \text{m}}'
             note: "Ce qui reste de la hauteur totale une fois retirees la phase 1 et le regime permanent de la phase 2."
+
+  # ── bk-2022-n-x4 — 2022 N, Exercice 4 (Partie 1) : bille dans l'huile de ricin, Archimède ──
+  - id: bk-2022-n-x4
+    title: "Chute d'une bille dans l'huile de ricin : régimes transitoire/permanent et masse volumique"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — Partie 1 : Étude de la chute d'une bille dans un liquide visqueux"
+    bareme_total: 2.75
+    duration_min: 17
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/136621, course-422/upload-84516
+        (Exercice 4, Partie 1 — chute verticale d'une bille dans l'huile de
+        ricin, poussée d'Archimède non négligeable ; barème de la partie =
+        2,75 pt sur les 5 pt de l'exercice complet, dont la Partie 2 — un
+        satellite artificiel — est transcrite séparément ci-dessous, entrée
+        sœur bk-2022-n-x4b). Transcription vérifiée en deux passes : la
+        passe adversariale (agent-vérificateur-adversarial, 2026-08-07), qui
+        a établi six corrections de figure au pixel (étalonnage de la
+        figure 2, étendue du cadre jusqu'à 1,0 s / 1,0 m/s, palier
+        V_ℓ = 0,880 m/s à deux traits fins au-dessus du repère 0,8, tangente
+        coupant le palier à τ = 0,0995 ≈ 0,100 s, frontière zone1/zone2 à
+        t = 0,50 s = 5τ, figure 1 sans graduation avec G déjà immergé), puis
+        une passe de contrôle indépendante (agent-relecteur-de-contrôle,
+        2026-08-07) qui a re-diffé ces six corrections et confirmé chacune
+        (docs/sujets/pc/chute-mouvements-plans.md, statut « vérifié »).
+        Physique re-dérivée et auto-cohérente : k = m/τ = 0,1 kg/s,
+        ρ_r = ρ_a(1 − V_ℓ/(gτ)) = 936 kg/m³ (huile de ricin ≈ 960 kg/m³ en
+        table). SCOPE NOTE (voir l'en-tête du fichier) : la question 2 exige
+        d'inclure la poussée d'Archimède comme troisième force ET
+        d'exprimer le volume de la bille via sa propre masse volumique
+        (V = m/ρ_a) pour la substituer dans F_a — un pas supplémentaire par
+        rapport à bk-2018-n-x4, où V restait une inconnue symbolique. Le
+        pont est fait au point d'usage dans le raisonnement de la
+        question 2.
+    intro: |-
+      **Étude de la chute d'une bille dans un liquide visqueux (examen national, session normale 2022, Exercice 4 — Partie 1).**
+
+      On se propose dans cette partie, de déterminer la masse volumique $\rho_r$ d'huile de ricin.
+
+      On libère, sans vitesse initiale, une bille homogène en acier dans une éprouvette remplie d'huile de ricin. Cette bille a une masse $m$ et une masse volumique $\rho_a$.
+
+      On étudie le mouvement du centre d'inertie $G$ de la bille dans un repère $(O, \vec{k})$ lié à un référentiel terrestre considéré comme galiléen (figure 1).
+
+      La bille est soumise, durant sa chute verticale dans le liquide, à l'action de trois forces :
+      - son poids $\vec{P}$.
+      - la poussée d'Archimède $\vec{F}_a$ de direction verticale, de sens vers le haut et d'intensité $F_a = \rho_r.V.g$ où $V$ est le volume de la bille et $g$ l'accélération de la pesanteur.
+      - la force de frottement fluide, modélisée par le vecteur $\vec{F} = -k.\vec{v}$ où $k$ est une constante positive et $\vec{v}$ le vecteur vitesse de $G$ à un instant $t$.
+
+      Un système d'acquisition informatisé permet d'obtenir la courbe de la figure 2 représentant l'évolution de la vitesse $v(t)$. La droite $(T)$ étant la tangente à la courbe au point d'abscisse $t = 0$.
+
+      **Données :** $m = 10\ \text{g}$ ; $\rho_a = 7{,}8\ \text{g.cm}^{-3}$ ; $g = 10\ \text{m.s}^{-2}$.
+
+      **Figure 1 (schéma).** Une éprouvette verticale sans graduations. L'axe vertical est tracé à gauche de l'éprouvette, à l'extérieur. En haut, une ligne en pointillés horizontale part de la marque $O$ portée sur cet axe et traverse l'éprouvette (elle figure la surface du liquide) ; juste en dessous, la flèche $\vec{k}$ orientée vers le bas. Dans l'éprouvette, un petit cercle étiqueté $G$ est dessiné un peu au-dessous de cette ligne (la bille est figurée déjà immergée), le reste de l'éprouvette étant grisé (liquide). En bas, l'axe se poursuit et se termine par une pointe de flèche orientée vers le bas, étiquetée $z$.
+
+      **Figure 2 (courbe).** $v\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$, sur quadrillage à double graduation. Axe des ordonnées chiffré $0{,}2,\ 0{,}4,\ 0{,}6,\ 0{,}8$ ; axe des abscisses chiffré $0{,}1,\ 0{,}2,\ 0{,}3$ (traits majeurs tous les $0{,}1\ \text{s}$ et $0{,}2\ \text{m.s}^{-1}$ ; le cadre s'étend en réalité jusqu'à $t=1{,}0\ \text{s}$ et $v=1{,}0\ \text{m.s}^{-1}$, mais les traits majeurs au-delà de $0{,}3\ \text{s}$ et $0{,}8\ \text{m.s}^{-1}$ ne sont pas chiffrés). Courbe croissante depuis l'origine, concave, tendant asymptotiquement vers un palier mesuré à $V_\ell = 0{,}880\ \text{m.s}^{-1}$ (deux traits fins au-dessus du repère $0{,}8$). Une droite en pointillés $(T)$, tangente à la courbe à l'origine, coupe le palier à $t = 0{,}100\ \text{s}$, d'où $\tau = 0{,}100\ \text{s}$. Deux zones sont annotées directement sur le graphe, séparées par un trait vertical en pointillés situé exactement à $t = 0{,}50\ \text{s}$ (soit $5\tau$) : « zone1 » sur la portion courbée qui précède, « zone2 » sur le palier qui suit.
+    questions:
+      - id: q1
+        part: "La figure 2 présente deux zones — identifier les régimes"
+        stem: |-
+          **(0,5 pt)** La courbe de la figure 2 présente deux zones. Attribuer à chaque zone le régime correspondant.
+        reasoning: |-
+          Même critère qu'au rung 7 : une courbe $v(t)$ qui croît en se courbant correspond au régime où le frottement grandit avec $v$ sans encore avoir rattrapé le poids — c'est le **régime initial** (transitoire) ; un palier horizontal correspond au régime où frottement et poids se compensent exactement, accélération nulle — c'est le **régime permanent**. Sur la figure 2, « zone1 » est la portion courbée qui précède la frontière $t=0{,}50\ \text{s}$ : c'est le régime initial. « zone2 » est le palier qui suit : c'est le régime permanent — cohérent avec le fait que cette frontière tombe exactement à $5\tau$ ($5\times 0{,}100\ \text{s}$), l'ordre de grandeur usuel où le régime transitoire s'éteint.
+
+          $$\text{zone1} = \text{régime initial (transitoire)} \qquad \text{zone2} = \text{régime permanent}$$
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Par application de la deuxième loi de Newton, montrer que l'équation différentielle du mouvement de $G$ s'écrit ainsi : $\dfrac{dv}{dt} + \dfrac{1}{\tau}.v = g\!\left(1 - \dfrac{\rho_r}{\rho_a}\right)$ où $\tau$ est le temps caractéristique du mouvement qu'on exprimera en fonction de $m$ et $k$.
+        reasoning: |-
+          On suit la méthode du rung 7 — bilan, deuxième loi, projection — avec un bilan à **trois** forces plutôt que deux, exactement le pont déjà fait pour bk-2018-n-x4 : le rung 7 ne traite explicitement que poids + frottement, jamais Archimède. Mais il y a ici un pas de plus qu'en 2018 : l'énoncé donne la masse volumique $\rho_a$ **de la bille elle-même**, pas celle du liquide — donc $F_a=\rho_r V g$ contient encore une inconnue, $V$, qu'aucune donnée ne fournit directement. On la fait disparaître en revenant à la définition de la masse volumique de la bille, $m=\rho_a V$ (une relation de base, hors mécanique), qui donne $V=m/\rho_a$. Une fois cette substitution faite, la suite est identique au rung 7 : projeter, diviser par $m$, identifier le coefficient de $v$ à $1/\tau$ (inchangé, puisque seul le frottement dépend de $v$) et regrouper les deux termes constants (poids et Archimède) de l'autre côté.
+        steps:
+          - math: 'm\vec a = \vec P + \vec f + \vec F_a'
+            note: "Deuxieme loi de Newton : trois forces (poids, frottement, poussee d'Archimede), meme structure qu'au rung 7 plus Archimede (comme bk-2018-n-x4 q1)."
+          - math: 'm\frac{dv}{dt} = mg - k\,v - \rho_r V g'
+            note: "Projection sur (O,k) oriente vers le bas : poids +mg, frottement -kv, Archimede -rho_r V g (elle pointe vers le haut)."
+          - math: 'm = \rho_a V \implies V = \frac{m}{\rho_a}'
+            note: "La bille est homogene : sa propre masse volumique rho_a relie sa masse et son volume -- pas une relation du rung 7, mais une definition de base (masse volumique) mobilisee ici pour eliminer V."
+          - math: 'm\frac{dv}{dt} = mg\left(1-\frac{\rho_r}{\rho_a}\right) - k\,v'
+            note: "On substitue V = m/rho_a dans le terme d'Archimede, puis on regroupe les deux termes constants (poids et Archimede) ensemble."
+          - math: '\boxed{\frac{dv}{dt} + \frac{1}{\tau}v = g\left(1-\frac{\rho_r}{\rho_a}\right)} \qquad \text{avec} \qquad \tau = \frac{m}{k}'
+            note: "On divise par m : le coefficient de v redonne 1/tau comme au rung 7 (inchange par Archimede, qui ne depend pas de v) ; le terme constant, lui, contient desormais rho_r/rho_a."
+      - id: q3a
+        part: "Exploitation graphique de la figure 2"
+        stem: |-
+          **(0,5 pt)** Déterminer graphiquement la valeur de $\tau$ puis en déduire, dans le système international d'unités, la valeur de $k$.
+        reasoning: |-
+          Même lecture qu'au rung 7 : le temps caractéristique $\tau$ se lit à l'abscisse où la tangente à l'origine (pente $A$, l'équivalent local de $g$ ici) coupe l'asymptote horizontale du palier. Sur la figure 2 fournie, cette intersection tombe exactement sur $t=0{,}100\ \text{s}$.
+
+          $$\tau \approx 0{,}100\ \text{s}$$
+
+          Une fois $\tau$ lu, $k$ s'obtient en inversant l'identification $\tau=m/k$ de la question 2 (aucune nouvelle lecture graphique nécessaire) : c'est le même geste qu'à la question 3 de bk-2018-n-x4.
+        steps:
+          - math: 'k = \frac{m}{\tau} = \frac{0{,}010}{0{,}100}'
+            note: "On inverse tau = m/k (identification de la question 2), avec m converti en kg (10 g = 0,010 kg) et tau lu au graphe."
+          - math: '\boxed{k \approx 0{,}10\ \text{kg.s}^{-1}}'
+            note: "Application numerique, en unites SI comme demande."
+      - id: q3b
+        stem: |-
+          **(0,25 pt)** Déterminer graphiquement la valeur de la vitesse limite $V_\ell$.
+        reasoning: |-
+          Comme au rung 7, la vitesse limite se lit directement comme l'ordonnée du palier horizontal de la courbe $v=f(t)$, sans aucun calcul. Sur la figure 2, le palier se situe deux traits fins au-dessus du repère $0{,}8$.
+
+          $$V_\ell \approx 0{,}880\ \text{m.s}^{-1}$$
+      - id: q4
+        stem: |-
+          **(0,75 pt)** Trouver l'expression de la masse volumique $\rho_r$ de l'huile de ricin en fonction de $\tau$, $g$, $\rho_a$ et $V_\ell$. Calculer sa valeur.
+        reasoning: |-
+          L'équation de la question 2 donne, en régime permanent ($dv/dt=0$), $V_\ell/\tau = g\left(1-\rho_r/\rho_a\right)$ — exactement le même geste qu'au rung 7 (annuler l'accélération dans l'équation différentielle), mais appliqué ici à une équation qui contient $\rho_r/\rho_a$ au lieu de $v$ seul. On isole $\rho_r$ algébriquement, puis on convertit $\rho_a$ en unités SI ($7{,}8\ \text{g.cm}^{-3} = 7{,}8\times 10^3\ \text{kg.m}^{-3}$) avant l'application numérique.
+        steps:
+          - math: '\frac{V_\ell}{\tau} = g\left(1-\frac{\rho_r}{\rho_a}\right) \implies \rho_r = \rho_a\left(1-\frac{V_\ell}{g\,\tau}\right)'
+            note: "Regime permanent (question 2, acceleration nulle) resolu pour rho_r."
+          - math: '\rho_r = 7{,}8\times 10^3\times\left(1-\frac{0{,}880}{10\times 0{,}100}\right)'
+            note: "Application numerique, avec rho_a converti en kg/m3 (7,8 g/cm3 = 7,8e3 kg/m3)."
+          - math: '\boxed{\rho_r \approx 936\ \text{kg.m}^{-3}}'
+            note: "Valeur coherente avec la masse volumique tabulee de l'huile de ricin (environ 960 kg/m3)."
+
+  # ── bk-2022-n-x4b — 2022 N, Exercice 4 (Partie 2) : satellite artificiel ──
+  - id: bk-2022-n-x4b
+    title: "Mouvement d'un satellite artificiel : vitesse orbitale et troisième loi de Kepler"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — Partie 2 : Étude du mouvement d'un satellite artificiel"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/136621, course-422/upload-84516
+        (Exercice 4, Partie 2 — mouvement d'un satellite artificiel en orbite
+        circulaire ; barème de la partie = 2,25 pt sur les 5 pt de
+        l'exercice complet, dont la Partie 1 — chute d'une bille dans
+        l'huile de ricin — est l'entrée sœur bk-2022-n-x4 ci-dessus).
+        Classée ici et non sous atome-mecanique-newton.md — voir la « Note
+        de routage » en tête de docs/sujets/pc/chute-mouvements-plans.md, qui
+        renvoie explicitement aux rungs 9 et 10 de cette leçon. Transcription
+        vérifiée : passe de vérification adversariale indépendante
+        (agent-vérificateur-adversarial, 2026-08-07), re-fetch indépendant
+        AlloSchool + diff caractère par caractère (chapeau, données, les
+        quatre items du QCM, expression de $v$, $T_1$, $T_2$) — aucun écart ;
+        figure 3 relue au zoom ×5 et jugée conforme
+        (docs/sujets/pc/chute-mouvements-plans.md, statut « vérifié »).
+        Physique re-dérivée et cohérente : $r=R_T+h_1=7380\ \text{km}$,
+        $v\approx 7{,}35\ \text{km/s}$, $T_1=2\pi r/v\approx
+        1{,}754\ \text{h}$ (le $T_1\approx 1{,}75\ \text{h}$ que la question
+        demande de vérifier) ; troisième loi de Kepler :
+        $r_2=r_1(T_2/T_1)^{2/3}\approx 4{,}23\times10^4\ \text{km}$, d'où
+        $h_2\approx 3{,}6\times10^4\ \text{km}$ (altitude géostationnaire).
+    intro: |-
+      **Étude du mouvement d'un satellite artificiel (examen national, session normale 2022, Exercice 4 — Partie 2).**
+
+      Les satellites artificiels sont placés en orbite autour de la Terre, pour des utilisations variées telles la météorologie, les télécommunications, la recherche scientifique ainsi que le contrôle des frontières… L'objectif de cette partie est d'étudier quelques grandeurs caractérisant le mouvement d'un satellite artificiel autour de la Terre.
+
+      On étudie le mouvement d'un satellite artificiel $S$ de masse $m_s$ dans un référentiel géocentrique supposé galiléen.
+
+      On admet que la Terre présente une distribution de masse à symétrie sphérique.
+
+      On néglige toutes les forces exercées sur le satellite $S$ devant la force d'attraction universelle exercée par la Terre ainsi que les dimensions de $S$ devant la distance qui le sépare du centre $O$ de la Terre.
+
+      **Données :** Masse de la Terre : $M_T = 5{,}97 \times 10^{24}\ \text{kg}$ ; Rayon de la Terre : $R_T = 6380\ \text{km}$ ; Constante de gravitation universelle : $G = 6{,}67 \times 10^{-11}\ \text{N.m}^2.\text{kg}^{-2}$.
+
+      **Figure 3 (schéma).** Deux cercles concentriques centrés sur le point $O$, marqué au centre et étiqueté « Terre » juste en dessous. Le cercle intérieur, plein, représente la Terre, de rayon noté $R_T$ (segment radial étiqueté à l'intérieur du cercle). Le cercle extérieur, en pointillés, représente l'orbite du satellite ; un point sur ce cercle est étiqueté $S$. Un segment radial en pointillés, étiqueté $h_1$, relie le bord du cercle intérieur au point $S$ sur le cercle extérieur.
+    questions:
+      - id: q1a
+        part: "1) Orbite circulaire de rayon r = R_T + h_1, avec h_1 = 1000 km"
+        stem: |-
+          **(0,5 pt)** Choisir, parmi les propositions suivantes, celle qui est juste. L'expression de l'intensité de la force de gravitation universelle exercée par la Terre sur le satellite est :
+
+          | | |
+          |---|---|
+          | A | $F_{T/S} = G\dfrac{M_T.m_s}{h_1^2}$ |
+          | B | $F_{T/S} = G\dfrac{M_T.m_s}{(R_T+h_1)^2}$ |
+          | C | $F_{T/S} = G\dfrac{M_T.m_s}{R_T^2}$ |
+          | D | $F_{T/S} = G\dfrac{(M_T.m_s)^2}{(R_T+h_1)^2}$ |
+        reasoning: |-
+          La loi de gravitation du rung 9 fait intervenir la **distance qui sépare les deux corps** — ici, la distance entre le centre de la Terre $O$ et le satellite, pas l'altitude toute seule. Cette distance vaut $R_T+h_1$ (le rayon de la Terre plus l'altitude), jamais $h_1$ seul ni $R_T$ seul. Ça élimine A (utilise $h_1$ seul — ce serait la distance depuis la surface d'une Terre de rayon nul) et C (utilise $R_T$ seul — ce serait la force à la surface même de la Terre, pas à l'altitude du satellite). D est éliminée pour une autre raison, dimensionnelle : elle élève le produit des masses au carré, ce qui n'a pas la forme $Gm_Am_B/r^2$ du rung 9. Seule B respecte à la fois la bonne distance et la bonne structure de la loi.
+      - id: q1b
+        stem: |-
+          **(0,5 pt)** En appliquant la deuxième loi de Newton, montrer que l'expression de la vitesse $v$ de $S$ est : $v = \sqrt{\dfrac{G.M_T}{R_T+h_1}}$.
+        reasoning: |-
+          Exactement la méthode du rung 9 : la force gravitationnelle est purement centripète (dirigée vers $O$), donc sa projection sur la tangente est nulle — le mouvement est circulaire uniforme — et sa projection sur la normale égale $m_s\,v^2/r$. On identifie cette projection normale à la norme de la force trouvée en 1.1 (option B), avec $r=R_T+h_1$, puis on isole $v$.
+        steps:
+          - math: 'm_s\frac{v^2}{R_T+h_1} = G\frac{M_T\,m_s}{(R_T+h_1)^2}'
+            note: "Deuxieme loi projetee sur la normale (rung 9), avec la force trouvee a la question 1.1 (option B)."
+          - math: 'v^2 = \frac{G\,M_T}{R_T+h_1}'
+            note: "La masse m_s du satellite se simplifie des deux cotes -- meme mecanisme qu'au rung 9."
+          - math: '\boxed{v = \sqrt{\frac{G\,M_T}{R_T+h_1}}}'
+            note: "On prend la racine carree : c'est l'expression demandee."
+      - id: q1c
+        stem: |-
+          **(0,5 pt)** Vérifier que la période de révolution du mouvement de $S$ autour de la Terre est : $T_1 \approx 1{,}75\ \text{h}$.
+        reasoning: |-
+          Comme au rung 10, on relie la vitesse orbitale à la période par la géométrie du cercle — la distance parcourue en une période est le périmètre $2\pi r$ — puis on calcule $v$ numériquement avec la formule de la question 1.2 avant de convertir.
+        steps:
+          - math: 'r = R_T + h_1 = 6380 + 1000 = 7380\ \text{km} = 7{,}38\times 10^6\ \text{m}'
+            note: "Distance Terre-satellite en unites SI."
+          - math: 'v = \sqrt{\frac{G\,M_T}{r}} = \sqrt{\frac{6{,}67\times 10^{-11}\times 5{,}97\times 10^{24}}{7{,}38\times 10^6}} \approx 7{,}35\times 10^3\ \text{m.s}^{-1}'
+            note: "Application numerique de la formule etablie en 1.2."
+          - math: 'T_1 = \frac{2\pi r}{v} \approx \frac{2\pi\times 7{,}38\times 10^6}{7{,}35\times 10^3} \approx 6{,}31\times 10^3\ \text{s}'
+            note: "Perimetre du cercle divise par la vitesse (rung 10) : c'est la periode."
+          - math: '\boxed{T_1 \approx 1{,}754\ \text{h} \approx 1{,}75\ \text{h}}'
+            note: "Conversion en heures (3600 s = 1 h) : la valeur annoncee par l'enonce est verifiee."
+      - id: q2
+        part: "2) Autre orbite circulaire, T_2 = 24 h"
+        stem: |-
+          **(0,75 pt)** Le satellite $S$ est placé sur une autre orbite circulaire située à une altitude $h_2$ de la surface de la Terre. Il a alors un mouvement circulaire uniforme de période de révolution $T_2 = 24\ \text{h}$. En utilisant la troisième loi de Kepler, déterminer l'altitude $h_2$.
+        reasoning: |-
+          La troisième loi de Kepler (rung 10) dit que $T^2/r^3$ est la **même constante** pour toutes les orbites autour d'un même astre — donc pour les deux orbites de ce satellite, $T_1^2/r_1^3 = T_2^2/r_2^3$, avec $r_1=7380\ \text{km}$ et $T_1$ déjà connus (question 1.3). On isole $r_2$, puis on retranche $R_T$ pour obtenir l'altitude $h_2$ demandée.
+        steps:
+          - math: '\frac{T_1^2}{r_1^3} = \frac{T_2^2}{r_2^3} \implies r_2 = r_1\left(\frac{T_2}{T_1}\right)^{2/3}'
+            note: "Troisieme loi de Kepler (rung 10) : le rapport T^2/r^3 est le meme pour les deux orbites."
+          - math: 'r_2 = 7380\times\left(\frac{24}{1{,}754}\right)^{2/3} \approx 4{,}23\times 10^4\ \text{km}'
+            note: "Application numerique, avec T_2 = 24 h et T_1 = 1,754 h dans la meme unite."
+          - math: '\boxed{h_2 = r_2 - R_T \approx 4{,}23\times 10^4 - 6{,}38\times 10^3 \approx 3{,}6\times 10^4\ \text{km}}'
+            note: "On retranche le rayon terrestre : c'est l'altitude geostationnaire (rung 10), coherente avec T_2 = 24 h."
+
+  # ── bk-2023-n-x4 — 2023 N, Exercice 4 (Partie I) : chute d'une balle, frottement linéaire, Euler ──
+  - id: bk-2023-n-x4
+    title: "Chute d'une balle lancée vers le haut : chute libre, frottement linéaire et méthode d'Euler"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — Partie I : Étude de la chute d'une balle"
+    bareme_total: 3.25
+    duration_min: 20
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/142476, course-422/upload-85304
+        (Exercice 4, Partie I — balle lancée verticalement vers le haut,
+        chute libre puis chute avec frottement fluide linéaire, méthode
+        d'Euler ; barème de la partie = 3,25 pt sur les 5,5 pt de l'exercice
+        complet, dont la Partie II — balançoire, pendule pesant — est hors
+        périmètre de cette notion, voir systemes-oscillants.md).
+        Transcription vérifiée : 1ʳᵉ passe de vérification adversariale
+        indépendante (agent-vérificateur-adversarial, 2026-08-07), re-fetch
+        AlloSchool indépendant, diff caractère par caractère de l'énoncé,
+        recompte du barème et relevé au pixel de la figure 1 — aucune
+        divergence (docs/sujets/pc/chute-mouvements-plans.md, statut
+        « vérifié »). Physique re-dérivée et cohérente : $v_z(t)=-10t+12$,
+        $z(t)=-5t^2+12t$ ⇒ $h=V_0^2/2g=7{,}2\ \text{m}$ et
+        $v_{OZ}=-12\ \text{m.s}^{-1}$ ; $\tau=m/\lambda=0{,}667\ \text{s}$ ⇒
+        $|v_\ell|=g\tau\approx 6{,}7\ \text{m.s}^{-1}$ ; Euler :
+        $a_{i-1}=-g-v_{i-1}/\tau=5 \Rightarrow v_{i-1}=-10\ \text{m.s}^{-1}$,
+        d'où $v_z(t_i)=-10+5\times0{,}066\approx -9{,}67\ \text{m.s}^{-1}$.
+        SCOPE NOTE (voir l'en-tête du fichier) : la question 2-3 (méthode
+        d'Euler) donne l'accélération $a_{i-1}$ et demande la vitesse
+        suivante — il faut donc d'abord inverser l'équation différentielle
+        de la question 2-1 pour retrouver $v_{i-1}$ avant d'appliquer la
+        récurrence d'Euler standard vers l'avant, un sens que le rung 8 ne
+        modélise jamais explicitement. Le pont est fait au point d'usage
+        dans le raisonnement de la question q3c.
+    intro: |-
+      **Étude de la chute d'une balle (examen national, session normale 2023, Exercice 4 — Partie I).**
+
+      Dans le champ de pesanteur, on lance verticalement vers le haut à l'instant $t = 0$, à partir d'un point $O$, une balle $(S)$ de masse $m$ et de centre d'inertie $G$, avec une vitesse initiale de valeur $V_0 = 12\ \text{m.s}^{-1}$ (figure 1).
+
+      On étudie le mouvement du centre d'inertie $G$ de la balle dans un repère $(O\,;\,\vec{k})$ lié à un référentiel terrestre supposé galiléen en deux phases : mouvement de chute libre de la balle dans la première phase ; mouvement de chute de la balle avec frottement dans la deuxième phase.
+
+      **Données :** La masse : $m = 80\ \text{g}$ ; L'intensité de la pesanteur : $g = 10\ \text{m.s}^{-2}$.
+
+      **1- Mouvement de la balle en chute libre.** Pendant son mouvement le centre d'inertie $G$ de la balle est considéré en chute libre.
+
+      **2- Mouvement de chute de la balle avec frottement.** À partir de l'instant du passage du centre d'inertie $G$ par le point $O$ vers le bas, qu'on prend comme nouvelle origine des dates $t_0 = 0$, la balle est soumise, en plus de son poids $\vec{P}$, à une force de frottement fluide modélisée par $\vec{f} = -\lambda\vec{v}$ avec $\vec{v} = v_z\vec{k}$ et $\lambda = 0{,}12$ S.I. (On néglige la poussée d'Archimède devant ces deux forces).
+
+      **Figure 1 (schéma).** Axe vertical $Z$ (flèche pleine orientée vers le haut, étiquetée « Z » en haut). Une ligne horizontale en pointillés traverse l'axe, plus haut sur la figure ; un disque noir plein étiqueté « (S) » (la balle) est placé juste en dessous de cette ligne pointillée, sur l'axe. Une double flèche verticale, étiquetée « h » (une cote de longueur), relie le niveau de l'origine $O$ à cette ligne pointillée, matérialisant la hauteur maximale. En dessous de (S), une courte flèche pleine orientée vers le haut, étiquetée « $\vec{V_0}$ » (vecteur vitesse initiale). Plus bas, au niveau de l'origine, une courte flèche pleine orientée vers le haut étiquetée « $\vec{k}$ », avec le point « O » juste à droite ; une ligne horizontale en pointillés (bleue) part de O vers la gauche. L'axe $Z$ se poursuit en trait plein en dessous de O jusqu'au bas de la figure.
+    questions:
+      - id: q1
+        part: "1- Mouvement de la balle en chute libre"
+        stem: |-
+          **(0,75 pt)** En appliquant la deuxième loi de Newton, déterminer les équations horaires numériques donnant la vitesse $v_z(t)$ et la position $z(t)$ du centre d'inertie $G$ de la balle.
+        reasoning: |-
+          Exactement la méthode du rung 1 : chute libre en une dimension, avec cette fois un axe $Z$ orienté **vers le haut** — le même choix qu'au rung 1 (contrairement au rung 7, où l'axe est choisi vers le bas). Comme au rung 1, $\vec g$ pointe en sens contraire de l'axe, donc $a_z=-g$. On primitive deux fois, avec la vitesse initiale $V_0=12\ \text{m/s}$ vers le haut (comme la balle lancée vers le haut de l'exemple travaillé du rung 1) et $z_0=0$ au point de lancement $O$.
+        steps:
+          - math: '\vec P = m\vec a \implies \vec a = \vec g'
+            note: "Chute libre (rung 1) : seul le poids agit."
+          - math: 'a_z = -g'
+            note: "Axe Z oriente vers le haut (figure 1) : g pointe en sens oppose, comme au rung 1."
+          - math: 'v_z(t) = V_0 - g\,t = 12 - 10\,t'
+            note: "Premiere primitivation, vitesse initiale V0 = 12 m/s vers le haut (rung 1)."
+          - math: '\boxed{z(t) = V_0\,t - \frac{1}{2}g\,t^2 = 12\,t - 5\,t^2}'
+            note: "Seconde primitivation, avec z0 = 0 au point de lancement O."
+      - id: q2a
+        stem: |-
+          **(0,5 pt)** En utilisant les équations $v_z(t)$ et $z(t)$ déterminer la hauteur maximale $h$ atteinte par $G$.
+        reasoning: |-
+          Même critère qu'au rung 1 : le sommet de la trajectoire est l'instant où la vitesse s'annule. On résout $v_z(t)=0$ pour trouver cet instant, puis on le substitue dans $z(t)$ (question précédente) pour obtenir la hauteur atteinte.
+        steps:
+          - math: 'v_z(t)=0 \implies 12-10\,t=0 \implies t_{sommet}=1{,}2\ \text{s}'
+            note: "Meme critere qu'au rung 1 : le sommet est l'instant ou la vitesse s'annule."
+          - math: 'h = z(t_{sommet}) = 12\times 1{,}2 - 5\times 1{,}2^2 = 14{,}4-7{,}2'
+            note: "On substitue dans z(t) (question precedente)."
+          - math: '\boxed{h \approx 7{,}2\ \text{m}}'
+            note: "Hauteur maximale atteinte par G."
+      - id: q2b
+        stem: |-
+          **(0,5 pt)** Déterminer la valeur algébrique $v_{OZ}$ de la vitesse de $G$ lors de son passage vers le bas par le point $O$.
+        reasoning: |-
+          Comme au rung 1 (l'exemple de la balle lancée vers le haut), l'autre instant, en plus de $t=0$, où $z(t)=0$ correspond exactement au double du temps de montée — la symétrie montée-descente. On calcule cet instant, puis on l'injecte dans $v_z(t)$ pour obtenir la valeur algébrique demandée.
+        steps:
+          - math: 'z(t)=0 \implies t(12-5t)=0 \implies t=0\ \text{ou}\ t_O=2{,}4\ \text{s}'
+            note: "Autre racine de z(t)=0 (rung 1) : exactement le double de t_sommet = 1,2 s, la symetrie montee-descente."
+          - math: 'v_{OZ} = v_z(t_O) = 12-10\times 2{,}4'
+            note: "On substitue dans v_z(t) (question 1)."
+          - math: '\boxed{v_{OZ} \approx -12\ \text{m.s}^{-1}}'
+            note: "Negative : G repasse par O en descendant, dans le sens oppose a l'axe Z (vers le haut)."
+      - id: q3a
+        part: "2- Mouvement de chute de la balle avec frottement"
+        stem: |-
+          **(0,5 pt)** Montrer que l'équation différentielle vérifiée par la vitesse $v_z$ du centre d'inertie $G$ de la balle s'écrit : $\dfrac{dv_z}{dt} + \dfrac{1}{\tau}v_z + g = 0$ avec $\tau$ le temps caractéristique du mouvement.
+        reasoning: |-
+          Même bilan à deux forces qu'au rung 7 (poids + frottement linéaire), mais avec un choix d'axe différent de l'exemple travaillé du rung 7 : ici l'axe $Z$ reste orienté **vers le haut** (figure 1), et non vers le bas. Exactement la leçon du rung 1 sur l'arbitraire du signe : le poids se projette donc négativement sur cet axe, ce qui fait apparaître un « $+g$ » au lieu du « $=g$ » du rung 7 — la physique est identique, seule la convention de signe change le visage de l'équation.
+        steps:
+          - math: 'm\vec a = \vec P + \vec f'
+            note: "Deuxieme loi de Newton (rung 7) : poids et frottement lineaire, comme au rung 7."
+          - math: 'm\frac{dv_z}{dt} = -mg - \lambda\,v_z'
+            note: "Projection sur l'axe Z, oriente vers le HAUT (figure 1) -- pas vers le bas comme l'exemple du rung 7 : le poids se projette donc negativement."
+          - math: '\frac{dv_z}{dt} = -g - \frac{\lambda}{m}\,v_z'
+            note: "On divise par la masse m."
+          - math: '\boxed{\frac{dv_z}{dt} + \frac{1}{\tau}v_z + g = 0} \qquad \text{avec} \qquad \tau=\frac{m}{\lambda}'
+            note: "On range tout a gauche : le +g (au lieu du =g du rung 7) vient uniquement du choix d'axe vers le haut -- exactement la lecon du rung 1 sur l'arbitraire du signe."
+      - id: q3b
+        stem: |-
+          **(0,25 pt)** Déduire la norme de la vitesse limite du mouvement du centre d'inertie $G$ de la balle.
+        reasoning: |-
+          Même geste qu'au rung 7 : on annule l'accélération dans l'équation différentielle pour trouver le régime permanent, sans jamais résoudre l'équation en entier. Ici $v_\ell$ ressort négative (elle pointe vers le bas, dans le sens opposé à l'axe $Z$ choisi vers le haut) — la norme demandée est sa valeur absolue.
+        steps:
+          - math: '\frac{dv_z}{dt}=0 \implies -g-\frac{v_\ell}{\tau}=0 \implies v_\ell=-g\,\tau'
+            note: "Regime permanent (rung 7) : on annule l'acceleration. v_ell negatif car la bille tombe, dans le sens oppose a l'axe Z."
+          - math: '\tau = \frac{m}{\lambda} = \frac{0{,}080}{0{,}12} \approx 0{,}667\ \text{s}'
+            note: "Application numerique de tau = m/lambda."
+          - math: '\boxed{|v_\ell| = g\,\tau \approx 6{,}7\ \text{m.s}^{-1}}'
+            note: "Norme de la vitesse limite demandee par l'enonce."
+      - id: q3c
+        stem: |-
+          **(0,75 pt)** Déterminer, en utilisant la méthode d'Euler, la valeur algébrique $v_z(t_i)$ de la vitesse à l'instant $t_i$ sachant que l'accélération du mouvement à l'instant $t_{i-1}$ est $a_{i-1} = 5\ \text{m.s}^{-2}$ et on prend le pas de calcul $\Delta t = 66\ \text{ms}$.
+        reasoning: |-
+          Ici l'énoncé donne l'accélération $a_{i-1}$, pas la vitesse $v_{i-1}$ — l'inverse de toutes les autres applications d'Euler de cette banque, qui partent toujours d'une vitesse connue pour en déduire l'accélération. Il faut donc d'abord **inverser** l'équation différentielle de la question 2-1 pour retrouver $v_{i-1}$ à partir de $a_{i-1}$ donné (une manipulation algébrique, pas une nouvelle idée physique), puis appliquer la récurrence d'Euler standard du rung 8, $v_i=v_{i-1}+a_{i-1}\Delta t$, exactement comme d'habitude.
+        steps:
+          - math: 'a_{i-1} = -g-\frac{v_{i-1}}{\tau} = 5 \implies v_{i-1} = -\tau\left(g+5\right)'
+            note: "On repart de l'equation differentielle (question 2-1) pour retrouver v_(i-1) a partir de a_(i-1) donne -- le rung 8 part toujours de v_i connu, jamais l'inverse ; pont fait ici."
+          - math: 'v_{i-1} = -0{,}667\times(10+5) \approx -10\ \text{m.s}^{-1}'
+            note: "Application numerique."
+          - math: 'v_z(t_i) = v_{i-1} + a_{i-1}\,\Delta t = -10 + 5\times 0{,}066'
+            note: "Recurrence d'Euler standard (rung 8), a present que v_(i-1) est connu."
+          - math: '\boxed{v_z(t_i) \approx -9{,}67\ \text{m.s}^{-1}}'
+            note: "Coherent : la bille continue de ralentir en valeur absolue, s'approchant de v_ell = -6,7 m/s."
+
+  # ── bk-2024-n-x5 — 2024 N, Exercice 5 (Partie 1) : bille, Archimède, lecture de a0 ──
+  - id: bk-2024-n-x5
+    title: "Chute d'une bille dans un liquide : poussée d'Archimède et accélération initiale"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 5 — Partie 1 : Chute verticale d'une bille dans un liquide"
+    bareme_total: 2.75
+    duration_min: 17
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/145763, course-422/upload-87465
+        (Exercice 5, Partie 1 — chute verticale d'une bille dans un liquide,
+        frottement fluide linéaire ET poussée d'Archimède non négligeable ;
+        barème de la partie = 2,75 pt sur les 5 pt de l'exercice complet,
+        dont la Partie 2 — plan incliné + poulie — est hors périmètre de
+        cette notion, voir rotation-axe-fixe.md). Transcription vérifiée en
+        deux passes : une 1ʳᵉ passe puis une **2ᵉ passe, vérificateur
+        indépendant** (agent-vérificateur-indépendant, 2026-08-07), qui a
+        re-dérivé l'élément de zéro, re-mesuré intégralement la figure 2 au
+        pixel (étalonnage, traits bleus de demi-division, tangente $(T)$
+        suivie point par point) et confirmé toutes les corrections de la
+        1ʳᵉ passe — diff OK
+        (docs/sujets/pc/chute-mouvements-plans.md, statut « vérifié »).
+        Physique re-dérivée par le vérificateur : $a_0=v_\ell/\tau=
+        7\ \text{m.s}^{-2}$, $\mu=m_B/\tau=5\times10^{-2}\ \text{kg.s}^{-1}$,
+        $\rho_L=\rho_B(1-a_0/g)\approx 1{,}66\times10^3\ \text{kg.m}^{-3}$ —
+        les trois réponses sortent de lectures au trait, ce qui valide
+        l'étalonnage par une voie indépendante. SCOPE NOTE (voir l'en-tête
+        du fichier) : la question 1 exige, comme bk-2022-n-x4 q2, d'ajouter
+        la poussée d'Archimède comme troisième force ET d'exprimer le
+        volume de la bille via sa propre masse volumique $\rho_B$
+        ($V_B=m_B/\rho_B$) avant de substituer dans le terme d'Archimède.
+        Le pont est fait au point d'usage dans le raisonnement de la
+        question q1.
+    intro: |-
+      **Chute verticale d'une bille dans un liquide (examen national, session normale 2024, Exercice 5 — Partie 1).**
+
+      On étudie le mouvement, dans un liquide $(L)$, d'une bille $(S)$ de centre d'inertie $G$, homogène, de masse $m_B$, de volume $V_B$ et de masse volumique $\rho_B$.
+
+      On étudie le mouvement de $G$ dans un repère $(O,\vec{k})$ lié à un référentiel terrestre supposé galiléen. On repère la position de $G$ à chaque instant $t$ par la cote $z$ sur l'axe vertical $(O,\vec{k})$ dirigé vers le bas.
+
+      À l'instant de date $t_0$, prise comme origine des dates ($t_0=0$), on lâche la bille dans le liquide $(L)$ sans vitesse initiale d'une position où la cote de $G$ est nulle ($z=0$) (figure 1).
+
+      Au cours de la chute dans le liquide, la bille $(S)$ est soumise, en plus de son poids, à : la force de frottement fluide $\vec{f} = -\mu.\vec{v}$ où $\vec{v} = v_z.\vec{k}$ et $\mu$ le coefficient de frottement fluide ; la poussée d'Archimède $\vec{F} = -\rho_L.V_B.\vec{g}$ où $g$ est l'intensité de la pesanteur et $\rho_L$ la masse volumique du liquide $(L)$.
+
+      **Données :** Intensité de la pesanteur : $g = 10\ \text{m.s}^{-2}$ ; $m_B = 5{,}0\ \text{g}$ ; $\rho_B = 5{,}526 \times 10^{3}\ \text{kg.m}^{-3}$.
+
+      **Figure 1 (schéma).** Le schéma occupe la marge droite de la page. À gauche du schéma, une colonne verticale grisée (parois en traits noirs, fond fermé) figure le liquide $(L)$ ; un disque noir plein y représente la bille, étiquetée « (S) » à droite de la colonne, à la hauteur de la bille. À droite de la colonne, un axe vertical orienté vers le bas porte, en haut, l'origine $O$ puis le vecteur $\vec{k}$ (courte flèche pleine orientée vers le bas) juste en dessous ; l'axe se termine en bas par une pointe de flèche étiquetée « z ». Une ligne horizontale en pointillés relie $O$ (sur l'axe) au haut de la colonne de liquide, marquant le niveau où $z = 0$ (position initiale de $G$).
+
+      **Figure 2 (courbe).** $v_z\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$. Axe des ordonnées : traits principaux chiffrés $0{,}2$ et $0{,}4$, origine $0$ — 1 division principale $= 0{,}2\ \text{m.s}^{-1}$, avec un trait bleu à chaque demi-division ($0{,}1$) ; le cadre compte 4 divisions, soit $0{,}8\ \text{m.s}^{-1}$ de haut. Axe des abscisses : traits principaux chiffrés $0{,}1$ et $0{,}2$, origine $0$ — 1 division $= 0{,}1\ \text{s}$, même sous-quadrillage bleu à la demi-division ; le cadre compte 7 divisions, soit $0{,}7\ \text{s}$ de large. Courbe croissante et concave partant de l'origine $(0\,;\,0)$, tendant asymptotiquement vers un palier horizontal qui vient se coucher exactement sur le trait bleu de $v_\ell = 0{,}70\ \text{m.s}^{-1}$ (3,5 divisions au-dessus de l'axe) et le suit jusqu'au bord droit ; le palier est pratiquement atteint dès $t \simeq 0{,}4\ \text{s}$. La droite $(T)$, tracée en pointillés et étiquetée « (T) » à sa gauche, est tangente à la courbe à l'origine : elle part de $(0\,;\,0)$ et coupe l'asymptote exactement au repère $t = 0{,}1\ \text{s}$ — d'où $\tau = 0{,}1000\ \text{s}$.
+    questions:
+      - id: q1
+        part: "Établir le modèle"
+        stem: |-
+          **(0,75 pt)** En appliquant la deuxième loi de Newton, montrer que la vitesse $v_z(t)$ de $G$ obéit à l'équation différentielle : $\dfrac{dv_z}{dt} + \dfrac{1}{\tau}v_z = g\left(1-\dfrac{\rho_L}{\rho_B}\right)$ avec $\tau$ le temps caractéristique du mouvement de $(S)$.
+        reasoning: |-
+          Même situation que bk-2022-n-x4 q2 : bilan à trois forces (poids, frottement, Archimède — le rung 7 n'en traite que deux), et même pas supplémentaire, puisque la masse volumique donnée, $\rho_B$, est celle de la bille et non celle du liquide. On revient à la définition $m_B=\rho_B V_B$ pour exprimer $V_B=m_B/\rho_B$, on substitue dans le terme d'Archimède, puis on suit le rung 7 : projeter, diviser par $m_B$, identifier.
+        steps:
+          - math: 'm_B\vec a = \vec P + \vec f + \vec F'
+            note: "Deuxieme loi : trois forces (poids, frottement, poussee d'Archimede), comme au rung 7 plus Archimede (bk-2018-n-x4, bk-2022-n-x4)."
+          - math: 'm_B\frac{dv_z}{dt} = m_B g - \mu\,v_z - \rho_L V_B g'
+            note: "Projection sur (O,k) oriente vers le bas : poids +m_B g, frottement -mu v_z, Archimede -rho_L V_B g."
+          - math: 'm_B = \rho_B V_B \implies V_B = \frac{m_B}{\rho_B}'
+            note: "La bille est homogene : definition de sa propre masse volumique rho_B -- meme pont que bk-2022-n-x4 q2, ici avec rho_B au lieu de rho_a."
+          - math: 'm_B\frac{dv_z}{dt} = m_B g\left(1-\frac{\rho_L}{\rho_B}\right) - \mu\,v_z'
+            note: "On substitue V_B = m_B/rho_B dans le terme d'Archimede et on regroupe les termes constants."
+          - math: '\boxed{\frac{dv_z}{dt} + \frac{1}{\tau}v_z = g\left(1-\frac{\rho_L}{\rho_B}\right)} \qquad \text{avec} \qquad \tau=\frac{m_B}{\mu}'
+            note: "On divise par m_B : le coefficient de v_z redonne 1/tau, inchange par Archimede."
+      - id: q2a
+        part: "Exploitation graphique de la figure 2"
+        stem: |-
+          **(0,25 pt)** Par exploitation de la courbe de la figure 2, déterminer la valeur de la vitesse limite $v_\ell$ du mouvement de $G$.
+        reasoning: |-
+          Comme au rung 7, la vitesse limite se lit directement comme l'ordonnée du palier horizontal, sans aucun calcul. Sur la figure 2, le palier vient se coucher exactement sur le trait bleu de demi-division.
+
+          $$v_\ell \approx 0{,}70\ \text{m.s}^{-1}$$
+      - id: q2b
+        stem: |-
+          **(0,25 pt)** Par exploitation de la courbe de la figure 2, déterminer la valeur de $\tau$ le temps caractéristique du mouvement de $G$.
+        reasoning: |-
+          Même lecture qu'au rung 7 : $\tau$ se lit à l'abscisse où la tangente à l'origine coupe le palier. Sur la figure 2, cette intersection tombe exactement sur le trait principal $t=0{,}1\ \text{s}$.
+
+          $$\tau \approx 0{,}1000\ \text{s}$$
+      - id: q2c
+        stem: |-
+          **(0,5 pt)** Par exploitation de la courbe de la figure 2, déterminer la valeur de l'accélération $a_0$ du mouvement de $G$ à l'instant $t_0 = 0$.
+        reasoning: |-
+          À $t=0$, $v_z=0$ : le frottement (qui dépend de $v_z$) est nul, mais la poussée d'Archimède, elle, ne dépend pas de $v_z$ et ne s'annule jamais — donc $a_0$ vaut exactement le terme constant de l'équation différentielle, $g(1-\rho_L/\rho_B)$, qui est aussi, par le même geste qu'au rung 7 (annuler l'accélération en régime permanent), égal à $v_\ell/\tau$. On peut donc obtenir $a_0$ sans nouvelle lecture graphique, à partir des deux valeurs déjà lues — exactement la méthode déjà utilisée pour $A$ à la question 3 de bk-2018-n-x4.
+        steps:
+          - math: 'a_0 = \left.\frac{dv_z}{dt}\right|_{t=0} = g\left(1-\frac{\rho_L}{\rho_B}\right) = \frac{v_\ell}{\tau}'
+            note: "A t=0, v_z=0 : seul le terme constant subsiste ; regime permanent (rung 7) donne aussi v_ell/tau pour ce meme terme."
+          - math: 'a_0 = \frac{0{,}70}{0{,}1000}'
+            note: "Application numerique avec les deux valeurs lues au graphe (questions 2-1 et 2-2)."
+          - math: '\boxed{a_0 \approx 7{,}0\ \text{m.s}^{-2}}'
+            note: "Coherent avec la pente mesuree de la tangente (T) sur la figure 2."
+      - id: q3
+        stem: |-
+          **(1 pt)** Déduire la valeur de $\mu$ et celle de $\rho_L$.
+        reasoning: |-
+          Deux inversions indépendantes : $\mu$ s'obtient en inversant $\tau=m_B/\mu$ (question 1) avec $\tau$ lu au graphe ; $\rho_L$ s'obtient en isolant $\rho_L$ dans la relation $a_0=g(1-\rho_L/\rho_B)$ établie à la question 2-3, avec $a_0$ lu (ou calculé) juste avant.
+        steps:
+          - math: '\mu = \frac{m_B}{\tau} = \frac{5{,}0\times 10^{-3}}{0{,}1000}'
+            note: "On inverse tau = m_B/mu (question 1), avec m_B converti en kg (5,0 g = 5,0e-3 kg)."
+          - math: '\boxed{\mu \approx 5{,}0\times 10^{-2}\ \text{kg.s}^{-1}}'
+            note: "Application numerique."
+          - math: 'a_0 = g\left(1-\frac{\rho_L}{\rho_B}\right) \implies \rho_L = \rho_B\left(1-\frac{a_0}{g}\right)'
+            note: "On reprend la relation de la question 2-3 et on isole rho_L."
+          - math: '\rho_L = 5{,}526\times 10^3\times\left(1-\frac{7{,}0}{10}\right)'
+            note: "Application numerique."
+          - math: '\boxed{\rho_L \approx 1{,}66\times 10^3\ \text{kg.m}^{-3}}'
+            note: "Masse volumique du liquide (L)."
+
+  # ── bk-2025-n-x4 — 2025 N, Exercice 4 (Partie 1) : satellite artificiel, masse de la Terre ──
+  - id: bk-2025-n-x4
+    title: "Mouvement d'un satellite artificiel : force gravitationnelle et masse de la Terre"
+    source:
+      year: 2025
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — Partie 1 : Mouvement d'un satellite artificiel"
+    bareme_total: 3.0
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/145796, course-422/upload-87489
+        (Exercice 4, Partie 1 — mouvement d'un satellite artificiel en orbite
+        circulaire, base de Freinet [sic — orthographe du scan pour
+        « Frenet », préservée telle quelle dans le stem de la question 1
+        conformément au protocole de transcription fidèle] ; barème de la
+        partie = 3,0 pt sur les 5,5 pt de l'exercice complet, dont la
+        Partie 2 — oscillateur solide-ressort — est hors périmètre de cette
+        notion, voir systemes-oscillants.md). Classée ici et non sous
+        atome-mecanique-newton.md — voir la « Note de routage » en tête de
+        docs/sujets/pc/chute-mouvements-plans.md. Transcription vérifiée en
+        trois passes : transcription initiale, corrections de figure
+        (agent-vérificateur-adversarial), puis **promotion en 3ᵉ lecture**
+        (agent-vérificateur-tiers, 2026-08-06) qui a re-fetché l'élément de
+        zéro et confirmé au zoom les deux corrections de figure (seul le
+        cercle extérieur — l'orbite — est en pointillés, le cercle Terre est
+        plein ; $\vec{n}$ ET $\vec{u}$ sont deux flèches PLEINES, le seul
+        élément pointillé hors de l'orbite étant la double flèche « h »)
+        (docs/sujets/pc/chute-mouvements-plans.md, statut « vérifié »).
+        Physique re-dérivée et cohérente : $T=6720\ \text{s}$,
+        $R_T+h=7{,}716\times10^6\ \text{m}$ ⇒
+        $m_T=4\pi^2(R_T+h)^3/(GT^2)\approx 6{,}0\times10^{24}\ \text{kg}$,
+        $v_S=\sqrt{Gm_T/(R_T+h)}\approx 7{,}2\times10^3\ \text{m.s}^{-1}$,
+        et $2\pi(R_T+h)/v_S\approx T$ — les données du sujet sont
+        mutuellement cohérentes.
+    intro: |-
+      **Mouvement d'un satellite artificiel (examen national, session normale 2025, Exercice 4 — Partie 1).**
+
+      On se propose d'étudier dans cette partie le mouvement d'un satellite artificiel autour de la Terre. Un satellite $(S)$ de centre d'inertie $G_S$ et de masse $m_S$ est destiné à l'observation des océans.
+
+      Dans le référentiel géocentrique considéré galiléen, $(S)$ décrit une orbite circulaire autour de la Terre avec une période de révolution $T$. $(S)$ se trouve à une altitude $h$ de la surface de la Terre (figure 1). (On note que dans la figure 1 l'échelle n'est pas respectée).
+
+      On considère que la Terre est sphérique, de centre $O$, de rayon $R_T$, de masse $m_T$ et ayant une symétrie sphérique de répartition de masse et que $(S)$ n'est soumis qu'à la force gravitationnelle exercée par la Terre.
+
+      **Données :** Constante de gravitation universelle : $G = 6{,}67 \times 10^{-11}\ \text{kg}^{-1}.\text{m}^3.\text{s}^{-2}$ ; Rayon de la Terre : $R_T = 6380\ \text{km}$ ; Période de révolution : $T = 1\text{h}\,52\text{min}$ ; L'altitude : $h = 1336\ \text{km}$.
+
+      **Figure 1 (schéma — échelle non respectée).** Deux cercles concentriques centrés sur le point $O$ (marqué par un point au centre) — le cercle intérieur, en trait plein et épais, représente la Terre (étiquetée « La Terre » dans un encadré relié par une flèche) ; le cercle extérieur, en pointillés, représente la trajectoire du satellite. Sur ce cercle extérieur, un point noir étiqueté « $G_S$ » (relié par une flèche à un encadré « Le satellite $(S)$ ») porte deux vecteurs, tous deux tracés en flèches pleines à pointe noire : $\vec{n}$, dirigée vers le centre $O$ (vers l'intérieur), et $\vec{u}$, tangente au cercle, orientée vers le bas à gauche du schéma (sens du mouvement). Le seul élément en pointillés hors du cercle-orbite est une double flèche verticale, étiquetée « $h$ », qui relie le cercle intérieur (Terre) au cercle extérieur (orbite) et matérialise l'altitude.
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** Ecrire l'expression vectorielle de la force d'attraction gravitationnelle $\vec{F}$ exercée par la Terre sur $(S)$ dans la base de Freinet $(\vec{u}\,;\,\vec{n})$ (figure 1).
+        reasoning: |-
+          D'après le rung 9, la force gravitationnelle qui s'exerce sur un satellite est **toujours dirigée vers le centre** de l'astre attracteur — jamais tangentielle. Or, sur la figure 1, $\vec{n}$ est précisément défini comme dirigé vers le centre $O$ : la force cherchée est donc portée entièrement par $\vec{n}$, sans aucune composante selon $\vec{u}$ (qui est tangentielle, donc perpendiculaire à la direction de la force). Il ne reste qu'à écrire sa norme, donnée par la loi de gravitation universelle du rung 9, avec $r=R_T+h$ la distance entre le centre $O$ de la Terre et le satellite $G_S$.
+
+          $$\vec{F} = G\,\frac{m_T\,m_S}{(R_T+h)^2}\,\vec{n}$$
+      - id: q2a
+        part: "En appliquant la deuxième loi de Newton"
+        stem: |-
+          **(0,5 pt)** Montrer que le mouvement circulaire du centre d'inertie $G_S$ autour de la Terre est uniforme.
+        reasoning: |-
+          Exactement le raisonnement du rung 9 : on décompose l'accélération dans la base de Freinet fournie, et comme la force (question 1) est purement selon $\vec{n}$, sa projection sur $\vec{u}$ (la tangente) est nulle.
+        steps:
+          - math: '\vec a = \frac{dv}{dt}\vec u + \frac{v^2}{R_T+h}\vec n'
+            note: "Decomposition de l'acceleration dans la base de Freinet (rung 9), comme fournie par l'enonce."
+          - math: 'm_S\frac{dv}{dt} = 0'
+            note: "Projection de la deuxieme loi sur u : la force (question 1) est purement selon n, donc sa composante tangentielle est nulle."
+          - math: '\boxed{\frac{dv}{dt} = 0}'
+            note: "La norme de la vitesse ne varie pas : mouvement circulaire UNIFORME (rung 9)."
+      - id: q2b
+        stem: |-
+          **(0,75 pt)** Déterminer $v_S$ la norme de la vitesse de $G_S$ en fonction de $G$, $m_T$, $R_T$ et $h$.
+        reasoning: |-
+          Toujours le rung 9 : on projette la deuxième loi sur $\vec{n}$ cette fois, ce qui identifie la force (question 1) à $m_S v_S^2/(R_T+h)$, puis on isole $v_S$.
+        steps:
+          - math: 'm_S\frac{v_S^2}{R_T+h} = G\frac{m_T\,m_S}{(R_T+h)^2}'
+            note: "Projection de la deuxieme loi sur n (rung 9), avec la force de la question 1."
+          - math: 'v_S^2 = \frac{G\,m_T}{R_T+h}'
+            note: "La masse m_S du satellite se simplifie des deux cotes."
+          - math: '\boxed{v_S = \sqrt{\frac{G\,m_T}{R_T+h}}}'
+            note: "Racine carree : c'est l'expression demandee."
+      - id: q2c
+        stem: |-
+          **(0,75 pt)** Déduire la relation : $\dfrac{T^2}{(R_T + h)^3} = k$ ($k$ étant une constante), traduisant la troisième loi de Kepler relative au mouvement du centre d'inertie $G_S$ autour de la Terre.
+        reasoning: |-
+          Exactement la dérivation du rung 10 : deux expressions de $v_S$, celle de la question précédente et celle, géométrique, du périmètre du cercle parcouru en une période, $2\pi(R_T+h)/T$. On les égale, on élève au carré, et on réarrange.
+        steps:
+          - math: 'v_S = \frac{2\pi(R_T+h)}{T}'
+            note: "Vitesse = perimetre du cercle / periode (mouvement circulaire uniforme, question 2-1)."
+          - math: '\frac{2\pi(R_T+h)}{T} = \sqrt{\frac{G\,m_T}{R_T+h}}'
+            note: "On egale les deux expressions de v_S (question 2-2 et ci-dessus), comme au rung 10."
+          - math: '\frac{4\pi^2(R_T+h)^2}{T^2} = \frac{G\,m_T}{R_T+h}'
+            note: "On eleve les deux membres au carre."
+          - math: '\boxed{\frac{T^2}{(R_T+h)^3} = \frac{4\pi^2}{G\,m_T} = k}'
+            note: "On rearrange (rung 10) : k ne depend que de la masse de l'astre central, jamais du satellite."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Calculer alors la valeur de la masse $m_T$.
+        reasoning: |-
+          On isole $m_T$ dans la relation de la question précédente, puis on convertit les données en unités SI ($T$ en secondes, $R_T+h$ en mètres) avant l'application numérique.
+        steps:
+          - math: 'm_T = \frac{4\pi^2(R_T+h)^3}{G\,T^2}'
+            note: "On isole m_T dans la relation de la question 2-3."
+          - math: 'T = 1\text{h}\,52\text{min} = 6720\ \text{s} \qquad R_T+h = 6380+1336 = 7716\ \text{km} = 7{,}716\times 10^6\ \text{m}'
+            note: "Conversions en unites SI."
+          - math: 'm_T = \frac{4\pi^2\times(7{,}716\times 10^6)^3}{6{,}67\times 10^{-11}\times 6720^2}'
+            note: "Application numerique."
+          - math: '\boxed{m_T \approx 6{,}0\times 10^{24}\ \text{kg}}'
+            note: "Coherent avec la masse reelle de la Terre (environ 5,97e24 kg en table)."

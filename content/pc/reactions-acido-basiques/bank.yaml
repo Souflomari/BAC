@@ -13,13 +13,23 @@
 # dans les énoncés ; conventions KaTeX (block scalars pour la prose, KaTeX brut
 # entre apostrophes simples dans steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue B0) : les quatre sujets « vérifié » de cette
-# notion sont 2018 N, 2019 N, 2020 N, 2021 N. Le 2021 N sert AUSSI de sommet de
-# leçon (r-bac, exercises.yaml, marqueur exercise r-bac à R12). Il figure ici pour
-# que la banque soit le corpus complet des annales de la notion (BANK-SPEC §1 :
-# « la banque est le volume derrière le sommet, jamais son remplacement »). À
-# l'arbitrage de l'owner si l'on préfère l'écarter de la banque pour éviter le
-# recoupement sur la même page.
+# NOTE ÉDITORIALE (pour la revue B0) : la banque compte désormais HUIT sujets
+# « vérifié » — 2018 N, 2019 N, 2020 N, 2021 N, 2022 N, 2023 N, 2024 N, 2025 N.
+# Le 2021 N sert AUSSI de sommet de leçon (r-bac, exercises.yaml, marqueur
+# exercise r-bac à R12). Il figure ici pour que la banque soit le corpus complet
+# des annales de la notion (BANK-SPEC §1 : « la banque est le volume derrière le
+# sommet, jamais son remplacement »). À l'arbitrage de l'owner si l'on préfère
+# l'écarter de la banque pour éviter le recoupement sur la même page.
+#
+# Quatre entrées ajoutées en 2026-08-07 (2022 N, 2023 N, 2024 N, 2025 N), toutes
+# transcrites depuis des blocs « Statut: vérifié » de docs/sujets/pc/
+# reactions-acido-basiques.md (chacun re-fetché et diffé indépendamment ; 2022 N
+# porte 4 passes de vérification, la dernière une micro-relecture pixel-exacte de
+# sa figure 2). Un drapeau de portée (SCOPE NOTE, non résolu ici) est posé sur
+# bk-2023-n-x1 : sa question 2.3 (pH d'un mélange équimolaire acide 1 / base 2 en
+# fonction de pK_A1 et pK_A2) demande une technique — un résultat pH fermé pour
+# une réaction entre deux couples — qu'aucun rung n'établit nommément ; voir le
+# commentaire au-dessus de cette entrée pour le détail et l'arbitrage demandé.
 
 notion: pc/reactions-acido-basiques
 
@@ -459,3 +469,395 @@ entries:
             note: "On évalue la formule du rung 5 au pH de l'équivalence, pHE = 8,0, avec pKA = 3,9 (KA = 10^-3,9 donne directement pKA)."
           - math: '\dfrac{[A^-]}{[AH]} \approx 1{,}3\times10^{4} \gg 1 \implies A^- \text{ prédomine très largement}'
             note: "Rapport très supérieur à 1 (rung 5) : la base conjuguée A- écrase l'acide AH, ce qui est attendu puisqu'on est à l'équivalence, où tout AH a été quasiment converti."
+
+  # ── bk-2022-n-x1 — 2022 N, Exercice 1 (Partie 2) : acide propanoïque, tau/pKA puis dosage ──
+  - id: bk-2022-n-x1
+    title: "Étude d'une solution d'acide propanoïque, puis dosage pH-métrique"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Partie 2 (Chimie)"
+    bareme_total: 4.75
+    duration_min: 29
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/136621 (Exercice 1, Partie 2 — étude
+        d'une solution d'acide propanoïque puis dosage pH-métrique ; barème de
+        la partie = 4,75 pt sur les 7 pt de l'exercice : 0,5+0,75+0,75+0,5
+        pour la sous-partie 1, 0,5+0,25+0,5+0,5+0,5 pour la sous-partie
+        2-Dosage). Transcription vérifiée en 4 passes
+        (docs/sujets/pc/reactions-acido-basiques.md, statut « vérifié »,
+        2026-08-07) : la 4ᵉ passe (micro-relecture indépendante, zoom ×5)
+        confirme au pixel près que le pic de la courbe dérivée tombe
+        exactement sur le trait $V_b = 20{,}0\ \text{mL}$, que la courbe
+        dérivée n'a aucune échelle d'ordonnée propre (amplitude non lisible —
+        drapeau honnête maintenu), et que l'étiquette fléchée
+        « $dpH/dV_b$ » désigne la queue descendante de la courbe vers
+        $V_b \approx 21{,}7\ \text{mL}$ — elle identifie la courbe, elle ne
+        désigne ni le sommet du pic ni l'équivalence.
+    intro: |-
+      **Étude d'une solution d'acide propanoïque, puis dosage pH-métrique (examen national, session normale 2022).**
+
+      L'acide propanoïque, de formule $\text{C}_2\text{H}_5\text{-COOH}$, est utilisé comme conservateur alimentaire et dans la synthèse des anti-inflammatoires. Toutes les mesures sont faites à $25\,^\circ\text{C}$.
+
+      **1. Solution aqueuse d'acide propanoïque.** On prépare une solution aqueuse $S_a$ d'acide propanoïque de concentration $C_a = 5\times10^{-2}\ \text{mol/L}$. La mesure de son pH donne $\text{pH} = 3{,}1$.
+
+      **2. Dosage.** Pour vérifier $C_a$, on dose $V_a = 20\ \text{mL}$ de $S_a$ par une solution d'hydroxyde de sodium $\left(\text{Na}^+_{(aq)} + \text{HO}^-_{(aq)}\right)$ de concentration $C_b = 5\times10^{-2}\ \text{mol/L}$. La solution $S_a$ a elle-même été préparée en diluant $10$ fois une solution $S_0$ d'acide propanoïque pur, de masse molaire $M = 74\ \text{g/mol}$.
+
+      **Figure 2 (courbe double).** Sur un même repère : la courbe de dosage $\text{pH} = f(V_b)$ (croissante, départ mesuré $\text{pH} \approx 3{,}15$ à $V_b = 0$, cohérent avec le pH de $S_a$) et la courbe dérivée $\dfrac{d\text{pH}}{dV_b} = f(V_b)$. Le saut de la première courbe et le pic de la seconde tombent tous deux, au pixel près, exactement sur le trait de grille $V_b = 20{,}0\ \text{mL}$. La courbe dérivée n'a pas d'échelle d'ordonnée propre — un seul axe vertical, gradué en pH — donc son amplitude n'est pas lisible, seule l'abscisse de son pic compte ici. Une étiquette encadrée « $dpH/dV_b$ », munie d'une flèche, est placée sur la figure : sa pointe touche la queue descendante de la courbe dérivée, vers $V_b \approx 21{,}7\ \text{mL}$ — elle sert seulement à identifier quelle courbe est la dérivée, elle ne désigne pas le sommet du pic ni l'équivalence.
+    questions:
+      - id: q1
+        part: "1. Solution aqueuse d'acide propanoïque"
+        stem: |-
+          **(0,5 pt)** Écrire l'équation de la réaction entre l'acide propanoïque et l'eau.
+        reasoning: |-
+          La mise en solution d'un acide **faible** est une transformation **limitée** : elle s'arrête sur un équilibre, donc double flèche $\rightleftharpoons$ (rung 7). L'acide $\text{C}_2\text{H}_5\text{COOH}$ cède un proton à l'eau, qui joue ici le rôle de base (couple $\text{H}_3\text{O}^+/\text{H}_2\text{O}$).
+
+          $$\text{C}_2\text{H}_5\text{COOH}_{(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons \text{C}_2\text{H}_5\text{COO}^-_{(aq)} + \text{H}_3\text{O}^+_{(aq)}$$
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Calculer le taux d'avancement final $\tau$ de cette réaction. Que peut-on conclure ?
+        reasoning: |-
+          Le taux d'avancement final compare l'avancement atteint à l'avancement maximal, $\tau = x_f/x_{max}$ (rung 6). Chaque acide dissocié libère un $\text{H}_3\text{O}^+$, donc l'avancement final se lit sur $[\text{H}_3\text{O}^+]_{eq}$, tiré du pH ; une conversion totale de l'acide apporté donnerait $[\text{H}_3\text{O}^+]_{max} = C_a$.
+        steps:
+          - math: '[\text{H}_3\text{O}^+]_{eq} = 10^{-\text{pH}} = 10^{-3{,}1} \approx 7{,}9\times10^{-4}\ \text{mol/L}'
+            note: "Concentration effective en ions oxonium, tiree du pH."
+          - math: '\tau = \dfrac{[\text{H}_3\text{O}^+]_{eq}}{C_a} = \dfrac{7{,}9\times10^{-4}}{5\times10^{-2}} \approx 1{,}6\times10^{-2} = 1{,}6\ \%'
+            note: "tau = avancement final / avancement maximal (rung 6) ; le maximal correspond a [H3O+] = Ca. Tau tres petit (1,6 %) : conclusion, l'acide propanoique est un acide faible, tres peu dissocie."
+      - id: q3
+        stem: |-
+          **(0,75 pt)** Exprimer le quotient de réaction $Q_{r,\text{éq}}$ à l'équilibre en fonction de $C_a$ et $[\text{H}_3\text{O}^+_{(aq)}]_{\text{éq}}$. Calculer sa valeur.
+        reasoning: |-
+          On écrit les concentrations d'équilibre à partir du tableau d'avancement (rung 4) : chaque acide dissocié forme un $\text{C}_2\text{H}_5\text{COO}^-$ et un $\text{H}_3\text{O}^+$ en quantités égales, donc $[\text{C}_2\text{H}_5\text{COO}^-]_{eq} \approx [\text{H}_3\text{O}^+]_{eq}$ ; il reste $[\text{C}_2\text{H}_5\text{COOH}]_{eq} \approx C_a - [\text{H}_3\text{O}^+]_{eq}$ de l'acide non dissocié. On reporte dans le quotient associé à l'équation de la question 1.
+        steps:
+          - math: 'Q_{r,\text{éq}} = \dfrac{[\text{C}_2\text{H}_5\text{COO}^-]_{eq}\,[\text{H}_3\text{O}^+_{(aq)}]_{\text{éq}}}{[\text{C}_2\text{H}_5\text{COOH}]_{eq}} = \dfrac{[\text{H}_3\text{O}^+_{(aq)}]_{\text{éq}}^{2}}{C_a - [\text{H}_3\text{O}^+_{(aq)}]_{\text{éq}}}'
+            note: "On remplace [C2H5COO-]eq par [H3O+]eq (produits formes a parts egales) et [C2H5COOH]eq par Ca - [H3O+]eq."
+          - math: 'Q_{r,\text{éq}} = \dfrac{\left(7{,}9\times10^{-4}\right)^{2}}{5\times10^{-2} - 7{,}9\times10^{-4}} \approx 1{,}28\times10^{-5}'
+            note: "Application numerique avec Ca = 5.10^-2 mol/L."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** En déduire la valeur du $pK_A$ du couple $\text{C}_2\text{H}_5\text{COOH}_{(aq)}/\text{C}_2\text{H}_5\text{COO}^-_{(aq)}$.
+        reasoning: |-
+          À l'équilibre, $Q_{r,\text{éq}}$ atteint la constante d'équilibre de la réaction de la question 1 : c'est la constante d'acidité $K_A$ du couple (rung 4). On en tire $pK_A = -\log K_A$.
+        steps:
+          - math: 'K_A = Q_{r,\text{éq}} \approx 1{,}28\times10^{-5}'
+            note: "A l'equilibre, le quotient de reaction atteint la constante d'acidite KA (rung 4)."
+          - math: 'pK_A = -\log K_A = -\log\left(1{,}28\times10^{-5}\right) \approx 4{,}89'
+            note: "Valeur proche de celle tabulee pour l'acide propanoique (4,87)."
+      - id: q5
+        part: "2. Dosage d'une solution aqueuse d'acide propanoïque"
+        stem: |-
+          **(0,5 pt)** Écrire l'équation de la réaction du dosage.
+        reasoning: |-
+          Réaction support d'un titrage : totale, rapide, unique — flèche simple (rung 9). L'acide faible $\text{C}_2\text{H}_5\text{COOH}$ cède son proton à l'ion $\text{HO}^-$ de la soude, base forte.
+
+          $$\text{C}_2\text{H}_5\text{COOH}_{(aq)} + \text{HO}^-_{(aq)} \rightarrow \text{C}_2\text{H}_5\text{COO}^-_{(aq)} + \text{H}_2\text{O}_{(l)}$$
+      - id: q6
+        stem: |-
+          **(0,25 pt)** Déterminer graphiquement le volume $V_{bE}$ de la solution $S_b$ versé à l'équivalence.
+        reasoning: |-
+          On repère $V_{bE}$ au maximum de la courbe dérivée $d\text{pH}/dV_b$ (rung 10, méthode 2) : ce maximum tombe exactement sur le trait de grille $V_b = 20\ \text{mL}$ — confirmé par le saut de la courbe $\text{pH} = f(V_b)$ elle-même, dont le point d'inflexion tombe au même endroit (rung 10 : les deux méthodes s'accordent). L'étiquette fléchée $d\text{pH}/dV_b$ de la figure désigne seulement la queue de la courbe, vers $V_b \approx 21{,}7\ \text{mL}$ — elle identifie la courbe, pas le sommet du pic ni l'équivalence.
+
+          $$V_{bE} = 20{,}0\ \text{mL}$$
+      - id: q7
+        stem: |-
+          **(0,5 pt)** Vérifier la valeur de la concentration $C_a$.
+        reasoning: |-
+          À l'équivalence, la quantité d'acide initialement présente égale la quantité de base versée : $C_a V_a = C_b V_{bE}$ (rung 9).
+        steps:
+          - math: 'C_a = \dfrac{C_b\,V_{bE}}{V_a} = \dfrac{5\times10^{-2} \times 20{,}0}{20} = 5\times10^{-2}\ \text{mol/L}'
+            note: "VbE = 20,0 mL (question precedente), Va = 20 mL, Cb = 5.10^-2 mol/L : on retrouve exactement la valeur de Ca utilisee dans la sous-partie 1."
+      - id: q8
+        stem: |-
+          **(0,5 pt)** La solution $S_a$ a été préparée en diluant 10 fois une solution aqueuse $S_0$ d'acide propanoïque. Déterminer la masse $m$ d'acide propanoïque pur dissout dans un litre de la solution $S_0$.
+        reasoning: |-
+          $S_a$ est $S_0$ diluée $10$ fois (rung 6) : sa concentration a été divisée par $10$, donc on multiplie par $10$ pour retrouver $C_0$. On convertit ensuite cette concentration molaire en masse dissoute dans $1\ \text{L}$ via la masse molaire $M$.
+        steps:
+          - math: 'C_0 = 10 \times C_a = 10 \times 5\times10^{-2} = 0{,}5\ \text{mol/L}'
+            note: "Sa est S0 diluee 10 fois : on multiplie par 10 pour remonter a C0."
+          - math: 'm = C_0 \times M = 0{,}5 \times 74 = 37\ \text{g}'
+            note: "Masse dissoute dans 1 L de S0 (concentration molaire fois masse molaire)."
+      - id: q9
+        stem: |-
+          **(0,5 pt)** Pour un volume $V_b = 5\ \text{mL}$ de la solution $S_b$ versée, déterminer le pourcentage de la forme acide du couple $\text{C}_2\text{H}_5\text{COOH}_{(aq)}/\text{C}_2\text{H}_5\text{COO}^-_{(aq)}$ dans le mélange réactionnel.
+        reasoning: |-
+          $V_b = 5\ \text{mL}$ est avant l'équivalence ($V_{bE} = 20{,}0\ \text{mL}$) : la réaction de dosage y est totale (rung 9), donc chaque mole de $\text{HO}^-$ versée convertit une mole de $\text{C}_2\text{H}_5\text{COOH}$ en $\text{C}_2\text{H}_5\text{COO}^-$ — même tableau d'avancement que pour l'équivalence elle-même, arrêté avant terme. Les deux formes du couple partagent le même volume total, donc le pourcentage en concentration est aussi le pourcentage en quantité de matière (rung 8, définition du pourcentage).
+        steps:
+          - math: 'n(\text{C}_2\text{H}_5\text{COO}^-) = C_b V_b \qquad n(\text{C}_2\text{H}_5\text{COOH}) = C_a V_a - C_b V_b = C_b V_{bE} - C_b V_b'
+            note: "Reaction totale (rung 9) ; on utilise Ca Va = Cb VbE (question 7)."
+          - math: '\%\,\text{C}_2\text{H}_5\text{COOH} = \dfrac{n(\text{C}_2\text{H}_5\text{COOH})}{n(\text{C}_2\text{H}_5\text{COOH}) + n(\text{C}_2\text{H}_5\text{COO}^-)}\times100 = \dfrac{V_{bE}-V_b}{V_{bE}}\times100 = \dfrac{20-5}{20}\times100 = 75\ \%'
+            note: "Le facteur Cb se simplifie ; il reste un rapport de volumes (rung 8, definition du pourcentage)."
+
+  # ── bk-2023-n-x1 — 2023 N, Exercice 1 (§2) : reaction acide ethanoique / ion methanoate ──
+  # SCOPE NOTE (flag, non résolu ici — à l'arbitrage du pédagogue-architecte) :
+  # La question 2.3 (« Trouver l'expression du pH du mélange réactionnel en
+  # fonction de pK_A1 et pK_A2 ») demande un résultat fermé — pH = (pK_A1 +
+  # pK_A2)/2 pour un mélange équimolaire acide 1 / base 2 — qu'AUCUN rung
+  # n'établit tel quel. Le rung 7 s'arrête à K = K_A1/K_A2 et à tau (résolu par
+  # tableau d'avancement) ; il ne calcule jamais un pH pour une réaction entre
+  # deux couples. Le rung 8 exclut même explicitement ce type de calcul
+  # (« Ce que ce chapitre ne couvre pas » : pas d'exploitation de la
+  # distribution pour calculer par avance la composition d'un mélange tampon,
+  # relation de Henderson-Hasselbalch). Le raisonnement ci-dessous re-dérive le
+  # résultat depuis les seules définitions de K_A1 et K_A2 (rung 4) et la
+  # symétrie du tableau d'avancement à quantités initiales égales (rung 7,
+  # exemple travaillé 2) — une synthèse légitime construite sur les rungs
+  # établis, pas une formule mémorisée hors-programme — mais la question reste,
+  # dans son ensemble, au-delà de ce que les rungs couvrent nommément. Signalé
+  # ici, non corrigé silencieusement par l'invention d'un rung supplémentaire.
+  - id: bk-2023-n-x1
+    title: "Mélange acide éthanoïque / ion méthanoate : quotient de réaction et pH"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — §2 (Chimie)"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS 28F, element/142476 (Exercice 1, §2 — réaction
+        entre deux couples acide/base, quotient de réaction à l'équilibre et
+        pH d'un mélange équimolaire ; barème du §2 = 2,0 pt sur les 7 pt de
+        l'exercice : 0,75+0,75+0,5). Transcription vérifiée : 1ʳᵉ passe de
+        vérification adversariale indépendante, re-fetch AlloSchool + diff OK
+        (docs/sujets/pc/reactions-acido-basiques.md, statut « vérifié »,
+        agent-vérificateur-adversarial, 2026-08-07). NB : la concentration
+        $C_A = 5\times10^{-2}\ \text{mol/L}$ et le $pK_{A1} = 4{,}79$ du
+        couple $\text{CH}_3\text{COOH}/\text{CH}_3\text{COO}^-$ ne figurent
+        pas sur la page scannée du §2 lui-même — ce sont des données du §1 du
+        même exercice (transcrit intégralement sous `etat-equilibre.md`,
+        cross-listé), reportées ici en glose éditoriale pour rendre l'entrée
+        autonome, exactement comme le signale la note de transcription de
+        docs/sujets.
+    intro: |-
+      **Réaction entre l'acide éthanoïque et l'ion méthanoate (examen national, session normale 2023).**
+
+      **Données nécessaires, reportées du §1 du même exercice** (transcrit intégralement sous `etat-equilibre.md`, cross-listé ici) : la solution $S_A$ d'acide éthanoïque a pour concentration $C_A = 5\times10^{-2}\ \text{mol/L}$, et le couple $\text{CH}_3\text{COOH}_{(aq)}/\text{CH}_3\text{COO}^-_{(aq)}$ a pour constante $pK_{A1} = 4{,}79$.
+
+      On mélange un volume $V_1$ de la solution $S_A$ avec un volume $V_2 = V_1$ d'une solution aqueuse $S_B$ de méthanoate de sodium $\left(\text{Na}^+_{(aq)} + \text{HCOO}^-_{(aq)}\right)$ de concentration molaire $C_B = C_A$, sachant $pK_{A2} = pK_A\left(\text{HCOOH}_{(aq)}/\text{HCOO}^-_{(aq)}\right) = 3{,}75$.
+    questions:
+      - id: q1
+        stem: |-
+          **(0,75 pt)** Écrire l'équation de la réaction qui se produit entre les ions méthanoate et l'acide éthanoïque.
+        reasoning: |-
+          C'est une réaction entre deux couples (rung 7) : l'acide $\text{CH}_3\text{COOH}$ du couple 1 cède son proton à la base $\text{HCOO}^-$ du couple 2. Rien n'indique a priori que cette réaction soit totale — on garde donc la double flèche $\rightleftharpoons$, comme au rung 7, tant qu'on n'a pas calculé $K$.
+
+          $$\text{CH}_3\text{COOH}_{(aq)} + \text{HCOO}^-_{(aq)} \rightleftharpoons \text{CH}_3\text{COO}^-_{(aq)} + \text{HCOOH}_{(aq)}$$
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Trouver l'expression du quotient de réaction à l'équilibre $Q_{r,\text{éq}}$ associée à cette réaction en fonction des constantes d'acidité $K_{A1}$ et $K_{A2}$ des couples intervenant. Calculer sa valeur sachant que $pK_{A2} = pK_A\left(\text{HCOOH}_{(aq)}/\text{HCOO}^-_{(aq)}\right) = 3{,}75$.
+        reasoning: |-
+          Exactement la construction du rung 7 : on réarrange le quotient en un rapport par couple, chacun s'exprimant avec $K_{A1}$ ou $K_{A2}$ et $[\text{H}_3\text{O}^+]$, qui se simplifie dans le produit.
+        steps:
+          - math: 'Q_{r,\text{éq}} = \dfrac{[\text{CH}_3\text{COO}^-]_{eq}\,[\text{HCOOH}]_{eq}}{[\text{CH}_3\text{COOH}]_{eq}\,[\text{HCOO}^-]_{eq}} = \dfrac{K_{A1}}{[\text{H}_3\text{O}^+]} \times \dfrac{[\text{H}_3\text{O}^+]}{K_{A2}} = \dfrac{K_{A1}}{K_{A2}}'
+            note: "Meme construction qu'au rung 7 : le rapport du couple 1 vaut KA1/[H3O+], celui du couple 2 vaut [H3O+]/KA2 ; [H3O+] se simplifie."
+          - math: 'Q_{r,\text{éq}} = 10^{\,pK_{A2}-pK_{A1}} = 10^{\,3{,}75-4{,}79} = 10^{-1{,}04} \approx 9{,}1\times10^{-2}'
+            note: "Application numerique avec pKA1 = 4,79 (donnee du S1) et pKA2 = 3,75."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Trouver l'expression du pH du mélange réactionnel en fonction de $pK_{A1}$ et $pK_{A2}$. Calculer sa valeur.
+        reasoning: |-
+          Ce résultat dépasse ce qu'établit nommément le rung 7 (voir la NOTE DE PORTÉE en tête de cette entrée) — on le re-dérive ici depuis les seules définitions de $K_{A1}$ et $K_{A2}$ (rung 4), en s'appuyant sur la symétrie du tableau d'avancement du rung 7 (exemple travaillé 2) : comme $V_2 = V_1$ et $C_B = C_A$, les deux réactifs sont apportés en quantités égales, donc à l'équilibre autant de $\text{CH}_3\text{COOH}$ a disparu que de $\text{HCOO}^-$ (même avancement). Il en résulte $[\text{CH}_3\text{COOH}]_{eq} = [\text{HCOO}^-]_{eq}$ et $[\text{CH}_3\text{COO}^-]_{eq} = [\text{HCOOH}]_{eq}$ — deux égalités croisées entre les deux couples. On exprime alors $[\text{H}_3\text{O}^+]_{eq}$ de deux façons, une par couple, et on multiplie.
+        steps:
+          - math: '[\text{H}_3\text{O}^+]_{eq} = K_{A1}\dfrac{[\text{CH}_3\text{COOH}]_{eq}}{[\text{CH}_3\text{COO}^-]_{eq}} \qquad [\text{H}_3\text{O}^+]_{eq} = K_{A2}\dfrac{[\text{HCOOH}]_{eq}}{[\text{HCOO}^-]_{eq}}'
+            note: "Chaque KA (rung 4) isole une expression de [H3O+]eq, une par couple."
+          - math: '[\text{H}_3\text{O}^+]_{eq}^{2} = K_{A1}K_{A2}\dfrac{[\text{CH}_3\text{COOH}]_{eq}\,[\text{HCOOH}]_{eq}}{[\text{CH}_3\text{COO}^-]_{eq}\,[\text{HCOO}^-]_{eq}} = K_{A1}K_{A2}'
+            note: "Le produit des deux egalites croisees simplifie exactement le rapport de concentrations a 1 (quantites initiales egales)."
+          - math: '\text{pH} = \dfrac{pK_{A1}+pK_{A2}}{2} = \dfrac{4{,}79+3{,}75}{2} \approx 4{,}27'
+            note: "On passe au log puis au pH ; valable uniquement parce que V2 = V1 et CB = CA (melange equimolaire acide 1 / base 2)."
+
+  # ── bk-2024-n-x1 — 2024 N, Exercice 1 (Partie 2) : dosage pH-metrique vitamine C ──
+  - id: bk-2024-n-x1
+    title: "Dosage pH-métrique de la vitamine C : lecture de la courbe dérivée et pKA"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Partie 2 (Chimie)"
+    bareme_total: 4.75
+    duration_min: 29
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS 28F, element/145763 (Exercice 1, Partie 2 —
+        dosage pH-métrique d'une solution de vitamine C, lecture de $V_{BE}$
+        sur une courbe double pH/dérivée, détermination du $pK_A$ par la
+        relation d'avancement avant l'équivalence ; barème de la partie =
+        4,75 pt sur les 7 pt de l'exercice :
+        0,5+0,5+0,5+0,75+0,5+0,75+0,75+0,5). Transcription vérifiée en 2
+        passes (docs/sujets/pc/reactions-acido-basiques.md, statut
+        « vérifié », 2026-08-07) : la 2ᵉ passe, par un vérificateur
+        indépendant, re-mesure intégralement la figure 2 au pixel
+        ($V_{BE} = 25{,}0$ mL confirmé, gridline-exact) et recoupe le
+        $pK_A = 4{,}05$ par trois voies indépendantes (formule de la question
+        5-3, lecture directe à la demi-équivalence, valeur tabulée de l'acide
+        ascorbique $pK_{A1} = 4{,}1$). L'alternance d'indices du scan est
+        fidèlement reproduite dans les énoncés ci-dessous : « éq » à la
+        question 5-1, « eq » à la question 5-2 — un artefact d'impression
+        confirmé sur l'image, pas une erreur de transcription.
+    intro: |-
+      **Dosage pH-métrique d'une solution aqueuse de vitamine C (examen national, session normale 2024).**
+
+      Un comprimé de vitamine C contient $250\ \text{mg}$ d'acide ascorbique. Laissé plusieurs jours à l'air libre, il a partiellement réagi avec le dioxygène de l'air ; on veut déterminer la masse d'acide ascorbique restante par titrage pH-métrique. Toutes les mesures sont faites à $25\,^\circ\text{C}$ ($K_e = 10^{-14}$). L'acide ascorbique $\text{C}_6\text{H}_8\text{O}_6$ est noté $AH$, le couple associé $AH_{(aq)}/A^-_{(aq)}$, et $M(AH) = 176\ \text{g/mol}$.
+
+      On dissout le comprimé écrasé dans l'eau : solution $S_A$ de concentration $C_A$, de volume $V_{SA} = 50{,}0\ \text{mL}$. On prélève $V_A = 15{,}0\ \text{mL}$ de $S_A$, dosé par une solution d'hydroxyde de sodium $\left(\text{Na}^+_{(aq)} + \text{HO}^-_{(aq)}\right)$ de concentration $C_B = 1{,}50\times10^{-2}\ \text{mol/L}$.
+
+      **Figure 2 (courbe double).** La courbe $(C_1)$ donne $\text{pH} = f(V_B)$, la courbe $(C_2)$ donne $\dfrac{d\text{pH}}{dV_B} = f(V_B)$, superposées sur un même repère gradué en $V_B$ (mL, traits principaux tous les $5\ \text{mL}$) et en pH (traits principaux tous les $2$ unités). $(C_1)$ part de $\text{pH} \approx 2{,}85$ à $V_B = 0$, monte lentement (par exemple $\text{pH} \approx 3{,}76$ vers $V_B = 8{,}5\ \text{mL}$), puis saute quasiment à la verticale exactement sur le $5^e$ trait principal, $V_B = 25{,}0\ \text{mL}$ — mesuré au pixel, gridline-exact — avant un palier final vers $\text{pH} \approx 11{,}45$. $(C_2)$ reste quasi nulle presque partout et présente un pic étroit et positif, centré sur ce même trait $V_B = 25{,}0\ \text{mL}$.
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** Écrire l'équation modélisant la réaction qui a lieu lors de ce dosage.
+        reasoning: |-
+          Réaction support d'un titrage : totale, rapide, unique — flèche simple (rung 9). L'acide faible $AH$ (acide ascorbique) cède son proton à l'ion $\text{HO}^-$ de la soude, base forte.
+
+          $$AH_{(aq)} + \text{HO}^-_{(aq)} \rightarrow A^-_{(aq)} + \text{H}_2\text{O}_{(l)}$$
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Déterminer graphiquement le volume $V_{BE}$ versé à l'équivalence.
+        reasoning: |-
+          On repère $V_{BE}$ au maximum de la courbe dérivée $(C_2)$ (rung 10, méthode 2) : le pic tombe exactement sur le trait de grille $V_B = 25{,}0\ \text{mL}$, confirmé par le point d'inflexion de $(C_1)$ au même endroit — les deux méthodes s'accordent (rung 10).
+
+          $$V_{BE} = 25{,}0\ \text{mL}$$
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Déterminer la valeur de $C_A$.
+        reasoning: |-
+          À l'équivalence, la quantité d'acide dans la prise d'essai égale la quantité de base versée : $C_A V_A = C_B V_{BE}$ (rung 9).
+        steps:
+          - math: 'C_A = \dfrac{C_B\,V_{BE}}{V_A} = \dfrac{1{,}50\times10^{-2} \times 25{,}0}{15{,}0} = 2{,}5\times10^{-2}\ \text{mol/L}'
+            note: "VBE = 25,0 mL (question precedente), VA = 15,0 mL, CB = 1,50.10^-2 mol/L."
+      - id: q4
+        stem: |-
+          **(0,75 pt)** En déduire la masse $m$ restante de vitamine C dans le comprimé laissé à l'air libre.
+        reasoning: |-
+          $S_A$ est une solution homogène : sa concentration $C_A$, obtenue à partir du seul prélèvement titré $V_A$, est la même dans tout le volume $V_{SA}$ où le comprimé a été dissous. La quantité totale d'acide restant se retrouve donc en multipliant $C_A$ par le volume total $V_{SA}$, puis en convertissant en masse via $M$.
+        steps:
+          - math: 'n(AH)_{\text{total}} = C_A \times V_{SA} = 2{,}5\times10^{-2} \times 0{,}0500 = 1{,}25\times10^{-3}\ \text{mol}'
+            note: "On applique CA a tout le volume VSA, pas seulement au volume titre VA."
+          - math: 'm = n(AH)_{\text{total}} \times M = 1{,}25\times10^{-3} \times 176 \approx 0{,}22\ \text{g}'
+            note: "Sur les 250 mg initiaux : une bonne partie de la vitamine C a ete oxydee par le dioxygene de l'air."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** À partir de l'expression de la constante d'acidité $K_A$ du couple $AH_{(aq)}/A^-_{(aq)}$, établir l'expression de son $pK_A$ en fonction du $pH$ du mélange réactionnel et des concentrations molaires $[AH_{(aq)}]_{\text{éq}}$ et $[A^-_{(aq)}]_{\text{éq}}$ à l'équilibre.
+        reasoning: |-
+          C'est la relation du rung 5, retournée. $K_A = [A^-]_{eq}[\text{H}_3\text{O}^+]_{eq}/[AH]_{eq}$ (rung 4) ; on y remplace $[\text{H}_3\text{O}^+]_{eq} = 10^{-\text{pH}}$ et on prend $-\log$ des deux membres.
+        steps:
+          - math: 'K_A = \dfrac{[A^-_{(aq)}]_{\text{éq}}\,[\text{H}_3\text{O}^+]_{eq}}{[AH_{(aq)}]_{\text{éq}}}'
+            note: "Definition de la constante d'acidite (rung 4)."
+          - math: 'pK_A = \text{pH} + \log\left(\dfrac{[AH_{(aq)}]_{\text{éq}}}{[A^-_{(aq)}]_{\text{éq}}}\right)'
+            note: "Reecriture de log([A-]/[AH]) = pH - pKA (rung 5), dans l'autre sens."
+      - id: q6
+        stem: |-
+          **(0,75 pt)** Pour un volume $V_B$ versé de $S_B$ tel que $0 < V_B < V_{BE}$, montrer, en s'aidant du tableau d'avancement de la réaction de dosage, que : $\dfrac{[AH_{(aq)}]_{\text{eq}}}{[A^-_{(aq)}]_{\text{eq}}} = \dfrac{V_{BE}}{V_B} - 1$.
+        reasoning: |-
+          Avant l'équivalence, la réaction de dosage est totale (rung 9) : chaque mole de $\text{HO}^-$ versée convertit une mole de $AH$ en $A^-$. La base conjuguée formée est $n(A^-) = C_B V_B$ ; il reste $n(AH) = C_A V_A - C_B V_B$, qu'on réécrit avec $C_A V_A = C_B V_{BE}$ (relation d'équivalence, rung 9). Les deux formes partageant le même volume total, le rapport des concentrations égale le rapport des quantités de matière.
+        steps:
+          - math: 'n(A^-) = C_B V_B \qquad n(AH) = C_A V_A - C_B V_B = C_B V_{BE} - C_B V_B'
+            note: "Reaction totale (rung 9) ; on utilise CA VA = CB VBE."
+          - math: '\dfrac{[AH_{(aq)}]_{\text{eq}}}{[A^-_{(aq)}]_{\text{eq}}} = \dfrac{n(AH)}{n(A^-)} = \dfrac{C_B(V_{BE}-V_B)}{C_B V_B} = \dfrac{V_{BE}}{V_B} - 1'
+            note: "Meme volume total pour les deux especes : le rapport des concentrations est le rapport des quantites de matiere."
+      - id: q7
+        stem: |-
+          **(0,75 pt)** On choisit $V_B = 8{,}5\ \text{mL}$. Déduire de ce qui précède la valeur du $pK_A$ du couple $AH_{(aq)}/A^-_{(aq)}$.
+        reasoning: |-
+          On combine les deux résultats précédents : la relation de la question 5-1 pour $pK_A$, évaluée avec le rapport $[AH]_{eq}/[A^-]_{eq}$ de la question 5-2 à $V_B = 8{,}5\ \text{mL}$, où le pH lu sur la courbe $(C_1)$ vaut environ $3{,}76$ (figure 2).
+        steps:
+          - math: '\dfrac{V_{BE}}{V_B} - 1 = \dfrac{25{,}0}{8{,}5} - 1 \approx 1{,}94'
+            note: "Application numerique de la relation 5-2, avec VBE = 25,0 mL (question 2)."
+          - math: 'pK_A = \text{pH} + \log(1{,}94) = 3{,}76 + 0{,}29 \approx 4{,}05'
+            note: "pH lu sur la courbe (C1) a VB = 8,5 mL, environ 3,76 (figure 2) ; valeur coherente avec la lecture directe a la demi-equivalence VBE/2 = 12,5 mL."
+      - id: q8
+        stem: |-
+          **(0,5 pt)** Déterminer la valeur de la constante d'équilibre $K$ associée à l'équation de la réaction de dosage.
+        reasoning: |-
+          Exactement le calcul du rung 9 : la réaction de dosage combine le couple $AH/A^-$ ($pK_A = 4{,}05$) et le couple $\text{H}_2\text{O}/\text{HO}^-$, dont on retient par convention $pK_{A2} = pK_e = 14$.
+        steps:
+          - math: 'K = \dfrac{K_A}{K_e} = 10^{\,pK_e - pK_A} = 10^{\,14 - 4{,}05} = 10^{9{,}95} \approx 8{,}9\times10^{9}'
+            note: "Meme construction qu'au rung 9 : K est enorme, ce qui confirme a posteriori la fleche simple de la question 1."
+
+  # ── bk-2025-n-x1 — 2025 N, Exercice 1 (Partie 1) : dosage hydrogenosulfite de sodium ──
+  - id: bk-2025-n-x1
+    title: "Dosage acido-basique de l'hydrogénosulfite de sodium : vérifier une étiquette"
+    source:
+      year: 2025
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Partie 1 (Chimie)"
+    bareme_total: 3.75
+    duration_min: 23
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/145796 (Exercice 1, Partie 1 —
+        dosage pH-métrique d'une solution d'hydrogénosulfite de sodium,
+        vérification d'une indication d'étiquette ; barème de la partie =
+        3,75 pt sur les 7 pt de l'exercice : 0,5+0,75+0,25+0,75+0,75+0,75).
+        Transcription vérifiée : re-dérivation indépendante, re-fetch
+        AlloSchool + diff OK, carte du sujet sommée à 20 pts
+        (docs/sujets/pc/reactions-acido-basiques.md, statut « vérifié »,
+        agent-vérificateur-adversarial, 2026-08-06). Aucune figure dans
+        cette partie — énoncé intégralement textuel.
+    intro: |-
+      **Dosage d'une solution aqueuse d'hydrogénosulfite de sodium (examen national, session normale 2025).**
+
+      L'hydrogénosulfite de sodium $\text{NaHSO}_3$ est utilisé pour le blanchiment de la pâte à papier. L'étiquette d'un flacon contenant une solution commerciale $S_0$ d'hydrogénosulfite de sodium $\left(\text{Na}^+_{(aq)} + \text{HSO}_3^-{}_{(aq)}\right)$ porte l'indication $500\ \text{g/L}$ ; la concentration molaire de $S_0$ est $C_0$. Toutes les mesures sont faites à $25\,^\circ\text{C}$ ($K_e = 10^{-14}$). Masse molaire $M(\text{NaHSO}_3) = 104\ \text{g/mol}$ ; couple $\text{HSO}_3^-{}_{(aq)}/\text{SO}_3^{2-}{}_{(aq)}$, $pK_A = 7{,}2$.
+
+      Pour vérifier l'indication de l'étiquette, on dilue $100$ fois $S_0$ pour obtenir une solution $S_A$ de concentration $C_A$, et on dose un volume $V_A = 20{,}0\ \text{mL}$ de $S_A$ par une solution d'hydroxyde de sodium $\left(\text{Na}^+_{(aq)} + \text{HO}^-_{(aq)}\right)$ de concentration $C_B = 0{,}10\ \text{mol/L}$. Le volume versé à l'équivalence est $V_{BE} = 9{,}6\ \text{mL}$.
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** Écrire l'équation chimique modélisant la réaction de dosage.
+        reasoning: |-
+          Réaction support d'un titrage : totale, rapide, unique — flèche simple (rung 9). L'espèce $\text{HSO}_3^-$ joue ici le rôle d'acide (couple $\text{HSO}_3^-/\text{SO}_3^{2-}$) et cède son proton à l'ion $\text{HO}^-$ de la soude, base forte.
+
+          $$\text{HSO}_3^-{}_{(aq)} + \text{HO}^-_{(aq)} \rightarrow \text{SO}_3^{2-}{}_{(aq)} + \text{H}_2\text{O}_{(l)}$$
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Déterminer la valeur de $C_A$.
+        reasoning: |-
+          À l'équivalence, la quantité d'acide dans la prise d'essai égale la quantité de base versée : $C_A V_A = C_B V_{BE}$ (rung 9).
+        steps:
+          - math: 'C_A = \dfrac{C_B\,V_{BE}}{V_A} = \dfrac{0{,}10 \times 9{,}6}{20{,}0} = 4{,}8\times10^{-2}\ \text{mol/L}'
+            note: "VBE = 9,6 mL (donnee), VA = 20,0 mL, CB = 0,10 mol/L."
+      - id: q3
+        stem: |-
+          **(0,25 pt)** Déduire que $C_0 = 4{,}80\ \text{mol/L}$.
+        reasoning: |-
+          $S_A$ est $S_0$ diluée $100$ fois (rung 6) : sa concentration a été divisée par $100$, donc on multiplie par $100$ pour retrouver $C_0$.
+        steps:
+          - math: 'C_0 = 100 \times C_A = 100 \times 4{,}8\times10^{-2} = 4{,}80\ \text{mol/L}'
+            note: "S0 diluee 100 fois donne SA : on remonte en multipliant par 100."
+      - id: q4
+        stem: |-
+          **(0,75 pt)** Justifier si l'indication inscrite sur l'étiquette du flacon est vérifiée.
+        reasoning: |-
+          L'étiquette donne une concentration massique, $500\ \text{g/L}$ ; on la retrouve en multipliant la concentration molaire $C_0$ trouvée par dosage par la masse molaire $M$.
+        steps:
+          - math: 'C_0 \times M = 4{,}80 \times 104 = 499{,}2\ \text{g/L} \approx 500\ \text{g/L}'
+            note: "Concentration massique = concentration molaire fois masse molaire ; l'indication de l'etiquette est verifiee (ecart d'arrondi)."
+      - id: q5
+        stem: |-
+          **(0,75 pt)** Déterminer la valeur de la constante d'équilibre $K$ associée à l'équation de la réaction de dosage.
+        reasoning: |-
+          Exactement le calcul du rung 9 : la réaction de dosage combine le couple $\text{HSO}_3^-/\text{SO}_3^{2-}$ ($pK_A = 7{,}2$) et le couple $\text{H}_2\text{O}/\text{HO}^-$, dont on retient par convention $pK_{A2} = pK_e = 14$.
+        steps:
+          - math: 'K = \dfrac{K_A}{K_e} = 10^{\,pK_e - pK_A} = 10^{\,14 - 7{,}2} = 10^{6{,}8} \approx 6{,}3\times10^{6}'
+            note: "Meme construction qu'au rung 9 : K est enorme, ce qui justifie a posteriori la fleche simple de la question 1."
+      - id: q6
+        stem: |-
+          **(0,75 pt)** En se basant sur le tableau d'avancement de la réaction de dosage à l'équivalence, trouver la concentration molaire $C_{eq}$ de la solution de sulfite de sodium $\left(2\text{Na}^+_{(aq)} + \text{SO}_3^{2-}{}_{(aq)}\right)$ obtenue à l'équivalence.
+        reasoning: |-
+          À l'équivalence, la réaction (totale, rung 9) a converti tout le $\text{HSO}_3^-$ initialement présent en $\text{SO}_3^{2-}$ : la quantité de $\text{SO}_3^{2-}$ formée égale la quantité initiale d'acide, $n(\text{SO}_3^{2-}) = C_A V_A$. Mais ce sulfite se retrouve maintenant dilué dans le volume total du mélange, $V_A + V_{BE}$ — pas dans $V_A$ seul.
+        steps:
+          - math: 'n(\text{SO}_3^{2-}) = C_A V_A = 4{,}8\times10^{-2} \times 20{,}0\times10^{-3} = 9{,}6\times10^{-4}\ \text{mol}'
+            note: "Reaction totale a l'equivalence : tout le HSO3- initial est devenu SO3(2-)."
+          - math: 'C_{eq} = \dfrac{n(\text{SO}_3^{2-})}{V_A + V_{BE}} = \dfrac{9{,}6\times10^{-4}}{20{,}0\times10^{-3} + 9{,}6\times10^{-3}} \approx 3{,}2\times10^{-2}\ \text{mol/L}'
+            note: "Le volume total a l'equivalence est VA + VBE, pas VA seul : c'est une dilution."
