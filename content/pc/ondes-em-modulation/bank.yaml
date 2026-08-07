@@ -16,11 +16,11 @@
 # françaises écrites `X{,}Y` dans le KaTeX, notes sans backslash et en ASCII
 # pur — pas d'accents).
 #
-# NOTE ÉDITORIALE (pour la revue) : les deux SEULS sujets « vérifié » de
-# cette notion à ce jour sont 2017 N (Exercice III, Partie II) et 2021 N
-# (Exercice IV, Partie III) — voir docs/sujets/pc/ondes-em-modulation.md,
-# statuts en tête de chaque entrée. Les deux figurent ci-dessous ; aucun
-# autre sujet de cette notion n'est actuellement « vérifié ».
+# NOTE ÉDITORIALE (pour la revue) : les QUATRE sujets « vérifié » de cette
+# notion sont 2017 N (Exercice III, Partie II), 2021 N (Exercice IV,
+# Partie III), 2023 N (Exercice 3, §3) et 2025 N (Exercice 3, Partie 3) —
+# voir docs/sujets/pc/ondes-em-modulation.md, statuts en tête de chaque
+# entrée. Les quatre figurent ci-dessous.
 #
 # RECOUPEMENT ASSUMÉ (bk-2017-n-x3) : ce même sujet 2017 N (Exercice III,
 # Partie II) sous-tend AUSSI le sommet de leçon r-bac (exercises.yaml, id
@@ -255,3 +255,249 @@ entries:
             note: "Seconde condition du rung 3 : taux de modulation inferieur a 1, pas de surmodulation."
           - math: '\boxed{\text{les deux conditions sont verifiees} \implies \text{bonne modulation}}'
             note: "Conclusion : Fp >> fs et m < 1 sont toutes deux respectees."
+
+  # ── bk-2023-n-x3 — 2023 N, Exercice 3 (§3) : repere en L, taux de modulation et spectre ──
+  - id: bk-2023-n-x3
+    title: "Modulation d'amplitude d'un signal : lecture par repère en L, taux de modulation et spectre en fréquence"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — §3 — Modulation d'amplitude d'un signal"
+    bareme_total: 1.75
+    duration_min: 11
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28F, AlloSchool element/142476 (Exercice 3, §3 —
+        modulation d'amplitude d'un signal ; barème du §3 = 1,75 pt sur les
+        5 pt de l'exercice complet, dont le §1 — dipôle RL — relève de
+        dipole-rl.md et le §2 — circuit LC — de rlc-serie.md, non transcrits
+        ici). Transcription vérifiée en deux passes
+        (docs/sujets/pc/ondes-em-modulation.md, statut « vérifié »,
+        2026-08-07) : (1) transcription initiale, puis correction de figure
+        par un agent-vérificateur, qui a établi que le sommet du repère en L
+        (« 2V »/« 1 ms », chacune des deux flèches couvrant exactement une
+        division) — situé à $t=7{,}0\ \text{ms}$ — surplombe en réalité un
+        RESSERREMENT de l'enveloppe, et non le renflement central comme le
+        disait une première lecture (le renflement central culmine deux
+        divisions plus tôt, vers $t\approx5{,}0\ \text{ms}$) ; (2) relecture
+        de contrôle indépendante par un second agent
+        (agent-relecteur-indépendant, 2026-08-07), enveloppe remesurée de
+        zéro par relevé d'encre colonne par colonne, qui CONFIRME cette
+        correction sans y trouver de nouvel écart. Lectures retenues :
+        enveloppe maximale $=3$ divisions $=6\ \text{V}$, minimale $=1$
+        division $=2\ \text{V}$ (d'où $m=0{,}5$, $U_0=4\ \text{V}$ — les
+        deux affirmations « vrai ou faux » de la question 2 sont donc bien
+        fausses, cohérent avec la consigne « répondre en justifiant ») ;
+        $T_s\approx5\ \text{ms}$ (période de l'enveloppe, entre deux
+        renflements successifs) et $T_p\approx0{,}25\ \text{ms}$ (période de
+        la porteuse, comptage des sommets sur l'ensemble du tracé) ; le
+        comptage fin de $T_p$ reste, comme souvent sur un tracé aussi
+        resserré, une lecture délicate — drapeau maintenu sur ce seul point,
+        sans conséquence sur la conclusion ($f_p=4\ \text{kHz}$,
+        correspondant à la proposition B). Barème re-additionné au scan :
+        $0{,}5+0{,}5+0{,}25+0{,}5=1{,}75$ pt.
+        FLAG PÉDAGOGIQUE (question q3, spectre de fréquences) : cette
+        question mobilise la décomposition spectrale d'un signal modulé
+        (relation trigonométrique produit-somme, trois raies à
+        $f_p-f_s$, $f_p$, $f_p+f_s$) — une technique que la leçon (rungs
+        R0-R6, lesson.md) ne couvre nulle part : R2-R3 travaillent le
+        signal modulé uniquement dans le domaine temporel (l'enveloppe),
+        jamais dans le domaine fréquentiel. Le raisonnement de q3
+        ci-dessous ne cite donc aucun rung, contrairement aux trois autres
+        questions de cette entrée ; signalé à l'orchestrateur /
+        pedagogy-architect pour arbitrage (ajouter un complément de rung, ou
+        assumer que cette question reste hors-ramp et sert seulement de
+        matière de banque) — non résolu ici.
+    intro: |-
+      **Modulation d'amplitude d'un signal (examen national, session normale 2023, Exercice 3 — §3).**
+
+      La courbe de la figure 5 représente l'évolution temporelle de la tension $u(t)$ associée à un signal modulé en amplitude. L'expression mathématique de $u(t)$ est de la forme :
+
+      $$u(t) = A\left(1 + m\cos(2\pi f_s\,t)\right)\cos(2\pi f_p\,t)$$
+
+      avec $A$ une constante, $m$ le taux de modulation, $f_s$ et $f_p$ respectivement les fréquences du signal modulant et de la porteuse.
+
+      **Figure 5 (oscillogramme).** $u\ (\text{V})$ en fonction de $t\ (\text{ms})$, sur un quadrillage de $12$ divisions en abscisse et $8$ divisions en ordonnée (axe des temps sur la ligne médiane) ; seule l'origine « $0$ » est chiffrée sur l'axe des ordonnées, aucun autre repère n'est chiffré directement sur les axes. Un repère d'échelle en forme de L (deux flèches à une seule pointe) est placé à $7$ divisions à droite de l'axe des ordonnées et $2$ divisions au-dessus de l'axe des temps : la flèche verticale, étiquetée « $2\text{V}$ », couvre exactement $1$ division ; la flèche horizontale, étiquetée « $1\ \text{ms}$ », couvre elle aussi exactement $1$ division. Le sommet du repère (à $t=7{,}0\ \text{ms}$) surplombe un **resserrement** de l'enveloppe — pas le renflement central, qui, lui, culmine deux divisions plus tôt, vers $t\approx5{,}0\ \text{ms}$. Le tracé montre une oscillation rapide (la porteuse) dont l'enveloppe, symétrique par rapport à l'axe des temps, alterne renflements (au bord gauche, $t\approx0$ ; vers $t\approx5{,}0\ \text{ms}$ ; vers $t\approx9{,}8\ \text{ms}$) et resserrements (vers $t\approx2{,}5\ \text{ms}$ ; vers $t\approx7{,}4\ \text{ms}$) ; l'enveloppe supérieure culmine à $3$ divisions ($6\ \text{V}$) et redescend à $1$ division ($2\ \text{V}$) à chaque resserrement.
+    questions:
+      - id: q1
+        part: "3- Modulation d'amplitude d'un signal : choisir la bonne proposition"
+        stem: |-
+          **(0,5 pt)** Choisir la bonne proposition :
+
+          | | |
+          |---|---|
+          | A | La fréquence du signal modulant est $4\ \text{kHz}$. |
+          | B | La fréquence de la porteuse est $4\ \text{kHz}$. |
+          | C | La fréquence du signal modulant est $100\ \text{Hz}$. |
+          | D | La fréquence de la porteuse est $200\ \text{Hz}$. |
+        reasoning: |-
+          Deux échelles de temps cohabitent sur la figure 5 — exactement la distinction du rung 3 entre l'oscillation rapide (la porteuse) et l'enveloppe lente (le signal modulant). Le repère en L donne l'échelle (1 division = 1 ms, 1 division = 2 V) ; on lit la période de l'enveloppe entre deux renflements successifs pour $f_s$, et la période de l'oscillation rapide, comptée sur l'ensemble du tracé, pour $f_p$. Il ne reste plus qu'à confronter ces deux valeurs aux quatre propositions.
+        steps:
+          - math: 'T_s \approx 5\ \text{ms}'
+            note: "Periode de l'enveloppe (rung 3), lue entre deux renflements successifs (t=0 et t=5,0 ms)."
+          - math: 'f_s = \frac{1}{T_s} = \frac{1}{5\times10^{-3}} = 200\ \text{Hz}'
+            note: "Frequence du signal modulant."
+          - math: 'T_p \approx 0{,}25\ \text{ms}'
+            note: "Periode de la porteuse (oscillation rapide), comptage des sommets sur l'ensemble du trace ; lecture fine, drapeau maintenu dans la source."
+          - math: 'f_p = \frac{1}{T_p} = \frac{1}{0{,}25\times10^{-3}} = 4000\ \text{Hz} = 4\ \text{kHz}'
+            note: "Frequence de la porteuse."
+          - math: '\boxed{\text{proposition B}: f_p = 4\ \text{kHz}}'
+            note: "Seule B est juste : A et D echangent porteuse et signal modulant (4 kHz revient a la porteuse, 200 Hz reviendrait au signal, pas l'inverse) ; C avance une valeur erronee (100 Hz) pour le signal modulant."
+      - id: q2a
+        part: "Répondre par vrai ou faux en justifiant"
+        stem: |-
+          **(0,5 pt)** **a.** Le taux de modulation est $m = 0{,}4$.
+        reasoning: |-
+          L'enveloppe supérieure de la figure 5 vaut $A(1+m)$ à son maximum et $A(1-m)$ à son minimum — la lecture directe de la forme donnée dans l'intro, prise à $\cos(2\pi f_s t)=+1$ puis $-1$ (rung 3). Le rapport de ces deux extrema, lus au repère en L, élimine $A$ et ne laisse que $m$.
+        steps:
+          - math: 'U_{\max} = 3\ \text{div} \times 2\ \text{V/div} = 6\ \text{V} \qquad U_{\min} = 1\ \text{div} \times 2\ \text{V/div} = 2\ \text{V}'
+            note: "Extrema de l'enveloppe, lus via le repere en L (rung 3)."
+          - math: 'm = \frac{U_{\max}-U_{\min}}{U_{\max}+U_{\min}} = \frac{6-2}{6+2} = 0{,}5'
+            note: "Le rapport des extrema elimine A ; il ne reste que m (rung 3)."
+          - math: '\boxed{m = 0{,}5 \neq 0{,}4 \implies \text{affirmation fausse}}'
+            note: "La valeur proposee (0,4) ne correspond pas a la valeur lue (0,5) ; l'affirmation est fausse."
+      - id: q2b
+        stem: |-
+          **(0,25 pt)** **b.** La valeur de la composante continue de la tension est $U_0 = 2\ \text{V}$.
+        reasoning: |-
+          La composante continue $U_0$ est la valeur moyenne de l'enveloppe (rung 2 : $u_2(t) = U_0 + s(t)$, l'enveloppe oscille entre $U_0-S_m$ et $U_0+S_m$) : on la retrouve en moyennant les deux mêmes extrema que ceux utilisés à la question précédente.
+        steps:
+          - math: 'U_0 = \frac{U_{\max}+U_{\min}}{2} = \frac{6+2}{2} = 4\ \text{V}'
+            note: "Composante continue = valeur moyenne de l'enveloppe (rung 2)."
+          - math: '\boxed{U_0 = 4\ \text{V} \neq 2\ \text{V} \implies \text{affirmation fausse}}'
+            note: "La valeur proposee (2 V) ne correspond pas a la valeur lue (4 V) ; l'affirmation est fausse."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Représenter l'allure du spectre de fréquences du signal modulé $u(t)$ sans respect d'échelle très précise.
+        reasoning: |-
+          Cette question mobilise une technique que la leçon ne couvre pas : R2-R3 décrivent le signal modulé dans le domaine temporel (l'enveloppe), jamais dans le domaine fréquentiel — aucun rung à citer ici. On applique directement la relation trigonométrique de produit-somme, $\cos p \cos q = \frac{1}{2}[\cos(p-q)+\cos(p+q)]$, à la forme canonique donnée dans l'intro : le terme en $\cos(2\pi f_s t)\cos(2\pi f_p t)$ se scinde en deux oscillations pures, à $f_p-f_s$ et $f_p+f_s$. Le spectre attendu porte donc trois raies : une raie centrale à $f_p$, encadrée de deux raies latérales symétriques à $f_p \pm f_s$, chacune de hauteur moitié de la raie centrale (puisque $m=0{,}5$).
+        steps:
+          - math: 'u(t) = A\cos(2\pi f_p t) + A m \cos(2\pi f_s t)\cos(2\pi f_p t)'
+            note: "On developpe la forme canonique donnee par l'enonce."
+          - math: 'Am\cos(2\pi f_s t)\cos(2\pi f_p t) = \frac{Am}{2}\cos(2\pi (f_p-f_s) t) + \frac{Am}{2}\cos(2\pi (f_p+f_s) t)'
+            note: "Relation trigonometrique produit-somme (hors rungs de la lecon), appliquee directement."
+          - math: 'u(t) = A\cos(2\pi f_p t) + \frac{Am}{2}\cos(2\pi (f_p-f_s) t) + \frac{Am}{2}\cos(2\pi (f_p+f_s) t)'
+            note: "Trois composantes pures : le spectre est fait de trois raies."
+          - math: 'f_p - f_s = 4000 - 200 = 3800\ \text{Hz} \qquad f_p + f_s = 4000 + 200 = 4200\ \text{Hz}'
+            note: "Position numerique des deux raies laterales, avec fp et fs de la question 1."
+          - math: '\boxed{\text{raies a } 3{,}8\ \text{kHz}\ (Am/2),\ 4{,}0\ \text{kHz}\ (A),\ 4{,}2\ \text{kHz}\ (Am/2)}'
+            note: "Trois raies symetriques autour de fp ; la raie centrale deux fois plus haute que chaque raie laterale (m=0,5)."
+
+  # ── bk-2025-n-x3 — 2025 N, Exercice 3 (Partie 3) : circuit d'accord et detecteur de crete ──
+  - id: bk-2025-n-x3
+    title: "Sélection et démodulation d'une onde modulée en amplitude : circuit d'accord et détecteur de crête"
+    source:
+      year: 2025
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — Partie 3 — Sélection et démodulation d'une onde modulée en amplitude"
+    bareme_total: 1.5
+    duration_min: 9
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28F, AlloSchool element/145796 (Exercice 3,
+        Partie 3 — sélection et démodulation d'une onde modulée en
+        amplitude ; barème de la Partie 3 = 1,5 pt sur les 5 pt de
+        l'exercice complet, dont la Partie 1 — charge d'un condensateur par
+        une source de courant — relève de rc-charge.md et la Partie 2 —
+        décharge dans un dipôle RL — de rlc-serie.md, non transcrites ici).
+        Transcription vérifiée en deux passes
+        (docs/sujets/pc/ondes-em-modulation.md, statut « vérifié »,
+        2026-08-06) : (1) transcription, puis correction de figure
+        (agent-vérificateur-adversarial) — la figure 4 décrivait l'antenne
+        comme « en V inversé » ; le scan porte en réalité un mât vertical
+        surmonté d'un V OUVERT VERS LE HAUT (deux traits obliques
+        divergents) ; le reste de la figure (étage 1 : bobine $(b)$ en
+        parallèle avec le condensateur variable $C$ ; étage 2 : diode $D$ →
+        nœud B → rhéostat $R$ vers la masse M, nœud N avec $C_0$ en
+        dérivation, $C_2$ en série, $R_2$ en dérivation, sortie « HP »)
+        jugé conforme ; (2) re-lecture indépendante par un troisième agent
+        (agent-vérificateur-tiers, 2026-08-06), qui CONFIRME au zoom la
+        correction de l'antenne, sans divergence nouvelle. Barème
+        re-additionné $0{,}25+0{,}75+0{,}5=1{,}5$ pt. Physique re-dérivée
+        et cohérente : $C_1=1/(4\pi^2Lf_p^2)\approx4{,}76\times10^{-10}\
+        \text{F}\approx476\ \text{pF}$ (question 3-2, avec $\pi^2=10$
+        imposé par l'énoncé) ; $R_0C_0=1{,}5\times10^{-3}\ \text{s}$ à
+        comparer à $1/f_p=6{,}2\times10^{-6}\ \text{s}$ et
+        $1/f_s=2{,}0\times10^{-4}\ \text{s}$ : la double inégalité
+        $1/f_p \ll R_0C_0 \ll 1/f_s$ N'EST PAS satisfaite (borne de droite
+        violée, $R_0C_0 > 1/f_s$) — la question 3-3 admet donc une réponse
+        justifiée « non ».
+        DONNÉE IMPORTÉE (question 3-3) : l'énoncé de la Partie 3 renvoie
+        explicitement à « le condensateur de capacité $C_0$ précédemment
+        utilisé » sans en redonner la valeur dans cette partie —
+        $C_0=1\ \mu\text{F}$ est fixé dans la Partie 1 du MÊME sujet (2025
+        session normale, Exercice 3, Partie 1 — charge d'un condensateur
+        par une source de courant), transcrite et vérifiée indépendamment
+        sous rc-charge.md (element/145796, statut « vérifié », valeur
+        donnée dans l'énoncé ET re-vérifiée par la question 1-2
+        « Vérifier que $C_0=1\ \mu\text{F}$ » à partir de la pente de la
+        courbe $u_C(t)$). Valeur reprise à l'identique ici, pas re-dérivée
+        indépendamment dans ce fichier — même disposition que le $T_p$
+        importé de r-bac dans bk-2017-n-x3 ci-dessus (voir la note
+        éditoriale en tête de fichier).
+        FLAG PÉDAGOGIQUE (question 3-3, critère quantitatif de
+        démodulation) : le rung 4 (R4, lesson.md) décrit qualitativement le
+        compromis charge-rapide / décharge-lente du détecteur de crête
+        (« elle rattrape le sommet suivant ») mais n'énonce nulle part,
+        sous forme explicite testable, la double inégalité
+        $1/f_p \ll R_0C_0 \ll 1/f_s$ que cette question exige de vérifier
+        numériquement. Le raisonnement ci-dessous applique cette inégalité
+        en la présentant comme le prolongement quantitatif direct de la
+        description qualitative du rung 4 — mais le rung lui-même ne la
+        formule jamais explicitement comme critère chiffré. Signalé à
+        l'orchestrateur / pedagogy-architect : à arbitrer si R4 doit gagner
+        cette formulation explicite (c'est un classique des sujets de
+        démodulation).
+    intro: |-
+      **Sélection et démodulation d'une onde modulée en amplitude (examen national, session normale 2025, Exercice 3 — Partie 3).**
+
+      On utilise une chaîne électronique simplifiée représentée sur la figure 4 pour sélectionner et démoduler une onde électromagnétique modulée en amplitude.
+
+      Dans cette chaîne on utilise une diode $D$ considérée idéale, la bobine $(b)$ (supposée aussi idéale) et le condensateur de capacité $C_0$ précédemment utilisé.
+
+      **Figure 4 (schéma).** Chaîne électronique en deux étages encadrés en pointillés, avec deux blocs « Amplification » intercalés. **Étage 1** (à gauche) : une antenne — un mât vertical surmonté d'un V ouvert vers le haut (deux traits obliques divergents) — alimente un circuit formé de la bobine $(b)$ (spires) montée en parallèle avec un condensateur variable $C$ (symbole de capacité réglable) ; la sortie entre dans le premier bloc « Amplification ». **Étage 2** (à droite du premier bloc) : le signal entre par une diode $D$ (triangle + barre, pointe vers la droite) jusqu'au nœud $B$ ; de $B$, un rhéostat $R$ descend vers la masse $M$ ; le fil continue vers le nœud $N$, d'où le condensateur $C_0$ descend également vers $M$ ; le fil continue à travers le condensateur $C_2$ (monté en série) jusqu'à un dernier nœud d'où $R_2$ descend vers $M$ ; la sortie de l'étage 2 entre dans le second bloc « Amplification », dont la sortie porte la flèche « HP » (haut-parleur). Légendes : « Étage 1 », « Étage 2 », « Figure 4 ».
+    questions:
+      - id: q1
+        part: "3- Sélection et démodulation d'une onde modulée en amplitude : rôle de l'étage 2"
+        stem: |-
+          **(0,25 pt)** Quel est le rôle de l'étage 2 ?
+        reasoning: |-
+          L'étage 2 regroupe une diode $D$ et un dipôle $R$-$C_0$ : c'est très exactement le détecteur de crête décrit au rung 4 (R4) — la diode ne laisse passer que la partie positive de l'oscillation rapide déjà sélectionnée par l'étage 1, et le condensateur $C_0$, chargé quasi instantanément à chaque sommet puis se déchargeant plus lentement dans $R$, retrace l'enveloppe de la tension. Le rôle de l'étage 2 est donc la démodulation : extraire le signal informatif basse fréquence (l'enveloppe) de l'onde déjà sélectionnée en fréquence par l'étage 1 (le circuit bouchon du rung 5).
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Trouver la valeur $C_1$ à laquelle il faut ajuster la capacité $C$ pour capter le signal modulé de fréquence $f_p = 162\ \text{kHz}$ sachant que $L = 2\ \text{mH}$ (on prend $\pi^2 = 10$).
+        reasoning: |-
+          On connaît déjà, du rung 5, la condition d'accord $f_0 = 1/(2\pi\sqrt{LC})$ et le geste qui en découle : on isole $C$ pour obtenir la capacité qui place $f_0$ exactement sur la porteuse qu'on veut capter — exactement l'exemple numérique du rung 5, mais ici avec une bobine et une porteuse différentes, et $\pi^2 = 10$ imposé par l'énoncé (au lieu de la valeur usuelle $\pi^2 \approx 9{,}87$) pour simplifier le calcul à la main.
+        steps:
+          - math: 'f_0 = \frac{1}{2\pi\sqrt{LC}} \quad\Longrightarrow\quad C = \frac{1}{(2\pi f_0)^2\,L} = \frac{1}{4\pi^2 f_0^2 L}'
+            note: "On isole C dans la condition d'accord (rung 5), comme dans l'exemple numerique du rung."
+          - math: 'C_1 = \frac{1}{4\pi^2\,f_p^2\,L}, \qquad f_p = 162\times10^{3}\ \text{Hz}, \quad L = 2\times10^{-3}\ \text{H}, \quad \pi^2 = 10'
+            note: "On accorde le circuit sur la porteuse a capter (f0 = fp) ; valeurs de l'enonce, pi^2 = 10 impose."
+          - math: '(162\times10^{3})^2 = 2{,}6244\times10^{10}\ \text{Hz}^2'
+            note: "Calcul intermediaire du carre de la frequence."
+          - math: 'C_1 = \frac{1}{4\times10\times2{,}6244\times10^{10}\times2\times10^{-3}} \approx 4{,}76\times10^{-10}\ \text{F}'
+            note: "Application numerique."
+          - math: '\boxed{C_1 \approx 4{,}76\times10^{-10}\ \text{F} \approx 476\ \text{pF}}'
+            note: "Ordre de grandeur realiste d'un condensateur d'accord (rung 5)."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** La fréquence du signal modulant est $f_s = 5\ \text{kHz}$. Si on ajuste $R$ à la valeur $R_0 = 1{,}5\ \text{k}\Omega$, aura-t-on une démodulation de bonne qualité ? Justifier.
+        reasoning: |-
+          Au rung 4, le détecteur de crête ne retrace fidèlement l'enveloppe que si sa décharge, entre deux sommets de la porteuse, respecte un compromis : assez lente pour ne pas redescendre avant le sommet suivant de la porteuse (donc la constante de temps $R_0C_0$ doit être grande devant la période de la porteuse, $1/f_p$), mais assez rapide pour ne pas rater les variations de l'enveloppe elle-même (donc $R_0C_0$ doit rester petit devant la période du signal modulant, $1/f_s$). Le rung 4 décrit ce compromis en mots (« charge rapide, décharge lente [qui] rattrape le sommet suivant ») ; ici on le teste numériquement, avec $C_0 = 1\ \mu\text{F}$ — la valeur fixée dans la Partie 1 du même sujet (rc-charge.md, sujet 2025 session normale, vérifié), puisque l'énoncé de cette Partie 3 renvoie explicitement au condensateur « précédemment utilisé » sans en redonner la valeur ici.
+        steps:
+          - math: 'R_0 C_0 = 1{,}5\times10^{3} \times 1\times10^{-6} = 1{,}5\times10^{-3}\ \text{s}'
+            note: "Constante de temps du detecteur de crete, avec C0 = 1 microF (Partie 1 du meme sujet, rc-charge.md, verifie)."
+          - math: '\frac{1}{f_p} = \frac{1}{162\times10^{3}} \approx 6{,}2\times10^{-6}\ \text{s} \qquad \frac{1}{f_s} = \frac{1}{5\times10^{3}} = 2{,}0\times10^{-4}\ \text{s}'
+            note: "Les deux bornes du critere : periode de la porteuse et periode du signal modulant."
+          - math: 'R_0C_0 = 1{,}5\times10^{-3}\ \text{s} \gg \frac{1}{f_p} = 6{,}2\times10^{-6}\ \text{s}'
+            note: "Premiere borne respectee : la decharge est bien lente devant la porteuse."
+          - math: 'R_0C_0 = 1{,}5\times10^{-3}\ \text{s} \not\ll \frac{1}{f_s} = 2{,}0\times10^{-4}\ \text{s} \qquad (R_0C_0 > 1/f_s)'
+            note: "Seconde borne violee : la decharge est trop lente pour suivre l'enveloppe."
+          - math: '\boxed{R_0C_0 > \frac{1}{f_s} \implies \text{demodulation de mauvaise qualite} \implies \text{reponse : non}}'
+            note: "La double inegalite du rung 4 n'est pas verifiee sur sa borne haute ; la reponse est non."
