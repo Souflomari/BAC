@@ -176,36 +176,40 @@ le schéma ; pas de légende numérotée imprimée sur cette figure.
 
 ## 2022 — session normale — Exercice 2 (Partie 1)
 Source: https://www.alloschool.com/element/136621
-Statut: transcrit (non vérifié) — **corrigé le 2026-08-07 par la passe de
-vérification adversariale indépendante ; laissé non vérifié, la correction
-appelle une re-lecture de contrôle** (README §3).
-**Élément re-dérivé** : `element/136621` → `course-422/upload-84516`, **8 pages**
-(re-extrait du HTML de `element/` ; résumé HTML toujours faux sur la filière).
+Statut: vérifié — **re-lecture de contrôle indépendante** des corrections de la
+passe adversariale (agent-relecteur-de-contrôle, 2026-08-07), **diff OK**
+(README §3 : une correction ne s'auto-certifie pas).
+**Élément re-dérivé** (sans réutiliser « Images lues ») : `element/136621` →
+`course-422/upload-84516`, **8 pages**, URLs ré-extraites du HTML de `element/`
+(résumé HTML toujours faux sur la filière — l'image fait foi).
 **Couverture p.1 relue** : NS 28F, 3 h, coef 7, SPC/BIOF ; carte
 $7+3{,}5+4{,}5+5=\mathbf{20}$ ✓.
-**Barème marginal recompté au pixel (p.4)** : $0{,}25+0{,}25+0{,}25+0{,}5
+**Barème marginal recontrôlé (p.4)** : $0{,}25+0{,}25+0{,}25+0{,}5
 =\mathbf{1{,}25}$ ✓ (la ligne « 1. Recopier le numéro… » ne porte aucune
 annotation, ce que la transcription respecte) ; $1{,}25+2{,}25=\mathbf{3{,}5}$
 = total de l'Exercice 2 ✓.
-**Diff du texte** : $L = 85\ \text{cm}$, signaux (a) émis / (b) reçu, $\Delta t$,
-célérité $v$ — relus au zoom, **aucune divergence**.
-**Figure 2 — mesurée au pixel (classe de défaut « flèche d'étalonnage lue comme
-période » : écartée).** La double flèche « 0,5 ms » s'étend des colonnes
-**1023 à 1068** ; les traits verticaux de la grille tombent en 1023 et 1067, et
-le pas de division mesure **44,1 px** ⇒ la flèche couvre **exactement une
-division**. C'est donc bien un **étalonnage** (1 division = 0,5 ms), et la
-transcription l'avait correctement lu comme tel.
-**Divergence trouvée et corrigée (taille de la grille)** : la grille compte
-**11 traits verticaux × 9 traits horizontaux, soit 10 colonnes × 8 lignes**
-(pas mesurés : 44,1 px et 36,4 px, très réguliers) — et non « environ huit
-colonnes sur six lignes ». Les deux axes médians de l'écran (5ᵉ ligne
-horizontale, 6ᵉ trait vertical) portent en outre de **fines graduations non
-chiffrées**, non signalées dans la description.
-**Adjudication du « lecture à confirmer » (écart (a)→(b)) — LEVÉE** : bord
-gauche de (a) en colonne **714**, bord gauche de (b) en colonne **935** ⇒
-$935-714 = 221\ \text{px} = 221/44{,}1 = \mathbf{5{,}01}$ divisions (contrôle
-par les centres : 223 px = 5,06). L'écart vaut donc **exactement 5 divisions**,
-soit $\Delta t = 5\times0{,}5 = \mathbf{2{,}5\ \text{ms}}$.
+**Contre-diff du texte** : $L = 85\ \text{cm}$, signaux (a) émis / (b) reçu,
+$\Delta t$, célérité $v$ — relus au zoom, **aucune divergence**.
+**Claim corrigé n°1 — taille de la grille : CONFIRMÉ.** Re-mesure indépendante
+sur `0004-big.jpg` (page 1240×1754) : **11 traits verticaux** en 670, 714,
+757,5, 802, 846,5, 890,5, 935,5, 979, 1023, 1067, 1111 (pas **44,1 px**) et
+**9 traits horizontaux** en 261, 298, 334,5, 371, 407,5, 443, 480, 516, 552
+(pas **36,4 px**) ⇒ **10 colonnes × 8 lignes**, et non « huit colonnes sur six
+lignes ». Les **axes médians** sont bien le **6ᵉ trait vertical** (890,5) et la
+**5ᵉ ligne horizontale** (407,5) ; zoomés ×6, tous deux portent des **fines
+graduations non chiffrées** (≈5 par division), absentes des autres traits.
+**Claim corrigé n°2 — écart (a)→(b) : CONFIRMÉ.** Bords gauches mesurés en
+sous-pixel (front à 50 % du plateau d'encre) : **(a) = 712,8**, **(b) = 934,3**
+⇒ $221{,}5\ \text{px} = 221{,}5/44{,}1 = \mathbf{5{,}02}$ divisions ; contrôle
+par les centroïdes d'encre : $221{,}8\ \text{px} = 5{,}03$. Confirmé aussi par
+la grille : bord de (a) sur le **2ᵉ** trait vertical (714), bord de (b) sur le
+**7ᵉ** (935,5) — soit **exactement 5 divisions** ⇒
+$\Delta t = 5\times0{,}5 = \mathbf{2{,}5\ \text{ms}}$.
+**Claim corrigé n°3 — flèche d'étalonnage : CONFIRMÉ** (classe de défaut
+« flèche d'étalonnage lue comme période » : écartée). La double flèche
+« 0,5 ms » occupe les colonnes **1023 → 1068** (lignes 488–491) ; les traits de
+grille encadrants sont en **1023** et **1067** ⇒ elle couvre **exactement une
+division**. C'est bien un **étalonnage** (1 division = 0,5 ms), pas une période.
 **Physique re-dérivée** : $v = L/\Delta t = 0{,}85/2{,}5\cdot10^{-3}
 = \mathbf{340\ \text{m.s}^{-1}}$ — valeur canonique de la célérité du son dans
 l'air ; la figure et l'énoncé ferment donc l'un sur l'autre.

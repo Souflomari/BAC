@@ -1037,48 +1037,61 @@ trait plein en dessous de O jusqu'au bas de la figure. Légende :
 
 ## 2022 — session normale — Exercice 4 (Partie 1)
 Source: https://www.alloschool.com/element/136621
-Statut: transcrit (non vérifié) — **corrigé le 2026-08-07 par la passe de
-vérification adversariale indépendante ; laissé non vérifié, la correction
-appelle une re-lecture de contrôle** (README §3).
-**Élément re-dérivé** : `element/136621` → `course-422/upload-84516`, **8 pages**
-(re-extrait du HTML de `element/` ; résumé HTML toujours faux sur la filière).
+Statut: vérifié — **re-lecture de contrôle indépendante** des corrections de la
+passe adversariale (agent-relecteur-de-contrôle, 2026-08-07), **diff OK**
+(README §3 : une correction ne s'auto-certifie pas).
+**Élément re-dérivé** (sans réutiliser « Images lues ») : `element/136621` →
+`course-422/upload-84516`, **8 pages**, URLs ré-extraites du HTML de `element/`
+(résumé HTML toujours faux sur la filière — l'image fait foi).
 **Couverture p.1 relue** : NS 28F, 3 h, coef 7, SPC/BIOF ; carte
 $7+3{,}5+4{,}5+5=\mathbf{20}$ ✓.
-**Barème marginal recompté au pixel (p.7 + p.8)** : $0{,}5+0{,}75+0{,}5+0{,}25$
-(p.7) $+\ 0{,}75$ (Q4, en tête de p.8) $=\mathbf{2{,}75}$ ✓ (la ligne 3,
-en-tête, ne porte aucune annotation) ; $2{,}75+2{,}25=\mathbf{5}$ = total de
-l'Exercice 4 ✓.
-**Diff du texte** : Données $m = 10\ \text{g}$,
+**Claim corrigé n°1 — pagination : CONFIRMÉ.** `0008-big.jpg` relue : la
+**question 4 (0,75)** — « Trouver l'expression de la masse volumique $\rho_r$…
+Calculer sa valeur. » — est bien imprimée **en tête de la page 8**, au-dessus du
+titre « Partie 2 : Etude du mouvement d'un satellite artificiel ». La Partie 1
+court donc sur **p.7 + haut de p.8** ✓. Barème recontrôlé :
+$0{,}5+0{,}75+0{,}5+0{,}25$ (p.7) $+\ 0{,}75$ (p.8) $=\mathbf{2{,}75}$ ✓ (la
+ligne 3, en-tête, ne porte aucune annotation) ; $2{,}75+2{,}25=\mathbf{5}$ ✓.
+**Contre-diff du texte** : Données $m = 10\ \text{g}$,
 $\rho_a = 7{,}8\ \text{g.cm}^{-3}$, $g = 10\ \text{m.s}^{-2}$ (relues au
 zoom ×3), l'expression $F_a = \rho_r.V.g$, le modèle
 $\vec{F} = -k.\vec{v}$ et l'équation
 $\frac{dv}{dt}+\frac{1}{\tau}v = g\left(1-\frac{\rho_r}{\rho_a}\right)$ —
 **aucune divergence de valeur, unité, indice ou exposant**.
-**Figure 2 — mesurée au pixel.** Étalonnage relevé sur les traits imprimés :
-**traits majeurs tous les 0,1 s et tous les 0,2 m.s⁻¹**, quadrillage fin de
-0,02 s × 0,04 m.s⁻¹ ; le cadre s'étend jusqu'à **$t = 1{,}0\ \text{s}$** et
-**$v = 1{,}0\ \text{m.s}^{-1}$**, alors que le chiffrage s'arrête à 0,3 s et
-0,8 m.s⁻¹ — **les traits majeurs de 0,4 s à 1,0 s ne sont pas chiffrés**.
-**Adjudication des deux « lecture à confirmer » — LEVÉES :**
-- *Palier* : $v$ mesurée constante à **0,875–0,885** de $t = 0{,}5\ \text{s}$
-  jusqu'au bord du cadre ⇒ $V_\ell = \mathbf{0{,}88\ \text{m.s}^{-1}}$,
-  c'est-à-dire **deux traits fins au-dessus du repère 0,8** — sensiblement
-  au-dessus de 0,8, et non « proche de 0,8 ».
-- *Frontière zone1/zone2* : **divergence trouvée et corrigée**. Le trait
-  vertical en pointillés qui sépare les deux zones est en colonne **609,5** ;
-  l'axe des ordonnées est en 322 et le pas majeur vaut 57,2 px ⇒
-  $t = (609{,}5-322)/57{,}2 \times 0{,}1 = \mathbf{0{,}50\ \text{s}}$, soit
-  exactement le 5ᵉ trait majeur après 0,1/0,2/0,3. La transcription annonçait
-  « $t \approx 0{,}2\ \text{s}$ » — erreur d'un facteur 2,5, conséquence directe
-  du chiffrage qui s'arrête à 0,3. La valeur 0,5 s est confirmée par la physique
-  ($5\tau = 0{,}5\ \text{s}$ : le régime transitoire y est éteint).
-- *Tangente $(T)$* : ajustement de Hough sur les droites issues de l'origine ⇒
-  pente $\mathbf{8{,}8\ \text{m.s}^{-2}}$, qui atteint $V_\ell = 0{,}88$ à
-  $t = \mathbf{0{,}100\ \text{s}} = \tau$ (repère chiffré « 0,1 »).
-**Figure 1 — deux imprécisions corrigées** : l'éprouvette **ne porte aucune
-graduation** (la transcription disait « éprouvette graduée ») ; et le petit
-cercle $G$ est dessiné **nettement sous** la ligne en pointillés de $O$
-(la bille est figurée déjà immergée), non « au niveau de $O$ ».
+**Étalonnage de la figure 2 re-relevé au pixel** (page 1240×1754) : traits
+majeurs verticaux en 322 ($t=0$), 379, 437, 494, 551, 609,5, 665,5, 723, 781,
+837,5, **894** (pas 57,2 px = 0,1 s) ; traits majeurs horizontaux en 1288,5
+($v=0$), 1231, 1173, 1116, 1058, **1000** (pas 57,7 px = 0,2 m.s⁻¹) ;
+quadrillage fin 11,4 px × 11,5 px = 0,02 s × 0,04 m.s⁻¹.
+**Claim corrigé n°2 — étendue du cadre : CONFIRMÉ.** Le cadre va bien jusqu'à
+**$t = 1{,}0\ \text{s}$** et **$v = 1{,}0\ \text{m.s}^{-1}$** ; le chiffrage
+d'abscisse s'arrête à 0,3 (étiquettes centrées en 378 / 439 / 496, soit les
+traits 379 / 437 / 494) et celui d'ordonnée à 0,8 — **les traits majeurs de
+0,4 s à 1,0 s ne sont pas chiffrés** ✓.
+**Claim corrigé n°3 — palier $V_\ell$ : CONFIRMÉ.** Le tracé du palier est
+mesuré en **ligne 1034,5** sur tout $t>0{,}55\ \text{s}$ ⇒
+$V_\ell = \mathbf{0{,}880\ \text{m.s}^{-1}}$. Le repère 0,8 est en ligne
+1057,7 et le pas fin vaut 11,54 px : deux traits fins au-dessus ⇒ ligne 1034,6
+— **le palier est exactement à deux traits fins au-dessus de 0,8** ✓.
+**Claim corrigé n°4 — tangente $(T)$ : CONFIRMÉ.** Les tirets de $(T)$ sont
+relevés en $(380{,}5\,;\,1027{,}5)$, $(376{,}5\,;\,1048{,}5)$ et
+$(373{,}5\,;\,1059)$ ⇒ droite passant par l'origine $(322\,;\,1288{,}5)$ et
+coupant le palier (ligne 1034,6) en colonne **378,9**, à comparer au trait
+chiffré « 0,1 » en colonne **379** ⇒ $\tau = \mathbf{0{,}0995 \simeq
+0{,}100\ \text{s}}$, pente $\mathbf{8{,}84\ \text{m.s}^{-2}}$.
+**Claim corrigé n°5 — frontière zone1/zone2 : CONFIRMÉ.** Le trait vertical en
+pointillés est en colonne **609,5** (intégrale d'encre 39 500 contre ~5 100 pour
+les colonnes voisines), soit exactement le 5ᵉ trait majeur ⇒
+$t = (609{,}5-322)/57{,}2\times0{,}1 = \mathbf{0{,}50\ \text{s}}$ — et non
+« $t \approx 0{,}2\ \text{s}$ ». Cohérent avec la physique ($5\tau$ : régime
+transitoire éteint).
+**Claim corrigé n°6 — figure 1 : CONFIRMÉ (deux points).** Zoomée ×4 et ×7,
+l'éprouvette est un **cylindre nu — aucune graduation, aucun chiffrage** (parois
+pleines en colonnes 1037,5 et 1102, socle en lignes 891–897) ; et le petit
+cercle $G$, centré en **ligne 588**, est **nettement sous** la ligne en
+pointillés de $O$ (**ligne 528,5**), soit 59,5 px plus bas ≈ 16 % de la hauteur
+de liquide — la bille est bien figurée déjà immergée, et non « au niveau de
+$O$ ».
 **Physique re-dérivée** : $\tau = m/k$ ⇒
 $k = m/\tau = 10\cdot10^{-3}/0{,}1 = \mathbf{0{,}1\ \text{kg.s}^{-1}}$ (SI) ;
 au régime permanent $V_\ell/\tau = g(1-\rho_r/\rho_a)$ ⇒

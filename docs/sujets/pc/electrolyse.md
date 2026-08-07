@@ -154,30 +154,35 @@ $m = 20{,}72\ \text{g}$.
 
 ## 2022 — session normale — Exercice 1 (Partie 1)
 Source: https://www.alloschool.com/element/136621
-Statut: transcrit (non vérifié) — **corrigé le 2026-08-07 par la passe de
-vérification adversariale indépendante ; laissé non vérifié, la correction
-appelle une re-lecture de contrôle** (README §3, « corriger et laisser en
-transcrit »).
-**Élément re-dérivé** : `element/136621` → `course-422/upload-84516`, **8 pages**
-(re-extrait du HTML de `element/`, pas des « Images lues » ; le résumé HTML
-annonce toujours à tort « Sciences Mathématiques B »). **Couverture p.1 relue
-au pixel** : NS 28F, 3 h, coef 7, « شعبة العلوم التجريبية: مسلك العلوم
-الفيزيائية - خيار فرنسية » ; carte $7+3{,}5+4{,}5+5=\mathbf{20}$ ✓.
-**Divergence trouvée et corrigée (barème)** : la marge de la p.2 ne porte que
-**quatre** annotations — $0{,}5$ (Q1), $0{,}5$ (Q2.1), $0{,}5$ (Q2.2),
-$0{,}75$ (Q3) — alignées au pixel sur ces quatre lignes ; **la question 2
-(« Recopier le numéro… ») n'en porte aucune**. La transcription lui attribuait
-un $0{,}5$ surnuméraire, portant l'itemisation à $2{,}75$ alors que l'en-tête
-annonce $2{,}25$ (et que $2{,}25+4{,}75=7$ ferme l'Exercice 1). Le $0{,}5$
-fautif a été retiré.
-**Figure 1 — reprise** : le générateur $G$ est en haut **au centre** du schéma
-(à gauche de $K$), non « en haut à gauche » ; description rectifiée. Le reste du
-schéma est conforme (plaque d'acier à gauche reliée à $G$, électrode de graphite
-à droite reliée à $K$, étiquette de solution sous le bécher).
-**Diff du texte** : énoncé, Données ($\text{Cr}^{3+}/\text{Cr}$,
+Statut: vérifié — **re-lecture de contrôle indépendante** des corrections de la
+passe adversariale (agent-relecteur-de-contrôle, 2026-08-07), **diff OK**
+(README §3 : une correction ne s'auto-certifie pas).
+**Élément re-dérivé** (sans réutiliser « Images lues ») : `element/136621` →
+`course-422/upload-84516`, **8 pages** (`0001`…`0008-big.jpg`, ré-extraites du
+HTML de `element/` ; le résumé HTML annonce toujours à tort « Sciences
+Mathématiques B » — README §3, l'image fait foi ; le `<title>` de la page dit
+bien « Examen National Physique-Chimie SPC 2022 Normale — Sujet »).
+**Couverture p.1 relue** : NS 28F, 3 h, coef 7, « شعبة العلوم التجريبية: مسلك
+العلوم الفيزيائية - خيار فرنسية » ; carte $7+3{,}5+4{,}5+5=\mathbf{20}$ ✓.
+**Claim corrigé n°1 — barème de la marge (p.2) : CONFIRMÉ.** La marge ne porte
+que **quatre** annotations, relues au zoom ×2 sur la bande $x\in[40,130]$ et
+alignées à la ligne : $0{,}5$ (Q1), $0{,}5$ (Q2.1), $0{,}5$ (Q2.2), $0{,}75$
+(Q3) $=\mathbf{2{,}25}$ ; **la ligne « 2. Recopier le numéro de la question et
+choisir… » est vierge de tout barème** — le $0{,}5$ surnuméraire de la
+transcription initiale était bien fautif. $2{,}25+4{,}75=\mathbf{7}$ ✓.
+**Claim corrigé n°2 — position de $G$ (figure 1) : CONFIRMÉ.** Mesures au pixel
+sur `0002-big.jpg` (page 1240×1754) : arc du cercle $G$ entre les colonnes
+**917** et **975** (centre **946**, lettre « G » centrée en 944,5) ; bécher
+entre **817** et **1101** (centre **959**) ; montants du circuit en **868** et
+**1132** ; interrupteur $K$ en **1070–1094**. $G$ est donc en haut du schéma, à
+**45 % de la largeur du bécher** — au **centre**, et non « en haut à gauche » —
+avec $K$ nettement à sa droite. Reste du schéma conforme (plaque d'acier à
+gauche reliée à $G$, électrode de graphite à droite reliée à $K$, étiquette de
+solution sous le bécher).
+**Contre-diff du texte** : énoncé, Données ($\text{Cr}^{3+}/\text{Cr}$,
 $\text{O}_2/\text{H}_2\text{O}$, $1\text{F}=96500\ \text{C.mol}^{-1}$,
 $M(\text{Cr})=52\ \text{g.mol}^{-1}$, $I=2\ \text{A}$, $\Delta t=2\ \text{h}$)
-et les **8 items A–D des deux QCM** relus mot à mot — aucune autre divergence de
+et les **8 items A–D des deux QCM** relus mot à mot — aucune divergence de
 valeur, unité, indice ou exposant.
 **Physique re-dérivée** : $n(e^-)=I\Delta t/F=2\times7200/96500=0{,}1492\
 \text{mol}$ ⇒ $n(\text{Cr})=n(e^-)/3=4{,}97\cdot10^{-2}\ \text{mol}$ ⇒
