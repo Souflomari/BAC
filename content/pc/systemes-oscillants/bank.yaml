@@ -1,0 +1,443 @@
+# bank.yaml — la banque « S'entraîner » de systemes-oscillants (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, exercises.yaml), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Chaque entrée est une transcription FIDÈLE d'une entrée
+# « vérifié » de docs/sujets/pc/systemes-oscillants.md (re-fetch AlloSchool +
+# diff caractère par caractère par un second agent, puis re-lecture
+# indépendante des figures — README §3). Raisonnement rédigé à la voix
+# experte de la maison sur 100 % des questions, en citant les rungs R1–R8 de
+# la leçon (lesson.md) là où c'est naturel ; barème transcrit tel quel dans
+# les énoncés (tag « (x,xx pt) » ajouté — la source docs/sujets ne porte que
+# « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
+# entre apostrophes simples dans steps[].math, notes sans backslash ni
+# accent).
+#
+# NOTE ÉDITORIALE (pour la revue). Trois sujets « vérifié » couvrent cette
+# notion à ce jour : 2018 N, 2023 N, 2025 N — les TROIS sont chacun la
+# « Partie II » (ou « Partie 2 ») d'un exercice dont la Partie I (ou 1) porte
+# sur un tout autre thème et est déjà bancarisée sous chute-mouvements-plans
+# (siblings : bk-2018-n-x4 / bk-2018-n-x4b, bk-2023-n-x4 / bk-2023-n-x4b,
+# bk-2025-n-x4 / bk-2025-n-x4b — même convention de suffixe « b » que
+# bk-2022-n-x4 / bk-2022-n-x4b dans ce fichier-là).
+#
+# RECOUPEMENT ASSUMÉ avec le sommet de leçon : le sujet 2018 (bk-2018-n-x4b)
+# est LE MÊME sujet que r-bac (exercises.yaml, marqueur [[exercise:r-bac]] à
+# R8 « Exercice de type bac ») — mais r-bac ne transcrit que les questions
+# d'OSCILLATION de la Partie II (Xm, T0, φ), en signalant explicitement que
+# les deux questions ÉNERGÉTIQUES de la même partie (Epe1, W_AB) relèvent de
+# la leçon aspects-energetiques. Cette entrée de banque, elle, transcrit les
+# TROIS questions de la Partie II complète (corpus complet des annales,
+# BANK-SPEC §1) — même disposition assumée que bk-2020-n-x5 face à r-bac dans
+# chute-mouvements-plans/bank.yaml. À l'arbitrage de l'owner si l'on préfère
+# écarter cette entrée, ou n'y garder que la question 1, pour éviter le
+# chevauchement de contenu sur la même page (drapeau reporté à l'orchestrateur
+# — voir aussi le rapport de conversion). bk-2023-n-x4b et bk-2025-n-x4b ne
+# recoupent PAS le sommet (r-variation n'est pas un sujet sourcé).
+#
+# SCOPE NOTES (techniques mobilisées au-delà de ce que la leçon montre
+# explicitement pas à pas — pontées au point d'usage dans le raisonnement de
+# la question concernée, PAS corrigées ni simplifiées ici ; DRAPEAU reporté à
+# l'orchestrateur/pédagogue, pas résolu ici) :
+#   - bk-2018-n-x4b, q3 : le lien entre le travail d'une force conservative
+#     et la variation de son énergie potentielle associée (W = -ΔEp) est
+#     signalé par le rung R5 comme relevant du chapitre Aspects énergétiques,
+#     mais n'est jamais énoncé comme formule dans cette leçon (R5 n'affirme
+#     que la conservation qualitative de Em = Ec + Epe, et le fait que
+#     ẋ = 0 aux deux écarts maximaux). Ponté au point d'usage.
+#   - bk-2023-n-x4b, q1 : la relation géométrique donnant la hauteur d'un
+#     pendule au-dessus de sa position d'équilibre (z = ℓ(1-cosθ)) est de la
+#     géométrie élémentaire du cercle, jamais détaillée pas à pas — ni au
+#     rung R3 (qui travaille avec forces et moments, pas des hauteurs), ni au
+#     rung R5 (qui renvoie la définition générale Epp = mgz au chapitre
+#     Aspects énergétiques sans jamais l'appliquer à un pendule). Ponté au
+#     point d'usage.
+#   - bk-2023-n-x4b, q2a (2-1) : la vitesse angulaire maximale par
+#     conservation de l'énergie exige l'énergie cinétique de ROTATION,
+#     Ec = ½.J_Δ.θ̇², une formule du chapitre sur la rotation d'un solide
+#     autour d'un axe fixe — chapitre déjà mobilisé par le rung R3 pour la
+#     loi des moments (J_Δ.θ̈ = ΣM_Δ) mais dont la forme ÉNERGÉTIQUE n'est
+#     jamais donnée dans cette leçon (le rung R5 ne traite que l'énergie
+#     cinétique de TRANSLATION, ½mv², pour le pendule élastique). Assumé
+#     comme prérequis du chapitre référencé ; ponté au point d'usage — PAS un
+#     unrung au sens strict (le chapitre est cité), mais sa forme
+#     énergétique n'apparaît nulle part ici, à signaler.
+#   - bk-2025-n-x4b, q2a (2-1) : Xm se lit ici indirectement via
+#     v_x,max = Xm.ω0 (la courbe donnée est celle de la VITESSE, pas de la
+#     position) — une synthèse des relations déjà données aux rungs R1/R2
+#     (v(t) = -Xm.ω0.sin(...)), pas une technique nouvelle, mais un geste
+#     plus indirect que la lecture directe de Xm en ordonnée pratiquée au
+#     sujet 2018 ci-dessus. Signalé au point d'usage, pour mémoire — pas une
+#     lacune de fond.
+
+notion: pc/systemes-oscillants
+
+entries:
+  # ── bk-2018-n-x4b — 2018 N, Exercice IV (Partie II) : oscillateur solide-ressort, étude énergétique ──
+  - id: bk-2018-n-x4b
+    title: "Étude énergétique d'un pendule élastique solide-ressort : lecture graphique et travail de la force de rappel"
+    source:
+      year: 2018
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice IV — Partie II — Étude énergétique d'un oscillateur mécanique (solide-ressort)"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/57726 (Exercice IV, Partie II —
+        étude énergétique d'un oscillateur solide-ressort horizontal,
+        K = 35 N/m, sans frottement ; barème de la partie = 2,0 pt sur les
+        5,5 pt de l'exercice complet, dont la Partie I — chute d'une bille
+        dans un liquide visqueux — est transcrite sous
+        chute-mouvements-plans.md, bk-2018-n-x4). Transcription vérifiée :
+        re-fetch indépendant AlloSchool + diff OK (agent-vérificateur,
+        2026-07-11 ; docs/sujets/pc/systemes-oscillants.md, statut
+        « vérifié ») — une seule passe de vérification enregistrée pour
+        cette entrée (contrairement aux sujets 2023/2025 ci-dessous, relus
+        en plusieurs passes). LECTURE DE LA FIGURE 4 : le doc source porte
+        la mention « (lecture à confirmer) » sur le sens de départ de la
+        courbe, jamais levée dans docs/sujets/pc/systemes-oscillants.md
+        elle-même — un écart entre le statut « vérifié » de l'entrée et
+        cette réserve non résolue, à signaler (drapeau reporté à
+        l'orchestrateur). Le sens retenu ici (départ au minimum,
+        x(0) = -Xm, φ = π) est ALIGNÉ sur celui déjà établi et publié pour
+        le sommet de leçon r-bac (exercises.yaml, marqueur
+        [[exercise:r-bac]]), qui exploite le même sujet et conclut à ce même
+        départ — cohérent avec la figure 4 telle que décrite (minimum à
+        t=0, maximum à t=0,5 s, retour au minimum à t=1 s). RECOUPEMENT
+        ASSUMÉ avec le sommet de leçon (voir la note éditoriale en tête de
+        fichier) : r-bac ne transcrit que les questions d'oscillation
+        (Xm, T0, φ) de cette Partie II ; cette entrée transcrit les TROIS
+        questions de la partie complète, y compris les deux questions
+        énergétiques (Epe1, W_AB) cross-listées à aspects-energetiques.md
+        dans le doc source — même disposition que bk-2020-n-x5 face à
+        r-bac dans chute-mouvements-plans/bank.yaml. À l'arbitrage de
+        l'owner si l'on préfère écarter cette entrée, ou n'y garder que la
+        question 1, pour éviter le chevauchement de contenu sur la même
+        page. Physique re-dérivée et cohérente : x(t1=0,5 s) = +Xm (demi-
+        période après le départ au minimum), Epe1 = ½.K.Xm² ≈ 6,3.10⁻² J ;
+        A et B (les deux écarts maximaux) ont |xA| = |xB| = Xm donc
+        Epe(A) = Epe(B), d'où W_AB(F) = 0 J exactement — cohérent avec le
+        théorème de l'énergie cinétique (vA = vB = 0, ΔEc = 0). SCOPE NOTE
+        (voir l'en-tête du fichier) : q3 s'appuie sur W = -ΔEp, signalée par
+        le rung R5 comme relevant du chapitre Aspects énergétiques mais
+        jamais énoncée comme formule dans cette leçon — pontée au point
+        d'usage.
+    intro: |-
+      **Étude énergétique d'un oscillateur mécanique (solide-ressort) (examen national, session normale 2018, Exercice IV — Partie II).**
+
+      On modélise une partie d'une machine mécanique par un oscillateur horizontal, constitué d'un solide $(S)$, de centre d'inertie $G$ et de masse $m$ fixé à l'extrémité d'un ressort horizontal à spires non jointives de masse négligeable et de raideur $K = 35\ \text{N.m}^{-1}$.
+
+      L'autre extrémité est attachée à un support immobile.
+
+      On écarte le solide $(S)$ de sa position d'équilibre d'une distance $X_m$ puis on le lâche sans vitesse initiale. Le solide $(S)$ oscille sans frottements sur un plan horizontal.
+
+      On étudie le mouvement du centre d'inertie $G$ dans un repère $(O, \vec{i})$ lié à un référentiel terrestre considéré comme galiléen.
+
+      La position de $G$, lorsque le solide $(S)$ est à l'équilibre, coïncide avec l'origine $O$ de l'axe $(O, \vec{i})$.
+
+      On repère la position de $G$ à un instant $t$ par l'abscisse $x$ dans le repère $(O, \vec{i})$ (figure 3).
+
+      On choisit la position de $G$ à l'état d'équilibre ($x = 0$) comme référence de l'énergie potentielle élastique.
+
+      L'équation horaire du mouvement de $G$ s'écrit sous la forme : $x(t) = X_m \cos\left(\dfrac{2\pi t}{T_0} + \varphi\right)$.
+
+      La courbe de la figure 4 représente les variations de l'abscisse $x$ en fonction du temps.
+
+      **Figure 3 (schéma) :** ressort horizontal fixé par une extrémité à un support mural, l'autre extrémité attachée au solide $(S)$ (centre d'inertie $G$) posé sur un plan horizontal ; axe $(O, \vec{i})$ horizontal orienté vers la droite, origine $O$ à la position d'équilibre, abscisse $x$.
+
+      **Figure 4 (courbe) :** $x\ (\text{cm})$ en fonction de $t\ (\text{s})$ ; sinusoïde d'amplitude $X_m = 6\ \text{cm}$ ; ordonnées graduées $-6,\ -3,\ 3,\ 6$ ; abscisses repérées aux valeurs $0{,}5$ et $1$. La courbe part de son minimum à $t=0$ (soit $x(0)=-6\ \text{cm}$), remonte jusqu'à son maximum $+6\ \text{cm}$ à $t=0{,}5\ \text{s}$, puis revient à son minimum $-6\ \text{cm}$ à $t=1\ \text{s}$.
+    questions:
+      - id: q1
+        part: "Partie II — Lire le graphe $x(t)$ et déterminer les caractéristiques du mouvement"
+        stem: |-
+          **(0,75 pt)** Déterminer les valeurs de $X_m$, $T_0$ et $\varphi$.
+        reasoning: |-
+          Comme au rung R2 (« Déterminer $X_m$ et $\varphi$ à partir des conditions initiales »), on lit d'abord $X_m$ et $T_0$ directement sur le graphe : $X_m$ est l'écart maximal atteint (l'amplitude), $T_0$ la durée d'un cycle complet — ici entre deux minima consécutifs ($t=0$ et $t=1\ \text{s}$), cohérente avec un passage par le maximum exactement à mi-chemin ($t=0{,}5\ \text{s}=T_0/2$). Pour $\varphi$, on utilise les conditions initiales lues sur la courbe : $x(0)=-X_m$ et $v(0)=0$ (la courbe part d'un extremum, tangente horizontale) — c'est le « Premier lancer » du rung R2, mais avec un départ côté négatif plutôt que positif, donc $\cos\varphi=-1$ plutôt que $\cos\varphi=+1$.
+        steps:
+          - math: 'X_m = 6{,}0\ \text{cm} = 6{,}0\times10^{-2}\ \text{m} \qquad T_0 = 1\ \text{s}'
+            note: "Lecture directe sur la figure 4 : Xm est l'ecart maximal (rung R2), T0 la duree entre deux minima consecutifs (t=0 et t=1s)."
+          - math: 'x(0) = X_m\cos\varphi = -X_m \implies \cos\varphi = -1 \implies \varphi = \pi\ \text{rad}'
+            note: "Depart au minimum (rung R2, meme geste que le Premier lancer mais cote negatif) : x(0) = -Xm."
+          - math: 'v(0) = -X_m\,\omega_0\sin\varphi = -X_m\,\omega_0\sin\pi = 0'
+            note: "Controle : la vitesse initiale est bien nulle (sin pi = 0), conforme au lacher sans vitesse."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Trouver la valeur de l'énergie potentielle élastique $E_{pe1}$ du système mécanique à la date $t_1 = 0{,}5\ \text{s}$.
+        reasoning: |-
+          Le rung R5 donne l'expression de l'énergie potentielle élastique comme un résultat, $E_{pe}=\frac12Kx^2$ — pas encore démontrée à ce stade du cours (la démonstration est au chapitre Aspects énergétiques), mais utilisable directement ici. Il faut d'abord la position $x(t_1)$, obtenue en réinjectant $t_1$ dans l'équation horaire trouvée à la question précédente.
+        steps:
+          - math: 'x(t_1) = X_m\cos\left(\frac{2\pi}{T_0}t_1+\varphi\right) = 6{,}0\times10^{-2}\cos\left(2\pi\times0{,}5+\pi\right)'
+            note: "On reinjecte t1 = 0,5 s dans l'equation horaire (question 1) : T0 = 1 s, phi = pi."
+          - math: 'x(t_1) = 6{,}0\times10^{-2}\cos(2\pi) = 6{,}0\times10^{-2}\ \text{m}'
+            note: "cos(2 pi) = 1 : a t1 = 0,5 s = T0/2, le solide est revenu a l'extremum oppose, ici +Xm."
+          - math: 'E_{pe1} = \frac{1}{2}K\,x(t_1)^2 = \frac{1}{2}\times35\times(6{,}0\times10^{-2})^2'
+            note: "Formule du rung R5, Epe = (1/2) K x^2, appliquee a x(t1)."
+          - math: '\boxed{E_{pe1} \approx 6{,}3\times10^{-2}\ \text{J}}'
+            note: "Application numerique."
+      - id: q3
+        stem: |-
+          **(0,75 pt)** Calculer le travail $W_{AB}(\vec{F})$ de la force de rappel, lorsque le centre d'inertie $G$ se déplace de la position A d'abscisse $x_A = X_m$ à la position B d'abscisse $x_B = -X_m$.
+        reasoning: |-
+          Rung R5 : A et B sont tous les deux à l'écart maximal, donc tous les deux des points où le solide s'arrête un instant — $\dot x=0$ en A comme en B, exactement le second cas décrit au rung R5 (« Quand $x=\pm X_m$ ... $\dot x=0$ ... toute l'énergie est dans le ressort »). Le lien entre le travail d'une force conservative et la variation de son énergie potentielle associée, $W_{AB}(\vec F)=E_{pe}(A)-E_{pe}(B)$, appartient au chapitre Aspects énergétiques (signalé par R5 lui-même) — on l'emprunte ici pour conclure. Comme $|x_A|=|x_B|=X_m$, les deux énergies potentielles élastiques sont égales, donc leur différence est nulle.
+        steps:
+          - math: 'E_{pe}(A) = \frac12 K x_A^2 = \frac12 K X_m^2 \qquad E_{pe}(B) = \frac12 K x_B^2 = \frac12 K X_m^2'
+            note: "A et B sont les deux extrema, |xA| = |xB| = Xm (rung R5) : meme energie potentielle elastique aux deux points."
+          - math: 'W_{AB}(\vec F) = E_{pe}(A) - E_{pe}(B)'
+            note: "Travail d'une force conservative entre A et B = la perte d'energie potentielle correspondante."
+          - math: '\boxed{W_{AB}(\vec F) = 0\ \text{J}}'
+            note: "La difference est nulle : coherent avec le theoreme de l'energie cinetique, qui donne aussi Delta Ec = 0 entre A et B (vA = vB = 0)."
+
+  # ── bk-2023-n-x4b — 2023 N, Exercice 4 (Partie II) : la balançoire, pendule pesant ──
+  - id: bk-2023-n-x4b
+    title: "La balançoire, pendule pesant : énergie potentielle, vitesse angulaire maximale et période propre"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — Partie II : Étude du mouvement d'une balançoire"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC, confirmé directement sur l'image du scan — le résumé HTML
+        d'AlloSchool pour element/142476 annonce à tort « Sciences
+        Mathématiques B »), AlloSchool NS28F, element/142476,
+        course-422/upload-85304 (Exercice 4, Partie II — balançoire,
+        pendule pesant assimilé à un pendule simple, petites oscillations ;
+        barème de la partie = 2,25 pt sur les 5,5 pt de l'exercice complet,
+        dont la Partie I — chute d'une balle — est transcrite sous
+        chute-mouvements-plans.md, bk-2023-n-x4). Transcription vérifiée en
+        2 passes : 1ʳᵉ passe de vérification adversariale indépendante
+        (agent-vérificateur-adversarial), qui a corrigé la description de
+        la figure 3 sur deux points (l'arc $\theta$ est à mi-tige, pas près
+        de $O$ ; le vecteur $\vec k$ est tracé SUR la ligne pointillée, pas
+        à côté d'elle) ; 2ᵉ passe de relecture de contrôle par un
+        re-lecteur indépendant (agent-relecteur-indépendant, 2026-08-07),
+        relevé pixel refait de zéro, qui CONFIRME les deux corrections de
+        la 1ʳᵉ passe sans divergence nouvelle — l'entrée passe à
+        « vérifié » à l'issue de cette 2ᵉ passe
+        (docs/sujets/pc/systemes-oscillants.md). Physique re-dérivée et
+        cohérente : $E_{pp}=mg\ell(1-\cos\theta)\approx\frac12mg\ell\theta^2$ ;
+        $\dot\theta_{max}=\theta_0\sqrt{g/\ell}\approx0{,}32\ \text{rad.s}^{-1}$ ;
+        $\ddot\theta+\frac{g}{\ell}\theta=0$ ;
+        $T_0=2\pi\sqrt{\ell/g}\approx3{,}1\ \text{s}$ — ordre de grandeur
+        d'une vraie balançoire, les données referment bien les questions.
+        SCOPE NOTES (voir l'en-tête du fichier) : q1 (hauteur
+        $z=\ell(1-\cos\theta)$, géométrie du cercle non détaillée pas à pas
+        dans cette leçon) et q2a (énergie cinétique de rotation
+        $E_c=\frac12J_\Delta\dot\theta^2$, formule du chapitre sur la
+        rotation d'un solide autour d'un axe fixe, déjà référencé par R3
+        pour la loi des moments mais jamais donnée sous forme énergétique
+        dans cette leçon) sont pontées au point d'usage dans le
+        raisonnement des questions concernées — drapeau reporté à
+        l'orchestrateur.
+    intro: |-
+      **Étude du mouvement d'une balançoire (examen national, session normale 2023, Exercice 4 — Partie II).**
+
+      Un enfant oscille à l'aide d'une balançoire (figure 2). On modélise la balançoire avec l'enfant par un pendule formé par un corps solide $(S)$ de masse $m$ et de centre d'inertie $G$, suspendu en un point $O$ par une tige rigide, de masse négligeable et de longueur $\ell$ pouvant effectuer un mouvement de rotation dans un plan vertical autour d'un axe horizontal $(\Delta)$ passant par $O$ (figure 3). On étudie le mouvement du pendule dans un repère $(G_0, \vec{k})$ lié à un référentiel terrestre supposé galiléen.
+
+      On écarte le pendule de sa position d'équilibre stable d'un angle petit $\theta_0 = 9°$, dans le sens positif, puis on le lâche sans vitesse initiale à l'instant de date $t_0 = 0$. On repère la position du pendule à un instant de date $t$ par l'abscisse angulaire $\theta$. On néglige tous les frottements et on choisit le plan horizontal passant par $G_0$ (position de $G$ à l'équilibre stable) comme état de référence de l'énergie potentielle de pesanteur ($E_{pp} = 0$).
+
+      **Données :** le moment d'inertie du pendule par rapport à l'axe de rotation $(\Delta)$ est $J_\Delta = m.\ell^2$ ; accélération de la pesanteur $g = 10\ \text{m.s}^{-2}$ ; $\ell = 2{,}4\ \text{m}$ ; pour les oscillations de faible amplitude, $\cos\theta \approx 1 - \dfrac{\theta^2}{2}$ ($\theta$ en radian).
+
+      **Figure 2 (photographie) :** photographie en couleur d'un enfant assis sur une balançoire suspendue par des chaînes/cordes à une structure, dans un cadre extérieur herbeux.
+
+      **Figure 3 (schéma) :** point $O$ en haut (étiquette « O » à gauche de la ligne, « $(\Delta)$ » à sa droite, l'axe de rotation) ; au-dessus de $O$, une courte flèche pleine orientée vers le haut, étiquetée « z » (un « z » simple, sans flèche de vecteur au-dessus). Une ligne verticale en pointillés descend de $O$ jusqu'à un point noir étiqueté « $G_0$ » (position d'équilibre de $G$). Le vecteur $\vec{k}$ est une courte flèche pleine vers le haut, tracée dans le prolongement exact de cette ligne pointillée, partant de $G_0$ ; seule l'étiquette « k » est écrite à gauche de la ligne. Une tige rigide part de $O$ et descend en oblique vers la droite jusqu'à un point noir étiqueté « $G$ » suivi de « $(S)$ ». L'angle $\theta$ est marqué par un arc fléché (pointe du côté de la tige) entre la pointillée et la tige, à mi-longueur de la tige environ (≈54 % de $|OG|$), étiquette « $\theta$ » sous l'arc. Un arc en pointillés relie $G_0$ à $G$, représentant la trajectoire circulaire du pendule.
+    questions:
+      - id: q1
+        part: "Partie II — Étude du mouvement d'une balançoire : établir l'énergie potentielle de pesanteur"
+        stem: |-
+          **(0,5 pt)** Montrer que l'expression de l'énergie potentielle de pesanteur du pendule à un instant $t$ pour les oscillations de faible amplitude est : $E_{pp} = \dfrac{1}{2}mg\ell\theta^2$.
+        reasoning: |-
+          L'énergie potentielle de pesanteur, $E_{pp}=mgz$ (rung R5, définition générale renvoyée au chapitre Aspects énergétiques), demande ici la hauteur $z$ de $G$ au-dessus de sa position d'équilibre $G_0$ — un calcul de géométrie du cercle que ni R3 ni R5 ne détaillent pas à pas (R3 travaille avec les forces et les moments, pas les hauteurs). $G$ est à distance $\ell$ du pivot $O$ ; quand la tige fait l'angle $\theta$ avec la verticale, $G$ est à une profondeur $\ell\cos\theta$ sous $O$, contre $\ell$ (profondeur maximale) à l'équilibre — la différence de hauteur par rapport à $G_0$ est donc $z=\ell-\ell\cos\theta=\ell(1-\cos\theta)$. On substitue ensuite l'approximation des petites oscillations donnée dans les données, $\cos\theta\approx1-\theta^2/2$, exactement l'approximation du rung R3.
+        steps:
+          - math: 'z = \ell - \ell\cos\theta = \ell(1-\cos\theta)'
+            note: "Hauteur de G au-dessus de sa position d'equilibre G0 : geometrie du cercle de rayon ell (ni R3 ni R5 ne detaille ce calcul pas a pas, il est ponte ici)."
+          - math: 'E_{pp} = mgz = mg\ell(1-\cos\theta)'
+            note: "Formule generale Epp = mgz (rung R5, renvoyee au chapitre Aspects energetiques), appliquee a cette hauteur."
+          - math: '1-\cos\theta \approx 1-\left(1-\frac{\theta^2}{2}\right) = \frac{\theta^2}{2}'
+            note: "Approximation des petites oscillations du rung R3 (donnee aussi dans l'enonce)."
+          - math: '\boxed{E_{pp} \approx \frac{1}{2}mg\ell\theta^2}'
+            note: "On substitue : c'est bien la forme demandee."
+      - id: q2a
+        part: "2. En exploitant la conservation de l'énergie mécanique du pendule :"
+        stem: |-
+          **2-1.** (0,5 pt) Déterminer la vitesse angulaire maximale $\dot\theta_{max}$ du centre d'inertie $G$.
+        reasoning: |-
+          La conservation de l'énergie mécanique (rung R5, principe des deux réservoirs, ici transposé de l'énergie élastique à l'énergie de pesanteur comme R5 le signale explicitement en fin de rung) relie l'état de lâcher et le passage par l'équilibre. Au lâcher ($\theta=\theta_0$), $\dot\theta=0$ : toute l'énergie est potentielle, $E_m=E_{pp}(\theta_0)$ (question précédente). Au passage par l'équilibre ($\theta=0$), $E_{pp}=0$ : toute l'énergie est cinétique, $E_m=E_c$. Il faut ici l'énergie cinétique de ROTATION, $E_c=\frac12J_\Delta\dot\theta^2$ — une formule vue au chapitre sur la rotation d'un solide autour d'un axe fixe (le même chapitre auquel R3 renvoie déjà pour la loi $J_\Delta\ddot\theta=\sum M_\Delta$), jamais redonnée sous cette forme énergétique dans ce cours-ci, qui ne traite l'énergie cinétique que sous sa forme de translation $\frac12mv^2$ (rung R5). On égalise les deux expressions de $E_m$ et on isole $\dot\theta_{max}$.
+        steps:
+          - math: 'E_m = E_{pp}(\theta_0) + 0 = \frac12mg\ell\theta_0^2'
+            note: "Au lachage, theta point = 0 (rung R5) : toute l'energie est potentielle."
+          - math: 'E_m = 0 + \frac12 J_\Delta\dot\theta_{max}^2 = \frac12 m\ell^2\dot\theta_{max}^2'
+            note: "Au passage par l'equilibre, Epp = 0 (rung R5) : toute l'energie est cinetique de rotation, Ec = (1/2) J_Delta.theta_point^2 (chapitre rotation d'un solide, deja mobilise a R3 pour la loi des moments)."
+          - math: '\frac12 m\ell^2\dot\theta_{max}^2 = \frac12mg\ell\theta_0^2 \implies \dot\theta_{max} = \theta_0\sqrt{\frac{g}{\ell}}'
+            note: "Conservation de l'energie mecanique (rung R5) : on egalise les deux expressions et on isole theta point max ; la masse m se simplifie."
+          - math: '\dot\theta_{max} = \left(9\times\frac{\pi}{180}\right)\sqrt{\frac{10}{2{,}4}} = 0{,}157\times2{,}04'
+            note: "Application numerique : theta0 = 9 degres converti en radians."
+          - math: '\boxed{\dot\theta_{max} \approx 0{,}32\ \text{rad.s}^{-1}}'
+            note: "Coherent avec l'ordre de grandeur d'une vraie balancoire."
+      - id: q2b
+        stem: |-
+          **2-2.** (0,75 pt) Établir l'équation différentielle du mouvement vérifiée par l'abscisse angulaire $\theta(t)$.
+        reasoning: |-
+          On revient à la méthode directe du rung R3 (pendule pesant) : $J_\Delta\ddot\theta=\sum M_\Delta(\vec F_{ext})$, seul le poids produit un moment non nul (la réaction en $O$ passe par l'axe), à une distance $d=\Delta G=\ell$ ici (le centre d'inertie $G$ est à l'extrémité de la tige de longueur $\ell$). On substitue $J_\Delta=m\ell^2$ (donnée) et $d=\ell$, puis on applique l'approximation des petites oscillations, exactement comme au rung R3.
+        steps:
+          - math: 'J_\Delta\ddot\theta = -mg\ell\sin\theta'
+            note: "Loi des moments (rung R3), avec d = Delta G = ell (G est a l'extremite de la tige)."
+          - math: 'm\ell^2\ddot\theta = -mg\ell\sin\theta \approx -mg\ell\theta'
+            note: "On substitue J_Delta = m.ell^2 (donnee), puis l'approximation des petites oscillations sin(theta) ~ theta (rung R3)."
+          - math: '\boxed{\ddot\theta + \frac{g}{\ell}\theta = 0}'
+            note: "On simplifie par m.ell (rung R3) : meme forme que pour le pendule simple, coherent avec la question suivante."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Calculer la période propre de ce pendule sachant qu'il est analogue à un pendule simple de longueur $\ell$ et de masse $m$.
+        reasoning: |-
+          L'énoncé confirme ce que le rung R3 démontre dans sa « Vérification de cohérence » : avec $J_\Delta=m\ell^2$ et $d=\ell$, ce pendule pesant se comporte exactement comme un pendule simple de longueur $\ell$. On applique donc directement la formule $T_0=2\pi\sqrt{\ell/g}$ du rung R3.
+        steps:
+          - math: 'T_0 = 2\pi\sqrt{\frac{\ell}{g}} = 2\pi\sqrt{\frac{2{,}4}{10}}'
+            note: "Formule du pendule simple (rung R3), applicable ici car J_Delta = m.ell^2 et d = ell (verification de coherence deja etablie au rung R3)."
+          - math: '\boxed{T_0 \approx 3{,}1\ \text{s}}'
+            note: "Ordre de grandeur d'une vraie balancoire."
+
+  # ── bk-2025-n-x4b — 2025 N, Exercice 4 (Partie 2) : pendule élastique, lecture d'un graphe de vitesse ──
+  - id: bk-2025-n-x4b
+    title: "Pendule élastique horizontal : lire un graphe de vitesse, déterminer la raideur et la variation d'énergie potentielle élastique"
+    source:
+      year: 2025
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — Partie 2 : Mouvement d'un oscillateur"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/145796, course-422/upload-87489
+        (Exercice 4, Partie 2 — pendule élastique solide-ressort horizontal,
+        lecture d'un graphe de VITESSE $v_x(t)$, pas de position ; barème de
+        la partie = 2,5 pt sur les 5,5 pt de l'exercice complet, dont la
+        Partie 1 — satellite artificiel — est transcrite sous
+        chute-mouvements-plans.md, bk-2025-n-x4). Transcription vérifiée en
+        plusieurs passes : transcription initiale → corrections de figure
+        (agent-vérificateur-adversarial, trois divergences bloquantes
+        corrigées : le sens de départ de la courbe, le repère « 1 s » mal
+        identifié, la période propre re-dérivée) → **2ᵉ passe : re-lecture
+        indépendante par un troisième agent**
+        (agent-vérificateur-tiers, 2026-08-06), diff OK, les trois
+        corrections confirmées au pixel, aucune divergence nouvelle —
+        l'entrée passe à « vérifié »
+        (docs/sujets/pc/systemes-oscillants.md). MISE EN GARDE ÉDITORIALE —
+        l'étalon de temps (même classe de défaut que rlc-serie
+        bk-2025-n-x3, précédent direct) : la figure 3 porte une double
+        flèche horizontale étiquetée « $1\ \text{s}$ », tracée entre deux
+        passages par zéro consécutifs de $v_x(t)$. Cette double flèche NE
+        COUVRE QU'UNE SEULE DIVISION du quadrillage (mesurée au pixel :
+        59 px, entre les traits principaux des divisions 2 et 3, jamais
+        deux divisions) : c'est l'ÉTALONNAGE de l'axe des temps (1 division
+        $=1\ \text{s}$), PAS la période propre. Une lecture qui prendrait
+        cette double flèche pour la période directement —
+        $T_0=1\ \text{s}$ — est RÉFUTÉE et doit être considérée MORTE : à
+        $T_0=1\ \text{s}$, $t=1\ \text{s}$ et $t=2{,}5\ \text{s}$ tombent
+        tous deux sur un écart maximal (à un multiple entier ou demi-entier
+        de $T_0$ près), ce qui donnerait aussi une variation d'énergie
+        potentielle NULLE à la question 3 — incompatible avec un barème de
+        0,75 pt pour cette question, qui suppose une variation non
+        triviale. La période propre réelle se lit entre deux maxima
+        consécutifs, soit 2 divisions : $T_0=2\times1\ \text{s}=2\ \text{s}$,
+        cohérent avec $K=4\pi^2m/T_0^2=2{,}5\ \text{N.m}^{-1}$, une valeur
+        ronde. Futurs éditeurs : ne pas réintroduire $T_0=1\ \text{s}$.
+        Physique re-dérivée et cohérente :
+        $X_m=v_{x,max}T_0/2\pi\approx4{,}0\times10^{-2}\ \text{m}$ ;
+        $K=2{,}5\ \text{N.m}^{-1}$ ;
+        $\Delta E_{pe}=-\frac12KX_m^2\approx-2{,}0\times10^{-3}\ \text{J}$
+        entre $t=1\ \text{s}$ ($x=-X_m$, $T_0/2$ après le départ) et
+        $t=2{,}5\ \text{s}$ ($x=0$, $1{,}25\,T_0$ après le départ). SCOPE
+        NOTE (voir l'en-tête du fichier) : q2a exige de lire $X_m$
+        indirectement via $v_{x,max}=X_m\omega_0$ (le graphe donné est
+        celui de la vitesse, pas de la position) — une synthèse des
+        relations déjà données aux rungs R1/R2, pas une technique
+        nouvelle ; signalé au point d'usage pour mémoire.
+    intro: |-
+      **Mouvement d'un oscillateur (examen national, session normale 2025, Exercice 4 — Partie 2).**
+
+      L'oscillateur mécanique étudié est modélisé par le système (solide-ressort) constitué d'un solide $(S)$ de masse $m = 250\ \text{g}$ et d'un ressort à spires non jointives, de masse négligeable et de raideur $K$.
+
+      Le ressort est horizontal, une de ses extrémités est fixe et sur l'autre on accroche le solide $(S)$. Ce solide peut glisser sans frottement sur le plan horizontal.
+
+      On étudie le mouvement du centre d'inertie $G$ du solide $(S)$ dans un repère $R(O, \vec{i})$ lié à un référentiel terrestre considéré galiléen.
+
+      On repère la position de $G$ à un instant $t$ par l'abscisse $x$ sur l'axe $(O, \vec{i})$. À l'équilibre, l'abscisse de $G$ est nul (figure 2).
+
+      On écarte $(S)$ de sa position d'équilibre dans le sens positif d'une distance $X_m$ et on le lâche sans vitesse initiale à un instant choisi comme origine des dates $(t = 0)$.
+
+      L'exploitation d'un enregistrement vidéo du mouvement de $G$ à l'aide d'un logiciel adéquat, a permis d'obtenir la courbe de la figure 3 représentant l'évolution temporelle de la vitesse $v_x(t)$ de $G$.
+
+      **Figure 2 (schéma) :** ressort horizontal à spires, fixé par son extrémité gauche à un mur, l'autre extrémité attachée au solide $(S)$ (centre d'inertie $G$) posé sur un plan horizontal. L'axe $(O, \vec{i})$ : l'origine $O$ est nettement à gauche du solide (position d'équilibre) ; $\vec{i}$ part de $O$ vers la droite ; plus à droite, un trait vertical en pointillés monte de l'axe jusqu'au solide, étiqueté « x » sous l'axe — le solide est dessiné à l'abscisse $x$, pas en $O$.
+
+      **Figure 3 (courbe) :** $v_x\ (10^{-2}\ \text{m.s}^{-1})$ en fonction de $t$, sur un cadre de 4 divisions en abscisse et 4 en ordonnée (1 division $=6{,}25$). Ordonnées graduées $12{,}5$ (trait du haut), $6{,}25$, $0$, $-6{,}25$ ; le trait du bas, non chiffré, vaut $-12{,}5$. Courbe sinusoïdale partant exactement de l'origine $(0\,;\,0)$ à $t=0$, puis décroissante (cohérent avec un lâcher sans vitesse depuis $x=+X_m$, donc $v_x<0$ juste après $t=0$). Extremums, tous tangents aux traits du haut et du bas : division $0{,}5$, premier minimum ($-12{,}5$) ; division $1{,}5$, premier maximum ($+12{,}5$) ; division $2{,}5$, deuxième minimum ; division $3{,}5$, deuxième maximum — le cadre montre exactement deux périodes complètes. Une double flèche horizontale étiquetée « $1\ \text{s}$ » s'étend exactement d'un trait principal au suivant (une division), ses extrémités coïncidant avec deux passages par zéro consécutifs : c'est **l'étalon de graduation de l'axe des temps** (1 division $=1\ \text{s}$), **pas la période propre**. La période se lit entre deux maxima consécutifs, soit 2 divisions.
+    questions:
+      - id: q1
+        part: "Partie 2 — Mouvement d'un oscillateur : établir le modèle"
+        stem: |-
+          **(0,5 pt)** En appliquant la deuxième loi de Newton, établir l'équation différentielle vérifiée par l'abscisse $x(t)$.
+        reasoning: |-
+          C'est exactement le système du rung R1 (solide-ressort horizontal, sans frottement) : on applique la même méthode — système, référentiel galiléen, bilan (poids, réaction normale, force de rappel), deuxième loi, projection sur l'axe horizontal.
+        steps:
+          - math: '\vec P + \vec N + \vec F_{rappel} = m\vec a_G \qquad \text{avec} \qquad \vec F_{rappel} = -K\,x\,\vec i'
+            note: "Deuxieme loi de Newton, exactement le bilan du rung R1 (poids, reaction normale, force de rappel)."
+          - math: '-K\,x = m\,\ddot x'
+            note: "Projection sur l'axe horizontal (O, i) : seule la force de rappel a une composante horizontale (rung R1)."
+          - math: '\boxed{\ddot x + \frac{K}{m}\,x = 0}'
+            note: "Forme standard de l'oscillateur harmonique (rung R1)."
+      - id: q2a
+        part: '2. La solution de cette équation différentielle s''écrit $x(t) = X_m\cos\left(\dfrac{2\pi}{T_0}t+\varphi\right)$ avec $T_0$ la période propre de l''oscillateur.'
+        stem: |-
+          **2-1.** (0,75 pt) Déterminer les valeurs de : $T_0$, $X_m$ et $\varphi$.
+        reasoning: |-
+          Différence avec le sujet 2018 ci-dessus : ici la courbe donnée est celle de la VITESSE $v_x(t)$, pas de la position $x(t)$. Le rung R2 le permet directement — $T_0$ reste la durée au bout de laquelle $x$, $\dot x$ ET $\ddot x$ reprennent les mêmes valeurs, donc se lit tout aussi bien sur $v_x(t)=\dot x(t)$ : deux maxima consécutifs de $v_x$, séparés de 2 divisions, avec 1 division $=1\ \text{s}$ (l'étalon donné par la double flèche, PAS la période elle-même — un piège de lecture détaillé dans la note de sourcing). Pour $X_m$, il faut passer par la relation $v(t)=-X_m\omega_0\sin(\omega_0t+\varphi)$ des rungs R1/R2 : l'amplitude de $v_x$ vaut $X_m\omega_0$, donc $X_m=v_{x,max}/\omega_0$ — on ne peut pas la lire directement en ordonnée comme au sujet 2018. Pour $\varphi$, l'énoncé donne directement le lâcher : écart positif, sans vitesse initiale — exactement le « Premier lancer » du rung R2, qui donne $\varphi=0$ ; la courbe le confirme ($v_x(0)=0$ et décroissante juste après, cohérent avec $v_x(t)=-X_m\omega_0\sin(\omega_0t)<0$ pour $t$ petit positif).
+        steps:
+          - math: 'T_0 = 2\times(\text{1 division}) = 2\times1\ \text{s} = 2\ \text{s}'
+            note: "Deux maxima consecutifs de v_x (rung R2) separes de 2 divisions ; 1 division = 1 s est l'etalon de l'axe (la double fleche imprimee), PAS la periode directement."
+          - math: 'v_{x,max} = 12{,}5\times10^{-2}\ \text{m.s}^{-1} \qquad \omega_0 = \frac{2\pi}{T_0} = \pi\ \text{rad.s}^{-1}'
+            note: "Vitesse maximale lue en ordonnee (tangente aux traits du cadre) ; pulsation deduite de T0 (rung R2)."
+          - math: 'X_m = \frac{v_{x,max}}{\omega_0} = \frac{0{,}125}{\pi} \approx 3{,}98\times10^{-2}\ \text{m}'
+            note: "v(t) = -Xm.omega0.sin(...) (rungs R1/R2) : l'amplitude de v_x vaut Xm.omega0, donc Xm = v_max / omega0."
+          - math: '\boxed{T_0 = 2\ \text{s} \qquad X_m \approx 4{,}0\times10^{-2}\ \text{m} \qquad \varphi = 0}'
+            note: "Phi = 0 : lacher sans vitesse depuis l'ecart positif (enonce), le cas Premier lancer du rung R2 - confirme par v_x(0) = 0 decroissante sur la courbe."
+      - id: q2b
+        stem: |-
+          **2-2.** (0,5 pt) Déduire la valeur de la raideur $K$ (On prend $\pi^2 = 10$).
+        reasoning: |-
+          Le rung R1 relie $\omega_0$ à $K$ et $m$ par $\omega_0^2=K/m$ : on inverse, avec $\omega_0=\pi\ \text{rad/s}$ trouvé à la question précédente et $m=250\ \text{g}$ donné.
+        steps:
+          - math: 'K = m\,\omega_0^2 = m\left(\frac{2\pi}{T_0}\right)^2'
+            note: "On isole K dans omega0^2 = K/m (rung R1)."
+          - math: 'K = 0{,}250\times\pi^2 = 0{,}250\times10'
+            note: "Application numerique avec pi^2 = 10 (donne par l'enonce) et T0 = 2 s."
+          - math: '\boxed{K = 2{,}5\ \text{N.m}^{-1}}'
+            note: "Raideur du ressort."
+      - id: q3
+        stem: |-
+          **(0,75 pt)** Déterminer la variation de l'énergie potentielle élastique du système (solide $(S)$ - ressort) entre les instants $t = 1\ \text{s}$ et $t = 2{,}5\ \text{s}$.
+        reasoning: |-
+          On calcule d'abord $x(t)$ aux deux instants avec l'équation horaire complète ($X_m\approx4{,}0\times10^{-2}\ \text{m}$, $\omega_0=\pi\ \text{rad/s}$, $\varphi=0$, question 2-1), puis on applique la formule du rung R5, $E_{pe}=\frac12Kx^2$, aux deux positions. $t=1\ \text{s}=T_0/2$ ramène le solide à l'extrémité opposée ($x=-X_m$) ; $t=2{,}5\ \text{s}=1{,}25\,T_0$ le ramène au passage par l'équilibre ($x=0$) — ce n'est donc pas une variation triviale entre deux mêmes états.
+        steps:
+          - math: 'x(1) = X_m\cos(\pi\times1) = -X_m \qquad x(2{,}5) = X_m\cos\left(\pi\times2{,}5\right) = X_m\cos\left(\frac{\pi}{2}\right) = 0'
+            note: "On reinjecte t = 1 s et t = 2,5 s dans x(t) = Xm.cos(omega0.t) (phi = 0, question 2-1)."
+          - math: 'E_{pe}(1) = \frac12KX_m^2 \qquad E_{pe}(2{,}5) = 0'
+            note: "Formule du rung R5, Epe = (1/2) K x^2, appliquee aux deux positions."
+          - math: '\Delta E_{pe} = E_{pe}(2{,}5) - E_{pe}(1) = -\frac12KX_m^2 = -\frac12\times2{,}5\times(4{,}0\times10^{-2})^2'
+            note: "Variation entre les deux instants : on retranche l'etat initial (t=1s) de l'etat final (t=2,5s)."
+          - math: '\boxed{\Delta E_{pe} \approx -2{,}0\times10^{-3}\ \text{J}}'
+            note: "L'energie potentielle elastique diminue : coherent, le solide passe de l'extremite opposee (toute l'energie dans le ressort) a l'equilibre (aucune energie dans le ressort)."
