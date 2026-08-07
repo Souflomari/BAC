@@ -7,18 +7,23 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les deux entrées sont des transcriptions FIDÈLES des deux
-# entrées « vérifié » de docs/sujets/pc/decroissance-radioactive.md (re-fetch
-# AlloSchool + diff indépendant, agent-vérificateur 2026-07-11) — c'est la
-# SEULE source de stems + provenance pour ce fichier ; aucun autre sujet n'est
-# inventé. Raisonnement rédigé à la voix experte de la maison sur 100 % des
-# questions, en citant les rungs R1–R5 de la leçon (lesson.md) là où c'est
-# naturel ; barème transcrit tel quel dans les énoncés (tag « (x,xx pt) »
-# ajouté — la source docs/sujets ne porte que « (x,xx) ») ; conventions KaTeX
-# (block scalars pour la prose, KaTeX brut entre apostrophes simples dans
-# steps[].math, décimales françaises entre accolades `{,}` en mode math —
-# convention déjà utilisée dans lesson.md et exercises.yaml de cette notion,
-# même quand docs/sujets transcrit la virgule nue —, notes sans backslash).
+# exercises.yaml). Les SIX entrées sont des transcriptions FIDÈLES des six
+# entrées « vérifié » de docs/sujets/pc/decroissance-radioactive.md : les
+# deux premières (2019, 2021 — bk-2019-n-x2, bk-2021-n-x3) par re-fetch
+# AlloSchool + diff indépendant (agent-vérificateur, 2026-07-11) ; les quatre
+# suivantes (2022, 2023, 2024, 2025 — bk-2022-n-x2, bk-2023-n-x2,
+# bk-2024-n-x3, bk-2025-n-x2) par passe(s) de vérification adversariale
+# indépendante (agent-vérificateur-adversarial / -tiers, 2026-08-06/07,
+# diff caractère par caractère) — c'est la SEULE source de stems +
+# provenance pour ce fichier ; aucun autre sujet n'est inventé. Raisonnement
+# rédigé à la voix experte de la maison sur 100 % des questions, en citant
+# les rungs R1–R5 de la leçon (lesson.md) là où c'est naturel ; barème
+# transcrit tel quel dans les énoncés (tag « (x,xx pt) » ajouté — la source
+# docs/sujets ne porte que « (x,xx) ») ; conventions KaTeX (block scalars
+# pour la prose, KaTeX brut entre apostrophes simples dans steps[].math,
+# décimales françaises entre accolades `{,}` en mode math — convention déjà
+# utilisée dans lesson.md et exercises.yaml de cette notion, même quand
+# docs/sujets transcrit la virgule nue —, notes sans backslash).
 #
 # NOTES ÉDITORIALES (pour la revue) :
 #
@@ -39,6 +44,38 @@
 #    rester cohérentes avec le sommet. Recoupement assumé, même disposition
 #    que rc-charge bk-2019-n-x3 — à l'arbitrage de l'owner si l'on préfère
 #    l'écarter de la banque pour éviter le recoupement sur la même page.
+# 3. bk-2022-n-x2 (iode 131, Exercice 2 Partie 2) : la question 2 (énergie
+#    libérée par défaut de masse) relève thématiquement de noyaux-masse-energie
+#    — même disposition que la note 1 (bk-2019-n-x2), reprise ici en entier.
+#    La figure 3 (courbe d'activité) est transcrite dans l'intro avec sa
+#    calibration complète ET la réserve « le chiffrage des axes s'arrête à
+#    24 j / 4×10⁶ Bq alors que le cadre continue jusqu'à 40 j / 5×10⁶ Bq » —
+#    levée par la passe de vérification 2026-08-07 (croisement exact mesuré
+#    au pixel à t = 8 j, a = 2×10⁶ Bq).
+# 4. bk-2023-n-x2 (tritium, Exercice 2 §1) : SEUL le §1 (désintégration) est
+#    repris ici — le §2 (fusion tritium-deutérium) du même exercice relève de
+#    noyaux-masse-energie et n'est pas transcrit. Contrairement à la note 1
+#    (où le fichier source ne scindait pas la partie par thème), ici le
+#    fichier source scinde lui-même l'exercice en §1/§2 avec des portées
+#    distinctes ; le tableau des énergies de liaison, utilisé seulement au
+#    §2, n'est donc pas repris dans les Données de cette entrée. Le QCM (q1)
+#    comporte deux items (D, E) qui touchent au domaine noyaux-masse-energie
+#    — signalé dans le raisonnement de la question plutôt que découpé, pour
+#    rester fidèle au contrôle exhaustif fait par la source (une seule
+#    affirmation vraie sur cinq).
+# 5. bk-2024-n-x3 (iridium 192, Exercice 3) : aucun recoupement thématique —
+#    le fichier source note explicitement l'absence de volet masse-énergie
+#    (pas de masse atomique, pas de MeV) pour ce sujet. La question 3-2 (Nd
+#    après une durée non multiple de la demi-vie) s'appuie directement sur
+#    le rappel du R4 « moins de 0,1 % restant après une dizaine de
+#    demi-vies » pour motiver le commentaire demandé par l'énoncé.
+# 6. bk-2025-n-x2 (cadmium 107, Exercice 2) : la question 3-3 (énergie
+#    libérée par défaut de masse) relève thématiquement de
+#    noyaux-masse-energie — même disposition que la note 1. Le QCM (q1)
+#    n'est pas contrôlé dans le fichier source ; la bonne réponse (C) est
+#    déterminée ici par inspection directe de la convention (Z en abscisse,
+#    N en ordonnée) déjà fixée par la figure vallee-stabilite du R1 de cette
+#    leçon — ancrée dans les rungs, pas une invention.
 
 notion: pc/decroissance-radioactive
 
@@ -236,3 +273,431 @@ entries:
             note: "À la limite N(t_max) = 0,70 N_0 ; on isole le temps par le logarithme (méthode d'inversion du R5)."
           - math: '\boxed{t_{max} = \frac{\ln(1{,}43)}{7{,}88\times10^{-3}} \approx \frac{0{,}357}{7{,}88\times10^{-3}} \approx 45\ \text{ans}}'
             note: "Application numérique avec λ en ans⁻¹ : le résultat sort directement en années."
+
+  # ── bk-2022-n-x2 — 2022 N, Exercice 2 (Partie 2) : désintégration de l'iode 131 ──
+  - id: bk-2022-n-x2
+    title: "Désintégration de l'iode 131 : équation β⁻, énergie libérée et lecture graphique de la demi-vie"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 2 — Partie 2. Désintégration de l'iode 131"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS 28F, element/136621 (Exercice 2, Partie 2 —
+        désintégration de l'iode 131 ; barème de la partie 2,25 pt sur les
+        3,5 pt de l'exercice complet, qui comporte aussi une Partie 1 sur
+        les ondes sonores, transcrite sous ondes-mecaniques-progressives.md).
+        Transcription vérifiée : 1 passe de vérification adversariale
+        indépendante (agent-vérificateur-adversarial, 2026-08-07), diff OK
+        contre upload-84516/0004-big.jpg
+        (docs/sujets/pc/decroissance-radioactive.md, statut « vérifié »).
+        Cette même passe a mesuré la figure 3 au pixel : croisement exact à
+        (8 jours ; 2×10⁶ Bq) donnant t1/2 = 8 j et a0 = 4,0×10⁶ Bq ; le
+        chiffrage des axes s'arrête à 24 jours et 4×10⁶ Bq alors que le
+        cadre du graphe continue jusqu'à 40 jours et 5×10⁶ Bq — repris ici
+        avec cette mise au point. NB : la question 2 (énergie libérée par
+        défaut de masse) relève thématiquement de la notion
+        noyaux-masse-energie — signalé dans le fichier source ; reprise ici
+        en entier pour que la banque reste le corpus complet des annales
+        attachées à cette page (même disposition que rc-charge
+        bk-2019-n-x3, cf. note éditoriale n°1).
+    intro: |-
+      **Désintégration de l'iode 131 (examen national, session normale 2022 — Exercice 2, Partie 2).**
+
+      L'iode131 ($^{131}_{53}\text{I}$) est radioactif $\beta^-$. Il est utilisé à faibles doses dans des applications médicales visant l'étude du dysfonctionnement de la thyroïde ou le traitement de certaines maladies liées à cette glande. La désintégration d'un noyau d'iode 131 produit un noyau $^A_Z X$. On se propose, dans cette partie, d'étudier la désintégration de l'iode 131.
+
+      **Données.**
+
+      | Élément | Tellure | Xénon | Césium |
+      |---|---|---|---|
+      | Quelques isotopes de l'élément | $^{131}_{52}\text{Te}$, $^{132}_{52}\text{Te}$ | $^{130}_{54}\text{Xe}$, $^{131}_{54}\text{Xe}$ | $^{127}_{55}\text{Cs}$, $^{132}_{55}\text{Cs}$ |
+
+      - Masse du noyau d'iode 131 : $m(^{131}_{53}\text{I}) = 130{,}906125\ \text{u}$ ;
+      - Masse du noyau $^A_Z X$ : $m(^A_Z X) = 130{,}905082\ \text{u}$ ;
+      - Masse de la particule $\beta^-$ : $m(\beta^-) = 5{,}48580\times10^{-4}\ \text{u}$ ;
+      - $1\ \text{u} = 931{,}5\ \text{MeV.c}^{-2}$.
+
+      **Figure 3 (courbe).** On injecte à un patient, à un instant choisi comme origine des dates, une dose d'iode 131 dont l'activité à cet instant est $a_0$. La courbe donne les variations de l'activité $a(t)$ de cette dose en fonction du temps $t$ (en jours), sur un quadrillage régulier : traits majeurs tous les 8 jours et tous les $10^6\ \text{Bq}$, traits fins intermédiaires à 4 jours et $0{,}5\times10^6\ \text{Bq}$. Le cadre du graphe s'étend jusqu'à $t=40$ jours et $5\times10^6\ \text{Bq}$, mais le chiffrage des axes s'arrête à 8, 16, 24 jours et $4\times10^6\ \text{Bq}$ — les traits majeurs à 32 j, 40 j et $5\times10^6\ \text{Bq}$ ne sont donc pas chiffrés, il faut compter les carreaux au-delà. La courbe part de $a_0 = 4{,}0\times10^6\ \text{Bq}$ à $t=0$ et passe exactement par l'intersection des repères $t=8$ jours et $a=2\times10^6\ \text{Bq}$. Elle vaut ensuite $0{,}50\times10^6\ \text{Bq}$ à $t=24$ jours, $0{,}25\times10^6\ \text{Bq}$ à $t=32$ jours, et ne se confond visuellement avec l'axe des abscisses que vers 36–40 jours.
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** Écrire l'équation de désintégration de l'iode131 en identifiant le noyau $^A_Z X$ produit au cours de cette désintégration.
+        reasoning: |-
+          On ne connaît que le père (l'iode 131) et le type de désintégration ($\beta^-$, donné dans le chapeau) : les deux lois de Soddy (R2) suffisent à reconstruire le fils. Différence avec les exemples déjà vus : l'énoncé ne donne pas un tableau symbole ↔ Z direct, mais un tableau D'ISOTOPES. Il faut donc d'abord trouver, par Soddy, À LA FOIS le $A$ et le $Z$ du fils, puis chercher dans le tableau lequel des isotopes proposés a ces deux nombres précis — pas seulement le bon élément (déterminé par $Z$ seul), mais le bon isotope (déterminé aussi par $A$).
+        steps:
+          - math: '^{131}_{53}\text{I} \longrightarrow\ ^{A}_{Z}\text{X} +\ ^{0}_{-1}\text{e}'
+            note: "On pose l'équation avec le noyau fils inconnu et l'électron émis en β⁻ (R2)."
+          - math: 'A = 131 + 0 \implies A = 131'
+            note: "Conservation du nombre de nucléons : l'électron ne porte aucun nucléon, A ne change pas."
+          - math: '53 = Z + (-1) \implies Z = 54'
+            note: "Conservation de la charge : l'électron emporte -1, donc Z du fils est supérieur d'une unité à celui du père."
+          - math: '\boxed{^{131}_{53}\text{I} \longrightarrow\ ^{131}_{54}\text{Xe} +\ ^{0}_{-1}\text{e}}'
+            note: "Z = 54 et A = 131 : dans le tableau des isotopes, seul le xénon 131 a ces deux nombres — pas le xénon 130, même élément mais mauvais A."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Calculer, en MeV, l'énergie libérée $|\Delta E|$ par la désintégration d'un noyau d'iode 131.
+        reasoning: |-
+          Hors des rungs de cette leçon (domaine noyaux-masse-energie, pas développé dans R1–R5) : l'énergie libérée par une désintégration provient du défaut de masse entre le père et l'ensemble des produits — le père est légèrement plus lourd que ce qu'il donne, et cet excédent de masse devient de l'énergie via $E=\Delta m\,c^2$.
+        steps:
+          - math: '|\Delta E| = \big[m(\text{I}) - m(\text{Xe}) - m(\beta^-)\big] \times 931{,}5'
+            note: "L'énergie libérée est le défaut de masse entre le père et les produits, converti en énergie via 1 u = 931,5 MeV/c² donné dans l'énoncé."
+          - math: '\Delta m = 130{,}906125 - 130{,}905082 - 5{,}48580\times10^{-4} \approx 4{,}944\times10^{-4}\ \text{u}'
+            note: "Défaut de masse : la masse du père dépasse la somme des masses des produits, c'est cet excédent qui devient l'énergie libérée."
+          - math: '\boxed{|\Delta E| \approx 4{,}944\times10^{-4} \times 931{,}5 \approx 0{,}46\ \text{MeV}}'
+            note: "Application numérique."
+      - id: q3
+        stem: |-
+          **(0,25 pt)** Déterminer graphiquement la demi-vie $t_{1/2}$ de l'iode 131.
+        reasoning: |-
+          La demi-vie se lit directement là où l'activité tombe à sa moitié — l'activité $a(t)=a_0e^{-\lambda t}$ suit exactement la même loi que $N(t)$ (R4). Ici, la lecture ne demande même pas d'estimer une moitié à l'œil : la courbe passe EXACTEMENT par l'intersection des repères de la grille $t=8$ jours et $a=2\times10^6\ \text{Bq}$, et $2\times10^6$ est bien la moitié de $a_0=4{,}0\times10^6\ \text{Bq}$ lu à l'origine.
+
+          $$t_{1/2} = 8\ \text{jours}$$
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Calculer le nombre $N_0$ de noyaux d'iode présents dans la dose à $t = 0$.
+        reasoning: |-
+          Le lien entre l'activité et le nombre de noyaux est $a=\lambda N$ (R4) : à $t=0$, $a_0=\lambda N_0$, donc $N_0=a_0/\lambda$. Il faut d'abord $\lambda$, qui ne se lit pas sur la courbe mais se déduit de $t_{1/2}$ par $t_{1/2}=\ln2/\lambda$ (R4). Ici $a_0$ est en becquerels, donc en désintégrations par seconde : il faut $\lambda$ en $\text{s}^{-1}$, donc convertir $t_{1/2}$ en secondes avant de diviser.
+        steps:
+          - math: '\lambda = \frac{\ln 2}{t_{1/2}} = \frac{\ln 2}{8\times 86400}'
+            note: "On inverse la relation demi-vie ↔ constante radioactive du R4, avec t1/2 converti en secondes."
+          - math: '\lambda \approx 1{,}003\times10^{-6}\ \text{s}^{-1}'
+            note: "Application numérique."
+          - math: 'N_0 = \frac{a_0}{\lambda} = \frac{4{,}0\times10^{6}}{1{,}003\times10^{-6}}'
+            note: "On inverse a = λN (R4) : le nombre de noyaux se déduit de l'activité et de λ."
+          - math: '\boxed{N_0 \approx 3{,}99\times10^{12}\ \text{noyaux}}'
+            note: "Application numérique avec a0 = 4,0×10⁶ Bq lu à l'origine de la courbe."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** En utilisant la loi de décroissance radioactive, déterminer, en jours, l'instant $t_1$ où 95% des noyaux d'iode 131 se sont désintégrés.
+        reasoning: |-
+          95 % désintégrés signifie qu'il reste 5 % des noyaux initiaux, soit $N(t_1)/N_0 = 0{,}05$. Ce n'est pas une puissance entière de $1/2$ : impossible de compter un nombre entier de demi-vies pour obtenir cette fraction, il faut inverser la loi de décroissance par le logarithme, exactement comme au R5 (datation).
+        steps:
+          - math: '\frac{N(t_1)}{N_0} = 1 - 0{,}95 = 0{,}05'
+            note: "95 % désintégrés signifie qu'il reste 5 % des noyaux initiaux."
+          - math: 't_1 = \frac{1}{\lambda}\ln\!\left(\frac{1}{0{,}05}\right) = \frac{\ln 20}{\lambda}'
+            note: "On inverse la loi de décroissance par le logarithme (méthode du R5)."
+          - math: '\lambda = \frac{\ln 2}{8} \approx 8{,}66\times10^{-2}\ \text{jour}^{-1}'
+            note: "On reprend λ en jour⁻¹ (cohérent avec t1/2 = 8 jours), pour obtenir directement t1 en jours."
+          - math: '\boxed{t_1 = \frac{\ln 20}{8{,}66\times10^{-2}} \approx \frac{2{,}996}{8{,}66\times10^{-2}} \approx 34{,}6\ \text{jours}}'
+            note: "Le résultat tombe bien dans le domaine tracé par la figure (0 à 40 jours)."
+
+  # ── bk-2023-n-x2 — 2023 N, Exercice 2 §1 : désintégration du tritium ──
+  - id: bk-2023-n-x2
+    title: "Désintégration du tritium : QCM, équation β⁻ et activité restante"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 2 — §1. Désintégration du tritium"
+    bareme_total: 1.5
+    duration_min: 9
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS 28F, element/142476 (Exercice 2, §1 —
+        désintégration du tritium ; barème du §1 1,5 pt sur les 2,5 pt de
+        l'exercice complet, dont le §2 — fusion tritium-deutérium, énergie
+        de dissociation, énergie libérée — relève de noyaux-masse-energie
+        et n'est pas repris ici). Transcription vérifiée : 1ʳᵉ passe de
+        vérification adversariale indépendante
+        (agent-vérificateur-adversarial, 2026-08-07), diff OK contre
+        upload-85304/0003-big.jpg (docs/sujets/pc/decroissance-radioactive.md,
+        statut « vérifié »). Contrôle du QCM refait par cette passe : A, B,
+        C, D faux, E vrai — une seule affirmation juste, comme l'exige
+        l'énoncé.
+    intro: |-
+      **Étude de quelques transformations nucléaires du tritium (examen national, session normale 2023 — Exercice 2, §1).**
+
+      Dans cet exercice on se propose d'étudier la désintégration du tritium $^3_1\text{H}$ et sa réaction de fusion avec le deutérium $^2_1\text{H}$. $^2_1\text{H}$ et $^3_1\text{H}$ sont deux isotopes de l'élément hydrogène.
+
+      **1- Désintégration du tritium.** Le tritium est un isotope radioactif émetteur $\beta^-$. Le noyau formé est l'un des isotopes de l'hélium.
+
+      **Données (pour ce §1).**
+      - Masse molaire du tritium : $M(^3_1\text{H}) = 3\ \text{g.mol}^{-1}$ ;
+      - Nombre d'Avogadro : $N_A = 6{,}02\times10^{23}\ \text{mol}^{-1}$ ;
+      - Demi-vie du tritium $^3_1\text{H}$ : $t_{1/2} = 12{,}32\ \text{an}$ ;
+      - $1\ \text{an} = 3{,}16\times10^{7}\ \text{s}$.
+
+      *(Le §2 de cet exercice — réaction de fusion du tritium et du deutérium, énergie de dissociation, énergie libérée, avec un tableau d'énergies de liaison non reproduit ici — relève de la notion noyaux-masse-energie et n'est pas traité dans cette entrée.)*
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** Choisir parmi les affirmations suivantes l'affirmation juste :
+
+          | | |
+          |---|---|
+          | A | Le noyau $^3_2\text{He}$ a un nombre de masse égal à 5. |
+          | B | La radioactivité $\beta^-$ est caractéristique des noyaux très lourds. |
+          | C | Au bout du temps $t = 2t_{1/2}$, à partir du début de désintégration, le nombre de noyaux désintégrés dans un échantillon radioactif représente 25% du nombre de noyaux initial. |
+          | D | La masse d'un noyau atomique est égale à la somme des masses de ses nucléons. |
+          | E | Lors d'une réaction de fission nucléaire, de la masse est convertie en énergie. |
+        reasoning: |-
+          Cinq propositions, une seule vraie — passons-les en revue une à une.
+
+          A. Le tritium se désintègre justement vers $^3_2\text{He}$ (on l'établit à la question suivante) : le nombre de masse est le nombre du HAUT dans la notation $^A_Z X$, donc $A=3$ pour $^3_2\text{He}$, pas 5 (l'énoncé additionne sans doute $A$ et $Z$, $3+2=5$, par erreur). Faux.
+
+          B. Le tritium, sujet même de cet exercice, en est le contre-exemple direct : c'est l'un des noyaux les plus légers qui existent (seulement 3 nucléons), et pourtant il est émetteur $\beta^-$ — exactement l'exemple utilisé au R1 pour établir que ce n'est pas la taille du noyau qui décide de sa stabilité, mais son rapport $N/Z$. Faux.
+
+          C. La propriété du R4 donne directement la fraction RESTANTE après $n$ demi-vies : $N_0/2^n$. Ici $n=2$, donc $N_0/4 = 25\%$ restants — c'est-à-dire $75\%$ désintégrés, pas $25\%$. L'énoncé confond la fraction restante et la fraction désintégrée, exactement le piège signalé au R4. Faux.
+
+          D. Hors des rungs de cette leçon (domaine noyaux-masse-energie, non développé dans R1–R5) : un noyau lié a une masse INFÉRIEURE à la somme des masses de ses nucléons séparés — c'est ce défaut de masse qui devient l'énergie de liaison. Faux.
+
+          E. Également hors des rungs de cette leçon : c'est un fait général vrai — dans toute réaction nucléaire qui libère de l'énergie, cette énergie provient d'une perte de masse ($E=\Delta m\,c^2$), et la fission ne fait pas exception. Vrai.
+
+          Une seule affirmation vraie, comme l'exige l'énoncé : $\boxed{\text{E}}$.
+      - id: q2
+        stem: |-
+          **(0,25 pt)** Écrire l'équation de la réaction de désintégration du noyau du tritium.
+        reasoning: |-
+          Même démarche que pour l'exemple du carbone 14 au R2 : on pose le fils inconnu et on applique les deux lois de Soddy. Le tritium a un rapport $N/Z=2$ pour un noyau aussi léger (2 neutrons pour 1 seul proton, R1) — trop de neutrons, donc désintégration $\beta^-$ : un neutron devient un proton, $Z$ augmente d'une unité, $A$ ne bouge pas.
+        steps:
+          - math: '^{3}_{1}\text{H} \longrightarrow\ ^{A}_{Z}\text{Y} +\ ^{0}_{-1}\text{e}'
+            note: "On pose l'équation avec le fils inconnu et l'électron émis en β⁻ (R2)."
+          - math: 'A = 3 + 0 \implies A = 3'
+            note: "Conservation du nombre de nucléons : l'électron ne porte aucun nucléon, A ne change pas."
+          - math: '1 = Z + (-1) \implies Z = 2'
+            note: "Conservation de la charge : l'électron emporte -1, donc Z du fils vaut 2."
+          - math: '\boxed{^{3}_{1}\text{H} \longrightarrow\ ^{3}_{2}\text{He} +\ ^{0}_{-1}\text{e}}'
+            note: "Z = 2 correspond à l'hélium : le fils est bien un isotope de l'hélium, comme l'indique l'énoncé."
+      - id: q3
+        stem: |-
+          **(0,25 pt)** Établir la relation entre la demi-vie $t_{1/2}$ et la constante radioactive $\lambda$.
+        reasoning: |-
+          C'est exactement la dérivation du R4, à reproduire ici : on repart de la définition de $t_{1/2}$ (l'instant où il reste la moitié des noyaux initiaux) injectée dans la loi de décroissance $N(t)=N_0e^{-\lambda t}$ (R3), puis on isole $t_{1/2}$.
+        steps:
+          - math: '\frac{N_0}{2} = N_0\,e^{-\lambda t_{1/2}}'
+            note: "Par définition, la demi-vie est l'instant où il reste la moitié des noyaux initiaux (R4)."
+          - math: '\frac{1}{2} = e^{-\lambda t_{1/2}} \implies \ln\!\left(\frac{1}{2}\right) = -\lambda t_{1/2}'
+            note: "On simplifie par N0, puis on passe au logarithme népérien des deux membres."
+          - math: '\boxed{t_{1/2} = \frac{\ln 2}{\lambda}}'
+            note: "ln(1/2) = -ln 2, d'où la relation demi-vie ↔ constante radioactive établie au R4."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** À un instant $t_0 = 0$ on a un échantillon du tritium radioactif de masse $m_0 = 2\ \mu\text{g}$. Calculer en unité Bq, l'activité $a_1$ de l'échantillon à l'instant où 90% des noyaux du tritium sont désintégrés.
+        reasoning: |-
+          La chaîne complète : demi-vie → λ, masse → N0 (via la quantité de matière), puis N0 → nombre de noyaux restants une fois 90 % désintégrés, et enfin $a_1=\lambda N$ (R4) sur ce nombre RESTANT — pas sur $N_0$, piège à éviter : l'activité mesure ce qui se désintègre maintenant, donc dépend du nombre de noyaux encore présents à cet instant, pas du nombre de départ.
+        steps:
+          - math: 't_{1/2} = 12{,}32 \times 3{,}16\times10^{7} \approx 3{,}89\times10^{8}\ \text{s}'
+            note: "Conversion de la demi-vie en secondes, pour rester cohérent avec une activité en becquerels."
+          - math: '\lambda = \frac{\ln 2}{t_{1/2}} \approx \frac{0{,}693}{3{,}89\times10^{8}} \approx 1{,}78\times10^{-9}\ \text{s}^{-1}'
+            note: "Relation demi-vie ↔ constante radioactive établie à la question précédente."
+          - math: 'N_0 = \frac{m_0}{M}\,N_A = \frac{2\times10^{-6}}{3}\times6{,}02\times10^{23} \approx 4{,}01\times10^{17}\ \text{noyaux}'
+            note: "Le nombre de noyaux se déduit de la masse via la quantité de matière : n = m/M, puis N = n × N_A."
+          - math: 'N = 0{,}10\,N_0 \approx 4{,}01\times10^{16}\ \text{noyaux}'
+            note: "90 % désintégrés signifie qu'il en reste 10 % — c'est ce nombre restant qui fixe l'activité, pas N0."
+          - math: '\boxed{a_1 = \lambda N \approx 1{,}78\times10^{-9}\times4{,}01\times10^{16} \approx 7{,}1\times10^{7}\ \text{Bq}}'
+            note: "Application de a = λN (R4) au nombre de noyaux restants."
+
+  # ── bk-2024-n-x3 — 2024 N, Exercice 3 : désintégration de l'iridium 192 ──
+  - id: bk-2024-n-x3
+    title: "Désintégration de l'iridium 192 en curiethérapie : composition, équation β⁻ et noyaux désintégrés"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — Désintégration de l'iridium 192"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS 28F, element/145763 (Exercice 3 —
+        désintégration de l'iridium 192 en curiethérapie ; barème de
+        l'exercice complet 2,0 pt). Transcription vérifiée : passe de
+        vérification adversariale par agent-vérificateur-tiers, 2026-08-06,
+        diff OK contre upload-87465/0004-big.jpg
+        (docs/sujets/pc/decroissance-radioactive.md, statut « vérifié »).
+        NB : le résumé HTML d'AlloSchool pour cet élément annonce à tort la
+        filière « Sciences Mathématiques B » ; l'en-tête du scan, lu
+        directement, confirme sans ambiguïté SPC/BIOF — image faisant foi.
+        Physique re-dérivée indépendamment par cette passe : λ ≈
+        1,084×10⁻⁷ s⁻¹, N0 ≈ 1,0×10⁵ noyaux, et Nd ≈ 0,9989 N0 après 730
+        jours (≈ 9,86 demi-vies) — la source est pratiquement épuisée, ce
+        qui donne son sens au « commenter » de la question 3-2.
+    intro: |-
+      **La curiethérapie et l'iridium 192 (examen national, session normale 2024 — Exercice 3).**
+
+      La curiethérapie est une technique qui consiste à traiter des tumeurs cancéreuses par insertion d'une source radioactive à proximité de ces tumeurs. L'un des éléments radioactifs utilisés pour cette technique est l'iridium 192 : $^{192}_{77}\text{Ir}$. La source radioactive émet des rayonnements qui détruisent les cellules tumorales qu'ils traversent.
+
+      Lors du traitement d'une tumeur, l'iridium 192 donne, essentiellement par désintégration, un noyau de platine $^{192}_{78}\text{Pt}$ et une particule chargée avec émission d'un rayonnement $\gamma$ (gamma).
+
+      **Donnée.** La demi-vie de l'iridium 192 : $t_{1/2} = 74\ \text{jours} = 6{,}3936\times10^{6}\ \text{s}$.
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** Déterminer la composition du noyau de l'iridium $^{192}_{77}\text{Ir}$.
+        reasoning: |-
+          La notation $^A_Z X$ verrouille tout (R1) : $Z$, en indice, compte les protons ; $A$, en exposant, compte le nombre total de nucléons. Le nombre de neutrons se retrouve par soustraction, $N=A-Z$ — il n'est jamais donné directement.
+        steps:
+          - math: 'Z = 77 \implies 77\ \text{protons}'
+            note: "Le numéro atomique Z, en indice de la notation, compte les protons (R1)."
+          - math: 'N = A - Z = 192 - 77 = 115\ \text{neutrons}'
+            note: "Le nombre de neutrons est ce qui reste une fois les protons retirés du nombre de masse A."
+          - math: '\boxed{77\ \text{protons et } 115\ \text{neutrons, pour } A = 192\ \text{nucléons}}'
+            note: "Vérification : 77 + 115 = 192, cohérent avec le nombre de masse donné."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Écrire l'équation de désintégration de l'iridium 192 en précisant le type de cette désintégration.
+        reasoning: |-
+          Ici, c'est le noyau fils (le platine) qui est donné dans l'énoncé, et c'est la particule chargée émise qui est l'inconnue — l'inverse de la situation la plus habituelle. Peu importe laquelle des trois grandeurs manque : les deux lois de Soddy (R2) suffisent toujours à la retrouver à partir des deux autres.
+        steps:
+          - math: '^{192}_{77}\text{Ir} \longrightarrow\ ^{192}_{78}\text{Pt} +\ ^{A}_{Z}\text{p}'
+            note: "On pose l'équation avec le platine (donné) et la particule émise comme inconnue."
+          - math: '192 = 192 + A \implies A = 0'
+            note: "Conservation du nombre de nucléons : le platine porte déjà les 192 nucléons du père, la particule émise n'en porte aucun."
+          - math: '77 = 78 + Z \implies Z = -1'
+            note: "Conservation de la charge : le platine porte une charge de plus que l'iridium, donc la particule émise porte -1."
+          - math: '\boxed{^{192}_{77}\text{Ir} \longrightarrow\ ^{192}_{78}\text{Pt} +\ ^{0}_{-1}\text{e}}'
+            note: "A = 0, Z = -1 : c'est un électron — une désintégration β⁻ (Z augmente d'une unité, R2), accompagnée du rayonnement γ car le platine formé est produit dans un état excité (même mécanisme que le cobalt 60 du R2)."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** On suppose que le corps humain ne contient pas initialement de l'iridium. À la date $t = 0$, on implante à un patient un fil métallique contenant une source d'iridium 192. L'activité de cette source à cette date est : $a_0 = 1{,}08\times10^{-2}\ \text{Bq}$. Calculer $N_0$ le nombre de noyaux d'iridium 192 se trouvant dans cette source à $t = 0$.
+        reasoning: |-
+          Le lien entre l'activité et le nombre de noyaux est $a=\lambda N$ (R4) : à $t=0$, $N_0=a_0/\lambda$. La demi-vie est déjà donnée en secondes, donc λ sort directement dans la bonne unité pour diviser $a_0$ (en becquerels).
+        steps:
+          - math: '\lambda = \frac{\ln 2}{t_{1/2}} = \frac{0{,}693}{6{,}3936\times10^{6}} \approx 1{,}084\times10^{-7}\ \text{s}^{-1}'
+            note: "Relation demi-vie ↔ constante radioactive du R4."
+          - math: 'N_0 = \frac{a_0}{\lambda} = \frac{1{,}08\times10^{-2}}{1{,}084\times10^{-7}}'
+            note: "On inverse a = λN (R4) : le nombre de noyaux se déduit de l'activité et de λ."
+          - math: '\boxed{N_0 \approx 1{,}0\times10^{5}\ \text{noyaux}}'
+            note: "Une activité aussi faible (un peu plus d'une désintégration par minute) correspond à un échantillon minuscule, cohérent avec une source implantée localement."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Déterminer $N_d$ le nombre de noyaux d'iridium 192 désintégrés au bout de deux ans ($\Delta t = 730\ \text{jours}$). Commenter le résultat obtenu.
+        reasoning: |-
+          730 jours ne fait pas un nombre entier de demi-vies de 74 jours : impossible de compter des divisions par 2 une à une, il faut appliquer directement la loi de décroissance sous sa forme en puissance de 2, $N(t)=N_0\times2^{-t/t_{1/2}}$ — la même démarche que l'exemple du carbone 14 au R3, où la fraction restante après 1000 ans se calculait sans compter de demi-vies entières.
+        steps:
+          - math: '\frac{\Delta t}{t_{1/2}} = \frac{730}{74} \approx 9{,}86'
+            note: "Nombre de demi-vies écoulées, non entier — on applique la loi exponentielle directement plutôt que de compter des divisions par 2."
+          - math: 'N(\Delta t) = N_0 \times 2^{-9{,}86} \approx 0{,}0011\,N_0'
+            note: "La propriété N0/2^n du R4 se généralise à un nombre non entier de demi-vies via cette même forme en puissance de 2."
+          - math: '\boxed{N_d = N_0 - N(\Delta t) \approx 0{,}9989\,N_0}'
+            note: "Presque tous les noyaux initiaux ont désintégré : à près de 10 demi-vies écoulées, on dépasse le seuil « moins de 0,1 % restant » signalé au R4 — la source est pratiquement épuisée au bout de deux ans, ce qui est précisément le sens du « commenter » demandé."
+
+  # ── bk-2025-n-x2 — 2025 N, Exercice 2 : désintégration du cadmium 107 ──
+  - id: bk-2025-n-x2
+    title: "Désintégration du cadmium 107 : QCM, équation β⁺ et énergie libérée entre deux instants"
+    source:
+      year: 2025
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 2 — Désintégration du cadmium 107"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS 28F, element/145796 (Exercice 2 —
+        désintégration du cadmium 107 ; barème de l'exercice complet
+        2,5 pt). Transcription vérifiée : passe de vérification
+        adversariale (agent-vérificateur-adversarial, 2026-08-06), diff OK
+        contre upload-87489/0003-big.jpg et 0004-big.jpg
+        (docs/sujets/pc/decroissance-radioactive.md, statut « vérifié »).
+        Physique re-dérivée indépendamment par cette passe : a1=a0/4,
+        a2=a0/8=a1/2 ; Nd=(a1-a2)/λ=a0 t1/2/(8 ln2) ; défaut de masse
+        Δm≈4,314×10⁻⁴ u > 0, soit ≈0,402 MeV par désintégration — positif,
+        cohérent avec la transformation β⁺ (Z:48→47). NB : la question 3-3
+        (énergie libérée par défaut de masse) relève thématiquement de
+        noyaux-masse-energie — signalé dans le fichier source ; reprise ici
+        en entier (même disposition que rc-charge bk-2019-n-x3, cf. note
+        éditoriale n°1). Le QCM (question 1) n'est pas contrôlé dans le
+        fichier source : la détermination de la bonne réponse (C) est faite
+        ci-dessous, ancrée sur la convention du diagramme (N,Z) déjà
+        utilisée dans la figure du R1 de cette leçon (Z en abscisse, N en
+        ordonnée).
+    intro: |-
+      **Désintégration du cadmium 107 (examen national, session normale 2025 — Exercice 2, 2,5 points).**
+
+      On se propose dans cet exercice d'étudier la désintégration du cadmium 107. Le cadmium radioactif $^{107}_{48}\text{Cd}$ donne, en se désintégrant, le noyau d'argent $^{107}_{47}\text{Ag}$ et une particule $^{A}_{Z}\text{e}$, avec émission d'un rayonnement $\gamma$ (gamma).
+
+      **Données.**
+      - Masses : $m(^{107}_{48}\text{Cd}) = 106{,}88045\ \text{u}$ ; $m(^{107}_{47}\text{Ag}) = 106{,}87947\ \text{u}$ ; $m(^{A}_{Z}\text{e}) = 5{,}486\times10^{-4}\ \text{u}$ ;
+      - Demi-vie du $^{107}_{48}\text{Cd}$ : $t_{1/2} = 6{,}93$ heures ;
+      - $1\ \text{u} = 931{,}49\ \text{MeV.c}^{-2}$.
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** Choisir parmi les affirmations suivantes l'affirmation juste :
+
+          | | |
+          |---|---|
+          | A | Dans le noyau $^{107}_{48}\text{Cd}$ il y a 59 protons. |
+          | B | La désintégration d'un échantillon radioactif est d'autant plus rapide que sa constante radioactive $\lambda$ est plus petite. |
+          | C | Dans le diagramme $(N, Z)$ de Segré, les isotopes sont sur une ligne perpendiculaire à l'axe des $Z$. |
+          | D | La cohésion du noyau est d'autant plus forte que son énergie de liaison par nucléon est petite. |
+        reasoning: |-
+          Quatre propositions, une seule vraie.
+
+          A. Le numéro atomique $Z=48$ donne directement le nombre de protons (R1) : 48, pas 59. (59 est le nombre de NEUTRONS, $N=A-Z=107-48=59$ — l'énoncé confond les deux nombres.) Faux.
+
+          B. C'est le sens inverse : $\lambda$ mesure la probabilité de désintégration par unité de temps (R3), et $t_{1/2}=\ln2/\lambda$ (R4) — plus $\lambda$ est GRAND, plus $t_{1/2}$ est petite, plus la désintégration est rapide. Faux.
+
+          C. Le diagramme $(N,Z)$ de cette leçon (R1, la vallée de stabilité) place $Z$ en abscisse (horizontale) et $N$ en ordonnée (verticale). Deux isotopes partagent le même $Z$ mais des $N$ différents : ils sont donc alignés sur une droite VERTICALE, à $Z$ fixé — une droite verticale est perpendiculaire à l'axe horizontal des $Z$. Vrai.
+
+          D. C'est encore le sens inverse : plus l'énergie de liaison par nucléon $E_\ell/A$ est GRANDE, plus chaque nucléon est fortement retenu, donc plus la cohésion est forte — pas l'inverse. Faux.
+
+          Une seule affirmation vraie : $\boxed{\text{C}}$.
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Écrire l'équation de désintégration d'un noyau de cadmium $^{107}_{48}\text{Cd}$ en précisant le type de cette désintégration.
+        reasoning: |-
+          Comme le fils (l'argent) est donné dans l'énoncé, c'est ici la particule émise qui est l'inconnue des deux lois de Soddy (R2) — le père et le fils sont tous deux connus, il suffit d'appliquer les deux conservations pour identifier ce qui est éjecté.
+        steps:
+          - math: '^{107}_{48}\text{Cd} \longrightarrow\ ^{107}_{47}\text{Ag} +\ ^{A}_{Z}\text{e}'
+            note: "On pose l'équation avec l'argent (donné) et la particule émise comme inconnue."
+          - math: '107 = 107 + A \implies A = 0'
+            note: "Conservation du nombre de nucléons : l'argent porte déjà les 107 nucléons du père, la particule n'en porte aucun."
+          - math: '48 = 47 + Z \implies Z = 1'
+            note: "Conservation de la charge : l'argent porte une charge de moins que le cadmium, donc la particule émise porte +1."
+          - math: '\boxed{^{107}_{48}\text{Cd} \longrightarrow\ ^{107}_{47}\text{Ag} +\ ^{0}_{+1}\text{e}}'
+            note: "A = 0, Z = +1 : c'est un positron — une désintégration β+ (Z diminue d'une unité, R2), cohérente avec un cadmium trop riche en protons par rapport à l'argent."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Un laboratoire reçoit à la date $t = 0$ un échantillon de $^{107}_{48}\text{Cd}$ d'activité $a_0 = 1{,}25\times10^{12}\ \text{Bq}$. À l'instant $t_1 = 2\,t_{1/2}$ l'activité de cet échantillon est $a_1$ et à l'instant $t_2 = 3\,t_{1/2}$ son activité est $a_2$. Établir l'expression $a_2 = \dfrac{a_1}{2}$.
+        reasoning: |-
+          Pas besoin de calculer $a_0$ ni $\lambda$ numériquement : la propriété du R4 (après $n$ demi-vies, il reste $1/2^n$, aussi bien sur $N$ que sur l'activité) donne directement $a_1$ et $a_2$ comme fractions de $a_0$, et le rapport des deux fractions donne le résultat demandé.
+        steps:
+          - math: 'a_1 = a_0\left(\frac{1}{2}\right)^2 = \frac{a_0}{4}'
+            note: "t1 = 2 t1/2 : deux demi-vies écoulées, la propriété du R4 donne directement le quart."
+          - math: 'a_2 = a_0\left(\frac{1}{2}\right)^3 = \frac{a_0}{8}'
+            note: "t2 = 3 t1/2 : trois demi-vies écoulées, un huitième."
+          - math: '\boxed{\frac{a_2}{a_1} = \frac{a_0/8}{a_0/4} = \frac{1}{2} \implies a_2 = \frac{a_1}{2}}'
+            note: "Le rapport des deux fractions donne directement la relation demandée."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Montrer que l'expression de $N_d$, le nombre de noyaux désintégrés entre les instants $t_1$ et $t_2$, est : $N_d = \dfrac{a_0\,t_{1/2}}{8\ln 2}$.
+        reasoning: |-
+          Le nombre de noyaux désintégrés entre $t_1$ et $t_2$ est la différence des noyaux présents à ces deux instants, $N(t_1)-N(t_2)$. On repasse par $a=\lambda N$ (R4) pour relier chaque $N$ à l'activité, connue, puis on réexprime $1/\lambda$ en fonction de $t_{1/2}$ pour faire apparaître la forme demandée.
+        steps:
+          - math: 'N_d = N(t_1) - N(t_2) = \frac{a_1}{\lambda} - \frac{a_2}{\lambda} = \frac{a_1 - a_2}{\lambda}'
+            note: "On repasse par a = λN (R4) pour relier le nombre de noyaux à l'activité."
+          - math: 'a_1 - a_2 = \frac{a_0}{4} - \frac{a_0}{8} = \frac{a_0}{8}'
+            note: "Avec a1 = a0/4 et a2 = a0/8 établis à la question précédente."
+          - math: '\frac{1}{\lambda} = \frac{t_{1/2}}{\ln 2}'
+            note: "On réexprime 1/λ en fonction de t1/2 (R4), pour faire apparaître t1/2 dans le résultat."
+          - math: '\boxed{N_d = \frac{a_0}{8}\times\frac{t_{1/2}}{\ln 2} = \frac{a_0\,t_{1/2}}{8\ln 2}}'
+            note: "On assemble les deux morceaux : c'est exactement l'expression à établir."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** Déterminer, en unité MeV, la valeur de l'énergie libérée $E$ lors de la désintégration de cet échantillon entre les instants $t_1$ et $t_2$.
+        reasoning: |-
+          Hors des rungs de cette leçon (domaine noyaux-masse-energie, pas développé dans R1–R5) : l'énergie totale libérée est le nombre de désintégrations survenues (ici $N_d$, établi à la question précédente) multiplié par l'énergie libérée à chaque désintégration individuelle (le défaut de masse converti via $E=\Delta m\,c^2$).
+        steps:
+          - math: '\Delta m = m(\text{Cd}) - m(\text{Ag}) - m(^{A}_{Z}\text{e}) = 106{,}88045 - 106{,}87947 - 5{,}486\times10^{-4}'
+            note: "Défaut de masse par désintégration : la masse du père dépasse la somme des masses des produits."
+          - math: '\Delta m \approx 4{,}314\times10^{-4}\ \text{u} \implies \Delta E_1 = \Delta m\times931{,}49 \approx 0{,}402\ \text{MeV par désintégration}'
+            note: "Conversion via 1 u = 931,49 MeV/c² ; Δm positif, cohérent avec la désintégration β+ trouvée à la question 2."
+          - math: 't_{1/2} = 6{,}93\ \text{h} = 6{,}93\times3600 = 24\,948\ \text{s}'
+            note: "Conversion de la demi-vie en secondes, pour rester cohérent avec a0 en becquerels."
+          - math: 'N_d = \frac{a_0\,t_{1/2}}{8\ln 2} = \frac{1{,}25\times10^{12}\times24\,948}{8\times0{,}693} \approx 5{,}62\times10^{15}\ \text{noyaux}'
+            note: "Application numérique de l'expression établie à la question 4."
+          - math: '\boxed{E = N_d\times\Delta E_1 \approx 5{,}62\times10^{15}\times0{,}402 \approx 2{,}26\times10^{15}\ \text{MeV}}'
+            note: "L'énergie totale libérée entre t1 et t2 est le nombre de désintégrations survenues multiplié par l'énergie libérée à chacune."

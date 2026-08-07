@@ -555,3 +555,468 @@ entries:
             note: "Application numerique : T0 = 21 ms (question precedente), C = 12 microF (valeur venant de la Partie I, meme sujet, transcrite sous rc-charge), pi^2 = 10 donne par l'enonce."
           - math: '\boxed{L \approx 0{,}92\ \text{H}}'
             note: "Valeur coherente avec l'ordre de grandeur d'une bobine de ce type de montage bac ; c'est cette valeur, et non 1,63 H, que donnerait a tort l'ancienne lecture T0 = 28 ms."
+
+  # ── bk-2022-n-x3 — 2022 N, Exercice 3 (section 2) : RLC ideal (QCM) puis amorti (energetique) ──
+  - id: bk-2022-n-x3
+    title: "Circuit RLC série : choisir la bonne courbe, période propre, puis énergie dissipée en régime amorti"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — 2. Oscillations libres dans un circuit RLC série"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/136621 (Exercice 3, section 2 —
+        oscillations libres dans un circuit RLC série : cas idéal (résistance
+        de la bobine négligeable) puis cas réel (résistance de la bobine non
+        négligeable) ; barème de la section = 3,0 pt sur les 4,5 pt de
+        l'exercice complet, dont la section 1 — réponse d'un dipôle RC à un
+        échelon de tension — est transcrite sous rc-charge.md, même montage
+        figure 1). Transcription vérifiée : passe de vérification
+        adversariale indépendante (agent-vérificateur-adversarial,
+        2026-08-07), diff caractère par caractère OK, barème marginal
+        recompté au pixel, figures 3 et 4 mesurées panneau par panneau
+        (docs/sujets/pc/rlc-serie.md, statut « vérifié »). Figure 3 (QCM à
+        trois courbes) : les étiquettes (C1)/(C2)/(C3) NE sont PAS
+        interverties (point vérifié explicitement par la passe
+        adversariale) — (C1) amplitude constante ±12 V, période 10 ms ; (C2)
+        amplitude constante ±10 V (mauvaise valeur de U0), période 10 ms ;
+        (C3) amortie. Figure 4 : les deux courbes i(t) et uC(t) sont en
+        quadrature (zéros de l'une sur les extrema de l'autre), enveloppes
+        décroissantes de concert, pseudo-période mesurée environ 10 ms.
+        SCOPE NOTE : la question 2.1.2 (choix de la courbe) s'appuie sur
+        U0 = E = 12 V, la tension du palier de charge établie dans la
+        section 1 du même sujet (réponse RC, transcrite sous rc-charge.md)
+        — pontée au point d'usage, comme pour les entrées précédentes de
+        cette banque ; contrairement à 2019/2020/2021, la capacité
+        C = 50 µF est ici donnée directement dans l'énoncé de CETTE
+        section, aucune autre valeur cross-notion n'est nécessaire. FLAG DE
+        SOURCING (à remonter, pas résolu ici) : la question 2.2.2 (0,75 pt)
+        demande l'énergie ΔE dissipée entre t0 = 0 et t1 = 9 ms en
+        exploitant les courbes de la figure 4 — un instant qui ne tombe sur
+        aucun des repères remarquables que la vérification a mesurés (zéros
+        et extrema, situés à 0 / 2,5 / 5 / 7,5 / 10 / 12,5 ms). La note de
+        vérification de docs/sujets/pc/rlc-serie.md confirme la forme
+        d'ensemble de la courbe (quadrature, enveloppe décroissante,
+        pseudo-période ≈ 10 ms) mais ne donne pas de lecture ponctuelle de
+        uC(9 ms) et i(9 ms) — ces deux valeurs ne sont pas dans la source
+        vérifiée, et le régime amorti n'a pas de forme close au programme
+        (rung 5) qui permettrait de les recalculer autrement qu'en les
+        lisant sur le tracé. RÉSOLU (2026-08-07, passe de mesure dédiée,
+        orchestrateur) : figure 4 re-fetchée (0006-big.jpg) et zoomée
+        panneau par panneau — à t = 9 ms (3 carreaux fins après 7,5),
+        u_C ≈ 6 V (remontée vers le max +7 V de t=10) et i ≈ 150 mA
+        (redescente depuis le max +250 mA de t=7,5), lectures au
+        demi-carreau ; d'où E_t(9) ≈ 1,5 mJ et ΔE ≈ 2,1 mJ, complétés dans
+        q6 avec la tolérance de lecture explicitée.
+    intro: |-
+      **2. Oscillations libres dans un circuit RLC série (examen national, session normale 2022, Exercice 3).**
+
+      Après avoir totalement chargé le condensateur de capacité $C = 50\ \mu\text{F}$, on bascule l'interrupteur $K$ sur la position (2) à un instant choisi comme nouvelle origine des dates $t = 0$. Ce condensateur se décharge alors dans la bobine d'inductance $L$ et de résistance $r$ (figure 1).
+
+      **2.1. Premier cas :** on suppose, dans ce cas, que la résistance de la bobine est négligeable.
+
+      *Figure 3 (trois courbes $u_C\ (\text{V})$ en fonction de $t\ (\text{ms})$) :*
+      - **$(C_1)$** : axe des ordonnées gradué $12,\ 6,\ 0,\ -6,\ -12$ ; axe des abscisses gradué $5,\ 10,\ 15$. Oscillation sinusoïdale d'amplitude **constante** $\pm 12\ \text{V}$, période $10\ \text{ms}$.
+      - **$(C_2)$** : axe des ordonnées gradué $10,\ 5,\ 0,\ -5,\ -10$ ; axe des abscisses gradué $5,\ 10,\ 15$. Oscillation sinusoïdale d'amplitude **constante** $\pm 10\ \text{V}$, période $10\ \text{ms}$.
+      - **$(C_3)$** : axe des ordonnées gradué $12,\ 6,\ 0,\ -6,\ -12$ ; axe des abscisses gradué $2{,}5,\ 7{,}5,\ 12{,}5$. Oscillation d'amplitude **décroissante** (allure pseudopériodique amortie).
+
+      **2.2. Deuxième cas :** en réalité, la résistance de la bobine n'est pas négligeable. On visualise, à l'aide d'un système d'acquisition informatisé, les courbes représentant l'évolution de la tension $u_C(t)$ aux bornes du condensateur et celle de l'intensité $i(t)$ qui traverse le circuit (figure 4).
+
+      *Figure 4 (deux courbes côte à côte) :* à gauche, $i\ (\text{mA})$ en fonction de $t\ (\text{ms})$, partant de $i = 0$ à $t = 0$ ; à droite, $u_C\ (\text{V})$ en fonction de $t\ (\text{ms})$, partant de $u_C = 12\ \text{V}$ à $t = 0$. Les deux courbes sont en quadrature — les zéros de l'une coïncident avec les extrema de l'autre — et leurs enveloppes décroissent de concert (amortissement). Pseudo-période mesurée $T \approx 10\ \text{ms}$.
+    questions:
+      - id: q1
+        part: "2.1. Premier cas : établir le modèle idéal"
+        stem: |-
+          **(0,25 pt)** Montrer que l'équation différentielle vérifiée par la tension $u_C(t)$ s'écrit sous la forme : $\dfrac{d^2u_C}{dt^2} + \dfrac{1}{LC}u_C = 0$.
+        reasoning: |-
+          Même mécanisme qu'au rung 2, écrit directement en $u_C$ comme à la question 1 du sujet 2019 ci-dessus. Ici la résistance négligée n'est pas un conducteur ohmique séparé — ce montage n'en a pas — c'est la résistance propre $r$ de la bobine elle-même, que l'énoncé demande explicitement de négliger dans ce premier cas : $R \approx 0$ au sens du rung 1. La loi des mailles donne $u_C + u_L = 0$, puis on exprime le courant à partir de $u_C$ ($i = C\frac{du_C}{dt}$, la relation $i = \frac{dq}{dt}$ du rung 1 réécrite avec $q = Cu_C$), et $u_L$ suit.
+        steps:
+          - math: 'u_C + u_L = 0'
+            note: "Loi des mailles, cas ideal (rung 1) : ici c'est la resistance propre de la bobine qu'on neglige, il n'y a pas de conducteur ohmique separe dans ce montage."
+          - math: 'i = \frac{dq}{dt} = C\frac{du_C}{dt}'
+            note: "Courant exprime directement en u_C (q = C u_C), meme geste qu'a la question 1 du sujet 2019 ci-dessus."
+          - math: 'u_L = L\frac{di}{dt} = LC\frac{d^2u_C}{dt^2}'
+            note: "Tension bobine (rung 2), avec i deja exprime en u_C."
+          - math: '\boxed{\frac{d^2u_C}{dt^2} + \frac{1}{LC}\,u_C = 0}'
+            note: "Substitution dans la loi des mailles et division par LC : la forme demandee."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Choisir, parmi les courbes $(C_1)$, $(C_2)$ et $(C_3)$ de la figure 3, la courbe qui représente l'évolution de la tension $u_C(t)$. Justifier votre réponse.
+        reasoning: |-
+          Deux critères, comme à la question 2a du sujet 2019 ci-dessus. D'abord le régime : l'équation de la question précédente ne contient aucun terme d'amortissement — c'est le cas idéal du rung 3/4, amplitude **constante**, jamais amortie. La courbe $(C_3)$, qui décroît, est donc exclue d'emblée. Ensuite l'amplitude : le condensateur a été chargé totalement avant la bascule de $K$, donc $u_C(0)$ doit valoir $U_0 = E$, la tension du palier de charge établie dans la section 1 du même sujet (réponse RC, transcrite sous rc-charge.md) — soit $12\ \text{V}$. $(C_2)$, malgré une amplitude constante, plafonne à $10\ \text{V}$ : elle est donc elle aussi exclue. Seule $(C_1)$ satisfait les deux critères à la fois.
+
+          La courbe **$(C_1)$** représente $u_C(t)$ : amplitude constante (cohérent avec l'équation idéale) et amplitude $12\ \text{V}$ (cohérent avec $U_0 = E$).
+      - id: q3
+        stem: |-
+          **(0,5 pt)** La solution de l'équation différentielle précédente est $u_C(t) = U_0\cos\!\left(\dfrac{2\pi}{T_0}t\right)$, où $U_0$ est la valeur maximale de la tension et $T_0$ la période propre des oscillations. Trouver l'expression de $T_0$ en fonction de $L$ et $C$.
+        reasoning: |-
+          Même démarche que la vérification du rung 2 (derivation:verification-cosinus), et que la question 3 du sujet 2021 ci-dessus : on injecte la forme cosinus proposée par l'énoncé dans l'équation établie à la question 1, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
+        steps:
+          - math: 'u_C(t) = U_0\cos\!\left(\frac{2\pi}{T_0}t\right) \implies \frac{d^2u_C}{dt^2} = -\frac{4\pi^2}{T_0^2}\,u_C'
+            note: "Derivee seconde du cosinus propose par l'enonce (meme geste qu'au rung 2)."
+          - math: '-\frac{4\pi^2}{T_0^2}\,u_C + \frac{1}{LC}u_C = 0 \implies \frac{4\pi^2}{T_0^2} = \frac{1}{LC}'
+            note: "Substitution dans l'equation de la question 1 ; u_C se simplifie, il n'est jamais nul en permanence."
+          - math: '\boxed{T_0 = 2\pi\sqrt{LC}}'
+            note: "On isole T0 : meme expression qu'au rung 2."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Montrer que la valeur de l'inductance est : $L = 0{,}05\ \text{H}$. (on prend $\pi^2 = 10$).
+        reasoning: |-
+          On inverse la formule de la question précédente pour isoler $L$. Il manque la valeur numérique de $T_0$ : on la lit sur la courbe $(C_1)$ identifiée à la question 2 (méthode du rung 6, deux maxima consécutifs) — le premier maximum est à $t = 0$ (départ, condensateur chargé au maximum), le suivant vers $t \approx 10\ \text{ms}$, d'où $T_0 \approx 10\ \text{ms}$. $C = 50\ \mu\text{F}$ est donné directement dans l'énoncé de cette section, pas besoin de pontage cross-notion ici (à la différence des sujets 2019/2020/2021 ci-dessus).
+        steps:
+          - math: 'T_0 \approx 10\ \text{ms}'
+            note: "Lu sur (C1) (rung 6) : deux maxima consecutifs, le premier a t=0."
+          - math: 'T_0 = 2\pi\sqrt{LC} \implies L = \frac{T_0^2}{4\pi^2 C}'
+            note: "On isole L (question precedente)."
+          - math: 'L = \frac{(10\times10^{-3})^2}{4\times10\times50\times10^{-6}} = \frac{10^{-4}}{2\times10^{-3}}'
+            note: "Application numerique : T0 = 10 ms (lecture graphique), C = 50 microF (donne dans cette section), pi^2 = 10 donne par l'enonce."
+          - math: '\boxed{L = 0{,}05\ \text{H}}'
+            note: "Valeur ronde ; confirme retroactivement que la lecture T0 = 10 ms etait la bonne (elle redonne exactement la periode mesuree sur C1)."
+      - id: q5
+        part: "2.2. Deuxième cas : bilan énergétique en régime amorti"
+        stem: |-
+          **(0,5 pt)** Écrire l'expression de l'énergie totale $E_t$ du circuit en fonction de $C$, $u_C(t)$, $L$ et $i(t)$.
+        reasoning: |-
+          C'est directement la formule du rung 1 : l'énergie totale, à un instant donné, est la somme de ce qui est stocké dans le condensateur et de ce qui est stocké dans la bobine — quel que soit le régime. Ce qui change dans ce deuxième cas, ce n'est pas la formule (toujours vraie instant par instant), c'est que cette somme n'est **plus constante** au fil du temps : la résistance $r$, non négligeable ici, la fait décroître (rung 3/4).
+        steps:
+          - math: '\boxed{E_t = \frac{1}{2}C\,u_C(t)^2 + \frac{1}{2}L\,i(t)^2}'
+            note: "Somme des deux energies stockees a l'instant t (rung 1), valable dans les deux cas ; seule la constance de cette somme differe entre le cas ideal et le cas amorti."
+      - id: q6
+        stem: |-
+          **(0,75 pt)** En exploitant les courbes de la figure 4, trouver l'énergie $\Delta E$ dissipée dans le circuit entre les instants $t_0 = 0$ et $t_1 = 9\ \text{ms}$.
+        reasoning: |-
+          La méthode : $\Delta E = E_t(t_0) - E_t(t_1)$, où $E_t$ est la formule établie à la question précédente — R (ici $r$) ne fait que dissiper, jamais restituer (rung 3), donc cette différence est toujours positive. À $t_0 = 0$, les deux courbes donnent directement les deux grandeurs : $i(0) = 0$ (la courbe de gauche part de zéro) et $u_C(0) = 12\ \text{V}$ (la courbe de droite part de ce niveau, le même palier $E = 12\ \text{V}$ qu'à la question 2, pontage cross-notion avec la section 1) — toute l'énergie initiale est électrique.
+
+          Pour $t_1 = 9\ \text{ms}$, la même méthode : lire $u_C(9\ \text{ms})$ et $i(9\ \text{ms})$ sur les deux courbes de la figure 4. $t = 9\ \text{ms}$ est à $3$ carreaux fins après le repère $7{,}5$ : la tension remonte vers son maximum $+7\ \text{V}$ (atteint à $10\ \text{ms}$) et se lit $u_C(9) \approx 6\ \text{V}$ ; le courant redescend de son maximum $+250\ \text{mA}$ (à $7{,}5\ \text{ms}$) vers son zéro de $10\ \text{ms}$ et se lit $i(9) \approx 150\ \text{mA}$. (Lectures graphiques au demi-carreau près, mesurées sur le scan original lors d'une passe de mesure dédiée — voir sourcing.)
+        steps:
+          - math: 'E_t(t_0=0) = \frac{1}{2}\times50\times10^{-6}\times12^2 + 0'
+            note: "A t0=0 : i=0 (courbe de gauche) et u_C=12V (courbe de droite, meme palier qu'a la question 2)."
+          - math: 'E_t(0) = 3{,}6\times10^{-3}\ \text{J}'
+            note: "Toute l'energie initiale est electrique, le courant etant nul a cet instant."
+          - math: 'E_t(9\ \text{ms}) = \frac{1}{2}\times50\times10^{-6}\times6^2 + \frac{1}{2}\times5\times10^{-2}\times(0{,}15)^2 \approx 1{,}5\times10^{-3}\ \text{J}'
+            note: "Lectures graphiques : u_C(9 ms) = 6 V environ et i(9 ms) = 150 mA environ (au demi-carreau pres)."
+          - math: '\boxed{\Delta E = E_t(0) - E_t(9\ \text{ms}) \approx 2{,}1\times10^{-3}\ \text{J}}'
+            note: "Energie dissipee par effet Joule dans r entre les deux instants ; tolerance de lecture graphique, ordre de grandeur 2 mJ."
+
+  # ── bk-2023-n-x3 — 2023 N, Exercice 3 §2 : circuit LC ideal, repere d'echelle en coin ──
+  - id: bk-2023-n-x3
+    title: "Circuit oscillant LC : équation différentielle, lire un repère d'échelle en coin, capacité et énergie magnétique"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — §2. Circuit oscillant LC"
+    bareme_total: 1.5
+    duration_min: 9
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/142476 (Exercice 3, §2 — circuit
+        oscillant LC réutilisant la bobine (b) du §1 ; barème du §2 = 1,5 pt
+        sur les 5 pt de l'exercice complet, dont le §1 — dipôle RL à un
+        échelon de tension — est transcrit sous dipole-rl.md, et le §3 —
+        modulation d'amplitude — sous ondes-em-modulation.md, tous deux hors
+        périmètre RLC). Transcription vérifiée : 2ᵉ passe, relecture de
+        contrôle indépendante du paragraphe de la figure 4
+        (agent-relecteur-indépendant, 2026-08-07), mesures pixel refaites de
+        zéro, correction de 1ʳᵉ passe confirmée au pixel
+        (docs/sujets/pc/rlc-serie.md, statut « vérifié »). POINT DE LECTURE
+        SPÉCIFIQUE À CETTE FIGURE — le repère d'échelle n'est PAS une double
+        flèche : c'est un coin en L formé de deux flèches à une seule pointe
+        chacune (une verticale « 5V », une horizontale « 0,5 ms »), dont le
+        sommet commun est posé sur l'intersection de deux traits principaux,
+        à 2 divisions de l'axe des ordonnées et 1 division au-dessus de
+        l'axe des temps — chaque flèche du coin ne couvre qu'UNE seule
+        division (mesuré au pixel : 59,2 px et 59,3 px respectivement,
+        contre un pas de grille de 59,3 px), jamais deux. Ce repère n'est
+        donc à aucun titre une mesure directe de la période : $T_0$ se lit
+        séparément, en comptant 4 divisions entre deux maxima consécutifs
+        (le tracé montre une période et demie), soit $T_0 = 4\times0{,}5 =
+        2{,}0\ \text{ms}$. SCOPE NOTE : la question 2-2-1 (capacité $C$)
+        exige $L = 1\ \text{H}$, établi au §1 du même sujet (dipôle RL,
+        transcrit sous dipole-rl.md, hors périmètre RLC) — pontée au point
+        d'usage, comme pour les entrées précédentes de cette banque qui
+        pontent vers une autre partie du même sujet.
+    intro: |-
+      **2- Circuit oscillant LC (examen national, session normale 2023, Exercice 3 — §2).**
+
+      On réalise un circuit oscillant LC en associant la bobine $(b)$ précédemment utilisée (§1, hors périmètre ici) avec un condensateur de capacité $C$ chargé totalement par un générateur de tension de force électromotrice $E_0$ (figure 3).
+
+      *Figure 3 (schéma) :* boucle rectangulaire. Branche gauche : condensateur $C$ (deux traits parallèles). Branche supérieure : fil portant la flèche de courant $i$ vers la droite. Branche droite : bobine $(b)$ en spires. Branche inférieure : simple fil.
+
+      *Figure 4 (courbe) :* $u_C\ (\text{V})$ en fonction de $t\ (\text{ms})$, sur quadrillage à double graduation. Aucune valeur numérique sur les axes hormis l'origine « $0$ » : toute la lecture passe par un repère d'échelle en **coin (« L »)**, formé de deux flèches à une seule pointe — une flèche verticale « $5\text{V}$ » et une flèche horizontale « $0{,}5\ \text{ms}$ » — dont le sommet commun est posé sur l'intersection de deux traits principaux, à 2 divisions à droite de l'axe des ordonnées et 1 division au-dessus de l'axe des temps. Chaque flèche du coin ne couvre **qu'une seule division** : ce n'est pas une double flèche, et cette division n'est en aucun cas la période. Le cadre compte 6 divisions en abscisse et 4 en ordonnée (soit $\pm 2$ divisions $= \pm 10\ \text{V}$ autour de l'axe des temps).
+
+      La courbe est une sinusoïde d'amplitude constante, exactement une période et demie : elle **part de son maximum à $t=0$** ($u_C(0) = +U_0 = +10\ \text{V}$, cohérent avec « chargé totalement »), franchit l'axe à $t=0{,}5\ \text{ms}$, atteint son minimum $-10\ \text{V}$ à $t=1{,}0\ \text{ms}$, refranchit l'axe à $t=1{,}5\ \text{ms}$, atteint son second maximum $+10\ \text{V}$ à $t=2{,}0\ \text{ms}$, puis redescend vers un second minimum atteint au bord droit du cadre, $t=3{,}0\ \text{ms}$.
+    questions:
+      - id: q1
+        part: "2- Circuit oscillant LC : établir le modèle"
+        stem: |-
+          **(0,25 pt)** Établir l'équation différentielle vérifiée par la tension $u_C(t)$ entre les bornes du condensateur.
+        reasoning: |-
+          Même mécanisme qu'à la question 1 du sujet 2022 ci-dessus, et qu'au rung 2 : circuit LC pur (la figure 3 ne montre aucun conducteur ohmique dans la boucle, et la bobine $(b)$ n'est pas dite résistive ici). Loi des mailles $u_C + u_L = 0$, puis $u_C = \frac{q}{C}$ et $i = \frac{dq}{dt} = C\frac{du_C}{dt}$ (rung 1) pour aboutir à $u_L = LC\frac{d^2u_C}{dt^2}$.
+        steps:
+          - math: 'u_C + u_L = 0'
+            note: "Loi des mailles, cas ideal (rung 1) : aucun conducteur ohmique dans la boucle (figure 3)."
+          - math: 'i = C\frac{du_C}{dt} \qquad u_L = L\frac{di}{dt} = LC\frac{d^2u_C}{dt^2}'
+            note: "Meme substitution qu'a la question 1 du sujet 2022 ci-dessus."
+          - math: '\boxed{\frac{d^2u_C}{dt^2} + \frac{1}{LC}\,u_C = 0}'
+            note: "Forme standard du cas ideal (rung 2)."
+      - id: q2
+        part: "Exploiter la courbe : ne pas confondre le repère d'échelle et la période"
+        stem: |-
+          **(0,5 pt)** Trouver la valeur de la capacité $C$ du condensateur. (On prend $\pi^2 = 10$).
+        reasoning: |-
+          Piège à éviter en premier : le repère porté sur la figure — un coin en L, deux flèches à une seule pointe chacune — n'est PAS une mesure de période. Chaque flèche du coin couvre exactement **une division** (« $5\text{V}$ » verticalement, « $0{,}5\ \text{ms}$ » horizontalement) : c'est un étalonnage des deux axes, pas un repère de temps caractéristique de la courbe. Une fois l'échelle posée (1 division $= 0{,}5\ \text{ms}$), on applique la méthode du rung 6 : deux maxima consécutifs, à $t=0$ et $t=2{,}0\ \text{ms}$ (4 divisions), donnent $T_0 = 2{,}0\ \text{ms}$. On inverse ensuite $T_0 = 2\pi\sqrt{LC}$ (rung 2) pour isoler $C$, avec $L = 1\ \text{H}$ établi au §1 du même sujet (dipôle RL, hors périmètre RLC, transcrit sous dipole-rl.md) — un pont entre les deux parties du même exercice, pas une donnée nouvelle à deviner.
+        steps:
+          - math: 'T_0 = 2{,}0\ \text{ms}'
+            note: "Lu entre deux maxima consecutifs (rung 6), avec l'echelle du coin en L : 4 divisions x 0,5 ms."
+          - math: 'T_0 = 2\pi\sqrt{LC} \implies C = \frac{T_0^2}{4\pi^2 L}'
+            note: "On isole C (rung 2)."
+          - math: 'C = \frac{(2\times10^{-3})^2}{4\times10\times1} = \frac{4\times10^{-6}}{40}'
+            note: "Application numerique : T0 = 2,0 ms, L = 1 H (etabli au paragraphe 1, hors perimetre RLC, transcrit sous dipole-rl.md), pi^2 = 10 donne par l'enonce."
+          - math: '\boxed{C = 0{,}1\ \mu\text{F}}'
+            note: "Valeur ronde, coherente avec les autres sujets de cette banque."
+      - id: q3
+        stem: |-
+          **(0,75 pt)** Trouver l'énergie magnétique $E_m$ emmagasinée dans la bobine à l'instant $t = 1{,}8\ \text{ms}$.
+        reasoning: |-
+          Même geste qu'à la question 4b du sujet 2019 ci-dessus : circuit idéal (rung 1), énergie totale conservée, $E_m = E_t - E_C(t)$. On évalue d'abord $u_C(1{,}8\ \text{ms})$ avec la forme cosinus identifiée par la courbe ($u_C(0) = +U_0$, donc phase nulle), en utilisant $T_0 = 2{,}0\ \text{ms}$ et $U_0 = 10\ \text{V}$ (amplitude lue à la question précédente).
+        steps:
+          - math: 'E_t = \frac{1}{2}C\,U_0^2 = \frac{1}{2}\times0{,}1\times10^{-6}\times10^2'
+            note: "Energie totale, conservee dans le cas ideal (rung 1) ; calculee au maximum de u_C, ou tout est electrique."
+          - math: '\boxed{E_t = 5\times10^{-6}\ \text{J}}'
+            note: "Application numerique."
+          - math: 'u_C(1{,}8) = U_0\cos\!\left(\frac{2\pi\times1{,}8}{2{,}0}\right) = 10\cos(1{,}8\pi)'
+            note: "Forme cosinus identifiee (rung 2), evaluee a t = 1,8 ms avec T0 = 2,0 ms."
+          - math: 'u_C(1{,}8) = 10\cos(324^\circ) \approx 10\times0{,}809 \approx 8{,}09\ \text{V}'
+            note: "1,8 ms correspond a 0,9 periode, soit 324 degres ; le cosinus reste positif juste avant de refermer le cycle."
+          - math: 'E_C(1{,}8) = \frac{1}{2}C\,u_C(1{,}8)^2 = \frac{1}{2}\times0{,}1\times10^{-6}\times8{,}09^2 \approx 3{,}27\times10^{-6}\ \text{J}'
+            note: "Energie electrique restant dans le condensateur a cet instant."
+          - math: '\boxed{E_m \approx 5\times10^{-6} - 3{,}27\times10^{-6} \approx 1{,}7\times10^{-6}\ \text{J}}'
+            note: "Conservation de l'energie totale (rung 1) : ce qui n'est pas dans le condensateur est dans la bobine."
+
+  # ── bk-2024-n-x4 — 2024 N, Exercice 4 (Partie 1) : decharge C-RL amortie, energetique ──
+  - id: bk-2024-n-x4
+    title: "Décharge d'un condensateur dans un dipôle RL : amortissement, équation différentielle et énergie dissipée par effet Joule"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — 1. Décharge d'un condensateur dans un dipôle RL (Partie 1)"
+    bareme_total: 2
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/145763 (Exercice 4, Partie 1 —
+        décharge d'un condensateur dans un dipôle RL, oscillations libres,
+        amortissement et bilan énergétique ; barème de la partie = 2,0 pt
+        sur les 3,5 pt de l'exercice complet, dont la Partie 2 — réponse
+        d'un dipôle RL à un échelon de tension — est transcrite sous
+        dipole-rl.md). Transcription vérifiée : 2ᵉ passe, vérificateur
+        indépendant (agent-vérificateur-indépendant, 2026-08-07), diff OK,
+        figure 2 re-mesurée intégralement au pixel, correction de 1ʳᵉ passe
+        confirmée (maximum de la division 4 à $+4{,}8\ \text{V}$, pas
+        « autour de 3 ») (docs/sujets/pc/rlc-serie.md, statut « vérifié »).
+        Circuit : condensateur $C = 0{,}22\ \text{nF}$ en série avec la
+        bobine $(b)$ $(L,r)$ ET un conducteur ohmique $R$ ajustable, réglé à
+        $R = R_0$ pour cette courbe — DEUX résistances en série, même
+        structure que bk-2020-n-x4 (rung 5 généralisé à $R_0+r$). Lectures
+        pixel-mesurées reprises telles quelles : $u_C(0) =
+        +6{,}0\ \text{V}$ (au trait, l'angle du cadre), extrema aux
+        divisions paires, zéros aux divisions impaires, pseudo-période $=4$
+        divisions ; $t_1$ = premier zéro descendant (division 1), $t_2$ =
+        second minimum (division 6, $u_C(t_2) \approx -4{,}3\ \text{V}$,
+        hors trait). CROSS-CHECK effectué en rédigeant ce raisonnement
+        (indépendamment de la note de vérification du sujet, puis comparé) :
+        $E_j = \frac12 C\left(u_C(0)^2 - u_C(t_2)^2\right) =
+        \frac12\times0{,}22\times10^{-9}\times(36-18{,}49)
+        \approx 1{,}93\times10^{-9}\ \text{J}$ — conforme à la valeur de la
+        note de vérification du sujet ($\approx 1{,}9\times10^{-9}\ \text{J}$).
+        SCOPE NOTE : ce montage réunit $R_0$ (externe, ajustable) et $r$
+        (résistance propre de la bobine) en série — comme bk-2020-n-x4
+        ci-dessus, le rung 5 (une seule résistance $R$) doit être lu avec
+        $R_0+r$ à la place de $R$, bien que la question 1-2 ne demande que
+        l'établissement de l'équation, pas de valeur numérique de $R_0$ ou
+        $r$ séparément — aucune valeur numérique supplémentaire n'est donc
+        requise pour répondre, contrairement à bk-2020-n-x4 où $L$ et $r$
+        devaient être pontés vers dipole-rl.md.
+    intro: |-
+      **EXERCICE 4 — 1. Décharge d'un condensateur dans un dipôle RL (examen national, session normale 2024, Exercice 4 — Partie 1).**
+
+      Le circuit électrique de la figure 1 comporte : un condensateur de capacité $C = 0{,}22\ \text{nF}$ ; une bobine $(b)$ d'inductance $L$ et de résistance $r$ ; un conducteur ohmique de résistance $R$ ajustable ; un interrupteur $K$. Le condensateur est initialement chargé totalement par un générateur de tension idéale de force électromotrice $E$. On ajuste la résistance $R$ à une valeur $R = R_0$. On ferme l'interrupteur $K$ à l'instant $t = 0$. La courbe de la figure 2 représente l'évolution temporelle de la tension $u_C(t)$ aux bornes du condensateur.
+
+      *Figure 1 (schéma) :* boucle rectangulaire. Coin haut-gauche : interrupteur $K$. Branche supérieure : conducteur ohmique $R$ réglable (rhéostat). Branche gauche : condensateur $C$, flèche $u_C$ vers le haut. Branche droite : bobine $(L,r)$, notée $(b)$. Branche inférieure : simple fil.
+
+      *Figure 2 (courbe) :* $u_C\ (\text{V})$ en fonction de $t$ (axe non gradué, simple flèche « t »). Ordonnées graduées $2, 0, -2$ (1 division $=2\ \text{V}$), cadre de $-6\ \text{V}$ à $+6\ \text{V}$ (9 divisions en abscisse). Oscillation pseudopériodique d'amplitude **décroissante** : la courbe part exactement du trait supérieur du cadre, $u_C(0) = +6{,}0\ \text{V}$ ; extrema sur les divisions paires, passages par zéro sur les divisions impaires (pseudopériode $=4$ divisions). Un court trait pointillé étiqueté « $t_1$ » marque le premier passage par zéro (division 1) ; un trait en tirets étiqueté « $t_2$ » marque le second minimum (division 6, $\approx -4{,}3\ \text{V}$). Les amplitudes successives décroissent d'un facteur $\approx 0{,}9$ d'un extremum au suivant.
+    questions:
+      - id: q1
+        part: "1- Décharge d'un condensateur dans un dipôle RL : interprétation énergétique"
+        stem: |-
+          **(0,25 pt)** Expliquer de point de vue énergétique l'amortissement observé des oscillations dans le circuit.
+        reasoning: |-
+          Même réponse qu'à la question 1 du sujet 2018 ci-dessus, et le cœur du rung 3 : ce circuit comporte deux éléments résistifs — le conducteur ohmique $R_0$ ET la résistance propre $r$ de la bobine — qui dissipent tous deux de l'énergie par effet Joule à chaque passage de courant ($P = Ri^2 > 0$, toujours positive, rung 3 : « R est le frein »). L'énergie totale du circuit (rung 1) diminue donc à chaque cycle, ce qui se traduit par une amplitude qui décroît d'une oscillation à l'autre — la signature même du régime pseudo-périodique (rung 4).
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Établir l'équation différentielle vérifiée par la tension $u_C(t)$ aux bornes du condensateur.
+        reasoning: |-
+          Même méthode qu'à la question 1b du sujet 2020 ci-dessus (rung 5, généralisé) : deux résistances en série, le conducteur ohmique $R_0$ (l'énoncé fixe $R=R_0$ pour cette courbe) et la résistance propre $r$ de la bobine, qu'on additionne au même endroit de la loi des mailles puisqu'elles jouent le même rôle physique.
+        steps:
+          - math: 'u_C + u_R + u_{bobine} = 0 \qquad \text{avec} \qquad u_{bobine} = L\frac{di}{dt} + r\,i'
+            note: "Loi des mailles (rung 5) ; deux resistances ici, R0 (conducteur ohmique ajustable) et r (resistance propre de la bobine), comme a la question 1b du sujet 2020 ci-dessus."
+          - math: 'u_C + (R_0+r)\,i + L\frac{di}{dt} = 0'
+            note: "On regroupe les deux termes resistifs."
+          - math: 'i = C\frac{du_C}{dt} \implies u_C + (R_0+r)C\frac{du_C}{dt} + LC\frac{d^2u_C}{dt^2} = 0'
+            note: "On exprime i en u_C (rung 2)."
+          - math: '\boxed{\frac{d^2u_C}{dt^2} + \frac{R_0+r}{L}\frac{du_C}{dt} + \frac{1}{LC}\,u_C = 0}'
+            note: "Division par LC ; forme standard du cas amorti (rung 5), R0+r jouant le role de la resistance totale."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Indiquer, en justifiant, dans quel dipôle est principalement emmagasinée l'énergie totale de l'oscillateur à l'instant $t_1$ puis à l'instant $t_2$ (figure 2).
+        reasoning: |-
+          C'est exactement la mise en garde du rung 1 (« arrête-toi — qui stocke quoi, à quel instant ? ») : condensateur et bobine ne stockent jamais leur maximum au même instant, ils sont en opposition de phase. $t_1$ est un passage par zéro de $u_C$ : le condensateur est vide, $E_C = 0$ — toute l'énergie restante est donc dans la **bobine** (magnétique). $t_2$ est un extremum de $u_C$ : le courant y est nul (rung 1, un extremum de tension coïncide avec un zéro de courant), donc $E_L = 0$ — toute l'énergie restante est dans le **condensateur** (électrique). C'est précisément le motif du pendule d'énergie du rung 1, transposé au régime amorti : l'échange $E_C \leftrightarrow E_L$ continue à l'intérieur de chaque cycle, même si l'enveloppe totale décroît.
+      - id: q4
+        stem: |-
+          **(0,75 pt)** Calculer $E_j = |\Delta E_t|$ l'énergie dissipée par effet Joule dans le circuit entre les instants $t = 0$ et $t = t_2$.
+        reasoning: |-
+          $t_1$ et $t_2$ étant respectivement un zéro et un extremum de $u_C$ (question précédente), et $t=0$ étant lui aussi un extremum ($u_C(0) = +6{,}0\ \text{V}$, le condensateur totalement chargé au départ) : le courant est nul à la fois en $t=0$ et en $t_2$, donc l'énergie totale y est purement électrique. $E_j$ se calcule alors comme la différence des deux énergies électriques — rung 3 : R (ici $R_0+r$) ne fait que dissiper, jamais restituer, donc cette différence est bien l'énergie perdue par effet Joule.
+        steps:
+          - math: 'E_j = E_t(0) - E_t(t_2) = \frac{1}{2}C\,u_C(0)^2 - \frac{1}{2}C\,u_C(t_2)^2'
+            note: "i=0 en t=0 et en t2 (deux extrema de u_C, question precedente) : toute l'energie y est electrique."
+          - math: 'E_j = \frac{1}{2}\times0{,}22\times10^{-9}\times\left(6{,}0^2 - 4{,}3^2\right) = \frac{1}{2}\times0{,}22\times10^{-9}\times(36-18{,}49)'
+            note: "Application numerique : u_C(0)=6,0 V (au trait), u_C(t2)=-4,3 V (hors trait, lecture graphique)."
+          - math: '\boxed{E_j \approx 1{,}9\times10^{-9}\ \text{J}}'
+            note: "Coherent avec le cross-check independant de la note de sourcing."
+
+  # ── bk-2025-n-x3 — 2025 N, Exercice 3 (Partie 2) : decharge C-RL, piege etalon-de-temps ──
+  - id: bk-2025-n-x3
+    title: "Décharge d'un condensateur dans un dipôle RL : ne pas confondre l'étalon de temps et la pseudo-période, puis bilan énergétique"
+    source:
+      year: 2025
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — 2. Décharge d'un condensateur dans un dipôle RL (Partie 2)"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/145796 (Exercice 3, Partie 2 —
+        décharge d'un condensateur dans un dipôle RL, oscillations
+        pseudopériodiques amorties et bilan énergétique ; barème de la
+        partie = 2,5 pt sur les 5 pt de l'exercice complet, dont la Partie 1
+        — charge par générateur de courant — est transcrite sous
+        rc-charge.md, même montage figure 1). Transcription vérifiée : 3ᵉ
+        passe, vérificateur indépendant (agent-vérificateur-indépendant,
+        2026-08-07), diff OK, figure 3 re-mesurée intégralement élément par
+        élément (docs/sujets/pc/rlc-serie.md, statut « vérifié »). MISE EN
+        GARDE ÉDITORIALE — l'étalon de temps : la figure 3 porte une double
+        flèche horizontale étiquetée « $7\times10^{-5}\ \text{s}$ », tracée
+        entre le repère $t_B$ et le trait principal suivant. Cette double
+        flèche NE COUVRE QU'UNE SEULE DIVISION du quadrillage (mesuré au
+        pixel : 57 px, entre les deux traits principaux à $x=859$ et
+        $x=918$, jamais deux ni quatre divisions) : c'est l'ÉTALONNAGE de
+        l'axe des temps (1 division $=7\times10^{-5}\ \text{s}$), PAS la
+        pseudo-période. Une lecture qui prendrait cette double flèche pour
+        la pseudo-période directement — $T = 7\times10^{-5}\ \text{s}$ —
+        est RÉFUTÉE et doit être considérée MORTE : elle exigerait $L =
+        0{,}124\ \text{mH}$, une valeur incompatible avec $L=2\ \text{mH}$
+        que le même sujet donne en Partie 3 pour cette même bobine (b). La
+        pseudo-période réelle se lit entre deux maxima consécutifs, soit
+        **4 divisions** : $T = 4\times7\times10^{-5} =
+        2{,}8\times10^{-4}\ \text{s}$, cohérente à $0{,}4\,\%$ près avec
+        $T_0=2\pi\sqrt{LC_0}=2{,}81\times10^{-4}\ \text{s}$ ($C_0=1\ \mu\text{F}$
+        de la Partie 1, $L=2\ \text{mH}$ de la Partie 3). Les futurs
+        éditeurs de cette entrée ne doivent PAS réintroduire
+        $T=7\times10^{-5}\ \text{s}$ comme pseudo-période — cette valeur est
+        morte (même discipline que la mise en garde de bk-2021-n-x4
+        ci-dessus sur $T_0=28\ \text{ms}$). SCOPE NOTE : la question 2-4
+        exige $C_0 = 1\ \mu\text{F}$, établi dans la Partie 1 du même sujet
+        (charge par générateur de courant, transcrite sous rc-charge.md) —
+        pontée au point d'usage, comme pour les entrées précédentes de
+        cette banque. Ce montage n'a pas de conducteur ohmique séparé —
+        seule la résistance propre $r$ de la bobine $(L,r)$ dissipe, comme
+        bk-2018-n-x3 et bk-2023-n-x3 ci-dessus (rung 5 avec $r$ à la place
+        de $R$, pas de généralisation $R+r$ ici). CROSS-CHECK effectué en
+        rédigeant ce raisonnement (valeur numérique absente de la note de
+        vérification du sujet, qui portait sur la période, pas sur ce bilan
+        énergétique) : $|E_{th}| = \frac12 C_0\left(U_0^2 - u_C(t_A)^2\right)
+        = \frac12\times10^{-6}\times(100-49) = 2{,}55\times10^{-5}\ \text{J}$.
+    intro: |-
+      **2- Décharge d'un condensateur dans un dipôle RL (examen national, session normale 2025, Exercice 3 — Partie 2).**
+
+      Lorsque la tension entre les bornes du condensateur prend la valeur $u_C = U_0 = 10\ \text{V}$, on bascule l'interrupteur $K$ en position (2) à un instant pris comme nouvelle origine des dates $(t_0 = 0)$. Un système d'acquisition informatisé adéquat permet d'obtenir la courbe représentant la tension $u_C(t)$ (figure 3). Le circuit est le condensateur $C_0$ en série avec la bobine $(L, r)$ — pas de conducteur ohmique séparé.
+
+      *Figure 3 (courbe) :* $u_C\ (\text{V})$ en fonction de $t$ (axe non chiffré en unité). Cadre de 10 divisions en abscisse ; ordonnées graduées $4, 0, -4$ (1 division $=4\ \text{V}$ ; les traits $\pm8\ \text{V}$ existent mais ne sont pas chiffrés) ; un trait pointillé horizontal non principal, étiqueté « $7$ », marque le niveau $u_C = 7\ \text{V}$.
+
+      Oscillation pseudopériodique d'amplitude décroissante, tous les extrema tombant sur un trait principal sur deux : maximum initial $u_C(0) = +10\ \text{V}$ à $t=0$ ; premier minimum $\approx -8{,}3\ \text{V}$ à la division 2 ; deuxième maximum à la division 4, touchant **exactement** le pointillé $u_C = 7\ \text{V}$ — c'est l'instant $t_A$ ; à la division 5, le passage par zéro descendant qui suit — c'est l'instant $t_B$, soit une division ($T/4$) après $t_A$ ; deuxième minimum $\approx -5{,}9\ \text{V}$ à la division 6 ; troisième maximum $\approx 4{,}9\ \text{V}$ à la division 8 ; troisième minimum $\approx -4{,}1\ \text{V}$ à la division 10 (bord droit, fin du tracé).
+
+      Un repère à double flèche horizontale, étiqueté « $7\times10^{-5}\ \text{s}$ », est tracé entre le trait vertical de $t_B$ et le trait principal suivant : il couvre **exactement une division**, ni deux, ni quatre — c'est l'étalonnage de l'axe des temps (1 division $=7\times10^{-5}\ \text{s}$), pas la pseudo-période.
+    questions:
+      - id: q1
+        part: "2- Décharge d'un condensateur dans un dipôle RL : établir le modèle"
+        stem: |-
+          **(0,5 pt)** Établir l'équation différentielle vérifiée par $u_C(t)$.
+        reasoning: |-
+          Même structure que la question 2a du sujet 2018 ci-dessus : ce montage n'a pas de conducteur ohmique séparé, seule la résistance propre $r$ de la bobine $(L,r)$ dissipe. On applique donc le rung 5 avec $r$ à la place de $R$.
+        steps:
+          - math: 'u_C + u_{bobine} = 0 \qquad \text{avec} \qquad u_{bobine} = L\frac{di}{dt} + r\,i'
+            note: "Loi des mailles (rung 5) ; seule resistance ici : r, la resistance propre de la bobine, comme a la question 2a du sujet 2018 ci-dessus."
+          - math: 'i = C_0\frac{du_C}{dt} \implies u_C + rC_0\frac{du_C}{dt} + LC_0\frac{d^2u_C}{dt^2} = 0'
+            note: "On exprime i en u_C (rung 2)."
+          - math: '\boxed{\frac{d^2u_C}{dt^2} + \frac{r}{L}\frac{du_C}{dt} + \frac{1}{LC_0}\,u_C = 0}'
+            note: "Division par LC0 ; forme standard du cas amorti (rung 5), r jouant seul le role de la resistance totale."
+      - id: q2
+        part: "Exploiter la courbe : ne pas confondre l'étalon de temps et la pseudo-période"
+        stem: |-
+          **(0,5 pt)** En exploitant la courbe de la figure 3, déterminer la valeur de la pseudopériode des oscillations.
+        reasoning: |-
+          Le piège de cette figure, précisément : la double flèche imprimée, étiquetée « $7\times10^{-5}\ \text{s}$ », a l'air de mesurer un intervalle caractéristique de la courbe — mais elle ne couvre qu'**une seule division** du quadrillage, entre $t_B$ et le trait principal suivant. C'est l'étalon de l'axe des temps, pas la pseudo-période : la confondre avec la période donnerait une valeur environ quatre fois trop petite. La bonne méthode reste celle du rung 6 : on repère deux **maxima consécutifs** de la courbe — le maximum initial à $t=0$ et le deuxième maximum, à la division 4 (l'instant $t_A$, qui touche le pointillé $7\ \text{V}$) — et on compte l'écart en nombre de divisions, qu'on convertit ensuite avec l'étalon.
+        steps:
+          - math: 'T = 4 \times (\text{1 division}) = 4 \times 7\times10^{-5}\ \text{s}'
+            note: "Deux maxima consecutifs (rung 6) : t=0 et t_A, soit 4 divisions - PAS la double fleche imprimee, qui ne couvre qu'une seule division."
+          - math: '\boxed{T = 2{,}8\times10^{-4}\ \text{s}}'
+            note: "Pseudo-periode ; coherente avec T0 = 2 pi sqrt(L C0) = 2,81e-4 s (L=2mH, Partie 3 du meme sujet ; C0=1 microF, Partie 1)."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Déterminer, en exploitant la courbe de la figure 3, le signe de l'intensité du courant $i$ entre l'instant $t_A$ et l'instant $t_B$.
+        reasoning: |-
+          Rung 1 : $i = C_0\frac{du_C}{dt}$, le signe de $i$ suit donc directement le sens de variation de $u_C$. Entre $t_A$ (le deuxième maximum, sur le pointillé $7\ \text{V}$) et $t_B$ (le passage par zéro descendant qui suit, une division plus loin), la courbe est en train de **redescendre** depuis son maximum vers zéro : $u_C$ décroît, donc $\frac{du_C}{dt} < 0$.
+
+          Le courant $i$ est **négatif** entre $t_A$ et $t_B$.
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Montrer que : $\dfrac{dE_T}{dt} = -r \cdot i^2$, avec $E_T$ l'énergie totale du circuit à un instant $t$.
+        reasoning: |-
+          On part de la formule du rung 1, $E_T = \frac{1}{2}C_0 u_C^2 + \frac{1}{2}Li^2$, et on la dérive par rapport au temps — le geste que le rung 1 ne fait jamais explicitement (il énonce la conservation dans le cas idéal ; ici on va plus loin en dérivant dans le cas amorti). On réinjecte ensuite l'équation de la question 1 pour remplacer $\frac{di}{dt}$, ce qui fait apparaître exactement le terme demandé.
+        steps:
+          - math: '\frac{dE_T}{dt} = C_0\,u_C\frac{du_C}{dt} + L\,i\frac{di}{dt}'
+            note: "Derivee de E_T = (1/2)C0 uC^2 + (1/2)L i^2 par rapport au temps (regle de derivation d'un carre)."
+          - math: 'i = C_0\frac{du_C}{dt} \implies C_0\,u_C\frac{du_C}{dt} = u_C\,i'
+            note: "On remplace du_C/dt par i/C0 (definition du courant, rung 1)."
+          - math: 'L\frac{di}{dt} = -u_C - r\,i \quad \text{(loi des mailles, question 1)} \implies L\,i\frac{di}{dt} = -u_C\,i - r\,i^2'
+            note: "On isole L di/dt dans l'equation de la question 1, puis on multiplie par i."
+          - math: '\frac{dE_T}{dt} = u_C\,i + \left(-u_C\,i - r\,i^2\right)'
+            note: "On additionne les deux morceaux calcules ci-dessus."
+          - math: '\boxed{\frac{dE_T}{dt} = -r\,i^2}'
+            note: "Le terme u_C i se simplifie exactement : il ne reste que la dissipation par effet Joule dans r."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** Calculer $|E_{th}|$, l'énergie dissipée par effet Joule dans le circuit entre les instants $t = 0$ et $t = t_A$.
+        reasoning: |-
+          $t=0$ et $t_A$ sont tous deux des extrema de $u_C$ (le maximum initial et le deuxième maximum) : le courant y est nul dans les deux cas (rung 1), donc l'énergie totale y est purement électrique. L'énergie dissipée est la différence — rung 3/4, $r$ ne fait que dissiper, jamais restituer, cohérent avec le signe négatif trouvé à la question 3. $u_C(0) = U_0 = 10\ \text{V}$ (donné) et $u_C(t_A) = 7\ \text{V}$ (touche le pointillé, lu sur la figure 3) ; $C_0 = 1\ \mu\text{F}$ vient de la Partie 1 du même sujet (charge par générateur de courant, transcrite sous rc-charge.md) — un pont entre les deux parties du même exercice.
+        steps:
+          - math: 'E_{th} = E_T(0) - E_T(t_A) = \frac{1}{2}C_0\,u_C(0)^2 - \frac{1}{2}C_0\,u_C(t_A)^2'
+            note: "i=0 en t=0 et en tA (deux extrema de u_C) : toute l'energie y est electrique."
+          - math: 'E_{th} = \frac{1}{2}\times1\times10^{-6}\times\left(10^2 - 7^2\right) = \frac{1}{2}\times10^{-6}\times(100-49)'
+            note: "Application numerique : U0=10V (donne), u_C(tA)=7V (lu sur la figure 3), C0=1 microF (Partie 1 du meme sujet, transcrite sous rc-charge)."
+          - math: '\boxed{|E_{th}| = 2{,}55\times10^{-5}\ \text{J}}'
+            note: "Energie dissipee par effet Joule entre t=0 et tA."
