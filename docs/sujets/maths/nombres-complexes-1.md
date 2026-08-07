@@ -171,24 +171,24 @@ $$(E)\ :\ z^2 - 2\left(\sqrt{2} + \sqrt{6}\right)z + 16 = 0$$
 
 ## 2018 — session normale — Exercice 2
 Source: https://www.alloschool.com/element/94699
-Statut: transcrit (non vérifié — brouillon Gemini gemini-pro-latest, formaté par l'orchestrateur) — 2026-08-07, transcription depuis scan course-438/upload-70450, page(s) 2. À faire vérifier (README §3).
+Statut: vérifié **avec correction de fond** — agent-vérificateur-adversarial, 2026-08-07 : **brouillon Gemini confronté au scan — 1ʳᵉ passe adversariale Claude**. Source re-fetchée indépendamment (element 94699 → course-438/upload-70450 re-dérivé, 4 pages, page 2) et conforme à la citation du brouillon ; page « Composantes du sujet » (p.1) lue et confirmée — Exercice 2 *Nombres complexes* 3 points. Diff caractère-par-caractère mené sur chaque valeur, coefficient, affixe, numérotation et barème (position comprise : $0{,}75$ sur Q1, $0{,}25$ sur Q2a, $0{,}5$ sur Q2b, $0{,}75$ sur Q3a, $0{,}75$ sur Q3b = 3) ; aucune figure dans cet exercice (confirmé sur le scan). **Corrigé sur re-lecture — erreur de fond du brouillon Gemini** : l'affixe du point $A$ à la question 2)b) était transcrite $a=-\tfrac12+\tfrac{\sqrt3}{2}i$ ; le scan imprime $a=-\dfrac{1}{2}+\dfrac{3}{2}i$ (zoom ×2 sur la zone : le radical est absent, contrairement à $d$ imprimé juste au-dessus, d'où la contamination probable). La correction est confirmée par les mathématiques : $2z^2+2z+5=0$ a pour discriminant $\Delta=4-40=-36$ et pour racines $-\tfrac12\pm\tfrac32 i$ — $a$ est donc **la racine à partie imaginaire positive de la question 1)**, ce qui est précisément l'articulation Q1→Q2 que la version Gemini détruisait. Autres corrections : « Écrire » → « **Ecrire** » (le scan imprime la majuscule non accentuée) ; `\vec{OA}` → `\overrightarrow{OA}` (flèche longue au scan) ; ajout de la note de lecture sur le glyphe $\mathbb{C}$ non rendu à la question 1). *Ces corrections demandent une re-lecture de confirmation.* Maths re-dérivées : $d=-\tfrac12+\tfrac{\sqrt3}{2}i=e^{i\frac{2\pi}{3}}$ (module $1$, argument $\tfrac{2\pi}{3}$) donc $b=d\,a$ est bien l'écriture de la rotation de centre $O$ et d'angle $\tfrac{2\pi}{3}$ ✓ ; $c=b+a=a(d+1)=a\!\left(\tfrac12+\tfrac{\sqrt3}{2}i\right)$ ✓ ; $\tfrac{c}{a}=e^{i\frac{\pi}{3}}$ donc $|c|=|a|$ et $\arg\!\left(\tfrac{c}{a}\right)\equiv\tfrac{\pi}{3}$ ⇒ $OA=OC$ avec $\widehat{AOC}=\tfrac{\pi}{3}$ ⇒ $OAC$ équilatéral ✓ (conclusion valable pour la valeur corrigée de $a$, dont le module vaut $\tfrac{\sqrt{10}}{2}$). Filière Sciences Expérimentales (مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية – خيار فرنسية) et code NS 22F confirmés sur l'en-tête du scan — titre AlloSchool (« Sciences et Technologies ») trompeur.
 
 - Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية — خيار فرنسية — Mathématiques, 3 h, coef 7
 - Code sujet : NS 22F · Barème de l'exercice : 3 points
 - Images lues : `.../course-438/upload-70450/0002-big.jpg`
 - Pages du scan : 2 (sur 4)
 
-> **Note de lecture** : brouillon issu de la voie Gemini (première passe de volume) — à confronter au scan en vérification adversariale. Aucune figure d'après le brouillon.
+> **Note de lecture (glyphes)** : lecture directe du scan image. Le symbole $\mathbb{C}$ n'est pas rendu par la police du scan à la question 1) — il apparaît comme un cadre/trait vide (« dans l'ensemble ▭ des nombres complexes ») ; résolu en $\mathbb{C}$ par le contexte, exactement comme dans l'entrée 2020 de ce fichier. Aucune figure dans cet exercice (vérifié sur le scan). Le scan imprime « **Ecrire** » sans accent et « $b = d.a$ » avec un point simple, rendu ici `\cdot`. Barème imprimé au point décimal (`0.75`, `0.25`, `0.5`), rendu ici à la virgule selon la convention du corpus.
 
 **Nombres complexes (équation du second degré, rotation, translation, triangle équilatéral).**
 
-1) (0,75) Résoudre dans l'ensemble $\mathbb{C}$ des nombres complexes l'équation : $2z^2 + 2z + 5 = 0$.
-2) Dans le plan complexe rapporté à un repère orthonormé direct $(O, \vec{u}, \vec{v})$, on considère la rotation $R$ de centre $O$ et d'angle $\frac{2\pi}{3}$.
-   a) (0,25) Écrire sous forme trigonométrique le nombre complexe $d = -\frac{1}{2} + \frac{\sqrt{3}}{2}i$.
-   b) (0,5) On considère le point $A$ d'affixe $a = -\frac{1}{2} + \frac{\sqrt{3}}{2}i$ et le point $B$ image du point $A$ par la rotation $R$. Soit $b$ l'affixe du point $B$, montrer que $b = d \cdot a$.
-3) Soit $t$ la translation de vecteur $\vec{OA}$ et $C$ l'image de $B$ par la translation $t$ et $c$ l'affixe de $C$.
-   a) (0,75) Vérifier que $c = b + a$ et en déduire que $c = a\left(\frac{1}{2} + \frac{\sqrt{3}}{2}i\right)$ *(on pourra utiliser la question 2)b))*.
-   b) (0,75) Déterminer $\arg\left(\frac{c}{a}\right)$ puis en déduire que le triangle $OAC$ est équilatéral.
+1) (0,75) Résoudre dans l'ensemble $\mathbb{C}$ des nombres complexes l'équation : $2z^2 + 2z + 5 = 0$
+2) Dans le plan complexe rapporté à un repère orthonormé direct $(O, \vec{u}, \vec{v})$, on considère la rotation $R$ de centre $O$ et d'angle $\dfrac{2\pi}{3}$
+   a) (0,25) Ecrire sous forme trigonométrique le nombre complexe $d = -\dfrac{1}{2} + \dfrac{\sqrt{3}}{2}i$
+   b) (0,5) On considère le point $A$ d'affixe $a = -\dfrac{1}{2} + \dfrac{3}{2}i$ et le point $B$ image du point $A$ par la rotation $R$. Soit $b$ l'affixe du point $B$, montrer que $b = d \cdot a$
+3) Soit $t$ la translation de vecteur $\overrightarrow{OA}$ et $C$ l'image de $B$ par la translation $t$ et $c$ l'affixe de $C$
+   a) (0,75) Vérifier que $c = b + a$ et en déduire que $c = a\left(\dfrac{1}{2} + \dfrac{\sqrt{3}}{2}i\right)$ *(on pourra utiliser la question 2)b))*
+   b) (0,75) Déterminer $\arg\left(\dfrac{c}{a}\right)$ puis en déduire que le triangle $OAC$ est équilatéral.
 
 *(Somme du barème : 0,75 + 0,25 + 0,5 + 0,75 + 0,75 = 3 points.)*
 

@@ -74,16 +74,18 @@ On tire simultanément au hasard deux boules de cette urne.
 3. (0,5) Calculer $p(A \cap B)$
 4. (0,5) Les événements $A$ et $B$ sont-ils indépendants ? Justifier.
 
+---
+
 ## 2018 — session normale — Exercice 3
 Source: https://www.alloschool.com/element/94699
-Statut: transcrit (non vérifié — brouillon Gemini gemini-pro-latest, formaté par l'orchestrateur) — 2026-08-07, transcription depuis scan course-438/upload-70450, page(s) 3. À faire vérifier (README §3).
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-07 : **brouillon Gemini confronté au scan — 1ʳᵉ passe adversariale Claude**. Source re-fetchée indépendamment (element 94699 → course-438/upload-70450 re-dérivé, 4 pages, page 3) et conforme à la citation du brouillon ; page « Composantes du sujet » (p.1) lue et confirmée — Exercice 3 *Calcul des probabilités* 3 points. Diff caractère-par-caractère conforme au scan : composition de l'urne ($9$ boules — cinq rouges portant $1;1;2;2;2$ et quatre blanches portant $1;2;2;2$), libellés des trois événements $A$/$B$/$C$, tirage simultané de trois boules, énoncé de la répétition (trois fois, **avec remise** des trois boules après chaque tirage), valeurs $p(A)=\tfrac16$, $p(B)=\tfrac14$, $p(C)=\tfrac1{42}$, $p(X=1)=\tfrac{25}{72}$, et barème par question **et sa position** ($1{,}5$ sur Q1, $0{,}5$ sur Q2a, $1$ sur Q2b = 3) ; aucune figure dans cet exercice — le seul tableau de la page 3 est le tableau de variations du **Problème**, pas de cet exercice (confirmé sur le scan). Maths re-dérivées : $\binom93=84$ ; $A$ ⇒ $\binom53+\binom43=10+4=14$, $p(A)=\tfrac{14}{84}=\tfrac16$ ✓ ; le nombre $1$ figure sur $2+1=3$ boules et le nombre $2$ sur $3+3=6$ boules, d'où $B$ ⇒ $\binom33+\binom63=1+20=21$, $p(B)=\tfrac{21}{84}=\tfrac14$ ✓ ; $C$ ⇒ seules les trois rouges « 2 » et les trois blanches « 2 » sont réalisables ($\binom33+\binom33=2$), $p(C)=\tfrac{2}{84}=\tfrac1{42}$ ✓ ; $X\sim\mathcal{B}\!\left(3,\tfrac16\right)$ ⇒ $p(X=1)=3\cdot\tfrac16\cdot\left(\tfrac56\right)^2=\tfrac{75}{216}=\tfrac{25}{72}$ ✓ et $p(X=2)=3\cdot\left(\tfrac16\right)^2\cdot\tfrac56=\tfrac{5}{72}$. Classement re-confirmé indépendamment : Q1 est du dénombrement pur (tirage simultané, comptage par combinaisons, équiprobabilité) → ce fichier ; Q2 introduit une variable aléatoire **binomiale** (répétition avec remise) — extension au-delà du comptage pur, signalée pour la conversion en banque, mais sans conditionnement ni arbre pondéré, donc pas de bascule vers `probabilites-conditionnelles.md`. **Corrigé sur re-lecture** : aucune correction de valeur nécessaire ; seules des divergences cosmétiques ont été relevées et documentées en note de lecture. Filière Sciences Expérimentales (مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية – خيار فرنسية) et code NS 22F confirmés sur l'en-tête du scan — titre AlloSchool (« Sciences et Technologies ») trompeur.
 
 - Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية — خيار فرنسية — Mathématiques, 3 h, coef 7
 - Code sujet : NS 22F · Barème de l'exercice : 3 points
 - Images lues : `.../course-438/upload-70450/0003-big.jpg`
 - Pages du scan : 3 (sur 4)
 
-> **Note de lecture** : brouillon issu de la voie Gemini (première passe de volume) — à confronter au scan en vérification adversariale. **Classement** : combinatoire pur en Q1 (urne, tirage simultané, comptage) → ce fichier ; la Q2 introduit une variable aléatoire **binomiale** (répétition avec remise) — extension au-delà du comptage pur, signalée pour la conversion en banque.
+> **Note de lecture** : lecture directe du scan image ; aucun glyphe défaillant dans cet exercice. **Classement** : combinatoire pur en Q1 (urne, tirage simultané, comptage) → ce fichier ; la Q2 introduit une variable aléatoire **binomiale** (répétition avec remise) — extension au-delà du comptage pur, signalée pour la conversion en banque. Divergences typographiques du scan, normalisées ici selon la convention du corpus : le scan met « cinq boules rouges » et « quatre boules blanches » en **souligné** (rendu en gras) et encadre les libellés d'événements par des guillemets droits `"…"` (rendus en guillemets français « … ») ; barème imprimé au point décimal (`1.5`, `0.5`), rendu à la virgule.
 
 **Dénombrement (urne, tirage simultané, puis variable binomiale).**
 
@@ -96,10 +98,10 @@ $A$ : « les trois boules tirées sont de même couleur » ;
 $B$ : « les trois boules tirées portent le même nombre » ;
 $C$ : « les trois boules tirées sont de même couleur et portent le même nombre ».
 
-1) (1,5) Montrer que $p(A) = \frac{1}{6}$, $p(B) = \frac{1}{4}$ et $p(C) = \frac{1}{42}$.
-2) On répète l'expérience précédente trois fois avec remise dans l'urne des trois boules tirées après chaque tirage, et on considère la variable aléatoire $X$ qui est égale au nombre de fois de réalisation de l'événement $A$.
-   a) (0,5) Déterminer les paramètres de la variable aléatoire binomiale $X$.
-   b) (1) Montrer que $p(X = 1) = \frac{25}{72}$ et calculer $p(X = 2)$.
+1) (1,5) Montrer que $p(A) = \dfrac{1}{6}$, $p(B) = \dfrac{1}{4}$ et $p(C) = \dfrac{1}{42}$
+2) On répète l'expérience précédente trois fois avec remise dans l'urne des trois boules tirées après chaque tirage, et on considère la variable aléatoire $X$ qui est égale au nombre de fois de réalisation de l'événement $A$
+   a) (0,5) Déterminer les paramètres de la variable aléatoire binomiale $X$
+   b) (1) Montrer que $p(X = 1) = \dfrac{25}{72}$ et calculer $p(X = 2)$
 
 *(Somme du barème : 1,5 + 0,5 + 1 = 3 points.)*
 
