@@ -903,8 +903,48 @@ Légende : « Figure 2 ».
 
 ## 2023 — session normale — Exercice 4 (Partie I)
 Source: https://www.alloschool.com/element/142476
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-85304, page(s) 5–6. À faire vérifier (README §3).
+Statut: vérifié — 1ʳᵉ passe de vérification adversariale indépendante
+(agent-vérificateur-adversarial, 2026-08-07) : re-fetch AlloSchool
+indépendant, diff caractère par caractère de l'énoncé, recompte du barème et
+relevé au pixel de la figure 1 — **aucune divergence**.
+
+**Portée du diff (2026-08-07).** Source re-dérivée de zéro :
+`element/142476` → `assets/documents/course-422/upload-85304`, **6 pages**
+(URLs ré-extraites du HTML de la page `element/`, aucune reprise des
+« Images lues »). Couverture p.1 relue : **NS 28F**, session **normale
+2023**, 3 h, coef 7, SPC/BIOF ; carte $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓, et
+l'Exercice 4 y est annoncé « **5,5 points** » avec ses deux volets (chute
+d'une balle / balançoire).
+- **Valeurs, unités, indices, exposants — tous confirmés sur l'image** :
+  $V_0 = 12\ \text{m.s}^{-1}$, $m = 80\ \text{g}$, $g = 10\ \text{m.s}^{-2}$,
+  repère $(O\,;\,\vec{k})$, $\vec{f} = -\lambda\vec{v}$ avec
+  $\vec{v} = v_z\vec{k}$ et $\lambda = 0{,}12$ **S.I.**, équation
+  $\frac{dv_z}{dt} + \frac{1}{\tau}v_z + g = 0$, $a_{i-1} = 5\ \text{m.s}^{-2}$,
+  $\Delta t = 66\ \text{ms}$, « valeur algébrique $v_{OZ}$ », « nouvelle
+  origine des dates $t_0 = 0$ », « On néglige la poussée d'Archimède devant
+  ces deux forces ».
+- **Barème marginal recompté au scan** :
+  $0{,}75+0{,}5+0{,}5+0{,}5+0{,}25+0{,}75 = \mathbf{3{,}25}$ ✓ ; et
+  **Partie I + Partie II $= 3{,}25 + 2{,}25 = \mathbf{5{,}50}$** = Exercice 4 ✓.
+- **Figure 1 relue élément par élément (relevé pixel sur `0005-big.jpg`)** :
+  axe $Z$ vertical, flèche pleine vers le **haut**, étiquette « Z » ; ligne
+  horizontale **en pointillés noirs** traversant l'axe en haut ; disque noir
+  plein **sur l'axe**, juste sous cette ligne, étiqueté « (S) » à droite ;
+  flèche pleine vers le **haut** étiquetée $\vec{V_0}$ sous (S) ; flèche
+  pleine vers le **haut** étiquetée $\vec{k}$ juste au-dessus de O ; point
+  « O » à droite de l'axe ; **double flèche verticale** (pointes aux **deux**
+  extrémités) étiquetée « h », à gauche de l'axe, reliant le niveau de O à la
+  ligne pointillée ; ligne horizontale **en pointillés bleus** partant de O
+  vers la gauche ; l'axe se poursuit en trait plein sous O. **La description
+  transcrite correspond point par point** — et le seul « double » de cette
+  figure est bien une cote de longueur, pas une flèche d'étalonnage de temps.
+- **Physique re-dérivée (cohérence interne)** : $v_z(t) = -10t+12$,
+  $z(t) = -5t^2+12t$ ⇒ $h = V_0^2/2g = \mathbf{7{,}2\ \text{m}}$ et
+  $v_{OZ} = -12\ \text{m.s}^{-1}$ ; $\tau = m/\lambda = 0{,}080/0{,}12 =
+  0{,}667\ \text{s}$ ⇒ $|v_\ell| = g\tau \simeq \mathbf{6{,}7\ \text{m.s}^{-1}}$ ;
+  Euler : $a_{i-1} = -g - v_{i-1}/\tau = 5$ ⇒ $v_{i-1} = -10\ \text{m.s}^{-1}$,
+  d'où $v_z(t_i) = -10 + 5\times0{,}066 = \mathbf{-9{,}67\ \text{m.s}^{-1}}$.
+  Les données du sujet referment bien les questions.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan confirmé directement sur l'image : « شعبة العلوم

@@ -308,7 +308,27 @@ M ; enfin le fil horizontal sort de l'étage 2 et entre dans le second bloc
 ## 2023 — session normale — Exercice 3, §3 (Modulation d'amplitude d'un signal)
 Source: https://www.alloschool.com/element/142476
 Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-85304, page(s) 4–5. À faire vérifier (README §3).
+course-422/upload-85304, page(s) 4–5. **1ʳᵉ passe de vérification
+adversariale indépendante (agent-vérificateur-adversarial, 2026-08-07) :
+l'énoncé et le barème sont confirmés, MAIS la description de la figure 5
+plaçait le repère d'échelle « juste sous » le renflement central (il est en
+fait au-dessus du resserrement suivant) et n'en donnait pas la portée en
+divisions** ⇒ README §3, l'entrée **reste `transcrit (non vérifié)`** et
+n'appelle plus qu'une **relecture de contrôle du paragraphe de la figure 5**.
+
+**Portée du diff (2026-08-07).** Source re-dérivée de zéro :
+`element/142476` → `assets/documents/course-422/upload-85304`, **6 pages**
+(URLs ré-extraites du HTML de `element/`). Couverture p.1 relue : **NS 28F**,
+session normale 2023, 3 h, coef 7, SPC/BIOF ; carte
+$7+2{,}5+5+5{,}5=\mathbf{20}$ ✓. **Texte du §3 : aucune divergence de valeur,
+unité, indice ou exposant** — expression de $u(t)$, les quatre propositions
+($4\ \text{kHz}$ / $4\ \text{kHz}$ / $100\ \text{Hz}$ / $200\ \text{Hz}$
+attachées respectivement au modulant, à la porteuse, au modulant, à la
+porteuse), $m = 0{,}4$, $U_0 = 2\ \text{V}$, « sans respect d'échelle très
+précise ». *Nuance de littéralité relevée (non bloquante) : le scan écrit
+« … est **de** 4 kHz », le tableau ci-dessous omet le « de ».* **Barème
+marginal recompté au scan** : $0{,}5+0{,}5+0{,}25+0{,}5=\mathbf{1{,}75}$ ✓ ;
+et $\S1+\S2+\S3 = 1{,}75+1{,}5+1{,}75 = \mathbf{5{,}00}$ = Exercice 3 ✓.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
@@ -351,17 +371,58 @@ respectivement les fréquences du signal modulant et de la porteuse.
 
 *Figure 5 (oscillogramme) :* $u\ (\text{V})$ en fonction de $t\ (\text{ms})$,
 sur quadrillage à double graduation (traits principaux, sous-quadrillage
-fin bleu), origine « 0 » sur l'axe des ordonnées. Un repère d'échelle est
-placé au centre du graphe : flèche verticale étiquetée « 2V » et flèche
-horizontale étiquetée « 1 ms ». Le tracé est un signal modulé en amplitude
-classique : une oscillation dense et rapide (la porteuse) dont l'enveloppe
-varie périodiquement, symétrique par rapport à l'axe des t. Sur la largeur
-visible du graphe, l'enveloppe présente une succession de renflements
-(amplitude localement maximale) séparés par des resserrements (amplitude
-localement minimale) : un renflement à l'extrémité gauche, un resserrement,
-un renflement plus large au centre (juste sous le repère d'échelle
-« 2V »/« 1 ms »), un nouveau resserrement, puis un dernier renflement à
-l'extrémité droite du cadre *(nombre exact d'oscillations de la porteuse
-par renflement et durée précise d'une période de l'enveloppe non chiffrés
-sur le scan — lecture fine à confirmer, cf. précédent similaire dans
-l'entrée 2021 N de ce fichier)*. Légende : « Figure 5 ».
+fin bleu), origine « 0 » sur l'axe des ordonnées. **Aucun des deux axes
+n'est chiffré** en dehors du « 0 » : toute la lecture passe par le repère
+d'échelle.
+
+**Le repère d'échelle (mesuré au pixel sur `0005-big.jpg`, 1240×1754).**
+Coin en **L formé de deux flèches à une seule pointe**, sommet posé sur
+l'intersection de deux traits principaux ($x = 861$, $y = 380$ px), soit
+**7 divisions à droite de l'axe des ordonnées et 2 divisions au-dessus de
+l'axe des temps** :
+- **flèche verticale « 2V »** de $y = 379{,}5$ à la pointe $y \simeq 325$ =
+  **exactement 1 division** (pas $54{,}3$ px) ⇒ **1 division $= 2\ \text{V}$** ;
+- **flèche horizontale « 1 ms »** de $x = 861$ à la pointe $x \simeq 921$ =
+  **exactement 1 division** (traits principaux à $861$ et $917$, pas
+  $56{,}6$ px) ⇒ **1 division $= 1\ \text{ms}$**.
+
+*(❌→✅ correction 2026-08-07 : ces flèches couvrent **une division**, pas une
+période de l'enveloppe — le piège classique. Et l'ancienne description
+plaçait le repère « juste sous le renflement central » : c'est faux, le
+sommet du L est à $t = 7{,}0$ ms alors que le renflement central culmine à
+$t \simeq 5{,}0$ ms ; le repère surplombe en réalité le **resserrement
+suivant**, centré vers $t \simeq 7{,}4$ ms.)*
+
+**Cadre** : traits principaux en abscisse tous les $56{,}6$ px de $x = 464$ à
+$x = 1143{,}5$ ⇒ **12 divisions $= 12\ \text{ms}$** ; en ordonnée tous les
+$54{,}3$ px, axe des temps (trait gras) à $y = 488$, bords à $y = 271$ et
+$y = 704{,}5$ ⇒ **8 divisions**, soit $\pm4$ divisions $= \pm8\ \text{V}$.
+
+**Tracé** : signal modulé en amplitude classique — oscillation dense et
+rapide (la porteuse) dont l'enveloppe varie périodiquement, symétrique par
+rapport à l'axe des $t$. De gauche à droite : **renflement** au bord gauche
+(centré sur $t = 0$), **resserrement** vers $t \simeq 2{,}5$ ms,
+**renflement** vers $t \simeq 5{,}0$ ms, **resserrement** vers
+$t \simeq 7{,}4$ ms (sous le repère d'échelle), **renflement** vers
+$t \simeq 9{,}8$ ms, puis l'amplitude décroît de nouveau jusqu'au bord droit.
+Relevé de l'enveloppe : **maximum $= 3$ divisions $= 6\ \text{V}$** (les
+sommets viennent au trait principal $y = 325$) et **minimum $= 1$ division
+$= 2\ \text{V}$** (au trait principal $y = 433{,}5$) *(le drapeau « durée
+d'une période de l'enveloppe / nombre d'oscillations par renflement — lecture
+fine à confirmer » est **tranché** : $T_s \simeq 5\ \text{ms}$, soit
+$\simeq 2{,}4$ périodes d'enveloppe dans le cadre ; comptage des sommets de
+la porteuse sur toute la largeur ⇒ $T_p \simeq 0{,}25\ \text{ms}$, soit
+$\simeq 20$ oscillations de porteuse par période d'enveloppe)*. Légende :
+« Figure 5 ».
+
+**Contrôle croisé par la physique (referme les Q3-1 et Q3-2).**
+$f_s = 1/T_s \simeq 200\ \text{Hz}$ et $f_p = 1/T_p \simeq 4\ \text{kHz}$ ⇒
+la proposition juste de la Q3-1 est la **B** (« la fréquence de la porteuse
+est de 4 kHz »), les valeurs $4\ \text{kHz}$ et $200\ \text{Hz}$ étant
+attribuées à la mauvaise grandeur dans A et D, et $f_p \gg f_s$ (rapport
+$\simeq 20$) est bien vérifié. De l'enveloppe :
+$m = \dfrac{U_{\max}-U_{\min}}{U_{\max}+U_{\min}} = \dfrac{6-2}{6+2} = 0{,}5$
+et $U_0 = \dfrac{U_{\max}+U_{\min}}{2} = 4\ \text{V}$ ⇒ les deux
+affirmations de la Q3-2 ($m = 0{,}4$ ; $U_0 = 2\ \text{V}$) sont **fausses**,
+ce qui est cohérent avec la consigne « répondre par vrai ou faux **en
+justifiant** ».

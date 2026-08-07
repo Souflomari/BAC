@@ -54,12 +54,60 @@ d'un ester E.
 
 ## 2023 — session normale — Exercice 1 (Chimie), §3
 Source: https://www.alloschool.com/element/142476
-Statut: transcrit (non vérifié) — **1ʳᵉ passe de vérification adversariale
-indépendante (agent-vérificateur-adversarial, 2026-08-07) : l'énoncé est
-intégralement confirmé, MAIS la description de la figure était fausse sur le
-palier et a été réécrite ci-dessous** ⇒ README §3, l'entrée **reste
-`transcrit (non vérifié)`** et n'appelle plus qu'une **relecture de contrôle du
-seul paragraphe de figure**.
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (1ʳᵉ passe
+adversariale, agent-vérificateur-adversarial, 2026-08-07 : énoncé conforme,
+figure corrigée) **puis relecture de contrôle du paragraphe de figure par un
+second vérificateur adversarial indépendant (2026-08-07) : la description
+corrigée est confirmée point par point** — mesures de contrôle ci-dessous.
+
+**✅ Relecture de contrôle (2ᵉ vérificateur, 2026-08-07) — la figure corrigée
+est exacte.** Source re-dérivée à partir de zéro : `element/142476` →
+`assets/documents/course-422/upload-85304`, **6 pages** (`0001`…`0006-big.jpg`,
+ré-extraites du HTML de la page `element/`, aucune URL reprise de « Images
+lues »). Couverture p.1 relue : **NS 28F**, session **normale 2023**, 3 h,
+coef 7, « شعبة العلوم التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) » ;
+carte des exercices $7 + 2{,}5 + 5 + 5{,}5 = \mathbf{20}$ ✓. Relevé pixel
+indépendant refait sur `0002-big.jpg` (1240×1754), séparation couleur
+$(R{+}G{+}B)/3 < 110$ et $B-R < 30$ :
+- **Cadre / traits principaux** — abscisse $x = 748 / 814{,}5 / 879{,}5 /
+  944{,}5 / 1009{,}5 / 1074{,}5 / 1139{,}5$ ⇒ **6 divisions**, pas $65{,}33$ px ;
+  ordonnée $y = 1154 / 1217{,}5 / 1280{,}5 / 1343{,}5 / 1407 / 1470{,}5$ ⇒
+  **5 divisions**, pas $63{,}3$ px. La verticale $x=1189{,}5$ est bien le filet
+  de page, pas le cadre.
+- **Tirets de graduation sous l'axe** ($y = 1473$–$1475$) : présents **uniquement**
+  en $x = 748{,}5$ (origine), $814{,}5$ et $879{,}5$. Glyphes « 5 » ($x\,817$–$822$)
+  et « 10 » ($x\,878$–$890$) posés sous ces deux tirets ⇒ **1 division $= 5$ h**,
+  **bord droit $= 6\times5 = 30\ \text{h}$** ✓. *(Pas de double-flèche
+  d'étalonnage sur cette figure — la seule flèche de l'axe des abscisses est la
+  pointe de l'axe, prolongée hors cadre.)*
+- **Étiquettes d'ordonnée** : « 0,4 » centre $y = 1342{,}5$ (trait $1343{,}5$),
+  « 0,2 » centre $y = 1405{,}5$ (trait $1407$), « 0 » centre $y = 1471$ (axe) ⇒
+  **1 division $= 0{,}2$ mol**, **bord supérieur $= 1{,}0$ mol** ✓.
+- **Sous-quadrillage bleu** recompté sur une division propre : 9 lignes fines
+  entre deux traits principaux dans **les deux** sens ⇒ **10 subdivisions/division**
+  ($6{,}53$ px $= 0{,}5$ h ; $6{,}33$ px $= 0{,}02$ mol) ✓.
+- **Départ** : à $x=750$ le tracé est **un seul amas de 10 px** ($y\,1186$–$1195$)
+  ⇒ les deux courbes partent **du même point** ; sommet $y = 1186$, et
+  $0{,}90$ mol tombe en $y = 1470{,}5 - 4{,}5\times63{,}3 = 1185{,}65$ ⇒
+  $n_a(0) = \mathbf{0{,}90\ \text{mol}}$, **au trait fin** ✓.
+- **Fusion et palier** : deux traits encore **distincts** jusqu'à $x = 1014$
+  ($y\,1372$ et $y\,1375{,}5$, soit $t = 20{,}4$ h) ; **à partir de $x = 1015$
+  ($t = 20{,}5$ h) et jusqu'au bord droit, un seul amas $y\,1372$–$1376$
+  (4–5 px = deux traits superposés)** ✓. Le trait bas est **exactement** sur la
+  ligne fine $0{,}30$ mol ($y = 1375{,}55$ théorique, $1375{,}5$ mesuré) ⇒
+  $n_{a,\text{éq}} = \mathbf{0{,}30\ \text{mol}}$ **commun aux deux courbes** ✓.
+- **Étiquettes** : « C$_1$ » $x\,820$–$839$ ⇒ $t = 5{,}55$–$7{,}0$ h, $y\,1376$–$1390$,
+  donc **sous** sa courbe (qui passe à $y\simeq1357$ en $x=825$) ; « C$_2$ »
+  $x\,838$–$857$ ⇒ $t = 6{,}9$–$8{,}4$ h, $y\,1296$–$1311$, donc **au-dessus** de
+  sa courbe (qui passe à $y\simeq1332$ en $x=845$) ✓ — l'ordre corrigé
+  ($C_1$ à gauche de $C_2$) est confirmé.
+- **Contrôle croisé chimie** : $x_{\text{éq}} = 0{,}90-0{,}30 = 0{,}60$ ⇒
+  $K = (0{,}60/0{,}30)^2 = \mathbf{4}$, **identique au $K=4$ relu directement en
+  tête de p.3** ✓.
+- **Barème recompté au scan** : §1 $= 0{,}5+0{,}75+0{,}5 = 1{,}75$ ; §2
+  $= 0{,}75+0{,}75+0{,}5 = 2{,}00$ ; §3 $= 0{,}5+0{,}5+0{,}5+0{,}5+0{,}75+0{,}5
+  = \mathbf{3{,}25}$ (le « (0,5 pt) » de la 3.6 est en haut de p.3) ⇒
+  $\mathbf{7{,}00}$ = Exercice 1 ✓.
 
 **❌→✅ Figure — le palier est COMMUN aux deux courbes, et elles se confondent.**
 L'ancienne description affirmait que $C_2$ s'aplatit « vers un palier légèrement

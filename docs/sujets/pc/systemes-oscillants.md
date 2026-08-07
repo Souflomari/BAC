@@ -254,7 +254,38 @@ Légende : « Figure 3 ».
 ## 2023 — session normale — Exercice 4 (Partie II)
 Source: https://www.alloschool.com/element/142476
 Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-85304, page(s) 6. À faire vérifier (README §3).
+course-422/upload-85304, page(s) 6. **1ʳᵉ passe de vérification adversariale
+indépendante (agent-vérificateur-adversarial, 2026-08-07) : l'énoncé, les
+données et le barème sont intégralement confirmés, MAIS deux affirmations de
+position dans la description de la figure 3 étaient fausses (arc $\theta$
+« près de $O$ » ; $\vec{k}$ « à gauche de la ligne pointillée »)** ⇒
+README §3, l'entrée **reste `transcrit (non vérifié)`** et n'appelle plus
+qu'une **relecture de contrôle du paragraphe de la figure 3**.
+
+**Portée du diff (2026-08-07).** Source re-dérivée de zéro :
+`element/142476` → `assets/documents/course-422/upload-85304`, **6 pages**
+(URLs ré-extraites du HTML de `element/`). Couverture p.1 relue : **NS 28F**,
+session normale 2023, 3 h, coef 7, SPC/BIOF ; carte
+$7+2{,}5+5+5{,}5=\mathbf{20}$ ✓.
+- **Texte : aucune divergence** de valeur, unité, indice ou exposant —
+  $\theta_0 = 9°$, « dans le sens positif », « sans vitesse initiale »,
+  $t_0 = 0$, repère $(G_0\,;\,\vec{k})$, $J_\Delta = m.\ell^2$,
+  $g = 10\ \text{m.s}^{-2}$, $\ell = 2{,}4\ \text{m}$,
+  $\cos\theta \approx 1-\frac{\theta^2}{2}$ « $\theta$ en radian »,
+  $E_{pp} = \frac{1}{2}mg\ell\theta^2$, $E_{pp} = 0$ au plan horizontal
+  passant par $G_0$, $\dot\theta_{max}$, « analogue à un pendule simple de
+  longueur $\ell$ et de masse $m$ ».
+- **Barème marginal recompté au scan** :
+  $0{,}5+0{,}5+0{,}75+0{,}5 = \mathbf{2{,}25}$ ✓ ; et
+  **Partie I + Partie II $= 3{,}25 + 2{,}25 = \mathbf{5{,}50}$** = Exercice 4 ✓.
+- **Physique re-dérivée (cohérence interne)** :
+  $E_{pp} = mg\ell(1-\cos\theta) \simeq \frac{1}{2}mg\ell\theta^2$ ✓ ;
+  conservation ⇒ $\dot\theta_{max} = \theta_0\sqrt{g/\ell} =
+  0{,}157\times2{,}04 \simeq \mathbf{0{,}32\ \text{rad.s}^{-1}}$ ;
+  dérivation ⇒ $\ddot\theta + \frac{g}{\ell}\theta = 0$ ✓ ;
+  $T_0 = 2\pi\sqrt{\ell/g} = 2\pi\sqrt{0{,}24} \simeq \mathbf{3{,}1\ \text{s}}$
+  — ordre de grandeur d'une vraie balançoire, les données referment bien
+  les questions.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
@@ -314,15 +345,25 @@ potentielle de pesanteur ($E_{pp} = 0$).
 une balançoire suspendue par des chaînes/cordes à une structure, dans un
 cadre extérieur herbeux. Légende : « Figure 2 ».
 
-*Figure 3 (schéma) :* point $O$ en haut, étiqueté avec « $(\Delta)$ » à sa
-droite (axe de rotation) ; un axe vertical $\vec{z}$ (flèche pleine) part
-de $O$ vers le haut ; une ligne verticale en pointillés descend de $O$
+*Figure 3 (schéma — relevé au pixel sur `0006-big.jpg`, 2026-08-07) :* point
+$O$ en haut (étiquette « O » **à gauche** de la ligne, « $(\Delta)$ » **à sa
+droite**, l'axe de rotation) ; au-dessus de $O$, une **courte flèche pleine
+orientée vers le haut** dont l'étiquette est un **« z » simple, sans flèche
+de vecteur au-dessus**. Une **ligne verticale en pointillés** descend de $O$
 jusqu'à un point noir étiqueté « $G_0$ » en bas (position d'équilibre de
-$G$) ; un vecteur $\vec{k}$ (courte flèche pleine orientée vers le haut)
-est dessiné juste au-dessus de $G_0$, à gauche de la ligne pointillée. Une
-tige rigide (trait plein) part de $O$ et descend en oblique vers la droite
-jusqu'à un point noir étiqueté « $G$ » suivi de « $(S)$ » (le solide) ;
-l'angle $\theta$ est marqué par un arc fléché entre la ligne verticale en
-pointillés et cette tige, près de $O$. Un arc en pointillés relie $G_0$ à
-$G$, représentant la trajectoire circulaire du pendule. Légende :
-« Figure 3 ».
+$G$). Le vecteur $\vec{k}$ est une **courte flèche pleine vers le haut,
+tracée dans le prolongement exact de cette ligne pointillée** (même abscisse,
+$x \simeq 1032$ px), partant de $G_0$ et remontant sur environ un cinquième de
+la hauteur ; **seule l'étiquette « k » est écrite à gauche de la ligne**
+— *(❌→✅ correction : l'ancienne description plaçait la **flèche** à gauche
+de la pointillée ; elle est **sur** la pointillée.)* Une tige rigide (trait
+plein épais) part de $O$ et descend **en oblique vers la droite** jusqu'à un
+point noir étiqueté « $G$ » (à sa gauche) suivi de « $(S)$ » (à sa droite).
+L'angle $\theta$ est marqué par un **arc fléché** (pointe du côté de la
+tige, donc **sens positif = de la verticale vers la tige**) entre la ligne
+pointillée et la tige, **à mi-longueur de la tige environ** : rayon de l'arc
+$\simeq 110$ px pour une longueur $|OG| \simeq 203$ px, soit **$\simeq 54\%$
+de $OG$**, l'étiquette « $\theta$ » étant posée sous l'arc — *(❌→✅
+correction : l'ancienne description le disait « près de $O$ », ce qu'il
+n'est pas.)* Un **arc en pointillés** relie $G_0$ à $G$, représentant la
+trajectoire circulaire du pendule. Légende : « Figure 3 ».

@@ -193,7 +193,25 @@ $-5\cdot10^{5}\ \text{s}^{-1} = -\dfrac{R_1+r}{L}$. Légende : « Figure 4 ».
 ## 2023 — session normale — Exercice 3, §1 (Réponse d'un dipôle RL à un échelon de tension)
 Source: https://www.alloschool.com/element/142476
 Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-85304, page(s) 4. À faire vérifier (README §3).
+course-422/upload-85304, page(s) 4. **1ʳᵉ passe de vérification adversariale
+indépendante (agent-vérificateur-adversarial, 2026-08-07) : l'énoncé et le
+barème sont intégralement confirmés, MAIS la description de la figure 1
+plaçait $R$ sur la mauvaise branche et la figure 2 n'était pas étalonnée** ⇒
+README §3, l'entrée **reste `transcrit (non vérifié)`** et n'appelle plus
+qu'une **relecture de contrôle des deux paragraphes de figure**.
+
+**Portée du diff (2026-08-07).** Source re-dérivée de zéro :
+`element/142476` → `assets/documents/course-422/upload-85304`, **6 pages**
+(URLs ré-extraites du HTML de la page `element/`, aucune reprise des
+« Images lues »). Couverture p.1 relue : **NS 28F**, session normale 2023,
+3 h, coef 7, SPC/BIOF ; carte $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓ et l'Exercice 3
+y est bien annoncé « **5 points** » avec les trois volets (RL / LC /
+modulation). **Texte du §1 : conforme, aucune divergence** de valeur, unité,
+indice ou exposant ($E = 24\ \text{V}$, résistance négligeable de la bobine,
+$t_0=0$, $i(t)=A+B.e^{-t/\tau}$, « Montrer que $L=1\ \text{H}$ », $u_L(t)$,
+« en unité SI »). **Barème marginal recompté au scan** :
+$0{,}25+0{,}5+0{,}5+0{,}5=\mathbf{1{,}75}$ ✓ ; et
+$\S1+\S2+\S3 = 1{,}75+1{,}5+1{,}75 = \mathbf{5{,}00}$ = Exercice 3 ✓.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
@@ -238,24 +256,55 @@ point d'abscisse $t_0 = 0$.
    tension $u_L(t)$ aux bornes de la bobine lors de l'établissement du
    courant.
 
-*Figure 1 (schéma) :* boucle rectangulaire. Branche gauche : générateur de
-tension $E$ (cercle), en série avec l'interrupteur $K$ (symbole
-d'interrupteur ouvert) au-dessus de lui. Branche supérieure : fil portant
-la flèche de courant $i$ orientée vers la droite, allant du sommet de la
-branche $K$ jusqu'au coin supérieur droit. Branche droite (verticale) :
-bobine $(b)$ dessinée en spires. Branche inférieure : conducteur ohmique de
-résistance $R$ (rectangle étiqueté « R »), reliant le bas de la bobine au
-bas du générateur $E$. Légende : « Figure 1 ».
+*Figure 1 (schéma) :* boucle rectangulaire. **Branche gauche (verticale)** :
+l'interrupteur $K$ en haut (symbole d'interrupteur **ouvert** : deux petits
+disques de contact reliés par un segment oblique, étiquette « K » à gauche),
+puis, en dessous, le générateur $E$ — un **cercle traversé par le fil de la
+branche**, avec une **flèche verticale orientée vers le haut, étiquetée
+« E », placée à gauche du cercle**. **Branche supérieure** : fil portant la
+flèche de courant $i$ orientée vers la droite (étiquette « i » au-dessus),
+du sommet de la branche $K$ jusqu'au coin supérieur droit. **Branche droite
+(verticale)** : la bobine $(b)$ en spires **en haut** (étiquette « (b) » à
+sa gauche) et, **en série juste en dessous d'elle, sur la même branche
+verticale**, le conducteur ohmique $R$ (rectangle vertical, étiquette « R »
+à sa droite). **Branche inférieure** : **simple fil** reliant le bas de $R$
+au bas du générateur $E$ — *(❌→✅ correction 2026-08-07 : l'ancienne
+description plaçait $R$ « branche inférieure » ; sur le scan $R$ est sur la
+branche **droite**, sous la bobine, et la branche du bas est nue)*. Légende :
+« Figure 1 ».
 
 *Figure 2 (courbe) :* $i\ (\text{mA})$ en fonction de $t\ (\text{ms})$, sur
 quadrillage à double graduation (traits principaux, sous-quadrillage fin
-bleu). Axe des ordonnées gradué (traits principaux chiffrés) $9{,}6$ et
-$19{,}2$ (un trait principal supplémentaire, non chiffré, apparaît
-au-dessus de $19{,}2$, au niveau du palier de la courbe) ; axe des
-abscisses gradué (traits principaux chiffrés) $2$ et $4$, origine $0$.
+bleu).
+
+**Étalonnage (mesuré au pixel sur `0004-big.jpg`, 1240×1754).** Cadre :
+**6 divisions principales en abscisse** ($x = 775{,}5 / 830{,}5 / 885{,}5 /
+940{,}5 / 995 / 1050 / 1105$ px, pas $54{,}75$) et **5 divisions et demie en
+ordonnée** au-dessus de l'axe ($y = 1001$ = axe, puis $946{,}5 / 892 /
+837{,}5 / 782{,}5 / 728$, pas $54{,}6$ ; le bord supérieur du cadre est à
+$y = 701$, soit une demi-division au-dessus du dernier trait).
+- **Abscisse** : seuls **deux** traits portent un tiret de graduation sous
+  l'axe ($x = 830{,}5$ et $885{,}5$) et ce sont exactement les deux traits
+  chiffrés, « 2 » (glyphe $x\,821$–$831$) et « 4 » ($x\,880$–$888$), origine
+  « 0 » ($x\,770$–$778$) ⇒ **1 division $= 2\ \text{ms}$**.
+- **Ordonnée** : trois tirets seulement, en $y = 945$ (« 9,6 », glyphe
+  centré $y\,944{,}5$), $y = 892$ (« 19,2 », centré $y\,891{,}5$) et
+  $y = 729$, **non chiffré**. « 9,6 » est à **1 division** de l'axe et
+  « 19,2 » à **2 divisions** ⇒ **1 division $= 9{,}6\ \text{mA}$** ; le
+  tiret non chiffré est à **5 divisions** de l'axe.
+
 Courbe croissante et concave, partant de l'origine $(0\,;\,0)$, montant
-rapidement puis s'aplatissant vers un palier horizontal (régime permanent)
-situé au-dessus du repère $19{,}2$ *(valeur exacte du palier non chiffrée —
-lecture à confirmer)*. La droite $(T)$, en pointillés, est tangente à la
-courbe à l'origine ; elle est nettement plus raide que la courbe. Légende :
-« Figure 2 ».
+rapidement puis s'aplatissant sur un palier horizontal (régime permanent)
+qui vient se confondre avec le trait principal non chiffré ⇒
+**$I_0 = 5\times9{,}6 = \mathbf{48\ \text{mA}}$** *(le drapeau « valeur
+exacte du palier non chiffrée — lecture à confirmer » est **tranché** :
+la valeur est au trait, à $y = 728$)*. La droite $(T)$, en pointillés, est
+tangente à la courbe à l'origine et bien plus raide qu'elle ; elle **coupe
+le palier en $x \simeq 831$ px**, c'est-à-dire au premier trait chiffré ⇒
+**$\tau \simeq 2{,}0\ \text{ms}$**. Légende : « Figure 2 ».
+
+**Contrôle croisé par la physique (referme la Q1-2-2).**
+$R = E/I_0 = 24/48\cdot10^{-3} = \mathbf{500\ \Omega}$ et
+$L = R\tau = 500 \times 2\cdot10^{-3} = \mathbf{1\ \text{H}}$ — exactement ce
+que la question 1-2-2 demande de montrer. Toute autre lecture de
+l'étalonnage donnerait un autre $L$.

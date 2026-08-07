@@ -718,7 +718,23 @@ fait l'objet de la question 1-3. Légende : « Figure 2 ».
 ## 2023 — session normale — Exercice 3, §2 (Circuit oscillant LC)
 Source: https://www.alloschool.com/element/142476
 Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-85304, page(s) 4. À faire vérifier (README §3).
+course-422/upload-85304, page(s) 4. **1ʳᵉ passe de vérification adversariale
+indépendante (agent-vérificateur-adversarial, 2026-08-07) : l'énoncé, le
+barème et la figure 3 sont intégralement confirmés, MAIS la description de la
+figure 4 qualifiait le repère d'échelle de « double flèche » et n'en donnait
+pas la portée en divisions** ⇒ README §3, l'entrée **reste
+`transcrit (non vérifié)`** et n'appelle plus qu'une **relecture de contrôle
+du paragraphe de la figure 4**.
+
+**Portée du diff (2026-08-07).** Source re-dérivée de zéro :
+`element/142476` → `assets/documents/course-422/upload-85304`, **6 pages**
+(URLs ré-extraites du HTML de `element/`). Couverture p.1 relue : **NS 28F**,
+session normale 2023, 3 h, coef 7, SPC/BIOF ; carte
+$7+2{,}5+5+5{,}5=\mathbf{20}$ ✓. **Texte du §2 : conforme, aucune
+divergence** ($E_0$, « chargé totalement », $u_C(t)$, « On prend
+$\pi^2 = 10$ », $E_m$, $t = 1{,}8\ \text{ms}$). **Barème marginal recompté au
+scan** : $0{,}25+0{,}5+0{,}75=\mathbf{1{,}5}$ ✓ ; et
+$\S1+\S2+\S3 = 1{,}75+1{,}5+1{,}75 = \mathbf{5{,}00}$ = Exercice 3 ✓.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
@@ -759,19 +775,53 @@ fil refermant la boucle. Légende : « Figure 3 ».
 *Figure 4 (courbe) :* $u_C\ (\text{V})$ en fonction de $t\ (\text{ms})$, sur
 quadrillage à double graduation (traits principaux, sous-quadrillage fin
 bleu). Aucune valeur numérique n'est portée sur l'axe des ordonnées hormis
-l'origine « $0$ » ; un repère combiné, placé près de l'origine, indique
-l'échelle du quadrillage par une double flèche verticale étiquetée « 5V »
-et une flèche horizontale étiquetée « 0,5 ms ». Axe des abscisses non
-chiffré en dehors de ce repère (flèche horizontale simple « t(ms) »).
-Oscillation sinusoïdale d'amplitude apparemment constante : la courbe,
-visible sur un peu plus d'une période et demie, part d'une valeur proche
-d'un maximum juste après $t = 0$, redescend en franchissant l'axe des
-abscisses (« 0 ») vers un premier minimum, remonte en franchissant à
-nouveau l'axe vers un second maximum situé environ au tiers droit du cadre,
-puis redescend vers un second minimum en fin de tracé *(positions
-temporelles exactes des extremums non chiffrées sur l'axe — lecture à
-confirmer, seules les échelles « 5V » / « 0,5 ms » sont des valeurs
-imprimées)*. Légende : « Figure 4 ».
+l'origine « $0$ », et l'axe des abscisses n'est pas chiffré du tout (simple
+flèche « t(ms) » à droite) : **toute la lecture passe par le repère
+d'échelle**.
+
+**Le repère d'échelle (mesuré au pixel sur `0004-big.jpg`).** Ce n'est pas
+une double flèche : c'est un **coin en L formé de deux flèches à une seule
+pointe**, dont le sommet est posé sur l'**intersection de deux traits
+principaux**, à 2 divisions à droite de l'axe des ordonnées et 1 division
+au-dessus de l'axe des temps ($x = 898$, $y = 1431$ px) —
+- la **flèche verticale « 5V »** monte de $y = 1431$ à $y \simeq 1373$
+  (pointe), soit **exactement 1 division** (pas $59{,}2$ px) ⇒
+  **1 division $= 5\ \text{V}$** ;
+- la **flèche horizontale « 0,5 ms »** va de $x = 898$ à la pointe
+  $x \simeq 960$, soit **exactement 1 division** (traits principaux à $898$
+  et $957$, pas $59{,}3$ px) ⇒ **1 division $= 0{,}5\ \text{ms}$**.
+
+*(❌→✅ correction 2026-08-07 : l'ancienne description parlait d'une « double
+flèche verticale » et ne donnait pas la portée des flèches. C'est le point
+critique : une flèche d'étalonnage qui couvre **une seule division** n'est
+pas une période — ici elle ne l'est effectivement pas, la période vaut
+4 divisions, voir ci-dessous.)*
+
+**Cadre** : traits principaux en abscisse $x = 779{,}5 / 838{,}5 / 898 /
+957 / 1017 / 1075{,}5 / 1135{,}5$ ⇒ **6 divisions $= 3{,}0\ \text{ms}$** ; en
+ordonnée $y = 1372 / 1431 / 1490{,}5 / 1550 / 1609{,}5$ ⇒ **4 divisions**,
+l'axe des temps (trait gras, $y = 1490{,}5$) au milieu ⇒ le cadre couvre
+$\pm 2$ divisions $= \pm 10\ \text{V}$.
+
+**Tracé** : oscillation sinusoïdale d'amplitude constante, **exactement une
+période et demie**. Elle **part de son maximum à $t = 0$** (le sommet touche
+le trait supérieur du cadre : $u_C(0) = +U_0 = \mathbf{+10\ \text{V}}$,
+cohérent avec « condensateur chargé totalement »), franchit l'axe à
+$t = 0{,}5$ ms, atteint son minimum $-10$ V à $t = 1{,}0$ ms, refranchit
+l'axe à $t = 1{,}5$ ms, atteint son second maximum $+10$ V à
+$t = 2{,}0$ ms, refranchit l'axe à $t \simeq 2{,}5$ ms et redescend vers un
+second minimum atteint **au bord droit du cadre**, $t = 3{,}0$ ms. D'où
+**$T_0 = \mathbf{2{,}0\ \text{ms}} = 4$ divisions** *(le drapeau « positions
+temporelles exactes des extremums — lecture à confirmer » est **tranché** :
+avec 1 division $= 0{,}5$ ms, tous les extremums tombent sur des traits
+principaux)*. Légende : « Figure 4 ».
+
+**Contrôle croisé par la physique (referme la Q2-2-1).** Avec $L = 1$ H (§1)
+et $\pi^2 = 10$ imposé par l'énoncé :
+$C = \dfrac{T_0^2}{4\pi^2 L} = \dfrac{(2\cdot10^{-3})^2}{40} = 10^{-7}\
+\text{F} = \mathbf{0{,}1\ \mu\text{F}}$ — valeur ronde, ce qu'une lecture
+erronée de l'échelle ne donnerait pas. Et $t = 1{,}8\ \text{ms} = 0{,}9\,T_0$
+tombe bien à l'intérieur du tracé (Q2-2-2).
 
 ---
 
