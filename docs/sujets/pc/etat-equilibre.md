@@ -78,8 +78,35 @@ $$\text{C}_6\text{H}_5\text{COOH}_{(aq)} + \text{H}_2\text{O}_{(l)} \;\rightleft
 
 ## 2023 — session normale — Exercice 1 (Chimie), §1
 Source: https://www.alloschool.com/element/142476
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-85304, page(s) 2. À faire vérifier (README §3).
+Statut: vérifié — **1ʳᵉ passe de vérification adversariale indépendante**
+(agent-vérificateur-adversarial, 2026-08-07), **diff OK**.
+**Élément re-dérivé** : `element/142476` → `course-422/upload-85304`, **6 pages**
+(`0001`…`0006-big.jpg` ré-extraites du HTML de la page `element/` — le résumé
+HTML annonce toujours à tort « 2ème BAC Sciences Mathématiques B », piège connu).
+**Couverture p.1 relue au pixel** : **NS 28F**, 3 h, coef **7**, « شعبة العلوم
+التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) » ⇒ SPC/BIOF ; carte du sujet
+$7+2{,}5+5+5{,}5=\mathbf{20}$ ✓, dont « Exercice 1 (7 points) — Etude de quelques
+réactions chimiques d'acide éthanoïque ».
+**Portée du diff — `0002-big.jpg`, caractère par caractère** : chapeau
+(« l'eau ; une solution aqueuse de méthanoate de sodium ; le méthanol »), titre
+« 1- Etude d'une solution aqueuse d'acide éthanoïque », $V$, $S_A$,
+$\text{CH}_3\text{COOH}$, $C_A=5.10^{-2}\ \text{mol.L}^{-1}$ (zoom ×2 : exposant
+$-2$ confirmé), $pH=3{,}05$, la définition de $\alpha(\text{CH}_3\text{COOH})$
+(numérateur/dénominateur relus terme à terme, indices « éq »),
+$\alpha=1-\tau$, $pK_{A1}=pK_A(\text{CH}_3\text{COOH}_{(aq)}/\text{CH}_3\text{COO}^-_{(aq)})\simeq4{,}79$
+— **aucune divergence de valeur, unité, indice ou exposant**.
+**Barème marginal recompté au scan** : $0{,}5+0{,}75+0{,}5=\mathbf{1{,}75}$ ✓ ;
+et $\S1+\S2+\S3 = 1{,}75+2{,}0+3{,}25=\mathbf{7{,}00}$ = le total de l'Exercice 1
+annoncé en bandeau ✓.
+**Absence de figure confirmée** dans ce §1 (le seul graphique de la page est celui
+du §3, sous `esterification-hydrolyse.md`).
+**Chimie re-dérivée indépendamment** :
+$[\text{H}_3\text{O}^+]=10^{-3{,}05}=8{,}91\cdot10^{-4}\ \text{mol.L}^{-1}$ ⇒
+$\tau=[\text{H}_3\text{O}^+]/C_A=1{,}78\cdot10^{-2}$ ⇒
+$\alpha=1-\tau=\mathbf{0{,}982}$ ; puis
+$K_A=\dfrac{[\text{H}_3\text{O}^+]^2}{C_A-[\text{H}_3\text{O}^+]}=1{,}62\cdot10^{-5}$
+⇒ $pK_{A1}=\mathbf{4{,}79}$ — **exactement la valeur imprimée dans la Q1.3**, ce
+qui verrouille en retour $C_A=5\cdot10^{-2}$ et $pH=3{,}05$ ✓.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
@@ -89,7 +116,11 @@ course-422/upload-85304, page(s) 2. À faire vérifier (README §3).
 - Code sujet : NS 28F · Barème de l'exercice complet : 7 points ; **§1** =
   1,75 point ($0{,}5+0{,}75+0{,}5$, barème en marge)
 - Images lues (reproductibilité) : `.../course-422/upload-85304/0002-big.jpg`
-- Pages du scan : 2 (sur 6)
+  (énoncé du §1) ; `.../0001-big.jpg` (page de garde — c'est **là seulement**
+  que figure le titre « Etude de quelques réactions chimiques d'acide
+  éthanoïque » repris ci-dessous ; le bandeau de la p.2 ne porte que
+  « EXERCICE 1 (7 points) »)
+- Pages du scan : 2 (sur 6) ; page de garde 1 pour le titre et le barème
 - Portée : **§1 — Étude d'une solution aqueuse d'acide éthanoïque** (réaction
   acide faible / eau, taux d'avancement, $pK_A$). Le **§2** (réaction de
   l'acide éthanoïque avec l'ion méthanoate) du même exercice est transcrit

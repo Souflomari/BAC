@@ -639,8 +639,35 @@ graphe, à gauche du pic/du saut, $(C_1)$ au-dessus de $(C_2)$. Légende :
 
 ## 2023 — session normale — Exercice 1 (Chimie), §2
 Source: https://www.alloschool.com/element/142476
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-85304, page(s) 2. À faire vérifier (README §3).
+Statut: vérifié — **1ʳᵉ passe de vérification adversariale indépendante**
+(agent-vérificateur-adversarial, 2026-08-07), **diff OK**.
+**Élément re-dérivé** : `element/142476` → `course-422/upload-85304`, **6 pages**,
+URLs ré-extraites du HTML de la page `element/` (le résumé HTML annonce toujours
+à tort « Sciences Mathématiques B »). **Couverture p.1 relue** : NS 28F, 3 h,
+coef 7, SPC/BIOF ; carte $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓.
+**Portée du diff — `0002-big.jpg`, caractère par caractère** : titre « 2-Etude de
+la réaction de l'acide éthanoïque avec l'ion méthanoate », $V_1$, $S_A$,
+$V_2=V_1$, $S_B$, méthanoate de sodium
+$\text{Na}^+_{(aq)}+\text{HCOO}^-_{(aq)}$, $C_B=C_A$, $Q_{r,\text{éq}}$,
+« en fonction des constantes d'acidité $K_{A1}$ et $K_{A2}$ des couples
+intervenant », $pK_{A2}=pK_A(\text{HCOOH}_{(aq)}/\text{HCOO}^-_{(aq)})=3{,}75$
+(zoom ×2 : $3{,}75$ confirmé, indices $(aq)$ compris), pH « en fonction de
+$pK_{A1}$ et $pK_{A2}$ » — **aucune divergence de valeur, unité, indice ou
+exposant**. **Barème marginal recompté** :
+$0{,}75+0{,}75+0{,}5=\mathbf{2{,}0}$ ✓ ; $\S1+\S2+\S3=1{,}75+2{,}0+3{,}25=
+\mathbf{7{,}00}$ ✓. **Absence de figure confirmée** dans ce §2.
+**Chimie re-dérivée indépendamment** : la réaction
+$\text{CH}_3\text{COOH}+\text{HCOO}^-\rightleftarrows\text{CH}_3\text{COO}^-+\text{HCOOH}$
+donne $Q_{r,\text{éq}}=K=K_{A1}/K_{A2}=10^{\,pK_{A2}-pK_{A1}}=10^{-1{,}04}
+\simeq\mathbf{9{,}1\cdot10^{-2}}$ (avec $pK_{A1}=4{,}79$ du §1) ; et comme
+$V_2=V_1$ **et** $C_B=C_A$ le mélange est équimolaire acide 1 / base 2, d'où
+$pH=\frac{pK_{A1}+pK_{A2}}{2}=\mathbf{4{,}27}$ — la demi-somme demandée par la
+Q2.3 n'est valide **que** sous ces deux conditions, ce qui confirme en retour la
+transcription de « $V_2=V_1$ » et de « $C_B=C_A$ » ✓.
+*(Note de transcription, non bloquante : le rappel entre parenthèses « (acide
+éthanoïque, voir §1, $C_A=5\cdot10^{-2}$ mol.L⁻¹) » est une glose éditoriale
+ajoutée pour rendre l'entrée autonome — elle n'est pas dans le scan, mais elle
+est exacte et signalée comme renvoi au §1.)*
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan confirmé directement sur l'image : « شعبة العلوم

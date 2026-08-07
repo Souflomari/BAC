@@ -60,21 +60,37 @@ bobine. La droite $(T)$ représente la tangente à la courbe $(C_1)$ à $t = 0$
 
 ## 2024 — session normale — Exercice 4 (Partie 2)
 Source: https://www.alloschool.com/element/145763
-Statut: transcrit (non vérifié) — **2ᵉ passe, vérificateur indépendant
-(agent-vérificateur-indépendant, 2026-08-07) : tout est confirmé SAUF un point de
-la figure 3, corrigé ci-dessous** ⇒ README §3, l'entrée **reste
-`transcrit (non vérifié)`** et n'appelle plus qu'une **relecture de contrôle de ce
-seul point** (le sens de la flèche $i$).
-**❌→✅ Figure 3 : la flèche de courant $i$ est VERTICALE, orientée vers le HAUT**
-— et non « orientée vers la droite ». Zoom ×10 sur `0005-big.jpg` (x 840–910,
-y 450–530) : la pointe pleine est au sommet d'un fût **vertical** porté par la
-branche gauche, juste au-dessus du générateur, l'étiquette « i » étant à sa
-gauche ; une seconde flèche pleine verticale vers le haut, étiquetée « E », est
-tracée **à gauche du cercle, hors de la boucle** (elle n'était pas mentionnée).
-Le sens physique du courant est inchangé (montée par la branche gauche puis
-parcours vers la droite le long de la branche supérieure), mais un lecteur
-reconstruisant la figure d'après l'ancienne description l'aurait dessinée
-horizontale. Description corrigée dans le corps de l'entrée ; **à relire**.
+Statut: vérifié — **3ᵉ passe : relecture de contrôle du point unique laissé
+ouvert par la 2ᵉ passe**, par un vérificateur adversarial indépendant
+(agent-vérificateur-adversarial, 2026-08-07). **La correction de 2ᵉ passe sur la
+figure 3 est CONFIRMÉE au pixel** ⇒ README §3, l'entrée passe à
+`Statut: vérifié`.
+**✅ Figure 3 — flèche $i$ : confirmée VERTICALE, orientée vers le HAUT.**
+Relevé pixel indépendant sur `0005-big.jpg` (fenêtre x 810–960, y 430–600, seuil
+de luminance, sans réutiliser la lecture précédente) : la branche gauche de la
+boucle est le fil **vertical** en $x\simeq884$ (du fil supérieur $y=444$ jusqu'au
+fil inférieur $y=596$) ; sur ce fil, une **pointe pleine triangulaire** occupe
+$y=466\to478$ — largeur $4$ px au sommet ($y=466$) puis $5,7,9,11,13$ px en
+descendant jusqu'à $y=476$ : **base en bas, apex en haut ⇒ flèche vers le haut**,
+non ambiguë. L'étiquette « i » (point $y=462$–$464$ + hampe $y=468$–$476$) est en
+$x\simeq861$–$864$, soit **à gauche** de la pointe et à la même hauteur ✓. Le
+générateur est le cercle centré $(884\,;\,532)$, $\varnothing\simeq50$ px,
+traversé du même trait vertical : la flèche $i$ est donc bien **juste au-dessus
+du générateur** ✓. **Seconde flèche confirmée** : fût vertical en
+$x\simeq848$–$850$ ($y=512\to574$) surmonté d'une pointe pleine
+($y=498\to510$, largeur $1\to12$ px vers le bas) ⇒ **vers le haut**, avec la
+lettre « E » en $x\simeq825$–$834$, $y=516$–$530$. Ce fût est en dehors du
+rectangle de la boucle (dont le bord gauche est le fil $x=884$) et à gauche du
+cercle ✓. **La description corrigée dans le corps de l'entrée est fidèle ; aucune
+retouche supplémentaire.**
+**Élément re-dérivé (3ᵉ fois, indépendamment)** : `element/145763` →
+`course-422/upload-87465`, **6 pages** (`0001`…`0006-big.jpg` ré-extraites du HTML
+de la page `element/` ; le résumé HTML annonce toujours à tort « Sciences
+Mathématiques B »). En-tête de `0005-big.jpg` relu : **NS 28F**, page **5/6**,
+SPC/BIOF. Barème marginal de la Partie 2 re-recompté au scan :
+$0{,}5+0{,}5+0{,}5=\mathbf{1{,}5}$ ✓, et avec la Partie 1
+($0{,}25+0{,}5+0{,}5+0{,}75=2{,}0$) $\Rightarrow\mathbf{3{,}5}$ ✓.
+**— Trace de la 2ᵉ passe, conservée (2026-08-07, agent-vérificateur-indépendant) —**
 **Élément re-dérivé** : `element/145763` → `course-422/upload-87465`, **6 pages**
 (`0007-big.jpg` = 404), URLs d'images ré-extraites du HTML de la page `element/` ;
 couverture p.1 relue — **NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte du sujet

@@ -342,8 +342,40 @@ Légende : « Figure 3 ».
 
 ## 2023 — session normale — Exercice 2, §1 (Désintégration du tritium)
 Source: https://www.alloschool.com/element/142476
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-85304, page(s) 3. À faire vérifier (README §3).
+Statut: vérifié — **1ʳᵉ passe de vérification adversariale indépendante**
+(agent-vérificateur-adversarial, 2026-08-07), **diff OK**.
+**Élément re-dérivé** : `element/142476` → `course-422/upload-85304`, **6 pages**,
+URLs ré-extraites du HTML de `element/` (résumé HTML toujours faux sur la
+filière). **Couverture p.1 relue** : NS 28F, 3 h, coef 7, SPC/BIOF ; carte
+$7+2{,}5+5+5{,}5=\mathbf{20}$ ✓, dont « Exercice 2 (2,5 points) — Etude de
+quelques transformations nucléaires du tritium ».
+**Portée du diff — `0003-big.jpg`, caractère par caractère** : chapeau
+($^3_1\text{H}$, $^2_1\text{H}$, « deux isotopes de l'élément hydrogène ») ;
+**bloc Données relu au zoom ×2** — $M(^3_1\text{H})=3\ \text{g.mol}^{-1}$,
+$N_A=6{,}02.10^{23}\ \text{mol}^{-1}$, $t_{1/2}=12{,}32\ \text{an}$, tableau
+$E_\ell(\text{MeV})$ = $2{,}366$ / $8{,}475$ / $28{,}296$ pour
+$^2_1\text{H}$ / $^3_1\text{H}$ / $^4_2\text{He}$, $1\ \text{an}=3{,}16.10^{7}\
+\text{s}$ ; **les 5 items A–E du QCM relus mot à mot** (A « nombre de masse égal
+à 5 » sur $^3_2\text{He}$ ; B « noyaux très lourds » ; C « $t=2t_{1/2}$ … 25% du
+nombre de noyaux initial » — zoom ×2, **25%** confirmé, pas 75% ; D « somme des
+masses de ses nucléons » ; E « fission … masse convertie en énergie ») ;
+$m_0=2\ \mu\text{g}$, « 90% des noyaux … désintégrés », activité $a_1$ en Bq —
+**aucune divergence de valeur, unité, indice ou exposant**.
+**Barème marginal recompté** : $0{,}5+0{,}25+0{,}25+0{,}5=\mathbf{1{,}5}$ ✓ ;
+$\S1+\S2=1{,}5+1{,}0=\mathbf{2{,}5}$ = total de l'Exercice 2 ✓.
+**Absence de figure confirmée** (aucune courbe ni schéma : la classe de défaut
+« flèche d'étalonnage lue comme période » est **sans objet** ici).
+**Physique re-dérivée indépendamment** — la chaîne complète de la Q1-4 ferme sur
+les seules données transcrites : $t_{1/2}=12{,}32\times3{,}16\cdot10^{7}=
+3{,}89\cdot10^{8}\ \text{s}$ ⇒ $\lambda=\ln2/t_{1/2}=1{,}78\cdot10^{-9}\
+\text{s}^{-1}$ ; $N_0=\dfrac{m_0}{M}N_A=\dfrac{2\cdot10^{-6}}{3}\times
+6{,}02\cdot10^{23}=4{,}01\cdot10^{17}$ noyaux ; à 90 % désintégrés
+$N=0{,}1\,N_0=4{,}01\cdot10^{16}$ ⇒
+$a_1=\lambda N\simeq\mathbf{7{,}1\cdot10^{7}\ \text{Bq}}$. **Contrôle du QCM** :
+A faux ($A=3$), B faux ($\beta^-$ = excès de neutrons), C faux (à $2t_{1/2}$ il
+reste $N_0/4$, donc **75 %** de désintégrés, pas 25 %), D faux (défaut de masse),
+**E vrai** ⇒ une et une seule affirmation juste, comme l'exige l'énoncé — les
+cinq items sont donc transcrits correctement ✓.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
@@ -354,7 +386,11 @@ course-422/upload-85304, page(s) 3. À faire vérifier (README §3).
   (Désintégration du tritium)** = 1,5 point ($0{,}5+0{,}25+0{,}25+0{,}5$,
   barème en marge)
 - Images lues (reproductibilité) : `.../course-422/upload-85304/0003-big.jpg`
-- Pages du scan : 3 (sur 6)
+  (énoncé) ; `.../0001-big.jpg` (page de garde — c'est **là seulement** que
+  figure le titre « Etude de quelques transformations nucléaires du tritium »
+  repris ci-dessous ; le bandeau de la p.3 ne porte que « EXERCICE 2
+  (2,5 points) »)
+- Pages du scan : 3 (sur 6) ; page de garde 1 pour le titre et le barème
 - Portée : **§1 — Désintégration du tritium** (QCM, équation de
   désintégration, relation $t_{1/2}$–$\lambda$, activité). Le **§2**
   (réaction de fusion du tritium et du deutérium, énergie de dissociation,

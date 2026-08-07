@@ -60,8 +60,33 @@ particule $\alpha$.
 
 ## 2023 — session normale — Exercice 2, §2 (Réaction de fusion du tritium et du deutérium)
 Source: https://www.alloschool.com/element/142476
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-85304, page(s) 3. À faire vérifier (README §3).
+Statut: vérifié — **1ʳᵉ passe de vérification adversariale indépendante**
+(agent-vérificateur-adversarial, 2026-08-07), **diff OK**.
+**Élément re-dérivé** : `element/142476` → `course-422/upload-85304`, **6 pages**,
+URLs ré-extraites du HTML de `element/`. **Couverture p.1 relue** : NS 28F, 3 h,
+coef 7, SPC/BIOF ; carte $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓.
+**Portée du diff — `0003-big.jpg`, caractère par caractère** : titre
+« 2- Réaction de fusion du tritium $^3_1\text{H}$ et de deutérium
+$^2_1\text{H}$ » (le scan écrit bien « **de** deutérium »), « conduit à la
+formation d'un noyau d'hélium $^4_2\text{He}$ et s'accompagne de l'émission d'un
+neutron », item **a-** « … pour le dissocier **en ces nucléons** au repos est de
+$8{,}475\ \text{MeV}$ » (la coquille « ces » pour « ses » est **celle du scan**,
+reproduite telle quelle ✓), item **b-** « Le tritium est plus stable que le
+deutérium », $E_{lib}=|\Delta E|$ en MeV — **aucune divergence de valeur, unité,
+indice ou exposant**. **Barème marginal recompté** :
+$0{,}25+0{,}25+0{,}5=\mathbf{1{,}0}$ ✓ ; $\S1+\S2=1{,}5+1{,}0=\mathbf{2{,}5}$ ✓
+(la Q2-1 chapeau ne porte pas de barème propre : seuls **a-** et **b-** sont
+cotés, conformément au scan). **Absence de figure confirmée.**
+**Physique re-dérivée indépendamment** (avec le tableau $E_\ell$ du §1) :
+$^2_1\text{H}+{}^3_1\text{H}\rightarrow{}^4_2\text{He}+{}^1_0\text{n}$ (A et Z
+conservés : $2+3=4+1$, $1+1=2+0$ ✓) ⇒
+$E_{lib}=E_\ell(^4\text{He})-[E_\ell(^2\text{H})+E_\ell(^3\text{H})]
+=28{,}296-(2{,}366+8{,}475)=\mathbf{17{,}455\ \text{MeV}}$ — la valeur canonique
+de la fusion D–T ($\simeq17{,}6$ MeV), ce qui verrouille en retour les trois
+énergies de liaison du tableau ✓. **Contrôle des deux vrai/faux** : **a- vrai**
+(c'est la définition même de l'énergie de liaison) ; **b- vrai** car
+$E_\ell/A$ vaut $8{,}475/3=2{,}83$ MeV/nucléon pour le tritium contre
+$2{,}366/2=1{,}18$ pour le deutérium ✓.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
