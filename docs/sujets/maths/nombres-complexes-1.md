@@ -168,3 +168,28 @@ $$(E)\ :\ z^2 - 2\left(\sqrt{2} + \sqrt{6}\right)z + 16 = 0$$
    d) (0,75) Montrer que $a^4 = 128b$ et en déduire que les points $O$, $B$ et $D$ sont alignés
 
 ---
+
+## 2018 — session normale — Exercice 2
+Source: https://www.alloschool.com/element/94699
+Statut: transcrit (non vérifié — brouillon Gemini gemini-pro-latest, formaté par l'orchestrateur) — 2026-08-07, transcription depuis scan course-438/upload-70450, page(s) 2. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية — خيار فرنسية — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 3 points
+- Images lues : `.../course-438/upload-70450/0002-big.jpg`
+- Pages du scan : 2 (sur 4)
+
+> **Note de lecture** : brouillon issu de la voie Gemini (première passe de volume) — à confronter au scan en vérification adversariale. Aucune figure d'après le brouillon.
+
+**Nombres complexes (équation du second degré, rotation, translation, triangle équilatéral).**
+
+1) (0,75) Résoudre dans l'ensemble $\mathbb{C}$ des nombres complexes l'équation : $2z^2 + 2z + 5 = 0$.
+2) Dans le plan complexe rapporté à un repère orthonormé direct $(O, \vec{u}, \vec{v})$, on considère la rotation $R$ de centre $O$ et d'angle $\frac{2\pi}{3}$.
+   a) (0,25) Écrire sous forme trigonométrique le nombre complexe $d = -\frac{1}{2} + \frac{\sqrt{3}}{2}i$.
+   b) (0,5) On considère le point $A$ d'affixe $a = -\frac{1}{2} + \frac{\sqrt{3}}{2}i$ et le point $B$ image du point $A$ par la rotation $R$. Soit $b$ l'affixe du point $B$, montrer que $b = d \cdot a$.
+3) Soit $t$ la translation de vecteur $\vec{OA}$ et $C$ l'image de $B$ par la translation $t$ et $c$ l'affixe de $C$.
+   a) (0,75) Vérifier que $c = b + a$ et en déduire que $c = a\left(\frac{1}{2} + \frac{\sqrt{3}}{2}i\right)$ *(on pourra utiliser la question 2)b))*.
+   b) (0,75) Déterminer $\arg\left(\frac{c}{a}\right)$ puis en déduire que le triangle $OAC$ est équilatéral.
+
+*(Somme du barème : 0,75 + 0,25 + 0,5 + 0,75 + 0,75 = 3 points.)*
+
+---

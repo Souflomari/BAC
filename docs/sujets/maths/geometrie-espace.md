@@ -103,3 +103,28 @@ Dans l'espace rapporté à un repère orthonormé $(O,\vec{i},\vec{j},\vec{k})$,
 4. a) (0,5) Déterminer une représentation paramétrique de la droite $(\Delta)$ passant par $\Omega$ et perpendiculaire au plan $(P)$
    b) (0,5) Montrer que le point $H(0,1,-1)$ est le centre du cercle $(\Gamma)$
    c) (0,5) Montrer que la droite $(\Delta)$ est une médiatrice du segment $[AB]$
+
+## 2018 — session normale — Exercice 1 *(filière SExp)*
+Source: https://www.alloschool.com/element/94699
+Statut: transcrit (non vérifié — brouillon Gemini gemini-pro-latest, formaté par l'orchestrateur) — 2026-08-07, transcription depuis scan course-438/upload-70450, page(s) 2. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية — خيار فرنسية — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 3 points
+- Images lues : `.../course-438/upload-70450/0002-big.jpg`
+- Pages du scan : 2 (sur 4)
+
+> **Note de lecture** : brouillon issu de la voie Gemini (première passe de volume) — glyphes, valeurs et barèmes à confronter au scan en vérification adversariale. Aucune figure dans cet exercice d'après le brouillon.
+
+**Géométrie de l'espace (produit vectoriel, plan, sphère, section circulaire).**
+
+Dans l'espace rapporté à un repère orthonormé direct $(O, \vec{i}, \vec{j}, \vec{k})$, on considère les points $A(0, -2, -2)$, $B(1, -2, -4)$ et $C(-3, -1, 2)$.
+
+1) (1) Montrer que $\vec{AB} \wedge \vec{AC} = 2\vec{i} + 2\vec{j} + \vec{k}$ et en déduire que $2x + 2y + z + 6 = 0$ est une équation cartésienne du plan $(ABC)$.
+2) (0,5) On considère la sphère $(S)$ dont une équation est $x^2 + y^2 + z^2 - 2x - 2z - 23 = 0$. Vérifier que la sphère $(S)$ a pour centre $\Omega(1, 0, 1)$ et pour rayon $R = 5$.
+3) a) (0,25) Vérifier que $\begin{cases} x = 1 + 2t \\ y = 2t \\ z = 1 + t \end{cases}\ (t \in \mathbb{R})$ est une représentation paramétrique de la droite $(\Delta)$ passant par le point $\Omega$ et orthogonale au plan $(ABC)$.
+   b) (0,5) Déterminer les coordonnées de $H$ point d'intersection de la droite $(\Delta)$ et du plan $(ABC)$.
+4) (0,75) Vérifier que $d(\Omega, (ABC)) = 3$, puis montrer que le plan $(ABC)$ coupe la sphère $(S)$ selon un cercle de rayon $4$, dont on déterminera le centre.
+
+*(Somme du barème : 1 + 0,5 + 0,25 + 0,5 + 0,75 = 3 points.)*
+
+---

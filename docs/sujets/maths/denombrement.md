@@ -73,3 +73,34 @@ On tire simultanément au hasard deux boules de cette urne.
 2. (0,5) Montrer que $p(B) = \dfrac{5}{21}$, où $B$ est l'évènement « La somme des numéros des boules tirées est 4 »
 3. (0,5) Calculer $p(A \cap B)$
 4. (0,5) Les événements $A$ et $B$ sont-ils indépendants ? Justifier.
+
+## 2018 — session normale — Exercice 3
+Source: https://www.alloschool.com/element/94699
+Statut: transcrit (non vérifié — brouillon Gemini gemini-pro-latest, formaté par l'orchestrateur) — 2026-08-07, transcription depuis scan course-438/upload-70450, page(s) 3. À faire vérifier (README §3).
+
+- Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية — خيار فرنسية — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 3 points
+- Images lues : `.../course-438/upload-70450/0003-big.jpg`
+- Pages du scan : 3 (sur 4)
+
+> **Note de lecture** : brouillon issu de la voie Gemini (première passe de volume) — à confronter au scan en vérification adversariale. **Classement** : combinatoire pur en Q1 (urne, tirage simultané, comptage) → ce fichier ; la Q2 introduit une variable aléatoire **binomiale** (répétition avec remise) — extension au-delà du comptage pur, signalée pour la conversion en banque.
+
+**Dénombrement (urne, tirage simultané, puis variable binomiale).**
+
+Une urne contient $9$ boules indiscernables au toucher : **cinq boules rouges** portant les nombres $1\ ;\ 1\ ;\ 2\ ;\ 2\ ;\ 2$ et **quatre boules blanches** portant les nombres $1\ ;\ 2\ ;\ 2\ ;\ 2$.
+
+On considère l'expérience suivante : on tire au hasard et simultanément trois boules de l'urne.
+
+Soient les événements :
+$A$ : « les trois boules tirées sont de même couleur » ;
+$B$ : « les trois boules tirées portent le même nombre » ;
+$C$ : « les trois boules tirées sont de même couleur et portent le même nombre ».
+
+1) (1,5) Montrer que $p(A) = \frac{1}{6}$, $p(B) = \frac{1}{4}$ et $p(C) = \frac{1}{42}$.
+2) On répète l'expérience précédente trois fois avec remise dans l'urne des trois boules tirées après chaque tirage, et on considère la variable aléatoire $X$ qui est égale au nombre de fois de réalisation de l'événement $A$.
+   a) (0,5) Déterminer les paramètres de la variable aléatoire binomiale $X$.
+   b) (1) Montrer que $p(X = 1) = \frac{25}{72}$ et calculer $p(X = 2)$.
+
+*(Somme du barème : 1,5 + 0,5 + 1 = 3 points.)*
+
+---
