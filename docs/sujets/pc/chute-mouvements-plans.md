@@ -633,10 +633,13 @@ vitesse instantanée du centre d'inertie de la bille en fonction du temps
 
 ## 2025 — session normale — Exercice 4 (Partie 1)
 Source: https://www.alloschool.com/element/145796
-Statut: transcrit (non vérifié) — **deux corrections de figure appliquées** par
-agent-vérificateur-adversarial, 2026-08-06 : l'entrée **reste non vérifiée** et
-appelle une re-lecture indépendante (README §3).
-**Élément re-dérivé** : `element/145796` → `course-422/upload-87489`, **6 pages**
+Statut: vérifié — **2ᵉ passe : re-lecture indépendante par un troisième agent**
+(agent-vérificateur-tiers), 2026-08-06, diff OK. Les deux corrections de figure
+de la 1ʳᵉ passe sont **confirmées au zoom** (relevés ci-dessous), aucune
+divergence nouvelle. Historique : transcription → corrections de figure
+(agent-vérificateur-adversarial) → **promotion (3ᵉ lecture)**.
+**Élément re-dérivé (2ᵉ fois, indépendamment)** : `element/145796` →
+`course-422/upload-87489`, **6 pages**
 (`0007-big.jpg` = 404) ; couverture p.1 relue — **NS28F**, SPC/BIOF, 3 h, coef 7 ;
 carte $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓, dont « Exercice 4 : Mécanique
 (**5,5 points**) ».
@@ -668,6 +671,20 @@ $m_T=\dfrac{4\pi^2(R_T+h)^3}{G\,T^2}=6{,}0\cdot10^{24}\ \text{kg}$ ✓ (masse de
 Terre) ; $v_S=\sqrt{\dfrac{Gm_T}{R_T+h}}=7{,}2\cdot10^{3}\ \text{m.s}^{-1}$ et
 $2\pi(R_T+h)/v_S=6{,}7\cdot10^{3}\ \text{s}=T$ ✓ — les quatre données du sujet
 sont mutuellement cohérentes.
+
+**Relevés indépendants de la 2ᵉ passe (`0006-big.jpg`, zooms ×4 et ×9) :**
+- **Cercle extérieur (orbite) : en gros pointillés** (série de carrés noirs
+  séparés) sur tout son pourtour ; **cercle intérieur (Terre) : trait plein et
+  épais continu** — les deux tracés sont sans ambiguïté de nature différente ✓.
+- **$\vec{n}$ et $\vec{u}$ : deux flèches PLEINES** à pointe noire triangulaire,
+  partant du point noir $G_S$ ; $\vec{n}$ vers l'intérieur (vers $O$), $\vec{u}$
+  tangente orientée vers le bas-gauche. Aucun pointillé sur ces deux vecteurs ✓.
+- **Seul élément pointillé hors orbite** : la **double flèche verticale « $h$ »**
+  (pointe en haut sur l'orbite, pointe en bas sur la surface de la Terre) ✓.
+  Les flèches de rappel des encadrés « Le satellite (S) » et « La Terre » sont,
+  elles, **pleines** — vérifié au zoom.
+- $O$ marqué d'un point au centre du cercle intérieur ✓ ; légende « Figure 1 » ✓ ;
+  barème marginal recompté sur le scan : $0{,}5+0{,}5+0{,}75+0{,}75+0{,}5=3{,}0$ ✓.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 5,5 points ; **Partie 1**
@@ -737,14 +754,46 @@ mouvement). Le **seul élément en pointillés** hors du cercle-orbite est une
 
 ## 2024 — session normale — Exercice 5 (Partie 1)
 Source: https://www.alloschool.com/element/145763
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-87465, page(s) 5–6. À faire vérifier (README §3).
+Statut: transcrit (non vérifié) — **1ʳᵉ passe de vérification adversariale
+effectuée (agent-vérificateur-tiers, 2026-08-06)** : `element/145763` re-dérivé
+indépendamment → `course-422/upload-87465`, **6 pages** ; couverture p.1 relue —
+**NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte $7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓.
+**Énoncé : conforme.** Diff caractère par caractère contre `0005-big.jpg`
+(« Les parties 1 et 2 sont indépendantes », $\vec{f}=-\mu.\vec{v}$,
+$\vec{v}=v_z.\vec{k}$, $\vec{F}=-\rho_L.V_B.\vec{g}$, $g=10\ \text{m.s}^{-2}$,
+$m_B=5{,}0\ \text{g}$, $\rho_B=5{,}526\cdot10^{3}\ \text{kg.m}^{-3}$) et
+`0006-big.jpg` (équation différentielle, Q2-1 à Q3) ; barème marginal recompté
+$0{,}75+0{,}25+0{,}25+0{,}5+1=\mathbf{2{,}75}$ ✓, et $2{,}75+2{,}25=\mathbf{5}$ ✓.
+**Deux divergences de figure ont été trouvées et corrigées** ⇒ README §3 :
+l'entrée **reste `transcrit (non vérifié)`**.
+**❌→✅ (i) Figure 1 : l'axe vertical est à DROITE de la colonne de liquide**, pas
+à gauche (zoom ×4 : colonne grisée à gauche, axe fléché $O\!\to\!z$ à droite, la
+ligne pointillée horizontale reliant $O$ au sommet de la colonne).
+**❌→✅ (ii) Figure 2 : la vitesse limite vaut $0{,}70\ \text{m.s}^{-1}$, pas
+« de l'ordre de $0{,}6$ ».** Grille mesurée au pixel : traits principaux **noirs**
+en abscisse tous les $59{,}3$ px de $x=720{,}5$ à $1135{,}5$ ⇒ **7 divisions**,
+étiquettes **0,1** ($x=781$) et **0,2** ($x=840$) ⇒ 1 division $=0{,}1\ \text{s}$
+(cadre : $0{,}7$ s) ; en ordonnée de $y=607{,}5$ (axe) à $370{,}5$ ⇒ **4
+divisions**, étiquettes **0,2** ($y=548$) et **0,4** ($y=489{,}5$) ⇒ 1 division
+$=0{,}2\ \text{m.s}^{-1}$ (cadre : $0{,}8$ m.s$^{-1}$), **avec un trait bleu à
+chaque demi-division ($0{,}1$ m.s$^{-1}$)**. Le palier de la courbe se couche
+**exactement sur le trait bleu de $0{,}7\ \text{m.s}^{-1}$** ($y=400$ px).
+**Contrôle exponentiel (fait sur trois points de la trace)** :
+$v(0{,}1)=0{,}45$, $v(0{,}2)=0{,}61$, $v(0{,}3)=0{,}668$ ⇒
+$v_\ell(1-e^{-t/\tau})$ avec $v_\ell=0{,}70$ donne $\tau=0{,}097$, $0{,}098$ et
+$0{,}097$ s — **$\tau=0{,}1\ \text{s}$**, lecture au trait. La tangente $(T)$
+coupe l'asymptote **au repère $t=0{,}1$ s**, ce qui est la construction attendue
+en Q2-2 ✓. **Physique re-dérivée** : $a_0=v_\ell/\tau=\mathbf{7\ \text{m.s}^{-2}}$ ;
+$\mu=m_B/\tau=5{,}0\cdot10^{-3}/0{,}1=\mathbf{5\cdot10^{-2}\ \text{kg.s}^{-1}}$ ;
+$a_0=g(1-\rho_L/\rho_B)$ ⇒ $\rho_L=0{,}3\,\rho_B\simeq
+\mathbf{1{,}66\cdot10^{3}\ \text{kg.m}^{-3}}$ — les trois réponses sortent de
+lectures au trait, ce qui confirme l'étalonnage.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
   le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC
   Sciences Mathématiques B » ; l'en-tête du scan, lu directement, confirme
   sans ambiguïté SPC/BIOF — README §3, l'image fait foi)
-- Code sujet : NS28F · Barème de l'exercice complet : 5 points ; **Partie 1**
+- Code sujet : NS 28F · Barème de l'exercice complet : 5 points ; **Partie 1**
   = 2,75 points ($0{,}75+0{,}25+0{,}25+0{,}5+1$, barème en marge)
 - Images lues (reproductibilité) : `.../course-422/upload-87465/0005-big.jpg`
   (chapeau, données, figure 1), `.../0006-big.jpg` (questions, figure 2)
@@ -801,27 +850,36 @@ $m_B = 5{,}0\ \text{g}$ ; $\rho_B = 5{,}526 \cdot 10^{3}\ \text{kg.m}^{-3}$.
       $t_0 = 0$.
 3. (1) Déduire la valeur de $\mu$ et celle de $\rho_L$.
 
-*Figure 1 (schéma) :* à droite, une colonne verticale grisée figurant le
-liquide $(L)$, dans laquelle un disque noir plein, étiqueté « (S) »,
-représente la bille. À gauche de la colonne, un axe vertical orienté vers le
-bas porte, en haut, l'origine $O$ (marquée par un tiret) puis le vecteur
-$\vec{k}$ (courte flèche pleine orientée vers le bas) juste en dessous ;
-l'axe se termine en bas par une pointe de flèche étiquetée « z ». Une ligne
-horizontale en pointillés relie $O$ au haut de la colonne de liquide,
-marquant le niveau où $z = 0$ (position initiale de $G$). Légende :
-« Figure 1 ».
+*Figure 1 (schéma) :* le schéma occupe la marge droite de la page. **À gauche du
+schéma**, une colonne verticale grisée (parois en traits noirs, fond fermé par un
+trait horizontal) figure le liquide $(L)$ ; un **disque noir plein** y représente
+la bille, étiquetée « **(S)** » — l'étiquette est posée à droite de la colonne,
+à la hauteur de la bille. **À droite de la colonne**, un axe vertical orienté
+vers le bas porte, en haut, l'origine **$O$** puis le vecteur $\vec{k}$ (courte
+flèche pleine orientée vers le bas) juste en dessous ; l'axe se termine en bas
+par une pointe de flèche étiquetée « **z** ». Une **ligne horizontale en
+pointillés** relie $O$ (sur l'axe) au haut de la colonne de liquide, marquant le
+niveau où $z = 0$ (position initiale de $G$). Légende : « Figure 1 ».
 
 *Figure 2 (courbe) :* $v_z\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$.
-Axe des ordonnées gradué (traits principaux chiffrés) $0{,}2$ et $0{,}4$,
-origine $0$ ; axe des abscisses gradué (traits principaux chiffrés) $0{,}1$
-et $0{,}2$, origine $0$. Courbe croissante et concave partant de l'origine
-$(0\,;\,0)$, tendant asymptotiquement vers un palier horizontal (vitesse
-limite) à une valeur non chiffrée au-dessus du repère $0{,}4$, de l'ordre de
-$0{,}6\ \text{m.s}^{-1}$ *(lecture à confirmer)*. La droite $(T)$, en
-pointillés, tangente à la courbe à l'origine, part de $(0\,;\,0)$ et monte
-avec une pente nettement plus raide que la courbe, passant au voisinage du
-repère $t = 0{,}1$ à une hauteur proche du palier de la courbe *(lecture à
-confirmer)*. Légende : « Figure 2 ».
+Axe des ordonnées : traits principaux **noirs** chiffrés $0{,}2$ et $0{,}4$,
+origine $0$ — **1 division principale $= 0{,}2\ \text{m.s}^{-1}$**, avec un
+**trait bleu à chaque demi-division ($0{,}1$)** ; le cadre compte 4 divisions,
+soit $0{,}8\ \text{m.s}^{-1}$ de haut. Axe des abscisses : traits principaux
+chiffrés $0{,}1$ et $0{,}2$, origine $0$ — **1 division $= 0{,}1\ \text{s}$**,
+même sous-quadrillage bleu à la demi-division ; le cadre compte 7 divisions, soit
+$0{,}7\ \text{s}$ de large.
+
+Courbe croissante et concave partant de l'origine $(0\,;\,0)$, tendant
+asymptotiquement vers un **palier horizontal (vitesse limite) qui vient se
+coucher exactement sur le trait bleu de $v_\ell = 0{,}70\ \text{m.s}^{-1}$**
+(3,5 divisions au-dessus de l'axe) et le suit jusqu'au bord droit ; le palier est
+pratiquement atteint dès $t \simeq 0{,}4\ \text{s}$. La droite $(T)$, tracée
+**en pointillés** et étiquetée « (T) » à sa gauche, est tangente à la courbe à
+l'origine : elle part de $(0\,;\,0)$ et **coupe l'asymptote au repère
+$t = 0{,}1\ \text{s}$** — d'où $\tau = 0{,}1\ \text{s}$ et
+$a_0 = v_\ell/\tau = 7\ \text{m.s}^{-2}$ (lectures au trait, non estimées).
+Légende : « Figure 2 ».
 
 ---
 

@@ -413,10 +413,16 @@ $\simeq 10{,}5$ ms $= T_0/2$).
 
 ## 2025 — session normale — Exercice 3 (Partie 2)
 Source: https://www.alloschool.com/element/145796
-Statut: transcrit (non vérifié) — ⚠️ **corrections de figure importantes
-appliquées** par agent-vérificateur-adversarial, 2026-08-06 : l'entrée **reste non
-vérifiée** et appelle impérativement une re-lecture indépendante (README §3).
-**Élément re-dérivé** : `element/145796` → `course-422/upload-87489`, **6 pages**
+Statut: transcrit (non vérifié) — **2ᵉ passe de vérification effectuée
+(agent-vérificateur-tiers, 2026-08-06)** : les **six corrections majeures** de la
+1ʳᵉ passe sont **toutes confirmées au pixel** (voir « Relevés indépendants »
+ci-dessous), mais **deux divergences résiduelles ont été trouvées et corrigées**
+(couleur du trait pointillé « 7 » ; profondeur du premier minimum). Conformément
+au README §3 (« corriger et **laisser en `transcrit (non vérifié)`** »), l'entrée
+**reste non vérifiée** : elle n'appelle plus qu'une **relecture de contrôle** de
+ces deux points, tout le reste étant doublement vérifié.
+**Élément re-dérivé (2ᵉ fois, indépendamment)** : `element/145796` →
+`course-422/upload-87489`, **6 pages**
 (`0007-big.jpg` = 404) ; couverture p.1 relue — **NS28F**, SPC/BIOF, 3 h, coef 7 ;
 carte $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓.
 **Énoncé (texte) : conforme.** Diff caractère par caractère contre `0004-big.jpg`
@@ -450,13 +456,74 @@ mesuré au pixel), ce qui est précisément le $U_0=10\ \text{V}$ de l'énoncé 
 (b) position de $t_B$ — **levée** : $t_B$ est le **passage par zéro descendant**
 qui suit le maximum $t_A$, exactement **une division ($T/4$) après $t_A$**, tous
 deux sur un trait principal (cohérent avec la Q2-2-2 : $i=C\frac{du_C}{dt}<0$
-entre $t_A$ et $t_B$) ; (c) profondeur du premier minimum — **maintenue** :
-$\approx-8{,}5\ \text{V}$, soit légèrement **sous** le trait principal non chiffré
-de $-8\ \text{V}$ ; la valeur n'est pas au trait, donc non affirmée.
+entre $t_A$ et $t_B$) ; (c) profondeur du premier minimum — **corrigée en 2ᵉ passe** :
+$\approx-8{,}3\ \text{V}$ (et non $-8{,}5$), soit légèrement **sous** le trait
+principal non chiffré de $-8\ \text{V}$ ; la valeur n'est pas au trait, donc non
+affirmée.
 **Autres relevés confirmés** : le niveau **7** est marqué par un **trait pointillé
-bleu + son étiquette**, et **n'est pas un trait principal** (les traits principaux
++ son étiquette**, et **n'est pas un trait principal** (les traits principaux
 chiffrés sont 4, 0 et $-4$ ; ceux de $\pm8$ existent, non chiffrés) ; axe des
 abscisses non gradué, simple flèche « t » ; légende « Figure 3 ».
+
+---
+
+**2ᵉ passe — relevés indépendants au pixel (agent-vérificateur-tiers,
+`0004-big.jpg` + `0005-big.jpg`, 2026-08-06).**
+
+*Étalonnage de la figure 3.* Traits principaux **noirs** relevés en abscisse à
+$x=561\,/\,621\,/\,680{,}5\,/\,740\,/\,799{,}5\,/\,859\,/\,918\,/\,977{,}5\,/\,
+1037\,/\,1096{,}5\,/\,1155{,}5$ px (pas constant $59{,}5$ px) ⇒ **10 divisions
+principales** ✓ ; en ordonnée à $y=357{,}5\,/\,417\,/\,476{,}5\,/\,536\,/\,595{,}5$
+px (même pas), étiquettes relevées **7** ($y=371$), **4** ($y=417$), **0**
+($y=477$, axe épais), **−4** ($y=535$) ⇒ **1 division $=4$ V**, traits $\pm8$
+présents non chiffrés, et **le niveau 7 tombe entre deux traits** ✓.
+
+*Span mesuré de la double flèche.* Encre de la flèche relevée sur les rangées
+$y=361$–$367$, de $x=859$ à $x=918$ px : **59 px pour une division de 59,5 px**,
+c'est-à-dire **exactement une division principale**, du trait de $t_B$ au trait
+suivant. **⇒ « $7\cdot10^{-5}$ s » est bien l'étalon d'une division, pas la
+pseudopériode.** (Classe de défaut « flèche d'étalonnage lue comme période » :
+confirmée.)
+
+*Période re-dérivée du tracé.* Extremums mesurés (centre de l'encre) :
+div 0 → $+10{,}0$ V ; div 2 → $-8{,}3$ V ; div 4 → $+7{,}0$ V ; div 6 → $-5{,}9$ V ;
+div 8 → $+4{,}9$ V ; div 10 → $-4{,}1$ V. Passages par zéro aux divisions
+**1, 3, 5, 7, 9**. Deux maxima consécutifs : **4 divisions** ⇒
+$T=4\times7\cdot10^{-5}=\mathbf{2{,}8\cdot10^{-4}\ \text{s}}$ ✓.
+**Contrôle de décroissance** : le rapport d'un extremum au suivant vaut
+$0{,}83$–$0{,}84$ **de façon parfaitement régulière** sur les six extremums —
+la lecture est donc auto-cohérente.
+**Contrôle physique re-fait indépendamment** :
+$T_0=2\pi\sqrt{LC_0}=2\pi\sqrt{2\cdot10^{-3}\times1\cdot10^{-6}}
+=2{,}810\cdot10^{-4}$ s, à $0{,}4\,\%$ de la valeur lue ✓ (la lecture
+$7\cdot10^{-5}$ s aurait exigé $L=0{,}12$ mH).
+
+*Autres points confirmés.* $u_C(0)=\mathbf{10{,}0\ \text{V}}$ (encre à
+$y=330$ px pour $x=565$, soit $9{,}85$ V à la division 0,067 ; l'ajustement
+cosinus amorti redonne une amplitude initiale de $9{,}98$ V) ✓ ; $t_A$ =
+maximum de la division 4, au trait pointillé $7$ V ($y=372{,}5$, mesuré
+$+6{,}99$ V) ✓ ; **$t_B$ = passage par zéro descendant de la division 5**, soit
+exactement **une division $=T/4$ après $t_A$** ✓ ; **aucun maximum final** : la
+dernière encre est à $x=1154$ px (division 9,97), à $-4{,}1$ V, **sur le
+troisième minimum au bord droit du cadre** ✓.
+
+*Divergences résiduelles trouvées et corrigées en 2ᵉ passe (d'où le maintien en
+« non vérifié ») :*
+1. ❌→✅ **Le trait pointillé du niveau 7 est NOIR, pas bleu.** Mesure des
+   pixels d'encre de ce trait : RGB moyen $(3,\,3,\,36)$ — quasi noir — alors que
+   le sous-quadrillage fin, mesuré sur les mêmes rangées, donne
+   $(118,\,113,\,180)$, franchement bleu ; l'axe épais donne $(2,\,4,\,10)$. Au
+   zoom ×6 le trait se lit sans hésitation comme une **série de tirets noirs**,
+   du même ton que l'axe et que le petit tiret de repère porté par l'axe des
+   ordonnées.
+2. ❌→✅ **Premier minimum : $\approx-8{,}3$ V, non $-8{,}5$ V.** Le trait
+   principal non chiffré de $-8$ V est à $y=595{,}5$ px et l'échelle vaut
+   $14{,}875$ px/V ; l'encre du minimum occupe $y=600$–$601$ (centre $600{,}5$),
+   soit **5,0 px sous le trait $-8$ V $\Rightarrow -8{,}34$ V**. Une valeur de
+   $-8{,}5$ V exigerait $y=603{,}2$, où le scan est blanc. La décroissance
+   géométrique ($10 \to 8{,}3 \to 7{,}0 \to 5{,}9 \to 4{,}9 \to 4{,}1$) confirme
+   ce relevé. La valeur reste **hors trait**, donc toujours signalée
+   « lecture à confirmer ».
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 5 points ; **Partie 2**
@@ -502,7 +569,8 @@ compte **10 divisions principales** en abscisse. Axe des ordonnées : traits
 principaux chiffrés $4$, $0$ et $-4$ (une division $=4\ \text{V}$ ; les traits
 principaux de $+8$ et $-8$ existent mais ne sont pas chiffrés) ; le niveau
 $u_C = 7$ n'est **pas** un trait principal — il est matérialisé par un **trait
-pointillé horizontal bleu** portant l'étiquette « 7 ».
+pointillé horizontal noir** (tirets, du même ton que l'axe) portant l'étiquette
+« 7 » et un petit tiret de repère sur l'axe des ordonnées.
 
 Oscillation pseudopériodique d'amplitude **décroissante**, dont **tous les
 extremums tombent sur un trait principal, un trait sur deux** :
@@ -510,7 +578,7 @@ extremums tombent sur un trait principal, un trait sur deux** :
   (2,5 divisions au-dessus de $0$) — c'est le $U_0$ de l'énoncé ;
 - division 1 : passage par zéro descendant ;
 - division 2 : **premier minimum, le plus profond du tracé**, un peu au-dessous
-  du trait principal non chiffré de $-8\ \text{V}$ (≈ $-8{,}5\ \text{V}$ —
+  du trait principal non chiffré de $-8\ \text{V}$ (≈ $-8{,}3\ \text{V}$ —
   *valeur non située sur un trait : lecture à confirmer*) ;
 - division 4 : **deuxième maximum, qui touche exactement le pointillé
   $u_C = 7$** ; c'est ce maximum que repère l'abscisse **$t_A$** (trait vertical
@@ -518,13 +586,13 @@ extremums tombent sur un trait principal, un trait sur deux** :
 - division 5 : **$t_B$**, étiqueté de la même façon sous l'axe — c'est le
   **passage par zéro descendant** qui suit $t_A$, soit exactement une division
   ($T/4$) plus loin ;
-- division 6 : deuxième minimum, moins profond que le premier (≈ $-6\ \text{V}$ —
+- division 6 : deuxième minimum, moins profond que le premier (≈ $-5{,}9\ \text{V}$ —
   *hors trait : lecture à confirmer*) ;
-- division 8 : troisième maximum, plus bas que celui de $t_A$ (≈ $4{,}8\ \text{V}$ —
+- division 8 : troisième maximum, plus bas que celui de $t_A$ (≈ $4{,}9\ \text{V}$ —
   *hors trait : lecture à confirmer*) ;
 - division 9 : passage par zéro descendant ; division 10 : **troisième minimum,
-  au bord droit du cadre — le tracé s'arrête là** (il n'y a pas de maximum
-  au-delà).
+  au bord droit du cadre — le tracé s'arrête là** (≈ $-4{,}1\ \text{V}$ —
+  *hors trait : lecture à confirmer* ; il n'y a pas de maximum au-delà).
 
 Un repère à **double flèche horizontale**, étiqueté « $7 \cdot 10^{-5}\ \text{s}$ »
 et tracé au-dessus de la courbe, s'étend **exactement d'un trait principal au
@@ -541,14 +609,47 @@ lui-même en Partie 3 pour la même bobine (b)). Légende : « Figure 3 ».
 
 ## 2024 — session normale — Exercice 4 (Partie 1)
 Source: https://www.alloschool.com/element/145763
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-87465, page(s) 4–5. À faire vérifier (README §3).
+Statut: transcrit (non vérifié) — **1ʳᵉ passe de vérification adversariale
+effectuée (agent-vérificateur-tiers, 2026-08-06)** : `element/145763` re-dérivé
+indépendamment → `course-422/upload-87465`, **6 pages** ; couverture p.1 relue —
+**NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte $7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓.
+**Énoncé : conforme.** Diff caractère par caractère contre `0004-big.jpg`
+(cadrage « Dans les circuits électriques… en cas de besoin. », $C=0{,}22$ nF,
+bobine $(b)$ $(L,r)$, $R$ ajustable, $R=R_0$, $t=0$) et `0005-big.jpg`
+(Q1-1 à Q1-4, $E_j=|\Delta E_t|$) ; barème marginal recompté
+$0{,}25+0{,}5+0{,}5+0{,}75=\mathbf{2{,}0}$ ✓, et $2{,}0+1{,}5=\mathbf{3{,}5}$ ✓.
+**Figure 1 (circuit) : conforme**, revue élément par élément au zoom ×4.
+**Mais la description de la figure 2 comportait une divergence, corrigée
+ci-dessous** ⇒ README §3 : l'entrée **reste `transcrit (non vérifié)`**.
+**Étalonnage de la figure 2 (mesuré au pixel).** Traits principaux noirs en
+abscisse : $x=619{,}5$ (axe) puis tous les $59{,}3$ px jusqu'à $1153{,}5$ ⇒
+**9 divisions** ; en ordonnée : $y=1270$ (cadre haut), $1329{,}5$, $1388{,}5$,
+$1448$ (axe épais), $1507{,}5$, $1566{,}5$, $1626$ (cadre bas) ; étiquettes
+**2** ($y=1388$), **0** ($y=1449$), **−2** ($y=1506$) ⇒ **1 division $=2$ V**,
+donc **le cadre va de $-6$ V à $+6$ V** (traits de $\pm4$ et $\pm6$ non chiffrés).
+**Aucune double flèche d'étalonnage sur cette figure** : l'axe des temps est
+totalement non gradué (contrôle de la classe « flèche d'étalonnage lue comme
+période » — sans objet ici).
+**❌→✅ Le maximum local qui suit le premier minimum ne vaut pas « autour de 3 »**,
+mais $\simeq\mathbf{+4{,}8\ \text{V}}$ (encre à $y=1305$ px). Valeurs relevées :
+$u_C(0)=\mathbf{+6{,}0\ \text{V}}$ (le tracé **part exactement du trait supérieur
+du cadre**, drapeau levé) ; $t_1$ = **1ʳᵉ division**, premier passage par zéro
+descendant ; premier minimum $\simeq-5{,}4$ V (division 2) ; maximum
+$\simeq+4{,}8$ V (division 4) ; $t_2$ = **6ᵉ division**, second minimum
+$\simeq\mathbf{-4{,}3\ \text{V}}$ ; maximum suivant $\simeq+3{,}9$ V (division 8) ;
+le tracé atteint le bord droit (division 9) en repassant par zéro. La suite des
+extremums décroît d'un facteur **0,897 constant** d'un extremum au suivant (six
+valeurs) — la lecture est auto-cohérente. La pseudopériode vaut donc
+**4 divisions** ; $t_1$ est un **zéro** (énergie dans la bobine) et $t_2$ un
+**extremum** (énergie dans le condensateur), ce qui donne son sens à la Q1-3 ✓.
+**Q1-4 re-dérivée** : $E_j=\frac12C\left(u_C(0)^2-u_C(t_2)^2\right)
+=\frac12\times0{,}22\cdot10^{-9}\times(36-18{,}5)\simeq1{,}9\cdot10^{-9}$ J ✓.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
   le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC
   Sciences Mathématiques B » ; l'en-tête du scan, lu directement, confirme
   sans ambiguïté SPC/BIOF — README §3, l'image fait foi)
-- Code sujet : NS28F · Barème de l'exercice complet : 3,5 points ; **Partie 1**
+- Code sujet : NS 28F · Barème de l'exercice complet : 3,5 points ; **Partie 1**
   = 2,0 points ($0{,}25+0{,}5+0{,}5+0{,}75$, barème en marge)
 - Images lues (reproductibilité) : `.../course-422/upload-87465/0004-big.jpg`
   (chapeau, données, figures 1–2), `.../0005-big.jpg` (questions 1-1 à 1-4)
@@ -616,23 +717,34 @@ haut à côté. Branche droite (verticale) : bobine dessinée en spires,
 étiquetée « (L,r) » à gauche du symbole et « (b) » à droite. Branche
 inférieure : simple fil refermant la boucle. Légende : « Figure 1 ».
 
-*Figure 2 (courbe) :* $u_C\ (\text{V})$ en fonction de $t$ (axe non chiffré
-en unité, flèche horizontale simple « t »). Axe des ordonnées gradué (traits
-principaux chiffrés) $2$ et $-2$, origine $0$ ; quadrillage secondaire fin.
-Oscillation pseudopériodique d'amplitude **décroissante** : la courbe part,
-à $t = 0$, d'une valeur non chiffrée proche du bord supérieur du cadre,
-au-dessus du repère $2$ *(lecture à confirmer)*, décroît, coupe l'axe des
-abscisses en un point marqué par un trait vertical en pointillés court
-étiqueté « $t_1$ » (juste après $t=0$), continue de décroître jusqu'à un
-premier minimum en deçà du repère $-2$ *(valeur non chiffrée, lecture à
-confirmer)*, remonte à un maximum local (plus bas que le point de départ,
-autour de $3$ *(lecture à confirmer)*), redescend jusqu'à un second minimum
-— moins profond que le premier — marqué par un trait vertical en
-pointillés-tirets étiqueté « $t_2$ » (au niveau de ce second minimum),
-remonte ensuite à un nouveau maximum local (plus bas que le précédent),
-avant de sortir du cadre en fin de tracé. Les amplitudes successives
-diminuent régulièrement d'un extremum au suivant, signature de
-l'amortissement. Légende : « Figure 2 ».
+*Figure 2 (courbe) :* $u_C\ (\text{V})$ en fonction de $t$ (**axe des temps non
+gradué et sans étalon** : simple flèche horizontale « t »). Axe des ordonnées
+gradué (traits principaux chiffrés) $2$, $0$ et $-2$ — **1 division principale
+$= 2\ \text{V}$**, les traits de $\pm4$ et $\pm6$ existent mais ne sont pas
+chiffrés ; sous-quadrillage bleu fin (5 carreaux par division). Le cadre compte
+**9 divisions en abscisse** et va de $\mathbf{-6\ \text{V}}$ (trait du bas) à
+$\mathbf{+6\ \text{V}}$ (trait du haut).
+
+Oscillation pseudopériodique d'amplitude **décroissante**, dont les extremums
+tombent sur les divisions **paires** et les passages par zéro sur les divisions
+**impaires** (pseudopériode $= 4$ divisions) :
+- $t = 0$ : la courbe part **exactement du trait supérieur du cadre, soit
+  $u_C(0) = +6\ \text{V}$** (lecture au trait, non estimée) ;
+- division 1 : passage par zéro descendant, marqué par un **court trait vertical
+  en pointillés étiqueté « $t_1$ »** qui chevauche l'axe ;
+- division 2 : premier minimum, $\simeq -5{,}4\ \text{V}$ *(hors trait : lecture
+  à confirmer)* ;
+- division 4 : maximum, $\simeq +4{,}8\ \text{V}$ *(hors trait)* ;
+- division 6 : **second minimum, $\simeq -4{,}3\ \text{V}$**, repéré par un
+  **long trait vertical en tirets étiqueté « $t_2$ »** qui descend de l'axe
+  jusqu'au creux *(hors trait)* ;
+- division 8 : maximum suivant, $\simeq +3{,}9\ \text{V}$ *(hors trait)* ;
+- division 9 : le tracé repasse par zéro et atteint là le bord droit du cadre.
+
+Les amplitudes successives décroissent d'un facteur sensiblement constant
+(≈ $0{,}9$) d'un extremum au suivant, signature de l'amortissement. Noter que
+$t_1$ tombe sur un **zéro** de $u_C$ et $t_2$ sur un **extremum** — c'est ce qui
+fait l'objet de la question 1-3. Légende : « Figure 2 ».
 
 ---
 

@@ -193,10 +193,13 @@ de l'écran :
 
 ## 2025 — session normale — Exercice 3 (Partie 3)
 Source: https://www.alloschool.com/element/145796
-Statut: transcrit (non vérifié) — **une correction de figure (mineure) appliquée**
-par agent-vérificateur-adversarial, 2026-08-06 : l'entrée **reste non vérifiée** et
-appelle une re-lecture indépendante (README §3).
-**Élément re-dérivé** : `element/145796` → `course-422/upload-87489`, **6 pages**
+Statut: vérifié — **2ᵉ passe : re-lecture indépendante par un troisième agent**
+(agent-vérificateur-tiers), 2026-08-06, diff OK. La correction de figure de la
+1ʳᵉ passe (antenne) est **confirmée au zoom**, aucune divergence nouvelle.
+Historique : transcription → correction de figure (agent-vérificateur-adversarial)
+→ **promotion (3ᵉ lecture)**.
+**Élément re-dérivé (2ᵉ fois, indépendamment)** : `element/145796` →
+`course-422/upload-87489`, **6 pages**
 (`0007-big.jpg` = 404) ; couverture p.1 relue — **NS28F**, SPC/BIOF, 3 h, coef 7 ;
 carte $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓.
 **Énoncé : conforme.** Diff caractère par caractère contre `0005-big.jpg`
@@ -227,6 +230,24 @@ $1/f_p=6{,}2\cdot10^{-6}\ \text{s}$ et $1/f_s=2\cdot10^{-4}\ \text{s}$ : la doub
 inégalité $1/f_p \ll R_0C_0 \ll 1/f_s$ **n'est pas satisfaite** (côté droit
 violé) — la Q3-3 admet donc une réponse justifiée « non », l'énoncé est
 cohérent.
+
+**Relevés indépendants de la 2ᵉ passe (`0005-big.jpg`, zooms ×5 à ×9) :**
+- **Antenne : confirmée.** Mât **vertical** unique montant du nœud haut de
+  l'étage 1, surmonté de **deux traits obliques divergents formant un V ouvert
+  vers le haut** (sommet du V en bas, sur le mât). Aucune trace de V inversé.
+- **Étage 1** revu élément par élément : cadre pointillé, bobine $(b)$ en spires
+  **en parallèle** avec le condensateur variable $C$ (deux armatures + flèche
+  oblique), sortie vers le bloc « Amplification » (rectangle, texte vertical) ✓.
+- **Étage 2** revu élément par élément : diode $D$ (triangle pointe à droite +
+  barre) → nœud **B** (point noir) ; rhéostat $R$ (rectangle + flèche oblique) de
+  B vers le rail du bas ; masse **M** (symbole hachuré) sur ce rail ; nœud **N**
+  (point noir) avec $C_0$ en dérivation ; $C_2$ **en série** sur le fil
+  horizontal ; $R_2$ (rectangle) en dérivation ; second bloc « Amplification » et
+  sortie fléchée « HP ». Légendes « Étage 1 », « Étage 2 », « Figure 4 » ✓.
+- **Recalcul indépendant** : $C_1=1/(4\pi^2Lf_p^2)=4{,}76\cdot10^{-10}$ F ✓ ;
+  $R_0C_0=1{,}5\cdot10^{-3}$ s vs $1/f_p=6{,}2\cdot10^{-6}$ s et
+  $1/f_s=2{,}0\cdot10^{-4}$ s ⇒ $R_0C_0 > 1/f_s$, démodulation de mauvaise
+  qualité ✓.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 5 points ; **Partie 3**

@@ -499,14 +499,42 @@ schéma.)*
 
 ## 2024 — session normale — Exercice 1 (Chimie), Partie 2
 Source: https://www.alloschool.com/element/145763
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-87465, page(s) 2–3. À faire vérifier (README §3).
+Statut: transcrit (non vérifié) — **1ʳᵉ passe de vérification adversariale
+effectuée (agent-vérificateur-tiers, 2026-08-06)** : `element/145763` re-dérivé
+indépendamment → `course-422/upload-87465`, **6 pages** ; couverture p.1 relue —
+**NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte $7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓.
+**Énoncé : conforme.** Diff caractère par caractère contre `0002-big.jpg`
+(250 mg, $K_e=10^{-14}$, $AH_{(aq)}/A^-_{(aq)}$, $M(AH)=176$ g.mol$^{-1}$,
+$V_{SA}=50{,}0$ mL) et `0003-big.jpg` ($V_A=15{,}0$ mL,
+$C_B=1{,}50\cdot10^{-2}$ mol.L$^{-1}$, repère composé « 5/5-1- » bien présent,
+$V_B=8{,}5$ mL) ; barème marginal recompté
+$0{,}5+0{,}5+0{,}5+0{,}75+0{,}5+0{,}75+0{,}75+0{,}5=\mathbf{4{,}75}$ ✓, et
+$2{,}25+4{,}75=\mathbf{7}$ ✓. **Mais la description de la figure 2 comportait une
+divergence bloquante, corrigée ci-dessous** ⇒ README §3 : l'entrée **reste
+`transcrit (non vérifié)`**.
+**❌→✅ Figure 2 — le saut de $(C_1)$ n'est pas « entre 5 et 10 ».** Grille
+mesurée au pixel : traits principaux noirs en abscisse à
+$x=685{,}5/744{,}5/803{,}5/863{,}5/922{,}5/982/1041{,}5/1100{,}5$ px (pas
+$59{,}3$) et en ordonnée à $y=1243{,}5/1303/1362{,}5/1421{,}5/1481{,}5/1540{,}5/
+1600/1658{,}5$ px ; étiquettes relevées **5** ($x=743$), **10** ($x=804$),
+**4** ($y=1539$), **2** ($y=1600$), **0** ($y=1659$, axe). ⇒ **1 division
+$=5\ \text{mL}$ et 2 unités de pH** ; le cadre fait donc **35 mL × pH 14**.
+Le pic de $(C_2)$ et le saut de $(C_1)$ tombent **exactement sur le 5ᵉ trait
+principal, soit $V_{BE}=\mathbf{25\ \text{mL}}$** (et non « entre 5 et 10 »).
+**Contrôle chimique (fait indépendamment)** :
+$C_A=C_BV_{BE}/V_A=1{,}50\cdot10^{-2}\times25/15=2{,}5\cdot10^{-2}$ mol.L$^{-1}$ ;
+$m=C_AV_{SA}M=2{,}5\cdot10^{-2}\times0{,}0500\times176=\mathbf{0{,}22\ \text{g}}$
+sur les 250 mg initiaux — parfaitement cohérent avec l'énoncé ✓. Et
+$pK_A=pH+\log(V_{BE}/V_B-1)$ à $V_B=8{,}5$ mL avec $pH$ lu $\simeq3{,}78$ donne
+$pK_A\simeq\mathbf{4{,}07}$, valeur recoupée par la lecture directe à la
+demi-équivalence ($V_B=12{,}5$ mL ⇒ $pH\simeq4{,}05$) et par la valeur
+tabulée de l'acide ascorbique ($pK_{A1}=4{,}1$) ✓.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
   le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC
   Sciences Mathématiques B » ; l'en-tête du scan, lu directement, confirme
   sans ambiguïté SPC/BIOF — README §3, l'image fait foi)
-- Code sujet : NS28F · Barème de l'exercice complet : 7 points ; **Partie 2**
+- Code sujet : NS 28F · Barème de l'exercice complet : 7 points ; **Partie 2**
   = 4,75 points ($0{,}5+0{,}5+0{,}5+0{,}75+0{,}5+0{,}75+0{,}75+0{,}5$, barème
   en marge)
 - Images lues (reproductibilité) : `.../course-422/upload-87465/0002-big.jpg`
@@ -571,20 +599,26 @@ en fonction de $V_B$.
 
 *Figure 2 (courbe double, page 2/6) :* axe des ordonnées combiné
 $pH\,;\,\dfrac{dpH}{dV_B}$, gradué (traits principaux chiffrés) $0$, $2$,
-$4$ (pas de $2$, quadrillage secondaire fin) ; axe des abscisses
-$V_B\ (\text{mL})$, gradué (traits principaux chiffrés) $5$ et $10$
-(quadrillage secondaire fin, pas non chiffré). Courbe $(C_1)$
-(dosage $pH = f(V_B)$) : croissante, partant d'une valeur non chiffrée
-proche du repère $pH = 2$-$3$ à $V_B = 0$ *(lecture à confirmer)*, montée
-lente et régulière jusqu'à une valeur non chiffrée proche de $pH \approx
-4$–$5$ *(lecture à confirmer)*, puis saut quasi vertical situé entre les
-repères $5$ et $10$, plus proche du second *(position exacte non chiffrée —
-lecture à confirmer)*, avant un palier final à une valeur non chiffrée dans
-le haut du cadre *(lecture à confirmer)*. Courbe $(C_2)$ (dérivée
-$dpH/dV_B = f(V_B)$) : quasi nulle sur presque tout le domaine, avec un pic
-étroit et positif centré sur le même $V_B$ que le saut de $(C_1)$
-(amplitude non chiffrée). Étiquettes « $(C_1)$ » et « $(C_2)$ » portées
-directement sur le graphe, en retrait du pic/du saut. Légende : « Figure 2 ».
+$4$ — **1 division principale $=2$ unités**, les traits de $6$, $8$, $10$, $12$
+et $14$ existent mais ne sont pas chiffrés ; sous-quadrillage bleu fin. Axe des
+abscisses $V_B\ (\text{mL})$, gradué (traits principaux chiffrés) $5$ et $10$ —
+**1 division principale $=5\ \text{mL}$**, les traits de $15$, $20$, $25$, $30$
+et $35$ existent mais ne sont pas chiffrés. Le cadre compte **7 divisions dans
+chaque direction**, soit $35\ \text{mL}$ de large et $pH = 14$ de haut.
+
+Courbe $(C_1)$ (dosage $pH = f(V_B)$) : croissante, partant de $pH \simeq 2{,}8$
+à $V_B = 0$ *(hors trait : lecture à confirmer)*, montée lente et régulière
+(≈ $pH\,4$ vers $V_B = 12$–$13\ \text{mL}$), puis **saut quasi vertical centré
+exactement sur le 5ᵉ trait principal, soit $V_B = 25\ \text{mL}$** (le saut fait
+passer $pH$ d'environ $6$ à environ $10$), avant un palier final lentement
+croissant atteignant $pH \simeq 11{,}5$ au bord droit du cadre ($V_B \simeq
+35\ \text{mL}$) *(valeurs hors trait : lecture à confirmer)*. Courbe $(C_2)$
+(dérivée $dpH/dV_B = f(V_B)$) : quasi nulle sur presque tout le domaine, avec un
+**pic étroit et positif centré sur le même trait principal $V_B = 25\ \text{mL}$**
+que le saut de $(C_1)$, montant jusque dans le haut du cadre (amplitude non
+chiffrée). Étiquettes « $(C_1)$ » et « $(C_2)$ » portées directement sur le
+graphe, à gauche du pic/du saut, $(C_1)$ au-dessus de $(C_2)$. Légende :
+« Figure 2 ».
 
 ---
 

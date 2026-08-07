@@ -73,10 +73,14 @@ et $+6\ \text{cm}$ ; période $T_0$ à lire graphiquement.
 
 ## 2025 — session normale — Exercice 4 (Partie 2)
 Source: https://www.alloschool.com/element/145796
-Statut: transcrit (non vérifié) — ⚠️ **corrections de figure importantes
-appliquées** par agent-vérificateur-adversarial, 2026-08-06 : l'entrée **reste non
-vérifiée** et appelle impérativement une re-lecture indépendante (README §3).
-**Élément re-dérivé** : `element/145796` → `course-422/upload-87489`, **6 pages**
+Statut: vérifié — **2ᵉ passe : re-lecture indépendante par un troisième agent**
+(agent-vérificateur-tiers), 2026-08-06, diff OK. Les trois corrections de figure
+de la 1ʳᵉ passe **et** l'adjudication du drapeau $-12{,}5$ sont **confirmées au
+pixel** (relevés ci-dessous), aucune divergence nouvelle. Historique :
+transcription → corrections de figure (agent-vérificateur-adversarial) →
+**promotion (3ᵉ lecture)**.
+**Élément re-dérivé (2ᵉ fois, indépendamment)** : `element/145796` →
+`course-422/upload-87489`, **6 pages**
 (`0007-big.jpg` = 404) ; couverture p.1 relue — **NS28F**, SPC/BIOF, 3 h, coef 7 ;
 carte $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓.
 **Énoncé : conforme.** Diff caractère par caractère contre `0006-big.jpg`
@@ -124,6 +128,38 @@ rondes ; et $t=1\ \text{s}=T_0/2$ (⇒ $x=-X_m$), $t=2{,}5\ \text{s}=1{,}25\,T_0
 (⇒ $x=0$), ce qui donne à la Q3 une variation non triviale
 $\Delta E_{pe}=-\tfrac12KX_m^2$ — cohérent avec une question à 0,75 pt (la lecture
 erronée $T_0=1\ \text{s}$ aurait donné $\Delta E_{pe}=0$).
+
+**Relevés indépendants de la 2ᵉ passe (mesures au pixel, `0006-big.jpg`) :**
+- **Grille (figure 3)** : traits principaux noirs en abscisse à
+  $x=890{,}5\,/\,950\,/\,1009\,/\,1068{,}5\,/\,1128$ px (pas $59{,}4$ px) ⇒
+  **4 divisions principales** ; en ordonnée à
+  $y=1299\,/\,1358{,}5\,/\,1418\,/\,1477{,}5\,/\,1537$ px ⇒ **4 divisions**.
+  Étiquettes relevées : **12,5** ($y=1297$ = cadre du haut), **6,25** ($y=1360$),
+  **0** ($y=1420$, axe), **−6,25** ($y=1477$) ⇒ 1 division $=6{,}25$ et
+  **le trait du bas du cadre vaut $-12{,}5$** (non chiffré).
+- **SPAN MESURÉ DE LA DOUBLE FLÈCHE « 1 s »** : pointes relevées à
+  $x\simeq1009$ et $x\simeq1068$ px, soit **exactement 1 division principale**
+  (59 px mesurés pour 59,4 px de division). Ses deux extrémités coïncident avec
+  **les traits principaux des divisions 2 et 3**, qui sont **deux passages par
+  zéro consécutifs** du tracé ⇒ le repère mesure **une demi-période**, et c'est
+  aussi **l'étalon de l'axe** : 1 division = 1 s. **Ce n'est donc pas la
+  période.** (Classe de défaut « flèche d'étalonnage lue comme période » —
+  confirmée ici.)
+- **PÉRIODE PROPRE RE-DÉRIVÉE DU TRACÉ** : extremums mesurés aux divisions
+  **0,5** (min), **1,5** (max), **2,5** (min), **3,5** (max) ; passages par zéro
+  aux divisions **0, 1, 2, 3, 4**. Deux maxima consécutifs sont séparés de
+  **2 divisions** ⇒ $T_0 = 2\times1 = \mathbf{2\ \text{s}}$ ; le cadre (4 divisions)
+  contient **exactement deux périodes** ✓.
+- **Sens de départ** : à $x$ juste à droite de l'axe, la trace est **sous** l'axe
+  ($v_x=-5{,}9\cdot10^{-2}$ m.s$^{-1}$ à la division 0,16) ⇒ la courbe **descend
+  d'abord** depuis $(0\,;\,0)$ ✓, cohérent avec $\varphi=0$.
+- **Amplitudes** : l'encre des minima atteint $y=1535$–$1537$ px et celle des
+  maxima $y=1299$–$1301$ px, soit **tangence exacte aux traits inférieur
+  ($-12{,}5$) et supérieur ($+12{,}5$) du cadre** ✓ — drapeau levé.
+- **Figure 2** : $O$ (point sur l'axe, étiqueté dessous) est **nettement à gauche
+  du solide** ; le trait **vertical pointillé** monte de l'axe jusqu'au solide et
+  porte l'étiquette « $x$ » sous l'axe ✓ ; mur hachuré, ressort à spires, solide
+  gris portant $G$, $(S)$, $\vec{i}$ depuis $O$, axe fléché « x » : conformes ✓.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 5,5 points ; **Partie 2**

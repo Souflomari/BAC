@@ -204,14 +204,31 @@ ci-dessus.)*
 
 ## 2024 — session normale — Exercice 3
 Source: https://www.alloschool.com/element/145763
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-87465, page(s) 4. À faire vérifier (README §3).
+Statut: vérifié — **passe de vérification adversariale** par
+agent-vérificateur-tiers, 2026-08-06, **diff OK**. `element/145763` re-dérivé
+indépendamment → `course-422/upload-87465`, **6 pages** ; couverture p.1 relue
+(carte du sujet $7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓, dont « Exercice 3 : (2 points)
+— Désintégration d'un radioélément »). **Diff caractère par caractère contre
+`0004-big.jpg`** : titre « Désintégration de l'iridium 192 », chapeau
+curiethérapie mot pour mot, $^{192}_{77}\text{Ir}$, $^{192}_{78}\text{Pt}$,
+rayonnement $\gamma$, $t_{1/2}=74\ \text{jours}=6{,}3936\cdot10^{6}\ \text{s}$,
+$a_0=1{,}08\cdot10^{-2}\ \text{Bq}$ (relu au zoom ×6 : exposant $-2$ confirmé),
+$\Delta t=730\ \text{jours}$ — **aucune divergence de valeur, unité, indice ou
+exposant** ; barème marginal recompté $0{,}5\times4=\mathbf{2{,}0}$ ✓ ; absence
+de figure confirmée. **Physique re-dérivée indépendamment** :
+$\lambda=\ln2/t_{1/2}=1{,}084\cdot10^{-7}\ \text{s}^{-1}$ ;
+$N_0=a_0/\lambda\simeq1{,}0\cdot10^{5}$ noyaux ;
+$\Delta t = 730/74 = 9{,}86\,t_{1/2}$ ⇒ $N_d=N_0(1-2^{-9{,}86})=0{,}9989\,N_0$ —
+la source est pratiquement épuisée au bout de deux ans, ce qui donne son sens au
+« Commenter le résultat obtenu » de la Q3-2 ✓.
+*(Seule normalisation typographique appliquée : le code sujet est imprimé
+« NS 28F » avec une espace sur ce scan — corrigé ci-dessous.)*
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
   le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC
   Sciences Mathématiques B » ; l'en-tête du scan, lu directement, confirme
   sans ambiguïté SPC/BIOF — README §3, l'image fait foi)
-- Code sujet : NS28F · Barème de l'exercice : 2 points
+- Code sujet : NS 28F · Barème de l'exercice : 2 points
   ($0{,}5+0{,}5+0{,}5+0{,}5$, barème en marge)
 - Images lues (reproductibilité) : `.../course-422/upload-87465/0004-big.jpg`
 - Pages du scan : 4 (sur 6)

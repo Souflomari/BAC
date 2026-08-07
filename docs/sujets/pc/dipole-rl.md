@@ -60,14 +60,45 @@ bobine. La droite $(T)$ représente la tangente à la courbe $(C_1)$ à $t = 0$
 
 ## 2024 — session normale — Exercice 4 (Partie 2)
 Source: https://www.alloschool.com/element/145763
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-87465, page(s) 5. À faire vérifier (README §3).
+Statut: transcrit (non vérifié) — **1ʳᵉ passe de vérification adversariale
+effectuée (agent-vérificateur-tiers, 2026-08-06)** : `element/145763` re-dérivé
+indépendamment → `course-422/upload-87465`, **6 pages** ; couverture p.1 relue —
+**NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte $7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓.
+**Énoncé : conforme.** Diff caractère par caractère contre `0005-big.jpg`
+($E=6\ \text{V}$, $R_1$, $t_0=0$,
+$\frac{di}{dt}=-\left(\frac{R_1+r}{L}\right)i+\frac{E}{L}$, « Vérifier que la
+valeur de $L$ est : $L=2\ \text{mH}$ », constante de temps $\tau$) ; barème
+marginal recompté $0{,}5\times3=\mathbf{1{,}5}$ ✓. **Figure 3 (circuit) :
+conforme** au zoom ×4. **Mais la lecture de la figure 4 comportait une divergence
+bloquante, corrigée ci-dessous** ⇒ README §3 : l'entrée **reste
+`transcrit (non vérifié)`**.
+**❌→✅ L'intersection avec l'axe des abscisses n'est pas $i \approx 3\ \text{mA}$
+mais $i = 6\ \text{mA}$.** Grille mesurée au pixel : traits principaux en abscisse
+à $x=763{,}5/822{,}5/881{,}5/941/1000{,}5/1059{,}5/1119{,}5$ px (pas $59{,}3$) ⇒
+**6 divisions**, étiquettes **1** ($x=822$) et **2** ($x=882$) ⇒ 1 division
+$=1\ \text{mA}$ et **le bord droit du cadre vaut $6\ \text{mA}$** ; en ordonnée
+$y=697{,}5/756{,}5/816/875{,}5$ ⇒ **3 divisions**, étiquettes **2** ($y=756$),
+**1** ($y=815$), **0** ($y=879$) ⇒ **le bord supérieur vaut
+$3\cdot10^{3}\ \text{A.s}^{-1}$**. Le segment est donc tracé **de coin à coin** :
+de $(0\,;\,3\cdot10^{3}\ \text{A.s}^{-1})$ à $(6\ \text{mA}\,;\,0)$. Trace suivie
+colonne par colonne : $(1{,}46\,;\,2{,}28)$, $(1{,}98\,;\,2{,}03)$,
+$(2{,}47\,;\,1{,}76)$, $(3{,}48\,;\,1{,}27)$, $(4{,}49\,;\,0{,}76)$,
+$(4{,}98\,;\,0{,}51)$, $(5{,}94\,;\,0{,}04)$ ⇒ droite $\frac{di}{dt}=3-0{,}5\,i$
+(unités de la figure), les **deux ordonnées à l'origine sont donc au trait, non
+estimées** (drapeaux levés).
+**Physique re-dérivée** : $\left.\frac{di}{dt}\right|_{i=0}=\frac{E}{L}
+=3\cdot10^{3}$ ⇒ $L=6/3000=\mathbf{2\ \text{mH}}$ ✓ (c'est exactement la
+Q2-2-1) ; $I_{max}=E/(R_1+r)=6\ \text{mA}$ ⇒ $R_1+r=1000\ \Omega$ ;
+$\tau=L/(R_1+r)=\mathbf{2\cdot10^{-6}\ \text{s}}$, valeur qu'on retrouve
+directement comme l'inverse de la pente
+($|{\rm pente}|=3\cdot10^{3}/6\cdot10^{-3}=5\cdot10^{5}\ \text{s}^{-1}$) ✓.
+Avec la lecture erronée $i\approx3$ mA on aurait trouvé $\tau=1\ \mu$s.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
   le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC
   Sciences Mathématiques B » ; l'en-tête du scan, lu directement, confirme
   sans ambiguïté SPC/BIOF — README §3, l'image fait foi)
-- Code sujet : NS28F · Barème de l'exercice complet : 3,5 points ; **Partie 2**
+- Code sujet : NS 28F · Barème de l'exercice complet : 3,5 points ; **Partie 2**
   = 1,5 point ($0{,}5+0{,}5+0{,}5$, barème en marge)
 - Images lues (reproductibilité) : `.../course-422/upload-87465/0005-big.jpg`
 - Pages du scan : 5 (sur 6)
@@ -108,15 +139,21 @@ refermant la boucle. Légende : « Figure 3 ».
 *Figure 4 (courbe) :* axe des ordonnées $\dfrac{di}{dt}\ (10^{3}\
 \text{A.s}^{-1})$, gradué (traits principaux chiffrés) $1$ et $2$, origine
 $0$ ; axe des abscisses $i\ (\text{mA})$, gradué (traits principaux
-chiffrés) $1$ et $2$, origine $0$. Droite décroissante (segment de pente
-négative constante) : elle coupe l'axe des ordonnées à $i = 0$ en une valeur
-non chiffrée, un carreau principal au-dessus du repère $2$, soit
-approximativement $3\times10^{3}\ \text{A.s}^{-1}$ *(lecture à confirmer)*,
-et coupe l'axe des abscisses (à $\dfrac{di}{dt}=0$) en une valeur non
-chiffrée, un carreau principal au-delà du repère $2$, soit approximativement
-$i \approx 3\ \text{mA}$ *(lecture à confirmer)*, tout près du coin
-inférieur droit du cadre où débute la flèche de l'axe « $i(\text{mA})$ ».
-Légende : « Figure 4 ».
+chiffrés) $1$ et $2$, origine $0$. Sous-quadrillage bleu fin. Le cadre compte
+**6 divisions principales en abscisse** ($1$ division $=1\ \text{mA}$, donc
+**bord droit $= 6\ \text{mA}$**) et **3 divisions en ordonnée** ($1$ division
+$=10^{3}\ \text{A.s}^{-1}$, donc **bord supérieur $= 3\cdot10^{3}\
+\text{A.s}^{-1}$**) ; les traits de $3$, $4$, $5$, $6$ mA et de
+$3\cdot10^{3}\ \text{A.s}^{-1}$ existent mais ne sont pas chiffrés.
+
+Droite décroissante tracée **d'un coin à l'autre du cadre** : elle part du
+**coin supérieur gauche**, c'est-à-dire de l'ordonnée à l'origine
+$\left.\dfrac{di}{dt}\right|_{i=0} = 3\cdot10^{3}\ \text{A.s}^{-1}$ (lecture au
+trait), et rejoint le **coin inférieur droit**, où elle coupe l'axe des
+abscisses à $\dfrac{di}{dt}=0$ pour $i = 6\ \text{mA}$ (lecture au trait) — juste
+avant le départ de la flèche de l'axe « $i(\text{mA})$ ». Sa pente vaut donc
+$-0{,}5\cdot10^{3}\ \text{A.s}^{-1}$ par mA, soit
+$-5\cdot10^{5}\ \text{s}^{-1} = -\dfrac{R_1+r}{L}$. Légende : « Figure 4 ».
 
 ---
 

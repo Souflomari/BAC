@@ -385,11 +385,13 @@ abscisses exactement en $(12\,;\,0)$.
 
 ## 2025 — session normale — Exercice 3 (Partie 1)
 Source: https://www.alloschool.com/element/145796
-Statut: transcrit (non vérifié) — **une correction de figure appliquée** par
-agent-vérificateur-adversarial, 2026-08-06 : l'entrée **reste non vérifiée** et
-appelle une re-lecture indépendante (README §3, « corriger et laisser en
-`transcrit (non vérifié)` »).
-**Élément re-dérivé** : `element/145796` → `course-422/upload-87489`, **6 pages**
+Statut: vérifié — **2ᵉ passe : re-lecture indépendante par un troisième agent**
+(agent-vérificateur-tiers), 2026-08-06, diff OK. Les deux corrections de figure
+de la 1ʳᵉ passe sont **confirmées au pixel** (relevés ci-dessous), aucune
+divergence nouvelle. Historique : transcription (passe 1) → correction de figure
+(passe 2, agent-vérificateur-adversarial) → **promotion (passe 3)**.
+**Élément re-dérivé (2ᵉ fois, indépendamment)** : `element/145796` →
+`course-422/upload-87489`, **6 pages**
 (`0007-big.jpg` = 404) ; couverture p.1 relue — **NS28F**, SPC/BIOF, 3 h, coef 7 ;
 carte du sujet $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓, dont « Exercice 3 : Électricité
 (**5 points**) ».
@@ -422,6 +424,27 @@ condensateur, bobine « (b) » $(L,r)$ en spires entre N et M, légende
 **Physique re-dérivée** : $u_C(t)=\frac{I_0}{C_0}t$ ⇒ pente $=I_0/C_0$ ; la pente
 lue (1 V.s$^{-1}$) avec $I_0=1\ \mu\text{A}$ donne $C_0=1\ \mu\text{F}$ ✓ (Q1-2) ;
 et $u_C=10\ \text{V}$ au bout de 10 s = coin du cadre ✓.
+
+**Relevés indépendants de la 2ᵉ passe (mesures au pixel, `0004-big.jpg`) :**
+- **Figure 2, grille** : traits principaux **noirs** en abscisse à
+  $x=835{,}5\,/\,896\,/\,955\,/\,1014\,/\,1074\,/\,1133$ px (pas $59{,}6$ px) et
+  en ordonnée à $y=1074\,/\,1134\,/\,1194\,/\,1253\,/\,1312{,}5\,/\,1372$ px —
+  soit **5 × 5 divisions principales**, sous-quadrillage bleu à 5 traits fins par
+  division. Étiquettes relevées par détection de blobs : abscisses **2** (centre
+  $x=897$) et **4** ($x=954$) ; ordonnées **4** ($y=1252$), **2** ($y=1311$),
+  **0** ($y=1373$). ⇒ **1 division = 2 s en $x$ et 2 V en $y$**, donc le **coin
+  supérieur droit du cadre vaut exactement $(10\ \text{s}\,;\,10\ \text{V})$** ✓.
+- **Figure 2, droite** : trace suivie colonne par colonne (hors traits de grille) —
+  $(2\ \text{s}\,;\,2{,}06\ \text{V})$, $(4\,;\,4{,}02)$, $(6\,;\,6{,}00)$,
+  $(8\,;\,8{,}01)$, $(10\,;\,\simeq10)$ : **pente 1 V.s$^{-1}$**, passage par
+  l'origine, extrémité au coin du cadre ✓.
+- **Figure 1, générateur $G$** : carte de pixels du symbole (bbox
+  $x\in[818;864]$, $y\in[792;841]$, centre $y=816{,}5$) — le trait intérieur
+  occupe **les seules rangées $y=816$–$818$ sur toute la largeur du cercle**,
+  donc un **diamètre horizontal rigoureusement droit**, sans aucune courbure ✓.
+  Le reste de la figure 1 (R rectangle étiqueté au-dessus, nœuds (1)/(2)/N/M,
+  $u_C$ vers le haut, $i$ vers le bas, bobine (b) $(L,r)$, point commun de $K$ au
+  nœud haut de $C_0$) revu au zoom : conforme ✓.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : NS28F · Barème de l'exercice complet : 5 points ; **Partie 1**
