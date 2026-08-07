@@ -272,8 +272,61 @@ ci-dessus.)*
 
 ## 2022 — session normale — Exercice 2 (Partie 2)
 Source: https://www.alloschool.com/element/136621
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-84516, page(s) 4. À faire vérifier (README §3).
+Statut: vérifié — **passe de vérification adversariale indépendante**
+(agent-vérificateur-adversarial, 2026-08-07), **diff OK**.
+**Élément re-dérivé** : `element/136621` → `course-422/upload-84516`, **8 pages**,
+URLs ré-extraites du HTML de `element/` (le résumé HTML annonce toujours à tort
+« Sciences Mathématiques B » — README §3, l'image fait foi). **Couverture p.1
+relue au pixel** : « الدورة العادية 2022 », **NS 28F**, 3 h, coef 7, « شعبة
+العلوم التجريبية: مسلك العلوم الفيزيائية - خيار فرنسية » ; carte
+$7+3{,}5+4{,}5+5=\mathbf{20}$ ✓, dont « Exercice 2 (3,5 points) — Ondes
+sonores · Désintégration de l'iode 131 ».
+**Portée du diff — `0004-big.jpg`, caractère par caractère** : chapeau
+($^{131}_{53}\text{I}$ radioactif $\beta^-$, thyroïde, noyau $^A_ZX$) ;
+**tableau d'isotopes relu au zoom ×2** — Tellure $^{131}_{52}\text{Te}$ /
+$^{132}_{52}\text{Te}$, Xénon $^{130}_{54}\text{Xe}$ / $^{131}_{54}\text{Xe}$,
+Césium $^{127}_{55}\text{Cs}$ / $^{132}_{55}\text{Cs}$ ; **masses relues chiffre
+par chiffre** — $m(^{131}_{53}\text{I})=130{,}906125\ \text{u}$,
+$m(^A_ZX)=130{,}905082\ \text{u}$,
+$m(\beta^-)=5{,}48580\cdot10^{-4}\ \text{u}$,
+$1\text{u}=931{,}5\ \text{MeV.c}^{-2}$ ; libellés des questions 1, 2, 3.1–3.3
+(dont « 95% des noyaux … désintégrés ») — **aucune divergence de valeur, unité,
+indice ou exposant**.
+**Barème marginal recompté au pixel** : $0{,}5+0{,}5+0{,}25+0{,}5+0{,}5
+=\mathbf{2{,}25}$ ✓ (la ligne 3, en-tête, ne porte aucune annotation, ce que la
+transcription respecte) ; $1{,}25+2{,}25=\mathbf{3{,}5}$ = total de
+l'Exercice 2 ✓.
+**Figure 3 — mesurée au pixel, verdict conforme.** Grille relevée sur les traits
+imprimés : traits **majeurs tous les 8 jours et tous les $10^{6}\ \text{Bq}$**,
+traits **fins intermédiaires** à 4 jours et $0{,}5\cdot10^{6}\ \text{Bq}$ ; le
+cadre s'étend jusqu'à **$t = 40$ jours** et $5\cdot10^{6}\ \text{Bq}$, mais le
+chiffrage s'arrête à **8, 16, 24** en abscisse et à $4\cdot10^{6}$ en ordonnée —
+les traits majeurs à 32 j, 40 j et $5\cdot10^{6}$ sont donc **non chiffrés**.
+**Adjudication des « lecture à confirmer » :**
+- *Croisement de demi-vie — LEVÉ, repère exact* : la courbe passe par
+  l'intersection du trait « 8 » et du trait « $2\cdot10^{6}$ » (valeur
+  interpolée au trait $t=8$ : $2{,}01\cdot10^{6}\ \text{Bq}$, soit 0,8 px
+  d'écart, très en deçà de l'épaisseur du trait) ⇒
+  $a_0 = \mathbf{4{,}0\cdot10^{6}\ \text{Bq}}$ et
+  $t_{1/2} = \mathbf{8\ \text{jours}}$. Contrôle sur toute la courbe :
+  $a(t)=4\cdot10^{6}\cdot2^{-t/8}$ redonne les points mesurés à
+  $t = 0{,}78$ (3,74 vs 3,739), 8,7, 15,5, 22,8 et 30,2 jours ; croisements
+  successifs relevés à 8,1 / 16,3 / 24,1 j.
+- *Approche de l'axe — RECTIFIÉ dans la description* : à $t = 24\ \text{j}$ la
+  courbe vaut encore $0{,}50\cdot10^{6}\ \text{Bq}$ ($=a_0/8$, un trait fin
+  au-dessus de zéro) ; elle ne se confond visuellement avec l'axe que vers
+  36–40 jours. L'estimation « 24–30 jours » de la passe de transcription était
+  une conséquence directe du chiffrage qui s'arrête à 24.
+**Physique re-dérivée indépendamment** : $^{131}_{53}\text{I}\to
+{}^{0}_{-1}e+{}^{131}_{54}\text{Xe}$ — le tableau d'isotopes est bien le moyen
+d'identification, et $^{131}_{54}\text{Xe}$ y figure ✓ ;
+$|\Delta E|=[m(\text{I})-m(X)-m(\beta^-)]\times931{,}5
+=4{,}944\cdot10^{-4}\times931{,}5=\mathbf{0{,}46\ \text{MeV}}$ (positif ✓) ;
+$\lambda=\ln2/(8\times86400)=1{,}003\cdot10^{-6}\ \text{s}^{-1}$ ⇒
+$N_0=a_0/\lambda=\mathbf{3{,}99\cdot10^{12}}$ noyaux ; à 95 % désintégrés,
+$t_1=\ln(20)/\lambda=\mathbf{34{,}6\ \text{jours}}$ — valeur qui tombe bien à
+l'intérieur du domaine tracé (0–40 j), ce qui confirme l'étendue mesurée du
+cadre.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan confirmé directement sur l'image ; le résumé HTML
@@ -328,15 +381,22 @@ propose, dans cette partie, d'étudier la désintégration de l'iode 131. »)*
       sont désintégrés.
 
 *Figure 3 (courbe) :* activité $a\ (\text{Bq})$ en fonction de
-$t\ (\text{jour})$, sur quadrillage régulier. Axe des ordonnées gradué
-(traits principaux chiffrés) $10^{6},\ 2\cdot10^{6},\ 3\cdot10^{6},\
-4\cdot10^{6}$ ; axe des abscisses $t\ (\text{jour})$ gradué $8,\ 16,\ 24$.
-Courbe de décroissance exponentielle : part d'une valeur proche de
-$4\cdot10^{6}\ \text{Bq}$ au voisinage de $t = 0$, décroît en passant au
-voisinage du repère $2\cdot10^{6}\ \text{Bq}$ vers $t \approx 8$ jours
-*(lecture à confirmer)*, puis continue de décroître pour se rapprocher de
-l'axe des abscisses vers $t \approx 24$–$30$ jours *(lecture à confirmer)*.
-Légende : « Figure 3 ».
+$t\ (\text{jour})$, sur quadrillage régulier. Axe des ordonnées **chiffré**
+$10^{6},\ 2\cdot10^{6},\ 3\cdot10^{6},\ 4\cdot10^{6}$ (et $0$ à l'origine) ;
+axe des abscisses $t\ (\text{jour})$ **chiffré** $8,\ 16,\ 24$. **Traits
+majeurs mesurés tous les 8 jours et tous les $10^{6}\ \text{Bq}$, traits fins
+intermédiaires à 4 jours et $0{,}5\cdot10^{6}\ \text{Bq}$ ; le cadre s'étend
+jusqu'à $t = 40$ jours et $5\cdot10^{6}\ \text{Bq}$ — les traits majeurs
+à 32 j, 40 j et $5\cdot10^{6}\ \text{Bq}$ ne sont donc pas chiffrés.**
+Courbe de décroissance exponentielle partant de
+$a_0 = 4{,}0\cdot10^{6}\ \text{Bq}$ à $t = 0$ et passant **exactement par
+l'intersection des repères $t = 8\ \text{jours}$ et
+$a = 2\cdot10^{6}\ \text{Bq}$** — d'où $t_{1/2} = 8\ \text{jours}$ (mesuré au
+pixel, 2026-08-07 : $2{,}01\cdot10^{6}$ au trait $t = 8$). Elle vaut ensuite
+$0{,}50\cdot10^{6}\ \text{Bq}$ à $t = 24\ \text{j}$,
+$0{,}25\cdot10^{6}\ \text{Bq}$ à $t = 32\ \text{j}$, et **ne se confond
+visuellement avec l'axe des abscisses que vers 36–40 jours**. Légende :
+« Figure 3 ».
 
 ---
 

@@ -521,8 +521,52 @@ Partie 2)*.
 
 ## 2022 — session normale — Exercice 3 (1. Réponse d'un dipôle RC à un échelon de tension)
 Source: https://www.alloschool.com/element/136621
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-84516, page(s) 5. À faire vérifier (README §3).
+Statut: vérifié — **passe de vérification adversariale indépendante**
+(agent-vérificateur-adversarial, 2026-08-07), **diff OK**.
+**Élément re-dérivé** : `element/136621` → `course-422/upload-84516`, **8 pages**,
+URLs ré-extraites du HTML de `element/` (résumé HTML toujours faux sur la
+filière — README §3, l'image fait foi). **Couverture p.1 relue au pixel** :
+NS 28F, 3 h, coef 7, SPC/BIOF ; carte $7+3{,}5+4{,}5+5=\mathbf{20}$ ✓, dont
+« Exercice 3 (4,5 points) — Réponse d'un dipôle RC à un échelon de tension ·
+Oscillations libres dans un circuit RLC série ».
+**Portée du diff — `0005-big.jpg`, caractère par caractère** : les trois tirets
+du cadrage, la liste des cinq éléments du montage, le libellé de la section 1,
+l'équation différentielle
+$\frac{du_C}{dt}+\frac{1}{RC}u_C=\frac{E}{RC}$, la solution
+$u_C(t)=E(1-e^{-t/RC})$, et $C = 50\ \mu\text{F}$ en 1.2.3 — relus au zoom,
+**aucune divergence de valeur, unité, indice ou exposant**.
+**Barème marginal recompté au pixel** : $0{,}25+0{,}5+0{,}5+0{,}25
+=\mathbf{1{,}5}$ ✓ (la ligne 1.2, en-tête, ne porte aucune annotation, ce que la
+transcription respecte) ; $1{,}5+3{,}0=\mathbf{4{,}5}$ = total de l'Exercice 3 ✓.
+**Figure 1 (montage) — verdict conforme**, relue au zoom ×5 : $R$ (rectangle) en
+haut à gauche, borne **(1)** à sa droite, pivot **K** au centre portant la
+branche du condensateur ($u_C$ fléchée, étiquette $C$), borne **(2)** à droite,
+bobine **$(L,r)$** sur la branche de droite, générateur **E** (cercle, flèche de
+tension) sur la branche de gauche. Aucune position de composant ni de flèche
+n'est fautive.
+**Figure 2 — mesurée au pixel, verdict conforme (les deux valeurs
+asymptotiques sont exactes, pas approchées).**
+- Étalonnage relevé sur les traits imprimés, identique sur les deux repères :
+  $57\ \text{px} = 50\ \text{ms}$ en abscisse, $57{,}2\ \text{px} = 3$ unités en
+  ordonnée (1 carreau = 25 ms × 1,5 unité ; chiffrage un trait sur deux).
+- **Palier de $(C_1)$ mesuré à $12{,}00\ \text{V}$** (lignes 877–879 px pour un
+  trait « 12 » calculé en 877,5) ⇒ $E = 12\ \text{V}$ **exactement sur le
+  repère**.
+- **$(C_2)$ part de $12{,}0\ \text{mA}$ exactement** : le modèle
+  $i(t)=12\,e^{-t/50\ \text{ms}}$ reproduit **chaque point mesuré à mieux
+  que 0,07 mA** — 10,31 (t=7 ms), 9,28 (13,2), 8,16 (19,3), 6,37 (31,6),
+  4,98 (43,9), 3,91 (56,1), 1,86 (93,0).
+- **Tangente $(T)$** : ajustement de Hough sur les droites issues de l'origine ⇒
+  pente $0{,}24\ \text{V.ms}^{-1}$, la droite coupe le palier $12\ \text{V}$ à
+  $t = \mathbf{50\ \text{ms}} = \tau$. Contrôle indépendant sur $(C_1)$ :
+  $u_C(50\ \text{ms}) = 7{,}56\ \text{V} = 0{,}63\,E$ ✓,
+  $u_C(100\ \text{ms}) = 10{,}36$ (théorie 10,38) ✓,
+  $u_C(150\ \text{ms}) = 11{,}42$ (théorie 11,40) ✓.
+**Physique re-dérivée** : $i(t)=\frac{E}{R}e^{-t/RC}$ ⇒
+$R = E/i_0 = 12/12\cdot10^{-3} = \mathbf{1000\ \Omega}$ (réponse de 1.2.2), puis
+$C = \tau/R = 50\cdot10^{-3}/1000 = \mathbf{50\ \mu\text{F}}$ — soit exactement
+la valeur que 1.2.3 demande de « montrer ». La figure, l'énoncé et le résultat
+imposé ferment donc en boucle.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan confirmé directement sur l'image ; le résumé HTML
@@ -586,9 +630,14 @@ Au centre, le condensateur (tension $u_C$ fléchée) monté entre le nœud
 fonction de $t\ (\text{ms})$ ; axe des ordonnées gradué $0,\ 3,\ 6,\ 9,\ 12$ ;
 axe des abscisses gradué $0,\ 50,\ 100,\ 150,\ 200$. Courbe $(C_1)$
 croissante, concave, partant de $0$ et tendant asymptotiquement vers un
-palier à $u_C = 12\ \text{V}$ ; une droite en pointillés $(T)$, tangente à
-l'origine, est tracée. À droite, $i\ (\text{mA})$ en fonction de
-$t\ (\text{ms})$ ; mêmes graduations d'axes ($0,\ 3,\ 6,\ 9,\ 12$ en
-ordonnée ; $0,\ 50,\ 100,\ 150,\ 200$ en abscisse). Courbe $(C_2)$
-décroissante, partant d'une valeur proche de $12\ \text{mA}$ à $t = 0$ et
-décroissant de façon exponentielle vers $0$. Légende : « Figure 2 ».
+palier mesuré **exactement sur le repère $u_C = 12{,}0\ \text{V}$** ; une droite
+en pointillés $(T)$, tangente à l'origine, est tracée — **elle coupe ce palier
+à $t = 50\ \text{ms}$**, d'où $\tau = RC = 50\ \text{ms}$ (mesuré au pixel,
+2026-08-07). À droite, $i\ (\text{mA})$ en fonction de $t\ (\text{ms})$ ; mêmes
+graduations d'axes ($0,\ 3,\ 6,\ 9,\ 12$ en ordonnée ;
+$0,\ 50,\ 100,\ 150,\ 200$ en abscisse). Courbe $(C_2)$ décroissante, partant
+**exactement de $12{,}0\ \text{mA}$ à $t = 0$** et décroissant
+exponentiellement vers $0$ (le modèle $12\,e^{-t/50\,\text{ms}}$ restitue tous
+les points mesurés à mieux que $0{,}07\ \text{mA}$). *Sur les deux repères, les
+traits majeurs valent 25 ms × 1,5 unité et ne sont chiffrés qu'un sur deux.*
+Légende : « Figure 2 ».

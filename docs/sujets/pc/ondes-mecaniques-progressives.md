@@ -176,8 +176,39 @@ le schéma ; pas de légende numérotée imprimée sur cette figure.
 
 ## 2022 — session normale — Exercice 2 (Partie 1)
 Source: https://www.alloschool.com/element/136621
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-84516, page(s) 3 (fin)–4. À faire vérifier (README §3).
+Statut: transcrit (non vérifié) — **corrigé le 2026-08-07 par la passe de
+vérification adversariale indépendante ; laissé non vérifié, la correction
+appelle une re-lecture de contrôle** (README §3).
+**Élément re-dérivé** : `element/136621` → `course-422/upload-84516`, **8 pages**
+(re-extrait du HTML de `element/` ; résumé HTML toujours faux sur la filière).
+**Couverture p.1 relue** : NS 28F, 3 h, coef 7, SPC/BIOF ; carte
+$7+3{,}5+4{,}5+5=\mathbf{20}$ ✓.
+**Barème marginal recompté au pixel (p.4)** : $0{,}25+0{,}25+0{,}25+0{,}5
+=\mathbf{1{,}25}$ ✓ (la ligne « 1. Recopier le numéro… » ne porte aucune
+annotation, ce que la transcription respecte) ; $1{,}25+2{,}25=\mathbf{3{,}5}$
+= total de l'Exercice 2 ✓.
+**Diff du texte** : $L = 85\ \text{cm}$, signaux (a) émis / (b) reçu, $\Delta t$,
+célérité $v$ — relus au zoom, **aucune divergence**.
+**Figure 2 — mesurée au pixel (classe de défaut « flèche d'étalonnage lue comme
+période » : écartée).** La double flèche « 0,5 ms » s'étend des colonnes
+**1023 à 1068** ; les traits verticaux de la grille tombent en 1023 et 1067, et
+le pas de division mesure **44,1 px** ⇒ la flèche couvre **exactement une
+division**. C'est donc bien un **étalonnage** (1 division = 0,5 ms), et la
+transcription l'avait correctement lu comme tel.
+**Divergence trouvée et corrigée (taille de la grille)** : la grille compte
+**11 traits verticaux × 9 traits horizontaux, soit 10 colonnes × 8 lignes**
+(pas mesurés : 44,1 px et 36,4 px, très réguliers) — et non « environ huit
+colonnes sur six lignes ». Les deux axes médians de l'écran (5ᵉ ligne
+horizontale, 6ᵉ trait vertical) portent en outre de **fines graduations non
+chiffrées**, non signalées dans la description.
+**Adjudication du « lecture à confirmer » (écart (a)→(b)) — LEVÉE** : bord
+gauche de (a) en colonne **714**, bord gauche de (b) en colonne **935** ⇒
+$935-714 = 221\ \text{px} = 221/44{,}1 = \mathbf{5{,}01}$ divisions (contrôle
+par les centres : 223 px = 5,06). L'écart vaut donc **exactement 5 divisions**,
+soit $\Delta t = 5\times0{,}5 = \mathbf{2{,}5\ \text{ms}}$.
+**Physique re-dérivée** : $v = L/\Delta t = 0{,}85/2{,}5\cdot10^{-3}
+= \mathbf{340\ \text{m.s}^{-1}}$ — valeur canonique de la célérité du son dans
+l'air ; la figure et l'énoncé ferment donc l'un sur l'autre.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan confirmé directement sur l'image ; le résumé HTML
@@ -222,14 +253,21 @@ horizontale orientée vers la droite, étiquetée « Sens de propagation »
 au-dessus. En dessous, une double flèche horizontale reliant les deux blocs,
 étiquetée « $L$ ». Légende : « Figure 1 ».
 
-*Figure 2 (écran d'acquisition) :* grille quadrillée (environ huit colonnes
-sur six lignes) représentant l'affichage du système d'acquisition. Deux
-petits rectangles pleins (signaux) y sont dessinés : le signal **(a)**, en
-haut à gauche de la grille (étiqueté « (a) » en dessous) ; le signal
-**(b)**, plus bas et plus à droite (étiqueté « (b) » en dessous). Un repère
+*Figure 2 (écran d'acquisition) :* grille quadrillée de **10 colonnes sur
+8 lignes** (11 traits verticaux × 9 traits horizontaux, comptés au pixel)
+représentant l'affichage du système d'acquisition ; les deux **axes médians**
+(ligne horizontale centrale, trait vertical central) portent de **fines
+graduations non chiffrées**. Deux petits rectangles pleins (signaux) y sont
+dessinés, chacun large d'une division : le signal **(a)**, en haut à gauche,
+son bord gauche sur le 2ᵉ trait vertical et son sommet sur le 2ᵉ trait
+horizontal (étiqueté « (a) » en dessous) ; le signal **(b)**, **une ligne plus
+bas et cinq colonnes plus à droite**, bord gauche sur le 7ᵉ trait vertical,
+sommet sur le 3ᵉ trait horizontal (étiqueté « (b) » en dessous). Un repère
 d'échelle temporelle, en bas à droite de la grille, est matérialisé par une
-double flèche horizontale d'un carreau de large, étiquetée
-« $0{,}5\ \text{ms}$ ». Légende : « Figure 2 ». *(Le nombre exact de
-carreaux séparant les signaux (a) et (b) — nécessaire pour convertir le
-décalage horizontal en $\Delta t$ — n'a pas été recompté au pixel près dans
-cette passe : lecture à confirmer.)*
+double flèche horizontale **large d'exactement une division** (mesurée :
+colonnes 1023→1068, traits de grille en 1023 et 1067, pas de division 44,1 px),
+étiquetée « $0{,}5\ \text{ms}$ » : c'est un **étalonnage**, 1 division
+$= 0{,}5\ \text{ms}$ — **ce n'est pas une période**. Légende : « Figure 2 ».
+**Décalage (a)→(b) mesuré : exactement 5 divisions** (221 px pour un pas de
+44,1 px), soit $\Delta t = \mathbf{2{,}5\ \text{ms}}$ (mesuré au pixel,
+2026-08-07).

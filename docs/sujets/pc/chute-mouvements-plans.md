@@ -1037,8 +1037,56 @@ trait plein en dessous de O jusqu'au bas de la figure. Légende :
 
 ## 2022 — session normale — Exercice 4 (Partie 1)
 Source: https://www.alloschool.com/element/136621
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-84516, page(s) 7. À faire vérifier (README §3).
+Statut: transcrit (non vérifié) — **corrigé le 2026-08-07 par la passe de
+vérification adversariale indépendante ; laissé non vérifié, la correction
+appelle une re-lecture de contrôle** (README §3).
+**Élément re-dérivé** : `element/136621` → `course-422/upload-84516`, **8 pages**
+(re-extrait du HTML de `element/` ; résumé HTML toujours faux sur la filière).
+**Couverture p.1 relue** : NS 28F, 3 h, coef 7, SPC/BIOF ; carte
+$7+3{,}5+4{,}5+5=\mathbf{20}$ ✓.
+**Barème marginal recompté au pixel (p.7 + p.8)** : $0{,}5+0{,}75+0{,}5+0{,}25$
+(p.7) $+\ 0{,}75$ (Q4, en tête de p.8) $=\mathbf{2{,}75}$ ✓ (la ligne 3,
+en-tête, ne porte aucune annotation) ; $2{,}75+2{,}25=\mathbf{5}$ = total de
+l'Exercice 4 ✓.
+**Diff du texte** : Données $m = 10\ \text{g}$,
+$\rho_a = 7{,}8\ \text{g.cm}^{-3}$, $g = 10\ \text{m.s}^{-2}$ (relues au
+zoom ×3), l'expression $F_a = \rho_r.V.g$, le modèle
+$\vec{F} = -k.\vec{v}$ et l'équation
+$\frac{dv}{dt}+\frac{1}{\tau}v = g\left(1-\frac{\rho_r}{\rho_a}\right)$ —
+**aucune divergence de valeur, unité, indice ou exposant**.
+**Figure 2 — mesurée au pixel.** Étalonnage relevé sur les traits imprimés :
+**traits majeurs tous les 0,1 s et tous les 0,2 m.s⁻¹**, quadrillage fin de
+0,02 s × 0,04 m.s⁻¹ ; le cadre s'étend jusqu'à **$t = 1{,}0\ \text{s}$** et
+**$v = 1{,}0\ \text{m.s}^{-1}$**, alors que le chiffrage s'arrête à 0,3 s et
+0,8 m.s⁻¹ — **les traits majeurs de 0,4 s à 1,0 s ne sont pas chiffrés**.
+**Adjudication des deux « lecture à confirmer » — LEVÉES :**
+- *Palier* : $v$ mesurée constante à **0,875–0,885** de $t = 0{,}5\ \text{s}$
+  jusqu'au bord du cadre ⇒ $V_\ell = \mathbf{0{,}88\ \text{m.s}^{-1}}$,
+  c'est-à-dire **deux traits fins au-dessus du repère 0,8** — sensiblement
+  au-dessus de 0,8, et non « proche de 0,8 ».
+- *Frontière zone1/zone2* : **divergence trouvée et corrigée**. Le trait
+  vertical en pointillés qui sépare les deux zones est en colonne **609,5** ;
+  l'axe des ordonnées est en 322 et le pas majeur vaut 57,2 px ⇒
+  $t = (609{,}5-322)/57{,}2 \times 0{,}1 = \mathbf{0{,}50\ \text{s}}$, soit
+  exactement le 5ᵉ trait majeur après 0,1/0,2/0,3. La transcription annonçait
+  « $t \approx 0{,}2\ \text{s}$ » — erreur d'un facteur 2,5, conséquence directe
+  du chiffrage qui s'arrête à 0,3. La valeur 0,5 s est confirmée par la physique
+  ($5\tau = 0{,}5\ \text{s}$ : le régime transitoire y est éteint).
+- *Tangente $(T)$* : ajustement de Hough sur les droites issues de l'origine ⇒
+  pente $\mathbf{8{,}8\ \text{m.s}^{-2}}$, qui atteint $V_\ell = 0{,}88$ à
+  $t = \mathbf{0{,}100\ \text{s}} = \tau$ (repère chiffré « 0,1 »).
+**Figure 1 — deux imprécisions corrigées** : l'éprouvette **ne porte aucune
+graduation** (la transcription disait « éprouvette graduée ») ; et le petit
+cercle $G$ est dessiné **nettement sous** la ligne en pointillés de $O$
+(la bille est figurée déjà immergée), non « au niveau de $O$ ».
+**Physique re-dérivée** : $\tau = m/k$ ⇒
+$k = m/\tau = 10\cdot10^{-3}/0{,}1 = \mathbf{0{,}1\ \text{kg.s}^{-1}}$ (SI) ;
+au régime permanent $V_\ell/\tau = g(1-\rho_r/\rho_a)$ ⇒
+$\rho_r = \rho_a\left(1-\frac{V_\ell}{g\tau}\right)
+= 7800\times(1-0{,}88) = \mathbf{936\ \text{kg.m}^{-3}}$ — masse volumique de
+l'huile de ricin (≈ 960 kg.m⁻³ en table) ✓. Les trois lectures graphiques
+($\tau = 0{,}1\ \text{s}$, $V_\ell = 0{,}88\ \text{m.s}^{-1}$, frontière à
+$5\tau$) sont donc mutuellement cohérentes.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan confirmé directement sur l'image ; le résumé HTML
@@ -1047,8 +1095,11 @@ course-422/upload-84516, page(s) 7. À faire vérifier (README §3).
 - Code sujet : NS 28F · Barème de l'exercice complet : 5 points ;
   **Partie 1** = 2,75 points ($0{,}5+0{,}75+0{,}5+0{,}25+0{,}75$, barème en
   marge)
-- Images lues (reproductibilité) : `.../course-422/upload-84516/0007-big.jpg`
-- Pages du scan : 7 (sur 8)
+- Images lues (reproductibilité) : `.../course-422/upload-84516/0007-big.jpg`,
+  `.../0008-big.jpg` (haut de page : question 4 et son barème 0,75)
+- Pages du scan : 7 et 8 (haut) sur 8 — *la question 4 (0,75) est imprimée en
+  tête de la page 8, au-dessus du titre de la Partie 2* (rectifié 2026-08-07 :
+  la fiche n'annonçait que la page 7)
 - Portée : **Partie 1 (chute d'une bille dans un liquide visqueux)**.
   Mention en tête de l'exercice : « Les parties 1 et 2 sont indépendantes ».
   La **Partie 2 (mouvement d'un satellite artificiel)** du même exercice est
@@ -1101,33 +1152,86 @@ $g = 10\ \text{m.s}^{-2}$.
    ricin en fonction de $\tau$, $g$, $\rho_a$ et $V_\ell$. Calculer sa
    valeur.
 
-*Figure 1 (schéma) :* une éprouvette graduée verticale. En haut, une ligne
-en pointillés horizontale traverse l'éprouvette, marquée « $O$ » à gauche ;
-juste en dessous, la flèche $\vec{k}$ orientée vers le bas. Dans
-l'éprouvette, un petit cercle étiqueté « $G$ » est dessiné au niveau de $O$
-(position initiale de la bille), le reste de l'éprouvette étant grisé
-(liquide). En bas de l'éprouvette, l'axe se poursuit et se termine par une
-flèche étiquetée « $z$ », orientée vers le bas. Légende : « Figure1 ».
+*Figure 1 (schéma) :* une éprouvette verticale **sans graduations** (simple
+récipient cylindrique à rebord et socle sombres). L'axe vertical est tracé **à
+gauche de l'éprouvette**, à l'extérieur. En haut, une ligne en pointillés
+horizontale part de la marque « $O $ » portée sur cet axe et traverse
+l'éprouvette (elle figure la surface du liquide) ; juste en dessous, la flèche
+$\vec{k}$ orientée vers le bas. Dans l'éprouvette, un petit cercle étiqueté
+« $G$ » est dessiné **un peu au-dessous** de cette ligne (la bille est figurée
+déjà immergée), le reste de l'éprouvette étant grisé (liquide). En bas, l'axe
+se poursuit et se termine par une pointe de flèche orientée vers le bas,
+étiquetée « $z$ ». Légende : « Figure1 ».
 
 *Figure 2 (courbe) :* $v\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$,
-sur quadrillage à double graduation. Axe des ordonnées gradué
-$0{,}2,\ 0{,}4,\ 0{,}6,\ 0{,}8$ ; axe des abscisses gradué
-$0{,}1,\ 0{,}2,\ 0{,}3$. Courbe croissante depuis l'origine, concave,
-tendant asymptotiquement vers un palier horizontal *(valeur exacte du
-palier — lecture à confirmer, proche du repère $0{,}8$)*. Une droite en
-pointillés $(T)$, tangente à la courbe à l'origine, est tracée. Deux zones
-sont annotées directement sur le graphe : « **zone1** », sur la portion
-initiale fortement courbée (avant $t \approx 0{,}2\ \text{s}$) ; « **zone2**
-», sur la portion suivante, plus proche du palier horizontal (après
-$t \approx 0{,}2\ \text{s}$) *(frontière exacte entre les deux zones —
-lecture à confirmer)*. Légende : « Figure 2 ».
+sur quadrillage à double graduation. Axe des ordonnées **chiffré**
+$0{,}2,\ 0{,}4,\ 0{,}6,\ 0{,}8$ ; axe des abscisses **chiffré**
+$0{,}1,\ 0{,}2,\ 0{,}3$. **Traits majeurs mesurés tous les $0{,}1\ \text{s}$ et
+tous les $0{,}2\ \text{m.s}^{-1}$, quadrillage fin de
+$0{,}02\ \text{s} \times 0{,}04\ \text{m.s}^{-1}$ ; le cadre s'étend jusqu'à
+$t = 1{,}0\ \text{s}$ et $v = 1{,}0\ \text{m.s}^{-1}$ — les traits majeurs de
+$0{,}4$ à $1{,}0\ \text{s}$ ne sont donc pas chiffrés** (mesuré au pixel,
+2026-08-07). Courbe croissante depuis l'origine, concave, tendant
+asymptotiquement vers un palier **mesuré à
+$V_\ell = 0{,}88\ \text{m.s}^{-1}$** (deux traits fins au-dessus du repère
+$0{,}8$). Une droite en pointillés $(T)$, tangente à la courbe à l'origine, est
+tracée : sa pente mesurée vaut $8{,}8\ \text{m.s}^{-2}$ et **elle coupe le
+palier à $t = 0{,}1\ \text{s}$**, d'où $\tau = 0{,}1\ \text{s}$. Deux zones sont
+annotées directement sur le graphe, séparées par **un trait vertical en
+pointillés situé exactement à $t = 0{,}50\ \text{s}$** : « **zone1** » (étiquette
+vers $t \approx 0{,}3\ \text{s}$), sur la portion courbée qui précède ;
+« **zone2** » (étiquette vers $t \approx 0{,}7\ \text{s}$), sur le palier qui
+suit. Légende : « Figure 2 ».
 
 ---
 
 ## 2022 — session normale — Exercice 4 (Partie 2)
 Source: https://www.alloschool.com/element/136621
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-84516, page(s) 8. À faire vérifier (README §3).
+Statut: vérifié — **passe de vérification adversariale indépendante**
+(agent-vérificateur-adversarial, 2026-08-07), **diff OK**.
+**Élément re-dérivé** : `element/136621` → `course-422/upload-84516`, **8 pages**,
+URLs ré-extraites du HTML de `element/` (le résumé HTML annonce toujours à tort
+« Sciences Mathématiques B » — README §3, l'image fait foi). **Couverture p.1
+relue au pixel** : NS 28F, 3 h, coef 7, SPC/BIOF ; carte
+$7+3{,}5+4{,}5+5=\mathbf{20}$ ✓, dont « Exercice 4 (5 points) — Etude de la
+chute d'une bille dans un liquide visqueux · Etude du mouvement d'un satellite
+artificiel ».
+**Portée du diff — `0008-big.jpg`, caractère par caractère** : chapeau
+(météorologie, télécommunications, recherche scientifique, contrôle des
+frontières), référentiel géocentrique, symétrie sphérique ; **bloc Données relu
+au zoom ×3** — $M_T = 5{,}97\cdot10^{24}\ \text{kg}$,
+$R_T = 6380\ \text{km}$ (et non 6370),
+$G = 6{,}67\cdot10^{-11}\ \text{N.m}^2.\text{kg}^{-2}$,
+$h_1 = 1000\ \text{km}$ ; **les 4 items A–D du QCM relus un à un** — A
+$G\frac{M_Tm_s}{h_1^2}$, B $G\frac{M_Tm_s}{(R_T+h_1)^2}$, C
+$G\frac{M_Tm_s}{R_T^2}$, D $G\frac{(M_Tm_s)^2}{(R_T+h_1)^2}$ ; l'expression
+$v=\sqrt{\frac{G.M_T}{R_T+h_1}}$, $T_1 \approx 1{,}75\ \text{h}$,
+$T_2 = 24\ \text{h}$ — **aucune divergence de valeur, unité, indice ou
+exposant**.
+**Barème marginal recompté au pixel** : $0{,}5+0{,}5+0{,}5+0{,}75
+=\mathbf{2{,}25}$ ✓ (la ligne 1, en-tête, ne porte aucune annotation, ce que la
+transcription respecte) ; $2{,}75+2{,}25=\mathbf{5}$ = total de l'Exercice 4 ✓.
+**Figure 3 — relue au zoom ×5, verdict conforme.** Cercle extérieur en
+pointillés (orbite) et cercle intérieur à trait plein (Terre) concentriques ;
+$O$ au centre avec « Terre » juste en dessous ; $R_T$ porté par une flèche
+radiale **à l'intérieur** du cercle terrestre ; $h_1$ porté par un segment
+radial en pointillés à double pointe **entre la surface de la Terre et le
+point $S$**, lui-même matérialisé par un point plein sur l'orbite (en haut à
+droite) ; légende « Figure 3 ». Aucune position d'élément ni de flèche n'est
+fautive, et **la figure ne comporte ni courbe ni axe gradué** — la classe de
+défaut « flèche d'étalonnage lue comme période » est **sans objet** ici.
+**Physique re-dérivée indépendamment** : $r = R_T+h_1 = 7380\ \text{km}$ ;
+$v=\sqrt{GM_T/r}=\sqrt{3{,}982\cdot10^{14}/7{,}38\cdot10^{6}}
+= 7{,}35\cdot10^{3}\ \text{m.s}^{-1}$ ⇒
+$T_1 = 2\pi r/v = 6{,}31\cdot10^{3}\ \text{s} = \mathbf{1{,}754\ \text{h}}$,
+soit exactement le $T_1 \approx 1{,}75\ \text{h}$ que 1.3 demande de vérifier ✓.
+**Contrôle du QCM** : seule **B** est homogène et correcte (la distance
+centre-à-centre est $R_T+h_1$) — une et une seule réponse juste, les quatre
+items sont donc transcrits correctement. **3ᵉ loi de Kepler** :
+$r_2 = r_1(T_2/T_1)^{2/3} = 7380\times(13{,}68)^{2/3}
+= 4{,}23\cdot10^{4}\ \text{km}$ ⇒
+$h_2 = r_2-R_T \simeq \mathbf{3{,}6\cdot10^{4}\ \text{km}}$ — l'altitude
+géostationnaire (35 786 km en table) ✓, cohérent avec $T_2 = 24\ \text{h}$.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan confirmé directement sur l'image ; le résumé HTML

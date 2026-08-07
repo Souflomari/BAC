@@ -154,7 +154,36 @@ $m = 20{,}72\ \text{g}$.
 
 ## 2022 — session normale — Exercice 1 (Partie 1)
 Source: https://www.alloschool.com/element/136621
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan course-422/upload-84516, page(s) 2. À faire vérifier (README §3).
+Statut: transcrit (non vérifié) — **corrigé le 2026-08-07 par la passe de
+vérification adversariale indépendante ; laissé non vérifié, la correction
+appelle une re-lecture de contrôle** (README §3, « corriger et laisser en
+transcrit »).
+**Élément re-dérivé** : `element/136621` → `course-422/upload-84516`, **8 pages**
+(re-extrait du HTML de `element/`, pas des « Images lues » ; le résumé HTML
+annonce toujours à tort « Sciences Mathématiques B »). **Couverture p.1 relue
+au pixel** : NS 28F, 3 h, coef 7, « شعبة العلوم التجريبية: مسلك العلوم
+الفيزيائية - خيار فرنسية » ; carte $7+3{,}5+4{,}5+5=\mathbf{20}$ ✓.
+**Divergence trouvée et corrigée (barème)** : la marge de la p.2 ne porte que
+**quatre** annotations — $0{,}5$ (Q1), $0{,}5$ (Q2.1), $0{,}5$ (Q2.2),
+$0{,}75$ (Q3) — alignées au pixel sur ces quatre lignes ; **la question 2
+(« Recopier le numéro… ») n'en porte aucune**. La transcription lui attribuait
+un $0{,}5$ surnuméraire, portant l'itemisation à $2{,}75$ alors que l'en-tête
+annonce $2{,}25$ (et que $2{,}25+4{,}75=7$ ferme l'Exercice 1). Le $0{,}5$
+fautif a été retiré.
+**Figure 1 — reprise** : le générateur $G$ est en haut **au centre** du schéma
+(à gauche de $K$), non « en haut à gauche » ; description rectifiée. Le reste du
+schéma est conforme (plaque d'acier à gauche reliée à $G$, électrode de graphite
+à droite reliée à $K$, étiquette de solution sous le bécher).
+**Diff du texte** : énoncé, Données ($\text{Cr}^{3+}/\text{Cr}$,
+$\text{O}_2/\text{H}_2\text{O}$, $1\text{F}=96500\ \text{C.mol}^{-1}$,
+$M(\text{Cr})=52\ \text{g.mol}^{-1}$, $I=2\ \text{A}$, $\Delta t=2\ \text{h}$)
+et les **8 items A–D des deux QCM** relus mot à mot — aucune autre divergence de
+valeur, unité, indice ou exposant.
+**Physique re-dérivée** : $n(e^-)=I\Delta t/F=2\times7200/96500=0{,}1492\
+\text{mol}$ ⇒ $n(\text{Cr})=n(e^-)/3=4{,}97\cdot10^{-2}\ \text{mol}$ ⇒
+$m(\text{Cr})=2{,}59\ \text{g}$. Cathode = plaque d'acier (réduction
+$\text{Cr}^{3+}+3e^-\to\text{Cr}$) ; **2.1 = A**, **2.2 = B** — une et une seule
+réponse juste par QCM, cohérent.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (en-tête
   du scan confirmé directement sur l'image : « شعبة العلوم التجريبية: مسلك
@@ -196,8 +225,9 @@ en graphite et un dépôt uniforme de chrome sur la plaque d'acier.
 
 1. (0,5) Identifier l'électrode qui joue le rôle de la cathode. Justifier
    votre réponse.
-2. (0,5) Recopier le numéro de la question et choisir, parmi les réponses
-   proposées, celle qui est juste.
+2. Recopier le numéro de la question et choisir, parmi les réponses
+   proposées, celle qui est juste. *(Aucun barème en marge sur cette ligne —
+   les points sont portés par 2.1 et 2.2.)*
    1. **2.1.** (0,5) L'équation de la réaction au niveau de l'électrode de
       graphite s'écrit ainsi :
 
@@ -221,8 +251,9 @@ en graphite et un dépôt uniforme de chrome sur la plaque d'acier.
 3. (0,75) L'électrolyse a duré $\Delta t = 2\ \text{h}$. Déterminer la masse
    $m(\text{Cr})$ de chrome déposé sur la plaque d'acier.
 
-*Figure1 (schéma) :* un générateur $G$ (symbole cercle, en haut à gauche)
-relié par un fil à un interrupteur $K$ (en haut à droite). Un bécher contient
+*Figure1 (schéma) :* un générateur $G$ (symbole cercle, en haut **au centre**
+du schéma) relié par un fil à un interrupteur $K$ (en haut à droite, à droite
+de $G$). Un bécher contient
 la solution étiquetée $\text{Cr}^{3+}_{(aq)} + 3\text{Cl}^-_{(aq)}$, dans
 laquelle plongent deux électrodes reliées au circuit : à gauche, la
 **« Plaque en acier »** (petit rectangle blanc, relié au générateur $G$) ; à

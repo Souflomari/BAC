@@ -709,8 +709,46 @@ $C_B = C_A$.
 
 ## 2022 — session normale — Exercice 1 (Partie 2)
 Source: https://www.alloschool.com/element/136621
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-84516, page(s) 2 (fin)–3. À faire vérifier (README §3).
+Statut: transcrit (non vérifié) — **corrigé le 2026-08-07 par la passe de
+vérification adversariale indépendante ; laissé non vérifié, la correction
+appelle une re-lecture de contrôle** (README §3).
+**Élément re-dérivé** : `element/136621` → `course-422/upload-84516`, **8 pages**
+(re-extrait du HTML de `element/` ; résumé HTML toujours faux sur la filière).
+**Couverture p.1 relue** : NS 28F, 3 h, coef 7, SPC/BIOF ; carte
+$7+3{,}5+4{,}5+5=\mathbf{20}$ ✓.
+**Barème marginal recompté au pixel (p.3)** : $0{,}5+0{,}75+0{,}75+0{,}5=2{,}5$
+(sous-partie 1) et $0{,}5+0{,}25+0{,}5+0{,}5+0{,}5=2{,}25$ (sous-partie
+2-Dosage) ⇒ **4,75** ✓ ; $2{,}25+4{,}75=\mathbf{7}$ = total de l'Exercice 1 ✓.
+**Diff du texte** : $C_a=5\cdot10^{-2}\ \text{mol.L}^{-1}$, $pH=3{,}1$,
+$V_a=20\ \text{mL}$, $C_b=5\cdot10^{-2}\ \text{mol.L}^{-1}$,
+$M=74\ \text{g.mol}^{-1}$, « diluant **10 fois** », $V_b=5\ \text{mL}$, et les
+formules $\text{C}_2\text{H}_5\text{COOH}_{(aq)}/\text{C}_2\text{H}_5\text{COO}^-_{(aq)}$,
+$Q_{r,\text{éq}}$, $[\text{H}_3\text{O}^+_{(aq)}]_{\text{éq}}$,
+$\mathrm{d}pH/\mathrm{d}V_b$ — relus au zoom ×2, **aucune divergence**.
+**Figure 2 — mesurée au pixel.** Étalonnage relevé sur les traits imprimés :
+$28{,}4\ \text{px}$ = $2{,}5\ \text{mL}$ en abscisse et $1$ unité de $pH$ en
+ordonnée (chiffrage un trait sur deux). **Adjudication des deux « lecture à
+confirmer » — LEVÉES** : le sommet du pic de $\mathrm{d}pH/\mathrm{d}V_b$ est en
+colonne **251**, le trait imprimé « 20 » tombe en **250,7** ⇒ le pic et le saut
+de $pH$ sont **exactement sur $V_{bE}=20{,}0\ \text{mL}$** (écart 0,3 px
+= 0,03 mL), ce que confirme la chimie ($C_aV_a/C_b=20\ \text{mL}$). Départ
+mesuré $pH(V_b=0)=3{,}15$ (énoncé : 3,1 ✓) ; palier final mesuré $11{,}9$ ⇒
+$\approx12$ ✓. **Ce qui reste non lisible** : la courbe dérivée **n'a aucune
+échelle d'ordonnée** (axe unique, gradué en $pH$) — son amplitude n'est donc pas
+mesurable *par construction*, et non « à confirmer ».
+**Divergence trouvée et corrigée (position de flèche)** : la flèche partant de
+l'étiquette encadrée « $\mathrm{d}pH/\mathrm{d}V_b$ » a sa pointe mesurée en
+$(1003,999)$ px, soit $V_b\approx21{,}5\ \text{mL}$ **au ras de l'axe** — elle
+désigne la **queue descendante** de la courbe dérivée (elle identifie la
+courbe), et non le sommet du pic comme l'affirmait la transcription.
+**Physique re-dérivée** : $\tau=10^{-3{,}1}/5\cdot10^{-2}=1{,}6\cdot10^{-2}$
+(**1,6 %** ⇒ acide faible, réaction limitée) ;
+$Q_{r,\text{éq}}=[\text{H}_3\text{O}^+]^2/(C_a-[\text{H}_3\text{O}^+])
+=1{,}28\cdot10^{-5}$ ⇒ $pK_A=\mathbf{4{,}89}$ (valeur tabulée de l'acide
+propanoïque : 4,87 ✓) ; $V_{bE}=20\ \text{mL}$ ⇒ $C_a$ vérifiée ;
+$C_0=10\,C_a=0{,}5\ \text{mol.L}^{-1}$ ⇒ $m=0{,}5\times74=\mathbf{37\ \text{g}}$ ;
+à $V_b=5\ \text{mL}=V_{bE}/4$ ⇒ **75 %** de forme acide. Toute la chaîne ferme
+sur les seules données transcrites.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
@@ -788,13 +826,19 @@ et la courbe $\dfrac{dpH}{dV_b} = f(V_b)$.
 *Figure 2 (courbe double) :* axe des ordonnées $pH$, gradué (traits
 principaux chiffrés) $0,\ 2,\ 4,\ 6,\ 8,\ 10,\ 12$, quadrillage secondaire
 fin ; axe des abscisses $V_b\ (\text{mL})$, gradué $5,\ 10,\ 15,\ 20,\ 25$.
-Courbe de dosage $pH = f(V_b)$ : croissante, départ vers $pH \approx 3$ à
-$V_b = 0$, montée lente jusqu'à un saut d'équivalence situé au voisinage du
-repère $V_b = 20\ \text{mL}$ *(position exacte du saut — lecture à
-confirmer)*, puis palier final proche de $pH \approx 12$. Une seconde
-courbe, $\dfrac{dpH}{dV_b} = f(V_b)$, superposée sur le même repère, présente
-un pic étroit et positif centré sensiblement au même $V_b$ que le saut de la
-courbe de pH, avec une flèche et l'étiquette « $\dfrac{dpH}{dV_b}$ »
-pointant vers ce pic *(amplitude et position exacte du pic — lecture à
-confirmer)*. Légende : « Figure 2 ».
+Courbe de dosage $pH = f(V_b)$ : croissante, départ mesuré $pH = 3{,}15$ à
+$V_b = 0$ (cohérent avec le $pH = 3{,}1$ de l'énoncé), montée lente jusqu'au
+saut d'équivalence, **situé exactement sur le trait imprimé
+$V_b = 20{,}0\ \text{mL}$** (mesuré au pixel, 2026-08-07), puis palier final
+mesuré à $pH \simeq 11{,}9$, soit le repère $12$. Une seconde courbe,
+$\dfrac{dpH}{dV_b} = f(V_b)$, superposée sur le même repère, présente un pic
+étroit et positif **dont le sommet est lui aussi exactement sur
+$V_b = 20{,}0\ \text{mL}$** (sommet en colonne 251, trait « 20 » en colonne
+250,7). **L'amplitude de ce pic n'est pas lisible : la courbe dérivée ne
+possède aucune échelle d'ordonnée** (le repère n'a qu'un seul axe vertical,
+gradué en $pH$). Une étiquette encadrée « $\dfrac{dpH}{dV_b}$ », placée en bas
+à droite du repère, porte une flèche dont la pointe tombe sur la **queue
+descendante** de la courbe dérivée, vers $V_b \approx 21{,}5\ \text{mL}$ au ras
+de l'axe des abscisses — elle sert à **identifier la courbe**, elle ne désigne
+pas le sommet du pic. Légende : « Figure 2 ».
 

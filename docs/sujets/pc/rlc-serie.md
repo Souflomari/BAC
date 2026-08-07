@@ -869,8 +869,52 @@ tombe bien à l'intérieur du tracé (Q2-2-2).
 
 ## 2022 — session normale — Exercice 3 (2. Oscillations libres dans un circuit RLC série)
 Source: https://www.alloschool.com/element/136621
-Statut: transcrit (non vérifié) — 2026-08-06, transcription depuis scan
-course-422/upload-84516, page(s) 5 (fin)–6. À faire vérifier (README §3).
+Statut: vérifié — **passe de vérification adversariale indépendante**
+(agent-vérificateur-adversarial, 2026-08-07), **diff OK**.
+**Élément re-dérivé** : `element/136621` → `course-422/upload-84516`, **8 pages**,
+URLs ré-extraites du HTML de `element/` (résumé HTML toujours faux sur la
+filière). **Couverture p.1 relue au pixel** : NS 28F, 3 h, coef 7, SPC/BIOF ;
+carte $7+3{,}5+4{,}5+5=\mathbf{20}$ ✓.
+**Portée du diff — `0005-big.jpg` (fin) + `0006-big.jpg`, caractère par
+caractère** : $C = 50\ \mu\text{F}$, bascule sur la position (2), équation
+$\frac{d^2u_C}{dt^2}+\frac{1}{LC}u_C=0$, solution
+$u_C(t)=U_0\cos\!\left(\frac{2\pi}{T_0}t\right)$, $L = 0{,}05\ \text{H}$,
+$\pi^2 = 10$, et — **relu au zoom ×3** — « les instants $t_0 = 0$ et
+$t_1 = 9\ \text{ms}$ » de la question 2.2.2 : **aucune divergence de valeur,
+unité, indice ou exposant**.
+**Barème marginal recompté au pixel** : $0{,}25+0{,}5+0{,}5+0{,}5$ (2.1) et
+$0{,}5+0{,}75$ (2.2) $=\mathbf{3{,}0}$ ✓ (la ligne 2.1.3, en-tête, ne porte
+aucune annotation) ; $1{,}5+3{,}0=\mathbf{4{,}5}$ = total de l'Exercice 3 ✓.
+**Figure 3 (QCM à 3 courbes) — mesurée panneau par panneau, verdict conforme ;
+les étiquettes $(C_1)/(C_2)/(C_3)$ ne sont pas interverties.**
+- **$(C_1)$** : ordonnées chiffrées 12/6/0/−6/−12 (1 carreau = 3 V), abscisses
+  5/10/15 (1 carreau = 2,5 ms). Cosinus **partant de $+12\ \text{V}$**, minimum
+  mesuré $-11{,}75$ à $t = 5$, maximum $+11{,}75$ à $t = 9{,}7$, minimum à
+  $14{,}7$, maximum à $19{,}7$ ⇒ **amplitude constante $\pm12\ \text{V}$,
+  période $T = 10\ \text{ms}$**.
+- **$(C_2)$** : ordonnées 10/5/0/−5/−10, abscisses 5/10/15. **Amplitude
+  constante $\pm9{,}83 \simeq \pm10\ \text{V}$, période 10 ms** ; elle part de
+  $-10\ \text{V}$ (minimum à $t=0$, maximum à $t=5$) — la description, qui ne
+  se prononce pas sur la phase, reste exacte.
+- **$(C_3)$** : ordonnées 12/6/0/−6/−12, abscisses **2,5 / 7,5 / 12,5**.
+  Amortie : extrema successifs mesurés $+12$, $-9$, $+7$, $-5{,}5$.
+**Figure 4 — mesurée au pixel, verdict conforme.** Étalonnage relevé sur les
+traits : $56{,}6\ \text{px} = 2{,}5\ \text{ms}$ ; à gauche
+$57{,}7\ \text{px} = 100\ \text{mA}$, à droite $57{,}7\ \text{px} = 5\ \text{V}$
+(quadrillage fin de 0,5 ms). Ordonnées et abscisses exactement celles décrites.
+$u_C$ part de $12\ \text{V}$ ; $i$ part de $0$. **Précision ajoutée** : les deux
+courbes sont en **quadrature** — les zéros de $i$ (0, 5, 10, 15 ms) coïncident
+avec les extrema de $u_C$, et les zéros de $u_C$ (2,5 / 7,5 / 12,5 ms) avec les
+extrema de $i$ ; ce sont leurs **enveloppes** qui décroissent de concert.
+Pseudo-période mesurée $T \simeq 10\ \text{ms}$.
+**Physique re-dérivée** : $T_0 = 2\pi\sqrt{LC}$ ⇒ avec $\pi^2 = 10$,
+$T_0^2 = 4\pi^2LC = 40\times0{,}05\times50\cdot10^{-6} = 10^{-4}$ ⇒
+$T_0 = \mathbf{10\ \text{ms}}$ — exactement la période mesurée sur $(C_1)$, et
+$U_0 = 12\ \text{V} = E$ (palier de la figure 2 de la section 1). **La réponse
+de 2.1.2 est donc $(C_1)$**, et elle est la seule : $(C_2)$ a la bonne période
+mais $U_0 = 10 \ne 12\ \text{V}$, $(C_3)$ est amortie alors que $r$ est
+supposée négligeable. Le QCM admet ainsi une et une seule solution — les trois
+courbes sont donc transcrites correctement.
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
   (en-tête du scan confirmé directement sur l'image ; le résumé HTML
@@ -945,8 +989,14 @@ Légende commune : « Figure 3 ».
 fonction de $t\ (\text{ms})$ ; axe des ordonnées gradué
 $200,\ 100,\ 0,\ -100,\ -200$ ; axe des abscisses gradué
 $2{,}5,\ 5,\ 7{,}5,\ 10,\ 12{,}5$. Oscillation pseudopériodique d'amplitude
-décroissante. À droite, $u_C\ (\text{V})$ en fonction de $t\ (\text{ms})$ ;
-axe des ordonnées gradué $10,\ 5,\ 0,\ -5,\ -10$ ; mêmes graduations
-d'abscisse ($2{,}5,\ 5,\ 7{,}5,\ 10,\ 12{,}5$). Oscillation pseudopériodique
-d'amplitude décroissante, en phase avec la décroissance de $i(t)$. Légende :
-« Figure 4 ».
+décroissante, partant de $i = 0$ à $t = 0$. À droite, $u_C\ (\text{V})$ en
+fonction de $t\ (\text{ms})$ ; axe des ordonnées gradué
+$10,\ 5,\ 0,\ -5,\ -10$ ; mêmes graduations d'abscisse
+($2{,}5,\ 5,\ 7{,}5,\ 10,\ 12{,}5$). Oscillation pseudopériodique d'amplitude
+décroissante, partant de $u_C = 12\ \text{V}$ à $t = 0$. **Les deux courbes
+sont en quadrature** (mesuré au pixel, 2026-08-07) : les zéros de $i$
+($0,\ 5,\ 10,\ 15\ \text{ms}$) coïncident avec les extrema de $u_C$, et les
+zéros de $u_C$ ($2{,}5,\ 7{,}5,\ 12{,}5\ \text{ms}$) avec les extrema de $i$ ;
+ce sont leurs **enveloppes** qui décroissent de concert. Pseudo-période mesurée
+$T \simeq 10\ \text{ms}$. *Quadrillage fin de 0,5 ms sur les deux repères.*
+Légende : « Figure 4 ».
