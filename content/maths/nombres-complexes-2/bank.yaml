@@ -7,15 +7,16 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les sept entrées sont des transcriptions FIDÈLES des sept
+# exercises.yaml). Les HUIT entrées sont des transcriptions FIDÈLES des huit
 # entrées « vérifié » de docs/sujets/maths/nombres-complexes-2.md (re-fetch
 # AlloSchool indépendant + diff caractère-par-caractère,
-# agent-vérificateur-adversarial, 2026-07-12 pour 2019, 2026-08-05 pour
-# 2020/2022/2024, 2026-08-06 pour 2021/2023/2025) — les SEULS sujets
-# vérifiés recensés pour cette notion : 2019, 2020, 2021, 2022, 2023, 2024,
-# 2025, tous session normale, filière SCIENCES MATHÉMATIQUES (A) et (B),
-# BIOF. Aucun autre sujet n'est disponible — introuvable = absent, jamais
-# inventé. Raisonnement rédigé à la voix experte de la maison sur 100 % des
+# agent-vérificateur-adversarial, 2026-08-06 pour 2017 — 2e passe
+# indépendante —, 2026-07-12 pour 2019, 2026-08-05 pour 2020/2022/2024,
+# 2026-08-06 pour 2021/2023/2025) — les SEULS sujets vérifiés recensés pour
+# cette notion : 2017, 2019, 2020, 2021, 2022, 2023, 2024, 2025, tous
+# session normale, filière SCIENCES MATHÉMATIQUES (A) et (B), BIOF. Aucun
+# autre sujet n'est disponible — introuvable = absent, jamais inventé.
+# Raisonnement rédigé à la voix experte de la maison sur 100 % des
 # questions ; barème transcrit tel quel dans les énoncés ; conventions
 # KaTeX (block scalars pour la prose, KaTeX brut entre apostrophes simples
 # dans steps[].math — apostrophe littérale doublée, ex. 'z'' = e^{i\theta}\,z'
@@ -30,13 +31,13 @@
 # content/maths/nombres-complexes-1/bank.yaml (bk-2019-n-x2 sur ce
 # frère-notion) fait exactement le même choix pour la même raison, avec la
 # même note. À l'arbitrage de l'owner si l'on préfère écarter la présente
-# entrée de la banque pour éviter le recoupement sur la même page. Les trois
-# entrées ajoutées ensuite (2021, 2023, 2025) ne recoupent NI r-bac ni
-# r-variation (tous deux dérivés du seul sujet 2019, voir exercises.yaml) :
-# aucun recoupement supplémentaire à signaler.
+# entrée de la banque pour éviter le recoupement sur la même page. Les
+# quatre entrées ajoutées ensuite (2017, 2021, 2023, 2025) ne recoupent NI
+# r-bac ni r-variation (tous deux dérivés du seul sujet 2019, voir
+# exercises.yaml) : aucun recoupement supplémentaire à signaler.
 #
-# SCOPE NOTE (divulgation honnête, authoring-side). La majorité des sept
-# sujets (2019, 2020, 2021, 2022, 2024, 2025 — pas 2023) reposent, à un
+# SCOPE NOTE (divulgation honnête, authoring-side). La majorité des huit
+# sujets (2017, 2019, 2020, 2021, 2022, 2024, 2025 — pas 2023) reposent, à un
 # moment ou un autre, sur la RÉSOLUTION D'UNE ÉQUATION DU SECOND DEGRÉ À
 # COEFFICIENTS COMPLEXES — le plus souvent par discriminant Δ (potentiellement
 # complexe non réel, racine carrée de Δ obtenue en la reconnaissant comme un
@@ -65,17 +66,22 @@
 # le bac) et n'a pas besoin d'un rung propre.
 #
 # SCOPE NOTE 2 (cocyclicité de quatre points, nouvelle avec cette passe).
-# Deux des trois entrées ajoutées ici (2021, question 3b ; 2025, question
-# II.2c) demandent de montrer que QUATRE points sont cocycliques. L'outil
-# « manuel » habituel pour ce type de question est le birapport (quotient de
-# deux rapports du rung R6 pris à deux sommets différents, réel ⟺ cocyclique
-# ou aligné) — un outil qui, comme les équations du second degré ci-dessus,
-# n'est couvert par AUCUN rung du corps actuel des deux frères-notions.
-# Plutôt que d'introduire ce nouvel outil au fil d'une entrée de banque (ce
-# qui reviendrait à enseigner de la pédagogie non spécifiée par cet auteur),
-# les deux entrées concernées empruntent chacune un chemin de géométrie
-# élémentaire déjà accessible avec les outils enseignés : 2021 (parallélo-
-# gramme via les affixes, chapitre 1, puis carré — côtés adjacents égaux et
+# Trois des quatre entrées ajoutées ici (2017, question 2-c ; 2021, question
+# 3b ; 2025, question II.2c) demandent de montrer que QUATRE points sont
+# cocycliques. L'outil « manuel » habituel pour ce type de question est le
+# birapport (quotient de deux rapports du rung R6 pris à deux sommets
+# différents, réel ⟺ cocyclique ou aligné) — un outil qui, comme les
+# équations du second degré ci-dessus, n'est couvert par AUCUN rung du corps
+# actuel des deux frères-notions. Plutôt que d'introduire ce nouvel outil au
+# fil d'une entrée de banque (ce qui reviendrait à enseigner de la
+# pédagogie non spécifiée par cet auteur), les trois entrées concernées
+# empruntent chacune un chemin de géométrie élémentaire déjà accessible
+# avec les outils enseignés : 2017 (deux cercles de Thalès imbriqués — la
+# relation de rotation de la question 1-b place $\Omega$ sur le cercle de
+# diamètre $[M_1M_2]$ pour tout $m$, donc ce cercle EST le cercle
+# $(\Omega,M_1,M_2)$ ; $M$ le rejoint exactement quand $M,A,B$ sont
+# alignés, via le rapport du rung R6), 2021 (parallélogramme via les
+# affixes, chapitre 1, puis carré — côtés adjacents égaux et
 # perpendiculaires, rung R6) et 2025 (théorème de Thalès — angle droit
 # inscrit ⟹ point sur le cercle de diamètre [IJ] —, appliqué à deux points
 # via le rapport du rung R6). Choix d'auteur, signalé pour transparence :
@@ -1177,3 +1183,145 @@ entries:
             note: "b/a=λi (notation de la partie II)."
           - math: '\dfrac{n-m}{a} = \dfrac{\text{aff}(\vec{IJ})}{\text{aff}(\vec{OA})}\ \text{imaginaire pur (}\lambda\neq0\text{)} \implies (IJ)\perp(OA)'
             note: "Rung R6 : rapport imaginaire pur ⟹ perpendicularité des directions."
+
+  # ── bk-2017-n-x2 — 2017 N, Exercice 2 : équation à paramètre m non nul, rotation de centre Ω, cercle de diamètre [AB], cocyclicité ──
+  - id: bk-2017-n-x2
+    title: "Équation du second degré à paramètre m, rotation de centre Ω et cocyclicité"
+    source:
+      year: 2017
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 2"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2017 session normale — examen national filière SCIENCES
+        MATHÉMATIQUES (A) et (B), الترجمة الفرنسية (BIOF), Mathématiques
+        (4 h, coef 9), code sujet NS 25, barème 3,5 points (Exercice 2,
+        nombres complexes). Source AlloSchool element/57970. Transcription
+        vérifiée : docs/sujets/maths/nombres-complexes-2.md, section
+        « 2017 — session normale — Exercice 2 » (statut « vérifié »,
+        agent-vérificateur-adversarial, 2026-08-06, source re-fetchée
+        indépendamment, diff caractère-par-caractère conforme au scan —
+        équation $(E)$, $\Delta=(2im)^2$, $z_1$, $z_2$, exclusion
+        $m\in\mathbb{C}\setminus\{0,1,i\}$, affixes de $A,B,M,M_1,M_2$,
+        $\omega=\frac{1+i}{2}$, angle $\frac{\pi}{2}$, cercle $(\Gamma)$ de
+        diamètre $[AB]$, indication $\frac{z_1-\omega}{z_2-\omega}=i$,
+        barème marginal sommant à 3,5 pts ; glyphes mojibake du scan résolus
+        au zoom et confirmés — £=ℂ, p=π, W=Ω, w=ω, G=Γ, et le glyphe D=Δ
+        ajouté et confirmé —, dénominateur $m-i$ (et non $m+i$) de la
+        question 2-a re-dérivé indépendamment).
+    intro: |-
+      **Nombres complexes (examen national, session normale 2017, Sciences Mathématiques).**
+
+      Soit $m$ un nombre complexe **non nul**.
+
+      La **partie 1** résout une équation du second degré dont un coefficient dépend de $m$ : le discriminant se révèle être un carré parfait, $(2im)^2$, ce qui donne directement les deux racines. La **partie 2** place ces mêmes racines dans le plan complexe et enchaîne une rotation (rung R5), un rapport de deux affixes qui code à la fois alignement et angle droit (rung R6, l'outil central du chapitre), puis une cocyclicité de quatre points construite à partir de deux cercles de Thalès imbriqués.
+    questions:
+      - id: q1
+        part: "Partie 1 — L'équation $(E)\\ :\\ 2z^2 - 2(m+1+i)z + m^2 + (1+i)m + i = 0$"
+        stem: |-
+          **(0,5 pt)** Vérifier que le discriminant de l'équation $(E)$ est : $\Delta = (2im)^2$
+        reasoning: |-
+          Le discriminant d'une équation du second degré $az^2+bz+c=0$ est $\Delta=b^2-4ac$ ; le calcul se mène comme dans $\mathbb{R}$, mais avec des nombres complexes, en utilisant $a=2$, $b=-2(m+1+i)$, $c=m^2+(1+i)m+i$. Le geste qui débloque tout est de reconnaître $(1+i)^2=2i$ (déjà vu au chapitre précédent) dans le développement de $(m+1+i)^2$, ce qui fait s'effondrer les deux termes en $m^2$.
+        steps:
+          - math: '\Delta = \big[2(m+1+i)\big]^2 - 4\times2\times\big(m^2+(1+i)m+i\big) = 4(m+1+i)^2 - 8\big(m^2+(1+i)m+i\big)'
+            note: "Δ = b² − 4ac, avec b = −2(m+1+i), a = 2, c = m²+(1+i)m+i."
+          - math: '(m+1+i)^2 = m^2 + 2(1+i)m + (1+i)^2 = m^2+2(1+i)m+2i'
+            note: "Developpement ; (1+i)² = 2i, deja vu au chapitre precedent."
+          - math: '4(m+1+i)^2 = 4m^2+8(1+i)m+8i, \qquad 8\big(m^2+(1+i)m+i\big) = 8m^2+8(1+i)m+8i'
+            note: "Les deux termes en (1+i)m et en i coincident exactement entre les deux developpements."
+          - math: '\Delta = \big[4m^2+8(1+i)m+8i\big] - \big[8m^2+8(1+i)m+8i\big] = -4m^2 = (2im)^2'
+            note: "Tout s'annule sauf les termes en m² : il reste −4m², soit (2im)² puisque (2im)² = 4i²m² = −4m²."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Résoudre dans $\mathbb{C}$ l'équation $(E)$
+        reasoning: |-
+          $\Delta$ est déjà un carré parfait (question précédente) : $\delta=2im$ en est directement une racine, sans rien à factoriser. La formule des racines $z=\dfrac{-b\pm\delta}{2a}$, avec $-b=2(m+1+i)$ et $2a=4$, donne les deux solutions ; il reste à regrouper chaque numérateur en un produit reconnaissable.
+        steps:
+          - math: 'z = \dfrac{2(m+1+i)\pm2im}{4} = \dfrac{(m+1+i)\pm im}{2}'
+            note: "Formule (−b±δ)/(2a), avec δ = 2im (racine carree de Δ)."
+          - math: 'z_1 = \dfrac{(m+1+i)+im}{2} = \dfrac{m(1+i)+(1+i)}{2} = \dfrac{(1+i)(m+1)}{2}'
+            note: "Signe + : on regroupe m+im = m(1+i), puis on factorise par (1+i)."
+          - math: 'z_2 = \dfrac{(m+1+i)-im}{2} = \dfrac{m(1-i)+(1+i)}{2} = \dfrac{(1-i)(m+i)}{2}'
+            note: "Signe − : m−im = m(1−i) ; on verifie que (1−i)(m+i) redonne bien (1−i)m + (1+i) — meme numerateur."
+      - id: q1a2
+        part: "Partie 2 — Plan complexe $(O,\\vec{e_1},\\vec{e_2})$ : $m\\in\\mathbb{C}\\setminus\\{0,1,i\\}$, $z_1=\\frac{1+i}{2}(m+1)$, $z_2=\\frac{1-i}{2}(m+i)$ ; $A(1)$, $B(i)$, $M(m)$, $M_1(z_1)$, $M_2(z_2)$"
+        stem: |-
+          **(0,25 pt)** Vérifier que : $z_1 = iz_2 + 1$
+        reasoning: |-
+          Un calcul de vérification direct : on développe $iz_2+1$ avec la valeur de $z_2$ trouvée à la question 2, et on doit retomber exactement sur $z_1$.
+        steps:
+          - math: 'iz_2 = i\cdot\dfrac{1-i}{2}(m+i) = \dfrac{i-i^2}{2}(m+i) = \dfrac{1+i}{2}(m+i)'
+            note: "i(1−i) = i−i² = 1+i."
+          - math: 'iz_2+1 = \dfrac{1+i}{2}m + \dfrac{1+i}{2}i + 1 = \dfrac{1+i}{2}m + \dfrac{i-1}{2} + 1 = \dfrac{1+i}{2}m+\dfrac{i+1}{2}'
+            note: "(1+i)i/2 = (i+i²)/2 = (i−1)/2 ; puis (i−1)/2 + 1 = (i+1)/2."
+          - math: 'iz_2+1 = \dfrac{1+i}{2}(m+1) = z_1'
+            note: "On factorise par (1+i)/2 : c'est exactement z1."
+      - id: q1b2
+        stem: |-
+          **(0,5 pt)** Montrer que $M_1$ est l'image de $M_2$ par la rotation de centre le point $\Omega$ d'affixe $\omega = \dfrac{1+i}{2}$ et d'angle de mesure $\dfrac{\pi}{2}$
+        reasoning: |-
+          La relation $z_1=iz_2+1$ (question précédente) est une application affine $z\mapsto iz+1$ envoyant $M_2$ sur $M_1$. Le multiplicateur $i$ a pour module $1$ et pour argument $\dfrac{\pi}{2}$ (rung R5) : c'est le signe d'une rotation d'angle $\dfrac{\pi}{2}$, de centre le point fixe de cette application, solution de $\omega=i\omega+1$.
+        steps:
+          - math: '\omega = i\omega+1 \implies \omega(1-i)=1 \implies \omega = \dfrac{1}{1-i} = \dfrac{1+i}{(1-i)(1+i)} = \dfrac{1+i}{2}'
+            note: "Point fixe de z ↦ iz+1 : on resout omega = i.omega + 1 (methode du conjugue)."
+          - math: 'z_1-\omega = i(z_2-\omega)'
+            note: "Forme decentree de la rotation (rung R5) : z1 − omega = i (z2 − omega), equivalente a z1 = i z2 + (1 − i).omega = i z2 + 1."
+          - math: 'M_1\ \text{est l''image de}\ M_2\ \text{par la rotation de centre}\ \Omega\left(\dfrac{1+i}{2}\right)\ \text{et d''angle}\ \dfrac{\pi}{2}'
+            note: "Multiplicateur i : module 1, argument π/2 (rung R5)."
+      - id: q2a2
+        part: "Un rapport de deux affixes, l'outil du chapitre (rung R6)"
+        stem: |-
+          **(0,5 pt)** Vérifier que : $\dfrac{z_2-m}{z_1-m} = i\,\dfrac{m-1}{m-i}$
+        reasoning: |-
+          On calcule séparément $z_1-m$ et $z_2-m$, en cherchant à chaque fois un facteur commun qui simplifiera dans le rapport. Le point de vigilance : les deux différences se factorisent chacune par un binôme du type $(m-1)$ ou $(m-i)$, pas par $m$ lui-même — c'est ce facteur qu'il faut repérer.
+        steps:
+          - math: 'z_1-m = \dfrac{(1+i)(m+1)}{2}-m = \dfrac{m(i-1)+(1+i)}{2} = \dfrac{(i-1)(m-i)}{2}'
+            note: "On regroupe les termes en m, puis on factorise ; (1+i) = (i−1)(−i), verifie par developpement."
+          - math: 'z_2-m = \dfrac{(1-i)(m+i)}{2}-m = \dfrac{m(-1-i)+(1+i)}{2} = -\dfrac{(1+i)(m-1)}{2}'
+            note: "Meme demarche ; le facteur (1+i) se met en evidence des deux cotes."
+          - math: '\dfrac{z_2-m}{z_1-m} = \dfrac{-(1+i)(m-1)}{(i-1)(m-i)} = \dfrac{(1+i)(m-1)}{(1-i)(m-i)} = \dfrac{1+i}{1-i}\cdot\dfrac{m-1}{m-i}'
+            note: "i−1 = −(1−i) : les deux signes moins se simplifient."
+          - math: '\dfrac{1+i}{1-i} = \dfrac{(1+i)^2}{(1-i)(1+i)} = \dfrac{2i}{2} = i \implies \dfrac{z_2-m}{z_1-m} = i\,\dfrac{m-1}{m-i}'
+            note: "Methode du conjugue (chapitre 1) : (1+i)/(1−i) = i."
+      - id: q2b2
+        stem: |-
+          **(0,5 pt)** Montrer que si les points $M$, $M_1$ et $M_2$ sont alignés alors $M$ appartient au cercle $(\Gamma)$ de diamètre $[AB]$
+        reasoning: |-
+          $M,M_1,M_2$ alignés signifie (rung R6) que $\dfrac{z_2-m}{z_1-m}$ est **réel**. D'après la question précédente, cela équivaut à $i\,\dfrac{m-1}{m-i}\in\mathbb{R}$, c'est-à-dire $\dfrac{m-1}{m-i}\in i\mathbb{R}$ (diviser un réel par $i$ donne un imaginaire pur). En passant à l'inverse — l'inverse d'un imaginaire pur non nul reste un imaginaire pur —, $\dfrac{m-i}{m-1}\in i\mathbb{R}$, soit encore $\dfrac{i-m}{1-m}\in i\mathbb{R}$ (même rapport, numérateur et dénominateur changés de signe ensemble).
+
+          Or $\dfrac{i-m}{1-m}=\dfrac{b-m}{a-m}$ est, par le rung R6, le rapport qui code l'angle $\big(\vec{MA},\vec{MB}\big)$ : imaginaire pur signifie que cet angle est droit, c'est-à-dire que $M$ voit le segment $[AB]$ sous un angle droit — exactement la caractérisation (Thalès) du cercle $(\Gamma)$ de diamètre $[AB]$.
+        steps:
+          - math: 'M,M_1,M_2\ \text{alignes} \iff \dfrac{z_2-m}{z_1-m}\in\mathbb{R} \iff i\,\dfrac{m-1}{m-i}\in\mathbb{R}\ (\text{q2-a})'
+            note: "Rung R6 : rapport reel = alignement."
+          - math: 'i\,\dfrac{m-1}{m-i}\in\mathbb{R} \iff \dfrac{m-1}{m-i}\in i\mathbb{R} \iff \dfrac{m-i}{m-1}\in i\mathbb{R}'
+            note: "Diviser un reel par i donne un imaginaire pur ; l'inverse d'un imaginaire pur non nul reste imaginaire pur."
+          - math: '\dfrac{m-i}{m-1} = \dfrac{i-m}{1-m} = \dfrac{b-m}{a-m}\ (\text{affixes de}\ B(i)\ \text{et}\ A(1))'
+            note: "Meme rapport, numerateur et denominateur changes de signe ensemble."
+          - math: '\dfrac{b-m}{a-m}\in i\mathbb{R} \implies \widehat{\big(\vec{MA},\vec{MB}\big)} = \dfrac{\pi}{2} \implies M\in(\Gamma)\ \text{cercle de diametre}\ [AB]'
+            note: "Rung R6 : rapport imaginaire pur = angle droit ; Thales : M voit [AB] sous un angle droit ⟹ M sur le cercle de diametre [AB]."
+      - id: q2c2
+        stem: |-
+          **(0,75 pt)** Déterminer l'ensemble des points $M$ pour que les points $\Omega$, $M$, $M_1$ et $M_2$ soient cocycliques (remarquer que : $\dfrac{z_1-\omega}{z_2-\omega} = i$)
+        reasoning: |-
+          L'indication donnée, $\dfrac{z_1-\omega}{z_2-\omega}=i$, n'est autre que la relation de rotation de la question 1-b) recopiée sous forme de rapport (rung R6) : $\Omega$ voit toujours le segment $[M_1M_2]$ sous un angle droit ($\arg=\dfrac{\pi}{2}$), avec $\Omega M_1=\Omega M_2$ (module $1$) — et ceci **pour tout $m$** du domaine, sans aucune condition supplémentaire. Par la réciproque du théorème de Thalès, $\Omega$ est donc toujours sur le cercle de diamètre $[M_1M_2]$.
+
+          Comme trois points non alignés déterminent un unique cercle, ce cercle de diamètre $[M_1M_2]$ **est** le cercle passant par $M_1$, $M_2$, $\Omega$. Les quatre points $\Omega,M,M_1,M_2$ sont donc cocycliques exactement quand $M$ appartient, lui aussi, à ce même cercle — c'est-à-dire, toujours par Thalès, quand $M$ voit $[M_1M_2]$ sous un angle droit : $\dfrac{z_1-m}{z_2-m}\in i\mathbb{R}$.
+
+          On calcule ce rapport à partir de l'inverse de celui de la question 2-a) : $\dfrac{z_1-m}{z_2-m} = \dfrac{1}{i}\cdot\dfrac{m-i}{m-1} = -i\,\dfrac{m-i}{m-1}$. Ce produit est imaginaire pur exactement quand $\dfrac{m-i}{m-1}$ est **réel** — et $\dfrac{m-i}{m-1}=\dfrac{i-m}{1-m}$ est, par le rung R6, le rapport qui code l'alignement de $M$, $B$ et $A$. Donc : $\Omega,M,M_1,M_2$ cocycliques $\iff$ $M,A,B$ alignés $\iff$ $M\in(AB)$.
+
+          Reste un cas dégénéré à exclure : si $M=\Omega$, il n'y a plus que trois points distincts, pas quatre points cocycliques. Or $\Omega=\dfrac{1+i}{2}$ est justement le milieu de $[AB]$, donc un point de la droite $(AB)$ : il faut l'exclure. L'ensemble cherché est donc la droite $(AB)$ privée du point $\Omega$ (et, comme partout dans cette partie, du domaine déjà restreint $m\notin\{0,1,i\}$, deux points déjà situés sur cette droite).
+        steps:
+          - math: '\dfrac{z_1-\omega}{z_2-\omega} = i\quad(\text{rotation de la question 1-b, rung R6}) \implies \Omega M_1=\Omega M_2\ \text{et}\ \widehat{M_1\Omega M_2}=\dfrac{\pi}{2}\ \text{pour tout}\ m'
+            note: "Ceci vaut pour tout m du domaine : Omega est toujours sur le cercle de diametre [M1M2] (Thales)."
+          - math: '\dfrac{z_1-m}{z_2-m} = \dfrac{1}{i}\cdot\dfrac{m-i}{m-1} = -i\,\dfrac{m-i}{m-1}'
+            note: "Inverse du rapport de la question 2-a."
+          - math: '\dfrac{z_1-m}{z_2-m}\in i\mathbb{R} \iff \dfrac{m-i}{m-1}\in\mathbb{R} \iff M,\,A,\,B\ \text{alignes (rung R6)}'
+            note: "M voit [M1M2] sous un angle droit exactement quand M, A, B sont alignes."
+          - math: 'M=\Omega \implies m=\dfrac{1+i}{2}\ (\text{milieu de}\ [AB],\ \text{sur}\ (AB)) \implies \text{a exclure (seulement 3 points distincts)}'
+            note: "Cas degenere a retirer de la droite."
+          - math: '\text{Ensemble cherche : la droite}\ (AB)\ \text{privee du point}\ \Omega'
+            note: "Omega, M, M1, M2 cocycliques exactement quand M est sur la droite (AB), prive du point Omega."

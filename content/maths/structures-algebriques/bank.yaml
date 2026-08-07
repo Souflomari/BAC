@@ -7,28 +7,29 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les SIX entrées ci-dessous sont des transcriptions
-# FIDÈLES des six entrées « vérifié » de
+# exercises.yaml). Les SEPT entrées ci-dessous sont des transcriptions
+# FIDÈLES des sept entrées « vérifié » de
 # docs/sujets/maths/structures-algebriques.md (re-fetch AlloSchool
 # indépendant + diff caractère-par-caractère, agent-vérificateur-adversarial)
-# — TOUS les sujets vérifiés recensés à ce jour pour cette notion : 2019
-# (Exercice 1, vérifié 2026-07-12), 2020 (Exercice 2, vérifié 2026-08-05),
-# 2022 (Exercice 4, vérifié 2026-08-05), 2023 (Exercice 5, vérifié
-# 2026-08-06), 2024 (Exercice 4, vérifié 2026-08-05), 2025 (Exercice 4,
-# vérifié 2026-08-06) ; les six en session normale, filière Sciences
-# Mathématiques (A et B, BIOF), barème 3,5 points chacun. 2021 NE PORTE
-# AUCUN exercice de structures algébriques dans
-# docs/sujets/maths/structures-algebriques.md — absence vérifiée, pas une
-# lacune de recensement ; aucune entrée bk-2021-… n'est donc créée, en
-# application du principe énoncé juste après. « Structures algébriques »
-# est un chapitre spécifique à la filière SM (absent de l'épreuve Sciences
-# Expérimentales) — un recensement borné aux sujets SM est donc l'état
-# attendu, pas un signal de recherche incomplète ; introuvable = absent,
-# jamais inventé. Raisonnement rédigé à la voix experte de la maison sur
-# 100 % des questions, citant les rungs R1–R7 ; barème transcrit tel quel
-# dans les énoncés ; conventions KaTeX (block scalars pour la prose, KaTeX
-# brut entre apostrophes simples dans steps[].math, notes sans backslash
-# entre guillemets doubles).
+# — TOUS les sujets vérifiés recensés à ce jour pour cette notion : 2017
+# (Exercice 1, vérifié 2026-08-06, 2e passe indépendante), 2019 (Exercice 1,
+# vérifié 2026-07-12), 2020 (Exercice 2, vérifié 2026-08-05), 2022
+# (Exercice 4, vérifié 2026-08-05), 2023 (Exercice 5, vérifié 2026-08-06),
+# 2024 (Exercice 4, vérifié 2026-08-05), 2025 (Exercice 4, vérifié
+# 2026-08-06) ; les sept en session normale, filière Sciences Mathématiques
+# (A et B, BIOF), barème 3,5 points chacun. 2021 NE PORTE AUCUN exercice de
+# structures algébriques dans docs/sujets/maths/structures-algebriques.md
+# — absence vérifiée, pas une lacune de recensement ; aucune entrée
+# bk-2021-… n'est donc créée, en application du principe énoncé juste
+# après. « Structures algébriques » est un chapitre spécifique à la
+# filière SM (absent de l'épreuve Sciences Expérimentales) — un
+# recensement borné aux sujets SM est donc l'état attendu, pas un signal
+# de recherche incomplète ; introuvable = absent, jamais inventé.
+# Raisonnement rédigé à la voix experte de la maison sur 100 % des
+# questions, citant les rungs R1–R7 ; barème transcrit tel quel dans les
+# énoncés ; conventions KaTeX (block scalars pour la prose, KaTeX brut
+# entre apostrophes simples dans steps[].math, notes sans backslash entre
+# guillemets doubles).
 #
 # NOTE ÉDITORIALE (pour la revue) : bk-2019-n-x1 transcrit le MÊME sujet que
 # le sommet de leçon r-bac (exercises.yaml, [[exercise:r-bac]] à R7). Il
@@ -38,12 +39,13 @@
 # préfère l'écarter de la banque pour éviter le recoupement sur la même
 # page — même décision, prise dans le même sens, sur bk-2019-n-x2 de
 # content/maths/nombres-complexes-1/bank.yaml et sur bk-2021-n-x1 de
-# content/pc/reactions-acido-basiques/bank.yaml. bk-2020-n-x2, bk-2022-n-x4,
-# bk-2023-n-x5, bk-2024-n-x4 et bk-2025-n-x4 (bk-2023/bk-2025 ajoutés
-# 2026-08-06) ne recoupent aucun autre sommet : exercises.yaml de cette
-# notion ne contient que r-bac (2019, sourcé) et r-variation (jumeau
-# inventé, anti-mémorisation, status not-applicable) — vérifié par grep,
-# aucun sourcé sur 2020, 2022, 2023, 2024 ou 2025.
+# content/pc/reactions-acido-basiques/bank.yaml. bk-2017-n-x1, bk-2020-n-x2,
+# bk-2022-n-x4, bk-2023-n-x5, bk-2024-n-x4 et bk-2025-n-x4 (bk-2017 ajouté
+# 2026-08-06, bk-2023/bk-2025 ajoutés 2026-08-06) ne recoupent aucun autre
+# sommet : exercises.yaml de cette notion ne contient que r-bac (2019,
+# sourcé) et r-variation (jumeau inventé, anti-mémorisation, status
+# not-applicable) — vérifié par grep, aucun sourcé sur 2017, 2020, 2022,
+# 2023, 2024 ou 2025.
 #
 # SCOPE NOTE 1 (divulgation honnête, authoring-side — SOUS-GROUPE) : la
 # question 3 du sujet 2019 (« Montrer que G est un sous-groupe de (E,∗) »)
@@ -1284,3 +1286,135 @@ entries:
             note: "Les deux lois se transportent à la fois : corps, commutatif, distributif."
           - math: '(E,T,\times) \ \text{est un corps commutatif}'
             note: "Seul M(1/2) = φ(0), le neutre de T, n'a pas de symétrique pour × — cohérent, puisque l'exigence du R6 ne porte que sur les éléments non nuls."
+
+  # ── bk-2017-n-x1 — 2017 N, Exercice 1 : matrices 3×3, loi T via pivot A, homomorphisme depuis (C*,×), corps commutatif ──
+  - id: bk-2017-n-x1
+    title: "Matrices 3×3, loi T par matrice pivot, homomorphisme depuis (ℂ*,×) et corps commutatif"
+    source:
+      year: 2017
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 1"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2017 session normale — examen national Sciences Mathématiques (A et
+        B), option française (BIOF), Mathématiques, 4 h, coef 9, code sujet
+        NS 25, AlloSchool element/57970 (Exercice 1, « Structures
+        algébriques » ; barème 3,5 points). Transcription fidèle de
+        l'entrée « vérifié » de docs/sujets/maths/structures-algebriques.md,
+        section « 2017 — session normale — Exercice 1 » (re-fetch AlloSchool
+        indépendant, glyphes mojibake du scan résolus au zoom et confirmés
+        — £=ℂ, φ=«j», ∀=«"», ℝ=«¡», ×=«´», ∈=«Î» —, produit
+        $M(a,b)\times A\times M(c,d)$ re-dérivé indépendamment et confirmé
+        égal à $M(ac-bd,\,ad+bc)$, ce qui force la lecture ℂ, barème
+        marginal 0,5/0,5/0,75/0,75/0,5/0,5 sommant à 3,5 pts,
+        agent-vérificateur-adversarial, 2026-08-06).
+    intro: |-
+      **Structures algébriques (examen national Sciences Mathématiques, session normale 2017).**
+
+      On rappelle que $(M_3(\mathbb{R}),+,\times)$ est un anneau unitaire de zéro la matrice nulle $O = \begin{pmatrix}0&0&0\\0&0&0\\0&0&0\end{pmatrix}$ et d'unité la matrice $I = \begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}$, et que $(\mathbb{C},+,\times)$ est un corps commutatif.
+
+      On pose $A = \begin{pmatrix}1&0&0\\1&1&0\\1&1&1\end{pmatrix}$ et, pour tout $(a,b)$ de $\mathbb{R}^2$, $M(a,b) = \begin{pmatrix}a&b&-b\\0&0&0\\b&-a&a\end{pmatrix}$. On considère $E = \{M(a,b)\ /\ (a,b) \in \mathbb{R}^2\}$.
+
+      L'exercice construit une loi $T$ sur $M_3(\mathbb{R})$ via la matrice pivot $A$ ($M_1\,T\,M_2 = M_1\times A\times M_2$), montre qu'elle imite exactement le produit complexe sur $E$, puis transporte, via un homomorphisme (rung R7) depuis $(\mathbb{C}^*,\times)$, toute la structure de corps commutatif de $\mathbb{C}$ vers $(E,+,T)$.
+    questions:
+      - id: q1
+        part: "L'ensemble $E$ : sous-groupe additif, puis stabilité de la loi $T$"
+        stem: |-
+          **(0,5 pt)** Montrer que $E$ est un sous-groupe du groupe $(M_3(\mathbb{R}),+)$
+        reasoning: |-
+          Montrer que $E$ est un sous-groupe de $(M_3(\mathbb{R}),+)$, c'est montrer que $(E,+)$ est **lui-même** un groupe — même démarche qu'au rung R3, restreinte à $E$ : on recoche les quatre axiomes un par un.
+
+          La stabilité se lit directement sur les coefficients : $M(a,b)+M(c,d)$ garde exactement la forme $M(\cdot,\cdot)$. L'associativité et la commutativité de $+$ sont héritées de $M_3(\mathbb{R})$ tout entier. Le neutre $O = M(0,0)$ appartient à $E$, et l'opposé $-M(a,b)$ vaut $M(-a,-b)$ — encore de la forme $M(\cdot,\cdot)$, donc dans $E$. Les quatre axiomes tiennent : $E$ est un sous-groupe de $(M_3(\mathbb{R}),+)$.
+        steps:
+          - math: 'M(a,b)+M(c,d) = \begin{pmatrix}a&b&-b\\0&0&0\\b&-a&a\end{pmatrix} + \begin{pmatrix}c&d&-d\\0&0&0\\d&-c&c\end{pmatrix} = \begin{pmatrix}a+c&b+d&-(b+d)\\0&0&0\\b+d&-(a+c)&a+c\end{pmatrix} = M(a+c,\ b+d)'
+            note: "Addition coefficient par coefficient : le resultat garde la forme M(.,.), E est stable pour +."
+          - math: '+ \ \text{associative et commutative sur}\ M_3(\mathbb{R})\ (\text{fait general}) \implies \text{heritee sur}\ E'
+            note: "Deux axiomes herites de M3(R) tout entier."
+          - math: 'O = \begin{pmatrix}0&0&0\\0&0&0\\0&0&0\end{pmatrix} = M(0,0) \in E, \qquad -M(a,b) = M(-a,\ -b) \in E'
+            note: "Le neutre O et l'oppose de chaque element restent de la forme M(.,.), donc dans E."
+          - math: 'E\ \text{est un sous-groupe de}\ (M_3(\mathbb{R}),+)'
+            note: "Les quatre axiomes sont verifies dans E."
+      - id: q2
+        stem: |-
+          On définit dans $M_3(\mathbb{R})$ la loi de composition interne $T$ par : $\forall(a,b,c,d)\in\mathbb{R}^4$ ; $M(a,b)\,T\,M(c,d) = M(a,b)\times A\times M(c,d)$. **(0,5 pt)** Vérifier que $E$ est stable dans $(M_3(\mathbb{R}),T)$
+        reasoning: |-
+          La stabilité se vérifie par un calcul matriciel direct, en deux temps : d'abord $M(a,b)\times A$, puis ce résultat multiplié par $M(c,d)$. Le pivot $A$ n'est pas choisi au hasard — il est construit précisément pour que ce produit retombe, au bout du calcul, exactement sur la forme $M(\cdot,\cdot)$, et avec les coefficients du produit complexe $(a+ib)(c+id) = (ac-bd) + i(ad+bc)$ : ce n'est pas une coïncidence, c'est tout le sens de l'exercice, qui se révèle à la question 3.
+        steps:
+          - math: 'M(a,b)\times A = \begin{pmatrix}a&b&-b\\0&0&0\\b&-a&a\end{pmatrix}\begin{pmatrix}1&0&0\\1&1&0\\1&1&1\end{pmatrix} = \begin{pmatrix}a&0&-b\\0&0&0\\b&0&a\end{pmatrix}'
+            note: "Premier produit matriciel, ligne par colonne."
+          - math: '\big(M(a,b)\times A\big)\times M(c,d) = \begin{pmatrix}a&0&-b\\0&0&0\\b&0&a\end{pmatrix}\begin{pmatrix}c&d&-d\\0&0&0\\d&-c&c\end{pmatrix} = \begin{pmatrix}ac-bd&ad+bc&-(ad+bc)\\0&0&0\\ad+bc&-(ac-bd)&ac-bd\end{pmatrix}'
+            note: "Second produit ; le resultat prend exactement la forme M(.,.)."
+          - math: 'M(a,b)\,T\,M(c,d) = M(ac-bd,\ ad+bc) \in E'
+            note: "Les coefficients sont ceux du produit complexe (a+ib)(c+id) : E est stable pour T."
+      - id: q3
+        part: "Un homomorphisme $\\varphi$ depuis $(\\mathbb{C}^*,\\times)$"
+        stem: |-
+          Soit $\varphi$ l'application de $\mathbb{C}^*$ dans $E$ qui à tout nombre complexe non nul $a+ib$ (où $(a,b)\in\mathbb{R}^2$) fait correspondre la matrice $M(a,b)$ de $E$. **(0,75 pt)** Vérifier que $\varphi$ est un homomorphisme de $(\mathbb{C}^*,\times)$ vers $(E,T)$ et que $\varphi(\mathbb{C}^*) = E^*$ où $E^* = E\setminus\{M(0,0)\}$
+        reasoning: |-
+          Le geste-pont du rung R7 : deux choses à établir. D'abord, que $\varphi$ transforme $\times$ en $T$ — c'est immédiat maintenant, la question 2 vient exactement de le calculer : pour $z_1=a+ib$ et $z_2=c+id$, $z_1z_2=(ac-bd)+i(ad+bc)$, donc $\varphi(z_1z_2)=M(ac-bd,ad+bc)$, qui est très exactement le résultat trouvé pour $\varphi(z_1)\,T\,\varphi(z_2)=M(a,b)\,T\,M(c,d)$ à la question 2. C'est le pivot $A$ qui fait coïncider les deux calculs.
+
+          Ensuite, $\varphi(\mathbb{C}^*)=E^*$. L'application $(a,b)\mapsto M(a,b)$ est injective — les coefficients de $M(a,b)$ redonnent $a$ et $b$ directement — donc $\varphi$ l'est aussi sur $\mathbb{C}^*$. Un complexe $a+ib$ est non nul exactement quand $(a,b)\neq(0,0)$, c'est-à-dire quand $M(a,b)\neq M(0,0)$ : l'image de $\varphi$ tombe donc exactement dans $E\setminus\{M(0,0)\}=E^*$, et réciproquement tout $M(a,b)\in E^*$ a pour antécédent le complexe non nul $a+ib$.
+        steps:
+          - math: 'z_1=a+ib,\ z_2=c+id \implies z_1z_2 = (ac-bd)+i(ad+bc)'
+            note: "Produit complexe usuel."
+          - math: '\varphi(z_1z_2) = M(ac-bd,\ ad+bc) = M(a,b)\,T\,M(c,d) = \varphi(z_1)\,T\,\varphi(z_2)'
+            note: "Exactement le resultat de la question 2 : phi est un homomorphisme de (C*,x) vers (E,T)."
+          - math: '(a,b)\mapsto M(a,b)\ \text{injective} \implies \varphi\ \text{injective sur}\ \mathbb{C}^*'
+            note: "Les coefficients de M(a,b) redonnent a et b : deux complexes distincts ont des images distinctes."
+          - math: 'a+ib\neq0 \iff (a,b)\neq(0,0) \iff M(a,b)\neq M(0,0) \implies \varphi(\mathbb{C}^*) = E\setminus\{M(0,0)\} = E^*'
+            note: "L'image de phi tombe exactement dans E prive de M(0,0), et tout element de E* a un antecedent."
+      - id: q4
+        stem: |-
+          **(0,75 pt)** En déduire que $(E^*,T)$ est un groupe commutatif dont on déterminera l'élément neutre $J$
+        reasoning: |-
+          $(\mathbb{C}^*,\times)$ est un groupe commutatif (rappel de tête d'énoncé). La question précédente donne un homomorphisme $\varphi$, bijectif de $\mathbb{C}^*$ vers $E^*$ (injectif et d'image exactement $E^*$) : c'est un isomorphisme. Toute la structure se transporte (rung R7) : $(E^*,T)$ est un groupe, commutatif car $\times$ l'est ($\varphi(z_1)\,T\,\varphi(z_2)=\varphi(z_1z_2)=\varphi(z_2z_1)=\varphi(z_2)\,T\,\varphi(z_1)$, et $\varphi$ atteint tout $E^*$).
+
+          L'élément neutre $J$ de $(E^*,T)$ est l'image du neutre $1$ de $(\mathbb{C}^*,\times)$ : $J=\varphi(1)=\varphi(1+i\cdot0)=M(1,0)$.
+        steps:
+          - math: '(\mathbb{C}^*,\times)\ \text{groupe commutatif (rappel)}, \qquad \varphi\ \text{isomorphisme de}\ (\mathbb{C}^*,\times)\ \text{vers}\ (E^*,T)\ (\text{q3})'
+            note: "Les deux ingredients du transport de structure."
+          - math: '\varphi(z_1)\,T\,\varphi(z_2) = \varphi(z_1z_2) = \varphi(z_2z_1) = \varphi(z_2)\,T\,\varphi(z_1)'
+            note: "Commutativite de T sur E*, heritee de la commutativite du produit complexe."
+          - math: '(E^*,T)\ \text{est un groupe commutatif}, \qquad J = \varphi(1) = M(1,0)'
+            note: "Le neutre J est l'image du neutre 1 de C* par phi."
+      - id: q5
+        part: "Distributivité de $T$, et $(E,+,T)$ corps commutatif"
+        stem: |-
+          **(0,5 pt)** Montrer que la loi de composition interne « $T$ » est distributive par rapport à la loi de composition interne « $+$ » dans $E$
+        reasoning: |-
+          On réutilise la formule générale de la question 2 — valable pour tous réels $a,b,c,d$, pas seulement pour des complexes non nuls : $M(a,b)\,T\,M(c,d)=M(ac-bd,\ ad+bc)$. On développe les deux membres de l'égalité à établir, $M(a,b)\,T\big(M(c,d)+M(e,f)\big)$ et $\big(M(a,b)\,T\,M(c,d)\big)+\big(M(a,b)\,T\,M(e,f)\big)$, et on compare terme à terme : chacun se ramène à la distributivité de $\times$ sur $+$ dans $\mathbb{R}$, déjà acquise.
+        steps:
+          - math: 'M(c,d)+M(e,f) = M(c+e,\ d+f)'
+            note: "Stabilite de + dans E (question 1)."
+          - math: 'M(a,b)\,T\big(M(c,d)+M(e,f)\big) = M(a,b)\,T\,M(c+e,\ d+f) = M\big(a(c+e)-b(d+f),\ \ a(d+f)+b(c+e)\big)'
+            note: "Formule generale de T (question 2), appliquee au couple (c+e, d+f)."
+          - math: '\big(M(a,b)\,T\,M(c,d)\big) + \big(M(a,b)\,T\,M(e,f)\big) = M(ac-bd,\ ad+bc) + M(ae-bf,\ af+be) = M\big((ac-bd)+(ae-bf),\ \ (ad+bc)+(af+be)\big)'
+            note: "Meme formule appliquee separement a (c,d) et (e,f), puis somme dans E (question 1)."
+          - math: 'a(c+e)-b(d+f) = (ac-bd)+(ae-bf), \qquad a(d+f)+b(c+e) = (ad+bc)+(af+be)'
+            note: "Les deux membres coincident, coefficient par coefficient : simple distributivite de x sur + dans R."
+          - math: 'M(a,b)\,T\big(M(c,d)+M(e,f)\big) = \big(M(a,b)\,T\,M(c,d)\big) + \big(M(a,b)\,T\,M(e,f)\big)'
+            note: "T est distributive par rapport a + dans E (et, T etant commutative, la distributivite de l'autre cote suit automatiquement)."
+      - id: q6
+        stem: |-
+          **(0,5 pt)** En déduire que $(E,+,T)$ est un corps commutatif.
+        reasoning: |-
+          Il ne reste qu'à assembler ce qui précède, exactement les conditions du rung R6. $(E,+)$ est un groupe commutatif (question 1, commutativité héritée de $M_3(\mathbb{R})$). $T$ est interne (question 2), associative — un fait général : $T$ n'est jamais qu'un produit matriciel ordinaire encadré par le pivot fixe $A$, donc $\big(M_1\,T\,M_2\big)\,T\,M_3 = M_1\times A\times M_2\times A\times M_3 = M_1\,T\big(M_2\,T\,M_3\big)$, sans autre argument que l'associativité du produit matriciel, déjà acquise —, commutative (formule générale de la question 2, symétrique en $(a,b)\leftrightarrow(c,d)$) et distributive par rapport à $+$ (question précédente) : c'est un anneau commutatif, unitaire d'élément unité $J=M(1,0)$ (question 4).
+
+          Reste l'exigence propre au corps : tout élément non nul de $E$ doit posséder un symétrique pour $T$. C'est exactement le contenu de la question 4 : $(E^*,T)$, c'est-à-dire $(E\setminus\{M(0,0)\},T)$, est un groupe — donc chaque élément non nul de $E$ a un symétrique pour $T$, qui reste dans $E$. Toutes les conditions du R6 sont réunies : $(E,+,T)$ est un corps commutatif.
+        steps:
+          - math: '(E,+)\ \text{groupe commutatif}\ (\text{q1}), \qquad T\ \text{interne}\ (\text{q2})'
+            note: "Deux premiers ingredients."
+          - math: '\big(M_1\,T\,M_2\big)\,T\,M_3 = M_1\times A\times M_2\times A\times M_3 = M_1\,T\big(M_2\,T\,M_3\big)'
+            note: "Associativite de T : simple consequence de l'associativite du produit matriciel ordinaire (fait general)."
+          - math: 'M(a,b)\,T\,M(c,d) = M(ac-bd,ad+bc) = M(ca-db,cb+da) = M(c,d)\,T\,M(a,b)'
+            note: "Commutativite de T sur tout E, directement sur la formule generale (question 2)."
+          - math: 'T\ \text{distributive par rapport a}\ +\ (\text{q5}), \qquad J=M(1,0)\ \text{unite}\ (\text{q4})'
+            note: "Anneau commutatif et unitaire."
+          - math: '(E^*,T) = (E\setminus\{M(0,0)\},T)\ \text{groupe}\ (\text{q4}) \implies \text{tout element non nul de}\ E\ \text{a un symetrique pour}\ T'
+            note: "Exigence propre au corps (rung R6), deja etablie."
+          - math: '(E,+,T)\ \text{est un corps commutatif}'
+            note: "Toutes les conditions du R6 sont reunies."

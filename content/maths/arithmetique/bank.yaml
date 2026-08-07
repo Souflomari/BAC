@@ -7,20 +7,22 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). SEPT entrées ici : les SEPT sujets au statut
-# « vérifié » recensés par docs/sujets/maths/arithmetique.md — 2019
-# (Exercice 3, NS 24F, AlloSchool element/68482), 2020 (Exercice 1, NS 25,
-# AlloSchool element/109635), 2021 (Exercice 3, NS 24F, AlloSchool
-# element/127193), 2022 (Exercice 3, NS 24F, AlloSchool element/136604),
-# 2023 (Exercice 4, NS 24F, AlloSchool element/142490), 2024 (Exercice 5,
-# NS 24F, AlloSchool element/145739) et 2025 (Exercice 3, NS 24F, AlloSchool
-# element/145783) — chacun re-fetché indépendamment et diffé
-# caractère-par-caractère contre son scan par l'agent-vérificateur-
-# adversarial (2026-07-12 pour 2019, 2026-08-05 pour 2020/2022/2024,
-# 2026-08-06 pour 2021/2023/2025). Introuvable = absent, jamais inventé :
-# pas de huitième entrée tant qu'un huitième sujet d'arithmétique n'est pas
-# vérifié. Chapitre SPÉCIFIQUE à la filière Sciences Mathématiques (SM) —
-# absent de l'épreuve Sciences Expérimentales (SVT / Sc. Physiques).
+# exercises.yaml). HUIT entrées ici : les HUIT sujets au statut
+# « vérifié » recensés par docs/sujets/maths/arithmetique.md — 2017
+# (Exercice 3, NS 25, AlloSchool element/57970), 2019 (Exercice 3, NS 24F,
+# AlloSchool element/68482), 2020 (Exercice 1, NS 25, AlloSchool
+# element/109635), 2021 (Exercice 3, NS 24F, AlloSchool element/127193),
+# 2022 (Exercice 3, NS 24F, AlloSchool element/136604), 2023 (Exercice 4,
+# NS 24F, AlloSchool element/142490), 2024 (Exercice 5, NS 24F, AlloSchool
+# element/145739) et 2025 (Exercice 3, NS 24F, AlloSchool element/145783)
+# — chacun re-fetché indépendamment et diffé caractère-par-caractère
+# contre son scan par l'agent-vérificateur-adversarial (2026-08-06 pour
+# 2017 — 2e passe indépendante —, 2026-07-12 pour 2019, 2026-08-05 pour
+# 2020/2022/2024, 2026-08-06 pour 2021/2023/2025). Introuvable = absent,
+# jamais inventé : pas de neuvième entrée tant qu'un neuvième sujet
+# d'arithmétique n'est pas vérifié. Chapitre SPÉCIFIQUE à la filière
+# Sciences Mathématiques (SM) — absent de l'épreuve Sciences
+# Expérimentales (SVT / Sc. Physiques).
 #
 # NOTE ÉDITORIALE (pour la revue) : bk-2019-n-x3 transcrit le MÊME sujet que
 # le sommet de leçon r-bac (exercises.yaml, marqueur [[exercise:r-bac]] à
@@ -38,8 +40,9 @@
 # congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations
 # diophantiennes — pas Fermat). Le théorème est nommé et justifié au point
 # d'usage dans le champ `reasoning` de chaque question qui le mobilise
-# (bk-2019-n-x3 q4 ; bk-2020-n-x1 q2 ; bk-2021-n-x3 q3, q6 ; bk-2022-n-x3
-# q3 ; bk-2023-n-x4 q1, q4 ; bk-2024-n-x5 q1 ; bk-2025-n-x3 q1, q2),
+# (bk-2017-n-x3 q3 ; bk-2019-n-x3 q4 ; bk-2020-n-x1 q2 ; bk-2021-n-x3 q3,
+# q6 ; bk-2022-n-x3 q3 ; bk-2023-n-x4 q1, q4 ; bk-2024-n-x5 q1 ;
+# bk-2025-n-x3 q1, q2),
 # exactement comme le fait déjà le rupture-gate cp-r6-fermat côté
 # lesson.md, juste avant [[exercise:r-bac]].
 #
@@ -1060,3 +1063,108 @@ entries:
             note: "Meme calcul direct qu'a la question 3-b : contradiction."
           - math: '(F)\ \text{n''admet pas de solution dans}\ \mathbb{Z}'
             note: "L'hypothese d'une solution entiere est donc fausse."
+
+  # ── bk-2017-n-x3 — 2017 N, Exercice 3 : Fermat, encadrement de p, équation px+y^(p-1)=2017 ──
+  - id: bk-2017-n-x3
+    title: "Petit théorème de Fermat et l'équation $px+y^{p-1}=2017$ (2017)"
+    source:
+      year: 2017
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 3"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2017 session normale — examen national Sciences Mathématiques (A) et
+        (B), option française (BIOF), Mathématiques, 4 h, coef 9, code sujet
+        NS 25, barème 3 points (Exercice 3, « Arithmétique »). Source
+        AlloSchool element/57970. Transcription fidèle de l'entrée
+        « vérifié » de docs/sujets/maths/arithmetique.md, section « 2017 —
+        session normale — Exercice 3 » (2e passe de vérification
+        indépendante, provenance de page confirmée sur deux images du scan
+        — 0003-big.jpg porte l'exercice en entier —, diff caractère-par-
+        caractère conforme, barème marginal 0,25/0,5/0,75/0,5/1 sommant à
+        3 pts, agent-vérificateur-adversarial, 2026-08-06).
+    intro: |-
+      **Arithmétique (examen national Sciences Mathématiques, session normale 2017).**
+
+      On admet que $2017$ est un nombre premier, et que $2016 = 2^5\,3^2\,7$. Soit $p$ un nombre premier supérieur ou égal à $5$.
+
+      L'exercice mobilise le petit théorème de Fermat — hors-rung, rappelé au point d'usage — pour contraindre $p$ à une seule valeur possible via la factorisation de $2016$, puis termine par une résolution explicite de l'équation $px+y^{p-1}=2017$ dans $\mathbb{N}^*\times\mathbb{N}^*$.
+    questions:
+      - id: q1
+        part: "Partie A — Encadrer $p$, puis exclure $p$ diviseur de $y$"
+        stem: |-
+          **(0,25 pt)** Soit le couple $(x,y)$ de $\mathbb{N}^* \times \mathbb{N}^*$ tel que : $px + y^{p-1} = 2017$. Vérifier que : $p < 2017$
+        reasoning: |-
+          $y \geq 1$ (car $y \in \mathbb{N}^*$), donc $y^{p-1} \geq 1$ quel que soit l'exposant. On isole $px = 2017 - y^{p-1} \leq 2016$. Comme $x \geq 1$ (car $x \in \mathbb{N}^*$), on a $p \leq px \leq 2016$, donc $p < 2017$.
+        steps:
+          - math: 'y \geq 1 \implies y^{p-1} \geq 1'
+            note: "y appartient a N*, donc y au moins 1 ; toute puissance de y reste au moins 1."
+          - math: 'px = 2017 - y^{p-1} \leq 2016'
+            note: "On isole px dans l'equation, en utilisant y^{p-1} au moins 1."
+          - math: 'x \geq 1 \implies p \leq px \leq 2016 \implies p < 2017'
+            note: "x appartient a N*, donc p est au plus px."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Montrer que : $p$ ne divise pas $y$
+        reasoning: |-
+          Raisonnement par l'absurde. Si $p \mid y$, alors $p \mid y^{p-1}$ (une puissance d'un multiple de $p$ reste un multiple de $p$). Comme $p \mid px$ trivialement, $p$ diviserait la somme $px+y^{p-1}=2017$.
+
+          Or $2017$ est premier (admis) : ses seuls diviseurs positifs sont $1$ et $2017$. Comme $5 \leq p < 2017$ (question précédente), $p$ n'est ni $1$ ni $2017$, donc $p \nmid 2017$. Contradiction : $p$ ne divise pas $y$.
+        steps:
+          - math: 'p \mid y \implies p \mid y^{p-1}'
+            note: "Hypothese absurde : si p divise y, il divise aussi toute puissance de y, en particulier y^{p-1}."
+          - math: 'p \mid px \ \text{et}\ p \mid y^{p-1} \implies p \mid (px+y^{p-1}) = 2017'
+            note: "p diviserait alors la somme des deux termes de l'equation, soit 2017."
+          - math: '2017\ \text{premier},\ 5 \leq p < 2017 \implies p \nmid 2017'
+            note: "2017 est premier (admis) : ses seuls diviseurs sont 1 et 2017 ; p est strictement compris entre les deux (question precedente)."
+          - math: 'p \nmid y'
+            note: "Contradiction : l'hypothese p divise y est donc fausse."
+      - id: q3
+        stem: |-
+          **(0,75 pt)** Montrer que : $y^{p-1} \equiv 1\ [p]$ et en déduire que $p$ divise $2016$
+        reasoning: |-
+          C'est ici qu'intervient le **petit théorème de Fermat** — un outil du programme SM qui déborde le corps de rungs de la leçon (aucun rung dédié ; R0–R8 couvrent divisibilité, division euclidienne, congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations diophantiennes, mais pas Fermat) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. On l'applique avec $a=y$ : $p$ est premier (donné, $p\geq5$) et $p \nmid y$ (question précédente), donc $y^{p-1} \equiv 1 \pmod p$.
+
+          On réduit ensuite l'équation elle-même modulo $p$ : le terme $px$ disparaît, donc $y^{p-1} \equiv px+y^{p-1} = 2017 \pmod p$. En combinant les deux congruences pour $y^{p-1}$, il vient $1 \equiv 2017 \pmod p$, c'est-à-dire $p \mid (2017-1) = 2016$.
+        steps:
+          - math: 'p\ \text{premier},\ p \nmid y \implies y^{p-1} \equiv 1 \pmod p'
+            note: "Petit theoreme de Fermat : p premier (donne, p au moins 5) et p ne divise pas y (question precedente)."
+          - math: 'px \equiv 0 \pmod p \implies y^{p-1} \equiv px + y^{p-1} = 2017 \pmod p'
+            note: "On reduit l'equation modulo p : le terme px disparait."
+          - math: '1 \equiv y^{p-1} \equiv 2017 \pmod p \implies p \mid (2017-1) = 2016'
+            note: "Les deux congruences pour y^{p-1} coincident : p divise donc 2016."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Montrer que : $p = 7$
+        reasoning: |-
+          $2016 = 2^5\,3^2\,7$ (donné) : ses seuls facteurs premiers sont $2$, $3$ et $7$. La question précédente donne $p \mid 2016$, donc $p \in \{2,3,7\}$. Comme $p \geq 5$ (donné dès l'énoncé), $p$ ne peut être ni $2$ ni $3$ : il reste $p=7$.
+        steps:
+          - math: '2016 = 2^5\,3^2\,7'
+            note: "Factorisation donnee par l'enonce."
+          - math: 'p\ \text{premier et}\ p \mid 2016 \implies p \in \{2,3,7\}'
+            note: "Les seuls facteurs premiers de 2016 sont 2, 3 et 7 (question precedente)."
+          - math: 'p \geq 5 \implies p \neq 2,\ p \neq 3 \implies p = 7'
+            note: "p est au moins 5 (donne) : seul 7 reste possible parmi les facteurs premiers de 2016."
+      - id: q5
+        part: "Partie B — Résoudre l'équation, suivant les valeurs de $p$"
+        stem: |-
+          **(1 pt)** Déterminer, suivant les valeurs de $p$, les couples $(x,y)$ de $\mathbb{N}^* \times \mathbb{N}^*$ vérifiant : $px + y^{p-1} = 2017$
+        reasoning: |-
+          Les questions précédentes montrent, par contraposée : si l'équation admet une solution $(x,y) \in \mathbb{N}^*\times\mathbb{N}^*$, alors nécessairement $p=7$. Donc, pour tout nombre premier $p\geq5$ avec $p\neq7$, l'équation **n'admet aucune solution** dans $\mathbb{N}^*\times\mathbb{N}^*$.
+
+          Reste à résoudre effectivement le cas $p=7$ : $7x+y^6=2017$, avec $x,y\geq1$ entiers. Comme $x\geq1$, on a $7x\geq7$, donc $y^6\leq2010$ ; or $4^6=4096>2010$, donc $y\in\{1,2,3\}$ — trois valeurs seulement à tester. Pour chacune, $x=\dfrac{2017-y^6}{7}$ tombe juste : $y=1$ donne $x=\dfrac{2016}{7}=288$ ; $y=2$ donne $x=\dfrac{1953}{7}=279$ ; $y=3$ donne $x=\dfrac{1288}{7}=184$. (Ce n'est pas un hasard : $p=7$ est premier et $y\in\{1,2,3\}$ n'est jamais multiple de $7$, donc le petit théorème de Fermat garantit déjà $y^6\equiv1\ [7]$, donc $2017-y^6\equiv2017-1\equiv0\ [7]$ — la division tombe forcément juste.)
+
+          Les trois couples $(288,1)$, $(279,2)$ et $(184,3)$ sont donc les seules solutions, et seulement pour $p=7$.
+        steps:
+          - math: 'p\neq7 \implies \text{aucune solution dans}\ \mathbb{N}^*\times\mathbb{N}^*'
+            note: "Contraposee des questions precedentes : toute solution forcerait p=7."
+          - math: 'p=7:\ 7x+y^6=2017,\quad x\geq1 \implies y^6\leq2010 \implies y\in\{1,2,3\}\ (4^6=4096>2010)'
+            note: "x au moins 1 borne y^6 ; seules trois valeurs de y restent possibles."
+          - math: 'y=1:\ x=\dfrac{2016}{7}=288; \quad y=2:\ x=\dfrac{1953}{7}=279; \quad y=3:\ x=\dfrac{1288}{7}=184'
+            note: "Pour chaque valeur de y, x est determine et tombe juste (Fermat garantit la divisibilite par 7)."
+          - math: 'S = \{(288,1),\ (279,2),\ (184,3)\}\ \text{pour}\ p=7;\ \text{aucune solution sinon}'
+            note: "Les trois couples solutions, uniquement dans le cas p=7."
