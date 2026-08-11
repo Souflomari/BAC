@@ -5,7 +5,7 @@ RÈGLE : un changement de token là-bas implique une mise à jour ici, dans
 le même esprit que TOKENS.md — la revue vérifie la correspondance.
 """
 
-from manim import Tex, MathTex, Text, Mobject
+from manim import Tex, MathTex, Text, Mobject, TexTemplate
 
 # ── Surfaces ────────────────────────────────────────────── tokens.ts
 BAC_BG = "#F4EFE6"            # --color-surface-base
@@ -30,9 +30,23 @@ BAC_WARNING = "#8A6A1E"       # --color-warning
 BAC_ERROR = "#9A3B2E"         # --color-error
 
 
+# Préambule LaTeX minimal : le gabarit par défaut de Manim exige une
+# distribution TeX lourde (physics, calligra, tipa…) ; nos scènes n'ont
+# besoin que d'amsmath/amssymb + le français — ce qui rend l'install
+# native légère (texlive-latex-base + latex-extra + fonts-recommended).
+BAC_TEX = TexTemplate(
+    preamble=r"""
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+"""
+)
+
+
 def apply_defaults() -> None:
-    """Encre par défaut pour tout objet écrit — appelé par BacScene."""
+    """Encre et gabarit TeX par défaut — appelé par BacScene."""
     Mobject.set_default(color=BAC_INK)
-    Tex.set_default(color=BAC_INK)
-    MathTex.set_default(color=BAC_INK)
+    Tex.set_default(color=BAC_INK, tex_template=BAC_TEX)
+    MathTex.set_default(color=BAC_INK, tex_template=BAC_TEX)
     Text.set_default(color=BAC_INK)
