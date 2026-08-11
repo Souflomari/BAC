@@ -32,6 +32,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # next/font/google fetches fonts at build time; the cache gives the
+      # loader a fallback when the runner's fetch to Google flakes (the
+      # "Cannot read properties of null (reading '1')" build failure) and
+      # speeds up rebuilds.
+      - name: Cache Next.js build cache
+        uses: actions/cache@v4
+        with:
+          path: web/.next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-
+
       # web/ pins playwright-core; install the matching Chromium build and
       # hand its path to dom-truth via PW_CHROMIUM_PATH.
       - name: Install Chromium for dom-truth
@@ -43,8 +55,9 @@ jobs:
           test -n "$dirs"
           node scripts/validate-content.mjs --strict $dirs
 
+      # One retry: the next/font Google fetch is the known transient here.
       - name: Build
-        run: npm run build
+        run: npm run build || { echo "::warning::build retry (next/font fetch flake)"; npm run build; }
 
       # Known cold-boot flake (documented in the session ledger): on a cold
       # server the forbidden-text sweep can race KaTeX hydration and read the
