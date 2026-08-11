@@ -65,6 +65,28 @@ QUALITY=l ./render.sh <scene>   # brouillon rapide (480p)
 Installation (native ou Docker) : voir `SETUP.md`. Convention : chaque
 fichier de scène expose une unique classe `Explication`.
 
+## La chaîne de production (campagne maths, owner 2026-08-11)
+
+Une scène = un cycle complet, personne ne s'auto-certifie :
+
+1. **Auteur** (motion-author, Sonnet) : écrit la scène depuis l'entrée
+   `bank.yaml` vérifiée + DESIGN.md + le pilote v4 comme gabarit
+   vivant. Livre le `.py` seul — jamais de rendu.
+2. **Rendu + audit visuel** (orchestrateur, dans Claude Code) : rendu
+   brouillon `-ql --save_sections`, puis **la dernière image de CHAQUE
+   étape** en planches-contact, toutes inspectées — chevauchements,
+   arcs d'angle réflexes, étiquettes sur O, débordements de zone.
+   Défauts corrigés avant toute livraison.
+3. **Vérification du fond** : les valeurs et conclusions affichées
+   sont confrontées à l'entrée de banque (et son corrigé vérifié) —
+   même discipline que la vérification des transcriptions.
+4. Rendu final `-qm` + `manifest.yaml` mis à jour + commit gated
+   (grep model-id) ; échantillon livré à l'owner par lots.
+
+Ordre de campagne : voir `manifest.yaml` (affinité de gabarit d'abord —
+complexes, puis analyse, dénombrement, arithmétique/structures —
+géométrie dans l'espace en dernier, seul chantier 3D).
+
 ## Cycle de vie d'une scène
 
 1. Écrite depuis l'entrée `bank.yaml` vérifiée (jamais depuis le doc
