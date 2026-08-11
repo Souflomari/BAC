@@ -20,31 +20,47 @@ notebooks. Conséquences :
 - N'y verser que des documents non sensibles (sujets publics, cadres
   officiels, manuels) — c'est le compte Google de l'owner.
 
-## Installation (poste de l'owner, ~10 minutes)
+## Installation — DÉJÀ CÂBLÉE dans le dépôt (2026-08-11)
 
-1. Prérequis : Node.js ≥ 20 et Chrome installés.
-2. Ajouter le serveur à la config MCP de l'app Claude du poste
-   (Claude Desktop/Cowork → Settings → Developer → Edit Config), bloc à
-   fusionner dans `claude_desktop_config.json` :
+Le serveur est déclaré dans le `.mcp.json` du projet (épinglé
+`notebooklm-mcp@2.0.0`, boot vérifié). Chrome ne se lance qu'au premier
+appel d'outil — la déclaration ne coûte rien aux sessions qui ne s'en
+servent pas.
 
-   ```json
-   {
-     "mcpServers": {
-       "notebooklm": {
-         "command": "npx",
-         "args": ["-y", "notebooklm-mcp@latest"]
-       }
-     }
-   }
-   ```
+**Il ne reste qu'UNE étape, qui exige l'écran de l'owner** (le login
+Google s'ouvre dans une fenêtre Chrome visible ; impossible depuis un
+conteneur distant sans affichage, et le profil d'auth est par machine,
+sans export) :
 
-3. Redémarrer l'app Claude. Au premier appel d'outil `notebooklm`, une
-   fenêtre Chrome s'ouvre : se connecter au compte Google (l'auth
-   persiste ensuite).
-4. Vérifier : demander à Claude « liste mes notebooks NotebookLM ».
+1. Sur le poste : ouvrir ce dépôt dans Claude Code local (ou Cowork sur
+   le dossier) — le `.mcp.json` du projet est repris automatiquement.
+   Prérequis : Node.js ≥ 20 et Chrome installés.
+2. Demander à Claude : « lance l'outil notebooklm setup_auth ». Une
+   fenêtre Chrome s'ouvre → se connecter au compte Google. C'est tout :
+   le profil persiste (`~/.local/share/notebooklm-mcp/chrome_profile/`
+   sous Linux, équivalent par OS) et les appels suivants tournent en
+   headless.
+3. Vérifier : « liste mes notebooks NotebookLM ».
 
-Réf. : dépôt `PleasePrompto/notebooklm-mcp` (v2.x) ; alternative CLI :
-`jacob-bd/notebooklm-mcp-cli`.
+Hors dépôt (app Claude Desktop générique), le bloc équivalent à
+fusionner dans `claude_desktop_config.json` :
+
+```json
+{
+  "mcpServers": {
+    "notebooklm": {
+      "command": "npx",
+      "args": ["-y", "notebooklm-mcp@2.0.0"]
+    }
+  }
+}
+```
+
+Réf. : dépôt `PleasePrompto/notebooklm-mcp` (v2.0.0 vérifiée) ;
+alternative CLI : `jacob-bd/notebooklm-mcp-cli`. Note sessions
+distantes : sans profil d'auth local, les outils `notebooklm` y restent
+inutilisables — c'est attendu ; les requêtes NotebookLM se font depuis
+les sessions du poste.
 
 ## Les notebooks à créer (sur notebooklm.google.com)
 
