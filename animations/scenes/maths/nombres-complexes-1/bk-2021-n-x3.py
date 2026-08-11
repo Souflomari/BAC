@@ -397,8 +397,10 @@ class Explication(BacScene):
         re_lbl = Text("axe réel", font_size=20, color=BAC_INK_MUTED).next_to(
             plan.n2p(2.1), DOWN, buff=0.18
         )
+        # À DROITE de l'axe : à gauche, l'étiquette envahit la colonne de
+        # travail et colle aux rappels d'énoncé (défaut d'audit).
         im_lbl = Text("axe imaginaire", font_size=20, color=BAC_INK_MUTED).next_to(
-            plan.n2p(1.6j), LEFT, buff=0.18
+            plan.n2p(1.6j), RIGHT, buff=0.18
         )
         self.play(Create(plan, run_time=2.2), FadeIn(o_lbl))
         self.play(FadeIn(re_lbl), FadeIn(im_lbl))
@@ -702,7 +704,7 @@ class Explication(BacScene):
         self.pose(3.2)
         self.efface_legende()
         self.nettoie()
-        self.play(FadeOut(VGroup(badge, ac_line, ad_line, ang, ang_lbl)))
+        self.play(FadeOut(VGroup(badge, ac_line, ad_line, ang, ang_lbl, arc)))
         return image_dot
 
     # ── Q4 b) : D, image de C par R ; d = a + 1 ─────────────────────
