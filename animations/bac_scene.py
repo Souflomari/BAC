@@ -7,10 +7,13 @@ lecteur web (arrêts par question) et pour la narration E3.
 """
 
 from manim import (
+    Arrow,
     Scene,
+    SurroundingRectangle,
     VGroup,
     Text,
     RoundedRectangle,
+    Create,
     FadeIn,
     FadeOut,
     Write,
@@ -87,6 +90,77 @@ class BacScene(Scene):
         if self._legende is not None:
             self.play(FadeOut(self._legende), run_time=0.4)
             self._legende = None
+
+    # ── L'ardoise : la colonne de travail gérée (DESIGN.md §1) ─────
+    # Ce qui est consommé s'efface avant que la suite n'arrive ; rien
+    # ne descend jamais dans la bande légende (y < ARDOISE_BAS).
+
+    ARDOISE_HAUT = 2.55
+    ARDOISE_BAS = -2.3
+
+    def ardoise(self, gauche_buff: float = 0.65):
+        """(Ré)initialise la colonne de travail du chapitre."""
+        self._lignes = []
+        self._ard_buff = gauche_buff
+
+    def _pose_en_haut(self, m):
+        m.to_edge(LEFT, buff=self._ard_buff)
+        m.shift((self.ARDOISE_HAUT - m.get_top()[1]) * UP)
+
+    def ecrit(self, m, buff: float = 0.45, run_time: float = 1.2):
+        """Écrit une ligne sous la précédente ; auto-nettoie si ça déborde."""
+        if getattr(self, "_lignes", None):
+            m.next_to(self._lignes[-1], DOWN, aligned_edge=LEFT, buff=buff)
+        else:
+            self._lignes = getattr(self, "_lignes", [])
+            self._pose_en_haut(m)
+        if m.get_bottom()[1] < self.ARDOISE_BAS:
+            self.nettoie(garder=1)
+            if self._lignes:
+                m.next_to(self._lignes[-1], DOWN, aligned_edge=LEFT, buff=buff)
+            else:
+                self._pose_en_haut(m)
+        self.play(Write(m), run_time=run_time)
+        self._lignes.append(m)
+        return m
+
+    def nettoie(self, garder: int = 0):
+        """Efface les lignes consommées ; remonte celles qu'on garde."""
+        lignes = getattr(self, "_lignes", [])
+        if not lignes:
+            return
+        consommees = lignes[: len(lignes) - garder] if garder else lignes[:]
+        gardees = lignes[len(lignes) - garder:] if garder else []
+        if consommees:
+            self.play(*[FadeOut(m) for m in consommees], run_time=0.6)
+        if gardees:
+            dy = self.ARDOISE_HAUT - gardees[0].get_top()[1]
+            if abs(dy) > 0.05:
+                self.play(*[m.animate.shift(dy * UP) for m in gardees], run_time=0.7)
+        self._lignes = gardees
+
+    # ── Signaling (DESIGN.md §2) : entourer + relier par une flèche ─
+
+    def entoure(self, cible, couleur, buff: float = 0.08):
+        """Entoure un morceau de formule (l'exemple owner : a, b, c)."""
+        cadre = SurroundingRectangle(
+            cible, color=couleur, buff=buff, corner_radius=0.12, stroke_width=2.5
+        )
+        self.play(Create(cadre), run_time=0.7)
+        return cadre
+
+    def fleche_vers(self, source, cible, couleur):
+        """Flèche de signaling entre un morceau entouré et sa valeur."""
+        fl = Arrow(
+            source.get_bottom(),
+            cible.get_top(),
+            buff=0.12,
+            color=couleur,
+            stroke_width=3,
+            max_tip_length_to_length_ratio=0.18,
+        )
+        self.play(Create(fl), run_time=0.7)
+        return fl
 
     def carte_titre(self, sur_titre: str, titre: str, sous_titre: str):
         """Carte d'ouverture : provenance réelle de l'épreuve."""
