@@ -33,6 +33,8 @@ from bac_style import (
     apply_defaults,
 )
 
+__all__ = ["BacScene"]
+
 
 class BacScene(Scene):
     """Fond + défauts du site ; aides communes aux explications.
@@ -159,6 +161,18 @@ class BacScene(Scene):
             if abs(dy) > 0.05:
                 self.play(*[m.animate.shift(dy * UP) for m in gardees], run_time=0.7)
         self._lignes = gardees
+
+    def encadre(self, couleur=BAC_ACCENT, buff: float = 0.18):
+        """Encadre la DERNIÈRE ligne de l'ardoise — le cadre est fusionné
+        avec elle, donc il la suit quand nettoie() remonte les lignes
+        (sinon : cadre orphelin flottant, défaut d'audit)."""
+        derniere = self._lignes[-1]
+        cadre = SurroundingRectangle(
+            derniere, color=couleur, buff=buff, corner_radius=0.1
+        )
+        self.play(Create(cadre), run_time=0.7)
+        self._lignes[-1] = VGroup(derniere, cadre)
+        return cadre
 
     # ── Signaling (DESIGN.md §2) : entourer + relier par une flèche ─
 

@@ -196,8 +196,10 @@ class Explication(BacScene):
         guide_x = DashedLine(plan.n2p(0), plan.n2p(-1), color=COL_PT_A, stroke_width=3)
         guide_y = DashedLine(plan.n2p(-1), plan.n2p(A_AFF), color=COL_PT_A, stroke_width=3)
         a_dot = Dot(plan.n2p(A_AFF), color=COL_PT_A, radius=0.08)
+        # A est juste à GAUCHE de l'axe imaginaire : étiquette à gauche,
+        # sinon l'axe la traverse (défaut d'audit).
         a_lbl = MathTex("A(a)", font_size=34, color=COL_PT_A).next_to(
-            a_dot, DOWN + RIGHT, buff=0.1
+            a_dot, LEFT, buff=0.14
         )
         self.play(Create(guide_x))
         self.play(Create(guide_y))
@@ -212,7 +214,7 @@ class Explication(BacScene):
         self.etape("plan-B")
         b_dot = Dot(plan.n2p(B_AFF), color=COL_PT_B, radius=0.08)
         b_lbl = MathTex("B(b)", font_size=34, color=COL_PT_B).next_to(
-            b_dot, UP + RIGHT, buff=0.1
+            b_dot, LEFT, buff=0.14
         )
         sym = DashedLine(
             plan.n2p(A_AFF), plan.n2p(B_AFF), color=BAC_INK_MUTED, stroke_width=2
@@ -452,8 +454,7 @@ class Explication(BacScene):
             font_size=30,
         )
         self.ecrit(regle, buff=0.55)
-        cadre_regle = SurroundingRectangle(regle, color=BAC_ACCENT, buff=0.18, corner_radius=0.1)
-        self.play(Create(cadre_regle))
+        cadre_regle = self.encadre()
         self.legende(
             "L'outil : module d'un quotient = quotient des modules ;",
             "argument d'un quotient = DIFFÉRENCE des arguments.",
@@ -497,18 +498,15 @@ class Explication(BacScene):
             font_size=40, color=BAC_ACCENT_STRONG,
         )
         self.ecrit(concl, buff=0.55)
-        cadre_concl = SurroundingRectangle(
-            concl, color=BAC_WARNING, buff=0.15, corner_radius=0.1
-        )
-        self.play(Create(cadre_concl))
+        self.encadre(couleur=BAC_WARNING, buff=0.15)
         self.legende(
             "La forme trigonométrique demandée. On la retient :",
             "elle sert telle quelle à la question suivante.",
         )
         self.pose(3.4)
         self.efface_legende()
-        self.nettoie()
-        self.play(FadeOut(VGroup(badge, cadre_regle, cadre_concl)))
+        self.nettoie()  # emporte lignes ET cadres fusionnés (encadre)
+        self.play(FadeOut(badge))
 
     # ── Q4 : déduction par relecture, pas par recalcul ───────────────
     def chapitre_q4(self):

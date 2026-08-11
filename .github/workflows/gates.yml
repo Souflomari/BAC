@@ -64,10 +64,16 @@ jobs:
       # mid-render text (e.g. "T0T_0T0"). The standing remedy is a rerun; CI is
       # always a cold boot, so encode it. Real fix (hydration-settle wait in
       # dom-truth before text sweeps) is a Phase D item.
+      # Two retries: the cold-runner flakes are independent single-check
+      # timing races (KaTeX hydration text-sweep; staged-reveal opacity read
+      # mid-animation) — run 31538723279 drew BOTH in one job. Real fix
+      # (settle-waits in dom-truth before timing-sensitive sweeps) = Phase D.
       - name: dom-truth
         run: |
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
-          npm run dom-truth || { echo "::warning::dom-truth cold-boot retry"; npm run dom-truth; }
+          npm run dom-truth \
+            || { echo "::warning::dom-truth cold-boot retry 1"; npm run dom-truth; } \
+            || { echo "::warning::dom-truth cold-boot retry 2"; npm run dom-truth; }
 
       - name: Model-id hygiene gate
         working-directory: .
