@@ -100,6 +100,17 @@ class BacScene(Scene):
     ARDOISE_HAUT = 2.55
     ARDOISE_BAS = -1.95
 
+    def epingle(self, groupe):
+        """Déclare une carte de référence épinglée en haut de la colonne.
+        L'ardoise démarre DESSOUS — plus jamais d'écriture par-dessus."""
+        self._carte_ref = groupe
+
+    def _haut_ardoise(self) -> float:
+        carte = getattr(self, "_carte_ref", None)
+        if carte is not None:
+            return min(self.ARDOISE_HAUT, carte.get_bottom()[1] - 0.4)
+        return self.ARDOISE_HAUT
+
     def ardoise(self, gauche_buff: float = 0.65):
         """(Ré)initialise la colonne de travail du chapitre."""
         self._lignes = []
@@ -107,10 +118,18 @@ class BacScene(Scene):
 
     def _pose_en_haut(self, m):
         m.to_edge(LEFT, buff=self._ard_buff)
-        m.shift((self.ARDOISE_HAUT - m.get_top()[1]) * UP)
+        m.shift((self._haut_ardoise() - m.get_top()[1]) * UP)
+
+    # Largeur maximale d'une ligne de la colonne de travail : au-delà,
+    # elle mordrait la région figure (x ≳ −0,45). Les lignes trop longues
+    # sont réduites d'office — le débordement horizontal a été le défaut
+    # le plus fréquent des premiers audits.
+    LARGEUR_MAX = 6.0
 
     def ecrit(self, m, buff: float = 0.45, run_time: float = 1.2):
         """Écrit une ligne sous la précédente ; auto-nettoie si ça déborde."""
+        if m.width > self.LARGEUR_MAX:
+            m.scale_to_fit_width(self.LARGEUR_MAX)
         if getattr(self, "_lignes", None):
             m.next_to(self._lignes[-1], DOWN, aligned_edge=LEFT, buff=buff)
         else:
@@ -136,7 +155,7 @@ class BacScene(Scene):
         if consommees:
             self.play(*[FadeOut(m) for m in consommees], run_time=0.6)
         if gardees:
-            dy = self.ARDOISE_HAUT - gardees[0].get_top()[1]
+            dy = self._haut_ardoise() - gardees[0].get_top()[1]
             if abs(dy) > 0.05:
                 self.play(*[m.animate.shift(dy * UP) for m in gardees], run_time=0.7)
         self._lignes = gardees
