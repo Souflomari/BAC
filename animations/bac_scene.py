@@ -79,7 +79,7 @@ class BacScene(Scene):
             font_size=26,
             color=BAC_INK_SOFT,
             line_spacing=0.9,
-        ).to_edge(DOWN, buff=0.42)
+        ).to_edge(DOWN, buff=0.35)
         anims = [FadeIn(texte, shift=0.15 * UP)]
         if self._legende is not None:
             anims.append(FadeOut(self._legende))
@@ -95,8 +95,10 @@ class BacScene(Scene):
     # Ce qui est consommé s'efface avant que la suite n'arrive ; rien
     # ne descend jamais dans la bande légende (y < ARDOISE_BAS).
 
+    # Le bas de l'ardoise réserve TOUTE la hauteur d'une légende de
+    # trois lignes + une marge — plus aucun calcul ne peut la toucher.
     ARDOISE_HAUT = 2.55
-    ARDOISE_BAS = -2.3
+    ARDOISE_BAS = -1.95
 
     def ardoise(self, gauche_buff: float = 0.65):
         """(Ré)initialise la colonne de travail du chapitre."""

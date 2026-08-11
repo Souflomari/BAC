@@ -199,12 +199,12 @@ class Explication(BacScene):
         )
         self.pose(3.8)
 
-        # Étape : b², puis 4ac, côte à côte.
+        # Étape : b², puis 4ac — dans la moitié droite, libérée par la table.
         self.etape("q1-calcul-b2")
         self.play(FadeOut(cas), FadeOut(surligne))
         c1 = MathTex("b", "^2 = 2^2 = 4", font_size=42)
         c1[0].set_color(COL_B)
-        c1.next_to(cadre_outil, DOWN, aligned_edge=LEFT, buff=0.6)
+        c1.next_to(cadre_outil, RIGHT, buff=1.0).align_to(cadre_outil, UP)
         self.play(Write(c1))
         self.legende("D'abord b au carré : 2 au carré, c'est 2 fois 2, donc 4.")
         self.pose(2.4)
@@ -213,7 +213,7 @@ class Explication(BacScene):
         c2 = MathTex(r"4\,", "a", r"\,", "c", r" = 4 \times 2 \times 5 = 40", font_size=42)
         c2[1].set_color(COL_A)
         c2[3].set_color(COL_C)
-        c2.next_to(c1, RIGHT, buff=1.1)
+        c2.next_to(c1, DOWN, aligned_edge=LEFT, buff=0.45)
         self.play(Write(c2))
         self.legende(
             "Puis 4 a c : 4 fois 2, ça fait 8, et 8 fois 5, ça fait 40."
@@ -223,7 +223,7 @@ class Explication(BacScene):
         # Étape : Δ = −36.
         self.etape("q1-calcul-delta")
         c3 = MathTex(r"\Delta = 4 - 40 = -36", font_size=46, color=BAC_ACCENT_STRONG)
-        c3.next_to(c1, DOWN, aligned_edge=LEFT, buff=0.5)
+        c3.next_to(c2, DOWN, aligned_edge=LEFT, buff=0.45)
         self.play(Write(c3))
         self.legende(
             "Delta = 4 moins 40 = moins 36. Négatif — le détecteur annonce :",
@@ -234,7 +234,8 @@ class Explication(BacScene):
         # Étape : apprivoiser √Δ quand Δ < 0.
         self.etape("q1-delta-negatif")
         self.play(FadeOut(eq), FadeOut(labels), FadeOut(delta_def), FadeOut(cadre_outil),
-                  FadeOut(c1), FadeOut(c2), c3.animate.shift(3.4 * UP))
+                  FadeOut(c1), FadeOut(c2),
+                  c3.animate.to_edge(LEFT, buff=0.65).to_edge(UP, buff=1.3))
         c4 = MathTex(r"-36 = 36\times(-1) = (6i)^2", font_size=44).next_to(
             c3, DOWN, aligned_edge=LEFT, buff=0.55
         )
@@ -456,9 +457,16 @@ class Explication(BacScene):
             font_size=38,
         )
         self.ecrit(arg, buff=0.55)
+        # L'angle qu'on vient de nommer se montre : θ devient 2π/3 SUR l'arc.
+        ang_lbl2 = MathTex(r"\tfrac{2\pi}{3}", font_size=26, color=BAC_ACCENT).move_to(
+            ang_lbl
+        )
+        self.play(ReplacementTransform(ang_lbl, ang_lbl2))
+        ang_lbl = ang_lbl2
         self.legende(
             "cos θ = partie réelle / module = −1/2 ; sin θ = partie",
-            "imaginaire / module = √3/2. C'est la valeur remarquable 2π/3.",
+            "imaginaire / module = √3/2. C'est la valeur remarquable 2π/3 —",
+            "regarde l'arc : l'angle porte maintenant son nom.",
         )
         self.pose(3.4)
 
@@ -533,6 +541,28 @@ class Explication(BacScene):
         )
         self.pose(3.0)
 
+        # Étape : MONTRER l'angle de la rotation, pas seulement le dire.
+        self.etape("q2b-angle")
+        oa_r = Line(origine, plan.n2p(A_AFF), color=BAC_WARNING, stroke_width=3)
+        ob_r = Line(origine, plan.n2p(B_AFF), color=BAC_WARNING, stroke_width=3)
+        ang_rot = Angle(oa_r, ob_r, radius=0.65, other_angle=False,
+                        color=BAC_ACCENT, stroke_width=3)
+        # Étiquette posée au milieu de l'arc, poussée vers l'extérieur —
+        # jamais sur le « O » de l'origine.
+        milieu = ang_rot.point_from_proportion(0.5)
+        direction = (milieu - origine) / np.linalg.norm(milieu - origine)
+        ang_rot_lbl = MathTex(r"\tfrac{2\pi}{3}", font_size=26, color=BAC_ACCENT).move_to(
+            milieu + 0.42 * direction
+        )
+        self.play(Create(oa_r), Create(ob_r))
+        self.play(Create(ang_rot), FadeIn(ang_rot_lbl))
+        self.legende(
+            "Le voici, l'angle de la rotation : entre OA et OB, exactement",
+            "2π/3. Et les deux segments dorés ont la MÊME longueur —",
+            "la rotation conserve la distance à O.",
+        )
+        self.pose(3.6)
+
         self.etape("q2b-conclusion")
         concl = MathTex(
             r"b = e^{i\frac{2\pi}{3}}\cdot a = d\cdot a",
@@ -546,7 +576,7 @@ class Explication(BacScene):
         self.pose(3.4)
         self.efface_legende()
         self.nettoie()
-        self.play(FadeOut(VGroup(badge, cadre, arc)))
+        self.play(FadeOut(VGroup(badge, cadre, arc, oa_r, ob_r, ang_rot, ang_rot_lbl)))
         return a_dot, a_lbl, b_dot, b_lbl
 
     # ── Q3 : translation puis triangle ────────────────────────────
@@ -571,9 +601,15 @@ class Explication(BacScene):
         self.pose(3.6)
 
         self.etape("q3a-translater")
+        # MONTRER la translation : le vecteur OA se recopie, tel quel,
+        # à partir de B — même direction, même longueur — puis B glisse
+        # le long de ce rail jusqu'à C.
+        vec2 = vec.copy().set_color(BAC_ACCENT_LIGHT)
+        decalage = plan.n2p(B_AFF) - plan.n2p(0)
+        self.play(vec2.animate.shift(decalage), run_time=3.0)
         c_dot = Dot(plan.n2p(B_AFF), color=BAC_SUCCESS, radius=0.08)
         self.add(c_dot)
-        self.play(c_dot.animate.move_to(plan.n2p(C_AFF)), run_time=2.4)
+        self.play(c_dot.animate.move_to(plan.n2p(C_AFF)), run_time=2.0)
         c_lbl = MathTex(r"C(c)", font_size=34, color=BAC_SUCCESS).next_to(
             c_dot, UP + LEFT, buff=0.1
         )
@@ -581,10 +617,11 @@ class Explication(BacScene):
         self.play(Write(c_lbl))
         self.ecrit(e1, buff=0.6)
         self.legende(
-            "Le rôle de l'animation : VOIR B glisser du vecteur OA. Le point",
-            "d'arrivée est C, et son affixe est c = b + a — la définition.",
+            "Regarde le vecteur : le MÊME OA, recopié à partir de B — même",
+            "direction, même longueur. B glisse le long de ce rail jusqu'à C.",
+            "Translater par OA, c'est ajouter a : c = b + a.",
         )
-        self.pose(3.0)
+        self.pose(3.4)
 
         self.etape("q3a-substituer")
         e2 = MathTex(r"c = d\,a + a", font_size=44)
@@ -623,7 +660,7 @@ class Explication(BacScene):
         self.pose(3.2)
         self.efface_legende()
         self.nettoie()
-        self.play(FadeOut(VGroup(badge, cadre, vec)))
+        self.play(FadeOut(VGroup(badge, cadre, vec, vec2)))
 
         # ---- 3) b) ----
         badge = self.bandeau_question("3) b)", "0,75 pt")
@@ -659,9 +696,11 @@ class Explication(BacScene):
         self.pose(3.6)
 
         self.etape("q3b-argument")
-        ang = Angle(oc, oa, radius=0.5, other_angle=False, color=BAC_ACCENT, stroke_width=3)
-        ang_lbl = MathTex(r"60^\circ", font_size=28, color=BAC_ACCENT).next_to(
-            ang, UP + LEFT, buff=0.06
+        ang = Angle(oa, oc, radius=0.5, other_angle=False, color=BAC_ACCENT, stroke_width=3)
+        milieu = ang.point_from_proportion(0.5)
+        direction = (milieu - origine) / np.linalg.norm(milieu - origine)
+        ang_lbl = MathTex(r"60^\circ", font_size=28, color=BAC_ACCENT).move_to(
+            milieu + 0.4 * direction
         )
         q3 = MathTex(
             r"\arg\dfrac{c}{a} = \dfrac{\pi}{3}"
