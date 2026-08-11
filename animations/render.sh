@@ -8,16 +8,18 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 QUALITY="${QUALITY:-h}"
-MODE="${MODE:-auto}" # auto | local | docker
+MODE="${MODE:-auto}"     # auto | local | docker
+SECTIONS="${SECTIONS:-1}" # 1 = aussi un clip par étape (lecteur cliquable)
 
 render_one() {
-  local file="$1"
-  echo "── rendu: $file (qualité $QUALITY)"
+  local file="$1" extra=""
+  [ "$SECTIONS" = "1" ] && extra="--save_sections"
+  echo "── rendu: $file (qualité $QUALITY, sections=$SECTIONS)"
   if [ "$MODE" = "docker" ] || { [ "$MODE" = "auto" ] && ! command -v manim >/dev/null 2>&1; }; then
     docker run --rm -u "$(id -u):$(id -g)" -v "$PWD":/manim -w /manim \
-      manimcommunity/manim:stable manim render "$file" Explication --quality "$QUALITY"
+      manimcommunity/manim:stable manim render "$file" Explication --quality "$QUALITY" $extra
   else
-    manim render "$file" Explication --quality "$QUALITY"
+    manim render "$file" Explication --quality "$QUALITY" $extra
   fi
 }
 

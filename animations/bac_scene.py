@@ -32,17 +32,61 @@ from bac_style import (
 
 
 class BacScene(Scene):
-    """Fond + défauts du site ; aides communes aux explications."""
+    """Fond + défauts du site ; aides communes aux explications.
+
+    Standard v2 (règle du zéro implicite) : chaque geste = une étape
+    (`etape()`) rendue comme section Manim → un clip par clic dans le
+    futur lecteur ; une légende parlée (`legende()`) accompagne chaque
+    étape en bas d'écran.
+    """
 
     def setup(self):
         apply_defaults()
         self.camera.background_color = BAC_BG
+        self._num_etape = 0
+        self._badge_etape = None
+        self._legende = None
 
     # ── Aides ──────────────────────────────────────────────────────
 
-    def pose(self, t: float = 1.6):
-        """Temps mort de fin de chapitre (rythme calme, arrêt lecteur)."""
-        self.wait(t)
+    # Multiplicateur global du rythme (verdict owner : « beaucoup plus
+    # lent »). 1.0 = les durées écrites dans les scènes ; monter pour
+    # ralentir tout un rendu sans retoucher les scènes.
+    TEMPO = 1.35
+
+    def pose(self, t: float = 2.4):
+        """Temps mort — rythme calme, point d'arrêt du lecteur."""
+        self.wait(t * self.TEMPO)
+
+    def etape(self, nom: str):
+        """Nouvelle étape : section Manim + compteur discret en haut à droite."""
+        self._num_etape += 1
+        self.next_section(f"{self._num_etape:02d}-{nom}")
+        badge = Text(f"Étape {self._num_etape}", font_size=20, color=BAC_INK_SOFT)
+        badge.to_edge(UP, buff=0.32).to_edge(RIGHT, buff=0.55)
+        if self._badge_etape is not None:
+            self.remove(self._badge_etape)
+        self.add(badge)
+        self._badge_etape = badge
+
+    def legende(self, *lignes: str, t: float = 0.7):
+        """Légende parlée en bas d'écran (registre oral, phrases courtes)."""
+        texte = Text(
+            "\n".join(lignes),
+            font_size=26,
+            color=BAC_INK_SOFT,
+            line_spacing=0.9,
+        ).to_edge(DOWN, buff=0.42)
+        anims = [FadeIn(texte, shift=0.15 * UP)]
+        if self._legende is not None:
+            anims.append(FadeOut(self._legende))
+        self.play(*anims, run_time=t)
+        self._legende = texte
+
+    def efface_legende(self):
+        if self._legende is not None:
+            self.play(FadeOut(self._legende), run_time=0.4)
+            self._legende = None
 
     def carte_titre(self, sur_titre: str, titre: str, sous_titre: str):
         """Carte d'ouverture : provenance réelle de l'épreuve."""

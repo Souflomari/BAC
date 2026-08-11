@@ -111,6 +111,34 @@ to video.
 - Phase E1's "write the generative-media rules" obligation is unchanged
   and still owed; this ADR covers the **coded** animation lane only.
 
+## Amendment 1 — pilot review verdict (owner, 2026-08-11)
+
+The owner reviewed the rendered pilot: **format validated with
+enthusiasm**, with two binding corrections that become the lane's
+authoring standard:
+
+1. **La règle du zéro implicite.** Bac students needing this surface
+   need EVERY step explained — no assumed knowledge, ever. Each
+   algebraic move gets its own beat: what we are about to do, why, the
+   computation written out (digit by digit where it matters), then the
+   result. "Détail, détail, détail — move by move." The pilot's
+   65-animation/78-second density was too fast; the standard is now
+   many small steps at a calm pace (a same-size exercise lands around
+   5–7 minutes across ~30 steps).
+2. **Learner-paced, clickable delivery.** The explanation is authored
+   as Manim **sections** (`self.next_section()` per micro-step;
+   rendered with `--save_sections`), which yields BOTH the full video
+   and one clip per step from a single source. The web player plays
+   one step per click and holds — the "click to move on" experience
+   the owner asked for — with the full video as a secondary mode. This
+   supersedes nothing in the calm-player contract; it fulfils it.
+
 ## Retractions and Corrections
 
-*(none yet)*
+- 2026-08-11 — **NotebookLM dropped for now** (owner call). The
+  companion verdict adopting NotebookLM is suspended: the desktop
+  auth flow proved too costly to set up, and cloud sessions can never
+  hold the Google login (per-machine profile, visible-window auth).
+  The wiring (`.mcp.json`, `docs/ops/NOTEBOOKLM-SETUP.md`, the Cowork
+  prompt) stays in the repo, inert, for a possible later revival.
+  Verification keeps its existing Claude-based adversarial discipline.
