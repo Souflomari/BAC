@@ -1,0 +1,61 @@
+# The truth gates, run on GitHub's machines so they cost zero session usage.
+# Mirrors the local per-commit discipline: validate-content --strict on every
+# notion dir, the Next build (prebuild = token drift check), dom-truth
+# (which runs token-gate as its Gate 0), and the model-id hygiene gate on the
+# surfaces where model identifiers must never appear.
+name: gates
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: gates-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      # web/ pins playwright-core; install the matching Chromium build and
+      # hand its path to dom-truth via PW_CHROMIUM_PATH.
+      - name: Install Chromium for dom-truth
+        run: npx playwright@1.61.1 install --with-deps chromium
+
+      - name: validate-content (strict, every notion)
+        run: |
+          dirs=$(find ../content -mindepth 2 -maxdepth 2 -type d -not -path '*_media-test*' | sed 's|^\.\./||' | sort)
+          test -n "$dirs"
+          node scripts/validate-content.mjs --strict $dirs
+
+      - name: Build
+        run: npm run build
+
+      - name: dom-truth
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run dom-truth
+
+      - name: Model-id hygiene gate
+        working-directory: .
+        run: |
+          if grep -rnE 'claude-(opus|sonnet|fable|haiku)' content/ docs/sujets/ web/src/ animations/ 2>/dev/null; then
+            echo "Model identifier found in a surface where none may appear." >&2
+            exit 1
+          fi
+          echo "clean"

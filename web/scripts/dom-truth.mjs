@@ -420,7 +420,11 @@ function fail(msg) {
 const server = spawn("npx", ["next", "start", "-p", String(PORT)], { cwd: WEB, stdio: "ignore", detached: true });
 try {
   await new Promise((r) => setTimeout(r, 4000));
-  const browser = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
+  // PW_CHROMIUM_PATH lets CI (or any host without the pre-provisioned browser)
+  // point at its own Chromium; the fallback is the remote-container install.
+  const browser = await chromium.launch({
+    executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium",
+  });
   const page = await browser.newPage({ viewport: { width: 1280, height: 860 } });
 
   // Group battery by page to load each page once
