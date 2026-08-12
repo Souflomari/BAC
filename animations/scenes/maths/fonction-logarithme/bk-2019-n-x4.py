@@ -96,7 +96,7 @@ from manim import (
     UP,
 )
 
-from bac_scene import BacScene
+from bac_scene import BacScene, _fig_membres
 from bac_style import (
     BAC_ACCENT,
     BAC_ACCENT_LIGHT,
@@ -217,17 +217,6 @@ def _point_marque(ax, x, y, couleur, texte, direction, buff=0.14, font_size=24):
     return point, label
 
 
-def _fig_membres(fig: dict) -> VGroup:
-    """VGroup FRAÎCHE de tout ce que la figure contient MAINTENANT.
-
-    Correctif d'audit : plus jamais un `fig["group"]` muté au fil des
-    chapitres (source du défaut « éléments orphelins » — un point ou
-    une flèche ajoutés à la figure mais absents du groupe qu'on
-    FadeOut). Chaque chapitre range désormais son ajout dans le
-    dictionnaire `fig` sous sa propre clé ; FadeOut/FadeIn passent
-    TOUJOURS par cette fonction, qui relit `fig` à l'instant présent —
-    donc rien ne peut jamais y manquer."""
-    return VGroup(*[v for k, v in fig.items() if k != "group"])
 
 
 NARRATION = {
@@ -319,21 +308,6 @@ class Explication(BacScene):
         self.chapitre_q19(fig_cw)
         self.chapitre_fin()
 
-    # ── Graduations numériques (exigence owner, toutes les figures) ──
-    def _graduations(self, axes, x_vals, y_vals):
-        """Un petit jeu de graduations lisibles sur les DEUX axes —
-        jamais 0 (déjà « O » sur la figure), jamais les abscisses
-        e / e² déjà annotées EXACTEMENT ailleurs sur la figure : ici
-        seulement des entiers (ou décimales) simples, pour lire
-        l'échelle. Petite taille, encre douce, côté libre par défaut
-        d'Axes (nombres sous l'axe des x, à gauche de l'axe des y) —
-        jamais du côté où vivent les étiquettes de points."""
-        axes.get_x_axis().add_numbers(x_vals, font_size=18, color=BAC_INK_MUTED)
-        axes.get_y_axis().add_numbers(y_vals, font_size=18, color=BAC_INK_MUTED)
-        nombres = VGroup(axes.get_x_axis().numbers, axes.get_y_axis().numbers)
-        nombres.set_opacity(0)
-        self.play(FadeIn(nombres), run_time=0.7)
-        return nombres
 
     # ── Ouverture ──────────────────────────────────────────────────
     def chapitre_titre(self):

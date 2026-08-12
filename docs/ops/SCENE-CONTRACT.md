@@ -105,8 +105,8 @@ par axe — en petite taille (≈ 18), encre douce, du côté libre, jamais
 en collision avec une étiquette existante. Les repères exacts (e, e²,
 ln 3, fractions) gardent leur étiquette `MathTex` exacte ; les
 graduations n'ajoutent que des entiers simples pour donner l'échelle.
-Helper de référence : `_graduations(axes, x_vals, y_vals)` (voir
-`bk-2019-n-x4.py`, à monter dans `BacScene`).
+Helper de référence : `self.graduations(axes, x_vals, y_vals)` (méthode
+de `BacScene`, retourne le `VGroup` des nombres pour l'intégrer à la figure).
 
 ### 1.7 La clôture
 Toute scène finit par une carte « Ce qu'il faut retenir » (les points de
@@ -135,7 +135,8 @@ survivants aux étapes 61-71 ; la droite (Δ) traversant le tableau de
 variations aux étapes 39-41).
 **Le remède structurel** : ne jamais muter un `VGroup` figé — ranger
 chaque mobject sous sa propre clé dans le dictionnaire `fig`, et
-reconstruire le groupe à la volée au moment du fondu :
+reconstruire le groupe à la volée au moment du fondu via le helper
+monté dans `bac_scene.py` (`_fig_membres(fig)` ou `self.fig_membres(fig)`) :
 ```python
 def _fig_membres(fig: dict) -> VGroup:
     return VGroup(*[v for k, v in fig.items() if k != "group"])

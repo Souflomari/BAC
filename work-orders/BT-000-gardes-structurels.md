@@ -78,8 +78,44 @@ cd animations && manim render scenes/maths/suites-numeriques/bk-2020-n-x1.py \
 
 ## RÉSULTAT — à remplir par l'agent
 
-- **Helpers montés** : …
-- **Chargement des 16 scènes** : `<coller>`
-- **Lint** : `<coller>`
-- **Rendu témoin** : … sections (attendu : 43)
-- **`git diff --stat`** : `<coller>`
+- **Helpers montés** :
+  - `_fig_membres(fig: dict) -> VGroup` : fonction de module + méthode `fig_membres(fig)` / alias `_fig_membres` dans `BacScene`.
+  - `graduations(axes, x_vals, y_vals) -> VGroup` : méthode de `BacScene` + alias `_graduations`.
+- **Chargement des 16 scènes** :
+```
+OK: animations/scenes\maths\fonction-logarithme\bk-2019-n-x4.py
+OK: animations/scenes\maths\fonction-logarithme\bk-2021-n-x4.py
+OK: animations/scenes\maths\fonction-logarithme\bk-2023-n-x4.py
+OK: animations/scenes\maths\limites-continuite\bk-2020-n-x3.py
+OK: animations/scenes\maths\limites-continuite\bk-2021-n-x1.py
+OK: animations/scenes\maths\nombres-complexes-1\bk-2018-n-x2.py
+OK: animations/scenes\maths\nombres-complexes-1\bk-2019-n-x2.py
+OK: animations/scenes\maths\nombres-complexes-1\bk-2020-n-x2.py
+OK: animations/scenes\maths\nombres-complexes-1\bk-2021-n-x3.py
+OK: animations/scenes\maths\nombres-complexes-1\bk-2022-n-x2.py
+OK: animations/scenes\maths\nombres-complexes-1\bk-2023-n-x2.py
+OK: animations/scenes\maths\nombres-complexes-1\bk-2024-n-x3.py
+OK: animations/scenes\maths\nombres-complexes-2\bk-2017-n-x2.py
+OK: animations/scenes\maths\nombres-complexes-2\bk-2019-n-x2.py
+OK: animations/scenes\maths\suites-numeriques\bk-2020-n-x1.py
+OK: animations/scenes\maths\suites-numeriques\bk-2021-n-x2.py
+OK: animations/scenes\maths\suites-numeriques\bk-2024-n-x1.py
+```
+- **Lint** :
+```
+— bk-2019-n-x4.py : 95 étapes, 3 repère(s)
+ALERTE bk-2019-n-x4.py:1803 — syntaxe LaTeX dans un Text()/legende() — elle s'affichera telle quelle : 'On étudie le signe de u_{n+1} moins u_n — exacte'
+ALERTE bk-2019-n-x4.py:1898 — syntaxe LaTeX dans un Text()/legende() — elle s'affichera telle quelle : 'En passant à la limite dans u_{n+1}=f(u_n) : ℓ e'
+ALERTE bk-2019-n-x4.py:1976 — syntaxe LaTeX dans un Text()/legende() — elle s'affichera telle quelle : '• Suite u_{n+1}=f(u_n) : encadrement par récurre'
+ALERTE bk-2019-n-x4.py:569 — font_size=15 sous le plancher de lisibilité (16) — à regarder sur l'image rendue
+
+✓ porte 1 franchie (les alertes restent à regarder à l'audit).
+```
+- **Rendu témoin** : 43 sections (attendu : 43)
+- **`git diff --stat`** :
+```
+ animations/bac_scene.py                            | 58 +++++++++++++++++++++-
+ .../maths/fonction-logarithme/bk-2019-n-x4.py      | 28 +----------
+ docs/ops/SCENE-CONTRACT.md                         |  7 +--
+ 3 files changed, 62 insertions(+), 31 deletions(-)
+```

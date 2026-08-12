@@ -28,12 +28,30 @@ from bac_style import (
     BAC_SURFACE_RAISED,
     BAC_BORDER_SOFT,
     BAC_INK,
+    BAC_INK_MUTED,
     BAC_INK_SOFT,
     BAC_ACCENT,
     apply_defaults,
 )
 
-__all__ = ["BacScene"]
+__all__ = ["BacScene", "_fig_membres", "fig_membres"]
+
+
+def _fig_membres(fig: dict) -> VGroup:
+    """VGroup fraîche de tout ce que la figure contient MAINTENANT.
+
+    Correctif d'audit : plus jamais un `fig["group"]` muté au fil des
+    chapitres (source du défaut « éléments orphelins » — un point ou
+    une flèche ajoutés à la figure mais absents du groupe qu'on
+    FadeOut). Chaque chapitre range désormais son ajout dans le
+    dictionnaire `fig` sous sa propre clé ; FadeOut/FadeIn passent
+    TOUJOURS par cette fonction, qui relit `fig` à l'instant présent —
+    donc rien ne peut jamais y manquer.
+    """
+    return VGroup(*[v for k, v in fig.items() if k != "group"])
+
+
+fig_membres = _fig_membres
 
 
 class BacScene(Scene):
@@ -43,6 +61,13 @@ class BacScene(Scene):
     (`etape()`) rendue comme section Manim → un clip par clic dans le
     futur lecteur ; une légende parlée (`legende()`) accompagne chaque
     étape en bas d'écran.
+
+    Gardes structurels et helpers communs :
+    - `_fig_membres(fig)` / `self.fig_membres(fig)` : reconstruit à la
+      volée le VGroup de tout ce que contient le dictionnaire `fig` à
+      l'instant présent (garde anti-orphelins pour FadeOut / FadeIn).
+    - `self.graduations(axes, x_vals, y_vals)` : pose un petit jeu de
+      nombres lisibles sur les axes et retourne le VGroup des nombres.
     """
 
     def setup(self):
@@ -225,3 +250,34 @@ class BacScene(Scene):
         badge.to_edge(UP, buff=0.35).to_edge(LEFT, buff=0.6)
         self.play(FadeIn(badge, shift=0.15 * DOWN), run_time=0.5)
         return badge
+
+    # ── Graduations numériques (exigence owner, toutes les figures) ──
+
+    def graduations(self, axes, x_vals, y_vals):
+        """Pose un petit jeu de graduations lisibles sur les deux axes.
+
+        Jamais 0 (déjà « O » sur la figure), jamais les abscisses déjà
+        annotées exactement ailleurs sur la figure : ici seulement des
+        entiers (ou décimales) simples pour donner l'échelle. Petite
+        taille (~18), encre douce (`BAC_INK_MUTED`), côté libre par
+        défaut d'Axes — jamais du côté où vivent les étiquettes de
+        points.
+
+        Retourne le `VGroup` des nombres pour pouvoir l'intégrer à `fig`.
+        """
+        axes.get_x_axis().add_numbers(x_vals, font_size=18, color=BAC_INK_MUTED)
+        axes.get_y_axis().add_numbers(y_vals, font_size=18, color=BAC_INK_MUTED)
+        nombres = VGroup(axes.get_x_axis().numbers, axes.get_y_axis().numbers)
+        nombres.set_opacity(0)
+        self.play(FadeIn(nombres), run_time=0.7)
+        return nombres
+
+    _graduations = graduations
+
+    def fig_membres(self, fig: dict) -> VGroup:
+        """Reconstruit à la volée le groupe de tout ce que le dictionnaire
+        de figure contient à l'instant présent (garde anti-orphelins)."""
+        return _fig_membres(fig)
+
+    _fig_membres = fig_membres
+
