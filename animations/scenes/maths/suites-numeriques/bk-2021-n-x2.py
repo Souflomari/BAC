@@ -216,7 +216,8 @@ class Explication(BacScene):
         zero_lbl = MathTex("0", font_size=28, color=BAC_INK_MUTED).next_to(
             nl.n2p(0), DOWN + LEFT, buff=0.15
         )
-        self.play(Create(nl), FadeIn(zero_lbl), run_time=1.8)
+        nl.add_numbers([0.2, 0.4, 0.6], font_size=18, color=BAC_INK_MUTED, direction=UP)
+        self.play(Create(nl), FadeIn(zero_lbl), FadeIn(nl.numbers), run_time=1.8)
         nl.add(zero_lbl)  # suit la droite pour un futur FadeOut(nl) unique
         self.legende(
             "Une suite : une liste de nombres. On les place comme des",
@@ -885,7 +886,8 @@ class Explication(BacScene):
         w_zero_lbl = MathTex("0", font_size=28, color=BAC_INK_MUTED).next_to(
             w_nl.n2p(0), DOWN + LEFT, buff=0.15
         )
-        self.play(Create(w_nl, run_time=1.6), FadeIn(w_zero_lbl))
+        w_nl.add_numbers([2, 4, 6, 8], font_size=18, color=BAC_INK_MUTED, direction=UP)
+        self.play(Create(w_nl, run_time=1.6), FadeIn(w_zero_lbl), FadeIn(w_nl.numbers))
         w_nl.add(w_zero_lbl)
         self.legende(
             "Une NOUVELLE droite graduée : w_n grandit vite (raison 3),",

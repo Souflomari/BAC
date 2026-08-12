@@ -238,7 +238,8 @@ class Explication(BacScene):
             stroke_width=2,
         )
         _pose_ligne(ligne, LINE_U_ANCHOR_VAL, LINE_U_ANCHOR_X, LINE_U_Y)
-        self.play(Create(ligne), run_time=1.8)
+        ligne.add_numbers([2, 3, 4], font_size=18, color=BAC_INK_MUTED)
+        self.play(Create(ligne), FadeIn(ligne.numbers), run_time=1.8)
         self.legende(
             "On place les premiers termes sur une droite graduée — un",
             "point par terme. On regarde d'abord où ils vivent.",
@@ -638,7 +639,8 @@ class Explication(BacScene):
             stroke_width=2,
         )
         _pose_ligne(ligne_v, LINE_V_ANCHOR_VAL, LINE_V_ANCHOR_X, LINE_V_Y)
-        self.play(Create(ligne_v), run_time=1.6)
+        ligne_v.add_numbers([0, 0.4, 0.8], font_size=18, color=BAC_INK_MUTED, direction=UP)
+        self.play(Create(ligne_v), FadeIn(ligne_v.numbers), run_time=1.6)
         v0_dot = Dot(ligne_v.n2p(float(V0)), color=COL_V, radius=DOT_R)
         v0_lbl = MathTex("v_0", font_size=26, color=COL_V).next_to(
             v0_dot, DOWN, buff=0.16
