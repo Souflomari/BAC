@@ -737,6 +737,7 @@ class Explication(BacScene):
         )
         self.play(Create(plan, run_time=2.0), FadeIn(o_lbl))
         self.play(FadeIn(re_lbl), FadeIn(im_lbl))
+        self._graduations(plan, [-2, -1, 1, 2], [-2, -1, 1, 2])
         self.legende(
             "Le plan complexe : horizontal = partie réelle,",
             "vertical = partie imaginaire.",
