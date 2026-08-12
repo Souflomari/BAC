@@ -198,7 +198,10 @@ def _pose_axes(axes, x_ref: float, y_ref: float, x_target: float, y_target: floa
 AXIS_CONFIG = {
     "stroke_color": BAC_INK_MUTED,
     "stroke_width": 2,
-    "include_ticks": False,
+    # Exigence owner : des graduations numériques lisibles sur chaque
+    # Axes de la scène — les nombres eux-mêmes sont posés au cas par
+    # cas (petit jeu choisi, jamais tous les pas) via _graduations().
+    "include_ticks": True,
     "include_tip": False,
 }
 
@@ -212,6 +215,19 @@ def _point_marque(ax, x, y, couleur, texte, direction, buff=0.14, font_size=24):
         point, direction, buff=buff
     )
     return point, label
+
+
+def _fig_membres(fig: dict) -> VGroup:
+    """VGroup FRAÎCHE de tout ce que la figure contient MAINTENANT.
+
+    Correctif d'audit : plus jamais un `fig["group"]` muté au fil des
+    chapitres (source du défaut « éléments orphelins » — un point ou
+    une flèche ajoutés à la figure mais absents du groupe qu'on
+    FadeOut). Chaque chapitre range désormais son ajout dans le
+    dictionnaire `fig` sous sa propre clé ; FadeOut/FadeIn passent
+    TOUJOURS par cette fonction, qui relit `fig` à l'instant présent —
+    donc rien ne peut jamais y manquer."""
+    return VGroup(*[v for k, v in fig.items() if k != "group"])
 
 
 NARRATION = {
@@ -303,6 +319,22 @@ class Explication(BacScene):
         self.chapitre_q19(fig_cw)
         self.chapitre_fin()
 
+    # ── Graduations numériques (exigence owner, toutes les figures) ──
+    def _graduations(self, axes, x_vals, y_vals):
+        """Un petit jeu de graduations lisibles sur les DEUX axes —
+        jamais 0 (déjà « O » sur la figure), jamais les abscisses
+        e / e² déjà annotées EXACTEMENT ailleurs sur la figure : ici
+        seulement des entiers (ou décimales) simples, pour lire
+        l'échelle. Petite taille, encre douce, côté libre par défaut
+        d'Axes (nombres sous l'axe des x, à gauche de l'axe des y) —
+        jamais du côté où vivent les étiquettes de points."""
+        axes.get_x_axis().add_numbers(x_vals, font_size=18, color=BAC_INK_MUTED)
+        axes.get_y_axis().add_numbers(y_vals, font_size=18, color=BAC_INK_MUTED)
+        nombres = VGroup(axes.get_x_axis().numbers, axes.get_y_axis().numbers)
+        nombres.set_opacity(0)
+        self.play(FadeIn(nombres), run_time=0.7)
+        return nombres
+
     # ── Ouverture ──────────────────────────────────────────────────
     def chapitre_titre(self):
         self.etape("titre")
@@ -379,6 +411,7 @@ class Explication(BacScene):
             axes.c2p(0, 8.6), RIGHT, buff=0.14
         )
         self.play(Create(axes, run_time=1.6), FadeIn(o_lbl), FadeIn(x_lbl))
+        self._graduations(axes, [2, 4, 6, 8], [2, 4, 6, 8])
         self.play(Create(frontiere, run_time=1.2), FadeIn(front_lbl))
         self.legende(
             "D'abord le domaine : f n'existe QUE pour x strictement",
@@ -402,10 +435,6 @@ class Explication(BacScene):
             "axes": axes, "o_lbl": o_lbl, "x_lbl": x_lbl,
             "frontiere": frontiere, "front_lbl": front_lbl,
             "branch_dec": branch_dec, "branch_inc": branch_inc,
-            "group": VGroup(
-                axes, o_lbl, x_lbl, frontiere, front_lbl,
-                branch_dec, branch_inc,
-            ),
         }
 
     # ── Q1 : limite en 0+, interprétation géométrique ─────────────────
@@ -483,7 +512,7 @@ class Explication(BacScene):
             fig["axes"].c2p(0, 5.5), RIGHT, buff=0.16
         )
         self.play(FadeIn(asym_lbl), run_time=0.8)
-        fig["group"].add(asym_lbl)
+        fig["asym_lbl"] = asym_lbl
         self.pose(4.0)
         self.efface_legende()
         self.nettoie()
@@ -581,7 +610,7 @@ class Explication(BacScene):
             max_tip_length_to_length_ratio=0.28,
         )
         self.play(Create(fleche), run_time=1.0)
-        fig["group"].add(fleche)
+        fig["fleche_infini"] = fleche
         self.pose(3.8)
         self.efface_legende()
         self.nettoie()
@@ -639,7 +668,7 @@ class Explication(BacScene):
         self.nettoie()
 
         self.etape("q4-figure-reference")
-        self.play(FadeOut(fig["group"]))
+        self.play(FadeOut(_fig_membres(fig)))
         ax_ref = Axes(
             x_range=[1, 32, 10], y_range=[0, 0.42, 0.1],
             x_length=4.4, y_length=3.0, axis_config=AXIS_CONFIG,
@@ -650,6 +679,7 @@ class Explication(BacScene):
         )
         courbe_ref = ax_ref.plot(_ln_t_sur_t, x_range=[1, 32], color=OUTIL, stroke_width=3.5)
         self.play(Create(ax_ref, run_time=1.2), FadeIn(t_lbl))
+        self._graduations(ax_ref, [1, 10, 20], [0.1, 0.2, 0.3])
         self.play(Create(courbe_ref, run_time=1.8))
         asym_ref = DashedLine(
             ax_ref.c2p(1, 0), ax_ref.c2p(32, 0), color=OUTIL,
@@ -712,7 +742,7 @@ class Explication(BacScene):
         self.nettoie()
         self.play(FadeOut(badge))
         self.play(FadeOut(VGroup(ax_ref, t_lbl, courbe_ref, asym_ref, lbl_ref)))
-        self.play(FadeIn(fig["group"]))
+        self.play(FadeIn(_fig_membres(fig)))
         return fig
 
     # ── Q5 : branche parabolique de direction (Δ): y = x ───────────────
@@ -801,8 +831,8 @@ class Explication(BacScene):
             fig["axes"].c2p(8.4, 8.4), UP + LEFT, buff=0.1
         )
         self.play(Create(delta, run_time=1.6), FadeIn(delta_lbl))
-        fig["group"].add(delta, delta_lbl)
         fig["delta"] = delta
+        fig["delta_lbl"] = delta_lbl
         self.pose(4.2)
         self.efface_legende()
         self.nettoie()
@@ -1003,7 +1033,7 @@ class Explication(BacScene):
         )
         self.pose(3.8)
         self.nettoie()
-        self.play(FadeOut(fig["group"]))
+        self.play(FadeOut(_fig_membres(fig)))
 
         self.etape("q8-tableau-squelette")
         grille = self._tableau_grille()
@@ -1077,7 +1107,7 @@ class Explication(BacScene):
         self.etape("q8-confirmation-courbe")
         tableau_complet = VGroup(grille, entete, variation)
         self.play(FadeOut(tableau_complet))
-        self.play(FadeIn(fig["group"]))
+        self.play(FadeIn(_fig_membres(fig)))
         self.play(
             fig["branch_dec"].animate.set_color(COURBE),
             fig["branch_inc"].animate.set_color(COURBE),
@@ -1088,7 +1118,6 @@ class Explication(BacScene):
             DOWN + RIGHT, buff=0.14, font_size=22,
         )
         self.play(FadeIn(min_pt, scale=1.6), Write(min_lbl))
-        fig["group"].add(min_pt, min_lbl)
         fig["min_pt"], fig["min_lbl"] = min_pt, min_lbl
         self.legende(
             "Exactement le creux qu'on voyait dès le début — maintenant",
@@ -1227,7 +1256,6 @@ class Explication(BacScene):
             UP + LEFT, buff=0.14, font_size=20,
         )
         self.play(FadeIn(pt_i, scale=1.8), Write(lbl_i))
-        fig["group"].add(pt_i, lbl_i)
         fig["pt_i"], fig["lbl_i"] = pt_i, lbl_i
         self.legende(
             "Avant ce point, (C) est convexe (tournée vers le haut) ;",
@@ -1295,7 +1323,8 @@ class Explication(BacScene):
         )
         cadre_delta = self.entoure(fig["delta"], CONCL, buff=0.05)
         self.play(FadeIn(pt_e, scale=1.8), Write(lbl_e))
-        fig["group"].add(pt_e, lbl_e)
+        fig["pt_e"] = pt_e
+        fig["lbl_e"] = lbl_e
         self.legende(
             "Le seul point de contact entre (C) et (Δ) — c'est",
             "exactement e, le zéro du carré qu'on vient de trouver.",
@@ -1362,20 +1391,26 @@ class Explication(BacScene):
             max_tip_length_to_length_ratio=0.15,
         )
         self.play(Create(fleche_ecart), run_time=1.0)
-        fig["group"].add(fleche_ecart)
+        fig["fleche_ecart"] = fleche_ecart
         self.legende(
             "Et cet écart grandit sans fin : la branche parabolique de",
             "direction (Δ) — question 5. La construction est complète.",
         )
         self.pose(4.2)
         self.efface_legende()
+        # Défaut d'audit : cette question n'effaçait jamais la ligne
+        # « Construire (Δ) et (C)... » de son ardoise — elle restait
+        # échouée à l'écran, non suivie, jusqu'à la fin de la scène,
+        # et surimprimait chaque question suivante. nettoie() la
+        # referme avant le badge, comme partout ailleurs.
+        self.nettoie()
         self.play(FadeOut(badge))
         return fig
 
     # ── Q13 : H est une primitive de h = ln ────────────────────────
     def chapitre_q13(self, fig):
         badge = self.bandeau_question("13)", "0,5 pt")
-        self.play(FadeOut(fig["group"]))
+        self.play(FadeOut(_fig_membres(fig)))
         self.ardoise()
 
         self.etape("q13-enonce")
@@ -1541,13 +1576,13 @@ class Explication(BacScene):
         self.pose(3.8)
 
         self.etape("q15-figure-aire")
-        self.play(FadeIn(fig["group"]))
+        self.play(FadeIn(_fig_membres(fig)))
         zone = fig["axes"].get_area(
             fig["branch_inc"], x_range=[1, E], color=CONCL,
             opacity=0.4, bounded_graph=fig["delta"],
         )
         self.play(FadeIn(zone))
-        fig["group"].add(zone)
+        fig["zone"] = zone
         self.legende(
             "La zone ombrée entre 1 et e — repère orthonormé, unité",
             "1 cm : une unité d'aire vaut 1 cm².",
@@ -1656,7 +1691,7 @@ class Explication(BacScene):
         )
         self.pose(3.6)
         self.nettoie(garder=1)
-        self.play(FadeOut(fig["group"]))
+        self.play(FadeOut(_fig_membres(fig)))
 
         self.etape("q16-figure-cobweb")
         ax_cw = Axes(
@@ -1667,6 +1702,9 @@ class Explication(BacScene):
         courbe_cw = ax_cw.plot(_f, x_range=[0.23, 3.4], color=COURBE, stroke_width=3.2)
         delta_cw = ax_cw.plot(lambda x: x, x_range=[0, 3.4], color=DELTA, stroke_width=2.5)
         self.play(Create(ax_cw, run_time=1.2))
+        # x=1 est réservé à l'étiquette « u_0=1 » posée juste dessous —
+        # on ne grade que 2 et 3 pour ne jamais la chevaucher.
+        self._graduations(ax_cw, [2, 3], [1, 2, 3])
         self.play(Create(courbe_cw, run_time=1.6), Create(delta_cw, run_time=1.6))
         pt_e2, lbl_e2 = _point_marque(
             ax_cw, E, E, CONCL, r"(e,e)", UP + LEFT, buff=0.24, font_size=20,
