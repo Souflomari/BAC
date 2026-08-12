@@ -937,8 +937,11 @@ class Explication(BacScene):
         )
         # Arcs « saut ×3 » AU-DESSUS de la droite ; toutes les étiquettes
         # w_n restent EN BAS — aucun risque de croisement (règle d'audit).
+        # angle NÉGATIF : pour une corde orientée gauche→droite, PI/2
+        # bombe l'arc VERS LE BAS (constaté au rendu) — dans la zone des
+        # étiquettes w_n. −PI/2 le fait bomber vers le haut.
         saut1 = ArcBetweenPoints(
-            w0_dot.get_center(), w1_dot.get_center(), angle=PI / 2,
+            w0_dot.get_center(), w1_dot.get_center(), angle=-PI / 2,
             color=COL_W, stroke_width=2.5,
         )
         saut1.add_tip(tip_length=0.13)
@@ -951,7 +954,7 @@ class Explication(BacScene):
         )
         self.pose(1.6)
         saut2 = ArcBetweenPoints(
-            w1_dot.get_center(), w2_dot.get_center(), angle=PI / 2,
+            w1_dot.get_center(), w2_dot.get_center(), angle=-PI / 2,
             color=COL_W, stroke_width=2.5,
         )
         saut2.add_tip(tip_length=0.13)
