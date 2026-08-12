@@ -1,0 +1,91 @@
+# BT-001 — Rattraper les graduations numériques (14 scènes validées)
+
+**Statut : à faire. PRIORITÉ 2 — après `BT-000`, qui fournit le helper.**
+
+## Pourquoi
+
+Exigence owner du 2026-08-12, en regardant les vidéos :
+
+> « les axes ne semblent pas avoir de nombres, donc il faudrait
+> corriger ça. »
+
+Le lint le confirme sur **toute** la campagne — les 14 scènes validées
+construisent un repère et n'y posent aucun nombre :
+
+```
+$ python scripts/scene-lint.py --all | grep graduation | wc -l
+14
+```
+
+## La tâche
+
+Pour **chaque** scène listée ci-dessous : poser des graduations
+numériques sur **chaque** repère de la scène, avec le helper
+`graduations()` monté par `BT-000`.
+
+La règle (contrat §1.6) : **au plus ~6 nombres par axe**, taille ~18,
+encre douce (`BAC_INK_MUTED`), du côté libre de l'axe, **jamais** en
+collision avec une étiquette existante. Les repères exacts déjà
+annotés — `e`, `e²`, `ln 3`, les fractions, les points nommés —
+**gardent leur étiquette exacte** : les graduations n'ajoutent que des
+entiers simples pour donner l'échelle. Ne gradue pas 0 : le label `O`
+est déjà là.
+
+| Scène | Repères |
+|---|---|
+| `nombres-complexes-1/bk-2018-n-x2.py` | 1 plan complexe |
+| `nombres-complexes-1/bk-2019-n-x2.py` | 1 |
+| `nombres-complexes-1/bk-2020-n-x2.py` | 1 |
+| `nombres-complexes-1/bk-2021-n-x3.py` | 1 |
+| `nombres-complexes-1/bk-2022-n-x2.py` | 1 |
+| `nombres-complexes-1/bk-2023-n-x2.py` | 1 |
+| `nombres-complexes-1/bk-2024-n-x3.py` | 1 |
+| `nombres-complexes-2/bk-2017-n-x2.py` | 1 |
+| `nombres-complexes-2/bk-2019-n-x2.py` | 1 |
+| `suites-numeriques/bk-2020-n-x1.py` | 2 droites graduées |
+| `suites-numeriques/bk-2021-n-x2.py` | 2 |
+| `suites-numeriques/bk-2024-n-x1.py` | 2 |
+| `limites-continuite/bk-2020-n-x3.py` | 4 systèmes d'axes |
+| `limites-continuite/bk-2021-n-x1.py` | 3 |
+
+**Un plan complexe** se gradue sur l'axe réel (1, 2, 3…) et sur l'axe
+imaginaire (i, 2i… ou 1, 2… selon ce qui est lisible) — attention aux
+points déjà étiquetés près des axes.
+**Une droite graduée de suite** porte déjà des repères de valeur
+(barrières, limites) : n'ajoute que ce qui manque pour lire l'échelle,
+et **surtout pas** un nombre sous un terme uₙ déjà étiqueté.
+
+## Procédure conseillée
+
+Travaille **notion par notion** (un commit par notion, 4 commits en
+tout) : c'est plus facile à relire et à annuler.
+
+Pour chaque scène : poser les graduations → **re-rendre en `-ql`** →
+**regarder les images des étapes où la figure est visible** (pas
+toutes : celles-là suffisent) → vérifier qu'aucun nombre ne tombe sur
+une étiquette → re-rendre en `-qm`.
+
+C'est le seul point de vigilance réel de ce bon : **une graduation qui
+atterrit sous un point nommé est un défaut**, et c'est exactement le
+genre de chose que le lint ne peut pas voir.
+
+## Portes
+
+```bash
+python scripts/scene-lint.py --all     # 0 « graduations manquantes »
+# puis, par scène retouchée : rendu -ql, coup d'œil aux images de figure,
+# rendu -qm final.
+```
+
+Le manifeste ne change pas (ces scènes sont déjà `validé`) : ajoute
+seulement, à la note d'audit de chaque ligne, la mention `+ graduations`.
+
+---
+
+## RÉSULTAT — à remplir par l'agent
+
+- **Scènes traitées** : … / 14
+- **Lint final** : `<coller>`
+- **Collisions trouvées puis corrigées à l'œil** :
+  1. …
+- **`git diff --stat`** : `<coller>`
