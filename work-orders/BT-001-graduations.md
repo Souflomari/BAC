@@ -84,8 +84,32 @@ seulement, à la note d'audit de chaque ligne, la mention `+ graduations`.
 
 ## RÉSULTAT — à remplir par l'agent
 
-- **Scènes traitées** : … / 14
-- **Lint final** : `<coller>`
+- **Scènes traitées** : 14 / 14
+- **Lint final** :
+```
+✓ porte 1 franchie (0 erreur sur 17 scènes).
+```
 - **Collisions trouvées puis corrigées à l'œil** :
-  1. …
-- **`git diff --stat`** : `<coller>`
+  1. `bk-2022-n-x2.py` : point $D(d)$ à $x=-2$ avec étiquette `DOWN` $\to$ omission de la graduation $x=-2$ (`x_vals=[-4, 2, 4]`).
+  2. `bk-2023-n-x2.py` : point $D(d)$ à $y=2$ sur l'axe imaginaire avec étiquette à gauche $\to$ omission de la graduation $y=2$ (`y_vals=[-1, 1]`).
+  3. `bk-2017-n-x2.py` : points $A(1)$ à $(1,0)$ et $B(i)$ à $(0,1)$ $\to$ omission des graduations $x=1$ et $y=1$ (`x_vals=[-1, 2], y_vals=[2]`).
+  4. `bk-2020-n-x3.py` : bornes d'intégration 1 et 4 annotées sur `axes_g2` $\to$ omission de $x=4$ (`x_vals=[2, 6, 8]`).
+  5. `suites-numeriques` : étiquettes des termes en bas (`DOWN`) $\to$ graduations posées en haut (`direction=UP`) sur les `NumberLine` auxiliaires pour éviter tout chevauchement.
+- **`git diff --stat`** :
+```
+ animations/scenes/maths/fonction-logarithme/bk-2021-n-x4.py | 4 ++++
+ animations/scenes/maths/limites-continuite/bk-2020-n-x3.py  | 4 ++++
+ animations/scenes/maths/nombres-complexes-1/bk-2018-n-x2.py | 1 +
+ animations/scenes/maths/nombres-complexes-1/bk-2019-n-x2.py | 1 +
+ animations/scenes/maths/nombres-complexes-1/bk-2020-n-x2.py | 1 +
+ animations/scenes/maths/nombres-complexes-1/bk-2021-n-x3.py | 6 +++---
+ animations/scenes/maths/nombres-complexes-1/bk-2022-n-x2.py | 1 +
+ animations/scenes/maths/nombres-complexes-1/bk-2023-n-x2.py | 1 +
+ animations/scenes/maths/nombres-complexes-1/bk-2024-n-x3.py | 1 +
+ animations/scenes/maths/nombres-complexes-2/bk-2017-n-x2.py | 1 +
+ animations/scenes/maths/nombres-complexes-2/bk-2019-n-x2.py | 1 +
+ animations/scenes/maths/suites-numeriques/bk-2020-n-x1.py   | 6 ++++--
+ animations/scenes/maths/suites-numeriques/bk-2021-n-x2.py   | 6 ++++--
+ animations/scenes/maths/suites-numeriques/bk-2024-n-x1.py   | 6 ++++--
+ 14 files changed, 31 insertions(+), 9 deletions(-)
+```

@@ -314,6 +314,7 @@ class Explication(BacScene):
         )
         self.play(Create(axes, run_time=1.8), FadeIn(o_lbl))
         self.play(FadeIn(x_lbl))
+        self._graduations(axes, [1, 2, 3, 4, 5], [2, 4, 6, 8])
         self.legende(
             "On regarde d'abord l'allure de (C), avant toute preuve —",
             "juste pour VOIR ce qu'on va démontrer.",
@@ -1049,6 +1050,7 @@ class Explication(BacScene):
             axes9.c2p(3.2, 0), RIGHT, buff=0.1
         )
         self.play(Create(axes9, run_time=1.4), FadeIn(x_lbl9))
+        self._graduations(axes9, [2, 3], [1, 2, 3])
         curve9 = axes9.plot(
             lambda x: x * np.log(x), x_range=[1, E], color=COL_TOOL, stroke_width=3,
         )
@@ -1441,6 +1443,7 @@ class Explication(BacScene):
             axes_b.c2p(6.3, 0), RIGHT, buff=0.1
         )
         self.play(Create(axes_b, run_time=1.6), FadeIn(o_lbl_b), FadeIn(x_lbl_b))
+        self._graduations(axes_b, [-2, 2, 4, 6], [-2, 2, 4, 6])
         droite_b = DashedLine(
             axes_b.c2p(-2.3, -2.3), axes_b.c2p(6.3, 6.3), color=COL_SECOND,
             stroke_width=2, dash_length=0.12,
@@ -1574,6 +1577,7 @@ class Explication(BacScene):
             axes_h.c2p(0, 0), DOWN + LEFT, buff=0.1
         )
         self.play(Create(axes_h, run_time=1.4), FadeIn(o_lbl_h))
+        self._graduations(axes_h, [-0.5, 0.5], [-2, -1])
         branch_left = axes_h.plot(
             _h_gauche, x_range=[-0.75, 0], color=BAC_INK_MUTED, stroke_width=3,
         )

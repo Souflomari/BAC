@@ -6,6 +6,7 @@ lit pour savoir où on en est sans ouvrir trente-cinq fichiers.
 | Bon | Scène | Statut manifeste | Agent | Date | Notes |
 |---|---|---|---|---|---|
 | `BT-000-gardes-structurels.md` | `bac_scene.py` (socle) | validé | Antigravity | 2026-08-13 | Helpers structurels montés dans BacScene (_fig_membres, graduations) |
+| `BT-001-graduations.md` | 14 scènes (campagne) | validé | Antigravity | 2026-08-13 | Rattrapage des graduations numériques sur 14 scènes (+ graduations) |
 | `BT-nombres-complexes-2-bk-2020-n-x3.md` | `nombres-complexes-2/bk-2020-n-x3` | à produire | | | |
 | `BT-nombres-complexes-2-bk-2021-n-x2.md` | `nombres-complexes-2/bk-2021-n-x2` | à produire | | | |
 | `BT-nombres-complexes-2-bk-2022-n-x2.md` | `nombres-complexes-2/bk-2022-n-x2` | à produire | | | |

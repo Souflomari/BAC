@@ -243,6 +243,7 @@ class Explication(BacScene):
         )
         self.play(Create(axes, run_time=1.8), FadeIn(o_lbl))
         self.play(FadeIn(x_lbl))
+        self._graduations(axes, [2, 4, 6, 8], [1])
         self.legende(
             "On regarde d'abord l'allure de g, avant toute preuve —",
             "juste pour VOIR ce qu'on va démontrer.",
@@ -475,6 +476,7 @@ class Explication(BacScene):
             axes_enc.c2p(9.5, 0), RIGHT, buff=0.1
         )
         self.play(Create(axes_enc, run_time=1.4), FadeIn(x_lbl))
+        self._graduations(axes_enc, [3, 5, 7, 9], [2, 4, 6])
         curve_ln = axes_enc.plot(np.log, x_range=[1, 9.5], color=COL_LN)
         curve_maj = axes_enc.plot(_maj_ln, x_range=[1, 9.5], color=COL_BORNE)
         self.play(Create(curve_ln, run_time=1.6))
@@ -615,6 +617,7 @@ class Explication(BacScene):
             axes_lim.c2p(55, 0), RIGHT, buff=0.1
         )
         self.play(Create(axes_lim, run_time=1.4), FadeIn(x_lbl))
+        self._graduations(axes_lim, [10, 20, 30, 40, 50], [2, 4, 6, 8])
         curve_borne = axes_lim.plot(_borne_h, x_range=[1, 55], color=COL_BORNE)
         curve_h = axes_lim.plot(_h, x_range=[1, 55], color=COL_LN)
         self.play(Create(curve_borne, run_time=1.8))
@@ -876,6 +879,7 @@ class Explication(BacScene):
         self.play(
             Create(axes_g2, run_time=1.4), FadeIn(o_lbl2), FadeIn(x_lbl2)
         )
+        self._graduations(axes_g2, [2, 6, 8], [1])
         curve_g2 = axes_g2.plot(_g, x_range=[0.12, 8.5], color=COL_G)
         self.play(Create(curve_g2, run_time=1.8))
         area2 = axes_g2.get_area(
