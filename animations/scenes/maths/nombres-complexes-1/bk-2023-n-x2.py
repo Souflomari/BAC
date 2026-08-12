@@ -195,11 +195,11 @@ class Explication(BacScene):
         o_lbl = MathTex("O", font_size=30, color=BAC_INK_SOFT).next_to(
             plan.n2p(0), DOWN + LEFT, buff=0.12
         )
-        # "axe réel" sous l'axe, à gauche du nuage de points (zone libre) ;
-        # "axe imaginaire" à DROITE de l'axe, sous O (jamais à gauche —
-        # règle d'audit).
+        # "axe réel" sous l'axe, au bout DROIT (à gauche il collait au
+        # label O — défaut d'audit) ; "axe imaginaire" à DROITE de l'axe,
+        # sous O (jamais à gauche — règle d'audit).
         re_lbl = Text("axe réel", font_size=20, color=BAC_INK_MUTED).next_to(
-            plan.n2p(-0.7), DOWN, buff=0.18
+            plan.n2p(2.45), DOWN, buff=0.18
         )
         im_lbl = Text("axe imaginaire", font_size=20, color=BAC_INK_MUTED).next_to(
             plan.n2p(-1.3j), RIGHT, buff=0.18
@@ -264,8 +264,11 @@ class Explication(BacScene):
 
         self.etape("plan-D")
         d_dot = Dot(plan.n2p(D_AFF), color=COL_PT_D, radius=0.08)
+        # UP+LEFT : D est SUR l'axe imaginaire, qui continue au-dessus du
+        # point — un label plein UP serait traversé par l'axe (défaut
+        # d'audit). Le côté gauche est libre.
         d_lbl = MathTex("D(d)", font_size=32, color=COL_PT_D).next_to(
-            d_dot, UP, buff=0.14
+            d_dot, UP + LEFT, buff=0.12
         )
         self.play(FadeIn(d_dot, scale=1.6), Write(d_lbl))
         self.legende(
@@ -294,8 +297,11 @@ class Explication(BacScene):
 
         self.etape("q1-sens-module-argument")
         oa = Line(origine, plan.n2p(A_AFF), color=BAC_ACCENT_LIGHT, stroke_width=3)
+        # UP+LEFT : le segment monte à 45°, un label plein UP depuis son
+        # centre reste traversé par le trait (défaut d'audit) ; on décale
+        # perpendiculairement, côté libre.
         mod_lbl = MathTex("|a|", font_size=26, color=BAC_ACCENT_LIGHT).next_to(
-            oa.get_center(), UP, buff=0.1
+            oa.get_center(), UP + LEFT, buff=0.12
         )
         axe_ref = Line(origine, plan.n2p(1.8), color=BAC_INK_MUTED, stroke_width=2)
         ang = Angle(
@@ -883,8 +889,11 @@ class Explication(BacScene):
         vec_ac.add_tip(tip_width=0.14, tip_length=0.14)
         vec_ab2 = Line(a_pt, plan.n2p(B_AFF), color=COL_PT_B, stroke_width=3)
         vec_ab2.add_tip(tip_width=0.14, tip_length=0.14)
+        # Point d'appui à 70 % vers C (pas le centre) : le milieu du
+        # vecteur est exactement à hauteur de l'axe réel et le label le
+        # chevauchait (défaut d'audit) ; à 0,7 on est net sous l'axe.
         lbl_ac = MathTex(r"\overrightarrow{AC}", font_size=22, color=COL_PT_C).next_to(
-            vec_ac.get_center(), DOWN, buff=0.12
+            vec_ac.point_from_proportion(0.7), DOWN, buff=0.12
         )
         lbl_ab2 = MathTex(r"\overrightarrow{AB}", font_size=22, color=COL_PT_B).next_to(
             vec_ab2.get_center(), UP, buff=0.12
