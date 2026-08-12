@@ -8,6 +8,16 @@ taper exactement à l'agent.
 (le pourquoi). L'agent, lui, lit `docs/ops/SCENE-CONTRACT.md` (le
 comment).
 
+> **Mise à jour, confirmé en direct le 2026-08-12 sur une machine
+> Windows sans droits admin :** Git Bash n'est **plus nécessaire**.
+> Le rendu, `scene-lint.py`, `bank-fidelity.py` et `make-work-order.py`
+> tournent tous en PowerShell natif — confirmé par un rendu complet de
+> la scène pilote (38 sections, 177 animations, signature identique à
+> la version validée). Seules les boucles d'extraction d'images de
+> l'audit (§4 du contrat) utilisent une syntaxe bash à traduire : voir
+> **§0quater** pour l'équivalent PowerShell. §0bis/§0ter restent utiles
+> si tu préfères Git Bash malgré tout, mais ce n'est plus un blocage.
+
 ---
 
 ## §0. Brancher le dépôt sur GitHub
@@ -45,6 +55,216 @@ Puis « Open Folder » sur `BAC` dans Antigravity.
   les seuls fichiers partagés sont `animations/manifest.yaml` (une
   ligne par scène) et `work-orders/LEDGER.md` (append-only). Les
   conflits, s'il y en a, se règlent à la main en dix secondes.
+
+---
+
+## §0bis. Sur Windows — régler le shell AVANT toute autre installation
+
+**Rencontré en direct, 2026-08-12 : PowerShell fait tout échouer ici.**
+`animations/render.sh` est un script bash (`#!/usr/bin/env bash`), et
+toutes les commandes de ce document et des bons de travail utilisent
+la syntaxe bash (`VAR=valeur commande`, `$(...)`, `for f in $(ls …)`).
+PowerShell ne comprend rien de tout ça — ni `./render.sh` directement,
+ni `QUALITY=l ./render.sh …`.
+
+**Le remède : utiliser Git Bash, pas PowerShell**, pour tout ce qui
+touche au dépôt. Git Bash est installé automatiquement avec « Git for
+Windows » — donc déjà présent, puisque `git clone` a fonctionné.
+
+1. Dans Antigravity : palette de commandes → *Terminal: Select Default
+   Profile* → choisir **Git Bash**. Fermer le terminal PowerShell
+   ouvert, en rouvrir un neuf : il doit s'ouvrir en Git Bash
+   (l'invite ressemble à `soufiane.lomari@MACHINE MINGW64 ~/BAC`).
+2. **Faire ça avant de lancer le moindre agent** — les agents héritent
+   du terminal par défaut, et chaque commande d'un bon de travail est
+   écrite en bash.
+3. Si Git Bash n'apparaît pas dans la liste des profils : ouvrir le
+   menu Démarrer de Windows, chercher « Git Bash », l'épingler — il
+   est installé, juste pas encore proposé par Antigravity tant qu'on
+   ne l'a pas ouvert une fois.
+
+**Deux outils supplémentaires à installer, spécifiquement sur
+Windows** (ni l'un ni l'autre n'est fourni par Git Bash) :
+
+- **Docker Desktop** — https://docker.com/products/docker-desktop.
+  L'installeur propose d'activer WSL2 : accepter, redémarrer si
+  demandé. Vérifier ensuite, **dans Git Bash** :
+  ```bash
+  docker --version
+  ```
+  Si l'installation de Docker Desktop n'est pas possible (pas de
+  droits admin, virtualisation désactivée au BIOS) : la voie native de
+  `animations/SETUP.md` reste ouverte, mais LaTeX sur Windows (MiKTeX)
+  est un téléchargement de plusieurs gigaoctets — prévoir le temps.
+- **ffmpeg** (indispensable : c'est lui qui extrait les images pour
+  l'audit) :
+  ```bash
+  winget install ffmpeg
+  ```
+  (`winget` est intégré à Windows 10/11 ; sinon, télécharger un build
+  sur ffmpeg.org et l'ajouter au PATH). Vérifier : `ffmpeg -version`.
+
+**Une fois Git Bash + Docker + ffmpeg en place**, reprendre le §1
+ci-dessous DANS Git Bash — les commandes sont écrites pour lui.
+
+---
+
+## §0ter. Pas de droits administrateur — tout en mode utilisateur
+
+**Rencontré en direct, 2026-08-12.** Ni Docker Desktop ni `wsl
+--install` ne fonctionnent sans droits admin (les deux installent un
+service système / activent une fonctionnalité Windows). **Aucun des
+deux n'est donc utilisable ici.** La voie native (pas de Docker,
+manim + LaTeX installés en direct) reste ouverte : chacune de ses
+pièces sait s'installer **par utilisateur**, sans élévation.
+
+Cinq installations, dans cet ordre, chacune avec sa vérification.
+
+### 1. Git Bash — version « portable » (pas d'installeur)
+https://git-scm.com/download/win → section *Portable ("thumbdrive
+edition")*, build 64-bit. C'est une archive auto-extractible : on
+choisit un dossier (ex. `C:\Users\<toi>\PortableGit`), on double-clique,
+zéro admin. `git-bash.exe` s'y trouve directement.
+```bash
+"C:\Users\<toi>\PortableGit\git-bash.exe"   # lance le shell
+```
+
+### 2. Python — installeur officiel, mode « pour moi seulement »
+https://python.org/downloads/windows → télécharger → lancer
+l'installeur **sans** cocher « Install for all users » (c'est déjà
+décoché par défaut dans le mode rapide « Install Now ») → il s'installe
+dans `%LocalAppData%\Programs\Python\...`, sans admin.
+*(Alternative encore plus simple : Microsoft Store → « Python 3.12 » →
+Installer — jamais d'admin requis pour un Store app.)*
+```bash
+python --version
+```
+
+### 3. manim, dans un environnement virtuel (isolé, propre)
+Dans Git Bash :
+```bash
+python -m venv ~/manim-venv
+source ~/manim-venv/Scripts/activate
+pip install manim
+manim --version
+```
+Ce venv remplace toutes les commandes `manim ...` du contrat et des
+bons — l'activer (`source ~/manim-venv/Scripts/activate`) en début de
+session Git Bash.
+
+### 4. MiKTeX (LaTeX) — mode privé, par utilisateur
+https://miktex.org/download → télécharger l'installeur Windows → le
+lancer : il propose explicitement un mode **« Install MiKTeX only for
+me »** (mode privé, documenté par MiKTeX lui-même pour ce cas exact —
+aucune élévation). Accepter aussi l'option « toujours installer les
+paquets manquants à la volée » si proposée : la scène n'a besoin que
+d'un gabarit LaTeX minimal (`bac_style.py`), pas d'une distribution
+complète.
+```bash
+latex --version
+```
+
+### 5. ffmpeg — build statique, PATH utilisateur
+Télécharger un build Windows statique (ex.
+https://www.gyan.dev/ffmpeg/builds/, lien « release essentials »),
+extraire dans un dossier perso (ex. `C:\Users\<toi>\ffmpeg`). Puis
+ajouter son `bin\` au PATH **utilisateur** (pas « variables système » —
+celui-là ne demande pas d'admin) :
+- soit via l'interface : *Paramètres système* → *Variables
+  d'environnement* → section du HAUT (« Variables utilisateur »,
+  jamais celle du bas) → `Path` → *Nouveau* → coller le chemin du
+  `bin\` ;
+- soit en une commande, dans Git Bash :
+  ```bash
+  setx PATH "$PATH;C:\Users\<toi>\ffmpeg\bin"
+  ```
+**Fermer et rouvrir** le terminal après cette étape (le PATH ne se
+recharge pas dans une fenêtre déjà ouverte).
+```bash
+ffmpeg -version
+```
+
+### Vérification finale
+```bash
+source ~/manim-venv/Scripts/activate
+manim checkhealth     # doit confirmer ffmpeg ET LaTeX trouvés
+```
+Puis le test de rendu du §1.1, en natif (sans Docker, `MODE=local` le
+force au besoin) :
+```bash
+cd animations
+QUALITY=l MODE=local ./render.sh scenes/maths/nombres-complexes-1/bk-2018-n-x2.py
+cd ..
+```
+
+### Si un installeur refuse même de s'exécuter (pas juste une demande d'admin)
+C'est un signal différent — une politique de restriction logicielle
+(AppLocker/WDAC), plus stricte que le simple manque de droits admin.
+Aucune des étapes ci-dessus n'y changera rien : il faut alors demander
+à qui gère la machine d'installer ces cinq outils, ou basculer la
+totalité du travail de rendu vers une autre machine / un environnement
+distant. Le signaler plutôt que de s'acharner.
+
+---
+
+## §0quater. La voie 100% PowerShell — confirmée en direct
+
+**Bonne nouvelle constatée en conditions réelles :** tout ce dépôt
+tourne en PowerShell natif. La quasi-totalité des commandes du contrat
+et des bons de travail n'a besoin d'AUCUNE traduction : un appel
+`python scripts\....py ...` ou `ffmpeg -i ... -y sortie.png` est
+identique dans les deux mondes. Seule la syntaxe de **contrôle** de
+bash — boucles, substitution de commande, arithmétique inline — a
+besoin d'un équivalent. Deux motifs couvrent l'essentiel de ce qui
+revient dans l'audit (contrat §4).
+
+### Rendu direct, sans `render.sh`
+`render.sh` est un script bash ; son équivalent PowerShell (calcule le
+même `--media_dir` par matière-notion et ajoute `--save_sections`) :
+```powershell
+cd animations
+manim render scenes\<matiere>\<notion>\<id>.py Explication `
+    --quality l --media_dir "media\<matiere>-<notion>" --save_sections
+cd ..
+```
+(`` ` `` en fin de ligne = continuation de ligne PowerShell, comme `\`
+en bash. `--quality` : `l`=brouillon, `m`=final de travail,
+`h`=livraison.)
+
+### Motif A — dernière image de CHAQUE section (planches de contact)
+Bash (contrat §4) → PowerShell :
+```powershell
+$S = "$HOME\audit"; New-Item -ItemType Directory -Force -Path $S | Out-Null
+$D = "media\<matiere>-<notion>\videos\<id>\480p15\sections"
+$i = 0
+Get-ChildItem "$D\*.mp4" | Sort-Object Name | ForEach-Object {
+    $i++
+    ffmpeg -sseof -0.15 -i $_.FullName -frames:v 1 -y ("{0}\f{1:D2}.png" -f $S, $i) -loglevel error
+}
+```
+
+### Motif B — image au MILIEU d'une section (gestes transitoires — arcs qui se tracent, transformations)
+```powershell
+$f = (Get-ChildItem "$D\*_20-*.mp4")[0].FullName   # « 20 » = le numéro d'étape voulu
+$duree = [double](ffprobe -v error -show_entries format=duration -of csv=p=0 $f)
+ffmpeg -ss ($duree * 0.5) -i $f -frames:v 1 -y "$S\mid20.png" -loglevel error
+```
+
+### Motif C — planche 2×2 (montage de quatre images)
+Identique en PowerShell, aucune traduction — c'est un simple appel de
+programme :
+```powershell
+ffmpeg -i f01.png -i f02.png -i f03.png -i f04.png `
+    -filter_complex "[0][1]hstack[t];[2][3]hstack[b];[t][b]vstack" `
+    -y sheet1.png -loglevel error
+```
+
+### Ce qui NE demande jamais de traduction
+`python scripts\scene-lint.py ...`, `python scripts\bank-fidelity.py
+...`, `python scripts\make-work-order.py ...`, `git ...`, `manim
+render ...` — ce sont des appels de programme ordinaires, identiques
+dans les deux shells. Seuls les motifs A et B ci-dessus (boucle +
+arithmétique) demandaient réellement une traduction.
 
 ---
 
