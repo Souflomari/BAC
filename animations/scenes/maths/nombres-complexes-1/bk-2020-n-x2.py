@@ -468,6 +468,7 @@ class Explication(BacScene):
             plan.n2p(0), DOWN + LEFT, buff=0.1
         )
         self.play(Create(plan, run_time=2.0), FadeIn(o_lbl))
+        self._graduations(plan, [1, 2, 3, 4], [1, 2])
         self.legende(
             "Le plan complexe : axe horizontal = partie réelle, axe",
             "vertical = partie imaginaire. Chaque nombre devient un point.",

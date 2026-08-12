@@ -404,6 +404,7 @@ class Explication(BacScene):
         )
         self.play(Create(plan, run_time=2.2), FadeIn(o_lbl))
         self.play(FadeIn(re_lbl), FadeIn(im_lbl))
+        self._graduations(plan, [-1, 1, 2], [-1, 1])
         self.legende(
             "Le plan complexe : l'axe horizontal porte la partie réelle,",
             "l'axe vertical la partie imaginaire.",
@@ -572,9 +573,8 @@ class Explication(BacScene):
         self.play(Create(oa_seg))
         self.legende(
             "Que SIGNIFIE une homothétie de centre O et de rapport k RÉEL ?",
-            "Elle MULTIPLIE l'affixe par k — l'extension directe du",
-            "coefficient réel qui rend deux vecteurs colinéaires : O, A, B",
-            "semblent alignés sur le même rayon.",
+            "Elle MULTIPLIE l'affixe par k : O, A, B semblent alignés",
+            "sur le même rayon (extension directe de la colinéarité).",
         )
         self.pose(4.0)
 
