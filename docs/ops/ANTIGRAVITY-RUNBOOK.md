@@ -48,6 +48,57 @@ Puis « Open Folder » sur `BAC` dans Antigravity.
 
 ---
 
+## §0bis. Sur Windows — régler le shell AVANT toute autre installation
+
+**Rencontré en direct, 2026-08-12 : PowerShell fait tout échouer ici.**
+`animations/render.sh` est un script bash (`#!/usr/bin/env bash`), et
+toutes les commandes de ce document et des bons de travail utilisent
+la syntaxe bash (`VAR=valeur commande`, `$(...)`, `for f in $(ls …)`).
+PowerShell ne comprend rien de tout ça — ni `./render.sh` directement,
+ni `QUALITY=l ./render.sh …`.
+
+**Le remède : utiliser Git Bash, pas PowerShell**, pour tout ce qui
+touche au dépôt. Git Bash est installé automatiquement avec « Git for
+Windows » — donc déjà présent, puisque `git clone` a fonctionné.
+
+1. Dans Antigravity : palette de commandes → *Terminal: Select Default
+   Profile* → choisir **Git Bash**. Fermer le terminal PowerShell
+   ouvert, en rouvrir un neuf : il doit s'ouvrir en Git Bash
+   (l'invite ressemble à `soufiane.lomari@MACHINE MINGW64 ~/BAC`).
+2. **Faire ça avant de lancer le moindre agent** — les agents héritent
+   du terminal par défaut, et chaque commande d'un bon de travail est
+   écrite en bash.
+3. Si Git Bash n'apparaît pas dans la liste des profils : ouvrir le
+   menu Démarrer de Windows, chercher « Git Bash », l'épingler — il
+   est installé, juste pas encore proposé par Antigravity tant qu'on
+   ne l'a pas ouvert une fois.
+
+**Deux outils supplémentaires à installer, spécifiquement sur
+Windows** (ni l'un ni l'autre n'est fourni par Git Bash) :
+
+- **Docker Desktop** — https://docker.com/products/docker-desktop.
+  L'installeur propose d'activer WSL2 : accepter, redémarrer si
+  demandé. Vérifier ensuite, **dans Git Bash** :
+  ```bash
+  docker --version
+  ```
+  Si l'installation de Docker Desktop n'est pas possible (pas de
+  droits admin, virtualisation désactivée au BIOS) : la voie native de
+  `animations/SETUP.md` reste ouverte, mais LaTeX sur Windows (MiKTeX)
+  est un téléchargement de plusieurs gigaoctets — prévoir le temps.
+- **ffmpeg** (indispensable : c'est lui qui extrait les images pour
+  l'audit) :
+  ```bash
+  winget install ffmpeg
+  ```
+  (`winget` est intégré à Windows 10/11 ; sinon, télécharger un build
+  sur ffmpeg.org et l'ajouter au PATH). Vérifier : `ffmpeg -version`.
+
+**Une fois Git Bash + Docker + ffmpeg en place**, reprendre le §1
+ci-dessous DANS Git Bash — les commandes sont écrites pour lui.
+
+---
+
 ## §1. Installation, une seule fois
 
 ### 1.1 La chaîne de rendu
