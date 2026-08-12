@@ -99,6 +99,104 @@ ci-dessous DANS Git Bash — les commandes sont écrites pour lui.
 
 ---
 
+## §0ter. Pas de droits administrateur — tout en mode utilisateur
+
+**Rencontré en direct, 2026-08-12.** Ni Docker Desktop ni `wsl
+--install` ne fonctionnent sans droits admin (les deux installent un
+service système / activent une fonctionnalité Windows). **Aucun des
+deux n'est donc utilisable ici.** La voie native (pas de Docker,
+manim + LaTeX installés en direct) reste ouverte : chacune de ses
+pièces sait s'installer **par utilisateur**, sans élévation.
+
+Cinq installations, dans cet ordre, chacune avec sa vérification.
+
+### 1. Git Bash — version « portable » (pas d'installeur)
+https://git-scm.com/download/win → section *Portable ("thumbdrive
+edition")*, build 64-bit. C'est une archive auto-extractible : on
+choisit un dossier (ex. `C:\Users\<toi>\PortableGit`), on double-clique,
+zéro admin. `git-bash.exe` s'y trouve directement.
+```bash
+"C:\Users\<toi>\PortableGit\git-bash.exe"   # lance le shell
+```
+
+### 2. Python — installeur officiel, mode « pour moi seulement »
+https://python.org/downloads/windows → télécharger → lancer
+l'installeur **sans** cocher « Install for all users » (c'est déjà
+décoché par défaut dans le mode rapide « Install Now ») → il s'installe
+dans `%LocalAppData%\Programs\Python\...`, sans admin.
+*(Alternative encore plus simple : Microsoft Store → « Python 3.12 » →
+Installer — jamais d'admin requis pour un Store app.)*
+```bash
+python --version
+```
+
+### 3. manim, dans un environnement virtuel (isolé, propre)
+Dans Git Bash :
+```bash
+python -m venv ~/manim-venv
+source ~/manim-venv/Scripts/activate
+pip install manim
+manim --version
+```
+Ce venv remplace toutes les commandes `manim ...` du contrat et des
+bons — l'activer (`source ~/manim-venv/Scripts/activate`) en début de
+session Git Bash.
+
+### 4. MiKTeX (LaTeX) — mode privé, par utilisateur
+https://miktex.org/download → télécharger l'installeur Windows → le
+lancer : il propose explicitement un mode **« Install MiKTeX only for
+me »** (mode privé, documenté par MiKTeX lui-même pour ce cas exact —
+aucune élévation). Accepter aussi l'option « toujours installer les
+paquets manquants à la volée » si proposée : la scène n'a besoin que
+d'un gabarit LaTeX minimal (`bac_style.py`), pas d'une distribution
+complète.
+```bash
+latex --version
+```
+
+### 5. ffmpeg — build statique, PATH utilisateur
+Télécharger un build Windows statique (ex.
+https://www.gyan.dev/ffmpeg/builds/, lien « release essentials »),
+extraire dans un dossier perso (ex. `C:\Users\<toi>\ffmpeg`). Puis
+ajouter son `bin\` au PATH **utilisateur** (pas « variables système » —
+celui-là ne demande pas d'admin) :
+- soit via l'interface : *Paramètres système* → *Variables
+  d'environnement* → section du HAUT (« Variables utilisateur »,
+  jamais celle du bas) → `Path` → *Nouveau* → coller le chemin du
+  `bin\` ;
+- soit en une commande, dans Git Bash :
+  ```bash
+  setx PATH "$PATH;C:\Users\<toi>\ffmpeg\bin"
+  ```
+**Fermer et rouvrir** le terminal après cette étape (le PATH ne se
+recharge pas dans une fenêtre déjà ouverte).
+```bash
+ffmpeg -version
+```
+
+### Vérification finale
+```bash
+source ~/manim-venv/Scripts/activate
+manim checkhealth     # doit confirmer ffmpeg ET LaTeX trouvés
+```
+Puis le test de rendu du §1.1, en natif (sans Docker, `MODE=local` le
+force au besoin) :
+```bash
+cd animations
+QUALITY=l MODE=local ./render.sh scenes/maths/nombres-complexes-1/bk-2018-n-x2.py
+cd ..
+```
+
+### Si un installeur refuse même de s'exécuter (pas juste une demande d'admin)
+C'est un signal différent — une politique de restriction logicielle
+(AppLocker/WDAC), plus stricte que le simple manque de droits admin.
+Aucune des étapes ci-dessus n'y changera rien : il faut alors demander
+à qui gère la machine d'installer ces cinq outils, ou basculer la
+totalité du travail de rendu vers une autre machine / un environnement
+distant. Le signaler plutôt que de s'acharner.
+
+---
+
 ## §1. Installation, une seule fois
 
 ### 1.1 La chaîne de rendu
