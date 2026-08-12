@@ -8,6 +8,16 @@ taper exactement à l'agent.
 (le pourquoi). L'agent, lui, lit `docs/ops/SCENE-CONTRACT.md` (le
 comment).
 
+> **Mise à jour, confirmé en direct le 2026-08-12 sur une machine
+> Windows sans droits admin :** Git Bash n'est **plus nécessaire**.
+> Le rendu, `scene-lint.py`, `bank-fidelity.py` et `make-work-order.py`
+> tournent tous en PowerShell natif — confirmé par un rendu complet de
+> la scène pilote (38 sections, 177 animations, signature identique à
+> la version validée). Seules les boucles d'extraction d'images de
+> l'audit (§4 du contrat) utilisent une syntaxe bash à traduire : voir
+> **§0quater** pour l'équivalent PowerShell. §0bis/§0ter restent utiles
+> si tu préfères Git Bash malgré tout, mais ce n'est plus un blocage.
+
 ---
 
 ## §0. Brancher le dépôt sur GitHub
@@ -194,6 +204,67 @@ Aucune des étapes ci-dessus n'y changera rien : il faut alors demander
 à qui gère la machine d'installer ces cinq outils, ou basculer la
 totalité du travail de rendu vers une autre machine / un environnement
 distant. Le signaler plutôt que de s'acharner.
+
+---
+
+## §0quater. La voie 100% PowerShell — confirmée en direct
+
+**Bonne nouvelle constatée en conditions réelles :** tout ce dépôt
+tourne en PowerShell natif. La quasi-totalité des commandes du contrat
+et des bons de travail n'a besoin d'AUCUNE traduction : un appel
+`python scripts\....py ...` ou `ffmpeg -i ... -y sortie.png` est
+identique dans les deux mondes. Seule la syntaxe de **contrôle** de
+bash — boucles, substitution de commande, arithmétique inline — a
+besoin d'un équivalent. Deux motifs couvrent l'essentiel de ce qui
+revient dans l'audit (contrat §4).
+
+### Rendu direct, sans `render.sh`
+`render.sh` est un script bash ; son équivalent PowerShell (calcule le
+même `--media_dir` par matière-notion et ajoute `--save_sections`) :
+```powershell
+cd animations
+manim render scenes\<matiere>\<notion>\<id>.py Explication `
+    --quality l --media_dir "media\<matiere>-<notion>" --save_sections
+cd ..
+```
+(`` ` `` en fin de ligne = continuation de ligne PowerShell, comme `\`
+en bash. `--quality` : `l`=brouillon, `m`=final de travail,
+`h`=livraison.)
+
+### Motif A — dernière image de CHAQUE section (planches de contact)
+Bash (contrat §4) → PowerShell :
+```powershell
+$S = "$HOME\audit"; New-Item -ItemType Directory -Force -Path $S | Out-Null
+$D = "media\<matiere>-<notion>\videos\<id>\480p15\sections"
+$i = 0
+Get-ChildItem "$D\*.mp4" | Sort-Object Name | ForEach-Object {
+    $i++
+    ffmpeg -sseof -0.15 -i $_.FullName -frames:v 1 -y ("{0}\f{1:D2}.png" -f $S, $i) -loglevel error
+}
+```
+
+### Motif B — image au MILIEU d'une section (gestes transitoires — arcs qui se tracent, transformations)
+```powershell
+$f = (Get-ChildItem "$D\*_20-*.mp4")[0].FullName   # « 20 » = le numéro d'étape voulu
+$duree = [double](ffprobe -v error -show_entries format=duration -of csv=p=0 $f)
+ffmpeg -ss ($duree * 0.5) -i $f -frames:v 1 -y "$S\mid20.png" -loglevel error
+```
+
+### Motif C — planche 2×2 (montage de quatre images)
+Identique en PowerShell, aucune traduction — c'est un simple appel de
+programme :
+```powershell
+ffmpeg -i f01.png -i f02.png -i f03.png -i f04.png `
+    -filter_complex "[0][1]hstack[t];[2][3]hstack[b];[t][b]vstack" `
+    -y sheet1.png -loglevel error
+```
+
+### Ce qui NE demande jamais de traduction
+`python scripts\scene-lint.py ...`, `python scripts\bank-fidelity.py
+...`, `python scripts\make-work-order.py ...`, `git ...`, `manim
+render ...` — ce sont des appels de programme ordinaires, identiques
+dans les deux shells. Seuls les motifs A et B ci-dessus (boucle +
+arithmétique) demandaient réellement une traduction.
 
 ---
 
