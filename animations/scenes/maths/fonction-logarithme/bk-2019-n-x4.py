@@ -181,9 +181,9 @@ assert abs(_fprime(_x0) - (_f(_x0 + _h) - _f(_x0 - _h)) / (2 * _h)) < 1e-4
 assert abs(_fseconde(_x0) - (_fprime(_x0 + _h) - _fprime(_x0 - _h)) / (2 * _h)) < 1e-3
 
 _xs = np.linspace(1, E, 20001)
-assert abs(np.trapz(_f(_xs) - _xs, _xs) - AIRE) < 1e-4          # question 15
-assert abs(np.trapz(np.log(_xs) ** 2, _xs) - (E - 2)) < 1e-4     # question 14
-assert abs(np.trapz(np.log(_xs), _xs) - 1) < 1e-4                # outil H
+assert abs(np.trapezoid(_f(_xs) - _xs, _xs) - AIRE) < 1e-4          # question 15
+assert abs(np.trapezoid(np.log(_xs) ** 2, _xs) - (E - 2)) < 1e-4     # question 14
+assert abs(np.trapezoid(np.log(_xs), _xs) - 1) < 1e-4                # outil H
 
 del _xs, _h, _x0
 
