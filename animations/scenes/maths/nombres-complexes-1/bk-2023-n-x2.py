@@ -195,14 +195,11 @@ class Explication(BacScene):
         o_lbl = MathTex("O", font_size=30, color=BAC_INK_SOFT).next_to(
             plan.n2p(0), DOWN + LEFT, buff=0.12
         )
-        # "axe réel" sous l'axe, au bout DROIT (à gauche il collait au
-        # label O — défaut d'audit) ; "axe imaginaire" à DROITE de l'axe,
-        # sous O (jamais à gauche — règle d'audit).
-        re_lbl = Text("axe réel", font_size=20, color=BAC_INK_MUTED).next_to(
-            plan.n2p(2.45), DOWN, buff=0.18
+        re_lbl = Text("axe réel", font_size=18, color=BAC_INK_MUTED).next_to(
+            plan.n2p(2.45), UP, buff=0.12
         )
-        im_lbl = Text("axe imaginaire", font_size=20, color=BAC_INK_MUTED).next_to(
-            plan.n2p(-1.3j), RIGHT, buff=0.18
+        im_lbl = Text("axe imaginaire", font_size=18, color=BAC_INK_MUTED).next_to(
+            plan.n2p(2.1j), RIGHT, buff=0.16
         )
         self.play(Create(plan, run_time=2.2), FadeIn(o_lbl))
         self.play(FadeIn(re_lbl), FadeIn(im_lbl))

@@ -348,7 +348,7 @@ class Explication(BacScene):
         self.etape("q1-solutions")
         self.play(FadeOut(formule), FadeOut(simp))
         sols = MathTex(
-            r"S = \left\{\,", "1 - i\sqrt{3}", r"\ ;\ ", "1 + i\sqrt{3}", r"\,\right\}",
+            r"S = \left\{\,", r"1 - i\sqrt{3}", r"\ ;\ ", r"1 + i\sqrt{3}", r"\,\right\}",
             font_size=46, color=BAC_ACCENT,
         ).to_edge(LEFT, buff=0.85).shift(0.3 * UP)
         self.play(Write(sols), run_time=1.8)
@@ -394,11 +394,11 @@ class Explication(BacScene):
         o_lbl = MathTex("O", font_size=30, color=BAC_INK_SOFT).next_to(
             plan.n2p(0), DOWN + LEFT, buff=0.12
         )
-        re_lbl = Text("axe réel", font_size=20, color=BAC_INK_MUTED).next_to(
-            plan.n2p(3.6), DOWN, buff=0.18
+        re_lbl = Text("axe réel", font_size=18, color=BAC_INK_MUTED).next_to(
+            plan.n2p(3.4), UP, buff=0.12
         )
-        im_lbl = Text("axe imaginaire", font_size=20, color=BAC_INK_MUTED).next_to(
-            plan.n2p(2.3j), LEFT, buff=0.18
+        im_lbl = Text("axe imaginaire", font_size=18, color=BAC_INK_MUTED).next_to(
+            plan.n2p(2.1j), RIGHT, buff=0.16
         )
         self.play(Create(plan, run_time=2.2), FadeIn(o_lbl))
         self.play(FadeIn(re_lbl), FadeIn(im_lbl))

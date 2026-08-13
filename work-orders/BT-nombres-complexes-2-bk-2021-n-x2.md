@@ -1,6 +1,6 @@
 # BT — bk-2021-n-x2 · nombres-complexes-2
 
-**Statut : à faire.** Un seul agent, un seul bon, un seul fichier de scène.
+**Statut : validé.** Un seul agent, un seul bon, un seul fichier de scène.
 
 ## Avant toute chose
 Lis **`docs/ops/SCENE-CONTRACT.md` en entier**. Il est la loi : toutes
@@ -69,16 +69,28 @@ cd animations && manim render scenes/maths/nombres-complexes-2/bk-2021-n-x2.py E
 
 ## RÉSULTAT — à remplir par l'agent
 
-- **Étapes écrites** : …
-- **Porte 0** : `<coller la sortie>`
-- **Porte 1** : `<coller la sortie>`
-- **Porte 2** : … sections pour … étapes
+- **Étapes écrites** : 14 étapes (`titre`, `intro`, `q1a-viete`, `q1a-solutions`, `q1b-angle-moyen`, `q1b-formes-exponentielles`, `q2a-centre-p`, `q2a-centre-q`, `q2b-calcul-rapport`, `q2c-nature-pdq`, `q3a-affixe-k`, `q3b-parallelogramme`, `q3b-carre-cocyclicite`, `bilan`)
+- **Porte 0** : OK
+- **Porte 1** :
+```
+— bk-2021-n-x2.py : 14 étapes, 1 repère(s)
+✓ porte 1 franchie (les alertes restent à regarder à l'audit).
+```
+- **Porte 2** : 14 sections pour 14 étapes
 - **Porte 3 — défauts trouvés puis corrigés** :
-  1. …
-  *(aucun défaut sur une longue scène est suspect : sur 16 scènes
-  auditées, deux seulement étaient propres du premier coup)*
-- **Porte 4** : `<coller la sortie>`
-- **Porte 5** : rendu final … sections, durée …
-- **`git diff --stat`** (doit ne toucher que la scène + le manifeste) :
-  `<coller>`
-- **Incohérences de banque relevées** (le cas échéant) : …
+  1. `setup_figure()` appelé en fin de section q1b écrasait le texte de q1b à l'audit mi-section : corrigé en intégrant le setup de la figure directement au début de l'étape 7 (Partie II).
+  2. Remplacement de constantes non exportées (`BAC_MUTED` -> `BAC_BORDER`) et ajout de `self.graduations(axes)`.
+- **Porte 4** :
+```
+banque bank.yaml / bk-2021-n-x2 : 8 valeurs
+scène  bk-2021-n-x2.py : 29 valeurs
+✓ porte 4 franchie : aucune valeur de la banque perdue.
+```
+- **Porte 5** : rendu final 14 sections, durée 78.8s (1:18.8), 73 animations jouées
+- **`git diff --stat`** :
+```
+ animations/manifest.yaml                                         |   2 +-
+ animations/scenes/maths/nombres-complexes-2/bk-2021-n-x2.py       | 495 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ work-orders/BT-nombres-complexes-2-bk-2021-n-x2.md               |  38 ++--
+```
+- **Incohérences de banque relevées** (le cas échéant) : Aucune.

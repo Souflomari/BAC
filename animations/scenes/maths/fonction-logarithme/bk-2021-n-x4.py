@@ -314,7 +314,7 @@ class Explication(BacScene):
         )
         self.play(Create(axes, run_time=1.8), FadeIn(o_lbl))
         self.play(FadeIn(x_lbl))
-        self._graduations(axes, [1, 2, 3, 4, 5], [2, 4, 6, 8])
+        nombres = self._graduations(axes, [1, 2, 3, 4, 5], [2, 4, 6, 8])
         self.legende(
             "On regarde d'abord l'allure de (C), avant toute preuve —",
             "juste pour VOIR ce qu'on va démontrer.",
@@ -348,8 +348,9 @@ class Explication(BacScene):
         return {
             "axes": axes, "branch_dec": branch_dec, "branch_inc": branch_inc,
             "o_lbl": o_lbl, "x_lbl": x_lbl, "pt0": pt0, "lbl0": lbl0,
+            "nombres": nombres,
             "group": VGroup(
-                axes, branch_dec, branch_inc, o_lbl, x_lbl, pt0, lbl0
+                axes, branch_dec, branch_inc, o_lbl, x_lbl, pt0, lbl0, nombres
             ),
         }
 
@@ -531,6 +532,8 @@ class Explication(BacScene):
             fleche_oj, LEFT, buff=0.1
         )
         self.play(Create(fleche_oj, run_time=1.2), FadeIn(lbl_oj))
+        fig_c["fleche_oj"] = fleche_oj
+        fig_c["lbl_oj"] = lbl_oj
         fig_c["group"].add(fleche_oj, lbl_oj)
         self.legende(
             "Un rapport infini : la courbe grossit plus vite que TOUTE",
@@ -606,7 +609,14 @@ class Explication(BacScene):
         self.ecrit(m3, buff=0.55)
         self.ecrit(m4, buff=0.2)
         self.encadre(couleur=COL_LIM)
-        self.play(FadeOut(corde), FadeOut(lbl_corde))
+        ancien_lbl0 = fig_c.get("lbl0")
+        if ancien_lbl0 is not None:
+            self.play(FadeOut(corde), FadeOut(lbl_corde), FadeOut(ancien_lbl0))
+            if ancien_lbl0 in fig_c["group"]:
+                fig_c["group"].remove(ancien_lbl0)
+            del fig_c["lbl0"]
+        else:
+            self.play(FadeOut(corde), FadeOut(lbl_corde))
         tangente = DashedLine(
             axes.c2p(0, -0.5), axes.c2p(0, 0.9),
             color=COL_LIM, stroke_width=3.5, dash_length=0.1,
@@ -615,6 +625,8 @@ class Explication(BacScene):
             "tangente verticale", font_size=16, color=COL_LIM
         ).next_to(tangente.get_top(), RIGHT, buff=0.1)
         self.play(Create(tangente, run_time=1.4), FadeIn(lbl_tang))
+        fig_c["tangente"] = tangente
+        fig_c["lbl_tang"] = lbl_tang
         fig_c["group"].add(tangente, lbl_tang)
         self.legende(
             "Un taux d'accroissement infini : la pente de la corde part",
@@ -898,6 +910,8 @@ class Explication(BacScene):
             pt_e, DOWN, buff=0.12
         )
         self.play(FadeIn(pt_e, scale=1.6), Write(lbl_e))
+        fig_c["pt_e"] = pt_e
+        fig_c["lbl_e"] = lbl_e
         fig_c["group"].add(pt_e, lbl_e)
         self.legende("Exactement le point où la courbe recroise l'axe des x.")
         self.pose(2.8)
@@ -932,6 +946,10 @@ class Explication(BacScene):
             pt_e32, UP + RIGHT, buff=0.1
         )
         self.play(FadeIn(pt_e32, scale=1.6), Write(lbl_e32))
+        fig_c["droite"] = droite
+        fig_c["lbl_delta"] = lbl_delta
+        fig_c["pt_e32"] = pt_e32
+        fig_c["lbl_e32"] = lbl_e32
         fig_c["group"].add(droite, lbl_delta, pt_e32, lbl_e32)
         self.legende(
             "Une nouvelle droite, (Δ) d'équation y=x : (C) la croise",
@@ -1040,7 +1058,7 @@ class Explication(BacScene):
         self.pose(3.6)
 
         self.etape("q9-sens-aire")
-        self.play(FadeOut(fig_c["group"]))
+        self.play(FadeOut(self.fig_membres(fig_c)))
         axes9 = Axes(
             x_range=[0, 3.2, 1], y_range=[-0.5, 3, 1],
             x_length=3.6, y_length=3.0, axis_config=AXIS_CONFIG,
@@ -1145,12 +1163,13 @@ class Explication(BacScene):
         self.pose(3.0)
 
         self.etape("q10-figure-reprise")
-        self.play(FadeIn(fig_c["group"]))
+        self.play(FadeIn(self.fig_membres(fig_c)))
         axes = fig_c["axes"]
         aire_fc = axes.get_area(
             fig_c["branch_inc"], x_range=[1, E], color=COL_F, opacity=0.3,
         )
         self.play(FadeIn(aire_fc))
+        fig_c["aire_fc"] = aire_fc
         fig_c["group"].add(aire_fc)
         self.legende(
             "L'aire sous (C), entre les deux points déjà marqués : le",
@@ -1203,6 +1222,11 @@ class Explication(BacScene):
             "avec le creux de (C) sous l'axe entre 1 et e. 0,5 point.",
         )
         self.pose(4.2)
+        self.play(FadeOut(aire_fc))
+        if aire_fc in fig_c["group"]:
+            fig_c["group"].remove(aire_fc)
+        if "aire_fc" in fig_c:
+            del fig_c["aire_fc"]
         self.efface_legende()
         self.nettoie()
         self.play(FadeOut(badge))
@@ -1278,6 +1302,8 @@ class Explication(BacScene):
             "f(x) ≥ -2 partout sur ]0,+∞[", font_size=15, color=COL_SECOND
         ).next_to(axes.c2p(3.0, -2), UP, buff=0.08)
         self.play(Create(plancher, run_time=1.2), FadeIn(lbl_plancher))
+        fig_c["plancher"] = plancher
+        fig_c["lbl_plancher"] = lbl_plancher
         fig_c["group"].add(plancher, lbl_plancher)
         self.legende(
             "-2 est un minimum GLOBAL : la courbe ne descend jamais plus",
@@ -1319,6 +1345,15 @@ class Explication(BacScene):
         self.encadre(couleur=COL_LIM)
         self.legende("Exactement l'inégalité demandée. 0,5 point.")
         self.pose(3.4)
+        self.play(FadeOut(plancher), FadeOut(lbl_plancher))
+        if plancher in fig_c["group"]:
+            fig_c["group"].remove(plancher)
+        if lbl_plancher in fig_c["group"]:
+            fig_c["group"].remove(lbl_plancher)
+        if "plancher" in fig_c:
+            del fig_c["plancher"]
+        if "lbl_plancher" in fig_c:
+            del fig_c["lbl_plancher"]
         self.efface_legende()
         self.nettoie()
         self.play(FadeOut(badge))
@@ -1351,8 +1386,10 @@ class Explication(BacScene):
         )
         lbl_crochet = Text(
             "domaine de g", font_size=15, color=COL_TOOL
-        ).next_to(crochet, DOWN, buff=0.08)
+        ).next_to(crochet, RIGHT, buff=0.1)
         self.play(Create(crochet, run_time=0.8), FadeIn(lbl_crochet))
+        fig_c["crochet"] = crochet
+        fig_c["lbl_crochet"] = lbl_crochet
         fig_c["group"].add(crochet, lbl_crochet)
         self.legende(
             "Une fonction réciproque « défait » g : elle renvoie chaque",
@@ -1430,7 +1467,7 @@ class Explication(BacScene):
         self.pose(3.8)
 
         self.etape("q14-figure-large")
-        self.play(FadeOut(fig_c["group"]))
+        self.play(FadeOut(self.fig_membres(fig_c)))
         axes_b = Axes(
             x_range=[-2.3, 6.3, 2], y_range=[-2.3, 6.3, 2],
             x_length=4.0, y_length=4.0, axis_config=AXIS_CONFIG,
@@ -1742,8 +1779,8 @@ class Explication(BacScene):
             stroke_width=3, dash_length=0.08,
         )
         lbl_tang_d = Text(
-            "tangente verticale", font_size=14, color=COL_TOOL
-        ).next_to(tangente_d.get_top(), RIGHT, buff=0.06)
+            "tangente verticale", font_size=13, color=COL_TOOL
+        ).next_to(axes.c2p(0, 0.35), RIGHT, buff=0.08)
         self.play(Create(tangente_d, run_time=1.2), FadeIn(lbl_tang_d))
         fig_h["group"].add(tangente_d, lbl_tang_d)
         self.legende(

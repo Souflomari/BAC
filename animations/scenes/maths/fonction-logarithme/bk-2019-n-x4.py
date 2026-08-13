@@ -385,7 +385,7 @@ class Explication(BacScene):
             axes.c2p(0, 8.6), RIGHT, buff=0.14
         )
         self.play(Create(axes, run_time=1.6), FadeIn(o_lbl), FadeIn(x_lbl))
-        self._graduations(axes, [2, 4, 6, 8], [2, 4, 6, 8])
+        nombres = self.graduations(axes, [2, 4, 6, 8], [2, 4, 6, 8])
         self.play(Create(frontiere, run_time=1.2), FadeIn(front_lbl))
         self.legende(
             "D'abord le domaine : f n'existe QUE pour x strictement",
@@ -407,6 +407,7 @@ class Explication(BacScene):
 
         return {
             "axes": axes, "o_lbl": o_lbl, "x_lbl": x_lbl,
+            "nombres": nombres,
             "frontiere": frontiere, "front_lbl": front_lbl,
             "branch_dec": branch_dec, "branch_inc": branch_inc,
         }
@@ -567,10 +568,9 @@ class Explication(BacScene):
 
         self.etape("q3-conclusion")
         m2 = MathTex(
-            r"\left(\tfrac12\ln x-1\right)\ln x \xrightarrow[x\to+\infty]{} +\infty"
-            r" \implies f(x) = x+\tfrac12+\left(\tfrac12\ln x-1\right)\ln x"
-            r" \xrightarrow[x\to+\infty]{} +\infty",
-            font_size=15, color=LIM,
+            r"\left(\tfrac12\ln x-1\right)\ln x \xrightarrow[x\to+\infty]{} +\infty \\"
+            r"\implies f(x) = x+\tfrac12+\left(\tfrac12\ln x-1\right)\ln x \xrightarrow[x\to+\infty]{} +\infty",
+            font_size=18, color=LIM,
         )
         self.ecrit(m2, buff=0.5)
         self.encadre(couleur=LIM)
@@ -642,7 +642,7 @@ class Explication(BacScene):
         self.nettoie()
 
         self.etape("q4-figure-reference")
-        self.play(FadeOut(_fig_membres(fig)))
+        self.play(FadeOut(self.fig_membres(fig)))
         ax_ref = Axes(
             x_range=[1, 32, 10], y_range=[0, 0.42, 0.1],
             x_length=4.4, y_length=3.0, axis_config=AXIS_CONFIG,
@@ -653,7 +653,7 @@ class Explication(BacScene):
         )
         courbe_ref = ax_ref.plot(_ln_t_sur_t, x_range=[1, 32], color=OUTIL, stroke_width=3.5)
         self.play(Create(ax_ref, run_time=1.2), FadeIn(t_lbl))
-        self._graduations(ax_ref, [1, 10, 20], [0.1, 0.2, 0.3])
+        nombres_ref = self.graduations(ax_ref, [1, 10, 20], [0.1, 0.2, 0.3])
         self.play(Create(courbe_ref, run_time=1.8))
         asym_ref = DashedLine(
             ax_ref.c2p(1, 0), ax_ref.c2p(32, 0), color=OUTIL,
@@ -715,8 +715,8 @@ class Explication(BacScene):
         self.efface_legende()
         self.nettoie()
         self.play(FadeOut(badge))
-        self.play(FadeOut(VGroup(ax_ref, t_lbl, courbe_ref, asym_ref, lbl_ref)))
-        self.play(FadeIn(_fig_membres(fig)))
+        self.play(FadeOut(VGroup(ax_ref, t_lbl, courbe_ref, asym_ref, lbl_ref, nombres_ref)))
+        self.play(FadeIn(self.fig_membres(fig)))
         return fig
 
     # ── Q5 : branche parabolique de direction (Δ): y = x ───────────────
@@ -1678,7 +1678,7 @@ class Explication(BacScene):
         self.play(Create(ax_cw, run_time=1.2))
         # x=1 est réservé à l'étiquette « u_0=1 » posée juste dessous —
         # on ne grade que 2 et 3 pour ne jamais la chevaucher.
-        self._graduations(ax_cw, [2, 3], [1, 2, 3])
+        nombres_cw = self.graduations(ax_cw, [2, 3], [1, 2, 3])
         self.play(Create(courbe_cw, run_time=1.6), Create(delta_cw, run_time=1.6))
         pt_e2, lbl_e2 = _point_marque(
             ax_cw, E, E, CONCL, r"(e,e)", UP + LEFT, buff=0.24, font_size=20,
@@ -1788,8 +1788,8 @@ class Explication(BacScene):
         self.play(FadeOut(badge))
         return {
             "axes": ax_cw, "courbe": courbe_cw, "delta": delta_cw,
-            "pt_e": pt_e2, "lbl_e": lbl_e2, "marches": marches,
-            "group": VGroup(ax_cw, courbe_cw, delta_cw, pt_e2, lbl_e2, marches),
+            "nombres": nombres_cw, "pt_e": pt_e2, "lbl_e": lbl_e2,
+            "marches": marches,
         }
 
     # ── Q17 : (u_n) croissante ──────────────────────────────────────
@@ -1801,8 +1801,8 @@ class Explication(BacScene):
         but = MathTex(r"\text{Montrer que la suite } (u_n) \text{ est croissante}", font_size=30)
         self.ecrit(but)
         self.legende(
-            "On étudie le signe de u_{n+1} moins u_n — exactement",
-            "f(u_n) moins u_n.",
+            "On étudie le signe de u indice n+1 moins u indice n —",
+            "exactement f(u_n) moins u_n.",
         )
         self.pose(3.4)
 
@@ -1831,7 +1831,8 @@ class Explication(BacScene):
             "u₀ < u₁ < u₂ < u₃ < … ", font_size=17, color=CONCL
         ).next_to(fleche_croiss, DOWN, buff=0.08)
         self.play(Create(fleche_croiss), FadeIn(lbl_croiss))
-        fig_cw["group"].add(fleche_croiss, lbl_croiss)
+        fig_cw["fleche_croiss"] = fleche_croiss
+        fig_cw["lbl_croiss"] = lbl_croiss
         self.legende(
             "Exactement ce que montre l'escalier : chaque marche",
             "avance vers la droite, jamais en arrière.",
@@ -1896,8 +1897,8 @@ class Explication(BacScene):
         )
         self.ecrit(m1)
         self.legende(
-            "En passant à la limite dans u_{n+1}=f(u_n) : ℓ est un",
-            "POINT FIXE de f, quelque part dans [1,e].",
+            "En passant à la limite dans u indice n+1 = f(u indice n) :",
+            "ℓ est un point fixe de f, quelque part dans [1,e].",
         )
         self.pose(4.0)
 
@@ -1941,6 +1942,8 @@ class Explication(BacScene):
             fig_cw["axes"].c2p(E, 0), DOWN, buff=0.14
         )
         self.play(FadeIn(lim_lbl))
+        fig_cw["tick_e"] = tick_e
+        fig_cw["lim_lbl"] = lim_lbl
         self.legende(
             "L'escalier grimpe indéfiniment vers ce point de contact —",
             "jamais au-delà, toujours plus près.",
@@ -1948,7 +1951,7 @@ class Explication(BacScene):
         self.pose(4.2)
         self.efface_legende()
         self.play(FadeOut(badge))
-        self.play(*[FadeOut(m) for m in self.mobjects])
+        self.play(FadeOut(self.fig_membres(fig_cw)))
 
     # ── Fermeture ─────────────────────────────────────────────────
     def chapitre_fin(self):
@@ -1973,7 +1976,7 @@ class Explication(BacScene):
                  font_size=20, color=BAC_INK_SOFT),
             Text("  supposé nul.",
                  font_size=20, color=BAC_INK_SOFT),
-            Text("• Suite u_{n+1}=f(u_n) : encadrement par récurrence via la",
+            Text("• Suite u_(n+1)=f(u_n) : encadrement par récurrence via la",
                  font_size=20, color=BAC_INK_SOFT),
             Text("  monotonie de f, croissance par le signe de f(x)-x,",
                  font_size=20, color=BAC_INK_SOFT),

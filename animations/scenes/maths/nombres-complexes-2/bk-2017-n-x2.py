@@ -463,11 +463,11 @@ class Explication(BacScene):
             plan.n2p(0), DOWN + LEFT, buff=0.1
         )
         re_lbl = Text("axe réel", font_size=18, color=BAC_INK_MUTED).next_to(
-            plan.n2p(2.3), DOWN, buff=0.16
+            plan.n2p(2.2), UP, buff=0.12
         )
         # À DROITE de l'axe imaginaire, jamais à gauche (règle d'audit).
         im_lbl = Text("axe imaginaire", font_size=18, color=BAC_INK_MUTED).next_to(
-            plan.n2p(2.6j), RIGHT, buff=0.16
+            plan.n2p(2.4j), RIGHT, buff=0.16
         )
         self.play(Create(plan, run_time=2.0), FadeIn(o_lbl))
         self.play(FadeIn(re_lbl), FadeIn(im_lbl))

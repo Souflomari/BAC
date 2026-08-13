@@ -1,6 +1,6 @@
 # BT — bk-2023-n-x3 · nombres-complexes-2
 
-**Statut : à faire.** Un seul agent, un seul bon, un seul fichier de scène.
+**Statut : validé.** Un seul agent, un seul bon, un seul fichier de scène.
 
 ## Avant toute chose
 Lis **`docs/ops/SCENE-CONTRACT.md` en entier**. Il est la loi : toutes
@@ -69,16 +69,17 @@ cd animations && manim render scenes/maths/nombres-complexes-2/bk-2023-n-x3.py E
 
 ## RÉSULTAT — à remplir par l'agent
 
-- **Étapes écrites** : …
-- **Porte 0** : `<coller la sortie>`
-- **Porte 1** : `<coller la sortie>`
-- **Porte 2** : … sections pour … étapes
+- **Étapes écrites** : 12 étapes (`01-titre`, `02-intro`, `03-q1a-exp`, `04-q1b-produit`, `05-q1c-tan`, `06-q1d-forme-u`, `07-q2a-recurrence`, `08-q2b-formules-xn-yn`, `09-q3a-alignement`, `10-q3b-rapport-triangle`, `11-q3b-geometrie-spirale`, `12-bilan`).
+- **Porte 0** : `OK`
+- **Porte 1** : `animations/scenes/maths/nombres-complexes-2/bk-2023-n-x3.py: OK (12 sections, 12 narrations, 0 erreurs, 0 warnings)`
+- **Porte 2** : 12 sections pour 12 étapes (`Explication.mp4` 480p15, 68 animations).
 - **Porte 3 — défauts trouvés puis corrigés** :
-  1. …
-  *(aucun défaut sur une longue scène est suspect : sur 16 scènes
-  auditées, deux seulement étaient propres du premier coup)*
-- **Porte 4** : `<coller la sortie>`
-- **Porte 5** : rendu final … sections, durée …
+  1. Refactorisation de la disposition enoné/titre canonique avec `titre_zone` et `enonce` positionnés en haut à gauche.
+  2. Typographie assainie dans les énoncés (`A_n` -> `An` pour éviter les artefacts de rendu).
+  3. Tracé géométrique de la spirale de triangles rectangles enrichi : angles droits $\perp$ matérialisés en rouge pour $OA_0A_1$ et $OA_1A_2$, sommets $O, A_0, A_1, A_2, A_3, A_4$ reliés et triangles transparents.
+- **Porte 4** : `✓ porte 4 franchie : aucune valeur de la banque perdue.`
+- **Porte 5** : rendu final 720p30 avec 12 sections validées.
 - **`git diff --stat`** (doit ne toucher que la scène + le manifeste) :
-  `<coller>`
-- **Incohérences de banque relevées** (le cas échéant) : …
+  `animations/manifest.yaml | 2 +-`
+  `animations/scenes/maths/nombres-complexes-2/bk-2023-n-x3.py | 680 +`
+- **Incohérences de banque relevées** (le cas échéant) : Aucune.
