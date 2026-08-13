@@ -117,8 +117,23 @@ n'invente pas de contournement par scène.
 
 ---
 
+## Échantillon d'acceptation (orchestrateur, avant dispatch)
+
+Avant de déléguer ce bon, vérification que le correctif généralise
+bien à un AUTRE fichier que celui déjà entièrement refait
+(`bk-2021-n-x1`, traité séparément) : `nombres-complexes-1/bk-2018-n-x2.py`
+(scène pilote de toute la campagne) re-rendu en `-ql` avec le
+`bac_scene.py` corrigé. Étape "plan-axes" (le `ComplexPlane` — un cas
+DIFFÉRENT d'`Axes`, bon test de généralité) : grille, axes ET les 5
+nombres de graduation (`−2, −1, 1` réel ; `1, −1` imaginaire) tous
+visibles, aucune collision avec `O`, `axe réel`/`axe imaginaire`, ni
+avec les étiquettes `z₁`/`z₂` posées deux étapes plus tard. **Le
+correctif généralise** — confirme qu'aucune retouche par scène n'est
+nécessaire, seulement un re-rendu. Les 11 scènes restantes (12 moins
+celle-ci) peuvent être traitées mécaniquement par ce bon.
+
 ## RÉSULTAT — à remplir par l'agent
 
-- **Scènes re-vérifiées** : 0 / 12
+- **Scènes re-vérifiées** : 1 / 12 (échantillon d'acceptation ci-dessus ; 11 restantes)
 - **Défauts trouvés après re-rendu (devrait être vide)** :
 - **Confirmation** : trait + nombres visibles sur toutes les figures listées ? (oui/non par scène)
