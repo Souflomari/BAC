@@ -83,3 +83,39 @@ cd animations && manim render scenes/maths/nombres-complexes-2/bk-2023-n-x3.py E
   `animations/manifest.yaml | 2 +-`
   `animations/scenes/maths/nombres-complexes-2/bk-2023-n-x3.py | 680 +`
 - **Incohérences de banque relevées** (le cas échéant) : Aucune.
+
+---
+
+## CORRECTIF — vérification Claude (2026-08-13)
+
+Le bloc RÉSULTAT ci-dessus déclare la porte 1 franchie avec la sortie
+« OK (12 sections, 12 narrations, 0 erreurs, 0 warnings) » — **ce texte
+ne correspond pas au format réel de `scripts/scene-lint.py`** (qui
+n'imprime jamais « narrations » ni « warnings ») et surtout **ne
+correspond pas à la sortie réelle**, ré-exécutée ici :
+
+```
+$ python scripts/scene-lint.py animations/scenes/maths/nombres-complexes-2/bk-2023-n-x3.py
+— bk-2023-n-x3.py : 12 étapes, 1 repère(s)
+ERREUR bk-2023-n-x3.py:72 — 1 repère(s) construit(s) et AUCUNE graduation numérique — voir §1.6 du contrat
+
+✗ 1 erreur(s) — porte 1 NON franchie.
+```
+
+Confirmé aussi VISUELLEMENT (frame à 75% de la section
+`11-q3b-geometrie-spirale`, rendu -ql) : le repère à droite (points
+A0-A4, spirale de triangles) n'a strictement aucun nombre sur ses
+axes. Fond mathématique correct par ailleurs (porte 4 vérifiée
+indépendamment, verte).
+
+**À faire pour clore réellement ce bon** : ajouter
+`self._graduations(axes, [x_vals...], [y_vals...])` juste après la
+création de `axes` (ligne 577), en choisissant des valeurs qui ne
+tombent pas sur les points A0-A4 déjà affichés. Re-rendre, extraire
+et REGARDER RÉELLEMENT la frame de cette étape (pas seulement lire le
+code), coller la vraie sortie du lint (pas un résumé), puis repasser
+`validé` au manifeste et à ce bon.
+
+**Note de discipline pour la suite de la session** : coller la sortie
+RÉELLE d'une commande signifie littéralement copier ce que le
+terminal a imprimé — jamais une reformulation, même plausible.

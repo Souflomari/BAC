@@ -67,7 +67,7 @@ scenes:
     entry: bk-2023-n-x3
     scene_file: scenes/maths/nombres-complexes-2/bk-2023-n-x3.py
     scene_class: Explication
-    statut: validé  # audit 12/12 étapes SANS défaut ; fond conforme banque (1-i=√2 e^(-iπ/4), 1+i√3=2 e^(iπ/3), tan(π/12)=2-√3, u=(√6-√2)e^(iπ/12), suites couplées x_n+i y_n=u^n, alignement n multiple de 12, (zO-zAn)/(zA(n+1)-zAn)=i/(2-√3) => O An A(n+1) rectangle en An)
+    statut: en cours  # CORRECTIF (Claude, vérification 2026-08-13) : le "SANS défaut" déclaré était faux — lint ERREUR réelle, confirmée visuellement (frame mi-section) : le repère de la figure spirale (étape "q3b-geometrie-spirale") ne porte AUCUNE graduation numérique (§1.6 violé). Fond mathématique lui-même conforme banque (bank-fidelity vert). À corriger : poser self.graduations(axes, ...) sur ce repère, re-rendre, re-vérifier visuellement, repasser validé.
   - bank: content/maths/nombres-complexes-2/bank.yaml
     entry: bk-2024-n-x3
     scene_file: scenes/maths/nombres-complexes-2/bk-2024-n-x3.py
@@ -112,7 +112,7 @@ scenes:
     entry: bk-2021-n-x4
     scene_file: scenes/maths/fonction-logarithme/bk-2021-n-x4.py
     scene_class: Explication
-    statut: validé
+    statut: validé  # note Claude (2026-08-13) : seule entrée de ce lot sans note d'audit descriptive ; lint propre à part 5 ALERTEs font_size 13-15 (sous le plancher, non bloquant) — pas de défaut confirmé mais pas de spot-check visuel indépendant fait non plus ; à garder à l'œil si un audit futur repasse par ce fichier
   - bank: content/maths/fonction-logarithme/bank.yaml
     entry: bk-2023-n-x4
     scene_file: scenes/maths/fonction-logarithme/bk-2023-n-x4.py
@@ -122,7 +122,7 @@ scenes:
     entry: bk-2024-n-x4
     scene_file: scenes/maths/fonction-logarithme/bk-2024-n-x4.py
     scene_class: Explication
-    statut: validé  # audit 66 sections/66 étapes, 16 questions complètes (8 pts) conformes examen 2024; repères, tangentes et bilan vérifiés
+    statut: en cours  # CORRECTIF (Claude, vérification 2026-08-13) : "vérifiés" déclaré mais faux — lint ALERTE réelle (24 lignes de légende > 60 car., jusqu'à 94), confirmée visuellement à l'étape "q14-conclusion" : la légende déborde HORS ÉCRAN (début "Égalité" coupé à gauche, fin "point." coupée à droite). Fond mathématique conforme banque (bank-fidelity vert), pas de graduation manquante. À corriger : raccourcir les 24 lignes de légende signalées par le lint (`python scripts/scene-lint.py animations/scenes/maths/fonction-logarithme/bk-2024-n-x4.py`) à ~60 caractères, re-rendre, re-vérifier visuellement CHACUNE, repasser validé.
   - bank: content/maths/fonction-exponentielle/bank.yaml
     entry: bk-2019-n-x4
     scene_file: scenes/maths/fonction-exponentielle/bk-2019-n-x4.py
