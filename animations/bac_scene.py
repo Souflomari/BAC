@@ -263,13 +263,47 @@ class BacScene(Scene):
         défaut d'Axes — jamais du côté où vivent les étiquettes de
         points.
 
+        Deux défauts RÉELS trouvés à l'audit (re-rendu de
+        bk-2021-n-x1 : le trait des axes disparaissait, aléatoirement
+        selon l'exécution) :
+
+        1. `NumberLine.add_numbers()` attache tout de suite les
+           nombres à la famille de l'axe — déjà top-level dans
+           `self.mobjects` via `Create(axes)`. Animer ensuite un
+           sous-groupe de cette famille (`self.play(FadeIn(...))`)
+           fait RESTRUCTURER la scène et peut faire disparaître des
+           frères déjà affichés (ici : le trait de l'axe, parfois les
+           pointes de flèche) — non-déterministe, dépend de l'ordre
+           mémoire du process. Remède : construire les nombres SANS
+           les attacher (`get_number_mobject`, jamais `add_numbers`),
+           les faire apparaître, PUIS les rattacher.
+        2. Forcer l'opacité à 0 avant un `FadeIn` est un contresens :
+           `FadeIn` prend l'état COURANT du mobject comme cible
+           d'arrivée (`create_target` = `self.mobject`), donc le
+           mettre à 0 d'abord fait de l'animation un fondu VERS zéro —
+           les nombres ne seraient JAMAIS apparus.
+
         Retourne le `VGroup` des nombres pour pouvoir l'intégrer à `fig`.
         """
-        axes.get_x_axis().add_numbers(x_vals, font_size=18, color=BAC_INK_MUTED)
-        axes.get_y_axis().add_numbers(y_vals, font_size=18, color=BAC_INK_MUTED)
-        nombres = VGroup(axes.get_x_axis().numbers, axes.get_y_axis().numbers)
-        nombres.set_opacity(0)
+        x_axis = axes.get_x_axis()
+        y_axis = axes.get_y_axis()
+        nx = VGroup(*[
+            x_axis.get_number_mobject(x, font_size=18, color=BAC_INK_MUTED)
+            for x in x_vals
+        ])
+        ny = VGroup(*[
+            y_axis.get_number_mobject(y, font_size=18, color=BAC_INK_MUTED)
+            for y in y_vals
+        ])
+        nombres = VGroup(nx, ny)
         self.play(FadeIn(nombres), run_time=0.7)
+        # Rattachement APRÈS le fondu (jamais pendant un self.play) :
+        # les futurs FadeOut(axes) / FadeOut(fig["group"]) emportent
+        # alors aussi les nombres, comme avant ces correctifs.
+        x_axis.add(nx)
+        x_axis.numbers = nx
+        y_axis.add(ny)
+        y_axis.numbers = ny
         return nombres
 
     _graduations = graduations

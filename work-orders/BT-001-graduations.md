@@ -113,3 +113,25 @@ seulement, à la note d'audit de chaque ligne, la mention `+ graduations`.
  animations/scenes/maths/suites-numeriques/bk-2024-n-x1.py   | 6 ++++--
  14 files changed, 31 insertions(+), 9 deletions(-)
 ```
+
+## CORRECTIF POST-HOC (orchestrateur, 2026-08-13)
+
+Deux défauts réels trouvés en finissant l'audit visuel de
+`limites-continuite/bk-2021-n-x1` (la 14ᵉ scène, ratée par ce bon à
+cause d'un bug du lint — voir plus haut) : le helper
+`self.graduations()` monté par `BT-000` (1) pouvait faire disparaître
+le TRAIT des axes, de façon non-déterministe, et (2) ne faisait
+JAMAIS apparaître les nombres — dans AUCUN rendu. Autrement dit, sur
+les 13 scènes de ce bon qui appellent réellement `self.graduations()`
+(les 3 `suites-numeriques` posent `add_numbers()` directement, hors
+du helper — non affectées), **les graduations n'étaient probablement
+jamais visibles dans le rendu qui a servi à cet audit**, même si le
+placement des VALEURS (les collisions listées ci-dessus) avait bien
+été pensé correctement dans le code.
+
+`animations/bac_scene.py` est corrigé (voir le commit qui accompagne
+`limites-continuite/bk-2021-n-x1`). Le ré-audit des 12 scènes
+restantes (hors `bk-2021-n-x1`, traité directement) est délégué à
+`work-orders/BT-003-audit-graduations-existantes.md`. Statut de CE
+bon inchangé (`validé` — le PLACEMENT des graduations reste correct,
+c'est leur VISIBILITÉ au rendu qui doit être reconfirmée par BT-003).

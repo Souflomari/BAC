@@ -249,6 +249,9 @@ class Explication(BacScene):
         ax = _nouvelle_figure(x_range=[-0.6, 1.3, 0.5], y_range=[-1.5, 2.0, 0.5])
         courbe = ax.plot(_f, x_range=[-0.6, 1.3], color=COURBE, stroke_width=3.5)
         self.play(Create(ax, run_time=1.6))
+        # 0,5 (pas 0 ni ln3≈1,0986) : entre les deux racines qui reçoivent
+        # leurs propres étiquettes juste après — jamais sur elles.
+        self._graduations(ax, [0.5], [-1, 1])
         self.play(Create(courbe, run_time=2.2))
         self.legende(
             "La courbe de f, avant tout calcul — on cherche d'abord",
@@ -501,6 +504,9 @@ class Explication(BacScene):
         branche_d = ax2.plot(_h, x_range=[gap, 0.55], color=COURBE, stroke_width=3.5)
         trou = _cercle_creux(ax2, 0, -1, COURBE)
         self.play(Create(ax2, run_time=1.4))
+        # x : ±0,3, jamais 0 (le trou y est). y : −0,5/−1,5, jamais −1
+        # (même raison) — le trou reste net, à distance de tout nombre.
+        self._graduations(ax2, [-0.3, 0.3], [-1.5, -0.5])
         self.play(Create(branche_g, run_time=1.6), Create(branche_d, run_time=1.6))
         self.play(FadeIn(trou, scale=1.4))
         self.legende(
@@ -630,6 +636,10 @@ class Explication(BacScene):
         ax3 = _nouvelle_figure(x_range=[-1.15, 0.2, 0.5], y_range=[-4.3, 4.0, 1])
         courbe_phi = ax3.plot(_phi, x_range=[-1.15, 0.2], color=COURBE, stroke_width=3.5)
         self.play(Create(ax3, run_time=1.4))
+        # Fenêtre étroite : x=-1 et x=0 portent déjà repères+coches, seul
+        # -0,5 reste libre. y : -2, à distance de φ(-1)≈-3,497 (label EN
+        # DESSOUS) et de φ(0)=2 (label AU-DESSUS) — les deux évités.
+        self._graduations(ax3, [-0.5], [-2])
         self.play(Create(courbe_phi, run_time=2.2))
         self.legende(
             "La courbe de φ — contrairement à celle de tout à l'heure,",

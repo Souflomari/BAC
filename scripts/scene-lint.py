@@ -141,13 +141,20 @@ def verifier(fichier: Path) -> Constats:
         c.erreur(classe.lineno, "aucune etape() — la scène n'a pas de sections")
 
     # ── 6. Graduations numériques sur chaque Axes (exigence owner) ──
+    # Portée MODULE ENTIER, pas seulement la classe : une scène a le
+    # droit (bon style) de factoriser la construction des Axes dans un
+    # helper de niveau module (ex. `_nouvelle_figure()`, réutilisé pour
+    # plusieurs figures) — un scan limité à la classe rate alors CES
+    # appels-là et sous-compte silencieusement les repères réels.
     axes_crees = sum(
-        1 for a in _appels(classe)
+        1 for a in _appels(arbre)
         if _nom_appel(a) in {"Axes", "NumberPlane", "ComplexPlane", "NumberLine"}
     )
+    # "graduations" = le nom PUBLIC monté dans BacScene (BT-000) ;
+    # "_graduations" son alias historique — les deux comptent.
     graduations = sum(
-        1 for a in _appels(classe)
-        if _nom_appel(a) in {"_graduations", "add_numbers", "add_coordinates"}
+        1 for a in _appels(arbre)
+        if _nom_appel(a) in {"graduations", "_graduations", "add_numbers", "add_coordinates"}
     )
     if axes_crees and graduations == 0:
         c.erreur(

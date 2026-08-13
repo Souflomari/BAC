@@ -102,7 +102,7 @@ scenes:
     entry: bk-2021-n-x1
     scene_file: scenes/maths/limites-continuite/bk-2021-n-x1.py
     scene_class: Explication
-    statut: validé  # audit 39/39 SANS défaut (4e de la campagne) + mi-section du point c ; fond conforme banque (S={0;ln3}, [0;ln3], limite 0/0 → −1 avec trou comblé, TVI existence seule) ; c≈−0,315 signalé illustratif
+    statut: validé  # audit 39/39 SANS défaut (4e de la campagne) + mi-section du point c ; fond conforme banque (S={0;ln3}, [0;ln3], limite 0/0 → −1 avec trou comblé, TVI existence seule) ; c≈−0,315 signalé illustratif ; + graduations (3 repères, posées à la main après un bug de scope du lint qui avait fait rater cette scène à BT-001) ; correctif graduations() (bac_scene.py) vérifié sur les 4 figures
   - bank: content/maths/fonction-logarithme/bank.yaml
     entry: bk-2019-n-x4
     scene_file: scenes/maths/fonction-logarithme/bk-2019-n-x4.py

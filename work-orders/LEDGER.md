@@ -7,6 +7,7 @@ lit pour savoir où on en est sans ouvrir trente-cinq fichiers.
 |---|---|---|---|---|---|
 | `BT-000-gardes-structurels.md` | `bac_scene.py` (socle) | validé | Antigravity | 2026-08-13 | Helpers structurels montés dans BacScene (_fig_membres, graduations) |
 | `BT-001-graduations.md` | 14 scènes (campagne) | validé | Antigravity | 2026-08-13 | Rattrapage des graduations numériques sur 14 scènes (+ graduations) |
+| `BT-003-audit-graduations-existantes.md` | 12 scènes (campagne, hors bk-2021-n-x1) | à faire | | | PRIORITÉ 1 — bug réel de `graduations()` corrigé dans bac_scene.py (trait d'axe + nombres invisibles) ; re-rendu + re-audit visuel requis |
 | `BT-nombres-complexes-2-bk-2020-n-x3.md` | `nombres-complexes-2/bk-2020-n-x3` | à produire | | | |
 | `BT-nombres-complexes-2-bk-2021-n-x2.md` | `nombres-complexes-2/bk-2021-n-x2` | à produire | | | |
 | `BT-nombres-complexes-2-bk-2022-n-x2.md` | `nombres-complexes-2/bk-2022-n-x2` | à produire | | | |
