@@ -111,7 +111,7 @@ class Explication(BacScene):
         grp = VGroup(titre, soustitre, badge).arrange(DOWN, buff=0.25)
         grp.move_to(ORIGIN)
 
-        narration = Text(NARRATION["titre"], font_size=13, color=BAC_INK_SOFT)
+        narration = Text(NARRATION["titre"], font_size=16, color=BAC_INK_SOFT)
         narration.to_edge(DOWN, buff=0.3)
 
         self.play(FadeIn(grp, shift=UP * 0.3), FadeIn(narration))
@@ -152,7 +152,7 @@ class Explication(BacScene):
         ).arrange(DOWN, buff=0.25, aligned_edge=LEFT)
         plan.next_to(self.titre_zone, DOWN, buff=0.4, aligned_edge=LEFT)
 
-        narration = Text(NARRATION["intro"], font_size=12, color=BAC_INK_SOFT)
+        narration = Text(NARRATION["intro"], font_size=16, color=BAC_INK_SOFT)
         narration.to_edge(DOWN, buff=0.3)
 
         self.play(Write(self.titre_zone), FadeIn(plan, shift=RIGHT * 0.2), FadeIn(narration))
@@ -171,11 +171,11 @@ class Explication(BacScene):
 
         enonce = Text(
             "Écrire sous forme exponentielle les nombres complexes : 1 - i et 1 + i√3.",
-            font_size=14,
+            font_size=16,
             color=BAC_INK_SOFT,
         ).next_to(self.titre_zone, DOWN, aligned_edge=LEFT, buff=0.2)
 
-        narration = Text(NARRATION["q1a"], font_size=13, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
+        narration = Text(NARRATION["q1a"], font_size=16, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
         self.play(Write(self.titre_zone), FadeIn(enonce), FadeIn(narration))
 
         c1 = MathTex(
@@ -220,11 +220,11 @@ class Explication(BacScene):
 
         enonce = Text(
             "Montrer que : ((1 - i)(1 + i√3)) / (2√2) = exp(iπ/12).",
-            font_size=14,
+            font_size=16,
             color=BAC_INK_SOFT,
         ).next_to(self.titre_zone, DOWN, aligned_edge=LEFT, buff=0.2)
 
-        narration = Text(NARRATION["q1b"], font_size=13, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
+        narration = Text(NARRATION["q1b"], font_size=16, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
         self.play(Write(self.titre_zone), FadeIn(enonce), FadeIn(narration))
 
         eq1 = MathTex(
@@ -268,11 +268,11 @@ class Explication(BacScene):
 
         enonce = Text(
             "En déduire que : tan(π/12) = 2 - √3.",
-            font_size=14,
+            font_size=16,
             color=BAC_INK_SOFT,
         ).next_to(self.titre_zone, DOWN, aligned_edge=LEFT, buff=0.2)
 
-        narration = Text(NARRATION["q1c"], font_size=13, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
+        narration = Text(NARRATION["q1c"], font_size=16, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
         self.play(Write(self.titre_zone), FadeIn(enonce), FadeIn(narration))
 
         eq1 = MathTex(
@@ -316,11 +316,11 @@ class Explication(BacScene):
 
         enonce = Text(
             "Montrer que : u = (√6 - √2) exp(iπ/12).",
-            font_size=14,
+            font_size=16,
             color=BAC_INK_SOFT,
         ).next_to(self.titre_zone, DOWN, aligned_edge=LEFT, buff=0.2)
 
-        narration = Text(NARRATION["q1d"], font_size=13, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
+        narration = Text(NARRATION["q1d"], font_size=16, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
         self.play(Write(self.titre_zone), FadeIn(enonce), FadeIn(narration))
 
         eq1 = MathTex(
@@ -362,11 +362,11 @@ class Explication(BacScene):
 
         enonce = Text(
             "Suites : x0=1, y0=0, x(n+1)=xn-(2-√3)yn, y(n+1)=(2-√3)xn+yn. Montrer : xn + i yn = u^n.",
-            font_size=13,
+            font_size=16,
             color=BAC_INK_SOFT,
         ).next_to(self.titre_zone, DOWN, aligned_edge=LEFT, buff=0.2)
 
-        narration = Text(NARRATION["q2a"], font_size=13, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
+        narration = Text(NARRATION["q2a"], font_size=16, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
         self.play(Write(self.titre_zone), FadeIn(enonce), FadeIn(narration))
 
         eq_init = MathTex(
@@ -415,11 +415,11 @@ class Explication(BacScene):
 
         enonce = Text(
             "En déduire xn = cos(nπ/12)/(cos π/12)^n et yn = sin(nπ/12)/(cos π/12)^n.",
-            font_size=14,
+            font_size=16,
             color=BAC_INK_SOFT,
         ).next_to(self.titre_zone, DOWN, aligned_edge=LEFT, buff=0.2)
 
-        narration = Text(NARRATION["q2b"], font_size=13, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
+        narration = Text(NARRATION["q2b"], font_size=16, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
         self.play(Write(self.titre_zone), FadeIn(enonce), FadeIn(narration))
 
         eq1 = MathTex(
@@ -462,11 +462,11 @@ class Explication(BacScene):
 
         enonce = Text(
             "Déterminer les entiers n tels que O, A0 et An soient alignés.",
-            font_size=14,
+            font_size=16,
             color=BAC_INK_SOFT,
         ).next_to(self.titre_zone, DOWN, aligned_edge=LEFT, buff=0.2)
 
-        narration = Text(NARRATION["q3a"], font_size=13, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
+        narration = Text(NARRATION["q3a"], font_size=16, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
         self.play(Write(self.titre_zone), FadeIn(enonce), FadeIn(narration))
 
         eq1 = MathTex(
@@ -514,11 +514,11 @@ class Explication(BacScene):
 
         enonce = Text(
             "Montrer que pour tout entier n, le triangle O An A(n+1) est rectangle en An.",
-            font_size=14,
+            font_size=16,
             color=BAC_INK_SOFT,
         ).next_to(self.titre_zone, DOWN, aligned_edge=LEFT, buff=0.2)
 
-        narration = Text(NARRATION["q3b_alg"], font_size=13, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
+        narration = Text(NARRATION["q3b_alg"], font_size=16, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
         self.play(Write(self.titre_zone), FadeIn(enonce), FadeIn(narration))
 
         eq1 = MathTex(
@@ -566,11 +566,11 @@ class Explication(BacScene):
 
         enonce = Text(
             "Pour tout n, le triangle O An A(n+1) est rectangle en An (spirale de triangles rectangles).",
-            font_size=14,
+            font_size=16,
             color=BAC_INK_SOFT,
         ).next_to(self.titre_zone, DOWN, aligned_edge=LEFT, buff=0.2)
 
-        narration = Text(NARRATION["q3b_geo"], font_size=13, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
+        narration = Text(NARRATION["q3b_geo"], font_size=16, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
         self.play(Write(self.titre_zone), FadeIn(enonce), FadeIn(narration))
 
         # Repère et tracé des premiers sommets A0, A1, A2, A3, A4
@@ -579,7 +579,7 @@ class Explication(BacScene):
             y_range=[-0.3, 2.0, 1],
             x_length=4.8,
             y_length=4.0,
-            axis_config={"color": BAC_INK_SOFT, "stroke_width": 1.2, "include_ticks": False},
+            axis_config={"color": BAC_INK_SOFT, "stroke_width": 1.2, "include_ticks": True},
             tips=False,
         ).to_edge(RIGHT, buff=0.8).shift(DOWN * 0.3)
 
@@ -647,6 +647,7 @@ class Explication(BacScene):
         cadre = SurroundingRectangle(explic[1], color=COL_SUCCESS, buff=0.12)
 
         self.play(Create(axes))
+        labels_axes = self.graduations(axes, x_vals=[1, 2], y_vals=[1])
         self.play(
             FadeIn(points_dots),
             FadeIn(labels_pts),
@@ -661,6 +662,7 @@ class Explication(BacScene):
 
         fig_grp = VGroup(
             axes,
+            labels_axes,
             points_dots,
             labels_pts,
             poly_lines,
@@ -720,7 +722,7 @@ class Explication(BacScene):
 
         cadre = SurroundingRectangle(points, color=COL_TITLE, buff=0.18)
 
-        narration = Text(NARRATION["bilan"], font_size=13, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
+        narration = Text(NARRATION["bilan"], font_size=16, color=BAC_INK_SOFT).to_edge(DOWN, buff=0.3)
 
         self.play(Write(titre), FadeIn(points), Create(cadre), FadeIn(narration))
         self.pose(2.0)

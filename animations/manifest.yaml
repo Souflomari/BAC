@@ -67,7 +67,7 @@ scenes:
     entry: bk-2023-n-x3
     scene_file: scenes/maths/nombres-complexes-2/bk-2023-n-x3.py
     scene_class: Explication
-    statut: en cours  # CORRECTIF (Claude, vérification 2026-08-13) : le "SANS défaut" déclaré était faux — lint ERREUR réelle, confirmée visuellement (frame mi-section) : le repère de la figure spirale (étape "q3b-geometrie-spirale") ne porte AUCUNE graduation numérique (§1.6 violé). Fond mathématique lui-même conforme banque (bank-fidelity vert). À corriger : poser self.graduations(axes, ...) sur ce repère, re-rendre, re-vérifier visuellement, repasser validé.
+    statut: validé  # audit 12/12 étapes SANS défaut (graduations réelles 1,2 et 1 vérifiées sur frame) ; fond conforme banque (1-i, 1+i√3, tan(π/12)=2-√3, u, suites couplées x_n+i y_n=u^n, alignement 12N, triangle rectangle en An)
   - bank: content/maths/nombres-complexes-2/bank.yaml
     entry: bk-2024-n-x3
     scene_file: scenes/maths/nombres-complexes-2/bk-2024-n-x3.py
