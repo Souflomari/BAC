@@ -173,8 +173,9 @@ class Explication(BacScene):
 
         self.play(FadeIn(titre, shift=UP * 0.3), FadeIn(sous_titre), FadeIn(bareme))
         self.legende(
-            "Session normale 2024, Sciences Expérimentales — sujet officiel complet,",
-            "articulé en deux parties : comparaison e^x et x, puis étude de f.",
+            "Session normale 2024 (Sciences Expérimentales) :",
+            "sujet officiel complet articulé en deux parties,",
+            "comparaison e^x et x, puis étude globale de f.",
         )
         self.pose(4.0)
         self.efface_legende()
@@ -209,7 +210,8 @@ class Explication(BacScene):
         self.play(FadeIn(p1), FadeIn(p2))
         self.play(FadeIn(vigilance), FadeIn(vigilance2))
         self.legende(
-            "La Partie I n'est pas un exercice isolé : son résultat e^x > x",
+            "La Partie I n'est pas un exercice isolé : son",
+            "résultat e^x > x",
             "fonde le domaine de définition de f dans la Partie II.",
         )
         self.pose(4.5)
@@ -258,7 +260,8 @@ class Explication(BacScene):
         )
         self.ecrit(but)
         self.legende(
-            "u(x) = e^x (courbe exponentielle) et v(x) = x (première bissectrice)",
+            "u(x) = e^x (courbe exponentielle) et v(x) = x",
+            "(première bissectrice)",
             "sont tracées sur ℝ tout entier.",
         )
         self.pose(3.6)
@@ -352,7 +355,8 @@ class Explication(BacScene):
         )
         self.ecrit(m1, buff=0.45)
         self.legende(
-            "Les deux courbes ne se coupent nulle part : l'exponentielle",
+            "Les deux courbes ne se coupent nulle part :",
+            "l'exponentielle",
             "domine strictement la première bissectrice sur ℝ.",
         )
         self.pose(3.8)
@@ -366,7 +370,8 @@ class Explication(BacScene):
         self.encadre(couleur=COL_LIM)
         self.legende(
             "Inégalité fondamentale : garantit e^x - x > 0 partout,",
-            "ce qui assure l'existence de ln(e^x - x) dans la Partie II. 0,25 point.",
+            "ce qui assure l'existence de ln(e^x - x) dans la",
+            "Partie II. 0,25 point.",
         )
         self.pose(4.2)
         self.play(FadeOut(fl1), FadeOut(fl2), FadeOut(fl3), FadeOut(lbl_pos))
@@ -388,7 +393,8 @@ class Explication(BacScene):
         self.ecrit(but)
         self.legende(
             "Domaine plan compris entre les deux courbes de x=0 à x=1 :",
-            "u(x) ≥ v(x) sur [0,1], donc l'intégrale de u - v donne l'aire.",
+            "u(x) ≥ v(x) sur [0,1], donc l'intégrale de u - v",
+            "donne l'aire.",
         )
         self.pose(3.6)
 
@@ -405,7 +411,8 @@ class Explication(BacScene):
             font_size=22,
         )
         self.ecrit(m1, buff=0.45)
-        self.legende("u(x) ≥ v(x) sur [0,1] d'après Q2 : pas de valeur absolue nécessaire.")
+        self.legende("u(x) ≥ v(x) sur [0,1] d'après Q2 : pas de valeur",
+            "absolue nécessaire.")
         self.pose(3.6)
 
         self.etape("q3-primitive")
@@ -414,7 +421,8 @@ class Explication(BacScene):
             font_size=22,
         )
         self.ecrit(m2, buff=0.45)
-        self.legende("Primitive élémentaire : l'exponentielle s'intègre en e^x, x s'intègre en x²/2.")
+        self.legende("Primitive élémentaire : l'exponentielle s'intègre",
+            "en e^x, x s'intègre en x²/2.")
         self.pose(3.4)
 
         self.etape("q3-calcul")
@@ -487,7 +495,8 @@ class Explication(BacScene):
 
         self.legende(
             "Partie II : f(x) = x + 1 - ln(e^x - x).",
-            "Repère orthonormé conforme au scan d'examen, avec (C_f) et (Δ) : y = x.",
+            "Repère orthonormé conforme au scan d'examen, avec",
+            "(C_f) et (Δ) : y = x.",
         )
         self.pose(4.0)
         self.efface_legende()
@@ -528,7 +537,8 @@ class Explication(BacScene):
             font_size=20,
         )
         self.ecrit(m1, buff=0.45)
-        self.legende("Le logarithme n'admet que des arguments strictement positifs (R1).")
+        self.legende("Le logarithme n'admet que des arguments",
+            "strictement positifs (R1).")
         self.pose(3.4)
 
         self.etape("q4-conclusion")
@@ -544,7 +554,8 @@ class Explication(BacScene):
         self.ecrit(m3, buff=0.55)
         self.encadre(couleur=COL_LIM)
         self.legende(
-            "La Partie I a fondé ce résultat : f est bien définie sur ℝ tout entier. 0,25 point.",
+            "La Partie I a fondé ce résultat : f est bien",
+            "définie sur ℝ tout entier. 0,25 point.",
         )
         self.pose(4.0)
         self.efface_legende()
@@ -574,7 +585,8 @@ class Explication(BacScene):
             font_size=21,
         )
         self.ecrit(m1, buff=0.45)
-        self.legende("On factorise par e^x, strictement positif et jamais nul pour tout x réel.")
+        self.legende("On factorise par e^x, strictement positif et",
+            "jamais nul pour tout x réel.")
         self.pose(3.4)
 
         self.etape("q5-propriete-ln")
@@ -588,7 +600,8 @@ class Explication(BacScene):
         )
         self.ecrit(m2, buff=0.45)
         self.ecrit(m3, buff=0.3)
-        self.legende("Propriété du produit (R2) : ln(ab) = ln a + ln b ; ln et exp sont réciproques.")
+        self.legende("Propriété du produit (R2) : ln(ab) = ln a + ln b ;",
+            "ln et exp sont réciproques.")
         self.pose(3.6)
 
         self.etape("q5-conclusion")
@@ -599,7 +612,8 @@ class Explication(BacScene):
         self.ecrit(m4, buff=0.55)
         self.encadre(couleur=COL_LIM)
         self.legende(
-            "Les termes en x se compensent exactement : écriture validée. 0,5 point.",
+            "Les termes en x se compensent exactement :",
+            "écriture validée. 0,5 point.",
         )
         self.pose(4.0)
         self.efface_legende()
@@ -671,7 +685,8 @@ class Explication(BacScene):
         fig_f["group"].add(asympt, lbl_asympt)
 
         self.legende(
-            "Quand x → +∞, la courbe se rapproche indéfiniment de la droite y = 1.",
+            "Quand x → +∞, la courbe se rapproche indéfiniment",
+            "de la droite y = 1.",
             "0,5 point (0,25 pt limite + 0,25 pt interprétation).",
         )
         self.pose(4.2)
@@ -707,7 +722,8 @@ class Explication(BacScene):
         )
         self.ecrit(m1, buff=0.45)
         self.ecrit(m2, buff=0.35)
-        self.legende("L'argument e^x - x tend vers +∞, donc son logarithme tend vers +∞ (R4).")
+        self.legende("L'argument e^x - x tend vers +∞, donc son",
+            "logarithme tend vers +∞ (R4).")
         self.pose(3.6)
 
         self.etape("q7-conclusion")
@@ -723,7 +739,8 @@ class Explication(BacScene):
         self.ecrit(m4, buff=0.55)
         self.encadre(couleur=COL_LIM)
         self.legende(
-            "Somme de deux termes qui tirent vers -∞ : pas d'indétermination. 0,25 point.",
+            "Somme de deux termes qui tirent vers -∞ : pas",
+            "d'indétermination. 0,25 point.",
         )
         self.pose(4.0)
         self.efface_legende()
@@ -758,7 +775,8 @@ class Explication(BacScene):
         )
         self.ecrit(m1, buff=0.45)
         self.ecrit(m2, buff=0.3)
-        self.legende("Factorisation par -x, strictement positif pour tout x négatif.")
+        self.legende("Factorisation par -x, strictement positif pour",
+            "tout x négatif.")
         self.pose(3.6)
 
         self.etape("q8-propriete-produit")
@@ -767,7 +785,8 @@ class Explication(BacScene):
             font_size=19,
         )
         self.ecrit(m3, buff=0.45)
-        self.legende("Les deux facteurs sont strictement positifs pour x < 0 : R2 s'applique.")
+        self.legende("Les deux facteurs sont strictement positifs pour x",
+            "< 0 : R2 s'applique.")
         self.pose(3.4)
 
         self.etape("q8-conclusion")
@@ -795,7 +814,8 @@ class Explication(BacScene):
         )
         self.ecrit(but)
         self.legende(
-            "On divise la formule de Q8 par x pour déterminer la direction asymptotique.",
+            "On divise la formule de Q8 par x pour déterminer",
+            "la direction asymptotique.",
         )
         self.pose(3.4)
 
@@ -819,7 +839,8 @@ class Explication(BacScene):
         )
         self.ecrit(m2, buff=0.45)
         self.ecrit(m3, buff=0.3)
-        self.legende("Croissance comparée (R4) et écrasement par l'exponentielle.")
+        self.legende("Croissance comparée (R4) et écrasement par",
+            "l'exponentielle.")
         self.pose(3.6)
 
         self.etape("q9-limite-pente")
@@ -828,7 +849,8 @@ class Explication(BacScene):
             font_size=24, color=COL_LIM,
         )
         self.ecrit(m4, buff=0.45)
-        self.legende("La pente asymptotique vaut 1 : même direction que (Δ) : y = x.")
+        self.legende("La pente asymptotique vaut 1 : même direction que",
+            "(Δ) : y = x.")
         self.pose(3.4)
 
         self.etape("q9-conclusion-branche")
@@ -844,7 +866,8 @@ class Explication(BacScene):
         self.ecrit(m6, buff=0.4)
         self.encadre(couleur=COL_LIM)
         self.legende(
-            "Pas d'asymptote oblique : la courbe s'éloigne indéfiniment de (Δ) en suivant sa direction.",
+            "Pas d'asymptote oblique : la courbe s'éloigne",
+            "indéfiniment de (Δ) en suivant sa direction.",
             "0,75 point (0,5 pt limite + 0,25 pt branche parabolique).",
         )
         self.pose(4.2)
@@ -917,7 +940,8 @@ class Explication(BacScene):
         )
         self.ecrit(but)
         self.legende(
-            "Le dénominateur est strictement positif sur ℝ (Partie I Q2) :",
+            "Le dénominateur est strictement positif sur ℝ",
+            "(Partie I Q2) :",
             "le signe de f' dépend uniquement du numérateur 1 - x.",
         )
         self.pose(3.6)
@@ -933,7 +957,8 @@ class Explication(BacScene):
         )
         self.ecrit(m1, buff=0.45)
         self.ecrit(m2, buff=0.35)
-        self.legende("f est strictement croissante sur ]-∞, 1] puis strictement décroissante sur [1, +∞[.")
+        self.legende("f est strictement croissante sur ]-∞, 1] puis",
+            "strictement décroissante sur [1, +∞[.")
         self.pose(3.8)
 
         self.etape("q11-maximum-f")
@@ -958,7 +983,8 @@ class Explication(BacScene):
         fig_f["lbl_max"] = lbl_max
         fig_f["group"].add(pt_max, tang_h, lbl_max)
 
-        self.legende("f admet un maximum absolu en x = 1, valant f(1) = 2 - ln(e-1).")
+        self.legende("f admet un maximum absolu en x = 1, valant f(1) =",
+            "2 - ln(e-1).")
         self.pose(3.8)
 
         self.etape("q11-conclusion")
@@ -990,7 +1016,8 @@ class Explication(BacScene):
         )
         self.ecrit(but)
         self.legende(
-            "Application du corollaire du théorème des valeurs intermédiaires (TVI) :",
+            "Application du corollaire du théorème des valeurs",
+            "intermédiaires (TVI) :",
             "continuité, stricte monotonie et changement de signe.",
         )
         self.pose(3.6)
@@ -1015,7 +1042,8 @@ class Explication(BacScene):
         )
         self.ecrit(m2, buff=0.45)
         self.ecrit(m3, buff=0.3)
-        self.legende("f(-1) < 0 et f(0) > 0 : 0 est strictement compris entre f(-1) et f(0).")
+        self.legende("f(-1) < 0 et f(0) > 0 : 0 est strictement compris",
+            "entre f(-1) et f(0).")
         self.pose(3.6)
 
         self.etape("q12-conclusion")
@@ -1033,7 +1061,8 @@ class Explication(BacScene):
         self.play(FadeIn(pt_zero), FadeIn(lbl_zero))
 
         self.legende(
-            "Le corollaire du TVI garantit l'existence et l'unicité du zéro x_0. 0,75 point.",
+            "Le corollaire du TVI garantit l'existence et",
+            "l'unicité du zéro x_0. 0,75 point.",
         )
         self.pose(4.2)
         self.play(FadeOut(pt_zero), FadeOut(lbl_zero))
@@ -1055,7 +1084,8 @@ class Explication(BacScene):
         self.ecrit(but)
         self.legende(
             "L'équation f(x) = x correspond aux intersections",
-            "entre la courbe (C_f) et la première bissectrice (Δ) : y = x.",
+            "entre la courbe (C_f) et la première bissectrice",
+            "(Δ) : y = x.",
         )
         self.pose(3.6)
 
@@ -1083,7 +1113,8 @@ class Explication(BacScene):
         )
         self.ecrit(m1, buff=0.45)
         self.ecrit(m2, buff=0.35)
-        self.legende("Une intersection sur la branche croissante ]-∞, 1], une sur la branche décroissante [1, +∞[.")
+        self.legende("Une intersection sur la branche croissante ]-∞,",
+            "1], une sur la branche décroissante [1, +∞[.")
         self.pose(3.8)
 
         self.etape("q13-conclusion")
@@ -1094,7 +1125,8 @@ class Explication(BacScene):
         self.ecrit(m3, buff=0.55)
         self.encadre(couleur=COL_LIM)
         self.legende(
-            "Stricte monotonie sur chaque branche : pas d'autre solution possible. 0,5 point.",
+            "Stricte monotonie sur chaque branche : pas d'autre",
+            "solution possible. 0,5 point.",
         )
         self.pose(4.2)
         self.efface_legende()
@@ -1113,7 +1145,8 @@ class Explication(BacScene):
         )
         self.ecrit(but)
         self.legende(
-            "On traduit que α et β sont solutions de l'équation f(x) = x.",
+            "On traduit que α et β sont solutions de l'équation",
+            "f(x) = x.",
         )
         self.pose(3.4)
 
@@ -1128,7 +1161,8 @@ class Explication(BacScene):
         )
         self.ecrit(m1, buff=0.45)
         self.ecrit(m2, buff=0.35)
-        self.legende("Par injectivité de la fonction logarithme (R1) : ln A = ln B <=> A = B.")
+        self.legende("Par injectivité de la fonction logarithme (R1) :",
+            "ln A = ln B <=> A = B.")
         self.pose(3.6)
 
         self.etape("q14-difference")
@@ -1153,7 +1187,8 @@ class Explication(BacScene):
         self.ecrit(m5, buff=0.55)
         self.encadre(couleur=COL_LIM)
         self.legende(
-            "Égalité algébrique démontrée élégamment à partir de la définition des points fixes. 0,5 point.",
+            "Égalité algébrique démontrée élégamment à partir",
+            "de la définition des points fixes. 0,5 point.",
         )
         self.pose(4.0)
         if "pt_alpha" in fig_f:
@@ -1188,7 +1223,8 @@ class Explication(BacScene):
             font_size=20,
         )
         self.ecrit(m1, buff=0.45)
-        self.legende("Propriétés héritées de f sur son intervalle de stricte croissance.")
+        self.legende("Propriétés héritées de f sur son intervalle de",
+            "stricte croissance.")
         self.pose(3.4)
 
         self.etape("q15-intervalle-image")
@@ -1197,7 +1233,8 @@ class Explication(BacScene):
             font_size=20,
         )
         self.ecrit(m2, buff=0.45)
-        self.legende("L'image de l'intervalle I par g est l'intervalle J = ]-∞, 2-ln(e-1)].")
+        self.legende("L'image de l'intervalle I par g est l'intervalle J",
+            "= ]-∞, 2-ln(e-1)].")
         self.pose(3.6)
 
         self.etape("q15-conclusion")
@@ -1208,7 +1245,8 @@ class Explication(BacScene):
         self.ecrit(m3, buff=0.55)
         self.encadre(couleur=COL_LIM)
         self.legende(
-            "g admet donc une fonction réciproque g^-1 définie sur J. 0,5 point.",
+            "g admet donc une fonction réciproque g^-1 définie",
+            "sur J. 0,5 point.",
         )
         self.pose(4.0)
         self.efface_legende()
@@ -1228,7 +1266,8 @@ class Explication(BacScene):
         self.ecrit(but)
         self.legende(
             "Théorème de dérivation de la réciproque :",
-            "(g^-1)'(y_0) = 1 / g'(x_0) avec y_0 = g(x_0) et g'(x_0) ≠ 0.",
+            "(g^-1)'(y_0) = 1 / g'(x_0) avec y_0 = g(x_0) et",
+            "g'(x_0) ≠ 0.",
         )
         self.pose(3.6)
 
@@ -1263,7 +1302,8 @@ class Explication(BacScene):
         self.ecrit(m4, buff=0.4)
         self.encadre(couleur=COL_LIM)
         self.legende(
-            "Théorème de la dérivée réciproque vérifié et appliqué : (g^-1)'(1) = 1.",
+            "Théorème de la dérivée réciproque vérifié et",
+            "appliqué : (g^-1)'(1) = 1.",
             "0,75 point (0,5 pt dérivabilité + 0,25 pt calcul).",
         )
         self.pose(4.2)
@@ -1320,8 +1360,9 @@ class Explication(BacScene):
         self.play(FadeIn(t_p1), FadeIn(t_p2a), FadeIn(t_p2b), FadeIn(t_p2c))
         self.play(FadeIn(badge_score))
         self.legende(
-            "Toutes les questions du problème 2024 ont été résolues avec rigueur,",
-            "illustrations géométriques et justification complète. 8 / 8 points.",
+            "Toutes les questions du problème 2024 ont été résolues,",
+            "avec rigueur, tracés géométriques et justifications.",
+            "Score total de l'exercice : 8 / 8 points.",
         )
         self.pose(5.0)
 
