@@ -1,8 +1,13 @@
-# BT-002 — Finir les deux scènes interrompues (fonction-logarithme)
+# BT-002 — Fermer le bloc fonction-logarithme (les 4 entrées, comparaison de modèles)
 
-**Statut : à faire. PRIORITÉ 3.** Deux agents ont été tués en plein
-travail par une limite de session ; leur sortie est cohérente et
-committée, il faut la terminer.
+**Statut : à faire. PRIORITÉ 2** (juste après `BT-003`). Les 4 entrées
+de ce bloc sont la comparaison de modèles demandée par l'owner
+(Sonnet / Opus / Fable / Google, même notion) — les fermer d'un bloc
+avant d'attaquer le flot normal du manifeste garde cette comparaison
+lisible dans `LEDGER.md`.
+
+Fais les quatre parties **dans l'ordre** (A → B → C → D) : chacune se
+termine par les six portes + un commit avant de passer à la suivante.
 
 ---
 
@@ -65,26 +70,84 @@ Puis les six portes du contrat, dans l'ordre.
 
 ---
 
+## Partie C — `bk-2021-n-x4.py` : audit complet (jamais fait)
+
+Le fichier existe déjà (1842 lignes, écrit, un rendu brouillon a déjà
+tourné) mais **n'a jamais été audité image par image** — porte 3
+jamais franchie. Traite-le comme une scène neuve à ce stade-là :
+
+1. Porte 1 (`scripts/scene-lint.py animations/scenes/maths/fonction-logarithme/bk-2021-n-x4.py`)
+   — corrige toute ERREUR.
+2. Porte 2 — rendu témoin en `-ql` (`--media_dir
+   media/maths-fonction-logarithme --save_sections`).
+3. Porte 3 — audit EXHAUSTIF : la dernière image de **chaque** section
+   (contrat §4, planches de contact), pas un sous-ensemble. Vérifie en
+   particulier : chaque chapitre qui écrit dans l'ardoise appelle bien
+   `nettoie()` avant de rendre la main ; chaque fondu de figure passe
+   par `self.fig_membres(fig)` (jamais un `FadeOut(fig["group"])` à la
+   main) ; chaque repère porte ses graduations (`self.graduations(...)`,
+   posées APRÈS `Create(axes)` — voir `bac_scene.py`, corrigé le
+   2026-08-13, aucun défaut de scope à craindre si tu utilises le
+   helper tel quel) sans collision avec une étiquette existante.
+4. Porte 4 (`scripts/bank-fidelity.py content/maths/fonction-logarithme/bank.yaml
+   bk-2021-n-x4 animations/scenes/maths/fonction-logarithme/bk-2021-n-x4.py`).
+5. Corrige tout défaut trouvé, re-rends, re-vérifie les images
+   corrigées spécifiquement, rendu `-qm` final, `statut: validé` au
+   manifeste avec une note d'audit (nombre d'étapes, défauts trouvés
+   puis corrigés, fond vérifié contre la banque).
+
+---
+
+## Partie D — `bk-2024-n-x4.py` : écrire la scène (jamais commencée)
+
+Le fichier **n'existe pas encore** — c'était l'échantillon « Fable » de
+la comparaison de modèles, jamais lancé faute de crédit à l'époque.
+Écris `class Explication(BacScene)` dans
+**`animations/scenes/maths/fonction-logarithme/bk-2024-n-x4.py`**, pour
+l'entrée **`bk-2024-n-x4`** de
+**`content/maths/fonction-logarithme/bank.yaml`** (**lignes 784 à
+1032**, barème 8 points), en suivant `docs/ops/SCENE-CONTRACT.md` à la
+lettre.
+
+**Modèles à imiter** : `bk-2021-n-x1.py` ou `bk-2020-n-x3.py`
+(limites-continuite — courbes sur `Axes`, le gabarit le plus complet et
+le plus récemment corrigé). Écriture incrémentale (~120 lignes par
+appel). Puis les six portes, dans l'ordre, jusqu'à `statut: validé`.
+
+---
+
 ## Note pour l'orchestrateur (ne pas exécuter)
 
-Ces deux scènes font partie de la **comparaison de modèles** demandée
-par l'owner : `bk-2019-n-x4` et `bk-2021-n-x4` ont été écrites par un
-moteur, `bk-2023-n-x4` commencée par un autre, `bk-2024-n-x4` reste à
-écrire. Garder trace de qui finit quoi dans `LEDGER.md` : c'est la
-matière de la comparaison.
+Ces quatre scènes SONT la **comparaison de modèles** demandée par
+l'owner : `bk-2019-n-x4` et `bk-2021-n-x4` ont été écrites par Sonnet,
+`bk-2023-n-x4` commencée par Opus, `bk-2024-n-x4` reste à écrire par
+Google/Antigravity (l'échantillon « Fable » n'a jamais pu démarrer,
+faute de crédit). Garder trace de qui finit quoi dans `LEDGER.md` :
+c'est la matière de la comparaison — le juge commun reste les six
+portes puis l'œil de l'owner sur les quatre vidéos finales.
 
 ---
 
 ## RÉSULTAT — à remplir par l'agent
 
-### Partie A
+### Partie A — bk-2019-n-x4
 - **Chapitres corrigés (nettoie)** : …
 - **Fondus passés par `_fig_membres`** : …
 - **Images de contrôle regardées** : 39, 40, 41, 61, 65, 71, 79, 85, 93 → …
 - **Portes 0/1/2/4** : `<coller>`
 
-### Partie B
+### Partie B — bk-2023-n-x4
 - **Étapes écrites** : …
 - **Portes 0/1/2/4** : `<coller>`
 - **Porte 3 — défauts trouvés puis corrigés** : …
 - **`git diff --stat`** : `<coller>`
+
+### Partie C — bk-2021-n-x4
+- **Étapes auditées** : … / …
+- **Défauts trouvés puis corrigés (porte 3)** : …
+- **Portes 0/1/2/4** : `<coller>`
+
+### Partie D — bk-2024-n-x4
+- **Étapes écrites** : …
+- **Portes 0/1/2/3/4** : `<coller>`
+- **`git diff --stat` (les 4 parties)** : `<coller>`

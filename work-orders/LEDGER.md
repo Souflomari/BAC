@@ -1,57 +1,82 @@
 # Journal des bons de travail
 
-Une ligne par bon. **Append-only.** C'est ce que l'orchestrateur
-lit pour savoir où on en est sans ouvrir trente-cinq fichiers.
+Une ligne par bon. **Append-only** pour les colonnes Agent/Date/Notes
+(on ajoute, on ne réécrit jamais une ligne déjà remplie) — mais l'ORDRE
+des lignes ci-dessous EST l'ordre d'exécution conseillé, tenu à jour
+par l'orchestrateur. C'est ce qu'un agent qui reprend la main doit lire
+en premier pour savoir où on en est et quoi faire ensuite, sans ouvrir
+quarante fichiers.
 
-| Bon | Scène | Statut manifeste | Agent | Date | Notes |
-|---|---|---|---|---|---|
-| `BT-000-gardes-structurels.md` | `bac_scene.py` (socle) | validé | Antigravity | 2026-08-13 | Helpers structurels montés dans BacScene (_fig_membres, graduations) |
-| `BT-001-graduations.md` | 14 scènes (campagne) | validé | Antigravity | 2026-08-13 | Rattrapage des graduations numériques sur 14 scènes (+ graduations) |
-| `BT-003-audit-graduations-existantes.md` | 12 scènes (campagne, hors bk-2021-n-x1) | à faire | | | PRIORITÉ 1 — bug réel de `graduations()` corrigé dans bac_scene.py (trait d'axe + nombres invisibles) ; re-rendu + re-audit visuel requis |
-| `BT-nombres-complexes-2-bk-2020-n-x3.md` | `nombres-complexes-2/bk-2020-n-x3` | à produire | | | |
-| `BT-nombres-complexes-2-bk-2021-n-x2.md` | `nombres-complexes-2/bk-2021-n-x2` | à produire | | | |
-| `BT-nombres-complexes-2-bk-2022-n-x2.md` | `nombres-complexes-2/bk-2022-n-x2` | à produire | | | |
-| `BT-nombres-complexes-2-bk-2023-n-x3.md` | `nombres-complexes-2/bk-2023-n-x3` | à produire | | | |
-| `BT-nombres-complexes-2-bk-2024-n-x3.md` | `nombres-complexes-2/bk-2024-n-x3` | à produire | | | |
-| `BT-nombres-complexes-2-bk-2025-n-x2.md` | `nombres-complexes-2/bk-2025-n-x2` | à produire | | | |
-| `BT-fonction-logarithme-bk-2019-n-x4.md` | `fonction-logarithme/bk-2019-n-x4` | à produire | | | |
-| `BT-fonction-logarithme-bk-2021-n-x4.md` | `fonction-logarithme/bk-2021-n-x4` | à produire | | | |
-| `BT-fonction-logarithme-bk-2023-n-x4.md` | `fonction-logarithme/bk-2023-n-x4` | à produire | | | |
-| `BT-fonction-logarithme-bk-2024-n-x4.md` | `fonction-logarithme/bk-2024-n-x4` | à produire | | | |
-| `BT-fonction-exponentielle-bk-2019-n-x4.md` | `fonction-exponentielle/bk-2019-n-x4` | à produire | | | |
-| `BT-fonction-exponentielle-bk-2020-n-x4.md` | `fonction-exponentielle/bk-2020-n-x4` | à produire | | | |
-| `BT-fonction-exponentielle-bk-2022-n-x3.md` | `fonction-exponentielle/bk-2022-n-x3` | à produire | | | |
-| `BT-calcul-integral-bk-2022-n-x4.md` | `calcul-integral/bk-2022-n-x4` | à produire | | | |
-| `BT-equations-differentielles-bk-2022-n-x4.md` | `equations-differentielles/bk-2022-n-x4` | à produire | | | |
-| `BT-denombrement-bk-2018-n-x3.md` | `denombrement/bk-2018-n-x3` | à produire | | | |
-| `BT-denombrement-bk-2019-n-x3.md` | `denombrement/bk-2019-n-x3` | à produire | | | |
-| `BT-denombrement-bk-2022-n-x3.md` | `denombrement/bk-2022-n-x3` | à produire | | | |
-| `BT-denombrement-bk-2024-n-x4.md` | `denombrement/bk-2024-n-x4` | à produire | | | |
-| `BT-probabilites-conditionnelles-bk-2023-n-x3.md` | `probabilites-conditionnelles/bk-2023-n-x3` | à produire | | | |
-| `BT-arithmetique-bk-2017-n-x3.md` | `arithmetique/bk-2017-n-x3` | à produire | | | |
-| `BT-arithmetique-bk-2019-n-x3.md` | `arithmetique/bk-2019-n-x3` | à produire | | | |
-| `BT-arithmetique-bk-2020-n-x1.md` | `arithmetique/bk-2020-n-x1` | à produire | | | |
-| `BT-arithmetique-bk-2021-n-x3.md` | `arithmetique/bk-2021-n-x3` | à produire | | | |
-| `BT-arithmetique-bk-2022-n-x3.md` | `arithmetique/bk-2022-n-x3` | à produire | | | |
-| `BT-arithmetique-bk-2023-n-x4.md` | `arithmetique/bk-2023-n-x4` | à produire | | | |
-| `BT-arithmetique-bk-2024-n-x5.md` | `arithmetique/bk-2024-n-x5` | à produire | | | |
-| `BT-arithmetique-bk-2025-n-x3.md` | `arithmetique/bk-2025-n-x3` | à produire | | | |
-| `BT-structures-algebriques-bk-2017-n-x1.md` | `structures-algebriques/bk-2017-n-x1` | à produire | | | |
-| `BT-structures-algebriques-bk-2019-n-x1.md` | `structures-algebriques/bk-2019-n-x1` | à produire | | | |
-| `BT-structures-algebriques-bk-2020-n-x2.md` | `structures-algebriques/bk-2020-n-x2` | à produire | | | |
-| `BT-structures-algebriques-bk-2022-n-x4.md` | `structures-algebriques/bk-2022-n-x4` | à produire | | | |
-| `BT-structures-algebriques-bk-2023-n-x5.md` | `structures-algebriques/bk-2023-n-x5` | à produire | | | |
-| `BT-structures-algebriques-bk-2024-n-x4.md` | `structures-algebriques/bk-2024-n-x4` | à produire | | | |
-| `BT-structures-algebriques-bk-2025-n-x4.md` | `structures-algebriques/bk-2025-n-x4` | à produire | | | |
-| `BT-geometrie-espace-bk-2018-n-x1.md` | `geometrie-espace/bk-2018-n-x1` | à produire | | | |
-| `BT-geometrie-espace-bk-2019-n-x1.md` | `geometrie-espace/bk-2019-n-x1` | à produire | | | |
-| `BT-geometrie-espace-bk-2022-n-x1.md` | `geometrie-espace/bk-2022-n-x1` | à produire | | | |
-| `BT-geometrie-espace-bk-2023-n-x1.md` | `geometrie-espace/bk-2023-n-x1` | à produire | | | |
-| `BT-geometrie-espace-bk-2024-n-x2.md` | `geometrie-espace/bk-2024-n-x2` | à produire | | | |
+**Comment choisir le prochain bon** (dans cet ordre) :
+1. Prends la première ligne dont le statut n'est PAS `validé`/`fait`.
+2. Si son statut est `en cours`, c'est que quelqu'un l'a commencée : lis
+   son bloc RÉSULTAT dans le fichier du bon pour savoir où reprendre.
+3. Si son statut est `bloqué`, c'est un point d'arbitrage (incohérence
+   de banque, question de cadre) qui attend Claude ou l'owner — SAUTE
+   cette ligne et prends la suivante ; ne tente pas de le résoudre
+   toi-même, ne le retente pas dans la même session.
+4. Sinon (`à faire`/`à produire`), ouvre le fichier et exécute-le en
+   entier.
+
+| # | Bon | Scène | Statut manifeste | Agent | Date | Notes |
+|---|---|---|---|---|---|---|
+| 1 | `BT-000-gardes-structurels.md` | `bac_scene.py` (socle) | validé | Antigravity | 2026-08-13 | Helpers structurels montés dans BacScene (_fig_membres, graduations) |
+| 2 | `BT-001-graduations.md` | 14 scènes (campagne) | validé | Antigravity | 2026-08-13 | Rattrapage des graduations numériques sur 14 scènes (+ graduations) |
+| 3 | `BT-003-audit-graduations-existantes.md` | 12 scènes (campagne, hors bk-2021-n-x1) | à faire | Claude (échantillon 1/12) | 2026-08-13 | PRIORITÉ 1 — bug réel de `graduations()` corrigé dans bac_scene.py (trait d'axe + nombres invisibles, non-déterministe) ; re-rendu mécanique + spot-check requis sur les 11 restantes ; échantillon d'acceptation (bk-2018-n-x2) déjà confirmé bon |
+| 4 | `BT-002-scenes-en-cours.md` | 4 entrées `fonction-logarithme` (2019/2021/2023/2024) | à faire | | | PRIORITÉ 2 — la comparaison de modèles Sonnet/Opus/Fable/Google (owner) ; 4 parties A/B/C/D, une par entrée ; ferme ce bloc avant le flot normal |
+| 5 | `BT-nombres-complexes-2-bk-2020-n-x3.md` | `nombres-complexes-2/bk-2020-n-x3` | à produire | | | |
+| 6 | `BT-nombres-complexes-2-bk-2021-n-x2.md` | `nombres-complexes-2/bk-2021-n-x2` | à produire | | | |
+| 7 | `BT-nombres-complexes-2-bk-2022-n-x2.md` | `nombres-complexes-2/bk-2022-n-x2` | à produire | | | |
+| 8 | `BT-nombres-complexes-2-bk-2023-n-x3.md` | `nombres-complexes-2/bk-2023-n-x3` | à produire | | | |
+| 9 | `BT-nombres-complexes-2-bk-2024-n-x3.md` | `nombres-complexes-2/bk-2024-n-x3` | à produire | | | |
+| 10 | `BT-nombres-complexes-2-bk-2025-n-x2.md` | `nombres-complexes-2/bk-2025-n-x2` | à produire | | | |
+| 11 | `BT-fonction-exponentielle-bk-2019-n-x4.md` | `fonction-exponentielle/bk-2019-n-x4` | à produire | | | |
+| 12 | `BT-fonction-exponentielle-bk-2020-n-x4.md` | `fonction-exponentielle/bk-2020-n-x4` | à produire | | | |
+| 13 | `BT-fonction-exponentielle-bk-2022-n-x3.md` | `fonction-exponentielle/bk-2022-n-x3` | à produire | | | |
+| 14 | `BT-calcul-integral-bk-2022-n-x4.md` | `calcul-integral/bk-2022-n-x4` | à produire | | | |
+| 15 | `BT-equations-differentielles-bk-2022-n-x4.md` | `equations-differentielles/bk-2022-n-x4` | à produire | | | |
+| 16 | `BT-denombrement-bk-2018-n-x3.md` | `denombrement/bk-2018-n-x3` | à produire | | | |
+| 17 | `BT-denombrement-bk-2019-n-x3.md` | `denombrement/bk-2019-n-x3` | à produire | | | |
+| 18 | `BT-denombrement-bk-2022-n-x3.md` | `denombrement/bk-2022-n-x3` | à produire | | | |
+| 19 | `BT-denombrement-bk-2024-n-x4.md` | `denombrement/bk-2024-n-x4` | à produire | | | |
+| 20 | `BT-probabilites-conditionnelles-bk-2023-n-x3.md` | `probabilites-conditionnelles/bk-2023-n-x3` | à produire | | | |
+| 21 | `BT-arithmetique-bk-2017-n-x3.md` | `arithmetique/bk-2017-n-x3` | à produire | | | |
+| 22 | `BT-arithmetique-bk-2019-n-x3.md` | `arithmetique/bk-2019-n-x3` | à produire | | | |
+| 23 | `BT-arithmetique-bk-2020-n-x1.md` | `arithmetique/bk-2020-n-x1` | à produire | | | |
+| 24 | `BT-arithmetique-bk-2021-n-x3.md` | `arithmetique/bk-2021-n-x3` | à produire | | | |
+| 25 | `BT-arithmetique-bk-2022-n-x3.md` | `arithmetique/bk-2022-n-x3` | à produire | | | |
+| 26 | `BT-arithmetique-bk-2023-n-x4.md` | `arithmetique/bk-2023-n-x4` | à produire | | | |
+| 27 | `BT-arithmetique-bk-2024-n-x5.md` | `arithmetique/bk-2024-n-x5` | à produire | | | |
+| 28 | `BT-arithmetique-bk-2025-n-x3.md` | `arithmetique/bk-2025-n-x3` | à produire | | | |
+| 29 | `BT-structures-algebriques-bk-2017-n-x1.md` | `structures-algebriques/bk-2017-n-x1` | à produire | | | |
+| 30 | `BT-structures-algebriques-bk-2019-n-x1.md` | `structures-algebriques/bk-2019-n-x1` | à produire | | | |
+| 31 | `BT-structures-algebriques-bk-2020-n-x2.md` | `structures-algebriques/bk-2020-n-x2` | à produire | | | |
+| 32 | `BT-structures-algebriques-bk-2022-n-x4.md` | `structures-algebriques/bk-2022-n-x4` | à produire | | | |
+| 33 | `BT-structures-algebriques-bk-2023-n-x5.md` | `structures-algebriques/bk-2023-n-x5` | à produire | | | |
+| 34 | `BT-structures-algebriques-bk-2024-n-x4.md` | `structures-algebriques/bk-2024-n-x4` | à produire | | | |
+| 35 | `BT-structures-algebriques-bk-2025-n-x4.md` | `structures-algebriques/bk-2025-n-x4` | à produire | | | |
+| 36 | `BT-geometrie-espace-bk-2018-n-x1.md` | `geometrie-espace/bk-2018-n-x1` | à produire | | | (3D — garder pour la fin, c'est le plus dur) |
+| 37 | `BT-geometrie-espace-bk-2019-n-x1.md` | `geometrie-espace/bk-2019-n-x1` | à produire | | | |
+| 38 | `BT-geometrie-espace-bk-2022-n-x1.md` | `geometrie-espace/bk-2022-n-x1` | à produire | | | |
+| 39 | `BT-geometrie-espace-bk-2023-n-x1.md` | `geometrie-espace/bk-2023-n-x1` | à produire | | | |
+| 40 | `BT-geometrie-espace-bk-2024-n-x2.md` | `geometrie-espace/bk-2024-n-x2` | à produire | | | |
+
+**44 bons au total, 2 faits, 42 restants** (dont BT-003 : 1/12 déjà
+vérifiée par l'échantillon d'acceptation — 11 scènes de re-vérification
+mécanique restantes dans ce même bon, pas 42 bons "pleins").
 
 ## Comment le remplir
 
 À la fin d'un bon : ajouter le nom de l'agent, la date, et une note
 d'une ligne (nombre d'étapes, défauts trouvés à l'audit). Passer le
 statut à `validé` seulement si les six portes sont franchies et
-collées dans le bon.
+collées dans le bon. Si un bon est commencé mais pas fini (fin de
+session, limite de contexte) : mets `en cours` et note où ça s'est
+arrêté — c'est ce qui permet à l'agent suivant de reprendre sans tout
+relire.
+
+**Conflits** : si deux agents ont travaillé en parallèle et que
+`git push` est rejeté sur ce fichier ou sur `animations/manifest.yaml`,
+c'est presque toujours un conflit de LIGNES DIFFÉRENTES (append-only) —
+`git pull`, résoudre à la main (garder les deux lignes), `git push`.
+Ne jamais écraser le travail de l'autre agent.

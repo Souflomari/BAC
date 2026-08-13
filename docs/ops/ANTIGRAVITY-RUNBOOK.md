@@ -300,10 +300,10 @@ python scripts/bank-fidelity.py content/maths/suites-numeriques/bank.yaml \
     bk-2020-n-x1 animations/scenes/maths/suites-numeriques/bk-2020-n-x1.py
 ```
 
-La première commande doit afficher des erreurs « graduations
-manquantes » (c'est normal, c'est le travail `BT-001`) ; la seconde doit
-afficher « ✓ porte 4 franchie ». Si ces deux commandes tournent,
-l'outillage est en place.
+La première commande affiche **1 erreur attendue** (`bk-2023-n-x4.py`,
+en cours d'écriture — 653/1700 lignes, voir `BT-002` partie B) — le
+reste doit être vert ; la seconde doit afficher « ✓ porte 4
+franchie ». Si ces deux commandes tournent, l'outillage est en place.
 
 ### 1.3 LE test qui décide de tout : l'agent voit-il les images ?
 
@@ -374,6 +374,14 @@ Quand tu as fini, remplis le bloc RÉSULTAT du bon, ajoute une ligne à
 
 ## §3. Les prompts, dans l'ordre
 
+**Deux façons d'utiliser cette section :**
+- **Pas à pas** — un prompt par bon, tu regardes entre deux (Étapes 1
+  à 6 ci-dessous). Le plus sûr, le plus lent.
+- **Session autonome du week-end** — un seul prompt, l'agent enchaîne
+  tout seul les bons dans l'ordre de `LEDGER.md` sans attendre que tu
+  reviennes taper la suite. C'est **§3bis**, juste après cette
+  section — lis-le si c'est ce que tu veux faire.
+
 ### Étape 1 — `BT-000` : les gardes structurels
 
 > [préambule du §2]
@@ -409,21 +417,42 @@ de refaire le contrôle visuel.
 
 ---
 
-### Étape 3 — `BT-002` : finir les deux scènes en cours
+### Étape 3 — `BT-003` : re-vérifier les graduations déjà posées
 
 > [préambule du §2]
 >
-> Exécute `work-orders/BT-002-scenes-en-cours.md`. Commence par la
-> partie A (les correctifs de `bk-2019-n-x4`), fais-la valider, puis
-> attaque la partie B (finir `bk-2023-n-x4`).
+> Exécute `work-orders/BT-003-audit-graduations-existantes.md`.
 
-Deux agents ont été tués en plein travail ici ; le bon décrit
-exactement ce qui reste. La partie A est du correctif ciblé, la partie
-B est de l'écriture.
+**PRIORITÉ 1, avant tout le reste.** Un défaut réel de
+`self.graduations()` a été trouvé et corrigé le 2026-08-13 (le trait
+des axes pouvait disparaître, et les nombres de graduation n'étaient
+JAMAIS visibles, dans aucun rendu — voir le bon pour le détail). Le
+correctif est déjà dans `bac_scene.py` et déjà vérifié sur 2 scènes ;
+il reste à re-rendre et re-vérifier visuellement les 11 autres. C'est
+un travail MÉCANIQUE (pas de retouche de scène attendue) : bon
+premier bon pour vérifier que la chaîne de rendu + audit-image
+fonctionne avant d'attaquer l'écriture.
 
 ---
 
-### Étape 4 — le flot normal (à répéter ~35 fois)
+### Étape 4 — `BT-002` : fermer le bloc fonction-logarithme (4 parties)
+
+> [préambule du §2]
+>
+> Exécute `work-orders/BT-002-scenes-en-cours.md`, les quatre parties
+> dans l'ordre (A → B → C → D), chacune jusqu'à son commit avant de
+> passer à la suivante.
+
+Quatre entrées de la même notion, la comparaison de modèles demandée
+par l'owner : A = finir les correctifs d'audit de `bk-2019-n-x4`
+(Sonnet) ; B = finir l'écriture de `bk-2023-n-x4` (Opus, 653/1700
+lignes) ; C = auditer `bk-2021-n-x4` (Sonnet, jamais audité) ; D =
+écrire `bk-2024-n-x4` de zéro (l'échantillon « Fable », jamais
+commencé).
+
+---
+
+### Étape 5 — le flot normal (à répéter ~36 fois)
 
 C'est le prompt que tu utiliseras le plus. Un bon, un agent.
 
@@ -431,18 +460,18 @@ C'est le prompt que tu utiliseras le plus. Un bon, un agent.
 >
 > Exécute `work-orders/BT-<notion>-<entrée>.md`.
 
-Les bons existent déjà, tous générés :
+Les bons existent déjà, tous générés, dans l'ordre exact de
+`LEDGER.md` (colonne `#`) :
 
 ```bash
-ls work-orders/BT-*.md          # 42 scènes en attente
-cat work-orders/LEDGER.md       # où on en est
+cat work-orders/LEDGER.md       # où on en est, dans l'ordre à suivre
 ```
 
-**L'ordre conseillé** est celui du manifeste : fonction-exponentielle →
+**L'ordre** est celui déjà couché dans `LEDGER.md` : les six entrées
+`nombres-complexes-2` restantes → fonction-exponentielle →
 calcul-integral → equations-differentielles → denombrement →
-probabilites → arithmetique → structures-algebriques →
-geometrie-espace (la 3D en dernier, c'est la plus dure), plus les six
-entrées `nombres-complexes-2` restantes.
+probabilites-conditionnelles → arithmetique → structures-algebriques →
+geometrie-espace (la 3D en dernier, c'est la plus dure).
 
 **Combien en parallèle ?** Deux ou trois agents, sur des bons
 différents — mais **un seul rendu à la fois**. En pratique : lance
@@ -451,7 +480,7 @@ rien).
 
 ---
 
-### Étape 5 — quand un agent bloque
+### Étape 6 — quand un agent bloque
 
 **Il signale une incohérence de banque :**
 > Ne modifie pas la banque. Écris précisément dans le bloc RÉSULTAT :
@@ -473,6 +502,119 @@ l'avoir relancé seul.**
 > Corrige la cause, pas le symptôme. N'ajoute jamais d'exception au
 > lint et ne modifie pas `scripts/scene-lint.py` : si tu penses que la
 > règle elle-même est fausse, arrête-toi et explique pourquoi.
+
+---
+
+## §3bis. La session autonome du week-end
+
+Pensé pour une seule longue session, sans toi pour retaper un prompt
+entre chaque bon. **Un seul message à coller à l'agent** — il choisit
+lui-même le bon suivant en lisant `LEDGER.md`, l'exécute en entier,
+committe, pousse, met le ledger à jour, et enchaîne — jusqu'à la fin de
+la file ou un vrai point d'arbitrage.
+
+### Ce qui change par rapport au flot pas-à-pas
+- **Tu ne dis plus quel bon exécuter** : l'agent le lit dans
+  `LEDGER.md` (§ « Comment choisir le prochain bon » en tête du
+  fichier).
+- **Il n'attend pas ton feu vert entre deux bons** : un bon fini →
+  ledger mis à jour → commit → push → directement le suivant.
+- **Un blocage n'arrête pas toute la session** : une incohérence de
+  banque, une question de cadre — ça se note et ça se laisse de côté
+  (comme `§3 Étape 6`), et l'agent passe au bon suivant. Le seul arrêt
+  légitime de toute la session, c'est la file vide.
+- **Claude n'est pas dans la boucle pendant la session.** L'échantillon
+  d'acceptation (relire une scène du lot en détail) et la vérification
+  adversariale d'une transcription restent son travail — mais après
+  coup, sur ce que la session aura produit, pas en temps réel ce
+  week-end. Ne bloque pas l'agent en attendant un avis qui ne viendra
+  pas pendant la session.
+
+### Le prompt (à coller tel quel, une seule fois)
+
+```
+Tu travailles sur le dépôt BAC, une application de préparation au
+baccalauréat marocain, pour une LONGUE session autonome (potentiellement
+tout un week-end). Tu vas enchaîner PLUSIEURS bons de travail À LA
+SUITE, sans qu'on te redonne le prochain — c'est à toi de le trouver.
+
+AVANT TOUTE CHOSE, lis en entier :
+1. `docs/ops/SCENE-CONTRACT.md` — la loi de fabrication. Chaque règle
+   vient d'un défaut réel constaté à l'écran.
+2. `work-orders/LEDGER.md` — la file de travail et son ordre. Le
+   paragraphe « Comment choisir le prochain bon » en tête du fichier
+   t'explique comment repérer où reprendre.
+
+RÈGLES ABSOLUES (valables pour TOUS les bons de cette session) :
+- TOUT le contenu produit est en FRANÇAIS : commentaires de code,
+  légendes, narration, messages de commit.
+- Ne touche à AUCUN fichier qu'un bon ne nomme pas.
+- Ne modifie ni le contrat, ni `animations/bac_scene.py`, ni une scène
+  déjà marquée `validé` au manifeste — sauf si le bon en cours le
+  demande explicitement.
+- La banque (`content/**/bank.yaml`) est la source de vérité et elle
+  est VÉRIFIÉE : chaque nombre, chaque formule s'y recopie chiffre pour
+  chiffre. Si elle te semble incohérente, N'ÉCRIS JAMAIS dedans :
+  note précisément le désaccord dans le bloc RÉSULTAT du bon, laisse
+  cette question de côté, et passe à la suite de CE bon (ou au bon
+  suivant si c'est tout le bon qui est bloqué).
+- Écris le code par tranches d'environ 120 lignes, jamais un fichier
+  entier d'un seul coup (un agent est déjà mort sur ce point).
+- Franchis les six portes du contrat DANS L'ORDRE et colle la SORTIE
+  RÉELLE de chacune dans le bloc RÉSULTAT du bon. N'affirme jamais
+  qu'une porte est franchie sans coller sa sortie.
+- La porte 3 (audit image par image) est EXHAUSTIVE, pas un
+  échantillon : la dernière image de CHAQUE section au minimum. Zéro
+  défaut trouvé sur une scène longue est suspect — regarde vraiment.
+- Un seul rendu Manim à la fois sur cette machine.
+- Si un rendu échoue bizarrement (erreur dvisvgm, LaTeX, fichier
+  absent) : relance-le SEUL, sans rien changer au code, avant de
+  diagnostiquer quoi que ce soit — une course entre deux rendus
+  simultanés a déjà fait échouer un rendu parfaitement sain.
+- Ne modifie jamais `scripts/scene-lint.py` pour faire passer un lint
+  qui refuse : corrige la cause. Si tu penses la règle elle-même
+  fausse, arrête-toi sur CE point précis et note-le, mais continue le
+  reste du bon.
+
+LA BOUCLE DE LA SESSION — répète jusqu'à la file vide :
+1. `git pull` (un autre agent a pu pousser entre-temps).
+2. Ouvre `work-orders/LEDGER.md`, prends le premier bon dont le statut
+   n'est pas `validé`/`fait`.
+3. Exécute ce bon EN ENTIER (toutes ses parties s'il en a plusieurs),
+   les six portes dans l'ordre, jusqu'à son bloc RÉSULTAT rempli avec
+   de la vraie sortie de commande.
+4. Un seul commit pour ce bon (message en français, ce que le bon
+   listait comme changé). `git push`.
+5. Ajoute/mets à jour la ligne de ce bon dans `LEDGER.md` (statut,
+   agent, date, note d'une ligne), commit, push.
+6. Retourne à l'étape 1 pour le bon suivant. NE T'ARRÊTE PAS pour
+   demander confirmation entre deux bons — seulement si :
+   - la file est vide (plus aucun bon `à faire`/`à produire`) ;
+   - un bon est bloqué par une vraie incohérence de banque ou une
+     question de cadre pédagogique (note-le dans LEDGER.md avec le
+     statut `bloqué` et sa raison en une ligne, PUIS passe au bon
+     suivant plutôt que d'arrêter toute la session) ;
+   - un outil manque et qu'aucune des voies du runbook
+     (`docs/ops/ANTIGRAVITY-RUNBOOK.md`) ne le résout.
+
+Commence maintenant par le premier bon non fini de `LEDGER.md`.
+```
+
+### Ton rôle pendant que ça tourne
+
+Tu n'as rien à taper entre deux bons — mais reste dans les parages :
+- **Toutes les ~2 heures**, un coup d'œil à `LEDGER.md` (colonne
+  Statut) et à trois images au hasard dans un rendu récent. C'est
+  encore toi le juge : l'élève, c'est ton élève.
+- **Si un bon passe `bloqué`** : c'est un point d'arbitrage
+  pédagogique ou une incohérence de banque — exactement le genre de
+  chose qui remonte à Claude (§6 ci-dessous), pas à l'agent. Note-le,
+  continue de laisser la session avancer sur le reste de la file, et
+  ramène ces points-là à une session Claude quand tu reviens.
+- **En fin de week-end**, ramène `LEDGER.md` (et, si possible, 2-3
+  scènes fraîchement validées) à une session Claude : c'est là que se
+  fait l'échantillon d'acceptation et que les points `bloqué`
+  s'arbitrent.
 
 ---
 
