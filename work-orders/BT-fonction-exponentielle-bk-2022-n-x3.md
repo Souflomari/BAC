@@ -104,3 +104,61 @@ scène  bk-2022-n-x3.py : 69 valeurs
  1 file changed, 1 insertion(+), 1 deletion(-)
 ```
 - **Incohérences de banque relevées** : Aucune
+
+## CORRECTIF — vérification Claude (2026-08-14)
+
+L'« audit visuel & planches de contact » ci-dessus (points 2 et 3) déclare
+les repères des étapes 11 et 13 conformes avec chiffres de graduation
+visibles — **c'était faux**. Grep de vérification :
+
+```
+$ grep -n "Axes(\|graduations(\|Create(axes" scenes/maths/fonction-exponentielle/bk-2022-n-x3.py
+389:        axes_g = Axes(
+398:        labels_g = self.graduations(axes_g, x_vals=[-5, -4, -2, 1], y_vals=[-2, -1, 2, 4])
+...
+        self.play(Create(axes_g), FadeIn(labels_g), Create(curve_g), FadeIn(lbl_g, dot_a, lbl_a, dot_0, lbl_0))
+477:        axes = Axes(
+486:        labels_axes = self.graduations(axes, x_vals=[-5, -3, -1, 1, 2, 3], y_vals=[-4, -2, 2, 4])
+...
+        self.play(Create(axes), FadeIn(labels_axes), Create(line_delta), FadeIn(lbl_delta))
+```
+
+`self.graduations(...)` était appelé **avant** `self.play(Create(axes...))`
+sur les deux figures — exactement le même défaut que celui trouvé et
+corrigé sur `bk-2020-n-x4.py` (ligne 12 du ledger), déjà documenté dans
+`docs/ops/SCENE-CONTRACT.md` §1.6. `graduations()` fait son propre
+`FadeIn` interne sur des `Text` non encore attachés à la famille d'axes ;
+appelé avant que les axes existent réellement à l'écran, le `FadeIn`
+anime des mobjects qui ne sont jamais rattachés dans le bon ordre — les
+traits/graduations (ticks) apparaissent mais les NOMBRES n'apparaissent
+jamais, malgré un rendu et un audit visuel qui déclarent le contraire.
+
+**Fix appliqué** (motif identique à bk-2020-n-x4) sur les deux figures :
+
+```python
+# Figure 1 (axes_g, étape 11 "q5b")
+self.play(Create(axes_g))
+labels_g = self.graduations(axes_g, x_vals=[-5, -4, -2, 1], y_vals=[-2, -1, 2, 4])
+# ... curve_g, lbl_g, dot_a, lbl_a, dot_0, lbl_0 construits ...
+self.play(Create(curve_g), FadeIn(lbl_g, dot_a, lbl_a, dot_0, lbl_0))
+
+# Figure 2 (axes, étape 13 "q6")
+self.play(Create(axes))
+labels_axes = self.graduations(axes, x_vals=[-5, -3, -1, 1, 2, 3], y_vals=[-4, -2, 2, 4])
+# ... line_delta, lbl_delta construits ...
+self.play(Create(line_delta), FadeIn(lbl_delta))
+```
+
+Vérifications faites avant/après le fix :
+- `python3 scripts/scene-lint.py` : clean (`19 étapes, 2 repère(s)`,
+  `✓ porte 1 franchie`) — inchangé, le lint ne détecte pas cette classe
+  de défaut (raison de plus pour le spot-check visuel systématique).
+- Re-rendu complet (`-ql`, `--save_sections`, 19 sections) ; frames
+  extraites au milieu des sections `11-q5b-lecture-courbe-g` et
+  `13-q6-trace-courbe-C` (pas la dernière frame, qui est en fondu de
+  sortie) : les nombres de graduation sont désormais VISIBLES sur les
+  deux repères (`-5, -4, -2, 1` et `-5, -3, -1, 1, 2, 3, -4, -2, 2, 4`),
+  isotropie préservée, aucune collision structurelle.
+
+Fond mathématique de la scène non remis en cause (déjà vérifié correct :
+limites, f'/f'', zéros α≈-4,5 et 0, tracé C, réciproque, suite u_n).

@@ -394,6 +394,7 @@ class Explication(BacScene):
             axis_config={"color": BAC_INK_SOFT, "stroke_width": 1.2, "include_tip": True},
         ).to_edge(RIGHT, buff=0.6).shift(DOWN * 0.1)
 
+        self.play(Create(axes_g))
         labels_g = self.graduations(axes_g, x_vals=[-5, -4, -2, 1], y_vals=[-2, -1, 2, 4])
 
         g_func = lambda x: (2 * x + 4) * np.exp(x / 2) - x - 4
@@ -409,7 +410,7 @@ class Explication(BacScene):
 
         g_grp = VGroup(axes_g, labels_g, curve_g, lbl_g, dot_a, lbl_a, dot_0, lbl_0)
 
-        self.play(Create(axes_g), FadeIn(labels_g), Create(curve_g), FadeIn(lbl_g, dot_a, lbl_a, dot_0, lbl_0))
+        self.play(Create(curve_g), FadeIn(lbl_g, dot_a, lbl_a, dot_0, lbl_0))
         self.legende("Question 5b : Deux zéros de g en alpha ≈ -4.5 et 0.")
         self.pose(3.5)
         self.play(FadeOut(g_grp))
@@ -481,6 +482,7 @@ class Explication(BacScene):
             axis_config={"color": BAC_INK_SOFT, "stroke_width": 1.5, "include_tip": True},
         ).to_edge(RIGHT, buff=0.5).shift(DOWN * 0.1)
 
+        self.play(Create(axes))
         labels_axes = self.graduations(axes, x_vals=[-5, -3, -1, 1, 2, 3], y_vals=[-4, -2, 2, 4])
 
         # Asymptote Delta : y = x
@@ -507,7 +509,7 @@ class Explication(BacScene):
 
         fig_grp = VGroup(axes, labels_axes, line_delta, lbl_delta, curve_C, lbl_C, dot_I, lbl_I, dot_O, lbl_O, dot_K, lbl_K)
 
-        self.play(Create(axes), FadeIn(labels_axes), Create(line_delta), FadeIn(lbl_delta))
+        self.play(Create(line_delta), FadeIn(lbl_delta))
         self.play(Create(curve_C), FadeIn(lbl_C), FadeIn(dot_I, lbl_I, dot_O, lbl_O, dot_K, lbl_K))
 
         self.legende("Question 6 : Tracé de (Delta) et (C).")
