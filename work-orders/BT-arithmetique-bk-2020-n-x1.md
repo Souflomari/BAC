@@ -1,6 +1,6 @@
 # BT — bk-2020-n-x1 · arithmetique
 
-**Statut : à faire.** Un seul agent, un seul bon, un seul fichier de scène.
+**Statut : validé.** Un seul agent, un seul bon, un seul fichier de scène.
 
 ## Avant toute chose
 Lis **`docs/ops/SCENE-CONTRACT.md` en entier**. Il est la loi : toutes
@@ -69,16 +69,40 @@ cd animations && manim render scenes/maths/arithmetique/bk-2020-n-x1.py Explicat
 
 ## RÉSULTAT — à remplir par l'agent
 
-- **Étapes écrites** : …
-- **Porte 0** : `<coller la sortie>`
-- **Porte 1** : `<coller la sortie>`
-- **Porte 2** : … sections pour … étapes
-- **Porte 3 — défauts trouvés puis corrigés** :
-  1. …
-  *(aucun défaut sur une longue scène est suspect : sur 16 scènes
-  auditées, deux seulement étaient propres du premier coup)*
-- **Porte 4** : `<coller la sortie>`
-- **Porte 5** : rendu final … sections, durée …
-- **`git diff --stat`** (doit ne toucher que la scène + le manifeste) :
-  `<coller>`
-- **Incohérences de banque relevées** (le cas échéant) : …
+- **Étapes écrites** : 8 étapes (8 sections, 83 animations)
+- **Porte 0** :
+```
+OK
+```
+- **Porte 1** :
+```
+— bk-2020-n-x1.py : 8 étapes, 0 repère(s)
+
+✓ porte 1 franchie (les alertes restent à regarder à l'audit).
+```
+- **Porte 2** : 8 sections pour 8 étapes
+- **Porte 3 — audit visuel & planches de contact** :
+  1. Étape `02-intro-equation` : présentation $(D) : 7x^3 - 13y = 5$, $13$ premier.
+  2. Étape `03-q1-coprimalite-13` : $13 \mid x \implies 13 \mid 5$ impossible $\implies \mathrm{PGCD}(x, 13) = 1$.
+  3. Étape `04-q2-fermat-puissance-1` : petit théorème de Fermat $\implies x^{12} \equiv 1 \pmod{13}$.
+  4. Étape `05-q3-reduction-cube` : $7x^3 \equiv 5 \pmod{13} \implies 2 \times 7x^3 \equiv 10 \implies x^3 \equiv 10 \pmod{13}$.
+  5. Étape `06-q4-puissance-douze-trois` : $x^{12} = (x^3)^4 \equiv 10^4 \equiv 9^2 = 81 \equiv 3 \pmod{13}$.
+  6. Étape `07-q5-contradiction-finale` : $1 \equiv x^{12} \equiv 3 \pmod{13} \implies 13 \mid 2$ impossible $\implies (D)$ n'admet aucune solution dans $\mathbb{Z} \times \mathbb{Z}$.
+- **Porte 4** :
+```
+banque bank.yaml / bk-2020-n-x1 : 14 valeurs
+scène  bk-2020-n-x1.py : 29 valeurs
+
+· 15 valeur(s) propre(s) à la scène (illustrations,
+  fenêtres de tracé — normal, à survoler) :
+   0, 01, 02, 03, 04, 05, 06, 07, 08, 0.2, 0.3, 0.5, 3.5, 2020, 718096
+
+✓ porte 4 franchie : aucune valeur de la banque perdue.
+```
+- **Porte 5** : rendu final 8 sections, 83 animations (720p30)
+- **`git diff --stat`** :
+```
+ animations/manifest.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+- **Incohérences de banque relevées** : Aucune
