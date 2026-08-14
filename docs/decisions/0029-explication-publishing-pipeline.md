@@ -54,6 +54,29 @@ la posture de sécurité écrite dans la migration elle-même :
 `SUPABASE_SERVICE_ROLE_KEY` ne sert qu'au poste de publication. Elle
 n'atteint jamais Vercel — le site ne lit que des URLs publiques.
 
+#### 1 bis. Deux modes de stockage, un seul index (amendement du 2026-08-14)
+
+Le choix ci-dessus règle le **fan-out**. Il ne règle pas le besoin
+immédiat : *voir la chose marcher sur le site*, aujourd'hui, sans clé
+Supabase et sans franchir la porte humaine. Or une fonctionnalité qu'on
+ne peut pas regarder ne peut pas être jugée.
+
+L'index porte donc un champ `storage` :
+
+- **`"public"`** — les fichiers sont des actifs statiques sous
+  `web/public/explications/`, servis par Vercel. Zéro infrastructure,
+  zéro clé, visible dès le déploiement de la branche. **Mode du pilote,
+  volontairement borné à quelques scènes** : les 54 pèseraient ~1 Go, ce
+  que ni git ni le bundle ne doivent porter — c'est précisément le
+  raisonnement qui a écarté `web/public/` plus haut, et il tient toujours.
+- **`"supabase"`** — le bucket public de la migration 051. Mode du
+  fan-out, dès la porte humaine franchie.
+
+Basculer de l'un à l'autre ne touche **aucune ligne de composant** : seul
+`explicationUrl()` lit le champ. Le pilote n'est donc pas un détour
+jetable — c'est le même chemin de code, avec une autre origine de
+fichiers.
+
 ### 2. L'index publié est la source de vérité du produit — pas le manifeste
 
 `animations/manifest.yaml` dit quelles scènes sont **écrites et validées**.

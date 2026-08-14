@@ -76,6 +76,7 @@ RACINE = Path(__file__).resolve().parents[1]
 ANIMATIONS = RACINE / "animations"
 MANIFESTE = ANIMATIONS / "manifest.yaml"
 INDEX = ANIMATIONS / "published.json"
+PUBLIC_DIR = RACINE / "web" / "public" / "explications"
 BUCKET = "explications"
 QUALITE_DEFAUT = "720p30"  # le rendu final de l'ADR 0028
 # qualité → drapeau manim. 720p30 est la qualité de publication ; 480p15
@@ -259,6 +260,11 @@ def rend_si_absent(scene: dict, qualite: str, *, force: bool = False) -> Path | 
         print(f"    !! fichier de scène absent : {scene['scene_file']}")
         return None
 
+    if not shutil.which("manim"):
+        print("    !! `manim` introuvable sur le PATH — active le venv "
+              "(source /root/manim-venv/bin/activate) avant de rendre")
+        return None
+
     rel = scene["scene_file"].relative_to(ANIMATIONS)
     cmd = [
         "manim", "render", DRAPEAU[qualite],
@@ -298,6 +304,7 @@ def fabrique_poster(sections: list[Path], destination: Path) -> Path | None:
     if not sections:
         return None
     source = sections[1] if len(sections) > 1 else sections[0]
+    # (appelé avec une liste d'un seul clip → c'est ce clip, à son milieu)
     d = duree(source) or 2.0
     res = subprocess.run(
         ["ffmpeg", "-y", "-ss", str(d / 2), "-i", str(source),
@@ -336,6 +343,20 @@ def televerse(local: Path, chemin_distant: str, *, base: str, cle: str) -> bool:
         return False
 
 
+def depose_local(local: Path, chemin_relatif: str) -> bool:
+    """Copie le fichier sous `web/public/explications/` (mode « public »).
+
+    Vercel sert ce dossier tel quel : aucune infrastructure, aucune clé,
+    visible dès le déploiement de la branche. Réservé au PILOTE — les 54
+    scènes pèseraient ~1 Go, ce que ni git ni le bundle ne doivent porter
+    (c'est le raisonnement de l'ADR 0029).
+    """
+    cible = PUBLIC_DIR / chemin_relatif
+    cible.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(local, cible)
+    return True
+
+
 # ────────────────────────────── pipeline ──────────────────────────────
 
 
@@ -348,6 +369,17 @@ def traite(scene: dict, args, creds) -> dict | None:
         print("    !! aucune étape extraite du fichier de scène — ignorée")
         return None
     print(f"    {len(etapes_src)} étapes, {sum(len(e['captions']) for e in etapes_src)} légendes")
+
+    # Un dry-run CONSTATE, il n'exécute pas : rendre prendrait plusieurs
+    # minutes par scène, ce qu'un mode « montre-moi ce que tu ferais » ne
+    # doit jamais déclencher. Le rendu n'a lieu que si on publie vraiment
+    # (--confirm) ou si on le demande explicitement (--render-only).
+    media = dossier_media(scene["notion"])
+    sortie = media / "videos" / scene["entry"] / args.quality
+    if not (args.confirm or args.render_only):
+        etat = "rendu présent" if (sortie / "Explication.mp4").exists() else "À RENDRE"
+        print(f"    [dry-run] {args.quality} : {etat}")
+        return None
 
     sortie = rend_si_absent(scene, args.quality, force=args.force_render)
     if sortie is None:
@@ -375,12 +407,26 @@ def traite(scene: dict, args, creds) -> dict | None:
 
     for i, (clip, src) in enumerate(zip(clips, etapes_src), start=1):
         distant = f"{prefixe}/steps/{clip.name}"
+        # Une affiche PAR étape. Une affiche globale montrerait l'image
+        # d'une autre étape que celle annoncée par le transport, et
+        # compter sur preload="metadata" pour peindre la première image
+        # n'est pas fiable d'un navigateur à l'autre : on fabrique donc
+        # l'image, elle est juste partout. ~40 Ko par étape.
+        aff_local = clip.with_suffix(".jpg")
+        if not aff_local.exists():
+            fabrique_poster([clip], aff_local)
+        aff_distant = None
+        if aff_local.exists():
+            aff_distant = f"{prefixe}/steps/{aff_local.name}"
+            a_pousser.append((aff_local, aff_distant))
+
         etapes_pub.append({
             "n": i,
             "slug": src["slug"],
             "label": libelle(src),
             "captions": src["captions"],
             "path": distant,
+            "poster": aff_distant,
             "durationS": duree(clip),
         })
         a_pousser.append((clip, distant))
@@ -393,17 +439,20 @@ def traite(scene: dict, args, creds) -> dict | None:
         print(f"    rendu seul — {len(a_pousser)} fichiers prêts, non téléversés")
         return None
 
+    verbe = "copierait" if args.storage == "public" else "téléverserait"
     if not args.confirm:
-        print(f"    [dry-run] téléverserait {len(a_pousser)} fichiers sous {prefixe}/")
+        print(f"    [dry-run] {verbe} {len(a_pousser)} fichiers sous {prefixe}/")
         octets = sum(f.stat().st_size for f, _ in a_pousser)
         print(f"    [dry-run] {octets / 1e6:.1f} Mo")
         return None
 
     for local, distant in a_pousser:
-        if not televerse(local, distant, base=creds[0], cle=creds[1]):
-            print("    !! téléversement interrompu — entrée NON indexée")
+        ok = (depose_local(local, distant) if args.storage == "public"
+              else televerse(local, distant, base=creds[0], cle=creds[1]))
+        if not ok:
+            print("    !! publication interrompue — entrée NON indexée")
             return None
-    print(f"    ✓ {len(a_pousser)} fichiers téléversés")
+    print(f"    ✓ {len(a_pousser)} fichiers publiés ({args.storage})")
 
     return {
         "notion": notion,
@@ -422,7 +471,13 @@ def main() -> int:
     p.add_argument("--render-only", action="store_true",
                    help="rend localement, ne touche pas au réseau")
     p.add_argument("--force-render", action="store_true", help="re-rend même si la sortie existe")
-    p.add_argument("--only", metavar="ENTRY", help="une seule entrée (ex. bk-2024-n-x2)")
+    p.add_argument("--only", metavar="CIBLE",
+                   help="une entrée (`bk-2024-n-x2`) ou, si l'id existe dans "
+                        "plusieurs notions, `notion::entrée` "
+                        "(ex. `maths/geometrie-espace::bk-2019-n-x1`)")
+    p.add_argument("--storage", choices=["public", "supabase"], default="supabase",
+                   help="public = actifs statiques web/public/ (pilote, sans infra) ; "
+                        "supabase = bucket public (fan-out, porte humaine)")
     p.add_argument("--quality", choices=sorted(DRAPEAU), default=QUALITE_DEFAUT,
                    help=f"qualité de rendu/publication (défaut : {QUALITE_DEFAUT})")
     args = p.parse_args()
@@ -430,7 +485,7 @@ def main() -> int:
     creds = (os.environ.get("SUPABASE_URL", "").rstrip("/"),
              os.environ.get("SUPABASE_SERVICE_ROLE_KEY", ""))
 
-    if args.confirm and not args.render_only and not all(creds):
+    if args.confirm and args.storage == "supabase" and not args.render_only and not all(creds):
         print("!! --confirm exige SUPABASE_URL et SUPABASE_SERVICE_ROLE_KEY", file=sys.stderr)
         return 2
 
@@ -441,13 +496,24 @@ def main() -> int:
 
     scenes = charge_manifeste()
     if args.only:
-        scenes = [s for s in scenes if s["entry"] == args.only]
+        if "::" in args.only:
+            scenes = [s for s in scenes if f"{s['notion']}::{s['entry']}" == args.only]
+        else:
+            scenes = [s for s in scenes if s["entry"] == args.only]
+            # Le même id d'entrée vit dans plusieurs notions (bk-2019-n-x2
+            # existe en nc-1 ET nc-2) : le dire, plutôt que d'en traiter
+            # deux en silence.
+            if len(scenes) > 1:
+                print(f"note : « {args.only} » existe dans {len(scenes)} notions — "
+                      f"toutes traitées. Pour n'en viser qu'une : --only notion::entrée")
+                for s in scenes:
+                    print(f"       {s['notion']}::{s['entry']}")
     if not scenes:
         print("aucune scène à traiter")
         return 1
 
-    mode = "TÉLÉVERSEMENT RÉEL" if args.confirm else ("RENDU SEUL" if args.render_only else "DRY-RUN")
-    print(f"publish-explications — {mode} — {len(scenes)} scène(s)")
+    mode = "PUBLICATION RÉELLE" if args.confirm else ("RENDU SEUL" if args.render_only else "DRY-RUN")
+    print(f"publish-explications — {mode} — stockage={args.storage} — {len(scenes)} scène(s)")
 
     publies = {}
     for s in scenes:
@@ -470,7 +536,7 @@ def main() -> int:
     ancien.update(publies)
 
     INDEX.write_text(
-        json.dumps({"bucket": BUCKET, "quality": args.quality,
+        json.dumps({"storage": args.storage, "bucket": BUCKET, "quality": args.quality,
                     "entries": dict(sorted(ancien.items()))},
                    ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",

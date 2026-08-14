@@ -31,6 +31,9 @@ export interface ExplicationStep {
   captions: string[];
   /** Chemin dans le bucket — jamais une URL absolue (le bucket peut bouger). */
   path: string;
+  /** Affiche propre à CETTE étape (une affiche globale montrerait la
+   *  mauvaise image). Null si l'extraction a échoué. */
+  poster: string | null;
   durationS: number | null;
 }
 
@@ -43,7 +46,25 @@ export interface Explication {
   steps: ExplicationStep[];
 }
 
+/**
+ * Où vivent les fichiers.
+ *
+ *   "public"   — `web/public/explications/…`, servis par Vercel comme
+ *                actifs statiques. Mode du PILOTE : aucune infrastructure,
+ *                aucune clé, visible dès le déploiement de la branche. Ne
+ *                passe pas à l'échelle (≈1 Go pour les 54 scènes) — c'est
+ *                exactement pourquoi l'ADR 0029 a choisi Supabase pour le
+ *                fan-out.
+ *   "supabase" — bucket public `explications` (migration 051). Mode du
+ *                fan-out, dès que la porte humaine est franchie.
+ *
+ * Le champ vit dans l'index : basculer de l'un à l'autre ne touche pas
+ * une ligne de composant.
+ */
+type Stockage = "public" | "supabase";
+
 interface IndexFichier {
+  storage?: Stockage;
   bucket?: string;
   quality?: string;
   entries?: Record<string, Explication>;
@@ -55,9 +76,13 @@ interface IndexFichier {
  * corruption ne doit jamais faire tomber une page — même discipline
  * fail-safe que les chargeurs de `content.ts`.
  */
-let cache: { bucket: string; entries: Record<string, Explication> } | null = null;
+let cache: {
+  storage: Stockage;
+  bucket: string;
+  entries: Record<string, Explication>;
+} | null = null;
 
-function chargeIndex(): { bucket: string; entries: Record<string, Explication> } {
+function chargeIndex() {
   if (cache) return cache;
   let parsed: IndexFichier = {};
   try {
@@ -69,6 +94,7 @@ function chargeIndex(): { bucket: string; entries: Record<string, Explication> }
     // c'est l'état normal tant que rien n'est publié.
   }
   cache = {
+    storage: parsed.storage === "supabase" ? "supabase" : "public",
     bucket: parsed.bucket ?? "explications",
     entries: parsed.entries ?? {},
   };
@@ -86,17 +112,18 @@ export function getExplication(notion: string, entryId: string): Explication | n
 }
 
 /**
- * URL publique d'un objet du bucket.
+ * URL publique d'un fichier d'explication, selon le mode de stockage.
  *
- * Retourne null si `NEXT_PUBLIC_SUPABASE_URL` manque : sans base, on ne
- * fabrique pas une URL relative bancale qui donnerait un player cassé —
- * on préfère ne rien rendre (même règle d'état honnête).
+ * En mode "supabase", retourne null si `NEXT_PUBLIC_SUPABASE_URL` manque :
+ * sans base, on ne fabrique pas une URL bancale qui donnerait un lecteur
+ * cassé — on préfère ne rien rendre (même règle d'état honnête).
  */
 export function explicationUrl(objectPath: string): string | null {
+  const idx = chargeIndex();
+  if (idx.storage === "public") return `/explications/${objectPath}`;
   const base = process.env.NEXT_PUBLIC_SUPABASE_URL;
   if (!base) return null;
-  const bucket = chargeIndex().bucket;
-  return `${base.replace(/\/$/, "")}/storage/v1/object/public/${bucket}/${objectPath}`;
+  return `${base.replace(/\/$/, "")}/storage/v1/object/public/${idx.bucket}/${objectPath}`;
 }
 
 /**
@@ -115,6 +142,7 @@ export interface ExplicationResolue {
     label: string;
     captions: string[];
     url: string;
+    posterUrl: string | null;
     durationS: number | null;
   }>;
 }
@@ -135,6 +163,7 @@ export function resolveExplication(notion: string, entryId: string): Explication
       label: s.label,
       captions: s.captions ?? [],
       url,
+      posterUrl: s.poster ? explicationUrl(s.poster) : null,
       durationS: s.durationS,
     });
   }

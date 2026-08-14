@@ -2530,15 +2530,24 @@ try {
       `\n[bank] SWEEP: explication animée — ${published.length} entrée(s) publiée(s)`
     );
 
+    // On vise la notion QUI PORTE des explications publiées, déduite de
+    // l'index — pas une notion codée en dur. Le balayage suit donc le
+    // contenu : publier une autre notion déplace la cible toute seule.
+    // Index vide → on retombe sur la notion pilote pour asserter l'absence.
+    const notionCible = published.length
+      ? published[0].split("::")[0]
+      : "pc/reactions-acido-basiques";
+    const routeCible = `/notions/${notionCible}`;
+
     const xpage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     // Le chapitre de banque est le dernier : autant de `##` dans la leçon,
-    // plus un. Recalculé ici — le balayage précédent l'a dans sa portée.
+    // plus un.
     const lessonSrcX = readFileSync(
-      path.join(CONTENT_ROOT, "pc/reactions-acido-basiques/lesson.md"),
+      path.join(CONTENT_ROOT, notionCible, "lesson.md"),
       "utf8"
     );
     const bankChapterNum2 = (lessonSrcX.match(/^##\s/gm) || []).length + 1;
-    await xpage.goto(`${BASE}${BANK_NOTION}?chapitre=${bankChapterNum2}`, {
+    await xpage.goto(`${BASE}${routeCible}?chapitre=${bankChapterNum2}`, {
       waitUntil: "networkidle",
     });
     await xpage
@@ -2549,15 +2558,16 @@ try {
     for (const c of cards) await c.click();
     await xpage.waitForTimeout(200);
 
-    // Deux conditions pour qu'un lecteur soit LÉGITIMEMENT rendu : l'entrée
-    // est dans l'index ET la base d'URL publique existe au build. Sans base,
-    // `resolveExplication` renvoie null exprès (on ne fabrique pas une URL
-    // bancale) — l'absence de lecteur est alors le comportement CORRECT, pas
-    // une régression. Sans cette nuance, le balayage crierait au défaut sur
-    // un build local sans variables Supabase.
-    const urlBase = !!process.env.NEXT_PUBLIC_SUPABASE_URL;
+    // Conditions pour qu'un lecteur soit LÉGITIMEMENT rendu : l'entrée est
+    // dans l'index, ET les URLs sont constructibles. En mode "public" les
+    // fichiers sont des actifs statiques → toujours constructible. En mode
+    // "supabase" il faut la base d'URL : sans elle `resolveExplication`
+    // renvoie null exprès (on ne fabrique pas une URL bancale), et l'absence
+    // de lecteur est alors le comportement CORRECT, pas une régression.
+    const modePublic = (pubIndex.storage ?? "public") === "public";
+    const urlBase = modePublic || !!process.env.NEXT_PUBLIC_SUPABASE_URL;
     const pilotPublished =
-      urlBase && published.some((k) => k.startsWith("pc/reactions-acido-basiques::"));
+      urlBase && published.some((k) => k.startsWith(`${notionCible}::`));
 
     const seen = await xpage.evaluate(() => ({
       gates: document.querySelectorAll("[data-explication-gate]").length,
@@ -2576,8 +2586,8 @@ try {
         const raison = published.length === 0
           ? "index vide"
           : urlBase
-            ? "rien de publié pour la notion pilote"
-            : "NEXT_PUBLIC_SUPABASE_URL absente";
+            ? `rien de publié pour ${notionCible}`
+            : "NEXT_PUBLIC_SUPABASE_URL absente (mode supabase)";
         console.log(
           `  ✓ ${raison} → aucune porte, aucun lecteur (état honnête)`
         );

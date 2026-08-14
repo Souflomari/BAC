@@ -198,10 +198,14 @@ export function ExplicationPlayer({
                précédent sous le nouveau. */
             key={full ? "full" : courante.slug}
             src={full ? explication.fullUrl : courante.url}
-            poster={explication.posterUrl ?? undefined}
+            /* Chaque étape a SON affiche : une affiche globale montrerait
+               l'image d'une autre étape que celle annoncée par le transport. */
+            poster={
+              (full ? explication.posterUrl : courante.posterUrl) ?? undefined
+            }
             controls
-            /* Pas de preload : 53 explications × N étapes, on ne tire pas
-               des mégaoctets pour une carte que l'élève n'ouvrira pas. */
+            /* Rien n'est tiré tant que l'élève ne lance pas : l'affiche
+               suffit à montrer où on en est. */
             preload="none"
             playsInline
             className="w-full rounded-lg border border-subtle bg-surface-raised"
@@ -252,7 +256,16 @@ export function ExplicationPlayer({
               <p className="mt-3 text-body-sm font-medium text-primary max-w-reading">
                 {courante.label}
               </p>
-              <Transcript lignes={courante.captions} />
+              {/* Le libellé EST la première phrase de narration : la
+                  réafficher juste en dessous ferait doublon. On ne montre
+                  donc que la suite. */}
+              <Transcript
+                lignes={
+                  courante.captions[0] === courante.label
+                    ? courante.captions.slice(1)
+                    : courante.captions
+                }
+              />
             </>
           )}
         </div>
