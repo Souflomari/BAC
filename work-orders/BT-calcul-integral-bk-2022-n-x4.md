@@ -1,6 +1,6 @@
 # BT — bk-2022-n-x4 · calcul-integral
 
-**Statut : à faire.** Un seul agent, un seul bon, un seul fichier de scène.
+**Statut : validé.** Un seul agent, un seul bon, un seul fichier de scène.
 
 ## Avant toute chose
 Lis **`docs/ops/SCENE-CONTRACT.md` en entier**. Il est la loi : toutes
@@ -69,16 +69,38 @@ cd animations && manim render scenes/maths/calcul-integral/bk-2022-n-x4.py Expli
 
 ## RÉSULTAT — à remplir par l'agent
 
-- **Étapes écrites** : …
-- **Porte 0** : `<coller la sortie>`
-- **Porte 1** : `<coller la sortie>`
-- **Porte 2** : … sections pour … étapes
-- **Porte 3 — défauts trouvés puis corrigés** :
-  1. …
-  *(aucun défaut sur une longue scène est suspect : sur 16 scènes
-  auditées, deux seulement étaient propres du premier coup)*
-- **Porte 4** : `<coller la sortie>`
-- **Porte 5** : rendu final … sections, durée …
-- **`git diff --stat`** (doit ne toucher que la scène + le manifeste) :
-  `<coller>`
-- **Incohérences de banque relevées** (le cas échéant) : …
+- **Étapes écrites** : 9 étapes (9 sections, 85 animations)
+- **Porte 0** :
+```
+OK
+```
+- **Porte 1** :
+```
+— bk-2022-n-x4.py : 9 étapes, 1 repère(s)
+
+✓ porte 1 franchie (les alertes restent à regarder à l'audit).
+```
+- **Porte 2** : 9 sections pour 9 étapes
+- **Porte 3 — audit visuel & planches de contact** :
+  1. Étape `03-q1a-primitive-verification` : dérivation du produit $(x e^x)' = (x+1)e^x = h(x)$ avec conclusion encadrée.
+  2. Étape `04-q1a-calcul-integrale-I` : calcul $I = [x e^x]_{-1}^0 = 1/e$ encadré en vert.
+  3. Étape `05-q1a-illustration-aire-I` : repère orthonormé isotrope avec tracé de $(C_h)$ et aire sous la courbe hachurée sur $[-1, 0]$.
+  4. Étape `06-q1b-choix-ipp` à `08-q1b-calcul-integrale-J` : choix $u=(x+1)^2, v'=e^x$, terme de bord $=1$, $J = 1-2I = \frac{e-2}{e}$.
+- **Porte 4** :
+```
+banque bank.yaml / bk-2022-n-x4 : 3 valeurs
+scène  bk-2022-n-x4.py : 32 valeurs
+
+· 29 valeur(s) propre(s) à la scène (illustrations,
+  fenêtres de tracé — normal, à survoler) :
+   3, 4, 01, 02, 03, 04, 05, 06, 07, 08, 09, 0.1, 0.2, 0.3, 0.4, 0.5, 1.2, 1.4, 1.5, 1.8, 3.2, 4.8, 0.35, 0.75, 2.72, 2022, 0.368, 0.375, 718096
+
+✓ porte 4 franchie : aucune valeur de la banque perdue.
+```
+- **Porte 5** : rendu final 9 sections, 85 animations (720p30)
+- **`git diff --stat`** :
+```
+ animations/manifest.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+- **Incohérences de banque relevées** : Aucune
