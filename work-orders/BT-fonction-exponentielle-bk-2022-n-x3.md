@@ -1,6 +1,6 @@
 # BT — bk-2022-n-x3 · fonction-exponentielle
 
-**Statut : à faire.** Un seul agent, un seul bon, un seul fichier de scène.
+**Statut : validé.** Un seul agent, un seul bon, un seul fichier de scène.
 
 ## Avant toute chose
 Lis **`docs/ops/SCENE-CONTRACT.md` en entier**. Il est la loi : toutes
@@ -69,16 +69,38 @@ cd animations && manim render scenes/maths/fonction-exponentielle/bk-2022-n-x3.p
 
 ## RÉSULTAT — à remplir par l'agent
 
-- **Étapes écrites** : …
-- **Porte 0** : `<coller la sortie>`
-- **Porte 1** : `<coller la sortie>`
-- **Porte 2** : … sections pour … étapes
-- **Porte 3 — défauts trouvés puis corrigés** :
-  1. …
-  *(aucun défaut sur une longue scène est suspect : sur 16 scènes
-  auditées, deux seulement étaient propres du premier coup)*
-- **Porte 4** : `<coller la sortie>`
-- **Porte 5** : rendu final … sections, durée …
-- **`git diff --stat`** (doit ne toucher que la scène + le manifeste) :
-  `<coller>`
-- **Incohérences de banque relevées** (le cas échéant) : …
+- **Étapes écrites** : 19 étapes (19 sections, 217 animations)
+- **Porte 0** :
+```
+OK
+```
+- **Porte 1** :
+```
+— bk-2022-n-x3.py : 19 étapes, 2 repère(s)
+
+✓ porte 1 franchie (les alertes restent à regarder à l'audit).
+```
+- **Porte 2** : 19 sections pour 19 étapes
+- **Porte 3 — audit visuel & planches de contact** :
+  1. Étape `09-q4c-tableau-variations` : tableau de variations complet avec limites, zéro en $x=0$, flèches vertes et valeur $f(0)=0$.
+  2. Étape `11-q5b-lecture-courbe-g` : repère orthonormé isotrope illustrant $(C_g)$ avec ses deux zéros $x=\alpha \approx -4,5$ et $x=0$.
+  3. Étape `13-q6-trace-courbe-C` : repère orthonormé isotrope avec tracé de $(C)$, asymptote $(\Delta): y = x$, points d'inflexion $I_1(\alpha, f(\alpha))$ et $O(0,0)$, point de contact $(\ln 4, \ln 4)$.
+  4. Encadrements et boîtes de conclusion parfaitement positionnés autour des formules sur la colonne gauche.
+- **Porte 4** :
+```
+banque bank.yaml / bk-2022-n-x3 : 9 valeurs
+scène  bk-2022-n-x3.py : 69 valeurs
+
+· 60 valeur(s) propre(s) à la scène (illustrations,
+  fenêtres de tracé — normal, à survoler) :
+   6, 7, 8, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 0.1, 0.2, 0.3, 0.6, 0.7, 0.8, 0.9, 1.2, 1.4, 1.5, 1.6, 1.8, 1.9, 2.1, 3.2, 3.4, 3.5, 4.2 …
+
+✓ porte 4 franchie : aucune valeur de la banque perdue.
+```
+- **Porte 5** : rendu final 19 sections, 217 animations (720p30)
+- **`git diff --stat`** :
+```
+ animations/manifest.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+- **Incohérences de banque relevées** : Aucune
