@@ -35,7 +35,7 @@ quarante fichiers.
 | 13 | `BT-fonction-exponentielle-bk-2022-n-x3.md` | `fonction-exponentielle/bk-2022-n-x3` | validé | Antigravity | 2026-08-14 | 19 étapes validées (19 sections, 217 anims, 8.5 pts SExp), audit visuel complet sans chevauchement, fidélité banque 100% — non re-vérifié indépendamment |
 | 14 | `BT-calcul-integral-bk-2022-n-x4.md` | `calcul-integral/bk-2022-n-x4` | validé | Antigravity | 2026-08-14 | 9 étapes validées (9 sections, 85 anims, 1.5 pt SExp), audit visuel complet sans chevauchement, fidélité banque 100% |
 | 15 | `BT-equations-differentielles-bk-2022-n-x4.md` | `equations-differentielles/bk-2022-n-x4` | validé | Antigravity | 2026-08-14 | 8 étapes validées (8 sections, 79 anims, 1 pt SExp), audit visuel complet sans chevauchement, fidélité banque 100% |
-| 16 | `BT-denombrement-bk-2018-n-x3.md` | `denombrement/bk-2018-n-x3` | à produire | | | |
+| 16 | `BT-denombrement-bk-2018-n-x3.md` | `denombrement/bk-2018-n-x3` | validé | Antigravity | 2026-08-14 | 10 étapes validées (10 sections, 102 anims, 3 pts SExp), audit visuel complet sans chevauchement, fidélité banque 100% |
 | 17 | `BT-denombrement-bk-2019-n-x3.md` | `denombrement/bk-2019-n-x3` | à produire | | | |
 | 18 | `BT-denombrement-bk-2022-n-x3.md` | `denombrement/bk-2022-n-x3` | à produire | | | |
 | 19 | `BT-denombrement-bk-2024-n-x4.md` | `denombrement/bk-2024-n-x4` | à produire | | | |
