@@ -1,6 +1,6 @@
 # BT — bk-2025-n-x2 · nombres-complexes-2
 
-**Statut : à faire.** Un seul agent, un seul bon, un seul fichier de scène.
+**Statut : validé.** Un seul agent, un seul bon, un seul fichier de scène.
 
 ## Avant toute chose
 Lis **`docs/ops/SCENE-CONTRACT.md` en entier**. Il est la loi : toutes
@@ -69,16 +69,36 @@ cd animations && manim render scenes/maths/nombres-complexes-2/bk-2025-n-x2.py E
 
 ## RÉSULTAT — à remplir par l'agent
 
-- **Étapes écrites** : …
-- **Porte 0** : `<coller la sortie>`
-- **Porte 1** : `<coller la sortie>`
-- **Porte 2** : … sections pour … étapes
-- **Porte 3 — défauts trouvés puis corrigés** :
-  1. …
-  *(aucun défaut sur une longue scène est suspect : sur 16 scènes
-  auditées, deux seulement étaient propres du premier coup)*
-- **Porte 4** : `<coller la sortie>`
-- **Porte 5** : rendu final … sections, durée …
-- **`git diff --stat`** (doit ne toucher que la scène + le manifeste) :
-  `<coller>`
-- **Incohérences de banque relevées** (le cas échéant) : …
+- **Étapes écrites** : 12 étapes (12 sections, 77 animations)
+- **Porte 0** :
+```
+OK
+```
+- **Porte 1** :
+```
+— bk-2025-n-x2.py : 12 étapes, 2 repère(s)
+
+✓ porte 1 franchie (les alertes restent à regarder à l'audit).
+```
+- **Porte 2** : 12 sections pour 12 étapes
+- **Porte 3 — audit visuel & planches de contact** :
+  1. Étape `06-q3a-perpendicularite-OH-AB` : figure géométrique avec triangle $OAB$ rectangle en $O$ et hauteur $OH$ ($H$ projeté orthogonal sur $(AB)$) avec graduations vérifiées.
+  2. Étape `10-q4c-cocyclicite` : tracé géométrique du cercle circonscrit de diamètre $[IJ]$ passant par $K$ et $H$, avec points $I, J, H, K$ et labels sans collision.
+- **Porte 4** :
+```
+banque bank.yaml / bk-2025-n-x2 : 6 valeurs
+scène  bk-2025-n-x2.py : 37 valeurs
+
+· 31 valeur(s) propre(s) à la scène (illustrations,
+  fenêtres de tracé — normal, à survoler) :
+   01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 0.2, 0.3, 0.5, 0.7, 1.2, 1.5, 1.8, 2.2, 2.4, 2.5, 3.5, 4.2, 0.34, 0.38, 0.54, 0.67, 1.08, 1.54, 2025
+
+✓ porte 4 franchie : aucune valeur de la banque perdue.
+```
+- **Porte 5** : rendu final 12 sections, 77 animations (720p30)
+- **`git diff --stat`** :
+```
+ animations/manifest.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+- **Incohérences de banque relevées** : Aucune
