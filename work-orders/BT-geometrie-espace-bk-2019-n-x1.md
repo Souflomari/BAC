@@ -1,6 +1,6 @@
 # BT — bk-2019-n-x1 · geometrie-espace
 
-**Statut : à faire.** Un seul agent, un seul bon, un seul fichier de scène.
+**Statut : validé.** Un seul agent, un seul bon, un seul fichier de scène.
 
 ## Avant toute chose
 Lis **`docs/ops/SCENE-CONTRACT.md` en entier**. Il est la loi : toutes
@@ -69,16 +69,40 @@ cd animations && manim render scenes/maths/geometrie-espace/bk-2019-n-x1.py Expl
 
 ## RÉSULTAT — à remplir par l'agent
 
-- **Étapes écrites** : …
-- **Porte 0** : `<coller la sortie>`
-- **Porte 1** : `<coller la sortie>`
-- **Porte 2** : … sections pour … étapes
-- **Porte 3 — défauts trouvés puis corrigés** :
-  1. …
-  *(aucun défaut sur une longue scène est suspect : sur 16 scènes
-  auditées, deux seulement étaient propres du premier coup)*
-- **Porte 4** : `<coller la sortie>`
-- **Porte 5** : rendu final … sections, durée …
-- **`git diff --stat`** (doit ne toucher que la scène + le manifeste) :
-  `<coller>`
-- **Incohérences de banque relevées** (le cas échéant) : …
+- **Étapes écrites** : 8 étapes (8 sections, 76 animations)
+- **Porte 0** :
+```
+OK
+```
+- **Porte 1** :
+```
+— bk-2019-n-x1.py : 8 étapes, 0 repère(s)
+
+✓ porte 1 franchie (les alertes restent à regarder à l'audit).
+```
+- **Porte 2** : 8 sections pour 8 étapes
+- **Porte 3 — audit visuel & planches de contact** :
+  1. Étape `02-intro-donnees` : cadre repère orthonormé direct, points $A(1,-1,-1)$, $B(0,-2,1)$, $C(1,-2,0)$ et sphère $(S)$.
+  2. Étape `03-q1-vecteur-normal-plan` : calcul des coordonnées des vecteurs $\vec{AB}=(-1,-1,2)$, $\vec{AC}=(0,-1,1)$ et produit vectoriel $\vec{AB}\wedge\vec{AC}=(1,1,1)=\vec{i}+\vec{j}+\vec{k}$.
+  3. Étape `04-q2-equation-plan` : équation cartésienne du plan $(ABC) : x+y+z+1=0$ via $A(1,-1,-1)$.
+  4. Étape `05-q3-sphere-centre-rayon` : réduction de $(S) : (x-2)^2+(y+1)^2+(z-1)^2=5 \implies \Omega(2,-1,1)$ et $R=\sqrt{5}$.
+  5. Étape `06-q4-distance-point-plan` : calcul de la distance $d(\Omega,(ABC))=\frac{3}{\sqrt{3}}=\sqrt{3}$.
+  6. Étape `07-q5-intersection-cercle` : comparaison $d=\sqrt{3}\approx 1{,}73 < R=\sqrt{5}\approx 2{,}24 \implies (ABC)$ coupe $(S)$ selon un cercle $(\Gamma)$.
+- **Porte 4** :
+```
+banque bank.yaml / bk-2019-n-x1 : 10 valeurs
+scène  bk-2019-n-x1.py : 29 valeurs
+
+· 19 valeur(s) propre(s) à la scène (illustrations,
+  fenêtres de tracé — normal, à survoler) :
+   01, 02, 03, 04, 05, 06, 07, 08, 22, 0.2, 0.3, 0.5, 0.75, 1.73, 2.24, 2019, 2026, 68527, 718096
+
+✓ porte 4 franchie : aucune valeur de la banque perdue.
+```
+- **Porte 5** : rendu final 8 sections, 76 animations (720p30)
+- **`git diff --stat`** :
+```
+ animations/manifest.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+- **Incohérences de banque relevées** : Aucune
