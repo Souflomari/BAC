@@ -1,6 +1,6 @@
 # BT — bk-2017-n-x3 · arithmetique
 
-**Statut : à faire.** Un seul agent, un seul bon, un seul fichier de scène.
+**Statut : validé.** Un seul agent, un seul bon, un seul fichier de scène.
 
 ## Avant toute chose
 Lis **`docs/ops/SCENE-CONTRACT.md` en entier**. Il est la loi : toutes
@@ -69,16 +69,41 @@ cd animations && manim render scenes/maths/arithmetique/bk-2017-n-x3.py Explicat
 
 ## RÉSULTAT — à remplir par l'agent
 
-- **Étapes écrites** : …
-- **Porte 0** : `<coller la sortie>`
-- **Porte 1** : `<coller la sortie>`
-- **Porte 2** : … sections pour … étapes
-- **Porte 3 — défauts trouvés puis corrigés** :
-  1. …
-  *(aucun défaut sur une longue scène est suspect : sur 16 scènes
-  auditées, deux seulement étaient propres du premier coup)*
-- **Porte 4** : `<coller la sortie>`
-- **Porte 5** : rendu final … sections, durée …
-- **`git diff --stat`** (doit ne toucher que la scène + le manifeste) :
-  `<coller>`
-- **Incohérences de banque relevées** (le cas échéant) : …
+- **Étapes écrites** : 9 étapes (9 sections, 100 animations)
+- **Porte 0** :
+```
+OK
+```
+- **Porte 1** :
+```
+— bk-2017-n-x3.py : 9 étapes, 0 repère(s)
+
+✓ porte 1 franchie (les alertes restent à regarder à l'audit).
+```
+- **Porte 2** : 9 sections pour 9 étapes
+- **Porte 3 — audit visuel & planches de contact** :
+  1. Étape `02-intro-donnees` : présentation équation $px + y^{p-1} = 2017$, $2016 = 2^5 \cdot 3^2 \cdot 7$, $p \ge 5$ premier.
+  2. Étape `03-q1-majoration-p` : $p \le px \le 2016 < 2017$.
+  3. Étape `04-q2-non-divisibilite` : raisonnement par l'absurde, $p \mid 2017$ impossible car 2017 premier.
+  4. Étape `05-q3-fermat-divisibilite` : petit théorème de Fermat $y^{p-1} \equiv 1 \pmod p \implies p \mid 2016$.
+  5. Étape `06-q4-identification-p` : $p \in \{2, 3, 7\}$ et $p \ge 5 \implies p = 7$.
+  6. Étape `07-q5-cas-p-different-7` : contraposée $\implies$ aucune solution pour $p \neq 7$.
+  7. Étape `08-q5-cas-p-egal-7` : $7x + y^6 = 2017 \implies y \in \{1, 2, 3\} \implies S = \{(288, 1), (279, 2), (184, 3)\}$.
+- **Porte 4** :
+```
+banque bank.yaml / bk-2017-n-x3 : 22 valeurs
+scène  bk-2017-n-x3.py : 39 valeurs
+
+· 17 valeur(s) propre(s) à la scène (illustrations,
+  fenêtres de tracé — normal, à survoler) :
+   01, 02, 03, 04, 05, 06, 07, 08, 09, 64, 0.2, 0.3, 0.5, 729, 0.25, 0.75, 718096
+
+✓ porte 4 franchie : aucune valeur de la banque perdue.
+```
+- **Porte 5** : rendu final 9 sections, 100 animations (720p30)
+- **`git diff --stat`** :
+```
+ animations/manifest.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+- **Incohérences de banque relevées** : Aucune
