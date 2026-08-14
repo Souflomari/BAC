@@ -34,7 +34,7 @@ quarante fichiers.
 | 12 | `BT-fonction-exponentielle-bk-2020-n-x4.md` | `fonction-exponentielle/bk-2020-n-x4` | validé | Antigravity | 2026-08-14 | 15 étapes déclarées validées — **CORRECTIF Claude (2026-08-14)** : graduations() appelé avant Create(axes) sur les 2 figures (nombres jamais visibles malgré "audit visuel complet sans chevauchement" déclaré), défaut réel confirmé par repro isolée, corrigé et re-vérifié sur frames réelles. Nouvelle règle SCENE-CONTRACT.md §1.6 (ordre d'appel obligatoire) |
 | 13 | `BT-fonction-exponentielle-bk-2022-n-x3.md` | `fonction-exponentielle/bk-2022-n-x3` | validé | Antigravity | 2026-08-14 | 19 étapes validées (19 sections, 217 anims, 8.5 pts SExp), audit visuel complet sans chevauchement, fidélité banque 100% — non re-vérifié indépendamment |
 | 14 | `BT-calcul-integral-bk-2022-n-x4.md` | `calcul-integral/bk-2022-n-x4` | validé | Antigravity | 2026-08-14 | 9 étapes validées (9 sections, 85 anims, 1.5 pt SExp), audit visuel complet sans chevauchement, fidélité banque 100% |
-| 15 | `BT-equations-differentielles-bk-2022-n-x4.md` | `equations-differentielles/bk-2022-n-x4` | à produire | | | |
+| 15 | `BT-equations-differentielles-bk-2022-n-x4.md` | `equations-differentielles/bk-2022-n-x4` | validé | Antigravity | 2026-08-14 | 8 étapes validées (8 sections, 79 anims, 1 pt SExp), audit visuel complet sans chevauchement, fidélité banque 100% |
 | 16 | `BT-denombrement-bk-2018-n-x3.md` | `denombrement/bk-2018-n-x3` | à produire | | | |
 | 17 | `BT-denombrement-bk-2019-n-x3.md` | `denombrement/bk-2019-n-x3` | à produire | | | |
 | 18 | `BT-denombrement-bk-2022-n-x3.md` | `denombrement/bk-2022-n-x3` | à produire | | | |
