@@ -132,7 +132,7 @@ scenes:
     entry: bk-2020-n-x4
     scene_file: scenes/maths/fonction-exponentielle/bk-2020-n-x4.py
     scene_class: Explication
-    statut: validé  # audit 15/15 étapes SANS défaut (repères isotropes, tableau variations, courbes C et C', boîtes cadrées) ; fond conforme banque 100% (limites ±∞, (Δ) y=-x+5/2 en -∞, position relative, f'=-(e^{x-2}-1)^2, TV f, f'' et inflexion A(2,2), TVI α∈]2+ln3, 2+ln4[, réciproque f^{-1} sur R, (C') symétrique y=x, (f^{-1})'(2-ln3)=-1/4)
+    statut: validé  # CORRECTIF Claude (2026-08-14) : "SANS défaut" déclaré était faux — self.graduations() appelé AVANT self.play(Create(axes)) sur les 2 repères (motif interdit, voir SCENE-CONTRACT.md §1.6), les nombres de graduation n'apparaissaient jamais malgré l'appel correct des valeurs (confirmé par repro isolée + re-rendu). Corrigé : Create(axes) déplacé avant graduations() sur les 2 figures (étapes 11 et 13), FadeIn(labels_axes) redondant retiré, re-rendu et re-vérifié sur frames réelles (nombres visibles, isotropie préservée). Fond mathématique correct par ailleurs (limites ±∞, (Δ) y=-x+5/2 en -∞, position relative, f'=-(e^{x-2}-1)^2, TV f, f'' et inflexion A(2,2), TVI α∈]2+ln3, 2+ln4[, réciproque f^{-1} sur R, (C') symétrique y=x, (f^{-1})'(2-ln3)=-1/4)
   - bank: content/maths/fonction-exponentielle/bank.yaml
     entry: bk-2022-n-x3
     scene_file: scenes/maths/fonction-exponentielle/bk-2022-n-x3.py

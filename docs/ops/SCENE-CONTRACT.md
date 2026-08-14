@@ -108,6 +108,23 @@ graduations n'ajoutent que des entiers simples pour donner l'échelle.
 Helper de référence : `self.graduations(axes, x_vals, y_vals)` (méthode
 de `BacScene`, retourne le `VGroup` des nombres pour l'intégrer à la figure).
 
+**Ordre d'appel OBLIGATOIRE — `self.graduations(axes, …)` seulement
+APRÈS `self.play(Create(axes))`, jamais avant.** Défaut RÉEL trouvé le
+2026-08-14 (`fonction-exponentielle/bk-2020-n-x4.py`) : appeler
+`graduations()` sur un `Axes` construit mais pas encore joué, puis
+faire `self.play(Create(axes), FadeIn(labels_axes))` dans la même
+frappe, fait disparaître silencieusement les nombres au rendu (le
+trait des axes survit, pas les nombres) — repro isolée, confirmée.
+Le motif correct, dans TOUTES les scènes de référence :
+```python
+self.play(Create(axes, run_time=…))
+labels_axes = self.graduations(axes, x_vals=[...], y_vals=[...])
+```
+`graduations()` fait déjà son propre `self.play(FadeIn(...))` en
+interne — ne JAMAIS rejouer un `FadeIn(labels_axes)` après coup, ce
+second fondu est redondant et n'est pas la cause du défaut mais un
+signe qu'on a mal lu le motif.
+
 ### 1.7 La clôture
 Toute scène finit par une carte « Ce qu'il faut retenir » (les points de
 méthode, pas le corrigé), `pose(5.0)`, `FadeOut(bilan)`, puis retrait du

@@ -395,6 +395,7 @@ class Explication(BacScene):
             axis_config={"color": BAC_INK_SOFT, "stroke_width": 1.5, "include_tip": True},
         ).to_edge(RIGHT, buff=0.5).shift(DOWN * 0.1)
 
+        self.play(Create(axes))
         labels_axes = self.graduations(axes, x_vals=[-2, -1, 1, 2, 3, 4], y_vals=[-3, -2, -1, 1, 2, 3, 4])
 
         # Asymptote Delta
@@ -423,7 +424,6 @@ class Explication(BacScene):
 
         fig_grp = VGroup(axes, labels_axes, line_delta, lbl_delta, curve_C, lbl_C, tan_A, dot_A, lbl_A, dot_alpha, lbl_alpha)
 
-        self.play(Create(axes), FadeIn(labels_axes))
         self.play(Create(line_delta), FadeIn(lbl_delta))
         self.play(Create(curve_C), FadeIn(lbl_C), Create(tan_A), FadeIn(dot_A, lbl_A), FadeIn(dot_alpha, lbl_alpha))
 
@@ -494,6 +494,7 @@ class Explication(BacScene):
             axis_config={"color": BAC_INK_SOFT, "stroke_width": 1.5, "include_tip": True},
         ).to_edge(RIGHT, buff=0.4).shift(DOWN * 0.1)
 
+        self.play(Create(axes))
         labels_axes = self.graduations(axes, x_vals=[-3, -2, -1, 1, 2, 3, 4], y_vals=[-3, -2, -1, 1, 2, 3, 4])
 
         # Première bissectrice y = x
@@ -522,7 +523,7 @@ class Explication(BacScene):
 
         fig_grp = VGroup(axes, labels_axes, line_bissec, lbl_bissec, line_delta, lbl_delta, curve_C, lbl_C, curve_C_prime, lbl_Cp, dot_A, lbl_A)
 
-        self.play(Create(axes), FadeIn(labels_axes), Create(line_bissec), FadeIn(lbl_bissec))
+        self.play(Create(line_bissec), FadeIn(lbl_bissec))
         self.play(Create(line_delta), FadeIn(lbl_delta), Create(curve_C), FadeIn(lbl_C))
         self.play(Create(curve_C_prime), FadeIn(lbl_Cp), FadeIn(dot_A, lbl_A))
 
