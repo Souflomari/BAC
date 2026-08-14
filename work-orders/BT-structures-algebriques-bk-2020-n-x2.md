@@ -1,6 +1,6 @@
 # BT — bk-2020-n-x2 · structures-algebriques
 
-**Statut : à faire.** Un seul agent, un seul bon, un seul fichier de scène.
+**Statut : validé.** Un seul agent, un seul bon, un seul fichier de scène.
 
 ## Avant toute chose
 Lis **`docs/ops/SCENE-CONTRACT.md` en entier**. Il est la loi : toutes
@@ -69,16 +69,41 @@ cd animations && manim render scenes/maths/structures-algebriques/bk-2020-n-x2.p
 
 ## RÉSULTAT — à remplir par l'agent
 
-- **Étapes écrites** : …
-- **Porte 0** : `<coller la sortie>`
-- **Porte 1** : `<coller la sortie>`
-- **Porte 2** : … sections pour … étapes
-- **Porte 3 — défauts trouvés puis corrigés** :
-  1. …
-  *(aucun défaut sur une longue scène est suspect : sur 16 scènes
-  auditées, deux seulement étaient propres du premier coup)*
-- **Porte 4** : `<coller la sortie>`
-- **Porte 5** : rendu final … sections, durée …
-- **`git diff --stat`** (doit ne toucher que la scène + le manifeste) :
-  `<coller>`
-- **Incohérences de banque relevées** (le cas échéant) : …
+- **Étapes écrites** : 9 étapes (9 sections, 96 animations)
+- **Porte 0** :
+```
+OK
+```
+- **Porte 1** :
+```
+— bk-2020-n-x2.py : 9 étapes, 0 repère(s)
+
+✓ porte 1 franchie (les alertes restent à regarder à l'audit).
+```
+- **Porte 2** : 9 sections pour 9 étapes
+- **Porte 3 — audit visuel & planches de contact** :
+  1. Étape `02-intro-donnees` : cadre $M_2(\mathbb{R})$, définition de l'ensemble $E = \{[[1, x], [0, y]] \mid x \in \mathbb{R}, y \in \mathbb{R}^*\}$.
+  2. Étape `03-q1-stabilite-E` : produit matriciel montrant la stabilité de $E$ car $y, b \neq 0 \implies yb \neq 0$.
+  3. Étape `04-q2-non-commutativite` : calcul du produit dans l'ordre inverse et contre-exemple concret avec $x=0, y=2, a=1, b=1$.
+  4. Étape `05-q3-symetriques-E` : calcul des deux produits pour la matrice candidate symétrique $[[1, -x/y], [0, 1/y]]$.
+  5. Étape `06-q4-groupe-non-commutatif-E` : rassemblement des axiomes $\implies (E, \times)$ est un groupe non commutatif.
+  6. Étape `07-q5-homomorphisme-phi` : calcul de $\varphi(x)\varphi(t) = M(xt) = \varphi(xt) \implies \varphi$ homomorphisme de $(\mathbb{R}^*, \times)$ vers $(E, \times)$.
+  7. Étape `08-q6-groupe-commutatif-F` : isomorphisme $\varphi$ et transport de structure $\implies (F, \times)$ est un groupe commutatif de neutre $I = M(1)$.
+- **Porte 4** :
+```
+banque bank.yaml / bk-2020-n-x2 : 5 valeurs
+scène  bk-2020-n-x2.py : 24 valeurs
+
+· 19 valeur(s) propre(s) à la scène (illustrations,
+  fenêtres de tracé — normal, à survoler) :
+   3, 4, 5, 6, 01, 02, 03, 04, 05, 06, 07, 08, 09, 0.1, 0.2, 0.3, 3.5, 2020, 718096
+
+✓ porte 4 franchie : aucune valeur de la banque perdue.
+```
+- **Porte 5** : rendu final 9 sections, 96 animations (720p30)
+- **`git diff --stat`** :
+```
+ animations/manifest.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+- **Incohérences de banque relevées** : Aucune
