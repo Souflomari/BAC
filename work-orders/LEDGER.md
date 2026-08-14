@@ -32,7 +32,7 @@ quarante fichiers.
 | 10 | `BT-nombres-complexes-2-bk-2025-n-x2.md` | `nombres-complexes-2/bk-2025-n-x2` | validé | Antigravity | 2026-08-14 | 12 étapes validées (12 sections, 77 anims) ; correctif repères isotropes posé et vérifié sur frames 06 & 10 (H/K/I/J exactement sur le cercle) ; fond conforme banque 100% |
 | 11 | `BT-fonction-exponentielle-bk-2019-n-x4.md` | `fonction-exponentielle/bk-2019-n-x4` | validé | Antigravity | 2026-08-14 | 23 étapes validées (23 sections, 187 anims, 10 pts SM), audit visuel complet sans chevauchement, fidélité banque 100% |
 | 12 | `BT-fonction-exponentielle-bk-2020-n-x4.md` | `fonction-exponentielle/bk-2020-n-x4` | validé | Antigravity | 2026-08-14 | 15 étapes validées (15 sections, 170 anims, 7 pts SExp), audit visuel complet sans chevauchement, fidélité banque 100% |
-| 13 | `BT-fonction-exponentielle-bk-2022-n-x3.md` | `fonction-exponentielle/bk-2022-n-x3` | à produire | | | |
+| 13 | `BT-fonction-exponentielle-bk-2022-n-x3.md` | `fonction-exponentielle/bk-2022-n-x3` | validé | Antigravity | 2026-08-14 | 19 étapes validées (19 sections, 217 anims, 8.5 pts SExp), audit visuel complet sans chevauchement, fidélité banque 100% |
 | 14 | `BT-calcul-integral-bk-2022-n-x4.md` | `calcul-integral/bk-2022-n-x4` | à produire | | | |
 | 15 | `BT-equations-differentielles-bk-2022-n-x4.md` | `equations-differentielles/bk-2022-n-x4` | à produire | | | |
 | 16 | `BT-denombrement-bk-2018-n-x3.md` | `denombrement/bk-2018-n-x3` | à produire | | | |
