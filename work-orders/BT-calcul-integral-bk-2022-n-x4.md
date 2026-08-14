@@ -104,3 +104,49 @@ scène  bk-2022-n-x4.py : 32 valeurs
  1 file changed, 1 insertion(+), 1 deletion(-)
 ```
 - **Incohérences de banque relevées** : Aucune
+
+## CORRECTIF — vérification Claude (2026-08-14)
+
+L'« audit visuel & planches de contact » ci-dessus (point 3) déclare le
+repère de l'étape 05 conforme — **c'était faux**. Vérification :
+
+```
+$ grep -n "Axes(\|graduations(\|Create(axes" scenes/maths/calcul-integral/bk-2022-n-x4.py
+161:        axes = Axes(
+170:        labels_axes = self.graduations(axes, x_vals=[-1.5, -1.0, -0.5, 0.5], y_vals=[-0.5, 0.5, 1.0])
+...
+        self.play(Create(axes), FadeIn(labels_axes), Create(curve_h), FadeIn(lbl_h))
+```
+
+Même défaut que les lignes 12/13 du ledger (`bk-2020-n-x4`,
+`bk-2022-n-x3`) : `self.graduations(...)` appelé **avant**
+`self.play(Create(axes))`, motif interdit documenté dans
+`docs/ops/SCENE-CONTRACT.md` §1.6. Rendu initial confirmé défectueux
+(frame extraite mi-section : traits de graduation visibles, **aucun
+nombre**).
+
+**Fix appliqué** (même motif) :
+
+```python
+self.play(Create(axes))
+labels_axes = self.graduations(axes, x_vals=[-1.5, -1.0, -0.5, 0.5], y_vals=[-0.5, 0.5, 1.0])
+# ... curve_h, lbl_h, area_I, lbl_I construits ...
+self.play(Create(curve_h), FadeIn(lbl_h))
+self.play(FadeIn(area_I), FadeIn(lbl_I))
+```
+
+Vérifications faites avant/après le fix :
+- `python3 scripts/scene-lint.py` : clean (`9 étapes, 1 repère(s)`,
+  `✓ porte 1 franchie`) — inchangé.
+- `python3 scripts/bank-fidelity.py` : clean (3/3 valeurs de banque
+  retrouvées, `✓ porte 4 franchie`).
+- Re-rendu complet (`-ql`, `--save_sections`, 9 sections, 86 animations —
+  +1 par rapport aux 85 déclarées, dû au split d'un seul `self.play` en
+  deux, pas un défaut) ; frame extraite mi-section `05-q1a-illustration-
+  aire-I` : les nombres de graduation sont désormais VISIBLES
+  (`-1.5, -1.0, -0.5, 0.5` et `-0.5, 0.5, 1.0`), isotropie x1.6
+  préservée, aucune collision structurelle (zoom vérifié autour de
+  `(C_h)` / `1.0`).
+
+Fond mathématique de la scène non remis en cause (déjà vérifié correct :
+h(x)=(x+1)e^x, primitive F(x)=x e^x, I=1/e, IPP, J=(e-2)/e).

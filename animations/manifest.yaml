@@ -142,7 +142,7 @@ scenes:
     entry: bk-2022-n-x4
     scene_file: scenes/maths/calcul-integral/bk-2022-n-x4.py
     scene_class: Explication
-    statut: validé  # audit 9/9 étapes SANS défaut (repère isotrope aire h, dérivation primitive, IPP J=1-2I) ; fond conforme banque 100% (h(x)=(x+1)e^x, primitive F(x)=x e^x, I=1/e, IPP u=(x+1)^2 et v'=e^x, crochet=1, J=(e-2)/e)
+    statut: validé  # CORRECTIF Claude (2026-08-14) : "SANS défaut" déclaré était faux — self.graduations() appelé AVANT self.play(Create(axes)) sur le repère (étape 05 "q1a-illustration-aire-I", même motif interdit que bk-2020-n-x4/bk-2022-n-x3, SCENE-CONTRACT.md §1.6), les nombres de graduation n'apparaissaient jamais. Corrigé : Create(axes) déplacé avant graduations(), FadeIn(labels_axes) redondant retiré du self.play() suivant ; re-rendu et re-vérifié sur frame réelle (nombres -1.5/-1.0/-0.5/0.5 et -0.5/0.5/1.0 tous visibles, isotropie x1.6 préservée, aucune collision structurelle). Fond mathématique correct par ailleurs (h(x)=(x+1)e^x, primitive F(x)=x e^x, I=1/e, IPP u=(x+1)^2 et v'=e^x, crochet=1, J=(e-2)/e)
   - bank: content/maths/equations-differentielles/bank.yaml
     entry: bk-2022-n-x4
     scene_file: scenes/maths/equations-differentielles/bk-2022-n-x4.py

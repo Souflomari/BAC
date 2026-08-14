@@ -167,6 +167,7 @@ class Explication(BacScene):
             axis_config={"color": BAC_INK_SOFT, "stroke_width": 1.2, "include_tip": True},
         ).to_edge(RIGHT, buff=0.8).shift(DOWN * 0.1)
 
+        self.play(Create(axes))
         labels_axes = self.graduations(axes, x_vals=[-1.5, -1.0, -0.5, 0.5], y_vals=[-0.5, 0.5, 1.0])
 
         h_func = lambda x: (x + 1) * np.exp(x)
@@ -178,7 +179,7 @@ class Explication(BacScene):
 
         fig_grp = VGroup(axes, labels_axes, area_I, curve_h, lbl_h, lbl_I)
 
-        self.play(Create(axes), FadeIn(labels_axes), Create(curve_h), FadeIn(lbl_h))
+        self.play(Create(curve_h), FadeIn(lbl_h))
         self.play(FadeIn(area_I), FadeIn(lbl_I))
 
         self.legende("Aire sous la courbe de h sur [-1, 0] égale à 1/e.")
