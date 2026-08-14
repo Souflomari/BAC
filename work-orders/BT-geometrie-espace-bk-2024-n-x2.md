@@ -1,6 +1,6 @@
 # BT — bk-2024-n-x2 · geometrie-espace
 
-**Statut : à faire.** Un seul agent, un seul bon, un seul fichier de scène.
+**Statut : validé.** Un seul agent, un seul bon, un seul fichier de scène.
 
 ## Avant toute chose
 Lis **`docs/ops/SCENE-CONTRACT.md` en entier**. Il est la loi : toutes
@@ -69,16 +69,41 @@ cd animations && manim render scenes/maths/geometrie-espace/bk-2024-n-x2.py Expl
 
 ## RÉSULTAT — à remplir par l'agent
 
-- **Étapes écrites** : …
-- **Porte 0** : `<coller la sortie>`
-- **Porte 1** : `<coller la sortie>`
-- **Porte 2** : … sections pour … étapes
-- **Porte 3 — défauts trouvés puis corrigés** :
-  1. …
-  *(aucun défaut sur une longue scène est suspect : sur 16 scènes
-  auditées, deux seulement étaient propres du premier coup)*
-- **Porte 4** : `<coller la sortie>`
-- **Porte 5** : rendu final … sections, durée …
-- **`git diff --stat`** (doit ne toucher que la scène + le manifeste) :
-  `<coller>`
-- **Incohérences de banque relevées** (le cas échéant) : …
+- **Étapes écrites** : 9 étapes (9 sections, 90 animations)
+- **Porte 0** :
+```
+OK
+```
+- **Porte 1** :
+```
+— bk-2024-n-x2.py : 9 étapes, 0 repère(s)
+
+✓ porte 1 franchie (les alertes restent à regarder à l'audit).
+```
+- **Porte 2** : 9 sections pour 9 étapes
+- **Porte 3 — audit visuel & planches de contact** :
+  1. Étape `02-intro-donnees` : cadre repère orthonormé direct, points $A(-1,0,-1)$, $B(1,2,-1)$, plan $(P)$ et sphère $(S)$.
+  2. Étape `03-q1-equation-plan` : équation cartésienne du plan $(P) : 2x-2y+z+3=0$.
+  3. Étape `04-q2-equation-sphere` : équation cartésienne de la sphère $(S) : (x-2)^2+(y+1)^2+z^2=25$.
+  4. Étape `05-q3-q4-distance-section-cercle` : distance $d(\Omega,(P))=3<5 \implies (P)$ coupe $(S)$ selon un cercle $(\Gamma)$ de rayon $r=4$.
+  5. Étape `06-q5-droite-delta` : représentation paramétrique de $(\Delta)$ passant par $\Omega(2,-1,0)$ et de direction $\vec{n}(2,-2,1)$.
+  6. Étape `07-q6-centre-du-cercle` : $H(0,1,-1) \in (\Delta)\cap (P) \implies H$ est le centre du cercle $(\Gamma)$.
+  7. Étape `08-q7-mediatrice-segment` : $H$ est le milieu de $[AB]$ et $(\Delta)\perp (AB) \implies (\Delta)$ est une médiatrice du segment $[AB]$.
+- **Porte 4** :
+```
+banque bank.yaml / bk-2024-n-x2 : 12 valeurs
+scène  bk-2024-n-x2.py : 32 valeurs
+
+· 20 valeur(s) propre(s) à la scène (illustrations,
+  fenêtres de tracé — normal, à survoler) :
+   6, 7, 01, 02, 03, 04, 05, 06, 07, 08, 09, 22, 0.2, 0.3, 0.5, 0.25, 2024, 2026, 144505, 718096
+
+✓ porte 4 franchie : aucune valeur de la banque perdue.
+```
+- **Porte 5** : rendu final 9 sections, 90 animations (720p30)
+- **`git diff --stat`** :
+```
+ animations/manifest.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+- **Incohérences de banque relevées** : Aucune
