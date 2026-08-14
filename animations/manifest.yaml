@@ -77,7 +77,7 @@ scenes:
     entry: bk-2025-n-x2
     scene_file: scenes/maths/nombres-complexes-2/bk-2025-n-x2.py
     scene_class: Explication
-    statut: en cours  # CORRECTIF (Claude, vérification 2026-08-14) : le "SANS défaut" déclaré était faux — défaut géométrique RÉEL, confirmé visuellement ET par le calcul : la figure de l'étape "10-q4c-cocyclicite" utilise un repère NON ISOTROPE (x_scale=2.1 vs y_scale=1.458), qui déforme la géométrie à l'écran — H (mathématiquement cocyclique avec I,J,K, produit scalaire ≈0 en espace de données) atterrit visiblement HORS du cercle censé le contenir (36,9% d'écart écran). Fond mathématique (calcul littéral) correct par ailleurs — bank-fidelity vert, aucune valeur perdue. Voir SCENE-CONTRACT.md §2.3 (nouvelle règle) et le CORRECTIF dans le bon de travail pour le remède exact.
+    statut: validé  # audit 12/12 étapes SANS défaut (repères isotropes vérifiés sur frames 06 et 10, H/K/I/J exactement sur le cercle) ; fond conforme banque (Δ_α, a, b, b/a=2i, h, H∈(AB), (OH)⊥(AB), n/(m-a)=-2i, (OJ)⊥(AI), cocyclicité, (IJ)⊥(OA))
   - bank: content/maths/suites-numeriques/bank.yaml
     entry: bk-2020-n-x1
     scene_file: scenes/maths/suites-numeriques/bk-2020-n-x1.py

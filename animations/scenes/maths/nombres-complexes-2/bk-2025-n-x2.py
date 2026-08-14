@@ -365,31 +365,31 @@ class Explication(BacScene):
         cadre = SurroundingRectangle(eq5, color=COL_SUCCESS, buff=0.12)
 
         # Figure géométrique à droite (triangle OAB rectangle en O avec b/a = 2i, et hauteur OH)
+        # Repère strictement isotrope (échelle x = échelle y = 1.25)
         axes = Axes(
-            x_range=[-0.5, 2.5, 1],
-            y_range=[-0.5, 3.0, 1],
-            x_length=4.0,
-            y_length=3.5,
+            x_range=[-0.3, 1.9, 1],
+            y_range=[-0.3, 3.3, 1],
+            x_length=2.75,
+            y_length=4.50,
             axis_config={"color": BAC_INK_SOFT, "stroke_width": 1.2, "include_ticks": True},
             tips=False,
-        ).to_edge(RIGHT, buff=0.8).shift(DOWN * 0.3)
+        ).to_edge(RIGHT, buff=0.8).shift(DOWN * 0.2)
 
         self.play(Create(axes))
-        labels_axes = self.graduations(axes, x_vals=[1, 2], y_vals=[1, 2])
+        labels_axes = self.graduations(axes, x_vals=[1], y_vals=[1, 2, 3])
 
         p_O = axes.c2p(0, 0)
         p_A = axes.c2p(1.5, 0)
-        p_B = axes.c2p(0, 2.4)
-        # H est le projeté orthogonal de O sur (AB) : h = ab/(a+b)
-        # Avec a = 1.5, b = 2.4 i : h = (1.5*2.4i)/(1.5+2.4i) = 3.6i(1.5-2.4i)/(1.5^2+2.4^2)
-        # Re(h) = 3.6*2.4 / (2.25+5.76) = 8.64 / 8.01 = 1.078
-        # Im(h) = 3.6*1.5 / 8.01 = 5.4 / 8.01 = 0.674
-        p_H = axes.c2p(1.08, 0.67)
+        p_B = axes.c2p(0, 3.0)
+        # H est le projeté orthogonal exact de O sur (AB) : avec a=1.5, b=3.0i -> h = 1.2 + 0.6i
+        p_H = axes.c2p(1.2, 0.6)
 
         seg_OA = Line(p_O, p_A, color=COL_MATH, stroke_width=2)
         seg_OB = Line(p_O, p_B, color=COL_MATH, stroke_width=2)
         seg_AB = Line(p_A, p_B, color=COL_MATH, stroke_width=2)
         seg_OH = Line(p_O, p_H, color=COL_WARN, stroke_width=2.5)
+
+        ra_O = RightAngle(seg_OA, seg_OB, length=0.18, color=COL_MATH)
 
         dot_O = Dot(p_O, color=COL_MATH, radius=0.06)
         lbl_O = MathTex("O", font_size=16, color=COL_MATH).next_to(dot_O, DL, buff=0.08)
@@ -405,6 +405,7 @@ class Explication(BacScene):
 
         self.play(
             Create(seg_OA), Create(seg_OB), Create(seg_AB), Create(seg_OH),
+            Create(ra_O),
             FadeIn(dot_O), FadeIn(lbl_O),
             FadeIn(dot_A), FadeIn(lbl_A),
             FadeIn(dot_B), FadeIn(lbl_B),
@@ -418,7 +419,7 @@ class Explication(BacScene):
         self.play(Write(eq5), Create(cadre))
         self.pose(1.5)
 
-        fig_grp = VGroup(axes, labels_axes, seg_OA, seg_OB, seg_AB, seg_OH, dot_O, lbl_O, dot_A, lbl_A, dot_B, lbl_B, dot_H, lbl_H)
+        fig_grp = VGroup(axes, labels_axes, seg_OA, seg_OB, seg_AB, seg_OH, ra_O, dot_O, lbl_O, dot_A, lbl_A, dot_B, lbl_B, dot_H, lbl_H)
         self.play(FadeOut(self.titre_zone), FadeOut(enonce), FadeOut(calc_grp), FadeOut(cadre), FadeOut(fig_grp), FadeOut(narration))
 
     # ── Question 3.b ──────────────────────────────────────────────────
@@ -624,27 +625,28 @@ class Explication(BacScene):
         cadre = SurroundingRectangle(eq5, color=COL_SUCCESS, buff=0.12)
 
         # Figure géométrique à droite (cercle de diamètre [IJ] passant par K et H)
+        # Repère strictement isotrope (échelle x = échelle y = 1.6)
         axes = Axes(
             x_range=[-0.2, 1.8, 1],
             y_range=[-0.2, 2.2, 1],
-            x_length=4.2,
-            y_length=3.5,
+            x_length=3.2,
+            y_length=3.84,
             axis_config={"color": BAC_INK_SOFT, "stroke_width": 1.2, "include_ticks": True},
             tips=False,
-        ).to_edge(RIGHT, buff=0.8).shift(DOWN * 0.3)
+        ).to_edge(RIGHT, buff=0.8).shift(DOWN * 0.2)
 
         self.play(Create(axes))
         labels_axes = self.graduations(axes, x_vals=[1], y_vals=[1, 2])
 
-        # Points
-        p_I = axes.c2p(0.54, 0.34) # Milieu de [OH]
-        p_H = axes.c2p(1.08, 0.67) # H
-        p_J = axes.c2p(0.54, 1.54) # Milieu de [HB] avec B=(0, 2.4)
-        p_K = axes.c2p(0.38, 1.08) # Intersection (OJ) et (AI)
+        # Points exacts dérivés de a=1.5 et b=3.0i
+        p_I = axes.c2p(0.6, 0.3)    # I milieu de [OH] avec H=(1.2, 0.6)
+        p_J = axes.c2p(0.6, 1.8)    # J milieu de [HB] avec B=(0, 3.0)
+        p_H = axes.c2p(1.2, 0.6)    # H
+        p_K = axes.c2p(0.15, 0.45)  # K = (OJ) ∩ (AI)
 
-        # Centre et rayon du diamètre [IJ]
-        center_IJ = (p_I + p_J) / 2
-        r_IJ = np.linalg.norm(p_J - p_I) / 2
+        # Centre et rayon exacts du cercle de diamètre [IJ]
+        center_IJ = axes.c2p(0.6, 1.05)
+        r_IJ = np.linalg.norm(axes.c2p(0.6, 1.8) - center_IJ)
         cercle = Circle(radius=r_IJ, color=COL_SUCCESS, stroke_width=2.5).move_to(center_IJ)
 
         dot_I = Dot(p_I, color=COL_EMPH, radius=0.06)
@@ -660,9 +662,18 @@ class Explication(BacScene):
         lbl_K = MathTex("K", font_size=16, color=COL_TITLE).next_to(dot_K, LEFT, buff=0.06)
 
         seg_IJ = Line(p_I, p_J, color=BAC_INK_SOFT, stroke_width=1.5, stroke_opacity=0.7)
+        seg_KI = Line(p_K, p_I, color=COL_TITLE, stroke_width=1.2, stroke_opacity=0.7)
+        seg_KJ = Line(p_K, p_J, color=COL_TITLE, stroke_width=1.2, stroke_opacity=0.7)
+        seg_HI = Line(p_H, p_I, color=COL_WARN, stroke_width=1.2, stroke_opacity=0.7)
+        seg_HJ = Line(p_H, p_J, color=COL_WARN, stroke_width=1.2, stroke_opacity=0.7)
+
+        ra_K = RightAngle(seg_KI, seg_KJ, length=0.14, color=COL_TITLE)
+        ra_H = RightAngle(seg_HI, seg_HJ, length=0.14, quadrant=(-1, 1), color=COL_WARN)
 
         self.play(
             Create(cercle), Create(seg_IJ),
+            Create(seg_KI), Create(seg_KJ), Create(ra_K),
+            Create(seg_HI), Create(seg_HJ), Create(ra_H),
             FadeIn(dot_I), FadeIn(lbl_I),
             FadeIn(dot_J), FadeIn(lbl_J),
             FadeIn(dot_H), FadeIn(lbl_H),
@@ -676,7 +687,12 @@ class Explication(BacScene):
         self.play(Write(eq5), Create(cadre))
         self.pose(1.5)
 
-        fig_grp = VGroup(axes, labels_axes, cercle, seg_IJ, dot_I, lbl_I, dot_J, lbl_J, dot_H, lbl_H, dot_K, lbl_K)
+        fig_grp = VGroup(
+            axes, labels_axes, cercle, seg_IJ,
+            seg_KI, seg_KJ, ra_K,
+            seg_HI, seg_HJ, ra_H,
+            dot_I, lbl_I, dot_J, lbl_J, dot_H, lbl_H, dot_K, lbl_K,
+        )
         self.play(FadeOut(self.titre_zone), FadeOut(enonce), FadeOut(calc_grp), FadeOut(cadre), FadeOut(fig_grp), FadeOut(narration))
 
     # ── Question 4.d ──────────────────────────────────────────────────
