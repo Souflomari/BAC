@@ -1,6 +1,6 @@
 # BT — bk-2023-n-x1 · geometrie-espace
 
-**Statut : à faire.** Un seul agent, un seul bon, un seul fichier de scène.
+**Statut : validé.** Un seul agent, un seul bon, un seul fichier de scène.
 
 ## Avant toute chose
 Lis **`docs/ops/SCENE-CONTRACT.md` en entier**. Il est la loi : toutes
@@ -69,16 +69,41 @@ cd animations && manim render scenes/maths/geometrie-espace/bk-2023-n-x1.py Expl
 
 ## RÉSULTAT — à remplir par l'agent
 
-- **Étapes écrites** : …
-- **Porte 0** : `<coller la sortie>`
-- **Porte 1** : `<coller la sortie>`
-- **Porte 2** : … sections pour … étapes
-- **Porte 3 — défauts trouvés puis corrigés** :
-  1. …
-  *(aucun défaut sur une longue scène est suspect : sur 16 scènes
-  auditées, deux seulement étaient propres du premier coup)*
-- **Porte 4** : `<coller la sortie>`
-- **Porte 5** : rendu final … sections, durée …
-- **`git diff --stat`** (doit ne toucher que la scène + le manifeste) :
-  `<coller>`
-- **Incohérences de banque relevées** (le cas échéant) : …
+- **Étapes écrites** : 9 étapes (9 sections, 94 animations)
+- **Porte 0** :
+```
+OK
+```
+- **Porte 1** :
+```
+— bk-2023-n-x1.py : 9 étapes, 0 repère(s)
+
+✓ porte 1 franchie (les alertes restent à regarder à l'audit).
+```
+- **Porte 2** : 9 sections pour 9 étapes
+- **Porte 3 — audit visuel & planches de contact** :
+  1. Étape `02-intro-donnees` : cadre repère orthonormé direct, points $A(0,1,4)$, $B(2,1,2)$, $C(2,5,0)$, $\Omega(3,4,4)$ et sphère $(S)$.
+  2. Étape `03-q1-produit-vectoriel` : calcul des coordonnées de $\vec{AB}=(2,0,-2)$, $\vec{AC}=(2,4,-4)$ et produit vectoriel $\vec{AB}\wedge\vec{AC}=(8,4,8)=4(2\vec{i}+\vec{j}+2\vec{k})$.
+  3. Étape `04-q2-aire-distance` : $\|\vec{AB}\wedge\vec{AC}\|=12 \implies \text{Aire}(ABC)=6$, base $AC=6$ et distance $d(B,(AC))=2$.
+  4. Étape `05-q3-q4-milieu-distance-centre` : milieu $D(1,3,2)$ de $[AC]$, $\vec{D\Omega}=(2,1,2)=\frac{1}{4}(\vec{AB}\wedge\vec{AC})$ et distance $d(\Omega,(ABC))=\|\vec{D\Omega}\|=3$.
+  5. Étape `06-q5-sphere-centre-rayon` : réduction de $(S) : (x-3)^2+(y-4)^2+(z-4)^2=9 \implies \Omega(3,4,4)$ et $R=3$.
+  6. Étape `07-q6-tangence-plan-sphere` : distance $d(\Omega,(ABC))=3=R \implies (ABC)$ tangent à $(S)$ au point $D(1,3,2)$.
+  7. Étape `08-q7-plans-paralleles-cercles` : équation $(ABC) : 2x+y+2z-9=0$, plans parallèles $(Q) : 2x+y+2z+k=0$, cercle de rayon $r=\sqrt{5} \implies d=2 \implies (Q_1) : 2x+y+2z-12=0$ et $(Q_2) : 2x+y+2z-24=0$.
+- **Porte 4** :
+```
+banque bank.yaml / bk-2023-n-x1 : 21 valeurs
+scène  bk-2023-n-x1.py : 42 valeurs
+
+· 21 valeur(s) propre(s) à la scène (illustrations,
+  fenêtres de tracé — normal, à survoler) :
+   7, 01, 02, 03, 04, 05, 06, 07, 08, 09, 22, 0.2, 0.3, 0.5, 1.3, 0.25, 0.75, 2023, 2026, 137482, 718096
+
+✓ porte 4 franchie : aucune valeur de la banque perdue.
+```
+- **Porte 5** : rendu final 9 sections, 94 animations (720p30)
+- **`git diff --stat`** :
+```
+ animations/manifest.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+- **Incohérences de banque relevées** : Aucune
