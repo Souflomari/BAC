@@ -165,6 +165,25 @@ def _fig_membres(fig: dict) -> VGroup:
   bombe vers le BAS. Pour bomber vers le haut : `angle=-PI/2`.
 - Une courbe ne se trace **jamais en un seul appel à travers une
   asymptote verticale** : une branche par appel.
+- **Le repère doit être ISOTROPE (même échelle en x et en y) dès qu'une
+  figure illustre un CERCLE ou un ANGLE DROIT** — un `Axes(x_range=…,
+  y_range=…, x_length=…, y_length=…)` où
+  `x_length / (x_range[1]-x_range[0])` ≠ `y_length / (y_range[1]-y_range[0])`
+  déforme silencieusement la géométrie à l'écran : un cercle construit
+  en espace-écran à partir de deux points déjà projetés via `axes.c2p()`
+  reste un vrai cercle À L'ÉCRAN, mais un TROISIÈME point projeté par le
+  même `axes.c2p()`, mathématiquement cocyclique dans l'espace de
+  données, **atterrit visiblement hors du cercle** — le dessin
+  contredit alors la preuve qu'il illustre. Défaut RÉEL trouvé le
+  2026-08-14 (`nombres-complexes-2/bk-2025-n-x2.py`, question de
+  cocyclicité K/I/H/J : écart de 36,9 % entre le rayon écran et la
+  distance H-centre, alors que le produit scalaire en espace de données
+  valait ≈0). **Avant de construire tout `Circle(...)` ou tout angle
+  droit dessiné (`RightAngle`, `Angle`) à partir de points passés par
+  `axes.c2p()`, vérifie `x_length/(x_span) == y_length/(y_span)`** — au
+  besoin, ajuste `x_length` ou `y_length` (jamais les `range`, qui
+  suivent les valeurs de l'énoncé) pour égaliser les deux échelles,
+  quitte à ce que la figure ne remplisse pas tout son cadre.
 
 ### 2.4 Zones
 - La colonne de travail (ardoise) à GAUCHE, la figure à DROITE.
