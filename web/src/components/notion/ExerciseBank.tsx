@@ -14,6 +14,7 @@
 import { cn } from "@/lib/utils";
 import type { NotionBank } from "@/lib/content";
 import { BankCard } from "./BankCard";
+import { resolveExplication } from "@/lib/explications";
 
 /** « N sujets » — the honest count (BANK-SPEC §1). Singular-safe. */
 export function bankCountLabel(n: number): string {
@@ -51,8 +52,16 @@ export function ExerciseBank({ bank }: { bank: NotionBank }) {
 
       {count > 0 && (
         <div className="mt-8 flex flex-col gap-5">
+          {/* L'explication animée est résolue ICI, côté serveur : le lecteur
+              est un composant client, mais l'index `published.json` se lit sur
+              le disque. Une entrée sans explication publiée reçoit `null` et
+              ne rend aucun lecteur — état honnête (cf. lib/explications.ts). */}
           {entries.map((entry) => (
-            <BankCard key={entry.id} entry={entry} />
+            <BankCard
+              key={entry.id}
+              entry={entry}
+              explication={resolveExplication(bank.notion, entry.id)}
+            />
           ))}
         </div>
       )}

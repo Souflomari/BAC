@@ -2503,6 +2503,121 @@ try {
     else console.log(`  ✓ ${nCards} expanded bank cards — 0px overflow à 390`);
   }
 
+  // ── SWEEP: explication animée — l'état honnête et la garde tentative-d'abord
+  //    (ADR 0029). Ce balayage se synchronise tout seul sur
+  //    `animations/published.json` : il n'y a rien à mettre à jour à la main
+  //    le jour où le premier lot est publié.
+  //
+  //      · index VIDE  → AUCUN lecteur, AUCUNE porte ne doit exister nulle
+  //        part. C'est l'assertion qui prouve la règle d'état honnête : une
+  //        scène validée mais non téléversée ne laisse aucune trace d'UI.
+  //      · index PLEIN → sur une entrée publiée, la porte existe, et **rien
+  //        de la vidéo n'est dans le DOM avant le clic** (ni <video>, ni URL,
+  //        ni transcript) ; après le clic, la vidéo et le transport sont là.
+  //        C'est la garde attempt-first étendue au corrigé animé.
+  {
+    let pubIndex = { entries: {} };
+    try {
+      pubIndex = JSON.parse(
+        readFileSync(path.join(path.dirname(WEB), "animations/published.json"), "utf8")
+      );
+    } catch {
+      // index absent → traité comme vide, exactement comme le fait le site
+    }
+    const published = Object.keys(pubIndex.entries ?? {});
+
+    console.log(
+      `\n[bank] SWEEP: explication animée — ${published.length} entrée(s) publiée(s)`
+    );
+
+    const xpage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    // Le chapitre de banque est le dernier : autant de `##` dans la leçon,
+    // plus un. Recalculé ici — le balayage précédent l'a dans sa portée.
+    const lessonSrcX = readFileSync(
+      path.join(CONTENT_ROOT, "pc/reactions-acido-basiques/lesson.md"),
+      "utf8"
+    );
+    const bankChapterNum2 = (lessonSrcX.match(/^##\s/gm) || []).length + 1;
+    await xpage.goto(`${BASE}${BANK_NOTION}?chapitre=${bankChapterNum2}`, {
+      waitUntil: "networkidle",
+    });
+    await xpage
+      .waitForSelector("[data-bank-card] > button", { state: "visible", timeout: 5000 })
+      .catch(() => {});
+    // Ouvrir toutes les cartes : le lecteur ne vit que dans le corps déplié.
+    const cards = await xpage.locator("[data-bank-card] > button").all();
+    for (const c of cards) await c.click();
+    await xpage.waitForTimeout(200);
+
+    // Deux conditions pour qu'un lecteur soit LÉGITIMEMENT rendu : l'entrée
+    // est dans l'index ET la base d'URL publique existe au build. Sans base,
+    // `resolveExplication` renvoie null exprès (on ne fabrique pas une URL
+    // bancale) — l'absence de lecteur est alors le comportement CORRECT, pas
+    // une régression. Sans cette nuance, le balayage crierait au défaut sur
+    // un build local sans variables Supabase.
+    const urlBase = !!process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const pilotPublished =
+      urlBase && published.some((k) => k.startsWith("pc/reactions-acido-basiques::"));
+
+    const seen = await xpage.evaluate(() => ({
+      gates: document.querySelectorAll("[data-explication-gate]").length,
+      players: document.querySelectorAll("[data-explication]").length,
+      videos: document.querySelectorAll("[data-explication] video, [data-explication-gate] video").length,
+    }));
+
+    checks++;
+    if (!pilotPublished) {
+      // Aucune explication publiée pour la notion pilote → zéro UI.
+      if (seen.gates !== 0 || seen.players !== 0) {
+        failures += fail(
+          `index sans explication pour la notion pilote, mais ${seen.gates} porte(s) / ${seen.players} lecteur(s) rendus — état honnête rompu`
+        );
+      } else {
+        const raison = published.length === 0
+          ? "index vide"
+          : urlBase
+            ? "rien de publié pour la notion pilote"
+            : "NEXT_PUBLIC_SUPABASE_URL absente";
+        console.log(
+          `  ✓ ${raison} → aucune porte, aucun lecteur (état honnête)`
+        );
+      }
+    } else {
+      // Publiée : la porte doit être là, la vidéo NON — avant le clic.
+      if (seen.gates === 0) {
+        failures += fail("explication publiée mais aucune porte [data-explication-gate] rendue");
+      } else if (seen.videos !== 0) {
+        failures += fail(`${seen.videos} <video> dans le DOM AVANT le commit — garde attempt-first rompue`);
+      } else {
+        console.log(`  ✓ ${seen.gates} porte(s), 0 <video> avant le commit`);
+      }
+
+      // Après le clic : vidéo + transport présents.
+      checks++;
+      await xpage.locator("[data-explication-gate] button").first().click();
+      await xpage.waitForTimeout(200);
+      const after = await xpage.evaluate(() => {
+        const p = document.querySelector("[data-explication]");
+        return {
+          player: !!p,
+          video: !!p?.querySelector("video"),
+          transport: !!p?.querySelector("[role='group']"),
+          transcript: !!p?.querySelector("[data-explication-transcript]"),
+        };
+      });
+      if (!after.player || !after.video) {
+        failures += fail("après le commit : lecteur ou <video> absent");
+      } else if (!after.transport) {
+        failures += fail("après le commit : transport « Étape n / N » absent");
+      } else {
+        console.log(
+          `  ✓ après le commit : lecteur + <video> + transport${after.transcript ? " + transcript" : ""}`
+        );
+      }
+    }
+    await xpage.close();
+  }
+
   // ── SWEEP: token source parity — every CSS custom property resolves to its
   //    tokens.ts value, in BOTH themes. The single-source guarantee, asserted
   //    against the rendered DOM (not the source files). Reads getPropertyValue

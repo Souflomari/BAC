@@ -31,6 +31,8 @@ import { Icon } from "@/components/ui/Icon";
 import type { NotionBankEntry } from "@/lib/content";
 import { AttemptFirstQuestions, MdBlock } from "./AttemptFirstExercise";
 import { useExerciseRevealIds } from "@/lib/student-state";
+import { ExplicationPlayer } from "./ExplicationPlayer";
+import type { ExplicationResolue } from "@/lib/explications";
 
 function sessionLabel(session: string): string {
   if (session === "normale") return "Normale";
@@ -51,7 +53,14 @@ function formatPts(n?: number): string | null {
   return `/${s} pts`;
 }
 
-export function BankCard({ entry }: { entry: NotionBankEntry }) {
+export function BankCard({
+  entry,
+  explication = null,
+}: {
+  entry: NotionBankEntry;
+  /** L'explication animée publiée pour cette entrée, ou null (état honnête). */
+  explication?: ExplicationResolue | null;
+}) {
   const [open, setOpen] = useState(false);
   const revealIds = useExerciseRevealIds();
   // « fait » iff the journal holds a reveal for ANY of this entry's questions.
@@ -150,6 +159,14 @@ export function BankCard({ entry }: { entry: NotionBankEntry }) {
           <div data-exercise={entry.id} aria-label={entry.title} className="mt-2">
             <AttemptFirstQuestions exerciseId={entry.id} questions={entry.questions} />
           </div>
+
+          {/* L'explication animée vient APRÈS les questions, jamais avant :
+              elle déroule le corrigé entier et porte donc sa propre garde
+              « tentative d'abord » (cf. ExplicationPlayer). Absente de
+              l'index → rien ne se rend du tout. */}
+          {explication && (
+            <ExplicationPlayer explication={explication} title={entry.title} />
+          )}
         </div>
       )}
     </article>
