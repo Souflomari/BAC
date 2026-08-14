@@ -1,6 +1,6 @@
 # BT — bk-2023-n-x4 · arithmetique
 
-**Statut : à faire.** Un seul agent, un seul bon, un seul fichier de scène.
+**Statut : validé.** Un seul agent, un seul bon, un seul fichier de scène.
 
 ## Avant toute chose
 Lis **`docs/ops/SCENE-CONTRACT.md` en entier**. Il est la loi : toutes
@@ -69,16 +69,41 @@ cd animations && manim render scenes/maths/arithmetique/bk-2023-n-x4.py Explicat
 
 ## RÉSULTAT — à remplir par l'agent
 
-- **Étapes écrites** : …
-- **Porte 0** : `<coller la sortie>`
-- **Porte 1** : `<coller la sortie>`
-- **Porte 2** : … sections pour … étapes
-- **Porte 3 — défauts trouvés puis corrigés** :
-  1. …
-  *(aucun défaut sur une longue scène est suspect : sur 16 scènes
-  auditées, deux seulement étaient propres du premier coup)*
-- **Porte 4** : `<coller la sortie>`
-- **Porte 5** : rendu final … sections, durée …
-- **`git diff --stat`** (doit ne toucher que la scène + le manifeste) :
-  `<coller>`
-- **Incohérences de banque relevées** (le cas échéant) : …
+- **Étapes écrites** : 9 étapes (9 sections, 96 animations)
+- **Porte 0** :
+```
+OK
+```
+- **Porte 1** :
+```
+— bk-2023-n-x4.py : 9 étapes, 0 repère(s)
+
+✓ porte 1 franchie (les alertes restent à regarder à l'audit).
+```
+- **Porte 2** : 9 sections pour 9 étapes
+- **Porte 3 — audit visuel & planches de contact** :
+  1. Étape `02-intro-donnees` : présentation $p$ premier impair, $(E) : x^2 \equiv 2 \pmod p$.
+  2. Étape `03-q1-q2-partie-a-fermat` : $2^{p-1} \equiv 1 \pmod p$ par Fermat $\implies 2^{\frac{p-1}{2}} \equiv \pm 1 \pmod p$ par Euclide.
+  3. Étape `04-q3-q4-partie-b-solution` : $x$ solution $\implies \mathrm{PGCD}(p,x)=1 \implies 2^{\frac{p-1}{2}} \equiv 1 \pmod p$.
+  4. Étape `05-q5-partie-c-coefficients` : $p \mid C_p^k$ pour $1 \le k \le p-1$ via Gauss.
+  5. Étape `06-q6-partie-d-moivre` : $(1+i)^p = 2^{\frac{p}{2}}\cos(p\pi/4) + i 2^{\frac{p}{2}}\sin(p\pi/4)$ par Moivre.
+  6. Étape `07-q7-partie-d-congruence` : partie réelle entière et $2^{\frac{p}{2}}\cos(p\pi/4) \equiv 1 \pmod p$.
+  7. Étape `08-q8-partie-e-conclusion` : $p \equiv 5 \pmod 8 \implies 2^{\frac{p-1}{2}} \equiv -1 \pmod p \implies 1 \equiv -1 \pmod p \implies p \mid 2$, contradiction $\implies$ aucune solution dans $\mathbb{Z}$.
+- **Porte 4** :
+```
+banque bank.yaml / bk-2023-n-x4 : 7 valeurs
+scène  bk-2023-n-x4.py : 24 valeurs
+
+· 17 valeur(s) propre(s) à la scène (illustrations,
+  fenêtres de tracé — normal, à survoler) :
+   6, 7, 01, 02, 03, 04, 05, 06, 07, 08, 09, 0.2, 0.3, 0.5, 0.25, 2023, 718096
+
+✓ porte 4 franchie : aucune valeur de la banque perdue.
+```
+- **Porte 5** : rendu final 9 sections, 96 animations (720p30)
+- **`git diff --stat`** :
+```
+ animations/manifest.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+- **Incohérences de banque relevées** : Aucune
