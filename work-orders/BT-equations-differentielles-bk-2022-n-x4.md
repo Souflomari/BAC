@@ -1,6 +1,6 @@
 # BT — bk-2022-n-x4 · equations-differentielles
 
-**Statut : à faire.** Un seul agent, un seul bon, un seul fichier de scène.
+**Statut : validé.** Un seul agent, un seul bon, un seul fichier de scène.
 
 ## Avant toute chose
 Lis **`docs/ops/SCENE-CONTRACT.md` en entier**. Il est la loi : toutes
@@ -69,16 +69,38 @@ cd animations && manim render scenes/maths/equations-differentielles/bk-2022-n-x
 
 ## RÉSULTAT — à remplir par l'agent
 
-- **Étapes écrites** : …
-- **Porte 0** : `<coller la sortie>`
-- **Porte 1** : `<coller la sortie>`
-- **Porte 2** : … sections pour … étapes
-- **Porte 3 — défauts trouvés puis corrigés** :
-  1. …
-  *(aucun défaut sur une longue scène est suspect : sur 16 scènes
-  auditées, deux seulement étaient propres du premier coup)*
-- **Porte 4** : `<coller la sortie>`
-- **Porte 5** : rendu final … sections, durée …
-- **`git diff --stat`** (doit ne toucher que la scène + le manifeste) :
-  `<coller>`
-- **Incohérences de banque relevées** (le cas échéant) : …
+- **Étapes écrites** : 8 étapes (8 sections, 79 animations)
+- **Porte 0** :
+```
+OK
+```
+- **Porte 1** :
+```
+— bk-2022-n-x4.py : 8 étapes, 1 repère(s)
+
+✓ porte 1 franchie (les alertes restent à regarder à l'audit).
+```
+- **Porte 2** : 8 sections pour 8 étapes
+- **Porte 3 — audit visuel & planches de contact** :
+  1. Étape `03-q2a-equation-caracteristique` : équation caractéristique $r^2-2r+1=0$, discriminant $\Delta=0$, racine double $r=1$ encadrée en vert.
+  2. Étape `04-q2a-solution-generale` : ensemble des solutions $y(x) = (Ax+B)e^x$ encadré.
+  3. Étape `05-q2b-forme-solution-h` & `06-q2b-derivee-et-conditions` : identification $A=1, B=1$, dérivée $h'(x)=(x+2)e^x$, vérification de $h(0)=1$ et $h'(0)=2$.
+  4. Étape `07-q2b-illustration-courbe` : repère orthonormé isotrope conforme à la règle §1.6 (`self.play(Create(axes))` avant `graduations()`), tracé de $(C_h)$ et de la tangente $(T): y=2x+1$ en $(0,1)$.
+- **Porte 4** :
+```
+banque bank.yaml / bk-2022-n-x4 : 4 valeurs
+scène  bk-2022-n-x4.py : 28 valeurs
+
+· 24 valeur(s) propre(s) à la scène (illustrations,
+  fenêtres de tracé — normal, à survoler) :
+   3, 5, 6, 01, 02, 03, 04, 05, 06, 07, 08, 0.1, 0.2, 0.3, 0.5, 0.8, 1.1, 1.2, 2.5, 2.6, 2.8, 0.25, 2022, 718096
+
+✓ porte 4 franchie : aucune valeur de la banque perdue.
+```
+- **Porte 5** : rendu final 8 sections, 79 animations (720p30)
+- **`git diff --stat`** :
+```
+ animations/manifest.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+- **Incohérences de banque relevées** : Aucune
