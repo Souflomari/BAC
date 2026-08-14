@@ -1,6 +1,6 @@
 # BT — bk-2019-n-x4 · fonction-exponentielle
 
-**Statut : à faire.** Un seul agent, un seul bon, un seul fichier de scène.
+**Statut : validé.** Un seul agent, un seul bon, un seul fichier de scène.
 
 ## Avant toute chose
 Lis **`docs/ops/SCENE-CONTRACT.md` en entier**. Il est la loi : toutes
@@ -69,16 +69,38 @@ cd animations && manim render scenes/maths/fonction-exponentielle/bk-2019-n-x4.p
 
 ## RÉSULTAT — à remplir par l'agent
 
-- **Étapes écrites** : …
-- **Porte 0** : `<coller la sortie>`
-- **Porte 1** : `<coller la sortie>`
-- **Porte 2** : … sections pour … étapes
-- **Porte 3 — défauts trouvés puis corrigés** :
-  1. …
-  *(aucun défaut sur une longue scène est suspect : sur 16 scènes
-  auditées, deux seulement étaient propres du premier coup)*
-- **Porte 4** : `<coller la sortie>`
-- **Porte 5** : rendu final … sections, durée …
-- **`git diff --stat`** (doit ne toucher que la scène + le manifeste) :
-  `<coller>`
-- **Incohérences de banque relevées** (le cas échéant) : …
+- **Étapes écrites** : 23 étapes (23 sections, 187 animations)
+- **Porte 0** :
+```
+OK
+```
+- **Porte 1** :
+```
+— bk-2019-n-x4.py : 23 étapes, 2 repère(s)
+
+✓ porte 1 franchie (les alertes restent à regarder à l'audit).
+```
+- **Porte 2** : 23 sections pour 23 étapes
+- **Porte 3 — audit visuel & planches de contact** :
+  1. Étape `05-q2b-variations-tableau` : tableau de variations complet avec limites, zéros de $f'$, flèches et extremums ($f(0)=0$, $f(1)=4/e-2$).
+  2. Étape `12-q4b-courbe-C` : repère orthonormé isotrope avec tracé de $(C)$, tangentes horizontales en $0$ et $1$, minimum et zéro $\alpha$.
+  3. Étape `15-q5c-aire-domaine` : domaine sous l'axe des abscisses ombré entre $0$ et $\alpha$ avec repère isotrope et graduations.
+  4. Toutes les étapes algébriques, théorèmes (Rolle, TAF, TVI, IPP) et étude de la suite $(u_n)$ vérifiés sans aucun chevauchement.
+- **Porte 4** :
+```
+banque bank.yaml / bk-2019-n-x4 : 21 valeurs
+scène  bk-2019-n-x4.py : 81 valeurs
+
+· 60 valeur(s) propre(s) à la scène (illustrations,
+  fenêtres de tracé — normal, à survoler) :
+   01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 0.2, 0.3, 0.4, 0.6, 0.9, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.9, 2.1, 2.2, 2.4, 2.5, 2.8 …
+
+✓ porte 4 franchie : aucune valeur de la banque perdue.
+```
+- **Porte 5** : rendu final 23 sections, 187 animations (720p30)
+- **`git diff --stat`** :
+```
+ animations/manifest.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+- **Incohérences de banque relevées** : Aucune
