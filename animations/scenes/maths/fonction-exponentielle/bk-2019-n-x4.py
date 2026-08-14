@@ -6,6 +6,11 @@ Fonction définie sur R par :
     f(x) = 4x(e^(-x) + 1/2 x - 1) = 4x e^(-x) + 2x^2 - 4x
 """
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
+
 from manim import *
 import numpy as np
 from bac_scene import BacScene
