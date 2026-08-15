@@ -24,6 +24,7 @@ import { Icon } from "@/components/ui/Icon";
 import { FigurePente } from "./Figures";
 import { FigureSecanteMafs } from "./FigureSecanteMafs";
 import { COMPETENCES, ECRANS, type Ecran } from "@/lib/atelier/derivees";
+import { PlanChaine } from "./PlanChaine";
 
 function Chaine({ courante }: { courante: string }) {
   return (
@@ -55,6 +56,10 @@ function Chaine({ courante }: { courante: string }) {
 }
 
 export function Atelier() {
+  // On entre par le PLAN, jamais directement dans le premier écran :
+  // l'élève doit savoir où il va et ce qu'on suppose de lui avant de
+  // commencer (retour owner : « ça arrive au hasard »).
+  const [demarre, setDemarre] = useState(false);
   const [i, setI] = useState(0);
   const [choisi, setChoisi] = useState<string | null>(null);
   const [reussi, setReussi] = useState(false);
@@ -87,8 +92,10 @@ export function Atelier() {
 
   const dernier = i === ECRANS.length - 1;
 
+  if (!demarre) return <PlanChaine onDemarrer={() => setDemarre(true)} />;
+
   return (
-    <div className="grid gap-8 bp-medium:grid-cols-[1fr_260px] bp-medium:gap-10">
+    <div className="grid gap-8 bp-medium:grid-cols-[minmax(0,1fr)_220px] bp-medium:gap-10">
       <div>
         {/* la figure — elle porte l'idée (R5) */}
         {ecran.figure === "pente" && (
@@ -105,8 +112,8 @@ export function Atelier() {
         {ecran.figure === "secante" && <FigureSecanteMafs key={ecran.id} />}
 
         {/* ≤ 2 phrases (R2) */}
-        <p className="mt-5 text-body-lg text-primary max-w-reading">{ecran.texte}</p>
-        <p className="mt-3 text-body text-secondary max-w-reading">{ecran.question}</p>
+        <p className="mt-6 text-h3 font-serif font-semibold text-primary max-w-reading">{ecran.texte}</p>
+        <p className="mt-3 text-body-lg text-secondary max-w-reading">{ecran.question}</p>
 
         {/* l'action (R1) */}
         {ecran.type === "choix" && (
