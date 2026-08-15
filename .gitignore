@@ -62,7 +62,12 @@ backend/supabase/.temp/
 /gemini-images/
 
 # Manim render artifacts (videos are build artifacts, never committed)
+# NB : le motif nu `media/` a été retiré (2026-08-14). Il attrapait TOUS
+# les dossiers `media/` du dépôt, y compris `content/<notion>/media/` où
+# vivent les figures de leçon. Les figures déjà suivies n'en souffraient
+# pas (gitignore n'affecte pas un fichier suivi), donc le piège était
+# invisible : toute figure NOUVELLE était silencieusement non commitée.
+# `animations/media*/` couvre déjà l'intention d'origine.
 animations/media*/
-media/
 temp_audit/
 animations/audit/

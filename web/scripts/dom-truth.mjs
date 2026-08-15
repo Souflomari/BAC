@@ -2610,18 +2610,22 @@ try {
         const p = document.querySelector("[data-explication]");
         return {
           player: !!p,
-          video: !!p?.querySelector("video"),
+          kind: p?.getAttribute("data-explication-kind") ?? null,
+          // Deux formes légitimes : la figure étagée (SVG, interactive) qui
+          // est la cible, et la vidéo qui reste le repli tant que tout
+          // n'est pas converti. On exige l'une OU l'autre, jamais rien.
+          media: !!p?.querySelector("video, svg"),
           transport: !!p?.querySelector("[role='group']"),
           transcript: !!p?.querySelector("[data-explication-transcript]"),
         };
       });
-      if (!after.player || !after.video) {
-        failures += fail("après le commit : lecteur ou <video> absent");
+      if (!after.player || !after.media) {
+        failures += fail("après le commit : lecteur ou média (svg/vidéo) absent");
       } else if (!after.transport) {
         failures += fail("après le commit : transport « Étape n / N » absent");
       } else {
         console.log(
-          `  ✓ après le commit : lecteur + <video> + transport${after.transcript ? " + transcript" : ""}`
+          `  ✓ après le commit : lecteur (${after.kind}) + média + transport${after.transcript ? " + transcript" : ""}`
         );
       }
     }

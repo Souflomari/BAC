@@ -32,7 +32,7 @@ import type { NotionBankEntry } from "@/lib/content";
 import { AttemptFirstQuestions, MdBlock } from "./AttemptFirstExercise";
 import { useExerciseRevealIds } from "@/lib/student-state";
 import { ExplicationPlayer } from "./ExplicationPlayer";
-import type { ExplicationResolue } from "@/lib/explications";
+import type { ExplicationResolue, ExplicationInteractive } from "@/lib/explications";
 
 function sessionLabel(session: string): string {
   if (session === "normale") return "Normale";
@@ -56,10 +56,13 @@ function formatPts(n?: number): string | null {
 export function BankCard({
   entry,
   explication = null,
+  interactive = null,
 }: {
   entry: NotionBankEntry;
   /** L'explication animée publiée pour cette entrée, ou null (état honnête). */
   explication?: ExplicationResolue | null;
+  /** La figure interactive, quand elle existe — elle prime sur la vidéo. */
+  interactive?: ExplicationInteractive | null;
 }) {
   const [open, setOpen] = useState(false);
   const revealIds = useExerciseRevealIds();
@@ -164,8 +167,12 @@ export function BankCard({
               elle déroule le corrigé entier et porte donc sa propre garde
               « tentative d'abord » (cf. ExplicationPlayer). Absente de
               l'index → rien ne se rend du tout. */}
-          {explication && (
-            <ExplicationPlayer explication={explication} title={entry.title} />
+          {(interactive || explication) && (
+            <ExplicationPlayer
+              explication={explication}
+              interactive={interactive}
+              title={entry.title}
+            />
           )}
         </div>
       )}

@@ -40,7 +40,8 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import { TransportButton } from "./TransportButton";
-import type { ExplicationResolue } from "@/lib/explications";
+import { StagedFigure } from "./StagedFigure";
+import type { ExplicationResolue, ExplicationInteractive } from "@/lib/explications";
 
 function Transcript({ lignes }: { lignes: string[] }) {
   if (lignes.length === 0) return null;
@@ -56,10 +57,13 @@ function Transcript({ lignes }: { lignes: string[] }) {
 }
 
 export function ExplicationPlayer({
-  explication,
+  explication = null,
+  interactive = null,
   title,
 }: {
-  explication: ExplicationResolue;
+  explication?: ExplicationResolue | null;
+  /** Figure étagée — quand elle existe, elle REMPLACE la vidéo. */
+  interactive?: ExplicationInteractive | null;
   title: string;
 }) {
   const [revealed, setRevealed] = useState(false);
@@ -72,8 +76,12 @@ export function ExplicationPlayer({
   // viens de cliquer Suivant » d'une lecture automatique subie.
   const suiteGesteRef = useRef(false);
 
-  const total = explication.steps.length;
-  const courante = explication.steps[Math.min(step, total) - 1];
+  // Ces valeurs ne concernent que le repli vidéo. Elles doivent rester
+  // sûres quand l'entrée n'a QUE de l'interactif (explication === null) —
+  // les hooks, eux, tournent toujours dans le même ordre.
+  const etapesVideo = explication?.steps ?? [];
+  const total = etapesVideo.length;
+  const courante = total > 0 ? etapesVideo[Math.min(step, total) - 1] : null;
   const atFirst = step <= 1;
   const atLast = step >= total;
 
@@ -121,7 +129,9 @@ export function ExplicationPlayer({
           )}
         >
           <Icon name="play" size={13} />
-          J’ai fait ma tentative — voir l’explication animée
+          {interactive
+            ? "J’ai fait ma tentative — voir l’explication pas à pas"
+            : "J’ai fait ma tentative — voir l’explication animée"}
         </button>
         <p className="mt-2 text-caption text-secondary max-w-reading">
           L’explication reprend l’exercice entier, étape par étape. Elle vaut
@@ -132,9 +142,42 @@ export function ExplicationPlayer({
     );
   }
 
+  // L'interactif prime : figure manipulable, texte vivant, ~30 Ko, rythme
+  // de l'élève. La vidéo n'est plus qu'un repli, le temps que les
+  // explications soient converties.
+  if (interactive) {
+    return (
+      <section
+        data-explication
+        data-explication-kind="interactive"
+        aria-label={`Explication pas à pas — ${title}`}
+        className="mt-6 border-t border-subtle pt-5"
+      >
+        <h4 className="text-caption font-medium uppercase tracking-eyebrow text-accent">
+          Explication pas à pas
+        </h4>
+        <div className="mt-3">
+          <StagedFigure
+            svg={interactive.svg}
+            slug={interactive.slug}
+            stages={interactive.stages}
+            label={title}
+            /* On démarre TOUJOURS à l'étape 1 : l'explication d'un exercice
+               se lit du début, contrairement aux figures de leçon dont
+               l'étape d'entrée dépend de leur place dans le document. */
+            initialStage={1}
+          />
+        </div>
+      </section>
+    );
+  }
+
+  if (!explication) return null;
+
   return (
     <section
       data-explication
+      data-explication-kind="video"
       data-entry-id={explication.entry}
       aria-label={`Explication animée — ${title}`}
       className="mt-6 border-t border-subtle pt-5"
@@ -196,12 +239,12 @@ export function ExplicationPlayer({
             /* La clé force un remontage propre à chaque changement de
                source : sans elle, Chrome garde parfois la frame du clip
                précédent sous le nouveau. */
-            key={full ? "full" : courante.slug}
-            src={full ? explication.fullUrl : courante.url}
+            key={full ? "full" : (courante?.slug ?? "v")}
+            src={full ? explication.fullUrl : (courante?.url ?? "")}
             /* Chaque étape a SON affiche : une affiche globale montrerait
                l'image d'une autre étape que celle annoncée par le transport. */
             poster={
-              (full ? explication.posterUrl : courante.posterUrl) ?? undefined
+              (full ? explication.posterUrl : (courante?.posterUrl ?? null)) ?? undefined
             }
             controls
             /* Rien n'est tiré tant que l'élève ne lance pas : l'affiche
@@ -254,16 +297,16 @@ export function ExplicationPlayer({
                   toujours présent, jamais replié — on lit aussi bien qu'on
                   écoute. */}
               <p className="mt-3 text-body-sm font-medium text-primary max-w-reading">
-                {courante.label}
+                {courante?.label}
               </p>
               {/* Le libellé EST la première phrase de narration : la
                   réafficher juste en dessous ferait doublon. On ne montre
                   donc que la suite. */}
               <Transcript
                 lignes={
-                  courante.captions[0] === courante.label
+                  courante && courante.captions[0] === courante.label
                     ? courante.captions.slice(1)
-                    : courante.captions
+                    : (courante?.captions ?? [])
                 }
               />
             </>

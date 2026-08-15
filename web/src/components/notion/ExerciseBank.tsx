@@ -14,7 +14,7 @@
 import { cn } from "@/lib/utils";
 import type { NotionBank } from "@/lib/content";
 import { BankCard } from "./BankCard";
-import { resolveExplication } from "@/lib/explications";
+import { resolveExplication, getExplicationInteractive } from "@/lib/explications";
 
 /** « N sujets » — the honest count (BANK-SPEC §1). Singular-safe. */
 export function bankCountLabel(n: number): string {
@@ -61,6 +61,7 @@ export function ExerciseBank({ bank }: { bank: NotionBank }) {
               key={entry.id}
               entry={entry}
               explication={resolveExplication(bank.notion, entry.id)}
+              interactive={getExplicationInteractive(bank.notion, entry.id)}
             />
           ))}
         </div>

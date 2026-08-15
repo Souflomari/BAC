@@ -178,3 +178,55 @@ export function resolveExplication(notion: string, entryId: string): Explication
     steps,
   };
 }
+
+// ─────────────────────────────────────────────────────────────────────────
+// Explication INTERACTIVE (ADR 0029 amendement 2 — pilote)
+//
+// Une explication interactive est une figure étagée : un SVG dont les
+// groupes `<g id="step-N">` se révèlent un par un, plus un sidecar de
+// légendes. C'est la MÊME mécanique que les 235 figures des leçons
+// (StagedFigure) — on ne réinvente rien, on branche la voie des exercices
+// sur la capacité que le produit avait déjà.
+//
+// Pourquoi elle prime sur la vidéo : elle est manipulable, le texte y est
+// vivant (KaTeX, sélectionnable, lisible par un lecteur d'écran), elle
+// pèse ~30 Ko au lieu de ~7 Mo, et l'élève avance à SON rythme au lieu de
+// subir un défilement. La vidéo reste le repli tant que toutes les
+// explications ne sont pas converties.
+//
+// Convention de fichiers, à côté des figures de leçon de la notion :
+//   content/<notion>/media/explication-<entryId>.svg
+//   content/<notion>/media/explication-<entryId>.stages.json
+
+export interface ExplicationInteractive {
+  slug: string;
+  svg: string;
+  stages: Array<{ caption: string }>;
+}
+
+export function getExplicationInteractive(
+  notion: string,
+  entryId: string
+): ExplicationInteractive | null {
+  const slug = `explication-${entryId}`;
+  const base = path.join(process.cwd(), "..", "content", notion, "media", slug);
+  let svg: string;
+  try {
+    svg = fs.readFileSync(`${base}.svg`, "utf-8");
+  } catch {
+    return null; // pas de figure → on retombe sur la vidéo, ou sur rien
+  }
+  let stages: Array<{ caption: string }> = [];
+  try {
+    const parsed = JSON.parse(fs.readFileSync(`${base}.stages.json`, "utf-8")) as {
+      stages?: Array<{ caption?: string }>;
+    };
+    stages = (parsed.stages ?? [])
+      .filter((x) => typeof x?.caption === "string")
+      .map((x) => ({ caption: x.caption as string }));
+  } catch {
+    // légendes absentes → la figure reste étageable, sans commentaire
+  }
+  if (stages.length === 0) return null; // une figure muette n'explique rien
+  return { slug, svg, stages };
+}
