@@ -25,7 +25,7 @@ import { COMPETENCES, ECRANS } from "@/lib/atelier/derivees";
 const NIVEAU_TON: Record<string, string> = {
   "collège": "bg-surface-raised text-secondary",
   "lycée": "bg-surface-raised text-secondary",
-  "bac": "bg-accent text-inverse",
+  "bac": "bg-accent text-on-accent",
 };
 
 export function PlanChaine({ onDemarrer }: { onDemarrer: () => void }) {
@@ -128,7 +128,7 @@ export function PlanChaine({ onDemarrer }: { onDemarrer: () => void }) {
         onClick={onDemarrer}
         className={cn(
           "mt-9 inline-flex min-h-touch items-center gap-2 rounded-full px-6 py-3",
-          "bg-accent text-inverse",
+          "bg-accent text-on-accent",
           "text-body font-medium",
           "state-layer focus-ring [--focus-radius:999px]",
           "transition-transform duration-micro ease-enter hover:scale-[1.02]"

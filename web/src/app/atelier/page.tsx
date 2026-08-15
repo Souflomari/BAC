@@ -15,26 +15,16 @@ export const metadata: Metadata = {
  * Délibérément à côté du site existant, pas dedans : on compare deux
  * modèles, on ne mélange pas. Les notions actuelles restent intactes le
  * temps de l'arbitrage.
+ *
+ * La page est volontairement nue : c'est `Atelier` qui décide de sa largeur
+ * et de ses marges, parce qu'elles CHANGENT entre le plan (une colonne de
+ * lecture) et le parcours (deux panneaux larges). Un gabarit imposé ici
+ * briderait la scène, qui est justement ce qu'on veut voir en grand.
  */
 export default function AtelierPage() {
   return (
-    <main className="mx-auto max-w-container px-5 py-10 bp-medium:px-8 bp-medium:py-14">
-      <header className="max-w-reading">
-        <p className="text-caption font-medium uppercase tracking-eyebrow text-accent">
-          Prototype · chaîne de compétences
-        </p>
-        <h1 className="mt-2 font-serif text-h1 font-semibold text-primary">
-          Les dérivées
-        </h1>
-        <p className="mt-3 text-body-lg text-secondary">
-          De la pente vue au collège jusqu’au nombre dérivé du bac. Rien à lire
-          d’abord : à chaque écran, tu fais quelque chose.
-        </p>
-      </header>
-
-      <div className="mt-10">
-        <Atelier />
-      </div>
+    <main>
+      <Atelier />
     </main>
   );
 }

@@ -103,6 +103,26 @@ items portent un `primary_misconception` et un feedback par distracteur
 qui explique l'erreur précise. C'est l'actif le plus sous-exploité du
 dépôt.
 
+### La composition, qui n'est pas de la décoration
+
+La première version du prototype respectait les quatre points ci-dessus
+et ratait quand même sa cible, parce qu'elle les EMPILAIT : figure,
+puis texte, puis boutons, puis — tout en bas, en petit — la réponse à
+l'erreur. Verdict de l'owner : « les explications sont écrites petit à
+la fin, elles ne prennent pas l'écran ». Trois règles en sont tirées, et
+elles valent pour toute chaîne future :
+
+- **La figure ne quitte pas le champ de vision.** Elle est collante.
+  Lire pourquoi on s'est trompé pendant que la figure qui le montre est
+  passée sous le pli, c'est revenir à une illustration décorative.
+- **La réponse à l'erreur a la taille d'un texte qu'on lit**, pas d'une
+  note de bas de page. C'est le moment où on enseigne ; il occupe la
+  place que ça mérite.
+- **Le mouvement porte l'idée ou n'existe pas.** La droite d'une réponse
+  fausse ne surgit pas à sa place : elle part de la bonne et s'en écarte
+  sous les yeux de l'élève. L'écart est PARCOURU. Une animation qui
+  n'enseigne rien est du bruit, et le cœur calme l'interdit.
+
 ---
 
 ## 4. LA RÈGLE — ce qui remplace les portes vertes
@@ -164,6 +184,22 @@ décrochent.
   l'impression d'un quiz ». Une règle qui peut être satisfaite sans que
   l'élève VOIE son erreur finira par l'être — c'est la leçon des portes
   vertes, reproduite en petit.
+- **2026-08-15 — §3 complété par « la composition ».** Première
+  rédaction : l'écran était défini par ses quatre ingrédients (figure,
+  deux phrases, une action, une réponse à l'erreur). Insuffisant : le
+  prototype les avait tous les quatre et ratait quand même, parce que
+  leur DISPOSITION renvoyait la réponse à l'erreur en bas de page et
+  faisait sortir la figure du champ dès qu'on défilait. Une règle qui
+  énumère des ingrédients sans dire comment ils occupent l'écran laisse
+  passer un manuel mis en page verticalement.
+- **2026-08-15 — le rythme est une propriété de la chaîne, pas de
+  l'écran.** L'écran « en rapprochant B de A, que fait la pente ? »
+  respectait R1–R4 et restait infranchissable, parce qu'il introduisait
+  la courbe, la notation f(x), les points A et B, la sécante ET le
+  passage à la limite d'un seul coup. Aucune des quatre règles ne mesure
+  ça. Le correctif a été de découper (deux écrans insérés), pas de
+  réécrire l'écran — mais rien ne garantit aujourd'hui qu'un pas trop
+  grand soit détecté ailleurs que par l'œil.
 - Ce document remplace l'orientation « couverture d'abord » qui a produit
   les 62 notions. Cette orientation n'était pas absurde — elle visait la
   suffisance par le volume. Elle a échoué parce que le volume n'était pas

@@ -24,6 +24,25 @@ Livré aussi, hors outillage : la **page d'entrée de chaîne**
 (`PlanChaine`) — destination, prérequis annoncés avec leur porte de
 sortie, chemin entier visible. Répond au « ça arrive au hasard ».
 
+**Livré ensuite — la composition de l'écran** (le point 4 du retour, celui
+que l'owner classait « le plus à gagner ») :
+
+- **Deux panneaux.** La scène (figure sur surface presque blanche) est
+  COLLANTE à gauche ; la conduite défile à droite. L'explication d'une
+  erreur se lit donc pendant que la figure qui la trace est encore à
+  l'écran — avant, elle passait sous le pli.
+- **L'explication a la taille d'un texte à lire** (`text-lead`, carte
+  pleine largeur du panneau) au lieu d'une note sous les boutons.
+- **Le mouvement M3 sert enfin à quelque chose de pédagogique** : la
+  droite d'une réponse fausse ne surgit plus à sa place, elle PART de la
+  bonne droite et s'en écarte au ressort. L'écart est parcouru, pas décrit.
+- **Écrans de réglage** : une jauge « ta pente / objectif » en grand, le
+  nombre animé au ressort. Le panneau droit n'est plus vide et l'élève sait
+  s'il approche.
+- **Les deux figures parlent la même langue** : ce qu'on avance en bleu, ce
+  qu'on monte en brun, au collège comme sur la courbe, et le quotient écrit
+  en entier (`5,76 / 1,60 = 3,60`) dans les mêmes couleurs.
+
 ---
 
 ---
@@ -45,11 +64,16 @@ Après avoir joué le prototype `/atelier` :
 5. **Aucune animation.** Les choses apparaissent, rien ne bouge. Cible
    citée : une UI de niveau Google, fond blanc, proche de **Material 3**.
 
-Point 3 **traité** (page d'entrée). Point 5 **traité** pour le
-mouvement (ressorts M3) mais pas pour les animations riches (Rive,
-bloqué). Point 4 **partiellement** : la colonne de figure s'est
-élargie et le texte de cadrage est passé en titre, mais la composition
-où la figure prend vraiment l'écran reste à refaire.
+Point 1 **traité** — 7 des 15 réponses fausses se tracent maintenant sur
+la figure (3 au premier jet ; la porte durcie a fait remonter les autres).
+Point 2 **traité par le rythme, pas par la figure** : l'écran incriminé
+enchaînait courbe + notation f(x) + points A/B + sécante + passage à la
+limite ; deux écrans intermédiaires ont été insérés (lire une pente sur
+une courbe, puis nommer h). Point 3 **traité** (page d'entrée).
+Point 4 **traité** (composition en deux panneaux, §0). Point 5 **traité
+pour le mouvement** (ressorts M3 sur les entrées de bloc, la jauge et le
+basculement des droites) mais **pas pour les animations riches** — Rive
+reste bloqué sur la création d'un premier `.riv`.
 
 ---
 
@@ -132,11 +156,18 @@ un texte non vide.
 
 ## Ce qui reste ouvert, et qui ne doit pas être deviné
 
-- **La page d'entrée d'une chaîne** (point 3 du retour) : prérequis
-  annoncés, plan du début à la fin, position de l'élève. Rien n'existe.
-- **La composition de l'écran** (point 4) : la figure doit prendre
-  l'écran, la prose se retirer. C'est une refonte de coquille, pas un
-  ajustement de marges.
+- **Rive.** Bloqué sur une étape humaine : il faut qu'un premier `.riv`
+  soit créé dans l'éditeur. Tant qu'il n'existe pas, il n'y a rien à
+  intégrer et le runtime installé ne sert à rien.
+- **Les 8 erreurs encore non tracées.** Elles portent sur l'existence
+  d'un quotient ou sur la nature d'une courbe — pas sur une grandeur.
+  Certaines sont sans doute traçables autrement (une animation qui montre
+  le dénominateur s'annuler) ; la porte les affiche une par une à chaque
+  exécution, donc elles restent comptables au lieu de se perdre.
 - **Le coût réel d'une compétence complète** (15–25 écrans). Toujours
-  inconnu — et toutes les estimations passées de ce projet ont été faites
-  avant d'avoir construit la chose estimée.
+  inconnu — la chaîne fait 8 écrans, donc on n'a même pas encore UNE
+  compétence au format visé. Toutes les estimations passées de ce projet
+  ont été faites avant d'avoir construit la chose estimée.
+- **Le diagnostic d'entrée.** L'élève commence en bas de la chaîne, pour
+  tout le monde pareil. Or « trouver où la chaîne casse pour LUI » est le
+  cœur du dispositif (NORTH-STAR-V2 §2), et il n'est pas construit.

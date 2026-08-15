@@ -129,12 +129,51 @@ export const ECRANS: Ecran[] = [
   },
 
   // ── secante ──────────────────────────────────────────────────────────
+  // Retour owner : « l'écran 4 rate encore le rythme ». Il enchaînait
+  // directement « une courbe n'a pas UNE pente » et « que devient la pente
+  // quand B tend vers A » — soit la courbe, la notation f(x), les points A
+  // et B, la sécante ET le passage à la limite en un seul écran. Les deux
+  // écrans ci-dessous découpent cette marche : d'abord LIRE une pente sur
+  // une courbe (le geste), puis NOMMER l'écart h (la notation). La question
+  // de la limite ne vient qu'après.
+  {
+    id: "s0",
+    competence: "secante",
+    figure: "secante",
+    texte: "Voici la courbe de f(x) = x². A est fixé, et B se déplace le long de la courbe.",
+    question: "Fais glisser B jusqu'à ce que la pente de (AB) affiche 3.",
+    type: "reglage",
+    cible: 3,
+    tolerance: 0.1,
+    aide: "La pente est écrite sous la figure. Éloigne B de A pour la faire monter, rapproche-le pour la faire descendre.",
+    acquis: "Entre deux points d'une courbe, une pente se lit exactement comme sur une droite : ce qu'on monte pour ce qu'on avance.",
+  },
+  {
+    id: "s2",
+    competence: "secante",
+    figure: "secante",
+    texte: "L'écart entre A et B porte un nom : h. Il est affiché sous la figure.",
+    question: "Place B pour que h vaille 1, puis lis la pente de (AB).",
+    type: "choix",
+    options: [
+      { id: "a", label: "3, c'est-à-dire 2 + h", correct: true },
+      {
+        id: "b", label: "1, la même valeur que h", montre: 1,
+        feedback: "h mesure ce qu'on AVANCE de A vers B, pas ce qu'on monte. Ton trait monte de 1 pendant qu'il avance de 1 ; la sécante, elle, grimpe bien plus vite que ça.",
+      },
+      {
+        id: "c", label: "2, quelle que soit la position de B", montre: 2,
+        feedback: "Ton trait se pose exactement sur la droite en pointillés — celle qu'on VISE quand B colle à A. La sécante passe au-dessus : tant que B reste à distance, sa pente dépasse 2.",
+      },
+    ],
+    acquis: "La pente de (AB) vaut 2 + h. Ce n'est pas un nombre fixe : elle dépend de l'écart h qu'on a laissé.",
+  },
   {
     id: "s1",
     competence: "secante",
     figure: "secante",
-    texte: "Voici la courbe de f(x) = x². Le point A est fixé en x = 1, et B se déplace.",
-    question: "La droite (AB) coupe la courbe en deux points. En rapprochant B de A, que fait sa pente ?",
+    texte: "Tu viens de le voir : ce nombre dépend de l'endroit où tu poses B.",
+    question: "Et si tu rapproches B de A autant que tu peux, que fait cette pente ?",
     type: "choix",
     options: [
       { id: "a", label: "Elle diminue et se stabilise vers 2", correct: true },
@@ -151,7 +190,7 @@ export const ECRANS: Ecran[] = [
         feedback: "C'est vrai sur une DROITE, pas sur une courbe. Bouge le curseur : le nombre affiché change à chaque cran.",
       },
     ],
-    acquis: "La pente de (AB) dépend de l'écart h. Ici elle vaut exactement 2 + h.",
+    acquis: "Quand h devient tout petit, 2 + h devient tout proche de 2. La sécante n'atteint jamais cette valeur : elle s'en approche.",
   },
 
   // ── tangente ─────────────────────────────────────────────────────────

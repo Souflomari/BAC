@@ -970,7 +970,6 @@ h3:hover .heading-anchor,
    même spécificité — elle gagnerait par ordre de cascade. `.MafsView` deux
    fois passe devant sans !important et sans dépendre de l'ordre d'import. */
 .MafsView.MafsView {
-  --mafs-bg: var(--figure-surface);
   --mafs-fg: var(--figure-ink);
   --mafs-line-color: var(--figure-grid);
   --mafs-origin-color: var(--figure-ink-soft);
@@ -982,6 +981,11 @@ h3:hover .heading-anchor,
   --mafs-indigo: var(--figure-regime-periodic);
   --mafs-pink: var(--figure-regime-aperiodic);
   --mafs-yellow: var(--figure-regime-pseudo);
+  /* Fond transparent et pas de cadre : la scène de l'atelier fournit déjà
+     sa carte (surface la plus claire + bordure). Laisser Mafs peindre son
+     propre fond crème dessinait un rectangle plus foncé DANS la carte, avec
+     une deuxième bordure — deux cadres emboîtés pour une seule figure. */
+  --mafs-bg: transparent;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border-subtle);
+  border: 0;
 }
