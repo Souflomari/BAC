@@ -21,7 +21,8 @@
 import { useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
-import { FigurePente, FigureSecante } from "./Figures";
+import { FigurePente } from "./Figures";
+import { FigureSecanteMafs } from "./FigureSecanteMafs";
 import { COMPETENCES, ECRANS, type Ecran } from "@/lib/atelier/derivees";
 
 function Chaine({ courante }: { courante: string }) {
@@ -101,7 +102,7 @@ export function Atelier() {
             erreurLabel={option && !option.correct ? `ta réponse : ${option.label}` : undefined}
           />
         )}
-        {ecran.figure === "secante" && <FigureSecante key={ecran.id} />}
+        {ecran.figure === "secante" && <FigureSecanteMafs key={ecran.id} />}
 
         {/* ≤ 2 phrases (R2) */}
         <p className="mt-5 text-body-lg text-primary max-w-reading">{ecran.texte}</p>

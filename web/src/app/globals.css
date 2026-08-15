@@ -958,3 +958,30 @@ h3:hover .heading-anchor,
   border: 2px solid var(--color-surface-base);
   background-clip: padding-box;
 }
+
+/* ── Mafs : rebranché sur les jetons du produit ─────────────────────────
+   Mafs arrive en thème sombre (fond noir). Un cadre noir au milieu d'une
+   page claire est exactement le contraire de la cible « fond blanc ». On
+   ne surcharge donc PAS des couleurs en dur : on mappe les variables de
+   Mafs sur les jetons `--figure-*` déjà définis dans les deux thèmes, si
+   bien que Mafs suit le thème du site sans code supplémentaire. */
+/* Spécificité doublée volontairement : `mafs/core.css` est importé au
+   niveau de la page, donc APRÈS ce fichier, et sa règle `.MafsView` a la
+   même spécificité — elle gagnerait par ordre de cascade. `.MafsView` deux
+   fois passe devant sans !important et sans dépendre de l'ordre d'import. */
+.MafsView.MafsView {
+  --mafs-bg: var(--figure-surface);
+  --mafs-fg: var(--figure-ink);
+  --mafs-line-color: var(--figure-grid);
+  --mafs-origin-color: var(--figure-ink-soft);
+  --mafs-blue: var(--figure-energy-C);
+  --mafs-green: var(--figure-energy-L);
+  --mafs-orange: var(--figure-accent);
+  --mafs-red: var(--figure-regime-pseudo);
+  --mafs-violet: var(--figure-regime-aperiodic);
+  --mafs-indigo: var(--figure-regime-periodic);
+  --mafs-pink: var(--figure-regime-aperiodic);
+  --mafs-yellow: var(--figure-regime-pseudo);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-subtle);
+}

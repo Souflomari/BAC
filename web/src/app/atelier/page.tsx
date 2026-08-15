@@ -1,3 +1,5 @@
+import "mafs/core.css";
+
 import type { Metadata } from "next";
 import { Atelier } from "@/components/atelier/Atelier";
 
