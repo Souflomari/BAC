@@ -226,11 +226,16 @@ frontend (Next.js, per ADR 0016).
   misconception schema and framework, the pedagogy and cadre knowledge, the
   ADR trail, and the vision.
 - **Standing rule — dead Flutter platform:** The Flutter frontend was retired
-  (ADR 0016, Next.js rebuild). Any remaining Flutter artifacts (the `mobile/`
-  directory, the Flutter CI workflow) are to be DELETED, never patched or nursed
-  back to green. When a Flutter-related failure surfaces (e.g. a CI failure), the
-  response is removal, not a dependency patch. Git history preserves everything —
-  including the toolchain-fix commit `f61bff6` — so deletion is non-destructive.
+  (ADR 0016, Next.js rebuild). Any remaining Flutter artifacts are to be
+  DELETED, never patched or nursed back to green. When a Flutter-related
+  failure surfaces (e.g. a CI failure), the response is removal, not a
+  dependency patch. Git history preserves everything — including the
+  toolchain-fix commit `f61bff6` — so deletion is non-destructive.
+  **EXÉCUTÉ le 2026-08-15** : `mobile/` (178 fichiers) supprimé, avec
+  `mockups/`, `admin/`, `eval-harness/`, `shared/` et `GO_LIVE.md`. Il ne
+  reste aucun workflow CI Flutter (`.github/workflows/` ne contient que
+  `gates.yml`). La règle reste en vigueur pour tout artefact qui
+  réapparaîtrait ; elle ne désigne plus de dette ouverte.
 - **Mine before wiping.** Nothing is deleted until the old version has been
   checked for anything worth recovering. Git history makes the wipe safe —
   nothing is ever truly lost once it's in history — but the recovery pass

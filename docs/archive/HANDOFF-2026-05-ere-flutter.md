@@ -1,3 +1,18 @@
+> **ARCHIVE — NE PAS SUIVRE. Document historique, conservé comme trace.**
+>
+> Ce fichier était `HANDOFF.md` à la racine et s'annonçait comme « un
+> handoff autonome : lis-le de bout en bout et tu peux reprendre le projet
+> sans contexte ». C'est devenu faux. Il décrit l'ère Flutter, retirée par
+> l'ADR 0016 ; il renvoie à une production (`bacapp.vercel.app`) qui n'est
+> plus la nôtre et à un `PROJECT_STATUS.md` supprimé depuis. Deux fichiers
+> nommés HANDOFF se disputaient l'autorité, et le plus visible — celui de
+> la racine — était le périmé.
+>
+> **Le handoff en vigueur est `docs/HANDOFF.md`**, comme l'indique
+> `.claude/CLAUDE.md`. Archivé le 2026-08-15.
+
+---
+
 # BacPrep — Session Handoff
 
 **Last session ended:** 2026-05-12
