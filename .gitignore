@@ -71,3 +71,8 @@ backend/supabase/.temp/
 animations/media*/
 temp_audit/
 animations/audit/
+
+# Captures d'audit (web/shots) — ce sont des ARTEFACTS de session, pas des
+# sources : régénérables par `node scripts/shots.mjs`, 8 Mo de PNG qui
+# n'apportent rien à un clone. Détrackées le 2026-08-15.
+web/shots/

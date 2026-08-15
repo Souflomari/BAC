@@ -68,7 +68,7 @@ decided]` on the roster, and this ADR does not override that.
 ## Evidence
 
 Two media smoke tests — commit `9ba0977` (initial generation) and the
-gemini-image MCP run (`content/_media-test/conditional-probability-tree-mcp.png`)
+gemini-image MCP run (`docs/decisions/evidence/0017-media-test/conditional-probability-tree-mcp.png`)
 — showed the **same split**:
 
 - **Aesthetic: PASS.** Gemini reliably holds the DESIGN-BIBLE register — calm,
