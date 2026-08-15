@@ -23,6 +23,11 @@ export interface Option {
    *  Un tuteur ne rédige pas un paragraphe : il trace ta pente à côté de
    *  la bonne et te laisse voir l'écart. */
   montre?: number;
+  /** R3 — quand l'erreur ne PEUT pas se tracer (question conceptuelle,
+   *  pas de grandeur à dessiner), on le déclare ici. Le but n'est pas
+   *  d'ouvrir une échappatoire mais de rendre l'omission COMPTABLE :
+   *  le script la signale au lieu de la laisser passer en silence. */
+  nonTracable?: string;
 }
 
 export interface Ecran {
@@ -112,11 +117,11 @@ export const ECRANS: Ecran[] = [
         correct: true,
       },
       {
-        id: "b", label: "La pente n'existe pas pour une courbe",
+        id: "b", label: "La pente n'existe pas pour une courbe", nonTracable: "réponse sur la nature d'une courbe, aucune grandeur à tracer",
         feedback: "Elle existe — sinon on ne pourrait pas dire qu'une route est plus raide à un endroit qu'à un autre. Ce qui change, c'est qu'elle ne vaut plus la même chose partout.",
       },
       {
-        id: "c", label: "On prend la pente de la courbe entière",
+        id: "c", label: "On prend la pente de la courbe entière", nonTracable: "réponse sur la nature d'une courbe, aucune grandeur à tracer",
         feedback: "Une courbe n'a pas UNE pente : elle est raide ici, plate là. Une seule valeur pour tout le tracé effacerait justement ce qui nous intéresse.",
       },
     ],
@@ -134,15 +139,15 @@ export const ECRANS: Ecran[] = [
     options: [
       { id: "a", label: "Elle diminue et se stabilise vers 2", correct: true },
       {
-        id: "b", label: "Elle diminue jusqu'à 0",
+        id: "b", label: "Elle diminue jusqu'à 0", nonTracable: "la figure montre déjà le nombre en direct : l'élève lit sa propre erreur",
         feedback: "Regarde le nombre affiché quand tu pousses le curseur à fond : il descend vers 2, pas vers 0. Une pente nulle voudrait dire une droite horizontale — or (AB) reste clairement montante.",
       },
       {
-        id: "c", label: "Elle augmente",
+        id: "c", label: "Elle augmente", nonTracable: "la figure montre déjà le nombre en direct : l'élève lit sa propre erreur",
         feedback: "Essaie : le nombre affiché DESCEND quand B se rapproche. Loin de A, la courbe est déjà bien plus raide ; en revenant vers A, on revient vers une portion moins raide.",
       },
       {
-        id: "d", label: "Elle ne change pas",
+        id: "d", label: "Elle ne change pas", nonTracable: "la figure montre déjà le nombre en direct : l'élève lit sa propre erreur",
         feedback: "C'est vrai sur une DROITE, pas sur une courbe. Bouge le curseur : le nombre affiché change à chaque cran.",
       },
     ],
@@ -162,11 +167,11 @@ export const ECRANS: Ecran[] = [
         id: "a", label: "Parce qu'il faudrait diviser par 0", correct: true,
       },
       {
-        id: "b", label: "Parce que la pente deviendrait infinie",
+        id: "b", label: "Parce que la pente deviendrait infinie", nonTracable: "porte sur l'existence du quotient, pas sur une valeur traçable",
         feedback: "Non : le nombre affiché reste tout près de 2, il ne s'emballe pas. Le problème n'est pas que le résultat explose, c'est que le CALCUL devient impossible — le dénominateur h serait nul.",
       },
       {
-        id: "c", label: "On peut, et la pente vaut 0",
+        id: "c", label: "On peut, et la pente vaut 0", nonTracable: "porte sur l'existence du quotient, pas sur une valeur traçable",
         feedback: "Si B est sur A, il n'y a plus deux points, donc plus de droite (AB) du tout — et le quotient s'écrirait 0/0, qui ne désigne aucun nombre.",
       },
     ],
@@ -184,15 +189,15 @@ export const ECRANS: Ecran[] = [
     options: [
       { id: "a", label: "2", correct: true },
       {
-        id: "b", label: "1",
+        id: "b", label: "1", nonTracable: "f′(1) est une pente : l'erreur confond avec une hauteur, déjà visible sur la figure",
         feedback: "1, c'est la valeur de x où l'on se place (le point A est en x = 1), ou encore f(1) = 1. Le nombre dérivé n'est pas une hauteur : c'est une PENTE.",
       },
       {
-        id: "c", label: "2 + h",
+        id: "c", label: "2 + h", nonTracable: "l'expression dépend de h ; la figure l'affiche déjà en direct",
         feedback: "C'est la pente de la sécante, qui dépend encore de h. f′(1) est ce qu'il en reste quand h disparaît — donc un nombre fixe, sans h.",
       },
       {
-        id: "d", label: "x²",
+        id: "d", label: "x²", nonTracable: "confusion fonction/pente, sans grandeur distincte à tracer",
         feedback: "x² est la fonction elle-même, pas sa pente. f′(1) est un NOMBRE : la raideur de la courbe au point précis x = 1.",
       },
     ],

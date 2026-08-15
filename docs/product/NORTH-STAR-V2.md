@@ -114,7 +114,7 @@ n'est pas « à améliorer », il n'est pas livrable.
 |---|---|---|
 | R1 | **Zéro écran sans interaction.** | Chaque écran déclare une action ; un écran sans action échoue au build. |
 | R2 | **≤ 2 phrases visibles à la fois.** | Compteur de phrases sur le texte de l'écran. |
-| R3 | **Chaque erreur prévue a sa réponse propre.** | Toute réponse fausse proposée doit porter un feedback non vide et distinct du générique. |
+| R3 | **Chaque erreur prévue se MONTRE sur la figure.** | Toute réponse fausse porte de quoi être tracée (`montre`), ou déclare explicitement pourquoi elle n'est pas traçable. Un feedback écrit seul ne satisfait plus la règle : il accompagne ce que la figure a rendu visible. |
 | R4 | **Aucun prérequis supposé sans être testé.** | Toute compétence cite ses parents dans la chaîne ; le diagnostic couvre la chaîne. |
 | R5 | **La figure porte l'idée, pas la prose.** | Un écran dont on retire la figure doit devenir incompréhensible. Jugement humain, une fois par compétence. |
 
@@ -157,6 +157,13 @@ décrochent.
 
 ## Retractions and Corrections
 
+- **2026-08-15 — R3 renforcée.** Première rédaction : « chaque réponse
+  fausse porte son feedback ». Trop faible : elle était satisfaite par de
+  la PROSE, alors que la prose est précisément ce que l'owner rejette. Le
+  prototype a passé la règle 4/4 tout en donnant, selon lui, « encore
+  l'impression d'un quiz ». Une règle qui peut être satisfaite sans que
+  l'élève VOIE son erreur finira par l'être — c'est la leçon des portes
+  vertes, reproduite en petit.
 - Ce document remplace l'orientation « couverture d'abord » qui a produit
   les 62 notions. Cette orientation n'était pas absurde — elle visait la
   suffisance par le volume. Elle a échoué parce que le volume n'était pas

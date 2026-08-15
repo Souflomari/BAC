@@ -1,8 +1,30 @@
-# Outillage visuel — décision en attente (brief pour Fable)
+# Outillage visuel — DÉCIDÉ, partiellement livré
 
-**Date :** 2026-08-15 · **Statut :** RECOMMANDATION, pas une décision.
-À trancher par l'owner avec Fable. Écrit pour que la recherche déjà
-faite ne se perde pas dans un fil de conversation.
+**Date :** 2026-08-15 · **Statut :** tranché par l'owner —
+**M3 Expressive + Mafs + Rive (animations créées dans Figma/Rive)**.
+Deux des trois sont livrés ; le troisième est bloqué sur une étape
+humaine. État exact au §0.
+
+> Ce fichier s'appelait `OUTILLAGE-DECISION-EN-ATTENTE.md`. Il a été
+> renommé au moment de la décision : un document qui annonce « en
+> attente » alors que le choix est fait et à moitié implémenté
+> désinformerait quiconque le lit ensuite.
+
+---
+
+## 0. État de livraison
+
+| Outil | État | Détail |
+|---|---|---|
+| **Mafs** | **livré** | `FigureSecanteMafs` : B se glisse le long de la courbe (`MovablePoint` contraint) au lieu d'un curseur. Vérifié au navigateur : h 1,60 → 0,89 en tirant, pente suit à 2,89. Thème remappé sur les jetons `--figure-*` (Mafs arrive en fond noir — l'inverse de la cible). |
+| **M3 Expressive** | **livré** | `lib/m3-motion.ts` : jetons de ressort spatiaux publiés + intégration pas à pas d'un vrai ressort amorti. `useRessort` s'arrête au repos et respecte `prefers-reduced-motion`. **Les jetons `effect` sont marqués À CONFIRMER** — non trouvés sourcés, donc non inventés. |
+| **Rive** | **bloqué (humain)** | Runtime installé (`@rive-app/react-canvas` 4.31). Mais un `.riv` s'autorise dans l'éditeur Rive : **aucune API pour en générer par code**, et Figma→Rive est un copier-coller SVG manuel, pas une synchro. L'intégration se posera quand un premier `.riv` existera. |
+
+Livré aussi, hors outillage : la **page d'entrée de chaîne**
+(`PlanChaine`) — destination, prérequis annoncés avec leur porte de
+sortie, chemin entier visible. Répond au « ça arrive au hasard ».
+
+---
 
 ---
 
@@ -23,8 +45,11 @@ Après avoir joué le prototype `/atelier` :
 5. **Aucune animation.** Les choses apparaissent, rien ne bouge. Cible
    citée : une UI de niveau Google, fond blanc, proche de **Material 3**.
 
-Les points 3, 4 et 5 ne sont pas traités : ils dépendent du choix
-d'outillage ci-dessous.
+Point 3 **traité** (page d'entrée). Point 5 **traité** pour le
+mouvement (ressorts M3) mais pas pour les animations riches (Rive,
+bloqué). Point 4 **partiellement** : la colonne de figure s'est
+élargie et le texte de cadrage est passé en titre, mais la composition
+où la figure prend vraiment l'écran reste à refaire.
 
 ---
 

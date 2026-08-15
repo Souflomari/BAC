@@ -10,7 +10,7 @@
  *
  *   R1  tout écran a une action        — sinon c'est une page à lire
  *   R2  ≤ 2 phrases visibles           — sinon c'est un paragraphe
- *   R3  toute erreur a SON feedback    — sinon c'est un QCM, pas un tuteur
+ *   R3  toute erreur se MONTRE sur la figure — sinon c'est un QCM
  *   R4  aucun prérequis non chaîné     — sinon on suppose les bases
  *
  * R5 (« la figure porte l'idée ») n'est PAS ici : elle demande un jugement
@@ -72,7 +72,7 @@ if (echecs === avant) console.log("  ✓ aucun écran ne dépasse 2 phrases");
 
 // ── R3 : toute erreur porte SON feedback ────────────────────────────────
 const avant3 = echecs;
-console.log("\nR3  chaque réponse fausse a un feedback qui lui est propre");
+console.log("\nR3  chaque erreur prévue se MONTRE sur la figure");
 const vus = new Map();
 for (const e of ECRANS) {
   for (const o of e.options ?? []) {
@@ -87,9 +87,28 @@ for (const e of ECRANS) {
     else vus.set(cle, `${e.id}/${o.id}`);
   }
 }
+// R3 renforcée : un feedback écrit ne suffit plus. Ou l'erreur se trace
+// (`montre`), ou l'auteur DÉCLARE pourquoi elle ne se trace pas
+// (`nonTracable`). Le but n'est pas d'ouvrir une échappatoire mais de
+// rendre l'omission comptable : ci-dessous elle est affichée, donc elle
+// se voit passer en revue au lieu de se glisser dans la masse.
+let tracees = 0;
+const nonTracees = [];
+for (const e of ECRANS) {
+  for (const o of e.options ?? []) {
+    if (o.correct) continue;
+    if (typeof o.montre === "number") { tracees++; continue; }
+    if (o.nonTracable && o.nonTracable.trim().length > 15) {
+      nonTracees.push(`${e.id}/${o.id} — ${o.nonTracable}`);
+      continue;
+    }
+    ko(`${e.id}/${o.id} : ni tracée (montre) ni déclarée non traçable — R3 exige de MONTRER l'erreur`);
+  }
+}
 if (echecs === avant3) {
-  const n = ECRANS.flatMap((e) => (e.options ?? []).filter((o) => !o.correct)).length;
-  console.log(`  ✓ ${n} réponses fausses, ${n} feedbacks distincts`);
+  const total = tracees + nonTracees.length;
+  console.log(`  ✓ ${total} réponses fausses : ${tracees} tracée(s) sur la figure, ${nonTracees.length} déclarée(s) non traçables`);
+  for (const n of nonTracees) console.log(`      · ${n}`);
 }
 
 // ── R4 : aucun prérequis supposé hors chaîne ────────────────────────────
