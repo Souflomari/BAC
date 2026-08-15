@@ -91,7 +91,15 @@ export function Atelier() {
       <div>
         {/* la figure — elle porte l'idée (R5) */}
         {ecran.figure === "pente" && (
-          <FigurePente key={ecran.id} onChange={setValeur} />
+          <FigurePente
+            key={ecran.id}
+            onChange={setValeur}
+            /* Le trait de l'erreur reste tant que l'élève n'a pas trouvé :
+               c'est LA figure qui lui répond, pas un paragraphe sous les
+               boutons. */
+            erreur={option && !option.correct ? (option.montre ?? null) : null}
+            erreurLabel={option && !option.correct ? `ta réponse : ${option.label}` : undefined}
+          />
         )}
         {ecran.figure === "secante" && <FigureSecante key={ecran.id} />}
 
@@ -166,10 +174,15 @@ export function Atelier() {
         {option && !option.correct && (
           <div
             data-feedback-erreur
-            className="mt-4 max-w-reading rounded-lg border-l-2 border-soft bg-surface-raised px-4 py-3"
+            className="mt-4 max-w-reading rounded-lg border-l-2 px-4 py-3"
+            style={{ borderColor: "var(--figure-regime-aperiodic)", background: "var(--color-surface-raised)" }}
           >
-            <p className="text-body-sm text-primary">{option.feedback}</p>
-            <p className="mt-2 text-caption text-secondary">Reprends — la figure est toujours là.</p>
+            <p className="text-body text-primary">{option.feedback}</p>
+            {option.montre != null && (
+              <p className="mt-2 text-body-sm text-secondary">
+                Ta pente est tracée en pointillés sur la figure — compare-la à la droite pleine.
+              </p>
+            )}
           </div>
         )}
 

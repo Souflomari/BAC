@@ -94,8 +94,14 @@ function Axes({
  * ciel.
  */
 export function FigurePente({
-  bx: bx0 = 4, by: by0 = 2, onChange,
-}: { bx?: number; by?: number; onChange?: (pente: number) => void }) {
+  bx: bx0 = 4, by: by0 = 2, onChange, erreur = null, erreurLabel,
+}: {
+  bx?: number; by?: number; onChange?: (pente: number) => void;
+  /** La pente qu'implique la réponse fausse de l'élève. Dessinée À CÔTÉ de
+   *  la bonne : c'est la figure qui montre l'écart, pas un paragraphe. */
+  erreur?: number | null;
+  erreurLabel?: string;
+}) {
   const [bx, setBx] = useState(bx0);
   const [by, setBy] = useState(by0);
   const { px, py } = useRepere(-0.6, 6, -0.6, 5);
@@ -127,9 +133,28 @@ export function FigurePente({
         <text x={px(bx) + 10} y={py(by / 2)} fontSize={14} fontWeight={600}
           fill="var(--figure-regime-pseudo)">on monte de {by}</text>
 
-        {/* la droite */}
+        {/* la droite juste */}
         <line x1={px(0)} y1={py(0)} x2={px(5.8)} y2={py(pente * 5.8)}
           stroke="var(--figure-accent)" strokeWidth={2.6} strokeLinecap="round" />
+
+        {/* la droite que DONNERAIT la réponse de l'élève. On ne lui dit pas
+            qu'il a tort : on trace sa pente, et l'écart se voit. */}
+        {erreur != null && (
+          <g className="erreur-tracee">
+            <line x1={px(0)} y1={py(0)}
+              x2={px(Math.min(5.8, 4.6 / Math.max(erreur, 0.01)))}
+              y2={py(Math.min(4.6, erreur * 5.8))}
+              stroke="var(--figure-regime-aperiodic)" strokeWidth={2.6}
+              strokeDasharray="7 5" strokeLinecap="round" />
+            <text
+              x={px(Math.min(5.4, 4.2 / Math.max(erreur, 0.01)))}
+              y={py(Math.min(4.4, erreur * 5.4)) - 8}
+              fontSize={14} fontWeight={700} textAnchor="end"
+              fill="var(--figure-regime-aperiodic)">
+              {erreurLabel ?? `ta pente : ${erreur}`}
+            </text>
+          </g>
+        )}
 
         <circle cx={px(0)} cy={py(0)} r={4} fill="var(--figure-ink)" />
         {/* B — déplaçable au clavier ET à la souris */}

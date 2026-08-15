@@ -19,6 +19,10 @@ export interface Option {
   correct?: boolean;
   /** R3 — pourquoi CE raisonnement-là mène à CE résultat-là. */
   feedback?: string;
+  /** R3 (forme visuelle) — ce que la réponse fausse DONNE sur la figure.
+   *  Un tuteur ne rédige pas un paragraphe : il trace ta pente à côté de
+   *  la bonne et te laisse voir l'écart. */
+  montre?: number;
 }
 
 export interface Ecran {
@@ -67,15 +71,15 @@ export const ECRANS: Ecran[] = [
     options: [
       { id: "a", label: "0,5", correct: true },
       {
-        id: "b", label: "2",
+        id: "b", label: "2", montre: 2,
         feedback: "2, c'est ce qu'on monte en avançant de 4 — pas en avançant de 1. Cette montée doit être partagée en 4 parts égales.",
       },
       {
-        id: "c", label: "4",
+        id: "c", label: "4", montre: 4,
         feedback: "4, c'est ce qu'on AVANCE, pas ce qu'on monte. Les deux nombres ne jouent pas le même rôle : on monte 2 pendant qu'on avance 4.",
       },
       {
-        id: "d", label: "8",
+        id: "d", label: "8", montre: 8,
         feedback: "Tu as multiplié 2 par 4. Mais avancer MOINS fait monter MOINS : en avançant 4 fois moins, on monte 4 fois moins. On divise.",
       },
     ],
