@@ -37,6 +37,44 @@ export interface ChapterHeadingInfo {
   rung?: string;
 }
 
+
+/**
+ * Retire les délimiteurs KaTeX d'un libellé de NAVIGATION.
+ *
+ * Audit du 2026-08-15 : le sommaire affichait « Signe de $f\'$ et sens de
+ * variation », « L'ensemble $\\mathbb{C}$ », « $\\mathrm{PGCD}$ » — les
+ * délimiteurs bruts, à l'écran, sur 4 des 8 pages de maths contrôlées. La
+ * cause : KaTeX est appliqué au CORPS de la leçon, jamais aux titres
+ * réinjectés dans la navigation.
+ *
+ * Le correctif n'est pas d'y brancher KaTeX. Un libellé de rail est un
+ * repère de position, pas une formule : il doit rester lisible à 12 px, dans
+ * une colonne de 52 px, et dans un `title=` de survol où le HTML n'existe
+ * pas. On rend donc le TEXTE de la formule, pas sa mise en forme.
+ *
+ * `shortTitleOf` coupait déjà à « : » et « ( » en partie pour cette raison —
+ * mais ça ne marche que si le dollar se trouve APRÈS le séparateur, ce qui
+ * n'est vrai que par chance.
+ */
+const ENSEMBLES: Record<string, string> = {
+  N: "ℕ", Z: "ℤ", Q: "ℚ", R: "ℝ", C: "ℂ",
+};
+
+export function sansLatex(texte: string): string {
+  if (!texte.includes("$")) return texte;
+  return texte
+    // \mathbb{C} → ℂ (les ensembles ont un glyphe Unicode : on le prend)
+    .replace(/\\mathbb\{([A-Z])\}/g, (_, l: string) => ENSEMBLES[l] ?? l)
+    // \mathrm{PGCD}, \text{…}, \mathcal{…} → leur contenu
+    .replace(/\\(?:mathrm|text|mathcal|mathbf|operatorname)\{([^}]*)\}/g, "$1")
+    // toute autre commande : on garde ce qu'elle enveloppe, on jette la commande
+    .replace(/\\[a-zA-Z]+\s*\{([^}]*)\}/g, "$1")
+    .replace(/\\[a-zA-Z]+/g, "")
+    .replace(/[${}]/g, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 /**
  * Derive the short resting label from a heading title: the part before
  * " : " or " (" reads as the section's name ("Accroche", "Le cas amorti");
@@ -47,7 +85,7 @@ export interface ChapterHeadingInfo {
  */
 export function shortTitleOf(title: string): string {
   const cut = title.split(" : ")[0].split(" (")[0].trim();
-  return cut.length > 0 ? cut : title;
+  return sansLatex(cut.length > 0 ? cut : title);
 }
 
 /**
@@ -62,7 +100,7 @@ export function extractChapterHeadings(markdown: string): ChapterHeadingInfo[] {
     if (!m) continue;
     const fullText = m[1].trim();
     const rungMatch = fullText.match(RUNG_PREFIX_RE);
-    const title = rungMatch ? rungMatch[2].trim() : fullText;
+    const title = sansLatex(rungMatch ? rungMatch[2].trim() : fullText);
     out.push({
       title,
       shortTitle: shortTitleOf(title),

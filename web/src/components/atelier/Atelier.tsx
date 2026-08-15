@@ -258,12 +258,21 @@ export function Atelier() {
             </p>
           </Apparition>
           <Apparition cle={ecran.id} delai={90}>
-            <p className="mt-4 text-lead text-secondary">{ecran.question}</p>
+            <p id={`question-${ecran.id}`} className="mt-4 text-lead text-secondary">
+              {ecran.question}
+            </p>
           </Apparition>
 
           {/* l'action (R1) */}
           {ecran.type === "choix" && (
-            <div className="mt-6 grid gap-2.5">
+            /* Le groupe est rattaché à SA question : sans ce lien, un lecteur
+               d'écran annonce quatre boutons sans savoir à quoi ils répondent
+               (audit 2026-08-15, P2-6). */
+            <div
+              role="group"
+              aria-labelledby={`question-${ecran.id}`}
+              className="mt-6 grid gap-2.5"
+            >
               {ecran.options?.map((o, k) => {
                 const actif = choisi === o.id;
                 const montrerJuste = reussi && o.correct;
@@ -273,8 +282,9 @@ export function Atelier() {
                       type="button"
                       onClick={() => repondre(o.id)}
                       disabled={reussi}
+                      aria-pressed={actif}
                       className={cn(
-                        "w-full rounded-lg border px-5 py-4 text-left text-body-lg",
+                        "flex w-full items-center justify-between gap-3 rounded-lg border px-5 py-4 text-left text-body-lg",
                         "state-layer focus-ring [--focus-radius:12px]",
                         "transition-colors duration-micro",
                         montrerJuste
@@ -285,7 +295,26 @@ export function Atelier() {
                         reussi && !o.correct && "opacity-50"
                       )}
                     >
-                      {o.label}
+                      <span>{o.label}</span>
+                      {/* Le verdict ne peut pas tenir dans la seule couleur
+                          (WCAG 1.4.1) : avant, une mauvaise réponse ne se
+                          traduisait que par un fond très légèrement différent.
+                          Un mot et un signe, donc. */}
+                      {montrerJuste && (
+                        <span className="flex shrink-0 items-center gap-1.5 text-body-sm font-medium text-accent">
+                          <Icon name="check" size={15} />
+                          Correct
+                        </span>
+                      )}
+                      {actif && !o.correct && (
+                        <span
+                          className="flex shrink-0 items-center gap-1.5 text-body-sm font-medium"
+                          style={{ color: "var(--figure-regime-aperiodic)" }}
+                        >
+                          <Icon name="cross" size={13} />
+                          Ta réponse
+                        </span>
+                      )}
                     </button>
                   </Apparition>
                 );
