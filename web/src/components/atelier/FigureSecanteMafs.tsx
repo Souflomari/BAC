@@ -19,7 +19,7 @@
  */
 
 import { useCallback } from "react";
-import { Mafs, Coordinates, Plot, Line, Point, Theme, useMovablePoint } from "mafs";
+import { Mafs, Coordinates, Plot, Line, Point, Text as MafsText, Theme, useMovablePoint } from "mafs";
 import { useRessort } from "./useRessort";
 import { SPATIAL } from "@/lib/m3-motion";
 
@@ -28,7 +28,18 @@ const H_MIN = 0.08;
 const H_MAX = 1.6;
 const f = (x: number) => x * x;
 
-export function FigureSecanteMafs({ onH }: { onH?: (h: number) => void }) {
+export function FigureSecanteMafs({
+  onH,
+  erreurPente = null,
+  erreurLabel,
+}: {
+  onH?: (h: number) => void;
+  /** La pente qu'AFFIRME la réponse fausse : tracée en A, à côté de la
+   *  vraie. Répondre « 0 » dessine une horizontale — on voit qu'elle ne
+   *  colle pas à la courbe. C'est R3 : montrer, pas rédiger. */
+  erreurPente?: number | null;
+  erreurLabel?: string;
+}) {
   // B vit SUR la courbe : la contrainte projette n'importe quel geste sur
   // le graphe, et borne h pour que B ne se pose jamais exactement sur A.
   const contrainte = useCallback(([x]: [number, number]): [number, number] => {
@@ -82,6 +93,22 @@ export function FigureSecanteMafs({ onH }: { onH?: (h: number) => void }) {
           point2={[A_X + h, f(A_X + h)]}
           color={Theme.green}
         />
+
+        {/* la droite que l'élève vient d'affirmer */}
+        {erreurPente != null && (
+          <>
+            <Line.PointSlope
+              point={[A_X, f(A_X)]}
+              slope={erreurPente}
+              color={Theme.violet}
+              style="dashed"
+              weight={3}
+            />
+            <MafsText x={A_X + 1.35} y={f(A_X) + erreurPente * 1.35 + 0.35} color={Theme.violet} size={18}>
+              {erreurLabel ?? `pente ${erreurPente}`}
+            </MafsText>
+          </>
+        )}
 
         <Point x={A_X} y={f(A_X)} color={Theme.foreground} />
         {B.element}

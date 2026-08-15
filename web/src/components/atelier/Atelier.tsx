@@ -109,7 +109,13 @@ export function Atelier() {
             erreurLabel={option && !option.correct ? `ta réponse : ${option.label}` : undefined}
           />
         )}
-        {ecran.figure === "secante" && <FigureSecanteMafs key={ecran.id} />}
+        {ecran.figure === "secante" && (
+          <FigureSecanteMafs
+            key={ecran.id}
+            erreurPente={option && !option.correct ? (option.montre ?? null) : null}
+            erreurLabel={option && !option.correct ? `ta réponse : ${option.label}` : undefined}
+          />
+        )}
 
         {/* ≤ 2 phrases (R2) */}
         <p className="mt-6 text-h3 font-serif font-semibold text-primary max-w-reading">{ecran.texte}</p>

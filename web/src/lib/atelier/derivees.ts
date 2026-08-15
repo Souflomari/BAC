@@ -139,7 +139,7 @@ export const ECRANS: Ecran[] = [
     options: [
       { id: "a", label: "Elle diminue et se stabilise vers 2", correct: true },
       {
-        id: "b", label: "Elle diminue jusqu'à 0", nonTracable: "la figure montre déjà le nombre en direct : l'élève lit sa propre erreur",
+        id: "b", label: "Elle diminue jusqu'à 0", montre: 0,
         feedback: "Regarde le nombre affiché quand tu pousses le curseur à fond : il descend vers 2, pas vers 0. Une pente nulle voudrait dire une droite horizontale — or (AB) reste clairement montante.",
       },
       {
@@ -189,7 +189,7 @@ export const ECRANS: Ecran[] = [
     options: [
       { id: "a", label: "2", correct: true },
       {
-        id: "b", label: "1", nonTracable: "f′(1) est une pente : l'erreur confond avec une hauteur, déjà visible sur la figure",
+        id: "b", label: "1", montre: 1,
         feedback: "1, c'est la valeur de x où l'on se place (le point A est en x = 1), ou encore f(1) = 1. Le nombre dérivé n'est pas une hauteur : c'est une PENTE.",
       },
       {
