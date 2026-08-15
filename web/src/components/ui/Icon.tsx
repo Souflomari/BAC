@@ -57,9 +57,15 @@ export type IconName =
   | "chevron-left"
   | "reset"
   | "sun"
-  | "moon";
+  | "moon"
+  | "menu";
 
 const GLYPHS: Record<IconName, Glyph> = {
+  // menu — trois traits. Ajouté pour le repli du header sous 600 px
+  // (audit 2026-08-15) : sans glyphe de menu, le cluster de droite n'avait
+  // nulle part où se replier.
+  menu: { kind: "stroke", d: ["M4 7 H20", "M4 12 H20", "M4 17 H20"] },
+
   // check — from the animated/static checkmark (orig 16-box "M2.5 8.5L6 12L13.5 4",
   // ×1.5 → 24-box). Single drawn-on stroke; round joints.
   check: { kind: "stroke", d: "M3.75 12.75 L9 18 L20.25 6" },

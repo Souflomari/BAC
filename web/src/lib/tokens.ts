@@ -60,7 +60,7 @@ export const themes: Record<"light" | "dark", Theme> = {
       // Text — warm near-black ink, three levels (none pure #000)
       "--color-text-primary": "#2A2018",
       "--color-text-secondary": "#5C5043",
-      "--color-text-tertiary": "#8A7E6E",
+      "--color-text-tertiary": "#746856",
       "--color-text-on-accent": "#FFFDF8",
       // Accent — single signature hue (deep teal)
       "--color-accent": "#1F6F6B",
@@ -115,7 +115,7 @@ export const themes: Record<"light" | "dark", Theme> = {
       "--color-border-soft": "#473E33",
       "--color-text-primary": "#EFE8DC",
       "--color-text-secondary": "#B5A893",
-      "--color-text-tertiary": "#7E7264",
+      "--color-text-tertiary": "#9A8D7C",
       "--color-text-on-accent": "#11302C",
       "--color-accent": "#5FB6AE",
       "--color-accent-strong": "#7FC8C0",

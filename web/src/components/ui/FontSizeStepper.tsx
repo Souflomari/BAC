@@ -51,23 +51,62 @@ const ARIA_LABELS: Record<SizeStep, string> = {
   large: "Agrandir la taille du texte",
 };
 
+/**
+ * Le réglage est partagé entre toutes les instances du contrôle et survit
+ * à la navigation.
+ *
+ * Deux raisons, toutes deux issues de l'audit du 2026-08-15 :
+ *
+ *  1. **Persistance.** C'était le SEUL réglage non conservé, alors que le
+ *     thème et la filière l'étaient. Un élève malvoyant devait le régler à
+ *     chaque page. La docstring d'origine assumait l'oubli (« §9 exige le
+ *     contrôle, pas la persistance ») ; c'est vrai à la lettre et faux en
+ *     pratique — un contrôle qu'il faut réactionner à chaque navigation
+ *     n'est pas un réglage d'accessibilité, c'est une corvée. Une taille de
+ *     texte choisie est une PRÉFÉRENCE réelle, exactement la catégorie que
+ *     l'ADR 0025 §2.11 autorise à stocker (jamais de l'état d'apprentissage
+ *     fabriqué).
+ *  2. **Cohérence entre instances.** Le header en rend deux (une visible en
+ *     large, une dans le menu compact en étroit). Avec un état local, la
+ *     copie cachée affichait « A » pendant que la page était en « A+ ».
+ */
+const CLE = "bac-textsize";
+
+function lire(): SizeStep {
+  try {
+    const v = localStorage.getItem(CLE);
+    if (v === "small" || v === "base" || v === "large") return v;
+  } catch {
+    /* stockage indisponible : on reste au défaut */
+  }
+  return "base";
+}
+
+const abonnes = new Set<(s: SizeStep) => void>();
+
 export function FontSizeStepper({ className }: { className?: string }) {
+  // Toujours "base" au premier rendu : le serveur ne connaît pas le
+  // localStorage, et rendre autre chose ici casserait l'hydratation. La
+  // valeur réelle est appliquée juste après, et sans clignotement de mise
+  // en page puisque le script de démarrage a déjà posé --font-scale.
   const [current, setCurrent] = useState<SizeStep>("base");
 
-  // Apply the CSS variable to <html> whenever the step changes
   useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--font-scale",
-      String(SCALE_VALUES[current])
-    );
-    // Clean up on unmount — reset to default
+    setCurrent(lire());
+    abonnes.add(setCurrent);
     return () => {
-      document.documentElement.style.removeProperty("--font-scale");
+      abonnes.delete(setCurrent);
     };
-  }, [current]);
+  }, []);
 
   const setStep = useCallback((step: SizeStep) => {
-    setCurrent(step);
+    try {
+      localStorage.setItem(CLE, step);
+    } catch {
+      /* stockage indisponible : le réglage vaut pour cette page */
+    }
+    document.documentElement.style.setProperty("--font-scale", String(SCALE_VALUES[step]));
+    abonnes.forEach((f) => f(step));
   }, []);
 
   return (

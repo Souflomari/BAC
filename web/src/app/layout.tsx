@@ -84,7 +84,11 @@ const SITE_JSONLD = {
 // child of <body>, so the .dark class is set before any content paints.
 // Explicit stored choice wins; otherwise the OS preference. Kept as a plain
 // string — it must run before React exists.
-const THEME_BOOT = `(function(){try{var t=localStorage.getItem("bac-theme");var d=t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches;if(d)document.documentElement.classList.add("dark");}catch(e){}})();`;
+// Thème ET taille de texte, avant la première peinture. La taille rejoint
+// le thème ici (audit 2026-08-15) : appliquée après hydratation, elle
+// faisait sauter toute la page d'un cran une fois le JS chargé — sur le
+// réglage même dont dépendent les élèves qui voient mal.
+const THEME_BOOT = `(function(){try{var t=localStorage.getItem("bac-theme");var d=t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches;if(d)document.documentElement.classList.add("dark");var s=localStorage.getItem("bac-textsize");var m={small:"0.9375",base:"1",large:"1.125"};if(s&&m[s])document.documentElement.style.setProperty("--font-scale",m[s]);}catch(e){}})();`;
 
 // ── Root layout ───────────────────────────────────────────────────────────────
 export default function RootLayout({

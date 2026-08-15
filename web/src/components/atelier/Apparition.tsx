@@ -9,11 +9,14 @@
  * intégrateur que `useRessort` à une progression 0 → 1, et on en dérive
  * l'opacité et le déplacement.
  *
- * Ce qu'on obtient et qu'une transition CSS ne donne pas : le dépassement.
- * Avec `expressiveDefault` (amortissement 0,8) la progression passe
- * légèrement au-dessus de 1 avant de revenir — le bloc dépasse sa place de
- * un ou deux pixels puis se pose. C'est exactement ce qui distingue une
- * interface qui « bouge » d'une interface qui apparaît.
+ * RESSORT STANDARD, PAS EXPRESSIF — correction. Première rédaction : on
+ * prenait `expressiveDefault` (amortissement 0,8) pour son DÉPASSEMENT, le
+ * bloc allant deux pixels trop loin avant de se poser. C'est précisément ce
+ * que la DESIGN-BIBLE §5 interdit (« pas d'overshoot/bounce »), et la bible
+ * a raison ici pour une raison qui dépasse le style : le même ressort sert à
+ * animer des NOMBRES et des PENTES, et un dépassement y affiche brièvement
+ * une valeur fausse. Un ressort à 0,9 dépasse de 0,15 % — invisible à deux
+ * décimales, donc honnête. On garde la physique, on abandonne le rebond.
  *
  * Trois garde-fous, les mêmes que partout ailleurs :
  *   · `prefers-reduced-motion` → on saute à l'état final, le contenu est
@@ -39,7 +42,7 @@ function reduit() {
  */
 export function useApparition(
   cle: string | number,
-  { delai = 0, ressort = SPATIAL.expressiveDefault }: { delai?: number; ressort?: Ressort } = {}
+  { delai = 0, ressort = SPATIAL.standardDefault }: { delai?: number; ressort?: Ressort } = {}
 ) {
   const [p, setP] = useState(0);
   const raf = useRef<number | null>(null);

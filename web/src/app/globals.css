@@ -988,4 +988,14 @@ h3:hover .heading-anchor,
   --mafs-bg: transparent;
   border-radius: var(--radius-lg);
   border: 0;
+  /* Mafs pose `touch-action: none` sur toute la vue. Audit du 2026-08-15 :
+     à 390 px de large la figure occupe 55 % de la hauteur de l'écran, et un
+     balayage vertical démarré dessus — la zone la plus grande et la plus
+     attirante de la page — ne faisait RIEN. La page passait pour figée.
+     On rend donc le défilement vertical à la vue, et on garde le blocage
+     total sur le seul point déplaçable, qui en a réellement besoin. */
+  touch-action: pan-y;
+}
+.MafsView.MafsView [class^="mafs-movable-point"] {
+  touch-action: none;
 }

@@ -30,7 +30,7 @@ import { cn } from "@/lib/utils";
 
 export const THEME_KEY = "bac-theme";
 
-export function ThemeToggle() {
+export function ThemeToggle({ className }: { className?: string } = {}) {
   // null until mounted — the server doesn't know the theme; render the
   // control disabled-neutral to avoid a hydration mismatch, then sync.
   const [dark, setDark] = useState<boolean | null>(null);
@@ -65,7 +65,8 @@ export function ThemeToggle() {
         "h-8 w-8 rounded-lg",
         "text-secondary hover:text-primary",
         "state-layer focus-ring [--focus-radius:8px]",
-        "transition-colors duration-micro ease-enter"
+        "transition-colors duration-micro ease-enter",
+        className
       )}
     >
       {/* Before mount, show the moon (the light-theme default glyph) — the

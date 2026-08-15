@@ -35,6 +35,28 @@ export interface Ecran {
   competence: string;
   /** La figure porte l'idée (R5). `null` seulement si l'action EST la figure. */
   figure: "pente" | "secante" | null;
+  /**
+   * L'ÉTAT DE DÉPART de la figure, déclaré par l'écran.
+   *
+   * Audit du 2026-08-15 : « d'après la figure, que vaut f′(1) ? » s'affichait
+   * au-dessus d'une figure montrant pente = 3,60 et h = 1,60. La réponse
+   * attendue (2) n'était lisible nulle part. Même problème sur l'écran qui
+   * dit « plus B s'approche, plus (AB) épouse la courbe » alors que B venait
+   * d'être replacé au loin.
+   *
+   * Le correctif n'est pas de traîner l'état de l'écran précédent : chaque
+   * question suppose une situation PRÉCISE, et c'est à l'écran de la poser.
+   * Un écran qui parle d'une figure doit ouvrir sur la figure dont il parle.
+   */
+  depart?: { h?: number; bx?: number; by?: number };
+  /**
+   * Fige les commandes de la figure. Pour un écran dont l'énoncé cite des
+   * valeurs (« ici on avance de 4 et on monte de 2 ») : laisser les curseurs
+   * actifs permettait à l'élève de changer la figure sous un énoncé qui,
+   * lui, ne bougeait pas — et la « bonne réponse » validait alors un résultat
+   * faux (audit 2026-08-15, P0-4).
+   */
+  fige?: boolean;
   /** ≤ 2 phrases (R2). */
   texte: string;
   question: string;
@@ -70,6 +92,9 @@ export const ECRANS: Ecran[] = [
     id: "p1",
     competence: "lire-pente",
     figure: "pente",
+    // L'énoncé cite 4 et 2 : la figure DOIT montrer 4 et 2, et ne pas bouger.
+    depart: { bx: 4, by: 2 },
+    fige: true,
     texte: "Une pente, c'est une comparaison : ce qu'on monte pour ce qu'on avance.",
     question: "Ici on avance de 4 et on monte de 2. En avançant de 1 seulement, de combien monte-t-on ?",
     type: "choix",
@@ -140,6 +165,7 @@ export const ECRANS: Ecran[] = [
     id: "s0",
     competence: "secante",
     figure: "secante",
+    depart: { h: 1.6 },
     texte: "Voici la courbe de f(x) = x². A est fixé, et B se déplace le long de la courbe.",
     question: "Fais glisser B jusqu'à ce que la pente de (AB) affiche 3.",
     type: "reglage",
@@ -152,6 +178,7 @@ export const ECRANS: Ecran[] = [
     id: "s2",
     competence: "secante",
     figure: "secante",
+    depart: { h: 1.6 },
     texte: "L'écart entre A et B porte un nom : h. Il est affiché sous la figure.",
     question: "Place B pour que h vaille 1, puis lis la pente de (AB).",
     type: "choix",
@@ -172,6 +199,7 @@ export const ECRANS: Ecran[] = [
     id: "s1",
     competence: "secante",
     figure: "secante",
+    depart: { h: 1.6 },
     texte: "Tu viens de le voir : ce nombre dépend de l'endroit où tu poses B.",
     question: "Et si tu rapproches B de A autant que tu peux, que fait cette pente ?",
     type: "choix",
@@ -198,6 +226,7 @@ export const ECRANS: Ecran[] = [
     id: "g1",
     competence: "tangente",
     figure: "secante",
+    depart: { h: 0.08 },
     texte: "Plus B s'approche, plus (AB) épouse la courbe en A : elle ne la traverse plus, elle la frôle.",
     question: "Pourquoi ne peut-on pas simplement poser B exactement sur A ?",
     type: "choix",
@@ -222,6 +251,7 @@ export const ECRANS: Ecran[] = [
     id: "d1",
     competence: "nombre-derive",
     figure: "secante",
+    depart: { h: 0.08 },
     texte: "Cette valeur limite porte un nom : le nombre dérivé de f en 1, noté f′(1).",
     question: "D'après la figure, que vaut f′(1) pour f(x) = x² ?",
     type: "choix",

@@ -25,6 +25,7 @@
  */
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import { FigurePente } from "./Figures";
@@ -42,7 +43,7 @@ import { SPATIAL } from "@/lib/m3-motion";
  * à côté d'elle : la colonne latérale volait de la largeur à la figure, et
  * la figure est ce qui enseigne.
  */
-function Rail({ courante, i }: { courante: string; i: number }) {
+function Rail({ courante, i, termine }: { courante: string; i: number; termine: boolean }) {
   const idx = COMPETENCES.findIndex((x) => x.id === courante);
   const avancement = useRessort((i + 1) / ECRANS.length, SPATIAL.standardSlow);
 
@@ -56,7 +57,10 @@ function Rail({ courante, i }: { courante: string; i: number }) {
       </div>
       <ol className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1.5">
         {COMPETENCES.map((c, k) => {
-          const etat = k < idx ? "fait" : k === idx ? "ici" : "apres";
+          // `termine` coche la DERNIÈRE compétence : sans lui, l'étape 5
+          // restait éternellement « en cours » alors que l'élève venait de
+          // répondre juste à la dernière question (audit 2026-08-15).
+          const etat = k < idx || (k === idx && termine) ? "fait" : k === idx ? "ici" : "apres";
           return (
             <li key={c.id} className="flex items-center gap-2">
               {/* Les chevrons disparaissent en colonne étroite : le rail y
@@ -163,6 +167,11 @@ export function Atelier() {
     if (o?.correct) setReussi(true);
   }
 
+  function recommencer() {
+    setI(0); setChoisi(null); setReussi(false); setEssaiReglage(false);
+    setValeur(0.5); setDemarre(false);
+  }
+
   function suivant() {
     setI((n) => Math.min(n + 1, ECRANS.length - 1));
     setChoisi(null); setReussi(false); setEssaiReglage(false); setValeur(0.5);
@@ -194,7 +203,7 @@ export function Atelier() {
 
   return (
     <div className="mx-auto max-w-page px-4 py-6 bp-medium:px-8 bp-medium:py-8">
-      <Rail courante={ecran.competence} i={i} />
+      <Rail courante={ecran.competence} i={i} termine={dernier && gagne} />
 
       <div className="mt-6 grid gap-7 bp-expanded:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] bp-expanded:gap-10">
         {/* ── LA SCÈNE : la figure porte l'idée (R5), et elle reste visible ── */}
@@ -211,6 +220,9 @@ export function Atelier() {
               {ecran.figure === "pente" && (
                 <FigurePente
                   key={ecran.id}
+                  bx={ecran.depart?.bx}
+                  by={ecran.depart?.by}
+                  fige={ecran.fige}
                   onChange={setValeur}
                   /* Le trait de l'erreur reste tant que l'élève n'a pas trouvé :
                      c'est LA figure qui lui répond, pas un paragraphe sous les
@@ -222,6 +234,7 @@ export function Atelier() {
               {ecran.figure === "secante" && (
                 <FigureSecanteMafs
                   key={ecran.id}
+                  hDepart={ecran.depart?.h}
                   /* Sur un écran de réglage, c'est la pente de (AB) qu'on
                      compare à la cible — la figure la remonte elle-même. */
                   onPente={ecran.type === "reglage" ? setValeur : undefined}
@@ -299,7 +312,7 @@ export function Atelier() {
               </button>
               {essaiReglage && !reglageOk && (
                 <Apparition cle={`reglage-${valeur}`} decalage={12} className="mt-5">
-                  <div className="rounded-xl border-l-[3px] border-soft bg-surface-container px-5 py-4">
+                  <div role="status" className="rounded-xl border-l-[3px] border-soft bg-surface-container px-5 py-4">
                     <p className="text-body-lg text-primary">
                       Pas encore : ta pente vaut{" "}
                       <span className="tabular-nums font-semibold">
@@ -323,6 +336,7 @@ export function Atelier() {
             <Apparition cle={`${ecran.id}-${option.id}-fb`} decalage={16} echelle={0.02} className="mt-6">
               <div
                 data-feedback-erreur
+                role="status"
                 className="rounded-xl border-l-[3px] px-5 py-5 bp-medium:px-6 bp-medium:py-6"
                 style={{
                   borderColor: "var(--figure-regime-aperiodic)",
@@ -358,7 +372,10 @@ export function Atelier() {
           {gagne && (
             <Apparition cle={`${ecran.id}-ok`} decalage={16} echelle={0.02} className="mt-6">
               {ecran.acquis && (
-                <div className="rounded-xl border-l-[3px] border-accent bg-accent-subtle px-5 py-5 bp-medium:px-6 bp-medium:py-6">
+                <div
+                  role="status"
+                  className="rounded-xl border-l-[3px] border-accent bg-accent-subtle px-5 py-5 bp-medium:px-6 bp-medium:py-6"
+                >
                   <p className="text-caption font-semibold uppercase tracking-eyebrow text-accent">
                     Ce qu’on retient
                   </p>
@@ -380,11 +397,43 @@ export function Atelier() {
                   <Icon name="arrow-right" size={16} />
                 </button>
               )}
+              {/* Fin de parcours : une SORTIE. L'audit du 2026-08-15 la
+                  trouvait murée — le texte de fin n'était suivi d'aucune
+                  action, sur une page qui ne portait par ailleurs aucun
+                  lien. */}
               {dernier && (
-                <p className="mt-5 text-body-lg text-secondary">
-                  Tu viens de reconstruire le nombre dérivé depuis la pente du
-                  collège. C’est la fin de cette tranche du prototype.
-                </p>
+                <div className="mt-5">
+                  <p className="text-body-lg text-secondary">
+                    Tu viens de reconstruire le nombre dérivé depuis la pente du
+                    collège. C’est la fin de cette tranche du prototype.
+                  </p>
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    <button
+                      type="button"
+                      onClick={recommencer}
+                      className={cn(
+                        "inline-flex min-h-touch items-center gap-2 rounded-full px-5 py-3",
+                        "border border-subtle bg-surface-raised text-primary",
+                        "text-body font-medium",
+                        "state-layer focus-ring [--focus-radius:999px]"
+                      )}
+                    >
+                      Recommencer la chaîne
+                    </button>
+                    <Link
+                      href="/notions/maths/derivabilite-etude-fonctions"
+                      className={cn(
+                        "inline-flex min-h-touch items-center gap-2 rounded-full px-5 py-3",
+                        "bg-accent text-on-accent",
+                        "text-body font-medium no-underline",
+                        "state-layer focus-ring [--focus-radius:999px]"
+                      )}
+                    >
+                      Lire la leçon complète
+                      <Icon name="arrow-right" size={16} />
+                    </Link>
+                  </div>
+                </div>
               )}
             </Apparition>
           )}

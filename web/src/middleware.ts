@@ -21,6 +21,14 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
+/**
+ * Budget accordé au rafraîchissement de session. Deux secondes : au-delà,
+ * l'utilisateur attend déjà trop pour un travail qui ne lui rend aucun
+ * service visible, et le plafond de la plateforme (~25 s) est cent fois
+ * trop haut pour servir de garde-fou.
+ */
+const AUTH_DELAI_MS = 2000;
+
 export async function middleware(request: NextRequest) {
   if (process.env.NEXT_PUBLIC_AUTH_MODE !== "live") {
     return NextResponse.next();
@@ -58,7 +66,30 @@ export async function middleware(request: NextRequest) {
   // matcher is access-gated yet (a per-page concern for `/moi`, out of this
   // build's scope) — this call exists purely to keep the session cookie
   // fresh so client components hydrate with a valid session.
-  await supabase.auth.getUser();
+  //
+  // BORNÉ DANS LE TEMPS, ET TOLÉRANT À LA PANNE. Audit du 2026-08-15 :
+  // le projet Supabase répondait 503 ; `getUser()` ne rendait jamais la
+  // main, le middleware restait bloqué jusqu'à ce que Vercel le tue au
+  // bout de ~25 s, et /connexion renvoyait un 504 nu — sans identité
+  // visuelle, sans retour possible. Le lien « Se connecter » du header de
+  // CHAQUE page menait donc à une page d'erreur de la plateforme.
+  //
+  // La règle qu'on en tire : rafraîchir un cookie est un CONFORT. Un
+  // backend d'authentification indisponible doit dégrader la session en
+  // « non connecté » — état que la page sait déjà rendre honnêtement — et
+  // jamais faire tomber la route. On borne donc l'appel et on laisse
+  // passer la requête quoi qu'il arrive.
+  try {
+    await Promise.race([
+      supabase.auth.getUser(),
+      new Promise((_, rejette) =>
+        setTimeout(() => rejette(new Error("délai dépassé")), AUTH_DELAI_MS)
+      ),
+    ]);
+  } catch {
+    // Volontairement silencieux et volontairement non bloquant : la requête
+    // continue avec les cookies tels quels.
+  }
 
   return response;
 }

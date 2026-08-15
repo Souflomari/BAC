@@ -107,9 +107,18 @@ function Axes({
  * ciel.
  */
 export function FigurePente({
-  bx: bx0 = 4, by: by0 = 2, onChange, erreur = null, erreurLabel,
+  bx: bx0 = 4, by: by0 = 2, onChange, erreur = null, erreurLabel, fige = false,
 }: {
   bx?: number; by?: number; onChange?: (pente: number) => void;
+  /**
+   * Commandes verrouillées. Sur un écran dont l'énoncé cite « on avance de 4,
+   * on monte de 2 », les curseurs actifs laissaient l'élève déplacer B sous
+   * un énoncé figé : la figure affichait alors 4/2 = 2,00 pendant que la
+   * validation continuait de tenir 0,5 pour la bonne réponse et que l'encart
+   * final affirmait « ici 2 ÷ 4 = 0,5 ». On enseignait un résultat faux avec
+   * l'autorité d'une bonne réponse (audit 2026-08-15, P0-4).
+   */
+  fige?: boolean;
   /** La pente qu'implique la réponse fausse de l'élève. Elle est tracée en
    *  PARTANT de la bonne droite : l'écart se voit se creuser (R3). */
   erreur?: number | null;
@@ -126,9 +135,13 @@ export function FigurePente({
   const ay = useRessort(by, SPATIAL.standardDefault);
   const apente = ay / Math.max(ax, 0.01);
 
-  // La droite fausse part de la bonne et s'en écarte (progression 0 → 1,
-  // avec le dépassement M3 : elle va un peu trop loin puis se pose).
-  const p = useApparition(erreur ?? "aucune", { ressort: SPATIAL.expressiveDefault });
+  // La droite fausse part de la bonne et s'en écarte. Ressort STANDARD, pas
+  // expressif : avec l'amortissement expressif (0,8) la droite dépasse la
+  // pente affirmée de ~1,5 % avant de revenir — elle montre donc, une
+  // fraction de seconde, une pente qui n'est pas la réponse de l'élève. Le
+  // dépassement est aussi interdit par la bible §5. Les deux raisons vont
+  // dans le même sens.
+  const p = useApparition(erreur ?? "aucune", { ressort: SPATIAL.standardDefault });
   const penteFausse = erreur == null ? pente : pente + (erreur - pente) * p;
 
   function maj(nx: number, ny: number) {
@@ -210,23 +223,28 @@ export function FigurePente({
 
       {/* Les commandes : l'élève AGIT (R1). Deux curseurs plutôt qu'un
           glisser-déposer libre — au clavier comme au doigt, et on ne perd
-          jamais le point hors du cadre. */}
+          jamais le point hors du cadre.
+
+          Sauf sur un écran figé : là, la figure ILLUSTRE l'énoncé et l'action
+          est ailleurs (le choix). Les curseurs sont alors désactivés — pas
+          cachés : l'élève voit d'où viennent les deux nombres dont on lui
+          parle. */}
       <div className="mt-5 grid gap-2.5">
         <label className="flex items-center gap-3 text-body text-secondary">
           <span className="w-28 shrink-0 text-primary font-medium">on avance de</span>
-          <input type="range" min={1} max={5} step={1} value={bx}
+          <input type="range" min={1} max={5} step={1} value={bx} disabled={fige}
             onChange={(e) => maj(Number(e.target.value), by)}
-            aria-label="on avance de" className="flex-1 accent-accent" />
+            aria-label="on avance de" className="flex-1 accent-accent disabled:opacity-60" />
           <span className="w-6 tabular-nums text-primary font-semibold">{bx}</span>
         </label>
         <label className="flex items-center gap-3 text-body text-secondary">
           <span className="w-28 shrink-0 text-primary font-medium">on monte de</span>
-          <input type="range" min={0} max={4} step={1} value={by}
+          <input type="range" min={0} max={4} step={1} value={by} disabled={fige}
             onChange={(e) => maj(bx, Number(e.target.value))}
-            aria-label="on monte de" className="flex-1 accent-accent" />
+            aria-label="on monte de" className="flex-1 accent-accent disabled:opacity-60" />
           <span className="w-6 tabular-nums text-primary font-semibold">{by}</span>
         </label>
-        <p className={cn("mt-1 text-body-lg text-primary")}>
+        <p className={cn("mt-1 text-body-lg text-primary")} role="status">
           pente ={" "}
           <span className="tabular-nums font-semibold text-accent">
             {by} / {bx} = {(by / bx).toFixed(2).replace(".", ",")}

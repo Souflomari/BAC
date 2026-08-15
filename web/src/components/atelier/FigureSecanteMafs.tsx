@@ -18,7 +18,7 @@
  * passer — la figure bute, elle ne triche pas.
  */
 
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { Mafs, Coordinates, Plot, Line, Point, Text as MafsText, Theme, useMovablePoint } from "mafs";
 import { useRessort } from "./useRessort";
 import { useApparition } from "./Apparition";
@@ -31,9 +31,14 @@ const f = (x: number) => x * x;
 
 export function FigureSecanteMafs({
   onPente,
+  hDepart = H_MAX,
   erreurPente = null,
   erreurLabel,
 }: {
+  /** Écart h à l'ouverture de l'écran, déclaré par l'écran lui-même — voir
+   *  `Ecran.depart`. Une question qui dit « d'après la figure » doit ouvrir
+   *  sur la figure dont elle parle. */
+  hDepart?: number;
   /** Remonte la pente de (AB) à chaque déplacement de B — c'est elle que
    *  l'écran de type « réglage » compare à sa cible. Appelée dans un effet,
    *  jamais pendant le rendu : remonter un état au parent en plein rendu
@@ -52,14 +57,14 @@ export function FigureSecanteMafs({
     return [borne, f(borne)];
   }, []);
 
-  const B = useMovablePoint([A_X + H_MAX, f(A_X + H_MAX)], {
+  const B = useMovablePoint([A_X + hDepart, f(A_X + hDepart)], {
     constrain: contrainte,
     color: Theme.orange,
   });
 
   const h = B.point[0] - A_X;
   const pente = (f(A_X + h) - f(A_X)) / h; // = 2 + h
-  const penteAnimee = useRessort(pente, SPATIAL.expressiveDefault);
+  const penteAnimee = useRessort(pente, SPATIAL.standardDefault);
 
   useEffect(() => {
     onPente?.(pente);
@@ -68,7 +73,7 @@ export function FigureSecanteMafs({
   // La droite fausse ne surgit pas à sa place : elle PART de la sécante que
   // l'élève a sous les yeux et s'en écarte. On ne lui dit pas que c'est
   // faux — il regarde sa réponse quitter la courbe (R3).
-  const p = useApparition(erreurPente ?? "aucune", { ressort: SPATIAL.expressiveDefault });
+  const p = useApparition(erreurPente ?? "aucune", { ressort: SPATIAL.standardDefault });
   const penteErreurAnimee =
     erreurPente == null ? pente : pente + (erreurPente - pente) * p;
 
@@ -90,8 +95,60 @@ export function FigureSecanteMafs({
     A_X + (7.2 - f(A_X)) / Math.max(penteErreurAnimee, 0.001)
   );
 
+  // Mafs rend une vue focalisable et un point déplaçable, tous deux SANS
+  // rôle ni nom accessible (audit 2026-08-15, P1-5) : un lecteur d'écran
+  // annonçait la concaténation des graduations — « -1 1 2 3 -1 1 2 3 4 … » —
+  // et rien du tout sur le point. La bibliothèque n'expose pas ces attributs,
+  // on les pose donc sur ses nœuds après le rendu. Ce n'est pas élégant ;
+  // c'est la seule façon de rendre la figure utilisable sans la vue sans
+  // renoncer à Mafs.
+  const cadre = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    const racine = cadre.current;
+    if (!racine) return;
+
+    const pose = () => {
+      const vue = racine.querySelector(".MafsView");
+      if (vue) {
+        vue.setAttribute("role", "application");
+        vue.setAttribute(
+          "aria-label",
+          "Figure interactive : courbe de f de x égale x au carré, avec le point B déplaçable le long de la courbe."
+        );
+      }
+      // Le nœud du point porte la classe `mafs-movable-point` ET le tabindex :
+      // c'est lui qui reçoit le focus, donc lui qu'un lecteur d'écran annonce.
+      const point = racine.querySelector('[class^="mafs-movable-point"][tabindex]');
+      if (!point) return;
+      point.setAttribute("role", "slider");
+      point.setAttribute("aria-label", "Position du point B sur la courbe");
+      point.setAttribute("aria-valuemin", String(H_MIN));
+      point.setAttribute("aria-valuemax", String(H_MAX));
+      point.setAttribute("aria-valuenow", h.toFixed(2));
+      point.setAttribute(
+        "aria-valuetext",
+        `écart h égale ${h.toFixed(2).replace(".", ",")} ; pente de la droite AB égale ${pente
+          .toFixed(2)
+          .replace(".", ",")}`
+      );
+    };
+
+    pose();
+    // Mafs monte le point APRÈS avoir mesuré son conteneur : au moment où
+    // cet effet passe, et même à la trame suivante, le nœud n'existe pas
+    // encore. Deux tentatives ont échoué en silence avant que la lecture du
+    // DOM rendu ne le montre — d'où l'observateur, qui pose les attributs
+    // quand le nœud arrive, quelle que soit la trame.
+    //
+    // (`attributes` reste à false : `pose` écrit des attributs, l'observer ne
+    // se réveille donc pas sur ses propres écritures.)
+    const observateur = new MutationObserver(pose);
+    observateur.observe(racine, { childList: true, subtree: true });
+    return () => observateur.disconnect();
+  }, [h, pente]);
+
   return (
-    <figure className="m-0">
+    <figure className="m-0" ref={cadre}>
       {/* Cadrage : B monte jusqu'à (2,6 ; 6,76) au bout de sa course, et les
           étiquettes de graduation ont besoin d'air en bas — sans cette marge
           Mafs rognait le « -1 » contre le bord. */}
@@ -208,13 +265,14 @@ export function FigureSecanteMafs({
       <div className="mt-4 grid gap-1.5">
         <p className="text-body text-secondary">
           Attrape <span className="font-medium text-primary">B</span> et fais-le
-          glisser vers <span className="font-medium text-primary">A</span>.
+          glisser vers <span className="font-medium text-primary">A</span>
+          {" — "}ou sélectionne-le et utilise les flèches du clavier.
         </p>
         {/* Le quotient est écrit EN ENTIER, dans la même forme qu'au collège
             (« pente = 2 / 4 = 0,50 ») : c'est la même opération, sur une
             courbe. Afficher seulement le résultat cacherait justement ce
             qu'on veut faire reconnaître. */}
-        <p className="text-body-lg text-primary">
+        <p className="text-body-lg text-primary" role="status">
           pente de (AB) ={" "}
           <span className="tabular-nums" style={{ color: "var(--figure-regime-pseudo)" }}>
             {(f(A_X + h) - f(A_X)).toFixed(decimales).replace(".", ",")}

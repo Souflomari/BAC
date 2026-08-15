@@ -15,7 +15,7 @@
 import { useEffect, useRef, useState } from "react";
 import { pasRessort, ressortAuRepos, SPATIAL, type Ressort } from "@/lib/m3-motion";
 
-export function useRessort(cible: number, ressort: Ressort = SPATIAL.expressiveDefault) {
+export function useRessort(cible: number, ressort: Ressort = SPATIAL.standardDefault) {
   const [valeur, setValeur] = useState(cible);
   const vitesse = useRef(0);
   const brut = useRef(cible);

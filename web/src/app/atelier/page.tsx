@@ -1,6 +1,7 @@
 import "mafs/core.css";
 
 import type { Metadata } from "next";
+import { SiteHeader } from "@/components/ui/SiteHeader";
 import { Atelier } from "@/components/atelier/Atelier";
 
 export const metadata: Metadata = {
@@ -16,15 +17,23 @@ export const metadata: Metadata = {
  * modèles, on ne mélange pas. Les notions actuelles restent intactes le
  * temps de l'arbitrage.
  *
- * La page est volontairement nue : c'est `Atelier` qui décide de sa largeur
- * et de ses marges, parce qu'elles CHANGENT entre le plan (une colonne de
- * lecture) et le parcours (deux panneaux larges). Un gabarit imposé ici
- * briderait la scène, qui est justement ce qu'on veut voir en grand.
+ * La page est volontairement nue sous le header : c'est `Atelier` qui décide
+ * de sa largeur et de ses marges, parce qu'elles CHANGENT entre le plan (une
+ * colonne de lecture) et le parcours (deux panneaux larges). Un gabarit
+ * imposé ici briderait la scène, qui est justement ce qu'on veut voir en
+ * grand.
+ *
+ * Le header, lui, est revenu (audit 2026-08-15, P2-4) : la page ne portait
+ * AUCUN lien. Un élève arrivant par un lien partagé était enfermé — pas de
+ * retour à l'accueil, pas de thème, pas de taille de texte.
  */
 export default function AtelierPage() {
   return (
-    <main>
-      <Atelier />
-    </main>
+    <>
+      <SiteHeader container="mx-auto max-w-page px-4 bp-medium:px-8 w-full" />
+      <main>
+        <Atelier />
+      </main>
+    </>
   );
 }

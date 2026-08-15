@@ -109,6 +109,130 @@ function GlyphMark({ className }: { className?: string }) {
   );
 }
 
+/**
+ * MenuCompact — tout le cluster de droite sous un seul bouton, en dessous
+ * de 600 px.
+ *
+ * Choix assumés :
+ *  · La filière RESTE dehors. C'est l'information qui change ce que l'élève
+ *    voit ; l'enterrer priverait la page de son repère le plus utile.
+ *  · Les matières sont des `Item` Radix (navigation au clavier fléchée) ;
+ *    la taille de texte et le thème sont des contrôles à état, posés en pied
+ *    de menu hors de la liste — on ne « choisit » pas un réglage comme on
+ *    choisit une destination.
+ *  · Aucun état dupliqué : le stepper est partagé par module, le thème vit
+ *    dans le localStorage. Les deux instances ne peuvent pas diverger.
+ */
+function MenuCompact({
+  sujets,
+  mode,
+  user,
+  onSignOut,
+}: {
+  sujets: readonly string[];
+  mode: string;
+  user: { displayName: string } | null;
+  onSignOut: () => void;
+}) {
+  return (
+    <div className="bp-medium:hidden">
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger asChild>
+          <button
+            type="button"
+            aria-label={frenchTypography("Menu et réglages")}
+            className={cn(
+              "inline-flex items-center justify-center",
+              // Cible tactile pleine (§9) — 48 px, comme le stepper.
+              "min-h-touch min-w-touch rounded-lg",
+              "text-secondary hover:text-primary",
+              "state-layer focus-ring [--focus-radius:8px]",
+              "transition-colors duration-micro ease-enter"
+            )}
+          >
+            <Icon name="menu" size={18} />
+          </button>
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Portal>
+          <DropdownMenu.Content
+            sideOffset={8}
+            align="end"
+            className={cn(
+              "z-50 min-w-[240px] rounded-xl p-1.5",
+              "border border-subtle bg-surface-raised",
+              "shadow-elevation-2",
+              // Fondu calme, sans rebond (§5).
+              "transition-[opacity,transform] duration-micro ease-enter",
+              "data-[state=open]:opacity-100 data-[state=closed]:opacity-0",
+              "data-[state=open]:scale-100 data-[state=closed]:scale-95"
+            )}
+          >
+            <p className="px-2.5 pb-1 pt-1.5 text-caption font-medium uppercase tracking-eyebrow text-secondary">
+              Notions
+            </p>
+            {sujets.map((id) => (
+              <DropdownMenu.Item key={id} asChild>
+                <Link
+                  href={subjectHref(id)}
+                  className={cn(
+                    "block rounded-md px-2.5 py-2.5",
+                    "state-layer focus-ring [--focus-radius:6px]",
+                    "text-body-sm text-secondary hover:text-primary",
+                    "transition-colors duration-micro ease-between"
+                  )}
+                >
+                  {subjectLabel(id)}
+                </Link>
+              </DropdownMenu.Item>
+            ))}
+
+            <div className="my-1.5 border-t border-subtle" />
+
+            <div className="flex items-center justify-between gap-2 px-1.5 py-1">
+              <FontSizeStepper />
+              <ThemeToggle />
+            </div>
+
+            {mode !== "off" && (
+              <>
+                <div className="my-1.5 border-t border-subtle" />
+                {user ? (
+                  <DropdownMenu.Item asChild>
+                    <button
+                      type="button"
+                      onClick={onSignOut}
+                      className={cn(
+                        "block w-full rounded-md px-2.5 py-2.5 text-left",
+                        "state-layer focus-ring [--focus-radius:6px]",
+                        "text-body-sm text-secondary hover:text-primary"
+                      )}
+                    >
+                      Se déconnecter — {user.displayName}
+                    </button>
+                  </DropdownMenu.Item>
+                ) : (
+                  <DropdownMenu.Item asChild>
+                    <Link
+                      href="/connexion"
+                      className={cn(
+                        "block rounded-md px-2.5 py-2.5",
+                        "state-layer focus-ring [--focus-radius:6px]",
+                        "text-body-sm text-secondary hover:text-primary"
+                      )}
+                    >
+                      Se connecter
+                    </Link>
+                  </DropdownMenu.Item>
+                )}
+              </>
+            )}
+          </DropdownMenu.Content>
+        </DropdownMenu.Portal>
+      </DropdownMenu.Root>
+    </div>
+  );
+}
+
 export function SiteHeader({ className, container }: SiteHeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   // AUTH-SPEC §3 (docs/design/AUTH-SPEC.md): the entry point lives here, in
@@ -224,19 +348,44 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
           </span>
         </Link>
 
-        {/* Right-side: filière badge + font stepper + theme + nav */}
+        {/*
+          Right-side cluster.
+
+          REPLIÉ SOUS 600 px (audit du 2026-08-15). Déployé en entier, ce
+          cluster mesurait 384 px et ne se repliait sur aucun palier : la
+          page débordait de 142 px à 320 px de large, de 102 px à 360 px, de
+          72 px sur un iPhone 14. « Se connecter » finissait hors écran et
+          tout geste vertical partait de travers. Pour un public de lycéens
+          marocains, très majoritairement sur téléphone, c'était le défaut
+          le plus coûteux du produit.
+
+          Il ne se voyait pas en local : sans `NEXT_PUBLIC_AUTH_MODE=live`
+          le lien d'authentification n'existe pas et le cluster tient. La
+          leçon vaut d'être écrite ici — « ça passe en local » ne prouve
+          rien quand la configuration locale n'est pas celle qui est servie.
+        */}
         <div className="flex items-center gap-3 bp-medium:gap-4">
           {/* Filière affordance (Day-9): current stream / choose-your-stream. */}
           <FiliereBadge />
 
+          {/* Le menu compact : tout le reste du cluster, sous un seul bouton.
+              Il ne double aucun état — la taille de texte est partagée entre
+              les deux instances, le thème vit dans le localStorage. */}
+          <MenuCompact
+            sujets={menuSubjects}
+            mode={mode}
+            user={user}
+            onSignOut={handleSignOut}
+          />
+
           {/* A−/A/A+ text size control — §9 floor item */}
-          <FontSizeStepper />
+          <FontSizeStepper className="hidden bp-medium:flex" />
 
           {/* Light/dark toggle — bible §2 (OS default + manual control);
               July-2026 audit F4: the dark tokens were unreachable before. */}
-          <ThemeToggle />
+          <ThemeToggle className="hidden bp-medium:inline-flex" />
 
-          <nav aria-label="Navigation principale">
+          <nav aria-label="Navigation principale" className="hidden bp-medium:block">
             <DropdownMenu.Root>
               <DropdownMenu.Trigger asChild>
                 <button
@@ -305,10 +454,13 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
             Auth affordance (AUTH-SPEC §3, ledger 14.12). Renders ONLY when
             mode !== "off" — when it IS "off" this whole block contributes
             nothing to the DOM, so today's header stays byte-identical.
+
+            Masqué sous 600 px : la même entrée vit dans le menu compact, et
+            l'afficher aux deux endroits la donnerait deux fois à lire.
           */}
           {mode !== "off" &&
             (user ? (
-              <div className="flex items-center gap-1">
+              <div className="hidden items-center gap-1 bp-medium:flex">
                 {/*
                   Identity chip — deliberately NOT a clickable control: it
                   "opens nothing fancy" (no menu/popover, v1 "calm > clever"
@@ -345,6 +497,7 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
               <Link
                 href="/connexion"
                 className={cn(
+                  "hidden bp-medium:inline-block",
                   "text-body-sm font-medium",
                   "state-layer text-secondary hover:text-primary",
                   "transition-colors duration-micro ease-enter",
