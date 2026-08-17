@@ -24,12 +24,29 @@
 **Purpose.** The one place a page's width is decided; the structural guarantee
 that header, main, and footer share a left edge (DESIGN-BIBLE §11).
 
-**Anatomy.** `<div min-h-screen flex-col>` → `SiteHeader container={spine}` →
-`<main id="main-content" className={spine + "py-12 md:py-16 flex-1"}>` →
+**Anatomy.** `<div min-h-screen flex-col>` → `SiteHeader container={bandeHeader}` →
+`<main id="main-content" className={spine + "py-12 bp-medium:py-16 flex-1"}>` →
 `SiteFooter container={spine}`. The spine class is
-`"w-full mx-auto px-4 bp-medium:px-6 bp-expanded:px-8" + maxWidthClass`,
-where `maxWidthClass` comes from the `width` prop
-(reading 65ch / content 72ch / wide 90ch / notion 1140px / page 1280px).
+`"w-full mx-auto px-gutter" + maxWidthClass`, where `maxWidthClass` comes
+from the `width` prop (reading 65ch / content 72ch / wide 90ch /
+notion 1140px / page `--band-page` / atelier `--band-atelier`).
+
+**MISE À JOUR 2026-08-17 — trois choses ont changé ici, et cette section les
+décrivait encore à l'ancienne :**
+
+1. *La gouttière est fluide.* `px-4 bp-medium:px-6 bp-expanded:px-8` (trois
+   paliers durs qui ne bougeaient plus après 840 px) est remplacé par le
+   jeton `--gutter` = `clamp(1rem, 3vw, 4rem)`.
+2. *Les bandes ne sont plus des pixels figés.* `page` valait 1280 px ; c'est
+   maintenant `--band-page` = `min(1760px, 100%)`, et une variante `atelier`
+   (`min(2040px, 100%)`) existe pour les surfaces dont le contenu EST une
+   figure manipulable. La règle qui les gouverne : la prose reste bornée à
+   65 caractères, la coquille s'élargit, et la largeur gagnée va aux figures
+   et aux listes.
+3. *Le header ne suit plus l'épine.* Il garde `max-w-page` sur toutes les
+   routes (audit Fable §3.4 : le wordmark sautait de 104 à 432 px d'une
+   navigation à l'autre). L'épine ne concerne donc plus que `main` et le
+   footer — l'invariant dom-truth ci-dessous porte sur ces deux-là.
 
 **Invariants (dom-truth).** `spine: header aligns with main` and
 `spine: footer aligns with main` — left edges within 0.5px AND equal
