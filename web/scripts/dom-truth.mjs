@@ -230,7 +230,13 @@ const BATTERY = [
   { name: "masthead metadata line", page: NOTION, sel: "header p", text: "min de lecture", fontKey: "body-sm" },
   { name: "::selection is the warm wash", page: NOTION, sel: ".prose-lesson", selectionVar: "--color-accent-subtle" },
   // ── Day-3 shared spine: wordmark and content column share a left edge ──
-  { name: "spine: header aligns with main", page: NOTION, sel: "header > div", alignWith: "main" },
+  // L'ALIGNEMENT header↔main A ÉTÉ RETIRÉ À DESSEIN (audit Fable §3.4).
+  // Cette porte exigeait que le header suive la colonne de contenu, ce qui
+  // produisait un conteneur de 1280 px sur l'accueil, 1140 px sur une leçon,
+  // 691 px sur /connexion et 624 px sur la 404 — le logo sautait de x=104 à
+  // x=432 d'une navigation à l'autre. La porte encodait donc le défaut. Le
+  // nouvel invariant, vérifié plus bas (« header : bande de page constante »),
+  // est que le header a la MÊME largeur sur toutes les routes.
   { name: "spine: footer aligns with main", page: NOTION, sel: "footer > div", alignWith: "main" },
   // ── Day-4 frozen anatomy (A3 band, B1 honest state, C1 footer, LessonEnd) ──
   { name: "masthead band present (A3)", page: NOTION, sel: "[data-band='masthead']", bgVar: "--color-surface-container-low" },
@@ -2060,9 +2066,12 @@ try {
       checks++;
       if (r.hOverflow) failures += fail(`horizontal overflow at ${width}px`);
       else if (r.mainLeft == null) failures += fail("main not found");
-      else if (r.headerLeft != null && Math.abs(r.mainLeft - r.headerLeft) > 0.5)
-        failures += fail(`spine broken at ${width}px: main ${r.mainLeft} vs header ${r.headerLeft}`);
-      else console.log(`  ✓ no overflow, spine holds (left ${Math.round(r.mainLeft)}px)${p !== "/" ? (r.band ? ", band present" : "") : ""}`);
+      // Le header n'a plus à s'aligner sur main (voir la note §3.4 en tête de
+      // fichier) : il tient la bande de page, main tient sa colonne de lecture.
+      // On vérifie donc seulement que main reste DANS le header, jamais dehors.
+      else if (r.headerLeft != null && r.mainLeft < r.headerLeft - 0.5)
+        failures += fail(`main déborde du header à ${width}px : main ${r.mainLeft} < header ${r.headerLeft}`);
+      else console.log(`  ✓ no overflow (main ${Math.round(r.mainLeft)}px, header ${Math.round(r.headerLeft ?? -1)}px)${p !== "/" ? (r.band ? ", band present" : "") : ""}`);
     }
     await wp.close();
   }
@@ -2109,15 +2118,79 @@ try {
       headSha = execSync("git rev-parse --short HEAD", { encoding: "utf8" }).trim();
     } catch { /* git unavailable — format-only check below */ }
     await page.goto(`${BASE}/`, { waitUntil: "networkidle" });
-    const stamp = await page.evaluate(() =>
-      (document.querySelector("footer [data-build-stamp]")?.textContent || "").trim()
-    );
+    // Le tampon est passé en attributs de données (audit Fable §3.1 : un hash
+    // de build affiché à un lycéen dit « chantier »). La vérité de déploiement
+    // est inchangée — seule sa lecture change de textContent à dataset.
+    const stamp = await page.evaluate(() => {
+      const el = document.querySelector("footer [data-build-stamp]");
+      return el ? { sha: el.getAttribute("data-build-sha"), date: el.getAttribute("data-build-date") } : null;
+    });
     checks++;
-    const m = stamp.match(/v\.\s+([0-9a-f]{7,}|inconnu)/);
-    if (!m) failures += fail(`stamp missing or malformed: "${stamp}"`);
-    else if (headSha && m[1] !== headSha && m[1] !== "inconnu")
-      failures += fail(`stamp ${m[1]} ≠ HEAD ${headSha} — the .next build is stale, rebuild before verifying`);
-    else console.log(`  ✓ stamp "${stamp}"${headSha ? ` == HEAD ${headSha}` : " (format only, no git)"}`);
+    const sha = stamp?.sha ?? "";
+    if (!stamp || !/^([0-9a-f]{7,}|inconnu)$/.test(sha))
+      failures += fail(`stamp missing or malformed: ${JSON.stringify(stamp)}`);
+    else if (headSha && sha !== headSha && sha !== "inconnu")
+      failures += fail(`stamp ${sha} ≠ HEAD ${headSha} — the .next build is stale, rebuild before verifying`);
+    else console.log(`  ✓ stamp ${sha} (${stamp.date})${headSha ? ` == HEAD ${headSha}` : " (format only, no git)"}`);
+    // Et il ne doit RIEN rendre à l'écran.
+    checks++;
+    const visible = await page.evaluate(() => {
+      const el = document.querySelector("footer [data-build-stamp]");
+      if (!el) return "absent";
+      const r = el.getBoundingClientRect();
+      return (el.textContent || "").trim().length > 0 || r.width > 0 || r.height > 0 ? "VISIBLE" : "";
+    });
+    if (visible) failures += fail(`le tampon de build est rendu à l'écran (${visible}) — il doit rester en attributs`);
+    else console.log("  ✓ tampon invisible pour l'élève (attributs seulement)");
+  }
+
+  // (F8) Le header tient la MÊME bande sur toutes les routes.
+  //
+  // Porte née de l'audit Fable §3.4. Elle remplace l'ancien « spine: header
+  // aligns with main », qui exigeait l'inverse et faisait sauter le logo de
+  // x=104 à x=432 selon la page. On mesure la position du wordmark sur quatre
+  // routes aux colonnes de contenu très différentes (page large, formulaire
+  // étroit, leçon, 404) : elle doit être identique au pixel.
+  {
+    console.log(`\n[header] SWEEP: bande de page constante sur toutes les routes`);
+    const routes = ["/", "/connexion", NOTION, "/cette-page-nexiste-pas"];
+    const gauches = [];
+    for (const r of routes) {
+      await page.goto(`${BASE}${r}`, { waitUntil: "domcontentloaded" }).catch(() => {});
+      gauches.push(await page.evaluate(() =>
+        Math.round(document.querySelector("header a")?.getBoundingClientRect().left ?? -1)
+      ));
+    }
+    checks++;
+    const uniques = [...new Set(gauches)];
+    if (uniques.length !== 1 || uniques[0] < 0)
+      failures += fail(`le logo saute entre les routes : ${routes.map((r, i) => `${r}=${gauches[i]}px`).join(", ")}`);
+    else console.log(`  ✓ logo à x=${uniques[0]}px sur ${routes.length} routes`);
+  }
+
+  // (F9) Le header ne se replie sur aucune largeur de 320 à 1280.
+  //
+  // Porte née de l'audit Fable §3.3. Le défaut réel se situait entre 640 et
+  // 780 px : le wordmark passait sur deux lignes et « Se connecter » se
+  // repliait. Un contrôle plus haut que la cible tactile trahit un retour à
+  // la ligne — c'est le signe qu'on mesure.
+  {
+    console.log(`\n[header] SWEEP: aucun repli de 320 à 1280 px`);
+    const fautifs = [];
+    for (let w = 320; w <= 1280; w += 40) {
+      await page.setViewportSize({ width: w, height: 800 });
+      await page.goto(`${BASE}/`, { waitUntil: "domcontentloaded" });
+      const m = await page.evaluate(() => ({
+        replies: [...document.querySelectorAll("header a, header button")]
+          .filter((e) => e.getBoundingClientRect().height > 48).length,
+        deborde: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      }));
+      if (m.replies || m.deborde > 0) fautifs.push(`${w}px(${m.replies} replié(s), débord ${m.deborde})`);
+    }
+    await page.setViewportSize({ width: 1280, height: 1000 });
+    checks++;
+    if (fautifs.length) failures += fail(`header replié ou débordant : ${fautifs.join(", ")}`);
+    else console.log(`  ✓ 25 largeurs testées, aucun repli, aucun débord`);
   }
 
   // (F7) KaTeX accessibility parity: every formula ships MathML.

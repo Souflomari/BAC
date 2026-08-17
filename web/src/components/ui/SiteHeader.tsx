@@ -135,7 +135,7 @@ function MenuCompact({
   onSignOut: () => void;
 }) {
   return (
-    <div className="bp-medium:hidden">
+    <div className="bp-expanded:hidden">
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
           <button
@@ -341,7 +341,7 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
           </span>
           {/* #1: decorative but visible at 14px — promoted to secondary for contrast */}
           <span
-            className="hidden sm:inline text-body-sm text-secondary font-medium"
+            className="hidden bp-expanded:inline text-body-sm text-secondary font-medium"
             aria-hidden="true"
           >
             · sciences
@@ -379,13 +379,13 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
           />
 
           {/* A−/A/A+ text size control — §9 floor item */}
-          <FontSizeStepper className="hidden bp-medium:flex" />
+          <FontSizeStepper className="hidden bp-expanded:flex" />
 
           {/* Light/dark toggle — bible §2 (OS default + manual control);
               July-2026 audit F4: the dark tokens were unreachable before. */}
-          <ThemeToggle className="hidden bp-medium:inline-flex" />
+          <ThemeToggle className="hidden bp-expanded:inline-flex" />
 
-          <nav aria-label="Navigation principale" className="hidden bp-medium:block">
+          <nav aria-label="Navigation principale" className="hidden bp-expanded:block">
             <DropdownMenu.Root>
               <DropdownMenu.Trigger asChild>
                 <button
@@ -460,7 +460,7 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
           */}
           {mode !== "off" &&
             (user ? (
-              <div className="hidden items-center gap-1 bp-medium:flex">
+              <div className="hidden items-center gap-1 bp-expanded:flex">
                 {/*
                   Identity chip — deliberately NOT a clickable control: it
                   "opens nothing fancy" (no menu/popover, v1 "calm > clever"
@@ -497,7 +497,7 @@ export function SiteHeader({ className, container }: SiteHeaderProps) {
               <Link
                 href="/connexion"
                 className={cn(
-                  "hidden bp-medium:inline-block",
+                  "hidden bp-expanded:inline-block",
                   "text-body-sm font-medium",
                   "state-layer text-secondary hover:text-primary",
                   "transition-colors duration-micro ease-enter",

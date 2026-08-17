@@ -234,14 +234,14 @@ export function FigurePente({
           <span className="w-28 shrink-0 text-primary font-medium">on avance de</span>
           <input type="range" min={1} max={5} step={1} value={bx} disabled={fige}
             onChange={(e) => maj(Number(e.target.value), by)}
-            aria-label="on avance de" className="flex-1 accent-accent disabled:opacity-60" />
+            aria-label="on avance de" className="curseur flex-1 disabled:opacity-60" />
           <span className="w-6 tabular-nums text-primary font-semibold">{bx}</span>
         </label>
         <label className="flex items-center gap-3 text-body text-secondary">
           <span className="w-28 shrink-0 text-primary font-medium">on monte de</span>
           <input type="range" min={0} max={4} step={1} value={by} disabled={fige}
             onChange={(e) => maj(bx, Number(e.target.value))}
-            aria-label="on monte de" className="flex-1 accent-accent disabled:opacity-60" />
+            aria-label="on monte de" className="curseur flex-1 disabled:opacity-60" />
           <span className="w-6 tabular-nums text-primary font-semibold">{by}</span>
         </label>
         <p className={cn("mt-1 text-body-lg text-primary")} role="status">

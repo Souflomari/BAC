@@ -54,7 +54,7 @@ export function PageShell({
     page:    "max-w-page",
   }[width];
 
-  // THE spine: one container class consumed by header, main, and footer.
+  // THE spine: one container class consumed by main and footer.
   // Per-window-class gutter scale (ADR 0024, M3 600/840): 16/24/32px.
   const container = cn(
     "w-full mx-auto",
@@ -62,9 +62,26 @@ export function PageShell({
     maxWidthClass
   );
 
+  /**
+   * Le header, lui, ne suit PAS la colonne de contenu — il garde la bande de
+   * page sur toutes les routes.
+   *
+   * Audit Fable §3.4 : l'ancienne « épine partagée » alignait le wordmark sur
+   * la colonne de texte, ce qui donnait un conteneur de 1280 px sur
+   * l'accueil, 1140 px sur une leçon, 691 px sur /connexion et 624 px sur la
+   * 404 — le logo sautait de x=104 à x=432 d'une navigation à l'autre.
+   * L'alignement gagné était invisible ; le saut, lui, se voyait à chaque
+   * clic. Un seul gabarit de header, global.
+   */
+  const bandeHeader = cn(
+    "w-full mx-auto",
+    "px-4 bp-medium:px-6 bp-expanded:px-8",
+    "max-w-page"
+  );
+
   return (
     <div className="min-h-screen flex flex-col bg-surface-base">
-      <SiteHeader container={container} />
+      <SiteHeader container={bandeHeader} />
 
       <main
         id="main-content"

@@ -183,8 +183,13 @@ export function Atelier() {
     return (
       <div className="mx-auto max-w-page px-5 py-10 bp-medium:px-8 bp-medium:py-14">
         <header className="max-w-reading">
+          {/* L'eyebrow « PROTOTYPE · CHAÎNE DE COMPÉTENCES » est retirée
+              (audit Fable §3.1). Elle s'adressait à nous, pas à l'élève :
+              lui annoncer qu'il entre dans un prototype le prépare à excuser
+              ce qu'il va voir. La page reste non indexée par son metadata ;
+              c'est là que l'information a sa place. */}
           <p className="text-caption font-medium uppercase tracking-eyebrow text-accent">
-            Prototype · chaîne de compétences
+            Mathématiques · 2ème bac
           </p>
           <h1 className="mt-2 font-serif text-h1 font-semibold text-primary">
             Les dérivées
@@ -251,17 +256,21 @@ export function Atelier() {
 
         {/* ── LA CONDUITE : ce qu'on dit, ce qu'on demande, ce qu'on répond ── */}
         <div className="min-w-0">
-          {/* ≤ 2 phrases (R2) */}
-          <Apparition cle={ecran.id} delai={40}>
-            <p className="font-serif text-h2 font-semibold leading-tight text-primary">
-              {ecran.texte}
-            </p>
-          </Apparition>
-          <Apparition cle={ecran.id} delai={90}>
-            <p id={`question-${ecran.id}`} className="mt-4 text-lead text-secondary">
-              {ecran.question}
-            </p>
-          </Apparition>
+          {/* ≤ 2 phrases (R2).
+
+              PAS D'ANIMATION SUR LE CADRAGE NI SUR LA QUESTION (audit Fable
+              §3.10). Ils étaient en fondu échelonné comme le reste, si bien
+              que le bouton d'action — lui non animé — se voyait avant la
+              consigne qui explique quoi en faire. Mesuré : 225 ms, pas les
+              « plusieurs secondes » décrites, mais l'ordre était bien
+              inversé. Le texte d'un exercice ne doit jamais être retenu par
+              une animation ; le mouvement reste aux éléments secondaires. */}
+          <p className="font-serif text-h2 font-semibold leading-tight text-primary">
+            {ecran.texte}
+          </p>
+          <p id={`question-${ecran.id}`} className="mt-4 text-lead text-secondary">
+            {ecran.question}
+          </p>
 
           {/* l'action (R1) */}
           {ecran.type === "choix" && (

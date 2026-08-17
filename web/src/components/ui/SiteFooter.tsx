@@ -54,12 +54,23 @@ export function SiteFooter({ container }: { container: string }) {
           {/* Build stamp (Day-8.5 deployment truth): commit + build date,
               injected at build time (next.config.mjs). Answers "which
               version am I looking at?" — the question behind two incidents.
-              Quiet by design; a computable fact, per the metadata honesty
-              rule. dom-truth asserts presence + SHA match. */}
-          <span data-build-stamp className="ml-2 tabular-nums opacity-70">
-            · v. {process.env.NEXT_PUBLIC_BUILD_SHA} ·{" "}
-            {process.env.NEXT_PUBLIC_BUILD_DATE}
-          </span>
+              dom-truth asserts presence + SHA match.
+
+              INVISIBLE POUR L'ÉLÈVE depuis l'audit Fable §3.1. Le tampon
+              reste, parce que la vérité de déploiement a coûté deux
+              incidents à établir et qu'on ne la retire pas ; mais un hash de
+              commit affiché sous le pied de page d'un site destiné à des
+              lycéens dit « ceci est un chantier », pas « ceci est un
+              produit ». Il passe donc en attributs de données : toujours lu
+              par les portes et par quiconque ouvre l'inspecteur, jamais
+              rendu à l'écran. `hidden` le retire aussi de l'arbre
+              d'accessibilité — ce n'est pas une information pour l'élève. */}
+          <span
+            hidden
+            data-build-stamp
+            data-build-sha={process.env.NEXT_PUBLIC_BUILD_SHA}
+            data-build-date={process.env.NEXT_PUBLIC_BUILD_DATE}
+          />
         </p>
       </div>
     </footer>

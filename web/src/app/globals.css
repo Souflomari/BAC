@@ -668,16 +668,15 @@ h3:hover .heading-anchor,
    scroll region would be an awkward mobile pattern, so it stays natural
    height there. The scrollbar is the existing refined thumb (below). */
 @media (min-width: 1280px) {
+  /* Audit Fable §3.5 : le scroll imbriqué est retiré.
+     Cette règle enfermait 2 359 px de contenu dans 640 px avec sa propre
+     barre de défilement — piège à molette classique : la roulette agit sur
+     le bloc au lieu de la page, et rien ne dit combien de notions restent
+     en dessous. Le fondu de bas ajouté pour compenser était un pansement
+     sur une décision à refaire. La liste coule maintenant dans la page ;
+     sa longueur est l'information, pas un défaut à masquer. */
   .mastery-map-scroll {
-    max-height: 640px;
-    overflow-y: auto;
     padding-right: 4px;
-    /* Soft bottom fade signals "more below" regardless of OS/browser
-       scrollbar-visibility settings — overlay scrollbars render invisible
-       at rest in most setups (measured in headless Chromium too), which
-       would otherwise make a hard content cut read as "that's everything." */
-    mask-image: linear-gradient(to bottom, black calc(100% - 40px), transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 40px), transparent 100%);
   }
 }
 
@@ -998,4 +997,92 @@ h3:hover .heading-anchor,
 }
 .MafsView.MafsView [class^="mafs-movable-point"] {
   touch-action: none;
+}
+
+/* ── Autofill : neutraliser le bleu de Chrome ───────────────────────────────
+   Audit Fable §3.11. Chrome peint les champs pré-remplis avec son propre
+   fond bleu pâle, non surchargeable par `background-color` : en thème
+   sombre, deux rectangles clairs crevaient l'écran au milieu d'une page
+   chocolat, et le texte saisi restait noir sur bleu.
+
+   Le seul levier est `box-shadow: inset` (le fond peint par l'agent
+   utilisateur passe DERRIÈRE) plus `-webkit-text-fill-color` (la couleur du
+   texte, que `color` ne gouverne pas en état d'autofill). Le délai de
+   transition d'un siècle est l'astuce consacrée : elle empêche l'agent
+   utilisateur de rejouer sa propre transition de fond par-dessus. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-surface-raised) inset;
+  box-shadow: 0 0 0 1000px var(--color-surface-raised) inset;
+  -webkit-text-fill-color: var(--color-text-primary);
+  caret-color: var(--color-text-primary);
+  transition: background-color 100000s ease-in-out 0s;
+}
+
+/* ── Curseur de réglage (.curseur) ──────────────────────────────────────────
+   Audit Fable §3.9 : les `input[type=range]` natifs mesuraient 16 px de haut
+   avec une poignée de 14 px, alors que le jeton `--touch-target: 48px` existe
+   depuis la phase A. Sur l'atelier, ce curseur EST le mécanisme pédagogique
+   central — c'est le geste par lequel l'élève découvre que la pente est un
+   rapport. Le laisser à 14 px, c'est rendre l'idée difficile à atteindre au
+   doigt.
+
+   Construction : la boîte fait 48 px (zone de préhension), la piste visible
+   6 px, la poignée 24 px. Le halo de focus reprend celui du reste du site.
+   Les deux moteurs ont des pseudo-éléments incompatibles — d'où la
+   duplication WebKit/Firefox, qui ne peut pas être factorisée (un sélecteur
+   inconnu invalide toute la règle qui le contient). */
+.curseur {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: var(--touch-target);
+  background: transparent;
+  cursor: pointer;
+}
+.curseur:focus-visible {
+  outline: none;
+}
+.curseur::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-border-subtle);
+}
+.curseur::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-border-subtle);
+}
+.curseur::-moz-range-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-accent);
+}
+.curseur::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  border: 2px solid var(--color-surface-raised);
+  /* (48 − 6) / 2 − (24 − 6) / 2 = centrage de la poignée sur la piste */
+  margin-top: -9px;
+  transition: box-shadow var(--duration-micro) var(--ease-enter);
+}
+.curseur::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  border: 2px solid var(--color-surface-raised);
+  transition: box-shadow var(--duration-micro) var(--ease-enter);
+}
+.curseur:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px var(--focus-halo);
+}
+.curseur:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 4px var(--focus-halo);
 }

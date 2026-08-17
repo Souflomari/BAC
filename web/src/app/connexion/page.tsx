@@ -77,7 +77,10 @@ const INPUT_CLASS = cn(
   "block w-full min-h-touch rounded-md px-3 py-2",
   "text-body text-primary",
   "bg-surface-raised",
-  "border border-subtle",
+  // `border-field`, pas `border-subtle` : ici le trait est la SEULE
+  // délimitation du champ, donc WCAG 1.4.11 exige 3:1 (audit Fable §3.14 —
+  // border-subtle plafonnait à 1,17:1). Voir tokens.ts.
+  "border border-field",
   "placeholder:text-tertiary",
   "focus-ring [--focus-radius:8px]",
   // The single disabled mechanism (ADR 0024) — matches TransportButton.
@@ -322,6 +325,15 @@ export default function ConnexionPage() {
             >
               <GoogleGlyph />
               <span>Continuer avec Google</span>
+              {/* Audit Fable §3.11 : le bouton EST désactivé — Fable le
+                  croyait actionnable, il ne l'est pas. Le vrai défaut est
+                  ailleurs : la raison ne vivait que dans l'aria-label, donc
+                  un élève voyant lisait un bouton gris sans explication
+                  pendant qu'un lecteur d'écran, lui, entendait « bientôt
+                  disponible ». La même information pour tout le monde. */}
+              <span className="rounded-full bg-surface-container-low px-2 py-0.5 text-caption font-medium text-secondary">
+                bientôt
+              </span>
             </button>
 
             {mode === "mock" && (

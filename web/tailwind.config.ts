@@ -103,6 +103,9 @@ const config: Config = {
       // as a border color on a couple of emphasized rules.
       borderColor: {
         subtle: v("color-border-subtle"),
+        // `border-field` — le trait des champs de formulaire, à 3:1 (WCAG
+        // 1.4.11). Voir tokens.ts pour la raison du jeton séparé.
+        field: v("color-border-field"),
         soft: v("color-border-soft"),
         "text-secondary": v("color-text-secondary"),
       },

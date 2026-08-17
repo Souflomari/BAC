@@ -57,6 +57,14 @@ export const themes: Record<"light" | "dark", Theme> = {
       // Borders — warm
       "--color-border-subtle": "#E6DECF",
       "--color-border-soft": "#D2C6B2",
+      // Bordure de CHAMP DE FORMULAIRE. Distincte de `border-soft` à dessein
+      // (audit Fable §3.14) : quand un trait est la SEULE délimitation d'un
+      // composant, WCAG 1.4.11 exige 3:1 — or border-soft plafonne à 1,58:1.
+      // Assombrir border-soft globalement aurait alourdi tous les filets
+      // décoratifs du site pour régler un problème qui ne concerne que les
+      // champs. Un jeton dédié règle le cas sans peser sur le reste : 3,12:1
+      // sur la surface claire la plus sombre du système.
+      "--color-border-field": "#8C8477",
       // Text — warm near-black ink, three levels (none pure #000)
       "--color-text-primary": "#2A2018",
       "--color-text-secondary": "#5C5043",
@@ -72,7 +80,9 @@ export const themes: Record<"light" | "dark", Theme> = {
       "--color-success": "#3F6B4E",
       "--color-success-subtle": "#E8F0E6",
       "--color-on-success": "#FFFDF8",
-      "--color-warning": "#8A6A1E",
+      // Audit Fable §3.14 : #8A6A1E donnait 4,41:1 sur le fond clair, sous
+      // le seuil AA de 4,5 pour du petit corps. Assombri à 4,62:1.
+      "--color-warning": "#86671D",
       "--color-warning-subtle": "#F6EEDA",
       "--color-error": "#9A3B2E",
       "--color-error-subtle": "#F6E6E1",
@@ -113,6 +123,7 @@ export const themes: Record<"light" | "dark", Theme> = {
       "--color-surface-container-highest": "#322B23",
       "--color-border-subtle": "#352E26",
       "--color-border-soft": "#473E33",
+      "--color-border-field": "#84735F",
       "--color-text-primary": "#EFE8DC",
       "--color-text-secondary": "#B5A893",
       "--color-text-tertiary": "#9A8D7C",
