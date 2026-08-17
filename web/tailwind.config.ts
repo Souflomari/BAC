@@ -34,10 +34,21 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    // ── L'ÉCHELLE DE FENÊTRE, EN REMPLACEMENT ET NON EN AJOUT ───────────────
+    // `screens` vit ici (theme.screens) et non dans `extend` : posé dans
+    // `extend`, il S'AJOUTAIT aux défauts Tailwind (sm 640, md 768, lg 1024,
+    // xl 1280, 2xl 1536), qui restaient donc utilisables. C'est ainsi que
+    // treize classes `sm:`/`md:` avaient survécu dans le code et qu'une
+    // règle à 1536 px se retrouvait encore dans le CSS servi après qu'on ait
+    // cru retirer ce palier.
+    //
+    // En remplacement, l'échelle Material (M3 : compact <600, medium 600,
+    // expanded 840, large 1200, extra-large 1600) est la SEULE qui existe :
+    // une classe `md:` égarée ne produit plus rien du tout au lieu de
+    // produire un quatrième point de rupture silencieux. On rend l'erreur
+    // impossible plutôt que déconseillée.
+    screens,
     extend: {
-      // ── Adaptive window-size classes (ADR 0024 — M3 600/840, + wide 1536) ──
-      screens,
-
       // ── Color palette (DESIGN-BIBLE §2) — values are the generated CSS vars ──
       // text + border moved to textColor/borderColor below so the classes read
       // `text-primary` / `border-subtle` (not the dead `text-text-primary`).

@@ -676,26 +676,21 @@ h3:hover .heading-anchor,
    `--band-page` plafonne à 1760 px et les trois zones se partagent cette
    largeur — la page cesse de s'étirer, elle ne se remplit pas de vide. */
 
-/* ── Mastery-map internal scroll (MasteryMap.tsx) — owner feedback,
-   2026-07-07: the flat 61-notion list stretches the shared grid row (CSS
-   Grid's default row auto-sizing) far taller than the primary column,
-   leaving a large dead gap above the shelf/subjects rows below. Bounded +
-   internally scrollable from the SAME 1280px tier where the two-column
-   grid begins — below that, the whole page is one column and a nested
-   scroll region would be an awkward mobile pattern, so it stays natural
-   height there. The scrollbar is the existing refined thumb (below). */
-@media (min-width: 1280px) {
-  /* Audit Fable §3.5 : le scroll imbriqué est retiré.
-     Cette règle enfermait 2 359 px de contenu dans 640 px avec sa propre
-     barre de défilement — piège à molette classique : la roulette agit sur
-     le bloc au lieu de la page, et rien ne dit combien de notions restent
-     en dessous. Le fondu de bas ajouté pour compenser était un pansement
-     sur une décision à refaire. La liste coule maintenant dans la page ;
-     sa longueur est l'information, pas un défaut à masquer. */
-  .mastery-map-scroll {
-    padding-right: 4px;
-  }
-}
+/* ── Carte de maîtrise — le scroll imbriqué, retiré (audit Fable §3.5) ──────
+   L'ancienne règle enfermait 2 359 px de contenu dans 640 px avec sa propre
+   barre de défilement : piège à molette classique — la roulette agit sur le
+   bloc au lieu de la page, et rien ne dit combien de notions restent en
+   dessous. La liste coule maintenant dans la page ; sa longueur EST
+   l'information, pas un défaut à masquer.
+
+   Le bloc `@media (min-width: 1280px)` qui subsistait ici est supprimé
+   (2026-08-17). Il ne contenait plus qu'un `padding-right: 4px` — la marge
+   qu'on réservait à l'ascenseur disparu — et il le faisait à 1280 px, un
+   palier qui n'appartient plus à l'échelle. Son commentaire promettait
+   « le MÊME palier que la grille à deux colonnes » : celle-ci bascule
+   maintenant à 1200. Une règle vestigiale accrochée à un repère faux est
+   pire qu'absente : elle donne à croire que quelqu'un l'a voulue là.
+   `.mastery-map-scroll` reste comme crochet de classe côté MasteryMap. */
 
 /* ── Notion page layout — use the width (design brief #1) ──────────────────── */
 /*
