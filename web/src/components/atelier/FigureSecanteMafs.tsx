@@ -18,10 +18,11 @@
  * passer — la figure bute, elle ne triche pas.
  */
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Mafs, Coordinates, Plot, Line, Point, Text as MafsText, Theme, useMovablePoint } from "mafs";
 import { useRessort } from "./useRessort";
 import { useApparition } from "./Apparition";
+import { hauteurScene } from "./useLargeurConteneur";
 import { SPATIAL } from "@/lib/m3-motion";
 
 const A_X = 1;
@@ -76,6 +77,8 @@ export function FigureSecanteMafs({
   const p = useApparition(erreurPente ?? "aucune", { ressort: SPATIAL.standardDefault });
   const penteErreurAnimee =
     erreurPente == null ? pente : pente + (erreurPente - pente) * p;
+
+  const [largeurPanneau, setLargeurPanneau] = useState(0);
 
   const proche = h <= 0.3;
   // Le quotient affiché doit se VÉRIFIER à la calculette. À deux décimales,
@@ -147,13 +150,27 @@ export function FigureSecanteMafs({
     return () => observateur.disconnect();
   }, [h, pente]);
 
+  // LA SCÈNE SE DIMENSIONNE SUR SON PANNEAU (2026-08-17). Mafs exige une
+  // hauteur en pixels et pose un SVG de hauteur fixe : bloquée à 440 px, la
+  // figure restait petite quelle que soit la place disponible. On observe
+  // donc la largeur réelle du panneau — pas `window.innerWidth`, qui ne dit
+  // rien de la colonne dans laquelle la figure se trouve.
+  useEffect(() => {
+    const el = cadre.current;
+    if (!el) return;
+    const obs = new ResizeObserver(([e]) => setLargeurPanneau(e.contentRect.width));
+    obs.observe(el);
+    setLargeurPanneau(el.getBoundingClientRect().width);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <figure className="m-0" ref={cadre}>
       {/* Cadrage : B monte jusqu'à (2,6 ; 6,76) au bout de sa course, et les
           étiquettes de graduation ont besoin d'air en bas — sans cette marge
           Mafs rognait le « -1 » contre le bord. */}
       <Mafs
-        height={440}
+        height={hauteurScene(largeurPanneau)}
         viewBox={{ x: [-0.35, 3.4], y: [-1.2, 8] }}
         preserveAspectRatio={false}
       >

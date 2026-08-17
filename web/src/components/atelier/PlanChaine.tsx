@@ -30,7 +30,14 @@ const NIVEAU_TON: Record<string, string> = {
 
 export function PlanChaine({ onDemarrer }: { onDemarrer: () => void }) {
   return (
-    <div className="max-w-reading">
+    // DEUX COLONNES à partir de « large » (M3, 1200 px). La promesse et les
+    // prérequis tiennent dans une colonne de lecture — ils sont en prose,
+    // donc bornés. Le CHEMIN, lui, est une liste : il n'a aucune raison
+    // d'être étroit, et il occupe la colonne de droite au lieu d'allonger la
+    // page. Rien n'a été élargi typographiquement ; on a seulement cessé
+    // d'empiler ce qui pouvait être côte à côte.
+    <div className="grid gap-10 bp-large:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] bp-large:gap-16 bp-xl:gap-24">
+      <div className="flex flex-col items-start">
       {/* 1. où on va */}
       <section>
         <h2 className="font-serif text-h2 font-semibold text-primary">
@@ -70,8 +77,24 @@ export function PlanChaine({ onDemarrer }: { onDemarrer: () => void }) {
         </p>
       </section>
 
+        <button
+          type="button"
+          onClick={onDemarrer}
+          className={cn(
+            "mt-9 inline-flex w-fit min-h-touch items-center gap-2 rounded-full px-6 py-3",
+            "bg-accent text-on-accent",
+            "text-body font-medium",
+            "state-layer focus-ring [--focus-radius:999px]",
+            "transition-transform duration-micro ease-enter hover:scale-[1.02]"
+          )}
+        >
+          Commencer
+          <Icon name="arrow-right" size={16} />
+        </button>
+      </div>
+
       {/* 3. le plan entier, sans cacher la longueur */}
-      <section className="mt-9">
+      <section className="bp-large:mt-0 mt-9">
         <h2 className="font-serif text-h3 font-semibold text-primary">
           Le chemin, du début à la fin
         </h2>
@@ -121,25 +144,10 @@ export function PlanChaine({ onDemarrer }: { onDemarrer: () => void }) {
             );
           })}
         </ol>
+        <p className="mt-5 text-caption text-secondary">
+          {ECRANS.length} écrans en tout — tu peux t’arrêter et reprendre.
+        </p>
       </section>
-
-      <button
-        type="button"
-        onClick={onDemarrer}
-        className={cn(
-          "mt-9 inline-flex min-h-touch items-center gap-2 rounded-full px-6 py-3",
-          "bg-accent text-on-accent",
-          "text-body font-medium",
-          "state-layer focus-ring [--focus-radius:999px]",
-          "transition-transform duration-micro ease-enter hover:scale-[1.02]"
-        )}
-      >
-        Commencer
-        <Icon name="arrow-right" size={16} />
-      </button>
-      <p className="mt-3 text-caption text-secondary">
-        {ECRANS.length} écrans en tout — tu peux t’arrêter et reprendre.
-      </p>
     </div>
   );
 }

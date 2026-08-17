@@ -34,7 +34,7 @@ interface PageShellProps {
    *                       figures/embeds/motion break to the full band
    * - "page"     1280px — full page width
    */
-  width?: "reading" | "content" | "wide" | "notion" | "notionWide" | "page";
+  width?: "reading" | "content" | "wide" | "notion" | "notionWide" | "page" | "atelier";
   className?: string;
 }
 
@@ -50,17 +50,21 @@ export function PageShell({
     notion:  "max-w-notion",
     // Set-W2 candidate (Day-8): the notion band may widen at the wide tier;
     // prose stays 65ch inside — only figures/motion earn the extra width.
-    notionWide: "max-w-notion bp-wide:max-w-[1400px]",
+    notionWide: "max-w-notion bp-large:max-w-[1400px]",
     page:    "max-w-page",
+    // La bande la plus large du site : réservée aux surfaces dont le contenu
+    // EST une figure manipulable. Voir tokens.ts `--band-atelier`.
+    atelier: "max-w-atelier",
   }[width];
 
   // THE spine: one container class consumed by main and footer.
-  // Per-window-class gutter scale (ADR 0024, M3 600/840): 16/24/32px.
-  const container = cn(
-    "w-full mx-auto",
-    "px-4 bp-medium:px-6 bp-expanded:px-8",
-    maxWidthClass
-  );
+  //
+  // GOUTTIÈRE FLUIDE (2026-08-17). Avant : trois paliers durs, 16/24/32 px,
+  // qui ne bougeaient plus au-delà de 840 px — la marge restait à 32 px
+  // pendant que le vide central, lui, atteignait 33 % de l'écran. Le jeton
+  // `--gutter` est un clamp(1rem, 3vw, 4rem) : il respire avec l'écran et
+  // se borne avant de recréer le vide qu'on supprime.
+  const container = cn("w-full mx-auto px-gutter", maxWidthClass);
 
   /**
    * Le header, lui, ne suit PAS la colonne de contenu — il garde la bande de
@@ -73,11 +77,7 @@ export function PageShell({
    * L'alignement gagné était invisible ; le saut, lui, se voyait à chaque
    * clic. Un seul gabarit de header, global.
    */
-  const bandeHeader = cn(
-    "w-full mx-auto",
-    "px-4 bp-medium:px-6 bp-expanded:px-8",
-    "max-w-page"
-  );
+  const bandeHeader = cn("w-full mx-auto px-gutter", "max-w-page");
 
   return (
     <div className="min-h-screen flex flex-col bg-surface-base">

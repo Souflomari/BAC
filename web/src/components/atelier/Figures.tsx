@@ -29,18 +29,50 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useRessort } from "./useRessort";
 import { useApparition } from "./Apparition";
+import { useLargeurConteneur, hauteurScene } from "./useLargeurConteneur";
 import { SPATIAL } from "@/lib/m3-motion";
 
-const W = 520;
-const H = 380;
+/* ── le repère ─────────────────────────────────────────────────────────── */
 
-/* ── repère commun ─────────────────────────────────────────────────────── */
+/**
+ * DEUX DÉFAUTS RÉGLÉS ENSEMBLE (2026-08-17), tous deux révélés en élargissant
+ * le panneau.
+ *
+ * 1. LES UNITÉS N'ÉTAIENT PAS CARRÉES. Le viewBox était figé à 520×380 pour
+ *    une plage de 6,6 × 5,6 unités : 67,9 px par unité en x, 55,7 en y. Une
+ *    pente de 1 était donc dessinée à 39,4° au lieu de 45°. Sur une figure
+ *    dont le sujet EST la pente, c'est la figure qui ment sur ce qu'elle
+ *    enseigne — le défaut le plus grave qu'on puisse avoir ici, et il a
+ *    survécu à tous les audits parce qu'à 520 px personne ne mesure l'angle.
+ *
+ * 2. LE TEXTE SE MISE À L'ÉCHELLE AVEC LE CADRE. Un viewBox fixe rendu à
+ *    1200 px multiplie chaque glyphe par 2,3 : les étiquettes devenaient
+ *    énormes. C'est le §3.15 de l'audit Fable, vu en grand.
+ *
+ * La correction est la même pour les deux : le viewBox vaut exactement la
+ * taille rendue (1 unité SVG = 1 pixel écran), donc le texte garde sa taille
+ * en points, et l'étendue en x se DÉDUIT de la place disponible à partir
+ * d'une unité commune aux deux axes. Un panneau plus large montre plus de
+ * repère, pas une figure grossie.
+ */
+const MARGES = { g: 52, d: 24, h: 24, b: 48 };
+/** Plage verticale montrée, en unités mathématiques. Fixe : c'est elle qui
+ *  fixe l'échelle, la largeur suit. */
+const Y_MIN = -0.6;
+const Y_MAX = 5;
 
-function useRepere(xmin: number, xmax: number, ymin: number, ymax: number) {
-  const m = { g: 52, d: 20, h: 22, b: 46 };
-  const px = (x: number) => m.g + ((x - xmin) / (xmax - xmin)) * (W - m.g - m.d);
-  const py = (y: number) => H - m.b - ((y - ymin) / (ymax - ymin)) * (H - m.h - m.b);
-  return { px, py, m };
+function repereCarre(W: number, H: number) {
+  const m = MARGES;
+  const utile = { w: Math.max(10, W - m.g - m.d), h: Math.max(10, H - m.h - m.b) };
+  // L'unité est commune aux deux axes — c'est toute l'affaire.
+  const u = utile.h / (Y_MAX - Y_MIN);
+  const xSpan = utile.w / u;
+  // On centre la zone utile (-0,6 → 6) quand le panneau offre plus large.
+  const xMin = Y_MIN - Math.max(0, (xSpan - 6.6) / 2);
+  const xMax = xMin + xSpan;
+  const px = (x: number) => m.g + (x - xMin) * u;
+  const py = (y: number) => H - m.b - (y - Y_MIN) * u;
+  return { px, py, xMin, xMax, u };
 }
 
 function Grille({
@@ -126,7 +158,11 @@ export function FigurePente({
 }) {
   const [bx, setBx] = useState(bx0);
   const [by, setBy] = useState(by0);
-  const { px, py } = useRepere(-0.6, 6, -0.6, 5);
+  // La figure épouse SON panneau : viewBox = taille rendue, unités carrées.
+  const { ref: cadre, largeur } = useLargeurConteneur<HTMLElement>();
+  const W = Math.max(320, Math.round(largeur) || 520);
+  const H = hauteurScene(W);
+  const { px, py, xMin, xMax } = repereCarre(W, H);
   const pente = by / bx;
 
   // Le point suit le curseur au ressort : la figure se déforme, elle ne
@@ -163,15 +199,19 @@ export function FigurePente({
   // chevauche. (Défaut vu à l'audit visuel : « ta réponse : 8 » à cheval
   // sur l'axe.)
   const fausseSortParLeHaut = bFausse.x < 5.79;
+  // Les graduations suivent la plage réellement affichée : un panneau large
+  // en montre plus, au lieu de laisser du repère nu.
+  const gradX: number[] = [];
+  for (let k = Math.ceil(xMin); k <= Math.floor(xMax); k++) if (k !== 0) gradX.push(k);
 
   return (
-    <figure className="m-0">
-      <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="img"
+    <figure className="m-0" ref={cadre}>
+      <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} role="img"
         aria-label={`Droite passant par l'origine et le point B de coordonnées ${bx} et ${by}. On avance de ${bx}, on monte de ${by}, donc la pente vaut ${by} sur ${bx}.`}
         className="block w-full">
-        <Grille xmin={-0.6} xmax={6} ymin={-0.6} ymax={5} px={px} py={py} />
-        <Axes xmin={-0.6} xmax={6} ymin={-0.6} ymax={5} px={px} py={py}
-          gradX={[1, 2, 3, 4, 5]} gradY={[1, 2, 3, 4]} />
+        <Grille xmin={xMin} xmax={xMax} ymin={-0.6} ymax={5} px={px} py={py} />
+        <Axes xmin={xMin} xmax={xMax} ymin={-0.6} ymax={5} px={px} py={py}
+          gradX={gradX} gradY={[1, 2, 3, 4]} />
 
         {/* le triangle avance / monte */}
         <line x1={px(0)} y1={py(0)} x2={px(ax)} y2={py(0)}

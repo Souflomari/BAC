@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 export default function AtelierPage() {
   return (
     <>
-      <SiteHeader container="mx-auto max-w-page px-4 bp-medium:px-8 w-full" />
+      <SiteHeader container="mx-auto max-w-atelier px-gutter w-full" />
       <main>
         <Atelier />
       </main>

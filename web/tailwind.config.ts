@@ -148,13 +148,21 @@ const config: Config = {
 
       // ── Reading column ─────────────────────────────────────────────────────
       // --measure-prose (65ch) is the canonical CSS-var source; these mirror it.
+      // Gouttière de page fluide — `px-gutter` (tokens.ts `--gutter`).
+      padding: {
+        gutter: v("gutter"),
+      },
+
       maxWidth: {
         reading: "65ch",
         content: "72ch",
         wide: "90ch",
         lead: v("measure-lead"),
         list: v("measure-list"),
-        page: "1280px",
+        // Les bandes de coquille viennent de tokens.ts (jetons CSS) : elles
+        // sont fluides et doivent grandir jusqu'aux classes M3 large/XL.
+        page: v("band-page"),
+        atelier: v("band-atelier"),
         notion: "1140px",
       },
 

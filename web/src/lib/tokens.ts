@@ -185,6 +185,25 @@ export const invariant: TokenVars = {
   "--measure-wide": "72ch",
   "--measure-lead": "52ch",
   "--measure-list": "42rem",
+  // ── Les BANDES de page (2026-08-17) ────────────────────────────────────
+  // Une bande n'est pas une mesure de lecture. Les `--measure-*` ci-dessus
+  // bornent une LIGNE DE TEXTE (65 caractères : au-delà, l'œil perd la ligne
+  // en revenant à la marge — ça n'est pas négociable et ça ne bouge pas).
+  // Les bandes ci-dessous bornent la COQUILLE, et elles, elles doivent
+  // grandir : c'est là que passaient 33 % de l'écran à 1920 px.
+  //
+  // La règle qui les sépare : la prose reste étroite, la coquille s'élargit,
+  // et la largeur gagnée va aux FIGURES et aux LISTES — jamais à la ligne de
+  // texte. Un écran plus large doit montrer plus de choses, pas des phrases
+  // plus longues.
+  "--band-page": "min(1760px, 100%)",
+  // L'atelier va plus loin que le reste : la scène EST le contenu, et une
+  // figure de 600 px sur un écran de 1900 était le reproche de l'owner.
+  "--band-atelier": "min(2040px, 100%)",
+  // Gouttière fluide : elle grandit avec l'écran au lieu de sauter par
+  // paliers de 8 px, sans jamais dépasser 4 rem (au-delà, on recrée le vide
+  // qu'on vient de supprimer).
+  "--gutter": "clamp(1rem, 3vw, 4rem)",
   // Small-caps eyebrow tracking — was `tracking-eyebrow` in 13 files.
   "--tracking-eyebrow": "0.14em",
   // A11y touch target (DESIGN-BIBLE §9) — was `min-h-touch`.
@@ -273,5 +292,20 @@ export const radius: Record<string, string> = {
 export const screens: Record<string, string> = {
   "bp-medium": "600px",
   "bp-expanded": "840px",
-  "bp-wide": "1536px",
+  // M3 « large » et « extra-large ». AJOUTÉS le 2026-08-17 : ils manquaient,
+  // et c'est la cause racine du vide dont se plaint l'owner. Material 3
+  // définit CINQ classes de fenêtre (compact <600, medium 600, expanded 840,
+  // large 1200, extra-large 1600) et place les mises en page multi-panneaux
+  // à partir de « large ». Le système s'arrêtait à « expanded » et plafonnait
+  // tout à 1280 px : il cessait d'adapter exactement là où M3 dit que les
+  // choses intéressantes commencent. Résultat mesuré avant correction :
+  // 33 % de l'écran vide à 1920 px, 52 % à 2560 px.
+  "bp-large": "1200px",
+  "bp-xl": "1600px",
 };
+// `bp-wide` (1536 px) a été RETIRÉ le 2026-08-17. C'était le `2xl` de
+// Tailwind laissé en place, une valeur qui ne correspond à aucune classe
+// M3 et qui tombait entre « large » (1200) et « extra-large » (1600). Elle
+// retardait de 336 px l'allumage de tous les rails latéraux et des grilles
+// à trois colonnes — donc elle FABRIQUAIT une partie du vide. Ses sept
+// usages sont migrés vers `bp-large`, un vers `bp-xl`.

@@ -109,7 +109,7 @@ export function AvailableShelf({ notions }: { notions: NotionMeta[] }) {
               <Accordion.Content className="shelf-accordion-content">
                 <ul
                   role="list"
-                  className="grid gap-4 px-4 pb-4 pt-1 bp-medium:grid-cols-2 bp-wide:grid-cols-3"
+                  className="grid gap-4 px-4 pb-4 pt-1 bp-medium:grid-cols-2 bp-large:grid-cols-3 bp-xl:grid-cols-4"
                   aria-label={`Notions de ${subjectLabel(subject)}`}
                 >
                   {list.map((n) => (

@@ -80,7 +80,7 @@ export function Dashboard({ subjects }: { subjects: SubjectSummary[] }) {
         </p>
       )}
 
-      <ul role="list" className="grid gap-4 bp-medium:grid-cols-2 bp-wide:grid-cols-3">
+      <ul role="list" className="grid gap-4 bp-medium:grid-cols-2 bp-large:grid-cols-3 bp-xl:grid-cols-4">
         {shown.map((s) => (
           <li key={s.id} className="flex">
             <SubjectCard subject={s} />

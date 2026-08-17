@@ -181,7 +181,7 @@ export function Atelier() {
 
   if (!demarre) {
     return (
-      <div className="mx-auto max-w-page px-5 py-10 bp-medium:px-8 bp-medium:py-14">
+      <div className="mx-auto max-w-page px-gutter py-10 bp-medium:py-14">
         <header className="max-w-reading">
           {/* L'eyebrow « PROTOTYPE · CHAÎNE DE COMPÉTENCES » est retirée
               (audit Fable §3.1). Elle s'adressait à nous, pas à l'élève :
@@ -207,10 +207,10 @@ export function Atelier() {
   }
 
   return (
-    <div className="mx-auto max-w-page px-4 py-6 bp-medium:px-8 bp-medium:py-8">
+    <div className="mx-auto max-w-atelier px-gutter py-6 bp-medium:py-8">
       <Rail courante={ecran.competence} i={i} termine={dernier && gagne} />
 
-      <div className="mt-6 grid gap-7 bp-expanded:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] bp-expanded:gap-10">
+      <div className="mt-6 grid gap-7 bp-expanded:grid-cols-[minmax(0,1fr)_minmax(340px,420px)] bp-expanded:gap-8 bp-large:grid-cols-[minmax(0,1fr)_minmax(400px,480px)] bp-large:gap-12 bp-xl:grid-cols-[minmax(0,1fr)_minmax(440px,540px)] bp-xl:gap-16">
         {/* ── LA SCÈNE : la figure porte l'idée (R5), et elle reste visible ── */}
         <div className="bp-expanded:sticky bp-expanded:top-6 bp-expanded:self-start">
           <div
@@ -255,7 +255,7 @@ export function Atelier() {
         </div>
 
         {/* ── LA CONDUITE : ce qu'on dit, ce qu'on demande, ce qu'on répond ── */}
-        <div className="min-w-0">
+        <div className="min-w-0 bp-expanded:self-center">
           {/* ≤ 2 phrases (R2).
 
               PAS D'ANIMATION SUR LE CADRAGE NI SUR LA QUESTION (audit Fable

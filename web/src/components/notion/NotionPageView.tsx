@@ -237,9 +237,9 @@ export function NotionPageView({
               construction: the cover's own background var equals the band's,
               so only the motif reads. Never behind the title (grid cell). */}
           {wideOption === "m1" ? (
-            <div className="bp-wide:grid bp-wide:grid-cols-[1fr_400px] bp-wide:items-center bp-wide:gap-12">
+            <div className="bp-large:grid bp-large:grid-cols-[1fr_400px] bp-large:items-center bp-large:gap-12">
               <div>{masthead}</div>
-              <div className="hidden bp-wide:block" aria-hidden="true">
+              <div className="hidden bp-large:block" aria-hidden="true">
                 <Cover
                   subject={meta.subject}
                   slug={meta.slug}
@@ -254,7 +254,7 @@ export function NotionPageView({
                   information, clipped by the band. */}
               <div
                 aria-hidden="true"
-                className="hidden bp-wide:block absolute -right-16 -top-24 w-[720px] opacity-[0.14] pointer-events-none"
+                className="hidden bp-large:block absolute -right-16 -top-24 w-[720px] opacity-[0.14] pointer-events-none"
               >
                 <Cover subject={meta.subject} slug={meta.slug} className="!bg-transparent" />
               </div>

@@ -60,7 +60,7 @@ export function KeyFormulaRail({ formulas }: { formulas: KeyFormula[] }) {
     <div
       aria-hidden="true"
       data-key-formula-rail
-      className="hidden bp-wide:block absolute top-0 bottom-0 pointer-events-none"
+      className="hidden bp-large:block absolute top-0 bottom-0 pointer-events-none"
       style={{ left: "calc(100% + 32px)", width: "300px" }}
     >
       <div className="sticky top-24">

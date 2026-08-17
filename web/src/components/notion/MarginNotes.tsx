@@ -56,7 +56,7 @@ export function MarginNotes({ notes }: { notes: MarginNote[] }) {
     <div
       aria-hidden="true"
       data-margin-notes
-      className="hidden bp-wide:block absolute top-0 bottom-0 pointer-events-none"
+      className="hidden bp-large:block absolute top-0 bottom-0 pointer-events-none"
       style={{ left: "calc(100% + 32px)", width: "300px" }}
     >
       {placed.map(({ top, note }, i) => (
