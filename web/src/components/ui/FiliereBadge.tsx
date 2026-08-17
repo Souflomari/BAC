@@ -36,7 +36,7 @@ export function FiliereBadge() {
         <button
           type="button"
           className={cn(
-            "hidden sm:inline-flex items-center gap-1.5 rounded-full px-3 py-1",
+            "hidden bp-medium:inline-flex items-center gap-1.5 rounded-full px-3 py-1",
             "text-body-sm font-medium",
             "state-layer focus-ring [--focus-radius:9999px]",
             "transition-colors duration-micro ease-enter",

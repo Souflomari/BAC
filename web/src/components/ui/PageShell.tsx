@@ -93,7 +93,7 @@ export function PageShell({
           // calm-core pass).
           container,
           // Vertical rhythm: 8-pt grid, top padding generous (§4)
-          "py-12 md:py-16",
+          "py-12 bp-medium:py-16",
           className
         )}
       >

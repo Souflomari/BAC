@@ -592,12 +592,24 @@ h3:hover .heading-anchor,
    1280: two columns — primary 2fr (left), mastery 1fr (right); shelf and
    subjects span the full width below.
 
-   1536/1920: three zones — a thin subjects RAIL (left), primary
-   (centre-gauche), mastery (droite); shelf stays full width below. 1920 is
-   structurally IDENTICAL to 1536 (bible §11: composed space never grows a
-   column with the viewport) — the extra breathing room comes for free from
-   PageShell's fixed max-w-page (1280px) container centering with a larger
-   outer margin as the viewport widens; nothing here changes at 1920.
+   1600 (M3 extra-large): three zones — a thin subjects RAIL (left), primary
+   (centre-gauche), mastery (droite); shelf stays full width below.
+
+   PALIERS RECALÉS SUR L'ÉCHELLE M3 le 2026-08-17 (1280 → 1200, 1536 → 1600).
+   Cette grille avait ses propres paliers, empruntés à Tailwind : un
+   TROISIÈME système de points de rupture cohabitait avec les classes
+   Material et les défauts Tailwind. Trois échelles pour une seule page.
+
+   Le commentaire d'origine disait aussi : « 1920 est structurellement
+   IDENTIQUE à 1536 — la respiration supplémentaire vient gratuitement du
+   conteneur max-w-page fixe (1280 px) qui se centre avec une marge
+   extérieure plus grande ». C'était la doctrine qui FABRIQUAIT le vide dont
+   l'owner s'est plaint, écrite comme un principe. Elle est doublement
+   caduque : `max-w-page` n'est plus fixe (jeton `--band-page`, fluide
+   jusqu'à 1760), et « la marge extérieure grandit toute seule » décrit
+   précisément le défaut, pas une qualité. Ce qui reste vrai de §11 : on
+   n'ajoute pas de QUATRIÈME colonne — les trois zones s'élargissent, elles
+   ne se multiplient pas.
 
    Named areas move each wrapper div's VISUAL position only — the divs stay
    in their authored DOM sequence (primary, mastery, shelf, subjects) and no
@@ -628,7 +640,8 @@ h3:hover .heading-anchor,
   gap: 24px;
 }
 
-@media (min-width: 1280px) {
+/* M3 « large » — deux colonnes. */
+@media (min-width: 1200px) {
   .dashboard-grid {
     grid-template-columns: 2fr 1fr;
     grid-template-areas:
@@ -639,13 +652,16 @@ h3:hover .heading-anchor,
   }
 }
 
-@media (min-width: 1536px) {
+/* M3 « extra-large » — les trois zones. */
+@media (min-width: 1600px) {
   .dashboard-grid {
-    grid-template-columns: 200px 2fr 1fr;
+    /* Le rail s'élargit avec la bande (220 px au lieu de 200) et les
+       colonnes respirent : c'est la place récupérée sur les marges. */
+    grid-template-columns: 220px 2fr 1.05fr;
     grid-template-areas:
       "subjects primary mastery"
       "shelf    shelf   shelf";
-    column-gap: 56px;
+    column-gap: 64px;
   }
 
   /* The rail is thin and quiet — a smaller heading keeps it from visually
@@ -656,8 +672,9 @@ h3:hover .heading-anchor,
   }
 }
 
-/* 1920: no structural change from 1536 (bible §4/§11 — no 4th column; the
-   fixed-width container already grows the surrounding margin for free). */
+/* Au-delà de 1600 : pas de quatrième colonne (bible §4/§11). La bande
+   `--band-page` plafonne à 1760 px et les trois zones se partagent cette
+   largeur — la page cesse de s'étirer, elle ne se remplit pas de vide. */
 
 /* ── Mastery-map internal scroll (MasteryMap.tsx) — owner feedback,
    2026-07-07: the flat 61-notion list stretches the shared grid row (CSS

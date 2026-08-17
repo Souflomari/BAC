@@ -267,7 +267,7 @@ export function ExplicationPlayer({
                   aria-label="Étape précédente"
                 >
                   <Icon name="chevron-left" size={14} />
-                  <span className="hidden sm:inline">Précédent</span>
+                  <span className="hidden bp-medium:inline">Précédent</span>
                 </TransportButton>
 
                 <span
@@ -286,7 +286,7 @@ export function ExplicationPlayer({
                   onClick={() => va(atLast ? 1 : step + 1)}
                   aria-label={atLast ? "Recommencer depuis l’étape 1" : "Étape suivante"}
                 >
-                  <span className="hidden sm:inline">
+                  <span className="hidden bp-medium:inline">
                     {atLast ? "Recommencer" : "Suivant"}
                   </span>
                   <Icon name={atLast ? "reset" : "chevron-right"} size={14} />

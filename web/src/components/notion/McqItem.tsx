@@ -95,7 +95,7 @@ export function McqItem({ item, index }: McqItemProps) {
         // Surface-container tonal ladder (ADR 0024): an elevation-2 card steps UP
         // in tone (container-high), not the at-rest raised tone.
         "bg-surface-container-high",
-        "p-6 md:p-8",
+        "p-6 bp-medium:p-8",
         // Shadow-first card (ADR 0023): elevation-2 hairline ring holds the edge;
         // the drawn border is dropped.
         "shadow-elevation-2"

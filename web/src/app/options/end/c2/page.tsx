@@ -29,7 +29,7 @@ export default function EndC2() {
     <div className="min-h-screen flex flex-col bg-surface-base">
       <SiteHeader container={CONTAINER} />
 
-      <main className={cn(CONTAINER, "flex-1 py-12 md:py-16")}>
+      <main className={cn(CONTAINER, "flex-1 py-12 bp-medium:py-16")}>
         <div className="prose-lesson">
           <h2>Fermeture de l’arc</h2>
           <p>

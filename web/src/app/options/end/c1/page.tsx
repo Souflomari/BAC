@@ -26,7 +26,7 @@ export default function EndC1() {
     <div className="min-h-screen flex flex-col bg-surface-base">
       <SiteHeader container={CONTAINER} />
 
-      <main className={cn(CONTAINER, "flex-1 py-12 md:py-16")}>
+      <main className={cn(CONTAINER, "flex-1 py-12 bp-medium:py-16")}>
         {/* End-of-lesson context so the transition prose → end is judged */}
         <div className="prose-lesson">
           <h2>Fermeture de l’arc</h2>

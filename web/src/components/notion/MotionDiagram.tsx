@@ -211,7 +211,7 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
             aria-label="Étape précédente"
           >
             <Icon name="chevron-left" size={14} />
-            <span className="hidden sm:inline">Précédent</span>
+            <span className="hidden bp-medium:inline">Précédent</span>
           </TransportButton>
 
           {/* Step indicator — functional UI text, politely announced on change.
@@ -238,11 +238,11 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
             {atLast ? (
               <>
                 <Icon name="reset" size={13} />
-                <span className="hidden sm:inline">Recommencer</span>
+                <span className="hidden bp-medium:inline">Recommencer</span>
               </>
             ) : (
               <>
-                <span className="hidden sm:inline">Suivant</span>
+                <span className="hidden bp-medium:inline">Suivant</span>
                 <Icon name="chevron-right" size={14} />
               </>
             )}

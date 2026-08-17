@@ -90,7 +90,7 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
         // in tone, so it reads as raised through tone as well as shadow.
         "bg-surface-container-high",
         "shadow-elevation-2",
-        "p-6 md:p-8",
+        "p-6 bp-medium:p-8",
       )}
       aria-label="Vérifie ta compréhension"
     >

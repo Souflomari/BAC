@@ -73,7 +73,7 @@ export default function SubjectPage({ params }: { params: { subject: string } })
       <div
         data-band="masthead"
         className={cn(
-          "-mt-12 md:-mt-16 mb-12 py-12",
+          "-mt-12 bp-medium:-mt-16 mb-12 py-12",
           "mx-[calc(50%-50vw)] px-[calc(50vw-50%)]",
           "bg-surface-container-low",
           "border-b border-subtle"

@@ -218,7 +218,7 @@ export function NotionPageView({
         <div
           data-band="masthead"
           className={cn(
-            "-mt-12 md:-mt-16 mb-12 py-12",
+            "-mt-12 bp-medium:-mt-16 mb-12 py-12",
             // Set-M2 candidate: the band is BOUNDED to the content width —
             // page background outside, the wide-viewport void becomes honest
             // margin instead of empty band interior. All other variants keep
