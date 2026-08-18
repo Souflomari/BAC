@@ -24,7 +24,7 @@
  * célébration. On avance, c'est tout.
  */
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
@@ -159,6 +159,7 @@ export function Atelier() {
     Math.abs(valeur - ecran.cible) <= (ecran.tolerance ?? 0.001);
 
   const gagne = ecran.type === "choix" ? reussi : reglageOk && essaiReglage;
+  const bonneReponse = ecran.options?.find((o) => o.correct)?.label ?? null;
   const rate = option != null && !option.correct;
 
   function repondre(id: string) {
@@ -178,6 +179,36 @@ export function Atelier() {
   }
 
   const dernier = i === ECRANS.length - 1;
+
+  // CLAVIER (R3, structure de la critique adoptée) : A-D ou 1-4 répondent,
+  // Entrée continue une fois la réponse juste. Jamais quand un champ a le
+  // focus, jamais avec un modificateur (⌘K reste ⌘K).
+  useEffect(() => {
+    if (!demarre) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const cible = e.target as HTMLElement | null;
+      if (cible && /^(input|textarea|select)$/i.test(cible.tagName)) return;
+      if (e.key === "Enter" && gagne && !dernier) {
+        e.preventDefault();
+        suivant();
+        return;
+      }
+      if (ecran.type !== "choix" || reussi) return;
+      const opts = ecran.options ?? [];
+      let idx = -1;
+      const k = e.key.toLowerCase();
+      if (k >= "a" && k <= "d") idx = k.charCodeAt(0) - 97;
+      else if (k >= "1" && k <= "4") idx = Number(k) - 1;
+      if (idx >= 0 && idx < opts.length) {
+        e.preventDefault();
+        repondre(opts[idx].id);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [demarre, ecran, reussi, gagne, dernier]);
 
   if (!demarre) {
     return (
@@ -207,18 +238,23 @@ export function Atelier() {
   }
 
   return (
-    <div className="mx-auto max-w-atelier px-gutter py-6 bp-medium:py-8">
-      <Rail courante={ecran.competence} i={i} termine={dernier && gagne} />
+    <div className="mx-auto max-w-atelier px-gutter pb-8 pt-2">
+      {/* Le fil reste en vue : sticky sous le header (56 px), sur la toile,
+          pour que « où j'en suis » ne parte jamais au défilement. */}
+      <div className="sticky top-14 z-raised -mx-2 bg-surface-base px-2 py-3">
+        <Rail courante={ecran.competence} i={i} termine={dernier && gagne} />
+      </div>
 
       <div className="mt-6 grid gap-7 bp-expanded:grid-cols-[minmax(0,1fr)_minmax(340px,420px)] bp-expanded:gap-8 bp-large:grid-cols-[minmax(0,1fr)_minmax(400px,480px)] bp-large:gap-12 bp-xl:grid-cols-[minmax(0,1fr)_minmax(440px,540px)] bp-xl:gap-16">
         {/* ── LA SCÈNE : la figure porte l'idée (R5), et elle reste visible ── */}
         <div className="bp-expanded:sticky bp-expanded:top-6 bp-expanded:self-start">
           <div
             className={cn(
-              "rounded-xl border border-subtle p-4 bp-medium:p-6",
-              // surface la plus claire du système : la scène est un plan
-              // net, distinct du papier chaud du reste du site.
-              "bg-surface-container-highest"
+              "overflow-hidden rounded-xl border border-subtle",
+              // Workspace (R3) : la carte est BORD À BORD — la figure gère
+              // ses propres zones (fond pointé en haut, dock en bas). Blanc
+              // pur : le plan de travail, distinct de la toile.
+              "bg-surface-raised shadow-elevation-1"
             )}
           >
             <Apparition cle={ecran.id} decalage={10} echelle={0.012}>
@@ -304,7 +340,20 @@ export function Atelier() {
                         reussi && !o.correct && "opacity-50"
                       )}
                     >
-                      <span>{o.label}</span>
+                      <span className="flex min-w-0 items-center gap-3">
+                        {/* Badge clavier — l'affordance EST le raccourci. */}
+                        <kbd
+                          className={cn(
+                            "flex h-6 w-6 shrink-0 items-center justify-center rounded-md border font-mono text-caption font-semibold",
+                            montrerJuste
+                              ? "border-accent bg-accent text-on-accent"
+                              : "border-subtle bg-surface-container-low text-tertiary"
+                          )}
+                        >
+                          {String.fromCharCode(65 + k)}
+                        </kbd>
+                        <span className="min-w-0">{o.label}</span>
+                      </span>
                       {/* Le verdict ne peut pas tenir dans la seule couleur
                           (WCAG 1.4.1) : avant, une mauvaise réponse ne se
                           traduisait que par un fond très légèrement différent.
@@ -375,33 +424,43 @@ export function Atelier() {
               <div
                 data-feedback-erreur
                 role="status"
-                className="rounded-xl border-l-[3px] px-5 py-5 bp-medium:px-6 bp-medium:py-6"
-                style={{
-                  borderColor: "var(--figure-regime-aperiodic)",
-                  background: "var(--color-surface-container-low)",
-                }}
+                className="overflow-hidden rounded-xl border shadow-elevation-1"
+                style={{ borderColor: "var(--figure-regime-aperiodic)" }}
               >
-                {option.montre != null && (
-                  <p
-                    className="flex items-center gap-2 text-caption font-semibold uppercase tracking-eyebrow"
-                    style={{ color: "var(--figure-regime-aperiodic)" }}
-                  >
-                    <Icon name="arrow-right" size={13} />
-                    Ta réponse est tracée sur la figure
-                  </p>
-                )}
-                <p className={cn("text-lead leading-relaxed text-primary", option.montre != null && "mt-3")}>
-                  {option.feedback}
+                {/* En-tête pleine largeur — le moment « regarde la figure »
+                    a le poids d'un titre, pas d'une note. */}
+                <p
+                  className="flex items-center gap-2 px-5 py-2.5 text-caption font-semibold uppercase tracking-eyebrow text-on-accent bp-medium:px-6"
+                  style={{ background: "var(--figure-regime-aperiodic)" }}
+                >
+                  <Icon name={option.montre != null ? "arrow-right" : "cross"} size={13} />
+                  {option.montre != null
+                    ? "Ta réponse est tracée sur la figure"
+                    : "Pas encore — regarde pourquoi"}
                 </p>
-                {option.montre != null && (
-                  <p className="mt-3 text-body text-secondary">
-                    Le trait en pointillés, c’est ta pente. Compare-le au trait
-                    plein : l’écart entre les deux, c’est ton erreur.
+                <div className="bg-surface-raised px-5 py-5 bp-medium:px-6">
+                  <p className="text-lead leading-relaxed text-primary">
+                    {option.feedback}
                   </p>
+                  {option.montre != null && (
+                    <p className="mt-3 text-body text-secondary">
+                      Le trait en pointillés, c’est ta pente. Compare-le au trait
+                      plein : l’écart entre les deux, c’est ton erreur.
+                    </p>
+                  )}
+                </div>
+                {/* La comparaison en MONO — ce que tu as affirmé, ce qu'on
+                    cherche, côte à côte, vérifiable d'un regard. */}
+                {option.montre != null && bonneReponse != null && (
+                  <div className="flex items-center justify-between gap-4 border-t border-subtle bg-surface-container-low px-5 py-2.5 font-mono text-body-sm tabular-nums bp-medium:px-6">
+                    <span style={{ color: "var(--figure-regime-aperiodic)" }}>
+                      tracée : {String(option.montre).replace(".", ",")}
+                    </span>
+                    <span className="text-secondary">
+                      attendue : {bonneReponse}
+                    </span>
+                  </div>
                 )}
-                <p className="mt-4 text-body-sm text-tertiary">
-                  Reprends la figure, puis choisis à nouveau.
-                </p>
               </div>
             </Apparition>
           )}

@@ -130,6 +130,65 @@ function Axes({
   );
 }
 
+/* ── Stepper — le contrôle du dock (refonte Studio R3) ─────────────────── */
+
+/**
+ * −/+ à pas de 1, readout mono au centre, cible tactile pleine (48 px,
+ * bible §9). Remplace les curseurs natifs nus (« piste de 4 px, poignée de
+ * 14, pas de valeur au drag » — critique externe §3.9) : chaque pression
+ * est UN cran, la valeur est écrite en mono à côté du geste.
+ */
+function Stepper({
+  label,
+  valeur,
+  min,
+  max,
+  onChange,
+  teinte,
+  desactive = false,
+}: {
+  label: string;
+  valeur: number;
+  min: number;
+  max: number;
+  onChange: (v: number) => void;
+  teinte: string;
+  desactive?: boolean;
+}) {
+  const bouton = cn(
+    "flex min-h-touch min-w-touch items-center justify-center select-none",
+    "text-h4 font-medium text-secondary hover:text-primary",
+    "state-layer focus-ring [--focus-radius:8px]",
+    "disabled:opacity-35 disabled:pointer-events-none",
+    "transition-colors duration-micro ease-enter active:scale-95"
+  );
+  return (
+    <div
+      className={cn(
+        "flex items-center overflow-hidden rounded-lg border border-subtle bg-surface-raised",
+        desactive && "opacity-60"
+      )}
+    >
+      <button type="button" onClick={() => onChange(Math.max(min, valeur - 1))}
+        disabled={desactive || valeur <= min} aria-label={`${label} : diminuer`} className={bouton}>
+        −
+      </button>
+      <div className="flex min-w-[7rem] flex-col items-center border-x border-subtle px-3 py-1">
+        <span className="text-caption font-medium" style={{ color: teinte }}>
+          {label}
+        </span>
+        <span className="font-mono text-body-lg font-semibold tabular-nums text-primary">
+          {valeur}
+        </span>
+      </div>
+      <button type="button" onClick={() => onChange(Math.min(max, valeur + 1))}
+        disabled={desactive || valeur >= max} aria-label={`${label} : augmenter`} className={bouton}>
+        +
+      </button>
+    </div>
+  );
+}
+
 /* ── la pente, niveau collège ──────────────────────────────────────────── */
 
 /**
@@ -206,6 +265,7 @@ export function FigurePente({
 
   return (
     <figure className="m-0" ref={cadre}>
+      <div className="fond-points px-2 pt-2">
       <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} role="img"
         aria-label={`Droite passant par l'origine et le point B de coordonnées ${bx} et ${by}. On avance de ${bx}, on monte de ${by}, donc la pente vaut ${by} sur ${bx}.`}
         className="block w-full">
@@ -261,35 +321,29 @@ export function FigurePente({
         </g>
       </svg>
 
-      {/* Les commandes : l'élève AGIT (R1). Deux curseurs plutôt qu'un
-          glisser-déposer libre — au clavier comme au doigt, et on ne perd
-          jamais le point hors du cadre.
+      </div>
 
-          Sauf sur un écran figé : là, la figure ILLUSTRE l'énoncé et l'action
-          est ailleurs (le choix). Les curseurs sont alors désactivés — pas
-          cachés : l'élève voit d'où viennent les deux nombres dont on lui
-          parle. */}
-      <div className="mt-5 grid gap-2.5">
-        <label className="flex items-center gap-3 text-body text-secondary">
-          <span className="w-28 shrink-0 text-primary font-medium">on avance de</span>
-          <input type="range" min={1} max={5} step={1} value={bx} disabled={fige}
-            onChange={(e) => maj(Number(e.target.value), by)}
-            aria-label="on avance de" className="curseur flex-1 disabled:opacity-60" />
-          <span className="w-6 tabular-nums text-primary font-semibold">{bx}</span>
-        </label>
-        <label className="flex items-center gap-3 text-body text-secondary">
-          <span className="w-28 shrink-0 text-primary font-medium">on monte de</span>
-          <input type="range" min={0} max={4} step={1} value={by} disabled={fige}
-            onChange={(e) => maj(bx, Number(e.target.value))}
-            aria-label="on monte de" className="curseur flex-1 disabled:opacity-60" />
-          <span className="w-6 tabular-nums text-primary font-semibold">{by}</span>
-        </label>
-        <p className={cn("mt-1 text-body-lg text-primary")} role="status">
-          pente ={" "}
-          <span className="tabular-nums font-semibold text-accent">
+      {/* LE DOCK (refonte Studio R3) : steppers −/+ readout mono + la
+          formule en pilule — le calcul que l'élève fabrique, écrit en
+          entier, dans la langue du collège. Sur un écran figé la figure
+          ILLUSTRE l'énoncé : steppers gelés, pas cachés — l'élève voit
+          d'où viennent les deux nombres dont on lui parle. */}
+      <div className="flex flex-wrap items-stretch gap-2 border-t border-subtle bg-surface-container-low px-3 py-3 bp-medium:px-4">
+        <Stepper label="on avance de" valeur={bx} min={1} max={5} desactive={fige}
+          onChange={(v) => maj(v, by)} teinte="var(--figure-energy-C)" />
+        <Stepper label="on monte de" valeur={by} min={0} max={4} desactive={fige}
+          onChange={(v) => maj(bx, v)} teinte="var(--figure-regime-pseudo)" />
+        <output
+          aria-live="polite"
+          className="ml-auto flex min-w-[9rem] flex-col justify-center rounded-lg border border-subtle bg-accent-subtle px-3 py-1 text-right"
+        >
+          <span className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
+            pente
+          </span>
+          <span className="font-mono text-body-lg font-semibold tabular-nums text-accent">
             {by} / {bx} = {(by / bx).toFixed(2).replace(".", ",")}
           </span>
-        </p>
+        </output>
       </div>
     </figure>
   );

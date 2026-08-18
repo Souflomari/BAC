@@ -166,6 +166,7 @@ export function FigureSecanteMafs({
 
   return (
     <figure className="m-0" ref={cadre}>
+      <div className="fond-points p-2">
       {/* Cadrage : B monte jusqu'à (2,6 ; 6,76) au bout de sa course, et les
           étiquettes de graduation ont besoin d'air en bas — sans cette marge
           Mafs rognait le « -1 » contre le bord. */}
@@ -278,8 +279,11 @@ export function FigureSecanteMafs({
         </MafsText>
         {B.element}
       </Mafs>
+      </div>
 
-      <div className="mt-4 grid gap-1.5">
+      {/* Le dock de lecture — même langage que FigurePente : consigne,
+          quotient EN ENTIER en mono, la limite dite en une ligne. */}
+      <div className="grid gap-1 border-t border-subtle bg-surface-container-low px-4 py-3 bp-medium:px-5">
         <p className="text-body text-secondary">
           Attrape <span className="font-medium text-primary">B</span> et fais-le
           glisser vers <span className="font-medium text-primary">A</span>
@@ -291,15 +295,15 @@ export function FigureSecanteMafs({
             qu'on veut faire reconnaître. */}
         <p className="text-body-lg text-primary" role="status">
           pente de (AB) ={" "}
-          <span className="tabular-nums" style={{ color: "var(--figure-regime-pseudo)" }}>
+          <span className="font-mono tabular-nums" style={{ color: "var(--figure-regime-pseudo)" }}>
             {(f(A_X + h) - f(A_X)).toFixed(decimales).replace(".", ",")}
           </span>
           {" / "}
-          <span className="tabular-nums" style={{ color: "var(--figure-energy-C)" }}>
+          <span className="font-mono tabular-nums" style={{ color: "var(--figure-energy-C)" }}>
             {h.toFixed(decimales).replace(".", ",")}
           </span>
           {" = "}
-          <span className="tabular-nums font-semibold text-accent">
+          <span className="font-mono tabular-nums font-semibold text-accent">
             {penteAnimee.toFixed(2).replace(".", ",")}
           </span>
           {proche && (

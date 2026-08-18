@@ -10,6 +10,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { listNotions } from "@/lib/content";
+
+/** Le manifeste léger pour le header (panneau Notions + palette ⌘K). */
+function manifestePourHeader() {
+  return listNotions().map((n) => ({ subject: n.subject, slug: n.slug, title: n.title, readingMinutes: n.readingMinutes }));
+}
 import { getSubject, subjectChapterCount, subjectAvailableCount, SUBJECTS, type SubjectId } from "@/lib/curriculum";
 import { subjectLabel } from "@/lib/subjects";
 import { PageShell } from "@/components/ui/PageShell";
@@ -68,7 +73,7 @@ export default function SubjectPage({ params }: { params: { subject: string } })
       : `${total} chapitre${total > 1 ? "s" : ""} · ${available} disponible${available > 1 ? "s" : ""}`;
 
   return (
-    <PageShell width="content">
+    <PageShell notions={manifestePourHeader()} width="content">
       {/* Masthead band — the subject surface's one display moment (A3 grammar). */}
       <div
         data-band="masthead"

@@ -13,6 +13,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageShell } from "@/components/ui/PageShell";
+import { listNotions } from "@/lib/content";
+
+/** Le manifeste léger pour le header (panneau Notions + palette ⌘K). */
+function manifestePourHeader() {
+  return listNotions().map((n) => ({ subject: n.subject, slug: n.slug, title: n.title, readingMinutes: n.readingMinutes }));
+}
 import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 
@@ -65,7 +71,7 @@ function ContentsRow({
 
 export default function HomeB2() {
   return (
-    <PageShell width="content">
+    <PageShell notions={manifestePourHeader()} width="content">
       <header className="mb-12">
         <h1 className="font-display text-display font-bold text-primary">
           Notions

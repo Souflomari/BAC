@@ -9,6 +9,12 @@
 
 import type { Metadata } from "next";
 import { PageShell } from "@/components/ui/PageShell";
+import { listNotions } from "@/lib/content";
+
+/** Le manifeste léger pour le header (panneau Notions + palette ⌘K). */
+function manifestePourHeader() {
+  return listNotions().map((n) => ({ subject: n.subject, slug: n.slug, title: n.title, readingMinutes: n.readingMinutes }));
+}
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { FiliereChooser } from "@/components/dashboard/FiliereChooser";
 
@@ -20,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function CommencerPage() {
   return (
-    <PageShell width="content">
+    <PageShell notions={manifestePourHeader()} width="content">
       <Breadcrumb segments={[{ label: "Accueil", href: "/" }, { label: "Ta filière" }]} />
       <header className="mb-10 max-w-lead">
         <h1 className="font-display text-display font-bold text-primary">

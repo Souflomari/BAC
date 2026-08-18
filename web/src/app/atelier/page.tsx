@@ -2,6 +2,7 @@ import "mafs/core.css";
 
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/ui/SiteHeader";
+import { listNotions } from "@/lib/content";
 import { Atelier } from "@/components/atelier/Atelier";
 
 export const metadata: Metadata = {
@@ -30,7 +31,10 @@ export const metadata: Metadata = {
 export default function AtelierPage() {
   return (
     <>
-      <SiteHeader container="mx-auto max-w-atelier px-gutter w-full" />
+      <SiteHeader
+        container="mx-auto max-w-atelier px-gutter w-full"
+        notions={listNotions().map((n) => ({ subject: n.subject, slug: n.slug, title: n.title, readingMinutes: n.readingMinutes }))}
+      />
       <main>
         <Atelier />
       </main>

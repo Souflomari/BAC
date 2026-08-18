@@ -981,6 +981,75 @@ h3:hover .heading-anchor,
   background-clip: padding-box;
 }
 
+/* ── Atelier « workspace » (refonte Studio R3) ───────────────────────────
+   Le canvas de travail : un fond de points discret — la texture qui dit
+   « plan de travail » sans peser (l'équivalent calme du quadrillage).
+   Jetons uniquement ; le pas de 22 px reste sous la grille de 8. */
+.fond-points {
+  background-image: radial-gradient(var(--figure-grid) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* ── Palette de commande (⌘K, refonte Studio R2) ────────────────────────
+   cmdk livre la mécanique (combobox ARIA, filtrage) sans style. Attention
+   à son anatomie : le `className` du Dialog atterrit sur la RACINE
+   [cmdk-root] elle-même — la première version le traitait comme un
+   conteneur plein écran et posait l'input et la liste côte à côte. On
+   style donc chaque nœud par son attribut : [cmdk-overlay] assombrit,
+   [cmdk-dialog] centre, .palette-commande (la racine) EST la carte. */
+[cmdk-overlay] {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay, 50);
+  background: color-mix(in srgb, var(--color-text-primary) 22%, transparent);
+  backdrop-filter: blur(2px);
+}
+[cmdk-dialog] {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay, 50);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12vh var(--gutter) 0;
+  pointer-events: none; /* la carte les réactive — le clic hors carte ferme via l'overlay */
+}
+.palette-commande {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  width: min(640px, 100%);
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl, 16px);
+  background: var(--color-surface-overlay);
+  box-shadow: var(--elevation-4);
+}
+.palette-groupe [cmdk-group-heading] {
+  padding: 10px 12px 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+.palette-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: var(--radius-md, 8px);
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+.palette-item[data-selected="true"] {
+  background: var(--color-surface-container-low);
+}
+.dark .palette-item[data-selected="true"] {
+  background: var(--color-surface-container-high);
+}
+
 /* ── Mafs : rebranché sur les jetons du produit ─────────────────────────
    Mafs arrive en thème sombre (fond noir). Un cadre noir au milieu d'une
    page claire est exactement le contraire de la cible « fond blanc ». On

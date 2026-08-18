@@ -9,6 +9,15 @@
  * exactly one place: here.
  */
 
+/**
+ * L'ORDRE canonique des matières — LA constante que tout le monde consomme.
+ * Avant la refonte Studio, quatre composants portaient chacun leur copie
+ * (MasteryMap, SubjectProgress, Dashboard, NextUp) et AvailableShelf triait
+ * alphabétiquement : l'accueil n'affichait pas les matières dans le même
+ * ordre d'un module à l'autre. Une seule maison, comme les libellés.
+ */
+export const SUBJECT_ORDER = ["maths", "pc", "svt", "philo", "si"] as const;
+
 export const SUBJECT_LABELS: Record<string, string> = {
   maths: "Mathématiques",
   pc: "Physique-Chimie",

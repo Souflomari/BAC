@@ -182,12 +182,12 @@ const BATTERY = [
   { name: "notion masthead h1 (A3 display-lg)", page: NOTION, sel: "h1", text: "Oscillations", fontKey: "display-lg", lineHeight: true, weight: "700", family: "Geist", colorVar: "--color-text-primary" },
   { name: "home h1", page: "/", sel: "h1", text: "Ta session", fontKey: "display", weight: "700", family: "Geist" },
   { name: "home lead", page: "/", sel: "header p", text: "Deux heures", fontKey: "lead" },
-  { name: "home session-card h2 (B1 primary)", page: "/", sel: "section[aria-label*='session'] h2", fontKey: "h2", weight: "700", family: "Geist" },
+  { name: "home session-card h2 (Studio: display h1)", page: "/", sel: "section[aria-label*='session'] h2", fontKey: "h1", weight: "700", family: "Geist" },
   // (Persistance-wave, 2026-07-07) shelf collapsed per matière — the trigger's
   // subject-label span is the "row title" typography at rest now; the old
   // per-card title only exists once a matière is expanded (see the SWEEP
   // below for the interactive check that opens one and asserts the cover).
-  { name: "home shelf row title", page: "/", sel: "section[aria-label='Notions disponibles'] [data-shelf-subject-label]", text: "Physique-Chimie", fontKey: "lead", family: "Geist" },
+  { name: "programme: titre de matière", page: "/", sel: "[data-programme-matiere='pc'] header a", text: "Physique-Chimie", fontKey: "h4", family: "Geist" },
   { name: "404 hero display", page: "/nonexistent-xyz", sel: "span", text: "404", fontKey: "display", weight: "700" },
   { name: "404 h1", page: "/nonexistent-xyz", sel: "h1", text: "introuvable", fontKey: "h2", weight: "700" },
   // ── survivors (must stay green — regression tripwires) ──
@@ -223,7 +223,7 @@ const BATTERY = [
   { name: "no authoring flags rendered", page: NOTION, sel: "h2", text: "Exercice de type bac", notText: /à sourcer|synthèse —/ },
   { name: "prose headings carry no R-codes", page: NOTION, sel: ".prose-lesson h2[data-rung]", notText: /^R\d/ },
   // ── representative spacing (TOKENS.md §3: 8-pt grid) ──
-  { name: "session card padding = p-8 (32px)", page: "/", sel: "section[aria-label*='session'] > div > div", pad: 8 },
+  { name: "session card padding = p-8 (32px)", page: "/", sel: "section[aria-label*='session'] > div", pad: 8 },
   // ── breadcrumb stays designed size ──
   { name: "breadcrumb", page: NOTION, sel: "nav[aria-label*='Fil']", fontKey: "body-sm" },
   // ── Day-3 web-native texture invariants (audit amendment #3) ──
@@ -340,10 +340,10 @@ const BATTERY = [
   { name: "D12 session card: no « continuer » without state (§5)", page: "/", sel: "section[aria-label='La session du jour']", notText: /[Cc]ontinuer|Reprendre|Reprise/ },
   { name: "D12 next-up: parcours wording + source anchor", page: "/", sel: "[data-reco-source='parcours']", text: "Ensuite dans le parcours", present: true },
   { name: "D12 next-up: no « toi » without state (§3)", page: "/", sel: "[data-reco-source='parcours']", notText: /pour toi|[Rr]ecommandé/ },
-  { name: "D12 mastery map: calm TOC present", page: "/", sel: "section[aria-label='Carte de maîtrise']", present: true },
+  { name: "Studio: le programme présent", page: "/", sel: "section[aria-label='Le programme']", present: true },
   { name: "D12 mastery token links to its notion", page: "/", sel: "a[data-mastery-token][href^='/notions/']", present: true },
   { name: "D12 zero-state: no token claims a state source (§5)", page: "/", sel: "main", present: true, absentSel: "[data-mastery-token][data-state-source]" },
-  { name: "D12 subject line: honest fact, not score", page: "/", sel: "section[aria-label='Progrès par matière'] li", text: "h de lecture", present: true },
+  { name: "Studio: couverture honnête (M/N, pas un score)", page: "/", sel: "[data-programme-matiere] [data-couverture]", text: "chapitres", present: true },
   // The future milestone component MUST render [data-milestone] — this row
   // is the AttemptFirst contract (§1.6): absent until DEFINED and EARNED.
   { name: "D12 milestone slot: absent until earned (§1.6)", page: "/", sel: "main", present: true, absentSel: "[data-milestone]" },
@@ -702,7 +702,7 @@ try {
     // Persistance-wave (2026-07-07): the per-card caption is collapsed by
     // default now — the trigger's subject-count caption is the shelf-caption
     // typography visible at rest, same token, same contrast requirement.
-    { page: "/", sel: "section[aria-label='Notions disponibles'] [data-shelf-subject-count]", label: "shelf caption" },
+    { page: "/", sel: "[data-programme-matiere] [data-couverture]", label: "programme coverage" },
   ];
   const lum = `(c)=>{const [r,g,b]=c.match(/\\d+(\\.\\d+)?/g).map(Number);const f=(v)=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)};return 0.2126*f(r)+0.7152*f(g)+0.0722*f(b)}`;
   for (const theme of ["light", "dark"]) {
@@ -801,38 +801,41 @@ try {
     else console.log(`  ✓ no hydration error, dark survives, position correct ("${r.position}")`);
   }
 
-  // (Persistance-wave, 2026-07-07) SHELF ACCORDION: `AvailableShelf.tsx`
-  // collapses each matière (owner feedback: `Cover` shares one motif per
-  // SUBJECT, so the old flat grid repeated the same handful of
-  // illustrations dozens of times across 61 notions — too long). Asserts
-  // BOTH halves of the honest claim: closed by default means the covers are
-  // genuinely ABSENT from the DOM (not just visually hidden — Radix
-  // `Presence` unmounts), and opening a trigger actually reveals them.
+  // (Refonte Studio R6, 2026-08-18) LE PROGRAMME remplace le shelf : les
+  // accordéons d'illustrations répétées sont partis — chaque matière est
+  // une section colorée avec sa couverture RÉELLE du cadre. Le sweep
+  // asserte : une section par matière visible, le compteur M/N conforme au
+  // format « fait de contenu » (jamais un pourcentage de progression —
+  // honest-state), et AUCUN Cover décoratif dans le programme (ils étaient
+  // le problème : 5 motifs répétés sur 61 cartes).
   {
-    console.log(`\n[/] SWEEP: shelf accordion — collapsed by default, opens on click`);
+    console.log(`\n[/] SWEEP: programme — sections par matière, couverture factuelle, zéro Cover`);
     const spage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     await spage.goto(`${BASE}/`, { waitUntil: "networkidle" });
-    const beforeOpen = await spage.evaluate(() => ({
-      rlcInDom: !!document.querySelector("[data-cover='rlc-serie']"),
-      rcInDom: !!document.querySelector("[data-cover='rc-charge'][data-motif='rc-charge']"),
-      triggerCount: document.querySelectorAll("section[aria-label='Notions disponibles'] [data-shelf-subject-label]").length,
-    }));
-    await spage.click("section[aria-label='Notions disponibles'] [data-shelf-subject-label]:has-text('Physique-Chimie')");
-    await spage.waitForTimeout(350); // shelf-accordion-open runs over --duration-standard (250ms)
-    const afterOpen = await spage.evaluate(() => ({
-      rlc: !!document.querySelector("[data-cover='rlc-serie']"),
-      // DAY7(d): rc-charge must resolve to ITS OWN motif, not the pc
-      // fallback (the original bug: the pc fallback also carries
-      // data-cover='rc-charge', which made a presence-only row false-green).
-      rc: !!document.querySelector("[data-cover='rc-charge'][data-motif='rc-charge']"),
-    }));
+    const prog = await spage.evaluate(() => {
+      const sections = [...document.querySelectorAll("[data-programme-matiere]")];
+      const couvertures = sections.map((x) => x.querySelector("[data-couverture]")?.getAttribute("data-couverture") ?? "");
+      return {
+        nb: sections.length,
+        couvertures,
+        formatsOk: couvertures.every((c) => /^\d+\/\d+$/.test(c)),
+        coherents: sections.every((x) => {
+          const c = x.querySelector("[data-couverture]")?.getAttribute("data-couverture") ?? "0/0";
+          const [dispo, total] = c.split("/").map(Number);
+          return dispo <= total && total > 0;
+        }),
+        pourcentAffiche: /%/.test(document.querySelector("section[aria-label='Le programme']")?.textContent ?? ""),
+        coversDansProgramme: document.querySelectorAll("section[aria-label='Le programme'] [data-cover]").length,
+      };
+    });
     await spage.close();
     checks++;
-    if (beforeOpen.rlcInDom || beforeOpen.rcInDom) failures += fail("a PC notion cover is present BEFORE opening its matière — accordion not actually collapsed");
-    else if (beforeOpen.triggerCount === 0) failures += fail("no shelf triggers found — matières listing broken");
-    else if (!afterOpen.rlc) failures += fail("rlc-serie cover still absent AFTER opening Physique-Chimie");
-    else if (!afterOpen.rc) failures += fail("rc-charge cover missing its own motif (or absent) AFTER opening Physique-Chimie");
-    else console.log(`  ✓ ${beforeOpen.triggerCount} matière triggers, covers absent until opened, present (rlc-serie + rc-charge own motif) after`);
+    if (prog.nb < 3) failures += fail(`programme: ${prog.nb} section(s) de matière — il en faut au moins 3`);
+    else if (!prog.formatsOk) failures += fail(`programme: une couverture ne lit pas « M/N » (${prog.couvertures.join(", ")})`);
+    else if (!prog.coherents) failures += fail(`programme: une couverture est incohérente (dispo > total ou total nul)`);
+    else if (prog.pourcentAffiche) failures += fail("programme: un « % » s'affiche — la couverture doit rester un fait M/N, jamais un score");
+    else if (prog.coversDansProgramme > 0) failures += fail(`programme: ${prog.coversDansProgramme} Cover décoratif(s) — les motifs répétés devaient disparaître`);
+    else console.log(`  ✓ ${prog.nb} matières, couvertures ${prog.couvertures.join(" · ")} — factuelles, sans %, sans Cover`);
   }
 
   // (Filière-gating) MASTERY MAP NARROWS BY FILIÈRE, NEVER GATES (ADR 0025
@@ -2198,7 +2201,11 @@ try {
       await page.setViewportSize({ width: w, height: 800 });
       await page.goto(`${BASE}/`, { waitUntil: "domcontentloaded" });
       const m = await page.evaluate(() => ({
-        replies: [...document.querySelectorAll("header a, header button")]
+        // Scopé au header DU SITE (le premier du DOM) : depuis la refonte
+        // R6, les articles du programme portent leurs propres <header> et
+        // leurs titres de matière REPLIENT légitimement sur 2 lignes en
+        // colonne étroite — « header a » les attrapait tous.
+        replies: [...(document.querySelector("header")?.querySelectorAll("a, button") ?? [])]
           .filter((e) => e.getBoundingClientRect().height > 48).length,
         deborde: document.documentElement.scrollWidth - document.documentElement.clientWidth,
       }));

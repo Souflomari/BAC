@@ -58,13 +58,17 @@ export type IconName =
   | "reset"
   | "sun"
   | "moon"
-  | "menu";
+  | "menu"
+  | "loupe";
 
 const GLYPHS: Record<IconName, Glyph> = {
   // menu — trois traits. Ajouté pour le repli du header sous 600 px
   // (audit 2026-08-15) : sans glyphe de menu, le cluster de droite n'avait
   // nulle part où se replier.
   menu: { kind: "stroke", d: ["M4 7 H20", "M4 12 H20", "M4 17 H20"] },
+
+  // loupe — cercle + manche. Pour le bouton Rechercher (⌘K, refonte R2).
+  loupe: { kind: "stroke", d: ["M10.5 4 A6.5 6.5 0 1 0 10.5 17 A6.5 6.5 0 1 0 10.5 4", "M15.5 15.5 L20.5 20.5"] },
 
   // check — from the animated/static checkmark (orig 16-box "M2.5 8.5L6 12L13.5 4",
   // ×1.5 → 24-box). Single drawn-on stroke; round joints.

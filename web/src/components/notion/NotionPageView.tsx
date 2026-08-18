@@ -197,7 +197,7 @@ export function NotionPageView({
   );
 
   return (
-    <PageShell width={wideOption === "w2" ? "notionWide" : "notion"}>
+    <PageShell notions={listNotions().map((n) => ({ subject: n.subject, slug: n.slug, title: n.title, readingMinutes: n.readingMinutes }))} width={wideOption === "w2" ? "notionWide" : "notion"}>
       {/* Skip-to-content for keyboard users (DESIGN-BIBLE §9) */}
       <a
         href="#lesson-content"

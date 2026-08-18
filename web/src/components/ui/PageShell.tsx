@@ -25,6 +25,12 @@ import { cn } from "@/lib/utils";
 
 interface PageShellProps {
   children: React.ReactNode;
+  /** Le manifeste des notions pour le panneau Notions + la palette ⌘K.
+   *  Fourni par les PAGES SERVEUR (listNotions lit le fs — impossible dans
+   *  PageShell lui-même : /connexion est une page client et l'entraînerait
+   *  dans le bundle navigateur). Les pages client le laissent vide : le
+   *  header reste fonctionnel, la palette n'offre que les destinations. */
+  notions?: { subject: string; slug: string; title: string; readingMinutes?: number }[];
   /**
    * Width variant for the page spine (header + main + footer together).
    * - "reading"  65ch  — default narrow prose column
@@ -42,6 +48,7 @@ export function PageShell({
   children,
   width = "reading",
   className,
+  notions = [],
 }: PageShellProps) {
   const maxWidthClass = {
     reading: "max-w-reading",
@@ -81,7 +88,10 @@ export function PageShell({
 
   return (
     <div className="min-h-screen flex flex-col bg-surface-base">
-      <SiteHeader container={bandeHeader} />
+      {/* Le manifeste des notions alimente le panneau Notions et la
+          palette ⌘K — chargé ICI, côté serveur : le header client le
+          reçoit en props (~62 titres, quelques Ko). */}
+      <SiteHeader container={bandeHeader} notions={notions} />
 
       <main
         id="main-content"

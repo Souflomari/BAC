@@ -32,7 +32,6 @@ import { sessionFromState } from "@/lib/session";
 import { useStudentState } from "@/lib/student-state";
 import { subjectLabel, notionHref } from "@/lib/subjects";
 import { Icon } from "@/components/ui/Icon";
-import { Cover } from "@/components/covers/Cover";
 import { cn } from "@/lib/utils";
 import type { NotionMeta } from "@/lib/content";
 
@@ -44,70 +43,74 @@ export function SessionCard({ notions }: { notions: NotionMeta[] }) {
   const { notion } = session;
 
   return (
-    <section aria-label="La session du jour" className="max-w-list">
+    <section aria-label="La session du jour">
+      {/* Refonte Studio (R6 avancé) : la carte devient TEXTE D'ABORD. Le
+          panneau Cover de droite est parti — 5 motifs partagés par 61
+          notions, « la feuille seule occupait la moitié de la carte pour un
+          contenu quasi nul » (audit Fable §3.2). Le repérage passe par la
+          couleur de matière (chip), l'espace récupéré va au contenu. */}
       <div
         className={cn(
-          "rounded-xl overflow-hidden",
-          "bg-surface-container-high shadow-elevation-2",
-          "bp-medium:grid bp-medium:grid-cols-[1fr_240px]"
+          "rounded-xl border border-subtle bg-surface-raised",
+          "px-6 py-7 bp-medium:px-8 bp-medium:py-8",
+          "shadow-elevation-1"
         )}
       >
-        <div className="px-8 py-8">
-          <p className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
-            {session.kind === "start" ? "Commence ici" : "Aujourd’hui"} ·{" "}
-            {subjectLabel(notion.subject)}
-          </p>
-          <h2 className="mt-2 font-display text-h2 font-bold text-primary">
-            {notion.title}
-          </h2>
-          <p className="mt-2 text-body text-secondary">
-            {session.kind === "start" ? (
-              <>
-                Nouvelle notion — on la prend depuis le début
-                {notion.readingMinutes ? ` (≈ ${notion.readingMinutes} min de lecture)` : ""}.
-              </>
-            ) : (
-              <>
-                Reprise à « {session.position} » — section {session.step} sur{" "}
-                {session.totalSteps}.
-              </>
-            )}
-          </p>
-
-          {/* Progress renders ONLY from real resume state — never fabricated. */}
-          {session.kind === "resume" && (
-            <div
-              className="mt-5 h-1 rounded-full bg-border-subtle"
-              role="progressbar"
-              aria-valuenow={Math.round((session.step / session.totalSteps) * 100)}
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-label="Progression dans la notion"
-            >
-              <div
-                className="h-1 rounded-full bg-accent"
-                style={{ width: `${(session.step / session.totalSteps) * 100}%` }}
-              />
-            </div>
-          )}
-
-          <Link
-            href={notionHref(notion.subject, notion.slug)}
-            data-primary-action=""
-            className={cn("mt-6 btn-primary focus-ring")}
+        <p className="flex flex-wrap items-center gap-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
+          <span
+            className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1"
+            style={{
+              background: `var(--subject-${notion.subject}-subtle)`,
+              color: `var(--subject-${notion.subject})`,
+            }}
           >
-            {session.kind === "start" ? "Commencer la session" : "Reprendre la session"}
-            <Icon name="arrow-right" size={14} />
-          </Link>
-        </div>
+            <span aria-hidden className="h-1.5 w-1.5 rounded-full" style={{ background: "currentColor" }} />
+            {subjectLabel(notion.subject)}
+          </span>
+          {session.kind === "start" ? "Commence ici" : "Aujourd\u2019hui"}
+        </p>
+        <h2 className="mt-3 max-w-lead font-display text-h1 font-bold text-primary">
+          {notion.title}
+        </h2>
+        <p className="mt-2 max-w-lead text-body-lg text-secondary">
+          {session.kind === "start" ? (
+            <>
+              Nouvelle notion — on la prend depuis le début
+              {notion.readingMinutes ? ` (≈ ${notion.readingMinutes} min de lecture)` : ""}.
+            </>
+          ) : (
+            <>
+              Reprise à « {session.position} » — section {session.step} sur{" "}
+              {session.totalSteps}.
+            </>
+          )}
+        </p>
 
-        <div className="hidden bp-medium:block relative">
-          <Cover
-            subject={notion.subject}
-            slug={notion.slug}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        </div>
+        {/* Progress renders ONLY from real resume state — never fabricated. */}
+        {session.kind === "resume" && (
+          <div
+            className="mt-5 h-1 max-w-lead rounded-full bg-border-subtle"
+            role="progressbar"
+            aria-valuenow={Math.round((session.step / session.totalSteps) * 100)}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label="Progression dans la notion"
+          >
+            <div
+              className="h-1 rounded-full bg-accent"
+              style={{ width: `${(session.step / session.totalSteps) * 100}%` }}
+            />
+          </div>
+        )}
+
+        <Link
+          href={notionHref(notion.subject, notion.slug)}
+          data-primary-action=""
+          className={cn("mt-6 btn-primary focus-ring")}
+        >
+          {session.kind === "start" ? "Commencer la session" : "Reprendre la session"}
+          <Icon name="arrow-right" size={14} />
+        </Link>
       </div>
     </section>
   );
