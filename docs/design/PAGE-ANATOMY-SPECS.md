@@ -1,5 +1,15 @@
 # Page-anatomy component specs
 
+> **AMENDEMENT STUDIO (2026-08-18, R5).** Le pivot Studio (ADR 0030) a
+> reconstruit trois anatomies décrites ici : le HEADER (v2 : wordmark net,
+> toolbar unifiée, panneau Notions, ⌘K), l'ACCUEIL (ProgrammeMap remplace
+> MasteryMap/AvailableShelf/SubjectProgress — « Home session element »
+> ci-dessous reste valable pour SessionCard/NextUp, le reste est
+> superseded) et la bande de page (gouttière fluide `--gutter`, bandes
+> `--band-page`/`--band-atelier`). Pour ces surfaces, l'autorité est
+> `docs/design/STUDIO-SPEC.md` §2–§4 ; les specs ci-dessous restent
+> exactes pour le masthead de leçon, SiteFooter et LessonEnd.
+
 > **Authority:** DESIGN-BIBLE §11–§13 (Day-4 amendments). **Audience: a model
 > with NO session context** (Sonnet 5 cold) building or maintaining these
 > components after 2026-07-07. Every spec states: purpose, anatomy, tokens,

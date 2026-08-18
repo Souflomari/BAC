@@ -194,6 +194,16 @@ DISTRIBUTED-BUILD éprouvée sur les 53 scènes Manim) :
   précédent/suivant, position), **connexion/404**.
 - Gates verts obligatoires à chaque lot ; production humaine inchangée.
 
+**État d'exécution (2026-08-18).** R0 `e6f6227` (ADR 0030) · R1 `d4063fd`
+(tokens Studio + Geist + porte de contraste) · R2+R3+R6-accueil `578731e`
+(l'overhaul : coquille, accueil, atelier — la fusion accueil prévue en R6
+a été absorbée ici) · R4 `dfcbbc8` (View Transitions + entrées animées +
+filtre net de la palette ; le spike était stable, pas de report Next 15) ·
+R5 : `docs/design/STUDIO-SPEC.md` + bible v2 (autorité partagée) +
+PAGE-ANATOMY amendé + porte M3-seule dans token-gate. **Reste de R6 :**
+reproduction Antigravity — /matieres/, passe titres des leçons (3 témoins
+d'abord), connexion/404, retrait des vieux bancs /options/* (owner-gaté).
+
 ## 7 · Risques nommés
 
 1. **Geist absent du manifeste next/font de 14.2** → next/font/local,

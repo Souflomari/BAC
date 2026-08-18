@@ -41,6 +41,11 @@ const RULES = [
   { name: "arbitrary z-index", re: /\bz-\[/, hint: "use z-raised / z-header / z-overlay" },
   { name: "arbitrary touch target", re: /\bmin-[hw]-\[48px\]/, hint: "use min-h-touch / min-w-touch" },
   { name: "arbitrary motion", re: /\b(?:duration|ease)-\[/, hint: "use a motion token (duration-*, ease-*)" },
+  // R5 (refonte Studio) : l'échelle M3 est la SEULE échelle de rupture —
+  // theme.screens est REMPLACÉ, pas étendu. Une classe sm:/md:/lg:/xl:/2xl:
+  // écrite par réflexe ne produit RIEN, silencieusement ; ce piège a déjà
+  // mordu (codemod R2). La porte la rend bruyante.
+  { name: "dead default breakpoint", re: /(^|[^a-zA-Z0-9-])(?:sm|md|lg|xl|2xl):[a-z[]/, hint: "use the M3 scale: bp-medium / bp-expanded / bp-large / bp-xl" },
 ];
 
 /** All .ts/.tsx/.js/.jsx under src/. */

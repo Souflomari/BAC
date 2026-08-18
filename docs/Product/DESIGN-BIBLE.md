@@ -1,10 +1,22 @@
-> **v2 EN COURS (2026-08-18, ADR 0030 — pivot « Studio »).** Les sections
-> IDENTITÉ de ce document (palette papier chaud §2, sérif éditorial en
-> titres §3) sont remplacées par `docs/product/REFONTE-STUDIO.md` et ne
-> font plus autorité. Les sections DISCIPLINE — cœur calme §0, motion §5,
-> une-idée-par-écran §7, périphérie §8, a11y §9, test du regard §10,
-> honest-state, rendered/deployed-truth §12-13 — restent la loi, sans
-> changement. La v2 complète sera écrite en phase R5 de la refonte.
+> **v2 (2026-08-18, ADR 0030 — pivot « Studio » ; codifiée en phase R5).**
+> La v2 est une AUTORITÉ PARTAGÉE, pas une réécriture :
+>
+> - **Ce document = la DISCIPLINE, inchangée et toujours la loi** — cœur
+>   calme §0, motion §5 (durées/courbes, jamais d'overshoot), une-idée-
+>   par-écran §7, périphérie §8, a11y §9, test du regard §10, codes
+>   jamais visibles §11, honest-state, rendered/deployed-truth §12-13.
+> - **`docs/design/STUDIO-SPEC.md` = l'IDENTITÉ et l'ANATOMIE** — jetons
+>   Studio verrouillés (surfaces, encre, 5 triades matière OKLCH, Geist/
+>   mono/sérif-prose, bandes fluides, échelle M3 seule), anatomie exacte
+>   par composant (coquille, panneau, palette ⌘K, accueil, workspace/
+>   dock, carte QCM, carte feedback), les trois couloirs de motion (dont
+>   View Transitions R4), et le protocole de reproduction R6. C'est le
+>   contrat qu'un exécutant froid (Antigravity) consomme.
+> - Les sections IDENTITÉ historiques de ce document (palette papier
+>   chaud §2, sérif éditorial en titres §3) sont RETIRÉES d'autorité —
+>   conservées comme archive de raisonnement uniquement.
+> - En cas de conflit : VISION → cette discipline → STUDIO-SPEC →
+>   le code de la tranche de référence validé par les portes.
 
 # The Design Bible
 
