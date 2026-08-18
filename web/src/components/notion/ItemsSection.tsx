@@ -62,7 +62,7 @@ export function ItemsSection({ itemsData, checkpointCloneIds }: ItemsSectionProp
       <div className="mb-8">
         <h2
           id="items-heading"
-          className="font-serif text-h2 font-bold text-primary"
+          className="font-display text-h2 font-bold text-primary"
         >
           Exercices
         </h2>

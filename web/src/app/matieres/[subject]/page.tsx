@@ -83,7 +83,7 @@ export default function SubjectPage({ params }: { params: { subject: string } })
             full-bleed calc padding re-aligns it to main's content box
             (same trick as NotionPageView; no extra container). */}
         <Breadcrumb segments={[{ label: "Accueil", href: "/" }, { label: subjectLabel(subject.id) }]} />
-        <h1 className="font-serif text-display-lg font-bold text-primary max-w-[26ch]">
+        <h1 className="font-display text-display-lg font-bold text-primary max-w-[26ch]">
           {subjectLabel(subject.id)}
         </h1>
         <p className="mt-4 max-w-lead text-lead text-secondary">

@@ -59,7 +59,7 @@ export function LessonEnd({ next }: { next: NotionMeta | null }) {
             <span className="block text-caption font-medium uppercase tracking-eyebrow text-secondary">
               Changer de matière — {subjectLabel(next.subject)}
             </span>
-            <span className="mt-2 block font-serif text-h3 font-semibold text-primary group-hover:text-accent transition-colors duration-micro">
+            <span className="mt-2 block font-display text-h3 font-semibold text-primary group-hover:text-accent transition-colors duration-micro">
               {next.title}
             </span>
           </span>

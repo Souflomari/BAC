@@ -182,7 +182,7 @@ export function NotionPageView({
       <header className={cn(onSpine ? "mb-0" : "notion-prose mb-10")}>
         <h1
           className={cn(
-            "font-serif font-bold text-primary",
+            "font-display font-bold text-primary",
             titleClass
           )}
         >

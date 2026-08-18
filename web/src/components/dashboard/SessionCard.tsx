@@ -57,7 +57,7 @@ export function SessionCard({ notions }: { notions: NotionMeta[] }) {
             {session.kind === "start" ? "Commence ici" : "Aujourd’hui"} ·{" "}
             {subjectLabel(notion.subject)}
           </p>
-          <h2 className="mt-2 font-serif text-h2 font-bold text-primary">
+          <h2 className="mt-2 font-display text-h2 font-bold text-primary">
             {notion.title}
           </h2>
           <p className="mt-2 text-body text-secondary">

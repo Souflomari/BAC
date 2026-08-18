@@ -54,7 +54,7 @@ function ContentsRow({
           "focus-ring [--focus-radius:8px]"
         )}
       >
-        <span className="font-serif text-lead text-primary">
+        <span className="font-display text-lead text-primary">
           {title}
         </span>
         <StateWord state={state} />
@@ -67,7 +67,7 @@ export default function HomeB2() {
   return (
     <PageShell width="content">
       <header className="mb-12">
-        <h1 className="font-serif text-display font-bold text-primary">
+        <h1 className="font-display text-display font-bold text-primary">
           Notions
         </h1>
         <p className="mt-4 text-lead text-secondary max-w-lead">
@@ -91,7 +91,7 @@ export default function HomeB2() {
             <p className="text-caption font-medium uppercase tracking-eyebrow text-accent">
               Reprendre
             </p>
-            <p className="mt-1 font-serif text-h3 font-semibold text-primary">
+            <p className="mt-1 font-display text-h3 font-semibold text-primary">
               Oscillations libres dans un circuit RLC série
             </p>
             <p className="mt-1 text-body-sm text-secondary">

@@ -82,7 +82,7 @@ export function AvailableShelf({ notions }: { notions: NotionMeta[] }) {
                   <span className="flex-1 min-w-0">
                     <span
                       data-shelf-subject-label=""
-                      className="block font-serif text-lead leading-tight text-primary"
+                      className="block font-display text-lead leading-tight text-primary"
                     >
                       {subjectLabel(subject)}
                     </span>
@@ -128,7 +128,7 @@ export function AvailableShelf({ notions }: { notions: NotionMeta[] }) {
                           <Cover subject={n.subject} slug={n.slug} />
                         </div>
                         <div className="px-5 py-4">
-                          <span className="block font-serif text-lead leading-snug text-primary group-hover/card:text-accent transition-colors duration-micro">
+                          <span className="block font-display text-lead leading-snug text-primary group-hover/card:text-accent transition-colors duration-micro">
                             {n.title}
                           </span>
                           {n.readingMinutes && (

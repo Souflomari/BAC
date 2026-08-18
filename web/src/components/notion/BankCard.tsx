@@ -107,7 +107,7 @@ export function BankCard({
       >
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-3">
-            <h3 className="font-serif text-h3 font-semibold text-primary">
+            <h3 className="font-display text-h3 font-semibold text-primary">
               {entry.title}
             </h3>
             {fait && (

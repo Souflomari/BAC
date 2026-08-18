@@ -40,7 +40,7 @@ export function ChapterQuestions({ items }: ChapterQuestionsProps) {
       {/* Quiet heading — subordinate to the chapter's own h2 (§7). No rung
           code ever surfaces here (§11): the block is generic. */}
       <div className="notion-prose mb-6">
-        <h3 className="font-serif text-h3 font-semibold text-primary">
+        <h3 className="font-display text-h3 font-semibold text-primary">
           Vérifie ta compréhension
         </h3>
         <p className="mt-2 text-body-sm text-secondary">

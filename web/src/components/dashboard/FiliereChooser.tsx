@@ -52,7 +52,7 @@ export function FiliereChooser({ redirectOnPick = false }: { redirectOnPick?: bo
               )}
             >
               <div className="flex items-baseline justify-between gap-3">
-                <span className="font-serif text-h4 font-semibold text-primary group-hover:text-accent transition-colors duration-micro">
+                <span className="font-display text-h4 font-semibold text-primary group-hover:text-accent transition-colors duration-micro">
                   {f.name}
                 </span>
                 <span

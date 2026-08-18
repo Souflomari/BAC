@@ -115,7 +115,7 @@ function Jauge({ valeur, cible, atteint }: { valeur: number; cible: number; atte
         </p>
         <p
           className={cn(
-            "mt-1 font-serif text-display font-semibold tabular-nums leading-none",
+            "mt-1 font-display text-display font-semibold tabular-nums leading-none",
             atteint ? "text-accent" : "text-primary"
           )}
         >
@@ -126,7 +126,7 @@ function Jauge({ valeur, cible, atteint }: { valeur: number; cible: number; atte
         <p className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
           objectif
         </p>
-        <p className="mt-1 font-serif text-h1 font-semibold tabular-nums leading-none text-secondary">
+        <p className="mt-1 font-display text-h1 font-semibold tabular-nums leading-none text-secondary">
           {String(cible).replace(".", ",")}
         </p>
       </div>
@@ -191,7 +191,7 @@ export function Atelier() {
           <p className="text-caption font-medium uppercase tracking-eyebrow text-accent">
             Mathématiques · 2ème bac
           </p>
-          <h1 className="mt-2 font-serif text-h1 font-semibold text-primary">
+          <h1 className="mt-2 font-display text-h1 font-semibold text-primary">
             Les dérivées
           </h1>
           <p className="mt-3 text-body-lg text-secondary">
@@ -265,7 +265,7 @@ export function Atelier() {
               « plusieurs secondes » décrites, mais l'ordre était bien
               inversé. Le texte d'un exercice ne doit jamais être retenu par
               une animation ; le mouvement reste aux éléments secondaires. */}
-          <p className="font-serif text-h2 font-semibold leading-tight text-primary">
+          <p className="font-display text-h2 font-semibold leading-tight text-primary">
             {ecran.texte}
           </p>
           <p id={`question-${ecran.id}`} className="mt-4 text-lead text-secondary">

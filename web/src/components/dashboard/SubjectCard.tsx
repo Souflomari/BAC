@@ -59,7 +59,7 @@ export function SubjectCard({ subject }: { subject: SubjectSummary }) {
         )}
       </div>
       <div className="flex flex-1 flex-col px-5 py-4">
-        <span className="block font-serif text-lead leading-snug text-primary group-hover:text-accent transition-colors duration-micro">
+        <span className="block font-display text-lead leading-snug text-primary group-hover:text-accent transition-colors duration-micro">
           {label}
         </span>
         <span className="mt-1 text-body-sm text-secondary line-clamp-2">

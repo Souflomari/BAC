@@ -28,7 +28,7 @@ export function ExerciseBank({ bank }: { bank: NotionBank }) {
   return (
     <div data-exercise-bank>
       <div className="notion-prose">
-        <h2 className="font-serif text-h2 font-semibold text-primary">
+        <h2 className="font-display text-h2 font-semibold text-primary">
           S’entraîner
         </h2>
         {count > 0 ? (

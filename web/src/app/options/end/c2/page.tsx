@@ -52,7 +52,7 @@ export default function EndC2() {
             <p className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
               Et maintenant
             </p>
-            <p className="mt-2 font-serif text-h3 font-semibold text-primary">
+            <p className="mt-2 font-display text-h3 font-semibold text-primary">
               Les exercices t’attendent plus bas — ou passe à la suite.
             </p>
           </div>

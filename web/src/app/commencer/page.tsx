@@ -23,7 +23,7 @@ export default function CommencerPage() {
     <PageShell width="content">
       <Breadcrumb segments={[{ label: "Accueil", href: "/" }, { label: "Ta filière" }]} />
       <header className="mb-10 max-w-lead">
-        <h1 className="font-serif text-display font-bold text-primary">
+        <h1 className="font-display text-display font-bold text-primary">
           Choisis ta filière
         </h1>
         <p className="mt-4 text-lead text-secondary">

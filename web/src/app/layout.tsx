@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Source_Serif_4 } from "next/font/google";
+// Geist vient du paquet officiel Vercel (fontes auto-hébergées via
+// next/font/local en interne) : le manifeste next/font/google de Next 14.2
+// prédate Geist — « Unknown font », constaté au build, risque n°1 du plan.
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import { AuthProvider } from "@/lib/auth/provider";
 import "./globals.css";
 
@@ -12,7 +17,7 @@ import "./globals.css";
 // diacritic + guillemet coverage and a true weight range; warm-but-crisp, holds
 // at 17px body. Italic for <em> in prose. Preloaded — prose is above the fold.
 const readingSerif = Source_Serif_4({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   variable: "--font-reading-serif",
@@ -20,21 +25,13 @@ const readingSerif = Source_Serif_4({
   preload: true,
 });
 
-const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-ibm-plex-sans",
-  display: "swap",
-  preload: true,
-});
+// Studio (ADR 0030 D2) : UNE grotesque pour tout le chrome, les titres et
+// l'atelier — Geist, fonte variable (coupe display obtenue par graisse +
+// tracking négatif du typeScale, pas par une seconde famille). Sa mono
+// assortie porte tout nombre qui change (tabular-nums). Le sérif ci-dessus
+// ne survit que dans le CORPS des leçons — la lecture longue, là où il
+// gagne sa place.
 
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-ibm-plex-mono",
-  display: "swap",
-  preload: false,
-});
 
 // ── Metadata (head pack: July-2026 external-audit F5) ─────────────────────────
 // Icons come from the app-router convention files (src/app/icon.svg +
@@ -103,7 +100,7 @@ export default function RootLayout({
       // <body>) and toggled by ThemeToggle; the server always renders
       // without it, so suppressHydrationWarning covers the class mismatch.
       suppressHydrationWarning
-      className={`${readingSerif.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable}`}
+      className={`${readingSerif.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
       <body>
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />

@@ -142,9 +142,14 @@ const config: Config = {
 
       // ── Typography (DESIGN-BIBLE §3, ADR 0023) ─────────────────────────────
       fontFamily: {
+        // `serif` ne subsiste que pour la prose de leçon (ADR 0030 D2) ;
+        // `display` = la même grotesque que `sans`, alias sémantique posé
+        // par le codemod font-serif→font-display : les titres du chrome le
+        // portent, et il pourra diverger (coupe display) sans re-codemod.
         serif: ["var(--font-reading-serif)", "Georgia", "Times New Roman", "serif"],
-        sans: ["var(--font-ibm-plex-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-ibm-plex-mono)", "ui-monospace", "monospace"],
+        sans: ["var(--font-ui)", "system-ui", "sans-serif"],
+        display: ["var(--font-ui)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       // fontSize derived from tokens.ts typeScale (was literal rem/lineHeight here).
       fontSize,

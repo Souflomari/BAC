@@ -30,6 +30,7 @@ import path from "path";
 import jitiFactory from "jiti";
 import yaml from "js-yaml";
 import { scanTokenGate } from "./token-gate.mjs";
+import { scanContrast } from "./contrast-gate.mjs";
 
 const WEB = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const CONTENT_ROOT = path.join(path.dirname(WEB), "content");
@@ -178,25 +179,25 @@ const NOTION = "/notions/pc/rlc-serie";
 const BANK_NOTION = "/notions/pc/reactions-acido-basiques";
 const BATTERY = [
   // ── U1 table (the audit's measured victims) ──
-  { name: "notion masthead h1 (A3 display-lg)", page: NOTION, sel: "h1", text: "Oscillations", fontKey: "display-lg", lineHeight: true, weight: "700", family: "Source Serif", colorVar: "--color-text-primary" },
-  { name: "home h1", page: "/", sel: "h1", text: "Ta session", fontKey: "display", weight: "700", family: "Source Serif" },
+  { name: "notion masthead h1 (A3 display-lg)", page: NOTION, sel: "h1", text: "Oscillations", fontKey: "display-lg", lineHeight: true, weight: "700", family: "Geist", colorVar: "--color-text-primary" },
+  { name: "home h1", page: "/", sel: "h1", text: "Ta session", fontKey: "display", weight: "700", family: "Geist" },
   { name: "home lead", page: "/", sel: "header p", text: "Deux heures", fontKey: "lead" },
-  { name: "home session-card h2 (B1 primary)", page: "/", sel: "section[aria-label*='session'] h2", fontKey: "h2", weight: "700", family: "Source Serif" },
+  { name: "home session-card h2 (B1 primary)", page: "/", sel: "section[aria-label*='session'] h2", fontKey: "h2", weight: "700", family: "Geist" },
   // (Persistance-wave, 2026-07-07) shelf collapsed per matière — the trigger's
   // subject-label span is the "row title" typography at rest now; the old
   // per-card title only exists once a matière is expanded (see the SWEEP
   // below for the interactive check that opens one and asserts the cover).
-  { name: "home shelf row title", page: "/", sel: "section[aria-label='Notions disponibles'] [data-shelf-subject-label]", text: "Physique-Chimie", fontKey: "lead", family: "Source Serif" },
+  { name: "home shelf row title", page: "/", sel: "section[aria-label='Notions disponibles'] [data-shelf-subject-label]", text: "Physique-Chimie", fontKey: "lead", family: "Geist" },
   { name: "404 hero display", page: "/nonexistent-xyz", sel: "span", text: "404", fontKey: "display", weight: "700" },
   { name: "404 h1", page: "/nonexistent-xyz", sel: "h1", text: "introuvable", fontKey: "h2", weight: "700" },
   // ── survivors (must stay green — regression tripwires) ──
-  { name: "prose rung h2", page: NOTION, sel: ".prose-lesson h2", text: "Accroche", fontPx: PROSE.h2, weight: "600", family: "Source Serif" },
+  { name: "prose rung h2", page: NOTION, sel: ".prose-lesson h2", text: "Accroche", fontPx: PROSE.h2, weight: "600", family: "Geist" },
   // Inline-items model (§1.1): questions moved from a single end-of-lesson
   // "Exercices" h2 bank to a per-chapter "Vérifie ta compréhension" h3 block
   // (ChapterQuestions). The heading lives in the DOM on every chapter that has
   // items (hidden chapters included), so this presence+type check holds on the
   // default landing page.
-  { name: "inline chapter questions heading", page: NOTION, sel: "section[aria-label='Questions de compréhension du chapitre'] h3", text: "Vérifie ta compréhension", fontPx: 20, weight: "600", family: "Source Serif" },
+  { name: "inline chapter questions heading", page: NOTION, sel: "section[aria-label='Questions de compréhension du chapitre'] h3", text: "Vérifie ta compréhension", fontPx: 21, weight: "600", family: "Geist" },
   // ── code-verified unmeasured victims from the audit ──
   // (The two Eyebrow instances measured on Day 2 were REMOVED in the Day-3
   // doubled-label kill (audit U3) — the masthead eyebrow duplicated the
@@ -208,10 +209,12 @@ const BATTERY = [
   { name: "MCQ choice row", page: NOTION, sel: "li button[aria-pressed]", fontKey: "body", weight: "400" },
   { name: "motion step indicator", page: NOTION, sel: "span[aria-live='polite']", text: "Étape", fontKey: "caption" },
   // MP-V1 (Phase C): the step text under a staged figure IS the teaching, so
+  // Studio (ADR 0030 D2) : le lede a2 est passé du sérif à la grotesque
+  // display — l'anatomie (lede + ordinal accent) survit, la famille change.
   // it ships as the a2 lede — the reading serif at body-lg (not a body-sm
   // caption), preceded by a small accent ordinal (aria-hidden; the aria-live
   // indicator above already announces the stage).
-  { name: "figure step-text (a2 lede: serif body-lg)", page: NOTION, sel: "figcaption span.font-serif", fontKey: "body-lg", family: "Source Serif" },
+  { name: "figure step-text (a2 lede: serif body-lg)", page: NOTION, sel: "figcaption span.font-display", fontKey: "body-lg", family: "Geist" },
   { name: "figure step-text ordinal is the accent (meaning, not colour alone)", page: NOTION, sel: "figcaption span[aria-hidden='true']", fontKey: "body-sm" },
   // TODO(post-answer states): the solution <summary> and correctness rows only
   // exist after answering an item — battery v2 should drive one interaction.
@@ -383,7 +386,7 @@ const BATTERY = [
   { name: "D12 connexion (off): no Google affordance either", page: "/connexion", sel: "main", notText: /Google|démonstration|mot de passe/i },
   { name: "D12 header (off): no auth affordance", page: "/", sel: "header", notText: /Se connecter|Se déconnecter|démonstration/ },
   { name: "D9 subject page: masthead band", page: "/matieres/pc", sel: "[data-band='masthead']", bgVar: "--color-surface-container-low" },
-  { name: "D9 subject page: h1 display-lg serif", page: "/matieres/pc", sel: "h1", text: "Physique", fontKey: "display-lg", weight: "700", family: "Source Serif" },
+  { name: "D9 subject page: h1 display-lg serif", page: "/matieres/pc", sel: "h1", text: "Physique", fontKey: "display-lg", weight: "700", family: "Geist" },
   { name: "D9 subject page: available chapter links to notion", page: "/matieres/pc", sel: "a[href='/notions/pc/rlc-serie']", present: true },
   // D9.5 content-fill completed every PC chapter (25/25) — /matieres/pc no
   // longer has an un-built chapter to render "À venir" against, so the
@@ -419,6 +422,20 @@ function fail(msg) {
     process.exit(1);
   }
   console.log("token-gate: no arbitrary token usage — one syntax holds ✓");
+}
+
+// ── Gate 0bis : la porte de contraste (ADR 0030). La palette Studio a été
+//    conçue paire par paire ; cette porte rend la conception PERMANENTE —
+//    toute retouche de tokens.ts repasse les 80 paires ou casse le build.
+{
+  const { total, echecs } = scanContrast();
+  if (echecs.length) {
+    console.error(`\n━━ contrast-gate: ${echecs.length}/${total} paire(s) sous le seuil — aborting dom-truth ━━`);
+    for (const e of echecs)
+      console.error(`  ✗ [${e.theme}] ${e.avant} sur ${e.arriere} : ${e.mesure} (exigé ${e.seuil})`);
+    process.exit(1);
+  }
+  console.log(`contrast-gate: ${total} paires AA, les deux thèmes ✓`);
 }
 
 // detached → own process group, so the finally-block kill reaches the actual
@@ -678,7 +695,7 @@ try {
   // (F3 + F4) Contrast in BOTH themes, dark reached through the REAL toggle
   // (never a forced class — the forced-class habit hid F4 for four days).
   const CONTRAST_TARGETS = [
-    { page: NOTION, sel: "figcaption span.font-serif", label: "figure step-text" },
+    { page: NOTION, sel: "figcaption span.font-display", label: "figure step-text" },
     { page: NOTION, sel: "[data-band='masthead'] p", label: "masthead metadata" },
     { page: NOTION, sel: ".notion-rail button span[class*='bp-expanded']", label: "rail idle label" },
     { page: NOTION, sel: "footer p", label: "footer" },
@@ -2735,11 +2752,42 @@ try {
       // stylesheet-parsed (app) and inline setProperty (probe) custom props:
       // hex case, spaces after commas, and fractional trailing zeros (.10→.1).
       // Distinct values stay distinct (48px ≠ 40px) — verified in Node.
-      const norm = (s) =>
+      // …et depuis le pivot Studio (ADR 0030), les réécritures du MINIFIEUR
+      // CSS, que la sonde ne subit pas : #ffffff→#fff et
+      // rgba(255,255,255,a)→hsla(0,0%,100%,a). On canonicalise donc toute
+      // couleur vers rgba(r,g,b,a) des DEUX côtés — une vraie divergence de
+      // valeur reste une divergence, seule la sérialisation s'annule.
+      const hexVers = (h) => {
+        if (h.length === 3 || h.length === 4) h = [...h].map((c) => c + c).join("");
+        const n = parseInt(h.slice(0, 6), 16);
+        const a = h.length === 8 ? parseInt(h.slice(6), 16) / 255 : 1;
+        return [n >> 16, (n >> 8) & 255, n & 255, a];
+      };
+      const hslVers = (hh, ss, ll, a) => {
+        ss /= 100; ll /= 100;
+        const k = (n) => (n + hh / 30) % 12;
+        const f = (n) => ll - ss * Math.min(ll, 1 - ll) * Math.max(-1, Math.min(k(n) - 3, 9 - k(n), 1));
+        return [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255), a];
+      };
+      const rgbaTxt = ([r, g, b, a]) => `rgba(${r},${g},${b},${Math.round(a * 1000) / 1000})`;
+      const canonCouleurs = (s) =>
         s
-          .trim()
-          .toLowerCase()
-          .replace(/\s+/g, "")
+          .replace(/#([0-9a-f]{3,8})\b/g, (_, h) => rgbaTxt(hexVers(h)))
+          .replace(/hsla?\(([^)]+)\)/g, (_, corps) => {
+            const t = corps.split(",").map((x) => parseFloat(x));
+            return rgbaTxt(hslVers(t[0], t[1], t[2], t.length > 3 ? t[3] : 1));
+          })
+          .replace(/rgba?\(([^)]+)\)/g, (_, corps) => {
+            const t = corps.split(",").map((x) => parseFloat(x));
+            return rgbaTxt([t[0], t[1], t[2], t.length > 3 ? t[3] : 1]);
+          });
+      const norm = (s) =>
+        canonCouleurs(
+          s
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, "")
+        )
           .replace(/(\.\d*?)0+(?=\D|$)/g, "$1")
           .replace(/\.(?=\D|$)/g, "");
       const mism = [];

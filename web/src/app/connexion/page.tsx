@@ -202,7 +202,7 @@ export default function ConnexionPage() {
       <Breadcrumb segments={[{ label: "Accueil", href: "/" }, { label: "Se connecter" }]} />
 
       <div className="max-w-sm">
-        <h1 className="font-serif text-display font-bold text-primary">
+        <h1 className="font-display text-display font-bold text-primary">
           {isSignup ? "Créer un compte" : "Se connecter"}
         </h1>
 

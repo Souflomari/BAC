@@ -62,7 +62,7 @@ export default function HomeB3() {
   return (
     <PageShell width="content">
       <header className="mb-10">
-        <h1 className="font-serif text-display font-bold text-primary">
+        <h1 className="font-display text-display font-bold text-primary">
           Où tu en es
         </h1>
         <p className="mt-4 text-lead text-secondary max-w-lead">
@@ -83,7 +83,7 @@ export default function HomeB3() {
             <p className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
               Aujourd’hui
             </p>
-            <p className="mt-2 font-serif text-h3 font-semibold text-primary">
+            <p className="mt-2 font-display text-h3 font-semibold text-primary">
               Terminer « Oscillations libres » — les trois régimes
             </p>
             <p className="mt-1 text-body-sm text-secondary">

@@ -240,7 +240,7 @@ function assembleStaggerMs(childCount: number): number {
  * clears its class/inline delay once settled, independent of the others,
  * so a later re-entrance (Précédent-then-Suivant) always starts fresh.
  */
-function assembleGroupChildren(group: SVGGElement): void {
+function assembleGroupChildren(group: SVGGElement): number {
   const children = Array.from(group.children) as SVGElement[];
   const stagger = assembleStaggerMs(children.length);
   children.forEach((child, i) => {
@@ -252,6 +252,9 @@ function assembleGroupChildren(group: SVGGElement): void {
       child.style.removeProperty("animation-delay");
     }, settleMs);
   });
+  // Durée totale jusqu'au repos du dernier enfant — le site d'appel s'en
+  // sert pour savoir si une réinsertion self-heal tombe EN PLEINE assemble.
+  return (children.length - 1) * stagger + ASSEMBLE_CHILD_DURATION_MS + 50;
 }
 
 export function StagedFigure({
@@ -277,6 +280,9 @@ export function StagedFigure({
   // reconciliation comment for why calling this must never itself trigger
   // a React re-render).
   const reapplyRef = useRef<(() => void) | null>(null);
+  // Fenêtres d'assemble en vol, par numéro d'étape (voir le rejeu self-heal
+  // dans `reconcile`) : n → horodatage de fin de la chorégraphie.
+  const assembleUntilRef = useRef<Map<number, number>>(new Map());
 
   // prefers-reduced-motion — same live-listener pattern as Derivation/MotionStage.
   useEffect(() => {
@@ -415,7 +421,22 @@ export function StagedFigure({
             if (inserted) {
               inserted.classList.add("stage-group");
               if (mountedRef.current && !fullyRevealed && !instant && !shownRef.current.has(n)) {
-                assembleGroupChildren(inserted);
+                const duree = assembleGroupChildren(inserted);
+                assembleUntilRef.current.set(n, Date.now() + duree);
+              } else if (
+                !fullyRevealed &&
+                Date.now() < (assembleUntilRef.current.get(n) ?? 0)
+              ) {
+                // Le cas qui perdait la chorégraphie : un rendu React
+                // supplémentaire (hydratation tardive, bascule de fonte en
+                // `swap`…) réinitialise le dangerouslySetInnerHTML PENDANT
+                // les ~350 ms de l'assemble ; le self-heal réinsérait le
+                // groupe d'un bloc — contenu juste, mouvement perdu, et la
+                // porte dom-truth « pas de pop en blob » échouait au gré de
+                // la course. Si la réinsertion tombe dans la fenêtre d'une
+                // assemble encore en vol, on la REJOUE au lieu de l'écraser.
+                const duree = assembleGroupChildren(inserted);
+                assembleUntilRef.current.set(n, Date.now() + duree);
               }
             }
             shownRef.current.add(n);
@@ -670,7 +691,7 @@ export function StagedFigure({
           >
             {stage}
           </span>
-          <span className="font-serif text-body-lg text-primary">
+          <span className="font-display text-body-lg text-primary">
             {frenchTypography(currentCaption)}
           </span>
         </figcaption>

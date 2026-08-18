@@ -40,7 +40,7 @@ export function PlanChaine({ onDemarrer }: { onDemarrer: () => void }) {
       <div className="flex flex-col items-start">
       {/* 1. où on va */}
       <section>
-        <h2 className="font-serif text-h2 font-semibold text-primary">
+        <h2 className="font-display text-h2 font-semibold text-primary">
           À la fin, tu sauras faire ça
         </h2>
         <div className="mt-3 rounded-lg border border-subtle bg-surface-container px-5 py-4">
@@ -57,7 +57,7 @@ export function PlanChaine({ onDemarrer }: { onDemarrer: () => void }) {
 
       {/* 2. les prérequis, dits franchement */}
       <section className="mt-9">
-        <h2 className="font-serif text-h3 font-semibold text-primary">
+        <h2 className="font-display text-h3 font-semibold text-primary">
           Ce qu’il faut déjà savoir
         </h2>
         <ul className="mt-3 grid gap-2">
@@ -95,7 +95,7 @@ export function PlanChaine({ onDemarrer }: { onDemarrer: () => void }) {
 
       {/* 3. le plan entier, sans cacher la longueur */}
       <section className="bp-large:mt-0 mt-9">
-        <h2 className="font-serif text-h3 font-semibold text-primary">
+        <h2 className="font-display text-h3 font-semibold text-primary">
           Le chemin, du début à la fin
         </h2>
         <ol className="mt-4 grid gap-0">

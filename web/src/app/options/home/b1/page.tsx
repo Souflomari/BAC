@@ -36,7 +36,7 @@ export default function HomeB1() {
   return (
     <PageShell width="content">
       <header className="mb-10">
-        <h1 className="font-serif text-display font-bold text-primary">
+        <h1 className="font-display text-display font-bold text-primary">
           Ta session
         </h1>
         <p className="mt-4 text-lead text-secondary max-w-lead">
@@ -56,7 +56,7 @@ export default function HomeB1() {
           <p className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
             En cours · {CONTINUE.subject}
           </p>
-          <h2 className="mt-2 font-serif text-h2 font-bold text-primary">
+          <h2 className="mt-2 font-display text-h2 font-bold text-primary">
             {CONTINUE.notion}
           </h2>
           <p className="mt-2 text-body text-secondary">

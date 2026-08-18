@@ -41,7 +41,7 @@ html {
 body {
   background-color: var(--color-surface-base);
   color: var(--color-text-primary);
-  font-family: var(--font-ibm-plex-sans), system-ui, sans-serif;
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   /* Prevent layout shift from scrollbar appearing/disappearing */
@@ -75,7 +75,7 @@ body {
    hover of the anchor itself; never steals the heading's resting calm. */
 .heading-anchor {
   margin-left: 0.45em;
-  font-family: var(--font-ibm-plex-sans), system-ui, sans-serif;
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 0.7em;
   font-weight: 500;
   color: var(--color-text-tertiary);
@@ -360,6 +360,17 @@ h3:hover .heading-anchor,
 /* Applied to .prose-lesson — the lesson markdown container.
    DESIGN-BIBLE §3: 65ch max, 1.5 line-height, heading hierarchy by scale+weight only.
    ADR 0022: max-width now consumes --measure-prose (canonical source). */
+/* Studio (ADR 0030 D2) : les TITRES de leçon passent à la grotesque —
+   le sérif est réservé au corps. Un titre est de l'interface (repère,
+   hiérarchie), pas de la lecture longue. */
+.prose-lesson h1,
+.prose-lesson h2,
+.prose-lesson h3,
+.prose-lesson h4 {
+  font-family: var(--font-ui), system-ui, sans-serif;
+  letter-spacing: -0.015em;
+}
+
 .prose-lesson {
   color: var(--color-text-primary);
   /* Editorial reading serif (ADR 0023) — warmth + scholarship for long study */
@@ -448,7 +459,7 @@ h3:hover .heading-anchor,
 }
 
 .prose-lesson code {
-  font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.875em;
   background-color: var(--color-accent-subtle);
   color: var(--color-text-primary);

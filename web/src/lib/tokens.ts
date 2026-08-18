@@ -41,125 +41,173 @@ export interface Theme {
  * (THEME-ARCHITECTURE.md).
  */
 export const themes: Record<"light" | "dark", Theme> = {
+  // ── STUDIO (ADR 0030, 2026-08-18) ─────────────────────────────────────
+  // Conçu en OKLCH (clarté perçue uniforme — méthode Linear), livré en hex
+  // pour que tout consommateur (contraste, SVG, scripts) lise trivialement.
+  // Recette générale : neutres à teinte 90° (cast chaud) et chroma ≤ 0.008 ;
+  // hiérarchie par paliers de CLARTÉ + bordures, pas par ombres. Chaque
+  // valeur est passée à la porte de contraste (scripts/contrast-gate.mjs) —
+  // la recette L/C/H est en commentaire pour pouvoir RE-générer.
   light: {
     selector: ":root",
     vars: {
-      // Surfaces — warm ivory/cream, never pure white (DESIGN-BIBLE §2)
-      "--color-surface-base": "#F4EFE6",
-      "--color-surface-raised": "#FBF7F0",
-      "--color-surface-overlay": "#FFFDF8",
-      // Surface-container tonal ladder (ADR 0024 — M3 tone-based surfaces)
-      "--color-surface-container-lowest": "#F1EBE0",
-      "--color-surface-container-low": "#F7F2E9",
-      "--color-surface-container": "#FBF7F0",
-      "--color-surface-container-high": "#FEFAF4",
-      "--color-surface-container-highest": "#FFFDF8",
-      // Borders — warm
-      "--color-border-subtle": "#E6DECF",
-      "--color-border-soft": "#D2C6B2",
-      // Bordure de CHAMP DE FORMULAIRE. Distincte de `border-soft` à dessein
-      // (audit Fable §3.14) : quand un trait est la SEULE délimitation d'un
-      // composant, WCAG 1.4.11 exige 3:1 — or border-soft plafonne à 1,58:1.
-      // Assombrir border-soft globalement aurait alourdi tous les filets
-      // décoratifs du site pour régler un problème qui ne concerne que les
-      // champs. Un jeton dédié règle le cas sans peser sur le reste : 3,12:1
-      // sur la surface claire la plus sombre du système.
-      "--color-border-field": "#8C8477",
-      // Text — warm near-black ink, three levels (none pure #000)
-      "--color-text-primary": "#2A2018",
-      "--color-text-secondary": "#5C5043",
-      "--color-text-tertiary": "#746856",
-      "--color-text-on-accent": "#FFFDF8",
-      // Accent — single signature hue (deep teal)
-      "--color-accent": "#1F6F6B",
-      "--color-accent-strong": "#185C58",
-      "--color-accent-light": "#5FB6AE",
-      "--color-accent-subtle": "#E4F0EE",
-      "--focus-halo": "rgba(31,111,107,.18)",
-      // Semantic — muted, warm-shifted
-      "--color-success": "#3F6B4E",
-      "--color-success-subtle": "#E8F0E6",
-      "--color-on-success": "#FFFDF8",
-      // Audit Fable §3.14 : #8A6A1E donnait 4,41:1 sur le fond clair, sous
-      // le seuil AA de 4,5 pour du petit corps. Assombri à 4,62:1.
-      "--color-warning": "#86671D",
-      "--color-warning-subtle": "#F6EEDA",
-      "--color-error": "#9A3B2E",
-      "--color-error-subtle": "#F6E6E1",
-      "--color-on-error": "#FFFDF8",
-      // Elevation — warm-tinted drops (rgba 60,45,30) with hairline ring
+      // Surfaces — toile près-blanc oklch(.975 .003 90) ; le TRAVAIL se
+      // fait sur du blanc pur (cartes, workspace). Paliers de 1-2 % de L.
+      "--color-surface-base": "#F7F7F4",
+      "--color-surface-raised": "#FFFFFF",
+      "--color-surface-overlay": "#FFFFFF",
+      // Échelle container : lowest = puits (rails, pistes), highest = blanc.
+      "--color-surface-container-lowest": "#F0EFEC",
+      "--color-surface-container-low": "#F4F3F0",
+      "--color-surface-container": "#F8F8F5",
+      "--color-surface-container-high": "#FCFBFA",
+      "--color-surface-container-highest": "#FFFFFF",
+      // Bordures — elles portent la séparation (les ombres ne font que
+      // suggérer). subtle oklch(.92), soft oklch(.87).
+      "--color-border-subtle": "#E6E4E1",
+      "--color-border-soft": "#D6D4D0",
+      // Bordure de champ : SEULE délimitation d'un composant ⇒ WCAG 1.4.11
+      // exige 3:1. oklch(.62) → 3,64:1 sur blanc, 3,39:1 sur toile.
+      "--color-border-field": "#888681",
+      // Encre — oklch(.22/.44/.53, teinte 90). 17,4:1 / 7,8:1 / 5,25:1 sur
+      // blanc ; tertiary tient 4,89:1 sur toile (petit corps autorisé).
+      "--color-text-primary": "#1D1A14",
+      "--color-text-secondary": "#55524A",
+      "--color-text-tertiary": "#6F6C63",
+      "--color-text-on-accent": "#FFFFFF",
+      // Accent produit — le sarcelle signature recalibré pour le blanc :
+      // oklch(.50 .095 185) → 5,67:1 en texte sur blanc. `light` est
+      // DÉCORATIF uniquement (jamais du texte — exempté de la porte).
+      "--color-accent": "#00746A",
+      "--color-accent-strong": "#006359",
+      "--color-accent-light": "#61B6AB",
+      "--color-accent-subtle": "#E1F5F2",
+      "--focus-halo": "rgba(0,116,106,.16)",
+      // Sémantique — même clarté que l'accent (poids identique) :
+      // success oklch(.49 .09 152), warning (.49 .095 80), error (.49 .115 28).
+      "--color-success": "#346F46",
+      "--color-success-subtle": "#E6F5E9",
+      "--color-on-success": "#FFFFFF",
+      "--color-warning": "#7C5911",
+      "--color-warning-subtle": "#FAF0DC",
+      "--color-error": "#97433A",
+      "--color-error-subtle": "#FDEDEA",
+      "--color-on-error": "#FFFFFF",
+      // Matières (ADR 0030 D3) — wayfinding, PAS actions. Cinq teintes à
+      // L/C ÉGALES oklch(.48 .095 h) : poids visuel identique, toutes
+      // ≥ 6,2:1 en texte sur blanc. h : maths 262, pc 55, svt 140,
+      // philo 335, si 210.
+      "--subject-maths": "#3F5D93",
+      "--subject-maths-subtle": "#E9F1FE",
+      "--subject-maths-on": "#FFFFFF",
+      "--subject-pc": "#864D23",
+      "--subject-pc-subtle": "#FBEDE4",
+      "--subject-pc-on": "#FFFFFF",
+      "--subject-svt": "#3F6A35",
+      "--subject-svt-subtle": "#E9F4E7",
+      "--subject-svt-on": "#FFFFFF",
+      "--subject-philo": "#7E4873",
+      "--subject-philo-subtle": "#F9EBF6",
+      "--subject-philo-on": "#FFFFFF",
+      "--subject-si": "#006B7B",
+      "--subject-si-subtle": "#E2F4F8",
+      "--subject-si-on": "#FFFFFF",
+      // Ombres — DEUX niveaux réels (1 = carte au repos, 2 = overlay) ;
+      // 3/4 conservés pour compat, compressés vers 2. La hiérarchie vient
+      // des bordures et des paliers de ton (Linear : une seule vraie ombre).
       "--elevation-0": "none",
       "--elevation-1":
-        "0 0 0 1px rgba(60,45,30,.05), 0 1px 2px -1px rgba(60,45,30,.08), 0 2px 6px 0 rgba(60,45,30,.06)",
+        "0 1px 2px 0 rgba(29,26,20,.04), 0 2px 8px -2px rgba(29,26,20,.05)",
       "--elevation-2":
-        "0 0 0 1px rgba(60,45,30,.06), 0 2px 4px -2px rgba(60,45,30,.08), 0 8px 20px -2px rgba(60,45,30,.10)",
+        "0 0 0 1px rgba(29,26,20,.04), 0 4px 12px -2px rgba(29,26,20,.07), 0 12px 32px -8px rgba(29,26,20,.09)",
       "--elevation-3":
-        "0 6px 12px -4px rgba(60,45,30,.10), 0 14px 34px -4px rgba(60,45,30,.14)",
+        "0 0 0 1px rgba(29,26,20,.05), 0 6px 16px -4px rgba(29,26,20,.09), 0 16px 40px -8px rgba(29,26,20,.11)",
       "--elevation-4":
-        "0 10px 22px -6px rgba(60,45,30,.12), 0 24px 56px -8px rgba(60,45,30,.18)",
-      // Figure palette (ADR 0023 — warm world)
-      "--figure-surface": "#FBF7F0",
-      "--figure-ink": "#2A2018",
-      "--figure-ink-soft": "#5C5043",
-      "--figure-grid": "#E6DECF",
+        "0 0 0 1px rgba(29,26,20,.06), 0 10px 24px -6px rgba(29,26,20,.11), 0 24px 56px -8px rgba(29,26,20,.16)",
+      // Figures — le repère vit sur BLANC ; encre = texte ; grille
+      // oklch(.94) à peine là ; rôles alignés sur les teintes matières
+      // (C = bleu maths, L = vert, pseudo = ambre, apériodique = violet),
+      // tous ≥ 6:1 sur blanc.
+      "--figure-surface": "#FFFFFF",
+      "--figure-ink": "#1D1A14",
+      "--figure-ink-soft": "#55524A",
+      "--figure-grid": "#ECEBE9",
       "--figure-accent": "var(--color-accent)",
-      "--figure-energy-C": "#4C6088",
-      "--figure-energy-L": "#3C7A5E",
-      "--figure-regime-periodic": "#4C6088",
-      "--figure-regime-pseudo": "#9A6B3C",
-      "--figure-regime-aperiodic": "#6E4A86",
+      "--figure-energy-C": "#3C5C98",
+      "--figure-energy-L": "#386B3A",
+      "--figure-regime-periodic": "#3C5C98",
+      "--figure-regime-pseudo": "#84582A",
+      "--figure-regime-aperiodic": "#704B89",
     },
   },
+  // Sombre — MÊME méthode, clartés inversées : toile oklch(.175), travail
+  // sur raised (.215), encre .93/.76/.67, accents remontés à L ≈ .73-.78.
+  // Toutes les paires passent la porte (pire cas : tertiary vs highest 4,8:1).
   dark: {
     selector: ".dark",
     vars: {
-      "--color-surface-base": "#1A1612",
-      "--color-surface-raised": "#231E18",
-      "--color-surface-overlay": "#2C261F",
-      "--color-surface-container-lowest": "#15110D",
-      "--color-surface-container-low": "#1E1914",
-      "--color-surface-container": "#231E18",
-      "--color-surface-container-high": "#2A241D",
-      "--color-surface-container-highest": "#322B23",
-      "--color-border-subtle": "#352E26",
-      "--color-border-soft": "#473E33",
-      "--color-border-field": "#84735F",
-      "--color-text-primary": "#EFE8DC",
-      "--color-text-secondary": "#B5A893",
-      "--color-text-tertiary": "#9A8D7C",
-      "--color-text-on-accent": "#11302C",
-      "--color-accent": "#5FB6AE",
-      "--color-accent-strong": "#7FC8C0",
-      "--color-accent-light": "#5FB6AE",
-      "--color-accent-subtle": "#16312F",
-      "--focus-halo": "rgba(95,182,174,.22)",
-      "--color-success": "#7FB890",
-      "--color-success-subtle": "#16271B",
-      "--color-on-success": "#112019",
-      "--color-warning": "#E0BE6E",
-      "--color-warning-subtle": "#2A2110",
-      "--color-error": "#E08C7E",
-      "--color-error-subtle": "#2C1611",
-      "--color-on-error": "#2C1611",
+      "--color-surface-base": "#11100F",
+      "--color-surface-raised": "#1A1917",
+      "--color-surface-overlay": "#252421",
+      "--color-surface-container-lowest": "#0B0A08",
+      "--color-surface-container-low": "#161513",
+      "--color-surface-container": "#1A1917",
+      "--color-surface-container-high": "#21201E",
+      "--color-surface-container-highest": "#2B2A27",
+      "--color-border-subtle": "#2F2E2A",
+      "--color-border-soft": "#41403C",
+      "--color-border-field": "#76746F",
+      "--color-text-primary": "#E9E8E3",
+      "--color-text-secondary": "#B3B1AB",
+      "--color-text-tertiary": "#979590",
+      "--color-text-on-accent": "#0D1B19",
+      "--color-accent": "#6DC3B8",
+      "--color-accent-strong": "#83D2C8",
+      "--color-accent-light": "#6DC3B8",
+      "--color-accent-subtle": "#172E2B",
+      "--focus-halo": "rgba(109,195,184,.22)",
+      "--color-success": "#85BA92",
+      "--color-success-subtle": "#1C2A20",
+      "--color-on-success": "#111B14",
+      "--color-warning": "#D2B373",
+      "--color-warning-subtle": "#2D2516",
+      "--color-error": "#DE958B",
+      "--color-error-subtle": "#2D1D1B",
+      "--color-on-error": "#1E1311",
+      "--subject-maths": "#8BA8DE",
+      "--subject-maths-subtle": "#212834",
+      "--subject-maths-on": "#12161E",
+      "--subject-pc": "#D29A74",
+      "--subject-pc-subtle": "#31241C",
+      "--subject-pc-on": "#1D140E",
+      "--subject-svt": "#8BB582",
+      "--subject-svt-subtle": "#212B1F",
+      "--subject-svt-on": "#121810",
+      "--subject-philo": "#CA94BD",
+      "--subject-philo-subtle": "#30232D",
+      "--subject-philo-on": "#1B1319",
+      "--subject-si": "#61B7C5",
+      "--subject-si-subtle": "#192B2E",
+      "--subject-si-on": "#0C181B",
       "--elevation-0": "none",
       "--elevation-1":
-        "0 0 0 1px rgba(255,250,240,.05), 0 1px 2px 0 rgba(0,0,0,.22), inset 0 1px 0 0 rgba(255,250,240,.05)",
+        "0 0 0 1px rgba(255,255,255,.04), 0 1px 2px 0 rgba(0,0,0,.28), 0 2px 8px -2px rgba(0,0,0,.22)",
       "--elevation-2":
-        "0 0 0 1px rgba(255,250,240,.06), 0 3px 10px 0 rgba(0,0,0,.32), inset 0 1px 0 0 rgba(255,250,240,.06)",
+        "0 0 0 1px rgba(255,255,255,.06), 0 4px 12px -2px rgba(0,0,0,.34), 0 12px 32px -8px rgba(0,0,0,.30)",
       "--elevation-3":
-        "0 0 0 1px rgba(255,250,240,.07), 0 6px 20px 0 rgba(0,0,0,.36), inset 0 1px 0 0 rgba(255,250,240,.07)",
+        "0 0 0 1px rgba(255,255,255,.07), 0 6px 16px -4px rgba(0,0,0,.38), 0 16px 40px -8px rgba(0,0,0,.32)",
       "--elevation-4":
-        "0 0 0 1px rgba(255,250,240,.09), 0 12px 32px 0 rgba(0,0,0,.44), inset 0 1px 0 0 rgba(255,250,240,.09)",
-      "--figure-surface": "#231E18",
-      "--figure-ink": "#EFE8DC",
-      "--figure-ink-soft": "#B5A893",
-      "--figure-grid": "#352E26",
+        "0 0 0 1px rgba(255,255,255,.08), 0 10px 24px -6px rgba(0,0,0,.42), 0 24px 56px -8px rgba(0,0,0,.38)",
+      "--figure-surface": "#1A1917",
+      "--figure-ink": "#E9E8E3",
+      "--figure-ink-soft": "#B3B1AB",
+      "--figure-grid": "#2A2926",
       "--figure-accent": "var(--color-accent-light)",
-      "--figure-energy-C": "#7E93BE",
-      "--figure-energy-L": "#5FA886",
-      "--figure-regime-periodic": "#7E93BE",
-      "--figure-regime-pseudo": "#C49A6C",
-      "--figure-regime-aperiodic": "#A98BD0",
+      "--figure-energy-C": "#86A5DE",
+      "--figure-energy-L": "#83B384",
+      "--figure-regime-periodic": "#86A5DE",
+      "--figure-regime-pseudo": "#CB9E72",
+      "--figure-regime-aperiodic": "#B695CF",
     },
   },
 };
@@ -206,6 +254,11 @@ export const invariant: TokenVars = {
   "--gutter": "clamp(1rem, 3vw, 4rem)",
   // Small-caps eyebrow tracking — was `tracking-eyebrow` in 13 files.
   "--tracking-eyebrow": "0.14em",
+  // Familles UI (ADR 0030 D2). Pointeurs vers les variables posées par le
+  // paquet geist sur <html> — l'indirection permet de changer de fournisseur
+  // de fonte sans retoucher un seul composant.
+  "--font-ui": "var(--font-geist-sans)",
+  "--font-mono": "var(--font-geist-mono)",
   // A11y touch target (DESIGN-BIBLE §9) — was `min-h-touch`.
   "--touch-target": "48px",
   // Z-index scale — semantic names for the three stacking tiers (were raw
@@ -258,18 +311,22 @@ export interface TypeStep {
   tracking?: string;
 }
 
+// Échelle renforcée au pivot Studio (ADR 0030 ; audit Fable §3.15 : la
+// hiérarchie reposait trop sur la graisse — h2 1.5rem était quasi au corps
+// gras). Les crans de titre montent d'un ton et serrent leur tracking ;
+// les corps ne bougent pas (la lecture était bonne).
 export const typeScale: Record<string, TypeStep> = {
   caption: { rem: 0.75, lineHeight: 1.5, tracking: "0.02em" },
   "body-sm": { rem: 0.875, lineHeight: 1.5 },
   body: { rem: 1, lineHeight: 1.5 },
   "body-lg": { rem: 1.0625, lineHeight: 1.6 },
   lead: { rem: 1.125, lineHeight: 1.55 },
-  h4: { rem: 1.125, lineHeight: 1.4, tracking: "-0.01em" },
-  h3: { rem: 1.25, lineHeight: 1.35, tracking: "-0.012em" },
-  h2: { rem: 1.5, lineHeight: 1.3, tracking: "-0.018em" },
-  h1: { rem: 1.875, lineHeight: 1.18, tracking: "-0.022em" },
-  display: { rem: 2.25, lineHeight: 1.12, tracking: "-0.03em" },
-  "display-lg": { rem: 3.5, lineHeight: 1.06, tracking: "-0.03em" },
+  h4: { rem: 1.125, lineHeight: 1.4, tracking: "-0.012em" },
+  h3: { rem: 1.3125, lineHeight: 1.35, tracking: "-0.016em" },
+  h2: { rem: 1.75, lineHeight: 1.25, tracking: "-0.022em" },
+  h1: { rem: 2.25, lineHeight: 1.12, tracking: "-0.026em" },
+  display: { rem: 3, lineHeight: 1.06, tracking: "-0.032em" },
+  "display-lg": { rem: 4, lineHeight: 1.02, tracking: "-0.036em" },
 };
 
 /** Border radius — `rounded-<key>` (DESIGN-BIBLE §4/§6, soft radii). */

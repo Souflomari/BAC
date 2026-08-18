@@ -199,7 +199,7 @@ export function AttemptFirstExercise({ exercise }: { exercise: NotionExercise })
         "bg-surface-container-high shadow-elevation-2"
       )}
     >
-      <h3 className="font-serif text-h3 font-semibold text-primary">
+      <h3 className="font-display text-h3 font-semibold text-primary">
         {exercise.title}
       </h3>
 
