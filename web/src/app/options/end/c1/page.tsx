@@ -10,7 +10,7 @@
  */
 
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "@/components/ui/Lien";
 import { SiteHeader } from "@/components/ui/SiteHeader";
 import { cn } from "@/lib/utils";
 

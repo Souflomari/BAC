@@ -27,7 +27,7 @@
 
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/components/ui/Lien";
 import { sessionFromState } from "@/lib/session";
 import { useStudentState } from "@/lib/student-state";
 import { subjectLabel, notionHref } from "@/lib/subjects";

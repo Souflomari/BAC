@@ -2729,6 +2729,81 @@ try {
     await xpage.close();
   }
 
+  // ── SWEEP R4 : la continuité et la palette (refonte Studio, phase R4) ────
+  //    Trois classes de régression attrapées pendant la construction :
+  //    1. le header perd son view-transition-name → le chrome se met à
+  //       fondre AVEC le contenu ; la continuité disparaît sans erreur ;
+  //    2. reduced-motion cesse de neutraliser ::view-transition-* — le filet
+  //       global 0,01 ms NE COUVRE PAS ces pseudo-éléments, la règle doit
+  //       être explicite ;
+  //    3. le filtre de la palette redevient flou : sondé le 2026-08-18,
+  //       « atelier » classait une notion SVT devant l'Atelier lui-même
+  //       (les noms longs de matière dans les values sont une soupe de
+  //       lettres que le scorer par sauts complète toujours).
+  {
+    console.log("\n[/] SWEEP R4 : continuité (view transitions) + palette ⌘K");
+    const rpage = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+    await rpage.goto(`${BASE}/`, { waitUntil: "networkidle" });
+
+    checks++;
+    const vtName = await rpage.evaluate(() => {
+      const h = document.querySelector("header.entete-site");
+      return h ? getComputedStyle(h).viewTransitionName : "absent";
+    });
+    if (vtName !== "entete-site") {
+      failures += fail(
+        `header sans view-transition-name (=${vtName}) — le chrome fondrait avec le contenu`
+      );
+    } else {
+      console.log("  ✓ header.entete-site porte view-transition-name: entete-site");
+    }
+
+    checks++;
+    const rmOK = await rpage.evaluate(() => {
+      for (const f of document.styleSheets) {
+        let regles;
+        try {
+          regles = f.cssRules;
+        } catch {
+          continue;
+        }
+        for (const r of regles) {
+          if (r.media && /prefers-reduced-motion/.test(r.media.mediaText)) {
+            for (const rr of r.cssRules) {
+              if (/view-transition/.test(rr.selectorText || "")) return true;
+            }
+          }
+        }
+      }
+      return false;
+    });
+    if (!rmOK) {
+      failures += fail(
+        "aucune règle reduced-motion sur ::view-transition-* — le filet global ne couvre pas ces pseudo-éléments"
+      );
+    } else {
+      console.log("  ✓ reduced-motion neutralise ::view-transition-*");
+    }
+
+    checks++;
+    await rpage.keyboard.press("Control+k");
+    await rpage.waitForSelector(".palette-commande", { timeout: 3000 });
+    await rpage.fill("[cmdk-input]", "atelier");
+    await rpage.waitForTimeout(250);
+    const premier = await rpage.evaluate(() => {
+      const it = document.querySelector("[cmdk-item]");
+      return it ? it.textContent.trim() : "aucun";
+    });
+    if (!/^Atelier/.test(premier)) {
+      failures += fail(
+        `palette : « atelier » classe « ${premier.slice(0, 50)} » en tête — le filtre a reflouté`
+      );
+    } else {
+      console.log(`  ✓ palette : « atelier » → « ${premier.slice(0, 40)} » en tête`);
+    }
+    await rpage.close();
+  }
+
   // ── SWEEP: token source parity — every CSS custom property resolves to its
   //    tokens.ts value, in BOTH themes. The single-source guarantee, asserted
   //    against the rendered DOM (not the source files). Reads getPropertyValue

@@ -1050,6 +1050,86 @@ h3:hover .heading-anchor,
   background: var(--color-surface-container-high);
 }
 
+/* ── R4 · Continuité entre routes (View Transitions API) ────────────────
+   Un clic de l'élève déclenche la navigation ; l'ancienne vue fond dans la
+   nouvelle (crossfade sobre, durées des tokens motion, jamais d'overshoot —
+   bible §5). Firefox n'implémente pas l'API : bascule nette, comme avant —
+   dégradation propre, aucun polyfill. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--duration-standard);
+  animation-timing-function: var(--ease-between);
+}
+/* Le chrome ne participe pas au fondu : le header porte son propre nom de
+   transition, ses instantanés ne bougent pas d'un pixel entre deux routes
+   (il est identique partout par construction — gabarit global, §3.4). Le
+   contenu fond SOUS un chrome posé : c'est ça, la continuité. */
+.entete-site {
+  view-transition-name: entete-site;
+}
+/* Le filet global 0,01 ms ne voit pas les pseudo-éléments de l'API — le
+   débranchement doit être explicite. */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-image-pair(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* ── R4 · L'entrée des surfaces ouvertes PAR l'élève ────────────────────
+   Panneau Notions, menu compact, palette ⌘K : l'ouverture est un geste,
+   jamais un chargement — le stagger est donc permis ICI et seulement ici
+   (le mount de page reste sans animation, cœur calme §0).
+
+   Animation et non transition : Radix/cmdk montent le contenu déjà à
+   l'état ouvert — une transition n'a pas de changement d'état à jouer,
+   une animation se joue au mount. `both` est porteur : pendant le délai
+   des colonnes, l'élément tient son état `from` au lieu d'apparaître
+   plein puis de rejouer. */
+.panneau-entree[data-state="open"] {
+  animation: panneau-entree var(--duration-micro) var(--ease-enter) both;
+}
+.panneau-entree[data-state="open"] .panneau-colonne {
+  animation: panneau-colonne var(--duration-standard) var(--ease-enter) both;
+}
+.panneau-entree[data-state="open"] .panneau-colonne:nth-child(2) { animation-delay: 30ms; }
+.panneau-entree[data-state="open"] .panneau-colonne:nth-child(3) { animation-delay: 60ms; }
+.panneau-entree[data-state="open"] .panneau-colonne:nth-child(4) { animation-delay: 90ms; }
+.panneau-entree[data-state="open"] .panneau-colonne:nth-child(5) { animation-delay: 120ms; }
+@keyframes panneau-entree {
+  from { opacity: 0; transform: translateY(-4px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes panneau-colonne {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+/* La palette : le voile fond (micro), la carte se pose (standard). */
+[cmdk-overlay] {
+  animation: palette-voile var(--duration-micro) var(--ease-enter) both;
+}
+.palette-commande {
+  animation: palette-carte var(--duration-standard) var(--ease-emphasized) both;
+}
+@keyframes palette-voile {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes palette-carte {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .panneau-entree[data-state="open"],
+  .panneau-entree[data-state="open"] .panneau-colonne,
+  [cmdk-overlay],
+  .palette-commande {
+    animation: none;
+  }
+}
+
 /* ── Mafs : rebranché sur les jetons du produit ─────────────────────────
    Mafs arrive en thème sombre (fond noir). Un cadre noir au milieu d'une
    page claire est exactement le contraire de la cible « fond blanc ». On

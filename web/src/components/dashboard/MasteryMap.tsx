@@ -40,7 +40,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { Link } from "@/components/ui/Lien";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useStudentState } from "@/lib/student-state";
 import { subjectLabel, notionHref } from "@/lib/subjects";

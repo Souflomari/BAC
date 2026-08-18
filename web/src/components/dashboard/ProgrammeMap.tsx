@@ -23,7 +23,7 @@
  * change pas, seule la présentation change.
  */
 
-import Link from "next/link";
+import { Link } from "@/components/ui/Lien";
 import { cn } from "@/lib/utils";
 import { SUBJECT_ORDER, subjectHref, subjectLabel, notionHref } from "@/lib/subjects";
 import {

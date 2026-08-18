@@ -12,7 +12,7 @@
  * Periphery, not core (DESIGN-BIBLE §0): quiet, no engagement mechanics.
  */
 
-import Link from "next/link";
+import { Link } from "@/components/ui/Lien";
 import { cn } from "@/lib/utils";
 
 export function SiteFooter({ container }: { container: string }) {

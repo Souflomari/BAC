@@ -18,7 +18,9 @@
  */
 
 import { useCallback, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+// R4 : le router de next-view-transitions — la navigation depuis la palette
+// fond comme celle des liens, même crossfade, même dégradation (Firefox).
+import { useTransitionRouter } from "next-view-transitions";
 import { Command } from "cmdk";
 import { subjectLabel, notionHref, subjectHref } from "@/lib/subjects";
 import { Icon } from "./Icon";
@@ -32,9 +34,36 @@ export interface NotionPourPalette {
 
 const ORDRE_MATIERES = ["maths", "pc", "svt", "philo", "si"];
 
+/** Accents pliés, casse pliée — « genetique » trouve « génétique ». */
+function normalise(s: string): string {
+  return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+
+/**
+ * Le filtre maison — substring STRICTE, jamais de sauts de lettres.
+ *
+ * Le scorer flou de cmdk assemble n'importe quelle requête en piochant des
+ * lettres éparses ; nos values portent le nom long de la matière
+ * (« …Sciences de la Vie et de la Terre »), ce qui suffit à compléter
+ * presque tout — sondé : « atelier » classait une notion SVT devant l'Atelier
+ * lui-même. Ici : chaque mot de la requête doit apparaître d'un bloc.
+ * Prévisible, honnête, insensible aux accents.
+ */
+function filtreNet(value: string, search: string): number {
+  const v = normalise(value);
+  const q = normalise(search).trim();
+  if (!q) return 1;
+  const mots = q.split(/\s+/);
+  if (!mots.every((m) => v.includes(m))) return 0;
+  const premier = mots[0].replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  if (new RegExp(`^${premier}`).test(v)) return 3; // préfixe
+  if (new RegExp(`[\\s-]${premier}`).test(v)) return 2; // début de mot
+  return 1; // au milieu d'un mot
+}
+
 export function CommandPalette({ notions }: { notions: NotionPourPalette[] }) {
   const [ouverte, setOuverte] = useState(false);
-  const router = useRouter();
+  const router = useTransitionRouter();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -74,6 +103,7 @@ export function CommandPalette({ notions }: { notions: NotionPourPalette[] }) {
       onOpenChange={setOuverte}
       label="Rechercher une notion"
       className="palette-commande"
+      filter={filtreNet}
     >
       <div className="flex items-center gap-2 border-b border-subtle px-4">
         <Icon name="chevron-right" size={14} className="text-tertiary" />

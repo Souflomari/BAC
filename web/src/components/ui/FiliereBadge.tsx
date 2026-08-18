@@ -16,7 +16,7 @@
 
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/components/ui/Lien";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { getFiliere, FILIERES } from "@/lib/curriculum";
 import { useFiliere } from "@/lib/useFiliere";

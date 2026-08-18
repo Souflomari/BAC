@@ -7,7 +7,7 @@
  * progress. A stub subject (0 chapters) says "programme à venir".
  */
 
-import Link from "next/link";
+import { Link } from "@/components/ui/Lien";
 import { Cover } from "@/components/covers/Cover";
 import { subjectHref } from "@/lib/subjects";
 import { cn } from "@/lib/utils";

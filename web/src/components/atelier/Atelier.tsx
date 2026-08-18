@@ -25,7 +25,7 @@
  */
 
 import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
+import { Link } from "@/components/ui/Lien";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import { FigurePente } from "./Figures";

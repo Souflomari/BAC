@@ -25,7 +25,7 @@
  */
 
 import { useCallback, useEffect, useState } from "react";
-import Link from "next/link";
+import { Link } from "@/components/ui/Lien";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { cn } from "@/lib/utils";
 import { frenchTypography } from "@/lib/frenchTypography";
@@ -141,9 +141,10 @@ function PanneauNotions({
             className={cn(
               "z-overlay w-[600px] rounded-xl border border-subtle bg-surface-overlay p-2",
               "shadow-elevation-3",
-              "transition-[opacity,transform] duration-micro ease-enter",
-              "data-[state=open]:opacity-100 data-[state=closed]:opacity-0",
-              "data-[state=open]:scale-100 data-[state=closed]:scale-95"
+              // `panneau-entree` (globals.css) : Radix MONTE le contenu déjà
+              // à l'état open — une transition ne se joue jamais ; seule une
+              // ANIMATION au mount respire. Ouverture = geste de l'élève.
+              "panneau-entree"
             )}
           >
             <div className="grid grid-cols-2 gap-1">
@@ -157,7 +158,7 @@ function PanneauNotions({
                 const total = sujet ? subjectChapterCount(sujet) : liste.length;
                 const dispo = sujet ? subjectAvailableCount(sujet, construits) : liste.length;
                 return (
-                  <div key={id} className="rounded-lg p-2">
+                  <div key={id} className="panneau-colonne rounded-lg p-2">
                     <DropdownMenu.Item asChild>
                       <Link
                         href={subjectHref(id)}
@@ -259,9 +260,8 @@ function MenuCompact({
             className={cn(
               "z-overlay min-w-[250px] rounded-xl border border-subtle bg-surface-overlay p-1.5",
               "shadow-elevation-3",
-              "transition-[opacity,transform] duration-micro ease-enter",
-              "data-[state=open]:opacity-100 data-[state=closed]:opacity-0",
-              "data-[state=open]:scale-100 data-[state=closed]:scale-95"
+              // Même entrée animée que le grand panneau (voir plus haut).
+              "panneau-entree"
             )}
           >
             <DropdownMenu.Item asChild>
@@ -373,7 +373,9 @@ export function SiteHeader({ className, container, notions = [] }: SiteHeaderPro
   return (
     <header
       className={cn(
-        "sticky top-0 z-header w-full",
+        // `entete-site` (globals.css) : view-transition-name — le chrome
+        // reste posé pendant que le CONTENU fond d'une route à l'autre (R4).
+        "entete-site sticky top-0 z-header w-full",
         "transition-[box-shadow,background-color,border-color] duration-standard ease-between",
         scrolled
           ? ["header-glass", "shadow-elevation-1", "border-b border-subtle"]

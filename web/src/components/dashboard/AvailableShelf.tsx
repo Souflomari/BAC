@@ -27,7 +27,7 @@
 
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/components/ui/Lien";
 import * as Accordion from "@radix-ui/react-accordion";
 import { subjectLabel, notionHref } from "@/lib/subjects";
 import { isNotionInFiliere } from "@/lib/curriculum";

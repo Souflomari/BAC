@@ -8,7 +8,7 @@
  * July-2026 audit F6). Chevrons between, tertiary color.
  */
 
-import Link from "next/link";
+import { Link } from "@/components/ui/Lien";
 import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 

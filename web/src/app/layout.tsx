@@ -5,6 +5,12 @@ import { Source_Serif_4 } from "next/font/google";
 // prédate Geist — « Unknown font », constaté au build, risque n°1 du plan.
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+// R4 (continuité) : la View Transitions API via next-view-transitions — la
+// seconde dépendance budgétée du plan Studio. Navigation déclenchée par
+// l'élève uniquement (un clic), jamais d'autoplay ; Firefox ignore l'API et
+// retombe sur la bascule nette d'avant — dégradation propre. Les durées et
+// courbes vivent dans globals.css et lisent les tokens motion.
+import { ViewTransitions } from "next-view-transitions";
 import { AuthProvider } from "@/lib/auth/provider";
 import "./globals.css";
 
@@ -94,6 +100,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    <ViewTransitions>
     <html
       lang="fr"
       // The "dark" class is set pre-paint by THEME_BOOT (first child of
@@ -120,5 +127,6 @@ export default function RootLayout({
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
+    </ViewTransitions>
   );
 }

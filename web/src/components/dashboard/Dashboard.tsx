@@ -14,7 +14,7 @@
 
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/components/ui/Lien";
 import { getFiliere } from "@/lib/curriculum";
 import { useFiliere } from "@/lib/useFiliere";
 import { Icon } from "@/components/ui/Icon";

@@ -21,7 +21,7 @@
  * renders a progressbar.
  */
 
-import Link from "next/link";
+import { Link } from "@/components/ui/Lien";
 import type { NotionMeta } from "@/lib/content";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Icon } from "@/components/ui/Icon";

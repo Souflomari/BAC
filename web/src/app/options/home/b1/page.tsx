@@ -11,7 +11,7 @@
  */
 
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "@/components/ui/Lien";
 import { PageShell } from "@/components/ui/PageShell";
 import { listNotions } from "@/lib/content";
 

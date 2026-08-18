@@ -22,7 +22,7 @@
 
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/components/ui/Lien";
 import { notionHref } from "@/lib/subjects";
 import { chapterInFiliere, type FiliereId } from "@/lib/curriculum";
 import { useFiliere } from "@/lib/useFiliere";
