@@ -1,3 +1,11 @@
+> **v2 EN COURS (2026-08-18, ADR 0030 — pivot « Studio »).** Les sections
+> IDENTITÉ de ce document (palette papier chaud §2, sérif éditorial en
+> titres §3) sont remplacées par `docs/product/REFONTE-STUDIO.md` et ne
+> font plus autorité. Les sections DISCIPLINE — cœur calme §0, motion §5,
+> une-idée-par-écran §7, périphérie §8, a11y §9, test du regard §10,
+> honest-state, rendered/deployed-truth §12-13 — restent la loi, sans
+> changement. La v2 complète sera écrite en phase R5 de la refonte.
+
 # The Design Bible
 
 > The canonical design system for the product — the web app (the principal

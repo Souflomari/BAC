@@ -2,7 +2,7 @@
 
 **Date :** 2026-08-17 · **Statut :** décisions verrouillées par l'owner
 (quatre questions posées et répondues le jour même) · **Autorité :** ce
-document pilote la refonte ; il sera adossé à l'ADR 0029 (pivot
+document pilote la refonte ; il sera adossé à l'ADR 0030 (pivot
 d'identité, remplace l'identité « warm editorial » de l'ADR 0023) à la
 première étape d'exécution.
 
@@ -129,7 +129,7 @@ d'événements est no-op hors auth live ; le modèle d'apprenant
 
 ## 6 · Les phases
 
-**R0 · Actes (Fable, court).** ADR 0029 « pivot Studio » (remplace
+**R0 · Actes (Fable, court).** ADR 0030 « pivot Studio » (remplace
 l'identité de l'ADR 0023, conserve ses non-négociables : cœur calme,
 honest-state, reduced-motion, 65ch de prose) ; verser le journal du plan
 précédent dans `docs/archive/` ; DESIGN-BIBLE marquée « v2 en cours ».
