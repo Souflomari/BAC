@@ -1,0 +1,240 @@
+# bank.yaml — la banque « S'entraîner » de noyaux-masse-energie (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, exercises.yaml), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Chaque entrée est une transcription FIDÈLE d'une section
+# « Statut: vérifié » de docs/sujets/pc/noyaux-masse-energie.md. Raisonnement
+# rédigé à la voix experte de la maison sur 100 % des questions, en citant les
+# rungs R1 à R4 de la leçon (lesson.md) là où c'est naturel ; barème transcrit
+# tel quel dans les énoncés (tag « (x,xx pt) » ajouté) ; conventions KaTeX
+# (block scalars pour la prose, KaTeX brut entre apostrophes simples dans
+# steps[].math, notes de steps[] en ASCII pur — sans accent ni backslash).
+#
+# NOTE ÉDITORIALE 1 (pour la revue — recoupement avec le sommet de leçon) :
+# la section « 2020 — session normale — Exercice III » (désintégration du
+# polonium 210) est le SEUL sujet « vérifié » de ce fichier qui couvre le même
+# noyau que le sommet r-bac de exercises.yaml (marqueur [[exercise:r-bac]] à
+# R5 « Exercice de type bac »). bk-2020-n-x1 ci-dessous reprend, restreint au
+# même volet masse-énergie que r-bac (équation de désintégration α, énergie
+# libérée lue sur le diagramme, défaut de masse en kg — le volet décroissance,
+# λ et activité, hors scope de cette notion, relève de
+# decroissance-radioactive), les mêmes questions et les mêmes valeurs
+# numériques (A = 206, Z = 82 ; E_lib = 5,4 MeV ; Δm ≈ 2,93×10⁻²⁷ kg), avec un
+# raisonnement rédigé à nouveau (pas une copie de exercises.yaml). Il figure
+# ici pour que la banque soit le corpus complet des sujets vérifiés de la
+# notion (BANK-SPEC §1) — recoupement assumé, même disposition que dipole-rl
+# bk-2020-n-x4 (recoupement avec r-bac), chute-mouvements-plans bk-2020-n-x5,
+# reactions-acido-basiques bk-2021-n-x1 et rc-charge bk-2019-n-x3. À
+# l'arbitrage de l'owner si l'on préfère écarter cette entrée de la banque
+# pour éviter le recoupement sur la même page.
+#
+# NOTE ÉDITORIALE 2 (pour la revue — chevauchement thématique, PAS un
+# recoupement de sommet) : bk-2023-n-x1 (fusion tritium-deutérium) porte sur
+# EXACTEMENT la même réaction que l'exemple-phare du R4 de lesson.md
+# ($^{2}_{1}\text{H} + \ ^{3}_{1}\text{H} \rightarrow\ ^{4}_{2}\text{He} +
+# \ ^{1}_{0}\text{n}$), mais l'énoncé du bac fournit un tableau d'énergies de
+# liaison plutôt que les masses des noyaux — la démarche numérique est donc
+# différente (voir la SCOPE NOTE ci-dessous), et le résultat, exact à partir
+# de ces données, diffère légèrement de la valeur arrondie du R4 (17,455 MeV
+# ici contre ≈17,6 MeV dans la leçon — les deux sont la même valeur physique
+# canonique, à l'arrondi près). Ce n'est PAS un sommet de exercises.yaml, donc
+# pas soumis au même arbitrage que la note 1 ; signalé pour information.
+#
+# SCOPE NOTE (technique mobilisée au-delà de ce que la leçon montre
+# explicitement pas à pas — pontée au point d'usage dans le raisonnement de la
+# question concernée, PAS corrigée ni simplifiée ici) :
+#   - bk-2023-n-x1, q2 (2-2) : l'énoncé donne un tableau d'énergies de liaison
+#     ($E_\ell$) pour les trois noyaux, pas leurs masses. Le R4 calcule
+#     l'énergie libérée à partir de $\Delta m = m_{produits} - m_{réactifs}$
+#     puis $|E| = |\Delta m|c^2$, en passant par les masses des noyaux — la
+#     leçon ne montre jamais explicitement le raccourci qui permet d'obtenir
+#     directement $E_{lib}$ comme différence d'énergies de liaison
+#     ($E_{lib} = E_\ell(\text{produit}) - \sum E_\ell(\text{réactifs})$, le
+#     neutron libre n'ayant pas d'énergie de liaison). Ce raccourci est un
+#     corollaire direct du pont $E_\ell = \Delta m\,c^2$ du R2 combiné à la
+#     méthode du R4 (les nucléons se conservant de part et d'autre, seule la
+#     différence des défauts de masse — donc des énergies de liaison — survit
+#     à la soustraction), mais il n'est jamais dérivé pas à pas dans
+#     lesson.md. Ponté au point d'usage dans le raisonnement de la question.
+
+notion: pc/noyaux-masse-energie
+
+entries:
+  # ── bk-2020-n-x1 — 2020 N, Exercice III (volet masse-énergie) : désintégration du polonium 210 ──
+  # Même sujet, même volet, que le sommet de leçon r-bac (exercises.yaml). Voir
+  # la note éditoriale 1 en tête pour le recoupement assumé.
+  - id: bk-2020-n-x1
+    title: "Désintégration du polonium 210 : équation, énergie libérée et défaut de masse"
+    source:
+      year: 2020
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice III — volet masse-énergie (désintégration du polonium 210)"
+    bareme_total: 1.5
+    duration_min: 9
+    sourcing:
+      status: sourced
+      note: >-
+        2020 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, https://www.alloschool.com/element/109742
+        (Exercice III, volet masse-énergie — barème 1,5 pt sur les 2,5 pt de
+        l'exercice complet ; le volet décroissance — demi-vie, constante λ,
+        activité — est hors scope de cette notion et relève de
+        decroissance-radioactive). Transcription vérifiée : re-fetch
+        indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-11 ;
+        docs/sujets/pc/noyaux-masse-energie.md, statut « vérifié »).
+        Recoupement assumé avec le sommet de leçon : ce même sujet, restreint
+        au même volet masse-énergie, est déjà le sommet r-bac de
+        exercises.yaml (marqueur [[exercise:r-bac]] à R5 « Exercice de type
+        bac ») — mêmes questions, mêmes valeurs numériques (A = 206, Z = 82 ;
+        E_lib = 5,4 MeV ; Δm ≈ 2,93×10⁻²⁷ kg) ; raisonnement rédigé de nouveau
+        ici (voix maison), pas copié de exercises.yaml — même disposition que
+        dipole-rl bk-2020-n-x4 / r-bac. À l'arbitrage de l'owner si l'on
+        préfère écarter cette entrée de la banque pour éviter le recoupement
+        sur la même page.
+    intro: |-
+      **Désintégration du polonium 210 (examen national, session normale 2020, Exercice III).**
+
+      Le polonium, de symbole $\text{Po}$ et de numéro atomique $Z = 84$, est un métal radioactif rare découvert en 1898 par Pierre Curie. Le polonium 210 est le seul isotope que l'on trouve dans la nature. La désintégration d'un noyau de polonium 210 produit un noyau de plomb $^{A}_{Z}\text{Pb}$ avec émission d'une particule $\alpha$.
+
+      **Données :** $1\ \text{u} = 931{,}41\ \text{MeV}/c^2$ ; $1\ \text{u} = 1{,}66\times10^{-27}\ \text{kg}$.
+
+      **Diagramme d'énergie fourni par l'énoncé** (niveaux $E$, en MeV, du plus haut au plus bas) :
+      - $E = 1{,}971820\times10^{5}\ \text{MeV}$ : le système des nucléons **séparés**, soit $126\ \text{neutrons} + 84\ \text{protons}$ ;
+      - $E = 1{,}955372\times10^{5}\ \text{MeV}$ : le noyau $^{210}_{84}\text{Po}$ ;
+      - $E = 1{,}955318\times10^{5}\ \text{MeV}$ : les produits de désintégration $^{A}_{Z}\text{Pb} + \ ^{4}_{2}\text{He}$.
+
+      *(Volet masse-énergie de l'exercice uniquement — le volet décroissance du même sujet, demi-vie et constante $\lambda$, relève de la notion decroissance-radioactive.)*
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** **1.** Écrire l'équation de désintégration du polonium 210 en déterminant $A$ et $Z$.
+        reasoning: |-
+          Une désintégration nucléaire conserve séparément deux grandeurs — le nombre de nucléons $A$ et le nombre de charge $Z$ — les deux lois vues au chapitre précédent sur la radioactivité. La particule $\alpha$ émise n'est autre qu'un noyau d'hélium $^{4}_{2}\text{He}$ : elle emporte donc $4$ nucléons et $2$ charges avec elle. On pose l'équation avec $A$ et $Z$ comme inconnues du noyau de plomb, puis on résout les deux bilans l'un après l'autre : celui des nucléons d'abord, celui des charges ensuite. Les deux doivent être satisfaits en même temps, sinon le noyau fils identifié serait faux.
+        steps:
+          - math: '^{210}_{84}\text{Po} \longrightarrow\ ^{A}_{Z}\text{Pb} + \ ^{4}_{2}\text{He}'
+            note: "Equation posee avec A et Z inconnus ; la particule alpha est le noyau d'helium 4/2 He."
+          - math: 'A + 4 = 210 \implies A = 206'
+            note: "Bilan des nucleons (conservation de A)."
+          - math: 'Z + 2 = 84 \implies Z = 82'
+            note: "Bilan des charges (conservation de Z)."
+          - math: '\boxed{^{210}_{84}\text{Po} \longrightarrow\ ^{206}_{82}\text{Pb} + \ ^{4}_{2}\text{He}}'
+            note: "Noyau fils identifie : le plomb 206."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** **2.1.** À l'aide du diagramme d'énergie représenté ci-contre, calculer l'énergie libérée $E_{lib}$ lors de la désintégration d'un noyau de polonium 210.
+        reasoning: |-
+          Sur ce diagramme, plus un niveau est bas, plus le système correspondant est lié. La désintégration fait passer le système du niveau du noyau de polonium au niveau, plus bas, des produits de désintégration : cette chute d'énergie est exactement l'énergie libérée, et elle se lit directement comme la différence entre ces deux niveaux, sans jamais repasser par les masses. Le troisième niveau — les nucléons totalement séparés — ne sert pas ici : c'est la référence pour l'énergie de liaison du noyau, question suivante, pas pour l'énergie de la désintégration elle-même.
+        steps:
+          - math: 'E_{lib} = E(^{210}_{84}\text{Po}) - E(^{206}_{82}\text{Pb} + \ ^{4}_{2}\text{He})'
+            note: "Ecart entre le niveau du noyau pere et le niveau, plus bas, des produits."
+          - math: 'E_{lib} = 1{,}955372\times10^{5} - 1{,}955318\times10^{5}'
+            note: "Lecture directe des deux niveaux sur le diagramme, en MeV."
+          - math: '\boxed{E_{lib} = 5{,}4\ \text{MeV}}'
+            note: "Energie liberee par une desintegration de polonium 210."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** **2.2.** Calculer le défaut de masse $\Delta m$ du noyau de polonium 210, exprimé en kilogramme (kg).
+        reasoning: |-
+          L'énergie de liaison du polonium, elle, se lit entre le niveau le plus haut du diagramme — les $126$ neutrons et $84$ protons totalement séparés — et le niveau du noyau assemblé : c'est l'énergie qu'il faudrait fournir pour tout dissocier. $E_l$ et le défaut de masse mesurent la même chose, reliés par $E_l = \Delta m\,c^2$ (R2) : on obtient $\Delta m$ en u en divisant $E_l$ par le facteur $931{,}41$ donné dans l'énoncé, puis on convertit ces u en kilogrammes avec le second facteur donné, $1\ \text{u} = 1{,}66\times10^{-27}\ \text{kg}$ — deux conversions successives l'une après l'autre, jamais un mélange direct des unités.
+        steps:
+          - math: 'E_l(\text{Po}) = E(126\,\text{n} + 84\,\text{p}) - E(^{210}_{84}\text{Po})'
+            note: "Energie de liaison = ecart entre le sommet (nucleons separes) et le niveau du noyau (R2)."
+          - math: 'E_l(\text{Po}) = 1{,}971820\times10^{5} - 1{,}955372\times10^{5} = 1644{,}8\ \text{MeV}'
+            note: "Lecture des deux niveaux sur le diagramme : ecart de 0,016448x10^5 MeV."
+          - math: '\Delta m = \dfrac{E_l}{c^2} = \dfrac{1644{,}8}{931{,}41}\ \text{u} \approx 1{,}766\ \text{u}'
+            note: "Conversion MeV vers u avec le facteur donne par l'enonce (1 u = 931,41 MeV/c^2)."
+          - math: '\boxed{\Delta m \approx 1{,}766\times1{,}66\times10^{-27} \approx 2{,}93\times10^{-27}\ \text{kg}}'
+            note: "Conversion u vers kg avec le second facteur donne (1 u = 1,66e-27 kg)."
+
+  # ── bk-2023-n-x1 — 2023 N, Exercice 2, §2 : fusion du tritium et du deutérium ──
+  # Aucun recoupement avec r-bac / r-variation (noyaux differents) ; voir la
+  # note editoriale 2 en tete pour le chevauchement thematique avec l'exemple
+  # du R4, et la SCOPE NOTE pour la technique (tableau d'energies de liaison)
+  # mobilisee au-dela de ce que la lecon derive pas a pas.
+  - id: bk-2023-n-x1
+    title: "Fusion du deutérium et du tritium : énergie de liaison, stabilité comparée et énergie libérée"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 2 — §2 : Réaction de fusion du tritium et du deutérium"
+    bareme_total: 1.0
+    duration_min: 6
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, https://www.alloschool.com/element/142476
+        (Exercice 2, §2 — réaction de fusion du tritium et du deutérium ;
+        barème du §2 = 1,0 pt sur les 2,5 pt de l'exercice complet, dont le
+        §1 — désintégration β⁻ du tritium, demi-vie, activité — relève de
+        decroissance-radioactive, qui partage le même tableau des énergies de
+        liaison). Transcription vérifiée en une passe de vérification
+        adversariale indépendante (agent-vérificateur-adversarial,
+        2026-08-07), diff caractère par caractère OK, y compris la coquille
+        du scan « … pour le dissocier en ces nucléons … » (pour « ses »),
+        reproduite ici telle quelle (docs/sujets/pc/noyaux-masse-energie.md,
+        statut « vérifié »). Physique re-dérivée indépendamment et
+        cohérente : $E_{lib} = E_\ell(^4\text{He}) -
+        [E_\ell(^2\text{H})+E_\ell(^3\text{H})] = 28{,}296-(2{,}366+8{,}475)
+        = 17{,}455\ \text{MeV}$, la valeur canonique de la fusion D-T
+        ($\simeq 17{,}6$ MeV) ; a- vrai (définition même de l'énergie de
+        liaison) ; b- vrai ($E_\ell/A$ : $2{,}83$ MeV/nucléon pour le tritium
+        contre $1{,}18$ pour le deutérium).
+    intro: |-
+      **Réaction de fusion du tritium et du deutérium (examen national, session normale 2023, Exercice 2 — §2).**
+
+      La réaction de fusion entre un noyau de deutérium et un noyau de tritium conduit à la formation d'un noyau d'hélium $^{4}_{2}\text{He}$ et s'accompagne de l'émission d'un neutron.
+
+      **Données — énergies de liaison de quelques noyaux (tableau partagé avec le §1 de l'exercice) :**
+
+      | Noyau | $^{2}_{1}\text{H}$ | $^{3}_{1}\text{H}$ | $^{4}_{2}\text{He}$ |
+      |---|:---:|:---:|:---:|
+      | $E_\ell\ (\text{MeV})$ | $2{,}366$ | $8{,}475$ | $28{,}296$ |
+
+      *(Aucune figure dans ce §2 ; énoncé textuel.)*
+    questions:
+      - id: q1a
+        part: "2- Réaction de fusion du tritium et du deutérium : vrai ou faux justifiés"
+        stem: |-
+          **(0,25 pt)** **2-1.** Pour chaque affirmation suivante, répondre par vrai ou faux en justifiant. **a-** L'énergie qu'il faut fournir à un noyau de tritium au repos pour le dissocier en ces nucléons au repos est de $8{,}475\ \text{MeV}$.
+        reasoning: |-
+          C'est très exactement la définition du R2 : l'énergie de liaison $E_l$ d'un noyau est l'énergie qu'il faut fournir depuis l'extérieur pour le dissocier complètement en ses nucléons séparés et immobiles — jamais une énergie que le noyau contiendrait et pourrait relâcher tout seul. Le tableau fourni par l'énoncé donne directement $E_\ell(^{3}_{1}\text{H}) = 8{,}475\ \text{MeV}$ : l'affirmation ne fait que reformuler cette valeur en mots. Elle est donc vraie, sans le moindre calcul supplémentaire.
+        steps:
+          - math: 'E_\ell(^{3}_{1}\text{H}) = 8{,}475\ \text{MeV}'
+            note: "Valeur lue directement dans le tableau des energies de liaison fourni par l'enonce."
+          - math: '\boxed{\text{Vrai}}'
+            note: "L'affirmation reformule exactement la definition de l'energie de liaison (R2)."
+      - id: q1b
+        stem: |-
+          **(0,25 pt)** **b-** Le tritium est plus stable que le deutérium.
+        reasoning: |-
+          $E_l$ seule ne compare rien entre deux noyaux de tailles différentes (R3) : le tritium a $3$ nucléons, le deutérium seulement $2$, donc comparer $8{,}475$ à $2{,}366$ directement ne dirait rien de leur stabilité relative — il faut diviser chacune par son propre $A$ pour obtenir l'énergie de liaison par nucléon, la seule grandeur qui compare honnêtement. Une fois cette division faite, le tritium l'emporte nettement sur le deutérium : l'affirmation est vraie.
+        steps:
+          - math: '\dfrac{E_\ell(^{3}_{1}\text{H})}{A} = \dfrac{8{,}475}{3} \approx 2{,}83\ \text{MeV/nucleon}'
+            note: "Energie de liaison PAR NUCLEON du tritium (R3) ; A = 3."
+          - math: '\dfrac{E_\ell(^{2}_{1}\text{H})}{A} = \dfrac{2{,}366}{2} \approx 1{,}18\ \text{MeV/nucleon}'
+            note: "Energie de liaison par nucleon du deuterium ; A = 2."
+          - math: '2{,}83 > 1{,}18'
+            note: "Le tritium est mieux lie par nucleon que le deuterium."
+          - math: '\boxed{\text{Vrai}}'
+            note: "Plus E_l/A est grand, plus le noyau est stable (R3) : le tritium est plus stable que le deuterium."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** **2-2.** Calculer, en unité MeV, l'énergie libérée $E_{lib} = |\Delta E|$ par la réaction de fusion d'un noyau de tritium et d'un noyau de deutérium.
+        reasoning: |-
+          Au R4, on calcule l'énergie libérée par une réaction à partir de la variation de masse totale, $\Delta m = m_{\text{produits}} - m_{\text{réactifs}}$, puis $|E| = |\Delta m|\,c^2$ — exactement la réaction $^{2}_{1}\text{H} + \ ^{3}_{1}\text{H} \rightarrow\ ^{4}_{2}\text{He} + \ ^{1}_{0}\text{n}$ étudiée au R4 lui-même. Ici, l'énoncé ne donne pas les masses des noyaux mais leurs énergies de liaison : on passe par le pont $E_l = \Delta m\,c^2$ du R2, appliqué à chaque noyau plutôt qu'au bilan global — un neutron libre, non lié, n'a pas d'énergie de liaison. La masse de chaque noyau composé « manque » exactement de $E_l/c^2$ par rapport à ses nucléons séparés ; en sommant ce manque des deux côtés de la réaction, les nucléons eux-mêmes se compensent exactement (leur nombre total est conservé), et il ne reste que la différence des énergies de liaison. L'énergie libérée est donc simplement l'énergie de liaison du noyau formé, moins la somme des énergies de liaison des noyaux consommés — sans jamais reconvertir en masses.
+        steps:
+          - math: '^{2}_{1}\text{H} + \ ^{3}_{1}\text{H} \longrightarrow\ ^{4}_{2}\text{He} + \ ^{1}_{0}\text{n}'
+            note: "Reaction de fusion (A et Z conserves : 2+3=4+1 ; 1+1=2+0) - la meme reaction qu'au R4."
+          - math: 'E_{lib} = E_\ell(^{4}_{2}\text{He}) - \left[E_\ell(^{2}_{1}\text{H}) + E_\ell(^{3}_{1}\text{H})\right]'
+            note: "Pont E_l -> Delta m (R2) applique aux deux membres de la reaction (R4) ; le neutron libre n'a pas d'energie de liaison."
+          - math: 'E_{lib} = 28{,}296 - (2{,}366+8{,}475) = 28{,}296 - 10{,}841'
+            note: "Lecture des trois energies de liaison dans le tableau fourni par l'enonce."
+          - math: '\boxed{E_{lib} \approx 17{,}455\ \text{MeV}}'
+            note: "Coherent avec la valeur canonique de la fusion D-T (environ 17,6 MeV, meme reaction qu'au R4)."
