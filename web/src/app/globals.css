@@ -590,102 +590,11 @@ h3:hover .heading-anchor,
   font-family: var(--font-reading-serif), Georgia, "Times New Roman", serif;
 }
 
-/* ── Dashboard grid (DASHBOARD-SPEC §4) — the ONE surface allowed a
-   multi-column composition (bible §0/§8: engagement lives in the
-   periphery; DASHBOARD-SPEC §0: the dashboard is the sole exception to
-   the calm core's single-column rule).
-
-   Base (mobile, and everything below 1280px): one column, DOM order —
-   primary (SessionCard + NextUp) → mastery (MasteryMap) → shelf
-   (AvailableShelf) → subjects (SubjectProgress). MilestoneSlot renders
-   null and is never part of the grid.
-
-   1280: two columns — primary 2fr (left), mastery 1fr (right); shelf and
-   subjects span the full width below.
-
-   1600 (M3 extra-large): three zones — a thin subjects RAIL (left), primary
-   (centre-gauche), mastery (droite); shelf stays full width below.
-
-   PALIERS RECALÉS SUR L'ÉCHELLE M3 le 2026-08-17 (1280 → 1200, 1536 → 1600).
-   Cette grille avait ses propres paliers, empruntés à Tailwind : un
-   TROISIÈME système de points de rupture cohabitait avec les classes
-   Material et les défauts Tailwind. Trois échelles pour une seule page.
-
-   Le commentaire d'origine disait aussi : « 1920 est structurellement
-   IDENTIQUE à 1536 — la respiration supplémentaire vient gratuitement du
-   conteneur max-w-page fixe (1280 px) qui se centre avec une marge
-   extérieure plus grande ». C'était la doctrine qui FABRIQUAIT le vide dont
-   l'owner s'est plaint, écrite comme un principe. Elle est doublement
-   caduque : `max-w-page` n'est plus fixe (jeton `--band-page`, fluide
-   jusqu'à 1760), et « la marge extérieure grandit toute seule » décrit
-   précisément le défaut, pas une qualité. Ce qui reste vrai de §11 : on
-   n'ajoute pas de QUATRIÈME colonne — les trois zones s'élargissent, elles
-   ne se multiplient pas.
-
-   Named areas move each wrapper div's VISUAL position only — the divs stay
-   in their authored DOM sequence (primary, mastery, shelf, subjects) and no
-   `order` property is used anywhere in this block (DASHBOARD-SPEC §5:
-   "DOM order stable, colonnes par grid, pas de reorder"). */
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-    "primary"
-    "mastery"
-    "shelf"
-    "subjects";
-  row-gap: 64px;
-}
-
-.dashboard-grid__primary  { grid-area: primary;  min-width: 0; }
-.dashboard-grid__mastery  { grid-area: mastery;  min-width: 0; }
-.dashboard-grid__shelf    { grid-area: shelf;    min-width: 0; }
-.dashboard-grid__subjects { grid-area: subjects; min-width: 0; }
-
-/* Inside `primary`: the session card and the next-up line stack with a
-   TIGHTER internal gap than the grid's own row-gap (DESIGN-BIBLE §4:
-   internal spacing ≤ external spacing — the pairing reads as one group). */
-.dashboard-grid__primary {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-/* M3 « large » — deux colonnes. */
-@media (min-width: 1200px) {
-  .dashboard-grid {
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas:
-      "primary  mastery"
-      "shelf    shelf"
-      "subjects subjects";
-    column-gap: 48px;
-  }
-}
-
-/* M3 « extra-large » — les trois zones. */
-@media (min-width: 1600px) {
-  .dashboard-grid {
-    /* Le rail s'élargit avec la bande (220 px au lieu de 200) et les
-       colonnes respirent : c'est la place récupérée sur les marges. */
-    grid-template-columns: 220px 2fr 1.05fr;
-    grid-template-areas:
-      "subjects primary mastery"
-      "shelf    shelf   shelf";
-    column-gap: 64px;
-  }
-
-  /* The rail is thin and quiet — a smaller heading keeps it from visually
-     competing with the session card's serif h2 (bible §7: one primary
-     thing; the rail is periphery even within the periphery). */
-  .dashboard-grid__subjects h2 {
-    font-size: 0.875rem;
-  }
-}
-
-/* Au-delà de 1600 : pas de quatrième colonne (bible §4/§11). La bande
-   `--band-page` plafonne à 1760 px et les trois zones se partagent cette
-   largeur — la page cesse de s'étirer, elle ne se remplit pas de vide. */
+/* ── Dashboard grid — SUPPRIMÉ (R6, 2026-08-18). La grille à zones
+   nommées (primary/mastery/shelf/subjects) servait l'ancien accueil ;
+   ProgrammeMap l'a remplacée (578731e) et plus aucun composant ne
+   portait ces classes. L'historique de sa doctrine (et de la doctrine
+   « la marge grandit toute seule » qu'elle contenait) vit dans git. */
 
 /* ── Carte de maîtrise — le scroll imbriqué, retiré (audit Fable §3.5) ──────
    L'ancienne règle enfermait 2 359 px de contenu dans 640 px avec sa propre
