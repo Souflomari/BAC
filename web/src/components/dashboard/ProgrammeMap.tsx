@@ -48,11 +48,13 @@ export function ProgrammeMap({ notions }: { notions: NotionMeta[] }) {
 
   return (
     <section aria-label="Le programme" className="mt-14">
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
+      {/* Légende SOUS le titre (audit : flottante à l'extrême droite, elle
+          était à 1000 px de ce qu'elle qualifiait — attention divisée). */}
+      <div>
         <h2 className="font-display text-h2 font-semibold text-primary">
           Le programme
         </h2>
-        <p className="text-body-sm text-tertiary">
+        <p className="mt-1 text-body-sm text-tertiary">
           Couverture du cadre officiel, matière par matière.
         </p>
       </div>
@@ -80,7 +82,11 @@ export function ProgrammeMap({ notions }: { notions: NotionMeta[] }) {
                 "shadow-elevation-1 transition-shadow duration-standard ease-between hover:shadow-elevation-2"
               )}
             >
-              <header className="flex items-center gap-2.5">
+              {/* flex-wrap + min-w-0 : le compteur nowrap fixait la largeur
+                  minimale de la rangée — 2 px de débord page à 320 (sweep
+                  repli). En colonne très étroite, le compteur replie SOUS
+                  le titre, d'un bloc. */}
+              <header className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
                 <span
                   aria-hidden
                   className="h-3 w-3 shrink-0 rounded-full"
@@ -88,34 +94,43 @@ export function ProgrammeMap({ notions }: { notions: NotionMeta[] }) {
                 />
                 <Link
                   href={subjectHref(id)}
-                  className="focus-ring rounded text-h4 font-semibold text-primary hover:underline"
+                  className="min-w-0 focus-ring rounded text-h4 font-semibold text-primary hover:underline"
                 >
                   {subjectLabel(id)}
                 </Link>
+                {/* Audit R6 (charge-calme P0-3) : « 14/14 » aligné à droite
+                    au-dessus d'une barre pleine EST le vocabulaire du score
+                    — et mesurait la disponibilité, pas la progression.
+                    Quand dispo == total, on dit « 14 chapitres » ; la
+                    fraction n'apparaît que si elle informe. L'attribut
+                    garde la fraction machine (sweep dom-truth). */}
                 <span
                   data-couverture={`${dispo}/${total}`}
-                  className="ml-auto font-mono text-body-sm tabular-nums text-secondary"
+                  className="ml-auto whitespace-nowrap font-mono text-body-sm tabular-nums text-tertiary"
                 >
-                  {dispo}
-                  <span className="text-tertiary">/{total} chapitres</span>
+                  {dispo === total ? `${total} chapitres` : `${dispo}/${total} chapitres`}
                 </span>
               </header>
 
-              {/* La couverture — construite vs cadre. Une barre de FAITS. */}
-              <div
-                className="mt-3 h-1 overflow-hidden rounded-full"
-                style={{ background: `var(--subject-${id}-subtle)` }}
-                role="img"
-                aria-label={`${dispo} chapitres disponibles sur ${total} au programme`}
-              >
+              {/* La barre de couverture n'existe qu'en couverture PARTIELLE
+                  — pleine, elle n'était qu'un trait de couleur en
+                  concurrence avec l'action primaire (audit P1-2). */}
+              {dispo < total && (
                 <div
-                  className="h-full rounded-full"
-                  style={{
-                    background: `var(--subject-${id})`,
-                    width: `${Math.round((dispo / Math.max(total, 1)) * 100)}%`,
-                  }}
-                />
-              </div>
+                  className="mt-3 h-1 overflow-hidden rounded-full"
+                  style={{ background: `var(--subject-${id}-subtle)` }}
+                  role="img"
+                  aria-label={`${dispo} chapitres disponibles sur ${total} au programme`}
+                >
+                  <div
+                    className="h-full rounded-full"
+                    style={{
+                      background: `var(--subject-${id})`,
+                      width: `${Math.round((dispo / Math.max(total, 1)) * 100)}%`,
+                    }}
+                  />
+                </div>
+              )}
 
               <ol className="mt-4 grid gap-0.5">
                 {liste.map((n) => (
@@ -135,12 +150,11 @@ export function ProgrammeMap({ notions }: { notions: NotionMeta[] }) {
                         "transition-colors duration-micro ease-between"
                       )}
                     >
+                      {/* Pas de minutes ICI (audit : ~12 valeurs mono avant
+                          le pli = texture de tableau de bord ; et 474 px de
+                          vide entre titre et durée). Les minutes vivent sur
+                          la page matière, où l'élève choisit vraiment. */}
                       <span className="min-w-0 truncate">{n.title}</span>
-                      {n.readingMinutes != null && (
-                        <span className="ml-auto shrink-0 font-mono text-caption tabular-nums text-tertiary">
-                          {n.readingMinutes} min
-                        </span>
-                      )}
                     </Link>
                   </li>
                 ))}

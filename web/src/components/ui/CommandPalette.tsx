@@ -106,7 +106,9 @@ export function CommandPalette({ notions }: { notions: NotionPourPalette[] }) {
       filter={filtreNet}
     >
       <div className="flex items-center gap-2 border-b border-subtle px-4">
-        <Icon name="chevron-right" size={14} className="text-tertiary" />
+        {/* La loupe, cohérente avec le header — le chevron orphelin lisait
+            comme un prompt de terminal égaré (audit R6, P1-5/P2-10). */}
+        <Icon name="loupe" size={14} className="shrink-0 text-tertiary" />
         <Command.Input
           placeholder="Chercher une notion, une matière…"
           className="h-12 w-full bg-transparent text-body text-primary placeholder:text-tertiary focus:outline-none"
@@ -121,16 +123,14 @@ export function CommandPalette({ notions }: { notions: NotionPourPalette[] }) {
         </Command.Empty>
         {parMatiere.map((g) => (
           <Command.Group key={g.id} heading={subjectLabel(g.id)} className="palette-groupe">
+            {/* Pas de pastilles par ligne : l'en-tête de groupe nomme déjà
+                la matière — les points étaient un double encodage (audit
+                charge-calme P1-8). */}
             <Command.Item
               value={`matiere ${subjectLabel(g.id)}`}
               onSelect={() => va(subjectHref(g.id))}
               className="palette-item"
             >
-              <span
-                aria-hidden
-                className="h-2 w-2 shrink-0 rounded-full"
-                style={{ background: `var(--subject-${g.id})` }}
-              />
               <span className="font-medium">Toute la matière</span>
               <span className="ml-auto font-mono text-caption tabular-nums text-tertiary">
                 {g.notions.length}
@@ -143,11 +143,6 @@ export function CommandPalette({ notions }: { notions: NotionPourPalette[] }) {
                 onSelect={() => va(notionHref(n.subject, n.slug))}
                 className="palette-item"
               >
-                <span
-                  aria-hidden
-                  className="h-2 w-2 shrink-0 rounded-full opacity-60"
-                  style={{ background: `var(--subject-${g.id})` }}
-                />
                 <span className="min-w-0 truncate">{n.title}</span>
                 {n.readingMinutes != null && (
                   <span className="ml-auto shrink-0 font-mono text-caption tabular-nums text-tertiary">

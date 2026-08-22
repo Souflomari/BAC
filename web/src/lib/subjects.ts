@@ -36,6 +36,21 @@ export function subjectLabel(subject: string): string {
   return SUBJECT_LABELS[subject] ?? subject;
 }
 
+/** Libellés courts — pour les chips et les surfaces étroites (audit R6 :
+ *  « SCIENCES DE LA VIE ET DE LA TERRE » en capitales trackées mangeait
+ *  toute la largeur intérieure de la carte session à 390 px). */
+export const SUBJECT_LABELS_COURTS: Record<string, string> = {
+  maths: "Maths",
+  pc: "PC",
+  svt: "SVT",
+  philo: "Philo",
+  si: "SI",
+};
+
+export function subjectLabelCourt(subject: string): string {
+  return SUBJECT_LABELS_COURTS[subject] ?? subject;
+}
+
 /** Canonical notion route. */
 export function notionHref(subject: string, slug: string): string {
   return `/notions/${encodeURIComponent(subject)}/${encodeURIComponent(slug)}`;

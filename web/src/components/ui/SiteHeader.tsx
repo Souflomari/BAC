@@ -136,10 +136,17 @@ function PanneauNotions({
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
           <DropdownMenu.Content
-            sideOffset={10}
+            // 16 et pas 10 : à 10 le coin haut du panneau chevauchait le
+            // filet bas du header (audit R6, P1-4) — le chrome reste intact.
+            sideOffset={16}
             align="end"
             className={cn(
-              "z-overlay w-[600px] rounded-xl border border-subtle bg-surface-overlay p-2",
+              // 720 : à 600, 2 titres SVT sur 4 tronquaient dans un header
+              // qui avait 800 px libres (audit P2-4). outline-none : Radix
+              // focalise le CONTENEUR à l'ouverture et le :focus-visible
+              // global peignait un anneau accent autour du panneau entier
+              // (audit P0-2) — l'anneau appartient aux items.
+              "z-overlay w-[720px] rounded-xl border border-subtle bg-surface-overlay p-2 outline-none",
               "shadow-elevation-3",
               // `panneau-entree` (globals.css) : Radix MONTE le contenu déjà
               // à l'état open — une transition ne se joue jamais ; seule une
@@ -169,26 +176,28 @@ function PanneauNotions({
                       >
                         <span aria-hidden className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: `var(--subject-${id})` }} />
                         <span className="text-body-sm font-semibold text-primary">{subjectLabel(id)}</span>
-                        <span className="ml-auto font-mono text-caption tabular-nums text-tertiary">
-                          {dispo}/{total}
-                        </span>
+                        {/* Audit R6 (P0-3) : « 25/25 » nu à côté d'un nom se
+                            lit comme UNE PROGRESSION — l'inverse de
+                            l'honnêteté visée. La fraction n'apparaît qu'en
+                            couverture partielle ; pleine, il n'y a rien à
+                            signaler. La barre de 2 px est partie avec elle
+                            (le point EST le marqueur de la matière — un
+                            seul par surface). */}
+                        {dispo < total && (
+                          <span
+                            className="ml-auto font-mono text-caption tabular-nums text-tertiary"
+                            aria-label={`${dispo} chapitres disponibles sur ${total}`}
+                          >
+                            {dispo}/{total}
+                          </span>
+                        )}
                       </Link>
                     </DropdownMenu.Item>
-                    {/* la couverture RÉELLE du programme — cadre, pas progrès */}
-                    <div
-                      className="mx-2 mb-1 h-0.5 overflow-hidden rounded-full"
-                      style={{ background: `var(--subject-${id}-subtle)` }}
-                      aria-hidden
-                    >
-                      <div
-                        className="h-full rounded-full"
-                        style={{ background: `var(--subject-${id})`, width: `${Math.round((dispo / Math.max(total, 1)) * 100)}%` }}
-                      />
-                    </div>
                     {liste.slice(0, 4).map((n) => (
                       <DropdownMenu.Item key={n.slug} asChild>
                         <Link
                           href={notionHref(n.subject, n.slug)}
+                          title={n.title}
                           className={cn(
                             "block truncate rounded-md px-2 py-1 text-body-sm text-secondary hover:text-primary",
                             "state-layer focus-ring [--focus-radius:6px]"
@@ -258,7 +267,7 @@ function MenuCompact({
             sideOffset={8}
             align="end"
             className={cn(
-              "z-overlay min-w-[250px] rounded-xl border border-subtle bg-surface-overlay p-1.5",
+              "z-overlay min-w-[250px] rounded-xl border border-subtle bg-surface-overlay p-1.5 outline-none",
               "shadow-elevation-3",
               // Même entrée animée que le grand panneau (voir plus haut).
               "panneau-entree"

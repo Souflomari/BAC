@@ -910,7 +910,9 @@ h3:hover .heading-anchor,
   position: fixed;
   inset: 0;
   z-index: var(--z-overlay, 50);
-  background: color-mix(in srgb, var(--color-text-primary) 22%, transparent);
+  /* 36 % et pas 22 : à 22 la page derrière ne s'assombrissait que de 4 %
+     et la carte ne décollait pas du fond (audit R6, P1-5). */
+  background: color-mix(in srgb, var(--color-text-primary) 36%, transparent);
   backdrop-filter: blur(2px);
 }
 [cmdk-dialog] {
@@ -934,6 +936,13 @@ h3:hover .heading-anchor,
   background: var(--color-surface-overlay);
   box-shadow: var(--elevation-4);
 }
+/* Le champ de saisie vit NU dans la carte (grammaire cmdk/Raycast) : pas
+   d'anneau propre — le :focus-visible global peignait outline + halo
+   accent sur toute la largeur (audit P1-5). La carte cadre déjà. */
+.palette-commande [cmdk-input]:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
 .palette-groupe [cmdk-group-heading] {
   padding: 10px 12px 4px;
   font-size: 0.75rem;
@@ -946,17 +955,26 @@ h3:hover .heading-anchor,
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 9px 12px;
+  /* ≥48 px : la palette est LA surface clavier/tactile — ses lignes à
+     ~40 px passaient sous le plancher §9 (audit ergonomie P1-2). */
+  min-height: var(--touch-target, 48px);
+  padding: 8px 12px;
   border-radius: var(--radius-md, 8px);
   font-size: 0.9375rem;
   color: var(--color-text-primary);
   cursor: pointer;
 }
+/* La ligne active doit se lire D'UN COUP D'ŒIL — la palette se pilote aux
+   flèches. Un cran tonal (~1,03:1) était invisible (audits P1-1/P1-5) :
+   fond un cran plus haut + filet accent 2 px au bord gauche, jamais la
+   couleur seule. */
 .palette-item[data-selected="true"] {
-  background: var(--color-surface-container-low);
+  background: var(--color-surface-container-lowest);
+  box-shadow: inset 2px 0 0 var(--color-accent);
 }
 .dark .palette-item[data-selected="true"] {
   background: var(--color-surface-container-high);
+  box-shadow: inset 2px 0 0 var(--color-accent);
 }
 
 /* ── R4 · Continuité entre routes (View Transitions API) ────────────────

@@ -154,7 +154,11 @@ export const themes: Record<"light" | "dark", Theme> = {
       "--color-surface-container": "#1A1917",
       "--color-surface-container-high": "#21201E",
       "--color-surface-container-highest": "#2B2A27",
-      "--color-border-subtle": "#2F2E2A",
+      // #3A3934 et pas #2F2E2A (audit R6, P2-2) : à ~1,4:1 sur les surfaces
+      // sombres, les cartes se dissolvaient sur un écran atténué — la
+      // méthode « hiérarchie par bordures » exige des bordures qu'on voit
+      // (~1,9:1 ici, toujours discret).
+      "--color-border-subtle": "#3A3934",
       "--color-border-soft": "#41403C",
       "--color-border-field": "#76746F",
       "--color-text-primary": "#E9E8E3",

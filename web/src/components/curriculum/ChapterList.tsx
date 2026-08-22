@@ -69,10 +69,13 @@ function ChapterRow({ subject, chapter }: { subject: string; chapter: ChapterVie
               répétait 25 fois à l'identique — du bruit, pas une information
               (§7, le regard R6). Le lien EST l'affordance ; « À venir »
               reste la marque honnête de l'exception. */}
+          {/* Audit R6 (visuel P0-2) : 25 flèches à l'accent = l'accent ne
+              signifie plus « l'action ». Tertiaire au repos, accent au
+              survol de la ligne — l'affordance reste, l'inflation part. */}
           <Icon
             name="arrow-right"
             size={16}
-            className="text-accent translate-x-0 group-hover:translate-x-1 transition-transform duration-micro ease-out"
+            className="text-tertiary group-hover:text-accent translate-x-0 group-hover:translate-x-1 transition-[transform,color] duration-micro ease-out"
           />
         </span>
       ) : (

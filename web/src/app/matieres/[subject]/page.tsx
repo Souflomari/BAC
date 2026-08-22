@@ -66,10 +66,16 @@ export default function SubjectPage({ params }: { params: { subject: string } })
 
   const total = subjectChapterCount(subject);
   const available = subjectAvailableCount(subject, builtIds);
+  // Audit R6 (les trois critics convergent) : « 25 chapitres ·
+  // 25 disponibles » disait deux fois le même nombre, et la forme N/N
+  // parle la langue du score. Quand dispo == total il n'y a RIEN à
+  // signaler : le fait honnête n'a de valeur que lorsqu'il diffère.
   const metaLine =
     total === 0
       ? "Programme à venir"
-      : `${total} chapitre${total > 1 ? "s" : ""} · ${available} disponible${available > 1 ? "s" : ""}`;
+      : available === total
+        ? `${total} chapitre${total > 1 ? "s" : ""}`
+        : `${available}/${total} chapitres disponibles`;
 
   return (
     <PageShell notions={manifestePourHeader()} width="page">
@@ -97,11 +103,17 @@ export default function SubjectPage({ params }: { params: { subject: string } })
         </p>
         <p className="mt-3 text-body-sm text-secondary">
           2ᵉ Bac · Sciences ·{" "}
-          <span data-couverture={`${available}/${total}`} className="font-mono tabular-nums">
+          {/* L'attribut garde la fraction machine (sweep dom-truth) ; le
+              TEXTE visible est calme. nowrap : un « 25 » orphelin en tête
+              de ligne à 390 px se lisait comme une nouvelle donnée. */}
+          <span data-couverture={`${available}/${total}`} className="whitespace-nowrap font-mono tabular-nums">
             {metaLine}
           </span>
         </p>
-        {total > 0 && (
+        {/* La barre n'existe que si elle PORTE une information : couverture
+            partielle. Pleine à 100 %, elle n'était qu'un trait décoratif —
+            l'événement chromatique le plus fort de la page (audit P1-2). */}
+        {total > 0 && available < total && (
           <div
             className="mt-4 h-0.5 max-w-[420px] overflow-hidden rounded-full"
             style={{ background: `var(--subject-${subject.id}-subtle)` }}

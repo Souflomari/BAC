@@ -755,14 +755,12 @@ export function NotionBody({
           hidden={chapter.index !== 0}
           className="chapter-view"
         >
-          {/* Per-chapter reading time — quiet, above the chapter's own
-              content (LESSON-EXPERIENCE-SPEC §1.3). Not literally inline
-              with the markdown-rendered `##` heading below it: that heading
-              is produced deep inside LessonRenderer/react-markdown, a
-              shared, chapter-agnostic renderer this task does not touch. */}
-          <p className="notion-prose mb-2 text-body-sm text-secondary">
-            {`~${chapter.minutes} min`}
-          </p>
+          {/* Le « ~N min » par chapitre est PARTI (audit R6, charge-calme
+              P0-2, amendement à LESSON-EXPERIENCE-SPEC §1.3) : un budget-
+              temps servi 10 fois par leçon est un goutte-à-goutte de
+              pression temporelle (§7 « pas de minuteurs ») — et il était
+              redondant avec le total du masthead, seul endroit où la durée
+              informe une décision (commencer ou pas). */}
           {chapter.segments.map((seg, i) => renderSegment(seg, `${chapter.index}-${i}`))}
           {/* This chapter's diagnostic items, inline (§1.1 inline-items). */}
           {chapter.rung && itemsByRung?.[chapter.rung] && (

@@ -97,7 +97,10 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
       {/* Checkpoint eyebrow — the shared Eyebrow component (one eyebrow language
           across the product, ADR 0023). Decorative: the card carries its own
           aria-label, so the eyebrow is hidden from assistive tech. */}
-      <Eyebrow className="mb-4" decorative>
+      {/* muted (audit R6, P0-2) : un eyebrow de carte pédagogique en accent
+          diluait la marque de l'action — l'accent est réservé à « voici
+          l'action », pas aux étiquettes. */}
+      <Eyebrow tone="muted" className="mb-4" decorative>
         Vérifie ta compréhension
       </Eyebrow>
 

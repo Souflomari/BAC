@@ -27,7 +27,9 @@ export default function NotFound() {
   }));
   return (
     <PageShell width="reading" notions={notions}>
-      <div className="flex flex-col items-center justify-center py-24 text-center">
+      {/* La carte standard (audit R6, P1-11) : STUDIO-SPEC §6.3 — mêmes
+          cartes que le reste du site, pas du texte nu flottant sur le fond. */}
+      <div className="flex flex-col items-center justify-center rounded-xl border border-subtle bg-surface-raised px-8 py-20 text-center shadow-elevation-1">
         <span
           className={cn(
             "font-display text-display font-bold",

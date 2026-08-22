@@ -30,7 +30,7 @@
 import { Link } from "@/components/ui/Lien";
 import { sessionFromState } from "@/lib/session";
 import { useStudentState } from "@/lib/student-state";
-import { subjectLabel, notionHref } from "@/lib/subjects";
+import { subjectLabel, subjectLabelCourt, notionHref } from "@/lib/subjects";
 import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 import type { NotionMeta } from "@/lib/content";
@@ -56,18 +56,22 @@ export function SessionCard({ notions }: { notions: NotionMeta[] }) {
           "shadow-elevation-1"
         )}
       >
+        {/* Audit R6 (charge-calme P1-3/P1-7) : \u00ab COMMENCE ICI \u00bb doublait le
+            bouton qu'il annon\u00e7ait (\u00a711, \u00e9tiquettes doubl\u00e9es) et le libell\u00e9
+            long en capitales track\u00e9es mangeait la carte \u00e0 390 px. La chip
+            courte est le SEUL marqueur \u2014 le fond teint\u00e9 marque d\u00e9j\u00e0, le
+            point int\u00e9rieur \u00e9tait un troisi\u00e8me encodage. */}
         <p className="flex flex-wrap items-center gap-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
           <span
-            className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1"
+            className="inline-flex items-center rounded-full px-2.5 py-1"
             style={{
               background: `var(--subject-${notion.subject}-subtle)`,
               color: `var(--subject-${notion.subject})`,
             }}
+            title={subjectLabel(notion.subject)}
           >
-            <span aria-hidden className="h-1.5 w-1.5 rounded-full" style={{ background: "currentColor" }} />
-            {subjectLabel(notion.subject)}
+            {subjectLabelCourt(notion.subject)}
           </span>
-          {session.kind === "start" ? "Commence ici" : "Aujourd\u2019hui"}
         </p>
         <h2 className="mt-3 max-w-lead font-display text-h1 font-bold text-primary">
           {notion.title}

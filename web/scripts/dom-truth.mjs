@@ -336,7 +336,11 @@ const BATTERY = [
   //    rows retired with it. Presence + honest wording here; the §5
   //    arithmetic (ONE [data-primary-action]; token count == notions on
   //    disk) lives in the D12 sweep below. ──
-  { name: "D12 session card: « Commence ici » zero-state framing", page: "/", sel: "section[aria-label='La session du jour']", text: "Commence ici", present: true },
+  // Passe calme post-R6 : « COMMENCE ICI » doublait le bouton qu'il
+  // annonçait (§11) — l'assertion garde le NOUVEAU cadrage : la carte
+  // existe, porte l'action primaire, et l'eyebrow doublé ne revient pas.
+  { name: "D12 session card: action primaire présente", page: "/", sel: "section[aria-label='La session du jour'] [data-primary-action]", present: true },
+  { name: "D12 session card: l'eyebrow doublé ne revient pas (passe calme)", page: "/", sel: "section[aria-label='La session du jour']", present: true, notText: /Commence ici/ },
   { name: "D12 session card: no « continuer » without state (§5)", page: "/", sel: "section[aria-label='La session du jour']", notText: /[Cc]ontinuer|Reprendre|Reprise/ },
   { name: "D12 next-up: parcours wording + source anchor", page: "/", sel: "[data-reco-source='parcours']", text: "Ensuite dans le parcours", present: true },
   { name: "D12 next-up: no « toi » without state (§3)", page: "/", sel: "[data-reco-source='parcours']", notText: /pour toi|[Rr]ecommandé/ },

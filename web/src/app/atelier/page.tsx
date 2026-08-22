@@ -31,8 +31,11 @@ export const metadata: Metadata = {
 export default function AtelierPage() {
   return (
     <>
+      {/* PAS de container surchargé (audit R6, P1-10) : STUDIO-SPEC §2 —
+          le header garde la bande `page` sur TOUTES les routes, le
+          wordmark ne saute jamais. Seul le <main> de l'atelier prend la
+          bande large. */}
       <SiteHeader
-        container="mx-auto max-w-atelier px-gutter w-full"
         notions={listNotions().map((n) => ({ subject: n.subject, slug: n.slug, title: n.title, readingMinutes: n.readingMinutes }))}
       />
       <main>
