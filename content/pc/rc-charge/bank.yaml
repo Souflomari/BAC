@@ -15,9 +15,9 @@
 # « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
 # entre apostrophes simples dans steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue) : quatre sujets « vérifié » de cette notion
-# sont désormais banqués : 2018 N (deux sous-parties de l'Exercice III),
-# 2019 N et 2021 N.
+# NOTE ÉDITORIALE (pour la revue) : six entrées, couvrant cinq sessions
+# « vérifié » de cette notion, sont désormais banquées : 2018 N (deux
+# sous-parties de l'Exercice III), 2019 N, 2021 N, 2022 N et 2025 N.
 #
 # Le 2019 N (Exercice III, Partie I — charge) sert AUSSI de sommet de leçon
 # (r-bac, exercises.yaml, marqueur [[exercise:r-bac]] à R5) : mêmes données,
@@ -65,6 +65,18 @@
 #     courbes sont q(t), u_C(t) ou i(t) contre le temps, lues par tangente
 #     à l'origine ou méthode des 63 %, rung 3). Pontée au point d'usage
 #     dans le raisonnement de la question 2.
+#   - bk-2025-n-x1, q1 et q2 : le générateur G est un générateur IDÉAL DE
+#     COURANT (I0 constant), et non le générateur idéal de tension E des
+#     rungs R0–R4. Le mécanisme de R1 — la boucle qui se referme sur
+#     elle-même, i = (E-u_C)/R, un courant qui ralentit à mesure que u_C
+#     monte — ne s'applique donc pas ici : i = I0 reste constant, u_C(t)
+#     croît LINÉAIREMENT (pas d'exponentielle, pas d'équation
+#     différentielle à établir ni résoudre). Seules les deux relations de
+#     base rappelées au rung 1 (i = dq/dt, q = Cu_C) sont réutilisées ;
+#     aucun pont vers le mécanisme ou la résolution de l'équation
+#     différentielle de R1–R2 n'est requis ni tenté. Même configuration de
+#     générateur que bk-2018-n-x3b (déjà banquée), pour mémoire — sujet et
+#     grandeurs différents, aucun recoupement numérique.
 
 notion: pc/rc-charge
 
@@ -382,3 +394,170 @@ entries:
             note: "R = 10^3 ohms est donne dans l'enonce."
           - math: '\boxed{C = 1{,}2\times10^{-5}\ \text{F} = 12\ \mu\text{F}}'
             note: "Resultat demande."
+
+  # ── bk-2022-n-x1 — 2022 N, Exercice 3 (section 1) : échelon RC, u_C(t) et i(t), lecture de R puis C ──
+  - id: bk-2022-n-x1
+    title: "Réponse d'un dipôle RC à un échelon de tension : équation différentielle, expression du courant et lecture graphique de R puis C"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — 1. Réponse d'un dipôle RC à un échelon de tension"
+    bareme_total: 1.5
+    duration_min: 9
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS 28F, element/136621 (Exercice 3, section 1 —
+        réponse d'un dipôle RC à un échelon de tension ; barème de la
+        section = 1,5 pt sur les 4,5 pt de l'exercice complet, qui comporte
+        aussi une section 2 sur les oscillations libres dans un circuit RLC
+        série, transcrite sous rlc-serie.md). Transcription vérifiée : passe
+        de vérification adversariale indépendante (agent-vérificateur-
+        adversarial, 2026-08-07), diff caractère par caractère OK sur
+        l'énoncé, l'équation différentielle et la solution ; figures 1 et 2
+        relues au pixel — palier de $(C_1)$ mesuré à $12{,}00\ \text{V}$
+        exactement, $(C_2)$ partant de $12{,}0\ \text{mA}$ exactement et
+        reproduite par le modèle $12\,e^{-t/50\ \text{ms}}$ à mieux que
+        $0{,}07\ \text{mA}$ sur chaque point mesuré, tangente $(T)$ coupant
+        le palier à $t = 50\ \text{ms}$ par ajustement de Hough ; barème
+        re-additionné ($0{,}25+0{,}5+0{,}5+0{,}25 = 1{,}5$, puis
+        $1{,}5+3{,}0=4{,}5$) — entrée « vérifié »
+        (docs/sujets/pc/rc-charge.md).
+    intro: |-
+      **Réponse d'un dipôle RC à un échelon de tension (examen national, session normale 2022, Exercice 3 — section 1).**
+
+      Cet exercice se propose de déterminer la capacité d'un condensateur, de déterminer l'inductance d'une bobine, et d'effectuer une étude énergétique d'un circuit RLC série. On réalise le montage électrique schématisé sur la figure 1, constitué d'un générateur idéal de tension de force électromotrice $E$, d'un condensateur de capacité $C$ initialement déchargé, d'une bobine d'inductance $L$ et de résistance $r$, d'un conducteur ohmique de résistance $R$, et d'un interrupteur $K$ à double position.
+
+      **1. Réponse d'un dipôle RC à un échelon de tension.** À un instant choisi comme origine des dates $t = 0$, on place l'interrupteur $K$ sur la position (1). Les courbes $(C_1)$ et $(C_2)$ de la figure 2 représentent l'évolution de la tension $u_C(t)$ aux bornes du condensateur et celle de l'intensité $i(t)$ du courant électrique qui circule dans le circuit. La droite $(T)$ est la tangente à la courbe $(C_1)$ au point d'abscisse $t = 0$.
+
+      **Figure 1 (schéma).** Boucle comportant, en haut, un conducteur ohmique $R$ (rectangle) suivi d'un interrupteur $K$ à double position, de bornes « (1) » et « (2) ». À gauche, le générateur $E$ (symbole cercle, flèche de tension). Au centre, le condensateur (tension $u_C$ fléchée) monté entre le nœud (1)/$K$ et le bas du circuit. À droite de la position (2), une bobine étiquetée « $(L,r)$ ».
+
+      **Figure 2 (deux courbes côte à côte).** À gauche, $u_C\ (\text{V})$ en fonction de $t\ (\text{ms})$ ; axe des ordonnées gradué $0,\ 3,\ 6,\ 9,\ 12$ ; axe des abscisses gradué $0,\ 50,\ 100,\ 150,\ 200$. Courbe $(C_1)$ croissante, concave, partant de $0$ et tendant asymptotiquement vers un palier à $u_C = 12{,}0\ \text{V}$ ; une droite en pointillés $(T)$, tangente à l'origine, coupe ce palier à $t = 50\ \text{ms}$. À droite, $i\ (\text{mA})$ en fonction de $t\ (\text{ms})$, mêmes graduations d'axes. Courbe $(C_2)$ décroissante, partant exactement de $12{,}0\ \text{mA}$ à $t = 0$ et décroissant exponentiellement vers $0$.
+    questions:
+      - id: q1
+        part: "1. Réponse d'un dipôle RC à un échelon de tension : établir le modèle"
+        stem: |-
+          **(0,25 pt)** Montrer que l'équation différentielle vérifiée par la tension $u_C(t)$ s'écrit sous la forme : $\dfrac{du_C}{dt} + \dfrac{1}{RC}u_C = \dfrac{E}{RC}$.
+        reasoning: |-
+          Même geste qu'en R1 de la leçon : loi des mailles sur la boucle série, $E = u_R + u_C$ en convention récepteur ; $u_R = Ri$ par la loi d'Ohm ; puis $i = C\dfrac{du_C}{dt}$, obtenu de $i = \dfrac{dq}{dt}$ et $q = Cu_C$ — les deux relations rappelées au rung 1. On substitue, on obtient $RC\dfrac{du_C}{dt} + u_C = E$ — exactement l'équation boxée en R1 — puis on divise toute l'équation par $RC$ pour isoler la dérivée, ce qui donne la forme demandée ici.
+        steps:
+          - math: 'E = u_R + u_C'
+            note: "Loi des mailles sur la boucle série, convention récepteur (rung 1)."
+          - math: 'u_R = R\,i = R\,C\frac{du_C}{dt}'
+            note: "Loi d'Ohm, avec i = C du_C/dt (de i = dq/dt et q = C u_C, rung 1)."
+          - math: 'RC\frac{du_C}{dt} + u_C = E'
+            note: "Même équation qu'en R1 de la leçon."
+          - math: '\boxed{\frac{du_C}{dt} + \frac{1}{RC}\,u_C = \frac{E}{RC}}'
+            note: "On divise par RC : forme demandée."
+      - id: q2
+        part: "1.2 — Exploiter la solution : le courant, puis la lecture graphique de R et C"
+        stem: |-
+          **(0,5 pt)** La solution de cette équation différentielle est de la forme $u_C(t) = E\left(1 - e^{-t/RC}\right)$. Établir l'expression de l'intensité du courant $i(t)$ en fonction de $E$, $R$, $C$ et $t$.
+        reasoning: |-
+          C'est exactement le calcul mené en R2 de la leçon : le courant se déduit de $u_C$ sans nouvelle hypothèse, par $i = C\dfrac{du_C}{dt}$. On dérive la forme donnée, on remplace, et le $C$ se simplifie avec le $C$ du dénominateur — on retrouve le résultat déjà établi en R2, ici avec $RC$ à la place de $\tau$ (puisque $\tau = RC$).
+        steps:
+          - math: '\frac{du_C}{dt} = \frac{E}{RC}\,e^{-t/RC}'
+            note: "Dérivée de la forme donnée."
+          - math: 'i(t) = C\frac{du_C}{dt} = C\cdot\frac{E}{RC}\,e^{-t/RC}'
+            note: "i = C du_C/dt (rung 1) ; on substitue la dérivée."
+          - math: '\boxed{i(t) = \frac{E}{R}\,e^{-t/RC}}'
+            note: "Le C se simplifie : même résultat qu'en R2 de la leçon."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** En exploitant les courbes de la figure 2, déterminer la valeur de la résistance $R$.
+        reasoning: |-
+          L'expression établie à la question précédente donne, à $t=0$ (où $e^0=1$), $i(0^+) = \dfrac{E}{R}$ — le courant maximal du mécanisme de R1, toute la tension $E$ tombant d'abord sur la résistance. Deux lectures graphiques suffisent : $E$ se lit sur le palier de $(C_1)$, et $i(0^+)$ se lit sur la valeur de départ de $(C_2)$. On isole ensuite $R$.
+        steps:
+          - math: 'i(0^+) = \frac{E}{R}'
+            note: "À t=0, l'exponentielle vaut 1 (question précédente)."
+          - math: 'E = 12{,}0\ \text{V} \quad (\text{palier de } (C_1)), \qquad i(0^+) = 12{,}0\ \text{mA} \quad (\text{valeur initiale de } (C_2))'
+            note: "Lectures graphiques sur la figure 2."
+          - math: 'R = \frac{E}{i(0^+)} = \frac{12{,}0}{12{,}0\times10^{-3}}'
+            note: "On isole R."
+          - math: '\boxed{R = 1000\ \Omega}'
+            note: "Résultat demandé."
+      - id: q4
+        stem: |-
+          **(0,25 pt)** Montrer que la capacité $C$ du condensateur est : $C = 50\ \mu\text{F}$.
+        reasoning: |-
+          C'est la méthode de la tangente à l'origine, vue en R3 : la droite $(T)$, tangente à $(C_1)$ en $t=0$, coupe l'asymptote horizontale exactement à l'abscisse $t = \tau$. L'énoncé indique que $(T)$ coupe le palier à $t = 50\ \text{ms}$ : on lit $\tau$ directement. On remonte ensuite à $C$ par $\tau = RC$, avec $R$ tout juste trouvée (question précédente).
+        steps:
+          - math: '\tau = RC = 50\ \text{ms} = 50\times10^{-3}\ \text{s}'
+            note: "Lecture graphique : la tangente (T) coupe le palier de (C1) en t = 50 ms (rung 3)."
+          - math: 'C = \frac{\tau}{R} = \frac{50\times10^{-3}}{1000}'
+            note: "On inverse tau = RC ; R = 1000 ohms vient de la question précédente."
+          - math: '\boxed{C = 5{,}0\times10^{-5}\ \text{F} = 50\ \mu\text{F}}'
+            note: "Résultat demandé."
+
+  # ── bk-2025-n-x1 — 2025 N, Exercice 3 (Partie 1) : charge par générateur de courant, loi horaire linéaire ──
+  - id: bk-2025-n-x1
+    title: "Charge d'un condensateur par une source de courant : loi horaire linéaire et détermination de la capacité"
+    source:
+      year: 2025
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — Partie 1. Charge d'un condensateur par une source de courant"
+    bareme_total: 1
+    duration_min: 6
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/145796 (Exercice 3, Partie 1 —
+        charge d'un condensateur par une source de courant ; barème de la
+        partie = 1,0 pt sur les 5 pt de l'exercice complet, dont une
+        Partie 2 sur la décharge du même condensateur dans un dipôle RL —
+        transcrite sous rlc-serie.md — et une Partie 3 sur la sélection et
+        la démodulation d'une onde modulée en amplitude — transcrite sous
+        ondes-em-modulation.md ; les trois parties partagent la même
+        figure 1). Transcription vérifiée en trois passes
+        (docs/sujets/pc/rc-charge.md, statut « vérifié », 2026-08-06) :
+        transcription initiale, diff adverse par un second agent (symbole
+        du générateur de courant $G$ corrigé — cercle traversé d'un trait
+        horizontal droit, et non un arc courbe), puis re-lecture
+        indépendante par un troisième agent — figure 2 re-mesurée au pixel
+        (grille $5\times5$ divisions, pente $1\ \text{V.s}^{-1}$, droite
+        jusqu'au coin exact $(10\ \text{s}\,;\,10\ \text{V})$) et figure 1
+        re-vérifiée élément par élément (symbole du générateur confirmé,
+        nœuds (1)/(2)/N/M conformes) — entrée promue.
+    intro: |-
+      **Charge d'un condensateur par une source de courant (examen national, session normale 2025, Exercice 3 — Partie 1).**
+
+      Les composantes électroniques telles que les diodes, les bobines, les condensateurs se trouvent dans différents circuits électriques et électroniques de plusieurs appareils électriques utilisés dans le domaine industriel, de communication, de numérisation… Cet exercice se propose d'étudier la charge d'un condensateur et sa décharge dans un dipôle RL, ainsi que la sélection et la démodulation d'une onde modulée en amplitude. Le montage électrique représenté par le schéma de la figure 1 comporte un circuit de charge d'un condensateur et un autre de sa décharge.
+
+      **1 — Charge d'un condensateur par une source de courant.** On veut déterminer la capacité $C_0$ d'un condensateur, initialement déchargé, en utilisant le montage de la figure 1. Le générateur de courant $G$ débite un courant électrique d'intensité constante $I_0 = 1\ \mu\text{A}$. À un instant choisi comme origine des dates $(t_0 = 0)$, on met l'interrupteur $K$ en position (1). Un système d'acquisition informatisé permet d'obtenir la courbe d'évolution temporelle de la tension $u_C(t)$ aux bornes du condensateur lors de sa charge (figure 2).
+
+      **Figure 1 (schéma, commun aux trois parties de l'exercice).** Boucle comportant, de gauche à droite en partant du bas : le générateur $G$ (symbole cercle traversé d'un trait horizontal droit, en diamètre — symbole du générateur de courant continu), en série avec le conducteur ohmique $R$ (rectangle, étiquette « R » au-dessus) porté par la branche du haut, jusqu'au nœud « (1) » ; à droite de ce nœud, un interrupteur à double position, actionné par le levier « K », pouvant basculer sur la position « (1) » (vers $R$–$G$) ou sur la position « (2) » (vers le nœud « N », à droite). Le condensateur $C_0$ est monté verticalement entre le point commun (pivot) de l'interrupteur $K$ et le nœud « M » en bas ; sa tension $u_C$ est fléchée vers le haut, et le courant $i$ est fléché vers le bas juste en dessous du condensateur. À droite, entre N et M, une bobine « (b) » $(L, r)$ est dessinée en spires.
+
+      **Figure 2 (courbe).** $u_C\ (\text{V})$ en fonction de $t\ (\text{s})$, sur quadrillage à double graduation (traits principaux noirs, sous-quadrillage fin bleu). Axe des ordonnées gradué aux traits principaux $2$ et $4$ ; axe des abscisses gradué aux traits principaux $2$ et $4$. Droite croissante partant exactement de l'origine, passant par les points $(2\,;\,2)$ et $(4\,;\,4)$ — pente apparente $1\ \text{V.s}^{-1}$ — et se prolongeant en ligne droite jusqu'au coin supérieur droit du cadre : le cadre compte $5$ divisions principales de $2$ unités sur chacun des deux axes, donc ce coin vaut exactement $(10\ \text{s}\,;\,10\ \text{V})$.
+    questions:
+      - id: q1
+        part: "1 — Charge d'un condensateur par une source de courant : établir la loi horaire"
+        stem: |-
+          **(0,5 pt)** Exprimer la tension $u_C(t)$ en fonction de $I_0$, $C_0$ et $t$.
+        reasoning: |-
+          On reprend les deux relations rappelées au rung 1 — le courant est le débit de charge, $i = \dfrac{dq}{dt}$, et la charge posée sur les armatures fixe la tension, $q = C_0 u_C$. Mais le mécanisme qui construit l'équation de R1 — la boucle qui se referme sur elle-même, $i = \dfrac{E-u_C}{R}$, un courant qui ralentit à mesure que $u_C$ monte — ne s'applique pas ici : le générateur $G$ est un générateur **idéal de courant**, qui impose $I_0$ constant dans toute la boucle série, quelle que soit la tension à ses bornes. Contrairement à l'échelon de tension des rungs R0–R4, le courant ne dépend jamais de $u_C$ : il ne ralentit pas. Le courant qui charge $C_0$ vaut donc $I_0$ à chaque instant, et l'on intègre directement.
+        steps:
+          - math: 'i(t) = \frac{dq}{dt} = I_0'
+            note: "Générateur idéal de courant : I0 imposé constant dans toute la boucle série, sans ralentir (contrairement à l'échelon de tension des rungs R0-R4)."
+          - math: 'q(t) = I_0\,t'
+            note: "On intègre à courant constant, avec q(0)=0 (condensateur initialement déchargé)."
+          - math: '\boxed{u_C(t) = \frac{q(t)}{C_0} = \frac{I_0}{C_0}\,t}'
+            note: "Définition de la capacité (rung 1) : q = C0 uC."
+      - id: q2
+        part: "1 — Vérification numérique de la capacité $C_0$"
+        stem: |-
+          **(0,5 pt)** Vérifier que $C_0 = 1\ \mu\text{F}$.
+        reasoning: |-
+          L'expression établie à la question précédente dit que $u_C(t)$ est une droite passant par l'origine, de pente $\dfrac{I_0}{C_0}$ — exactement la droite lue sur la figure 2. On lit cette pente sur le graphe, puis on isole $C_0$.
+        steps:
+          - math: 'u_C(t) = \frac{I_0}{C_0}\,t \implies \text{pente} = \frac{I_0}{C_0}'
+            note: "Coefficient directeur de la droite (question précédente)."
+          - math: '\text{pente} = \frac{u_C}{t} = \frac{10}{10} = 1\ \text{V.s}^{-1}'
+            note: "Lecture graphique : la droite part de l'origine et rejoint exactement le coin (10 s ; 10 V) du cadre."
+          - math: 'C_0 = \frac{I_0}{\text{pente}} = \frac{1\times10^{-6}}{1}'
+            note: "On isole C0, avec I0 = 1 microA donné par l'énoncé."
+          - math: '\boxed{C_0 = 1\times10^{-6}\ \text{F} = 1\ \mu\text{F}}'
+            note: "Résultat à vérifier — conforme à l'énoncé."

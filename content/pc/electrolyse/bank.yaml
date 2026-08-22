@@ -9,16 +9,17 @@
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
 # exercises.yaml). Chaque entrée est une transcription FIDÈLE d'une entrée
 # « vérifié » de docs/sujets/pc/electrolyse.md (re-fetch AlloSchool + diff
-# indépendant — trois passes pour le sujet 2018, README §3). Raisonnement
-# rédigé à la voix experte de la maison sur 100 % des questions, en citant
-# les rungs R1–R4 de la leçon (lesson.md) là où c'est naturel ; barème
-# transcrit tel quel dans les énoncés (tag « (x,xx pt) » ajouté — la source
-# docs/sujets ne porte que « (x,xx) ») ; conventions KaTeX (block scalars
-# pour la prose, KaTeX brut entre apostrophes simples dans steps[].math,
-# notes de steps sans backslash, ASCII).
+# indépendant — trois passes pour le sujet 2018, re-lecture de contrôle
+# indépendante des corrections de la passe adversariale pour le sujet 2022,
+# README §3). Raisonnement rédigé à la voix experte de la maison sur 100 % des
+# questions, en citant les rungs R1–R5 de la leçon (lesson.md) là où c'est
+# naturel ; barème transcrit tel quel dans les énoncés (tag « (x,xx pt) »
+# ajouté — la source docs/sujets ne porte que « (x,xx) ») ; conventions KaTeX
+# (block scalars pour la prose, KaTeX brut entre apostrophes simples dans
+# steps[].math, notes de steps sans backslash, ASCII).
 #
 # NOTE ÉDITORIALE (recoupement, pour la revue) : docs/sujets/pc/electrolyse.md
-# recense DEUX sujets « vérifié » à ce jour. Le premier, 2019 N Exercice I
+# recense TROIS sujets « vérifié » à ce jour. Le premier, 2019 N Exercice I
 # (Partie 1, électrolyse d'une solution aqueuse d'iodure de zinc), est
 # EXACTEMENT le même sujet que le sommet de leçon r-bac (exercises.yaml,
 # marqueur [[exercise:r-bac]] à R6 « Pour t'entraîner ») : mêmes données,
@@ -28,10 +29,15 @@
 # bk-2020-n-x1 et rc-charge bk-2019-n-x3. Le raisonnement ci-dessous est
 # rédigé de nouveau (voix maison), pas copié de exercises.yaml. À
 # l'arbitrage de l'owner si l'on préfère écarter cette entrée de la banque
-# pour éviter le recoupement sur la même page. Le second sujet, 2018 N
+# pour éviter le recoupement sur la même page. Le deuxième sujet, 2018 N
 # Exercice I (Partie I, électrolyse du bromure de plomb), ne recoupe rien :
-# il est nouveau dans le corpus de cette notion, la banque compte donc
-# 2 entrées distinctes en pratique (la rail affichera « 2 sujets »).
+# il est nouveau dans le corpus de cette notion. Le troisième sujet, 2022 N
+# Exercice 1 (Partie 1, chromage d'une plaque d'acier par électrolyse d'une
+# solution de chlorure de chrome (III)), ne recoupe rien non plus : couple
+# $Cr^{3+}/Cr$, générateur sans polarité précisée (identification par
+# observation, pas par branchement) et QCM sont inédits dans le corpus de
+# cette notion. La banque compte donc 3 entrées distinctes en pratique (la
+# rail affichera « 3 sujets »).
 #
 # SCOPE NOTE (technique mobilisée au-delà de ce que la leçon montre
 # explicitement pas à pas — pontée au point d'usage dans le raisonnement de
@@ -229,3 +235,112 @@ entries:
             note: "Conversion en minutes, demandee par l'enonce."
           - math: '\boxed{\Delta t \approx 157\ \text{min}}'
             note: "Soit environ 2 h 37 min."
+
+  # ── bk-2022-n-x1 — 2022 N, Exercice 1 (Partie 1) : chromage d'une plaque d'acier par électrolyse ──
+  - id: bk-2022-n-x1
+    title: "Chromage d'une plaque d'acier par électrolyse : cathode, réactions aux électrodes (QCM) et masse de chrome déposée par la loi de Faraday"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Partie 1 : chromage d'une plaque d'acier par électrolyse"
+    bareme_total: 2.25
+    duration_min: 13
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national PC BIOF, code NS 28F
+        (Exercice 1, Partie 1 — chromage d'une plaque d'acier par
+        électrolyse ; barème de la partie = 2,25 pt sur les 7 pt de
+        l'exercice complet, dont la Partie 2 — étude de quelques propriétés
+        d'une solution aqueuse d'acide propanoïque — relève de
+        reactions-acido-basiques.md). Transcription vérifiée par re-lecture
+        de contrôle indépendante des corrections de la passe adversariale
+        (agent-relecteur-de-contrôle, 2026-08-07), diff OK contre
+        upload-84516/0002-big.jpg (docs/sujets/pc/electrolyse.md, statut
+        « vérifié ») ; barème en marge recompté au zoom ×2 :
+        $0{,}5+0{,}5+0{,}5+0{,}75=2{,}25$. Physique re-dérivée et cohérente
+        (recontrôlée indépendamment ici) : $n(e^-) = I\Delta t/F =
+        2\times7200/96500 \approx 0{,}1492$ mol $\Rightarrow n(Cr) =
+        n(e^-)/3 \approx 4{,}97\times10^{-2}$ mol $\Rightarrow m(Cr)
+        \approx 2{,}59$ g ; cathode = plaque d'acier (réduction
+        $Cr^{3+}+3e^- \to Cr$), anode = électrode de graphite (oxydation
+        de l'eau, dégagement de $O_2$) ; une seule réponse juste par QCM
+        (2.1 = A, 2.2 = B). Aucun recoupement avec le sommet de leçon
+        (r-bac transcrit le sujet 2019, iodure de zinc) ni avec
+        bk-2018-n-x1 (bromure de plomb) — voir l'en-tête du fichier.
+    intro: |-
+      **Chromage d'une plaque d'acier par électrolyse (examen national, session normale 2022, Exercice 1 — Partie 1).**
+
+      *L'électrolyse est un processus de conversion de l'énergie électrique en énergie chimique. Parmi ses applications on trouve la couverture d'objets par une fine couche de métal et ce pour les protéger de la corrosion. On se propose, dans cette partie, d'étudier le chromage d'une plaque d'acier par électrolyse.*
+
+      Pour réaliser cette électrolyse, on plonge totalement une plaque en acier dans une solution aqueuse de chlorure de chrome (III) $Cr^{3+}_{(aq)} + 3\,Cl^-_{(aq)}$ et on la relie à l'un des pôles d'un générateur $G$. L'autre pôle du générateur est relié à une électrode en graphite (figure 1). En fermant l'interrupteur $K$, un courant électrique d'intensité constante $I = 2\ \text{A}$ circule alors dans le circuit. On observe un dégagement de dioxygène $O_{2(g)}$ au niveau de l'électrode en graphite et un dépôt uniforme de chrome sur la plaque d'acier.
+
+      **Données :** les couples mis en jeu : $Cr^{3+}_{(aq)}/Cr_{(s)}$ et $O_{2(g)}/H_2O_{(l)}$ ; $1\text{F} = 96500\ \text{C.mol}^{-1}$ ; la masse molaire du chrome : $M(Cr) = 52\ \text{g.mol}^{-1}$.
+
+      **Figure 1 (schéma du dispositif).** Un générateur $G$ (en haut, au centre du schéma) est relié par un fil à un interrupteur $K$ (en haut à droite, à droite de $G$). Un bécher contient la solution de chlorure de chrome (III) $Cr^{3+}_{(aq)} + 3\,Cl^-_{(aq)}$, dans laquelle plongent deux électrodes reliées au circuit : à gauche, la **plaque en acier** (reliée au générateur $G$) ; à droite, l'**électrode en graphite** (reliée à l'interrupteur $K$).
+    questions:
+      - id: q1
+        part: "Partie 1 — Chromage d'une plaque d'acier par électrolyse"
+        stem: |-
+          **(0,5 pt)** Identifier l'électrode qui joue le rôle de la cathode. Justifier votre réponse.
+        reasoning: |-
+          Comme au rung 1, l'anode et la cathode se distinguent par le mécanisme qui s'y produit, pas par leur position sur le schéma — et ici, aucune polarité de générateur n'est même précisée, donc rien à lire de ce côté-là. Il faut repartir des deux observations données : un dépôt de chrome métallique sur la plaque d'acier, et un dégagement de dioxygène gazeux à l'électrode de graphite. Un dépôt de métal à partir d'un ion en solution, c'est cet ion qui capte des électrons pour redevenir un atome métal — une réduction (rung 1) — et l'électrode où se produit une réduction est, par définition, la cathode.
+
+          La **plaque d'acier** est donc la cathode : c'est là que les ions $Cr^{3+}$ de la solution sont réduits en chrome métal, qui vient s'y déposer. (L'électrode de graphite, siège du dégagement de $O_2$ — une oxydation de l'eau — est l'anode.)
+      - id: q2
+        part: "Partie 1 — Réactions aux électrodes (QCM)"
+        stem: |-
+          **(0,5 pt)** L'équation de la réaction au niveau de l'électrode de graphite s'écrit ainsi :
+
+          | | |
+          |---|---|
+          | A | $2\,H_2O_{(\ell)} \rightleftharpoons O_{2(g)} + 4\,H^+_{(aq)} + 4\,e^-$ |
+          | B | $Cr^{3+}_{(aq)} + 3\,e^- \rightleftharpoons Cr_{(s)}$ |
+          | C | $2\,O^{2-}_{(aq)} \rightleftharpoons O_{2(g)} + 4\,e^-$ |
+          | D | $2\,H_2O_{(\ell)} \rightleftharpoons O_{2(g)} + 2\,H_{2(g)}$ |
+        reasoning: |-
+          L'électrode de graphite est l'anode (question précédente) : il s'y produit une oxydation, celle qui dégage le dioxygène observé. Reste à identifier la bonne demi-équation parmi les quatre proposées.
+
+          B décrit une réduction (l'ion $Cr^{3+}$ qui capte des électrons) : c'est la réaction de la plaque d'acier, pas celle du graphite. Faux ici. C invente une espèce $O^{2-}_{(aq)}$ absente des données — le seul couple fourni pour l'oxygène est $O_{2(g)}/H_2O_{(l)}$, pas $O_2/O^{2-}$. Faux. D ne fait apparaître aucun électron échangé : ce n'est pas une demi-équation redox, elle ne peut donc pas décrire ce qui se produit à une électrode. Faux.
+
+          A est la seule à exploiter le couple donné $O_{2(g)}/H_2O_{(l)}$ dans le bon sens — l'eau oxydée en dioxygène, avec libération d'électrons — cohérent avec l'oxydation attendue à l'anode et le dégagement de $O_2$ observé au graphite. $\boxed{\text{A}}$.
+      - id: q3
+        stem: |-
+          **(0,5 pt)** L'équation de la réaction au niveau de la plaque d'acier s'écrit ainsi :
+
+          | | |
+          |---|---|
+          | A | $2\,H_2O_{(\ell)} \rightleftharpoons O_{2(g)} + 4\,H^+_{(aq)} + 4\,e^-$ |
+          | B | $Cr^{3+}_{(aq)} + 3\,e^- \rightleftharpoons Cr_{(s)}$ |
+          | C | $Cr^{2+}_{(aq)} + 2\,e^- \rightleftharpoons Cr_{(s)}$ |
+          | D | $2\,H_2O_{(\ell)} \rightleftharpoons O_{2(g)} + 2\,H_{2(g)}$ |
+        reasoning: |-
+          La plaque d'acier est la cathode (question 1) : il s'y produit une réduction, celle qui dépose le chrome métal observé.
+
+          A et D décrivent toutes deux une transformation à l'électrode de graphite (l'oxydation de l'eau) : hors sujet ici, à la plaque d'acier. C propose de réduire un ion $Cr^{2+}_{(aq)}$ — cet ion n'apparaît nulle part dans les données, qui ne donnent que le couple $Cr^{3+}/Cr$. Faux.
+
+          B réduit exactement l'ion donné dans les données, $Cr^{3+}_{(aq)}$, en chrome métal $Cr_{(s)}$ — cohérent avec le dépôt de chrome observé sur la plaque d'acier. $\boxed{\text{B}}$.
+      - id: q4
+        part: "Partie 1 — Masse de chrome déposée (loi de Faraday)"
+        stem: |-
+          **(0,75 pt)** L'électrolyse a duré $\Delta t = 2\ \text{h}$. Déterminer la masse $m(Cr)$ de chrome déposé sur la plaque d'acier.
+        reasoning: |-
+          On applique la même chaîne qu'au rung 4 — courant et durée donnent la quantité d'électricité, la constante de Faraday la convertit en quantité de matière d'électrons — mais avec un coefficient différent de celui des exemples travaillés de la leçon : la demi-équation de la question 2.2 dit que chaque atome de chrome déposé mobilise **trois** électrons, pas deux. C'est exactement le geste décrit au rung 5 pour la galvanoplastie — l'objet à recouvrir (ici la plaque d'acier) est branché en cathode, et son dépôt métallique se chiffre par cette même loi de Faraday ; le chrome y est d'ailleurs cité comme exemple de métal déposé. On convertit d'abord la durée en secondes, indispensable avant tout calcul de charge.
+        steps:
+          - math: '\Delta t = 2\times 3600 = 7200\ \text{s}'
+            note: "Conversion de la duree en secondes avant tout calcul de charge."
+          - math: 'Q = I\,\Delta t = 2\times 7200 = 1{,}44\times10^{4}\ \text{C}'
+            note: "Quantite d'electricite debitee par le generateur."
+          - math: 'n(e^-) = \frac{Q}{F} = \frac{1{,}44\times10^{4}}{96500}'
+            note: "Loi de Faraday : conversion de la charge en quantite de matiere d'electrons."
+          - math: '\boxed{n(e^-) \approx 0{,}1492\ \text{mol}}'
+            note: "Application numerique."
+          - math: 'n(Cr) = \frac{n(e^-)}{3} \approx \frac{0{,}1492}{3}'
+            note: "Cr3+ + 3 e- -> Cr (question 2.2) : trois electrons par atome de chrome depose, pas deux comme dans les exemples de la lecon."
+          - math: '\boxed{n(Cr) \approx 4{,}97\times10^{-2}\ \text{mol}}'
+            note: "Application numerique."
+          - math: 'm(Cr) = n(Cr)\times M(Cr) \approx 4{,}97\times10^{-2}\times 52'
+            note: "Conversion mole -> masse par la masse molaire du chrome."
+          - math: '\boxed{m(Cr) \approx 2{,}59\ \text{g}}'
+            note: "Masse de chrome deposee sur la plaque d'acier pendant Delta t."
