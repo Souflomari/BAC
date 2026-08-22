@@ -20,7 +20,6 @@ import { subjectLabel } from "@/lib/subjects";
 import { PageShell } from "@/components/ui/PageShell";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { ChapterList, type UnitView } from "@/components/curriculum/ChapterList";
-import { cn } from "@/lib/utils";
 
 export function generateStaticParams() {
   return (Object.keys(SUBJECTS) as SubjectId[]).map((subject) => ({ subject }));
@@ -73,31 +72,52 @@ export default function SubjectPage({ params }: { params: { subject: string } })
       : `${total} chapitre${total > 1 ? "s" : ""} · ${available} disponible${available > 1 ? "s" : ""}`;
 
   return (
-    <PageShell notions={manifestePourHeader()} width="content">
-      {/* Masthead band — the subject surface's one display moment (A3 grammar). */}
-      <div
-        data-band="masthead"
-        className={cn(
-          "-mt-12 bp-medium:-mt-16 mb-12 py-12",
-          "mx-[calc(50%-50vw)] px-[calc(50vw-50%)]",
-          "bg-surface-container-low",
-          "border-b border-subtle"
-        )}
-      >
-        {/* Content sits on the page spine by construction — the band's
-            full-bleed calc padding re-aligns it to main's content box
-            (same trick as NotionPageView; no extra container). */}
+    <PageShell notions={manifestePourHeader()} width="page">
+      {/* En-tête matière (Studio, R6 — STUDIO-SPEC §6.1) : le motif de la
+          ProgrammeMap agrandi. La bande pleine-largeur grise du squelette
+          Day-9 est partie — l'accueil et les matières parlent le même
+          langage : point de couleur matière, display, couverture RÉELLE en
+          mono, barre fine. Données du cadre, jamais de % fabriqué. */}
+      <header className="mb-10">
         <Breadcrumb segments={[{ label: "Accueil", href: "/" }, { label: subjectLabel(subject.id) }]} />
-        <h1 className="font-display text-display-lg font-bold text-primary max-w-[26ch]">
-          {subjectLabel(subject.id)}
-        </h1>
-        <p className="mt-4 max-w-lead text-lead text-secondary">
+        <div className="flex items-center gap-3">
+          <span
+            aria-hidden
+            className="h-3 w-3 shrink-0 rounded-full"
+            style={{ background: `var(--subject-${subject.id})` }}
+          />
+          {/* h1 en h1 à compact (« Mathématiques » à 48 px remplissait les
+              390 px au pixel près), display à partir de medium. */}
+          <h1 className="font-display text-h1 bp-medium:text-display font-bold text-primary">
+            {subjectLabel(subject.id)}
+          </h1>
+        </div>
+        <p className="mt-3 max-w-lead text-lead text-secondary">
           {subject.blurb}
         </p>
-        <p className="mt-3 text-body-sm text-secondary tabular-nums">
-          2ᵉ Bac · Sciences · {metaLine}
+        <p className="mt-3 text-body-sm text-secondary">
+          2ᵉ Bac · Sciences ·{" "}
+          <span data-couverture={`${available}/${total}`} className="font-mono tabular-nums">
+            {metaLine}
+          </span>
         </p>
-      </div>
+        {total > 0 && (
+          <div
+            className="mt-4 h-0.5 max-w-[420px] overflow-hidden rounded-full"
+            style={{ background: `var(--subject-${subject.id}-subtle)` }}
+            role="img"
+            aria-label={`${available} chapitres disponibles sur ${total}`}
+          >
+            <div
+              className="h-full rounded-full"
+              style={{
+                background: `var(--subject-${subject.id})`,
+                width: `${Math.round((available / Math.max(total, 1)) * 100)}%`,
+              }}
+            />
+          </div>
+        )}
+      </header>
 
       <ChapterList subject={subject.id} units={units} />
     </PageShell>

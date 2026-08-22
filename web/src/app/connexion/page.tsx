@@ -38,7 +38,8 @@
  */
 
 import { useCallback, useState, type FormEvent } from "react";
-import { useRouter } from "next/navigation";
+// R4 : la redirection post-connexion fond comme le reste des navigations.
+import { useTransitionRouter as useRouter } from "next-view-transitions";
 import { PageShell } from "@/components/ui/PageShell";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { TransportButton } from "@/components/notion/TransportButton";

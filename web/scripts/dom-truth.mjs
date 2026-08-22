@@ -385,8 +385,14 @@ const BATTERY = [
   { name: "D12 connexion (off): honest closed state, no form", page: "/connexion", sel: "main", text: "pas encore ouverte", present: true, absentSel: "main form" },
   { name: "D12 connexion (off): no Google affordance either", page: "/connexion", sel: "main", notText: /Google|démonstration|mot de passe/i },
   { name: "D12 header (off): no auth affordance", page: "/", sel: "header", notText: /Se connecter|Se déconnecter|démonstration/ },
-  { name: "D9 subject page: masthead band", page: "/matieres/pc", sel: "[data-band='masthead']", bgVar: "--color-surface-container-low" },
-  { name: "D9 subject page: h1 display-lg serif", page: "/matieres/pc", sel: "h1", text: "Physique", fontKey: "display-lg", weight: "700", family: "Geist" },
+  // R6 (Studio) : la bande masthead pleine-largeur du squelette Day-9 est
+  // partie — l'en-tête matière parle le motif ProgrammeMap (point couleur,
+  // display, couverture RÉELLE en mono, barre fine) et les unités sont des
+  // cartes claires sur la bande `page`.
+  { name: "R6 subject page: h1 display Geist", page: "/matieres/pc", sel: "h1", text: "Physique", fontKey: "display", weight: "700", family: "Geist" },
+  // (nom interne next/font "__GeistMono_…" — pas d'espace dans la famille calculée)
+  { name: "R6 subject page: couverture réelle en mono (fait du cadre)", page: "/matieres/pc", sel: "header [data-couverture]", text: "chapitre", family: "GeistMono" },
+  { name: "R6 subject page: unités en cartes claires", page: "/matieres/pc", sel: "main section[aria-label]", bgVar: "--color-surface-raised" },
   { name: "D9 subject page: available chapter links to notion", page: "/matieres/pc", sel: "a[href='/notions/pc/rlc-serie']", present: true },
   // D9.5 content-fill completed every PC chapter (25/25) — /matieres/pc no
   // longer has an un-built chapter to render "À venir" against, so the

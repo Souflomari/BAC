@@ -8,6 +8,7 @@
 import type { Metadata } from "next";
 import { Link } from "@/components/ui/Lien";
 import { PageShell } from "@/components/ui/PageShell";
+import { listNotions } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -15,8 +16,17 @@ export const metadata: Metadata = {
 };
 
 export default function NotFound() {
+  // Page SERVEUR : elle peut charger le manifeste — le panneau Notions et
+  // la palette ⌘K marchent donc ICI aussi, là où un élève perdu en a le
+  // plus besoin (R6 ; le contraire du cul-de-sac).
+  const notions = listNotions().map((n) => ({
+    subject: n.subject,
+    slug: n.slug,
+    title: n.title,
+    readingMinutes: n.readingMinutes,
+  }));
   return (
-    <PageShell width="reading">
+    <PageShell width="reading" notions={notions}>
       <div className="flex flex-col items-center justify-center py-24 text-center">
         <span
           className={cn(
@@ -39,7 +49,7 @@ export default function NotFound() {
           Cette page n’existe pas ou a été déplacée.
         </p>
         <Link href="/" className={cn("mt-8", "btn-primary")}>
-          Retour aux notions
+          Retour à l’accueil
         </Link>
       </div>
     </PageShell>
