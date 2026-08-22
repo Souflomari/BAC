@@ -1,0 +1,264 @@
+# bank.yaml — la banque « S'entraîner » de suivi-temporel-vitesse (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, exercises.yaml), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Chaque entrée est une transcription FIDÈLE d'une entrée
+# « vérifié » de docs/sujets/pc/suivi-temporel-vitesse.md (re-fetch AlloSchool
+# + diff caractère par caractère par un agent-vérificateur, avec, pour 2024,
+# une deuxième passe indépendante et une figure re-mesurée intégralement —
+# voir le détail dans chaque `sourcing.note`). Raisonnement rédigé à la voix
+# experte de la maison sur 100 % des questions, en citant les rungs R1 à R4 de
+# la leçon (lesson.md) là où c'est naturel ; barème transcrit tel quel dans les
+# énoncés (tag « (x,xx pt) » ajouté — la source docs/sujets ne porte que
+# « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
+# entre apostrophes simples dans steps[].math, notes sans backslash ni accent).
+#
+# NOTE ÉDITORIALE (pour la revue) : deux sujets « vérifié » couvrent cette
+# notion dans docs/sujets/pc/suivi-temporel-vitesse.md — 2021 N (Exercice I,
+# Partie 1, saponification par conductimétrie) et 2024 N (Exercice 1 Chimie,
+# Partie 1, dégradation de la vitamine C suivie par dosage). Le fichier source
+# liste aussi trois questions isolées relevant de ce thème mais déjà classées
+# ailleurs (2025 N dans controle-catalyse.md, 2023 N dans
+# esterification-hydrolyse.md, pour éviter la duplication d'un exercice classé
+# par sa question dominante) : elles ne sont PAS des entrées « vérifié » de CE
+# fichier source et ne sont donc pas converties ici, conformément à la
+# consigne (seules les deux sections « Statut: vérifié » ci-dessus le sont).
+#
+# Le 2021 N (bk-2021-n-x1) recoupe le sommet de leçon : ce même sujet est déjà
+# r-bac dans exercises.yaml (marqueur [[exercise:r-bac]] à R5 « Exercice de
+# type bac »), mêmes questions, mêmes valeurs numériques (x_f = 10⁻³ mol,
+# t_{1/2} ≈ 8 min, pente de (T) en t₁ = 4 min ≈ -0,01 S.m⁻¹.min⁻¹, v₁ ≈ 0,63
+# mol.m⁻³.min⁻¹), reprises ici à l'identique pour rester cohérentes avec le
+# sommet, avec un raisonnement rédigé à nouveau (pas une copie de
+# exercises.yaml). Il figure ici pour que la banque soit le corpus complet des
+# annales vérifiées de la notion (BANK-SPEC §1) — recoupement assumé, même
+# disposition que dipole-rl bk-2020-n-x4 / r-bac, chute-mouvements-plans
+# bk-2020-n-x5 / r-bac et reactions-acido-basiques bk-2021-n-x1 / rc-charge
+# bk-2019-n-x3. À l'arbitrage de l'owner si l'on préfère écarter cette entrée
+# de la banque pour éviter le recoupement sur la même page.
+#
+# SCOPE NOTE : aucune. Les deux entrées mobilisent exactement les méthodes
+# couvertes explicitement par la leçon — tableau d'avancement et réactif
+# limitant (R2), lien entre une grandeur physique mesurée et x via une
+# relation donnée puis dérivation (R1 pour le principe du substitut
+# monotone, R2 pour v = (1/V)(dx/dt), extension algébrique naturelle du même
+# principe pour bk-2021-n-x1 q4/q5), lecture de tangente et de palier (R3),
+# définition et lecture graphique de t_{1/2} (R4), facteurs cinétiques et
+# chocs efficaces (R3, R4). Aucun outil non couvert par la leçon n'est
+# mobilisé ; aucun pont de portée n'a donc été nécessaire.
+
+notion: pc/suivi-temporel-vitesse
+
+entries:
+  # ── bk-2021-n-x1 — 2021 N, Exercice I (Partie 1) : saponification, conductimétrie ──
+  # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir la note
+  # éditoriale en tête pour le recoupement assumé.
+  - id: bk-2021-n-x1
+    title: "Cinétique de la saponification suivie par conductimétrie : demi-réaction et vitesse volumique lues sur la courbe de conductivité"
+    source:
+      year: 2021
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice I — Partie 1 : Étude cinétique d'une réaction chimique (saponification)"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28F, AlloSchool element/127287 (Exercice I, Partie
+        1 — étude cinétique de la synthèse d'un savon par conductimétrie ;
+        barème ≈ 2,5 pt sur les 7 pt de l'exercice complet, dont la Partie 2 —
+        dosage d'un acide carboxylique — est transcrite sous
+        reactions-acido-basiques.md). Transcription vérifiée en une passe :
+        re-fetch indépendant AlloSchool + diff caractère par caractère
+        (agent-vérificateur, 2026-07-11 ; docs/sujets/pc/suivi-temporel-vitesse.md,
+        statut « vérifié »). La valeur du palier de la figure 1 (≈ 0,09
+        S.m⁻¹) porte, dans la source, le drapeau « lecture d'échelle à
+        confirmer » — reprise ici telle quelle, non utilisée dans les calculs
+        (les questions exploitent σ = 0,25 S.m⁻¹ à t = 0, la relation σ = f(x)
+        donnée, et la pente de la tangente (T) en t₁ = 4 min, pas le palier).
+        Recoupement assumé avec le sommet de leçon : ce même sujet est déjà le
+        sommet r-bac de exercises.yaml (marqueur [[exercise:r-bac]] à R5
+        « Exercice de type bac ») — mêmes questions, mêmes valeurs numériques
+        (x_f = 10⁻³ mol, t_{1/2} ≈ 8 min, pente dσ/dt en t₁ ≈ -0,01
+        S.m⁻¹.min⁻¹, v₁ ≈ 0,63 mol.m⁻³.min⁻¹) ; raisonnement rédigé de nouveau
+        ici (voix maison), pas copié de exercises.yaml — même disposition que
+        dipole-rl bk-2020-n-x4 / r-bac. À l'arbitrage de l'owner si l'on
+        préfère écarter cette entrée de la banque pour éviter le recoupement
+        sur la même page.
+    intro: |-
+      **Étude cinétique de la synthèse d'un savon (examen national, session normale 2021, Exercice I — Partie 1).**
+
+      L'une des plus anciennes réactions de synthèse est la fabrication du savon. Le savon est un produit composé de molécules obtenues par réaction chimique, entre un composé organique et une solution aqueuse d'hydroxyde de sodium.
+
+      Cette partie de l'exercice se propose d'étudier, par conductimétrie, la cinétique de la réaction de synthèse d'un savon. Cette réaction se produit entre l'éthanoate d'éthyle de formule $\text{CH}_3\text{COOC}_2\text{H}_5$ et une solution aqueuse d'hydroxyde de sodium $\text{Na}^+_{(aq)} + \text{HO}^-_{(aq)}$.
+
+      À un instant choisi comme origine des dates $t = 0$, on introduit, en excès, l'éthanoate d'éthyle dans un ballon contenant une quantité de matière $n_0(\text{HO}^-) = 10^{-3}\ \text{mol}$ d'ions hydroxyde. On obtient un mélange réactionnel ayant un volume $V_0 = 100\ \text{mL}$. Il se produit, sous une température constante, une réaction modélisée par l'équation chimique suivante :
+
+      $$\text{CH}_3\text{COOC}_2\text{H}_{5(aq)} + \text{HO}^-_{(aq)} \rightarrow \text{CH}_3\text{COO}^-_{(aq)} + \text{C}_2\text{H}_5\text{OH}_{(aq)}$$
+
+      On mesure, à chaque instant, la conductivité $\sigma$ du mélange réactionnel. La courbe de la figure 1 donne les variations de la conductivité du mélange réactionnel en fonction du temps. La droite $(T)$ représente la tangente à la courbe au point d'abscisse $t_1 = 4\ \text{min}$. L'expression de la conductivité $\sigma$ du mélange réactionnel en fonction de l'avancement $x$ de la réaction est :
+
+      $$\sigma = 0{,}25 - 160\,x \qquad (\sigma \text{ en } \text{S.m}^{-1},\ x \text{ en mol})$$
+
+      **Figure 1 (courbe).** Axe des ordonnées $\sigma\ (\text{S.m}^{-1})$ gradué $0{,}05,\ 0{,}1,\ 0{,}15,\ 0{,}2,\ 0{,}25$ ; axe des abscisses $t\ (\text{min})$ gradué $4,\ 8,\ 12,\ 16,\ 20$. La courbe part de $\sigma = 0{,}25\ \text{S.m}^{-1}$ à $t = 0$ et décroît (allure exponentielle) vers un palier au voisinage de $\sigma \approx 0{,}09\ \text{S.m}^{-1}$ *(lecture d'échelle à confirmer)*. La tangente $(T)$ (en pointillés) est tracée au point d'abscisse $t_1 = 4\ \text{min}$.
+    questions:
+      - id: q1
+        part: "Partie 1 — Tableau d'avancement et avancement final"
+        stem: |-
+          **(0,75 pt)** Dresser le tableau d'avancement de cette réaction et déterminer la valeur de l'avancement final $x_f$ sachant que cette réaction est totale.
+        reasoning: |-
+          On dresse le tableau d'avancement comme au rung 2 : une ligne pour chaque espèce, chacune évoluant selon son coefficient stoechiométrique (ici tous égaux à $1$). Pour $x_f$, on cherche le réactif limitant — celui qui s'annule en premier. L'énoncé précise que l'éthanoate d'éthyle est introduit **en excès** : c'est donc $\text{HO}^-$ qui limite la réaction. La réaction étant totale, $\text{HO}^-$ est intégralement consommé quand l'avancement atteint sa valeur finale, qui vaut alors exactement la quantité initiale d'hydroxyde — pas besoin de comparer deux quotients, l'excès de l'un des réactifs est donné directement par l'énoncé.
+        steps:
+          - math: 'n(\text{HO}^-) = n_0(\text{HO}^-) - x = 10^{-3} - x \quad (\text{mol})'
+            note: "Ion hydroxyde consomme, coefficient 1 ; l'ethanoate d'ethyle, en exces, n'est pas limitant."
+          - math: 'n(\text{HO}^-) = 0 \ \text{pour}\ x = x_f \implies x_f = n_0(\text{HO}^-)'
+            note: "Reaction totale : le reactif limitant (HO-) est entierement consomme a l'avancement final."
+          - math: '\boxed{x_f = 10^{-3}\ \text{mol} = 1{,}0\ \text{mmol}}'
+            note: "Avancement final, fixe par la quantite initiale d'hydroxyde."
+      - id: q2
+        part: "Partie 1 — Temps de demi-réaction et vitesse volumique"
+        stem: |-
+          **(0,25 pt)** Définir le temps de demi-réaction $t_{1/2}$.
+        reasoning: |-
+          C'est la définition du rung 4 : $t_{1/2}$ est l'instant où l'avancement atteint la moitié de sa valeur finale, $x(t_{1/2}) = \dfrac{x_f}{2}$. La définition porte sur la courbe d'avancement $x(t)$ elle-même, pas sur une fraction de la durée totale d'observation — et comme $x(t)$ ne fait que croître, de $0$ à $x_f$, sans jamais redescendre, elle traverse cette valeur une fois et une seule : $t_{1/2}$ est donc parfaitement défini.
+      - id: q3
+        stem: |-
+          **(0,5 pt)** À l'aide de l'expression $\sigma = f(x)$ et de la courbe de la figure 1, déterminer la valeur de $t_{1/2}$.
+        reasoning: |-
+          Piège à éviter : on ne lit pas $t_{1/2}$ directement sur l'axe des temps, parce que la courbe fournie donne $\sigma(t)$, pas $x(t)$. Il faut donc traduire la condition du rung 4, $x = x_f/2$, en une condition sur $\sigma$ — la seule grandeur portée en ordonnée sur cette figure — grâce à la relation $\sigma = f(x)$ donnée dans l'énoncé. Une fois cette valeur de $\sigma$ calculée, on lit sur la courbe l'abscisse du point où elle est atteinte.
+        steps:
+          - math: 'x = \dfrac{x_f}{2} = \dfrac{10^{-3}}{2} = 0{,}5\times10^{-3}\ \text{mol}'
+            note: "Moitie de l'avancement final trouve en q1 (definition du rung 4)."
+          - math: '\sigma\!\left(\tfrac{x_f}{2}\right) = 0{,}25 - 160\times 0{,}5\times10^{-3} = 0{,}25 - 0{,}08'
+            note: "On convertit la condition sur x en condition sur sigma via la relation donnee."
+          - math: '\sigma\!\left(\tfrac{x_f}{2}\right) = 0{,}17\ \text{S.m}^{-1}'
+            note: "Valeur de conductivite correspondant a x = x_f/2."
+          - math: '\boxed{t_{1/2} \approx 8\ \text{min}}'
+            note: "Lecture graphique : abscisse du point de la figure 1 ou sigma = 0,17 S/m."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Montrer que la vitesse volumique de la réaction à un instant $t$ s'écrit sous la forme : $v = -\dfrac{1}{160\,V_0} \cdot \dfrac{d\sigma}{dt}$.
+        reasoning: |-
+          On part de la définition générale du rung 2, $v = \dfrac{1}{V_0}\dfrac{dx}{dt}$ — mais ici ce n'est pas $x$ qu'on mesure en continu, c'est $\sigma$. Le principe reste celui du rung 1 (une grandeur substitut, liée de façon connue à $x$) : il suffit d'exprimer $x$ en fonction de $\sigma$ en inversant la relation donnée, puis de dériver par rapport au temps. L'inversion fait apparaître un signe moins, qui n'a rien d'anormal : $\sigma$ décroît précisément parce que $x$ croît.
+        steps:
+          - math: 'v = \dfrac{1}{V_0}\dfrac{dx}{dt}'
+            note: "Definition de la vitesse volumique de reaction (rung 2)."
+          - math: '\sigma = 0{,}25 - 160\,x \implies x = \dfrac{0{,}25-\sigma}{160}'
+            note: "On inverse la relation sigma = f(x) donnee dans l'enonce (0,25 est une constante)."
+          - math: '\dfrac{dx}{dt} = -\dfrac{1}{160}\dfrac{d\sigma}{dt}'
+            note: "On derive par rapport au temps : le signe moins vient de la derivee de -sigma/160."
+          - math: '\boxed{v = \dfrac{1}{V_0}\left(-\dfrac{1}{160}\dfrac{d\sigma}{dt}\right) = -\dfrac{1}{160\,V_0}\dfrac{d\sigma}{dt}}'
+            note: "On reporte dans v = (1/V0)(dx/dt) : forme demandee."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** Déterminer, en $\text{mol.m}^{-3}.\text{min}^{-1}$, la valeur $v_1$ de cette vitesse à l'instant $t_1 = 4\ \text{min}$.
+        reasoning: |-
+          $\dfrac{d\sigma}{dt}$ en $t_1$, c'est la pente de la tangente $(T)$ tracée en ce point (méthode du rung 3) : on lit ses coordonnées pour l'estimer. Cette pente est négative, puisque $\sigma$ décroît ; reportée dans la formule de la question précédente, le signe moins devant la compense, et $v_1$ ressort positif, comme il se doit pour une vitesse. Un seul piège reste à surveiller : l'énoncé demande $v_1$ en $\text{mol.m}^{-3}.\text{min}^{-1}$, donc $V_0$ doit être converti en $\text{m}^3$ — pas laissé en litres.
+        steps:
+          - math: '\left.\dfrac{d\sigma}{dt}\right|_{t_1} \approx -0{,}01\ \text{S.m}^{-1}.\text{min}^{-1}'
+            note: "Pente de la tangente (T) lue au point t1 = 4 min sur la figure 1 (rung 3), pente negative."
+          - math: 'V_0 = 100\ \text{mL} = 100\times10^{-6}\ \text{m}^3 = 10^{-4}\ \text{m}^3'
+            note: "Conversion en m3, imposee par l'unite demandee (mol.m-3.min-1)."
+          - math: 'v_1 = -\dfrac{1}{160\,V_0}\left.\dfrac{d\sigma}{dt}\right|_{t_1} = -\dfrac{1}{160\times10^{-4}}\times(-0{,}01)'
+            note: "On applique la formule de q4 avec les valeurs numeriques."
+          - math: '\boxed{v_1 \approx 0{,}63\ \text{mol.m}^{-3}.\text{min}^{-1}}'
+            note: "Resultat positif : les deux signes moins se compensent."
+
+  # ── bk-2024-n-x1 — 2024 N, Exercice 1 (Chimie), Partie 1 : dégradation de la vitamine C ──
+  - id: bk-2024-n-x1
+    title: "Dégradation de la vitamine C dans un jus d'orange : facteurs cinétiques, demi-réaction et vitesse volumique lues sur x(t)"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 1 (Chimie) — Partie 1 : Suivi temporel de la dégradation de la vitamine C"
+    bareme_total: 2.25
+    duration_min: 13
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28F, AlloSchool element/145763 (Exercice 1,
+        Partie 1 — suivi temporel de la dégradation de la vitamine C dans un
+        jus d'orange, par dosage ; barème de la Partie 1 = 2,25 pt
+        (0,75+0,5+1) sur les 7 pt de l'exercice complet, dont la Partie 2 —
+        dosage d'une solution aqueuse de vitamine C — est transcrite sous
+        reactions-acido-basiques.md). Transcription vérifiée en 2ᵉ passe :
+        vérificateur indépendant (agent-vérificateur-indépendant, 2026-08-07),
+        diff OK, figure 1 re-mesurée intégralement au pixel (étalonnage
+        refait, courbe confirmée partant de l'origine, palier confirmé à
+        ≈ 0,5 mmol, ordonnée à l'origine de la tangente (T) et point de
+        tangence confirmés — docs/sujets/pc/suivi-temporel-vitesse.md, statut
+        « vérifié »). Physique re-dérivée et cohérente avec la source : pente
+        de $(T)$ ≈ 2,5×10⁻³ mmol.h⁻¹ (lecture des deux points transcrits dans
+        l'intro : ordonnée à l'origine ≈ 0,26 mmol, point de tangence à
+        $t_1=60$ h, $x≈0{,}41$ mmol — cohérent avec la valeur plus précise
+        re-dérivée par le vérificateur sur les coordonnées pixel exactes,
+        2,56×10⁻³ mmol.h⁻¹), $v(t_1) = \text{pente}/V ≈ 1{,}3\times10^{-2}\
+        \text{mmol.L}^{-1}.\text{h}^{-1}$ ; $x_{max}≈0{,}5\ \text{mmol}$, d'où
+        $t_{1/2}≈24\ \text{h}$ — les deux valeurs figurent explicitement dans
+        le sourcing de la transcription source comme re-dérivées par le
+        vérificateur.
+    intro: |-
+      **Suivi temporel de la dégradation de la vitamine C dans un jus d'orange (examen national, session normale 2024, Exercice 1 — Chimie, Partie 1).**
+
+      *(Cadrage de l'exercice.)* L'acide ascorbique, de formule brute $\text{C}_6\text{H}_8\text{O}_6$ appelé vitamine C, est un antioxydant présent dans de nombreux fruits et légumes. La vitamine C possède des propriétés rédox et acido-basiques. Cette vitamine se dégrade à la chaleur, à l'air ;…
+
+      On dispose d'une solution $(S)$ de jus d'orange de volume $V = 200\ \text{mL}$ à une température $\theta$. Si on expose ce jus à l'air, la vitamine C qu'il contient se dégrade par oxydation avec le dioxygène.
+
+      On suit, par dosage, l'évolution temporelle de la dégradation de cette vitamine. Le graphe de la figure 1 représente l'évolution temporelle de l'avancement $x$ de la réaction d'oxydation de la vitamine C. La droite $(T)$ dans la figure 1 représente la tangente à la courbe au point d'abscisse $t = t_1 = 60\ \text{h}$.
+
+      **Figure 1 (courbe).** Axe des ordonnées $x\ (\text{mmol})$, gradué (traits principaux chiffrés) $0{,}1$ et $0{,}2$, origine $0$ ; axe des abscisses $t\ (\text{h})$, gradué (traits principaux chiffrés) $40$ et $80$. Courbe croissante et concave (allure de saturation), partant exactement de l'origine $(0\,;\,0)$, montant rapidement puis s'incurvant vers un palier horizontal à $\simeq 0{,}5\ \text{mmol}$. La droite $(T)$, tracée en trait plein, est tangente à la courbe au point marqué d'une croix « $\times$ », situé à $t_1 = 60\ \text{h}$, où $x \simeq 0{,}41\ \text{mmol}$ ; elle coupe l'axe des ordonnées, à $t = 0$, à $\simeq 0{,}26\ \text{mmol}$.
+    questions:
+      - id: q1
+        part: "Partie 1 — Facteurs cinétiques et modèle des chocs efficaces"
+        stem: |-
+          **(0,75 pt)** Répondre par vrai ou faux (sans justification) aux affirmations suivantes :
+
+          a. La concentration initiale des réactifs est un facteur cinétique.
+
+          b. L'évolution d'un système chimique est toujours considérée comme terminée au bout d'une durée égale à deux fois le temps de demi-réaction.
+
+          c. Plus les chocs entre les espèces réactives sont nombreux et efficaces, plus la réaction chimique est rapide.
+        reasoning: |-
+          L'énoncé ne demande pas de justification, mais le raisonnement, lui, ne se saute pas.
+
+          **a. Vrai.** La concentration initiale des réactifs est bien l'un des deux facteurs cinétiques du chapitre précédent, avec la température (rappelés au rung 4) : augmenter la concentration initiale augmente la fréquence des chocs entre entités réactives, donc accélère la réaction dès l'instant $t=0$.
+
+          **b. Faux.** C'est le piège de cette série : il n'existe pas de règle universelle qui fixe la fin d'une transformation à un multiple précis de $t_{1/2}$. Le rung 3 le rappelle explicitement : une transformation lente s'approche de son état final progressivement, de plus en plus lentement, sans qu'on puisse désigner un instant exact où elle « s'arrête » tout à fait — la courbe $x(t)$ tend vers $x_{max}$ sans jamais l'atteindre exactement. Affirmer que c'est *toujours* terminé à $2\,t_{1/2}$ généralise abusivement un ordre de grandeur en une règle absolue.
+
+          **c. Vrai.** C'est exactement le mécanisme du rung 3 : la vitesse d'une réaction dépend directement de la fréquence des chocs efficaces entre entités réactives — plus ils sont nombreux et efficaces, plus la réaction avance vite.
+      - id: q2
+        part: "Partie 1 — Lecture du temps de demi-réaction"
+        stem: |-
+          **(0,5 pt)** Déterminer graphiquement $t_{1/2}$, le temps de demi-réaction.
+        reasoning: |-
+          On applique la méthode du rung 4 : on repère d'abord $x_{max}$, le palier vers lequel tend la courbe, on calcule sa moitié, puis on lit sur la courbe l'abscisse du point où cette moitié est atteinte.
+        steps:
+          - math: 'x_{max} \approx 0{,}5\ \text{mmol}'
+            note: "Palier de la courbe, lu sur la figure 1 (methode du rung 4)."
+          - math: '\dfrac{x_{max}}{2} \approx 0{,}25\ \text{mmol}'
+            note: "Moitie de l'avancement maximal."
+          - math: '\boxed{t_{1/2} \approx 24\ \text{h}}'
+            note: "Lecture graphique : abscisse du point de la figure 1 ou x = 0,25 mmol."
+      - id: q3
+        part: "Partie 1 — Vitesse volumique par lecture de tangente"
+        stem: |-
+          **(1 pt)** Déterminer, en unité $\text{mmol.L}^{-1}.\text{h}^{-1}$, la vitesse volumique de la réaction à l'instant $t_1$.
+        reasoning: |-
+          Comme au rung 2, $v(t_1) = \dfrac{1}{V}\left.\dfrac{dx}{dt}\right|_{t_1}$, et $\left.\dfrac{dx}{dt}\right|_{t_1}$ est la pente de la tangente $(T)$ tracée en ce point (rung 3). On lit deux points sur cette droite plutôt que d'estimer la pente à l'oeil : son ordonnée à l'origine ($t=0$) et le point de tangence marqué par la croix ($t_1=60\ \text{h}$), tous deux transcrits dans l'énoncé. Ici, contrairement au sujet de conductimétrie, $x$ est déjà en mmol et $V$ déjà en litres — l'unité demandée ne réclame aucune conversion supplémentaire.
+        steps:
+          - math: '\text{pente}(T) \approx \dfrac{0{,}41 - 0{,}26}{60 - 0} = \dfrac{0{,}15}{60}'
+            note: "Deux points de (T) : ordonnee a l'origine (t=0, x=0,26 mmol) et point de tangence (t1=60 h, x=0,41 mmol)."
+          - math: '\text{pente}(T) \approx 2{,}5\times10^{-3}\ \text{mmol.h}^{-1}'
+            note: "Pente de la tangente, estimee par lecture graphique (rung 3)."
+          - math: 'v(t_1) = \dfrac{1}{V}\times\text{pente}(T) = \dfrac{2{,}5\times10^{-3}}{0{,}200}'
+            note: "Definition de la vitesse volumique (rung 2) ; V = 0,200 L, deja dans l'unite demandee."
+          - math: '\boxed{v(t_1) \approx 1{,}3\times10^{-2}\ \text{mmol.L}^{-1}.\text{h}^{-1}}'
+            note: "Vitesse volumique de la reaction a t1 = 60 h."

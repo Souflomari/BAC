@@ -1,0 +1,238 @@
+# bank.yaml — la banque « S'entraîner » de etat-equilibre (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, exercises.yaml), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Chaque entrée est une transcription FIDÈLE d'une entrée
+# « vérifié » de docs/sujets/pc/etat-equilibre.md (re-fetch AlloSchool + diff
+# indépendant par un second agent — README §3). Raisonnement rédigé à la voix
+# experte de la maison sur 100 % des questions, en citant les rungs R1 à R6 de
+# la leçon (lesson.md) là où c'est naturel ; barème transcrit tel quel dans les
+# énoncés (tag « (x,xx pt) » ajouté — la source docs/sujets ne porte que
+# « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
+# entre apostrophes simples dans steps[].math, notes sans backslash ni accent ;
+# formules chimiques et indices « eq » en symboles nus, sans \text{}, comme
+# partout ailleurs dans la banque — la source docs/sujets écrit \text{éq} pour
+# la fidélité de scan, cette couche d'auteur applique la convention KaTeX
+# maison, déjà utilisée pour ce même sujet 2015 dans exercises.yaml r-bac).
+#
+# NOTE ÉDITORIALE (pour la revue) : docs/sujets/pc/etat-equilibre.md recense
+# DEUX entrées « vérifié » — 2015 N (Exercice 1, Deuxième partie §1) et 2023 N
+# (Exercice 1, §1) — soit la totalité du corpus vérifié actuellement recensé
+# pour cette notion (la section finale « Contenu … présent dans les
+# transcriptions existantes » liste des Qr,éq/K épars dans d'AUTRES fichiers de
+# transcription, aucune n'y étant marquée « vérifié » sous ce nom de fichier ;
+# ce ne sont pas des entrées de cette banque). Le bandeau de couverture en tête
+# de docs/sujets/pc/etat-equilibre.md (« une entrée dédiée sourcée (2015
+# normale) ») semble ne pas avoir été mis à jour après l'ajout du 2023 N —
+# signalé ici pour mémoire, fichier non modifié par cet agent.
+#
+# Le 2015 N (bk-2015-n-x1) sert AUSSI de sommet de leçon (r-bac, exercises.yaml,
+# marqueur [[exercise:r-bac]] à R7 « Exercice de type bac ») : mêmes questions,
+# mêmes valeurs numériques (τ = 0,072 ; Qr,eq = Cτ²/(1-τ) ; pKA ≈ 4,25), reprises
+# ici à l'identique pour rester cohérentes avec le sommet, avec un raisonnement
+# rédigé à nouveau (pas une copie de exercises.yaml). Il figure ici pour que la
+# banque soit le corpus complet des annales de la notion (BANK-SPEC §1) —
+# recoupement assumé, même disposition que dipole-rl bk-2020-n-x4/r-bac et
+# evolution-spontanee bk-2012-n-x2/r-bac. À l'arbitrage de l'owner si l'on
+# préfère écarter cette entrée de la banque pour éviter le recoupement sur la
+# même page. Le 2023 N (bk-2023-n-x1) est neuf : il ne recoupe aucun exercice
+# déjà présent dans exercises.yaml.
+#
+# SCOPE NOTE (technique mobilisée au-delà de ce que la leçon nomme explicitement
+# — pontée au point d'usage dans le raisonnement de la question concernée, PAS
+# corrigée ni simplifiée ici, même précédent que r-bac dans exercises.yaml) :
+#   - bk-2015-n-x1 q3, et bk-2023-n-x1 q3 : les deux questions demandent la
+#     constante d'acidité pKA / KA du couple acide/base en jeu. La leçon
+#     (lesson.md, rung 4) établit que Qr,eq = K, la constante d'équilibre, mais
+#     ne nomme jamais explicitement le fait que, pour une réaction entre un
+#     acide et l'eau, cette constante d'équilibre K PORTE LE NOM de constante
+#     d'acidité KA du couple (ce vocabulaire relève du chapitre sur les
+#     réactions acido-basiques). Le raisonnement de r-bac (exercises.yaml,
+#     question 3) fait déjà ce pont en une phrase, sans le signaler formellement
+#     — les deux entrées ci-dessous le refont, explicitement, au point d'usage.
+
+notion: pc/etat-equilibre
+
+entries:
+  # ── bk-2015-n-x1 — 2015 N, Exercice 1 (Chimie), Deuxième partie §1 : acide benzoïque / eau ──
+  # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir la note
+  # éditoriale en tête pour le recoupement assumé.
+  - id: bk-2015-n-x1
+    title: "L'acide benzoïque dans l'eau : taux d'avancement final, quotient de réaction à l'équilibre et pKA"
+    source:
+      year: 2015
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 1 (Chimie) — Deuxième partie, §1 : réaction de l'acide benzoïque avec l'eau"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS 28, element/94472 (Exercice 1 — Chimie, Deuxième
+        partie, §1 : réaction de l'acide benzoïque avec l'eau, état
+        d'équilibre ; barème du §1 = 2,25 pt (0,75×3) sur les 4,75 pt de la
+        Deuxième partie et les 7 pt de l'exercice complet — le §2
+        (estérification de l'acide benzoïque, catalyseur H2SO4, rendement) et
+        la Première partie (électrolyse du chlorure de sodium) sont hors
+        périmètre de cette entrée). Transcription vérifiée en une passe :
+        re-fetch indépendant AlloSchool + diff caractère par caractère
+        (agent-vérificateur, 2026-07-14 ; docs/sujets/pc/etat-equilibre.md,
+        statut « vérifié »). Recoupement assumé avec le sommet de leçon : ce
+        même sujet est déjà le sommet r-bac de exercises.yaml (marqueur
+        [[exercise:r-bac]] à R7 « Exercice de type bac ») — mêmes questions,
+        mêmes valeurs numériques (τ = 0,072 ; Qr,eq = Cτ²/(1-τ) ; pKA ≈ 4,25) ;
+        raisonnement rédigé de nouveau ici (voix maison), pas copié de
+        exercises.yaml — même disposition que dipole-rl bk-2020-n-x4/r-bac et
+        evolution-spontanee bk-2012-n-x2/r-bac. À l'arbitrage de l'owner si
+        l'on préfère écarter cette entrée de la banque pour éviter le
+        recoupement sur la même page. Chimie re-dérivée et cohérente :
+        τ = σ/(C(λ1+λ2)) = 2,76e-2/(10×38,23e-3) ≈ 0,072 ; Qr,eq = Cτ²/(1-τ) ;
+        KA = 1,0e-2×0,072²/(1-0,072) ≈ 5,6e-5 ⇒ pKA ≈ 4,25 (valeur tabulée de
+        l'acide benzoïque ≈ 4,2, cohérente).
+    intro: |-
+      **Étude de la réaction de l'acide benzoïque avec l'eau — état d'équilibre (examen national, session normale 2015, Exercice 1 — Deuxième partie, §1).**
+
+      Toutes les mesures ont été faites à $25\ ^\circ\text{C}$.
+
+      **Données.** Conductivités molaires ioniques : $\lambda_1 = \lambda_{C_6H_5COO^-} = 3{,}23\times10^{-3}\ \text{S}\cdot\text{m}^2\cdot\text{mol}^{-1}$ et $\lambda_2 = \lambda_{H_3O^+} = 35\times10^{-3}\ \text{S}\cdot\text{m}^2\cdot\text{mol}^{-1}$. La conductivité d'une solution diluée s'écrit $\sigma = \sum_i \lambda_i\,[X_i]$, où $[X_i]$ est la concentration effective de l'ion $X_i$ ; on néglige l'action des ions $HO^-$ sur la conductivité.
+
+      On considère une solution $(S)$ d'acide benzoïque de concentration molaire apportée $C = 10\ \text{mol}\cdot\text{m}^{-3}$ et de volume $V$. La mesure de la conductivité $\sigma$ de la solution $(S)$ donne $\sigma = 2{,}76\times10^{-2}\ \text{S}\cdot\text{m}^{-1}$ à $25\ ^\circ\text{C}$. On modélise la transformation qui se produit entre l'eau et l'acide benzoïque par l'équation de la réaction :
+
+      $$C_6H_5COOH_{(aq)} + H_2O_{(l)} \rightleftharpoons C_6H_5COO^-_{(aq)} + H_3O^+_{(aq)}$$
+    questions:
+      - id: q1
+        part: "Étude de la réaction de l'acide benzoïque avec l'eau (état d'équilibre)"
+        stem: |-
+          **(0,75 pt)** Montrer que le taux d'avancement final de la réaction de l'acide benzoïque avec l'eau est $\tau = 0{,}072$.
+        reasoning: |-
+          $\tau$ compare l'avancement réellement atteint à celui d'une réaction supposée totale, $\tau = \dfrac{x_f}{x_{max}}$ (rung 2). Ici, un acide et un ion formé un pour un : d'après le tableau d'avancement, chaque molécule d'acide qui réagit libère à la fois un ion $C_6H_5COO^-$ et un ion $H_3O^+$, donc les deux concentrations à l'équilibre sont égales et valent l'avancement volumique final $x_f$. Si la réaction allait jusqu'au bout, tout l'acide apporté (concentration $C$) serait converti : $x_{max} = C$.
+
+          La conductivité mesurée est le pont entre l'expérience et $x_f$ : comme on néglige les ions $HO^-$, seuls les deux ions du couple conduisent, donc $\sigma = (\lambda_1+\lambda_2)\,x_f$. On en tire $x_f$, puis $\tau$.
+        steps:
+          - math: '[C_6H_5COO^-]_{eq} = [H_3O^+]_{eq} = x_f'
+            note: "Tableau d'avancement (volume constant) : les deux ions se forment un pour un, meme concentration a l'equilibre (rung 2)."
+          - math: '\sigma = \lambda_1\,[C_6H_5COO^-]_{eq} + \lambda_2\,[H_3O^+]_{eq} = (\lambda_1+\lambda_2)\,x_f'
+            note: "Loi de la conductivite ; les ions HO- sont negliges (enonce)."
+          - math: 'x_f = \dfrac{\sigma}{\lambda_1+\lambda_2} \qquad x_{max} = C'
+            note: "Si la reaction etait totale, tout l'acide (concentration C) serait converti (rung 2)."
+          - math: '\tau = \dfrac{x_f}{x_{max}} = \dfrac{\sigma}{C\,(\lambda_1+\lambda_2)}'
+            note: "On combine les deux relations precedentes."
+          - math: '\boxed{\tau = \dfrac{2{,}76\times10^{-2}}{10\times(3{,}23\times10^{-3}+35\times10^{-3})} \approx 0{,}072}'
+            note: "Application numerique : sigma = 2,76e-2 S/m, C = 10 mol/m3, lambda1+lambda2 = 38,23e-3 S.m2/mol."
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Trouver l'expression du quotient de réaction à l'équilibre $Q_{r,eq}$ en fonction de la concentration $C$ et du taux d'avancement final $\tau$.
+        reasoning: |-
+          On construit d'abord $Q_r$ selon la règle du rung 3 : produits sur réactifs, chaque coefficient devenant un exposant (ici tous valent $1$), l'eau — solvant en large excès — étant exclue. Puis on passe à l'équilibre en réinjectant les concentrations en fonction de $\tau$ : puisque $\tau = \dfrac{x_f}{x_{max}}$ et $x_{max} = C$ (question précédente), on a $x_f = \tau C$, donc les deux ions valent $\tau C$ et l'acide restant vaut $C - \tau C = C(1-\tau)$.
+        steps:
+          - math: 'Q_{r,eq} = \dfrac{[C_6H_5COO^-]_{eq}\,[H_3O^+]_{eq}}{[C_6H_5COOH]_{eq}}'
+            note: "Produits sur reactifs, coefficients tous egaux a 1 ; l'eau (solvant) est exclue de Qr (rung 3)."
+          - math: '[C_6H_5COO^-]_{eq} = [H_3O^+]_{eq} = \tau\,C \qquad [C_6H_5COOH]_{eq} = C - \tau C = C(1-\tau)'
+            note: "x_f = tau x_max = tau C (rung 2), reinjecte dans le tableau d'avancement."
+          - math: '\boxed{Q_{r,eq} = \dfrac{(\tau C)(\tau C)}{C(1-\tau)} = \dfrac{C\,\tau^2}{1-\tau}}'
+            note: "Concentrations rapportees a c-standard = 1 mol/L, Qr est donc sans unite (rung 3)."
+      - id: q3
+        stem: |-
+          **(0,75 pt)** Déduire la valeur de la constante $pK_A$ du couple $(C_6H_5COOH / C_6H_5COO^-)$.
+        reasoning: |-
+          À l'équilibre, $Q_r$ se fige à la valeur de la constante d'équilibre $K$ (rung 4). Pour une réaction entre un acide et l'eau, cette constante $K$ porte un nom particulier — la constante d'acidité $K_A$ du couple acide/base, un vocabulaire qui n'appartient pas à cette leçon mais que tu as déjà rencontré (voir la SCOPE NOTE en tête de fichier) — sa valeur numérique se calcule exactement comme n'importe quel $K$, avec l'expression trouvée à la question précédente. Il reste à convertir $C$ en $\text{mol/L}$ (l'énoncé le donne en $\text{mol/m}^3$) avant l'application numérique, puis à passer au $pK_A = -\log K_A$.
+        steps:
+          - math: 'K_A = Q_{r,eq} = \dfrac{C\,\tau^2}{1-\tau}'
+            note: "A l'equilibre Qr,eq = K (rung 4) ; pour un acide dans l'eau cette constante s'appelle KA."
+          - math: 'C = 10\ \text{mol}\cdot\text{m}^{-3} = 1{,}0\times10^{-2}\ \text{mol}\cdot\text{L}^{-1}'
+            note: "Conversion : 1 m3 = 1000 L, donc 10 mol/m3 = 1,0e-2 mol/L."
+          - math: 'K_A = \dfrac{1{,}0\times10^{-2}\times(0{,}072)^2}{1-0{,}072} \approx 5{,}6\times10^{-5}'
+            note: "Application numerique avec tau = 0,072 (question precedente)."
+          - math: '\boxed{pK_A = -\log K_A = -\log(5{,}6\times10^{-5}) \approx 4{,}25}'
+            note: "Coherent avec la valeur tabulee du pKA de l'acide benzoique (environ 4,2)."
+
+  # ── bk-2023-n-x1 — 2023 N, Exercice 1 (Chimie), §1 : acide éthanoïque / eau ──
+  - id: bk-2023-n-x1
+    title: "L'acide éthanoïque dans l'eau : la proportion CH3COOH à l'équilibre et le pKA à partir du pH"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 1 (Chimie) — §1 : étude d'une solution aqueuse d'acide éthanoïque"
+    bareme_total: 1.75
+    duration_min: 11
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool NS28F, element/142476 (Exercice 1 — Chimie, §1 :
+        étude d'une solution aqueuse d'acide éthanoïque, état d'équilibre ;
+        barème du §1 = 1,75 pt (0,5+0,75+0,5) sur les 7 pt de l'exercice
+        complet — le §2, réaction de l'acide éthanoïque avec l'ion
+        méthanoate, est transcrit sous reactions-acido-basiques.md, et le
+        §3, estérification avec le méthanol, sous
+        esterification-hydrolyse.md). Transcription vérifiée : 1ʳᵉ passe de
+        vérification adversariale indépendante
+        (agent-vérificateur-adversarial, 2026-08-07), diff caractère par
+        caractère OK, élément re-dérivé (element/142476 →
+        course-422/upload-85304), couverture p.1 relue au pixel
+        (docs/sujets/pc/etat-equilibre.md, statut « vérifié »). Chimie
+        re-dérivée et cohérente : $[H_3O^+]_{eq} = 10^{-3{,}05} \approx
+        8{,}91\times10^{-4}$ mol/L ⇒ $\tau = [H_3O^+]_{eq}/C_A \approx
+        1{,}78\times10^{-2}$ ⇒ $\alpha = 1-\tau \approx 0{,}982$ ; $K_A =
+        [H_3O^+]_{eq}^2/(C_A\,\alpha) \approx 1{,}62\times10^{-5}$ ⇒
+        $pK_{A1} \approx 4{,}79$ — exactement la valeur imprimée dans
+        l'énoncé (Q1.3), ce qui verrouille en retour $C_A = 5\times10^{-2}$
+        et $pH = 3{,}05$.
+    intro: |-
+      **Étude d'une solution aqueuse d'acide éthanoïque (examen national, session normale 2023, Exercice 1 — §1).**
+
+      On prépare un volume $V$ d'une solution aqueuse $S_A$ d'acide éthanoïque $CH_3COOH$ de concentration molaire $C_A = 5\times10^{-2}\ \text{mol}\cdot\text{L}^{-1}$. Son pH est $pH = 3{,}05$.
+    questions:
+      - id: q1
+        part: "1- Étude d'une solution aqueuse d'acide éthanoïque"
+        stem: |-
+          **(0,5 pt)** **1.1-** Écrire l'équation de la réaction de l'acide éthanoïque avec l'eau.
+        reasoning: |-
+          La mise en solution d'un acide **faible** dans l'eau est une transformation **limitée** : elle s'arrête sur un état d'équilibre (rung 1), donc on l'écrit avec la double flèche $\rightleftharpoons$, jamais une simple flèche. L'acide $CH_3COOH$ cède un proton à l'eau, qui joue ici le rôle de base (couple $H_3O^+/H_2O$) :
+
+          $$CH_3COOH_{(aq)} + H_2O_{(l)} \rightleftharpoons CH_3COO^-_{(aq)} + H_3O^+_{(aq)}$$
+      - id: q2
+        stem: |-
+          **(0,75 pt)** **1.2-** On définit la proportion de l'espèce $CH_3COOH$ dans la solution $S_A$ à l'état d'équilibre par :
+          $$\alpha(CH_3COOH) = \dfrac{[CH_3COOH]_{eq}}{[CH_3COOH]_{eq} + [CH_3COO^-]_{eq}}.$$
+          En vous aidant du tableau d'avancement, montrer que $\alpha(CH_3COOH) = 1 - \tau$ avec $\tau$ étant le taux d'avancement final de la réaction de l'acide éthanoïque avec l'eau. Calculer alors la valeur de $\alpha(CH_3COOH)$.
+        reasoning: |-
+          On relit chaque terme de la définition dans le tableau d'avancement (rung 2) : $[CH_3COOH]_{eq} = C_A - x_f$ (ce qui reste de l'acide) et $[CH_3COO^-]_{eq} = x_f$ (ce qui s'est formé) — les deux se retrouvent dans le dénominateur, dont la somme redonne exactement $C_A$ (bilan de matière : tout l'acide introduit se retrouve, à l'équilibre, soit encore sous forme $CH_3COOH$, soit sous forme $CH_3COO^-$). En remplaçant dans $\alpha$, le dénominateur se simplifie en $C_A$, et il ne reste que $(C_A-x_f)/C_A = 1 - x_f/C_A$ — or $x_f/C_A$ est exactement $\tau$ (rung 2, puisque $x_{max}=C_A$ ici, même raisonnement qu'au rung 2 pour l'acide benzoïque).
+
+          Pour la valeur numérique de $\alpha$, il faut d'abord $\tau$ : ici c'est le $pH$, et non une conductivité, qui donne accès à l'avancement. Chaque molécule d'acide qui réagit libère un ion $H_3O^+$ (même relation un pour un que dans le tableau d'avancement ci-dessus), donc $x_f = [H_3O^+]_{eq} = 10^{-pH}$.
+        steps:
+          - math: '[CH_3COOH]_{eq} = C_A - x_f \qquad [CH_3COO^-]_{eq} = x_f'
+            note: "Tableau d'avancement (rung 2) : ce qui reste de l'acide, ce qui s'est forme."
+          - math: '\alpha(CH_3COOH) = \dfrac{C_A-x_f}{(C_A-x_f)+x_f} = \dfrac{C_A-x_f}{C_A} = 1-\dfrac{x_f}{C_A}'
+            note: "Le denominateur se simplifie en C_A (bilan de matiere)."
+          - math: '\boxed{\alpha(CH_3COOH) = 1-\tau}'
+            note: "x_f/C_A = tau car x_max = C_A ici, stoechiometrie 1 pour 1 (rung 2)."
+          - math: '[H_3O^+]_{eq} = 10^{-pH} = 10^{-3{,}05} \approx 8{,}91\times10^{-4}\ \text{mol/L}'
+            note: "Le pH donne directement la concentration en ions H3O+ a l'equilibre."
+          - math: 'x_f = [H_3O^+]_{eq} \qquad \tau = \dfrac{x_f}{C_A} = \dfrac{8{,}91\times10^{-4}}{5\times10^{-2}} \approx 1{,}78\times10^{-2}'
+            note: "Meme relation un pour un que dans le tableau d'avancement ci-dessus."
+          - math: '\boxed{\alpha(CH_3COOH) = 1-\tau \approx 1-1{,}78\times10^{-2} \approx 0{,}982}'
+            note: "Application numerique."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** **1.3-** Montrer que la valeur du $pK_{A1} = pK_A(CH_3COOH_{(aq)}/CH_3COO^-_{(aq)})$ est : $pK_{A1} \simeq 4{,}79$.
+        reasoning: |-
+          À l'équilibre, $Q_r$ se fige à la valeur de la constante d'équilibre $K$ (rung 4), qui porte ici le nom de constante d'acidité $K_A$ du couple, puisque la réaction est celle d'un acide avec l'eau (même pont qu'à la question 1.3 du sujet 2015 — voir la SCOPE NOTE en tête de fichier). On construit $Q_{r,eq}$ selon la règle du rung 3 (produits sur réactifs, eau exclue), en réutilisant les résultats de la question précédente : $[CH_3COO^-]_{eq} = [H_3O^+]_{eq}$ (même ion formé un pour un) et $[CH_3COOH]_{eq} = C_A\,\alpha$ (directement, par définition de $\alpha$).
+        steps:
+          - math: 'K_A = Q_{r,eq} = \dfrac{[CH_3COO^-]_{eq}\,[H_3O^+]_{eq}}{[CH_3COOH]_{eq}}'
+            note: "A l'equilibre Qr,eq = K (rung 4), eau exclue (rung 3)."
+          - math: '[CH_3COO^-]_{eq} = [H_3O^+]_{eq} \qquad [CH_3COOH]_{eq} = C_A\,\alpha'
+            note: "Meme ion un pour un (question precedente) ; CH3COOHeq = CA alpha par definition de alpha."
+          - math: 'K_A = \dfrac{[H_3O^+]_{eq}^2}{C_A\,\alpha} = \dfrac{(8{,}91\times10^{-4})^2}{5\times10^{-2}\times0{,}982}'
+            note: "On reinjecte les valeurs numeriques deja calculees."
+          - math: 'K_A \approx \dfrac{7{,}94\times10^{-7}}{4{,}91\times10^{-2}} \approx 1{,}62\times10^{-5}'
+            note: "Application numerique."
+          - math: '\boxed{pK_{A1} = -\log K_A = -\log(1{,}62\times10^{-5}) \approx 4{,}79}'
+            note: "Coherent avec la valeur tabulee du pKA de l'acide ethanoique (environ 4,75)."
