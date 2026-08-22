@@ -20,28 +20,39 @@
       C(6,4) -> (470,90)    D(0,4) -> (230,90)
       O, centre (3,2) -> (350,170)
 
-    STEP-1 — le rectangle et ses axes (le décor géométrique) :
+    Mise en étapes (restagée 3→5, audit figure-stage-depth : les quatre
+    éléments arrivaient d'un coup — désormais chaque symétrie a son beat ;
+    id, transformation nulle, est absorbé dans le décor qu'il restitue
+    à l'identique) :
+
+    STEP-1 — le décor et l'élément trivial :
       rectangle ABCD, sommets étiquetés avec leurs coordonnées, centre O,
       les deux axes de symétrie (horizontal et vertical, passant par O)
-      tracés faiblement (--figure-ink-soft, pointillé).
+      tracés faiblement (--figure-ink-soft, pointillé) ; l'annonce de
+      l'ensemble E = {id, s_h, s_v, r} ; et le panneau id — aucune
+      flèche : rien ne bouge, c'est le rectangle tel quel.
 
-    STEP-2 — les quatre éléments de E = {id, s_h, s_v, r}, chacun comme une
-    permutation des sommets (quatre panneaux miniatures, même orientation
-    que le rectangle principal — bas-gauche=A, bas-droit=B, haut-droit=C,
-    haut-gauche=D — pour que les flèches d'échange se lisent directement) :
-      id  : aucune flèche (rien ne bouge — le contraste avec les 3 autres
-            panneaux, qui ONT des flèches, EST le message).
-      s_h : symétrie d'axe horizontal — échange A<->D (bord gauche) et
-            B<->C (bord droit) : deux flèches verticales, doubles pointes.
-      s_v : symétrie d'axe vertical — échange A<->B (bord bas) et D<->C
-            (bord haut) : deux flèches horizontales, doubles pointes.
-      r   : rotation 180° — échange A<->C et B<->D : les deux diagonales,
-            doubles pointes.
-    Chaque flèche d'échange est une ligne droite légèrement décalée en
-    parallèle du bord (ou, pour r, la diagonale elle-même), avec un petit
-    triangle à chaque extrémité (double pointe = échange mutuel).
+    Les panneaux miniatures gardent la même orientation que le rectangle
+    principal — bas-gauche=A, bas-droit=B, haut-droit=C, haut-gauche=D —
+    pour que les flèches d'échange se lisent directement. Chaque flèche
+    d'échange est une ligne droite légèrement décalée en parallèle du
+    bord (ou, pour r, la diagonale elle-même), avec un petit triangle à
+    chaque extrémité (double pointe = échange mutuel). Dans chaque
+    panneau de réflexion, l'axe de la symétrie est tracé en pointillé
+    faible pour que les échanges se lisent CONTRE leur axe.
 
-    STEP-3 — la composition s_h ∘ s_v, en suivant le sommet A (reprend
+    STEP-2 — s_h seul : symétrie d'axe horizontal — échange A<->D (bord
+      gauche) et B<->C (bord droit) : deux flèches verticales, doubles
+      pointes, de part et d'autre de l'axe horizontal du panneau.
+
+    STEP-3 — s_v seul : symétrie d'axe vertical — échange A<->B (bord
+      bas) et D<->C (bord haut) : deux flèches horizontales, doubles
+      pointes, de part et d'autre de l'axe vertical du panneau.
+
+    STEP-4 — r seul : rotation 180° — échange A<->C et B<->D : les deux
+      diagonales, doubles pointes.
+
+    STEP-5 — la composition s_h ∘ s_v, en suivant le sommet A (reprend
     EXACTEMENT le calcul du texte : "s_v envoie A sur B ; puis s_h envoie
     ce B sur C. Donc A ↦ C […] Donc s_h ∘ s_v = r.") : un rectangle frais
     (même échelle que le principal), avec deux flèches dirigées successives
@@ -66,7 +77,8 @@
         letter-spacing="0.01em" fill="var(--figure-ink)">Le groupe des symétries du rectangle ABCD</text>
 
   <!-- ══════════════════════════════════════════════════════
-       STEP 1 — le rectangle, ses sommets, son centre, ses axes
+       STEP 1 — le décor (rectangle, sommets, centre, axes),
+       l'annonce de E, et l'élément trivial id
        ══════════════════════════════════════════════════════ -->
   <g id="step-1">
     <!-- Axes de symétrie, faibles -->
@@ -98,12 +110,6 @@
 
     <text x="214" y="74" text-anchor="end" font-size="14" font-style="italic" fill="var(--figure-ink)">D</text>
     <text x="214" y="58" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">(0,4)</text>
-  </g><!-- /step-1 -->
-
-  <!-- ══════════════════════════════════════════════════════
-       STEP 2 — les quatre éléments de E, comme permutations des sommets
-       ══════════════════════════════════════════════════════ -->
-  <g id="step-2">
     <text x="350" y="304" text-anchor="middle" font-size="13" font-weight="600" fill="var(--figure-ink)"
           >E = {id, s<tspan dy="4" font-size="70%">h</tspan><tspan dy="-4">, s</tspan><tspan dy="4" font-size="70%">v</tspan><tspan dy="-4">, r} : les quatre permutations des sommets</tspan></text>
 
@@ -119,7 +125,15 @@
     <text x="172" y="349" text-anchor="start" font-size="9" fill="var(--figure-ink)">C</text>
     <text x="28"  y="349" text-anchor="end"   font-size="9" fill="var(--figure-ink)">D</text>
     <text x="100" y="480" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">chaque sommet reste fixe</text>
+  </g><!-- /step-1 -->
 
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — les quatre éléments de E, comme permutations des sommets
+       ══════════════════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — s_h seule : la réflexion d'axe horizontal
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
     <!-- ── Panneau 2 : s_h (cx = 270) — échange A<->D et B<->C ───────────── -->
     <text x="270" y="325" text-anchor="middle" font-size="15" font-style="italic" font-weight="600" fill="var(--figure-ink)"
           >s<tspan dy="4" font-size="70%">h</tspan></text>
@@ -141,7 +155,12 @@
     <polygon points="344,350 340,358 348,358" fill="var(--figure-ink)"/>
     <polygon points="344,450 340,442 348,442" fill="var(--figure-ink)"/>
     <text x="270" y="480" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">A ↔ D,  B ↔ C</text>
+  </g><!-- /step-2 -->
 
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — s_v seule : la réflexion d'axe vertical
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
     <!-- ── Panneau 3 : s_v (cx = 440) — échange A<->B et D<->C ───────────── -->
     <text x="440" y="325" text-anchor="middle" font-size="15" font-style="italic" font-weight="600" fill="var(--figure-ink)"
           >s<tspan dy="4" font-size="70%">v</tspan></text>
@@ -163,7 +182,12 @@
     <polygon points="372,344 380,340 380,348" fill="var(--figure-ink)"/>
     <polygon points="508,344 500,340 500,348" fill="var(--figure-ink)"/>
     <text x="440" y="480" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">A ↔ B,  D ↔ C</text>
+  </g><!-- /step-3 -->
 
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — r seule : la rotation d'un demi-tour
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
     <!-- ── Panneau 4 : r, rotation 180° (cx = 610) — échange A<->C et B<->D  -->
     <text x="610" y="325" text-anchor="middle" font-size="15" font-style="italic" font-weight="600" fill="var(--figure-ink)"
           >r<tspan font-style="normal" font-size="70%" dy="-3"> (180°)</tspan></text>
@@ -185,12 +209,12 @@
     <polygon points="554.9,361.4 563.8,362.7 559.2,369.3" fill="var(--figure-ink)"/>
     <polygon points="665.1,438.6 660.8,430.7 656.2,437.3" fill="var(--figure-ink)"/>
     <text x="610" y="480" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">A ↔ C,  B ↔ D</text>
-  </g><!-- /step-2 -->
+  </g><!-- /step-4 -->
 
   <!-- ══════════════════════════════════════════════════════
        STEP 3 — la composition s_h ∘ s_v, en suivant le sommet A
        ══════════════════════════════════════════════════════ -->
-  <g id="step-3">
+  <g id="step-5">
     <text x="350" y="512" text-anchor="middle" font-size="13" font-weight="600" fill="var(--figure-ink)"
           >La composition s<tspan dy="4" font-size="70%">h</tspan><tspan dy="-4"> ∘ s</tspan><tspan dy="4" font-size="70%">v</tspan><tspan dy="-4"> : suivre le sommet A</tspan></text>
 
@@ -231,6 +255,6 @@
     <text x="350" y="793" text-anchor="middle" font-size="17" font-weight="700" fill="var(--figure-accent)"
           >s<tspan dy="4" font-size="60%">h</tspan><tspan dy="-4"> ∘ s</tspan><tspan dy="4" font-size="60%">v</tspan><tspan dy="-4"> = r</tspan></text>
     <text x="350" y="812" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">même effet que la rotation de 180°</text>
-  </g><!-- /step-3 -->
+  </g><!-- /step-5 -->
 
 </svg>

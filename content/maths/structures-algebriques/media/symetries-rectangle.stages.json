@@ -1,8 +1,10 @@
 {
   "slug": "symetries-rectangle",
   "stages": [
-    { "caption": "Le rectangle ABCD, non carré : A(0,0), B(6,0), C(6,4), D(0,4), et son centre O. Les deux axes de symétrie passent par O : l'axe horizontal et l'axe vertical." },
-    { "caption": "Les quatre éléments de E = {id, s_h, s_v, r}, vus comme des permutations des sommets : id ne bouge rien ; s_h échange A↔D et B↔C ; s_v échange A↔B et D↔C ; r (rotation de 180°) échange A↔C et B↔D." },
-    { "caption": "La composition s_h ∘ s_v, en suivant le sommet A : s_v envoie A sur B, puis s_h envoie ce B sur C — au total A ↦ C, exactement l'effet de r. Donc s_h ∘ s_v = r." }
+    { "caption": "Le rectangle ABCD, non carré : A(0,0), B(6,0), C(6,4), D(0,4), et son centre O. Les deux axes de symétrie passent par O : l'axe horizontal et l'axe vertical. On cherche les transformations qui laissent ce rectangle à sa place — la première est celle qui ne fait rien, l'identité : chaque sommet reste où il est." },
+    { "caption": "La réflexion d'axe horizontal, s_h : le rectangle bascule autour de l'axe couché. Les deux sommets du bord gauche s'échangent, A↔D, et de même à droite, B↔C. La figure retombe exactement sur elle-même — c'est bien une symétrie du rectangle." },
+    { "caption": "La réflexion d'axe vertical, s_v : cette fois le rectangle bascule autour de l'axe debout. Ce sont les sommets du bas qui s'échangent, A↔B, et ceux du haut, D↔C. Deux réflexions, deux façons différentes de permuter les mêmes quatre sommets." },
+    { "caption": "La rotation d'un demi-tour, r : chaque sommet part vers celui qui lui fait face en diagonale, A↔C et B↔D. Aucun sommet ne reste fixe, et pourtant le rectangle occupe la même place. Avec l'identité, voilà les quatre éléments de E." },
+    { "caption": "Composons maintenant deux de ces transformations, s_h ∘ s_v, en suivant le seul sommet A : s_v envoie A sur B, puis s_h envoie ce B sur C — au total A part sur C, exactement l'effet de la rotation. Composer deux réflexions du rectangle redonne un élément de E : s_h ∘ s_v = r." }
   ]
 }
