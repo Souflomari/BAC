@@ -70,6 +70,14 @@ hub SExp : `section/5321` (annonce 2009→2024 N+R, images `course-438`).
 | 2017 | N | NS25 | `57970` ; corrigé `57972` | sourcé-confirmé | code ≠ NS24F, lu sur scan |
 | 2017 | R | — | — | non recherché | |
 | 2018 | N | — | `65508` ; corrigé `65510` | retype-non-officiel | recomposé, sans en-tête ministériel ; p.1 seule énumérée |
+<!-- Recherche exhaustive d'un scan officiel 2018 N (2026-08-22, recon
+     AlloSchool) : les documents des cours SM-A (65507) et SM-B (65508)
+     sont BYTE-IDENTIQUES (md5 c1b4b10d802f55b3e546e83ba31a28d3), page 1
+     inspectée : retype LaTeX/Word, AUCUN en-tête ministériel ; la
+     recherche du site ne renvoie que ces paires. CONCLUSION : aucun scan
+     officiel du 2018 N n'existe sur AlloSchool — la porte owner sur la
+     conversion depuis ce retype reste fermée, sauf décision owner
+     d'accepter le retype avec provenance explicite. -->
 | 2018 | R | — | — | non recherché | |
 | 2019 | N | NS24F | `68482` (`upload-54931`, 5 p.) ; corrigé `106425` | sourcé-confirmé | décomposé v0.2, 4 entrées `vérifié` |
 | 2019 | R | RS25 | `94396` | sourcé-confirmé | code sans F, lu sur scan |
