@@ -65,8 +65,12 @@ ${declarations}
 body { background: var(--color-surface-base); font-family: system-ui, sans-serif; padding: 24px; }
 h2 { font-size: 13px; color: var(--color-text-tertiary); margin: 24px 0 8px; font-weight: 500; }
 .carte { background: var(--figure-surface); border: 1px solid var(--color-border-subtle);
-         border-radius: 12px; padding: 12px; }
-svg { width: 100%; height: auto; display: block; }
+         border-radius: 12px; padding: 12px; width: max-content; max-width: 100%; }
+/* Taille NATURELLE (le viewBox), jamais width:100%. Mesuré le 2026-08-22 :
+   à l'échelle, les métriques de texte varient assez pour qu'un chevauchement
+   à 60 % apparaisse à quatre figures et disparaisse à une seule — un
+   instrument qui change d'avis selon le nombre d'entrées ne vaut rien. */
+svg { display: block; }
 </style></head><body>${cartes}</body></html>`;
 
 const sortie = path.join(RACINE, ".figure-preview");
@@ -79,6 +83,10 @@ const navigateur = await chromium.launch({
 });
 const page = await navigateur.newPage({ viewport: { width: 900, height: 1200 } });
 await page.goto(`file://${page_html}`, { waitUntil: "networkidle" });
+// Les métriques de texte ne sont stables qu'une fois les polices appliquées :
+// sans cette attente, un même fichier mesuré seul ou en lot ne donne pas le
+// même verdict (constaté le 2026-08-22 sur un chevauchement à 60 %).
+await page.evaluate(() => document.fonts.ready);
 await page.waitForTimeout(400);
 
 const cartesDom = await page.$$(".carte");
@@ -87,6 +95,72 @@ for (let i = 0; i < cartesDom.length; i++) {
   await cartesDom[i].screenshot({ path: path.join(sortie, nom) });
   console.log(`  ✓ ${nom}`);
 }
+
+/**
+ * Ce que l'œil rate et que la mesure attrape (ajouté après une chasse de
+ * trois défauts, 2026-08-22) :
+ *   — DÉBORDEMENT : un texte hors du viewBox est coupé à l'affichage. Cause
+ *     déjà vue : `text-anchor` en ATTRIBUT de présentation, battu par tout
+ *     CSS ambiant — le texte se centre sur son x et sort du cadre. Le
+ *     correctif qui tient est un `style="text-anchor:…"` inline.
+ *   — CHEVAUCHEMENT : deux étiquettes qui se recouvrent de plus de 40 % de
+ *     la plus petite. Le seuil laisse passer les frôlements voulus.
+ *
+ * HONNÊTETÉ DE L'INSTRUMENT : la détection de chevauchement est INDICATIVE,
+ * pas une certification. Les métriques de texte renvoyées par getBBox()
+ * fluctuent avec le contexte de rendu — un même fichier mesuré seul ou en
+ * lot peut passer de « 61 % de recouvrement » à « rien », près du seuil.
+ * Elle sert à DIRIGER LE REGARD vers une zone suspecte ; c'est la capture
+ * qui tranche. Le débordement, lui, est fiable (comparaison à un cadre
+ * fixe, sans dépendance aux métriques fines).
+ */
+const defauts = await page.evaluate(() => {
+  const out = [];
+  document.querySelectorAll("svg").forEach((svg, iFig) => {
+    const vb = (svg.getAttribute("viewBox") || "0 0 0 0").split(/\s+/).map(Number);
+    const [vx, vy, vw, vh] = vb;
+    const textes = [...svg.querySelectorAll("text")];
+    const boites = textes.map((t) => ({ t, b: t.getBBox(), s: t.textContent.trim() }));
+    for (const { t, b, s } of boites) {
+      if (!s) continue;
+      if (b.x < vx - 1 || b.x + b.width > vx + vw + 1 || b.y + b.height > vy + vh + 1) {
+        out.push({
+          fig: iFig, type: "déborde", txt: s.slice(0, 40),
+          detail: `x ${Math.round(b.x)}→${Math.round(b.x + b.width)} · cadre ${vx}→${vx + vw}` +
+                  ` · ancrage calculé ${getComputedStyle(t).textAnchor}`,
+        });
+      }
+    }
+    for (let i = 0; i < boites.length; i++) {
+      for (let j = i + 1; j < boites.length; j++) {
+        const a = boites[i].b, c = boites[j].b;
+        if (!boites[i].s || !boites[j].s) continue;
+        const ox = Math.min(a.x + a.width, c.x + c.width) - Math.max(a.x, c.x);
+        const oy = Math.min(a.y + a.height, c.y + c.height) - Math.max(a.y, c.y);
+        if (ox <= 0 || oy <= 0) continue;
+        const aire = ox * oy;
+        const petite = Math.min(a.width * a.height, c.width * c.height);
+        if (petite > 0 && aire / petite > 0.4) {
+          out.push({
+            fig: iFig, type: "chevauche", txt: boites[i].s.slice(0, 26),
+            detail: `avec « ${boites[j].s.slice(0, 26)} » — ${Math.round((aire / petite) * 100)} % de recouvrement`,
+          });
+        }
+      }
+    }
+  });
+  return out;
+});
+
 await navigateur.close();
 console.log(`\n${cartesDom.length} figure(s) → ${sortie}  (thème ${sombre ? "sombre" : "clair"})`);
-console.log("REGARDE-LES : collisions d'étiquettes, courbe hors cadre, repère écrasé.");
+if (defauts.length === 0) {
+  console.log("Mesure : aucun texte hors cadre, aucun chevauchement > 40 %.");
+} else {
+  console.log(`\nMESURE — ${defauts.length} défaut(s) :`);
+  for (const d of defauts) {
+    console.log(`  ✗ [${path.basename(fichiers[d.fig] ?? "?")}] ${d.type} : « ${d.txt} »`);
+    console.log(`      ${d.detail}`);
+  }
+}
+console.log("\nLa mesure ne remplace pas le regard : ouvre les PNG.");

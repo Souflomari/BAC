@@ -1,8 +1,8 @@
 # Sujet PC — SPC — 2022 session rattrapage (RS 28F) — transcription
 
 > Transcription intégrale depuis AlloSchool, `element/136624` →
-> `course-422/upload-84519` (8 pages). **Non vérifié** — protocole
-> `docs/sujets/pc/README.md` §3.
+> `course-422/upload-84519` (8 pages). **Vérifié** (passe adversariale du
+> 2026-08-22) — protocole `docs/sujets/pc/README.md` §3.
 >
 > Note de provenance : le résumé HTML d'AlloSchool est conforme ici (titre
 > « Examen National Physique-Chimie SPC 2022 Rattrapage »), et l'en-tête du
@@ -11,18 +11,52 @@
 > الفيزياء والكيمياء, filière « شعبة العلوم التجريبية: مسلك العلوم
 > الفيزيائية - خيار فرنسية » (Sciences Expérimentales, filière Sciences
 > Physiques, option française), 3 h, coef 7. Couverture p. 1 :
-> $7 + 3{,}5 + 4{,}5 + 5 = 20$ points.
+> $7 + 3{,}5 + 4{,}5 + 5 = 20$ points. La couverture porte aussi les deux
+> consignes générales : « L'usage de la calculatrice scientifique non
+> programmable est autorisé. » et « On donnera les expressions littérales
+> avant de passer aux applications numériques. »
 >
 > ⚠ Piège d'environnement documenté : des fichiers `000N-big.jpg` résiduels
-> d'une autre campagne (scan 2025 R) traînaient dans le scratchpad partagé —
-> les images de CE fichier ont été re-téléchargées depuis `upload-84519` et
-> contrôlées par hachage avant lecture.
+> d'une autre campagne traînaient dans le scratchpad partagé — les images de
+> CE fichier ont été re-téléchargées depuis `upload-84519` et contrôlées par
+> hachage avant lecture. **Contrôle du vérificateur :** re-téléchargement
+> indépendant des 8 pages dans un répertoire isolé ; les 8 empreintes
+> SHA-256 coïncident exactement avec le jeu isolé du transcripteur, et
+> diffèrent des 8 fichiers résiduels. La provenance des images est donc
+> saine ; les défauts listés ci-dessous sont des **défauts de lecture**, pas
+> de source.
+>
+> **Passe adversariale — journal.** Chaque page a été re-lue depuis l'image
+> (pas depuis le texte), et chaque figure re-mesurée au pixel (détection des
+> traits de quadrillage noirs/bleus, calibration par les graduations
+> chiffrées, traçage de courbe). L'énoncé littéral (valeurs, indices,
+> exposants, unités, barèmes en marge, options de QCM) s'est révélé **exact
+> partout** : aucune correction de texte. Les 14 défauts trouvés sont **tous
+> dans les descriptions de figure**, plus un dans le classement — voir la
+> liste par exercice ci-dessous.
+>
+> **Contrôles de cohérence (re-dérivation).** Les lectures de figure retenues
+> sont celles qui referment la physique sur des valeurs rondes, ce qui les
+> rend certaines et non « à confirmer » :
+> Ex. 1 — $\tau = 0{,}2$ d'où $Q_{r,\text{éq}} = 5\cdot10^{-4}$ et
+> $pK_A = 10{,}7$ (valeur annoncée par l'énoncé) ; $V_{aE} = 15$ mL redonne
+> $C_b = 10^{-2}$ mol/L, et $\text{pH}_E \approx 6{,}5$ tombe bien dans la
+> zone du bleu de bromothymol.
+> Ex. 2 — $T = 20$ ms et retard $10$ ms ⇒ $N = 50$ Hz, $v = 2{,}5$ m/s,
+> $\lambda = 5$ cm : les quatre valeurs figurent dans les QCM.
+> Ex. 3 — palier $U_0 = 9{,}8$ V ⇒ $r = 10\ \Omega$ ; tangente coupant le
+> palier à $t = 1$ ms ⇒ $L_0 = (R+r)\tau = 0{,}5$ H (valeur annoncée en
+> 1.5) ; pseudopériode $0{,}10$ s ⇒ $C = 250\ \mu$F ; $f_0$ et $C_1$ ⇒
+> $L = 10$ mH.
+> Ex. 4 — pente $1$ m·s⁻² ⇒ $a_{1x} = 2$ m·s⁻², d'où $F \approx 12$ N et
+> $V_A = 4$ m·s⁻¹ (les deux valeurs annoncées par l'énoncé) ; $T = 1$ s ⇒
+> $k = 20$ N/m.
 
 ---
 
 ## 2022 — session rattrapage — Exercice 1
 Source: https://www.alloschool.com/element/136624
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-22)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : RS 28F · Barème de l'exercice : 7 points
@@ -130,27 +164,44 @@ du volume versé $V_a$ de la solution $S_a$.
 
 *Figure du dosage (courbe, sans numéro imprimé — « la figure ci-contre »,
 p. 3) :* axe des ordonnées $\text{pH}$ gradué $0,\ 2,\ 4,\ 6,\ 8,\ 10,\ 12$
-(quadrillage principal noir de pas $2$, le cadre monte jusqu'à $14$, trait
-non chiffré) ; axe des abscisses $V_a\ (\text{mL})$ gradué
-$3,\ 6,\ 9,\ 12,\ 15,\ 18,\ 21$ (pas principal $3\ \text{mL}$, le cadre se
-prolonge au-delà de $21$ jusqu'à environ $22{,}5\ \text{mL}$) ;
-sous-quadrillage fin bleu. Courbe décroissante : elle part de
+(quadrillage principal noir de pas $2$ ; le cadre monte jusqu'à $14$, trait
+principal non chiffré) ; axe des abscisses $V_a\ (\text{mL})$ gradué
+$3,\ 6,\ 9,\ 12,\ 15,\ 18,\ 21$ (pas principal noir $3\ \text{mL}$ ; le bord
+gauche du cadre est exactement $V_a = 0$ et **le cadre se prolonge au-delà
+de $21$ jusqu'à $24\ \text{mL}$**, dernier trait principal non chiffré) ;
+sous-quadrillage fin bleu à **10 subdivisions par carreau principal**
+($0{,}3\ \text{mL}$ et $0{,}2$ unité pH). Courbe décroissante : elle part de
 $\text{pH} \approx 11{,}3$ à $V_a = 0$, décroît lentement (elle passe au
-voisinage de $\text{pH} = 10$ vers $V_a \approx 12\ \text{mL}$), présente une
-chute brutale quasi verticale à $V_a = 15\ \text{mL}$ (d'environ
-$\text{pH} \approx 9$ à $\text{pH} \approx 4$), puis décroît lentement vers
+voisinage de $\text{pH} = 10$ vers $V_a \approx 11{,}9\ \text{mL}$ ; à la
+demi-équivalence $V_a = 7{,}5\ \text{mL}$ elle vaut $\approx 10{,}6$),
+présente une chute brutale quasi verticale centrée sur
+$V_a = 15\ \text{mL}$ (de $\text{pH} \approx 9{,}0$ à
+$\text{pH} \approx 4{,}2$), puis décroît lentement vers
 $\text{pH} \approx 2{,}6$ au bord droit du cadre. Deux segments en pointillés,
-obliques et parallèles entre eux, encadrent le saut de part et d'autre
-(construction du type méthode des tangentes) : l'un tangent à la courbe
-au-dessus du saut (il part d'environ $(12{,}5\ ;\ 10{,}3)$ et descend vers
-$(19\ ;\ 6)$ *(lecture à confirmer)*), l'autre tangent au-dessous (d'environ
-$(11\ ;\ 6{,}8)$ vers $(17\ ;\ 2{,}7)$ *(lecture à confirmer)*).
+obliques et **parallèles entre eux** (pentes mesurées $-0{,}66$ et
+$-0{,}67$ unité pH par mL), encadrent le saut de part et d'autre
+(construction du type méthode des tangentes) : celui du haut va d'environ
+$(12{,}9\ ;\ 10{,}2)$ à $(19{,}0\ ;\ 6{,}2)$ et effleure la branche
+supérieure au voisinage de $V_a \approx 14$ ; celui du bas va d'environ
+$(11{,}1\ ;\ 6{,}7)$ à $(17{,}0\ ;\ 2{,}7)$ et effleure la branche
+inférieure au voisinage de $V_a \approx 16{,}5$. La parallèle équidistante
+(non tracée, à construire par l'élève) rencontrerait la courbe au voisinage
+de $(15\ \text{mL}\ ;\ 6{,}5)$.
+
+> **Correction du vérificateur (figure du dosage).** La version transcrite
+> arrêtait le cadre « à environ $22{,}5\ \text{mL}$ » : mesure au pixel, le
+> bord droit tombe sur le trait principal $V_a = 24\ \text{mL}$
+> (calibration : traits noirs tous les $59{,}5$ px $= 3\ \text{mL}$, bord
+> gauche $= 0$, bord droit à $8$ intervalles). Classe de défaut « étiquettes
+> d'axe arrêtées avant la fin de la plage ». Les extrémités des deux
+> pointillés ont été resserrées sur la mesure et le marqueur
+> *(lecture à confirmer)* levé.
 
 ---
 
 ## 2022 — session rattrapage — Exercice 2
 Source: https://www.alloschool.com/element/136624
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-22)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : RS 28F · Barème de l'exercice : 3,5 points
@@ -197,20 +248,40 @@ proposées, la réponse juste sans aucune justification ni explication.
    |---|---|---|---|---|---|---|---|
 
 *Figure de l'onde (courbe, sans numéro imprimé — « la figure ci-contre »,
-p. 3) :* axe des ordonnées $y_M\ (\text{mm})$ gradué $3,\ 0,\ -3,\ -6$
-(quadrillage principal noir de pas $3\ \text{mm}$ ; le cadre monte jusqu'à
-$+6\ \text{mm}$, trait supérieur non chiffré) ; axe des abscisses
-$t\ (\text{ms})$ chiffré $10,\ 25,\ 35,\ 45$ (traits principaux noirs tous
-les $5\ \text{ms}$, chiffrage partiel ; le cadre va jusqu'à environ
-$50\ \text{ms}$) ; sous-quadrillage fin bleu. La courbe est nulle
-($y_M = 0$) de $t = 0$ jusqu'à $t = 10\ \text{ms}$, puis sinusoïdale :
-premier maximum $y_M = +6\ \text{mm}$ (au niveau du trait supérieur du
-cadre) vers $t = 15\ \text{ms}$, zéro descendant à $t = 20\ \text{ms}$,
-minimum $y_M = -6\ \text{mm}$ à $t = 25\ \text{ms}$, zéro montant à
-$t = 30\ \text{ms}$, maximum à $t = 35\ \text{ms}$, zéro à
-$t = 40\ \text{ms}$, minimum à $t = 45\ \text{ms}$, puis remontée vers zéro
-au bord droit du cadre (vers $t \approx 50\ \text{ms}$). La période se lit
-$20\ \text{ms}$ d'un maximum au suivant ($15 \to 35\ \text{ms}$).
+p. 3) :* axe des ordonnées $y_M\ (\text{mm})$ chiffré $3,\ 0,\ -3,\ -6$
+(quadrillage principal noir de pas $3\ \text{mm}$ ; **un cinquième trait
+principal non chiffré, à $+6\ \text{mm}$, court à l'intérieur du cadre —
+c'est lui que touchent les maxima** ; le bord supérieur du cadre est encore
+au-dessus, vers $+7\ \text{mm}$, et le bord inférieur au-dessous de $-6$,
+vers $-7\ \text{mm}$) ; axe des abscisses $t\ (\text{ms})$ chiffré
+$10,\ 25,\ 35,\ 45$ (traits principaux noirs tous les $5\ \text{ms}$,
+chiffrage partiel ; le bord gauche du cadre est exactement $t = 0$ et le
+bord droit exactement $t = 50\ \text{ms}$) ; sous-quadrillage fin bleu à
+$5$ subdivisions par carreau principal ($1\ \text{ms}$ et
+$0{,}6\ \text{mm}$). La courbe est nulle ($y_M = 0$) de $t = 0$ jusqu'à
+$t = 10\ \text{ms}$, puis sinusoïdale d'amplitude $6\ \text{mm}$ : premier
+maximum $y_M = +6\ \text{mm}$ à $t = 15\ \text{ms}$, zéro descendant à
+$t = 20\ \text{ms}$, minimum $y_M = -6\ \text{mm}$ à $t = 25\ \text{ms}$,
+zéro montant à $t = 30\ \text{ms}$, maximum $+6\ \text{mm}$ à
+$t = 35\ \text{ms}$, zéro à $t = 40\ \text{ms}$, minimum $-6\ \text{mm}$ à
+$t = 45\ \text{ms}$, puis remontée jusqu'à $y_M = 0$ au bord droit du cadre
+($t = 50\ \text{ms}$). Les trois graduations chiffrées $25,\ 35,\ 45$
+tombent exactement sur trois extrema successifs. La période se lit
+$20\ \text{ms}$ d'un maximum au suivant ($15 \to 35\ \text{ms}$) et le
+retard se lit $10\ \text{ms}$ (départ du mouvement).
+
+> **Correction du vérificateur (figure de l'onde).** La version transcrite
+> disait « le cadre monte jusqu'à $+6\ \text{mm}$ » et plaçait le premier
+> maximum « au niveau du trait supérieur du cadre ». Faux : le trait $+6$
+> est un trait **intérieur** du quadrillage (non chiffré), et le cadre le
+> dépasse d'environ $1\ \text{mm}$ de chaque côté (mesure : traits
+> principaux tous les $59{,}5$ px $= 3\ \text{mm}$ ; bord haut à $18$ px
+> au-dessus du trait $+6$, bord bas à $23{,}5$ px au-dessous du trait
+> $-6$). Même classe de défaut que sur la figure du dosage. Les positions
+> temporelles ($0$–$10$ ms de palier nul, extrema à $15/25/35/45$ ms, cadre
+> $0 \to 50$ ms) sont, elles, **confirmées** au pixel — et la flèche de
+> calibration n'existe pas ici, il n'y a donc pas eu de confusion
+> flèche/période.
 
 ### Partie 2 : Datation au carbone 14
 
@@ -256,7 +327,7 @@ est de type $\beta^-$.
 
 ## 2022 — session rattrapage — Exercice 3
 Source: https://www.alloschool.com/element/136624
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-22)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : RS 28F · Barème de l'exercice : 4,5 points
@@ -320,33 +391,68 @@ verticales, étiquetée « (L,r) » à sa gauche et barrée d'une flèche obliqu
 (rectangle horizontal) étiqueté « R » au-dessous. Légende : « Figure 1 ».
 
 *Figure 2 (courbe, p. 5) :* axe des ordonnées $u_R\ (\text{V})$ gradué
-$0,\ 2,\ 4,\ 6,\ 8,\ 10$ (pas principal $2\ \text{V}$ ; le cadre monte
-au-delà de $10$, jusqu'à environ $12\ \text{V}$, trait non chiffré) ; axe des
-abscisses $t\ (\text{ms})$ gradué $1,\ 2,\ 3,\ 4,\ 5,\ 6$ (pas principal
-$1\ \text{ms}$ ; le cadre se prolonge un peu au-delà de $6$, jusqu'à environ
-$7\ \text{ms}$) ; sous-quadrillage fin bleu (5 subdivisions par carreau
-principal sur chaque axe). Courbe $C_1$ croissante, concave, partant de
-l'origine et tendant vers un palier situé légèrement **au-dessous** de la
-ligne $10\ \text{V}$ (palier $\approx 9{,}8\ \text{V}$ *(lecture à
-confirmer)*) ; elle passe au voisinage du point
-$(1\ \text{ms}\ ;\ 6\ \text{V})$. La droite $(T)$, en pointillés, part de
-l'origine avec une forte pente et sort du cadre par le haut vers
-$t \approx 1{,}2\ \text{ms}$ ; elle coupe le niveau du palier au voisinage de
-$t = 1\ \text{ms}$ *(lecture à confirmer)*. Légende : « Figure 2 ».
+$0,\ 2,\ 4,\ 6,\ 8,\ 10$ (pas principal noir $2\ \text{V}$ ; le cadre monte
+au-delà de $10$ et son bord supérieur est exactement le trait principal
+$12\ \text{V}$, non chiffré) ; axe des abscisses $t\ (\text{ms})$ gradué
+$1,\ 2,\ 3,\ 4,\ 5,\ 6$ (pas principal noir $1\ \text{ms}$ ; le bord gauche
+du cadre est exactement $t = 0$ et le bord droit exactement
+$t = 7\ \text{ms}$, trait non chiffré) ; sous-quadrillage fin bleu à
+**10 subdivisions par carreau principal** sur chaque axe
+($0{,}1\ \text{ms}$ et $0{,}2\ \text{V}$). Courbe $C_1$ croissante, concave,
+partant de l'origine et tendant vers un palier situé légèrement
+**au-dessous** de la ligne $10\ \text{V}$ : palier
+$U_0 \approx 9{,}8\ \text{V}$ ; elle passe au voisinage du point
+$(1\ \text{ms}\ ;\ 6{,}2\ \text{V})$. La droite $(T)$, en pointillés, part de
+l'origine avec une forte pente ($\approx 9{,}5\ \text{V/ms}$ mesurée), coupe
+le niveau du palier à $t \approx 1{,}0\ \text{ms}$ et sort du cadre par le
+haut ($12\ \text{V}$) à $t \approx 1{,}25\ \text{ms}$ ; l'étiquette
+« (T) » est posée en haut à gauche, à droite de la droite. Légende :
+« Figure 2 ».
 
-*Figure 3 (courbes, p. 5) :* mêmes grandeurs, axe des ordonnées
-$u_R\ (\text{V})$ gradué $2,\ 4,\ 6,\ 8,\ 10$ (le cadre monte jusqu'à
-environ $12\ \text{V}$) ; axe des abscisses $t\ (\text{ms})$ chiffré
-$2,\ 4,\ 6,\ 8,\ 10$ (traits principaux noirs tous les $1\ \text{ms}$,
-chiffrage un trait sur deux ; le cadre va jusqu'à environ $12\ \text{ms}$) ;
-lignes bleues intermédiaires. Quatre courbes croissantes issues de
-l'origine : $C_3$ (en tirets, étiquette au bord gauche) est la plus rapide
-et tend vers un palier légèrement sous $10\ \text{V}$ ; $C_1$ (trait plein)
-tend vers le même palier ; $C_2$ (trait mixte point-tiret, la plus lente)
-tend aussi vers ce même palier légèrement sous $10\ \text{V}$ ; $C_4$ (en
-pointillés) est rapide et tend vers un palier plus haut, à environ
-$11\ \text{V}$ *(lecture à confirmer)*, au-dessus de la ligne $10$.
-Légende : « Figure 3 ».
+> **Correction du vérificateur (figure 2).** Deux marqueurs
+> *(lecture à confirmer)* levés, car la re-dérivation ferme sur des valeurs
+> rondes : palier mesuré $9{,}76\ \text{V}$ ⇒ $U_0 = 9{,}8\ \text{V}$, donc
+> $R + r = ER/U_0 = 500\ \Omega$ et $r = 10\ \Omega$ ; intersection mesurée
+> de $(T)$ avec le palier à $1{,}02\ \text{ms}$ ⇒ $\tau = 1\ \text{ms}$ et
+> $L_0 = (R+r)\tau = 0{,}5\ \text{H}$, exactement la valeur que la question
+> 1.5 demande de vérifier. Corrigé aussi : le sous-quadrillage compte $10$
+> et non $5$ subdivisions par carreau (pas bleu mesuré $5{,}95$ px pour un
+> carreau de $59{,}5$ px).
+
+*Figure 3 (courbes, p. 5) :* mêmes grandeurs. Axe des ordonnées
+$u_R\ (\text{V})$ chiffré $0,\ 2,\ 4,\ 6,\ 8,\ 10$ (**traits principaux
+noirs tous les $2\ \text{V}$, lignes bleues intercalées aux volts impairs**
+$1,\ 3,\ 5,\ 7,\ 9,\ 11$ ; le bord supérieur du cadre est le trait noir
+$12\ \text{V}$, non chiffré) ; axe des abscisses $t\ (\text{ms})$ chiffré
+$2,\ 4,\ 6,\ 8,\ 10$ (**traits principaux noirs tous les $2\ \text{ms}$ —
+tous chiffrés dans la plage $2$–$10$ — et lignes bleues intercalées aux ms
+impairs** ; le bord gauche est $t = 0$ et **le cadre va jusqu'à
+$14\ \text{ms}$**, les traits $12$ et $14$ n'étant pas chiffrés). Les
+quatre tracés s'arrêtent tous à $t = 12\ \text{ms}$, avant le bord du cadre.
+Quatre courbes croissantes issues de l'origine :
+$C_3$ (en **tirets**, étiquette au bord gauche vers $9\ \text{V}$) est la
+plus rapide et tend vers un palier légèrement sous $10\ \text{V}$ ;
+$C_4$ (en **pointillés**, étiquette en haut) est rapide elle aussi mais tend
+vers un palier **plus haut, exactement sur la ligne bleue
+$11\ \text{V}$**, au-dessus de la ligne $10$ ; $C_1$ (**trait plein**,
+étiquette au centre) est plus lente que $C_3$ et tend vers le même palier
+légèrement sous $10\ \text{V}$ ; $C_2$ (**trait mixte point-tiret**, la plus
+lente, étiquette en bas) tend aussi vers ce même palier sous $10\ \text{V}$,
+qu'elle n'atteint qu'aux alentours de $t = 8$–$9\ \text{ms}$. Ordre de
+rapidité près de l'origine : $C_3 > C_4 > C_1 > C_2$. Légende :
+« Figure 3 ».
+
+> **Correction du vérificateur (figure 3).** Trois défauts. (i) « traits
+> principaux noirs tous les $1\ \text{ms}$, chiffrage un trait sur deux » :
+> faux — les traits noirs sont tous les $2\ \text{ms}$ et sont tous
+> chiffrés dans la plage graduée ; ce sont des **lignes bleues** qui
+> occupent les ms impairs (mesure : noirs à $796,\ 855,\ 914{,}5,\ 974,\
+> 1033{,}5,\ 1092{,}5,\ 1152$ px, bleues exactement aux milieux). Même
+> confusion noir/bleu sur l'axe des ordonnées. (ii) « le cadre va jusqu'à
+> environ $12\ \text{ms}$ » : faux — le bord droit est à $14\ \text{ms}$ ;
+> c'est le **tracé des courbes** qui s'arrête à $12\ \text{ms}$. (iii) Le
+> palier de $C_4$ n'est pas « environ $11\ \text{V}$ *(à confirmer)* » mais
+> exactement $11\ \text{V}$ : il est confondu avec la ligne bleue $11$.
 
 **2. Oscillations libres dans un circuit RLC série**
 
@@ -367,27 +473,55 @@ condensateur.
    condensateur. (On prend $\pi^2 = 10$).
 
 *Figure 4 (schéma, p. 6) :* petite boucle : en haut à gauche, l'interrupteur
-$K$ (levier ouvert, étiquette « K » au-dessus) ; sur la branche de gauche, le
-condensateur (deux traits parallèles horizontaux), étiqueté « C » à sa
-droite ; sur la branche de droite, la bobine en spires, étiquetée « (L,r) »
-en haut à sa droite. Légende : « Figure 4 ».
+$K$ (deux plots, levier ouvert monté vers la droite, étiquette « K »
+au-dessus à gauche) ; sur la branche de gauche, le condensateur (deux traits
+parallèles horizontaux), étiqueté « C » à sa droite ; sur la branche de
+droite, la bobine en spires, étiquetée **« (L,r) » à sa gauche** (entre le
+« C » et les spires, à mi-hauteur). Contrairement à la figure 1, la bobine
+n'est **pas** barrée de la flèche oblique de réglage. Légende :
+« Figure 4 ».
 
-*Figure 5 (courbe, p. 6) :* axe des ordonnées $q\ (\text{mC})$ gradué
-$2,\ 1,\ 0,\ -1,\ -2$ (traits principaux noirs tous les $0{,}5\ \text{mC}$,
-chiffrage aux entiers ; le cadre s'étend d'environ $-2{,}75$ à
-$+2{,}75\ \text{mC}$) ; axe des abscisses $t\ (\text{s})$ chiffré
-$0{,}04,\ 0{,}08,\ 0{,}12,\ 0{,}16,\ 0{,}2$ (traits principaux noirs tous
-les $0{,}02\ \text{s}$, chiffrage un trait sur deux ; le cadre va jusqu'à
-environ $0{,}24\ \text{s}$) ; lignes bleues intermédiaires. Sinusoïde
-amortie : la courbe part de $q \approx 2{,}5\ \text{mC}$ à $t = 0$ *(lecture
-à confirmer)* et décroît ; minimum $\approx -1{,}9\ \text{mC}$ vers
-$t \approx 0{,}05\ \text{s}$ ; maximum $\approx +1{,}5\ \text{mC}$ à
-$t \approx 0{,}10\ \text{s}$ ; minimum $\approx -1{,}2\ \text{mC}$ vers
-$t \approx 0{,}15\ \text{s}$ ; maximum $\approx +0{,}95\ \text{mC}$ à
-$t \approx 0{,}20\ \text{s}$ ; minimum $\approx -0{,}75\ \text{mC}$ vers
-$t \approx 0{,}22$–$0{,}23\ \text{s}$, puis remontée jusqu'au bord droit.
-La pseudopériode se lit $\approx 0{,}1\ \text{s}$ d'un maximum au suivant
-($0{,}10 \to 0{,}20\ \text{s}$). Légende : « Figure 5 ».
+> **Correction du vérificateur (figure 4).** L'étiquette « (L,r) » était
+> décrite « en haut à sa droite » ; elle est en réalité **à gauche** des
+> spires. Ajouté : absence de la flèche de réglage ici.
+
+*Figure 5 (courbe, p. 6) :* axe des ordonnées $q\ (\text{mC})$ chiffré
+$2,\ 1,\ 0,\ -1,\ -2$ (**traits principaux noirs tous les $1\ \text{mC}$ —
+donc un trait noir par graduation chiffrée — et lignes bleues intercalées
+aux demi-mC** $\pm 0{,}5,\ \pm 1{,}5,\ \pm 2{,}5$ ; **le cadre s'étend
+exactement de $-3$ à $+3\ \text{mC}$**, les traits $\pm 3$ étant les bords
+non chiffrés) ; axe des abscisses $t\ (\text{s})$ chiffré
+$0{,}04,\ 0{,}08,\ 0{,}12,\ 0{,}16,\ 0{,}2$ (**traits principaux noirs tous
+les $0{,}04\ \text{s}$ — tous chiffrés jusqu'à $0{,}2$, ceux de $0{,}24$ et
+$0{,}28$ ne l'étant pas — et lignes bleues intercalées aux $0{,}02\ \text{s}$
+impairs** ; le bord gauche est $t = 0$ et **le cadre va jusqu'à
+$0{,}30\ \text{s}$**). Sinusoïde amortie : la courbe part de
+$q \approx +2{,}45\ \text{mC}$ à $t = 0$ et décroît ; zéro descendant vers
+$t \approx 0{,}027\ \text{s}$ ; minimum $\approx -2{,}0\ \text{mC}$ à
+$t \approx 0{,}050\ \text{s}$ ; maximum $\approx +1{,}47\ \text{mC}$ à
+$t \approx 0{,}10\ \text{s}$ ; minimum $\approx -1{,}18\ \text{mC}$ à
+$t \approx 0{,}148\ \text{s}$ ; maximum $\approx +0{,}92\ \text{mC}$ à
+$t \approx 0{,}196\ \text{s}$ ; minimum $\approx -0{,}71\ \text{mC}$ à
+$t \approx 0{,}246\ \text{s}$, puis remontée jusqu'à
+$q \approx +0{,}55\ \text{mC}$ au bord droit du cadre
+($t \approx 0{,}30\ \text{s}$). La pseudopériode se lit
+$\approx 0{,}10\ \text{s}$, aussi bien d'un maximum au suivant
+($0{,}10 \to 0{,}196\ \text{s}$) que d'un minimum au suivant
+($0{,}050 \to 0{,}148 \to 0{,}246\ \text{s}$). Légende : « Figure 5 ».
+
+> **Correction du vérificateur (figure 5).** Quatre défauts, tous de la même
+> famille (confusion trait noir / trait bleu, puis échelle horizontale
+> faussée en conséquence). (i) Pas principal en ordonnée : $1\ \text{mC}$ et
+> non $0{,}5$ (noirs mesurés à $466,\ 525{,}5,\ 585,\ 644{,}5,\ 703{,}5,\
+> 763,\ 822{,}5$ px, bleus exactement aux milieux). (ii) Cadre vertical :
+> $-3$ à $+3\ \text{mC}$, pas $\pm 2{,}75$. (iii) Pas principal en abscisse :
+> $0{,}04\ \text{s}$ et non $0{,}02$. (iv) Cadre horizontal :
+> $0{,}30\ \text{s}$ et non $0{,}24$ — c'est cette erreur d'échelle qui
+> comprimait le dernier minimum à « $0{,}22$–$0{,}23\ \text{s}$ » alors
+> qu'il est à $0{,}246\ \text{s}$. Le marqueur *(lecture à confirmer)* sur
+> $q(0)$ est levé : $+2{,}45\ \text{mC}$. **La pseudopériode
+> $0{,}10\ \text{s}$, elle, était juste** et se re-dérive proprement :
+> $C = T_0^2/(4\pi^2 L) = 2{,}5\cdot10^{-4}\ \text{F}$.
 
 **3. Réception d'une onde modulée en amplitude**
 
@@ -423,7 +557,7 @@ suspension. Légende : « Figure 6 ».
 
 ## 2022 — session rattrapage — Exercice 4
 Source: https://www.alloschool.com/element/136624
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-22)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : RS 28F · Barème de l'exercice : 5 points
@@ -491,25 +625,47 @@ de passage de $G$ par le point $A$ comme nouvelle origine des dates $t = 0$.
 2. **2.2.** (0,75) Sachant que la vitesse de $G$ s'annule au point $B$,
    trouver la distance $AB$.
 
-*Figure 1 (schéma, p. 7) :* plan incliné représenté par une droite oblique
-montant vers la droite, posée sur un trait horizontal épais (le sol) ;
-l'angle entre les deux est marqué par un arc et étiqueté $\alpha$. Sur la
-pente, de bas en haut : le point $O$ (en bas, à gauche), le vecteur unitaire
-$\vec{i}$ (petite flèche le long de la pente), le solide (S) (petit carré,
-étiquette « (S) » au-dessus, point $G$ à l'intérieur), la flèche $\vec{F}$
-le long de la pente dirigée vers le haut (partant du solide), le point $A$
-puis, plus haut, le point $B$ ; l'axe se prolonge au-delà de $B$ par la
-flèche « x » (axe des abscisses le long de la pente). Légende : « Figure1 ».
+*Figure 1 (schéma, p. 7) :* **deux droites obliques parallèles** montant vers
+la droite. La plus basse est le **plan incliné** : elle prend appui à gauche
+sur un trait horizontal épais (le sol) et l'angle entre les deux est marqué,
+plus à droite, par un arc fléché étiqueté $\alpha$. La plus haute est
+l'**axe $(O,\vec{i}\,)$** ; elle se prolonge en bas à gauche au-delà de $O$
+et se termine en haut à droite par une pointe de flèche étiquetée « x ».
+Sur cet axe, de bas en haut : le point $O$, le vecteur unitaire $\vec{i}$
+(petite flèche le long de l'axe), le solide (S) — petit carré posé sur le
+plan, à cheval sur les deux droites, étiquette « (S) » au-dessus et point
+noir $G$ à l'intérieur —, la flèche $\vec{F}$ le long de l'axe dirigée vers
+le haut (partant du solide, étiquette $\vec{F}$ au-dessus), le point $A$,
+puis plus haut le point $B$. Légende : « Figure1 » (sans espace).
 
-*Figure 2 (courbe, p. 7) :* axe des ordonnées $x\ (\text{m})$ gradué $2$ et
-$4$ (plus le $0$ à l'origine ; quadrillage principal noir de pas $1\ \text{m}$,
-le cadre s'arrête à $4\ \text{m}$) ; axe des abscisses $t^2\ (\text{s}^2)$
-gradué $2$ et $4$ (traits principaux noirs tous les $1\ \text{s}^2$,
-chiffrage un trait sur deux ; le cadre s'arrête à $4\ \text{s}^2$) ; lignes
-bleues intermédiaires aux demi-carreaux. Droite croissante partant
-exactement de l'origine et rejoignant exactement le coin supérieur droit du
-cadre $(4\ \text{s}^2\ ;\ 4\ \text{m})$, en passant par $(2\ ;\ 2)$ — la
-pente se lit $1\ \text{m.s}^{-2}$. Légende : « Figure 2 ».
+> **Correction du vérificateur (figure 1).** La version transcrite ne
+> décrivait **qu'une** droite oblique et y plaçait à la fois la pente et les
+> points $O$, $A$, $B$. Le dessin en comporte deux, parallèles : le plan
+> incliné (en appui sur le sol) et, au-dessus, l'axe des abscisses qui porte
+> $O$, $G$, $A$, $B$ et la flèche « x ». Distinction utile pour un
+> re-dessin fidèle.
+
+*Figure 2 (courbe, p. 7) :* axe des ordonnées $x\ (\text{m})$ chiffré $0$,
+$2$ et $4$ ; axe des abscisses $t^2\ (\text{s}^2)$ chiffré $2$ et $4$. Le
+cadre est carré et va de $(0\ ;\ 0)$ à $(4\ \text{s}^2\ ;\ 4\ \text{m})$.
+**Attention au quadrillage : il compte $6$ intervalles par axe, soit un pas
+de $2/3$ d'unité, avec alternance trait noir / ligne bleue** — traits noirs
+à $0,\ 4/3,\ 8/3,\ 4$ et lignes bleues à $2/3,\ 2,\ 10/3$. Les graduations
+chiffrées $2$ tombent donc sur une **ligne bleue** (repérée par un petit
+tiret sur l'axe) et les graduations $4$ sur le bord du cadre. Droite
+croissante partant exactement de l'origine et rejoignant exactement le coin
+supérieur droit du cadre $(4\ \text{s}^2\ ;\ 4\ \text{m})$, en passant par
+$(2\ ;\ 2)$ — la pente se lit $1\ \text{m.s}^{-2}$. Légende : « Figure 2 ».
+
+> **Correction du vérificateur (figure 2).** Le quadrillage n'est pas « de
+> pas $1\ \text{m}$ » / « tous les $1\ \text{s}^2$ » : mesure au pixel, on
+> compte $7$ traits par axe espacés de $29{,}75$ px sur un cadre de $178$
+> px, soit $6$ intervalles de $2/3$ d'unité, un sur deux en noir et l'autre
+> en bleu. La **lecture utile est en revanche confirmée** : la droite joint
+> l'origine au coin $(4\ ;\ 4)$, pente $1\ \text{m.s}^{-2}$, donc
+> $a_{1x} = 2\ \text{m.s}^{-2}$ — ce qui redonne exactement les deux
+> valeurs annoncées par l'énoncé, $F \approx 12\ \text{N}$ et
+> $V_A = 4\ \text{m.s}^{-1}$.
 
 ### Partie 2 : Étude du mouvement d'un oscillateur mécanique
 
@@ -536,34 +692,56 @@ $x = f(t)$ (figure 4).
    $\pi^2 = 10$).
 
 *Figure 3 (schéma, p. 8) :* dispositif horizontal : à gauche, un support
-vertical (trait épais) ; le ressort (R), dessiné en spires horizontales,
-étiqueté « (R) » au-dessus, relie le support au solide (S) (rectangle grisé,
-étiqueté « (S) » au-dessus, point noir « G » à l'intérieur). Le point $O$
-est marqué sur l'axe au niveau de l'extrémité du ressort côté solide, avec
-le vecteur unitaire $\vec{i}$ (petite flèche vers la droite) ; l'axe
-horizontal en pointillés se prolonge des deux côtés et se termine à droite
-par la flèche « x ». Le sol sous le solide et le mur à gauche sont hachurés.
-Légende : « Figure 3 ».
+vertical dessiné comme une **barre pleine verte**, posée sur le sol ; le
+ressort (R), dessiné en spires horizontales, étiqueté « (R) » au-dessus,
+relie le support au solide (S) (rectangle grisé, étiqueté « (S) » au-dessus,
+point noir « G » à l'intérieur). Le point $O$ est marqué sur l'axe au niveau
+de l'extrémité du ressort côté solide, avec le vecteur unitaire $\vec{i}$
+(petite flèche vers la droite) juste à sa droite ; l'axe horizontal en
+pointillés se prolonge des deux côtés et se termine à droite par la flèche
+« x ». **Seul le sol est hachuré** — une bande de hachures obliques sous
+toute la largeur du dispositif ; le support de gauche, lui, n'est pas
+hachuré. Légende : « Figure 3 ».
+
+> **Correction du vérificateur (figure 3).** La version transcrite indiquait
+> « le sol sous le solide et le mur à gauche sont hachurés » : le mur ne
+> l'est pas, c'est une barre pleine (verte sur le scan). Seul le sol porte
+> les hachures.
 
 *Figure 4 (courbe, p. 8) :* axe des ordonnées $x\ (\text{cm})$ gradué
 $4,\ 2,\ 0,\ -2,\ -4$ (quadrillage principal noir de pas $2\ \text{cm}$ ;
-le cadre s'arrête à $\pm 4\ \text{cm}$) ; axe des abscisses $t\ (\text{s})$
-chiffré $0{,}5,\ 1,\ 1{,}5$ (traits principaux noirs tous les
-$0{,}25\ \text{s}$, chiffrage un trait sur deux ; le cadre va jusqu'à
-environ $2\ \text{s}$) ; sous-quadrillage fin bleu. Cosinusoïde non
-amortie : $x = +4\ \text{cm}$ à $t = 0$, zéro descendant à
-$t = 0{,}25\ \text{s}$, minimum $-4\ \text{cm}$ à $t = 0{,}5\ \text{s}$,
-zéro montant à $t = 0{,}75\ \text{s}$, maximum $+4\ \text{cm}$ à
-$t = 1\ \text{s}$, minimum $-4\ \text{cm}$ à $t = 1{,}5\ \text{s}$, et
-retour à $+4\ \text{cm}$ au bord droit du cadre (vers $t \approx 2\ \text{s}$).
-La période se lit $T = 1\ \text{s}$ d'un maximum au suivant. Légende :
-« Figure 4 ».
+le cadre s'arrête exactement à $\pm 4\ \text{cm}$) ; axe des abscisses
+$t\ (\text{s})$ chiffré $0{,}5,\ 1,\ 1{,}5$ (traits principaux noirs tous
+les $0{,}25\ \text{s}$, chiffrage un trait sur deux ; le bord gauche est
+$t = 0$ et le bord droit exactement $t = 2\ \text{s}$) ; sous-quadrillage
+fin bleu à $5$ subdivisions par carreau principal ($0{,}05\ \text{s}$ et
+$0{,}4\ \text{cm}$). Cosinusoïde non amortie : $x = +4\ \text{cm}$ à
+$t = 0$, zéro descendant à $t = 0{,}25\ \text{s}$, minimum $-4\ \text{cm}$ à
+$t = 0{,}5\ \text{s}$, zéro montant à $t = 0{,}75\ \text{s}$, maximum
+$+4\ \text{cm}$ à $t = 1\ \text{s}$, minimum $-4\ \text{cm}$ à
+$t = 1{,}5\ \text{s}$, et retour à $+4\ \text{cm}$ au bord droit du cadre
+($t = 2\ \text{s}$). La période se lit $T = 1\ \text{s}$ d'un maximum au
+suivant. Légende : « Figure 4 ».
+
+> **Note du vérificateur (figure 4).** Description **confirmée sans
+> correction** : c'est la seule figure graduée du sujet où le transcripteur
+> a correctement distingué les traits noirs des lignes bleues et identifié
+> le bord du cadre. Mesure : noirs tous les $59{,}5$ px, $9$ verticaux de
+> $t = 0$ à $t = 2\ \text{s}$, $5$ horizontaux de $-4$ à $+4\ \text{cm}$.
+> $T = 1\ \text{s}$ redonne $k = 4\pi^2 m/T^2 = 20\ \text{N.m}^{-1}$.
 
 ---
 
 ## Classement
 
-Notions cibles parmi les slugs `content/pc/` (table README §4) :
+Notions cibles parmi les slugs `content/pc/` (table README §4). **Vérifié et
+corrigé le 2026-08-22** : le classement de l'exercice 4 — partie 1 hésitait
+entre `chute-mouvements-plans` et un `lois-de-newton` supposé « absent de la
+liste ». Contrôle fait : `lois-de-newton` **figure bien** dans la table
+README §4 (ligne « Lois de Newton — 2ème loi, référentiels galiléens ») et
+le fichier `docs/sujets/pc/lois-de-newton.md` existe. L'hésitation est donc
+levée : c'est `lois-de-newton`, sans cross-list — l'exercice ne comporte ni
+chute libre, ni frottement fluide, ni mouvement de projectile.
 
 - **Exercice 1 — Partie 1** (électrolyse du chlorure d'or (III)) →
   `electrolyse`.
@@ -587,9 +765,7 @@ Notions cibles parmi les slugs `content/pc/` (table README §4) :
 - **Exercice 3 — section 3** (réception d'une onde modulée en amplitude,
   circuit d'accord LC) → `ondes-em-modulation`.
 - **Exercice 4 — Partie 1** (solide sur plan incliné, 2ᵉ loi de Newton,
-  mouvement rectiligne) → notion réelle : *lois de Newton* (slug
-  `lois-de-newton` de la table README §4, **absent de la liste de slugs
-  fournie pour ce classement**) ; le plus proche dans la liste fournie est
-  `chute-mouvements-plans` — à arbitrer.
+  mouvement rectiligne uniformément varié, exploitation de $x = f(t^2)$) →
+  `lois-de-newton`.
 - **Exercice 4 — Partie 2** (oscillateur élastique horizontal, période
   propre, raideur) → `systemes-oscillants`.

@@ -464,6 +464,149 @@ Résoudre $L=f(L)$ **sans avoir d'abord établi que la suite converge**. L'équa
 
 ---
 
+## Suites homographiques : quand l’auxiliaire est un rapport
+
+### La deuxième famille, celle qui tombe le plus souvent
+
+La suite auxiliaire du R8 a parfaitement marché sur le réservoir. Il faut maintenant savoir **où** elle marche, parce que son domaine de validité est plus étroit qu’il n’en a l’air : $v_n = u_n - L$ linéarise une suite $u_{n+1} = f(u_n)$ quand $f$ est **affine**, $f(x) = ax+b$ — c’est-à-dire quand $u_n$ n’apparaît qu’en haut.
+
+Or il existe une deuxième famille, au moins aussi fréquente aux examens nationaux, où $u_n$ apparaît aussi **en bas** :
+
+$$u_{n+1} = \frac{a\,u_n + b}{c\,u_n + d} \qquad \text{avec } c \neq 0$$
+
+On dit alors que la suite est **homographique** : le terme suivant est un quotient de deux expressions affines du terme précédent. Par exemple $u_{n+1} = \dfrac{2u_n}{u_n+4}$, ou $u_{n+1} = \dfrac{u_n}{5-2u_n}$, ou $u_{n+1} = \dfrac{3u_n-1}{u_n+2}$. Le $c \neq 0$ est tout ce qui change : si $c = 0$, on divise par une constante et on retombe sur une relation affine, donc sur le R8.
+
+### Le geste du R8, mis à l’épreuve
+
+Travaillons sur un exemple concret d’un bout à l’autre : $u_0 = 3$ et
+
+$$u_{n+1} = \frac{3u_n+1}{u_n+3}$$
+
+**Commençons comme au R8 : cherchons les points fixes**, les valeurs que la règle laisse inchangées.
+
+$$L = \frac{3L+1}{L+3} \iff L(L+3) = 3L+1 \iff L^2 + 3L = 3L+1 \iff L^2 = 1$$
+
+$$L = 1 \quad \text{ou} \quad L = -1$$
+
+Premier signal : il y en a **deux**. Le R8 recentrait la suite sur *le* point fixe — ici, lequel choisir ? Essayons le premier, et regardons ce qui se passe vraiment. On pose $v_n = u_n - 1$ :
+
+$$u_{n+1} - 1 = \frac{3u_n+1}{u_n+3} - 1 = \frac{3u_n+1-(u_n+3)}{u_n+3} = \frac{2u_n-2}{u_n+3} = \frac{2(u_n-1)}{u_n+3}$$
+
+Autrement dit :
+
+$$v_{n+1} = \frac{2}{u_n+3} \times v_n$$
+
+Regarde bien ce qu’on a obtenu. La forme est *presque* celle d’une suite géométrique — un facteur multiplié par $v_n$ — sauf que ce facteur, $\dfrac{2}{u_n+3}$, **change à chaque rang**, puisqu’il dépend de $u_n$. Or une raison, par définition, est un nombre fixe, le même à tous les rangs. $(v_n)$ n’est pas géométrique, et la méthode du R8 s’arrête là.
+
+Le coupable est identifié, et c’est lui qui va nous donner la solution : c’est le dénominateur $u_n+3$, que la récurrence traîne avec elle à chaque étape. Une différence ne sait pas s’en débarrasser.
+
+### L’idée : ce qu’une différence ne peut pas faire, un quotient le fait
+
+On n’a pas encore utilisé le second point fixe. Refaisons exactement le même calcul avec lui :
+
+$$u_{n+1} + 1 = \frac{3u_n+1}{u_n+3} + 1 = \frac{3u_n+1+(u_n+3)}{u_n+3} = \frac{4u_n+4}{u_n+3} = \frac{4(u_n+1)}{u_n+3}$$
+
+Mets les deux résultats côte à côte :
+
+$$u_{n+1} - 1 = \frac{2(u_n-1)}{u_n+3} \qquad \text{et} \qquad u_{n+1} + 1 = \frac{4(u_n+1)}{u_n+3}$$
+
+Le **même** dénominateur $u_n+3$ apparaît dans les deux — forcément, c’est le même calcul, avec le même parasite. Et un parasite identique en haut et en bas d’un quotient, ça se simplifie. Divisons donc la première ligne par la seconde :
+
+$$\frac{u_{n+1}-1}{u_{n+1}+1} = \frac{\ \dfrac{2(u_n-1)}{u_n+3}\ }{\ \dfrac{4(u_n+1)}{u_n+3}\ } = \frac{2(u_n-1)}{4(u_n+1)} = \frac{1}{2} \times \frac{u_n-1}{u_n+1}$$
+
+Le dénominateur a disparu. En posant $v_n = \dfrac{u_n-1}{u_n+1}$, on vient de démontrer que $v_{n+1} = \dfrac{1}{2}v_n$ : **$(v_n)$ est géométrique de raison $\dfrac{1}{2}$**.
+
+Voilà tout le chapitre en une phrase : quand la relation est homographique, l’auxiliaire qui linéarise n’est pas une **différence**, c’est un **rapport** — le rapport des écarts aux **deux** points fixes.
+
+$$\alpha \neq \beta \ \text{ points fixes} \quad \Longrightarrow \quad v_n = \frac{u_n-\alpha}{u_n-\beta} \ \text{ est géométrique}$$
+
+**Si tu veux voir pourquoi ce n’est pas un coup de chance**, le calcul qu’on vient de faire deux fois se refait une fois pour toutes avec les lettres. Comme $\alpha$ est un point fixe, $\alpha(c\alpha+d) = a\alpha+b$, donc $b - d\alpha = c\alpha^2 - a\alpha = -\alpha(a-c\alpha)$, et :
+
+$$u_{n+1}-\alpha = \frac{a u_n + b}{c u_n + d} - \alpha = \frac{(a-c\alpha)u_n + b - d\alpha}{c u_n + d} = \frac{(a-c\alpha)(u_n-\alpha)}{c u_n + d}$$
+
+La même chose avec $\beta$ donne $u_{n+1}-\beta = \dfrac{(a-c\beta)(u_n-\beta)}{c u_n + d}$ — **même dénominateur**, toujours. Le quotient des deux le fait disparaître, et il reste une raison constante, $\dfrac{a-c\alpha}{a-c\beta}$. Le mécanisme est structurel : il ne dépend ni des valeurs de $a,b,c,d$, ni de $u_0$.
+
+**En pratique, à l’examen, tu n’auras presque jamais à trouver $v_n$ toi-même** : l’énoncé te la donne (« On considère la suite $(v_n)$ définie par $v_n = \ldots$ ») et te demande de montrer qu’elle est géométrique. Savoir d’où elle sort ne sert donc pas à la deviner — ça sert à ne pas la subir. Tu reconnais dans le $v_n$ imposé les deux points fixes, tu sais d’avance que le dénominateur va se simplifier, et si ça ne se simplifie pas, tu sais que c’est une erreur de calcul de ta part, pas une question piégée.
+
+Une nuance à connaître, sinon tu ne reconnaîtras pas la forme : l’énoncé peut donner l’auxiliaire **à une constante ou à un signe près** — $\dfrac{2-u_n}{1-u_n}$ au lieu de $\dfrac{u_n-2}{u_n-1}$, ou $\dfrac{4u_n}{2u_n+3}$ au lieu de $\dfrac{u_n-0}{u_n+\frac{3}{2}}$. Multiplier une suite géométrique par une constante non nulle ne change pas sa raison : c’est le même outil, habillé autrement.
+
+### Le geste d’examen, pas à pas
+
+La question tombe presque toujours sous la même forme : « Montrer que $(v_n)$ est une suite géométrique de raison $k$ ». Quatre étapes, toujours les mêmes :
+
+1. **Écris $v_{n+1}$ en traitant son numérateur et son dénominateur séparément**, chacun en y remplaçant $u_{n+1}$ par $\dfrac{a u_n+b}{c u_n+d}$. C’est le point d’organisation qui évite les fractions à trois étages.
+2. **Réduis chacun des deux au même dénominateur $c u_n + d$, puis factorise** le numérateur obtenu : c’est là que $u_n-\alpha$ et $u_n-\beta$ réapparaissent.
+3. **Fais le quotient** : le dénominateur commun se simplifie entre le haut et le bas.
+4. **Fais réapparaître $v_n$** et lis la raison.
+
+Une précaution que le correcteur attend : $v_n$ est un quotient, donc son dénominateur ne doit jamais s’annuler — il faut que $u_n \neq \beta$ pour tout $n$. C’est presque toujours déjà acquis, et pas par hasard : la question précédente de l’exercice t’a fait démontrer un encadrement (du type « montrer que $2 \le u_n \le 4$ ») ou une positivité stricte, et c’est exactement ce qui garantit que $u_n$ ne tombe jamais sur $\beta$. Ces questions d’encadrement ne sont pas des questions de chauffe : elles préparent le terrain de celle-ci.
+
+### Revenir à $u_n$ — l’étape qu’on oublie
+
+L’auxiliaire n’est jamais le but. Le but, c’est $u_n$ en fonction de $n$. Deux gestes, dans cet ordre.
+
+**D’abord la formule explicite de $(v_n)$**, par le R2 : $v_n = v_0\,k^n$. Sur notre exemple, $v_0 = \dfrac{3-1}{3+1} = \dfrac{1}{2}$, donc :
+
+$$v_n = \frac{1}{2}\times\left(\frac{1}{2}\right)^{n} = \left(\frac{1}{2}\right)^{n+1}$$
+
+Remarque le décalage de l’exposant : $v_0$ valait déjà $\frac12$, ce qui fait sortir un exposant $n+1$ et non $n$. C’est une source d’erreur classique — recalcule toujours $v_0$ explicitement, ne le suppose jamais égal à 1.
+
+**Ensuite on inverse la définition de $v_n$ pour isoler $u_n$.** On chasse le dénominateur, on regroupe les termes en $u_n$, on factorise :
+
+$$v_n = \frac{u_n-\alpha}{u_n-\beta} \implies v_n(u_n-\beta) = u_n-\alpha \implies u_n(v_n-1) = \beta v_n - \alpha \implies u_n = \frac{\alpha - \beta v_n}{1-v_n}$$
+
+Sur notre exemple ($\alpha = 1$, $\beta = -1$) :
+
+$$u_n = \frac{1+v_n}{1-v_n} = \frac{1+\left(\frac{1}{2}\right)^{n+1}}{1-\left(\frac{1}{2}\right)^{n+1}}$$
+
+**Vérifions à un rang**, comme toujours : la formule donne $u_1 = \dfrac{1+\frac14}{1-\frac14} = \dfrac{5/4}{3/4} = \dfrac{5}{3}$, et la relation de récurrence donne $u_1 = \dfrac{3\times 3+1}{3+3} = \dfrac{10}{6} = \dfrac{5}{3}$. Les deux concordent.
+
+Et la limite se lit immédiatement (R5) : comme $\left|\frac12\right| < 1$, $v_n \to 0$, donc $u_n \to \dfrac{1+0}{1-0} = 1$.
+
+**Un fait à retenir, qui te dit d’avance vers quel point fixe la suite se dirige :** $v_n \to 0$ signifie exactement que $u_n$ se rapproche de $\alpha$ — le point fixe placé **au numérateur** de l’auxiliaire. C’est le cas dès que la raison vérifie $|k|<1$.
+
+Dernier détail de présentation : l’énoncé demande parfois le résultat sous une forme du type $u_n = A + \dfrac{B}{\ldots}$ plutôt que sous forme d’une seule fraction. Ne cherche pas un autre chemin — arrive à ta fraction, puis réécris-la en faisant apparaître le dénominateur dans le numérateur (par exemple $\dfrac{2-v}{1-v} = \dfrac{(1-v)+1}{1-v} = 1+\dfrac{1}{1-v}$).
+
+### La variante déguisée : quand un point fixe vaut 0
+
+Il arrive très souvent que $b=0$, c’est-à-dire que la relation s’écrive $u_{n+1} = \dfrac{a u_n}{c u_n + d}$. Alors $L=0$ est un point fixe — et si tu prends $\beta = 0$, l’auxiliaire devient :
+
+$$v_n = \frac{u_n-\alpha}{u_n-0} = 1 - \frac{\alpha}{u_n}$$
+
+L’énoncé te la présentera donc sous une forme en $\dfrac{1}{u_n}$ — typiquement $w_n = \dfrac{1}{u_n} - 1$. Ne te laisse pas surprendre : c’est le même outil, déguisé.
+
+Et dans ce cas précis il existe une route plus courte, qui vaut la peine d’être connue : **prends directement l’inverse de la relation de récurrence.**
+
+$$\frac{1}{u_{n+1}} = \frac{c u_n + d}{a u_n} = \frac{c}{a} + \frac{d}{a}\times\frac{1}{u_n}$$
+
+Autrement dit, la suite $t_n = \dfrac{1}{u_n}$ vérifie une relation **affine** : $t_{n+1} = \dfrac{d}{a}t_n + \dfrac{c}{a}$. On est retombé exactement dans le cas du R8, et il suffit de recentrer $t_n$ sur le point fixe de cette relation affine.
+
+Un exemple minute. Pour $u_{n+1} = \dfrac{u_n}{2-u_n}$ (avec $u_n > 0$ pour tout $n$, démontré en amont) :
+
+$$\frac{1}{u_{n+1}} = \frac{2-u_n}{u_n} = \frac{2}{u_n}-1 \implies \frac{1}{u_{n+1}}-1 = \frac{2}{u_n}-2 = 2\left(\frac{1}{u_n}-1\right)$$
+
+La suite $w_n = \dfrac{1}{u_n}-1$ est géométrique de raison 2, et on revient à $u_n$ en inversant : $\dfrac{1}{u_n} = 1+w_n$, donc $u_n = \dfrac{1}{1+w_n}$.
+
+(Ce raccourci suppose $u_n \neq 0$ pour tout $n$ : encore une fois, c’est la question de positivité posée plus tôt dans l’exercice qui le garantit.)
+
+### Quand les deux points fixes se confondent
+
+Plus rare, mais il faut savoir le reconnaître : si l’équation $L = f(L)$ a une racine **double** $\alpha$, il n’y a pas de second point fixe pour former un rapport. L’auxiliaire est alors $t_n = \dfrac{1}{u_n-\alpha}$, et elle n’est pas géométrique mais **arithmétique**. Le réflexe de fond ne change pas — on divise, on ne soustrait pas ; seule la famille d’arrivée change.
+
+Sur $u_{n+1} = \dfrac{3u_n-1}{u_n+1}$, dont l’équation $L^2-2L+1=0$ a la racine double $\alpha=1$ : $u_{n+1}-1 = \dfrac{2(u_n-1)}{u_n+1}$, donc
+
+$$\frac{1}{u_{n+1}-1} = \frac{u_n+1}{2(u_n-1)} = \frac{(u_n-1)+2}{2(u_n-1)} = \frac{1}{2} + \frac{1}{u_n-1}$$
+
+$(t_n)$ est bien arithmétique, de raison $\dfrac12$. Le signe qui trahit ce cas, avant tout calcul : le discriminant de l’équation du point fixe est nul.
+
+### L’erreur à repérer
+
+L’erreur qui coûte le plus cher ici est de forcer le geste du R8 sur une suite homographique, et de conclure trop vite. Le calcul $u_{n+1}-1 = \dfrac{2}{u_n+3}(u_n-1)$ *ressemble* tellement à une relation géométrique qu’on est tenté d’écrire « donc $(u_n-1)$ est géométrique de raison $\dfrac{2}{u_n+3}$ ». C’est une phrase qui ne veut rien dire : une raison est un **nombre**, fixé une fois pour toutes, pas une expression qui change à chaque rang.
+
+Le test infaillible, à faire systématiquement avant d’écrire le mot « géométrique » : **regarde ce que tu as devant $v_n$. S’il reste un $u_n$ ou un $n$ dedans, ce n’est pas une raison.** Et quand ce test échoue sur une suite homographique, ce n’est pas que la piste est mauvaise — c’est le signal qu’il faut passer de la différence au rapport, en faisant intervenir le second point fixe.
+
+---
+
 ## R9 — Suites adjacentes
 
 ### Le problème : encadrer une limite qu'on ne sait pas calculer directement

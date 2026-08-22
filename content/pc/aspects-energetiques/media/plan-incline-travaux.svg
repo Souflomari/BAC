@@ -1,3 +1,24 @@
+<!--
+  STATUT : FIGURE ORPHELINE (constaté le 2026-08-22).
+  Aucun marqueur [[figure:plan-incline-travaux]] dans
+  content/pc/aspects-energetiques/lesson.md : cette figure a été retirée
+  avec l'ancien R5 (docs/.../spec-extension.md l.37 et 268, « Retire the
+  plan-incline-travaux.svg figure (or repurpose) »). Elle n'est donc
+  affichée à AUCUN élève aujourd'hui.
+
+  Elle a tout de même été restagée 3→5 (docket stage-depth, une idée par
+  étape : le décor, la dénivelée cachée, puis le travail de chaque force
+  séparément) pour être réutilisable telle quelle si on la raccroche —
+  sa place naturelle serait après [[figure:travail-force-signe]], dont
+  elle est le cas concret à trois forces. LE RACCROCHAGE EST UNE DÉCISION
+  DE CONTENU, laissée à l'owner.
+
+  Défaut résiduel connu et assumé tant qu'elle reste orpheline : la note
+  « la dénivelée cachée dans d » frôle l'étiquette P de la flèche du
+  poids (mesuré par web/scripts/figure-preview.mjs). À reprendre le jour
+  où elle est raccrochée, pas avant — corriger au pixel une figure que
+  personne ne voit n'a pas de valeur.
+-->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" width="640" height="460"
      font-family="'IBM Plex Sans', system-ui, sans-serif"
      aria-label="Solide sur un plan incliné d'angle alpha, glissant d'une distance d le long du plan, révélé en cinq temps : le décor, puis la dénivelée cachée Δz = d fois sinus alpha, puis le travail du poids mg fois Δz qui est moteur, puis la réaction normale perpendiculaire au déplacement dont le travail est nul, puis le frottement de sens opposé dont le travail est négatif, moins f fois d.">
@@ -82,7 +103,7 @@
         fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
 
   <!-- Échelle divulguée -->
-  <text x="320" y="445" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)"
+  <text x="320" y="445" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)"
     >Échelle des forces : 8 px ↔ 1 N (m = 1,0 kg, g ≈ 9,8 m/s<tspan dy="-4" font-size="70%">2</tspan><tspan
     dy="4">). Seule la norme de </tspan><tspan font-style="italic">f</tspan><tspan> (2,0 N) est exagérée ×3 pour rester lisible.</tspan></text>
 
@@ -131,8 +152,8 @@
 
     <!-- Jambe verticale : Δz = d·sin α — LE foyer de l'étape -->
     <line x1="190" y1="149.25" x2="190" y2="273.9" stroke="var(--figure-accent)" stroke-width="2" stroke-dasharray="6,4"/>
-    <text x="178" y="215" text-anchor="end" font-size="12.5" fill="var(--figure-accent)">Δz<tspan> = d·sin α</tspan></text>
-    <text x="178" y="231" text-anchor="end" font-size="10.5" font-style="italic" fill="var(--figure-accent)">la dénivelée cachée dans d</text>
+    <text x="162" y="209" text-anchor="end" font-size="12.5" fill="var(--figure-accent)">Δz<tspan> = d·sin α</tspan></text>
+    <text x="162" y="225" text-anchor="end" font-size="10.5" font-style="italic" fill="var(--figure-accent)">la dénivelée cachée dans d</text>
   </g><!-- /step-2 -->
 
   <!-- ══════════════════════════════════════════════════════════
