@@ -226,6 +226,101 @@ $(E, \circ)$ **est un groupe** : le groupe des symétries du rectangle.
 
 ---
 
+## Sous-groupe : un groupe caché dans un autre
+
+Tu viens de vérifier, deux fois, qu'un ensemble muni d'une loi est un groupe : quatre axiomes, cochés un par un. Ce chapitre pose la même question un cran plus bas — et c'est celle que l'examen national pose presque chaque année : **une partie** d'un groupe déjà connu forme-t-elle, à elle seule, un groupe pour la même loi ?
+
+### Un premier cas, sur une table déjà construite
+
+Reprends $(\mathbb{Z}/4\mathbb{Z},+)$ et sa table du R1, mais ne regarde que les deux éléments $H = \{0,2\}$. Combine-les entre eux, en lisant les cases correspondantes :
+
+$$0+0=0, \qquad 0+2=2, \qquad 2+0=2, \qquad 2+2=0$$
+
+Quatre combinaisons, quatre résultats — et les quatre sont dans $H$. La table de $H$ est donc un tableau complet, autonome, qui ne sort jamais de $H$ :
+
+| $+$ | $0$ | $2$ |
+|---|---|---|
+| $0$ | $0$ | $2$ |
+| $2$ | $2$ | $0$ |
+
+Sur cette petite table, tout est là : la loi est interne (aucune case ne s'échappe), $0$ est neutre (sa ligne recopie l'en-tête), et chaque élément a un symétrique **dans $H$** ($0$ le sien, $2$ le sien). L'associativité ? Elle est déjà vraie dans $\mathbb{Z}/4\mathbb{Z}$ tout entier — donc en particulier pour les éléments de $H$, qui sont des éléments de $\mathbb{Z}/4\mathbb{Z}$ comme les autres. $(H,+)$ est un groupe. On dit que $H$ est un **sous-groupe** de $(\mathbb{Z}/4\mathbb{Z},+)$.
+
+### La définition, et l'économie qu'elle autorise
+
+**Définition.** Soit $(E,\star)$ un groupe et $H$ une partie de $E$. On dit que $H$ est un **sous-groupe** de $(E,\star)$ lorsque $(H,\star)$ est **lui-même un groupe**, pour la même loi $\star$ restreinte à $H$.
+
+Rien de plus : "sous-groupe" ne désigne pas une structure nouvelle, c'est le mot qui dit "groupe, un cran plus bas". C'est pour ça que le geste te sera familier — c'est la liste de contrôle du R3, appliquée à $H$ au lieu de $E$.
+
+Mais cette liste, tu n'as pas à la repasser en entier, et c'est tout l'intérêt du chapitre. Regarde ce que $H$ reçoit **gratuitement** de $E$, et ce qu'il doit gagner lui-même :
+
+- **L'associativité est héritée, toujours.** L'égalité $(x\star y)\star z = x\star(y\star z)$ est vraie pour **tous** les éléments de $E$. Les éléments de $H$ sont des éléments de $E$. Donc elle est vraie pour eux aussi, sans une ligne de calcul.
+- **La stabilité, elle, n'est pas héritée.** $x\star y$ est bien dans $E$ — mais rien ne garantit qu'il retombe dans $H$.
+- **Le neutre non plus.** $e$ existe dans $E$, mais il peut très bien ne pas appartenir à $H$.
+- **Les symétriques non plus.** Le symétrique de $x$ existe dans $E$, mais il peut sortir de $H$.
+
+Trois questions au lieu de quatre — et les trois qui restent posent toutes la même question : **est-ce qu'on sort de $H$ ?**
+
+**Critère du sous-groupe.** Soit $(E,\star)$ un groupe de neutre $e$, et $H$ une partie de $E$. Alors $H$ est un sous-groupe de $(E,\star)$ si et seulement si :
+
+1. $e \in H$ (ce qui assure au passage que $H$ n'est pas vide) ;
+2. pour tous $x,y \in H$ : $x \star y \in H$ ;
+3. pour tout $x \in H$ : le symétrique $x'$ de $x$ appartient à $H$.
+
+### Exemple travaillé, dans l'habillage de l'examen
+
+**Ce qu'on cherche et pourquoi ce geste :** les sujets ne présentent presque jamais $H$ par la liste de ses éléments — ils le décrivent par une **forme** ("les matrices qui s'écrivent comme ceci", "les complexes dont la partie réelle vaut $1$"). Vérifier la stabilité, c'est alors combiner deux éléments de cette forme et regarder si le résultat garde la même forme.
+
+Dans $(M_2(\mathbb{R}),+)$ — un groupe commutatif, puisque l'addition matricielle se fait coefficient par coefficient et hérite tout de $(\mathbb{R},+)$ — considère
+
+$$F = \left\{ M(a,b) = \begin{pmatrix} a & -b \\ b & a \end{pmatrix} \ /\ (a,b) \in \mathbb{Z}^2 \right\}$$
+
+et montrons que $F$ est un sous-groupe de $(M_2(\mathbb{R}),+)$.
+
+1. **Le neutre.** Le neutre de $(M_2(\mathbb{R}),+)$ est la matrice nulle $O$. Or $O = M(0,0)$, et $(0,0) \in \mathbb{Z}^2$ : donc $O \in F$. ✓
+2. **La stabilité.** Prends deux éléments quelconques de $F$ — deux, écrits avec des lettres différentes, jamais deux fois le même :
+
+$$M(a,b) + M(c,d) = \begin{pmatrix} a & -b \\ b & a \end{pmatrix} + \begin{pmatrix} c & -d \\ d & c \end{pmatrix} = \begin{pmatrix} a+c & -(b+d) \\ b+d & a+c \end{pmatrix} = M(a+c,\ b+d)$$
+
+Le résultat a exactement la forme $M(\cdot,\cdot)$, et ses deux paramètres $a+c$ et $b+d$ sont des entiers, puisque $\mathbb{Z}$ est stable pour $+$. Donc $M(a,b)+M(c,d) \in F$. ✓
+
+3. **Les symétriques.** Le symétrique de $M(a,b)$ pour $+$ est son opposé $-M(a,b)$, qui vaut $M(-a,-b)$ — encore de la forme voulue, avec $-a$ et $-b$ entiers. Donc $-M(a,b) \in F$. ✓
+
+Les trois conditions tiennent : $F$ est un sous-groupe de $(M_2(\mathbb{R}),+)$, donc $(F,+)$ est un groupe. Remarque surtout ce qui n'a **pas** été écrit : pas une ligne sur l'associativité de $+$, pas une ligne sur sa commutativité. Elles sont vraies dans $M_2(\mathbb{R})$ tout entier, donc dans $F$.
+
+### Quand la loi est $\times$ : le symétrique devient le vrai travail
+
+Pour une loi additive, le symétrique est l'opposé, et il se lit tout de suite. Pour une loi multiplicative, il faut le **calculer**, puis vérifier qu'il a encore la bonne forme — c'est presque toujours là que se joue la question.
+
+Dans $(\mathbb{R}^*,\times)$, prends $H = \{2^n \ /\ n \in \mathbb{Z}\}$.
+
+- Neutre : le neutre de $\times$ est $1$, et $1 = 2^0$ avec $0 \in \mathbb{Z}$, donc $1 \in H$. ✓
+- Stabilité : $2^n \times 2^m = 2^{n+m}$, et $n+m \in \mathbb{Z}$. ✓
+- Symétrique : le symétrique de $2^n$ pour $\times$ est $\dfrac{1}{2^n} = 2^{-n}$, et $-n \in \mathbb{Z}$ — il est encore dans $H$. ✓
+
+$H$ est un sous-groupe de $(\mathbb{R}^*,\times)$. Ce qu'il faut retenir n'est pas le résultat, c'est le geste de la troisième ligne : on écrit le symétrique, on le **transforme** jusqu'à lui faire retrouver la forme qui définit $H$, et c'est cette réécriture qui prouve l'appartenance. Quand $H$ est décrit par une écriture du type $x+y\sqrt3$ ou $x+yi$, cette réécriture passe presque toujours par la multiplication haut et bas par la quantité conjuguée — la même technique de rationalisation que tu connais déjà.
+
+### Une vérification qu'on oublie : $H$ est-il bien inclus dans $E$ ?
+
+Quand le sujet décrit $H$ par une forme différente de celle de $E$ — par exemple $G = \{1+yi \ /\ y \in \mathbb{R}\}$, présenté comme sous-ensemble de l'ensemble $E$ des complexes de partie réelle strictement positive — l'inclusion $H \subset E$ n'est pas gratuite : elle se justifie en une ligne (ici, la partie réelle de $1+yi$ vaut $1$, qui est bien strictement positif). Une ligne, mais elle manque souvent, et sans elle la phrase "sous-groupe de $(E,\star)$" n'a pas de sens : on ne peut pas être un groupe *à l'intérieur* d'un ensemble auquel on n'appartient même pas.
+
+### L'erreur fréquente : deux conditions sur trois
+
+Prends $(\mathbb{Z},+)$, qui est un groupe, et $H = \mathbb{N}$. Vérifie :
+
+- Le neutre : $0 \in \mathbb{N}$. ✓
+- La stabilité : la somme de deux entiers naturels est un entier naturel. ✓
+- Les symétriques : le symétrique de $3$ pour $+$ est $-3$, et $-3 \notin \mathbb{N}$. ✗
+
+Deux conditions sur trois, et pourtant $\mathbb{N}$ n'est **pas** un sous-groupe de $(\mathbb{Z},+)$ — il suffit d'un seul élément dont le symétrique s'échappe. C'est exactement l'exigence du quatrième axiome du R3 : "**tout** élément possède un symétrique", jamais "certains éléments". Et c'est la condition qu'on oublie le plus, parce que la stabilité, elle, saute aux yeux.
+
+L'erreur inverse coûte moins cher mais se voit tout autant : repartir de zéro et rédiger une démonstration de l'associativité sur $H$ — le plus souvent en la testant sur un seul triplet, ce qui ne prouve rien (R2). L'associativité s'hérite ; le reste se vérifie.
+
+### Ce que tu gagnes une fois le sous-groupe établi
+
+Le mot n'est pas qu'une étiquette. Dès que $H$ est reconnu comme sous-groupe de $(E,\star)$, tu disposes sur $H$ de tout ce qu'un groupe garantit — et la commutativité s'hérite exactement comme l'associativité : si $x\star y = y \star x$ vaut pour tous les éléments de $E$, elle vaut en particulier pour ceux de $H$. Un sous-groupe d'un groupe commutatif est donc **automatiquement** commutatif. C'est ce qui permet d'enchaîner, dans un sujet, "$H$ est un sous-groupe de $(\mathbb{R}^*,\times)$, qui est commutatif, donc $(H,\times)$ est un groupe commutatif" — sans rien revérifier.
+
+---
+
 ## R4 — Groupe commutatif (abélien)
 
 ### La définition
@@ -298,6 +393,85 @@ $(\mathbb{Z}/4\mathbb{Z}, +, \times)$ **est un anneau**.
 **Une observation qui va compter pour la suite.** Regarde la ligne du $1$ dans la table de $\times$ : elle recopie l'en-tête $0,1,2,3$ — $1$ est bien neutre pour $\times$. Mais est-ce que **chaque** élément a un symétrique pour $\times$ ? Regarde la ligne du $2$ : $2\times0=0$, $2\times1=2$, $2\times2=0$, $2\times3=2$ — jamais $1$. **$2$ n'a pas de symétrique pour $\times$.** Donc $(\mathbb{Z}/4\mathbb{Z}, \times)$, prise seule, **n'est pas un groupe** — l'axiome 4 échoue pour l'élément $2$ — alors même que $(\mathbb{Z}/4\mathbb{Z}, +, \times)$ est bel et bien un anneau. C'est exactement ce que la définition de l'anneau annonçait : rien n'exige que $\times$ forme un groupe. Un anneau n'est **pas** "deux lois qui sont chacune un groupe" — c'est un groupe commutatif pour $+$, accompagné d'une seconde loi $\times$ moins exigeante.
 
 [[figure:table-multiplication-modulo4]]
+
+---
+
+## Anneau intègre : quand un produit nul force un facteur nul
+
+### Un réflexe du collège, mis à l'épreuve
+
+Pour résoudre $(x-2)(x+3)=0$, tu utilises depuis des années une règle si familière qu'elle ne se dit même plus : un produit est nul seulement si l'un de ses facteurs l'est. Question : est-ce une conséquence des **axiomes de l'anneau**, ou une propriété particulière de $\mathbb{R}$ ?
+
+Regarde la table de $\times$ construite au R5 pour $(\mathbb{Z}/4\mathbb{Z},+,\times)$, à la case ligne $2$, colonne $2$ :
+
+$$2 \times 2 = 4 \equiv 0 \pmod 4$$
+
+Deux facteurs valant $2$, donc non nuls, et un produit nul. La règle du collège est **fausse** dans cet anneau. Elle ne découle donc pas des trois axiomes du R5 : c'est une propriété supplémentaire, que certains anneaux possèdent et d'autres non. Elle a un nom.
+
+### Les définitions
+
+**Définition.** Soit $(E,+,\times)$ un anneau, de neutre additif $0$. Un élément $x \in E$ est un **diviseur de zéro** si $x \neq 0$ et s'il existe $y \in E$, avec $y \neq 0$, tel que $x \times y = 0$.
+
+**Définition.** L'anneau $(E,+,\times)$ est **intègre** s'il ne possède **aucun** diviseur de zéro, c'est-à-dire si :
+
+$$\text{pour tous } x,y \in E, \qquad x \times y = 0 \ \Longrightarrow\ x = 0 \ \text{ ou } \ y = 0$$
+
+Dans les énoncés d'examen, "intègre" arrive presque toujours accompagné de deux autres adjectifs. Un anneau est dit **unitaire** quand $\times$ possède un élément neutre, noté $1$, et **commutatif** quand $\times$ est commutative — ni l'un ni l'autre n'est exigé par la définition de base du R5, et c'est pour ça que l'énoncé prend la peine de les annoncer. "Anneau commutatif unitaire et intègre" est la formule complète que tu liras en tête de sujet à propos de $(\mathbb{Z},+,\times)$. Mais c'est bien le troisième mot qui fait tout le travail dans les questions.
+
+Avec cette définition, deux exemples déjà rencontrés se rangent d'un coup :
+
+- $(\mathbb{Z},+,\times)$ **est** intègre : un produit de deux entiers non nuls n'est jamais nul.
+- $(\mathbb{Z}/4\mathbb{Z},+,\times)$ n'est **pas** intègre : $2$ y est un diviseur de zéro, le calcul ci-dessus vient de l'établir.
+
+Un anneau intègre n'est donc pas un anneau "meilleur" au sens vague : c'est un anneau où tu as le droit de raisonner sur les produits nuls comme tu le fais dans $\mathbb{R}$.
+
+### Le geste : montrer qu'un anneau n'est pas intègre
+
+**Ce qu'on cherche et pourquoi ce geste :** l'intégrité est une propriété universelle ("pour tous $x,y$…"). Pour la **réfuter**, un seul couple suffit — exactement comme un seul contre-exemple a suffi, au R2, à casser l'associativité de la division. Il n'y a rien à démontrer en général : il faut **exhiber** deux éléments non nuls dont le produit est nul, et dire explicitement pourquoi chacun des deux est non nul.
+
+Dans $(M_2(\mathbb{R}),+,\times)$ :
+
+$$\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \times \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} = O$$
+
+Les deux facteurs sont non nuls — chacun a un coefficient égal à $1$ — et leur produit est la matrice nulle : $(M_2(\mathbb{R}),+,\times)$ n'est pas intègre. Retiens ce fait, il oriente la lecture de tout un sujet : **un ensemble de matrices n'a aucune raison d'être intègre**, alors qu'un ensemble de nombres réels ou complexes, lui, l'est toujours.
+
+Un mot sur la rédaction : "$M \neq O$" ne se dit pas "on le voit", ça se justifie — en pointant un coefficient non nul, ou une condition donnée par l'énoncé. Et dans un sujet, la question qui précède te tend souvent le couple tout fait ("Vérifier que $M \times N = O$") : ce cadeau est le signal que la question suivante va te demander d'en déduire quelque chose sur l'intégrité, ou sur le fait que la structure n'est pas un corps.
+
+### Le geste inverse : montrer qu'un anneau est intègre
+
+Ici, un exemple ne suffit plus : la propriété doit tenir pour **tous** les couples. Deux voies, et la première est presque toujours la bonne quand elle est disponible.
+
+**Voie 1 — l'héritage.** Si $E$ est contenu dans un anneau déjà connu comme intègre, muni des mêmes lois, alors $E$ est intègre sans rien de plus à faire : l'implication "$x \times y = 0 \Rightarrow x=0$ ou $y=0$" est vraie pour tous les éléments du grand ensemble, donc en particulier pour ceux de $E$. C'est le même argument d'héritage qu'au R2 pour l'associativité. Exemple : $A = \{a+b\sqrt2 \ /\ (a,b) \in \mathbb{Z}^2\}$ est contenu dans $\mathbb{R}$, où un produit de deux nombres non nuls n'est jamais nul — $A$ est intègre, en une ligne.
+
+**Voie 2 — quand l'héritage ne joue pas.** C'est le cas d'un ensemble de matrices : $M_2(\mathbb{R})$ n'étant pas lui-même intègre, il n'y a rien à hériter, et la démonstration doit être menée sur $E$. On part alors de l'hypothèse $M \times N = O$, avec $M$ et $N$ dans $E$, et on cherche à en tirer $M = O$ ou $N = O$ — le plus souvent en traduisant "être la matrice nulle" par une condition **numérique** sur les paramètres qui décrivent $E$, puis en raisonnant sur ces nombres, où le réflexe du collège, lui, est parfaitement légitime.
+
+### L'erreur fréquente : garder les réflexes de $\mathbb{R}$ sans vérifier qu'on y a droit
+
+Résous $x^2 = 0$ dans $\mathbb{Z}/4\mathbb{Z}$. Le réflexe répond "$x = 0$, et c'est tout". La table du R5 dit autre chose : $2 \times 2 = 0$, donc $x=2$ est une seconde solution. Dans un anneau non intègre, une factorisation ne donne plus la liste complète des solutions — elle n'en donne que certaines.
+
+Deuxième réflexe à surveiller, le même en miroir : **simplifier par un facteur**. Toujours dans $\mathbb{Z}/4\mathbb{Z}$, lis la ligne du $2$ : $2 \times 1 = 2$ et $2 \times 3 = 2$. Les deux membres sont égaux, le facteur $2$ est non nul, et pourtant $1 \neq 3$ — on ne peut pas simplifier. Dans un anneau **intègre**, en revanche, on le peut, et la raison est exactement l'intégrité : de $a \times x = a \times y$ on tire $a \times (x - y) = 0$ par distributivité, donc, si $a \neq 0$, $x - y = 0$, c'est-à-dire $x = y$.
+
+Dernière confusion à écarter, et elle porte sur les mots eux-mêmes : intègre ne signifie **pas** "tout élément non nul est inversible". $(\mathbb{Z},+,\times)$ est intègre, et pourtant $2$ n'y a pas de symétrique pour $\times$. Ce sont deux exigences distinctes, et la seconde est la plus forte des deux — c'est elle qui définit la structure du chapitre suivant.
+
+### Pourquoi l'intégrité décide du sort des corps
+
+Deux faits, dans l'ordre.
+
+**Premier fait : dans tout anneau, $x \times 0 = 0$.** Ce n'est pas un axiome, ça se démontre — et la démonstration mérite d'être vue, parce qu'elle montre comment les deux lois d'un anneau se parlent. Pars de $0 = 0+0$ (définition du neutre de $+$), multiplie par $x$ et distribue :
+
+$$x \times 0 = x \times (0+0) = x \times 0 + x \times 0$$
+
+Maintenant, $(E,+)$ est un groupe : l'élément $x \times 0$ y possède un symétrique. Ajoute ce symétrique aux deux membres, et il reste $0 = x \times 0$.
+
+**Deuxième fait : un élément non nul qui possède un symétrique pour $\times$ ne peut pas être un diviseur de zéro.** Suppose $x$ inversible, de symétrique $x'$, et suppose $x \times y = 0$. Multiplie les deux membres par $x'$ à gauche :
+
+$$x' \times (x \times y) = x' \times 0 = 0$$
+
+L'associativité de $\times$ (axiome 2 du R5) permet de redéplacer les parenthèses : $x' \times (x \times y) = (x' \times x) \times y = 1 \times y = y$. Les deux calculs portent sur la même quantité, donc $y = 0$ — l'autre facteur était forcément nul.
+
+La conséquence tombe toute seule, et c'est elle que les sujets exploitent. Le chapitre suivant (R6) demande, pour un **corps**, que *tout* élément non nul possède un symétrique pour $\times$. Si un seul couple d'éléments non nuls de $E$ a un produit nul, alors aucun des deux n'est inversible, et l'exigence échoue : **exhiber un diviseur de zéro, c'est réfuter le corps d'un seul coup**, sans avoir à examiner les autres éléments un par un.
+
+Attention à ne pas retourner l'implication. Tout corps est intègre — c'est ce qu'on vient de démontrer — mais un anneau intègre n'est pas pour autant un corps : $(\mathbb{Z},+,\times)$ est intègre et n'est pas un corps. Entre l'anneau et le corps, l'intégrité est un barreau intermédiaire : plus exigeante que l'anneau, moins exigeante que le corps.
 
 ---
 

@@ -2,13 +2,19 @@
   "slug": "independant-vs-incompatible",
   "stages": [
     {
-      "caption": "Le carré représente l'univers Ω. La bande verticale de gauche est l'événement A, de largeur proportionnelle à P(A) = 0,4."
+      "caption": "Le carré entier représente l'univers Ω, et une aire se lit comme une probabilité. La bande verticale de gauche est l'événement A : sa largeur vaut P(A) = 0,4."
     },
     {
-      "caption": "On place B comme une bande totalement séparée de A : aucun chevauchement, A ∩ B = ∅. Si A s'est produit, B devient impossible : P(B|A) = 0 ≠ P(B) = 0,5. Connaître A exclut B totalement — c'est la forme de dépendance la plus forte qui existe."
+      "caption": "Premier agencement : on pose B à côté de A, sans le moindre contact. Les deux bandes ne se chevauchent nulle part, donc A ∩ B = ∅. Pour l'instant, on n'a fait que constater : rien n'est encore interprété."
     },
     {
-      "caption": "On repart de l'univers Ω et on place B autrement : une bande horizontale de hauteur P(B) = 0,5, qui traverse A. Le rectangle A ∩ B (aire 0,20) est exactement P(A) × P(B). À l'intérieur de la bande A, la part occupée par B est la même qu'à l'extérieur : P(B|A) = P(B). Connaître A ne change rien à B — aucune dépendance."
+      "caption": "Maintenant on lit ce dessin. Supposons A réalisé : l'univers se réduit à la bande surlignée, et dans cette bande il ne reste aucune part de B. Donc P(B|A) = 0, alors que P(B) valait 0,5. Savoir que A s'est produit fait tomber la probabilité de B de 0,5 à zéro — c'est la forme de dépendance la plus forte qui existe, pas de l'indépendance."
+    },
+    {
+      "caption": "Second agencement, à droite : exactement le même A de largeur 0,4 et le même B de « taille » 0,5, mais B est cette fois une bande horizontale qui traverse A. Le chevauchement n'est plus vide : c'est un rectangle, et l'aire d'un rectangle est le produit de ses côtés — 0,4 × 0,5 = 0,20. C'est P(A) × P(B)."
+    },
+    {
+      "caption": "On lit ce second dessin. La frontière basse de B traverse tout le carré à la même hauteur : la part occupée par B est identique à l'intérieur de A et à l'extérieur. Donc P(B|A) = 0,20/0,40 = 0,50 = P(B). Savoir que A s'est produit ne change rien à B — voilà l'indépendance."
     }
   ]
 }

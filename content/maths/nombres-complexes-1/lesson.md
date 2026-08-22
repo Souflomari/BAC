@@ -267,6 +267,210 @@ Les deux membres valent $\sqrt{10}$ : la propriété est vérifiée sur cet exem
 
 ---
 
+## Résoudre une équation du second degré dans $\mathbb{C}$
+
+### Le dividende de tout ce qu'on vient de construire
+
+Au R0, on a inventé $\mathbb{C}$ pour une raison très précise : donner une solution à $x^2=-1$. Depuis, on a appris à calculer dans ce nouvel ensemble — additionner, multiplier, conjuguer, diviser, mesurer. Le moment est venu de toucher le dividende, et il tombe exactement là où on l'attendait : sur les équations du second degré.
+
+Rappelle-toi la classification que tu connais depuis la première, pour $az^2+bz+c=0$ à coefficients réels, avec $\Delta = b^2-4ac$ :
+
+- $\Delta > 0$ : deux solutions réelles ;
+- $\Delta = 0$ : une solution double ;
+- $\Delta < 0$ : **aucune solution**.
+
+Ce troisième cas était un mur. Dans $\mathbb{C}$, il n'existe plus.
+
+Et les sujets d'examen national vont plus loin encore : ils posent des équations dont **les coefficients eux-mêmes sont complexes** — $az^2+bz+c=0$ avec $a$, $b$, $c$ dans $\mathbb{C}$ et $a \neq 0$. Avant de lire la suite, prends position : quand les coefficients deviennent complexes, faut-il une nouvelle formule, ou celle que tu connais tient-elle encore ?
+
+### Le seul point vraiment neuf : une racine carrée de $\Delta$
+
+Regarde la formule habituelle, $z = \dfrac{-b \pm \sqrt{\Delta}}{2a}$, et demande-toi quel morceau exactement pose problème dans $\mathbb{C}$.
+
+Ni $-b$, ni $2a$, ni la division : tout ça, on sait le faire depuis le R2 et le R3. Le seul morceau douteux, c'est $\sqrt{\Delta}$. Dans $\mathbb{R}$, cette écriture a un sens parfaitement clair tant que $\Delta \geq 0$ : c'est **le** réel **positif** dont le carré vaut $\Delta$ — deux mots qui font tout le travail, « le » et « positif ».
+
+Dans $\mathbb{C}$, ces deux mots s'effondrent ensemble. Il n'y a pas d'ordre sur $\mathbb{C}$ : « le complexe positif dont le carré vaut $\Delta$ » ne désigne rien. Et si un complexe $\delta$ vérifie $\delta^2=\Delta$, alors $(-\delta)^2 = \delta^2 = \Delta$ aussi — deux candidats, rigoureusement interchangeables, que rien ne permet de départager.
+
+**Le geste qui remplace la notation.** On ne cherche plus « la » racine carrée de $\Delta$ : on cherche **un** nombre complexe $\delta$ tel que
+
+$$\delta^2 = \Delta$$
+
+et n'importe lequel des deux fait l'affaire — parce que la formule contient déjà un $\pm$, qui rattrape le choix. Choisir $-\delta$ au lieu de $\delta$ échange simplement les deux solutions entre elles.
+
+**Un piège classique, et il coûte cher :** n'écris jamais $\sqrt{\Delta}$ quand $\Delta$ n'est pas un réel positif ou nul. Si on s'autorisait $\sqrt{-1}$ comme un symbole ordinaire, on écrirait
+
+$$-1 = i^2 = \sqrt{-1} \times \sqrt{-1} = \sqrt{(-1)\times(-1)} = \sqrt{1} = 1$$
+
+et on démontrerait que $-1=1$. La règle $\sqrt{x}\sqrt{y}=\sqrt{xy}$ est une règle **des réels positifs** ; elle ne survit pas au passage dans $\mathbb{C}$. Écris $\delta$, avec $\delta^2=\Delta$ : c'est plus court, et c'est vrai.
+
+*(Une tolérance d'usage, que tu verras partout : quand $\Delta$ est un réel strictement **négatif**, tout le monde écrit $\sqrt{\Delta} = i\sqrt{|\Delta|}$. C'est sans danger, à condition de lire cette écriture comme un raccourci pour « $\delta = i\sqrt{|\Delta|}$ convient ». Et on le vérifie en une ligne : $\left(i\sqrt{|\Delta|}\right)^2 = i^2\,|\Delta| = -|\Delta| = \Delta$, puisque $\Delta$ est négatif.)*
+
+### Pourquoi la formule reste vraie — la forme canonique
+
+Voici la réponse à la question posée plus haut, et elle est plus intéressante qu'un simple « oui ». Repars de l'expression, avec $a \neq 0$ :
+
+$$az^2+bz+c = a\left[z^2 + \frac{b}{a}z + \frac{c}{a}\right] = a\left[\left(z+\frac{b}{2a}\right)^2 - \frac{b^2}{4a^2} + \frac{c}{a}\right] = a\left[\left(z+\frac{b}{2a}\right)^2 - \frac{\Delta}{4a^2}\right]$$
+
+**Regarde ce que ce calcul a utilisé :** uniquement les règles de calcul de $\mathbb{C}$ (développer, regrouper, diviser par un nombre non nul — R2 et R3). Pas une seule fois le fait que $a$, $b$, $c$ soient réels. Pas une seule fois le signe de quoi que ce soit. La forme canonique n'a jamais rien eu à voir avec $\mathbb{R}$ ; c'est nous qui l'y avions cantonnée.
+
+Prends maintenant $\delta$ tel que $\delta^2=\Delta$. Alors $\dfrac{\Delta}{4a^2} = \left(\dfrac{\delta}{2a}\right)^2$, et le crochet devient une différence de deux carrés — la même identité $X^2-Y^2=(X-Y)(X+Y)$ qui nous avait servi au R3 :
+
+$$az^2+bz+c = a\left(z + \frac{b}{2a} - \frac{\delta}{2a}\right)\left(z + \frac{b}{2a} + \frac{\delta}{2a}\right)$$
+
+Un produit de nombres complexes est nul si et seulement si l'un des facteurs est nul (si le premier facteur n'est pas nul, on peut diviser par lui — le R3 nous a appris à diviser par n'importe quel complexe non nul — et le second facteur est alors forcément nul). L'équation se résout donc en annulant chaque facteur, et il reste :
+
+$$z_1 = \frac{-b+\delta}{2a} \qquad \qquad z_2 = \frac{-b-\delta}{2a}$$
+
+**Et la discussion se réduit à presque rien :**
+
+- si $\Delta \neq 0$, alors $\delta \neq 0$ et l'équation a **deux solutions distinctes** ;
+- si $\Delta = 0$, alors $\delta = 0$ et les deux se confondent : une **solution double**, $z = -\dfrac{b}{2a}$.
+
+Il n'y a plus de troisième cas. Dans $\mathbb{C}$, une équation du second degré a toujours des solutions — c'est exactement le mur du R0 qui vient de tomber.
+
+**Un piège très fréquent à l'examen :** ne discute jamais le **signe** de $\Delta$ quand $\Delta$ n'est pas réel. Écrire « $\Delta = 2i(m-1)^2 < 0$ » n'est pas une erreur de calcul, c'est une phrase qui n'a aucun sens : il n'y a pas d'ordre sur $\mathbb{C}$. Avec des coefficients complexes, la seule question qui subsiste est : $\Delta$ est-il nul, ou non ?
+
+### Exemple travaillé 1 — coefficients réels, $\Delta$ négatif
+
+Résoudre dans $\mathbb{C}$ l'équation $z^2-2z+4=0$.
+
+**Ce qu'on cherche et pourquoi ce geste :** les coefficients sont réels, donc on calcule $\Delta$ par réflexe, exactement comme avant. Ce qui change, c'est ce qu'on fait quand il tombe négatif : au lieu de conclure « pas de solution », on cherche un $\delta$.
+
+$$\Delta = (-2)^2 - 4\times1\times4 = 4-16 = -12$$
+
+$\Delta$ est un réel négatif : $\delta = i\sqrt{12} = 2i\sqrt{3}$ convient. On le vérifie plutôt que de le croire : $\left(2i\sqrt3\right)^2 = 4i^2\times3 = -12$. C'est bien $\Delta$.
+
+$$z = \frac{2 \pm 2i\sqrt3}{2} = 1 \pm i\sqrt3 \qquad \qquad S = \left\{\, 1-i\sqrt3\ ;\ 1+i\sqrt3 \,\right\}$$
+
+**Ce qu'on remarque, et pourquoi ce n'est pas un hasard :** les deux solutions sont **conjuguées** l'une de l'autre. La raison mérite d'être vue, parce qu'elle dit aussi où la propriété s'arrête. Si $z_0$ est solution de $az_0^2+bz_0+c=0$, conjugue l'égalité tout entière : le conjugué d'une somme est la somme des conjugués, celui d'un produit le produit des conjugués (R3), donc $\overline{a}\,\overline{z_0}^{\,2} + \overline{b}\,\overline{z_0} + \overline{c} = 0$. Si — et seulement si — $a$, $b$, $c$ sont **réels**, on a $\overline a = a$, $\overline b = b$, $\overline c = c$, et cette égalité dit exactement que $\overline{z_0}$ est solution à son tour.
+
+Retiens la portée exacte de ce résultat : il repose entièrement sur des coefficients réels. L'exemple suivant montre ce qui se passe quand ils ne le sont plus.
+
+### Exemple travaillé 2 — coefficients complexes : reconnaître un carré parfait
+
+Résoudre dans $\mathbb{C}$ l'équation $z^2 - (3+i)z + 2 + 2i = 0$.
+
+**Ce qu'on cherche et pourquoi ce geste :** rien ne change dans la méthode — on identifie $a=1$, $b=-(3+i)$, $c=2+2i$, et on calcule $\Delta = b^2-4ac$ en développant avec les règles du R2. Ce qui change, c'est l'**arrivée** : $\Delta$ ne sera pas un réel, donc le raccourci « $\delta = i\sqrt{|\Delta|}$ » ne s'appliquera pas. Il faudra reconnaître $\Delta$ comme un carré.
+
+$$(3+i)^2 = 9+6i+i^2 = 8+6i$$
+
+$$\Delta = (8+6i) - 4(2+2i) = 8+6i-8-8i = -2i$$
+
+Il faut maintenant un $\delta$ tel que $\delta^2 = -2i$. Et c'est ici qu'intervient le seul réflexe vraiment nouveau du chapitre — un petit carré qui revient dans presque tous les sujets, et qui se recalcule en trois secondes avec $i^2=-1$ :
+
+$$(1+i)^2 = 1+2i+i^2 = 2i \qquad \qquad (1-i)^2 = 1-2i+i^2 = -2i$$
+
+On lit directement $\delta = 1-i$. Il ne reste qu'à appliquer la formule, avec $-b = 3+i$ :
+
+$$z = \frac{(3+i) \pm (1-i)}{2}$$
+
+$$z_1 = \frac{4}{2} = 2 \qquad \qquad z_2 = \frac{2+2i}{2} = 1+i$$
+
+$$S = \left\{\, 2\ ;\ 1+i \,\right\}$$
+
+**Vérification, toujours possible et toujours rapide :** la somme des deux solutions doit redonner $3+i$ — et $2+(1+i) = 3+i$ ; leur produit doit redonner $2+2i$ — et $2(1+i) = 2+2i$. Les deux contrôles tombent juste. *(Le chapitre suivant explique pourquoi ce contrôle fonctionne, et comment en faire un outil à part entière.)*
+
+**Le piège que cet exemple désamorce :** $2$ et $1+i$ ne sont **pas** conjugués. Dès qu'un coefficient est complexe non réel, les deux solutions n'ont plus aucune raison de l'être — la propriété de l'exemple 1 reposait entièrement sur $\overline a = a$, $\overline b = b$, $\overline c = c$, et cette hypothèse vient de sauter. L'élève qui écrit par réflexe « les deux racines sont conjuguées » se trompe une fois sur deux au bac.
+
+### Trouver le carré parfait, quand il ne saute pas aux yeux
+
+Trois situations, dans l'ordre de fréquence où tu les rencontreras.
+
+**1. L'énoncé te donne le résultat.** « Montrer que le discriminant de $(E)$ est $\Delta = \big(2i(m-1)\big)^2$ » : c'est de loin le cas le plus courant. Le sens du travail est alors **inversé** — tu n'as rien à découvrir, tu as à vérifier. Développe les deux côtés séparément, chacun avec les règles du R2, et compare les deux expressions obtenues. C'est plus court, c'est plus sûr, et c'est exactement ce que le barème attend. Deviner, ici, c'est perdre du temps et des points.
+
+**2. Le carré est là, caché sous un facteur.** Les discriminants des sujets se factorisent presque toujours en un facteur reconnaissable multiplié par un carré d'expression. Le réflexe : factorise $\Delta$ au maximum, puis traite chaque facteur séparément. La table courte qui débloque l'immense majorité des cas :
+
+$$2i = (1+i)^2 \qquad -2i = (1-i)^2 \qquad -1 = i^2 \qquad -k^2 = (ik)^2 \ \ (k \text{ réel})$$
+
+Et un produit de carrés est un carré : si $\Delta = A^2B^2$, alors $\delta = AB$ convient. Par exemple, un $\Delta$ qui se factorise en $2i\,(m-1)^2$ s'écrit $(1+i)^2(m-1)^2$, c'est-à-dire $\big[(1+i)(m-1)\big]^2$ — donc $\delta = (1+i)(m-1)$.
+
+**3. Rien ne se reconnaît.** Il reste une méthode qui ne rate jamais. On pose $\delta = x+iy$ avec $x$ et $y$ réels, et on traduit $\delta^2 = \Delta$ en trois égalités **réelles** :
+
+- $x^2-y^2 = \text{Re}(\Delta)$ et $2xy = \text{Im}(\Delta)$ — c'est l'égalité de deux complexes, lue partie par partie (R1) ;
+- $x^2+y^2 = |\Delta|$ — c'est l'égalité des modules, puisque $|\delta|^2 = |\Delta|$ (R4).
+
+La troisième est celle qui débloque tout : additionnée à la première, elle donne $x^2$ ; soustraite, elle donne $y^2$. La deuxième ne sert plus qu'à fixer le **signe** du produit $xy$.
+
+Sur $\Delta = 3+4i$, par exemple : $x^2-y^2=3$ et $x^2+y^2=|\Delta|=5$, donc $x^2=4$ et $y^2=1$, c'est-à-dire $x=\pm2$ et $y=\pm1$. Et $2xy = 4 > 0$ impose à $x$ et $y$ d'être de même signe : $\delta = 2+i$ convient (l'autre choix, $-2-i$, est son opposé, comme prévu). Contrôle : $(2+i)^2 = 4+4i+i^2 = 3+4i$.
+
+Garde cette méthode comme filet de sécurité : en examen elle est plus longue que la reconnaissance, mais elle aboutit toujours.
+
+---
+
+## Somme et produit des racines : lire l'équation sans la résoudre
+
+### D'où ça sort
+
+Le chapitre précédent nous a donné mieux que deux solutions : il nous a donné une **factorisation**. En regroupant les $\dfrac{1}{2a}$, la double égalité $z_1 = \dfrac{-b+\delta}{2a}$, $z_2=\dfrac{-b-\delta}{2a}$ se relit ainsi :
+
+$$az^2+bz+c = a\,(z-z_1)(z-z_2)$$
+
+Développe maintenant le membre de droite, comme un produit ordinaire :
+
+$$a\,(z-z_1)(z-z_2) = a\left[z^2 - (z_1+z_2)z + z_1z_2\right] = az^2 - a(z_1+z_2)\,z + a\,z_1z_2$$
+
+Les deux écritures désignent la même expression pour toute valeur de $z$ : on peut donc comparer terme à terme. Le coefficient de $z$ donne $b = -a(z_1+z_2)$, et le terme constant donne $c = a\,z_1z_2$. D'où :
+
+$$z_1+z_2 = -\frac{b}{a} \qquad \qquad z_1z_2 = \frac{c}{a}$$
+
+Ce sont les **relations entre les coefficients et les racines** (on les appelle souvent relations de Viète). Ce qui en fait un outil, et pas une curiosité : elles se **lisent** directement sur l'équation, sans calculer le moindre discriminant, et elles sont valables que les coefficients soient réels ou complexes — la démonstration ci-dessus n'a rien supposé de tel.
+
+**Le piège de signe, et le contrôle qui l'évite :** c'est $-\dfrac{b}{a}$ pour la somme, pas $\dfrac{b}{a}$. Le moyen de ne jamais se tromper est de recontrôler sur un cas que tu connais par cœur : $z^2-3z+2=0$ a pour racines $1$ et $2$, dont la somme vaut $3$ ; et $-\dfrac{b}{a} = -\dfrac{-3}{1} = 3$. Le signe est bien là.
+
+**Un préalable à ne pas sauter :** les formules supposent l'équation écrite sous la forme $az^2+bz+c=0$ avec **ce** $a$-là. Si l'énoncé pose $2z^2+2z+5=0$, alors $a=2$ : la somme vaut $-\dfrac{2}{2} = -1$, pas $-2$.
+
+### Usage 1 — calculer sans résoudre
+
+**Exemple travaillé.** Soit $m$ un nombre complexe non nul, et soient $z_1$ et $z_2$ les deux solutions de l'équation $z^2-2mz+4m^2=0$. Calculer $\dfrac{1}{z_1}+\dfrac{1}{z_2}$.
+
+**Ce qu'on cherche et pourquoi ce geste :** avant de se lancer dans un discriminant, regarde la quantité demandée. Échanger $z_1$ et $z_2$ ne la change pas : elle est **symétrique**. C'est le signal — une expression symétrique des deux racines peut toujours s'exprimer à partir de leur seule somme et de leur seul produit. Autrement dit, on n'a pas besoin des racines pour répondre.
+
+On lit d'abord la somme et le produit sur les coefficients ($a=1$, $b=-2m$, $c=4m^2$) :
+
+$$z_1+z_2 = 2m \qquad \qquad z_1z_2 = 4m^2$$
+
+Le produit $4m^2$ n'est pas nul (car $m \neq 0$), donc ni $z_1$ ni $z_2$ n'est nul : les deux inverses existent. On met au même dénominateur :
+
+$$\frac{1}{z_1}+\frac{1}{z_2} = \frac{z_2+z_1}{z_1z_2} = \frac{2m}{4m^2} = \frac{1}{2m}$$
+
+Aucun discriminant n'a été calculé, aucune racine n'a été écrite.
+
+**La deuxième expression symétrique à connaître**, parce qu'elle revient sans cesse dans les sujets, est $(z_1-z_2)^2$. Elle se ramène à la somme et au produit par une identité remarquable :
+
+$$(z_1-z_2)^2 = (z_1+z_2)^2 - 4z_1z_2 = \left(-\frac{b}{a}\right)^2 - 4\,\frac{c}{a} = \frac{b^2-4ac}{a^2} = \frac{\Delta}{a^2}$$
+
+Autrement dit : **le carré de la différence des racines, c'est le discriminant** (divisé par $a^2$, donc égal à $\Delta$ lui-même dès que $a=1$). Sur notre exemple : $(z_1-z_2)^2 = 4m^2-16m^2 = -12m^2$, et le discriminant vaut bien $\Delta = 4m^2-16m^2 = -12m^2$.
+
+### Usage 2 — résoudre sans discriminant, en lisant la forme somme/produit
+
+Le sens inverse est encore plus rentable, et c'est un geste que les sujets exploitent directement.
+
+**La règle.** Si deux nombres $u$ et $v$ vérifient $u+v=S$ et $uv=P$, alors $u$ et $v$ sont exactement les deux solutions de $z^2-Sz+P=0$.
+
+**Pourquoi c'est vrai :** parce que $(z-u)(z-v) = z^2-(u+v)z+uv = z^2-Sz+P$. L'équation était déjà factorisée depuis le début ; il suffisait de le voir.
+
+**Exemple travaillé.** Soient $u$ et $v$ deux nombres complexes tels que $u+v \neq 2i$. Résoudre dans $\mathbb{C}$ l'équation
+
+$$(E)\ :\ z^2 - (u+v+2i)\,z + 2i\,(u+v) = 0$$
+
+**Ce qu'on cherche et pourquoi ce geste :** regarde la forme des deux coefficients avant de calculer quoi que ce soit. Le coefficient de $z$ est la somme de deux blocs, $(u+v)$ et $2i$ ; le terme constant est le **produit des deux mêmes blocs**. C'est la signature de la forme somme/produit — et calculer un discriminant ici serait un long détour vers une réponse qu'on peut lire.
+
+Mais « on voit que » n'est pas une rédaction. La façon honnête d'écrire la lecture, c'est de développer le produit candidat et de comparer :
+
+$$\big(z-(u+v)\big)(z-2i) = z^2 - \big[(u+v)+2i\big]z + 2i\,(u+v)$$
+
+C'est exactement $(E)$. Donc :
+
+$$(E) \iff \big(z-(u+v)\big)(z-2i) = 0 \iff z = u+v \ \text{ ou } \ z = 2i$$
+
+$$S = \left\{\, u+v\ ;\ 2i \,\right\}$$
+
+Les deux solutions sont bien distinctes, puisque l'énoncé suppose $u+v \neq 2i$ — une hypothèse qui n'est jamais là par hasard : elle sert précisément à ça.
+
+**Le piège à ne pas franchir :** les relations somme/produit donnent $S$ et $P$, jamais $z_1$ et $z_2$ séparément. Tant que tu n'as pas **reconnu** deux nombres dont la somme et le produit collent, elles ne remplacent pas la résolution — elles la contournent seulement quand la forme se laisse lire. Si rien ne se reconnaît, reviens au discriminant du chapitre précédent : c'est lui, la méthode générale.
+
+---
+
 ## R5 — Représentation géométrique : affixe, image, et interprétation de $|z-z'|$
 
 ### Le plan complexe
