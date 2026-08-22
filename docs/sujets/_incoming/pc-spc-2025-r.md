@@ -1,0 +1,540 @@
+# Examen national PC — SPC (BIOF) — 2025, session de rattrapage (RS28F)
+
+> Transcription intégrale depuis les scans AlloSchool (`element/145799`,
+> `course-422/upload-87492`, 6 pages). Conventions : `docs/sujets/pc/README.md`.
+> Toutes les entrées naissent `transcrit (non vérifié)`.
+>
+> En-tête du scan (p. 1, relu sur l'image) : **RS28F**, الدورة الاستدراكية 2025
+> (session de rattrapage), المسالك الدولية (option internationale/BIOF),
+> Physique-Chimie, **3 h**, coefficient **7**, شعبة العلوم التجريبية مسلك العلوم
+> الفيزيائية (خيار فرنسية) = Sciences expérimentales, filière **Sciences
+> Physiques, option française**. 6 pages.
+>
+> Consignes imprimées (p. 1) : « L'usage de la calculatrice scientifique **non
+> programmable** est autorisé. — On donnera les expressions littérales avant de
+> passer aux applications numériques. — Les exercices peuvent être traités selon
+> l'ordre choisi par le candidat. » ; « Le sujet comporte quatre exercices : un
+> exercice de chimie et trois exercices de physique. »
+>
+> Carte du sujet (couverture, p. 1) :
+> - Exercice 1 : Chimie (**7 points**) — Étude de quelques réactions avec
+>   l'acide éthanoïque ; Étude d'une hydrolyse basique d'un ester.
+> - Exercice 2 : Ondes lumineuses (**2,5 points**) — Diffraction d'une onde
+>   lumineuse.
+> - Exercice 3 : Electricité (**5 points**) — Établissement et rupture du
+>   courant électrique dans un circuit RL ; Modulation d'amplitude.
+> - Exercice 4 : Mécanique (**5,5 points**) — Mouvement d'un skieur ;
+>   Mouvement d'un pendule de torsion.
+>
+> Total : $7 + 2{,}5 + 5 + 5{,}5 = 20$ points.
+
+---
+
+## 2025 — session rattrapage — Exercice 1
+Source: https://www.alloschool.com/element/145799
+Statut: transcrit (non vérifié)
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : RS28F · Barème de l'exercice : 7 points
+- Images lues (reproductibilité) :
+  `.../course-422/upload-87492/0002-big.jpg`, `.../0003-big.jpg`
+- Pages du scan : 2 et 3 (sur 6)
+
+**Exercice 1 : Chimie (7 points).**
+
+Dans cet exercice on se propose d'étudier une :
+- solution aqueuse d'acide éthanoïque ;
+- réaction d'estérification ;
+- hydrolyse basique d'un ester.
+
+**1- Étude d'une solution aqueuse d'acide éthanoïque**
+
+On prépare une solution aqueuse $S_A$ d'acide éthanoïque $CH_3COOH$ de volume
+$V$ et de concentration molaire $C_A = 4{,}2\cdot10^{-3}\ \text{mol.L}^{-1}$.
+Son pH vaut $pH = 3{,}6$.
+
+1. **1-1.** (0,5) Écrire l'équation chimique modélisant la réaction de l'acide
+   éthanoïque avec l'eau.
+2. **1-2.** (0,5) Exprimer $\tau$, le taux d'avancement final de cette
+   réaction, en fonction de $C_A$ et $pH$. Calculer sa valeur.
+3. **1-3.** (0,5) Déterminer la valeur de $pK_A$ du couple
+   $CH_3COOH_{(aq)}/CH_3COO^-_{(aq)}$.
+4. **1-4.** Les courbes de la figure 1 représentent le diagramme de
+   distribution des espèces acide et base conjuguée du couple
+   $CH_3COOH_{(aq)}/CH_3COO^-_{(aq)}$.
+   1. **1-4-1.** (0,5) A partir du graphe, déterminer, à nouveau, la valeur du
+      $pK_A$.
+   2. **1-4-2.** (0,25) Justifier que la courbe 1 correspond à l'espèce acide.
+   3. **1-4-3.** (0,5) On dilue la solution $S_A$ pour obtenir une solution
+      $S_{A1}$ de concentration $C_{A1}$ et de $pH_1 = 4{,}2$.
+      On définit la proportion de l'espèce basique $CH_3COO^-$ dans une
+      solution par :
+      $$\alpha(CH_3COO^-) = \frac{\left[CH_3COO^-_{(aq)}\right]_{éq}}{\left[CH_3COOH_{(aq)}\right]_{éq} + \left[CH_3COO^-_{(aq)}\right]_{éq}} \times 100$$
+      En se basant sur les courbes de la figure 1, trouver la nouvelle valeur
+      $\tau_1$ du taux d'avancement final de la réaction de l'acide éthanoïque
+      avec l'eau. Que peut-on conclure à propos de l'effet de la dilution sur
+      le taux d'avancement final ?
+
+*Figure 1 (courbes, décrite depuis l'image) :* repère « % » en ordonnée,
+« pH » en abscisse, sur quadrillage fin serré. Ordonnée graduée aux traits
+chiffrés $20$ et $40$ (plus le $0$ à l'origine) ; abscisse graduée aux traits
+chiffrés $1$ et $2$ (traits suivants non chiffrés). Deux courbes sigmoïdes en
+sens opposés : la **courbe 2** (flèche d'étiquette « Courbe 2 » pointant vers
+elle depuis la gauche) part du haut du cadre (≈ 100 %) aux faibles pH, décroît
+et tend vers $0$ aux pH élevés ; la **courbe 1** (flèche d'étiquette
+« Courbe 1 » pointant vers elle depuis la droite) part de $0$ aux faibles pH,
+croît et sature vers le haut du cadre aux pH élevés. Les deux courbes se
+croisent à mi-hauteur (≈ 50 %) en un point d'abscisse située vers
+$pH \approx 4{,}8$ *(lecture d'échelle à confirmer — l'abscisse du croisement
+est à re-mesurer, les traits au-delà de 2 ne sont pas chiffrés)*. Légende :
+« Figure 1 ».
+
+**2- Étude d'une réaction d'estérification avec l'acide éthanoïque**
+
+Pour synthétiser l'éthanoate d'éthyle noté E, on fait réagir $0{,}100\ \text{mol}$
+d'acide éthanoïque avec $0{,}100\ \text{mol}$ d'éthanol $C_2H_5OH$. Lorsque la
+réaction est terminée, on dose, dans des conditions expérimentales bien
+déterminées, l'acide restant avec une solution aqueuse $S_B$ d'hydroxyde de
+sodium $Na^+_{(aq)} + HO^-_{(aq)}$ de concentration
+$C_B = 1{,}50\ \text{mol.L}^{-1}$. Le volume de $S_B$ versé à l'équivalence est
+$V_{BE} = 22{,}0\ \text{mL}$.
+
+1. **2-1.** (0,75) Écrire, en utilisant les formules semi-développées,
+   l'équation de la réaction d'estérification qui s'est produite.
+2. **2-2.** (0,5) Calculer la quantité de matière $n_r$ d'acide restant en fin
+   de la réaction d'estérification.
+3. **2-3.** (0,75) En exploitant le tableau d'avancement de la réaction
+   d'estérification, déterminer son rendement.
+
+**3- Étude d'une hydrolyse basique d'un ester**
+
+On étudie la cinétique chimique de la réaction d'hydrolyse basique
+(saponification) de l'éthanoate d'éthyle. À un instant choisi comme origine
+des dates $(t=0)$, on introduit $n_{01} = 0{,}8\ \text{mmol}$ d'éthanoate
+d'éthyle dans un bécher contenant une solution d'hydroxyde de sodium où
+$n_0(HO^-_{(aq)}) = 1{,}0\ \text{mmol}$. On obtient ainsi un volume
+$V = 50\ \text{mL}$ du mélange réactionnel. La réaction est totale et se
+produit à une température $\theta$.
+
+La courbe de la figure 2 représente l'évolution temporelle de l'avancement $x$
+de la réaction de saponification étudiée. La droite $(T)$ représente la
+tangente à la courbe au point d'abscisse $t = 3\ \text{min}$.
+
+1. **3-1.** (0,5) Écrire, en utilisant les formules semi-développées,
+   l'équation de la réaction associée à l'hydrolyse basique de l'éthanoate
+   d'éthyle.
+2. **3-2.** (0,5) Répondre par vrai ou faux, en justifiant, à l'affirmation
+   suivante : « La vitesse volumique $v(t)$ de cette réaction diminue au cours
+   du temps ».
+3. **3-3.** (0,5) Déterminer graphiquement $t_{1/2}$ le temps de demi-réaction.
+4. **3-4.** (0,75) Déterminer, en unité $\text{mmol.L}^{-1}.\text{min}^{-1}$,
+   la vitesse volumique de la réaction à l'instant $t = 3\ \text{min}$.
+
+*Figure 2 (courbe, décrite depuis l'image) :* $x\ (\text{mmol})$ en fonction de
+$t\ (\text{min})$, sur quadrillage à double maille (grands carreaux découpés en
+$5\times5$ petits carreaux). Ordonnée : traits principaux chiffrés $0{,}10$ et
+$0{,}20$ (traits suivants non chiffrés) — pas principal $0{,}10\ \text{mmol}$,
+petit carreau $0{,}02\ \text{mmol}$. Abscisse : traits principaux chiffrés $1$
+et $2$ (traits suivants non chiffrés) — pas principal $1\ \text{min}$, petit
+carreau $0{,}2\ \text{min}$ ; le cadre s'étend jusque vers $t \approx 10\
+\text{min}$ *(lecture au comptage des traits principaux, à confirmer)* et sa
+hauteur vers $x \approx 0{,}6\ \text{mmol}$ *(idem)*. Deux tracés :
+- la **courbe** $x(t)$, partant exactement de l'origine, croissante et concave
+  (pente décroissante), qui atteint le voisinage du coin supérieur droit du
+  cadre sans palier visible dans le cadre ;
+- la **droite $(T)$**, tangente à la courbe au point d'abscisse
+  $t = 3\ \text{min}$, point de contact marqué d'une **croix** sur le tracé
+  (ordonnée du point de contact ≈ $0{,}31$–$0{,}32\ \text{mmol}$, *lecture à
+  confirmer*). $(T)$ coupe l'axe des ordonnées ($t=0$) vers
+  $x \approx 0{,}08\ \text{mmol}$ (4 petits carreaux, *lecture à confirmer*)
+  et sort du cadre par le haut avant le bord droit, au-dessus de la courbe.
+Légende : « Figure 2 ».
+
+---
+
+## 2025 — session rattrapage — Exercice 2
+Source: https://www.alloschool.com/element/145799
+Statut: transcrit (non vérifié)
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : RS28F · Barème de l'exercice : 2,5 points
+- Images lues (reproductibilité) :
+  `.../course-422/upload-87492/0003-big.jpg`, `.../0004-big.jpg`
+- Pages du scan : 3 (fin) et 4 (sur 6)
+
+**Exercice 2 : Ondes lumineuses (2,5 points).**
+
+Cet exercice vise à déterminer l'indice de réfraction d'un liquide pour une
+lumière monochromatique. Une source laser émet, dans l'air, un faisceau de
+lumière monochromatique de longueur d'onde $\lambda_a$.
+
+**Données :**
+- La célérité de la lumière dans le vide ou dans l'air :
+  $c = 3\cdot10^{8}\ \text{m.s}^{-1}$ ;
+- On prend l'indice de réfraction de l'air $n_a = 1$.
+
+1. **1-** (0,5) Choisir la proposition juste parmi les propositions suivantes :
+
+   | | |
+   |---|---|
+   | **A** | La lumière émise par la source laser est une onde mécanique. |
+   | **B** | La vitesse de la lumière est plus grande dans les fibres optiques en verre que dans le vide. |
+   | **C** | Les radiations du spectre visible ont des longueurs d'onde dans le vide comprises entre $0{,}4\ \text{nm}$ et $0{,}8\ \text{nm}$. |
+   | **D** | La fréquence d'une lumière monochromatique ne dépend pas du milieu de propagation. |
+
+2. **2-** Le dispositif expérimental représenté sur la figure ci-contre est
+   constitué de :
+   - la source laser précédente ;
+   - une fente de largeur $a$ ;
+   - un écran parallèle à la fente et placé à une distance $D$ de la fente.
+
+   Le faisceau de lumière émis par la source laser arrive
+   perpendiculairement à la fente. On observe sur l'écran des tâches
+   lumineuses comme le montre la figure. La tâche centrale a une largeur
+   $L = 2{,}4\ \text{cm}$.
+   1. **2-1.** (0,5) Nommer le phénomène observé. Quel est alors l'aspect de
+      la lumière mis en évidence ?
+   2. **2-2.** (0,5) Montrer que l'expression de la largeur $L$ est :
+      $L = \dfrac{2.\lambda_a.D}{a}$, sachant que l'écart angulaire $\theta$
+      est suffisamment petit pour prendre $\tan\theta \approx \theta$, avec
+      $\theta$ en radian.
+3. **3-** On réalise l'expérience précédente dans un liquide d'indice $n_L$ en
+   gardant la même distance $D$. On remarque que la largeur de la tâche
+   centrale prend la valeur $L' = 1{,}8\ \text{cm}$.
+   1. **3-1.** (0,5) Vérifier que $n_L \simeq 1{,}33$. 
+   2. **3-2.** (0,5) Déduire $v_L$ la vitesse de propagation de la lumière du
+      laser dans ce liquide.
+
+*Figure (schéma du dispositif, décrite depuis l'image, p. 3) :* de gauche à
+droite, trois éléments sur pieds : la « Source laser » (boîtier rectangulaire
+grisé, sur pied), un panneau vertical portant une fente verticale au centre,
+étiqueté « Fente de largeur a » au-dessus, et un panneau incliné étiqueté
+« Écran » en haut. Un trait horizontal joint la source à la fente ; depuis la
+fente, un trait plein légèrement incliné vers le haut et un trait pointillé
+horizontal divergent vers l'écran, l'angle entre eux étant marqué $\theta$
+près de l'écran. Sur l'écran, une série de tâches elliptiques sombres
+alignées obliquement, la tâche centrale (la plus grande) surmontée d'une
+double flèche horizontale étiquetée « L ». Entre le pied de la fente et le
+pied de l'écran, une double flèche horizontale cote la distance « D ».
+
+---
+
+## 2025 — session rattrapage — Exercice 3
+Source: https://www.alloschool.com/element/145799
+Statut: transcrit (non vérifié)
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : RS28F · Barème de l'exercice : 5 points
+- Images lues (reproductibilité) :
+  `.../course-422/upload-87492/0004-big.jpg`, `.../0005-big.jpg`
+- Pages du scan : 4 et 5 (sur 6)
+
+**Exercice 3 : Electricité (5 points).**
+
+**Les deux parties sont indépendantes**
+
+Le but de cet exercice est d'étudier :
+- l'établissement et la rupture du courant électrique dans un circuit RL ;
+- un circuit LC idéal ;
+- la modulation d'amplitude.
+
+**Partie I : L'établissement et la rupture du courant dans un circuit RL**
+
+Le dispositif schématisé dans la figure 1 ci-contre comporte :
+- Un générateur de force électromotrice $E = 10\ \text{V}$ et de résistance
+  interne négligeable ;
+- Une bobine d'inductance $L$ et de résistance négligeable ;
+- Deux conducteurs ohmiques l'un de résistance $R = 100\ \Omega$ et l'autre de
+  résistance $R_1 = 1\ \text{k}\Omega$ ;
+- Une diode supposée idéale de tension seuil $u_s = 0$ ;
+- Un interrupteur $K$.
+
+1. **1-** À la date $t = 0$, on ferme $K$ et par suite un courant électrique
+   d'intensité $i$ circule dans le circuit.
+   1. **1-1.** (0,5) Montrer que l'équation différentielle vérifiée par la
+      tension $u_R$ aux bornes du conducteur ohmique de résistance $R$
+      s'écrit : $\dfrac{du_R}{dt} + \dfrac{R}{L}u_R = \dfrac{RE}{L}$.
+   2. **1-2.** (0,75) On visualise à l'aide d'un dispositif adéquat
+      l'évolution temporelle de la tension $u_R$. On obtient ainsi la courbe
+      de la figure 2. La droite $(T)$ représente la tangente à la courbe au
+      point d'abscisse $t = 0$.
+      En exploitant la courbe de la figure 2, déterminer $\tau$ la constante
+      du temps du circuit et $I_0$ l'intensité du courant en régime permanent.
+   3. **1-3.** (0,5) Vérifier que $L = 0{,}10\ \text{H}$.
+   4. **1-4.** (0,75) Quand le régime permanent est atteint, calculer la
+      tension $u_{bf}$ aux bornes de la bobine et $E_m$ l'énergie qui y est
+      emmagasinée.
+2. **2-** Le régime permanant étant établit. A un instant $t = 0$ choisi comme
+   nouvelle origine des dates, on ouvre l'interrupteur $K$.
+   Juste après l'ouverture de $K$ (à l'instant $t = 0^+$) :
+   1. **2-1.** (0,25) déterminer l'intensité du courant traversant la bobine.
+   2. **2-2.** (0,25) vérifier que la tension aux bornes du conducteur ohmique
+      de résistance $R_1$ est $u_{R_1} = 100\ \text{V}$.
+   3. **2-3.** (0,25) déduire la valeur de $u_{bo}$ la tension aux bornes de
+      la bobine.
+3. **3-** On forme un circuit oscillant $LC$ considéré idéal par la bobine
+   précédente et un condensateur de capacité $C = 1\ \mu\text{F}$ totalement
+   chargé par le générateur de f.e.m $E$.
+   1. **3-1.** (0,25) Calculer $N_0$ la fréquence propre de cet oscillateur.
+   2. **3-2.** (0,25) Déterminer $I_m$ l'intensité maximale du courant
+      électrique circulant dans ce circuit.
+
+*Figure 1 (schéma, décrite depuis l'image, p. 4) :* circuit à trois branches
+verticales entre un fil supérieur et un fil inférieur.
+- Branche de **gauche** : le générateur, symbole cercle, avec une flèche de
+  tension verticale montante étiquetée « E » à sa gauche ; au-dessus, sur le
+  fil montant, la flèche du courant « i » orientée vers le haut.
+- Fil **supérieur** : l'interrupteur $K$ (levier ouvert, étiquette « K »
+  au-dessus) entre la branche de gauche et le nœud de la branche centrale.
+- Branche **centrale** : la bobine, dessinée en spires, étiquetée « L » à sa
+  gauche, avec à sa droite une flèche de tension verticale montante étiquetée
+  « $u_b$ ».
+- Branche de **droite** : en haut la diode (symbole triangle plein pointant
+  vers le bas avec barre au-dessus — cathode côté fil supérieur), en dessous
+  le conducteur ohmique $R_1$ (rectangle vertical, étiquette « $R_1$ » à sa
+  gauche).
+- Fil **inférieur** : le conducteur ohmique $R$ (rectangle horizontal,
+  étiquette « R » au-dessous), surmonté d'une flèche de tension horizontale
+  étiquetée « $u_R$ » pointant vers la gauche… *(sens exact de la flèche
+  $u_R$ : orientée de droite à gauche au-dessus du rectangle — lecture du
+  petit détail à confirmer)* ; il referme le circuit vers la branche de
+  gauche. Légende : « Figure 1 ».
+
+*Figure 2 (courbe, décrite depuis l'image, p. 4) :* $u_R\ (\text{V})$ en
+fonction de $t\ (\text{ms})$, sur quadrillage simple (pas de sous-maille).
+Ordonnée : traits principaux chiffrés $2{,}5$ et $5$ (traits suivants non
+chiffrés) — pas $2{,}5\ \text{V}$ par division. Abscisse : traits chiffrés
+$2$ et $4$ (un trait sur deux chiffré) — pas $1\ \text{ms}$ par division ;
+le cadre compte 8 divisions en largeur. Courbe croissante concave partant de
+l'origine et tendant vers un **palier situé exactement sur la 4ᵉ ligne
+horizontale**, soit $u_R = 10\ \text{V}$ (lecture au trait : $4 \times
+2{,}5\ \text{V}$) ; le palier est atteint (courbe confondue avec la ligne) à
+partir de $t \approx 4$–$5\ \text{ms}$. La droite $(T)$, tangente à
+l'origine, est tracée depuis $(0\,;\,0)$ et **coupe le niveau du palier au
+droit du premier trait vertical, $t = 1\ \text{ms}$** *(lecture à
+confirmer)*. Légende : « Figure 2 ».
+
+**Partie II : Modulation d'amplitude**
+
+Le but de cette partie est d'étudier la technique de modulation d'amplitude
+afin de transmettre une onde sonore audible de fréquence $f$.
+
+On réalise le montage de modulation d'amplitude schématisé sur la figure 3.
+On applique respectivement aux entrées $E_1$ et $E_2$ du circuit multiplieur
+X :
+- la tension $u(t) = U_0 + S_m\cos(2\pi f t)$ constituée d'une composante
+  continue $U_0$ et de la tension $S(t) = S_m\cos(2\pi f t)$ correspondant à
+  l'onde sonore qu'on désire transmettre.
+- la tension porteuse $p(t) = P_m.\cos(2\pi F t)$ de fréquence $F$.
+
+A la sortie du multiplieur, on visualise à l'aide d'un dispositif adéquat
+l'évolution temporelle de la tension de sortie $u_S(t) = k.u(t).p(t)$, avec
+$k$ constante relative au multiplieur. On obtient alors le graphique de la
+figure 4. On peut écrire la tension $u_S(t)$ sous la forme :
+
+$$u_S(t) = A.\left(1 + m.\cos(2\pi f t)\right).\cos(2\pi F t)$$
+
+avec $A$ et $m$ des paramètres du circuit.
+
+En s'aidant du graphique :
+
+1. **1-** (0,5) Déterminer la fréquence $F$ de la porteuse et la fréquence $f$
+   de l'onde sonore.
+2. **2-** (0,75) Déterminer la valeur de $A$ et celle de $m$. Conclure à
+   propos de la qualité de la modulation.
+
+*Figure 3 (schéma, décrite depuis l'image, p. 5) :* le multiplieur est un
+rectangle marqué « X », avec deux entrées à gauche : « $E_1$ » (fil du haut)
+et « $E_2$ » (fil du bas), et une sortie « S » à droite. À gauche, une flèche
+verticale étiquetée « $u(t)$ » entre le fil du bas (masse) et l'entrée
+$E_1$ ; une flèche verticale étiquetée « $p(t)$ » monte vers l'entrée $E_2$.
+À droite, une flèche verticale étiquetée « $u_S(t)$ » repère la tension de
+sortie par rapport au fil du bas. Le fil du bas porte le symbole de masse
+(trois traits horizontaux superposés). Légende : « Figure 3 ».
+
+*Figure 4 (courbe, décrite depuis l'image, p. 5) :* $u_S\ (\text{V})$ en
+fonction de $t\ (\text{ms})$, sur quadrillage serré uniforme. Ordonnée :
+seuls trois niveaux sont chiffrés, « $0{,}33$ », « $0$ » et « $-0{,}33$ » ;
+l'écart $0 \to 0{,}33$ couvre **2 carreaux** du quadrillage. En haut du
+cadre, une **double flèche horizontale de calibration étiquetée
+« 0,10 »**, s'étendant sur **2 carreaux** du quadrillage — soit
+$0{,}10\ \text{ms}$ pour 2 carreaux, un carreau $= 0{,}05\ \text{ms}$
+*(rôle : étalon de temps ; ce n'est pas une flèche de période)*. Le signal
+est une oscillation rapide (porteuse) dont l'amplitude est modulée par une
+enveloppe lente : amplitude **maximale** au bord gauche du cadre, qui décroît
+jusqu'à un **minimum au centre** du cadre, puis recroît jusqu'à un maximum
+vers le bord droit. Lectures sur le quadrillage : au minimum de l'enveloppe,
+les crêtes affleurent la ligne chiffrée $0{,}33$ (très légèrement au-dessus
+sur le scan — *lecture à confirmer*) ; aux maxima de l'enveloppe, les crêtes
+culminent vers 9 à 10 carreaux au-dessus de l'axe, soit $\approx 1{,}6\
+\text{V}$ *(lecture à confirmer)*. La période des oscillations rapides est de
+l'ordre de la largeur de la flèche de calibration *(comptage exact des crêtes
+par carreau à confirmer)* ; la période de l'enveloppe (maximum → minimum →
+maximum) couvre sensiblement la largeur du cadre, soit $\approx 20$ carreaux
+$\approx 1{,}0\ \text{ms}$ *(lecture à confirmer)*. Légende : « Figure 4 »
+(cartouche en bas à gauche).
+
+---
+
+## 2025 — session rattrapage — Exercice 4
+Source: https://www.alloschool.com/element/145799
+Statut: transcrit (non vérifié)
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : RS28F · Barème de l'exercice : 5,5 points
+- Images lues (reproductibilité) :
+  `.../course-422/upload-87492/0005-big.jpg`, `.../0006-big.jpg`
+- Pages du scan : 5 (fin) et 6 (sur 6)
+
+**Exercice 4 : Mécanique (5,5 points).**
+
+**Les deux parties sont indépendantes**
+
+**Partie I : Mouvement d'un skieur**
+
+On étudie dans cette partie le mouvement de chute libre d'un skieur. Le skieur
+part du point $A$ de la piste $AO$ et arrive au point $O$ avec une vitesse
+$V_0 = 30\ \text{m.s}^{-1}$ (figure 1). A son arrivé au point $O$, le skieur
+quitte la piste et on le considère en chute libre. La trajectoire du mouvement
+du skieur est située dans un plan vertical. On modélise le skieur et son
+équipement par un solide $(S)$, de masse $m$ et de centre d'inertie $G$.
+
+**Donnée :** — Intensité de la pesanteur : $g = 10\ \text{m.s}^{-2}$.
+
+On étudie le mouvement de chute libre du skieur dans un référentiel terrestre
+supposé galiléen. A $t = 0$, le centre d'inertie $G$ coïncide avec $O$.
+
+1. **1-** (0,5) En appliquant la deuxième loi de Newton, établir, dans le
+   repère orthonormé $(O, \vec{i}, \vec{j})$ lié au référentiel terrestre, les
+   équations horaires numériques du mouvement $x(t)$ et $y(t)$ du centre
+   d'inertie $G$.
+2. **2-** (0,5) Déduire que l'équation de la trajectoire du centre d'inertie
+   $G$ s'écrit : $y = -5{,}56\cdot10^{-3}\,x^{2}$.
+3. **3-** (1) Le skieur tombe au point $E$ du plan incliné de l'angle
+   $\alpha = 20°$ par rapport à l'horizontale. Trouver la distance $d = OE$.
+
+*Figure 1 (schéma, décrite depuis l'image, p. 5) :* repère $(O, x, y)$ : axe
+$y$ vertical ascendant, axe $x$ horizontal vers la droite passant par $O$. En
+haut à gauche, le point $A$, relié à l'axe $y$ par un trait en tirets
+horizontal ; de $A$ part une courbe concave (la piste) qui descend et
+s'infléchit pour arriver horizontalement en $O$, origine du repère. En $O$,
+les vecteurs unitaires $\vec{j}$ (vertical, sur l'axe $y$) et $\vec{i}$
+(horizontal, sur l'axe $x$), puis le vecteur vitesse $\vec{V}_0$ horizontal
+vers la droite le long de l'axe $x$. Sous l'axe $x$, une droite oblique
+descendant de $O$ vers la droite (le plan incliné) jusqu'au point $Q$ en bas
+à droite ; l'angle entre cette droite et l'horizontale passant par $Q$ est
+marqué $\alpha$ (arc) au voisinage de $Q$. Sur le plan incliné, le point $E$
+(point noir) avec ses coordonnées repérées en tirets : $x_E$ sur l'axe $x$
+(au-dessus) et $y_E$ sur l'axe $y$ (à gauche, sous $O$). Légende :
+« Figure 1 ».
+
+**Partie II : Pendule de torsion**
+
+Dans cette partie on se propose d'étudier le mouvement d'un pendule de
+torsion afin de déterminer quelques grandeurs qui lui sont liées.
+
+Le dispositif de la figure 2 comporte un fil de torsion de masse négligeable
+et de constante de torsion $C$ et une barre métallique homogène $AB$. L'une
+des extrémités du fil est fixée en un point $O$ et l'autre est fixée au
+centre d'inertie $G$ de la barre. La barre $AB$ effectue, sans frottement,
+dans le plan horizontal un mouvement de rotation autour de l'axe $(\Delta)$
+confondu avec le fil. Le moment d'inertie de $AB$ par rapport à $(\Delta)$
+est $J_\Delta = 6{,}67\cdot10^{-3}\ \text{kg.m}^{2}$.
+
+On fait tourner, dans le sens positif, la barre $AB$, autour de l'axe
+$(\Delta)$ d'un angle $\theta_m$ par rapport à sa position d'équilibre et on
+la libère sans vitesse initiale à un instant $t = 0$ qu'on prend comme
+origine des dates.
+
+On étudie le mouvement de ce système dans un repère lié à un référentiel
+terrestre supposé galiléen, et on repère la position de $AB$ à chaque instant
+$t$ par son abscisse angulaire $\theta(t)$ par rapport à sa position
+d'équilibre $\theta = 0$ (Figure 2).
+
+1. **1-** (0,5) En appliquant la relation fondamentale de la dynamique dans le
+   cas de la rotation au pendule de torsion étudié, établir l'équation
+   différentielle du mouvement vérifiée par $\theta(t)$.
+2. **2-** La solution de cette équation différentielle s'écrit sous la forme :
+   $\theta(t) = \theta_m\cos\left(\dfrac{2\pi}{T_0}t\right)$ avec $T_0$ étant
+   la période propre de l'oscillateur.
+   1. **2-1.** (0,5) Etablir que : $T_0 = 2\pi\sqrt{\dfrac{J_\Delta}{C}}$.
+   2. **2-2.** (0,75) La courbe de la figure 3 représente l'évolution
+      temporelle de la vitesse angulaire $\dot{\theta}(t)$. Déterminer $T_0$
+      et $\theta_m$.
+   3. **2-3.** (0,5) Calculer $C$ (on prend $\pi^2 = 10$).
+3. **3-** On prend la position d'équilibre du pendule comme référence de
+   l'énergie potentielle de torsion $(E_{pt} = 0)$ et le plan horizontal
+   passant par $G$ comme référence de l'énergie potentielle de pesanteur
+   $(E_{pp} = 0)$.
+   En s'aidant du graphique de la figure 3 et en exploitant la conservation
+   de l'énergie mécanique :
+   1. **3-1.** (0,5) Calculer $E_m$ l'énergie mécanique du système étudié.
+   2. **3-2.** (0,75) Déterminer $W_C$ le travail du couple de torsion entre
+      les instants $t_1 = 0\ \text{s}$ et $t_2 = 3{,}4\ \text{s}$.
+
+*Figure 2 (schéma, décrite depuis l'image, p. 6) :* en haut, des hachures de
+fixation avec le point « O » juste au-dessous ; de $O$ descend un trait
+vertical (le fil), désigné par l'étiquette « Fil de torsion » à gauche avec
+une flèche horizontale pointant vers le fil. En bas, la barre $AB$ : segment
+épais oblique, extrémité « A » en bas à gauche, extrémité « B » en haut à
+droite, croisant en son milieu « G » le bas du fil. Une droite horizontale en
+pointillés passe par $G$ (position d'équilibre) ; l'angle entre cette droite
+et la barre est marqué « $\theta$ » (petite flèche incurvée) du côté de $B$ ;
+sous $G$, l'étiquette « $(\Delta)$ » avec un pointillé vertical prolongeant
+le fil. À droite de $B$, un symbole de sens positif : un cercle marqué
+« + » entouré d'une flèche incurvée (sens antihoraire vu du dessus).
+Légende : « Figure 2 ».
+
+*Figure 3 (courbe, décrite depuis l'image, p. 6) :* $\dot{\theta}\
+(\text{rad.s}^{-1})$ en fonction de $t\ (\text{s})$, sur quadrillage à
+double maille (petits carreaux serrés, traits principaux plus marqués).
+Ordonnée : traits principaux chiffrés $0{,}1$, $0$ et $-0{,}1$ (un trait
+principal non chiffré au-delà de $0{,}1$, et de même sous $-0{,}1$) — l'écart
+$0 \to 0{,}1$ couvre 5 petits carreaux (petit carreau $= 0{,}02\
+\text{rad.s}^{-1}$). Abscisse : une seule graduation chiffrée, « $1$ »,
+portée sous l'axe après l'origine, au voisinage de l'aplomb du premier
+minimum de la courbe *(le pas exact du quadrillage temporel n'est pas chiffré
+au-delà — lecture à confirmer)*. La courbe est une sinusoïde partant de
+$\dot{\theta} = 0$ à $t = 0$ en **décroissant** (première alternance
+négative), passant par un premier minimum, puis remontant, coupant l'axe en
+croissant, culminant à un premier maximum, et ainsi de suite : **deux
+périodes complètes** sont visibles sur la largeur du cadre, la courbe se
+terminant au voisinage de l'axe au bord droit. Le premier minimum est à
+l'aplomb de la graduation « 1 » ; si cette graduation vaut $t = 1\ \text{s}$,
+la période se lit $T_0 = 4\ \text{s}$ *(lecture à confirmer — étalonnage de
+l'axe des temps non chiffré au-delà de « 1 »)*. L'amplitude crête de la
+sinusoïde dépasse nettement la ligne $0{,}1$ : les sommets culminent vers 12
+à 13 petits carreaux au-dessus de l'axe, soit $\dot{\theta}_{max} \approx
+0{,}25\ \text{rad.s}^{-1}$ *(lecture à confirmer)*, symétriquement pour les
+minima. Légende : « Figure 3 ».
+
+---
+
+## Classement
+
+Correspondance avec les slugs `content/pc/` (table README §4). Un exercice
+peut être cross-listé ; la notion dominante est citée en premier.
+
+- **Exercice 1 (Chimie, 7 pts)** :
+  - Partie 1 (solution d'acide éthanoïque, τ, pK_A, diagramme de
+    distribution, dilution) → `reactions-acido-basiques` (cross-liste
+    possible `etat-equilibre` pour τ et pK_A).
+  - Partie 2 (estérification, dosage de l'acide restant, rendement) →
+    `esterification-hydrolyse`.
+  - Partie 3 (cinétique de la saponification : x(t), t_1/2, vitesse
+    volumique) → `suivi-temporel-vitesse` (contexte
+    `esterification-hydrolyse` — hydrolyse basique — à signaler).
+- **Exercice 2 (Ondes lumineuses, 2,5 pts)** : diffraction, indice, vitesse
+  dans un liquide → `propagation-onde-lumineuse`.
+- **Exercice 3 (Electricité, 5 pts)** :
+  - Partie I, questions 1–2 (établissement et rupture du courant dans un
+    circuit RL) → `dipole-rl`.
+  - Partie I, question 3 (circuit LC idéal : N₀, I_m) → `rlc-serie`
+    (convention de la banque : oscillations LC sous `rlc-serie`).
+  - Partie II (modulation d'amplitude) → `ondes-em-modulation`.
+- **Exercice 4 (Mécanique, 5,5 pts)** :
+  - Partie I (chute libre du skieur, trajectoire parabolique, impact sur plan
+    incliné) → `chute-mouvements-plans`.
+  - Partie II (pendule de torsion : équation différentielle, T₀, C, énergie,
+    travail du couple) → `systemes-oscillants` (cross-liste
+    `rotation-axe-fixe` pour la RFD de rotation).
