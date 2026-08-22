@@ -43,34 +43,34 @@
 
   <!-- ══════════════ Chrome : rappel de la cascade descendante (R3), grisée ══════════════ -->
   <text x="60" y="54" font-size="10.5" font-style="italic" fill="var(--figure-ink-soft)">rappel — la cascade descendante (R3) :</text>
-  <text x="60" y="74" font-size="12" fill="var(--figure-ink-soft)">252 = 198 &#215; 1 + 54</text>
-  <text x="60" y="94" font-size="12" fill="var(--figure-ink-soft)">198 = 54 &#215; 3 + 36</text>
-  <text x="60" y="114" font-size="12" fill="var(--figure-ink-soft)">54 = 36 &#215; 1 + 18</text>
+  <text x="60" y="74" font-size="12" fill="var(--figure-ink-soft)">252 = 198 × 1 + 54</text>
+  <text x="60" y="94" font-size="12" fill="var(--figure-ink-soft)">198 = 54 × 3 + 36</text>
+  <text x="60" y="114" font-size="12" fill="var(--figure-ink-soft)">54 = 36 × 1 + 18</text>
   <line x1="30" y1="128" x2="670" y2="128" stroke="var(--figure-grid)" stroke-width="1"/>
 
   <!-- ══════════════ Étape 1 : isoler 18 = 54 - 36×1 ══════════════ -->
   <g id="step-1">
     <text x="60" y="152" font-size="11" fill="var(--figure-ink-soft)">Étape 1 — isoler le reste de la dernière ligne utile :</text>
-    <text x="60" y="180" font-size="17" font-weight="700" fill="var(--figure-ink)">18 = 54 &#8722; 36 &#215; 1</text>
+    <text x="60" y="180" font-size="17" font-weight="700" fill="var(--figure-ink)">18 = 54 − 36 × 1</text>
   </g>
 
   <!-- ══════════════ Étape 2 : substituer 36 = 198-54×3, sans développer ══════════════ -->
   <g id="step-2">
-    <text x="60" y="212" font-size="11" fill="var(--figure-ink-soft)">Étape 2 — remplacer 36 (ligne 2 : 36 = 198 &#8722; 54 &#215; 3), tel quel :</text>
-    <text x="60" y="240" font-size="15" fill="var(--figure-ink)">18 = 54 &#8722; (198 &#8722; 54 &#215; 3) &#215; 1</text>
+    <text x="60" y="212" font-size="11" fill="var(--figure-ink-soft)">Étape 2 — remplacer 36 (ligne 2 : 36 = 198 − 54 × 3), tel quel :</text>
+    <text x="60" y="240" font-size="15" fill="var(--figure-ink)">18 = 54 − (198 − 54 × 3) × 1</text>
     <text x="60" y="258" font-size="10" font-style="italic" fill="var(--figure-accent)">la parenthèse EST le 36 — on ne développe encore rien</text>
   </g>
 
   <!-- ══════════════ Étape 3 : développer et regrouper les 54 ══════════════ -->
   <g id="step-3">
     <text x="60" y="286" font-size="11" fill="var(--figure-ink-soft)">Étape 3 — développer, puis regrouper tous les 54 :</text>
-    <text x="60" y="310" font-size="13.5" fill="var(--figure-ink)">18 = 54 + 54 &#215; 3 &#8722; 198</text>
+    <text x="60" y="310" font-size="13.5" fill="var(--figure-ink)">18 = 54 + 54 × 3 − 198</text>
 
     <text x="60" y="342" font-size="17" font-weight="700" fill="var(--figure-ink)">18 =</text>
-    <text x="110" y="342" font-size="17" font-weight="700" fill="var(--figure-ink)">54 &#215; 4</text>
+    <text x="110" y="342" font-size="17" font-weight="700" fill="var(--figure-ink)">54 × 4</text>
     <line x1="110" y1="348" x2="168" y2="348" stroke="var(--figure-accent)" stroke-width="2"/>
-    <text x="180" y="342" font-size="17" font-weight="700" fill="var(--figure-ink)">&#8722;</text>
-    <text x="200" y="342" font-size="17" font-weight="700" fill="var(--figure-ink)">198 &#215; 1</text>
+    <text x="180" y="342" font-size="17" font-weight="700" fill="var(--figure-ink)">−</text>
+    <text x="200" y="342" font-size="17" font-weight="700" fill="var(--figure-ink)">198 × 1</text>
     <line x1="200" y1="348" x2="264" y2="348" stroke="var(--figure-accent)" stroke-width="2" stroke-dasharray="4,3"/>
 
     <text x="139" y="366" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-accent)">deviendra ×252</text>
@@ -79,22 +79,22 @@
 
   <!-- ══════════════ Étape 4 : substituer 54 = 252-198, le jeton plein éclate ══════════════ -->
   <g id="step-4">
-    <text x="60" y="396" font-size="11" fill="var(--figure-ink-soft)">Étape 4 — remplacer 54 (ligne 1 : 54 = 252 &#8722; 198 &#215; 1) :</text>
-    <text x="60" y="420" font-size="13" fill="var(--figure-ink)">54 &#215; 4 = (252 &#8722; 198) &#215; 4 = 252 &#215; 4 &#8722; 198 &#215; 4</text>
-    <text x="60" y="442" font-size="13" fill="var(--figure-ink)">18 = 252 &#215; 4 &#8722; 198 &#215; 4 &#8722; 198 &#215; 1</text>
+    <text x="60" y="396" font-size="11" fill="var(--figure-ink-soft)">Étape 4 — remplacer 54 (ligne 1 : 54 = 252 − 198 × 1) :</text>
+    <text x="60" y="420" font-size="13" fill="var(--figure-ink)">54 × 4 = (252 − 198) × 4 = 252 × 4 − 198 × 4</text>
+    <text x="60" y="442" font-size="13" fill="var(--figure-ink)">18 = 252 × 4 − 198 × 4 − 198 × 1</text>
     <text x="60" y="460" font-size="10" font-style="italic" fill="var(--figure-accent)">le jeton plein a éclaté — deux termes attachés à 198 coexistent maintenant</text>
   </g>
 
   <!-- ══════════════ Étape 5 : fusionner les deux termes en 198, lire u et v ══════════════ -->
   <g id="step-5">
     <text x="60" y="488" font-size="11" fill="var(--figure-ink-soft)">Étape 5 — fusionner les deux termes en 198 :</text>
-    <text x="60" y="510" font-size="13" fill="var(--figure-ink)">18 = 252 &#215; 4 &#8722; 198 &#215; (4 + 1)</text>
+    <text x="60" y="510" font-size="13" fill="var(--figure-ink)">18 = 252 × 4 − 198 × (4 + 1)</text>
 
     <rect x="42" y="522" width="330" height="42" rx="7" fill="none" stroke="var(--figure-accent)" stroke-width="1.6"/>
-    <text x="207" y="550" text-anchor="middle" font-size="18" font-weight="700" fill="var(--figure-ink)">18 = 252 &#215; 4 &#8722; 198 &#215; 5</text>
+    <text x="207" y="550" text-anchor="middle" font-size="18" font-weight="700" fill="var(--figure-ink)">18 = 252 × 4 − 198 × 5</text>
 
     <text x="440" y="538" font-size="14" fill="var(--figure-accent)"><tspan font-style="italic">u</tspan> = 4</text>
-    <text x="440" y="560" font-size="14" fill="var(--figure-accent)"><tspan font-style="italic">v</tspan> = &#8722;5</text>
+    <text x="440" y="560" font-size="14" fill="var(--figure-accent)"><tspan font-style="italic">v</tspan> = −5</text>
   </g>
 
 </svg>
