@@ -13,6 +13,7 @@
  */
 
 import { Link } from "@/components/ui/Lien";
+import { SUBJECT_ORDER, subjectHref, subjectLabel } from "@/lib/subjects";
 import { cn } from "@/lib/utils";
 
 export function SiteFooter({ container }: { container: string }) {
@@ -32,19 +33,27 @@ export function SiteFooter({ container }: { container: string }) {
             calmement.
           </p>
 
-          <nav aria-label="Pied de page">
-            <Link
-              href="/"
-              className={cn(
-                "text-body-sm font-medium",
-                "state-layer text-secondary hover:text-primary",
-                "transition-colors duration-micro ease-enter",
-                "rounded px-2 py-1",
-                "focus-ring [--focus-radius:8px]"
-              )}
-            >
-              Notions
-            </Link>
+          {/* Audit R6 (visuel P1-11) : « Notions » seul à droite était une
+              colonne orpheline — un mot et 480 px de vide, signature
+              « gabarit non rempli ». Le pied devient un plan de site
+              discret : les matières, en une rangée calme. (/matieres/si
+              existe et rend son état honnête « Programme à venir ».) */}
+          <nav aria-label="Pied de page" className="flex flex-wrap items-baseline gap-1">
+            {SUBJECT_ORDER.map((id) => (
+              <Link
+                key={id}
+                href={subjectHref(id)}
+                className={cn(
+                  "text-body-sm font-medium",
+                  "state-layer text-secondary hover:text-primary",
+                  "transition-colors duration-micro ease-enter",
+                  "rounded px-2 py-1",
+                  "focus-ring [--focus-radius:8px]"
+                )}
+              >
+                {subjectLabel(id)}
+              </Link>
+            ))}
           </nav>
         </div>
 

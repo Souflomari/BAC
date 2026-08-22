@@ -99,13 +99,20 @@ export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRail
                 colored independently. Hidden on the last entry (no segment
                 below).
               */}
+              {/* Audit R6 (visuel P1-6) : la ligne était en morceaux — les
+                  segments s'arrêtaient au bas de l'item (le haut du suivant,
+                  jusqu'à sa pastille, restait nu) et les pastilles de 6 et
+                  10 px n'avaient pas d'axe commun. Désormais : gabarit fixe
+                  de 10 px pour la colonne des pastilles (axe unique à 5 px),
+                  pastille calée sur la PREMIÈRE ligne (items-start + boîte
+                  d'une ligne), et le segment court de sous cette pastille
+                  jusqu'au bord de la suivante (-bottom déborde dans le li
+                  voisin ; les pastilles, z-10 et pleines, le recouvrent). */}
               {i < entries.length - 1 && (
                 <span
                   aria-hidden="true"
                   className={cn(
-                    // Positioned from the dot center (top: ~22px) down to bottom of li
-                    "absolute left-[5.5px] top-[22px] bottom-0 w-px",
-                    // Read segment: accent color; unread: border-subtle
+                    "absolute left-[4.5px] top-[21px] -bottom-[13px] w-px",
                     isRead ? "bg-accent" : "bg-border-subtle"
                   )}
                 />
@@ -122,7 +129,9 @@ export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRail
                 aria-current={isActive ? "step" : undefined}
                 className={cn(
                   // §9 touch target: 48px (raised from 44px per audit finding #2)
-                  "group relative flex w-full items-center gap-2 text-left",
+                  // items-start : sur un libellé de 2-3 lignes, la pastille
+                  // reste sur la première ligne au lieu de flotter au milieu.
+                  "group relative flex w-full items-start gap-2 text-left",
                   "min-h-touch py-2 pr-2 rounded-sm",
                   "bg-transparent",
                   "text-caption font-medium",
@@ -141,7 +150,14 @@ export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRail
                     : "text-secondary hover:text-primary"
                 )}
               >
-                {/* Entry node on the spine */}
+                {/* Entry node on the spine — dans une boîte d'UNE ligne de
+                    texte (h-[18px]) et de largeur fixe (w-2.5 = le diamètre
+                    actif) : la pastille se centre sur la première ligne et
+                    sur l'axe commun, quelle que soit sa taille. */}
+                <span
+                  aria-hidden="true"
+                  className="flex h-[15px] w-2.5 flex-shrink-0 items-center justify-center"
+                >
                 <span
                   className={cn(
                     "relative z-10 flex-shrink-0",
@@ -178,6 +194,7 @@ export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRail
                   )}
                   aria-hidden="true"
                 />
+                </span>
 
                 {/* Entry label — the human section name (audit U3: the R-codes
                     are spec vocabulary and never render; wayfinding is words).

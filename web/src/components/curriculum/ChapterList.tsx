@@ -147,12 +147,16 @@ export function ChapterList({ subject, units }: { subject: string; units: UnitVi
   // le piège grid min-width:auto ferait déborder un titre long (mesuré
   // 509 px à 390 sur l'accueil — même classe de défaut).
   return (
-    <div className="grid items-start gap-4 bp-large:grid-cols-2">
+    // `columns` et non `grid` (audit R6, P0-3) : avec la grille, « Nombres
+    // complexes » (2 items) laissait un trou de ~660×330 px face à
+    // « Analyse » (7 items). Les colonnes CSS équilibrent les hauteurs ;
+    // break-inside-avoid garde chaque unité entière.
+    <div className="space-y-4 bp-large:columns-2 bp-large:gap-4 bp-large:space-y-0">
       {visibleUnits.map((unit) => (
         <section
           key={unit.title}
           aria-label={unit.title}
-          className="min-w-0 rounded-xl border border-subtle bg-surface-raised p-5 shadow-elevation-1"
+          className="min-w-0 break-inside-avoid rounded-xl border border-subtle bg-surface-raised p-5 shadow-elevation-1 bp-large:mb-4"
         >
           <h2 className="mb-2 pb-2 border-b border-subtle text-caption font-medium uppercase tracking-eyebrow text-secondary">
             {unit.title}

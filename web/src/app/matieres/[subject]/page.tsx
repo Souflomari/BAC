@@ -106,7 +106,7 @@ export default function SubjectPage({ params }: { params: { subject: string } })
           {/* L'attribut garde la fraction machine (sweep dom-truth) ; le
               TEXTE visible est calme. nowrap : un « 25 » orphelin en tête
               de ligne à 390 px se lisait comme une nouvelle donnée. */}
-          <span data-couverture={`${available}/${total}`} className="whitespace-nowrap font-mono tabular-nums">
+          <span data-couverture={`${available}/${total}`} className="mono-inline whitespace-nowrap">
             {metaLine}
           </span>
         </p>

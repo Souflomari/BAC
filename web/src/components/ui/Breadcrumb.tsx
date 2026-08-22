@@ -40,8 +40,12 @@ export function Breadcrumb({ segments }: { segments: Crumb[] }) {
             ) : (
               <span
                 className={cn(
+                  // 28ch seulement en colonne étroite : sur un écran de 1440
+                  // avec 770 px libres, l'ellipse lisait comme un bug
+                  // (audit R6, P2-5). Le titre complet vit juste dessous en
+                  // h1 — la troncature n'est qu'un garde-fou d'espace.
                   last
-                    ? "text-primary font-medium truncate max-w-[28ch]"
+                    ? "text-primary font-medium truncate max-w-[28ch] bp-medium:max-w-[48ch]"
                     : "text-secondary"
                 )}
                 aria-current={last ? "page" : undefined}

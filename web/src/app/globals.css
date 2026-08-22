@@ -936,6 +936,19 @@ h3:hover .heading-anchor,
   background: var(--color-surface-overlay);
   box-shadow: var(--elevation-4);
 }
+/* ── Mono INLINE dans du Geist (audit R6, P1-1) ─────────────────────────
+   Geist Mono a une chasse plus large et une graisse apparente plus faible :
+   à taille nominale dans une ligne Geist, « 14 chapitres » paraissait plus
+   gros ET plus clair que le texte voisin. 0.94em recale le gris optique.
+   Réservé au mono posé DANS une ligne de texte — un mono seul dans son
+   bloc (readout, colonne de minutes) garde sa taille nominale. */
+.mono-inline {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.94em;
+  letter-spacing: -0.005em;
+  font-variant-numeric: tabular-nums;
+}
+
 /* Le champ de saisie vit NU dans la carte (grammaire cmdk/Raycast) : pas
    d'anneau propre — le :focus-visible global peignait outline + halo
    accent sur toute la largeur (audit P1-5). La carte cadre déjà. */

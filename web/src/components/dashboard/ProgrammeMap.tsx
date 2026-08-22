@@ -106,7 +106,7 @@ export function ProgrammeMap({ notions }: { notions: NotionMeta[] }) {
                     garde la fraction machine (sweep dom-truth). */}
                 <span
                   data-couverture={`${dispo}/${total}`}
-                  className="ml-auto whitespace-nowrap font-mono text-body-sm tabular-nums text-tertiary"
+                  className="mono-inline ml-auto whitespace-nowrap text-tertiary"
                 >
                   {dispo === total ? `${total} chapitres` : `${dispo}/${total} chapitres`}
                 </span>
