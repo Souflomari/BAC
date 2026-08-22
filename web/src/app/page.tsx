@@ -27,6 +27,7 @@ import { listNotions } from "@/lib/content";
 function manifestePourHeader() {
   return listNotions().map((n) => ({ subject: n.subject, slug: n.slug, title: n.title, readingMinutes: n.readingMinutes }));
 }
+import { Link } from "@/components/ui/Lien";
 import { PageShell } from "@/components/ui/PageShell";
 import { SessionCard } from "@/components/dashboard/SessionCard";
 import { NextUp } from "@/components/dashboard/NextUp";
@@ -56,6 +57,20 @@ export default function HomePage() {
       </div>
 
       <ProgrammeMap notions={notions} />
+
+      {/* Examens blancs — l'entrée périphérique du mode épreuve (C5).
+          Une ligne calme APRÈS le programme : la répétition d'examen vient
+          quand les notions sont travaillées, pas avant (§8 périphérie). */}
+      <p className="mt-10 text-body text-secondary">
+        Prêt à te tester en conditions réelles ?{" "}
+        <Link
+          href="/examens"
+          data-lien-examens
+          className="font-medium text-accent underline-offset-2 hover:underline focus-ring rounded [--focus-radius:4px]"
+        >
+          Examens blancs — les épreuves réelles →
+        </Link>
+      </p>
     </PageShell>
   );
 }

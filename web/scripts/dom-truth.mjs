@@ -2857,6 +2857,73 @@ try {
     await mpage.close();
   }
 
+  // ── SWEEP: le mode examen (EXAM-MODE-SPEC §4, C5 v1) — trois invariants :
+  //    (1) la liste offre au moins une épreuve COMPLÈTE avec ses pts en mono
+  //        (fait du barème, jamais fabriqué) ;
+  //    (2) attempt-first ABSOLU sur l'épreuve : AUCUN raisonnement ni
+  //        auto-notation dans le DOM avant « Terminer » — la même classe de
+  //        garde que les leçons, étendue à la salle d'examen ;
+  //    (3) après « Terminer » : les raisonnements couvrent TOUS les
+  //        exercices et l'auto-notation existe.
+  {
+    console.log("\n[/examens] SWEEP: épreuves réelles — liste honnête + attempt-first");
+    const epage = await browser.newPage({ viewport: { width: 1440, height: 950 } });
+    await epage.goto(`${BASE}/examens`, { waitUntil: "networkidle" });
+    checks++;
+    const liste = await epage.evaluate(() => ({
+      total: document.querySelectorAll("[data-epreuve]").length,
+      pts: document.querySelector("[data-epreuve-pts]")?.textContent ?? "",
+    }));
+    if (liste.total < 5 || !/pts/.test(liste.pts)) {
+      failures += fail(`liste des épreuves : ${liste.total} carte(s), pts="${liste.pts}" — l'assemblage a maigri`);
+    } else {
+      console.log(`  ✓ ${liste.total} épreuves listées, pts en clair`);
+    }
+
+    checks++;
+    await epage.goto(`${BASE}/examens/spc-2023-normale`, { waitUntil: "networkidle" });
+    const seuil = await epage.evaluate(() => ({
+      fuite: document.body.innerText.toLowerCase().includes("raisonnement expert"),
+      radios: document.querySelectorAll("[role='radiogroup']").length,
+      action: !!document.querySelector("[data-primary-action]"),
+    }));
+    if (seuil.fuite || seuil.radios > 0 || !seuil.action) {
+      failures += fail(`seuil d'épreuve : fuite=${seuil.fuite} radios=${seuil.radios} action=${seuil.action} — attempt-first rompu`);
+    } else {
+      console.log("  ✓ seuil : zéro correction au DOM, une action primaire");
+    }
+
+    checks++;
+    await epage.click("[data-primary-action]");
+    await epage.waitForSelector("[data-chrono]", { timeout: 3000 });
+    const encours = await epage.evaluate(() => ({
+      exos: document.querySelectorAll("[data-exam-exo]").length,
+      fuite: document.body.innerText.toLowerCase().includes("raisonnement expert"),
+    }));
+    await epage.click("[data-barre-epreuve] button.btn-primary");
+    await epage.waitForTimeout(500);
+    const correction = await epage.evaluate(() => ({
+      couverts: [...document.querySelectorAll("[data-exam-exo]")].filter((e) =>
+        e.innerText.toLowerCase().includes("raisonnement expert")
+      ).length,
+      exos: document.querySelectorAll("[data-exam-exo]").length,
+      radios: document.querySelectorAll("[role='radiogroup']").length,
+      note: !!document.querySelector("[data-note-indicative]"),
+    }));
+    if (encours.fuite || encours.exos === 0) {
+      failures += fail(`épreuve en cours : exos=${encours.exos} fuite=${encours.fuite}`);
+    } else if (correction.couverts !== correction.exos || correction.radios === 0 || !correction.note) {
+      failures += fail(
+        `correction : ${correction.couverts}/${correction.exos} exercices corrigés, ${correction.radios} radiogroups, note=${correction.note}`
+      );
+    } else {
+      console.log(
+        `  ✓ ${encours.exos} exercices sans correction pendant l'épreuve ; ${correction.couverts}/${correction.exos} corrigés + auto-notation après`
+      );
+    }
+    await epage.close();
+  }
+
   // ── SWEEP: token source parity — every CSS custom property resolves to its
   //    tokens.ts value, in BOTH themes. The single-source guarantee, asserted
   //    against the rendered DOM (not the source files). Reads getPropertyValue

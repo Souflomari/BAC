@@ -154,6 +154,10 @@ export function CommandPalette({ notions }: { notions: NotionPourPalette[] }) {
           </Command.Group>
         ))}
         <Command.Group heading="Aller à" className="palette-groupe">
+          <Command.Item value="examens blancs epreuves reelles bac chrono" onSelect={() => va("/examens")} className="palette-item">
+            <Icon name="arrow-right" size={14} className="shrink-0 text-accent" />
+            Examens blancs — les épreuves réelles
+          </Command.Item>
           <Command.Item value="atelier derivees entrainement interactif" onSelect={() => va("/atelier")} className="palette-item">
             <Icon name="interactive" size={14} className="shrink-0 text-accent" />
             Atelier — les dérivées
