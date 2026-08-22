@@ -1,11 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 500" role="img"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 570" role="img"
      font-family="'IBM Plex Sans', system-ui, sans-serif"
-     aria-label="Remontée de l'algorithme d'Euclide pour PGCD(252,198)=18 : on isole 18 égale 54 moins 36, puis on substitue 36 égale 198 moins 54 fois 3 pour obtenir 18 égale 54 fois 4 moins 198 fois 1, puis on substitue 54 égale 252 moins 198 pour obtenir 18 égale 252 fois 4 moins 198 fois 5, soit u égale 4, v égale moins 5.">
+     aria-label="Remontée de l'algorithme d'Euclide pour PGCD(252,198)=18 : on isole 18 égale 54 moins 36, on substitue 36 égale 198 moins 54 fois 3, on développe et regroupe en 18 égale 54 fois 4 moins 198 fois 1, on substitue 54 égale 252 moins 198 pour faire éclater le terme en 252 fois 4 moins 198 fois 4, puis on fusionne les deux termes en 198 pour obtenir 18 égale 252 fois 4 moins 198 fois 5, soit u égale 4, v égale moins 5.">
   <title>La remontée de Bézout — retrouver u, v tels que 252u + 198v = 18</title>
   <!--
     bezout-remontee.svg — StagedFigure, R4 de arithmetique/lesson.md.
-    L'inverse délibéré de euclide-cascade.svg (R3) : celui-ci DESCEND vers
+    L'inverse délibéré de euclide-cascade.svg (R3) : celui-là DESCEND vers
     le PGCD, celui-ci REMONTE pour l'écrire comme combinaison 252u+198v.
+
+    RESTAGÉ 5 étapes (audit stage-depth, docket MAJEUR #3) : chaque étape
+    porte UN seul temps algébrique — les trois temps qui étaient fusionnés
+    (substituer / développer-regrouper / recombiner) sont désormais séparés.
 
     CHROME (fixe, avant tout step) : les 3 lignes de descente de R3,
     grisées ("rappel") — jamais recolorées, jamais retirées : elles restent
@@ -16,21 +20,23 @@
     par TRAITEMENT : le terme qui deviendra le multiple de 252 est souligné
     d'un trait plein accent ; le terme qui reste attaché à 198 est souligné
     d'un trait accent EN POINTILLÉS. Cette convention (plein vs pointillé,
-    même teinte) est réutilisée telle quelle entre step-2 et step-3 — on
-    peut suivre un même jeton d'une étape à l'autre par son style de trait,
-    pas par sa couleur.
+    même teinte) est posée à l'étape 3 et suivie aux étapes 4-5 — on suit
+    un même jeton d'une étape à l'autre par son style de trait, pas par sa
+    couleur.
 
     step-1 : isoler 18 = 54 - 36×1 (dernière ligne utile de la cascade).
-    step-2 : substituer 36 = 198-54×3 -> 18 = 54×4 - 198×1. Le terme
-             "54×4" (futur multiple de 252, trait plein) et "198×1"
-             (déjà attaché à 198, trait pointillé).
-    step-3 : substituer 54 = 252-198×1 -> le jeton "54×4" éclate en
-             252×4 - 198×4, qui rejoint le jeton "198" (déjà -198×1) pour
-             donner -198×5. Résultat encadré : 18 = 252×4 - 198×5,
-             u = 4, v = -5.
+    step-2 : substituer 36 = 198-54×3, tel quel, entre parenthèses —
+             AUCUN développement encore.
+    step-3 : développer et regrouper les 54 -> 18 = 54×4 - 198×1. Pose des
+             deux jetons : "54×4" (futur multiple de 252, trait plein) et
+             "198×1" (déjà attaché à 198, trait pointillé).
+    step-4 : substituer 54 = 252-198×1 -> le jeton plein "54×4" éclate en
+             252×4 - 198×4 ; deux termes attachés à 198 coexistent.
+    step-5 : fusionner les deux termes en 198 (-198×4 - 198×1 = -198×5).
+             Résultat encadré : 18 = 252×4 - 198×5, u = 4, v = -5.
   -->
 
-  <rect width="700" height="500" fill="var(--figure-surface)"/>
+  <rect width="700" height="570" fill="var(--figure-surface)"/>
 
   <text x="350" y="24" text-anchor="middle" font-size="13.5" font-weight="700"
         fill="var(--figure-ink)">Remonter l'algorithme d'Euclide pour écrire 18 = 252u + 198v</text>
@@ -44,38 +50,51 @@
 
   <!-- ══════════════ Étape 1 : isoler 18 = 54 - 36×1 ══════════════ -->
   <g id="step-1">
-    <text x="60" y="160" font-size="11" fill="var(--figure-ink-soft)">Étape 1 — isoler le reste de la dernière ligne utile :</text>
-    <text x="60" y="190" font-size="17" font-weight="700" fill="var(--figure-ink)">18 = 54 &#8722; 36 &#215; 1</text>
+    <text x="60" y="152" font-size="11" fill="var(--figure-ink-soft)">Étape 1 — isoler le reste de la dernière ligne utile :</text>
+    <text x="60" y="180" font-size="17" font-weight="700" fill="var(--figure-ink)">18 = 54 &#8722; 36 &#215; 1</text>
   </g>
 
-  <!-- ══════════════ Étape 2 : substituer 36 = 198-54×3 ══════════════ -->
+  <!-- ══════════════ Étape 2 : substituer 36 = 198-54×3, sans développer ══════════════ -->
   <g id="step-2">
-    <text x="60" y="230" font-size="11" fill="var(--figure-ink-soft)">Étape 2 — remplacer 36 (ligne 2 : 36 = 198 &#8722; 54 &#215; 3) :</text>
-    <text x="60" y="258" font-size="13.5" fill="var(--figure-ink)">18 = 54 &#8722; (198 &#8722; 54 &#215; 3) &#215; 1</text>
-    <text x="60" y="282" font-size="13.5" fill="var(--figure-ink)">18 = 54 + 54 &#215; 3 &#8722; 198</text>
-
-    <text x="60" y="316" font-size="17" font-weight="700" fill="var(--figure-ink)">18 =</text>
-    <text x="110" y="316" font-size="17" font-weight="700" fill="var(--figure-ink)">54 &#215; 4</text>
-    <line x1="110" y1="322" x2="168" y2="322" stroke="var(--figure-accent)" stroke-width="2"/>
-    <text x="180" y="316" font-size="17" font-weight="700" fill="var(--figure-ink)">&#8722;</text>
-    <text x="200" y="316" font-size="17" font-weight="700" fill="var(--figure-ink)">198 &#215; 1</text>
-    <line x1="200" y1="322" x2="264" y2="322" stroke="var(--figure-accent)" stroke-width="2" stroke-dasharray="4,3"/>
-
-    <text x="139" y="340" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-accent)">deviendra ×252</text>
-    <text x="232" y="340" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-accent)">reste attaché à 198</text>
+    <text x="60" y="212" font-size="11" fill="var(--figure-ink-soft)">Étape 2 — remplacer 36 (ligne 2 : 36 = 198 &#8722; 54 &#215; 3), tel quel :</text>
+    <text x="60" y="240" font-size="15" fill="var(--figure-ink)">18 = 54 &#8722; (198 &#8722; 54 &#215; 3) &#215; 1</text>
+    <text x="60" y="258" font-size="10" font-style="italic" fill="var(--figure-accent)">la parenthèse EST le 36 — on ne développe encore rien</text>
   </g>
 
-  <!-- ══════════════ Étape 3 : substituer 54 = 252-198×1, résultat final ══════════════ -->
+  <!-- ══════════════ Étape 3 : développer et regrouper les 54 ══════════════ -->
   <g id="step-3">
-    <text x="60" y="374" font-size="11" fill="var(--figure-ink-soft)">Étape 3 — remplacer 54 (ligne 1 : 54 = 252 &#8722; 198 &#215; 1) :</text>
-    <text x="60" y="400" font-size="13" fill="var(--figure-ink)">54 &#215; 4 = (252 &#8722; 198) &#215; 4 = 252 &#215; 4 &#8722; 198 &#215; 4</text>
-    <text x="60" y="422" font-size="13" fill="var(--figure-ink)">18 = 252 &#215; 4 &#8722; 198 &#215; 4 &#8722; 198 &#215; 1</text>
+    <text x="60" y="286" font-size="11" fill="var(--figure-ink-soft)">Étape 3 — développer, puis regrouper tous les 54 :</text>
+    <text x="60" y="310" font-size="13.5" fill="var(--figure-ink)">18 = 54 + 54 &#215; 3 &#8722; 198</text>
 
-    <rect x="42" y="438" width="330" height="42" rx="7" fill="none" stroke="var(--figure-accent)" stroke-width="1.6"/>
-    <text x="207" y="466" text-anchor="middle" font-size="18" font-weight="700" fill="var(--figure-ink)">18 = 252 &#215; 4 &#8722; 198 &#215; 5</text>
+    <text x="60" y="342" font-size="17" font-weight="700" fill="var(--figure-ink)">18 =</text>
+    <text x="110" y="342" font-size="17" font-weight="700" fill="var(--figure-ink)">54 &#215; 4</text>
+    <line x1="110" y1="348" x2="168" y2="348" stroke="var(--figure-accent)" stroke-width="2"/>
+    <text x="180" y="342" font-size="17" font-weight="700" fill="var(--figure-ink)">&#8722;</text>
+    <text x="200" y="342" font-size="17" font-weight="700" fill="var(--figure-ink)">198 &#215; 1</text>
+    <line x1="200" y1="348" x2="264" y2="348" stroke="var(--figure-accent)" stroke-width="2" stroke-dasharray="4,3"/>
 
-    <text x="440" y="452" font-size="14" fill="var(--figure-accent)"><tspan font-style="italic">u</tspan> = 4</text>
-    <text x="440" y="474" font-size="14" fill="var(--figure-accent)"><tspan font-style="italic">v</tspan> = &#8722;5</text>
+    <text x="139" y="366" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-accent)">deviendra ×252</text>
+    <text x="232" y="366" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-accent)">reste attaché à 198</text>
+  </g>
+
+  <!-- ══════════════ Étape 4 : substituer 54 = 252-198, le jeton plein éclate ══════════════ -->
+  <g id="step-4">
+    <text x="60" y="396" font-size="11" fill="var(--figure-ink-soft)">Étape 4 — remplacer 54 (ligne 1 : 54 = 252 &#8722; 198 &#215; 1) :</text>
+    <text x="60" y="420" font-size="13" fill="var(--figure-ink)">54 &#215; 4 = (252 &#8722; 198) &#215; 4 = 252 &#215; 4 &#8722; 198 &#215; 4</text>
+    <text x="60" y="442" font-size="13" fill="var(--figure-ink)">18 = 252 &#215; 4 &#8722; 198 &#215; 4 &#8722; 198 &#215; 1</text>
+    <text x="60" y="460" font-size="10" font-style="italic" fill="var(--figure-accent)">le jeton plein a éclaté — deux termes attachés à 198 coexistent maintenant</text>
+  </g>
+
+  <!-- ══════════════ Étape 5 : fusionner les deux termes en 198, lire u et v ══════════════ -->
+  <g id="step-5">
+    <text x="60" y="488" font-size="11" fill="var(--figure-ink-soft)">Étape 5 — fusionner les deux termes en 198 :</text>
+    <text x="60" y="510" font-size="13" fill="var(--figure-ink)">18 = 252 &#215; 4 &#8722; 198 &#215; (4 + 1)</text>
+
+    <rect x="42" y="522" width="330" height="42" rx="7" fill="none" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="207" y="550" text-anchor="middle" font-size="18" font-weight="700" fill="var(--figure-ink)">18 = 252 &#215; 4 &#8722; 198 &#215; 5</text>
+
+    <text x="440" y="538" font-size="14" fill="var(--figure-accent)"><tspan font-style="italic">u</tspan> = 4</text>
+    <text x="440" y="560" font-size="14" fill="var(--figure-accent)"><tspan font-style="italic">v</tspan> = &#8722;5</text>
   </g>
 
 </svg>
