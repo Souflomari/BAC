@@ -141,6 +141,10 @@ export function FontSizeStepper({ className }: { className?: string }) {
               "min-w-touch min-h-touch px-2",
               "rounded",
               "text-caption font-semibold",
+              // Bordure PORTÉE PAR TOUS les crans (transparente au repos) :
+              // l'ajouter au seul cran actif décalerait la rangée de 1 px à
+              // chaque changement.
+              "border border-transparent",
               "transition-colors duration-micro",
               // Focus ring — 8px to match the rounded (8px) host (ADR 0024)
               "focus-ring [--focus-radius:8px]",
@@ -156,6 +160,11 @@ export function FontSizeStepper({ className }: { className?: string }) {
                     "bg-surface-overlay",
                     "text-primary",
                     "shadow-elevation-2",
+                    // Audit R6 (ergonomie P2-8) : en sombre, la pastille
+                    // active n'était qu'un cran tonal — un liseré 1 px la
+                    // rend lisible sur écran atténué. En clair, l'ombre
+                    // suffit (la bordure reste transparente).
+                    "dark:border-soft",
                   ]
                 : [
                     // #1: inactive step button at caption size — must pass 4.5:1.
