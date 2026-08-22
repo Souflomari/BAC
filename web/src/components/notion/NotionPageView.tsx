@@ -27,7 +27,7 @@ import { realChapterCount } from "@/lib/chapters";
 import { PageShell } from "@/components/ui/PageShell";
 import { NotionBody } from "@/components/notion/NotionBody";
 import { buildCheckpointCloneIds } from "@/components/notion/ItemsSection";
-import { MarginRail } from "@/components/notion/MarginRail";
+import { MarginRail, ChapterMenuCompact } from "@/components/notion/MarginRail";
 import { ChapterShell, ChapterPosition, ChapterTransport } from "@/components/notion/ChapterShell";
 import { AttemptEventProvider, ChapterVisitRecorder } from "@/components/notion/AttemptEvents";
 import { Icon } from "@/components/ui/Icon";
@@ -297,10 +297,24 @@ export function NotionPageView({
               channel to this column (absolute, outside the container, in the
               wide-tier void the owner circled). */}
           <div id="lesson-content" className={cn("notion-content", (wideOption === "w1" || wideOption === "w3") && "relative")}>
-            {/* Mobile-only twin of the rail's "Chapitre n / N" (rail is
-                display:none below 600px — globals.css:764-788): the SAME
-                context, so the two copies can never disagree. */}
-            <ChapterPosition className="mb-6 bp-medium:hidden" />
+            {/* Jumeau compact du rail (rail display:none sous 600 px).
+                Audit R6 (ergonomie P1-7) : le texte inerte « Chapitre 1/10 »
+                devient un MENU — un <details> fermé par défaut listant les
+                mêmes chapitres que le rail (mêmes props, même construction :
+                les deux surfaces ne peuvent pas diverger). Sans lui,
+                atteindre le chapitre 7 coûtait six « suivant » et autant de
+                défilements. Repli sans texte de leçon : le simple
+                positionneur d'avant. */}
+            {lessonMd ? (
+              <ChapterMenuCompact
+                lessonMd={lessonMd}
+                hasItems={hasBank}
+                bankCount={hasBank ? bank!.entries.length : undefined}
+                className="mb-6 bp-medium:hidden"
+              />
+            ) : (
+              <ChapterPosition className="mb-6 bp-medium:hidden" />
+            )}
 
             {wideOption === "w1" && marginNotes && <MarginNotes notes={marginNotes} />}
             {wideOption === "w3" && keyFormulas && <KeyFormulaRail formulas={keyFormulas} />}

@@ -2814,6 +2814,38 @@ try {
     await rpage.close();
   }
 
+  // ── SWEEP: navigation par chapitre en compact (audit R6, ergonomie P1-7) —
+  //    sous 600 px le rail est display:none ; la capacité de navigation ne
+  //    doit PAS disparaître avec lui. Le menu compact (details) doit exister
+  //    et lister Tous les chapitres. Régression gardée : revenir au texte
+  //    inerte « Chapitre 1/10 » referait payer 6 « suivant » pour le ch. 7.
+  {
+    console.log("\n[notion@390] SWEEP: le menu de chapitres compact existe et liste tout");
+    const mpage = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    await mpage.goto(`${BASE}${NOTION}`, { waitUntil: "networkidle" });
+    checks++;
+    const menu = await mpage.evaluate(() => {
+      const d = [...document.querySelectorAll("details")].find((x) =>
+        x.querySelector("summary")?.textContent?.includes("Chapitre")
+      );
+      if (!d) return { present: false };
+      const visible = getComputedStyle(d).display !== "none";
+      return {
+        present: true,
+        visible,
+        items: d.querySelectorAll("ol button").length,
+      };
+    });
+    if (!menu.present || !menu.visible) {
+      failures += fail("menu de chapitres compact absent à 390 px — la navigation a re-disparu du mobile");
+    } else if (menu.items < 3) {
+      failures += fail(`menu compact : ${menu.items} chapitre(s) listé(s) — liste amputée`);
+    } else {
+      console.log(`  ✓ menu présent, ${menu.items} chapitres listés`);
+    }
+    await mpage.close();
+  }
+
   // ── SWEEP: token source parity — every CSS custom property resolves to its
   //    tokens.ts value, in BOTH themes. The single-source guarantee, asserted
   //    against the rendered DOM (not the source files). Reads getPropertyValue

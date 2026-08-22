@@ -33,9 +33,10 @@
 
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { extractChapterHeadings, type ChapterHeadingInfo } from "@/lib/chapters";
+import { Icon } from "@/components/ui/Icon";
 import { useChapter, ChapterPosition } from "./ChapterShell";
 
 interface RailEntry {
@@ -83,7 +84,14 @@ export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRail
 
   return (
     <nav className="notion-rail" aria-label="Navigation par chapitre de la leçon">
-      <ChapterPosition className="mb-3" />
+      <ChapterPosition className="mb-1" />
+      {/* L'indice clavier (audit ergonomie P2-7) : les flèches ← → changent
+          de chapitre depuis ChapterShell, mais rien à l'écran ne le disait —
+          une capacité invisible n'existe pas. Tertiaire, une ligne, rien
+          de plus. */}
+      <p aria-hidden="true" className="mb-3 text-caption text-tertiary">
+        ← → pour naviguer
+      </p>
       <ol className="relative flex flex-col pt-1" role="list">
         {entries.map((entry, i) => {
           const isActive = current === i;
@@ -258,5 +266,86 @@ export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRail
         })}
       </ol>
     </nav>
+  );
+}
+
+// ── ChapterMenuCompact — la navigation par chapitre SOUS 600 px ─────────────
+// Audit R6 (ergonomie P1-7) : en colonne compacte le rail est display:none et
+// il ne restait que le texte inerte « Chapitre 1 / 10 » — atteindre le
+// chapitre 7 exigeait six « Chapitre suivant » avec un défilement complet
+// entre chaque. §1 demande une adaptation vers le bas, pas une perte de
+// capacité. Ce menu est un <details> fermé par défaut : le même libellé
+// devient le déclencheur, la liste est CELLE du rail (mêmes props, même
+// construction d'entrées — les deux surfaces ne peuvent pas diverger).
+export function ChapterMenuCompact({
+  lessonMd,
+  hasItems = false,
+  bankCount,
+  className,
+}: MarginRailProps & { className?: string }) {
+  const headings = useMemo(() => extractChapterHeadings(lessonMd), [lessonMd]);
+  const { current, total, goTo } = useChapter();
+  const detailsRef = useRef<HTMLDetailsElement>(null);
+
+  if (headings.length === 0 && !hasItems) return null;
+  if (total <= 1) return null; // rien à naviguer — pas de théâtre
+
+  const realEntries: RailEntry[] = headings.length > 0 ? headings : [FALLBACK_ENTRY];
+  const practiceEntry: RailEntry = {
+    title: "S'entraîner",
+    shortTitle: "S'entraîner",
+    count: bankCount,
+  };
+  const entries: RailEntry[] = hasItems ? [...realEntries, practiceEntry] : realEntries;
+
+  return (
+    <details ref={detailsRef} className={cn("group", className)}>
+      <summary
+        className={cn(
+          "flex min-h-touch cursor-pointer list-none items-center gap-2 rounded-lg",
+          "text-body-sm text-secondary",
+          "state-layer focus-ring [--focus-radius:8px] px-2 -mx-2",
+          "[&::-webkit-details-marker]:hidden"
+        )}
+      >
+        <span aria-live="polite">{`Chapitre ${current + 1} / ${total}`}</span>
+        <Icon
+          name="chevron-right"
+          size={14}
+          className="rotate-90 transition-transform duration-micro ease-enter group-open:rotate-[270deg]"
+        />
+      </summary>
+      <ol
+        role="list"
+        className="mt-1 rounded-lg border border-subtle bg-surface-raised p-1 shadow-elevation-1"
+      >
+        {entries.map((entry, i) => (
+          <li key={i}>
+            <button
+              type="button"
+              aria-current={current === i ? "step" : undefined}
+              onClick={() => {
+                goTo(i);
+                if (detailsRef.current) detailsRef.current.open = false;
+              }}
+              className={cn(
+                "flex min-h-touch w-full items-center gap-2 rounded-md px-3 py-1.5 text-left",
+                "text-body-sm state-layer focus-ring [--focus-radius:6px]",
+                current === i ? "font-medium text-accent" : "text-secondary"
+              )}
+            >
+              <span className="tabular-nums">{i + 1}</span>
+              {" · "}
+              <span className="min-w-0">{entry.shortTitle}</span>
+              {entry.count != null && (
+                <span className="ml-auto shrink-0 font-mono text-caption tabular-nums text-tertiary">
+                  {entry.count} sujet{entry.count > 1 ? "s" : ""}
+                </span>
+              )}
+            </button>
+          </li>
+        ))}
+      </ol>
+    </details>
   );
 }
