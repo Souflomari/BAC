@@ -7,13 +7,17 @@
     Style de famille : reprend la grammaire de arbre-denombrement.svg
     (palette --figure-* uniquement, classes .fXX, IBM Plex Sans).
 
-    step-1 : l'arbre entier — on pèle le plus petit facteur premier à
-             chaque niveau : 360 -> 2x180 -> 2x90 -> 2x45 -> 3x15 -> 3x5,
+    step-1 : le geste — première division par le plus petit premier :
+             360 -> 2 x 180 (le 2 devient feuille, 180 continue).
+    step-2 : le geste répété jusqu'au bout : 180 -> 2x90 -> 2x45,
+             puis 45 force le passage à 3 : 45 -> 3x15 -> 3x5 ;
              feuilles 2,2,2,3,3,5.
-    step-2 : on collecte les feuilles : 360 = 2^3 x 3^2 x 5.
-    step-3 : le payoff — 252 = 2^2 x 3^2 x 7 posé à côté ; les puissances
-             minimales communes (2^2, 3^2) donnent PGCD(360,252) = 36,
-             confirmé contre l'algorithme d'Euclide (R3).
+    step-3 : on collecte les feuilles : 360 = 2^3 x 3^2 x 5.
+    step-4 : 252 = 2^2 x 3^2 x 7 posé à côté ; colonnes communes (2, 3)
+             surlignées, 5 et 7 non communs atténués.
+    step-5 : la règle des puissances minimales — soulignées — donne
+             PGCD(360,252) = 2^2 x 3^2 = 36, confirmé contre
+             l'algorithme d'Euclide (R3).
 
     Arbre "en peigne" : à chaque niveau, un nœud composite se scinde en
     une FEUILLE (premier pelé, à gauche) et un NŒUD composite (le
@@ -34,18 +38,10 @@
   <text x="325" y="24" text-anchor="middle" font-size="13.5" font-weight="700"
         fill="var(--figure-ink)">Décomposer 360 — puis retrouver un PGCD déjà connu</text>
 
-  <!-- ══════════════ Étape 1 : l'arbre entier ══════════════ -->
+  <!-- ══════════════ Étape 1 : le geste — première division 360 = 2 × 180 ══════════════ -->
   <g id="step-1">
     <line class="f-edge" x1="150" y1="60"  x2="70"  y2="120"/>
     <line class="f-edge" x1="150" y1="60"  x2="230" y2="120"/>
-    <line class="f-edge" x1="230" y1="140" x2="150" y2="200"/>
-    <line class="f-edge" x1="230" y1="140" x2="310" y2="200"/>
-    <line class="f-edge" x1="310" y1="220" x2="230" y2="280"/>
-    <line class="f-edge" x1="310" y1="220" x2="390" y2="280"/>
-    <line class="f-edge" x1="390" y1="300" x2="310" y2="360"/>
-    <line class="f-edge" x1="390" y1="300" x2="470" y2="360"/>
-    <line class="f-edge" x1="470" y1="380" x2="390" y2="440"/>
-    <line class="f-edge" x1="470" y1="380" x2="550" y2="440"/>
 
     <circle class="f-node" cx="150" cy="60" r="26"/>
     <text class="f-nlabel" x="150" y="65">360</text>
@@ -54,6 +50,21 @@
     <text class="f-llabel" x="70" y="125">2</text>
     <circle class="f-node" cx="230" cy="120" r="24"/>
     <text class="f-nlabel" x="230" y="125">180</text>
+
+    <text x="330" y="95" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">on pèle le plus petit premier : 360 = 2 &#215; 180</text>
+  </g>
+
+  <!-- ══════════════ Étape 2 : le geste répété jusqu'aux feuilles ══════════════ -->
+  <g id="step-2">
+    <line class="f-edge" x1="230" y1="140" x2="150" y2="200"/>
+    <line class="f-edge" x1="230" y1="140" x2="310" y2="200"/>
+    <line class="f-edge" x1="310" y1="220" x2="230" y2="280"/>
+    <line class="f-edge" x1="310" y1="220" x2="390" y2="280"/>
+    <line class="f-edge" x1="390" y1="300" x2="310" y2="360"/>
+    <line class="f-edge" x1="390" y1="300" x2="470" y2="360"/>
+    <line class="f-edge" x1="470" y1="380" x2="390" y2="440"/>
+    <line class="f-edge" x1="470" y1="380" x2="550" y2="440"/>
 
     <circle class="f-leaf" cx="150" cy="200" r="20"/>
     <text class="f-llabel" x="150" y="205">2</text>
@@ -74,10 +85,13 @@
     <text class="f-llabel" x="390" y="445">3</text>
     <circle class="f-leaf" cx="550" cy="440" r="20"/>
     <text class="f-llabel" x="550" y="445">5</text>
+
+    <text x="635" y="258" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">45 n'est plus pair &#8594; on passe à 3</text>
   </g>
 
-  <!-- ══════════════ Étape 2 : collecte des feuilles ══════════════ -->
-  <g id="step-2">
+  <!-- ══════════════ Étape 3 : collecte des feuilles ══════════════ -->
+  <g id="step-3">
     <line x1="70" y1="480" x2="70" y2="500" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,3"/>
     <line x1="150" y1="480" x2="150" y2="500" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,3"/>
     <line x1="230" y1="480" x2="230" y2="500" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,3"/>
@@ -90,8 +104,8 @@
           dy="-6" font-size="12">3</tspan><tspan dy="6"> &#215; 3</tspan><tspan dy="-6" font-size="12">2</tspan><tspan dy="6"> &#215; 5</tspan></text>
   </g>
 
-  <!-- ══════════════ Étape 3 : le payoff — comparer à 252, puissances minimales ══════════════ -->
-  <g id="step-3">
+  <!-- ══════════════ Étape 4 : poser 252 à côté — communs vs non communs ══════════════ -->
+  <g id="step-4">
     <line x1="60" y1="592" x2="590" y2="592" stroke="var(--figure-grid)" stroke-width="1"/>
     <text x="325" y="616" text-anchor="middle" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">252 (déjà décomposé au R3) posé à côté :</text>
 
@@ -114,6 +128,13 @@
     <text x="465" y="646" text-anchor="middle" font-size="15" fill="var(--figure-ink-soft)" opacity="0.35">&#8212;</text>
     <text x="465" y="678" text-anchor="middle" font-size="15" fill="var(--figure-ink-soft)" opacity="0.6">7</text>
     <text x="435" y="702" text-anchor="middle" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">non communs — n'entrent pas dans le PGCD</text>
+  </g>
+
+  <!-- ══════════════ Étape 5 : puissances minimales soulignées → PGCD = 36 ══════════════ -->
+  <g id="step-5">
+    <line x1="188" y1="684" x2="222" y2="684" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="288" y1="684" x2="322" y2="684" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <text x="247" y="706" text-anchor="middle" font-size="9.5" font-style="italic" fill="var(--figure-accent)">plus petite puissance retenue</text>
 
     <rect x="120" y="718" width="410" height="30" rx="7" fill="none" stroke="var(--figure-accent)" stroke-width="1.6"/>
     <text x="325" y="739" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--figure-ink)">PGCD(360, 252) = 2<tspan
