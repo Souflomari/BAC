@@ -319,7 +319,11 @@ const BATTERY = [
   { name: "head: notion JSON-LD (LearningResource)", page: NOTION, sel: "script[type='application/ld+json']", present: true },
   // ── July-2026 F4 — the theme toggle exists (interaction exercised in the
   //    sweeps section below: the REAL user path, not a forced class) ──
-  { name: "theme toggle present in header", page: "/", sel: "header [data-theme-toggle]", present: true },
+  // Arbitrage 2026-08-22 : A−/A/A+ + thème vivent derrière le déclencheur
+  // « Aa » (MenuAffichage) — 6 cibles au repos au lieu de 8. La CAPACITÉ est
+  // assertée par le round-trip ci-dessous (qui ouvre le menu) ; ici on tient
+  // le déclencheur lui-même.
+  { name: "déclencheur Affichage (Aa) présent au header", page: "/", sel: "header button[aria-label*='Affichage']", present: true },
   // ── July-2026 F7 — KaTeX accessibility (refuted-claim made permanent:
   //    every formula ships MathML; parity asserted in the sweeps section) ──
   { name: "KaTeX MathML present", page: NOTION, sel: ".katex .katex-mathml", present: true },
@@ -756,7 +760,12 @@ try {
     await page.evaluate(() => localStorage.removeItem("bac-theme"));
     await page.reload({ waitUntil: "networkidle" });
     const bgLight = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
-    await page.click("header [data-theme-toggle]");
+    // Le toggle vit dans le menu Affichage (Aa) depuis l'arbitrage
+    // 2026-08-22 — le round-trip passe par le vrai chemin de l'élève :
+    // ouvrir le menu, puis basculer.
+    await page.click("header button[aria-label*='Affichage']");
+    await page.waitForSelector("[data-theme-toggle]", { timeout: 3000 });
+    await page.click("[data-theme-toggle]");
     await page.waitForTimeout(150);
     const bgDark = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
     await page.reload({ waitUntil: "networkidle" });
@@ -764,7 +773,9 @@ try {
       dark: document.documentElement.classList.contains("dark"),
       stored: localStorage.getItem("bac-theme"),
     }));
-    await page.click("header [data-theme-toggle]");
+    await page.click("header button[aria-label*='Affichage']");
+    await page.waitForSelector("[data-theme-toggle]", { timeout: 3000 });
+    await page.click("[data-theme-toggle]");
     await page.waitForTimeout(150);
     const backLight = await page.evaluate(() => !document.documentElement.classList.contains("dark"));
     checks++;

@@ -988,3 +988,40 @@ dans un nouveau SWEEP interactif qui ouvre Physique-Chimie et confirme
 après). Aucune règle enfreinte : ordre DOM inchangé (aucun `order` CSS,
 aucune leçon réordonnée), `[data-mastery-token]` toujours == notions sur
 disque (61) que le filtre soit actif ou non.
+
+---
+
+## 2026-08-22 — Les quatre arbitrages de fin-R6, tranchés sur mandat
+
+Owner (2026-08-22) : « Continue. Don't stop for anything for my approval…
+attack everything: UI, content, header ». Les quatre points owner-gatés de
+l'audit fin-R6 sont tranchés en jugement, statut FABLE-DECIDED, réversibles
+à son retour :
+
+1. **Header — MenuAffichage « Aa » (EXÉCUTÉ).** A−/A/A+ et thème regroupés
+   derrière un déclencheur unique : 8 → 6 cibles permanentes (charge-calme
+   servie), réglages à UN clic avec cibles 48 px inchangées (a11y servie).
+   Global — le header garde un seul gabarit sur toutes les routes (§3.4).
+   dom-truth retargeté : présence du déclencheur + round-trip thème PAR le
+   menu (le vrai chemin de l'élève).
+2. **NextUp « Ensuite dans le parcours » — CONSERVÉ tel quel.** Le critic
+   visuel voulait l'agrandir, le critic calme le retirer : contradiction
+   frontale = la forme actuelle (une ligne calme, périphérie fonctionnelle
+   §8) est précisément le point d'équilibre. Aucun changement.
+3. **Stagger du panneau Notions — CONSERVÉ.** Sanctionné par le plan R4,
+   déclenché uniquement par le geste de l'élève, 120 ms de traîne,
+   neutralisé par prefers-reduced-motion. La règle « pas d'animation au
+   chargement » reste intacte — ceci n'en est pas une.
+4. **Bancs /options — PURGE PARTIELLE (EXÉCUTÉE).** Supprimés : masthead
+   a1-a3 (a3 acté depuis le verdict V1), home b1-b3 (accueil ProgrammeMap
+   les a remplacés), end c1-c2 (option C actée au footer) + les SIX
+   composants dashboard orphelins (Dashboard, MasteryMap, AvailableShelf,
+   SubjectProgress, SubjectCard, MilestoneSlot — 0 consommateur).
+   CONSERVÉ : /options/wide (W1/W3, décision Set-W réellement pendante).
+   La plomberie mastheadVariant de NotionPageView reste (code mort typé,
+   marqué CANDIDAT AU RETRAIT — chirurgie dédiée, pas en passant).
+
+SM 2018 (banque depuis source retypée) : la porte n'est PAS contournée —
+le mandat couvre les décisions, pas la fidélité du contenu. Traitement au
+lot suivant : sourcer le scan officiel (element/65508) et vérifier, puis
+convertir ; sinon la porte reste.

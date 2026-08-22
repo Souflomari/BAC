@@ -234,6 +234,58 @@ function PanneauNotions({
 }
 
 /** Menu compact (< expanded) : recherche, matières, réglages, compte. */
+/**
+ * MenuAffichage — A−/A/A+ et thème derrière UN déclencheur « Aa ».
+ *
+ * Arbitrage exécuté le 2026-08-22 (mandat owner « attack everything ») :
+ * l'audit charge-calme comptait 8 cibles permanentes dans le header — « une
+ * salle d'étude n'a pas de tableau de bord » ; l'audit ergonomie exigeait la
+ * taille de texte ATTEIGNABLE. Le menu donne les deux : 6 cibles au repos,
+ * les réglages à UN clic derrière un déclencheur explicite, cibles 48 px
+ * inchangées à l'intérieur. Même idiome que le MenuCompact (contrôles nus
+ * dans un DropdownMenu.Content — éprouvé, sondé en R2).
+ */
+function MenuAffichage() {
+  return (
+    <DropdownMenu.Root modal={false}>
+      <DropdownMenu.Trigger asChild>
+        <button
+          type="button"
+          aria-label={frenchTypography("Affichage : taille du texte et thème")}
+          className={cn(
+            "inline-flex min-h-touch min-w-touch items-center justify-center rounded-lg",
+            "text-body-sm font-semibold text-secondary hover:text-primary",
+            "state-layer focus-ring [--focus-radius:8px]",
+            "transition-colors duration-micro ease-enter"
+          )}
+        >
+          <span aria-hidden="true">Aa</span>
+        </button>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content
+          sideOffset={10}
+          align="end"
+          className={cn(
+            "z-overlay rounded-xl border border-subtle bg-surface-overlay p-3",
+            "shadow-elevation-3",
+            "panneau-entree"
+          )}
+        >
+          <p className="mb-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
+            Taille du texte
+          </p>
+          <FontSizeStepper />
+          <p className="mb-2 mt-3 text-caption font-medium uppercase tracking-eyebrow text-secondary">
+            Thème
+          </p>
+          <ThemeToggle />
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
+  );
+}
+
 function MenuCompact({
   sujets,
   mode,
@@ -424,8 +476,10 @@ export function SiteHeader({ className, container, notions = [] }: SiteHeaderPro
             <PanneauNotions sujets={menuSubjects} notions={notions} />
           </div>
 
-          <FontSizeStepper className="hidden bp-expanded:flex" />
-          <ThemeToggle className="hidden bp-expanded:inline-flex" />
+          {/* Affichage (Aa) : A−/A/A+ + thème regroupés — voir MenuAffichage. */}
+          <div className="hidden bp-expanded:block">
+            <MenuAffichage />
+          </div>
 
           <MenuCompact sujets={menuSubjects} mode={mode} user={user} onSignOut={handleSignOut} />
 

@@ -1031,6 +1031,13 @@ h3:hover .heading-anchor,
 .panneau-entree[data-state="open"] {
   animation: panneau-entree var(--duration-micro) var(--ease-enter) both;
 }
+/* Radix focalise le CONTENT à l'ouverture ; le catch-all :focus-visible
+   global dessinait alors l'anneau accent + halo autour du panneau entier.
+   Le conteneur n'est pas une cible — l'anneau appartient aux items. */
+.panneau-entree:focus-visible {
+  outline: none;
+  box-shadow: var(--elevation-3);
+}
 .panneau-entree[data-state="open"] .panneau-colonne {
   animation: panneau-colonne var(--duration-standard) var(--ease-enter) both;
 }

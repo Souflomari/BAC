@@ -43,6 +43,11 @@ import { KeyFormulaRail, type KeyFormula } from "./KeyFormulaRail";
 export { subjectLabel };
 
 export type MastheadVariant = "a1" | "a2" | "a3";
+// CANDIDAT AU RETRAIT (2026-08-22, purge des bancs /options) : les bancs
+// masthead a1/a2 sont supprimés — plus AUCUN appelant ne passe autre chose
+// que le défaut a3. Les branches a1/a2 ci-dessous sont du code mort typé,
+// gardées le temps d'une passe dédiée sur ce composant porteur (retirer la
+// prop + les branches + ce type d'un seul geste, portes complètes).
 
 // ── Breadcrumb (Day-9: now the shared component; the notion crumb goes
 //    Accueil › <matière index> › <notion>, so the subject segment LINKS to
