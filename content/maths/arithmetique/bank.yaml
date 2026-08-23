@@ -7,22 +7,34 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). HUIT entrées ici : les HUIT sujets au statut
-# « vérifié » recensés par docs/sujets/maths/arithmetique.md — 2017
-# (Exercice 3, NS 25, AlloSchool element/57970), 2019 (Exercice 3, NS 24F,
+# exercises.yaml). NEUF entrées ici : les NEUF sujets au statut
+# « vérifié » recensés pour cette notion — 2017 (Exercice 3, NS 25,
+# AlloSchool element/57970), 2019 (Exercice 3, NS 24F,
 # AlloSchool element/68482), 2020 (Exercice 1, NS 25, AlloSchool
 # element/109635), 2021 (Exercice 3, NS 24F, AlloSchool element/127193),
 # 2022 (Exercice 3, NS 24F, AlloSchool element/136604), 2023 (Exercice 4,
 # NS 24F, AlloSchool element/142490), 2024 (Exercice 5, NS 24F, AlloSchool
 # element/145739) et 2025 (Exercice 3, NS 24F, AlloSchool element/145783)
-# — chacun re-fetché indépendamment et diffé caractère-par-caractère
+# pour docs/sujets/maths/arithmetique.md — plus la NEUVIÈME, seule entrée
+# de SESSION DE RATTRAPAGE : 2023 R (Exercice 4, RS 24F, AlloSchool
+# element/142494), recensée par docs/sujets/_incoming/maths-sm-2023-r.md.
+# Chacun re-fetché indépendamment et diffé caractère-par-caractère
 # contre son scan par l'agent-vérificateur-adversarial (2026-08-06 pour
 # 2017 — 2e passe indépendante —, 2026-07-12 pour 2019, 2026-08-05 pour
-# 2020/2022/2024, 2026-08-06 pour 2021/2023/2025). Introuvable = absent,
-# jamais inventé : pas de neuvième entrée tant qu'un neuvième sujet
+# 2020/2022/2024, 2026-08-06 pour 2021/2023-N/2025, 2026-08-23 pour
+# 2023-R). Introuvable = absent,
+# jamais inventé : pas de dixième entrée tant qu'un dixième sujet
 # d'arithmétique n'est pas vérifié. Chapitre SPÉCIFIQUE à la filière
 # Sciences Mathématiques (SM) — absent de l'épreuve Sciences
 # Expérimentales (SVT / Sc. Physiques).
+#
+# PREMIÈRE ENTRÉE DE RATTRAPAGE DES BANQUES DE MATHÉMATIQUES : bk-2023-r-x4.
+# Toutes les autres banques maths du corpus sont en session normale ; la
+# campagne rattrapage commence ici côté maths. Elle apporte avec elle la
+# facture éditoriale de cette campagne (reasoning ouvrant sur « Ce qu'on
+# cherche et pourquoi ce geste », fermant sur le piège nommé), là où les
+# huit entrées C3/B2 gardent leur voix d'origine — écart ASSUMÉ et signalé,
+# à l'arbitrage de l'owner de réaligner les huit anciennes, jamais l'inverse.
 #
 # NOTE ÉDITORIALE (pour la revue) : bk-2019-n-x3 transcrit le MÊME sujet que
 # le sommet de leçon r-bac (exercises.yaml, marqueur [[exercise:r-bac]] à
@@ -34,15 +46,15 @@
 # content/maths/nombres-complexes-1/bank.yaml et sur bk-2021-n-x1 de
 # content/pc/reactions-acido-basiques/bank.yaml.
 #
-# OUTIL HORS-RUNG : les SEPT entrées mobilisent le PETIT THÉORÈME DE
+# OUTIL HORS-RUNG : les NEUF entrées mobilisent le PETIT THÉORÈME DE
 # FERMAT (p premier, p ∤ a ⟹ a^(p−1) ≡ 1 [p]), qui n'a pas de rung dédié
 # dans la leçon (R0–R8 couvrent divisibilité, division euclidienne,
 # congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations
 # diophantiennes — pas Fermat). Le théorème est nommé et justifié au point
 # d'usage dans le champ `reasoning` de chaque question qui le mobilise
 # (bk-2017-n-x3 q3 ; bk-2019-n-x3 q4 ; bk-2020-n-x1 q2 ; bk-2021-n-x3 q3,
-# q6 ; bk-2022-n-x3 q3 ; bk-2023-n-x4 q1, q4 ; bk-2024-n-x5 q1 ;
-# bk-2025-n-x3 q1, q2),
+# q6 ; bk-2022-n-x3 q3 ; bk-2023-n-x4 q1, q4 ; bk-2023-r-x4 q2 ;
+# bk-2024-n-x5 q1 ; bk-2025-n-x3 q1, q2),
 # exactement comme le fait déjà le rupture-gate cp-r6-fermat côté
 # lesson.md, juste avant [[exercise:r-bac]].
 #
@@ -70,8 +82,8 @@
 # questions, citant les rungs mobilisés (R1 division euclidienne, R2
 # congruences, R4 Bézout/coprimalité, R5 Gauss, R6 lemme d'Euclide, R7
 # équations diophantiennes) ; barème transcrit tel quel dans les énoncés
-# (3 points pour 2019/2022/2023/2024/2025, 3,5 points pour 2020, 4 points
-# pour 2021) ; conventions KaTeX (block scalars pour la prose, KaTeX brut
+# (3 points pour 2019/2022/2023-N/2023-R/2024/2025, 3,5 points pour 2020,
+# 4 points pour 2021) ; conventions KaTeX (block scalars pour la prose, KaTeX brut
 # entre apostrophes simples dans steps[].math, notes sans backslash).
 
 notion: maths/arithmetique
@@ -112,7 +124,7 @@ entries:
       - id: q1
         part: "Partie A — Un inverse de $n$ modulo $2969$ par Bézout"
         stem: |-
-          **(0,5 pt)** On suppose dans cette question que $2969$ **ne divise pas** $n$. En utilisant le théorème de BEZOUT, montrer que : $(\exists u \in \mathbb{Z})\ ;\ u \times n \equiv 1\ [2969]$
+          **(0,5 pt)** On suppose dans cette question que $2969$ **ne divise pas** $n$. En utilisant le théorème de Bézout, montrer que : $(\exists u \in \mathbb{Z})\ ;\ u \times n \equiv 1\ [2969]$
         reasoning: |-
           $2969$ est premier (admis) : ses seuls diviseurs positifs sont $1$ et lui-même. Comme on suppose $2969 \nmid n$, leur seul diviseur commun possible est $1$, donc $\mathrm{PGCD}(2969, n) = 1$ — ils sont **premiers entre eux** (rung R4).
 
@@ -902,6 +914,229 @@ entries:
             note: "Si (E) avait une solution, la question 2-b et le resultat precedent donneraient deux valeurs contradictoires pour la meme quantite."
           - math: 'p\ \text{premier impair} \implies p \geq 3 \implies p \nmid 2'
             note: "Impossible : l'hypothese de depart, (E) admet une solution, est donc fausse quand p est congru a 5 modulo 8."
+
+  # ── bk-2023-r-x4 — 2023 R, Exercice 4 : S = 1+p+…+p^(p-1), Fermat, Bézout, q ≡ 1 [p] ──
+  # PREMIÈRE entrée de session RATTRAPAGE des banques de mathématiques (les huit
+  # autres entrées de ce fichier sont toutes en session normale). Elle adopte
+  # aussi la facture de la campagne rattrapage — chaque `reasoning` ouvre sur
+  # « Ce qu'on cherche et pourquoi ce geste », déroule le calcul, ferme sur le
+  # piège nommé —, alors que les huit entrées C3/B2 gardent leur voix d'origine.
+  # Écart de facture ASSUMÉ et signalé, pas un oubli : à l'arbitrage de l'owner
+  # de réaligner les huit anciennes, jamais l'inverse.
+  - id: bk-2023-r-x4
+    title: 'Fermat, Bézout et congruences : les diviseurs premiers de $1+p+\ldots+p^{p-1}$ (2023 rattrapage)'
+    source:
+      year: 2023
+      session: rattrapage
+      filiere: "SM"
+      exercise_label: "Exercice 4"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session de rattrapage — examen national Sciences Mathématiques
+        (A) et (B), option française, Mathématiques, 4 h, coef 9, code sujet
+        RS 24F, barème 3 points (Exercice 4, « Arithmétique »). Source
+        AlloSchool element/142494, scan course-436/upload-85320, énoncé lu
+        sur la page 0005-big.jpg. PREMIÈRE entrée de session rattrapage des
+        banques de MATHÉMATIQUES : jusqu'ici toutes les banques maths
+        étaient en session normale. Transcription fidèle de l'entrée
+        « vérifié » de docs/sujets/_incoming/maths-sm-2023-r.md, section
+        « 2023 — session rattrapage — Exercice 4 » (re-fetch AlloSchool
+        indépendant, relecture de chaque nombre sur l'image et
+        re-dérivation mathématique de bout en bout,
+        agent-vérificateur-adversarial, 2026-08-23 ; aucun glyphe à
+        adjuger dans cet exercice — congruences et modules imprimés
+        proprement). Barème marginal recompté sur le scan :
+        0,5 + 0,25 + 0,5 + 0,75 + 0,25 + 0,75 = 3 pts. Re-démontré une
+        seconde fois à la conversion, avec contrôle numérique sur p = 3
+        (S = 13, q = 13), p = 5 (S = 781 = 11 x 71) et p = 7
+        (S = 137257 = 29 x 4733) : tous les diviseurs premiers trouvés sont
+        bien congrus à 1 modulo p.
+    intro: |-
+      **Arithmétique (examen national Sciences Mathématiques, session de rattrapage 2023, Exercice 4 — 3 points).**
+
+      Soit $p$ un nombre premier impair. On pose : $S = 1 + p + p^2 + p^3 + \ldots + p^{p-1}$
+
+      Soit $q$ un nombre premier qui divise $S$.
+
+      L'exercice est un raisonnement par l'absurde en deux temps, et c'est ce qui fait sa difficulté : la question 2 travaille sous une hypothèse — « $p$ et $q-1$ sont premiers entre eux » — dont la question 3 démontre qu'elle est **intenable**. Tout ce que la question 2 établit est donc vrai *sous cette hypothèse seulement*, et sert uniquement à fabriquer la contradiction finale. Les outils mobilisés : les congruences et leurs puissances (R2), la coprimalité et le théorème de Bézout (R4), les nombres premiers et le lemme d'Euclide (R6), plus le **petit théorème de Fermat** — hors-rung, rappelé au point d'usage comme partout ailleurs dans cette banque.
+    questions:
+      - id: q1
+        part: "Partie A — Deux congruences qui valent $1$ modulo $q$"
+        stem: |-
+          **(0,5 pt)** Montrer que $p$ et $q$ sont premiers entre eux.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux nombres premiers sont premiers entre eux **dès qu'ils sont distincts** : toute la question tient donc dans l'inégalité $q \neq p$. Et pour l'obtenir, on ne dispose que d'un levier — l'hypothèse $q \mid S$. Il suffit donc de montrer que $p$, lui, **ne divise pas** $S$ : les deux nombres ne peuvent alors pas être égaux. On regarde $S$ modulo $p$, où tous les termes sauf le premier portent visiblement un facteur $p$.
+
+          **Premier temps — $S$ modulo $p$.** On met $p$ en facteur dans tout ce qui suit le $1$ initial :
+
+          $$S = 1 + p + p^2 + \ldots + p^{p-1} = 1 + p\big(1 + p + \ldots + p^{p-2}\big)$$
+
+          Le second terme est un multiple de $p$, donc $S \equiv 1 \pmod p$ (rung R2). Comme $p$ est premier impair, $p \geq 3 > 1$, donc $1 \not\equiv 0 \pmod p$ : **$p$ ne divise pas $S$**.
+
+          **Deuxième temps — $q \neq p$.** Par hypothèse $q \mid S$. Si l'on avait $q = p$, on obtiendrait $p \mid S$, ce qu'on vient d'exclure. Donc $q \neq p$.
+
+          **Troisième temps — la coprimalité.** Pose $d = \mathrm{PGCD}(p,q)$. $d$ divise $p$, qui est premier : donc $d = 1$ ou $d = p$. Si $d = p$, alors $p \mid q$ ; or $q$ est premier et $p > 1$, donc $p = q$ — exclu au temps précédent. Il reste $d = 1$ : $p$ et $q$ sont premiers entre eux (rung R4).
+
+          **Le piège à éviter.** Écrire « $p$ et $q$ sont premiers, donc premiers entre eux » est **faux** tel quel : deux nombres premiers **égaux** ont pour PGCD ce nombre premier, pas $1$. La distinction $q \neq p$ n'est pas une formalité de rédaction, c'est exactement le travail de la question — et elle se paie par le calcul de $S$ modulo $p$. Un correcteur qui ne voit pas ce calcul ne voit pas la question.
+        steps:
+          - math: 'S = 1 + p\big(1 + p + \ldots + p^{p-2}\big) \implies S \equiv 1 \pmod p'
+            note: "On met p en facteur dans tous les termes sauf le 1 initial : il ne reste que 1 modulo p."
+          - math: 'p \geq 3 \implies 1 \not\equiv 0 \pmod p \implies p \nmid S'
+            note: "p est premier impair, donc au moins 3 : 1 n'est pas congru a 0 modulo p."
+          - math: 'q \mid S \ \text{et}\ p \nmid S \implies q \neq p'
+            note: "q divise S alors que p ne le divise pas : les deux nombres ne peuvent pas etre egaux."
+          - math: 'd = \mathrm{PGCD}(p,q) \mid p,\ p\ \text{premier} \implies d \in \{1,\,p\};\ d = p \implies p \mid q \implies p = q'
+            note: "Un diviseur commun divise p premier, donc vaut 1 ou p ; le cas p forcerait p = q, exclu."
+          - math: '\mathrm{PGCD}(p,q) = 1'
+            note: "Il ne reste que 1 : p et q sont premiers entre eux (R4)."
+      - id: q2
+        stem: |-
+          **(0,25 pt)** En déduire que : $p^{q-1} \equiv 1\ [q]$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » signale que la question précédente fournit exactement l'hypothèse manquante d'un théorème. Ce théorème, c'est le **petit théorème de Fermat** — un outil du programme SM qui déborde le corps de rungs de la leçon (R0–R8 couvrent divisibilité, division euclidienne, congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations diophantiennes, mais pas Fermat) : si $\ell$ est un nombre **premier** et si $\ell \nmid a$, alors $a^{\ell-1} \equiv 1 \pmod{\ell}$.
+
+          Ici le module est $q$ — c'est lui le « premier » du théorème — et la base est $p$.
+
+          - $q$ est premier : donné par l'énoncé.
+          - $q \nmid p$ : la question précédente donne $\mathrm{PGCD}(p,q) = 1$, et $q \geq 2$ ne divise donc pas $p$ (sinon $q$ serait un diviseur commun $> 1$).
+
+          Les deux conditions sont réunies, avec $\ell = q$ et $a = p$ :
+
+          $$\boxed{p^{q-1} \equiv 1 \pmod q}$$
+
+          **Le piège à éviter.** Intervertir les rôles de $p$ et de $q$ et écrire $q^{p-1} \equiv 1\ [p]$. Les deux nombres sont premiers, les deux énoncés sont d'ailleurs vrais — mais ce n'est pas celui-là qui servira. Repère toujours le module d'abord : c'est **le module** qui doit être premier, et c'est **lui** qui fixe l'exposant $q-1$.
+        steps:
+          - math: 'q\ \text{premier},\quad \mathrm{PGCD}(p,q) = 1 \implies q \nmid p'
+            note: "Les deux hypotheses du petit theoreme de Fermat, avec q pour module et p pour base."
+          - math: 'p^{q-1} \equiv 1 \pmod q'
+            note: "Petit theoreme de Fermat : module premier q, exposant q moins 1."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Vérifier que : $p^p - 1 = (p-1)S$, en déduire que : $p^p \equiv 1\ [q]$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On veut une **seconde** congruence du type « une puissance de $p$ vaut $1$ modulo $q$ », avec un exposant différent de $q-1$ — c'est le couple des deux exposants qui fera tout le travail à la question suivante. L'énoncé indique le chemin : faire apparaître $S$ dans une factorisation de $p^p - 1$, puisque $S$ est le seul objet dont on sache qu'il est divisible par $q$.
+
+          **Premier temps — l'identité.** On développe le produit $(p-1)S$ terme à terme ; c'est une somme télescopique :
+
+          $$(p-1)S = \big(p + p^2 + \ldots + p^{p}\big) - \big(1 + p + \ldots + p^{p-1}\big)$$
+
+          Tous les termes de $p$ à $p^{p-1}$ apparaissent une fois avec le signe $+$ et une fois avec le signe $-$ : ils disparaissent. Il ne survit que $p^p$ dans la première parenthèse et $-1$ dans la seconde :
+
+          $$\boxed{(p-1)S = p^p - 1}$$
+
+          **Deuxième temps — la congruence.** Par hypothèse $q \mid S$. Un diviseur de $S$ divise tout multiple de $S$ (rung R1), donc $q \mid (p-1)S$, c'est-à-dire $q \mid p^p - 1$, soit :
+
+          $$\boxed{p^p \equiv 1 \pmod q}$$
+
+          **Le piège à éviter.** Utiliser la factorisation **dans le mauvais sens**. Ici on va du facile au facile : $q \mid S \Rightarrow q \mid (p-1)S$. Le sens inverse — conclure $q \mid S$ à partir de $q \mid (p-1)S$ — exigerait le lemme d'Euclide (R6) **et** l'hypothèse $q \nmid (p-1)$, dont on ne dispose pas. Devant un produit, demande-toi toujours quelle implication tu es en train d'écrire.
+        steps:
+          - math: '(p-1)S = \big(p + p^2 + \ldots + p^{p}\big) - \big(1 + p + \ldots + p^{p-1}\big)'
+            note: "On distribue : p fois S moins S. Les deux parentheses partagent tous les termes de p a p puissance p moins 1."
+          - math: '(p-1)S = p^p - 1'
+            note: "Somme telescopique : il ne survit que p puissance p et le moins 1."
+          - math: 'q \mid S \implies q \mid (p-1)S = p^p - 1'
+            note: "Un diviseur de S divise tout multiple de S (R1)."
+          - math: 'p^p \equiv 1 \pmod q'
+            note: "q divise p puissance p moins 1 : c'est exactement la congruence demandee."
+      - id: q4
+        part: "Partie B — Sous l'hypothèse « $p$ et $q-1$ premiers entre eux »"
+        stem: |-
+          **(0,75 pt)** On suppose que $p$ et $q-1$ sont premiers entre eux. En utilisant le théorème de Bézout, montrer que : $p \equiv 1\ [q]$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On dispose de deux exposants qui ramènent $p$ à $1$ modulo $q$ : l'exposant $q-1$ (question 1-b) et l'exposant $p$ (question 1-c). L'hypothèse de cette question dit que ces deux exposants sont **premiers entre eux** — et c'est précisément la situation où Bézout fabrique l'exposant $1$ à partir des deux autres. Or $p^1$, c'est $p$ lui-même : la congruence cherchée tombera toute seule.
+
+          **Premier temps — Bézout.** $p$ et $q-1$ sont premiers entre eux (hypothèse), donc le théorème de Bézout (rung R4) donne un couple $(u,v) \in \mathbb{Z}^2$ tel que :
+
+          $$u\,p + v\,(q-1) = 1$$
+
+          **Deuxième temps — une précaution qu'on ne peut pas sauter.** $u$ et $v$ sont des entiers **relatifs**, et une puissance d'exposant négatif n'a aucun sens dans $\mathbb{Z}$. On choisit donc mieux le couple : pour tout $k \in \mathbb{Z}$, le couple $\big(u + k(q-1),\ v - kp\big)$ vérifie encore la même égalité (les deux termes ajoutés, $kp(q-1)$ et $-kp(q-1)$, se compensent). En prenant $k$ assez grand, on obtient $u \geq 1$. Alors $v(q-1) = 1 - up \leq 1 - p < 0$, et comme $q - 1 > 0$, on a $v < 0$, donc $-v > 0$. L'égalité se réécrit avec **deux exposants positifs** :
+
+          $$u\,p = 1 + (-v)(q-1)$$
+
+          **Troisième temps — le calcul.** On élève $p$ à cette puissance, de deux façons :
+
+          $$p^{u\,p} = \big(p^{p}\big)^{u} \equiv 1^{u} = 1 \pmod q \quad \text{(question 1-c)}$$
+
+          $$p^{u\,p} = p^{\,1 + (-v)(q-1)} = p \times \big(p^{q-1}\big)^{-v} \equiv p \times 1^{-v} = p \pmod q \quad \text{(question 1-b)}$$
+
+          Le même nombre est congru à $1$ et à $p$ modulo $q$ :
+
+          $$\boxed{p \equiv 1 \pmod q}$$
+
+          **Le piège à éviter.** La rédaction qu'on lit partout écrit directement $p = (p^p)^u \times (p^{q-1})^v$ et conclut. Elle manipule une puissance d'exposant **négatif** — un objet qui n'a de sens que dans le groupe des inversibles modulo $q$, hors du corps de ce chapitre. Le réaménagement des coefficients de Bézout ci-dessus coûte deux lignes et rend l'argument irréprochable : c'est le genre de détail qui sépare une copie juste d'une copie qui « ressemble » à la correction.
+        steps:
+          - math: '\mathrm{PGCD}(p,\,q-1) = 1 \implies (\exists\,(u,v) \in \mathbb{Z}^2)\ u\,p + v\,(q-1) = 1'
+            note: "Theoreme de Bezout (R4), applique aux deux exposants."
+          - math: '(u,v) \longmapsto \big(u + k(q-1),\ v - kp\big)\ \text{pour}\ k\ \text{assez grand} \implies u \geq 1,\ v < 0'
+            note: "On peut choisir le couple de Bezout : les deux termes ajoutes se compensent, et un k assez grand rend u positif, donc v negatif."
+          - math: 'u\,p = 1 + (-v)(q-1),\qquad u \geq 1,\ -v > 0'
+            note: "L'egalite reecrite avec deux exposants strictement positifs : plus aucune puissance negative."
+          - math: 'p^{u\,p} = \big(p^{p}\big)^{u} \equiv 1 \pmod q'
+            note: "Premiere lecture, par la question 1-c : p puissance p est congru a 1."
+          - math: 'p^{u\,p} = p \times \big(p^{q-1}\big)^{-v} \equiv p \pmod q'
+            note: "Seconde lecture, par la question 1-b : p puissance q moins 1 est congru a 1."
+          - math: 'p \equiv 1 \pmod q'
+            note: "Le meme nombre vaut 1 et p modulo q."
+      - id: q5
+        stem: |-
+          **(0,25 pt)** En déduire que $S \equiv 1\ [q]$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $S$ est une somme de puissances de $p$. Dès qu'on sait ce que vaut $p$ modulo $q$, on sait ce que vaut chaque terme, donc la somme entière : c'est la compatibilité des congruences avec le produit et la somme (rung R2) qui autorise ce remplacement terme à terme.
+
+          La question précédente donne $p \equiv 1 \pmod q$, donc pour tout entier $k \geq 0$ :
+
+          $$p^k \equiv 1^k = 1 \pmod q$$
+
+          **Combien de termes ?** $S = p^0 + p^1 + \ldots + p^{p-1}$ : les exposants vont de $0$ à $p-1$, cela fait **$p$ termes**. Chacun étant congru à $1$ :
+
+          $$S \equiv \underbrace{1 + 1 + \ldots + 1}_{p\ \text{termes}} = p \pmod q$$
+
+          Et $p \equiv 1 \pmod q$ de nouveau. Donc :
+
+          $$\boxed{S \equiv 1 \pmod q}$$
+
+          **Le piège à éviter.** Compter $p-1$ termes parce que le dernier exposant est $p-1$. On obtiendrait $S \equiv p-1$, et toute la contradiction de la question suivante s'effondrerait. Une somme d'exposants allant de $0$ à $n$ compte toujours $n+1$ termes — vérifie-le sur $p = 3$ : $S = 1 + 3 + 9$, trois termes, pas deux.
+        steps:
+          - math: 'p \equiv 1 \pmod q \implies p^k \equiv 1^k = 1 \pmod q \quad (k \geq 0)'
+            note: "Compatibilite de la congruence avec les puissances (R2)."
+          - math: 'S = p^0 + p^1 + \ldots + p^{p-1} \ \text{compte}\ p\ \text{termes}'
+            note: "Les exposants vont de 0 a p moins 1 : cela fait bien p termes, pas p moins 1."
+          - math: 'S \equiv \underbrace{1 + 1 + \ldots + 1}_{p\ \text{termes}} = p \equiv 1 \pmod q'
+            note: "Chaque terme vaut 1 modulo q, et la somme p est elle-meme congrue a 1."
+      - id: q6
+        part: "Partie C — La contradiction, et la conclusion"
+        stem: |-
+          **(0,75 pt)** Montrer que : $q \equiv 1\ [p]$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Il faut d'abord voir ce que la Partie B a réellement produit. Sous l'hypothèse « $p$ et $q-1$ premiers entre eux », elle donne $S \equiv 1 \pmod q$. Mais l'énoncé dit depuis le début que $q \mid S$, c'est-à-dire $S \equiv 0 \pmod q$. Ces deux affirmations ne peuvent pas coexister : la Partie B n'a pas démontré un résultat, elle a construit une **contradiction**. C'est donc son hypothèse qui tombe — et c'est exactement l'information dont on a besoin.
+
+          **Premier temps — la contradiction.** Supposons $\mathrm{PGCD}(p,\,q-1) = 1$. La question 2-b donne $S \equiv 1 \pmod q$ ; l'hypothèse de l'énoncé donne $S \equiv 0 \pmod q$. Donc $0 \equiv 1 \pmod q$, c'est-à-dire $q \mid 1$. Or $q$ est premier, donc $q \geq 2$ : il ne divise pas $1$. Contradiction.
+
+          $$\mathrm{PGCD}(p,\,q-1) \neq 1$$
+
+          **Deuxième temps — il n'y a qu'une autre possibilité.** $\mathrm{PGCD}(p, q-1)$ divise $p$, qui est **premier** : il vaut donc $1$ ou $p$ (rung R6). Le cas $1$ vient d'être écarté, donc :
+
+          $$\mathrm{PGCD}(p,\,q-1) = p \implies p \mid (q-1)$$
+
+          $$\boxed{q \equiv 1 \pmod p}$$
+
+          **Le contrôle qui rassure.** Prends $p = 3$ : $S = 1 + 3 + 9 = 13$, premier, et $13 = 4 \times 3 + 1 \equiv 1\ [3]$. Prends $p = 5$ : $S = 781 = 11 \times 71$, et $11 \equiv 1\ [5]$, $71 \equiv 1\ [5]$. Prends $p = 7$ : $S = 137\,257 = 29 \times 4733$, avec $29 = 4\times7+1$ et $4733 = 676\times7+1$. Tous les diviseurs premiers tombent bien à $1$ modulo $p$.
+
+          **Le piège à éviter.** Emporter $p \equiv 1\ [q]$ (question 2-a) comme un résultat acquis. Ce n'est **pas** un théorème de l'exercice : c'est une conséquence d'une hypothèse dont la question 3 démontre qu'elle est fausse. Dans un raisonnement par l'absurde en deux temps comme celui-ci, repère toujours où s'ouvre et où se ferme l'hypothèse provisoire — tout ce qui est démontré à l'intérieur meurt avec elle.
+        steps:
+          - math: '\mathrm{PGCD}(p,\,q-1) = 1 \implies S \equiv 1 \pmod q \quad \text{(question 2-b)}'
+            note: "On suppose l'hypothese de la Partie B : elle donne S congru a 1 modulo q."
+          - math: 'q \mid S \implies S \equiv 0 \pmod q'
+            note: "Mais l'enonce dit depuis le debut que q divise S."
+          - math: '0 \equiv 1 \pmod q \implies q \mid 1 \implies \text{contradiction}\ (q \geq 2)'
+            note: "Les deux congruences sont incompatibles : q premier vaut au moins 2 et ne divise pas 1."
+          - math: '\mathrm{PGCD}(p,\,q-1) \mid p,\ p\ \text{premier} \implies \mathrm{PGCD}(p,\,q-1) \in \{1,\,p\}'
+            note: "Un diviseur de p premier vaut 1 ou p (R6)."
+          - math: '\mathrm{PGCD}(p,\,q-1) = p \implies p \mid (q-1) \implies q \equiv 1 \pmod p'
+            note: "Le cas 1 etant ecarte, il reste p : donc p divise q moins 1."
 
   # ── bk-2025-n-x3 — 2025 N, Exercice 3 : critère d'Euler, Fermat, Bézout pour 11x+(2^(2n+1)-1)y=1, résolution modulo 11 ──
   - id: bk-2025-n-x3
