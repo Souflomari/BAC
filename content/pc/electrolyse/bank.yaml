@@ -461,12 +461,13 @@ entries:
           L'anode est l'électrode (B), sur la borne $+$ : le générateur y **tire** des électrons, une espèce doit donc en céder — une oxydation. Il reste le couple $\text{Br}_{2}/\text{Br}^{-}$, dont la forme réduite $\text{Br}^{-}$ est justement présente en solution : elle s'oxyde en dibrome.
 
           Les deux demi-équations échangent chacune $2\,e^-$ : elles sont directement compatibles, sans qu'il faille en multiplier aucune.
+
+          **Le piège de cette question.** Il est dans l'état physique du dibrome. Le réflexe, entretenu par tous les exercices d'électrolyse d'halogénures à haute température, est d'écrire $\text{Br}_{2(g)}$ et de parler d'un dégagement gazeux. Ici les données disent $\text{Br}_{2(aq)}/\text{Br}^{-}_{(aq)}$ : on est en **solution aqueuse**, le dibrome formé reste dissous. Recopier l'indice donné dans l'énoncé, plutôt que celui qu'on croit connaître, coûte zéro effort et évite une équation fausse. Piège jumeau, plus classique : écrire la demi-équation de l'anode dans le sens où le couple est présenté ($\text{Br}_2 \rightarrow \text{Br}^-$) — le couple s'écrit toujours Ox/Red, mais le sens de la flèche, lui, est décidé par l'électrode, pas par les données.
         steps:
           - math: 'Zn^{2+}_{(aq)} + 2\,e^- \rightarrow Zn_{(s)}'
             note: "Cathode = electrode (A), borne - : reduction des ions zinc, depot de metal."
           - math: '2\,Br^{-}_{(aq)} \rightarrow Br_{2(aq)} + 2\,e^-'
             note: "Anode = electrode (B), borne + : oxydation des ions bromure."
-        reasoning_close: ""
       - id: q3
         stem: |-
           **(0,25 pt)** Écrire l'équation bilan de la réaction de cette électrolyse.
@@ -474,14 +475,15 @@ entries:
           **Ce qu'on cherche et pourquoi ce geste.** Le bilan est la somme des deux demi-équations, arrangée pour que **plus aucun électron n'y figure** : les électrons sont des intermédiaires qui passent d'une électrode à l'autre par le fil, ils ne sont ni réactif ni produit du bilan.
 
           Ici la somme se fait telle quelle : la cathode consomme $2\,e^-$, l'anode en libère $2$ — même nombre des deux côtés, ils s'éliminent sans qu'on ait à multiplier quoi que ce soit.
+
+          **Le piège de cette question.** C'est de croire que « les électrons s'annulent » est une règle automatique. Elle n'est vraie que quand les deux demi-équations en échangent le **même nombre** — ce qui est le cas ici par chance, $2$ contre $2$. Compare avec l'électrolyse de l'eau du rung 5 : la cathode y échange $2\,e^-$, l'anode $4$, et il faut **doubler la demi-équation cathodique** avant de sommer, sinon le bilan traîne des électrons parasites. Le réflexe correct n'est donc pas « ils s'annulent », c'est « je compte les électrons de chaque côté, puis je multiplie s'il le faut ». Ici le compte tombe juste du premier coup, et c'est tout.
         steps:
           - math: 'Zn^{2+}_{(aq)} + 2\,e^- \rightarrow Zn_{(s)}'
             note: "Demi-equation de la cathode (question 2)."
           - math: '2\,Br^{-}_{(aq)} \rightarrow Br_{2(aq)} + 2\,e^-'
             note: "Demi-equation de l'anode (question 2)."
           - math: '\boxed{Zn^{2+}_{(aq)} + 2\,Br^{-}_{(aq)} \rightarrow Zn_{(s)} + Br_{2(aq)}}'
-            note: "Somme : les 2 electrons de chaque cote s'eliminent, flechesimple pour une equation bilan."
-        reasoning_close: ""
+            note: "Somme : les 2 electrons de chaque cote s'eliminent, fleche simple pour une equation bilan."
       - id: q4
         part: "Partie I — La loi de Faraday : d'abord la relation littérale, ensuite le chiffre"
         stem: |-
@@ -498,6 +500,10 @@ entries:
           **Maillon 4 — du zinc à sa masse.** La masse molaire fait le dernier pas : $m(Zn) = n(Zn)\,M(Zn)$.
 
           En enchaînant les quatre, on obtient exactement la relation demandée. Il ne reste qu'à convertir les deux données en unités SI avant de chiffrer.
+
+          **Le contrôle qui rassure.** La relation qu'on vient de construire est mot pour mot celle que l'énoncé annonçait : les quatre maillons étaient donc les bons, et le facteur $2$ est bien au dénominateur — pas au numérateur, pas ailleurs.
+
+          **Le piège de cette question.** Il est triple, et chacun des trois fait perdre le point entier. **Les unités d'abord** : $I$ est donnée en **milliampères** et $\Delta t$ en **heures** ; garder $82$ et $1$ tels quels donne $m \approx 2{,}8\times10^{-2}\ \text{g}$, un résultat faux d'un facteur $3{,}6$ — et qui ne se dénonce pas tout seul, car il reste d'un ordre de grandeur plausible. **Le facteur $2$ ensuite** : il ne vient pas du $2$ qui traîne dans la formule de la solution $\text{Zn}^{2+} + 2\,\text{Br}^-$, mais du nombre d'électrons de la demi-équation **cathodique**. La preuve : dans l'exercice 2022 de cette même banque, le chrome se dépose selon $\text{Cr}^{3+} + 3\,e^-$ et c'est un $3$ qui apparaît au dénominateur. On lit le coefficient sur la demi-équation, jamais sur la formule du sel. **Le volume $V$ enfin** : l'énoncé donne un volume de solution, sans valeur numérique, et il ne sert à rien — la loi de Faraday compte des électrons passés dans le fil, pas de la matière disponible en solution. C'est une donnée muette ; la chercher fait perdre du temps, l'utiliser fait perdre le point.
         steps:
           - math: 'Q = I\,\Delta t'
             note: "Maillon 1 : quantite d'electricite debitee, a intensite constante (rung 4)."
@@ -515,4 +521,3 @@ entries:
             note: "Numerateur et denominateur calcules separement, pour garder le controle des puissances de dix."
           - math: '\boxed{m(Zn) \approx 0{,}100\ \text{g}}'
             note: "Masse de zinc deposee a la cathode (electrode A) en une heure."
-        reasoning_close: ""

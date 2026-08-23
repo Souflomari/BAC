@@ -11,11 +11,13 @@
 |---|---|---|
 | PC SPC 2021 rattrapage | **vérifié** (corrigé) | 5 / 5 |
 | PC SPC 2022 rattrapage | **vérifié** (corrigé) | 4 / 4 |
-| PC SPC 2023 / 2024 / 2025 rattrapage | transcrit, NON vérifié | 0 / 12 |
-| Maths SM 2023 / 2024 rattrapage | transcrit, NON vérifié | 0 / 9 |
+| PC SPC 2023 rattrapage | **vérifié** (12 défauts corrigés) | 4 / 4 |
+| PC SPC 2024 rattrapage | **vérifié** | 5 / 5 |
+| PC SPC 2025 rattrapage | **vérifié** | 4 / 4 |
+| Maths SM 2023 rattrapage | **vérifié** | 4 / 4 |
+| Maths SM 2024 rattrapage | **vérifié** | 5 / 5 |
 
-Neuf exercices sont donc convertibles ; vingt et un ne le sont pas —
-la passe a été coupée par l'épuisement des crédits, pas par un choix.
+**Les sept sujets sont vérifiés : 31 exercices.** Tous convertibles.
 
 ## PC SPC 2021 — 12 défauts sur 14 figures, dont 4 sérieux
 
@@ -79,3 +81,60 @@ et **une figure décrite à l'envers**, dans un matériau dont le texte
 re-fetch du scan par un second lecteur, avec obligation de re-décrire
 les figures depuis l'image, qui attrape ces défauts. La règle du sas
 (README) n'est pas une précaution théorique.
+
+
+## PC SPC 2023 — le sujet où deux questions étaient inexploitables
+
+Troisième sujet consécutif dont le **texte est irréprochable** — nombres,
+indices, exposants, unités, QCM, tableau des indicateurs et barèmes
+recontrôlés caractère par caractère sur six pages, aucune correction
+textuelle. Et, une fois de plus, **100 % des douze défauts étaient dans
+les figures**. Le protocole ne se trompe pas de cible.
+
+Trois défauts étaient graves :
+
+1. **Deux valeurs laissées « à confirmer » portaient chacune une question
+   entière.** La constante de temps τ = 0,35 ms portait toute la question
+   1-2 ; la charge initiale q(0) = 120 µC portait toute la question 2-3.
+   Sans elles, ces questions n'étaient **pas calculables** — l'exercice
+   était inexploitable en l'état. Les deux ont été verrouillées par TROIS
+   voies indépendantes : mesure au pixel (intersection tangente/palier à
+   866,8 px contre un repère à 866,6 px), re-dérivation théorique
+   (τ = RC₀ = 35 × 10 µF), et recoupement entre figures (le palier de la
+   figure 2 et le départ de la figure 3 valent tous deux 120 µC — ils le
+   DOIVENT, puisque la décharge part du condensateur chargé).
+2. **Une cote décrite depuis le texte et non depuis le dessin.** Sur la
+   figure du terrain de volley, la cote D était donnée comme partant de
+   la ligne de fond ; la mesure montre que la flèche part de l'origine du
+   repère, 40 px plus à gauche. C'est ce qui place le filet à 11 m et la
+   ligne adverse à 20 m — les questions 3 et 4 en dépendent entièrement.
+   **Une figure refaite depuis l'ancienne description aurait décalé tout
+   le terrain.**
+3. **Un sous-quadrillage lu à moitié** : cinq carreaux annoncés par
+   division, dix mesurés (5,9 px contre 59,4). Facteur deux — et c'est
+   exactement le facteur qui permet de lire τ SUR un trait fin au lieu de
+   le deviner entre deux traits. Même classe sur un minimum de sinusoïde
+   annoncé à 0,2 s, mesuré à 0,138 s (45 % d'écart, confirmé par la
+   théorie : T₀/3 = 0,133 s).
+
+### Deux défauts du SUJET OFFICIEL, signalés sans être réparés
+
+- Le même « condensateur de capacité C ajustable » doit valoir 10 µF dans
+  une partie et 3 à 11 pF dans une autre : **six ordres de grandeur**,
+  hors d'atteinte de tout condensateur variable réel. Les trois sections
+  restent exploitables séparément, mais le montage ne peut pas être
+  présenté comme un dispositif unique réalisable.
+- Une concentration de triméthylamine dans l'urine donnée à 0,4 mol/L,
+  comparée à un seuil diagnostique de 2,2·10⁻¹⁰ mol/L : **neuf ordres de
+  grandeur**, ce qui rend la question vraie trivialement.
+
+On ne corrige pas un sujet national. On documente son défaut pour
+qu'aucun exercice futur n'en tire une lecture fausse.
+
+### Classement corrigé
+
+`dipole-rl` a été ÉCARTÉ d'une section malgré le libellé de couverture
+« décharge dans un dipôle RL » : l'équation étudiée est celle du RLC
+série, il n'y a nulle part de réponse d'un RL à un échelon. Même
+arbitrage que le retrait d'un cross-list sur le sujet 2021 — le libellé
+d'un sujet n'est pas sa physique.

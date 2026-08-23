@@ -13,15 +13,23 @@
 # dans les énoncés ; conventions KaTeX (block scalars pour la prose, KaTeX brut
 # entre apostrophes simples dans steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue B0) : la banque compte désormais NEUF sujets
-# « vérifié » — 2018 N, 2019 N, 2020 N, 2021 N, 2021 R, 2022 N, 2023 N, 2024 N,
-# 2025 N. Le 2021 R (bk-2021-r-x1, ajouté le 2026-08-23) est la PREMIÈRE entrée
-# de session rattrapage de cette banque ; sa Partie 2, indépendante (pile
+# NOTE ÉDITORIALE (pour la revue B0) : la banque compte désormais DIX sujets
+# « vérifié » — 2018 N, 2019 N, 2020 N, 2021 N, 2021 R, 2022 N, 2023 N, 2023 R,
+# 2024 N, 2025 N. Le 2021 R (bk-2021-r-x1, ajouté le 2026-08-23) est la PREMIÈRE
+# entrée de session rattrapage de cette banque ; sa Partie 2, indépendante (pile
 # nickel-argent), est transcrite sous content/pc/piles (bk-2021-r-x1b). Il porte
 # une SCOPE NOTE en trois points — la loi de dilution non couverte nommément par
 # un rung, le tracé seulement qualitatif de sa figure 1 hors du saut, et la
 # lecture des repères (2)/(4) de sa figure 2 ; voir le commentaire au-dessus de
 # l'entrée.
+# Le 2023 R (bk-2023-r-x1b, ajouté le 2026-08-23) est la SECONDE entrée de
+# rattrapage ; c'est la Partie II de l'exercice 1 (dosage de la triméthylamine,
+# 4,25 pt), sa Partie I — indépendante — relevant de content/pc/electrolyse.
+# Elle porte une SCOPE NOTE en quatre points : la dilution (refaite au point
+# d'usage), le dosage d'une BASE faible par un acide fort (cas miroir de celui
+# des rungs 9-11), le contrôle analytique de pH_E explicitement étiqueté
+# hors-programme, et un drapeau d'honnêteté sur des concentrations
+# physiologiquement irréelles transcrites telles quelles.
 # Le 2021 N sert AUSSI de sommet de leçon (r-bac, exercises.yaml, marqueur
 # exercise r-bac à R12). Il figure ici pour que la banque soit le corpus complet
 # des annales de la notion (BANK-SPEC §1 : « la banque est le volume derrière le
@@ -1014,6 +1022,264 @@ entries:
             note: "Le produit des deux egalites croisees simplifie exactement le rapport de concentrations a 1 (quantites initiales egales)."
           - math: '\text{pH} = \dfrac{pK_{A1}+pK_{A2}}{2} = \dfrac{4{,}79+3{,}75}{2} \approx 4{,}27'
             note: "On passe au log puis au pH ; valable uniquement parce que V2 = V1 et CB = CA (melange equimolaire acide 1 / base 2)."
+
+  # ── bk-2023-r-x1b — 2023 R, Exercice 1 (Partie II) : dosage de la trimethylamine ──
+  # SCOPE NOTE (quatre points, signales et non tus) :
+  # (1) LA DILUTION D'UN FACTEUR 10 (question 3 → question 4) n'est etablie
+  #     nommement par AUCUN rung de cette lecon — le meme drapeau que porte
+  #     bk-2021-r-x1. Elle n'est pas « admise » ici : le raisonnement de q4 la
+  #     REFAIT en une ligne, par conservation de la quantite de matiere de
+  #     solute entre la prise d'essai et la fiole (C_0 V_prelev = C_B V_fille,
+  #     avec V_fille = 10 V_prelev, d'ou C_0 = 10 C_B).
+  # (2) DOSAGE D'UNE BASE FAIBLE PAR UN ACIDE FORT. Les rungs 9, 10 et 11
+  #     traitent tous le cas MIROIR (acide faible dose par une base forte :
+  #     pH croissant, pH_E > 7). La logique est identique et les definitions
+  #     inchangees, mais tous les sens s'inversent. Le raisonnement de q5 le
+  #     nomme explicitement et refait l'argument dans le bon sens plutot que
+  #     de transposer en silence.
+  # (3) LE CONTROLE ANALYTIQUE DE pH_E. Le rung 9, « Ce que ce chapitre ne
+  #     couvre pas », interdit tout calcul ferme du pH aux points remarquables
+  #     — on le LIT. Le raisonnement de q5 donne malgre tout, EXPLICITEMENT
+  #     ETIQUETE « hors-programme, ne pas l'ecrire sur la copie », le calcul
+  #     qui redonne pH_E = 5,80 a partir de pK_A = 9,9 : c'est un recoupement
+  #     de coherence du sujet avec lui-meme, jamais la reponse attendue.
+  #     Meme arbitrage demande que pour bk-2018-n-x1, point (2).
+  # (4) DRAPEAU D'HONNETETE (transcrit, pas repare). C_0 = 0,4 mol/L de
+  #     trimethylamine dans une urine, face a un seuil diagnostique pose a
+  #     2,2.10^-10 mol/L, sont l'un et l'autre hors de toute realite
+  #     physiologique : l'ecart est de neuf ordres de grandeur, ce qui rend la
+  #     question 4 vraie de facon triviale. C'est le choix du sujet officiel ;
+  #     il est transcrit tel quel et NOMME dans le raisonnement de q4, pas
+  #     corrige en douce. Ne pas presenter cette entree comme un dosage
+  #     realiste.
+  - id: bk-2023-r-x1b
+    title: "Dosage de la triméthylamine"
+    source:
+      year: 2023
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Partie II : dosage d'une solution aqueuse de triméthylamine"
+    bareme_total: 4.25
+    duration_min: 26
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/142484,
+        scan course-422/upload-85310 pages 2 et 3 sur 6 (Exercice 1,
+        Partie II — dosage d'une solution aqueuse de triméthylamine par
+        l'acide chlorhydrique ; barème de la partie 4,25 pt sur les 7 pt de
+        l'exercice, détail 0,5+0,5+0,5+0,5+0,5+0,5+0,75+0,5). La Partie I,
+        indépendante, porte sur l'électrolyse d'une solution de bromure de
+        zinc et relève de content/pc/electrolyse. Transcription vérifiée par
+        une passe adversariale indépendante (2026-08-23) : les 6 pages du
+        scan re-fetchées, chaque figure re-décrite depuis l'image, toute la
+        chimie re-dérivée ; le texte des quatre exercices est déclaré exact
+        (nombres, indices, exposants, unités et barèmes recontrôlés caractère
+        par caractère, 7+3+4,75+5,25 = 20). Point de transcription à
+        retenir : AUCUNE courbe de dosage n'est imprimée pour cette partie —
+        la page 3 ne porte aucun graphe, les deux points remarquables Q et E
+        sont donnés dans le TEXTE. Recoupements de cohérence recalculés ici :
+        C_B = C_A.V_AE/V_B = 4.10^-2 mol/L d'où C_0 = 10 C_B = 0,4 mol/L ;
+        V_A = 10 mL = V_AE/2 est la demi-équivalence, donc le rapport de la
+        question 7 vaut exactement 1 et pK_A = pH(Q) = 9,9 — l'ordonnée du
+        point Q ; enfin pH_E = 5,8 tombe dans la zone de virage du rouge de
+        méthyle (4,2-6,2) ET se retrouve au centième près par le calcul
+        hors-programme sqrt(K_A.C) avec K_A = 10^-9,9 et C = 2.10^-2 mol/L
+        (pH = 5,80) : le sujet est cohérent avec lui-même sur trois chemins
+        indépendants. DRAPEAU conservé, voir la SCOPE NOTE point (4) : la
+        concentration C_0 = 0,4 mol/L dans une urine et le seuil
+        2,2.10^-10 mol/L sont l'un et l'autre hors de toute réalité
+        physiologique.
+    intro: |-
+      **Dosage d'une solution aqueuse de triméthylamine (examen national, session de rattrapage 2023 — Exercice 1, Partie II, 4,25 points).**
+
+      La triméthylamine, de formule brute $(\text{CH}_3)_3\text{N}$, est une molécule présente dans quelques aliments. Elle a une odeur caractéristique de poisson pourri. Elle est également associée à une maladie génétique appelée syndrome de l'odeur de poisson pourri. La triméthylamine est éliminée par les urines, les sueurs…
+
+      On admet qu'un patient est atteint de syndrome de l'odeur de poisson pourri si la concentration en triméthylamine dans son urine est supérieure à $2{,}2\cdot10^{-10}\ \text{mol.L}^{-1}$.
+
+      **Données :** toutes les mesures sont effectuées à $25\,^\circ\text{C}$ ; couple acide-base lié à la triméthylamine : $(\text{CH}_3)_3\text{NH}^+_{(aq)}\,/\,(\text{CH}_3)_3\text{N}_{(aq)}$.
+
+      Pour doser une solution $S_0$ d'urine d'un patient dont la concentration en triméthylamine est $C_0$, on la dilue $10$ fois pour obtenir une solution $S_B$ de concentration $C_B$.
+
+      On prend le volume $V_B = 20\ \text{mL}$ de la solution $S_B$ auquel on ajoute progressivement un volume $V_A$ d'une solution aqueuse $S_A$ d'acide chlorhydrique $\left(\text{H}_3\text{O}^+_{(aq)} + \text{Cl}^-_{(aq)}\right)$ de concentration $C_A = 4\cdot10^{-2}\ \text{mol.L}^{-1}$. On suppose que l'acide chlorhydrique réagit seulement avec la triméthylamine.
+
+      **Les deux points remarquables.** La courbe représentant la variation du pH du mélange réactionnel en fonction du volume $V_A$ de la solution acide $S_A$ ajoutée présente deux points remarquables : le point $Q$ de coordonnées ($V_A = 10\ \text{mL}$, $\text{pH} = 9{,}9$) ; le point d'équivalence $E$ de coordonnées ($V_{AE} = 20\ \text{mL}$, $\text{pH}_E = 5{,}8$). *Aucune courbe n'est imprimée pour cette partie : les deux points remarquables sont donnés dans le texte, et c'est tout ce dont l'exercice a besoin.*
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** Définir une base selon Brønsted.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une définition de cours, payée $0{,}5$ pt : le geste est de restituer la phrase exacte du rung 1, sans l'approximer et sans y ajouter d'exemple qui ne serait pas demandé.
+
+          $$\boxed{\text{Une base de Brønsted est une espèce chimique capable de \textbf{capter} (d'accepter) un proton } H^+}$$
+
+          Symboliquement, une base $A^-$ s'écrit toujours dans une demi-équation avec son acide conjugué $AH$ :
+
+          $$A^-_{(aq)} + H^+ \rightleftharpoons AH_{(aq)}$$
+
+          Ici la base est la triméthylamine $(\text{CH}_3)_3\text{N}$, dont l'acide conjugué est $(\text{CH}_3)_3\text{NH}^+$ — l'énoncé te donne le couple, il ne reste qu'à voir dans quel sens il fonctionne.
+
+          **Le piège de cette question.** Ne dis pas « une base est une espèce qui libère des ions $HO^-$ ». C'est la définition d'**Arrhenius**, plus ancienne et plus étroite, et elle est fausse ici : la triméthylamine ne contient aucun $HO^-$ à libérer — elle est basique parce qu'elle **capte** un proton, pas parce qu'elle en cède un. Second piège, symétrique : la demi-équation ne se rend jamais seule sur une copie comme « la réaction ». Le proton $H^+$ n'existe pas libre en solution ; une demi-équation n'est qu'une **écriture comptable**, il faut toujours un second couple pour qu'une réaction ait lieu (rung 1) — c'est exactement l'objet de la question suivante.
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Écrire l'équation modélisant la réaction qui a lieu lors du dosage.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une équation de dosage se construit toujours de la même façon (rung 1) : on identifie les deux couples réellement en présence dans le bécher, on écrit leurs deux demi-équations en sens **opposés**, et on additionne — le $H^+$ s'annule dans la somme, comme les électrons en oxydoréduction. Puis on choisit la flèche, et ce choix se justifie.
+
+          Dans le bécher : la base $(\text{CH}_3)_3\text{N}$ du couple donné par l'énoncé, et l'ion $\text{H}_3\text{O}^+$ versé, qui est l'acide du couple $\text{H}_3\text{O}^+/\text{H}_2\text{O}$ (l'ion $\text{Cl}^-$, lui, est spectateur : l'énoncé précise que l'acide chlorhydrique ne réagit qu'avec la triméthylamine).
+
+          $$(\text{CH}_3)_3\text{N}_{(aq)} + H^+ \rightleftharpoons (\text{CH}_3)_3\text{NH}^+_{(aq)} \qquad\text{et}\qquad \text{H}_3\text{O}^+_{(aq)} \rightleftharpoons \text{H}_2\text{O}_{(l)} + H^+$$
+
+          On additionne, le $H^+$ disparaît :
+
+          $$\boxed{(\text{CH}_3)_3\text{N}_{(aq)} + \text{H}_3\text{O}^+_{(aq)} \longrightarrow (\text{CH}_3)_3\text{NH}^+_{(aq)} + \text{H}_2\text{O}_{(l)}}$$
+
+          **Le contrôle qui justifie la flèche simple.** Une réaction ne sert de support à un titrage que si elle est totale, rapide et unique (rung 9), c'est-à-dire si $K \gg 1$. Le rung 7 donne $K = K_{A}(\text{couple de l'acide réactif}) / K_{A}(\text{couple de la base réactive})$, soit ici, en anticipant le $pK_A = 9{,}9$ que tu établiras à la question 8 :
+
+          $$K = \frac{K_A\left(\text{H}_3\text{O}^+/\text{H}_2\text{O}\right)}{K_A\left((\text{CH}_3)_3\text{NH}^+/(\text{CH}_3)_3\text{N}\right)} = \frac{1}{10^{-9{,}9}} = 10^{9{,}9} \approx 7{,}9\times10^{9}$$
+
+          Près de huit milliards : la réaction est quasi totale, la flèche simple est méritée.
+
+          **Le piège.** Ce dosage-ci est le **miroir** de celui du cours. Au rung 9, on versait la base forte $\text{HO}^-$ sur un acide faible ; ici on verse l'acide fort $\text{H}_3\text{O}^+$ sur une base faible. Ne recopie donc pas mécaniquement l'équation-type $AH + HO^- \to A^- + H_2O$ : ici l'eau est encore produite, mais c'est la **base** qui est titrée et l'ion oxonium qui est consommé. Conséquence à garder en tête pour toute la partie : au fil du dosage, le pH **descend** ($9{,}9$ en $Q$, puis $5{,}8$ en $E$), il ne monte pas.
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Déterminer la valeur de $C_B$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'équivalence est l'instant où le titrant a été versé en quantité **juste stœchiométrique** (rung 9). La réaction de la question 2 est de rapport $1{:}1$ : une mole de $\text{H}_3\text{O}^+$ versée consomme une mole de triméthylamine. La quantité de base initialement présente dans le bécher égale donc la quantité d'acide versée au volume $V_{AE}$ — et c'est cette égalité de **quantités de matière**, rien d'autre, qui livre $C_B$.
+
+          $$n_{(\text{CH}_3)_3\text{N}}(0) = n_{\text{H}_3\text{O}^+}(V_{AE}) \quad\Longleftrightarrow\quad C_B\,V_B = C_A\,V_{AE}$$
+
+          On isole $C_B$ et on remplace, avec $V_{AE} = 20\ \text{mL}$ lu sur les coordonnées du point $E$ :
+
+          $$C_B = \frac{C_A\,V_{AE}}{V_B} = \frac{4\cdot10^{-2} \times 20}{20}$$
+
+          Les deux volumes apparaissent en rapport : aucune conversion en litres n'est nécessaire, les millilitres se simplifient entre eux.
+
+          $$\boxed{C_B = 4\cdot10^{-2}\ \text{mol.L}^{-1}}$$
+
+          **Le piège.** Ici $V_B = V_{AE} = 20\ \text{mL}$, donc $C_B = C_A$. C'est une coïncidence de ce sujet, pas une règle : la relation d'équivalence ne dit jamais que les volumes sont égaux, elle dit que les **produits** $CV$ le sont. Si $V_{AE}$ avait valu $25\ \text{mL}$, on aurait trouvé $C_B = 5\cdot10^{-2}\ \text{mol.L}^{-1}$ sans que rien ne change à la méthode. Et surtout : n'utilise pas le point $Q$ ici. $Q$ est à $V_A = 10\ \text{mL}$, ce n'est **pas** l'équivalence — la relation $C_AV_A = C_BV_B$ n'y est pas valable, et l'appliquer à $Q$ donnerait $C_B$ deux fois trop petit.
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Déduire que le patient est atteint du syndrome de l'odeur de poisson pourri.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le dosage a mesuré $C_B$, la concentration de la solution **diluée**. Le critère de l'énoncé, lui, porte sur l'urine **d'origine** $S_0$, de concentration $C_0$. Il faut donc remonter la dilution — un facteur $10$ — puis comparer au seuil $2{,}2\cdot10^{-10}\ \text{mol.L}^{-1}$.
+
+          **La dilution, refaite et non admise.** Diluer, c'est prélever un volume $V_{p}$ de la solution mère et le compléter jusqu'à un volume $V_{f} = 10\,V_{p}$ : on ajoute du solvant, jamais du soluté. La quantité de triméthylamine se **conserve** au cours de l'opération :
+
+          $$n_{\text{prélevée}} = n_{\text{dans la fiole}} \quad\Longleftrightarrow\quad C_0\,V_{p} = C_B\,V_{f} = C_B \times 10\,V_{p}$$
+
+          Le volume $V_{p}$ se simplifie, et il reste le facteur de dilution seul :
+
+          $$C_0 = 10\,C_B = 10 \times 4\cdot10^{-2}$$
+
+          $$\boxed{C_0 = 0{,}4\ \text{mol.L}^{-1}}$$
+
+          **La comparaison.** On met les deux nombres sous la même forme avant de conclure :
+
+          $$C_0 = 4\cdot10^{-1}\ \text{mol.L}^{-1} \qquad\text{contre}\qquad \text{seuil} = 2{,}2\cdot10^{-10}\ \text{mol.L}^{-1}$$
+
+          $$\frac{C_0}{\text{seuil}} = \frac{4\cdot10^{-1}}{2{,}2\cdot10^{-10}} \approx 1{,}8\times10^{9}$$
+
+          $$\boxed{C_0 \gg 2{,}2\cdot10^{-10}\ \text{mol.L}^{-1} : \text{le patient est atteint du syndrome}}$$
+
+          **Le piège de la question.** Le sens du facteur $10$. On a **dilué** pour obtenir $S_B$, donc $S_B$ est la **moins** concentrée des deux : $C_0$ doit être **plus grande** que $C_B$, d'où la multiplication. Écrire $C_0 = C_B/10 = 4\cdot10^{-3}\ \text{mol.L}^{-1}$ est l'erreur classique — et ici elle ne se voit même pas dans la conclusion, puisque $4\cdot10^{-3}$ dépasse encore le seuil de sept ordres de grandeur. Le raisonnement serait faux, la conclusion resterait juste : c'est exactement le genre de question où l'on perd le point sans s'en apercevoir. Vérifie le sens par la phrase, pas par le résultat.
+
+          **Une honnêteté sur ce sujet, à lire et à ne pas rendre.** L'écart est de **neuf** ordres de grandeur. Une urine à $0{,}4\ \text{mol.L}^{-1}$ de triméthylamine, comme un seuil diagnostique posé à $2{,}2\cdot10^{-10}\ \text{mol.L}^{-1}$, sont l'un et l'autre hors de toute réalité physiologique : la comparaison demandée est vraie de façon triviale, quel que soit le sens dans lequel on applique la dilution. C'est le choix du sujet officiel, transcrit tel quel. Réponds à la question telle qu'elle est posée — mais ne prends pas cet exercice pour un modèle de dosage biologique réaliste.
+      - id: q5
+        stem: |-
+          **(0,5 pt)** Justifier la nature acide $(\text{pH}_E < 7)$ du mélange réactionnel à l'équivalence.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La justification est toujours la même, et elle est **qualitative** : on demande ce qu'il reste réellement dans le bécher à l'équivalence, puis on regarde si cette espèce est acide, basique ou neutre. Le geste est un inventaire, pas un calcul.
+
+          **L'inventaire à l'équivalence.** Par définition (rung 9), à $V_{AE}$ les deux réactifs ont été mélangés en proportions stœchiométriques : la triméthylamine a été **entièrement** convertie, et il ne reste pas d'excès de $\text{H}_3\text{O}^+$ versé. La seule espèce du couple présente dans le bécher est donc l'acide conjugué :
+
+          $$(\text{CH}_3)_3\text{NH}^+_{(aq)}$$
+
+          **Ce que cette espèce fait à l'eau.** $(\text{CH}_3)_3\text{NH}^+$ est un **acide** — l'acide conjugué d'une base faible, donc un acide faible, mais un acide tout de même. Comme tout acide faible mis en solution, il réagit partiellement avec l'eau (rung 7, transformation limitée, double flèche) :
+
+          $$(\text{CH}_3)_3\text{NH}^+_{(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons (\text{CH}_3)_3\text{N}_{(aq)} + \text{H}_3\text{O}^+_{(aq)}$$
+
+          Cette réaction libère des ions $\text{H}_3\text{O}^+$ en plus de ceux de l'autoprotolyse de l'eau. On a donc $[\text{H}_3\text{O}^+] > [\text{HO}^-]$, c'est-à-dire, par le rung 3 :
+
+          $$\boxed{\text{Le mélange est acide : } \text{pH}_E < 7}$$
+
+          **Le piège.** Ce raisonnement est le **miroir exact** de celui du rung 9, et transposer sans réfléchir coûte le point. Dans le cours, on dosait un acide faible par une base forte : il ne restait que la **base** conjuguée à l'équivalence, d'où $\text{pH}_E > 7$. Ici on dose une base faible par un acide fort : il ne reste que l'**acide** conjugué, d'où $\text{pH}_E < 7$. Retiens la règle générale plutôt que le cas : *à l'équivalence, c'est le conjugué de l'espèce titrée qui est seul en scène, et c'est lui qui impose le pH.* L'équivalence n'est à $\text{pH} = 7$ que dans le cas particulier acide fort / base forte — jamais comme règle.
+
+          **Contrôle de cohérence — hors-programme, à ne pas écrire sur la copie.** Le rung 9 est explicite : aucun calcul fermé du $\text{pH}$ aux points remarquables, on le lit. Mais on peut vérifier que le sujet est cohérent avec lui-même. À l'équivalence, tout l'acide conjugué formé, $n = C_BV_B = 8\cdot10^{-4}\ \text{mol}$, occupe le volume total $V_B + V_{AE} = 40\ \text{mL}$, soit $C = 2\cdot10^{-2}\ \text{mol.L}^{-1}$. Avec $K_A = 10^{-9{,}9} \approx 1{,}26\cdot10^{-10}$ (question 8) et l'approximation usuelle d'un acide faible peu dissocié, $[\text{H}_3\text{O}^+] \approx \sqrt{K_A\,C} = \sqrt{1{,}26\cdot10^{-10} \times 2\cdot10^{-2}} \approx 1{,}59\cdot10^{-6}\ \text{mol.L}^{-1}$, soit $\text{pH} \approx 5{,}80$. L'énoncé annonce $\text{pH}_E = 5{,}8$ : les deux coïncident au centième. Bonne nouvelle pour ta confiance dans les données — mais la réponse attendue reste l'inventaire ci-dessus.
+      - id: q6
+        stem: |-
+          **(0,5 pt)** Parmi les indicateurs colorés cités dans le tableau ci-dessous, indiquer en justifiant celui qui convient le mieux pour ce dosage.
+
+          | Indicateur coloré | Hélianthine | Rouge de méthyle | Phénolphtaléine |
+          |---|:---:|:---:|:---:|
+          | Zone de virage | 3,1 – 4,4 | 4,2 – 6,2 | 8,2 – 10,0 |
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le critère du rung 11 tient en une phrase : on retient l'indicateur dont la **zone de virage contient le $\text{pH}_E$** du dosage. Le geste est donc mécanique — on prend le $\text{pH}_E$ donné par le point $E$, et on teste les trois intervalles l'un après l'autre.
+
+          $$\text{pH}_E = 5{,}8$$
+
+          | Indicateur | Zone de virage | $5{,}8$ est-il dedans ? |
+          |---|:---:|:---:|
+          | Hélianthine | $3{,}1$ – $4{,}4$ | non ($5{,}8 > 4{,}4$) |
+          | Rouge de méthyle | $4{,}2$ – $6{,}2$ | **oui** ($4{,}2 < 5{,}8 < 6{,}2$) |
+          | Phénolphtaléine | $8{,}2$ – $10{,}0$ | non ($5{,}8 < 8{,}2$) |
+
+          $$\boxed{\text{Le rouge de méthyle : sa zone de virage } 4{,}2\text{–}6{,}2 \text{ encadre } \text{pH}_E = 5{,}8}$$
+
+          **Pourquoi ce critère, et pas un autre.** Superpose la zone de virage — une bande horizontale de pH — sur le saut de la courbe de dosage. Comme la bande $4{,}2$–$6{,}2$ **coupe** le saut, le changement de couleur se produit dans l'intervalle très raide où quelques gouttes suffisent à traverser toute la bande : le virage tombe donc à un volume très proche de $V_{AE}$. C'est tout ce qu'on demande à un indicateur — repérer l'équivalence, jamais la définir.
+
+          **Le piège.** L'énoncé ne fournit pas de courbe : le réflexe « je regarde où la bande coupe le saut » n'a rien à regarder. Ce n'est pas un problème, parce que le critère n'a jamais eu besoin de la courbe — il a besoin du seul $\text{pH}_E$, et l'énoncé te le donne en clair dans les coordonnées du point $E$. Deuxième piège, celui qui fait perdre le point : ne choisis pas la phénolphtaléine sous prétexte que « la solution de départ est basique » ($\text{pH} = 9{,}9$ en $Q$). Le pH de départ n'entre pas dans le critère ; seul compte le pH **à l'équivalence**. Et ne cherche pas non plus l'indicateur qui vire près de $7$ : la neutralité est une propriété de l'eau ($pK_e$, rung 3), sans aucun rapport avec le $\text{pH}_E$ de ce dosage-ci.
+      - id: q7
+        stem: |-
+          **(0,75 pt)** En se basant sur le tableau d'avancement de la réaction de dosage, trouver la valeur du rapport $\dfrac{\left[(\text{CH}_3)_3\text{NH}^+_{(aq)}\right]}{\left[(\text{CH}_3)_3\text{N}_{(aq)}\right]}$ pour $V_A = 10\ \text{mL}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé impose l'outil : le **tableau d'avancement** de la réaction de dosage. On se place au volume versé $V_A = 10\ \text{mL}$, on compte ce qu'on a mis, on fait réagir totalement (la réaction est quasi totale, $K \approx 8\cdot10^{9}$, question 2), et on lit les quantités restantes.
+
+          **Les quantités initiales, au moment considéré.**
+
+          $$n_{\text{base}}(0) = C_B\,V_B = 4\cdot10^{-2} \times 20\cdot10^{-3} = 8\cdot10^{-4}\ \text{mol}$$
+
+          $$n_{\text{H}_3\text{O}^+}\text{ versé} = C_A\,V_A = 4\cdot10^{-2} \times 10\cdot10^{-3} = 4\cdot10^{-4}\ \text{mol}$$
+
+          **Le tableau.** Tous les coefficients stœchiométriques valent $1$.
+
+          | État | $(\text{CH}_3)_3\text{N}$ | $\text{H}_3\text{O}^+$ | $(\text{CH}_3)_3\text{NH}^+$ |
+          |---|:---:|:---:|:---:|
+          | initial | $8\cdot10^{-4}$ | $4\cdot10^{-4}$ | $0$ |
+          | en cours | $8\cdot10^{-4} - x$ | $4\cdot10^{-4} - x$ | $x$ |
+          | final | $8\cdot10^{-4} - x_{max}$ | $\approx 0$ | $x_{max}$ |
+
+          La réaction étant totale, le réactif **limitant** disparaît : c'est $\text{H}_3\text{O}^+$, donc $x_{max} = 4\cdot10^{-4}\ \text{mol}$. Il reste :
+
+          $$n\left((\text{CH}_3)_3\text{N}\right) = 8\cdot10^{-4} - 4\cdot10^{-4} = 4\cdot10^{-4}\ \text{mol} \qquad n\left((\text{CH}_3)_3\text{NH}^+\right) = 4\cdot10^{-4}\ \text{mol}$$
+
+          **Le passage aux concentrations.** Les deux espèces partagent le **même** volume de mélange ($V_B + V_A = 30\ \text{mL}$) : ce volume se simplifie dans le rapport, qui vaut donc exactement le rapport des quantités de matière.
+
+          $$\frac{\left[(\text{CH}_3)_3\text{NH}^+\right]}{\left[(\text{CH}_3)_3\text{N}\right]} = \frac{4\cdot10^{-4}/V_{tot}}{4\cdot10^{-4}/V_{tot}} = \frac{4\cdot10^{-4}}{4\cdot10^{-4}}$$
+
+          $$\boxed{\frac{\left[(\text{CH}_3)_3\text{NH}^+\right]}{\left[(\text{CH}_3)_3\text{N}\right]} = 1}$$
+
+          **Ce que ce $1$ raconte.** $V_A = 10\ \text{mL} = \dfrac{V_{AE}}{2}$ : le point $Q$ est la **demi-équivalence**. Exactement la moitié de la base a été convertie, donc les deux formes du couple sont présentes en quantités égales — c'est la propriété du rung 10, retrouvée ici par le tableau au lieu d'être invoquée.
+
+          **Le piège.** Ne divise pas par le volume trop tôt, et ne te trompe pas de volume si tu le fais : le mélange occupe $V_B + V_A = 30\ \text{mL}$, pas $V_B = 20\ \text{mL}$, et surtout pas $V_{tot} = 40\ \text{mL}$ (qui est le volume **à l'équivalence**, pas ici). L'erreur est sans conséquence sur ce rapport-ci, où le volume se simplifie — mais elle est fatale dès qu'on demande une concentration. Second piège : le réactif limitant à $V_A = 10\ \text{mL}$ est l'**acide versé**, pas la base. Tant qu'on est avant l'équivalence, c'est toujours le titrant qui manque ; la base titrée, elle, est encore en excès.
+      - id: q8
+        stem: |-
+          **(0,5 pt)** Déduire que la valeur du $\text{pK}_A$ du couple $(\text{CH}_3)_3\text{NH}^+_{(aq)}/(\text{CH}_3)_3\text{N}_{(aq)}$ est $\text{pK}_A = 9{,}9$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « Déduire » veut dire : ne recalcule rien de neuf. Tu possèdes le rapport des deux formes du couple à $V_A = 10\ \text{mL}$ (question 7) et le pH du mélange à ce même volume (l'ordonnée du point $Q$). La relation du rung 5 relie exactement ces trois quantités.
+
+          $$\log\frac{\left[\text{base}\right]}{\left[\text{acide}\right]} = \text{pH} - pK_A \quad\Longleftrightarrow\quad pK_A = \text{pH} - \log\frac{\left[(\text{CH}_3)_3\text{N}\right]}{\left[(\text{CH}_3)_3\text{NH}^+\right]}$$
+
+          Le rapport de la question 7 vaut $1$, et son inverse vaut donc $1$ lui aussi :
+
+          $$pK_A = 9{,}9 - \log(1) = 9{,}9 - 0$$
+
+          $$\boxed{pK_A\left((\text{CH}_3)_3\text{NH}^+/(\text{CH}_3)_3\text{N}\right) = 9{,}9}$$
+
+          **La voie longue, pour vérifier.** Repars de la définition du rung 4 appliquée au couple : $K_A = \dfrac{\left[(\text{CH}_3)_3\text{N}\right]_{eq}\left[\text{H}_3\text{O}^+\right]_{eq}}{\left[(\text{CH}_3)_3\text{NH}^+\right]_{eq}} = \left[\text{H}_3\text{O}^+\right]_{eq} \times 1 = 10^{-9{,}9}$, d'où $pK_A = -\log\left(10^{-9{,}9}\right) = 9{,}9$. Même valeur par un autre chemin, et la mécanique est plus claire ainsi : à la demi-équivalence, les deux concentrations du couple se simplifient dans $K_A$, qui se réduit à $\left[\text{H}_3\text{O}^+\right]$ — c'est **pour cette raison**, et pour aucune autre, que $\text{pH} = pK_A$ à ce point-là.
+
+          **Le piège.** Le raccourci « à la demi-équivalence, $\text{pH} = pK_A$ » (rung 10) donne ici la bonne valeur en une ligne — mais l'énoncé demande de **déduire** à partir du tableau d'avancement de la question 7, et invoquer le raccourci sans le rattacher au rapport $= 1$ que tu viens d'établir, c'est répondre à côté de la question posée. Le rapport est le maillon exigé : il vaut $1$, donc son logarithme est nul, donc $\text{pH} = pK_A$. Second piège, de calcul cette fois : $\log(1) = 0$, pas $1$. Écrire $pK_A = 9{,}9 - 1 = 8{,}9$ est l'erreur qu'on voit passer chaque année. Et ne va surtout pas chercher $pK_A$ du côté du point $E$ : $\text{pH}_E = 5{,}8$ est le pH **à l'équivalence**, où il ne reste plus que l'acide conjugué — ce n'est pas un $pK_A$, et les deux points ne se confondent jamais (rung 10).
 
   # ── bk-2024-n-x1 — 2024 N, Exercice 1 (Partie 2) : dosage pH-metrique vitamine C ──
   - id: bk-2024-n-x1
