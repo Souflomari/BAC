@@ -2,8 +2,24 @@
 
 > Transcription intégrale du sujet, session **rattrapage 2023**, filière
 > Sciences Physiques (SPC), BIOF (option française). Protocole :
-> `docs/sujets/pc/README.md`. Transcriptions **non vérifiées** — provenance sur
-> chaque entrée. Scan : `course-422/upload-85310`, 6 pages.
+> `docs/sujets/pc/README.md`. Scan : `course-422/upload-85310`, 6 pages.
+>
+> **Passe de vérification adversariale — 2026-08-23.** Les 6 pages du scan ont
+> été re-fetchées indépendamment et chaque figure re-décrite depuis l'image
+> (mesures au pixel : détection des traits majeurs et du sous-quadrillage,
+> tracé colonne par colonne des courbes), puis toute la physique/chimie
+> re-dérivée. **Le texte des quatre exercices est exact** — nombres, indices,
+> exposants, unités et barèmes recontrôlés caractère par caractère
+> ($7+3+4{,}75+5{,}25 = 20$ ; détail par question conforme au scan).
+> **Les défauts trouvés sont tous dans les figures** : deux lectures d'axe
+> fausses (sous-quadrillage de la figure 2 de l'ex. 3 donné à 5 carreaux au
+> lieu de 10 ; minimum de la figure 3 de l'ex. 4 placé à $t\approx0{,}2$ s au
+> lieu de $\approx 0{,}14$ s), une figure décrite depuis le texte plutôt que
+> depuis le dessin (l'origine de la cote $D$ de l'ex. 4, et l'interrupteur $K$
+> de l'ex. 3 dessiné **ouvert**), et **quatre valeurs laissées « à confirmer »
+> alors qu'elles portaient chacune une question entière** — toutes levées ici
+> par mesure au pixel *doublée* d'une re-dérivation concordante. Détail dans
+> chaque entrée sous « Vérification ».
 >
 > **Couverture (page 1 du scan)** : « الدورة الاستدراكية 2023 » (session de
 > rattrapage), code **RS 28F**, épreuve الفيزياء والكيمياء (Physique-Chimie),
@@ -24,7 +40,7 @@
 
 ## 2023 — session rattrapage — Exercice 1
 Source: https://www.alloschool.com/element/142484
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : RS 28F · Barème de l'exercice : 7 points
@@ -74,15 +90,45 @@ métal zinc se dépose sur l'une des électrodes.
 *Figure (schéma, sans numéro — « figure ci-contre ») :* cellule d'électrolyse
 en forme de tube en U contenant la solution, avec en haut un générateur
 représenté par un cercle marqué « G » ; le signe « **+** » est imprimé à gauche
-du cercle, le signe « **−** » à sa droite. Deux fils descendent du générateur
-vers les deux branches verticales du tube en U, où plongent deux électrodes
-(traits verticaux épais). Une flèche horizontale à gauche pointe vers
-l'électrode de la branche gauche avec la légende « Electrode (B) en graphite »
-(l'électrode de gauche est donc reliée à la borne **+**) ; une flèche à droite
-pointe vers l'électrode de la branche droite avec la légende « Electrode (A)
-en graphite » (reliée à la borne **−**). Une troisième flèche, en bas à
-droite, pointe vers le coude du tube en U avec la légende « Solution aqueuse
-de bromure de zinc ».
+du cercle, le signe « **−** » à sa droite. Le circuit extérieur est tracé comme
+un cadre : depuis G, le fil part à gauche et à droite jusqu'aux deux angles
+supérieurs, redescend, puis revient horizontalement vers l'intérieur — la
+silhouette générale est celle d'un **T** posé sur le tube en U. À l'extrémité
+intérieure de chacun de ces deux retours commence une **électrode** : un trait
+vertical épais qui descend dans la branche correspondante du tube et plonge
+dans la solution. Chaque branche du U est dessinée par deux traits fins (ses
+parois) et porte, à mi-hauteur, un **court trait horizontal marquant le niveau
+du liquide** ; les électrodes traversent ce niveau et s'arrêtent au-dessus du
+coude. Une flèche horizontale venant de la gauche pointe sur l'électrode de la
+branche gauche avec la légende « Electrode (B) en graphite » — cette électrode
+est donc celle qui est reliée à la borne **+** ; une flèche venant de la droite
+pointe sur l'électrode de la branche droite, légende « Electrode (A) en
+graphite » (reliée à la borne **−**). Une troisième flèche, en bas à droite,
+pointe vers le flanc droit du coude du tube en U avec la légende « Solution
+aqueuse de bromure de zinc ».
+
+**Vérification (2026-08-23).** *Texte* : exact (couples, $1\,\text{F}$,
+$M(\text{Zn})$, $I = 82\ \text{mA}$, tableau des indicateurs, coordonnées de
+$Q$ et de $E$, seuil $2{,}2\cdot10^{-10}\ \text{mol.L}^{-1}$ — tous recontrôlés
+sur `0002-big.jpg` et `0003-big.jpg`). *Figure* : re-décrite depuis le dessin ;
+la topologie du câblage est confirmée (le retour de gauche part bien du côté
+« + »), et la description a été enrichie du niveau de liquide et de la géométrie
+réelle du circuit extérieur, qui manquaient. *Absence de courbe de dosage
+confirmée* : la page 3 ne porte aucun graphe, seuls les points $Q$ et $E$ sont
+donnés dans le texte — le transcripteur avait raison de le signaler.
+*Re-dérivations* : $m(\text{Zn}) = 0{,}082\times3600\times65{,}4/193000
+= 0{,}100\ \text{g}$ ; $C_B = C_A V_{AE}/V_B = 4\cdot10^{-2}\ \text{mol.L}^{-1}$
+d'où $C_0 = 10\,C_B = 0{,}4\ \text{mol.L}^{-1}$ ; $V_A = 10\ \text{mL}
+= V_{AE}/2$ est la **demi-équivalence**, donc le rapport de la question 7 vaut
+$1$ et $\text{pK}_A = \text{pH} = 9{,}9$ — exactement l'ordonnée du point $Q$ :
+le sujet est cohérent avec lui-même. $\text{pH}_E = 5{,}8$ tombe bien dans la
+zone de virage du rouge de méthyle (4,2–6,2). *Signalé sans être « réparé »* :
+$C_0 = 0{,}4\ \text{mol.L}^{-1}$ de triméthylamine dans une urine, et un seuil
+diagnostique posé à $2{,}2\cdot10^{-10}\ \text{mol.L}^{-1}$, sont l'un et
+l'autre hors de toute réalité physiologique (l'écart est de neuf ordres de
+grandeur, ce qui rend la question 4 vraie de façon triviale). C'est le choix du
+sujet officiel, transcrit tel quel ; ne pas en tirer un exercice qui prétendrait
+à un dosage réaliste.
 
 **Partie II : Dosage d'une solution aqueuse de triméthylamine**
 
