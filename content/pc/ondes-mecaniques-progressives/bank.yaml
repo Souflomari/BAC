@@ -71,6 +71,61 @@
 #   - bk-2024-n-x2, q3-1 : la vérification d'homogénéité par équations aux
 #     dimensions est un outil transversal (toutes les notions de mécanique),
 #     jamais introduit par un rung de cette leçon. Ponté au point d'usage.
+#   - bk-2024-r-x2, q2 item b- (« Dans un même milieu, la diffraction modifie
+#     la longueur d'onde ») : trancher l'item suppose de savoir ce qu'est une
+#     LONGUEUR D'ONDE, notion que R1 renvoie explicitement au chapitre
+#     suivant (ondes-mecaniques-periodiques) et qu'aucun rung R0–R5 de cette
+#     leçon ne construit ; la DIFFRACTION n'y est pas non plus définie. Le
+#     raisonnement ne dit PAS « on admet » : il REFAIT la construction au
+#     point d'usage — lambda est la distance parcourue par le front pendant
+#     une période, soit lambda = v.T par la relation v = d/Delta t de R3
+#     appliquée à d = lambda et Delta t = T — puis conclut avec les seuls
+#     outils de la leçon (T est imposée par la source, v est fixée par le
+#     milieu d'après R3 et l'énoncé impose « dans un même milieu »), donc
+#     lambda est inchangée. Même geste de pontage que pour bk-2024-n-x2, q1.
+#
+# MISE À JOUR DE L'INVENTAIRE (les blocs ci-dessus datent de la première
+# vague et n'ont pas été réécrits) : le fichier ne porte plus TROIS entrées
+# mais CINQ — les trois de la première vague ci-dessus, plus deux entrées de
+# session de rattrapage ajoutées ensuite (bk-2021-r-x2, puis bk-2024-r-x2).
+# bk-2024-r-x2 — 2024 R, Exercice 2 (onde mécanique dans l'air) — est
+# converti depuis docs/sujets/_incoming/pc-spc-2024-r.md, statut « vérifié »
+# (vérificateur adversarial, 2026-08-23) ; son raisonnement suit la voix des
+# entrées de rattrapage (ouverture « Ce qu'on cherche et pourquoi ce geste »,
+# calcul chiffre par chiffre en prose, fermeture sur le piège nommé de la
+# question) et n'utilise donc pas de bloc steps[], contrairement aux trois
+# entrées de la première vague.
+#
+# FLAG DE JUMELAGE — bk-2024-r-x2 face à bk-2022-n-x2, bk-2018-n-x2 et
+# bk-2021-r-x2 (NON TRANCHÉ ICI, à l'arbitrage de l'owner ; même disposition
+# que le flag électrolyse 2023-r / 2019-n) :
+#   - Ressemblance de surface avec bk-2022-n-x2 : son dans l'air, salves sur
+#     un oscilloscope, retard lu en divisions, valeur 340 m/s. La différence
+#     est structurelle, pas cosmétique. Dans bk-2022-n-x2, la célérité est
+#     l'INCONNUE et se lit en un pas, v = L/Delta t, sur UN seul trajet.
+#     Dans bk-2024-r-x2, la célérité est DONNÉE et l'inconnue est une
+#     POSITION ; surtout, l'émetteur est ENTRE les deux microphones, donc le
+#     retard est une DIFFÉRENCE de deux trajets, tau = (d - 2.l)/v. Le
+#     facteur 2 est le cœur pédagogique de l'entrée et n'existe nulle part
+#     ailleurs dans cette banque.
+#   - Complémentarité avec bk-2018-n-x2, qui mérite d'être gardée pour
+#     elle-même : 2018 fait varier la CÉLÉRITÉ à distance égale
+#     (tau = L(1/V_air - 1/V_p)), 2024-r fait varier la DISTANCE à célérité
+#     égale (tau = (d - 2.l)/v). Les deux faces du même geste de R3, jamais
+#     réunies ailleurs — raison de garder les deux.
+#   - Recouvrement partiel du vrai/faux avec bk-2021-r-x2 : les items « la
+#     célérité dépend du milieu » (vrai) et « le son est/n'est pas une onde
+#     électromagnétique » se retrouvent des deux côtés. Les deux items
+#     propres à 2024-r (diffraction et longueur d'onde ; transport de
+#     matière) ne sont testés nulle part ailleurs dans la banque, et l'item
+#     « transport de matière » est le piège nommé de la question.
+#   - Collision d'affichage à surveiller en revue : les badges de
+#     bk-2024-n-x2 et bk-2024-r-x2 se liront « Bac 2024 · Normale » et
+#     « Bac 2024 · Rattrapage », deux cartes voisines nommées « Exercice 2 »
+#     et cotées 2,5 pt. Les sujets n'ont rien de commun (onde circulaire à
+#     la surface de l'eau contre son dans l'air) ; c'est le libellé qui se
+#     ressemble, pas le contenu. Titres rédigés pour les distinguer au
+#     premier coup d'oeil.
 
 notion: pc/ondes-mecaniques-progressives
 
