@@ -15,9 +15,26 @@
 # « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
 # entre apostrophes simples dans steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue) : sept entrées, couvrant six sessions
+# NOTE ÉDITORIALE (pour la revue) : huit entrées, couvrant sept sessions
 # « vérifié » de cette notion, sont désormais banquées : 2018 N (deux
-# sous-parties de l'Exercice III), 2019 N, 2021 N, 2021 R, 2022 N et 2025 N.
+# sous-parties de l'Exercice III), 2019 N, 2021 N, 2021 R, 2022 N, 2023 R
+# et 2025 N.
+#
+# Le 2023 R (Exercice 3, section 1 — échelon de tension lu sur la courbe
+# q(t)) est la DEUXIÈME entrée de session rattrapage de cette banque. Elle
+# est la seule qui fasse tourner la même figure trois fois : équation
+# différentielle en q, lecture de tau à la tangente pour VÉRIFIER une
+# capacité annoncée, puis énergie emmagasinée — le tout sans que la f.é.m.
+# E soit jamais donnée (elle se récolte sur le palier, E = q_max/C0 = 12 V).
+# Aucun recoupement numérique avec le 2022 N (R = 1000 ohms / C = 50 µF /
+# E lue directement sur le palier de u_C, là ; R = 35 ohms / C0 = 10 µF /
+# q_max = 120 µC ici) : seule la valeur de E coïncide, par hasard, et elle
+# est obtenue par des chemins différents. L'exercice 3 du sujet est un
+# composite électricité dont les trois sections partagent le montage de la
+# figure 1 ; les sections 2 et 3 sont converties séparément sous rlc-serie
+# et ondes-em-modulation. INCOHÉRENCE DU SUJET OFFICIEL reportée dans le
+# sourcing.note : le même condensateur « ajustable » vaut 10 µF ici et
+# 3–11 pF en section 3.
 #
 # Le 2021 R (Exercice 4, Partie I — échelon de tension lu sur la courbe
 # i(t), tangente à l'origine) est la PREMIÈRE entrée de session rattrapage
@@ -99,6 +116,29 @@
 #     différentielle de R1–R2 n'est requis ni tenté. Même configuration de
 #     générateur que bk-2018-n-x3b (déjà banquée), pour mémoire — sujet et
 #     grandeurs différents, aucun recoupement numérique.
+#   - bk-2023-r-x3, q1 : l'équation différentielle est demandée en CHARGE
+#     q(t), pas en u_C. Le rung 1 ne l'établit qu'en u_C ; le passage se
+#     fait avec les deux relations que ce même rung rappelle (i = dq/dt et
+#     q = C.u_C, donc u_C = q/C), refait en une ligne au point d'usage et
+#     non invoqué de mémoire. Même pont que bk-2019-n-x3, q1.
+#   - bk-2023-r-x3, q2 : la méthode de la tangente à l'origine est énoncée
+#     et démontrée au rung 3 sur la courbe u_C(t), coupant l'asymptote
+#     u_C = E en t = tau. Ici la courbe fournie est q(t) et la tangente
+#     coupe le palier de CHARGE q_max. Même propriété (q = C.u_C est une
+#     simple homothétie verticale, qui ne déplace aucune abscisse), mais la
+#     démonstration est refaite en une ligne au point d'usage à partir de
+#     q(t) = Q(1 - e^(-t/tau)) : pente initiale Q/tau, donc la tangente
+#     atteint le palier Q en t = tau.
+#   - bk-2023-r-x3, q3 : la f.é.m. E n'est PAS donnée numériquement par le
+#     sujet (« générateur de tension de force électromotrice E », sans
+#     valeur). Elle doit être récoltée sur la figure avant toute
+#     application numérique : en régime permanent i = 0, donc u_C = E, et
+#     E = q_max/C0 = 12 V. Aucun rung ne fait cette récolte-là — R2 et R3
+#     lisent E directement sur le palier d'une courbe u_C(t), jamais à
+#     travers q = C.u_C. Pontée au point d'usage dans le raisonnement de
+#     la question 3. La formule d'énergie elle-même (E_C = (1/2).C.u_C^2,
+#     et (1/2).C.E^2 en régime permanent) est en revanche dans le corps
+#     enseigné, rung 4 — aucun pont requis.
 
 notion: pc/rc-charge
 
