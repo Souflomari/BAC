@@ -27,6 +27,27 @@
 >   Mouvement d'un pendule de torsion.
 >
 > Total : $7 + 2{,}5 + 5 + 5{,}5 = 20$ points.
+>
+> **Passe adversariale du 2026-08-23** — re-fetch indépendant de
+> `element/145799` et des 6 scans `course-422/upload-87492/000N-big.jpg`,
+> relecture caractère par caractère et re-dérivation complète.
+> *Le texte des quatre énoncés est exact partout* (chaque valeur, indice,
+> exposant et unité recontrôlé ; barèmes recomptés en marge :
+> $2{,}75+2{,}0+2{,}25 = 7$ · $2{,}5$ · $2{,}5+0{,}75+0{,}5+1{,}25 = 5$ ·
+> $2{,}0+3{,}5 = 5{,}5$, total $20$).
+> **Tous les défauts trouvés étaient dans les figures** — dont trois qui
+> rendaient une question inexploitable : les étiquettes « Courbe 1 » /
+> « Courbe 2 » de la figure 1 étaient interverties (ce qui contredisait la
+> question 1-4-2), l'enveloppe de la figure 4 était décrite pour une seule
+> période là où le cadre en contient deux et un quart, et le pas de l'ordonnée
+> de la figure 2 de l'exercice 3 valait $1{,}25\ \text{V}$ par division et non
+> $2{,}5$. Les treize mentions « lecture à confirmer » ont toutes été levées
+> par mesure au pixel doublée d'une re-dérivation qui les valide.
+> **Aucune incohérence du sujet officiel n'a été relevée :** toutes les
+> lectures graphiques se recoupent avec les valeurs numériques imposées
+> ($pK_A = 4{,}80$ vs croisement à $pH = 4{,}8$ ; $L = \tau R = 0{,}10\
+> \text{H}$ vs $\tau = 1\ \text{ms}$ lu ; $y = -5{,}56\cdot10^{-3}x^2$ vs
+> $g/2V_0^2$ ; rendement $67\ \%$).
 
 ---
 
@@ -639,7 +660,18 @@ peut être cross-listé ; la notion dominante est citée en premier.
   - Partie II (modulation d'amplitude) → `ondes-em-modulation`.
 - **Exercice 4 (Mécanique, 5,5 pts)** :
   - Partie I (chute libre du skieur, trajectoire parabolique, impact sur plan
-    incliné) → `chute-mouvements-plans`.
+    incliné) → `chute-mouvements-plans`, cross-liste `lois-de-newton` (la
+    question 1 dit explicitement « en appliquant la deuxième loi de Newton » —
+    même standard que celui appliqué au projectile de PC 2021 rattrapage).
   - Partie II (pendule de torsion : équation différentielle, T₀, C, énergie,
-    travail du couple) → `systemes-oscillants` (cross-liste
-    `rotation-axe-fixe` pour la RFD de rotation).
+    travail du couple) → `systemes-oscillants` (cross-listes
+    `rotation-axe-fixe` pour la RFD de rotation, et `aspects-energetiques`
+    pour la question 3 — énergie mécanique de l'oscillateur et travail du
+    couple de torsion, 1,25 pt).
+
+*Contrôle fait : les 13 slugs cités existent tous sous `content/pc/`
+(`reactions-acido-basiques`, `etat-equilibre`, `esterification-hydrolyse`,
+`suivi-temporel-vitesse`, `propagation-onde-lumineuse`, `dipole-rl`,
+`rlc-serie`, `ondes-em-modulation`, `chute-mouvements-plans`,
+`lois-de-newton`, `systemes-oscillants`, `rotation-axe-fixe`,
+`aspects-energetiques`).*
