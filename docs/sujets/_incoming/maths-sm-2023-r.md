@@ -1,8 +1,27 @@
 # Examen national Mathématiques — SM — 2023 session rattrapage (RS 24F) — transcription intégrale
 
-> Fichier d'entrée (`_incoming`) : transcriptions **non vérifiées** — protocole
-> `docs/sujets/maths/README.md`. Provenance sur chaque bloc. Sujet lu sur les
-> 5 pages du scan `course-436/upload-85320` (AlloSchool element/142494).
+> Fichier d'entrée (`_incoming`) — protocole `docs/sujets/maths/README.md`.
+> Provenance sur chaque bloc. Sujet lu sur les 5 pages du scan
+> `course-436/upload-85320` (AlloSchool element/142494).
+>
+> **Entrées vérifiées — passe adversariale du 2026-08-23** : re-fetch
+> indépendant de `element/142494`, re-dérivation des chemins d'images depuis le
+> HTML (5 pages `0001`–`0005-big.jpg`, 1240×1754 chacune, confirmées) et
+> re-lecture de chaque page sur l'image — chaque nombre, indice, exposant,
+> borne et barème relu sur le scan, jamais sur le texte transcrit. Les quatre
+> exercices ont en outre été **re-dérivés mathématiquement** de bout en bout :
+> toutes les questions sont résolubles avec les données transcrites et
+> aboutissent à des valeurs cohérentes (détail dans chaque bloc). Barèmes
+> recomptés en marge : 10 + 3,5 + 3,5 + 3 = **20**. **Un défaut a été trouvé et
+> corrigé** (exercice 2, Partie II, question 1 — domaine du quantificateur lu
+> « $(U)$ » alors que le scan porte un tofu blackboard-bold), ainsi qu'**une
+> note de lecture rectifiée** (l'étoile de l'exercice 2 Partie I n'est pas
+> « illisible » : elle est **absente**, ce qui est une lecture, pas une
+> incertitude) et **un classement corrigé** (exercice 2, voir la section
+> Classement). Trois **imprécisions du sujet officiel** sont par ailleurs
+> signalées sans être « réparées » (bloc de l'exercice 2). Aucun exercice n'est
+> écarté ; les mentions *(glyphe à confirmer)* qui subsistent portent toutes
+> sur des lettres ajourées détruites par le scan, jamais sur une valeur.
 >
 > **En-tête administratif du scan (p.1)** : الامتحان الوطني الموحد للبكالوريا —
 > المسالك الدولية — الدورة الاستدراكية 2023 — code sujet **RS 24F** — مادة
@@ -19,16 +38,33 @@
 >
 > **Note de lecture (mojibake, tout le sujet)** : ce scan substitue les
 > blackboard-bold par un assortiment de glyphes cassés (cases tofu « □ »,
-> coins « ⌐ », « ⌊ », « ∏ », barres « ‖ ») selon l'occurrence. Chaque occurrence
-> est adjugée par la logique de l'exercice et marquée *(glyphe à confirmer)*
-> dans le bloc concerné. Aucune figure (courbe, tableau, arbre) n'est imprimée
-> dans ce sujet — les cinq pages sont du texte mathématique seul.
+> coins « ⌐ », « ⌊ », « ⊔ », « ∏ », barres « ‖ ») selon l'occurrence. La forme
+> du glyphe ne porte **aucune information** : la même lettre est rendue par
+> deux glyphes différents à deux lignes d'écart. Chaque occurrence est donc
+> adjugée par la logique de l'exercice et marquée *(glyphe à confirmer)* dans
+> le bloc concerné. Aucune figure (courbe, tableau, arbre) n'est imprimée dans
+> ce sujet — les cinq pages sont du texte mathématique seul.
+>
+> **Ce que la passe adversariale a établi sur ces glyphes (2026-08-23)** — deux
+> faits mesurés au pixel, qui rendent plusieurs lectures décidables :
+> 1. **Les étoiles survivent au mojibake.** Là où l'exposant $*$ est imprimé,
+>    il est parfaitement net à côté du tofu (p. 2 « $\forall n \in$ □$^*$ »,
+>    p. 5 « de ⊔$^*$ vers », « $\forall z \in$ ⌊$^*$ »). L'**absence** d'étoile
+>    est donc, elle aussi, une lecture — pas une incertitude. C'est ce qui
+>    tranche les deux domaines de l'exercice 2 (voir son bloc).
+> 2. **Le tofu ne rend jamais un symbole non-blackboard-bold.** Les objets en
+>    italique parenthésé du sujet — $(U)$, $(C_n)$, $(S)$ — sont imprimés
+>    proprement partout, y compris sur les lignes qui portent un tofu. Un tofu
+>    ne peut donc pas être lu comme $(U)$ : c'est nécessairement une lettre
+>    ajourée ($\mathbb{N}$, $\mathbb{R}$, $\mathbb{C}$). **Un défaut de la
+>    transcription initiale a été corrigé sur ce point** (exercice 2, Partie II,
+>    question 1).
 
 ---
 
 ## 2023 — session rattrapage — Exercice 1
 Source: https://www.alloschool.com/element/142494
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : RS 24F · Barème de l'exercice : 10 points
@@ -85,25 +121,66 @@ On pose pour tout $x \in I$, $F(x) = \displaystyle\int_x^1 \left(f_1(t)\right)^2
    b) (0,25) En déduire la valeur de $F(0)$
    c) (0,5) Calculer, en $\text{cm}^3$, le volume du solide engendré par la rotation d'un tour complet autour de l'axe des abscisses de la portion de la courbe $(C_1)$ relative à l'intervalle $[0,1]$. (On prendra $\left\|\vec{i}\right\| = 1\ \text{cm}$)
 
+> **Re-dérivation (vérificateur adversarial, 2026-08-23)** — l'exercice se
+> résout entièrement avec les données transcrites, et chaque identité imprimée
+> se vérifie :
+> - I-1a : $(2n)^n\big(x^{1/2n}\ln(x^{1/2n})\big)^n = (2n)^n\cdot x^{1/2}\cdot
+>   \frac{(\ln x)^n}{(2n)^n} = \sqrt{x}(\ln x)^n$ — identité exacte, exposant
+>   $\frac{1}{2n}$ relu au pixel aux quatre occurrences (I-1a et I-1c).
+> - I-2a : $f_n' = \frac{1}{2\sqrt x}(\ln x)^n + \frac{n}{\sqrt x}(\ln x)^{n-1}
+>   = \frac{1}{2\sqrt x}(\ln x)^{n-1}(2n+\ln x)$ — conforme. La restriction
+>   $n \geq 2$ de I-2b est nécessaire et suffisante ($n=1$ ne donne que
+>   $x = e^{-2}$), donc $e^{-2n}$ est bien la racine, pas $e^{-2}$.
+> - II : $u_{n+1}/u_n = \ln\beta \in\, ]0,1[$ (décroissance), $0 < u_n < \sqrt e$
+>   et $u_n \to 0$. $f_n$ étant strictement croissante sur $]1,e[$ de $0$ à
+>   $\sqrt e > 1$, $x_n$ existe et est unique ; $f_{n+1}(x_n) = \ln x_n < 1$
+>   donne la croissance. II-3 est une **démonstration par l'absurde** cohérente :
+>   $n\ln(\ln x_n) = \ln\big((\ln x_n)^n\big) \to \ln(1/\sqrt\ell)$, fini,
+>   tandis que $\ell < e$ forcerait $-\infty$ ; d'où $\ell = e$.
+> - III : en posant $G(t) = \frac{t^2}{2}\ln^2 t - \frac{t^2}{2}\ln t +
+>   \frac{t^2}{4}$ (primitive de $t(\ln t)^2$, obtenue par la double IPP
+>   demandée), $F(x) = G(1) - G(x) = -\frac{x^2}{2}\ln^2 x +
+>   \frac{x^2}{2}\ln x + \frac14(1-x^2)$ — **exactement** l'expression imprimée,
+>   signes et coefficients compris. D'où $F(0^+) = \frac14$, $F(0) = \frac14$
+>   et $V = \pi F(0) = \frac{\pi}{4}\ \text{cm}^3$.
+> - Barème recompté sur le scan : I $= 4{,}25$ · II $= 3{,}25$ · III $= 2{,}5$
+>   $= \mathbf{10}$ points. Conforme à l'annonce de la p. 1.
+
 ---
 
 ## 2023 — session rattrapage — Exercice 2
 Source: https://www.alloschool.com/element/142494
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : RS 24F · Barème de l'exercice : 3,5 points
 - Images lues : `.../course-436/upload-85320/0003-big.jpg` (Partie I), `.../course-436/upload-85320/0004-big.jpg` (Partie II)
 - Pages du scan : 3–4 (sur 5) — consignes p.1
 
-> **Note de lecture (mojibake)** : le domaine du système est rendu par trois
-> glyphes différents selon l'occurrence — « ⌊ $^2_+$ » (énoncé), « ∏ $^2_+$ »
-> (Q1), « ⌐ $^2_+$ » (Q2) — tous porteurs du même indice $+$ et de l'exposant
-> $2$ : lus $\left(\mathbb{R}_+\right)^2$ par la présence de $\sqrt{x}$ et
-> $\sqrt{y}$ *(glyphe à confirmer — l'étoile éventuelle $\mathbb{R}_+^*$ n'est
-> pas lisible)*. En Partie II le quantificateur Q1 s'écrit
-> « $\forall z \in$ ⌐ » — lu $(U)$ (le cercle défini juste au-dessus) par la
-> logique de l'équivalence $|z| = 1$ *(glyphe à confirmer)*.
+> **Note de lecture (mojibake) — révisée par la passe adversariale** : le
+> domaine du système est rendu par trois glyphes différents selon l'occurrence
+> — « ⌊ $^2_+$ » (énoncé), « ∏ $^2_+$ » (Q1), « ⌐ $^2_+$ » (Q2) — tous porteurs
+> du même indice $+$ et du même exposant $2$ : lus
+> $\left(\mathbb{R}_+\right)^2$ par la présence de $\sqrt{x}$ et $\sqrt{y}$
+> *(glyphe à confirmer)*. **Correction de la note initiale** : celle-ci disait
+> « l'étoile éventuelle $\mathbb{R}_+^*$ n'est pas lisible ». Contrôle au pixel
+> (agrandissement ×7 des trois occurrences) : **aucune étoile n'est imprimée**,
+> et les étoiles de ce scan survivent au mojibake là où elles existent (p. 2 et
+> p. 5). Le sujet pose donc bien le système dans $\mathbb{R}_+^2$ — voir le
+> signalement d'imprécision ci-dessous.
+>
+> **Défaut corrigé en Partie II (question 1)** : la transcription initiale
+> lisait « $\left(\forall z \in (U)\right)$ ». Le scan (p. 4, agrandissement
+> ×12) porte « $\forall z \in$ ⊔ » — un **tofu blackboard-bold nu**, sans
+> parenthèses et sans étoile, alors que $(U)$ est imprimé proprement, en
+> italique parenthésé, deux lignes plus haut sur la même page (« le cercle
+> $(U)$ ») et trois fois dans les questions 2-a, 2-b et 2-c. La lecture « $(U)$ »
+> était **déduite du texte environnant, pas du dessin du glyphe** — et elle
+> rendait la question vide de contenu : tout $z \in (U)$ vérifie $|z| = 1$ par
+> définition du cercle, il n'y aurait rien à démontrer, et l'équivalence ne
+> pourrait plus servir d'outil aux questions 2-a/b/c, qui l'appliquent à des
+> quotients. Le domaine adjugé est $\mathbb{C}$ (module et conjugué ⇒
+> complexes) *(glyphe à confirmer)*.
 
 **Nombres complexes (Partie I : système non linéaire ramené à une équation du second degré en $z = \sqrt{x} + i\sqrt{y}$ ; Partie II : cercle unité, points $A, B, C$, cordes parallèles et perpendiculaires, $p = \frac{bc}{a}$).**
 
@@ -126,18 +203,55 @@ Le plan complexe est rapporté à un repère orthonormé direct $\left(O; \vec{u
 
 Soit $(U)$ le cercle de centre $O$ et de rayon $1$ et $A(a)$, $B(b)$ et $C(c)$ trois points du cercle $(U)$ deux à deux distincts.
 
-1. (0,25) Montrer que : $\left(\forall z \in (U)\right)$ *(glyphe à confirmer)* ; $|z| = 1 \iff \bar{z} = \dfrac{1}{z}$
+1. (0,25) Montrer que : $\left(\forall z \in \mathbb{C}\right)$ *(glyphe à confirmer — tofu nu sur le scan ; ce n'est pas $(U)$, voir la note de lecture)* ; $|z| = 1 \iff \bar{z} = \dfrac{1}{z}$
 2. a) (0,5) La droite passant par $A$ et parallèle à $(BC)$ coupe le cercle $(U)$ au point $P(p)$
    Montrer que : $p = \dfrac{bc}{a}$
    b) (0,5) La droite passant par $A$ et perpendiculaire à $(BC)$ coupe le cercle $(U)$ au point $Q(q)$. Montrer que : $q = -p$
    c) (0,5) La droite passant par $C$ et parallèle à $(AB)$ coupe le cercle $(U)$ au point $R(r)$
    Montrer que les deux droites $(PR)$ et $(OB)$ sont perpendiculaires.
 
+> **Re-dérivation (vérificateur adversarial, 2026-08-23)** — l'exercice tient :
+> - Partie I : $z + \frac1z = \sqrt x\left(1+\frac{1}{x+y}\right) +
+>   i\sqrt y\left(1-\frac{1}{x+y}\right)$ (car $\frac1z = \frac{\bar z}{x+y}$),
+>   d'où le second membre $\frac{12}{5}+\frac45 i$. Le discriminant vaut
+>   $\left(\frac{12}{5}+\frac45 i\right)^2 - 4 = \frac{28}{25}+\frac{96}{25}i$
+>   — **exactement** l'indication imprimée, et
+>   $\left(\frac25(4+3i)\right)^2 = \frac{4}{25}(7+24i) = \frac{28}{25}+\frac{96}{25}i$.
+>   Racines : $z = 2+i$ et $z = \frac{2-i}{5}$ ; seule la première a une partie
+>   imaginaire $\geq 0$ compatible avec $z = \sqrt x + i\sqrt y$, d'où
+>   $(x,y) = (4,1)$, qui vérifie bien $(S)$ : $2\cdot\frac65 = \frac{12}{5}$ et
+>   $1\cdot\frac45 = \frac45$. Les cinq fractions du système ont été relues au
+>   pixel ($\frac{12}{5}$, $\frac45$, $\frac{28}{25}$, $\frac{96}{25}$,
+>   $\frac25(4+3i)$) : conformes.
+> - Partie II : $ap = bc$ et $cr = ab$ (cordes parallèles du cercle unité),
+>   $aq = -bc$ ; puis $\frac{p-r}{b} = \frac ca - \frac ac = w - \bar w$ avec
+>   $|w| = 1$, imaginaire pur : $(PR) \perp (OB)$. Cohérent.
+> - Barème recompté sur le scan : I $= 1{,}75$ · II $= 1{,}75$ $= \mathbf{3{,}5}$.
+
+> **Imprécisions du SUJET OFFICIEL — signalées, non « réparées »** (règle du
+> protocole : on ne corrige pas un sujet officiel, on documente son défaut) :
+> 1. **Partie I** : le système est posé dans $\mathbb{R}_+^2$ (aucune étoile
+>    imprimée, vérifié au pixel) alors que le terme $\frac{1}{x+y}$ exige
+>    $(x,y) \neq (0,0)$. Le domaine strict serait $\mathbb{R}_+^2 \setminus
+>    \{(0,0)\}$. Sans conséquence sur la réponse — l'unique solution est
+>    $(4,1)$ — mais une conversion en exercice ne doit pas présenter
+>    $\mathbb{R}_+^2$ comme un domaine de définition valide.
+> 2. **Partie II, question 1** : le quantificateur porte un tofu **sans
+>    étoile**, alors que l'équivalence $|z| = 1 \iff \bar z = \frac1z$ suppose
+>    $z \neq 0$. Beaucoup d'éditions de ce sujet écrivent $\mathbb{C}^*$ ; le
+>    scan, lui, ne porte pas l'étoile. Lecture retenue : ce qui est imprimé
+>    ($\mathbb{C}$), avec le défaut signalé ici.
+> 3. **Partie II, question 2-c** : la droite $(PR)$ n'existe pas lorsque
+>    $a = -c$ (points $A$ et $C$ diamétralement opposés), car alors
+>    $p = \frac{bc}{a} = -b = \frac{ab}{c} = r$. L'énoncé n'exclut que le fait
+>    que $A$, $B$, $C$ soient « deux à deux distincts », ce qui n'écarte pas ce
+>    cas dégénéré. À exclure explicitement dans toute conversion.
+
 ---
 
 ## 2023 — session rattrapage — Exercice 3
 Source: https://www.alloschool.com/element/142494
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : RS 24F · Barème de l'exercice : 3,5 points
@@ -181,11 +295,34 @@ On rappelle que $\left(M_3(\mathbb{R})\ \text{(glyphe à confirmer)}, +, \times\
    c) (0,5) En déduire que $\left(G - \{(0,0)\},\ T\right)$ est un groupe commutatif.
 5. (0,5) Montrer que $\left(G, *, T\right)$ est un corps commutatif.
 
+> **Re-dérivation (vérificateur adversarial, 2026-08-23)** — l'exercice est
+> cohérent et chaque vérification demandée aboutit :
+> - Matrice de $E$ relue au pixel (agrandissement ×3,2) : lignes
+>   $(a,0,0)$ / $(0,b,-c)$ / $(0,c,b)$ — le $-c$ est bien en ligne 2 colonne 3.
+>   C'est la représentation matricielle usuelle de $\mathbb{R} \times \mathbb{C}$,
+>   ce qui confirme l'adjudication des glyphes de l'ensemble d'arrivée de
+>   $\varphi$.
+> - Q3-b : $(x,z)\,T\,(0,1) = (x\operatorname{Re}(1) + 0\cdot\operatorname{Re}(z),\ z) = (x,z)$ — $(0,1)$ est
+>   bien neutre.
+> - Q3-c : $(1,i)\,T\,(x,-i) = (1\cdot\operatorname{Re}(-i) + x\cdot\operatorname{Re}(i),\ i\cdot(-i)) = (0,1)$
+>   pour **tout** $x$ réel — d'où une infinité de « symétriques » d'un même
+>   élément, incompatible avec l'associativité. La question tient.
+> - Q4-b : $\psi(z)\,T\,\psi(z') = (\operatorname{Im}(z)\operatorname{Re}(z') + \operatorname{Im}(z')\operatorname{Re}(z),\ zz')
+>   = (\operatorname{Im}(zz'),\ zz') = \psi(zz')$ — homomorphisme confirmé, et
+>   $\psi(\mathbb{C}^*) = G - \{(0,0)\}$, ce qui donne Q4-c.
+> - Q5 : $G$ est stable pour $*$ et $T$ et $\psi$ transporte la structure de
+>   $\mathbb{C}$ ; $(G,*,T)$ est bien un corps commutatif. La définition de $G$
+>   sur $\mathbb{C}$ tout entier (et non $\mathbb{C}^*$) est requise par Q4-c,
+>   qui retranche $(0,0)$ : l'adjudication du glyphe est confirmée par cette
+>   contrainte interne.
+> - Barème recompté sur le scan : $0{,}25 + 0{,}5 + 0{,}25 + 0{,}25 + 0{,}25 +
+>   0{,}5 + 0{,}25 + 0{,}25 + 0{,}5 + 0{,}5 = \mathbf{3{,}5}$.
+
 ---
 
 ## 2023 — session rattrapage — Exercice 4
 Source: https://www.alloschool.com/element/142494
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : RS 24F · Barème de l'exercice : 3 points
@@ -210,17 +347,60 @@ Soit $q$ un nombre premier qui divise $S$.
    b) (0,25) En déduire que $S \equiv 1\ [q]$
 3. (0,75) Montrer que : $q \equiv 1\ [p]$
 
+> **Re-dérivation (vérificateur adversarial, 2026-08-23)** — l'exercice est un
+> raisonnement par l'absurde en deux temps, entièrement cohérent :
+> - Q1-a : $S = 1 + p(1 + p + \ldots + p^{p-2}) \equiv 1\ [p]$, donc $p \nmid S$ ;
+>   comme $q \mid S$, $q \neq p$, et deux premiers distincts sont premiers entre
+>   eux.
+> - Q1-c : $(p-1)S = (p-1)(1 + p + \ldots + p^{p-1}) = p^p - 1$ (somme
+>   géométrique télescopée) — identité exacte ; $q \mid S \Rightarrow q \mid p^p-1$.
+> - Q2-a : Bézout donne $up + v(q-1) = 1$, d'où
+>   $p = (p^p)^u (p^{q-1})^v \equiv 1\ [q]$.
+> - Q2-b : $S$ a $p$ termes, tous $\equiv 1\ [q]$, donc $S \equiv p \equiv 1\ [q]$.
+>   **Combiné à $q \mid S$, cela donne $q \mid 1$ : absurde.** L'hypothèse de la
+>   question 2 (« $p$ et $q-1$ premiers entre eux ») est donc intenable — c'est
+>   le ressort de la question 3.
+> - Q3 : $p$ étant premier, $\operatorname{pgcd}(p, q-1) \in \{1, p\}$ ; le cas $1$
+>   vient d'être écarté, donc $p \mid q-1$, c'est-à-dire $q \equiv 1\ [p]$.
+> - Barème recompté sur le scan : $0{,}5 + 0{,}25 + 0{,}5 + 0{,}75 + 0{,}25 +
+>   0{,}75 = \mathbf{3}$.
+
 ---
 
 ## Classement
 
 Correspondance avec les slugs `content/maths/` (convention README §4 : le
 problème d'analyse va sous le slug dominant, les autres slugs portent un
-cross-list) :
+cross-list). **Contrôlé par la passe adversariale du 2026-08-23** : les huit
+slugs cités existent bien sous `content/maths/` (vérifiés un à un). Une
+correction a été apportée — voir la note sous la table.
 
 | Exercice | Barème | Slug(s) cible(s) |
 |----------|--------|------------------|
 | Exercice 1 (analyse, 10 pts) | 10 pts | **`fonction-logarithme`** (dominant : $f_n(x) = \sqrt{x}\,(\ln x)^n$) · cross-list : `limites-continuite` (Partie I-1), `derivabilite-etude-fonctions` (Partie I-2 : dérivée, variations, inflexion ; Partie II-2a : unicité de $x_n$), `suites-numeriques` (Partie II : $(u_n)$ et $(x_n)$), `calcul-integral` (Partie III : double IPP, volume de révolution) |
-| Exercice 2 (nombres complexes, 3,5 pts) | 3,5 pts | **`nombres-complexes-2`** (filière SM : système ramené au second degré en $z$ ; cercle unité et configurations) |
+| Exercice 2 (nombres complexes, 3,5 pts) | 3,5 pts | **`nombres-complexes-2`** (dominant : Partie II — cercle unité, $\bar z = 1/z$, cordes parallèles/perpendiculaires, configuration $p = bc/a$ ; c'est le slug SM de la table §4) · cross-list : **`nombres-complexes-1`** (Partie I — équation du second degré **à coefficients complexes**, discriminant, forme algébrique) |
 | Exercice 3 (structures algébriques, 3,5 pts) | 3,5 pts | **`structures-algebriques`** (sous-groupe, homomorphismes, groupe commutatif, corps) |
 | Exercice 4 (arithmétique, 3 pts) | 3 pts | **`arithmetique`** (Fermat, Bézout, congruences) |
+
+**Correction du classement (2026-08-23).** L'exercice 2 était classé sous le
+seul slug `nombres-complexes-2`, avec pour justification « système ramené au
+second degré en $z$ ». Or `content/maths/nombres-complexes-2/lesson.md` exclut
+**explicitement** ce contenu de son périmètre (note de validation en fin de
+leçon : « Les équations du second degré à coefficients complexes […] ne sont
+volontairement PAS traitées ici »), tandis que `nombres-complexes-1` le traite
+en entier (section « Résoudre une équation du second degré dans $\mathbb{C}$ »,
+discriminant donné par l'énoncé, relations somme/produit). Un élève envoyé sur
+`nombres-complexes-2` pour préparer la Partie I n'y trouverait pas la méthode
+demandée. Le cross-list `nombres-complexes-1` est donc ajouté ; le slug
+dominant reste `nombres-complexes-2`, conformément à la table §4 du README
+(filière SM) et parce que la Partie II — qui pèse le même barème (1,75 contre
+1,75) — relève bien de ses configurations géométriques.
+
+Les cross-lists de l'exercice 1 ont été recontrôlés question par question et
+tiennent : `limites-continuite` (I-1a continuité à droite, I-1b/c/d limites),
+`derivabilite-etude-fonctions` (I-2 dérivée, variations, inflexion ; II-2a
+existence et unicité par stricte monotonie), `suites-numeriques` (II-1 et II-2
+$(u_n)$ et $(x_n)$), `calcul-integral` (III double IPP et volume de
+révolution). Le slug dominant `fonction-logarithme` est confirmé : le ressort
+de tout l'exercice est la croissance comparée $\ln u / u \to 0$, mobilisée
+via la réécriture imposée en I-1a/I-1c.

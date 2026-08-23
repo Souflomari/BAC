@@ -13,8 +13,15 @@
 # dans les énoncés ; conventions KaTeX (block scalars pour la prose, KaTeX brut
 # entre apostrophes simples dans steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue B0) : la banque compte désormais HUIT sujets
-# « vérifié » — 2018 N, 2019 N, 2020 N, 2021 N, 2022 N, 2023 N, 2024 N, 2025 N.
+# NOTE ÉDITORIALE (pour la revue B0) : la banque compte désormais NEUF sujets
+# « vérifié » — 2018 N, 2019 N, 2020 N, 2021 N, 2021 R, 2022 N, 2023 N, 2024 N,
+# 2025 N. Le 2021 R (bk-2021-r-x1, ajouté le 2026-08-23) est la PREMIÈRE entrée
+# de session rattrapage de cette banque ; sa Partie 2, indépendante (pile
+# nickel-argent), est transcrite sous content/pc/piles (bk-2021-r-x1b). Il porte
+# une SCOPE NOTE en trois points — la loi de dilution non couverte nommément par
+# un rung, le tracé seulement qualitatif de sa figure 1 hors du saut, et la
+# lecture des repères (2)/(4) de sa figure 2 ; voir le commentaire au-dessus de
+# l'entrée.
 # Le 2021 N sert AUSSI de sommet de leçon (r-bac, exercises.yaml, marqueur
 # exercise r-bac à R12). Il figure ici pour que la banque soit le corpus complet
 # des annales de la notion (BANK-SPEC §1 : « la banque est le volume derrière le
@@ -363,6 +370,342 @@ entries:
             note: "Réaction de dosage totale ; même volume total, donc rapport des concentrations = rapport des quantités."
           - math: '\dfrac{V_{bE} - V_{b1}}{V_{b1}} = 2{,}24 \implies V_{b1} = \dfrac{V_{bE}}{1 + 2{,}24} = \dfrac{20}{3{,}24} \approx 6{,}2\ \text{mL}'
             note: "On isole Vb1 ; VbE = 20 mL. Vb1 < VbE/2 : AH reste majoritaire, cohérent avec un rapport > 1."
+
+  # ── bk-2021-r-x1 — 2021 R, Exercice 1 (Partie 1) : acide méthanoïque — dosage, pKA, dilution ──
+  # PREMIÈRE entrée de session rattrapage de cette banque (les huit autres sont
+  # en session normale). La Partie 2 du même exercice (pile nickel-argent) est
+  # transcrite sous content/pc/piles, entrée bk-2021-r-x1b — d'où le suffixe.
+  #
+  # SCOPE NOTE (drapeau, non résolu ici — à l'arbitrage de l'owner) :
+  # (1) Effet de la dilution sur tau (question III-3). Aucun rung ne nomme la
+  #     loi de dilution. Le rung 6 pose tau = [H3O+]eq / c, puis affirme que la
+  #     FORCE d'un acide — « son K_A, son pK_A, son tau face à l'eau » — est une
+  #     propriété de sa nature chimique. Pris à la lettre, le dernier membre de
+  #     cette énumération entre en TENSION avec cet exercice, où tau quadruple à
+  #     K_A constant. Le pont est fait au point d'usage, dans le raisonnement de
+  #     q11 : la relation K_A = C.tau^2/(1 - tau) — déjà établie ailleurs dans
+  #     cette banque à partir des rungs 4 et 6, jamais introduite ici comme un
+  #     outil neuf — montre qu'à K_A fixé, un C qui diminue force tau à
+  #     augmenter ; le raisonnement nomme explicitement ce qui est invariant
+  #     (K_A) et ce qui ne l'est pas (tau). Si le rung 6 est un jour reformulé
+  #     (« tau face à l'eau À CONCENTRATION DONNÉE »), cette entrée pourra le
+  #     citer au lieu de le ponter.
+  # (2) Figure 1 hors du saut. Le tracé du sujet n'est fidèle qu'au voisinage de
+  #     l'équivalence : il part de pH ≈ 3,2 et donne pH ≈ 4,8 à la
+  #     demi-équivalence (V_b = 7,5 mL), deux valeurs incompatibles avec
+  #     pH(S_a) = 2,38 et le pK_A = 3,74 qui s'en déduit. Le raccourci du rung
+  #     10 (pH à V_E/2 vaut pK_A) appliqué à CETTE figure donnerait donc une
+  #     valeur fausse. La contradiction n'est pas tue : elle est nommée dans le
+  #     raisonnement de q8, avec la règle de tranchage (on ne lit sur la figure
+  #     que ce que l'énoncé demande d'y lire — ici V_bE ; le pK_A se calcule).
+  # (3) Repères (2) et (4) de la figure 2 : les deux flèches touchent la même
+  #     burette (l'une son embouchure évasée remplie de liquide, l'autre ses
+  #     traits de graduation). La lecture retenue — (2) la solution titrante,
+  #     (4) la burette graduée — est explicitée dans le raisonnement de q1 ;
+  #     aucune autre lecture ne nomme quatre objets distincts.
+  - id: bk-2021-r-x1
+    title: "Acide méthanoïque — dosage pH-métrique, pKA et influence de la dilution"
+    source:
+      year: 2021
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Partie 1 : étude d'une solution aqueuse d'acide méthanoïque"
+    bareme_total: 5
+    duration_min: 30
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), AlloSchool RS 28F, element/127290 (Exercice 1,
+        Partie 1 — étude d'une solution aqueuse d'acide méthanoïque :
+        dosage pH-métrique, pK_A, influence de la dilution ; barème de la
+        partie 5 pt sur les 7 pt de l'exercice, recompté en marge du scan
+        I : 2,25 / II : 1,75 / III : 1,0. La Partie 2, indépendante, porte
+        sur la pile nickel-argent et est transcrite sous content/pc/piles,
+        entrée bk-2021-r-x1b). PREMIÈRE entrée de session rattrapage de
+        cette banque : les huit autres sont en session normale.
+        Transcription vérifiée par une passe adversariale indépendante
+        (2026-08-22) : re-fetch du scan (upload-84198/0002-big.jpg et
+        0003-big.jpg), les trois figures re-décrites depuis le dessin et
+        mesurées au pixel, chimie re-dérivée. Le résumé HTML d'AlloSchool
+        annonce « Sciences Mathématiques B » : FAUX, l'en-tête arabe des 8
+        pages du scan porte Sciences Expérimentales / Sciences Physiques
+        option française — seule l'image fait foi, d'où filiere SPC.
+        Recoupements : V_bE = 15,0 mL est confirmé DEUX fois sur la figure
+        1 (le saut de C_1 et le pic de la dérivée C_2 tombent sur la même
+        graduation) ; pH = 2,38 avec C_a = 0,10 mol/L donne pK_A = 3,74, à
+        comparer à la valeur tabulée 3,75 du couple HCOOH/HCOO- ; les deux
+        lectures de la figure 3 (tau = 0,10 à pH 2,8 et tau = 0,40 à pH
+        3,6) redonnent, via K_A = C.tau^2/(1 - tau), pK_A = 3,75 et 3,78 —
+        la lecture graphique est confirmée par sa propre chimie. DRAPEAU
+        D'HONNÊTETÉ conservé : hors du voisinage de l'équivalence la
+        figure 1 n'est que qualitative (départ pH ≈ 3,2 ; pH ≈ 4,8 à la
+        demi-équivalence), donc incompatible avec pK_A = 3,74 — voir la
+        SCOPE NOTE au-dessus de l'entrée et le raisonnement de q8, qui
+        nomme la contradiction au lieu de la taire.
+    intro: |-
+      **Étude d'une solution aqueuse d'acide méthanoïque (examen national, session de rattrapage 2021 — Exercice 1, Partie 1, 5 points).**
+
+      L'acide méthanoïque $\text{HCOOH}$ est un acide qui appartient au couple acide/base $\text{HCOOH}/\text{HCOO}^-$. Cet acide est utilisé dans les industries suivantes : textile, insecticides, peinture… On notera $AH$ pour désigner l'acide méthanoïque et $A^-$ pour désigner sa base conjuguée. Toutes les mesures sont réalisées à $25\,^\circ\text{C}$.
+
+      Cet exercice se propose d'étudier : le dosage d'une solution aqueuse d'acide méthanoïque ; une solution aqueuse d'acide méthanoïque ; l'influence de la dilution sur le taux d'avancement final.
+
+      **I — Le dosage.** On dispose au laboratoire d'un flacon contenant une solution aqueuse $S_a$ d'acide méthanoïque de concentration $C_a$ inconnue. On dose un volume $V_a = 15\ \text{mL}$ de cette solution avec une solution aqueuse $S_b$ d'hydroxyde de sodium $\text{Na}^+_{(aq)} + \text{HO}^-_{(aq)}$ de concentration $C_b = 10^{-1}\ \text{mol.L}^{-1}$, en suivant les variations du pH du mélange réactionnel en fonction du volume $V_b$ versé de la solution $S_b$. Les courbes $C_1$ et $C_2$ de la figure 1 représentent respectivement les variations du pH en fonction du volume $V_b$ versé au cours du dosage et $\dfrac{d\text{pH}}{dV_b} = f(V_b)$.
+
+      **La figure 1 — les deux courbes.** L'axe des ordonnées porte « pH ; $\frac{dpH}{dV_b}$ », gradué tous les $2$ et chiffré $0,\ 2,\ 4,\ 6,\ 8,\ 10,\ 12$ ; un trait principal non chiffré subsiste au-dessus de $12$ — le haut du cadre est à $\text{pH} \approx 14$. L'axe des abscisses porte $V_b(\text{mL})$, gradué tous les $3$ et chiffré $3,\ 6,\ 9,\ 12,\ 15,\ 18,\ 21$ ; le cadre se poursuit d'une division au-delà de $21$, jusqu'à $V_b \approx 24\ \text{mL}$. Un quadrillage fin sépare les traits principaux. La courbe $C_1$ (le pH) part de $\text{pH} \approx 3{,}2$ en $V_b \approx 0$, croît lentement ($\text{pH} \approx 4{,}8$ vers $V_b = 7{,}5\ \text{mL}$), présente un saut de pH brutal et quasi vertical centré exactement sur la graduation $V_b = 15\ \text{mL}$, puis un palier qui tend vers $\text{pH} \approx 12$ en fin de plage. La courbe $C_2$ (la dérivée) est quasi nulle partout, avec un pic étroit qui monte jusqu'au haut du cadre, centré exactement sur $V_b = 15\ \text{mL}$.
+
+      **La figure 2 — le montage.** Un montage de dosage pH-métrique sur potence (tige verticale, noix et pince). Quatre repères numérotés fléchés : **(1)** pointe le pH-mètre, boîtier à affichage numérique (l'écran affiche « 3.00 »), posé à gauche sur un support élévateur à ciseaux ; **(2)** pointe l'embouchure supérieure évasée de la burette graduée fixée à la pince (le tube est rempli d'un liquide grisé, la solution titrante) ; **(4)** pointe le corps gradué de cette même burette — la pointe de la flèche touche les traits de graduation —, burette qui se termine en bas par un robinet en croix au-dessus du bécher ; **(3)** pointe le bécher, posé sur un agitateur magnétique (boîtier sombre muni d'un bouton rond ; le barreau aimanté est figuré au fond du bécher). Une **seule** sonde plonge dans le bécher — l'électrode combinée de pH-métrie, dessinée comme un cylindre à bout arrondi — reliée au pH-mètre (1) par un **unique** câble ; les deux traits verticaux noirs qui l'encadrent sont les parois du bécher, pas des électrodes.
+
+      **II — L'étude de la solution $S_a$.** La mesure du pH de la solution $S_a$ donne $\text{pH} = 2{,}38$.
+
+      **III — L'influence de la dilution.** On prépare par dilution plusieurs solutions aqueuses d'acide méthanoïque. Un système d'acquisition informatisé permet de tracer la courbe de la figure 3, représentant les variations du taux d'avancement final $\tau$ de la réaction de l'acide méthanoïque avec l'eau en fonction du pH de la solution préparée.
+
+      **La figure 3 — la courbe $\tau = f(\text{pH})$.** L'axe des ordonnées porte $\tau$, chiffré $0$, $0{,}5$ et $1$, avec des traits principaux tous les $0{,}25$ ; le haut du cadre est à $\tau \approx 1{,}25$. L'axe des abscisses porte le pH, chiffré $2$, $4$, $6$, avec des traits principaux tous les $2$ pH et cinq subdivisions fines par division ; le cadre se poursuit jusqu'à $\text{pH} \approx 8$. La courbe est croissante, en forme de S : confondue avec l'axe jusqu'à $\text{pH} \approx 2$ ($\tau \approx 0{,}02$), puis en montée continue — points relevés au pixel : $\tau(2{,}8) \approx 0{,}10$ ; $\tau(3{,}4) \approx 0{,}29$ ; $\tau(3{,}6) \approx 0{,}40$ ; $\tau(4{,}0) \approx 0{,}61$ ; $\tau(4{,}4) \approx 0{,}80$ ; $\tau(4{,}8) \approx 0{,}91$ — et un palier horizontal à $\tau = 1$ atteint vers $\text{pH} \approx 5{,}5$.
+    questions:
+      - id: q1
+        part: "I- Dosage d'une solution aqueuse d'acide méthanoïque"
+        stem: |-
+          **(1 pt)** Le schéma de la figure 2 représente le montage expérimental utilisé pour effectuer ce dosage. Nommer les éléments numérotés sur cette figure.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un point entier pour quatre mots : c'est la question la mieux payée de tout l'exercice, et la seule qui ne demande aucun calcul. Le geste est de suivre chaque flèche jusqu'à sa pointe sur le dessin, puis de donner le nom **normalisé** de l'objet touché — celui du montage de titrage du rung 9 : une burette graduée qui contient le titrant, un bécher qui contient la prise d'essai du titré sous agitation, une sonde reliée à un pH-mètre.
+
+          - **(1) Le pH-mètre.** Le boîtier à affichage numérique, posé à gauche sur son support élévateur. C'est lui qui affiche la valeur du pH après chaque ajout, via l'unique câble qui le relie à la sonde plongée dans le bécher.
+          - **(2) La solution titrante $S_b$** (l'hydroxyde de sodium, $C_b = 10^{-1}\ \text{mol.L}^{-1}$), contenue dans la burette : la flèche vise l'embouchure évasée, exactement là où le liquide est visible dans le tube.
+          - **(3) Le bécher**, qui contient la prise d'essai $V_a = 15\ \text{mL}$ de la solution $S_a$ à doser, posé sur un **agitateur magnétique** (le barreau aimanté est dessiné au fond).
+          - **(4) La burette graduée**, fixée à la pince de la potence et fermée en bas par un robinet : c'est elle qui délivre, et qui mesure, le volume versé $V_b$.
+
+          $$\boxed{(1)\ \text{pH-mètre}\ \cdot\ (2)\ \text{solution titrante}\ \cdot\ (3)\ \text{bécher}\ \cdot\ (4)\ \text{burette graduée}}$$
+
+          **Le piège de cette figure.** Les repères (2) et (4) touchent le **même** objet, la burette — l'un son embouchure remplie de liquide, l'autre ses traits de graduation. Ils ne peuvent donc pas recevoir deux fois le même nom : (4), dont la flèche touche les graduations, désigne le **récipient** (la burette graduée) ; (2), qui vise le liquide dans le tube, désigne son **contenu** (la solution titrante). Second piège, plus classique : ne cherche pas deux électrodes dans le bécher. Il n'y en a qu'une, l'**électrode combinée** du pH-mètre ; les deux traits verticaux noirs qui l'encadrent sont les parois du bécher. Un dosage pH-métrique n'est pas un montage d'électrolyse.
+      - id: q2
+        part: "I- Dosage d'une solution aqueuse d'acide méthanoïque"
+        stem: |-
+          **(0,5 pt)** Écrire l'équation de la réaction du dosage.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une équation de dosage se construit toujours de la même façon : on identifie les deux couples réellement mis en présence dans le bécher, on écrit leurs deux demi-équations en sens opposés, et on les additionne — le proton $H^+$ s'annule dans la somme, exactement comme les électrons en oxydoréduction (rung 1). Il reste ensuite à choisir la flèche, et ce choix n'est pas décoratif.
+
+          Dans le bécher : l'acide $AH$ du couple $AH/A^-$, et l'ion $HO^-$ versé, qui est la base du couple $H_2O/HO^-$.
+
+          $$AH_{(aq)} \rightleftharpoons A^-_{(aq)} + H^+ \qquad\text{et}\qquad HO^-_{(aq)} + H^+ \rightleftharpoons H_2O_{(l)}$$
+
+          On additionne, le $H^+$ disparaît :
+
+          $$\boxed{AH_{(aq)} + HO^-_{(aq)} \longrightarrow A^-_{(aq)} + H_2O_{(l)}}$$
+
+          soit, avec les formules développées :
+
+          $$\text{HCOOH}_{(aq)} + \text{HO}^-_{(aq)} \longrightarrow \text{HCOO}^-_{(aq)} + \text{H}_2\text{O}_{(l)}$$
+
+          **Le contrôle qui justifie la flèche simple.** Une réaction ne sert de support à un titrage que si elle est totale, rapide et unique (rung 9), c'est-à-dire si $K \gg 1$. Ici $K = \dfrac{K_A(AH/A^-)}{K_A(H_2O/HO^-)} = 10^{\,pK_e - pK_A} = 10^{\,14 - 3{,}74} = 10^{10{,}26} \approx 1{,}8\times10^{10}$, en anticipant le $pK_A = 3{,}74$ que tu vas établir à la question 8. Dix milliards : la réaction est quasi totale, la flèche simple est méritée.
+
+          **Le piège.** Regarde la question 5 : ce sera le **même** acide face à une base, et pourtant l'autre flèche. Ce n'est pas une hésitation d'écriture. Ici la base est $HO^-$, base forte, et $K \approx 10^{10}$ — flèche simple. Là-bas la base sera l'**eau**, et $K = K_A \approx 1{,}8\times10^{-4}$ — réaction très limitée, double flèche. La flèche se choisit sur la valeur de $K$, jamais sur l'habitude ni sur le fait qu'« il s'agit d'un acide faible ».
+      - id: q3
+        part: "I- Dosage d'une solution aqueuse d'acide méthanoïque"
+        stem: |-
+          **(0,25 pt)** Déterminer, graphiquement, le volume $V_{bE}$ à l'équivalence.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'équivalence est le **milieu du saut** de pH — le point d'inflexion, là où la pente de $\text{pH} = f(V_b)$ est maximale (rung 10). Le sujet t'a donné deux courbes et non une : c'est une invitation à faire la vérification croisée, puisque les deux méthodes de repérage doivent tomber sur la même abscisse.
+
+          **Lecture 1, sur $C_1$ (la courbe de pH).** La partie brutale et quasi verticale du saut est centrée exactement sur la graduation $V_b = 15\ \text{mL}$.
+
+          **Lecture 2, sur $C_2$ (la courbe dérivée).** $\dfrac{d\text{pH}}{dV_b}$ est quasi nulle partout, sauf en un pic étroit qui monte jusqu'au haut du cadre. Ce **maximum** tombe, lui aussi, exactement sur $V_b = 15\ \text{mL}$.
+
+          Les deux méthodes s'accordent :
+
+          $$\boxed{V_{bE} = 15{,}0\ \text{mL}}$$
+
+          **Le piège.** Sur la courbe dérivée, on cherche le **maximum** du pic, pas un endroit où la dérivée s'annule. Le réflexe « un extremum, c'est là où la dérivée est nulle » vient d'ailleurs et trompe ici : ce n'est pas le pH qu'on maximise, c'est **sa dérivée**. Chercher $\dfrac{d\text{pH}}{dV_b} = 0$ te renverrait vers les deux paliers plats, loin de l'équivalence, là où il ne se passe précisément rien. Et on ne lit pas non plus $V_{bE}$ à l'abscisse où $\text{pH} = 7$ : sur cette courbe, $\text{pH} = 7$ tombe quelque part sur la montée du saut, **avant** son milieu.
+      - id: q4
+        part: "I- Dosage d'une solution aqueuse d'acide méthanoïque"
+        stem: |-
+          **(0,5 pt)** Déduire la valeur de la concentration $C_a$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'équivalence est l'instant où le titrant a été versé en quantité **juste stœchiométrique** (rung 9). La réaction de la question 2 est de rapport $1{:}1$ : une mole de $HO^-$ versée consomme une mole de $AH$. La quantité d'acide initialement présente dans le bécher égale donc la quantité de base versée au volume $V_{bE}$ — et c'est cette égalité de **quantités de matière**, rien d'autre, qui livre $C_a$.
+
+          $$n_{AH}(0) = n_{HO^-}(V_{bE}) \quad\Longleftrightarrow\quad C_a\,V_a = C_b\,V_{bE}$$
+
+          On isole $C_a$ et on remplace ($V_{bE} = 15{,}0\ \text{mL}$ vient de la question 3) :
+
+          $$C_a = \frac{C_b\,V_{bE}}{V_a} = \frac{10^{-1} \times 15{,}0}{15}$$
+
+          Les deux volumes apparaissent en rapport, donc aucune conversion en litres n'est nécessaire — les millilitres se simplifient entre eux :
+
+          $$\boxed{C_a = 10^{-1}\ \text{mol.L}^{-1} = 0{,}10\ \text{mol.L}^{-1}}$$
+
+          **Le piège.** Ici $V_a = V_{bE} = 15\ \text{mL}$, donc $C_a = C_b$. C'est une coïncidence de ce sujet, pas une règle : la relation d'équivalence ne dit jamais que les volumes sont égaux, elle dit que les **produits** $CV$ le sont. Si $V_{bE}$ avait valu $18\ \text{mL}$, on aurait trouvé $C_a = 0{,}12\ \text{mol.L}^{-1}$ sans que rien ne change à la méthode. Et retiens la nature de la relation : une égalité de quantités de matière, jamais une valeur de pH imposée.
+      - id: q5
+        part: "II- Étude de la solution S_a"
+        stem: |-
+          **(0,5 pt)** Écrire l'équation de la réaction entre l'acide méthanoïque et l'eau.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Même construction qu'à la question 2 — deux couples, deux demi-équations, le $H^+$ qui s'annule — mais avec un partenaire différent : cette fois, la base qui reçoit le proton est l'**eau** elle-même, dans le couple $H_3O^+/H_2O$.
+
+          $$AH_{(aq)} \rightleftharpoons A^-_{(aq)} + H^+ \qquad\text{et}\qquad H_2O_{(l)} + H^+ \rightleftharpoons H_3O^+_{(aq)}$$
+
+          En additionnant :
+
+          $$\boxed{AH_{(aq)} + H_2O_{(l)} \rightleftharpoons A^-_{(aq)} + H_3O^+_{(aq)}}$$
+
+          soit, avec les formules développées :
+
+          $$\text{HCOOH}_{(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons \text{HCOO}^-_{(aq)} + \text{H}_3\text{O}^+_{(aq)}$$
+
+          La **double flèche** est obligatoire ici : la mise en solution d'un acide faible est une transformation **limitée**, qui s'arrête sur un équilibre (rung 7). Tu le vérifieras chiffre en main dès la question suivante — il restera environ $96\,\%$ de l'acide sous forme $AH$ intacte.
+
+          **Le piège.** L'eau est un **ampholyte** (rung 1) : elle est base dans le couple $H_3O^+/H_2O$ et acide dans le couple $H_2O/HO^-$. À la question 2, c'est son visage basique $HO^-$ qui attaquait l'acide, et l'eau apparaissait comme **produit** ; ici, c'est l'eau elle-même qui joue la base, et elle est **réactif**. Même molécule, deux rôles, deux équations à ne pas confondre — et deux flèches différentes.
+      - id: q6
+        part: "II- Étude de la solution S_a"
+        stem: |-
+          **2.1)** **(0,5 pt)** Montrer que l'expression du rapport $\dfrac{\left[A^-_{(aq)}\right]}{\left[AH_{(aq)}\right]}$ dans la solution $S_a$ est $\dfrac{\left[A^-_{(aq)}\right]}{\left[AH_{(aq)}\right]} = \dfrac{10^{-\text{pH}}}{C_a - 10^{-\text{pH}}}$. Calculer sa valeur.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le rapport demandé est celui de deux concentrations **à l'équilibre** ; le seul outil qui les relie à ce qu'on a versé dans le bécher est le tableau d'avancement de la réaction de la question 5. On le dresse en concentrations (le volume est constant, on travaille avec l'avancement volumique $y$), puis on remplace $y_f$ par ce que la mesure de pH donne.
+
+          | État | $AH$ | $A^-$ | $H_3O^+$ |
+          |---|:---:|:---:|:---:|
+          | initial | $C_a$ | $0$ | $0$ |
+          | équilibre | $C_a - y_f$ | $y_f$ | $y_f$ |
+
+          Tous les coefficients stœchiométriques valent $1$, donc les deux produits sont formés à parts égales :
+
+          $$[A^-]_{eq} = [H_3O^+]_{eq} = y_f \qquad\text{et}\qquad [AH]_{eq} = C_a - y_f$$
+
+          (On néglige les $H_3O^+$ venus de l'autoprotolyse de l'eau : en milieu acide ils sont ultra-minoritaires devant ceux que l'acide libère.) Or la mesure de pH donne directement $y_f$, par la définition du pH (rung 2) :
+
+          $$y_f = [H_3O^+]_{eq} = 10^{-\text{pH}}$$
+
+          En reportant les deux expressions dans le rapport, la démonstration est faite :
+
+          $$\frac{[A^-]}{[AH]} = \frac{y_f}{C_a - y_f} = \frac{10^{-\text{pH}}}{C_a - 10^{-\text{pH}}}$$
+
+          **L'application numérique**, chiffre par chiffre, avec $\text{pH} = 2{,}38$ et $C_a = 0{,}10\ \text{mol.L}^{-1}$ (question 4) :
+
+          $$10^{-\text{pH}} = 10^{-2{,}38} \approx 4{,}17\times10^{-3}\ \text{mol.L}^{-1}$$
+
+          $$C_a - 10^{-\text{pH}} = 0{,}100 - 0{,}00417 = 9{,}58\times10^{-2}\ \text{mol.L}^{-1}$$
+
+          $$\frac{[A^-]}{[AH]} = \frac{4{,}17\times10^{-3}}{9{,}58\times10^{-2}}$$
+
+          $$\boxed{\frac{[A^-]}{[AH]} \approx 4{,}35\times10^{-2}}$$
+
+          **Le piège.** Deux concentrations portent presque le même nom et ne sont pas la même chose : $C_a = 0{,}10\ \text{mol.L}^{-1}$ est la concentration **apportée** (ce qu'on a dissous, avant toute réaction), tandis que $[AH]_{eq} = 9{,}58\times10^{-2}\ \text{mol.L}^{-1}$ est la concentration **effective** de l'acide resté intact. Le piège qui coûte le point est d'écrire $[AH]_{eq} \approx C_a$ « puisque l'acide est faible et se dissocie peu » : c'est numériquement presque vrai ici, mais l'énoncé demande l'expression **exacte**, et le terme $-\,10^{-\text{pH}}$ au dénominateur est précisément ce qu'il faut montrer.
+      - id: q7
+        part: "II- Étude de la solution S_a"
+        stem: |-
+          **2.2)** **(0,25 pt)** En déduire l'espèce chimique prédominante dans la solution $S_a$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » veut dire : ne recalcule rien. Le rapport de la question précédente se compare à $1$, et c'est tout ce que demande le rung 5 — si $\dfrac{[A^-]}{[AH]} < 1$, c'est que $[AH] > [A^-]$, donc que la forme acide l'emporte.
+
+          $$\frac{[A^-]}{[AH]} \approx 4{,}35\times10^{-2} \ll 1$$
+
+          $$\boxed{AH\ \text{prédomine : la solution } S_a \text{ contient surtout de l}\text{'}\text{acide méthanoïque non dissocié}}$$
+
+          **Le contrôle par le diagramme de prédominance.** Tu vas trouver $pK_A = 3{,}74$ à la question suivante. La solution est à $\text{pH} = 2{,}38 < pK_A$ : on se situe donc **sous** la frontière $\text{pH} = pK_A$, dans la zone où c'est la forme acide qui prédomine. Les deux lectures — le rapport et le diagramme — disent la même chose, comme elles le doivent, puisque le diagramme n'est que la mise en image de $\dfrac{[A^-]}{[AH]} = 10^{\text{pH}-pK_A}$.
+
+          **Le piège.** « Prédominer » ne veut pas dire « être seul ». Retourne le rapport : $\dfrac{[AH]}{[A^-]} = \dfrac{1}{4{,}35\times10^{-2}} \approx 23$. Il y a donc environ $23$ molécules $\text{HCOOH}$ pour un seul ion $\text{HCOO}^-$ — l'ion est écrasé numériquement, mais il est bel et bien là, et c'est justement lui qui fixe le pH mesuré.
+      - id: q8
+        part: "II- Étude de la solution S_a"
+        stem: |-
+          **(0,5 pt)** Déterminer la valeur du $pK_A$ du couple $AH/A^-$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La constante d'acidité est, par définition (rung 4), la constante d'équilibre de la réaction écrite à la question 5. Regarde son expression : elle se factorise en deux morceaux que tu possèdes déjà tous les deux, sans aucun calcul supplémentaire.
+
+          $$K_A = \frac{[A^-]_{eq}\,[H_3O^+]_{eq}}{[AH]_{eq}} = [H_3O^+]_{eq} \times \frac{[A^-]_{eq}}{[AH]_{eq}}$$
+
+          Le premier facteur vient du pH, le second est le rapport de la question 6 :
+
+          $$K_A = 4{,}17\times10^{-3} \times 4{,}35\times10^{-2} \approx 1{,}81\times10^{-4}$$
+
+          $$pK_A = -\log K_A = -\log\left(1{,}81\times10^{-4}\right) = 4 - \log(1{,}81) = 4 - 0{,}26$$
+
+          $$\boxed{pK_A \approx 3{,}74}$$
+
+          **La voie courte, pour vérifier.** Le rung 5 donne $\log\dfrac{[A^-]}{[AH]} = \text{pH} - pK_A$, donc $pK_A = \text{pH} - \log\left(4{,}35\times10^{-2}\right) = 2{,}38 - (-1{,}36) = 3{,}74$. Même valeur par un autre chemin. Et la valeur tabulée du couple $\text{HCOOH}/\text{HCOO}^-$ est $pK_A = 3{,}75$ : l'acide est bien identifié.
+
+          **Le piège, et il concerne la figure 1.** Le rung 10 offre un raccourci séduisant : à la **demi-équivalence**, $V_b = \dfrac{V_{bE}}{2} = 7{,}5\ \text{mL}$, on lit $\text{pH} \approx pK_A$ directement sur la courbe. Applique-le à la figure de ce sujet : à $7{,}5\ \text{mL}$, la courbe $C_1$ donne $\text{pH} \approx 4{,}8$, donc $pK_A \approx 4{,}8$ — et non $3{,}74$. Qui croire ? **Le calcul.** Cette figure n'est tracée fidèlement qu'au voisinage du saut ; ailleurs elle est qualitative, et elle se trahit elle-même : elle part de $\text{pH} \approx 3{,}2$ en $V_b = 0$ alors que l'énoncé mesure $\text{pH} = 2{,}38$ pour cette même solution $S_a$. La règle à retenir vaut bien au-delà de ce sujet : sur une figure d'examen, on lit ce que l'énoncé demande d'y lire — ici $V_{bE}$, et rien d'autre — et l'on calcule tout le reste.
+      - id: q9
+        part: "III- Influence de la dilution sur le taux d'avancement final"
+        stem: |-
+          **(0,25 pt)** Montrer que le taux d'avancement final $\tau$ de la réaction de l'acide avec l'eau s'écrit sous la forme $\tau = \dfrac{10^{-\text{pH}}}{C}$, où $C$ est la concentration de la solution préparée.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le taux d'avancement final compare ce qui s'est réellement passé à ce qui se serait passé si la réaction était allée jusqu'au bout (rung 6) : $\tau = \dfrac{x_f}{x_{max}}$. Il faut donc écrire ces deux avancements séparément, dans un volume $V$ quelconque, et regarder ce qui survit au rapport.
+
+          **L'avancement maximal.** Si la réaction était totale, tout l'acide apporté serait dissocié. La quantité apportée est $n = C\,V$, donc :
+
+          $$x_{max} = C\,V$$
+
+          **L'avancement final.** Chaque molécule $AH$ réellement dissociée a libéré un ion $H_3O^+$ (coefficients $1{:}1$, tableau de la question 6). L'avancement atteint se lit donc sur les ions oxonium présents :
+
+          $$x_f = [H_3O^+]_{eq} \times V$$
+
+          On fait le rapport ; le volume $V$ se simplifie, et la définition du pH achève le travail :
+
+          $$\tau = \frac{x_f}{x_{max}} = \frac{[H_3O^+]_{eq}\,V}{C\,V} = \frac{[H_3O^+]_{eq}}{C}$$
+
+          $$\boxed{\tau = \frac{10^{-\text{pH}}}{C}}$$
+
+          **Le piège.** $x_{max}$ ne se lit sur aucune courbe : il se **calcule** à partir de ce qu'on a versé dans le bécher, $C\,V$. C'est un avancement fictif, celui d'une réaction qui n'a pas eu lieu — et le confondre avec l'avancement réellement mesuré vide la définition de $\tau$ de tout son sens. Note aussi que $V$ disparaît : $\tau$ ne dépend pas de la taille de la prise d'essai, seulement de $C$ et du pH. C'est ce qui rend la question suivante possible.
+      - id: q10
+        part: "III- Influence de la dilution sur le taux d'avancement final"
+        stem: |-
+          **(0,5 pt)** Recopier le tableau suivant et le compléter en exploitant la courbe de la figure 3 :
+
+          | Solution | $S_1$ | $S_2$ |
+          |---|:---:|:---:|
+          | pH | 2,8 | 3,6 |
+          | $\tau$ | | |
+          | $C\ (\text{mol.L}^{-1})$ | | |
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux cases par colonne, et deux gestes bien distincts : la ligne $\tau$ se **lit** sur la figure 3, la ligne $C$ se **calcule** en retournant la formule de la question 9. Ne mélange pas les deux — la figure ne porte aucun axe de concentration.
+
+          **Les deux lectures sur la figure 3.** On monte depuis l'abscisse jusqu'à la courbe en S, puis on lit l'ordonnée :
+
+          $$\tau(S_1) \approx 0{,}10 \quad\text{à}\quad \text{pH} = 2{,}8 \qquad\qquad \tau(S_2) \approx 0{,}40 \quad\text{à}\quad \text{pH} = 3{,}6$$
+
+          **Le calcul des concentrations.** On isole $C$ dans $\tau = \dfrac{10^{-\text{pH}}}{C}$ :
+
+          $$C = \frac{10^{-\text{pH}}}{\tau}$$
+
+          Pour $S_1$ : $10^{-2{,}8} \approx 1{,}58\times10^{-3}$, donc
+
+          $$C_1 = \frac{1{,}58\times10^{-3}}{0{,}10} \approx 1{,}6\times10^{-2}\ \text{mol.L}^{-1}$$
+
+          Pour $S_2$ : $10^{-3{,}6} \approx 2{,}51\times10^{-4}$, donc
+
+          $$C_2 = \frac{2{,}51\times10^{-4}}{0{,}40} \approx 6{,}3\times10^{-4}\ \text{mol.L}^{-1}$$
+
+          Le tableau complété :
+
+          | Solution | $S_1$ | $S_2$ |
+          |---|:---:|:---:|
+          | pH | 2,8 | 3,6 |
+          | $\tau$ | $0{,}10$ | $0{,}40$ |
+          | $C\ (\text{mol.L}^{-1})$ | $1{,}6\times10^{-2}$ | $6{,}3\times10^{-4}$ |
+
+          **Le contrôle qui valide les lectures graphiques.** Chaque colonne doit redonner le $pK_A$ trouvé en partie II, puisque c'est le même acide. En reprenant le tableau d'avancement de la question 6, $K_A = \dfrac{\left([H_3O^+]_{eq}\right)^2}{C - [H_3O^+]_{eq}}$. Pour $S_1$ : $\dfrac{\left(1{,}58\times10^{-3}\right)^2}{1{,}6\times10^{-2} - 1{,}58\times10^{-3}} = \dfrac{2{,}51\times10^{-6}}{1{,}43\times10^{-2}} \approx 1{,}76\times10^{-4}$, soit $pK_A \approx 3{,}75$. Pour $S_2$ : $\dfrac{\left(2{,}51\times10^{-4}\right)^2}{6{,}3\times10^{-4} - 2{,}51\times10^{-4}} = \dfrac{6{,}30\times10^{-8}}{3{,}8\times10^{-4}} \approx 1{,}66\times10^{-4}$, soit $pK_A \approx 3{,}78$. Les deux retombent sur $3{,}74$–$3{,}78$ : les lectures graphiques sont confirmées par leur propre chimie.
+
+          **Le piège.** Sur la figure 3, $\tau$ est en ordonnée et le **pH** en abscisse — pas la concentration. Celui qui cherche $C$ sur un axe cherchera longtemps : $C$ n'est jamais lu, il est toujours déduit. Et vérifie l'ordre de grandeur de tes lectures d'ordonnée : le haut du cadre est à $\tau \approx 1{,}25$, mais $\tau$ est un rapport de deux avancements, donc il ne peut jamais dépasser $1$ — une lecture au-dessus de $1$ est une lecture fausse.
+      - id: q11
+        part: "III- Influence de la dilution sur le taux d'avancement final"
+        stem: |-
+          **(0,25 pt)** En déduire l'effet de la dilution sur le taux d'avancement final de la réaction.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Tout est déjà dans le tableau : il suffit de le lire dans le bon sens, en comparant les deux colonnes ligne à ligne.
+
+          $$C : \ 1{,}6\times10^{-2} \longrightarrow 6{,}3\times10^{-4}\ \text{mol.L}^{-1} \qquad \frac{1{,}6\times10^{-2}}{6{,}3\times10^{-4}} \approx 25$$
+
+          $$\tau : \ 0{,}10 \longrightarrow 0{,}40 \qquad \frac{0{,}40}{0{,}10} = 4$$
+
+          Passer de $S_1$ à $S_2$, c'est diluer environ $25$ fois — et le taux d'avancement final est multiplié par $4$ :
+
+          $$\boxed{C\ \text{diminue} \ \Longrightarrow\ \tau\ \text{augmente : la dilution favorise la dissociation de l}\text{'}\text{acide}}$$
+
+          **Pourquoi, mécaniquement.** Reprends le tableau d'avancement de la question 6, écrit cette fois avec $\tau$ : $[A^-]_{eq} = [H_3O^+]_{eq} = \tau C$ et $[AH]_{eq} = C(1-\tau)$. En reportant dans la définition de $K_A$ :
+
+          $$K_A = \frac{(\tau C)(\tau C)}{C(1-\tau)} = \frac{C\,\tau^{2}}{1-\tau}$$
+
+          $K_A$ est fixé — c'est la même espèce chimique dans les deux béchers. Donc si $C$ diminue, le facteur $\dfrac{\tau^{2}}{1-\tau}$ doit **augmenter** d'autant pour que le produit reste constant, et cette quantité est croissante avec $\tau$ : la dilution force $\tau$ à monter. Vérifie sur les chiffres : $\dfrac{1{,}6\times10^{-2} \times (0{,}10)^2}{0{,}90} \approx 1{,}8\times10^{-4}$ et $\dfrac{6{,}3\times10^{-4} \times (0{,}40)^2}{0{,}60} \approx 1{,}7\times10^{-4}$ — le même $K_A$, comme annoncé.
+
+          **Le piège, et c'est le plus important de l'exercice.** Tu as appris que la **force** d'un acide est une propriété de sa nature chimique, indépendante de la concentration. C'est vrai — mais uniquement de $K_A$ et de $pK_A$. Tu viens de le vérifier : $S_1$ et $S_2$ redonnent toutes deux $pK_A \approx 3{,}75$, la valeur de la partie II, alors que leurs concentrations diffèrent d'un facteur $25$. Le taux d'avancement final $\tau$, lui, n'est **pas** une carte d'identité du couple : il passe de $0{,}10$ à $0{,}40$ pour ce même acide. $\tau$ est une propriété de **la solution** — il dépend à la fois du couple et de la concentration. Conséquence pratique à ne jamais oublier : on ne peut comparer la force de deux acides par leur $\tau$ qu'à **concentration égale**. Un acide très dilué peut afficher un $\tau$ plus grand qu'un acide plus fort mais plus concentré.
 
   # ── bk-2018-n-x1 — 2018 N, Exercice I (Partie 2, sous-partie 1) : dosage pH-métrique acide lactique/NaOH ──
   # SCOPE NOTE (flag, non résolu ici — à l'arbitrage de l'owner) :
