@@ -420,27 +420,50 @@ $E_1$ ; une flèche verticale étiquetée « $p(t)$ » monte vers l'entrée $E_2
 sortie par rapport au fil du bas. Le fil du bas porte le symbole de masse
 (trois traits horizontaux superposés). Légende : « Figure 3 ».
 
-*Figure 4 (courbe, décrite depuis l'image, p. 5) :* $u_S\ (\text{V})$ en
-fonction de $t\ (\text{ms})$, sur quadrillage serré uniforme. Ordonnée :
-seuls trois niveaux sont chiffrés, « $0{,}33$ », « $0$ » et « $-0{,}33$ » ;
-l'écart $0 \to 0{,}33$ couvre **2 carreaux** du quadrillage. En haut du
-cadre, une **double flèche horizontale de calibration étiquetée
-« 0,10 »**, s'étendant sur **2 carreaux** du quadrillage — soit
-$0{,}10\ \text{ms}$ pour 2 carreaux, un carreau $= 0{,}05\ \text{ms}$
-*(rôle : étalon de temps ; ce n'est pas une flèche de période)*. Le signal
-est une oscillation rapide (porteuse) dont l'amplitude est modulée par une
-enveloppe lente : amplitude **maximale** au bord gauche du cadre, qui décroît
-jusqu'à un **minimum au centre** du cadre, puis recroît jusqu'à un maximum
-vers le bord droit. Lectures sur le quadrillage : au minimum de l'enveloppe,
-les crêtes affleurent la ligne chiffrée $0{,}33$ (très légèrement au-dessus
-sur le scan — *lecture à confirmer*) ; aux maxima de l'enveloppe, les crêtes
-culminent vers 9 à 10 carreaux au-dessus de l'axe, soit $\approx 1{,}6\
-\text{V}$ *(lecture à confirmer)*. La période des oscillations rapides est de
-l'ordre de la largeur de la flèche de calibration *(comptage exact des crêtes
-par carreau à confirmer)* ; la période de l'enveloppe (maximum → minimum →
-maximum) couvre sensiblement la largeur du cadre, soit $\approx 20$ carreaux
-$\approx 1{,}0\ \text{ms}$ *(lecture à confirmer)*. Légende : « Figure 4 »
-(cartouche en bas à gauche).
+*Figure 4 (courbe, re-décrite depuis l'image, mesurée au pixel, p. 5) :*
+$u_S\ (\text{V})$ en fonction de $t\ (\text{ms})$, sur quadrillage serré
+uniforme, cadre de **27 carreaux de large** et de $\pm 11$ carreaux de haut.
+**Ordonnée** : seuls trois niveaux sont chiffrés, « $0{,}33$ », « $0$ » et
+« $-0{,}33$ » ; l'écart $0 \to 0{,}33$ couvre **2 carreaux**, donc
+1 carreau $= 0{,}165\ \text{V}$ et le cadre va de $-1{,}8$ à $+1{,}8\
+\text{V}$. **Abscisse** : en haut du cadre, une **double flèche horizontale de
+calibration étiquetée « 0,10 »** s'étendant sur **exactement 2 carreaux** —
+donc 1 carreau $= 0{,}05\ \text{ms}$ et le cadre couvre
+$27 \times 0{,}05 = 1{,}35\ \text{ms}$ *(rôle : étalon de temps ; ce n'est
+pas une flèche de période)*.
+
+Le signal est une oscillation rapide (porteuse) dont l'amplitude est modulée
+par une enveloppe lente. **L'enveloppe fait deux périodes complètes et un quart
+dans le cadre** — et non une seule : de gauche à droite on lit un **maximum au
+bord gauche ($t \simeq 0$)**, un **minimum vers $t \simeq 0{,}30\
+\text{ms}$**, un **maximum vers $t \simeq 0{,}60\ \text{ms}$** (donc
+au voisinage du milieu du cadre), un **minimum vers $t \simeq 0{,}90\
+\text{ms}$**, un **maximum vers $t \simeq 1{,}20\ \text{ms}$**, puis une
+décroissance jusqu'au bord droit.
+
+Lectures fermes (mesure au pixel) :
+- **porteuse** : une oscillation rapide par carreau exactement (13 crêtes
+  relevées sur 12 carreaux consécutifs) → $T = 0{,}05\ \text{ms}$, soit
+  $F = \mathbf{2{,}0\cdot10^{4}\ \text{Hz}} = 20\ \text{kHz}$ ;
+- **enveloppe** : minima consécutifs distants de **12 carreaux** →
+  $T_{env} = 0{,}60\ \text{ms}$, soit
+  $f = \mathbf{1{,}7\cdot10^{3}\ \text{Hz}}$ environ
+  ($1/0{,}60\ \text{ms} = 1{,}67\ \text{kHz}$) — bien dans le domaine
+  audible, et $F/f = 12 \ge 10$ ;
+- **amplitudes** : aux maxima d'enveloppe les crêtes culminent à
+  $\approx 9{,}7$ carreaux, soit $U_{max} \simeq \mathbf{1{,}6\ \text{V}}$ ;
+  aux minima d'enveloppe elles atteignent $\approx 2{,}4$ carreaux, soit
+  $U_{min} \simeq \mathbf{0{,}4\ \text{V}}$ — donc **un peu au-dessus de la
+  ligne chiffrée $0{,}33$, sans s'y poser**. D'où
+  $A = \frac{U_{max}+U_{min}}{2} = 1{,}0\ \text{V}$ et
+  $m = \frac{U_{max}-U_{min}}{U_{max}+U_{min}} = \frac{1{,}2}{2{,}0}
+  = 0{,}60 < 1$ : modulation de bonne qualité.
+  *(La lecture concurrente $U_{max}=1{,}65$ / $U_{min}=0{,}33$, c.-à-d. 10 et
+  2 carreaux pile, est écartée par la mesure : les crêtes tombent à
+  $9{,}7$ et $2{,}4$ carreaux, ce qui ne laisse d'ambiguïté ni sur $A$ ni sur
+  $m$.)*
+
+Légende : « Figure 4 » (cartouche en bas à gauche).
 
 ---
 
