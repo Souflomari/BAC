@@ -15,9 +15,18 @@
 # « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
 # entre apostrophes simples dans steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue) : six entrées, couvrant cinq sessions
+# NOTE ÉDITORIALE (pour la revue) : sept entrées, couvrant six sessions
 # « vérifié » de cette notion, sont désormais banquées : 2018 N (deux
-# sous-parties de l'Exercice III), 2019 N, 2021 N, 2022 N et 2025 N.
+# sous-parties de l'Exercice III), 2019 N, 2021 N, 2021 R, 2022 N et 2025 N.
+#
+# Le 2021 R (Exercice 4, Partie I — échelon de tension lu sur la courbe
+# i(t), tangente à l'origine) est la PREMIÈRE entrée de session rattrapage
+# de cette banque. Elle ne recoupe ni le sommet de leçon ni aucune autre
+# entrée : c'est la seule qui prenne le COURANT pour inconnue (équation
+# différentielle en i, obtenue en dérivant la loi des mailles) et la seule
+# qui lise tau sur une exponentielle DÉCROISSANTE. Aucun recoupement
+# numérique avec le 2021 N (E = 6 V / R1 = 120 ohms / C = 100 µF ici,
+# contre E = 12 V / R = 1000 ohms / C = 12 µF là).
 #
 # Le 2019 N (Exercice III, Partie I — charge) sert AUSSI de sommet de leçon
 # (r-bac, exercises.yaml, marqueur [[exercise:r-bac]] à R5) : mêmes données,
@@ -65,6 +74,19 @@
 #     courbes sont q(t), u_C(t) ou i(t) contre le temps, lues par tangente
 #     à l'origine ou méthode des 63 %, rung 3). Pontée au point d'usage
 #     dans le raisonnement de la question 2.
+#   - bk-2021-r-x4, q2 : l'établissement de l'équation différentielle en
+#     i(t) passe par la DÉRIVATION de la loi des mailles par rapport au
+#     temps (dE/dt = 0, puis du_C/dt = i/C). Le rung 1 n'établit jamais
+#     l'équation qu'en u_C — et bk-2019-n-x3 la pose en q — ; la variante en
+#     i, avec son second membre nul, n'apparaît nulle part dans la leçon.
+#     Pontée au point d'usage dans le raisonnement de la question 2.
+#   - bk-2021-r-x4, q4 : lecture de tau par la tangente à l'origine sur une
+#     exponentielle DÉCROISSANTE (i(t)), où la tangente coupe l'axe des
+#     abscisses — c'est-à-dire l'asymptote i = 0 — en t = tau. Le rung 3
+#     n'énonce et ne démontre la méthode que sur la CROISSANTE u_C(t)
+#     (tangente coupant l'asymptote u_C = E). Même propriété, démonstration
+#     re-faite en une ligne au point d'usage dans le raisonnement de la
+#     question 4, pas invoquée de mémoire.
 #   - bk-2025-n-x1, q1 et q2 : le générateur G est un générateur IDÉAL DE
 #     COURANT (I0 constant), et non le générateur idéal de tension E des
 #     rungs R0–R4. Le mécanisme de R1 — la boucle qui se referme sur
@@ -394,6 +416,154 @@ entries:
             note: "R = 10^3 ohms est donne dans l'enonce."
           - math: '\boxed{C = 1{,}2\times10^{-5}\ \text{F} = 12\ \mu\text{F}}'
             note: "Resultat demande."
+
+  # ── bk-2021-r-x4 — 2021 R, Exercice 4 (Partie I) : échelon RC lu sur i(t), tangente à l'origine ──
+  - id: bk-2021-r-x4
+    title: "Réponse d'un dipôle RC à un échelon de tension : équation différentielle en i(t), constante de temps et capacité"
+    source:
+      year: 2021
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — I. Réponse d'un dipôle RC à un échelon de tension"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), AlloSchool RS 28F, element/127290 (Exercice 4,
+        Partie I — réponse d'un dipôle RC à un échelon de tension ; barème
+        de la partie = 2,0 pt sur les 5,5 pt de l'exercice complet, qui
+        comporte aussi une Partie II sur la réponse d'un dipôle RL — hors
+        périmètre, transcrite sous dipole-rl.md — et une Partie III sur les
+        oscillations libres d'un circuit RLC série, transcrite sous
+        rlc-serie.md). Transcription vérifiée par une passe adversariale
+        indépendante (2026-08-22) : re-fetch du scan, figures 1 et 2
+        re-décrites depuis le dessin (upload-84198/0005-big.jpg et
+        0006-big.jpg) et non depuis l'énoncé, puis physique re-dérivée.
+        Figure 2 mesurée au pixel : quadrillage à 6 ms et 6,25 mA, chiffrage
+        un trait vertical sur deux (12, 24, 36) alors que le cadre se
+        poursuit jusqu'à t = 60 ms — piège de lecture signalé et conservé
+        dans la description. Départ à I0 = 50 mA exactement, tangente (T)
+        issue de (0 ; 50) coupant l'axe des abscisses sur la graduation
+        t = 12 ms (mesure : 11,5 ms, soit 2 pixels avant le trait, sous
+        l'épaisseur du tiret). Recoupements : R1 = E/I0 = 6/0,050 = 120 Ω,
+        valeur EXACTE que la question 1 demande d'établir ; C = τ/R1 =
+        12×10⁻³/120 = 1,0×10⁻⁴ F = 100 µF, valeur EXACTE exigée par la
+        question 4 ; et la courbe passe bien par I0/e = 18,4 mA à
+        t = 12 ms (mesuré ≈ 18 mA). La lecture τ = 12 ms est donc confirmée
+        par trois recoupements indépendants, sans réserve.
+    intro: |-
+      **Réponse d'un dipôle RC à un échelon de tension (examen national, session de rattrapage 2021 — Exercice 4, Partie I, 2 points).**
+
+      Cet exercice se propose d'étudier la réponse d'un dipôle RC à un échelon de tension, la réponse d'un dipôle RL à un échelon de tension, et les oscillations libres dans un circuit RLC série. Pour cela, on dispose d'un générateur idéal de tension ayant une force électromotrice $E = 6\ \text{V}$, d'un condensateur de capacité $C$, d'une bobine d'inductance $L$ et de résistance $r$, d'un conducteur ohmique de résistance $R$ réglable et d'un interrupteur $K$.
+
+      **I — Réponse d'un dipôle RC à un échelon de tension.** On réalise le montage représenté sur le schéma de la figure 1. On ajuste la résistance $R$ sur la valeur $R_1$ puis on ferme le circuit à un instant choisi comme origine des dates $t = 0$. La courbe de la figure 2 donne l'évolution de l'intensité du courant $i(t)$ dans le circuit. $(T)$ est la tangente à la courbe au point d'abscisse $t = 0$.
+
+      **Figure 1 (schéma).** Boucle unique. Branche du haut : le conducteur ohmique $R$ — un rectangle traversé d'une flèche oblique montant vers la droite, symbole de la résistance réglable — avec l'étiquette « R » sous le rectangle, du côté de la queue de la flèche. Branche de droite : le générateur, symbolisé par un cercle traversé verticalement par le fil, avec à sa droite, hors du cercle, une flèche verticale montante étiquetée « E » (fléchage de la tension). Branche du bas, de gauche à droite : le condensateur (deux traits parallèles verticaux), étiquette « C » en dessous, puis l'interrupteur $K$ (levier entre deux points, étiquette « K » au-dessus), refermant la boucle vers la droite. Légende « Figure 1 » sous la boucle, à droite. Aucun sens de courant n'est fléché sur le schéma.
+
+      **Figure 2 (courbe).** $i\ (\text{mA})$ en fonction de $t\ (\text{ms})$. Quadrillage : traits verticaux tous les $6\ \text{ms}$, chiffrés un sur deux — $12$, $24$, $36$ ; traits horizontaux tous les $6{,}25\ \text{mA}$, chiffrés $0$, $25$, $50$. Le cadre ne s'arrête pas au dernier chiffrage : il se poursuit sur deux divisions chiffrables au-delà de $36$ et son bord droit est à $t = 60\ \text{ms}$ ; de même son bord supérieur est à $i \approx 62{,}5\ \text{mA}$. Courbe décroissante exponentielle partant exactement de $i = 50\ \text{mA}$ à $t = 0$ et tendant vers $0$ en fin de plage ; elle passe par $(12\ \text{ms}\,;\,\approx 18\ \text{mA})$. La tangente $(T)$, en tirets et étiquetée « (T) » en bas à gauche (vers $t \approx 4\ \text{ms}$, $i \approx 6\ \text{mA}$), part du point $(0\,;\,50)$ et coupe l'axe des abscisses à la graduation $t = 12\ \text{ms}$. Légende « Figure 2 ».
+    questions:
+      - id: q1
+        part: "I — Lire le circuit à son premier instant"
+        stem: |-
+          (0,5 pt) Montrer que la valeur de $R_1$ est : $R_1 = 120\ \Omega$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On demande une résistance, et aucun ohmmètre n'apparaît nulle part : la seule information disponible est la courbe $i(t)$. Il faut donc trouver l'instant où le circuit se laisse lire le plus simplement — et cet instant, c'est $t = 0$. Le condensateur est initialement déchargé, donc à la fermeture il ne s'oppose encore à rien : toute la force électromotrice tombe sur le conducteur ohmique. C'est le mécanisme du rung 1 de la leçon, regardé à son tout premier instant.
+
+          Loi des mailles sur la boucle série, en convention récepteur :
+
+          $$E = u_R + u_C = R_1\,i + u_C$$
+
+          À $t = 0^+$, le condensateur est déchargé et sa tension est continue (rung 2) : $u_C(0^+) = u_C(0^-) = 0$. Il reste :
+
+          $$E = R_1\,i(0^+) \quad\Longrightarrow\quad i(0^+) = \frac{E}{R_1} = I_0$$
+
+          La figure 2 donne la valeur de départ de la courbe : $I_0 = 50\ \text{mA} = 50\times10^{-3}\ \text{A}$. On isole $R_1$ :
+
+          $$R_1 = \frac{E}{I_0} = \frac{6}{50\times10^{-3}} = \frac{6}{0{,}050} = 120\ \Omega$$
+
+          $$\boxed{R_1 = 120\ \Omega}$$
+
+          **Le piège de cette question.** Il est double, et les deux moitiés sont dans l'ordonnée. D'abord l'unité : l'axe est en MILLIAMPÈRES, et oublier le facteur $10^{-3}$ donne $R_1 = 0{,}12\ \Omega$ — une résistance absurde, mais qui ne se dénonce pas toute seule si on ne regarde pas l'ordre de grandeur. Ensuite le quadrillage : les traits horizontaux valent $6{,}25\ \text{mA}$ et un seul sur quatre est chiffré ($0$, $25$, $50$) ; c'est le chiffrage $50$ qu'on lit, pas un décompte de divisions.
+      - id: q2
+        part: "I — Établir le modèle, cette fois en i(t)"
+        stem: |-
+          (0,5 pt) Montrer que l'équation différentielle vérifiée par l'intensité du courant s'écrit sous la forme : $i + R_1 C\,\dfrac{di}{dt} = 0$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La leçon établit toujours l'équation différentielle avec $u_C$ pour inconnue (rung 1). Ici l'inconnue est le COURANT, et la courbe fournie est celle de $i(t)$ : il faut donc une équation en $i$. Le geste qui y mène n'est pas dans les rungs, mais il est court et il vaut d'être ajouté à ton répertoire — **on dérive la loi des mailles par rapport au temps**. C'est légitime parce que la maille est vraie à CHAQUE instant, pas seulement à un instant : deux fonctions du temps égales ont des dérivées égales.
+
+          On repart de la maille, avec $u_R = R_1 i$ (loi d'Ohm) :
+
+          $$E = R_1\,i + u_C$$
+
+          On dérive membre à membre par rapport à $t$. Le générateur est idéal et $E$ est une constante, donc sa dérivée est nulle :
+
+          $$0 = R_1\,\frac{di}{dt} + \frac{du_C}{dt}$$
+
+          Reste à exprimer $\dfrac{du_C}{dt}$ avec le courant. Les deux relations du rung 1 le donnent : $i = \dfrac{dq}{dt}$ et $q = C\,u_C$, donc $i = C\dfrac{du_C}{dt}$, c'est-à-dire
+
+          $$\frac{du_C}{dt} = \frac{i}{C}$$
+
+          On substitue :
+
+          $$0 = R_1\,\frac{di}{dt} + \frac{i}{C}$$
+
+          On multiplie toute l'équation par $C$ et on range dans l'ordre demandé :
+
+          $$\boxed{i + R_1 C\,\frac{di}{dt} = 0}$$
+
+          **Le piège de cette question.** C'est la disparition de $E$, et elle surprend. L'équation en $u_C$ avait un second membre ($E$ ou $E/RC$) ; celle en $i$ n'en a pas — elle est *sans second membre*. Rien ne s'est perdu : dériver une constante l'efface, voilà tout. Et cette différence a un sens physique, que la question suivante exploite — sans second membre, la solution tend vers zéro, ce qui est bien le comportement du courant, alors que $u_C$, elle, tendait vers $E$.
+      - id: q3
+        part: "I — Vérifier la solution proposée et en tirer τ"
+        stem: |-
+          (0,5 pt) Déterminer l'expression de la constante de temps $\tau$ pour que la fonction $i = I_0.e^{-\frac{t}{\tau}}$ soit solution de cette équation différentielle.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est exactement la méthode du physicien du rung 2 : on n'intègre pas l'équation par une machinerie, on injecte la forme proposée dedans et on regarde à quelle condition elle passe. La condition qui tombe EST l'expression de $\tau$ — elle n'est pas à mémoriser, elle se récolte.
+
+          On dérive la forme proposée :
+
+          $$i = I_0\,e^{-\frac{t}{\tau}} \quad\Longrightarrow\quad \frac{di}{dt} = -\frac{I_0}{\tau}\,e^{-\frac{t}{\tau}}$$
+
+          On reporte les deux dans l'équation $i + R_1 C\dfrac{di}{dt} = 0$ :
+
+          $$I_0\,e^{-\frac{t}{\tau}} + R_1 C\left(-\frac{I_0}{\tau}\,e^{-\frac{t}{\tau}}\right) = 0$$
+
+          On met $I_0\,e^{-\frac{t}{\tau}}$ en facteur :
+
+          $$I_0\,e^{-\frac{t}{\tau}}\left(1 - \frac{R_1 C}{\tau}\right) = 0$$
+
+          Cette égalité doit être vraie **quel que soit $t$**. Or $I_0 \neq 0$ et l'exponentielle ne s'annule jamais : c'est donc la parenthèse qui doit être nulle.
+
+          $$1 - \frac{R_1 C}{\tau} = 0 \quad\Longrightarrow\quad \boxed{\tau = R_1 C}$$
+
+          **Le piège de cette question.** Il est logique, pas calculatoire. Beaucoup écrivent « le produit est nul donc l'exponentielle est nulle » et cherchent une valeur de $t$ : c'est l'erreur. On ne cherche pas UN instant qui annule l'expression, on cherche la condition pour que l'équation tienne à TOUS les instants. C'est précisément parce que $e^{-t/\tau}$ ne s'annule jamais qu'on a le droit de simplifier par elle — et c'est ce droit qui livre $\tau = R_1 C$.
+      - id: q4
+        part: "I — Exploiter la tangente à l'origine, puis remonter à C"
+        stem: |-
+          (0,5 pt) Déterminer, graphiquement, la valeur de $\tau$, puis en déduire que $C = 100\ \mu\text{F}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La question précédente a donné $\tau = R_1 C$, et $R_1$ est connue depuis la question 1 : il ne manque donc que $\tau$ pour tenir $C$. Et $\tau$ se lit sur la figure, par la tangente à l'origine.
+
+          **Le pont à faire.** Le rung 3 énonce la méthode de la tangente sur la courbe CROISSANTE $u_C(t)$ : la tangente en $t=0$ coupe l'asymptote horizontale $u_C = E$ en $t = \tau$. Ici la courbe est décroissante — mais c'est la même propriété, avec la même démonstration en une ligne. La pente à l'origine vaut
+
+          $$\frac{di}{dt}(0) = -\frac{I_0}{\tau}$$
+
+          Une droite qui part de la hauteur $I_0$ en descendant avec cette pente atteint l'asymptote $i = 0$ après la durée $\dfrac{I_0}{I_0/\tau} = \tau$. **Sur une décroissance, la tangente à l'origine coupe donc l'axe des abscisses exactement à $t = \tau$.**
+
+          **La lecture.** Sur la figure 2, $(T)$ part de $(0\,;\,50\ \text{mA})$ et coupe l'axe des abscisses sur la graduation $t = 12\ \text{ms}$ :
+
+          $$\tau = 12\ \text{ms} = 12\times10^{-3}\ \text{s}$$
+
+          **La capacité.** On inverse $\tau = R_1 C$, avec $R_1 = 120\ \Omega$ (question 1) :
+
+          $$C = \frac{\tau}{R_1} = \frac{12\times10^{-3}}{120} = 1{,}0\times10^{-4}\ \text{F}$$
+
+          $$\boxed{C = 1{,}0\times10^{-4}\ \text{F} = 100\ \mu\text{F}}$$
+
+          **Le contrôle qui rassure.** La valeur exigée par l'énoncé tombe pile : la lecture $\tau = 12\ \text{ms}$ était donc juste. Un second recoupement, gratuit, est disponible sur la figure — à $t = \tau$, le courant doit valoir $i(\tau) = I_0\,e^{-1} \approx 50 \times 0{,}37 = 18{,}4\ \text{mA}$, et la courbe passe bien par $(12\ \text{ms}\,;\,\approx 18\ \text{mA})$. Deux lectures indépendantes qui se confirment : c'est le meilleur signal qu'on puisse avoir en copie.
+
+          **Le piège de cette question.** Ne cherche pas $\tau$ là où la COURBE semble toucher zéro : elle ne l'atteint jamais, elle s'en approche seulement (il faut environ $5\tau$ pour que ce soit indiscernable). C'est la TANGENTE, la droite en tirets, qui coupe l'axe — et c'est son intersection à elle qu'on lit. Piège jumeau sur l'axe des temps : les traits verticaux valent $6\ \text{ms}$ et ne sont chiffrés qu'un sur deux, le cadre continuant jusqu'à $60\ \text{ms}$ bien au-delà du dernier chiffrage $36$ ; compter les divisions au lieu de lire le chiffrage $12$ mène droit à un $\tau$ faux.
 
   # ── bk-2022-n-x1 — 2022 N, Exercice 3 (section 1) : échelon RC, u_C(t) et i(t), lecture de R puis C ──
   - id: bk-2022-n-x1

@@ -365,52 +365,119 @@ d'ondes électromagnétiques (figure 4).
 *Figure 1 (schéma, p. 4) :* circuit à deux mailles. Branche **de gauche** : le
 générateur, symbole cercle traversé verticalement par le fil, avec à sa gauche
 une flèche verticale montante étiquetée « E ». Branche **du haut** : le fil
-part du sommet du générateur vers la droite jusqu'à une borne marquée d'un
-point et étiquetée « (1) » ; l'interrupteur $K$ (étiquette « K » au-dessus du
-levier) pivote depuis cette zone ; plus à droite, une seconde borne à point
-étiquetée « (2) », d'où le fil continue vers le coin supérieur droit. Branche
-**centrale** (verticale, entre le pivot de $K$ et le bas du circuit) : de haut
-en bas, le conducteur ohmique (rectangle vertical, étiquette « R » à droite),
-puis le condensateur ajustable (deux armatures horizontales barrées d'une
-flèche oblique, étiquette « C » à droite) avec la tension $u_C$ fléchée vers
-le haut à sa gauche, puis la flèche du courant « i » orientée vers le bas sous
-le condensateur, jusqu'à la branche du bas. Branche **de droite** : la bobine
-(spires), étiquette « L » à sa gauche, reliant la borne (2) (via le coin
-supérieur droit) au coin inférieur droit. Branche **du bas** : fil refermant
-les deux mailles. Légende : « Figure 1 ».
+part du sommet du générateur vers la droite et s'arrête sur une borne marquée
+d'un gros point, étiquetée « (1) » au-dessus ; plus à droite, une seconde borne
+à point étiquetée « (2) », d'où le fil repart vers le coin supérieur droit.
+**L'interrupteur $K$ est dessiné en position OUVERTE** : son levier part du
+sommet de la branche centrale et monte obliquement vers le **haut-gauche**, en
+passant *au-dessus et à droite* de la borne (1) sans la toucher (il ne touche
+pas davantage (2)) ; l'étiquette « K » est imprimée au-dessus de l'extrémité
+libre du levier, entre les étiquettes « (1) » et « (2) ». Branche **centrale**
+(verticale, du pivot de $K$ jusqu'au fil du bas) : de haut en bas, le
+conducteur ohmique (rectangle vertical, étiquette « R » à droite), puis le
+condensateur ajustable (deux armatures horizontales barrées d'une flèche
+oblique, étiquette « C » à droite) avec la tension $u_C$ fléchée vers le haut à
+sa gauche, puis la flèche du courant « i » orientée vers le bas sous le
+condensateur. Branche **de droite** : la bobine (spires), étiquette « L » à sa
+gauche, reliant la borne (2) (via le coin supérieur droit) au coin inférieur
+droit. Branche **du bas** : fil refermant les deux mailles. Légende :
+« Figure 1 », sous le cadre.
 
 *Figure 2 (courbe, p. 4) :* $q\,(\mu\text{C})$ en fonction de
 $t\,(\text{ms})$, sur quadrillage à double graduation (traits majeurs sombres,
-sous-quadrillage fin bleu, 5 petits carreaux par division majeure). Axe des
-ordonnées : seules les valeurs $20$ et $40$ sont chiffrées (traits majeurs
-tous les $20\,\mu\text{C}$) ; le cadre monte à $6$ divisions majeures, soit
-$120\,\mu\text{C}$. Axe des abscisses : seules les valeurs $0{,}5$ et $1$ sont
-chiffrées (traits majeurs tous les $0{,}5\ \text{ms}$) ; le cadre s'étend sur
-$5$ divisions majeures, soit jusqu'à $2{,}5\ \text{ms}$. Courbe croissante,
-concave, partant de l'origine et tendant vers un palier confondu avec **le
-trait majeur $q = 120\,\mu\text{C}$** (lecture au trait : la courbe se fond
-dans la gridline supérieure à $6$ divisions de $20\,\mu\text{C}$). La tangente
-$(T)$ à l'origine, en pointillés et étiquetée « (T) » en haut à gauche, monte
-raide depuis l'origine et coupe le niveau du palier au voisinage de
-$t \approx 0{,}35\ \text{ms}$ *(mesure au pixel entre les traits majeurs
-$0{,}25$ et $0{,}5$ ms — lecture à confirmer)*. Légende : « Figure 2 ».
+sous-quadrillage fin bleu à **10 petits carreaux par division majeure** —
+mesuré : pas fin $5{,}9$ px contre $59{,}4$ px pour la division majeure). Axe
+des ordonnées : seules les valeurs $20$ et $40$ sont chiffrées (traits majeurs
+tous les $20\,\mu\text{C}$, donc **un petit carreau $= 2\,\mu\text{C}$**) ; six
+traits majeurs au-dessus de zéro, le sixième valant $120\,\mu\text{C}$, et le
+bord supérieur du cadre passe juste au-dessus de ce trait ($\approx
+122\,\mu\text{C}$). Axe des abscisses : seules les valeurs $0{,}5$ et $1$ sont
+chiffrées (traits majeurs tous les $0{,}5\ \text{ms}$, donc **un petit carreau
+$= 0{,}05\ \text{ms}$**) ; le cadre s'étend sur $5$ divisions majeures, soit
+jusqu'à $2{,}5\ \text{ms}$. Courbe croissante, concave, partant de l'origine et
+tendant vers un palier **confondu avec le trait majeur $q = 120\,\mu\text{C}$**
+(à partir de $t \approx 1{,}8\ \text{ms}$ le tracé se superpose exactement à
+cette gridline). La tangente $(T)$ à l'origine, en pointillés, étiquetée
+« (T) » en haut à gauche, monte raide et **coupe le niveau du palier à
+$t = 0{,}35\ \text{ms}$** — lecture ferme : l'intersection tombe sur le 7ᵉ trait
+fin après l'origine, à moins d'un demi-pixel du repère $0{,}35\ \text{ms}$.
+Légende : « Figure 2 ».
 
 *Figure 3 (courbe, p. 5) :* $q\,(\mu\text{C})$ en fonction de $t$ (axe des
-abscisses étiqueté « t », **sans graduation numérique ni unité imprimée**),
-sur quadrillage à double graduation. Axe des ordonnées : seules les valeurs
+abscisses étiqueté « t » et terminé par une flèche, **sans aucune graduation
+numérique ni unité imprimée**), sur quadrillage à double graduation
+(sous-quadrillage bleu à **5 petits carreaux par division majeure**, soit
+$8\,\mu\text{C}$ par petit carreau). Axe des ordonnées : seules les valeurs
 $40$, $0$ et $-40$ sont chiffrées (traits majeurs tous les $40\,\mu\text{C}$) ;
-le cadre s'étend de $-80$ à $+120\,\mu\text{C}$ ($3$ divisions au-dessus de
-$0$, $2$ au-dessous). Oscillations amorties : la courbe part à $t=0$ du niveau
-du trait majeur supérieur $q(0) = 120\,\mu\text{C}$ *(lecture au trait, à
-confirmer)*, décroît et passe par un premier minimum vers
-$-68\,\mu\text{C}$ *(entre les traits $-40$ et $-80$ — lecture à confirmer)*,
-remonte vers un deuxième maximum qui **affleure exactement le trait
-$+40\,\mu\text{C}$** ; ce maximum est repéré par un segment vertical en
-pointillés descendant jusqu'à l'axe des abscisses, où l'instant est étiqueté
-« $t_1$ » sous l'axe. La courbe continue ensuite (minimum vers
-$-25\,\mu\text{C}$ environ, puis remontée vers $+15\,\mu\text{C}$ environ en
-bord de cadre — amplitudes décroissantes, lectures indicatives). Légende :
-« Figure 3 ».
+trois traits majeurs au-dessus de zéro ($+40$, $+80$, $+120$) et deux
+au-dessous ($-40$, $-80$) ; le **bord inférieur du cadre coïncide avec le
+niveau $-80\,\mu\text{C}$**, tandis que le bord supérieur passe légèrement
+au-dessus du trait $+120$. Horizontalement le cadre couvre $6{,}5$ divisions
+majeures. Oscillations amorties : la courbe part à $t=0$ **exactement sur le
+trait majeur $+120\,\mu\text{C}$**, $q(0) = 120\,\mu\text{C}$ (le tracé sort de
+l'axe des ordonnées confondu avec cette gridline) ; elle décroît, coupe l'axe,
+et passe par un premier minimum à $\approx -68\,\mu\text{C}$ (fond arrondi,
+entre les traits $-40$ et $-80$, sans tomber sur une gridline — valeur
+indicative, aucune question n'en dépend) ; elle remonte vers un maximum qui
+**affleure exactement le trait $+40\,\mu\text{C}$**, repéré par un segment
+vertical en pointillés descendant jusqu'à l'axe des abscisses, où l'instant est
+étiqueté « $t_1$ » sous l'axe. La courbe continue ensuite : deuxième minimum à
+$\approx -22\,\mu\text{C}$, puis remontée jusqu'à $\approx +13\,\mu\text{C}$,
+sommet atteint au bord droit du cadre (amplitudes décroissantes, lectures
+indicatives). Légende : « Figure 3 », sous le cadre.
+
+**Vérification (2026-08-23).** *Texte* : exact ($R = 35\ \Omega$,
+$L = 0{,}1\ \text{H}$, $C_0 = 10\,\mu\text{F}$, $f_1 = 150\ \text{kHz}$,
+$f_2 = 280\ \text{kHz}$, $\pi^2 = 10$, l'équation différentielle de 2-1 et les
+barèmes $0{,}5+0{,}5+0{,}5\,|\,0{,}5+0{,}5+0{,}75+0{,}5\,|\,0{,}25+0{,}75
+= 4{,}75$). *Trois défauts de figure corrigés :*
+
+1. **Sous-quadrillage de la figure 2 faux d'un facteur 2** — annoncé « 5 petits
+   carreaux par division majeure », il en compte **10**. C'est précisément le
+   facteur qui permet de lire $0{,}35\ \text{ms}$ *sur un trait* plutôt qu'au
+   jugé entre deux traits.
+2. **$\tau = 0{,}35\ \text{ms}$ n'est plus « à confirmer »** — et c'était le
+   défaut grave, car **toute la question 1-2 repose dessus**. Mesure au pixel :
+   la tangente $(T)$ coupe le palier à l'abscisse $866{,}8$ px, le repère
+   $0{,}35\ \text{ms}$ étant à $866{,}6$ px. Deux re-dérivations concordantes :
+   $\tau = RC_0 = 35\times10\cdot10^{-6} = 0{,}35\ \text{ms}$, et la courbe
+   passe à cet instant par $0{,}632\,q_{\max} = 75{,}8\,\mu\text{C}$ (mesuré
+   $75{,}9$). La lecture est donc verrouillée par trois voies indépendantes.
+3. **$q(0) = 120\,\mu\text{C}$ de la figure 3 n'est plus « à confirmer »** —
+   même gravité : sans elle, la question 2-3 est inexploitable. Mesure au
+   pixel : à la sortie de l'axe le tracé occupe les lignes 418–420, le trait
+   majeur $+120$ étant en 418. Recoupement entre figures : le palier de la
+   figure 2 vaut lui aussi $120\,\mu\text{C}$, et la décharge de la figure 3
+   part du condensateur *chargé en régime permanent* — les deux valeurs
+   **doivent** être égales, et elles le sont.
+
+*Quatrième correction, plus discrète :* l'interrupteur $K$ de la figure 1 était
+décrit comme « pivotant depuis cette zone », formule tirée de l'idée d'un
+va-et-vient, pas du dessin. Sur le scan, le levier est **ouvert** et ne touche
+aucun des deux contacts — une figure refaite « en position (1) » trahirait le
+sujet. Les extrema secondaires de la figure 3 ont aussi été re-mesurés
+($-22$ et $+13\,\mu\text{C}$ au lieu de $-25$ et $+15$).
+
+*Re-dérivations numériques* : $C_0 = \tau/R = 0{,}35\cdot10^{-3}/35
+= 10\,\mu\text{F}$ ✓ ; $E = q_{\max}/C_0 = 12\ \text{V}$ ;
+$E_e = \tfrac12 C_0E^2 = 0{,}72\ \text{mJ}$ ;
+$|\Delta E| = \big(q(0)^2 - q(t_1)^2\big)/(2C_0)
+= (120^2-40^2)\cdot10^{-12}/(2\cdot10^{-5}) = 0{,}64\ \text{mJ}$ ;
+$k = R = 35\ \Omega$ (dimensionnellement $\text{V.A}^{-1}$) ;
+$C = 1/(4\pi^2Lf^2)$ donne $C_1 = 3{,}2\ \text{pF}$ pour $f_2$ et
+$C_2 = 11{,}1\ \text{pF}$ pour $f_1$. Cohérent également avec la figure 3 :
+$T_0 = 2\pi\sqrt{LC_0} = 6{,}3\ \text{ms}$, et $t_1$ — premier maximum après
+$t=0$, où $i(0)=0$ — vaut une pseudo-période. **Attention pour la conversion :
+l'axe des temps de la figure 3 n'étant pas gradué, $t_1$ n'est pas lisible ; un
+exercice de banque ne doit demander que $q(t_1)$, jamais la valeur de $t_1$.**
+
+*Incohérence du sujet officiel, signalée sans être « réparée »* : le même
+« condensateur de capacité $C$ ajustable » est réglé à $10\,\mu\text{F}$ dans la
+partie 1 et doit valoir $3$ à $11\ \text{pF}$ dans la partie 3 — six ordres de
+grandeur d'écart, hors d'atteinte d'un condensateur variable réel. Le sujet
+enchaîne les trois sections comme si c'était le même composant ; les sections
+restent exploitables séparément, mais aucune leçon ne doit présenter ce montage
+comme un dispositif unique physiquement réalisable.
 
 *Figure 4 (schéma, p. 5) :* en haut, une antenne (mât vertical surmonté d'un
 V), étiquetée « antenne » au-dessus. En dessous, le circuit bouchon : une
@@ -425,7 +492,7 @@ récepteur, non représenté). Légende : « Figure 4 ».
 
 ## 2023 — session rattrapage — Exercice 4
 Source: https://www.alloschool.com/element/142484
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : RS 28F · Barème de l'exercice : 5,25 points
@@ -474,26 +541,35 @@ L'origine O est situé au niveau du sol (figure 1).
    Le ballon tombe-t-il entre le filet et la ligne du fond du camp adverse ?
    Justifier.
 
-*Photographie (p. 5, en haut à droite) :* photo couleur d'une joueuse de
-volley-ball sautant pour frapper le ballon, terrain en arrière-plan ; une
-flèche bleue étiquetée « Ligne de fond » pointe vers la ligne arrière du
-terrain.
+*Photographie (p. 5, en haut à droite, dans son propre cadre) :* photo couleur
+d'une joueuse de volley-ball sautant pour frapper le ballon, terrain en
+arrière-plan ; une flèche bleue étiquetée « Ligne de fond » (texte en gras à
+droite de la photo) pointe vers la ligne arrière du terrain.
 
-*Figure 1 (schéma, p. 5) :* repère orthogonal au sol. Axe vertical $y$ vers le
-haut à gauche, axe horizontal $x$ vers la droite, origine O au sol (vecteurs
-unitaires $\vec{i}$ le long de $x$ et $\vec{j}$ le long de $y$, dessinés près
-de O). Le point A est marqué sur l'axe $y$ à la hauteur $h$ (double flèche
-verticale « h » entre O et A, à gauche de l'axe) ; du point A part le vecteur
-$\vec{V}_0$, flèche inclinée vers le haut et la droite, faisant l'angle
-$\alpha$ (arc marqué « $\alpha$ ») avec l'horizontale en pointillés passant
-par A. Au sol, juste à droite de O, un point étiqueté « C ». Plus loin sur
-l'axe $x$, le filet est représenté par un trait vertical épais étiqueté
-« filet » à sa gauche, de hauteur $H_f$ (double flèche verticale à sa droite).
-Encore plus à droite, un point E sur l'axe $x$, avec la légende « Ligne de
-fond » fléchée vers E (en bas à droite). Double flèche horizontale en
-pointillés « D » entre la verticale de la « Ligne de fond » de gauche
-(fléchée, en bas à gauche, vers la zone de O/C) et le filet ; double flèche
-horizontale « d » entre le filet et E. Légende : « Figure 1 ».
+*Figure 1 (schéma, p. 5, dans un cadre rectangulaire) :* repère orthogonal au
+sol. Axe vertical $y$ vers le haut à gauche (flèche + étiquette « y »), axe
+horizontal $x$ vers la droite (flèche + étiquette « x » à l'extrémité droite),
+origine O au sol ; les vecteurs unitaires sont dessinés en bleu près de O —
+$\vec{i}$ court le long de $x$ (étiquette sous l'axe) et $\vec{j}$ monte le
+long de $y$. Le point A est un **point bleu posé sur l'axe $y$** à la hauteur
+$h$ ; une double flèche verticale en pointillés étiquetée « h », tracée **à
+gauche de l'axe**, va du niveau du sol au niveau de A. Du point A part le
+vecteur $\vec{V}_0$ (flèche inclinée vers le haut et la droite) faisant l'angle
+$\alpha$ — arc marqué « $\alpha$ » — avec l'horizontale en pointillés bleus
+passant par A. Au sol, **juste à droite de O** (à environ un quinzième de la
+distance O–filet), un point étiqueté « C », marqué par un petit **tiret oblique
+bleu** traversant l'axe des $x$ ; c'est **sur ce point C** que pointe la flèche
+bleue de la légende « Ligne de fond » écrite en bas à gauche. Plus loin sur
+l'axe $x$, le filet : trait vertical épais, étiquette « filet » à sa gauche,
+surmonté d'un court trait horizontal en pointillés ; sa hauteur $H_f$ est cotée
+par une double flèche verticale placée **à sa droite**. Encore plus à droite,
+un point E sur l'axe $x$, marqué du même tiret oblique bleu, avec la légende
+« Ligne de fond » fléchée vers E depuis le bas à droite. **La cote $D$**
+(double flèche horizontale bleue en pointillés, tout en bas) va de la verticale
+en pointillés abaissée **depuis O** jusqu'à la verticale en pointillés du
+filet — elle **ne part pas de C** ; la cote « d », un cran plus haut, va de
+cette même verticale du filet jusqu'à E. Légende : « Figure 1 », dans le cadre
+en bas au centre.
 
 **Partie II** : **Etude du mouvement d'un pendule élastique**
 
@@ -534,34 +610,93 @@ $x(t)$ de G.
    potentielle élastique entre l'instant $t_0 = 0$ et l'instant $t_1$ indiqué
    sur la courbe de la figure 3.
 
-*Figure 2 (schéma, p. 6) :* pendule élastique horizontal. À gauche, un support
-fixe vertical hachuré ; le ressort (spires serrées, dessinées en hélice) s'y
-accroche horizontalement et se relie à droite au solide (S), dessiné en
-rectangle posé sur le plan horizontal, avec le point « G » marqué à
-l'intérieur et l'étiquette « (S) » au-dessus. En dessous, un axe horizontal
-allant de « x′ » (à gauche) à « x » (à droite), portant l'origine « O »
-(sous la position d'équilibre de G) et le vecteur unitaire $\vec{i}$ vers la
-droite ; l'abscisse « x » est marquée entre O et la verticale de G. Légende :
-« Figure 2 ».
+*Figure 2 (schéma, p. 6) :* pendule élastique horizontal. À gauche, un mur fixe
+figuré par un court trait vertical **hachuré en oblique** ; un petit segment
+horizontal en part et porte le ressort, dessiné en hélice à **spires bien
+séparées** (une quinzaine de boucles), qui se relie à droite au solide (S) —
+un rectangle grisé, à base épaissie, posé sur le **plan horizontal** (long trait
+horizontal courant sous le ressort et le solide). À l'intérieur du rectangle, la
+lettre « G » et, à sa droite, le point matérialisant G ; l'étiquette « (S) » est
+au-dessus du rectangle. **Le solide est dessiné écarté vers la droite de sa
+position d'équilibre** ($x>0$), et une verticale en pointillés descend de G
+jusqu'à l'axe. En dessous, l'axe horizontal : il porte l'étiquette « x′ » sous
+son extrémité gauche (**sans pointe de flèche de ce côté**) et « x » sous son
+extrémité droite, **fléchée**. Sur cet axe, l'origine « O » est marquée par un
+petit trait vertical gras, le vecteur unitaire $\vec{i}$ est la courte flèche
+tracée juste à droite de O, et l'abscisse « x » est écrite au pied de la
+verticale en pointillés issue de G. Légende : « Figure 2 », sous la figure.
 
 *Figure 3 (courbe, p. 6) :* $x\,(\text{cm})$ en fonction de $t\,(\text{s})$,
-sur quadrillage à double graduation (traits majeurs sombres, sous-quadrillage
-bleu). Axe des ordonnées : valeurs chiffrées $1$, $0$ et $-1$ (traits majeurs
-tous les $1\ \text{cm}$) ; le cadre s'étend de $-2$ à $+2\ \text{cm}$. Axe
+sur quadrillage à double graduation ; le sous-quadrillage bleu est **grossier :
+un seul trait intermédiaire par division majeure**, dans les deux directions —
+le plus petit carreau vaut donc $0{,}05\ \text{s}\times0{,}5\ \text{cm}$. Axe
+des ordonnées : valeurs chiffrées $1$, $0$ et $-1$ (traits majeurs tous les
+$1\ \text{cm}$) ; le trait $+2$ est à l'intérieur du cadre, tandis que **le
+niveau $-2\ \text{cm}$ coïncide avec le bord inférieur du cadre** (le bord
+supérieur, lui, passe un peu au-dessus de $+2$, vers $+2{,}2\ \text{cm}$). Axe
 des abscisses : seules les valeurs $0{,}1$ et $0{,}2$ sont chiffrées (traits
-majeurs tous les $0{,}1\ \text{s}$) ; le cadre s'étend sur environ $8{,}5$
-divisions. Sinusoïde non amortie : à $t = 0$ la courbe part de
-$x(0) = 1\ \text{cm}$ (sur le trait chiffré « 1 ») **en décroissant** (départ
-avec pente négative), descend jusqu'à un minimum qui affleure le trait
-$-2\ \text{cm}$ (vers $t \approx 0{,}2\ \text{s}$), remonte, coupe l'axe et
-atteint un premier maximum qui affleure le trait $+2\ \text{cm}$ — l'amplitude
-se lit $X_m = 2\ \text{cm}$ *(sommets tangents aux traits $\pm 2$ — lecture au
-trait)*. Ce premier maximum est repéré par un segment vertical en pointillés
-descendant jusqu'à l'axe des abscisses, étiqueté « $t_1$ » sous l'axe (vers
-$t \approx 0{,}33\ \text{s}$, entre les traits $0{,}3$ et $0{,}35$ — lecture à
-confirmer). Un deuxième maximum de même hauteur apparaît $4$ divisions plus
-loin, soit un écart de $0{,}4\ \text{s}$ entre les deux maxima *(lecture à
-confirmer)*. Légende : « Figure 3 ».
+majeurs tous les $0{,}1\ \text{s}$) ; le cadre couvre $8{,}5$ divisions, soit
+jusqu'à $t = 0{,}85\ \text{s}$, et l'axe se prolonge au-delà par une flèche
+étiquetée « t(s) ». Sinusoïde non amortie : à $t = 0$ la courbe part **du trait
+chiffré « 1 »**, $x(0) = 1\ \text{cm}$, **en décroissant** (elle quitte l'axe
+des ordonnées confondue avec cette gridline) ; elle descend jusqu'à un premier
+minimum **tangent au trait $-2\ \text{cm}$**, atteint vers
+$t \approx 0{,}14\ \text{s}$ (fond arrondi centré entre $0{,}12$ et
+$0{,}15\ \text{s}$ — soit **avant** le repère $0{,}15$, et non vers $0{,}2$) ;
+elle remonte, coupe l'axe, et atteint un premier maximum **tangent au trait
+$+2\ \text{cm}$** : l'amplitude est $X_m = 2\ \text{cm}$. Ce maximum est repéré
+par un segment vertical en pointillés descendant jusqu'à l'axe des abscisses,
+étiqueté « $t_1$ » sous l'axe, à $t_1 \approx 0{,}33\ \text{s}$. Suivent un
+deuxième minimum (à $\approx 0{,}53\ \text{s}$) et un deuxième maximum de même
+hauteur à $\approx 0{,}73\ \text{s}$, soit **$4$ divisions — $0{,}40\ \text{s}$
+— après le premier** ; la courbe redescend ensuite et sort du cadre vers
+$x \approx -0{,}4\ \text{cm}$. Légende : « Figure 3 », imprimée **à l'intérieur
+du cadre**, en bas à droite.
+
+**Vérification (2026-08-23).** *Texte* : exact ($V_0 = 16\ \text{m.s}^{-1}$,
+$\alpha = 18^{\circ}$, $H_f = 2{,}4\ \text{m}$, $d = 9\ \text{m}$,
+$D = 11\ \text{m}$, $h = OA = 3\ \text{m}$, $g = 10\ \text{m.s}^{-2}$,
+$t_s = 1{,}41\ \text{s}$, $m = 200\ \text{g}$, $k = 50\ \text{N.m}^{-1}$,
+$\pi^2 = 10$ ; barèmes $1+0{,}5+0{,}75+0{,}75 = 3$ et
+$0{,}5+0{,}75+0{,}5+0{,}5 = 2{,}25$). *Trois défauts de figure corrigés :*
+
+1. **Minimum de la figure 3 mal placé** — annoncé « vers
+   $t \approx 0{,}2\ \text{s}$ », il est mesuré à $t = 0{,}138\ \text{s}$
+   (creux plat sur les colonnes 722–740 px, origine en 651 px, division
+   majeure $57{,}8$ px). Erreur de $\approx 45\%$, et la théorie tranche dans
+   le même sens : le premier minimum tombe à $T_0/3 = 0{,}133\ \text{s}$.
+2. **Origine de la cote $D$ (figure 1) décrite depuis le texte** — la
+   description initiale faisait partir $D$ de « la verticale de la Ligne de
+   fond de gauche ». Mesure au pixel : la pointe gauche de la double flèche est
+   en $637$–$649$ px, sous l'axe $Oy$ qui est en $635$ px, alors que **C** — le
+   point sur lequel pointe réellement la flèche « Ligne de fond » — est en
+   $675$ px, soit $40$ px plus à droite. **$D$ se mesure depuis O**, verticale
+   du point A. C'est ce qui place le filet en $x = D = 11\ \text{m}$ et la
+   ligne de fond adverse en $x = D+d = 20\ \text{m}$ : les questions 3 et 4 en
+   dépendent entièrement.
+3. **$X_m$, $t_1$ et $T_0$ ne sont plus « à confirmer »** — les trois portaient
+   les questions 2, 3 et 4. Mesures : sommets sur la ligne 976 px contre 973 px
+   pour le trait $+2$ (tangence, épaisseur de trait comprise) ; apex du premier
+   maximum en $845$ px $\Rightarrow t_1 = 0{,}336\ \text{s}$ ; second maximum en
+   $1076$ px $\Rightarrow$ écart $= 0{,}400\ \text{s}$. Re-dérivations
+   concordantes : $T_0 = 2\pi\sqrt{m/k} = \sqrt{4\pi^2\times0{,}2/50}
+   = 0{,}40\ \text{s}$ ; $x(0) = X_m\cos\varphi = 1\ \text{cm}$ avec
+   $X_m = 2\ \text{cm}$ donne $\cos\varphi = \tfrac12$, et la vitesse initiale
+   négative impose $\sin\varphi>0$, donc $\varphi = +\pi/3\ \text{rad}$ — angle
+   remarquable, ce qui verrouille $X_m = 2\ \text{cm}$ ; enfin
+   $t_1 = T_0(1-\tfrac16) = \tfrac56 T_0 = 0{,}333\ \text{s}$.
+
+*Re-dérivations numériques* : $V_0\cos\alpha = 15{,}22\ \text{m.s}^{-1}$,
+$V_0\sin\alpha = 4{,}94\ \text{m.s}^{-1}$ ; au filet ($x = 11\ \text{m}$),
+$t = 0{,}723\ \text{s}$ et $y = 3{,}96\ \text{m} > H_f = 2{,}4\ \text{m}$ — le
+ballon passe ✓ ; $y(t)=0$ redonne $t_s = 1{,}413\ \text{s}$, ce qui **confirme
+la valeur $1{,}41\ \text{s}$ imprimée** ; $x(t_s) = 21{,}5\ \text{m} >
+D+d = 20\ \text{m}$, donc le ballon retombe **au-delà** de la ligne de fond
+adverse (la réponse attendue à la question 4 est « non »). Partie II :
+$k = 4\pi^2m/T_0^2 = 40\times0{,}2/0{,}16 = 50\ \text{N.m}^{-1}$ ✓ ;
+$\Delta E_{pe} = \tfrac12 k\,(X_m^2 - x(0)^2)
+= \tfrac12\times50\times(4-1)\cdot10^{-4} = 7{,}5\cdot10^{-3}\ \text{J}$.
+Tout se recoupe ; aucun point ne reste indécidable dans cet exercice.
 
 ---
 
