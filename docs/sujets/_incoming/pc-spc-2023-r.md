@@ -195,7 +195,7 @@ remarquables sont donnés dans le texte.)*
 
 ## 2023 — session rattrapage — Exercice 2
 Source: https://www.alloschool.com/element/142484
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : RS 28F · Barème de l'exercice : 3 points
@@ -248,16 +248,40 @@ l'air $c = 3\cdot10^{8}\ \text{m.s}^{-1}$.
 
 *Figure (schéma, sans numéro — « figure ci-contre », p. 3) :* dispositif de
 diffraction vu en perspective. À gauche, une flèche horizontale épaisse
-étiquetée « Source lumineuse » pointe vers un plan incliné (parallélogramme)
-étiqueté « Fente » au-dessus. Depuis la fente, deux droites divergent vers un
-grand plan incliné à droite étiqueté « Ecran » en haut, sur lequel sont
-dessinées des taches sombres (ellipses) alignées sur une ligne verticale : une
-grande tache centrale et des taches plus petites au-dessus et au-dessous. Un
-axe horizontal en pointillés joint la fente au centre de l'écran ; l'angle
-$\theta$ est marqué entre cet axe et la droite supérieure, près de l'écran.
-Une double flèche verticale à droite de la tache centrale indique sa largeur,
-étiquetée « $L_j$ ». En bas, une double flèche horizontale entre la verticale
-en pointillés sous la fente et le pied de l'écran est étiquetée « $D$ ».
+étiquetée « Source lumineuse » (texte sur deux lignes, à gauche de la flèche)
+pointe vers un petit plan incliné (parallélogramme) étiqueté « Fente »
+au-dessus à gauche ; **la fente elle-même est tracée** : un court trait
+horizontal au milieu du parallélogramme, exactement là où arrive la flèche.
+Depuis ce point, deux droites divergent — l'une vers le haut, l'autre vers le
+bas — jusqu'à un grand plan incliné à droite étiqueté « Ecran » en haut. Sur
+l'écran, **cinq taches** dessinées en **aplat noir** (ellipses verticales
+pleines — c'est la convention typographique du sujet : ce sont les taches
+*lumineuses*) sont alignées sur une même verticale : deux au-dessus, la tache
+centrale, deux au-dessous. La tache centrale est nettement plus **allongée**
+que les quatre autres, et les deux droites issues de la fente viennent en
+toucher précisément l'extrémité haute et l'extrémité basse. Un axe horizontal
+en pointillés joint la fente au centre de l'écran ; l'angle $\theta$ est marqué
+par un petit arc entre cet axe et la droite supérieure, près de l'écran. Une
+double flèche verticale, placée à droite de la tache centrale, en mesure la
+hauteur et porte l'étiquette « $L_j$ ». En bas, une double flèche horizontale
+étiquetée « $D$ » court de la verticale en pointillés abaissée sous la fente
+jusqu'au plan de l'écran (sa pointe droite remonte obliquement rejoindre le bas
+de la colonne de taches).
+
+**Vérification (2026-08-23).** *Texte* : exact ($\lambda_{0j} = 580\ \text{nm}$,
+$D = 1{,}4\ \text{m}$, $L_j = 2{,}7\ \text{cm}$, $L_R = 3{,}4\ \text{cm}$,
+$n_1 = 1{,}5$, les quatre propositions du QCM et les barèmes
+$0{,}5+0{,}75+0{,}75+0{,}5+0{,}5 = 3$). *Figure* : re-décrite depuis le dessin ;
+le décompte exact des taches (5, dont la centrale plus longue), le tracé de la
+fente et la convention « taches en noir » manquaient à la description initiale —
+un auteur de figure les aurait inventés, voire aurait inversé le contraste.
+*Re-dérivations* : $a = 2\lambda_{0j}D/L_j = 6{,}0\cdot10^{-5}\ \text{m}
+= 60\ \mu\text{m}$ (ordre de grandeur correct pour une fente de TP) ;
+$\lambda_{0R} = L_R\lambda_{0j}/L_j = 730\ \text{nm}$ (bien dans le rouge) ;
+$V_{1j} = c/n_1 = 2\cdot10^{8}\ \text{m.s}^{-1}$ ;
+$\lambda_{1j} = \lambda_{0j}/n_1 = 386{,}7\ \text{nm}$. Cohérent de bout en bout,
+et cohérent avec la figure (fente horizontale $\Rightarrow$ taches étalées
+verticalement, ce que le dessin montre bien). Aucun point indécidable.
 
 ---
 
