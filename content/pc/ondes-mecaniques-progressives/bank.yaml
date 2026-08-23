@@ -465,3 +465,162 @@ entries:
             note: "Application numerique, avec v = 0,28 m/s trouve a la question 2-1."
           - math: '\boxed{h \approx 8{,}0\times10^{-3}\ \text{m}}'
             note: "Profondeur de l'eau dans la cuve."
+
+  # ── bk-2024-r-x2 — 2024 R, Exercice 2 : onde mécanique dans l'air ─────────
+  - id: bk-2024-r-x2
+    title: "Onde mécanique dans l'air : retard temporel entre deux microphones et position de l'émetteur"
+    source:
+      year: 2024
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 2 (2,5 points) — Propagation d'une onde mécanique"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/145769,
+        scan course-422/upload-87471, pages 3 et 4 sur 6 (Exercice 2 —
+        propagation d'une onde mécanique dans l'air ; barème de l'exercice
+        = 2,5 pt, recompté question par question : 0,25 + 1 + 0,5 + 0,75 =
+        2,5). Transcription vérifiée par un vérificateur adversarial
+        (2026-08-23, docs/sujets/_incoming/pc-spc-2024-r.md, statut
+        « vérifié ») : re-fetch indépendant des 6 pages du scan, les deux
+        figures re-décrites depuis le dessin, physique re-dérivée.
+        AVERTISSEMENT DE PROVENANCE, à conserver : la fiche source signale
+        un incident de transcription antérieur — le fichier
+        docs/sujets/_incoming/pc-spc-2024-r.md contenait, avant le
+        2026-08-23, une copie du sujet 2023 assortie d'un faux
+        avertissement « discordance d'année ». L'en-tête du scan de
+        upload-87471, relu au zoom, porte sans ambiguïté « الدورة
+        الاستدراكية 2024 » : le scan servi par element/145769 est bien le
+        rattrapage 2024, et c'est celui-ci qui est transcrit ici. Figure 2
+        re-mesurée au pixel : quadrillage 10 divisions × 8, traits majeurs
+        espacés de 32,5 px (bord gauche colonne 833, bord droit colonne
+        1158) ; salve (A) sur les colonnes 834 à 870, salve (B) sur les
+        colonnes 964 à 1000 ; décalage début-à-début = 130 px et décalage
+        fin-à-fin = 130 px, soit exactement 4,00 divisions — lecture dite
+        « certaine » par le vérificateur. Physique re-dérivée et
+        recalculée ici : tau = 4 × 0,5 = 2,0 ms, puis l = (d − v.tau)/2 =
+        (2,85 − 0,68)/2 = 1,085 m, valeur admissible (0 < l < d/2 = 1,425
+        m) et cohérente avec l'ordre des salves à l'écran (A avant B).
+        NB HONNÊTETÉ NUMÉRIQUE : le résultat NE tombe PAS rond — 1,085 m
+        exactement, arrondi à 1,09 m ; le raisonnement le dit au lieu de
+        maquiller la valeur. La figure 1 n'est PAS à l'échelle (l'émetteur
+        y est dessiné à environ 0,30 d de M1 alors que le calcul donne
+        l/d = 0,38) : mention conservée dans l'intro pour qu'aucune
+        lecture quantitative n'en soit tirée.
+    intro: |-
+      **Propagation d'une onde mécanique dans l'air (examen national, session de rattrapage 2024 — Exercice 2, 2,5 points).**
+
+      Dans cet exercice, on se propose d'étudier la propagation d'une onde mécanique dans l'air.
+
+      On réalise l'expérience suivante avec deux microphones $M_1$ et $M_2$ distants de $d = 2{,}85\ \text{m}$ et reliés aux voies A et B d'un oscilloscope à mémoire. Entre ces deux microphones, un émetteur produit des salves de son. L'émetteur est à la distance $\ell$ du microphone $M_1$. L'émetteur, $M_1$ et $M_2$ sont alignés. (Figure 1).
+
+      Les oscillogrammes obtenus sur les deux voies A et B de l'oscilloscope sont représentés sur la figure 2. La sensibilité horizontale de l'oscilloscope est réglée à $0{,}5\ \text{ms}$ par division.
+
+      **Donnée :** La célérité du son dans l'air est $v = 340\ \text{m.s}^{-1}$.
+
+      **Figure 1 (schéma, vue de dessus).** Les trois éléments sont alignés horizontalement. À gauche, le microphone $M_1$ (corps conique pointé vers la droite, tête noire ovale) ; un câble part de sa base vers l'étiquette « Vers la voie A de l'oscilloscope ». À droite, le microphone $M_2$, symétrique (tête noire ovale, corps pointé vers la gauche), son câble portant l'étiquette « Vers la voie B de l'oscilloscope ». Entre les deux, l'émetteur : trois arcs de cercle concentriques autour d'un petit disque, désigné par une flèche venant de l'étiquette « Emetteur » placée en haut à droite des arcs. Un trait vertical pointillé descend de $M_1$, un autre de l'émetteur, un autre de $M_2$. En haut, une double flèche horizontale entre le pointillé de $M_1$ et celui de l'émetteur, cotée $\ell$. En bas, une double flèche horizontale entre le pointillé de $M_1$ et celui de $M_2$, cotée $d$. Légende : « Figure 1 ». *Le schéma n'est pas à l'échelle : l'émetteur y est dessiné à environ $0{,}30\,d$ de $M_1$, alors que la valeur calculée donne $\ell/d \approx 0{,}38$. Aucune lecture quantitative ne doit en être tirée — tout se joue sur la figure 2.*
+
+      **Figure 2 (oscillogramme).** Écran d'oscilloscope (cadre à coins arrondis) contenant un quadrillage de 10 divisions horizontales sur 8 divisions verticales, sans aucune graduation chiffrée. Deux traces horizontales : la trace **(A)**, dans la moitié haute de l'écran (au niveau de la 3ᵉ division depuis le haut), porte une salve d'oscillations dense, large d'environ 1 division, collée au bord gauche de l'écran — l'étiquette « (A) » est imprimée juste à droite de la salve ; la trace **(B)**, au milieu de l'écran (au niveau de la 5ᵉ division), porte une salve identique, plus loin à droite — l'étiquette « (B) » est imprimée juste à droite de cette salve. Le décalage horizontal entre les deux salves vaut exactement **4 divisions**, que l'on compare les débuts ou les fins des deux salves. Sous les traces, une double flèche horizontale longue d'exactement une division, légendée « div », rappelle l'unité de division. Légende : « Figure 2 ».
+    questions:
+      - id: q1
+        stem: |-
+          **(0,25 pt)** Définir une onde mécanique longitudinale.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une définition à $0{,}25$ pt, mais deux mots à définir : « mécanique » et « longitudinale ». Le correcteur attend les deux morceaux ; n'en donner qu'un, c'est perdre la moitié du point. Alors on construit la phrase en deux temps, chacun tiré d'un rung différent de la leçon.
+
+          **Premier morceau — « onde mécanique » (R1).** C'est la propagation, de proche en proche, d'une perturbation dans un milieu matériel élastique, **sans transport de matière**. Deux exigences dans cette phrase : il faut un milieu matériel (donc jamais dans le vide), et la matière ne voyage pas — chaque point du milieu se contente d'osciller autour de sa position d'équilibre puis de passer la perturbation à son voisin. Ce qui voyage, c'est la perturbation et l'énergie qu'elle porte.
+
+          **Second morceau — « longitudinale » (R2).** Le critère de R2 consiste à comparer **deux directions** : celle selon laquelle la perturbation déplace les points du milieu, et celle selon laquelle l'onde avance. L'onde est longitudinale quand ces deux directions sont **parallèles** (et transversale quand elles sont perpendiculaires).
+
+          **La définition complète, à écrire sur la copie.** Une onde mécanique longitudinale est la propagation d'une perturbation dans un milieu matériel, sans transport de matière, telle que le déplacement des points du milieu se fait **parallèlement à la direction de propagation** de l'onde.
+
+          **L'exemple qui la rend concrète, et c'est celui de l'exercice.** Le son dans l'air (R4) : il se propage par compressions et dilatations successives des couches d'air, dans la direction même où il avance — exactement le mécanisme du ressort comprimé de R2, transposé aux tranches d'air.
+
+          **Le piège nommé de cette question.** Ne définir que la seconde moitié — « les points du milieu vibrent parallèlement à la propagation » — en oubliant de dire ce qu'est une onde **mécanique**. C'est la faute la plus fréquente sur cette question, et elle coûte la moitié du point. Le piège miroir, celui que l'item **d)** de la question suivante te tend justement, consiste à croire que « longitudinale » signifie que la matière avance avec l'onde : non, elle oscille sur place.
+      - id: q2
+        stem: |-
+          **(1 pt)** Répondre par vrai ou faux (sans justification) aux propositions suivantes :
+
+          **a-** Les ondes lumineuses sont des ondes mécaniques.
+
+          **b-** Dans un même milieu, la diffraction modifie la longueur d'onde.
+
+          **c-** La célérité du son dépend du milieu de propagation.
+
+          **d-** Une onde longitudinale se propage avec transport de la matière.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé dit « sans justification » : sur la copie, quatre mots suffisent. Mais pour toi qui t'entraînes, chaque item doit être rattaché à un fait du cours — sinon tu mémorises quatre phrases au lieu de comprendre une idée. Les voici, un par un.
+
+          **a) FAUX.** Une onde lumineuse est une onde **électromagnétique** : ce qui s'y propage, ce sont des variations couplées d'un champ électrique et d'un champ magnétique, pas une déformation de la matière. La preuve quotidienne : la lumière du Soleil nous parvient à travers le vide interplanétaire, ce qu'aucune onde mécanique ne peut faire (R1 exige un milieu matériel).
+
+          **b) FAUX.** La diffraction, c'est ce qui arrive à une onde qui rencontre une ouverture ou un obstacle de taille comparable à sa longueur d'onde : le front d'onde **change de forme** et l'onde s'étale au-delà de l'obstacle. Ce qui change, c'est la géométrie du front — pas la longueur d'onde.
+
+          Pourquoi, précisément ? Reconstruisons-le au lieu de l'admettre. Pour une onde périodique de période $T$, la longueur d'onde $\lambda$ est la distance parcourue par le front pendant une période. C'est la relation $v = d/\Delta t$ de R3, appliquée à $d = \lambda$ et $\Delta t = T$ :
+
+          $$\lambda = v\,T$$
+
+          Regarde alors les deux facteurs. La période $T$ est **imposée par la source** : un obstacle placé sur le trajet ne change pas le rythme auquel la source émet. La célérité $v$ est **fixée par le milieu** (R3), et l'énoncé précise « dans un même milieu » — donc $v$ ne bouge pas non plus. Les deux facteurs du produit étant inchangés, $\lambda$ l'est aussi. La proposition est fausse.
+
+          **c) VRAI.** C'est l'énoncé même de R3 : la célérité d'une onde mécanique ne dépend que du milieu (sa nature et son état), jamais de la source. L'exercice l'illustre en donnant $v = 340\ \text{m.s}^{-1}$ **dans l'air** — une valeur qui n'a de sens qu'accompagnée du nom du milieu ; dans l'eau ou dans un solide, elle serait bien plus grande.
+
+          **d) FAUX.** C'est exactement ce que R1 interdit : une onde mécanique se propage **sans transport de matière**, qu'elle soit longitudinale ou transversale. Dans une onde sonore, les tranches d'air se resserrent puis s'écartent autour de leur position d'équilibre ; aucune tranche d'air ne fait le trajet de l'émetteur au microphone. C'est le bouchon de l'accroche (R0), qui monte et redescend sans jamais rejoindre le bord.
+
+          **Le fil qui relie les quatre.** a) et c) portent sur la même idée vue des deux côtés — une onde mécanique a besoin d'un milieu, et c'est ce milieu qui fixe sa célérité. b) et d) sont deux façons de tester si tu confonds « l'onde change » et « ce qui porte l'onde change ».
+
+          **Le piège nommé de cette question.** C'est l'item **d)**, et il est tendu par le mot « longitudinale ». Comme le déplacement de la matière y est parallèle à la propagation, on se laisse convaincre que la matière « accompagne » l'onde. Elle ne l'accompagne pas : elle oscille sur place, dans cette direction-là. Le mot « longitudinale » décrit la **direction** de l'oscillation, jamais un déplacement d'ensemble. Piège secondaire, sur l'item **b)** : croire que la diffraction est un phénomène qui « transforme » l'onde. Elle ne modifie ni $\lambda$, ni $v$, ni $T$ — seulement la forme du front.
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Déterminer le retard temporel $\tau$ avec lequel le son arrive en $M_2$ par rapport à $M_1$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $\tau$ est une durée, et l'écran de l'oscilloscope n'affiche aucune graduation chiffrée en temps : la seule information temporelle est la **sensibilité horizontale**, $0{,}5\ \text{ms}$ par division. Le geste est donc toujours le même, celui de R4 (la mesure au double microphone) : compter le décalage entre les deux salves **en divisions**, puis multiplier par la sensibilité.
+
+          **La lecture.** Sur la figure 2, la salve (A) est collée au bord gauche de l'écran et la salve (B) est plus loin à droite. Le décalage horizontal entre les deux vaut **4 divisions**.
+
+          **La conversion.**
+
+          $$\tau = 4\ \text{div} \times 0{,}5\ \text{ms/div} = 2{,}0\ \text{ms}$$
+
+          $$\boxed{\tau = 2{,}0\ \text{ms} = 2{,}0\times10^{-3}\ \text{s}}$$
+
+          Convertis tout de suite en secondes : la question suivante fait intervenir $v = 340\ \text{m.s}^{-1}$, et une célérité en $\text{m.s}^{-1}$ n'accepte que des secondes.
+
+          **Le contrôle qui confirme la lecture.** Les deux salves ont la même largeur (environ 1 division). Compare donc **début avec début**, puis **fin avec fin** : les deux comptages doivent donner le même nombre de divisions. Ici ils donnent 4 tous les deux — la lecture est bonne. Et le signe est cohérent avec l'énoncé : (A) est à gauche de (B), donc $M_1$ reçoit le son **avant** $M_2$, et c'est bien un retard de $M_2$ sur $M_1$.
+
+          **Le piège nommé de cette question.** Il est double, et les deux formes se ressemblent. (i) Compter la **largeur** d'une salve — environ 1 division — au lieu de l'écart entre les deux : la largeur, c'est la durée de la salve émise, elle n'a rien à voir avec le retard. (ii) Compter du **début** de (A) à la **fin** de (B) : on ajoute alors la largeur de la salve au retard, et on trouve $5$ divisions, donc $2{,}5\ \text{ms}$. La règle qui protège des deux : on compare toujours deux points **homologues** des deux signaux.
+      - id: q4
+        stem: |-
+          **(0,75 pt)** Déterminer la valeur de $\ell$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On cherche une distance, on connaît une célérité et une durée : la tentation est d'écrire $\ell = v\,\tau$ et de passer à l'exercice suivant. C'est faux, et la raison est dans la géométrie de la figure 1 : l'émetteur est **entre** les deux microphones. Les deux microphones reçoivent donc le **même** son, mais après **deux trajets différents** — et $\tau$ n'est pas la durée d'un trajet, c'est la **différence** des deux.
+
+          **La géométrie, posée d'abord.** L'émetteur est à la distance $\ell$ de $M_1$. Comme il est situé entre $M_1$ et $M_2$, qui sont distants de $d$, sa distance à $M_2$ vaut $d - \ell$.
+
+          **Les deux durées, par R3 ($\tau = d/v$ appliqué deux fois).** Le son émis à l'instant $t_0$ atteint $M_1$ puis $M_2$ :
+
+          $$t_1 = \frac{\ell}{v} \qquad\text{et}\qquad t_2 = \frac{d - \ell}{v}$$
+
+          **Le retard est la différence.**
+
+          $$\tau = t_2 - t_1 = \frac{d - \ell}{v} - \frac{\ell}{v} = \frac{d - 2\ell}{v}$$
+
+          **L'expression littérale, avant toute application numérique** (l'énoncé du sujet le demande explicitement en tête d'épreuve). On isole $\ell$ :
+
+          $$v\,\tau = d - 2\ell \quad\Longrightarrow\quad \ell = \frac{d - v\,\tau}{2}$$
+
+          **L'application numérique, terme par terme.** Avec $d = 2{,}85\ \text{m}$, $v = 340\ \text{m.s}^{-1}$ et $\tau = 2{,}0\times10^{-3}\ \text{s}$ :
+
+          $$v\,\tau = 340 \times 2{,}0\times10^{-3} = 0{,}68\ \text{m}$$
+
+          $$\ell = \frac{2{,}85 - 0{,}68}{2} = \frac{2{,}17}{2} = 1{,}085\ \text{m}$$
+
+          $$\boxed{\ell \approx 1{,}09\ \text{m}}$$
+
+          **Une remarque d'honnêteté sur le chiffre.** Le résultat **ne tombe pas rond** : il vaut exactement $1{,}085\ \text{m}$. Ce n'est pas une erreur de ta part, et il ne faut pas le maquiller — la donnée $d = 2{,}85\ \text{m}$ n'a pas été choisie pour donner une valeur ronde. On garde donc trois chiffres significatifs, comme $d$ : $\ell \approx 1{,}09\ \text{m}$. Écrire $1{,}1\ \text{m}$ (deux chiffres) reste acceptable ; écrire $1\ \text{m}$ ne l'est pas.
+
+          **Le contrôle qui confirme.** L'émetteur est entre les deux microphones, et l'écran montre que $M_1$ reçoit avant $M_2$ : il est donc plus proche de $M_1$, ce qui impose $0 < \ell < \dfrac{d}{2} = 1{,}425\ \text{m}$. La valeur $1{,}085\ \text{m}$ tombe bien dans cet intervalle. Un résultat négatif, ou supérieur à $1{,}425\ \text{m}$, aurait signalé une erreur de raisonnement — pas d'arithmétique.
+
+          **Le piège nommé de cette question, et c'est là que se joue le $0{,}75$ pt.** Oublier que $M_1$ aussi attend son propre son, et écrire $\tau = \dfrac{d - \ell}{v}$ comme si seul le trajet vers $M_2$ comptait. On obtient alors $\ell = d - v\,\tau = 2{,}85 - 0{,}68 = 2{,}17\ \text{m}$ — une valeur supérieure à $d/2$, qui placerait l'émetteur plus près de $M_2$ que de $M_1$, en contradiction directe avec l'ordre des salves à l'écran. Variante du même oubli : $\ell = v\,\tau = 0{,}68\ \text{m}$, qui traite $\tau$ comme s'il était le temps de vol jusqu'à $M_1$. **Le facteur $2$ de $(d - 2\ell)$ est toute la difficulté de la question** : il vient de ce que déplacer l'émetteur de $1\ \text{cm}$ vers $M_1$ raccourcit un trajet de $1\ \text{cm}$ **et** allonge l'autre de $1\ \text{cm}$. Dernier réflexe à s'interdire : mesurer $\ell$ à la règle sur la figure 1 — elle n'est pas à l'échelle, l'énoncé la dessine avec $\ell/d \approx 0{,}30$ alors que le calcul donne $0{,}38$.
