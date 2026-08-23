@@ -1,20 +1,24 @@
 # bank.yaml — la banque « S'entraîner » de piles (BANK-SPEC v1).
 #
 # Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
-# N'EST PAS exercises.yaml : cette entrée ne porte aucun marqueur
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
 # [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le
 # sommet de leçon (r-bac + r-variation, exercises.yaml), pas la rampe
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). L'entrée est une transcription FIDÈLE de l'unique entrée
-# « vérifié » de docs/sujets/pc/piles.md (re-fetch AlloSchool + diff
-# indépendant, agent-vérificateur 2026-07-11). Raisonnement rédigé à la voix
-# experte de la maison sur 100 % des questions, en citant les rungs R3/R6 de
-# la leçon (lesson.md) là où c'est naturel ; barème transcrit tel quel dans
-# les énoncés (tag « (x,xx pt) » ajouté — la source docs/sujets ne porte que
-# « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
-# entre apostrophes simples dans steps[].math, notes sans backslash).
+# exercises.yaml). TROIS entrées à ce jour, toutes des transcriptions
+# FIDÈLES de sujets « vérifié » : bk-2020-n-x1 depuis docs/sujets/pc/piles.md
+# (re-fetch AlloSchool + diff indépendant, agent-vérificateur 2026-07-11) ;
+# bk-2021-r-x1b depuis docs/sujets/_incoming/pc-spc-2021-r.md et
+# bk-2024-r-x1 depuis docs/sujets/_incoming/pc-spc-2024-r.md (passes de
+# vérification adversariale indépendantes, 2026-08-22 et 2026-08-23).
+# Raisonnement rédigé à la voix experte de la maison sur 100 % des questions,
+# en citant les rungs R2/R3/R4/R6 de la leçon (lesson.md) là où c'est
+# naturel ; barème transcrit tel quel dans les énoncés ; conventions KaTeX
+# (block scalars pour la prose, KaTeX brut entre apostrophes simples dans
+# steps[].math, décimales françaises `{,}` en mode math, notes sans
+# backslash).
 #
 # NOTE ÉDITORIALE #1 (recoupement, pour la revue) : docs/sujets/pc/piles.md
 # ne recense QU'UN SEUL sujet « vérifié » à ce jour — 2020 N, Exercice I
@@ -25,11 +29,11 @@
 # annales vérifiées de la notion (BANK-SPEC §1 : « la banque est le volume
 # derrière le sommet, jamais son remplacement ») — recoupement assumé, même
 # disposition que rc-charge bk-2019-n-x3 et reactions-acido-basiques
-# bk-2021-n-x1. Conséquence honnête : la banque de « piles » ne compte qu'UNE
-# entrée pour l'instant (la rail affichera « 1 sujet », pas un pluriel de
-# façade) tant qu'aucun autre sujet vérifié n'est recensé. À l'arbitrage de
-# l'owner si l'on préfère l'écarter de la banque pour éviter le recoupement
-# sur la même page.
+# bk-2021-n-x1. À l'arbitrage de l'owner si l'on préfère l'écarter de la
+# banque pour éviter le recoupement sur la même page. (Cette note disait, à
+# sa rédaction, que la banque ne comptait qu'UNE entrée : ce n'est plus vrai
+# — la campagne rattrapage en a ajouté deux, bk-2021-r-x1b et bk-2024-r-x1.
+# La rail affichera « 3 sujets ».)
 #
 # NOTE ÉDITORIALE #2 (schéma conventionnel, pour la revue) : la question 2 du
 # sujet demande de « représenter le schéma conventionnel de la pile »
@@ -42,6 +46,65 @@
 # pedagogy-architect : soit la convention à barres mérite un ajout au rung R3
 # (ou un rung dédié), soit elle est jugée hors-scope de cette notion et la
 # question reste balisée comme telle. Pas corrigé unilatéralement ici.
+#
+# NOTE ÉDITORIALE #3 — FLAG DE JUMELAGE (bk-2024-r-x1 face à bk-2020-n-x1,
+# pour la revue) : les deux entrées pèsent 2,25 pt et suivent la même
+# silhouette apparente — polarité, demi-équations, bilan, puis Δm par la loi
+# de Faraday. Je ne tranche pas seul ; voici ce qui les distingue et pourquoi
+# les garder toutes les deux (même précédent que l'électrolyse 2023-r face à
+# 2019-n, où la loi de Faraday est posée dans l'autre sens) :
+#   (a) La PORTE D'ENTRÉE de la polarité. 2020-n la donne par une OBSERVATION
+#       chimique (la masse du chrome diminue → oxydation → anode). 2024-r ne
+#       donne aucune observation de masse : la polarité se lit sur le
+#       BRANCHEMENT DE L'AMPÈREMÈTRE (COM sur le zinc + affichage positif).
+#       Deux entrées différentes dans le même rung R3.
+#   (b) LE SIGNE de Δm — la vraie raison de garder les deux. En 2020-n
+#       l'électrode étudiée est l'ANODE : Δm < 0, la lame de chrome perd
+#       ≈ 1,0 mg. En 2024-r l'électrode étudiée est la CATHODE : Δm > 0, la
+#       plaque de fer GAGNE ≈ 87 mg, et la formule imposée par le sujet ne
+#       porte aucun signe moins. C'est exactement la loi de Faraday « posée
+#       dans l'autre sens ».
+#   (c) LA CONSIGNE. 2024-r demande de MONTRER l'expression littérale
+#       Δm = I.Δt.M(Fe)/(2F) avant l'application numérique ; 2020-n donne Q
+#       tout fait et ne demande qu'un nombre.
+#   (d) LE COMPTE D'ÉLECTRONS. 2020-n échange 1 et 3 électrons (il FAUT
+#       multiplier avant de sommer) ; 2024-r échange 2 et 2 (il ne faut PAS
+#       multiplier). Cas discriminant pour l'élève qui a automatisé le geste.
+# Conclusion proposée : garder les deux, dans cet ordre chronologique. À
+# l'arbitrage de l'owner.
+#
+# NOTE ÉDITORIALE #4 — SCOPE NOTE (convention de signe de l'ampèremètre,
+# bk-2024-r-x1 q1) : toute la justification de la question 1 repose sur le
+# fait qu'un ampèremètre affiche une valeur POSITIVE lorsque le courant
+# conventionnel entre par sa borne « A » (+) et sort par sa borne COM (−).
+# lesson.md établit bien le sens du courant dans le circuit extérieur (R4 :
+# du + vers le −) mais ne dit NULLE PART comment l'affichage d'un ampèremètre
+# prend son signe. Outil manquant au corps enseigné : il est PONTÉ au point
+# d'usage — la convention est ré-énoncée en entier dans le raisonnement de q1
+# et la déduction refaite à partir d'elle, jamais « on admet ». Pour
+# l'orchestrateur / pedagogy-architect : soit R4 gagne un court paragraphe
+# sur le signe lu par l'ampèremètre (c'est la façon standard, au niveau bac,
+# de donner la polarité sans passer par les potentiels standards), soit c'est
+# jugé hors-scope de la notion et la question reste balisée comme telle. Pas
+# corrigé unilatéralement ici.
+#
+# NOTE ÉDITORIALE #5 — SCOPE NOTE (R2 volontairement inapplicable sur
+# bk-2024-r-x1) : le réflexe enseigné au rung R2 est de comparer Q_r,i à K
+# pour trouver le sens spontané. Ce sujet donne C_2 = C_1, donc
+# Q_r,i = [Zn2+]/[Fe2+] = 1 — mais K n'est PAS donné, et les potentiels
+# standards E° ne sont pas au programme 2 bac. Le critère de R2 est donc MUET
+# ici, par construction du sujet, qui fait entrer par la mesure électrique.
+# Le raisonnement de q1 le dit explicitement à l'élève plutôt que de laisser
+# croire à un oubli, et se garde d'introduire E° en douce. (Le fichier
+# vérificateur, lui, utilise E°(Fe2+/Fe) = -0,44 V > E°(Zn2+/Zn) = -0,76 V
+# comme contrôle EXTERNE de cohérence : c'est un recoupement d'auteur, pas la
+# voie d'examen, et il n'est pas repris dans le raisonnement rendu.)
+#
+# NOTE ÉDITORIALE #6 (données non mobilisées, bk-2024-r-x1) : V_1, V_2, C_1
+# et C_2 ne sont JAMAIS numérisés dans l'énoncé de la Partie 1 et aucune
+# question ne les mobilise. Ce n'est pas un oubli de transcription — même
+# disposition que la concentration C_2 de bk-2021-r-x1b. Ils sont conservés
+# dans l'intro parce que l'énoncé réel les porte.
 
 notion: pc/piles
 
@@ -262,3 +325,145 @@ entries:
           **La façon rapide, et pourquoi elle marche.** On peut aussi écrire directement $\left[\text{Ni}^{2+}\right]_f = C_1 + \dfrac{n(\text{Ni})}{V} = 0{,}2 + \dfrac{0{,}010}{0{,}600} \approx 0{,}22$ — c'est la même chose, à condition que le volume soit inchangé (les électrodes sont solides, elles n'ajoutent pas de liquide).
 
           **L'erreur qui guette.** Répondre $0{,}0167\ \text{mol.L}^{-1}$ en oubliant les ions déjà présents. Le mot « effective » de l'énoncé désigne la concentration RÉELLE en solution, tous ions confondus, pas seulement ceux qu'on vient de fabriquer.
+  # ── bk-2024-r-x1 — 2024 R, Exercice 1 (Partie 1) : pile fer-zinc ──────────
+  - id: bk-2024-r-x1
+    title: "Pile fer-zinc : polarité lue sur l'ampèremètre, bilan et variation de masse par la loi de Faraday"
+    source:
+      year: 2024
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Partie 1 : étude de la pile fer-zinc"
+    bareme_total: 2.25
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/145769, scan
+        course-422/upload-87471 pages 2-3 sur 6 (Exercice 1, Partie 1 —
+        barème 2,25 pt = 0,5 + 0,75 + 1, sur les 7 pt de l'exercice ; la
+        Partie 2, indépendante, porte sur l'étude d'une solution aqueuse
+        d'une amine et relève de reactions-acido-basiques). Transcription
+        vérifiée par une passe adversariale indépendante (2026-08-23) :
+        re-fetch des 6 pages, en-tête relu au zoom x3. ATTENTION HISTORIQUE :
+        le fichier docs/sujets/_incoming/pc-spc-2024-r.md a été ENTIÈREMENT
+        RÉÉCRIT le 2026-08-23 — son contenu antérieur était en réalité une
+        copie du sujet 2023 (électrolyse du bromure de zinc), assortie d'un
+        faux avertissement de « discordance d'année ». La présente entrée
+        est convertie depuis le fichier corrigé, jamais depuis l'ancien.
+        Aucune figure n'accompagne la Partie 1 (la pile n'est pas
+        schématisée sur le scan) — ce n'est pas un oubli de transcription.
+        Recalcul indépendant : Q = I.Δt = 0,500 x 600 = 300 C ; n(e-) =
+        300 / 9,65e4 = 3,11e-3 mol ; n(Fe) = 1,55e-3 mol ; Δm =
+        16800 / 193000 = 8,70e-2 g, soit un GAIN de 87 mg sur la plaque de
+        fer (cathode) — le titre indicatif de la commande disait « perte de
+        masse », ce qui est le signe inverse ; corrigé ici, voir NOTE
+        ÉDITORIALE #3.
+    intro: |-
+      **Étude de la pile fer-zinc (examen national, session de rattrapage 2024 — Exercice 1, Partie 1, 2,25 points).**
+
+      *Parmi les applications des réactions d'oxydoréduction on trouve les piles électrochimiques. Au cours du fonctionnement de ces piles, une partie de l'énergie chimique produite par ces réactions est transformée en énergie électrique.*
+
+      La pile fer-zinc étudiée dans cette partie est composée de deux compartiments (1) et (2) liés par un pont salin.
+
+      Le compartiment (1) contient un volume $V_1$ de solution de sulfate de fer II : $\text{Fe}^{2+}_{(aq)} + \text{SO}_{4(aq)}^{2-}$ de concentration initiale en ion Fer II : $C_1 = \left[\text{Fe}^{2+}_{(aq)}\right]_i$ dans laquelle est plongée une plaque de fer.
+
+      Le compartiment (2) contient un volume $V_2 = V_1$ de solution de sulfate de zinc $\text{Zn}^{2+}_{(aq)} + \text{SO}_{4(aq)}^{2-}$ de concentration initiale en ion zinc : $C_2 = C_1 = \left[\text{Zn}^{2+}_{(aq)}\right]_i$ dans laquelle est plongée une plaque de zinc.
+
+      Un circuit électrique est réalisé en branchant un conducteur ohmique, un ampèremètre et un interrupteur en série avec la pile fer-zinc étudiée.
+
+      L'ampèremètre est branché de façon que sa borne COM (pôle négatif) soit reliée à l'électrode de zinc.
+
+      À un instant de date $t_0 = 0$ on ferme le circuit et l'ampèremètre affiche la valeur constante positive $I = 500\ \text{mA}$ de l'intensité du courant électrique durant $\Delta t = t_1 - t_0 = 10\ \text{min}$.
+
+      **Données.**
+      - Couples ox/red intervenant dans la réaction : $\text{Zn}^{2+}_{(aq)}/\text{Zn}_{(s)}$ et $\text{Fe}^{2+}_{(aq)}/\text{Fe}_{(s)}$ ;
+      - Constante de Faraday : $1\text{F} = 9{,}65\cdot10^{4}\ \text{C.mol}^{-1}$ ;
+      - Masse molaire : $M(\text{Fe}) = 56\ \text{g.mol}^{-1}$.
+
+      On souligne que la réaction modélisant la transformation qui a eu lieu est totale.
+
+      *Aucune figure n'accompagne cette partie : la pile n'est pas schématisée sur le scan. Tout ce qui est nécessaire est dans le texte, y compris le branchement de l'ampèremètre.*
+    questions:
+      - id: q1
+        part: "1- L'électrode positive de la pile"
+        stem: |-
+          (0,5 pt) Indiquer, en justifiant, l'électrode positive de la pile.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Ici, aucune observation chimique ne t'est offerte : on ne te dit pas qu'une plaque maigrit ou qu'un dépôt apparaît. La seule information de terrain est ÉLECTRIQUE — le branchement de l'ampèremètre et le signe de ce qu'il affiche. C'est donc par l'électricité qu'on entre, et par la chimie qu'on confirme.
+
+          **Ce que dit l'ampèremètre.** Un ampèremètre a deux bornes : la borne COM (marquée $-$) et la borne « A » (marquée $+$). L'appareil est construit et gradué pour afficher une valeur POSITIVE lorsque le courant conventionnel le traverse en ENTRANT par la borne $+$ et en SORTANT par la borne COM. C'est cette convention de branchement — et elle seule — qui donne un sens au mot « positive » dans l'énoncé.
+
+          Ici, l'énoncé dit deux choses qu'il faut lire ensemble :
+          - la borne COM est reliée à l'électrode de zinc ;
+          - l'affichage est une valeur constante **positive**, $I = 500\ \text{mA}$.
+
+          Le courant sort donc de l'ampèremètre par la borne COM, c'est-à-dire qu'il **arrive sur l'électrode de zinc** en venant du circuit extérieur.
+
+          **Ce qu'on en déduit sur la pile.** Dans le circuit extérieur, le courant conventionnel circule du pôle $+$ vers le pôle $-$ (rung R4 : c'est le sens inverse du déplacement réel des électrons). Le courant qui ARRIVE sur le zinc y termine son trajet extérieur : le zinc est donc le pôle $-$, et il ne reste qu'une possibilité pour l'autre.
+
+          $$\boxed{\text{L'électrode positive de la pile est l'électrode de fer.}}$$
+
+          **Le contrôle chimique qui confirme.** Le pôle $+$ est la cathode, siège de la réduction (rung R3). Du côté du fer, avec le couple $\text{Fe}^{2+}/\text{Fe}$, la réduction s'écrit $\text{Fe}^{2+} + 2\,e^- \rightarrow \text{Fe}$ : la plaque de fer s'épaissit. Du côté du zinc, pôle $-$, donc anode : $\text{Zn} \rightarrow \text{Zn}^{2+} + 2\,e^-$, la plaque de zinc se consomme. Les deux couples de l'énoncé sont bien mobilisés, chacun dans le sens qui convient : l'ensemble est cohérent. C'est exactement ce que la question 3 va chiffrer, en pesant le fer GAGNÉ.
+
+          **Le piège nommé de cette question : conclure sur le seul mot « COM ».** Beaucoup lisent « COM = pôle négatif de l'ampèremètre, COM est relié au zinc, donc le zinc est le pôle négatif » — et tombent, par chance, sur la bonne réponse avec un raisonnement faux. Le branchement SEUL ne décide de rien : si le courant circulait dans l'autre sens, le même branchement donnerait un affichage NÉGATIF. C'est la conjonction « COM sur le zinc » **et** « affichage positif » qui tranche. L'énoncé a écrit le mot « positive » exprès ; s'il l'avait omis, la question serait indécidable.
+
+          **Et pourquoi le critère $Q_{r,i}$ contre $K$ ne sert pas ici.** Le réflexe du rung R2 serait de comparer $Q_{r,i} = \dfrac{[\text{Zn}^{2+}]_i}{[\text{Fe}^{2+}]_i}$ à $K$. Comme l'énoncé impose $C_2 = C_1$, on obtient bien $Q_{r,i} = 1$ — mais $K$ n'est PAS donné. Le critère est donc muet, et c'est délibéré : ce sujet-là te fait entrer par la mesure électrique. Ne va pas inventer une valeur de $K$, et n'invoque pas de potentiels standards $E°$ : ils ne sont pas au programme.
+      - id: q2
+        part: "2- Les équations aux électrodes et le bilan"
+        stem: |-
+          (0,75 pt) Écrire l'équation de la réaction au niveau de chaque électrode, et déduire l'équation bilan lors du fonctionnement de la pile.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le bilan d'une pile s'obtient toujours en trois temps : écrire chaque demi-réaction DANS LE SENS où elle se produit réellement (ce que la question 1 vient de fixer), équilibrer les électrons cédés avec les électrons captés, puis additionner. Les électrons ne sont ni réactif ni produit du bilan : ils doivent disparaître.
+
+          **À l'électrode de zinc** — pôle $-$, donc anode, donc oxydation :
+
+          $$\text{Zn}_{(s)} \longrightarrow \text{Zn}^{2+}_{(aq)} + 2\,e^-$$
+
+          **À l'électrode de fer** — pôle $+$, donc cathode, donc réduction :
+
+          $$\text{Fe}^{2+}_{(aq)} + 2\,e^- \longrightarrow \text{Fe}_{(s)}$$
+
+          **L'équilibrage des électrons.** Le zinc en libère $2$, le fer en capte $2$ : les comptes tombent déjà juste, aucun coefficient multiplicateur n'est nécessaire. On additionne directement, et les $2\,e^-$ se simplifient de part et d'autre :
+
+          $$\boxed{\text{Zn}_{(s)} + \text{Fe}^{2+}_{(aq)} \longrightarrow \text{Zn}^{2+}_{(aq)} + \text{Fe}_{(s)}}$$
+
+          **Le contrôle.** Conservation des éléments : un zinc et un fer de chaque côté. Conservation de la charge : $+2$ à gauche (l'ion $\text{Fe}^{2+}$), $+2$ à droite (l'ion $\text{Zn}^{2+}$). Les ions sulfate $\text{SO}_4^{2-}$ et les ions du pont salin ne figurent pas dans le bilan : ce sont des spectateurs, ils n'échangent aucun électron.
+
+          **Le piège nommé de cette question : le réflexe de multiplier.** Sur la plupart des piles au programme — argent-chrome, nickel-argent — les deux demi-équations n'échangent pas le même nombre d'électrons, et il faut multiplier l'une d'elles avant de sommer. Ce geste devient si automatique qu'on l'applique ici sans regarder, et on écrit des monstres du type $2\,\text{Zn} + 2\,\text{Fe}^{2+} \rightarrow \ldots$ — juste chimiquement, mais non simplifié, donc sanctionné. Compte les électrons AVANT de multiplier : ici, $2$ contre $2$, il n'y a rien à faire.
+
+          **Le second piège, plus grave : le sens d'écriture.** Le couple $\text{Zn}^{2+}/\text{Zn}$ se note conventionnellement oxydant sur réducteur, ce qui pousse à écrire $\text{Zn}^{2+} + 2\,e^- \rightarrow \text{Zn}$. C'est la RÉDUCTION du zinc — l'inverse de ce qui se passe dans cette pile. Une demi-équation d'électrode s'écrit toujours dans le sens réellement observé, jamais dans le sens de la notation du couple.
+      - id: q3
+        part: "3- La variation de masse de la plaque de fer"
+        stem: |-
+          (1 pt) La pile fonctionne pendant la durée $\Delta t = 10\ \text{min}$. Montrer que la variation de la masse de la plaque de fer a pour expression $\Delta m = \dfrac{I.\Delta t.M(\text{Fe})}{2.F}$. Calculer sa valeur.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé demande d'abord une EXPRESSION LITTÉRALE, ensuite seulement un nombre — c'est la consigne imprimée en tête du sujet (« On donnera les expressions littérales avant de passer aux applications numériques »). La chaîne est toujours la même, et elle a trois maillons : la charge débitée donne les électrons, les électrons donnent la matière par la stœchiométrie de l'électrode considérée, la matière donne la masse par la masse molaire.
+
+          **Maillon 1 — de la durée aux électrons.** À intensité constante, la charge débitée vaut $Q = I\,\Delta t$ ; et une mole d'électrons transporte la charge $F$, donc $Q = n(e^-)\,F$ (rung R6). En égalant les deux :
+
+          $$n(e^-) = \frac{I\,\Delta t}{F}$$
+
+          **Maillon 2 — des électrons au fer.** On raisonne sur la demi-équation de l'électrode ÉTUDIÉE, celle de fer (question 2) : $\text{Fe}^{2+} + 2\,e^- \rightarrow \text{Fe}$. Chaque atome de fer déposé consomme $2$ électrons, donc :
+
+          $$n(\text{Fe}) = \frac{n(e^-)}{2} = \frac{I\,\Delta t}{2\,F}$$
+
+          **Maillon 3 — du fer à la masse.** La plaque de fer GAGNE ce métal (c'est la cathode) : sa variation de masse $\Delta m = m_{\text{finale}} - m_{\text{initiale}}$ est donc positive et vaut $n(\text{Fe})\times M(\text{Fe})$ :
+
+          $$\boxed{\Delta m = \frac{I\,\Delta t\,M(\text{Fe})}{2\,F}}$$
+
+          C'est bien l'expression demandée. Remarque au passage que le $2$ du dénominateur n'est pas une constante universelle : c'est le nombre d'électrons de la demi-équation du fer. Avec un ion $\text{Cr}^{3+}$, ce serait un $3$.
+
+          **L'application numérique, avec les conversions faites d'abord.**
+
+          $$I = 500\ \text{mA} = 0{,}500\ \text{A} \qquad \Delta t = 10\ \text{min} = 600\ \text{s}$$
+
+          $$\Delta m = \frac{0{,}500 \times 600 \times 56}{2 \times 9{,}65\cdot10^{4}} = \frac{16\,800}{1{,}93\cdot10^{5}}$$
+
+          $$\boxed{\Delta m \approx 8{,}7\cdot10^{-2}\ \text{g} \quad (\text{soit } 87\ \text{mg gagnés par la plaque de fer})}$$
+
+          **Le contrôle chiffre par chiffre.** Refais-le dans l'autre ordre pour vérifier : $Q = 0{,}500\times600 = 300\ \text{C}$ ; $n(e^-) = 300 / 9{,}65\cdot10^{4} = 3{,}11\cdot10^{-3}\ \text{mol}$ ; $n(\text{Fe}) = 1{,}55\cdot10^{-3}\ \text{mol}$ ; $\Delta m = 1{,}55\cdot10^{-3} \times 56 = 8{,}7\cdot10^{-2}\ \text{g}$. Même valeur — le calcul littéral n'a pas dérapé. (La division exacte donne $0{,}08705$ g ; on garde deux chiffres significatifs, comme les données.)
+
+          **Le piège nommé de cette question : le signe.** Sur la pile argent-chrome (2020 normale, autre entrée de cette banque), la même loi de Faraday donne un $\Delta m$ NÉGATIF — parce que l'électrode qu'on y étudie, le chrome, est l'ANODE : elle se dissout. Ici, l'électrode étudiée est le fer, qui est la CATHODE : elle s'épaissit, $\Delta m$ est POSITIF. Le mot « variation » de l'énoncé n'est pas synonyme de « perte ». Et l'expression que le sujet te demande d'établir ne porte aucun signe moins : c'est ta vérification — si ton raisonnement t'amenait à un $\Delta m$ négatif, il contredirait la formule imposée, et c'est ton identification de la polarité (question 1) qu'il faudrait reprendre.
+
+          **Les deux conversions à ne pas rater.** Les milliampères en ampères (facteur $10^{3}$) et les minutes en secondes (facteur $60$). Oublier la seconde conversion donne $1{,}45\cdot10^{-4}$ g, soit une plaque qui gagne un dixième de milligramme en dix minutes — invraisemblable pour un demi-ampère.
