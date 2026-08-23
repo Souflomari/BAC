@@ -2,7 +2,8 @@
 
 > Transcription intégrale depuis les scans AlloSchool (`element/145799`,
 > `course-422/upload-87492`, 6 pages). Conventions : `docs/sujets/pc/README.md`.
-> Toutes les entrées naissent `transcrit (non vérifié)`.
+> Les entrées naissent `transcrit (non vérifié)` ; les quatre sont passées à
+> `vérifié` par la passe adversariale décrite plus bas.
 >
 > En-tête du scan (p. 1, relu sur l'image) : **RS28F**, الدورة الاستدراكية 2025
 > (session de rattrapage), المسالك الدولية (option internationale/BIOF),
@@ -41,7 +42,7 @@
 > question 1-4-2), l'enveloppe de la figure 4 était décrite pour une seule
 > période là où le cadre en contient deux et un quart, et le pas de l'ordonnée
 > de la figure 2 de l'exercice 3 valait $1{,}25\ \text{V}$ par division et non
-> $2{,}5$. Les treize mentions « lecture à confirmer » ont toutes été levées
+> $2{,}5$. Les quatorze mentions « lecture à confirmer » ont toutes été levées
 > par mesure au pixel doublée d'une re-dérivation qui les valide.
 > **Aucune incohérence du sujet officiel n'a été relevée :** toutes les
 > lectures graphiques se recoupent avec les valeurs numériques imposées
@@ -199,9 +200,10 @@ Deux tracés :
 Lecture qui porte la question 3-3 : le réactif limitant est l'ester
 ($n_{01} = 0{,}8\ \text{mmol} < 1{,}0\ \text{mmol}$) et la réaction est
 totale, donc $x_{max} = 0{,}8\ \text{mmol}$ et $t_{1/2}$ se lit à
-$x = 0{,}40\ \text{mmol}$ (4ᵉ trait principal) : **la courbe y passe
-exactement au 4ᵉ trait vertical, $t_{1/2} = 4{,}0\ \text{min}$** (mesure au
-pixel : intersection à $t = 4{,}00 \pm 0{,}05$).
+$x = 0{,}40\ \text{mmol}$ (4ᵉ trait principal horizontal) : **la courbe y
+passe exactement à l'aplomb du 4ᵉ trait principal vertical, soit
+$t_{1/2} = 4{,}0\ \text{min}$** (mesure au pixel : intersection à
+$t = 4{,}00 \pm 0{,}05$).
 Re-dérivation de 3-4 :
 $v = \frac{1}{V}\left(\frac{dx}{dt}\right)_{t=3} = \frac{0{,}08}{0{,}050}
 = 1{,}6\ \text{mmol.L}^{-1}.\text{min}^{-1}$.

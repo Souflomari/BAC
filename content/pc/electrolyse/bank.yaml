@@ -36,8 +36,24 @@
 # solution de chlorure de chrome (III)), ne recoupe rien non plus : couple
 # $Cr^{3+}/Cr$, générateur sans polarité précisée (identification par
 # observation, pas par branchement) et QCM sont inédits dans le corpus de
-# cette notion. La banque compte donc 3 entrées distinctes en pratique (la
-# rail affichera « 3 sujets »).
+# cette notion. Le quatrième sujet, 2023 R Exercice 1 (Partie I, électrolyse
+# d'une solution aqueuse de bromure de zinc), vient de
+# docs/sujets/_incoming/pc-spc-2023-r.md — le sujet complet de la session de
+# rattrapage 2023, vérifié par une passe adversariale (2026-08-23), pas
+# encore reversé dans le fichier de notion. FLAG DE JUMELAGE (pour la revue,
+# pas un recoupement) : c'est le frère quasi jumeau de bk-2019-n-x1 — même
+# cation $Zn^{2+}$, même halogénure en face, même tube en U à électrodes de
+# graphite, même câblage (électrode B à gauche sur la borne $+$, électrode A
+# à droite sur la borne $-$), mêmes constantes $1F = 9{,}65\cdot10^{4}$ et
+# $M(Zn) = 65{,}4$. Ce qui diffère, et qui justifie de garder les deux : le
+# bromure au lieu de l'iodure (dibrome en solution, pas un gaz), une question
+# 1 posée en QCM à quatre propositions (dont une sur l'équilibre et une sur
+# l'évolution de $[Br^-]$ — deux angles absents de 2019), et surtout la loi
+# de Faraday posée dans l'AUTRE SENS : 2019 remonte de la masse déposée vers
+# la durée, 2023 R descend du couple $(I, \Delta t)$ vers la masse, et exige
+# d'abord la relation LITTÉRALE. Les deux entrées se complètent donc au lieu
+# de se répéter. La banque compte 4 entrées distinctes en pratique (la rail
+# affichera « 4 sujets »).
 #
 # SCOPE NOTE (technique mobilisée au-delà de ce que la leçon montre
 # explicitement pas à pas — pontée au point d'usage dans le raisonnement de
@@ -52,6 +68,19 @@
 #     l'orchestrateur / pedagogy-architect : soit R5 (applications) gagne
 #     une mention du volume molaire, soit la question reste balisée hors
 #     rung comme telle. Pas corrigé unilatéralement ici.
+#   - bk-2023-r-x1, q1 (proposition C du QCM) : trancher « au cours de
+#     l'électrolyse le système est en équilibre » demande le critère
+#     d'évolution — un système à l'équilibre a $Q_r = K$ et n'évolue plus —
+#     qui appartient à la leçon précédente (piles / évolution spontanée),
+#     pas aux rungs d'ici. Cette leçon MENTIONNE bien $Q_{r,i}$ face à $K$
+#     (R1, R3) mais n'énonce jamais l'équivalence « équilibre = plus
+#     d'évolution nette », ni le fait que le forçage ÉLOIGNE $Q_r$ de $K$
+#     au lieu de l'en rapprocher. Le pont est refait en une ligne au point
+#     d'usage dans le raisonnement de la question 1 (jamais « on admet »).
+#     Signalé pour l'orchestrateur / pedagogy-architect : soit R1 gagne une
+#     phrase sur le sens de variation de $Q_r$ sous forçage, soit la
+#     question reste balisée hors rung comme telle. Pas corrigé
+#     unilatéralement ici.
 
 notion: pc/electrolyse
 
@@ -344,3 +373,146 @@ entries:
             note: "Conversion mole -> masse par la masse molaire du chrome."
           - math: '\boxed{m(Cr) \approx 2{,}59\ \text{g}}'
             note: "Masse de chrome deposee sur la plaque d'acier pendant Delta t."
+
+  # ── bk-2023-r-x1 — 2023 R, Exercice 1 (Partie I) : électrolyse du bromure de zinc ──
+  - id: bk-2023-r-x1
+    title: "Électrolyse du bromure de zinc"
+    source:
+      year: 2023
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Partie I : électrolyse d'une solution aqueuse de bromure de zinc"
+    bareme_total: 2.75
+    duration_min: 16
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code RS 28F, scan course-422/upload-85310, pages 2
+        et 3 sur 6 (Exercice 1, Partie I — électrolyse d'une solution
+        aqueuse de bromure de zinc ; barème de la partie =
+        $0{,}5+1+0{,}25+1 = 2{,}75$ pt sur les 7 pt de l'exercice complet,
+        dont la Partie II — dosage d'une solution aqueuse de triméthylamine
+        — relève de reactions-acido-basiques.md). Source :
+        docs/sujets/_incoming/pc-spc-2023-r.md, statut « vérifié » — passe
+        adversariale du 2026-08-23 : les 6 pages re-fetchées indépendamment,
+        texte des quatre exercices recontrôlé caractère par caractère
+        (couples, $1F$, $M(Zn)$, $I = 82$ mA), et la figure du tube en U
+        re-décrite DEPUIS LE DESSIN (topologie du câblage confirmée : le
+        retour de gauche part bien du côté « + », donc l'électrode (B) est
+        sur la borne $+$ ; description enrichie du niveau de liquide et de
+        la géométrie du circuit extérieur, qui manquaient). Physique
+        re-dérivée et recontrôlée ici : $Q = I\Delta t = 0{,}082 \times
+        3600 = 295{,}2$ C $\Rightarrow n(e^-) = Q/F \approx
+        3{,}06\times10^{-3}$ mol $\Rightarrow n(Zn) \approx
+        1{,}53\times10^{-3}$ mol $\Rightarrow m(Zn) \approx 0{,}100$ g —
+        la relation littérale $m(Zn) = I\Delta t\,M(Zn)/2F$ exigée par
+        l'énoncé tombe exactement. QCM de la question 1 : une seule
+        proposition juste (B). Jumelage assumé avec bk-2019-n-x1 (même
+        cation, même montage, loi de Faraday posée dans l'autre sens) —
+        voir l'en-tête du fichier.
+    intro: |-
+      **Électrolyse d'une solution aqueuse de bromure de zinc (examen national, session de rattrapage 2023 — Exercice 1, Partie I, 2,75 points).**
+
+      *Cet exercice propose d'étudier une réaction d'oxydo-réduction forcée dans une première partie et une réaction acido-basique dans une deuxième partie.*
+
+      On réalise l'électrolyse d'une solution aqueuse (S) de bromure de zinc $\left(\text{Zn}^{2+}_{(aq)} + 2\,\text{Br}^{-}_{(aq)}\right)$ de volume $V$ en utilisant un générateur fournissant un courant d'intensité constante $I$ et des électrodes en graphite (figure ci-contre). Au cours de cette électrolyse, le métal zinc se dépose sur l'une des électrodes.
+
+      **Données :** couples (Ox / Red) intervenant dans cette électrolyse : $\text{Br}_{2(aq)}/\text{Br}^{-}_{(aq)}$ ; $\text{Zn}^{2+}_{(aq)}/\text{Zn}_{(s)}$ ; le faraday : $1\,\text{F} = 9{,}65\cdot10^{4}\ \text{C.mol}^{-1}$ ; masse molaire : $M(\text{Zn}) = 65{,}4\ \text{g.mol}^{-1}$ ; $I = 82\ \text{mA}$.
+
+      **Figure (schéma, sans numéro — « figure ci-contre »).** La cellule d'électrolyse est un tube en U contenant la solution. En haut, le générateur est représenté par un cercle marqué « G » : le signe $+$ est imprimé à gauche du cercle, le signe $-$ à sa droite. Le circuit extérieur est tracé comme un cadre — depuis $G$, le fil part à gauche et à droite jusqu'aux deux angles supérieurs, redescend, puis revient horizontalement vers l'intérieur, si bien que la silhouette générale est celle d'un $T$ posé sur le tube en U. À l'extrémité intérieure de chacun de ces deux retours commence une électrode : un trait vertical épais qui descend dans la branche correspondante du tube et plonge dans la solution. Chaque branche du U est dessinée par deux traits fins (ses parois) et porte, à mi-hauteur, un court trait horizontal marquant le niveau du liquide ; les électrodes traversent ce niveau et s'arrêtent au-dessus du coude. Une flèche horizontale venant de la gauche pointe sur l'électrode de la branche gauche, avec la légende « Electrode (B) en graphite » — cette électrode est donc celle qui est reliée à la borne $+$ ; une flèche venant de la droite pointe sur l'électrode de la branche droite, légende « Electrode (A) en graphite » (reliée à la borne $-$). Une troisième flèche, en bas à droite, pointe vers le flanc droit du coude du tube en U avec la légende « Solution aqueuse de bromure de zinc ».
+    questions:
+      - id: q1
+        part: "Partie I — Lire le montage : qui est l'anode, et que devient la solution"
+        stem: |-
+          **(0,5 pt)** Parmi les propositions suivantes, choisir la proposition juste.
+
+          | | |
+          |---|---|
+          | **A** | L'électrode (A) est l'anode. |
+          | **B** | L'électrode (B) est le siège d'une oxydation. |
+          | **C** | Au cours de l'électrolyse le système est en équilibre. |
+          | **D** | $\left[\text{Br}^{-}_{(aq)}\right]$ augmente au cours du temps. |
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un QCM à quatre propositions ne se joue pas au flair : chacune porte sur un point différent de la leçon, et la bonne méthode est de les éliminer une à une avec l'outil qui convient. Ici deux propositions (A et B) se règlent par le câblage, une (C) par le statut de la transformation, une (D) par ce qui se passe réellement aux électrodes. Le seul fait à établir d'abord, et il suffit pour A et B, c'est **qui est l'anode**.
+
+          Le rung 2 le tranche sans détour : en électrolyse, c'est le générateur qui impose la polarité, et sa borne $+$ *tire* les électrons hors de l'électrode qu'elle alimente — ce qui y force une oxydation. L'électrode reliée à la borne $+$ est donc l'**anode**, et celle reliée à la borne $-$ la **cathode**. Sur la figure, le signe $+$ est imprimé à gauche du cercle $G$ et le fil de gauche rejoint l'**électrode (B)** ; le signe $-$ est à droite, et le fil de droite rejoint l'**électrode (A)**.
+
+          **A — fausse.** L'électrode (A) est sur la borne $-$ : c'est la cathode, siège de la réduction. C'est d'ailleurs là que le zinc se dépose, comme l'annonce l'énoncé.
+
+          **B — juste.** L'électrode (B) est sur la borne $+$ : c'est l'anode, donc le siège d'une **oxydation** (celle des ions bromure, question suivante).
+
+          **C — fausse.** Le pont à faire ici sort des rungs de cette leçon (voir la SCOPE NOTE en tête de fichier), et il tient en une ligne qu'on refait plutôt que de l'admettre : un système à l'équilibre chimique a $Q_r = K$ et **n'évolue plus** — aucune espèce n'y apparaît ni n'y disparaît en net. Or ici du zinc se dépose en continu tant que le générateur débite : le système évolue, donc $Q_r \neq K$, donc il n'est pas à l'équilibre. Pire — et c'est tout le sens du rung 1 — le générateur force le sens que le critère d'évolution interdirait : loin de rapprocher $Q_r$ de $K$, l'électrolyse l'en **éloigne**. Une électrolyse est par construction un système hors équilibre, maintenu de force.
+
+          **D — fausse.** À l'anode (B), ce sont précisément les ions $\text{Br}^{-}$ qui sont oxydés en dibrome : ils sont **consommés**. Leur concentration diminue au cours du temps, elle n'augmente pas.
+
+          La réponse est donc $\boxed{\text{B}}$.
+
+          **Le piège de cette question.** Il est double, et les deux moitiés visent le même réflexe : appliquer à l'électrolyse ce qu'on a appris de la pile. D'abord la polarité — dans une pile, l'anode est la borne $-$ ; ici c'est l'exact opposé (rung 2), et un élève qui transporte la règle de la pile choisit A au lieu de B. Ensuite l'ordre alphabétique : rien n'oblige (A) à être à gauche et (B) à droite, et sur ce schéma c'est justement l'inverse — c'est le signe imprimé à côté du cercle $G$ qu'on lit, pas l'ordre des lettres.
+      - id: q2
+        part: "Partie I — Les réactions aux électrodes"
+        stem: |-
+          **(1 pt)** Écrire l'équation de la réaction qui se produit au niveau de la cathode et celle qui se produit au niveau de l'anode.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une demi-équation par électrode, écrite dans le sens que le mécanisme impose — jamais dans le sens où le couple est écrit dans les données. C'est le geste du rung 1 : on décide d'abord *oxydation ou réduction*, et le sens de la flèche suit.
+
+          La cathode est l'électrode (A), sur la borne $-$ (question 1) : le générateur y **pousse** des électrons, une espèce en solution doit donc les capter — une réduction. Des deux couples fournis, seul $\text{Zn}^{2+}/\text{Zn}$ a un oxydant capable de se réduire en un solide, et l'énoncé confirme l'observation : le métal zinc se dépose.
+
+          L'anode est l'électrode (B), sur la borne $+$ : le générateur y **tire** des électrons, une espèce doit donc en céder — une oxydation. Il reste le couple $\text{Br}_{2}/\text{Br}^{-}$, dont la forme réduite $\text{Br}^{-}$ est justement présente en solution : elle s'oxyde en dibrome.
+
+          Les deux demi-équations échangent chacune $2\,e^-$ : elles sont directement compatibles, sans qu'il faille en multiplier aucune.
+        steps:
+          - math: 'Zn^{2+}_{(aq)} + 2\,e^- \rightarrow Zn_{(s)}'
+            note: "Cathode = electrode (A), borne - : reduction des ions zinc, depot de metal."
+          - math: '2\,Br^{-}_{(aq)} \rightarrow Br_{2(aq)} + 2\,e^-'
+            note: "Anode = electrode (B), borne + : oxydation des ions bromure."
+        reasoning_close: ""
+      - id: q3
+        stem: |-
+          **(0,25 pt)** Écrire l'équation bilan de la réaction de cette électrolyse.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le bilan est la somme des deux demi-équations, arrangée pour que **plus aucun électron n'y figure** : les électrons sont des intermédiaires qui passent d'une électrode à l'autre par le fil, ils ne sont ni réactif ni produit du bilan.
+
+          Ici la somme se fait telle quelle : la cathode consomme $2\,e^-$, l'anode en libère $2$ — même nombre des deux côtés, ils s'éliminent sans qu'on ait à multiplier quoi que ce soit.
+        steps:
+          - math: 'Zn^{2+}_{(aq)} + 2\,e^- \rightarrow Zn_{(s)}'
+            note: "Demi-equation de la cathode (question 2)."
+          - math: '2\,Br^{-}_{(aq)} \rightarrow Br_{2(aq)} + 2\,e^-'
+            note: "Demi-equation de l'anode (question 2)."
+          - math: '\boxed{Zn^{2+}_{(aq)} + 2\,Br^{-}_{(aq)} \rightarrow Zn_{(s)} + Br_{2(aq)}}'
+            note: "Somme : les 2 electrons de chaque cote s'eliminent, flechesimple pour une equation bilan."
+        reasoning_close: ""
+      - id: q4
+        part: "Partie I — La loi de Faraday : d'abord la relation littérale, ensuite le chiffre"
+        stem: |-
+          **(1 pt)** Au bout d'une heure $(\Delta t = 1\,\text{h})$ d'électrolyse, il se dépose une masse $m(\text{Zn})$ de zinc sur l'une des électrodes. Établir la relation : $m(\text{Zn}) = \dfrac{I.\Delta t.M(\text{Zn})}{2F}$. Calculer la valeur de $m(\text{Zn})$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé demande la relation **avant** le nombre, et c'est le bon ordre : la formule à établir n'est pas une formule à retenir, c'est le résultat de la chaîne du rung 4 écrite en lettres au lieu d'être écrite en chiffres. On la construit maillon par maillon, chacun justifié, et le facteur $2$ du dénominateur apparaîtra tout seul là où il doit apparaître — il ne se plaque pas à la fin.
+
+          **Maillon 1 — du courant à la charge.** L'intensité est constante (énoncé), donc la quantité d'électricité qui a traversé la cellule pendant $\Delta t$ vaut $Q = I\,\Delta t$.
+
+          **Maillon 2 — de la charge aux électrons.** C'est la loi de Faraday du rung 4 : cette même charge, comptée en moles d'électrons, vaut $Q = n(e^-)\,F$. On en tire $n(e^-) = \dfrac{I\,\Delta t}{F}$.
+
+          **Maillon 3 — des électrons au zinc.** C'est ici, et seulement ici, que le $2$ entre en scène : la demi-équation de la cathode (question 2) dit que chaque ion $\text{Zn}^{2+}$ qui devient un atome de zinc capte **deux** électrons. Donc $n(Zn) = \dfrac{n(e^-)}{2}$.
+
+          **Maillon 4 — du zinc à sa masse.** La masse molaire fait le dernier pas : $m(Zn) = n(Zn)\,M(Zn)$.
+
+          En enchaînant les quatre, on obtient exactement la relation demandée. Il ne reste qu'à convertir les deux données en unités SI avant de chiffrer.
+        steps:
+          - math: 'Q = I\,\Delta t'
+            note: "Maillon 1 : quantite d'electricite debitee, a intensite constante (rung 4)."
+          - math: 'Q = n(e^-)\,F \implies n(e^-) = \frac{I\,\Delta t}{F}'
+            note: "Maillon 2 : loi de Faraday, la meme charge comptee en moles d'electrons."
+          - math: 'n(Zn) = \frac{n(e^-)}{2} = \frac{I\,\Delta t}{2\,F}'
+            note: "Maillon 3 : Zn2+ + 2 e- -> Zn (question 2), deux electrons par atome depose."
+          - math: '\boxed{m(Zn) = n(Zn)\,M(Zn) = \frac{I\,\Delta t\,M(Zn)}{2\,F}}'
+            note: "Maillon 4 : masse molaire. La relation demandee est etablie."
+          - math: 'I = 82\ \text{mA} = 0{,}082\ \text{A} \qquad \Delta t = 1\ \text{h} = 3600\ \text{s}'
+            note: "Conversions en unites SI, obligatoires avant toute application numerique."
+          - math: 'I\,\Delta t = 0{,}082 \times 3600 = 295{,}2\ \text{C}'
+            note: "Charge totale passee en une heure."
+          - math: 'm(Zn) = \frac{295{,}2 \times 65{,}4}{2 \times 9{,}65\times10^{4}} = \frac{1{,}9306\times10^{4}}{1{,}93\times10^{5}}'
+            note: "Numerateur et denominateur calcules separement, pour garder le controle des puissances de dix."
+          - math: '\boxed{m(Zn) \approx 0{,}100\ \text{g}}'
+            note: "Masse de zinc deposee a la cathode (electrode A) en une heure."
+        reasoning_close: ""
