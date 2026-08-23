@@ -13,9 +13,9 @@
 # dans les énoncés ; conventions KaTeX (block scalars pour la prose, KaTeX brut
 # entre apostrophes simples dans steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue B0) : la banque compte désormais DIX sujets
+# NOTE ÉDITORIALE (pour la revue B0) : la banque compte désormais ONZE sujets
 # « vérifié » — 2018 N, 2019 N, 2020 N, 2021 N, 2021 R, 2022 N, 2023 N, 2023 R,
-# 2024 N, 2025 N. Le 2021 R (bk-2021-r-x1, ajouté le 2026-08-23) est la PREMIÈRE
+# 2024 N, 2024 R, 2025 N. Le 2021 R (bk-2021-r-x1, ajouté le 2026-08-23) est la PREMIÈRE
 # entrée de session rattrapage de cette banque ; sa Partie 2, indépendante (pile
 # nickel-argent), est transcrite sous content/pc/piles (bk-2021-r-x1b). Il porte
 # une SCOPE NOTE en trois points — la loi de dilution non couverte nommément par
@@ -30,6 +30,19 @@
 # des rungs 9-11), le contrôle analytique de pH_E explicitement étiqueté
 # hors-programme, et un drapeau d'honnêteté sur des concentrations
 # physiologiquement irréelles transcrites telles quelles.
+# Le 2024 R (bk-2024-r-x1b, ajouté le 2026-08-23) est la TROISIÈME entrée de
+# rattrapage ; c'est la Partie 2 de l'exercice 1 (étude d'une solution aqueuse
+# d'une amine R-NH2 puis dosage par l'acide chlorhydrique, 4,75 pt), sa Partie 1
+# — indépendante — relevant de content/pc/piles. Elle porte une SCOPE NOTE en
+# quatre points (le tableau d'avancement d'un dosage avec titrant résiduel lu
+# sur le pH, le taux d'avancement appliqué à une réaction de dosage, le cas
+# miroir base faible / acide fort, et un drapeau de précision sur un tau qui
+# vaut 1 - 2,3.10^-9 et non 1) ET un FLAG DE JUMELAGE non tranché : c'est la
+# troisième « base faible dosée par un acide fort » de la banque, avec
+# bk-2020-n-x1 et bk-2023-r-x1b. Les trois portes d'entrée diffèrent (courbe de
+# dosage / points remarquables donnés en texte / diagramme de distribution) et
+# la recommandation est de garder les trois — arbitrage owner, voir le
+# commentaire au-dessus de l'entrée.
 # Le 2021 N sert AUSSI de sommet de leçon (r-bac, exercises.yaml, marqueur
 # exercise r-bac à R12). Il figure ici pour que la banque soit le corpus complet
 # des annales de la notion (BANK-SPEC §1 : « la banque est le volume derrière le
@@ -1390,6 +1403,331 @@ entries:
         steps:
           - math: 'K = \dfrac{K_A}{K_e} = 10^{\,pK_e - pK_A} = 10^{\,14 - 4{,}05} = 10^{9{,}95} \approx 8{,}9\times10^{9}'
             note: "Meme construction qu'au rung 9 : K est enorme, ce qui confirme a posteriori la fleche simple de la question 1."
+
+  # ── bk-2024-r-x1b — 2024 R, Exercice 1 (Partie 2) : base faible, diagramme de distribution et dosage ──
+  # SCOPE NOTE (quatre points, signales et non tus) :
+  # (1) LE TABLEAU D'AVANCEMENT D'UNE REACTION DE DOSAGE, AVEC LE TITRANT
+  #     RESIDUEL LU SUR LE pH (question 2-3). Aucun rung n'etablit ce geste
+  #     nommement : le rung 7 dresse des tableaux pour une reaction entre deux
+  #     couples en volume fixe, et les rungs 9-11 traitent le dosage comme
+  #     TOTAL sans jamais en chiffrer l'avancement. Il n'est pas « admis » ici :
+  #     le raisonnement de q7 REFAIT la construction au point d'usage — on ecrit
+  #     la ligne « etat final » du tableau, on identifie ce qui reste de H3O+
+  #     versé, et on le chiffre par la definition du pH (rung 2) appliquee au
+  #     volume TOTAL du melange. D'ou x_f = C_A.V_A - 10^-pH.(V_A + V_B).
+  # (2) LE TAUX D'AVANCEMENT D'UNE REACTION DE DOSAGE (question 2-4). Les
+  #     rungs 6 et 7 definissent tau = x_f/x_max pour la reaction d'une espece
+  #     avec l'eau et pour une reaction entre deux couples a l'equilibre.
+  #     L'appliquer a la reaction SUPPORT d'un titrage — pour en PROUVER la
+  #     totalite plutot que de la poser — est un usage neuf. La definition est
+  #     inchangee ; le raisonnement de q8 la rappelle et nomme le glissement.
+  # (3) DOSAGE D'UNE BASE FAIBLE PAR UN ACIDE FORT. Meme drapeau que
+  #     bk-2023-r-x1b point (2) : les rungs 9, 10 et 11 traitent tous le cas
+  #     MIROIR (acide faible dose par une base forte, pH croissant). La leçon
+  #     couvre le cas retourne par son exercice de variation (r-variation, R12),
+  #     mais aucun rung ne le pose. Le raisonnement de q5 refait l'argument dans
+  #     le bon sens plutot que de transposer en silence.
+  # (4) DRAPEAU DE PRECISION (dit, pas arrondi pour faire joli). A la question
+  #     2-4, tau ne vaut pas exactement 1 : tau = 1 - 2,3.10^-9. C'est ecrit tel
+  #     quel dans le raisonnement, avec la raison (le terme residuel de q7 vaut
+  #     1,6.10^-12 mol face a 7,2.10^-4 mol). La conclusion « transformation
+  #     totale » du sujet est juste ; la valeur exacte est 0,999999998, pas 1.
+  #
+  # FLAG DE JUMELAGE (ne pas trancher seul — precedent : electrolyse 2023-r vs
+  # 2019-n). Cette entree est la TROISIEME « base faible dosee par un acide
+  # fort » de la banque, avec bk-2020-n-x1 (ammoniac) et bk-2023-r-x1b
+  # (trimethylamine). Les trois se ressemblent en surface. Ce qui les distingue,
+  # et pourquoi les garder toutes les trois :
+  #   - bk-2020-n-x1 (2020 N) : le pK_A n'est JAMAIS demande. Le cœur est la
+  #     reaction de la base avec l'eau — tau puis Qr,eq (rungs 6-7) — plus le
+  #     choix de l'indicateur colore sur une courbe de dosage reelle. Porte
+  #     d'entree : la COURBE pH = f(V).
+  #   - bk-2023-r-x1b (2023 R) : le pK_A vient du point de DEMI-EQUIVALENCE
+  #     donne dans le texte (aucune courbe imprimee), etabli via un tableau
+  #     d'avancement qui rend le rapport = 1. Ajoute la dilution et le choix
+  #     d'indicateur. Porte d'entree : deux POINTS REMARQUABLES chiffres.
+  #   - bk-2024-r-x1b (celle-ci) : le pK_A vient d'un DIAGRAMME DE DISTRIBUTION
+  #     — le seul de toute la banque. C'est la seule entree qui exerce le rung 8
+  #     sur une figure de bac, et la seule qui l'utilise A L'ENVERS (q4 : trouver
+  #     le pH pour lequel %acide = 4 x %base). Aucune question d'indicateur
+  #     colore, aucune dilution. Et son tableau d'avancement est dresse a un
+  #     volume NON remarquable (V_A = 16,0 mL, avant l'equivalence) pour en tirer
+  #     x_f puis tau — geste absent des deux autres. Porte d'entree : le
+  #     DIAGRAMME DE DISTRIBUTION.
+  # Trois portes d'entree differentes vers le meme cluster : c'est exactement ce
+  # que la banque doit offrir (anti-memorisation, VISION). Recommandation :
+  # garder les trois. Arbitrage owner.
+  - id: bk-2024-r-x1b
+    title: "Base faible : diagramme de distribution, pKA, prédominance et dosage"
+    source:
+      year: 2024
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Partie 2 : étude d'une solution aqueuse d'une base"
+    bareme_total: 4.75
+    duration_min: 29
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/145769, scan
+        course-422/upload-87471 pages 2 et 3 sur 6 (Exercice 1, Partie 2 —
+        étude d'une solution aqueuse d'une amine R-NH2 : réaction avec l'eau,
+        diagramme de distribution, pK_A, prédominance, puis dosage par
+        l'acide chlorhydrique, avancement et taux d'avancement ; barème de la
+        partie 4,75 pt sur les 7 pt de l'exercice, détail
+        0,5+0,5+0,5+0,75+0,5+0,5+0,75+0,75). La Partie 1, indépendante, porte
+        sur la pile fer-zinc et relève de content/pc/piles. Transcription
+        vérifiée par une passe adversariale indépendante (2026-08-23) : les 6
+        pages du scan re-fetchées, la figure 1 re-décrite depuis l'image
+        (grille repérée au pixel), toute la chimie re-dérivée. AVERTISSEMENT
+        DE PROVENANCE conservé du vérificateur : le fichier de transcription
+        qui occupait cet emplacement avant le 2026-08-23 décrivait en réalité
+        le sujet 2023 R ; l'en-tête du scan upload-87471, relu au zoom x3,
+        porte sans ambiguïté « الدورة الاستدراكية 2024 ». C'est bien le
+        rattrapage 2024. Recoupements recalculés ici, indépendamment :
+        croisement des deux courbes à 50 % mesuré au pixel à pH = 10,80
+        (colonnes 1015 et 1082 pour les traits pH = 10 et pH = 12,
+        croisement colonne 1042) d'où pK_A = 10,8 ; les deux étiquettes
+        fléchées de la figure sont cohérentes avec ce pK_A (formule du rung 8 :
+        %acide(9,6) = 94 % contre « environ 93 % » dessiné, %base(10,2) =
+        20,1 % contre « environ 22 % » dessiné) ; V_AE = C_B.V_B/C_A =
+        9,0.10^-2 x 10,0 / 4,5.10^-2 = 20,0 mL ; à V_A = 16,0 mL il reste
+        1,8.10^-4 mol de base pour 7,2.10^-4 mol d'acide conjugué, soit un
+        rapport base/acide de 0,25 qui redonne pH = 10,8 + log(0,25) = 10,2 —
+        exactement le pH imprimé, et exactement la composition 80/20 de la
+        question 1-2-3 : le sujet boucle sur lui-même. Contrôle
+        hors-programme du pH de S_B (non rendu à l'élève, gardé ici) :
+        l'approximation usuelle de la base faible peu dissociée,
+        [HO-] = racine(K_b.C_B) avec K_b = 10^-3,2, donne pH = 11,88 —
+        exactement la valeur imprimée ; la résolution exacte du second degré
+        donne 11,86, l'écart de 0,02 étant l'approximation elle-même et non
+        une incohérence du sujet.
+    intro: |-
+      **Étude d'une solution aqueuse d'une base (examen national, session de rattrapage 2024 — Exercice 1, Partie 2, 4,75 points).**
+
+      Dans cette partie de l'exercice on se propose d'étudier une solution aqueuse d'une amine $R\text{-}NH_2$ où $R$ est une chaîne carbonée. Cette amine a un caractère basique, elle se transforme en son acide conjugué $R\text{-}NH_3^{+}$.
+
+      On prépare une solution aqueuse $S_B$ de cette amine de volume $V$ et de concentration $C_B = 9{,}0\cdot10^{-2}\ \text{mol.L}^{-1}$. La mesure de son pH donne $\text{pH} = 11{,}88$. Toutes les mesures sont effectuées à $25\,^\circ\text{C}$.
+
+      **Figure 1 — le diagramme de distribution.** Les courbes de la figure 1 représentent le diagramme de distribution de la forme acide et de la forme basique du couple $R\text{-}NH^{+}_{3(aq)}\,/\,R\text{-}NH_{2(aq)}$. Le **pourcentage %** est en ordonnée, le **pH** en abscisse. Le cadre est quadrillé (traits majeurs sombres, sous-quadrillage fin). En abscisse, traits majeurs tous les $2$ pH, chiffrés $2,\ 4,\ 6,\ 8,\ 10,\ 12,\ 14$ : le cadre commence à $\text{pH} = 0$ (l'axe des ordonnées) et s'arrête exactement au trait $14$, qui est son bord droit. En ordonnée, traits majeurs tous les $20\,\%$, chiffrés $0,\ 20,\ 40,\ 60,\ 80,\ 100$ : le trait $100\,\%$ est le bord supérieur du cadre.
+
+      Deux courbes y sont tracées. Une courbe **en trait plein** vaut $100\,\%$ à gauche, reste au plafond jusque vers $\text{pH} \approx 8$, puis chute et rejoint $0\,\%$ vers $\text{pH} \approx 13$ ; une légende encadrée « **Forme acide** » lui est reliée par une flèche qui la touche vers $93\,\%$ (aux alentours de $\text{pH} \approx 9{,}6$). Une courbe **en pointillés**, symétrique de la première, part de $0\,\%$ vers $\text{pH} \approx 8{,}5$ et rejoint $100\,\%$ vers $\text{pH} \approx 13$ ; une légende encadrée « **Forme basique** » lui est reliée par une flèche qui la touche vers $22\,\%$ (aux alentours de $\text{pH} \approx 10{,}2$). **Les deux courbes se coupent au niveau $50\,\%$ exactement à $\text{pH} = 10{,}80$** (croisement mesuré au pixel sur le scan).
+
+      **Le dosage (questions 2-1 à 2-4).** On a réalisé le dosage d'un volume $V_B = 10{,}0\ \text{mL}$ de la solution $S_B$ de concentration $C_B = 9{,}0\cdot10^{-2}\ \text{mol.L}^{-1}$, par une solution $S_A$ d'acide chlorhydrique $\left(\text{H}_3\text{O}^{+}_{(aq)} + \text{Cl}^{-}_{(aq)}\right)$ de concentration molaire $C_A = 4{,}5\cdot10^{-2}\ \text{mol.L}^{-1}$.
+    questions:
+      - id: q1
+        stem: |-
+          **1-1- (0,5 pt)** Écrire l'équation de la réaction de $R\text{-}NH_2$ avec l'eau.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une réaction acido-basique combine toujours **deux couples** (rung 1) : on écrit les deux demi-équations en sens opposés, on additionne, et le proton $H^+$ s'annule dans la somme. Ici l'énoncé donne le premier couple — $R\text{-}NH_3^{+}/R\text{-}NH_2$, dont l'amine est la **base**. Le second est nécessairement un couple de l'eau ; comme l'amine capte un proton, c'est l'eau qui le **cède**, donc l'eau joue ici son rôle d'**acide**, dans le couple $\text{H}_2\text{O}/\text{HO}^-$.
+
+          $$R\text{-}NH_{2(aq)} + H^+ \rightleftharpoons R\text{-}NH^{+}_{3(aq)} \qquad\text{et}\qquad \text{H}_2\text{O}_{(l)} \rightleftharpoons \text{HO}^-_{(aq)} + H^+$$
+
+          On additionne, le $H^+$ disparaît :
+
+          $$\boxed{R\text{-}NH_{2(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons R\text{-}NH^{+}_{3(aq)} + \text{HO}^-_{(aq)}}$$
+
+          **Pourquoi la double flèche, et pas une flèche simple.** L'énoncé annonce une base **faible** ; sa mise en solution est une transformation **limitée**, qui s'arrête sur un équilibre (rung 7). Tu peux le vérifier en deux lignes, avec les seuls chiffres de l'énoncé. Du pH on tire $[\text{H}_3\text{O}^+]$, puis $[\text{HO}^-]$ par le produit ionique de l'eau (rung 3) :
+
+          $$[\text{HO}^-]_{eq} = \frac{K_e}{[\text{H}_3\text{O}^+]_{eq}} = 10^{\,\text{pH}-14} = 10^{11{,}88-14} = 10^{-2{,}12} \approx 7{,}6\cdot10^{-3}\ \text{mol.L}^{-1}$$
+
+          Chaque amine ayant réagi produit exactement un $\text{HO}^-$, donc l'avancement final se lit sur cette concentration ; une conversion **totale** en produirait $C_B$. Le taux d'avancement final (rung 6) vaut donc :
+
+          $$\tau = \frac{[\text{HO}^-]_{eq}}{C_B} = \frac{7{,}6\cdot10^{-3}}{9{,}0\cdot10^{-2}} \approx 0{,}084$$
+
+          Environ $8\,\%$ de l'amine seulement a réagi : plus de neuf molécules sur dix sont restées intactes. La transformation est bel et bien limitée, la double flèche est méritée.
+
+          **Le piège de cette question.** Ne fais pas produire $\text{H}_3\text{O}^+$ à une base. C'est le réflexe de l'élève qui a trop travaillé les acides : il écrit $R\text{-}NH_2 + \text{H}_2\text{O} \rightleftharpoons R\text{-}NH_3^{+} + \text{H}_3\text{O}^+$, et l'équation n'est même plus équilibrée en atomes d'hydrogène. Une **base** arrache un proton à l'eau, et l'eau appauvrie d'un proton est $\text{HO}^-$ — jamais $\text{H}_3\text{O}^+$. Second piège, celui du rung 1 : l'eau est un **ampholyte**. Dans la réaction d'un acide avec l'eau, elle est base (couple $\text{H}_3\text{O}^+/\text{H}_2\text{O}$) ; ici elle est acide (couple $\text{H}_2\text{O}/\text{HO}^-$). Ce n'est pas la même moitié du même couple : c'est deux couples différents, et écrire le mauvais fait rater l'équation d'entrée.
+      - id: q2
+        stem: |-
+          **1-2-1- (0,5 pt)** En exploitant les courbes de la figure 1, vérifier en justifiant que la valeur du $pK_A$ du couple $R\text{-}NH^{+}_{3(aq)}/R\text{-}NH_{2(aq)}$ est $pK_A = 10{,}8$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « Vérifier en justifiant » veut dire : ne te contente pas de lire un nombre, dis **pourquoi** cet endroit-là de la figure porte le $pK_A$. Le geste est donc en deux temps — d'abord établir quel point du diagramme de distribution vaut $pK_A$, ensuite seulement lire son abscisse.
+
+          **Quel point porte le $pK_A$.** Le rung 8 donne le pourcentage de la forme basique en fonction du pH :
+
+          $$\%\,\text{base} = \frac{100}{1+10^{\,pK_A-\text{pH}}} \qquad\text{avec}\qquad \%\,\text{acide} + \%\,\text{base} = 100 \ \text{(toujours)}$$
+
+          Cherchons le pH où les deux courbes **se croisent**, c'est-à-dire où les deux pourcentages sont égaux, donc valent $50$ chacun :
+
+          $$\frac{100}{1+10^{\,pK_A-\text{pH}}} = 50 \quad\Longleftrightarrow\quad 1+10^{\,pK_A-\text{pH}} = 2 \quad\Longleftrightarrow\quad 10^{\,pK_A-\text{pH}} = 1$$
+
+          Une puissance de dix ne vaut $1$ que si son exposant est nul :
+
+          $$pK_A - \text{pH} = 0 \quad\Longleftrightarrow\quad \text{pH} = pK_A$$
+
+          **La lecture.** Sur la figure 1, le trait plein (forme acide) et les pointillés (forme basique) se coupent au niveau $50\,\%$, à l'abscisse $\text{pH} = 10{,}80$.
+
+          $$\boxed{pK_A\left(R\text{-}NH_3^{+}/R\text{-}NH_2\right) = 10{,}8}$$
+
+          **Un recoupement que la figure te permet de faire toi-même.** Les deux étiquettes fléchées du dessin donnent chacune un couple (pourcentage, pH). Teste-les avec le $pK_A$ que tu viens de trouver. Pour la forme acide, vers $\text{pH} = 9{,}6$ : $\%\,\text{acide} = 100/\left(1+10^{\,9{,}6-10{,}8}\right) = 100/(1+10^{-1{,}2}) \approx 94\,\%$, et la flèche touche la courbe vers $93\,\%$. Pour la forme basique, vers $\text{pH} = 10{,}2$ : $\%\,\text{base} = 100/\left(1+10^{\,10{,}8-10{,}2}\right) = 100/(1+10^{0{,}6}) \approx 20\,\%$, et la flèche touche la courbe vers $22\,\%$. Les deux accordent à la précision d'un tracé : la valeur $10{,}8$ est solide.
+
+          **Le piège.** Ne va pas chercher le $pK_A$ à $\text{pH} = 7$. C'est la confusion que le rung 8 démonte explicitement : $pK_e = 14$ fixe la neutralité à $7$ et c'est une propriété de **l'eau**, la même pour toute solution aqueuse ; $pK_A$ est une propriété du **couple** étudié, et il change d'un couple à l'autre. Ici le croisement est à $10{,}8$, très loin de $7$. Second piège, propre à cette figure : les deux étiquettes encadrées « Forme acide » et « Forme basique » sont munies de flèches qui touchent les courbes à $93\,\%$ et à $22\,\%$. Ces flèches ne **désignent** rien — elles servent seulement à dire quelle courbe porte quel nom. Le point qui compte est le croisement à $50\,\%$, et lui seul. Troisième piège : ne lis pas $pK_A$ là où une courbe atteint $100\,\%$ ou $0\,\%$ ; ces plateaux ne sont pas des points remarquables, ils s'étendent sur plusieurs unités de pH.
+      - id: q3
+        stem: |-
+          **1-2-2- (0,5 pt)** Indiquer en justifiant l'espèce prédominante ($R\text{-}NH_3^{+}$ ou $R\text{-}NH_2$) dans la solution $S_B$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une question de **prédominance** se tranche par une comparaison, et une seule : le pH de la solution contre le $pK_A$ du couple (rung 5). Le geste est donc de poser les deux nombres côte à côte, pas de calculer quoi que ce soit.
+
+          $$\frac{\left[R\text{-}NH_2\right]}{\left[R\text{-}NH_3^{+}\right]} = 10^{\,\text{pH}-pK_A}$$
+
+          Les deux nombres, pris tels quels dans l'énoncé et à la question précédente :
+
+          $$\text{pH}(S_B) = 11{,}88 \qquad\text{contre}\qquad pK_A = 10{,}8$$
+
+          $$\text{pH} > pK_A \quad\Longrightarrow\quad 10^{\,\text{pH}-pK_A} = 10^{1{,}08} \approx 12 > 1$$
+
+          $$\boxed{\text{La forme basique } R\text{-}NH_2 \text{ prédomine dans } S_B}$$
+
+          **Le chiffrage, que la figure autorise.** Le diagramme de distribution ne se contente pas de désigner un vainqueur, il donne le score (rung 8). Applique la formule au pH de $S_B$ :
+
+          $$\%\,\text{base} = \frac{100}{1+10^{\,10{,}8-11{,}88}} = \frac{100}{1+10^{-1{,}08}} = \frac{100}{1+0{,}083} \approx 92\,\%$$
+
+          Soit environ $92\,\%$ d'amine $R\text{-}NH_2$ et $8\,\%$ d'ion $R\text{-}NH_3^{+}$ — ce que confirme la lecture directe de la figure, où à $\text{pH} = 11{,}88$ la courbe en pointillés est déjà très haut, près de son plafond. Note au passage la cohérence avec la question 1-1 : la réaction de l'amine avec l'eau n'a converti qu'environ $8\,\%$ de l'amine ($\tau \approx 0{,}084$), et ce sont précisément ces $8\,\%$ que l'on retrouve ici sous forme d'acide conjugué.
+
+          **Le piège.** Ne conclus pas par « $\text{pH} = 11{,}88 > 7$, donc la solution est basique, donc la base prédomine ». Ce raisonnement donne ici la bonne réponse **par accident**, et il est faux : la frontière de prédominance est $pK_A = 10{,}8$, pas $7$. Prends la contre-épreuve — une solution de ce même couple à $\text{pH} = 9$ serait basique au sens du rung 3 ($9 > 7$), et pourtant c'est l'**acide** $R\text{-}NH_3^{+}$ qui y prédominerait, puisque $9 < 10{,}8$. Les deux frontières n'ont rien à voir : $7$ sépare acide et basique, $pK_A$ sépare les deux formes du couple. Second piège, celui que le rung 8 martèle : **prédominer, ce n'est pas être seul**. À $92\,\%$ contre $8\,\%$, la forme acide est minoritaire mais bien présente — n'écris pas qu'elle a disparu.
+      - id: q4
+        stem: |-
+          **1-2-3- (0,75 pt)** Déterminer la valeur du pH pour que le pourcentage de l'acide soit égal à quatre (4) fois celui de la base.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est le rung 8 pris **à l'envers** : d'habitude on se donne un pH et on en déduit une composition ; ici on se donne une composition et on remonte au pH. Le geste tient en deux temps — d'abord traduire la condition en deux pourcentages chiffrés, ensuite seulement passer au pH.
+
+          **Étape 1 — les deux pourcentages.** La condition de l'énoncé et le garde-fou du rung 8 forment un système de deux équations à deux inconnues :
+
+          $$\%\,\text{acide} = 4 \times \%\,\text{base} \qquad\text{et}\qquad \%\,\text{acide} + \%\,\text{base} = 100$$
+
+          On substitue la première dans la seconde :
+
+          $$4 \times \%\,\text{base} + \%\,\text{base} = 100 \quad\Longleftrightarrow\quad 5 \times \%\,\text{base} = 100$$
+
+          $$\%\,\text{base} = 20\,\% \qquad \%\,\text{acide} = 80\,\%$$
+
+          **Étape 2 — remonter au pH.** Le rapport des concentrations est le rapport des pourcentages (les deux formes partagent la même solution, donc le même volume) :
+
+          $$\frac{\left[R\text{-}NH_2\right]}{\left[R\text{-}NH_3^{+}\right]} = \frac{20}{80} = \frac{1}{4}$$
+
+          On reporte dans la relation du rung 5, $\log\left(\left[R\text{-}NH_2\right]/\left[R\text{-}NH_3^{+}\right]\right) = \text{pH} - pK_A$ :
+
+          $$\text{pH} = pK_A + \log\left(\frac{1}{4}\right) = pK_A - \log 4 = 10{,}8 - 0{,}602$$
+
+          $$\boxed{\text{pH} \approx 10{,}2}$$
+
+          **Le contrôle.** Reporte $10{,}2$ dans la formule du rung 8 : $\%\,\text{base} = 100/\left(1+10^{\,10{,}8-10{,}2}\right) = 100/(1+3{,}98) \approx 20{,}1\,\%$, donc $\%\,\text{acide} \approx 79{,}9\,\%$ — bien quatre fois plus. Et regarde la figure 1 : c'est exactement l'endroit où pointe la flèche « Forme basique », vers $22\,\%$ à $\text{pH} \approx 10{,}2$. Retiens ce $10{,}2$ : le sujet le réutilise tel quel à la question 2-3, et ce n'est pas un hasard — tu le vérifieras là-bas.
+
+          **Le piège de cette question.** Il est dans l'étape 1, et il coûte tout le reste. L'énoncé dit « le pourcentage de l'acide est **quatre fois** celui de la base » : cela ne veut pas dire $\%\,\text{acide} = 100$ et $\%\,\text{base} = 25$, ni $\%\,\text{acide} = 4 \times 50 = 200$. Un pourcentage de distribution ne dépasse jamais $100$, et les deux formes se partagent **exactement** la totalité du couple (rung 8) : la seule solution est $80/20$. Second piège, le signe du logarithme. L'acide est majoritaire, donc on est **en dessous** du $pK_A$ : le résultat doit être plus petit que $10{,}8$. Si tu trouves $11{,}4$, tu as ajouté $\log 4$ au lieu de le retrancher — le contrôle « qui domine ? » l'aurait détecté en une seconde. Troisième piège, arithmétique : $\log 4 = 0{,}60$, pas $0{,}4$ et pas $4$.
+      - id: q5
+        stem: |-
+          **2-1- (0,5 pt)** Écrire l'équation de la réaction du dosage.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Toujours la même construction (rung 1) : on identifie les deux couples réellement présents dans le bécher, on écrit leurs demi-équations en sens opposés, on additionne. Puis on choisit la flèche — et ce choix se justifie.
+
+          Dans le bécher : la base $R\text{-}NH_2$ du couple $R\text{-}NH_3^{+}/R\text{-}NH_2$, et l'ion $\text{H}_3\text{O}^+$ versé, qui est l'acide du couple $\text{H}_3\text{O}^+/\text{H}_2\text{O}$. L'ion $\text{Cl}^-$ est spectateur : il accompagne l'acide chlorhydrique sans jamais échanger de proton.
+
+          $$R\text{-}NH_{2(aq)} + H^+ \rightleftharpoons R\text{-}NH^{+}_{3(aq)} \qquad\text{et}\qquad \text{H}_3\text{O}^+_{(aq)} \rightleftharpoons \text{H}_2\text{O}_{(l)} + H^+$$
+
+          On additionne, le $H^+$ disparaît :
+
+          $$\boxed{R\text{-}NH_{2(aq)} + \text{H}_3\text{O}^+_{(aq)} \longrightarrow R\text{-}NH^{+}_{3(aq)} + \text{H}_2\text{O}_{(l)}}$$
+
+          **Le contrôle qui justifie la flèche simple.** Une réaction ne sert de support à un titrage que si elle est totale, rapide et unique — donc si $K \gg 1$ (rung 9). Le rung 7 donne $K$ comme rapport des deux constantes d'acidité, celle du couple dont l'**acide** réagit sur celle du couple dont la **base** réagit :
+
+          $$K = \frac{K_A\left(\text{H}_3\text{O}^+/\text{H}_2\text{O}\right)}{K_A\left(R\text{-}NH_3^{+}/R\text{-}NH_2\right)} = \frac{1}{10^{-10{,}8}} = 10^{10{,}8} \approx 6{,}3\cdot10^{10}$$
+
+          Soixante milliards : la réaction est quasi totale, la flèche simple est méritée.
+
+          **Le piège de cette question.** Ce dosage est le **miroir** de celui des rungs 9 à 11. Dans le cours, on verse la base forte $\text{HO}^-$ sur un acide faible et le pH **monte** ; ici on verse l'acide fort $\text{H}_3\text{O}^+$ sur une base faible et le pH **descend**. Ne recopie donc pas l'équation-type $AH + \text{HO}^- \to A^- + \text{H}_2\text{O}$ : l'eau est bien encore produite, mais c'est la **base** qui est titrée et l'ion oxonium qui est consommé. Second piège, et il est spectaculaire ici : la **même** amine porte deux équations avec deux flèches différentes. Avec l'eau (question 1-1), double flèche, $\tau \approx 8\,\%$ ; avec $\text{H}_3\text{O}^+$ (ici), flèche simple, $K \approx 6\cdot10^{10}$. Rien ne se contredit — la flèche est une propriété de la **réaction** (de son $K$), jamais de l'espèce. Une base faible face à l'eau reste une base faible ; face à un acide fort, elle réagit quasi totalement.
+      - id: q6
+        stem: |-
+          **2-2- (0,5 pt)** Déterminer $V_{AE}$ le volume d'acide chlorhydrique qui a été versé pour atteindre l'équivalence.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'équivalence est l'instant où le titrant a été versé en quantité **juste stœchiométrique** (rung 9) — un fait de quantités de matière, jamais une valeur de pH. La réaction de la question 2-1 est de rapport $1{:}1$ : une mole de $\text{H}_3\text{O}^+$ versée consomme une mole d'amine. Toute la base initialement dans le bécher est donc consommée par exactement autant d'acide.
+
+          $$n_{R\text{-}NH_2}(0) = n_{\text{H}_3\text{O}^+}(V_{AE}) \quad\Longleftrightarrow\quad C_B\,V_B = C_A\,V_{AE}$$
+
+          On isole $V_{AE}$ et on remplace :
+
+          $$V_{AE} = \frac{C_B\,V_B}{C_A} = \frac{9{,}0\cdot10^{-2} \times 10{,}0}{4{,}5\cdot10^{-2}}$$
+
+          Les deux concentrations apparaissent en rapport, et les deux volumes aussi : aucune conversion en litres n'est nécessaire, le résultat sort directement en millilitres.
+
+          $$\boxed{V_{AE} = 20{,}0\ \text{mL}}$$
+
+          **Le piège.** Ici $C_A = C_B/2$, donc $V_{AE} = 2\,V_B$. C'est une **conséquence** des données de ce sujet, pas une règle : la relation d'équivalence ne dit jamais rien sur les volumes seuls, elle égale les **produits** $CV$. Le rung 9 démonte d'ailleurs la confusion jumelle — « on a versé le même volume, $V_E = V_B$ » — qui n'est vraie que si les deux concentrations sont égales. Second point, et il prépare les deux questions suivantes : garde $V_{AE} = 20{,}0\ \text{mL}$ en tête, car la suite se place à $V_A = 16{,}0\ \text{mL}$. Or $16{,}0 < 20{,}0$ : on est **avant** l'équivalence. Donc l'acide versé est en défaut, la base est encore en excès, et c'est l'acide qui sera le réactif limitant — retiens-le, la question 2-4 se joue là-dessus.
+      - id: q7
+        stem: |-
+          **2-3- (0,75 pt)** Le pH du mélange réactionnel est $\text{pH} = 10{,}2$ lorsque le volume versé de la solution $S_A$ est $V_A = 16{,}0\ \text{mL}$. En vous aidant du tableau d'avancement de la réaction de dosage, exprimer $x_f$ l'avancement de la réaction à cet état final en fonction de $C_A$, $V_A$, $V_B$ et pH. Vérifier que sa valeur est $x_f \approx 7{,}2\cdot10^{-4}\ \text{mol}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé impose l'outil — le tableau d'avancement — et impose la liste des symboles autorisés dans la réponse : $C_A$, $V_A$, $V_B$ et pH. Cette liste est l'indice décisif. Si l'on pouvait déclarer la réaction totale, $x_f$ vaudrait simplement $C_A V_A$ et le pH ne servirait à rien. S'il figure dans la liste, c'est que le geste attendu est de mesurer ce qui **reste** de $\text{H}_3\text{O}^+$ versé à l'état final — et le pH est précisément l'instrument qui le mesure.
+
+          **Le tableau.** Tous les coefficients stœchiométriques valent $1$. On raisonne en quantités de matière, pas en concentrations : le volume du mélange change à chaque goutte versée.
+
+          | État | $R\text{-}NH_2$ | $\text{H}_3\text{O}^+$ | $R\text{-}NH_3^{+}$ |
+          |---|:---:|:---:|:---:|
+          | initial | $C_B V_B$ | $C_A V_A$ | $0$ |
+          | en cours | $C_B V_B - x$ | $C_A V_A - x$ | $x$ |
+          | final | $C_B V_B - x_f$ | $C_A V_A - x_f$ | $x_f$ |
+
+          **Chiffrer la case qui reste.** La ligne « final » de la colonne $\text{H}_3\text{O}^+$ est ce qui subsiste de l'acide versé. Or cette quantité est justement ce que le pH-mètre mesure. Par définition du pH (rung 2), la **concentration** en ions oxonium dans le mélange vaut $\left[\text{H}_3\text{O}^+\right]_f = 10^{-\text{pH}}$ ; pour en tirer une **quantité de matière**, on la multiplie par le volume du mélange, qui est le volume total dans le bécher, $V_A + V_B$ :
+
+          $$n\left(\text{H}_3\text{O}^+\right)_f = \left[\text{H}_3\text{O}^+\right]_f \times \left(V_A + V_B\right) = 10^{-\text{pH}}\left(V_A + V_B\right)$$
+
+          On identifie les deux écritures de la même case du tableau, et on isole $x_f$ :
+
+          $$C_A V_A - x_f = 10^{-\text{pH}}\left(V_A + V_B\right) \quad\Longleftrightarrow\quad \boxed{x_f = C_A V_A - 10^{-\text{pH}}\left(V_A + V_B\right)}$$
+
+          **L'application numérique, terme par terme.** Le premier terme, l'acide versé :
+
+          $$C_A V_A = 4{,}5\cdot10^{-2} \times 16{,}0\cdot10^{-3} = 7{,}2\cdot10^{-4}\ \text{mol}$$
+
+          Le second, l'acide qui n'a pas réagi, avec $V_A + V_B = 26{,}0\ \text{mL} = 26{,}0\cdot10^{-3}\ \text{L}$ :
+
+          $$10^{-10{,}2} \times 26{,}0\cdot10^{-3} = 6{,}31\cdot10^{-11} \times 26{,}0\cdot10^{-3} \approx 1{,}6\cdot10^{-12}\ \text{mol}$$
+
+          $$x_f = 7{,}2\cdot10^{-4} - 1{,}6\cdot10^{-12}$$
+
+          $$\boxed{x_f \approx 7{,}2\cdot10^{-4}\ \text{mol}}$$
+
+          Le second terme est environ **quatre milliards de fois** plus petit que le premier : il ne déplace pas même le douzième chiffre significatif. Il doit pourtant figurer dans l'**expression**, car c'est lui qui empêche d'écrire $x_f = C_A V_A$ sans démonstration.
+
+          **Un recoupement qui referme le sujet sur lui-même.** Vérifions que le $\text{pH} = 10{,}2$ annoncé est cohérent. À cet état final il reste $C_B V_B - x_f = 9{,}0\cdot10^{-4} - 7{,}2\cdot10^{-4} = 1{,}8\cdot10^{-4}\ \text{mol}$ d'amine, face à $x_f = 7{,}2\cdot10^{-4}\ \text{mol}$ d'acide conjugué formé. Les deux partagent le même volume, donc le rapport des concentrations est le rapport des quantités :
+
+          $$\frac{\left[R\text{-}NH_2\right]}{\left[R\text{-}NH_3^{+}\right]} = \frac{1{,}8\cdot10^{-4}}{7{,}2\cdot10^{-4}} = 0{,}25 = \frac{1}{4}$$
+
+          Par le rung 5, $\text{pH} = pK_A + \log(1/4) = 10{,}8 - 0{,}60 = 10{,}2$ — exactement le pH imprimé. Et ce rapport $1/4$, c'est mot pour mot la composition $80/20$ de la question 1-2-3 : le sujet t'a fait calculer, dans sa première partie, le pH du point de dosage de sa seconde partie.
+
+          **Le piège de cette question.** Le volume par lequel multiplier $\left[\text{H}_3\text{O}^+\right]_f$. C'est le volume du **mélange**, $V_A + V_B = 26{,}0\ \text{mL}$ — pas $V_B = 10{,}0\ \text{mL}$ (la prise d'essai avant tout ajout), pas $V_A = 16{,}0\ \text{mL}$ (le titrant seul), pas $V_B + V_{AE} = 30{,}0\ \text{mL}$ (le volume qu'on aurait à l'équivalence, où l'on n'est pas). Ici l'erreur ne change pas le résultat numérique, puisque le terme est négligeable — mais c'est l'expression qui est notée, et le correcteur y regarde. Second piège, symétrique : ne saute pas le terme sous prétexte qu'il est négligeable. L'énoncé demande $x_f$ « en fonction de $C_A$, $V_A$, $V_B$ et pH » ; une réponse où le pH n'apparaît pas ne répond pas à la question posée, même si son résultat numérique est juste.
+      - id: q8
+        stem: |-
+          **2-4- (0,75 pt)** Déduire, en calculant $\tau$ le taux d'avancement final de la réaction pour $V_A = 16{,}0\ \text{mL}$, que la transformation associée à la réaction de dosage est totale.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le taux d'avancement final compare ce qui s'est **réellement** passé à ce qui se serait passé si la réaction avait été totale (rungs 6 et 7) :
+
+          $$\tau = \frac{x_f}{x_{max}}$$
+
+          Tu possèdes déjà $x_f$ (question 2-3). Tout le travail est donc dans $x_{max}$ — et $x_{max}$, par définition, est l'avancement d'une réaction **supposée totale**, c'est-à-dire l'avancement au bout duquel le réactif **limitant** a entièrement disparu. Le geste est un inventaire : compter les deux réactifs, désigner le limitant.
+
+          **Les deux quantités initiales, au moment considéré.**
+
+          $$n_{R\text{-}NH_2}(0) = C_B V_B = 9{,}0\cdot10^{-2} \times 10{,}0\cdot10^{-3} = 9{,}0\cdot10^{-4}\ \text{mol}$$
+
+          $$n_{\text{H}_3\text{O}^+}\ \text{versé} = C_A V_A = 4{,}5\cdot10^{-2} \times 16{,}0\cdot10^{-3} = 7{,}2\cdot10^{-4}\ \text{mol}$$
+
+          Les coefficients valant $1$ de part et d'autre, on compare directement : $7{,}2\cdot10^{-4} < 9{,}0\cdot10^{-4}$, donc c'est l'**acide versé** qui manque.
+
+          $$x_{max} = n_{\text{H}_3\text{O}^+}\ \text{versé} = C_A V_A = 7{,}2\cdot10^{-4}\ \text{mol}$$
+
+          **Le calcul.**
+
+          $$\tau = \frac{x_f}{x_{max}} = \frac{7{,}2\cdot10^{-4} - 1{,}6\cdot10^{-12}}{7{,}2\cdot10^{-4}} = 1 - \frac{1{,}6\cdot10^{-12}}{7{,}2\cdot10^{-4}} = 1 - 2{,}3\cdot10^{-9}$$
+
+          $$\boxed{\tau \approx 1{,}00 \ \Longrightarrow\ \text{la transformation est totale}}$$
+
+          **Une honnêteté sur ce nombre.** $\tau$ ne vaut pas *exactement* $1$ : il vaut $0{,}999999998$. L'écart est le terme résiduel de la question 2-3, ces $1{,}6\cdot10^{-12}\ \text{mol}$ de $\text{H}_3\text{O}^+$ qui n'ont pas réagi. Aucune mesure de laboratoire ne distingue $0{,}999999998$ de $1$, et la conclusion du sujet est juste — mais écris $\tau \approx 1$, pas $\tau = 1$ : le taux d'avancement d'une réaction chimique n'atteint jamais rigoureusement $1$, il en devient seulement indiscernable.
+
+          **Le recoupement avec la question 2-1.** Deux chemins indépendants, une seule conclusion : par $K$, le rung 7 annonçait déjà une réaction quasi totale ($K \approx 6{,}3\cdot10^{10} \gg 1$) ; par $\tau$, on le mesure sur cet état final précis. Les deux s'accordent, et c'est ce qui autorise rétrospectivement la flèche simple de la question 2-1.
+
+          **Le piège de cette question.** $x_{max}$ n'est **pas** $C_B V_B$. Tant qu'on est avant l'équivalence — et $16{,}0\ \text{mL} < V_{AE} = 20{,}0\ \text{mL}$ —, c'est toujours le **titrant versé** qui est en défaut, jamais l'espèce titrée. Prendre $x_{max} = 9{,}0\cdot10^{-4}$ donnerait $\tau = 7{,}2/9{,}0 = 0{,}80$ et la conclusion inverse, « transformation limitée » : l'erreur ne se voit pas dans le calcul, seulement dans la conclusion, et elle coûte la question entière. Second piège, plus profond : ce $\tau \approx 1$ ne dit **rien** sur la réaction de la question 1-1. La même amine, avec l'eau, réagit à $\tau \approx 0{,}084$ — huit pour cent. Une espèce n'a pas « un » taux d'avancement : $\tau$ est une propriété de la **réaction**, donc du couple d'en face. Face à l'eau, l'amine est une base faible ; face à un acide fort, elle réagit quasi totalement. Les deux affirmations sont vraies en même temps.
 
   # ── bk-2025-n-x1 — 2025 N, Exercice 1 (Partie 1) : dosage hydrogenosulfite de sodium ──
   - id: bk-2025-n-x1
