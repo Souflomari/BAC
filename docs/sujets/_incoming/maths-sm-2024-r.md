@@ -1,9 +1,9 @@
 # Examen national Mathématiques — SM — 2024 — session de rattrapage (BIOF)
 
-> Transcription intégrale depuis les scans AlloSchool. Statut initial :
-> `transcrit (non vérifié)` — protocole `docs/sujets/maths/README.md` §1–§3.
-> Fichier d'entrée (`_incoming`) en attente de dispatch vers les fichiers
-> par chapitre.
+> Transcription intégrale depuis les scans AlloSchool, **vérifiée** par une
+> passe adversariale indépendante — protocole `docs/sujets/maths/README.md`
+> §1–§3. Fichier d'entrée (`_incoming`) en attente de dispatch vers les
+> fichiers par chapitre.
 
 **Source (page)** : https://www.alloschool.com/element/145741 — « Examen National Mathématiques Sciences Maths 2024 Rattrapage - Sujet »
 **Scan** : `course-436/upload-87449/0001-big.jpg` → `0005-big.jpg` (5 pages)
@@ -22,13 +22,64 @@
 - L'usage de la couleur rouge n'est pas autorisé
 
 Aucune figure (courbe, tableau de variation, arbre) n'est imprimée sur les
-5 pages de ce scan — sujet entièrement textuel.
+5 pages de ce scan — sujet entièrement textuel. **Contrôlé page par page par le
+vérificateur** : les 5 pages ont été re-téléchargées et balayées en trois bandes
+recouvrantes chacune (0–36 %, 32–70 %, 66–100 % de la hauteur), aucun dessin
+nulle part ; le bas de la page 5 est vide sous le « FIN ». La classe de défaut
+la plus fréquente sur cette campagne (figure mal décrite) est donc sans objet
+ici — mais l'absence de figure a été **prouvée**, pas supposée.
+
+## Vérification adversariale — 2026-08-23
+
+Re-fetch indépendant de `https://www.alloschool.com/element/145741`, chemins
+`course-436/upload-87449/000N-big.jpg` **re-dérivés depuis le HTML de la page**
+(et non recopiés du champ « Images lues ») : 5 pages, `0001` → `0005`, titre de
+page « Examen National Mathématiques Sciences Maths 2024 Rattrapage - Sujet ».
+
+Ce qui a été recontrôlé, et le résultat :
+
+- **En-tête du scan** — `RS 25`, 2024 الدورة الاستدراكية, الرياضيات, شعبة العلوم
+  الرياضية (أ) و (ب) (الترجمة الفرنسية), 4 h, coefficient 9, pagination « n/5 »
+  sur chaque page : conforme.
+- **Texte des cinq énoncés** — relu caractère par caractère sur l'image : chaque
+  nombre, indice, exposant, borne et quantificateur. Aucune divergence. Points
+  vérifiés au zoom ×5 parce qu'ils portent une question entière : l'exposant $5$
+  de $y^5x'$ dans la loi $*$ (exercice 4) et l'exposant $n$ de
+  $\alpha_{n+1}^{\,n}$ (exercice 1, 3-b).
+- **Barèmes** — recomptés question par question dans la marge :
+  6,5 + 3,5 + 3,5 + 3,5 + 3 = **20**, et chaque exercice retombe sur son total
+  imprimé (Ex1 : 2,5 + 0,75 + 1,75 + 1,5 = 6,5 · Ex2 : 0,75 + 0,25 + 0,75 +
+  0,75 + 1 = 3,5 · Ex3 : 1,25 + 2,25 = 3,5 · Ex4 : 2,25 + 1,25 = 3,5 ·
+  Ex5 : 0,5 + 1,25 + 1,25 = 3).
+- **Re-dérivation mathématique complète** — chaque exercice est résoluble avec
+  les seules données transcrites et aboutit à des valeurs cohérentes :
+  Ex1 $f_n'(x)=1-x^{n-1}-nx^{n-1}\ln x$ redérivée, $\alpha_n$ existe bien dans
+  $]1;2[$ (avec $\ln 2 = 0,7$ : $f_n(2)=2-2^n\times0,7<0$ dès $n=2$), la suite
+  est numériquement décroissante ($\alpha_2\approx1,763$, $\alpha_{10}\approx1,205$,
+  $\alpha_{200}\approx1,020$) et $\ell = 1$ ;
+  Ex2 $u_n \to \pi/4$ et $0\le w_n-u_n\le e/(2n)$ vérifiés numériquement
+  ($n=20\,000$ : $w_n-u_n \approx 1,6\cdot10^{-5} \le 6,8\cdot10^{-5}$), d'où
+  $w_n \to \pi/4$ ;
+  Ex3 $\Delta=(im)^2$, $z_3=2im$, $z_4=km$, le rapport vaut
+  $\frac{3(k-1)-1-i(k+2)}{2(k-1)}$ — réel si et seulement si $k=-2$ ;
+  Ex4 la loi est bien associative avec l'exposant $5$, $i$ est le neutre de $E$,
+  l'inverse de $x+iy$ est $-\dfrac{x}{y^6}+\dfrac{i}{y}$, et
+  $1*2i = 2$ face à $2i*1 = 32$ donne la non-commutativité ;
+  Ex5 $u=7$ (car $70 = 3\times23+1$), et $(S)$ a pour solutions
+  $x = 230t + 162$, $t\in\mathbb{N}$ — le « $23$ divise $(q+7)$ » de la
+  question 3-a) est exactement la question 2-b) appliquée à $m = x-1$.
+- **Classement** — les 9 slugs cités existent bien sous `content/maths/`
+  (contrôle sur l'arborescence, pas de mémoire).
+
+**Aucun défaut trouvé.** Le sujet officiel est lui-même cohérent : aucune
+incohérence d'énoncé à signaler, aucun point laissé en « lecture à confirmer »,
+aucun exercice écarté.
 
 ---
 
 ## 2024 — session rattrapage — Exercice 1
 Source: https://www.alloschool.com/element/145741
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (الترجمة الفرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : RS 25 · Barème de l'exercice : 6,5 points
@@ -66,7 +117,7 @@ Et on note $(C_n)$ sa courbe représentative dans un repère orthonormé.
 
 ## 2024 — session rattrapage — Exercice 2
 Source: https://www.alloschool.com/element/145741
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (الترجمة الفرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : RS 25 · Barème de l'exercice : 3,5 points
@@ -93,7 +144,7 @@ Statut: transcrit (non vérifié)
 
 ## 2024 — session rattrapage — Exercice 3
 Source: https://www.alloschool.com/element/145741
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (الترجمة الفرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : RS 25 · Barème de l'exercice : 3,5 points
@@ -125,7 +176,7 @@ Soit $M_1$ le point d'affixe $z_1$, $M_2$ le point d'affixe $z_2$ et $M_3(z_3)$ 
 
 ## 2024 — session rattrapage — Exercice 4
 Source: https://www.alloschool.com/element/145741
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (الترجمة الفرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : RS 25 · Barème de l'exercice : 3,5 points
@@ -161,7 +212,7 @@ On considère les sous-ensembles de $E$ définies par : $F = \left\{ yi\ /\ y \i
 
 ## 2024 — session rattrapage — Exercice 5
 Source: https://www.alloschool.com/element/145741
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B) — شعبة العلوم الرياضية (أ) و (ب) (الترجمة الفرنسية) — Mathématiques, 4 h, coef 9
 - Code sujet : RS 25 · Barème de l'exercice : 3 points
@@ -193,3 +244,12 @@ portent un cross-list) :
 | Exercice 3 (complexes : équation paramétrée, rotation, homothétie, cocyclicité) | 3,5 pts | **nombres-complexes-2** |
 | Exercice 4 (loi $*$, groupe non commutatif, homomorphisme) | 3,5 pts | **structures-algebriques** |
 | Exercice 5 (Euclide, congruences, système modulo 23 et 10) | 3 pts | **arithmetique** |
+
+Slugs contrôlés le 2026-08-23 contre l'arborescence réelle `content/maths/` :
+`fonction-logarithme`, `derivabilite-etude-fonctions`, `limites-continuite`,
+`suites-numeriques`, `calcul-integral`, `fonction-exponentielle`,
+`nombres-complexes-2`, `structures-algebriques`, `arithmetique` — les neuf
+existent. Le classement est conforme au tableau §4 du README (`nombres-complexes-2`
+= complexes SM « équation paramétrée, configurations » ; `structures-algebriques`
+= lois de composition, groupes, morphismes ; `arithmetique` = congruences).
+Aucune correction n'a été nécessaire.

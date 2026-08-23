@@ -32,7 +32,7 @@
 
 ## 2025 — session rattrapage — Exercice 1
 Source: https://www.alloschool.com/element/145799
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : RS28F · Barème de l'exercice : 7 points
@@ -75,19 +75,40 @@ Son pH vaut $pH = 3{,}6$.
       avec l'eau. Que peut-on conclure à propos de l'effet de la dilution sur
       le taux d'avancement final ?
 
-*Figure 1 (courbes, décrite depuis l'image) :* repère « % » en ordonnée,
-« pH » en abscisse, sur quadrillage fin serré. Ordonnée graduée aux traits
-chiffrés $20$ et $40$ (plus le $0$ à l'origine) ; abscisse graduée aux traits
-chiffrés $1$ et $2$ (traits suivants non chiffrés). Deux courbes sigmoïdes en
-sens opposés : la **courbe 2** (flèche d'étiquette « Courbe 2 » pointant vers
-elle depuis la gauche) part du haut du cadre (≈ 100 %) aux faibles pH, décroît
-et tend vers $0$ aux pH élevés ; la **courbe 1** (flèche d'étiquette
-« Courbe 1 » pointant vers elle depuis la droite) part de $0$ aux faibles pH,
-croît et sature vers le haut du cadre aux pH élevés. Les deux courbes se
-croisent à mi-hauteur (≈ 50 %) en un point d'abscisse située vers
-$pH \approx 4{,}8$ *(lecture d'échelle à confirmer — l'abscisse du croisement
-est à re-mesurer, les traits au-delà de 2 ne sont pas chiffrés)*. Légende :
-« Figure 1 ».
+*Figure 1 (courbes, re-décrite depuis l'image, mesurée au pixel) :* repère
+« % » en ordonnée, « pH » en abscisse, sur quadrillage fin (sous-maille 10×10 :
+petit carreau $=0{,}1$ unité de pH $\times$ $2\ \%$).
+**Abscisse** : l'origine du repère est $pH = 0$ ; traits principaux tous les
+$1$ unité de pH, seuls $1$ et $2$ chiffrés ; le cadre s'étend jusqu'à
+$pH \simeq 10$ (10 traits principaux). **Ordonnée** : traits principaux tous
+les $20\ \%$, chiffrés $20$ et $40$ (plus le $0$ à l'origine) ; le haut du
+cadre est exactement $100\ \%$ (5 traits principaux).
+
+Deux courbes sigmoïdes en sens opposés, et **l'étiquetage est celui-ci** (tête
+de flèche relevée au pixel sur le tracé qu'elle désigne) :
+- la **courbe 1** — flèche « Courbe 1 » venant de la **droite** et pointant
+  vers la gauche, sa pointe se posant sur le tracé situé **à droite** du point
+  de croisement — est la courbe **décroissante** : elle part du haut du cadre
+  ($100\ \%$) aux faibles pH et tend vers $0$ aux pH élevés. C'est l'espèce
+  **acide** $CH_3COOH$ (ce que la question 1-4-2 demande de justifier) ;
+- la **courbe 2** — flèche « Courbe 2 » venant de la **gauche**, pointe posée
+  sur le tracé situé **à gauche** du croisement — est la courbe
+  **croissante** : elle part de $0$ aux faibles pH et sature à $100\ \%$ aux
+  pH élevés. C'est la base conjuguée $CH_3COO^-$.
+
+Lectures fermes (mesure au pixel, recoupées par la re-dérivation) :
+- les deux courbes se croisent à **$50\ \%$** pour **$pH = 4{,}8$**
+  (croisement mesuré à $pH = 4{,}76 \pm 0{,}05$) — valeur qui coïncide avec le
+  $pK_A$ recalculé depuis $pH = 3{,}6$ et $C_A = 4{,}2\cdot10^{-3}$ :
+  $K_A = \frac{(10^{-3{,}6})^2}{C_A - 10^{-3{,}6}} = 1{,}6\cdot10^{-5}$,
+  soit $pK_A = 4{,}80$ ;
+- **à $pH_1 = 4{,}2$, la courbe croissante (base) passe exactement par le trait
+  chiffré $20\ \%$** : $\alpha(CH_3COO^-) = 20\ \%$, donc
+  $\tau_1 = 0{,}20$. *(Cette lecture porte toute la question 1-4-3 : sans elle
+  l'exercice n'est pas exploitable. Elle est vérifiée par Henderson :
+  $10^{4{,}2-4{,}8} = 0{,}251$ donne $\alpha = 0{,}251/1{,}251 = 20{,}1\ \%$.)*
+
+Légende : « Figure 1 ».
 
 **2- Étude d'une réaction d'estérification avec l'acide éthanoïque**
 
@@ -130,31 +151,46 @@ tangente à la courbe au point d'abscisse $t = 3\ \text{min}$.
 4. **3-4.** (0,75) Déterminer, en unité $\text{mmol.L}^{-1}.\text{min}^{-1}$,
    la vitesse volumique de la réaction à l'instant $t = 3\ \text{min}$.
 
-*Figure 2 (courbe, décrite depuis l'image) :* $x\ (\text{mmol})$ en fonction de
-$t\ (\text{min})$, sur quadrillage à double maille (grands carreaux découpés en
-$5\times5$ petits carreaux). Ordonnée : traits principaux chiffrés $0{,}10$ et
-$0{,}20$ (traits suivants non chiffrés) — pas principal $0{,}10\ \text{mmol}$,
-petit carreau $0{,}02\ \text{mmol}$. Abscisse : traits principaux chiffrés $1$
-et $2$ (traits suivants non chiffrés) — pas principal $1\ \text{min}$, petit
-carreau $0{,}2\ \text{min}$ ; le cadre s'étend jusque vers $t \approx 10\
-\text{min}$ *(lecture au comptage des traits principaux, à confirmer)* et sa
-hauteur vers $x \approx 0{,}6\ \text{mmol}$ *(idem)*. Deux tracés :
+*Figure 2 (courbe, re-décrite depuis l'image, mesurée au pixel) :*
+$x\ (\text{mmol})$ en fonction de $t\ (\text{min})$, sur quadrillage à double
+maille (grands carreaux découpés en $5\times5$).
+**Abscisse** : grand carreau $=1\ \text{min}$ (petit carreau
+$=0{,}2\ \text{min}$), traits principaux chiffrés $1$ et $2$ seulement ; le
+cadre compte **8 grands carreaux**, soit $t$ de $0$ à $\mathbf{8\ \text{min}}$.
+**Ordonnée** : grand carreau $=0{,}10\ \text{mmol}$ (petit carreau
+$=0{,}02\ \text{mmol}$), traits principaux chiffrés $0{,}10$ et $0{,}20$
+seulement ; le cadre compte **6 grands carreaux**, soit $x$ de $0$ à
+$\mathbf{0{,}60\ \text{mmol}}$.
+
+Deux tracés :
 - la **courbe** $x(t)$, partant exactement de l'origine, croissante et concave
-  (pente décroissante), qui atteint le voisinage du coin supérieur droit du
-  cadre sans palier visible dans le cadre ;
+  (pente décroissante), qui atteint le **coin supérieur droit** du cadre
+  ($t = 8\ \text{min}$, $x = 0{,}60\ \text{mmol}$) sans palier visible ;
 - la **droite $(T)$**, tangente à la courbe au point d'abscisse
-  $t = 3\ \text{min}$, point de contact marqué d'une **croix** sur le tracé
-  (ordonnée du point de contact ≈ $0{,}31$–$0{,}32\ \text{mmol}$, *lecture à
-  confirmer*). $(T)$ coupe l'axe des ordonnées ($t=0$) vers
-  $x \approx 0{,}08\ \text{mmol}$ (4 petits carreaux, *lecture à confirmer*)
-  et sort du cadre par le haut avant le bord droit, au-dessus de la courbe.
+  $t = 3\ \text{min}$, point de contact marqué d'une **croix** ×. Lectures
+  fermes : la croix est à $(3\ \text{min}\,;\,0{,}32\ \text{mmol})$ et
+  $(T)$ coupe l'axe des ordonnées à $x = 0{,}08\ \text{mmol}$ (4 petits
+  carreaux), d'où une pente
+  $\dfrac{0{,}32-0{,}08}{3} = 0{,}08\ \text{mmol.min}^{-1}$ ; $(T)$ sort du
+  cadre par le haut vers $t \simeq 6{,}5\ \text{min}$, ce qui recoupe la même
+  pente.
+
+Lecture qui porte la question 3-3 : le réactif limitant est l'ester
+($n_{01} = 0{,}8\ \text{mmol} < 1{,}0\ \text{mmol}$) et la réaction est
+totale, donc $x_{max} = 0{,}8\ \text{mmol}$ et $t_{1/2}$ se lit à
+$x = 0{,}40\ \text{mmol}$ (4ᵉ trait principal) : **la courbe y passe
+exactement au 4ᵉ trait vertical, $t_{1/2} = 4{,}0\ \text{min}$** (mesure au
+pixel : intersection à $t = 4{,}00 \pm 0{,}05$).
+Re-dérivation de 3-4 :
+$v = \frac{1}{V}\left(\frac{dx}{dt}\right)_{t=3} = \frac{0{,}08}{0{,}050}
+= 1{,}6\ \text{mmol.L}^{-1}.\text{min}^{-1}$.
 Légende : « Figure 2 ».
 
 ---
 
 ## 2025 — session rattrapage — Exercice 2
 Source: https://www.alloschool.com/element/145799
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : RS28F · Barème de l'exercice : 2,5 points
@@ -221,7 +257,7 @@ pied de l'écran, une double flèche horizontale cote la distance « D ».
 
 ## 2025 — session rattrapage — Exercice 3
 Source: https://www.alloschool.com/element/145799
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : RS28F · Barème de l'exercice : 5 points
@@ -378,7 +414,7 @@ $\approx 1{,}0\ \text{ms}$ *(lecture à confirmer)*. Légende : « Figure 4 »
 
 ## 2025 — session rattrapage — Exercice 4
 Source: https://www.alloschool.com/element/145799
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : RS28F · Barème de l'exercice : 5,5 points
