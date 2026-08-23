@@ -504,7 +504,7 @@ supposé galiléen. A $t = 0$, le centre d'inertie $G$ coïncide avec $O$.
 3. **3-** (1) Le skieur tombe au point $E$ du plan incliné de l'angle
    $\alpha = 20°$ par rapport à l'horizontale. Trouver la distance $d = OE$.
 
-*Figure 1 (schéma, décrite depuis l'image, p. 5) :* repère $(O, x, y)$ : axe
+*Figure 1 (schéma, re-décrit depuis l'image, p. 5) :* repère $(O, x, y)$ : axe
 $y$ vertical ascendant, axe $x$ horizontal vers la droite passant par $O$. En
 haut à gauche, le point $A$, relié à l'axe $y$ par un trait en tirets
 horizontal ; de $A$ part une courbe concave (la piste) qui descend et
@@ -513,8 +513,9 @@ les vecteurs unitaires $\vec{j}$ (vertical, sur l'axe $y$) et $\vec{i}$
 (horizontal, sur l'axe $x$), puis le vecteur vitesse $\vec{V}_0$ horizontal
 vers la droite le long de l'axe $x$. Sous l'axe $x$, une droite oblique
 descendant de $O$ vers la droite (le plan incliné) jusqu'au point $Q$ en bas
-à droite ; l'angle entre cette droite et l'horizontale passant par $Q$ est
-marqué $\alpha$ (arc) au voisinage de $Q$. Sur le plan incliné, le point $E$
+à droite ; un **segment horizontal explicite**, tracé sous l'axe $x$ et
+aboutissant en $Q$, matérialise l'horizontale ; l'angle entre le plan incliné
+et ce segment est marqué $\alpha$ (arc) en $Q$. Sur le plan incliné, le point $E$
 (point noir) avec ses coordonnées repérées en tirets : $x_E$ sur l'axe $x$
 (au-dessus) et $y_E$ sur l'axe $y$ (à gauche, sous $O$). Légende :
 « Figure 1 ».
@@ -563,7 +564,7 @@ d'équilibre $\theta = 0$ (Figure 2).
    2. **3-2.** (0,75) Déterminer $W_C$ le travail du couple de torsion entre
       les instants $t_1 = 0\ \text{s}$ et $t_2 = 3{,}4\ \text{s}$.
 
-*Figure 2 (schéma, décrite depuis l'image, p. 6) :* en haut, des hachures de
+*Figure 2 (schéma, re-décrit depuis l'image, p. 6) :* en haut, des hachures de
 fixation avec le point « O » juste au-dessous ; de $O$ descend un trait
 vertical (le fil), désigné par l'étiquette « Fil de torsion » à gauche avec
 une flèche horizontale pointant vers le fil. En bas, la barre $AB$ : segment
@@ -576,28 +577,41 @@ le fil. À droite de $B$, un symbole de sens positif : un cercle marqué
 « + » entouré d'une flèche incurvée (sens antihoraire vu du dessus).
 Légende : « Figure 2 ».
 
-*Figure 3 (courbe, décrite depuis l'image, p. 6) :* $\dot{\theta}\
-(\text{rad.s}^{-1})$ en fonction de $t\ (\text{s})$, sur quadrillage à
-double maille (petits carreaux serrés, traits principaux plus marqués).
-Ordonnée : traits principaux chiffrés $0{,}1$, $0$ et $-0{,}1$ (un trait
-principal non chiffré au-delà de $0{,}1$, et de même sous $-0{,}1$) — l'écart
-$0 \to 0{,}1$ couvre 5 petits carreaux (petit carreau $= 0{,}02\
-\text{rad.s}^{-1}$). Abscisse : une seule graduation chiffrée, « $1$ »,
-portée sous l'axe après l'origine, au voisinage de l'aplomb du premier
-minimum de la courbe *(le pas exact du quadrillage temporel n'est pas chiffré
-au-delà — lecture à confirmer)*. La courbe est une sinusoïde partant de
-$\dot{\theta} = 0$ à $t = 0$ en **décroissant** (première alternance
-négative), passant par un premier minimum, puis remontant, coupant l'axe en
-croissant, culminant à un premier maximum, et ainsi de suite : **deux
-périodes complètes** sont visibles sur la largeur du cadre, la courbe se
-terminant au voisinage de l'axe au bord droit. Le premier minimum est à
-l'aplomb de la graduation « 1 » ; si cette graduation vaut $t = 1\ \text{s}$,
-la période se lit $T_0 = 4\ \text{s}$ *(lecture à confirmer — étalonnage de
-l'axe des temps non chiffré au-delà de « 1 »)*. L'amplitude crête de la
-sinusoïde dépasse nettement la ligne $0{,}1$ : les sommets culminent vers 12
-à 13 petits carreaux au-dessus de l'axe, soit $\dot{\theta}_{max} \approx
-0{,}25\ \text{rad.s}^{-1}$ *(lecture à confirmer)*, symétriquement pour les
-minima. Légende : « Figure 3 ».
+*Figure 3 (courbe, re-décrite depuis l'image, mesurée au pixel, p. 6) :*
+$\dot{\theta}\ (\text{rad.s}^{-1})$ en fonction de $t\ (\text{s})$, sur
+quadrillage fin.
+**Ordonnée** : traits principaux chiffrés $0{,}1$, $0$ et $-0{,}1$ (un trait
+principal non chiffré au-delà de $0{,}1$, et de même sous $-0{,}1$) ; l'écart
+$0 \to 0{,}1$ couvre **10 petits carreaux**, donc petit carreau
+$= 0{,}01\ \text{rad.s}^{-1}$ ; le cadre va de $-0{,}27$ à $+0{,}27$ environ.
+**Abscisse** : une seule graduation chiffrée, « $1$ », portée sous l'axe ;
+1 seconde couvre **10 petits carreaux** (petit carreau $= 0{,}1\ \text{s}$)
+et le cadre s'étend jusqu'à $t \simeq 7{,}9\ \text{s}$.
+
+La courbe est une sinusoïde partant de $\dot{\theta} = 0$ à $t = 0$ en
+**décroissant** (première alternance négative — cohérent avec
+$\dot{\theta} = -\theta_m\frac{2\pi}{T_0}\sin(\frac{2\pi}{T_0}t)$), puis
+alternant régulièrement ; **deux périodes complètes** tiennent dans le cadre,
+la courbe revenant au voisinage de l'axe au bord droit.
+
+Lectures fermes (mesure au pixel, plus aucune indétermination d'échelle) :
+- la graduation « 1 » tombe **exactement à l'aplomb du premier minimum**, et
+  les extrémums suivants tombent à $t = 3$, $5$ et $7\ \text{s}$ (contrôlés
+  un à un) : $\mathbf{T_0 = 4{,}0\ \text{s}}$ ;
+- les sommets et les creux se posent sur $\pm 25$ petits carreaux :
+  $\dot{\theta}_{max} = \mathbf{0{,}25\ \text{rad.s}^{-1}}$ ;
+- d'où $\theta_m = \dot{\theta}_{max}\,T_0/2\pi = 0{,}25\times4/2\pi
+  \simeq 0{,}16\ \text{rad}$, puis
+  $C = 4\pi^2 J_\Delta/T_0^{2} = 4\times10\times6{,}67\cdot10^{-3}/16
+  \simeq 1{,}7\cdot10^{-2}\ \text{N.m.rad}^{-1}$ et
+  $E_m = \frac12 J_\Delta \dot{\theta}_{max}^{2} \simeq
+  2{,}1\cdot10^{-4}\ \text{J}$ ;
+- **à $t_2 = 3{,}4\ \text{s}$** (branche descendante après le maximum de
+  $t = 3\ \text{s}$) la courbe donne $\dot{\theta} \simeq
+  \mathbf{0{,}20\ \text{rad.s}^{-1}}$ — lecture indispensable à la question
+  3-2, qui donne $W_C = \frac12 J_\Delta \dot{\theta}^2(t_2) - 0 \simeq
+  1{,}3\cdot10^{-4}\ \text{J}$.
+Légende : « Figure 3 ».
 
 ---
 
