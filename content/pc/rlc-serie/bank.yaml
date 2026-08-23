@@ -92,6 +92,35 @@
 #     sous une ligne explicitement étiquetée « rappel des parties
 #     précédentes », jamais présentée comme une donnée de la Partie III. Ce
 #     n'est pas un trou de la leçon.
+#   - bk-2023-r-x3b, q3 : exige $C_0 = 10\ \mu\text{F}$, valeur établie à la
+#     SECTION 1 du même exercice (réponse d'un dipôle RC à un échelon de
+#     tension), transcrite sous une AUTRE notion —
+#     content/pc/rc-charge/bank.yaml (entrée bk-2023-r-x3 là-bas, même sujet,
+#     même session). Dépendance inter-section/inter-notion, pontée au point
+#     d'usage dans le raisonnement ET rappelée en tête de l'énoncé sous une
+#     ligne explicitement étiquetée « rappel de la section précédente »,
+#     jamais présentée comme une donnée de la section 2.
+#   - bk-2023-r-x3b, q2 : la question demande d'expliquer la décroissance de
+#     l'amplitude. Le rung 3 ÉNONCE que l'énergie totale décroît par effet
+#     Joule sans le dériver ; le raisonnement le REFAIT en une ligne au point
+#     d'usage — on dérive $E = \frac{q^2}{2C_0} + \frac12 L i^2$ et on
+#     remplace la parenthèse par ce que donne l'équation de la question 2-1,
+#     d'où $\frac{dE}{dt} = -R\,i^2 \leqslant 0$. Jamais « on admet ».
+#   - bk-2023-r-x3b, q3 et q4 : la valeur $L = 0{,}1\ \text{H}$ n'est donnée
+#     par le sujet qu'à la SECTION 3 (circuit bouchon, transcrite sous
+#     ondes-em-modulation). Elle n'entre dans AUCUN calcul demandé ici : elle
+#     n'apparaît que dans deux contrôles facultatifs explicitement étiquetés
+#     comme tels ($T_0 = 2\pi\sqrt{LC_0} \approx 6{,}3\ \text{ms}$). À
+#     rapprocher de l'avertissement du vérificateur : l'axe des temps de la
+#     figure 3 ne porte AUCUNE graduation, donc $t_1$ n'est pas lisible et
+#     aucune question ne doit le demander — l'énoncé officiel ne le demande
+#     pas non plus.
+#   - bk-2023-r-x3b, q4 : cas INVERSE des trois notes ci-dessus sur $R+r$ —
+#     ici la bobine est explicitement « de résistance négligeable », donc la
+#     condition d'entretien du rung 7 s'applique mot pour mot, $k = R
+#     = 35\ \Omega$, sans généralisation. Le raisonnement le dit et rappelle
+#     la règle générale (k = somme des résistances de la maille) pour que la
+#     coexistence avec bk-2018-n-x3 et bk-2020-n-x4 ne crée pas de confusion.
 
 notion: pc/rlc-serie
 
@@ -957,6 +986,213 @@ entries:
             note: "Energie electrique restant dans le condensateur a cet instant."
           - math: '\boxed{E_m \approx 5\times10^{-6} - 3{,}27\times10^{-6} \approx 1{,}7\times10^{-6}\ \text{J}}'
             note: "Conservation de l'energie totale (rung 1) : ce qui n'est pas dans le condensateur est dans la bobine."
+
+  # ── bk-2023-r-x3b — 2023 R, Exercice 3 (section 2) : RLC amorti, bilan d'energie entre deux extrema, entretien ──
+  - id: bk-2023-r-x3b
+    title: "Oscillations libres dans un circuit RLC série : équation différentielle amortie, énergie dissipée entre deux extrema et condition d'entretien"
+    source:
+      year: 2023
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — 2. Oscillations libres dans un circuit RLC série"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), AlloSchool RS 28F, element/142484 (Exercice 3,
+        section 2 — oscillations libres dans un circuit RLC série puis
+        entretien des oscillations ; barème de la section = 2,25 pt
+        (0,5 + 0,5 + 0,75 + 0,5) sur les 4,75 pt de l'exercice complet, dont
+        la section 1 — réponse d'un dipôle RC à un échelon de tension — est
+        transcrite sous rc-charge (entrée bk-2023-r-x3 là-bas) et la
+        section 3 — circuit bouchon LC de la détection AM — sous
+        ondes-em-modulation, toutes deux hors périmètre RLC). Transcription
+        vérifiée par une passe adversariale indépendante (2026-08-23) :
+        re-fetch des 6 pages du scan, figures re-décrites depuis le dessin
+        (upload-85310/0004-big.jpg et 0005-big.jpg) et non depuis l'énoncé,
+        puis physique re-dérivée. Le défaut de figure qui portait sur CETTE
+        section a été levé par cette passe : la lecture $q(0) =
+        120\ \mu\text{C}$ sur la figure 3 n'est plus « à confirmer » — sans
+        elle la question 2-3 est inexploitable. Mesure au pixel : à la
+        sortie de l'axe des ordonnées le tracé occupe les lignes 418 à 420,
+        le trait majeur $+120$ étant en 418 ; et recoupement entre figures,
+        le palier de la figure 2 (section 1) vaut lui aussi
+        $120\ \mu\text{C}$, or la décharge de la figure 3 part du
+        condensateur chargé en régime permanent — les deux valeurs doivent
+        être égales, et elles le sont. Le second point de lecture,
+        $q(t_1) = +40\ \mu\text{C}$, est tout aussi ferme : le maximum
+        affleure exactement le trait majeur $+40$, repéré par le segment
+        vertical en pointillés qui descend jusqu'à l'axe des abscisses où
+        $t_1$ est étiqueté. Re-dérivations recoupées :
+        $|\Delta E| = (q(0)^2 - q(t_1)^2)/(2C_0) =
+        (120^2 - 40^2)\times10^{-12}/(2\times10^{-5}) = 0{,}64\ \text{mJ}$ ;
+        $k = R = 35\ \Omega$ (dimensionnellement des V.A^-1, donc des ohms) ;
+        et, avec $L = 0{,}1\ \text{H}$ donné plus loin (section 3),
+        $T_0 = 2\pi\sqrt{LC_0} = 6{,}3\ \text{ms}$, ce qui identifie $t_1$ à
+        une pseudo-période. AVERTISSEMENT DE CONVERSION repris de la note de
+        vérification : l'axe des temps de la figure 3 ne porte AUCUNE
+        graduation numérique, donc $t_1$ n'est pas lisible — une entrée de
+        banque ne doit demander que $q(t_1)$, jamais la valeur de $t_1$, et
+        c'est bien ce que fait l'énoncé officiel. INCOHÉRENCE DU SUJET
+        OFFICIEL, signalée sans être réparée (même signalement que dans
+        l'entrée sœur de rc-charge) : le même « condensateur de capacité $C$
+        ajustable » vaut $10\ \mu\text{F}$ ici et doit valoir 3 à
+        $11\ \text{pF}$ dans la section 3 — six ordres de grandeur d'écart,
+        hors d'atteinte d'un condensateur variable réel. Les trois sections
+        restent exploitables séparément (d'où trois entrées de banque
+        distinctes), mais aucune leçon ne doit présenter ce montage comme un
+        dispositif unique physiquement réalisable. SCOPE NOTES (voir
+        l'en-tête du fichier) : $C_0 = 10\ \mu\text{F}$ vient de la
+        section 1 du même sujet (transcrite sous rc-charge) ; la décroissance
+        de l'énergie totale est re-dérivée en une ligne à la question 2 ; et
+        $L = 0{,}1\ \text{H}$ ne sert qu'à des contrôles facultatifs,
+        explicitement étiquetés, jamais au calcul demandé.
+    intro: |-
+      **2- Oscillations libres dans un circuit RLC série (examen national, session de rattrapage 2023 — Exercice 3, section 2, 2,25 points).**
+
+      *Rappel du montage (décrit en tête de l'exercice, section 1) :* le montage électrique représenté par le schéma de la figure 1 comporte un générateur de tension de force électromotrice $E$ ; un condensateur de capacité $C$ ajustable, initialement déchargé ; un conducteur ohmique de résistance $R = 35\ \Omega$ ; un interrupteur $K$ à double position ; une bobine d'inductance $L$ et de résistance négligeable.
+
+      *Rappel de la section précédente du même exercice (établi à la section 1, transcrite sous rc-charge — voir la note de portée) :* la capacité est ajustée à la valeur $C_0 = 10\ \mu\text{F}$, et la charge du palier atteinte en régime permanent vaut $120\ \mu\text{C}$ sous $E = 12\ \text{V}$.
+
+      Lorsque le régime permanent est atteint, on bascule l'interrupteur $K$ en position (2) à un instant pris comme nouvelle origine des dates $t_0 = 0$. Le même système d'acquisition informatisé, utilisé dans la charge du condensateur, a permis d'obtenir la courbe d'évolution temporelle de la charge $q(t)$ du condensateur (figure 3).
+
+      **Figure 1 (schéma).** Circuit à deux mailles. Branche de gauche : le générateur, symbole cercle traversé verticalement par le fil, avec à sa gauche une flèche verticale montante étiquetée « E ». Branche du haut : le fil part du sommet du générateur vers la droite et s'arrête sur une borne marquée d'un gros point, étiquetée « (1) » au-dessus ; plus à droite, une seconde borne à point étiquetée « (2) », d'où le fil repart vers le coin supérieur droit. L'interrupteur $K$ est dessiné en position ouverte : son levier part du sommet de la branche centrale et monte obliquement vers le haut-gauche, en passant au-dessus et à droite de la borne (1) sans la toucher (il ne touche pas davantage (2)) ; l'étiquette « K » est imprimée au-dessus de l'extrémité libre du levier, entre les étiquettes « (1) » et « (2) ». Branche centrale (verticale, du pivot de $K$ jusqu'au fil du bas), de haut en bas : le conducteur ohmique (rectangle vertical, étiquette « R » à droite), puis le condensateur ajustable (deux armatures horizontales barrées d'une flèche oblique, étiquette « C » à droite) avec la tension $u_C$ fléchée vers le haut à sa gauche, puis la flèche du courant « i » orientée vers le bas sous le condensateur. Branche de droite : la bobine (spires), étiquette « L » à sa gauche, reliant la borne (2) — via le coin supérieur droit — au coin inférieur droit. Branche du bas : fil refermant les deux mailles. Légende « Figure 1 », sous le cadre.
+
+      **Figure 3 (courbe).** $q\ (\mu\text{C})$ en fonction de $t$ — l'axe des abscisses est étiqueté « t », terminé par une flèche, et **ne porte aucune graduation numérique ni unité imprimée**. Quadrillage à double graduation : sous-quadrillage bleu à 5 petits carreaux par division majeure, soit $8\ \mu\text{C}$ par petit carreau. Axe des ordonnées : seules les valeurs $40$, $0$ et $-40$ sont chiffrées (traits majeurs tous les $40\ \mu\text{C}$) ; trois traits majeurs au-dessus de zéro ($+40$, $+80$, $+120$) et deux au-dessous ($-40$, $-80$) ; le bord inférieur du cadre coïncide avec le niveau $-80\ \mu\text{C}$, tandis que le bord supérieur passe légèrement au-dessus du trait $+120$. Horizontalement le cadre couvre $6{,}5$ divisions majeures.
+
+      Oscillations amorties : la courbe part à $t=0$ exactement sur le trait majeur $+120\ \mu\text{C}$, soit $q(0) = 120\ \mu\text{C}$ (le tracé sort de l'axe des ordonnées confondu avec cette gridline) ; elle décroît, coupe l'axe, et passe par un premier minimum à environ $-68\ \mu\text{C}$ (fond arrondi, entre les traits $-40$ et $-80$, sans tomber sur une gridline — valeur indicative, aucune question n'en dépend) ; elle remonte vers un maximum qui **affleure exactement le trait $+40\ \mu\text{C}$**, repéré par un segment vertical en pointillés descendant jusqu'à l'axe des abscisses, où l'instant est étiqueté « $t_1$ » sous l'axe. La courbe continue ensuite : deuxième minimum à environ $-22\ \mu\text{C}$, puis remontée jusqu'à environ $+13\ \mu\text{C}$, sommet atteint au bord droit du cadre (amplitudes décroissantes, lectures indicatives). Légende « Figure 3 », sous le cadre.
+    questions:
+      - id: q1
+        part: "2 — Établir l'équation du circuit amorti, sous la forme imposée"
+        stem: |-
+          **2-1.** (0,5 pt) Montrer que l'équation différentielle vérifiée par la charge $q(t)$ s'écrit : $\dfrac{d^2q(t)}{dt^2} + \dfrac{R}{L}\,\dfrac{dq(t)}{dt} + \dfrac{1}{LC_0}\,q(t) = 0$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le mot « montrer » impose la destination : ce n'est pas seulement l'équation qu'on doit produire, c'est CETTE écriture-là, celle où le coefficient de $\dfrac{d^2q}{dt^2}$ vaut exactement $1$. Le geste se fait donc en deux temps, et le second est aussi noté que le premier : d'abord la loi des mailles ramenée à la seule inconnue $q$, ensuite une division par $L$ pour normaliser.
+
+          **Quel circuit, exactement ?** L'interrupteur est en position (2) : le générateur est hors du jeu, la maille active fait le tour du conducteur ohmique $R$, du condensateur $C_0$ et de la bobine $L$ (figure 1). Trois dipôles en série, donc trois tensions dont la somme est nulle — c'est la loi des mailles du rung 5, appliquée telle quelle :
+
+          $$u_R + u_C + u_L = 0$$
+
+          **Chaque tension, ramenée à $q$.** On garde l'orientation du rung 1, où le courant est le débit de charge de l'armature dont on suit la charge $q$ :
+
+          $$i = \frac{dq}{dt}$$
+
+          $$u_R = R\,i = R\,\frac{dq}{dt} \qquad u_C = \frac{q}{C_0} \qquad u_L = L\,\frac{di}{dt} = L\,\frac{d^2q}{dt^2}$$
+
+          On reporte les trois dans la maille :
+
+          $$L\,\frac{d^2q}{dt^2} + R\,\frac{dq}{dt} + \frac{q}{C_0} = 0$$
+
+          C'est déjà l'équation du rung 5, à l'identique. Il ne reste que la mise en forme demandée : on divise **chaque** terme par $L$.
+
+          $$\boxed{\frac{d^2q}{dt^2} + \frac{R}{L}\,\frac{dq}{dt} + \frac{1}{LC_0}\,q = 0}$$
+
+          C'est bien la forme imposée par l'énoncé.
+
+          **Une remarque de portée, pour ne pas se tromper de sujet.** Ici l'énoncé précise que la bobine est « de résistance négligeable » : la seule résistance du circuit est $R = 35\ \Omega$, et c'est ce $R$ seul qui figure dans l'équation. D'autres sujets de cette même banque (2018, 2020, 2024) montent une bobine résistive $(L,r)$, et le terme d'amortissement y devient $R + r$ ou $r$ selon le montage. Le coefficient à écrire se lit sur le circuit, jamais de mémoire.
+
+          **Les deux pièges de cette question.** Le premier est la division partielle : on divise le premier terme par $L$, on obtient $\dfrac{R}{L}$ pour le deuxième, et on laisse le troisième en $\dfrac{1}{C_0}$ au lieu de $\dfrac{1}{LC_0}$. Le test qui tranche est gratuit — le facteur $\dfrac{1}{L}$ doit apparaître dans les trois termes, sinon ce n'est plus la même équation. Le second piège est le signe du courant : si on pose $i = -\dfrac{dq}{dt}$ (orientation inverse), le terme du milieu devient $-\dfrac{R}{L}$, et cette équation-là décrirait des oscillations qui **grandissent** au lieu de s'amortir — physiquement absurde pour un circuit qui ne contient aucune source. Le signe $+$ du terme en $\dfrac{dq}{dt}$ n'est pas une convention d'écriture, c'est la signature de la dissipation.
+      - id: q2
+        part: "2 — Pourquoi l'amplitude tombe : le chemin de l'énergie"
+        stem: |-
+          **2-2.** (0,5 pt) Expliquer la diminution de l'amplitude des oscillations au cours du temps.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Question en mots, mais la réponse attendue n'est pas un commentaire de courbe : c'est une chaîne énergétique. Il faut relier trois choses — la présence de $R$, la perte d'énergie totale, et la hauteur des extrema successifs — dans cet ordre. Dire « les oscillations s'essoufflent » ou « le condensateur finit par se vider » ne raccroche à rien.
+
+          **Premier maillon — $R$ prend, toujours, et ne rend jamais.** C'est le rung 3. Le courant traverse le conducteur ohmique, qui dissipe en chaleur une puissance
+
+          $$p_J = R\,i^2 \geqslant 0$$
+
+          Ce carré est décisif : la puissance dissipée est positive que le courant aille dans un sens ou dans l'autre. À chaque aller comme à chaque retour du pendule électrique, $R$ prélève.
+
+          **Deuxième maillon — l'énergie totale décroît.** Le rung 1 pose l'énergie du circuit comme la somme de l'électrique et de la magnétique :
+
+          $$E = \frac{q^2}{2C_0} + \frac{1}{2}L\,i^2$$
+
+          Le rung 3 affirme qu'elle décroît par effet Joule ; on peut le **redémontrer en une ligne** avec l'équation de la question 2-1, sans rien admettre. On dérive :
+
+          $$\frac{dE}{dt} = \frac{q}{C_0}\,\frac{dq}{dt} + L\,i\,\frac{di}{dt} = i\left(\frac{q}{C_0} + L\,\frac{d^2q}{dt^2}\right)$$
+
+          Or l'équation du circuit dit précisément que la parenthèse vaut $-R\,\dfrac{dq}{dt} = -R\,i$. Donc
+
+          $$\frac{dE}{dt} = -R\,i^2 \leqslant 0$$
+
+          L'énergie totale ne remonte jamais : elle décroît strictement dès que le courant est non nul.
+
+          **Troisième maillon — d'où la chute des extrema.** À chaque extremum de $q$, la tangente à la courbe est horizontale, donc $i = \dfrac{dq}{dt} = 0$ : toute l'énergie restante est électrique et vaut $\dfrac{q_{\max}^2}{2C_0}$. Comme $E$ a diminué entre deux extrema successifs, ce $q_{\max}^2$ diminue aussi — donc l'amplitude. La figure 3 le montre en clair : $120$, puis $68$, puis $40$, puis $22$, puis $13\ \mu\text{C}$.
+
+          **La réponse, en une phrase.** Le conducteur ohmique $R$ dissipe de l'énergie par effet Joule à chaque passage du courant ; l'énergie totale du circuit décroît donc continûment, et comme à chaque extremum cette énergie est entièrement stockée dans le condensateur sous la forme $\dfrac{q_{\max}^2}{2C_0}$, la charge maximale — donc l'amplitude — diminue d'un extremum au suivant.
+
+          **Le piège de cette question.** Il consiste à faire disparaître l'énergie : « elle se perd », « elle s'épuise ». Rien ne se perd — elle **change de forme**, du couple condensateur-bobine vers la chaleur du conducteur ohmique, et le bilan de la question suivante la compte au joule près. Piège jumeau, sur la courbe cette fois : croire que l'amortissement ralentit aussi les oscillations. Il n'en est rien — les extrema de la figure 3 restent régulièrement espacés, la pseudo-période est constante. $R$ contrôle la vitesse d'extinction, jamais le rythme, qui reste fixé par $L$ et $C_0$ (rung 3, rung 6 étape 4).
+      - id: q3
+        part: "2 — Le bilan : l'énergie dissipée entre t0 et t1"
+        stem: |-
+          **2-3.** (0,75 pt) Calculer $\left|\Delta E\right|$ l'énergie dissipée par effet Joule dans le circuit entre l'instant $t_0 = 0$ et l'instant $t_1$ indiqué sur la courbe de la figure 3.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énergie dissipée ne se lit sur aucune courbe et ne se calcule pas par une intégrale de $R\,i^2$ — pas au niveau bac. Elle se déduit d'un **bilan** : le circuit ne contient que trois choses, le condensateur qui stocke, la bobine qui stocke, et $R$ qui ne fait que prendre. Tout ce que l'énergie totale a perdu entre deux dates est donc parti en chaleur, et nulle part ailleurs :
+
+          $$|\Delta E| = E(t_0) - E(t_1) = \left[\frac{q(0)^2}{2C_0} + \frac{1}{2}L\,i(0)^2\right] - \left[\frac{q(t_1)^2}{2C_0} + \frac{1}{2}L\,i(t_1)^2\right]$$
+
+          **Le geste qui simplifie tout : les deux dates ont été choisies pour que $i$ y soit nul.** Ce n'est pas une chance, c'est la raison pour laquelle l'énoncé désigne $t_1$ par un pointillé posé sur un **maximum** de $q$.
+
+          - À $t_0 = 0$ : avant la bascule, $K$ était en position (1) et la branche de la bobine n'était parcourue par aucun courant ; le courant dans une bobine ne peut pas sauter, donc $i(0) = 0$. La courbe le confirme — elle démarre à un maximum, donc de tangente horizontale, donc $\dfrac{dq}{dt}(0) = 0$.
+          - À $t_1$ : le pointillé de la figure 3 repère le premier **maximum** de $q$ après $t=0$. Tangente horizontale, donc là encore $i(t_1) = \dfrac{dq}{dt}(t_1) = 0$.
+
+          Aux deux dates, l'énergie magnétique est nulle : le bilan se réduit aux charges.
+
+          $$|\Delta E| = \frac{q(0)^2 - q(t_1)^2}{2C_0}$$
+
+          **Les deux lectures.** Le départ est confondu avec le trait majeur $+120$, et le maximum de $t_1$ affleure exactement le trait $+40$ :
+
+          $$q(0) = 120\ \mu\text{C} = 120\times10^{-6}\ \text{C} \qquad q(t_1) = 40\ \mu\text{C} = 40\times10^{-6}\ \text{C}$$
+
+          **L'application numérique**, avec $C_0 = 10\ \mu\text{F}$ établi à la section 1 du même sujet (transcrite sous rc-charge) — un pont entre les deux sections, pas une donnée à deviner :
+
+          $$q(0)^2 - q(t_1)^2 = \left(120^2 - 40^2\right)\times10^{-12} = (14400 - 1600)\times10^{-12} = 12800\times10^{-12} = 1{,}28\times10^{-8}$$
+
+          $$2C_0 = 2\times10\times10^{-6} = 2\times10^{-5}$$
+
+          $$|\Delta E| = \frac{1{,}28\times10^{-8}}{2\times10^{-5}} = 6{,}4\times10^{-4}\ \text{J}$$
+
+          $$\boxed{|\Delta E| = 6{,}4\times10^{-4}\ \text{J} = 0{,}64\ \text{mJ}}$$
+
+          **Les deux contrôles qui rassurent.** Le premier vient de la section 1 : l'énergie de départ vaut $\dfrac{q(0)^2}{2C_0} = \dfrac{1{,}44\times10^{-8}}{2\times10^{-5}} = 7{,}2\times10^{-4}\ \text{J} = 0{,}72\ \text{mJ}$, exactement l'énergie $E_e$ emmagasinée en régime permanent qu'on avait calculée là-bas par $\frac{1}{2}C_0E^2$ avec $E = 12\ \text{V}$. Normal : c'est le même condensateur, chargé à bloc, qu'on lâche dans la bobine. Le second est un contrôle de cohérence sur les amplitudes : l'amplitude a été divisée par $3$ en une pseudo-période ($120 \to 40$), donc l'énergie, qui varie comme le carré, doit être divisée par $9$ — et $\dfrac{0{,}72}{9} = 0{,}08\ \text{mJ}$, ce qui est bien l'énergie restante $0{,}72 - 0{,}64 = 0{,}08\ \text{mJ}$. Les deux voies se ferment sur le même nombre.
+
+          **Le piège de cette question, celui qui coûte le plus cher.** Écrire $\left(q(0) - q(t_1)\right)^2$ au lieu de $q(0)^2 - q(t_1)^2$. Le premier vaut $80^2 = 6400$, le second $12800$ : la réponse fausse, $0{,}32\ \text{mJ}$, est exactement la moitié de la bonne, et rien dans son ordre de grandeur ne la trahit. Une différence de carrés ne se contracte pas — ou alors on la factorise honnêtement, $(120-40)(120+40) = 80\times160 = 12800$, ce qui redonne bien le bon nombre. Piège jumeau : chercher $t_1$ sur l'axe des temps pour en tirer une durée ou une puissance moyenne. L'axe des abscisses de la figure 3 ne porte **aucune graduation** — $t_1$ n'est tout simplement pas lisible, et il n'a pas à l'être : le bilan d'énergie ne dépend que des charges. (Pour la curiosité seulement, et hors de ce qui est demandé : $t_1$ est le premier maximum après $t=0$, donc une pseudo-période, et avec la valeur $L = 0{,}1\ \text{H}$ que l'énoncé ne donne qu'à la section 3, $T_0 = 2\pi\sqrt{LC_0} = 2\pi\times10^{-3} \approx 6{,}3\ \text{ms}$.)
+      - id: q4
+        part: "2 — Entretenir les oscillations : la valeur de k"
+        stem: |-
+          **2-4.** (0,5 pt) Pour entretenir les oscillations amorties obtenues, on introduit en série dans le circuit un générateur délivrant une tension $u_g = k.i(t)$ avec $u_g$ exprimée en volt (V) et $i(t)$ exprimée en ampère (A) et $k$ une constante positive. Déterminer la valeur de $k$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « Entretenir » a un sens précis et un seul : faire disparaître le terme d'amortissement de l'équation, celui en $\dfrac{dq}{dt}$. On ne cherche donc pas $k$ par un raisonnement énergétique approximatif — on réécrit la maille avec le générateur dedans, on regroupe, et on annule le coefficient qui freine. C'est exactement la démarche du rung 7.
+
+          **La nouvelle maille.** Le générateur d'entretien est en série : sa tension apparaît au second membre.
+
+          $$u_R + u_C + u_L = u_g = k\,i$$
+
+          On remplace comme à la question 2-1, avec $i = \dfrac{dq}{dt}$ :
+
+          $$R\,\frac{dq}{dt} + \frac{q}{C_0} + L\,\frac{d^2q}{dt^2} = k\,\frac{dq}{dt}$$
+
+          On fait passer tout à gauche et on regroupe les deux termes en $\dfrac{dq}{dt}$ :
+
+          $$L\,\frac{d^2q}{dt^2} + (R - k)\,\frac{dq}{dt} + \frac{q}{C_0} = 0$$
+
+          **La condition.** Les oscillations sont entretenues quand le terme d'amortissement disparaît, c'est-à-dire quand son coefficient s'annule :
+
+          $$R - k = 0 \implies k = R$$
+
+          $$\boxed{k = R = 35\ \Omega}$$
+
+          L'unité est cohérente avec l'énoncé : $k = \dfrac{u_g}{i}$ s'exprime en volt par ampère, c'est-à-dire en ohm.
+
+          **Pourquoi $R$ seul, et pas $R + r$.** L'énoncé a précisé que la bobine est « de résistance négligeable » : $R$ est la seule résistance de la maille, et c'est donc la totalité de ce qu'il faut compenser. Dans les sujets 2018 et 2020 de cette même banque, la bobine est résistive et la condition devient $k = r$ ou $k = R + r$. La règle n'est pas « $k$ vaut $R$ », elle est « $k$ vaut la somme de toutes les résistances de la maille » — ici cette somme se réduit à $35\ \Omega$.
+
+          **Le contrôle qui rassure.** Avec $k = R$, l'équation devient $L\,\dfrac{d^2q}{dt^2} + \dfrac{q}{C_0} = 0$ : c'est mot pour mot l'équation du circuit LC idéal du rung 2. Les oscillations redeviennent sinusoïdales d'amplitude constante, à la période propre $T_0 = 2\pi\sqrt{LC_0}$ — soit, avec le $L = 0{,}1\ \text{H}$ que l'énoncé donne à la section 3, environ $6{,}3\ \text{ms}$, exactement le rythme que la figure 3 montrait déjà avant l'entretien.
+
+          **Le piège de cette question.** Croire que « plus $k$ est grand, mieux les oscillations sont entretenues ». Faux, et l'équation le dit : si $k > R$, le coefficient $(R-k)$ devient **négatif**, et le terme cesse de freiner pour se mettre à pousser — l'amplitude grandirait à chaque cycle, ce qui n'est pas un entretien mais une divergence. L'entretien est un réglage exact, une égalité, pas un maximum. Piège jumeau, conceptuel : penser que ce générateur « impose sa fréquence » au circuit. Il n'impose rien — $k$ n'apparaît nulle part dans $T_0 = 2\pi\sqrt{LC_0}$. Son rôle est de rendre à chaque instant exactement ce que $R$ prélève, rien de plus ; le rythme reste celui de la structure interne, $L$ et $C_0$ (rung 7).
 
   # ── bk-2024-n-x4 — 2024 N, Exercice 4 (Partie 1) : decharge C-RL amortie, energetique ──
   - id: bk-2024-n-x4

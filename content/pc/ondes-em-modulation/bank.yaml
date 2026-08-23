@@ -16,11 +16,39 @@
 # françaises écrites `X{,}Y` dans le KaTeX, notes sans backslash et en ASCII
 # pur — pas d'accents).
 #
-# NOTE ÉDITORIALE (pour la revue) : les QUATRE sujets « vérifié » de cette
-# notion sont 2017 N (Exercice III, Partie II), 2021 N (Exercice IV,
-# Partie III), 2023 N (Exercice 3, §3) et 2025 N (Exercice 3, Partie 3) —
-# voir docs/sujets/pc/ondes-em-modulation.md, statuts en tête de chaque
-# entrée. Les quatre figurent ci-dessous.
+# NOTE ÉDITORIALE (pour la revue) : les QUATRE sujets « vérifié » recensés
+# dans docs/sujets/pc/ondes-em-modulation.md sont 2017 N (Exercice III,
+# Partie II), 2021 N (Exercice IV, Partie III), 2023 N (Exercice 3, §3) et
+# 2025 N (Exercice 3, Partie 3) — statuts en tête de chaque entrée. Les
+# quatre figurent ci-dessous. S'y ajoute une CINQUIÈME entrée, de session
+# de RATTRAPAGE : bk-2023-r-x3c (2023 R, Exercice 3, section 3), dont la
+# source vérifiée est docs/sujets/_incoming/pc-spc-2023-r.md (passe de
+# vérification adversariale du 2026-08-23) et n'est PAS encore reversée
+# dans docs/sujets/pc/ondes-em-modulation.md — même disposition que les
+# entrées de rattrapage de rc-charge et dipole-rl. Les entrées sont
+# ordonnées chronologiquement, la session de rattrapage se plaçant après
+# la session normale de la même année.
+#
+# SCOPE NOTE (bk-2023-r-x3c, question q2) : le rung R5 accorde le circuit
+# bouchon sur UNE fréquence — l'exemple numérique du rung isole $C$ pour
+# une porteuse unique. Le sujet 2023 R demande les deux capacités limites
+# d'une BANDE entière (150 kHz à 280 kHz), ce qui mobilise en plus la
+# relation d'ANTI-MONOTONIE $C \propto 1/f^2$ — le fait que la borne haute
+# de la bande de fréquences donne la borne basse de la plage de capacités.
+# La leçon ne l'énonce nulle part : R5 dit seulement que « régler $C$
+# change $f_0$ », jamais dans quel sens. Le pont est fait au point d'usage,
+# en REFAISANT l'isolement de $C$ en une ligne (pas d'« on admet »), et le
+# sens de variation est lu directement sur l'expression obtenue.
+#
+# NOTE D'INCOHÉRENCE DU SUJET (bk-2023-r-x3c) : l'exercice 3 de 2023 R
+# enchaîne trois sections sur le montage de sa figure 1, et le même
+# « condensateur de capacité C ajustable » y est réglé à 10 µF dans la
+# section 1 puis doit valoir 3 à 11 pF dans la section 3 — six ordres de
+# grandeur d'écart, hors d'atteinte d'un condensateur variable réel. La
+# source vérifiée signale l'incohérence sans la réparer et impose que les
+# trois sections soient converties en entrées SÉPARÉES. Elle est nommée
+# telle quelle dans le raisonnement de q2 ; aucune leçon ne doit présenter
+# ce montage comme un dispositif unique physiquement réalisable.
 #
 # RECOUPEMENT ASSUMÉ (bk-2017-n-x3) : ce même sujet 2017 N (Exercice III,
 # Partie II) sous-tend AUSSI le sommet de leçon r-bac (exercises.yaml, id
@@ -385,6 +413,131 @@ entries:
             note: "Position numerique des deux raies laterales, avec fp et fs de la question 1."
           - math: '\boxed{\text{raies a } 3{,}8\ \text{kHz}\ (Am/2),\ 4{,}0\ \text{kHz}\ (A),\ 4{,}2\ \text{kHz}\ (Am/2)}'
             note: "Trois raies symetriques autour de fp ; la raie centrale deux fois plus haute que chaque raie laterale (m=0,5)."
+
+
+  # ── bk-2023-r-x3c — 2023 R, Exercice 3 (section 3) : circuit bouchon LC, detection AM ──
+  - id: bk-2023-r-x3c
+    title: "Circuit bouchon LC et détection d'enveloppe : accorder un récepteur sur toute la bande AM"
+    source:
+      year: 2023
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — 3- Détection d'un signal modulé en amplitude"
+    bareme_total: 1.0
+    duration_min: 6
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/142484
+        (Exercice 3, section 3 — détection d'un signal modulé en amplitude ;
+        barème de la section = 1,0 pt, soit 0,25 + 0,75, sur les 4,75 pt de
+        l'exercice complet — la section 1, réponse d'un dipôle RC à un
+        échelon de tension, relève de rc-charge, et la section 2,
+        oscillations libres d'un circuit RLC série puis entretien, de
+        rlc-serie ; la source impose explicitement que les trois sections
+        soient converties SÉPARÉMENT). Source vérifiée :
+        docs/sujets/_incoming/pc-spc-2023-r.md, passe de vérification
+        adversariale du 2026-08-23 — les 6 pages du scan (upload-85310,
+        pages 4 et 5 pour cet exercice) re-fetchées indépendamment, chaque
+        figure re-décrite depuis l'image et non depuis l'énoncé, puis toute
+        la physique re-dérivée ; texte des quatre exercices déclaré exact,
+        barème re-additionné 7 + 3 + 4,75 + 5,25 = 20. La description de la
+        figure 4 (antenne + circuit bouchon) est celle du vérificateur,
+        reprise sans changer une valeur ni une position. Aucun des quatre
+        défauts de figure relevés par la passe adversariale ne touche cette
+        section (ils portent tous sur les figures 1, 2 et 3, c'est-à-dire
+        sur les sections 1 et 2). La source vérifiée n'est pas encore
+        reversée dans docs/sujets/pc/ondes-em-modulation.md, qui ne recense
+        que les quatre entrées de session normale.
+        RE-DÉRIVATION INDÉPENDANTE (faite ici, pas reprise de la source) :
+        avec pi au carré = 10 imposé par l'énoncé et L = 0,1 H, le facteur
+        4·pi²·L vaut exactement 4 en unités SI, donc C = 1/(4 f²) ;
+        f1 = 150 kHz donne 4 f1² = 9,00e10 et C = 1,111e-11 F = 11,1 pF ;
+        f2 = 280 kHz donne 4 f2² = 3,136e11 et C = 3,189e-12 F, arrondi à
+        3,2 pF. Les deux valeurs de la source (3,2 pF et 11,1 pF) sont
+        confirmées. Contrôle de sensibilité : avec la vraie valeur
+        pi² = 9,87 on obtiendrait 11,3 pF et 3,23 pF — un écart de 1,3 %,
+        ce qui montre que pi² = 10 est imposé pour rendre le calcul faisable
+        à la main, pas pour changer le résultat.
+        SCOPE NOTE (question q2) : voir la note d'en-tête de fichier — la
+        leçon (rung R5) n'accorde le circuit bouchon que sur UNE fréquence ;
+        ce sujet demande les deux capacités limites d'une BANDE entière, ce
+        qui exige la relation d'anti-monotonie C proportionnel à 1/f² que la
+        leçon n'énonce nulle part. Pont fait au point d'usage, en refaisant
+        l'isolement de C en une ligne.
+        INCOHÉRENCE DU SUJET, signalée sans être réparée (relevée par le
+        vérificateur) : le même condensateur de capacité C ajustable est
+        réglé à 10 microfarads dans la section 1 et doit valoir 3 à 11
+        picofarads ici — six ordres de grandeur d'écart, hors d'atteinte
+        d'un condensateur variable réel. L'énoncé enchaîne les trois
+        sections comme si c'était le même composant ; les sections restent
+        exploitables séparément, mais aucune leçon ne doit présenter ce
+        montage comme un dispositif unique physiquement réalisable. Nommé
+        dans le raisonnement de q2, sans être corrigé.
+    intro: |-
+      **Détection d'un signal modulé en amplitude (examen national, session de rattrapage 2023 — Exercice 3, section 3, 1 point).**
+
+      L'exercice complet se propose d'étudier la charge d'un condensateur et sa décharge dans un dipôle RL, puis la détection d'un signal modulé en amplitude. Les deux premières sections utilisent le montage de la figure 1, qui comporte un générateur de tension de force électromotrice $E$, un condensateur de capacité $C$ ajustable initialement déchargé, un conducteur ohmique de résistance $R = 35\ \Omega$, un interrupteur $K$ à double position et une bobine d'inductance $L$ de résistance négligeable. Ce sont ce condensateur et cette bobine que la troisième section réutilise.
+
+      **3- Détection d'un signal modulé en amplitude.** On réalise un circuit d'accord (circuit bouchon) par le condensateur de capacité $C$ ajustable et par la bobine d'inductance $L = 0{,}1\ \text{H}$ précédemment utilisés. Ce circuit est schématisé avec une antenne réceptrice d'ondes électromagnétiques (figure 4).
+
+      **Figure 4 (schéma).** En haut, une antenne — un mât vertical surmonté d'un V — étiquetée « antenne » au-dessus. En dessous, le circuit bouchon : une boucle rectangulaire avec, sur la branche de gauche, la bobine en spires étiquetée « L » à sa gauche et, sur la branche de droite, le condensateur ajustable (armatures barrées d'une flèche oblique) étiqueté « C » à sa droite. Des segments en tirets relient le haut de la boucle au mât de l'antenne et prolongent le bas de la boucle vers la droite (vers le reste du récepteur, non représenté). Légende : « Figure 4 ».
+    questions:
+      - id: q1
+        part: "3- Détection d'un signal modulé en amplitude — à quoi sert ce circuit"
+        stem: |-
+          **(0,25 pt)** **3-1.** Donner le rôle de ce circuit bouchon LC.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un quart de point, une phrase — mais il faut la bonne. Le geste consiste à partir du problème que ce circuit résout, pas de sa description. Le problème est celui du rung 5 : l'antenne ne trie rien. Elle capte SIMULTANÉMENT toutes les ondes électromagnétiques qui la traversent, celles de toutes les stations à la fois, superposées en une seule tension. Sans un dispositif de tri placé juste derrière, on entendrait toutes les stations en même temps.
+
+          Le circuit bouchon est ce dispositif de tri. C'est une bobine $L$ et un condensateur $C$ montés en parallèle — donc un circuit oscillant, qui possède sa propre fréquence :
+
+          $$f_0 = \frac{1}{2\pi\sqrt{LC}}$$
+
+          Il répond fortement aux tensions dont la fréquence est proche de sa fréquence propre $f_0$, et beaucoup plus faiblement à toutes les autres. En réglant le condensateur variable $C$, on déplace $f_0$ ; quand $f_0$ vient coïncider avec la fréquence porteuse $f_p$ d'une station donnée, c'est cette station-là que le circuit privilégie, au détriment de toutes les autres. C'est l'**accord**.
+
+          **Le rôle demandé est donc : sélectionner une seule station** — c'est-à-dire une seule onde porteuse, de fréquence $f_p$ — parmi toutes celles captées ensemble par l'antenne, en réglant $C$ pour que la fréquence propre du circuit coïncide avec la porteuse voulue.
+
+          **Le piège de cette question.** Il est en deux moitiés, et beaucoup tombent dans la première. (1) Confondre **sélectionner** et **démoduler**. Le circuit bouchon ne récupère aucune information : il ne fait que choisir une porteuse. Extraire le signal informatif de l'enveloppe, c'est le travail du détecteur de crête — diode plus dipôle $RC$ — qui vient APRÈS lui dans la chaîne (rung 4). Répondre « il sert à démoduler le signal » coûte le quart de point. (2) Croire que régler $C$ agit sur l'émetteur. Tourner le bouton d'une radio ne change évidemment rien à la fréquence qu'émet la station : cela ne change que la fréquence propre du RÉCEPTEUR, jusqu'à ce qu'elle s'accorde sur elle.
+      - id: q2
+        part: "3- Détection d'un signal modulé en amplitude — balayer toute la bande"
+        stem: |-
+          **(0,75 pt)** **3-2.** Trouver les valeurs limites $C_1$ et $C_2$ de la capacité $C$ du condensateur pour balayer la plage de fréquences qui va en modulation d'amplitude de $f_1 = 150\ \text{kHz}$ à $f_2 = 280\ \text{kHz}$ (on prend $\pi^2 = 10$).
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La leçon fait ce geste une fois : on fixe la fréquence qu'on veut capter, et on isole $C$ dans la condition d'accord (rung 5). Ici on demande de **balayer une bande entière** — de $f_1$ à $f_2$ —, et un condensateur variable ne prend pas une valeur mais parcourt un intervalle. Le geste est donc le même, exécuté DEUX fois : une fois à chaque extrémité de la bande. Les deux capacités obtenues sont les bornes de l'intervalle de réglage.
+
+          La leçon accorde le circuit sur une fréquence unique et ne dit nulle part dans quel sens $C$ varie quand $f$ varie ; refaisons donc l'isolement complet, il tient en une ligne. On part de la fréquence propre du circuit oscillant, accordée sur la porteuse voulue ($f_0 = f$) :
+
+          $$f = \frac{1}{2\pi\sqrt{LC}} \quad\Longrightarrow\quad 2\pi\sqrt{LC} = \frac{1}{f} \quad\Longrightarrow\quad LC = \frac{1}{4\pi^2 f^2} \quad\Longrightarrow\quad \boxed{C = \frac{1}{4\pi^2 L f^2}}$$
+
+          Cette expression porte déjà la réponse qualitative : $C$ varie comme $1/f^2$. Les deux grandeurs varient **en sens inverse** — la fréquence la plus haute correspond à la capacité la plus petite.
+
+          Passons aux nombres. L'énoncé impose $\pi^2 = 10$ et donne $L = 0{,}1\ \text{H}$ : le dénominateur se simplifie remarquablement bien, et c'est pour cela que ces valeurs sont imposées.
+
+          $$4\pi^2 L = 4 \times 10 \times 0{,}1 = 4 \quad\text{(SI)} \quad\Longrightarrow\quad C = \frac{1}{4 f^2}$$
+
+          **Extrémité basse, $f_1 = 150\ \text{kHz} = 1{,}50\times10^{5}\ \text{Hz}$ :**
+
+          $$f_1^2 = (1{,}50\times10^{5})^2 = 2{,}25\times10^{10} \quad\Longrightarrow\quad 4f_1^2 = 9{,}00\times10^{10}$$
+
+          $$C(f_1) = \frac{1}{9{,}00\times10^{10}} = 1{,}11\times10^{-11}\ \text{F} = 11{,}1\ \text{pF}$$
+
+          **Extrémité haute, $f_2 = 280\ \text{kHz} = 2{,}80\times10^{5}\ \text{Hz}$ :**
+
+          $$f_2^2 = (2{,}80\times10^{5})^2 = 7{,}84\times10^{10} \quad\Longrightarrow\quad 4f_2^2 = 3{,}136\times10^{11}$$
+
+          $$C(f_2) = \frac{1}{3{,}136\times10^{11}} = 3{,}19\times10^{-12}\ \text{F} \approx 3{,}2\ \text{pF}$$
+
+          Deux honnêtetés de calcul, à ne pas maquiller. D'une part $1/9 = 0{,}111\ldots$ ne tombe pas juste : $11{,}1\ \text{pF}$ est un arrondi, la valeur exacte est $\tfrac{1}{9}\times10^{-10}\ \text{F}$. D'autre part $1/3{,}136 = 0{,}3188\ldots$, ce qui donne $3{,}19\ \text{pF}$ — les corrigés écrivent $3{,}2\ \text{pF}$, ce qui est un arrondi de plus, pas la valeur brute.
+
+          **La plage de réglage cherchée est donc $C$ compris entre environ $3{,}2\ \text{pF}$ et $11{,}1\ \text{pF}$** — un ordre de grandeur tout à fait réaliste pour un condensateur variable de circuit d'accord.
+
+          Reste la question des étiquettes. L'énoncé nomme les deux bornes $C_1$ et $C_2$ sans dire laquelle va avec quelle fréquence, et les deux conventions circulent : par indice ($C_1$ pour $f_1$, soit $C_1 = 11{,}1\ \text{pF}$ et $C_2 \approx 3{,}2\ \text{pF}$), ou par capacité croissante ($C_1 \approx 3{,}2\ \text{pF}$ et $C_2 = 11{,}1\ \text{pF}$). Ce qui est corrigé, ce n'est pas l'indice : c'est le COUPLE, chaque capacité rendue avec la fréquence qu'elle accorde. Écris-le explicitement — « $11{,}1\ \text{pF}$ accorde sur $150\ \text{kHz}$, $3{,}2\ \text{pF}$ accorde sur $280\ \text{kHz}$ » — et aucune convention ne peut te pénaliser.
+
+          **Une incohérence du sujet, qu'il faut voir sans s'y arrêter.** L'énoncé dit « le condensateur de capacité $C$ ajustable [...] précédemment utilisé ». Or ce même condensateur était réglé à $C_0 = 10\ \mu\text{F}$ dans la section 1 du sujet, et on lui demande ici quelques picofarads : six ordres de grandeur d'écart, ce qu'aucun condensateur variable réel ne couvre. C'est une facilité de rédaction du sujet officiel, pas une physique à sauver. Traite la section 3 comme un montage à part : rien de la section 1 n'entre dans ce calcul.
+
+          **Le piège de cette question.** C'est **l'inversion**, et elle est logée dans les indices. Parce que $C$ varie comme $1/f^2$, la borne HAUTE de la bande de fréquences donne la borne BASSE de la plage de capacités. Recopier machinalement « $C_1$ va avec $f_1$ parce qu'ils portent le même indice » revient à jouer à pile ou face sur un appariement que la physique, elle, a déjà tranché — et l'appariement inverse, lui, est faux quel que soit l'étiquetage. Deux pièges secondaires escortent celui-là. D'abord la conversion : $150\ \text{kHz}$, ce sont $1{,}50\times10^{5}\ \text{Hz}$, et oublier le facteur $10^{3}$ se paie $10^{6}$ fois sur $C$, puisque la fréquence y intervient au carré — on trouve alors des microfarads au lieu de picofarads, sans que rien ne le signale. Ensuite la consigne $\pi^2 = 10$ : c'est le CARRÉ qui vaut $10$, pas $\pi$. Poser $\pi = 10$ met $4\pi^2 L = 40$ au lieu de $4$ et divise toutes les capacités par dix.
 
   # ── bk-2025-n-x3 — 2025 N, Exercice 3 (Partie 3) : circuit d'accord et detecteur de crete ──
   - id: bk-2025-n-x3

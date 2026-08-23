@@ -17,14 +17,16 @@
 # scalars pour la prose, KaTeX brut entre apostrophes simples dans
 # steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue) : dix sujets « vérifié » couvrent
+# NOTE ÉDITORIALE (pour la revue) : onze sujets « vérifié » couvrent
 # désormais cette notion, 2018 N à 2025 N — 2018 N, 2019 N, 2020 N, 2021 N
 # (première vague) puis 2022 N (Partie 1 « bille » + Partie 2 « satellite »,
 # deux entrées sœurs bk-2022-n-x4 / bk-2022-n-x4b), 2023 N, 2024 N et 2025 N
 # (cinq entrées ajoutées en août 2026 : bk-2022-n-x4, bk-2022-n-x4b,
-# bk-2023-n-x4, bk-2024-n-x5, bk-2025-n-x4), enfin 2021 R (bk-2021-r-x5,
+# bk-2023-n-x4, bk-2024-n-x5, bk-2025-n-x4), puis 2021 R (bk-2021-r-x5,
 # tir à l'arc — PREMIÈRE entrée de session de RATTRAPAGE de cette banque,
-# insérée à sa place chronologique entre 2021 N et 2022 N). La notion couvre
+# insérée à sa place chronologique entre 2021 N et 2022 N), enfin 2023 R
+# (bk-2023-r-x4, le service au volley-ball — DEUXIÈME entrée de rattrapage,
+# insérée entre 2023 N et 2024 N). La notion couvre
 # donc désormais la période 2018–2025 sans lacune connue. Le 2020 N (Exercice V, chute
 # d'une bille dans un liquide visqueux) sert AUSSI de sommet de leçon (r-bac,
 # exercises.yaml, marqueur [[exercise:r-bac]] à R11 « Exercice de type bac ») :
@@ -93,6 +95,21 @@
 #     retrouver v_(i-1) À PARTIR de a_(i-1) donné, avant d'appliquer la
 #     récurrence d'Euler standard vers l'avant. Le rung 8 ne modélise
 #     jamais explicitement ce sens inverse ; ponté au point d'usage.
+#   - bk-2023-r-x4, q1 et q2 : l'origine du repère est au SOL, pas au
+#     point de lancement. Les rungs 2 et 3 placent SYSTÉMATIQUEMENT
+#     l'origine au point de lancement (« L'origine est prise au point de
+#     lancement, à l'instant t=0 », rung 2), ce qui annule les deux
+#     constantes d'intégration : ni l'équation horaire y(t) du rung 2 ni
+#     l'équation de la trajectoire y(x) du rung 3 ne portent de terme
+#     constant. Ici le point de frappe A est sur l'axe y à la hauteur
+#     h = 3 m, donc y(0) = h ≠ 0 et les deux équations demandées portent
+#     un « + h » que la leçon ne montre jamais. Le pont est fait au point
+#     d'usage, en REFAISANT la seconde primitivation avec la constante
+#     (q1) puis en montrant que cette constante traverse intacte
+#     l'élimination du temps (q2) — jamais « on admet ». Le reste de
+#     l'entrée (2ᵉ loi sans frottement, décomposition de V_0, lecture
+#     d'une hauteur à une abscisse donnée, mouvement horizontal uniforme)
+#     reste strictement dans les rungs 1 à 4.
 
 notion: pc/chute-mouvements-plans
 
@@ -1112,6 +1129,195 @@ entries:
             note: "Recurrence d'Euler standard (rung 8), a present que v_(i-1) est connu."
           - math: '\boxed{v_z(t_i) \approx -9{,}67\ \text{m.s}^{-1}}'
             note: "Coherent : la bille continue de ralentir en valeur absolue, s'approchant de v_ell = -6,7 m/s."
+
+  # ── bk-2023-r-x4 — 2023 R, Exercice 4 (Partie I) : service au volley-ball ──
+  - id: bk-2023-r-x4
+    title: "Projectile dans le champ de pesanteur : le service au volley-ball"
+    source:
+      year: 2023
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — Partie I : Etude du mouvement d'un ballon dans un champ de pesanteur uniforme"
+    bareme_total: 3.0
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), AlloSchool RS 28F, element/142484,
+        course-422/upload-85310 (Exercice 4, Partie I — service au
+        volley-ball, projectile en chute libre lancé depuis une hauteur
+        h ; barème de la partie = 3 pt = 1 + 0,5 + 0,75 + 0,75, sur les
+        5,25 pt de l'exercice complet, dont la Partie II — pendule
+        élastique horizontal, 2,25 pt — est hors périmètre de cette notion,
+        voir systemes-oscillants.md et aspects-energetiques.md ; pages 5 et
+        6 du scan, images 0005-big.jpg et 0006-big.jpg). Transcription
+        vérifiée par une passe adversariale indépendante (2026-08-23) :
+        re-fetch du scan, figure 1 et photographie re-décrites depuis le
+        dessin et non depuis l'énoncé, puis physique re-dérivée. Les
+        descriptions de figure reprises ici sont CELLES DU VÉRIFICATEUR,
+        condensées en prose sans qu'aucune valeur ni position ne bouge. La
+        lecture critique est celle de la cote D sur la figure 1 : la double
+        flèche horizontale part de la verticale abaissée DEPUIS O, pas du
+        point C (la ligne de fond du camp du serveur, marquée juste à
+        droite de O) — le repère d'origine du mouvement est donc bien O, et
+        $x_A = 0$. Physique re-dérivée et auto-cohérente : $V_0\cos\alpha =
+        16\cos 18° = 15{,}22$ m.s⁻¹ et $V_0\sin\alpha = 16\sin 18° = 4{,}94$
+        m.s⁻¹, d'où $x(t)=15{,}22\,t$ et $y(t)=-5\,t^2+4{,}94\,t+3$ ; au
+        filet ($x = D = 11$ m) la trajectoire donne $y = 3{,}96$ m $>
+        H_f = 2{,}4$ m (contrôle indépendant par les équations horaires :
+        $t = 11/15{,}22 = 0{,}723$ s $\Rightarrow y = 3{,}96$ m — même
+        valeur) ; l'instant de chute au sol fourni par l'énoncé,
+        $t_s = 1{,}41$ s, est confirmé par la résolution de $y(t)=0$
+        ($t_s = 1{,}413$ s), et $x(t_s) = 21{,}5$ m $> D + d = 20$ m : le
+        ballon retombe AU-DELÀ de la ligne de fond, la réponse à la
+        question 4 est donc « non ». SCOPE NOTE (voir l'en-tête du
+        fichier) : l'origine du repère est au SOL et non au point de
+        lancement, donc $y_0 = h \neq 0$ dans l'équation horaire comme dans
+        l'équation de la trajectoire — pontée au point d'usage (q1 et q2)
+        en refaisant la primitivation et l'élimination du temps avec cette
+        constante.
+    intro: |-
+      **Le service au volley-ball : mouvement d'un ballon dans un champ de pesanteur uniforme (examen national, session de rattrapage 2023 — Exercice 4, Partie I, 3 points).**
+
+      Lors d'un service, un joueur de volley-ball, se trouvant à une distance $D$ du filet, frappe le ballon à une hauteur $h$ du sol et lui communique une vitesse $\vec{V}_0$ faisant un angle $\alpha$ par rapport à l'horizontale.
+
+      À cet instant choisi comme origine des dates $t_0 = 0$, le centre d'inertie G du ballon est au point A (figure 1).
+
+      **Données :** $V_0 = 16\ \text{m.s}^{-1}$ ; $\alpha = 18°$ ; hauteur du filet $H_f = 2{,}4\ \text{m}$ ; distance entre le filet et la ligne de fond $d = 9\ \text{m}$ ; $D = 11\ \text{m}$ ; $h = OA = 3\ \text{m}$ ; intensité de la pesanteur $g = 10\ \text{m.s}^{-2}$.
+
+      On étudie le mouvement du centre d'inertie G du ballon dans le repère $(O, \vec{i}, \vec{j})$ lié à un référentiel terrestre considéré galiléen. L'origine O est située au niveau du sol (figure 1). On considère que le ballon est en chute libre.
+
+      **Photographie (en haut à droite, dans son propre cadre).** Photo couleur d'une joueuse de volley-ball sautant pour frapper le ballon, terrain en arrière-plan ; une flèche bleue étiquetée « Ligne de fond » (texte en gras à droite de la photo) pointe vers la ligne arrière du terrain.
+
+      **Figure 1 (schéma, dans un cadre rectangulaire).** Repère orthogonal au sol : axe vertical $y$ vers le haut à gauche (flèche + étiquette « y »), axe horizontal $x$ vers la droite (flèche + étiquette « x » à l'extrémité droite), origine O au sol ; les vecteurs unitaires sont dessinés en bleu près de O — $\vec{i}$ court le long de $x$ (étiquette sous l'axe) et $\vec{j}$ monte le long de $y$. Le point A est un **point bleu posé sur l'axe $y$** à la hauteur $h$ ; une double flèche verticale en pointillés étiquetée « h », tracée **à gauche de l'axe**, va du niveau du sol au niveau de A. Du point A part le vecteur $\vec{V}_0$ (flèche inclinée vers le haut et la droite) faisant l'angle $\alpha$ — arc marqué « $\alpha$ » — avec l'horizontale en pointillés bleus passant par A. Au sol, **juste à droite de O** (à environ un quinzième de la distance O–filet), un point étiqueté « C », marqué par un petit **tiret oblique bleu** traversant l'axe des $x$ ; c'est **sur ce point C** que pointe la flèche bleue de la légende « Ligne de fond » écrite en bas à gauche. Plus loin sur l'axe $x$, le filet : trait vertical épais, étiquette « filet » à sa gauche, surmonté d'un court trait horizontal en pointillés ; sa hauteur $H_f$ est cotée par une double flèche verticale placée **à sa droite**. Encore plus à droite, un point E sur l'axe $x$, marqué du même tiret oblique bleu, avec la légende « Ligne de fond » fléchée vers E depuis le bas à droite. **La cote $D$** (double flèche horizontale bleue en pointillés, tout en bas) va de la verticale en pointillés abaissée **depuis O** jusqu'à la verticale en pointillés du filet — elle **ne part pas de C** ; la cote « d », un cran plus haut, va de cette même verticale du filet jusqu'à E. Légende : « Figure 1 », dans le cadre en bas au centre.
+    questions:
+      - id: q1
+        part: "Partie I — Établir les équations horaires du service"
+        stem: |-
+          (1 pt) En appliquant la deuxième loi de Newton, établir les équations horaires $x(t)$ et $y(t)$ du mouvement de G.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On veut les positions, et la deuxième loi de Newton ne donne jamais directement des positions : elle donne une accélération. Le chemin est donc toujours le même — système, bilan des forces, deuxième loi, projection, puis **deux primitivations successives**, chacune fixée par une condition initiale. C'est exactement la chaîne du rung 2, avec une seule différence, sur laquelle il faut être net dès maintenant.
+
+          **Le système.** Le ballon, de centre d'inertie G, dans le référentiel terrestre supposé galiléen.
+
+          **Le bilan des forces.** L'énoncé dit « on considère que le ballon est en chute libre » : cela signifie qu'une seule force agit, le poids $\vec{P} = m\vec{g}$.
+
+          **La deuxième loi de Newton.**
+
+          $$\sum \vec{F}_{ext} = m\,\vec{a}_G \quad\Longrightarrow\quad m\vec{g} = m\,\vec{a}_G \quad\Longrightarrow\quad \vec{a}_G = \vec{g}$$
+
+          La masse se simplifie et disparaît — c'est pourquoi l'énoncé ne donne jamais la masse du ballon, et n'en a pas besoin (rung 2).
+
+          **La projection.** Sur la figure 1, $\vec{i}$ pointe vers la droite et $\vec{j}$ vers le haut. Le vecteur $\vec{g}$ est purement vertical, dirigé vers le bas :
+
+          $$a_x = 0 \qquad\qquad a_y = -g$$
+
+          **Première primitivation — les vitesses.** À $t_0 = 0$ le vecteur vitesse est $\vec{V}_0$, de norme $V_0$, faisant l'angle $\alpha$ avec l'horizontale ; on le décompose comme au rung 2 ($\alpha$ se mesure depuis l'horizontale, donc le cosinus va à l'horizontale) :
+
+          $$v_x(t) = V_0\cos\alpha \qquad\qquad v_y(t) = -g\,t + V_0\sin\alpha$$
+
+          **Seconde primitivation — les positions, et voici la différence.** Le rung 2 place systématiquement l'origine **au point de lancement**, ce qui annule les deux constantes d'intégration. Ici l'énoncé place O **au sol**, et le point de départ A est sur l'axe $y$ à la hauteur $h$ : les conditions initiales sont donc $x(0) = x_A = 0$ (A est sur l'axe des ordonnées, figure 1) mais $y(0) = y_A = h \neq 0$. On refait la primitivation avec cette constante, sans rien admettre :
+
+          $$x(t) = (V_0\cos\alpha)\,t + x(0) = (V_0\cos\alpha)\,t$$
+
+          $$y(t) = -\frac{1}{2}g\,t^2 + (V_0\sin\alpha)\,t + y(0) = -\frac{1}{2}g\,t^2 + (V_0\sin\alpha)\,t + h$$
+
+          **Les valeurs numériques.** Avec $V_0 = 16\ \text{m.s}^{-1}$, $\alpha = 18°$, $g = 10\ \text{m.s}^{-2}$, $h = 3\ \text{m}$ :
+
+          $$V_0\cos\alpha = 16 \times 0{,}9511 = 15{,}22\ \text{m.s}^{-1} \qquad V_0\sin\alpha = 16 \times 0{,}3090 = 4{,}94\ \text{m.s}^{-1}$$
+
+          $$\boxed{x(t) = 15{,}22\,t \qquad\qquad y(t) = -5\,t^2 + 4{,}94\,t + 3}$$
+
+          ($x$ et $y$ en mètres, $t$ en secondes.)
+
+          **Le piège de cette question.** C'est la constante $h$, et elle coûte cher parce qu'elle se venge deux questions plus loin. Recopier machinalement le $y(t) = (V_0\sin\alpha)t - \frac{1}{2}gt^2$ du cours, sans le terme $+h$, revient à supposer que le joueur frappe le ballon au ras du sol : la hauteur au filet tomberait alors à $0{,}96\ \text{m}$ au lieu de $3{,}96\ \text{m}$, et la question 3 conclurait — faussement — que le service est dans le filet. La règle qui protège : **la constante d'une primitivation se lit sur la figure, jamais dans le cours.** Ici la figure 1 place A sur l'axe $y$ à la hauteur $h$ ; c'est elle qui dicte $x(0) = 0$ et $y(0) = h$.
+      - id: q2
+        part: "Partie I — Passer des équations horaires à la trajectoire"
+        stem: |-
+          (0,5 pt) Déduire que l'équation de la trajectoire du mouvement de G s'écrit : $y = -\dfrac{1}{2}\dfrac{g}{(V_0\cos\alpha)^2}\,x^2 + (\tan\alpha).x + h$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Les équations horaires disent **où** est le ballon à un instant donné ; la trajectoire dit quelle **forme** il dessine, sans passer par le temps. On l'obtient en éliminant $t$ entre $x(t)$ et $y(t)$ — la méthode du rung 3. Et ce n'est pas un exercice de style : la question suivante demande la hauteur du ballon à l'abscisse du filet, donc à un $x$ connu et à un $t$ inconnu. C'est exactement l'outil qu'il faut fabriquer ici.
+
+          **On isole le temps** dans l'équation horizontale, ce qui est licite tant que $V_0\cos\alpha \neq 0$, c'est-à-dire tant que le tir n'est pas vertical (rung 3) :
+
+          $$x = (V_0\cos\alpha)\,t \quad\Longrightarrow\quad t = \frac{x}{V_0\cos\alpha}$$
+
+          **On substitue** dans l'équation verticale de la question 1 :
+
+          $$y = -\frac{1}{2}g\left(\frac{x}{V_0\cos\alpha}\right)^2 + (V_0\sin\alpha)\,\frac{x}{V_0\cos\alpha} + h$$
+
+          **On simplifie le terme du milieu.** Le $V_0$ se simplifie et il reste un rapport sinus sur cosinus, c'est-à-dire une tangente :
+
+          $$\frac{V_0\sin\alpha}{V_0\cos\alpha} = \tan\alpha$$
+
+          D'où la forme demandée :
+
+          $$\boxed{y = -\frac{1}{2}\frac{g}{(V_0\cos\alpha)^2}\,x^2 + (\tan\alpha)\,x + h}$$
+
+          **La forme numérique**, qui servira à la question suivante :
+
+          $$\frac{1}{2}\frac{g}{(V_0\cos\alpha)^2} = \frac{5}{15{,}22^2} = \frac{5}{231{,}6} = 0{,}0216 \qquad \tan 18° = 0{,}3249$$
+
+          $$y(x) = -0{,}0216\,x^2 + 0{,}3249\,x + 3$$
+
+          **Le contrôle qui rassure.** Le coefficient de $x^2$ est **négatif** : la parabole est tournée vers le bas, la forme en cloche attendue (rung 3). Et à $x = 0$ on retrouve $y = h = 3\ \text{m}$, c'est-à-dire le point A — la trajectoire part bien de là où le joueur frappe.
+
+          **Le piège de cette question.** Le carré. En élevant $t = \dfrac{x}{V_0\cos\alpha}$ au carré, c'est **tout** le dénominateur qui est élevé au carré : $(V_0\cos\alpha)^2 = V_0^2\cos^2\alpha$, et non $V_0\cos^2\alpha$ ni $V_0^2\cos\alpha$. Numériquement, $15{,}22^2 = 231{,}6$ — écrire $16^2 \times \cos 18° = 243{,}5$ fausse le coefficient de $x^2$ de près de 5 % et la hauteur au filet d'une dizaine de centimètres ($4{,}09\ \text{m}$ au lieu de $3{,}96\ \text{m}$). Second réflexe à garder : ici le $+h$ traverse la substitution **intact**, parce que c'est une constante — il ne se transforme jamais en terme en $x$.
+      - id: q3
+        part: "Partie I — Le ballon franchit-il le filet ?"
+        stem: |-
+          (0,75 pt) Montrer que le ballon passe au-dessus du filet (on néglige le rayon du ballon devant $H_f$).
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « Passer au-dessus du filet », c'est une comparaison de deux hauteurs à **une même abscisse** : celle du ballon quand il arrive à la verticale du filet, et celle du filet lui-même, $H_f = 2{,}4\ \text{m}$. On connaît l'abscisse du filet ($x = D = 11\ \text{m}$) mais pas l'instant où le ballon y arrive : c'est précisément la situation pour laquelle on a fabriqué l'équation de la trajectoire à la question 2 — elle donne $y$ à partir de $x$, sans passer par $t$.
+
+          **L'abscisse du filet.** Le joueur frappe le ballon à la distance $D$ du filet, et sur la figure 1 la cote $D$ part de la verticale abaissée **depuis O** (pas du point C). Le point A étant sur l'axe $y$, le filet est donc à l'abscisse
+
+          $$x_{filet} = D = 11\ \text{m}$$
+
+          **La hauteur du ballon à cette abscisse**, avec l'équation de la question 2 :
+
+          $$y(11) = -0{,}0216 \times 11^2 + 0{,}3249 \times 11 + 3$$
+
+          Chiffre par chiffre : $11^2 = 121$, donc $-0{,}0216 \times 121 = -2{,}61\ \text{m}$ ; puis $0{,}3249 \times 11 = 3{,}57\ \text{m}$ ; et le terme constant vaut $3\ \text{m}$.
+
+          $$y(11) = -2{,}61 + 3{,}57 + 3 = 3{,}96\ \text{m}$$
+
+          **La comparaison.**
+
+          $$\boxed{y(11) \approx 3{,}96\ \text{m} > H_f = 2{,}4\ \text{m}}$$
+
+          Le ballon passe donc au-dessus du filet, avec une marge d'environ $1{,}6\ \text{m}$.
+
+          **Le contrôle par l'autre chemin.** On peut refaire le calcul par les équations horaires de la question 1, ce qui teste les deux résultats l'un contre l'autre : le ballon atteint $x = 11\ \text{m}$ à la date $t = \dfrac{11}{15{,}22} = 0{,}723\ \text{s}$, et à cet instant $y = -5 \times 0{,}723^2 + 4{,}94 \times 0{,}723 + 3 = -2{,}61 + 3{,}57 + 3 = 3{,}96\ \text{m}$. Même valeur : l'élimination du temps n'a rien perdu. Un second contrôle, physique celui-là : le sommet de la trajectoire est atteint quand $v_y = 0$, soit $t_{sommet} = \dfrac{4{,}94}{10} = 0{,}494\ \text{s}$, pour une flèche $y_{max} = 4{,}22\ \text{m}$ (rung 4). Le ballon passe le filet à $0{,}723\ \text{s} > 0{,}494\ \text{s}$, donc **en descendant**, et à $3{,}96\ \text{m} < 4{,}22\ \text{m}$ : tout est cohérent.
+
+          **Le piège de cette question.** Prendre le point C comme origine des distances. La figure 1 marque C au sol, juste à droite de O, avec la légende « Ligne de fond » — c'est la ligne de fond du camp du **serveur**, pas un point du mouvement, et la cote $D$ ne part **pas** de lui : elle part de la verticale de O. Croire le contraire décalerait l'abscisse du filet de quelques dizaines de centimètres, sans qu'aucun calcul ne le signale. Deuxième piège, plus classique : comparer $y(11)$ à la **flèche** $y_{max} = 4{,}22\ \text{m}$ au lieu de $H_f$. La question ne demande pas si le ballon monte assez haut quelque part, mais s'il est assez haut **là où se trouve le filet** — la hauteur maximale peut très bien dépasser $H_f$ pendant que le ballon, lui, arrive dans le filet.
+      - id: q4
+        part: "Partie I — Le service est-il bon ?"
+        stem: |-
+          (0,75 pt) Le ballon atteindra le sol à l'instant $t_s = 1{,}41\ \text{s}$. Le ballon tombe-t-il entre le filet et la ligne du fond du camp adverse ? Justifier.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La question porte sur une **abscisse d'impact**, à comparer à un intervalle du terrain. L'énoncé offre la date de l'impact, $t_s = 1{,}41\ \text{s}$ — il n'y a donc aucune équation à résoudre : il suffit d'injecter cette date dans l'équation horaire **horizontale** de la question 1, celle que rien ne freine, et de situer le résultat sur le terrain.
+
+          **Le domaine autorisé.** Le camp adverse commence à la verticale du filet et finit à la ligne de fond, située à la distance $d = 9\ \text{m}$ du filet (figure 1, cote « d » du filet jusqu'à E). En abscisses comptées depuis O :
+
+          $$x_{filet} = D = 11\ \text{m} \qquad\qquad x_{fond} = D + d = 11 + 9 = 20\ \text{m}$$
+
+          Le service est bon si, et seulement si, $11\ \text{m} \leqslant x(t_s) \leqslant 20\ \text{m}$.
+
+          **L'abscisse d'impact.** Le mouvement horizontal est uniforme ($a_x = 0$, question 1) :
+
+          $$x(t_s) = 15{,}22 \times 1{,}41 = 21{,}5\ \text{m}$$
+
+          **La comparaison.**
+
+          $$\boxed{x(t_s) \approx 21{,}5\ \text{m} > x_{fond} = 20\ \text{m}}$$
+
+          **Non** : le ballon ne tombe pas entre le filet et la ligne de fond. Il retombe environ $1{,}5\ \text{m}$ **au-delà** de la ligne de fond — le service est donc faute, alors même que le franchissement du filet était largement acquis (question 3).
+
+          **Le contrôle de la date fournie.** L'énoncé donne $t_s$, mais on peut vérifier qu'il est cohérent avec nos équations, ce qui valide du même coup la question 1 : le sol est en $y = 0$, donc $-5\,t^2 + 4{,}94\,t + 3 = 0$, dont le discriminant vaut $\Delta = 4{,}94^2 + 4 \times 5 \times 3 = 24{,}4 + 60 = 84{,}4$, soit $\sqrt{\Delta} = 9{,}19$. La racine positive est $t_s = \dfrac{-4{,}94 - 9{,}19}{-10} = 1{,}413\ \text{s}$ — les $1{,}41\ \text{s}$ de l'énoncé, à l'arrondi près. (Avec $t_s = 1{,}413\ \text{s}$ on trouverait $x = 21{,}5\ \text{m}$ : la conclusion ne dépend pas de l'arrondi.)
+
+          **Le piège de cette question, et c'est le plus coûteux de l'exercice.** Compter la distance depuis le **filet** au lieu de O. La longueur parcourue horizontalement, $21{,}5\ \text{m}$, est une abscisse mesurée depuis O ; la comparer telle quelle à $d = 9\ \text{m}$ donnerait « bien au-delà », et la comparer après avoir soustrait $D$ donnerait $21{,}5 - 11 = 10{,}5\ \text{m}$, à comparer cette fois à $9\ \text{m}$ — même conclusion, mais seulement si on soustrait au **bon endroit**. Fixe l'origine une fois pour toutes (ici O, au sol, sous le joueur) et convertis **toutes** les longueurs du terrain dans ce repère avant de comparer quoi que ce soit. Deuxième piège : croire que franchir le filet suffit. Les questions 3 et 4 testent deux conditions **indépendantes** — assez haut au filet, et pas trop loin au sol — et ce service satisfait la première tout en échouant à la seconde.
 
   # ── bk-2024-n-x5 — 2024 N, Exercice 5 (Partie 1) : bille, Archimède, lecture de a0 ──
   - id: bk-2024-n-x5
