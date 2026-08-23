@@ -15,10 +15,50 @@
 # « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
 # entre apostrophes simples dans steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue) : huit entrées, couvrant sept sessions
+# NOTE ÉDITORIALE (pour la revue) : neuf entrées, couvrant huit sessions
 # « vérifié » de cette notion, sont désormais banquées : 2018 N (deux
-# sous-parties de l'Exercice III), 2019 N, 2021 N, 2021 R, 2022 N, 2023 R
-# et 2025 N.
+# sous-parties de l'Exercice III), 2019 N, 2021 N, 2021 R, 2022 N, 2023 R,
+# 2024 R et 2025 N.
+#
+# ⚑ FLAG DE JUMELAGE — bk-2024-r-x4 (2024 R) face à bk-2021-r-x4 (2021 R).
+# Les deux portent le MÊME intitulé officiel (« Réponse d'un dipôle RC à un
+# échelon de tension », partie 1 de l'Exercice 4 d'un sujet de rattrapage),
+# les deux se lisent sur une exponentielle DÉCROISSANTE, et les deux se
+# ferment par une lecture de tau à la tangente à l'origine. Décision : les
+# GARDER TOUTES LES DEUX, sans trancher seul — précédent de l'électrolyse
+# 2023-r face à 2019-n, où la loi de Faraday est posée dans l'autre sens.
+# Ce qui les distingue :
+#   (a) LE SENS DE RÉSOLUTION EST INVERSÉ. En 2021 R, E est donnée (6 V) et
+#       c'est la RÉSISTANCE qui se récolte au premier instant (R1 = E/I0 =
+#       120 Ω) ; en 2024 R, R est donnée (50 Ω) et c'est la F.É.M. qui se
+#       récolte au premier instant (E = u_R(0) = 5 V). Le même geste
+#       physique — à t = 0 le condensateur déchargé laisse toute la tension
+#       sur R — sert deux inconnues opposées. C'est exactement le motif du
+#       précédent électrolyse cité ci-dessus, et c'est la raison principale
+#       de garder les deux : un élève qui n'a vu qu'un seul sens croit avoir
+#       appris une formule, pas un mécanisme.
+#   (b) LA GRANDEUR ENREGISTRÉE DIFFÈRE. 2021 R trace i(t) et demande
+#       l'équation différentielle en i ; 2024 R trace u_R(t) et demande
+#       l'équation en u_R. Les deux équations sont homogènes (second membre
+#       nul) et proportionnelles l'une à l'autre par u_R = R.i, mais le
+#       chemin d'établissement n'est pas le même : 2021 R dérive la maille
+#       puis substitue du_C/dt = i/C ; 2024 R dérive la maille PUIS doit
+#       encore passer par la loi d'Ohm i = u_R/R, et son piège de signe
+#       (u_C et u_R varient en sens opposés) n'existe pas dans l'autre.
+#   (c) AUCUN RECOUPEMENT NUMÉRIQUE. E = 5 V / R = 50 Ω / C = 0,10 µF /
+#       tau = 5 µs ici, contre E = 6 V / R1 = 120 Ω / C = 100 µF /
+#       tau = 12 ms là-bas — six ordres de grandeur d'écart sur C, trois sur
+#       tau. Les pièges de lecture graphique portent d'ailleurs sur des
+#       choses différentes : chiffrage un trait sur deux et bord de cadre
+#       au-delà du dernier nombre en 2021 R ; préfixe µs (facteur mille) et
+#       repère « tau » non chiffré placé AVANT le premier nombre imprimé en
+#       2024 R.
+#   (d) LA DENSITÉ DIFFÈRE. 2021 R fait 4 questions / 2,0 pt et inclut la
+#       vérification de la solution exponentielle (méthode du physicien,
+#       rung 2) ; 2024 R fait 3 questions / 1,5 pt et ne la demande jamais —
+#       il donne l'équation à établir puis passe directement aux lectures.
+# À l'arbitrage de l'owner s'il préfère n'en garder qu'une sur la page ; la
+# recommandation de l'auteur est de garder les deux, pour (a).
 #
 # Le 2023 R (Exercice 3, section 1 — échelon de tension lu sur la courbe
 # q(t)) est la DEUXIÈME entrée de session rattrapage de cette banque. Elle
@@ -129,6 +169,27 @@
 #     démonstration est refaite en une ligne au point d'usage à partir de
 #     q(t) = Q(1 - e^(-t/tau)) : pente initiale Q/tau, donc la tangente
 #     atteint le palier Q en t = tau.
+#   - bk-2024-r-x4, q1 : l'équation différentielle est demandée en u_R(t),
+#     la tension aux bornes du CONDUCTEUR OHMIQUE. Le rung 1 ne l'établit
+#     qu'en u_C, par substitution directe dans la maille — substitution qui
+#     ne suffit pas ici, puisque u_C ne s'exprime pas avec u_R sans passer
+#     par le temps. Le geste requis est la DÉRIVATION de la loi des mailles
+#     par rapport au temps (dE/dt = 0), puis du_C/dt = i/C et enfin la loi
+#     d'Ohm i = u_R/R. Même pont que bk-2021-r-x4, q2, avec une substitution
+#     de plus (la loi d'Ohm) et un piège de signe propre : u_C et u_R varient
+#     en sens opposés puisque leur somme est constante. Démonstration refaite
+#     au point d'usage, et recoupée par une seconde route (u_C = E - u_R)
+#     dans le raisonnement de la question 1 — jamais « on admet ».
+#   - bk-2024-r-x4, q3 : lecture de tau par la tangente à l'origine sur une
+#     exponentielle DÉCROISSANTE (u_R(t)), où la tangente coupe l'axe des
+#     abscisses — c'est-à-dire l'asymptote u_R = 0 — en t = tau. Le rung 3
+#     n'énonce et ne démontre la méthode que sur la CROISSANTE u_C(t)
+#     (tangente coupant l'asymptote u_C = E). Même propriété, démonstration
+#     re-faite en une ligne au point d'usage à partir de u_R = E.e^(-t/tau) :
+#     pente initiale -E/tau, donc la tangente atteint 0 en t = tau. Même pont
+#     que bk-2021-r-x4, q4, sur une autre grandeur. La méthode des 63 %
+#     (rung 3) est de même retournée en « il reste 37 % à t = tau » pour le
+#     contrôle, avec sa justification écrite au point d'usage.
 #   - bk-2023-r-x3, q3 : la f.é.m. E n'est PAS donnée numériquement par le
 #     sujet (« générateur de tension de force électromotrice E », sans
 #     valeur). Elle doit être récoltée sur la figure avant toute
@@ -848,6 +909,155 @@ entries:
           Même valeur par un chemin qui n'utilise pas $E$ : le résultat est verrouillé.
 
           **Le piège de cette question.** Il porte un nom — confondre l'énergie EMMAGASINÉE avec l'énergie FOURNIE. Le générateur a débité la charge $Q$ sous la tension constante $E$, donc il a fourni $W = Q\,E = 120\times10^{-6}\times12 = 1{,}44\times10^{-3}\ \text{J}$, exactement le DOUBLE de $E_e$. L'autre moitié n'a pas disparu : elle a été dissipée par effet Joule dans $R$ pendant toute la charge (rung 4). Répondre $1{,}44\ \text{mJ}$, c'est oublier le facteur $\dfrac{1}{2}$ — et ce facteur n'est pas une décoration, il est la moitié perdue en chaleur. Piège jumeau, purement numérique : le carré porte sur la tension seule, pas sur la capacité ; garder $C$ en microfarads en croyant que « les µ se compensent » donne $7{,}2\times10^{2}$ au lieu de $7{,}2\times10^{-4}$. Convertis en farads avant de multiplier.
+
+  # ── bk-2024-r-x4 — 2024 R, Exercice 4 (partie 1) : échelon RC lu sur u_R(t), tangente à l'origine ──
+  # FLAG DE JUMELAGE avec bk-2021-r-x4 (2021 R) — voir la note éditoriale en
+  # tête de fichier : même intitulé officiel, sens de résolution INVERSE.
+  - id: bk-2024-r-x4
+    title: "Dipôle RC : constante de temps par la tangente à l'origine"
+    source:
+      year: 2024
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — 1. Réponse d'un dipôle RC à un échelon de tension"
+    bareme_total: 1.5
+    duration_min: 9
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/145769, scan
+        course-422/upload-87471, pages 4 et 5 sur 6 (Exercice 4, partie 1 —
+        réponse d'un dipôle RC à un échelon de tension ; barème de la partie
+        = 1,5 pt (0,5 + 0,25 + 0,75) sur les 3,5 pt de l'exercice complet,
+        dont la partie 2 — oscillations libres dans un circuit RLC série,
+        transcrite sous rlc-serie.md). Transcription vérifiée par une passe
+        adversariale indépendante (2026-08-23) : re-fetch des 6 pages du
+        scan, figures re-décrites depuis le dessin et non depuis l'énoncé,
+        puis physique re-dérivée. INCIDENT DE TRANSCRIPTION levé par cette
+        passe et consigné dans docs/sujets/_incoming/pc-spc-2024-r.md : le
+        fichier de transcription qui portait ce nom contenait en réalité le
+        sujet 2023 (avec un faux avertissement « discordance d'année ») ; la
+        page 1 du scan, relue au zoom x3, porte sans ambiguïté « الدورة
+        الاستدراكية 2024 » et la couverture annonce CINQ exercices, ce que le
+        contenu précédent ne faisait pas. Le fichier a été entièrement
+        réécrit. Figure 2 mesurée au pixel : traits majeurs tous les 5 µs en
+        abscisse et 1 V en ordonnée, 10 sous-divisions fines par division
+        majeure ; chiffrages imprimés « 0 », « τ », « 10 » et « 20 » sur
+        l'axe des temps et « 1 » et « 2 » seulement sur l'axe des tensions,
+        alors que le cadre va jusqu'à 30 µs et 5 V. Départ mesuré à
+        u_R(0) = 4,96 V, c'est-à-dire le bord supérieur du cadre, soit 5,0 V ;
+        tangente (T) coupant l'axe des temps au trait majeur repéré « τ »,
+        mesure 4,92 µs pour un pas de 11,83 px/µs, soit 5 µs. Recoupements :
+        E = u_R(0) = 5 V ; C = τ/R = 5×10⁻⁶/50 = 1,0×10⁻⁷ F = 0,10 µF, valeur
+        EXACTE que la question 1-2-2 demande de vérifier ; contrôle hors
+        traits de grille — à 6,5 µs on lit 1,37 V et la loi 5·e^(−t/5) prédit
+        1,36 V. NB : l'incohérence d'échelle signalée par le vérificateur sur
+        la figure 4 du sujet (facteur ≈ 60 sur l'axe des tensions de u_R en
+        oscillations libres) porte UNIQUEMENT sur la partie 2, hors périmètre
+        de cette entrée ; les figures 1 et 2 sont cohérentes entre elles et
+        avec les données. Recoupement avec bk-2021-r-x4 (2021 rattrapage,
+        même intitulé officiel) : aucun sur les valeurs — E = 5 V / R = 50 Ω /
+        C = 0,10 µF / τ = 5 µs ici, contre E = 6 V / R1 = 120 Ω / C = 100 µF /
+        τ = 12 ms là-bas, et le sens de résolution est inversé (voir le flag
+        de jumelage en tête de fichier).
+    intro: |-
+      **Réponse d'un dipôle RC à un échelon de tension (examen national, session de rattrapage 2024 — Exercice 4, partie 1, 1,5 point).**
+
+      Les circuits $RC$, $RLC$,… sont utilisés dans les montages électroniques de plusieurs appareils électriques et électroniques. On se propose, dans cet exercice, d'étudier la réponse d'un dipôle RC à un échelon de tension, et les oscillations libres dans un circuit RLC série.
+
+      Le montage électrique schématisé sur la figure 1 comporte : un générateur idéal de tension de force électromotrice $E$ ; un condensateur de capacité $C$ initialement déchargé ; un conducteur ohmique de résistance $R = 50\ \Omega$ ; une bobine d'inductance $L = 20\ \text{mH}$ et de résistance $r$ ; un interrupteur $K$ à double position.
+
+      **1 — Réponse d'un dipôle RC à un échelon de tension.** À un instant choisi comme origine des dates $t_0 = 0$ on met l'interrupteur $K$ en position (1). Un système d'acquisition informatisé adéquat permet de suivre l'évolution temporelle de la tension $u_R(t)$ aux bornes du conducteur ohmique (figure 2). Dans cette figure, $(T)$ représente la tangente à la courbe au point d'abscisse $t_0 = 0$ et $\tau$ la constante de temps du circuit.
+
+      **Figure 1 (schéma).** Un cadre rectangulaire. Branche de gauche : le générateur, symbolisé par un cercle traversé par le fil, avec une flèche verticale montante tracée à sa gauche et étiquetée « $E$ ». Branche du haut : partant du coin supérieur gauche vers la droite, un fil portant une flèche de courant étiquetée « $i$ » (orientée vers la droite) et se terminant par le plot (1) ; à droite, le plot (2) ; entre les deux, la lame de l'interrupteur $K$, dessinée verticale au centre et étiquetée « $K$ » au-dessus, son pivot posé sur la branche médiane verticale. Branche médiane verticale, du pivot de $K$ vers le bas : d'abord le condensateur $C$ (deux armatures horizontales, étiquette « $C$ » à droite), avec la tension $u_C$ fléchée vers le haut à sa gauche ; plus bas le conducteur ohmique $R$ (rectangle vertical, étiquette « $R$ » à droite), avec la tension $u_R$ fléchée vers le haut à sa gauche ; puis le fil rejoint le rail du bas. Branche de droite : du plot (2), le fil descend vers la bobine, dessinée en spires verticales et étiquetée « $(L,r)$ » à droite, puis rejoint le rail du bas. Le condensateur est un condensateur ordinaire : $C$ n'est pas ajustable dans ce sujet. Légende « Figure 1 ».
+
+      **Figure 2 (courbe).** $u_R\ (\text{V})$ en ordonnée, $t\ (\mu\text{s})$ en abscisse. Quadrillage à double graduation : traits majeurs tous les $5\ \mu\text{s}$ en abscisse et tous les $1\ \text{V}$ en ordonnée, avec dix sous-divisions fines par division majeure (donc $0{,}5\ \mu\text{s}$ et $0{,}1\ \text{V}$ par sous-carreau). Les seuls chiffrages imprimés sont « $0$ » à l'origine, « $\tau$ », « $10$ » et « $20$ » sur l'axe des temps, et « $1$ » et « $2$ » sur l'axe des tensions — rien d'autre. Le cadre va bien au-delà de ces chiffrages : il s'étend jusqu'à $t = 30\ \mu\text{s}$ (six divisions majeures) et monte jusqu'à $u_R = 5\ \text{V}$ (cinq divisions majeures), le bord supérieur du cadre étant exactement le niveau $5\ \text{V}$. Courbe : exponentielle décroissante partant du sommet du cadre, donc de $u_R(0) = 5{,}0\ \text{V}$, et tendant vers $0$ en fin de cadre. La tangente $(T)$ à l'origine est tracée en trait fin, étiquetée « $(T)$ » à gauche sous elle, et coupe l'axe des temps exactement au trait majeur repéré « $\tau$ ». Légende « Figure 2 ».
+    questions:
+      - id: q1
+        part: "1 — Établir le modèle, cette fois en u_R(t)"
+        stem: |-
+          **1-1-** (0,5 pt) En utilisant la loi d'additivité des tensions, montrer que l'équation différentielle vérifiée par la tension $u_R(t)$ s'écrit sous la forme : $\dfrac{du_R(t)}{dt} + \dfrac{1}{RC}u_R(t) = 0$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On veut une équation qui ne contienne qu'UNE seule fonction inconnue du temps. Le circuit en offre trois à la fois — $u_C$, $u_R$ et $i$ — reliées entre elles. C'est le mécanisme du rung 1 de la leçon, à ceci près que l'inconnue demandée ici n'est ni $u_C$ ni la charge : c'est la tension aux bornes du CONDUCTEUR OHMIQUE, celle que le système d'acquisition a réellement enregistrée.
+
+          **Le pont à faire.** Le rung 1 n'établit l'équation qu'en $u_C$, et il l'obtient en substituant directement dans la maille. Ici la substitution directe ne suffit pas : $u_C$ ne s'exprime pas avec $u_R$ sans passer par le temps. Le geste qui débloque est court et il vaut d'être ajouté à ton répertoire — **on dérive la loi des mailles par rapport au temps**. C'est légitime parce que la maille est vraie à CHAQUE instant, pas seulement à un instant : deux fonctions du temps égales ont des dérivées égales.
+
+          Interrupteur en position (1) : la maille active est celle du générateur, de $R$ et de $C$. Loi d'additivité des tensions, en convention récepteur :
+
+          $$E = u_R + u_C$$
+
+          On dérive membre à membre par rapport à $t$. Le générateur est idéal et $E$ est une constante, donc sa dérivée est nulle :
+
+          $$0 = \frac{du_R}{dt} + \frac{du_C}{dt}$$
+
+          Reste à exprimer $\dfrac{du_C}{dt}$ avec $u_R$. Les deux relations du rung 1 le donnent : $i = \dfrac{dq}{dt}$ et $q = C\,u_C$, donc $i = C\dfrac{du_C}{dt}$, c'est-à-dire
+
+          $$\frac{du_C}{dt} = \frac{i}{C}$$
+
+          et la loi d'Ohm remplace le courant par la tension cherchée, $i = \dfrac{u_R}{R}$ :
+
+          $$\frac{du_C}{dt} = \frac{u_R}{RC}$$
+
+          On reporte dans la maille dérivée :
+
+          $$\boxed{\frac{du_R}{dt} + \frac{1}{RC}\,u_R = 0}$$
+
+          **Le contrôle qui rassure.** Le même résultat s'obtient sans jamais dériver la maille, par un chemin entièrement différent : de $E = u_R + u_C$ on tire $u_C = E - u_R$, donc $\dfrac{du_C}{dt} = -\dfrac{du_R}{dt}$ ; alors $u_R = R\,i = R\,C\dfrac{du_C}{dt} = -RC\dfrac{du_R}{dt}$, qui se range exactement en $\dfrac{du_R}{dt} + \dfrac{u_R}{RC} = 0$. Deux routes indépendantes, une seule équation : elle est juste.
+
+          **Le piège de cette question.** Il est dans le signe, et il est invisible si on va vite. Beaucoup écrivent $i = C\dfrac{du_R}{dt}$ « par analogie », alors que la relation du rung 1 porte sur la tension du CONDENSATEUR, $i = C\dfrac{du_C}{dt}$, et que $u_C$ et $u_R$ varient en sens opposés puisque leur somme est constante. Cette confusion donne $\dfrac{du_R}{dt} - \dfrac{u_R}{RC} = 0$, dont la solution est une exponentielle CROISSANTE $e^{+t/RC}$ — une tension qui exploserait, alors que la figure 2 montre une décroissance. Piège jumeau : s'étonner de la disparition de $E$ et le rajouter au second membre. Rien ne s'est perdu — dériver une constante l'efface, voilà tout ; et cette différence a un sens physique, car sans second membre la solution tend vers zéro, ce qui est bien le comportement de $u_R$, alors que $u_C$, elle, tendait vers $E$.
+      - id: q2
+        part: "1-2 — Lire E au tout premier instant"
+        stem: |-
+          **1-2-1-** (0,25 pt) En s'aidant du graphe de la figure 2, déterminer la valeur de $E$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé ne donne aucune valeur numérique à $E$ — seulement « un générateur idéal de tension de force électromotrice $E$ ». Il faut donc la récolter sur la figure. Or la figure ne trace pas $u_C$, elle trace $u_R$ : il faut trouver l'instant où la maille livre $E$ directement à partir de $u_R$, et cet instant est $t_0 = 0$.
+
+          Le condensateur est **initialement déchargé**, et sa tension est continue (rung 2) : elle ne peut pas sauter à la fermeture du circuit.
+
+          $$u_C(0^+) = u_C(0^-) = 0$$
+
+          La loi d'additivité des tensions, à cet instant précis, se réduit alors à une seule tension :
+
+          $$E = u_R(0^+) + u_C(0^+) = u_R(0^+)$$
+
+          C'est le mécanisme du rung 1 regardé à son tout premier instant : tant que le condensateur est vide, il ne s'oppose encore à rien et toute la force électromotrice tombe sur le conducteur ohmique. On lit donc $E$ sur l'ordonnée de départ de la courbe, qui part du bord supérieur du cadre :
+
+          $$\boxed{E = u_R(0) = 5{,}0\ \text{V}}$$
+
+          **Le contrôle qui rassure.** $R$ est donnée, donc on peut prédire le courant de départ : $i(0^+) = \dfrac{E}{R} = \dfrac{5}{50} = 0{,}1\ \text{A} = 100\ \text{mA}$ — un ordre de grandeur banal pour un montage de laboratoire. Rien ne cloche.
+
+          **Le piège de cette question.** Il est double, et les deux moitiés sont sur l'axe des ordonnées. D'abord le réflexe du palier : dans la leçon, $E$ se lit sur l'asymptote horizontale — mais c'est l'asymptote de $u_C$, pas celle de $u_R$. Ici la courbe tracée DÉCROÎT vers zéro : lire $E$ « sur le palier » donnerait $E = 0$. Sur une courbe de $u_R$, $E$ est la valeur de DÉPART, jamais la valeur finale. Ensuite le chiffrage : l'axe des tensions ne porte imprimés que « $1$ » et « $2$ », alors que le cadre monte jusqu'à $5\ \text{V}$. Répondre $2\ \text{V}$ parce que $2$ est le dernier nombre écrit, c'est laisser l'imprimeur décider à ta place. Le trait majeur vaut $1\ \text{V}$ : on compte les traits majeurs jusqu'au bord supérieur du cadre, il y en a cinq.
+      - id: q3
+        part: "1-2 — Lire τ sur la tangente, puis vérifier C"
+        stem: |-
+          **1-2-2-** (0,75 pt) En s'aidant du graphe de la figure 2, vérifier que $C = 0{,}10\ \mu\text{F}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le mot « vérifier » est un ordre : la valeur $0{,}10\ \mu\text{F}$ ne doit surtout pas être réutilisée comme donnée, il faut la RETROUVER par un chemin indépendant. Or la seule grandeur du circuit déjà connue est $R = 50\ \Omega$, et la seule grandeur mesurable sur la figure 2 qui contienne la capacité est la constante de temps $\tau = RC$ — le groupement identifié à la question 1, où il apparaît au dénominateur. Le chemin est donc forcé : lire $\tau$ sur le graphe, puis en déduire $C$.
+
+          **Le pont à faire.** Le rung 3 démontre la méthode de la tangente à l'origine sur la courbe CROISSANTE $u_C(t)$, où la tangente coupe l'asymptote $u_C = E$ en $t = \tau$. Ici la courbe décroît vers zéro, et la tangente coupe l'axe des abscisses — la démonstration se refait en une ligne, à l'identique. La solution de l'équation de la question 1 est $u_R(t) = E\,e^{-t/\tau}$, donc la pente à l'origine vaut
+
+          $$\frac{du_R}{dt}(0) = -\frac{E}{\tau}$$
+
+          La tangente est donc la droite $y = E - \dfrac{E}{\tau}\,t$, et elle atteint $y = 0$ quand $\dfrac{E}{\tau}\,t = E$, c'est-à-dire en
+
+          $$t = \tau$$
+
+          **La lecture.** Sur la figure 2, la tangente $(T)$ coupe l'axe des temps exactement au trait majeur repéré « $\tau$ ». Les traits majeurs valent $5\ \mu\text{s}$ (les chiffrages $10$ et $20$ tombent sur le deuxième et le quatrième), et ce repère est le PREMIER trait majeur après l'origine :
+
+          $$\tau = 5\ \mu\text{s} = 5\times10^{-6}\ \text{s}$$
+
+          **La capacité.** On inverse $\tau = RC$, avec $R = 50\ \Omega$ donné dans l'énoncé :
+
+          $$C = \frac{\tau}{R} = \frac{5\times10^{-6}}{50} = 1{,}0\times10^{-7}\ \text{F}$$
+
+          $$\boxed{C = 1{,}0\times10^{-7}\ \text{F} = 0{,}10\ \mu\text{F}}$$
+
+          La valeur annoncée est retrouvée exactement : la lecture $\tau = 5\ \mu\text{s}$ était donc juste.
+
+          **Le contrôle qui rassure.** Deux recoupements gratuits sur la même figure. D'abord la méthode des $63\ \%$ retournée (rung 3) : sur une décroissance, à $t = \tau$ il reste $37\ \%$ de la valeur de départ, soit $u_R(\tau) = 5 \times e^{-1} \approx 5 \times 0{,}37 = 1{,}8\ \text{V}$ — et c'est bien la hauteur du tracé au repère $\tau$. Ensuite la fin du régime transitoire : elle est atteinte vers $5\tau = 25\ \mu\text{s}$, et la courbe rejoint effectivement zéro juste avant le bord droit du cadre, à $30\ \mu\text{s}$. Trois lectures indépendantes qui se confirment : c'est le meilleur signal qu'on puisse avoir en copie.
+
+          **Le piège de cette question.** Il est dans le préfixe, et il coûte un facteur mille. L'axe des temps est en MICROsecondes : $\tau = 5\ \mu\text{s} = 5\times10^{-6}\ \text{s}$, et non $5\times10^{-3}\ \text{s}$. Traiter les $\mu\text{s}$ comme des $\text{ms}$ donne $C = \dfrac{5\times10^{-3}}{50} = 1\times10^{-4}\ \text{F} = 100\ \mu\text{F}$ au lieu de $0{,}10\ \mu\text{F}$ — mille fois trop, et l'erreur ne se dénonce pas toute seule si on ne regarde pas l'ordre de grandeur. Deuxième piège, sur le chiffrage : le repère « $\tau$ » est imprimé sur le PREMIER trait majeur, et les nombres $10$ et $20$ n'apparaissent que sur le deuxième et le quatrième ; lire $\tau = 10\ \mu\text{s}$ parce que $10$ est le premier nombre écrit double la réponse, $C = 0{,}20\ \mu\text{F}$. Compte toujours le pas de division entre deux traits CHIFFRÉS — ici $(20 - 10)/2 = 5\ \mu\text{s}$ par trait majeur — avant de lire un repère non chiffré. Piège jumeau, celui de toutes les tangentes : c'est la DROITE $(T)$ qui coupe l'axe des temps, pas la courbe — la courbe, elle, n'atteint jamais vraiment zéro, elle s'en approche seulement, et il lui faut environ $5\tau$ pour que ce soit indiscernable.
 
   # ── bk-2025-n-x1 — 2025 N, Exercice 3 (Partie 1) : charge par générateur de courant, loi horaire linéaire ──
   - id: bk-2025-n-x1

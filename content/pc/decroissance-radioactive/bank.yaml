@@ -7,14 +7,18 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les SIX entrées sont des transcriptions FIDÈLES des six
-# entrées « vérifié » de docs/sujets/pc/decroissance-radioactive.md : les
-# deux premières (2019, 2021 — bk-2019-n-x2, bk-2021-n-x3) par re-fetch
-# AlloSchool + diff indépendant (agent-vérificateur, 2026-07-11) ; les quatre
-# suivantes (2022, 2023, 2024, 2025 — bk-2022-n-x2, bk-2023-n-x2,
-# bk-2024-n-x3, bk-2025-n-x2) par passe(s) de vérification adversariale
-# indépendante (agent-vérificateur-adversarial / -tiers, 2026-08-06/07,
-# diff caractère par caractère) — c'est la SEULE source de stems +
+# exercises.yaml). Les HUIT entrées sont des transcriptions FIDÈLES d'entrées
+# « vérifié » du corpus docs/sujets. SIX viennent de
+# docs/sujets/pc/decroissance-radioactive.md : les deux premières (2019, 2021
+# — bk-2019-n-x2, bk-2021-n-x3) par re-fetch AlloSchool + diff indépendant
+# (agent-vérificateur, 2026-07-11) ; les quatre suivantes (2022, 2023, 2024,
+# 2025 — bk-2022-n-x2, bk-2023-n-x2, bk-2024-n-x3, bk-2025-n-x2) par passe(s)
+# de vérification adversariale indépendante (agent-vérificateur-adversarial /
+# -tiers, 2026-08-06/07, diff caractère par caractère). Les DEUX entrées de
+# session de RATTRAPAGE (bk-2021-r-x3, bk-2024-r-x3) viennent de la campagne
+# rattrapage et de son sas docs/sujets/_incoming/ (pc-spc-2021-r.md,
+# pc-spc-2024-r.md), chacune vérifiée par une passe adversariale indépendante
+# (2026-08-22 et 2026-08-23) — c'est la SEULE source de stems +
 # provenance pour ce fichier ; aucun autre sujet n'est inventé. Raisonnement
 # rédigé à la voix experte de la maison sur 100 % des questions, en citant
 # les rungs R1–R5 de la leçon (lesson.md) là où c'est naturel ; barème
@@ -76,6 +80,65 @@
 #    déterminée ici par inspection directe de la convention (Z en abscisse,
 #    N en ordonnée) déjà fixée par la figure vallee-stabilite du R1 de cette
 #    leçon — ancrée dans les rungs, pas une invention.
+# 7. bk-2021-r-x3 (phosphore 32, Exercice 3, 2021 rattrapage) : première
+#    entrée de session de rattrapage de cette banque — aucun recoupement
+#    thématique, l'exercice est entièrement dans le domaine de cette notion
+#    (équation β⁻, exploitation de ln(N) = f(t), demi-vie, activité).
+# 8. bk-2024-r-x3 (famille radioactive du bismuth 212, Exercice 3, 2024
+#    rattrapage) — trois points à arbitrer en revue :
+#
+#    a. BARÈME. Le tableau de classement du fichier source alloue 1,5 pt à
+#       decroissance-radioactive et 0,5 pt (la question 2-2, énergie libérée
+#       par défaut de masse) à noyaux-masse-energie. L'exercice est
+#       néanmoins transcrit EN ENTIER ici — même disposition que les notes
+#       1, 3 et 6 — parce que le fichier source ne le scinde pas en parties
+#       de portées distinctes (contrairement au cas 2023 de la note 4) :
+#       retirer 2-2 laisserait un trou dans la numérotation 2-1 / 2-2 / 2-3
+#       et rendrait les masses des Données inutilisables. `bareme_total`
+#       porte donc 2,0 pt, la somme réelle des tags de barème affichés sur
+#       les cinq questions (0,25+0,25+0,25+0,5+0,75), pour que le total de
+#       la carte soit cohérent avec ce que l'élève lit dessus. Si l'owner
+#       préfère l'allocation par notion, c'est une ligne à changer — mais
+#       alors les tags par question ne somment plus au total affiché.
+#
+#    b. FLAG DE JUMELAGE avec bk-2024-n-x3 (iridium 192). Les deux entrées
+#       sont de la MÊME année (2024), portent le MÊME label « Exercice 3 »
+#       et la même filière SPC — seule la session les sépare dans le badge
+#       de provenance (« Normale » / « Rattrapage »). Ce ne sont pourtant
+#       pas des doublons, et les deux méritent d'être gardées : bk-2024-n-x3
+#       est un exercice d'APPLICATION NUMÉRIQUE sur une désintégration
+#       unique (composition du noyau, une équation β⁻, a = λN, N_d après une
+#       durée non multiple de la demi-vie) ; bk-2024-r-x3 est un exercice de
+#       LECTURE DE DIAGRAMME et de DÉMONSTRATION (une chaîne de trois
+#       désintégrations lue dans le plan (Z, A), une désintégration α, et
+#       l'établissement littéral d'une expression de t_1/2 à partir du
+#       nombre de noyaux FILS). Ils n'entraînent pas le même geste. Ils sont
+#       en outre les deux seules entrées à partager un tag « Exercice 3 » de
+#       2024 : c'est le badge de session qui les distingue sur la carte, et
+#       il est student-visible (BANK-SPEC §3.1), donc la confusion est
+#       levée à l'écran. Précédent invoqué : l'électrolyse 2023-r face à
+#       2019-n, où la loi de Faraday est posée dans l'autre sens.
+#
+#    c. SCOPE NOTES — deux outils manquent au corps enseigné et sont pontés
+#       au point d'usage, jamais admis :
+#       - Le DIAGRAMME DE FAMILLE RADIOACTIVE dans le plan (Z en abscisse,
+#         A en ordonnée) n'est pas un rung : le R1 ne dessine que la vallée
+#         de stabilité, et dans l'autre convention (Z en abscisse, N en
+#         ordonnée). Le raisonnement de q1-1 ouvre donc en re-posant
+#         explicitement la convention des axes de CE diagramme, puis en
+#         montrant que chaque flèche se relit comme une équation via les
+#         lois de Soddy du R2 — la règle de lecture est redémontrée, pas
+#         récitée. La notion de « famille radioactive » elle-même est
+#         définie par l'énoncé et n'a pas besoin d'être pontée.
+#       - L'ÉQUIVALENCE MASSE-ÉNERGIE de la question 2-2 relève de
+#         noyaux-masse-energie (non développée en R1–R5) : le raisonnement
+#         le SIGNALE en ouverture, puis refait la démonstration complète
+#         (défaut de masse par soustraction, conversion par 1 u = 931,5
+#         MeV/c²). Même disposition que les notes 1, 3 et 6.
+#       Le troisième outil, lui, EST dans le corps enseigné : « le nombre de
+#       noyaux fils produits vaut N_0 − N(t) » est écrit noir sur blanc au
+#       R3 de lesson.md, et c'est exactement la clé de la question 2-3 — le
+#       raisonnement y renvoie plutôt que de le reposer.
 
 notion: pc/decroissance-radioactive
 
@@ -274,7 +337,7 @@ entries:
           - math: '\boxed{t_{max} = \frac{\ln(1{,}43)}{7{,}88\times10^{-3}} \approx \frac{0{,}357}{7{,}88\times10^{-3}} \approx 45\ \text{ans}}'
             note: "Application numérique avec λ en ans⁻¹ : le résultat sort directement en années."
 
-  # ── bk-2022-n-x2 — 2022 N, Exercice 2 (Partie 2) : désintégration de l'iode 131 ──
+  # ── bk-2021-r-x3 — 2021 R, Exercice 3 : désintégration du phosphore 32 ──
   - id: bk-2021-r-x3
     title: "Désintégration du phosphore 32 : équation β⁻, exploitation de ln(N) = f(t), demi-vie et activité"
     source:
@@ -426,6 +489,7 @@ entries:
           $$\boxed{a_1 \approx 2{,}6\times10^{7}\ \text{Bq}}$$
 
           **L'erreur qui coûte le plus cher ici.** Oublier la conversion des jours en secondes donne une activité $86\,400$ fois trop grande, soit $2{,}3\times10^{12}$ — un nombre qui n'a aucun sens pour une dose injectée à un patient. Quand une activité sort en becquerels, vérifie toujours que $\lambda$ est bien en $\text{s}^{-1}$.
+  # ── bk-2022-n-x2 — 2022 N, Exercice 2 (Partie 2) : désintégration de l'iode 131 ──
   - id: bk-2022-n-x2
     title: "Désintégration de l'iode 131 : équation β⁻, énergie libérée et lecture graphique de la demi-vie"
     source:
@@ -731,6 +795,209 @@ entries:
             note: "La propriété N0/2^n du R4 se généralise à un nombre non entier de demi-vies via cette même forme en puissance de 2."
           - math: '\boxed{N_d = N_0 - N(\Delta t) \approx 0{,}9989\,N_0}'
             note: "Presque tous les noyaux initiaux ont désintégré : à près de 10 demi-vies écoulées, on dépasse le seuil « moins de 0,1 % restant » signalé au R4 — la source est pratiquement épuisée au bout de deux ans, ce qui est précisément le sens du « commenter » demandé."
+
+  # ── bk-2024-r-x3 — 2024 R, Exercice 3 : famille radioactive du bismuth 212 ──
+  - id: bk-2024-r-x3
+    title: "Famille radioactive : lois de Soddy, identification de nucléide et demi-vie"
+    source:
+      year: 2024
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — Désintégration en chaine"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/145769,
+        scan course-422/upload-87471, page 4/6 (Exercice 3 —
+        « Désintégration en chaine » ; barème de l'exercice complet 2,0 pt,
+        recompté question par question : 0,25 + 0,25 + 0,25 + 0,5 + 0,75).
+        Transcription vérifiée par une passe adversariale indépendante
+        (2026-08-23, docs/sujets/_incoming/pc-spc-2024-r.md, statut
+        « vérifié ») : re-fetch des six pages du scan, en-tête relu au zoom
+        (le fichier source porte un INCIDENT DE TRANSCRIPTION documenté —
+        son contenu antérieur était en réalité le sujet 2023 ; l'année 2024
+        de l'en-tête a été reconfirmée sur l'image), et diagramme
+        re-décrit nœud par nœud, chaque pointe de flèche relue au zoom ×8.
+        Physique re-dérivée indépendamment ici : somme des produits
+        207,982019 + 4,002603 = 211,984622 u, donc |Δm| = 6,664×10⁻³ u et
+        E = 6,664×10⁻³ × 931,5 = 6,2075 MeV ≈ 6,21 MeV ; N0 − N1 =
+        2,3916×10²⁰, N0/(N0−N1) = 1,18749, ln = 0,17184, t1/2 =
+        15 × 0,693 / 0,17184 = 60,49 min ≈ 60,5 min (60,50 min avec ln2
+        non arrondi). Recoupement externe : la demi-vie réelle du Bi-212
+        est 60,55 min, et 6,21 MeV est bien l'énergie de sa transition α —
+        les deux résultats tombent juste, aucun arrondi de complaisance.
+        RÉSERVE DE PHYSIQUE (authoring-side, hors énoncé) : le Bi-212 réel
+        est un émetteur MIXTE (≈ 36 % α vers le Tl-208, ≈ 64 % β⁻ vers le
+        Po-212) ; l'énoncé et le diagramme ne montrent que la voie α et
+        supposent donc implicitement que tout bismuth désintégré donne un
+        thallium — c'est cette hypothèse qui rend N1 = N0 − N(t1) exact.
+        Non signalé à l'élève : le sujet ne l'ouvre pas, et la valeur
+        obtenue reste la demi-vie totale correcte du nucléide.
+    intro: |-
+      **Désintégration en chaine (examen national, session de rattrapage 2024 — Exercice 3, 2 points).**
+
+      Suite à des désintégrations en chaine, un nucléide peut se transformer en d'autres jusqu'à obtention d'un nucléide stable, formant ainsi une famille radioactive.
+
+      Le diagramme ci-dessous donne quelques nucléides appartenant à une famille radioactive.
+
+      **Données.**
+      - Masses des noyaux : $m(^{212}_{83}\text{Bi}) = 211{,}991286\ \text{u}$ ; $m(^{208}_{81}\text{Tl}) = 207{,}982019\ \text{u}$ ; $m(\alpha) = 4{,}002603\ \text{u}$ ;
+      - $1\ \text{u} = 931{,}5\ \text{MeV.c}^{-2}$.
+
+      **Le diagramme.** Un repère orthogonal quadrillé, sans légende de figure. Le nombre de masse $A$ est porté en **ordonnée** (axe vertical fléché vers le haut, gradué 208, 209, 210, 211, 212 de bas en haut) et le numéro atomique $Z$ en **abscisse** (axe horizontal fléché vers la droite, gradué 81, 82, 83, 84). Quatre points marquent des nœuds du quadrillage :
+
+      - $^{212}_{82}\text{Pb}$ au nœud $(Z = 82\,;\,A = 212)$, son étiquette imprimée à gauche du point ;
+      - $^{212}_{83}\text{Bi}$ au nœud $(Z = 83\,;\,A = 212)$, étiquette à droite ;
+      - $^{208}_{81}\text{Tl}$ au nœud $(Z = 81\,;\,A = 208)$, étiquette à gauche ;
+      - $^{A}_{Z}\text{X}$ au nœud $(Z = 82\,;\,A = 208)$, étiquette au-dessus.
+
+      Trois flèches relient ces points :
+
+      - **(1)**, horizontale, va de $^{212}_{82}\text{Pb}$ vers $^{212}_{83}\text{Bi}$ (pointe à droite, sur le bismuth) ; l'étiquette « (1) » est au-dessus du trait ;
+      - **(2)**, diagonale, va de $^{212}_{83}\text{Bi}$ vers $^{208}_{81}\text{Tl}$ (la pointe est en bas, sur le thallium) ; l'étiquette « (2) » est à droite du trait, à mi-hauteur ;
+      - **(3)**, horizontale, va de $^{208}_{81}\text{Tl}$ vers $^{A}_{Z}\text{X}$ (pointe à droite) ; l'étiquette « (3) » est sous le trait.
+    questions:
+      - id: q1-1
+        part: "1- Exploiter le diagramme"
+        stem: |-
+          (0,25 pt) Identifier, en justifiant, le type de la désintégration (1).
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un diagramme de famille radioactive n'est rien d'autre qu'une suite d'équations de désintégration dessinées : chaque flèche va d'un noyau père à son noyau fils, et le type de la désintégration se lit dans le DÉPLACEMENT des deux coordonnées entre le point de départ et le point d'arrivée. Aucune donnée numérique n'est nécessaire — les deux lois de Soddy du R2 suffisent, appliquées à l'envers.
+
+          **D'abord, la convention des axes.** Ce diagramme n'est pas la vallée de stabilité du R1 : ici l'ordonnée porte le nombre de masse $A$ (et non le nombre de neutrons $N$), l'abscisse porte le numéro atomique $Z$. Un déplacement horizontal est donc un changement de $Z$ à $A$ constant, et un déplacement vertical un changement de $A$.
+
+          La flèche (1) part de $^{212}_{82}\text{Pb}$ et arrive sur $^{212}_{83}\text{Bi}$ :
+
+          $$\Delta A = 212 - 212 = 0 \qquad \Delta Z = 83 - 82 = +1$$
+
+          On pose l'équation avec la particule émise $^{A'}_{Z'}\text{p}$ en inconnue et on applique les deux conservations :
+
+          $$^{212}_{82}\text{Pb} \longrightarrow\ ^{212}_{83}\text{Bi} +\ ^{A'}_{Z'}\text{p}$$
+
+          Conservation du nombre de nucléons : $212 = 212 + A'$, donc $A' = 0$.
+
+          Conservation de la charge : $82 = 83 + Z'$, donc $Z' = -1$.
+
+          Une particule qui ne porte aucun nucléon et une charge $-1$, c'est l'électron $^{0}_{-1}\text{e}$ :
+
+          $$\boxed{^{212}_{82}\text{Pb} \longrightarrow\ ^{212}_{83}\text{Bi} +\ ^{0}_{-1}\text{e} \qquad \text{désintégration } \beta^-}$$
+
+          **Le piège à nommer.** Voir $Z$ AUGMENTER alors que la particule émise est négative surprend, et pousse beaucoup d'élèves à répondre $\beta^+$. C'est exactement l'inverse : en $\beta^-$ un neutron du noyau se transforme en proton, donc $Z$ monte d'une unité pendant que la charge $-1$ s'en va avec l'électron — le total reste bien $+82$. Ne devine jamais le type d'après le signe du nom : refais les deux conservations, comme ci-dessus.
+      - id: q1-2
+        part: "1- Exploiter le diagramme"
+        stem: |-
+          (0,25 pt) Reconnaitre le nucléide $^{A}_{Z}\text{X}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Reconnaître un nucléide, c'est donner son couple $(Z\,;\,A)$ puis LIRE son nom dans $Z$ — car c'est le numéro atomique, et lui seul, qui désigne l'élément chimique (R1). Le point $^{A}_{Z}\text{X}$ étant placé sur le diagramme, ses deux coordonnées se lisent directement sur les axes ; la flèche (3) permet ensuite de contrôler cette lecture par le calcul.
+
+          **La lecture.** Le point $^{A}_{Z}\text{X}$ occupe le nœud $(Z = 82\,;\,A = 208)$ : donc $Z = 82$ et $A = 208$.
+
+          **Le contrôle par la flèche (3),** qui part de $^{208}_{81}\text{Tl}$. En posant la particule émise en inconnue :
+
+          $$^{208}_{81}\text{Tl} \longrightarrow\ ^{A}_{Z}\text{X} +\ ^{A'}_{Z'}\text{p}$$
+
+          La flèche (3) est horizontale, donc $A = 208$ ; elle avance d'un cran vers la droite, donc $Z = 81 + 1 = 82$, et la particule émise est là encore un électron $^{0}_{-1}\text{e}$ — une seconde désintégration $\beta^-$. Les deux lectures concordent.
+
+          $Z = 82$ est le numéro atomique du plomb, déjà présent sur le diagramme sous la forme $^{212}_{82}\text{Pb}$ :
+
+          $$\boxed{^{A}_{Z}\text{X} =\ ^{208}_{82}\text{Pb}}$$
+
+          C'est le nucléide stable qui clôt la famille : aucune flèche ne repart de lui.
+
+          **Le piège à nommer.** $^{208}_{82}\text{Pb}$ et $^{212}_{82}\text{Pb}$ sont le même ÉLÉMENT — même $Z$, même case du tableau périodique, même nom « plomb » — mais deux nucléides DIFFÉRENTS : deux isotopes, $A = 208$ contre $A = 212$. « Reconnaître le nucléide » exige donc les deux nombres ; répondre « c'est du plomb » ne répond qu'à moitié. Et attention à la lecture graphique elle-même : l'étiquette de ce point est imprimée au-dessus de lui, ce sont les coordonnées du POINT qui donnent $A$, jamais la hauteur de l'étiquette.
+      - id: q2-1
+        part: "2- La désintégration (2) du bismuth 212"
+        stem: |-
+          (0,25 pt) On considère la désintégration d'un noyau de bismuth $^{212}_{83}\text{Bi}$ en noyau de thallium $^{208}_{81}\text{Tl}$ (désintégration (2)).
+
+          Ecrire l'équation de cette désintégration.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Ici le père ET le fils sont donnés : c'est la particule émise qui est l'inconnue. Le geste ne change pas d'un iota — on pose l'équation avec l'inconnue et on applique les deux lois de Soddy (R2). Le diagramme annonce d'ailleurs la réponse : la flèche (2) descend de quatre crans en $A$ et recule de deux crans en $Z$, la signature exacte de l'émission d'un noyau d'hélium.
+
+          $$^{212}_{83}\text{Bi} \longrightarrow\ ^{208}_{81}\text{Tl} +\ ^{A'}_{Z'}\text{p}$$
+
+          Conservation du nombre de nucléons : $212 = 208 + A'$, donc $A' = 4$.
+
+          Conservation de la charge : $83 = 81 + Z'$, donc $Z' = 2$.
+
+          $A' = 4$ et $Z' = 2$ : la particule émise est un noyau d'hélium $^{4}_{2}\text{He}$, c'est-à-dire une particule $\alpha$.
+
+          $$\boxed{^{212}_{83}\text{Bi} \longrightarrow\ ^{208}_{81}\text{Tl} +\ ^{4}_{2}\text{He} \qquad \text{désintégration } \alpha}$$
+
+          C'est cohérent avec le R2 : la voie $\alpha$ est celle des noyaux LOURDS, et $A = 212$ place le bismuth 212 largement dans cette catégorie.
+
+          **Le piège à nommer.** Le SENS de la flèche (2). Elle relie deux points, et sa pointe est en bas, sur le thallium : c'est donc le bismuth qui se désintègre, pas l'inverse. Lue à l'envers, elle décrirait un thallium qui capte une particule — une réaction provoquée, pas une désintégration spontanée — et les conservations donneraient $A' = -4$ et $Z' = -2$, une particule qui n'existe pas. Un nombre de nucléons négatif dans le résultat est le signal qu'on a inversé père et fils.
+      - id: q2-2
+        part: "2- La désintégration (2) du bismuth 212"
+        stem: |-
+          (0,5 pt) Déterminer, en unité (MeV), $E_{\text{libérée}} = |\Delta E|$ la valeur de l'énergie libérée par cette désintégration.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** *Cette question déborde des rungs de cette leçon : l'équivalence masse-énergie appartient à la notion noyaux-masse-energie, elle n'est pas établie en R1–R5. Elle est donc refaite ici en entier, sans rien admettre.* L'énergie libérée par une désintégration vient de ce que le noyau père est plus LOURD que l'ensemble de ses produits : la masse manquante $|\Delta m|$ est convertie en énergie selon $E = |\Delta m|\,c^2$. Tout le travail consiste à faire la soustraction proprement, puis à convertir des unités de masse atomique en MeV — ce que la donnée $1\ \text{u} = 931{,}5\ \text{MeV.c}^{-2}$ permet en une seule multiplication.
+
+          **Premier temps — le défaut de masse.** On compare la masse du père à la somme des masses des produits de l'équation établie à la question précédente, le thallium et la particule $\alpha$ :
+
+          $$m(^{208}_{81}\text{Tl}) + m(\alpha) = 207{,}982019 + 4{,}002603 = 211{,}984622\ \text{u}$$
+
+          $$|\Delta m| = m(^{212}_{83}\text{Bi}) - \left[m(^{208}_{81}\text{Tl}) + m(\alpha)\right] = 211{,}991286 - 211{,}984622$$
+
+          $$|\Delta m| = 6{,}664\times10^{-3}\ \text{u}$$
+
+          Cette différence est positive : le père est bien le plus lourd, la désintégration libère effectivement de l'énergie.
+
+          **Deuxième temps — la conversion en MeV.** La donnée $1\ \text{u} = 931{,}5\ \text{MeV.c}^{-2}$ dit qu'une masse de $1\ \text{u}$ correspond, multipliée par $c^2$, à une énergie de $931{,}5\ \text{MeV}$. Il suffit donc de multiplier :
+
+          $$E_{\text{libérée}} = |\Delta m|\,c^2 = 6{,}664\times10^{-3}\times931{,}5 = 6{,}2075\ \text{MeV}$$
+
+          $$\boxed{E_{\text{libérée}} \approx 6{,}21\ \text{MeV}}$$
+
+          **Le piège à nommer.** La soustraction porte sur deux nombres qui ne diffèrent qu'à la troisième décimale : $211{,}991286$ contre $211{,}984622$. Toute troncature prématurée la détruit — arrondir à $211{,}99$ et $211{,}98$ donnerait $|\Delta m| = 0{,}01\ \text{u}$, soit $9{,}3\ \text{MeV}$, une valeur 50 % trop grande. On garde TOUS les chiffres donnés jusqu'à la soustraction, et on n'arrondit qu'au tout dernier résultat. Le contrôle d'ordre de grandeur : quelques MeV est la valeur normale d'une émission $\alpha$ ; quelques keV ou quelques centaines de MeV signaleraient une soustraction ou une conversion fautive.
+      - id: q2-3
+        part: "2- La désintégration (2) du bismuth 212"
+        stem: |-
+          (0,75 pt) Soit une source radioactive contenant à l'instant $t = 0$, $N_0 = 2{,}84\cdot10^{20}$ noyaux radioactifs de bismuth $^{212}_{83}\text{Bi}$. A l'instant $t_1 = 15\ \text{min}$, le nombre de noyaux de thallium formés est : $N_1 = 4{,}484\cdot10^{19}$.
+
+          Montrer que l'expression de la demi-vie $t_{1/2}$ du bismuth $^{212}_{83}\text{Bi}$ est : $t_{1/2} = \dfrac{t_1.\ln 2}{\ln\!\left(\dfrac{N_0}{N_0 - N_1}\right)}$. Calculer sa valeur en minute.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Toute la question tient dans un seul mot de l'énoncé : $N_1$ est le nombre de noyaux de thallium **formés**, pas le nombre de bismuths restants. Or la loi de décroissance (R3) ne parle que des noyaux RESTANTS. Le premier geste est donc une traduction du comptage ; ensuite seulement viennent les deux gestes déjà connus — inverser la loi par le logarithme (R5), puis remplacer $\lambda$ par $\ln 2/t_{1/2}$ (R4).
+
+          **Premier temps — traduire le comptage.** La désintégration (2) transforme un bismuth en un thallium, un pour un. Les $N_1$ thalliums présents à $t_1$ sont donc exactement les bismuths qui ont disparu — c'est le rappel explicite du R3 : le nombre de noyaux fils produits vaut $N_0 - N(t)$.
+
+          $$N_1 = N_0 - N(t_1) \qquad\Longleftrightarrow\qquad N(t_1) = N_0 - N_1$$
+
+          **Deuxième temps — écrire la loi de décroissance à $t_1$.**
+
+          $$N(t_1) = N_0\,e^{-\lambda t_1} \qquad\Longrightarrow\qquad N_0 - N_1 = N_0\,e^{-\lambda t_1}$$
+
+          **Troisième temps — inverser par le logarithme.** On isole l'exponentielle, puis on retourne le rapport pour faire disparaître le signe moins :
+
+          $$e^{-\lambda t_1} = \frac{N_0 - N_1}{N_0} \qquad\Longrightarrow\qquad e^{\lambda t_1} = \frac{N_0}{N_0 - N_1}$$
+
+          $$\lambda\,t_1 = \ln\!\left(\frac{N_0}{N_0 - N_1}\right)$$
+
+          **Quatrième temps — faire apparaître la demi-vie.** Le R4 donne $\lambda = \dfrac{\ln 2}{t_{1/2}}$. En reportant :
+
+          $$\frac{\ln 2}{t_{1/2}}\,t_1 = \ln\!\left(\frac{N_0}{N_0 - N_1}\right)$$
+
+          $$\boxed{t_{1/2} = \frac{t_1\,\ln 2}{\ln\!\left(\dfrac{N_0}{N_0 - N_1}\right)}}$$
+
+          C'est bien l'expression demandée.
+
+          **Application numérique.** On aligne d'abord les deux puissances de dix avant de soustraire :
+
+          $$N_0 - N_1 = 2{,}84\cdot10^{20} - 0{,}4484\cdot10^{20} = 2{,}3916\cdot10^{20}$$
+
+          $$\frac{N_0}{N_0 - N_1} = \frac{2{,}84}{2{,}3916} \approx 1{,}1875 \qquad\Longrightarrow\qquad \ln(1{,}1875) \approx 0{,}1718$$
+
+          $$t_{1/2} = \frac{15\times0{,}693}{0{,}1718} = \frac{10{,}395}{0{,}1718} \approx 60{,}5\ \text{min}$$
+
+          $$\boxed{t_{1/2} \approx 60{,}5\ \text{minutes}}$$
+
+          Le résultat garde l'unité de $t_1$ : $t_1$ était en minutes, le logarithme est un nombre sans dimension, donc $t_{1/2}$ sort en minutes — aucune conversion à faire, contrairement au cas où l'on veut une activité en becquerels.
+
+          **Le piège à nommer.** Confondre « noyaux de thallium formés » et « noyaux de bismuth restants ». En écrivant $N(t_1) = N_1 = 4{,}484\cdot10^{19}$, on obtiendrait $\ln(N_0/N_1) = \ln(6{,}33) \approx 1{,}85$ et $t_{1/2} \approx 5{,}6\ \text{min}$ — dix fois trop petit, et surtout incompatible avec l'expression que l'énoncé demande d'établir, qui porte bien $N_0 - N_1$ au dénominateur. Prends l'habitude de relire le mot qui suit le nombre : « formés », « restants » et « désintégrés » ne désignent jamais la même population.
 
   # ── bk-2025-n-x2 — 2025 N, Exercice 2 : désintégration du cadmium 107 ──
   - id: bk-2025-n-x2
