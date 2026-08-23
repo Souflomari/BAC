@@ -241,16 +241,22 @@ lumière monochromatique de longueur d'onde $\lambda_a$.
    2. **3-2.** (0,5) Déduire $v_L$ la vitesse de propagation de la lumière du
       laser dans ce liquide.
 
-*Figure (schéma du dispositif, décrite depuis l'image, p. 3) :* de gauche à
-droite, trois éléments sur pieds : la « Source laser » (boîtier rectangulaire
-grisé, sur pied), un panneau vertical portant une fente verticale au centre,
-étiqueté « Fente de largeur a » au-dessus, et un panneau incliné étiqueté
-« Écran » en haut. Un trait horizontal joint la source à la fente ; depuis la
-fente, un trait plein légèrement incliné vers le haut et un trait pointillé
-horizontal divergent vers l'écran, l'angle entre eux étant marqué $\theta$
-près de l'écran. Sur l'écran, une série de tâches elliptiques sombres
-alignées obliquement, la tâche centrale (la plus grande) surmontée d'une
-double flèche horizontale étiquetée « L ». Entre le pied de la fente et le
+*Figure (schéma du dispositif, re-décrite depuis l'image, p. 3) :* de gauche à
+droite, trois éléments montés chacun sur un pied à socle elliptique : la
+« Source laser » (boîtier rectangulaire grisé prolongé à droite d'un petit
+embout), puis un panneau dessiné **en perspective** (quadrilatère) portant en
+son centre un **trait vertical noir** figurant la fente, étiqueté « Fente de
+largeur a » au-dessus, puis un second panneau en perspective étiqueté
+« Écran » en haut à droite. Un trait horizontal joint l'embout de la source à
+la fente. Depuis la fente partent vers l'écran **un trait pointillé
+horizontal** (l'axe optique, qui aboutit au centre de la tache centrale) et
+**un trait plein légèrement incliné vers le haut** (qui aboutit au bord de la
+tache centrale) ; l'angle entre les deux est marqué $\theta$ juste avant
+l'écran. Sur l'écran, **cinq taches elliptiques sombres** alignées le long de
+l'axe (rendu oblique par la perspective) : la tache **centrale**, nettement la
+plus grande, encadrée de **deux taches plus petites de chaque côté**, de taille
+décroissante vers les bords. Au-dessus de la tache centrale, une double flèche
+horizontale étiquetée « L » en cote sa largeur. Entre le pied de la fente et le
 pied de l'écran, une double flèche horizontale cote la distance « D ».
 
 ---
@@ -315,40 +321,66 @@ Le dispositif schématisé dans la figure 1 ci-contre comporte :
    2. **3-2.** (0,25) Déterminer $I_m$ l'intensité maximale du courant
       électrique circulant dans ce circuit.
 
-*Figure 1 (schéma, décrite depuis l'image, p. 4) :* circuit à trois branches
+*Figure 1 (schéma, re-décrit depuis l'image, p. 4) :* circuit à trois branches
 verticales entre un fil supérieur et un fil inférieur.
-- Branche de **gauche** : le générateur, symbole cercle, avec une flèche de
-  tension verticale montante étiquetée « E » à sa gauche ; au-dessus, sur le
-  fil montant, la flèche du courant « i » orientée vers le haut.
+- Branche de **gauche** : le générateur, symbole cercle traversé par le fil,
+  avec à sa gauche une flèche de tension **verticale montante** étiquetée
+  « E » ; au-dessus, sur le même fil, la flèche du courant « i » **orientée
+  vers le haut**.
 - Fil **supérieur** : l'interrupteur $K$ (levier ouvert, étiquette « K »
-  au-dessus) entre la branche de gauche et le nœud de la branche centrale.
+  au-dessus) entre la branche de gauche et le nœud de la branche centrale ; le
+  fil se poursuit jusqu'à la branche de droite.
 - Branche **centrale** : la bobine, dessinée en spires, étiquetée « L » à sa
-  gauche, avec à sa droite une flèche de tension verticale montante étiquetée
-  « $u_b$ ».
-- Branche de **droite** : en haut la diode (symbole triangle plein pointant
-  vers le bas avec barre au-dessus — cathode côté fil supérieur), en dessous
-  le conducteur ohmique $R_1$ (rectangle vertical, étiquette « $R_1$ » à sa
-  gauche).
+  gauche, avec à sa droite une flèche de tension **verticale montante**
+  étiquetée « $u_b$ ».
+- Branche de **droite** : en haut **la diode — triangle en trait fin (non
+  rempli) dont la pointe est dirigée VERS LE HAUT, surmontée de la barre de
+  cathode** ; l'anode est donc en bas (côté $R_1$) et la cathode en haut (côté
+  fil supérieur), le sens passant allant **de $R_1$ vers le fil supérieur**.
+  En dessous, le conducteur ohmique $R_1$ (rectangle vertical, étiquette
+  « $R_1$ » à sa gauche).
 - Fil **inférieur** : le conducteur ohmique $R$ (rectangle horizontal,
-  étiquette « R » au-dessous), surmonté d'une flèche de tension horizontale
-  étiquetée « $u_R$ » pointant vers la gauche… *(sens exact de la flèche
-  $u_R$ : orientée de droite à gauche au-dessus du rectangle — lecture du
-  petit détail à confirmer)* ; il referme le circuit vers la branche de
-  gauche. Légende : « Figure 1 ».
+  étiquette « R » au-dessous), placé **entre la branche du générateur et le
+  nœud de la branche de la bobine** ; au-dessus de ce rectangle, la flèche de
+  tension « $u_R$ » est **orientée vers la DROITE** (donc à contresens du
+  courant qui, dans ce fil, revient de droite à gauche : convention récepteur,
+  $u_R = R\,i > 0$). Le fil inférieur se prolonge ensuite, **sans autre
+  dipôle**, du nœud de la bobine jusqu'au pied de $R_1$.
+  *(Conséquence topologique, recoupée par la question 2-2 : après ouverture de
+  $K$, la maille qui subsiste est bobine + diode + $R_1$ — $R$ n'en fait pas
+  partie —, ce qui donne bien $u_{R_1} = R_1 I_0 = 1000 \times 0{,}1 =
+  100\ \text{V}$ exactement. Le sens passant relevé sur le dessin est aussi
+  celui qui bloque la diode pendant l'établissement du courant.)*
+  Légende : « Figure 1 ».
 
-*Figure 2 (courbe, décrite depuis l'image, p. 4) :* $u_R\ (\text{V})$ en
-fonction de $t\ (\text{ms})$, sur quadrillage simple (pas de sous-maille).
-Ordonnée : traits principaux chiffrés $2{,}5$ et $5$ (traits suivants non
-chiffrés) — pas $2{,}5\ \text{V}$ par division. Abscisse : traits chiffrés
-$2$ et $4$ (un trait sur deux chiffré) — pas $1\ \text{ms}$ par division ;
-le cadre compte 8 divisions en largeur. Courbe croissante concave partant de
-l'origine et tendant vers un **palier situé exactement sur la 4ᵉ ligne
-horizontale**, soit $u_R = 10\ \text{V}$ (lecture au trait : $4 \times
-2{,}5\ \text{V}$) ; le palier est atteint (courbe confondue avec la ligne) à
-partir de $t \approx 4$–$5\ \text{ms}$. La droite $(T)$, tangente à
-l'origine, est tracée depuis $(0\,;\,0)$ et **coupe le niveau du palier au
-droit du premier trait vertical, $t = 1\ \text{ms}$** *(lecture à
-confirmer)*. Légende : « Figure 2 ».
+*Figure 2 (courbe, re-décrite depuis l'image, mesurée au pixel, p. 4) :*
+$u_R\ (\text{V})$ en fonction de $t\ (\text{ms})$, sur quadrillage simple
+(pas de sous-maille), cadre de **8 divisions en largeur** et **9 divisions en
+hauteur**.
+**Abscisse** : $1\ \text{ms}$ par division, un trait sur deux chiffré ($2$ et
+$4$) ; le cadre va donc de $0$ à $8\ \text{ms}$.
+**Ordonnée** : les traits chiffrés $2{,}5$ et $5$ sont séparés par **deux**
+divisions — le pas est donc de **$1{,}25\ \text{V}$ par division** (et non
+$2{,}5$) ; le haut du cadre vaut $9 \times 1{,}25 = 11{,}25\ \text{V}$.
+
+Courbe croissante concave partant de l'origine et tendant vers un **palier
+confondu avec la 8ᵉ ligne horizontale au-dessus de l'axe**, soit
+$u_R = 8 \times 1{,}25 = \mathbf{10\ \text{V}}$ (mesure au pixel : le tracé
+du palier se superpose exactement à cette ligne) — ce qui est bien $E$, la
+bobine étant de résistance négligeable. Le palier est atteint (courbe confondue
+avec la ligne) à partir de $t \approx 4$–$5\ \text{ms}$.
+
+La droite $(T)$, tangente à l'origine, est tracée depuis $(0\,;\,0)$ et
+**coupe le niveau du palier au droit du premier trait vertical, soit
+$\tau = 1\ \text{ms}$**. Lecture ferme, doublement recoupée : (i) la courbe
+atteint $0{,}63 \times 10 = 6{,}3\ \text{V}$ exactement à
+$t = 1{,}00\ \text{ms}$ (mesure au pixel : $1{,}00 \pm 0{,}03$) ; (ii)
+$I_0 = u_{R,max}/R = 10/100 = 0{,}1\ \text{A}$ et $L = \tau R = 10^{-3}
+\times 100 = 0{,}10\ \text{H}$, ce que la question 1-3 demande de vérifier.
+*(Le tracé de la tangente est très légèrement trop raide sur le scan — elle
+coupe le palier vers $0{,}9\ \text{ms}$ ; le trait de graduation $1\
+\text{ms}$ est la lecture visée, confirmée par le critère des $63\ \%$.)*
+Légende : « Figure 2 ».
 
 **Partie II : Modulation d'amplitude**
 
