@@ -710,15 +710,32 @@ Tout se recoupe ; aucun point ne reste indécidable dans cet exercice.
 | Exercice 3 — section 1 (charge du condensateur, échelon de tension) | 1,5 pt | `rc-charge` |
 | Exercice 3 — section 2 (oscillations libres RLC, entretien) | 2,25 pts | `rlc-serie` |
 | Exercice 3 — section 3 (circuit bouchon LC, détection AM) | 1 pt | `ondes-em-modulation` |
-| Exercice 4 — Partie I (projectile dans le champ de pesanteur) | 3 pts | `chute-mouvements-plans` |
-| Exercice 4 — Partie II (pendule élastique horizontal) | 2,25 pts | `systemes-oscillants` |
+| Exercice 4 — Partie I (projectile dans le champ de pesanteur) | 3 pts | `chute-mouvements-plans` + `lois-de-newton` |
+| Exercice 4 — Partie II (pendule élastique horizontal) | 2,25 pts | `systemes-oscillants` + `aspects-energetiques` |
 
-Notes de classement : l'exercice 3 est un exercice « composite » standard
-électricité — le montage (figure 1) est partagé par les trois sections ; le
-titre de la couverture annonce « décharge dans un dipôle RL » mais l'équation
-étudiée est celle du circuit RLC série amorti puis entretenu, d'où le
-classement de la section 2 sous `rlc-serie` (signaler `dipole-rl` en
-recoupement possible). La Partie II de l'exercice 4 comporte une question
-d'énergie potentielle élastique ($\Delta E_{pe}$), qui recoupe
-`aspects-energetiques` (hors liste des slugs cibles fournie pour ce
-classement — signalé pour mémoire).
+Notes de classement — **révisées à la vérification (2026-08-23)**, contrôle des
+slugs fait contre `content/pc/` : les huit slugs de la table existent, ainsi que
+`dipole-rl`, `lois-de-newton` et `aspects-energetiques`.
+
+- **`dipole-rl` écarté** pour la section 2 de l'exercice 3, contrairement au
+  « recoupement possible » suggéré à la transcription. Le titre de couverture
+  dit bien « décharge dans un dipôle RL », mais c'est le libellé du sujet, pas
+  la physique : l'énoncé fait établir $\ddot q + \tfrac{R}{L}\dot q +
+  \tfrac{1}{LC_0}q = 0$, c'est-à-dire le RLC série amorti puis entretenu. Il n'y
+  a nulle part de réponse d'un dipôle RL à un échelon. `rlc-serie` seul.
+- **`lois-de-newton` ajouté** sur la partie I de l'exercice 4 : la question 1
+  demande explicitement d'appliquer la deuxième loi de Newton pour établir les
+  équations horaires — même arbitrage que sur le projectile du PC SPC 2021
+  rattrapage.
+- **`aspects-energetiques` ajouté** sur la partie II de l'exercice 4, et non
+  plus « signalé pour mémoire » : le slug existe bien sous `content/pc/`, et sa
+  leçon est recentrée (cf. `spec-extension.md`) sur l'énergie des oscillateurs —
+  la question 4 ($\Delta E_{pe}$ d'un pendule élastique) tombe exactement
+  dedans.
+- L'exercice 3 reste un « composite » électricité : le montage de la figure 1
+  est partagé par les trois sections. Cf. l'incohérence de capacité signalée
+  dans l'entrée de l'exercice 3 — les trois sections doivent être converties en
+  exercices **séparés**.
+- L'énergie dissipée par effet Joule de la section 2 de l'exercice 3 relève de
+  `rlc-serie` (bilan énergétique du circuit) et **non** de
+  `aspects-energetiques`, qui porte sur les oscillateurs mécaniques.
