@@ -82,6 +82,16 @@
 #     point d'usage dans le raisonnement, comme pour bk-2019-n-x3 ci-dessus,
 #     mais sans entrée sœur côté rc-charge à citer pour l'instant — à
 #     surveiller quand cette entrée 2021 y sera ajoutée.
+#   - bk-2021-r-x4c, q2 : exige $C = 100\ \mu\text{F}$ ET $L = 0{,}51\ \text{H}$,
+#     toutes deux établies dans les Parties I et II du MÊME exercice (réponse
+#     d'un dipôle RC puis d'un dipôle RL à un échelon de tension), qui
+#     relèvent d'autres notions — rc-charge et dipole-rl — et ne sont pas
+#     transcrites ici. Le rung 2 donne la méthode ($T_0 = 2\pi\sqrt{LC}$) mais
+#     aucune des deux valeurs : dépendance inter-partie/inter-notion, pontée
+#     au point d'usage dans le raisonnement ET rappelée en tête de l'énoncé
+#     sous une ligne explicitement étiquetée « rappel des parties
+#     précédentes », jamais présentée comme une donnée de la Partie III. Ce
+#     n'est pas un trou de la leçon.
 
 notion: pc/rlc-serie
 
@@ -555,6 +565,153 @@ entries:
             note: "Application numerique : T0 = 21 ms (question precedente), C = 12 microF (valeur venant de la Partie I, meme sujet, transcrite sous rc-charge), pi^2 = 10 donne par l'enonce."
           - math: '\boxed{L \approx 0{,}92\ \text{H}}'
             note: "Valeur coherente avec l'ordre de grandeur d'une bobine de ce type de montage bac ; c'est cette valeur, et non 1,63 H, que donnerait a tort l'ancienne lecture T0 = 28 ms."
+
+  # ── bk-2021-r-x4c — 2021 R, Exercice 4 (Partie III) : RLC amorti, pseudoperiode et bilan d'energie ──
+  - id: bk-2021-r-x4c
+    title: "Oscillations libres dans un circuit RLC série : affecter chaque courbe à sa résistance, pseudopériode contre période propre, et bilan d'énergie"
+    source:
+      year: 2021
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — III. Oscillations libres dans un circuit RLC série"
+    bareme_total: 1.5
+    duration_min: 9
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), AlloSchool RS 28F, element/127290 (Exercice 4,
+        Partie III — oscillations libres dans un circuit RLC série ; barème
+        de la partie = 1,5 pt sur les 5,5 pt de l'exercice complet, dont la
+        Partie I — réponse d'un dipôle RC à un échelon de tension — relève de
+        rc-charge et la Partie II — réponse d'un dipôle RL à un échelon de
+        tension — de dipole-rl, toutes deux hors périmètre RLC et non
+        transcrites ici). Transcription vérifiée par une passe adversariale
+        indépendante (2026-08-22) : re-fetch du scan (upload-84198/0005,
+        0006 et 0007-big.jpg), chaque valeur relue sur l'image, figures 4, 5
+        et 6 re-décrites depuis le dessin, physique re-dérivée. Les
+        recoupements de la source tombent tous : la pseudopériode lue sur la
+        courbe (a), T = 45 ms d'un maximum chiffré à l'autre (45 puis 90 ms),
+        se compare à T0 = 2*pi*racine(L*C) = 44,9 ms avec L = 0,51 H
+        (Partie II) et C = 100 microF (Partie I) ; l'énergie initiale
+        Ee(0) = q0^2/(2C) = (0,6 mC)^2 / (2 x 100 microF) = 1,8 mJ est
+        exactement le point de départ lu sur la figure 6 ; et t1 = 11,25 ms
+        est exactement T/4, l'instant où Ee s'annule et où Em passe par son
+        premier sommet — ce qui rend la lecture Em(t1) = 1,26 mJ non
+        ambiguë. PREMIÈRE entrée de session rattrapage de cette banque : les
+        huit entrées précédentes sont toutes en session normale. SCOPE NOTE
+        (voir l'en-tête du fichier) : les deux valeurs L = 0,51 H et
+        C = 100 microF viennent des Parties II et I du même exercice,
+        transcrites sous d'autres notions — pontées au point d'usage dans le
+        raisonnement de la question 2, et rappelées telles quelles en tête de
+        l'énoncé sous une ligne explicitement étiquetée « rappel », pas
+        présentées comme une donnée de cette partie.
+    intro: |-
+      **III- Oscillations libres dans un circuit RLC série (examen national, session de rattrapage 2021 — Exercice 4, Partie III, 1,5 point).**
+
+      On charge totalement le condensateur précédent puis on le monte en série, à un instant choisi comme origine des dates $t = 0$, avec la bobine précédente et le conducteur ohmique (figure 4). On ajuste la résistance du conducteur ohmique successivement sur la valeur $R_3 = 10\ \Omega$ puis sur la valeur $R_4 = 100\ \Omega$. Un système d'acquisition informatisé permet de suivre l'évolution de la charge $q(t)$ du condensateur pour chaque résistance. On obtient alors les deux courbes (a) et (b) représentées sur la figure 5.
+
+      *Rappel des parties précédentes du même exercice (établies aux parties I et II, non transcrites ici — voir la note de portée) :* le condensateur a pour capacité $C = 100\ \mu\text{F}$ et la bobine a pour inductance $L = 0{,}51\ \text{H}$ et pour résistance $r = 5\ \Omega$.
+
+      *Figure 4 (schéma) :* boucle unique, **sans générateur**. Branche du haut, de gauche à droite : le conducteur ohmique $R$ (rectangle traversé d'une flèche oblique — résistance réglable), étiquette « R » en dessous, puis la bobine dessinée en quatre spires, étiquetée « (L,r) » **en dessous** des spires. Branche du bas, de gauche à droite : le condensateur (deux traits parallèles verticaux), étiquette « C » en dessous, puis l'interrupteur $K$ (levier entre deux points, étiquette « K » au-dessus). Légende : « Figure 4 », sous la branche du bas, à droite du condensateur.
+
+      *Figure 5 (deux courbes) :* $q\ (\text{mC})$ en fonction de $t\ (\text{ms})$ sur quadrillage. Axe des ordonnées chiffré $0{,}6$, $0{,}3$, $0$, $-0{,}3$, $-0{,}6$, traits horizontaux tous les $0{,}15\ \text{mC}$, le cadre s'étendant de $-0{,}75$ à $+0{,}75\ \text{mC}$. Axe des abscisses **chiffré seulement $45$ et $90$**, traits verticaux tous les $7{,}5\ \text{ms}$ ; **le cadre va bien au-delà du dernier chiffrage — son bord droit est à $t \approx 180\ \text{ms}$**, la plage couvre donc environ quatre pseudo-périodes. Les deux courbes partent toutes deux de $q = +0{,}6\ \text{mC}$ à $t = 0$ et descendent d'abord confondues.
+
+      - **Courbe (a)** (trait plein ; étiquette encadrée en haut au centre, reliée par une flèche au premier maximum) — oscillations pseudo-périodiques **faiblement** amorties, tracées sur toute la plage : minimum $\approx -0{,}56\ \text{mC}$ vers $t \approx 22\ \text{ms}$, puis maximum $\approx +0{,}50$ **exactement à la graduation $t = 45\ \text{ms}$**, minimum $\approx -0{,}49$ vers $t \approx 67$, maximum $\approx +0{,}45$ à $t = 90$, minimum $\approx -0{,}45$ vers $t \approx 113$, maximum $\approx +0{,}42$ vers $t \approx 135$, minimum $\approx -0{,}40$ vers $t \approx 158$, puis remontée jusqu'à $q \approx +0{,}15$ au bord droit du cadre. Les extrema décroissent lentement en valeur absolue et se succèdent régulièrement tous les $22{,}5\ \text{ms}$.
+      - **Courbe (b)** (trait en tirets ; étiquette encadrée en haut à droite, reliée par une longue flèche oblique descendante qui pointe la courbe en tirets vers $t \approx 85\ \text{ms}$) — oscillations **fortement** amorties : minimum $\approx -0{,}30\ \text{mC}$ vers $t \approx 22\ \text{ms}$, maximum $\approx +0{,}17$ vers $t \approx 45\ \text{ms}$, minimum $\approx -0{,}09$ vers $t \approx 67\ \text{ms}$, puis amplitude écrasée : la courbe est pratiquement confondue avec l'axe à partir de $t \approx 95$ à $100\ \text{ms}$ et le reste jusqu'au bord du cadre.
+
+      Légende : « Figure 5 ».
+
+      *Figure 6 (deux courbes d'énergie, pour la résistance $R_3$) :* « $E_e(\text{mJ})$ ; $E_m(\text{mJ})$ » en fonction de $t\ (\text{ms})$ sur quadrillage. Axe des ordonnées chiffré $0$, $0{,}36$, $1{,}08$ et $1{,}80$ ; **traits horizontaux tous les $0{,}18\ \text{mJ}$** (le chiffrage ne retient qu'un trait sur quatre), le haut du cadre étant à $E \approx 2{,}16\ \text{mJ}$. Axe des abscisses chiffré $22{,}5$ et $45$ ; **traits verticaux tous les $5{,}625\ \text{ms}$**, le bord droit du cadre étant à $t \approx 56{,}25\ \text{ms}$.
+
+      - **Courbe $C_1$ (trait plein) $= E_e(t)$ :** part de $1{,}80\ \text{mJ}$ à $t = 0$, décroît en s'annulant à $t = 11{,}25\ \text{ms}$, puis oscille en arches successives de sommets décroissants — sommet à $1{,}08\ \text{mJ}$ (niveau chiffré) exactement à $t = 22{,}5\ \text{ms}$, arche étiquetée « $C_1$ » ; nouveau zéro à $t = 33{,}75\ \text{ms}$ ; sommet suivant $\approx 0{,}65\ \text{mJ}$ à $t = 45\ \text{ms}$ ; puis retour à zéro vers $t = 56{,}25\ \text{ms}$.
+      - **Courbe $C_2$ (trait pointillé) $= E_m(t)$ :** part de $0$ à $t = 0$ et oscille en arches intercalées, ses maxima tombant là où $C_1$ s'annule. **Son premier sommet vaut $1{,}26\ \text{mJ}$ à $t = 11{,}25\ \text{ms}$** — il se pose exactement sur un trait du quadrillage (le 7ᵉ à $0{,}18$ d'intervalle) et un trait d'aide pointillé le rappelle horizontalement jusqu'à l'axe des ordonnées ; le sommet suivant vaut $\approx 0{,}83\ \text{mJ}$ à $t = 33{,}75\ \text{ms}$ (arche étiquetée « $C_2$ ») ; la courbe remonte de nouveau au bord droit du cadre.
+
+      Légende : « Figure 6 ».
+    questions:
+      - id: q1
+        part: "1- Affecter chaque courbe à sa résistance"
+        stem: |-
+          **(0,5 pt)** Affecter chaque courbe à la résistance qui lui correspond.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux courbes, deux résistances, et un seul critère qui les sépare : la **vitesse d'amortissement**. C'est l'étape 4 du rung 6 — quand on dispose de deux tracés obtenus avec le même $L$ et le même $C$ mais des $R$ différentes, celui qui s'éteint le plus vite est celui de la plus grande résistance. Rien d'autre n'est à calculer.
+
+          Le raisonnement physique derrière ce critère est celui du rung 3 : $R$ ne nourrit pas les oscillations, $R$ les freine. À chaque passage du courant elle dissipe de l'énergie par effet Joule, avec une puissance $P = R\,i^2$ toujours positive. Plus $R$ est grande, plus cette ponction est rapide, plus l'amplitude s'effondre vite.
+
+          On lit alors les deux tracés :
+
+          - la **courbe (a)** garde des oscillations visibles sur toute la plage — ses extrema passent lentement de $0{,}56$ à $0{,}40\ \text{mC}$ sur quatre pseudo-périodes : amortissement **faible** ;
+          - la **courbe (b)** est pratiquement éteinte dès $t \approx 100\ \text{ms}$, après trois extrema seulement, son premier minimum valant déjà $-0{,}30\ \text{mC}$ contre $-0{,}56$ pour (a) : amortissement **fort**.
+
+          $$\boxed{\text{courbe (a)} \longrightarrow R_3 = 10\ \Omega \qquad \text{courbe (b)} \longrightarrow R_4 = 100\ \Omega}$$
+
+          **Le piège de cette question.** Ne cherche pas à départager les deux courbes sur leur **période** : elles ont exactement la même. Les extrema de (a) et ceux de (b) tombent aux mêmes dates ($\approx 22$, $45$, $67\ \text{ms}$) — c'est visible directement sur la figure 5. Le rythme est fixé par $L$ et $C$, jamais par $R$ (rung 3, rung 6 étape 4) ; $R$ ne contrôle que la vitesse d'extinction. Un élève qui répond « (b) a une période plus courte donc sa résistance est plus grande » invente une différence que le graphe ne montre pas.
+      - id: q2
+        part: "2- Pseudopériode lue, période propre calculée"
+        stem: |-
+          **(0,5 pt)** Déterminer, graphiquement, la pseudopériode $T$ des oscillations obtenues avec la résistance $R_3$. Vérifier que cette pseudopériode est approximativement égale à la période propre $T_0$ du circuit idéal LC.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux gestes distincts, à ne pas mélanger : d'abord une **lecture** sur le graphe (la pseudopériode $T$, mesurée), puis un **calcul** à partir des composants (la période propre $T_0$, prédite par le modèle idéal). La question ne prend son sens que si les deux viennent de sources indépendantes — c'est leur rapprochement qui « vérifie » quelque chose.
+
+          **Premier temps — lire $T$ sur la courbe (a).** La résistance $R_3$ est celle de la courbe (a), établie à la question précédente. Méthode du rung 6, étape 2 : on repère deux **maxima consécutifs** et on soustrait leurs dates. La figure 5 a été construite pour ce relevé — ses deux seules graduations chiffrées, $45$ et $90\ \text{ms}$, tombent exactement sur deux maxima successifs de (a) :
+
+          $$T = t_{n+1} - t_n = 90 - 45 = 45\ \text{ms}$$
+
+          $$\boxed{T = 45\ \text{ms} = 45\times10^{-3}\ \text{s}}$$
+
+          **Deuxième temps — calculer $T_0$.** La période propre est celle du circuit **idéal** LC, celui qu'on obtiendrait en effaçant toute résistance (rung 2) :
+
+          $$T_0 = 2\pi\sqrt{LC}$$
+
+          Les deux valeurs à y mettre ne sont pas dans cette partie III : $C = 100\ \mu\text{F}$ a été déterminée à la partie I (réponse du dipôle RC) et $L = 0{,}51\ \text{H}$ à la partie II (réponse du dipôle RL) du même exercice. C'est un pont entre les parties d'un même sujet, pas une donnée à deviner.
+
+          $$LC = 0{,}51 \times 100\times10^{-6} = 0{,}51\times10^{-4} = 5{,}1\times10^{-5}$$
+
+          $$\sqrt{LC} = \sqrt{5{,}1\times10^{-5}} = 7{,}14\times10^{-3}$$
+
+          $$T_0 = 2\pi \times 7{,}14\times10^{-3} = 4{,}49\times10^{-2}\ \text{s} = 44{,}9\ \text{ms}$$
+
+          **Troisième temps — comparer.** L'écart relatif entre les deux vaut
+
+          $$\frac{|T - T_0|}{T_0} = \frac{45 - 44{,}9}{44{,}9} \approx 0{,}2\ \%$$
+
+          $$\boxed{T = 45\ \text{ms} \approx T_0 = 44{,}9\ \text{ms}}$$
+
+          L'approximation $T \approx T_0$ du rung 4 est donc bien vérifiée — ce qui est cohérent avec la question 1 : la courbe (a) est celle du **faible** amortissement, et c'est précisément à faible amortissement que cette approximation vaut.
+
+          **Les deux pièges de cette question.** Le premier est de mesurer $T$ entre un maximum et le minimum qui suit : sur la figure 5, cet écart vaut $22{,}5\ \text{ms}$ — c'est $T/2$, la moitié de la réponse. Une pseudopériode se lit toujours entre deux extrema **de même sens**. Le second est de croire que $T = T_0$ en général : c'est faux, et l'énoncé prend soin d'écrire « approximativement ». L'égalité n'est approchée que tant que l'amortissement reste faible — applique-la à la courbe (b), fortement amortie, et tu sors du domaine de validité.
+      - id: q3
+        part: "3- L'énergie dissipée par effet Joule"
+        stem: |-
+          **(0,5 pt)** Les courbes de la figure 6 représentent, pour la résistance $R_3$, l'évolution de l'énergie électrique $E_e(t)$ emmagasinée dans le condensateur ainsi que l'évolution de l'énergie magnétique $E_m(t)$ emmagasinée dans la bobine. Déterminer l'énergie dissipée par effet Joule entre les instants de dates $t_0 = 0$ et $t_1 = 11{,}25\ \text{ms}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énergie dissipée ne se lit sur aucune courbe — elle se déduit d'un **bilan**. Le circuit ne contient que trois choses : le condensateur qui stocke $E_e$, la bobine qui stocke $E_m$, et la résistance qui ne fait que prendre (rung 3, $P = R\,i^2 > 0$). Donc tout ce que l'énergie totale a perdu entre deux dates est parti en chaleur, et nulle part ailleurs :
+
+          $$E_J = \big[E_e(t_0) + E_m(t_0)\big] - \big[E_e(t_1) + E_m(t_1)\big]$$
+
+          Il n'y a plus qu'à lire quatre valeurs sur la figure 6.
+
+          **À $t_0 = 0$.** La courbe $C_1$ ($E_e$) part de son maximum, sur le niveau chiffré $1{,}80\ \text{mJ}$ ; la courbe $C_2$ ($E_m$) part de zéro. C'est cohérent avec le rung 1 : à l'instant du branchement, le condensateur vient d'être totalement chargé et le courant n'a pas encore démarré, donc toute l'énergie est électrique.
+
+          $$E_e(0) = 1{,}80\ \text{mJ} \qquad E_m(0) = 0 \qquad E_{\text{tot}}(0) = 1{,}80\ \text{mJ}$$
+
+          **À $t_1 = 11{,}25\ \text{ms}$.** Regarde d'abord où tombe cette date : $T/4 = 45/4 = 11{,}25\ \text{ms}$, exactement un quart de pseudopériode. C'est l'instant du basculement complet décrit au rung 1 — le condensateur est vide, le courant est maximal. La figure 6 le confirme : $C_1$ s'annule précisément là, et c'est là que $C_2$ passe par son premier sommet, chiffré par le trait d'aide pointillé à $1{,}26\ \text{mJ}$.
+
+          $$E_e(t_1) = 0 \qquad E_m(t_1) = 1{,}26\ \text{mJ} \qquad E_{\text{tot}}(t_1) = 1{,}26\ \text{mJ}$$
+
+          **Le bilan.**
+
+          $$E_J = 1{,}80 - 1{,}26 = 0{,}54\ \text{mJ}$$
+
+          $$\boxed{E_J = 0{,}54\ \text{mJ} = 5{,}4\times10^{-4}\ \text{J}}$$
+
+          **Le contrôle qui rassure.** L'énergie de départ se recalcule à la main depuis la figure 5, sans passer par la figure 6 : la charge initiale y vaut $q_0 = 0{,}6\ \text{mC}$, et le rung 1 donne $E_e = \dfrac{q_0^2}{2C}$.
+
+          $$E_e(0) = \frac{(0{,}6\times10^{-3})^2}{2\times100\times10^{-6}} = \frac{3{,}6\times10^{-7}}{2\times10^{-4}} = 1{,}8\times10^{-3}\ \text{J} = 1{,}80\ \text{mJ}$$
+
+          Les deux figures se recoupent exactement — la lecture du départ de $C_1$ est confirmée par un calcul indépendant.
+
+          **Le piège de cette question, celui qui coûte le plus cher.** Écrire $E_J = E_e(0) - E_e(t_1) = 1{,}80 - 0 = 1{,}80\ \text{mJ}$, c'est-à-dire décréter que tout ce que le condensateur a perdu est parti en chaleur. Faux : sur ce quart de pseudopériode, $1{,}26\ \text{mJ}$ sont simplement **passés dans la bobine** — ils sont toujours dans le circuit, stockés sous forme magnétique, et repartiront vers le condensateur au quart de période suivant. Seule la différence des énergies **totales** mesure la dissipation. Le contrôle d'ordre de grandeur le dit aussi : $0{,}54$ sur $1{,}80\ \text{mJ}$, c'est $30\ \%$ de perte en un quart de pseudopériode, ce qui est déjà beaucoup et colle à une amplitude tombée de $0{,}60$ à $0{,}56\ \text{mC}$ au premier extremum de la courbe (a) — alors que $100\ \%$ de perte en un quart de période serait incompatible avec les quatre pseudo-périodes visibles sur la figure 5.
 
   # ── bk-2022-n-x3 — 2022 N, Exercice 3 (section 2) : RLC ideal (QCM) puis amorti (energetique) ──
   - id: bk-2022-n-x3
