@@ -128,3 +128,137 @@ entries:
             note: "Stoechiometrie de l'oxydation Cr -> Cr3+ + 3 e- (question 3) : 3 electrons par atome de chrome consomme."
           - math: '\Delta m = -\,n(Cr)\times M(Cr) = -\,2{,}0\times10^{-5}\times 52 \approx -1{,}0\times10^{-3}\ \text{g}'
             note: "Signe negatif : la masse de l'electrode de chrome diminue. Environ 1,0 mg de chrome a quitte la lame."
+  - id: bk-2021-r-x1b
+    title: "Pile nickel-argent : sens de l'oxydation, bilan, durée de fonctionnement et concentration finale"
+    source:
+      year: 2021
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Partie 2 : pile nickel-argent"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), AlloSchool RS 28F, element/127290 (Exercice 1,
+        Partie 2 — barème 2 pt sur les 7 pt de l'exercice ; la Partie 1,
+        indépendante, porte sur le dosage d'un acide et est transcrite
+        sous reactions-acido-basiques). Transcription vérifiée par une
+        passe adversariale indépendante (2026-08-22) : re-fetch du scan
+        (upload-84198/0002 et 0003-big.jpg), chaque valeur relue sur
+        l'image, chimie re-dérivée. Les données sont solubles et rondes
+        par construction : n(Ni) = 0,587/58,7 = 1,0×10⁻² mol exactement,
+        d'où Q = 2nF = 1930 C, Δt = Q/I ≈ 8,9 h et [Ni²⁺] final ≈ 0,22
+        mol.L⁻¹. La concentration C₂ des ions argent n'est JAMAIS
+        numérisée dans l'énoncé — ce n'est pas un oubli de transcription :
+        aucune question ne la mobilise.
+    intro: |-
+      **Pile nickel-argent (examen national, session de rattrapage 2021 — Exercice 1, Partie 2, 2 points).**
+
+      On réalise une pile électrochimique dont le schéma conventionnel est le suivant :
+
+      $$\ominus\ \text{Ni}/\text{Ni}^{2+}\,//\,\text{Ag}^+/\text{Ag}\ \oplus$$
+
+      Chaque électrode est plongée dans une solution aqueuse de volume $V = 600\ \text{mL}$. La concentration initiale effective des ions $\text{Ni}^{2+}$ est $\left[\text{Ni}^{2+}_{(aq)}\right]_0 = C_1 = 0{,}2\ \text{mol.L}^{-1}$ et celle des ions $\text{Ag}^+$ est $\left[\text{Ag}^+_{(aq)}\right]_0 = C_2$.
+
+      La masse de l'électrode de nickel immergée dans la solution est $m = 0{,}587\ \text{g}$. La pile alimente un conducteur ohmique par un courant électrique d'intensité considérée constante $I = 60\ \text{mA}$.
+
+      **Données.**
+      - Masse molaire du nickel : $M(\text{Ni}) = 58{,}7\ \text{g.mol}^{-1}$ ;
+      - $1\ \text{F} = 96\,500\ \text{C.mol}^{-1}$.
+    questions:
+      - id: q1
+        part: "1- Repérer l'électrode où se produit l'oxydation"
+        stem: |-
+          (0,5 pt) Préciser, parmi les deux électrodes de nickel et d'argent, celle au niveau de laquelle se produit la réaction d'oxydation. Justifier votre réponse.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Tout est déjà écrit dans le schéma conventionnel — encore faut-il savoir le lire. La convention place le pôle NÉGATIF à gauche, et le symbole $\ominus$ le confirme explicitement ici. Il ne reste qu'à relier « pôle négatif » et « oxydation ».
+
+          Le schéma $\ominus\ \text{Ni}/\text{Ni}^{2+}\,//\,\text{Ag}^+/\text{Ag}\ \oplus$ indique que l'électrode de nickel est le **pôle négatif** de la pile.
+
+          Or le pôle négatif est celui qui LIBÈRE les électrons dans le circuit extérieur. Libérer des électrons, c'est précisément subir une oxydation :
+
+          $$\text{Ni}_{(s)} \longrightarrow \text{Ni}^{2+}_{(aq)} + 2\,e^-$$
+
+          $$\boxed{\text{L'oxydation se produit à l'électrode de nickel (pôle négatif, l'anode).}}$$
+
+          **Le contrôle qui confirme.** L'électrode de nickel se CONSOME — c'est exactement ce que la question 3 va exploiter en demandant au bout de combien de temps elle disparaît. Une électrode qui disparaît est une électrode oxydée : les deux questions se recoupent.
+
+          **Le piège classique.** Ne confonds pas avec l'électrolyse, où l'oxydation a lieu à l'électrode reliée au pôle **positif** du générateur. Dans une PILE, qui fonctionne spontanément, l'oxydation a lieu au pôle négatif. Le mot commun est « anode » (oxydation dans les deux cas), et c'est le signe qui change.
+      - id: q2
+        part: "2- Le bilan de fonctionnement"
+        stem: |-
+          (0,5 pt) Écrire l'équation bilan de la réaction lors du fonctionnement de la pile.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le bilan d'une pile s'obtient toujours de la même façon : écrire les deux demi-équations dans le sens où elles se produisent RÉELLEMENT, puis les additionner après avoir équilibré les électrons — le nombre d'électrons cédés doit être exactement celui capté.
+
+          À l'électrode de nickel (oxydation, établie à la question 1) :
+
+          $$\text{Ni}_{(s)} \longrightarrow \text{Ni}^{2+}_{(aq)} + 2\,e^-$$
+
+          À l'électrode d'argent, pôle positif, il se produit donc la réduction :
+
+          $$\text{Ag}^+_{(aq)} + e^- \longrightarrow \text{Ag}_{(s)}$$
+
+          **L'équilibrage des électrons.** Le nickel en libère $2$, l'argent n'en capte qu'un : il faut donc multiplier la seconde demi-équation par $2$ avant d'additionner.
+
+          $$2\,\text{Ag}^+_{(aq)} + 2\,e^- \longrightarrow 2\,\text{Ag}_{(s)}$$
+
+          En additionnant, les électrons se simplifient :
+
+          $$\boxed{\text{Ni}_{(s)} + 2\,\text{Ag}^+_{(aq)} \longrightarrow \text{Ni}^{2+}_{(aq)} + 2\,\text{Ag}_{(s)}}$$
+
+          **Le contrôle.** Vérifie la conservation des charges : à gauche $2\times(+1) = +2$, à droite $+2$. Et celle des éléments : un nickel et deux argents de chaque côté.
+      - id: q3
+        part: "3- La durée de vie de l'électrode"
+        stem: |-
+          (0,5 pt) Déterminer, en heures, la durée nécessaire pour que la partie immergée de l'électrode de nickel disparaisse totalement.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le pont entre la chimie et l'électricité est la charge : chaque mole de nickel oxydée libère $2$ moles d'électrons, et une mole d'électrons transporte une charge $F$. On calcule donc la charge TOTALE que l'électrode peut fournir, puis on la divise par l'intensité — puisque $Q = I\,\Delta t$ à courant constant.
+
+          **Premier temps — la quantité de nickel disponible.**
+
+          $$n(\text{Ni}) = \frac{m}{M(\text{Ni})} = \frac{0{,}587}{58{,}7} = 1{,}0\times10^{-2}\ \text{mol}$$
+
+          **Deuxième temps — la charge qu'elle peut débiter.** La demi-équation d'oxydation montre que $1$ mole de nickel libère $2$ moles d'électrons :
+
+          $$n(e^-) = 2\,n(\text{Ni}) = 2{,}0\times10^{-2}\ \text{mol}$$
+
+          $$Q = n(e^-)\times F = 2{,}0\times10^{-2}\times96\,500 = 1930\ \text{C}$$
+
+          **Troisième temps — la durée.** L'intensité étant constante, $Q = I\,\Delta t$, avec $I = 60\ \text{mA} = 0{,}060\ \text{A}$ :
+
+          $$\Delta t = \frac{Q}{I} = \frac{1930}{0{,}060} \approx 3{,}22\times10^{4}\ \text{s}$$
+
+          La question demande des HEURES :
+
+          $$\Delta t = \frac{3{,}22\times10^{4}}{3600} \approx 8{,}9\ \text{h}$$
+
+          $$\boxed{\Delta t \approx 8{,}9\ \text{heures}}$$
+
+          **Les deux conversions à ne pas rater.** Les milliampères en ampères (facteur $10^{3}$), et les secondes en heures (facteur $3600$). Un ordre de grandeur de quelques heures pour une pile de laboratoire est plausible — si tu trouvais quelques secondes ou plusieurs mois, une conversion serait tombée.
+      - id: q4
+        part: "4- L'état final de la solution"
+        stem: |-
+          (0,5 pt) Calculer, à la fin de la réaction, la concentration effective des ions $\text{Ni}^{2+}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Les ions $\text{Ni}^{2+}$ formés s'AJOUTENT à ceux qui étaient déjà présents au départ — c'est le piège de la question. On calcule donc la quantité initiale, on ajoute la quantité produite, et on divise par le volume, qui ne change pas.
+
+          **La quantité produite.** Le bilan $\text{Ni} + 2\text{Ag}^+ \rightarrow \text{Ni}^{2+} + 2\text{Ag}$ montre que chaque nickel oxydé donne un ion $\text{Ni}^{2+}$. Toute l'électrode immergée ayant disparu :
+
+          $$n_{\text{formé}}(\text{Ni}^{2+}) = n(\text{Ni}) = 1{,}0\times10^{-2}\ \text{mol}$$
+
+          **La quantité initiale.** Avec $V = 600\ \text{mL} = 0{,}600\ \text{L}$ :
+
+          $$n_0(\text{Ni}^{2+}) = C_1\times V = 0{,}2\times0{,}600 = 1{,}2\times10^{-1}\ \text{mol}$$
+
+          **La concentration finale.**
+
+          $$\left[\text{Ni}^{2+}\right]_f = \frac{n_0 + n_{\text{formé}}}{V} = \frac{0{,}120 + 0{,}010}{0{,}600} = \frac{0{,}130}{0{,}600}$$
+
+          $$\boxed{\left[\text{Ni}^{2+}\right]_f \approx 0{,}22\ \text{mol.L}^{-1}}$$
+
+          **La façon rapide, et pourquoi elle marche.** On peut aussi écrire directement $\left[\text{Ni}^{2+}\right]_f = C_1 + \dfrac{n(\text{Ni})}{V} = 0{,}2 + \dfrac{0{,}010}{0{,}600} \approx 0{,}22$ — c'est la même chose, à condition que le volume soit inchangé (les électrodes sont solides, elles n'ajoutent pas de liquide).
+
+          **L'erreur qui guette.** Répondre $0{,}0167\ \text{mol.L}^{-1}$ en oubliant les ions déjà présents. Le mot « effective » de l'énoncé désigne la concentration RÉELLE en solution, tous ions confondus, pas seulement ceux qu'on vient de fabriquer.
