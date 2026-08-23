@@ -172,6 +172,110 @@ entries:
             note: "On inverse. Bien superieure a V_air = 340 m/s, coherent avec R3 : un milieu plus dense relaie la perturbation plus vite."
 
   # ── bk-2022-n-x2 — 2022 N, Exercice 2 (Partie 1) : célérité du son dans l'air ──
+  - id: bk-2021-r-x2
+    title: "Les ondes sonores : nature de l'onde (vrai/faux) et identification d'un métal par sa célérité"
+    source:
+      year: 2021
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 2 — Les ondes sonores"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), AlloSchool RS 28F, element/127290 (Exercice 2,
+        barème complet 2 pt). Transcription vérifiée par une passe
+        adversariale indépendante (2026-08-22) : re-fetch du scan, les
+        deux figures re-décrites depuis le dessin, mesures au pixel sur la
+        figure 2. La droite passe exactement par les intersections
+        (10 ; 0,02), (20 ; 0,04), (30 ; 0,06) et (40 ; 0,08) du quadrillage
+        principal — lecture au trait, pas d'interpolation. La pente donne
+        v = 0,10/2×10⁻⁵ = 5000 m.s⁻¹, valeur EXACTEMENT tabulée pour
+        l'aluminium dans la donnée du sujet : le recoupement confirme la
+        lecture. La vérification signale aussi deux traits pointillés
+        parasites en bas à gauche de la figure (repères de construction
+        vers d ≈ 4 et 14 cm) qui n'ont AUCUNE valeur de lecture — mention
+        conservée ici pour qu'ils ne soient jamais pris pour des points de
+        mesure.
+    intro: |-
+      **Les ondes sonores (examen national, session de rattrapage 2021 — Exercice 2, 2 points).**
+
+      **Donnée — célérité du son dans différents métaux.**
+
+      | Métal | fer | cuivre | aluminium | zinc |
+      |---|---|---|---|---|
+      | $v\ (\text{m.s}^{-1})$ | 5960 | 3900 | 5000 | 4190 |
+
+      **Le dispositif (figure 1).** Une barre métallique horizontale. À son extrémité gauche, un marteau. Posés sur la barre, deux capteurs $C_1$ (près de l'extrémité gauche) et $C_2$ (environ aux deux tiers de la barre) ; sous la barre, une double flèche cotée $d$ relie les verticales descendant de $C_1$ et de $C_2$. Chaque capteur est relié par un câble à une interface, elle-même reliée à un ordinateur.
+
+      On produit une impulsion sonore par un bref coup de marteau sur l'extrémité gauche de la barre et on mesure, pour différentes valeurs de la distance $d$, la durée de propagation $\Delta t$ de l'onde entre les deux capteurs. Le système d'acquisition trace la courbe $\Delta t = f(d)$.
+
+      **La courbe (figure 2).** $\Delta t$ en millisecondes en fonction de $d$ en centimètres, sur quadrillage fin. Une droite croissante issue de l'origine passe exactement par les intersections $(10\,;\,0{,}02)$, $(20\,;\,0{,}04)$, $(30\,;\,0{,}06)$ et $(40\,;\,0{,}08)$ du quadrillage principal. *(Deux traits pointillés subsistent en bas à gauche de la figure : ce sont des repères de construction, sans valeur de lecture.)*
+    questions:
+      - id: q1
+        part: "1- La nature de l'onde sonore (vrai ou faux)"
+        stem: |-
+          Recopier le numéro de la question et répondre par vrai ou faux.
+
+          **a)** (0,25 pt) L'onde sonore est une onde électromagnétique.
+
+          **b)** (0,25 pt) L'onde sonore est une onde longitudinale.
+
+          **c)** (0,25 pt) L'onde sonore est une onde qui se propage dans le vide.
+
+          **d)** (0,25 pt) L'onde sonore se propage avec une célérité qui dépend du milieu de propagation.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Ces quatre affirmations testent une seule idée, sous quatre angles : le son est une onde MÉCANIQUE. Tiens fermement ce fait et les quatre réponses tombent d'elles-mêmes — c'est plus sûr que de mémoriser quatre phrases séparées.
+
+          **a) FAUX.** L'onde sonore est une onde mécanique : elle consiste en une déformation de la matière (compressions et dilatations successives du milieu), pas en une variation de champs électrique et magnétique. Les ondes électromagnétiques (lumière, ondes radio) sont d'une autre nature.
+
+          **b) VRAI.** Les particules du milieu oscillent PARALLÈLEMENT à la direction de propagation de l'onde — c'est la définition d'une onde longitudinale. C'est ce qui distingue le son d'une onde à la surface de l'eau, où la surface monte et descend perpendiculairement à la propagation.
+
+          **c) FAUX.** C'est la conséquence directe de a). Une onde mécanique a besoin d'un milieu matériel à déformer ; dans le vide, il n'y a rien à comprimer. Le son ne s'y propage pas — contrairement à la lumière, qui nous vient bien du Soleil.
+
+          **d) VRAI.** La célérité d'une onde mécanique est une propriété DU MILIEU, pas de la source. La donnée de l'énoncé le montre : le même son se propage à $3900\ \text{m.s}^{-1}$ dans le cuivre et à $5960\ \text{m.s}^{-1}$ dans le fer. C'est précisément ce que la partie 2 va exploiter pour identifier le métal.
+
+          **Le fil qui relie les quatre.** a) et c) disent la même chose (mécanique, donc pas dans le vide), b) précise la géométrie de l'oscillation, d) annonce la suite de l'exercice.
+      - id: q2-1
+        part: "2- Identifier le métal de la barre"
+        stem: |-
+          (0,75 pt) Déterminer la célérité $v$ de l'onde dans la barre.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'onde parcourt la distance $d$ entre les deux capteurs en la durée $\Delta t$ : sa célérité est donc $v = d/\Delta t$. Mais l'énoncé ne donne pas UN couple $(d, \Delta t)$ — il donne une droite. C'est délibéré : exploiter la pente d'une droite qui passe par plusieurs points de mesure vaut mieux qu'un point isolé, car chaque mesure isolée porte son erreur.
+
+          La relation $\Delta t = \dfrac{d}{v}$ est bien celle d'une fonction linéaire de $d$, de coefficient directeur $\dfrac{1}{v}$ — ce qui explique que la droite tracée passe par l'origine.
+
+          On lit deux points AU TRAIT sur la droite, en prenant l'écart le plus large possible pour minimiser l'erreur : l'origine $(0\,;\,0)$ et le point $(40\,;\,0{,}08)$.
+
+          Coefficient directeur :
+
+          $$\frac{1}{v} = \frac{\Delta t}{d} = \frac{0{,}08\ \text{ms}}{40\ \text{cm}}$$
+
+          **Les conversions, avant tout calcul.** $0{,}08\ \text{ms} = 0{,}08\times10^{-3}\ \text{s} = 8\times10^{-5}\ \text{s}$ et $40\ \text{cm} = 0{,}40\ \text{m}$.
+
+          $$v = \frac{d}{\Delta t} = \frac{0{,}40}{8\times10^{-5}} = 5000\ \text{m.s}^{-1}$$
+
+          $$\boxed{v = 5000\ \text{m.s}^{-1}}$$
+
+          **Le piège de cet exercice, et il est double.** Les deux axes sont dans des unités « piégées » : des CENTIMÈTRES et des MILLISECONDES. Oublier l'une des deux conversions donne un résultat faux d'un facteur $10$, $1000$ ou $100\,000$ — et aucune des valeurs du tableau ne correspondra, ce qui est justement le signal d'alarme à saisir.
+      - id: q2-2
+        part: "2- Identifier le métal de la barre"
+        stem: |-
+          (0,25 pt) En déduire la nature du métal constituant la barre.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La célérité est une signature du milieu (c'est l'affirmation d) de la première partie). Il suffit donc de comparer la valeur trouvée à la table fournie.
+
+          | Métal | fer | cuivre | aluminium | zinc |
+          |---|---|---|---|---|
+          | $v\ (\text{m.s}^{-1})$ | 5960 | 3900 | **5000** | 4190 |
+
+          La valeur $v = 5000\ \text{m.s}^{-1}$ coïncide exactement avec celle de l'aluminium.
+
+          $$\boxed{\text{La barre est en aluminium.}}$$
+
+          **Ce que la coïncidence exacte t'apprend.** Une valeur qui tombe pile sur la table n'est pas un hasard : c'est la confirmation que ta lecture graphique et tes conversions étaient justes. Si tu avais trouvé $500$ ou $50\,000$, aucune ligne n'aurait correspondu — l'exercice est construit pour que l'erreur d'unité se voie.
   - id: bk-2022-n-x2
     title: "Célérité des ondes sonores dans l'air : mesure d'un retard temporel"
     source:
