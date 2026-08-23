@@ -258,6 +258,8 @@ Mais cette liste, tu n'as pas à la repasser en entier, et c'est tout l'intérê
 - **Le neutre non plus.** $e$ existe dans $E$, mais il peut très bien ne pas appartenir à $H$.
 - **Les symétriques non plus.** Le symétrique de $x$ existe dans $E$, mais il peut sortir de $H$.
 
+**Attention à ce que l'héritage ne dit PAS.** « L'associativité descend de $E$ vers $H$ » est vrai, et c'est tout ce que ça dit. La réciproque est fausse : une loi peut être associative **sur une partie** sans l'être partout. Un sujet d'examen a exactement joué là-dessus — une même loi $T$ y est montrée non associative sur l'ensemble entier à une question, puis associative sur une partie à la question suivante. Ce n'est pas une contradiction : le contre-exemple qui casse l'associativité globale utilise des éléments qui **n'appartiennent pas** à la partie. Quand deux questions voisines semblent se contredire sur une propriété, regarde toujours **où vivent** les éléments du contre-exemple.
+
 Trois questions au lieu de quatre — et les trois qui restent posent toutes la même question : **est-ce qu'on sort de $H$ ?**
 
 **Critère du sous-groupe.** Soit $(E,\star)$ un groupe de neutre $e$, et $H$ une partie de $E$. Alors $H$ est un sous-groupe de $(E,\star)$ si et seulement si :

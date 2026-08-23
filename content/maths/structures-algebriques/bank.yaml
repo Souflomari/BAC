@@ -7,7 +7,7 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les HUIT entrées ci-dessous sont des transcriptions
+# exercises.yaml). Les NEUF entrées ci-dessous sont des transcriptions
 # FIDÈLES d'entrées « vérifié » du recensement (re-fetch AlloSchool
 # indépendant + diff caractère-par-caractère, agent-vérificateur-adversarial)
 # — TOUS les sujets vérifiés recensés à ce jour pour cette notion. SEPT
@@ -16,12 +16,15 @@
 # 2019 (Exercice 1, vérifié 2026-07-12), 2020 (Exercice 2, vérifié
 # 2026-08-05), 2022 (Exercice 4, vérifié 2026-08-05), 2023 (Exercice 5,
 # vérifié 2026-08-06), 2024 (Exercice 4, vérifié 2026-08-05), 2025
-# (Exercice 4, vérifié 2026-08-06). La HUITIÈME, ajoutée 2026-08-23, est la
-# PREMIÈRE ENTRÉE DE SESSION DE RATTRAPAGE DES BANQUES DE MATHÉMATIQUES —
-# toutes les banques maths du corpus étaient jusque-là en session normale :
-# bk-2023-r-x3 (2023 rattrapage, Exercice 3, vérifié 2026-08-23), transcrit
-# depuis docs/sujets/_incoming/maths-sm-2023-r.md (et non depuis le fichier
-# de notion, qui ne recense pas encore le rattrapage). Les huit sont en
+# (Exercice 4, vérifié 2026-08-06). Les DEUX DERNIÈRES, ajoutées le même
+# soir (2026-08-23), sont les PREMIÈRES ENTRÉES DE SESSION DE RATTRAPAGE
+# DES BANQUES DE MATHÉMATIQUES — toutes les banques maths du corpus
+# étaient jusque-là en session normale : bk-2023-r-x3 (2023 rattrapage,
+# Exercice 3, vérifié 2026-08-23) et bk-2024-r-x4 (2024 rattrapage,
+# Exercice 4, vérifié 2026-08-23), transcrites depuis
+# docs/sujets/_incoming/maths-sm-2023-r.md et
+# docs/sujets/_incoming/maths-sm-2024-r.md (et non depuis le fichier de
+# notion, qui ne recense pas encore le rattrapage). Les neuf sont en
 # filière Sciences Mathématiques (A et B, BIOF), barème 3,5 points chacun.
 # 2021 NE PORTE AUCUN exercice de
 # structures algébriques dans docs/sujets/maths/structures-algebriques.md
@@ -46,33 +49,21 @@
 # page — même décision, prise dans le même sens, sur bk-2019-n-x2 de
 # content/maths/nombres-complexes-1/bank.yaml et sur bk-2021-n-x1 de
 # content/pc/reactions-acido-basiques/bank.yaml. bk-2017-n-x1, bk-2020-n-x2,
-# bk-2022-n-x4, bk-2023-n-x5, bk-2023-r-x3, bk-2024-n-x4 et bk-2025-n-x4
-# (bk-2017 ajouté 2026-08-06, bk-2023-n/bk-2025 ajoutés 2026-08-06,
-# bk-2023-r ajouté 2026-08-23) ne recoupent aucun autre
-# sommet : exercises.yaml de cette notion ne contient que r-bac (2019,
+# bk-2022-n-x4, bk-2023-n-x5, bk-2023-r-x3, bk-2024-n-x4, bk-2024-r-x4 et
+# bk-2025-n-x4 (bk-2017 ajouté 2026-08-06, bk-2023-n/bk-2025 ajoutés
+# 2026-08-06, bk-2023-r et bk-2024-r ajoutés 2026-08-23) ne recoupent aucun
+# autre sommet : exercises.yaml de cette notion ne contient que r-bac (2019,
 # sourcé) et r-variation (jumeau inventé, anti-mémorisation, status
 # not-applicable) — vérifié par grep, aucun sourcé sur 2017, 2020, 2022,
-# 2023, 2024 ou 2025.
+# 2023, 2024 ou 2025. bk-2024-n-x4 et bk-2024-r-x4 portent le MÊME label
+# « Exercice 4 » de la MÊME année : ce sont deux épreuves distinctes
+# (session normale et session de rattrapage), et le badge rendu les sépare
+# — « Bac 2024 · Normale » contre « Bac 2024 · Rattrapage ». Aucun
+# recoupement de contenu : la normale porte une loi T sur ℂ×ℂ*, le
+# rattrapage une loi ∗ sur ℂ.
 #
-# ⚠ MISE À JOUR DU 2026-08-23 — LA SCOPE NOTE 1 CI-DESSOUS EST PÉRIMÉE.
-# La lacune qu'elle documente est COMBLÉE : lesson.md porte désormais un
-# chapitre « Sous-groupe : un groupe caché dans un autre » (critère compact
-# à trois conditions, ce qui s'hérite vs ce qui se vérifie, exemple dans
-# l'habillage de l'examen) et un chapitre « Anneau intègre ». Ils ont été
-# écrits précisément parce que ce docket de lacunes
-# (docs/audits/lesson-completeness-docket.md, lignes A1 et A2) les
-# désignait comme les plus rentables du corpus — cinq occurrences sur
-# quatre sujets de bac pour le seul sous-groupe.
-#
-# Conséquence pour les entrées EXISTANTES : leurs `reasoning` re-déclinent
-# le checklist à quatre axiomes plutôt que d'invoquer le critère, ce qui
-# reste JUSTE mais n'est plus nécessaire. Elles peuvent désormais se
-# rattacher au chapitre. Repasse d'harmonisation à faire — non faite ici
-# pour ne pas mêler une réécriture de fond à une conversion.
-#
-# La note d'origine est conservée telle quelle ci-dessous : elle documente
-# l'état du corpus au moment où ces entrées ont été écrites, et c'est cette
-# honnêteté-là qui a permis au docket de repérer la lacune.
+# (Note : la mise à jour qui déclare la SCOPE NOTE 1 résolue se trouve
+#  À LA FIN de cette note, là où elle se lit dans son contexte.)
 #
 # SCOPE NOTE 1 (divulgation honnête, authoring-side — SOUS-GROUPE) : la
 # question 3 du sujet 2019 (« Montrer que G est un sous-groupe de (E,∗) »)
@@ -113,7 +104,10 @@
 # de le contourner : ses questions q1 (E sous-groupe de (M3(R),+)) et q4-a
 # (G sous-groupe de (R×C,∗)) invoquent nommément le critère à trois
 # conditions et l'exemple travaillé du chapitre, sans re-décliner la
-# checklist à quatre axiomes du R3. Les CINQ occurrences antérieures
+# checklist à quatre axiomes du R3. bk-2024-r-x4 (ajoutée le même soir)
+# fait de même en q5 (F sous-groupe de (E,∗)) — et son reasoning nomme, en
+# plus, la condition préalable que le chapitre appelle « la vérification
+# qu'on oublie » : F inclus dans E. Les CINQ occurrences antérieures
 # recensées ci-dessus (bk-2019-n-x1 q7, bk-2022-n-x4 q1, bk-2023-n-x5 q1 et
 # q8, bk-2024-n-x4 q8) gardent leur rédaction de contournement : elle
 # reste juste et « dans le cadre », mais elle est désormais plus longue que
@@ -218,7 +212,60 @@
 # nomme le piège correspondant : c'est la compatibilité SIMULTANÉE qui
 # livre la distributivité, l'axiome qu'aucune question antérieure de
 # l'exercice n'établit.
-
+#
+# SCOPE NOTE 6 (divulgation honnête, authoring-side — TROIS POINTS DE
+# bk-2024-r-x4, nouveau 2026-08-23) :
+#
+# (a) SIMPLIFICATION DANS UN GROUPE. La question 3-b (« En déduire que
+# (C,∗) n'est pas un groupe ») attend qu'on tire une contradiction de
+# 1 ∗ 2i = 1 ∗ (1+2i) avec 2i différent de 1+2i — c'est-à-dire qu'on
+# utilise le fait que, dans un groupe, tout élément est SIMPLIFIABLE
+# (régulier). lesson.md ne l'énonce nulle part comme propriété d'un
+# groupe : le seul passage sur la simplification est au chapitre « Anneau
+# intègre » (« on ne peut pas simplifier par 2 dans Z/4Z »), où elle est
+# liée à l'intégrité d'un anneau, pas à l'inversibilité dans un groupe.
+# Le reasoning de q3-b ne l'invoque donc PAS comme un acquis : il
+# re-démontre la simplification à la main, en composant les deux membres
+# par un symétrique supposé de 1 et en regroupant par l'associativité
+# (question 2) — deux gestes strictement couverts par les rungs R2 et R3.
+# Il ajoute ensuite le diagnostic direct (l'axiome 4 du R3 tombe : 1 n'a
+# aucun symétrique, car 1 ∗ (x2+iy2) = y2 est toujours réel), qui, lui,
+# ne mobilise que la définition du R3.
+#
+# (b) TRANSPORT DE STRUCTURE VERS UN ENSEMBLE D'ARRIVÉE QUI N'EST PAS UN
+# GROUPE. La question 6-c (« En déduire que (G,∗) est un groupe
+# commutatif ») fait suite à une question 6-b qui présente phi comme un
+# homomorphisme de (R,+) vers (C,∗) — or (C,∗) n'est PAS un groupe, c'est
+# la question 3-b qui vient de l'établir. Le geste du R7 (« si (E,*) est
+# déjà connu comme groupe commutatif, phi transporte toute cette
+# structure sur (F,x) ») est énoncé dans la leçon entre DEUX groupes ; il
+# ne dit rien du cas où l'arrivée annoncée n'en est pas un. Le reasoning
+# de q6-c traite ce point de front, sans vocabulaire neuf : il re-route
+# le transport par E — G inclus dans E (relevé en q6-a), (E,∗) groupe
+# (q4-b) —, note que le calcul de morphisme de q6-b ne dépend que de la
+# formule de ∗ et vaut donc tel quel vers (E,∗), et conclut par
+# l'isomorphisme phi de (R,+) sur (G,∗). C'est le même point de fond que
+# celui déjà nommé dans bk-2023-r-x3 q2-b (« ce qui transporte la
+# structure, c'est morphisme + surjectivité sur l'ensemble visé »), avec
+# une difficulté de plus : ici l'ensemble d'arrivée nommé par l'énoncé
+# est démontré non-groupe.
+#
+# (c) COMMUTATIVITÉ QUI TIENT SUR UNE PARTIE D'UN GROUPE NON COMMUTATIF.
+# (E,∗) n'est pas commutatif (q4-b) et pourtant (G,∗) l'est (q6-c), alors
+# que G est une partie de E. C'est la dissymétrie déjà signalée en SCOPE
+# NOTE 5 pour l'associativité, transposée à la commutativité — et cette
+# fois le chapitre « Sous-groupe » est directement en cause, puisqu'il
+# énonce que « un sous-groupe d'un groupe commutatif est automatiquement
+# commutatif » sans dire ce qui se passe quand l'ambiant ne l'est pas.
+# Un élève qui a retenu la phrase dans le mauvais sens lira q6-c comme
+# une contradiction avec q4-b. Le reasoning de q6-c nomme le piège,
+# explique le mécanisme (la non-commutativité vient de l'exposant 5
+# appliqué à des parties imaginaires DIFFÉRENTES ; sur G elles valent
+# toutes 1), montre que le contre-exemple de q4-b ne vit pas dans G, et
+# donne la vérification directe en une ligne. Même recommandation qu'en
+# SCOPE NOTE 5, et elle est désormais appuyée par deux entrées : une
+# ligne dans le chapitre « Sous-groupe » sur ce que l'héritage ne dit PAS
+# fermerait les deux trous d'un coup.
 notion: maths/structures-algebriques
 
 entries:
@@ -916,6 +963,436 @@ entries:
           - math: '\mathbb{R}\times\mathbb{R}^* \ \text{est un sous-groupe de} \ (\mathbb{C}\times\mathbb{C}^*,\ T)'
             note: "Les quatre axiomes sont vérifiés dans ℝ×ℝ*."
 
+  # ── bk-2024-r-x4 — 2024 R, Exercice 4 : loi ∗ sur ℂ, (ℂ,∗) n'est pas un groupe, (E,∗) groupe non commutatif, sous-groupe F, homomorphisme φ et groupe commutatif (G,∗) ──
+  - id: bk-2024-r-x4
+    title: "Loi de composition, groupe non commutatif et homomorphisme"
+    source:
+      year: 2024
+      session: rattrapage
+      filiere: "SM"
+      exercise_label: "Exercice 4"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session de rattrapage — examen national Sciences Mathématiques
+        (A et B), option française (BIOF), Mathématiques, 4 h, coef 9, code
+        sujet RS 25, AlloSchool element/145741 (Exercice 4, « structures
+        algébriques », barème 3,5 points ; page 4 du scan sur 5, image
+        upload-87449/0004-big.jpg, consignes page 1). Transcription fidèle de
+        l'entrée « vérifié » de docs/sujets/_incoming/maths-sm-2024-r.md,
+        section « 2024 — session rattrapage — Exercice 4 » (re-fetch
+        AlloSchool indépendant + re-dérivation intégrale,
+        agent-vérificateur-adversarial, 2026-08-23). DEUXIÈME entrée de
+        session de rattrapage de ce fichier, après bk-2023-r-x3 ajoutée le
+        même soir — toutes les autres entrées, ici comme dans les autres
+        banques maths du corpus, sont en session normale.
+        POINT DE VIGILANCE PRINCIPAL, LEVÉ PAR RE-DÉRIVATION :
+        l'exposant 5 de la formule (x+iy)*(x2+iy2) = (x y2 + y^5 x2) + i y y2
+        est inhabituel au point de faire soupçonner une coquille de scan. Il
+        est PORTANT et il a été confirmé par trois recoupements internes.
+        (1) Avec l'exposant 1 — la lecture « naturelle » (x y2 + y x2) + i y y2
+        — la loi serait SYMÉTRIQUE en (x,y) et (x2,y2), donc COMMUTATIVE, et
+        la question 1-b (« montrer que * n'est pas commutative ») serait sans
+        objet ; l'exposant 5 est donc exigé par l'énoncé lui-même.
+        (2) L'associativité (question 2) tient pour tout exposant entier
+        n >= 1 : les deux membres valent x y2 y3 + y^n x2 y3 + (y y2)^n x3 +
+        i y y2 y3. Elle ne contredit donc pas l'exposant 5, et ne permet pas
+        non plus de le déterminer — c'est bien la non-commutativité qui le
+        force. (3) Les deux vérifications numériques de l'énoncé exigent
+        seulement n >= 1 (elles reposent sur 0^n = 0) : 1 * 2i = 1x2 + 0^5x0 = 2
+        et 1 * (1+2i) = 1x2 + 0^5x1 = 2, toutes deux retrouvées.
+        RE-DÉMONSTRATION INDÉPENDANTE de tous les résultats (2026-08-23),
+        aucun arrondi, aucun résultat repris de la source sans recalcul :
+        2i * 1 = (0x0 + 2^5x1) + i(2x0) = 32, d'où 1 * 2i = 2 différent de
+        32 = 2i * 1 (Q1-b) ; le neutre de * est i, et il l'est des DEUX côtés
+        (z * i = (x·1 + y^5·0) + i(y·1) = z et i * z = (0·y + 1^5·x) + i(1·y) = z),
+        ce qui vaut sur C tout entier ; le symétrique de z = x+iy dans E est
+        -x/y^6 + (1/y) i, vérifié des deux côtés ; (C,*) n'est pas un groupe
+        parce que 1 = 1+0i n'a AUCUN symétrique (1 * (x2+iy2) = y2 est
+        toujours réel, jamais égal à i), ce que la chaîne « en déduire »
+        des questions 1-a et 3-a établit par simplification ; contre-exemple
+        de non-commutativité INTERNE À E (les deux facteurs de la question
+        1-b, 1 et 2i, ne sont pas tous deux dans E) : (1+i) * 2i = 2+2i tandis
+        que 2i * (1+i) = 32+2i ; symétrique dans F de yi : (1/y) i ; sur G,
+        (x+i) * (x2+i) = (x+x2) + i, expression symétrique en x et x2, donc *
+        EST commutative sur G bien qu'elle ne le soit pas sur E.
+        Barème recompté sur le scan : 0,25 + 0,25 + 0,5 + 0,25 + 0,25 + 0,25
+        + 0,5 + 0,5 + 0,25 + 0,25 + 0,25 = 3,5. Points hors du périmètre
+        strict des rungs, signalés en tête de fichier : SCOPE NOTE 6
+        (simplification dans un groupe ; ensemble d'arrivée qui n'est pas un
+        groupe ; commutativité qui tient sur une partie d'un groupe non
+        commutatif).
+    intro: |-
+      **Structures algébriques (examen national, session de rattrapage 2024, Sciences Mathématiques — Exercice 4, 3,5 points).**
+
+      On munit l'ensemble $\mathbb{C}$ des nombres complexes de la loi de composition interne $\ast$ définie par :
+
+      $$\forall (x, x', y, y') \in \mathbb{R}^4\ ;\quad (x+iy) \ast (x'+iy') = (xy' + y^5 x') + iyy'$$
+
+      *Le fil de l'exercice.* Tout le sujet tient dans une dissymétrie : dans la partie réelle du résultat, le facteur de gauche fournit $x$ **et** $y^5$, celui de droite fournit $y'$ **et** $x'$. Échange les deux facteurs et l'expression change — c'est cet exposant $5$, et lui seul, qui rend la loi non commutative. La Partie I fait le tour de $\ast$ sur $\mathbb{C}$ (associative, mais $(\mathbb{C},\ast)$ n'est pas un groupe), puis se replie sur la partie $E$ des complexes de partie imaginaire non nulle, où tout redevient sain — un groupe, non commutatif. La Partie II descend deux crans plus bas : un sous-groupe $F$, puis un ensemble $G$ que l'on atteint par transport depuis $(\mathbb{R},+)$, et sur lequel la commutativité, perdue sur $E$, revient.
+    questions:
+      - id: q1-a
+        part: "Partie I — La loi $\\ast$ : deux calculs, et la commutativité qui tombe"
+        stem: |-
+          **(0,25 pt)** Vérifier que : $1 \ast 2i = 2$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une vérification numérique à $0{,}25$ point, dont l'unique difficulté est de **lire** la loi sans se tromper de lettre. Le vrai service qu'elle rend arrive à la question suivante : le nombre obtenu ici est la moitié d'un contre-exemple.
+
+          **L'identification, ligne par ligne.** La formule est écrite pour deux complexes donnés sous forme algébrique. Il faut donc d'abord écrire les deux facteurs sous cette forme, même — surtout — quand ils n'y sont pas.
+
+          $1 = 1 + 0i$ : le facteur de gauche donne $x = 1$ et $y = 0$.
+
+          $2i = 0 + 2i$ : le facteur de droite donne $x' = 0$ et $y' = 2$.
+
+          Le réflexe à installer : $1$ n'est pas « un réel qu'on met de côté ». La loi est définie sur $\mathbb{C}$ tout entier (rung R1 : une loi interne combine deux éléments de l'ensemble et rend un élément de l'ensemble), et $1$ est le complexe de partie réelle $1$ et de partie imaginaire $0$, ni plus ni moins.
+
+          **L'application.** Partie réelle du résultat : $xy' + y^5x' = 1 \times 2 + 0^5 \times 0 = 2 + 0 = 2$. Partie imaginaire : $yy' = 0 \times 2 = 0$.
+
+          Donc $1 \ast 2i = 2 + 0i = 2$.
+
+          **Le piège à éviter.** Croiser les lettres : écrire $y'^5x$ au lieu de $y^5x'$. La loi n'est **pas** symétrique, et c'est tout le sujet — le $y$ élevé à la puissance $5$ est celui du facteur de **gauche**, le $x$ qui l'accompagne celui du facteur de **droite**. La discipline qui protège : décider une fois pour toutes que les lettres sans prime viennent du facteur de gauche, les lettres avec prime du facteur de droite, et ne plus jamais y revenir. Ici, l'erreur ne se verrait même pas (les deux lectures donnent $2$, puisque $0^5 = 0$ des deux côtés) — elle éclatera à la question 1-b.
+        steps:
+          - math: '1 = 1 + 0i \ \Longrightarrow\ x = 1,\ y = 0 \qquad ; \qquad 2i = 0 + 2i \ \Longrightarrow\ x'' = 0,\ y'' = 2'
+            note: "Écrire les deux facteurs sous forme algébrique avant d'appliquer la loi."
+          - math: 'xy'' + y^5x'' = 1 \times 2 + 0^5 \times 0 = 2'
+            note: "Partie réelle du résultat."
+          - math: 'yy'' = 0 \times 2 = 0'
+            note: "Partie imaginaire du résultat."
+          - math: '1 \ast 2i = 2 + 0i = 2'
+            note: "Le résultat demandé."
+      - id: q1-b
+        stem: |-
+          **(0,25 pt)** Montrer que la loi de composition interne $\ast$ n'est pas commutative.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On demande de montrer qu'une propriété **universelle** est fausse. Le rung R2 fixe la règle une fois pour toutes : « pour tous $z, z'$ » se réfute par **un seul** couple qui la met en défaut. Un contre-exemple, pas un raisonnement général — et la question 1-a vient d'en fournir la moitié gratuitement.
+
+          **La seconde moitié.** On reprend les mêmes nombres, dans l'autre ordre. $2i = 0 + 2i$ est maintenant le facteur de gauche : $x = 0$, $y = 2$. Et $1 = 1 + 0i$ le facteur de droite : $x' = 1$, $y' = 0$.
+
+          Partie réelle : $xy' + y^5x' = 0 \times 0 + 2^5 \times 1 = 0 + 32 = 32$. Partie imaginaire : $yy' = 2 \times 0 = 0$.
+
+          Donc $2i \ast 1 = 32$.
+
+          **La conclusion.** $1 \ast 2i = 2$ (question 1-a) et $2i \ast 1 = 32$. Comme $2 \neq 32$, il existe deux complexes qui ne commutent pas : la loi $\ast$ n'est pas commutative.
+
+          On voit du même coup **d'où** vient la non-commutativité : en échangeant les deux facteurs, le $2$ qui était une partie imaginaire non élevée est devenu un $2^5 = 32$. C'est l'exposant $5$, et lui seul, qui casse la symétrie — sans lui, la partie réelle serait $xy' + yx'$, expression parfaitement symétrique en $(x,y)$ et $(x',y')$, et la loi serait commutative.
+
+          **Le piège à éviter.** Développer $z \ast z'$ et $z' \ast z$ avec des lettres, constater que les expressions « n'ont pas l'air pareilles » et conclure. Ce n'est pas une démonstration : deux expressions littérales différentes peuvent parfaitement coïncider pour toutes les valeurs, et ici le calcul général serait même **trompeur** — la question II.2.c établira que $\ast$ EST commutative sur une partie de $\mathbb{C}$ (les complexes $x+i$, pour lesquels $y = y' = 1$ et donc $y^5 = y'^5 = 1$). Contre une propriété universelle, on produit des nombres, jamais des lettres.
+        steps:
+          - math: '2i = 0 + 2i \ \Longrightarrow\ x = 0,\ y = 2 \qquad ; \qquad 1 = 1 + 0i \ \Longrightarrow\ x'' = 1,\ y'' = 0'
+            note: "Les mêmes nombres, dans l'ordre inverse."
+          - math: '2i \ast 1 = \left(0 \times 0 + 2^5 \times 1\right) + i\left(2 \times 0\right) = 32'
+            note: "Le 2 de la partie imaginaire de gauche est maintenant élevé à la puissance 5."
+          - math: '1 \ast 2i = 2 \neq 32 = 2i \ast 1'
+            note: "Un seul contre-exemple suffit à réfuter une propriété universelle (R2)."
+          - math: '\ast \ \text{n''est pas commutative}'
+            note: "Conclusion."
+      - id: q2
+        part: "Partie I — Associativité de $\\ast$"
+        stem: |-
+          **(0,5 pt)** Montrer que la loi $\ast$ est associative.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Cette fois la propriété doit être établie **pour tous** les triplets, donc il faut des lettres et un calcul complet. Le rung R2 le dit explicitement : l'associativité ne se lit pas, elle se teste — on calcule $(z \ast z') \ast z''$ d'un côté, $z \ast (z' \ast z'')$ de l'autre, et on compare les deux expressions finales. Aucune astuce ne remplace ce double calcul.
+
+          La seule vraie difficulté est comptable : à chaque étape, le résultat intermédiaire est lui-même un complexe, dont il faut identifier proprement la partie réelle et la partie imaginaire avant de le réinjecter dans la loi. On pose donc $z = x+iy$, $z' = x'+iy'$, $z'' = x''+iy''$, avec les six lettres réelles.
+
+          **Premier membre.** D'abord $z \ast z' = (xy' + y^5x') + i(yy')$. Sa partie réelle est $X = xy' + y^5x'$, sa partie imaginaire $Y = yy'$. On applique alors la loi à $X + iY$ et $x'' + iy''$ : la partie réelle du résultat est $Xy'' + Y^5x''$, la partie imaginaire $Yy''$. En remplaçant :
+
+          $$(z \ast z') \ast z'' = \left[(xy' + y^5x')y'' + (yy')^5x''\right] + i\,(yy')y'' = \left[xy'y'' + y^5x'y'' + y^5y'^5x''\right] + i\,yy'y''$$
+
+          **Second membre.** D'abord $z' \ast z'' = (x'y'' + y'^5x'') + i(y'y'')$, de partie réelle $X' = x'y'' + y'^5x''$ et de partie imaginaire $Y' = y'y''$. On applique la loi à $x + iy$ et $X' + iY'$ : partie réelle $xY' + y^5X'$, partie imaginaire $yY'$. En remplaçant :
+
+          $$z \ast (z' \ast z'') = \left[x(y'y'') + y^5(x'y'' + y'^5x'')\right] + i\,y(y'y'') = \left[xy'y'' + y^5x'y'' + y^5y'^5x''\right] + i\,yy'y''$$
+
+          **La comparaison.** Terme à terme, les deux crochets sont identiques — trois monômes, les mêmes, dans le même ordre — et les deux parties imaginaires valent $yy'y''$. Donc $(z \ast z') \ast z'' = z \ast (z' \ast z'')$ pour tous complexes $z, z', z''$ : la loi $\ast$ est associative.
+
+          Remarque à garder pour la Partie I question 4-b : cette associativité est prouvée sur $\mathbb{C}$ **tout entier**. Elle sera donc acquise, sans une ligne de plus, sur n'importe quelle partie de $\mathbb{C}$ — c'est exactement l'héritage décrit au chapitre « Sous-groupe ».
+
+          **Le piège à éviter.** Tester l'associativité sur un triplet de nombres et conclure. Le R2 nomme cette erreur : un exemple ne prouve jamais une propriété universelle, il ne peut que la réfuter. Second piège, plus insidieux : croire que la non-commutativité établie en 1-b compromet l'associativité. Les deux propriétés sont indépendantes — la composition des fonctions, citée au R4, est le contre-exemple classique d'une loi associative et non commutative, et c'est très exactement le régime dans lequel on est ici.
+        steps:
+          - math: 'z \ast z'' = \underbrace{\left(xy'' + y^5x''\right)}_{X} + i\,\underbrace{\left(yy''\right)}_{Y}'
+            note: "Premier calcul intermédiaire : identifier partie réelle X et partie imaginaire Y avant de réinjecter."
+          - math: '(z \ast z'') \ast z'''' = \left(Xy'''' + Y^5x''''\right) + i\,Yy'''' = \left(xy''y'''' + y^5x''y'''' + y^5y''^5x''''\right) + i\,yy''y'''''
+            note: "Premier membre développé."
+          - math: 'z'' \ast z'''' = \underbrace{\left(x''y'''' + y''^5x''''\right)}_{X''} + i\,\underbrace{\left(y''y''''\right)}_{Y''}'
+            note: "Second calcul intermédiaire, mené de la même façon."
+          - math: 'z \ast (z'' \ast z'''') = \left(xY'' + y^5X''\right) + i\,yY'' = \left(xy''y'''' + y^5x''y'''' + y^5y''^5x''''\right) + i\,yy''y'''''
+            note: "Second membre développé."
+          - math: '(z \ast z'') \ast z'''' = z \ast (z'' \ast z''''), \qquad \forall (z,z'',z'''') \in \mathbb{C}^3'
+            note: "Les deux membres coïncident terme à terme : ∗ est associative sur C tout entier."
+      - id: q3-a
+        part: "Partie I — Un second calcul, et $(\\mathbb{C},\\ast)$ n'est pas un groupe"
+        stem: |-
+          **(0,25 pt)** Vérifier que : $1 \ast (1+2i) = 2$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Encore une vérification à $0{,}25$ point, encore une identification de lettres — mais ici l'énoncé prépare visiblement quelque chose : on vient d'obtenir $1 \ast 2i = 2$ à la question 1-a, et on obtient maintenant la **même valeur** avec un second facteur différent. Ce n'est pas une coïncidence, c'est le matériau de la question 3-b.
+
+          **L'identification.** Facteur de gauche $1 = 1 + 0i$ : $x = 1$, $y = 0$. Facteur de droite $1 + 2i$ : $x' = 1$, $y' = 2$.
+
+          **L'application.** Partie réelle : $xy' + y^5x' = 1 \times 2 + 0^5 \times 1 = 2 + 0 = 2$. Partie imaginaire : $yy' = 0 \times 2 = 0$.
+
+          Donc $1 \ast (1+2i) = 2 + 0i = 2$.
+
+          Le mécanisme est transparent une fois écrit : dès que le facteur de gauche a une partie imaginaire **nulle**, le terme $y^5x'$ s'annule et la partie imaginaire $yy'$ aussi. Il ne reste que $xy'$ — c'est-à-dire que $1 \ast (x'+iy')$ vaut $y'$, quel que soit $x'$. Le $x'$ du facteur de droite disparaît purement et simplement. C'est cette disparition qui fait toute la question suivante, et c'est elle aussi qui expliquera pourquoi l'énoncé ira chercher, à la question 4, l'ensemble $E$ des complexes de partie imaginaire **non nulle**.
+
+          **Le piège à éviter.** Traiter cette question comme un doublon de la 1-a et l'expédier sans regarder le résultat. Les deux questions ont la même réponse, et c'est précisément l'information : $1 \ast 2i = 1 \ast (1+2i)$ avec $2i \neq 1+2i$. Un sujet de bac ne fait jamais calculer deux fois la même valeur par hasard — quand ça arrive, le rapprochement EST la question suivante.
+        steps:
+          - math: '1 = 1 + 0i \ \Longrightarrow\ x = 1,\ y = 0 \qquad ; \qquad 1+2i \ \Longrightarrow\ x'' = 1,\ y'' = 2'
+            note: "Identification des quatre réels."
+          - math: '1 \ast (1+2i) = \left(1 \times 2 + 0^5 \times 1\right) + i\left(0 \times 2\right) = 2'
+            note: "Le terme en x2 est effacé par le facteur 0^5."
+          - math: '1 \ast (x'' + iy'') = xy'' + y^5 x'' + i\,yy'' = y'' \quad \text{lorsque} \ y = 0'
+            note: "Le mécanisme général : un facteur de gauche de partie imaginaire nulle efface le x2 de droite."
+          - math: '1 \ast 2i = 1 \ast (1+2i) = 2 \quad \text{alors que} \quad 2i \neq 1+2i'
+            note: "Le rapprochement des questions 1-a et 3-a : c'est le matériau de la question 3-b."
+      - id: q3-b
+        stem: |-
+          **(0,25 pt)** En déduire que $(\mathbb{C}, \ast)$ n'est pas un groupe.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » interdit de repartir de zéro : il faut fabriquer la contradiction avec les deux égalités déjà obtenues, et rien d'autre. Le rung R3 rappelle qu'un groupe exige **quatre** axiomes ; il suffit d'en mettre un seul en défaut. On procède par l'absurde.
+
+          **La chaîne.** Supposons que $(\mathbb{C},\ast)$ soit un groupe, de neutre $e$. Alors le complexe $1$ possède un symétrique $s$, c'est-à-dire un complexe tel que $s \ast 1 = e$. Partons de l'égalité établie aux questions 1-a et 3-a :
+
+          $$1 \ast 2i = 1 \ast (1+2i)$$
+
+          Composons les deux membres **à gauche** par $s$, puis servons-nous de l'associativité — démontrée à la question 2, et c'est là qu'elle sert :
+
+          $$s \ast (1 \ast 2i) = (s \ast 1) \ast 2i = e \ast 2i = 2i$$
+          $$s \ast \left(1 \ast (1+2i)\right) = (s \ast 1) \ast (1+2i) = e \ast (1+2i) = 1+2i$$
+
+          Les deux membres de départ étant égaux, leurs images le sont aussi : $2i = 1+2i$, donc $0 = 1$. Absurde. Par conséquent $(\mathbb{C},\ast)$ n'est pas un groupe.
+
+          **Ce qui échoue exactement, et pourquoi ça éclaire la suite.** La contradiction ci-dessus suffit pour la copie, mais il vaut la peine de voir quel axiome tombe. Le neutre existe pourtant : $z \ast i = (x \times 1 + y^5 \times 0) + i(y \times 1) = x + iy = z$ et $i \ast z = (0 \times y + 1^5 \times x) + i(1 \times y) = x+iy = z$, donc $i$ est bien neutre pour $\ast$ sur $\mathbb{C}$ tout entier. C'est le **quatrième** axiome du R3 qui tombe : le complexe $1$ n'a aucun symétrique, puisque la question 3-a a montré que $1 \ast (x'+iy') = y'$ est toujours **réel**, donc jamais égal à $i$. Et l'on comprend du même coup le choix de la question 4 : les fautifs sont exactement les complexes de partie imaginaire nulle, que $E$ va écarter.
+
+          **Le piège à éviter.** Répondre « $(\mathbb{C},\ast)$ n'est pas un groupe car $\ast$ n'est pas commutative » (question 1-b). La commutativité **n'est pas** un axiome de groupe : le R3 en compte quatre, et elle n'y figure pas — elle définit le groupe \astcommutatif\ast au R4, un cas particulier. La question 4-b construira d'ailleurs un groupe qui n'est pas commutatif, ce qui règle définitivement la confusion.
+        steps:
+          - math: '\text{Supposons} \ (\mathbb{C},\ast) \ \text{groupe de neutre} \ e \ \Longrightarrow\ \exists s \in \mathbb{C},\ s \ast 1 = e'
+            note: "Raisonnement par l'absurde : on suppose l'axiome 4 du R3 satisfait pour l'élément 1."
+          - math: 's \ast (1 \ast 2i) = (s \ast 1) \ast 2i = e \ast 2i = 2i'
+            note: "L'associativité de la question 2 est ce qui autorise le regroupement."
+          - math: 's \ast \big(1 \ast (1+2i)\big) = (s \ast 1) \ast (1+2i) = e \ast (1+2i) = 1+2i'
+            note: "Le même calcul sur l'autre facteur."
+          - math: '1 \ast 2i = 1 \ast (1+2i) \ \Longrightarrow\ 2i = 1+2i \ \Longrightarrow\ 0 = 1'
+            note: "Contradiction : (C,∗) n'est pas un groupe."
+          - math: 'z \ast i = z \ \text{et} \ i \ast z = z \quad \text{mais} \quad 1 \ast (x''+iy'') = y'' \in \mathbb{R}, \ \text{jamais égal à} \ i'
+            note: "Diagnostic : le neutre i existe ; c'est le symétrique de 1 qui n'existe pas (axiome 4 du R3)."
+      - id: q4-a
+        part: "Partie I — L'ensemble $E$ : stabilité, puis groupe non commutatif"
+        stem: |-
+          Soit $E$ le sous-ensemble de $\mathbb{C}$ défini par $E = \left\{ x + yi\ /\ x \in \mathbb{R} \text{ et } y \in \mathbb{R}^* \right\}$
+
+          **(0,25 pt)** Montrer que $E$ est stable dans $(\mathbb{C}, \ast)$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « Stable » est le mot du rung R1 : une partie $E$ de $\mathbb{C}$ est stable pour $\ast$ lorsque combiner deux éléments de $E$ ne fait jamais sortir de $E$. C'est la première des trois conditions du critère du sous-groupe, et c'est ici la condition sans laquelle la question 4-b n'aurait même pas de sens — on ne parle pas de la structure de $(E,\ast)$ si $\ast$ n'est pas une loi **interne** sur $E$.
+
+          Ce qui caractérise $E$ tient en une ligne : $E$ est l'ensemble des complexes de partie imaginaire **non nulle**. La forme $x+yi$ n'impose rien à $x$ ($x$ parcourt $\mathbb{R}$), tout à $y$ ($y$ parcourt $\mathbb{R}^*$). La vérification portera donc entièrement sur la partie imaginaire du résultat.
+
+          **La vérification.** Soient $z = x+iy$ et $z' = x'+iy'$ deux éléments quelconques de $E$ — deux, écrits avec des lettres différentes. Par définition de $E$ : $x, x' \in \mathbb{R}$ et $y, y' \in \mathbb{R}^*$, c'est-à-dire $y \neq 0$ et $y' \neq 0$.
+
+          $$z \ast z' = \left(xy' + y^5x'\right) + i\left(yy'\right)$$
+
+          Sa partie réelle $xy' + y^5x'$ est un réel : c'est une somme de produits de réels, et $\mathbb{R}$ est stable pour $\times$ et $+$. Aucune condition n'est exigée sur elle, donc rien à vérifier de plus.
+
+          Sa partie imaginaire est $yy'$. Or un produit de deux réels non nuls est non nul : $y \neq 0$ et $y' \neq 0$ donnent $yy' \neq 0$, donc $yy' \in \mathbb{R}^*$.
+
+          Le résultat est donc de la forme (réel) $+ i \times$ (réel non nul) : $z \ast z' \in E$. $E$ est stable dans $(\mathbb{C},\ast)$.
+
+          **Le piège à éviter.** Chercher à contrôler la partie réelle. Elle n'a aucune contrainte à respecter — $x$ parcourt $\mathbb{R}$ tout entier — et le temps passé à la surveiller est du temps perdu. À l'inverse, l'argument « $yy' \neq 0$ » doit être **écrit** : c'est la propriété « $\mathbb{R}$ est intègre » (un produit de réels est nul si et seulement si l'un des facteurs l'est) et c'est très exactement le point où l'exercice bascule. Le sujet a choisi $E$ pour écarter les complexes de partie imaginaire nulle, ceux-là mêmes qui ont fait échouer la question 3-b ; si le produit $yy'$ pouvait s'annuler, ils reviendraient par la fenêtre.
+        steps:
+          - math: 'z = x+iy \in E,\ z'' = x''+iy'' \in E \ \Longrightarrow\ x, x'' \in \mathbb{R} \ \text{et} \ y, y'' \in \mathbb{R}^*'
+            note: "Traduction de l'appartenance à E : seule la partie imaginaire est contrainte."
+          - math: 'z \ast z'' = \left(xy'' + y^5x''\right) + i\left(yy''\right)'
+            note: "La loi appliquée à deux éléments quelconques de E."
+          - math: 'xy'' + y^5x'' \in \mathbb{R}'
+            note: "Partie réelle : somme de produits de réels, aucune contrainte à satisfaire."
+          - math: 'y \neq 0 \ \text{et} \ y'' \neq 0 \ \Longrightarrow\ yy'' \neq 0, \quad \text{donc} \ yy'' \in \mathbb{R}^*'
+            note: "Le point décisif : un produit de deux réels non nuls est non nul."
+          - math: 'z \ast z'' \in E \quad : \quad E \ \text{est stable dans} \ (\mathbb{C},\ast)'
+            note: "∗ est donc une loi de composition interne sur E (R1)."
+      - id: q4-b
+        stem: |-
+          **(0,5 pt)** Montrer que $(E, \ast)$ est un groupe non commutatif.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux affirmations, et la question vaut $0{,}5$ point parce qu'elle en attend bien deux : la structure de groupe (les quatre axiomes du R3), puis le refus de la commutativité (un contre-exemple, R2). Et il faut résister à une tentation : $E$ est une partie de $\mathbb{C}$, mais $(\mathbb{C},\ast)$ **n'est pas un groupe** (question 3-b) — le critère du sous-groupe est donc inapplicable ici, faute de groupe ambiant. On reprend la liste de contrôle du R3, en récoltant au passage tout ce qui a déjà été prouvé.
+
+          **1. Loi interne.** C'est exactement la question 4-a. ✓
+
+          **2. Associativité.** Prouvée à la question 2 sur $\mathbb{C}$ tout entier, donc vraie en particulier pour les éléments de $E$, qui sont des complexes comme les autres. Pas une ligne de calcul à réécrire — c'est l'héritage décrit au chapitre « Sous-groupe », et le seul des quatre axiomes qui se transmette gratuitement. ✓
+
+          **3. Élément neutre.** Le candidat a été identifié à la question 3-b : $e = i$. Deux choses à vérifier, et les deux comptent.
+
+          D'abord son **appartenance** à $E$ : $i = 0 + 1 \times i$, avec $0 \in \mathbb{R}$ et $1 \in \mathbb{R}^*$, donc $i \in E$. C'est ce qui aurait pu échouer et qui n'échoue pas.
+
+          Ensuite l'égalité, des **deux** côtés, la loi n'étant pas commutative. Pour $z = x+iy \in E$, en prenant $i$ à droite ($x' = 0$, $y' = 1$) : $z \ast i = \left(x \times 1 + y^5 \times 0\right) + i\left(y \times 1\right) = x + iy = z$. Et en prenant $i$ à gauche ($x = 0$, $y = 1$) : $i \ast z = \left(0 \times y + 1^5 \times x\right) + i\left(1 \times y\right) = x+iy = z$. ✓
+
+          **4. Symétrique de chaque élément.** C'est le seul vrai calcul. Soit $z = x+iy \in E$ (donc $y \neq 0$) ; on cherche $z' = x'+iy' \in E$ tel que $z \ast z' = i$. En identifiant parties réelle et imaginaire :
+
+          $$yy' = 1 \quad \text{et} \quad xy' + y^5x' = 0$$
+
+          La première équation a une solution — et une seule — parce que $y \neq 0$ : $y' = \dfrac{1}{y}$, qui est bien un réel **non nul**. Report dans la seconde : $\dfrac{x}{y} + y^5x' = 0$, d'où $y^5 x' = -\dfrac{x}{y}$ puis, en divisant par $y^5 \neq 0$, $x' = -\dfrac{x}{y^6}$, un réel.
+
+          Le candidat est donc $z' = -\dfrac{x}{y^6} + \dfrac{1}{y}\,i$, et il appartient à $E$ puisque sa partie imaginaire $\dfrac{1}{y}$ est non nulle. Il reste à vérifier l'autre côté, ce que la non-commutativité rend obligatoire :
+
+          $$z' \ast z = \left(x'y + y'^5x\right) + i\left(y'y\right) = \left(-\dfrac{x}{y^6} \times y + \dfrac{1}{y^5} \times x\right) + i\left(\dfrac{1}{y} \times y\right) = \left(-\dfrac{x}{y^5} + \dfrac{x}{y^5}\right) + i = i$$
+
+          Les deux compositions valent $i$ : tout élément de $E$ possède un symétrique dans $E$. ✓
+
+          Les quatre axiomes sont cochés : $(E,\ast)$ est un groupe.
+
+          **La non-commutativité, sur $E$ cette fois.** Le contre-exemple de la question 1-b ne sert **pas** ici : $1 = 1+0i$ a une partie imaginaire nulle, il n'appartient pas à $E$. Il en faut un dont les deux facteurs vivent dans $E$. Prenons $z = 1+i$ ($x=1$, $y=1$) et $z' = 2i$ ($x'=0$, $y'=2$), tous deux dans $E$ :
+
+          $$(1+i) \ast 2i = \left(1 \times 2 + 1^5 \times 0\right) + i\left(1 \times 2\right) = 2 + 2i$$
+          $$2i \ast (1+i) = \left(0 \times 1 + 2^5 \times 1\right) + i\left(2 \times 1\right) = 32 + 2i$$
+
+          $2+2i \neq 32+2i$ : $(E,\ast)$ est un groupe **non commutatif**.
+
+          **Le piège à éviter.** Recycler le contre-exemple de la question 1-b sans vérifier que ses deux facteurs sont dans $E$. C'est l'erreur la plus coûteuse de la question, parce qu'elle est invisible : le calcul est juste, mais il porte sur des nombres dont l'un n'appartient pas à l'ensemble étudié, et il ne prouve donc rien sur $(E,\ast)$. Le réflexe : avant d'écrire un contre-exemple, relire la définition de l'ensemble et cocher l'appartenance de **chaque** nombre qu'on y met.
+        steps:
+          - math: '\text{1. } \ast \ \text{interne sur} \ E \quad (\text{q4-a})'
+            note: "Premier axiome du R3, déjà acquis."
+          - math: '\text{2. } \ast \ \text{associative sur} \ \mathbb{C} \ (\text{q2}) \ \Longrightarrow\ \text{associative sur} \ E'
+            note: "Héritage : une propriété universelle vraie sur C vaut sur toute partie de C."
+          - math: '\text{3. } \ i = 0 + 1\cdot i \in E, \qquad z \ast i = z \ \text{et} \ i \ast z = z'
+            note: "Le neutre : appartenance à E, puis l'égalité des deux côtés (la loi n'est pas commutative)."
+          - math: '\text{4. } \ z \ast z'' = i \iff yy'' = 1 \ \text{et} \ xy'' + y^5x'' = 0'
+            note: "Identification des parties réelle et imaginaire : le système qui donne le symétrique."
+          - math: 'y'' = \frac{1}{y} \in \mathbb{R}^*, \qquad \frac{x}{y} + y^5x'' = 0 \ \Longrightarrow\ x'' = -\frac{x}{y^6} \in \mathbb{R}'
+            note: "Résolution, licite parce que y est non nul — c'est toute la raison d'être de E."
+          - math: 'z'' = -\frac{x}{y^6} + \frac{1}{y}\,i \in E, \qquad z'' \ast z = \left(-\frac{x}{y^5} + \frac{x}{y^5}\right) + i = i'
+            note: "Le symétrique reste dans E, et il l'est des deux côtés."
+          - math: '(1+i) \ast 2i = 2+2i \neq 32+2i = 2i \ast (1+i), \qquad 1+i \in E,\ 2i \in E'
+            note: "Contre-exemple INTERNE à E : celui de la question 1-b utilisait 1, qui n'est pas dans E."
+          - math: '(E,\ast) \ \text{est un groupe non commutatif}'
+            note: "Quatre axiomes cochés (R3), commutativité réfutée (R2/R4)."
+      - id: q5
+        part: "Partie II — $F$, un sous-groupe de $(E,\\ast)$"
+        stem: |-
+          On considère les sous-ensembles de $E$ définies par : $F = \left\{ yi\ /\ y \in \mathbb{R}^* \right\}$ et $G = \left\{ x + i\ /\ x \in \mathbb{R} \right\}$
+
+          **(0,5 pt)** Montrer que $F$ est un sous-groupe de $(E, \ast)$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le décor a changé : la question 4-b vient d'établir que $(E,\ast)$ est un **groupe**, et c'est ce qui autorise enfin le critère du chapitre « Sous-groupe : un groupe caché dans un autre ». Trois conditions, pas quatre — l'associativité de $\ast$ est vraie sur $\mathbb{C}$ tout entier (question 2), donc sur $F$ sans une ligne. C'est mot pour mot l'exemple travaillé du chapitre, avec une loi exotique à la place de l'addition matricielle.
+
+          **L'inclusion préalable.** $F \subset E$ : un élément de $F$ s'écrit $yi = 0 + yi$ avec $0 \in \mathbb{R}$ et $y \in \mathbb{R}^*$, ce qui est précisément la forme des éléments de $E$. Cette ligne, souvent omise, est ce qui donne un sens à la phrase « sous-groupe de $(E,\ast)$ » — le chapitre insiste : on ne peut pas être un groupe \astà l'intérieur\ast d'un ensemble auquel on n'appartient pas.
+
+          **Condition 1 — le neutre appartient à $F$.** Le neutre de $(E,\ast)$ est $i$ (question 4-b). Or $i = 1 \times i$, avec $1 \in \mathbb{R}^*$ : donc $i \in F$, et $F$ n'est pas vide. ✓
+
+          **Condition 2 — la stabilité.** Deux éléments quelconques de $F$, écrits avec des lettres différentes : $yi$ (donc $x = 0$) et $y'i$ (donc $x' = 0$), avec $y, y' \in \mathbb{R}^*$.
+
+          $$yi \ast y'i = \left(0 \times y' + y^5 \times 0\right) + i\left(yy'\right) = (yy')\,i$$
+
+          Les deux termes de la partie réelle s'annulent, chacun pour sa propre raison : le premier parce que $x = 0$, le second parce que $x' = 0$. Et $yy' \in \mathbb{R}^*$, comme à la question 4-a. Le résultat a bien la forme $(\text{réel non nul}) \times i$ : il est dans $F$. ✓
+
+          **Condition 3 — les symétriques.** Le symétrique dans $(E,\ast)$ d'un élément $x+iy$ a été calculé à la question 4-b : $-\dfrac{x}{y^6} + \dfrac{1}{y}i$. Pour $yi$, on a $x = 0$, donc ce symétrique vaut $0 + \dfrac{1}{y}i = \dfrac{1}{y}\,i$, avec $\dfrac{1}{y} \in \mathbb{R}^*$ : il est dans $F$. ✓
+
+          Les trois conditions tiennent : $F$ est un sous-groupe de $(E,\ast)$, donc $(F,\ast)$ est un groupe.
+
+          **Le piège à éviter.** Repasser les quatre axiomes du R3 sur $F$ — en particulier rédiger à nouveau l'associativité. C'est du temps perdu pour zéro point, et le chapitre le dit : l'associativité s'hérite, le reste se vérifie. L'erreur symétrique, plus coûteuse, est de s'arrêter à deux conditions sur trois en oubliant les symétriques : le chapitre le montre sur $\mathbb{N}$ dans $(\mathbb{Z},+)$, où neutre et stabilité passent mais où un seul symétrique qui s'échappe suffit à tout faire tomber. Ici la troisième condition est même la plus rapide des trois — à condition d'avoir gardé la formule du symétrique établie en 4-b plutôt que de la recalculer.
+        steps:
+          - math: 'yi = 0 + yi, \quad 0 \in \mathbb{R},\ y \in \mathbb{R}^* \ \Longrightarrow\ F \subset E'
+            note: "L'inclusion préalable, sans laquelle « sous-groupe de (E,∗) » n'a pas de sens."
+          - math: 'i = 1 \times i \in F \qquad (\text{neutre de} \ (E,\ast) \ \text{établi en q4-b})'
+            note: "Condition 1 du critère du sous-groupe : le neutre est dans F."
+          - math: 'yi \ast y''i = \left(0 \times y'' + y^5 \times 0\right) + i\left(yy''\right) = (yy'')\,i \in F \qquad (yy'' \in \mathbb{R}^*)'
+            note: "Condition 2 : la partie réelle s'annule des deux côtés, la partie imaginaire reste non nulle."
+          - math: '\text{symétrique de} \ yi \ = -\frac{0}{y^6} + \frac{1}{y}i = \frac{1}{y}\,i \in F \qquad \left(\frac{1}{y} \in \mathbb{R}^*\right)'
+            note: "Condition 3 : la formule de q4-b, appliquée avec x = 0."
+          - math: 'F \ \text{est un sous-groupe de} \ (E,\ast)'
+            note: "Trois conditions sur trois ; l'associativité s'hérite et ne se rédige pas."
+      - id: q6-a
+        part: "Partie II — L'application $\\varphi$ et le groupe commutatif $(G,\\ast)$"
+        stem: |-
+          On considère l'application $\varphi$ définie de $\mathbb{R}$ vers $\mathbb{C}$ par : $(\forall x \in \mathbb{R})$ ; $\varphi(x) = x + i$
+
+          **(0,25 pt)** Montrer que : $\varphi(\mathbb{R}) = G$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $\varphi(\mathbb{R})$ désigne l'**image** de $\mathbb{R}$ par $\varphi$, c'est-à-dire l'ensemble des valeurs effectivement atteintes : $\varphi(\mathbb{R}) = \left\{\varphi(x) \ /\ x \in \mathbb{R}\right\}$. On demande de montrer que cet ensemble est exactement $G$. Deux ensembles sont égaux quand chacun est inclus dans l'autre : on rédige donc une double inclusion. La question vaut $0{,}25$ point et tient en quatre lignes, mais elle est le pivot de la question 6-c — sans elle, le transport de structure ne donnerait rien sur $G$.
+
+          **$\varphi(\mathbb{R}) \subset G$.** Soit $w \in \varphi(\mathbb{R})$. Par définition, il existe $x \in \mathbb{R}$ tel que $w = \varphi(x) = x+i$. C'est exactement la forme des éléments de $G = \left\{x+i \ /\ x \in \mathbb{R}\right\}$, donc $w \in G$.
+
+          **$G \subset \varphi(\mathbb{R})$.** Soit $w \in G$. Alors $w$ s'écrit $w = x+i$ pour un certain réel $x$. Ce réel est un antécédent : $\varphi(x) = x+i = w$, donc $w \in \varphi(\mathbb{R})$.
+
+          Les deux inclusions donnent $\varphi(\mathbb{R}) = G$.
+
+          Relevons au passage, pour la question 6-c, un fait que le calcul ci-dessus rend évident et qui ne sera pas redemandé : $\varphi$ est **injective**. Si $\varphi(x) = \varphi(x')$, alors $x+i = x'+i$, et deux complexes égaux ont même partie réelle, donc $x = x'$. Jointe à l'égalité $\varphi(\mathbb{R}) = G$, cela fait de $\varphi$ une **bijection de $\mathbb{R}$ sur $G$**.
+
+          Notons enfin — c'est ce qui rendra la question 6-c possible — que $G \subset E$ : tout élément $x+i$ de $G$ a pour partie imaginaire $1$, qui est bien un réel non nul.
+
+          **Le piège à éviter.** Confondre l'ensemble d'**arrivée** et l'**image**. L'énoncé définit $\varphi$ « de $\mathbb{R}$ vers $\mathbb{C}$ » : l'ensemble d'arrivée est $\mathbb{C}$, qui est immense, et $\varphi(\mathbb{R})$ n'en est qu'une petite partie — une droite. Écrire « $\varphi(\mathbb{R}) = \mathbb{C}$ parce que $\varphi$ arrive dans $\mathbb{C}$ » est l'erreur type ; la question ne serait d'ailleurs pas posée si les deux notions coïncidaient.
+        steps:
+          - math: '\varphi(\mathbb{R}) = \left\{\varphi(x) \ /\ x \in \mathbb{R}\right\} = \left\{x+i \ /\ x \in \mathbb{R}\right\}'
+            note: "L'image, par définition : l'ensemble des valeurs effectivement atteintes."
+          - math: 'w \in \varphi(\mathbb{R}) \ \Longrightarrow\ \exists x \in \mathbb{R},\ w = x+i \ \Longrightarrow\ w \in G'
+            note: "Première inclusion."
+          - math: 'w \in G \ \Longrightarrow\ w = x+i \ \text{avec} \ x \in \mathbb{R} \ \Longrightarrow\ w = \varphi(x) \in \varphi(\mathbb{R})'
+            note: "Seconde inclusion : l'antécédent est le réel x lui-même."
+          - math: '\varphi(\mathbb{R}) = G'
+            note: "Double inclusion."
+          - math: '\varphi(x) = \varphi(x'') \Rightarrow x = x'' \quad ; \quad G \subset E \ \ (\operatorname{Im}(x+i) = 1 \neq 0)'
+            note: "Deux remarques gratuites, indispensables en q6-c : phi est injective, et G est inclus dans E."
+      - id: q6-b
+        stem: |-
+          **(0,25 pt)** Montrer que $\varphi$ est un homomorphisme de $(\mathbb{R}, +)$ vers $(\mathbb{C}, \ast)$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un homomorphisme — ce que la leçon appelle un **morphisme** au rung R7 — est une application qui respecte les lois : l'image d'une composition est la composition des images. Ici, la loi de départ est $+$ sur $\mathbb{R}$, la loi d'arrivée est $\ast$ sur $\mathbb{C}$, et l'égalité à établir est donc
+
+          $$\forall (x,x') \in \mathbb{R}^2, \qquad \varphi(x+x') = \varphi(x) \ast \varphi(x')$$
+
+          Le geste est invariable : on calcule les deux membres **séparément**, sans jamais les faire converger de force, et on constate à la fin qu'ils coïncident.
+
+          **Membre de gauche.** $x+x'$ est un réel, donc $\varphi(x+x') = (x+x') + i$. Rien de plus.
+
+          **Membre de droite.** On applique $\ast$ à $\varphi(x) = x+i$ et $\varphi(x') = x'+i$. Les quatre réels de la formule sont ici : $x$ et $y = 1$ pour le facteur de gauche, $x'$ et $y' = 1$ pour celui de droite.
+
+          $$\varphi(x) \ast \varphi(x') = (x+i)\ast(x'+i) = \left(x \times 1 + 1^5 \times x'\right) + i\left(1 \times 1\right) = (x+x') + i$$
+
+          Les deux membres sont identiques : $\varphi$ est un homomorphisme de $(\mathbb{R},+)$ vers $(\mathbb{C},\ast)$.
+
+          Le calcul montre du même coup **pourquoi** ça marche : sur $G$, les parties imaginaires valent toutes $1$, et $1^5 = 1$. L'exposant $5$ — celui qui casse la commutativité partout ailleurs — devient inoffensif, et la loi $\ast$ se réduit à l'addition des parties réelles. C'est cette dégénérescence qui fait de $G$ une copie déguisée de $(\mathbb{R},+)$, et c'est tout le sujet de la question 6-c.
+
+          **Le piège à éviter.** Écrire $\varphi(x+x') = \varphi(x) + \varphi(x')$, par réflexe additif. Un morphisme ne « conserve pas l'addition » : il envoie la loi de **départ** sur la loi d'**arrivée**, qui ne portent presque jamais le même nom. Ici $\varphi(x) + \varphi(x') = (x+x') + 2i$, qui n'est même pas dans $G$ — la formule fausse donne un résultat visiblement faux, ce qui est une chance.
+        steps:
+          - math: '\varphi(x+x'') = (x+x'') + i'
+            note: "Membre de gauche : on compose d'abord dans R, on applique phi ensuite."
+          - math: '\varphi(x) \ast \varphi(x'') = (x+i)\ast(x''+i), \qquad y = y'' = 1'
+            note: "Membre de droite : on applique phi d'abord, on compose ensuite avec ∗."
+          - math: '(x+i)\ast(x''+i) = \left(x \times 1 + 1^5 \times x''\right) + i\left(1 \times 1\right) = (x+x'') + i'
+            note: "L'exposant 5 est neutralisé par y = 1 : c'est pourquoi ∗ dégénère en addition sur G."
+          - math: '\varphi(x+x'') = \varphi(x) \ast \varphi(x''), \qquad \forall (x,x'') \in \mathbb{R}^2'
+            note: "Les deux membres coïncident : phi est un homomorphisme (le morphisme du rung R7)."
+      - id: q6-c
+        stem: |-
+          **(0,25 pt)** En déduire que $(G, \ast)$ est un groupe commutatif.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » interdit de repartir des axiomes : tout le travail a été fait, il s'agit de le **transporter**. C'est le rung R7 dans sa forme la plus économique — un isomorphisme fait passer une structure d'un ensemble à l'autre sans re-vérification.
+
+          **Le montage, et le détour obligé.** Attention à l'ensemble d'arrivée annoncé par la question 6-b : $(\mathbb{C},\ast)$ **n'est pas un groupe** (question 3-b). On ne peut donc pas invoquer « l'image d'un groupe par un morphisme est un sous-groupe de l'arrivée » — il n'y a pas de groupe à l'arrivée. Le passage se fait par $E$ : la question 6-a a relevé $G \subset E$ (tout élément $x+i$ a pour partie imaginaire $1 \neq 0$), et $(E,\ast)$ **est** un groupe (question 4-b). Le calcul de la question 6-b, qui ne dépend d'aucune propriété de $\mathbb{C}$ hors de la formule de $\ast$, vaut donc tel quel comme morphisme de $(\mathbb{R},+)$ vers $(E,\ast)$.
+
+          Les trois ingrédients du R7 sont alors en place :
+
+          - $(\mathbb{R},+)$ est un groupe **commutatif** — le groupe de référence, connu depuis toujours ;
+          - $\varphi$ est un morphisme de $(\mathbb{R},+)$ vers $(E,\ast)$ : question 6-b ;
+          - $\varphi$ est **bijective de $\mathbb{R}$ sur $G$** : surjective par $\varphi(\mathbb{R}) = G$ (question 6-a), injective parce que $x+i = x'+i$ impose $x = x'$ (relevé en 6-a).
+
+          $\varphi$ est donc un **isomorphisme** de $(\mathbb{R},+)$ sur $(G,\ast)$, et toute la structure passe telle quelle : $(G,\ast)$ est un groupe commutatif. La loi $\ast$ y est bien interne, ce que le morphisme fournit gratuitement — $\varphi(x)\ast\varphi(x') = \varphi(x+x') \in G$.
+
+          Le transport livre aussi les deux repères, sans calcul : le neutre de $(G,\ast)$ est $\varphi(0) = i$ (cohérent avec le neutre de $(E,\ast)$ trouvé en 4-b), et le symétrique de $x+i$ est $\varphi(-x) = -x+i$ (cohérent avec la formule générale $-\dfrac{x}{y^6} + \dfrac{1}{y}i$ prise en $y = 1$).
+
+          **Le piège à éviter.** Croire que la commutativité de $(G,\ast)$ s'hérite de $(E,\ast)$ comme l'associativité. Elle ne peut pas : $(E,\ast)$ n'est **pas** commutatif (question 4-b). Le chapitre « Sous-groupe » énonce l'héritage dans le seul sens où il est vrai — un sous-groupe d'un groupe commutatif est commutatif — et il ne dit rien du cas présent, où une partie est commutative dans un ambiant qui ne l'est pas. Rien de contradictoire : la non-commutativité de $\ast$ vient de l'exposant $5$ appliqué à des parties imaginaires **différentes**, et sur $G$ elles valent toutes $1$. Le contre-exemple de 4-b, $(1+i)$ et $2i$, ne vit d'ailleurs pas dans $G$ — $2i$ a une partie réelle nulle mais surtout une partie imaginaire $2 \neq 1$. La commutativité de $(G,\ast)$ vient donc de $(\mathbb{R},+)$ par transport, jamais de $(E,\ast)$ par héritage ; à défaut, elle se vérifie en une ligne sur la formule de 6-b, $(x+i)\ast(x'+i) = (x+x')+i$, expression symétrique en $x$ et $x'$.
+        steps:
+          - math: '(\mathbb{C},\ast) \ \text{n''est pas un groupe (q3-b)} \ \Longrightarrow\ \text{le transport passe par} \ E'
+            note: "Le détour obligé : on ne transporte pas une structure vers un ensemble sans structure."
+          - math: 'G \subset E \ (\operatorname{Im}(x+i) = 1 \neq 0) \quad \text{et} \quad (E,\ast) \ \text{groupe} \ (\text{q4-b})'
+            note: "L'ambiant qui convient est E, pas C."
+          - math: '\varphi \ \text{morphisme} \ (\text{q6-b}), \quad \varphi \ \text{bijective de} \ \mathbb{R} \ \text{sur} \ G \ (\text{q6-a})'
+            note: "Morphisme + bijectivité sur G : phi est un isomorphisme (rung R7)."
+          - math: '(\mathbb{R},+) \ \text{groupe commutatif} \ \xrightarrow{\ \varphi\ } \ (G,\ast) \ \text{groupe commutatif}'
+            note: "La structure se transporte intégralement, sans revérifier un seul axiome."
+          - math: '\text{neutre} = \varphi(0) = i, \qquad \text{symétrique de} \ x+i \ \text{est} \ \varphi(-x) = -x+i'
+            note: "Deux repères fournis gratuitement par le transport, cohérents avec q4-b."
+          - math: '(x+i)\ast(x''+i) = (x+x'') + i = (x''+x) + i = (x''+i)\ast(x+i)'
+            note: "Vérification directe de la commutativité sur G : elle ne vient PAS de E, qui n'est pas commutatif."
   # ── bk-2023-n-x5 — 2023 N, Exercice 5 : anneau de matrices M(x,y) sur R (pas un corps), corps G≅Q[√3] via un isomorphisme ──
   - id: bk-2023-n-x5
     title: "Anneau de matrices M(x,y) sur ℝ (pas un corps), corps G≅ℚ[√3] via un isomorphisme"

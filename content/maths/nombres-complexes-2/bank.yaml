@@ -7,17 +7,19 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les NEUF entrées sont des transcriptions FIDÈLES d'entrées
+# exercises.yaml). Les DIX entrées sont des transcriptions FIDÈLES d'entrées
 # « vérifié ». HUIT viennent de docs/sujets/maths/nombres-complexes-2.md
 # (re-fetch AlloSchool indépendant + diff caractère-par-caractère,
 # agent-vérificateur-adversarial, 2026-08-06 pour 2017 — 2e passe
 # indépendante —, 2026-07-12 pour 2019, 2026-08-05 pour 2020/2022/2024,
 # 2026-08-06 pour 2021/2023/2025) et couvrent 2017, 2019, 2020, 2021, 2022,
-# 2023, 2024, 2025, TOUTES en session normale. La NEUVIÈME — bk-2023-r-x2,
-# ajoutée par la campagne rattrapage du 2026-08-23 — vient de
-# docs/sujets/_incoming/maths-sm-2023-r.md et est la PREMIÈRE entrée de
-# session de RATTRAPAGE de cette banque (voir SCOPE NOTE 3). Filière
-# SCIENCES MATHÉMATIQUES (A) et (B), BIOF, pour les neuf. Aucun autre sujet
+# 2023, 2024, 2025, TOUTES en session normale. Les DEUX autres —
+# bk-2023-r-x2 puis bk-2024-r-x3, ajoutées par la campagne rattrapage du
+# 2026-08-23 — viennent respectivement de
+# docs/sujets/_incoming/maths-sm-2023-r.md et
+# docs/sujets/_incoming/maths-sm-2024-r.md : ce sont les DEUX SEULES entrées
+# de session de RATTRAPAGE de cette banque (voir SCOPE NOTE 3). Filière
+# SCIENCES MATHÉMATIQUES (A) et (B), BIOF, pour les dix. Aucun autre sujet
 # n'est disponible — introuvable = absent, jamais inventé.
 # Raisonnement rédigé à la voix experte de la maison sur 100 % des
 # questions ; barème transcrit tel quel dans les énoncés ; conventions
@@ -82,7 +84,10 @@
 # CLOS pour l'outil « second degré » : les entrées peuvent — et doivent —
 # s'y rattacher au lieu de le redémontrer. L'entrée bk-2023-r-x2 est la
 # première écrite sous ce régime et le fait explicitement (questions 1-b et
-# 1-c). Les huit entrées antérieures nomment encore l'outil au point d'usage
+# 1-c) ; bk-2024-r-x3 en fait autant (questions 1-a/1-b pour la racine δ du
+# discriminant, et question 2 pour le produit des racines lu sur les
+# coefficients sans résoudre). Les huit entrées antérieures nomment encore
+# l'outil au point d'usage
 # sans citer le chapitre : ce n'est pas faux, c'est seulement antérieur — une
 # passe de raccordement (rédactionnelle, pas mathématique) reste due sur
 # elles, à l'arbitrage de l'owner. Le reste de la SCOPE NOTE 1 (le fait que
@@ -112,6 +117,27 @@
 # ce n'est PAS une couverture du birapport par la présente leçon, et une
 # passe pédagogique reste due si l'owner préfère l'outil du birapport.
 #
+# MISE À JOUR DE LA SCOPE NOTE 2 (2026-08-23, avec bk-2024-r-x3). Le
+# contournement décrit ci-dessus n'est PAS possible sur la quatrième entrée
+# de cocyclicité : dans le sujet 2024 rattrapage, c'est LE SUJET LUI-MÊME qui
+# construit le birapport — sa question 2 fait calculer, explicitement, le
+# produit (z4−z2)/(z4−z1) × (z3−z1)/(z3−z2), et sa question 3 dit « en
+# déduire » la cocyclicité. Aucun chemin de géométrie élémentaire ne peut
+# répondre à un « en déduire » portant sur cette expression-là. Le reasoning
+# de bk-2024-r-x3 (question q5) fait donc ce que l'entrée doit faire : il
+# DÉCOMPOSE le birapport en ce qu'il est réellement — le QUOTIENT de deux
+# rapports du rung R6 pris aux sommets M4 et M3 —, lit chaque argument comme
+# l'angle sous lequel son sommet voit [M1M2] (rung R6, déjà enseigné), et ne
+# fait appel qu'à un seul résultat extérieur : le théorème de l'angle
+# inscrit en angles orientés modulo π (acquis de géométrie du lycée, pas un
+# outil de la présente leçon). Aucun « birapport » n'est présenté comme un
+# objet nouveau à retenir ; le mot n'apparaît pas dans le reasoning rendu.
+# La conclusion de la SCOPE NOTE 2 est donc renforcée, pas contredite : un
+# rung dédié — « quatre points cocycliques : l'angle inscrit lu sur les
+# affixes » — est désormais clairement dû, puisque le corpus contient
+# maintenant QUATRE entrées qui en dépendent, dont une où le sujet impose
+# l'outil. À l'arbitrage de l'owner.
+#
 # SCOPE NOTE 3 (session de RATTRAPAGE — nouvelle avec la passe du
 # 2026-08-23). bk-2023-r-x2 est la PREMIÈRE entrée de session de rattrapage
 # de cette banque : les huit autres sont toutes en session normale. Deux
@@ -128,6 +154,25 @@
 # algébrique du conjugué sur le cercle unité (ā = 1/a substitué dans un
 # rapport) qui ne figure dans aucune des huit entrées de session normale.
 # C'est un ajout de couverture réel, pas un doublon de volume.
+#
+# MISE À JOUR DE LA SCOPE NOTE 3 (2026-08-23) — bk-2024-r-x3, DEUXIÈME entrée
+# de rattrapage de cette banque, ajoutée dans la même campagne. Les trois
+# points de la note valent à l'identique. (a) Deux cartes 2024 cohabitent
+# désormais — bk-2024-n-x3 (« Bac 2024 · Normale », Exercice 3, équation
+# z²−2iz+α=0, orthogonalité en O, lieu géométrique) et bk-2024-r-x3
+# (« Bac 2024 · Rattrapage », Exercice 3 lui aussi). Même position sur
+# l'épreuve, même barème (3,5 pts), contenu DISJOINT : ce sont deux examens
+# distincts, pas deux versions d'un même sujet. Comme pour 2023, le titre de
+# l'entrée de rattrapage porte en clair « (2024 rattrapage) » pour que la
+# liste reste lisible sans dépliage — c'est ici indispensable, les deux
+# cartes portant le même exercise_label « Exercice 3 ». (b) Ce sujet de
+# rattrapage n'est pas un second choix : il apporte à la banque la seule
+# configuration ENTIÈREMENT paramétrée par un complexe m quelconque (les
+# quatre points sont m×{1, 1+i, 2i, k} — la configuration est la même à une
+# similitude près pour tout m), et le seul test de cocyclicité conduit par
+# le birapport que l'énoncé remet lui-même (voir la MISE À JOUR de la SCOPE NOTE 2).
+# (c) Le corpus MATHÉMATIQUES compte donc maintenant deux entrées de
+# rattrapage, toutes deux dans cette banque.
 #
 # SCOPE NOTE 4 (imprécisions du SUJET OFFICIEL 2023 rattrapage — signalées,
 # NON « réparées »). Le protocole de transcription interdit de corriger un
@@ -771,6 +816,278 @@ entries:
             note: "α=0 est sur ce cercle (|0+1|=1) mais y est exclu : sans trois points distincts, il n'y a pas de triangle."
           - math: '\Gamma = \big\{\,\Omega(\alpha)\ :\ |\alpha+1|=1\,\big\}\setminus\big\{\Omega(0)\big\}'
             note: "Cercle de centre le point d'affixe −1, rayon 1, privé du point d'affixe 0."
+
+  # ── bk-2024-r-x3 — 2024 RATTRAPAGE, Exercice 3 : équation paramétrée par m, rotation, homothétie, cocyclicité par le birapport ──
+  # DEUXIÈME entrée de session RATTRAPAGE de cette banque (voir SCOPE NOTE 3 en tête de fichier).
+  - id: bk-2024-r-x3
+    title: 'Équation paramétrée, rotation, homothétie et cocyclicité (2024 rattrapage)'
+    source:
+      year: 2024
+      session: rattrapage
+      filiere: "SM"
+      exercise_label: "Exercice 3"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session de rattrapage — examen national Sciences Mathématiques
+        (A) et (B), خيار فرنسية (BIOF), Mathématiques (4 h, coef 9), code
+        sujet RS 25, barème 3,5 points (Exercice 3, nombres complexes).
+        Source AlloSchool element/145741, scan course-436/upload-87449,
+        énoncé lu sur les pages 0003-big.jpg (Partie I) et 0004-big.jpg
+        (Partie II) ; page 0001-big.jpg pour les consignes. DEUXIÈME entrée
+        de session rattrapage de cette banque (après bk-2023-r-x2) : les huit
+        autres sont toutes en session normale. Transcription fidèle de
+        l'entrée « vérifié » de docs/sujets/_incoming/maths-sm-2024-r.md,
+        section « 2024 — session rattrapage — Exercice 3 » (re-fetch
+        AlloSchool indépendant, chemins d'images re-dérivés depuis le HTML,
+        relecture caractère par caractère, absence de figure PROUVÉE page par
+        page en trois bandes recouvrantes, re-dérivation mathématique de bout
+        en bout, agent-vérificateur-adversarial, 2026-08-23). Barème marginal
+        recompté sur le scan : Partie I 0,25 + 0,5 + 0,5 = 1,25 ; Partie II
+        0,75 + 0,75 + 0,75 = 2,25 ; total 3,5 pts, conforme à l'annonce de la
+        page 1 (et 6,5 + 3,5 + 3,5 + 3,5 + 3 = 20 sur l'épreuve entière).
+        Re-démontré une SECONDE fois à la conversion, indépendamment :
+        Δ = m²[(2+i)² − 4(1+i)] = m²(3+4i−4−4i) = −m² = (im)², racines
+        z = m et z = (1+i)m (contrôle Viète : somme (2+i)m = −b/a, produit
+        (1+i)m² = c/a), z₁z₂ = √2 r² e^{i(2θ+π/4)}, z₃ = z₂(1+i) = 2im,
+        z₄ = km, et le birapport
+        R = ((3k−4) − i(k+2)) / (2(k−1)) — Im R = 0 ⟺ k = −2, R valant
+        alors 5/3. Contrôle numérique sur six valeurs aléatoires de m et
+        quatre valeurs de k (accord à 10⁻¹⁵ près), plus vérification que les
+        quatre points sont EFFECTIVEMENT cocycliques en k = −2 : ils sont à
+        distance (√10/2)|m| du point d'affixe m(−1+i)/2 (pour m = 1, le
+        cercle x² + y² + x − y − 2 = 0). Aucune imprécision du sujet officiel
+        à signaler sur cet exercice : les quatre points sont deux à deux
+        distincts pour tout k réel admissible, et M₁, M₂, M₃ ne sont jamais
+        alignés — le « si et seulement si » de la question 3 est donc exact
+        tel qu'imprimé, sans cas dégénéré à retrancher.
+    intro: |-
+      **Nombres complexes (examen national Sciences Mathématiques, session de rattrapage 2024, Exercice 3 — 3,5 points).**
+
+      Soit $m \in \mathbb{C}^*$
+
+      **Partie I.** On considère dans $\mathbb{C}$ l'équation d'inconnue $z$
+
+      $$(E)\ :\ z^2 - (2+i)mz + m^2(1+i) = 0$$
+
+      **Partie II.** Le plan complexe est rapporté à un repère orthonormé direct $(O, \vec{e_1}, \vec{e_2})$. On pose $z_1 = m$ et $z_2 = m(1+i)$. Soit $M_1$ le point d'affixe $z_1$, $M_2$ le point d'affixe $z_2$, $M_3(z_3)$ l'image du point $O$ par la rotation de centre $M_2$ et d'angle $\left(-\dfrac{\pi}{2}\right)$, et $M_4(z_4)$ l'image du point $M_1$ par l'homothétie de centre $O$ et de rapport $k$ $\left(k \in \mathbb{R}^* - \{1\}\right)$.
+
+      **Ce que fait cet exercice.** Tout est paramétré par un complexe $m$ quelconque — et c'est le sujet lui-même qui organise sa disparition. La partie I résout une équation dont les trois coefficients dépendent de $m$ : le discriminant se factorise par $m^2$ et le reste est un calcul numérique d'une ligne (chapitre 1, « Résoudre une équation du second degré dans $\mathbb{C}$ »). La partie II place les racines dans le plan, leur applique une rotation et une homothétie (rung R5), puis demande un produit de quatre rapports d'affixes où **chaque** différence se factorise par $m$ : $m$ se simplifie entièrement et il ne reste qu'une fonction de $k$. Ce n'est pas un hasard — multiplier par $m$ est une rotation-homothétie de centre $O$ (rung R5), qui ne change ni les rapports de longueurs ni les angles. Le fil conducteur reste celui du chapitre : un rapport de deux affixes encode un rapport de longueurs et un angle (rung R6) ; ici on en prend deux, à deux sommets différents, et leur quotient devient un test de cocyclicité.
+    questions:
+      - id: q1a
+        part: 'Partie I — L''équation $(E)\ :\ z^2-(2+i)mz+m^2(1+i)=0$, avec $m\in\mathbb{C}^*$'
+        stem: |-
+          **(0,25 pt)** Vérifier que le discriminant de l'équation $(E)$ est $\Delta = (im)^2$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le verbe « vérifier » est un cadeau : la forme d'arrivée est donnée, et elle dit déjà à quoi elle servira. Écrire $\Delta$ sous la forme d'un **carré** — ici $(im)^2$ — c'est exactement ce dont la question suivante a besoin, puisque résoudre dans $\mathbb{C}$ réclame un $\delta$ tel que $\delta^2 = \Delta$ (chapitre 1, « Résoudre une équation du second degré dans $\mathbb{C}$ »). L'énoncé ne demande pas un calcul pour lui-même : il prépare le suivant.
+
+          Le calcul est celui de $\mathbb{R}$, $\Delta = b^2 - 4ac$, avec ici $a = 1$, $b = -(2+i)m$ et $c = m^2(1+i)$. Le geste qui l'allège : les deux termes sont proportionnels à $m^2$, donc on met $m^2$ en facteur **avant** de développer quoi que ce soit. Il ne reste alors qu'un calcul numérique sur $2+i$ :
+
+          $$(2+i)^2 - 4(1+i) = (4 + 4i + i^2) - (4+4i) = (3+4i) - (4+4i) = -1$$
+
+          d'où $\Delta = -m^2$. Et comme $i^2 = -1$, on a $-m^2 = i^2m^2 = (im)^2$ : c'est bien la forme annoncée.
+
+          **Le piège à éviter.** Lire « $\Delta = -m^2$ » et se dire « le discriminant est négatif ». Cette phrase n'a aucun sens ici : $m$ est un complexe quelconque, donc $-m^2$ est un complexe quelconque, et $\mathbb{C}$ n'est pas ordonné — il n'y a ni positif ni négatif à discuter. La discussion de signe est un réflexe de $\mathbb{R}$ qu'il faut laisser à la porte : dans $\mathbb{C}$, la seule question qui compte est « $\Delta$ est-il nul ou non ? ». Ici $m \neq 0$, donc $\Delta \neq 0$, donc deux racines distinctes.
+        steps:
+          - math: 'a=1,\quad b=-(2+i)m,\quad c=m^2(1+i) \implies \Delta = b^2-4ac = (2+i)^2m^2 - 4m^2(1+i)'
+            note: "Delta = b carré − 4ac ; le carré efface le signe moins de b."
+          - math: '\Delta = m^2\big[(2+i)^2-4(1+i)\big]'
+            note: "Les deux termes sont proportionnels à m² : on factorise AVANT de développer."
+          - math: '(2+i)^2 = 4+4i+i^2 = 3+4i \implies (2+i)^2-4(1+i) = (3+4i)-(4+4i) = -1'
+            note: "Le crochet vaut exactement −1 : tout le paramètre est déjà sorti."
+          - math: '\Delta = -m^2 = i^2m^2 = (im)^2'
+            note: "i² = −1 : le discriminant est le carré de im, la forme annoncée."
+          - math: 'm \in \mathbb{C}^* \implies \Delta = -m^2 \neq 0'
+            note: "Non nul : l'équation aura deux racines distinctes (pas de discussion de signe dans ℂ)."
+      - id: q1b
+        stem: |-
+          **(0,5 pt)** Résoudre dans $\mathbb{C}$ l'équation $(E)$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le chapitre « Résoudre une équation du second degré dans $\mathbb{C}$ » (chapitre 1) dit que la formule est **la même** que dans $\mathbb{R}$ — $z = \dfrac{-b \pm \delta}{2a}$ — à un seul détail près, mais décisif : le $\delta$ n'est pas « $\sqrt{\Delta}$ », c'est **une** racine carrée de $\Delta$, c'est-à-dire n'importe quel complexe vérifiant $\delta^2 = \Delta$. La question précédente vient de nous en offrir une sur un plateau : $\Delta = (im)^2$, donc $\delta = im$ convient.
+
+          On applique la formule, avec $-b = (2+i)m$ :
+
+          $$z = \frac{(2+i)m \pm im}{2}$$
+
+          Les deux signes se lisent d'un coup si l'on factorise par $m$ : $\;(2+i) + i = 2+2i\;$ et $\;(2+i) - i = 2$. Donc
+
+          $$z = \frac{(2+2i)m}{2} = (1+i)m \qquad \text{ou} \qquad z = \frac{2m}{2} = m$$
+
+          $$S = \big\{\,m\ ;\ (1+i)m\,\big\}$$
+
+          **Le contrôle gratuit, à faire systématiquement.** Le chapitre « Somme et produit des racines » donne, sans résoudre, $z_1+z_2 = -\dfrac{b}{a} = (2+i)m$ et $z_1z_2 = \dfrac{c}{a} = m^2(1+i)$. Or nos deux racines donnent $m + (1+i)m = (2+i)m$ et $m \times (1+i)m = (1+i)m^2$ : les deux coïncident exactement. Deux lignes, et l'erreur de calcul est exclue.
+
+          **Le piège à éviter.** Écrire « $\sqrt{\Delta} = im$ ». Dans $\mathbb{C}$, le symbole $\sqrt{\ }$ n'existe pas : il n'y a aucun moyen de choisir canoniquement l'une des deux racines carrées de $\Delta$ (ici $im$ et $-im$). Écrire $\sqrt{\Delta}$ dans une copie, c'est écrire un objet qui n'est pas défini. Et le choix ne change rien : prendre $\delta = -im$ échange simplement les rôles de $z_1$ et $z_2$, puisque le $\pm$ de la formule balaie déjà les deux possibilités.
+        steps:
+          - math: '\Delta = (im)^2 \implies \delta = im\ \text{convient}\ (\delta^2 = \Delta)'
+            note: "Une racine carrée de Delta, pas « la » : dans ℂ le symbole racine n'est pas défini."
+          - math: 'z = \dfrac{-b\pm\delta}{2a} = \dfrac{(2+i)m \pm im}{2} = \dfrac{\big[(2+i)\pm i\big]m}{2}'
+            note: "Même formule que dans ℝ ; on factorise par m pour lire les deux signes d'un coup."
+          - math: '(2+i)+i = 2+2i \implies z = \dfrac{(2+2i)m}{2} = (1+i)m'
+            note: "Signe +."
+          - math: '(2+i)-i = 2 \implies z = \dfrac{2m}{2} = m'
+            note: "Signe −."
+          - math: 'S = \big\{\,m\ ;\ (1+i)m\,\big\}'
+            note: "Les deux solutions, distinctes car m ≠ 0."
+          - math: 'm+(1+i)m = (2+i)m = -\dfrac{b}{a}, \qquad m\times(1+i)m = (1+i)m^2 = \dfrac{c}{a}'
+            note: "Contrôle par somme et produit des racines (chapitre 1) : les deux coïncident avec les coefficients."
+      - id: q2
+        part: 'Partie I (suite) — le cas $m = re^{i\theta}$ ($r \in \mathbb{R}_+^*$, $\theta \in \mathbb{R}$)'
+        stem: |-
+          **(0,5 pt)** Soient $z_1$ et $z_2$ les deux solutions de $(E)$.
+
+          Mettre sous la forme exponentielle $z_1 z_2$ dans le cas où $m = re^{i\theta}$ ($r \in \mathbb{R}_+^*$, $\theta \in \mathbb{R}$)
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On pourrait multiplier les deux racines trouvées. C'est inutile : le produit des racines se lit **directement sur les coefficients**, sans les racines (chapitre 1, « Somme et produit des racines : lire l'équation sans la résoudre ») :
+
+          $$z_1 z_2 = \frac{c}{a} = m^2(1+i)$$
+
+          Reste à mettre ce produit sous forme exponentielle. Un produit se traite facteur par facteur — les modules se multiplient, les arguments s'ajoutent (rung R2) :
+
+          - $m = re^{i\theta}$ donne $m^2 = r^2 e^{2i\theta}$ (c'est Moivre, rung R3 : le module est élevé au carré, l'argument doublé) ;
+          - $1+i$ a pour module $\sqrt{1^2+1^2} = \sqrt2$ et pour argument $\dfrac{\pi}{4}$, donc $1+i = \sqrt2\,e^{i\frac{\pi}{4}}$.
+
+          D'où
+
+          $$z_1z_2 = r^2e^{2i\theta} \times \sqrt2\,e^{i\frac{\pi}{4}} = \sqrt2\,r^2\; e^{i\left(2\theta + \frac{\pi}{4}\right)}$$
+
+          **Le piège à éviter.** Une forme exponentielle $\rho\,e^{i\varphi}$ n'en est une que si $\rho > 0$ : le module est une longueur, jamais un nombre négatif. Ici le réflexe doit se déclencher et se refermer aussitôt — $r \in \mathbb{R}_+^*$ donc $r^2 > 0$, et $\sqrt2 > 0$ : le coefficient $\sqrt2\,r^2$ est bien strictement positif, rien à corriger. Mais l'habitude est à prendre : si le coefficient devant $e^{i\varphi}$ était sorti négatif, il aurait fallu absorber son signe en ajoutant $\pi$ à l'argument ($-\rho\,e^{i\varphi} = \rho\,e^{i(\varphi+\pi)}$), sans quoi ce qu'on écrit n'est pas une forme exponentielle. Second réflexe : $2\theta + \dfrac{\pi}{4}$ est **un** argument, défini modulo $2\pi$, pas « l'argument ».
+        steps:
+          - math: 'z_1z_2 = \dfrac{c}{a} = m^2(1+i)'
+            note: "Produit des racines lu sur les coefficients (chapitre 1) : inutile de multiplier les racines."
+          - math: 'm = re^{i\theta} \implies m^2 = r^2e^{2i\theta}'
+            note: "Moivre (rung R3) : module au carré, argument doublé."
+          - math: '|1+i| = \sqrt2,\quad \arg(1+i) = \dfrac{\pi}{4} \implies 1+i = \sqrt2\,e^{i\frac{\pi}{4}}'
+            note: "Forme exponentielle du facteur numérique."
+          - math: 'z_1z_2 = r^2e^{2i\theta}\times\sqrt2\,e^{i\frac{\pi}{4}} = \sqrt2\,r^2\,e^{i\left(2\theta+\frac{\pi}{4}\right)}'
+            note: "Produit : les modules se multiplient, les arguments s'ajoutent (rung R2)."
+          - math: '|z_1z_2| = \sqrt2\,r^2 > 0, \qquad \arg(z_1z_2) = 2\theta+\dfrac{\pi}{4}\ [2\pi]'
+            note: "Le coefficient est bien strictement positif : c'est une vraie forme exponentielle."
+      - id: q3
+        part: 'Partie II — $z_1 = m$, $z_2 = m(1+i)$ ; $M_3$ image de $O$ par $r\left(M_2, -\frac{\pi}{2}\right)$, $M_4$ image de $M_1$ par $h(O,k)$'
+        stem: |-
+          **(0,75 pt)** Calculer $z_3$ en fonction de $m$ et $z_4$ en fonction de $m$ et $k$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux transformations, une même écriture (rung R5) : une rotation de centre $\Omega$ et d'angle $\alpha$, comme une homothétie de centre $\Omega$ et de rapport $k$, s'écrivent
+
+          $$z_{\text{image}} - z_\Omega = c\,\big(z_{\text{antécédent}} - z_\Omega\big)$$
+
+          avec $c = e^{i\alpha}$ pour la rotation et $c = k$ pour l'homothétie. Tout le travail consiste à ne pas se tromper sur **qui est quoi**.
+
+          **Pour $M_3$** : le centre est $M_2$, l'antécédent est $O$ (affixe $0$), l'image est $M_3$, l'angle est $-\dfrac{\pi}{2}$, et $e^{-i\frac{\pi}{2}} = -i$. Donc
+
+          $$z_3 - z_2 = -i\,(0 - z_2) = i\,z_2 \quad\Longrightarrow\quad z_3 = z_2 + iz_2 = (1+i)z_2$$
+
+          Or $z_2 = m(1+i)$, donc $z_3 = m(1+i)^2$. Et $(1+i)^2 = 1 + 2i + i^2 = 2i$ — l'identité qui traverse toute cette notion. D'où
+
+          $$z_3 = 2im$$
+
+          **Pour $M_4$** : le centre est $O$, donc l'écriture se réduit à $z_4 = k\,z_1$, soit
+
+          $$z_4 = km$$
+
+          **Le piège à éviter.** Inverser l'antécédent et l'image dans la formule de la rotation. Si l'on écrit par distraction $z_3 - z_2 = e^{-i\frac{\pi}{2}}(z_2 - 0)$, on obtient $z_3 = z_2(1 - i) = m(1+i)(1-i) = 2m$ — un résultat **propre, court et faux**, qui ne déclenchera aucune alarme et fera échouer silencieusement les deux questions suivantes. La parade est mécanique : dans $z' - z_\Omega = c(z - z_\Omega)$, à droite se trouve toujours l'**antécédent**, ici $O$, le point dont on prend l'image. Second point, mineur mais coûteux : $e^{-i\frac{\pi}{2}} = -i$, pas $i$ — c'est un quart de tour dans le sens **horaire**.
+
+          **Une remarque à garder pour la suite.** $k$ est réel non nul et différent de $1$ : rien n'interdit $k < 0$. Une homothétie de rapport négatif est parfaitement licite — elle envoie le point de l'autre côté du centre. Ne l'écarte pas d'un réflexe : la réponse finale de l'exercice est justement $k = -2$.
+        steps:
+          - math: 'r\!\left(M_2,-\tfrac{\pi}{2}\right) : \ z_3 - z_2 = e^{-i\frac{\pi}{2}}\,(0-z_2), \qquad e^{-i\frac{\pi}{2}} = -i'
+            note: "Rung R5 : à droite l'antécédent (le point O), à gauche l'image ; le centre est M2."
+          - math: 'z_3 - z_2 = -i\times(-z_2) = i\,z_2 \implies z_3 = (1+i)z_2'
+            note: "Les deux signes moins se compensent."
+          - math: 'z_3 = (1+i)\times m(1+i) = m(1+i)^2 = m\times 2i = 2im'
+            note: "(1+i)² = 2i, l'identité qui traverse toute la notion."
+          - math: 'h(O,k) : \ z_4 - 0 = k\,(z_1-0) \implies z_4 = k\,z_1 = km'
+            note: "Homothétie de centre O : l'écriture se réduit à une multiplication par k."
+      - id: q4
+        stem: |-
+          **(0,75 pt)** Donner la forme algébrique de $\dfrac{z_4 - z_2}{z_4 - z_1} \times \dfrac{z_3 - z_1}{z_3 - z_2}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Avant de calculer, regarde les quatre affixes : $z_1 = m$, $z_2 = m(1+i)$, $z_3 = 2im$, $z_4 = km$. **Toutes** sont un multiple de $m$. Donc chacune des quatre différences se factorise par $m$, et le paramètre disparaît du quotient. C'est le vrai contenu de la question : le résultat ne dépendra que de $k$.
+
+          Ce n'est pas une coïncidence de calcul. Multiplier par $m$ est une rotation-homothétie de centre $O$ (rung R5) : elle multiplie toutes les longueurs par $|m|$ et tourne toutes les directions du même angle $\arg m$. Un quotient de rapports d'affixes ne voit ni l'une ni l'autre. La configuration des quatre points est donc **la même à une similitude près**, quel que soit $m$.
+
+          Les quatre différences :
+
+          $$z_4 - z_2 = km - m(1+i) = m(k-1-i) \qquad z_4 - z_1 = km - m = m(k-1)$$
+
+          $$z_3 - z_1 = 2im - m = m(2i-1) \qquad z_3 - z_2 = 2im - m(1+i) = m(i-1)$$
+
+          Les dénominateurs sont non nuls : $m \neq 0$, $k \neq 1$ (donné) et $i - 1 \neq 0$. On simplifie par $m$ :
+
+          $$R = \frac{(k-1-i)(2i-1)}{(k-1)(i-1)}$$
+
+          On traite d'abord le bloc purement numérique $\dfrac{2i-1}{i-1}$, par la méthode du conjugué (chapitre 1) — le conjugué de $-1+i$ est $-1-i$ :
+
+          $$\frac{-1+2i}{-1+i} = \frac{(-1+2i)(-1-i)}{(-1+i)(-1-i)} = \frac{1+i-2i-2i^2}{1-i^2} = \frac{3-i}{2}$$
+
+          Il ne reste qu'un développement, en posant $u = k-1$ pour y voir clair :
+
+          $$(u-i)(3-i) = 3u - ui - 3i + i^2 = \big(3u-1\big) - i\big(u+3\big) = (3k-4) - i(k+2)$$
+
+          $$R = \frac{(3k-4) - i(k+2)}{2(k-1)} = \boxed{\;\frac{3k-4}{2(k-1)} \;-\; i\,\frac{k+2}{2(k-1)}\;}$$
+
+          **Le piège à éviter.** S'arrêter à la fraction unique $\dfrac{(3k-4)-i(k+2)}{2(k-1)}$ en pensant avoir fini. L'énoncé demande la **forme algébrique**, c'est-à-dire $x + iy$ avec $x$ et $y$ réels séparés — et ce n'est pas une exigence cosmétique : la question suivante ne travaille que sur la partie imaginaire, qu'il faut donc avoir isolée. Ici la séparation est immédiate parce que le dénominateur $2(k-1)$ est **réel** (c'est $k$ réel qui le garantit) : diviser par un réel ne mélange pas partie réelle et partie imaginaire. Vérifie ce point avant de séparer — avec un dénominateur complexe, il aurait fallu repasser par le conjugué.
+        steps:
+          - math: 'z_4-z_2 = km-m(1+i) = m(k-1-i), \qquad z_4-z_1 = km-m = m(k-1)'
+            note: "Chaque différence se factorise par m."
+          - math: 'z_3-z_1 = 2im-m = m(2i-1), \qquad z_3-z_2 = 2im-m(1+i) = m(i-1)'
+            note: "Idem pour les deux autres."
+          - math: 'm\neq 0,\quad k\neq 1,\quad i-1\neq 0 \implies R = \dfrac{(k-1-i)(2i-1)}{(k-1)(i-1)}'
+            note: "Dénominateurs non nuls ; m se simplifie entièrement — le résultat ne dépendra que de k."
+          - math: '\dfrac{2i-1}{i-1} = \dfrac{(-1+2i)(-1-i)}{(-1+i)(-1-i)} = \dfrac{3-i}{2}'
+            note: "Méthode du conjugué (chapitre 1) sur le bloc numérique ; le dénominateur devient 2."
+          - math: '(k-1-i)(3-i) = 3(k-1)-1 - i\big[(k-1)+3\big] = (3k-4)-i(k+2)'
+            note: "Développement ; poser u = k−1 évite les erreurs de signe."
+          - math: 'R = \dfrac{(3k-4)-i(k+2)}{2(k-1)} = \dfrac{3k-4}{2(k-1)} - i\,\dfrac{k+2}{2(k-1)}'
+            note: "Forme algébrique : le dénominateur 2(k−1) est réel, donc la séparation est immédiate."
+      - id: q5
+        stem: |-
+          **(0,75 pt)** En déduire que les points $M_1, M_2, M_3$ et $M_4$ sont cocycliques si et seulement si $k = -2$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Il faut d'abord comprendre ce que le sujet vient de nous faire calculer. Regroupe le produit autrement :
+
+          $$R = \frac{z_4-z_2}{z_4-z_1}\times\frac{z_3-z_1}{z_3-z_2} = \frac{\;\dfrac{z_4-z_2}{z_4-z_1}\;}{\;\dfrac{z_3-z_2}{z_3-z_1}\;}$$
+
+          Ce sont **deux rapports du rung R6**, pris à deux sommets différents. Le premier, $\dfrac{z_4-z_2}{z_4-z_1}$, a pour argument l'angle $\left(\vec{M_4M_1},\vec{M_4M_2}\right)$ : l'angle sous lequel $M_4$ voit le segment $[M_1M_2]$. Le second a pour argument $\left(\vec{M_3M_1},\vec{M_3M_2}\right)$ : l'angle sous lequel $M_3$ voit **le même** segment.
+
+          Dire que leur quotient $R$ est réel (il est non nul, car $z_4 \neq z_2$ pour $k$ réel), c'est dire que $\arg R = 0\ [\pi]$, c'est-à-dire que ces deux angles sont égaux modulo $\pi$ : $M_3$ et $M_4$ voient $[M_1M_2]$ sous le même angle. C'est exactement le **théorème de l'angle inscrit**, en angles orientés modulo $\pi$ : deux points voient un segment sous le même angle si et seulement s'ils sont sur un même cercle passant par les extrémités de ce segment — ou si les quatre points sont alignés.
+
+          **Il faut donc écarter le cas « alignés »**, et c'est gratuit ici :
+
+          $$\frac{z_3-z_1}{z_2-z_1} = \frac{m(2i-1)}{m\,i} = \frac{2i-1}{i} = 2 + i \notin \mathbb{R}$$
+
+          (on multiplie haut et bas par $-i$ : $\;(2i-1)(-i) = -2i^2 + i = 2+i$). Donc $M_1$, $M_2$, $M_3$ ne sont **jamais** alignés, quel que soit $m \in \mathbb{C}^*$ (rung R6, première ligne de la table de lecture). Il existe par conséquent un **unique** cercle $(\mathcal{C})$ passant par ces trois points, et « $R$ réel » ne peut signifier qu'une chose : $M_4 \in (\mathcal{C})$.
+
+          Les quatre points sont d'ailleurs deux à deux distincts pour tout $k$ admissible : $M_4 = M_1 \iff k=1$ (exclu par l'énoncé), $M_4 = M_2 \iff k = 1+i$ et $M_4 = M_3 \iff k = 2i$, deux valeurs non réelles. Aucun cas dégénéré à retrancher.
+
+          **Il ne reste qu'à résoudre.** Avec la forme algébrique de la question précédente :
+
+          $$R \in \mathbb{R} \iff \mathrm{Im}(R) = 0 \iff \frac{k+2}{2(k-1)} = 0 \iff k+2 = 0 \iff k = -2$$
+
+          (la dernière équivalence est licite parce que $k \neq 1$, donc $2(k-1) \neq 0$). Et $-2$ appartient bien à $\mathbb{R}^*-\{1\}$. Contrôle : pour $k=-2$, $R = \dfrac{3(-2)-4}{2(-3)} = \dfrac{-10}{-6} = \dfrac{5}{3}$, réel comme attendu.
+
+          **Le piège à éviter.** Écrire « $R$ réel donc les quatre points sont cocycliques » et s'arrêter là. Le critère de l'angle inscrit ne donne jamais la cocyclicité seule : il donne **cocycliques *ou* alignés**. Le cas d'alignement doit être explicitement tué, sinon le « si et seulement si » demandé n'est pas démontré. Ici il l'est en une ligne — mais c'est une ligne qui vaut des points, et le correcteur la cherche. Second piège, plus discret : ne « simplifie » pas $\dfrac{k+2}{2(k-1)} = 0$ en $k+2=0$ sans avoir dit pourquoi le dénominateur ne s'annule pas ; c'est l'hypothèse $k \neq 1$ de l'énoncé qui sert ici, et elle ne sert qu'ici.
+        steps:
+          - math: 'R = \dfrac{z_4-z_2}{z_4-z_1}\times\dfrac{z_3-z_1}{z_3-z_2} = \left.\dfrac{z_4-z_2}{z_4-z_1}\middle/\dfrac{z_3-z_2}{z_3-z_1}\right.'
+            note: "Le produit donné est le QUOTIENT de deux rapports du rung R6, pris aux sommets M4 et M3."
+          - math: '\arg\!\left(\dfrac{z_4-z_2}{z_4-z_1}\right) = \left(\vec{M_4M_1},\vec{M_4M_2}\right), \qquad \arg\!\left(\dfrac{z_3-z_2}{z_3-z_1}\right) = \left(\vec{M_3M_1},\vec{M_3M_2}\right)'
+            note: "Rung R6 : chaque rapport porte l'angle sous lequel son sommet voit le segment [M1M2]."
+          - math: 'R \in \mathbb{R}^* \iff \arg R = 0\ [\pi] \iff \left(\vec{M_4M_1},\vec{M_4M_2}\right) = \left(\vec{M_3M_1},\vec{M_3M_2}\right)\ [\pi]'
+            note: "Un complexe non nul est réel exactement quand son argument vaut 0 modulo pi."
+          - math: '\text{Angle inscrit} : \ M_3,\ M_4\ \text{voient}\ [M_1M_2]\ \text{sous le même angle} \iff M_1,M_2,M_3,M_4\ \text{cocycliques ou alignés}'
+            note: "Le critère ne donne JAMAIS la cocyclicité seule : le cas aligné doit être écarté à part."
+          - math: '\dfrac{z_3-z_1}{z_2-z_1} = \dfrac{m(2i-1)}{m\,i} = 2+i \notin \mathbb{R} \implies M_1,M_2,M_3\ \text{jamais alignés}'
+            note: "Rung R6 : rapport non réel = pas d'alignement. Un unique cercle passe donc par M1, M2, M3."
+          - math: 'M_4=M_1 \iff k=1\ (\text{exclu}),\quad M_4=M_2 \iff k=1+i,\quad M_4=M_3 \iff k=2i'
+            note: "1+i et 2i ne sont pas réels : les quatre points sont deux à deux distincts pour tout k admissible."
+          - math: 'R \in \mathbb{R} \iff \mathrm{Im}(R)=0 \iff \dfrac{k+2}{2(k-1)}=0 \iff k+2=0 \iff k=-2'
+            note: "La dernière équivalence utilise k ≠ 1, donc 2(k−1) ≠ 0."
+          - math: 'k=-2 \implies R = \dfrac{3(-2)-4}{2(-2-1)} = \dfrac{-10}{-6} = \dfrac{5}{3} \in \mathbb{R}'
+            note: "Contrôle numérique de la valeur trouvée."
+          - math: 'k=-2,\ m=1 : \ M_1(1),\ M_2(1+i),\ M_3(2i),\ M_4(-2)\ \text{sur}\ x^2+y^2+x-y-2=0'
+            note: "Contrôle indépendant : cercle de centre −1/2 + i/2 et de rayon racine de 10 sur 2 ; pour m quelconque, son image par z ↦ mz."
 
   # ── bk-2021-n-x2 — 2021 N, Exercice 2 : équation par Viète, rotations ±π/2, cocyclicité ──
   - id: bk-2021-n-x2
