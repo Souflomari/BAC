@@ -661,6 +661,154 @@ entries:
           - math: '\boxed{C = 5{,}0\times10^{-5}\ \text{F} = 50\ \mu\text{F}}'
             note: "Résultat demandé."
 
+  # ── bk-2023-r-x3 — 2023 R, Exercice 3 (section 1) : échelon RC lu sur q(t), tangente à l'origine, énergie ──
+  - id: bk-2023-r-x3
+    title: "Charge d'un condensateur par un échelon de tension : équation différentielle en q(t), capacité lue à la tangente et énergie emmagasinée"
+    source:
+      year: 2023
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — 1. Réponse d'un dipôle RC à un échelon de tension"
+    bareme_total: 1.5
+    duration_min: 9
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), AlloSchool RS 28F, element/142484 (Exercice 3,
+        section 1 — réponse d'un dipôle RC à un échelon de tension ; barème
+        de la section = 1,5 pt (0,5 + 0,5 + 0,5) sur les 4,75 pt de
+        l'exercice complet, qui comporte aussi une section 2 sur les
+        oscillations libres d'un circuit RLC série et son entretien —
+        transcrite sous rlc-serie.md — et une section 3 sur le circuit
+        bouchon LC de la détection AM — transcrite sous
+        ondes-em-modulation.md). Transcription vérifiée par une passe
+        adversariale indépendante (2026-08-23) : re-fetch des 6 pages du
+        scan, figures re-décrites depuis le dessin (upload-85310/
+        0004-big.jpg et 0005-big.jpg) et non depuis l'énoncé, puis physique
+        re-dérivée. Trois défauts de figure levés par cette passe, dont deux
+        portent directement sur cette section. (a) Le sous-quadrillage de la
+        figure 2 était annoncé à 5 petits carreaux par division majeure ; il
+        en compte 10 (mesure : pas fin 5,9 px contre 59,4 px pour la
+        division majeure) — c'est exactement ce facteur qui permet de lire
+        0,35 ms SUR un trait plutôt qu'au jugé entre deux traits. (b) La
+        lecture tau = 0,35 ms, dont dépend toute la question 1-2, n'est plus
+        « à confirmer » : la tangente (T) coupe le palier à l'abscisse
+        866,8 px, le repère 0,35 ms étant à 866,6 px, et deux re-dérivations
+        concordent — tau = R.C0 = 35 x 10e-6 = 0,35 ms, et la courbe passe à
+        cet instant par 0,632 q_max = 75,8 µC (mesuré 75,9). (c) Quatrième
+        correction, hors périmètre de cette section mais reprise dans la
+        description : l'interrupteur K de la figure 1 est dessiné OUVERT sur
+        le scan, ne touchant ni (1) ni (2) — une figure refaite « en
+        position (1) » trahirait le sujet. Re-dérivations recoupées :
+        C0 = tau/R = 0,35e-3/35 = 10 µF (valeur exacte que la question 1-2
+        demande de vérifier) ; E = q_max/C0 = 120e-6/10e-6 = 12 V ;
+        Ee = 0,5 x C0 x E^2 = 0,72 mJ, retrouvée par la voie q^2/(2 C0).
+        INCOHÉRENCE DU SUJET OFFICIEL, signalée sans être réparée : le même
+        « condensateur de capacité C ajustable » vaut 10 µF ici et doit
+        valoir 3 à 11 pF dans la section 3 — six ordres de grandeur d'écart,
+        hors d'atteinte d'un condensateur variable réel. Les trois sections
+        restent exploitables séparément (d'où trois entrées de banque
+        distinctes), mais aucune leçon ne doit présenter ce montage comme un
+        dispositif unique physiquement réalisable.
+    intro: |-
+      **Charge d'un condensateur par un échelon de tension (examen national, session de rattrapage 2023 — Exercice 3, section 1, 1,5 point).**
+
+      On se propose dans cet exercice d'étudier : la charge d'un condensateur et sa décharge dans un dipôle RL ; la détection d'un signal modulé en amplitude.
+
+      Le montage électrique représenté par le schéma de la figure 1 comporte : un générateur de tension de force électromotrice $E$ ; un condensateur de capacité $C$ ajustable, initialement déchargé ; un conducteur ohmique de résistance $R = 35\ \Omega$ ; un interrupteur $K$ à double position ; une bobine d'inductance $L$ et de résistance négligeable.
+
+      **1 — Réponse d'un dipôle RC à un échelon de tension.** À un instant choisi comme origine des dates $t_0 = 0$ on met l'interrupteur $K$ en position (1). Un système d'acquisition informatisé adéquat permet d'obtenir la courbe d'évolution temporelle de la charge $q(t)$ du condensateur lors de sa charge. $(T)$ représente la tangente à la courbe au point d'abscisse $t_0 = 0$ (figure 2).
+
+      **Figure 1 (schéma).** Circuit à deux mailles. Branche de gauche : le générateur, symbole cercle traversé verticalement par le fil, avec à sa gauche une flèche verticale montante étiquetée « E ». Branche du haut : le fil part du sommet du générateur vers la droite et s'arrête sur une borne marquée d'un gros point, étiquetée « (1) » au-dessus ; plus à droite, une seconde borne à point étiquetée « (2) », d'où le fil repart vers le coin supérieur droit. L'interrupteur $K$ est dessiné en position ouverte : son levier part du sommet de la branche centrale et monte obliquement vers le haut-gauche, en passant au-dessus et à droite de la borne (1) sans la toucher (il ne touche pas davantage (2)) ; l'étiquette « K » est imprimée au-dessus de l'extrémité libre du levier, entre les étiquettes « (1) » et « (2) ». Branche centrale (verticale, du pivot de $K$ jusqu'au fil du bas), de haut en bas : le conducteur ohmique (rectangle vertical, étiquette « R » à droite), puis le condensateur ajustable (deux armatures horizontales barrées d'une flèche oblique, étiquette « C » à droite) avec la tension $u_C$ fléchée vers le haut à sa gauche, puis la flèche du courant « i » orientée vers le bas sous le condensateur. Branche de droite : la bobine (spires), étiquette « L » à sa gauche, reliant la borne (2) — via le coin supérieur droit — au coin inférieur droit. Branche du bas : fil refermant les deux mailles. Légende « Figure 1 », sous le cadre.
+
+      **Figure 2 (courbe).** $q\ (\mu\text{C})$ en fonction de $t\ (\text{ms})$, sur quadrillage à double graduation : traits majeurs sombres, sous-quadrillage fin bleu à **10 petits carreaux par division majeure**. Axe des ordonnées : seules les valeurs $20$ et $40$ sont chiffrées (traits majeurs tous les $20\ \mu\text{C}$, donc un petit carreau $= 2\ \mu\text{C}$) ; six traits majeurs au-dessus de zéro, le sixième valant $120\ \mu\text{C}$, et le bord supérieur du cadre passe juste au-dessus de ce trait (à environ $122\ \mu\text{C}$). Axe des abscisses : seules les valeurs $0{,}5$ et $1$ sont chiffrées (traits majeurs tous les $0{,}5\ \text{ms}$, donc un petit carreau $= 0{,}05\ \text{ms}$) ; le cadre s'étend sur $5$ divisions majeures, soit jusqu'à $2{,}5\ \text{ms}$. Courbe croissante, concave, partant de l'origine et tendant vers un palier confondu avec le trait majeur $q = 120\ \mu\text{C}$ : à partir de $t \approx 1{,}8\ \text{ms}$ le tracé se superpose exactement à cette gridline. La tangente $(T)$ à l'origine, en pointillés, étiquetée « (T) » en haut à gauche, monte raide et coupe le niveau du palier à $t = 0{,}35\ \text{ms}$ — l'intersection tombe sur le septième trait fin après l'origine. Légende « Figure 2 ».
+    questions:
+      - id: q1
+        part: "1 — Établir le modèle, cette fois en q(t)"
+        stem: |-
+          **1-1.** (0,5 pt) Établir l'équation différentielle vérifiée par la charge $q(t)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On veut une équation qui ne contienne qu'UNE seule fonction inconnue du temps. Le circuit, lui, en offre trois à la fois — $q$, $u_C$ et $i$ — reliées entre elles. Le geste est donc toujours le même : écrire la loi des mailles, puis remplacer chaque tension par ce que son dipôle impose, jusqu'à ce que seule $q$ subsiste. C'est le mécanisme du rung 1 de la leçon, à ceci près que l'inconnue demandée ici est la CHARGE et non $u_C$.
+
+          **Le pont à faire.** Le rung 1 établit l'équation en $u_C$ ; le passage à $q$ ne coûte qu'une ligne, avec les deux relations que ce même rung rappelle : $i = \dfrac{dq}{dt}$ (le courant est le débit de charge) et $q = C\,u_C$ (définition de la capacité), d'où $u_C = \dfrac{q}{C}$.
+
+          Interrupteur en position (1) : la maille active est celle du générateur, de $R$ et de $C$. En convention récepteur pour $R$ et pour $C$ :
+
+          $$E = u_R + u_C$$
+
+          On remplace la tension aux bornes du conducteur ohmique par la loi d'Ohm, en écrivant le courant comme débit de charge :
+
+          $$u_R = R\,i = R\,\frac{dq}{dt}$$
+
+          et la tension aux bornes du condensateur par la définition de la capacité :
+
+          $$u_C = \frac{q}{C}$$
+
+          On reporte les deux dans la maille :
+
+          $$\boxed{R\,\frac{dq}{dt} + \frac{q}{C} = E}$$
+
+          C'est bien une équation à une seule inconnue, $q(t)$ — le courant a disparu, absorbé par $\dfrac{dq}{dt}$.
+
+          **Le piège de cette question.** Il apparaît quand on veut « ranger » l'équation en multipliant par $C$ : on obtient $RC\dfrac{dq}{dt} + q = C\,E$, et le $C$ du second membre s'oublie très souvent, ce qui donne le faux $RC\dfrac{dq}{dt} + q = E$. Le test qui tranche est dimensionnel, et il est gratuit : à gauche on additionne des coulombs, à droite $E$ est en volts — l'égalité ne peut pas tenir. Le second membre d'une équation en $q$ est $C\,E$, jamais $E$. Piège jumeau, plus discret : écrire $u_C = C\,q$ au lieu de $\dfrac{q}{C}$ ; là encore, $q = C\,u_C$ est la relation de départ, on l'inverse, on ne la recopie pas.
+      - id: q2
+        part: "1 — Lire la constante de temps sur la tangente, puis vérifier C0"
+        stem: |-
+          **1-2.** (0,5 pt) En vous aidant du graphe de la figure 2, vérifier que la valeur à laquelle est ajustée la capacité $C$ du condensateur est $C_0 = 10\ \mu\text{F}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le mot « vérifier » est un ordre : la valeur $C_0 = 10\ \mu\text{F}$ ne doit surtout pas être réutilisée comme donnée, il faut la RETROUVER par un chemin indépendant. Or la seule grandeur du circuit déjà connue est $R = 35\ \Omega$, et la seule grandeur mesurable sur la figure 2 qui contienne la capacité est la constante de temps $\tau = RC$. Le chemin est donc forcé : lire $\tau$ sur le graphe, puis en déduire $C$.
+
+          **Le pont à faire.** Le rung 3 démontre la méthode de la tangente à l'origine sur la courbe $u_C(t)$, qui coupe l'asymptote $u_C = E$ en $t = \tau$. Ici la courbe est $q(t)$ — la démonstration se refait en une ligne, à l'identique. La solution est $q(t) = Q\left(1 - e^{-t/\tau}\right)$ avec $Q$ la charge du palier, donc la pente à l'origine vaut
+
+          $$\frac{dq}{dt}(0) = \frac{Q}{\tau}$$
+
+          La tangente est donc la droite $y = \dfrac{Q}{\tau}\,t$, et elle atteint la hauteur $Q$ du palier quand $\dfrac{Q}{\tau}\,t = Q$, c'est-à-dire en
+
+          $$t = \tau$$
+
+          **La lecture.** Sur la figure 2, le palier est confondu avec le trait majeur $q = 120\ \mu\text{C}$, et la tangente $(T)$ coupe ce niveau à l'abscisse $t = 0{,}35\ \text{ms}$ :
+
+          $$\tau = 0{,}35\ \text{ms} = 0{,}35\times10^{-3}\ \text{s}$$
+
+          **La capacité.** On inverse $\tau = RC$, avec $R = 35\ \Omega$ donné dans l'énoncé :
+
+          $$C = \frac{\tau}{R} = \frac{0{,}35\times10^{-3}}{35} = 1{,}0\times10^{-5}\ \text{F}$$
+
+          $$\boxed{C = 1{,}0\times10^{-5}\ \text{F} = 10\ \mu\text{F} = C_0}$$
+
+          La valeur annoncée est retrouvée : la lecture $\tau = 0{,}35\ \text{ms}$ était donc juste.
+
+          **Le contrôle qui rassure.** Deux recoupements gratuits sur la même figure. D'abord la méthode des 63 % (rung 3) : à $t = \tau$ la courbe doit passer par $0{,}632\,Q = 0{,}632\times120 \approx 75{,}8\ \mu\text{C}$, et c'est bien la hauteur du tracé à $0{,}35\ \text{ms}$. Ensuite la fin de charge : le régime permanent est atteint vers $5\tau = 5\times0{,}35 = 1{,}75\ \text{ms}$, et la courbe rejoint effectivement le palier vers $t \approx 1{,}8\ \text{ms}$. Trois lectures indépendantes qui se confirment.
+
+          **Le piège de cette question.** Il est dans le sous-quadrillage, et il double la réponse. Une division majeure de l'axe des temps vaut $0{,}5\ \text{ms}$ et se subdivise en **dix** petits carreaux, donc un petit carreau vaut $0{,}05\ \text{ms}$ : l'intersection tombe sur le septième petit trait, soit $7\times0{,}05 = 0{,}35\ \text{ms}$. Compter en supposant cinq carreaux par division — le réflexe naturel quand le sous-quadrillage est fin et pâle — donne $0{,}70\ \text{ms}$ et, par $C = \tau/R$, une capacité de $20\ \mu\text{F}$, le double. Avant de compter des carreaux, compte-les entre deux traits CHIFFRÉS. Piège jumeau : c'est la TANGENTE qui coupe le palier, pas la courbe — la courbe, elle, ne l'atteint jamais vraiment, elle s'y confond seulement au bout d'environ $5\tau$.
+      - id: q3
+        part: "1 — L'énergie emmagasinée en régime permanent"
+        stem: |-
+          **1-3.** (0,5 pt) Déterminer la valeur de $E_e$ l'énergie électrique emmagasinée dans le condensateur en régime permanent.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le rung 4 donne la formule : $E_C = \dfrac{1}{2}C\,u_C^2$, et en régime permanent $u_C$ vaut $E$. Mais attention — l'énoncé n'a jamais donné de valeur numérique à $E$ ; il dit seulement « un générateur de tension de force électromotrice $E$ ». Il y a donc une étape avant l'application numérique : aller chercher $E$ sur la figure.
+
+          **Trouver $E$.** En régime permanent le courant est nul (le condensateur est plein, plus rien ne circule), donc $u_R = R\,i = 0$ et la maille se réduit à $u_C = E$. Or la charge du palier et cette tension sont liées par $q = C\,u_C$, avec le palier lu sur la figure 2 :
+
+          $$Q = 120\ \mu\text{C} = 120\times10^{-6}\ \text{C}$$
+
+          $$E = u_C(\infty) = \frac{Q}{C_0} = \frac{120\times10^{-6}}{10\times10^{-6}} = 12\ \text{V}$$
+
+          **L'énergie.** On applique la formule du rung 4 avec $u_C = E = 12\ \text{V}$ et $C_0 = 10\times10^{-6}\ \text{F}$ :
+
+          $$E_e = \frac{1}{2}\,C_0\,E^2 = \frac{1}{2}\times 10\times10^{-6}\times 12^2 = \frac{1}{2}\times 10^{-5}\times 144$$
+
+          $$\boxed{E_e = 7{,}2\times10^{-4}\ \text{J} = 0{,}72\ \text{mJ}}$$
+
+          **Le contrôle qui rassure.** La même énergie s'écrit directement avec la charge, sans passer par $E$ : puisque $u_C = q/C$, la formule devient $E_e = \dfrac{Q^2}{2C_0}$, soit
+
+          $$E_e = \frac{\left(120\times10^{-6}\right)^2}{2\times10\times10^{-6}} = \frac{1{,}44\times10^{-8}}{2\times10^{-5}} = 7{,}2\times10^{-4}\ \text{J}$$
+
+          Même valeur par un chemin qui n'utilise pas $E$ : le résultat est verrouillé.
+
+          **Le piège de cette question.** Il porte un nom — confondre l'énergie EMMAGASINÉE avec l'énergie FOURNIE. Le générateur a débité la charge $Q$ sous la tension constante $E$, donc il a fourni $W = Q\,E = 120\times10^{-6}\times12 = 1{,}44\times10^{-3}\ \text{J}$, exactement le DOUBLE de $E_e$. L'autre moitié n'a pas disparu : elle a été dissipée par effet Joule dans $R$ pendant toute la charge (rung 4). Répondre $1{,}44\ \text{mJ}$, c'est oublier le facteur $\dfrac{1}{2}$ — et ce facteur n'est pas une décoration, il est la moitié perdue en chaleur. Piège jumeau, purement numérique : le carré porte sur la tension seule, pas sur la capacité ; garder $C$ en microfarads en croyant que « les µ se compensent » donne $7{,}2\times10^{2}$ au lieu de $7{,}2\times10^{-4}$. Convertis en farads avant de multiplier.
+
   # ── bk-2025-n-x1 — 2025 N, Exercice 3 (Partie 1) : charge par générateur de courant, loi horaire linéaire ──
   - id: bk-2025-n-x1
     title: "Charge d'un condensateur par une source de courant : loi horaire linéaire et détermination de la capacité"

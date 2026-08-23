@@ -1,0 +1,289 @@
+# bank.yaml — la banque « S'entraîner » de propagation-onde-lumineuse
+# (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le
+# sommet de leçon (r-bac + r-variation, exercises.yaml), pas la rampe
+# embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Chaque entrée est une transcription FIDÈLE d'une entrée
+# « vérifié » du corpus docs/sujets. Raisonnement rédigé à la voix experte de
+# la maison sur 100 % des questions, en citant les rungs R1–R5 de la leçon
+# (lesson.md) là où c'est naturel ; barème transcrit tel quel dans les
+# énoncés ; conventions KaTeX (block scalars pour la prose, KaTeX brut entre
+# apostrophes simples dans steps[].math, décimales françaises écrites `X{,}Y`
+# dans le KaTeX, notes de steps sans backslash et en ASCII pur).
+#
+# NOTE ÉDITORIALE (pour la revue) : PREMIÈRE entrée de la banque de cette
+# notion — le fichier n'existait pas avant ce commit (la notion n'avait que
+# items/checkpoints/exercises + lesson). L'ordre du fichier est chronologique
+# (année, puis normale avant rattrapage) ; il n'y a pour l'instant aucune
+# entrée 2023 normale, donc bk-2023-r-x2 ouvre le fichier et s'insérera plus
+# tard APRÈS une éventuelle bk-2023-n-*.
+#
+# RECOUPEMENT (signalé, pas un doublon) : le sommet de leçon r-bac
+# (exercises.yaml, marqueur [[exercise:r-bac]] à R6) est l'exercice II de
+# 2021 session NORMALE. L'entrée ci-dessous est 2023 session de RATTRAPAGE —
+# aucun recoupement, sujet inédit dans le corpus de cette notion. Les deux se
+# complètent : le sommet 2021 N passe par une lecture de graphe, 2023 R par
+# un calcul direct puis un rapport de deux expériences.
+#
+# FLAG ÉDITORIAL (divergence énoncé / leçon, pour la revue) : la proposition
+# D du QCM de la question 1 pose les limites du spectre visible à « 400 et
+# 800 » (l'erreur voulue par le sujet portant sur l'UNITÉ, µm au lieu de nm).
+# Le tableau du rung R4 de lesson.md, lui, arrête le rouge « à $750\ nm$
+# environ » et parle d'infrarouge au-delà. Les deux conventions coexistent
+# dans les manuels ; la divergence est SIGNALÉE dans le raisonnement de la
+# question 1 plutôt que gommée, et elle ne change rien à la réponse (le
+# défaut fatal de D est l'unité, pas la borne haute). Pas de correction
+# unilatérale de lesson.md ici.
+#
+# SCOPE NOTES (techniques mobilisées au-delà de ce que la leçon montre
+# explicitement pas à pas — pontées au point d'usage dans le raisonnement de
+# la question concernée en REFAISANT la démonstration, jamais « on admet ») :
+#   - bk-2023-r-x2, q2 : la DIRECTION de l'étalement. L'énoncé donne une
+#     fente HORIZONTALE et des taches alignées VERTICALEMENT, et c'est cette
+#     direction-là que la double flèche L_j mesure. Le rung R3 pose bien
+#     theta = lambda/a et L/2 = D.theta, mais ne dit nulle part que
+#     l'étalement se fait PERPENDICULAIREMENT à la fente. Le pont est refait
+#     en une ligne au point d'usage : a est la largeur mesurée dans UNE
+#     direction — celle où la fente confine l'onde — et theta = lambda/a ne
+#     vaut que dans cette direction ; dans l'autre (la longueur de la fente),
+#     l'ouverture est immense donc lambda/longueur est indiscernable de zéro
+#     et rien ne s'étale. Une fente horizontale est étroite VERTICALEMENT :
+#     l'étalement est donc vertical.
+#   - bk-2023-r-x2, q1 (proposition B) : le terme « milieu dispersif » et la
+#     formulation « la célérité varie avec la FRÉQUENCE ». Le rung R5 énonce
+#     la dispersion par l'indice (n dépend de lambda_0, n_violet > n_rouge)
+#     et ne nomme jamais « milieu dispersif » ni ne relie la célérité à la
+#     fréquence. Le pont est refait en une ligne au point d'usage :
+#     v = c/n (R2) et n dépend de la couleur (R5), or la couleur est fixée
+#     par nu (R4) — donc v dépend de nu. Signalé pour
+#     l'orchestrateur / pedagogy-architect : R5 gagnerait à nommer
+#     explicitement « milieu dispersif » et à écrire ce chaînage, très
+#     fréquent en QCM d'examen. Pas corrigé unilatéralement ici.
+
+notion: pc/propagation-onde-lumineuse
+
+entries:
+  # ── bk-2023-r-x2 — 2023 R, Exercice 2 : diffraction (largeur de fente),
+  #    changement de radiation, puis vitesse et longueur d'onde dans n = 1,5 ──
+  - id: bk-2023-r-x2
+    title: "Diffraction, dispersion et indice du milieu"
+    source:
+      year: 2023
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 2 — Ondes lumineuses"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/142484,
+        scan course-422/upload-85310 (Exercice 2, « Ondes lumineuses »,
+        3 points sur les 20 du sujet ; pages 3 bas et 4 haut du scan sur 6).
+        Source : docs/sujets/_incoming/pc-spc-2023-r.md — le sujet complet
+        de la session de rattrapage 2023, vérifié par une passe adversariale
+        indépendante (2026-08-23) et pas encore reversé dans le fichier de
+        notion docs/sujets/pc/. Vérification citée : les 6 pages du scan
+        re-fetchées indépendamment, texte recontrôlé caractère par caractère
+        ($\lambda_{0j} = 580\ nm$, $D = 1{,}4\ m$, $L_j = 2{,}7\ cm$,
+        $L_R = 3{,}4\ cm$, $n_1 = 1{,}5$, $c = 3\cdot10^{8}\ m.s^{-1}$, les
+        quatre propositions du QCM, et le barème
+        $0{,}5+0{,}75+0{,}75+0{,}5+0{,}5 = 3$), et la figure RE-DÉCRITE
+        DEPUIS LE DESSIN — c'est là que le vérificateur a trouvé les
+        manques : le décompte exact des taches (cinq, dont la centrale
+        nettement plus allongée), le tracé de la fente elle-même, et la
+        convention typographique du sujet (les taches LUMINEUSES sont
+        imprimées en aplat NOIR, contraste qu'un auteur de figure aurait
+        pu inverser). Aucune mention « lecture à confirmer » sur cet
+        exercice, aucun point indécidable. Re-dérivations recontrôlées
+        ici, à la main : $a = 2\lambda_{0j}D/L_j = 2 \times 5{,}80\cdot
+        10^{-7} \times 1{,}4 / 2{,}7\cdot10^{-2} = 6{,}0\cdot10^{-5}$ m
+        = 60 µm (ordre de grandeur d'une vraie fente de TP, et
+        $a \approx 100\lambda$ donc $\theta \approx 9{,}7\cdot10^{-3}$ rad,
+        ce qui justifie a posteriori l'approximation des petits angles
+        imposée par l'énoncé) ; $\lambda_{0R} = L_R\lambda_{0j}/L_j
+        = 3{,}4 \times 580 / 2{,}7 = 730{,}4$ nm — la division NE TOMBE PAS
+        rond (1972/2,7), on annonce 730 nm et on le dit ; $V_{1j} = c/n_1
+        = 2\cdot10^{8}$ m/s exactement ; $\lambda_{1j} = \lambda_{0j}/n_1
+        = 580/1{,}5 = 386{,}67$ nm, qui ne tombe pas rond non plus (on
+        annonce 387 nm), recoupé par la voie indépendante
+        $\lambda_{1j} = V_{1j}/\nu$ avec $\nu = c/\lambda_{0j}
+        = 5{,}17\cdot10^{14}$ Hz. Cohérent de bout en bout, et cohérent
+        avec la figure (fente horizontale donc taches étalées
+        verticalement).
+    intro: |-
+      **Ondes lumineuses (examen national, session de rattrapage 2023 — Exercice 2, 3 points).**
+
+      *La diffraction est l'un des phénomènes physiques qui met en évidence la nature ondulatoire de la lumière. On se propose dans cet exercice d'étudier ce phénomène de diffraction pour déterminer la largeur d'une fente et les caractéristiques de certaines radiations lumineuses.*
+
+      Une source lumineuse émet, dans l'air, une radiation jaune, de longueur d'onde $\lambda_{0j} = 580\ \text{nm}$, vers une fente horizontale de largeur $a$. On observe, sur un écran situé à la distance $D = 1{,}4\ \text{m}$ de la fente, des taches lumineuses réparties sur une ligne verticale.
+
+      La tache centrale a la largeur $L_j = 2{,}7\ \text{cm}$ (figure ci-contre).
+
+      **Donnée :** on prend la célérité d'une onde lumineuse dans le vide et dans l'air $c = 3\cdot10^{8}\ \text{m.s}^{-1}$.
+
+      **Figure (schéma, sans numéro — « figure ci-contre »).** Le dispositif de diffraction est vu en perspective. À gauche, une flèche horizontale épaisse étiquetée « Source lumineuse » pointe vers un petit plan incliné (parallélogramme) étiqueté « Fente » ; la fente elle-même est tracée — un court trait horizontal au milieu du parallélogramme, exactement là où arrive la flèche. Depuis ce point, deux droites divergent, l'une vers le haut, l'autre vers le bas, jusqu'à un grand plan incliné à droite étiqueté « Ecran ». Sur l'écran, cinq taches dessinées en aplat noir (ellipses verticales pleines — c'est la convention typographique du sujet : ce sont bien les taches *lumineuses*) sont alignées sur une même verticale : deux au-dessus, la tache centrale, deux au-dessous. La tache centrale est nettement plus allongée que les quatre autres, et les deux droites issues de la fente viennent en toucher précisément l'extrémité haute et l'extrémité basse. Un axe horizontal en pointillés joint la fente au centre de l'écran ; l'angle $\theta$ est marqué par un petit arc entre cet axe et la droite supérieure, près de l'écran. Une double flèche verticale, placée à droite de la tache centrale, en mesure la hauteur et porte l'étiquette « $L_j$ ». En bas, une double flèche horizontale étiquetée « $D$ » court de la verticale en pointillés abaissée sous la fente jusqu'au plan de l'écran (sa pointe droite remonte obliquement rejoindre le bas de la colonne de taches).
+    questions:
+      - id: q1
+        part: "Ce qui identifie une radiation — et ce qui dépend du milieu"
+        stem: |-
+          **(0,5 pt)** Choisir, parmi les propositions suivantes, celle qui est juste :
+
+          | | |
+          |---|---|
+          | **A** | La longueur d'onde d'une radiation monochromatique ne dépend pas du milieu de propagation. |
+          | **B** | Dans un milieu dispersif, la célérité d'une onde lumineuse ne varie pas avec la fréquence. |
+          | **C** | Une onde lumineuse monochromatique est caractérisée par sa fréquence. |
+          | **D** | Les limites des longueurs d'onde dans le vide du spectre visible sont $400\,\mu\text{m}$ et $800\,\mu\text{m}$. |
+
+          *(Barème du sujet : 0,5 pt.)*
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un QCM à quatre propositions ne se joue pas au flair. Chacune vise un point différent de la leçon, et la méthode est de les passer une à une avec l'outil qui convient : A et C se règlent avec le rung R4 (ce qui change et ce qui ne change pas quand la lumière change de milieu), B avec R5 croisé à R2 (la dispersion), D avec le tableau des couleurs de R4 — et surtout avec un contrôle d'unité.
+
+          **A — fausse.** C'est la proposition-piège, et elle est fausse d'un mot. Le rung R4 établit que dans un milieu d'indice $n$ la longueur d'onde devient
+
+          $$\lambda = \frac{v}{\nu} = \frac{c/n}{\nu} = \frac{\lambda_0}{n}$$
+
+          Comme $n \geq 1$ toujours (rung R2), $\lambda$ est strictement plus petite dans tout milieu matériel que dans le vide : elle DÉPEND donc du milieu. Ce qui n'en dépend pas, c'est $\lambda_0$, la longueur d'onde **dans le vide** — et c'est précisément pour cette raison qu'on caractérise une couleur par $\lambda_0$ et pas par $\lambda$. Cet exercice fournit lui-même le contre-exemple chiffré : la question 4-2 fait passer la même radiation jaune de $580\ \text{nm}$ dans l'air à $387\ \text{nm}$ dans un milieu d'indice $1{,}5$.
+
+          **B — fausse.** Elle affirme exactement le contraire de la définition. Le pont à faire ici sort des rungs de cette leçon (voir la SCOPE NOTE en tête de fichier), et il tient en une ligne qu'on refait plutôt que de l'admettre. Le rung R2 donne $v = c/n$ ; le rung R5 établit que $n$ dépend de la couleur ($n_{violet} > n_{rouge}$) ; le rung R4 établit que la couleur est fixée par la fréquence $\nu$. En enchaînant les trois : $n$ dépend de $\nu$, donc
+
+          $$v = \frac{c}{n(\nu)}$$
+
+          dépend de $\nu$. C'est ÇA, un milieu dispersif : un milieu dans lequel la célérité de l'onde lumineuse varie avec la fréquence. Dire qu'elle n'y varie pas, c'est décrire un milieu non dispersif — et c'est aussi rendre le prisme du rung R5 inexplicable, puisque sans écart d'indice entre les couleurs il n'y a plus rien pour les séparer.
+
+          **C — juste.** Le rung R4 le dit sans détour : la fréquence $\nu$ est imposée par la source et reste **invariante** quand la lumière franchit une interface. C'est donc la seule grandeur qui accompagne la radiation partout sans changer de valeur — sa carte d'identité. La longueur d'onde dans le vide $\lambda_0$ la caractérise aussi, mais seulement parce qu'elle en est l'image fidèle par $\lambda_0 = c/\nu$ ; la longueur d'onde tout court, elle, ne caractérise rien tant qu'on n'a pas précisé dans quel milieu on la mesure.
+
+          **D — fausse, et le défaut est dans l'UNITÉ.** Les deux nombres $400$ et $800$ sont les bornes que tout le monde a en tête pour le visible — mais en **nanomètres**, pas en micromètres. $400\,\mu\text{m} = 4\cdot10^{-4}\ \text{m}$, c'est mille fois trop long : on est très loin dans l'infrarouge, hors de portée de l'œil. *(Signalons honnêtement une divergence de convention : le tableau du rung R4 de la leçon arrête le rouge « à $750\ \text{nm}$ environ » là où ce sujet, comme beaucoup de manuels, retient $800\ \text{nm}$ pour la borne haute. Les deux se défendent, et cela ne change rien ici : le défaut fatal de la proposition D est l'unité, pas la borne.)*
+
+          La réponse est donc $\boxed{\text{C}}$.
+
+          **Le piège de cette question.** Il est double, et les deux moitiés reposent sur la même paresse — reconnaître des mots familiers sans lire ce qui les accompagne. En A, on reconnaît « la longueur d'onde caractérise la radiation » et on coche, alors que le zéro de $\lambda_0$ a disparu et que c'est lui qui portait tout le sens. En D, on reconnaît les nombres $400$ et $800$ et on coche, alors que l'unité a été sabotée. La parade est la même dans les deux cas : lire l'indice et lire l'unité avant de lire le mot.
+      - id: q2
+        part: "Diffraction — remonter de la tache observée à la largeur de la fente"
+        stem: |-
+          **(0,75 pt)** Sachant que l'écart angulaire $\theta$ est petit pour prendre $\tan\theta \approx \theta$, trouver l'expression de la largeur $a$ de la fente en fonction de $L_j$, $D$ et $\lambda_{0j}$. Calculer la valeur de $a$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On veut une largeur de fente, et aucun instrument ne la mesure : $a$ est de l'ordre de quelques dizaines de micromètres, personne ne la lit à la règle. La seule information disponible est la TACHE, à $1{,}4\ \text{m}$ de là. Le geste est donc celui du rung R3, lu à l'envers : la diffraction transforme une largeur de fente en un écart angulaire, l'écran transforme cet écart angulaire en une longueur mesurable — on remonte la chaîne.
+
+          **Le pont à faire d'abord (direction de l'étalement).** L'énoncé donne une fente **horizontale** et des taches alignées **verticalement**, et c'est cette verticale que la double flèche $L_j$ mesure. Le rung R3 ne dit pas pourquoi, alors refaisons-le en une ligne : $a$ est la largeur de la fente mesurée dans UNE direction — celle dans laquelle la fente confine l'onde — et $\theta = \lambda/a$ ne vaut que dans cette direction-là. Dans l'autre direction, celle de la longueur de la fente, l'ouverture est immense devant $\lambda$, donc l'écart angulaire y est indiscernable de zéro et rien ne s'étale. Or une fente horizontale est étroite **verticalement** : l'étalement se fait donc à la verticale, exactement comme le montre la figure.
+
+          **L'expression.** Deux relations, dans cet ordre. D'abord la diffraction (rung R3) :
+
+          $$\theta = \frac{\lambda_{0j}}{a}$$
+
+          Ensuite la géométrie sur l'écran. L'angle $\theta$ est marqué sur la figure entre l'axe (le milieu de la tache centrale) et la droite qui en touche l'extrémité haute : il ne couvre donc que la **moitié** de la tache centrale. Avec $\tan\theta \approx \theta$ comme l'énoncé l'autorise :
+
+          $$\frac{L_j}{2} = D\tan\theta \approx D\,\theta$$
+
+          On substitue $\theta$ et on isole $a$ :
+
+          $$\frac{L_j}{2} = D\,\frac{\lambda_{0j}}{a} \quad\Longrightarrow\quad a\,\frac{L_j}{2} = D\,\lambda_{0j}$$
+
+          $$\boxed{a = \frac{2\,\lambda_{0j}\,D}{L_j}}$$
+
+          **L'application numérique.** On convertit tout en mètres avant de diviser quoi que ce soit : $\lambda_{0j} = 580\ \text{nm} = 5{,}80\times10^{-7}\ \text{m}$ et $L_j = 2{,}7\ \text{cm} = 2{,}7\times10^{-2}\ \text{m}$ ; $D = 1{,}4\ \text{m}$ est déjà en mètres.
+
+          $$a = \frac{2 \times 5{,}80\times10^{-7} \times 1{,}4}{2{,}7\times10^{-2}} = \frac{1{,}624\times10^{-6}}{2{,}7\times10^{-2}}$$
+
+          $$\boxed{a \approx 6{,}0\times10^{-5}\ \text{m} = 60\ \mu\text{m}}$$
+
+          **Les deux contrôles qui rassurent.** Le premier est l'ordre de grandeur : $60\ \mu\text{m}$, c'est un peu moins que l'épaisseur d'un cheveu — une vraie fente de travaux pratiques. Un résultat en millimètres ou en nanomètres aurait signalé une conversion ratée. Le second valide l'hypothèse qu'on a utilisée : $\theta = \lambda_{0j}/a = 5{,}80\times10^{-7}/6{,}0\times10^{-5} \approx 9{,}7\times10^{-3}\ \text{rad}$, soit environ $0{,}55^\circ$. À un angle aussi petit, $\tan\theta$ et $\theta$ ne diffèrent qu'au-delà de la quatrième décimale : l'approximation imposée par l'énoncé était bien légitime.
+
+          **Le piège de cette question.** C'est le facteur $2$, et il coûte la moitié du résultat. $L_j$ est la largeur **totale** de la tache centrale, alors que $\theta$ ne balaie que sa moitié — l'arc est tracé sur la figure entre l'axe et le bord SUPÉRIEUR, pas d'un bord à l'autre. Écrire $L_j = D\theta$ au lieu de $L_j/2 = D\theta$ donne $a = 30\ \mu\text{m}$, un nombre parfaitement plausible qui ne se dénonce pas tout seul. Le réflexe qui protège : sur la figure, suivre du doigt où l'arc de $\theta$ commence et où il finit, avant d'écrire la moindre égalité.
+      - id: q3
+        part: "Changer de radiation, garder le dispositif — le rapport de deux expériences"
+        stem: |-
+          **(0,75 pt)** Dans l'expérience de diffraction décrite précédemment, la source de radiation jaune est remplacée par une source de radiation rouge ayant une longueur d'onde $\lambda_{0R}$. Montrer que l'expression de $\lambda_{0R}$ s'écrit : $\lambda_{0R} = \dfrac{L_R \cdot \lambda_{0j}}{L_j}$ avec $L_R$ la largeur de la tache centrale obtenue dans ce cas.
+
+          Calculer $\lambda_{0R}$ sachant que $L_R = 3{,}4\ \text{cm}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La tentation est de reprendre le calcul à zéro : $a$ est connue depuis la question 2, donc $\lambda_{0R} = a L_R/(2D)$, et c'est fini. Ça marche — mais ce n'est pas ce qu'on demande, et c'est moins bon. L'énoncé exige une expression où $a$ et $D$ **n'apparaissent pas**, et c'est là tout le message physique de la question : on n'a touché ni à la fente, ni à l'écran. Le geste qui rend cela visible est celui du rapport — on écrit la même relation deux fois et on divise.
+
+          **La démonstration.** La question 2 a établi, pour la radiation jaune :
+
+          $$a = \frac{2\,\lambda_{0j}\,D}{L_j}$$
+
+          La même expérience, avec la seule source changée, donne la même relation pour la radiation rouge :
+
+          $$a = \frac{2\,\lambda_{0R}\,D}{L_R}$$
+
+          Le membre de gauche est le même dans les deux cas — c'est **la même fente**, et $D$ est **la même distance**. On égalise :
+
+          $$\frac{2\,\lambda_{0j}\,D}{L_j} = \frac{2\,\lambda_{0R}\,D}{L_R}$$
+
+          Les $2$ et les $D$ se simplifient de part et d'autre :
+
+          $$\frac{\lambda_{0j}}{L_j} = \frac{\lambda_{0R}}{L_R} \quad\Longrightarrow\quad \boxed{\lambda_{0R} = \frac{L_R\,\lambda_{0j}}{L_j}}$$
+
+          Ce qui reste est une proportionnalité, et elle se lit en français : **à fente et écran fixés, la largeur de la tache centrale est proportionnelle à la longueur d'onde.**
+
+          **L'application numérique.** Les deux largeurs sont dans la même unité (des centimètres), donc leur rapport est un nombre pur et il n'y a rien à convertir — on peut garder $\lambda_{0j}$ en nanomètres :
+
+          $$\lambda_{0R} = \frac{3{,}4 \times 580}{2{,}7} = \frac{1972}{2{,}7} = 730{,}37\ldots\ \text{nm}$$
+
+          La division **ne tombe pas rond** — autant le dire plutôt que de maquiller le résultat. On garde trois chiffres significatifs, comme les données :
+
+          $$\boxed{\lambda_{0R} \approx 730\ \text{nm} = 7{,}30\times10^{-7}\ \text{m}}$$
+
+          **Le contrôle qui rassure.** Deux vérifications gratuites, et elles vont dans le même sens. D'abord le sens de variation : $L_R > L_j$ (la tache s'est élargie), donc on doit trouver $\lambda_{0R} > \lambda_{0j}$ — c'est bien le cas, $730 > 580$, et c'est cohérent avec $\theta = \lambda/a$, où une plus grande longueur d'onde s'étale davantage à travers la même fente. Ensuite la couleur : $730\ \text{nm}$ tombe dans la plage du rouge du tableau du rung R4 ($620$ à $750\ \text{nm}$ environ). L'énoncé annonçait une source rouge, le calcul en produit une : les deux se confirment.
+
+          **Le piège de cette question.** Il est dans le sens du rapport. Écrire $\lambda_{0R} = L_j\lambda_{0j}/L_R$ — l'inversion — donne $460\ \text{nm}$, un nombre d'allure honnête… mais qui est du BLEU, pour une source que l'énoncé dit rouge, et qui affirme qu'une tache PLUS LARGE correspondrait à une longueur d'onde PLUS COURTE. Le contrôle qualitatif attrape l'inversion instantanément : demande-toi toujours, avant de poser le rapport, dans quel sens la tache a bougé. Piège jumeau, plus discret : repasser par la valeur ARRONDIE $a = 6{,}0\times10^{-5}\ \text{m}$ au lieu de simplifier $a$ symboliquement. Le résultat reste correct, mais on traîne l'arrondi de la question 2 dans celui de la question 3 — et on rate le point que la question voulait faire passer.
+      - id: q4a
+        part: "Dans un milieu d'indice n = 1,5 — la vitesse"
+        stem: |-
+          **(0,5 pt)** On considère que la radiation jaune se propage dans un milieu d'indice de réfraction $n_1 = 1{,}5$. Calculer dans ce milieu la vitesse $V_{1j}$ de propagation de la radiation jaune.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On demande une vitesse dans un milieu matériel, et on donne l'indice de ce milieu : c'est la définition même de l'indice de réfraction (rung R2) qu'on retourne. Aucune autre étape n'est nécessaire.
+
+          Le rung R2 pose
+
+          $$n = \frac{c}{v}$$
+
+          On isole la vitesse en multipliant les deux membres par $v$ puis en divisant par $n$ :
+
+          $$V_{1j} = \frac{c}{n_1} = \frac{3\times10^{8}}{1{,}5}$$
+
+          $$\boxed{V_{1j} = 2\times10^{8}\ \text{m.s}^{-1}}$$
+
+          **Le contrôle qui rassure.** Il est immédiat et il faut le faire à chaque fois : $2\times10^{8} < 3\times10^{8}$, donc $V_{1j} < c$. C'est ce qu'exige le rung R2 — le vide est la situation la plus rapide possible, et $n \geq 1$ traduit exactement cela. Ici $n_1 = 1{,}5$ signifie « la lumière y va une fois et demie moins vite que dans le vide », et $3/1{,}5 = 2$ tombe rond : la lecture et le calcul disent la même chose.
+
+          **Le piège de cette question.** C'est l'inversion de la formule, et elle est plus fréquente qu'on ne croit sous la pression : écrire $V_{1j} = n_1 \times c = 4{,}5\times10^{8}\ \text{m.s}^{-1}$. Ce résultat est **physiquement interdit** — rien ne se propage plus vite que la lumière dans le vide. C'est pour cela que le contrôle « ma vitesse est-elle inférieure à $c$ ? » n'est pas une politesse de fin de copie : c'est le seul garde-fou qui attrape l'inversion, parce que $n = c/v$ et $v = nc$ se ressemblent trop pour se dénoncer entre elles.
+      - id: q4b
+        part: "Dans un milieu d'indice n = 1,5 — la longueur d'onde (et la couleur qui ne bouge pas)"
+        stem: |-
+          **(0,5 pt)** On considère que la radiation jaune se propage dans un milieu d'indice de réfraction $n_1 = 1{,}5$. Calculer dans ce milieu la longueur d'onde $\lambda_{1j}$ de cette radiation.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On veut la longueur d'onde de la MÊME radiation, mais dans le milieu d'indice $n_1$. Le rung R4 donne le résultat directement ; la question mérite quand même qu'on refasse la démonstration en une ligne, parce que c'est elle qui explique pourquoi la couleur, elle, ne changera pas.
+
+          **La démonstration (rung R4).** La fréquence $\nu$ est imposée par la source et ne change pas quand la lumière franchit l'interface : elle est invariante. La longueur d'onde, elle, est liée à la vitesse locale par $\lambda = v/\nu$. Dans le milieu, $v = V_{1j} = c/n_1$ (question 4-1), donc
+
+          $$\lambda_{1j} = \frac{V_{1j}}{\nu} = \frac{c/n_1}{\nu} = \frac{1}{n_1}\cdot\frac{c}{\nu} = \frac{\lambda_{0j}}{n_1}$$
+
+          puisque $\lambda_{0j} = c/\nu$ est justement la longueur d'onde dans le vide.
+
+          **L'application numérique.**
+
+          $$\lambda_{1j} = \frac{\lambda_{0j}}{n_1} = \frac{580}{1{,}5} = 386{,}66\ldots\ \text{nm}$$
+
+          Là encore la division **ne tombe pas rond** ($580/1{,}5 = 386{,}\overline{6}$) — on le dit au lieu d'arrondir pour faire joli. Avec trois chiffres significatifs :
+
+          $$\boxed{\lambda_{1j} \approx 387\ \text{nm} = 3{,}87\times10^{-7}\ \text{m}}$$
+
+          **Le contrôle qui rassure — par une voie indépendante.** Recalculons sans passer par $\lambda_0/n$, en repartant de la fréquence. Elle vaut
+
+          $$\nu = \frac{c}{\lambda_{0j}} = \frac{3\times10^{8}}{5{,}80\times10^{-7}} \approx 5{,}17\times10^{14}\ \text{Hz}$$
+
+          et cette fréquence est la même dans le milieu. Donc
+
+          $$\lambda_{1j} = \frac{V_{1j}}{\nu} = \frac{2\times10^{8}}{5{,}17\times10^{14}} \approx 3{,}87\times10^{-7}\ \text{m}$$
+
+          Les deux chemins donnent le même nombre : la relation $\lambda = \lambda_0/n$ n'était pas une formule à croire, c'était un raccourci qu'on vient de refaire à la main.
+
+          **Le piège de cette question.** Il est dans la couleur, et il est joliment tendu. $387\ \text{nm}$ tombe, dans le tableau du rung R4, sur la limite du violet — et pourtant cette radiation est et reste **jaune**, même à l'intérieur du milieu. La raison est celle qu'on vient d'utiliser : ce que l'œil interprète comme une couleur dépend de la fréquence $\nu$, et $\nu$ n'a pas bougé. Seule $\lambda$, qui dépend de la vitesse locale, a diminué. C'est exactement pour éviter cette confusion qu'une couleur se désigne toujours par $\lambda_0$, sa longueur d'onde dans le vide. Piège jumeau, dans l'autre sens : répondre « $580\ \text{nm}$, puisque c'est une radiation jaune » — c'est $\lambda_{0j}$, la valeur dans le vide ; dans un milieu la longueur d'onde est TOUJOURS plus petite, puisque $n \geq 1$. Et remarque au passage que cette question est la réfutation chiffrée de la proposition A du QCM de la question 1.
