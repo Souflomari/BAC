@@ -386,6 +386,187 @@ L'erreur intuitive de 95 % était de confondre $P(T^+|M)$ avec $P(M|T^+)$ — la
 
 ---
 
+## Variable aléatoire : mettre un nombre sur chaque issue
+
+Tout ce qu'on a mesuré jusqu'ici était un **événement** — quelque chose qui se réalise, ou pas. Beaucoup de questions d'examen demandent autre chose : un **nombre** attaché au résultat de l'expérience. Le produit des deux nombres tirés, le nombre de boules rouges obtenues, le gain d'un joueur, le nombre de fois où un événement s'est produit. Ce chapitre nomme cet objet et donne la procédure pour en tirer un tableau — puis une moyenne. Il n'ajoute aucune formule nouvelle : c'est le même arbre, lu autrement.
+
+### Un premier cas, sur un arbre déjà rempli
+
+Reprends l'arbre du R2, celui dont tu as déjà calculé les quatre feuilles : $P(A) = 0{,}6$ (sport collectif), $P(B|A) = 0{,}5$ et $P(B|\bar{A}) = 0{,}2$ (football).
+
+Pose maintenant une question qui n'est pas un événement : **à combien de « oui » un élève répond-il ?** Deux questions lui sont posées (sport collectif ? football ?), donc le résultat est $0$, $1$ ou $2$. Note $X$ ce nombre. Chaque feuille de l'arbre porte alors une valeur :
+
+| Feuille | Probabilité | Valeur de $X$ |
+|--|--|--|
+| $A \cap B$ | $0{,}30$ | $2$ |
+| $A \cap \bar{B}$ | $0{,}30$ | $1$ |
+| $\bar{A} \cap B$ | $0{,}08$ | $1$ |
+| $\bar{A} \cap \bar{B}$ | $0{,}32$ | $0$ |
+
+Deux feuilles différentes donnent la même valeur $1$. Elles sont incompatibles — une même personne ne peut pas être sur deux feuilles à la fois — donc on les **additionne**, exactement comme au R4 :
+
+$$P(X = 0) = 0{,}32 \qquad P(X = 1) = 0{,}30 + 0{,}08 = 0{,}38 \qquad P(X = 2) = 0{,}30$$
+
+Et le contrôle qui doit devenir un réflexe : $0{,}32 + 0{,}38 + 0{,}30 = 1$. Les trois valeurs couvrent tout l'arbre, une feuille et une seule à chaque fois.
+
+### La définition, et les deux mots à écrire
+
+**Définition.** Une **variable aléatoire** $X$ est une règle qui associe un **nombre** à chaque issue de l'expérience. Écrire $(X = x)$ désigne alors un événement — celui qui rassemble toutes les issues auxquelles $X$ attribue la valeur $x$ — et cet événement a une probabilité $P(X = x)$ comme n'importe quel autre.
+
+**Définition.** La **loi de probabilité** de $X$, c'est la liste complète de ses valeurs possibles $x_1, x_2, \ldots, x_n$ avec leurs probabilités. On la présente en tableau :
+
+| $x_i$ | $0$ | $1$ | $2$ |
+|--|--|--|--|
+| $P(X = x_i)$ | $0{,}32$ | $0{,}38$ | $0{,}30$ |
+
+« Donner la loi de probabilité de $X$ » veut dire : ce tableau, rempli, rien de moins. Et la propriété qui le contrôle vaut toujours, quelle que soit l'expérience :
+
+$$\sum_i P(X = x_i) = P(X = x_1) + \cdots + P(X = x_n) = 1$$
+
+**Pourquoi cette somme vaut 1 :** les événements $(X = x_1), \ldots, (X = x_n)$ forment une **partition** de l'univers — au sens exact du R4. Ils ne se chevauchent pas ($X$ ne peut pas valoir $1$ et $2$ sur la même issue) et ils couvrent tout ($X$ prend forcément une valeur). Ce n'est donc pas une astuce de vérification ajoutée après coup : c'est la même condition de partition qui faisait déjà marcher les probabilités totales.
+
+C'est aussi, en pratique, ton unique filet de sécurité. Si la somme ne tombe pas sur $1$, tu as oublié une valeur, oublié un chemin de l'arbre, ou multiplié une branche avec la mauvaise probabilité conditionnelle. Fais ce contrôle avant de passer à la question suivante — pas à la fin de l'épreuve.
+
+### La procédure, en trois pas
+
+Elle est toujours la même, quel que soit l'habillage :
+
+1. **Lister les valeurs possibles** de $X$. Souvent l'énoncé te les donne (« remarquer que les valeurs prises par $X$ sont $0\,;\,1\,;\,2$ et $4$ ») — quand il ne le fait pas, tu les obtiens en parcourant toutes les issues.
+2. **Pour chaque valeur $x_i$, rassembler les feuilles** de l'arbre où $X$ vaut $x_i$, et additionner leurs probabilités. Chaque feuille se calcule comme au R2 : on multiplie le long de la branche, avec la probabilité **conditionnelle** sur la deuxième arête dès que la deuxième étape dépend de la première.
+3. **Vérifier que la somme vaut $1$**, puis dresser le tableau.
+
+### Traduire une phrase en valeurs de $X$
+
+Une fois la loi écrite, les questions suivantes se posent presque toujours en français, pas en symboles : « la probabilité que le produit soit pair et non nul », « la probabilité d'obtenir au moins un succès ». Le geste attendu est toujours le même : **traduire d'abord la phrase en un paquet de valeurs**, puis additionner les probabilités de ces valeurs.
+
+Sur notre exemple, « l'élève répond oui à au moins une question » signifie $X = 1$ ou $X = 2$ :
+
+$$P(X \geq 1) = P(X = 1) + P(X = 2) = 0{,}38 + 0{,}30 = 0{,}68$$
+
+On additionne sans hésiter, parce que $(X=1)$ et $(X=2)$ sont incompatibles par construction.
+
+Et quand le paquet est gros, retourne-le : « au moins une » est le contraire de « aucune ».
+
+$$P(X \geq 1) = 1 - P(X = 0) = 1 - 0{,}32 = 0{,}68$$
+
+Même résultat, une soustraction au lieu d'une somme. Sur une loi à cinq ou six valeurs, cette bascule par l'événement contraire fait gagner l'essentiel du temps — et supprime autant d'occasions de se tromper.
+
+### L'espérance : la moyenne pondérée, encore
+
+**Définition.** L'**espérance** de $X$ est le nombre
+
+$$E(X) = \sum_i x_i \, P(X = x_i) = x_1 P(X = x_1) + \cdots + x_n P(X = x_n)$$
+
+Sur notre exemple :
+
+$$E(X) = 0 \times 0{,}32 + 1 \times 0{,}38 + 2 \times 0{,}30 = 0{,}98$$
+
+**Ce que ce nombre veut dire :** c'est la valeur moyenne de $X$ si on répétait l'expérience un très grand nombre de fois. Et regarde la forme de la formule — chaque valeur est multipliée par le poids de son cas. C'est exactement la moyenne pondérée du R4 : là-bas on pondérait des taux conditionnels par la taille de leur sous-population, ici on pondère des valeurs par la probabilité de leur cas. Même mécanisme, autre matière.
+
+**Le piège de l'espérance :** $E(X)$ n'est presque jamais une valeur que $X$ peut prendre. Un dé équilibré donne $E(X) = \dfrac{1+2+3+4+5+6}{6} = 3{,}5$, et pourtant aucune face ne porte $3{,}5$. Une espérance n'est pas un résultat, c'est un centre de gravité — obtenir un nombre « impossible » n'est donc jamais le signe d'une erreur.
+
+En revanche, elle doit toujours tomber **entre la plus petite et la plus grande valeur** de $X$. Ici $0 \leq 0{,}98 \leq 2$ : c'est cohérent. Une espérance hors de cet encadrement signale, à coup sûr, une probabilité mal placée dans la somme.
+
+### Les deux confusions à surveiller
+
+**Confondre la valeur et sa probabilité.** Dans le tableau, la ligne du haut porte des valeurs ($0$, $1$, $2$ — elles peuvent être négatives, valoir $10$, être des gains en dirhams), la ligne du bas des probabilités (toujours entre $0$ et $1$, et de somme $1$). C'est la ligne du bas qui doit sommer à $1$, jamais celle du haut. Et dans $E(X)$, chaque terme est un produit de l'une par l'autre — jamais deux valeurs entre elles, jamais deux probabilités entre elles.
+
+**Supposer que les valeurs sont équiprobables.** Rien n'oblige les $P(X = x_i)$ à être égales. Dans notre tableau elles valent $0{,}32$, $0{,}38$ et $0{,}30$ — trois valeurs possibles, trois probabilités différentes. Écrire $P(X = 1) = \dfrac{1}{3}$ « parce qu'il y a trois valeurs » est l'erreur qui coûte le plus cher ici : l'équiprobabilité se démontre, elle ne se suppose pas.
+
+---
+
+## La loi binomiale : compter les succès d'une expérience répétée
+
+Il existe une situation où la loi de $X$ ne se calcule pas feuille par feuille : elle se lit sur une formule. Elle est fréquente à l'examen, et l'énoncé la signale toujours par les mêmes mots — **on répète la même expérience $n$ fois**, avec remise. Ce chapitre montre d'abord d'où sort la formule sur un cas complet, puis la nomme.
+
+### Un premier cas, entièrement déplié
+
+Une urne contient cinq boules indiscernables au toucher, dont deux gagnantes. On tire une boule, on note si elle est gagnante, **on la remet dans l'urne**, et on recommence — trois tirages en tout. Soit $X$ le nombre de boules gagnantes obtenues.
+
+À chaque tirage, l'urne est identique aux cinq boules du départ. Donc la probabilité de gagner vaut $p = \dfrac{2}{5} = 0{,}4$ à chaque fois, et le résultat d'un tirage ne change rien aux suivants : les trois tirages sont **indépendants** au sens du R3. La probabilité de perdre est $1 - p = 0{,}6$.
+
+Un chemin de l'arbre, c'est une suite de trois résultats. Comme les tirages sont indépendants, la probabilité d'un chemin est le produit des trois probabilités — et elle ne dépend que du **nombre** de succès qu'il contient, pas de leur ordre :
+
+$$P(\text{G} \to \text{P} \to \text{P}) = 0{,}4 \times 0{,}6 \times 0{,}6 = 0{,}144$$
+
+$$P(\text{P} \to \text{G} \to \text{P}) = 0{,}6 \times 0{,}4 \times 0{,}6 = 0{,}144$$
+
+$$P(\text{P} \to \text{P} \to \text{G}) = 0{,}6 \times 0{,}6 \times 0{,}4 = 0{,}144$$
+
+Trois chemins, un seul succès chacun, la même probabilité $0{,}4 \times 0{,}6^2$ pour les trois. On les additionne — ils sont incompatibles :
+
+$$P(X = 1) = 3 \times 0{,}4 \times 0{,}6^2 = 3 \times 0{,}144 = 0{,}432$$
+
+Reste à savoir d'où vient ce $3$. C'est le nombre de façons de choisir **lequel** des trois tirages est le tirage gagnant : une combinaison de $1$ élément parmi $3$, soit $\binom{3}{1} = 3$. Rien d'autre. Le même raisonnement pour deux succès donne $\binom{3}{2} = 3$ chemins, chacun de probabilité $0{,}4^2 \times 0{,}6$ :
+
+$$P(X = 0) = 0{,}6^3 = 0{,}216 \qquad P(X = 1) = 0{,}432 \qquad P(X = 2) = 3 \times 0{,}4^2 \times 0{,}6 = 0{,}288 \qquad P(X = 3) = 0{,}4^3 = 0{,}064$$
+
+Contrôle, comme au chapitre précédent : $0{,}216 + 0{,}432 + 0{,}288 + 0{,}064 = 1$.
+
+### La formule, maintenant qu'on voit ce qu'elle fait
+
+Généralise ce qu'on vient de faire. On répète $n$ fois une expérience qui n'a que deux issues — **succès** (probabilité $p$) et **échec** (probabilité $1 - p$) — les répétitions étant indépendantes et $p$ ne changeant pas d'une fois à l'autre. Soit $X$ le nombre de succès. Alors, pour tout entier $k$ compris entre $0$ et $n$ :
+
+$$\boxed{P(X = k) = \binom{n}{k} \, p^k \, (1-p)^{n-k}}$$
+
+On dit que $X$ suit la **loi binomiale de paramètres $n$ et $p$**, ce qui s'écrit $X \sim \mathcal{B}(n, p)$.
+
+Chacun des trois facteurs répond à une question précise — c'est ainsi qu'il faut la mémoriser, pas comme une suite de symboles :
+
+- $\binom{n}{k}$ : **lesquelles** des $n$ répétitions sont les succès ? Un choix de $k$ rangs parmi $n$, sans ordre — la combinaison du chapitre de dénombrement.
+- $p^k$ : ces $k$ succès se produisent, chacun de probabilité $p$, et on multiplie parce qu'ils sont indépendants.
+- $(1-p)^{n-k}$ : les $n - k$ répétitions restantes sont des échecs. Les exposants somment à $n$ — si ce n'est pas le cas dans ta copie, tu t'es trompé.
+
+> **Note de notation :** ici la lettre $p$ est prise par la probabilité de succès. On note donc le rang $k$, et le coefficient $\binom{n}{k}$ — que tu as peut-être rencontré sous l'écriture $C_n^k$ : c'est le même nombre. Certains énoncés posent aussi $q = 1 - p$ et écrivent la formule $\binom{n}{k} p^k q^{n-k}$.
+
+**L'espérance d'une loi binomiale** ne demande pas la somme du chapitre précédent, elle a une expression directe :
+
+$$E(X) = n \, p$$
+
+Sur notre urne : $E(X) = 3 \times 0{,}4 = 1{,}2$. Vérifions-le par la définition, pour voir que les deux chemins coïncident : $0 \times 0{,}216 + 1 \times 0{,}432 + 2 \times 0{,}288 + 3 \times 0{,}064 = 0{,}432 + 0{,}576 + 0{,}192 = 1{,}2$. Le résultat se lit d'ailleurs tout seul : sur trois tirages qui réussissent chacun quatre fois sur dix, on attend $1{,}2$ succès.
+
+### Reconnaître la situation : trois conditions, jamais deux
+
+Avant d'écrire « $X$ suit la loi binomiale », vérifie les trois conditions — c'est ce que demande la question « déterminer les paramètres de la variable aléatoire $X$ ».
+
+1. **Deux issues seulement** à chaque répétition : l'événement considéré se réalise, ou il ne se réalise pas. Tout le reste de l'expérience est ignoré.
+2. **Le même $p$ à chaque fois.** C'est ce que garantit la remise : l'expérience recommence dans l'état initial.
+3. **Des répétitions indépendantes.** Le résultat d'une répétition ne modifie pas les probabilités des suivantes.
+
+Les mots qui signalent la situation dans un énoncé : « on répète l'expérience $n$ fois », « en remettant la boule dans l'urne après chaque tirage », « de façon indépendante ». Et $X$ y est presque toujours défini comme « le nombre de fois où l'événement $A$ se réalise ».
+
+**Le piège, et il est double.** Un tirage **simultané**, ou un tirage **sans remise**, n'est pas une répétition d'épreuves identiques : l'urne change entre les tirages, donc $p$ change, donc l'indépendance tombe. Tirer trois boules d'un coup et compter les rouges ne relève **pas** de la loi binomiale — il faut y revenir au dénombrement et à l'équiprobabilité. C'est exactement l'expérience du début de cette leçon, avec son transfert de boule d'une urne à l'autre : la deuxième probabilité y était conditionnelle, la binomiale n'y a rien à faire.
+
+L'erreur inverse coûte autant : appliquer la formule sans jamais dire pourquoi on y a droit. La phrase « comme on remet la boule après chaque tirage, les trois tirages sont indépendants et de même probabilité de succès $p$ » est ce qui transforme un calcul en démonstration.
+
+### Exemple travaillé, dans l'habillage de l'examen
+
+Les sujets enchaînent presque toujours de la même façon : une première question calcule une probabilité par dénombrement, et cette probabilité **devient le $p$** de la question suivante. Sache le reconnaître — tu n'as pas à la recalculer.
+
+Une urne contient quatre boules blanches et six boules noires, indiscernables au toucher. On tire simultanément deux boules et on considère l'événement $S$ : « les deux boules tirées sont blanches ». On répète cette expérience quatre fois, en remettant à chaque fois les deux boules dans l'urne. Soit $X$ le nombre de fois où $S$ se réalise.
+
+**Étape 1 — La probabilité de succès, par dénombrement.** Un tirage simultané de deux boules parmi dix :
+
+$$P(S) = \frac{\binom{4}{2}}{\binom{10}{2}} = \frac{6}{45} = \frac{2}{15}$$
+
+**Étape 2 — Justifier, puis nommer.** Les deux boules sont remises après chaque tirage : les quatre expériences sont indépendantes et ont toutes la même probabilité de succès $P(S)$. Donc
+
+$$X \sim \mathcal{B}\!\left(4,\ \frac{2}{15}\right)$$
+
+**Étape 3 — Calculer ce qu'on demande.** Avec $n = 4$, $p = \dfrac{2}{15}$ et $1 - p = \dfrac{13}{15}$ :
+
+$$P(X = 1) = \binom{4}{1} \left(\frac{2}{15}\right)^1 \left(\frac{13}{15}\right)^3 = 4 \times \frac{2}{15} \times \frac{2197}{3375} = \frac{17576}{50625} \approx 0{,}35$$
+
+$$P(X \geq 1) = 1 - P(X = 0) = 1 - \left(\frac{13}{15}\right)^4 = 1 - \frac{28561}{50625} = \frac{22064}{50625} \approx 0{,}44$$
+
+$$E(X) = n p = 4 \times \frac{2}{15} = \frac{8}{15}$$
+
+Remarque le réflexe de la deuxième ligne : « au moins un succès » se calcule par l'événement contraire, jamais en additionnant $P(X=1)$, $P(X=2)$, $P(X=3)$ et $P(X=4)$. C'est le même geste qu'au chapitre précédent, et il est encore plus rentable ici — un seul terme au lieu de quatre.
+
+Remarque aussi ce qui n'a pas été fait : aucun arbre à huit ou seize chemins n'a été dessiné. C'est tout l'intérêt de reconnaître la situation. Dès que les trois conditions sont vérifiées, la formule remplace l'arbre.
+
+---
+
 ## La rampe — de la définition aux questions de bac
 
 Le tableau ci-dessous donne la progression. Chaque palier augmente la demande en raisonnement, pas seulement en calcul.
@@ -397,18 +578,19 @@ Le tableau ci-dessous donne la progression. Chaque palier augmente la demande en
 | **3.** Indépendance | Confronter la contradiction | Distinguer indépendants et incompatibles. Utiliser le critère $P(A \cap B) = P(A) \cdot P(B)$ pour tester. |
 | **4.** Probabilités totales | Travaillé puis guidé | Assembler $P(B)$ à partir des feuilles de l'arbre. Vérifier par encadrement. |
 | **5.** Lecture inverse | Peu d'aide, tu conduis | Identifier les feuilles $B$, former $P(B)$, calculer $P(A|B)$ en divisant par $P(B)$. |
-| **6.** Questions de bac authentiques | Sans aide | Reconnaître quelle procédure s'applique sur des questions réelles de l'examen national. |
-| **7.** Variations inédites | Sans aide | Appliquer la même logique sur des contextes jamais vus : filtre anti-spam, deux fournisseurs, tirage dans des ensembles différents. Ce que le bac teste vraiment : reconnaître la structure quand le problème est habillé différemment. |
+| **6.** Variable aléatoire et loi binomiale | Travaillé puis guidé | Dresser la loi de $X$ en regroupant les feuilles, contrôler la somme à 1, calculer une espérance. Reconnaître une répétition d'épreuves identiques et indépendantes, et écrire $P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}$. |
+| **7.** Questions de bac authentiques | Sans aide | Reconnaître quelle procédure s'applique sur des questions réelles de l'examen national. |
+| **8.** Variations inédites | Sans aide | Appliquer la même logique sur des contextes jamais vus : filtre anti-spam, deux fournisseurs, tirage dans des ensembles différents. Ce que le bac teste vraiment : reconnaître la structure quand le problème est habillé différemment. |
 
 ---
 
 ## Pour t'entraîner — les questions de type bac
 
-Les paliers 6 et 7 de la rampe, maintenant : d'abord une **question d'examen national authentique**, puis une **variation inédite** pour vérifier que tu reconnais la structure même quand l'habillage change. La règle du jeu — c'est là que se joue le vrai progrès : pour chaque question, cherche sur papier d'abord, engage une réponse, et seulement ensuite ouvre le raisonnement expert pour le comparer au tien.
+Les paliers 7 et 8 de la rampe, maintenant : d'abord une **question d'examen national authentique**, puis une **variation inédite** pour vérifier que tu reconnais la structure même quand l'habillage change. La règle du jeu — c'est là que se joue le vrai progrès : pour chaque question, cherche sur papier d'abord, engage une réponse, et seulement ensuite ouvre le raisonnement expert pour le comparer au tien.
 
 ### Exercice de type bac (2023)
 
-Le sujet ci-dessous ajoute un ingrédient nouveau à ce qu'on a construit : une **variable aléatoire** $X$ (un nombre attaché à chaque résultat de l'expérience) et sa **loi de probabilité** (la liste des valeurs de $X$ avec leurs probabilités). Rien de plus que l'arbre et le conditionnement, mais organisés autrement. Deux réflexes suffiront : les probabilités de la deuxième branche sont **conditionnelles** (l'urne change après le transfert d'une boule), et une loi de probabilité **somme toujours à 1**.
+Le sujet ci-dessous fait travailler ensemble tout ce qu'on a construit : l'arbre, le conditionnement, et la **variable aléatoire** $X$ des deux chapitres qui précèdent, dont il demande la **loi de probabilité**. Deux réflexes suffiront : les probabilités de la deuxième branche sont **conditionnelles** (l'urne change après le transfert d'une boule), et une loi de probabilité **somme toujours à 1**.
 
 Un piège propre à ce sujet — le transfert de la boule — à trancher avant de te lancer :
 

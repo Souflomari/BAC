@@ -275,6 +275,157 @@ entries:
             note: "Application numérique avec λ en ans⁻¹ : le résultat sort directement en années."
 
   # ── bk-2022-n-x2 — 2022 N, Exercice 2 (Partie 2) : désintégration de l'iode 131 ──
+  - id: bk-2021-r-x3
+    title: "Désintégration du phosphore 32 : équation β⁻, exploitation de ln(N) = f(t), demi-vie et activité"
+    source:
+      year: 2021
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — Désintégration du phosphore 32"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2021 SESSION DE RATTRAPAGE — examen national PC BIOF (Sciences
+        Physiques, SPC), AlloSchool RS 28F, element/127290 (Exercice 3,
+        barème complet 2,5 pt). PREMIÈRE entrée de session rattrapage du
+        corpus : jusqu'ici toutes les banques étaient en session normale.
+        Transcription vérifiée par une passe adversariale indépendante
+        (2026-08-22) : re-fetch du scan, chaque valeur relue sur l'image
+        (upload-84198/0004-big.jpg et 0005-big.jpg), figure re-décrite
+        depuis le dessin et non depuis l'énoncé, puis physique re-dérivée.
+        Les deux couples lus sur la droite — (0 ; 33) et (200 ; 23,3) —
+        donnent λ = 9,7/200 = 4,85×10⁻² j⁻¹ puis t₁/₂ = ln2/λ = 14,29 j,
+        exactement la valeur que la question 2.3 demande d'établir : la
+        lecture graphique est donc confirmée par son propre résultat. De
+        même m₀ = 10⁻⁵ mg = 10⁻⁸ g (unité milligramme bien lue sur le
+        scan) donne N₀ = 1,88×10¹⁴, et t₁ = 28,58 j est le double EXACT de
+        t₁/₂ — le sujet a choisi ses données pour que N tombe sur N₀/4,
+        recoupement supplémentaire de la demi-vie.
+    intro: |-
+      **Désintégration du phosphore 32 (examen national, session de rattrapage 2021 — Exercice 3, 2,5 points).**
+
+      D'énormes progrès de diagnostic et de traitement des maladies ont été réalisés en médecine grâce à la radioactivité. Ainsi, on utilise le phosphore 32 pour réduire la production excessive des globules rouges. On s'intéresse dans cet exercice à la radioactivité du phosphore 32 : $^{32}_{15}\text{P}$, émetteur $\beta^-$.
+
+      **Données.**
+      - Numéro atomique de quelques éléments chimiques :
+
+      | $Z$ | 13 | 14 | 15 | 16 |
+      |---|---|---|---|---|
+      | Symbole | Al | Si | P | S |
+
+      - Masse molaire du phosphore 32 : $M(\text{P}) = 32\ \text{g.mol}^{-1}$ ;
+      - Nombre d'Avogadro : $N_A = 6{,}02.10^{23}\ \text{mol}^{-1}$.
+
+      **La figure.** Un repère encadré, sans quadrillage. L'axe des ordonnées porte $ln(N)$, avec deux valeurs chiffrées : $33$ au point de départ de la droite (sur l'axe) et $23{,}3$ plus bas. L'axe des abscisses porte $t$ en jours, chiffré $0$ à l'origine et $200$. Une droite décroissante part exactement du point $(0\,;\,33)$ ; deux pointillés en équerre — l'un horizontal depuis $23{,}3$, l'autre vertical depuis $200$ — se rejoignent sur elle : la droite passe donc par $(200\,;\,23{,}3)$.
+    questions:
+      - id: q1
+        part: "1- L'équation de désintégration"
+        stem: |-
+          (0,5 pt) Écrire l'équation de la réaction de désintégration de $^{32}_{15}\text{P}$. Identifier le noyau fils.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une équation de désintégration se construit toujours de la même façon : on écrit le noyau père, la particule émise imposée par le type de radioactivité, et on laisse le noyau fils en inconnue $^{A}_{Z}\text{X}$. Les deux lois de conservation (nombre de nucléons, charge) donnent alors $A$ et $Z$ sans aucune réflexion supplémentaire — et c'est seulement $Z$ qui permet de NOMMER le noyau fils, en lisant le tableau des numéros atomiques.
+
+          Le phosphore 32 est émetteur $\beta^-$ : la particule émise est l'électron $^{0}_{-1}\text{e}$.
+
+          $$^{32}_{15}\text{P} \longrightarrow\ ^{A}_{Z}\text{X} + ^{0}_{-1}\text{e}$$
+
+          Conservation du nombre de nucléons : $32 = A + 0$, donc $A = 32$.
+
+          Conservation de la charge : $15 = Z + (-1)$, donc $Z = 16$.
+
+          Le tableau donne $Z = 16 \Rightarrow$ soufre. Le noyau fils est donc $^{32}_{16}\text{S}$ :
+
+          $$\boxed{^{32}_{15}\text{P} \longrightarrow\ ^{32}_{16}\text{S} + ^{0}_{-1}\text{e}}$$
+
+          **Le piège à éviter.** En $\beta^-$, $Z$ AUGMENTE d'une unité alors que la particule émise est négative. Ce n'est pas une contradiction : la charge $-1$ emportée par l'électron doit être compensée pour que le total reste $+15$, donc le noyau fils est plus chargé que le père. Un neutron s'est transformé en proton.
+      - id: q2-1
+        part: "2- Exploiter la courbe ln(N) = f(t)"
+        stem: |-
+          (0,5 pt) Un échantillon radioactif du phosphore 32 contient $N_0$ noyaux à l'instant de date $t = 0$. La courbe de la figure représente les variations de $ln(N)$ en fonction du temps, où $N$ est le nombre de noyaux de phosphore 32 restants à l'instant $t$.
+
+          Montrer que $ln(N)$ s'écrit sous la forme $ln(N) = ln(N_0) - \lambda.t$, où $\lambda$ est la constante radioactive du phosphore 32.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La question demande de RETROUVER l'équation d'une droite à partir de la loi de décroissance. C'est le passage au logarithme qui transforme une exponentielle en droite — et c'est précisément pour cela que l'énoncé trace $ln(N)$ plutôt que $N$ : une droite se lit avec deux points, une exponentielle non.
+
+          La loi de décroissance radioactive s'écrit :
+
+          $$N(t) = N_0\,e^{-\lambda t}$$
+
+          On prend le logarithme népérien des deux membres. Le logarithme d'un produit est la somme des logarithmes :
+
+          $$ln(N) = ln\left(N_0\,e^{-\lambda t}\right) = ln(N_0) + ln\left(e^{-\lambda t}\right)$$
+
+          Or $ln$ et $\exp$ sont réciproques l'une de l'autre, donc $ln\left(e^{-\lambda t}\right) = -\lambda t$ :
+
+          $$\boxed{ln(N) = ln(N_0) - \lambda\,t}$$
+
+          **Ce que cette écriture donne à lire.** C'est une fonction affine de $t$ : son ordonnée à l'origine vaut $ln(N_0)$ et son coefficient directeur vaut $-\lambda$. La droite descend, ce qui est cohérent — $N$ diminue.
+      - id: q2-2
+        part: "2- Exploiter la courbe ln(N) = f(t)"
+        stem: |-
+          (0,5 pt) Déterminer, en $\text{jours}^{-1}$, la valeur de $\lambda$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On vient d'établir que le coefficient directeur de la droite vaut $-\lambda$. Déterminer $\lambda$, c'est donc calculer une pente — et la figure a été construite pour ça : elle donne exactement deux points chiffrés, un à chaque extrémité de la partie utile.
+
+          Les deux points lisibles sur la droite sont $(0\,;\,33)$ et $(200\,;\,23{,}3)$.
+
+          Coefficient directeur :
+
+          $$-\lambda = \frac{23{,}3 - 33}{200 - 0} = \frac{-9{,}7}{200} = -4{,}85\times10^{-2}$$
+
+          Donc :
+
+          $$\boxed{\lambda = 4{,}85\times10^{-2}\ \text{jour}^{-1}}$$
+
+          **Attention à l'unité.** L'axe des abscisses est gradué en JOURS, donc la pente est en $\text{jour}^{-1}$ — c'est ce que demande l'énoncé. Il faudra convertir en $\text{s}^{-1}$ plus tard, quand on voudra une activité en becquerels.
+      - id: q2-3
+        part: "2- Exploiter la courbe ln(N) = f(t)"
+        stem: |-
+          (0,25 pt) En déduire que la demi-vie $t_{1/2}$ du phosphore 32 vaut $t_{1/2} = 14{,}29\ \text{jours}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La demi-vie est l'instant où il ne reste que la moitié des noyaux. On l'obtient en écrivant cette définition dans la loi de décroissance et en résolvant — la relation $t_{1/2} = ln2/\lambda$ n'est rien d'autre que le résultat de ce calcul, qu'il vaut mieux savoir refaire que retenir.
+
+          Par définition, à $t = t_{1/2}$ : $N = \dfrac{N_0}{2}$. En reportant dans $N = N_0 e^{-\lambda t}$ :
+
+          $$\frac{N_0}{2} = N_0\,e^{-\lambda t_{1/2}} \quad\Longrightarrow\quad e^{-\lambda t_{1/2}} = \frac{1}{2}$$
+
+          On prend le logarithme : $-\lambda t_{1/2} = ln\left(\frac{1}{2}\right) = -ln2$, d'où
+
+          $$t_{1/2} = \frac{ln2}{\lambda} = \frac{0{,}693}{4{,}85\times10^{-2}} \approx 14{,}29\ \text{jours}$$
+
+          $$\boxed{t_{1/2} \approx 14{,}29\ \text{jours}}$$
+
+          **Le contrôle qui rassure.** La valeur demandée par l'énoncé tombe exactement : c'est la preuve que la lecture graphique de la question précédente était juste. Quand un énoncé donne le résultat à retrouver, sers-t'en comme d'une vérification de ta lecture, jamais comme d'une dispense de calcul.
+      - id: q3
+        part: "3- L'activité de l'échantillon injecté"
+        stem: |-
+          (0,75 pt) Un patient reçoit, à un instant de date $t = 0$, une solution de phosphate de sodium contenant un échantillon de phosphore 32 de masse $m_0 = 10^{-5}\ \text{mg}$.
+
+          Trouver l'activité $a_1$ de l'échantillon à l'instant de date $t_1 = 28{,}58\ \text{jours}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'activité est $a = \lambda N$ : il faut donc le nombre de noyaux PRÉSENTS à l'instant demandé, pas le nombre initial. Le chemin est en trois temps : la masse donne $N_0$, la date donne $N(t_1)$, et $\lambda$ transforme $N$ en activité. Le seul piège est l'unité de $\lambda$.
+
+          **Premier temps — le nombre initial de noyaux.** La masse est donnée en milligrammes : $m_0 = 10^{-5}\ \text{mg} = 10^{-8}\ \text{g}$.
+
+          $$N_0 = \frac{m_0}{M}\,N_A = \frac{10^{-8}}{32}\times6{,}02\times10^{23} = 3{,}125\times10^{-10}\times6{,}02\times10^{23}$$
+
+          $$N_0 \approx 1{,}88\times10^{14}\ \text{noyaux}$$
+
+          **Deuxième temps — combien il en reste à $t_1$.** Regarde la date proposée : $t_1 = 28{,}58 = 2\times14{,}29 = 2\,t_{1/2}$. C'est exactement deux demi-vies. Inutile de passer par l'exponentielle : à chaque demi-vie le nombre de noyaux est divisé par deux, donc après deux demi-vies il est divisé par quatre.
+
+          $$N(t_1) = \frac{N_0}{4} = \frac{1{,}88\times10^{14}}{4} \approx 4{,}70\times10^{13}\ \text{noyaux}$$
+
+          **Troisième temps — l'activité.** Le becquerel est une désintégration PAR SECONDE : il faut donc convertir $\lambda$, qui est en $\text{jour}^{-1}$.
+
+          $$\lambda = \frac{4{,}85\times10^{-2}}{86\,400} \approx 5{,}61\times10^{-7}\ \text{s}^{-1}$$
+
+          $$a_1 = \lambda\,N(t_1) = 5{,}61\times10^{-7}\times4{,}70\times10^{13}$$
+
+          $$\boxed{a_1 \approx 2{,}6\times10^{7}\ \text{Bq}}$$
+
+          **L'erreur qui coûte le plus cher ici.** Oublier la conversion des jours en secondes donne une activité $86\,400$ fois trop grande, soit $2{,}3\times10^{12}$ — un nombre qui n'a aucun sens pour une dose injectée à un patient. Quand une activité sort en becquerels, vérifie toujours que $\lambda$ est bien en $\text{s}^{-1}$.
   - id: bk-2022-n-x2
     title: "Désintégration de l'iode 131 : équation β⁻, énergie libérée et lecture graphique de la demi-vie"
     source:

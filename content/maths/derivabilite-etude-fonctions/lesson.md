@@ -386,6 +386,124 @@ $$f'(x) = \frac{x(x-2)}{(x-1)^2}$$
 
 ---
 
+## Fonction réciproque : la même courbe, lue dans l'autre sens
+
+Tu viens de mener une étude complète : domaine, limites, dérivée, signe, variations. Tout ce travail répond toujours à la même question, dans le même sens — on te donne $x$, tu produis $f(x)$.
+
+L'examen national retourne la question, presque chaque année, à la fin du problème d'analyse : **on te donne une valeur $y$, et on te demande le $x$ qui la produit**. Remonter de l'image vers l'antécédent. Ce chapitre montre que ce trajet inverse est parfois lui-même une fonction — et que tout ce que tu sais déjà sur $f$ suffit à la construire, à la dessiner, et à la dériver.
+
+### Un premier cas, sur une étude déjà faite
+
+Reprends $f(x) = x^3-3x$ du R4, mais ne la regarde que sur $[1,+\infty[$. Tu as établi là-bas que $f'(x) = 3(x-1)(x+1)$, donc $f'(x)>0$ dès que $x>1$ : $f$ est **strictement croissante** sur $[1,+\infty[$. Aux bornes de cet intervalle : $f(1)=-2$, et $f(x) \to +\infty$ quand $x \to +\infty$.
+
+Maintenant pose la question inverse. Choisis une hauteur $y$, disons $y=2$ : existe-t-il un $x \geq 1$ tel que $f(x)=2$, et un seul ?
+
+C'est mot pour mot le corollaire du TVI du chapitre précédent : $f$ est continue sur $[1,+\infty[$, elle y est strictement monotone, et $2$ est bien compris entre $f(1)=-2$ et la limite $+\infty$. Donc l'équation $f(x)=2$ a **exactement une** solution dans $[1,+\infty[$ (ici $x=2$, puisque $2^3-3\times2=2$).
+
+Et ce raisonnement ne doit rien à la valeur $2$ : il tient à l'identique pour **toute** hauteur $y$ de $[-2,+\infty[$. À chaque $y$ de cet intervalle correspond donc un antécédent, et un seul. Associer à $y$ cet unique antécédent, c'est exactement définir une fonction — la **fonction réciproque** de $f$, notée $f^{-1}$, définie sur $[-2,+\infty[$.
+
+### Le théorème d'existence, et ce qui reste vraiment à vérifier
+
+**Théorème.** Si $f$ est **continue** et **strictement monotone** sur un intervalle $I$, alors $f$ réalise une **bijection** de $I$ sur l'intervalle image $J=f(I)$ : tout élément de $J$ a un antécédent dans $I$, et un seul. $f$ admet alors une fonction réciproque $f^{-1}$, définie sur $J$, à valeurs dans $I$, caractérisée par
+
+$$\text{pour } x \in I \text{ et } y \in J : \qquad y = f(x) \iff x = f^{-1}(y)$$
+
+Remarque ce que tu n'as, en pratique, presque jamais à démontrer :
+
+- **La continuité est offerte par la dérivabilité.** Si tu as calculé $f'$ pour faire le tableau de variations, $f$ est dérivable sur $I$, donc continue sur $I$ (R1). Une ligne, pas une démonstration.
+- **La stricte monotonie est déjà dans le tableau de variations.** Elle vient du signe de $f'$ (R4) — c'est-à-dire d'une question que le sujet t'a fait traiter plusieurs questions plus tôt.
+
+Ce qui reste à ta charge, et qui porte tous les points : **déterminer $J$**. C'est la seule vraie question de la démonstration d'existence.
+
+### Lire l'intervalle image aux bornes — et le piège du sens
+
+Sur un intervalle où $f$ est strictement monotone, $f$ ne revient jamais en arrière : l'image de $I$ est donc simplement l'intervalle délimité par les valeurs (ou les limites) de $f$ aux **bornes** de $I$. Mais ces deux valeurs ne se rangent pas dans le même ordre selon le sens de variation :
+
+| $f$ sur $I=[a,b]$ | $J=f(I)$ |
+|---|---|
+| strictement croissante | $[f(a),\ f(b)]$ — les bornes se correspondent dans l'ordre |
+| strictement décroissante | $[f(b),\ f(a)]$ — **les bornes s'échangent** |
+
+La même lecture vaut pour une borne ouverte ou infinie, en remplaçant la valeur par la limite : si $I=\,]1,2]$ et $f$ y est décroissante, alors $J=\left[f(2),\ \displaystyle\lim_{x \to 1^{+}}f(x)\right[$.
+
+**L'erreur qui coûte les points est toujours la même :** écrire $J$ dans l'ordre des bornes de $I$ alors que $f$ décroît, et sortir un intervalle à l'envers, du type $[3,-\infty[$. Le réflexe qui l'évite : ne recopie jamais l'ordre de $I$ — écris les deux valeurs, regarde laquelle est la plus petite, et range-les.
+
+Sur l'exemple : $f$ croît sur $I=[1,+\infty[$, avec $f(1)=-2$ et $f \to +\infty$. Donc $J=[-2,+\infty[$, dans l'ordre — et $f^{-1}$ est définie sur $[-2,+\infty[$.
+
+### La courbe de $f^{-1}$ : le symétrique par rapport à la droite $y=x$
+
+L'équivalence $y=f(x) \iff x=f^{-1}(y)$ dit une chose très concrète sur les points : si le point de coordonnées $(x,\,f(x))$ est sur la courbe de $f$, alors le point $(f(x),\,x)$ — les mêmes deux nombres, échangés — est sur la courbe de $f^{-1}$.
+
+Or échanger l'abscisse et l'ordonnée d'un point, c'est exactement le symétriser par rapport à la droite d'équation $y=x$, la **première bissectrice** du repère. D'où le résultat que les sujets demandent d'appliquer :
+
+**La courbe de $f^{-1}$ est le symétrique de la courbe de $f$ par rapport à la droite $(\Delta) : y=x$.**
+
+Tu n'as donc aucun calcul à faire pour la tracer : tu reflètes ce qui est déjà dessiné. Trois conséquences utiles, toutes lisibles sur cette symétrie :
+
+- **Un point situé sur $(\Delta)$ est son propre symétrique.** Sur l'exemple, $f(2)=2$ : le point $(2,2)$ est sur la première bissectrice, donc il appartient aux **deux** courbes. Les sujets s'en servent comme point de repère pour le tracé — et une remarque du type "on remarquera que $f(\alpha)=\alpha$" est presque toujours là pour ça.
+- **$f^{-1}$ varie dans le même sens que $f$.** Une symétrie par rapport à $y=x$ ne retourne pas le sens de la montée : si $f$ croît, $f^{-1}$ croît ; si $f$ décroît, $f^{-1}$ décroît.
+- **Les asymptotes se symétrisent aussi.** Une asymptote horizontale $y=c$ de la courbe de $f$ devient une asymptote verticale $x=c$ pour celle de $f^{-1}$, et réciproquement. Une droite perpendiculaire à $(\Delta)$, elle, est sa propre symétrique : elle reste asymptote aux deux courbes.
+
+Sur l'exemple : la courbe de $f^{-1}$ part du point $(-2,1)$ — le symétrique de $(1,-2)$ —, passe par $(2,2)$ qui est son propre symétrique, et monte indéfiniment.
+
+### La dérivée de la réciproque en un point
+
+Il reste le troisième temps, celui qui se paie en points : dériver $f^{-1}$ en un point, sans jamais avoir écrit son expression.
+
+**Théorème.** Soit $f$ une bijection d'un intervalle $I$ sur $J$, dérivable en un point $a$ de $I$, et $b=f(a)$. Si $f'(a) \neq 0$, alors $f^{-1}$ est dérivable en $b$ et
+
+$$\left(f^{-1}\right)'(b) = \frac{1}{f'(a)} \qquad \text{c'est-à-dire} \qquad \left(f^{-1}\right)'(b) = \frac{1}{f'\!\left(f^{-1}(b)\right)}$$
+
+**Pourquoi ce $1$ sur la pente, avec l'image de la tangente :** la tangente à la courbe de $f$ au point $(a,b)$ a pour pente $f'(a)$ ; elle avance de $1$ horizontalement pendant qu'elle monte de $f'(a)$. Symétrise cette droite par rapport à $y=x$ : elle devient la tangente à la courbe de $f^{-1}$ au point $(b,a)$, et la symétrie échange justement l'horizontal et le vertical. Le déplacement qui valait "$1$ à droite, $f'(a)$ vers le haut" devient "$f'(a)$ à droite, $1$ vers le haut" : la nouvelle pente est $\dfrac{1}{f'(a)}$.
+
+Cette image explique aussi **pourquoi la condition $f'(a) \neq 0$ est indispensable** : si $f'(a)=0$, la tangente à la courbe de $f$ est horizontale, donc sa symétrique est **verticale** — une droite verticale n'a pas de pente, et $f^{-1}$ n'est pas dérivable en $b$. Sur l'exemple, $f'(1)=0$ : la courbe de $f^{-1}$ admet une tangente verticale au point $(-2,1)$, exactement au bord de son domaine.
+
+**Exemple travaillé.** Pour $f(x)=x^3-3x$ bijective de $[1,+\infty[$ sur $[-2,+\infty[$, calculer $\left(f^{-1}\right)'(2)$.
+
+**Ce qu'on cherche et pourquoi ce geste :** la formule réclame un antécédent, pas une image. Avant tout calcul de dérivée, il faut donc le $a$ de $I$ tel que $f(a)=2$ — c'est lui, et lui seul, qu'on dérivera.
+
+On a $f(2)=2^3-3\times2=2$, donc $f^{-1}(2)=2$ : ici l'antécédent est $a=2$.
+
+$$f'(2) = 3\times2^2-3 = 9 \neq 0$$
+
+La condition est remplie, donc :
+
+$$\left(f^{-1}\right)'(2) = \frac{1}{f'(2)} = \frac{1}{9}$$
+
+**Le piège, et il est systématique :** écrire $\dfrac{1}{f'(b)}$ au lieu de $\dfrac{1}{f'(a)}$. Ici les deux se confondent parce que $2$ est son propre antécédent — c'est précisément le cas où l'erreur ne se voit pas. Dès que $b \neq a$, elle donne un résultat faux. La parade tient en une phrase : **on dérive $f$ au point de départ, jamais au point d'arrivée.** C'est pour cette raison que les sujets glissent presque toujours une indication du type "*remarquer que $f^{-1}(b)=a$*", ou renvoient à une question précédente où $f(a)=b$ a déjà été calculé : cette indication n'est pas un cadeau décoratif, c'est l'antécédent qu'il te faut.
+
+Note enfin que $f^{-1}$ ne désigne **pas** $\dfrac{1}{f}$. C'est une notation, pas une puissance : $f^{-1}(b)$ est un antécédent, $\dfrac{1}{f(b)}$ est un inverse, et les deux n'ont rien à voir.
+
+### Dans l'habillage de l'examen : la rédaction complète, en trois temps
+
+**Exemple travaillé.** Soit $f(x) = \dfrac{x^2-x+1}{x-1}$, étudiée au R5. On note $g$ sa restriction à l'intervalle $I=\,]1,2]$. Montrer que $g$ admet une fonction réciproque $g^{-1}$ définie sur un intervalle $J$ à déterminer, puis calculer $\left(g^{-1}\right)'\!\left(\dfrac{7}{2}\right)$.
+
+**Ce qu'on cherche et pourquoi ce geste :** tout est déjà fait dans l'étude du R5 — il ne s'agit pas de recommencer, mais d'aller y **prélever** les trois ingrédients : la dérivabilité (pour la continuité), le signe de $f'$ sur $I$ (pour la monotonie), et les valeurs aux bornes de $I$ (pour $J$).
+
+**1. Existence.** $g$ est dérivable sur $I$ comme restriction d'une fonction rationnelle définie sur $I$, donc **continue** sur $I$. Le R5 a établi $f'(x)=\dfrac{x(x-2)}{(x-1)^2}$, strictement négative sur $]1,2[$ : $g$ est donc **strictement décroissante** sur $I=\,]1,2]$. Continue et strictement monotone sur un intervalle, $g$ réalise une bijection de $I$ sur $J=g(I)$.
+
+**2. Détermination de $J$.** On lit les deux bornes, puis on les range — $g$ décroît, donc elles s'échangent :
+
+$$g(2) = 2+\frac{1}{1} = 3 \qquad \qquad \lim_{x \to 1^{+}} g(x) = +\infty$$
+
+$$J = \left[3,\ +\infty\right[$$
+
+Donc $g$ admet une fonction réciproque $g^{-1}$ définie sur $J=[3,+\infty[$.
+
+**3. Dérivée en un point.** On cherche d'abord l'antécédent de $\dfrac{7}{2}$ dans $I$. En essayant $x=\dfrac{3}{2}$ :
+
+$$g\!\left(\frac{3}{2}\right) = \frac{3}{2} + \frac{1}{\frac{3}{2}-1} = \frac{3}{2}+2 = \frac{7}{2} \qquad \text{donc} \qquad g^{-1}\!\left(\frac{7}{2}\right) = \frac{3}{2}$$
+
+On dérive $g$ **en cet antécédent** :
+
+$$g'\!\left(\frac{3}{2}\right) = \frac{\frac{3}{2}\left(\frac{3}{2}-2\right)}{\left(\frac{3}{2}-1\right)^2} = \frac{\frac{3}{2}\times\left(-\frac{1}{2}\right)}{\frac{1}{4}} = \frac{-\frac{3}{4}}{\frac{1}{4}} = -3 \neq 0$$
+
+$$\left(g^{-1}\right)'\!\left(\frac{7}{2}\right) = \frac{1}{g'\!\left(\frac{3}{2}\right)} = -\frac{1}{3}$$
+
+Le signe négatif est une vérification gratuite : $g$ décroît, donc $g^{-1}$ décroît aussi, donc sa dérivée devait être négative. Quand tu trouves une dérivée de réciproque dont le signe contredit le tableau de variations de départ, c'est qu'une erreur s'est glissée dans le calcul — le plus souvent l'antécédent.
+
+---
+
 ### Exercice de type bac
 
 Le sujet ci-dessous est un **extrait** d'un problème d'analyse déjà vérifié (examen national, session normale 2019, filière Sciences Mathématiques) : cette notion n'a pas d'exercice dédié au bac, elle apparaît toujours en filigrane dans un problème plus large — voici la portion qui te concerne directement, dérivabilité, Rolle, accroissements finis et point d'inflexion.
