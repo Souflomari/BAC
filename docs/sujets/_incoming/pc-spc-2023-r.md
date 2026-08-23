@@ -287,7 +287,7 @@ verticalement, ce que le dessin montre bien). Aucun point indécidable.
 
 ## 2023 — session rattrapage — Exercice 3
 Source: https://www.alloschool.com/element/142484
-Statut: transcrit (non vérifié)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
 
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : RS 28F · Barème de l'exercice : 4,75 points
