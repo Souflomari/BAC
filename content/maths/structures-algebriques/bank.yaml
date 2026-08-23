@@ -7,17 +7,23 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les SEPT entrées ci-dessous sont des transcriptions
-# FIDÈLES des sept entrées « vérifié » de
-# docs/sujets/maths/structures-algebriques.md (re-fetch AlloSchool
+# exercises.yaml). Les HUIT entrées ci-dessous sont des transcriptions
+# FIDÈLES d'entrées « vérifié » du recensement (re-fetch AlloSchool
 # indépendant + diff caractère-par-caractère, agent-vérificateur-adversarial)
-# — TOUS les sujets vérifiés recensés à ce jour pour cette notion : 2017
-# (Exercice 1, vérifié 2026-08-06, 2e passe indépendante), 2019 (Exercice 1,
-# vérifié 2026-07-12), 2020 (Exercice 2, vérifié 2026-08-05), 2022
-# (Exercice 4, vérifié 2026-08-05), 2023 (Exercice 5, vérifié 2026-08-06),
-# 2024 (Exercice 4, vérifié 2026-08-05), 2025 (Exercice 4, vérifié
-# 2026-08-06) ; les sept en session normale, filière Sciences Mathématiques
-# (A et B, BIOF), barème 3,5 points chacun. 2021 NE PORTE AUCUN exercice de
+# — TOUS les sujets vérifiés recensés à ce jour pour cette notion. SEPT
+# viennent de docs/sujets/maths/structures-algebriques.md et sont en SESSION
+# NORMALE : 2017 (Exercice 1, vérifié 2026-08-06, 2e passe indépendante),
+# 2019 (Exercice 1, vérifié 2026-07-12), 2020 (Exercice 2, vérifié
+# 2026-08-05), 2022 (Exercice 4, vérifié 2026-08-05), 2023 (Exercice 5,
+# vérifié 2026-08-06), 2024 (Exercice 4, vérifié 2026-08-05), 2025
+# (Exercice 4, vérifié 2026-08-06). La HUITIÈME, ajoutée 2026-08-23, est la
+# PREMIÈRE ENTRÉE DE SESSION DE RATTRAPAGE DES BANQUES DE MATHÉMATIQUES —
+# toutes les banques maths du corpus étaient jusque-là en session normale :
+# bk-2023-r-x3 (2023 rattrapage, Exercice 3, vérifié 2026-08-23), transcrit
+# depuis docs/sujets/_incoming/maths-sm-2023-r.md (et non depuis le fichier
+# de notion, qui ne recense pas encore le rattrapage). Les huit sont en
+# filière Sciences Mathématiques (A et B, BIOF), barème 3,5 points chacun.
+# 2021 NE PORTE AUCUN exercice de
 # structures algébriques dans docs/sujets/maths/structures-algebriques.md
 # — absence vérifiée, pas une lacune de recensement ; aucune entrée
 # bk-2021-… n'est donc créée, en application du principe énoncé juste
@@ -40,8 +46,9 @@
 # page — même décision, prise dans le même sens, sur bk-2019-n-x2 de
 # content/maths/nombres-complexes-1/bank.yaml et sur bk-2021-n-x1 de
 # content/pc/reactions-acido-basiques/bank.yaml. bk-2017-n-x1, bk-2020-n-x2,
-# bk-2022-n-x4, bk-2023-n-x5, bk-2024-n-x4 et bk-2025-n-x4 (bk-2017 ajouté
-# 2026-08-06, bk-2023/bk-2025 ajoutés 2026-08-06) ne recoupent aucun autre
+# bk-2022-n-x4, bk-2023-n-x5, bk-2023-r-x3, bk-2024-n-x4 et bk-2025-n-x4
+# (bk-2017 ajouté 2026-08-06, bk-2023-n/bk-2025 ajoutés 2026-08-06,
+# bk-2023-r ajouté 2026-08-23) ne recoupent aucun autre
 # sommet : exercises.yaml de cette notion ne contient que r-bac (2019,
 # sourcé) et r-variation (jumeau inventé, anti-mémorisation, status
 # not-applicable) — vérifié par grep, aucun sourcé sur 2017, 2020, 2022,
@@ -71,6 +78,29 @@
 # (aucun rung « sous-groupe ») reste réel — quatre sujets sur six le
 # mobilisent désormais, pour cinq occurrences au total — et mérite
 # l'attention du pédagogy-architect si ce chapitre est repris.
+#
+# >>> MISE À JOUR 2026-08-23 — SCOPE NOTE 1 EST RÉSOLUE. lesson.md porte
+# désormais un chapitre plein « Sous-groupe : un groupe caché dans un
+# autre » (entre R3 et R4), qui définit le mot, énonce le CRITÈRE À TROIS
+# CONDITIONS (neutre dans H, stabilité, symétriques dans H), explique ce
+# qui s'hérite (associativité, commutativité) et ce qui ne s'hérite pas,
+# traite un exemple travaillé « dans l'habillage de l'examen » — très
+# exactement F = {M(a,b) = [[a,-b],[b,a]] / (a,b) dans Z²} sous-groupe de
+# (M2(R),+) — rappelle la vérification oubliée H inclus dans E, et nomme
+# l'erreur fréquente (deux conditions sur trois, N dans (Z,+)). Le trou
+# décrit ci-dessus n'existe donc plus. bk-2023-r-x3 (ajouté le même soir)
+# est la PREMIÈRE entrée de ce fichier à s'appuyer sur ce chapitre au lieu
+# de le contourner : ses questions q1 (E sous-groupe de (M3(R),+)) et q4-a
+# (G sous-groupe de (R×C,∗)) invoquent nommément le critère à trois
+# conditions et l'exemple travaillé du chapitre, sans re-décliner la
+# checklist à quatre axiomes du R3. Les CINQ occurrences antérieures
+# recensées ci-dessus (bk-2019-n-x1 q7, bk-2022-n-x4 q1, bk-2023-n-x5 q1 et
+# q8, bk-2024-n-x4 q8) gardent leur rédaction de contournement : elle
+# reste juste et « dans le cadre », mais elle est désormais plus longue que
+# nécessaire. Un passage de rattachement de ces cinq reasoning au nouveau
+# chapitre est une amélioration éditoriale identifiée, non faite ici pour
+# ne pas mêler une réécriture de fond à l'ajout d'une entrée — à
+# l'arbitrage de l'owner.
 #
 # SCOPE NOTE 2 (divulgation honnête, authoring-side — INTÈGRE, nouveau
 # 2026-08-05) : bk-2022-n-x4 (questions 4-a à 4-c) demande de montrer que
@@ -134,6 +164,40 @@
 # un prolongement, du geste du R7. Signalé ici pour le pédagogy-architect ;
 # le `reasoning` de q9 le présente comme la suite directe de ce qui précède,
 # pas comme un rung caché.
+#
+# SCOPE NOTE 5 (divulgation honnête, authoring-side — UNE LOI NON
+# ASSOCIATIVE GLOBALEMENT, ASSOCIATIVE SUR UNE PARTIE, nouveau 2026-08-23) :
+# bk-2023-r-x3 est le premier sujet de ce fichier où une loi de composition
+# interne échoue à être associative (q3-c : T n'est pas associative sur
+# R×C), puis se révèle associative sur une PARTIE de cet ensemble (q4-c :
+# (G−{(0,0)},T) est un groupe, donc T y est associative). Les deux faits
+# sont parfaitement compatibles, mais lesson.md n'énonce nulle part la
+# dissymétrie qui les réconcilie : le chapitre « Sous-groupe » explique
+# bien qu'une propriété universelle vraie sur E DESCEND sur toute partie
+# de E (c'est l'héritage de l'associativité et de la commutativité), il ne
+# dit pas — parce qu'il n'en a pas l'occasion — que la RÉCIPROQUE est
+# fausse, une propriété pouvant échouer globalement et tenir sur une
+# partie où les contre-exemples n'existent tout simplement pas. Un élève
+# qui a bien retenu « l'associativité s'hérite » lira donc q4-c comme une
+# contradiction avec q3-c. Le champ `reasoning` de q4-c traite ce point de
+# front, sans introduire de vocabulaire neuf : il énonce la dissymétrie en
+# une phrase et la rend concrète en montrant que le contre-exemple de
+# q3-c, u = (0,−i), n'appartient pas à G (car Im(−i) = −1 ≠ 0) — il vit
+# hors de G, il n'y a donc rien à sauver. Signalé pour le
+# pedagogy-architect : une ligne dans le chapitre « Sous-groupe », sur ce
+# que l'héritage ne dit PAS, fermerait ce trou.
+#
+# Par ailleurs, la question q5 de la même entrée (« (G,∗,T) est un corps
+# commutatif ») relève EXACTEMENT de la situation décrite en SCOPE NOTE 4 —
+# transport de structure sur DEUX lois à la fois, prolongement du rung R7
+# qui n'illustre le geste que pour une loi. Rien de neuf à signaler : le
+# `reasoning` de q5 présente le prolongement Ψ(z) = (Im(z), z) de ψ à C
+# tout entier, vérifie les deux compatibilités (Ψ(z)∗Ψ(z') = Ψ(z+z') vient
+# du calcul de stabilité de q4-a ; Ψ(z)TΨ(z') = Ψ(zz') vient du calcul de
+# q4-b, dont il est explicitement noté qu'il n'utilise jamais z ≠ 0), et
+# nomme le piège correspondant : c'est la compatibilité SIMULTANÉE qui
+# livre la distributivité, l'axiome qu'aucune question antérieure de
+# l'exercice n'établit.
 
 notion: maths/structures-algebriques
 
@@ -1091,6 +1155,362 @@ entries:
             note: "C'est exactement l'exigence supplémentaire du rung R6, déjà établie."
           - math: '(G,+,\times) \ \text{est un corps commutatif}'
             note: "Anneau commutatif unitaire, et tout élément non nul inversible pour × : les conditions du R6 sont réunies."
+
+  # ── bk-2023-r-x3 — 2023 R, Exercice 3 : sous-groupe E de (M3(R),+), homomorphismes φ et ψ, lois ∗ et T sur R×C, corps commutatif (G,∗,T) ──
+  - id: bk-2023-r-x3
+    title: "Sous-groupe, homomorphismes et corps"
+    source:
+      year: 2023
+      session: rattrapage
+      filiere: "SM"
+      exercise_label: "Exercice 3"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session de rattrapage — examen national Sciences Mathématiques
+        (A et B), option française (BIOF), Mathématiques, 4 h, coef 9, code
+        sujet RS 24F, AlloSchool element/142494 (Exercice 3, « structures
+        algébriques », barème 3,5 points ; pages 4–5 du scan, images
+        upload-85320/0004-big.jpg et 0005-big.jpg). PREMIÈRE ENTRÉE DE
+        SESSION DE RATTRAPAGE DES BANQUES DE MATHÉMATIQUES : les sept
+        entrées précédentes de ce fichier — et toutes les autres banques
+        maths du corpus — sont en session normale ; la provenance
+        « Bac 2023 · Rattrapage » rendue sur la carte est donc la première
+        de son espèce côté maths. Transcription fidèle de l'entrée
+        « vérifié » de docs/sujets/_incoming/maths-sm-2023-r.md, section
+        « 2023 — session rattrapage — Exercice 3 » (re-fetch AlloSchool
+        indépendant + re-dérivation intégrale, agent-vérificateur-adversarial,
+        2026-08-23).
+        AVERTISSEMENT DE LECTURE porté par la source : le scan rend presque
+        tous les blackboard-bold de cet exercice en glyphes cassés
+        (mojibake, différents d'une occurrence à l'autre). La source les
+        adjuge un par un par la logique interne de l'exercice et marque
+        chaque lecture « (glyphe à confirmer) » : M3(R) (anneau des matrices
+        réelles 3×3), R^3 pour les coefficients de M(a,b,c), l'ensemble
+        d'arrivée R×C (forcé par phi(M(a,b,c)) = (a, b+ci) : première
+        composante réelle, seconde complexe), C pour z dans Im(z), C* pour
+        le domaine de psi, et G défini sur C TOUT ENTIER (forcé par la
+        question 4-c, qui en retranche (0,0) — un retranchement qui n
+        aurait aucun sens si G était déjà bâti sur C*). L'énoncé ci-dessous
+        reprend ces lectures adjugées en Unicode/KaTeX propre, SANS les
+        marqueurs « (glyphe à confirmer) », qui sont des annotations de
+        transcription et non du texte d'examen. La matrice de E a été relue
+        au pixel par la source (agrandissement ×3,2) : lignes (a,0,0) /
+        (0,b,−c) / (0,c,b) — le −c est bien en ligne 2, colonne 3.
+        RE-DÉMONSTRATION INDÉPENDANTE conduite pour cette conversion
+        (2026-08-23), chaque résultat retrouvé sans arrondi : M(a,b,c) +
+        M(a2,b2,c2) = M(a+a2, b+b2, c+c2) et −M(a,b,c) = M(−a,−b,−c) (Q1) ;
+        phi bijective de E sur R×C (Q2) ; (x,z) T (0,1) = (x,z) car Re(1)=1
+        (Q3-b) ; (1,i) T (x,−i) = (1·Re(−i) + x·Re(i), −i²) = (0,1) pour
+        TOUT x réel car Re(i)=Re(−i)=0 (Q3-c) ; Im(zz2) = Re(z)Im(z2) +
+        Re(z2)Im(z), d où psi(z) T psi(z2) = psi(zz2) (Q4-b) ; contre-exemple
+        explicite d associativité vérifié à la main ET par balayage
+        exhaustif sur coefficients entiers : avec u=(0,−i), v=(1,i),
+        w=(1,−i), (u T v) T w = (1,−i) tandis que u T (v T w) = (0,−i).
+        Fait supplémentaire établi ici et non demandé par l énoncé : T est
+        distributive par rapport à ∗ sur R×C TOUT ENTIER (vérification
+        directe), ce qui allège la question 5. Barème recompté sur le scan :
+        0,25 + 0,5 + 0,25 + 0,25 + 0,25 + 0,5 + 0,25 + 0,25 + 0,5 + 0,5 =
+        3,5. Points hors du périmètre strict des rungs, signalés en tête de
+        fichier : SCOPE NOTE 5 (associativité perdue globalement mais
+        retrouvée sur une partie) et SCOPE NOTE 4 (transport de structure
+        sur deux lois à la fois, réemployé ici en Q5).
+    intro: |-
+      **Structures algébriques (examen national, session de rattrapage 2023, Sciences Mathématiques — Exercice 3, 3,5 points).**
+
+      On rappelle que $\left(M_3(\mathbb{R}),+,\times\right)$ est un anneau unitaire et non commutatif d'unité $I = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}$.
+
+      Soit $E = \left\{ M(a,b,c) = \begin{pmatrix} a & 0 & 0 \\ 0 & b & -c \\ 0 & c & b \end{pmatrix} \ /\ (a,b,c) \in \mathbb{R}^3 \right\}$
+
+      *Le fil de l'exercice.* Le bloc $\begin{pmatrix} b & -c \\ c & b \end{pmatrix}$ logé en bas à droite de $M(a,b,c)$ est l'écriture matricielle du complexe $b+ci$ — c'est ce déguisement, et lui seul, qui explique tout le sujet : on part d'un sous-groupe de matrices, on le transporte sur $\mathbb{R}\times\mathbb{C}$ par un homomorphisme, on y pose une seconde loi $T$ qui réserve une surprise (elle n'est **pas** associative), puis on se replie sur une partie $G$ où tout redevient sain — assez sain pour former un corps.
+    questions:
+      - id: q1
+        part: "$E$, un sous-groupe de $(M_3(\\mathbb{R}),+)$"
+        stem: |-
+          **(0,25 pt)** Montrer que $E$ est un sous-groupe de $\left(M_3(\mathbb{R}),+\right)$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est mot pour mot l'exemple travaillé du chapitre « Sous-groupe : un groupe caché dans un autre », avec un paramètre de plus : $E$ n'est pas donné par la liste de ses éléments mais par une **forme**, et prouver qu'il est un sous-groupe consiste à vérifier que les trois opérations qui pourraient en sortir n'en sortent jamais. Trois conditions, pas quatre — l'associativité de $+$ est vraie dans $M_3(\mathbb{R})$ tout entier, donc en particulier sur $E$, dont les éléments sont des matrices de $M_3(\mathbb{R})$ comme les autres.
+
+          Au préalable, l'inclusion : chaque $M(a,b,c)$ est bien une matrice réelle $3\times3$, donc $E \subset M_3(\mathbb{R})$ par construction. Cette ligne, souvent omise, est ce qui donne un sens à la phrase « sous-groupe de $(M_3(\mathbb{R}),+)$ ».
+
+          **Le neutre.** Le neutre de $\left(M_3(\mathbb{R}),+\right)$ est la matrice nulle $O$. Or $O = M(0,0,0)$, avec $(0,0,0) \in \mathbb{R}^3$ : donc $O \in E$, et $E$ n'est pas vide.
+
+          **La stabilité.** On prend deux éléments quelconques de $E$, écrits avec des lettres différentes — jamais deux fois le même. L'addition matricielle se faisant coefficient par coefficient, on la mène et on regarde si le résultat garde la forme $M(\cdot,\cdot,\cdot)$. Il la garde, avec les paramètres $a+a'$, $b+b'$ et $c+c'$, qui sont trois réels puisque $\mathbb{R}$ est stable pour $+$. Remarque le détail qui compte : en position $(2,3)$ on obtient $-c + (-c') = -(c+c')$, exactement l'opposé du coefficient de la position $(3,2)$ — la forme est respectée.
+
+          **Les symétriques.** Le symétrique de $M(a,b,c)$ pour $+$ est son opposé, et $-M(a,b,c) = M(-a,-b,-c)$, encore de la forme voulue avec trois paramètres réels.
+
+          Les trois conditions tiennent : $E$ est un sous-groupe de $\left(M_3(\mathbb{R}),+\right)$, donc $(E,+)$ est un groupe. Et comme $\left(M_3(\mathbb{R}),+\right)$ est commutatif, $(E,+)$ l'est **automatiquement** — un sous-groupe d'un groupe commutatif est commutatif, sans rien revérifier. On s'en servira dès la question 2-b.
+
+          **Le piège à éviter.** Rédiger une démonstration de l'associativité — ou de la commutativité — de $+$ sur $E$. C'est du temps perdu pour zéro point : ces deux propriétés s'héritent. L'erreur symétrique, plus coûteuse encore, est de s'arrêter à deux conditions sur trois : le chapitre le montre sur $\mathbb{N}$ dans $(\mathbb{Z},+)$, où neutre et stabilité passent mais où un seul symétrique qui s'échappe suffit à tout faire tomber.
+        steps:
+          - math: 'E \subset M_3(\mathbb{R}) \quad (\text{chaque } M(a,b,c) \text{ est une matrice réelle } 3\times3)'
+            note: "L'inclusion préalable, sans laquelle la phrase « sous-groupe de (M3(R),+) » n'a pas de sens."
+          - math: 'O = M(0,0,0) \in E \quad ((0,0,0)\in\mathbb{R}^3)'
+            note: "Condition 1 : le neutre de l'addition matricielle appartient à E."
+          - math: 'M(a,b,c) + M(a'',b'',c'') = \begin{pmatrix} a+a'' & 0 & 0 \\ 0 & b+b'' & -(c+c'') \\ 0 & c+c'' & b+b'' \end{pmatrix} = M(a+a'',\ b+b'',\ c+c'') \in E'
+            note: "Condition 2 : la somme garde la forme M(·,·,·), avec trois paramètres réels."
+          - math: '-M(a,b,c) = M(-a,-b,-c) \in E'
+            note: "Condition 3 : l'opposé garde lui aussi la forme voulue."
+          - math: 'E \ \text{est un sous-groupe de} \ (M_3(\mathbb{R}),+), \quad \text{et} \ (E,+) \ \text{est commutatif}'
+            note: "Associativité et commutativité héritées de M3(R) : aucune ligne à écrire pour elles."
+      - id: q2-a
+        part: "L'homomorphisme $\\varphi$ et le groupe $(\\mathbb{R}\\times\\mathbb{C},\\ast)$"
+        stem: |-
+          On munit l'ensemble $\mathbb{R} \times \mathbb{C}$ de la loi de composition interne $\ast$ définie par :
+
+          $$\forall\left((x,z),(x',z')\right) \in \left(\mathbb{R}\times\mathbb{C}\right)^2\ ;\quad (x,z) \ast (x',z') = (x+x',\ z+z')$$
+
+          et on considère l'application $\varphi$ définie de $E$ vers $\mathbb{R}\times\mathbb{C}$ par :
+
+          $$\forall (a,b,c) \in \mathbb{R}^3,\quad \varphi\left(M(a,b,c)\right) = (a,\ b+ci)$$
+
+          **(0,5 pt)** Montrer que $\varphi$ est un homomorphisme de $(E,+)$ vers $\left(\mathbb{R}\times\mathbb{C},\ast\right)$ et que $\varphi(E) = \mathbb{R}\times\mathbb{C}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux choses distinctes, et la question vaut $0{,}5$ point parce qu'elle en attend bien deux. D'abord l'égalité de morphisme $\varphi(M + M') = \varphi(M) \ast \varphi(M')$ — le geste-pont du rung R7 : on calcule les deux membres séparément et on constate qu'ils coïncident. Ensuite la **surjectivité** $\varphi(E) = \mathbb{R}\times\mathbb{C}$, qui est une autre affirmation : tout couple de l'ensemble d'arrivée doit avoir un antécédent dans $E$.
+
+          **Le morphisme.** Membre de gauche : la question 1 a déjà établi $M(a,b,c) + M(a',b',c') = M(a+a',b+b',c+c')$, donc son image par $\varphi$ est $\left(a+a',\ (b+b') + (c+c')i\right)$.
+
+          Membre de droite : on applique $\ast$ aux deux images. La loi $\ast$ additionne composante par composante, donc on obtient $\left(a+a',\ (b+ci)+(b'+c'i)\right)$, et il ne reste qu'à regrouper parties réelles et parties imaginaires de la seconde composante : $(b+b') + (c+c')i$.
+
+          Les deux membres sont identiques. $\varphi$ est un homomorphisme de $(E,+)$ vers $\left(\mathbb{R}\times\mathbb{C},\ast\right)$.
+
+          **La surjectivité.** Soit $(x,z)$ un élément quelconque de $\mathbb{R}\times\mathbb{C}$. Alors $x$ est un réel, et $z$ un complexe, qui s'écrit donc $z = b+ci$ avec $b = \operatorname{Re}(z)$ et $c = \operatorname{Im}(z)$, deux réels. Le triplet $(x,b,c)$ appartient à $\mathbb{R}^3$, donc $M(x,b,c)$ appartient à $E$, et $\varphi\left(M(x,b,c)\right) = (x,\ b+ci) = (x,z)$. Tout élément de l'ensemble d'arrivée est atteint : $\varphi(E) = \mathbb{R}\times\mathbb{C}$.
+
+          Notons au passage, pour la question suivante, que $\varphi$ est aussi **injective** : $\varphi(M(a,b,c)) = \varphi(M(a',b',c'))$ donne $a=a'$ et $b+ci = b'+c'i$, d'où $b=b'$ et $c=c'$ par identification des parties réelle et imaginaire — deux complexes égaux ont mêmes parties réelle et imaginaire. $\varphi$ est donc bijective de $E$ sur $\mathbb{R}\times\mathbb{C}$.
+
+          **Le piège à éviter.** Démontrer le morphisme et s'arrêter là, en croyant que $\varphi(E) = \mathbb{R}\times\mathbb{C}$ va de soi parce que $\mathbb{R}\times\mathbb{C}$ est « l'ensemble d'arrivée ». L'ensemble d'arrivée est celui où $\varphi$ envoie ses valeurs ; $\varphi(E)$ est l'ensemble de celles qui sont **effectivement atteintes**, et rien ne garantit a priori que les deux coïncident. C'est précisément cette égalité qui rendra la question 2-b immédiate : sans elle, le transport ne donnerait une structure de groupe que sur une partie de $\mathbb{R}\times\mathbb{C}$.
+        steps:
+          - math: '\varphi\big(M(a,b,c) + M(a'',b'',c'')\big) = \varphi\big(M(a+a'',b+b'',c+c'')\big) = \big(a+a'',\ (b+b'') + (c+c'')i\big)'
+            note: "Membre de gauche, en réutilisant la formule d'addition de la question 1."
+          - math: '\varphi\big(M(a,b,c)\big) \ast \varphi\big(M(a'',b'',c'')\big) = (a,\ b+ci) \ast (a'',\ b''+c''i) = \big(a+a'',\ (b+ci)+(b''+c''i)\big)'
+            note: "Membre de droite : la loi ∗ additionne composante par composante."
+          - math: '(b+ci)+(b''+c''i) = (b+b'') + (c+c'')i'
+            note: "Regroupement des parties réelles et des parties imaginaires."
+          - math: '\varphi\big(M(a,b,c) + M(a'',b'',c'')\big) = \varphi\big(M(a,b,c)\big) \ast \varphi\big(M(a'',b'',c'')\big)'
+            note: "Les deux membres coïncident : φ est un homomorphisme."
+          - math: '(x,z) \in \mathbb{R}\times\mathbb{C},\quad z = \operatorname{Re}(z) + \operatorname{Im}(z)\,i \ \Longrightarrow\ \varphi\big(M(x,\operatorname{Re}(z),\operatorname{Im}(z))\big) = (x,z)'
+            note: "Antécédent explicite pour un élément quelconque de l'arrivée."
+          - math: '\varphi(E) = \mathbb{R}\times\mathbb{C}'
+            note: "φ est surjective ; elle est de plus injective, donc bijective de E sur R×C."
+      - id: q2-b
+        stem: |-
+          **(0,25 pt)** En déduire que $\left(\mathbb{R}\times\mathbb{C},\ast\right)$ est un groupe commutatif.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » interdit ici de repartir des axiomes : tout le travail a été fait, il s'agit de le **transporter**. C'est le rung R7 dans sa forme la plus économique — un isomorphisme fait passer une structure d'un ensemble à l'autre sans re-vérification.
+
+          Les trois ingrédients sont en place. $(E,+)$ est un groupe commutatif : question 1, comme sous-groupe du groupe commutatif $\left(M_3(\mathbb{R}),+\right)$. $\varphi$ est un homomorphisme de $(E,+)$ vers $\left(\mathbb{R}\times\mathbb{C},\ast\right)$, et il est bijectif de $E$ sur $\mathbb{R}\times\mathbb{C}$ : question 2-a, surjectivité démontrée puis injectivité relevée. $\varphi$ est donc un **isomorphisme** de $(E,+)$ sur $\left(\mathbb{R}\times\mathbb{C},\ast\right)$, et toute la structure de groupe commutatif passe telle quelle.
+
+          Il vaut la peine de nommer les deux repères que le transport fournit gratuitement, parce qu'ils resserviront aux questions 4 et 5. Le neutre de $\ast$ est l'image du neutre de $(E,+)$ : $\varphi(O) = \varphi(M(0,0,0)) = (0,\ 0) = (0,0)$. Le symétrique de $(x,z)$ est l'image du symétrique de son antécédent, soit $(-x,-z)$ — c'est exactement la remarque que l'énoncé offrira en question 4-a.
+
+          **Le piège à éviter.** Croire qu'un homomorphisme **quelconque** suffit à transporter la structure. Ce qui la transporte, c'est la conjonction morphisme + surjectivité sur l'ensemble visé : sans $\varphi(E) = \mathbb{R}\times\mathbb{C}$, on n'obtiendrait un groupe que sur $\varphi(E)$, une partie de $\mathbb{R}\times\mathbb{C}$ éventuellement stricte. C'est pour cette raison — et pas par élégance rédactionnelle — que la question 2-a demandait les deux points.
+        steps:
+          - math: '(E,+) \ \text{groupe commutatif} \quad (\text{q1 : sous-groupe de} \ (M_3(\mathbb{R}),+), \ \text{commutatif})'
+            note: "Premier ingrédient : la structure de départ."
+          - math: '\varphi \ \text{homomorphisme et bijective de} \ E \ \text{sur} \ \mathbb{R}\times\mathbb{C} \quad (\text{q2-a})'
+            note: "Second ingrédient : φ est un isomorphisme."
+          - math: '\left(\mathbb{R}\times\mathbb{C},\ast\right) \ \text{est un groupe commutatif}'
+            note: "La structure se transporte intégralement, sans revérifier un seul axiome."
+          - math: '\text{neutre} = \varphi(O) = (0,0), \qquad \text{symétrique de} \ (x,z) \ \text{est} \ (-x,-z)'
+            note: "Deux repères fournis par le transport, réutilisés en questions 4 et 5."
+      - id: q3-a
+        part: "La loi $T$ : commutative, avec un neutre — mais non associative"
+        stem: |-
+          On munit $\mathbb{R}\times\mathbb{C}$ de la loi de composition interne $T$ définie par :
+
+          $$\forall\left((x,z),(x',z')\right) \in \left(\mathbb{R}\times\mathbb{C}\right)^2\ ;\quad (x,z)\,T\,(x',z') = \left(x \operatorname{Re}(z') + x' \operatorname{Re}(z),\ zz'\right)$$
+
+          ( $\operatorname{Re}(z)$ désigne la partie réelle du nombre complexe $z$ )
+
+          **(0,25 pt)** Montrer que $T$ est commutative.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Montrer une commutativité, c'est calculer $(x,z)\,T\,(x',z')$ puis $(x',z')\,T\,(x,z)$ **avec la même formule**, en échangeant les rôles, et constater que les deux résultats coïncident. Ni table ni exemple : deux couples quelconques, une formule appliquée deux fois.
+
+          On applique la définition dans l'ordre inverse. Le premier couple devient $(x',z')$ et le second $(x,z)$, donc la formule donne pour première composante $x'\operatorname{Re}(z) + x\operatorname{Re}(z')$ et pour seconde $z'z$.
+
+          Comparons composante par composante avec le résultat de départ, $\left(x\operatorname{Re}(z') + x'\operatorname{Re}(z),\ zz'\right)$. La première composante est une somme de deux réels : elle ne change pas d'ordre près, puisque l'addition est commutative dans $\mathbb{R}$. La seconde composante est un produit de deux complexes : $z'z = zz'$, puisque la multiplication est commutative dans $\mathbb{C}$. Les deux résultats sont donc égaux, pour tous les couples.
+
+          **Le piège à éviter.** Tester la formule sur un couple particulier — par exemple $(1,i)$ et $(0,1)$ — et conclure. Un exemple ne prouve jamais une propriété universelle ; c'est l'erreur que le rung R2 nomme explicitement à propos de l'associativité, et elle est ici exactement la même. Et pendant qu'on y est : la commutativité de $T$ ne dit **rien** de son associativité. La question 3-c montrera qu'une loi peut parfaitement être commutative et non associative — ce sont deux propriétés indépendantes.
+        steps:
+          - math: '(x,z)\,T\,(x'',z'') = \left(x\operatorname{Re}(z'') + x''\operatorname{Re}(z),\ zz''\right)'
+            note: "La formule, appliquée dans l'ordre donné."
+          - math: '(x'',z'')\,T\,(x,z) = \left(x''\operatorname{Re}(z) + x\operatorname{Re}(z''),\ z''z\right)'
+            note: "La même formule, les rôles échangés."
+          - math: 'x\operatorname{Re}(z'') + x''\operatorname{Re}(z) = x''\operatorname{Re}(z) + x\operatorname{Re}(z'') \quad (+ \ \text{commutative dans} \ \mathbb{R})'
+            note: "Premières composantes égales : somme de deux réels."
+          - math: 'zz'' = z''z \quad (\times \ \text{commutative dans} \ \mathbb{C})'
+            note: "Secondes composantes égales : produit de deux complexes."
+          - math: '(x,z)\,T\,(x'',z'') = (x'',z'')\,T\,(x,z) \quad \text{pour tous les couples}'
+            note: "T est commutative sur R×C."
+      - id: q3-b
+        stem: |-
+          **(0,25 pt)** Vérifier que $(0,1)$ est l'élément neutre de $T$ dans $\mathbb{R}\times\mathbb{C}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le neutre est donné : il n'y a rien à chercher, seulement à **vérifier**. Par définition (rung R2), $e$ est neutre si $u\,T\,e = e\,T\,u = u$ pour tout $u$. Ici $e = (0,1)$, c'est-à-dire le couple dont la première composante est le réel $0$ et la seconde le complexe $1$.
+
+          On applique la formule avec $(x',z') = (0,1)$. Première composante : $x\operatorname{Re}(1) + 0\cdot\operatorname{Re}(z)$. Or $\operatorname{Re}(1) = 1$ — le réel $1$, vu comme complexe, s'écrit $1 + 0i$, sa partie réelle vaut $1$. Donc cette composante vaut $x\cdot 1 + 0 = x$. Seconde composante : $z \times 1 = z$. On retrouve $(x,z)$.
+
+          Reste l'autre côté, $e\,T\,u$. Inutile de refaire le calcul : la question 3-a vient d'établir que $T$ est commutative, donc $(0,1)\,T\,(x,z) = (x,z)\,T\,(0,1) = (x,z)$. C'est là tout l'intérêt d'avoir traité la commutativité en premier — l'énoncé n'a pas ordonné ses questions au hasard.
+
+          $(0,1)$ est donc l'élément neutre de $T$ dans $\mathbb{R}\times\mathbb{C}$.
+
+          **Le piège à éviter.** Écrire $\operatorname{Re}(1) = 0$, par confusion entre la partie réelle et la partie imaginaire, ou parce que la première composante du couple neutre est $0$ et qu'on la reporte machinalement. Ce sont deux $0$ et un $1$ qui se croisent dans la même ligne : le $0$ est la première composante du **couple**, le $1$ est le complexe de la seconde composante, et c'est $\operatorname{Re}(1) = 1$ qui fait survivre le $x$. Un $\operatorname{Re}(1) = 0$ ferait s'effondrer la première composante à $0$ et le neutre disparaîtrait.
+        steps:
+          - math: '(x,z)\,T\,(0,1) = \left(x\operatorname{Re}(1) + 0\cdot\operatorname{Re}(z),\ z\times1\right)'
+            note: "Application directe de la définition de T avec le couple (0,1)."
+          - math: '\operatorname{Re}(1) = 1 \ \Longrightarrow\ x\operatorname{Re}(1) + 0\cdot\operatorname{Re}(z) = x, \qquad z\times1 = z'
+            note: "Le réel 1 vu comme complexe s'écrit 1 + 0i : sa partie réelle vaut 1."
+          - math: '(x,z)\,T\,(0,1) = (x,z)'
+            note: "Un côté est vérifié."
+          - math: '(0,1)\,T\,(x,z) = (x,z)\,T\,(0,1) = (x,z) \quad (\text{q3-a})'
+            note: "L'autre côté est gratuit, par la commutativité déjà établie."
+          - math: '(0,1) \ \text{est le neutre de} \ T \ \text{dans} \ \mathbb{R}\times\mathbb{C}'
+            note: "Les deux égalités de la définition du neutre sont satisfaites."
+      - id: q3-c
+        stem: |-
+          **(0,5 pt)** Vérifier que $\forall x \in \mathbb{R}$, $(1,i)\,T\,(x,-i) = (0,1)$ ; en déduire que $T$ est non associative dans $\mathbb{R}\times\mathbb{C}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La vérification est un calcul de trois lignes ; c'est la déduction qui porte la question. L'égalité annoncée dit que $(1,i)$ possède une **infinité** de symétriques pour $T$ — un pour chaque réel $x$. Or le rung R2 démontre que, lorsqu'une loi est associative et possède un neutre, le symétrique d'un élément est **unique**. Une infinité de symétriques est donc incompatible avec l'associativité : c'est la contraposée de ce théorème qui conclut.
+
+          **La vérification.** On applique la formule de $T$ avec $(1,i)$ et $(x,-i)$. Première composante : $1\cdot\operatorname{Re}(-i) + x\cdot\operatorname{Re}(i)$. Le complexe $i$ s'écrit $0 + 1i$, donc $\operatorname{Re}(i) = 0$ ; de même $-i = 0 - 1i$, donc $\operatorname{Re}(-i) = 0$. Les deux termes s'annulent, quel que soit $x$ : la première composante vaut $0$. Seconde composante : $i \times (-i) = -i^2 = -(-1) = 1$. On obtient $(0,1)$, et cela pour **tout** $x$ réel.
+
+          **La déduction.** $(0,1)$ est le neutre de $T$ (question 3-b). L'égalité qu'on vient d'établir, jointe à la commutativité (question 3-a), dit donc que $(x,-i)$ est un symétrique de $(1,i)$ — et ce, pour chaque valeur réelle de $x$. Si $T$ était associative, le rung R2 imposerait à ce symétrique d'être unique ; or $(0,-i)$ et $(1,-i)$ sont deux symétriques distincts du même élément $(1,i)$. Contradiction : $T$ n'est pas associative.
+
+          On peut aussi produire le contre-exemple explicite, plus court à lire qu'à trouver. Posons $u = (0,-i)$, $v = (1,i)$ et $w = (1,-i)$. D'un côté, $u\,T\,v = (0,1)$ par ce qui précède et la commutativité, donc $(u\,T\,v)\,T\,w = (0,1)\,T\,w = w = (1,-i)$, puisque $(0,1)$ est neutre. De l'autre, $v\,T\,w = (1,i)\,T\,(1,-i) = (0,1)$ par la même égalité prise en $x=1$, donc $u\,T\,(v\,T\,w) = u\,T\,(0,1) = u = (0,-i)$. Les deux résultats diffèrent : $(1,-i) \neq (0,-i)$.
+
+          **Le piège à éviter.** Conclure « le symétrique n'est pas unique, donc $T$ n'est pas associative » sans citer le théorème qui lie les deux. L'unicité du symétrique n'est pas une évidence : elle se démontre, au rung R2, et sa démonstration **utilise l'associativité** au moment de redéplacer les parenthèses. C'est exactement ce maillon qui autorise ici la contraposée — sans lui, la phrase n'est qu'une intuition. Et méfie-toi de la tentation inverse : le fait que $T$ soit commutative (question 3-a) ne rattrape rien, la commutativité ne dit rien de l'associativité.
+        steps:
+          - math: '\operatorname{Re}(i) = 0, \qquad \operatorname{Re}(-i) = 0'
+            note: "i s'écrit 0 + 1i et −i s'écrit 0 − 1i : leurs parties réelles sont nulles."
+          - math: '(1,i)\,T\,(x,-i) = \left(1\cdot\operatorname{Re}(-i) + x\cdot\operatorname{Re}(i),\ i\times(-i)\right) = \left(0 + 0,\ -i^2\right) = (0,1)'
+            note: "Vérification valable pour tout x réel : les deux termes de la première composante s'annulent."
+          - math: '(0,1) \ \text{neutre} \ (\text{q3-b}) \ \Longrightarrow\ (x,-i) \ \text{est un symétrique de} \ (1,i), \ \text{pour tout} \ x \in \mathbb{R}'
+            note: "Avec la commutativité (q3-a), les deux égalités de la définition du symétrique sont acquises."
+          - math: '\text{R2}: \ \text{loi associative à neutre} \ \Longrightarrow\ \text{symétrique unique}. \quad \text{Ici} \ (0,-i) \neq (1,-i) \ \text{sont deux symétriques de} \ (1,i)'
+            note: "Contraposée du théorème d'unicité du symétrique (R2) : l'associativité tombe."
+          - math: 'u = (0,-i),\ v = (1,i),\ w = (1,-i): \quad (u\,T\,v)\,T\,w = (0,1)\,T\,w = (1,-i)'
+            note: "Contre-exemple explicite, premier parenthésage."
+          - math: 'u\,T\,(v\,T\,w) = u\,T\,(0,1) = (0,-i) \ \neq \ (1,-i)'
+            note: "Second parenthésage : résultat différent. T n'est pas associative dans R×C."
+      - id: q4-a
+        part: "$G$, l'homomorphisme $\\psi$, et le groupe $\\left(G-\\{(0,0)\\},T\\right)$"
+        stem: |-
+          Soit $G = \left\{ \left(\operatorname{Im}(z),\ z\right)\ /\ z \in \mathbb{C} \right\}$
+
+          ( $\operatorname{Im}(z)$ désigne la partie imaginaire du nombre complexe $z$ )
+
+          **(0,25 pt)** Montrer que $G$ est un sous-groupe de $\left(\mathbb{R}\times\mathbb{C},\ast\right)$
+
+          *(On remarque que $\left(-\operatorname{Im}(z),\ -z\right)$ est le symétrique de $\left(\operatorname{Im}(z),\ z\right)$ pour la loi $\ast$)*
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Même geste qu'à la question 1, un étage plus haut : $G$ est décrit par une **forme** — les couples dont la première composante est la partie imaginaire de la seconde — et le critère à trois conditions du chapitre « Sous-groupe » s'applique tel quel, dans le groupe $\left(\mathbb{R}\times\mathbb{C},\ast\right)$ établi à la question 2-b. L'associativité et la commutativité de $\ast$ sont héritées : rien à écrire pour elles.
+
+          L'inclusion d'abord : $\operatorname{Im}(z)$ est un réel et $z$ un complexe, donc chaque élément de $G$ est bien dans $\mathbb{R}\times\mathbb{C}$.
+
+          **Le neutre.** Le neutre de $\ast$ est $(0,0)$, relevé à la question 2-b. Il s'obtient pour $z = 0$ : $\operatorname{Im}(0) = 0$, donc $(0,0) = \left(\operatorname{Im}(0),\ 0\right) \in G$.
+
+          **La stabilité.** On combine deux éléments quelconques de $G$, écrits avec $z$ et $z'$. La loi $\ast$ additionne composante par composante, donc on obtient $\left(\operatorname{Im}(z) + \operatorname{Im}(z'),\ z+z'\right)$. Tout tient à une seule propriété : la partie imaginaire est **additive**, $\operatorname{Im}(z) + \operatorname{Im}(z') = \operatorname{Im}(z+z')$ — ce qui se lit immédiatement en écrivant $z = b+ci$ et $z' = b'+c'i$, puisque $z+z' = (b+b') + (c+c')i$. Le résultat s'écrit donc $\left(\operatorname{Im}(z+z'),\ z+z'\right)$ : c'est bien un élément de $G$, celui associé au complexe $z+z'$.
+
+          **Les symétriques.** L'énoncé offre la réponse : le symétrique de $\left(\operatorname{Im}(z),z\right)$ pour $\ast$ est $\left(-\operatorname{Im}(z),\ -z\right)$. Reste à faire ce que la remarque ne fait pas — vérifier qu'il appartient à $G$. Il faut pour cela le réécrire sous la forme qui définit $G$ : $-\operatorname{Im}(z) = \operatorname{Im}(-z)$, donc ce symétrique s'écrit $\left(\operatorname{Im}(-z),\ -z\right)$, l'élément de $G$ associé au complexe $-z$.
+
+          Les trois conditions tiennent : $G$ est un sous-groupe de $\left(\mathbb{R}\times\mathbb{C},\ast\right)$, et il est commutatif, comme sous-groupe d'un groupe commutatif.
+
+          **Le piège à éviter.** Prendre la remarque de l'énoncé pour la réponse complète et s'arrêter là. Elle dit que $\left(-\operatorname{Im}(z),-z\right)$ est le symétrique **dans $\mathbb{R}\times\mathbb{C}$** ; la condition du critère porte sur l'appartenance à $G$, ce qui est une autre affirmation. C'est le geste que le chapitre décrit comme le vrai travail : on écrit le symétrique, puis on le **transforme** jusqu'à lui faire retrouver la forme qui définit $G$ — ici en une ligne, $-\operatorname{Im}(z) = \operatorname{Im}(-z)$, mais cette ligne est celle qui rapporte le point.
+        steps:
+          - math: 'G \subset \mathbb{R}\times\mathbb{C} \quad (\operatorname{Im}(z) \in \mathbb{R}, \ z \in \mathbb{C})'
+            note: "L'inclusion préalable."
+          - math: '(0,0) = \left(\operatorname{Im}(0),\ 0\right) \in G'
+            note: "Condition 1 : le neutre de ∗, relevé en q2-b, s'obtient pour z = 0."
+          - math: '\left(\operatorname{Im}(z),z\right) \ast \left(\operatorname{Im}(z''),z''\right) = \left(\operatorname{Im}(z)+\operatorname{Im}(z''),\ z+z''\right)'
+            note: "La loi ∗ additionne composante par composante."
+          - math: '\operatorname{Im}(z)+\operatorname{Im}(z'') = \operatorname{Im}(z+z'') \ \Longrightarrow\ \left(\operatorname{Im}(z),z\right) \ast \left(\operatorname{Im}(z''),z''\right) = \left(\operatorname{Im}(z+z''),\ z+z''\right) \in G'
+            note: "Condition 2 : la partie imaginaire est additive, la forme est conservée."
+          - math: '-\operatorname{Im}(z) = \operatorname{Im}(-z) \ \Longrightarrow\ \left(-\operatorname{Im}(z),\ -z\right) = \left(\operatorname{Im}(-z),\ -z\right) \in G'
+            note: "Condition 3 : le symétrique offert par l'énoncé, réécrit sous la forme qui définit G."
+          - math: 'G \ \text{est un sous-groupe de} \ \left(\mathbb{R}\times\mathbb{C},\ast\right), \ \text{commutatif}'
+            note: "Associativité et commutativité de ∗ héritées : rien à revérifier."
+      - id: q4-b
+        stem: |-
+          **(0,25 pt)** Soit $\psi$ l'application définie de $\mathbb{C}^*$ vers $\mathbb{R}\times\mathbb{C}$ par : $\forall z \in \mathbb{C}^*$ ; $\psi(z) = \left(\operatorname{Im}(z),\ z\right)$
+
+          Montrer que $\psi$ est un homomorphisme de $\left(\mathbb{C}^*,\times\right)$ vers $\left(\mathbb{R}\times\mathbb{C},T\right)$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une égalité de morphisme, mais entre deux lois qui n'ont rien de commun d'apparence : à gauche le produit de deux complexes, à droite la loi $T$, avec ses parties réelles croisées. Il faut donc montrer $\psi(z\,z') = \psi(z)\,T\,\psi(z')$. On calcule le membre de droite avec la définition de $T$, et on voit ce que doit valoir sa première composante pour que l'égalité tienne — ce sera le cœur du calcul.
+
+          **Le membre de droite.** $\psi(z) = \left(\operatorname{Im}(z),z\right)$ et $\psi(z') = \left(\operatorname{Im}(z'),z'\right)$. La formule de $T$ donne pour première composante $\operatorname{Im}(z)\operatorname{Re}(z') + \operatorname{Im}(z')\operatorname{Re}(z)$, et pour seconde $z\,z'$.
+
+          **Le membre de gauche.** $\psi(z\,z') = \left(\operatorname{Im}(z\,z'),\ z\,z'\right)$. Les secondes composantes coïncident déjà. Tout revient donc à une seule identité : $\operatorname{Im}(z\,z')$ vaut-il $\operatorname{Im}(z)\operatorname{Re}(z') + \operatorname{Im}(z')\operatorname{Re}(z)$ ?
+
+          **Le calcul qui tranche.** Posons $z = a+bi$ et $z' = a'+b'i$ avec $a,b,a',b'$ réels. Alors $z\,z' = (a+bi)(a'+b'i) = aa' + ab'i + a'bi + bb'i^2 = (aa'-bb') + (ab'+a'b)i$. Donc $\operatorname{Im}(z\,z') = ab' + a'b$. Or $a = \operatorname{Re}(z)$, $b = \operatorname{Im}(z)$, $a' = \operatorname{Re}(z')$, $b' = \operatorname{Im}(z')$ : cette expression est exactement $\operatorname{Re}(z)\operatorname{Im}(z') + \operatorname{Re}(z')\operatorname{Im}(z)$, c'est-à-dire la première composante calculée plus haut. L'égalité tient.
+
+          $\psi$ est donc un homomorphisme de $\left(\mathbb{C}^*,\times\right)$ vers $\left(\mathbb{R}\times\mathbb{C},T\right)$. Et le calcul, remarquons-le, n'a jamais utilisé $z \neq 0$ : la même identité vaut pour tous les complexes, ce qui servira à la question 5.
+
+          **Le piège à éviter.** Traiter $\operatorname{Im}$ comme si elle était multiplicative, en écrivant $\operatorname{Im}(z\,z') = \operatorname{Im}(z)\operatorname{Im}(z')$. C'est faux, et le contre-exemple le plus court est $z = z' = i$ : $\operatorname{Im}(i\times i) = \operatorname{Im}(-1) = 0$, alors que $\operatorname{Im}(i)\operatorname{Im}(i) = 1$. La partie imaginaire est additive (c'est ce qui a servi en 4-a), jamais multiplicative — sur un produit, elle produit un terme **croisé**, et c'est précisément la forme croisée de la loi $T$ qui la reproduit. La loi $T$ n'est pas tombée du ciel : elle a été construite pour cela.
+        steps:
+          - math: '\psi(z)\,T\,\psi(z'') = \left(\operatorname{Im}(z),z\right) T \left(\operatorname{Im}(z''),z''\right) = \left(\operatorname{Im}(z)\operatorname{Re}(z'') + \operatorname{Im}(z'')\operatorname{Re}(z),\ z\,z''\right)'
+            note: "Membre de droite, par la définition de T."
+          - math: 'z = a+bi,\ z'' = a''+b''i \ \Longrightarrow\ z\,z'' = (aa''-bb'') + (ab''+a''b)i'
+            note: "Développement du produit de deux complexes."
+          - math: '\operatorname{Im}(z\,z'') = ab'' + a''b = \operatorname{Re}(z)\operatorname{Im}(z'') + \operatorname{Re}(z'')\operatorname{Im}(z)'
+            note: "Le terme croisé du produit est exactement la première composante calculée ci-dessus."
+          - math: '\psi(z)\,T\,\psi(z'') = \left(\operatorname{Im}(z\,z''),\ z\,z''\right) = \psi(z\,z'')'
+            note: "Les deux composantes coïncident : ψ est un homomorphisme."
+          - math: '\text{Le calcul n''utilise jamais } z \neq 0 : \ \text{l''identité vaut pour tous les complexes}'
+            note: "Remarque réutilisée en question 5."
+      - id: q4-c
+        stem: |-
+          **(0,5 pt)** En déduire que $\left(G - \{(0,0)\},\ T\right)$ est un groupe commutatif.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Encore un « en déduire » : on transporte, on ne recoche pas. Mais il y a d'abord une identification à faire, et elle est le vrai contenu de la question — il faut reconnaître que l'ensemble $G - \{(0,0)\}$ est exactement l'image de $\mathbb{C}^*$ par $\psi$.
+
+          **L'identification.** $G$ est l'ensemble des $\left(\operatorname{Im}(z),z\right)$ pour $z$ parcourant $\mathbb{C}$ ; $\psi(\mathbb{C}^*)$ est le même ensemble, avec $z$ parcourant $\mathbb{C}^*$, c'est-à-dire $\mathbb{C}$ privé de $0$. La différence entre les deux se réduit donc au seul élément obtenu pour $z=0$, à savoir $\left(\operatorname{Im}(0),0\right) = (0,0)$. Et cet élément n'est atteint que là : un élément de $G$ vaut $(0,0)$ si et seulement si sa seconde composante $z$ est nulle. Donc $\psi(\mathbb{C}^*) = G - \{(0,0)\}$.
+
+          **Le transport.** $\left(\mathbb{C}^*,\times\right)$ est un groupe commutatif — c'est le groupe multiplicatif du corps $\mathbb{C}$, un fait acquis. $\psi$ est un homomorphisme (question 4-b), surjectif de $\mathbb{C}^*$ sur $G - \{(0,0)\}$ par ce qui précède, et injectif puisque deux complexes distincts donnent deux couples distincts (leurs secondes composantes diffèrent). $\psi$ est donc un isomorphisme de $\left(\mathbb{C}^*,\times\right)$ sur $\left(G-\{(0,0)\},T\right)$ : toute la structure de groupe commutatif passe, associativité comprise.
+
+          Les repères se lisent au passage. Le neutre est l'image du neutre de $\left(\mathbb{C}^*,\times\right)$ : $\psi(1) = \left(\operatorname{Im}(1),1\right) = (0,1)$ — le même que celui trouvé à la question 3-b, ce qui est rassurant. Le symétrique de $\psi(z)$ est $\psi\!\left(\dfrac{1}{z}\right)$.
+
+          **Le piège à éviter.** Croire qu'il y a contradiction avec la question 3-c. On vient d'affirmer que $T$ est associative sur $G-\{(0,0)\}$, alors qu'elle ne l'est pas sur $\mathbb{R}\times\mathbb{C}$ : c'est parfaitement cohérent. Une propriété universelle vraie sur un grand ensemble descend toujours sur ses parties — c'est ce qui fait hériter l'associativité dans le chapitre « Sous-groupe » — mais la réciproque est fausse : une propriété peut échouer globalement et tenir sur une partie, où les contre-exemples n'existent tout simplement pas. Vérifie-le sur le contre-exemple de la question 3-c : $u = (0,-i)$ n'appartient pas à $G$, puisque $\operatorname{Im}(-i) = -1 \neq 0$. Il n'y a donc rien à sauver — le contre-exemple vit hors de $G$.
+        steps:
+          - math: '\psi(\mathbb{C}^*) = \left\{\left(\operatorname{Im}(z),z\right) \ /\ z \neq 0\right\} = G - \{(0,0)\}'
+            note: "Le seul élément de G exclu est celui obtenu pour z = 0, c'est-à-dire (0,0)."
+          - math: '\left(\mathbb{C}^*,\times\right) \ \text{groupe commutatif}, \qquad \psi \ \text{homomorphisme} \ (\text{q4-b})'
+            note: "Les deux ingrédients du transport."
+          - math: 'z \neq z'' \ \Longrightarrow\ \psi(z) \neq \psi(z'') \quad (\text{secondes composantes distinctes})'
+            note: "ψ est injective ; avec la surjectivité ci-dessus, c'est un isomorphisme."
+          - math: '\left(G-\{(0,0)\},\ T\right) \ \text{est un groupe commutatif}'
+            note: "La structure de (C*,×) se transporte intégralement."
+          - math: '\text{neutre} = \psi(1) = (0,1), \qquad \text{symétrique de} \ \psi(z) \ \text{est} \ \psi\!\left(\tfrac{1}{z}\right)'
+            note: "Le neutre coïncide avec celui trouvé en q3-b."
+      - id: q5
+        part: "$(G,\\ast,T)$ est un corps commutatif"
+        stem: |-
+          **(0,5 pt)** Montrer que $\left(G,\ast,T\right)$ est un corps commutatif.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux routes mènent au but, et il vaut la peine de voir pourquoi la seconde est la bonne. La première consiste à recocher un à un, sur $G$, tous les axiomes du rung R6 : $(G,\ast)$ groupe commutatif, $T$ interne, associative et commutative sur $G$, un neutre pour $T$ distinct du zéro, tout élément non nul inversible pour $T$, et la distributivité de $T$ sur $\ast$. C'est faisable — presque tout est déjà démontré — mais c'est long. La seconde route est celle du rung R7, dans le prolongement de la question 4-c : construire un isomorphisme qui transporte **les deux lois à la fois**, depuis un corps déjà connu.
+
+          **L'application.** Prolongeons $\psi$ à $\mathbb{C}$ tout entier : posons $\Psi(z) = \left(\operatorname{Im}(z),\ z\right)$ pour tout $z \in \mathbb{C}$. Par définition de $G$, $\Psi$ est surjective de $\mathbb{C}$ sur $G$ ; elle est injective, car deux complexes distincts donnent des couples de secondes composantes distinctes. $\Psi$ est donc une bijection de $\mathbb{C}$ sur $G$.
+
+          **Les deux compatibilités.** Elles sont déjà acquises, et c'est là que le travail précédent paie. Pour $+$ et $\ast$ : le calcul de stabilité de la question 4-a donne exactement $\Psi(z) \ast \Psi(z') = \Psi(z+z')$, pour tous complexes $z, z'$. Pour $\times$ et $T$ : le calcul de la question 4-b donne $\Psi(z)\,T\,\Psi(z') = \Psi(z\,z')$ — et l'on a noté à ce moment-là que ce calcul n'utilise jamais $z \neq 0$, il vaut donc sur $\mathbb{C}$ tout entier, c'est ce qui autorise le prolongement.
+
+          **La conclusion.** $\Psi$ est une bijection de $\mathbb{C}$ sur $G$ compatible avec les deux lois à la fois : c'est un isomorphisme de $\left(\mathbb{C},+,\times\right)$ sur $\left(G,\ast,T\right)$. Or $\left(\mathbb{C},+,\times\right)$ est un corps commutatif — un fait acquis, au même titre que $\left(\mathbb{Q},+,\times\right)$ au rung R6. Toute la structure se transporte d'un coup : associativité et commutativité des deux lois, distributivité, existence des neutres et inversibilité de tout élément non nul. Donc $\left(G,\ast,T\right)$ est un corps commutatif.
+
+          Les repères concrets, pour finir : le zéro du corps est $\Psi(0) = (0,0)$, son unité est $\Psi(1) = (0,1)$, et les deux sont bien distincts — un corps exige que son unité ne soit pas son zéro. L'inversibilité de tout élément non nul est exactement le résultat de la question 4-c, retrouvé par une autre voie.
+
+          **Le piège à éviter.** Reprendre le raisonnement de la question 4-c sans se demander ce qui change. En 4-c, $\psi$ ne transportait **qu'une** loi, $\times$ vers $T$, sur un ensemble amputé de son zéro ; ici, $\Psi$ en transporte deux, sur $G$ tout entier. La différence est décisive : c'est la compatibilité simultanée qui livre la distributivité — l'axiome qu'aucune des questions précédentes n'a établi et que l'on aurait à démontrer à la main sur l'autre route. Un isomorphisme de groupes ne dit rien sur une seconde loi ; il faut avoir vérifié les deux.
+        steps:
+          - math: '\Psi : \mathbb{C} \longrightarrow G, \quad \Psi(z) = \left(\operatorname{Im}(z),\ z\right) \quad (\text{prolongement de} \ \psi \ \text{à} \ \mathbb{C})'
+            note: "Le prolongement est licite : le calcul de q4-b n'utilise jamais z non nul."
+          - math: '\Psi \ \text{bijective de} \ \mathbb{C} \ \text{sur} \ G \quad (\text{surjective par définition de } G, \ \text{injective par la seconde composante})'
+            note: "Premier point : la bijection."
+          - math: '\Psi(z) \ast \Psi(z'') = \left(\operatorname{Im}(z)+\operatorname{Im}(z''),\ z+z''\right) = \Psi(z+z'') \quad (\text{q4-a})'
+            note: "Première compatibilité : + devient ∗."
+          - math: '\Psi(z)\,T\,\Psi(z'') = \left(\operatorname{Im}(z\,z''),\ z\,z''\right) = \Psi(z\,z'') \quad (\text{q4-b})'
+            note: "Seconde compatibilité : × devient T."
+          - math: '\Psi \ \text{isomorphisme de} \ \left(\mathbb{C},+,\times\right) \ \text{sur} \ \left(G,\ast,T\right), \quad \left(\mathbb{C},+,\times\right) \ \text{corps commutatif}'
+            note: "Les deux lois se transportent à la fois : distributivité comprise."
+          - math: '\left(G,\ast,T\right) \ \text{est un corps commutatif}, \quad \text{zéro} \ \Psi(0)=(0,0), \ \text{unité} \ \Psi(1)=(0,1) \neq (0,0)'
+            note: "L'unité diffère du zéro, comme un corps l'exige ; l'inversibilité des non-nuls redonne q4-c."
 
   # ── bk-2025-n-x4 — 2025 N, Exercice 4 : E=I+xA dans M3(R), groupe pour ×, loi T, corps commutatif via un isomorphisme ──
   - id: bk-2025-n-x4
