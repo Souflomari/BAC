@@ -7,15 +7,18 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les HUIT entrées sont des transcriptions FIDÈLES des huit
-# entrées « vérifié » de docs/sujets/maths/nombres-complexes-2.md (re-fetch
-# AlloSchool indépendant + diff caractère-par-caractère,
+# exercises.yaml). Les NEUF entrées sont des transcriptions FIDÈLES d'entrées
+# « vérifié ». HUIT viennent de docs/sujets/maths/nombres-complexes-2.md
+# (re-fetch AlloSchool indépendant + diff caractère-par-caractère,
 # agent-vérificateur-adversarial, 2026-08-06 pour 2017 — 2e passe
 # indépendante —, 2026-07-12 pour 2019, 2026-08-05 pour 2020/2022/2024,
-# 2026-08-06 pour 2021/2023/2025) — les SEULS sujets vérifiés recensés pour
-# cette notion : 2017, 2019, 2020, 2021, 2022, 2023, 2024, 2025, tous
-# session normale, filière SCIENCES MATHÉMATIQUES (A) et (B), BIOF. Aucun
-# autre sujet n'est disponible — introuvable = absent, jamais inventé.
+# 2026-08-06 pour 2021/2023/2025) et couvrent 2017, 2019, 2020, 2021, 2022,
+# 2023, 2024, 2025, TOUTES en session normale. La NEUVIÈME — bk-2023-r-x2,
+# ajoutée par la campagne rattrapage du 2026-08-23 — vient de
+# docs/sujets/_incoming/maths-sm-2023-r.md et est la PREMIÈRE entrée de
+# session de RATTRAPAGE de cette banque (voir SCOPE NOTE 3). Filière
+# SCIENCES MATHÉMATIQUES (A) et (B), BIOF, pour les neuf. Aucun autre sujet
+# n'est disponible — introuvable = absent, jamais inventé.
 # Raisonnement rédigé à la voix experte de la maison sur 100 % des
 # questions ; barème transcrit tel quel dans les énoncés ; conventions
 # KaTeX (block scalars pour la prose, KaTeX brut entre apostrophes simples
@@ -36,8 +39,12 @@
 # r-bac ni r-variation (tous deux dérivés du seul sujet 2019, voir
 # exercises.yaml) : aucun recoupement supplémentaire à signaler.
 #
-# SCOPE NOTE (divulgation honnête, authoring-side). La majorité des huit
-# sujets (2017, 2019, 2020, 2021, 2022, 2024, 2025 — pas 2023) reposent, à un
+# SCOPE NOTE 1 (divulgation honnête, authoring-side). ⚠ PARTIELLEMENT LEVÉE
+# le 2026-08-23 — lire d'abord le paragraphe « MISE À JOUR » qui la clôt.
+# La majorité des huit
+# sujets de session normale (2017, 2019, 2020, 2021, 2022, 2024, 2025 — pas
+# bk-2023-n-x3 ; mais l'entrée de rattrapage bk-2023-r-x2 le fait aussi, à sa
+# Partie I) reposent, à un
 # moment ou un autre, sur la RÉSOLUTION D'UNE ÉQUATION DU SECOND DEGRÉ À
 # COEFFICIENTS COMPLEXES — le plus souvent par discriminant Δ (potentiellement
 # complexe non réel, racine carrée de Δ obtenue en la reconnaissant comme un
@@ -64,6 +71,23 @@
 # socle algébrique), soit la confirmation que ce savoir est un acquis de la
 # classe de 1ère (extension directe de la formule réelle, déjà stable avant
 # le bac) et n'a pas besoin d'un rung propre.
+#
+# MISE À JOUR (2026-08-23) — l'arbitrage attendu ci-dessus a été RENDU, dans
+# le sens du « rung dédié » : nombres-complexes-1/lesson.md porte désormais
+# DEUX chapitres nommés, « Résoudre une équation du second degré dans ℂ »
+# (racine δ telle que δ² = Δ plutôt que √Δ, reconnaissance du carré parfait,
+# méthode δ = x+iy en filet de sécurité) et « Somme et produit des racines :
+# lire l'équation sans la résoudre » (relations de Viète, valables à
+# coefficients complexes). L'écart de périmètre décrit ci-dessus est donc
+# CLOS pour l'outil « second degré » : les entrées peuvent — et doivent —
+# s'y rattacher au lieu de le redémontrer. L'entrée bk-2023-r-x2 est la
+# première écrite sous ce régime et le fait explicitement (questions 1-b et
+# 1-c). Les huit entrées antérieures nomment encore l'outil au point d'usage
+# sans citer le chapitre : ce n'est pas faux, c'est seulement antérieur — une
+# passe de raccordement (rédactionnelle, pas mathématique) reste due sur
+# elles, à l'arbitrage de l'owner. Le reste de la SCOPE NOTE 1 (le fait que
+# le corps de rungs R0–R6 de la PRÉSENTE leçon ne couvre toujours pas cet
+# outil) est inchangé.
 #
 # SCOPE NOTE 2 (cocyclicité de quatre points, nouvelle avec cette passe).
 # Trois des quatre entrées ajoutées ici (2017, question 2-c ; 2021, question
@@ -1006,6 +1030,339 @@ entries:
             note: "1/i=−i (chapitre 1) ; le facteur réel −1/(2−√3) ne change pas la nature imaginaire pure."
           - math: '\dfrac{i}{2-\sqrt3}\ \text{est imaginaire pur (non nul), indépendant de } n \implies O A_n A_{n+1}\ \text{rectangle en}\ A_n\ \text{pour tout}\ n'
             note: "Rung R6 : rapport imaginaire pur au sommet A_n ⟺ angle droit en A_n, vrai pour tout n."
+
+
+  # ── bk-2023-r-x2 — 2023 RATTRAPAGE, Exercice 2 : système non linéaire remonté dans ℂ ; cercle unité, cordes, p = bc/a ──
+  # PREMIÈRE entrée de session RATTRAPAGE de cette banque (voir SCOPE NOTE 3 en tête de fichier).
+  - id: bk-2023-r-x2
+    title: 'Système non linéaire remonté dans $\mathbb{C}$, cercle unité et configuration $p=\frac{bc}{a}$ (2023 rattrapage)'
+    source:
+      year: 2023
+      session: rattrapage
+      filiere: "SM"
+      exercise_label: "Exercice 2"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session de rattrapage — examen national Sciences Mathématiques
+        (A) et (B), خيار فرنسية (BIOF), Mathématiques (4 h, coef 9), code
+        sujet RS 24F, barème 3,5 points (Exercice 2, nombres complexes).
+        Source AlloSchool element/142494, scan course-436/upload-85320,
+        énoncé lu sur les pages 0003-big.jpg (Partie I) et 0004-big.jpg
+        (Partie II). PREMIÈRE entrée de session rattrapage de CETTE banque :
+        les huit entrées précédentes sont toutes en session normale.
+        Transcription fidèle de l'entrée « vérifié » de
+        docs/sujets/_incoming/maths-sm-2023-r.md, section « 2023 — session
+        rattrapage — Exercice 2 » (re-fetch AlloSchool indépendant, chaque
+        nombre relu au pixel sur l'image, re-dérivation mathématique de bout
+        en bout, agent-vérificateur-adversarial, 2026-08-23). Barème marginal
+        recompté sur le scan : Partie I 0,25 + 0,75 + 0,25 + 0,5 = 1,75 ;
+        Partie II 0,25 + 0,5 + 0,5 + 0,5 = 1,75 ; total 3,5 pts, conforme à
+        l'annonce de la page 1. Deux lectures de glyphes mojibake adjugées
+        par la source vérifiée et conservées telles quelles ici : le domaine
+        du système, lu (R+)² (aucune étoile imprimée — contrôlé au
+        grossissement ×7, et les étoiles de ce scan survivent au mojibake là
+        où elles existent), et le domaine du quantificateur de la Partie II
+        question 1, lu C (tofu blackboard-bold nu — PAS « (U) » : correction
+        d'un défaut de la transcription initiale, documentée dans la source).
+        Re-démontré une SECONDE fois à la conversion, indépendamment :
+        Δ = 28/25 + (96/25)i = ((2/5)(4+3i))², racines z = 2+i et
+        z = (2−i)/5 (contrôle somme/produit : 12/5 + (4/5)i et 1, exactement
+        les coefficients), unique couple (x,y) = (4,1) re-vérifié dans (S)
+        (2×6/5 = 12/5 et 1×4/5 = 4/5), et (p−r)/b = c/a − a/c = w − w̄
+        imaginaire pur ; contrôle numérique de la Partie II sur quatre
+        triplets aléatoires du cercle unité (|p| = |r| = 1, rapports réels
+        et imaginaires purs aux 10⁻⁹ près). Trois imprécisions du SUJET
+        OFFICIEL sont signalées et NON « réparées », chacune nommée au point
+        d'usage dans le reasoning concerné : (1) domaine (R+)² alors que
+        1/(x+y) exige (x,y) ≠ (0,0) ; (2) domaine C à la question 1 de la
+        Partie II alors que z̄ = 1/z exige z ≠ 0 ; (3) cas dégénéré a = −c à
+        la question 2-c, où p = r et la droite (PR) n'existe pas.
+    intro: |-
+      **Nombres complexes (examen national Sciences Mathématiques, session de rattrapage 2023, Exercice 2 — 3,5 points).**
+
+      **Les parties I et II peuvent être traitées indépendamment.**
+
+      **Partie I.** On considère dans $\left(\mathbb{R}_+\right)^2$ le système suivant :
+
+      $$(S)\ :\ \begin{cases} \sqrt{x}\left(1 + \dfrac{1}{x+y}\right) = \dfrac{12}{5} \\[2mm] \sqrt{y}\left(1 - \dfrac{1}{x+y}\right) = \dfrac{4}{5} \end{cases}$$
+
+      **Partie II.** Le plan complexe est rapporté à un repère orthonormé direct $\left(O;\vec{u},\vec{v}\right)$. Soit $(U)$ le cercle de centre $O$ et de rayon $1$, et $A(a)$, $B(b)$, $C(c)$ trois points du cercle $(U)$ deux à deux distincts.
+
+      **Ce que fait cet exercice.** La partie I est un détour spectaculaire : un système de deux équations **réelles**, non linéaires, qu'on ne résout pas dans $\mathbb{R}$ — on pose $z = \sqrt{x} + i\sqrt{y}$, et les deux lignes deviennent la partie réelle et la partie imaginaire d'une **seule** égalité complexe, qui se ramène à une équation du second degré (chapitre 1, « Résoudre une équation du second degré dans $\mathbb{C}$ »). La partie II travaille sur le cercle unité, où une seule identité — $|z| = 1 \iff \overline{z} = \dfrac{1}{z}$, démontrée à la première question — transforme toute condition géométrique (parallélisme, perpendicularité) en identité algébrique sur $a$, $b$, $c$. Le fil conducteur reste celui du chapitre : un rapport de deux affixes de vecteurs encode une direction — réel pour des directions parallèles, imaginaire pur pour des directions perpendiculaires (rung R6).
+    questions:
+      - id: q1a
+        part: 'Partie I — Le système $(S)$, remonté dans $\mathbb{C}$ par $z=\sqrt{x}+i\sqrt{y}$'
+        stem: |-
+          **(0,25 pt)** Soit $(x, y) \in \left(\mathbb{R}_+\right)^2$ une solution du système $(S)$. On pose : $z = \sqrt{x} + i\sqrt{y}$
+
+          Montrer que : $z + \dfrac{1}{z} = \dfrac{12}{5} + \dfrac{4}{5}i$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Regarde les deux lignes de $(S)$ côte à côte avant de calculer quoi que ce soit : même structure, $\sqrt{\ \cdot\ }\left(1 \pm \dfrac{1}{x+y}\right)$, l'une avec un $+$, l'autre avec un $-$. Ce couple « $+$ / $-$ » est la signature d'un complexe et de son conjugué. Le geste consiste donc à fabriquer le nombre dont la partie réelle est la première ligne et la partie imaginaire la seconde — et l'énoncé nous dit lequel : $z + \dfrac{1}{z}$.
+
+          Tout repose sur une ligne du chapitre 1 : $z\overline{z} = |z|^2$. Ici
+
+          $$z\overline{z} = \left(\sqrt{x}\right)^2 + \left(\sqrt{y}\right)^2 = x+y$$
+
+          — autrement dit, le dénominateur $x+y$ qui traîne dans les deux lignes du système **est** $|z|^2$. C'est ce qui rend l'idée du sujet possible.
+
+          On calcule alors $\dfrac1z$ par la méthode du conjugué (rung R3 du chapitre 1) :
+
+          $$\frac{1}{z} = \frac{\overline{z}}{z\overline{z}} = \frac{\sqrt{x} - i\sqrt{y}}{x+y}$$
+
+          $$z + \frac{1}{z} = \sqrt{x} + i\sqrt{y} + \frac{\sqrt{x}}{x+y} - i\,\frac{\sqrt{y}}{x+y} = \sqrt{x}\left(1+\frac{1}{x+y}\right) + i\,\sqrt{y}\left(1-\frac{1}{x+y}\right)$$
+
+          Les deux parenthèses sont exactement les membres de gauche de $(S)$ : la première vaut $\dfrac{12}{5}$, la seconde $\dfrac{4}{5}$.
+
+          **Le piège à éviter, et une imprécision du sujet officiel.** Écrire $\dfrac{1}{z}$ suppose $z \neq 0$, et rien dans l'énoncé ne le donne : le sujet pose le système dans $\left(\mathbb{R}_+\right)^2$, qui contient $(0,0)$. Ce n'est pas une chicane — c'est une imprécision réelle du sujet, car pour $(x,y)=(0,0)$ le terme $\dfrac{1}{x+y}$ du système n'a lui-même aucun sens. La justification propre tient en une ligne : $(x,y)$ est **une solution de $(S)$**, donc $x+y$ figure au dénominateur d'une écriture qui a un sens, donc $x+y \neq 0$, donc $|z|^2 \neq 0$ et $z \neq 0$. Écris-la : c'est elle qui rend légitimes toutes les divisions par $z$ de la question suivante.
+        steps:
+          - math: 'z\overline{z} = \left(\sqrt{x}+i\sqrt{y}\right)\left(\sqrt{x}-i\sqrt{y}\right) = \left(\sqrt{x}\right)^2+\left(\sqrt{y}\right)^2 = x+y = |z|^2'
+            note: "Le dénominateur x+y du système EST le module au carré de z : c'est le pivot de tout l'exercice."
+          - math: '(x,y)\ \text{solution de}\ (S) \implies x+y \neq 0 \implies |z|^2 \neq 0 \implies z \neq 0'
+            note: "Justification à ne pas sauter : sans elle, 1/z n'a pas de sens (le domaine imprimé (R+)² contient (0,0))."
+          - math: '\dfrac{1}{z} = \dfrac{\overline{z}}{z\overline{z}} = \dfrac{\sqrt{x}-i\sqrt{y}}{x+y}'
+            note: "Méthode du conjugué (chapitre 1, rung R3) : on multiplie haut et bas par le conjugué."
+          - math: 'z+\dfrac{1}{z} = \sqrt{x}\left(1+\dfrac{1}{x+y}\right) + i\,\sqrt{y}\left(1-\dfrac{1}{x+y}\right)'
+            note: "On regroupe partie réelle et partie imaginaire : ce sont mot pour mot les deux lignes de (S)."
+          - math: 'z+\dfrac{1}{z} = \dfrac{12}{5} + \dfrac{4}{5}i'
+            note: "Les deux lignes de (S) valent 12/5 et 4/5."
+      - id: q1b
+        stem: |-
+          **(0,75 pt)** Montrer que : $z^2 - \left(\dfrac{12}{5} + \dfrac{4}{5}i\right)z + 1 = 0$, en déduire les valeurs possibles de $z$
+
+          *(On remarque que : $\dfrac{28}{25} + \dfrac{96}{25}i = \left(\dfrac{2}{5}(4 + 3i)\right)^2$)*
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La première moitié est mécanique : on chasse le dénominateur en multipliant l'égalité précédente par $z$ (licite, $z \neq 0$), et on ramène tout du même côté. La seconde moitié est une équation du second degré **à coefficients complexes** — exactement le chapitre « Résoudre une équation du second degré dans $\mathbb{C}$ » du chapitre 1 : la formule est celle de $\mathbb{R}$, le seul point neuf est qu'il faut produire un $\delta$ tel que $\delta^2 = \Delta$, au lieu d'écrire un $\sqrt{\Delta}$ qui n'aurait aucun sens ici.
+
+          Et l'indication entre parenthèses est le cas de figure le plus courant des sujets : **l'énoncé te donne le carré parfait**. Le sens du travail est donc inversé — on ne cherche pas $\delta$, on **vérifie** en développant. C'est plus court, plus sûr, et c'est ce que le barème attend.
+
+          **Premier temps — l'équation.** Avec $z \neq 0$ :
+
+          $$z + \frac1z = \frac{12}{5}+\frac45 i \iff z^2 + 1 = \left(\frac{12}{5}+\frac45 i\right)z \iff z^2 - \left(\frac{12}{5}+\frac45 i\right)z + 1 = 0$$
+
+          **Deuxième temps — le discriminant.** Ici $a=1$, $b=-\left(\dfrac{12}{5}+\dfrac45 i\right)$, $c=1$ :
+
+          $$\Delta = \left(\frac{12+4i}{5}\right)^2 - 4 = \frac{144+96i+16i^2}{25} - \frac{100}{25} = \frac{128+96i-100}{25} = \frac{28}{25}+\frac{96}{25}i$$
+
+          C'est bien le nombre de l'indication. On la vérifie :
+
+          $$\left(\frac25(4+3i)\right)^2 = \frac{4}{25}\left(16+24i+9i^2\right) = \frac{4}{25}(7+24i) = \frac{28}{25}+\frac{96}{25}i = \Delta$$
+
+          Donc $\delta = \dfrac{2}{5}(4+3i) = \dfrac{8+6i}{5}$ convient.
+
+          **Troisième temps — les racines.**
+
+          $$z = \frac{-b\pm\delta}{2a} = \frac{\dfrac{12+4i}{5} \pm \dfrac{8+6i}{5}}{2} = \frac{(12+4i)\pm(8+6i)}{10}$$
+
+          $$z_1 = \frac{20+10i}{10} = 2+i \qquad\qquad z_2 = \frac{4-2i}{10} = \frac{2-i}{5}$$
+
+          **Le contrôle qui ne coûte rien** (chapitre « Somme et produit des racines ») : la somme doit valoir $-\dfrac{b}{a} = \dfrac{12}{5}+\dfrac45 i$, et le produit $\dfrac{c}{a} = 1$. Or $2+i+\dfrac{2-i}{5} = \dfrac{10+5i+2-i}{5} = \dfrac{12+4i}{5}$, et $(2+i)\times\dfrac{2-i}{5} = \dfrac{4+1}{5} = 1$. Les deux tombent juste.
+
+          **Le piège à éviter.** Ne discute jamais le **signe** de $\Delta$ : $\dfrac{28}{25}+\dfrac{96}{25}i$ n'est pas un réel, et il n'y a pas d'ordre sur $\mathbb{C}$ — « $\Delta > 0$ » est ici une phrase vide, pas une erreur de calcul. Avec des coefficients complexes, la seule question qui subsiste est : $\Delta$ est-il nul ou non ? Et n'écris pas $\sqrt{\Delta}$ : écris $\delta$, avec $\delta^2 = \Delta$.
+        steps:
+          - math: 'z \neq 0 \implies \left(z+\dfrac1z = \dfrac{12}{5}+\dfrac45 i\right) \iff z^2 - \left(\dfrac{12}{5}+\dfrac45 i\right)z + 1 = 0'
+            note: "On multiplie par z (licite : z ≠ 0), puis on ramène tout à gauche."
+          - math: '\Delta = \left(\dfrac{12+4i}{5}\right)^2 - 4\times1\times1 = \dfrac{144+96i-16}{25}-\dfrac{100}{25} = \dfrac{28}{25}+\dfrac{96}{25}i'
+            note: "Δ = b² − 4ac avec a = 1, b = −(12+4i)/5, c = 1 ; (12+4i)² = 144 + 96i + 16i² = 128 + 96i."
+          - math: '\left(\dfrac{2}{5}(4+3i)\right)^2 = \dfrac{4}{25}\left(16+24i+9i^2\right) = \dfrac{4}{25}(7+24i) = \dfrac{28}{25}+\dfrac{96}{25}i = \Delta'
+            note: "L'indication de l'énoncé se VÉRIFIE en développant, elle ne se devine pas."
+          - math: '\delta = \dfrac{2}{5}(4+3i) = \dfrac{8+6i}{5} \implies z = \dfrac{-b\pm\delta}{2a} = \dfrac{(12+4i)\pm(8+6i)}{10}'
+            note: "δ est UNE racine carrée de Δ ; formule (−b ± δ)/(2a) avec a = 1, tout mis sur 5 puis divisé par 2."
+          - math: 'z_1 = \dfrac{20+10i}{10} = 2+i \qquad z_2 = \dfrac{4-2i}{10} = \dfrac{2-i}{5}'
+            note: "Les deux valeurs possibles de z."
+          - math: 'z_1+z_2 = \dfrac{12+4i}{5} = -\dfrac{b}{a} \qquad z_1z_2 = \dfrac{(2+i)(2-i)}{5} = \dfrac{5}{5} = 1 = \dfrac{c}{a}'
+            note: "Contrôle par somme et produit des racines (chapitre 1) : on retrouve exactement les coefficients."
+      - id: q1c
+        stem: |-
+          **(0,25 pt)** En déduire les valeurs du couple $(x, y)$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux valeurs sont possibles pour $z$, mais $z$ n'est pas un complexe quelconque : par construction, $z = \sqrt{x}+i\sqrt{y}$ avec $x \geq 0$ et $y \geq 0$. Sa partie réelle **et** sa partie imaginaire sont donc toutes deux des racines carrées de réels positifs — donc toutes deux **positives ou nulles**. C'est ce filtre, et lui seul, qui départage les deux racines.
+
+          $$z_2 = \frac{2-i}{5} = \frac25 - \frac15 i \quad\text{a pour partie imaginaire } -\frac15 < 0$$
+
+          Elle est donc à rejeter : aucun réel $y \geq 0$ n'a $\sqrt{y} = -\dfrac15$. Il reste $z = z_1 = 2+i$.
+
+          On identifie alors partie réelle et partie imaginaire — ce qui est légitime parce que $\sqrt{x}$ et $\sqrt{y}$ sont **réels** (l'unicité de la forme algébrique, rung R1 du chapitre 1) :
+
+          $$\sqrt{x} = 2 \implies x = 4 \qquad\qquad \sqrt{y} = 1 \implies y = 1$$
+
+          Le seul couple possible est donc $(x,y) = (4,1)$.
+
+          **Le piège à éviter.** Deux pièges, en réalité, et ils se ressemblent. Le premier : oublier que la contrainte porte sur les **deux** parties de $z$ — un élève qui ne teste que « la partie réelle est positive » garde $z_2$ et se retrouve avec deux couples. Le second, plus grave : croire qu'on vient de « résoudre » le système. On n'a montré que ceci — *si* $(x,y)$ est solution, *alors* $(x,y)=(4,1)$. C'est le sens des mots « En déduire les valeurs **possibles** ». La question suivante existe précisément pour fermer ce raisonnement.
+        steps:
+          - math: 'z = \sqrt{x}+i\sqrt{y},\ x\geq0,\ y\geq0 \implies \operatorname{Re}(z)\geq0\ \text{et}\ \operatorname{Im}(z)\geq0'
+            note: "Une racine carrée est toujours positive ou nulle : les DEUX parties de z sont contraintes."
+          - math: 'z_2 = \dfrac{2-i}{5} = \dfrac25-\dfrac15 i,\quad \operatorname{Im}(z_2) = -\dfrac15 < 0 \implies z_2\ \text{est à rejeter}'
+            note: "Aucun y positif n'a une racine carrée négative."
+          - math: 'z = 2+i \implies \sqrt{x} = 2\ \text{et}\ \sqrt{y} = 1'
+            note: "Identification des parties réelle et imaginaire, licite car √x et √y sont réels (unicité de la forme algébrique, R1)."
+          - math: '(x,y) = (4,1)\quad\text{(seul couple possible)}'
+            note: "Condition NÉCESSAIRE seulement : la vérification reste à faire, c'est la question 2."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Résoudre dans $\left(\mathbb{R}_+\right)^2$ le système $(S)$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Cette question vaut **deux fois** la précédente alors qu'elle semble n'en être qu'une redite : c'est le signal. Tout ce qui précède est une **analyse** — on est parti de « soit $(x,y)$ une solution » et on a abouti à $(x,y)=(4,1)$. Un tel raisonnement établit qu'il n'y a pas d'autre candidat ; il n'établit **pas** que ce candidat en est un. Il manque la **synthèse** : la vérification directe dans le système de départ. C'est elle que le barème paie ici.
+
+          Avec $x = 4$ et $y = 1$ : $x+y = 5$, donc $\dfrac{1}{x+y} = \dfrac15$, et $\sqrt{x} = 2$, $\sqrt{y} = 1$.
+
+          **Première ligne :**
+
+          $$\sqrt{x}\left(1+\frac{1}{x+y}\right) = 2\left(1+\frac15\right) = 2 \times \frac65 = \frac{12}{5} \quad \checkmark$$
+
+          **Seconde ligne :**
+
+          $$\sqrt{y}\left(1-\frac{1}{x+y}\right) = 1 \times \left(1-\frac15\right) = \frac45 \quad \checkmark$$
+
+          Le couple $(4,1)$ appartient bien à $\left(\mathbb{R}_+\right)^2$ et vérifie les deux lignes. Comme l'analyse a montré qu'aucun autre couple ne le peut :
+
+          $$S = \left\{\,(4,1)\,\right\}$$
+
+          **Le piège à éviter.** Répondre « d'après la question 1-c), $S=\{(4,1)\}$ » et passer à la suite. C'est l'erreur la plus fréquente sur ce type d'exercice, et elle coûte ici $0,5$ point sur $3,5$ — un septième de l'exercice. Retiens le réflexe : dès qu'une question commence par « soit $(x,y)$ **une solution** », le raisonnement qui suit est une analyse, et il devra être refermé par une vérification. Le sujet ne l'a pas mise là par redondance.
+        steps:
+          - math: 'x = 4,\ y = 1 \implies x+y = 5,\quad \dfrac{1}{x+y} = \dfrac15,\quad \sqrt{x} = 2,\quad \sqrt{y} = 1'
+            note: "On repart des valeurs candidates et on les injecte dans le système de départ."
+          - math: '\sqrt{x}\left(1+\dfrac{1}{x+y}\right) = 2\times\dfrac65 = \dfrac{12}{5}'
+            note: "Première ligne de (S) : vérifiée."
+          - math: '\sqrt{y}\left(1-\dfrac{1}{x+y}\right) = 1\times\dfrac45 = \dfrac45'
+            note: "Seconde ligne de (S) : vérifiée."
+          - math: 'S = \left\{\,(4,1)\,\right\}'
+            note: "Analyse (questions 1) + synthèse (cette vérification) : l'ensemble des solutions est fermé."
+      - id: q3
+        part: 'Partie II — Le cercle unité $(U)$ : $A(a)$, $B(b)$, $C(c)$ deux à deux distincts'
+        stem: |-
+          **(0,25 pt)** Montrer que : $\left(\forall z \in \mathbb{C}\right)$ ; $|z| = 1 \iff \overline{z} = \dfrac{1}{z}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une équivalence se démontre dans les deux sens, et les deux tiennent ici sur la même identité du chapitre 1 : $z\overline{z} = |z|^2$. Cette identité est le pont entre une information **métrique** (le module, une longueur) et une information **algébrique** (le conjugué, un nombre avec lequel on calcule). Toute la Partie II consiste à traverser ce pont : « le point est sur le cercle unité » deviendra « son conjugué est son inverse », et une hypothèse géométrique se transformera en identité qu'on manipule.
+
+          **Sens direct.** Si $|z| = 1$, alors $|z| \neq 0$, donc $z \neq 0$ et $\dfrac1z$ existe. Et
+
+          $$z\overline{z} = |z|^2 = 1^2 = 1 \implies \overline{z} = \frac{1}{z}$$
+
+          (on a divisé par $z \neq 0$).
+
+          **Sens réciproque.** Si $\overline{z} = \dfrac1z$ — écriture qui suppose déjà $z \neq 0$ —, on multiplie par $z$ :
+
+          $$z\overline{z} = 1 \implies |z|^2 = 1 \implies |z| = 1$$
+
+          la dernière implication étant valide parce que $|z|$ est un réel **positif ou nul** : $|z|^2=1$ ne laisse que $|z|=1$, jamais $|z|=-1$.
+
+          **Le piège à éviter, et une imprécision du sujet officiel.** Le quantificateur imprimé est « $\forall z \in \mathbb{C}$ », mais l'équivalence est **fausse telle quelle en $z = 0$** : $\dfrac{1}{0}$ n'existe pas, donc le membre de droite n'a pas de sens et l'énoncé « $|0| = 1 \iff \ldots$ » non plus. Le domaine correct est $\mathbb{C}^*$ — beaucoup d'éditions de ce sujet l'écrivent d'ailleurs ainsi ; le scan, lui, ne porte pas l'étoile. Rédige avec l'étoile, ou dis en une ligne que $z=0$ est écarté : un correcteur ne pénalise jamais une précision juste. Second piège, plus discret : passer de $|z|^2 = 1$ à $|z| = 1$ sans dire que $|z| \geq 0$. C'est une ligne, et c'est la seule chose qui rend le sens réciproque vrai.
+        steps:
+          - math: 'z\overline{z} = |z|^2\quad(\text{chapitre 1, R3--R4})'
+            note: "L'identité qui fait le pont entre le module (une longueur) et le conjugué (un objet de calcul)."
+          - math: '|z| = 1 \implies z \neq 0\ \text{et}\ z\overline{z} = 1 \implies \overline{z} = \dfrac{1}{z}'
+            note: "Sens direct : on divise par z, non nul puisque son module vaut 1."
+          - math: '\overline{z} = \dfrac{1}{z}\ (\text{donc } z\neq0) \implies z\overline{z} = 1 \implies |z|^2 = 1'
+            note: "Sens réciproque : on multiplie par z."
+          - math: '|z| \geq 0\ \text{et}\ |z|^2 = 1 \implies |z| = 1'
+            note: "Le module est positif ou nul : la racine −1 est exclue. Ligne à ne pas sauter."
+      - id: q4a
+        stem: |-
+          **(0,5 pt)** La droite passant par $A$ et parallèle à $(BC)$ coupe le cercle $(U)$ au point $P(p)$
+
+          Montrer que : $p = \dfrac{bc}{a}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « $(AP)$ parallèle à $(BC)$ » est une information sur des **directions**, et une direction se lit sur un rapport d'affixes de vecteurs : $\dfrac{p-a}{c-b}$ est le rapport de l'affixe de $\vec{AP}$ à celle de $\vec{BC}$. Deux directions parallèles $\iff$ ce rapport est **réel** — c'est la lecture du rung R6, ici entre deux vecteurs qui ne partent pas du même point.
+
+          Reste à rendre ce « réel » calculable. Le chapitre 1 le fait en une ligne : un nombre est réel si et seulement s'il est **égal à son propre conjugué**. Et c'est là que la question 1 sert : $a$, $b$, $c$, $p$ sont tous sur le cercle unité, donc conjuguer, pour eux, c'est **prendre l'inverse**. Conjuguer le rapport revient donc à remplacer chaque lettre par son inverse — un calcul purement algébrique.
+
+          $$\overline{\left(\frac{p-a}{c-b}\right)} = \frac{\dfrac1p-\dfrac1a}{\dfrac1c-\dfrac1b} = \frac{\dfrac{a-p}{ap}}{\dfrac{b-c}{bc}} = \frac{(a-p)\,bc}{ap\,(b-c)} = \frac{(p-a)\,bc}{ap\,(c-b)}$$
+
+          (au dernier passage, on a changé le signe **du numérateur et du dénominateur** : le rapport ne bouge pas.)
+
+          L'égalité « rapport $=$ son conjugué » s'écrit donc
+
+          $$\frac{p-a}{c-b} = \frac{p-a}{c-b}\cdot\frac{bc}{ap}$$
+
+          Le facteur $\dfrac{p-a}{c-b}$ est non nul, car $P \neq A$ : la droite considérée coupe le cercle en **deux** points, $A$ et $P$. On simplifie donc par lui :
+
+          $$\frac{bc}{ap} = 1 \implies ap = bc \implies p = \frac{bc}{a}$$
+
+          la dernière division étant licite puisque $|a|=1$, donc $a \neq 0$.
+
+          **Le piège à éviter.** Simplifier par $\dfrac{p-a}{c-b}$ sans un mot. C'est une division par une quantité dont il faut dire pourquoi elle n'est pas nulle — et la raison n'est pas dans les hypothèses « $A$, $B$, $C$ deux à deux distincts », elle est dans le mot « **coupe** » de l'énoncé, qui donne $P \neq A$. *(À la marge, pour la curiosité : si $a^2 = bc$, la parallèle à $(BC)$ menée par $A$ est tangente au cercle en $A$ et ne le « coupe » plus qu'en un point — la formule $p = \frac{bc}{a}$ donne alors $p = a$, ce qui reste cohérent, mais on sort du cadre décrit par l'énoncé.)*
+        steps:
+          - math: '(AP)\ \text{parallèle à}\ (BC) \iff \dfrac{p-a}{c-b} \in \mathbb{R} \iff \dfrac{p-a}{c-b} = \overline{\left(\dfrac{p-a}{c-b}\right)}'
+            note: "Rapport de deux affixes de vecteurs réel ⟺ directions parallèles (comme au rung R6) ; et réel ⟺ égal à son conjugué (chapitre 1, R3)."
+          - math: 'a,b,c,p \in (U) \implies \overline{a} = \dfrac1a,\ \overline{b} = \dfrac1b,\ \overline{c} = \dfrac1c,\ \overline{p} = \dfrac1p'
+            note: "Question 1, appliquée aux quatre affixes : conjuguer, sur le cercle unité, c'est inverser."
+          - math: '\overline{\left(\dfrac{p-a}{c-b}\right)} = \dfrac{\dfrac1p-\dfrac1a}{\dfrac1c-\dfrac1b} = \dfrac{(a-p)\,bc}{ap\,(b-c)} = \dfrac{p-a}{c-b}\cdot\dfrac{bc}{ap}'
+            note: "On réduit chaque étage au même dénominateur, puis on change les deux signes ensemble : le rapport est inchangé."
+          - math: 'P \neq A \implies \dfrac{p-a}{c-b} \neq 0 \implies \dfrac{bc}{ap} = 1'
+            note: "On simplifie par un facteur non nul — le mot « coupe » de l'énoncé donne P ≠ A."
+          - math: 'ap = bc,\ a \neq 0\ (|a|=1) \implies p = \dfrac{bc}{a}'
+            note: "Division licite : un point du cercle unité n'est jamais nul."
+      - id: q4b
+        stem: |-
+          **(0,5 pt)** La droite passant par $A$ et perpendiculaire à $(BC)$ coupe le cercle $(U)$ au point $Q(q)$. Montrer que : $q = -p$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est exactement la question précédente, avec un seul mot changé — « parallèle » devient « perpendiculaire ». Sur le rapport $\dfrac{q-a}{c-b}$, cela change une seule chose (rung R6) : au lieu d'être **réel**, il est **imaginaire pur**. Et le chapitre 1 traduit « imaginaire pur » aussi simplement que « réel » : $w$ est imaginaire pur $\iff w = -\overline{w}$. Tout le calcul de la question 2-a) se recopie, avec un signe moins.
+
+          Le conjugué se calcule à l'identique (les quatre affixes sont toujours sur le cercle unité) :
+
+          $$\overline{\left(\frac{q-a}{c-b}\right)} = \frac{q-a}{c-b}\cdot\frac{bc}{aq}$$
+
+          La condition $w = -\overline{w}$ s'écrit alors
+
+          $$\frac{q-a}{c-b} = -\,\frac{q-a}{c-b}\cdot\frac{bc}{aq}$$
+
+          et, en simplifiant par $\dfrac{q-a}{c-b} \neq 0$ (car $Q \neq A$, même argument qu'avant) :
+
+          $$1 = -\frac{bc}{aq} \implies aq = -bc \implies q = -\frac{bc}{a} = -p$$
+
+          **Ce que ce résultat dit géométriquement**, et qui vaut la peine d'être vu : $q = -p$ signifie que $P$ et $Q$ sont **diamétralement opposés** sur $(U)$. Autrement dit, la parallèle et la perpendiculaire à $(BC)$ menées par $A$ recoupent le cercle en deux points bout à bout d'un diamètre. C'est cohérent avec le théorème de Thalès : $[PQ]$ étant un diamètre, tout point du cercle — en particulier $A$ — voit $[PQ]$ sous un angle droit, et c'est bien l'angle entre les deux droites qu'on a construites.
+
+          **Le piège à éviter.** Traduire « perpendiculaire » par $\arg = \dfrac{\pi}{2}$ et se croire obligé de choisir un signe. L'angle vaut $\pm\dfrac{\pi}{2}$ selon l'orientation, et c'est précisément pour cela qu'on écrit la condition sous la forme insensible au signe « le rapport est imaginaire pur », c'est-à-dire $w = -\overline{w}$. Choisir $+\dfrac{\pi}{2}$ arbitrairement, c'est ajouter une hypothèse que l'énoncé ne donne pas.
+        steps:
+          - math: '(AQ) \perp (BC) \iff \dfrac{q-a}{c-b}\ \text{imaginaire pur} \iff \dfrac{q-a}{c-b} = -\,\overline{\left(\dfrac{q-a}{c-b}\right)}'
+            note: "Rung R6 : rapport imaginaire pur ⟺ directions perpendiculaires ; et imaginaire pur ⟺ opposé de son conjugué (chapitre 1)."
+          - math: '\overline{\left(\dfrac{q-a}{c-b}\right)} = \dfrac{q-a}{c-b}\cdot\dfrac{bc}{aq}'
+            note: "Même calcul qu'à la question 2-a, avec q à la place de p."
+          - math: 'Q \neq A \implies \dfrac{q-a}{c-b} \neq 0 \implies 1 = -\dfrac{bc}{aq} \implies aq = -bc'
+            note: "On simplifie par le facteur non nul ; le signe moins vient de la condition « imaginaire pur »."
+          - math: 'q = -\dfrac{bc}{a} = -p'
+            note: "P et Q sont diamétralement opposés sur (U) : [PQ] est un diamètre."
+      - id: q4c
+        stem: |-
+          **(0,5 pt)** La droite passant par $C$ et parallèle à $(AB)$ coupe le cercle $(U)$ au point $R(r)$
+
+          Montrer que les deux droites $(PR)$ et $(OB)$ sont perpendiculaires.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux mouvements, et aucun n'est nouveau. D'abord obtenir $r$ : la construction de $R$ est **mot pour mot** celle de $P$, à un renommage près. La question 2-a) dit « la parallèle à $(BC)$ menée par $A$ recoupe $(U)$ en $p = \dfrac{bc}{a}$ » ; ici c'est la parallèle à $(AB)$ menée par $C$. On applique donc le même résultat avec les rôles $A \to C$, $B \to A$, $C \to B$, ce qui donne
+
+          $$r = \frac{a\,b}{c}$$
+
+          Ensuite, la perpendicularité : $(PR) \perp (OB)$ se lit sur le rapport des affixes de $\vec{RP}$ (soit $p-r$) et de $\vec{OB}$ (soit $b-0=b$). Il faut donc montrer que $\dfrac{p-r}{b}$ est un imaginaire pur non nul (rung R6).
+
+          **Le calcul, et il est court.** On factorise $b$ :
+
+          $$p - r = \frac{bc}{a}-\frac{ab}{c} = b\left(\frac{c}{a}-\frac{a}{c}\right) \implies \frac{p-r}{b} = \frac{c}{a}-\frac{a}{c}$$
+
+          Pose $w = \dfrac{c}{a}$. Alors $|w| = \dfrac{|c|}{|a|} = 1$, donc — c'est la question 1, une troisième fois — $\dfrac1w = \overline{w}$, c'est-à-dire $\dfrac{a}{c} = \overline{w}$. D'où
+
+          $$\frac{p-r}{b} = w - \overline{w} = 2i\,\operatorname{Im}(w)$$
+
+          qui est un imaginaire pur. Il reste à s'assurer qu'il n'est pas **nul**, sans quoi on ne conclut rien : $w-\overline{w}=0$ signifie $w$ réel, donc $w = \pm1$ (puisque $|w|=1$), donc $c = a$ (exclu : les points sont deux à deux distincts) ou $c = -a$. Hors ce dernier cas, $\dfrac{p-r}{b}$ est un imaginaire pur non nul et les deux droites sont perpendiculaires.
+
+          **Le piège à éviter, et une imprécision du sujet officiel.** Le cas $a = -c$ n'est pas une coquetterie de rédaction : si $A$ et $C$ sont diamétralement opposés, alors
+
+          $$p = \frac{bc}{a} = \frac{bc}{-c} = -b \qquad\text{et}\qquad r = \frac{ab}{c} = \frac{-cb}{c} = -b$$
+
+          donc $P = R$ — et la droite $(PR)$ **n'existe pas**. L'énoncé n'exclut que le fait que $A$, $B$, $C$ soient deux à deux distincts, ce qui n'écarte pas $a = -c$ : c'est une imprécision du sujet officiel, à signaler explicitement dans ta copie plutôt qu'à ignorer. Le second piège est plus banal : conclure « imaginaire pur, donc perpendiculaire » sans avoir écarté la valeur $0$. Zéro est à la fois réel et imaginaire pur ; il ne code aucune direction.
+        steps:
+          - math: 'r = \dfrac{ab}{c}'
+            note: "Question 2-a réappliquée avec les rôles A → C, B → A, C → B (la parallèle à (AB) menée par C)."
+          - math: 'p-r = \dfrac{bc}{a}-\dfrac{ab}{c} = b\left(\dfrac{c}{a}-\dfrac{a}{c}\right) \implies \dfrac{p-r}{b} = \dfrac{c}{a}-\dfrac{a}{c}'
+            note: "On factorise par b : l'affixe de OB disparaît du problème."
+          - math: 'w = \dfrac{c}{a},\ |w| = 1 \implies \dfrac{a}{c} = \dfrac{1}{w} = \overline{w} \implies \dfrac{p-r}{b} = w-\overline{w} = 2i\operatorname{Im}(w)'
+            note: "Question 1 une troisième fois ; z − z̄ est toujours un imaginaire pur (chapitre 1, R3)."
+          - math: 'w-\overline{w} = 0 \iff w \in \mathbb{R} \iff w = \pm1 \iff c = a\ (\text{exclu})\ \text{ou}\ c = -a'
+            note: "Le cas nul doit être écarté : zéro ne code aucune direction."
+          - math: 'a \neq -c \implies \dfrac{p-r}{b} = \dfrac{\text{aff}\left(\vec{RP}\right)}{\text{aff}\left(\vec{OB}\right)}\ \text{imaginaire pur non nul} \implies (PR) \perp (OB)'
+            note: "Rung R6 : rapport imaginaire pur non nul ⟹ directions perpendiculaires. Si a = −c alors p = r = −b et la droite (PR) n'existe pas."
 
   # ── bk-2025-n-x2 — 2025 N, Exercice 2 : équation à paramètre α, perpendicularités, cocyclicité ──
   - id: bk-2025-n-x2
