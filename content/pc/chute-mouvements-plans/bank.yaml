@@ -17,13 +17,15 @@
 # scalars pour la prose, KaTeX brut entre apostrophes simples dans
 # steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue) : neuf sujets « vérifié » couvrent
+# NOTE ÉDITORIALE (pour la revue) : dix sujets « vérifié » couvrent
 # désormais cette notion, 2018 N à 2025 N — 2018 N, 2019 N, 2020 N, 2021 N
 # (première vague) puis 2022 N (Partie 1 « bille » + Partie 2 « satellite »,
 # deux entrées sœurs bk-2022-n-x4 / bk-2022-n-x4b), 2023 N, 2024 N et 2025 N
 # (cinq entrées ajoutées en août 2026 : bk-2022-n-x4, bk-2022-n-x4b,
-# bk-2023-n-x4, bk-2024-n-x5, bk-2025-n-x4). La notion couvre donc désormais
-# la période 2018–2025 sans lacune connue. Le 2020 N (Exercice V, chute
+# bk-2023-n-x4, bk-2024-n-x5, bk-2025-n-x4), enfin 2021 R (bk-2021-r-x5,
+# tir à l'arc — PREMIÈRE entrée de session de RATTRAPAGE de cette banque,
+# insérée à sa place chronologique entre 2021 N et 2022 N). La notion couvre
+# donc désormais la période 2018–2025 sans lacune connue. Le 2020 N (Exercice V, chute
 # d'une bille dans un liquide visqueux) sert AUSSI de sommet de leçon (r-bac,
 # exercises.yaml, marqueur [[exercise:r-bac]] à R11 « Exercice de type bac ») :
 # mêmes données, mêmes réponses numériques (v_ℓ ≈ 1,5 m/s, k/m ≈ 6,67 s⁻¹,
@@ -70,6 +72,17 @@
 #     base, hors mécanique) avant de substituer dans F_a = ρ_liquide.V.g.
 #     Ponté au point d'usage dans le raisonnement de chaque question
 #     concernée.
+#   - bk-2021-r-x5, q4 : la question demande de RECOMPOSER la norme du
+#     vecteur vitesse à une date intermédiaire du vol (au point E, sur la
+#     verticale de la cible). Le rung 2 décompose la vitesse initiale en
+#     v_0x et v_0y, et le rung 4 n'annule v_y qu'au sommet ; nulle part la
+#     leçon ne recompose explicitement une vitesse en cours de vol à partir
+#     de ses deux composantes. Le geste est le même Pythagore qu'à la
+#     question 3.3 de la même entrée, seul l'instant change — le pont est
+#     fait en une phrase au point d'usage, dans le raisonnement de la
+#     question 4. Le reste de l'entrée (2ᵉ loi de Newton sans frottement,
+#     primitivation, lecture de pente sur v_y(t), décomposition/recomposition
+#     de V_0) reste strictement dans les rungs 1 à 4.
 #   - bk-2023-n-x4, q3c (question 2-3 du sujet, méthode d'Euler « à
 #     l'envers ») : la question donne l'accélération a_(i-1) et demande la
 #     vitesse v_z(t_i) suivante — mais, contrairement à toutes les autres
@@ -544,6 +557,206 @@ entries:
             note: "Distance parcourue durant le regime permanent de la phase 2."
           - math: '\boxed{d = h - h_1 - h_{perm} = 660 - 80 - 180 = 400\ \text{m}}'
             note: "Ce qui reste de la hauteur totale une fois retirees la phase 1 et le regime permanent de la phase 2."
+
+  # ── bk-2021-r-x5 — 2021 R, Exercice 5 : tir à l'arc, projectile dans le champ de pesanteur ──
+  - id: bk-2021-r-x5
+    title: "Tir à l'arc — mouvement d'un projectile dans le champ de pesanteur"
+    source:
+      year: 2021
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 5 — Étude du mouvement d'un solide dans le champ de pesanteur"
+    bareme_total: 3.0
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), AlloSchool RS 28F, element/127290,
+        course-422/upload-84198 (Exercice 5, barème complet 3 pt =
+        6 × 0,5 pt en marge ; pages 7 et 8 du scan, images 0007-big.jpg et
+        0008-big.jpg). PROVENANCE — le résumé HTML d'AlloSchool annonce
+        « Sciences Mathématiques B » : c'est FAUX, l'en-tête arabe des huit
+        pages du scan porte Sciences Expérimentales / Sciences Physiques,
+        option française ; seule l'image fait foi (correction re-vérifiée le
+        2026-08-22 par re-fetch indépendant de la page ET des images).
+        Transcription vérifiée par une passe adversariale indépendante
+        (2026-08-22) : re-fetch du scan, figures 1 et 2 re-décrites depuis le
+        dessin et non depuis l'énoncé, mesures au pixel des quadrillages.
+        Les descriptions de figure reprises ici sont CELLES DU VÉRIFICATEUR,
+        condensées en prose sans qu'aucune valeur ni position ne bouge. La
+        lecture critique est celle de C1 : le cadre du graphe de gauche ne
+        part PAS de zéro (il court de 68,0 à 70,0, petites divisions de
+        0,1) et la droite C1 est deux petites divisions au-dessus du trait
+        principal 69,5, soit v_x = 69,70 m.s⁻¹ — mesure au pixel confirmée,
+        et corroborée par son propre résultat : V_0 = √(69,70² + 6²) =
+        69,96 ≈ 70,0 m.s⁻¹, valeur ronde qu'une lecture à 69,5 ne donnerait
+        pas. Physique re-dérivée et auto-cohérente (pente de C2 = −10
+        m.s⁻² ⇒ g = 10 m.s⁻², α = arctan(6/69,70) = 4,9°, t_E = 80/69,70 =
+        1,148 s, v_yE = −5,48 m.s⁻¹, V_E = 69,9 m.s⁻¹ ; contrôle
+        énergétique indépendant : V_0² − V_E² = 2g(y_E − y_A) donne
+        y_E − y_A = 0,30 m, exactement ce que rend le calcul direct
+        6 t_E − 5 t_E², et cohérent avec la figure 1 où E est au-dessus de
+        C). SCOPE NOTE (voir l'en-tête du fichier) : la question 4 demande
+        de RECOMPOSER la norme de la vitesse à une date intermédiaire du
+        vol — pontée au point d'usage dans le raisonnement de la question.
+    intro: |-
+      **Le tir à l'arc : mouvement d'un solide dans le champ de pesanteur (examen national, session de rattrapage 2021 — Exercice 5, 3 points).**
+
+      Le tir à l'arc est un sport de précision et de concentration dans lequel les compétiteurs tentent de tirer leurs flèches au centre d'une cible avec leur arc.
+
+      Un compétiteur lance, à partir d'un point A, une flèche de masse $m$ et de centre d'inertie G avec une vitesse $\vec{V}_0$ vers une cible. La cible, de forme circulaire et de centre C, est située à une distance $D = 80\ \text{m}$ du compétiteur (figure 1). La vitesse $\vec{V}_0$ fait un angle $\alpha$ avec l'horizontale.
+
+      On étudie le mouvement du centre d'inertie G dans un repère $(O, \vec{i}, \vec{j})$ lié à un référentiel terrestre supposé galiléen. On néglige la résistance de l'air et la poussée d'Archimède.
+
+      Les deux courbes $C_1$ et $C_2$ de la figure 2 représentent respectivement l'évolution des deux composantes $v_x(t)$ et $v_y(t)$ du vecteur vitesse $\vec{v}$ du centre d'inertie G. On prend comme origine des dates $t = 0$, l'instant du tir de la flèche du point A.
+
+      **Figure 1 (schéma).** Repère orthogonal encadré : axe $x$ horizontal fléché vers la droite, axe $y$ vertical fléché vers le haut, O à leur intersection (étiquette « O » en bas à gauche du croisement) ; les vecteurs unitaires $\vec{i}$ (horizontal, tracé sur l'axe $x$ à droite de O) et $\vec{j}$ (vertical, tracé sur l'axe $y$ au-dessus de O) sont dessinés près de O. Le point A est sur l'axe $y$, nettement au-dessus de O (étiquette « A » à gauche de l'axe), et un trait horizontal **en tirets** le traverse en débordant de part et d'autre : c'est l'horizontale de référence. Du point A part le vecteur $\vec{V}_0$, flèche oblique vers le haut à droite ; l'angle $\alpha$ est marqué par un petit arc entre $\vec{V}_0$ et cette horizontale en tirets. La trajectoire est tracée **en pointillés fins**, en cloche très aplatie : elle démarre à la pointe de $\vec{V}_0$ (et non en A), monte jusqu'à un sommet situé environ au tiers de la plage, puis redescend faiblement et s'interrompt avant d'atteindre la cible — elle ne la touche pas. À droite : la cible (étiquette « Cible » à sa droite), figurée par un ovale vertical à ellipses concentriques ; son centre C est marqué d'un point (étiquette « C » à gauche), et la lettre **E** est portée sur la cible **au-dessus** de C, sur la verticale en tirets qui traverse la cible de haut en bas et redescend jusqu'à l'axe $x$. Sous l'axe $x$, une double flèche horizontale en tirets cote la distance $D$ (étiquette centrée en dessous) entre O et cette verticale.
+
+      **Figure 2 (deux courbes).** Deux graphiques côte à côte sur quadrillage fin (5 petites divisions par division principale).
+
+      *À gauche*, $v_x\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$ : axe des ordonnées chiffré $68{,}5$, $69$, $69{,}5$ — traits principaux tous les $0{,}5\ \text{m.s}^{-1}$, petites divisions de $0{,}1\ \text{m.s}^{-1}$ ; **le cadre s'étend de $v_x = 68{,}0$ (bord bas, non chiffré) à $v_x = 70{,}0$ (bord haut, non chiffré)**. Axe des abscisses chiffré $0{,}2$, $0{,}4$, $0{,}6$, $0{,}8$ ; **le bord droit du cadre est à $t = 1{,}0\ \text{s}$** (une division au-delà du dernier chiffrage). La courbe $C_1$ (étiquette dans un cadre blanc au centre) est une droite horizontale épaisse tracée sur toute la largeur du cadre, située **deux petites divisions au-dessus de la graduation $69{,}5$**, soit $v_x = 69{,}70\ \text{m.s}^{-1}$. Ne pas la confondre avec le trait principal $69{,}5$ juste en dessous, ni avec le bord supérieur du cadre à $70{,}0$.
+
+      *À droite*, $v_y\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$ : axe des ordonnées chiffré $6$, $4$, $2$, $0$, $-2$ — traits principaux tous les $2\ \text{m.s}^{-1}$ ; **le cadre s'étend de $v_y = -3$ à $v_y = +7$**. Axe des abscisses chiffré $0{,}2$, $0{,}4$, $0{,}6$ ; **le bord droit du cadre est à $t = 0{,}8\ \text{s}$, non chiffré**. La courbe $C_2$ (étiquette dans un cadre blanc) est une droite décroissante partant de $(0\,;\,6)$ sur l'axe des ordonnées et passant exactement par les intersections $(0{,}2\,;\,4)$, $(0{,}4\,;\,2)$, $(0{,}6\,;\,0)$ du quadrillage principal, prolongée jusqu'à $(0{,}8\,;\,-2)$ sur le bord droit du cadre.
+    questions:
+      - id: q1
+        part: "Établir le modèle du mouvement dans le champ de pesanteur"
+        stem: |-
+          (0,5 pt) En appliquant la deuxième loi de Newton, établir les équations différentielles vérifiées par $v_x$ et $v_y$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Établir une équation différentielle, c'est toujours la même chaîne, dans cet ordre : système, bilan des forces, deuxième loi de Newton, projection sur les axes. Ici l'énoncé t'a déjà fait la moitié du chemin en précisant qu'on néglige la résistance de l'air **et** la poussée d'Archimède : il ne reste qu'une seule force, le poids. C'est très exactement la situation du rung 2.
+
+          **Le système.** La flèche, de masse $m$, dans le référentiel terrestre supposé galiléen.
+
+          **Le bilan des forces.** Le poids $\vec{P} = m\vec{g}$, et lui seul.
+
+          **La deuxième loi de Newton.**
+
+          $$\sum \vec{F}_{ext} = m\,\vec{a}_G \quad\Longrightarrow\quad m\vec{g} = m\,\vec{a}_G \quad\Longrightarrow\quad \vec{a}_G = \vec{g}$$
+
+          La masse se simplifie et disparaît : l'accélération de la flèche ne dépend pas de sa masse, c'est le résultat central du rung 2. C'est aussi pourquoi l'énoncé donne $m$ sans jamais s'en servir.
+
+          **La projection.** Sur la figure 1, $\vec{j}$ est orienté **vers le haut**, $\vec{i}$ vers la droite. Le vecteur $\vec{g}$ est purement vertical et dirigé vers le bas : sa composante horizontale est nulle, sa composante verticale vaut $-g$.
+
+          $$a_x = \frac{dv_x}{dt} = 0 \qquad\qquad a_y = \frac{dv_y}{dt} = -g$$
+
+          $$\boxed{\frac{dv_x}{dt} = 0 \qquad \frac{dv_y}{dt} = -g}$$
+
+          **Le piège de cette question — le signe, et d'où il vient.** Le $-$ devant $g$ n'est pas une règle à mémoriser : il vient du choix d'axe lu sur la figure 1, où $\vec{j}$ pointe vers le haut alors que $\vec{g}$ pointe vers le bas. Si l'énoncé avait orienté $\vec{j}$ vers le bas (comme au rung 7, pour les chutes freinées), la même projection donnerait $+g$. Regarde toujours la figure avant d'écrire le signe. Second point, tout aussi important : les deux équations sont **indépendantes** — aucune ne contient la composante de l'autre. C'est ce découplage qui permet de traiter le mouvement horizontal et le mouvement vertical séparément dans toute la suite.
+      - id: q2
+        part: "Établir le modèle du mouvement dans le champ de pesanteur"
+        stem: |-
+          (0,5 pt) Déduire les expressions littérales des équations $v_x(t)$ et $v_y(t)$ en fonction de $V_0$, $\alpha$ et $t$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Passer de l'équation différentielle à la vitesse, c'est primitiver **une fois**. Et une primitive n'est jamais déterminée toute seule : elle laisse une constante d'intégration, que seules les conditions initiales fixent. C'est précisément par cette porte que $V_0$ et $\alpha$ entrent dans les expressions — ils ne viennent pas de l'équation différentielle, ils viennent de l'instant $t = 0$.
+
+          **Primitivation.** De $\dfrac{dv_x}{dt} = 0$ on tire que $v_x$ est **constante** au cours du temps, donc égale à sa valeur initiale $v_x(0)$. De $\dfrac{dv_y}{dt} = -g$ on tire $v_y(t) = -g\,t + v_y(0)$.
+
+          **Les conditions initiales.** À $t = 0$, le vecteur vitesse est $\vec{V}_0$, de norme $V_0$, faisant l'angle $\alpha$ avec l'horizontale. On le décompose comme au rung 2 : la composante portée par $\vec{i}$ est le côté adjacent à l'angle, celle portée par $\vec{j}$ est le côté opposé.
+
+          $$v_x(0) = V_0\cos\alpha \qquad\qquad v_y(0) = V_0\sin\alpha$$
+
+          $$\boxed{v_x(t) = V_0\cos\alpha \qquad\qquad v_y(t) = -g\,t + V_0\sin\alpha}$$
+
+          **La vérification aux cas extrêmes**, celle du rung 2, pour être sûr de ne pas avoir échangé $\sin$ et $\cos$ : si $\alpha \to 0°$ (tir parfaitement horizontal), toute la vitesse doit être horizontale — $\cos 0° = 1$ et $\sin 0° = 0$ donnent bien $v_x(0) = V_0$ et $v_y(0) = 0$. Si $\alpha \to 90°$ (tir vertical), l'inverse. Les rôles sont bons.
+
+          **Le piège de cette question.** « $v_x$ est constante » ne veut **pas** dire « le mouvement est uniforme ». La norme du vecteur vitesse, elle, change tout le temps, puisque $v_y$ change : c'est le mouvement **horizontal** qui est uniforme, pas le mouvement de la flèche. Et ne confonds pas ces expressions avec les équations horaires $x(t)$ et $y(t)$ : ici on n'a primitivé qu'une seule fois, on parle encore de vitesses. Il faudra primitiver une seconde fois — à la question 4 — pour parler de positions.
+      - id: q3-1
+        part: "3- Exploiter les courbes C1 et C2"
+        stem: |-
+          (0,5 pt) Trouver, en exploitant les courbes $C_1$ et $C_2$, l'accélération de la pesanteur $g$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La question 2 vient d'établir que $v_y(t) = -g\,t + V_0\sin\alpha$ : c'est une fonction **affine** de $t$, de coefficient directeur $-g$. Déterminer $g$, c'est donc calculer une pente — et une seule des deux courbes peut la donner, celle qui n'est pas horizontale. C'est $C_2$.
+
+          On lit deux points **au trait**, choisis sur des intersections du quadrillage principal et le plus écartés possible pour que l'erreur de lecture pèse le moins : $(0\,;\,6)$ et $(0{,}6\,;\,0)$.
+
+          Coefficient directeur de $C_2$ :
+
+          $$\frac{\Delta v_y}{\Delta t} = \frac{0 - 6}{0{,}6 - 0} = \frac{-6}{0{,}6} = -10\ \text{m.s}^{-2}$$
+
+          On identifie ce coefficient à $-g$ :
+
+          $$-g = -10 \quad\Longrightarrow\quad \boxed{g = 10\ \text{m.s}^{-2}}$$
+
+          **Le contrôle qui rassure.** La courbe est prolongée jusqu'à $(0{,}8\,;\,-2)$ sur le bord du cadre. Testons-y l'expression : $v_y(0{,}8) = 6 - 10 \times 0{,}8 = 6 - 8 = -2\ \text{m.s}^{-1}$. La droite passe bien par ce point : la pente lue est juste.
+
+          **Le piège de cette question.** Aller chercher $g$ sur $C_1$. La courbe $C_1$ est horizontale, sa pente vaut zéro — et c'est normal, elle traduit $\dfrac{dv_x}{dt} = 0$, c'est-à-dire $a_x = 0$, pas $g$. Une pente nulle sur $C_1$ n'est pas une anomalie du graphe, c'est le résultat de la question 1. La pesanteur ne se lit que sur la composante **verticale**.
+      - id: q3-2
+        part: "3- Exploiter les courbes C1 et C2"
+        stem: |-
+          (0,5 pt) Trouver, en exploitant les courbes $C_1$ et $C_2$, l'angle $\alpha$ de tir.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La question 2 a décomposé $\vec{V}_0$ en $v_x(0) = V_0\cos\alpha$ et $v_y(0) = V_0\sin\alpha$. Ici on fait le chemin **inverse** : on lit les deux composantes sur les graphes et on remonte à l'angle. Le rapport des deux élimine $V_0$, qu'on ne connaît pas encore — c'est tout l'intérêt de passer par la tangente plutôt que par le sinus ou le cosinus seuls.
+
+          $$\frac{v_y(0)}{v_x(0)} = \frac{V_0\sin\alpha}{V_0\cos\alpha} = \tan\alpha$$
+
+          **Les deux lectures.** Sur $C_2$, l'ordonnée à l'origine se lit directement sur l'axe : $v_y(0) = 6\ \text{m.s}^{-1}$.
+
+          Sur $C_1$, **prends garde au cadrage** : l'axe des ordonnées ne part pas de zéro, il court de $68{,}0$ à $70{,}0$, avec un trait principal tous les $0{,}5$ et des petites divisions de $0{,}1$. La droite $C_1$ est deux petites divisions au-dessus du trait $69{,}5$ :
+
+          $$v_x(0) = 69{,}5 + 2\times 0{,}1 = 69{,}70\ \text{m.s}^{-1}$$
+
+          $$\tan\alpha = \frac{6}{69{,}70} = 0{,}0861 \quad\Longrightarrow\quad \alpha = \arctan(0{,}0861)$$
+
+          $$\boxed{\alpha \approx 4{,}9°}$$
+
+          **Le contrôle par la figure.** Un angle de tir de $5°$ environ, c'est un tir presque rasant — et c'est bien ce que montre la trajectoire de la figure 1, une cloche **très aplatie**. Si tu avais trouvé $85°$, la figure t'aurait immédiatement contredit.
+
+          **Le piège de cette question.** Inverser le rapport. $\tan\alpha = v_y/v_x$, pas l'inverse : $\arctan(69{,}70/6)$ donnerait $85{,}1°$, un tir quasi vertical, absurde pour une cible à $80\ \text{m}$. La règle qui ne trompe pas : $\alpha$ est mesuré **depuis l'horizontale**, donc le côté adjacent est l'horizontale ($v_x$) et le côté opposé est la verticale ($v_y$) — le rapport opposé sur adjacent, comme toujours.
+      - id: q3-3
+        part: "3- Exploiter les courbes C1 et C2"
+        stem: |-
+          (0,5 pt) Trouver, en exploitant les courbes $C_1$ et $C_2$, la vitesse initiale $V_0$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $V_0$ est la **norme** du vecteur $\vec{V}_0$, dont on connaît maintenant les deux composantes. Une norme se calcule par Pythagore — les composantes sont les deux côtés d'un triangle rectangle, la vitesse en est l'hypoténuse.
+
+          $$V_0 = \sqrt{v_x(0)^2 + v_y(0)^2} = \sqrt{69{,}70^2 + 6^2}$$
+
+          Chiffre par chiffre : $69{,}70^2 = 4858{,}09$ et $6^2 = 36$, donc
+
+          $$V_0 = \sqrt{4858{,}09 + 36} = \sqrt{4894{,}09} = 69{,}96\ \text{m.s}^{-1}$$
+
+          $$\boxed{V_0 \approx 70{,}0\ \text{m.s}^{-1}}$$
+
+          **Le contrôle par l'autre chemin.** On peut aussi passer par la question précédente : $V_0 = \dfrac{v_x(0)}{\cos\alpha} = \dfrac{69{,}70}{\cos 4{,}9°} = \dfrac{69{,}70}{0{,}9963} = 69{,}96\ \text{m.s}^{-1}$. Les deux méthodes se rejoignent — et la valeur ronde obtenue, $70{,}0\ \text{m.s}^{-1}$, confirme au passage que la lecture délicate de $C_1$ à $69{,}70$ était la bonne : une lecture à $69{,}5$ aurait donné $69{,}76$, un nombre qui ne tombe pas juste.
+
+          **Le piège de cette question, et il est double.** D'abord, ne **jamais additionner** les composantes : $69{,}70 + 6 = 75{,}7\ \text{m.s}^{-1}$ est faux, une norme n'est pas une somme. Ensuite, l'inverse : ici $V_0$ et $v_x(0)$ sont presque égaux ($70{,}0$ contre $69{,}70$), parce que l'angle est petit et que $\cos 4{,}9° \approx 1$. Cette quasi-égalité est un **contrôle**, jamais une dispense — sur un tir à $45°$, l'écart entre la norme et sa composante horizontale atteindrait $30\ \%$.
+      - id: q4
+        part: "4- La vitesse de la flèche au point E"
+        stem: |-
+          (0,5 pt) La flèche atteint la cible en un point E situé sur la verticale qui passe par le centre C. Déterminer la vitesse $V_E$ de la flèche au point E.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $V_E$ est la **norme** du vecteur vitesse à l'instant précis où la flèche touche la cible. On ne peut pas la calculer avant de savoir **quand** cet instant arrive. Le chemin est donc en deux temps : d'abord la date $t_E$, lue sur le mouvement **horizontal** ; ensuite les deux composantes de la vitesse à cette date, recomposées par Pythagore.
+
+          *Un pont, au passage.* Le cours décompose $\vec{V}_0$ en ses deux composantes (rung 2) et annule $v_y$ au sommet (rung 4), mais il ne recompose jamais explicitement une vitesse en cours de vol. C'est pourtant le même Pythagore qu'à la question 3.3, lu dans le même sens — seul l'instant change : $t_E$ au lieu de $t = 0$.
+
+          **Premier temps — la date $t_E$.** Le point E est sur la verticale passant par C, à la distance horizontale $D = 80\ \text{m}$ de O. Le point de tir A est **sur l'axe** $\overrightarrow{Oy}$ (figure 1), donc son abscisse est nulle : $x_A = 0$. L'équation horaire horizontale s'écrit alors sans décalage, en primitivant une seconde fois $v_x = $ constante :
+
+          $$x(t) = v_x\,t = 69{,}70\,t$$
+
+          On impose $x(t_E) = D$ :
+
+          $$t_E = \frac{D}{v_x} = \frac{80}{69{,}70} = 1{,}148\ \text{s}$$
+
+          **Deuxième temps — les deux composantes à cet instant.** L'horizontale n'a pas bougé d'un iota depuis le tir (question 1 : $a_x = 0$) :
+
+          $$v_x(t_E) = 69{,}70\ \text{m.s}^{-1}$$
+
+          La verticale, elle, se calcule avec l'expression de la question 2, où l'on injecte $g = 10$ et $V_0\sin\alpha = v_y(0) = 6$ :
+
+          $$v_y(t_E) = -g\,t_E + v_y(0) = -10 \times 1{,}148 + 6 = -11{,}48 + 6 = -5{,}48\ \text{m.s}^{-1}$$
+
+          Le signe **négatif** dit que la flèche descend en E : elle a donc dépassé son sommet, ce que confirme la figure 1 où E se situe sur la partie descendante de la trajectoire.
+
+          **Troisième temps — la norme.**
+
+          $$V_E = \sqrt{v_x(t_E)^2 + v_y(t_E)^2} = \sqrt{69{,}70^2 + 5{,}48^2} = \sqrt{4858{,}09 + 30{,}03} = \sqrt{4888{,}12}$$
+
+          $$\boxed{V_E \approx 69{,}9\ \text{m.s}^{-1}}$$
+
+          **Le contrôle, et il est joli.** $V_E$ est légèrement **inférieure** à $V_0 \approx 69{,}96\ \text{m.s}^{-1}$ : la flèche a donc perdu un peu de vitesse, ce qui, sans frottement, ne peut signifier qu'une chose — elle est arrivée un peu **plus haut** qu'elle n'est partie. Vérifions par deux chemins indépendants. Par les vitesses : $V_0^2 - V_E^2 = 2g\,(y_E - y_A)$ donne $y_E - y_A = \dfrac{4894{,}09 - 4888{,}12}{2\times 10} = \dfrac{5{,}97}{20} \approx 0{,}30\ \text{m}$. Par la position, en primitivant $v_y$ : $y_E - y_A = 6\,t_E - 5\,t_E^2 = 6{,}887 - 6{,}587 \approx 0{,}30\ \text{m}$. Les deux tombent sur la même valeur, et la figure 1 le montrait déjà : E est marqué **au-dessus** de C.
+
+          **Le piège de cette question, et c'est le plus coûteux de l'exercice.** Confondre E avec le point de chute. E n'est **pas** le point où la flèche revient à sa hauteur de départ : la condition qui le définit est **horizontale** ($x = D$), pas verticale ($y = 0$). Chercher la portée en résolvant $y = 0$ répondrait à une autre question que celle posée. Deuxième piège, plus discret : $V_E$ est la **norme** du vecteur vitesse, pas sa composante verticale — répondre $5{,}48\ \text{m.s}^{-1}$, c'est oublier que la flèche continue d'avancer horizontalement à $69{,}70\ \text{m.s}^{-1}$ pendant qu'elle descend.
 
   # ── bk-2022-n-x4 — 2022 N, Exercice 4 (Partie 1) : bille dans l'huile de ricin, Archimède ──
   - id: bk-2022-n-x4
