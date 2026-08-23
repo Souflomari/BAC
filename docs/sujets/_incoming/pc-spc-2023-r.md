@@ -16,10 +16,12 @@
 > lieu de 10 ; minimum de la figure 3 de l'ex. 4 placé à $t\approx0{,}2$ s au
 > lieu de $\approx 0{,}14$ s), une figure décrite depuis le texte plutôt que
 > depuis le dessin (l'origine de la cote $D$ de l'ex. 4, et l'interrupteur $K$
-> de l'ex. 3 dessiné **ouvert**), et **quatre valeurs laissées « à confirmer »
-> alors qu'elles portaient chacune une question entière** — toutes levées ici
-> par mesure au pixel *doublée* d'une re-dérivation concordante. Détail dans
-> chaque entrée sous « Vérification ».
+> de l'ex. 3 dessiné **ouvert**), et **cinq mentions « lecture à confirmer »,
+> dont trois portaient chacune une question entière** ($\tau = 0{,}35\ \text{ms}$
+> pour la question 1-2 de l'ex. 3, $q(0) = 120\,\mu\text{C}$ pour la 2-3,
+> $T_0 = 0{,}40\ \text{s}$ pour les questions 2 et 3 de l'ex. 4-II) : les cinq
+> sont levées ici, chacune par une mesure au pixel *doublée* d'une re-dérivation
+> concordante. Détail dans chaque entrée sous « Vérification ».
 >
 > **Couverture (page 1 du scan)** : « الدورة الاستدراكية 2023 » (session de
 > rattrapage), code **RS 28F**, épreuve الفيزياء والكيمياء (Physique-Chimie),
