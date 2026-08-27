@@ -693,6 +693,61 @@ entrée dont l'identifiant contredit son libellé, et les cinq ci-dessus sont
 nommées une par une dans un ensemble `POSITIONS_HERITEES`, avec en commentaire
 le nom juste. La dette est bornée, visible, et ne peut plus croître.
 
+### K-8. Un même sujet vit en deux endroits sans recoupement — et ça a déjà divergé
+
+**Trouvé le 2026-08-27**, en mesurant après qu'un cas se soit révélé. **Sept
+entrées le signalent elles-mêmes** ; deux cas sont déjà des contradictions
+avérées.
+
+**Le fait.** Un exercice de bac réel peut vivre à deux endroits du dépôt :
+comme entrée de banque (`bank.yaml`) et comme sommet de leçon r-bac
+(`exercises.yaml`). Les deux sont écrits séparément, souvent à des mois
+d'écart, et **rien ne les recoupe** — ni porte, ni relecture. Sept entrées
+portent un avertissement « RECOUPEMENT ASSUMÉ » écrit par leur auteur :
+
+| notion | ligne |
+|---|---|
+| `pc/controle-catalyse` | 47 |
+| `pc/ondes-em-modulation` | 70 et 135 |
+| `pc/ondes-mecaniques-progressives` | 156 |
+| `pc/rotation-axe-fixe` | 87 |
+| `pc/systemes-oscillants` | 40 |
+| `pc/transformations-lentes-rapides` | 187 |
+
+**Deux divergences AVÉRÉES, pas hypothétiques :**
+
+1. **PC 2019, la force $F$** — le sommet r-bac fournit « on prendra
+   $\sin 10° \approx 0{,}17$ » et publie **532 N** ; l'entrée de banque garde
+   $\sin 10° = 0{,}1736$ et publie **525 N**. La donnée arrondie est absente
+   de la transcription vérifiée. Deux réponses publiées pour la même question
+   du même sujet.
+
+2. **PC 2010, le temps de demi-réaction** — `bk-2010-n-x1` affiche
+   $t_{1/2} \approx 20$ min, valeur que son propre bloc « SOURCING GAP »
+   déclarait **reprise du sommet r-bac et jamais re-dérivée**. Une mesure au
+   pixel sur le bitmap d'origine (2026-08-27) donne **12,53 min**. Voir le
+   commentaire daté en tête de
+   `content/pc/transformations-lentes-rapides/bank.yaml`.
+
+**Ce que ça dit du mécanisme.** Les deux divergences ont la même origine : la
+valeur du sommet r-bac a été **reprise** dans la banque « pour rester cohérent
+avec lui », sans re-dérivation. Quand le sommet est faux, la banque hérite du
+faux — et l'avertissement écrit par l'auteur devient le seul indice qu'il
+reste.
+
+**Ce qui n'est PAS fait, et pourquoi.** Aucune valeur n'a été corrigée. Une
+valeur physique publiée ne se change pas sur une lecture unique : le cas
+PC 2010 vient d'une passe de transcription, pas d'une vérification
+indépendante, et le cas PC 2019 demande de savoir si le sujet officiel fournit
+ou non l'arrondi — ce que la transcription vérifiée dit absent, mais qui
+mérite le corrigé officiel.
+
+**Piste de garde.** Un balayage mécanique est possible et n'a pas été fait :
+pour chaque entrée de banque, chercher si le même `{filiere, year, session}` +
+la même question apparaît dans un `exercises.yaml`, et comparer les valeurs
+numériques encadrées (`\boxed{}`). Sept entrées sont déjà nommées ci-dessus ;
+le balayage dirait s'il y en a d'autres, et lesquelles divergent.
+
 ### K-1. `get_user_weak_areas` function references missing columns
 **Source.** `backend/supabase/migrations/004_exam_analytics_and_sync.sql`,
 lines 45–74.
