@@ -36,14 +36,62 @@ Donc :
 4. Le déplacement vers `docs/sujets/<matière>/<notion>.md` et la
    conversion en banque se font **après**, jamais en même temps.
 
-## État au 2026-08-22
+## État au 2026-08-23 (fin de la deuxième nuit)
 
-Sept sujets de rattrapage transcrits (≈30 exercices), **zéro vérifié** à
-l'heure où cette note est écrite ; une passe de vérification est en
-cours. Les sujets : PC SPC 2021 à 2025, maths SM 2023 et 2024.
+**Les sept sujets sont vérifiés.** La passe de vérification annoncée
+comme « en cours » la veille est terminée : les 30 exercices des sept
+fichiers portent un `Statut: vérifié — re-fetch indépendant +
+re-dérivation`, daté du 2026-08-22 ou du 2026-08-23.
+
+Conversion en banques :
+
+| Sujet | Converti | Assemblé dans Examens blancs |
+|---|---|---|
+| `pc-spc-2021-r.md` | 8 exercices | **20,00/20 — complet** |
+| `pc-spc-2022-r.md` | 4 blocs sur 8 | 10,50/20 — partiel, conversion en cours |
+| `pc-spc-2023-r.md` | 8 exercices | **20,00/20 — complet** |
+| `pc-spc-2024-r.md` | 8 exercices | **20,00/20 — complet** |
+| `pc-spc-2025-r.md` | 1 bloc sur 9 | 2,50/20 — conversion en cours |
+| `maths-sm-2023-r.md` | 4 exercices | **20,00/20 — complet** |
+| `maths-sm-2024-r.md` | 5 exercices | **20,00/20 — complet** |
+
+Cinq épreuves de rattrapage sur sept s'assemblent désormais en entier.
+Avant la campagne, le corpus n'en comptait **aucune** : toutes les
+banques étaient en session normale.
+
+### Ce que la vérification a réellement trouvé
+
+Le détail est dans `JOURNAL-VERIFICATION.md` et dans le bloc de chaque
+exercice. Les trois plus coûteux, à garder en mémoire parce qu'ils
+définissent les classes de défauts à chasser :
+
+1. **Un fichier entier décrivait un autre sujet.** `pc-spc-2024-r.md`
+   contenait le rattrapage 2023, habillé d'un faux avertissement
+   « discordance d'année » reposant sur une lecture d'en-tête arabe
+   fausse. Le fichier a été entièrement réécrit. L'avertissement de
+   provenance est reconduit dans le `sourcing.note` de **chaque** entrée
+   issue de ce sujet, pour que la trace survive à la conversion.
+2. **Des figures décrites depuis le TEXTE et non depuis le dessin.**
+   Une cote de terrain qui partait du mauvais point (PC 2023 R, ex. 4),
+   un minimum de sinusoïde placé à 0,2 s alors qu'il est à 0,138 s
+   (idem), un trait intérieur de quadrillage pris pour le bord du cadre
+   (PC 2022 R, ex. 2). Chacune portait une question entière.
+3. **Deux défauts dans le SUJET OFFICIEL lui-même**, documentés et non
+   « réparés » : l'échelle des ordonnées de la figure 4 du rattrapage
+   2024 est incompatible d'un facteur ≈ 60 avec les données de l'énoncé
+   (sans conséquence sur le résultat demandé, mais aucune valeur
+   d'intensité ne doit en être tirée), et une courbe de dosage 2021 non
+   cohérente avec le pK_A.
+
+Le sujet **maths SM 2024 rattrapage** est le seul des sept où la passe
+adversariale n'a trouvé **aucun défaut** : ni d'énoncé, ni de
+transcription, ni de lecture laissée en suspens.
+
+## Ce qui reste à moissonner
 
 Les sessions de rattrapage n'avaient jamais été moissonnées : elles
-doublent le gisement d'épreuves réelles disponibles. Les identifiants
-de source (AlloSchool) recensés pour la suite — SExp maths 2018→2025 et
-PC/SM au-delà des sept ci-dessus — sont dans l'historique de la campagne
-et se re-recensent en une passe si besoin.
+doublent le gisement d'épreuves réelles disponibles, et sept sujets ne
+sont qu'un début. Les identifiants de source (AlloSchool) recensés pour
+la suite — SExp maths 2018→2025, et PC/SM au-delà des sept ci-dessus —
+sont dans l'historique de la campagne et se re-recensent en une passe si
+besoin.
