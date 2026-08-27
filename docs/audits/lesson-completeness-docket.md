@@ -141,10 +141,40 @@ fichier **s'auto-signale incertain sur ce point précis**
 (`_flag_derive_fort`, ligne 159 : « à confirmer »). Le programme SM, lui, ne
 fait aucun doute (`maths-sm.yaml:154`, `research-consensus`). Trois lectures
 possibles, à trancher par l'owner avec le PDF cadre SExp en main : (a) la
-limite SExp dérivée est trop stricte et doit être corrigée ; (b) le tag
-filière de ce sujet 2022 est erroné ; (c) ce point du sujet 2022 déborde
-légitimement le programme SExp officiel (un cas de « sujet plus dur que son
-cadre », déjà vu ailleurs dans le corpus). La réponse ne change rien à la
+limite SExp dérivée est trop stricte et doit être corrigée ; ~~(b) le tag
+filière de ce sujet 2022 est erroné~~ **— ÉCARTÉE, voir ci-dessous** ; (c) ce
+point du sujet 2022 déborde légitimement le programme SExp officiel (un cas
+de « sujet plus dur que son cadre », déjà vu ailleurs dans le corpus).
+
+> **(b) est écartée par l'arithmétique des barèmes, mesurée le 2026-08-27.**
+> Le docket s'appuyait sur la cohérence du tag entre les deux fichiers — un
+> argument faible, puisque deux fichiers peuvent porter la même erreur. Le
+> contrôle décisif est ailleurs : **les deux épreuves ne bouclent que d'une
+> seule façon.**
+>
+> Il existe un **autre** `bk-2022-n-x4`, tagué **SM**, 3,5 pts, dans
+> `structures-algebriques` — et le recensement confirme indépendamment que
+> l'exercice 4 de SM 2022 EST l'exercice de structures algébriques
+> (`CENSUS.md` §2, sous-section SM : analyse 10 · complexes 3,5 ·
+> arithmétique 3 · structures 3,5 = 20). Le créneau est donc pris.
+>
+> Si les deux fragments d'équations différentielles (1,0 + 1,5 = 2,5 pts)
+> étaient en réalité SM, alors **SExp 2022 tomberait à 17,50/20** avec un trou
+> de 2,50 que rien ne comble, et **SM 2022 monterait à 12,50** alors que sa
+> composition connue ne laisse aucune place pour 2,50 de plus. Aucune des deux
+> épreuves ne boucle sous cette hypothèse ; les deux bouclent sous le tag
+> actuel. Le tag SExp est juste.
+>
+> *(Au passage : c'est le phénomène de known-issues **K-7** en action — un
+> même `entry_id` porté par deux entrées de filières différentes, parce que
+> l'identifiant encode la position sur la copie et que deux filières ont
+> chacune leur exercice 4 la même année. Un lecteur pressé pourrait les
+> confondre ; ils ne se séparent que par `source.filiere`.)*
+>
+> **Ce que ça change pour l'owner** : l'arbitrage se réduit à (a) contre (c) —
+> la limite SExp dérivée est-elle trop stricte, ou ce sujet déborde-t-il
+> légitimement son cadre ? Le PDF du cadre SExp reste nécessaire ; la question
+> de l'erreur de saisie, elle, est close. La réponse ne change rien à la
 légitimité du rung pour SM (voir A5) — elle détermine seulement si
 `equations-differentielles` doit rester une leçon unique ou se
 différencier par filière sur ce point.
