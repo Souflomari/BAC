@@ -30,6 +30,33 @@
 > officiels** — pas de code NS/RS, ni durée, ni coef ; fidélité non
 > vérifiable. Reporté verbatim sur chaque ligne concernée.
 
+> **MISE À JOUR DU 2026-08-27 — cinq sessions SM réellement lues.** Les lignes
+> SM 2020 N, 2022 N, 2023 N, 2024 N et 2025 N passent de `sourcé-confirmé`
+> (page 1 entrevue) à **`décomposé`** : leurs pages 1 ont été relues à l'image
+> et, pour quatre d'entre elles, les exercices d'analyse ont été transcrits
+> dans `docs/sujets/_incoming/`. Ce que cette relecture a corrigé ou ajouté
+> est porté dans la colonne « Note » de chaque ligne — et trois trouvailles
+> dépassent le recensement :
+>
+> 1. **Le format à choix de SM 2020 a une conséquence dans le code**, que
+>    personne n'avait tracée : `web/src/lib/examens.ts` somme tous les
+>    `bareme_total` d'une épreuve et n'a aucune notion d'exercice optionnel.
+>    Cette épreuve est **déjà sur-comptée** dans Examens blancs. Consigné en
+>    `docs/grounding/known-issues.md` **K-0**, avec trois issues possibles et
+>    aucune choisie.
+> 2. **SM 2024 N porte un défaut du sujet officiel** : sa page 1 croise les
+>    numéros des exercices 4 et 5 par rapport au corps. Sans effet sur le /20,
+>    piégeux pour une conversion.
+> 3. **Les scans ne se valent pas.** 2024 et 2025 sont propres ; 2023 a un
+>    mojibake intermittent ; 2022 a une substitution de police totale. Cette
+>    information conditionne le coût de toute transcription future et n'était
+>    nulle part.
+>
+> **Piège opératoire, à connaître avant de re-télécharger quoi que ce soit :**
+> AlloSchool répond parfois par une redirection 301 (forme `index.ph%70`) que
+> `curl` enregistre en « JPEG » de 288 octets. Refetcher avec `-L` et un
+> User-Agent de navigateur, puis contrôler `file *.jpg`.
+
 **Légende statut** ·
 `sourcé-confirmé` = scan officiel ouvert et lu (en-tête/composantes) ·
 `sourcé-listé` = URL `element/<n>` relevée sur le hub, jamais ouverte ·
@@ -81,17 +108,17 @@ hub SExp : `section/5321` (annonce 2009→2024 N+R, images `course-438`).
 | 2018 | R | — | — | non recherché | |
 | 2019 | N | NS24F | `68482` (`upload-54931`, 5 p.) ; corrigé `106425` | sourcé-confirmé | décomposé v0.2, 4 entrées `vérifié` |
 | 2019 | R | RS25 | `94396` | sourcé-confirmé | code sans F, lu sur scan |
-| 2020 | N | NS25 | `109635` ; corrigé `109637` | sourcé-confirmé | format à CHOIX (Ex1 OU Ex2) |
+| 2020 | N | NS25 | `109635` (`upload-80775`, 5 p.) ; corrigé `109637` | **décomposé** (2026-08-27) | **format à CHOIX, confirmé sur la p. 1 lue** : « traiter EXERCICE3 et EXERCICE4 et choisir de traiter EXERCICE1 **ou bien** EXERCICE2 — au total **trois** exercices ». Ex1 arithmétique 3,5 *au choix* · Ex2 structures algébriques 3,5 *au choix* · Ex3 complexes 3,5 obligatoire · **Ex4 analyse 13 pts** obligatoire. Barème d'un candidat = 3,5+3,5+13 = 20. **Conséquence tracée jusqu'au code : voir `docs/grounding/known-issues.md` K-0** — `lib/examens.ts` somme tout et sur-compte déjà cette épreuve |
 | 2020 | R | — | `109639` | sourcé-listé | jamais ouvert |
 | 2021 | N | NS24F | `127193` ; corrigé `136837` | sourcé-confirmé | 3 exercices seulement |
 | 2021 | R | — | `127195` | sourcé-listé | |
-| 2022 | N | NS24F | `136604` ; corrigé `136841` | sourcé-confirmé | |
+| 2022 | N | NS24F | `136604` (`upload-84506`, 5 p.) ; corrigé `136841` | **décomposé** (2026-08-27) | 5 exercices : **Ex1 analyse 10 pts** (transcrit, `_incoming/maths-sm-2022-n.md`) · Ex2 complexes 3,5 · Ex3 arithmétique 3 · Ex4 structures 3,5. **⚠️ Scan à substitution de police MASSIVE** — aucun symbole non alphabétique ne s'y lit pour ce qu'il montre ; table de glyphes dans le fichier `_incoming` |
 | 2022 | R | RS24F | `136606` | sourcé-confirmé | |
-| 2023 | N | NS24F | `142490` ; corrigé `142492` | sourcé-confirmé | |
+| 2023 | N | NS24F | `142490` (`upload-85316`, 5 p.) ; corrigé `142492` | **décomposé** (2026-08-27) | 5 exercices : **Ex1 analyse 7,75** + **Ex2 analyse 2,25** (les deux transcrits ET **vérifiés**, `_incoming/maths-sm-2023-n.md`) · Ex3 complexes 3,5 · Ex4 arithmétique 3 · Ex5 structures 3,5. Mojibake **intermittent** (le $\le$ rendu par une double virgule à six endroits) |
 | 2023 | R | RS24F | `142494` | sourcé-confirmé | |
-| 2024 | N | NS24F | `145739` ; corrigé `145737` | sourcé-confirmé | |
+| 2024 | N | NS24F | `145739` (`upload-87447`, 5 p.) ; corrigé `145737` | **décomposé** (2026-08-27) | 5 exercices : **Ex1 analyse 7,5** + **Ex2 analyse 2,5** (les deux transcrits ET **vérifiés**, `_incoming/maths-sm-2024-n.md`) · Ex3 complexes 3,5 · Ex4 structures 3,5 · Ex5 arithmétique 3. Scan **propre**, aucun mojibake. **⚠️ Défaut du sujet officiel** : la p. 1 croise les numéros 4 et 5 par rapport au corps — documenté, non réparé |
 | 2024 | R | RS25 | `145741` | sourcé-confirmé | FLAG lecteur : code sans « F » |
-| 2025 | N | NS24F | `145783` ; corrigé non listé | sourcé-confirmé | scan 2 p. lues (p.1+p.2) |
+| 2025 | N | NS - 24F | `145783` (`upload-87482`, **6 fichiers**) ; corrigé non listé | **décomposé** (2026-08-27) | **QUATRE** exercices seulement : **Ex1 analyse 10 pts** (transcrit, `_incoming/maths-sm-2025-n.md`) · Ex2 complexes 3,5 · Ex3 arithmétique 3 · Ex4 structures 3,5. Scan propre. **Pagination décalée** : 6 fichiers pour une pagination « n/5 » — le fichier 1 est une couverture non numérotée. Émetteur imprimé changé (« المركز الوطني للامتحانات المدرسية وتقييم التعلمات »). **`arctan` apparaît en I-5b** — aucun rung nulle part dans le corpus |
 | 2025 | R | RS24F | `145785` | sourcé-confirmé | |
 
 **SM : 13 sourcé-confirmé · 1 retype-non-officiel · 2 sourcé-listé ·
