@@ -335,6 +335,76 @@ $$y(x) = 3\cos(4x) + 2\sin(4x)$$
 
 Une erreur fréquente : poser $B=y'(0)$ directement, sans diviser par $\omega$. Teste ce reflexe sur l'exemple ci-dessus : si $B=8$ (au lieu de $2$), la fonction $y(x)=3\cos(4x)+8\sin(4x)$ donnerait $y'(x) = -12\sin(4x)+32\cos(4x)$, donc $y'(0)=32 \neq 8$ — ça contredit la condition posée au départ. Le facteur $\omega$ n'est pas optionnel : il vient directement de la dérivée $(\sin(\omega x))'=\omega\cos(\omega x)$, et l'oublier fausse systématiquement la vitesse initiale.
 
+### Le cas général : $ay''+by'+cy=0$ et son équation caractéristique
+
+L'équation $y''+\omega^2y=0$ qu'on vient de traiter n'a **pas** de terme en $y'$. Un sujet peut t'en donner une qui en a un — par exemple $y''-3y'+2y=0$. Voici la méthode générale, et tu vas voir que le cas de l'oscillateur en est un cas particulier, pas une exception.
+
+**L'équation.** Pour $a$, $b$, $c$ réels avec $a\neq0$ :
+
+$$a\,y''(x) + b\,y'(x) + c\,y(x) = 0$$
+
+**L'idée qui débloque tout : chercher les solutions de la forme $y=e^{rx}$.** Ce n'est pas un coup de chance — c'est la seule famille de fonctions dont toutes les dérivées sont proportionnelles à elle-même, donc la seule où la combinaison $ay''+by'+cy$ a une chance de se simplifier. Pose $y(x)=e^{rx}$ avec $r$ à déterminer. Alors $y'(x)=r\,e^{rx}$ et $y''(x)=r^2e^{rx}$, et en reportant :
+
+$$a\,r^2e^{rx} + b\,r\,e^{rx} + c\,e^{rx} = 0
+\qquad\Longleftrightarrow\qquad
+\left(a r^2 + b r + c\right)e^{rx} = 0$$
+
+Or $e^{rx}$ ne s'annule **jamais**. Le produit est donc nul si et seulement si la parenthèse l'est :
+
+$$\boxed{\ a r^2 + b r + c = 0\ }$$
+
+C'est l'**équation caractéristique** de l'équation différentielle : une simple équation du second degré en $r$, qu'on sait résoudre depuis longtemps. Toute la difficulté d'une équation différentielle du second ordre à coefficients constants se ramène à ce trinôme.
+
+**Trois cas, selon le discriminant $\Delta = b^2-4ac$.**
+
+*Cas 1 — $\Delta > 0$ : deux racines réelles distinctes $r_1$ et $r_2$.* Les solutions sont
+
+$$y(x) = A\,e^{r_1x} + B\,e^{r_2x}, \qquad A,B \in \mathbb{R}$$
+
+*Cas 2 — $\Delta = 0$ : une racine double $r_0 = -\dfrac{b}{2a}$.* Une seule exponentielle ne suffit plus à décrire toutes les solutions — il en manquerait la moitié. On la complète en multipliant par $x$ :
+
+$$y(x) = \left(A\,x + B\right)e^{r_0x}, \qquad A,B \in \mathbb{R}$$
+
+*Cas 3 — $\Delta < 0$ : deux racines complexes conjuguées $r = \alpha \pm i\beta$*, avec $\alpha = -\dfrac{b}{2a}$ et $\beta = \dfrac{\sqrt{-\Delta}}{2a}$. Les solutions réelles sont
+
+$$y(x) = e^{\alpha x}\left(A\cos(\beta x) + B\sin(\beta x)\right), \qquad A,B \in \mathbb{R}$$
+
+Dans les trois cas, deux constantes libres $A$ et $B$ — c'est la signature d'une équation du **second** ordre, et il faudra toujours **deux** conditions initiales pour les fixer, exactement comme plus haut.
+
+### Arrête-toi : l'oscillateur du R4 est le cas 3
+
+Vérifie-le, c'est ce qui fait tenir le chapitre ensemble. L'équation $y''+\omega^2y=0$ s'écrit $ay''+by'+cy=0$ avec $a=1$, $b=0$ et $c=\omega^2$. Son équation caractéristique est donc
+
+$$r^2 + \omega^2 = 0 \qquad\Longrightarrow\qquad r^2 = -\omega^2 \qquad\Longrightarrow\qquad r = \pm\,i\omega$$
+
+Discriminant $\Delta = 0 - 4\omega^2 = -4\omega^2 < 0$ : on est bien dans le cas 3, avec $\alpha = 0$ et $\beta = \omega$. La formule donne alors
+
+$$y(x) = e^{0}\left(A\cos(\omega x)+B\sin(\omega x)\right) = A\cos(\omega x)+B\sin(\omega x)$$
+
+— exactement le résultat admis plus haut. Le facteur $e^{\alpha x}$ vaut $1$ précisément parce qu'il n'y avait pas de terme en $y'$ : **c'est le terme en $y'$ qui amortit**. S'il est présent avec $\alpha<0$, l'exponentielle décroît et l'oscillation s'éteint — c'est le régime pseudo-périodique que tu rencontres en physique dans le circuit RLC amorti.
+
+### Exemple travaillé
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* on identifie $a$, $b$, $c$, on écrit le trinôme, on regarde son discriminant, on applique la formule du cas correspondant. Aucune des trois étapes ne se saute.
+
+Résous $y'' - 3y' + 2y = 0$ avec $y(0)=1$ et $y'(0)=0$.
+
+**Le trinôme.** Ici $a=1$, $b=-3$, $c=2$, donc l'équation caractéristique est $r^2-3r+2=0$.
+
+**Le discriminant.** $\Delta = (-3)^2 - 4\times1\times2 = 9-8 = 1 > 0$ : deux racines réelles distinctes.
+
+$$r_1 = \frac{3-1}{2} = 1 \qquad\text{et}\qquad r_2 = \frac{3+1}{2} = 2$$
+
+**La solution générale.** $y(x) = A\,e^{x} + B\,e^{2x}$.
+
+**Les conditions initiales.** $y(0) = A + B = 1$. Puis $y'(x) = A\,e^{x} + 2B\,e^{2x}$, donc $y'(0) = A + 2B = 0$. En soustrayant la première équation de la seconde : $B = -1$, puis $A = 2$.
+
+$$\boxed{y(x) = 2e^{x} - e^{2x}}$$
+
+**Le contrôle, à faire systématiquement.** $y(0) = 2-1 = 1$ ✔. Et $y'(x)=2e^x-2e^{2x}$ donne $y'(0)=2-2=0$ ✔. Les deux conditions sont satisfaites.
+
+**Le piège nommé de ce cas général.** Oublier le facteur $x$ du cas $\Delta=0$ et écrire $y=Ae^{r_0x}$ tout court. Il ne resterait qu'**une** constante libre, alors qu'une équation du second ordre en demande deux : impossible de satisfaire deux conditions initiales indépendantes. Le compte des constantes est le contrôle qui débusque l'erreur avant tout calcul.
+
 ---
 
 ## R5 — Reconnaître l'équation en physique : RC, RL, oscillateur
