@@ -36,28 +36,43 @@ Donc :
 4. Le déplacement vers `docs/sujets/<matière>/<notion>.md` et la
    conversion en banque se font **après**, jamais en même temps.
 
-## État au 2026-08-23 (fin de la deuxième nuit)
+## État au 2026-08-23 — LA CHAÎNE EST BOUCLÉE
 
-**Les sept sujets sont vérifiés.** La passe de vérification annoncée
-comme « en cours » la veille est terminée : les 30 exercices des sept
-fichiers portent un `Statut: vérifié — re-fetch indépendant +
-re-dérivation`, daté du 2026-08-22 ou du 2026-08-23.
+**Les sept sujets sont vérifiés ET convertis.** Les 30 exercices des sept
+fichiers portent un `Statut: vérifié — re-fetch indépendant + re-dérivation`,
+et chacun de leurs blocs a trouvé sa banque.
 
-Conversion en banques :
-
-| Sujet | Converti | Assemblé dans Examens blancs |
+| Sujet | Blocs convertis | Assemblé dans Examens blancs |
 |---|---|---|
-| `pc-spc-2021-r.md` | 8 exercices | **20,00/20 — complet** |
-| `pc-spc-2022-r.md` | 4 blocs sur 8 | 10,50/20 — partiel, conversion en cours |
-| `pc-spc-2023-r.md` | 8 exercices | **20,00/20 — complet** |
-| `pc-spc-2024-r.md` | 8 exercices | **20,00/20 — complet** |
-| `pc-spc-2025-r.md` | 1 bloc sur 9 | 2,50/20 — conversion en cours |
-| `maths-sm-2023-r.md` | 4 exercices | **20,00/20 — complet** |
-| `maths-sm-2024-r.md` | 5 exercices | **20,00/20 — complet** |
+| `pc-spc-2021-r.md` | 8 | **20,00/20 — complet** |
+| `pc-spc-2022-r.md` | 9 | **20,00/20 — complet** |
+| `pc-spc-2023-r.md` | 8 | **20,00/20 — complet** |
+| `pc-spc-2024-r.md` | 8 | **20,00/20 — complet** |
+| `pc-spc-2025-r.md` | 8 | **20,00/20 — complet** |
+| `maths-sm-2023-r.md` | 4 | **20,00/20 — complet** |
+| `maths-sm-2024-r.md` | 5 | **20,00/20 — complet** |
 
-Cinq épreuves de rattrapage sur sept s'assemblent désormais en entier.
-Avant la campagne, le corpus n'en comptait **aucune** : toutes les
-banques étaient en session normale.
+**Sept épreuves de rattrapage sur sept s'assemblent en entier.** Avant la
+campagne, le corpus n'en comptait **aucune** : toutes les banques étaient en
+session normale. Le corpus est passé de 12 à 18 épreuves complètes.
+
+### La règle de répartition qui a tenu tout du long
+
+Un exercice de bac se répartit souvent sur plusieurs notions. `lib/examens.ts`
+**somme les `bareme_total`** pour reconstituer le /20 : dupliquer un exercice
+sur ses notions cross-listées fausserait chaque total. La règle appliquée sans
+exception :
+
+- le barème est **réparti**, jamais dupliqué — les parties d'un même exercice
+  vont chacune dans leur notion, et la somme retombe sur le barème imprimé ;
+- un cross-list qui ne pèserait qu'une demi-question **ne devient pas une
+  entrée** : ce serait un orphelin illisible. Il est honoré dans le
+  `reasoning`, qui nomme le domaine et renvoie à sa leçon ;
+- chaque décision de ce type est écrite en `NOTE ÉDITORIALE` en tête de
+  l'entrée, avec sa raison, et laissée à l'arbitrage de l'owner.
+
+Chaque total a été recompté question par question contre le scan, et le
+recompte est consigné dans le `sourcing.note`. Les sept retombent juste.
 
 ### Ce que la vérification a réellement trouvé
 

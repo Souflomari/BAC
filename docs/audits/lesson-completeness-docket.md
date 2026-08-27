@@ -63,10 +63,10 @@ ligne ci-dessous, pas juste ici.
 |---|---|---|---|---|
 | A10 | `nombres-complexes-1` | Forme trigo/exponentielle, formules de rotation ($z'=e^{i\theta}z$…), vocabulaire « homothétie » | Les **7 sujets vérifiés** de la notion | `nombres-complexes-2` (déjà enseigné, R0–R6) — cadre `maths-sexp.yaml:250` confirme translation/homothétie/rotation en programme SExp |
 | A11 | `denombrement` | Indépendance de deux événements $p(A\cap B)=p(A)p(B)$ | 2024 q4 | `probabilites-conditionnelles` R3 (déjà enseigné — indépendance/incompatibilité) |
-| A12 | `fonction-exponentielle` | **Point d'inflexion** (changement de signe de $f''$) | 2022 q5c · 2020 q5 | `derivabilite-etude-fonctions` R5 (rung complet, avec checkpoint `cp-r5-inflexion`) |
-| A13 | `fonction-exponentielle` | **Intégration par parties** (IPP) | 2019 (calcul de $\int 4xe^{-x}dx$) | `calcul-integral` (IPP confirmée en programme SExp, `maths-sexp.yaml:175`) |
-| A14 | `fonction-exponentielle` | **Limite monotone** (suite décroissante minorée) | 2019 | `suites-numeriques` (rung adjacent à R8, cadre `maths-sexp.yaml:70` confirmé) |
-| A15 | `fonction-logarithme` | Comparaison graphique $e^x$/$x$, $\ln(e^x)=x$, $xe^{-x}\to0$ | 2024 (Partie I) | `fonction-exponentielle` (déjà enseigné) |
+| A12 | `fonction-exponentielle` | **Point d'inflexion** (changement de signe de $f''$) | 2022 q5c · 2020 q5 | **FAIT (2026-08-23)** — voir A13/A14 : les trois ponts d'`fonction-exponentielle` sont posés ensemble, en une section « Ce que ces exercices empruntent à d'autres chapitres » au R8, juste avant les exercices qui les mobilisent |
+| A13 | `fonction-exponentielle` | **Intégration par parties** (IPP) | 2019 (calcul de $\int 4xe^{-x}dx$) | **FAIT (2026-08-23)** — même section que A12. La leçon dit désormais que son R6 ne donne que les deux primitives immédiates ($e^x$ et $u'e^u$), insuffisantes dès qu'un facteur polynomial s'invite |
+| A14 | `fonction-exponentielle` | **Limite monotone** (suite décroissante minorée) | 2019 | **FAIT (2026-08-23)** — même section que A12 |
+| A15 | `fonction-logarithme` | Comparaison graphique $e^x$/$x$, $\ln(e^x)=x$, $xe^{-x}\to0$ | 2024 (Partie I) | **FAIT (2026-08-23).** Section « Ce que ces exercices empruntent à d'autres chapitres » au R7, sur le même patron que celle d'`fonction-exponentielle`. Elle nomme trois emprunts, pas un : le chapitre exponentiel entier (avec le point qui compte — la symétrie des deux courbes par rapport à $y=x$ n'est pas une image, c'est ce qui fait que chaque résultat de l'un se traduit dans l'autre), l'IPP, et le couple TVI + stricte monotonie qui porte toute question « il existe un unique réel tel que » |
 | A16 | `arithmetique` | Formule de Moivre pour $(1+i)^p$ | 2023 q6–8 | `nombres-complexes-2` (déjà enseigné) — priorité basse, une seule occurrence |
 
 ### A · Physique — contenu pédagogique neuf à écrire

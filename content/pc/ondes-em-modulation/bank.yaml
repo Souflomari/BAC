@@ -20,16 +20,31 @@
 # dans docs/sujets/pc/ondes-em-modulation.md sont 2017 N (Exercice III,
 # Partie II), 2021 N (Exercice IV, Partie III), 2023 N (Exercice 3, §3) et
 # 2025 N (Exercice 3, Partie 3) — statuts en tête de chaque entrée. Les
-# quatre figurent ci-dessous. S'y ajoutent DEUX entrées de session de
-# RATTRAPAGE, ni l'une ni l'autre encore reversée dans
+# quatre figurent ci-dessous. S'y ajoutent TROIS entrées de session de
+# RATTRAPAGE, aucune encore reversée dans
 # docs/sujets/pc/ondes-em-modulation.md (même disposition que les entrées de
 # rattrapage de rc-charge et dipole-rl) : bk-2022-r-x3c (2022 R, Exercice 3,
 # section 3), source vérifiée docs/sujets/_incoming/pc-spc-2022-r.md (passe
-# de vérification adversariale du 2026-08-22) ; et bk-2023-r-x3c (2023 R,
+# de vérification adversariale du 2026-08-22) ; bk-2023-r-x3c (2023 R,
 # Exercice 3, section 3), source vérifiée docs/sujets/_incoming/pc-spc-2023-r.md
-# (passe de vérification adversariale du 2026-08-23). Les entrées sont
-# ordonnées chronologiquement, la session de rattrapage se plaçant après
-# la session normale de la même année.
+# (passe de vérification adversariale du 2026-08-23) ; et bk-2025-r-x3b
+# (2025 R, Exercice 3, §2), source vérifiée
+# docs/sujets/_incoming/pc-spc-2025-r.md (passe de vérification adversariale
+# du 2026-08-23). Les entrées sont ordonnées chronologiquement, la session de
+# rattrapage se plaçant après la session normale de la même année.
+#
+# NOTE ÉDITORIALE — FLAG DE JUMELAGE (bk-2025-r-x3b face à bk-2017-n-x3).
+# Même geste : lire les fréquences porteuse/signal sur un oscillogramme, puis
+# $A$ et $m$ via les extrema $U_{max}/U_{min}$ de l'enveloppe, conclure sur la
+# qualité de la modulation. Ce qui diffère : bk-2017-n-x3 lit des repères
+# d'axe déjà chiffrés en temps, avec un drapeau d'échelle jamais levé (« à
+# confirmer ») et des extrema à valeurs rondes ($3\ \text{V}$/$1\ \text{V}$) ;
+# bk-2025-r-x3b lit tout via une calibration géométrique (double flèche sur
+# 2 carreaux, comptage de crêtes/carreaux) et des extrema mesurés au pixel
+# avec incertitude déclarée ($9{,}7$ et $2{,}4$ carreaux, écartant
+# explicitement une lecture concurrente à valeurs rondes) — un exercice de
+# lecture graphique nettement plus exigeant. Proposition : garder les deux.
+# À l'arbitrage de l'owner.
 #
 # SCOPE NOTE (bk-2023-r-x3c, question q2) : le rung R5 accorde le circuit
 # bouchon sur UNE fréquence — l'exemple numérique du rung isole $C$ pour
@@ -771,3 +786,164 @@ entries:
             note: "Seconde borne violee : la decharge est trop lente pour suivre l'enveloppe."
           - math: '\boxed{R_0C_0 > \frac{1}{f_s} \implies \text{demodulation de mauvaise qualite} \implies \text{reponse : non}}'
             note: "La double inegalite du rung 4 n'est pas verifiee sur sa borne haute ; la reponse est non."
+
+  # ── bk-2025-r-x3b — 2025 R, Exercice 3 (§2) : modulation d'amplitude,
+  #    lecture par calibration graphique ──
+  #
+  # NOTE ÉDITORIALE — FLAG DE JUMELAGE : voir la note complète en tête de
+  # fichier (bk-2025-r-x3b face à bk-2017-n-x3, même geste, exigence de
+  # lecture graphique différente). Proposition : garder les deux entrées.
+  - id: bk-2025-r-x3b
+    title: "Modulation d'amplitude par circuit multiplieur : fréquences par calibration graphique, taux de modulation par les extrema de l'enveloppe, qualité de la modulation"
+    source:
+      year: 2025
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — §2 : Modulation d'amplitude"
+    bareme_total: 1.25
+    duration_min: 8
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS28F, AlloSchool element/145799
+        (Exercice 3, §2 — modulation d'amplitude ; barème du §2 = 1,25 pt
+        sur les 5 pt de l'exercice complet, dont le §1 — établissement et
+        rupture du courant dans un circuit RL, puis circuit LC idéal — est
+        transcrit sous content/pc/dipole-rl/bank.yaml en bk-2025-r-x3, les
+        deux parties étant explicitement indépendantes). Page du scan : 5
+        (sur 6), course-422/upload-87492/0005-big.jpg. Transcription
+        vérifiée par une passe adversariale indépendante (2026-08-23,
+        docs/sujets/_incoming/pc-spc-2025-r.md, statut « vérifié ») :
+        re-fetch indépendant, chaque figure re-mesurée au pixel — la
+        figure 4 de cette partie a porté la correction la plus lourde du
+        sujet entier : l'enveloppe fait deux périodes complètes et un
+        quart dans le cadre (et non une seule période, comme une première
+        lecture le disait), et le pas de l'ordonnée de la figure 2 de
+        l'exercice (§1) valait $1{,}25\ \text{V}$ et non $2{,}5$ ; les
+        quatorze lectures « à confirmer » du sujet entier ont toutes été
+        levées par mesure au pixel doublée d'une re-dérivation. Recompte
+        du barème : $0{,}5+0{,}75=1{,}25$ pt, conforme au bareme_total.
+        CONTRE-CALCUL REFAIT ICI, conforme à la source sur toute la ligne :
+        $F=1/(0{,}05\times10^{-3})=2{,}0\times10^{4}\ \text{Hz}=20\
+        \text{kHz}$ ; $f=1/(0{,}60\times10^{-3})\approx1{,}7\times10^{3}\
+        \text{Hz}$ ; $U_{max}\approx9{,}7\times0{,}165\approx1{,}6\
+        \text{V}$, $U_{min}\approx2{,}4\times0{,}165\approx0{,}4\
+        \text{V}$ ; $A=(U_{max}+U_{min})/2=1{,}0\ \text{V}$ ;
+        $m=(U_{max}-U_{min})/(U_{max}+U_{min})=1{,}2/2{,}0=0{,}60<1$ —
+        aucune divergence avec les valeurs affichées par la source.
+    intro: |-
+      **Modulation d'amplitude (examen national, session de rattrapage 2025, Exercice 3 — §2, 1,25 point).**
+
+      *Les deux parties de cet exercice sont indépendantes : cette partie (modulation d'amplitude) ; l'établissement et la rupture du courant dans un circuit RL, puis un circuit LC idéal, traités à part sous la notion « Dipôle RL ».*
+
+      Le but de cette partie est d'étudier la technique de modulation d'amplitude afin de transmettre une onde sonore audible de fréquence $f$.
+
+      On réalise le montage de modulation d'amplitude schématisé sur la figure 3. On applique respectivement aux entrées $E_1$ et $E_2$ du circuit multiplieur $X$ :
+      - la tension $u(t) = U_0 + S_m\cos(2\pi f t)$ constituée d'une composante continue $U_0$ et de la tension $S(t) = S_m\cos(2\pi f t)$ correspondant à l'onde sonore qu'on désire transmettre.
+      - la tension porteuse $p(t) = P_m.\cos(2\pi F t)$ de fréquence $F$.
+
+      A la sortie du multiplieur, on visualise à l'aide d'un dispositif adéquat l'évolution temporelle de la tension de sortie $u_S(t) = k.u(t).p(t)$, avec $k$ constante relative au multiplieur. On obtient alors le graphique de la figure 4. On peut écrire la tension $u_S(t)$ sous la forme :
+
+      $$u_S(t) = A.\left(1 + m.\cos(2\pi f t)\right).\cos(2\pi F t)$$
+
+      avec $A$ et $m$ des paramètres du circuit.
+
+      En s'aidant du graphique :
+
+      **Figure 3 (schéma, décrite depuis l'image, p. 5) :** le multiplieur est un rectangle marqué « X », avec deux entrées à gauche : « $E_1$ » (fil du haut) et « $E_2$ » (fil du bas), et une sortie « S » à droite. À gauche, une flèche verticale étiquetée « $u(t)$ » entre le fil du bas (masse) et l'entrée $E_1$ ; une flèche verticale étiquetée « $p(t)$ » monte vers l'entrée $E_2$. À droite, une flèche verticale étiquetée « $u_S(t)$ » repère la tension de sortie par rapport au fil du bas. Le fil du bas porte le symbole de masse (trois traits horizontaux superposés). Légende : « Figure 3 ».
+
+      **Figure 4 (courbe, re-décrite depuis l'image, mesurée au pixel, p. 5) :** $u_S\ (\text{V})$ en fonction de $t\ (\text{ms})$, sur quadrillage serré uniforme, cadre de **27 carreaux de large** et de $\pm 11$ carreaux de haut. **Ordonnée** : seuls trois niveaux sont chiffrés, « $0{,}33$ », « $0$ » et « $-0{,}33$ » ; l'écart $0 \to 0{,}33$ couvre **2 carreaux**, donc 1 carreau $= 0{,}165\ \text{V}$ et le cadre va de $-1{,}8$ à $+1{,}8\ \text{V}$. **Abscisse** : en haut du cadre, une **double flèche horizontale de calibration étiquetée « 0,10 »** s'étendant sur **exactement 2 carreaux** — donc 1 carreau $= 0{,}05\ \text{ms}$ et le cadre couvre $27 \times 0{,}05 = 1{,}35\ \text{ms}$ *(rôle : étalon de temps ; ce n'est pas une flèche de période)*.
+
+      Le signal est une oscillation rapide (porteuse) dont l'amplitude est modulée par une enveloppe lente. **L'enveloppe fait deux périodes complètes et un quart dans le cadre** — et non une seule : de gauche à droite on lit un **maximum au bord gauche ($t \simeq 0$)**, un **minimum vers $t \simeq 0{,}30\ \text{ms}$**, un **maximum vers $t \simeq 0{,}60\ \text{ms}$** (donc au voisinage du milieu du cadre), un **minimum vers $t \simeq 0{,}90\ \text{ms}$**, un **maximum vers $t \simeq 1{,}20\ \text{ms}$**, puis une décroissance jusqu'au bord droit.
+
+      Lectures fermes (mesure au pixel) :
+      - **porteuse** : une oscillation rapide par carreau exactement (13 crêtes relevées sur 12 carreaux consécutifs) → $T = 0{,}05\ \text{ms}$, soit $F = \mathbf{2{,}0\cdot10^{4}\ \text{Hz}} = 20\ \text{kHz}$ ;
+      - **enveloppe** : minima consécutifs distants de **12 carreaux** → $T_{env} = 0{,}60\ \text{ms}$, soit $f = \mathbf{1{,}7\cdot10^{3}\ \text{Hz}}$ environ ($1/0{,}60\ \text{ms} = 1{,}67\ \text{kHz}$) — bien dans le domaine audible, et $F/f = 12 \ge 10$ ;
+      - **amplitudes** : aux maxima d'enveloppe les crêtes culminent à $\approx 9{,}7$ carreaux, soit $U_{max} \simeq \mathbf{1{,}6\ \text{V}}$ ; aux minima d'enveloppe elles atteignent $\approx 2{,}4$ carreaux, soit $U_{min} \simeq \mathbf{0{,}4\ \text{V}}$ — donc **un peu au-dessus de la ligne chiffrée $0{,}33$, sans s'y poser**. D'où $A = \frac{U_{max}+U_{min}}{2} = 1{,}0\ \text{V}$ et $m = \frac{U_{max}-U_{min}}{U_{max}+U_{min}} = \frac{1{,}2}{2{,}0} = 0{,}60 < 1$ : modulation de bonne qualité. *(La lecture concurrente $U_{max}=1{,}65$ / $U_{min}=0{,}33$, c.-à-d. 10 et 2 carreaux pile, est écartée par la mesure : les crêtes tombent à $9{,}7$ et $2{,}4$ carreaux, ce qui ne laisse d'ambiguïté ni sur $A$ ni sur $m$.)*
+
+      Légende : « Figure 4 » (cartouche en bas à gauche).
+    questions:
+      - id: q1
+        part: "2- Modulation d'amplitude"
+        stem: |-
+          **1-** (0,5 pt) Déterminer la fréquence $F$ de la porteuse et la fréquence $f$ de l'onde sonore.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux échelles de temps cohabitent dans la figure 4 — exactement la distinction du rung 3 entre l'oscillation rapide (la porteuse, $F$) et l'enveloppe lente (le signal sonore, $f$). Ici aucune des deux périodes ne se lit directement sur un axe gradué en temps : seule une double flèche de calibration (« $0{,}10$ » sur $2$ carreaux) donne l'échelle, et il faut compter des motifs (crêtes, extrema) sur un nombre de carreaux connu pour en déduire chaque période.
+
+          **L'échelle.** La calibration donne $2$ carreaux $=0{,}10\ \text{ms}$, donc $1$ carreau $=0{,}05\ \text{ms}$.
+
+          **La porteuse.** $13$ crêtes sur $12$ carreaux consécutifs, c'est-à-dire une oscillation complète par carreau exactement :
+
+          $$T = 1\ \text{carreau} = 0{,}05\ \text{ms} = 0{,}05\times10^{-3}\ \text{s}$$
+
+          $$F = \frac1T = \frac{1}{0{,}05\times10^{-3}}$$
+
+          $$\boxed{F = 2{,}0\times10^{4}\ \text{Hz} = 20\ \text{kHz}}$$
+
+          **L'onde sonore (l'enveloppe).** Minima consécutifs distants de $12$ carreaux :
+
+          $$T_{env} = 12\times0{,}05 = 0{,}60\ \text{ms} = 0{,}60\times10^{-3}\ \text{s}$$
+
+          $$f = \frac{1}{T_{env}} = \frac{1}{0{,}60\times10^{-3}}$$
+
+          $$\boxed{f \approx 1{,}7\times10^{3}\ \text{Hz} = 1{,}7\ \text{kHz}}$$
+
+          **Le contrôle qui rassure.** $f\approx1{,}7\ \text{kHz}$ tombe bien dans le domaine audible annoncé par l'énoncé (« onde sonore audible de fréquence $f$ »), et $F/f\approx12$ : la porteuse oscille bien plus vite que le signal (condition 1 du rung 3, $f_p\gg f_{signal}$) — cohérent avec le fait que l'enveloppe se dessine nettement sur la figure 4.
+
+          **Le piège de cette question.** Compter une distance entre un extremum de bord et l'extremum voisin sans vérifier qu'il s'agit bien de deux extrema de MÊME type consécutifs (ici deux minima) — l'énoncé précise lui-même que l'enveloppe fait deux périodes et un quart dans le cadre, donc un comptage naïf sur un intervalle mal choisi ne donne pas une période entière. Deuxième piège : confondre la double flèche de calibration (« $0{,}10$ » sur $2$ carreaux) avec une flèche de période — l'énoncé le précise explicitement, ce n'en est pas une, c'est un simple étalon de longueur.
+        steps:
+          - math: '2\ \text{carreaux} = 0{,}10\ \text{ms} \implies 1\ \text{carreau} = 0{,}05\ \text{ms}'
+            note: "Etalon de calibration de la figure 4 (double fleche horizontale, PAS une periode)."
+          - math: 'T = 1\ \text{carreau} = 0{,}05\ \text{ms} \implies F = \frac{1}{0{,}05\times10^{-3}}'
+            note: "Porteuse : une oscillation complete par carreau (13 cretes sur 12 carreaux)."
+          - math: '\boxed{F = 2{,}0\times10^{4}\ \text{Hz} = 20\ \text{kHz}}'
+            note: "Frequence de la porteuse."
+          - math: 'T_{env} = 12\times0{,}05\ \text{ms} = 0{,}60\ \text{ms} \implies f = \frac{1}{0{,}60\times10^{-3}}'
+            note: "Enveloppe : minima consecutifs distants de 12 carreaux (rung 3)."
+          - math: '\boxed{f \approx 1{,}7\times10^{3}\ \text{Hz} = 1{,}7\ \text{kHz}}'
+            note: "Frequence de l'onde sonore, bien dans le domaine audible."
+      - id: q2
+        stem: |-
+          **2-** (0,75 pt) Déterminer la valeur de $A$ et celle de $m$. Conclure à propos de la qualité de la modulation.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'enveloppe supérieure de $u_S(t)$ vaut $A(1+m)$ à ses maxima et $A(1-m)$ à ses minima — la lecture directe de la forme canonique donnée dans l'énoncé, prise à $\cos(2\pi ft)=+1$ puis $-1$ (rung 3). La somme des deux extrema élimine $m$ et ne laisse que $A$ ; leur différence sur leur somme élimine $A$ et ne laisse que $m$.
+
+          **La lecture.** Aux maxima d'enveloppe, les crêtes culminent à $\approx9{,}7$ carreaux ($1$ carreau $=0{,}165\ \text{V}$, calibration verticale de la figure 4) :
+
+          $$U_{max} \approx 9{,}7\times0{,}165 \approx 1{,}6\ \text{V}$$
+
+          Aux minima d'enveloppe, elles atteignent $\approx2{,}4$ carreaux :
+
+          $$U_{min} \approx 2{,}4\times0{,}165 \approx 0{,}4\ \text{V}$$
+
+          **$A$ et $m$.**
+
+          $$A = \frac{U_{max}+U_{min}}{2} = \frac{1{,}6+0{,}4}{2}$$
+
+          $$\boxed{A = 1{,}0\ \text{V}}$$
+
+          $$m = \frac{U_{max}-U_{min}}{U_{max}+U_{min}} = \frac{1{,}6-0{,}4}{1{,}6+0{,}4} = \frac{1{,}2}{2{,}0}$$
+
+          $$\boxed{m = 0{,}60}$$
+
+          **Conclure sur la qualité de la modulation.** Le rung 3 fixe DEUX conditions pour une bonne modulation, pas une seule : $f_p\gg f_{signal}$ ET $m<1$. La première est vérifiée à la question précédente ($F/f\approx12$) ; ici, $m=0{,}60<1$ : la seconde l'est aussi.
+
+          $$\boxed{m=0{,}60<1 \text{ et } F/f\approx12\gg1 \implies \text{modulation de bonne qualite}}$$
+
+          **Le contrôle qui rassure.** $U_{min}=0{,}4\ \text{V}$ reste nettement au-dessus de zéro — cohérent avec $m<1$ : si $m$ avait atteint ou dépassé $1$, l'enveloppe inférieure aurait touché ou franchi l'axe $u_S=0$, signe visible de surmodulation (rung 3) ; ce n'est pas le cas ici.
+
+          **Le piège de cette question.** Lire les extrema sur les lignes chiffrées de la figure 4 ($0{,}33\ \text{V}$ et $-0{,}33\ \text{V}$, soit $2$ carreaux) plutôt qu'à l'endroit RÉEL où les crêtes culminent ($9{,}7$ et $2{,}4$ carreaux) — les lignes chiffrées ne marquent que des repères d'axe, pas les crêtes de la porteuse elle-même ; s'y arrêter donnerait $U_{max}=0{,}33\ \text{V}$, une valeur bien trop petite qui ne correspond à aucune crête réelle du tracé. Deuxième piège : oublier la seconde condition ($f_p\gg f_{signal}$) et conclure uniquement sur $m<1$ — les deux conditions du rung 3 sont nécessaires ensemble, ni l'une ni l'autre ne suffit seule.
+        steps:
+          - math: 'U_{max} \approx 9{,}7\times0{,}165 \approx 1{,}6\ \text{V} \qquad U_{min} \approx 2{,}4\times0{,}165 \approx 0{,}4\ \text{V}'
+            note: "Lecture des cretes de porteuse aux extrema d'enveloppe (1 carreau = 0,165 V)."
+          - math: 'A = \frac{U_{max}+U_{min}}{2} = \frac{1{,}6+0{,}4}{2}'
+            note: "Somme des extrema : elimine m (rung 3)."
+          - math: '\boxed{A = 1{,}0\ \text{V}}'
+            note: "Amplitude A."
+          - math: 'm = \frac{U_{max}-U_{min}}{U_{max}+U_{min}} = \frac{1{,}2}{2{,}0}'
+            note: "Rapport des extrema : elimine A (rung 3)."
+          - math: '\boxed{m = 0{,}60 < 1}'
+            note: "Taux de modulation."
+          - math: '\boxed{m<1 \text{ et } F/f \approx 12 \gg 1 \implies \text{bonne modulation}}'
+            note: "Les deux conditions du rung 3 sont verifiees."

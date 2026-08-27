@@ -422,6 +422,16 @@ Place maintenant tout le chapitre au service d'un vrai problème d'examen. Le pr
 
 Dans les deux cas, la consigne est la même : **cherche d'abord, seul, avant de dérouler le raisonnement.** C'est en butant puis en te reprenant que la méthode s'installe.
 
+### Ce que ces exercices empruntent à d'autres chapitres
+
+Un sujet de bac ne s'arrête pas aux frontières d'une leçon. Les problèmes ci-dessous, comme la plupart des annales de ce chapitre, mobilisent trois outils que **cette leçon n'enseigne pas** — ils sont établis ailleurs, et c'est là qu'il faut aller les chercher si l'un d'eux te manque. Les voici nommés, pour que tu ne croies pas les avoir oubliés :
+
+- **Le point d'inflexion** (l'endroit où la courbe change de concavité, repéré par un changement de signe de $f''$). Il est construit dans « **Dérivabilité et étude de fonctions** », qui lui consacre un rung entier et un checkpoint. Cette leçon-ci n'établit la convexité de $\exp$ qu'au R5, comme un fait, sans donner le critère général.
+- **L'intégration par parties**, dès qu'un sujet demande une primitive ou une aire du type $\int x\,e^{-x}\,dx$. Elle vit dans « **Calcul intégral** ». Le R6 d'ici ne donne que les deux primitives immédiates, $e^x$ et $u'e^u$ — utiles, mais insuffisantes dès qu'un facteur polynomial s'invite.
+- **Le théorème de la limite monotone** (une suite décroissante et minorée converge), quand le volet « suites » d'un problème arrive. Il est dans « **Suites numériques** ».
+
+Aucun de ces trois n'est un manque de ce chapitre : ce sont des outils transversaux, et un problème d'analyse en assemble toujours plusieurs. Savoir **d'où vient** chaque geste est la moitié du travail de révision.
+
 ### Exercice de type bac — session normale 2022
 
 [[exercise:r-bac]]
