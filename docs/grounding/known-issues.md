@@ -535,6 +535,52 @@ lui-même ne couvre pas toutes les sessions (plusieurs sont marquées
 **Severity.** sev-2 — l'affichage est faux sur une épreuve, silencieusement,
 et il le serait davantage après conversion. Aucun risque de production.
 
+### K-7. Un `entry_id` de banque n'est unique que dans son propre fichier
+
+**Découvert le 2026-08-27**, en auditant l'assembleur d'épreuves. **Mesuré
+sur le corpus**, pas supposé. Le symptôme qui l'a révélé est corrigé ; la
+propriété, elle, reste vraie et reste un piège.
+
+**Le fait.** `bank.yaml` numérote ses entrées par la POSITION de l'exercice
+sur la copie du bac : `bk-2018-n-x1` veut dire « exercice 1 du bac 2018,
+session normale ». Deux choses en découlent, toutes deux voulues :
+
+- deux filières différentes ont chacune leur exercice 1 la même année ;
+- **un exercice découpé entre plusieurs notions garde le même identifiant
+  dans chacune** — c'est le protocole de répartition (une cross-list ne
+  devient jamais une seconde entrée, sans quoi le barème serait compté deux
+  fois et l'épreuve dépasserait 20).
+
+Au 2026-08-27 : **42 identifiants sont portés par plusieurs entrées.**
+`bk-2018-n-x1` vit dans quatre banques (`pc/electrolyse`,
+`pc/esterification-hydrolyse`, `pc/reactions-acido-basiques`,
+`maths/geometrie-espace`) ; `bk-2023-n-x1` dans six.
+
+**Ce que ça a déjà cassé.** `useExerciseRevealIds` lisait `item_id` seul et
+renvoyait un Set plat. Révéler une question de `bk-2018-n-x1` dans
+`pc/electrolyse` allumait donc « fait » sur la même question dans les trois
+autres banques — un tick fabriqué sur un exercice jamais ouvert, c'est-à-dire
+exactement ce que l'état honnête interdit. **Corrigé** : la clé porte
+maintenant la notion (`revealKey` dans `lib/student-state.ts`).
+
+**Pourquoi ça reste ouvert.** Le correctif ferme UN consommateur. La
+propriété — « `entry_id` n'identifie rien tout seul » — vaut pour tout ce qui
+viendra ensuite : reprise d'exercice, favoris, statistiques par exercice,
+mode examen persistant, export. Le journal porte déjà `notion_id` à côté de
+`item_id` ; **la règle est donc : toute lecture qui remonte à un exercice
+lit les deux colonnes, jamais `item_id` seul.**
+
+**Ce qu'il ne faut PAS faire** : rendre les identifiants globalement uniques.
+Ils encodent une position sur une copie réelle, et c'est ce qui permet à
+l'assembleur de regrouper une épreuve. Les préfixer par la notion casserait
+le lien avec le sujet et n'apporterait rien que la clé composite n'apporte
+déjà.
+
+**Piste de garde** : `validate-content` pourrait recenser les identifiants
+partagés et refuser qu'un même identifiant porte deux entrées de la MÊME
+filière-année-session dans la même notion (le seul cas réellement fautif).
+Non fait — la vraie défense est la règle de lecture ci-dessus.
+
 ### K-1. `get_user_weak_areas` function references missing columns
 **Source.** `backend/supabase/migrations/004_exam_analytics_and_sync.sql`,
 lines 45–74.

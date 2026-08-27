@@ -109,6 +109,25 @@ the trailing chapter like any other. No schema change, no new event kinds.
 The learner-model's « exercé » state picks bank reveals up automatically
 (it keys on kind, not id shape).
 
+**`entry_id` is unique WITHIN ITS FILE ONLY — never read it alone.** The id
+encodes the exercise's position on the real paper (`bk-2018-n-x1` = exercise
+1 of the 2018 normale session), so two filières share it the same year, and —
+by the répartition rule of §2 — an exercise split across several notions
+keeps the SAME id in each. Measured 2026-08-27: 42 ids are carried by more
+than one entry; `bk-2018-n-x1` lives in four banks, `bk-2023-n-x1` in six.
+
+Every journal row carries `notion_id` beside `item_id`, and any read that
+resolves back to an exercise MUST use both — `revealKey(notionId, itemId)`
+in `lib/student-state.ts` is the canonical key. Reading `item_id` alone
+lights up exercises the student never opened: that is a fabricated tick, and
+§3.4's honest-state rule forbids it. This bit the « fait » state exactly
+once, on 2026-08-27; see `docs/grounding/known-issues.md` **K-7**.
+
+Do not "fix" this by making ids globally unique. They encode a position on a
+real paper, which is what lets `lib/examens.ts` group an exam; prefixing them
+would sever that link and buy nothing the composite key does not already
+give.
+
 ## 5. Validator + harness extensions (same commit as the renderer)
 
 - `validate-content.mjs`: parse `bank.yaml` when present — schema check,
