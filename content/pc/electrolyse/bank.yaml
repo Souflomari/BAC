@@ -52,8 +52,20 @@
 # de Faraday posée dans l'AUTRE SENS : 2019 remonte de la masse déposée vers
 # la durée, 2023 R descend du couple $(I, \Delta t)$ vers la masse, et exige
 # d'abord la relation LITTÉRALE. Les deux entrées se complètent donc au lieu
-# de se répéter. La banque compte 4 entrées distinctes en pratique (la rail
-# affichera « 4 sujets »).
+# de se répéter. Le cinquième sujet, 2022 R Exercice 1 (§1, électrolyse d'une
+# solution aqueuse de chlorure d'or (III) pour dorer une plaque de cuivre),
+# vient de docs/sujets/_incoming/pc-spc-2022-r.md — vérifié par re-fetch
+# indépendant + re-dérivation (vérificateur adversarial, 2026-08-22), pas
+# encore reversé dans le fichier de notion. Aucun recoupement avec les
+# quatre entrées ci-dessus : couple $Au^{3+}/Au$ inédit, facteur $3$ (et non
+# $2$) à la cathode, et surtout une question 1 sans AUCUNE figure fournie —
+# c'est la seule entrée de cette banque où le schéma complet du montage est
+# à construire par l'élève depuis le texte seul, l'anode s'y déduisant des
+# deux observations chimiques (dépôt d'or, dégagement de dichlore) plutôt
+# que d'une polarité déjà dessinée sur un dispositif donné. Sa Partie 2,
+# indépendante (étude d'une solution aqueuse de méthylamine), est transcrite
+# sous content/pc/reactions-acido-basiques, entrée bk-2022-r-x1b. La banque
+# compte 5 entrées distinctes en pratique (la rail affichera « 5 sujets »).
 #
 # SCOPE NOTE (technique mobilisée au-delà de ce que la leçon montre
 # explicitement pas à pas — pontée au point d'usage dans le raisonnement de
@@ -521,3 +533,131 @@ entries:
             note: "Numerateur et denominateur calcules separement, pour garder le controle des puissances de dix."
           - math: '\boxed{m(Zn) \approx 0{,}100\ \text{g}}'
             note: "Masse de zinc deposee a la cathode (electrode A) en une heure."
+
+  # ── bk-2022-r-x1 — 2022 R, Exercice 1 (§1) : électrolyse du chlorure d'or (III) ──
+  # SEULE entrée de cette banque sans figure fournie : la question 1 demande
+  # de CONSTRUIRE le schéma (pas de le lire), et l'anode s'y déduit des deux
+  # observations chimiques, pas d'une polarité déjà dessinée. Voir l'en-tête
+  # du fichier pour le recoupement (aucun) avec les quatre autres entrées.
+  # Sa Partie 2, indépendante, vit sous content/pc/reactions-acido-basiques,
+  # entrée bk-2022-r-x1b (étude d'une solution aqueuse de méthylamine).
+  - id: bk-2022-r-x1
+    title: "Électrolyse d'une solution de chlorure d'or (III) : schéma du montage sans figure, anode, et durée d'un dépôt d'or par la loi de Faraday"
+    source:
+      year: 2022
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — §1 : électrolyse d'une solution aqueuse de chlorure d'or (III)"
+    bareme_total: 2.25
+    duration_min: 20
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool
+        https://www.alloschool.com/element/136624, scan
+        course-422/upload-84519, pages 2 et 3 sur 8 (Exercice 1 — §1,
+        électrolyse d'une solution aqueuse de chlorure d'or (III) pour dorer
+        une plaque de cuivre ; barème de la partie recompté question par
+        question sur l'énoncé source : 0,75 + 0,75 + 0,75 = 2,25 pt, sur les
+        7 pt de l'exercice complet, dont le §2 — étude d'une solution
+        aqueuse de méthylamine — est indépendant et transcrit sous
+        content/pc/reactions-acido-basiques, entrée bk-2022-r-x1b). Source :
+        docs/sujets/_incoming/pc-spc-2022-r.md, statut « vérifié — re-fetch
+        indépendant + re-dérivation (vérificateur adversarial, 2026-08-22) ».
+        Cet exercice ne porte aucune figure imprimée : le schéma du montage
+        (question 1) est intégralement à construire depuis le texte, comme
+        l'énoncé lui-même le demande ; aucune polarité de générateur n'y est
+        donnée d'avance, contrairement à bk-2019-n-x1, bk-2022-n-x1 et
+        bk-2023-r-x1 de cette même banque. Physique re-dérivée ici,
+        indépendamment des « Contrôles de cohérence » du vérificateur (qui ne
+        portent que sur le §2 de cet exercice, pas sur cette partie) :
+        $n(Au) = m(Au)/M(Au) = 0{,}031/197 \approx 1{,}57\times10^{-4}$ mol
+        $\Rightarrow n(e^-) = 3\,n(Au) \approx 4{,}72\times10^{-4}$ mol (le
+        facteur $3$ vient de la demi-équation $Au^{3+}+3e^-\rightarrow Au$,
+        pas $2$) $\Rightarrow Q = n(e^-)\,F \approx 45{,}6$ C
+        $\Rightarrow \Delta t = Q/I \approx 911$ s $\approx 15{,}2\ \text{min}$.
+        Aucune valeur cible n'était donnée pour $\Delta t$ dans la source
+        (contrairement à $\tau$, $Q_{r,\text{éq}}$, $pK_A$, $V_{aE}$ et
+        $\text{pH}_E$ du §2, tous explicitement recoupés par le
+        vérificateur) : ce contre-calcul est donc une dérivation neuve, pas
+        une vérification d'une valeur déjà annoncée. Aucun recoupement avec
+        les autres entrées de cette banque : le couple $Au^{3+}/Au$, le
+        facteur $3$, et une question de schéma sans aucune figure imprimée
+        sont inédits dans le corpus de la notion (voir l'en-tête du fichier).
+    intro: |-
+      **Électrolyse d'une solution aqueuse de chlorure d'or (III) (examen national, session de rattrapage 2022, Exercice 1 — §1, 2,25 points).**
+
+      On étudie dans cette partie l'électrolyse d'une solution aqueuse de chlorure d'or (III) pour déposer une fine couche d'or métallique sur une plaque de cuivre.
+
+      On plonge totalement une plaque de cuivre dans une solution aqueuse de chlorure d'or (III) $\left(\text{Au}^{3+}_{(aq)} + 3\,\text{Cl}^-_{(aq)}\right)$ et on la relie à l'un des pôles d'un générateur électrique $G$, puis on relie l'autre pôle de $G$ à une électrode de graphite immergée dans la même solution.
+
+      Le générateur débite un courant électrique d'intensité constante $I = 50\ \text{mA}$, pendant une durée $\Delta t$.
+
+      Au cours de cette électrolyse, on observe un dépôt métallique d'or sur la plaque du cuivre et un dégagement gazeux de dichlore $\text{Cl}_{2(g)}$ au niveau de l'électrode de graphite.
+
+      **Données :** les couples mis en jeu : $\text{Au}^{3+}_{(aq)}/\text{Au}_{(s)}$ et $\text{Cl}_{2(g)}/\text{Cl}^-_{(aq)}$ ; la masse molaire de l'or : $M(\text{Au}) = 197\ \text{g.mol}^{-1}$ ; $1F = 9{,}65\cdot10^{4}\ \text{C.mol}^{-1}$.
+
+      *(Aucune figure dans cette partie ; énoncé intégralement textuel — c'est à toi de construire le schéma demandé à la question 1.)*
+
+      *La Partie 2 de cet exercice, indépendante, étudie une solution aqueuse de méthylamine : elle vit sous la notion « Réactions acido-basiques », entrée bk-2022-r-x1b.*
+    questions:
+      - id: q1
+        stem: |-
+          **(0,75 pt)** Faire un schéma du dispositif expérimental utilisé pour cette électrolyse, en précisant l'anode et le sens du courant dans le circuit extérieur de l'électrolyseur.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Cette question ne fournit ni figure ni polarité de générateur : contrairement aux autres sujets de cette banque (bk-2018-n-x1, bk-2019-n-x1, bk-2022-n-x1, bk-2023-r-x1), où le schéma ou les bornes $+$/$-$ sont déjà donnés, ici c'est à toi de le construire à partir du texte seul, et d'en tirer l'anode et le sens du courant — jamais l'inverse.
+
+          **Le seul point de départ solide : ce qu'on observe, pas une polarité supposée.** Le rung 1 le rappelle : anode et cathode se distinguent par le mécanisme, oxydation ou réduction, jamais par une position sur le papier. L'énoncé donne deux observations : un dépôt métallique d'or sur la plaque de cuivre, et un dégagement gazeux de dichlore à l'électrode de graphite. Un dépôt de métal à partir d'un ion en solution, c'est cet ion qui capte des électrons pour redevenir un atome métal — une réduction. La plaque de cuivre est donc la **cathode**. Un dégagement de dichlore à partir des ions chlorure, c'est $\text{Cl}^-$ qui cède des électrons — une oxydation. L'électrode de graphite est donc l'**anode**.
+
+          **La polarité, ensuite (rung 2).** Dans une cellule d'électrolyse, c'est le générateur qui impose la polarité, et elle est l'exact opposé de la pile : l'anode est reliée à la borne $+$, la cathode à la borne $-$. L'électrode de graphite (anode) est donc reliée à la borne $+$ du générateur $G$ ; la plaque de cuivre (cathode), à la borne $-$.
+
+          **Le sens du courant dans le circuit extérieur.** Le courant conventionnel sort du générateur par sa borne $+$ et rejoint, par le fil, l'électrode qui y est reliée — ici l'électrode de graphite (l'anode). De l'autre côté, il repart de la plaque de cuivre par son propre fil, pour revenir au générateur par la borne $-$, refermant la boucle. (La question ne porte que sur le circuit extérieur ; la conduction à l'intérieur de la cellule, par les ions de la solution, n'est pas demandée ici.)
+
+          **Ce qu'il faut faire apparaître sur le schéma.** Un bécher contenant la solution $\text{Au}^{3+}_{(aq)}+3\,\text{Cl}^-_{(aq)}$ ; la plaque de cuivre plongée d'un côté, l'électrode de graphite de l'autre ; chacune reliée par un fil au générateur $G$ ; les signes $+$ et $-$ portés aux bornes correspondantes (graphite = $+$, cuivre = $-$) ; une flèche de courant partant de la borne $+$ vers l'électrode de graphite, une autre partant de la plaque de cuivre vers la borne $-$ ; l'étiquette « anode » sous l'électrode de graphite.
+
+          **Le piège de cette question.** Ne pars jamais d'une polarité devinée pour en déduire les électrodes : c'est l'inverse. Aucune polarité n'est donnée dans l'énoncé — c'est le mécanisme observé (dépôt de métal = réduction, dégagement de $\text{Cl}_2$ = oxydation) qui fixe l'anode et la cathode ; la polarité n'en est qu'une conséquence, via le rung 2. Deviner une borne au hasard avant de raisonner sur les observations, c'est courir une chance sur deux de se tromper.
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Écrire l'équation de la réaction chimique ayant lieu au niveau de chaque électrode ainsi que l'équation bilan.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Même geste qu'au rung 1 : une demi-équation par électrode, dans le sens que le mécanisme impose (question précédente), puis la somme équilibrée en électrons.
+
+          À l'anode (électrode de graphite), les ions chlorure s'oxydent en dichlore. À la cathode (plaque de cuivre), les ions or (III) se réduisent en or métal.
+
+          Les deux demi-équations n'échangent pas le même nombre d'électrons — $2$ pour le chlore, $3$ pour l'or — donc, contrairement à bk-2018-n-x1 ou bk-2022-n-x1 de cette même banque (où les deux demi-équations s'annulaient directement), elles ne se somment pas telles quelles : il faut multiplier chacune pour aligner le nombre d'électrons échangés, au plus petit commun multiple de $2$ et $3$, soit $6$.
+        steps:
+          - math: '2\,Cl^-_{(aq)} \rightarrow Cl_{2(g)} + 2\,e^-'
+            note: "A l'anode (electrode de graphite) : oxydation des ions chlorure."
+          - math: 'Au^{3+}_{(aq)} + 3\,e^- \rightarrow Au_{(s)}'
+            note: "A la cathode (plaque de cuivre) : reduction des ions or (III), depot d'or metal."
+          - math: '\left(2\,Cl^-_{(aq)} \rightarrow Cl_{2(g)} + 2\,e^-\right)\times 3 \qquad \left(Au^{3+}_{(aq)} + 3\,e^- \rightarrow Au_{(s)}\right)\times 2'
+            note: "PPCM(2,3) = 6 electrons : on multiplie chaque demi-equation pour aligner le nombre d'electrons echanges avant de sommer."
+          - math: '\boxed{2\,Au^{3+}_{(aq)} + 6\,Cl^-_{(aq)} \rightarrow 2\,Au_{(s)} + 3\,Cl_{2(g)}}'
+            note: "Bilan : les 6 electrons de chaque cote s'eliminent."
+      - id: q3
+        stem: |-
+          **(0,75 pt)** Trouver, en minutes (min), la durée $\Delta t$ nécessaire au dépôt d'une masse d'or $m(\text{Au}) = 0{,}031\ \text{g}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On remonte la chaîne du rung 4 : masse déposée $\to$ quantité de matière d'or $\to$ quantité d'électrons (via le coefficient de la demi-équation de la **cathode**, question précédente) $\to$ quantité d'électricité (loi de Faraday) $\to$ durée, à intensité constante. Le facteur qui divise ici est **3**, pas $2$ comme dans les exemples travaillés du cours (rung 4, dépôt de zinc) ou dans les autres entrées de cette banque (bromure de plomb, iodure de zinc, bromure de zinc) : il vient directement de $Au^{3+}+3\,e^-\rightarrow Au$, la demi-équation de la cathode établie à la question précédente — jamais d'une constante à mémoriser.
+        steps:
+          - math: 'n(Au) = \frac{m(Au)}{M(Au)} = \frac{0{,}031}{197}'
+            note: "La masse d'or deposee devient une quantite de matiere."
+          - math: '\boxed{n(Au) \approx 1{,}57\times10^{-4}\ \text{mol}}'
+            note: "Application numerique."
+          - math: 'n(e^-) = 3\,n(Au) \approx 3\times1{,}57\times10^{-4}'
+            note: "Chaque atome d'or depose a consomme 3 electrons (Au3+ + 3e- -> Au, question precedente) : le facteur est 3, pas 2 comme dans les autres entrees de cette banque."
+          - math: '\boxed{n(e^-) \approx 4{,}72\times10^{-4}\ \text{mol}}'
+            note: "Application numerique."
+          - math: 'Q = n(e^-)\,F \approx 4{,}72\times10^{-4}\times 9{,}65\times10^{4}'
+            note: "Quantite d'electricite, par la constante de Faraday."
+          - math: '\boxed{Q \approx 45{,}6\ \text{C}}'
+            note: "Application numerique."
+          - math: '\Delta t = \frac{Q}{I} = \frac{45{,}6}{0{,}050}'
+            note: "On isole Delta t dans Q = I.Delta t (intensite constante I = 50 mA = 0,050 A, donnee dans l'enonce)."
+          - math: '\boxed{\Delta t \approx 911\ \text{s}}'
+            note: "Duree en secondes."
+          - math: '\Delta t \approx \frac{911}{60}'
+            note: "Conversion en minutes, demandee par l'enonce."
+          - math: '\boxed{\Delta t \approx 15{,}2\ \text{min}}'
+            note: "Soit environ 15 min 11 s : duree courte, coherente avec une fine couche d'or et un courant faible de 50 mA."

@@ -13,9 +13,9 @@
 # dans les énoncés ; conventions KaTeX (block scalars pour la prose, KaTeX brut
 # entre apostrophes simples dans steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue B0) : la banque compte désormais ONZE sujets
-# « vérifié » — 2018 N, 2019 N, 2020 N, 2021 N, 2021 R, 2022 N, 2023 N, 2023 R,
-# 2024 N, 2024 R, 2025 N. Le 2021 R (bk-2021-r-x1, ajouté le 2026-08-23) est la PREMIÈRE
+# NOTE ÉDITORIALE (pour la revue B0) : la banque compte désormais DOUZE sujets
+# « vérifié » — 2018 N, 2019 N, 2020 N, 2021 N, 2021 R, 2022 N, 2022 R, 2023 N,
+# 2023 R, 2024 N, 2024 R, 2025 N. Le 2021 R (bk-2021-r-x1, ajouté le 2026-08-23) est la PREMIÈRE
 # entrée de session rattrapage de cette banque ; sa Partie 2, indépendante (pile
 # nickel-argent), est transcrite sous content/pc/piles (bk-2021-r-x1b). Il porte
 # une SCOPE NOTE en trois points — la loi de dilution non couverte nommément par
@@ -58,6 +58,22 @@
 # fonction de pK_A1 et pK_A2) demande une technique — un résultat pH fermé pour
 # une réaction entre deux couples — qu'aucun rung n'établit nommément ; voir le
 # commentaire au-dessus de cette entrée pour le détail et l'arbitrage demandé.
+#
+# Le 2022 R (bk-2022-r-x1b, ajouté le 2026-08-27) est la QUATRIÈME entrée de
+# rattrapage ; c'est le §2 de l'exercice 1 (étude d'une solution aqueuse de
+# méthylamine : taux d'avancement, quotient de réaction à l'équilibre, pK_A,
+# dosage pH-métrique, indicateur coloré, espèce prédominante ; 4,75 pt), son
+# §1 — indépendant — relevant de content/pc/electrolyse (chlorure d'or (III),
+# bk-2022-r-x1). Elle porte un CROSS-LIST CLASSEMENT honoré sans double
+# entrée (les questions 1-3 à 1-5 — tau et Q_r,éq — appartiennent nommément à
+# la notion « État d'équilibre d'un système chimique », nommée et renvoyée
+# par son nom lisible dans le raisonnement, jamais dupliquée en entrée
+# séparée), une SCOPE NOTE sur la question 2-5 (pH calculé depuis un excès de
+# titrant APRÈS l'équivalence, technique refaite au point d'usage, absente de
+# tout rung), et un FLAG DE JUMELAGE non tranché : c'est la QUATRIÈME « base
+# faible dosée par un acide fort » de la banque, et un quasi jumeau numérique
+# de bk-2020-n-x1 (mêmes volumes, mêmes concentrations) — voir le commentaire
+# au-dessus de l'entrée pour ce qui la distingue malgré tout des trois autres.
 
 notion: pc/reactions-acido-basiques
 
@@ -954,6 +970,293 @@ entries:
             note: "Reaction totale (rung 9) ; on utilise Ca Va = Cb VbE (question 7)."
           - math: '\%\,\text{C}_2\text{H}_5\text{COOH} = \dfrac{n(\text{C}_2\text{H}_5\text{COOH})}{n(\text{C}_2\text{H}_5\text{COOH}) + n(\text{C}_2\text{H}_5\text{COO}^-)}\times100 = \dfrac{V_{bE}-V_b}{V_{bE}}\times100 = \dfrac{20-5}{20}\times100 = 75\ \%'
             note: "Le facteur Cb se simplifie ; il reste un rapport de volumes (rung 8, definition du pourcentage)."
+
+  # ── bk-2022-r-x1b — 2022 R, Exercice 1 (§2) : solution aqueuse de methylamine ──
+  # Sa Partie 1, indépendante (électrolyse du chlorure d'or (III)), vit sous
+  # content/pc/electrolyse, entrée bk-2022-r-x1.
+  #
+  # CROSS-LIST CLASSEMENT (honoré ici, PAS dupliqué en entrée séparée). Le
+  # classement de docs/sujets/_incoming/pc-spc-2022-r.md pose un cross-list
+  # etat-equilibre sur les questions 1-3 à 1-5 (taux d'avancement final et
+  # quotient de réaction à l'équilibre) : ces deux notions — tau = x_f/x_max
+  # et Q_r,eq — appartiennent nommément à la leçon « État d'équilibre d'un
+  # système chimique » (rungs 2 à 4 là-bas), pas à celle-ci. Aucune entrée
+  # n'est créée dans etat-equilibre/bank.yaml (ce serait un double comptage
+  # du barème) : le domaine est nommé et la leçon renvoyée par son nom
+  # lisible dans le raisonnement de chacune des trois questions concernées.
+  #
+  # FLAG DE JUMELAGE (non tranché ici — précédent : electrolyse 2023-r vs
+  # 2019-n ; reactions-acido-basiques bk-2024-r-x1b vs bk-2020-n-x1 et
+  # bk-2023-r-x1b). Cette entrée est la QUATRIÈME « base faible dosée par un
+  # acide fort » de la banque. Avec bk-2020-n-x1 (ammoniac), elle est un
+  # QUASI JUMEAU NUMÉRIQUE, pas seulement un air de famille : même volume
+  # titré V_b = 15 mL, même C_a = 10^-2 mol/L, même V_aE ≈ 15 mL, même
+  # C_b = 10^-2 mol/L retrouvé par le dosage, la même chaîne tau -> Q_r,eq ->
+  # pK_A (rungs 6-7 puis Q_r,eq = K_e/K_A) pour boucler sur le pK_A du couple.
+  # Trois choses distinguent malgré tout les deux entrées, et justifient de
+  # garder les deux : (1) celle-ci ouvre sur une question de cours (définir
+  # une base selon Brønsted, absente de bk-2020-n-x1) ; (2) le pH de départ
+  # (11,3 contre 10,6) et le pH_E lu au croisement des tangentes (6,5 contre
+  # ≈6, jamais chiffré explicitement dans bk-2020-n-x1) diffèrent ; (3) et
+  # surtout, la question 2-5 de cette entrée est un geste ABSENT des trois
+  # autres « base faible / acide fort » de la banque (bk-2020-n-x1,
+  # bk-2023-r-x1b, bk-2024-r-x1b) : un point APRÈS l'équivalence, où l'on
+  # calcule le pH depuis l'excès d'acide fort restant, puis le rapport de
+  # prédominance à ce pH (rung 5). bk-2024-r-x1b calcule bien un pH à partir
+  # d'un titrant résiduel (sa question 2-3), mais AVANT l'équivalence, avec
+  # le titré encore en excès — le geste symétrique, jamais réuni ailleurs
+  # dans cette banque avec celui-ci. Recommandation : garder les quatre.
+  # Arbitrage owner.
+  - id: bk-2022-r-x1b
+    title: "Solution aqueuse de méthylamine : taux d'avancement, pKA depuis le quotient de réaction, dosage pH-métrique et espèce prédominante en excès d'acide"
+    source:
+      year: 2022
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — §2 : étude d'une solution aqueuse de méthylamine"
+    bareme_total: 4.75
+    duration_min: 43
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool
+        https://www.alloschool.com/element/136624, scan
+        course-422/upload-84519, pages 2 et 3 sur 8 (Exercice 1 — §2, étude
+        d'une solution aqueuse de méthylamine : Brønsted, taux d'avancement
+        final, quotient de réaction à l'équilibre, pK_A, dosage
+        pH-métrique, indicateur coloré, espèce prédominante ; barème de la
+        partie recompté question par question sur l'énoncé source :
+        0,25+0,25+0,5+0,5+0,5 pour la section 1, puis
+        0,5+0,5+0,5+0,5+0,75 pour la section 2, soit 2,0 + 2,75 = 4,75 pt,
+        sur les 7 pt de l'exercice complet, dont le §1 — électrolyse d'une
+        solution de chlorure d'or (III) — est indépendant et transcrit sous
+        content/pc/electrolyse, entrée bk-2022-r-x1). Source :
+        docs/sujets/_incoming/pc-spc-2022-r.md, statut « vérifié — re-fetch
+        indépendant + re-dérivation (vérificateur adversarial, 2026-08-22) ».
+        La description de la figure du dosage (courbe pH = f(V_a)) est
+        reprise ici AU MOT PRÈS de la version corrigée par le vérificateur
+        (correction du cadre horizontal, arrêté à tort à « environ 22,5 mL »
+        dans une transcription antérieure alors que le bord droit tombe
+        exactement sur le trait principal 24 mL — mesure au pixel,
+        calibration confirmée ; le marqueur *(lecture à confirmer)* posé sur
+        les extrémités des deux pointillés de construction a été levé par
+        cette mesure). Contre-calcul refait ici, indépendamment des
+        « Contrôles de cohérence » du vérificateur (qui couvrent déjà
+        $\tau$, $Q_{r,\text{éq}}$, $pK_A$, $V_{aE}$ et $\text{pH}_E$, et que
+        ce contre-calcul confirme) : $\tau = [\text{HO}^-]_{eq}/C_b =
+        10^{\text{pH}-14}/C_b = 10^{-2{,}7}/10^{-2} \approx 0{,}20$ ;
+        $Q_{r,\text{éq}} = C_b\tau^2/(1-\tau) \approx 5{,}0\times10^{-4}$ ;
+        $K_A = K_e/Q_{r,\text{éq}} \approx 2{,}0\times10^{-11}$, soit
+        $pK_A \approx 10{,}7$ — la valeur annoncée par l'énoncé, retrouvée
+        au dixième près ; $C_b = C_a V_{aE}/V_b = 10^{-2}\times15{,}0/15 =
+        10^{-2}\ \text{mol.L}^{-1}$, exactement la valeur préparée en
+        section 1 (le dosage la vérifie). Le point 2-5 (ratio à
+        $V_{a1} = 20{,}4\ \text{mL}$, **au-delà** de $V_{aE} = 15{,}0\ \text{mL}$)
+        n'est couvert par AUCUN des contrôles du vérificateur : dérivation
+        neuve, faite ici pour la première fois — voir la SCOPE NOTE au
+        raisonnement de la question 2-5. $n(\text{H}_3\text{O}^+)$ en excès
+        $= C_a(V_{a1}-V_{aE}) = 10^{-2}\times5{,}4\times10^{-3} =
+        5{,}4\times10^{-5}$ mol, dilué dans $V_b+V_{a1} = 35{,}4\ \text{mL}$,
+        d'où $[\text{H}_3\text{O}^+] \approx 1{,}53\times10^{-3}\ \text{mol.L}^{-1}$
+        et $\text{pH} \approx 2{,}82$ ; avec $pK_A = 10{,}7$, le rapport
+        $[\text{CH}_3\text{-NH}_2]/[\text{CH}_3\text{-NH}_3^+] =
+        10^{\text{pH}-pK_A} \approx 1{,}3\times10^{-8}$. FLAG DE JUMELAGE
+        avec bk-2020-n-x1, bk-2023-r-x1b et bk-2024-r-x1b : voir le
+        commentaire en tête de cette entrée.
+    intro: |-
+      **Étude d'une solution aqueuse de méthylamine (examen national, session de rattrapage 2022 — Exercice 1, §2, 4,75 points).**
+
+      *La méthylamine de formule semi-développée $\text{CH}_3\text{-NH}_2$ est utilisée dans l'industrie pharmaceutique comme constituant de plusieurs produits tels que des antispasmodiques ou des anesthésiques ou comme matière première pour la fabrication des insecticides.*
+
+      Dans cette partie, on se propose d'étudier quelques propriétés d'une solution aqueuse de méthylamine.
+
+      *Le §1 de cet exercice, indépendant, étudie l'électrolyse d'une solution de chlorure d'or (III) pour dorer une plaque de cuivre : il vit sous la notion « Électrolyse », entrée bk-2022-r-x1.*
+
+      **1. Étude d'une solution aqueuse de méthylamine.** On prépare un volume $V = 1\ \text{L}$ d'une solution aqueuse $S_b$ de méthylamine de concentration $C_b = 10^{-2}\ \text{mol.L}^{-1}$. La mesure du pH de la solution $S_b$ à $25\ ^\circ\text{C}$ donne $\text{pH} = 11{,}3$.
+
+      **Donnée :** le produit ionique de l'eau à $25\ ^\circ\text{C}$ : $K_e = 10^{-14}$.
+
+      **2. Dosage d'une solution aqueuse de méthylamine.** Pour vérifier la valeur de la concentration $C_b$ de la solution aqueuse $S_b$, on réalise le dosage pH-métrique d'un volume $V_b = 15\ \text{mL}$ de la solution aqueuse $S_b$ par une solution aqueuse $S_a$ d'acide chlorhydrique $\left(\text{H}_3\text{O}^+_{(aq)} + \text{Cl}^-_{(aq)}\right)$ de concentration $C_a = 10^{-2}\ \text{mol.L}^{-1}$. La courbe de la figure ci-contre représente les variations du pH du milieu réactionnel en fonction du volume versé $V_a$ de la solution $S_a$.
+
+      | Indicateur coloré | Hélianthine | Bleu de bromothymol | Rouge de crésol | Phénolphtaléine |
+      |---|---|---|---|---|
+      | Zone de virage | 3,0 - 4,6 | 6,0 - 7,6 | 7,2 - 8,8 | 8,2 – 10,0 |
+
+      **Figure du dosage (courbe, sans numéro imprimé — « la figure ci-contre »).** Axe des ordonnées $\text{pH}$ gradué $0,\ 2,\ 4,\ 6,\ 8,\ 10,\ 12$ (quadrillage principal noir de pas $2$ ; le cadre monte jusqu'à $14$, trait principal non chiffré) ; axe des abscisses $V_a\ (\text{mL})$ gradué $3,\ 6,\ 9,\ 12,\ 15,\ 18,\ 21$ (pas principal noir $3\ \text{mL}$ ; le bord gauche du cadre est exactement $V_a = 0$ et le cadre se prolonge au-delà de $21$ jusqu'à $24\ \text{mL}$, dernier trait principal non chiffré) ; sous-quadrillage fin bleu à $10$ subdivisions par carreau principal ($0{,}3\ \text{mL}$ et $0{,}2$ unité pH). Courbe décroissante : elle part de $\text{pH} \approx 11{,}3$ à $V_a = 0$, décroît lentement (elle passe au voisinage de $\text{pH} = 10$ vers $V_a \approx 11{,}9\ \text{mL}$ ; à la demi-équivalence $V_a = 7{,}5\ \text{mL}$ elle vaut $\approx 10{,}6$), présente une chute brutale quasi verticale centrée sur $V_a = 15\ \text{mL}$ (de $\text{pH} \approx 9{,}0$ à $\text{pH} \approx 4{,}2$), puis décroît lentement vers $\text{pH} \approx 2{,}6$ au bord droit du cadre. Deux segments en pointillés, obliques et parallèles entre eux (pentes mesurées $-0{,}66$ et $-0{,}67$ unité pH par mL), encadrent le saut de part et d'autre (construction du type méthode des tangentes) : celui du haut va d'environ $(12{,}9\ ;\ 10{,}2)$ à $(19{,}0\ ;\ 6{,}2)$ et effleure la branche supérieure au voisinage de $V_a \approx 14$ ; celui du bas va d'environ $(11{,}1\ ;\ 6{,}7)$ à $(17{,}0\ ;\ 2{,}7)$ et effleure la branche inférieure au voisinage de $V_a \approx 16{,}5$. La parallèle équidistante (non tracée, à construire par l'élève) rencontrerait la courbe au voisinage de $(15\ \text{mL}\ ;\ 6{,}5)$.
+    questions:
+      - id: q1
+        part: "1. Étude d'une solution aqueuse de méthylamine"
+        stem: |-
+          **1-1- (0,25 pt)** Donner la définition d'une base selon Bronsted.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une définition de cours, payée $0{,}25$ pt : le geste est de restituer la phrase exacte du rung 1, sans l'approximer.
+
+          $$\boxed{\text{Une base de Bronsted est une espece chimique capable de \textbf{capter} (d'accepter) un proton } H^+}$$
+
+          **Le piège de cette question.** Ne dis pas « une base est une espèce qui libère des ions $\text{HO}^-$ » : c'est la définition d'**Arrhenius**, plus étroite, et elle est fausse ici — la méthylamine ne contient aucun $\text{HO}^-$ à libérer ; elle est basique parce qu'elle **capte** un proton de l'eau, pas parce qu'elle en cède un (c'est exactement l'objet de la question suivante).
+      - id: q2
+        stem: |-
+          **1-2- (0,25 pt)** Écrire l'équation de la réaction de la méthylamine avec l'eau.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une réaction acido-basique combine toujours deux couples (rung 1) : la base $\text{CH}_3\text{-NH}_2$, et l'eau qui doit lui céder un proton — l'eau joue donc ici son rôle d'**acide**, dans le couple $\text{H}_2\text{O}/\text{HO}^-$, pas son rôle de base du couple $\text{H}_3\text{O}^+/\text{H}_2\text{O}$.
+
+          $$\boxed{\text{CH}_3\text{-NH}_{2(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons \text{CH}_3\text{-NH}^+_{3(aq)} + \text{HO}^-_{(aq)}}$$
+
+          **Pourquoi la double flèche.** La méthylamine est une base **faible** : sa réaction avec l'eau est **limitée**, elle s'arrête sur un équilibre (rung 7) — c'est justement ce que la question 1-3 va chiffrer.
+
+          **Le piège de cette question.** Ne fais pas produire $\text{H}_3\text{O}^+$ à une base : c'est le réflexe de l'élève qui a trop travaillé les acides. Une base arrache un proton à l'eau, et l'eau appauvrie d'un proton est $\text{HO}^-$ — jamais $\text{H}_3\text{O}^+$. L'eau est un **ampholyte** (rung 1) : ici elle est acide, pas base.
+      - id: q3
+        stem: |-
+          **1-3- (0,5 pt)** Calculer le taux d'avancement final $\tau$ de cette réaction. Que peut-on déduire ?
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le taux d'avancement final $\tau = x_f/x_{max}$ n'est pas un outil de cette leçon-ci : sa définition et son usage appartiennent à la notion **État d'équilibre d'un système chimique** (rungs 1-2 là-bas). On le réutilise ici, comme au rung 6 de cette leçon, sur le cas d'une base qui réagit avec l'eau. Chaque méthylamine qui a réagi produit exactement un ion hydroxyde (question 1-2), donc l'avancement final se lit sur $[\text{HO}^-]_{eq}$ ; une conversion **totale** de la base introduite donnerait $[\text{HO}^-]_{max} = C_b$.
+
+          On commence par $[\text{HO}^-]_{eq}$, à partir du pH mesuré, via le produit ionique de l'eau (rung 3 de cette leçon) : $[\text{HO}^-]_{eq} = K_e/[\text{H}_3\text{O}^+]_{eq} = 10^{\,\text{pH}-14}$.
+        steps:
+          - math: '[\text{HO}^-]_{eq} = 10^{\,\text{pH}-14} = 10^{11{,}3-14} = 10^{-2{,}7} \approx 2{,}0\times10^{-3}\ \text{mol.L}^{-1}'
+            note: "Produit ionique de l'eau (rung 3), applique a la mesure pH = 11,3."
+          - math: '\tau = \dfrac{[\text{HO}^-]_{eq}}{C_b} = \dfrac{2{,}0\times10^{-3}}{1{,}0\times10^{-2}}'
+            note: "tau = avancement final / avancement maximal (etat d'equilibre d'un systeme chimique, rungs 1-2) ; le maximal correspond a [HO-] = Cb."
+          - math: '\boxed{\tau \approx 0{,}20 = 20\ \%}'
+            note: "Loin de 1 : reaction limitee, la methylamine est une base faible (rung 6) - a peu pres un cinquieme seulement de la base introduite a reagi."
+      - id: q4
+        stem: |-
+          **1-4- (0,5 pt)** Montrer que le quotient de la réaction $Q_{r,\text{éq}}$ à l'équilibre s'écrit ainsi : $Q_{r,\text{éq}} = \dfrac{C_b\,.\,\tau^2}{1-\tau}$. Calculer sa valeur.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Écrire un quotient de réaction à l'équilibre en fonction de $\tau$ est, là encore, un geste de la notion **État d'équilibre d'un système chimique** (le quotient de réaction et sa valeur à l'équilibre s'y construisent aux rungs 3-4) : on écrit les concentrations d'équilibre à partir du tableau d'avancement, comme au rung 4 de cette leçon-ci.
+
+          Chaque méthylamine transformée donne un $\text{CH}_3\text{-NH}_3^+$ et un $\text{HO}^-$ en quantités égales (question 1-2), donc $[\text{CH}_3\text{-NH}_3^+]_{eq} = [\text{HO}^-]_{eq} = \tau C_b$ ; il reste $[\text{CH}_3\text{-NH}_2]_{eq} = C_b(1-\tau)$ de base non transformée. On reporte dans le quotient associé à l'équation de la question 1-2.
+        steps:
+          - math: 'Q_{r,\text{éq}} = \dfrac{[\text{CH}_3\text{-NH}_3^+]_{eq}\,[\text{HO}^-]_{eq}}{[\text{CH}_3\text{-NH}_2]_{eq}} = \dfrac{(\tau C_b)(\tau C_b)}{C_b(1-\tau)}'
+            note: "Concentrations d'equilibre ecrites avec tau (etat d'equilibre d'un systeme chimique, rungs 3-4)."
+          - math: '\boxed{Q_{r,\text{éq}} = \dfrac{C_b\,\tau^{2}}{1-\tau}}'
+            note: "Le Cb au numerateur se simplifie une fois : c'est l'expression demandee."
+          - math: 'Q_{r,\text{éq}} = \dfrac{1{,}0\times10^{-2}\times(0{,}20)^{2}}{1-0{,}20} = \dfrac{1{,}0\times10^{-2}\times0{,}04}{0{,}80}'
+            note: "Application numerique avec Cb = 1,0.10^-2 mol/L et tau = 0,20 (question 1-3)."
+          - math: '\boxed{Q_{r,\text{éq}} \approx 5{,}0\times10^{-4}}'
+            note: "Valeur confirmee de facon independante dans le sourcing de cette entree."
+      - id: q5
+        stem: |-
+          **1-5- (0,5 pt)** Trouver l'expression de la constante d'acidité $K_A$ du couple $\text{CH}_3\text{-NH}^+_{3(aq)}/\text{CH}_3\text{-NH}_{2(aq)}$ en fonction de $Q_{r,\text{éq}}$ et $K_e$ puis vérifier que $pK_A \approx 10{,}7$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La réaction dont on vient de calculer $Q_{r,\text{éq}}$ (question 1-4) est celle de la **base** avec l'eau : sa constante d'équilibre est la constante de **basicité** du couple, pas directement $K_A$. Pour relier les deux, on combine cette réaction avec celle de l'acide conjugué $\text{CH}_3\text{-NH}_3^+$ avec l'eau — celle qui définit $K_A$ (rung 4 de cette leçon). Additionner ces deux réactions donne exactement l'autoprotolyse de l'eau (rung 3), de constante $K_e$ — et, tout comme au rung 4 de *État d'équilibre d'un système chimique*, où $K$ ne dépend que de la réaction et jamais de l'état initial, ce produit de constantes ne dépend, lui non plus, que des deux couples en présence.
+
+          $$\text{CH}_3\text{-NH}_{2(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons \text{CH}_3\text{-NH}^+_{3(aq)} + \text{HO}^-_{(aq)} \qquad (K = Q_{r,\text{éq}})$$
+
+          $$\text{CH}_3\text{-NH}^+_{3(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons \text{CH}_3\text{-NH}_{2(aq)} + \text{H}_3\text{O}^+_{(aq)} \qquad (K = K_A)$$
+
+          En additionnant ces deux équations, les deux méthylamines s'annulent (une de chaque côté) : il reste $2\,\text{H}_2\text{O}_{(l)} \rightleftharpoons \text{H}_3\text{O}^+_{(aq)} + \text{HO}^-_{(aq)}$, dont la constante est $K_e$ (rung 3) — d'où $Q_{r,\text{éq}}\times K_A = K_e$.
+
+          **Le piège de cette question.** Ne confonds pas $Q_{r,\text{éq}}$ (constante de la réaction de la **base** avec l'eau) et $K_A$ (constante de la réaction de l'**acide conjugué** avec l'eau) : elles ne sont jamais égales, seulement liées par $Q_{r,\text{éq}}\times K_A = K_e$.
+        steps:
+          - math: '\boxed{K_A = \dfrac{K_e}{Q_{r,\text{éq}}}}'
+            note: "Combinaison des deux reactions : leur somme est l'autoprotolyse de l'eau, de constante Ke (rung 3)."
+          - math: 'K_A = \dfrac{10^{-14}}{5{,}0\times10^{-4}} \approx 2{,}0\times10^{-11}'
+            note: "Application numerique avec Qr,eq = 5,0.10^-4 (question 1-4)."
+          - math: 'pK_A = -\log K_A = -\log\left(2{,}0\times10^{-11}\right)'
+            note: "Definition du pKA (rung 4)."
+          - math: '\boxed{pK_A \approx 10{,}7}'
+            note: "Valeur a verifier, conforme a l'enonce (raccourci : pKA = 14 + log Qr,eq = 14 - 3,30 = 10,70)."
+      - id: q6
+        part: "2. Dosage d'une solution aqueuse de méthylamine"
+        stem: |-
+          **2-1- (0,5 pt)** Écrire l'équation de la réaction du dosage.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Construction habituelle (rung 1) : les deux couples réellement présents dans le bécher, demi-équations en sens opposés, somme, le $H^+$ s'annule. Dans le bécher : la base $\text{CH}_3\text{-NH}_2$ du couple donné, et l'ion $\text{H}_3\text{O}^+$ versé, acide du couple $\text{H}_3\text{O}^+/\text{H}_2\text{O}$ ; l'ion $\text{Cl}^-$ est spectateur.
+
+          $$\boxed{\text{CH}_3\text{-NH}_{2(aq)} + \text{H}_3\text{O}^+_{(aq)} \longrightarrow \text{CH}_3\text{-NH}^+_{3(aq)} + \text{H}_2\text{O}_{(l)}}$$
+
+          **Le contrôle qui justifie la flèche simple.** $K = K_A(\text{H}_3\text{O}^+/\text{H}_2\text{O})/K_A(\text{CH}_3\text{-NH}_3^+/\text{CH}_3\text{-NH}_2) = 1/10^{-10{,}7} = 10^{10{,}7} \approx 5\times10^{10}$ (rung 7 puis 9) : la réaction est quasi totale, la flèche simple est méritée.
+
+          **Le piège de cette question.** Ce dosage est le **miroir** de celui du cours (rungs 9-11, qui verse une base forte sur un acide faible et où le pH **monte**) : ici on verse l'acide fort sur une base faible, et le pH **descend** au fil du dosage — cohérent avec la courbe donnée, qui part de $11{,}3$ et décroît.
+      - id: q7
+        stem: |-
+          **2-2- (0,5 pt)** Déterminer graphiquement les coordonnées $(V_{aE},\ \text{pH}_E)$ du point d'équivalence.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On repère l'équivalence au **milieu du saut** (rung 10), jamais à une valeur de pH choisie d'avance : le point d'inflexion, encadré par deux tangentes parallèles et leur médiane équidistante.
+
+          Sur la figure, la chute quasi verticale est centrée sur $V_a = 15\ \text{mL}$ (de $\text{pH} \approx 9{,}0$ à $\text{pH} \approx 4{,}2$), encadrée par deux segments en pointillés parallèles ; leur parallèle équidistante rencontre la courbe au voisinage de $(15\ \text{mL}\ ;\ 6{,}5)$.
+
+          $$\boxed{V_{aE} = 15{,}0\ \text{mL} \qquad \text{pH}_E \approx 6{,}5}$$
+
+          **Le contrôle.** $\text{pH}_E < 7$ : cohérent avec une base faible dosée par un acide fort (rung 9) — à l'équivalence il ne reste, comme espèce du couple, que l'acide conjugué $\text{CH}_3\text{-NH}_3^+$, qui rend le milieu acide. Ne lis jamais $V_{aE}$ à l'abscisse où $\text{pH} = 7$ : ici cette abscisse serait très en dessous de $15\ \text{mL}$, avant même que le saut n'ait commencé.
+      - id: q8
+        stem: |-
+          **2-3- (0,5 pt)** En déduire la concentration $C_b$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'équivalence est une égalité de quantités de matière (rung 9) : la base présente au départ égale l'acide versé à $V_{aE}$.
+        steps:
+          - math: 'C_b\,V_b = C_a\,V_{aE}'
+            note: "Relation d'equivalence (rung 9) : la quantite de base initiale egale la quantite d'acide versee."
+          - math: 'C_b = \dfrac{C_a\,V_{aE}}{V_b} = \dfrac{1{,}0\times10^{-2}\times15{,}0}{15}'
+            note: "VaE = 15,0 mL (question 2-2), Vb = 15 mL, Ca = 1,0.10^-2 mol/L."
+          - math: '\boxed{C_b = 1{,}0\times10^{-2}\ \text{mol.L}^{-1}}'
+            note: "Exactement la concentration preparee en section 1 : le dosage vient de la verifier, comme l'enonce l'annoncait."
+      - id: q9
+        stem: |-
+          **2-4- (0,5 pt)** Choisir, parmi les indicateurs colorés suivants, l'indicateur adéquat pour réaliser ce dosage. Justifier votre réponse.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le critère du rung 11 : on retient l'indicateur dont la zone de virage **contient** $\text{pH}_E$. On teste les quatre zones contre $\text{pH}_E = 6{,}5$.
+
+          | Indicateur | Zone de virage | $6{,}5$ est-il dedans ? |
+          |---|:---:|:---:|
+          | Hélianthine | $3{,}0$ – $4{,}6$ | non ($6{,}5 > 4{,}6$) |
+          | Bleu de bromothymol | $6{,}0$ – $7{,}6$ | **oui** ($6{,}0 < 6{,}5 < 7{,}6$) |
+          | Rouge de crésol | $7{,}2$ – $8{,}8$ | non ($6{,}5 < 7{,}2$) |
+          | Phénolphtaléine | $8{,}2$ – $10{,}0$ | non ($6{,}5 < 8{,}2$) |
+
+          $$\boxed{\text{Le bleu de bromothymol : sa zone de virage } 6{,}0\text{–}7{,}6 \text{ encadre } \text{pH}_E = 6{,}5}$$
+
+          **Le piège de cette question.** Ne choisis pas un indicateur qui vire près de $7$ « parce que $7$ est neutre » : la neutralité ($pK_e/2 = 7$, rung 3) n'a rien à voir avec le $\text{pH}_E$ **de ce dosage précis**. Le bleu de bromothymol convient ici parce que sa zone encadre $6{,}5$ — c'est une coïncidence de ce sujet qu'il soit aussi proche de $7$, pas le critère.
+      - id: q10
+        stem: |-
+          **2-5- (0,75 pt)** Déterminer le quotient $\dfrac{\left[\text{CH}_3\text{-NH}_{2(aq)}\right]}{\left[\text{CH}_3\text{-NH}^+_{3(aq)}\right]}$ pour le volume $V_{a1} = 20{,}4\ \text{mL}$ de la solution $S_a$ versée. En déduire l'espèce chimique prédominante.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $V_{a1} = 20{,}4\ \text{mL}$ est **au-delà** de $V_{aE} = 15{,}0\ \text{mL}$ (question 2-2) : la méthylamine, réactif limitant, a déjà été **entièrement** consommée à l'équivalence, et tout l'acide versé depuis s'accumule désormais en excès dans le bécher. Le rapport demandé se lit par la relation de prédominance (rung 5), $[\text{CH}_3\text{-NH}_2]/[\text{CH}_3\text{-NH}_3^+] = 10^{\,\text{pH}-pK_A}$ — il faut donc d'abord le pH à ce volume, que la figure ne donne pas directement (elle ne chiffre que $V_{aE}$ et les bornes du cadre, pas ce point précis).
+
+          **SCOPE NOTE — technique hors des rungs, refaite ici et non admise.** Calculer un pH à partir d'un excès de titrant n'est traité nommément par aucun rung : le rung 9 interdit explicitement tout calcul analytique du pH **aux points remarquables** (équivalence, demi-équivalence) par une formule fermée, mais $V_{a1}$ n'est ni l'un ni l'autre — c'est un point quelconque, **après** l'équivalence, où c'est le seul excès d'acide **fort** qui fixe le pH, sans qu'aucune constante $K_A$ n'intervienne dans ce premier calcul. Le geste, refait en trois temps : compter l'acide en excès par bilan de matière, le diluer dans le volume total, appliquer la définition du pH (rung 2).
+
+          Tout le méthylamine initial ($C_bV_b$) a été consommé à $V_{aE}$ par une quantité égale d'acide, $C_aV_{aE}$ (question 2-3, réaction totale du rung 9). Au-delà, l'acide versé n'a plus personne à qui céder son proton : il reste tel quel dans le mélange.
+
+          $$n(\text{H}_3\text{O}^+)_{\text{exces}} = C_a\,V_{a1} - C_a\,V_{aE} = C_a\left(V_{a1}-V_{aE}\right)$$
+
+          On le dilue dans le volume total du mélange à cet instant, $V_b + V_{a1}$ (pas $V_{a1}$ seul, ni $V_b$ seul) :
+
+          $$[\text{H}_3\text{O}^+] = \dfrac{C_a\left(V_{a1}-V_{aE}\right)}{V_b+V_{a1}}$$
+
+          **L'application numérique.** L'excès d'acide, d'abord :
+
+          $$n(\text{H}_3\text{O}^+)_{\text{exces}} = 1{,}0\times10^{-2}\times\left(20{,}4-15{,}0\right)\times10^{-3} = 1{,}0\times10^{-2}\times5{,}4\times10^{-3} = 5{,}4\times10^{-5}\ \text{mol}$$
+
+          Le volume total à $V_{a1}$ :
+
+          $$V_b+V_{a1} = 15{,}0+20{,}4 = 35{,}4\ \text{mL} = 35{,}4\times10^{-3}\ \text{L}$$
+
+          $$[\text{H}_3\text{O}^+] = \dfrac{5{,}4\times10^{-5}}{35{,}4\times10^{-3}} \approx 1{,}53\times10^{-3}\ \text{mol.L}^{-1} \qquad\Longrightarrow\qquad \text{pH} \approx 2{,}82$$
+
+          **Le rapport de prédominance, maintenant que le pH est connu (rung 5).**
+
+          $$\log\left(\dfrac{[\text{CH}_3\text{-NH}_2]}{[\text{CH}_3\text{-NH}_3^+]}\right) = \text{pH}-pK_A = 2{,}82-10{,}7 = -7{,}88$$
+
+          $$\boxed{\dfrac{[\text{CH}_3\text{-NH}_2]}{[\text{CH}_3\text{-NH}_3^+]} = 10^{-7{,}88} \approx 1{,}3\times10^{-8}}$$
+
+          **L'espèce prédominante.** Le rapport est écrasé devant $1$ (rung 5) : l'acide conjugué $\text{CH}_3\text{-NH}_3^+$ **prédomine**, très largement — cohérent avec un excès massif d'acide fort dans le bécher, qui protone quasiment toute la méthylamine restante.
+
+          **Le piège de cette question.** Ne réponds pas $[\text{CH}_3\text{-NH}_2] \approx 0$ « donc le rapport est nul » : le rapport reste défini et non nul (rung 5, prédominer n'est jamais « être seul »), il est seulement **très petit** — c'est cette petitesse chiffrée, $1{,}3\times10^{-8}$, qui est la réponse attendue, pas une affirmation qualitative. Deuxième piège : ne pas confondre $V_{a1}$ avec un volume **avant** l'équivalence — $20{,}4\ \text{mL} > V_{aE} = 15{,}0\ \text{mL}$, donc c'est l'acide qui est en excès, pas la base ; utiliser le tableau d'avancement d'avant l'équivalence ici inverserait le rôle des deux réactifs et donnerait un rapport supérieur à $1$, à l'opposé du résultat physique.
+        steps:
+          - math: 'n(\text{H}_3\text{O}^+)_{\text{exces}} = C_a\left(V_{a1}-V_{aE}\right) = 1{,}0\times10^{-2}\times\left(20{,}4-15{,}0\right)\times10^{-3}'
+            note: "Bilan de matiere : au-dela de VaE, la methylamine est deja epuisee, tout l'acide verse en plus reste en exces."
+          - math: '\boxed{n(\text{H}_3\text{O}^+)_{\text{exces}} \approx 5{,}4\times10^{-5}\ \text{mol}}'
+            note: "Application numerique."
+          - math: '[\text{H}_3\text{O}^+] = \dfrac{n(\text{H}_3\text{O}^+)_{\text{exces}}}{V_b+V_{a1}} = \dfrac{5{,}4\times10^{-5}}{35{,}4\times10^{-3}}'
+            note: "Dilution dans le volume TOTAL du melange a Va1, soit Vb + Va1 = 35,4 mL (pas Va1 seul, pas Vb seul)."
+          - math: '\boxed{[\text{H}_3\text{O}^+] \approx 1{,}53\times10^{-3}\ \text{mol.L}^{-1} \implies \text{pH} \approx 2{,}82}'
+            note: "Definition du pH (rung 2), appliquee a l'exces d'acide fort : la contribution du couple methylamine/methylammonium est ici totalement negligeable."
+          - math: '\log\left(\dfrac{[\text{CH}_3\text{-NH}_2]}{[\text{CH}_3\text{-NH}_3^+]}\right) = \text{pH}-pK_A = 2{,}82-10{,}7'
+            note: "Relation de predominance (rung 5), avec le pH qu'on vient de trouver et pKA = 10,7 (question 1-5)."
+          - math: '\boxed{\dfrac{[\text{CH}_3\text{-NH}_2]}{[\text{CH}_3\text{-NH}_3^+]} \approx 1{,}3\times10^{-8}}'
+            note: "Rapport ecrase devant 1 : CH3-NH3+ predomine tres largement, exces massif d'acide fort oblige."
 
   # ── bk-2023-n-x1 — 2023 N, Exercice 1 (§2) : reaction acide ethanoique / ion methanoate ──
   # SCOPE NOTE (flag, non résolu ici — à l'arbitrage du pédagogue-architecte) :
