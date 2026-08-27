@@ -566,6 +566,32 @@ attente, pas encore payé.
 - **Option 2** (n'en banquer qu'un des deux) coûte un exercice vérifié laissé
   hors corpus, deux fois.
 
+**LES TROIS OPTIONS CONVERGENT SUR L'AFFICHAGE — mesuré le 2026-08-27.**
+Ce point n'est PAS en débat, et le savoir simplifie l'arbitrage. Un candidat
+réel de SM 2020 normale plafonne à **7,00** (un des deux exercices au choix,
+3,5, plus les complexes obligatoires, 3,5). Or :
+
+| option | ce que l'assembleur tirerait | listée ? |
+|---|---|---|
+| 1 — modéliser le choix (max un par groupe) | 3,5 + 3,5 = **7,00** | non |
+| 2 — n'en banquer qu'un des deux | 3,5 + 3,5 = **7,00** | non |
+| 3 — exclure l'épreuve | — | non |
+
+`LISTEE_MIN` vaut 9,75, et 7,00 lui est inférieur dans les trois cas.
+**Quelle que soit l'option retenue, SM 2020 normale disparaît de la liste.**
+
+Ce qui reste réellement à trancher n'est donc pas le sort de cette épreuve,
+mais **si le modèle de données doit apprendre la notion d'exercice optionnel**
+— ce qui ne sert qu'aux deux épreuves de 2020 aujourd'hui (option 1), ou si
+l'on se contente de les mettre de côté (options 2 et 3). C'est une question
+d'architecture, pas d'affichage.
+
+**Rien n'a été fait dans le code**, y compris sur le point non disputé :
+l'exclusion de SM 2020 passe par un mécanisme, et le mécanisme *est*
+l'arbitrage. Mais l'épreuve reste aujourd'hui affichée « 10,50 pts sur 20
+disponibles » là où aucun élève ne peut dépasser 7,00 — c'est le coût de
+l'attente, et il est réel.
+
 **La réserve du comptage, dite par le balayage lui-même :** 47 lignes restent
 non couvertes, dont **20 en SM** — la seule filière où le format existe, et 14
 de ses 36 sessions restent fermées (2010–2016 N et R). Le balayage ne prouve
