@@ -581,6 +581,47 @@ partagés et refuser qu'un même identifiant porte deux entrées de la MÊME
 filière-année-session dans la même notion (le seul cas réellement fautif).
 Non fait — la vraie défense est la règle de lecture ci-dessus.
 
+#### K-7 bis. Cinq identifiants mentent sur la position qu'ils encodent
+
+**Trouvé le 2026-08-27**, en mesurant l'identifiant contre le libellé imprimé
+de chaque entrée. **Aucun renommage fait** — voir pourquoi plus bas.
+
+Le suffixe `-x<N>` doit dire la place de l'exercice SUR LA COPIE, et les
+morceaux d'un exercice découpé se distinguent par une lettre (`x3`, `x3b`,
+`x3c`) — la convention existe et le corpus l'emploie déjà (`bk-2020-n-x3b`,
+`bk-2022-n-x4b`, `bk-2023-n-x4b`, `bk-2025-n-x1b`, `bk-2025-n-x4b`).
+
+Cinq entrées l'ont manquée. Toutes nommées `x1`, au sens visiblement de
+« première entrée de cette année dans CETTE notion » — ce qui n'est pas ce que
+l'identifiant veut dire :
+
+| Entrée | Notion | Le libellé imprime | Le nom juste serait |
+|---|---|---|---|
+| `bk-2020-n-x1` | `pc/noyaux-masse-energie` | Exercice **III** | `bk-2020-n-x3` |
+| `bk-2023-n-x1` | `pc/noyaux-masse-energie` | Exercice **2 §2** | `bk-2023-n-x2b` |
+| `bk-2022-n-x1` | `pc/rc-charge` | Exercice **3** | `bk-2022-n-x3` |
+| `bk-2025-n-x1` | `pc/rc-charge` | Exercice **3** | `bk-2025-n-x3` |
+| `bk-2024-n-x1` | `pc/rotation-axe-fixe` | Exercice **5**, Partie 2 | `bk-2024-n-x5b` |
+
+**Rien ne casse aujourd'hui.** Le tri des exercices et le compte affiché
+lisent le LIBELLÉ, pas l'identifiant (voir `lib/examens.ts`). Le dégât est
+qu'un identifiant qui ment sur la position ruine exactement la règle que
+BANK-SPEC §4 et K-7 viennent d'écrire — et trompe le prochain lecteur.
+
+**Pourquoi ce n'est PAS renommé, et pourquoi c'est un arbitrage owner.**
+Renommer un `entry_id` **orpheline les lignes de journal déjà écrites
+dessus** : le reveal est enregistré sous `item_id = "<entry_id>:<question_id>"`,
+et un élève qui a déjà travaillé ces exercices perdrait ses marques « fait ».
+Et le renommage **cascade** : corriger `pc/rc-charge|bk-2025-n-x1` en `x3`
+oblige à décaler `rlc-serie|bk-2025-n-x3` en `x3b` et
+`ondes-em-modulation|bk-2025-n-x3` en `x3c`. Ce n'est pas une correction
+mécanique.
+
+**Ce qui EST fait** : `validate-content` refuse désormais toute NOUVELLE
+entrée dont l'identifiant contredit son libellé, et les cinq ci-dessus sont
+nommées une par une dans un ensemble `POSITIONS_HERITEES`, avec en commentaire
+le nom juste. La dette est bornée, visible, et ne peut plus croître.
+
 ### K-1. `get_user_weak_areas` function references missing columns
 **Source.** `backend/supabase/migrations/004_exam_analytics_and_sync.sql`,
 lines 45–74.

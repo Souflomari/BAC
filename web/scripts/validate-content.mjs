@@ -364,6 +364,50 @@ for (const dir of dirs) {
       for (const e of arr) {
         const eId = typeof e?.id === "string" ? e.id : "?";
 
+        // L'identifiant DOIT dire la position que le libellé imprime.
+        //
+        // `bk-<année>-<n|r>-x<position>` encode la place de l'exercice SUR LA
+        // COPIE. Quand un exercice se découpe entre plusieurs notions, les
+        // morceaux gardent le numéro et se distinguent par un suffixe (x3,
+        // x3b, x3c) — la convention existe et le corpus l'emploie. Cinq
+        // entrées l'ont manquée : elles ont été nommées « x1 » au sens de
+        // « première entrée de cette année dans CETTE notion », ce qui n'est
+        // pas ce que l'identifiant veut dire.
+        //
+        // Rien ne casse aujourd'hui — le tri et le compte d'exercices lisent
+        // le LIBELLÉ, pas l'identifiant. Mais un identifiant qui ment sur la
+        // position ruine la règle que BANK-SPEC §4 et known-issues K-7
+        // viennent d'écrire, et il trompe le prochain lecteur.
+        //
+        // Les cinq sont nommées ci-dessous plutôt que renommées : renommer
+        // un `entry_id` ORPHELINE les lignes de journal déjà écrites dessus
+        // (`item_id = "<entry_id>:<question_id>"`). C'est un arbitrage owner,
+        // pas une correction mécanique. La porte empêche la dette de croître.
+        const POSITIONS_HERITEES = new Set([
+          "pc/noyaux-masse-energie|bk-2020-n-x1",   // Exercice III  → bk-2020-n-x3
+          "pc/noyaux-masse-energie|bk-2023-n-x1",   // Exercice 2 §2 → bk-2023-n-x2b
+          "pc/rc-charge|bk-2022-n-x1",              // Exercice 3    → bk-2022-n-x3
+          "pc/rc-charge|bk-2025-n-x1",              // Exercice 3    → bk-2025-n-x3
+          "pc/rotation-axe-fixe|bk-2024-n-x1",      // Exercice 5 P2 → bk-2024-n-x5b
+        ]);
+        {
+          const notionCle = dir.replace(/^.*content[/\\]/, "").replace(/[/\\]+$/, "").replace(/\\/g, "/");
+          const mId = /^bk-\d{4}-[nr]-x(\d+)/.exec(eId);
+          const lab = e?.source?.exercise_label;
+          const mLab = typeof lab === "string" ? /Exercice\s+([IVX]+|\d+)/i.exec(lab) : null;
+          if (mId && mLab && !POSITIONS_HERITEES.has(`${notionCle}|${eId}`)) {
+            const ROM = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6 };
+            const brut = mLab[1].toUpperCase();
+            const posLab = ROM[brut] ?? (/^\d+$/.test(brut) ? parseInt(brut, 10) : null);
+            if (posLab !== null && posLab !== parseInt(mId[1], 10)) {
+              console.error(
+                `  ✗ ${dir}/bank.yaml: ${eId} annonce la position x${mId[1]} mais son libellé imprime « Exercice ${brut} » — l'identifiant doit dire la position sur la copie (suffixe b/c pour les morceaux d'un même exercice)`
+              );
+              dirFail++;
+            }
+          }
+        }
+
         // bk- id convention + uniqueness.
         if (!/^bk-/.test(eId)) {
           console.error(`  ✗ ${dir}/bank.yaml: entry id "${eId}" must follow the bk-<year>-<n|r>-x<pos> convention (start with "bk-")`);
