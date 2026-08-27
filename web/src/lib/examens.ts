@@ -55,7 +55,20 @@ export interface Epreuve {
    * copie deux fois plus grosse que la vraie.
    */
   nbExercices: number;
-  /** Somme des durées honnêtes des entrées (minutes). */
+  /**
+   * Somme des `duration_min` des entrées.
+   *
+   * ⚠️ CE N'EST PAS LA DURÉE DE L'ÉPREUVE, et il ne faut jamais l'afficher
+   * comme telle. `duration_min` est une estimation d'ENTRAÎNEMENT, calibrée à
+   * ≈ 6 min par point de barème (BANK-SPEC §2) ; une épreuve complète y somme
+   * donc ~120 min quand le vrai papier dure 180 min (SPC, SExp) ou 240 min
+   * (SM). La durée réelle est `dureeOfficielleMin`, et c'est elle que les
+   * pages et le chrono emploient.
+   *
+   * Champ actuellement écrit et lu par personne. Conservé parce qu'une vue
+   * « combien de temps pour travailler cette épreuve tranquillement » aurait
+   * exactement besoin de cette somme-là — mais alors sous son vrai nom.
+   */
   minutes: number;
   /** Durée officielle de l'épreuve au bac (minutes) : SM 240, sinon 180. */
   dureeOfficielleMin: number;
