@@ -2924,6 +2924,54 @@ try {
     await epage.close();
   }
 
+  // ── SWEEP: l'ordre des exercices SUIT LE SUJET, pas l'alphabet.
+  //    Un exercice du bac se découpe entre plusieurs notions et chaque
+  //    morceau garde son libellé imprimé. Le tri départageait ces morceaux
+  //    au localeCompare, donc alphabétiquement : « Partie 2 » sortait avant
+  //    « Partie I » (le chiffre 2 précède la lettre I). Neuf épreuves en
+  //    sortaient désordonnées, dont huit affichées à 20,00/20. Les deux
+  //    épreuves ci-dessous sont les cas témoins — romain contre arabe pour
+  //    2018, et les trois conventions mélangées dans un même exercice
+  //    pour 2025.
+  {
+    console.log("\n[/examens] SWEEP: l'ordre des exercices suit le sujet réel");
+    const opage = await browser.newPage({ viewport: { width: 1440, height: 950 } });
+    const attendus = [
+      {
+        id: "spc-2018-normale",
+        // Exercice I : la partie I d'abord, puis les deux sous-parties de la 2.
+        motifs: [/Partie I\b/, /Partie 2, sous-partie 1/, /Partie 2, sous-partie 2/],
+      },
+      {
+        id: "spc-2025-normale",
+        // Exercice 3 : « Partie 1. », puis « 2. », puis « Partie 3 » — trois
+        // façons d'écrire un rang dans un seul exercice.
+        motifs: [/Partie 1\. Charge/, /2\. Décharge/, /Partie 3/],
+      },
+    ];
+    for (const { id, motifs } of attendus) {
+      checks++;
+      await opage.goto(`${BASE}/examens/${id}`, { waitUntil: "networkidle" });
+      await opage.click("[data-primary-action]");
+      await opage.waitForSelector("[data-exam-exo]", { timeout: 3000 });
+      const labels = await opage.evaluate(() =>
+        [...document.querySelectorAll("[data-exam-exo] h2")].map((h) => h.textContent.trim())
+      );
+      const rangs = motifs.map((re) => labels.findIndex((l) => re.test(l)));
+      const manquant = rangs.some((r) => r < 0);
+      const ordonne = !manquant && rangs.every((r, i) => i === 0 || rangs[i - 1] < r);
+      if (!ordonne) {
+        failures += fail(
+          `${id} : ordre attendu non respecté — rangs=${JSON.stringify(rangs)} sur ${labels.length} exercices` +
+            (manquant ? " (un libellé témoin a disparu)" : "")
+        );
+      } else {
+        console.log(`  ✓ ${id} : ${labels.length} exercices, les 3 témoins dans l'ordre du sujet`);
+      }
+    }
+    await opage.close();
+  }
+
   // ── SWEEP: token source parity — every CSS custom property resolves to its
   //    tokens.ts value, in BOTH themes. The single-source guarantee, asserted
   //    against the rendered DOM (not the source files). Reads getPropertyValue

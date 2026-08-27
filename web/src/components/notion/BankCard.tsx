@@ -30,7 +30,7 @@ import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import type { NotionBankEntry } from "@/lib/content";
 import { AttemptFirstQuestions, MdBlock } from "./AttemptFirstExercise";
-import { useExerciseRevealIds } from "@/lib/student-state";
+import { useExerciseRevealIds, revealKey } from "@/lib/student-state";
 import { ExplicationPlayer } from "./ExplicationPlayer";
 import type { ExplicationResolue, ExplicationInteractive } from "@/lib/explications";
 
@@ -55,10 +55,18 @@ function formatPts(n?: number): string | null {
 
 export function BankCard({
   entry,
+  notionId,
   explication = null,
   interactive = null,
 }: {
   entry: NotionBankEntry;
+  /**
+   * `"<subject>/<slug>"` — la notion qui HÉBERGE cette carte. Indispensable :
+   * `entry.id` n'est unique que dans son propre `bank.yaml` (il encode la
+   * position sur la copie du bac, pas la notion), donc la clé de révélation
+   * doit porter les deux. Voir `revealKey` dans lib/student-state.
+   */
+  notionId: string;
   /** L'explication animée publiée pour cette entrée, ou null (état honnête). */
   explication?: ExplicationResolue | null;
   /** La figure interactive, quand elle existe — elle prime sur la vidéo. */
@@ -69,7 +77,9 @@ export function BankCard({
   // « fait » iff the journal holds a reveal for ANY of this entry's questions.
   // `null` (off / loading / logged-out) → false → nothing fait-related renders.
   const fait = revealIds
-    ? entry.questions.some((q) => revealIds.has(`${entry.id}:${q.id}`))
+    ? entry.questions.some((q) =>
+        revealIds.has(revealKey(notionId, `${entry.id}:${q.id}`))
+      )
     : false;
 
   const provenance = `Bac ${entry.source.year} · ${sessionLabel(entry.source.session)}`;

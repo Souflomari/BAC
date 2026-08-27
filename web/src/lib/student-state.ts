@@ -209,13 +209,31 @@ export function useStudentState(): LearnerModelSnapshot {
 // The bank card shows a quiet « fait » ONLY when the journal already holds an
 // `exercise_reveal` for one of the entry's questions (item_id
 // "<entry_id>:<question_id>" — AttemptFirstExercise's existing composite
-// convention). This hook returns the SET of item_ids that have such a reveal,
-// read live from `user_answer_events` (the same RLS self-read + gating as
-// `useStudentState` above). In off/mock/logged-out it resolves `null` — and
-// because `@supabase/*` is only ever imported inside the `mode === "live"`
-// branch, the off build makes ZERO network calls (AUTH-SPEC §2/§5). A card
-// reads `null` as "no fait marks, no placeholder" — honest-state, never a
-// fabricated tick.
+// convention). This hook returns the SET of reveal KEYS — notion id AND
+// item id — read live from `user_answer_events` (the same RLS self-read +
+// gating as `useStudentState` above). In off/mock/logged-out it resolves
+// `null` — and because `@supabase/*` is only ever imported inside the
+// `mode === "live"` branch, the off build makes ZERO network calls
+// (AUTH-SPEC §2/§5). A card reads `null` as "no fait marks, no placeholder"
+// — honest-state, never a fabricated tick.
+//
+// POURQUOI LA CLÉ PORTE LA NOTION. Un `entry_id` n'est unique QUE dans son
+// propre `bank.yaml` : il encode la position de l'exercice sur la copie
+// (« bk-2018-n-x1 » = exercice 1 du bac 2018 normale), et un exercice
+// découpé entre plusieurs notions garde le même identifiant dans chacune.
+// Au 2026-08-27, 42 identifiants sont ainsi portés par plusieurs entrées —
+// « bk-2018-n-x1 » à lui seul vit dans quatre banques. Lire `item_id` seul
+// faisait donc allumer « fait » sur des exercices JAMAIS ouverts : révéler
+// une question de bk-2018-n-x1 dans `pc/electrolyse` cochait la même
+// question dans `pc/esterification-hydrolyse`, `pc/reactions-acido-basiques`
+// et `maths/geometrie-espace`. C'est exactement le tick fabriqué que le
+// paragraphe ci-dessus interdit. La colonne `notion_id` existait déjà dans
+// le journal (le payload l'écrit depuis toujours) ; seule la lecture
+// l'ignorait.
+export function revealKey(notionId: string, itemId: string): string {
+  return `${notionId}\u0000${itemId}`;
+}
+
 export function useExerciseRevealIds(): Set<string> | null {
   const { mode, user } = useAuth();
   const [ids, setIds] = useState<Set<string> | null>(null);
@@ -234,7 +252,7 @@ export function useExerciseRevealIds(): Set<string> | null {
         const supabase = getBrowserSupabase();
         const { data, error } = await supabase
           .from("user_answer_events")
-          .select("item_id")
+          .select("item_id, notion_id")
           .eq("user_id", user.id)
           .eq("kind", "exercise_reveal");
         if (cancelled) return;
@@ -245,8 +263,16 @@ export function useExerciseRevealIds(): Set<string> | null {
         }
         const set = new Set<string>();
         for (const row of data ?? []) {
-          const itemId = (row as { item_id?: unknown }).item_id;
-          if (typeof itemId === "string") set.add(itemId);
+          const { item_id: itemId, notion_id: notionId } = row as {
+            item_id?: unknown;
+            notion_id?: unknown;
+          };
+          // Les deux sont exigés : une ligne sans notion_id ne peut pas être
+          // rattachée à une banque sans risquer le tick fabriqué, donc on la
+          // laisse tomber plutôt que de deviner.
+          if (typeof itemId === "string" && typeof notionId === "string") {
+            set.add(revealKey(notionId, itemId));
+          }
         }
         setIds(set);
       })

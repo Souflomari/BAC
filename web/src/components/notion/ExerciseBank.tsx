@@ -60,6 +60,7 @@ export function ExerciseBank({ bank }: { bank: NotionBank }) {
             <BankCard
               key={entry.id}
               entry={entry}
+              notionId={bank.notion}
               explication={resolveExplication(bank.notion, entry.id)}
               interactive={getExplicationInteractive(bank.notion, entry.id)}
             />

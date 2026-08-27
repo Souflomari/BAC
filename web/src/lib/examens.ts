@@ -55,13 +55,77 @@ const LISTEE_MIN = 9.75;
 
 const ROMAINS: Record<string, number> = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6 };
 
+/** Un jeton « I » / « IV » / « 3 » en nombre, ou null s'il n'en est pas un. */
+function romainOuArabe(brut: string): number | null {
+  const b = brut.toUpperCase();
+  if (b in ROMAINS) return ROMAINS[b];
+  const n = parseInt(b, 10);
+  // `??` ne rattrape PAS NaN (il ne voit que null/undefined) : un romain
+  // hors table — « VII » — repartait donc en NaN, et un comparateur qui
+  // renvoie NaN est traité comme « égal », ce qui perdait AUSSI le départage.
+  return Number.isNaN(n) ? null : n;
+}
+
 /** Numéro d'exercice depuis le label du sujet réel (arabe ou romain). */
 function numeroExercice(label?: string): number {
   if (!label) return 99;
   const m = label.match(/Exercice\s+([IVX]+|\d+)/i);
   if (!m) return 99;
-  const brut = m[1].toUpperCase();
-  return ROMAINS[brut] ?? parseInt(brut, 10) ?? 99;
+  return romainOuArabe(m[1]) ?? 99;
+}
+
+const ORDINAUX: ReadonlyArray<readonly [RegExp, number]> = [
+  [/premi[eè]re?|1\s*[eè]?re/i, 1],
+  [/deuxi[eè]me|seconde/i, 2],
+  [/troisi[eè]me/i, 3],
+  [/quatri[eè]me/i, 4],
+];
+
+/**
+ * Rang de la SOUS-PARTIE dans son exercice, en deux niveaux — `[0, 0]` quand
+ * l'exercice n'est pas découpé.
+ *
+ * POURQUOI. Un exercice du bac se découpe souvent entre plusieurs notions, et
+ * chaque morceau garde le libellé imprimé sur la copie. Le tri ne regardait
+ * que le numéro d'exercice, puis départageait les morceaux au `localeCompare`
+ * — c'est-à-dire alphabétiquement. Or l'alphabet n'est pas l'ordre du sujet :
+ * « Partie 2 » passait avant « Partie I » (le chiffre 2 précède la lettre I),
+ * et « Deuxième partie » avant « Première partie ». Mesuré sur le corpus au
+ * 2026-08-27, NEUF épreuves sortaient dans le désordre, dont huit affichées
+ * à 20,00/20 — un élève lisait la partie 2 de la chimie avant la partie 1.
+ *
+ * Les quatre conventions du corpus, dans l'ordre où on les cherche : le
+ * paragraphe « §N » ; le jeton de tête (« I- », « 2. », « II. ») ; « Partie N »
+ * ou « Partie II » n'importe où ; enfin l'ordinal en toutes lettres accolé à
+ * « partie » ou « situation ». Le second niveau porte « sous-partie N » et le
+ * chiffre d'un « I-2 ». Un libellé qui ne relève d'aucune retombe à `[0, 0]`
+ * et garde le départage alphabétique — inchangé pour lui.
+ */
+function sousOrdre(label?: string): [number, number] {
+  if (!label) return [0, 0];
+  const q = label.replace(/^.*?Exercice\s+(?:[IVX]+|\d+)?/i, "");
+  let a = 0;
+  let b = 0;
+  let m: RegExpMatchArray | null;
+  if ((m = q.match(/§\s*(\d+)/))) {
+    a = parseInt(m[1], 10);
+  } else if ((m = q.match(/^\s*[—–-]?\s*([IVX]+|\d+)\s*[.\-)]/i))) {
+    a = romainOuArabe(m[1]) ?? 0;
+    const sousJeton = q.match(/^\s*[—–-]?\s*[IVX]+\s*-\s*(\d+)/i);
+    if (sousJeton) b = parseInt(sousJeton[1], 10);
+  } else if ((m = q.match(/partie\s+([IVX]+|\d+)/i))) {
+    a = romainOuArabe(m[1]) ?? 0;
+  } else {
+    for (const [re, v] of ORDINAUX) {
+      if (re.test(q) && /partie|situation/i.test(q)) {
+        a = v;
+        break;
+      }
+    }
+  }
+  const sousPartie = q.match(/sous-partie\s+(\d+)/i);
+  if (sousPartie) b = parseInt(sousPartie[1], 10);
+  return [a, b];
 }
 
 function matierePour(filiere: string): string {
@@ -109,11 +173,17 @@ export function listEpreuves(): Epreuve[] {
 
   const epreuves = [...groupes.values()]
     .map((ep) => {
-      // L'ordre du sujet réel : par numéro d'exercice, puis par titre pour
-      // les sous-parties d'un même exercice (§1 avant §2 par tri lexical).
+      // L'ordre du sujet réel : numéro d'exercice, puis rang de la sous-partie
+      // (§N, « Partie II », « Première partie »… — voir sousOrdre), et le
+      // titre en dernier recours seulement.
       ep.exercices.sort((a, b) => {
-        const d = numeroExercice(a.exerciseLabel) - numeroExercice(b.exerciseLabel);
-        return d !== 0 ? d : (a.exerciseLabel ?? "").localeCompare(b.exerciseLabel ?? "", "fr");
+        let d = numeroExercice(a.exerciseLabel) - numeroExercice(b.exerciseLabel);
+        if (d !== 0) return d;
+        const sa = sousOrdre(a.exerciseLabel);
+        const sb = sousOrdre(b.exerciseLabel);
+        d = sa[0] - sb[0] || sa[1] - sb[1];
+        if (d !== 0) return d;
+        return (a.exerciseLabel ?? "").localeCompare(b.exerciseLabel ?? "", "fr");
       });
       ep.pts = Math.round(ep.pts * 100) / 100;
       ep.complete = ep.pts >= COMPLETE_MIN;
