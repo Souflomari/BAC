@@ -17,16 +17,22 @@
 # scalars pour la prose, KaTeX brut entre apostrophes simples dans
 # steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue) : onze sujets « vérifié » couvrent
-# désormais cette notion, 2018 N à 2025 N — 2018 N, 2019 N, 2020 N, 2021 N
+# NOTE ÉDITORIALE (pour la revue) : treize sujets « vérifié » couvrent
+# désormais cette notion, 2018 N à 2025 R — 2018 N, 2019 N, 2020 N, 2021 N
 # (première vague) puis 2022 N (Partie 1 « bille » + Partie 2 « satellite »,
 # deux entrées sœurs bk-2022-n-x4 / bk-2022-n-x4b), 2023 N, 2024 N et 2025 N
 # (cinq entrées ajoutées en août 2026 : bk-2022-n-x4, bk-2022-n-x4b,
 # bk-2023-n-x4, bk-2024-n-x5, bk-2025-n-x4), puis 2021 R (bk-2021-r-x5,
 # tir à l'arc — PREMIÈRE entrée de session de RATTRAPAGE de cette banque,
-# insérée à sa place chronologique entre 2021 N et 2022 N), enfin 2023 R
+# insérée à sa place chronologique entre 2021 N et 2022 N), 2023 R
 # (bk-2023-r-x4, le service au volley-ball — DEUXIÈME entrée de rattrapage,
-# insérée entre 2023 N et 2024 N). La notion couvre
+# insérée entre 2023 N et 2024 N), 2024 R (bk-2024-r-x5b, chute libre après
+# un plan incliné, dans un repère où i pointe à gauche et j vers le bas —
+# TROISIÈME entrée de rattrapage, insérée entre 2024 N et 2025 N), et enfin
+# 2025 R (bk-2025-r-x4, le skieur — QUATRIÈME et, à ce jour, DERNIÈRE entrée
+# de rattrapage, qui referme la campagne 2018–2025 sans lacune connue :
+# voir son flag de jumelage face à bk-2019-n-x4 et bk-2024-r-x5b, en tête de
+# son entrée, pour ce qui la distingue des deux). La notion couvre
 # donc désormais la période 2018–2025 sans lacune connue. Le 2020 N (Exercice V, chute
 # d'une bille dans un liquide visqueux) sert AUSSI de sommet de leçon (r-bac,
 # exercises.yaml, marqueur [[exercise:r-bac]] à R11 « Exercice de type bac ») :
@@ -95,6 +101,16 @@
 #     retrouver v_(i-1) À PARTIR de a_(i-1) donné, avant d'appliquer la
 #     récurrence d'Euler standard vers l'avant. Le rung 8 ne modélise
 #     jamais explicitement ce sens inverse ; ponté au point d'usage.
+#   - bk-2025-r-x4, q3 : le point de chute E est l'intersection de la
+#     trajectoire parabolique avec la droite du plan incliné — pas avec
+#     l'axe horizontal y=0. Le rung 4 ne calcule que la PORTÉE (l'intersection
+#     avec y=0, un cas particulier) ; il ne montre jamais explicitement la
+#     résolution d'un système {parabole ; droite oblique quelconque}. La
+#     méthode reste la même dans l'esprit (poser deux équations, éliminer une
+#     inconnue commune) mais le geste — écrire l'équation de la droite du
+#     plan à partir de sa description graphique, PUIS résoudre le système —
+#     n'est modélisé nulle part pas à pas. Ponté au point d'usage dans le
+#     raisonnement de la question 3.
 #   - bk-2023-r-x4, q1 et q2 : l'origine du repère est au SOL, pas au
 #     point de lancement. Les rungs 2 et 3 placent SYSTÉMATIQUEMENT
 #     l'origine au point de lancement (« L'origine est prise au point de
@@ -1786,3 +1802,224 @@ entries:
             note: "Application numerique."
           - math: '\boxed{m_T \approx 6{,}0\times 10^{24}\ \text{kg}}'
             note: "Coherent avec la masse reelle de la Terre (environ 5,97e24 kg en table)."
+
+  # ── bk-2025-r-x4 — 2025 R, Exercice 4 (§1) : chute libre d'un skieur,
+  #    impact sur un plan incline trouve par intersection de deux courbes ──
+  #
+  # NOTE ÉDITORIALE — DÉCISION DE CLASSEMENT (cross-list lois-de-newton, NON
+  # dédoublé). Le classement du vérificateur ajoute lois-de-newton à cette
+  # partie, parce que la question 1 dit explicitement « en appliquant la
+  # deuxième loi de Newton ». Elle n'est PAS extraite en entrée séparée :
+  # l'assemblage d'épreuves (web/src/lib/examens.ts) somme les bareme_total,
+  # et détacher une seule question de 0,5 pt créerait à la fois un doublon de
+  # barème si on la duplique et un orphelin illisible si on la détache. Le
+  # cross-list est honoré autrement : le raisonnement de la question 1 nomme
+  # explicitement le domaine et renvoie l'élève à la leçon « Les lois de
+  # Newton », dont la deuxième loi est le mécanisme central — appliquée ici,
+  # comme au rung 2 de cette leçon-ci, au cas particulier de la chute libre.
+  # Même règle que pour systemes-oscillants bk-2023-r-x4b (cross-list
+  # aspects-energetiques) et bk-2025-r-x4b (cross-lists rotation-axe-fixe et
+  # aspects-energetiques), écrites ce même soir. À l'arbitrage de l'owner.
+  #
+  # NOTE ÉDITORIALE — FLAG DE JUMELAGE (bk-2025-r-x4 face à bk-2019-n-x4 et
+  # bk-2024-r-x5b). Les trois entrées mêlent chute libre après un lancer et
+  # une surface d'arrivée non horizontale, mais le geste qui coûte les points
+  # diffère :
+  #   — bk-2019-n-x4 (saut en longueur à moto) lance à un angle alpha ET
+  #     atterrit sur un sol HORIZONTAL — la portée classique du rung 4,
+  #     résolue en factorisant y(t) = 0 ;
+  #   — bk-2024-r-x5b lance depuis un plan incliné (le solide QUITTE le plan
+  #     à l'angle alpha) mais retombe en un point N dont les coordonnées sont
+  #     DONNÉES par l'énoncé — aucune intersection à chercher, seulement une
+  #     vérification par substitution ;
+  #   — bk-2025-r-x4 (ici) lance HORIZONTALEMENT (alpha = 0 au départ) mais
+  #     atterrit sur un plan incliné dont la position n'est PAS donnée : il
+  #     faut poser le système {trajectoire ; droite du plan} et le résoudre
+  #     pour trouver E — un geste que le rung 4 ne montre jamais tel quel (il
+  #     ne traite explicitement que y = 0). C'est la seule des trois entrées
+  #     où le point de chute est un véritable inconnu à deux équations.
+  # Proposition : garder les trois, elles couvrent trois configurations
+  # différentes de rencontre avec le sol. À l'arbitrage de l'owner.
+  - id: bk-2025-r-x4
+    title: "Chute libre d'un skieur : trajectoire parabolique et impact sur un plan incliné trouvé par intersection"
+    source:
+      year: 2025
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — §1 : Mouvement d'un skieur"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS28F, AlloSchool
+        https://www.alloschool.com/element/145799, scan
+        course-422/upload-87492, pages 5 (fin) et 6 sur 6 (Exercice 4, §1 —
+        mouvement de chute libre d'un skieur après un tremplin, impact sur un
+        plan incliné ; barème de la partie = 2,0 pt, recompté question par
+        question : 0,5 + 0,5 + 1 = 2,0, sur les 5,5 pt de l'exercice complet,
+        dont le §2 — pendule de torsion — est transcrit sous
+        systemes-oscillants/bank.yaml en bk-2025-r-x4b. L'énoncé précise que
+        les deux parties sont indépendantes). Transcription vérifiée par une
+        passe adversariale indépendante (2026-08-23,
+        docs/sujets/_incoming/pc-spc-2025-r.md, statut « vérifié ») :
+        re-fetch indépendant de element/145799 et des 6 scans, caractère par
+        caractère, figure 1 re-décrite depuis le dessin, ORIENTATION DU
+        REPÈRE confirmée — axe $y$ vertical ASCENDANT, axe $x$ horizontal,
+        origine en $O$ : le repère usuel du rung 2 de la leçon, PAS le
+        repère inversé (i vers la gauche, j vers le bas) de bk-2024-r-x5b
+        dans cette même banque. Physique re-dérivée et cohérente avec
+        l'énoncé : $x(t)=30t$, $y(t)=-5t^2$, d'où
+        $y=-g/(2V_0^2)\,x^2=-10/1800\,x^2=-5{,}56\times10^{-3}\,x^2$ —
+        exactement l'expression imprimée à la question 2. Le vérificateur
+        signale qu'aucune incohérence n'a été relevée sur l'ensemble du
+        sujet. CONTRE-CALCUL DE LA QUESTION 3, refait ici, chiffre par
+        chiffre — l'énoncé demande de « trouver » $d=OE$ sans donner de
+        valeur de contrôle, donc ce calcul n'est PAS une vérification mais
+        une dérivation originale : la droite du plan incliné, lue sur la
+        figure 1 (part de $O$, descend à l'angle $\alpha=20°$ sous
+        l'horizontale jusqu'à $Q$), s'écrit $y=-x\tan\alpha$ ; en l'égalant
+        à la trajectoire, $x_E=\tan\alpha/(5{,}56\times10^{-3})=
+        0{,}36397/0{,}00556\approx65{,}5\ \text{m}$,
+        $y_E=-x_E\tan\alpha\approx-23{,}8\ \text{m}$ (recoupé par
+        $y=-5{,}56\times10^{-3}\,x_E^2\approx-23{,}9\ \text{m}$, à l'arrondi
+        près), puis $d=OE=x_E/\cos\alpha\approx69{,}7\ \text{m}$. Aucune
+        valeur officielle à comparer ; ce résultat est original à cette
+        transcription et signalé comme tel plutôt que recopié.
+    intro: |-
+      **Mouvement d'un skieur : chute libre après un tremplin (examen national, session de rattrapage 2025 — Exercice 4, §1, 2 points).**
+
+      *Les deux parties de cet exercice sont indépendantes. Le §2 — un pendule de torsion — est traité à part, sous la notion « Systèmes oscillants ». Rien de ce qui suit n'en dépend.*
+
+      On étudie dans cette partie le mouvement de chute libre d'un skieur. Le skieur part du point $A$ de la piste $AO$ et arrive au point $O$ avec une vitesse $V_0 = 30\ \text{m.s}^{-1}$ (figure 1). A son arrivé au point $O$, le skieur quitte la piste et on le considère en chute libre. La trajectoire du mouvement du skieur est située dans un plan vertical. On modélise le skieur et son équipement par un solide $(S)$, de masse $m$ et de centre d'inertie $G$.
+
+      **Donnée :** Intensité de la pesanteur : $g = 10\ \text{m.s}^{-2}$.
+
+      On étudie le mouvement de chute libre du skieur dans un référentiel terrestre supposé galiléen. A $t = 0$, le centre d'inertie $G$ coïncide avec $O$.
+
+      **Figure 1 (schéma, re-décrit depuis l'image, p. 5) :** repère $(O, x, y)$ : axe $y$ vertical ascendant, axe $x$ horizontal vers la droite passant par $O$. En haut à gauche, le point $A$, relié à l'axe $y$ par un trait en tirets horizontal ; de $A$ part une courbe concave (la piste) qui descend et s'infléchit pour arriver horizontalement en $O$, origine du repère. En $O$, les vecteurs unitaires $\vec{j}$ (vertical, sur l'axe $y$) et $\vec{i}$ (horizontal, sur l'axe $x$), puis le vecteur vitesse $\vec{V}_0$ horizontal vers la droite le long de l'axe $x$. Sous l'axe $x$, une droite oblique descendant de $O$ vers la droite (le plan incliné) jusqu'au point $Q$ en bas à droite ; un **segment horizontal explicite**, tracé sous l'axe $x$ et aboutissant en $Q$, matérialise l'horizontale ; l'angle entre le plan incliné et ce segment est marqué $\alpha$ (arc) en $Q$. Sur le plan incliné, le point $E$ (point noir) avec ses coordonnées repérées en tirets : $x_E$ sur l'axe $x$ (au-dessus) et $y_E$ sur l'axe $y$ (à gauche, sous $O$). Légende : « Figure 1 ».
+    questions:
+      - id: q1
+        part: "§1 — Mouvement du skieur : établir le modèle, par la deuxième loi de Newton"
+        stem: |-
+          **1-** (0,5 pt) En appliquant la deuxième loi de Newton, établir, dans le repère orthonormé $(O, \vec{i}, \vec{j})$ lié au référentiel terrestre, les équations horaires numériques du mouvement $x(t)$ et $y(t)$ du centre d'inertie $G$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La deuxième loi de Newton elle-même — $\sum \vec F_{ext} = m\vec a_G$ — appartient au chapitre « Les lois de Newton », où elle est établie comme LE mécanisme central de toute la mécanique newtonienne ; c'est elle que l'énoncé demande d'appliquer, en toutes lettres. Ici on l'applique au cas particulier de la chute libre après un lancer horizontal — exactement la méthode du rung 2 de cette leçon-ci (chute-mouvements-plans), avec un angle de lancement particulièrement simple : $\alpha = 0$.
+
+          **Le système, le référentiel, le bilan.** Système : le solide $(S)$, de masse $m$, réduit à son centre d'inertie $G$. Référentiel terrestre, supposé galiléen — l'énoncé le précise. « Chute libre » a un sens précis, déjà rencontré au rung 1 : le skieur n'est soumis qu'à son poids. Une seule force :
+
+          $$\vec P = m\vec a_G \implies \vec a_G = \vec g$$
+
+          La masse disparaît, comme toujours en chute libre.
+
+          **La projection, avec le repère de la figure 1.** L'axe $y$ est vertical **ascendant**, l'axe $x$ horizontal — c'est très exactement le repère du rung 2, pas celui, inversé, d'une autre entrée de cette banque (bk-2024-r-x5b). $\vec g$ pointe vers le bas, donc dans le sens **opposé** à $\vec j$ :
+
+          $$a_x = 0 \qquad a_y = -g = -10\ \text{m.s}^{-2}$$
+
+          **Les conditions initiales.** A $t=0$, $G$ coïncide avec $O$, l'origine : $x(0)=0$, $y(0)=0$. La vitesse $\vec V_0$ est horizontale — le vecteur, sur la figure, est porté tout entier par l'axe $x$ — donc entièrement portée par $\vec i$ :
+
+          $$V_{0x} = V_0 = 30\ \text{m.s}^{-1} \qquad V_{0y} = 0$$
+
+          C'est le cas particulier $\alpha=0$ du rung 2 : $v_{0x}=v_0\cos 0^\circ=v_0$ et $v_{0y}=v_0\sin 0^\circ=0$.
+
+          **Deux primitivations.**
+
+          $$v_x(t) = V_0 \qquad v_y(t) = -g\,t$$
+
+          $$\boxed{x(t) = V_0\,t = 30\,t} \qquad \boxed{y(t) = -\frac12 g\,t^2 = -5\,t^2}$$
+
+          (en mètres, $t$ en secondes.)
+
+          **Le piège nommé de cette question.** Décomposer $V_0$ avec un sinus et un cosinus comme si le lancer était incliné. Ici $V_0$ est **horizontale** — le vecteur $\vec V_0$ de la figure 1 est porté par l'axe $x$ tout entier — donc $V_{0y}=0$ sans aucun calcul trigonométrique à faire ; l'écrire quand même (en insérant un angle qui n'existe pas dans cette question) ne change rien numériquement ici, mais c'est le réflexe qui, à la question suivante, ferait perdre le lien direct entre le coefficient de $t^2$ et $g/2$.
+        steps:
+          - math: '\vec P = m\vec a_G \implies \vec a_G = \vec g'
+            note: "Deuxieme loi de Newton (chapitre Les lois de Newton) : chute libre, une seule force, le poids."
+          - math: 'a_x = 0 \qquad a_y = -g = -10\ \text{m.s}^{-2}'
+            note: "Projection sur (O, i, j) : j vertical ascendant (rung 2), g oppose a j."
+          - math: 'V_{0x}=V_0=30\ \text{m.s}^{-1} \qquad V_{0y}=0'
+            note: "V0 est horizontale sur la figure 1 : cas particulier alpha=0 du rung 2."
+          - math: '\boxed{x(t) = 30\,t} \qquad \boxed{y(t) = -5\,t^2}'
+            note: "Deux primitivations, avec les conditions initiales x(0)=y(0)=0 (G confondu avec O a t=0)."
+      - id: q2
+        stem: |-
+          **2-** (0,5 pt) Déduire que l'équation de la trajectoire du centre d'inertie $G$ s'écrit : $y = -5{,}56\cdot10^{-3}\,x^{2}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Même geste qu'au rung 3 : éliminer le temps entre les deux équations horaires pour obtenir la forme géométrique $y(x)$ de la trajectoire, indépendante de l'instant considéré.
+
+          **On isole $t$ dans la relation la plus simple.**
+
+          $$x=30\,t \implies t=\frac{x}{30}$$
+
+          **On reporte dans $y(t)$.**
+
+          $$y=-5\left(\frac{x}{30}\right)^2=-\frac{5}{900}x^2$$
+
+          **Le calcul du coefficient, chiffre par chiffre.**
+
+          $$\frac{5}{900}=\frac{1}{180}=5{,}555\ldots\times10^{-3}\approx5{,}56\times10^{-3}$$
+
+          $$\boxed{y=-5{,}56\times10^{-3}\,x^2}$$
+
+          **Pourquoi il n'y a pas de terme en $x$.** Au rung 3, la formule générale est $y(x)=\tan\alpha\cdot x - \dfrac{g}{2v_0^2\cos^2\alpha}x^2$ ; ici $\alpha=0$, donc $\tan\alpha=0$ et le premier terme disparaît entièrement — ce n'est pas un cas oublié par la leçon, c'est exactement la limite $\alpha\to0°$ déjà vérifiée au rung 2 (« si $\alpha\to0°$, $v_{0y}=0$ »). Ne pas s'étonner de l'absence du terme linéaire : c'est la signature d'un lancer parfaitement horizontal.
+
+          **Le piège nommé de cette question.** Oublier le carré au dénominateur du diviseur $30$ et écrire $-5/30=-0{,}167$ au lieu de $-5/900$. Le contrôle immédiat : $30^2=900$, jamais $30$.
+        steps:
+          - math: 't=\frac{x}{30}'
+            note: "On isole t dans x(t) (la plus simple des deux equations, rung 3)."
+          - math: 'y = -5\left(\frac{x}{30}\right)^2 = -\frac{5}{900}x^2'
+            note: "On reporte dans y(t)."
+          - math: '\boxed{y = -5{,}56\times10^{-3}\,x^2}'
+            note: "5/900 = 1/180 = 5,555...e-3, arrondi a 5,56e-3."
+      - id: q3
+        stem: |-
+          **3-** (1 pt) Le skieur tombe au point $E$ du plan incliné de l'angle $\alpha = 20°$ par rapport à l'horizontale. Trouver la distance $d = OE$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La question la plus chère de la partie, et un geste que la leçon (rung 4) ne montre jamais tel quel : le rung 4 calcule la **portée**, c'est-à-dire l'intersection de la trajectoire avec l'axe horizontal $y=0$ — un cas particulier. Ici, le sol d'atterrissage n'est pas horizontal, c'est le plan incliné de la figure 1 : il faut **poser le système** formé par les deux courbes — la trajectoire parabolique et la droite du plan incliné — et le résoudre, sans deviner.
+
+          **L'équation de la droite du plan incliné, lue sur la figure 1.** Le plan part de $O$ et descend vers la droite jusqu'à $Q$, à l'angle $\alpha$ sous l'horizontale (l'arc marqué en $Q$, entre le plan et le segment horizontal explicite tracé sous l'axe $x$). Pour tout point du plan, d'abscisse $x\geq0$, l'ordonnée est donc :
+
+          $$y_{plan}(x) = -x\tan\alpha$$
+
+          (le signe moins parce que $y$ est ascendant et que le plan descend sous $O$).
+
+          **Le système à résoudre.** Le point $E$ appartient à la fois à la trajectoire (question 2) et au plan incliné :
+
+          $$\begin{cases} y = -5{,}56\times10^{-3}\,x^2 \\ y = -x\tan\alpha \end{cases}$$
+
+          **On égale les deux membres de droite.**
+
+          $$-5{,}56\times10^{-3}\,x^2 = -x\tan\alpha$$
+
+          $$x\left(5{,}56\times10^{-3}\,x - \tan\alpha\right)=0$$
+
+          Deux solutions : $x=0$ (c'est $O$ lui-même, le point de départ — à rejeter, ce n'est pas $E$) et :
+
+          $$x_E = \frac{\tan\alpha}{5{,}56\times10^{-3}}$$
+
+          **L'application numérique, chiffre par chiffre.** $\tan 20° = 0{,}36397$.
+
+          $$x_E = \frac{0{,}36397}{5{,}56\times10^{-3}} \approx 65{,}5\ \text{m}$$
+
+          **On reporte pour trouver $y_E$**, sur l'une ou l'autre équation (les deux doivent s'accorder — c'est le contrôle) :
+
+          $$y_E = -x_E\tan\alpha = -65{,}5\times0{,}36397 \approx -23{,}8\ \text{m}$$
+
+          Vérification par la trajectoire : $y_E=-5{,}56\times10^{-3}\times65{,}5^2\approx-23{,}9\ \text{m}$ — les deux méthodes s'accordent, à l'arrondi près.
+
+          **La distance $OE$, le long du plan — pas une différence de coordonnées.** $E$ est sur le plan incliné, donc la distance $d=OE$ se relie à $x_E$ par le cosinus de l'angle du plan (le triangle rectangle formé par $O$, le pied de $E$ sur l'axe $x$, et $E$) :
+
+          $$d = \frac{x_E}{\cos\alpha} = \frac{65{,}5}{0{,}93969}$$
+
+          $$\boxed{d \approx 69{,}7\ \text{m}}$$
+
+          **Le piège nommé de cette question.** Confondre $x_E$ (l'abscisse) avec $d=OE$ (la distance parcourue le long du plan). $x_E$ n'est que la projection horizontale de $OE$ ; $E$ étant sur une pente à $20°$, la distance réelle le long du plan est plus grande que $x_E$ — c'est précisément pour ça qu'on divise par $\cos\alpha$ (inférieur à 1) plutôt que de recopier $x_E$ tel quel.
+        steps:
+          - math: 'y_{plan}(x) = -x\tan\alpha'
+            note: "Droite du plan incline, lue sur la figure 1 : part de O, descend a l'angle alpha sous l'horizontale."
+          - math: '-5{,}56\times10^{-3}\,x^2 = -x\tan\alpha \implies x_E = \frac{\tan\alpha}{5{,}56\times10^{-3}}'
+            note: "On pose le systeme trajectoire + plan incline et on ecarte la solution x=0 (le point O lui-meme)."
+          - math: 'x_E = \frac{0{,}36397}{5{,}56\times10^{-3}} \approx 65{,}5\ \text{m} \qquad y_E \approx -23{,}8\ \text{m}'
+            note: "Application numerique ; y_E verifie par les deux equations."
+          - math: '\boxed{d = OE = \frac{x_E}{\cos\alpha} \approx 69{,}7\ \text{m}}'
+            note: "Distance le long du plan, pas la simple abscisse x_E : on divise par cos(alpha)."

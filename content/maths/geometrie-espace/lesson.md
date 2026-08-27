@@ -303,6 +303,36 @@ $$ax+by+cz+d=0$$
 
 C'est l'**équation cartésienne** du plan : les coefficients $a,b,c$ de $x,y,z$ sont exactement les coordonnées du vecteur normal $\vec{n}$ — pas la constante $d$, qui ne fait que coder la position du plan (à quelle « distance » de l'origine, le long de $\vec{n}$).
 
+### Le plan médiateur : les points à égale distance de deux points
+
+Voici une application immédiate de ce qu'on vient d'écrire, et un objet qu'un sujet demande sans toujours le nommer : l'ensemble des points $M$ de l'espace **équidistants** de deux points fixes $A$ et $B$ distincts.
+
+$$\mathcal{E} = \left\{\,M \ ;\ MA = MB\,\right\}$$
+
+**Ce n'est pas une droite.** Dans le plan, le lieu des points équidistants de $A$ et $B$ est la médiatrice du segment $[AB]$ — une droite. Dans l'espace, la même condition définit un **plan**, appelé **plan médiateur** de $[AB]$. C'est la première chose à se dire : on monte d'une dimension, le lieu aussi.
+
+**La démonstration tient en trois lignes**, et elle n'utilise que le R1 et le R2. Note $I$ le milieu de $[AB]$. On élève la condition au carré pour éliminer les racines :
+
+$$MA = MB \iff MA^2 = MB^2 \iff \overrightarrow{MA}^2 - \overrightarrow{MB}^2 = 0$$
+
+On factorise cette différence de carrés comme on le ferait avec des nombres, ce qui est licite pour le produit scalaire :
+
+$$\left(\overrightarrow{MA}-\overrightarrow{MB}\right)\cdot\left(\overrightarrow{MA}+\overrightarrow{MB}\right) = 0$$
+
+Or $\overrightarrow{MA}-\overrightarrow{MB} = \overrightarrow{BA}$ (relation de Chasles), et $\overrightarrow{MA}+\overrightarrow{MB} = 2\,\overrightarrow{MI}$ puisque $I$ est le milieu de $[AB]$. La condition devient :
+
+$$2\,\overrightarrow{BA}\cdot\overrightarrow{MI} = 0
+\qquad\Longleftrightarrow\qquad
+\overrightarrow{AB}\cdot\overrightarrow{IM} = 0$$
+
+**Lis le résultat.** C'est exactement la forme $\vec{n}\cdot\overrightarrow{A_0M}=0$ posée en tête de ce rung, avec $\vec{n} = \overrightarrow{AB}$ et $A_0 = I$ :
+
+$$\boxed{\ \mathcal{E} \text{ est le plan passant par le milieu } I \text{ de } [AB]\text{, de vecteur normal } \overrightarrow{AB}\ }$$
+
+Son équation cartésienne s'écrit donc immédiatement, sans aucun calcul supplémentaire : on prend les coordonnées de $\overrightarrow{AB}$ pour $(a,b,c)$, et on ajuste la constante pour que $I$ satisfasse l'équation.
+
+*Le piège nommé :* faire passer le plan par $A$ ou par $B$ au lieu du **milieu**. Le contrôle qui tranche en une seconde : $I$ est à égale distance de $A$ et de $B$ par construction, donc il appartient forcément au lieu ; $A$, lui, est à distance $0$ de $A$ et $AB$ de $B$ — il n'y appartient pas.
+
 ### Trouver un plan à partir de trois points
 
 Si on connaît trois points non alignés $A_0$, $B_0$, $C_0$ d'un plan plutôt qu'un vecteur normal directement, on fabrique ce vecteur normal avec l'outil du R3 : $\overrightarrow{A_0B_0}$ et $\overrightarrow{A_0C_0}$ sont deux vecteurs du plan, donc $\vec{n} = \overrightarrow{A_0B_0}\wedge\overrightarrow{A_0C_0}$ est orthogonal aux deux à la fois — c'est un vecteur normal au plan.
@@ -469,6 +499,29 @@ $$d\left(S,(ABC)\right) = \frac{|0+0+2-0|}{\sqrt{0^2+0^2+1^2}} = 2$$
 Puisque $d=2<R=3$, l'intersection est un cercle, de rayon $\sqrt{R^2-d^2}=\sqrt{9-4}=\sqrt5$. Son centre est le projeté orthogonal de $S$ sur $(ABC)$ : comme $\overrightarrow{AS}$ est déjà perpendiculaire à ce plan (le tétraèdre est trirectangle en $A$), ce projeté est exactement $A$. Le cercle d'intersection est donc centré en $A$, de rayon $\sqrt5$.
 
 [[figure:sphere-plan]]
+
+### Intersection d'une sphère et d'une DROITE : le même Pythagore
+
+Un sujet remplace parfois le plan par une **droite**. N'apprends pas un second résultat : c'est rigoureusement le même raisonnement, avec un seul mot changé.
+
+Soit une sphère de centre $\Omega$ et de rayon $R$, et une droite $\mathcal D$. Note $H$ le projeté orthogonal de $\Omega$ sur $\mathcal D$, et $d = \Omega H = d(\Omega,\mathcal D)$ — la distance d'un point à une **droite**, celle du R8, calculée avec le produit vectoriel et non avec l'équation cartésienne. Pour tout point $M$ commun à la sphère et à la droite, le triangle $\Omega H M$ est rectangle en $H$, avec $\Omega M = R$, et Pythagore donne exactement la même relation :
+
+$$R^2 = d^2 + HM^2$$
+
+Trois cas, selon la comparaison de $d$ et $R$ :
+
+- $d > R$ : **aucun point commun** — la droite passe à côté de la sphère ;
+- $d = R$ : **un seul point commun**, $H$ lui-même ; la droite est **tangente** à la sphère en $H$ ;
+- $d < R$ : $HM = \sqrt{R^2-d^2}$, et il y a **deux points communs**, symétriques par rapport à $H$ sur la droite. Le segment qui les joint est une **corde** de la sphère, de longueur $2\sqrt{R^2-d^2}$.
+
+### Arrête-toi : ce qui change entre le plan et la droite
+
+Les deux premiers cas sont identiques mot pour mot. **C'est le troisième qui diffère, et c'est le seul point à retenir séparément.** Quand $d<R$ :
+
+- avec un **plan**, l'ensemble des points communs est un **cercle** de rayon $\sqrt{R^2-d^2}$ — parce que $M$ peut s'éloigner de $H$ dans toutes les directions du plan ;
+- avec une **droite**, il n'y a que **deux points** — parce que $M$ ne peut s'éloigner de $H$ que dans deux sens, en avant ou en arrière sur la droite.
+
+La relation de Pythagore est la même ; c'est la dimension de l'objet qui coupe qui décide de la forme du résultat. Une seule autre vigilance : $d(\Omega,\mathcal D)$ et $d(\Omega,\mathcal P)$ ne se calculent **pas** avec la même formule — reviens au R8 et prends la bonne.
 
 ---
 

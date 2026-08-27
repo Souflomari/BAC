@@ -17,13 +17,25 @@
 # entre apostrophes simples dans steps[].math, notes sans backslash ni
 # accent).
 #
-# NOTE ÉDITORIALE (pour la revue). Trois sujets « vérifié » couvrent cette
-# notion à ce jour : 2018 N, 2023 N, 2025 N — les TROIS sont chacun la
-# « Partie II » (ou « Partie 2 ») d'un exercice dont la Partie I (ou 1) porte
-# sur un tout autre thème et est déjà bancarisée sous chute-mouvements-plans
-# (siblings : bk-2018-n-x4 / bk-2018-n-x4b, bk-2023-n-x4 / bk-2023-n-x4b,
-# bk-2025-n-x4 / bk-2025-n-x4b — même convention de suffixe « b » que
-# bk-2022-n-x4 / bk-2022-n-x4b dans ce fichier-là).
+# NOTE ÉDITORIALE (pour la revue). Six sujets « vérifié » couvrent cette
+# notion à ce jour : 2018 N, 2022 R, 2023 N, 2023 R et 2025 N — cinq pendules
+# ÉLASTIQUES — et 2025 R (bk-2025-r-x4b), le PREMIER pendule de TORSION de
+# cette banque, ajouté ce même soir : voir son flag de jumelage face aux
+# cinq autres, en tête de son entrée, pour ce qu'un pendule de torsion
+# apporte de différent (même équation différentielle, rung R4, mais un autre
+# habillage physique : moment d'inertie au lieu de masse, constante de
+# torsion au lieu de raideur). 2018 N, 2023 N et 2025 N sont chacun la
+# « Partie II » (ou « Partie 2 ») d'un exercice de session normale dont la
+# Partie I (ou 1) porte sur un tout autre thème et est déjà bancarisée sous
+# chute-mouvements-plans (siblings : bk-2018-n-x4 / bk-2018-n-x4b,
+# bk-2023-n-x4 / bk-2023-n-x4b, bk-2025-n-x4 / bk-2025-n-x4b — même
+# convention de suffixe « b » que bk-2022-n-x4 / bk-2022-n-x4b dans ce
+# fichier-là). 2022 R, 2023 R et 2025 R sont, de la même façon, chacun le
+# « §2 » (ou « Partie 2 ») d'un exercice de session de RATTRAPAGE dont
+# l'autre partie vit sous lois-de-newton/bank.yaml (bk-2022-r-x4, plan
+# incliné avec frottement) ou chute-mouvements-plans/bank.yaml (bk-2023-r-x4,
+# le service au volley-ball ; bk-2025-r-x4, la chute libre d'un skieur) :
+# même convention de suffixe « b ».
 #
 # RECOUPEMENT ASSUMÉ avec le sommet de leçon : le sujet 2018 (bk-2018-n-x4b)
 # est LE MÊME sujet que r-bac (exercises.yaml, marqueur [[exercise:r-bac]] à
@@ -36,8 +48,9 @@
 # chute-mouvements-plans/bank.yaml. À l'arbitrage de l'owner si l'on préfère
 # écarter cette entrée, ou n'y garder que la question 1, pour éviter le
 # chevauchement de contenu sur la même page (drapeau reporté à l'orchestrateur
-# — voir aussi le rapport de conversion). bk-2023-n-x4b et bk-2025-n-x4b ne
-# recoupent PAS le sommet (r-variation n'est pas un sujet sourcé).
+# — voir aussi le rapport de conversion). bk-2022-r-x4b, bk-2023-n-x4b,
+# bk-2023-r-x4b, bk-2025-n-x4b et bk-2025-r-x4b ne recoupent PAS le sommet
+# (r-variation n'est pas un sujet sourcé).
 #
 # SCOPE NOTES (techniques mobilisées au-delà de ce que la leçon montre
 # explicitement pas à pas — pontées au point d'usage dans le raisonnement de
@@ -73,6 +86,13 @@
 #     plus indirect que la lecture directe de Xm en ordonnée pratiquée au
 #     sujet 2018 ci-dessus. Signalé au point d'usage, pour mémoire — pas une
 #     lacune de fond.
+#   - bk-2025-r-x4b, q2b (2-2) : θm se lit ici indirectement via
+#     θ̇_max = θm.(2π/T0) (la courbe donnée est celle de la VITESSE ANGULAIRE
+#     θ̇(t), pas de l'angle θ(t) lui-même) — le même geste, en rotation, que
+#     bk-2025-n-x4b ci-dessus en translation (Xm via v_x,max = Xm.ω0) : une
+#     synthèse des relations déjà données au rung R4 (θ̇(t) obtenue par
+#     dérivation de θ(t) à la question 2-1), pas une technique nouvelle.
+#     Signalé au point d'usage, pour mémoire — pas une lacune de fond.
 
 notion: pc/systemes-oscillants
 
@@ -869,3 +889,291 @@ entries:
             note: "Variation entre les deux instants : on retranche l'etat initial (t=1s) de l'etat final (t=2,5s)."
           - math: '\boxed{\Delta E_{pe} \approx -2{,}0\times10^{-3}\ \text{J}}'
             note: "L'energie potentielle elastique diminue : coherent, le solide passe de l'extremite opposee (toute l'energie dans le ressort) a l'equilibre (aucune energie dans le ressort)."
+
+  # ── bk-2025-r-x4b — 2025 R, Exercice 4 (§2) : pendule de torsion, RFD de
+  #    rotation, T0 et theta_m lus sur une courbe de VITESSE ANGULAIRE, C,
+  #    puis Em et le travail du couple par le TEC ──
+  #
+  # NOTE ÉDITORIALE — DÉCISION DE CLASSEMENT (cross-list NON dédoublé, DEUX
+  # domaines). Le classement du vérificateur ajoute à cette partie
+  # rotation-axe-fixe (pour la question 1, la relation fondamentale de la
+  # dynamique de rotation) ET aspects-energetiques (pour la question 3,
+  # énergie mécanique de l'oscillateur et travail du couple de torsion,
+  # 0,5+0,75 = 1,25 pt). Aucun des deux domaines n'est extrait en entrée
+  # séparée : l'assemblage d'épreuves (web/src/lib/examens.ts) somme les
+  # bareme_total, et détacher une question (0,5 pt) ou un sous-groupe de deux
+  # (1,25 pt) créerait à la fois un doublon de barème si on les duplique et
+  # un orphelin illisible si on les détache — chacune dépend directement de
+  # l'équation établie en question 1 et de la lecture graphique de la
+  # question 2-2, qui restent dans cette même partie. La partie reste donc
+  # entière ici, avec ses 3,5 pt, et les deux cross-lists sont honorés
+  # autrement : le raisonnement de la question 1 nomme explicitement
+  # « Rotation autour d'un axe fixe » (rung R4, la relation fondamentale de
+  # la dynamique de rotation) et celui des questions 3-1/3-2 nomme
+  # explicitement « Aspects énergétiques » (rung R6, l'énergie du pendule de
+  # torsion et le théorème de l'énergie cinétique). Même règle que pour
+  # bk-2023-r-x4b ci-dessus (un seul domaine cross-listé) — ici doublée,
+  # parce que le classement du vérificateur cite lui-même deux domaines
+  # distincts pour cette partie. À l'arbitrage de l'owner.
+  #
+  # NOTE ÉDITORIALE — FLAG DE JUMELAGE (bk-2025-r-x4b face aux quatre
+  # pendules ÉLASTIQUES de cette banque : bk-2018-n-x4b, bk-2022-r-x4b,
+  # bk-2023-r-x4b, bk-2025-n-x4b). C'est la PREMIÈRE entrée « pendule de
+  # torsion » de cette banque. Même équation différentielle que les quatre
+  # autres — $\ddot X + \omega_0^2 X = 0$, rung R4 — mais un habillage
+  # physique entièrement différent, et c'est ce que l'élève doit voir : la
+  # grandeur de mouvement est un angle θ, pas une abscisse x ; l'inertie est
+  # un moment d'inertie J_Δ (kg.m²), pas une masse m (kg) ; le rappel est une
+  # constante de torsion C (N.m/rad), pas une raideur k (N/m). Cette entrée
+  # est aussi la seule des cinq à faire ÉTABLIR l'équation différentielle par
+  # la relation fondamentale de la dynamique de ROTATION (question 1,
+  # cross-listée rotation-axe-fixe) plutôt que par la deuxième loi de Newton
+  # en translation, et la seule à faire calculer une énergie cinétique de
+  # ROTATION ($\frac12J_\Delta\dot\theta^2$, pas $\frac12mv^2$) et un travail
+  # de COUPLE ($W_C$, pas un travail de force). Proposition : garder les
+  # cinq, cette entrée couvrant le seul système du programme qui n'était pas
+  # encore représenté dans la banque. À l'arbitrage de l'owner.
+  - id: bk-2025-r-x4b
+    title: "Le pendule de torsion : équation différentielle par la dynamique de rotation, période propre, constante de torsion et travail du couple"
+    source:
+      year: 2025
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — §2 : Mouvement d'un pendule de torsion"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS28F, AlloSchool
+        https://www.alloschool.com/element/145799, scan
+        course-422/upload-87492, pages 5 (fin) et 6 sur 6 (Exercice 4, §2 —
+        mouvement d'un pendule de torsion ; barème de la partie = 3,5 pt,
+        recompté question par question : 0,5 + (0,5+0,75+0,5) + (0,5+0,75) =
+        0,5 + 1,75 + 1,25 = 3,5, sur les 5,5 pt de l'exercice complet, dont
+        le §1 — chute libre d'un skieur — est transcrit sous
+        chute-mouvements-plans/bank.yaml en bk-2025-r-x4. L'énoncé précise
+        que les deux parties sont indépendantes). Transcription vérifiée par
+        une passe adversariale indépendante (2026-08-23,
+        docs/sujets/_incoming/pc-spc-2025-r.md, statut « vérifié ») :
+        re-fetch indépendant de element/145799 et des 6 scans, figures 2 et 3
+        re-décrites depuis le dessin et non depuis l'énoncé, mesure au pixel
+        de la figure 3, physique re-dérivée. Le vérificateur signale
+        qu'aucune incohérence n'a été relevée sur l'ensemble du sujet.
+        CONTRE-CALCUL REFAIT ICI, chiffre par chiffre, à partir de
+        $J_\Delta=6{,}67\times10^{-3}\ \text{kg.m}^2$ (donnée),
+        $T_0=4{,}0\ \text{s}$ et $\dot\theta_{max}=0{,}25\ \text{rad.s}^{-1}$
+        (lus au pixel sur la figure 3) : $\theta_m=\dot\theta_{max}T_0/2\pi
+        = 0{,}25\times4/2\pi \approx 0{,}16\ \text{rad}$ ;
+        $C=4\pi^2J_\Delta/T_0^2$, et avec $\pi^2=10$ imposé par l'énoncé,
+        $C=4\times10\times6{,}67\times10^{-3}/16=0{,}2668/16
+        \approx1{,}7\times10^{-2}\ \text{N.m.rad}^{-1}$ ;
+        $E_m=\frac12J_\Delta\dot\theta_{max}^2=0{,}5\times6{,}67\times10^{-3}
+        \times0{,}0625\approx2{,}1\times10^{-4}\ \text{J}$ (recoupé par
+        l'autre réservoir, $\frac12C\theta_m^2\approx2{,}2\times10^{-4}\
+        \text{J}$, à l'arrondi des lectures graphiques près) ; à
+        $t_2=3{,}4\ \text{s}$, $\dot\theta(t_2)\approx0{,}20\
+        \text{rad.s}^{-1}$ (lecture au pixel, branche descendante après le
+        maximum de $t=3\ \text{s}$), et comme $\dot\theta(t_1{=}0)=0$
+        (lâcher sans vitesse initiale), $W_C=\frac12J_\Delta\dot\theta^2(t_2)
+        -0=0{,}5\times6{,}67\times10^{-3}\times0{,}04\approx1{,}3\times10^{-4}
+        \ \text{J}$. Aucune divergence relevée entre ce contre-calcul et les
+        valeurs annoncées par le vérificateur.
+    intro: |-
+      **Étude du mouvement d'un pendule de torsion (examen national, session de rattrapage 2025 — Exercice 4, §2, 3,5 points).**
+
+      *Les deux parties de cet exercice sont indépendantes. Le §1 — la chute libre d'un skieur — est traité à part, sous la notion « Chute libre et mouvements plans ». Rien de ce qui suit n'en dépend.*
+
+      Dans cette partie on se propose d'étudier le mouvement d'un pendule de torsion afin de déterminer quelques grandeurs qui lui sont liées.
+
+      Le dispositif de la figure 2 comporte un fil de torsion de masse négligeable et de constante de torsion $C$ et une barre métallique homogène $AB$. L'une des extrémités du fil est fixée en un point $O$ et l'autre est fixée au centre d'inertie $G$ de la barre. La barre $AB$ effectue, sans frottement, dans le plan horizontal un mouvement de rotation autour de l'axe $(\Delta)$ confondu avec le fil. Le moment d'inertie de $AB$ par rapport à $(\Delta)$ est $J_\Delta = 6{,}67\cdot10^{-3}\ \text{kg.m}^{2}$.
+
+      On fait tourner, dans le sens positif, la barre $AB$, autour de l'axe $(\Delta)$ d'un angle $\theta_m$ par rapport à sa position d'équilibre et on la libère sans vitesse initiale à un instant $t = 0$ qu'on prend comme origine des dates.
+
+      On étudie le mouvement de ce système dans un repère lié à un référentiel terrestre supposé galiléen, et on repère la position de $AB$ à chaque instant $t$ par son abscisse angulaire $\theta(t)$ par rapport à sa position d'équilibre $\theta = 0$ (Figure 2).
+
+      **Figure 2 (schéma, re-décrit depuis l'image, p. 6) :** en haut, des hachures de fixation avec le point « O » juste au-dessous ; de $O$ descend un trait vertical (le fil), désigné par l'étiquette « Fil de torsion » à gauche avec une flèche horizontale pointant vers le fil. En bas, la barre $AB$ : segment épais oblique, extrémité « A » en bas à gauche, extrémité « B » en haut à droite, croisant en son milieu « G » le bas du fil. Une droite horizontale en pointillés passe par $G$ (position d'équilibre) ; l'angle entre cette droite et la barre est marqué « $\theta$ » (petite flèche incurvée) du côté de $B$ ; sous $G$, l'étiquette « $(\Delta)$ » avec un pointillé vertical prolongeant le fil. À droite de $B$, un symbole de sens positif : un cercle marqué « + » entouré d'une flèche incurvée (sens antihoraire vu du dessus). Légende : « Figure 2 ».
+
+      **Figure 3 (courbe, re-décrite depuis l'image, mesurée au pixel, p. 6) :** $\dot{\theta}\ (\text{rad.s}^{-1})$ en fonction de $t\ (\text{s})$, sur quadrillage fin.
+      **Ordonnée** : traits principaux chiffrés $0{,}1$, $0$ et $-0{,}1$ (un trait principal non chiffré au-delà de $0{,}1$, et de même sous $-0{,}1$) ; l'écart $0 \to 0{,}1$ couvre **10 petits carreaux**, donc petit carreau $= 0{,}01\ \text{rad.s}^{-1}$ ; le cadre va de $-0{,}27$ à $+0{,}27$ environ.
+      **Abscisse** : une seule graduation chiffrée, « $1$ », portée sous l'axe ; 1 seconde couvre **10 petits carreaux** (petit carreau $= 0{,}1\ \text{s}$) et le cadre s'étend jusqu'à $t \simeq 7{,}9\ \text{s}$.
+
+      La courbe est une sinusoïde partant de $\dot{\theta} = 0$ à $t = 0$ en **décroissant** (première alternance négative — cohérent avec $\dot{\theta} = -\theta_m\frac{2\pi}{T_0}\sin(\frac{2\pi}{T_0}t)$), puis alternant régulièrement ; **deux périodes complètes** tiennent dans le cadre, la courbe revenant au voisinage de l'axe au bord droit.
+
+      Lectures fermes (mesure au pixel, plus aucune indétermination d'échelle) :
+      - la graduation « 1 » tombe **exactement à l'aplomb du premier minimum**, et les extrémums suivants tombent à $t = 3$, $5$ et $7\ \text{s}$ (contrôlés un à un) : $\mathbf{T_0 = 4{,}0\ \text{s}}$ ;
+      - les sommets et les creux se posent sur $\pm 25$ petits carreaux : $\dot{\theta}_{max} = \mathbf{0{,}25\ \text{rad.s}^{-1}}$ ;
+      - **à $t_2 = 3{,}4\ \text{s}$** (branche descendante après le maximum de $t = 3\ \text{s}$) la courbe donne $\dot{\theta} \simeq \mathbf{0{,}20\ \text{rad.s}^{-1}}$.
+
+      Légende : « Figure 3 ».
+    questions:
+      - id: q1
+        part: "1 — Établir le modèle, par la dynamique de rotation"
+        stem: |-
+          **1-** (0,5 pt) En appliquant la relation fondamentale de la dynamique dans le cas de la rotation au pendule de torsion étudié, établir l'équation différentielle du mouvement vérifiée par $\theta(t)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé nomme lui-même l'outil : la « relation fondamentale de la dynamique dans le cas de la rotation », $\sum \mathcal M_\Delta(\vec F_{ext}) = J_\Delta\,\ddot\theta$ — établie et justifiée point par point (à partir d'un point matériel, puis sommée sur tout le solide) au rung R4 du chapitre « Rotation autour d'un axe fixe ». Ici on l'applique au cas particulier du pendule de torsion, exactement comme au rung R4 de cette leçon-ci (systèmes oscillants).
+
+          **L'inventaire des moments, avant toute projection.** Trois actions s'exercent sur la barre $AB$ : le poids, la réaction du fil en $O$, et le moment de rappel du fil de torsion. Le poids et la réaction du fil sont tous deux **verticaux**, et passent tous deux par l'axe $(\Delta)$ (confondu avec le fil, lui-même vertical) : leur moment par rapport à cet axe est donc **nul** — exactement la justification donnée au rung R4 pour ce même système. Il ne reste qu'une seule contribution : le moment de rappel du fil tordu, $M_{rappel}=-C\theta$ — proportionnel à l'angle de torsion et de signe opposé, l'analogue rotationnel exact de la force de rappel d'un ressort.
+
+          **La relation fondamentale, appliquée.**
+
+          $$J_\Delta\,\ddot\theta = \sum \mathcal M_\Delta(\vec F_{ext}) = M_{rappel} = -C\,\theta$$
+
+          **La mise en forme canonique.**
+
+          $$\boxed{\ddot\theta + \frac{C}{J_\Delta}\,\theta = 0}$$
+
+          **Lire l'équation.** C'est très exactement la même forme que celle du pendule élastique, $\ddot x + (k/m)x=0$ : $J_\Delta$ joue le rôle de l'inertie (la masse), $C$ celui du rappel (la raideur). L'angle de torsion, écarté puis lâché, est ramené vers zéro proportionnellement à son écart — c'est le mécanisme qui interdit à la barre de rester immobile une fois écartée.
+
+          **Le piège nommé de cette question.** Oublier de justifier pourquoi le poids et la réaction du fil ne contribuent pas — les citer sans dire qu'ils passent par l'axe, c'est laisser un trou dans le bilan des moments que le correcteur sanctionne, même si l'équation finale est juste.
+        steps:
+          - math: '\mathcal M_\Delta(\vec P) = \mathcal M_\Delta(\vec R_{fil}) = 0'
+            note: "Le poids et la reaction du fil sont verticaux et passent par l'axe (Delta) : leur moment par rapport a cet axe est nul."
+          - math: 'J_\Delta\,\ddot\theta = \sum \mathcal M_\Delta(\vec F_{ext}) = M_{rappel} = -C\,\theta'
+            note: "Relation fondamentale de la dynamique de rotation (chapitre Rotation autour d'un axe fixe), avec le seul moment non nul : le rappel du fil."
+          - math: '\boxed{\ddot\theta + \frac{C}{J_\Delta}\theta = 0}'
+            note: "Forme canonique de l'oscillateur harmonique en rotation."
+      - id: q2a
+        part: '2. La solution de cette équation différentielle s''écrit sous la forme $\theta(t) = \theta_m\cos\left(\dfrac{2\pi}{T_0}t\right)$, avec $T_0$ la période propre de l''oscillateur.'
+        stem: |-
+          **2-1.** (0,5 pt) Etablir que : $T_0 = 2\pi\sqrt{\dfrac{J_\Delta}{C}}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On vérifie qu'une solution proposée satisfait bien l'équation différentielle établie à la question précédente — la méthode « on devine, puis on vérifie » du rung R1, reprise telle quelle au rung R4 pour le pendule de torsion.
+
+          **On dérive deux fois.**
+
+          $$\dot\theta(t) = -\theta_m\,\frac{2\pi}{T_0}\sin\left(\frac{2\pi}{T_0}t\right)$$
+
+          $$\ddot\theta(t) = -\theta_m\left(\frac{2\pi}{T_0}\right)^2\cos\left(\frac{2\pi}{T_0}t\right) = -\left(\frac{2\pi}{T_0}\right)^2\theta(t)$$
+
+          **On substitue dans l'équation différentielle de la question 1.**
+
+          $$-\left(\frac{2\pi}{T_0}\right)^2\theta(t) + \frac{C}{J_\Delta}\theta(t) = 0$$
+
+          Comme $\theta(t)$ n'est pas identiquement nul, on peut simplifier :
+
+          $$\left(\frac{2\pi}{T_0}\right)^2 = \frac{C}{J_\Delta}$$
+
+          **On isole $T_0$.**
+
+          $$\frac{2\pi}{T_0} = \sqrt{\frac{C}{J_\Delta}} \implies \boxed{T_0 = 2\pi\sqrt{\frac{J_\Delta}{C}}}$$
+
+          **Le piège nommé de cette question.** Inverser $J_\Delta$ et $C$ dans le rapport final. Le contrôle qui tranche : plus $J_\Delta$ est grand (barre plus lourde ou plus étalée), plus le système est inerte, donc plus il oscille lentement — $T_0$ doit **croître** avec $J_\Delta$, ce que confirme sa position au numérateur sous la racine.
+        steps:
+          - math: '\ddot\theta(t) = -\left(\frac{2\pi}{T_0}\right)^2\theta(t)'
+            note: "On derive deux fois la solution proposee."
+          - math: '-\left(\frac{2\pi}{T_0}\right)^2\theta + \frac{C}{J_\Delta}\theta = 0 \implies \left(\frac{2\pi}{T_0}\right)^2 = \frac{C}{J_\Delta}'
+            note: "On substitue dans l'equation de la question 1, puis on simplifie par theta(t), non identiquement nul."
+          - math: '\boxed{T_0 = 2\pi\sqrt{\frac{J_\Delta}{C}}}'
+            note: "On isole T0."
+      - id: q2b
+        stem: |-
+          **2-2.** (0,75 pt) La courbe de la figure 3 représente l'évolution temporelle de la vitesse angulaire $\dot{\theta}(t)$. Déterminer $T_0$ et $\theta_m$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux grandeurs, et elles ne se lisent pas de la même façon : $T_0$ se lit **directement**, $\theta_m$ se **déduit**.
+
+          **$T_0$, entre deux extrema de même nature.** La figure 3 donne $\dot\theta(t)$, pas $\theta(t)$ — mais la période d'une grandeur et de sa dérivée est toujours la même. Les minima consécutifs de la courbe tombent à $t=1$, $3$, $5$ et $7\ \text{s}$ (lecture ferme, mesure au pixel) :
+
+          $$T_0 = 3 - 1 = 5 - 3 = 7 - 5 = \boxed{4{,}0\ \text{s}}$$
+
+          **$\theta_m$, qui ne se lit pas — il faut passer par la relation entre $\theta$ et $\dot\theta$.** La solution $\theta(t)=\theta_m\cos(2\pi t/T_0)$ dérive en $\dot\theta(t)=-\theta_m\,\dfrac{2\pi}{T_0}\sin(2\pi t/T_0)$ (question 2-1) : l'amplitude de $\dot\theta$ n'est pas $\theta_m$ elle-même, c'est $\theta_m$ **multipliée** par $2\pi/T_0$. Le maximum lu sur la figure 3, $\dot\theta_{max}=0{,}25\ \text{rad.s}^{-1}$ (sommets et creux à $\pm25$ petits carreaux), donne donc :
+
+          $$\dot\theta_{max} = \theta_m\,\frac{2\pi}{T_0} \implies \theta_m = \dot\theta_{max}\,\frac{T_0}{2\pi}$$
+
+          **L'application numérique.**
+
+          $$\theta_m = 0{,}25\times\frac{4{,}0}{2\pi} = \frac{1{,}0}{6{,}283}$$
+
+          $$\boxed{\theta_m \approx 0{,}16\ \text{rad}}$$
+
+          **Le piège nommé de cette question.** Lire $\theta_m$ directement comme $0{,}25$, l'amplitude de la courbe donnée — en confondant l'amplitude de $\dot\theta$ (en rad/s) avec l'amplitude de $\theta$ (en rad). Ce ne sont pas la même grandeur, et elles ne partagent même pas l'unité : $0{,}25$ n'est pas un angle.
+        steps:
+          - math: 'T_0 = 3-1 = 5-3 = 7-5 = 4{,}0\ \text{s}'
+            note: "Ecart entre minima consecutifs de theta-point(t), sur la figure 3."
+          - math: '\dot\theta_{max} = \theta_m\,\frac{2\pi}{T_0} \implies \theta_m = \dot\theta_{max}\,\frac{T_0}{2\pi}'
+            note: "L'amplitude de theta-point n'est pas theta_m : c'est theta_m fois 2pi/T0 (derivee, question 2-1)."
+          - math: '\theta_m = 0{,}25\times\frac{4{,}0}{2\pi} \approx \boxed{0{,}16\ \text{rad}}'
+            note: "Application numerique, avec theta-point_max = 0,25 rad/s lu sur la figure 3."
+      - id: q2c
+        stem: |-
+          **2-3.** (0,5 pt) Calculer $C$ (on prend $\pi^2 = 10$).
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La relation de la question 2-1 relie $T_0$, $J_\Delta$ et $C$ ; on connaît déjà $T_0$ (question 2-2) et $J_\Delta$ (donnée) — il ne reste qu'à retourner la relation pour isoler $C$.
+
+          **On retourne la relation.**
+
+          $$T_0 = 2\pi\sqrt{\frac{J_\Delta}{C}} \implies T_0^2 = 4\pi^2\,\frac{J_\Delta}{C} \implies C = \frac{4\pi^2\,J_\Delta}{T_0^2}$$
+
+          **Le calcul, chiffre par chiffre, avec $\pi^2=10$ imposé par l'énoncé.** Numérateur : $4\times10\times6{,}67\times10^{-3}=0{,}2668$. Dénominateur : $T_0^2=(4{,}0)^2=16$.
+
+          $$C = \frac{0{,}2668}{16}$$
+
+          $$\boxed{C \approx 1{,}7\times10^{-2}\ \text{N.m.rad}^{-1}}$$
+
+          **Pourquoi l'énoncé impose $\pi^2=10$.** Avec la vraie valeur $\pi^2\approx9{,}87$, on obtiendrait $C\approx1{,}65\times10^{-2}$ — juste, mais qui ne tombe pas sur un nombre rond. Suis l'instruction plutôt que la valeur exacte de ta calculatrice.
+
+          **Le piège nommé de cette question.** Oublier d'élever $T_0$ au carré, ou substituer $T_0$ dans une autre unité que la seconde. Le contrôle d'homogénéité : $C$ se mesure en $\text{N.m.rad}^{-1}$, donc $[J_\Delta]/[T_0]^2 = \text{kg.m}^2/\text{s}^2 = \text{N.m}$ (à l'angle, sans dimension, près) — cohérent.
+        steps:
+          - math: 'C = \frac{4\pi^2\,J_\Delta}{T_0^2}'
+            note: "On retourne T0 = 2.pi.racine(J_Delta/C) de la question 2-1."
+          - math: 'C = \frac{4\times10\times6{,}67\times10^{-3}}{16} = \frac{0{,}2668}{16}'
+            note: "Application numerique, avec pi^2=10 impose par l'enonce et T0=4,0 s (question 2-2)."
+          - math: '\boxed{C \approx 1{,}7\times10^{-2}\ \text{N.m.rad}^{-1}}'
+            note: "Constante de torsion du fil."
+      - id: q3a
+        part: "3 — On prend la position d'équilibre du pendule comme référence de l'énergie potentielle de torsion (Ept=0) et le plan horizontal passant par G comme référence de l'énergie potentielle de pesanteur (Epp=0). En s'aidant du graphique de la figure 3 et en exploitant la conservation de l'énergie mécanique :"
+        stem: |-
+          **3-1.** (0,5 pt) Calculer $E_m$ l'énergie mécanique du système étudié.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énergie mécanique de ce pendule a deux réservoirs — cinétique de rotation et potentielle de torsion — établis au rung R6 du chapitre « Aspects énergétiques » : $E_m=\frac12J_\Delta\dot\theta^2+\frac12C\theta^2$ (l'énergie potentielle de pesanteur, elle, ne varie pas : $G$ reste toujours dans le même plan horizontal pendant la rotation, d'où la référence $E_{pp}=0$ imposée par l'énoncé — ce n'est pas un oubli, c'est une simplification correcte). Sans frottement, cette somme est **constante** (rung R6) : elle vaut donc la même chose à n'importe quel instant, et le plus simple est de la calculer là où l'un des deux termes s'annule.
+
+          **Le point le plus simple : le passage par $\theta=0$.** À cet instant, la barre est à sa position d'équilibre, donc $\theta=0$ et $E_{pt}=\frac12C\theta^2=0$ — toute l'énergie est cinétique. C'est exactement là que la figure 3 lit $\dot\theta_{max}$ : la vitesse angulaire est maximale précisément quand l'angle s'annule (la même relation de phase qu'au pendule élastique, où $v$ est maximale à $x=0$).
+
+          $$E_m = \frac12 J_\Delta\,\dot\theta_{max}^2$$
+
+          **L'application numérique, chiffre par chiffre.** $\dot\theta_{max}=0{,}25\ \text{rad.s}^{-1}$ (figure 3, question 2-2), donc $\dot\theta_{max}^2=0{,}0625$.
+
+          $$E_m = \frac12\times6{,}67\times10^{-3}\times0{,}0625$$
+
+          $$\boxed{E_m \approx 2{,}1\times10^{-4}\ \text{J}}$$
+
+          **Contrôle croisé, par l'autre réservoir.** Au lâcher ($t=0$), c'est l'inverse : $\dot\theta(0)=0$ (énoncé : « on la libère sans vitesse initiale »), donc toute l'énergie est dans le fil, $E_m=\frac12C\theta_m^2=\frac12\times1{,}7\times10^{-2}\times(0{,}16)^2\approx2{,}2\times10^{-4}\ \text{J}$ — même ordre de grandeur, à l'arrondi des lectures graphiques près. Les deux chemins mènent au même réservoir vide de l'autre côté : c'est la signature de la conservation.
+
+          **Le piège nommé de cette question.** Prendre $\frac12J_\Delta\dot\theta_{max}^2$ pour une énergie **cinétique** seulement, et croire qu'il manque le terme potentiel pour avoir $E_m$. Au point $\theta=0$ précisément, le terme potentiel est nul — ce n'est pas oublié, c'est zéro par construction du point choisi.
+        steps:
+          - math: 'E_m = \frac12 J_\Delta\,\dot\theta_{max}^2'
+            note: "Au passage par theta=0, l'energie potentielle de torsion est nulle : toute l'energie mecanique est cinetique (rung R6, aspects energetiques)."
+          - math: 'E_m = \frac12\times6{,}67\times10^{-3}\times(0{,}25)^2'
+            note: "Application numerique, avec theta-point_max = 0,25 rad/s lu sur la figure 3."
+          - math: '\boxed{E_m \approx 2{,}1\times10^{-4}\ \text{J}}'
+            note: "Energie mecanique du pendule de torsion."
+      - id: q3b
+        stem: |-
+          **3-2.** (0,75 pt) Déterminer $W_C$ le travail du couple de torsion entre les instants $t_1 = 0\ \text{s}$ et $t_2 = 3{,}4\ \text{s}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le rung R6 établit, pour ce même système, que le seul moment qui travaille (sans frottement, le poids et la réaction du fil ne travaillant jamais puisqu'ils ne produisent aucun moment) est celui du couple de rappel, et que le théorème de l'énergie cinétique donne, terme à terme : $\Delta E_c = W(M_{rappel})$. C'est exactement l'outil qu'il faut ici : $W_C$ n'est rien d'autre que la variation d'énergie cinétique entre $t_1$ et $t_2$.
+
+          $$W_C = E_c(t_2) - E_c(t_1) = \frac12J_\Delta\dot\theta^2(t_2) - \frac12J_\Delta\dot\theta^2(t_1)$$
+
+          **Le premier terme s'annule.** À $t_1=0$, l'énoncé précise que la barre est « libérée sans vitesse initiale » : $\dot\theta(t_1)=0$, donc $E_c(t_1)=0$. Il ne reste que le second terme.
+
+          **La lecture qui porte toute la question.** $t_2=3{,}4\ \text{s}$ tombe sur la branche descendante qui suit le maximum de $\dot\theta$ à $t=3\ \text{s}$ (question 2-2) : la figure 3 donne, à cet instant précis, $\dot\theta(t_2)\approx0{,}20\ \text{rad.s}^{-1}$.
+
+          $$W_C = \frac12 J_\Delta\,\dot\theta^2(t_2) = \frac12\times6{,}67\times10^{-3}\times(0{,}20)^2$$
+
+          $$\boxed{W_C \approx 1{,}3\times10^{-4}\ \text{J}}$$
+
+          **Lire le signe.** $W_C>0$ : entre $t_1$ et $t_2$, le couple de rappel a **accéléré** la barre, en valeur absolue de $\dot\theta$ — cohérent, puisque $\dot\theta$ est repartie de $0$ (au lâcher) pour atteindre $0{,}20\ \text{rad.s}^{-1}$ à $t_2$, en passant par son maximum $0{,}25\ \text{rad.s}^{-1}$ à $t=3\ \text{s}$ en cours de route.
+
+          **Le piège nommé de cette question.** Utiliser $\dot\theta_{max}=0{,}25\ \text{rad.s}^{-1}$ (la valeur de la question 2-2) au lieu de relire la courbe exactement à $t_2=3{,}4\ \text{s}$, qui n'est PAS l'instant du maximum ($t=3\ \text{s}$, question 2-2) mais un instant légèrement postérieur, où $\dot\theta$ est redescendue à $0{,}20\ \text{rad.s}^{-1}$. Confondre les deux fait déborder l'erreur d'environ $50\ \%$ sur $W_C$ (le carré amplifie l'écart).
+        steps:
+          - math: 'W_C = E_c(t_2) - E_c(t_1) = \frac12J_\Delta\dot\theta^2(t_2) - \frac12J_\Delta\dot\theta^2(t_1)'
+            note: "TEC applique au couple de rappel (rung R6, aspects energetiques) : seul moment qui travaille, sans frottement."
+          - math: '\dot\theta(t_1) = 0 \implies W_C = \frac12 J_\Delta\,\dot\theta^2(t_2)'
+            note: "La barre est lachee sans vitesse initiale a t1=0 (enonce) : le premier terme s'annule."
+          - math: 'W_C = \frac12\times6{,}67\times10^{-3}\times(0{,}20)^2'
+            note: "Lecture de theta-point a t2=3,4 s sur la figure 3 (juste apres le maximum de t=3s), PAS theta-point_max."
+          - math: '\boxed{W_C \approx 1{,}3\times10^{-4}\ \text{J}}'
+            note: "Travail du couple de torsion entre t1=0 et t2=3,4 s."
