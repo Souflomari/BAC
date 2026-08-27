@@ -16,12 +16,14 @@
 # apostrophes simples dans steps[].math, décimales françaises écrites `X{,}Y`
 # dans le KaTeX, notes de steps sans backslash et en ASCII pur).
 #
-# NOTE ÉDITORIALE (pour la revue) : PREMIÈRE entrée de la banque de cette
-# notion — le fichier n'existait pas avant ce commit (la notion n'avait que
-# items/checkpoints/exercises + lesson). L'ordre du fichier est chronologique
+# NOTE ÉDITORIALE (pour la revue) : bk-2023-r-x2 fut la PREMIÈRE entrée de la
+# banque de cette notion — le fichier n'existait pas avant son commit (la
+# notion n'avait que items/checkpoints/exercises + lesson). Elle a depuis été
+# rejointe par bk-2025-r-x2, ce qui porte la banque à DEUX entrées ; la notion
+# reste la moins couverte du corpus PC. L'ordre du fichier est chronologique
 # (année, puis normale avant rattrapage) ; il n'y a pour l'instant aucune
-# entrée 2023 normale, donc bk-2023-r-x2 ouvre le fichier et s'insérera plus
-# tard APRÈS une éventuelle bk-2023-n-*.
+# entrée 2023 ni 2025 de session normale, donc les deux entrées de rattrapage
+# se suivent et s'intercaleront plus tard APRÈS d'éventuelles bk-*-n-*.
 #
 # RECOUPEMENT (signalé, pas un doublon) : le sommet de leçon r-bac
 # (exercises.yaml, marqueur [[exercise:r-bac]] à R6) est l'exercice II de
@@ -287,3 +289,235 @@ entries:
           Les deux chemins donnent le même nombre : la relation $\lambda = \lambda_0/n$ n'était pas une formule à croire, c'était un raccourci qu'on vient de refaire à la main.
 
           **Le piège de cette question.** Il est dans la couleur, et il est joliment tendu. $387\ \text{nm}$ tombe, dans le tableau du rung R4, sur la limite du violet — et pourtant cette radiation est et reste **jaune**, même à l'intérieur du milieu. La raison est celle qu'on vient d'utiliser : ce que l'œil interprète comme une couleur dépend de la fréquence $\nu$, et $\nu$ n'a pas bougé. Seule $\lambda$, qui dépend de la vitesse locale, a diminué. C'est exactement pour éviter cette confusion qu'une couleur se désigne toujours par $\lambda_0$, sa longueur d'onde dans le vide. Piège jumeau, dans l'autre sens : répondre « $580\ \text{nm}$, puisque c'est une radiation jaune » — c'est $\lambda_{0j}$, la valeur dans le vide ; dans un milieu la longueur d'onde est TOUJOURS plus petite, puisque $n \geq 1$. Et remarque au passage que cette question est la réfutation chiffrée de la proposition A du QCM de la question 1.
+  # ── bk-2025-r-x2 — 2025 R, Exercice 2 : mesurer un indice de refraction en
+  #    comparant DEUX largeurs de tache de diffraction ──
+  #
+  # NOTE ÉDITORIALE — DEUXIÈME ENTRÉE DE CETTE BANQUE, qui n'en comptait
+  # qu'une. La notion reste la moins couverte du corpus PC ; elle double ici.
+  #
+  # NOTE ÉDITORIALE — FLAG DE JUMELAGE (bk-2025-r-x2 face à bk-2023-r-x2). Les
+  # deux sont des exercices de diffraction de session de rattrapage, et les
+  # deux finissent sur un indice et une vitesse. Ce ne sont pas des doublons :
+  #   — bk-2023-r-x2 change de RADIATION (autre longueur d'onde, même milieu)
+  #     et l'indice y est DONNÉ (n = 1,5) pour en tirer v et lambda ;
+  #   — ici on change de MILIEU (même laser, même fente, même distance) et
+  #     l'indice est l'INCONNUE : il se mesure en comparant deux largeurs de
+  #     tache centrale, sans jamais connaître ni lambda_a, ni a, ni D. C'est
+  #     l'exercice qui montre le mieux pourquoi la formule L = 2.lambda.D/a
+  #     vaut la peine d'être établie : ce n'est pas pour calculer L, c'est pour
+  #     que TOUT s'élimine dans un rapport.
+  # Proposition : garder les deux, et les travailler dans cet ordre.
+  # À l'arbitrage de l'owner.
+  #
+  # NOTE ÉDITORIALE — LE MÊME PIÈGE D'UNITÉ QU'EN 2023 R, ET C'EST NOTABLE.
+  # La proposition C du QCM place le spectre visible « entre 0,4 nm et
+  # 0,8 nm » : les CHIFFRES sont justes, l'UNITÉ est fausse d'un facteur mille
+  # (ce sont des micromètres). Le sujet 2023 rattrapage tendait exactement le
+  # même piège avec « 400 et 800 » micromètres au lieu de nanomètres. Deux
+  # sessions de suite, la même famille de distracteur : le raisonnement le
+  # signale et donne le contrôle qui l'attrape à coup sûr — comparer à la
+  # taille d'un atome.
+  - id: bk-2025-r-x2
+    title: "Mesurer l'indice de réfraction d'un liquide par diffraction : le rapport de deux largeurs de tache centrale, où λ, a et D s'éliminent tous les trois"
+    source:
+      year: 2025
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 2 — Ondes lumineuses"
+    bareme_total: 2.5
+    duration_min: 22
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS28F, AlloSchool element/145799, scan
+        course-422/upload-87492, pages 3 (fin) et 4 sur 6 (Exercice 2 — ondes
+        lumineuses ; barème de l'exercice = 2,5 pt, recompté question par
+        question : 0,5 + 0,5 + 0,5 + 0,5 + 0,5 = 2,5). Transcription vérifiée
+        par une passe adversariale indépendante (2026-08-23,
+        docs/sujets/_incoming/pc-spc-2025-r.md, statut « vérifié ») : re-fetch
+        des 6 pages du scan, figure re-décrite depuis le dessin et non depuis
+        l'énoncé, physique re-dérivée. La description du dispositif reprise
+        ici est celle du vérificateur, au mot près — y compris le détail des
+        cinq taches elliptiques et des deux traits partant de la fente, dont
+        l'un pointillé horizontal (l'axe optique, qui aboutit au CENTRE de la
+        tache centrale) et l'autre plein légèrement incliné (qui aboutit à son
+        BORD) : c'est cette paire de traits qui définit l'angle theta, et
+        c'est elle qui rend la question 2-2 lisible. CONTRE-CALCUL REFAIT ICI,
+        chiffre par chiffre : dans le liquide, la fréquence est invariante et
+        lambda_L = lambda_a / n_L ; à D et a inchangés, L' = 2 lambda_L D / a
+        = L / n_L, d'où n_L = L/L' = 2,4/1,8 = 4/3 = 1,3333, arrondi 1,33 —
+        exactement la valeur que la question demande de vérifier, et le
+        rapport tombe sur une fraction EXACTE, ce qui est le signe que les
+        deux longueurs ont été choisies pour cela. Puis v_L = c/n_L =
+        3e8 x 3/4 = 2,25e8 m.s-1, valeur qu'on obtient aussi directement par
+        v_L = c x L'/L = 3e8 x 0,75. CONTRÔLES DE VRAISEMBLANCE faits ici et
+        non fournis par la source : n_L = 1,33 est l'indice de l'EAU, ce qui
+        rend le montage crédible ; et v_L = 2,25e8 est bien inférieure à c,
+        comme l'exige tout indice supérieur à 1. Réponse du QCM retenue :
+        1-D (la fréquence d'une lumière monochromatique ne dépend pas du
+        milieu de propagation).
+    intro: |-
+      **Ondes lumineuses (examen national, session de rattrapage 2025 — Exercice 2, 2,5 points).**
+
+      Cet exercice vise à déterminer l'indice de réfraction d'un liquide pour une lumière monochromatique. Une source laser émet, dans l'air, un faisceau de lumière monochromatique de longueur d'onde $\lambda_a$.
+
+      **Données :**
+      - célérité de la lumière dans le vide ou dans l'air : $c = 3\cdot10^{8}\ \text{m.s}^{-1}$ ;
+      - on prend l'indice de réfraction de l'air $n_a = 1$.
+
+      **Figure (schéma du dispositif).** De gauche à droite, trois éléments montés chacun sur un pied à socle elliptique : la « Source laser » (boîtier rectangulaire grisé prolongé à droite d'un petit embout), puis un panneau dessiné en perspective portant en son centre un trait vertical noir figurant la fente, étiqueté « Fente de largeur $a$ » au-dessus, puis un second panneau en perspective étiqueté « Écran » en haut à droite. Un trait horizontal joint l'embout de la source à la fente. Depuis la fente partent vers l'écran **un trait pointillé horizontal** — l'axe optique, qui aboutit au **centre** de la tache centrale — et **un trait plein légèrement incliné vers le haut**, qui aboutit au **bord** de la tache centrale ; l'angle entre les deux est marqué $\theta$ juste avant l'écran. Sur l'écran, cinq taches elliptiques sombres alignées le long de l'axe (rendu oblique par la perspective) : la tache **centrale**, nettement la plus grande, encadrée de deux taches plus petites de chaque côté, de taille décroissante vers les bords. Au-dessus de la tache centrale, une double flèche horizontale étiquetée « $L$ » cote sa largeur. Entre le pied de la fente et le pied de l'écran, une double flèche horizontale cote la distance « $D$ ».
+    questions:
+      - id: q1
+        part: "1 — Ce qu'on sait de la lumière (QCM)"
+        stem: |-
+          **1-** (0,5 pt) Choisir la proposition juste parmi les propositions suivantes :
+
+          | | |
+          |---|---|
+          | **A** | La lumière émise par la source laser est une onde mécanique. |
+          | **B** | La vitesse de la lumière est plus grande dans les fibres optiques en verre que dans le vide. |
+          | **C** | Les radiations du spectre visible ont des longueurs d'onde dans le vide comprises entre $0{,}4\ \text{nm}$ et $0{,}8\ \text{nm}$. |
+          | **D** | La fréquence d'une lumière monochromatique ne dépend pas du milieu de propagation. |
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Quatre propositions, une seule juste : on les élimine une par une, et chacune tombe pour une raison **différente** — c'est ce qui fait la valeur de la question, elle balaie quatre points de cours d'un coup.
+
+          **A — « La lumière émise par la source laser est une onde mécanique. » FAUX.** Une onde mécanique exige un **milieu matériel** pour se propager : c'est sa définition même. Or la lumière du Soleil nous parvient à travers le vide interplanétaire. La lumière est une onde **électromagnétique** — un champ électrique et un champ magnétique qui se soutiennent mutuellement (rung 1), sans avoir besoin de matière. C'est la différence la plus structurante entre ce chapitre et celui des ondes mécaniques.
+
+          **B — « La vitesse de la lumière est plus grande dans les fibres optiques en verre que dans le vide. » FAUX.** L'indice de réfraction se définit par $n = \dfrac{c}{v}$ (rung 2), donc $v = \dfrac{c}{n}$. Tout milieu matériel a un indice $n > 1$ — le verre est autour de $1{,}5$ — donc $v < c$ **toujours**. Le vide est le milieu où la lumière va le plus vite, et rien ne peut la dépasser. Une fibre optique ne rend pas la lumière plus rapide, elle la **guide**.
+
+          **C — « Les radiations du spectre visible ont des longueurs d'onde dans le vide comprises entre $0{,}4\ \text{nm}$ et $0{,}8\ \text{nm}$. » FAUX, et le défaut est dans l'UNITÉ, pas dans les chiffres.** Le spectre visible s'étend de $0{,}4\ \mu\text{m}$ à $0{,}8\ \mu\text{m}$, c'est-à-dire de $400\ \text{nm}$ à $800\ \text{nm}$ (rung 4). La proposition est fausse d'un facteur **mille**.
+
+          Le contrôle qui l'attrape à coup sûr, et qu'il faut avoir en réflexe : $0{,}4\ \text{nm}$, c'est l'ordre de grandeur du **diamètre d'un atome**. Une onde de cette longueur serait un rayon X dur, pas de la lumière visible. Dès qu'une longueur d'onde optique est annoncée en nanomètres, vérifie qu'elle est de l'ordre de **quelques centaines**, jamais de quelques unités.
+
+          **D — « La fréquence d'une lumière monochromatique ne dépend pas du milieu de propagation. » VRAIE.** C'est la réponse. La fréquence est imposée par la **source** — c'est elle qui fait vibrer le champ à une cadence donnée — et cette cadence ne change pas quand l'onde entre dans un autre milieu : les oscillations qui arrivent à l'interface en une seconde en repartent au même rythme. Ce qui change, c'est la **vitesse** $v = \dfrac{c}{n}$, et donc la **longueur d'onde** $\lambda = \dfrac{v}{\nu}$.
+
+          $$\boxed{\text{Réponse D}}$$
+
+          **Pourquoi cette proposition n'est pas là par hasard.** L'invariance de la fréquence est exactement le principe sur lequel repose la question 3-1 : c'est parce que $\nu$ ne change pas et que $v$ est divisée par $n_L$ que $\lambda$ l'est aussi, et donc la tache de diffraction avec elle. Le QCM installe l'outil que l'exercice utilisera trois questions plus loin.
+
+          **Le piège nommé de cette question.** Croire que « la longueur d'onde change donc la couleur change » quand la lumière entre dans l'eau. Non : la couleur perçue est fixée par la **fréquence**, qui est invariante. Un laser rouge reste rouge sous l'eau, même si sa longueur d'onde y est plus courte d'un quart.
+      - id: q2a
+        part: "2 — La diffraction et la largeur de la tache"
+        stem: |-
+          **2-1.** (0,5 pt) Le dispositif expérimental représenté sur la figure est constitué de la source laser précédente, d'une fente de largeur $a$, et d'un écran parallèle à la fente placé à une distance $D$ de la fente. Le faisceau de lumière émis par la source laser arrive perpendiculairement à la fente. On observe sur l'écran des taches lumineuses comme le montre la figure. La tache centrale a une largeur $L = 2{,}4\ \text{cm}$.
+
+          Nommer le phénomène observé. Quel est alors l'aspect de la lumière mis en évidence ?
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux réponses en une question, et le correcteur attend les deux : le **nom** du phénomène, et ce qu'il **prouve**. N'en donner qu'une, c'est perdre la moitié du point.
+
+          **Le nom.** Le phénomène est la **diffraction** (rung 3). Sa signature est décrite par l'énoncé lui-même : la lumière, après avoir traversé une ouverture étroite, ne se contente pas de continuer tout droit — elle **s'étale** perpendiculairement à la fente et forme sur l'écran une figure de taches alternativement lumineuses et sombres, la centrale étant nettement la plus large et la plus brillante.
+
+          **L'aspect mis en évidence : le caractère ONDULATOIRE de la lumière.** C'est la seconde moitié de la réponse, et il faut savoir dire pourquoi.
+
+          Si la lumière était un flux de **corpuscules** allant en ligne droite, une fente étroite en laisserait passer un mince pinceau et l'on verrait sur l'écran une bande fine, de la largeur de la fente — jamais un étalement, et surtout jamais des zones **sombres** de part et d'autre. Or non seulement la lumière s'étale, mais elle s'étale **d'autant plus que la fente est étroite** : c'est l'inverse exact de ce qu'on attendrait d'un flux de particules.
+
+          Cet étalement, et l'alternance de taches claires et sombres qui l'accompagne, sont le comportement caractéristique d'une **onde**. La diffraction est donc la preuve expérimentale que la lumière est une onde — c'est le résultat historique du chapitre.
+
+          **Le piège nommé de cette question.** Répondre « interférences ». Les deux phénomènes produisent bien des figures alternées, mais l'interférence exige **deux sources** (ou deux fentes) dont les ondes se superposent, alors qu'ici il n'y a **qu'une seule fente**. Un dispositif à une ouverture, c'est de la diffraction. Le second piège : dire « cela prouve que la lumière est une onde **électromagnétique** ». La diffraction prouve le caractère **ondulatoire**, elle ne dit rien de la nature électromagnétique de l'onde — les ondes sonores diffractent aussi.
+      - id: q2b
+        stem: |-
+          **2-2.** (0,5 pt) Montrer que l'expression de la largeur $L$ est : $L = \dfrac{2\,\lambda_a\,D}{a}$, sachant que l'écart angulaire $\theta$ est suffisamment petit pour prendre $\tan\theta \approx \theta$, avec $\theta$ en radian.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une question « montrer que » : le résultat est donné, les points sont dans le chemin. Il tient en deux relations et une approximation — mais chacune doit être écrite, et l'approximation doit être **utilisée explicitement**, puisque l'énoncé prend la peine de l'autoriser.
+
+          **Première relation — l'écart angulaire de diffraction (rung 3).** Pour une fente de largeur $a$ éclairée par une onde de longueur d'onde $\lambda$, le demi-angle d'ouverture de la tache centrale vaut
+
+          $$\theta = \frac{\lambda_a}{a}$$
+
+          avec $\theta$ **en radians**. Attention à ce que cette formule dit : $\theta$ est le demi-angle, mesuré depuis l'axe optique jusqu'au **bord** de la tache centrale — ce sont exactement les deux traits que la figure dessine, le pointillé horizontal et le trait plein incliné.
+
+          **Deuxième relation — la géométrie du triangle.** Sur l'écran, la demi-largeur de la tache centrale vaut $\dfrac{L}{2}$, et elle est vue depuis la fente sous l'angle $\theta$, à la distance $D$ :
+
+          $$\tan\theta = \frac{L/2}{D}$$
+
+          **L'approximation, utilisée là où l'énoncé l'autorise.** L'angle est petit, donc $\tan\theta \approx \theta$ :
+
+          $$\theta \approx \frac{L}{2D}$$
+
+          **On égale les deux expressions de $\theta$ :**
+
+          $$\frac{\lambda_a}{a} = \frac{L}{2D}$$
+
+          $$\boxed{\ L = \frac{2\,\lambda_a\,D}{a}\ }$$
+
+          **Lire la formule au lieu de s'arrêter au résultat.** Trois enseignements y sont écrits :
+          — $L$ est **inversement** proportionnelle à $a$ : plus la fente est **étroite**, plus la tache est **large**. C'est contre-intuitif si l'on pense en corpuscules, et c'est exactement ce que la question 2-1 relevait ;
+          — $L$ est proportionnelle à $D$ : éloigner l'écran agrandit la figure, ce qui est le moyen pratique de la rendre mesurable ;
+          — $L$ est proportionnelle à $\lambda$ : c'est **cette** dépendance-là que la question 3 va exploiter pour mesurer un indice.
+
+          **Le piège nommé de cette question.** Oublier le facteur $2$ et écrire $L = \dfrac{\lambda_a D}{a}$. L'angle $\theta$ est un **demi**-angle : il donne la demi-largeur de la tache, pas sa largeur. C'est le facteur le plus perdu du chapitre, et l'énoncé le rend ici détectable puisqu'il donne la formule à retrouver. Le second piège : appliquer $\theta = \lambda/a$ avec $\theta$ en degrés. La formule n'est valable qu'en **radians** — l'énoncé le précise, ce n'est pas une coquetterie.
+      - id: q3a
+        part: "3 — L'indice du liquide, par comparaison"
+        stem: |-
+          **3-1.** (0,5 pt) On réalise l'expérience précédente dans un liquide d'indice $n_L$ en gardant la même distance $D$. On remarque que la largeur de la tache centrale prend la valeur $L' = 1{,}8\ \text{cm}$.
+
+          Vérifier que $n_L \simeq 1{,}33$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est le cœur de l'exercice, et il faut voir tout de suite ce qui est **difficile** : ni $\lambda_a$, ni $a$, ni $D$ n'ont de valeur numérique dans cet énoncé. On ne peut donc calculer **aucune** des deux largeurs séparément. La seule voie est de former le **rapport** des deux expériences, où tout ce qu'on ignore va s'éliminer.
+
+          **Ce qui change et ce qui ne change pas quand on plonge le montage dans le liquide.** L'énoncé dit qu'on garde la même distance $D$ ; c'est le même laser et la même fente, donc $a$ ne change pas non plus. Reste la lumière :
+
+          — la **fréquence** $\nu$ ne change pas — c'est exactement la proposition D du QCM de la question 1, et c'est ici qu'elle sert ;
+          — la **vitesse** devient $v_L = \dfrac{c}{n_L}$ (rung 2) ;
+          — donc la **longueur d'onde** change, puisque $\lambda = \dfrac{v}{\nu}$ :
+
+          $$\lambda_L = \frac{v_L}{\nu} = \frac{c}{n_L\,\nu} = \frac{\lambda_a}{n_L}$$
+
+          la dernière égalité venant de $\lambda_a = \dfrac{c}{\nu}$ dans l'air, où $n_a = 1$.
+
+          **La nouvelle largeur.** On réapplique la formule de la question 2-2, avec la nouvelle longueur d'onde et les mêmes $D$ et $a$ :
+
+          $$L' = \frac{2\,\lambda_L\,D}{a} = \frac{2\,\lambda_a\,D}{n_L\,a} = \frac{L}{n_L}$$
+
+          **Le rapport, et l'élimination.** En divisant les deux expressions :
+
+          $$\frac{L}{L'} = n_L
+          \qquad\Longrightarrow\qquad
+          n_L = \frac{2{,}4}{1{,}8} = \frac{4}{3} = 1{,}3333\ldots$$
+
+          $$\boxed{n_L \simeq 1{,}33}$$
+
+          **Ce qui vient de se passer, et c'est la leçon de l'exercice.** $\lambda_a$, $a$ et $D$ ont **tous les trois** disparu du calcul. On a mesuré un indice de réfraction sans connaître ni la longueur d'onde du laser, ni la largeur de la fente, ni la distance à l'écran — seulement deux largeurs de tache, à la règle. C'est pour cela que la formule de la question 2-2 valait la peine d'être établie : non pas pour calculer $L$, mais pour que tout s'élimine dans un rapport. Les deux longueurs de l'énoncé sont d'ailleurs choisies pour que le rapport tombe sur une fraction **exacte**, $\dfrac{4}{3}$.
+
+          **Le contrôle de vraisemblance.** $n_L = 1{,}33$ est l'indice de l'**eau** — la valeur la plus connue de tout le chapitre. Le montage est donc crédible, et le résultat se reconnaît au premier coup d'œil.
+
+          **Le piège nommé de cette question.** Écrire $n_L = \dfrac{L'}{L} = 0{,}75$. Un indice de réfraction est **toujours supérieur ou égal à $1$** : une valeur inférieure à $1$ signifierait une lumière plus rapide que dans le vide. Le sens du rapport se retrouve par le raisonnement — dans le liquide, $\lambda$ **diminue**, donc la tache **rétrécit**, donc $L' < L$, donc $n_L = L/L' > 1$ — mais aussi, en secours, par ce simple contrôle de bon sens.
+        steps:
+          - math: '\lambda_L = \frac{\lambda_a}{n_L}'
+            note: "La frequence est invariante (question 1, proposition D) ; seule la vitesse change, donc lambda avec elle."
+          - math: 'L = \frac{2\lambda_a D}{a} \qquad\text{et}\qquad L'' = \frac{2\lambda_L D}{a} = \frac{2\lambda_a D}{n_L\,a}'
+            note: "Meme fente, meme distance : a et D sont identiques dans les deux experiences."
+          - math: '\frac{L}{L''} = n_L'
+            note: "lambda_a, a et D s'eliminent tous les trois. C'est tout l'interet du rapport."
+          - math: 'n_L = \frac{2{,}4}{1{,}8} = \frac{4}{3} = 1{,}3333'
+            note: "Le rapport tombe sur une fraction EXACTE : les deux longueurs sont choisies pour cela."
+          - math: '\boxed{n_L \simeq 1{,}33}'
+            note: "C'est l'indice de l'eau. Un indice est toujours superieur a 1 : L/L'' et non l'inverse."
+      - id: q3b
+        stem: |-
+          **3-2.** (0,5 pt) Déduire $v_L$ la vitesse de propagation de la lumière du laser dans ce liquide.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « Déduire » : la définition de l'indice suffit, il n'y a rien de nouveau à établir.
+
+          **La relation (rung 2).** L'indice de réfraction d'un milieu est le rapport de la célérité dans le vide à la célérité dans ce milieu :
+
+          $$n_L = \frac{c}{v_L}
+          \qquad\Longrightarrow\qquad
+          v_L = \frac{c}{n_L}$$
+
+          **L'application numérique.**
+
+          $$v_L = \frac{3\cdot10^{8}}{1{,}33} = \boxed{2{,}25\cdot10^{8}\ \text{m.s}^{-1}}$$
+
+          **Le chemin direct, plus élégant et sans arrondi intermédiaire.** Comme $n_L = \dfrac{L}{L'}$, on peut écrire d'un trait :
+
+          $$v_L = \frac{c\,L'}{L} = 3\cdot10^{8} \times \frac{1{,}8}{2{,}4} = 3\cdot10^{8} \times 0{,}75 = 2{,}25\cdot10^{8}\ \text{m.s}^{-1}$$
+
+          Cette voie évite d'arrondir $n_L$ à $1{,}33$ avant de diviser, et donne la valeur **exacte**. C'est le réflexe à prendre : quand une grandeur intermédiaire est un rapport simple, garde-la sous forme de fraction jusqu'au bout.
+
+          **Les deux contrôles, qui ne coûtent rien.**
+          — $v_L = 2{,}25\cdot10^{8} < c = 3\cdot10^{8}$ ✔. Toute vitesse trouvée supérieure à $c$ serait fausse, sans discussion possible.
+          — La lumière va $\dfrac{3}{4}$ aussi vite dans ce liquide que dans le vide, ce qui correspond bien à un indice $\dfrac{4}{3}$. Les deux nombres se répondent.
+
+          **Le piège nommé de cette question.** Écrire $v_L = c \times n_L = 4\cdot10^{8}\ \text{m.s}^{-1}$, c'est-à-dire multiplier au lieu de diviser. Le résultat dépasse $c$, ce qui est physiquement impossible — le contrôle attrape l'erreur avant le correcteur. Le moyen de ne jamais se tromper de sens : l'indice **ralentit** la lumière, donc il doit être au **dénominateur**.
