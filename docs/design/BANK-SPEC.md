@@ -41,7 +41,7 @@ entries:
       filiere: "SPC"           # exam paper's stream (maths: SM | SExp)
       exercise_label: "Exercice 2 — Chimie"  # position on the real paper
     bareme_total: 7            # points on the /20 paper, from the scan
-    duration_min: 35           # honest estimate from barème weight
+    duration_min: 35           # ≈ 6 min per barème point — see below
     sourcing:                  # authoring-side gate — SAME contract as
       status: sourced          # exercises.yaml; --strict enforces year +
       note: "…2019 normale…"   # session in the note; vérifié in the
@@ -59,6 +59,21 @@ single-quoted raw KaTeX in `steps[].math`), reasoning on 100% of
 questions, `--strict` sourcing gate, the ≤5-named-exceptions discipline
 (a bank never carries invented "bac" exercises — unfindable = absent +
 census note, never fabricated).
+
+**`duration_min` — the house ratio is ≈ 6 minutes per barème point**
+(written down 2026-08-23 after it drifted). This is a *training* estimate,
+not exam pace: the real papers run at 9 min/pt (PC, 3 h for /20) and
+12 min/pt (SM, 4 h for /20), and using those inflates every card. Measured
+across the whole corpus the ratio sits between 4.9 and 7.1 with a median of
+exactly 6.00 in all three filières — the number above simply records what
+167 entries already do, and what the worked example in this section has
+always shown (35 min for 7 points). Round to the nearest whole minute.
+
+The reason consistency matters more here than precision: `duration_min` is
+displayed to a student deciding what to attempt tonight. A card that reads
+"43 min" next to an identical one reading "29 min" teaches nothing about the
+exercise and everything about who authored it. Eleven entries were
+renormalised on 2026-08-23 for exactly this reason.
 
 ## 3. The card — anatomy and behavior
 

@@ -13,9 +13,9 @@
 # dans les énoncés ; conventions KaTeX (block scalars pour la prose, KaTeX brut
 # entre apostrophes simples dans steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue B0) : la banque compte désormais DOUZE sujets
+# NOTE ÉDITORIALE (pour la revue B0) : la banque compte désormais TREIZE sujets
 # « vérifié » — 2018 N, 2019 N, 2020 N, 2021 N, 2021 R, 2022 N, 2022 R, 2023 N,
-# 2023 R, 2024 N, 2024 R, 2025 N. Le 2021 R (bk-2021-r-x1, ajouté le 2026-08-23) est la PREMIÈRE
+# 2023 R, 2024 N, 2024 R, 2025 N, 2025 R. Le 2021 R (bk-2021-r-x1, ajouté le 2026-08-23) est la PREMIÈRE
 # entrée de session rattrapage de cette banque ; sa Partie 2, indépendante (pile
 # nickel-argent), est transcrite sous content/pc/piles (bk-2021-r-x1b). Il porte
 # une SCOPE NOTE en trois points — la loi de dilution non couverte nommément par
@@ -74,6 +74,32 @@
 # faible dosée par un acide fort » de la banque, et un quasi jumeau numérique
 # de bk-2020-n-x1 (mêmes volumes, mêmes concentrations) — voir le commentaire
 # au-dessus de l'entrée pour ce qui la distingue malgré tout des trois autres.
+#
+# Le 2025 R (bk-2025-r-x1, ajouté le 2026-08-27) est la CINQUIÈME entrée de
+# rattrapage ; c'est le §1 de l'exercice 1 (étude d'une solution aqueuse
+# d'acide éthanoïque : équation, taux d'avancement, pK_A calculé PUIS relu
+# sur un diagramme de distribution, effet de la dilution ; 2,75 pt). Ses deux
+# autres sous-parties, indépendantes de celle-ci mais issues du même exercice
+# de 7 pt, vivent ailleurs : le §2 (estérification, dosage de l'acide
+# restant, rendement) sous content/pc/esterification-hydrolyse, entrée
+# bk-2025-r-x1b ; le §3 (cinétique de la saponification) sous
+# content/pc/suivi-temporel-vitesse, entrée bk-2025-r-x1c. Elle porte un
+# CROSS-LIST CLASSEMENT honoré sans double entrée (les questions 1-2 et 1-3 —
+# tau et pK_A — appartiennent, dans leur DÉFINITION GÉNÉRALE, à la notion
+# « État d'équilibre d'un système chimique », nommée et renvoyée par son nom
+# lisible dans le raisonnement de chacune, même si leur application concrète
+# ici est déjà couverte nommément par les rungs 4 et 6 de CETTE leçon — à la
+# différence de bk-2022-r-x1b, où aucun rung de cette leçon ne couvrait le
+# geste et le renvoi était la SEULE route disponible). Une NOTE ÉDITORIALE
+# documente, sans le réparer, un défaut du sujet officiel relevé par le
+# vérificateur adversarial : les étiquettes « Courbe 1 » / « Courbe 2 » de la
+# figure 1 (diagramme de distribution) étaient ambiguës sur le scan d'origine
+# et auraient rendu la question 1-4-2 contradictoire avant correction pixel
+# par pixel — voir le commentaire au-dessus de l'entrée. Un FLAG DE
+# JUMELAGE (non tranché ici) la rapproche de bk-2021-r-x1 (pK_A et effet de
+# la dilution sur tau, même acide faible + eau) et de bk-2024-r-x1b (pK_A lu
+# sur un diagramme de distribution réel) — voir le commentaire au-dessus de
+# l'entrée pour ce qui la distingue des deux malgré tout.
 
 notion: pc/reactions-acido-basiques
 
@@ -1015,7 +1041,7 @@ entries:
       filiere: "SPC"
       exercise_label: "Exercice 1 — §2 : étude d'une solution aqueuse de méthylamine"
     bareme_total: 4.75
-    duration_min: 43
+    duration_min: 29
     sourcing:
       status: sourced
       note: >-
@@ -2111,3 +2137,240 @@ entries:
             note: "Reaction totale a l'equivalence : tout le HSO3- initial est devenu SO3(2-)."
           - math: 'C_{eq} = \dfrac{n(\text{SO}_3^{2-})}{V_A + V_{BE}} = \dfrac{9{,}6\times10^{-4}}{20{,}0\times10^{-3} + 9{,}6\times10^{-3}} \approx 3{,}2\times10^{-2}\ \text{mol/L}'
             note: "Le volume total a l'equivalence est VA + VBE, pas VA seul : c'est une dilution."
+
+  # ── bk-2025-r-x1 — 2025 R, Exercice 1 (§1) : solution aqueuse d'acide ethanoique ──
+  # Ses deux autres sous-parties, independantes, vivent ailleurs : le §2
+  # (esterification, dosage de l'acide restant, rendement) sous
+  # content/pc/esterification-hydrolyse, entree bk-2025-r-x1b ; le §3
+  # (cinetique de la saponification) sous content/pc/suivi-temporel-vitesse,
+  # entree bk-2025-r-x1c.
+  #
+  # NOTE EDITORIALE (documentee, non reparee) : le sujet officiel portait,
+  # sur le scan d'origine, des fleches d'etiquetage « Courbe 1 » / « Courbe 2 »
+  # de la figure 1 dont une lecture naive aurait pu contredire la question
+  # 1-4-2 (qui demande de justifier que la courbe 1 est l'espece acide). Le
+  # verificateur adversarial a leve l'ambiguite par une mesure au pixel de la
+  # tete de fleche sur le trace qu'elle designe
+  # (docs/sujets/_incoming/pc-spc-2025-r.md, lignes 109-119) : la courbe 1
+  # est la courbe DECROISSANTE (100% -> 0%), l'acide CH3COOH. Le raisonnement
+  # de la question 1-4-2 s'appuie sur cette lecture etablie et sur l'allure
+  # de la courbe, jamais sur l'etiquette seule.
+  #
+  # CROSS-LIST CLASSEMENT (honore ici, PAS duplique en entree separee). Le
+  # classement de docs/sujets/_incoming/pc-spc-2025-r.md pose un cross-list
+  # etat-equilibre sur les questions 1-2 (tau) et 1-3 (pK_A). A la difference
+  # de bk-2022-r-x1b (ou aucun rung de CETTE lecon ne couvrait tau ni Qr,eq
+  # pour une base), l'application concrete ici EST couverte nommement par les
+  # rungs 4 et 6 de cette lecon-ci (c'est litteralement l'exemple travaille du
+  # rung 4 et du rung 6, meme acide, meme structure de calcul) : ces deux
+  # rungs restent donc la route PRINCIPALE du raisonnement. Le domaine
+  # « Etat d'equilibre d'un systeme chimique » est neanmoins nomme et renvoye
+  # par son nom lisible dans le raisonnement des questions 1-2, 1-3 et 1-4-3
+  # (rungs 2 et 6 la-bas, pour la definition generale de tau et pour la loi
+  # de dilution), conformement a la consigne. Aucune entree n'est creee dans
+  # etat-equilibre/bank.yaml (ce serait un double comptage du bareme).
+  #
+  # FLAG DE JUMELAGE (non tranche ici, meme precedent que piles bk-2024-r-x1
+  # face a bk-2020-n-x1). Cette entree touche au meme cluster « acide faible
+  # + eau, pK_A, effet de la dilution sur tau » que DEUX entrees deja
+  # presentes dans cette banque :
+  #   (a) bk-2021-r-x1 (acide methanoique) : le pK_A y est calcule depuis un
+  #       RAPPORT [A-]/[AH] tire d'un dosage pH-metrique, et l'effet de la
+  #       dilution sur tau se lit sur une courbe tau = f(pH) DEJA TRACEE (la
+  #       lecture donne directement tau, sans intermediaire). Porte d'entree :
+  #       le DOSAGE, puis une courbe tau = f(pH).
+  #   (b) bk-2024-r-x1b (base R-NH2) : le pK_A y est lu, comme ici, au
+  #       croisement a 50% d'un diagramme de distribution reel — c'est la
+  #       PORTE D'ENTREE la plus proche de celle de cette entree (question
+  #       1-4-1). Mais bk-2024-r-x1b n'exerce ni l'effet de la dilution ni la
+  #       justification de l'identite d'une courbe (les etiquettes « Forme
+  #       acide »/« Forme basique » y sont donnees, pas a deduire) ; son
+  #       diagramme sert plutot un DOSAGE complet (tableau d'avancement au
+  #       volume non remarquable, taux d'avancement de la reaction de
+  #       titrage) absent de cette entree.
+  # Ce qui distingue CETTE entree des deux, et justifie de garder les trois :
+  #   - le pK_A y est retrouve DEUX FOIS par deux voies independantes (calcul
+  #     depuis le pH en q1-3, lecture du croisement en q1-4-1), un
+  #     recoupement absent des deux autres ;
+  #   - la question 1-4-2 exige de JUSTIFIER quelle courbe est l'espece acide
+  #     a partir de son ALLURE (decroissante = acide), un geste de lecture
+  #     absent de bk-2021-r-x1 (pas de diagramme de distribution) et de
+  #     bk-2024-r-x1b (etiquettes deja donnees) ;
+  #   - l'effet de la dilution sur tau (q1-4-3) se lit ici via le POURCENTAGE
+  #     alpha DEFINI PAR L'ENONCE (identique, structurellement, a la formule
+  #     %A- du rung 8), pas via une courbe tau = f(pH) toute faite comme dans
+  #     bk-2021-r-x1 — un pont algebrique different, absent des deux autres ;
+  #   - aucun dosage dans cette entree (contrairement aux deux autres) : trois
+  #     portes d'entree differentes vers le meme cluster, exactement ce que la
+  #     banque doit offrir (anti-memorisation, VISION).
+  # Recommandation : garder les trois. Arbitrage owner.
+  - id: bk-2025-r-x1
+    title: "Solution aqueuse d'acide éthanoïque : taux d'avancement, pKA par calcul et par diagramme de distribution, effet de la dilution"
+    source:
+      year: 2025
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — §1 : étude d'une solution aqueuse d'acide éthanoïque"
+    bareme_total: 2.75
+    duration_min: 17
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS28F, AlloSchool
+        https://www.alloschool.com/element/145799, scan
+        course-422/upload-87492/0002-big.jpg et 0003-big.jpg, pages 2 et 3
+        sur 6 (Exercice 1 — §1, étude d'une solution aqueuse d'acide
+        éthanoïque : équation acide/eau, taux d'avancement final, pK_A
+        calculé depuis le pH PUIS relu sur un diagramme de distribution,
+        effet de la dilution sur tau). Barème du §1 recompté question par
+        question sur l'énoncé source : 0,5 (1-1) + 0,5 (1-2) + 0,5 (1-3) +
+        0,5 (1-4-1) + 0,25 (1-4-2) + 0,5 (1-4-3) = 2,75 pt, sur les 7 pt de
+        l'exercice complet, dont le §2 — estérification et dosage de l'acide
+        restant, 2,0 pt — est transcrit sous
+        content/pc/esterification-hydrolyse, entrée bk-2025-r-x1b, et le §3
+        — cinétique de la saponification, 2,25 pt — sous
+        content/pc/suivi-temporel-vitesse, entrée bk-2025-r-x1c ; la somme
+        des trois, 2,75+2,0+2,25 = 7,0 pt, coïncide avec le recompte en
+        marge du fichier source. Source :
+        docs/sujets/_incoming/pc-spc-2025-r.md, statut « vérifié — re-fetch
+        indépendant + re-dérivation (vérificateur adversarial, 2026-08-23) ».
+        La description de la figure 1 (diagramme de distribution) est
+        reprise ici AU MOT PRÈS de la version corrigée par le vérificateur
+        — voir la NOTE ÉDITORIALE au-dessus de cette entrée sur le défaut
+        d'étiquetage d'origine, documenté et non réparé. Contre-calcul
+        refait ici, indépendamment de la re-dérivation du vérificateur (qui
+        couvre déjà $pK_A$ et la lecture $\alpha=20\,\%$, et que ce
+        contre-calcul confirme) : $[\text{H}_3\text{O}^+]_{eq} = 10^{-3{,}6}
+        \approx 2{,}51\times10^{-4}\ \text{mol.L}^{-1}$ ; $\tau =
+        [\text{H}_3\text{O}^+]_{eq}/C_A =
+        2{,}51\times10^{-4}/4{,}2\times10^{-3} \approx 0{,}060$ (valeur non
+        donnée explicitement par le sujet ni par le vérificateur — dérivée
+        ici pour la première fois, cohérente avec la lecture graphique
+        $\tau_1 = 0{,}20$ de la question 1-4-3 : la dilution fait bien
+        monter tau) ; $K_A =
+        (2{,}51\times10^{-4})^2/(4{,}2\times10^{-3}-2{,}51\times10^{-4})
+        \approx 1{,}60\times10^{-5}$, $pK_A \approx 4{,}80$ — exactement la
+        valeur du sujet, confirmée. FLAG DE JUMELAGE avec bk-2021-r-x1 et
+        bk-2024-r-x1b : voir le commentaire en tête de cette entrée.
+    intro: |-
+      **Étude d'une solution aqueuse d'acide éthanoïque (examen national, session de rattrapage 2025 — Exercice 1, §1, 2,75 points).**
+
+      Dans cet exercice on se propose d'étudier une solution aqueuse d'acide éthanoïque ; une réaction d'estérification ; une hydrolyse basique d'un ester. *Les deux autres sous-parties de cet exercice de 7 points vivent ailleurs : le §2 (estérification, dosage de l'acide restant, rendement) sous la notion « Estérification et hydrolyse » ; le §3 (cinétique de la saponification) sous la notion « Suivi temporel d'une transformation — vitesse de réaction ».*
+
+      On prépare une solution aqueuse $S_A$ d'acide éthanoïque $CH_3COOH$ de volume $V$ et de concentration molaire $C_A = 4{,}2\cdot10^{-3}\ \text{mol.L}^{-1}$. Son pH vaut $\text{pH} = 3{,}6$.
+
+      Les courbes de la figure 1 représentent le diagramme de distribution des espèces acide et base conjuguée du couple $CH_3COOH_{(aq)}/CH_3COO^-_{(aq)}$.
+
+      On dilue la solution $S_A$ pour obtenir une solution $S_{A1}$ de concentration $C_{A1}$ et de $pH_1 = 4{,}2$. On définit la proportion de l'espèce basique $CH_3COO^-$ dans une solution par :
+
+      $$\alpha(CH_3COO^-) = \frac{\left[CH_3COO^-_{(aq)}\right]_{éq}}{\left[CH_3COOH_{(aq)}\right]_{éq} + \left[CH_3COO^-_{(aq)}\right]_{éq}} \times 100$$
+
+      **Figure 1 (courbes, re-décrite depuis l'image, mesurée au pixel).** Repère « % » en ordonnée, « pH » en abscisse, sur quadrillage fin (sous-maille 10×10 : petit carreau $=0{,}1$ unité de pH $\times$ $2\ \%$). **Abscisse** : l'origine du repère est $pH = 0$ ; traits principaux tous les $1$ unité de pH, seuls $1$ et $2$ chiffrés ; le cadre s'étend jusqu'à $pH \simeq 10$ (10 traits principaux). **Ordonnée** : traits principaux tous les $20\ \%$, chiffrés $20$ et $40$ (plus le $0$ à l'origine) ; le haut du cadre est exactement $100\ \%$ (5 traits principaux).
+
+      Deux courbes sigmoïdes en sens opposés, et **l'étiquetage est celui-ci** (tête de flèche relevée au pixel sur le tracé qu'elle désigne) :
+      - la **courbe 1** — flèche « Courbe 1 » venant de la **droite** et pointant vers la gauche, sa pointe se posant sur le tracé situé **à droite** du point de croisement — est la courbe **décroissante** : elle part du haut du cadre ($100\ \%$) aux faibles pH et tend vers $0$ aux pH élevés. C'est l'espèce **acide** $CH_3COOH$ (ce que la question 1-4-2 demande de justifier) ;
+      - la **courbe 2** — flèche « Courbe 2 » venant de la **gauche**, pointe posée sur le tracé situé **à gauche** du croisement — est la courbe **croissante** : elle part de $0$ aux faibles pH et sature à $100\ \%$ aux pH élevés. C'est la base conjuguée $CH_3COO^-$.
+
+      Lectures fermes (mesure au pixel, recoupées par la re-dérivation) :
+      - les deux courbes se croisent à **$50\ \%$** pour **$pH = 4{,}8$** (croisement mesuré à $pH = 4{,}76 \pm 0{,}05$) — valeur qui coïncide avec le $pK_A$ recalculé depuis $pH = 3{,}6$ et $C_A = 4{,}2\cdot10^{-3}$ ;
+      - **à $pH_1 = 4{,}2$, la courbe croissante (base) passe exactement par le trait chiffré $20\ \%$** : $\alpha(CH_3COO^-) = 20\ \%$. *(Cette lecture porte toute la question 1-4-3 : sans elle l'exercice n'est pas exploitable. Elle est vérifiée par Henderson : $10^{4{,}2-4{,}8} = 0{,}251$ donne $\alpha = 0{,}251/1{,}251 = 20{,}1\ \%$.)*
+
+      Légende : « Figure 1 ».
+    questions:
+      - id: q1
+        stem: |-
+          **1-1. (0,5 pt)** Écrire l'équation chimique modélisant la réaction de l'acide éthanoïque avec l'eau.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une réaction acido-basique combine toujours deux couples (rung 1) : ici, l'acide éthanoïque $CH_3COOH$ du couple donné dans l'énoncé, et l'eau, qui doit accepter le proton cédé — l'eau joue donc ici son rôle de **base**, dans le couple $H_3O^+/H_2O$.
+
+          $$\boxed{CH_3COOH_{(aq)} + H_2O_{(l)} \rightleftharpoons CH_3COO^-_{(aq)} + H_3O^+_{(aq)}}$$
+
+          **Pourquoi la double flèche.** L'acide éthanoïque est un acide **faible** : sa réaction avec l'eau est **limitée**, elle s'arrête sur un équilibre (rung 7) — c'est exactement ce que les questions 1-2 et 1-3 vont chiffrer.
+
+          **Le piège nommé de cette question.** Ne fais pas de l'eau un simple spectateur qu'on écrirait par réflexe sans rôle : c'est elle qui accepte le proton cédé par l'acide, dans son rôle basique du couple $H_3O^+/H_2O$ — l'eau est un **ampholyte** (rung 1), et confondre ce rôle avec son rôle acide (couple $H_2O/HO^-$, mobilisé plus loin dans cet exercice, au §3) fait perdre le point.
+      - id: q2
+        stem: |-
+          **1-2. (0,5 pt)** Exprimer $\tau$, le taux d'avancement final de cette réaction, en fonction de $C_A$ et $pH$. Calculer sa valeur.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $\tau = x_f/x_{max}$, le taux d'avancement final, est une définition **générale** construite nommément au rung 2 de la notion **État d'équilibre d'un système chimique** ; on la réutilise ici exactement comme au rung 6 de cette leçon-ci, sur le cas particulier d'un acide qui réagit avec l'eau. Chaque molécule $CH_3COOH$ qui a réagi (question 1-1) produit exactement un ion $H_3O^+$, donc l'avancement final se lit sur $[H_3O^+]_{eq}$ ; une conversion **totale** de l'acide introduit aurait donné $[H_3O^+]_{max} = C_A$. Le rapport des deux, une fois le volume $V$ simplifié (rung 6), donne :
+
+          $$\tau = \frac{x_f}{x_{max}} = \frac{[H_3O^+]_{eq}}{C_A}$$
+
+          **L'application numérique, chiffre par chiffre.** D'abord $[H_3O^+]_{eq}$, directement depuis le pH mesuré (définition du pH, rung 2) :
+
+          $$[H_3O^+]_{eq} = 10^{-\text{pH}} = 10^{-3{,}6} \approx 2{,}51\times10^{-4}\ \text{mol.L}^{-1}$$
+
+          Puis le rapport, avec $C_A = 4{,}2\times10^{-3}\ \text{mol.L}^{-1}$ :
+
+          $$\tau = \frac{2{,}51\times10^{-4}}{4{,}2\times10^{-3}}$$
+
+          $$\boxed{\tau \approx 0{,}060 = 6{,}0\ \%}$$
+
+          **Le piège nommé de cette question.** $\tau$ est loin de $1$ : seulement $6\,\%$ de l'acide introduit a effectivement réagi avec l'eau, le reste — $94\,\%$ — est resté sous forme $CH_3COOH$ intacte. C'est la signature d'un acide **faible** (rung 6) ; écrire $\tau \approx 1$ « parce que l'acide a réagi » confond avoir réagi un peu et avoir réagi presque totalement — deux choses très différentes que seul le chiffre distingue.
+      - id: q3
+        stem: |-
+          **1-3. (0,5 pt)** Déterminer la valeur de $pK_A$ du couple $CH_3COOH_{(aq)}/CH_3COO^-_{(aq)}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $K_A$ est, par définition (rung 4 de cette leçon), la constante d'équilibre de la réaction écrite à la question 1-1 — c'est le même objet que la constante $K$ introduite nommément aux rungs 3-4 de la notion **État d'équilibre d'un système chimique**, appliqué ici spécifiquement au couple $CH_3COOH_{(aq)}/CH_3COO^-_{(aq)}$. Il faut reconstituer les trois concentrations à l'équilibre à partir des deux seules données disponibles : le pH et $C_A$.
+
+          $[H_3O^+]_{eq}$ vient d'être trouvée à la question précédente. Comme l'acide et l'eau produisent $CH_3COO^-$ et $H_3O^+$ en quantités égales (question 1-1), et en négligeant la contribution de l'autoprotolyse de l'eau (hypothèse valable ici, $[H_3O^+]_{eq}$ étant très supérieure à $10^{-7}\ \text{mol.L}^{-1}$) :
+
+          $$[CH_3COO^-]_{eq} \approx [H_3O^+]_{eq} \approx 2{,}51\times10^{-4}\ \text{mol.L}^{-1}$$
+
+          Ce qu'il reste de l'acide initial, une fois retirée la part qui a réagi :
+
+          $$[CH_3COOH]_{eq} \approx C_A - [H_3O^+]_{eq} = 4{,}2\times10^{-3} - 2{,}51\times10^{-4} \approx 3{,}95\times10^{-3}\ \text{mol.L}^{-1}$$
+
+          $$K_A = \frac{[CH_3COO^-]_{eq}\,[H_3O^+]_{eq}}{[CH_3COOH]_{eq}} = \frac{(2{,}51\times10^{-4})^2}{3{,}95\times10^{-3}}$$
+
+          $$\boxed{K_A \approx 1{,}60\times10^{-5}}$$
+
+          $$pK_A = -\log K_A = -\log(1{,}60\times10^{-5})$$
+
+          $$\boxed{pK_A \approx 4{,}80}$$
+
+          **Le piège nommé de cette question.** Ne calcule pas $K_A$ avec la concentration **apportée** $C_A$ au dénominateur : c'est $[CH_3COOH]_{eq}$, la concentration **restante** une fois la réaction établie, qu'il faut y placer — ici la différence est faible ($3{,}95\times10^{-3}$ contre $4{,}2\times10^{-3}\ \text{mol.L}^{-1}$) mais elle n'est pas nulle, et l'énoncé demande la valeur exacte, pas une approximation grossière.
+      - id: q4
+        stem: |-
+          **1-4-1. (0,5 pt)** A partir du graphe, déterminer, à nouveau, la valeur du $pK_A$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Sur un diagramme de distribution, le $pK_A$ du couple est le pH où les deux courbes se **croisent** — le point où chaque forme vaut exactement $50\,\%$ (rung 8) : $\%A^- = 100/(1+10^{pK_A-\text{pH}})$ vaut $50$ précisément quand l'exposant $pK_A - \text{pH}$ est nul, c'est-à-dire quand $\text{pH} = pK_A$.
+
+          **La lecture.** Sur la figure 1, les deux courbes sigmoïdes se croisent à $50\,\%$ pour $\text{pH} = 4{,}8$.
+
+          $$\boxed{pK_A \approx 4{,}8}$$
+
+          **Le contrôle.** C'est exactement la valeur trouvée par le calcul à la question 1-3 ($pK_A \approx 4{,}80$) : les deux méthodes — calcul depuis une seule mesure de pH, lecture d'un diagramme construit à partir de nombreux points — se recoupent, comme elles le doivent.
+
+          **Le piège nommé de cette question.** Ne lis pas le $pK_A$ à l'endroit où l'une des deux courbes atteint $100\,\%$ ou $0\,\%$ : ces asymptotes ne portent aucune information sur $pK_A$, seul le **croisement** à $50\,\%$ le fait (rung 8). Et ne cherche pas non plus ce croisement à $\text{pH} = 7$ par réflexe de neutralité : $pK_e = 14$ fixe la neutralité de l'eau, $pK_A$ est une propriété du **couple** étudié et n'a, en général, aucune raison de valoir $7$.
+      - id: q5
+        stem: |-
+          **1-4-2. (0,25 pt)** Justifier que la courbe 1 correspond à l'espèce acide.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Il faut relier l'**allure** de la courbe 1 à ce que dit la formule du diagramme de distribution (rung 8) aux deux extrêmes de pH.
+
+          $$\%AH = \frac{100}{1+10^{\,\text{pH}-pK_A}}$$
+
+          Aux pH **faibles** ($\text{pH} \ll pK_A$), l'exposant $\text{pH}-pK_A$ est très négatif, $10^{(\cdot)} \to 0$, donc $\%AH \to 100$. Aux pH **élevés** ($\text{pH} \gg pK_A$), l'exposant est très positif, $10^{(\cdot)} \to \infty$, donc $\%AH \to 0$ : la courbe de la forme **acide** est nécessairement **décroissante**, de $100\,\%$ vers $0\,\%$.
+
+          Or c'est exactement l'allure de la courbe 1, décrite dans la figure 1 : elle part du haut du cadre ($100\,\%$) aux faibles pH et tend vers $0$ aux pH élevés.
+
+          $$\boxed{\text{La courbe 1 est decroissante : c'est donc l'espece acide } CH_3COOH}$$
+
+          **Le piège nommé de cette question.** Cette question n'est pas décorative : le scan d'origine de ce sujet portait des flèches d'étiquetage « Courbe 1 » / « Courbe 2 » ambiguës, corrigées ici par mesure au pixel (voir la NOTE ÉDITORIALE en tête de cette entrée) — c'est précisément pour cette raison que la question demande de **justifier**, et pas seulement de nommer : le critère qui tranche est l'**allure** de la courbe (décroissante = acide, rung 8), jamais l'étiquette imprimée à côté, qui peut être trompeuse à la lecture rapide d'un scan.
+      - id: q6
+        stem: |-
+          **1-4-3. (0,5 pt)** On dilue la solution $S_A$ pour obtenir une solution $S_{A1}$ de concentration $C_{A1}$ et de $pH_1 = 4{,}2$. En se basant sur les courbes de la figure 1, trouver la nouvelle valeur $\tau_1$ du taux d'avancement final de la réaction de l'acide éthanoïque avec l'eau. Que peut-on conclure à propos de l'effet de la dilution sur le taux d'avancement final ?
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le pourcentage $\alpha(CH_3COO^-)$ défini par l'énoncé a exactement la forme du pourcentage $\%A^-$ construit au rung 8 de cette leçon : $\alpha(CH_3COO^-) = [CH_3COO^-]_{eq}/([CH_3COOH]_{eq}+[CH_3COO^-]_{eq}) \times 100$. Et le dénominateur de $\alpha$ n'est autre que la concentration totale du couple, conservée par bilan de matière : $[CH_3COOH]_{eq}+[CH_3COO^-]_{eq} = C_{A1}$, la concentration analytique de $S_{A1}$ (rien ne se perd, tout ce qui a été dissous reste sous l'une ou l'autre forme). Or c'est exactement le dénominateur de $\tau_1 = x_f/x_{max}$, une fois le volume simplifié (même geste qu'à la question 1-2) : $\tau_1 = [CH_3COO^-]_{eq}/C_{A1}$. Les deux rapports sont donc identiques :
+
+          $$\tau_1 = \frac{[CH_3COO^-]_{eq}}{C_{A1}} = \frac{[CH_3COO^-]_{eq}}{[CH_3COOH]_{eq}+[CH_3COO^-]_{eq}} = \frac{\alpha(CH_3COO^-)}{100}$$
+
+          **La lecture.** Sur la figure 1, à $\text{pH}_1 = 4{,}2$, la courbe croissante (la base $CH_3COO^-$) passe exactement par le trait chiffré $20\,\%$ : $\alpha(CH_3COO^-) = 20\,\%$.
+
+          $$\boxed{\tau_1 = 0{,}20}$$
+
+          **La conclusion sur l'effet de la dilution.** $\tau$ est passé de $0{,}060$ (question 1-2, solution $S_A$ non diluée) à $\tau_1 = 0{,}20$ (solution diluée $S_{A1}$) : **la dilution fait augmenter le taux d'avancement final**. Pourquoi, mécaniquement : reprends $K_A = C\,\tau^2/(1-\tau)$ (relation déjà établie à partir des rungs 4 et 6 de cette leçon, pas un outil neuf). $K_A$ est fixé — c'est le même couple dans les deux béchers — donc si $C$ diminue, le facteur $\tau^2/(1-\tau)$ doit **augmenter** d'autant pour que le produit reste constant, et cette quantité croît avec $\tau$ : diluer force $\tau$ à monter. C'est le cas particulier, pour un acide, de la **loi de dilution** établie nommément au rung 6 de la notion **État d'équilibre d'un système chimique** : diluer un système dont le sens direct augmente le nombre d'espèces dissoutes (ici, une molécule $CH_3COOH$ donne deux entités, $CH_3COO^-$ et $H_3O^+$, contre une seule au départ — l'eau, solvant, n'est pas comptée) fait toujours **augmenter** $\tau$.
+
+          **Le piège nommé de cette question.** Ne confonds pas la **force** de l'acide (son $K_A$, son $pK_A$ — une propriété du couple, indépendante de la concentration, rung 6) et son **taux d'avancement final** $\tau$ (une propriété de la **solution**, qui dépend à la fois du couple et de la concentration). $pK_A$ reste $4{,}80$ dans les deux béchers ; $\tau$, lui, quadruple presque. On ne peut jamais comparer la force de deux acides par leur seul $\tau$, sauf à concentration égale.

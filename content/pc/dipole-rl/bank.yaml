@@ -17,14 +17,15 @@
 # (block scalars pour la prose, KaTeX brut entre apostrophes simples dans
 # steps[].math, notes sans backslash ni accent).
 #
-# NOTE ÉDITORIALE (pour la revue) : quatre sujets « vérifié » couvrent cette
+# NOTE ÉDITORIALE (pour la revue) : cinq sujets « vérifié » couvrent cette
 # notion — 2020 N (Exercice IV, Partie I), 2021 R (Exercice 4, Partie II),
-# 2023 N (Exercice 3, §1) et 2024 N (Exercice 4, Partie 2). Les trois entrées
-# de session normale sont recensées dans docs/sujets/pc/dipole-rl.md (aucune
-# autre entrée, vérifiée ou non, n'y figure) ; l'entrée 2021 R vient de
-# docs/sujets/_incoming/pc-spc-2021-r.md — le sujet complet de la session de
-# rattrapage 2021, vérifié par une passe adversariale (2026-08-22), pas
-# encore reversé dans le fichier de notion. Le 2020 N (bk-2020-n-x4) sert AUSSI de sommet de leçon
+# 2022 R (Exercice 3, section 1), 2023 N (Exercice 3, §1) et 2024 N
+# (Exercice 4, Partie 2). Les trois entrées de session normale sont recensées
+# dans docs/sujets/pc/dipole-rl.md (aucune autre entrée, vérifiée ou non, n'y
+# figure) ; les entrées 2021 R et 2022 R viennent respectivement de
+# docs/sujets/_incoming/pc-spc-2021-r.md et pc-spc-2022-r.md — sujets complets
+# de leur session de rattrapage, vérifiés par une passe adversariale
+# (2026-08-22), pas encore reversés dans le fichier de notion. Le 2020 N (bk-2020-n-x4) sert AUSSI de sommet de leçon
 # (r-bac, exercises.yaml, marqueur [[exercise:r-bac]] à R5 « Exercice de type
 # bac ») : mêmes questions, mêmes valeurs numériques (I_max = 100 mA,
 # r = 10 Ω, τ = 0,01 s, L = 1 H), reprises ici à l'identique pour rester
@@ -48,6 +49,18 @@
 #     (tangente à l'origine, méthode des 63 %) — jamais la lecture d'une
 #     droite di/dt en fonction de i. Ponté au point d'usage dans le
 #     raisonnement des deux questions.
+#   - bk-2022-r-x3, q1 (1.1) : la leçon (rungs R1-R3) ne couvre nulle part le
+#     branchement expérimental d'un système d'acquisition ou d'un
+#     oscilloscope (règle de la masse commune, mesure en dérivation) —
+#     reposé au point d'usage à partir du principe général de la mesure
+#     électrique, pas enseigné pas à pas dans cette leçon. Signalé pour
+#     arbitrage (ajouter un complément de rung sur les conventions
+#     expérimentales, ou assumer que ce point reste hors-ramp).
+#   - bk-2022-r-x3, q2 (1.2) : le rung 2 établit l'équation différentielle du
+#     dipôle RL uniquement en i(t) ; la conversion vers u_R(t) (substitution
+#     i = u_R/R dans la loi des mailles) est refaite au point d'usage, sur le
+#     modèle de la conversion en u_C déjà pratiquée côté rc-charge
+#     (bk-2024-r-x4, même sujet 2024 R).
 
 notion: pc/dipole-rl
 
@@ -310,6 +323,233 @@ entries:
           **Le contrôle croisé, gratuit et décisif.** La méthode des $63\ \%$ (rung 3) doit donner le même $\tau$ : à $t = \tau$, le courant vaut $0{,}63\times I_p = 0{,}63\times60 = 37{,}8\ \text{mA}$. Or la figure 3 passe par $\approx 38\ \text{mA}$ à $t = 5{,}1\ \text{ms}$. Les deux lectures concordent — la valeur de $\tau$ est sûre.
 
           **Le double piège de cette question.** D'abord, reprendre $R_2$ seul : $L = 5{,}1\times10^{-3}\times95 = 0{,}4845\ \text{H}$, soit $0{,}48\ \text{H}$ — et la valeur imposée $0{,}51\ \text{H}$ ne tombe pas. Quand un énoncé te donne le résultat à retrouver, ce désaccord est le signal, pas une approximation à arrondir. Ensuite, confondre $\tau$ avec l'instant où la courbe rejoint VISUELLEMENT son palier, vers $t \approx 20\ \text{ms}$ : cet instant-là vaut environ $4\tau$ à $5\tau$ (rung 3), et il donnerait $L \approx 2\ \text{H}$, quatre fois trop. $\tau$ se lit sur la tangente ou aux $63\ \%$, jamais « là où ça devient plat ».
+
+  # ── bk-2022-r-x3 — 2022 R, Exercice 3 (section 1) : brancher le systeme
+  #    d'acquisition, equation en u_R(t), comparer deux inductances ──
+  #
+  # NOTE ÉDITORIALE — montage composite. Cette section 1 partage le montage de
+  # la figure 1 avec les sections 2 (oscillations libres RLC, transcrite sous
+  # content/pc/rlc-serie/bank.yaml, entree bk-2022-r-x3b) et 3 (reception AM,
+  # transcrite sous content/pc/ondes-em-modulation/bank.yaml, entree
+  # bk-2022-r-x3c) du MEME exercice — le verificateur demande des entrees
+  # SEPAREES pour les trois, chacune autoportante. Aucune donnee numerique
+  # cross-section n'est necessaire ici : R = 490 Ω et E = 10 V sont propres a
+  # cette section.
+  - id: bk-2022-r-x3
+    title: "Réponse d'un dipôle RL à un échelon de tension : brancher le système d'acquisition, équation en u_R(t), comparer deux inductances"
+    source:
+      year: 2022
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — §1 : Réponse d'un dipôle RL à un échelon de tension"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/136624
+        (Exercice 3, section 1 — réponse d'un dipôle RL à un échelon de
+        tension ; barème de la section = 2,25 pt, recompté question par
+        question : 0,25+0,5+0,25+0,5+0,25+0,5 = 2,25, sur les 4,5 pt de
+        l'exercice complet, dont la section 2 — oscillations libres dans un
+        circuit RLC série — est transcrite sous content/pc/rlc-serie/bank.yaml
+        en bk-2022-r-x3b, et la section 3 — réception d'une onde modulée en
+        amplitude — sous content/pc/ondes-em-modulation/bank.yaml en
+        bk-2022-r-x3c ; les trois sections partagent le montage de la figure 1
+        et sont converties en entrées séparées, comme l'exige le
+        vérificateur). Transcription vérifiée par une passe adversariale
+        indépendante (2026-08-22, docs/sujets/_incoming/pc-spc-2022-r.md,
+        statut « vérifié ») : re-téléchargement indépendant des 8 pages du
+        scan (upload-84519, pages 5 et 6 pour cet exercice) dans un répertoire
+        isolé, empreintes SHA-256 contrôlées contre des fichiers résiduels
+        d'une autre campagne, chaque figure re-mesurée au pixel, physique
+        re-dérivée. Lectures graphiques reprises telles quelles : figure 2,
+        palier $U_0 \approx 9{,}8\ \text{V}$ (mesuré $9{,}76\ \text{V}$) et
+        tangente $(T)$ coupant le palier à $t \approx 1{,}0\ \text{ms}$
+        (mesuré $1{,}02\ \text{ms}$), sous-quadrillage à 10 subdivisions par
+        carreau (corrigé de « 5 » dans une première lecture) ; figure 3,
+        palier de $(C_4)$ exactement $11\ \text{V}$ (confondu avec la ligne
+        bleue $11$, et non « environ 11 V »). CONTRE-CALCUL REFAIT ICI,
+        conforme à la source : $R+r = ER/U_0 = 10\times490/9{,}8 = 500\
+        \Omega$, d'où $r = 10\ \Omega$ (question 1.4) ; $L_0 = (R+r)\times\tau
+        = 500\times1{,}0\times10^{-3} = 0{,}5\ \text{H}$ (question 1.5,
+        exactement la valeur que l'énoncé demande de vérifier). SCOPE NOTE
+        (question 1.1) : la leçon (rungs R1 à R3, lesson.md) construit et
+        résout l'équation du dipôle RL, mais ne couvre nulle part le
+        branchement expérimental d'un système d'acquisition ou d'un
+        oscilloscope (règle de la masse commune) ; reposé au point d'usage à
+        partir du principe général de la mesure en dérivation, pas enseigné
+        pas à pas dans cette leçon — signalé pour arbitrage (ajouter un
+        complément de rung, ou assumer que ce point reste hors-ramp). SCOPE
+        NOTE (question 1.2) : le rung 2 établit l'équation différentielle
+        uniquement en $i(t)$ ; la conversion vers $u_R(t)$ demandée ici
+        (substitution $i = u_R/R$ dans la loi des mailles) est refaite au
+        point d'usage — la même technique de conversion, appliquée à $u_C$
+        plutôt qu'à $u_R$, structure déjà le raisonnement de bk-2024-r-x4
+        (notion sœur rc-charge, même sujet 2024 R).
+    intro: |-
+      **Réponse d'un dipôle RL à un échelon de tension (examen national, session de rattrapage 2022 — Exercice 3, section 1, 2,25 points).**
+
+      *On se propose dans cet exercice d'étudier, sur un même montage : la réponse d'un dipôle RL à un échelon de tension (cette section) ; les oscillations libres dans un circuit RLC série ; puis la réception d'une onde modulée en amplitude — les deux dernières sont traitées à part, sous les notions « Oscillations libres dans un circuit RLC série » et « Ondes électromagnétiques — modulation d'amplitude ».*
+
+      On réalise le montage expérimental schématisé sur la figure 1. Ce montage est constitué :
+      - d'un générateur idéal de tension de force électromotrice $E = 10\ \text{V}$ ;
+      - d'une bobine d'inductance $L$ réglable et de résistance $r$ ;
+      - d'un conducteur ohmique de résistance $R = 490\ \Omega$ ;
+      - d'un interrupteur $K$.
+
+      On ajuste l'inductance de la bobine sur la valeur $L = L_0$ et on ferme le circuit à un instant choisi comme origine des dates $t = 0$.
+
+      Un système d'acquisition informatisé permet de visualiser la courbe $C_1$ représentant l'évolution de la tension $u_R(t)$ aux bornes du conducteur ohmique (figure 2). La droite $(T)$ étant la tangente à la courbe au point d'abscisse $t = 0$.
+
+      **Figure 1 (schéma).** Boucle unique. Branche de gauche : le générateur (symbole cercle) avec une flèche de tension verticale étiquetée « $E$ » à sa gauche. Branche du haut : une flèche de courant « $i$ » orientée vers la droite, puis l'interrupteur $K$ (deux plots et un levier ouvert, étiquette « $K$ » au-dessus). Branche de droite : la bobine, dessinée en spires verticales, étiquetée « $(L,r)$ » à sa gauche et barrée d'une flèche oblique (symbole d'inductance réglable). Branche du bas : le conducteur ohmique (rectangle horizontal) étiqueté « $R$ » au-dessous. Légende : « Figure 1 ».
+
+      **Figure 2 (courbe).** Axe des ordonnées $u_R\ (\text{V})$ gradué $0,\ 2,\ 4,\ 6,\ 8,\ 10$ (pas principal noir $2\ \text{V}$ ; le cadre monte au-delà de $10$ et son bord supérieur est exactement le trait principal $12\ \text{V}$, non chiffré) ; axe des abscisses $t\ (\text{ms})$ gradué $1,\ 2,\ 3,\ 4,\ 5,\ 6$ (pas principal noir $1\ \text{ms}$ ; le bord gauche du cadre est exactement $t = 0$ et le bord droit exactement $t = 7\ \text{ms}$, trait non chiffré) ; sous-quadrillage fin bleu à $10$ subdivisions par carreau principal sur chaque axe ($0{,}1\ \text{ms}$ et $0{,}2\ \text{V}$). Courbe $C_1$ croissante, concave, partant de l'origine et tendant vers un palier situé légèrement au-dessous de la ligne $10\ \text{V}$ : palier $U_0 \approx 9{,}8\ \text{V}$ ; elle passe au voisinage du point $(1\ \text{ms}\ ;\ 6{,}2\ \text{V})$. La droite $(T)$, en pointillés, part de l'origine avec une forte pente ($\approx 9{,}5\ \text{V/ms}$ mesurée), coupe le niveau du palier à $t \approx 1{,}0\ \text{ms}$ et sort du cadre par le haut ($12\ \text{V}$) à $t \approx 1{,}25\ \text{ms}$ ; l'étiquette « $(T)$ » est posée en haut à gauche, à droite de la droite. Légende : « Figure 2 ».
+
+      **Figure 3 (courbes).** Mêmes grandeurs. Axe des ordonnées $u_R\ (\text{V})$ chiffré $0,\ 2,\ 4,\ 6,\ 8,\ 10$ (traits principaux noirs tous les $2\ \text{V}$, lignes bleues intercalées aux volts impairs $1,\ 3,\ 5,\ 7,\ 9,\ 11$ ; le bord supérieur du cadre est le trait noir $12\ \text{V}$, non chiffré) ; axe des abscisses $t\ (\text{ms})$ chiffré $2,\ 4,\ 6,\ 8,\ 10$ (traits principaux noirs tous les $2\ \text{ms}$ — tous chiffrés dans la plage $2$–$10$ — et lignes bleues intercalées aux ms impairs ; le bord gauche est $t = 0$ et le cadre va jusqu'à $14\ \text{ms}$, les traits $12$ et $14$ n'étant pas chiffrés). Les quatre tracés s'arrêtent tous à $t = 12\ \text{ms}$, avant le bord du cadre. Quatre courbes croissantes issues de l'origine : $C_3$ (en tirets, étiquette au bord gauche vers $9\ \text{V}$) est la plus rapide et tend vers un palier légèrement sous $10\ \text{V}$ ; $C_4$ (en pointillés, étiquette en haut) est rapide elle aussi mais tend vers un palier plus haut, exactement sur la ligne bleue $11\ \text{V}$, au-dessus de la ligne $10$ ; $C_1$ (trait plein, étiquette au centre) est plus lente que $C_3$ et tend vers le même palier légèrement sous $10\ \text{V}$ ; $C_2$ (trait mixte point-tiret, la plus lente, étiquette en bas) tend aussi vers ce même palier sous $10\ \text{V}$, qu'elle n'atteint qu'aux alentours de $t = 8$–$9\ \text{ms}$. Ordre de rapidité près de l'origine : $C_3 > C_4 > C_1 > C_2$. Légende : « Figure 3 ».
+    questions:
+      - id: q1
+        part: "1. Réponse d'un dipôle RL à un échelon de tension"
+        stem: |-
+          **1.1.** (0,25 pt) Recopier le schéma de la figure 1 et indiquer comment est branché le système d'acquisition informatisé pour visualiser la tension $u_R(t)$. (Le branchement du système d'acquisition est identique à celui de l'oscilloscope.)
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un quart de point, mais une question purement expérimentale : la leçon (rungs R1 à R3, lesson.md) construit et résout l'équation du dipôle RL, elle ne dit jamais comment brancher un appareil de mesure sur le montage. Il faut donc reposer, depuis le principe général de la mesure électrique, la règle que l'énoncé rappelle lui-même entre parenthèses — « le branchement du système d'acquisition est identique à celui de l'oscilloscope ».
+
+          **Le principe.** Un système d'acquisition informatisé, comme un oscilloscope, mesure une différence de potentiel entre son entrée (la « voie ») et sa masse (COM) — et cette masse est unique, partagée par toutes les voies de l'appareil. Pour visualiser une tension $u_X$ quelconque d'un dipôle $X$, on branche donc l'appareil EN DÉRIVATION (en parallèle) à ses bornes, jamais en série, ce qui couperait le circuit.
+
+          **La règle qui évite l'erreur classique.** On relie systématiquement la borne « masse » (COM) de l'appareil au point du circuit déjà relié à la borne de référence du générateur $E$ — c'est cette règle-là que l'énoncé désigne en renvoyant à l'oscilloscope. Sur la figure 1, ce point commun est le nœud partagé entre le conducteur ohmique $R$ et le générateur, au bas de la boucle. La voie de mesure se branche alors sur l'AUTRE borne de $R$, celle qui rejoint la bobine $(L,r)$.
+
+          Le schéma attendu est donc la figure 1 recopiée à l'identique — générateur $E$, interrupteur $K$, bobine $(L,r)$, conducteur ohmique $R$, tous en série sur la boucle unique — complétée par les deux fils du système d'acquisition branchés en parallèle sur $R$ : la masse au nœud commun avec $E$, la voie de mesure à l'autre borne de $R$.
+
+          **Le piège de cette question.** Brancher l'appareil EN SÉRIE dans la boucle, par le réflexe qu'on aurait pour un ampèremètre. Un système d'acquisition, comme un voltmètre ou un oscilloscope, a une impédance d'entrée très élevée : l'insérer en série ouvrirait quasiment le circuit et empêcherait tout courant de circuler — on ne mesurerait plus rien du tout, ni $u_R$ ni quoi que ce soit d'autre.
+      - id: q2
+        stem: |-
+          **1.2.** (0,5 pt) Montrer que l'équation différentielle vérifiée par la tension $u_R(t)$ s'écrit sous la forme :
+          $$\dfrac{du_R}{dt} + \dfrac{(R+r)}{L_0}u_R = \dfrac{E\,R}{L_0}$$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le rung 2 de la leçon établit l'équation différentielle du dipôle RL en fonction du COURANT, $L\dfrac{di}{dt}+Ri=E$. Ici l'énoncé veut l'équation en $u_R(t)$ — la grandeur que le système d'acquisition a réellement enregistrée (figure 2). Il faut refaire la même démarche (loi des mailles, puis substitution de la relation caractéristique de la bobine), en choisissant $u_R$ comme inconnue plutôt que $i$.
+
+          **Le pont à construire.** La loi d'Ohm relie les deux grandeurs : $u_R = R\,i$, donc $i = \dfrac{u_R}{R}$ — c'est ce remplacement qui va permettre d'éliminer $i$ partout.
+
+          **La loi des mailles**, sur la boucle série de la figure 1 :
+
+          $$E = u_R + u_{bobine}$$
+
+          **Chaque tension par son dipôle**, exactement comme au rung 2 : la loi d'Ohm pour $R$ (déjà utilisée pour poser $i=u_R/R$), et la relation caractéristique de la bobine établie au rung 1, qui porte à la fois sa résistance interne $r$ et son inductance $L_0$ :
+
+          $$u_{bobine} = r\,i + L_0\,\frac{di}{dt}$$
+
+          **On reporte $i = u_R/R$ partout**, y compris dans la dérivée : $\dfrac{di}{dt} = \dfrac{1}{R}\dfrac{du_R}{dt}$.
+
+          $$E = u_R + r\,\frac{u_R}{R} + \frac{L_0}{R}\,\frac{du_R}{dt}$$
+
+          **On multiplie toute l'équation par $R$**, pour effacer les fractions :
+
+          $$ER = R\,u_R + r\,u_R + L_0\,\frac{du_R}{dt} = (R+r)\,u_R + L_0\,\frac{du_R}{dt}$$
+
+          **On réordonne et on divise par $L_0$**, pour obtenir la forme demandée :
+
+          $$\boxed{\frac{du_R}{dt} + \frac{R+r}{L_0}\,u_R = \frac{ER}{L_0}}$$
+
+          **Le contrôle qui rassure.** L'équation garde la même structure que celle du rung 2 en $i(t)$ — un terme dérivé, un terme proportionnel à la grandeur elle-même, un second membre constant — parce que $u_R$ et $i$ ne diffèrent que par le facteur constant $R$ ($u_R = Ri$) : dériver et multiplier par une constante commutent, la forme de l'équation ne peut pas changer.
+
+          **Le piège de cette question.** Multiplier par $R$ SEULEMENT certains termes de l'équation, ce qui laisse des fractions incohérentes et empêche de retrouver exactement la forme imposée. Deuxième piège, plus profond : écrire $i = \dfrac{E}{R}$ (la valeur de RÉGIME PERMANENT) au lieu de $i=\dfrac{u_R}{R}$ (la loi d'Ohm, valable à CHAQUE instant) — la première est une valeur particulière, la seconde est la relation instantanée dont on a besoin ici.
+        steps:
+          - math: 'E = u_R + u_{bobine} \qquad \text{avec} \qquad u_{bobine} = r\,i + L_0\,\frac{di}{dt}, \quad i = \frac{u_R}{R}'
+            note: "Loi des mailles (rung 2) ; relation caracteristique de la bobine (rung 1) ; conversion i = u_R/R (loi d'Ohm)."
+          - math: 'E = u_R + r\,\frac{u_R}{R} + \frac{L_0}{R}\,\frac{du_R}{dt}'
+            note: "On reporte i = u_R/R partout, y compris dans la derivee."
+          - math: 'ER = (R+r)\,u_R + L_0\,\frac{du_R}{dt}'
+            note: "On multiplie toute l'equation par R pour effacer les fractions."
+          - math: '\boxed{\frac{du_R}{dt} + \frac{R+r}{L_0}\,u_R = \frac{ER}{L_0}}'
+            note: "On divise par L0 : exactement la forme demandee."
+      - id: q3
+        stem: |-
+          **1.3.** (0,25 pt) Déterminer graphiquement la tension $U_0$ aux bornes du conducteur ohmique quand le régime permanent est atteint.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le régime permanent (rung 2) est l'instant où toutes les grandeurs cessent de varier : la courbe $C_1$ atteint alors un palier horizontal. On lit directement ce palier sur la figure 2.
+
+          La courbe $C_1$ croît puis se stabilise sur un palier situé légèrement au-dessous de la ligne $10\ \text{V}$ :
+
+          $$\boxed{U_0 \approx 9{,}8\ \text{V}}$$
+
+          **Le piège de cette question.** Lire $U_0 = 10\ \text{V}$ « parce que c'est la graduation la plus proche ». Le palier de $C_1$ ne touche PAS le trait $10\ \text{V}$ : il reste visiblement en dessous, à $9{,}8\ \text{V}$. C'est précisément cet écart de $0{,}2\ \text{V}$ qui, à la question suivante, révèle que la résistance $r$ de la bobine n'est pas nulle — arrondir à $10\ \text{V}$ effacerait le phénomène même que l'exercice fait mesurer.
+      - id: q4
+        stem: |-
+          **1.4.** (0,5 pt) En déduire la valeur de la résistance $r$ de la bobine.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** En régime permanent, $\dfrac{du_R}{dt}=0$ — le régime permanent du rung 2, traduit ici dans la variable $u_R$ de la question 1.2 : le terme dérivé de l'équation établie disparaît, et il ne reste qu'une relation algébrique entre $U_0$ et $r$.
+
+          $$0 + \frac{R+r}{L_0}\,U_0 = \frac{ER}{L_0} \implies (R+r)\,U_0 = ER \implies R+r = \frac{ER}{U_0}$$
+
+          **L'application numérique**, chiffre par chiffre, avec $E=10\ \text{V}$, $R=490\ \Omega$ et $U_0=9{,}8\ \text{V}$ (question précédente) :
+
+          $$R+r = \frac{10\times490}{9{,}8} = \frac{4900}{9{,}8} = 500\ \Omega$$
+
+          $$r = 500 - R = 500 - 490$$
+
+          $$\boxed{r = 10\ \Omega}$$
+
+          **Le contrôle qui rassure.** $r=10\ \Omega$ face à $R=490\ \Omega$ : un ordre de grandeur banal pour la résistance propre d'une bobine de laboratoire, très petite devant la résistance ajoutée. C'est bien parce que $U_0=9{,}8\ \text{V}$ et non $10\ \text{V}$ (l'écart repéré à la question précédente) que $r$ existe : une bobine parfaite ($r=0$) aurait donné un palier exactement à $E=10\ \text{V}$.
+
+          **Le piège de cette question.** $r$ est ici la DIFFÉRENCE de deux nombres proches, $500$ et $490$ : une petite erreur de lecture sur $U_0$ se transforme en grosse erreur relative sur $r$. Lire $U_0=10\ \text{V}$ au lieu de $9{,}8\ \text{V}$ (le piège de la question précédente) donne $R+r=\frac{4900}{10}=490=R$, donc $r=0$ — la bobine deviendrait, à tort, parfaite.
+        steps:
+          - math: '\frac{du_R}{dt} = 0 \implies R+r = \frac{ER}{U_0}'
+            note: "Regime permanent (rung 2, traduit en u_R) : le terme derive de l'equation de la question 1.2 s'annule."
+          - math: 'R+r = \frac{10\times490}{9{,}8} = \frac{4900}{9{,}8}'
+            note: "Application numerique : E = 10 V, R = 490 Ohm, U0 = 9,8 V (question 1.3)."
+          - math: 'R+r = 500\ \Omega \implies r = 500 - 490'
+            note: "On isole r."
+          - math: '\boxed{r = 10\ \Omega}'
+            note: "Resistance propre de la bobine."
+      - id: q5
+        stem: |-
+          **1.5.** (0,25 pt) Vérifier que $L_0 = 0{,}5\ \text{H}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'équation de la question 1.2 a la forme $\dfrac{du_R}{dt}+\dfrac{1}{\tau}u_R=\dfrac{ER}{L_0}$, avec $\tau=\dfrac{L_0}{R+r}$ — c'est le coefficient de $u_R$ qui la porte, exactement le rôle que joue $\tau=L/R$ au rung 3. La méthode de la tangente à l'origine (rung 3) donne directement $\tau$ : la tangente $(T)$ à la courbe en $t=0$ coupe l'asymptote horizontale $u_R=U_0$ en une abscisse exactement égale à $\tau$.
+
+          **La lecture.** Sur la figure 2, la droite $(T)$ coupe le niveau du palier à $t\approx1{,}0\ \text{ms}$ :
+
+          $$\tau \approx 1{,}0\ \text{ms} = 1{,}0\times10^{-3}\ \text{s}$$
+
+          **On inverse $\tau=\dfrac{L_0}{R+r}$**, avec $R+r=500\ \Omega$ (question précédente) :
+
+          $$L_0 = \tau\,(R+r) = 1{,}0\times10^{-3}\times500$$
+
+          $$\boxed{L_0 = 0{,}5\ \text{H}}$$
+
+          C'est exactement la valeur que l'énoncé demandait de vérifier.
+
+          **Le contrôle qui rassure.** La pente à l'origine de $u_R(t)=U_0(1-e^{-t/\tau})$ vaut $\dfrac{U_0}{\tau}=\dfrac{9{,}8}{1{,}0\times10^{-3}}=9{,}8\times10^3\ \text{V/s}=9{,}8\ \text{V/ms}$ — à comparer à la pente mesurée directement sur la tangente $(T)$, $\approx9{,}5\ \text{V/ms}$. Les deux valeurs concordent, aux incertitudes de lecture graphique près : la lecture $\tau\approx1{,}0\ \text{ms}$ est fiable.
+
+          **Le piège de cette question.** Confondre $\tau$ avec l'instant où la courbe $C_1$ rejoint VISUELLEMENT son palier — la droite $(T)$ sort d'ailleurs du cadre par le haut vers $t\approx1{,}25\ \text{ms}$, bien avant que la courbe elle-même n'ait l'air stabilisée. $\tau$ se lit uniquement sur l'intersection de la tangente avec le palier, jamais sur l'allure visuelle de la courbe.
+        steps:
+          - math: '\tau \approx 1{,}0\ \text{ms} = 1{,}0\times10^{-3}\ \text{s}'
+            note: "Tangente (T) a l'origine : coupe le niveau du palier a t = 1,0 ms (methode du rung 3)."
+          - math: 'L_0 = \tau\,(R+r) = 1{,}0\times10^{-3}\times500'
+            note: "tau = L0/(R+r) (rung 3), avec R+r = 500 Ohm (question 1.4)."
+          - math: '\boxed{L_0 = 0{,}5\ \text{H}}'
+            note: "Valeur verifiee, conforme a l'enonce."
+      - id: q6
+        stem: |-
+          **1.6.** (0,5 pt) On refait la même expérience en ajustant l'inductance de la bobine sur la valeur $L = L_1 = 2L_0$. Choisir parmi les courbes $C_2$, $C_3$ et $C_4$ représentées sur la figure 3, celle qui représente l'évolution de la tension $u_R(t)$ dans le cas où $L = L_1$. Justifier votre réponse.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux grandeurs pilotent la courbe $u_R(t)$ : le palier $U_0=\dfrac{ER}{R+r}$ (question 1.4) et la constante de temps $\tau=\dfrac{L_0}{R+r}$ (question 1.5) — exactement les rôles de $I_{max}=E/R$ et $\tau=L/R$ aux rungs 2 et 3 de la leçon. Le point essentiel, à voir avant de regarder les courbes : $U_0$ ne dépend PAS de $L$, seulement de $E$, $R$ et $r$. Doubler $L$ ne peut donc pas changer le palier — seulement la vitesse à laquelle on l'atteint.
+
+          **Ce que le doublement de $L$ change, et ce qu'il ne change pas.**
+
+          $$\tau_1 = \frac{L_1}{R+r} = \frac{2L_0}{R+r} = 2\,\tau_0 \approx 2{,}0\ \text{ms}$$
+
+          $$U_{0,1} = \frac{ER}{R+r} = U_0 \approx 9{,}8\ \text{V} \qquad \text{(inchangé : ne dépend pas de } L\text{)}$$
+
+          Avec $L_1=2L_0$, on attend donc une courbe qui rejoint le MÊME palier que $C_1$ (≈$9{,}8\ \text{V}$, sous la ligne $10\ \text{V}$), mais deux fois plus lentement.
+
+          **Le tri parmi les quatre courbes de la figure 3.** $(C_4)$ est exclue immédiatement, sans même comparer les vitesses : son palier est à $11\ \text{V}$, un palier DIFFÉRENT — impossible pour une expérience où seul $L$ a changé. $(C_3)$ tend vers le bon palier (sous $10\ \text{V}$, comme $C_1$), mais elle est PLUS RAPIDE que $C_1$ dans l'ordre de rapidité donné ($C_3 > C_1$) — or augmenter $L$ augmente $\tau$, donc ralentit la réponse, jamais l'inverse : $(C_3)$ est donc exclue aussi. Reste $(C_2)$ : même palier que $C_1$ (sous $10\ \text{V}$, atteint seulement vers $t\approx8$–$9\ \text{ms}$), et clairement plus lente que $C_1$ — cohérent avec $\tau_1=2\tau_0$.
+
+          $$\boxed{\text{la courbe } (C_2) \text{ représente } u_R(t) \text{ pour } L=L_1}$$
+
+          **Le piège de cette question.** Choisir $(C_4)$ en pensant que changer $L$ pourrait aussi changer le palier — une confusion entre ce que $L$ pilote (la VITESSE, via $\tau$) et ce que $R$ et $r$ pilotent (la valeur FINALE, via $U_0$). Deuxième piège, plus subtil : choisir $(C_3)$ en associant, à tort, « plus d'inductance » à « la bobine réagit plus fort, donc plus vite ». C'est l'inverse : une inductance plus grande s'oppose PLUS aux variations de courant (rung 1 de la leçon) — elle ralentit l'établissement, elle ne l'accélère jamais.
 
   # ── bk-2023-n-x3 — 2023 N, Exercice 3 (§1) : forme A+B.exp, palier + tangente ──
   - id: bk-2023-n-x3

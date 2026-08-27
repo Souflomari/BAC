@@ -17,8 +17,9 @@
 #
 # NOTE ÉDITORIALE — CE FICHIER EST NEUF (2026-08-23). `lois-de-newton` était
 # jusqu'ici l'une des notions PC SANS banque : leçon, items, checkpoints et
-# exercices embarqués existaient, mais aucune annale. bk-2024-r-x5 en est la
-# PREMIÈRE entrée. Six autres notions restent dans ce cas — aspects-energetiques,
+# exercices embarqués existaient, mais aucune annale. bk-2024-r-x5 en fut la
+# PREMIÈRE entrée ; bk-2022-r-x4 (ajoutée le 2026-08-27) en est la deuxième.
+# Six autres notions restent dans ce cas — aspects-energetiques,
 # atome-mecanique-newton, controle-catalyse, transformations-deux-sens,
 # transformations-lentes-rapides (PC) et derivabilite-etude-fonctions (maths) —
 # et l'état est consigné tel quel : la page « S'entraîner » n'affiche rien
@@ -36,17 +37,313 @@
 # explicitement en ce sens. Les barèmes sont RÉPARTIS, jamais dupliqués :
 # 2,25 pt ici + 2,75 pt là-bas = 5 pt, le barème réel de l'exercice.
 #
-# SCOPE NOTE — la lecture graphique d'une accélération sur une courbe v(t)
-# (question 1-2-1) n'est pas montrée pas à pas par la leçon : le rung 1
-# construit le vecteur vitesse et le rung 3 le vecteur accélération, mais
-# aucun rung ne fait l'exercice « prendre deux points sur une droite v(t) et
-# en tirer le coefficient directeur ». Le pont est fait au point d'usage dans
-# le raisonnement de la question — jamais « on admet ». À remonter à
-# pedagogy-architect : ajouter ce geste au rung 3, ou l'assumer hors périmètre.
+# SCOPE NOTES (techniques de lecture graphique mobilisées au-delà de ce que la
+# leçon montre explicitement pas à pas — pontées au point d'usage dans le
+# raisonnement de la question concernée, PAS corrigées ni simplifiées ici ;
+# DRAPEAU reporté à l'orchestrateur/pédagogue, pas résolu ici) :
+#   - bk-2024-r-x5, q1-2-1 : la lecture graphique d'une accélération sur une
+#     courbe v(t) n'est pas montrée pas à pas par la leçon : le rung 1
+#     construit le vecteur vitesse et le rung 3 le vecteur accélération, mais
+#     aucun rung ne fait l'exercice « prendre deux points sur une droite v(t)
+#     et en tirer le coefficient directeur ». À remonter à pedagogy-architect :
+#     ajouter ce geste au rung 3, ou l'assumer hors périmètre.
+#   - bk-2022-r-x4, q1-2-1 (« 1.2.1 ») : la lecture graphique d'une
+#     accélération sur une courbe x = f(t²) n'est montrée NULLE PART dans la
+#     leçon : R6 écrit bien x(t) = (1/2).g.t² pour la chute libre, mais aucun
+#     rung n'exploite cette forme comme une droite en portant t² en abscisse,
+#     ni ne signale que la pente lue vaut alors a/2 et non a — un piège plus
+#     cher que celui de bk-2024-r-x5, jamais nommé dans ce cours. À remonter
+#     à pedagogy-architect : ajouter ce geste (R1, R6, ou un rung dédié), ou
+#     l'assumer hors périmètre.
 
 notion: pc/lois-de-newton
 
 entries:
+  # ── bk-2022-r-x4 — 2022 R, Exercice 4 (partie 1) : plan incline, montee avec
+  #    force motrice puis sans, lecture d'une courbe x = f(t^2) ──
+  #
+  # NOTE ÉDITORIALE — FLAG DE JUMELAGE (bk-2022-r-x4 face à bk-2024-r-x5). Les
+  # deux entrées traitent un solide sur un plan incliné avec un frottement
+  # d'intensité CONSTANTE (les deux énoncés le précisent), et les deux
+  # appliquent la méthode du rung 5 combinée à la décomposition du rung 7. Les
+  # différences, qui sont ce que l'élève vient chercher :
+  #   — bk-2024-r-x5 : mouvement de DESCENTE pure, aucune force motrice, axe
+  #     orienté dans le sens de la descente (donc g.sin(alpha) est POSITIF,
+  #     comme au rung 7 lui-même), accélération lue sur une courbe v(t) — une
+  #     pente directement lisible, sans facteur caché ;
+  #   — bk-2022-r-x4 (ici) : mouvement de MONTÉE, avec une force motrice F
+  #     ajoutée au bilan sur la portion OA puis retirée sur AB, axe orienté
+  #     dans le sens de la MONTÉE (donc g.sin(alpha) est NÉGATIF — le signe
+  #     s'inverse par rapport à bk-2024-r-x5 et au rung 7, uniquement parce que
+  #     le sens de l'axe change, pas la physique), et une accélération lue sur
+  #     une courbe x = f(t²) — la pente lue vaut a/2, pas a, un piège que
+  #     bk-2024-r-x5 n'a pas.
+  # Proposition : garder les deux entrées, elles couvrent deux gestes de signe
+  # et deux techniques de lecture graphique distinctes. À l'arbitrage de
+  # l'owner.
+  - id: bk-2022-r-x4
+    title: "Solide sur un plan incliné en montée, avec force motrice puis sans : l'accélération lue sur une courbe x = f(t²), la force qui s'en déduit, et la distance d'arrêt sur la portion sans force"
+    source:
+      year: 2022
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — §1 : Mouvement d'un solide sur un plan incliné, avec frottement"
+    bareme_total: 3.25
+    duration_min: 20
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool
+        https://www.alloschool.com/element/136624, scan
+        course-422/upload-84519, pages 7 et 8 sur 8 (Exercice 4, Partie 1 —
+        mouvement d'un solide sur un plan incliné avec frottement ; barème de
+        la partie = 3,25 pt, recompté question par question :
+        0,5+0,5+0,5+0,5+0,5+0,75 = 3,25, sur les 5 pt de l'exercice complet,
+        dont la Partie 2 — oscillateur élastique horizontal — est transcrite
+        sous systemes-oscillants/bank.yaml en bk-2022-r-x4b. L'énoncé précise
+        que les deux parties sont indépendantes). Transcription vérifiée par
+        une passe adversariale indépendante (2026-08-22,
+        docs/sujets/_incoming/pc-spc-2022-r.md, statut « vérifié ») : re-fetch
+        indépendant des 8 pages du scan (empreintes SHA-256 contrôlées),
+        figures re-décrites depuis le dessin et non depuis l'énoncé, puis
+        physique re-dérivée. CORRECTION DE FIGURE RETENUE (figure 1) : la
+        version transcrite initialement ne décrivait qu'une seule droite
+        oblique et y plaçait à la fois la pente du plan et les points O, A, B ;
+        le dessin en comporte deux, parallèles — le plan incliné, en appui sur
+        le sol, et au-dessus l'axe (O, i), qui porte seul O, G, A, B et la
+        force F. GÉOMÉTRIE DÉCISIVE POUR LES SIGNES : l'axe (O, i) est orienté
+        vers le HAUT de la pente (sens de la montée, vers A puis B) —
+        orientation opposée à celle du rung 7 de la leçon et de l'entrée
+        voisine bk-2024-r-x5 (axe orienté dans le sens de la descente), d'où
+        un signe different devant g.sin(alpha) dans l'equation demontree en
+        question 1.1 (voir le flag de jumelage en tete de fichier). CORRECTION
+        DE FIGURE RETENUE (figure 2) : le quadrillage n'est pas de pas 1 unite
+        par trait comme une premiere lecture le supposerait, mais compte 6
+        intervalles par axe (pas de 2/3 d'unite, alternance trait noir / ligne
+        bleue) ; mesure au pixel (7 traits par axe espaces de 29,75 px sur un
+        cadre de 178 px) confirmant que la lecture utile — la droite joint
+        l'origine au coin (4 s², 4 m) — est exacte malgre ce pas de grille
+        inhabituel. CONTRE-CALCUL REFAIT ICI, chiffre par chiffre : pente lue
+        sur le graphe x = f(t²) entre (0;0) et (4;4) = (4-0)/(4-0) =
+        1 m.s-2 ; a_1x = 2 x pente = 2 m.s-2 (facteur 2 car
+        x(t) = (a_1x/2).t², affine en t² et non en t — le piege le plus cher
+        de cette question) ; F = m.(a_1x + g.sin(17,5 degres)) + f =
+        2 x (2 + 10 x 0,3007) + 2 = 2 x 5,007 + 2 = 12,014 N, arrondi 12 N —
+        exactement la valeur annoncee par l'enonce ; t_A =
+        racine(2.OA/a_1x) = racine(4) = 2 s, ce qui tombe pile sur l'abscisse
+        du dernier point du trace (4 s²) — un controle gratuit — puis
+        V_A = a_1x x t_A = 4 m.s-1, exactement la valeur annoncee ; sur la
+        portion AB, force F retiree, a_2x = -(g.sin(17,5 degres) + f/m) =
+        -(3,007+1) = -4,007 m.s-2, arrondi -4,0 m.s-2 (valeur non donnee par
+        l'enonce, calculee ici) ; AB = -V_A^2/(2.a_2x) = 16/8,014 = 1,997 m,
+        arrondi 2,0 m (valeur non donnee par l'enonce, calculee ici). Tout se
+        recoupe avec le paragraphe de controle de coherence en tete de
+        fichier source (« pente 1 m.s-2 => a1x = 2 m.s-2, d'ou F ~ 12 N et
+        V_A = 4 m.s-1 »). Aucune divergence relevee entre ce contre-calcul et
+        les valeurs annoncees par l'enonce ; a_2x et AB sont des valeurs
+        propres a cette conversion, non fournies par le sujet, et donc a
+        verifier en priorite en cas de revision.
+    intro: |-
+      **Mouvement d'un solide sur un plan incliné, avec frottement (examen national, session de rattrapage 2022 — Exercice 4, Partie 1, 3,25 points).**
+
+      *Les parties 1 et 2 de cet exercice sont indépendantes. La Partie 2 — un oscillateur élastique horizontal — est traitée à part, sous la notion « Systèmes oscillants ». Rien de ce qui suit n'en dépend.*
+
+      Un solide $(S)$, de masse $m$ et de centre d'inertie $G$, se déplace avec frottement sur un plan incliné d'un angle $\alpha$ par rapport à l'horizontale.
+
+      On étudie le mouvement de la montée du solide $(S)$ de la position $O$ à la position $B$ (figure 1).
+
+      Les frottements sont modélisés par une force $\vec{f}$ constante ayant une intensité $f$.
+
+      On étudie le mouvement du centre d'inertie $G$ dans le repère $(O,\ \vec{i}\,)$ lié à un référentiel terrestre supposé galiléen.
+
+      On repère à chaque instant la position de $G$ sur le plan incliné par son abscisse $x$.
+
+      **Données :** accélération de la pesanteur $g = 10\ \text{m.s}^{-2}$ ; $\alpha = 17{,}5^\circ$ ; $OA = 4\ \text{m}$ ; $m = 2\ \text{kg}$ ; $f = 2\ \text{N}$.
+
+      **1. Étude du mouvement sur la portion OA.** On considère que $G$ est confondu avec l'origine $O$ de l'axe $(O,\ \vec{i}\,)$ à l'instant $t = 0$ et que sa vitesse est nulle à cet instant. Le solide $(S)$ est soumis, sur la portion $OA$, à une force motrice $\vec{F}$ constante, parallèle à la ligne de plus grande pente du plan incliné et dirigée vers le haut (figure 1).
+
+      **2. Étude du mouvement sur la portion AB.** On élimine la force $\vec{F}$ à l'instant où $G$ passe par le point $A$. Pour étudier le mouvement de $G$ sur la portion $AB$, on choisit l'instant de passage de $G$ par le point $A$ comme nouvelle origine des dates $t = 0$.
+
+      **Figure 1 (schéma).** **Deux droites obliques parallèles** montant vers la droite. La plus basse est le **plan incliné** : elle prend appui à gauche sur un trait horizontal épais (le sol) et l'angle entre les deux est marqué, plus à droite, par un arc fléché étiqueté $\alpha$. La plus haute est l'**axe $(O,\vec{i}\,)$** ; elle se prolonge en bas à gauche au-delà de $O$ et se termine en haut à droite par une pointe de flèche étiquetée « x ». Sur cet axe, de bas en haut : le point $O$, le vecteur unitaire $\vec{i}$ (petite flèche le long de l'axe), le solide $(S)$ — petit carré posé sur le plan, à cheval sur les deux droites, étiquette « $(S)$ » au-dessus et point noir $G$ à l'intérieur —, la flèche $\vec{F}$ le long de l'axe dirigée vers le haut (partant du solide, étiquette $\vec{F}$ au-dessus), le point $A$, puis plus haut le point $B$. Légende : « Figure1 » (sans espace).
+
+      **Figure 2 (courbe).** Axe des ordonnées $x\ (\text{m})$ chiffré $0$, $2$ et $4$ ; axe des abscisses $t^2\ (\text{s}^2)$ chiffré $2$ et $4$. Le cadre est carré et va de $(0\ ;\ 0)$ à $(4\ \text{s}^2\ ;\ 4\ \text{m})$. **Attention au quadrillage : il compte $6$ intervalles par axe, soit un pas de $2/3$ d'unité, avec alternance trait noir / ligne bleue** — traits noirs à $0,\ 4/3,\ 8/3,\ 4$ et lignes bleues à $2/3,\ 2,\ 10/3$. Les graduations chiffrées $2$ tombent donc sur une **ligne bleue** (repérée par un petit tiret sur l'axe) et les graduations $4$ sur le bord du cadre. Droite croissante partant exactement de l'origine et rejoignant exactement le coin supérieur droit du cadre $(4\ \text{s}^2\ ;\ 4\ \text{m})$, en passant par $(2\ ;\ 2)$ — la pente se lit $1\ \text{m.s}^{-2}$. Légende : « Figure 2 ».
+    questions:
+      - id: q1
+        part: "1.1 — Le modèle, établi et non récité"
+        stem: |-
+          **1.1.** (0,5 pt) Montrer que l'équation différentielle du mouvement s'écrit ainsi : $\dfrac{d^2x}{dt^2} = \dfrac{F-f}{m} - g\sin\alpha$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une question « montrer que » : le résultat est donné, donc les points viennent du **chemin**, pas du résultat. C'est la méthode du rung 5 de la leçon, appliquée ici à un cas plus riche que son exemple (la caisse tirée à l'horizontale) : un plan incliné, avec une force motrice ET un frottement, comme au rung 7 — mais dans une configuration géométrique qu'il faut regarder avant d'écrire quoi que ce soit.
+
+          **Le système et le référentiel.** Système : le solide $(S)$, de masse $m$, réduit à son centre d'inertie $G$. Référentiel : terrestre, **supposé galiléen** — l'énoncé le dit, et il faut le réécrire : la deuxième loi n'a de sens que dans un référentiel galiléen (rung 1).
+
+          **Le bilan des forces, en toutes lettres.** Quatre forces extérieures s'exercent sur $(S)$ pendant la montée sur $OA$ :
+          — le **poids** $\vec{P} = m\vec{g}$, vertical, vers le bas ;
+          — la **réaction normale** $\vec{N}$ du plan, perpendiculaire au plan incliné ;
+          — la **force motrice** $\vec{F}$, parallèle à la ligne de plus grande pente, dirigée vers le haut — c'est elle qui fait monter le solide ;
+          — la **force de frottement** $\vec{f}$, de même direction que le mouvement, de sens opposé à lui, d'intensité constante $f$.
+
+          Quatre forces, pas trois : la réaction normale doit figurer dans le bilan avant de disparaître par le calcul, jamais avant.
+
+          **Le repère, et c'est là que les signes se décident.** La figure 1 fixe l'axe $(O, \vec{i}\,)$ **le long du plan, orienté vers le haut** — dans le sens de la montée, vers $A$ puis $B$. Retiens bien ce sens : c'est l'inverse de celui utilisé au rung 7 et dans l'exercice voisin de cette banque (bk-2024-r-x5), où l'axe pointait vers le BAS de la pente, dans le sens d'une descente. Le mécanisme physique ne change pas — seul le sens de l'axe change — mais les signes, eux, changent en conséquence : ici, la pesanteur, qui tire toujours vers le bas de la pente, va se retrouver **négative**, alors qu'elle était positive au rung 7. C'est le choix du repère qui commande le signe, jamais une règle apprise par cœur.
+
+          **La deuxième loi de Newton.**
+
+          $$\sum \vec{F}_{ext} = m\,\vec{a}_G
+          \qquad\text{soit}\qquad
+          \vec{P} + \vec{N} + \vec{F} + \vec{f} = m\,\vec{a}_G$$
+
+          **La projection sur $\vec{i}$, force par force.**
+          — Le **poids** se décompose comme au rung 7, en une composante $mg\sin\alpha$ le long du plan et $mg\cos\alpha$ perpendiculairement. Mais ici $\vec{i}$ pointe vers le HAUT de la pente, à l'opposé du sens vers lequel pointe toujours la composante du poids (elle pointe, elle, vers le bas de la pente) : $P_x = -\,mg\sin\alpha$.
+          — La **réaction normale** est perpendiculaire au plan, donc perpendiculaire à $\vec{i}$ : sa projection est nulle. C'est tout l'intérêt d'un axe pris le long du plan.
+          — La **force motrice** $\vec{F}$ est dirigée vers le haut, donc dans le sens de $\vec{i}$ : $F_x = +F$.
+          — Le **frottement** s'oppose au mouvement ; le solide monte, donc va dans le sens de $\vec{i}$, donc $\vec{f}$ va dans le sens contraire : $f_x = -\,f$.
+
+          L'équation projetée s'écrit donc :
+
+          $$m\,a_x = F - f - mg\sin\alpha$$
+
+          **On divise par $m$, qui n'est pas nul :**
+
+          $$\boxed{\ \frac{d^2x}{dt^2} = \frac{F-f}{m} - g\sin\alpha\ }$$
+
+          **Ce que cette expression dit.** $F$, $f$, $g$, $\alpha$ et $m$ sont tous constants tant que $\vec{F}$ agit, donc l'accélération l'est aussi : le mouvement sur $OA$ est rectiligne uniformément varié. C'est précisément ce que la figure 2 va confirmer — à un détail de lecture près, qu'il faudra repérer.
+
+          **Les deux pièges nommés de cette question.** Le premier : **recopier le signe du rung 7 sans regarder le sens de l'axe**, et écrire $+g\sin\alpha$. Le contrôle qui tranche : imagine $\vec{F} = \vec{0}$ (plus de force motrice) — l'équation doit alors donner une accélération qui RALENTIT la montée, donc négative selon $\vec{i}$, ce qui n'est vrai que si le terme en $g\sin\alpha$ est **soustrait**. Le second : **oublier le frottement dans le bilan** parce qu'il finira par jouer un rôle numériquement modeste — il doit apparaître dans le bilan des forces au même titre que les autres, avant même de savoir combien il vaut.
+      - id: q2
+        part: "1.2.1 — La courbe qu'on ne lit pas comme les autres"
+        stem: |-
+          **1.2.1.** (0,5 pt) En exploitant la courbe de la figure 2, déterminer l'accélération $a_{1x}$ du centre d'inertie $G$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La figure 2 ne trace pas $x$ en fonction de $t$, mais $x$ en fonction de $t^2$ — un choix d'axe qui n'est jamais gratuit, et qu'il faut décoder avant de lire quoi que ce soit.
+
+          **Pourquoi tracer $x = f(t^2)$ plutôt que $x = f(t)$.** À la question précédente, on a établi que $a_{1x}$ est constante sur $OA$. Le solide part de $O$ ($x_0=0$) sans vitesse initiale ($v_0=0$) : la loi horaire du mouvement rectiligne uniformément varié s'écrit donc, sans terme initial superflu,
+
+          $$x(t) = \frac{1}{2}\,a_{1x}\,t^2$$
+
+          En posant $T = t^2$ comme nouvelle variable, cette relation devient $x = \left(\dfrac{a_{1x}}{2}\right)T$ : une fonction **affine** de $T$, une droite passant par l'origine. C'est exactement pour ça que le graphe est tracé contre $t^2$ plutôt que contre $t$ — une parabole en $x(t)$ devient une droite en $x(t^2)$, ce qui se lit bien plus précisément à la règle sur un papier millimétré.
+
+          **Le piège, et c'est le plus cher de ce type de question.** La pente de cette droite n'est PAS l'accélération : c'est $\dfrac{a_{1x}}{2}$. Les deux grandeurs partagent d'ailleurs la même unité, $\text{m.s}^{-2}$, ce qui ne prévient rien du tout — seule la reconnaissance de la forme du modèle protège de l'erreur. Annoncer directement « $a_{1x}$ = la pente » est l'erreur la plus fréquente et la plus coûteuse sur ce type de question ; il faut **doubler** la pente lue.
+
+          **La lecture, sur la grille correcte.** La droite part exactement de l'origine et rejoint exactement le coin $(4\ \text{s}^2\ ;\ 4\ \text{m})$ du cadre, en passant par $(2\ ;\ 2)$ :
+
+          $$\text{pente} = \frac{\Delta x}{\Delta(t^2)} = \frac{4-0}{4-0} = 1\ \text{m.s}^{-2}$$
+
+          **On applique le facteur 2.**
+
+          $$a_{1x} = 2 \times \text{pente} = 2 \times 1 = \boxed{2\ \text{m.s}^{-2}}$$
+
+          **Le piège nommé de cette question.** **Lire directement $a_{1x} = 1\ \text{m.s}^{-2}$**, sans repasser par la relation $x = \frac12 a_{1x}t^2$ — l'erreur classique de ce type de graphe. Il faut toujours écrire la loi horaire AVANT de lire la pente, jamais après, pour savoir exactement à quoi cette pente correspond.
+      - id: q3
+        part: "1.2.2 — Remonter à la force"
+        stem: |-
+          **1.2.2.** (0,5 pt) Montrer que l'intensité de la force $\vec{F}$ est : $F \approx 12\ \text{N}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « Montrer que » : on retourne l'expression établie à la question 1.1, dans laquelle $F$ est maintenant la seule inconnue, puisque $a_{1x}$ vient d'être lu.
+
+          **Le retournement.** De $a_{1x} = \dfrac{F-f}{m} - g\sin\alpha$, on isole $F$ :
+
+          $$\frac{F-f}{m} = a_{1x} + g\sin\alpha
+          \qquad\Longrightarrow\qquad
+          F = m\left(a_{1x} + g\sin\alpha\right) + f$$
+
+          **Les valeurs.** $m = 2\ \text{kg}$, $a_{1x} = 2\ \text{m.s}^{-2}$ (question précédente), $g = 10\ \text{m.s}^{-2}$, $\alpha = 17{,}5^\circ$ donc $\sin 17{,}5^\circ \approx 0{,}3007$ (calculatrice en **degrés**), $f = 2\ \text{N}$.
+
+          **Le calcul, terme par terme.**
+
+          $$g\sin\alpha = 10 \times 0{,}3007 = 3{,}007\ \text{m.s}^{-2}$$
+
+          $$F = 2 \times (2 + 3{,}007) + 2 = 2 \times 5{,}007 + 2 = 10{,}014 + 2
+          = \boxed{12{,}014\ \text{N} \approx 12\ \text{N}}$$
+
+          C'est bien la valeur à montrer.
+
+          **Lire ce nombre au lieu de le poser.** La composante motrice utile, $m(a_{1x}+g\sin\alpha) \approx 10{,}0\ \text{N}$, se répartit ainsi : $2{,}0\ \text{N}$ servent à accélérer le solide ($m\,a_{1x}$) et $6{,}0\ \text{N}$ servent seulement à vaincre la pesanteur ($mg\sin\alpha$) ; les $2\ \text{N}$ restants de $F$ compensent exactement le frottement. Rien ne se perd : $F$ se répartit intégralement entre ces trois usages.
+
+          **Les deux pièges nommés de cette question.** Le premier : **oublier de restituer $g\sin\alpha$**, c'est-à-dire écrire $F = m\,a_{1x} + f = 6\ \text{N}$ — une force bien trop faible pour faire monter un solide sur une pente à $17{,}5^\circ$. L'accélération lue à la question précédente est déjà celle qui reste UNE FOIS la pesanteur soustraite (rung 7) ; retrouver $F$ oblige à la lui rendre. Le second : **utiliser $\cos\alpha$ au lieu de $\sin\alpha$**, l'erreur inverse de celle guettée au rung 7, qui donnerait ici $F \approx 21\ \text{N}$ — une valeur que rien ne permet de retenir comme plausible, contrairement à $12\ \text{N}$ qui recoupe exactement le nombre annoncé par l'énoncé.
+      - id: q4
+        part: "1.2.3 — Un deuxième chemin vers la même vitesse"
+        stem: |-
+          **1.2.3.** (0,5 pt) Vérifier que la vitesse de $G$ lors de son passage par le point $A$ est : $V_A = 4\ \text{m.s}^{-1}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « Vérifier que » : on calcule par une voie indépendante de la lecture graphique, et on regarde si le nombre annoncé sort.
+
+          **Le chemin choisi : passer par le temps.** L'accélération $a_{1x}$ est constante sur $OA$ (question 1.1), donc la vitesse croît linéairement à partir du repos : $V(t) = a_{1x}\,t$. Il faut d'abord la durée $t_A$ mise pour parcourir $OA = 4\ \text{m}$, à partir de la même loi horaire qu'à la question 1.2.1 :
+
+          $$OA = \frac{1}{2}\,a_{1x}\,t_A^2
+          \qquad\Longrightarrow\qquad
+          t_A = \sqrt{\frac{2\,OA}{a_{1x}}} = \sqrt{\frac{2\times4}{2}} = \sqrt{4} = 2\ \text{s}$$
+
+          **Un contrôle gratuit, avant même de continuer.** $t_A^2 = 4\ \text{s}^2$ : c'est exactement l'abscisse du dernier point du tracé de la figure 2, $(4\ \text{s}^2\ ;\ 4\ \text{m})$. La courbe s'arrête précisément là où le solide atteint $A$ — ce n'est pas un hasard de mise en page, c'est la figure qui montre le trajet $OA$ dans son intégralité, ni plus ni moins.
+
+          **La vitesse en $A$.**
+
+          $$V_A = a_{1x}\,t_A = 2 \times 2 = \boxed{4\ \text{m.s}^{-1}}$$
+
+          C'est bien la valeur à vérifier.
+
+          **Un deuxième contrôle, indépendant du premier.** On retrouve $V_A$ sans passer par le temps, avec la relation $V_A^2 = 2\,a_{1x}\,OA$ (une loi horaire du mouvement uniformément varié, vue au chapitre de cinématique, comme au rung 6 pour la chute libre) : $V_A^2 = 2\times2\times4=16$, donc $V_A=4\ \text{m.s}^{-1}$. Les deux méthodes se recoupent.
+
+          **Le piège nommé de cette question.** **Chercher à lire $V_A$ directement sur la figure 2**, comme on lirait une pente sur un graphe $v(t)$. Sur ce graphe-ci, l'axe des abscisses est $t^2$, pas $t$ : aucune pente, à aucun endroit, n'y représente une vitesse. Ce graphe ne donne accès qu'à l'accélération, à un facteur 2 près (question 1.2.1) — pour la vitesse, il faut repasser par la formule, jamais par une nouvelle lecture graphique.
+      - id: q5
+        part: "2.1 — Ce qui change quand F disparaît"
+        stem: |-
+          **2.1.** (0,5 pt) Déterminer l'accélération $a_{2x}$ de $G$ sur la portion $AB$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Même méthode qu'à la question 1.1 (rung 5), mais avec un bilan de forces allégé : $\vec{F}$ a disparu à partir de $A$, et l'axe $(O,\vec{i}\,)$ **reste le même** — seule l'origine des dates change, pas le repère spatial. Le solide continue de monter, de $A$ vers $B$, donc le frottement continue de s'opposer à ce même sens de mouvement : il ne change pas de sens sous prétexte que $F$ a disparu.
+
+          **Le bilan, réduit à trois forces.** Le poids $\vec{P}$, la réaction normale $\vec{N}$, le frottement $\vec{f}$ — toujours opposé au mouvement, donc toujours dans le sens $-\vec{i}$, puisque le solide monte encore.
+
+          **La projection, reprise sans le terme $F$.**
+
+          $$-mg\sin\alpha - f = m\,a_{2x}
+          \qquad\Longrightarrow\qquad
+          a_{2x} = -g\sin\alpha - \frac{f}{m}$$
+
+          **Le calcul.**
+
+          $$a_{2x} = -3{,}007 - \frac{2}{2} = -3{,}007 - 1 = \boxed{-4{,}0\ \text{m.s}^{-2}}$$
+
+          **Lire le signe.** $a_{2x}$ est négative alors que le solide monte encore ($\vec{i}$ pointe toujours vers le haut) : c'est une **décélération**, pas un mouvement qui repart en arrière. Le solide ralentit, jusqu'à s'arrêter en $B$ — exactement ce que la question suivante exploite.
+
+          **Le piège nommé de cette question.** **Recopier $a_{1x}$**, en pensant que l'accélération ne change pas parce que le solide « fait toujours le même mouvement ». C'est faux : à $A$, une force disparaît du bilan — l'accélération change nécessairement de valeur, et même de signe, puisque plus rien ne compense la pesanteur et le frottement, qui freinent désormais tous les deux la montée.
+      - id: q6
+        part: "2.2 — Où le solide s'arrête"
+        stem: |-
+          **2.2.** (0,75 pt) Sachant que la vitesse de $G$ s'annule au point $B$, trouver la distance $AB$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On connaît la vitesse de départ ($V_A$, question 1.2.3), l'accélération constante sur $AB$ (question précédente), et la condition d'arrivée : la vitesse s'annule en $B$. C'est une relation entre vitesses et distance, pas entre vitesses et temps — la relation à mobiliser est une loi horaire du mouvement uniformément varié, vue au chapitre de cinématique (comme au rung 6) :
+
+          $$V_B^2 = V_A^2 + 2\,a_{2x}\,AB$$
+
+          **On isole $AB$, avec $V_B = 0$.**
+
+          $$0 = V_A^2 + 2\,a_{2x}\,AB
+          \qquad\Longrightarrow\qquad
+          AB = -\frac{V_A^2}{2\,a_{2x}}$$
+
+          **Le calcul, chiffre par chiffre.** $V_A = 4\ \text{m.s}^{-1}$, $a_{2x} = -4{,}0\ \text{m.s}^{-2}$ (négatif — c'est ce signe qui rend $AB$ positive, un contrôle à faire avant même de calculer) :
+
+          $$AB = -\frac{4^2}{2\times(-4{,}0)} = -\frac{16}{-8{,}0} = \boxed{2{,}0\ \text{m}}$$
+
+          **Le contrôle qui vaut d'être fait.** On peut retrouver ce résultat par le temps : $t_B$ tel que $V_B = V_A + a_{2x}\,t_B = 0$ donne $t_B = -V_A/a_{2x} \approx 1{,}0\ \text{s}$, puis $AB = V_A\,t_B + \frac12 a_{2x}\,t_B^2 \approx 4{,}0\times1{,}0 - 2{,}0\times1{,}0 \approx 2{,}0\ \text{m}$ — les deux méthodes se recoupent.
+
+          **Le piège nommé de cette question.** **Oublier le signe négatif de $a_{2x}$** en écrivant $AB = V_A^2/(2\,a_{2x})$ sans le signe moins global, ce qui donnerait une distance négative — un résultat physiquement absurde qui aurait dû arrêter le calcul avant même d'écrire le résultat final.
+        steps:
+          - math: 'a_{1x} = \frac{F-f}{m} - g\sin\alpha'
+            note: "Question 1.1 : deuxieme loi de Newton projetee, axe oriente vers le HAUT de la pente (sens de la montee)."
+          - math: 'x(t) = \frac{1}{2}a_{1x}\,t^2 \qquad \text{pente lue sur } x=f(t^2) \text{ vaut } a_{1x}/2'
+            note: "Le graphe trace x en fonction de t^2 : la pente lue vaut a/2, pas a (piege du facteur 2, question 1.2.1)."
+          - math: 'a_{1x} = 2\times1 = 2\ \text{m.s}^{-2} \qquad V_A = a_{1x}\,t_A = 2\times2 = 4\ \text{m.s}^{-1}'
+            note: "Pente doublee (question 1.2.1), puis temps t_A = 2 s tire de OA = 4 m (question 1.2.3)."
+          - math: 'F = m\left(a_{1x}+g\sin\alpha\right)+f \approx 12\ \text{N}'
+            note: "Question 1.2.2 : on retourne l'equation de la question 1.1."
+          - math: 'a_{2x} = -g\sin\alpha - \frac{f}{m} \approx -4{,}0\ \text{m.s}^{-2}'
+            note: "Question 2.1 : meme methode qu'en 1.1, sans le terme F qui a disparu en A."
+          - math: 'AB = -\frac{V_A^2}{2\,a_{2x}} = \boxed{2{,}0\ \text{m}}'
+            note: "Question 2.2 : loi horaire du MRUV reliant vitesses et distance, avec V_B = 0 en B."
+
   # ── bk-2024-r-x5 — 2024 R, Exercice 5 (partie 1) : plan incline avec frottement ──
   - id: bk-2024-r-x5
     title: "Solide sur un plan incliné avec frottement : la deuxième loi projetée, l'accélération lue sur la courbe v(t), et l'intensité du frottement qui s'en déduit"

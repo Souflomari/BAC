@@ -195,6 +195,178 @@ entries:
           - math: '\boxed{W_{AB}(\vec F) = 0\ \text{J}}'
             note: "La difference est nulle : coherent avec le theoreme de l'energie cinetique, qui donne aussi Delta Ec = 0 entre A et B (vA = vB = 0)."
 
+  # ── bk-2022-r-x4b — 2022 R, Exercice 4 (Partie 2) : pendule elastique horizontal,
+  #    la lecture la plus directe des quatre - periode lue sans ambiguite,
+  #    ni phase ni energie demandees ──
+  #
+  # NOTE ÉDITORIALE — FLAG DE JUMELAGE (bk-2022-r-x4b face à bk-2018-n-x4b,
+  # bk-2023-r-x4b et bk-2025-n-x4b). Les quatre entrées de cette banque sont des
+  # pendules élastiques horizontaux sans frottement, mais bk-2022-r-x4b est la
+  # plus courte et la plus directe des quatre :
+  #   — bk-2018-n-x4b lit l'amplitude sur une courbe de POSITION et va vers
+  #     l'énergétique (Epe, travail de la force de rappel) ;
+  #   — bk-2023-r-x4b lit l'amplitude, la période (sur deux extrema NON
+  #     consécutifs) et surtout la phase à l'origine, qui exige de croiser DEUX
+  #     informations (le cosinus ET le sens de la vitesse initiale) ;
+  #   — bk-2025-n-x4b part d'une courbe de VITESSE, pas de position, et exige de
+  #     passer par v_max = Xm.omega0 pour remonter à l'amplitude — la lecture la
+  #     plus indirecte des quatre ;
+  #   — bk-2022-r-x4b (ici) ne demande NI amplitude, NI phase, NI énergie : une
+  #     question qualitative sur la nature du mouvement (absente des trois
+  #     autres), puis la période propre lue directement entre deux maxima
+  #     CONSÉCUTIFS (aucune ambiguïté de repérage), puis la raideur. C'est
+  #     l'entrée la plus courte (1,75 pt sur 3 questions) et la plus adaptée à
+  #     un premier passage sur le rung 1, avant d'aborder les trois autres.
+  # Proposition : garder les quatre entrées, elles couvrent quatre niveaux de
+  # difficulté de lecture graphique croissants. À l'arbitrage de l'owner.
+  - id: bk-2022-r-x4b
+    title: "Pendule élastique horizontal : nature du mouvement, équation différentielle par la deuxième loi de Newton, et raideur déduite d'une période lue sans ambiguïté"
+    source:
+      year: 2022
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — §2 : Mouvement d'un oscillateur mécanique (pendule élastique horizontal)"
+    bareme_total: 1.75
+    duration_min: 10
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool
+        https://www.alloschool.com/element/136624, scan
+        course-422/upload-84519, pages 7 et 8 sur 8 (Exercice 4, Partie 2 —
+        mouvement d'un oscillateur mécanique, pendule élastique horizontal
+        sans frottement ; barème de la partie = 1,75 pt, recompté question par
+        question : 0,25+0,75+0,75 = 1,75, sur les 5 pt de l'exercice complet,
+        dont la Partie 1 — un solide sur un plan incliné avec frottement — est
+        transcrite sous lois-de-newton/bank.yaml en bk-2022-r-x4. L'énoncé
+        précise que les deux parties sont indépendantes). Transcription
+        vérifiée par une passe adversariale indépendante (2026-08-22,
+        docs/sujets/_incoming/pc-spc-2022-r.md, statut « vérifié ») : re-fetch
+        indépendant des 8 pages du scan (empreintes SHA-256 contrôlées),
+        figures re-décrites depuis le dessin et non depuis l'énoncé, puis
+        physique re-dérivée. CORRECTION DE FIGURE RETENUE (figure 3) : la
+        version transcrite initialement indiquait « le sol sous le solide et
+        le mur à gauche sont hachurés » ; le mur, en réalité, n'est pas
+        hachuré — c'est une barre pleine (verte sur le scan). Seul le sol
+        porte les hachures. FIGURE 4, décrite sans correction (seule figure de
+        tout le sujet où le transcripteur a d'emblée distingué les traits
+        noirs des lignes bleues et identifié le bord du cadre) : mesure au
+        pixel, traits noirs tous les 59,5 px, 9 verticaux de t = 0 à
+        t = 2 s, 5 horizontaux de -4 à +4 cm — la période se lit sans
+        ambiguïté entre deux maxima consécutifs, T = 1 s. CONTRE-CALCUL REFAIT
+        ICI, chiffre par chiffre : k = 4.pi².m/T0² = 4 x 10 x 0,5 / 1² =
+        20 / 1 = 20 N.m-1 (avec pi² = 10, imposé par l'énoncé) — exactement la
+        valeur du paragraphe de contrôle de cohérence en tête de fichier
+        source (« T = 1 s => k = 20 N/m »). Aucune divergence relevée entre ce
+        contre-calcul et les valeurs annoncées par l'énoncé. Cette Partie 2
+        est la plus courte des quatre entrées « pendule élastique horizontal »
+        de cette banque (voir le flag de jumelage en tête de cette entrée) :
+        aucune amplitude, aucune phase et aucune énergie n'y sont demandées,
+        seulement la nature du mouvement et la raideur.
+    intro: |-
+      **Étude du mouvement d'un oscillateur mécanique (examen national, session de rattrapage 2022 — Exercice 4, Partie 2, 1,75 points).**
+
+      *Les parties 1 et 2 de cet exercice sont indépendantes. La Partie 1 — un solide sur un plan incliné, avec frottement — est traitée à part, sous la notion « Lois de Newton ». Rien de ce qui suit n'en dépend.*
+
+      Un oscillateur mécanique horizontal est constitué d'un solide $(S)$, de masse $m = 0{,}5\ \text{kg}$, fixé à l'extrémité libre d'un ressort $(R)$ à spires non jointives, de masse négligeable et de raideur $k$. L'autre extrémité du ressort est liée à un support fixe.
+
+      Pour étudier le mouvement du centre d'inertie $G$ du solide $(S)$, on choisit un repère $(O,\ \vec{i}\,)$ lié à un référentiel terrestre supposé galiléen. On repère, à un instant de date $t$, la position de $G$ par son abscisse $x$ dans le repère $(O,\ \vec{i}\,)$. La position de $G$ à l'équilibre est confondue avec l'origine $O$ de l'axe $(Ox)$ (figure 3).
+
+      On écarte $(S)$ de sa position d'équilibre et on le lâche, sans vitesse initiale, à la date $t = 0$. $(S)$ se met alors à osciller sans frottement. On visualise, à l'aide d'un dispositif informatique approprié, la courbe $x = f(t)$ (figure 4).
+
+      **Figure 3 (schéma).** Dispositif horizontal : à gauche, un support vertical dessiné comme une **barre pleine verte**, posée sur le sol ; le ressort $(R)$, dessiné en spires horizontales, étiqueté « $(R)$ » au-dessus, relie le support au solide $(S)$ (rectangle grisé, étiqueté « $(S)$ » au-dessus, point noir « $G$ » à l'intérieur). Le point $O$ est marqué sur l'axe au niveau de l'extrémité du ressort côté solide, avec le vecteur unitaire $\vec{i}$ (petite flèche vers la droite) juste à sa droite ; l'axe horizontal en pointillés se prolonge des deux côtés et se termine à droite par la flèche « x ». **Seul le sol est hachuré** — une bande de hachures obliques sous toute la largeur du dispositif ; le support de gauche, lui, n'est pas hachuré. Légende : « Figure 3 ».
+
+      **Figure 4 (courbe).** Axe des ordonnées $x\ (\text{cm})$ gradué $4,\ 2,\ 0,\ -2,\ -4$ (quadrillage principal noir de pas $2\ \text{cm}$ ; le cadre s'arrête exactement à $\pm 4\ \text{cm}$) ; axe des abscisses $t\ (\text{s})$ chiffré $0{,}5,\ 1,\ 1{,}5$ (traits principaux noirs tous les $0{,}25\ \text{s}$, chiffrage un trait sur deux ; le bord gauche est $t = 0$ et le bord droit exactement $t = 2\ \text{s}$) ; sous-quadrillage fin bleu à $5$ subdivisions par carreau principal ($0{,}05\ \text{s}$ et $0{,}4\ \text{cm}$). Cosinusoïde non amortie : $x = +4\ \text{cm}$ à $t = 0$, zéro descendant à $t = 0{,}25\ \text{s}$, minimum $-4\ \text{cm}$ à $t = 0{,}5\ \text{s}$, zéro montant à $t = 0{,}75\ \text{s}$, maximum $+4\ \text{cm}$ à $t = 1\ \text{s}$, minimum $-4\ \text{cm}$ à $t = 1{,}5\ \text{s}$, et retour à $+4\ \text{cm}$ au bord droit du cadre ($t = 2\ \text{s}$). La période se lit $T = 1\ \text{s}$ d'un maximum au suivant. Légende : « Figure 4 ».
+    questions:
+      - id: q1
+        part: "1 — La nature du mouvement, avant tout calcul"
+        stem: |-
+          **1.** (0,25 pt) Préciser la nature du mouvement de $G$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Avant même d'écrire une équation, la question demande de nommer ce qu'on observe. Trois traits, lus ensemble sur la figure 4, suffisent à conclure.
+
+          **Rectiligne.** L'axe $(O,\vec{i}\,)$ est une droite, et $G$ s'y déplace sans jamais en sortir (l'énoncé le fixe dès le départ : « on repère la position de $G$ par son abscisse $x$ »).
+
+          **Sinusoïdal.** La courbe de la figure 4 est une cosinusoïde — exactement la forme $x(t) = X_m\cos(\omega_0 t+\varphi)$ que le rung 1 établit comme solution de l'équation de l'oscillateur harmonique. Ce n'est pas une simple oscillation quelconque : c'est la signature précise d'une fonction trigonométrique du temps.
+
+          **Non amorti.** D'un maximum au suivant, l'amplitude reste rigoureusement $4\ \text{cm}$ — elle ne décroît jamais sur les deux cycles que montre la figure. C'est cohérent avec l'énoncé, qui précise que $(S)$ oscille « sans frottement » : c'est exactement le régime périodique du rung 6, par opposition aux régimes amortis qui, eux, montrent une amplitude qui diminue cycle après cycle.
+
+          **Le piège nommé de cette question.** **Répondre seulement « périodique »**, sans préciser sinusoïdal ni non amorti. La question vaut peu de points (0,25 pt) précisément parce qu'elle demande une observation, pas un calcul — mais une observation complète, sur les trois traits, pas une seule étiquette approximative.
+        steps:
+          - math: 'x(t) = X_m\cos(\omega_0 t + \varphi)'
+            note: "Forme de la solution de l'oscillateur harmonique (rung 1) : la courbe cosinus de la figure 4 en est la signature."
+          - math: '\boxed{\text{mouvement rectiligne sinusoidal (harmonique), non amorti}}'
+            note: "Rectiligne : G reste sur l'axe (O,i). Amplitude constante d'un maximum au suivant : sans frottement, regime periodique (rung 6)."
+      - id: q2
+        part: "2 — Le modèle, établi et non récité"
+        stem: |-
+          **2.** (0,75 pt) Établir, en appliquant la deuxième loi de Newton, l'équation différentielle du mouvement de $G$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est le rung 1 de la leçon, presque mot pour mot : un pendule élastique horizontal, sans frottement. La question demande d'établir l'équation, donc les quatre gestes de la méthode doivent apparaître, pas seulement le résultat final.
+
+          **Le système et le référentiel.** Système : le solide $(S)$, de masse $m$, réduit à son centre d'inertie $G$. Référentiel : terrestre, supposé galiléen — l'énoncé le dit.
+
+          **Le bilan des forces.** Trois forces s'exercent sur $(S)$ : le poids $\vec{P}$ (vertical, vers le bas), la réaction $\vec{N}$ du support horizontal (verticale, vers le haut — l'énoncé précise « sans frottement », donc pas de composante horizontale) et la force de rappel du ressort $\vec{F}_{rappel} = -k\,x\,\vec{i}$ (rung 1 : le signe moins traduit que la force ramène toujours vers l'équilibre, quel que soit le sens de l'écart).
+
+          **La deuxième loi de Newton, projetée.**
+
+          $$\vec{P} + \vec{N} + \vec{F}_{rappel} = m\,\vec{a}_G$$
+
+          Le mouvement est horizontal ; le poids et la réaction sont verticaux, donc leurs projections sur $(O,\vec{i}\,)$ sont nulles — c'est pour ça que le pendule élastique horizontal est le cas le plus simple de la leçon : la pesanteur n'intervient jamais dans son équation. Il reste :
+
+          $$-k\,x = m\,\ddot{x}$$
+
+          **La mise en forme canonique.**
+
+          $$\boxed{\ \ddot{x} + \frac{k}{m}\,x = 0\ }$$
+
+          **Lire l'équation.** Elle dit que l'accélération est proportionnelle à l'écart et de signe opposé — c'est le mécanisme qui interdit à l'oscillation de rester à l'équilibre une fois écartée, et c'est bien ce que montre la figure 4 : une oscillation qui continue indéfiniment, sans jamais s'arrêter, puisqu'il n'y a pas de frottement pour dissiper l'énergie (rung 6).
+
+          **Le piège nommé de cette question.** **Faire figurer le poids dans l'équation projetée**, par réflexe venu du plan incliné. Ici le plan est horizontal, le poids est perpendiculaire à l'axe du mouvement, sa projection est nulle, et l'écrire est une faute, pas une précaution.
+        steps:
+          - math: '\vec P + \vec N + \vec F_{rappel} = m\vec a_G \qquad \text{avec} \qquad \vec F_{rappel} = -k\,x\,\vec i'
+            note: "Deuxieme loi de Newton, bilan du rung 1 (poids, reaction normale, force de rappel)."
+          - math: '-k\,x = m\,\ddot x'
+            note: "Projection sur l'axe horizontal : poids et reaction normale sont verticaux, leur projection est nulle."
+          - math: '\boxed{\ddot x + \frac{k}{m}\,x = 0}'
+            note: "Forme standard de l'oscillateur harmonique (rung 1)."
+      - id: q3
+        part: "3 — La raideur, sur la lecture la plus directe de la banque"
+        stem: |-
+          **3.** (0,75 pt) Trouver la valeur de la raideur $k$ du ressort. (On prend $\pi^2 = 10$).
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'équation de la question précédente donne $\omega_0^2 = k/m$, et la période propre $T_0 = 2\pi/\omega_0$ ; il ne reste qu'à lire $T_0$ sur la figure 4 et à retourner la relation — c'est le rung 1, la formule $T_0 = 2\pi\sqrt{m/k}$.
+
+          **La lecture de $T_0$, sur la figure la plus simple de tout ce sujet.** La courbe part de $+4\ \text{cm}$ à $t=0$, redescend, remonte, et repasse par $+4\ \text{cm}$ exactement un cycle plus tard, à $t=1\ \text{s}$. Contrairement aux deux autres pendules élastiques les plus proches de cette banque (bk-2023-r-x4b et bk-2025-n-x4b), il n'y a ici ni double flèche à interpréter comme un étalon de graduation (comme sur bk-2025-n-x4b), ni écart à mesurer entre deux extrema non consécutifs (comme sur bk-2023-r-x4b) : la période se lit directement, d'un maximum au suivant.
+
+          $$T_0 = 1\ \text{s}$$
+
+          **La relation, et le retournement.**
+
+          $$T_0 = 2\pi\sqrt{\frac{m}{k}}
+          \qquad\Longrightarrow\qquad
+          T_0^2 = 4\pi^2\,\frac{m}{k}
+          \qquad\Longrightarrow\qquad
+          k = \frac{4\pi^2\,m}{T_0^2}$$
+
+          **Le calcul, chiffre par chiffre.** $m = 0{,}5\ \text{kg}$ (déjà en kilogrammes, aucune conversion à faire), $T_0 = 1\ \text{s}$, et l'énoncé impose $\pi^2 = 10$ :
+
+          $$k = \frac{4\times10\times0{,}5}{1^2} = \frac{20}{1} = \boxed{20\ \text{N.m}^{-1}}$$
+
+          **Pourquoi l'énoncé impose $\pi^2 = 10$.** Avec la vraie valeur $\pi^2 \approx 9{,}87$, on obtiendrait $k \approx 19{,}7\ \text{N.m}^{-1}$ — juste, mais qui ne tombe pas rond. Suis l'instruction de l'énoncé plutôt que la valeur exacte de ta calculatrice.
+
+          **Le piège nommé de cette question.** **Oublier d'élever $T_0$ au carré**, en écrivant directement $k = 4\pi^2 m / T_0$ — ce qui donnerait ici la même valeur numérique par pure coïncidence ($T_0=1$), un piège qui ne se révèle qu'en changeant les nombres. Reconstruis toujours la relation depuis $T_0 = 2\pi\sqrt{m/k}$ plutôt que de mémoriser une formule à trous.
+        steps:
+          - math: 'T_0 = 1\ \text{s}'
+            note: "Lecture directe sur la figure 4, d'un maximum au suivant : pas d'ambiguite ici, contrairement aux deux autres pendules elastiques les plus proches de cette banque."
+          - math: 'k = \frac{4\pi^2\,m}{T_0^2}'
+            note: "On retourne T0 = 2.pi.racine(m/k) (rung 1)."
+          - math: 'k = \frac{4\times10\times0{,}5}{1^2} = \frac{20}{1}'
+            note: "Application numerique, avec pi^2 = 10 impose par l'enonce."
+          - math: '\boxed{k = 20\ \text{N.m}^{-1}}'
+            note: "Raideur du ressort."
+
   # ── bk-2023-n-x4b — 2023 N, Exercice 4 (Partie II) : la balançoire, pendule pesant ──
   - id: bk-2023-n-x4b
     title: "La balançoire, pendule pesant : énergie potentielle, vitesse angulaire maximale et période propre"

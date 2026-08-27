@@ -69,9 +69,23 @@
 # réactif à l'équilibre (Qr/K, rung R5) — sur un couple différent de celui du
 # rung R5 (acide éthanoïque + méthanol, pas un excès initial mais un ajout en
 # cours de réaction, qui exige un nouveau tableau d'avancement reparti d'un
-# état déjà avancé plutôt que de zéro). Aucune autre entrée « vérifié »
-# n'existe aujourd'hui pour esterification-hydrolyse dans docs/sujets/pc/ :
-# un futur sujet vérifié pourra encore étoffer la banque (pas de fabrication).
+# état déjà avancé plutôt que de zéro).
+#
+# Le 2025 R (bk-2025-r-x1b, ajouté le 2026-08-27) est la TROISIÈME entrée de
+# cette banque — première de session rattrapage. C'est le §2 de l'exercice 1
+# de l'examen 2025 R (étude d'une réaction d'estérification avec l'acide
+# éthanoïque : équation, quantité d'acide restant dosée par la soude,
+# rendement ; 2,0 pt) ; ses deux autres sous-parties, indépendantes, vivent
+# sous content/pc/reactions-acido-basiques (bk-2025-r-x1) et
+# content/pc/suivi-temporel-vitesse (bk-2025-r-x1c). Elle porte une SCOPE
+# NOTE : la relation d'équivalence du dosage de l'acide restant n'est
+# enseignée par aucun rung de cette leçon-ci (qui ne traite que l'équilibre
+# estérification/hydrolyse, jamais un titrage) — elle est nommée et pontée
+# au point d'usage vers le rung R9 de « Réactions acido-basiques », voir le
+# commentaire au-dessus de l'entrée. Aucun flag de jumelage : le geste
+# dominant — un rendement retrouvé via un acide restant DOSÉ, plutôt que
+# donné (bk-2018-n-x1) ou lu sur une courbe (bk-2023-n-x1) — est inédit dans
+# cette banque.
 
 notion: pc/esterification-hydrolyse
 
@@ -282,3 +296,114 @@ entries:
             note: "Nouveau rendement, rapporté à x_max = 0,90 mol : l'alcool n'a jamais reçu d'ajout et reste le réactif limitant de tout le système — l'acide total disponible (0,9+0,1=1,0 mol) le dépasse désormais."
           - math: '\boxed{r_{nouveau} \approx 0{,}701 = 70{,}1\ \%}'
             note: "Rendement amélioré par rapport aux 66,7 % de la question 5 : ajouter de l'acide en cours de route a bien déplacé l'équilibre, exactement le premier geste du rung R5."
+
+  # ── bk-2025-r-x1b — 2025 R, Exercice 1 (§2) : esterification acide ethanoique + ethanol, dosage de l'acide restant ──
+  # Ses deux autres sous-parties, independantes, vivent ailleurs : le §1
+  # (solution d'acide ethanoique : tau, pK_A, diagramme de distribution,
+  # dilution) sous content/pc/reactions-acido-basiques, entree bk-2025-r-x1 ;
+  # le §3 (cinetique de la saponification) sous
+  # content/pc/suivi-temporel-vitesse, entree bk-2025-r-x1c.
+  #
+  # SCOPE NOTE (technique mobilisee au-dela de ce que la lecon montre pas a
+  # pas, pontee au point d'usage, PAS corrigee ici) :
+  #   - q2 (2-2) et q3 (2-3) : la RELATION D'EQUIVALENCE D'UN DOSAGE
+  #     (n(acide restant) = C_B.V_BE) n'est enseignee par aucun rung de CETTE
+  #     lecon (esterification-hydrolyse.md ne traite que l'equilibre estere/
+  #     hydrolyse, jamais un titrage). Elle appartient nommement au rung R9 de
+  #     la notion « Reactions acido-basiques », nomme et pontee au point
+  #     d'usage dans le raisonnement de la question 2-2.
+  #
+  # Pas de flag de jumelage : le geste dominant de cette entree — doser
+  # l'acide restant a la fin d'une esterification pour en tirer le rendement
+  # — est absent des deux autres entrees de cette banque (bk-2018-n-x1 donne
+  # directement n_E ; bk-2023-n-x1 lit x_eq sur une courbe n_a = f(t)).
+  - id: bk-2025-r-x1b
+    title: "Estérification de l'acide éthanoïque par l'éthanol : acide restant dosé par la soude, rendement"
+    source:
+      year: 2025
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — §2 : étude d'une réaction d'estérification avec l'acide éthanoïque"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS28F, AlloSchool
+        https://www.alloschool.com/element/145799, scan
+        course-422/upload-87492/0002-big.jpg et 0003-big.jpg, pages 2 et 3
+        sur 6 (Exercice 1 — §2, étude d'une réaction d'estérification avec
+        l'acide éthanoïque : équation, quantité d'acide restant dosée par la
+        soude, rendement). Aucune figure dans cette sous-partie — énoncé
+        intégralement textuel. Barème du §2 recompté sur l'énoncé source :
+        0,75 (2-1) + 0,5 (2-2) + 0,75 (2-3) = 2,0 pt, sur les 7 pt de
+        l'exercice complet, dont le §1 — solution d'acide éthanoïque,
+        2,75 pt — est transcrit sous content/pc/reactions-acido-basiques,
+        entrée bk-2025-r-x1, et le §3 — cinétique de la saponification,
+        2,25 pt — sous content/pc/suivi-temporel-vitesse, entrée
+        bk-2025-r-x1c ; la somme des trois, 2,75+2,0+2,25 = 7,0 pt, coïncide
+        avec le recompte en marge du fichier source. Source :
+        docs/sujets/_incoming/pc-spc-2025-r.md, statut « vérifié — re-fetch
+        indépendant + re-dérivation (vérificateur adversarial, 2026-08-23) ».
+        Contre-calcul refait ici, indépendamment de la re-dérivation du
+        vérificateur (qui donne déjà un rendement de $67\,\%$ et que ce
+        contre-calcul confirme) : $n_r = C_B\,V_{BE} =
+        1{,}50\times22{,}0\times10^{-3} = 3{,}30\times10^{-2}\ \text{mol}$ ;
+        $x = n_0 - n_r = 0{,}100-0{,}0330 = 6{,}70\times10^{-2}\ \text{mol}$
+        (ester formé) ; $x_{max} = n_0 = 0{,}100\ \text{mol}$ (mélange
+        équimolaire, coefficients tous égaux à $1$) ; $r = x/x_{max} =
+        0{,}670 = 67{,}0\,\%$ — exactement la valeur du sujet. SCOPE NOTE
+        sur la relation d'équivalence du dosage, empruntée au rung 9 de
+        « Réactions acido-basiques » : voir le commentaire au-dessus de
+        cette entrée.
+    intro: |-
+      **Étude d'une réaction d'estérification avec l'acide éthanoïque (examen national, session de rattrapage 2025 — Exercice 1, §2, 2,0 points).**
+
+      *Cet exercice de 7 points étudie aussi, dans ses deux autres sous-parties : une solution aqueuse d'acide éthanoïque (§1, sous la notion « Réactions acido-basiques ») ; une hydrolyse basique d'un ester (§3, sous la notion « Suivi temporel d'une transformation — vitesse de réaction »).*
+
+      Pour synthétiser l'éthanoate d'éthyle noté E, on fait réagir $0{,}100\ \text{mol}$ d'acide éthanoïque avec $0{,}100\ \text{mol}$ d'éthanol $C_2H_5OH$. Lorsque la réaction est terminée, on dose, dans des conditions expérimentales bien déterminées, l'acide restant avec une solution aqueuse $S_B$ d'hydroxyde de sodium $Na^+_{(aq)} + HO^-_{(aq)}$ de concentration $C_B = 1{,}50\ \text{mol.L}^{-1}$. Le volume de $S_B$ versé à l'équivalence est $V_{BE} = 22{,}0\ \text{mL}$.
+    questions:
+      - id: q1
+        stem: |-
+          **2-1. (0,75 pt)** Écrire, en utilisant les formules semi-développées, l'équation de la réaction d'estérification qui s'est produite.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On applique le geste du rung R1 : le groupe $-COOH$ de l'acide éthanoïque et le groupe $-OH$ de l'éthanol se combinent, une molécule d'eau en part, et ce qui reste des deux chaînes se relie par le groupe ester $-COO-$. C'est, au mot près, l'exemple travaillé qui ouvre ce chapitre.
+
+          $$\boxed{CH_3-COOH + CH_3-CH_2-OH \rightleftharpoons CH_3-COO-CH_2-CH_3 + H_2O}$$
+
+          Double flèche : c'est une estérification, réaction **limitée** (rung R2) — c'est ce que le rendement de la question 2-3 va confirmer.
+
+          **Le nom de l'ester, pour vérifier l'écriture.** Radical de l'acide éthanoïque : « éthanoate ». Radical de l'éthanol : « éthyle ». L'ester $E$ est donc l'**éthanoate d'éthyle** — exactement l'exemple nommé au rung R1.
+
+          **Le piège nommé de cette question.** L'énoncé demande les formules **semi-développées** : écrire l'équation générale $R-COOH + R'-OH \rightleftharpoons R-COO-R' + H_2O$ sans remplacer $R$ et $R'$ par $CH_3-$ et $CH_3-CH_2-$ ne répond pas à la consigne et coûte des points, même si la logique de construction est correcte.
+      - id: q2
+        stem: |-
+          **2-2. (0,5 pt)** Calculer la quantité de matière $n_r$ d'acide restant en fin de la réaction d'estérification.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** SCOPE NOTE (voir le commentaire en tête de cette entrée) : la relation d'équivalence d'un dosage n'est enseignée par aucun rung de cette leçon-ci, qui ne traite que l'équilibre estérification/hydrolyse. Elle appartient nommément au rung R9 de la notion **Réactions acido-basiques** : à l'équivalence, la quantité de réactif titré présent égale la quantité de réactif titrant versé, $n_r = C_B\,V_{BE}$ — l'acide restant, ici, joue le rôle du titré, et la soude celui du titrant.
+
+          $$n_r = C_B\,V_{BE} = 1{,}50 \times 22{,}0\times10^{-3}$$
+
+          $$\boxed{n_r \approx 3{,}30\times10^{-2}\ \text{mol}}$$
+
+          **Le piège nommé de cette question.** Convertis $V_{BE}$ en litres avant de multiplier ($22{,}0\ \text{mL} = 22{,}0\times10^{-3}\ \text{L}$) : $C_B$ est donnée en $\text{mol.L}^{-1}$, et laisser $V_{BE}$ en millilitres donnerait un résultat mille fois trop grand.
+      - id: q3
+        stem: |-
+          **2-3. (0,75 pt)** En exploitant le tableau d'avancement de la réaction d'estérification, déterminer son rendement.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le rendement rapporte l'ester réellement obtenu à celui qu'aurait donné une réaction **totale** : $r = x/x_{max}$ — le même geste qu'au rung R3 de cette leçon, où $\tau \approx 2/3$ jouait ce rôle pour le cas des quantités égales. Le mélange est équimolaire ($0{,}100\ \text{mol}$ d'acide, $0{,}100\ \text{mol}$ d'alcool) et tous les coefficients stœchiométriques valent $1$ : si la réaction était totale, les deux réactifs s'épuiseraient exactement ensemble, donc $x_{max} = n_0 = 0{,}100\ \text{mol}$.
+
+          **Le tableau d'avancement, exploité à l'état final.** L'acide restant, dosé à la question 2-2, donne l'avancement réellement atteint par différence :
+
+          $$x = n_0 - n_r = 0{,}100 - 3{,}30\times10^{-2}$$
+
+          $$\boxed{x \approx 6{,}70\times10^{-2}\ \text{mol}}$$
+
+          (C'est aussi la quantité d'ester $E$ formée : un mole d'ester par mole d'avancement, coefficient $1$.)
+
+          $$r = \frac{x}{x_{max}} = \frac{6{,}70\times10^{-2}}{0{,}100}$$
+
+          $$\boxed{r \approx 0{,}670 = 67{,}0\ \%}$$
+
+          **Le piège nommé de cette question.** Ne calcule pas le rendement à partir de l'acide **restant** directement ($n_r/n_0$) : ce rapport donnerait la fraction d'acide **n'ayant pas réagi**, pas la fraction convertie en ester. Il faut d'abord passer par l'avancement $x = n_0 - n_r$, puis rapporter $x$ à $x_{max}$ — deux soustractions dans des directions opposées, faciles à inverser sous pression.

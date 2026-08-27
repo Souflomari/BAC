@@ -120,6 +120,24 @@ Reprends la pile Daniell du rung 2. On a établi que $Q_{r,i} < K$, donc le zinc
 
 Un voltmètre branché entre les deux lames, avec sa borne rouge sur le cuivre et sa borne noire sur le zinc, doit donc afficher une valeur positive - c'est bien ce qu'on observe expérimentalement sur une pile Daniell en fonctionnement.
 
+### Le schéma conventionnel : écrire une pile en une ligne
+
+Décrire une pile en trois phrases, comme on vient de le faire, est long et se prête mal à une copie d'examen. Les chimistes ont donc une écriture compacte, normalisée, qui dit exactement la même chose sur une seule ligne : le **schéma conventionnel** de la pile. Un sujet de bac peut demander directement « schématiser cette pile », et il attend cette écriture-là.
+
+**La règle d'écriture, en trois points.**
+
+1. On écrit les deux électrodes **aux extrémités**, en portant leur polarité : la **borne $-$ à gauche**, la **borne $+$ à droite**. C'est l'ordre conventionnel, et il n'est pas négociable — c'est lui qui rend le schéma lisible sans commentaire.
+2. Une **barre simple** $|$ marque une **frontière entre deux phases différentes** : le métal solide d'un côté, la solution qui le baigne de l'autre. C'est là que se produit la demi-réaction.
+3. Une **double barre** $\|$ marque la **jonction entre les deux solutions** — c'est le pont salin (ou la paroi poreuse) du rung 1. Elle sépare les deux demi-piles, qui ne doivent jamais se mélanger.
+
+**Sur la pile Daniell**, avec le zinc en anode (borne $-$) et le cuivre en cathode (borne $+$) :
+
+$$\ominus\ \text{Zn}_{(s)}\ \big|\ \text{Zn}^{2+}_{(aq)}\ \big\|\ \text{Cu}^{2+}_{(aq)}\ \big|\ \text{Cu}_{(s)}\ \oplus$$
+
+**Lis la ligne de gauche à droite et retrouve toute la pile.** À gauche, le zinc métallique en contact avec sa solution d'ions $Zn^{2+}$ : c'est la demi-pile où le zinc s'oxyde et libère des électrons, donc la borne $-$. Au centre, la double barre : le pont salin, qui maintient l'électroneutralité sans laisser les solutions se mélanger. À droite, les ions $Cu^{2+}$ en contact avec le cuivre métallique : la demi-pile où la réduction consomme les électrons, donc la borne $+$. Rien n'a été perdu par rapport aux trois phrases — et dans le sens de lecture, de gauche à droite, on suit **le trajet des électrons dans le circuit extérieur**, de l'anode vers la cathode.
+
+*Le piège de cette écriture, et il coûte un point entier :* écrire la pile **à l'envers**, borne $+$ à gauche. Le schéma n'est pas symétrique, il porte l'information de polarité dans son ordre même. Le contrôle à faire systématiquement : l'espèce écrite à l'extrême gauche doit être celle **qui s'oxyde**, celle qui disparaît en donnant ses électrons. Sur la Daniell, c'est le zinc — et c'est cohérent avec ce que le rung 2 a établi ($Q_{r,i} < K$).
+
 [[checkpoint:cp-r3-anode-cathode]]
 
 ---

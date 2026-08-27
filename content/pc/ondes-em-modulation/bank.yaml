@@ -20,12 +20,14 @@
 # dans docs/sujets/pc/ondes-em-modulation.md sont 2017 N (Exercice III,
 # Partie II), 2021 N (Exercice IV, Partie III), 2023 N (Exercice 3, §3) et
 # 2025 N (Exercice 3, Partie 3) — statuts en tête de chaque entrée. Les
-# quatre figurent ci-dessous. S'y ajoute une CINQUIÈME entrée, de session
-# de RATTRAPAGE : bk-2023-r-x3c (2023 R, Exercice 3, section 3), dont la
-# source vérifiée est docs/sujets/_incoming/pc-spc-2023-r.md (passe de
-# vérification adversariale du 2026-08-23) et n'est PAS encore reversée
-# dans docs/sujets/pc/ondes-em-modulation.md — même disposition que les
-# entrées de rattrapage de rc-charge et dipole-rl. Les entrées sont
+# quatre figurent ci-dessous. S'y ajoutent DEUX entrées de session de
+# RATTRAPAGE, ni l'une ni l'autre encore reversée dans
+# docs/sujets/pc/ondes-em-modulation.md (même disposition que les entrées de
+# rattrapage de rc-charge et dipole-rl) : bk-2022-r-x3c (2022 R, Exercice 3,
+# section 3), source vérifiée docs/sujets/_incoming/pc-spc-2022-r.md (passe
+# de vérification adversariale du 2026-08-22) ; et bk-2023-r-x3c (2023 R,
+# Exercice 3, section 3), source vérifiée docs/sujets/_incoming/pc-spc-2023-r.md
+# (passe de vérification adversariale du 2026-08-23). Les entrées sont
 # ordonnées chronologiquement, la session de rattrapage se plaçant après
 # la session normale de la même année.
 #
@@ -283,6 +285,121 @@ entries:
             note: "Seconde condition du rung 3 : taux de modulation inferieur a 1, pas de surmodulation."
           - math: '\boxed{\text{les deux conditions sont verifiees} \implies \text{bonne modulation}}'
             note: "Conclusion : Fp >> fs et m < 1 sont toutes deux respectees."
+
+  # ── bk-2022-r-x3c — 2022 R, Exercice 3 (section 3) : role des parties 1 et 3,
+  #    regler L du circuit d'accord ──
+  #
+  # NOTE ÉDITORIALE — collision de notation avec bk-2022-r-x3b (rlc-serie) :
+  # voir la note complète dans content/pc/rlc-serie/bank.yaml, entrée
+  # bk-2022-r-x3b. Le condensateur « C » de la Partie 2 de la figure 6
+  # ci-dessous (lissage du détecteur de crête) est SANS RAPPORT avec le
+  # condensateur « C » de la section 2 du même exercice (circuit RLC série,
+  # C = 250 µF) — deux composants différents, dans des circuits disjoints,
+  # qui partagent la même lettre par pure coïncidence de notation du sujet.
+  # Reproduit tel quel, sans renommer ; sa valeur n'est ni donnée ni demandée
+  # dans cette section.
+  - id: bk-2022-r-x3c
+    title: "Réception d'une onde modulée en amplitude : rôle des parties 1 et 3, régler l'inductance du circuit d'accord"
+    source:
+      year: 2022
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — §3 : Réception d'une onde modulée en amplitude"
+    bareme_total: 1.0
+    duration_min: 6
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/136624
+        (Exercice 3, section 3 — réception d'une onde modulée en amplitude ;
+        barème de la section = 1,0 pt, recompté question par question :
+        0,5+0,5 = 1,0, sur les 4,5 pt de l'exercice complet, dont la
+        section 1 — réponse d'un dipôle RL à un échelon de tension — est
+        transcrite sous content/pc/dipole-rl/bank.yaml en bk-2022-r-x3, et
+        la section 2 — oscillations libres dans un circuit RLC série — sous
+        content/pc/rlc-serie/bank.yaml en bk-2022-r-x3b ; les trois sections
+        partagent le montage de la figure 1/section 1 et sont converties en
+        entrées séparées, comme l'exige le vérificateur). Transcription
+        vérifiée par une passe adversariale indépendante (2026-08-22,
+        docs/sujets/_incoming/pc-spc-2022-r.md, statut « vérifié ») :
+        re-téléchargement indépendant des 8 pages du scan (upload-84519,
+        page 6 pour cette section) dans un répertoire isolé, empreintes
+        SHA-256 contrôlées contre des fichiers résiduels d'une autre
+        campagne, figure 6 jugée conforme (aucune correction du vérificateur
+        sur cette figure), physique re-dérivée. CONTRE-CALCUL REFAIT ICI,
+        conforme à la source : avec $f_0=171\ \text{kHz}$,
+        $C_1=85{,}4\ \text{pF}$ et $\pi^2=10$,
+        $L=1/(4\pi^2 f_0^2 C_1)\approx1{,}00\times10^{-2}\ \text{H}=10\
+        \text{mH}$ — exactement la valeur de la note de vérification du
+        sujet (« f0 et C1 ⇒ L = 10 mH »), sans divergence. NOTE ÉDITORIALE
+        (incohérence de capacité) : voir le commentaire ci-dessus — la
+        lettre « C » de la Partie 2 de la figure 6 (condensateur de lissage
+        du détecteur de crête) est un composant sans rapport avec le C de la
+        section 2 (circuit RLC série, $C=250\ \mu\text{F}$) ; reproduit tel
+        quel. FLAG PÉDAGOGIQUE (question 3.1, rôle de la Partie 3) : le
+        rung 4 (R4, lesson.md) mentionne l'élimination de la composante
+        continue $U_0$ en une seule phrase, explicitement présentée comme
+        « un simple filtrage qu'on ne détaille pas ici » ; le raisonnement
+        de la question 3.1 développe ce point (condensateur en série =
+        blocage du continu) au-delà de ce que R4 couvre pas à pas — signalé
+        à l'orchestrateur / pedagogy-architect pour arbitrage (ajouter un
+        complément à R4, ou assumer que ce développement reste hors-ramp).
+    intro: |-
+      **Réception d'une onde modulée en amplitude (examen national, session de rattrapage 2022 — Exercice 3, section 3, 1 point).**
+
+      *On se propose dans cet exercice d'étudier, sur un même montage : la réponse d'un dipôle RL à un échelon de tension (section 1, traitée à part sous la notion « Dipôle RL ») ; les oscillations libres dans un circuit RLC série (section 2, traitée à part sous la notion « Oscillations libres dans un circuit RLC série ») ; puis la réception d'une onde modulée en amplitude (cette section).*
+
+      Pour recevoir une onde radio, modulée en amplitude et de fréquence $f_0 = 171\ \text{kHz}$, on utilise le montage représenté par le schéma simplifié de la figure 6.
+
+      La partie 1 de ce dispositif est constituée d'un condensateur de capacité $C_1 = 85{,}4\ \text{pF}$ et d'une bobine d'inductance $L$ réglable.
+
+      **Figure 6 (schéma).** Chaîne de réception en trois blocs encadrés de pointillés, légendés « Partie 1 », « Partie 2 », « Partie 3 », avec l'étiquette « Antenne » en haut à gauche (symbole d'antenne en V relié au point $A$). Partie 1 : entre le point $A$ (en haut) et la masse (symbole de terre hachuré), une bobine $L$ (spires, barrée d'une flèche oblique = réglable) en parallèle avec un condensateur $C_1$. Entre les parties 1 et 2 : un bloc rectangulaire vertical portant la mention « Amplification ». Partie 2 : une diode $D$ (symbole triangle) en série sur le fil du haut, puis, entre le point $B$ (en haut) et le point $M$ (en bas, relié à la masse), un condensateur $C$ en parallèle avec un conducteur ohmique $R$. Partie 3 : un condensateur $C_2$ en série sur le fil du haut (vers le point $E$), puis un conducteur ohmique $R_2$ en dérivation vers le fil du bas ; les deux fils de sortie se terminent par des points de suspension. Légende : « Figure 6 ».
+    questions:
+      - id: q1
+        part: "3. Réception d'une onde modulée en amplitude"
+        stem: |-
+          **3.1.** (0,5 pt) Quel est le rôle de chacune des deux parties 1 et 3 de ce montage ?
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La question saute délibérément la Partie 2 (le détecteur de crête, diode + $RC$) pour ne demander que les rôles des Parties 1 et 3 — deux étages que la figure 6 place respectivement AVANT et APRÈS le détecteur. Il faut identifier, pour chacun, à quel maillon de la chaîne de réception (rungs R4 et R5 de la leçon) il correspond.
+
+          **Partie 1 : le circuit d'accord.** Une bobine $L$ réglable en parallèle avec un condensateur $C_1$ — exactement le circuit bouchon du rung 5. Son rôle est de SÉLECTIONNER, parmi toutes les porteuses captées simultanément par l'antenne (rung 5 : « l'antenne reçoit tout, en même temps »), celle dont la fréquence coïncide avec la fréquence propre $f_0=\dfrac{1}{2\pi\sqrt{LC_1}}$ du circuit — réglable en ajustant $L$.
+
+          **Partie 3 : éliminer la composante continue.** Un condensateur $C_2$ en série, suivi d'un conducteur ohmique $R_2$ en dérivation vers la masse. Le rung 4 le mentionne en une phrase, sans le détailler : une fois l'enveloppe $U_0+s_m(t)$ reconstituée par le détecteur de crête de la Partie 2, « il ne reste plus qu'à retirer la composante continue $U_0$ [...] pour obtenir $s_m(t)$ ». C'est précisément ce que fait un condensateur monté en série sur le fil de signal : il bloque toute composante constante (un condensateur en régime permanent ne laisse passer aucun courant continu) et ne transmet que la partie qui VARIE dans le temps — donc $s_m(t)$ seul, débarrassé de $U_0$. Le rôle de la Partie 3 est donc d'éliminer la composante continue $U_0$ et de ne transmettre que le signal informatif utile $s_m(t)$ vers la suite de la chaîne (amplification puis haut-parleur).
+
+          **Le piège de cette question.** Confondre le rôle de la Partie 1 avec celui de la Partie 2. Le circuit d'accord (Partie 1) ne fait AUCUNE démodulation : il sélectionne une porteuse entière, enveloppe comprise, sans y toucher. C'est la diode et le dipôle $RC$ de la Partie 2, seuls, qui extraient l'enveloppe. Deuxième piège, sur la Partie 3 : croire qu'un condensateur en série amplifie ou filtre activement les hautes fréquences — en réalité, c'est un simple blocage du continu, pas un composant actif.
+      - id: q2
+        stem: |-
+          **3.2.** (0,5 pt) Déterminer la valeur de l'inductance $L$ de la bobine qui permet de recevoir l'onde radio de fréquence $f_0$. (On prend $\pi^2 = 10$.)
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est l'exemple numérique du rung 5, mais résolu à l'envers : là, on fixait $L$ et on isolait $C$ pour accorder le circuit sur une porteuse donnée ; ici $C_1$ est fixée par construction et c'est $L$ qu'il faut régler pour que la fréquence propre coïncide avec $f_0$. Même condition d'accord, même geste d'isolement — seule l'inconnue change de place.
+
+          **La condition d'accord** (rung 5), avec la fréquence propre du circuit calée sur la porteuse voulue :
+
+          $$f_0 = \frac{1}{2\pi\sqrt{LC_1}} \implies 2\pi\sqrt{LC_1} = \frac{1}{f_0} \implies LC_1 = \frac{1}{4\pi^2 f_0^2} \implies \boxed{L = \frac{1}{4\pi^2 f_0^2 C_1}}$$
+
+          **L'application numérique**, chiffre par chiffre, avec $f_0=171\ \text{kHz}=1{,}71\times10^5\ \text{Hz}$, $C_1=85{,}4\ \text{pF}=8{,}54\times10^{-11}\ \text{F}$ et $\pi^2=10$ (imposé par l'énoncé) :
+
+          $$f_0^2 = (1{,}71\times10^5)^2 = 2{,}9241\times10^{10}\ \text{Hz}^2$$
+
+          $$4\pi^2 f_0^2 = 40\times2{,}9241\times10^{10} = 1{,}16964\times10^{12}$$
+
+          $$4\pi^2 f_0^2 C_1 = 1{,}16964\times10^{12}\times8{,}54\times10^{-11} \approx 99{,}89$$
+
+          $$\boxed{L = \frac{1}{99{,}89} \approx 1{,}00\times10^{-2}\ \text{H} = 10\ \text{mH}}$$
+
+          **Le contrôle qui rassure.** $10\ \text{mH}$ est un ordre de grandeur tout à fait réaliste pour la bobine d'un circuit d'accord dans la bande des grandes ondes (autour de $170$–$280\ \text{kHz}$) — c'est d'ailleurs la même famille que l'exemple du rung 5, qui accordait $300\ \mu\text{H}$ sur une porteuse dix fois plus élevée, $900\ \text{kHz}$ : une porteuse plus basse exige, à capacité comparable, une inductance plus grande — cohérent.
+
+          **Le piège de cette question.** Poser $\pi=10$ au lieu de $\pi^2=10$ : ça multiplie $4\pi^2$ par un facteur $10/4\approx2{,}5$ supplémentaire et fausse tout le résultat. Deuxième piège, sur les préfixes : $C_1$ est en PICOfarads ($10^{-12}$), pas en microfarads ; convertir $85{,}4\ \text{pF}$ en $85{,}4\times10^{-6}\ \text{F}$ par réflexe multiplierait $L$ par un facteur $10^6$ et donnerait une valeur absurde, à des kilomètres de l'ordre de grandeur attendu pour une bobine d'accord.
+        steps:
+          - math: 'f_0 = \frac{1}{2\pi\sqrt{LC_1}} \implies \boxed{L = \frac{1}{4\pi^2 f_0^2 C_1}}'
+            note: "Condition d'accord (rung 5), isolee pour L au lieu de C."
+          - math: 'f_0^2 = (1{,}71\times10^5)^2 = 2{,}9241\times10^{10}\ \text{Hz}^2'
+            note: "f0 = 171 kHz convertie en Hz avant d'etre elevee au carre."
+          - math: '4\pi^2 f_0^2 C_1 = 40\times2{,}9241\times10^{10}\times8{,}54\times10^{-11} \approx 99{,}89'
+            note: "Application numerique : pi^2 = 10 (impose par l'enonce), C1 = 85,4 pF = 8,54e-11 F."
+          - math: '\boxed{L = \frac{1}{99{,}89} \approx 1{,}00\times10^{-2}\ \text{H} = 10\ \text{mH}}'
+            note: "Valeur ronde, coherente avec l'ordre de grandeur d'un circuit d'accord grandes ondes."
 
   # ── bk-2023-n-x3 — 2023 N, Exercice 3 (§3) : repere en L, taux de modulation et spectre ──
   - id: bk-2023-n-x3

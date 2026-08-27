@@ -889,6 +889,187 @@ entries:
           - math: '\boxed{\Delta E = E_t(0) - E_t(9\ \text{ms}) \approx 2{,}1\times10^{-3}\ \text{J}}'
             note: "Energie dissipee par effet Joule dans r entre les deux instants ; tolerance de lecture graphique, ordre de grandeur 2 mJ."
 
+  # ── bk-2022-r-x3b — 2022 R, Exercice 3 (section 2) : equation amortie sans R
+  #    separe, C par la pseudoperiode ──
+  #
+  # NOTE ÉDITORIALE — FLAG DE JUMELAGE (bk-2022-r-x3b face à bk-2018-n-x3 et
+  # bk-2020-n-x4). Trois recoupements, pas des doublons :
+  #   — bk-2018-n-x3, q2a : même montage sans conducteur ohmique séparé (seule
+  #     la résistance propre r de la bobine dissipe) — la question 2.1
+  #     ci-dessous est la même situation physique, généralisée à un mot près
+  #     (r au lieu de R dans le rung 5), avec un jeu de valeurs différent ;
+  #   — bk-2020-n-x4, q1c : même geste de calcul pour la question 2.2
+  #     (« pseudopériode = période propre, en déduire une valeur du circuit »)
+  #     — mais là-bas c'est C qui était donné (dans l'énoncé de cette partie)
+  #     et L qui restait à ponter depuis une autre partie du même sujet ; ici
+  #     c'est l'inverse, L est donné directement dans CETTE section et c'est
+  #     C l'inconnue. Les deux exercices exercent la même formule dans les
+  #     deux sens.
+  # Proposition : garder les trois, chacune isolant une direction ou un cas
+  # différent du même squelette. À l'arbitrage de l'owner.
+  #
+  # NOTE ÉDITORIALE — INCOHÉRENCE DE CAPACITÉ, signalée telle quelle, NON
+  # réparée ici. Cet exercice réutilise la lettre « C » pour DEUX
+  # condensateurs entièrement différents et sans rapport : celui de cette
+  # section 2 (circuit RLC série, C = 250 µF, déterminé par la question 2.2
+  # ci-dessous) et celui de la section 3, Partie 2 (le condensateur de
+  # lissage du détecteur de crête, figure 6, également noté simplement « C »,
+  # de valeur non donnée et non demandée — transcrit sous
+  # content/pc/ondes-em-modulation/bank.yaml, bk-2022-r-x3c). Les deux
+  # composants vivent dans des circuits disjoints (aucune question, ici ou en
+  # section 3, ne mélange les deux valeurs) ; la source ne les distingue pas
+  # autrement que par leur position dans l'énoncé. Reproduit tel quel, sans
+  # renommer ni « réparer » la notation du sujet — signalé pour qu'on
+  # n'assemble pas par erreur ces deux entrées en pensant qu'elles partagent
+  # un composant.
+  # ORIGINE DE CETTE NOTE, rectifiée après coup (2026-08-23) — à lire avant de
+  # la citer. L'auteur de cette entrée a reçu une consigne annonçant « une
+  # incohérence de capacité signalée par le vérificateur » sur CET exercice.
+  # Il ne l'a pas trouvée, l'a dit, et a documenté à la place la seule
+  # incohérence réellement identifiable — la collision de notation ci-dessus.
+  # Il avait raison de ne rien deviner : LA CONSIGNE ÉTAIT FAUSSE. La phrase
+  # « Cf. l'incohérence de capacité signalée dans l'entrée de l'exercice 3 »
+  # appartient au classement du sujet 2023 RATTRAPAGE
+  # (docs/sujets/_incoming/pc-spc-2023-r.md, ligne 738), dont l'exercice 3 est
+  # lui aussi un composite électricité à trois sections ; elle a été reportée
+  # par erreur sur le sujet 2022. Le fichier pc-spc-2022-r.md ne contient
+  # AUCUNE occurrence du mot « incohérence » (grep vérifié : zéro), et les
+  # deux valeurs de capacité de cet exercice se recoupent proprement —
+  # C = 250 µF avec L = 1 H, et C1 = 85,4 pF avec f0 = 171 kHz — sans écart.
+  # La vraie incohérence de capacité vit dans les entrées bk-2023-r-x3* du
+  # corpus, où elle est déjà documentée. Rien à corriger ici ; la collision de
+  # notation ci-dessus reste, elle, une observation valide et vérifiable.
+  - id: bk-2022-r-x3b
+    title: "Oscillations libres dans un circuit RLC série : établir l'équation amortie sans conducteur ohmique séparé, et retrouver C par la pseudopériode"
+    source:
+      year: 2022
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — §2 : Oscillations libres dans un circuit RLC série"
+    bareme_total: 1.25
+    duration_min: 8
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/136624
+        (Exercice 3, section 2 — oscillations libres dans un circuit RLC
+        série ; barème de la section = 1,25 pt, recompté question par
+        question : 0,5+0,75 = 1,25, sur les 4,5 pt de l'exercice complet,
+        dont la section 1 — réponse d'un dipôle RL à un échelon de tension —
+        est transcrite sous content/pc/dipole-rl/bank.yaml en bk-2022-r-x3,
+        et la section 3 — réception d'une onde modulée en amplitude — sous
+        content/pc/ondes-em-modulation/bank.yaml en bk-2022-r-x3c ; les trois
+        sections partagent le montage de la figure 1/section 1 et sont
+        converties en entrées séparées, comme l'exige le vérificateur).
+        Transcription vérifiée par une passe adversariale indépendante
+        (2026-08-22, docs/sujets/_incoming/pc-spc-2022-r.md, statut
+        « vérifié ») : re-téléchargement indépendant des 8 pages du scan
+        (upload-84519, page 6 pour cette section) dans un répertoire isolé,
+        empreintes SHA-256 contrôlées, figure 5 re-mesurée au pixel (pas
+        principal en ordonnée corrigé à 1 mC, cadre vertical corrigé à ±3 mC,
+        pas principal en abscisse corrigé à 0,04 s, cadre horizontal corrigé
+        à 0,30 s — quatre corrections, toutes de la confusion trait noir /
+        trait bleu), physique re-dérivée. CONTRE-CALCUL REFAIT ICI, conforme
+        à la source : pseudopériode lue entre deux maxima consécutifs
+        ($t=0{,}100\ \text{s}$ à $t=0{,}196\ \text{s}$) $=0{,}096\ \text{s}$,
+        confirmée par deux lectures indépendantes entre minima consécutifs
+        ($0{,}098\ \text{s}$ chacune) — arrondi cohérent à $T\approx
+        0{,}10\ \text{s}$ ; avec $T_0=T$ (hypothèse imposée par l'énoncé),
+        $L=1\ \text{H}$ (donné dans cette section) et $\pi^2=10$ :
+        $C=T_0^2/(4\pi^2 L)=2{,}5\times10^{-4}\ \text{F}=250\ \mu\text{F}$ —
+        exactement la valeur de la note de vérification du sujet
+        (« pseudopériode 0,10 s ⇒ C = 250 µF »), sans divergence. $L=1\
+        \text{H}$ coïncide avec $L_1=2L_0$ de la question 1.6 de la section
+        1 (même bobine, réglée sur la même position) — cohérence de plus,
+        non requise par le calcul mais rassurante. FLAG DE JUMELAGE ET
+        INCOHÉRENCE DE CAPACITÉ : voir les deux notes éditoriales ci-dessus.
+    intro: |-
+      **Oscillations libres dans un circuit RLC série (examen national, session de rattrapage 2022 — Exercice 3, section 2, 1,25 point).**
+
+      *On se propose dans cet exercice d'étudier, sur un même montage : la réponse d'un dipôle RL à un échelon de tension (section 1, traitée à part sous la notion « Dipôle RL ») ; les oscillations libres dans un circuit RLC série (cette section) ; puis la réception d'une onde modulée en amplitude (section 3, traitée à part sous la notion « Ondes électromagnétiques — modulation d'amplitude »).*
+
+      On réalise le montage représenté sur le schéma de la figure 4. Ce montage comprend :
+      - un condensateur de capacité $C$ initialement chargé ;
+      - la bobine précédente — celle de la section 1, de résistance propre $r = 10\ \Omega$ — où l'inductance est ajustée à la valeur $L = 1\ \text{H}$ ;
+      - un interrupteur $K$.
+
+      La courbe de la figure 5 représente l'évolution de la charge $q(t)$ du condensateur.
+
+      **Figure 4 (schéma).** Petite boucle : en haut à gauche, l'interrupteur $K$ (deux plots, levier ouvert monté vers la droite, étiquette « $K$ » au-dessus à gauche) ; sur la branche de gauche, le condensateur (deux traits parallèles horizontaux), étiqueté « $C$ » à sa droite ; sur la branche de droite, la bobine en spires, étiquetée « $(L,r)$ » à sa gauche (entre le « $C$ » et les spires, à mi-hauteur). Contrairement à la figure 1 (section 1), la bobine n'est pas barrée de la flèche oblique de réglage. Légende : « Figure 4 ».
+
+      **Figure 5 (courbe).** Axe des ordonnées $q\ (\text{mC})$ chiffré $2,\ 1,\ 0,\ -1,\ -2$ (traits principaux noirs tous les $1\ \text{mC}$ — donc un trait noir par graduation chiffrée — et lignes bleues intercalées aux demi-mC $\pm0{,}5,\ \pm1{,}5,\ \pm2{,}5$ ; le cadre s'étend exactement de $-3$ à $+3\ \text{mC}$, les traits $\pm3$ étant les bords non chiffrés) ; axe des abscisses $t\ (\text{s})$ chiffré $0{,}04,\ 0{,}08,\ 0{,}12,\ 0{,}16,\ 0{,}2$ (traits principaux noirs tous les $0{,}04\ \text{s}$ — tous chiffrés jusqu'à $0{,}2$, ceux de $0{,}24$ et $0{,}28$ ne l'étant pas — et lignes bleues intercalées aux $0{,}02\ \text{s}$ impairs ; le bord gauche est $t = 0$ et le cadre va jusqu'à $0{,}30\ \text{s}$). Sinusoïde amortie : la courbe part de $q \approx +2{,}45\ \text{mC}$ à $t = 0$ et décroît ; zéro descendant vers $t \approx 0{,}027\ \text{s}$ ; minimum $\approx -2{,}0\ \text{mC}$ à $t \approx 0{,}050\ \text{s}$ ; maximum $\approx +1{,}47\ \text{mC}$ à $t \approx 0{,}10\ \text{s}$ ; minimum $\approx -1{,}18\ \text{mC}$ à $t \approx 0{,}148\ \text{s}$ ; maximum $\approx +0{,}92\ \text{mC}$ à $t \approx 0{,}196\ \text{s}$ ; minimum $\approx -0{,}71\ \text{mC}$ à $t \approx 0{,}246\ \text{s}$, puis remontée jusqu'à $q \approx +0{,}55\ \text{mC}$ au bord droit du cadre ($t \approx 0{,}30\ \text{s}$). La pseudopériode se lit $\approx 0{,}10\ \text{s}$, aussi bien d'un maximum au suivant ($0{,}10 \to 0{,}196\ \text{s}$) que d'un minimum au suivant ($0{,}050 \to 0{,}148 \to 0{,}246\ \text{s}$). Légende : « Figure 5 ».
+    questions:
+      - id: q1
+        part: "2. Oscillations libres dans un circuit RLC série : établir le modèle amorti"
+        stem: |-
+          **2.1.** (0,5 pt) Établir l'équation différentielle vérifiée par la charge $q(t)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le rung 5 établit l'équation différentielle du cas amorti pour un circuit RLC série avec un conducteur ohmique $R$ explicite : $Lq''+Rq'+q/C=0$. Ce montage-ci (figure 4) est différent sur un point précis : il n'y a AUCUN conducteur ohmique séparé — seuls le condensateur $C$ et la bobine $(L,r)$ ferment la boucle. La seule résistance du circuit est donc la résistance PROPRE $r$ de la bobine, celle-là même établie à la section précédente ($r=10\ \Omega$). Le geste du rung 5 reste identique ; seul le nom de la résistance change.
+
+          **La loi des mailles**, sur cette boucle sans générateur :
+
+          $$u_C + u_{bobine} = 0$$
+
+          **Chaque tension par son dipôle** — $u_C = q/C$ (rung 2), et $u_{bobine} = L\dfrac{d^2q}{dt^2} + r\dfrac{dq}{dt}$ (relation caractéristique de la bobine, ici avec $i=dq/dt$) :
+
+          $$\frac{q}{C} + L\frac{d^2q}{dt^2} + r\frac{dq}{dt} = 0$$
+
+          **On réordonne**, dans l'ordre standard d'une équation différentielle :
+
+          $$\boxed{L\frac{d^2q}{dt^2} + r\frac{dq}{dt} + \frac{q}{C} = 0}$$
+
+          **Le contrôle qui rassure.** Cette équation garde exactement la structure du rung 5 — un terme d'inertie ($Lq''$), un terme d'amortissement (ici $rq'$), un terme de rappel ($q/C$) — avec $r$ jouant le rôle que $R$ joue d'ordinaire. Rien d'étonnant : $r$ dissipe de l'énergie par effet Joule exactement comme le ferait un conducteur ohmique (rung 3, « R est le frein »), qu'elle soit isolée dans son propre composant ou logée à l'intérieur de la bobine.
+
+          **Le piège de cette question.** Écrire l'équation SANS terme d'amortissement, en croyant que « pas de $R$ dans l'énoncé » veut dire « pas de résistance du tout » — et retomber ainsi, à tort, sur l'équation idéale du rung 2. La figure 5 dément cette lecture sans ambiguïté : les amplitudes successives ($2{,}45$ puis $2{,}0$ puis $1{,}47\ \text{mC}$…) décroissent nettement, la signature même du régime pseudo-périodique (rung 4) — et un régime amorti exige un terme dissipatif dans l'équation, ici porté par $r$.
+        steps:
+          - math: 'u_C + u_{bobine} = 0 \qquad \text{avec} \qquad u_C = \frac{q}{C}, \quad u_{bobine} = L\frac{d^2q}{dt^2} + r\frac{dq}{dt}'
+            note: "Loi des mailles (rung 5) ; pas de conducteur ohmique separe dans ce montage, seule r (resistance propre de la bobine, section 1) dissipe."
+          - math: '\frac{q}{C} + L\frac{d^2q}{dt^2} + r\frac{dq}{dt} = 0'
+            note: "Substitution directe dans la loi des mailles."
+          - math: '\boxed{L\frac{d^2q}{dt^2} + r\frac{dq}{dt} + \frac{q}{C} = 0}'
+            note: "Forme standard du cas amorti (rung 5), avec r a la place de R."
+      - id: q2
+        stem: |-
+          **2.2.** (0,75 pt) Sachant que la pseudopériode est approximativement égale à la période propre $T_0$ des oscillations, déterminer la capacité $C$ du condensateur. (On prend $\pi^2 = 10$.)
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé donne ici l'approximation du rung 6 ($T\approx T_0$, valable pour un amortissement faible) comme une égalité à utiliser directement. Il faut donc, dans l'ordre : lire la pseudopériode $T$ sur la figure 5 (méthode du rung 6, deux maxima consécutifs), poser $T_0=T$, puis inverser la formule du rung 2, $T_0=2\pi\sqrt{LC}$, pour isoler $C$.
+
+          **La lecture de la pseudopériode.** Le rung 6 prescrit de repérer deux maxima consécutifs et de soustraire leurs abscisses. La figure 5 en donne deux : $t_1\approx0{,}10\ \text{s}$ et $t_2\approx0{,}196\ \text{s}$.
+
+          $$T = t_2 - t_1 = 0{,}196 - 0{,}100 = 0{,}096\ \text{s}$$
+
+          Le même écart, mesuré entre deux minima consécutifs ($0{,}050\to0{,}148\ \text{s}$, ou $0{,}148\to0{,}246\ \text{s}$), donne $0{,}098\ \text{s}$ dans les deux cas — trois lectures indépendantes, toutes proches de $0{,}10\ \text{s}$ à la précision de pointage près sur une sinusoïde amortie. On retient :
+
+          $$T \approx 0{,}10\ \text{s}$$
+
+          **On pose $T_0=T$**, comme l'énoncé le demande explicitement ici (l'égalité approchée du rung 6, prise comme une égalité de travail) :
+
+          $$T_0 \approx 0{,}10\ \text{s} = 1{,}0\times10^{-1}\ \text{s}$$
+
+          **On inverse $T_0=2\pi\sqrt{LC}$** (rung 2) pour isoler $C$, avec $L=1\ \text{H}$ (donné dans cette section) et $\pi^2=10$ (imposé par l'énoncé) :
+
+          $$T_0 = 2\pi\sqrt{LC} \implies T_0^2 = 4\pi^2 LC \implies C = \frac{T_0^2}{4\pi^2 L}$$
+
+          $$C = \frac{(1{,}0\times10^{-1})^2}{4\times10\times1} = \frac{1{,}0\times10^{-2}}{40}$$
+
+          $$\boxed{C = 2{,}5\times10^{-4}\ \text{F} = 250\ \mu\text{F}}$$
+
+          **Le contrôle qui rassure.** $L=1\ \text{H}$ est précisément la valeur $L_1=2L_0$ de la question 1.6 de la section précédente — cette coïncidence n'est pas un hasard : c'est la même bobine, réglée sur la même position. Et $250\ \mu\text{F}$ redonne exactement, en sens inverse, $T_0=2\pi\sqrt{1\times2{,}5\times10^{-4}}=2\pi\times1{,}58\times10^{-2}\approx0{,}0993\ \text{s}\approx0{,}10\ \text{s}$ — cohérent avec la lecture graphique.
+
+          **Le piège de cette question.** Utiliser $r=10\ \Omega$ (établi à la section précédente) dans ce calcul. Il n'a AUCUN rôle ici : $T_0=2\pi\sqrt{LC}$ ne dépend que de $L$ et $C$ (rung 2 — « R n'apparaît nulle part » dans la période propre, et $r$ y joue exactement le même rôle que $R$). Le faire intervenir ne fait que compliquer un calcul qui n'en a pas besoin. Deuxième piège, plus classique : mélanger $\pi^2=10$ et la vraie valeur $\pi^2\approx9{,}87$ dans le même calcul — l'énoncé impose $\pi^2=10$ pour TOUT le calcul, pas seulement pour une étape.
+        steps:
+          - math: 'T = t_2 - t_1 = 0{,}196 - 0{,}100 = 0{,}096\ \text{s} \approx 0{,}10\ \text{s}'
+            note: "Pseudoperiode lue entre deux maxima consecutifs (rung 6) ; confirmee par deux lectures independantes entre minima (0,098 s chacune)."
+          - math: 'T_0 \approx T \approx 0{,}10\ \text{s}'
+            note: "Approximation imposee par l'enonce (rung 6)."
+          - math: 'T_0 = 2\pi\sqrt{LC} \implies C = \frac{T_0^2}{4\pi^2 L}'
+            note: "On isole C (rung 2)."
+          - math: 'C = \frac{(0{,}10)^2}{4\times10\times1} = \frac{0{,}01}{40}'
+            note: "Application numerique : T0 = 0,10 s, L = 1 H (donne dans cette section), pi^2 = 10 (impose par l'enonce)."
+          - math: '\boxed{C = 2{,}5\times10^{-4}\ \text{F} = 250\ \mu\text{F}}'
+            note: "Valeur ronde, coherente avec le controle T0 recalcule."
+
   # ── bk-2023-n-x3 — 2023 N, Exercice 3 §2 : circuit LC ideal, repere d'echelle en coin ──
   - id: bk-2023-n-x3
     title: "Circuit oscillant LC : équation différentielle, lire un repère d'échelle en coin, capacité et énergie magnétique"

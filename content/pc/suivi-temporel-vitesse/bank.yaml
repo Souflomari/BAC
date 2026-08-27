@@ -41,15 +41,31 @@
 # bk-2019-n-x3. À l'arbitrage de l'owner si l'on préfère écarter cette entrée
 # de la banque pour éviter le recoupement sur la même page.
 #
-# SCOPE NOTE : aucune. Les deux entrées mobilisent exactement les méthodes
-# couvertes explicitement par la leçon — tableau d'avancement et réactif
-# limitant (R2), lien entre une grandeur physique mesurée et x via une
-# relation donnée puis dérivation (R1 pour le principe du substitut
-# monotone, R2 pour v = (1/V)(dx/dt), extension algébrique naturelle du même
-# principe pour bk-2021-n-x1 q4/q5), lecture de tangente et de palier (R3),
-# définition et lecture graphique de t_{1/2} (R4), facteurs cinétiques et
-# chocs efficaces (R3, R4). Aucun outil non couvert par la leçon n'est
-# mobilisé ; aucun pont de portée n'a donc été nécessaire.
+# SCOPE NOTE (pour les deux premières entrées) : aucune. Elles mobilisent
+# exactement les méthodes couvertes explicitement par la leçon — tableau
+# d'avancement et réactif limitant (R2), lien entre une grandeur physique
+# mesurée et x via une relation donnée puis dérivation (R1 pour le principe
+# du substitut monotone, R2 pour v = (1/V)(dx/dt), extension algébrique
+# naturelle du même principe pour bk-2021-n-x1 q4/q5), lecture de tangente et
+# de palier (R3), définition et lecture graphique de t_{1/2} (R4), facteurs
+# cinétiques et chocs efficaces (R3, R4). Aucun outil non couvert par la
+# leçon n'est mobilisé ; aucun pont de portée n'a donc été nécessaire.
+#
+# Le 2025 R (bk-2025-r-x1c, ajouté le 2026-08-27) est la TROISIÈME entrée de
+# cette banque — première de session rattrapage. C'est le §3 de l'exercice 1
+# de l'examen 2025 R (cinétique de l'hydrolyse basique — saponification — de
+# l'éthanoate d'éthyle : équation, vrai/faux justifié sur la vitesse
+# volumique, temps de demi-réaction et vitesse volumique lus sur $x(t)$ ;
+# 2,25 pt) ; ses deux autres sous-parties, indépendantes, vivent sous
+# content/pc/reactions-acido-basiques (bk-2025-r-x1) et
+# content/pc/esterification-hydrolyse (bk-2025-r-x1b). Elle porte un
+# CROSS-LIST CLASSEMENT (le contexte d'hydrolyse BASIQUE nomme et renvoie à
+# la notion « Estérification et hydrolyse ») et une SCOPE NOTE (ni cette
+# leçon ni « Estérification et hydrolyse » n'enseignent nommément la variante
+# basique, totale, de l'hydrolyse — reconstruite au point d'usage) ainsi
+# qu'un FLAG DE JUMELAGE avec bk-2021-n-x1 (même réaction chimique, réactif
+# limitant inversé) : voir le commentaire au-dessus de l'entrée pour le
+# détail des trois.
 
 notion: pc/suivi-temporel-vitesse
 
@@ -262,3 +278,181 @@ entries:
             note: "Definition de la vitesse volumique (rung 2) ; V = 0,200 L, deja dans l'unite demandee."
           - math: '\boxed{v(t_1) \approx 1{,}3\times10^{-2}\ \text{mmol.L}^{-1}.\text{h}^{-1}}'
             note: "Vitesse volumique de la reaction a t1 = 60 h."
+
+  # ── bk-2025-r-x1c — 2025 R, Exercice 1 (§3) : cinetique de l'hydrolyse basique (saponification) de l'ethanoate d'ethyle ──
+  # Ses deux autres sous-parties, independantes, vivent ailleurs : le §1
+  # (solution d'acide ethanoique) sous content/pc/reactions-acido-basiques,
+  # entree bk-2025-r-x1 ; le §2 (esterification, dosage de l'acide restant,
+  # rendement) sous content/pc/esterification-hydrolyse, entree bk-2025-r-x1b.
+  #
+  # CROSS-LIST CLASSEMENT (honore, PAS duplique en entree separee) : cette
+  # sous-partie se deroule dans un contexte d'HYDROLYSE BASIQUE d'un ester
+  # (saponification), qui est un geste nomme de la notion « Esterification et
+  # hydrolyse » (rungs R1-R2), meme si cette lecon-ci (suivi-temporel-vitesse)
+  # est la notion dominante pour x(t), t_1/2 et la vitesse volumique. Le
+  # domaine est nomme et la lecon renvoyee par son nom lisible dans le
+  # raisonnement de la question 3-1.
+  #
+  # SCOPE NOTE (trou signale, pas corrige silencieusement) : NI cette lecon
+  # NI « Esterification et hydrolyse » n'enseignent nommement la variante
+  # BASIQUE de l'hydrolyse (reaction TOTALE, avec HO- qui neutralise l'acide
+  # forme au fur et a mesure). Le rung R2 de « Esterification et hydrolyse »
+  # n'ecrit que l'hydrolyse NEUTRE, reversible, avec l'eau seule
+  # (R-COO-R' + H2O <=> R-COOH + R'-OH). Le raisonnement de la question 3-1
+  # reconstruit la variante basique au point d'usage, en combinant le rung R2
+  # (l'hydrolyse est la reaction inverse de l'esterification du rung R1) et
+  # le PRINCIPE de deplacement d'equilibre par elimination d'un produit du
+  # rung R5 (applique ici en sens inverse : HO- neutralise l'acide carboxylique
+  # forme aussitot qu'il apparait, ce qui retire en permanence un produit de
+  # l'equilibre d'hydrolyse et le tire jusqu'a completion) — pas un outil
+  # invente, une synthese des rungs deja etablis. Signale pour
+  # l'orchestrateur / pedagogy-architect : un futur rung pourrait nommer
+  # explicitement cette variante.
+  #
+  # FLAG DE JUMELAGE avec bk-2021-n-x1 (deja dans cette banque) : MEME
+  # REACTION CHIMIQUE (ethanoate d'ethyle + HO- -> acetate + ethanol), meme
+  # paire de competences (t_1/2, vitesse volumique par tangente). Ce qui
+  # distingue les deux, et justifie de garder les deux :
+  #   (a) LA METHODE DE MESURE. bk-2021-n-x1 suit la reaction par
+  #       CONDUCTIMETRIE : x(t) n'est jamais donne directement, il faut
+  #       d'abord inverser la relation sigma = f(x) fournie (rung 1, principe
+  #       du substitut monotone) avant de deriver. Ici, x(t) est donne
+  #       DIRECTEMENT sur la courbe : aucune inversion, une lecture de
+  #       tangente immediate.
+  #   (b) LE REACTIF LIMITANT EST INVERSE. Dans bk-2021-n-x1, l'ester est
+  #       introduit EN EXCES et HO- est limitant (x_max = n0(HO-) = 1,0 mmol).
+  #       Ici, c'est l'INVERSE : l'ester est limitant (n01 = 0,8 mmol < 1,0
+  #       mmol de HO-), x_max = n01 = 0,8 mmol. Cas discriminant pour l'eleve
+  #       qui aurait automatise « HO- est toujours limitant en saponification ».
+  #   (c) UNE QUESTION ABSENTE DE bk-2021-n-x1 : le vrai/faux justifie sur la
+  #       decroissance de v(t) au cours du temps (question 3-2, rung 3),
+  #       competence testee ici et nulle part ailleurs dans cette banque.
+  # Recommandation : garder les deux. Arbitrage owner.
+  - id: bk-2025-r-x1c
+    title: "Cinétique de l'hydrolyse basique (saponification) de l'éthanoate d'éthyle : x(t), temps de demi-réaction et vitesse volumique lus sur la courbe"
+    source:
+      year: 2025
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — §3 : étude d'une hydrolyse basique d'un ester"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS28F, AlloSchool
+        https://www.alloschool.com/element/145799, scan
+        course-422/upload-87492/0002-big.jpg et 0003-big.jpg, pages 2 et 3
+        sur 6 (Exercice 1 — §3, étude d'une hydrolyse basique d'un ester :
+        équation, vrai/faux justifié sur la vitesse volumique, temps de
+        demi-réaction lu sur $x(t)$, vitesse volumique par tangente
+        convertie en $\text{mmol.L}^{-1}.\text{min}^{-1}$). Barème du §3
+        recompté sur l'énoncé source : 0,5 (3-1) + 0,5 (3-2) + 0,5 (3-3) +
+        0,75 (3-4) = 2,25 pt, sur les 7 pt de l'exercice complet, dont le §1
+        — solution d'acide éthanoïque, 2,75 pt — est transcrit sous
+        content/pc/reactions-acido-basiques, entrée bk-2025-r-x1, et le §2 —
+        estérification et dosage de l'acide restant, 2,0 pt — sous
+        content/pc/esterification-hydrolyse, entrée bk-2025-r-x1b ; la somme
+        des trois, 2,75+2,0+2,25 = 7,0 pt, coïncide avec le recompte en
+        marge du fichier source. Source :
+        docs/sujets/_incoming/pc-spc-2025-r.md, statut « vérifié — re-fetch
+        indépendant + re-dérivation (vérificateur adversarial, 2026-08-23) ».
+        La description de la figure 2 (courbe $x(t)$) est reprise ici AU MOT
+        PRÈS de la version corrigée par le vérificateur. Contre-calcul
+        refait ici, indépendamment de la re-dérivation du vérificateur (qui
+        donne déjà $t_{1/2}=4{,}0\ \text{min}$ et
+        $v(3\ \text{min})=1{,}6\ \text{mmol.L}^{-1}.\text{min}^{-1}$, et que
+        ce contre-calcul confirme) : réactif limitant l'ester
+        ($n_{01}=0{,}8\ \text{mmol} < n_0(HO^-)=1{,}0\ \text{mmol}$), donc
+        $x_{max}=0{,}8\ \text{mmol}$ et $x(t_{1/2})=0{,}4\ \text{mmol}$, lu à
+        $t=4{,}0\ \text{min}$ ; pente de $(T)$ en $t=3\ \text{min}$ :
+        $(0{,}32-0{,}08)/3 = 0{,}08\ \text{mmol.min}^{-1}$ ; $v =
+        0{,}08/0{,}050 = 1{,}6\ \text{mmol.L}^{-1}.\text{min}^{-1}$.
+        CROSS-LIST et SCOPE NOTE : voir le commentaire au-dessus de cette
+        entrée (contexte d'hydrolyse basique, domaine « Estérification et
+        hydrolyse » nommé mais non dupliqué en entrée ; variante basique de
+        l'hydrolyse reconstruite au point d'usage, absente de tout rung).
+        FLAG DE JUMELAGE avec bk-2021-n-x1 : voir le commentaire au-dessus
+        de l'entrée.
+    intro: |-
+      **Étude d'une hydrolyse basique d'un ester (examen national, session de rattrapage 2025 — Exercice 1, §3, 2,25 points).**
+
+      *Cet exercice de 7 points étudie aussi, dans ses deux autres sous-parties : une solution aqueuse d'acide éthanoïque (§1, sous la notion « Réactions acido-basiques ») ; une réaction d'estérification (§2, sous la notion « Estérification et hydrolyse »).*
+
+      On étudie la cinétique chimique de la réaction d'hydrolyse basique (saponification) de l'éthanoate d'éthyle. À un instant choisi comme origine des dates $(t=0)$, on introduit $n_{01} = 0{,}8\ \text{mmol}$ d'éthanoate d'éthyle dans un bécher contenant une solution d'hydroxyde de sodium où $n_0(HO^-_{(aq)}) = 1{,}0\ \text{mmol}$. On obtient ainsi un volume $V = 50\ \text{mL}$ du mélange réactionnel. La réaction est totale et se produit à une température $\theta$.
+
+      La courbe de la figure 2 représente l'évolution temporelle de l'avancement $x$ de la réaction de saponification étudiée. La droite $(T)$ représente la tangente à la courbe au point d'abscisse $t = 3\ \text{min}$.
+
+      **Figure 2 (courbe, re-décrite depuis l'image, mesurée au pixel).** $x\ (\text{mmol})$ en fonction de $t\ (\text{min})$, sur quadrillage à double maille (grands carreaux découpés en $5\times5$). **Abscisse** : grand carreau $=1\ \text{min}$ (petit carreau $=0{,}2\ \text{min}$), traits principaux chiffrés $1$ et $2$ seulement ; le cadre compte **8 grands carreaux**, soit $t$ de $0$ à $\mathbf{8\ \text{min}}$. **Ordonnée** : grand carreau $=0{,}10\ \text{mmol}$ (petit carreau $=0{,}02\ \text{mmol}$), traits principaux chiffrés $0{,}10$ et $0{,}20$ seulement ; le cadre compte **6 grands carreaux**, soit $x$ de $0$ à $\mathbf{0{,}60\ \text{mmol}}$.
+
+      Deux tracés :
+      - la **courbe** $x(t)$, partant exactement de l'origine, croissante et concave (pente décroissante), qui atteint le **coin supérieur droit** du cadre ($t = 8\ \text{min}$, $x = 0{,}60\ \text{mmol}$) sans palier visible ;
+      - la **droite $(T)$**, tangente à la courbe au point d'abscisse $t = 3\ \text{min}$, point de contact marqué d'une **croix** ×. Lectures fermes : la croix est à $(3\ \text{min}\,;\,0{,}32\ \text{mmol})$ et $(T)$ coupe l'axe des ordonnées à $x = 0{,}08\ \text{mmol}$ (4 petits carreaux), d'où une pente $\dfrac{0{,}32-0{,}08}{3} = 0{,}08\ \text{mmol.min}^{-1}$ ; $(T)$ sort du cadre par le haut vers $t \simeq 6{,}5\ \text{min}$, ce qui recoupe la même pente.
+
+      Légende : « Figure 2 ».
+    questions:
+      - id: q1
+        stem: |-
+          **3-1. (0,5 pt)** Écrire, en utilisant les formules semi-développées, l'équation de la réaction associée à l'hydrolyse basique de l'éthanoate d'éthyle.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'hydrolyse d'un ester est la réaction **inverse** de l'estérification (rung R2 de la notion **Estérification et hydrolyse**) : $R-COO-R' + H_2O \rightleftharpoons R-COOH + R'-OH$. Ici, la réaction se produit en présence d'ions hydroxyde $HO^-$ — c'est une **hydrolyse basique**, une variante que ni cette leçon-ci (« Suivi temporel d'une transformation ») ni « Estérification et hydrolyse » ne construisent nommément (SCOPE NOTE, voir le commentaire en tête de cette entrée). On la reconstruit à partir de ce que ces deux leçons établissent séparément.
+
+          L'éthanoate d'éthyle, $CH_3-COO-CH_2-CH_3$, est l'ester (le seul réactif portant le groupe $-COO-$ entre deux chaînes carbonées, rung R1) : son hydrolyse donnerait, en milieu neutre, l'acide éthanoïque et l'éthanol (rung R2). Mais ici, l'ion $HO^-$, base **forte**, neutralise l'acide carboxylique dès qu'il se forme — il le retire donc en permanence de l'équilibre d'hydrolyse, exactement le principe de déplacement d'équilibre par élimination d'un produit établi au rung R5 (là-bas, appliqué à retirer l'eau ou l'ester pour pousser l'**estérification** ; ici, c'est l'acide qui est retiré, ce qui pousse l'**hydrolyse**, la réaction inverse). L'équilibre est ainsi tiré jusqu'à sa fin : la réaction devient **totale**, flèche simple — cohérence avec l'énoncé, qui la donne explicitement comme telle.
+
+          $$\boxed{CH_3-COO-CH_2-CH_3 + HO^-_{(aq)} \longrightarrow CH_3-COO^-_{(aq)} + CH_3-CH_2-OH}$$
+
+          **Le piège nommé de cette question.** N'écris pas l'acide éthanoïque neutre $CH_3-COOH$ comme produit : en présence de la base forte $HO^-$, il est instantanément neutralisé en sa base conjuguée $CH_3-COO^-$ (l'ion acétate) — c'est précisément ce qui rend la réaction totale plutôt que limitée, et c'est ce produit-là, l'ion carboxylate, qu'il faut écrire.
+      - id: q2
+        stem: |-
+          **3-2. (0,5 pt)** Répondre par vrai ou faux, en justifiant, à l'affirmation suivante : « La vitesse volumique $v(t)$ de cette réaction diminue au cours du temps ».
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est exactement l'affirmation du rung 3 de cette leçon : $v(t)$ est maximale au tout début de la réaction et décroît continûment ensuite, en tendant vers zéro à mesure que la réaction s'achève.
+
+          $$\boxed{\text{VRAI}}$$
+
+          **La justification.** La vitesse volumique dépend directement de la fréquence des chocs efficaces entre entités réactives (rung 3) : plus il y a de réactifs par unité de volume, plus ils se croisent souvent. Or les quantités de réactifs restants — l'éthanoate d'éthyle et l'ion hydroxyde — diminuent continûment à mesure que l'avancement $x$ augmente (tableau d'avancement, rung 2) : moins de réactifs, c'est moins de chocs efficaces par seconde, donc une vitesse plus faible. C'est visible directement sur la courbe $x(t)$ de la figure 2 : elle est concave, sa pente — donc $v(t)$ — diminue sans cesse depuis l'origine.
+
+          **Le piège nommé de cette question.** Ne confonds pas cette décroissance de $v(t)$ avec une réaction qui « ralentit puis s'arrête à un instant précis » : $v(t)$ tend vers $0$ mais l'avancement, lui, continue de croître (de plus en plus lentement) jusqu'à $x_{max}$ — ce sont deux affirmations différentes, et seule celle sur $v(t)$ est posée ici.
+      - id: q3
+        stem: |-
+          **3-3. (0,5 pt)** Déterminer graphiquement $t_{1/2}$ le temps de demi-réaction.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La méthode du rung 4 : repérer $x_{max}$, calculer sa moitié, lire sur la courbe l'abscisse où cette moitié est atteinte — $t_{1/2}$ se lit toujours à $x_f/2$, **jamais** à la moitié de la durée totale représentée sur le graphe (un piège d'autant plus tentant ici que le cadre s'arrête pile à $t=8\ \text{min}$, dont la moitié, $4\ \text{min}$, coïncide numériquement avec la bonne réponse — par coïncidence de ce cadre précis, pas par définition).
+
+          **Trouver $x_{max}$ : quel réactif est limitant ?** $n_{01}(\text{ester}) = 0{,}8\ \text{mmol}$ contre $n_0(HO^-) = 1{,}0\ \text{mmol}$ : c'est l'éthanoate d'éthyle qui est en défaut. La réaction étant totale (énoncé), l'ester limitant est intégralement consommé à l'avancement final :
+
+          $$\boxed{x_{max} = n_{01} = 0{,}8\ \text{mmol}}$$
+
+          **La condition sur $x$, puis la lecture.**
+
+          $$x(t_{1/2}) = \frac{x_{max}}{2} = \frac{0{,}8}{2} = 0{,}40\ \text{mmol}$$
+
+          Sur la figure 2, la courbe passe par $x = 0{,}40\ \text{mmol}$ (le 4ᵉ trait principal horizontal) exactement à l'aplomb du 4ᵉ trait principal vertical.
+
+          $$\boxed{t_{1/2} = 4{,}0\ \text{min}}$$
+
+          **Le piège nommé de cette question.** Ne va pas chercher $x_{max}$ du côté de $HO^-$ ($1{,}0\ \text{mmol}$) : $HO^-$ est le réactif **en excès** ici (à la différence d'un autre sujet de cette même banque, où c'était l'inverse — vérifie toujours lequel des deux réactifs s'épuise le premier avant de fixer $x_{max}$). Et ne lis pas $t_{1/2}$ à $t=4\ \text{min}$ « parce que c'est la moitié du cadre » : c'est la définition $x(t_{1/2})=x_{max}/2$ qui commande la lecture, le fait qu'elle tombe au milieu du cadre est une coïncidence de cette figure précise.
+      - id: q4
+        stem: |-
+          **3-4. (0,75 pt)** Déterminer, en unité $\text{mmol.L}^{-1}.\text{min}^{-1}$, la vitesse volumique de la réaction à l'instant $t = 3\ \text{min}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $v(t) = \dfrac{1}{V}\dfrac{dx}{dt}$ (rung 2), et $\dfrac{dx}{dt}$ à $t=3\ \text{min}$ est la pente de la tangente $(T)$ tracée en ce point (rung 3) : on lit deux points de cette droite plutôt que d'estimer sa pente à l'œil.
+
+          **La pente de $(T)$, à partir des deux points donnés.** Le point de contact (croix ×) est à $(3\ \text{min}\,;\,0{,}32\ \text{mmol})$, et $(T)$ coupe l'axe des ordonnées à $(0\,;\,0{,}08\ \text{mmol})$ :
+
+          $$\left.\frac{dx}{dt}\right|_{t=3} = \frac{0{,}32-0{,}08}{3-0}$$
+
+          $$\boxed{\left.\frac{dx}{dt}\right|_{t=3} = 0{,}08\ \text{mmol.min}^{-1}}$$
+
+          **La conversion du volume, imposée par l'unité demandée.** L'énoncé veut $v$ en $\text{mmol.L}^{-1}.\text{min}^{-1}$ : $x$ est déjà en mmol et $t$ déjà en min, mais $V$ est donné en mL — il faut le convertir en litres avant de diviser, sinon l'unité annoncée ne serait pas la bonne.
+
+          $$V = 50\ \text{mL} = 50\times10^{-3}\ \text{L} = 0{,}050\ \text{L}$$
+
+          **Le calcul final.**
+
+          $$v(3\ \text{min}) = \frac{1}{V}\left.\frac{dx}{dt}\right|_{t=3} = \frac{0{,}08}{0{,}050}$$
+
+          $$\boxed{v(3\ \text{min}) \approx 1{,}6\ \text{mmol.L}^{-1}.\text{min}^{-1}}$$
+
+          **Le piège nommé de cette question.** Diviser $0{,}08\ \text{mmol.min}^{-1}$ par $V=50$ (en oubliant la conversion en litres) donnerait un résultat mille fois trop grand, dans la mauvaise unité — alors que l'énoncé demande explicitement des $\text{mmol.L}^{-1}.\text{min}^{-1}$. La conversion $\text{mL}\to\text{L}$ n'est pas optionnelle ici, elle est **imposée par l'énoncé** — contrairement à d'autres sujets de cette même banque où $V$ est déjà donné en litres et où aucune conversion n'est nécessaire.
