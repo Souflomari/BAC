@@ -212,6 +212,48 @@ Le régime permanent est pratiquement atteint à $t \approx 5\tau = 25\ \text{ms
 
 Vérifie ta compréhension de la constante de temps.
 
+### Une troisième lecture : la droite $\dfrac{di}{dt} = f(i)$
+
+Les deux méthodes précédentes lisent le temps en abscisse. Un sujet peut te donner une courbe d'un autre genre : la **dérivée** $\dfrac{di}{dt}$ portée en fonction de $i$, sans aucun axe de temps. La bonne réaction n'est pas de chercher $\tau$ à l'œil, c'est de relire l'équation différentielle de R2, qui donne la réponse d'avance.
+
+Reprends-la et isole la dérivée :
+
+$$L\,\frac{di}{dt} + (R+r)\,i = E
+\qquad\Longrightarrow\qquad
+\frac{di}{dt} = \frac{E}{L} - \frac{R+r}{L}\,i$$
+
+C'est une **fonction affine** de $i$. Si l'on porte $\dfrac{di}{dt}$ en ordonnée et $i$ en abscisse, on obtient donc une **droite**, dont les trois éléments remarquables se lisent directement :
+
+- son **ordonnée à l'origine** (en $i = 0$, c'est-à-dire à l'instant de la fermeture) vaut $\dfrac{E}{L}$ — elle donne **$L$** si $E$ est connue ;
+- sa **pente** vaut $-\dfrac{R+r}{L}$ — négative, et c'est la signature du phénomène : plus le courant monte, plus il monte lentement. Elle donne **$R+r$** une fois $L$ connue, ou directement $-\dfrac{1}{\tau}$ ;
+- son **intersection avec l'axe des abscisses**, là où $\dfrac{di}{dt} = 0$, donne $i = \dfrac{E}{R+r} = I_{max}$ — le régime permanent, celui où plus rien ne varie.
+
+Deux lectures suffisent donc à identifier complètement le circuit. Et note ce que cette méthode a de mieux que les deux autres : elle donne $L$ et $R+r$ **séparément**, là où les 63 % et la tangente ne donnent que leur quotient $\tau = L/(R+r)$.
+
+*Le piège nommé de cette lecture :* prendre la pente pour $\tau$ au lieu de $-\dfrac{1}{\tau}$, ou en perdre le signe. Le contrôle qui tranche : une pente **positive** décrirait un courant qui s'établit de plus en plus vite à mesure qu'il monte — l'inverse exact du mécanisme d'inertie électrique de R1.
+
+### La rupture du courant : ce qui se passe quand on OUVRE l'interrupteur
+
+Tout ce qui précède décrit l'**établissement** : on ferme l'interrupteur, le courant monte. Un sujet demande aussi, très souvent, ce qui se passe à la **rupture** — quand on rouvre. C'est le même mécanisme, pris par l'autre bout, et il produit un phénomène spectaculaire qu'il faut savoir expliquer.
+
+**Le fait de départ, c'est celui de R1.** Une bobine s'oppose aux **variations** du courant qui la traverse. À la fermeture, elle freinait la montée ; à l'ouverture, elle s'oppose à la chute — et cette fois elle a de quoi le faire, puisqu'elle a stocké de l'énergie $E_L = \frac{1}{2}Li^2$ (rung 4 ci-après).
+
+**Le problème que cela pose.** Si l'on ouvrait brutalement le circuit, le courant devrait passer de $I_{max}$ à $0$ en un temps quasi nul. La tension aux bornes de la bobine, $u = L\dfrac{di}{dt}$, deviendrait alors **énorme** en valeur absolue — c'est l'étincelle qu'on voit jaillir à l'interrupteur, et c'est ce qui détruit les composants d'un montage réel.
+
+**La solution du montage : une voie de secours.** On place donc, en parallèle sur la bobine, un chemin par lequel le courant pourra continuer à circuler pendant qu'il décroît — le plus souvent une **diode dite « de roue libre »**, montée en sens bloquant tant que le générateur alimente, et qui devient passante dès l'ouverture. Parfois c'est simplement un second conducteur ohmique. Le courant ne s'annule alors pas d'un coup : il décroît, dans cette maille de secours, avec sa propre constante de temps.
+
+**Ce qu'il faut savoir écrire.** Dans la maille de rupture, il n'y a plus de générateur. La loi des mailles y donne une équation **sans second membre** :
+
+$$L\,\frac{di}{dt} + R'\,i = 0$$
+
+où $R'$ est la résistance totale de la maille de secours (la résistance $r$ de la bobine, plus tout ce qui est sur le chemin). La solution est une décroissance exponentielle,
+
+$$i(t) = I_{max}\,e^{-t/\tau'} \qquad\text{avec}\qquad \tau' = \frac{L}{R'}$$
+
+partant de $I_{max}$ — car **le courant dans la bobine est continu** : sa valeur juste après l'ouverture est exactement celle qu'il avait juste avant. C'est le point qui décide de tout, et c'est encore R1.
+
+*Le piège nommé :* écrire $i(0^+) = 0$ « puisqu'on a ouvert l'interrupteur ». Non — c'est le courant dans la **branche du générateur** qui s'annule ; celui de la bobine, lui, ne peut pas sauter, et il vaut encore $I_{max}$ à cet instant. Second piège : réutiliser $\tau = L/(R+r)$ de l'établissement. La maille de rupture n'a pas la même résistance totale que celle de l'établissement, donc pas la même constante de temps.
+
 [[checkpoint:cp-r3-tau]]
 
 ---
