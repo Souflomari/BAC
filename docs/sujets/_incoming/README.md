@@ -171,6 +171,51 @@ exercice 1 OU exercice 2 — à contrôler avant toute transcription).
 
 ---
 
+## ⚠️ RÈGLE DE VÉRIFICATION AJOUTÉE LE 2026-08-27 — la lecture visuelle seule ne suffit pas
+
+**C'est la trouvaille la plus importante de la campagne SM, et c'est un
+vérificateur qui l'a faite sur lui-même.**
+
+En vérifiant SM 2025 normale, il a demandé `element/145783` à AlloSchool et
+reçu, depuis le cache CDN, le sujet **SM 2022 normale** — titre « 2022
+Normale », PDF `…-2022-normale-sujet.pdf`, images `upload-84506`. L'incident a
+touché les images elles-mêmes : `upload-87482/0001–0003` ont été servies avec
+le **contenu 2022**, `0004–0006` avec le bon.
+
+**Et sa première lecture visuelle a « retrouvé » l'énoncé 2025 attendu sur ces
+pages 2022.** Il a confirmé, à tort, trois des points fragiles à partir de
+pages qui ne les contenaient pas. Ce n'est pas de la négligence : c'est le
+biais de confirmation dans son expression la plus pure — **une lecture
+visuelle, la transcription sous les yeux, confirme ce qu'elle s'attend à
+voir**. Seul un instrument non visuel a cassé l'illusion : un passage à l'OCR,
+qui a rendu un exercice en $\ln(1+x)$ truffé de mojibake là où le lecteur
+croyait lire du $e^x/(e^{2x}+e)$.
+
+C'est exactement le mode d'échec « un fichier entier décrivait un autre
+sujet » déjà au registre du projet — celui qui avait coûté la réécriture
+complète de `pc-spc-2024-r.md`. **Il se déclenche sans que personne fasse
+d'erreur.**
+
+### Ce qu'une passe de vérification doit faire, désormais
+
+1. **Contrôler l'année imprimée sur CHAQUE page**, pas seulement sur la
+   première. Le cartouche d'en-tête la porte à chaque fois. Un jeu de pages
+   panaché — trois d'une année, trois d'une autre — ne se voit pas autrement.
+2. **Recouper par un instrument non visuel.** OCR (`tesseract`), extraction de
+   texte, ou re-dérivation numérique d'une identité de l'énoncé : n'importe
+   quoi qui ne passe pas par l'attente du lecteur. C'est ce qui a sauvé cette
+   passe.
+3. **Consigner les MD5** des fichiers réellement lus, et re-télécharger une
+   seconde fois pour vérifier la stabilité de ce que sert le CDN.
+4. **Contrôler le `<title>` et l'URL du PDF** servis par la page `element/`,
+   pas seulement les chemins d'images.
+
+Un « vérifié » obtenu par lecture visuelle seule, transcription sous les yeux,
+n'est pas un « vérifié ». Il faut au moins un contrôle qui ignore ce que le
+lecteur espère trouver.
+
+---
+
 ## Trois pièges de procédure payés le 2026-08-27, à ne pas repayer
 
 Ces trois-là n'ont rien à voir avec les mathématiques ou la physique. Ils
