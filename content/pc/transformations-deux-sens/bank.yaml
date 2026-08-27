@@ -1,0 +1,278 @@
+# bank.yaml — la banque « S'entraîner » de transformations-deux-sens (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). L'entrée ci-dessous est une transcription FIDÈLE de
+# l'unique entrée « vérifié » de docs/sujets/pc/transformations-deux-sens.md
+# (re-fetch AlloSchool + diff indépendant, agent-vérificateur 2026-07-14).
+# Raisonnement rédigé à la voix experte de la maison, en citant les rungs de
+# la leçon (lesson.md) là où c'est naturel ; barème transcrit tel quel dans
+# les énoncés (tag « (x,xx pt) » ajouté — la source docs/sujets ne porte que
+# « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
+# entre apostrophes simples dans steps[].math, notes sans backslash ni
+# accent).
+#
+# NOTE ÉDITORIALE — CE FICHIER EST NEUF (2026-08-27). `transformations-deux-sens`
+# était jusqu'ici l'une des CINQ notions PC SANS banque : leçon, items,
+# checkpoints et exercices embarqués existaient, mais aucune annale.
+# bk-2012-n-x1 en est la PREMIÈRE (et pour l'instant unique) entrée. Quatre
+# notions PC restent dans ce cas après ce fichier — aspects-energetiques,
+# atome-mecanique-newton, controle-catalyse et transformations-lentes-rapides
+# — plus une notion maths, derivabilite-etude-fonctions ; l'état est consigné
+# tel quel : leur page « S'entraîner » n'affiche rien plutôt que d'afficher
+# du remplissage.
+#
+# PAS DE DOUBLE COMPTAGE. Ce sujet — 2012, session normale, Exercice de
+# Chimie, 7 pt au total — est coupé en deux, comme le note déjà
+# docs/sujets/pc/transformations-deux-sens.md : la Première partie (acide
+# éthanoïque + ammoniac, puis acide éthanoïque + alcool, 5 pt) est ICI ; la
+# Deuxième partie (pile cuivre-zinc, 2 pt) est DÉJÀ en banque sous
+# content/pc/evolution-spontanee/bank.yaml, entrée bk-2012-n-x2. Les deux
+# entrées se recoupent sur le même sujet et la même page de scan mais ne
+# comptent chacune que leur propre moitié du barème — jamais les 7 pt
+# ensemble.
+#
+# SCOPE NOTES (techniques mobilisées au-delà de ce que CETTE leçon montre
+# elle-même — pontées au point d'usage dans le raisonnement de la question
+# concernée, jamais corrigées ni simplifiées ici ; DRAPEAU reporté à
+# l'orchestrateur/pédagogue, pas résolu ici) :
+#   - q1/q2/q3 (1-1, 1-2, 1-3) : `transformations-deux-sens` est, par
+#     construction, la notion QUALITATIVE de ce trio (son propre rung R3 le
+#     dit explicitement : « cette idée reste ici qualitative — le chapitre
+#     suivant te donnera un nombre précis »). Elle ne fournit elle-même AUCUN
+#     outil chiffré — ni tableau d'avancement numérique, ni quotient de
+#     réaction, ni formule de tau. Ces trois questions sont donc répondues
+#     entièrement avec des outils empruntés à deux notions voisines : le
+#     rung 7 de « Réactions acide-base » (K = KA1/KA2 — et il se trouve que
+#     l'« Exemple travaillé 1 » de ce rung UTILISE DÉJÀ ces pKA exacts, 4,8
+#     et 9,2, sans toutefois calculer tau numériquement ; c'est cette suite
+#     chiffrée que la question 1-3 demande, avec la même construction
+#     algébrique que l'« Exemple travaillé 2 » du même rung) et les rungs 2 à
+#     4 de « État d'équilibre d'un système chimique » (tau = xf/xmax, Qr,
+#     Qr,eq = K). La construction élémentaire du tableau d'avancement
+#     lui-même (question 1-1) n'est bâtie pas à pas, EN PARTANT DE ZÉRO, par
+#     AUCUNE des notions de ce corpus — « État d'équilibre » y renvoie déjà
+#     explicitement (« reprends le tableau d'avancement, comme tu l'as
+#     construit dans les chapitres précédents ») sans jamais la reconstruire ;
+#     traitée ici comme un acquis antérieur, re-bâtie au point d'usage. À
+#     l'arbitrage de pedagogy-architect : soit un rung dédié quelque part au
+#     tableau d'avancement chiffré, soit assumer explicitement ce prérequis
+#     hors périmètre de tout le corpus PC actuel.
+#   - q4 (2-1) : « l'intérêt du chauffage à reflux » a deux volets. Le
+#     premier — chauffer accélère une réaction lente sans déplacer son
+#     équilibre — est couvert par le rung 4 de « Estérification et
+#     hydrolyse ». Le second — le rôle du réfrigérant à reflux lui-même, qui
+#     condense les vapeurs et les renvoie dans le ballon pour empêcher toute
+#     perte de matière par évaporation pendant un chauffage prolongé — n'est
+#     couvert PAR AUCUN rung d'AUCUNE des notions de ce corpus (la leçon
+#     « Estérification et hydrolyse » mentionne le reflux dans son accroche
+#     et son récapitulatif comme un simple synonyme de « chauffage », jamais
+#     comme un montage dont la fonction se justifie). Reconstruit ici à
+#     partir de connaissances expérimentales générales, non sourcé dans ce
+#     corpus. À l'arbitrage de pedagogy-architect : ajouter ce geste
+#     (probablement au rung 4 de « Estérification et hydrolyse », ou dans une
+#     notion de technique expérimentale si elle existe), ou l'assumer hors
+#     périmètre.
+
+notion: pc/transformations-deux-sens
+
+entries:
+  # ── bk-2012-n-x1 — 2012 N, Exercice de Chimie (Première partie) : acide
+  #    éthanoïque + ammoniac, puis acide éthanoïque + alcool (linalol) ──
+  - id: bk-2012-n-x1
+    title: "L'acide éthanoïque face à l'ammoniac puis à un alcool : quotient de réaction à l'équilibre depuis les pKA, taux d'avancement final, et rendement d'une estérification stériquement encombrée"
+    source:
+      year: 2012
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice de Chimie — Première partie : réaction de l'acide éthanoïque avec l'ammoniac et avec un alcool"
+    bareme_total: 5.0
+    duration_min: 30
+    sourcing:
+      status: sourced
+      note: >-
+        2012 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool https://www.alloschool.com/element/94452, code sujet
+        NS28, page 2 du scan (sur 6) — Exercice de Chimie, Première partie :
+        réaction de l'acide éthanoïque avec l'ammoniac puis avec un alcool ;
+        barème de la partie recompté question par question sur l'énoncé
+        source : sous-partie 1 (acide éthanoïque + ammoniac) =
+        0,5+1+1 = 2,5 pt ; sous-partie 2 (acide éthanoïque + alcool) =
+        0,5+0,5+1+0,5 = 2,5 pt ; total = 5,0 pt, sur les 7 pt de l'exercice
+        de Chimie complet, dont les 2 pt restants (Deuxième partie — pile
+        cuivre-zinc) sont DÉJÀ en banque sous
+        content/pc/evolution-spontanee/bank.yaml, entrée bk-2012-n-x2 — pas
+        de double comptage entre les deux entrées, chacune ne compte que sa
+        propre moitié. Transcription vérifiée : re-fetch indépendant
+        AlloSchool + diff OK (docs/sujets/pc/transformations-deux-sens.md,
+        statut « vérifié » agent-vérificateur 2026-07-14). CONTRE-CALCUL
+        REFAIT ICI, chiffre par chiffre (docs/sujets ne fournit que les
+        questions, aucune valeur numérique attendue à comparer) :
+        $Q_{r,\text{éq}} = K = K_{A1}/K_{A2} = 10^{pK_{A2}-pK_{A1}} =
+        10^{9,2-4,8} = 10^{4,4} \approx 2,5\times10^4$ (valeur qui se trouve
+        être exactement celle de l'« Exemple travaillé 1 » du rung 7 de
+        reactions-acido-basiques/lesson.md, qui utilise les mêmes pKA sans
+        toutefois calculer tau) ; $\tau = \sqrt{K}/(1+\sqrt{K})$ avec
+        $\sqrt{K} = 10^{2,2} \approx 158,5$, d'où $\tau \approx
+        158,5/159,5 \approx 0,994 = 99,4\ \%$ (quasi totale, moins de 1 % des
+        réactifs initiaux subsiste) ; rendement $r = n(E)_{obtenu}/n(E)_{max}
+        = (2/196)/(38,5/154) = 1,02\times10^{-2}/0,250 \approx
+        4,08\times10^{-2} = 4,1\ \%$ (chiffre qui ne tombe pas rond ; très
+        inférieur aux 66,7 % de l'« estérification simple » du rung 3 de
+        esterification-hydrolyse/lesson.md, cohérent avec le linalol, alcool
+        tertiaire ramifié, hors du cas « sans empêchement stérique » que ce
+        rung nomme explicitement — et cohérent avec les masses molaires
+        données, $M(\text{ROH})=154$ et $M(E)=196$, puisque
+        $154+60-18=196$). Aucune divergence relevée : le sujet source ne
+        donne pas de valeurs numériques attendues à ces questions, seulement
+        les énoncés et les données de départ (pKA1, pKA2, masses, masses
+        molaires), toutes reproduites ici sans changement.
+    intro: |-
+      **Réaction de l'acide éthanoïque avec l'ammoniac et avec un alcool (examen national, session normale 2012 — Exercice de Chimie, Première partie, 5 points).**
+
+      « L'acide éthanoïque de formule brute $\text{CH}_3\text{COOH}$ est utilisé dans la conservation des viandes et des poissons, et dans la synthèse de plusieurs composés aromatiques et solvants. Il est aussi utilisé dans la tannerie et l'industrie textile. »
+
+      On s'intéresse dans cette partie à l'étude de la réaction de l'acide éthanoïque avec l'ammoniac $\text{NH}_3$, et à l'étude de la réaction du même acide avec le linalol, qui est un alcool qu'on désignera par $\text{ROH}$.
+
+      *La Deuxième partie de cet exercice — l'étude d'une pile cuivre-zinc, indépendante de celle-ci — vit sous la notion « Évolution spontanée d'un système chimique », entrée bk-2012-n-x2.*
+
+      **Données :**
+      - $pK_A$ du couple $(\text{CH}_3\text{COOH}/\text{CH}_3\text{COO}^-)$ : $pK_{A1} = 4{,}8$ ;
+      - $pK_A$ du couple $(\text{NH}_4^+/\text{NH}_3)$ : $pK_{A2} = 9{,}2$ ;
+      - Masse molaire de l'alcool $\text{ROH}$ : $M(\text{ROH}) = 154\ \text{g}\cdot\text{mol}^{-1}$ ;
+      - Masse molaire de l'ester $E$ : $M(E) = 196\ \text{g}\cdot\text{mol}^{-1}$.
+
+      **1 — Étude de la réaction de l'acide éthanoïque avec l'ammoniac.** On prépare un mélange $(S)$ de volume $V$, en introduisant $n_1 = 10^{-3}\ \text{mol}$ d'acide éthanoïque et $n_2 = 10^{-3}\ \text{mol}$ d'ammoniac, dans un récipient contenant de l'eau distillée. La transformation ayant lieu est modélisée par l'équation suivante :
+
+      $$\text{CH}_3\text{COOH}_{(aq)} + \text{NH}_{3(aq)} \;\underset{2}{\overset{1}{\rightleftarrows}}\; \text{CH}_3\text{COO}^-_{(aq)} + \text{NH}_{4(aq)}^+$$
+
+      **2 — Étude de la réaction de l'acide éthanoïque avec l'alcool ROH.** Pour synthétiser l'ester $E$ (acétate de linalyle), on chauffe à reflux un mélange équimolaire constitué d'acide éthanoïque et de l'alcool $\text{ROH}$, en présence d'un catalyseur convenable. Partant d'une masse $m_A = 38{,}5\ \text{g}$ d'alcool $\text{ROH}$, on obtient à la fin de la réaction une masse $m_E = 2\ \text{g}$ d'ester $E$.
+    questions:
+      - id: q1
+        part: "1 — Étude de la réaction de l'acide éthanoïque avec l'ammoniac"
+        stem: |-
+          **1-1.** (0,5 pt) Construire le tableau descriptif de l'évolution de cette réaction.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le tableau d'avancement liste, ligne par ligne, la quantité de chaque espèce de l'équation à trois instants — avant, pendant, à l'équilibre — en fonction d'un seul avancement. C'est l'outil qui va nourrir directement les deux questions suivantes : sans lui, ni le quotient de réaction (1-2) ni le taux d'avancement final (1-3) n'ont de quoi se construire. Cette construction n'est pas propre à cette notion-ci — elle est reprise telle quelle par la notion voisine « État d'équilibre d'un système chimique » (rung 2 : « reprends le tableau d'avancement, comme tu l'as construit dans les chapitres précédents ») et par « Réactions acide-base » (rung 7, exemple travaillé 2) ; elle est traitée ici comme un acquis, re-bâtie au point d'usage.
+
+          L'équation donnée est $\text{CH}_3\text{COOH}_{(aq)} + \text{NH}_{3(aq)} \;\underset{2}{\overset{1}{\rightleftarrows}}\; \text{CH}_3\text{COO}^-_{(aq)} + \text{NH}_{4(aq)}^+$, avec tous les coefficients stœchiométriques égaux à $1$ : chaque unité d'avancement $x$ consomme donc exactement un $\text{CH}_3\text{COOH}$ et un $\text{NH}_3$, et produit exactement un $\text{CH}_3\text{COO}^-$ et un $\text{NH}_4^+$. Le volume $V$ du mélange n'est pas donné numériquement — c'est un signal : on raisonne en **quantités de matière** (mol), jamais en concentrations, et $V$ n'aura besoin d'apparaître nulle part avant la toute fin (il se simplifiera de lui-même, comme au rung 2 de État d'équilibre).
+
+          | État | $\text{CH}_3\text{COOH}$ | $\text{NH}_3$ | $\text{CH}_3\text{COO}^-$ | $\text{NH}_4^+$ |
+          |------|:---:|:---:|:---:|:---:|
+          | initial ($x=0$) | $n_1$ | $n_2$ | $0$ | $0$ |
+          | en cours ($x$) | $n_1-x$ | $n_2-x$ | $x$ | $x$ |
+          | final ($x=x_f$) | $n_1-x_f$ | $n_2-x_f$ | $x_f$ | $x_f$ |
+
+          avec $n_1 = n_2 = 10^{-3}\ \text{mol}$ (donnée de l'énoncé).
+
+          **Le piège nommé de cette question.** Vouloir absolument convertir en concentrations avant d'avoir $V$ — un réflexe qui bloque le calcul net, puisque $V$ n'est simplement pas donné ici. Le tableau se construit très bien en mol seules ; c'est justement le fait que $n_1 = n_2$ exactement qui évitera, à la question 1-3, toute ambiguïté sur lequel des deux réactifs serait limitant.
+      - id: q2
+        stem: |-
+          **1-2.** (1 pt) Établir l'expression du quotient de réaction à l'équilibre $Q_{r,\text{éq}}$ en fonction de $pK_{A1}$ et $pK_{A2}$, puis calculer sa valeur.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le quotient de réaction, une fois les concentrations remplacées par leur expression du tableau (question 1-1), se fige à l'équilibre à la constante $K$ de la réaction (rungs 3-4, État d'équilibre d'un système chimique). Mais ici on nous demande $Q_{r,\text{éq}}$ en fonction de $pK_{A1}$ et $pK_{A2}$ — pas en fonction de concentrations : il faut donc relier la constante de CETTE réaction (entre deux couples acide-base, sans eau dans l'équation écrite) aux deux constantes d'acidité données. C'est exactement le geste du rung 7 de « Réactions acide-base » : combiner deux couples.
+
+          D'abord, l'expression brute, directement depuis le tableau (l'eau, solvant, n'apparaît pas dans cette équation-ci, à la différence des réactions d'un acide ou d'une base avec l'eau) :
+
+          $$Q_{r,\text{éq}} = \dfrac{[\text{CH}_3\text{COO}^-]_{eq}\,[\text{NH}_4^+]_{eq}}{[\text{CH}_3\text{COOH}]_{eq}\,[\text{NH}_3]_{eq}}$$
+
+          Ensuite, la combinaison des deux couples (rung 7) : l'acide éthanoïque cède son proton à l'eau ($K_{A1}$), et l'ammoniac le récupère depuis l'eau — on écrit donc la réaction du couple $\text{NH}_4^+/\text{NH}_3$ à l'envers de son sens habituel, ce qui inverse sa constante ($1/K_{A2}$). En additionnant les deux, l'eau et $\text{H}_3\text{O}^+$ s'annulent des deux côtés et il ne reste plus que l'équation de l'énoncé — la preuve que la constante de cette équation-là est bien le produit des deux.
+
+          Enfin l'application numérique — et il se trouve que ce sont très exactement les valeurs de « l'Exemple travaillé 1 » du rung 7 : un $K$ énorme, l'image des « deux salles reliées par une porte » du rung 3 de cette leçon-ci — l'acide éthanoïque ($pK_{A1}=4{,}8$, un acide nettement plus fort) impose son proton à l'ammoniac presque sans retour en arrière.
+
+          **Le piège nommé de cette question.** Inverser l'ordre de la soustraction et écrire $10^{pK_{A1}-pK_{A2}} = 10^{-4,4}$ — un nombre minuscule, qui prédirait à tort une réaction quasi nulle, alors que l'acide éthanoïque, nettement plus fort que l'ion ammonium, doit au contraire imposer son proton presque totalement. Un $K \ll 1$ ici serait le signal immédiat d'une erreur de signe, pas d'un résultat à accepter tel quel.
+        steps:
+          - math: 'Q_{r,\text{éq}} = \dfrac{[\text{CH}_3\text{COO}^-]_{eq}\,[\text{NH}_4^+]_{eq}}{[\text{CH}_3\text{COOH}]_{eq}\,[\text{NH}_3]_{eq}}'
+            note: "Quotient associe a l'equation ecrite (rungs 3-4, etat d'equilibre) ; l'eau, solvant, n'apparait pas dans cette equation."
+          - math: '\text{CH}_3\text{COOH} + \text{H}_2\text{O} \rightleftharpoons \text{CH}_3\text{COO}^- + \text{H}_3\text{O}^+ \quad (K_{A1}) \qquad \text{NH}_3 + \text{H}_3\text{O}^+ \rightleftharpoons \text{NH}_4^+ + \text{H}_2\text{O} \quad \left(\dfrac{1}{K_{A2}}\right)'
+            note: "On combine les deux couples (rung 7, reactions acido-basiques) : le second couple est ecrit a l'envers, d'ou l'inverse de KA2."
+          - math: 'Q_{r,\text{éq}} = K = K_{A1}\times\dfrac{1}{K_{A2}} = \dfrac{K_{A1}}{K_{A2}} = 10^{-pK_{A1}}\times10^{pK_{A2}} = 10^{pK_{A2}-pK_{A1}}'
+            note: "La somme des deux reactions redonne l'equation de l'enonce ; H3O+ et H2O s'annulent des deux cotes."
+          - math: '\boxed{Q_{r,\text{éq}} = 10^{9{,}2-4{,}8} = 10^{4{,}4} \approx 2{,}5\times10^{4}}'
+            note: "Application numerique avec pKA1 = 4,8 et pKA2 = 9,2."
+      - id: q3
+        stem: |-
+          **1-3.** (1 pt) Trouver le taux d'avancement final, et s'assurer que la transformation est totale.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le taux d'avancement final $\tau = x_f/x_{max}$ (rung 2, État d'équilibre) est le nombre qui va enfin trancher, avec un chiffre, ce que cette leçon-ci annonçait encore qualitativement à son rung 3 (« cette idée reste ici qualitative — le chapitre suivant te donnera un nombre précis ») et à son rung 4 (« ce degré se quantifiera au chapitre suivant »). On dispose de $Q_{r,\text{éq}} = K$ (question 1-2) et du tableau (question 1-1) : il reste à résoudre pour $x_f$.
+
+          Comme $n_1 = n_2$ exactement, les deux réactifs s'épuiseraient ensemble si la réaction allait au bout : $x_{max} = n_1 = n_2 = 10^{-3}\ \text{mol}$. On reporte les concentrations d'équilibre du tableau dans $K$ — le volume $V$ se simplifie, exactement comme annoncé à la question 1-1. C'est très exactement la construction algébrique de « l'Exemple travaillé 2 » du rung 7 (Réactions acide-base) : quantités initiales égales, un carré parfait des deux côtés, on prend la racine directement plutôt que de développer une équation du second degré complète — et ici la racine se calcule sans calculatrice, en divisant l'exposant par deux.
+
+          **S'assurer que la transformation est totale.** $\tau \approx 0{,}994$ : il ne reste, à l'équilibre, qu'environ $0{,}6\ \%$ des quantités initiales de $\text{CH}_3\text{COOH}$ et de $\text{NH}_3$ — une trace. Selon le critère du rung 2 (État d'équilibre) — « $\tau=1$, ou très proche de $1$ : transformation totale » — c'est un $\tau$ très proche de $1$ : la transformation est bien, dans les faits, totale. C'est exactement le cas que le rung 4 de cette leçon-ci anticipait sans le chiffrer : une transformation réversible, gouvernée par une double flèche, mais dont le taux d'avancement final est si proche de $1$ qu'on la traite comme totale — au point qu'on l'écrirait souvent, dans la pratique, avec une flèche simple $\rightarrow$, même si en toute rigueur elle reste réversible.
+
+          **Le piège nommé de cette question.** Conclure « $K$ est grand, donc la transformation est totale » sans jamais calculer $\tau$ — un raccourci qualitatif correct dans son verdict (rung 7, État d'équilibre : « $K \gg 1$ : quasi totale »), mais qui ne répond pas à ce que demande la question. Elle demande le nombre : $\tau \approx 0{,}994$, pas $\tau = 1$ exactement — aucune transformation gouvernée par une double flèche n'atteint jamais rigoureusement $1$ (rung 1, cette leçon).
+        steps:
+          - math: '\tau = \dfrac{x_f}{x_{max}}, \qquad x_{max} = n_1 = n_2 = 10^{-3}\ \text{mol}'
+            note: "Definition du taux d'avancement final (rung 2, etat d'equilibre) ; les deux reactifs, introduits a egalite et consommes 1 pour 1, s'epuiseraient ensemble."
+          - math: 'Q_{r,\text{éq}} = \dfrac{x_f^{2}}{(n_1-x_f)^{2}} = K \implies \dfrac{x_f}{n_1-x_f} = \sqrt{K}'
+            note: "Meme construction algebrique que l'exemple travaille 2 du rung 7 (reactions acido-basiques) : quantites initiales egales, le rapport se resout par une racine carree."
+          - math: '\sqrt{K} = \sqrt{10^{4{,}4}} = 10^{2{,}2} \approx 158{,}5'
+            note: "Racine carree d'une puissance de 10 : on divise l'exposant par 2."
+          - math: 'x_f = \dfrac{\sqrt{K}}{1+\sqrt{K}}\,n_1 \implies \tau = \dfrac{x_f}{n_1} = \dfrac{\sqrt{K}}{1+\sqrt{K}} = \dfrac{158{,}5}{159{,}5}'
+            note: "On isole xf puis on divise par n1 pour obtenir tau directement."
+          - math: '\boxed{\tau \approx 0{,}994 = 99{,}4\ \%}'
+            note: "Tres proche de 1 : transformation quasi totale (rung 2, etat d'equilibre) - coherent avec le K enorme trouve a la question 1-2."
+      - id: q4
+        part: "2 — Étude de la réaction de l'acide éthanoïque avec l'alcool ROH"
+        stem: |-
+          **2-1.** (0,5 pt) Quel est l'intérêt du chauffage à reflux ?
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La question porte sur une technique expérimentale — le montage à reflux — pas sur la position de l'équilibre. Il faut séparer deux effets bien distincts.
+
+          Le premier effet est cinétique, et il est couvert par le rung 4 de « Estérification et hydrolyse » : l'estérification, laissée à température ambiante, est **lente** — plusieurs jours peuvent être nécessaires pour atteindre l'équilibre. Chauffer augmente l'agitation thermique, donc la fréquence et l'énergie des chocs efficaces entre l'acide éthanoïque et l'alcool $\text{ROH}$ : la réaction atteint son équilibre bien plus vite. Ce levier n'a, à lui seul, aucun effet sur le rendement final — chauffer accélère l'estérification et l'hydrolyse dans les mêmes proportions (rung 4), la position de l'équilibre ne bouge pas.
+
+          Le second effet tient au mot « reflux » lui-même, distinct du simple fait de chauffer : le ballon est surmonté d'un réfrigérant vertical qui condense en continu les vapeurs (d'alcool, d'acide, d'ester) qui s'échappent sous l'effet de la chaleur, et les renvoie, liquides, dans le mélange réactionnel. Sans ce dispositif, chauffer plusieurs heures ferait perdre une partie de la matière par évaporation — ce qui fausserait directement la masse finale d'ester mesurée à la question 2-3, indépendamment de toute chimie. Le reflux permet donc de chauffer aussi longtemps que nécessaire sans perdre de matière.
+
+          **Le piège nommé de cette question.** Répondre « le reflux améliore le rendement » : c'est confondre les deux effets qu'on vient de séparer. Le reflux permet de chauffer fort et longtemps sans rien perdre — il ne change strictement rien à la quantité finale d'ester obtenue à l'équilibre (rung 4, Estérification et hydrolyse) ; il ne fait qu'y arriver plus vite, et sans fausser la mesure par une perte de matière.
+      - id: q5
+        stem: |-
+          **2-2.** (0,5 pt) Écrire l'équation modélisant la réaction entre l'acide éthanoïque et l'alcool $\text{ROH}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On applique l'équation générale d'une estérification, posée au rung 1 de « Estérification et hydrolyse » : $R\text{-}COOH + R'\text{-}OH \rightleftharpoons R\text{-}COO\text{-}R' + H_2O$. Attention à un piège de notation avant même d'écrire quoi que ce soit : dans cette formule générale, $R$ désigne le radical de l'ACIDE — mais l'énoncé de cet exercice utilise, lui, la lettre $R$ pour désigner le radical de l'ALCOOL (le linalol, noté $\text{ROH}$). Il faut donc lire la correspondance comme suit : l'acide éthanoïque $\text{CH}_3\text{COOH}$ joue le rôle du $R\text{-}COOH$ de la leçon (avec $R=\text{CH}_3$), et l'alcool $\text{ROH}$ de l'énoncé joue le rôle du $R'\text{-}OH$ de la leçon.
+
+          $$\text{CH}_3\text{COOH} + \text{ROH} \rightleftharpoons \text{CH}_3\text{COOR} + \text{H}_2\text{O}$$
+
+          La double flèche n'est pas optionnelle : c'est très exactement la réaction qui ouvre la leçon-hôte (rungs 0 et 1, Transformations dans les deux sens) et qui donne son nom au rung 1 de Estérification et hydrolyse — l'ester et l'acide/alcool coexistent toujours, quelle que soit la durée du chauffage.
+
+          **Un contrôle gratuit.** L'énoncé donne $M(\text{ROH}) = 154\ \text{g/mol}$ et $M(E) = 196\ \text{g/mol}$. Une estérification échange un $-\text{OH}$ de l'alcool et un $-\text{OH}$ de l'acide contre une liaison ester, en libérant une molécule d'eau : $M(E) = M(\text{ROH}) + M(\text{CH}_3\text{COOH}) - M(\text{H}_2\text{O}) = 154 + 60 - 18 = 196\ \text{g/mol}$ — exactement la valeur donnée. L'équation écrite est cohérente avec les masses molaires de l'énoncé.
+
+          **Le piège nommé de cette question.** Confondre le $R$ de la formule générale de la leçon (le radical de l'ACIDE) avec le $R$ de cet énoncé précis (le radical de l'ALCOOL) — les deux notations se ressemblent mais ne désignent pas la même chose ; c'est un choix de l'énoncé, pas une règle universelle.
+      - id: q6
+        stem: |-
+          **2-3. a.** (1 pt) Calculer le rendement $r$ de cette réaction.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le rendement d'une estérification — le mot employé au rung 5 de « Estérification et hydrolyse », interchangeable là-bas avec $\tau$ — compare la quantité d'ester réellement obtenue à la quantité maximale que donnerait une conversion totale du réactif limitant. Ici, aucune concentration ni pH à manipuler : seulement deux masses, à convertir en quantités de matière via les masses molaires données.
+
+          Le mélange de départ est équimolaire (énoncé du §2) et la stœchiométrie de l'équation (question 2-2) est $1{:}1{:}1{:}1$ : les deux réactifs, introduits à égalité, s'épuiseraient ensemble si la réaction allait jusqu'au bout — la quantité maximale d'ester possible est donc directement la quantité d'alcool introduite.
+
+          **Ce que ce chiffre raconte.** $4{,}1\ \%$ est très loin des $66{,}7\ \%$ que donne, à l'équilibre, l'« estérification simple » du rung 3 de « Estérification et hydrolyse » — mais ce rung précise explicitement que ce cas ($\tau \approx 2/3$) suppose des chaînes carbonées « linéaires, sans ramification qui gênerait la rencontre des groupes réactifs ». Le linalol est tout le contraire : un alcool **tertiaire**, très ramifié (un terpène), dont le groupe $-\text{OH}$ est encombré de toutes parts. Ce n'est donc pas un cas d'« estérification simple », et le rendement, très inférieur à ce que ce rung annoncerait pour un couple non ramifié, en est la trace numérique directe.
+
+          **Le piège nommé de cette question.** Diviser par la mauvaise référence — par exemple par $n_0(\text{acide})$ recalculé séparément à partir d'une masse d'acide non donnée, en oubliant que le mélange équimolaire rend $n_0(\text{ROH})$ directement utilisable comme référence, puisque les deux réactifs partent à égalité. Une masse d'acide n'est d'ailleurs même pas fournie par l'énoncé — c'est un indice qu'elle n'est pas nécessaire ici.
+        steps:
+          - math: 'n(E)_{obtenu} = \dfrac{m_E}{M(E)} = \dfrac{2}{196} \approx 1{,}02\times10^{-2}\ \text{mol}'
+            note: "Ester obtenu, a partir de la masse mesuree en fin de reaction."
+          - math: 'n_0(\text{ROH}) = \dfrac{m_A}{M(\text{ROH})} = \dfrac{38{,}5}{154} = 0{,}250\ \text{mol} = n(E)_{max}'
+            note: "Alcool introduit au depart ; melange equimolaire donc n0(acide) = n0(ROH), et la stoechiometrie 1:1 donne n(ester)max = n0(ROH)."
+          - math: 'r = \dfrac{n(E)_{obtenu}}{n(E)_{max}} = \dfrac{1{,}02\times10^{-2}}{0{,}250}'
+            note: "Rendement = quantite reellement obtenue / quantite maximale theorique (1:1, equimolaire)."
+          - math: '\boxed{r \approx 4{,}08\times10^{-2} \approx 4{,}1\ \%}'
+            note: "Tres loin des 66,7 pourcent de l'esterification simple (rung R3, esterification-hydrolyse) - coherent avec un alcool tertiaire tres encombre (linalol)."
+      - id: q7
+        stem: |-
+          **2-3. b.** (0,5 pt) Proposer deux méthodes différentes permettant l'augmentation du rendement de cette réaction.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Améliorer un rendement, ce n'est jamais accélérer la réaction (rung 4, déjà mobilisé à la question 2-1) : c'est **déplacer l'équilibre**, au sens du rung 5 de « Estérification et hydrolyse » — forcer, à un instant donné, $Q_{r,i}$ en dessous de $K$, pour que le système avance davantage dans le sens direct en cherchant à rejoindre $K$ à nouveau.
+
+          $$Q_r = \dfrac{[\text{ester}][\text{eau}]}{[\text{acide}][\text{alcool}]}$$
+
+          Deux méthodes, chacune agissant sur une partie différente de ce quotient :
+
+          — **Utiliser un réactif en excès.** Verser, par exemple, un excès d'alcool $\text{ROH}$ par rapport à l'acide augmente le dénominateur de $Q_r$ dès le mélange initial : $Q_{r,i}$ part d'une valeur plus basse que $K$, et le système doit consommer une plus grande proportion du réactif limitant pour le rejoindre.
+
+          — **Éliminer un produit au fur et à mesure de sa formation.** Retirer l'eau (par un déshydratant, ou par distillation si elle est plus volatile que le reste) — ou l'ester lui-même s'il est plus volatil — diminue le numérateur de $Q_r$ à chaque instant, ce qui relance sans cesse la réaction dans le sens direct.
+
+          **Le piège nommé de cette question.** Proposer « chauffer davantage » ou « ajouter plus de catalyseur » : ce sont des leviers cinétiques (rung 4), déjà mobilisés à la question 2-1 pour une tout autre raison — ils accélèrent l'arrivée à l'équilibre, dans les deux sens à la fois, sans jamais déplacer sa position. C'est exactement le test du rung 4 (flacon A contre flacon B) : deux flacons, l'un chauffé et catalysé, l'autre non, atteignent rigoureusement le même rendement final, seulement à des vitesses différentes.

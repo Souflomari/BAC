@@ -18,12 +18,36 @@
 # NOTE ÉDITORIALE — CE FICHIER EST NEUF (2026-08-23). `lois-de-newton` était
 # jusqu'ici l'une des notions PC SANS banque : leçon, items, checkpoints et
 # exercices embarqués existaient, mais aucune annale. bk-2024-r-x5 en fut la
-# PREMIÈRE entrée ; bk-2022-r-x4 (ajoutée le 2026-08-27) en est la deuxième.
+# PREMIÈRE entrée ; bk-2022-r-x4 (ajoutée le 2026-08-27) en est la deuxième ;
+# bk-2019-n-x4 (ajoutée le 2026-08-27 également) en est la troisième — trois
+# solides sur un plan incliné, chacun isolant un geste différent (voir le
+# flag de jumelage en tête de l'entrée bk-2019-n-x4).
 # Six autres notions restent dans ce cas — aspects-energetiques,
 # atome-mecanique-newton, controle-catalyse, transformations-deux-sens,
 # transformations-lentes-rapides (PC) et derivabilite-etude-fonctions (maths) —
 # et l'état est consigné tel quel : la page « S'entraîner » n'affiche rien
 # plutôt que d'afficher du remplissage.
+#
+# NOTE ÉDITORIALE — RECOUPEMENT AVEC r-bac (exercises.yaml, même notion).
+# bk-2019-n-x4 transcrit le MÊME sujet réel que le sommet de leçon embarqué
+# [[exercise:r-bac]] (R8, « Exercice de type bac » : 2019 session normale,
+# Exercice IV Partie I, mêmes données — m = 190 kg, β = 10°, AB = 36 m).
+# Recoupement assumé, même disposition que chute-mouvements-plans/bank.yaml
+# bk-2020-n-x5 face à SON propre r-bac : la banque doit rester le corpus
+# complet des annales de la notion (BANK-SPEC §1), y compris celle déjà
+# utilisée au sommet de la leçon. Raisonnement rédigé à nouveau ici (voix
+# maison), pas copié d'exercises.yaml. DIVERGENCE, CONTRAIREMENT AU PRÉCÉDENT
+# bk-2020-n-x5 (qui reprenait ses valeurs À L'IDENTIQUE du sommet) : le
+# contre-calcul indépendant exigé pour cette entrée diverge de r-bac sur la
+# question 3 — r-bac donne F ≈ 532 N via une approximation « on prendra
+# sin10° ≈ 0,17 » qui n'apparaît PAS dans la source vérifiée
+# (docs/sujets/pc/lois-de-newton.md) ; cette entrée utilise la valeur précise
+# sin10° ≈ 0,1736 et trouve F ≈ 525 N (écart ~1,3 %, détaillé dans le
+# sourcing.note de l'entrée). Les questions 2, 4, 5, 6 (a_G = 4,5 m.s⁻²,
+# x(t) = 2,25t², t_B = 4,0 s, V_B = 18 m.s⁻¹) coïncident, elles, exactement
+# avec r-bac. À L'ARBITRAGE DE L'OWNER : réconcilier r-bac et cette entrée sur
+# la question 3 (même sujet réel, une seule réponse devrait subsister), ou
+# documenter explicitement les deux comme deux choix de précision distincts.
 #
 # NOTE ÉDITORIALE — FRONTIÈRE AVEC chute-mouvements-plans. L'exercice 5 du
 # rattrapage 2024 est coupé en deux, et la coupure n'est pas arbitraire :
@@ -55,10 +79,298 @@
 #     cher que celui de bk-2024-r-x5, jamais nommé dans ce cours. À remonter
 #     à pedagogy-architect : ajouter ce geste (R1, R6, ou un rung dédié), ou
 #     l'assumer hors périmètre.
+#   - bk-2019-n-x4, q2 : même lacune que bk-2024-r-x5, q1-2-1 ci-dessus — la
+#     lecture graphique d'une accélération sur une courbe v(t) n'est montrée
+#     nulle part pas à pas par la leçon (rung 3 construit le vecteur, sans
+#     jamais faire l'exercice « deux points, coefficient directeur »). Pontée
+#     au même endroit dans le raisonnement de la question, avec en prime une
+#     ambiguïté de lecture propre à cette entrée (source : « V_G ≈ 9,5 m.s⁻¹
+#     vers t ≈ 2 s, lecture d'échelle à confirmer ») résolue au point d'usage
+#     par un contrôle aval (t_B tombe rond à 4,0 s).
 
 notion: pc/lois-de-newton
 
 entries:
+  # ── bk-2019-n-x4 — 2019 N, Exercice IV (partie I) : plan incline en
+  #    descente, force motrice, SANS frottement, lecture directe sur une
+  #    droite v(t) qui part de l'origine ──
+  #
+  # NOTE ÉDITORIALE — FLAG DE JUMELAGE (bk-2019-n-x4 face à bk-2022-r-x4 et
+  # bk-2024-r-x5). Les trois entrées de cette banque sont des solides sur un
+  # plan incliné, et appliquent toutes la méthode du rung 5 combinée à la
+  # décomposition du poids du rung 7 — mais chacune isole un geste différent :
+  #   — bk-2019-n-x4 (ici) : mouvement de DESCENTE, avec une force motrice F
+  #     qui S'AJOUTE à la composante du poids (a_G = F/m + g.sin(beta), les
+  #     deux termes de même signe), et surtout AUCUN frottement — l'énoncé le
+  #     dit explicitement : un bilan à TROIS forces, pas quatre, contrairement
+  #     aux deux autres entrées. Axe orienté dans le sens du mouvement (comme
+  #     bk-2024-r-x5, comme le rung 7 lui-même), accélération lue sur une
+  #     droite v(t) qui part de l'ORIGINE (le système démarre sans vitesse
+  #     initiale) — la lecture la plus directe des trois, un seul point à
+  #     placer en plus de l'origine ;
+  #   — bk-2024-r-x5 : mouvement de DESCENTE aussi, mais SANS force motrice et
+  #     AVEC un frottement constant qui retranche de l'accélération ; la
+  #     droite v(t) NE part PAS de l'origine (le solide est envoyé avec une
+  #     vitesse initiale non nulle) — la lecture y est plus piégeuse : il faut
+  #     repérer l'ordonnée à l'origine avant de calculer la pente ;
+  #   — bk-2022-r-x4 : mouvement de MONTÉE, avec une force motrice F ajoutée
+  #     puis retirée en cours de trajet, et un frottement constant présent sur
+  #     les deux portions ; axe orienté vers le HAUT (donc g.sin(alpha) est
+  #     NÉGATIF, le seul des trois à inverser ce signe), et surtout aucune
+  #     lecture directe : l'accélération se lit sur une courbe x = f(t²), avec
+  #     un facteur 2 caché que les deux autres entrées n'exigent pas.
+  # À elles trois, les entrées couvrent : présence/absence de frottement,
+  # présence/absence de force motrice, montée/descente (donc le signe de
+  # g.sin(angle)), et trois techniques de lecture graphique distinctes (v(t)
+  # par l'origine, v(t) avec ordonnée à l'origine non nulle, x = f(t²)).
+  - id: bk-2019-n-x4
+    title: "Système sur un plan incliné en descente, avec force motrice constante et sans frottement : l'accélération lue sur une droite v(t) partant de l'origine, la force qui s'en déduit, et l'équation horaire jusqu'au point B"
+    source:
+      year: 2019
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice IV — I- Etude du mouvement sur la partie A'B'"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28F, AlloSchool https://www.alloschool.com/element/68300,
+        scan page 6 (sur 7) — Exercice IV, Partie I (mouvement du système (S)
+        sur la partie rectiligne A'B', 2e loi de Newton avec force motrice,
+        SANS frottement). Barème de la partie recompté question par question
+        sur l'énoncé transcrit : 0,5+0,5+0,5+0,5+0,5+0,5 = 3,00 pt, sur les
+        5 pt de l'exercice complet — contrôle croisé exact avec la Partie II
+        (tremplin B'C' puis saut, mouvement de projectile, transcrite sous
+        chute-mouvements-plans/bank.yaml en bk-2019-n-x4, exercise_label
+        « Exercice IV — II- Etude du mouvement de G lors de la phase du
+        saut », 2,00 pt) : 3,00 + 2,00 = 5,00, conforme au barème total
+        annoncé par la source. NE PAS RECONVERTIR LA PARTIE II ICI : elle vit
+        sous chute-mouvements-plans, entrée bk-2019-n-x4 — deux entrées
+        différentes portent le même id « bk-2019-n-x4 » mais dans deux
+        fichiers de notion distincts, ce qui est le schéma déjà en place pour
+        ce même sujet (cross-list documentée en tête de
+        docs/sujets/pc/lois-de-newton.md). Transcription vérifiée : re-fetch
+        indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-11,
+        docs/sujets/pc/lois-de-newton.md, statut « vérifié »). RECOUPEMENT
+        ASSUMÉ AVEC r-bac (exercises.yaml, même notion) : ce même sujet (2019
+        session normale, Exercice IV Partie I) est déjà le sommet de leçon
+        embarqué sous [[exercise:r-bac]] à R8 — même disposition que
+        bk-2020-n-x5 face à r-bac sous chute-mouvements-plans/bank.yaml
+        (recoupement documenté en tête de ce fichier-là). Raisonnement rédigé
+        à nouveau ici (voix maison), pas copié d'exercises.yaml. CONTRE-CALCUL
+        REFAIT ICI, chiffre par chiffre. Q2 (lecture graphique) : la source
+        transcrit la lecture comme « V_G ≈ 9,5 m.s-1 vers t ≈ 2 s (lecture
+        d'échelle à confirmer) » — une incertitude explicitement signalée par
+        le vérificateur ; 9,5 ne tombe sur AUCUNE graduation imprimée de
+        l'axe des vitesses (3, 6, 9). Lue ici sur deux points de grille
+        exacts — l'origine (0 ; 0) et le point (2 s ; 9 m/s), les deux
+        SEULES graduations imprimées qui coïncident avec la fin visible de la
+        droite — cela donne a_G = (9-0)/(2-0) = 4,5 m.s-2, et non 4,75 (qui
+        sortirait de la lecture 9,5). Cette lecture est CONFIRMÉE en aval par
+        un contrôle indépendant : avec AB = 36 m (question 5), t_B =
+        racine(2x36/4,5) = racine(16) = 4,0 s tombe EXACTEMENT rond, alors
+        que la lecture 9,5 donnerait a_G = 4,75 m.s-2 et t_B =
+        racine(72/4,75) ≈ 3,89 s, un nombre qui ne tombe sur rien de propre —
+        un indice fort, dans un sujet de bac conçu pour que les réponses
+        tombent juste, que 4,5 est la valeur correcte et que le « 9,5 » du
+        scan est une imprécision de lecture au pixel, pas la valeur exacte.
+        DIVERGENCE DOCUMENTÉE, PAS RÉSOLUE PAR RECOPIE. Q3 (F) : F =
+        m.(a_G - g.sin(beta)), avec sin10 degrés = 0,1736 (valeur précise,
+        calculatrice en degrés) — AUCUNE approximation de sin10° n'est
+        donnée par la source vérifiée (contrairement à exercises.yaml/r-bac,
+        qui ajoute « on prendra sin10° ≈ 0,17 », une donnée absente de la
+        transcription vérifiée) : F = 190x(4,5-1,736) = 190x2,764 = 525,1 N,
+        arrondi 525 N — DIVERGE de la valeur 532 N publiée par r-bac (écart
+        ~1,3 %, imputable à l'arrondi sin10°≈0,17 non présent dans la
+        source). À L'ARBITRAGE DE L'OWNER : réconcilier r-bac (sin10°≈0,17,
+        F≈532N) et cette entrée (sin10°=0,1736 précis, F≈525N) — le même
+        sujet réel ne devrait pas porter deux réponses différentes dans la
+        même notion. Q4-Q6, indépendantes de F et donc non affectées par
+        cette divergence : x(t) = 2,25.t^2 (m, t en s) ; t_B = 4,0 s ; V_B =
+        a_G.t_B = 4,5x4,0 = 18,0 m/s, vérifié par V_B^2 = 2.a_G.AB =
+        2x4,5x36 = 324, racine 18,0 m/s — ces trois valeurs coïncident
+        exactement avec r-bac. SCOPE NOTE (voir l'en-tête du fichier) : la
+        question 2 (lecture d'une pente sur une courbe v(t)) mobilise un
+        geste que le rung 3 de la leçon ne montre pas pas à pas ; ponté au
+        point d'usage dans le raisonnement de la question.
+    intro: |-
+      **Mouvement du centre d'inertie d'un système mécanique, sur la partie rectiligne inclinée A'B' (examen national, session normale 2019 — Exercice IV, Partie I, 3,00 points).**
+
+      *La Partie II de cet exercice — le tremplin circulaire B'C' puis le saut, un mouvement de projectile — est traitée à part, sous la notion « Chute libre et mouvements dans un plan ». Cette Partie I s'arrête au point B, avant le tremplin ; rien de ce qui suit n'a besoin de la Partie II, qui repart de zéro au point C avec sa propre vitesse $\vec{V_C}$.*
+
+      Cette piste est formée :
+      - d'une partie rectiligne A'B' inclinée d'un angle $\beta$ par rapport à l'horizontale ;
+      - d'un tremplin B'C' circulaire ;
+      - d'une zone d'atterrissage $(\pi)$ plane et horizontale (figure 1).
+
+      Dans tout l'exercice, les frottements sont négligés et l'étude du mouvement du centre d'inertie $G$ est réalisée dans le référentiel terrestre considéré comme galiléen.
+
+      **Données :** l'angle $\beta = 10°$ ; intensité de la pesanteur $g = 10\ \text{m.s}^{-2}$ ; masse du système $(S)$ : $m = 190\ \text{kg}$.
+
+      **I — Étude du mouvement sur la partie A'B'.** À un instant choisi comme origine des dates ($t = 0$), le système $(S)$ s'élance sans vitesse initiale, d'une position où le centre d'inertie $G$ est confondu avec le point A. Le système est soumis, au cours de son mouvement sur la partie A'B', à la réaction du plan incliné, à son poids et à une force motrice $\vec{F}$ constante, dont la ligne d'action est parallèle à la trajectoire de $G$ et le sens est celui du mouvement. Pour étudier le mouvement de $G$ au cours de cette phase, on choisit un repère d'espace $(A, \vec{i})$ parallèle à A'B' (figure 1) et on repère la position de $G$ par son abscisse $x$.
+
+      **Figure 1 (schéma).** Piste avec une portion rectiligne inclinée A'B' (angle $\beta$ avec l'horizontale) sur laquelle glisse le système (représenté par une moto, centre d'inertie $G$), repère $(A, \vec{i})$ le long de la pente ; puis un tremplin circulaire B'C' ; au point C, la vitesse $\vec{V_C}$ fait un angle $\alpha$ avec l'horizontale ($\vec{i_1}$, $\vec{j_1}$), et la trajectoire de saut (en pointillés) retombe au point P sur la zone horizontale $(\pi)$.
+
+      **Figure 2 (courbe).** $V_G\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$ ; droite passant par l'origine (mouvement uniformément accéléré) ; ordonnées graduées $3,\ 6,\ 9$ ; abscisses graduées $0{,}5,\ 1,\ 1{,}5,\ 2$. La droite atteint $V_G \approx 9{,}5\ \text{m.s}^{-1}$ vers $t \approx 2\ \text{s}$ *(lecture d'échelle à confirmer)*.
+    questions:
+      - id: q1
+        part: "1 — Le modèle, établi et non récité (et ce que « sans frottement » retire du bilan)"
+        stem: |-
+          **1.** (0,5 pt) En appliquant la deuxième loi de Newton, montrer que l'expression de l'accélération $a_G$ du mouvement de $G$ est : $a_G = \dfrac{F}{m} + g\sin\beta$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une question « montrer que » : le résultat est donné, donc les points viennent du **chemin**, pas du résultat. C'est la méthode du rung 5 de la leçon (système, bilan, deuxième loi, repère, projection), appliquée ici à un cas plus simple que le rung 7 sur un point précis : **aucun frottement**.
+
+          **Le système et le référentiel.** Système : $(S)$, de masse $m$, réduit à son centre d'inertie $G$. Référentiel : terrestre, **considéré comme galiléen** — l'énoncé le dit, et il faut le réécrire (rung 1) : la deuxième loi n'a de sens que dans un référentiel galiléen.
+
+          **Le bilan des forces, en toutes lettres — et ce que « sans frottement » en retire.** L'énoncé est explicite : « dans tout l'exercice, les frottements sont négligés ». Ça ne veut pas dire qu'on n'en parle pas — ça veut dire qu'on écrit le bilan SANS ce terme, et qu'on le dit. Trois forces, pas quatre, s'exercent sur $(S)$ pendant le trajet A'B' :
+          — le **poids** $\vec{P} = m\vec{g}$, vertical, vers le bas ;
+          — la **réaction** $\vec{N}$ du plan incliné, qui — précisément parce qu'il n'y a pas de frottement — est purement **perpendiculaire** au plan, sans composante tangentielle ;
+          — la **force motrice** $\vec{F}$, constante, parallèle à la trajectoire de $G$, dans le sens du mouvement.
+
+          Compare avec les deux autres solides de cette banque : bk-2022-r-x4 et bk-2024-r-x5 portent chacune une force de frottement $\vec f$ dans leur bilan, qui grignote une partie de l'accélération disponible. Ici, rien ne s'y oppose : toute la force motrice ET toute la composante utile du poids se retrouvent intégralement dans l'accélération, sans rien perdre en route.
+
+          **Le repère, et la direction du mouvement qu'il révèle.** L'énoncé fixe un axe $(A, \vec{i}\,)$ parallèle à A'B', sans préciser en toutes lettres son sens — mais le résultat à montrer, $a_G = F/m + g\sin\beta$ (les DEUX termes s'AJOUTENT), le fixe sans ambiguïté : $\vec F$ est « dans le sens du mouvement » (énoncé), donc si l'axe est orienté dans ce même sens, $F_x = +F$ ; et pour que $g\sin\beta$ soit également positif, il faut que la composante du poids le long du plan (qui pointe toujours vers le bas de la pente) soit elle aussi dans le sens de $\vec i$. Autrement dit : le système $(S)$ **descend** la pente, de A vers B, et $\vec i$ pointe dans le sens de cette descente — exactement la même convention qu'au rung 7 et que chez bk-2024-r-x5 (contrairement à bk-2022-r-x4, qui monte, avec un axe orienté vers le haut et un signe qui s'inverse).
+
+          **La deuxième loi de Newton.**
+
+          $$\sum \vec{F}_{ext} = m\,\vec{a}_G
+          \qquad\text{soit}\qquad
+          \vec{P} + \vec{N} + \vec{F} = m\,\vec{a}_G$$
+
+          **La projection sur $\vec i$, force par force.**
+          — Le **poids** se décompose comme au rung 7 : une composante $mg\sin\beta$ le long du plan, dirigée vers le bas de la pente, donc dans le sens de $\vec i$ (le système descend) : $P_x = +\,mg\sin\beta$.
+          — La **réaction** $\vec N$ est perpendiculaire au plan, donc perpendiculaire à $\vec i$ : sa projection est nulle. C'est encore plus net ici que d'habitude — sans frottement, $\vec N$ EST toute la réaction du plan, rien à en soustraire.
+          — La **force motrice** $\vec F$ est dans le sens du mouvement, donc dans le sens de $\vec i$ : $F_x = +F$.
+
+          $$m\,a_G = F + mg\sin\beta$$
+
+          **On divise par $m$, qui n'est pas nul :**
+
+          $$\boxed{\ a_G = \frac{F}{m} + g\sin\beta\ }$$
+
+          **La projection sur l'axe perpendiculaire, pour être complet.** Le mouvement reste le long du plan, donc l'accélération n'a pas de composante perpendiculaire : $0 = N - mg\cos\beta$, d'où $N = mg\cos\beta$. L'exercice ne le demande pas, mais l'écrire confirme que le bilan à trois forces est complet, et que $\vec N$ n'intervient jamais dans l'équation selon $\vec i$ (rung 5, exemple de la caisse).
+
+          **Les deux pièges nommés de cette question.** Le premier : **ajouter un terme de frottement au bilan par réflexe**, parce que les deux autres solides de cette banque en portent un. L'énoncé le dit noir sur blanc : « dans tout l'exercice, les frottements sont négligés » — un bilan à quatre forces ici serait faux, pas seulement imprécis. Le second : **écrire $-g\sin\beta$**, en calquant machinalement le signe de bk-2022-r-x4 (qui monte), sans revérifier le sens réel du mouvement ici — la descente, confirmée par le signe $+$ du résultat à montrer lui-même.
+      - id: q2
+        part: "2 — La pente lue sur une droite qui part de l'origine"
+        stem: |-
+          **2.** (0,5 pt) La courbe de la figure 2 représente les variations de la vitesse instantanée $V_G$ du centre d'inertie $G$ en fonction du temps. En exploitant cette courbe, trouver la valeur de l'accélération $a_G$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le mouvement est uniformément accéléré (question 1 : $a_G$ constante), donc $V_G(t) = a_G\,t$ — une droite par l'origine, puisque le système part **sans vitesse initiale**. Sur un graphe $V_G(t)$, l'accélération se lit comme la **pente**, exactement comme au rung 3.
+
+          **Le pont à faire, parce que la leçon ne fait pas ce geste pas à pas.** Le rung 3 construit le vecteur accélération comme dérivée de la vitesse ; il ne montre jamais explicitement l'opération « prendre deux points d'une droite $v(t)$ et calculer son coefficient directeur » — la même lacune déjà signalée pour bk-2024-r-x5 (voir la NOTE ÉDITORIALE en tête de fichier). Le geste : choisir deux points de la droite qui tombent sur des **intersections du quadrillage**, jamais deux points lus au jugé.
+
+          $$a_G = \frac{\Delta V_G}{\Delta t} = \frac{V_2 - V_1}{t_2 - t_1}$$
+
+          **Résoudre l'ambiguïté du scan.** La description de la figure 2, transcrite fidèlement, signale une incertitude : « la droite atteint $V_G \approx 9{,}5\ \text{m.s}^{-1}$ vers $t \approx 2\ \text{s}$ (lecture d'échelle à confirmer) ». Le problème : $9{,}5$ ne tombe sur **aucune** des graduations imprimées de l'axe des vitesses ($3,\ 6,\ 9$) — c'est une lecture entre deux traits, la moins fiable qui soit. Le point $(t=2\ \text{s}\ ;\ V_G=9\ \text{m.s}^{-1})$, lui, tombe exactement sur les DEUX dernières graduations imprimées, en $t$ ET en $V_G$ à la fois — le point de grille le plus net du graphe entier.
+
+          **Les deux points choisis.** L'origine $(t_1=0\ ;\ V_1=0)$, où la droite part par construction (départ sans vitesse initiale, vu question 1), et $(t_2=2\ \text{s}\ ;\ V_2=9\ \text{m.s}^{-1})$, la dernière graduation double.
+
+          **Le calcul.**
+
+          $$a_G = \frac{9-0}{2-0} = \boxed{4{,}5\ \text{m.s}^{-2}}$$
+
+          **Le contrôle qui tranche, en aval.** Cette lecture ($4{,}5$, et non $4{,}75$ qui sortirait de la valeur « 9,5 ») se confirme à la question 5 : avec $AB=36\ \text{m}$, $t_B=\sqrt{2\times36/4{,}5}=\sqrt{16}=4{,}0\ \text{s}$ — un nombre rond. La lecture « 9,5 » donnerait $a_G=4{,}75\ \text{m.s}^{-2}$ et $t_B=\sqrt{72/4{,}75}\approx3{,}89\ \text{s}$, un nombre qui ne tombe sur rien. Dans un sujet de bac, conçu pour que les réponses tombent juste, ce contrôle aval départage les deux lectures possibles en faveur de $4{,}5\ \text{m.s}^{-2}$.
+
+          **Les deux pièges nommés de cette question.** Le premier : **lire « 9,5 » parce que c'est ce que le tracé semble indiquer au premier coup d'œil**, sans remarquer que ce nombre ne correspond à aucune graduation fiable. Le second : **oublier que la droite part de l'origine** et chercher une ordonnée à l'origine non nulle, comme il faut le faire chez bk-2024-r-x5 — ici, au contraire, le départ sans vitesse initiale (question 1) rend la lecture plus simple, pas plus compliquée : un seul point à lire, l'autre est l'origine elle-même.
+      - id: q3
+        part: "3 — Remonter à la force motrice"
+        stem: |-
+          **3.** (0,5 pt) Déduire l'intensité $F$ de la force motrice.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « Déduire » : on retourne l'expression établie à la question 1, dans laquelle $F$ est désormais la seule inconnue, puisque $a_G$ vient d'être lu à la question 2.
+
+          **Le retournement.**
+
+          $$a_G = \frac{F}{m} + g\sin\beta
+          \qquad\Longrightarrow\qquad
+          F = m\left(a_G - g\sin\beta\right)$$
+
+          **Les valeurs.** $m=190\ \text{kg}$, $a_G=4{,}5\ \text{m.s}^{-2}$ (question 2), $g=10\ \text{m.s}^{-2}$, $\beta=10°$ donc $\sin10° \approx 0{,}1736$ (calculatrice en **degrés** — aucune valeur approchée de $\sin10°$ n'est donnée par l'énoncé : on garde ici la valeur précise, jusqu'au bout).
+
+          **Le calcul, terme par terme.**
+
+          $$g\sin\beta = 10 \times 0{,}1736 = 1{,}736\ \text{m.s}^{-2}$$
+
+          $$F = 190 \times (4{,}5 - 1{,}736) = 190 \times 2{,}764 = \boxed{525\ \text{N}}$$
+
+          **Lire ce nombre au lieu de le poser.** $m\,a_G = 190\times4{,}5 = 855\ \text{N}$ se répartit entre la composante utile du poids ($mg\sin\beta \approx 330\ \text{N}$) et la force motrice ($F\approx525\ \text{N}$) : $525+330=855$, ça se recoupe — plus de six dixièmes de l'accélération viennent réellement du moteur, le reste de la pente elle-même.
+
+          **Les deux pièges nommés de cette question.** Le premier : **utiliser $\cos\beta$ au lieu de $\sin\beta$** — l'erreur serait immédiatement repérable, puisqu'un angle de $10°$ presque plat laisserait alors le poids fournir presque toute l'accélération, ce qui contredirait la présence même d'une force motrice dans l'énoncé. Le second : **arrondir $\sin10°$ trop tôt, à $0{,}17$** — une commodité qui déplace la réponse d'environ $7\ \text{N}$ (de $525$ à $532\ \text{N}$) ; un écart faible en apparence mais qui n'est pas neutre : mieux vaut garder la valeur précise de la calculatrice jusqu'au bout, et n'arrondir que le résultat final.
+      - id: q4
+        part: "4 — L'équation horaire, depuis le repos"
+        stem: |-
+          **4.** (0,5 pt) Écrire l'expression numérique de l'équation horaire $x = f(t)$ du mouvement de $G$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'accélération $a_G$ est constante (question 1) : le mouvement est uniformément accéléré. On remonte de l'accélération à la position par intégrations successives (rung 6, la chute libre suit exactement le même schéma), en tenant compte des conditions initiales que l'énoncé fixe explicitement : à $t=0$, le système part **sans vitesse initiale** depuis le point A, pris comme origine de l'axe $(A,\vec i\,)$.
+
+          **Les deux primitivations, avec leurs constantes fixées par l'énoncé.**
+
+          $$V_G(t) = a_G\,t + V_G(0) \qquad\text{avec}\qquad V_G(0) = 0 \quad(\text{« s'élance sans vitesse initiale »})$$
+
+          $$x(t) = \frac{1}{2}a_G\,t^2 + x(0) \qquad\text{avec}\qquad x(0) = 0 \quad(\text{$G$ confondu avec A, origine de l'axe})$$
+
+          Les deux constantes tombent, exactement comme au rung 6 pour la chute libre : la loi horaire ne garde que le terme en $t^2$.
+
+          **L'application numérique, avec $a_G=4{,}5\ \text{m.s}^{-2}$ (question 2).**
+
+          $$\boxed{x(t) = \frac{1}{2}\times4{,}5\times t^2 = 2{,}25\,t^2} \quad (x \text{ en m},\ t \text{ en s})$$
+
+          **Le piège nommé de cette question.** **Oublier de diviser par 2**, et écrire $x(t)=4{,}5\,t^2$ — l'erreur qui consiste à recopier $a_G$ directement comme coefficient de $t^2$, sans repasser par la formule $x=\frac12 a_G t^2$ vue au rung 6. Le facteur $\frac12$ vient de l'intégration, il ne se devine pas.
+      - id: q5
+        part: "5 — L'instant de passage en B"
+        stem: |-
+          **5.** (0,5 pt) Sachant que $AB = 36\ \text{m}$, déterminer l'instant $t_B$ de passage de $G$ par le point B.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le point B est atteint lorsque l'abscisse de $G$ vaut la distance parcourue depuis A, soit $x(t_B)=AB$. On reporte cette condition dans l'équation horaire établie à la question 4, et on résout pour $t_B$.
+
+          **Le calcul.**
+
+          $$x(t_B) = AB \implies 2{,}25\,t_B^2 = 36$$
+
+          $$t_B^2 = \frac{36}{2{,}25} = 16 \implies t_B = \sqrt{16}$$
+
+          $$\boxed{t_B = 4{,}0\ \text{s}}$$
+
+          (on ne garde que la racine positive : $t_B$ est un instant, pas une distance signée)
+
+          **Le contrôle qui vaut d'être fait.** C'est précisément ce nombre rond, $t_B=4{,}0\ \text{s}$ exactement, qui confirme rétroactivement la lecture graphique retenue à la question 2 ($a_G=4{,}5\ \text{m.s}^{-2}$, et non $4{,}75$) — voir le raisonnement de cette question.
+
+          **Le piège nommé de cette question.** **Garder les deux racines** de $t_B^2=16$, soit $t_B=\pm4{,}0\ \text{s}$, et hésiter sur laquelle choisir. Physiquement, $t_B$ est un instant compté depuis $t=0$ (le départ en A) : seule la racine positive a un sens.
+      - id: q6
+        part: "6 — La vitesse de passage en B, doublement vérifiée"
+        stem: |-
+          **6.** (0,5 pt) Calculer la vitesse $V_B$ de passage de $G$ par le point B.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La vitesse suit la loi $V_G(t)=a_G\,t$ (question 4, avec $V_G(0)=0$). Il suffit d'y reporter l'instant de passage $t_B=4{,}0\ \text{s}$ trouvé à la question précédente.
+
+          **Le calcul.**
+
+          $$V_B = a_G\,t_B = 4{,}5\times4{,}0 = \boxed{18\ \text{m.s}^{-1}}$$
+
+          **Un contrôle indépendant du temps, qui vaut d'être fait.** On peut retrouver $V_B$ sans passer par $t_B$, avec la relation $V_B^2=2\,a_G\,AB$ (une loi horaire du mouvement uniformément accéléré, vue au chapitre de cinématique, comme au rung 6 pour la chute libre) :
+
+          $$V_B^2 = 2\times4{,}5\times36 = 324 \implies V_B = \sqrt{324} = 18\ \text{m.s}^{-1}$$
+
+          Les deux méthodes se recoupent exactement.
+
+          **Le piège nommé de cette question.** **Utiliser $V_B^2=2\,a_G\,AB$ en oubliant la racine carrée finale**, et annoncer $V_B=324\ \text{m.s}^{-1}$ — une vitesse plus de quinze fois trop grande, qu'aucun ordre de grandeur physique ne permettrait de garder sans vérification.
+        steps:
+          - math: 'a_G = \frac{F}{m} + g\sin\beta'
+            note: "Question 1 : deuxieme loi de Newton projetee sur (A, i), axe oriente dans le sens du mouvement (la descente de A vers B) ; pas de frottement dans le bilan (enonce)."
+          - math: 'a_G = \frac{V_2-V_1}{t_2-t_1} = \frac{9-0}{2-0} = 4{,}5\ \text{m.s}^{-2}'
+            note: "Question 2 : pente lue sur la droite v(t), entre l'origine et le point de grille (2 s ; 9 m/s)."
+          - math: 'F = m\left(a_G - g\sin\beta\right) \approx 525\ \text{N}'
+            note: "Question 3 : on retourne l'equation de la question 1, avec sin10 degres = 0,1736 (valeur precise)."
+          - math: 'x(t) = \frac{1}{2}a_G\,t^2 = 2{,}25\,t^2'
+            note: "Question 4 : equation horaire, x(0) = 0 en A, v(0) = 0 (depart du repos)."
+          - math: 't_B = \sqrt{\frac{2\,AB}{a_G}} = \sqrt{16} = 4{,}0\ \text{s}'
+            note: "Question 5 : condition x(t_B) = AB = 36 m, reportee dans l'equation horaire."
+          - math: 'V_B = a_G\,t_B = 4{,}5\times4{,}0 = \boxed{18\ \text{m.s}^{-1}}'
+            note: "Question 6 : verifie aussi par V_B^2 = 2.a_G.AB = 324, racine 18,0 m/s."
+
   # ── bk-2022-r-x4 — 2022 R, Exercice 4 (partie 1) : plan incline, montee avec
   #    force motrice puis sans, lecture d'une courbe x = f(t^2) ──
   #

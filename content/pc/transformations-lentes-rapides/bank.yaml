@@ -1,0 +1,341 @@
+# bank.yaml — la banque « S'entraîner » de transformations-lentes-rapides
+# (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, déjà dans exercises.yaml), pas la rampe
+# embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). L'entrée ci-dessous est une transcription FIDÈLE de
+# l'entrée « vérifié » de docs/sujets/pc/transformations-lentes-rapides.md
+# (re-fetch AlloSchool indépendant + diff OK, agent-vérificateur,
+# 2026-07-14) — l'énoncé n'a pas été re-vérifié ici, seulement converti.
+# Raisonnement rédigé à la voix experte de la maison sur 100 % des
+# questions ; barème transcrit tel quel dans les énoncés ; conventions
+# KaTeX (block scalars pour la prose, KaTeX brut entre apostrophes simples
+# dans steps[].math, notes de steps[] en ASCII sans backslash ni accent —
+# même discipline que le reste du corpus).
+#
+# NOTE ÉDITORIALE — CE FICHIER EST NEUF (2026-08-27). `transformations-
+# lentes-rapides` était jusqu'ici l'une des notions PC SANS banque : leçon,
+# items, checkpoints et exercices embarqués (r-bac, r-variation) existaient,
+# mais aucune annale sous « S'entraîner ». bk-2010-n-x1 en est la PREMIÈRE
+# entrée. Quatre autres notions PC restent dans ce cas — aspects-
+# energetiques, atome-mecanique-newton, controle-catalyse,
+# transformations-deux-sens — plus une en maths, derivabilite-etude-
+# fonctions ; l'état est consigné tel quel : la page « S'entraîner » de ces
+# notions n'affiche rien plutôt que d'afficher du remplissage.
+#
+# FLAG DE RECOUPEMENT AVEC LE SOMMET (r-bac, exercises.yaml). bk-2010-n-x1
+# et le sommet r-bac de cette même leçon (marqueur [[exercise:r-bac]] à R5,
+# transcrit dans exercises.yaml) sont LE MÊME sujet — mêmes questions, même
+# barème 4,25 pt, mêmes données, même figure 1. C'est volontaire : la banque
+# est censée être le corpus complet des annales vérifiées de la notion
+# (BANK-SPEC §1), et ce recoupement suit exactement la même disposition que
+# suivi-temporel-vitesse bk-2021-n-x1/r-bac, dipole-rl bk-2020-n-x4/r-bac,
+# chute-mouvements-plans bk-2020-n-x5/r-bac. Le raisonnement ci-dessous est
+# rédigé de nouveau (voix maison), il n'est PAS copié de exercises.yaml — les
+# deux textes en arrivent aux mêmes valeurs numériques parce que c'est le
+# même sujet, pas parce que l'un recopie l'autre. À l'arbitrage de l'owner si
+# l'on préfère écarter cette entrée de la banque pour éviter le recoupement
+# sur la même page.
+#
+# SCOPE NOTE — la mécanique de la conductimétrie (au-delà du nom de la
+# méthode) n'est enseignée pas à pas par AUCUN des deux rungs mobilisés ici.
+# Cette leçon-ci (transformations-lentes-rapides) ne parle de suivi temporel
+# qu'au niveau du PRINCIPE (R1 : une transformation lente PEUT être suivie,
+# une rapide ne le peut pas) ; « Suivi temporel d'une transformation —
+# vitesse de réaction » (R1) NOMME la conductimétrie comme méthode de suivi
+# (« elle convient quand la réaction met en jeu des ions... qui ne
+# conduisent pas tous également ») mais ne montre nulle part, pas à pas,
+# comment (a) inventorier les ions spectateurs/réactifs/produits d'un
+# mélange (question 1), ni (b) substituer un tableau d'avancement dans la
+# loi d'additivité G = k·Σλᵢ[Xᵢ] DONNÉE en données pour en tirer une
+# relation affine numérique G = f(x) (question 3, 1 pt — le geste le plus
+# lourd de cet exercice). Les deux sont reconstruits au point d'usage dans
+# le raisonnement, à partir : de la loi d'additivité (donnée par l'énoncé,
+# pas une leçon), du tableau d'avancement (méthode du rung R2 de « Suivi
+# temporel d'une transformation »), et du principe du substitut monotone
+# (rung R1 de la même leçon, mobilisé à la question 5 pour convertir la
+# condition x = x_max/2 en une condition sur G). Signalé à l'orchestrateur /
+# pedagogy-architect : un futur rung de « Suivi temporel d'une
+# transformation » pourrait montrer cette dérivation G = k·Σλ[X] → forme
+# affine en x pas à pas ; c'est une compétence qui revient dans plusieurs
+# sujets de conductimétrie de ce corpus, pas un besoin isolé à cette annale.
+#
+# SCOPE NOTE — réaction totale, hydrolyse basique. Même trou que déjà
+# signalé dans suivi-temporel-vitesse/bank.yaml (entrée bk-2025-r-x1c, même
+# famille de réaction : ester + HO⁻ → carboxylate + alcool) : ni cette
+# leçon-ci ni « Estérification et hydrolyse » (dont le rung R2 n'écrit que
+# l'hydrolyse NEUTRE, réversible, par l'eau seule) ne nomment la variante
+# BASIQUE, totale, de l'hydrolyse d'un ester. Reconstruite au point d'usage
+# (question 2) sur le même principe que bk-2025-r-x1c : l'écriture à flèche
+# simple de l'énoncé (l'ion HO⁻ donne directement l'ion carboxylate
+# HCO₂⁻, pas l'acide méthanoïque neutre) signale une réaction poussée
+# jusqu'à son terme — cohérent avec le principe de déplacement d'équilibre
+# par élimination d'un produit du rung R5 de « Estérification et
+# hydrolyse », appliqué ici en sens inverse (c'est l'acide qui est retiré
+# sous forme déprotonée, ce qui tire l'hydrolyse jusqu'à completion).
+#
+# SOURCING GAP — lecture graphique du temps de demi-réaction (question 5,
+# 1 pt). Voir le sourcing.note de l'entrée pour le détail complet : la
+# description vérifiée de la Figure 1 (reprise plus bas au mot près) ne
+# porte que les deux valeurs d'extrémité de la courbe, déjà flaguées « à
+# confirmer sur le corrigé » par le vérificateur, sans aucun point
+# intermédiaire transcrit. La valeur t_{1/2} ≈ 20 min retenue en question 5
+# est reprise du sommet r-bac (exercises.yaml, même sujet 2010) pour rester
+# cohérente avec lui — elle n'est PAS re-dérivée ni re-confirmée de façon
+# indépendante ici, faute de données graphiques suffisantes dans la source
+# vérifiée disponible. À vérifier en priorité contre le corrigé officiel ou
+# un re-fetch du scan mesuré au pixel (sur le modèle de bk-2022-r-x4 /
+# bk-2024-r-x5 dans lois-de-newton/bank.yaml) avant toute promotion en
+# contenu affiché sans réserve.
+
+notion: pc/transformations-lentes-rapides
+
+entries:
+  # ── bk-2010-n-x1 — 2010 N, Exercice de Chimie (Première partie) : suivi
+  #    conductimétrique de l'hydrolyse basique du méthanoate de méthyle ──
+  - id: bk-2010-n-x1
+    title: "Suivi conductimétrique de l'hydrolyse basique du méthanoate de méthyle : inventaire des ions, la relation G(x) démontrée, et le temps de demi-réaction lu sur la courbe"
+    source:
+      year: 2010
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice de Chimie — Première partie : suivi conductimétrique de l'hydrolyse basique d'un ester"
+    bareme_total: 4.25
+    duration_min: 26
+    sourcing:
+      status: sourced
+      note: >-
+        2010 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28, AlloSchool
+        https://www.alloschool.com/element/94443 (Exercice de Chimie,
+        Première partie — suivi conductimétrique de l'hydrolyse basique d'un
+        ester ; image lue .../course-422/upload-70311/0002-big.jpg, page 2
+        sur 6 du scan). Barème de la Première partie recompté question par
+        question sur l'énoncé transcrit : 0,75 (q1, inventaire des ions) +
+        1 (q2, tableau d'avancement) + 1 (q3, relation G = f(x)) + 0,5 (q4,
+        justification de la décroissance) + 1 (q5, temps de demi-réaction) =
+        4,25 pt, sur les 7 pt de l'exercice de Chimie complet, dont la
+        Deuxième partie (pile à combustible méthanol/dioxygène) relève de la
+        notion `piles` et N'EST PAS transcrite ici — aucun double comptage
+        du barème. Transcription vérifiée : re-fetch indépendant AlloSchool
+        + diff OK (agent-vérificateur, 2026-07-14 ;
+        docs/sujets/pc/transformations-lentes-rapides.md, statut
+        « vérifié »). Contre-calcul refait ici, chiffre par chiffre,
+        indépendamment de la source : n_B = C_B×V = 10×2·10⁻⁴ = 2·10⁻³ mol =
+        n_E (mélange dans les proportions stœchiométriques ; réaction
+        totale, cohérente avec l'écriture à flèche simple de l'équation) ;
+        x_max = 2·10⁻³ mol. Relation G = f(x) : k/V = 0,01/(2·10⁻⁴) =
+        50 m⁻² ; terme constant = 50×2·10⁻³×(5,01+19,9)·10⁻³ = 2,491·10⁻³ S,
+        arrondi 2,5·10⁻³ S ; pente = 50×(5,46−19,9)·10⁻³ = −0,722 S·mol⁻¹,
+        arrondi −0,72 S·mol⁻¹ — les deux valeurs arrondies coïncident
+        exactement avec la relation annoncée par l'énoncé, G = −0,72x +
+        2,5·10⁻³ (S), aucune divergence relevée. t_{1/2} : x_max/2 =
+        1·10⁻³ mol, G(t_{1/2}) = −0,72·10⁻³+2,5·10⁻³ = 1,78·10⁻³ S =
+        1,78 mS (valeur qui tombe, mécaniquement, exactement à la moyenne
+        de G(0) = 2,5 mS et G(x_max) = 1,06 mS, propriété générale d'une
+        relation affine en x — sert de contrôle). CONTRÔLE DE COHÉRENCE
+        SUPPLÉMENTAIRE : G(x_max) = −0,72×2·10⁻³+2,5·10⁻³ = 1,06·10⁻³ S ≈
+        1,06 mS, cohérent avec le palier « voisin de G≈1 mS » décrit par le
+        vérificateur pour la Figure 1 — confirme que x_max = n_B (réaction
+        totale) est la bonne hypothèse. LACUNE DE PRÉCISION SIGNALÉE
+        (Figure 1, lecture de t_{1/2}, question 5) : la description
+        vérifiée de la Figure 1 (reprise dans l'intro ci-dessous au mot
+        près) ne donne que les deux valeurs d'extrémité (G≈2,5 mS à t=0,
+        palier≈1 mS), elle-même flaguée « lectures d'échelle à confirmer
+        sur le corrigé » — aucun point intermédiaire n'est transcrit, ce qui
+        interdit de re-dériver indépendamment l'abscisse où G=1,78 mS. La
+        valeur t_{1/2}≈20 min retenue en q5 est reprise, pour rester
+        cohérente, du sommet de leçon r-bac (exercises.yaml, même sujet
+        2010, même figure 1) plutôt qu'inventée ici — mais cette valeur
+        elle-même n'est pas davantage confirmée par la transcription
+        vérifiée de docs/sujets/pc/transformations-lentes-rapides.md, qui ne
+        porte aucune lecture chiffrée intermédiaire de la courbe. Signalé à
+        l'orchestrateur / pedagogy-architect : un re-fetch du scan avec
+        mesure au pixel de la Figure 1 (sur le modèle de bk-2022-r-x4 ou
+        bk-2024-r-x5 dans lois-de-newton/bank.yaml) trancherait la question
+        — voir aussi le SOURCING GAP en tête de fichier. RECOUPEMENT ASSUMÉ
+        AVEC LE SOMMET : ce même sujet 2010 est déjà le sommet r-bac
+        d'exercises.yaml (marqueur [[exercise:r-bac]] à R5, « Exercice de
+        type bac ») — mêmes questions, même barème 4,25 pt ; raisonnement
+        rédigé de nouveau ici (voix maison), pas copié de exercises.yaml —
+        voir le FLAG DE RECOUPEMENT en tête de fichier.
+    intro: |-
+      **Étude de l'hydrolyse d'un ester en milieu basique — une transformation lente suivie par conductimétrie (examen national, session normale 2010, Exercice de Chimie — Première partie, 4,25 points).**
+
+      *Cet exercice de 7 points comporte une Deuxième partie — une pile à combustible méthanol/dioxygène — qui relève d'une autre notion (« Piles ») et n'est pas traitée ici.*
+
+      *Note de méthode : cette Première partie mobilise aussi des méthodes de la notion « Suivi temporel d'une transformation — vitesse de réaction » (tableau d'avancement, principe du substitut monotone, définition et lecture graphique de $t_{1/2}$) et de « Estérification et hydrolyse » (la réaction d'hydrolyse d'un ester) — nommées au fil du raisonnement ci-dessous, au point où elles servent.*
+
+      L'hydrolyse basique des esters est un moyen de préparation des alcools à partir de produits naturels, en plus d'autres applications dans le domaine médical et industriel. Le but de cette partie de l'exercice est de suivre, par conductimétrie, l'évolution de la réaction du méthanoate de méthyle avec une solution d'hydroxyde de sodium.
+
+      **Données** (toutes les mesures sont effectuées à $25\ ^\circ\text{C}$) :
+      - Conductance à un instant $t$ : $G = k\,\sum \lambda_i[X_i]$, avec $\lambda_i$ conductivité molaire ionique de l'ion $X_i$ et $k$ constante de la cellule de mesure de valeur $k = 0{,}01\ \text{m}$ ;
+      - Conductivités molaires ioniques : $\lambda(\text{Na}^+_{aq}) = 5{,}01\cdot10^{-3}$, $\lambda(\text{OH}^-_{aq}) = 19{,}9\cdot10^{-3}$, $\lambda(\text{HCO}_{2\,aq}^-) = 5{,}46\cdot10^{-3}$ (en $\text{S}\cdot\text{m}^2\cdot\text{mol}^{-1}$) ;
+      - On néglige la concentration des ions hydronium $\text{H}_3\text{O}^+$ devant les autres concentrations des ions présents dans le mélange réactionnel.
+
+      On verse dans un bécher un volume $V = 2\cdot10^{-4}\ \text{m}^3$ d'une solution $S_B$ d'hydroxyde de sodium de concentration molaire $C_B = 10\ \text{mol}\cdot\text{m}^{-3}$, et on y ajoute à l'instant $t_0$ considéré comme origine des temps, une quantité de matière $n_E$ du méthanoate de méthyle égale à la quantité de matière $n_B$ d'hydroxyde de sodium ($n_E = n_B$). (On considère que le volume reste constant $V = 2\cdot10^{-4}\ \text{m}^3$.) Une étude expérimentale a permis de tracer la courbe représentative des variations de la conductance $G$ du mélange en fonction du temps (Figure 1). On modélise la réaction étudiée par l'équation de réaction suivante :
+
+      $$\text{HCO}_2\text{CH}_{3(aq)} + \text{OH}^-_{aq} \;\longrightarrow\; \text{HCO}_{2(aq)}^- + \text{CH}_3\text{OH}_{(aq)}$$
+
+      *Figure 1 (courbe) :* axe des ordonnées $G\ (\text{mS})$ gradué $0{,}5 ;\ 1 ;\ 1{,}5 ;\ 2 ;\ 2{,}5$ ; axe des abscisses $t\ (\text{min})$ gradué de $0$ à $90$ (par pas de $10$). La courbe part d'une valeur initiale voisine de $G \approx 2{,}5\ \text{mS}$ à $t = 0$ et **décroît** de façon monotone vers un palier voisin de $G \approx 1\ \text{mS}$ *(lectures d'échelle à confirmer sur le corrigé)*.
+    questions:
+      - id: q1
+        part: "1 — Inventaire des ions"
+        stem: |-
+          **1.** (0,75 pt) Faire l'inventaire des ions présents dans le mélange à un instant $t$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Avant de pouvoir suivre CETTE réaction par conductimétrie, il faut d'abord savoir QUELS ions portent le courant dans le mélange, et comment leur nombre évolue — c'est ce diagnostic qui, question après question, va justifier tout le reste de l'exercice (pourquoi $G$ varie, dans quel sens, et de combien). Cette mécanique de la conductimétrie — inventorier, puis relier une conductance à un avancement — n'est montrée pas à pas dans aucune des deux leçons ici mobilisées ; le rung R1 de « Suivi temporel d'une transformation » nomme la méthode sans la dérouler, et cette leçon-ci n'aborde pas les techniques de suivi elles-mêmes. On la reconstruit ici, question par question (voir la scope note en tête de fichier).
+
+          **Les espèces en présence.** La solution $S_B$ apporte, dès le départ, les ions $\text{Na}^+$ et $\text{OH}^-$ de l'hydroxyde de sodium. L'équation de réaction montre qu'on consomme $\text{OH}^-$ et qu'on produit l'ion méthanoate $\text{HCO}_2^-$. Le méthanoate de méthyle $\text{HCO}_2\text{CH}_3$ et le méthanol $\text{CH}_3\text{OH}$ sont des molécules **neutres** : elles ne comptent pas dans un inventaire d'ions, même si elles occupent une place dans le tableau d'avancement de la question suivante.
+
+          **Trois ions, trois rôles.** À l'instant $t$ :
+          — $\text{Na}^+_{(aq)}$, ion **spectateur** : il ne figure dans aucun des deux membres de l'équation de réaction, sa quantité de matière ne change donc jamais ;
+          — $\text{OH}^-_{(aq)}$, **réactif** : sa quantité diminue au fur et à mesure que la réaction avance ;
+          — $\text{HCO}_{2(aq)}^-$, **produit** : sa quantité augmente, à partir de zéro.
+
+          $$\boxed{\text{Na}^+_{(aq)},\ \ \text{OH}^-_{(aq)},\ \ \text{HCO}_{2(aq)}^-}$$
+
+          Les ions $\text{H}_3\text{O}^+$ sont négligés, comme l'énoncé l'autorise explicitement.
+
+          **Le piège nommé de cette question.** Oublier $\text{Na}^+$ parce qu'il « ne réagit pas » : un ion spectateur reste un ion, il contribue à la conductance au même titre que les autres — c'est justement parce que sa contribution est CONSTANTE (question 3) qu'il faut le garder dans l'inventaire plutôt que l'écarter.
+      - id: q2
+        part: "2 — Tableau d'avancement"
+        stem: |-
+          **2.** (1 pt) Construire le tableau descriptif de l'évolution de cette transformation. (On notera $x$ l'avancement de la réaction à l'instant $t$.)
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est la méthode du rung R2 de « Suivi temporel d'une transformation — vitesse de réaction » : une ligne pour chaque espèce de l'équation, chacune évoluant selon son coefficient stœchiométrique (ici tous égaux à $1$), pour ensuite en tirer l'avancement final $x_{max}$ — le réactif limitant, celui qui s'annule en premier.
+
+          **Les quantités initiales.** La solution $S_B$ apporte $n_B = C_B \times V = 10 \times 2\cdot10^{-4} = 2\cdot10^{-3}\ \text{mol}$ d'ions hydroxyde, et l'énoncé impose $n_E = n_B$ : le méthanoate de méthyle est introduit en **quantité égale**, exactement dans les proportions stœchiométriques de l'équation (tous les coefficients valent $1$).
+
+          $$\begin{array}{l|cccc}
+          \text{état} & \text{HCO}_2\text{CH}_3 & \text{OH}^- & \text{HCO}_2^- & \text{CH}_3\text{OH} \\
+          \hline
+          \text{initial}\ (x=0) & n_E & n_B & 0 & 0 \\
+          \text{en cours}\ (x) & n_E - x & n_B - x & x & x \\
+          \text{final}\ (x_{max}) & n_E - x_{max} & n_B - x_{max} & x_{max} & x_{max}
+          \end{array}$$
+
+          **Trouver $x_{max}$ : un cas particulier.** D'ordinaire, on compare $n_E$ et $n_B$ pour repérer lequel des deux réactifs s'annule en premier. Ici, $n_E = n_B$ exactement : les deux expressions $n_E - x$ et $n_B - x$ s'annulent donc **au même instant**, pour la même valeur de $x$ — aucun des deux réactifs n'est en excès, le mélange est dit stœchiométrique.
+
+          **Pourquoi la réaction va jusqu'au bout.** L'équation donnée est écrite avec une flèche simple, $\longrightarrow$, pas une double flèche $\rightleftharpoons$ : ce choix d'écriture signale une réaction **totale**. C'est cohérent avec la chimie de cette transformation : contrairement à l'hydrolyse neutre d'un ester (réaction limitée, réversible — rung R2 de « Estérification et hydrolyse »), l'ion hydroxyde $\text{OH}^-$ attaque directement l'ester et produit l'ion carboxylate $\text{HCO}_2^-$, sa base conjuguée, au lieu de l'acide méthanoïque neutre. L'acide formé est ainsi retiré du milieu au fur et à mesure sous sa forme déprotonée — même mécanisme, appliqué à un ester différent, que celui déjà établi pour la saponification de l'éthanoate d'éthyle : principe de déplacement d'équilibre par élimination d'un produit (rung R5 de « Estérification et hydrolyse »), qui pousse ici la réaction jusqu'à son terme.
+
+          $$\boxed{x_{max} = n_E = n_B = 2\cdot10^{-3}\ \text{mol} = 2{,}0\ \text{mmol}}$$
+
+          **Le piège nommé de cette question.** Ne cherche pas lequel des deux réactifs est « en excès » ici : il n'y en a pas. C'est le cas particulier le plus simple pour trouver $x_{max}$ — mais aussi celui où l'automatisme « je compare deux quantités » tourne à vide, puisque les deux quantités sont égales dès le départ.
+        steps:
+          - math: 'n_B = C_B \times V = 10 \times 2\cdot10^{-4} = 2\cdot10^{-3}\ \text{mol}'
+            note: "Quantite initiale d'hydroxyde de sodium, a partir de la concentration et du volume donnes."
+          - math: '\boxed{x_{max} = n_E = n_B = 2\cdot10^{-3}\ \text{mol}}'
+            note: "Melange stoechiometrique (n_E = n_B) et reaction totale (fleche simple) : les deux reactifs s'epuisent ensemble."
+      - id: q3
+        part: "3 — Établir la relation G = f(x)"
+        stem: |-
+          **3.** (1 pt) Montrer que la conductance $G$ dans le milieu réactionnel vérifie la relation : $G = -0{,}72\,x + 2{,}5\cdot10^{-3}$ (S).
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une question « montrer que » : le résultat est donné, les points viennent du chemin. Il s'agit de traduire l'inventaire de la question 1 et le tableau de la question 2 en une expression numérique de $G$ en fonction de $x$ seul — c'est exactement le geste qui rendra possible, à la question 5, de traduire une condition sur $x$ (la demi-réaction) en une condition sur $G$ (ce qu'on peut effectivement lire sur la Figure 1). Cette dérivation n'est montrée pas à pas dans aucune des deux leçons mobilisées ici (voir la scope note en tête de fichier) : on la reconstruit à partir de la loi d'additivité donnée en données, $G = k\sum_i \lambda_i[X_i]$, et du tableau d'avancement établi à la question 2.
+
+          **Les concentrations, tirées du tableau.** Les trois ions inventoriés à la question 1 ont pour concentration, à l'instant $t$ (quantité divisée par le volume $V$, qui reste constant) :
+
+          $$[\text{Na}^+] = \frac{n_B}{V}, \qquad [\text{OH}^-] = \frac{n_B - x}{V}, \qquad [\text{HCO}_2^-] = \frac{x}{V}$$
+
+          Remarque : $[\text{Na}^+]$ est **constante** — un ion spectateur ne contribue à $G$ que par un terme qui ne bouge jamais, aucune surprise ici.
+
+          **On substitue dans la loi d'additivité, et on factorise.**
+
+          $$G = k\left[\lambda_{\text{Na}^+}\frac{n_B}{V} + \lambda_{\text{OH}^-}\frac{n_B-x}{V} + \lambda_{\text{HCO}_2^-}\frac{x}{V}\right]
+          = \frac{k}{V}\Big[n_B\big(\lambda_{\text{Na}^+}+\lambda_{\text{OH}^-}\big) + x\big(\lambda_{\text{HCO}_2^-}-\lambda_{\text{OH}^-}\big)\Big]$$
+
+          Le premier groupe (indépendant de $x$) va donner le terme constant ; le second (multiplié par $x$) va donner la pente. C'est cette **différence** $\lambda_{\text{HCO}_2^-}-\lambda_{\text{OH}^-}$, entre l'ion qui apparaît et l'ion qui disparaît, qui porte tout le signe de la pente — un point qui va resservir à la question suivante.
+
+          **Le préfacteur.**
+
+          $$\frac{k}{V} = \frac{0{,}01}{2\cdot10^{-4}} = 50\ \text{m}^{-2}$$
+
+          **Le terme constant.**
+
+          $$\frac{k}{V}\,n_B\big(\lambda_{\text{Na}^+}+\lambda_{\text{OH}^-}\big) = 50 \times 2\cdot10^{-3} \times (5{,}01+19{,}9)\cdot10^{-3} = 0{,}1 \times 24{,}91\cdot10^{-3} = 2{,}491\cdot10^{-3}\ \text{S}$$
+
+          Arrondi à deux chiffres significatifs, $2{,}5\cdot10^{-3}\ \text{S}$ — exactement la valeur de $G$ à $t=0$ ($x=0$) annoncée par la Figure 1, un contrôle gratuit qui confirme ce terme.
+
+          **Le terme en $x$ (la pente).**
+
+          $$\frac{k}{V}\big(\lambda_{\text{HCO}_2^-}-\lambda_{\text{OH}^-}\big) = 50 \times (5{,}46-19{,}9)\cdot10^{-3} = 50\times(-14{,}44\cdot10^{-3}) = -0{,}722\ \text{S}\cdot\text{mol}^{-1}$$
+
+          Arrondi, $-0{,}72\ \text{S}\cdot\text{mol}^{-1}$.
+
+          **On rassemble.**
+
+          $$\boxed{G = -0{,}72\,x + 2{,}5\cdot10^{-3}\ \ (\text{S})}$$
+
+          La relation demandée est établie ; le contre-calcul complet redonne $-0{,}722$ et $2{,}491\cdot10^{-3}$ avant arrondi, cohérents avec les deux chiffres annoncés par l'énoncé — aucun écart.
+
+          **Le piège nommé de cette question.** Oublier le sodium dans la somme, en se disant qu'un ion spectateur « ne compte pas » : sa contribution constante fait pourtant partie intégrante du terme constant $2{,}5\cdot10^{-3}\ \text{S}$ — l'omettre changerait la valeur de $G$ à $t=0$ elle-même, pas seulement un détail du calcul.
+        steps:
+          - math: '[\text{Na}^+] = \frac{n_B}{V}, \quad [\text{OH}^-] = \frac{n_B-x}{V}, \quad [\text{HCO}_2^-] = \frac{x}{V}'
+            note: "Concentrations tirees du tableau d'avancement de la question 2."
+          - math: 'G = \frac{k}{V}\Big[n_B(\lambda_{\text{Na}^+}+\lambda_{\text{OH}^-}) + x(\lambda_{\text{HCO}_2^-}-\lambda_{\text{OH}^-})\Big]'
+            note: "On substitue les concentrations dans la loi d'additivite donnee, puis on met k/V en facteur."
+          - math: '\frac{k}{V} = \frac{0{,}01}{2\cdot10^{-4}} = 50\ \text{m}^{-2}'
+            note: "Prefacteur, reutilise dans les deux termes qui suivent."
+          - math: '50\times2\cdot10^{-3}\times(5{,}01+19{,}9)\cdot10^{-3} = 2{,}491\cdot10^{-3}\ \text{S} \approx 2{,}5\cdot10^{-3}\ \text{S}'
+            note: "Terme constant : coincide avec G(0) lu sur la figure 1, controle gratuit."
+          - math: '50\times(5{,}46-19{,}9)\cdot10^{-3} = -0{,}722\ \text{S.mol}^{-1} \approx -0{,}72\ \text{S.mol}^{-1}'
+            note: "Pente : difference lambda(HCO2-) moins lambda(OH-), negative."
+          - math: '\boxed{G = -0{,}72\,x + 2{,}5\cdot10^{-3}\ \ (\text{S})}'
+            note: "Relation demontree ; contre-calcul complet sans arrondi : -0,722x + 2,491e-3, coherent."
+      - id: q4
+        part: "4 — Justifier le sens de variation"
+        stem: |-
+          **4.** (0,5 pt) Justifier la décroissance de la conductance $G$ au cours de la réaction.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est ici que se joue le point de méthode central de tout suivi conductimétrique : la conductance ne baisse pas parce que « les ions disparaissent » en bloc, mais parce que la NATURE des ions présents change au cours du temps — un ion cède la place à un autre, et les deux ne conduisent pas aussi bien.
+
+          **Lecture algébrique, directe.** À la question 3, le coefficient de $x$ dans $G = -0{,}72\,x + 2{,}5\cdot10^{-3}$ est **négatif**. Or l'avancement $x$ ne fait que croître au cours du temps (il ne redescend jamais) : $G$, fonction affine décroissante de $x$, ne peut donc que décroître elle aussi.
+
+          **Lecture physique — le cœur du raisonnement.** Regarde le tableau de la question 2 : à chaque instant, un ion $\text{OH}^-$ **disparaît** et un ion $\text{HCO}_2^-$ **apparaît**, un pour un ; l'ion $\text{Na}^+$, lui, reste inchangé. Le **nombre total d'ions dans le mélange ne varie donc quasiment pas** — ce n'est pas une histoire de « moins de porteurs de charge ». Ce qui change, c'est LEQUEL de ces porteurs est présent : l'ion hydroxyde est un excellent conducteur ($\lambda_{\text{OH}^-} = 19{,}9\cdot10^{-3}\ \text{S}\cdot\text{m}^2\cdot\text{mol}^{-1}$), l'ion méthanoate un bien moins bon ($\lambda_{\text{HCO}_2^-} = 5{,}46\cdot10^{-3}$, soit environ $3{,}6$ fois plus faible). À chaque instant, on échange un excellent porteur de charge contre un médiocre, à effectif quasi constant : la conductance du mélange diminue.
+
+          **C'est ce lien, précisément, qui fait toute la méthode du suivi.** C'est parce que la nature chimique du mélange (quels ions, en quelle quantité) détermine directement une grandeur physique mesurable ($G$) que mesurer $G$ minute après minute revient à suivre l'avancement $x$ de la réaction — c'est le principe même de la conductimétrie comme méthode de suivi temporel, ici appliqué concrètement plutôt que simplement nommé.
+
+          **Le piège nommé de cette question.** Répondre seulement « $x$ augmente et la pente est négative » sans jamais dire QUEL ion disparaît et QUEL ion apparaît revient à réciter l'algèbre sans expliquer le phénomène — exactement ce qu'un correcteur de bac sanctionne sur une question de justification physique. Les deux lectures, algébrique et chimique, doivent être données ensemble.
+      - id: q5
+        part: "5 — Le temps de demi-réaction"
+        stem: |-
+          **5.** (1 pt) Déterminer la valeur du temps de demi-réaction $t_{1/2}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est la définition et la méthode du rung R4 de « Suivi temporel d'une transformation — vitesse de réaction » : $t_{1/2}$ est l'instant où l'avancement atteint la **moitié de sa valeur finale**, $x(t_{1/2}) = x_{max}/2$ — jamais la moitié de la durée totale pendant laquelle on observe la réaction. C'est un piège classique et particulièrement tentant ici : la Figure 1 est tracée jusqu'à $t = 90\ \text{min}$, et rien ne garantit — ni ne doit faire croire — que $t_{1/2}$ tombe près de $45\ \text{min}$, la moitié de ce cadre. Seule la définition sur $x$ commande la réponse.
+
+          **Le problème : $G$, pas $x$, est en ordonnée.** La Figure 1 donne $G(t)$, pas $x(t)$ : on ne peut donc pas lire directement l'instant où $x = x_{max}/2$. Il faut traduire cette condition sur $x$ en une condition sur $G$, grâce à la relation affine établie à la question 3 — c'est exactement le principe du **substitut monotone** (rung R1 de « Suivi temporel d'une transformation ») : $G$ varie de façon connue et monotone avec $x$, donc à chaque valeur de $x$ correspond une unique valeur de $G$, et réciproquement.
+
+          **La moitié de l'avancement final.**
+
+          $$\frac{x_{max}}{2} = \frac{2\cdot10^{-3}}{2} = 1\cdot10^{-3}\ \text{mol}$$
+
+          **La conductance correspondante, via la relation de la question 3.**
+
+          $$G(t_{1/2}) = -0{,}72\times1\cdot10^{-3} + 2{,}5\cdot10^{-3} = -0{,}72\cdot10^{-3} + 2{,}5\cdot10^{-3}$$
+
+          $$\boxed{G(t_{1/2}) = 1{,}78\cdot10^{-3}\ \text{S} = 1{,}78\ \text{mS}}$$
+
+          **Un contrôle gratuit.** $G$ est une fonction **affine** de $x$ : sa valeur à $x_{max}/2$ tombe donc, mécaniquement, exactement à mi-chemin entre $G(0)$ et $G(x_{max})$ — quelle que soit l'allure, en revanche, de $G$ en fonction du TEMPS (qui n'a rien d'affine, elle). $G(x_{max}) = -0{,}72\times2\cdot10^{-3}+2{,}5\cdot10^{-3} = 1{,}06\cdot10^{-3}\ \text{S} \approx 1{,}06\ \text{mS}$, et la moyenne de $2{,}5$ et $1{,}06$ vaut bien $1{,}78\ \text{mS}$. Cette valeur de plateau, $\approx 1{,}06\ \text{mS}$, recoupe d'ailleurs le palier « voisin de $G\approx1\ \text{mS}$ » décrit sur la Figure 1 — un second contrôle, indépendant du premier, qui confirme au passage que $x_{max}=n_B$ (question 2) est la bonne hypothèse.
+
+          **La lecture graphique, et une limite à signaler honnêtement.** Il reste à projeter $G \approx 1{,}78\ \text{mS}$ sur la courbe de la Figure 1 pour en lire l'abscisse. La description vérifiée de cette figure, reprise plus haut au mot près, ne fixe que les deux valeurs d'extrémité de la courbe ($G\approx2{,}5\ \text{mS}$ à $t=0$, palier $\approx1\ \text{mS}$) — elle-même explicitement flaguée « lectures d'échelle à confirmer sur le corrigé » — sans aucun point intermédiaire transcrit. On retient ici, par cohérence avec le sommet de cette leçon (l'exercice « r-bac », qui porte le même sujet 2010, la même figure), $t_{1/2} \approx 20\ \text{min}$ :
+
+          $$\boxed{t_{1/2} \approx 20\ \text{min}}$$
+
+          mais cette valeur n'est pas re-vérifiable de façon indépendante à partir de la seule description de figure disponible ici (voir le sourcing de cette entrée, et le SOURCING GAP en tête de fichier) : à confirmer en priorité contre le corrigé officiel ou un re-fetch du scan mesuré au pixel.
+
+          **Le piège nommé de cette question.** Lire $t_{1/2}$ à $t\approx45\ \text{min}$ « parce que c'est la moitié du cadre de $0$ à $90\ \text{min}$ » : rien dans la définition de $t_{1/2}$ ne fait intervenir la durée totale d'observation, seulement l'avancement. La courbe décroît d'abord vite puis de plus en plus lentement (elle tend vers un palier) : $t_{1/2}$ se trouve nécessairement AVANT la moitié du cadre, pas à mi-chemin de celui-ci.
+        steps:
+          - math: '\frac{x_{max}}{2} = \frac{2\cdot10^{-3}}{2} = 1\cdot10^{-3}\ \text{mol}'
+            note: "Moitie de l'avancement final (question 2)."
+          - math: 'G(t_{1/2}) = -0{,}72\times1\cdot10^{-3}+2{,}5\cdot10^{-3} = 1{,}78\cdot10^{-3}\ \text{S}'
+            note: "Conductance a la demi-reaction, via la relation de la question 3 (principe du substitut monotone)."
+          - math: 'G(x_{max}) = -0{,}72\times2\cdot10^{-3}+2{,}5\cdot10^{-3} = 1{,}06\cdot10^{-3}\ \text{S}'
+            note: "Controle : palier predit, coherent avec le palier voisin de 1 mS decrit sur la figure 1."
+          - math: '\boxed{t_{1/2} \approx 20\ \text{min}}'
+            note: "Lecture graphique, reprise du sommet r-bac par coherence : la figure verifiee ne porte pas de point intermediaire independant (voir sourcing)."
