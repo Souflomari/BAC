@@ -6,20 +6,30 @@
 # de leçon (r-bac + r-variation, [[exercise:]] à R8), pas la rampe embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les TROIS entrées transcrivent fidèlement les TROIS
-# entrées de docs/sujets/maths/fonction-exponentielle.md — LE SEUL CENSUS
-# pour cette notion : 2019 session normale (Exercice 4, filière SM, barème
-# 10 points, statut « vérifié » — agent-vérificateur-adversarial,
-# 2026-07-12), 2020 session normale (Problème, filière SExp, barème 7
-# points, statut « vérifié » — agent-vérificateur-adversarial, 2026-08-06)
-# et 2022 session normale (Problème, filière SExp, barème 8,5 points, statut
-# « corrigé (conforme au scan) », PAS « vérifié » — voir la note de sourcing
-# de l'entrée pour le détail de la correction de figure). Les STATUTS
-# DIFFÈRENT (deux « vérifié », un « corrigé (conforme au scan) »), tout
-# comme les FILIÈRES (SM pour 2019, SExp pour 2020 et 2022) : c'est reporté
+# exercises.yaml). Les QUATRE entrées de ce fichier :
+#   - 2019 session normale (Exercice 4, filière SM, barème 10 points, statut
+#     « vérifié » — agent-vérificateur-adversarial, 2026-07-12) ;
+#   - 2020 session normale (Problème, filière SExp, barème 7 points, statut
+#     « vérifié » — agent-vérificateur-adversarial, 2026-08-06) ;
+#   - 2022 session normale (Problème, filière SExp, barème 8,5 points, statut
+#     « corrigé (conforme au scan) », PAS « vérifié » — voir la note de
+#     sourcing de l'entrée pour le détail de la correction de figure) ;
+#   - 2025 session normale (Exercice 1, filière SM, barème 10 points, statut
+#     « vérifié » — agent-vérificateur-adversarial, 2026-08-27, PASSE SOUS LE
+#     PROTOCOLE COMPLET — voir la NOTE ÉDITORIALE bk-2025-n-x1 plus bas pour
+#     le détail).
+# Les trois premières transcrivent fidèlement les TROIS entrées de
+# docs/sujets/maths/fonction-exponentielle.md — le census de cette notion,
+# qui NE RECENSE PAS ENCORE 2025 : la quatrième entrée (bk-2025-n-x1) est
+# convertie directement depuis docs/sujets/_incoming/maths-sm-2025-n.md,
+# même situation que bk-2024-r-x2 dans
+# content/maths/calcul-integral/bank.yaml (converti depuis _incoming avant
+# que son propre census ne recense le rattrapage). Les STATUTS DIFFÈRENT
+# (trois « vérifié », un « corrigé (conforme au scan) »), tout comme les
+# FILIÈRES (SM pour 2019 et 2025, SExp pour 2020 et 2022) : c'est reporté
 # honnêtement, entrée par entrée, dans `sourcing.note` ci-dessous — aucune
-# des trois n'est requalifiée. Aucun autre sujet n'est disponible pour cette
-# notion : introuvable = absent, jamais inventé. Raisonnement rédigé à la
+# des quatre n'est requalifiée. Aucun autre sujet n'est disponible pour
+# cette notion : introuvable = absent, jamais inventé. Raisonnement rédigé à la
 # voix experte de la maison sur 100 % des questions ; barème transcrit tel
 # quel dans les énoncés ; conventions KaTeX (block scalars pour la prose,
 # KaTeX brut entre apostrophes simples dans steps[].math, notes sans
@@ -100,6 +110,121 @@
 # transcription. Reportée à l'élève dans le stem de q7 ci-dessous plutôt que
 # masquée ou inventée (même discipline honnête que l'absence de sujets non
 # trouvés, en tête de fichier).
+#
+# ─────────────────────────────────────────────────────────────────────────
+# NOTE ÉDITORIALE bk-2025-n-x1 (2025, session normale, Exercice 1, 10 pts,
+# filière SM) — à lire avant toute revue de cette entrée.
+#
+# SOURCE ET PROTOCOLE. Convertie depuis docs/sujets/_incoming/maths-sm-2025-n.md
+# (agent-vérificateur-adversarial, 2026-08-27, statut « vérifié » —
+# transcription fidèle, ZÉRO divergence sur l'énoncé, le barème ou
+# l'en-tête). C'est CETTE passe de vérification qui a découvert l'incident
+# de cache CDN décrit ci-dessous ; les quatre exigences du protocole en sont
+# nées, et cette conversion-ci est donc, contrairement à certaines
+# conversions antérieures du corpus (voir par exemple la RÉSERVE DE PORTÉE
+# de content/maths/calcul-integral/bank.yaml sur bk-2023-n-x2, une passe
+# antérieure à la règle), menée SOUS LE PROTOCOLE COMPLET : contrôle de
+# l'année imprimée sur CHAQUE page, recoupement par un instrument NON
+# visuel (OCR), MD5 des six pages consignés avec un second téléchargement,
+# et contrôle du `<title>` HTML servi.
+#
+# L'INCIDENT DE CACHE CDN. Le premier fetch de `element/145783` a renvoyé,
+# sous l'URL du sujet 2025, le sujet SM 2022 N (`<title>`/`<h1>` « 2022
+# Normale », PDF `…-2022-normale-sujet.pdf`, images `upload-84506`) — et les
+# images `upload-87482/0001`-`0003` elles-mêmes ont d'abord été servies avec
+# le contenu 2022. Sur ces pages 2022 substituées, une lecture VISUELLE, la
+# transcription attendue sous les yeux, a d'abord « retrouvé » l'énoncé 2025
+# — c'est-à-dire le texte de la transcription, pas celui du scan sous les
+# yeux. Seul un instrument NON visuel (OCR, `tesseract`), en rendant un
+# exercice en $\ln(1+x)$ et $F(x)=\int_x^1 f(t)\,dt$ truffé de mojibake, a
+# cassé l'illusion. Un second téléchargement a rendu les six pages 2025,
+# stables (deux téléchargements identiques, huit fetches HTML consécutifs
+# tous « 2025 Normale »). C'est le mode d'échec « un fichier entier qui
+# décrivait un autre sujet » du registre projet, découvert ici en pratique :
+# un vérificateur qui fetche une seule fois et relit avec la transcription
+# sous les yeux peut confirmer, en toute bonne foi, un scan qui décrit une
+# AUTRE année. D'où le protocole à quatre volets ci-dessus.
+#
+# RECOMPTE DU BARÈME (indépendant, à partir de l'énoncé source, PAS des
+# comptes fournis en consigne) : Partie I = 0,25+0,25+0,5+0,5+0,5+1+0,5+0,5
+# +0,25+0,25+0,5+0,25 = 5,25 · Partie II = 0,5+0,5+0,25+0,5+0,5+0,5+0,5+0,25
+# = 3,5 · Partie III = 0,25+0,5+0,5 = 1,25 · total 5,25+3,5+1,25 = 10 —
+# conforme à la carte des composantes du sujet (Exercice 1 : 10 pts) et au
+# recompte déjà consigné dans le fichier `_incoming`. 23 questions au total
+# (12 + 8 + 3), aucun écart trouvé.
+#
+# TABLE D'ATTRIBUTION DES 10 POINTS, bloc par bloc (reprise du fichier
+# `_incoming`, section « L'arbitrage du slug dominant ») — c'est elle qui
+# documente pourquoi le slug dominant retenu est `fonction-exponentielle` :
+#
+#   | Bloc                                                  | Questions                        | Points |
+#   |--------------------------------------------------------|-----------------------------------|--------|
+#   | Étude de la fonction exponentielle (symétrie, limites,  | I-1a→1d, I-2a, I-2b, I-3          | 3,5    |
+#   | dérivée, variations, tracé)                             |                                    |        |
+#   | Suites (récurrence, contraction, convergence, somme de   | II-3a→3d, III-1a, III-2           | 2,5    |
+#   | Riemann)                                                  |                                    |        |
+#   | Calcul intégral (Chasles/symétrie, changement de variable,| I-4a, I-4b, I-5a→5c, III-1b       | 2,25   |
+#   | primitive, aire)                                          |                                    |        |
+#   | Dérivabilité / étude (majoration |f'|≤f, TAF, TVI, point  | II-1, II-2a→2c                    | 1,75   |
+#   | fixe)                                                     |                                    |        |
+#
+# `fonction-exponentielle` est le plus gros bloc unique (3,5/10) ET
+# l'identité de l'exercice : $f$ EST une fonction exponentielle, la symétrie
+# $f(1-x)=f(x)$, l'expression de $f'$ via $e^{2x-1}$ et le maximum
+# $\frac{1}{2\sqrt e}$ sont tous des faits d'exponentielle. C'est le slug
+# dominant retenu ici.
+#
+# DEUX RÉSERVES — ARBITRAGES OWNER, PAS DES LECTURES — recopiées ici
+# (pas seulement dans le sas `_incoming`) parce que ce sont elles qui
+# expliquent pourquoi cette carte n'est pas un choix de slug évident :
+#
+#   1. AUCUN bloc n'atteint la moitié des 10 points — l'exercice est
+#      authentiquement composite. Le précédent bk-2022-n-x4 (partitionné
+#      entre content/maths/calcul-integral/bank.yaml et un autre fichier)
+#      montre que ce dépôt sait découper un gros exercice en plusieurs
+#      cartes. À 10 points pour une seule carte, le partitionnement mérite
+#      d'être considéré : décision de produit, OUVERTE, non tranchée par
+#      cette conversion.
+#   2. Les deux outils les plus durs de l'exercice — la primitive $\arctan$
+#      (I-5b) et la somme de Riemann (Partie III) — appartiennent à la
+#      notion `calcul-integral`, et y sont DÉJÀ pontés par bk-2024-r-x2
+#      (content/maths/calcul-integral/bank.yaml, question q1-a pour arctan,
+#      q1-b pour le théorème des sommes de Riemann). Les raisonnements de
+#      q-I-5b et q-III-2 ci-dessous RÉUTILISENT ce pontage — même énoncé de
+#      $(\arctan x)'=\frac1{1+x^2}$, même construction de somme de Riemann,
+#      même citation explicite de la carte source — au lieu d'en inventer
+#      un second. (Note d'honnêteté : le fichier `_incoming` d'origine
+#      affirme ailleurs qu'arctan n'a « aucun précédent » dans le corpus —
+#      c'est faux, le pontage bk-2024-r-x2 existe déjà et est repris ici.)
+#
+# SCOPE NOTE bk-2025-n-x1 (a) — RIEMANN + ARCTAN, PONTAGE RÉUTILISÉ, PAS
+# INVENTÉ. Comme documenté par la SCOPE NOTE 1 et la SCOPE NOTE 2 en tête de
+# content/maths/calcul-integral/bank.yaml, ni les sommes de Riemann ni la
+# primitive $\arctan$ ne sont portées par un rung de lesson.md de CETTE
+# notion (ni d'aucune autre notion du corpus — grep confirmé sur
+# lesson.md/items.yaml/checkpoints.yaml des 14 dossiers). Les questions
+# I-5b (primitive $\arctan$) et III-1a/III-2 (somme de Riemann) de cette
+# entrée mobilisent donc ces deux outils EXACTEMENT comme bk-2024-r-x2 le
+# fait déjà : le fait est énoncé explicitement au point d'usage ($(\arctan
+# x)'=\frac{1}{1+x^2}$ ; le théorème des sommes de Riemann
+# $\frac1n\sum_{k=1}^n f(k/n)\to\int_0^1 f$ pour $f$ continue sur $[0,1]$),
+# jamais rattaché à un rung qui ne le porte pas. ARBITRAGE OWNER déjà
+# consigné (calcul-integral/bank.yaml) : ces deux lacunes de corpus restent
+# ouvertes, cette entrée ne les referme pas, elle réutilise le seul pontage
+# existant.
+#
+# SCOPE NOTE bk-2025-n-x1 (b) — TAF / INÉGALITÉ DES ACCROISSEMENTS FINIS EN
+# II-3b, MÊME ADMISSION QUE bk-2019-n-x4 CI-DESSUS DANS CE FICHIER. La
+# majoration $|u_{n+1}-\alpha|\le\frac12|u_n-\alpha|$ (II-3b) s'obtient par
+# l'inégalité des accroissements finis (corollaire du théorème des
+# accroissements finis appliqué à $f$ entre $u_n$ et $\alpha$, avec
+# $|f'|<\frac12$ sur $[0,\frac12]$ établi en II-2a) — un outil de la notion
+# `derivabilite-etude-fonctions`, hors du corps R0–R7 de cette leçon, EXACTE-
+# MENT comme Rolle et le TAF le sont déjà pour bk-2019-n-x4 (questions
+# 3a/3b ci-dessus, voir la toute première SCOPE NOTE de ce fichier). Même
+# discipline : le théorème est énoncé, ses hypothèses vérifiées, son
+# application faite explicitement au point d'usage, jamais supposé acquis.
+# ─────────────────────────────────────────────────────────────────────────
 
 notion: maths/fonction-exponentielle
 
@@ -1033,3 +1158,549 @@ entries:
             note: "On evalue f prime en 2 plus ln3, avec e puissance x moins 2 egal 3 a ce point."
           - math: '\left(f^{-1}\right)''(2-\ln3) = \dfrac{1}{f''(2+\ln3)} = \dfrac{1}{-4} = -\dfrac14'
             note: "Derivee de la reciproque : 1 sur f prime evaluee au point correspondant."
+
+  # ── bk-2025-n-x1 — 2025 N (SM), Exercice 1 : fonction exponentielle
+  # symétrique, primitive en arctan, suite point fixe et sommes de Riemann ──
+  # Deux outils pontés depuis calcul-integral/bank.yaml (bk-2024-r-x2,
+  # questions q1-a et q1-b) : voir la NOTE ÉDITORIALE et les SCOPE NOTES
+  # bk-2025-n-x1 en tête de fichier pour le détail de l'arbitrage.
+  - id: bk-2025-n-x1
+    title: "Fonction exponentielle symétrique : dérivée, primitive en arctan, suite point fixe et sommes de Riemann"
+    source:
+      year: 2025
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 1"
+    bareme_total: 10
+    duration_min: 60
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session normale — examen national Sciences Mathématiques (SM-A
+        et SM-B), option française (BIOF), Mathématiques, 4 h, coef 9, code
+        sujet NS 24F, AlloSchool element/145783 (Exercice 1, barème 10
+        points ; consignes page 1/5, énoncé sur les pages 2/5-3/5 du scan,
+        images 0003-big.jpg et 0004-big.jpg). Transcription VÉRIFIÉE :
+        re-fetch AlloSchool indépendant + re-dérivation mathématique
+        complète de chaque identité + contrôle numérique,
+        agent-vérificateur-adversarial, 2026-08-27
+        (docs/sujets/_incoming/maths-sm-2025-n.md, statut « vérifié » —
+        zéro divergence sur l'énoncé, le barème et l'en-tête). CETTE PASSE
+        A DÉCOUVERT L'INCIDENT DE CACHE CDN D'ALLOSCHOOL : le premier fetch
+        de element/145783 a renvoyé, sous l'URL du sujet 2025, le contenu
+        du sujet SM 2022 N (titre, PDF et trois images sur six) ; une
+        lecture visuelle seule, la transcription attendue sous les yeux, y
+        a d'abord « retrouvé » l'énoncé 2025 attendu sur des pages qui ne
+        le contenaient pas — seul un instrument NON visuel (OCR) a cassé
+        l'illusion. Un second téléchargement a confirmé six pages 2025
+        stables, MD5 consignés en tête du fichier _incoming. Cette
+        conversion est donc menée SOUS LE PROTOCOLE COMPLET à quatre
+        volets (année imprimée relue page par page, instrument non visuel,
+        MD5 avec second téléchargement, contrôle du title HTML servi) — le
+        protocole né au terme de cette passe, contrairement à des
+        conversions antérieures de ce même corpus. Aucun défaut trouvé
+        dans le corps de l'énoncé. Recompte du barème indépendant,
+        conforme question par question à la carte des composantes du
+        sujet : Partie I = 5,25 + Partie II = 3,5 + Partie III = 1,25 = 10.
+    intro: |-
+      **Étude d'une fonction exponentielle (examen national, session normale 2025, Sciences Mathématiques).**
+
+      On considère la fonction numérique $f$ définie sur $\mathbb{R}$ par :
+
+      $$f(x) = \dfrac{e^{x}}{e^{2x} + e}$$
+
+      et soit $(\Gamma)$ sa courbe représentative dans un repère **orthogonal** (non orthonormé) $(O\,;\vec{i}, \vec{j})$.
+    questions:
+      - id: qI-1a
+        part: "Partie I, 1 — Symétrie et limites"
+        stem: |-
+          **(0,25 pt)** Montrer que : $(\forall x \in \mathbb{R})\ ;\quad f(1-x) = f(x)$
+        reasoning: |-
+          Une égalité à montrer pour TOUT réel $x$ se prouve en général par calcul direct : on part de $f(1-x)$, on substitue dans la définition de $f$, et on manipule jusqu'à retomber sur $f(x)$.
+
+          $$f(1-x) = \dfrac{e^{1-x}}{e^{2(1-x)}+e} = \dfrac{e^{1-x}}{e^{2-2x}+e}$$
+
+          Divise numérateur et dénominateur par $e$ pour faire apparaître une forme plus simple :
+
+          $$f(1-x) = \dfrac{e^{-x}}{e^{1-2x}+1}$$
+
+          Multiplie maintenant numérateur et dénominateur par $e^{2x}$ — un facteur strictement positif, l'égalité ne change pas de sens :
+
+          $$f(1-x) = \dfrac{e^{-x}\cdot e^{2x}}{\left(e^{1-2x}+1\right)e^{2x}} = \dfrac{e^{x}}{e^{1-2x+2x}+e^{2x}} = \dfrac{e^{x}}{e+e^{2x}} = f(x)$$
+
+          Donc $(\forall x\in\mathbb{R})\ ; f(1-x)=f(x)$. C'est cette symétrie qui porte toute la suite du problème : la partie I-4 et la partie III-1b s'y adossent directement.
+        steps:
+          - math: 'f(1-x) = \dfrac{e^{1-x}}{e^{2-2x}+e} = \dfrac{e^{-x}}{e^{1-2x}+1}'
+            note: "On divise numerateur et denominateur par e."
+          - math: 'f(1-x) = \dfrac{e^{-x}\cdot e^{2x}}{\left(e^{1-2x}+1\right)e^{2x}} = \dfrac{e^{x}}{e+e^{2x}}'
+            note: "On multiplie numerateur et denominateur par e puissance 2x, un facteur strictement positif."
+          - math: 'f(1-x) = \dfrac{e^{x}}{e^{2x}+e} = f(x)'
+            note: "C'est exactement la definition de f(x)."
+      - id: qI-1b
+        stem: |-
+          **(0,25 pt)** Interpréter graphiquement le résultat obtenu.
+        reasoning: |-
+          Une égalité du type $f(a-x)=f(x)$ pour tout $x$ dit toujours la même chose sur la courbe : les points d'abscisses $x$ et $a-x$ ont la même ordonnée, donc ils sont symétriques l'un de l'autre par rapport à la droite verticale $x=\frac{a}{2}$.
+
+          Ici $a=1$ : la droite $x=\dfrac12$ est axe de symétrie de $(\Gamma)$. Concrètement, la moitié droite de la courbe ($x\ge\frac12$) est l'image miroir de la moitié gauche ($x\le\frac12$) — c'est pour cela qu'à la question I-3, tracer $(\Gamma)$ sur $\left[\frac12,1\right]$ ne demande rien de plus qu'un reflet de ce qui est tracé sur $\left[0,\frac12\right]$.
+      - id: qI-1c
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{x \to -\infty} f(x)$ puis en déduire $\displaystyle\lim_{x \to +\infty} f(x)$
+        reasoning: |-
+          En $-\infty$, chaque brique de $f$ a une limite connue : $e^x\to0$ et $e^{2x}\to0$ (croissance stricte de exp, R1). Le numérateur tend vers $0$, le dénominateur vers $0+e=e$ — pas d'indétermination, un quotient dont le dénominateur tend vers une limite non nulle se traite terme à terme.
+
+          $$\lim_{x\to-\infty} f(x) = \dfrac{0}{0+e} = 0$$
+
+          Pour $+\infty$, l'énoncé demande explicitement d'EN DÉDUIRE la limite, pas de la recalculer : c'est un signal à exploiter la symétrie de la question I-1a plutôt que refaire un calcul de limite. Pose $x\to+\infty$ ; alors $1-x\to-\infty$, et $f(x)=f(1-x)$ pour tout $x$ (I-1a) donne directement :
+
+          $$\lim_{x\to+\infty} f(x) = \lim_{x\to+\infty} f(1-x) = \lim_{u\to-\infty} f(u) = 0$$
+
+          (le changement de nom $u=1-x$ ne fait que suivre où va la limite déjà calculée). Les deux limites valent $0$.
+        steps:
+          - math: '\lim_{x\to-\infty} e^{x} = 0,\quad \lim_{x\to-\infty} e^{2x} = 0 \ \Rightarrow\ \lim_{x\to-\infty} f(x) = \dfrac{0}{e} = 0'
+            note: "e puissance x et e puissance 2x tendent tous deux vers 0 en moins l'infini (rung R1) : le denominateur tend vers e, non nul."
+          - math: 'x\to+\infty \ \Rightarrow\ 1-x\to-\infty,\quad f(x)=f(1-x) \quad (\text{I-1a})'
+            note: "On reutilise la symetrie plutot que refaire le calcul : quand x tend vers plus l'infini, 1-x tend vers moins l'infini."
+          - math: '\lim_{x\to+\infty} f(x) = \lim_{u\to-\infty} f(u) = 0'
+            note: "Meme limite que celle deja calculee en moins l'infini."
+      - id: qI-1d
+        stem: |-
+          **(0,5 pt)** Interpréter graphiquement les deux résultats obtenus.
+        reasoning: |-
+          Une limite finie $\ell$ de $f$ quand $x\to\pm\infty$ se lit toujours comme une asymptote horizontale d'équation $y=\ell$. Ici $\ell=0$ des deux côtés (question précédente) : la droite $y=0$, c'est-à-dire l'axe des abscisses, est asymptote à $(\Gamma)$ à la fois en $-\infty$ et en $+\infty$. La courbe s'aplatit contre l'axe des abscisses des deux côtés sans jamais le toucher, puisque $f(x)>0$ pour tout $x$ (établi à la question suivante).
+      - id: qI-2a
+        part: "Partie I, 2 — Dérivée et variations"
+        stem: |-
+          **(0,5 pt)** Montrer que : $(\forall x \in \mathbb{R})\ ;\quad f'(x) = f(x)\,\dfrac{1 - e^{2x-1}}{1 + e^{2x-1}}$
+        reasoning: |-
+          $f$ est un quotient de fonctions dérivables sur $\mathbb{R}$ (numérateur et dénominateur bâtis sur $e^x$, dérivable partout sans condition, R3), et le dénominateur $e^{2x}+e$ ne s'annule jamais (somme de deux termes strictement positifs) : $f$ est dérivable sur $\mathbb{R}$. La règle du quotient donne directement une première forme de $f'$, qu'il faut ensuite faire correspondre à la forme demandée — pas la retrouver par hasard, la RECONNAÎTRE en factorisant $e^{2x-1}=\frac{e^{2x}}{e}$.
+
+          $$f'(x) = \dfrac{e^x(e^{2x}+e) - e^x\cdot 2e^{2x}}{(e^{2x}+e)^2} = \dfrac{e^x(e-e^{2x})}{(e^{2x}+e)^2}$$
+
+          C'est la forme brute. Pour la faire apparaître comme $f(x)$ fois quelque chose, factorise le numérateur et le dénominateur de la forme demandée par $e$ : avec $e^{2x-1}=\frac{e^{2x}}{e}$,
+
+          $$\dfrac{1-e^{2x-1}}{1+e^{2x-1}} = \dfrac{1-\frac{e^{2x}}{e}}{1+\frac{e^{2x}}{e}} = \dfrac{e-e^{2x}}{e+e^{2x}}$$
+
+          (numérateur et dénominateur multipliés par $e$). Donc
+
+          $$f(x)\,\dfrac{1-e^{2x-1}}{1+e^{2x-1}} = \dfrac{e^x}{e^{2x}+e}\times\dfrac{e-e^{2x}}{e+e^{2x}} = \dfrac{e^x(e-e^{2x})}{(e^{2x}+e)^2}$$
+
+          — exactement la forme brute obtenue au départ. Les deux expressions coïncident.
+        steps:
+          - math: 'f^{\prime}(x) = \dfrac{e^{x}(e^{2x}+e) - e^{x}\cdot 2e^{2x}}{(e^{2x}+e)^{2}} = \dfrac{e^{x}(e-e^{2x})}{(e^{2x}+e)^{2}}'
+            note: "Regle du quotient, applicable partout car le denominateur ne s'annule jamais."
+          - math: 'e^{2x-1} = \dfrac{e^{2x}}{e} \ \Rightarrow\ \dfrac{1-e^{2x-1}}{1+e^{2x-1}} = \dfrac{e-e^{2x}}{e+e^{2x}}'
+            note: "On multiplie haut et bas par e pour faire disparaitre la fraction interne."
+          - math: 'f(x)\,\dfrac{1-e^{2x-1}}{1+e^{2x-1}} = \dfrac{e^{x}}{e^{2x}+e}\times\dfrac{e-e^{2x}}{e+e^{2x}} = \dfrac{e^{x}(e-e^{2x})}{(e^{2x}+e)^{2}} = f^{\prime}(x)'
+            note: "Les deux expressions coincident : c'est bien la meme derivee."
+      - id: qI-2b
+        stem: |-
+          **(1 pt)** Donner les variations de $f$ puis en déduire que :
+
+          $$(\forall x \in \mathbb{R})\ ;\qquad 0 < f(x) < \frac{1}{2}$$
+        reasoning: |-
+          Le signe de $f'(x)=f(x)\frac{1-e^{2x-1}}{1+e^{2x-1}}$ (I-2a) est celui du facteur $\frac{1-e^{2x-1}}{1+e^{2x-1}}$ seul : $f(x)$ est un quotient de deux quantités strictement positives (numérateur $e^x>0$, dénominateur $e^{2x}+e>0$), donc $f(x)>0$ pour tout $x$ ; et $1+e^{2x-1}>0$ toujours, donc le dénominateur du facteur ne change jamais le signe non plus. Reste le numérateur $1-e^{2x-1}$.
+
+          $\exp$ strictement croissante (R1) : $e^{2x-1}<1=e^0 \iff 2x-1<0 \iff x<\dfrac12$. Donc $f'(x)>0$ sur $\left]-\infty,\frac12\right[$, $f'\left(\frac12\right)=0$, $f'(x)<0$ sur $\left]\frac12,+\infty\right[$ : $f$ est strictement croissante sur $\left]-\infty,\frac12\right]$, strictement décroissante sur $\left[\frac12,+\infty\right[$, avec un MAXIMUM en $x=\frac12$.
+
+          $$f\left(\dfrac12\right) = \dfrac{e^{1/2}}{e^{1}+e} = \dfrac{\sqrt e}{2e} = \dfrac{1}{2\sqrt e}$$
+
+          (on a simplifié $\frac{\sqrt e}{e}=\frac1{\sqrt e}$). Numériquement $\frac{1}{2\sqrt e}\approx0{,}3033$, donc STRICTEMENT inférieur à $\frac12$. Comme $f(x)\le f\left(\frac12\right)$ pour tout $x$ (le maximum global) et que ce maximum est déjà $<\frac12$, on a $f(x)<\frac12$ pour tout $x$ — l'inégalité ne devient jamais une égalité avec $\frac12$ lui-même. Combiné à $f(x)>0$ déjà établi :
+
+          $$(\forall x\in\mathbb{R})\ ;\quad 0<f(x)<\dfrac12$$
+        steps:
+          - math: 'f(x) = \dfrac{e^{x}}{e^{2x}+e} > 0 \quad (\text{quotient de deux quantites strictement positives})'
+            note: "f est toujours strictement positive : numerateur et denominateur le sont tous les deux."
+          - math: 'e^{2x-1}<1 \iff x<\dfrac12 \quad (\exp \text{ strictement croissante})'
+            note: "Le facteur 1 moins e puissance (2x-1) change de signe exactement en x = un demi."
+          - math: 'f \text{ croissante sur } \left]-\infty,\tfrac12\right],\ \text{decroissante sur } \left[\tfrac12,+\infty\right[ \ \Rightarrow\ \max_{\mathbb{R}} f = f\left(\tfrac12\right)'
+            note: "Tableau de variations : maximum global atteint en x = un demi."
+          - math: 'f\left(\dfrac12\right) = \dfrac{e^{1/2}}{e+e} = \dfrac{\sqrt e}{2e} = \dfrac{1}{2\sqrt e} \approx 0{,}3033'
+            note: "On evalue f en un demi et on simplifie racine de e sur e en 1 sur racine de e."
+          - math: '\dfrac{1}{2\sqrt e} < \dfrac12 \ \Rightarrow\ (\forall x\in\mathbb{R})\ ;\ 0<f(x)<\dfrac12'
+            note: "Le maximum global est deja strictement inferieur a un demi : f ne l'atteint jamais."
+      - id: qI-3
+        part: "Partie I, 3 — Tracé de la courbe"
+        stem: |-
+          **(0,5 pt)** Représenter graphiquement la courbe $(\Gamma)$.
+
+          *(On prendra $\|\vec{i}\| = 1\,cm$, $\|\vec{j}\| = 2\,cm$ et $\dfrac{1}{2\sqrt{e}} \cong 0{,}30$ et $\dfrac{1}{1+e} \cong 0{,}27$)*
+        reasoning: |-
+          On ne trace pas au hasard : on reporte les éléments déjà établis, question par question.
+
+          — **Asymptote** : la droite $y=0$ des deux côtés (I-1d).
+          — **Symétrie** : la droite verticale $x=\frac12$ (I-1b) — un seul demi-tracé suffit, l'autre est son reflet.
+          — **Maximum** : le point $\left(\frac12\,;\,\frac{1}{2\sqrt e}\right)\approx\left(\frac12\,;\,0{,}30\right)$ (I-2b), avec l'indication numérique donnée dans l'énoncé.
+          — **Valeurs aux bornes utiles** : $f(0)=\dfrac{1}{1+e}\approx0{,}27$ (l'autre valeur donnée), et par symétrie (I-1a, avec $x=1$) $f(1)=f(0)\approx0{,}27$ aussi.
+          — **Variations** : croissante sur $\left]-\infty,\frac12\right]$, décroissante sur $\left[\frac12,+\infty\right[$ (I-2b).
+
+          On place ces repères — le repère est ORTHOGONAL non normé, $2\,cm$ en ordonnée pour $1\,cm$ en abscisse, donc la courbe apparaît visuellement plus « haute » qu'elle ne l'est en unités réelles — puis on relie par une courbe montant jusqu'au sommet en $x=\frac12$ puis redescendant, symétrique par rapport à cet axe, s'aplatissant contre l'axe des abscisses des deux côtés.
+      - id: qI-4a
+        part: "Partie I, 4 — Relation de Chasles via la symétrie"
+        stem: |-
+          **(0,5 pt)** Montrer que : $\displaystyle\int_0^{\frac{1}{2}} f(x)\,dx = \int_{\frac{1}{2}}^{1} f(x)\,dx$
+        reasoning: |-
+          Deux intégrales de la même fonction sur deux intervalles différents qui doivent coïncider : le signal est un changement de variable qui envoie l'un des intervalles sur l'autre, combiné à la symétrie de I-1a.
+
+          Pose $t=1-x$ dans $\displaystyle\int_{1/2}^1 f(x)\,dx$ : quand $x=\frac12$, $t=\frac12$ ; quand $x=1$, $t=0$ ; et $dx=-dt$.
+
+          $$\int_{1/2}^{1} f(x)\,dx = \int_{1/2}^{0} f(1-t)\,(-dt) = \int_0^{1/2} f(1-t)\,dt$$
+
+          Or $f(1-t)=f(t)$ pour tout $t$ (I-1a) : la fonction sous l'intégrale se réécrit $f(t)$, sans rien changer aux bornes.
+
+          $$\int_{1/2}^{1} f(x)\,dx = \int_0^{1/2} f(t)\,dt = \int_0^{1/2} f(x)\,dx$$
+
+          (renommer la variable d'intégration ne change jamais la valeur de l'intégrale).
+        steps:
+          - math: 't=1-x,\quad dx=-dt,\qquad x=\tfrac12\to t=\tfrac12,\quad x=1\to t=0'
+            note: "Changement de variable t = 1 - x, avec les bornes transformees."
+          - math: '\int_{1/2}^{1} f(x)\,dx = \int_0^{1/2} f(1-t)\,dt'
+            note: "L'inversion des bornes (de 1/2 a 0 puis de 0 a 1/2) compense le signe moins du dx."
+          - math: 'f(1-t)=f(t) \quad (\text{I-1a}) \ \Rightarrow\ \int_{1/2}^{1} f(x)\,dx = \int_0^{1/2} f(t)\,dt = \int_0^{1/2} f(x)\,dx'
+            note: "La symetrie de la question I-1a transforme f(1-t) en f(t) : les deux integrales coincident."
+      - id: qI-4b
+        stem: |-
+          **(0,25 pt)** En déduire que $\displaystyle\int_0^{1} f(x)\,dx = 2\int_0^{\frac{1}{2}} f(x)\,dx$
+        reasoning: |-
+          La relation de Chasles découpe $[0,1]$ en $[0,\frac12]\cup[\frac12,1]$ :
+
+          $$\int_0^1 f(x)\,dx = \int_0^{1/2} f(x)\,dx + \int_{1/2}^1 f(x)\,dx$$
+
+          Le résultat de la question précédente dit que les deux morceaux sont ÉGAUX : on les additionne, ça revient à doubler l'un des deux.
+
+          $$\int_0^1 f(x)\,dx = \int_0^{1/2} f(x)\,dx + \int_0^{1/2} f(x)\,dx = 2\int_0^{1/2} f(x)\,dx$$
+        steps:
+          - math: '\int_0^1 f(x)\,dx = \int_0^{1/2} f(x)\,dx + \int_{1/2}^1 f(x)\,dx \quad (\text{relation de Chasles})'
+            note: "On decoupe [0,1] en deux morceaux adjacents."
+          - math: '\int_{1/2}^1 f(x)\,dx = \int_0^{1/2} f(x)\,dx \quad (\text{question precedente})'
+            note: "Les deux morceaux valent la meme chose."
+          - math: '\int_0^1 f(x)\,dx = 2\int_0^{1/2} f(x)\,dx'
+            note: "On additionne deux quantites egales : c'est le double de l'une d'elles."
+      - id: qI-5a
+        part: "Partie I, 5 — Changement de variable et primitive en arctan"
+        stem: |-
+          **(0,25 pt)** En effectuant le changement de variables : $t = e^{x}$, montrer que :
+
+          $$\int_0^{\frac{1}{2}} f(x)\,dx = \int_1^{\sqrt{e}} \frac{dt}{t^2 + e}$$
+        reasoning: |-
+          Pose $t=e^x$, donc $dt=e^x\,dx=t\,dx$, c'est-à-dire $dx=\dfrac{dt}{t}$. Bornes : $x=0\Rightarrow t=e^0=1$ ; $x=\frac12\Rightarrow t=e^{1/2}=\sqrt e$.
+
+          Réécris $f(x)\,dx$ en fonction de $t$ : $f(x)=\dfrac{e^x}{e^{2x}+e}=\dfrac{t}{t^2+e}$ (on a remplacé $e^x$ par $t$ et $e^{2x}=(e^x)^2$ par $t^2$). Donc :
+
+          $$f(x)\,dx = \dfrac{t}{t^2+e}\times\dfrac{dt}{t} = \dfrac{dt}{t^2+e}$$
+
+          (le facteur $t$ se simplifie exactement avec le $t$ au dénominateur du $dx$ — ce n'est pas une coïncidence, c'est ce qui rend ce changement de variable utile ici). En reportant les bornes :
+
+          $$\int_0^{1/2} f(x)\,dx = \int_1^{\sqrt e} \dfrac{dt}{t^2+e}$$
+        steps:
+          - math: 't=e^{x} \ \Rightarrow\ dt=e^{x}\,dx=t\,dx \ \Rightarrow\ dx=\dfrac{dt}{t}'
+            note: "Derivee de e puissance x : dt egale t fois dx."
+          - math: 'x=0\to t=1,\qquad x=\tfrac12\to t=\sqrt e'
+            note: "On transforme les deux bornes avec t = e puissance x."
+          - math: 'f(x) = \dfrac{e^{x}}{e^{2x}+e} = \dfrac{t}{t^{2}+e} \ \Rightarrow\ f(x)\,dx = \dfrac{t}{t^{2}+e}\times\dfrac{dt}{t} = \dfrac{dt}{t^{2}+e}'
+            note: "Le facteur t se simplifie exactement entre f(x) et dx : c'est ce qui rend ce changement de variable utile."
+          - math: '\int_0^{1/2} f(x)\,dx = \int_1^{\sqrt e} \dfrac{dt}{t^{2}+e}'
+            note: "On reporte les bornes transformees."
+      - id: qI-5b
+        stem: |-
+          **(0,5 pt)** Montrer que : $\displaystyle\int_0^{\frac{1}{2}} f(x)\,dx = \dfrac{1}{\sqrt{e}}\left(\arctan\left(\sqrt{e}\right) - \dfrac{\pi}{4}\right)$
+        reasoning: |-
+          Il reste à calculer $\displaystyle\int_1^{\sqrt e}\dfrac{dt}{t^2+e}$ (I-5a) : c'est une primitive de $\dfrac{1}{t^2+e}$ qu'il faut reconnaître. Cette famille de primitives est bâtie sur la fonction ARCTANGENTE, déjà pontée dans ce dépôt pour un exercice SM voisin — content/maths/calcul-integral/bank.yaml, entrée bk-2024-r-x2, question q1-a, primitive de $\frac{1}{1+x^2}$ sur $[0,1]$ — et on réutilise ICI exactement le même fait de référence, pas un second.
+
+          $\arctan$ est la fonction réciproque de la restriction de $\tan$ à $\left]-\frac{\pi}{2},\frac{\pi}{2}\right[$ ; par construction elle est dérivable sur $\mathbb{R}$ et
+
+          $$\left(\arctan x\right)^{\prime} = \dfrac{1}{1+x^2}$$
+
+          C'est une primitive de référence du programme de Sciences Mathématiques, au même titre que $\ln$ pour $\frac1x$ : elle se reconnaît, elle ne se redémontre pas en pleine épreuve.
+
+          Ici le dénominateur est $t^2+e$, pas $1+t^2$ : il faut GÉNÉRALISER le fait de référence, pas le réciter tel quel. Écris $e=(\sqrt e)^2$ et pose $a=\sqrt e$, de sorte que $t^2+e=a^2\left(1+\left(\frac{t}{a}\right)^2\right)$. La règle de dérivation d'une fonction composée applique alors le fait de référence à $u=\frac{t}{a}$ :
+
+          $$\dfrac{d}{dt}\left[\dfrac1a\arctan\left(\dfrac ta\right)\right] = \dfrac1a\times\dfrac{1/a}{1+(t/a)^2} = \dfrac{1}{a^2+t^2} = \dfrac{1}{t^2+e}$$
+
+          Donc $t\mapsto\dfrac{1}{\sqrt e}\arctan\left(\dfrac{t}{\sqrt e}\right)$ est une primitive de $\dfrac1{t^2+e}$. Applique-la entre $1$ et $\sqrt e$ :
+
+          $$\int_1^{\sqrt e}\dfrac{dt}{t^2+e} = \dfrac{1}{\sqrt e}\left[\arctan\left(\dfrac{\sqrt e}{\sqrt e}\right)-\arctan\left(\dfrac{1}{\sqrt e}\right)\right] = \dfrac{1}{\sqrt e}\left(\dfrac{\pi}{4}-\arctan\left(\dfrac{1}{\sqrt e}\right)\right)$$
+
+          (avec $\arctan(1)=\frac\pi4$, même valeur de référence que bk-2024-r-x2). Ce n'est pas encore la forme demandée — elle porte $\arctan\left(\frac1{\sqrt e}\right)$, l'énoncé veut $\arctan(\sqrt e)$. Le pont entre les deux est une identité de complémentarité : pour $u>0$, en posant $\theta=\arctan u\in\left]0,\frac\pi2\right[$, on a $\tan\left(\frac\pi2-\theta\right)=\frac{1}{\tan\theta}=\frac1u$, et $\frac\pi2-\theta$ est bien dans $\left]-\frac\pi2,\frac\pi2\right[$, donc
+
+          $$\arctan\left(\dfrac1u\right) = \dfrac\pi2-\arctan(u) \qquad (u>0)$$
+
+          Applique avec $u=\sqrt e$ : $\arctan\left(\frac1{\sqrt e}\right)=\frac\pi2-\arctan(\sqrt e)$. Reporte :
+
+          $$\int_1^{\sqrt e}\dfrac{dt}{t^2+e} = \dfrac{1}{\sqrt e}\left(\dfrac\pi4-\dfrac\pi2+\arctan(\sqrt e)\right) = \dfrac{1}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac\pi4\right)$$
+
+          — exactement la forme demandée. Avec I-5a :
+
+          $$\int_0^{1/2} f(x)\,dx = \dfrac{1}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac\pi4\right)$$
+        steps:
+          - math: '\left(\arctan x\right)^{\prime} = \dfrac{1}{1+x^{2}} \qquad (\text{fait de reference, meme que bk-2024-r-x2})'
+            note: "Primitive de reference du programme SM, reutilisee ici sans redemonstration."
+          - math: '\dfrac{d}{dt}\left[\dfrac1{\sqrt e}\arctan\left(\dfrac{t}{\sqrt e}\right)\right] = \dfrac{1}{t^{2}+e}'
+            note: "Generalisation par changement d'echelle : on verifie la derivee directement (regle de la fonction composee)."
+          - math: '\int_1^{\sqrt e}\dfrac{dt}{t^{2}+e} = \dfrac{1}{\sqrt e}\left[\arctan\left(\dfrac{t}{\sqrt e}\right)\right]_1^{\sqrt e} = \dfrac{1}{\sqrt e}\left(\dfrac{\pi}{4}-\arctan\left(\dfrac{1}{\sqrt e}\right)\right)'
+            note: "On evalue la primitive entre 1 et racine de e, avec arctan(1) = pi/4."
+          - math: '\arctan\left(\dfrac1u\right) = \dfrac{\pi}{2}-\arctan(u) \quad (u>0) \ \Rightarrow\ \arctan\left(\dfrac{1}{\sqrt e}\right) = \dfrac{\pi}{2}-\arctan(\sqrt e)'
+            note: "Identite de complementarite de arctan, appliquee avec u = racine de e."
+          - math: '\int_1^{\sqrt e}\dfrac{dt}{t^{2}+e} = \dfrac{1}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac{\pi}{4}\right) \ \Rightarrow\ \int_0^{1/2} f(x)\,dx = \dfrac{1}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac{\pi}{4}\right)'
+            note: "On reporte l'identite de complementarite, puis on relie a I-5a."
+      - id: qI-5c
+        stem: |-
+          **(0,25 pt)** En déduire l'aire, en $cm^2$, du domaine plan délimité par $(\Gamma)$, les droites d'équations respectives : $x = 0$, $x = 1$ et $y = 0$
+        reasoning: |-
+          Le domaine est délimité par $(\Gamma)$, l'axe des abscisses et les droites $x=0$, $x=1$ : comme $f(x)>0$ sur $\mathbb{R}$ tout entier (I-2b), la courbe reste au-dessus de l'axe sur $[0,1]$, et l'aire en unités d'aire vaut simplement $\displaystyle\int_0^1 f(x)\,dx$, sans valeur absolue à poser.
+
+          $$\int_0^1 f(x)\,dx = 2\int_0^{1/2} f(x)\,dx \quad (\text{I-4b}) = \dfrac{2}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac\pi4\right) \quad (\text{I-5b})$$
+
+          Reste à convertir en $cm^2$. Le repère est ORTHOGONAL — pas orthonormé : $\|\vec i\|=1\,cm$ et $\|\vec j\|=2\,cm$ (donnée de I-3). Une unité d'aire, c'est un rectangle de côtés $\|\vec i\|$ et $\|\vec j\|$, donc $1\,cm\times2\,cm=2\,cm^2$ — pas $1\,cm^2$ comme ce serait le cas dans un repère ORTHONORMÉ. Ce mot n'est pas accessoire : l'oublier fausserait l'aire d'un facteur 2.
+
+          $$\text{Aire} = 2 \times \dfrac{2}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac\pi4\right) = \dfrac{4}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac\pi4\right) \ cm^2 \approx 0{,}583\ cm^2$$
+        steps:
+          - math: 'f>0 \text{ sur } \mathbb{R} \ \Rightarrow\ \text{Aire (u.a.)} = \int_0^1 f(x)\,dx = 2\int_0^{1/2} f(x)\,dx = \dfrac{2}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac{\pi}{4}\right)'
+            note: "f reste au-dessus de l'axe des abscisses : pas de valeur absolue. On reutilise I-4b puis I-5b."
+          - math: '1\,\text{u.a.} = \|\vec i\|\times\|\vec j\| = 1\,cm\times2\,cm = 2\,\text{cm}^{2} \quad (\text{repere orthogonal, pas orthonorme})'
+            note: "Le repere est orthogonal non norme : l'unite d'aire vaut 2 centimetres carres, pas 1."
+          - math: '\text{Aire} = \dfrac{4}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac{\pi}{4}\right)\ \text{cm}^{2} \approx 0{,}583\ \text{cm}^{2}'
+            note: "On multiplie par 2 pour convertir en centimetres carres."
+      - id: qII-1
+        part: "Partie II, 1 — Une inégalité sur la dérivée"
+        stem: |-
+          **PARTIE II.** On considère la suite $(u_n)_{n \in \mathbb{N}}$ définie par : $u_0 \in\, \left]0\,;\dfrac{1}{2}\right[$ et $(\forall n \in \mathbb{N})\ ;\quad u_{n+1} = f(u_n)$
+
+          **(0,5 pt)** En utilisant le résultat de la question I.2-a), montrer que :
+
+          $$(\forall x \in \mathbb{R})\ ;\quad |f'(x)| \le f(x)$$
+        reasoning: |-
+          D'après I-2a, $f'(x)=f(x)\times\dfrac{1-e^{2x-1}}{1+e^{2x-1}}$. Pose $u=e^{2x-1}$ : $u>0$ pour tout réel $x$ (exponentielle toujours strictement positive, R1). Montrer $|f'(x)|\le f(x)$ revient, puisque $f(x)>0$ (I-2b), à montrer $\left|\dfrac{1-u}{1+u}\right|\le1$.
+
+          C'est une inégalité générale sur $u>0$ : il faut vérifier les deux sens. D'un côté $1-u<1+u \iff -u<u \iff 0<2u$, vrai car $u>0$ — donc $\dfrac{1-u}{1+u}<1$. De l'autre, $-(1+u)<1-u \iff -1-u<1-u \iff -1<1$, toujours vrai — donc $-1<\dfrac{1-u}{1+u}$. Les deux bornes tiennent :
+
+          $$-1 < \dfrac{1-u}{1+u} < 1 \ \Rightarrow\ \left|\dfrac{1-u}{1+u}\right| \le 1$$
+
+          Donc $|f'(x)| = f(x)\left|\dfrac{1-e^{2x-1}}{1+e^{2x-1}}\right| \le f(x)$.
+        steps:
+          - math: 'u = e^{2x-1} > 0 \quad (\forall x\in\mathbb{R})'
+            note: "u est toujours strictement positif : exponentielle."
+          - math: '1-u < 1+u \quad (\text{car } u>0) \ \Rightarrow\ \dfrac{1-u}{1+u} < 1'
+            note: "On compare 1-u a 1+u : la difference est 2u, positive."
+          - math: '-(1+u) < 1-u \quad (\text{car } -1<1) \ \Rightarrow\ -1 < \dfrac{1-u}{1+u}'
+            note: "L'autre sens de l'encadrement, toujours vrai."
+          - math: '\left|\dfrac{1-u}{1+u}\right|\le1 \ \Rightarrow\ |f^{\prime}(x)| = f(x)\left|\dfrac{1-u}{1+u}\right| \le f(x)'
+            note: "f(x) est strictement positive (I-2b) : on multiplie l'encadrement par f(x) sans changer de sens."
+      - id: qII-2a
+        part: "Partie II, 2 — Point fixe de f"
+        stem: |-
+          **(0,5 pt)** Montrer que : $\left(\forall x \in \left[0\,;\dfrac{1}{2}\right]\right)\ ;\quad 0 \le f'(x) < \dfrac{1}{2}$
+        reasoning: |-
+          Sur $\left[0,\frac12\right]$, $f$ est croissante (I-2b : $f$ croît sur $\left]-\infty,\frac12\right]$), donc $f'(x)\ge0$ sur cet intervalle — la dérivée d'une fonction croissante est positive ou nulle.
+
+          Pour la majoration, réutilise II-1 : $|f'(x)|\le f(x)$ pour tout $x$, et $f(x)<\frac12$ pour tout $x$ (I-2b). Donc $|f'(x)|<\frac12$. Comme $f'(x)\ge0$ sur $\left[0,\frac12\right]$, $f'(x)=|f'(x)|$ ici, donc $f'(x)<\frac12$.
+
+          $$(\forall x\in\left[0,\tfrac12\right])\ ;\quad 0\le f'(x)<\dfrac12$$
+        steps:
+          - math: 'f \text{ croissante sur } \left]-\infty,\tfrac12\right] \quad (\text{I-2b}) \ \Rightarrow\ (\forall x\in\left[0,\tfrac12\right])\ ;\ f^{\prime}(x)\ge0'
+            note: "Une fonction croissante a une derivee positive ou nulle."
+          - math: '|f^{\prime}(x)|\le f(x)<\dfrac12 \quad (\text{II-1 et I-2b})'
+            note: "On combine la majoration de la question precedente avec l'encadrement de f."
+          - math: 'f^{\prime}(x)\ge0 \ \Rightarrow\ f^{\prime}(x) = |f^{\prime}(x)| < \dfrac12'
+            note: "Comme f prime est positive ici, sa valeur absolue ne change rien : on obtient la majoration stricte."
+      - id: qII-2b
+        stem: |-
+          **(0,25 pt)** Montrer que la fonction $g : x \mapsto g(x) = f(x) - x$ est strictement décroissante sur $\mathbb{R}$
+        reasoning: |-
+          $g$ est dérivable sur $\mathbb{R}$ comme somme de $f$ (dérivable, I-2a) et de $x\mapsto -x$. $g'(x)=f'(x)-1$.
+
+          D'après II-1, $|f'(x)|\le f(x)$ pour tout $x$ ; et $f(x)<\frac12$ pour tout $x$ (I-2b). Donc $f'(x)\le|f'(x)|\le f(x)<\frac12$, en particulier $f'(x)<\frac12$ pour TOUT réel $x$, pas seulement sur $\left[0,\frac12\right]$.
+
+          $$g'(x) = f'(x)-1 < \dfrac12-1 = -\dfrac12 < 0$$
+
+          $g'(x)<0$ pour tout $x\in\mathbb{R}$ : $g$ est strictement décroissante sur $\mathbb{R}$.
+        steps:
+          - math: 'g(x) = f(x)-x \ \Rightarrow\ g^{\prime}(x) = f^{\prime}(x)-1'
+            note: "g est la somme de f et de moins x, toutes deux derivables sur R."
+          - math: 'f^{\prime}(x) \le |f^{\prime}(x)| \le f(x) < \dfrac12 \quad (\forall x\in\mathbb{R})'
+            note: "Meme majoration que la question precedente, mais valable ici sur R tout entier."
+          - math: 'g^{\prime}(x) = f^{\prime}(x)-1 < \dfrac12-1 = -\dfrac12 < 0 \ \Rightarrow\ g \text{ strictement decroissante sur } \mathbb{R}'
+            note: "g prime est strictement negative partout : g decroit strictement sur R tout entier."
+      - id: qII-2c
+        stem: |-
+          **(0,5 pt)** En déduire qu'il existe un unique réel $\alpha \in\, \left]0\,;\dfrac{1}{2}\right[$ tel que : $f(\alpha) = \alpha$
+        reasoning: |-
+          $f(\alpha)=\alpha \iff g(\alpha)=0$ : chercher un point fixe de $f$, c'est chercher un zéro de $g$. $g$ est continue (car dérivable, question précédente) et strictement décroissante sur $\mathbb{R}$, donc en particulier sur $\left[0,\frac12\right]$ — il suffit d'un changement de signe aux bornes pour conclure par le corollaire du théorème des valeurs intermédiaires.
+
+          $$g(0) = f(0)-0 = f(0) = \dfrac{1}{1+e} \approx 0{,}27 > 0$$
+
+          $$g\left(\dfrac12\right) = f\left(\dfrac12\right)-\dfrac12 = \dfrac{1}{2\sqrt e}-\dfrac12 \approx 0{,}30-0{,}50 = -0{,}20 < 0$$
+
+          $g(0)>0>g\left(\frac12\right)$, $g$ continue et strictement décroissante entre les deux : il existe un unique $\alpha\in\left]0,\frac12\right[$ tel que $g(\alpha)=0$, c'est-à-dire $f(\alpha)=\alpha$.
+        steps:
+          - math: 'f(\alpha)=\alpha \iff g(\alpha)=0'
+            note: "Chercher un point fixe de f revient a chercher un zero de g."
+          - math: 'g(0) = f(0) = \dfrac{1}{1+e} \approx 0{,}27 > 0'
+            note: "On evalue g en 0 : f(0) moins 0, soit f(0) directement."
+          - math: 'g\left(\dfrac12\right) = f\left(\dfrac12\right)-\dfrac12 = \dfrac{1}{2\sqrt e}-\dfrac12 \approx -0{,}20 < 0'
+            note: "On evalue g en un demi, avec le maximum de f deja calcule en I-2b."
+          - math: 'g(0)>0>g\left(\dfrac12\right),\ g \text{ continue et strictement decroissante} \ \Rightarrow\ \exists!\,\alpha\in\left]0,\tfrac12\right[,\ f(\alpha)=\alpha'
+            note: "Changement de signe sur un intervalle ou g est continue et strictement monotone : existence et unicite."
+      - id: qII-3a
+        part: "Partie II, 3 — La suite (u_n) : encadrement, contraction, convergence"
+        stem: |-
+          **(0,5 pt)** Montrer que : $(\forall n \in \mathbb{N})\ ;\quad 0 < u_n < \dfrac{1}{2}$
+        reasoning: |-
+          Récurrence. **Initialisation** : $u_0\in\left]0,\frac12\right[$ est l'hypothèse de départ sur la suite (donnée dans l'énoncé de la Partie II).
+
+          **Hérédité** : même sans supposer $0<u_n<\frac12$, le résultat de I-2b, $0<f(x)<\frac12$, est vrai pour TOUT réel $x$, donc en particulier pour $x=u_n$, quel que soit $u_n$ :
+
+          $$0 < f(u_n) < \dfrac12 \quad \text{c'est-à-dire} \quad 0 < u_{n+1} < \dfrac12$$
+
+          La propriété se transmet à tous les rangs : $(\forall n\in\mathbb{N})\ ; 0<u_n<\frac12$.
+        steps:
+          - math: 'u_0 \in\, \left]0,\tfrac12\right[ \quad (\text{hypothese initiale})'
+            note: "Rang 0 : c'est la definition de la suite donnee dans l'enonce."
+          - math: 'u_{n+1} = f(u_n),\qquad 0<f(x)<\dfrac12 \quad (\forall x\in\mathbb{R},\ \text{I-2b})'
+            note: "Le resultat de I-2b vaut pour tout reel x, sans condition sur x : il s'applique donc a u_n quel qu'il soit."
+          - math: '\Rightarrow\ 0 < u_{n+1} < \dfrac12 \ \Rightarrow\ (\forall n\in\mathbb{N})\ ;\ 0<u_n<\dfrac12'
+            note: "La propriete se transmet a tous les rangs par recurrence."
+      - id: qII-3b
+        stem: |-
+          **(0,5 pt)** Montrer que : $(\forall n \in \mathbb{N})\ ;\quad |u_{n+1} - \alpha| \le \dfrac{1}{2}|u_n - \alpha|$
+        reasoning: |-
+          On veut majorer $|u_{n+1}-\alpha|=|f(u_n)-f(\alpha)|$ (en utilisant $f(\alpha)=\alpha$, II-2c) par une quantité proportionnelle à $|u_n-\alpha|$. C'est exactement le rôle de l'INÉGALITÉ DES ACCROISSEMENTS FINIS — un corollaire du théorème des accroissements finis (TAF), un outil hors du corps de cette leçon, déjà mobilisé pour un autre sujet de cette même banque (bk-2019-n-x4, questions 3a/3b, où il est introduit de la même façon) : si $f$ est dérivable sur un intervalle $I$ et $|f'|\le k$ sur $I$, alors pour tous $a,b\in I$, $|f(b)-f(a)|\le k|b-a|$.
+
+          $u_n\in\left]0,\frac12\right[$ (question précédente) et $\alpha\in\left]0,\frac12\right[$ (II-2c) : les deux points, et donc tout le segment entre eux, vivent dans $\left[0,\frac12\right]$. Sur cet intervalle, $|f'|<\frac12$ (II-2a) — en particulier $|f'|\le\frac12$. L'inégalité des accroissements finis, appliquée à $f$ entre $u_n$ et $\alpha$ avec $k=\frac12$, donne :
+
+          $$|f(u_n)-f(\alpha)| \le \dfrac12|u_n-\alpha|$$
+
+          Or $f(u_n)=u_{n+1}$ et $f(\alpha)=\alpha$ : c'est exactement $|u_{n+1}-\alpha|\le\frac12|u_n-\alpha|$.
+        steps:
+          - math: 'u_n,\alpha \in\, \left]0,\tfrac12\right[ \ \Rightarrow\ [u_n,\alpha] \subset \left[0,\tfrac12\right] \quad (\text{ou } [\alpha,u_n])'
+            note: "Les deux points vivent dans [0, un demi] : tout le segment entre eux aussi."
+          - math: '|f^{\prime}| < \dfrac12 \text{ sur } \left[0,\tfrac12\right] \quad (\text{II-2a})'
+            note: "Majoration de la derivee sur l'intervalle qui contient u_n et alpha."
+          - math: '|f(u_n)-f(\alpha)| \le \dfrac12|u_n-\alpha| \quad (\text{inegalite des accroissements finis})'
+            note: "Corollaire du theoreme des accroissements finis (TAF) : la derivee majoree par un demi majore l'ecart des images."
+          - math: 'f(u_n)=u_{n+1},\ f(\alpha)=\alpha \ \Rightarrow\ |u_{n+1}-\alpha| \le \dfrac12|u_n-\alpha|'
+            note: "u_{n+1} est f(u_n) par definition, et f(alpha) vaut alpha (II-2c)."
+      - id: qII-3c
+        stem: |-
+          **(0,5 pt)** Montrer par récurrence que : $(\forall n \in \mathbb{N})\ ;\quad |u_n - \alpha| \le \left(\dfrac{1}{2}\right)^{n+1}$
+        reasoning: |-
+          **Initialisation ($n=0$)** : $u_0$ et $\alpha$ vivent tous les deux dans $\left]0,\frac12\right[$, un intervalle de longueur $\frac12$ : leur écart est donc strictement inférieur à $\frac12$, en particulier $|u_0-\alpha|\le\left(\frac12\right)^{0+1}=\frac12$.
+
+          **Hérédité** : suppose $|u_n-\alpha|\le\left(\frac12\right)^{n+1}$. La question précédente donne $|u_{n+1}-\alpha|\le\frac12|u_n-\alpha|$. Combine les deux :
+
+          $$|u_{n+1}-\alpha| \le \dfrac12\times\left(\dfrac12\right)^{n+1} = \left(\dfrac12\right)^{n+2} = \left(\dfrac12\right)^{(n+1)+1}$$
+
+          — exactement la propriété au rang $n+1$. Elle se transmet donc à tous les rangs.
+
+          *(Remarque : contrairement à d'autres sujets qui portent un facteur $|u_0-\alpha|$ dans cette majoration, celui-ci n'apparaît pas ici — c'est licite précisément parce que $u_0$ et $\alpha$ vivent tous deux dans $\left]0,\frac12\right[$, ce qui fournit déjà $|u_0-\alpha|<\frac12$ au rang 0.)*
+        steps:
+          - math: 'u_0,\alpha \in\, \left]0,\tfrac12\right[ \ \Rightarrow\ |u_0-\alpha| < \dfrac12 = \left(\dfrac12\right)^{0+1}'
+            note: "Rang 0 : les deux valeurs sont dans un intervalle de longueur un demi, donc leur ecart est inferieur a un demi."
+          - math: '|u_n-\alpha|\le\left(\dfrac12\right)^{n+1} \ \Rightarrow\ |u_{n+1}-\alpha| \le \dfrac12\left(\dfrac12\right)^{n+1} = \left(\dfrac12\right)^{n+2}'
+            note: "On applique la question precedente a l'hypothese de recurrence."
+          - math: '\Rightarrow\ (\forall n\in\mathbb{N})\ ;\ |u_n-\alpha| \le \left(\dfrac12\right)^{n+1}'
+            note: "La propriete se transmet a tous les rangs : recurrence close."
+      - id: qII-3d
+        stem: |-
+          **(0,25 pt)** En déduire que la suite $(u_n)_{n \in \mathbb{N}}$ converge vers $\alpha$
+        reasoning: |-
+          $\left(\frac12\right)^{n+1}\to0$ quand $n\to+\infty$ (suite géométrique de raison $\frac12\in\,]0,1[$). L'encadrement $0\le|u_n-\alpha|\le\left(\frac12\right)^{n+1}$ (question précédente) coince $|u_n-\alpha|$ entre deux suites qui tendent toutes les deux vers $0$ : par le théorème des gendarmes, $|u_n-\alpha|\to0$, c'est-à-dire $u_n\to\alpha$.
+        steps:
+          - math: '\left(\dfrac12\right)^{n+1} \xrightarrow[n\to+\infty]{} 0 \quad (\text{suite geometrique de raison } \tfrac12\in\,]0,1[)'
+            note: "Raison entre 0 et 1 : la suite geometrique tend vers 0."
+          - math: '0\le|u_n-\alpha|\le\left(\dfrac12\right)^{n+1} \ \Rightarrow\ |u_n-\alpha|\to0 \quad (\text{gendarmes}) \ \Rightarrow\ u_n\to\alpha'
+            note: "Theoreme des gendarmes : encadre par deux suites qui tendent vers 0, u_n moins alpha tend vers 0."
+      - id: qIII-1a
+        part: "Partie III, 1 — Réécriture de S_n et un pont vers la Partie I"
+        stem: |-
+          **PARTIE III.** On considère la suite numérique $(S_n)_{n \in \mathbb{N}}$ définie par :
+
+          $$(\forall n \in \mathbb{N}^{*})\ ;\qquad S_n = \frac{1}{n(n+1)}\sum_{k=1}^{k=n} \frac{k}{e^{\frac{k}{n}} + e^{\frac{n-k}{n}}}$$
+
+          **(0,25 pt)** Vérifier que : $(\forall n \in \mathbb{N}^{*})\ ;\quad S_n = \dfrac{1}{n+1}\displaystyle\sum_{k=1}^{k=n} \dfrac{k}{n}\,f\!\left(\dfrac{k}{n}\right)$
+        reasoning: |-
+          Le terme général de la somme de $S_n$ ressemble à $f$ évaluée quelque part, mais pas immédiatement — il faut RECONNAÎTRE la structure. Réécris $f$ sous une forme équivalente en divisant sa définition par $e^x$ :
+
+          $$f(x) = \dfrac{e^x}{e^{2x}+e} = \dfrac{1}{e^x + \dfrac{e}{e^x}} = \dfrac{1}{e^x+e^{1-x}}$$
+
+          Applique cette forme à $x=\dfrac kn$ : comme $\dfrac{n-k}{n}=1-\dfrac kn$,
+
+          $$f\!\left(\dfrac kn\right) = \dfrac{1}{e^{k/n}+e^{1-k/n}} = \dfrac{1}{e^{k/n}+e^{(n-k)/n}}$$
+
+          — exactement le dénominateur du terme général de $S_n$. Donc chaque terme $\dfrac{k}{e^{k/n}+e^{(n-k)/n}}$ vaut $k\times f\!\left(\dfrac kn\right)$, que l'on réécrit $n\times\dfrac kn\times f\!\left(\dfrac kn\right)$ (multiplier et diviser par $n$ fait apparaître le rapport $\frac kn$ dont on aura besoin plus tard). Report dans $S_n$ :
+
+          $$S_n = \dfrac{1}{n(n+1)}\sum_{k=1}^n n\times\dfrac kn\, f\!\left(\dfrac kn\right) = \dfrac{n}{n(n+1)}\sum_{k=1}^n \dfrac kn\,f\!\left(\dfrac kn\right) = \dfrac{1}{n+1}\sum_{k=1}^n \dfrac kn\,f\!\left(\dfrac kn\right)$$
+
+          (le facteur $n$ sort de la somme car il ne dépend pas de $k$, puis se simplifie avec le $n$ du dénominateur).
+        steps:
+          - math: 'f(x) = \dfrac{e^{x}}{e^{2x}+e} = \dfrac{1}{e^{x}+e^{1-x}} \quad (\text{on divise numerateur et denominateur par } e^{x})'
+            note: "Forme equivalente de f, obtenue en divisant par e puissance x."
+          - math: '\dfrac{n-k}{n} = 1-\dfrac kn \ \Rightarrow\ f\!\left(\dfrac kn\right) = \dfrac{1}{e^{k/n}+e^{(n-k)/n}}'
+            note: "On applique la forme equivalente de f au point k sur n."
+          - math: '\dfrac{k}{e^{k/n}+e^{(n-k)/n}} = k\,f\!\left(\dfrac kn\right) = n\times\dfrac kn\,f\!\left(\dfrac kn\right)'
+            note: "Le terme general de la somme est exactement k fois f(k/n), reecrit en faisant apparaitre k sur n."
+          - math: 'S_n = \dfrac{1}{n(n+1)}\times n\sum_{k=1}^n \dfrac kn\,f\!\left(\dfrac kn\right) = \dfrac{1}{n+1}\sum_{k=1}^n \dfrac kn\,f\!\left(\dfrac kn\right)'
+            note: "Le facteur n sort de la somme et se simplifie avec le n du denominateur n(n+1)."
+      - id: qIII-1b
+        stem: |-
+          **(0,5 pt)** Montrer que : $\displaystyle\int_0^{1} x\,f(x)\,dx = \int_0^{\frac{1}{2}} f(x)\,dx$
+
+          *(On pourra effectuer le changement de variables : $t = 1 - x$)*
+        reasoning: |-
+          Note $I=\displaystyle\int_0^1 x\,f(x)\,dx$. Pose $t=1-x$ comme suggéré : $x=1-t$, $dx=-dt$, bornes $x=0\to t=1$, $x=1\to t=0$.
+
+          $$I = \int_1^0 (1-t)f(1-t)(-dt) = \int_0^1 (1-t)f(1-t)\,dt$$
+
+          Or $f(1-t)=f(t)$ pour tout $t$ (I-1a — la même symétrie qui a déjà servi en I-4a) :
+
+          $$I = \int_0^1 (1-t)f(t)\,dt = \int_0^1 f(t)\,dt - \int_0^1 t\,f(t)\,dt = \int_0^1 f(x)\,dx - I$$
+
+          (on a distribué le produit, puis renommé $t$ en $x$ dans la deuxième intégrale, qui n'est autre que $I$ elle-même). On obtient une équation en $I$ :
+
+          $$2I = \int_0^1 f(x)\,dx \ \Rightarrow\ I = \dfrac12\int_0^1 f(x)\,dx$$
+
+          Et $\dfrac12\displaystyle\int_0^1 f(x)\,dx = \displaystyle\int_0^{1/2} f(x)\,dx$ est exactement le résultat de I-4b, lu à l'envers. Donc $I=\displaystyle\int_0^{1/2} f(x)\,dx$ — l'exercice se recoupe avec lui-même, comme prévu par sa construction.
+        steps:
+          - math: 't=1-x,\quad dx=-dt,\qquad x=0\to t=1,\quad x=1\to t=0'
+            note: "Changement de variable suggere par l'enonce."
+          - math: 'I = \int_0^1 (1-t)f(1-t)\,dt = \int_0^1 (1-t)f(t)\,dt \quad (f(1-t)=f(t),\ \text{I-1a})'
+            note: "Meme symetrie qu'en I-4a et I-4b, reutilisee ici."
+          - math: 'I = \int_0^1 f(t)\,dt - \int_0^1 t\,f(t)\,dt = \int_0^1 f(x)\,dx - I'
+            note: "On distribue le produit (1-t) f(t) : la seconde integrale est I elle-meme, renommee."
+          - math: '2I = \int_0^1 f(x)\,dx \ \Rightarrow\ I = \dfrac12\int_0^1 f(x)\,dx = \int_0^{1/2} f(x)\,dx \quad (\text{I-4b})'
+            note: "Equation en I : on la resout, puis on relie a I-4b pour retomber sur l'integrale deja connue."
+      - id: qIII-2
+        part: "Partie III, 2 — Convergence de S_n par somme de Riemann"
+        stem: |-
+          **(0,5 pt)** Montrer que la suite $(S_n)_{n \in \mathbb{N}}$ est convergente et déterminer sa limite.
+        reasoning: |-
+          D'après III-1a, $S_n = \dfrac{1}{n+1}\displaystyle\sum_{k=1}^n \dfrac kn\,f\!\left(\dfrac kn\right)$. Fais apparaître une SOMME DE RIEMANN : pose $g(x)=x\,f(x)$ et réécris
+
+          $$S_n = \dfrac{n}{n+1}\times\dfrac1n\sum_{k=1}^n g\!\left(\dfrac kn\right)$$
+
+          (on a multiplié et divisé par $n$). Le facteur $\dfrac1n\sum_{k=1}^n g\!\left(\dfrac kn\right)$ est EXACTEMENT la forme d'une somme de Riemann — le même théorème, sous la même forme exacte, que celui déjà mobilisé pour un sujet SM voisin de cette banque, content/maths/calcul-integral/bank.yaml, entrée bk-2024-r-x2, question q1-b :
+
+          $$\dfrac1n\sum_{k=1}^n h\!\left(\dfrac kn\right) \xrightarrow[n\to+\infty]{} \int_0^1 h(x)\,dx \qquad (h \text{ continue sur } [0,1])$$
+
+          Ici $h=g$ : $g(x)=x\,f(x)$ est continue sur $[0,1]$ (produit de deux fonctions continues, $x\mapsto x$ et $f$, cette dernière continue car dérivable sur $\mathbb{R}$ tout entier, I-2a). Le théorème s'applique :
+
+          $$\dfrac1n\sum_{k=1}^n \dfrac kn\,f\!\left(\dfrac kn\right) \xrightarrow[n\to+\infty]{} \int_0^1 x\,f(x)\,dx$$
+
+          Et $\dfrac{n}{n+1}\to1$ quand $n\to+\infty$ (quotient de deux termes de même degré en $n$). $S_n$ est donc le PRODUIT de deux suites convergentes :
+
+          $$S_n \xrightarrow[n\to+\infty]{} 1\times\int_0^1 x\,f(x)\,dx = \int_0^1 x\,f(x)\,dx$$
+
+          Il reste à identifier cette limite avec un nombre déjà connu. D'après III-1b, $\displaystyle\int_0^1 x\,f(x)\,dx=\int_0^{1/2}f(x)\,dx$, et d'après I-5b, $\displaystyle\int_0^{1/2}f(x)\,dx=\dfrac{1}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac\pi4\right)$. L'exercice boucle sur lui-même : I-5b, puis III-1b, ferment maintenant III-2.
+
+          $$\boxed{\lim_{n\to+\infty} S_n = \dfrac{1}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac\pi4\right) \approx 0{,}1457}$$
+        steps:
+          - math: 'S_n = \dfrac{n}{n+1}\times\dfrac1n\sum_{k=1}^n g\!\left(\dfrac kn\right) \quad (g(x)=x\,f(x))'
+            note: "On multiplie et divise par n pour faire apparaitre la forme exacte d'une somme de Riemann."
+          - math: '\dfrac1n\sum_{k=1}^n h\!\left(\dfrac kn\right) \xrightarrow[n\to+\infty]{} \int_0^1 h(x)\,dx \quad (h \text{ continue sur } [0,1])'
+            note: "Theoreme des sommes de Riemann (programme SM), meme forme que bk-2024-r-x2 question q1-b."
+          - math: 'g(x)=x\,f(x) \text{ continue sur } [0,1] \ \Rightarrow\ \dfrac1n\sum_{k=1}^n \dfrac kn\,f\!\left(\dfrac kn\right) \xrightarrow[n\to+\infty]{} \int_0^1 x\,f(x)\,dx'
+            note: "g est continue comme produit de deux fonctions continues : le theoreme s'applique."
+          - math: '\dfrac{n}{n+1}\to1 \ \Rightarrow\ S_n \xrightarrow[n\to+\infty]{} \int_0^1 x\,f(x)\,dx'
+            note: "Produit de deux suites convergentes : la limite est le produit des limites."
+          - math: '\int_0^1 x\,f(x)\,dx = \int_0^{1/2} f(x)\,dx \quad (\text{III-1b}) = \dfrac{1}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac{\pi}{4}\right) \quad (\text{I-5b})'
+            note: "On relie a III-1b puis a I-5b : l'exercice boucle sur lui-meme."
