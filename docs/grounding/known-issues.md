@@ -477,6 +477,64 @@ policies for the seed migrations to keep working. Reconciliation
 These came up during the audit and need to land in the backlog even
 though the dislike list does not mention them.
 
+### K-0. `lib/examens.ts` ne sait pas représenter un exercice « au choix »
+
+**Découvert le 2026-08-23**, en ouvrant le scan de SM 2020 session normale
+pour décider s'il fallait le transcrire. **Confirmé sur le scan lui-même**,
+pas déduit.
+
+**Le fait.** Certaines épreuves nationales offrent un **choix** entre deux
+exercices. SM 2020 normale (`element/109635`, code NS 25) l'énonce en toutes
+lettres sur sa page 1 :
+
+> « Le candidat doit traiter EXERCICE3 et EXERCICE4 et choisir de traiter
+> EXERCICE1 ou bien EXERCICE2. — Le candidat doit traiter au total trois (3)
+> exercices »
+
+avec le détail : exercice 1 (arithmétique, 3,5 pts, **au choix**) *ou bien*
+exercice 2 (structures algébriques, 3,5 pts, **au choix**) ; exercice 3
+(nombres complexes, 3,5 pts, **obligatoire**) ; exercice 4 (analyse,
+**13 points**, obligatoire). Le barème réel d'un candidat vaut donc
+$3{,}5 + 3{,}5 + 13 = 20$.
+
+**Le défaut.** `web/src/lib/examens.ts` groupe les entrées de banque sur
+`source.{filiere, year, session}` et **somme tous les `bareme_total`** du
+groupe. Il n'a aucune notion d'exercice optionnel. Conséquence immédiate,
+vérifiable dans le corpus tel qu'il est aujourd'hui : SM 2020 normale y
+compte **trois** entrées — arithmétique 3,5 (ex. 1), structures algébriques
+3,5 (ex. 2) et nombres complexes 3,5 (ex. 3) — soit 10,50/20 affichés, alors
+qu'aucun candidat réel n'a jamais traité à la fois l'exercice 1 et
+l'exercice 2. **L'épreuve est déjà sur-comptée**, silencieusement.
+
+**Ce que ça bloque.** L'exercice 4 (analyse, 13 pts) est le seul qui manque
+pour reconstituer cette épreuve. Le convertir donnerait
+$3{,}5+3{,}5+3{,}5+13 = 23{,}5$ — au-dessus de 20, ce qui casserait
+l'affichage et l'honnêteté de la carte. **La transcription de SM 2020 est
+donc suspendue en attendant l'arbitrage**, et c'est la seule des six épreuves
+SM de session normale qui l'est.
+
+**Trois issues possibles, à l'arbitrage de l'owner** — je n'en ai choisi
+aucune :
+
+1. **Apprendre l'option au modèle.** Ajouter un champ optionnel à
+   `source` (par exemple `groupe_choix: "A"`) et faire compter au maximum une
+   entrée par groupe dans le total. C'est la solution juste, et la plus
+   coûteuse : elle touche le schéma de banque, le validateur et l'assembleur.
+2. **N'en banquer qu'un des deux**, et dire lequel et pourquoi dans le
+   `sourcing.note` de l'autre — au prix d'un exercice vérifié laissé hors
+   corpus.
+3. **Laisser SM 2020 hors d'Examens blancs**, en la marquant explicitement
+   comme non assemblable pour cause de format à choix.
+
+**À vérifier avant de trancher :** SM 2020 est-elle la seule épreuve du
+corpus à ce format ? Le `CENSUS` de `docs/sujets/maths/` signale la mention
+« format à CHOIX (Ex1 OU Ex2) » sur cette seule ligne, mais le census
+lui-même ne couvre pas toutes les sessions (plusieurs sont marquées
+« non lu »). Un balayage des pages 1 des scans SM trancherait.
+
+**Severity.** sev-2 — l'affichage est faux sur une épreuve, silencieusement,
+et il le serait davantage après conversion. Aucun risque de production.
+
 ### K-1. `get_user_weak_areas` function references missing columns
 **Source.** `backend/supabase/migrations/004_exam_analytics_and_sync.sql`,
 lines 45–74.
