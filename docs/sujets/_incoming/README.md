@@ -145,12 +145,32 @@ renseignement le plus utile pour la suite :
 - **2022 N : substitution de police MASSIVE**, systématique et non
   intermittente. Aucun symbole mathématique non alphabétique ne s'y lit pour
   ce qu'il montre. Le fichier porte une **table de correspondance complète**,
-  glyphe par glyphe, avec la base de chaque adjudication. Deux pièges y sont
-  isolés : un glyphe qui vaut tantôt $\mathbb{N}$ tantôt $+\infty$ selon le
-  contexte, et un « l » de « ln » absorbé par une parenthèse extensible —
-  celui-ci adjugé non pas à l'œil mais par une **conséquence vérifiable**
-  ($F(1)$ doit valoir $0$, et une seule lecture le donne). C'est ainsi qu'on
-  tranche un glyphe.
+  glyphe par glyphe. Sa vérification a **identifié la substitution** au lieu
+  de la deviner : c'est la police **Symbol** rendue au même code par une
+  police latine, et **dix-sept glyphes concordent** avec cette hypothèse. Une
+  fois la table de codes établie, chaque glyphe se lit par décodage et non par
+  ressemblance.
+
+  **Une ligne de ma table était fausse, et c'était la plus contradictoire :**
+  j'y donnais le symbole de la partie E pour un « D latin, pas $\Delta$ »,
+  alors que la ligne suivante lisait le même glyphe rendu comme $\Delta$.
+  Le scan porte bien $\Delta_k$. Établi par trois mesures indépendantes —
+  Symbol 0x44 $= \Delta$ ; le glyphe indexé est **romain droit** au milieu de
+  variables italiques, signature d'un caractère substitué ; et il est
+  **identique au pixel** au discriminant de l'exercice 2 (19×20 px tous les
+  deux, écart moyen 0,09/255).
+
+  **Et une deuxième correction, qui porte sur la méthode.** J'avais écrit
+  qu'un « l » de « ln » était *absorbé* par une parenthèse extensible, et
+  j'avais adjugé la lecture par une conséquence vérifiable — $F(1)$ doit
+  valoir $0$, et une seule lecture le donne. La lecture était juste ; **le
+  diagnostic était faux** : au zoom ×8 le « l » est présent et parfaitement
+  lisible, simplement superposé au fragment de parenthèse. La leçon n'est pas
+  celle que je croyais tirer, et elle est meilleure : **un contrôle par
+  conséquence valide une lecture sans exiger qu'on ait compris pourquoi le
+  glyphe est illisible.** Il faut le faire même quand on croit avoir tout
+  compris — et surtout, ne pas confondre « j'ai trouvé la bonne réponse » avec
+  « j'ai compris ce que je regardais ».
 
 ### Deux lacunes signalées AVANT conversion, et non pendant
 
