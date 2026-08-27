@@ -119,7 +119,7 @@ exactement la moitié qui manque.
 | `maths-sm-2023-n.md` | exercices 1 et 2 | 7,75 + 2,25 | **vérifiée** — aucun défaut dans les énoncés *(passe antérieure à la règle du 2026-08-27, voir la note de portée du fichier)* |
 | `maths-sm-2024-n.md` | exercices 1 et 2 | 7,5 + 2,5 | **vérifiée** — un défaut du SUJET OFFICIEL (numéros 4 et 5 croisés entre la p. 1 et le corps) *(idem)* |
 | `maths-sm-2025-n.md` | exercice 1 (problème unique) | 10 | **vérifiée** — aucun défaut ; c'est cette passe qui a découvert l'incident de cache CDN |
-| `maths-sm-2017-n.md` | exercice 4 (problème unique) | 10 | **en cours**, sous le protocole complet |
+| `maths-sm-2017-n.md` | exercice 4 (problème unique) | 10 | **INTERROMPUE** — passe tuée en cours d'écriture ; barème, glyphes, `;` à l'octet et classement établis, mais 5 des 7 points du docket restent ouverts. NON clearé |
 
 **SM 2020 est le sixième, et il est SUSPENDU** — pas oublié. Son format à
 choix n'est pas représentable par l'assembleur d'épreuves ; voir
