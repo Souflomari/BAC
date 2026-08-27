@@ -222,6 +222,8 @@ Comparons avec deux autres distances, sur cette même corde. À $d = 1{,}5\ \tex
 
 Le son est une **onde mécanique** : comme toute onde mécanique (chapitre précédent), il a besoin d'un milieu de propagation matériel — il ne se propage pas dans le vide. C'est aussi une onde **longitudinale** : il se propage par des compressions et des dilatations successives de l'air, dans la même direction que celle où le son avance.
 
+*Rappel du critère, parce qu'un sujet d'examen le demande dans les deux sens.* « Longitudinale » et « transversale » ne se retiennent pas comme deux étiquettes : elles se **décident** en comparant deux directions — celle selon laquelle la perturbation déplace les points du milieu, et celle selon laquelle l'onde avance. Parallèles, l'onde est longitudinale ; perpendiculaires, elle est **transversale**. Le critère complet, avec ses deux exemples fondateurs — le ressort qu'on comprime (longitudinale) et la corde qu'on pince (transversale) —, est posé au rung 2 du chapitre précédent, « Ondes mécaniques progressives ». Le son est le cas longitudinal ; les vagues à la surface de l'eau et l'onde le long d'une corde sont les cas transversaux, et une question de bac peut demander l'un comme l'autre.
+
 Quand la source du son vibre périodiquement — une corde de guitare pincée, un diapason frappé, des cordes vocales qui vibrent pour tenir une note — le son qu'elle produit est une onde progressive périodique, exactement comme la corde des rungs précédents : tout ce qui a été établi en R1, R2 et R3 s'applique, avec la même mécanique de proche en proche.
 
 Dans l'air, dans les conditions ordinaires, la célérité du son vaut environ $340\ \text{m/s}$.
