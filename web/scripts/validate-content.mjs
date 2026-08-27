@@ -408,6 +408,38 @@ for (const dir of dirs) {
           }
         }
 
+        // `duration_min` doit tenir la convention de la maison : ≈ 6 minutes
+        // par point de barème (BANK-SPEC §2).
+        //
+        // Ce n'est PAS le rythme d'examen — le vrai papier tourne à 9 min/pt
+        // (PC, 3 h pour /20) et 12 min/pt (SM, 4 h). C'est exactement là que
+        // la dérive s'est produite une première fois : onze entrées avaient
+        // été écrites au rythme d'examen et ont dû être renormalisées le
+        // 2026-08-27, puis trois autres le même jour.
+        //
+        // Pourquoi une porte plutôt qu'une convention écrite : `duration_min`
+        // s'affiche à un élève qui décide quoi attaquer ce soir. Deux cartes
+        // équivalentes qui annoncent « 43 min » et « 29 min » n'apprennent
+        // rien sur l'exercice et tout sur qui l'a écrit.
+        //
+        // La fourchette est large (4,5–7,5) à dessein : elle absorbe les
+        // arrondis sur les petits barèmes tout en attrapant le seul vrai mode
+        // d'échec, l'écriture au rythme d'examen. Le corpus mesuré tient
+        // aujourd'hui dans 5,00–7,00, médiane exactement 6,00 sur 183 entrées.
+        {
+          const bareme = Number(e?.bareme_total);
+          const duree = Number(e?.duration_min);
+          if (Number.isFinite(bareme) && bareme > 0 && Number.isFinite(duree) && duree > 0) {
+            const ratio = duree / bareme;
+            if (ratio < 4.5 || ratio > 7.5) {
+              console.error(
+                `  ✗ ${dir}/bank.yaml: ${eId} duration_min=${duree} pour ${bareme} pts = ${ratio.toFixed(2)} min/pt — hors de la convention 6 min/pt (BANK-SPEC §2) ; attendu ~${Math.round(bareme * 6)} min`
+              );
+              dirFail++;
+            }
+          }
+        }
+
         // bk- id convention + uniqueness.
         if (!/^bk-/.test(eId)) {
           console.error(`  ✗ ${dir}/bank.yaml: entry id "${eId}" must follow the bk-<year>-<n|r>-x<pos> convention (start with "bk-")`);
