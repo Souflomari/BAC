@@ -761,8 +761,31 @@ valeurs **encadrées**, il ignore les entiers < 10, et il ne compare pas
 question par question. Le cas PC 2010 (t½) lui échappe complètement — la
 valeur n'y est pas dans un `\boxed{}`. **Il ne prouve donc pas l'absence
 d'autres divergences ; il prouve seulement qu'il n'y en a pas dans ce
-périmètre-là.** Un balayage question par question, apparié sur
-`{filiere, year, session}`, reste à écrire.
+périmètre-là.**
+
+**Le balayage question par question a été tenté aussi** (apparié sur l'année
+du sujet, en comparant toutes les valeurs suivies d'une unité physique, pas
+seulement les encadrées). Il ne trouve **aucune divergence neuve** non plus,
+et son plancher de bruit est trop haut pour servir de porte. Mais il rend
+visible quelque chose qui vaut plus que son résultat : **les deux cas connus
+ne sont pas de la même nature.**
+
+| | ce que le dépôt contient | ce que ça veut dire |
+|---|---|---|
+| **PC 2019** | 532 des deux côtés, **525 côté banque seulement** | **DIVERGENCE** — les deux endroits se contredisent |
+| **PC 2010** | **20 des deux côtés**, rien d'autre | **HÉRITAGE** — la banque a repris le sommet ; le dépôt est cohérent avec lui-même *et faux ensemble* |
+
+**Conséquence méthodologique, et c'est le vrai enseignement de K-8 :** un
+contrôle **interne au dépôt** ne peut attraper que la divergence. Il est
+structurellement aveugle à l'héritage — quand une valeur fausse a été recopiée
+d'un endroit à l'autre « pour rester cohérent », plus rien dans le dépôt ne la
+contredit. **Seule une re-mesure contre le scan attrape ce cas-là**, et c'est
+exactement ce qui a révélé PC 2010.
+
+Autrement dit : aucune porte automatique ne fermera K-8. Ce qui la ferme, c'est
+de re-mesurer les valeurs graphiques sur la source la moins dégradée, sujet par
+sujet — le geste que le protocole du sas impose désormais aux transcriptions
+neuves, mais que le contenu **déjà converti** n'a jamais subi.
 
 ### K-1. `get_user_weak_areas` function references missing columns
 **Source.** `backend/supabase/migrations/004_exam_analytics_and_sync.sql`,
