@@ -160,6 +160,114 @@
 # Garder les trois : elles enseignent trois usages différents du même
 # vocabulaire (« suite indexée par $n$ », « limite par majoration ou par
 # l'absurde »), précisément ce qui prévient la mémorisation d'un seul patron.
+#
+# AJOUT DU 2026-08-27 (2) — bk-2024-n-x1 (2024, session NORMALE, filière SM,
+# Exercice 1 — 7,5 points). Converti depuis
+# docs/sujets/_incoming/maths-sm-2024-n.md (agent-vérificateur-adversarial,
+# 2026-08-27, statut « vérifié » — re-fetch indépendant + re-dérivation, une
+# seule correction de caractère trouvée dans le corps de l'exercice : voir
+# sourcing.note de l'entrée). NE PAS CONFONDRE avec bk-2024-n-x4 ni
+# bk-2024-r-x1 ci-dessous, tous deux déjà dans ce fichier — voir FLAG DE
+# JUMELAGE plus bas pour la séparation complète. Avec l'ajout jumeau de
+# bk-2024-n-x2 dans content/maths/calcul-integral/bank.yaml, cette
+# conversion fait passer l'épreuve SM 2024 normale de 10,00 à 20,00/20 dans
+# Examens blancs.
+#
+# NOTE ÉDITORIALE — DÉFAUT DU SUJET OFFICIEL NS 24F, SANS EFFET SUR CE
+# FICHIER (consignée ici à la conversion de bk-2024-n-x1, Exercice 1 du même
+# sujet, pour qu'un futur mainteneur du corpus SM 2024 la trouve au même
+# endroit que l'exercice qui l'a fait remonter). La page 1 du scan (carte
+# des composantes) et le corps du sujet (pages 4 et 5) n'attribuent PAS le
+# même numéro aux deux derniers exercices : la page 1 étiquette
+# « EXERCICE5 » le problème de structures algébriques (loi $T$ sur
+# $\mathbb{C}\times\mathbb{C}^{*}$, 3,5 pts) et « EXERCICE4 » celui
+# d'arithmétique (Fermat, résolution modulo 221, 3 pts), alors que le corps
+# imprime l'inverse — « EXERCICE4 » (p. 4) pour les structures algébriques,
+# « EXERCICE5 » (p. 5) pour l'arithmétique. C'est une INCOHÉRENCE DU SUJET
+# OFFICIEL, pas une erreur de transcription : elle n'est donc « réparée »
+# nulle part, ni ici ni dans les bank.yaml concernés. Sans effet sur le /20
+# (les couples domaine↔barème sont corrects des deux côtés, seuls les
+# numéros sont croisés) et SANS EFFET sur les Exercices 1 et 2 transcrits
+# dans ce fichier-ci et dans content/maths/calcul-integral/bank.yaml — leur
+# numéro, lui, est identique en page 1 et dans le corps. La banque suit la
+# numérotation DU CORPS, déjà vérifié dans les bank.yaml existants :
+# bk-2024-n-x4 (structures algébriques, loi $T$) est bien dans
+# content/maths/structures-algebriques/bank.yaml, et bk-2024-n-x5
+# (arithmétique, Fermat) est bien dans content/maths/arithmetique/bank.yaml
+# — ne pas se fier à la colonne « numéro » de la page 1 de ce scan si ce
+# sujet est un jour re-consulté. Source :
+# docs/sujets/_incoming/maths-sm-2024-n.md, encadré « Correction du
+# vérificateur — en-tête (p. 1) contre corps du sujet ».
+#
+# RÉSERVE DE PORTÉE SUR CETTE VÉRIFICATION (bk-2024-n-x1) — à lire avant de
+# s'appuyer dessus. La passe qui a validé cet énoncé PRÉCÈDE elle aussi la
+# règle du 2026-08-27, exactement comme la réserve déjà posée plus haut pour
+# bk-2023-n-x1 — même situation, sujet différent. Une passe ultérieure, sur
+# SM 2025 normale, a découvert qu'AlloSchool peut servir depuis son cache
+# CDN un AUTRE sujet que celui demandé — et qu'une lecture visuelle, la
+# transcription sous les yeux, « retrouve » alors l'énoncé attendu sur des
+# pages qui ne le contiennent pas. Le protocole du sas exige depuis quatre
+# contrôles (docs/sujets/_incoming/README.md, « la lecture visuelle seule ne
+# suffit pas ») : année imprimée relue sur CHAQUE page, recoupement par un
+# instrument NON visuel, MD5 consignés avec un second téléchargement,
+# contrôle du `<title>` servi.
+#   Ce que cette passe-ci a fait : re-dérivation des URLs d'images depuis le
+#   HTML, CONTRÔLE DU `<title>` SERVI (« Examen National Mathématiques
+#   Sciences Maths 2024 Normale - Sujet » — qui nomme la bonne année et la
+#   bonne filière), lecture des pages comme images avec recadrages LANCZOS
+#   ×2, et re-dérivation mathématique de toutes les identités des deux
+#   exercices transcrits (celui-ci, et bk-2024-n-x2,
+#   content/maths/calcul-integral/bank.yaml, même sujet, même passe).
+#   Ce qu'elle n'a pas fait : l'année page par page, le recoupement non
+#   visuel, les MD5 avec second téléchargement.
+# Le contrôle du `<title>` est un vrai garde-fou — il vient du HTML, pas de
+# l'attente du lecteur, et c'est lui qui a mis la passe SM 2025 sur la
+# piste. Risque résiduel FAIBLE MAIS NON NUL, pour les mêmes raisons que la
+# réserve posée pour bk-2023-n-x1. À L'ARBITRAGE DE L'OWNER : re-passer ce
+# sujet sous le protocole complet, ou accepter le niveau de preuve
+# ci-dessus. Cette réserve est recopiée ici — et pas seulement laissée dans
+# le fichier `_incoming` — parce que c'est CE fichier-ci qu'un mainteneur
+# lira le jour où il se demandera d'où sort l'énoncé qu'il a sous les yeux.
+#
+# SCOPE NOTE ADDITIONNELLE (bk-2024-n-x1) : au-delà des domaines déjà
+# recensés par le classement de docs/sujets/_incoming/maths-sm-2024-n.md
+# (repris à l'identique dans le `reasoning` de chaque question — limites-
+# continuite pour q1/q2/q3-c, dérivabilité-et-étude-de-fonctions pour
+# q3-b/q4/q5-c/q5-d/q6/q7, calcul-integral pour q5 tout entière,
+# suites-numeriques pour q8), cette entrée mobilise DEUX FOIS le théorème
+# des accroissements finis (TAF, domaine `derivabilite-etude-fonctions`,
+# hors socle R0–R6 de cette leçon, spécifique SM — docket de complétude,
+# docs/audits/lesson-completeness-docket.md, catégorie C) :
+#   — question 3-b, sur l'indication explicite de l'énoncé (« On pourra
+#     utiliser le théorème des accroissements finis sur l'intervalle
+#     $[0\,;t]$ ») — le théorème y est énoncé, ses hypothèses vérifiées et
+#     appliqué en entier, comme pour bk-2023-n-x1 ci-dessus (question
+#     III-2-b) et bk-2023-n-x2, content/maths/calcul-integral/bank.yaml
+#     (question 1-a) ;
+#   — question 8-a, un SECOND usage, non suggéré explicitement cette fois
+#     par l'énoncé, pour majorer $|a_{n+1}-a|$ par $\frac12|a_n-a|$ (une
+#     itération de point fixe) : le `reasoning` de la question 8-a réutilise
+#     le théorème déjà énoncé à la question 3-b plutôt que de le répéter mot
+#     pour mot, mais l'application (fonction auxiliaire, hypothèses,
+#     conclusion) y est faite intégralement, au point d'usage.
+#
+# FLAG DE JUMELAGE — bk-2024-n-x1 face à bk-2024-n-x4 et bk-2024-r-x1
+# (toutes deux déjà dans ce fichier, voir ci-dessus/ci-dessous). Les trois
+# identifiants partagent l'année 2024, mais rien d'autre : `source.filiere`
+# et `source.session` les séparent, jamais la ressemblance de l'id.
+#   — bk-2024-n-x4 : même année (2024), même session (normale), mais
+#     filière SExp — le Problème du sujet NS 22F,
+#     $f(x)=x+1-\ln(e^x-x)$ — une copie entièrement différente.
+#   — bk-2024-r-x1 : même filière (SM), même position d'exercice (Exercice 1
+#     du sujet), mais session de RATTRAPAGE (code RS 25) et fonction
+#     entièrement différente (la famille $f_n(x)=x-x^n\ln x$).
+#   — bk-2024-n-x1 (cette entrée) est la seule des trois en filière SM ET
+#     session normale : Exercice 1 du sujet NS 24F, $f(x)=\ln(x)/(x^2-1)$,
+#     bâti autour d'un encadrement par le théorème des accroissements finis
+#     (q3-b) et d'une suite itérée par point fixe (q8) — aucune des deux
+#     autres entrées n'emploie ces deux techniques ensemble.
+# C'est `source.{filiere, year, session}` qui sépare les épreuves dans
+# l'assemblage de web/src/lib/examens.ts, jamais l'id seul.
 
 notion: maths/fonction-logarithme
 
@@ -3082,3 +3190,643 @@ entries:
             note: "Les deux bornes (0 et 1/2 puissance n fois |beta-alpha|) tendent vers 0 : le milieu aussi."
           - math: '\boxed{\lim_{n\to+\infty} u_n = \alpha}'
             note: "Par definition : le taux d'accroissement de u_n a alpha qui tend vers 0 signifie que u_n tend vers alpha."
+  # ── bk-2024-n-x1 — 2024 N, Exercice 1 : f(x) = ln(x)/(x^2-1), continuite
+  #    et derivabilite a droite en 1 par le TAF, signe de f' par deux
+  #    integrales, suite iteree par point fixe ──
+  - id: bk-2024-n-x1
+    title: "Étude de f(x) = ln(x)/(x² − 1) : continuité et dérivabilité à droite en 1 par le théorème des accroissements finis, signe de f' par deux intégrales, et convergence géométrique d'une suite par point fixe"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 1 — Analyse (7,5 points)"
+    bareme_total: 7.5
+    duration_min: 45
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national Mathématiques, filière
+        Sciences Mathématiques (A) et (B), option française (BIOF), 4 h,
+        coefficient 9, code sujet NS 24F, AlloSchool element/145739
+        (course-436/upload-87447), pages 2 et 3 sur 5 (consignes en page 1).
+        Barème de l'exercice : 7,5 points, annoncé en page 1 (carte des
+        composantes : Ex1 = 7,5 ; Ex2 = 2,5 ; Ex3 = 3,5 ; « EXERCICE5 »
+        imprimé = 3,5 pour les structures algébriques ; « EXERCICE4 »
+        imprimé = 3 pour l'arithmétique ; somme = 20 — la page 1 croise les
+        numéros de ces deux derniers par rapport au corps du sujet, sans
+        effet sur cet exercice ; voir NOTE ÉDITORIALE en tête de fichier).
+        Recompte question par question, refait indépendamment sur l'énoncé
+        transcrit : 0,5(q1) + 0,5(q2) + 0,25(q3-a) + 0,5(q3-b) + 0,25(q3-c) +
+        0,5(q4-a) + 0,5(q4-b) + 0,5(q5-a) + 0,5(q5-b) + 0,5(q5-c) +
+        0,5(q5-d) + 0,25(q6-a) + 0,5(q6-b) + 0,5(q7) + 0,5(q8-a) +
+        0,5(q8-b) + 0,25(q8-c) = 7,5, DIX-SEPT items — conforme au recompte
+        du fichier source lui-même (« 0,5+0,5 (q1, q2) + 0,25+0,5+0,25 (q3)
+        + 0,5+0,5 (q4) + 0,5+0,5+0,5+0,5 (q5) + 0,25+0,5 (q6) + 0,5 (q7) +
+        0,5+0,5+0,25 (q8) = 7,5 ») et au barème de marge relevé colonne par
+        colonne par le vérificateur (6,25 p. 2 + 1,25 p. 3 = 7,5). Aucun
+        écart de comptage cette fois — contrairement à bk-2023-n-x1
+        ci-dessus, dont le sourcing.note documente un écart réel (13
+        annoncés contre 17 recomptés) : ici la consigne de conversion et le
+        recompte indépendant s'accordent d'emblée sur 17. Transcription
+        vérifiée par une passe adversariale indépendante (2026-08-27,
+        docs/sujets/_incoming/maths-sm-2024-n.md, statut « vérifié ») :
+        re-fetch de element/145739, extraction des cinq URLs d'images depuis
+        le HTML, CONTRÔLE DU `<title>` SERVI (« Examen National Mathématiques
+        Sciences Maths 2024 Normale - Sujet »), lecture des pages 2 et 3 sur
+        l'image — jamais sur le texte transcrit —, treize recadrages
+        LANCZOS ×2 sur les zones critiques (q3-a/b, q4-a, q5, q5-c/d,
+        q6-b/q7, q8, en-tête, ex. 2 en entier, S_n, les trois expressions de
+        ℓ, les colonnes de marge seules), et re-dérivation mathématique
+        complète de chaque « montrer que »/« vérifier que » de l'exercice.
+        UN SEUL DÉFAUT DE FIDÉLITÉ TROUVÉ, mineur et déjà corrigé dans le
+        texte transcrit repris ici : la question 7 porte $]1,2[$ (virgule)
+        sur le scan, et non $]1\,;2[$ (point-virgule) comme une première
+        lecture l'avait noté — le sujet mélange les deux séparateurs
+        (virgule dans les intervalles de l'exercice, point-virgule dans
+        l'indication du TAF de la q3-b et dans tout l'exercice 2) et c'est
+        lui qui décide. UN DÉFAUT DU SUJET OFFICIEL, SANS EFFET SUR CET
+        EXERCICE : la page 1 du sujet inverse les numéros des exercices 4 et
+        5 par rapport au corps (voir NOTE ÉDITORIALE en tête de fichier) ;
+        Exercice 1 et Exercice 2, eux, portent le même numéro en page 1 et
+        dans le corps. CONTRE-CALCUL INDÉPENDANT, refait pour cette
+        conversion et non recopié du fichier source : chaque limite,
+        encadrement, identité, dérivée et étude de signe des 17 questions a
+        été redérivée séparément (voir le `reasoning` de chaque question) ;
+        aucun écart trouvé avec la re-dérivation du vérificateur
+        adversarial — en particulier q3-b (le TAF appliqué à
+        $\varphi(u)=-\sqrt u+\ln(1+\sqrt u)$ sur $[0,t]$ produit exactement
+        l'encadrement imprimé), q4-a (l'identité à trois termes se réduit
+        des deux côtés à $(2\ln x-x^2+1)/(2(x-1)^2(x+1))$), q5-b/c ($I(x)$,
+        $J(x)$ et $f'(x)$ retrouvés à l'identique), et q8 (la contraction
+        géométrique de raison $\frac12$ et la convergence vers $a$). FILIÈRE
+        — POINT CRITIQUE : `source.filiere` doit valoir « SM », impérativement
+        — cette même position d'exercice (Exercice 1) existe déjà dans ce
+        fichier sous une AUTRE filière et un AUTRE sujet ; voir FLAG DE
+        JUMELAGE en tête de fichier pour la séparation complète avec
+        bk-2024-n-x4 (SExp, même année, même session, Problème) et
+        bk-2024-r-x1 (SM, même année, session de rattrapage). AJOUT AU
+        CORPUS : avec l'ajout jumeau de bk-2024-n-x2 (Exercice 2) dans
+        content/maths/calcul-integral/bank.yaml, cette conversion fait
+        passer l'épreuve SM 2024 normale de 10,00/20 (les trois exercices
+        d'algèbre — nombres complexes, structures algébriques, arithmétique
+        — déjà en banque) à 20,00/20, complète, dans Examens blancs.
+    intro: |-
+      **Problème d'analyse (examen national, Sciences Mathématiques, session normale 2024 — Exercice 1, 7,5 points).**
+
+      *L'épreuve dure 4 heures et comporte cinq exercices indépendants, traitables dans l'ordre choisi par le candidat. Cet exercice à lui seul pèse plus du tiers du barème. L'usage de la calculatrice n'est pas autorisé.*
+
+      Soit $f$ la fonction numérique définie sur l'intervalle $[1,+\infty[$ par : $f(1) = \dfrac12$, et pour tout $x\in\,]1,+\infty[$, $f(x) = \dfrac{\ln x}{x^2-1}$. Soit $(C)$ la courbe représentative de $f$ dans un repère orthogonal $(O,\vec i,\vec j)$.
+
+      *Le fil de l'exercice.* Après continuité et une première limite (questions 1-2), l'exercice construit un encadrement délicat par le théorème des accroissements finis (question 3), qui sert ensuite à établir la dérivabilité à droite en $1$ (question 4). La question 5 retrouve le signe de $f'$ par un détour inattendu — deux intégrales, $I(x)$ et $J(x)$ — plutôt que par un calcul direct de dérivée seule. Les questions 6 et 7 en tirent le tableau de variations, la courbe et l'existence d'un unique point fixe $a$ dans $]1,2[$ de $x\mapsto1+f(x)$ — que la question 8 approche par une suite itérée, avec une vitesse de convergence géométrique explicite.
+
+      *Aucune figure n'est imprimée : la question 6-b demande au candidat de construire la courbe lui-même. La carte des domaines : cette leçon (fonction-logarithme) porte l'ossature — le taux d'accroissement de $\ln$ en $1$ (R3), la limite de référence $\ln x/x\to0$ (R4) — mais les questions 1, 2 et 3-c empruntent aux limites et à la continuité, la question 3-b au théorème des accroissements finis (dérivabilité et étude de fonctions, spécifique SM, énoncé et appliqué au point d'usage, jamais supposé acquis), les questions 4, 5-c/5-d, 6 et 7 à la dérivabilité et à l'étude de fonctions, la question 5 dans son entier au calcul intégral, et la question 8 aux suites numériques — avec, pour la question 8-a, un second usage du même théorème des accroissements finis qu'à la question 3-b.*
+    questions:
+      - id: q1
+        part: "1. Continuite a droite en 1"
+        stem: |-
+          **(0,5 pt)** Montrer que $f$ est continue à droite en $1$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « Continue à droite en $1$ » signifie $\displaystyle\lim_{x\to 1^+} f(x) = f(1) = \frac12$. Sur $]1,+\infty[$, $f(x)=\dfrac{\ln x}{x^2-1}$ : en $x=1$, le numérateur $\ln(1)=0$ et le dénominateur $1^2-1=0$ — c'est une forme $\frac00$, et la façon la plus directe de la lever ici est de factoriser $x^2-1=(x-1)(x+1)$ pour faire apparaître un taux d'accroissement connu.
+
+          **La factorisation et le découpage en deux facteurs.**
+
+          $$f(x) = \frac{\ln x}{(x-1)(x+1)} = \frac{\ln x - \ln 1}{x-1} \times \frac{1}{x+1}$$
+
+          **Le premier facteur : un taux d'accroissement de $\ln$.** $\dfrac{\ln x-\ln 1}{x-1}$ est exactement le taux d'accroissement de $\ln$ entre $1$ et $x$. Comme $\ln$ est dérivable en $1$ (R3 de cette leçon), avec $\ln'(1)=\dfrac11=1$, ce taux tend vers $\ln'(1)=1$ quand $x\to 1$.
+
+          **Le second facteur, immédiat.** $\dfrac{1}{x+1} \to \dfrac{1}{2}$ quand $x\to 1$.
+
+          **Le produit.**
+
+          $$\lim_{x\to 1^+} f(x) = 1 \times \frac12 = \frac12 = f(1)$$
+
+          $f$ est donc continue à droite en $1$.
+
+          **Le piège nommé de cette question.** Essayer une factorisation ou un développement limité de $\ln x$ au voisinage de $1$, hors programme. Le taux d'accroissement de $\ln$ en $1$ est exactement l'outil du cours (R3, définition de la dérivée) — inutile de chercher plus loin.
+        steps:
+          - math: 'f(x) = \dfrac{\ln x}{(x-1)(x+1)} = \dfrac{\ln x - \ln 1}{x-1} \times \dfrac{1}{x+1}'
+            note: "Factorisation du denominateur, pour faire apparaitre un taux d'accroissement."
+          - math: '\lim_{x\to 1} \dfrac{\ln x - \ln 1}{x-1} = \ln''(1) = 1 \quad (\text{R3 : ln derivable en 1})'
+            note: "Taux d'accroissement de ln en 1, egal a la derivee de ln en 1."
+          - math: '\lim_{x\to 1^+} f(x) = 1 \times \dfrac{1}{1+1} = \dfrac12 = f(1)'
+            note: "Produit des deux limites : f continue a droite en 1."
+      - id: q2
+        part: "2. Limite en +infini et interpretation graphique"
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} f(x)$ puis interpréter graphiquement le résultat obtenu.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $f(x)=\dfrac{\ln x}{x^2-1}$ : le numérateur $\ln x \to +\infty$ et le dénominateur $x^2-1\to+\infty$ également — forme $\dfrac{\infty}{\infty}$. Le réflexe est de faire apparaître la limite de référence $\dfrac{\ln x}{x}\to 0$ (R4), en factorisant un $x$ au dénominateur.
+
+          **La réécriture.**
+
+          $$f(x) = \frac{\ln x}{x^2-1} = \frac{\ln x}{x} \times \frac{x}{x^2-1} = \frac{\ln x}{x} \times \frac{1}{x - \frac1x}$$
+
+          **Les deux facteurs séparément.** $\dfrac{\ln x}{x} \to 0$ quand $x\to+\infty$ (R4, limite de référence). Et $x-\dfrac1x \to +\infty$, donc $\dfrac{1}{x-\frac1x} \to 0$.
+
+          **Le produit.** Deux facteurs qui tendent chacun vers $0$ : pas d'indétermination, le produit tend vers $0$.
+
+          $$\boxed{\lim_{x\to+\infty} f(x) = 0}$$
+
+          **L'interprétation graphique.** $(C)$ admet la droite $y=0$ — l'axe des abscisses — comme asymptote horizontale au voisinage de $+\infty$.
+
+          **Le piège nommé de cette question.** Écrire $\dfrac{\ln x}{x^2-1} \sim \dfrac{\ln x}{x^2}$ sans justifier l'équivalence, ou invoquer directement « croissances comparées » sans jamais faire apparaître $\dfrac{\ln x}{x}$ — la forme R4 exacte du cours. Le détour par $\dfrac{\ln x}{x}\times\dfrac{1}{x-\frac1x}$ relie proprement cette limite à la limite de référence, sans admettre une extension non démontrée.
+        steps:
+          - math: 'f(x) = \dfrac{\ln x}{x^2-1} = \dfrac{\ln x}{x} \times \dfrac{1}{x-\frac1x}'
+            note: "On fait apparaitre la limite de reference ln(x)/x en factorisant x au denominateur."
+          - math: '\lim_{x\to+\infty} \dfrac{\ln x}{x} = 0 \ (\text{R4}), \qquad \lim_{x\to+\infty}\left(x-\dfrac1x\right) = +\infty \implies \lim_{x\to+\infty}\dfrac{1}{x-\frac1x} = 0'
+            note: "Deux facteurs, chacun tend vers 0 : produit direct, pas d'indetermination."
+          - math: '\lim_{x\to+\infty} f(x) = 0 \implies (C) \text{ admet } y=0 \text{ pour asymptote horizontale en } +\infty'
+            note: "Limite finie (0) en plus l'infini : lecture graphique directe."
+      - id: q3a
+        part: "3. Un changement de variable, puis un encadrement par le TAF"
+        stem: |-
+          **3- a)** (0,25 pt) Soit $x \in\, ]1, +\infty[$. En posant $t = (x-1)^2$, vérifier que : $\dfrac{1 - x + \ln(x)}{(x-1)^2} = \dfrac{-\sqrt{t} + \ln(1+\sqrt{t})}{t}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une vérification par substitution : exprimer $x$ en fonction de $t$, puis remplacer dans le membre de gauche pour retomber exactement sur le membre de droite.
+
+          **Isoler $x$ en fonction de $t$.** Pour $x>1$, $x-1>0$, donc $t=(x-1)^2$ donne, par racine carrée (les deux membres étant positifs) : $\sqrt t = x-1$, c'est-à-dire $x = 1+\sqrt t$.
+
+          **Le numérateur.** $1-x+\ln x = 1-(1+\sqrt t)+\ln(1+\sqrt t) = -\sqrt t + \ln(1+\sqrt t)$.
+
+          **Le dénominateur.** $(x-1)^2 = t$, directement par définition de $t$.
+
+          **Conclusion.**
+
+          $$\frac{1-x+\ln x}{(x-1)^2} = \frac{-\sqrt t + \ln(1+\sqrt t)}{t}$$
+
+          **Le piège nommé de cette question.** Écrire $\sqrt{(x-1)^2}=x-1$ sans justifier le signe — ce n'est vrai que parce que $x>1$ rend $x-1$ positif ; pour $x<1$ ce serait $1-x$.
+        steps:
+          - math: 'x>1 \implies x-1>0, \qquad t=(x-1)^2 \implies \sqrt{t} = x-1 \implies x = 1+\sqrt{t}'
+            note: "Racine carree des deux membres, licite car x-1 positif pour x>1."
+          - math: '1-x+\ln x = 1-(1+\sqrt{t})+\ln(1+\sqrt{t}) = -\sqrt{t}+\ln(1+\sqrt{t}), \qquad (x-1)^2 = t'
+            note: "Report de x = 1 + racine de t dans le numerateur et le denominateur."
+          - math: '\dfrac{1-x+\ln x}{(x-1)^2} = \dfrac{-\sqrt{t}+\ln(1+\sqrt{t})}{t}'
+            note: "Identite verifiee par substitution directe."
+      - id: q3b
+        stem: |-
+          **3- b)** (0,5 pt) Montrer que $\left(\forall t \in\, ]0, +\infty[\right)$, $\quad -\dfrac{1}{2} < \dfrac{-\sqrt{t} + \ln\left(1+\sqrt{t}\right)}{t} < \dfrac{-1}{2(1+\sqrt{t})}$
+
+          *(On pourra utiliser le théorème des accroissements finis sur l'intervalle $[0\,;t]$)*
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé lui-même indique la voie : le théorème des accroissements finis (TAF) sur $[0,t]$. Ce théorème n'appartient pas au socle R0–R6 de cette leçon (domaine « dérivabilité et étude de fonctions », spécifique au programme SM) : il faut l'énoncer, vérifier ses hypothèses, puis l'appliquer — jamais le supposer acquis.
+
+          **Le théorème des accroissements finis (TAF), énoncé ici.** Si $h$ est continue sur un intervalle fermé $[p,q]$ et dérivable sur l'intervalle ouvert $]p,q[$, alors il existe $c\in\,]p,q[$ tel que $h(q)-h(p)=h'(c)(q-p)$.
+
+          **La fonction auxiliaire.** Pose $\varphi(u) = -\sqrt u + \ln(1+\sqrt u)$, pour $u\ge 0$. Le membre de gauche de l'identité de la question 3-a est exactement $\dfrac{\varphi(t)-\varphi(0)}{t-0}$, puisque $\varphi(0) = -\sqrt0+\ln(1+\sqrt0) = 0$.
+
+          **Les hypothèses, vérifiées pour $\varphi$ sur $[0,t]$.** $u\mapsto\sqrt u$ est continue sur $[0,+\infty[$ et dérivable sur $]0,+\infty[$ ; $u\mapsto 1+\sqrt u$ reste toujours $\ge 1>0$, donc $u\mapsto\ln(1+\sqrt u)$ est continue sur $[0,+\infty[$ (composée de fonctions continues) et dérivable sur $]0,+\infty[$ (composée de fonctions dérivables). $\varphi$, différence des deux, est donc continue sur $[0,t]$ et dérivable sur $]0,t[$ : les deux hypothèses du TAF sont réunies.
+
+          **La dérivée de $\varphi$.**
+
+          $$\varphi'(u) = -\frac{1}{2\sqrt u} + \frac{1}{1+\sqrt u}\times\frac{1}{2\sqrt u} = \frac{1}{2\sqrt u}\left(-1+\frac{1}{1+\sqrt u}\right) = \frac{1}{2\sqrt u}\times\frac{-\sqrt u}{1+\sqrt u} = \frac{-1}{2(1+\sqrt u)}$$
+
+          **L'application du TAF.** Il existe $c\in\,]0,t[$ tel que :
+
+          $$\frac{\varphi(t)-\varphi(0)}{t} = \varphi'(c) = \frac{-1}{2(1+\sqrt c)}$$
+
+          c'est-à-dire, avec $\varphi(0)=0$ :
+
+          $$\frac{-\sqrt t+\ln(1+\sqrt t)}{t} = \frac{-1}{2(1+\sqrt c)}$$
+
+          **L'encadrement de $c$, puis de $\dfrac{-1}{2(1+\sqrt c)}$.** $0<c<t$, et $u\mapsto\sqrt u$ est strictement croissante, donc $0<\sqrt c<\sqrt t$, c'est-à-dire $1<1+\sqrt c<1+\sqrt t$. La fonction $v\mapsto\dfrac1v$ est strictement décroissante sur $]0,+\infty[$, donc en l'appliquant à l'encadrement précédent, le sens s'inverse :
+
+          $$\frac{1}{1+\sqrt t} < \frac{1}{1+\sqrt c} < 1$$
+
+          En multipliant par $-\dfrac12$ (négatif : le sens s'inverse une seconde fois) :
+
+          $$-\frac12 < \frac{-1}{2(1+\sqrt c)} < \frac{-1}{2(1+\sqrt t)}$$
+
+          **La conclusion**, en reportant $\varphi'(c)=\dfrac{-1}{2(1+\sqrt c)}$ :
+
+          $$\boxed{-\frac12 < \frac{-\sqrt t + \ln(1+\sqrt t)}{t} < \frac{-1}{2(1+\sqrt t)}}$$
+
+          **Le piège nommé de cette question.** Appliquer le TAF sans vérifier que $1+\sqrt u>0$ partout (ce qui garantit la dérivabilité du logarithme composé) — c'est vrai ici, mais ça doit être dit. Second piège, le plus fréquent : se tromper de sens en multipliant l'encadrement de $\frac{1}{1+\sqrt c}$ par $-\frac12$, un nombre négatif — deux inversions de sens successives (le passage à l'inverse, puis la multiplication par un négatif) rendent l'erreur de signe facile si elles ne sont pas faites une à la fois.
+        steps:
+          - math: '\varphi(u) = -\sqrt{u}+\ln(1+\sqrt{u}), \quad \varphi(0)=0, \qquad \varphi \text{ continue sur } [0,t], \text{ derivable sur } ]0,t['
+            note: "Fonction auxiliaire et verification des deux hypotheses du TAF."
+          - math: '\varphi''(u) = -\dfrac{1}{2\sqrt{u}}+\dfrac{1}{(1+\sqrt{u})\,2\sqrt{u}} = \dfrac{-1}{2(1+\sqrt{u})}'
+            note: "Derivee de phi, calculee a partir de la derivee de racine et de ln compose."
+          - math: '\exists\, c\in\,]0,t[\ ;\quad \dfrac{\varphi(t)-\varphi(0)}{t} = \varphi''(c) = \dfrac{-1}{2(1+\sqrt{c})} \quad (\text{TAF sur } [0,t])'
+            note: "Application du theoreme des accroissements finis, hors socle de cette lecon."
+          - math: '0<c<t \implies 1<1+\sqrt{c}<1+\sqrt{t} \implies \dfrac{1}{1+\sqrt{t}} < \dfrac{1}{1+\sqrt{c}} < 1'
+            note: "Inversion (fonction 1/v decroissante) : le sens de l'encadrement se retourne une premiere fois."
+          - math: '-\dfrac12 < \dfrac{-1}{2(1+\sqrt{c})} < \dfrac{-1}{2(1+\sqrt{t})} \implies \boxed{-\dfrac12 < \dfrac{-\sqrt{t}+\ln(1+\sqrt{t})}{t} < \dfrac{-1}{2(1+\sqrt{t})}}'
+            note: "Multiplication par -1/2 (negatif) : le sens se retourne une seconde fois, puis report de la derivee de phi en c."
+      - id: q3c
+        stem: |-
+          **3- c)** (0,25 pt) En déduire que : $\displaystyle\lim_{x \to 1^{+}} \dfrac{1 - x + \ln(x)}{(x-1)^2} = -\dfrac{1}{2}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » : combiner l'identité de la question 3-a et l'encadrement de la question 3-b, puis faire tendre $t\to 0^+$ — sans reprendre la fonction $f$ ni chercher un nouvel outil.
+
+          **Le pont entre $x\to 1^+$ et $t\to 0^+$.** $t=(x-1)^2$ : quand $x\to1^+$, $x-1\to0^+$, donc $t=(x-1)^2\to0^+$.
+
+          **L'encadrement de la question 3-b vaut pour tout $t>0$**, donc en particulier quand $t\to0^+$ :
+
+          $$-\frac12 < \frac{-\sqrt t+\ln(1+\sqrt t)}{t} < \frac{-1}{2(1+\sqrt t)}$$
+
+          **Les limites des deux bornes.** La borne de gauche est la constante $-\frac12$. La borne de droite : $\sqrt t\to0$ quand $t\to0^+$, donc $\dfrac{-1}{2(1+\sqrt t)} \to \dfrac{-1}{2(1+0)} = -\frac12$.
+
+          **Le théorème des gendarmes.** Les deux bornes tendent vers la **même** valeur $-\frac12$ : le milieu, encadré, est forcé de converger vers cette même valeur.
+
+          $$\lim_{t\to0^+} \frac{-\sqrt t+\ln(1+\sqrt t)}{t} = -\frac12$$
+
+          **Le retour à $x$, via l'identité de 3-a.** Le membre de gauche de la question 3-a étant égal à celui de droite pour tout $x>1$ (donc pour tout $t>0$ correspondant), et $t\to0^+ \iff x\to1^+$ :
+
+          $$\boxed{\lim_{x\to1^+} \frac{1-x+\ln x}{(x-1)^2} = -\frac12}$$
+
+          **Le piège nommé de cette question.** Oublier de repasser par l'identité de la question 3-a pour reformuler la conclusion en termes de $x$ — la question 3-b conclut sur une limite en $t$, pas encore sur la limite en $x$ demandée ici.
+        steps:
+          - math: 't=(x-1)^2, \qquad x\to1^+ \implies t \to 0^+'
+            note: "Le pont entre la variable x et la variable t introduite a la question 3-a."
+          - math: '-\dfrac12 < \dfrac{-\sqrt{t}+\ln(1+\sqrt{t})}{t} < \dfrac{-1}{2(1+\sqrt{t})} \ \xrightarrow[t\to 0^+]{} \ -\dfrac12 \le \cdot \le -\dfrac12'
+            note: "Les deux bornes de l'encadrement de la question 3-b tendent toutes deux vers -1/2."
+          - math: '\lim_{t\to0^+} \dfrac{-\sqrt{t}+\ln(1+\sqrt{t})}{t} = -\dfrac12 \quad (\text{gendarmes})'
+            note: "Theoreme des gendarmes : le milieu converge vers la meme valeur que les deux bornes."
+          - math: '\boxed{\lim_{x\to1^+} \dfrac{1-x+\ln x}{(x-1)^2} = -\dfrac12} \quad (\text{via l''identite de la question 3-a})'
+            note: "Retour a x, par l'identite etablie a la question 3-a."
+      - id: q4a
+        part: "4. Derivabilite a droite en 1"
+        stem: |-
+          **4- a)** (0,5 pt) Montrer que : $\forall x \in\, ]1, +\infty[\ ,\quad \dfrac{f(x) - \dfrac{1}{2}}{x - 1} = -\dfrac{\ln(x)}{x-1} \times \dfrac{1}{2(x+1)} + \dfrac{\ln(x) - x + 1}{2(x-1)^2}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une identité algébrique : le plus sûr est de partir du membre le plus compliqué — ici, celui de droite, une somme de deux fractions — et de le réduire au même dénominateur pour retomber sur le membre de gauche.
+
+          **Le dénominateur commun.** Les deux fractions du membre de droite ont pour dénominateurs $2(x-1)(x+1)$ et $2(x-1)^2$ : leur dénominateur commun est $2(x-1)^2(x+1)$.
+
+          **Le premier terme, réécrit.**
+
+          $$-\frac{\ln x}{x-1}\times\frac{1}{2(x+1)} = \frac{-\ln x\,(x-1)}{2(x-1)^2(x+1)}$$
+
+          **Le second terme, réécrit.**
+
+          $$\frac{\ln x-x+1}{2(x-1)^2} = \frac{(\ln x-x+1)(x+1)}{2(x-1)^2(x+1)}$$
+
+          **La somme des numérateurs.** Développe $(\ln x-x+1)(x+1) = x\ln x+\ln x-x^2-x+x+1 = x\ln x+\ln x-x^2+1$, et $-\ln x(x-1) = -x\ln x+\ln x$. En additionnant :
+
+          $$(-x\ln x+\ln x) + (x\ln x+\ln x-x^2+1) = 2\ln x - x^2+1$$
+
+          Le terme $-x\ln x$ et le terme $+x\ln x$ s'annulent — un télescopage.
+
+          **Le membre de droite, donc.**
+
+          $$\frac{2\ln x-x^2+1}{2(x-1)^2(x+1)}$$
+
+          **Le membre de gauche, réduit lui aussi.** $f(x)-\frac12 = \dfrac{\ln x}{x^2-1}-\frac12 = \dfrac{2\ln x-(x^2-1)}{2(x^2-1)} = \dfrac{2\ln x-x^2+1}{2(x-1)(x+1)}$. En divisant par $x-1$ :
+
+          $$\frac{f(x)-\frac12}{x-1} = \frac{2\ln x-x^2+1}{2(x-1)^2(x+1)}$$
+
+          **Les deux membres coïncident exactement.**
+
+          $$\boxed{\forall x\in\,]1,+\infty[\ ,\quad \frac{f(x)-\frac12}{x-1} = -\frac{\ln x}{x-1}\times\frac{1}{2(x+1)}+\frac{\ln x-x+1}{2(x-1)^2}}$$
+
+          **Le piège nommé de cette question.** Se perdre dans les signes en développant $(\ln x-x+1)(x+1)$ — c'est l'endroit exact où une erreur silencieuse coûte le plus cher, précisément parce que le résultat final resterait plausible malgré une erreur de signe compensée par une autre plus loin. Développer terme à terme, sans regrouper trop vite, est plus lent mais plus sûr.
+        steps:
+          - math: '-\dfrac{\ln x}{x-1}\times\dfrac{1}{2(x+1)} + \dfrac{\ln x-x+1}{2(x-1)^2} = \dfrac{-\ln x\,(x-1) + (\ln x-x+1)(x+1)}{2(x-1)^2(x+1)}'
+            note: "Reduction au meme denominateur commun aux deux termes du membre de droite."
+          - math: '-\ln x\,(x-1) + (\ln x-x+1)(x+1) = (-x\ln x+\ln x) + (x\ln x+\ln x-x^2+1) = 2\ln x - x^2+1'
+            note: "Developpement du numerateur : le terme en x ln x se telescope."
+          - math: '\dfrac{f(x)-\frac12}{x-1} = \dfrac{2\ln x-(x^2-1)}{2(x-1)(x+1)(x-1)} = \dfrac{2\ln x-x^2+1}{2(x-1)^2(x+1)}'
+            note: "Membre de gauche reduit au meme denominateur : les deux membres coincident."
+      - id: q4b
+        stem: |-
+          **4- b)** (0,5 pt) En déduire que $f$ est dérivable à droite en $1$ puis interpréter graphiquement le résultat obtenu.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $f$ dérivable à droite en $1$ signifie que $\dfrac{f(x)-f(1)}{x-1}=\dfrac{f(x)-\frac12}{x-1}$ a une limite finie quand $x\to1^+$. L'identité de la question 4-a exprime exactement ce taux d'accroissement comme une somme de deux morceaux, dont chacun a déjà une limite connue — l'un par la question 1, l'autre par la question 3-c.
+
+          **La limite du premier terme.** $-\dfrac{\ln x}{x-1}\times\dfrac{1}{2(x+1)}$ : $\dfrac{\ln x}{x-1}=\dfrac{\ln x-\ln1}{x-1}\to \ln'(1)=1$ (comme à la question 1), et $\dfrac{1}{2(x+1)}\to\dfrac{1}{4}$. Le produit tend donc vers $-1\times\dfrac14=-\dfrac14$.
+
+          **La limite du second terme.** $\dfrac{\ln x-x+1}{2(x-1)^2} = \dfrac12\times\dfrac{1-x+\ln x}{(x-1)^2} \to \dfrac12\times\left(-\dfrac12\right) = -\dfrac14$ par la question 3-c.
+
+          **La somme.**
+
+          $$\lim_{x\to1^+} \frac{f(x)-\frac12}{x-1} = -\frac14 + \left(-\frac14\right) = -\frac12$$
+
+          $f$ est donc dérivable à droite en $1$, avec $f_d'(1) = -\dfrac12$.
+
+          **L'interprétation graphique.** $(C)$ admet, au point $A\!\left(1,\frac12\right)$, une demi-tangente à droite de coefficient directeur $-\dfrac12$.
+
+          **Le piège nommé de cette question.** Recalculer $\dfrac{1-x+\ln x}{(x-1)^2}$ depuis zéro au lieu de relire son résultat déjà établi à la question 3-c — c'est exactement ce que la décomposition de la question 4-a préparait.
+        steps:
+          - math: '-\dfrac{\ln x}{x-1}\times\dfrac{1}{2(x+1)} \ \xrightarrow[x\to1^+]{} \ -1\times\dfrac14 = -\dfrac14 \quad (\text{via question 1})'
+            note: "Premier terme de l'identite de 4-a : meme taux d'accroissement de ln qu'a la question 1."
+          - math: '\dfrac{\ln x-x+1}{2(x-1)^2} = \dfrac12\times\dfrac{1-x+\ln x}{(x-1)^2} \ \xrightarrow[x\to1^+]{} \ \dfrac12\times\left(-\dfrac12\right) = -\dfrac14 \quad (\text{via question 3-c})'
+            note: "Second terme : reutilisation directe du resultat de la question 3-c."
+          - math: '\lim_{x\to1^+} \dfrac{f(x)-\frac12}{x-1} = -\dfrac14-\dfrac14 = -\dfrac12 \implies f''_d(1) = -\dfrac12'
+            note: "Somme des deux limites : f derivable a droite en 1."
+          - math: '(C) \text{ admet en } A\!\left(1,\dfrac12\right) \text{ une demi-tangente a droite de coefficient directeur } -\dfrac12'
+            note: "Interpretation graphique de la derivee a droite."
+      - id: q5a
+        part: "5. Deux integrales pour retrouver le signe de f'"
+        stem: |-
+          **5- a)** (0,5 pt) Pour tout $x \in [1, +\infty[$ on pose $I(x) = \displaystyle\int_1^x \frac{t^2-1}{t^3}\,dt$ et $J(x) = \displaystyle\int_1^x \frac{t^2-1}{t^2}\,dt$.
+
+          Montrer que : $\forall x \in [1, +\infty[$, $\ 0 \le I(x) \le J(x)$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $I$ et $J$ sont deux intégrales entre les mêmes bornes $1$ et $x\ge1$ : les comparer revient à comparer leurs intégrandes sur $[1,x]$, puis à intégrer l'inégalité (domaine « calcul intégral », R4 de ce chapitre — positivité et comparaison — hors socle de cette leçon).
+
+          **Le cas $x=1$.** Les deux intégrales sont nulles (bornes égales) : $I(1)=J(1)=0$, l'inégalité $0\le I(1)\le J(1)$ est une égalité.
+
+          **Le cas $x>1$, en comparant les intégrandes.** Pour $t\in[1,x]$ (donc $t\ge1$) : $t^3\ge t^2>0$, et $t^2-1\ge0$ (car $t\ge1$). Diviser un même numérateur positif ou nul par un dénominateur plus grand donne un résultat plus petit :
+
+          $$0 \le \frac{t^2-1}{t^3} \le \frac{t^2-1}{t^2}$$
+
+          **L'intégration de cet encadrement sur $[1,x]$.** Par positivité et comparaison de l'intégrale (R4, calcul intégral — hors socle de cette leçon), intégrer une inégalité entre fonctions continues sur $[1,x]$ (avec $1\le x$) conserve son sens :
+
+          $$\int_1^x 0\,dt \ \le\ \int_1^x \frac{t^2-1}{t^3}\,dt \ \le\ \int_1^x \frac{t^2-1}{t^2}\,dt$$
+
+          c'est-à-dire $0 \le I(x) \le J(x)$.
+
+          $$\boxed{\forall x\in[1,+\infty[\ ,\quad 0\le I(x)\le J(x)}$$
+
+          **Le piège nommé de cette question.** Comparer les intégrandes seulement pour $t=x$ (la borne) au lieu de pour **tout** $t$ dans l'intervalle d'intégration $[1,x]$ — la comparaison d'intégrales exige l'inégalité **sur tout l'intervalle**, pas seulement en un point.
+        steps:
+          - math: 't\ge1 \implies t^3\ge t^2>0 \text{ et } t^2-1\ge0 \implies 0\le\dfrac{t^2-1}{t^3}\le\dfrac{t^2-1}{t^2}'
+            note: "Comparaison des integrandes sur [1,x] : meme numerateur positif, denominateur plus grand a gauche."
+          - math: '\int_1^x 0\,dt \le \int_1^x \dfrac{t^2-1}{t^3}\,dt \le \int_1^x \dfrac{t^2-1}{t^2}\,dt \quad (\text{R4 calcul integral, positivite et comparaison, hors socle})'
+            note: "Integration de l'encadrement des integrandes sur [1,x], bornes dans l'ordre 1 <= x."
+          - math: '\boxed{0 \le I(x) \le J(x)} \quad \forall x\in[1,+\infty['
+            note: "I(x) et J(x) sont exactement les deux integrales encadrees."
+      - id: q5b
+        stem: |-
+          **5- b)** (0,5 pt) Montrer que pour tout $x \in [1, +\infty[$, $\ I(x) = \ln(x) - \dfrac{x^2-1}{2x^2}$ et $J(x) = \dfrac{(x-1)^2}{x}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux calculs de primitives directs : décomposer chaque intégrande en une somme de termes simples, primitiver terme à terme (linéarité, R2 de calcul intégral), puis évaluer entre $1$ et $x$.
+
+          **Le calcul de $I(x)$.** Sépare l'intégrande :
+
+          $$\frac{t^2-1}{t^3} = \frac{t^2}{t^3}-\frac{1}{t^3} = \frac1t-\frac{1}{t^3}$$
+
+          Une primitive de $\dfrac1t$ est $\ln t$ (pour $t>0$) ; une primitive de $\dfrac1{t^3}=t^{-3}$ est $-\dfrac{1}{2t^2}$. Donc :
+
+          $$I(x) = \int_1^x\left(\frac1t-\frac{1}{t^3}\right)dt = \left[\ln t+\frac{1}{2t^2}\right]_1^x = \left(\ln x+\frac{1}{2x^2}\right)-\left(0+\frac12\right) = \ln x+\frac{1}{2x^2}-\frac12$$
+
+          En mettant $\dfrac{1}{2x^2}-\dfrac12$ au même dénominateur : $\dfrac{1-x^2}{2x^2} = -\dfrac{x^2-1}{2x^2}$. Donc :
+
+          $$\boxed{I(x) = \ln x - \frac{x^2-1}{2x^2}}$$
+
+          **Le calcul de $J(x)$.** Sépare l'intégrande :
+
+          $$\frac{t^2-1}{t^2} = 1-\frac{1}{t^2}$$
+
+          Une primitive de $1$ est $t$ ; une primitive de $\dfrac{1}{t^2}=t^{-2}$ est $-\dfrac1t$. Donc :
+
+          $$J(x) = \int_1^x\left(1-\frac{1}{t^2}\right)dt = \left[t+\frac1t\right]_1^x = \left(x+\frac1x\right)-(1+1) = x+\frac1x-2$$
+
+          En mettant au même dénominateur : $\dfrac{x^2+1-2x}{x} = \dfrac{(x-1)^2}{x}$. Donc :
+
+          $$\boxed{J(x) = \frac{(x-1)^2}{x}}$$
+
+          **Le piège nommé de cette question.** Se tromper de signe dans la primitive de $t^{-3}$ : $\displaystyle\int t^{-3}\,dt = \dfrac{t^{-2}}{-2}=-\dfrac{1}{2t^2}$, et non $+\dfrac{1}{2t^2}$ — un oubli fréquent sur les puissances négatives.
+        steps:
+          - math: '\dfrac{t^2-1}{t^3} = \dfrac1t - \dfrac{1}{t^3} \implies I(x) = \left[\ln t + \dfrac{1}{2t^2}\right]_1^x = \ln x + \dfrac{1}{2x^2} - \dfrac12'
+            note: "Decomposition, primitives ln(t) et -1/(2t au carre), evaluees entre 1 et x."
+          - math: 'I(x) = \ln x + \dfrac{1-x^2}{2x^2} = \boxed{\ln x - \dfrac{x^2-1}{2x^2}}'
+            note: "Mise au meme denominateur du terme constant."
+          - math: '\dfrac{t^2-1}{t^2} = 1-\dfrac{1}{t^2} \implies J(x) = \left[t+\dfrac1t\right]_1^x = x+\dfrac1x-2 = \boxed{\dfrac{(x-1)^2}{x}}'
+            note: "Decomposition, primitives t et -1/t, evaluees entre 1 et x, puis mise au meme denominateur."
+      - id: q5c
+        stem: |-
+          **5- c)** (0,5 pt) Montrer que : $\forall x \in\, ]1, +\infty[$, $\ f'(x) = \dfrac{-2}{(x+1)^2} \times \dfrac{I(x)}{J(x)}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux chemins mènent au même résultat : dériver $f$ directement (quotient), ou combiner les expressions de $I(x)$ et $J(x)$ obtenues à la question 5-b. Le second est celui que l'énoncé prépare depuis la question 5-a — c'est lui qui est suivi ici, la dérivée directe servant de contrôle indépendant.
+
+          **La dérivée de $f$, directement (domaine « dérivabilité et étude de fonctions », dérivée d'un quotient — hors socle de cette leçon).** $f(x)=\dfrac{\ln x}{x^2-1}$ :
+
+          $$f'(x) = \frac{\frac1x(x^2-1)-\ln x\times2x}{(x^2-1)^2} = \frac{\frac{x^2-1}{x}-2x\ln x}{(x^2-1)^2} = \frac{x^2-1-2x^2\ln x}{x(x^2-1)^2}$$
+
+          **Le membre de droite, à partir de $I(x)$ et $J(x)$.**
+
+          $$\frac{-2}{(x+1)^2}\times\frac{I(x)}{J(x)} = \frac{-2}{(x+1)^2}\times\frac{\ln x-\frac{x^2-1}{2x^2}}{\frac{(x-1)^2}{x}} = \frac{-2}{(x+1)^2}\times\frac{2x^2\ln x-(x^2-1)}{2x^2}\times\frac{x}{(x-1)^2}$$
+
+          $$= \frac{-2}{(x+1)^2}\times\frac{2x^2\ln x-x^2+1}{2x(x-1)^2} = \frac{-\left(2x^2\ln x-x^2+1\right)}{x(x-1)^2(x+1)^2} = \frac{x^2-1-2x^2\ln x}{x(x-1)^2(x+1)^2}$$
+
+          **On rassemble les deux dénominateurs.** $(x-1)^2(x+1)^2 = \left[(x-1)(x+1)\right]^2 = (x^2-1)^2$. Le membre de droite devient donc :
+
+          $$\frac{x^2-1-2x^2\ln x}{x(x^2-1)^2}$$
+
+          **Les deux membres coïncident exactement**, terme à terme :
+
+          $$\boxed{\forall x\in\,]1,+\infty[\ ,\quad f'(x) = \frac{-2}{(x+1)^2}\times\frac{I(x)}{J(x)}}$$
+
+          **Le piège nommé de cette question.** Oublier de regrouper $(x-1)^2(x+1)^2$ en $(x^2-1)^2$ à la fin — les deux écritures sont mathématiquement identiques, mais seule la seconde permet de reconnaître le dénominateur $(x^2-1)^2$ de la dérivée calculée directement, et donc de conclure à l'égalité.
+        steps:
+          - math: 'f''(x) = \dfrac{\frac1x(x^2-1)-2x\ln x}{(x^2-1)^2} = \dfrac{x^2-1-2x^2\ln x}{x(x^2-1)^2}'
+            note: "Derivee directe de f, formule du quotient (hors socle de cette lecon)."
+          - math: '\dfrac{-2}{(x+1)^2}\times\dfrac{I(x)}{J(x)} = \dfrac{-2}{(x+1)^2}\times\dfrac{2x^2\ln x - x^2+1}{2x(x-1)^2} = \dfrac{x^2-1-2x^2\ln x}{x(x-1)^2(x+1)^2}'
+            note: "Report des expressions de I(x) et J(x) etablies a la question 5-b, puis simplification."
+          - math: '(x-1)^2(x+1)^2 = (x^2-1)^2 \implies \dfrac{-2}{(x+1)^2}\times\dfrac{I(x)}{J(x)} = \dfrac{x^2-1-2x^2\ln x}{x(x^2-1)^2} = f''(x)'
+            note: "Regroupement du denominateur : les deux membres coincident exactement."
+      - id: q5d
+        stem: |-
+          **5- d)** (0,5 pt) En déduire que : $\forall x \in\, ]1, +\infty[$, $\ -\dfrac{1}{2} \le f'(x) \le 0$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La question 5-a a encadré $\dfrac{I(x)}{J(x)}$ entre $0$ et $1$ ; la question 5-c exprime $f'(x)$ comme ce rapport multiplié par un facteur connu. Il reste à combiner les deux, en faisant attention au signe négatif du facteur.
+
+          **L'encadrement de $\dfrac{I(x)}{J(x)}$, pour $x>1$.** La question 5-a donne $0\le I(x)\le J(x)$. Pour $x>1$, $J(x)=\dfrac{(x-1)^2}{x}>0$ (strictement, car $x\ne1$) : on peut donc diviser par $J(x)$ sans changer le sens des inégalités :
+
+          $$0 \le \frac{I(x)}{J(x)} \le 1$$
+
+          **La multiplication par $\dfrac{-2}{(x+1)^2}$, négatif : le sens s'inverse.**
+
+          $$\frac{-2}{(x+1)^2}\times1 \ \le\ \frac{-2}{(x+1)^2}\times\frac{I(x)}{J(x)} \ \le\ \frac{-2}{(x+1)^2}\times0$$
+
+          c'est-à-dire, avec $f'(x)=\dfrac{-2}{(x+1)^2}\times\dfrac{I(x)}{J(x)}$ (question 5-c) :
+
+          $$\frac{-2}{(x+1)^2} \le f'(x) \le 0$$
+
+          **La borne de gauche, encore à affiner.** Pour $x>1$ : $x+1>2$, donc $(x+1)^2>4$, donc $\dfrac{2}{(x+1)^2}<\dfrac12$, donc $\dfrac{-2}{(x+1)^2}>-\dfrac12$. En chaînant avec l'encadrement précédent :
+
+          $$-\frac12 < \frac{-2}{(x+1)^2} \le f'(x)$$
+
+          d'où, a fortiori, $-\dfrac12 \le f'(x)$.
+
+          **La conclusion.**
+
+          $$\boxed{\forall x\in\,]1,+\infty[\ ,\quad -\frac12 \le f'(x) \le 0}$$
+
+          **Le piège nommé de cette question.** Multiplier l'encadrement $0\le\frac{I(x)}{J(x)}\le1$ par $\dfrac{-2}{(x+1)^2}$ sans inverser le sens des inégalités — un facteur négatif retourne toujours l'encadrement, et l'oublier donnerait $0\le f'(x)\le -\frac{2}{(x+1)^2}$, un encadrement absurde (borne de gauche supérieure à celle de droite).
+        steps:
+          - math: 'x>1 \implies J(x)=\dfrac{(x-1)^2}{x}>0 \implies 0 \le \dfrac{I(x)}{J(x)} \le 1 \quad (\text{question 5-a, divise par } J(x)>0)'
+            note: "Division par J(x), strictement positif pour x>1 : le sens de l'encadrement est conserve."
+          - math: '\dfrac{-2}{(x+1)^2}\times1 \le f''(x) \le \dfrac{-2}{(x+1)^2}\times0 \implies \dfrac{-2}{(x+1)^2} \le f''(x) \le 0'
+            note: "Multiplication par -2/(x+1) au carre, negatif : le sens de l'encadrement s'inverse."
+          - math: 'x>1 \implies (x+1)^2>4 \implies \dfrac{-2}{(x+1)^2} > -\dfrac12'
+            note: "Affinement de la borne de gauche."
+          - math: '\boxed{-\dfrac12 \le f''(x) \le 0} \quad \forall x\in\,]1,+\infty['
+            note: "Chainage des deux encadrements : la borne -1/2 est atteinte au sens large."
+      - id: q6a
+        part: "6. Tableau de variations et courbe"
+        stem: |-
+          **6- a)** (0,25 pt) Dresser le tableau de variations de la fonction $f$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le tableau de variations rassemble en un seul objet trois faits déjà établis séparément : le signe précis de $f'$ (affiné ci-dessous à partir de la question 5-d), et les valeurs/limites aux bornes du domaine ($f(1)$ et la limite en $+\infty$).
+
+          **Le signe exact de $f'$ sur $]1,+\infty[$.** La question 5-d donne $-\frac12 \le f'(x) \le 0$, une borne large. Regarde d'où viendrait un zéro éventuel : $f'(x)=0 \iff I(x)=0$ (question 5-c, puisque $-2/(x+1)^2$ ne s'annule jamais). Or $I(x)=\int_1^x \frac{t^2-1}{t^3}dt$ est l'intégrale d'une fonction continue **strictement positive** sur $]1,x]$ dès que $x>1$ (le numérateur $t^2-1>0$ pour $t>1$) : donc $I(x)>0$ pour tout $x>1$, et $f'(x)<0$ **strictement** sur $]1,+\infty[$.
+
+          **Les valeurs aux bornes.** $f(1)=\frac12$ (donné par l'énoncé) ; $\displaystyle\lim_{x\to+\infty}f(x)=0$ (question 2).
+
+          **Le tableau.** $f$ décroît strictement, sans interruption, de $f(1)=\frac12$ vers une limite $0$ jamais atteinte.
+
+          **Le piège nommé de cette question.** Écrire $f'(x)\le 0$ au tableau (l'inégalité large de la question 5-d) sans vérifier si l'égalité est atteinte quelque part : un tableau de variations avec une case « $f'=0$ » isolée changerait la nature de la décroissance (un palier local). Ici, il n'y a aucun point où $f'$ s'annule sur $]1,+\infty[$.
+        steps:
+          - math: 'f''(x) = 0 \iff I(x) = 0, \quad I(x) = \int_1^x \dfrac{t^2-1}{t^3}\,dt > 0 \ \forall x>1 \implies f''(x) < 0 \text{ strictement sur } ]1,+\infty['
+            note: "Signe strict de f' affine a partir de la question 5-c : I(x) strictement positif pour x>1."
+          - math: 'f(1) = \dfrac12, \qquad \lim_{x\to+\infty} f(x) = 0'
+            note: "Valeurs aux bornes, deja etablies (donnee de l'enonce et question 2)."
+          - math: 'f \text{ strictement decroissante sur } [1,+\infty[, \text{ de } \dfrac12 \text{ vers } 0 \text{ (limite jamais atteinte)}'
+            note: "Tableau de variations complet : une seule fleche descendante."
+      - id: q6b
+        stem: |-
+          **6- b)** (0,5 pt) Tracer la courbe $(C)$. *(On prendra $\|\vec{i}\| = 1\ \text{cm}$ et $\|\vec{j}\| = 2\ \text{cm}$)*
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Aucun calcul supplémentaire : tracer, c'est assembler tout ce que l'exercice a déjà établi, dans le bon repère. Le repère est **orthogonal**, pas orthonormé — les deux échelles ($1\,\text{cm}$ en abscisse, $2\,\text{cm}$ en ordonnée) sont différentes, et l'oublier fausse visuellement la pente de la demi-tangente.
+
+          **Les quatre ingrédients à placer, dans l'ordre.**
+
+          1. Le point de départ $A\!\left(1,\frac12\right)$ — $f(1)=\frac12$ est une valeur **atteinte**, le domaine commence en $x=1$ inclus.
+          2. La demi-tangente à droite en $A$, de coefficient directeur $f_d'(1)=-\frac12$ (question 4-b) — nettement inclinée, pas horizontale.
+          3. Une décroissance stricte et continue sur tout $[1,+\infty[$ (question 6-a), sans palier ni remontée.
+          4. L'asymptote horizontale $y=0$ (l'axe des abscisses) en $+\infty$, approchée sans jamais être atteinte (question 2) — la courbe finit par passer sous la demi-tangente initiale sans jamais recouper l'axe.
+
+          **Le piège nommé de cette question.** Tracer une tangente horizontale en $A$ par réflexe : ici $f_d'(1)=-\frac12$ est clairement négatif, la demi-tangente part en descendant fort. Second piège : faire toucher la courbe à l'axe des abscisses en un point fini — c'est une limite, jamais une valeur atteinte, et avec l'échelle $\|\vec j\|=2\,\text{cm}$ un contact visuel trop appuyé se voit immédiatement sur la copie.
+        steps:
+          - math: 'A\left(1\,;\,\dfrac12\right) \quad (\text{point de depart, } f(1)=\dfrac12 \text{ atteint})'
+            note: "Premier ingredient : la valeur en 1, donnee par l'enonce."
+          - math: 'f''_d(1) = -\dfrac12 \quad (\text{question 4-b, pente de la demi-tangente a droite en 1})'
+            note: "Deuxieme ingredient : la pente de depart, oblique et nettement negative."
+          - math: 'f \text{ strictement decroissante sur } [1,+\infty[ \quad (\text{question 6-a})'
+            note: "Troisieme ingredient : un seul sens de variation, sans palier."
+          - math: 'f(x) \to 0^{+} \text{ quand } x \to +\infty \quad (\text{question 2, asymptote } y=0)'
+            note: "Quatrieme ingredient : la courbe s'approche de l'axe des abscisses sans le toucher."
+      - id: q7
+        part: "7. Une equation f(x) = x - 1"
+        stem: |-
+          **(0,5 pt)** Montrer que l'équation $f(x) = x - 1$ admet une unique solution $a$ dans $]1,2[$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « Une unique solution » : deux affirmations distinctes, l'existence et l'unicité, données par deux outils complémentaires — TVI pour l'existence, stricte monotonie pour l'unicité (corollaire du théorème des valeurs intermédiaires, domaine « dérivabilité et étude de fonctions », hors socle de cette leçon).
+
+          **La fonction auxiliaire.** Pose $h(x) = f(x)-(x-1) = f(x)-x+1$ sur $[1,+\infty[$ : résoudre $f(x)=x-1$ revient à résoudre $h(x)=0$.
+
+          **La continuité de $h$ sur $[1,+\infty[$.** $f$ est continue à droite en $1$ (question 1) et continue sur $]1,+\infty[$ (quotient de fonctions continues, dénominateur non nul), donc continue sur $[1,+\infty[$ ; $x\mapsto x-1$ est continue partout. $h$, différence, est continue sur $[1,+\infty[$.
+
+          **La stricte décroissance de $h$ sur $[1,+\infty[$.** Sur $]1,+\infty[$, $h'(x)=f'(x)-1$. Par la question 5-d, $f'(x)\le0$, donc $h'(x)=f'(x)-1 \le 0-1=-1<0$. $h$ est donc strictement décroissante sur $]1,+\infty[$, et par continuité en $1$, sur $[1,+\infty[$ tout entier.
+
+          **Les valeurs qui encadrent le zéro cherché.** $h(1)=f(1)-(1-1)=\dfrac12-0=\dfrac12>0$. $h(2)=f(2)-(2-1)=\dfrac{\ln2}{2^2-1}-1=\dfrac{\ln2}{3}-1$. Numériquement, $\ln2\approx0{,}693$, donc $h(2)\approx0{,}231-1=-0{,}769<0$.
+
+          **La conclusion, par le corollaire du TVI.** $h$ continue et strictement décroissante sur $[1,2]$, avec $h(1)>0>h(2)$ : $h$ réalise une bijection de $[1,2]$ sur $[h(2),h(1)]$, et $0$ appartient à cet intervalle. Il existe donc un **unique** $a\in[1,2]$ tel que $h(a)=0$. Comme $h(1)=\dfrac12\ne0$ et $h(2)\ne0$, $a\ne1$ et $a\ne2$ : $a\in\,]1,2[$.
+
+          $$\boxed{\text{L'equation } f(x)=x-1 \text{ admet une unique solution } a \text{ dans } ]1,2[}$$
+
+          **Le piège nommé de cette question.** Invoquer seulement le changement de signe entre $h(1)$ et $h(2)$ (un simple TVI) sans mentionner la stricte monotonie — cela donnerait l'existence, jamais l'unicité, et la question demande explicitement les deux.
+        steps:
+          - math: 'h(x) = f(x)-x+1 \quad \text{sur } [1,+\infty[, \qquad h \text{ continue (f continue + x-1 continue)}'
+            note: "Fonction auxiliaire. Continuite obtenue de f (question 1) et de la fonction affine."
+          - math: 'h''(x) = f''(x)-1 \le 0-1 = -1 < 0 \ (x>1, \text{question 5-d}) \implies h \text{ strictement decroissante sur } [1,+\infty['
+            note: "Stricte monotonie, via le signe de f' etabli a la question 5-d."
+          - math: 'h(1) = \dfrac12 > 0, \qquad h(2) = \dfrac{\ln 2}{3}-1 \approx -0{,}769 < 0'
+            note: "Valeurs aux bornes de [1,2], de signes opposes."
+          - math: 'h \text{ bijection de } [1,2] \text{ sur } [h(2),h(1)] \ni 0 \implies \exists!\, a\in\,]1,2[,\ h(a)=0'
+            note: "Corollaire du TVI (continuite + stricte monotonie), hors socle de cette lecon."
+      - id: q8a
+        part: "8. La suite (a_n), point fixe de x -> 1+f(x)"
+        stem: |-
+          Soit $(a_n)_{n \in \mathbb{N}}$ la suite numérique définie par $a_0 \in [1,+\infty[$ et, pour tout $n\in\mathbb{N}$, $a_{n+1} = 1+f(a_n)$.
+
+          **8- a)** (0,5 pt) Montrer que : $(\forall n \in \mathbb{N})$, $\ |a_{n+1} - a| \le \dfrac{1}{2}|a_n - a|$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La suite est définie par $a_{n+1}=1+f(a_n)$ ; remarque que $a$, la solution de la question 7, vérifie $f(a)=a-1$, c'est-à-dire $1+f(a)=a$ — **$a$ est le point fixe** de $x\mapsto1+f(x)$, exactement la valeur que la suite cherche à atteindre. Majorer $|a_{n+1}-a|$ en fonction de $|a_n-a|$ est une comparaison de $\varphi(x)=1+f(x)$ entre deux points : l'outil, hors du socle de cette leçon, est de nouveau le **théorème des accroissements finis** — déjà énoncé et appliqué à la question 3-b, réutilisé ici.
+
+          **Un préalable : $a_n\ge1$ pour tout $n$, par récurrence.** $a_0\ge1$ par hypothèse. Si $a_n\ge1$, alors $a_n$ est dans le domaine $[1,+\infty[$ de $f$, et $f(a_n)\ge0$ (car $f$ décroît de $f(1)=\frac12$ vers une limite $0$ jamais négative, question 6-a) : donc $a_{n+1}=1+f(a_n)\ge1$. Par récurrence, $a_n\ge1$ pour tout $n\in\mathbb{N}$.
+
+          **L'application du TAF, à $\varphi(x)=1+f(x)$, entre $a_n$ et $a$ (tous deux $\ge1$).** $\varphi$ est continue sur $[1,+\infty[$ (car $f$ l'est) et dérivable sur $]1,+\infty[$, avec $\varphi'(x)=f'(x)$. Le TAF (énoncé à la question 3-b) donne l'existence de $c$, strictement entre $a_n$ et $a$ — donc $c>1$ dès que $a_n\ne a$ —, tel que :
+
+          $$\varphi(a_n)-\varphi(a) = \varphi'(c)\,(a_n-a)$$
+
+          Or $\varphi(a_n)=a_{n+1}$ (définition de la suite) et $\varphi(a)=1+f(a)=a$ (point fixe, ci-dessus) :
+
+          $$a_{n+1}-a = f'(c)\,(a_n-a)$$
+
+          **La borne sur $f'(c)$.** Comme $c>1$, la question 5-d donne $-\dfrac12\le f'(c)\le0$, donc $|f'(c)|\le\dfrac12$.
+
+          **La conclusion, en valeur absolue.**
+
+          $$|a_{n+1}-a| = |f'(c)|\,|a_n-a| \le \frac12|a_n-a|$$
+
+          (le cas $a_n=a$ est trivial : $a_{n+1}=\varphi(a)=a$, l'inégalité devient l'égalité $0\le0$.)
+
+          $$\boxed{\forall n\in\mathbb{N}\ ,\quad |a_{n+1}-a| \le \frac12|a_n-a|}$$
+
+          **Le piège nommé de cette question.** Oublier de vérifier $a_n\ge1$ avant d'appliquer le TAF sur $]1,+\infty[$, l'intervalle où la formule de $f'$ (question 5-c/d) est établie — sans ce préalable, rien ne garantit que le TAF s'applique dans le bon domaine.
+        steps:
+          - math: '\text{Recurrence : } a_0\ge1, \quad a_n\ge1 \implies f(a_n)\ge0 \implies a_{n+1}=1+f(a_n)\ge1'
+            note: "Prealable : a_n reste dans le domaine [1, plus infini[ de f pour tout n."
+          - math: '\varphi(x)=1+f(x), \qquad \varphi(a) = 1+f(a) = a \quad (\text{question 7 : } f(a)=a-1)'
+            note: "a est le point fixe de phi : c'est ce qui relie la question 7 a celle-ci."
+          - math: '\exists\, c \text{ entre } a_n \text{ et } a\ (c\ge1),\quad a_{n+1}-a = \varphi(a_n)-\varphi(a) = f''(c)(a_n-a) \quad (\text{TAF, deja enonce a la question 3-b})'
+            note: "Reutilisation du theoreme des accroissements finis, hors socle de cette lecon."
+          - math: '-\dfrac12\le f''(c)\le0 \ (\text{question 5-d, car } c>1) \implies |f''(c)|\le\dfrac12'
+            note: "Borne sur f' reutilisee de la question 5-d."
+          - math: '\boxed{|a_{n+1}-a| = |f''(c)|\,|a_n-a| \le \dfrac12|a_n-a|}'
+            note: "Valeur absolue de l'egalite du TAF, puis la borne sur f' de c."
+      - id: q8b
+        stem: |-
+          **8- b)** (0,5 pt) Montrer par récurrence que : $(\forall n \in \mathbb{N})$, $\ |a_n - a| \le \left(\dfrac{1}{2}\right)^n |a_0 - a|$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La question 8-a a établi le passage d'un rang au suivant (diviser l'écart par $2$) ; il reste à enchaîner ce passage $n$ fois, par une récurrence propre, initialisation et hérédité séparées.
+
+          **Initialisation ($n=0$).** Membre de gauche : $|a_0-a|$. Membre de droite : $\left(\dfrac12\right)^0|a_0-a| = 1\times|a_0-a| = |a_0-a|$. Les deux membres sont égaux : l'inégalité est vraie au rang $0$ (avec égalité).
+
+          **Hérédité.** Suppose $|a_n-a| \le \left(\dfrac12\right)^n|a_0-a|$ pour un rang $n$ fixé (HR). De la question 8-a : $|a_{n+1}-a| \le \dfrac12|a_n-a|$. En appliquant HR au membre de droite, et en multipliant HR par $\dfrac12>0$ (le sens se conserve) :
+
+          $$\frac12|a_n-a| \le \frac12\times\left(\frac12\right)^n|a_0-a| = \left(\frac12\right)^{n+1}|a_0-a|$$
+
+          En chaînant :
+
+          $$|a_{n+1}-a| \le \frac12|a_n-a| \le \left(\frac12\right)^{n+1}|a_0-a|$$
+
+          La propriété est vraie au rang $n+1$.
+
+          **Conclusion.** Par le principe de récurrence :
+
+          $$\boxed{\forall n\in\mathbb{N}\ ,\quad |a_n-a| \le \left(\frac12\right)^n|a_0-a|}$$
+
+          **Le piège nommé de cette question.** Appliquer directement la question 8-a à $|a_n-a|$ au lieu de partir de $|a_{n+1}-a|$ — il faut toujours partir du terme au rang $n+1$, lui appliquer 8-a, puis invoquer HR sur le terme au rang $n$ qui en résulte, jamais l'inverse.
+        steps:
+          - math: '\text{Initialisation : } |a_0-a| = \left(\dfrac12\right)^0|a_0-a| \quad (\text{egalite au rang } 0)'
+            note: "Membres de gauche et de droite egaux au rang 0."
+          - math: '\text{HR : } |a_n-a| \le \left(\dfrac12\right)^n|a_0-a| \quad \text{(hypothese, rang } n\text{)}'
+            note: "Ce qu'on suppose connu, a un rang n fixe quelconque."
+          - math: '|a_{n+1}-a| \le \dfrac12|a_n-a| \ (\text{question 8-a}) \ \le\ \dfrac12\times\left(\dfrac12\right)^n|a_0-a| \ (\text{HR}) \ = \left(\dfrac12\right)^{n+1}|a_0-a|'
+            note: "Heredite : question 8-a d'abord, puis HR appliquee au terme qui en resulte."
+          - math: '\boxed{\forall n\in\mathbb{N}\ ,\ |a_n-a| \le \left(\dfrac12\right)^n|a_0-a|} \quad (\text{recurrence complete})'
+            note: "Initialisation et heredite etablies separement : la recurrence est complete."
+      - id: q8c
+        stem: |-
+          **8- c)** (0,25 pt) En déduire que la suite $(a_n)_{n \in \mathbb{N}}$ est convergente.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On dispose d'un encadrement de $|a_n-a|$ (question 8-b) ; il reste à en tirer la convergence par le théorème des gendarmes, sans jamais affirmer une monotonie de $(a_n)$ qui n'a été établie nulle part.
+
+          **L'encadrement de départ.** Une valeur absolue est toujours $\ge0$, donc pour tout $n$ :
+
+          $$0 \le |a_n-a| \le \left(\frac12\right)^n|a_0-a|$$
+
+          **La limite de la borne de droite.** $|a_0-a|$ est une constante ; $\left(\dfrac12\right)^n\to0$ quand $n\to+\infty$ (suite géométrique de raison $\dfrac12$, $\left|\dfrac12\right|<1$ — chapitre « suites numériques »). Donc $\left(\dfrac12\right)^n|a_0-a| \to 0$.
+
+          **Le théorème des gendarmes.** Les deux bornes tendent vers $0$ : le milieu, encadré, converge aussi vers $0$ :
+
+          $$\lim_{n\to+\infty} |a_n-a| = 0$$
+
+          **La conclusion.** $|a_n-a|\to0$ signifie, par définition même de la limite d'une suite, que $a_n\to a$ :
+
+          $$\boxed{(a_n)_{n\in\mathbb{N}} \text{ converge, vers } a}$$
+
+          **Le piège nommé de cette question.** Conclure « la suite est décroissante et minorée, donc convergente » : rien n'établit que $(a_n)$ est monotone — elle pourrait très bien osciller autour de $a$ en s'en rapprochant. Seul l'encadrement de $|a_n-a|$ par le théorème des gendarmes donne, en une seule étape, à la fois la convergence et l'identité de sa limite.
+        steps:
+          - math: '0 \le |a_n-a| \le \left(\dfrac12\right)^n|a_0-a| \quad (\text{question 8-b, valeur absolue toujours} \ge 0)'
+            note: "Encadrement de depart : la valeur absolue est bornee des deux cotes."
+          - math: '\lim_{n\to+\infty} \left(\dfrac12\right)^n = 0 \ (|q|<1) \implies \lim_{n\to+\infty} \left(\dfrac12\right)^n|a_0-a| = 0'
+            note: "Suite geometrique de raison 1/2 : limite de reference du chapitre suites numeriques."
+          - math: '\lim_{n\to+\infty} |a_n-a| = 0 \quad (\text{theoreme des gendarmes})'
+            note: "Les deux bornes tendent vers 0 : le milieu aussi."
+          - math: '\boxed{\lim_{n\to+\infty} a_n = a}'
+            note: "Par definition : l'ecart de a_n a a qui tend vers 0 signifie que a_n tend vers a."

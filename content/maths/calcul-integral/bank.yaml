@@ -172,6 +172,65 @@
 # (content/maths/fonction-exponentielle/bank.yaml, bk-2019-n-x4 ; et la
 # question III-2-b de bk-2023-n-x1, content/maths/fonction-logarithme/bank.yaml,
 # ajoutée le même soir).
+#
+# AJOUT DU 2026-08-27 (2) — bk-2024-n-x2 (2024, session NORMALE, filière SM,
+# Exercice 2 — 2,5 points). QUATRIÈME entrée de ce fichier, convertie depuis
+# docs/sujets/_incoming/maths-sm-2024-n.md (agent-vérificateur-adversarial,
+# 2026-08-27, statut « vérifié » — re-fetch indépendant + re-dérivation,
+# AUCUN défaut trouvé dans le corps de l'exercice). Exercice repris EN
+# ENTIER (5 questions, 2,5 pts) : rien à partitionner — tout l'exercice
+# relève du calcul intégral (une fonction définie par une intégrale, sa
+# bijection réciproque, une somme de Riemann qui en découle). Jumeau
+# éditorial de bk-2024-r-x2 ci-dessus, dans ce même fichier — MÊME position
+# d'exercice (Exercice 2) et même filière (SM), mais SESSION différente
+# (normale contre rattrapage) et construction distincte : bk-2024-r-x2 part
+# d'une somme algébrique déjà donnée ($u_n=\sum n/(n^2+k^2)$) qui converge
+# vers $\pi/4$ par la primitive arctan ; bk-2024-n-x2 construit sa somme de
+# Riemann à partir de la bijection réciproque $F^{-1}$ d'une fonction
+# elle-même définie par une intégrale — deux mécanismes de somme de Riemann
+# distincts, qui se complètent plus qu'ils ne se répètent.
+#
+# RÉSERVE DE PORTÉE SUR CETTE VÉRIFICATION (bk-2024-n-x2) — à lire avant de
+# s'appuyer dessus. La passe qui a validé cet énoncé PRÉCÈDE elle aussi la
+# règle du 2026-08-27, exactement comme la réserve déjà posée plus haut pour
+# bk-2023-n-x2 — même situation, sujet différent. Une passe ultérieure, sur
+# SM 2025 normale, a découvert qu'AlloSchool peut servir depuis son cache
+# CDN un AUTRE sujet que celui demandé — et qu'une lecture visuelle, la
+# transcription sous les yeux, « retrouve » alors l'énoncé attendu sur des
+# pages qui ne le contiennent pas. Le protocole du sas exige depuis quatre
+# contrôles (docs/sujets/_incoming/README.md, « la lecture visuelle seule ne
+# suffit pas ») : année imprimée relue sur CHAQUE page, recoupement par un
+# instrument NON visuel, MD5 consignés avec un second téléchargement,
+# contrôle du `<title>` servi.
+#   Ce que cette passe-ci a fait : re-dérivation des URLs d'images depuis le
+#   HTML, CONTRÔLE DU `<title>` SERVI (« Examen National Mathématiques
+#   Sciences Maths 2024 Normale - Sujet » — qui nomme la bonne année et la
+#   bonne filière), lecture des pages comme images avec recadrages LANCZOS
+#   ×2, et re-dérivation mathématique de toutes les identités des deux
+#   exercices transcrits (celui-ci, et bk-2024-n-x1,
+#   content/maths/fonction-logarithme/bank.yaml, même sujet, même passe).
+#   Ce qu'elle n'a pas fait : l'année page par page, le recoupement non
+#   visuel, les MD5 avec second téléchargement.
+# Le contrôle du `<title>` est un vrai garde-fou — il vient du HTML, pas de
+# l'attente du lecteur, et c'est lui qui a mis la passe SM 2025 sur la
+# piste. Risque résiduel FAIBLE MAIS NON NUL, pour les mêmes raisons que la
+# réserve posée pour bk-2023-n-x2. À L'ARBITRAGE DE L'OWNER : re-passer ce
+# sujet sous le protocole complet, ou accepter le niveau de preuve
+# ci-dessus. Cette réserve est recopiée ici — et pas seulement laissée dans
+# le fichier `_incoming` — parce que c'est CE fichier-ci qu'un mainteneur
+# lira le jour où il se demandera d'où sort l'énoncé qu'il a sous les yeux.
+#
+# SCOPE NOTE 6 (bk-2024-n-x2) : au-delà des sommes de Riemann (SCOPE NOTE 1
+# ci-dessus, qui couvre désormais aussi cette entrée — même lacune de
+# lesson.md, même statut de fait admis du programme SM), cette entrée
+# mobilise un outil supplémentaire absent des trois entrées précédentes de
+# ce fichier : le théorème de la dérivée d'une fonction réciproque (question
+# 2-b — la légitimité du changement de variable $u=F^{-1}(t)$ repose sur la
+# dérivabilité de $F^{-1}$, jamais supposée acquise). Domaine
+# `derivabilite-etude-fonctions`, rung « La dérivée de la réciproque en un
+# point » (disponible depuis la passe du 2026-08-22, docket A6) — même outil
+# que celui déjà ponté pour $(g^{-1})'(1)$ dans bk-2024-n-x4,
+# content/maths/fonction-logarithme/bank.yaml, la même conversion.
 
 notion: maths/calcul-integral
 
@@ -964,3 +1023,218 @@ entries:
             note: "Les deux bornes de l'encadrement de 2-a sont exactement les deux sommes de Riemann ci-dessus."
           - math: '\boxed{\lim_{n\to+\infty} S_n = \int_0^1 \sqrt{1+e^{2x}}\,dx} \quad (\text{theoreme des gendarmes})'
             note: "S_n coince entre deux suites de meme limite : la limite lui est imposee."
+  # ── bk-2024-n-x2 — 2024 N, Exercice 2 : F(x) = integrale de e^(t^2), sa
+  #    bijection reciproque F^-1, somme de Riemann et changement de variable ──
+  - id: bk-2024-n-x2
+    title: "F(x) = ∫₀ˣ eᵗ² dt, sa bijection réciproque F⁻¹, une somme de Riemann et le changement de variable qui donne ℓ = (e−1)/(2β)"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 2 — Analyse (2,5 points)"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national Mathématiques, filière
+        Sciences Mathématiques (A) et (B), option française (BIOF), 4 h,
+        coefficient 9, code sujet NS 24F, AlloSchool element/145739
+        (course-436/upload-87447), page 3 sur 5 (consignes en page 1 ;
+        l'exercice 2 tient entier sur cette seule page). Barème de
+        l'exercice : 2,5 points, annoncé en page 1 (carte des composantes :
+        Ex1 = 7,5 ; Ex2 = 2,5 ; Ex3 = 3,5 ; « EXERCICE5 » imprimé = 3,5 pour
+        les structures algébriques ; « EXERCICE4 » imprimé = 3 pour
+        l'arithmétique ; somme = 20 — voir NOTE ÉDITORIALE de
+        content/maths/fonction-logarithme/bank.yaml pour le croisement de
+        numérotation p. 1 / corps sur ces deux derniers, sans effet sur cet
+        exercice). Recompte question par question, refait indépendamment sur
+        l'énoncé transcrit : 0,5(q1-a) + 0,5(q1-b) + 0,5(q2-a) + 0,5(q2-b) +
+        0,5(q2-c) = 2,5, CINQ items — conforme au recompte du fichier source
+        lui-même (« 0,5+0,5+0,5+0,5+0,5 = 2,5 ») et au barème de marge
+        relevé par le vérificateur. Aucun écart de comptage. Transcription
+        vérifiée par une passe adversariale indépendante (2026-08-27,
+        docs/sujets/_incoming/maths-sm-2024-n.md, statut « vérifié ») :
+        re-fetch de element/145739, CONTRÔLE DU `<title>` SERVI (« Examen
+        National Mathématiques Sciences Maths 2024 Normale - Sujet »),
+        lecture de la page 3 sur l'image — jamais sur le texte transcrit —,
+        recadrages LANCZOS ×2 sur les bornes de la somme $S_n$ ($k=1$ à
+        $k=n$, dessous/dessus) et sur la position de $\beta$ à l'intérieur
+        de $F^{-1}$, et re-dérivation mathématique complète des cinq
+        « montrer que »/« en déduire » de l'exercice. AUCUN DÉFAUT TROUVÉ
+        dans le corps de cet exercice (contrairement à l'exercice 1 du même
+        sujet, qui porte une correction mineure de ponctuation — voir
+        bk-2024-n-x1, content/maths/fonction-logarithme/bank.yaml).
+        CONTRE-CALCUL INDÉPENDANT, refait pour cette conversion et non
+        recopié du fichier source : $F'(x)=e^{x^2}>0$ sur $[0,1]$ (q1-a) ;
+        $F$ bijection de $[0,1]$ sur $[0,\beta]$ par le corollaire du TVI
+        (q1-b) ; $(S_n)$ est la somme de Riemann à droite de
+        $u\mapsto F^{-1}(u\beta)$, continue par composition, d'où sa
+        convergence vers $\frac1\beta\int_0^\beta F^{-1}(t)\,dt$ (q2-a) ; le
+        changement de variable $u=F^{-1}(t)$ — légitime parce que $F$ est
+        une bijection $C^1$ de dérivée $F'(u)=e^{u^2}$ qui ne s'annule
+        jamais, donc $F^{-1}$ est elle-même dérivable sur $[0,\beta]$
+        (théorème de la dérivée d'une fonction réciproque) — donne
+        $\int_0^\beta F^{-1}(t)\,dt = \int_0^1 u\,e^{u^2}\,du$ (q2-b) ; et
+        $\int_0^1 u\,e^{u^2}\,du = \left[\frac12 e^{u^2}\right]_0^1 =
+        \frac{e-1}{2}$, d'où $\ell=\frac{e-1}{2\beta}$ (q2-c). Aucun écart
+        avec la re-dérivation du vérificateur adversarial. FILIÈRE — POINT
+        CRITIQUE : `source.filiere` doit valoir « SM », impérativement (voir
+        bk-2024-r-x2 ci-dessus dans ce même fichier pour la distinction avec
+        le rattrapage 2024 — même position d'exercice x2, filière identique
+        SM, mais SESSION différente et construction entièrement différente :
+        bk-2024-r-x2 part d'une somme algébrique déjà donnée
+        ($u_n=\sum n/(n^2+k^2)$) convergeant vers $\pi/4$ par arctan ;
+        bk-2024-n-x2 construit sa somme de Riemann à partir de la bijection
+        réciproque d'une fonction elle-même définie par une intégrale).
+        AJOUT AU CORPUS : avec l'ajout jumeau de bk-2024-n-x1 (Exercice 1)
+        dans content/maths/fonction-logarithme/bank.yaml, cette conversion
+        fait passer l'épreuve SM 2024 normale de 10,00/20 à 20,00/20,
+        complète, dans Examens blancs.
+    intro: |-
+      **Fonction définie par une intégrale, bijection réciproque et somme de Riemann (examen national, Sciences Mathématiques, session normale 2024 — Exercice 2, 2,5 points).**
+
+      Soit $F$ la fonction numérique définie sur $[0,1]$ par $F(x) = \displaystyle\int_0^x e^{t^2}\,dt$.
+
+      *Le fil de l'exercice.* La question 1 établit que $F$ est continue, strictement croissante, donc bijective de $[0,1]$ vers $[0,\beta]$ avec $\beta = \displaystyle\int_0^1 e^{t^2}\,dt$. La question 2 construit, à l'aide de la bijection réciproque $F^{-1}$, une somme $S_n$ qui est une somme de Riemann — outil du programme SM, hors socle de cette leçon, voir SCOPE NOTE 1 en tête de fichier — et calcule sa limite $\ell$ par un changement de variable qui repose sur la dérivabilité de $F^{-1}$.
+
+      *Aucune figure n'accompagne ce sujet. Carte des domaines : la construction de $F$ et le calcul final de $\ell$ relèvent de ce chapitre (calcul intégral) ; l'existence de la bijection $F^{-1}$ et sa dérivée relèvent du chapitre « dérivabilité et étude de fonctions » (pontées au point d'usage, hors socle de cette leçon) ; la convergence de $(S_n)$ relève à la fois des sommes de Riemann (calcul intégral, programme SM, hors socle) et du chapitre « suites numériques » ; l'intégrande $e^{t^2}$ est un objet du chapitre « fonction exponentielle ».*
+    questions:
+      - id: q1a
+        part: "Question 1 — F continue, strictement croissante, bijective"
+        stem: |-
+          **1- a)** (0,5 pt) Montrer que $F$ est continue, strictement croissante sur $[0\,;1]$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $F(x)=\displaystyle\int_0^x e^{t^2}\,dt$ est, par définition même de l'intégrale comme primitive (R1 de ce chapitre — exactement le geste qui donnait $\int_1^x \frac1t\,dt=\ln x$), une primitive de $t\mapsto e^{t^2}$ sur $[0,1]$, décalée pour s'annuler en $0$.
+
+          $t\mapsto e^{t^2}$ est continue sur $[0,1]$ (composée de $t\mapsto t^2$, continue, et de $\exp$, continue — domaine « fonction exponentielle »), donc elle y admet des primitives (fait admis pour toute fonction continue sur un intervalle). $F$ est l'une de ces primitives : elle est donc **dérivable** sur $[0,1]$, avec $F^{\prime}(x) = e^{x^2}$.
+
+          L'exponentielle est strictement positive en tout point de $\mathbb{R}$, donc $F^{\prime}(x) = e^{x^2} > 0$ pour tout $x\in[0,1]$ : $F$ est **strictement croissante**. Étant dérivable, $F$ est en particulier **continue**.
+
+          **Le piège nommé de cette question.** Vouloir calculer $F(x)$ explicitement pour en étudier le sens de variation — $t\mapsto e^{t^2}$ n'a **aucune primitive exprimable** avec les fonctions usuelles du programme. Toute la force de cette question tient dans le fait qu'on n'a **jamais besoin** de connaître $F(x)$ : le signe de $F^{\prime}$ suffit, et $F^{\prime}$, lui, est connu immédiatement.
+        steps:
+          - math: 't \mapsto e^{t^2} \text{ continue sur } [0,1] \quad (\text{composee, admet des primitives})'
+            note: "Fonction continue sur un intervalle : elle y admet des primitives (fait admis)."
+          - math: 'F \text{ est une primitive de } t\mapsto e^{t^2} \text{ sur } [0,1] \implies F \text{ derivable}, \quad F^{\prime}(x) = e^{x^2}'
+            note: "Definition de l'integrale comme primitive (R1), appliquee a F elle-meme."
+          - math: 'F^{\prime}(x) = e^{x^2} > 0 \ \forall x \implies F \text{ strictement croissante sur } [0,1]; \quad F \text{ derivable} \implies F \text{ continue}'
+            note: "Exponentielle toujours strictement positive : le signe de F prime est immediat."
+      - id: q1b
+        stem: |-
+          **1- b)** (0,5 pt) En déduire que $F$ est une bijection de $[0\,;1]$ vers $[0\,;\beta]$ avec $\beta = \displaystyle\int_0^1 e^{t^2}\,dt$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » : il ne reste rien à calculer, seulement à appliquer le corollaire du théorème des valeurs intermédiaires à ce que la question 1-a vient d'établir — continuité et stricte monotonie, exactement les deux hypothèses de ce corollaire (chapitre « dérivabilité et étude de fonctions », hors socle de ce chapitre).
+
+          **Le corollaire du TVI, rappelé ici.** Si $g$ est continue et strictement monotone sur un intervalle $I$, alors $g$ réalise une bijection de $I$ sur l'intervalle image $J=g(I)$, délimité par les valeurs (ou limites) de $g$ aux bornes de $I$, dans l'ordre qui suit son sens de variation.
+
+          **L'application.** $F$ est continue et strictement croissante sur $[0,1]$ (question 1-a). $F$ étant croissante, l'intervalle image se lit dans le même ordre que les bornes de $[0,1]$ :
+
+          $$J = \bigl[F(0),\,F(1)\bigr]$$
+
+          $F(0)=\displaystyle\int_0^0 e^{t^2}\,dt = 0$ (intégrale entre deux bornes égales), et $F(1)=\displaystyle\int_0^1 e^{t^2}\,dt = \beta$ par définition même de $\beta$ donnée par l'énoncé. Donc $J=[0,\beta]$.
+
+          $$\boxed{F \text{ realise une bijection de } [0,1] \text{ sur } [0,\beta]}$$
+
+          **Le piège nommé de cette question.** Écrire l'intervalle image dans le mauvais ordre par réflexe — ici $F$ croît, donc l'ordre de $[0,1]$ se conserve, mais ce ne serait pas vrai si $F$ décroissait (le pont complet entre sens de variation et ordre des bornes est démontré au chapitre « dérivabilité et étude de fonctions »). Deuxième piège : oublier de justifier séparément la continuité **et** la stricte monotonie — le TVI seul donnerait l'existence d'un antécédent, jamais son unicité.
+        steps:
+          - math: 'F \text{ continue et strictement croissante sur } [0,1] \quad (\text{question 1-a})'
+            note: "Les deux hypotheses du corollaire du TVI, deja etablies."
+          - math: 'F(0) = \int_0^0 e^{t^2}\,dt = 0, \qquad F(1) = \int_0^1 e^{t^2}\,dt = \beta \quad (\text{definition de beta})'
+            note: "Images des bornes : F croissante donc l'intervalle image suit le meme ordre."
+          - math: 'F \text{ bijection de } [0,1] \text{ sur } J = [F(0), F(1)] = [0,\beta] \quad (\text{corollaire du TVI, hors socle de ce chapitre})'
+            note: "Corollaire du theoreme des valeurs intermediaires : continuite + stricte monotonie."
+      - id: q2a
+        part: "Question 2 — La suite (S_n), somme de Riemann via F inverse"
+        stem: |-
+          On note $F^{-1}$ la bijection réciproque de $F$. Pour tout $n \in \mathbb{N}^{*}$, on pose : $S_n = \dfrac{1}{n}\displaystyle\sum_{k=1}^{k=n} F^{-1}\!\left(\dfrac{k}{n}\beta\right)$
+
+          **2- a)** (0,5 pt) Montrer que la suite $(S_n)_{n \in \mathbb{N}^{*}}$ est convergente de limite $\ell = \dfrac{1}{\beta}\displaystyle\int_0^{\beta} F^{-1}(t)\,dt$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $S_n$ a la forme $\dfrac1n\displaystyle\sum_{k=1}^n \varphi\!\left(\dfrac{k}{n}\right)$, avec $\varphi(u) = F^{-1}(u\beta)$ : c'est une **somme de Riemann** aux points **droits** de la subdivision régulière de $[0,1]$ — outil du programme SM qui n'appartient pas au socle de ce chapitre (voir SCOPE NOTE 1 en tête de fichier), et qu'il faut donc énoncer avant de l'utiliser.
+
+          **Le théorème des sommes de Riemann, énoncé ici.** Si $h$ est continue sur $[0,1]$, alors $\dfrac1n\displaystyle\sum_{k=1}^{n} h\!\left(\dfrac{k}{n}\right) \xrightarrow[n\to+\infty]{} \displaystyle\int_0^1 h(u)\,du$.
+
+          **La continuité de $\varphi$, à vérifier avant d'appliquer le théorème.** $F$ est une bijection continue et strictement croissante de $[0,1]$ sur $[0,\beta]$ (question 1-b) : sa réciproque $F^{-1}$ est donc elle-même continue sur $[0,\beta]$ (une bijection continue strictement monotone sur un intervalle a une réciproque continue — chapitre « dérivabilité et étude de fonctions »). $u\mapsto u\beta$ est continue sur $[0,1]$ à valeurs dans $[0,\beta]$, donc par composition $\varphi(u) = F^{-1}(u\beta)$ est continue sur $[0,1]$.
+
+          **L'application du théorème.**
+
+          $$S_n = \frac1n\sum_{k=1}^n \varphi\!\left(\frac{k}{n}\right) \xrightarrow[n\to+\infty]{} \int_0^1 \varphi(u)\,du = \int_0^1 F^{-1}(u\beta)\,du$$
+
+          **Le changement de variable qui donne la forme demandée.** Pose $t=u\beta$ (linéaire, $\beta>0$ fixé) : $dt = \beta\,du$, et les bornes $u=0\mapsto t=0$, $u=1\mapsto t=\beta$. Donc :
+
+          $$\int_0^1 F^{-1}(u\beta)\,du = \frac1\beta\int_0^\beta F^{-1}(t)\,dt$$
+
+          $$\boxed{\lim_{n\to+\infty} S_n = \ell = \frac1\beta\int_0^\beta F^{-1}(t)\,dt}$$
+
+          **Le piège nommé de cette question.** Confondre le rôle du $\frac1n$ et celui du $\beta$ : le $\frac1n$ est le pas de la subdivision — c'est lui qui fait de $S_n$ une somme de Riemann — tandis que le $\beta$, lui, est **interne** à $F^{-1}$, un simple facteur d'échelle qui redimensionne $[0,1]$ en $[0,\beta]$. Les deux ne jouent pas le même rôle et il ne faut surtout pas les échanger.
+        steps:
+          - math: '\varphi(u) = F^{-1}(u\beta), \qquad S_n = \dfrac1n\sum_{k=1}^{n} \varphi\!\left(\dfrac{k}{n}\right)'
+            note: "S_n reconnue comme somme de Riemann aux points droits, de pas 1/n."
+          - math: 'F^{-1} \text{ continue sur } [0,\beta] \ (\text{reciproque de bijection continue}), \quad u \mapsto u\beta \text{ continue} \implies \varphi \text{ continue sur } [0,1]'
+            note: "Hypothese de continuite du theoreme des sommes de Riemann, verifiee par composition."
+          - math: 'S_n \xrightarrow[n\to+\infty]{} \int_0^1 \varphi(u)\,du = \int_0^1 F^{-1}(u\beta)\,du \quad (\text{sommes de Riemann, hors socle, programme SM})'
+            note: "Application du theoreme des sommes de Riemann a phi, continue sur [0,1]."
+          - math: 't = u\beta,\ dt = \beta\,du \implies \int_0^1 F^{-1}(u\beta)\,du = \dfrac1\beta\int_0^\beta F^{-1}(t)\,dt = \ell'
+            note: "Changement de variable lineaire t = u fois beta pour retomber sur la forme demandee."
+      - id: q2b
+        stem: |-
+          **2- b)** (0,5 pt) Montrer que $\ell = \dfrac{1}{\beta}\displaystyle\int_0^1 u\,e^{u^2}\,du$
+
+          *(On pourra effectuer le changement de variable $u = F^{-1}(t)$)*
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'indication impose le changement de variable $u=F^{-1}(t)$ dans $\displaystyle\int_0^\beta F^{-1}(t)\,dt$ (question 2-a). Un tel changement de variable n'est légitime que si la fonction qui relie $u$ et $t$ est **dérivable** — ce qui n'est pas immédiat ici, puisque $F^{-1}$ n'a jamais été construite explicitement : c'est exactement le rôle du théorème de la dérivée d'une fonction réciproque (chapitre « dérivabilité et étude de fonctions », hors socle de ce chapitre), qu'il faut énoncer et vérifier avant de s'en servir.
+
+          **Le théorème de la dérivée d'une fonction réciproque, énoncé ici.** Soit $g$ une bijection d'un intervalle $I$ sur $J$, dérivable en un point $a$ de $I$, et $b=g(a)$. Si $g^{\prime}(a)\ne 0$, alors $g^{-1}$ est dérivable en $b$, et $\left(g^{-1}\right)^{\prime}(b) = \dfrac{1}{g^{\prime}(a)}$.
+
+          **Les hypothèses, vérifiées pour $F$ sur $[0,1]$.** $F$ est une bijection de $[0,1]$ sur $[0,\beta]$ (question 1-b), dérivable en tout point de $[0,1]$ avec $F^{\prime}(x)=e^{x^2}$ (question 1-a), et $F^{\prime}(x)=e^{x^2}$ **ne s'annule jamais** (l'exponentielle est toujours strictement positive). Le théorème s'applique donc en **tout** point de $[0,1]$ : $F^{-1}$ est dérivable en tout point de $[0,\beta]$, avec $\left(F^{-1}\right)^{\prime}(t) = \dfrac{1}{F^{\prime}\!\left(F^{-1}(t)\right)}$. C'est cette dérivabilité, acquise partout et non en un seul point, qui rend légitime le changement de variable $u=F^{-1}(t)$ sur l'intégrale entière $\displaystyle\int_0^\beta F^{-1}(t)\,dt$, et non pas seulement en un point isolé.
+
+          **Le changement de variable, mené concrètement.** Poser $u=F^{-1}(t)$ équivaut à $t=F(u)$ (définition même de la réciproque). En différentiant cette relation (licite, puisque $F$ est dérivable, avec $F^{\prime}(u)=e^{u^2}$) :
+
+          $$t = F(u) \implies dt = F^{\prime}(u)\,du = e^{u^2}\,du$$
+
+          **Les bornes.** $t=0 \iff u=F^{-1}(0)$ ; or $F(0)=0$ (question 1-b), donc $F^{-1}(0)=0$. $t=\beta \iff u=F^{-1}(\beta)$ ; or $F(1)=\beta$ (question 1-b), donc $F^{-1}(\beta)=1$.
+
+          **La substitution.**
+
+          $$\int_0^\beta F^{-1}(t)\,dt = \int_0^1 u\cdot e^{u^2}\,du$$
+
+          puisque $F^{-1}(t)=u$ dans l'intégrande, et $dt=e^{u^2}du$. En reprenant le résultat de la question 2-a :
+
+          $$\boxed{\ell = \frac1\beta\int_0^\beta F^{-1}(t)\,dt = \frac1\beta\int_0^1 u\,e^{u^2}\,du}$$
+
+          **Le piège nommé de cette question.** Effectuer le changement de variable comme un pur geste mécanique — remplacer $F^{-1}(t)$ par $u$ et $dt$ par $F^{\prime}(u)du$ sans jamais justifier que $F^{-1}$ est dérivable. Le résultat numérique serait identique, mais la démonstration perdrait son fondement : c'est précisément parce que $F^{\prime}$ ne s'annule jamais sur $[0,1]$ que $F^{-1}$ est dérivable **partout** sur $[0,\beta]$, et donc que le changement de variable est licite sur l'intégrale entière, pas seulement suggéré par l'énoncé comme un raccourci de calcul.
+        steps:
+          - math: 'F \text{ bijection derivable sur } [0,1], \quad F^{\prime}(x) = e^{x^2} \ne 0 \ \forall x \implies F^{-1} \text{ derivable sur } [0,\beta]'
+            note: "Theoreme de la derivee d'une fonction reciproque, hors socle de ce chapitre : F prime ne s'annule jamais."
+          - math: 'u = F^{-1}(t) \iff t = F(u) \implies dt = F^{\prime}(u)\,du = e^{u^2}\,du'
+            note: "Differentiation de t = F(u), licite car F derivable de derivee connue."
+          - math: 't=0 \implies u = F^{-1}(0) = 0 \ (\text{car } F(0)=0), \qquad t=\beta \implies u = F^{-1}(\beta) = 1 \ (\text{car } F(1)=\beta)'
+            note: "Bornes transportees via F(0)=0 et F(1)=beta, etablies a la question 1-b."
+          - math: '\int_0^\beta F^{-1}(t)\,dt = \int_0^1 u\,e^{u^2}\,du \implies \boxed{\ell = \dfrac1\beta\int_0^1 u\,e^{u^2}\,du}'
+            note: "Substitution complete : integrande, differentielle et bornes tous transportes."
+      - id: q2c
+        stem: |-
+          **2- c)** (0,5 pt) En déduire que : $\ell = \dfrac{e-1}{2\beta}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Il reste un seul calcul, purement mécanique : une primitive de $u\mapsto u\,e^{u^2}$. La forme $u\,e^{u^2}$ est du type $u^{\prime}(x)\,e^{u(x)}$ avec $u(x)=x^2$ (à une constante $\frac12$ près) : c'est la dérivée d'une composée $e^{u(x)}$, reconnaissable directement sans changement de variable supplémentaire.
+
+          **La primitive.** $\dfrac{d}{du}\left[\dfrac12 e^{u^2}\right] = \dfrac12 \times 2u \times e^{u^2} = u\,e^{u^2}$ : la fonction $u\mapsto \dfrac12 e^{u^2}$ est donc une primitive de $u\mapsto u\,e^{u^2}$ sur $\mathbb{R}$, en particulier sur $[0,1]$.
+
+          **Le calcul.**
+
+          $$\int_0^1 u\,e^{u^2}\,du = \left[\frac12 e^{u^2}\right]_0^1 = \frac12 e^{1} - \frac12 e^{0} = \frac{e-1}{2}$$
+
+          **La conclusion**, en reprenant la question 2-b :
+
+          $$\ell = \frac1\beta \times \frac{e-1}{2} = \boxed{\frac{e-1}{2\beta}}$$
+
+          **Ce que le problème vient de démontrer, relu d'ensemble.** La moyenne des valeurs de $F^{-1}$ sur $[0,\beta]$ — c'est ce que $\ell$ représente, à $\frac1\beta$ près (R6, valeur moyenne d'une fonction) — ne dépendait, au bout du compte, que de $e$ et de $\beta$ : la fonction $F^{-1}$ elle-même n'a jamais eu besoin d'être connue explicitement, exactement comme $F$ à la question 1-a. Le changement de variable de la question 2-b a transporté tout le problème sur le terrain où $F$, elle, **est** connue.
+
+          **Le piège nommé de cette question.** Refaire un changement de variable ($w=u^2$, par exemple) alors que la primitive $\frac12 e^{u^2}$ se lit directement, en reconnaissant la forme $u^{\prime}e^u$ composée — un détour inutile sur une question à $0{,}5$ point qui se termine en une ligne.
+        steps:
+          - math: '\left(\dfrac12 e^{u^2}\right)^{\prime} = u\,e^{u^2} \quad (\text{primitive directe, forme } u^{\prime}e^{u})'
+            note: "Reconnaissance de la forme derivee d'une composee, sans changement de variable supplementaire."
+          - math: '\int_0^1 u\,e^{u^2}\,du = \left[\dfrac12 e^{u^2}\right]_0^1 = \dfrac12 e - \dfrac12 = \dfrac{e-1}{2}'
+            note: "Evaluation de la primitive entre 0 et 1."
+          - math: '\ell = \dfrac1\beta \times \dfrac{e-1}{2} = \boxed{\dfrac{e-1}{2\beta}}'
+            note: "Report dans l'expression de ell etablie a la question 2-b."
