@@ -309,6 +309,262 @@ entries:
           - math: '\boxed{T_0 \approx 3{,}1\ \text{s}}'
             note: "Ordre de grandeur d'une vraie balancoire."
 
+  # ── bk-2023-r-x4b — 2023 R, Exercice 4 (Partie II) : pendule elastique, phase
+  #    a l'origine lue depuis DEUX informations, et variation d'energie elastique ──
+  #
+  # NOTE ÉDITORIALE — DÉCISION DE CLASSEMENT (cross-list NON dédoublé). Le
+  # classement du vérificateur donne pour cette partie « systemes-oscillants +
+  # aspects-energetiques », la question 4 (variation de l'énergie potentielle
+  # élastique) relevant du rung 5 d'aspects-energetiques. Elle n'est PAS
+  # extraite en entrée séparée : l'assemblage d'épreuves (web/src/lib/examens.ts)
+  # somme les bareme_total, et une entrée de 0,5 pt d'une seule question ferait
+  # à la fois un doublon de barème si on la duplique et un orphelin illisible si
+  # on la détache. La partie II reste donc entière ici, avec ses 2,25 pt, et le
+  # cross-list est honoré autrement : le raisonnement de la question 4 nomme
+  # explicitement le domaine et renvoie l'élève à la leçon « Aspects
+  # énergétiques » pour l'expression de l'énergie emmagasinée par un ressort.
+  # Même règle que pour l'exercice 3 du rattrapage 2024 (décroissance
+  # radioactive / noyaux, masse et énergie). À l'arbitrage de l'owner.
+  #
+  # NOTE ÉDITORIALE — FLAG DE JUMELAGE (bk-2023-r-x4b face à bk-2025-n-x4b et
+  # bk-2018-n-x4b). Les trois sont des pendules élastiques horizontaux, et les
+  # trois font lire un graphe. Les différences, qui sont ce que l'élève vient
+  # chercher :
+  #   — bk-2018-n-x4b lit l'amplitude directement en ordonnée d'une courbe de
+  #     POSITION et va vers le travail de la force de rappel ;
+  #   — bk-2025-n-x4b lit une courbe de VITESSE et doit passer par
+  #     v_max = Xm.omega_0 pour remonter à l'amplitude ;
+  #   — ici, la courbe est une position, mais la question 2 demande la PHASE À
+  #     L'ORIGINE, qui ne se lit pas : elle se déduit de DEUX informations
+  #     croisées — la valeur x(0) = 1 cm, et le SENS de départ (la courbe
+  #     décroît) qui lève l'ambiguïté de signe que le cosinus laisse. Aucune
+  #     des deux autres entrées ne fait ce geste.
+  # Proposition : garder les trois. À l'arbitrage de l'owner.
+  - id: bk-2023-r-x4b
+    title: "Pendule élastique horizontal : équation différentielle, phase à l'origine levée par le sens de départ, raideur par la période et variation de l'énergie élastique"
+    source:
+      year: 2023
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — Partie II : étude du mouvement d'un pendule élastique"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/142484, scan
+        course-422/upload-85310, pages 5 et 6 sur 6 (Exercice 4, Partie II —
+        étude du mouvement d'un pendule élastique ; barème de la partie
+        = 2,25 pt, recompté question par question : 0,5 + 0,75 + 0,5 + 0,5 =
+        2,25, sur les 5,25 pt de l'exercice complet, dont la Partie I — le
+        service au volley-ball — est transcrite sous
+        chute-mouvements-plans/bank.yaml en bk-2023-r-x4. L'énoncé précise que
+        les deux parties sont indépendantes). Transcription vérifiée par une
+        passe adversariale indépendante (2026-08-23,
+        docs/sujets/_incoming/pc-spc-2023-r.md, statut « vérifié ») : re-fetch
+        des 6 pages du scan, figures re-décrites depuis le dessin et non depuis
+        l'énoncé, puis physique re-dérivée. TROIS DÉFAUTS DE FIGURE corrigés
+        par cette passe sur cet exercice, dont deux touchent directement cette
+        partie : (1) le premier minimum de la figure 3 était annoncé « vers
+        t = 0,2 s » alors qu'il est mesuré à t = 0,138 s — creux plat sur les
+        colonnes 722 a 740 px, origine en 651 px, division majeure 57,8 px,
+        soit 45 pour cent d'erreur ; la théorie tranche dans le même sens
+        (premier minimum a T0/3 = 0,133 s) ; (2) X_m, t_1 et T_0, qui portaient
+        les questions 2, 3 et 4, étaient laissés « a confirmer » et sont
+        désormais mesurés : sommets sur la ligne 976 px contre 973 px pour le
+        trait +2 cm (tangence, épaisseur de trait comprise), apex du premier
+        maximum en 845 px donc t_1 = 0,336 s, second maximum en 1076 px donc
+        écart = 0,400 s. CONTRE-CALCUL REFAIT ICI, chiffre par chiffre :
+        T_0 = 0,40 s lu entre deux maxima consécutifs, et
+        T_0 = 2.pi.racine(m/k) = racine(4 x 10 x 0,2 / 50) = racine(0,16) =
+        0,40 s ✔ ; X_m = 2 cm par tangence des extrema aux traits +2 et -2 ;
+        phase — x(0) = X_m.cos(phi) = 1 cm avec X_m = 2 cm donne cos(phi) = 1/2,
+        et la vitesse initiale négative impose sin(phi) > 0, donc
+        phi = +pi/3 rad, angle remarquable qui VERROUILLE en retour la lecture
+        X_m = 2 cm ; k = 4.pi^2.m/T_0^2 = 40 x 0,2 / 0,16 = 50 N.m-1 ✔ exactement
+        la valeur à vérifier (avec pi^2 = 10 comme l'énoncé l'impose) ;
+        t_1 = T_0.(1 - 1/6) = (5/6).T_0 = 0,333 s, en accord avec les 0,336 s
+        mesurés au pixel ; Delta E_pe = (1/2).k.(X_m^2 - x(0)^2) =
+        0,5 x 50 x (4 - 1) x 1e-4 = 7,5e-3 J. Le vérificateur conclut : tout se
+        recoupe, aucun point ne reste indécidable dans cet exercice. AJOUT DE
+        CETTE ENTRÉE AU CORPUS : elle complète l'épreuve 2023 rattrapage, qui
+        passe de 17,75 a 20,00 pt et devient assemblable en entier dans
+        Examens blancs.
+    intro: |-
+      **Étude du mouvement d'un pendule élastique (examen national, session de rattrapage 2023 — Exercice 4, Partie II, 2,25 points).**
+
+      *Les parties I et II de cet exercice sont indépendantes. La Partie I — le service au volley-ball — est traitée à part, sous la notion « Chute libre et mouvements dans un plan ». Rien de ce qui suit n'en dépend.*
+
+      On étudie dans cette partie le mouvement oscillatoire d'un système mécanique (solide–ressort).
+
+      Ce système est constitué d'un solide $(S)$ de centre d'inertie $G$ et de masse $m = 200\ \text{g}$, et d'un ressort à spires non jointives, de masse négligeable et de raideur $k$. L'une des extrémités du ressort est fixée à un support fixe et l'autre extrémité est liée au solide $(S)$.
+
+      Ce solide peut osciller **sans frottement** sur le plan horizontal.
+
+      On étudie le mouvement de $G$ dans le repère $(O, \vec{i}\,)$ lié à un référentiel terrestre considéré galiléen. On repère la position de $G$ à un instant $t$ par l'abscisse $x$ sur l'axe $(O, \vec{i}\,)$. À l'équilibre, l'abscisse de $G$ est $x = 0$ (figure 2).
+
+      On écarte $(S)$ de sa position d'équilibre **dans le sens positif** et on l'envoie à l'instant $t_0 = 0$ avec une **vitesse initiale dans le sens négatif**. La courbe de la figure 3 représente l'évolution temporelle de l'abscisse $x(t)$ de $G$.
+
+      **Figure 2 (schéma).** Pendule élastique horizontal. À gauche, un mur fixe figuré par un court trait vertical hachuré en oblique ; un petit segment horizontal en part et porte le ressort, dessiné en hélice à spires bien séparées (une quinzaine de boucles), qui se relie à droite au solide $(S)$ — un rectangle grisé, à base épaissie, posé sur le plan horizontal (long trait horizontal courant sous le ressort et le solide). À l'intérieur du rectangle, la lettre « $G$ » et, à sa droite, le point matérialisant $G$ ; l'étiquette « $(S)$ » est au-dessus du rectangle. **Le solide est dessiné écarté vers la droite de sa position d'équilibre** ($x > 0$), et une verticale en pointillés descend de $G$ jusqu'à l'axe. En dessous, l'axe horizontal : il porte l'étiquette « $x'$ » sous son extrémité gauche (sans pointe de flèche de ce côté) et « $x$ » sous son extrémité droite, fléchée. Sur cet axe, l'origine « $O$ » est marquée par un petit trait vertical gras, le vecteur unitaire $\vec{i}$ est la courte flèche tracée juste à droite de $O$, et l'abscisse « $x$ » est écrite au pied de la verticale en pointillés issue de $G$. Légende « Figure 2 ».
+
+      **Figure 3 (courbe).** $x\ (\text{cm})$ en fonction de $t\ (\text{s})$, sur quadrillage à double graduation ; le sous-quadrillage est grossier — un seul trait intermédiaire par division majeure dans les deux directions, le plus petit carreau valant donc $0{,}05\ \text{s} \times 0{,}5\ \text{cm}$. Axe des ordonnées : valeurs chiffrées $1$, $0$ et $-1$, traits majeurs tous les $1\ \text{cm}$ ; le trait $+2$ est à l'intérieur du cadre, tandis que le niveau $-2\ \text{cm}$ coïncide avec le bord inférieur du cadre (le bord supérieur, lui, passe un peu au-dessus de $+2$, vers $+2{,}2\ \text{cm}$). Axe des abscisses : seules les valeurs $0{,}1$ et $0{,}2$ sont chiffrées, traits majeurs tous les $0{,}1\ \text{s}$ ; le cadre couvre $8{,}5$ divisions, soit jusqu'à $t = 0{,}85\ \text{s}$, et l'axe se prolonge au-delà par une flèche étiquetée « $t(\text{s})$ ». Sinusoïde **non amortie** : à $t = 0$ la courbe part du trait chiffré « $1$ », donc $x(0) = 1\ \text{cm}$, **en décroissant** ; elle descend jusqu'à un premier minimum tangent au trait $-2\ \text{cm}$, atteint vers $t \approx 0{,}14\ \text{s}$ ; elle remonte, coupe l'axe, et atteint un premier maximum tangent au trait $+2\ \text{cm}$ — l'amplitude est donc $X_m = 2\ \text{cm}$. Ce maximum est repéré par un segment vertical en pointillés descendant jusqu'à l'axe des abscisses, étiqueté « $t_1$ » sous l'axe, à $t_1 \approx 0{,}33\ \text{s}$. Suivent un deuxième minimum (à $\approx 0{,}53\ \text{s}$) et un deuxième maximum de même hauteur à $\approx 0{,}73\ \text{s}$, soit **quatre divisions — $0{,}40\ \text{s}$ — après le premier** ; la courbe redescend ensuite et sort du cadre vers $x \approx -0{,}4\ \text{cm}$. Légende « Figure 3 », imprimée à l'intérieur du cadre, en bas à droite.
+    questions:
+      - id: q1
+        part: "1 — Le modèle du pendule élastique"
+        stem: |-
+          **1-** (0,5 pt) En appliquant la deuxième loi de Newton, établir l'équation différentielle vérifiée par l'abscisse $x(t)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est le rung 1 de la leçon, mot pour mot : le pendule élastique horizontal. La question ne demande pas de réciter le résultat mais de l'**établir**, donc les quatre gestes de la méthode doivent apparaître — système, bilan, projection, mise en forme.
+
+          **Le système et le référentiel.** Système : le solide $(S)$, de masse $m$, réduit à son centre d'inertie $G$. Référentiel : terrestre, considéré galiléen — l'énoncé le dit, et il faut le réécrire, parce que la deuxième loi n'a de sens que là.
+
+          **Le bilan des forces.** Trois forces s'appliquent à $(S)$ :
+          — le **poids** $\vec{P}$, vertical vers le bas ;
+          — la **réaction normale** $\vec{R}$ du plan horizontal, verticale vers le haut. Le plan est **sans frottement**, l'énoncé le précise : la réaction n'a donc pas de composante horizontale ;
+          — la **force de rappel** du ressort, $\vec{F} = -k\,x\,\vec{i}$.
+
+          **Pourquoi la force de rappel s'écrit avec un signe moins.** C'est le cœur du mécanisme, et il faut savoir le dire. Quand $x > 0$ — le ressort est étiré, le solide est parti à droite — la force tire vers la gauche, donc dans le sens $-\vec{i}$. Quand $x < 0$ — le ressort est comprimé — elle pousse vers la droite, donc dans le sens $+\vec{i}$. Dans les deux cas la force est **opposée à l'écart** : c'est exactement ce que le signe moins encode, en une seule écriture valable des deux côtés.
+
+          **La deuxième loi de Newton et sa projection.**
+
+          $$\vec{P} + \vec{R} + \vec{F} = m\,\vec{a}_G$$
+
+          Le mouvement est horizontal ; on projette sur l'axe $(O, \vec{i}\,)$. Le poids et la réaction sont verticaux, donc leurs projections sont **nulles** — et c'est bien pourquoi le pendule élastique horizontal est le cas le plus simple : la pesanteur ne joue aucun rôle dans son équation. Il reste :
+
+          $$-k\,x = m\,a_x = m\,\ddot{x}$$
+
+          **La mise en forme canonique.** On divise par $m$ et on ramène tout du même côté :
+
+          $$\boxed{\ \ddot{x} + \frac{k}{m}\,x = 0\ }$$
+
+          soit, avec la pulsation propre $\omega_0 = \sqrt{\dfrac{k}{m}}$, la forme $\ddot{x} + \omega_0^2\,x = 0$.
+
+          **Lire l'équation au lieu de s'arrêter au résultat.** Cette équation dit : « l'accélération est à chaque instant proportionnelle à l'écart et de signe opposé ». Plus le solide s'éloigne, plus il est ramené fort — c'est le mécanisme qui interdit à l'oscillation de s'arrêter à la position d'équilibre, celui de l'accroche de la leçon. Et comme $k$ et $m$ sont constants, le coefficient $\dfrac{k}{m}$ l'est aussi : les oscillations sont **isochrones**, leur période ne dépend pas de l'amplitude. La figure 3 le confirme, avec des extrema régulièrement espacés.
+
+          **Les deux pièges nommés de cette question.** Le premier : **écrire $\ddot{x} - \dfrac{k}{m}x = 0$**, c'est-à-dire perdre le signe. L'équation obtenue n'a plus de solution oscillante du tout — ses solutions sont des exponentielles qui divergent, ce qui contredit la figure. Le second : **faire figurer le poids** dans l'équation projetée, par réflexe de plan incliné. Ici le plan est horizontal et le poids est perpendiculaire à l'axe du mouvement : sa projection est nulle, et l'écrire est une faute, pas une précaution.
+      - id: q2
+        part: "2 — Trois grandeurs, dont une qui ne se lit pas"
+        stem: |-
+          **2-** (0,75 pt) La solution de cette équation différentielle s'écrit $x(t) = X_m\cos\left(\dfrac{2\pi}{T_0}t + \varphi\right)$, avec $T_0$ la période propre de l'oscillateur. En vous aidant du graphe de la figure 3, déterminer les valeurs de $X_m$, $T_0$ et $\varphi$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Trois grandeurs, et elles ne coûtent pas le même effort : deux se **lisent** sur la figure, la troisième se **déduit**. C'est le rung 2 de la leçon, et c'est la question la plus chère de la partie — les trois quarts de point vont pour l'essentiel à la troisième.
+
+          **L'amplitude $X_m$, par tangence.** L'amplitude est l'écart maximal atteint. Sur la figure 3, les minima descendent **tangents au trait $-2\ \text{cm}$** et les maxima montent **tangents au trait $+2\ \text{cm}$** : la courbe touche ces deux niveaux sans les dépasser.
+
+          $$X_m = 2\ \text{cm} = 2 \times 10^{-2}\ \text{m}$$
+
+          On garde les deux écritures : les centimètres pour lire, les mètres pour calculer.
+
+          **La période propre $T_0$, mesurée sur le plus long intervalle possible.** La période est la durée entre deux passages identiques. Le choix qui minimise l'erreur consiste à prendre **deux extrema de même nature**, bien séparés : le premier maximum est à $t_1 \approx 0{,}33\ \text{s}$, le second à $\approx 0{,}73\ \text{s}$, soit quatre divisions majeures d'écart.
+
+          $$T_0 = 0{,}73 - 0{,}33 = 0{,}40\ \text{s}$$
+
+          **La phase à l'origine $\varphi$, et c'est là qu'est le travail.** Elle ne se lit nulle part sur le graphe : il faut la **calculer**, et pour cela il faut **deux** informations, pas une.
+
+          *Première information — la valeur de départ.* À $t = 0$, la courbe part du trait chiffré $1$, donc $x(0) = 1\ \text{cm}$. En écrivant la solution à $t = 0$ :
+
+          $$x(0) = X_m\cos\varphi \qquad\Longrightarrow\qquad 1 = 2\cos\varphi
+          \qquad\Longrightarrow\qquad \cos\varphi = \frac{1}{2}$$
+
+          Cette équation a **deux** solutions dans un tour : $\varphi = +\dfrac{\pi}{3}$ et $\varphi = -\dfrac{\pi}{3}$. Le cosinus, à lui seul, ne peut pas trancher — il vaut la même chose pour un angle et son opposé. C'est le point où beaucoup de copies s'arrêtent, en choisissant au hasard.
+
+          *Seconde information — le sens de départ.* L'énoncé le donne en toutes lettres : on envoie le solide « avec une **vitesse initiale dans le sens négatif** », et la figure le montre — à $t = 0$ la courbe **décroît**. Or la vitesse est la dérivée de $x$ :
+
+          $$v(t) = \dot{x}(t) = -X_m\,\frac{2\pi}{T_0}\sin\left(\frac{2\pi}{T_0}t + \varphi\right)
+          \qquad\Longrightarrow\qquad
+          v(0) = -X_m\,\frac{2\pi}{T_0}\sin\varphi$$
+
+          Comme $X_m > 0$ et $\dfrac{2\pi}{T_0} > 0$, la condition $v(0) < 0$ impose $\sin\varphi > 0$. Des deux candidats, seul $+\dfrac{\pi}{3}$ a un sinus positif.
+
+          $$\boxed{\ X_m = 2\ \text{cm}\ }\qquad \boxed{\ T_0 = 0{,}40\ \text{s}\ }\qquad \boxed{\ \varphi = +\frac{\pi}{3}\ \text{rad}\ }$$
+
+          **Le contrôle qui vaut d'être fait, et qui referme la boucle.** $\dfrac{\pi}{3}$ est un angle **remarquable** — pas un nombre quelconque tombé d'un calcul. Ce n'est pas un hasard : c'est le signe que la lecture $X_m = 2\ \text{cm}$ était juste, puisque c'est elle qui a produit $\cos\varphi = \dfrac{1}{2}$ exactement. Si on avait lu $X_m = 1{,}9\ \text{cm}$, on aurait obtenu un angle sans nom. **Une valeur remarquable qui apparaît en fin de calcul valide la lecture qui l'a produite** — c'est un contrôle gratuit, et il faut prendre l'habitude de le faire.
+
+          Second contrôle, indépendant : le premier minimum devrait tomber quand l'argument du cosinus vaut $\pi$, soit $\dfrac{2\pi}{T_0}t + \dfrac{\pi}{3} = \pi$, c'est-à-dire $t = \dfrac{T_0}{3} = 0{,}133\ \text{s}$. La figure montre bien ce minimum vers $0{,}14\ \text{s}$. Le modèle et le tracé coïncident.
+
+          **Les deux pièges nommés de cette question.** Le premier, et c'est celui qui coûte le plus : **choisir $\varphi = -\pi/3$**, parce que le cosinus donne deux réponses et qu'on prend la première venue. La levée d'ambiguïté ne s'invente pas — elle vient du sens de la vitesse initiale, que l'énoncé prend la peine de préciser justement pour ça. Le second : **mesurer $T_0$ entre un maximum et le minimum voisin**, ce qui donne une demi-période, $0{,}20\ \text{s}$. La conséquence se propage : $k$ serait quadruplé à la question suivante, et vaudrait $200\ \text{N.m}^{-1}$ au lieu des $50$ que l'énoncé annonce.
+      - id: q3
+        part: "3 — Remonter à la raideur"
+        stem: |-
+          **3-** (0,5 pt) Vérifier que la constante de raideur $k$ a pour valeur $k = 50\ \text{N.m}^{-1}$ (on prend $\pi^2 = 10$).
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La période propre relie $k$ et $m$ ; on connaît maintenant la période, on connaît la masse, il ne reste qu'à retourner la relation. Aucune mesure nouvelle n'est nécessaire.
+
+          **La relation, et d'où elle vient.** L'équation différentielle de la question 1 s'écrit $\ddot{x} + \omega_0^2 x = 0$ avec $\omega_0^2 = \dfrac{k}{m}$, et la période propre est $T_0 = \dfrac{2\pi}{\omega_0}$. En combinant :
+
+          $$T_0 = 2\pi\sqrt{\frac{m}{k}}$$
+
+          C'est la relation du rung 1, et il vaut mieux savoir la reconstruire que la mémoriser seule.
+
+          **On la retourne.** On élève au carré pour libérer $k$ de la racine, puis on isole :
+
+          $$T_0^2 = 4\pi^2\,\frac{m}{k}
+          \qquad\Longrightarrow\qquad
+          k = \frac{4\pi^2\,m}{T_0^2}$$
+
+          **Les valeurs, converties d'abord.** $m = 200\ \text{g} = 0{,}200\ \text{kg}$ — la conversion est obligatoire, le newton se définit avec des kilogrammes. $T_0 = 0{,}40\ \text{s}$, et l'énoncé impose $\pi^2 = 10$.
+
+          **Le calcul, chiffre par chiffre.** Le numérateur :
+
+          $$4\pi^2 m = 4 \times 10 \times 0{,}200 = 8{,}0$$
+
+          Le dénominateur :
+
+          $$T_0^2 = (0{,}40)^2 = 0{,}16$$
+
+          Le quotient :
+
+          $$k = \frac{8{,}0}{0{,}16} = \boxed{50\ \text{N.m}^{-1}}$$
+
+          C'est bien la valeur à vérifier, et elle tombe **exactement** — ce qui n'arrive que si les deux lectures de la question précédente étaient justes. Une question « vérifier que » est un contrôle offert : si le nombre ne tombe pas, l'erreur est en amont, pas ici.
+
+          **Pourquoi l'énoncé impose $\pi^2 = 10$.** Ce n'est pas une approximation gratuite : avec la vraie valeur $\pi^2 = 9{,}87$, on obtiendrait $k = 49{,}3\ \text{N.m}^{-1}$, une valeur juste mais qui ne « tombe » pas. L'énoncé arrondit pour que le résultat soit un rond franc et que la vérification soit lisible. Suis l'instruction — un candidat qui garde $\pi^2 = 9{,}87$ trouvera $49{,}3$ et croira s'être trompé.
+
+          **Le piège nommé de cette question.** **Garder $m$ en grammes** : on obtiendrait $k = 50\,000\ \text{N.m}^{-1}$, la raideur d'un ressort de suspension automobile, pour un solide de $200\ \text{g}$ qui oscille de deux centimètres. Le second, déjà annoncé : une période prise à la moitié, qui quadruple $k$. Dans les deux cas, l'énoncé donne la valeur attendue — c'est précisément le filet de sécurité.
+      - id: q4
+        part: "4 — Ce que le ressort a emmagasiné entre deux instants"
+        stem: |-
+          **4-** (0,5 pt) Déterminer la valeur de la variation $\Delta E_{pe}$ de l'énergie potentielle élastique entre l'instant $t_0 = 0$ et l'instant $t_1$ indiqué sur la courbe de la figure 3.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une **variation** entre deux instants, c'est une différence : état final moins état initial, dans cet ordre. Le signe du résultat n'est pas un détail, il dit dans quel sens l'énergie a circulé.
+
+          $$\Delta E_{pe} = E_{pe}(t_1) - E_{pe}(t_0)$$
+
+          **L'outil, et où il s'apprend.** L'énergie emmagasinée par un ressort de raideur $k$ étiré ou comprimé de $x$ vaut $E_{pe} = \dfrac{1}{2}k\,x^2$. Cette expression appartient au chapitre des **aspects énergétiques**, où elle est établie au rung consacré au ressort ; ici on l'emploie comme un outil déjà construit. Retiens sa forme : elle est en $x^2$, donc **toujours positive**, et elle ne dépend que de l'écart — pas du sens de cet écart. Un ressort étiré de $2\ \text{cm}$ et un ressort comprimé de $2\ \text{cm}$ stockent exactement la même chose.
+
+          **Les deux abscisses, et il faut les identifier proprement.**
+          — À $t_0 = 0$ : la courbe part du trait chiffré $1$, donc $x(0) = 1\ \text{cm} = 1 \times 10^{-2}\ \text{m}$.
+          — À $t_1$ : le pointillé de la figure 3 repère le **premier maximum**, tangent au trait $+2\ \text{cm}$. Donc $x(t_1) = X_m = 2\ \text{cm} = 2 \times 10^{-2}\ \text{m}$.
+
+          C'est tout ce dont on a besoin : ni la valeur de $t_1$, ni la période n'interviennent dans le calcul. La question paraît demander une lecture temporelle, elle n'en demande aucune.
+
+          **Le calcul, en factorisant pour n'écrire qu'une fois le $\frac{1}{2}k$.**
+
+          $$\Delta E_{pe} = \frac{1}{2}k\,x^2(t_1) - \frac{1}{2}k\,x^2(0)
+          = \frac{1}{2}k\left(x^2(t_1) - x^2(0)\right)$$
+
+          $$\Delta E_{pe} = \frac{1}{2} \times 50 \times \left[(2\times10^{-2})^2 - (1\times10^{-2})^2\right]
+          = 25 \times \left[4\times10^{-4} - 1\times10^{-4}\right]$$
+
+          $$\Delta E_{pe} = 25 \times 3\times10^{-4}
+          = \boxed{7{,}5\times10^{-3}\ \text{J}}$$
+
+          **Lire le signe, et pas seulement le nombre.** $\Delta E_{pe} > 0$ : l'énergie potentielle élastique a **augmenté** entre $t_0$ et $t_1$. C'est cohérent — à $t_1$ le solide est à l'écart maximal, donc le ressort est le plus déformé qu'il puisse être, alors qu'à $t_0$ il ne l'était qu'à moitié.
+
+          **Où cette énergie est-elle allée la chercher ?** Le plan est sans frottement, donc l'énergie mécanique se conserve : ce que l'énergie potentielle a gagné, l'énergie cinétique l'a perdu. Vérifie-le — à $t_1$ le solide est à un extremum, donc sa vitesse y est **nulle** et $E_c(t_1) = 0$. Le solide a donc cédé au ressort toute l'énergie cinétique qu'il avait à $t_0$, soit $E_c(0) = 7{,}5\times10^{-3}\ \text{J}$. Les deux réservoirs du rung 5 se vident l'un dans l'autre, sans perte.
+
+          **Les deux pièges nommés de cette question.** Le premier : **oublier de convertir les centimètres en mètres**. L'expression $\frac{1}{2}kx^2$ ne donne des joules que si $k$ est en $\text{N.m}^{-1}$ et $x$ en mètres. Avec $x$ en centimètres on obtiendrait $75\ \text{J}$, soit dix mille fois trop — et le facteur $10\,000$ vient du carré, ce qui rend l'erreur d'autant plus violente. Le second : **inverser la différence** et annoncer $-7{,}5\times10^{-3}\ \text{J}$. Une variation se lit toujours « final moins initial » ; le signe négatif décrirait un ressort qui se détend alors qu'il se tend.
+        steps:
+          - math: '\Delta E_{pe} = E_{pe}(t_1) - E_{pe}(t_0) = \frac{1}{2}k\left(x^2(t_1) - x^2(0)\right)'
+            note: "Une variation, c'est final moins initial. On factorise pour n'ecrire qu'une fois le facteur."
+          - math: 'x(0) = 1\ \text{cm} = 1\times10^{-2}\ \text{m} \quad;\quad x(t_1) = X_m = 2\times10^{-2}\ \text{m}'
+            note: "t1 repere le premier MAXIMUM sur la figure 3 : l'abscisse y vaut l'amplitude. Conversion en metres obligatoire."
+          - math: '\Delta E_{pe} = \frac{1}{2}\times50\times\left[4\times10^{-4} - 1\times10^{-4}\right] = 25 \times 3\times10^{-4}'
+            note: "k = 50 N.m-1, valeur verifiee a la question 3."
+          - math: '\boxed{\Delta E_{pe} = 7{,}5\times10^{-3}\ \text{J}}'
+            note: "Positif : le ressort s'est charge. Sans frottement, c'est exactement l'energie cinetique perdue par le solide."
+
   # ── bk-2025-n-x4b — 2025 N, Exercice 4 (Partie 2) : pendule élastique, lecture d'un graphe de vitesse ──
   - id: bk-2025-n-x4b
     title: "Pendule élastique horizontal : lire un graphe de vitesse, déterminer la raideur et la variation d'énergie potentielle élastique"
