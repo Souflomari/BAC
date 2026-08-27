@@ -526,11 +526,56 @@ aucune :
 3. **Laisser SM 2020 hors d'Examens blancs**, en la marquant explicitement
    comme non assemblable pour cause de format à choix.
 
-**À vérifier avant de trancher :** SM 2020 est-elle la seule épreuve du
-corpus à ce format ? Le `CENSUS` de `docs/sujets/maths/` signale la mention
-« format à CHOIX (Ex1 OU Ex2) » sur cette seule ligne, mais le census
-lui-même ne couvre pas toutes les sessions (plusieurs sont marquées
-« non lu »). Un balayage des pages 1 des scans SM trancherait.
+**~~À vérifier avant de trancher~~ — MESURÉ le 2026-08-27.** Le balayage
+demandé ici a été fait : `docs/audits/format-a-choix.md`. Résultat, et il
+change les coûts relatifs des trois options.
+
+**Deux épreuves à choix sur 61 examinées** — et la seconde était inconnue :
+
+- **SM 2020 normale** (`element/109635`, `NS 25`) — celle décrite ci-dessus ;
+- **SM 2020 rattrapage** (`element/109639`, `RS 25`) — **fait neuf.** Le
+  census la marquait « sourcé-listé, jamais ouvert ». Format identique mot
+  pour mot (« choisir de traiter EXERCICE1 **ou bien** EXERCICE2 »), même
+  répartition 3,5 / 3,5 au choix · 3,5 · 13, même barème candidat de 20. *(La
+  coquille « EXRECICE1 » est dans le sujet officiel.)*
+
+**Le format est confiné à SM 2020.** Inexistant hors SM, inexistant en SM hors
+2020, présent sur les deux sessions de 2020. La consigne n'existe qu'en
+français ; le grep arabe donne zéro, ce que corrobore le fait structurel que
+l'arabe de la page 1 est confiné au cartouche.
+
+**Le fait le plus dur, non tracé jusqu'ici.** SM 2020 normale porte trois
+entrées (3,5 + 3,5 + 3,5) dont deux sont mutuellement exclusives : **aucun
+candidat réel ne peut dépasser 7,00** avec elles. L'assembleur en tire 10,50.
+Or `LISTEE_MIN` vaut 9,75. Donc :
+
+> **7,00 < 9,75 ≤ 10,50** — cette épreuve n'apparaît dans « Examens blancs »
+> **que grâce au sur-comptage**. Corriger le comptage la fait disparaître de
+> la liste ; elle n'aurait jamais dû y être.
+
+SM 2020 rattrapage a **zéro entrée** en banque : le même piège y est en
+attente, pas encore payé.
+
+**Ce que ça change pour les trois options** — factuellement :
+
+- **Option 3** (laisser SM 2020 hors d'Examens blancs) coûte désormais un
+  chiffre connu : **deux épreuves, les deux de 2020** — dont une qui n'est
+  visible aujourd'hui que par accident. C'est le coût le plus bas des trois.
+- **Option 1** (apprendre l'option au modèle) reste la solution juste, mais
+  son bénéfice est borné à ces deux épreuves-là, pas à une classe ouverte.
+- **Option 2** (n'en banquer qu'un des deux) coûte un exercice vérifié laissé
+  hors corpus, deux fois.
+
+**La réserve du comptage, dite par le balayage lui-même :** 47 lignes restent
+non couvertes, dont **20 en SM** — la seule filière où le format existe, et 14
+de ses 36 sessions restent fermées (2010–2016 N et R). Le balayage ne prouve
+l'absence que sur ce qu'il a ouvert.
+
+**Un piège voisin, trouvé au passage et sans rapport avec le choix :** le
+sujet **PC 2014 normale** porte un défaut d'impression officiel — ses
+sous-barèmes de physique totalisent 13,5 quand l'en-tête en déclare 13. Un
+assembleur naïf y afficherait **20,5/20** le jour où ce sujet sera converti.
+Aucune épreuve du corpus ne dépasse 20 aujourd'hui ; celle-là le ferait.
 
 **Severity.** sev-2 — l'affichage est faux sur une épreuve, silencieusement,
 et il le serait davantage après conversion. Aucun risque de production.
