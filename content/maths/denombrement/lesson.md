@@ -364,6 +364,15 @@ $$P(E) = \frac{40}{84} = \frac{10}{21} \approx 0{,}476$$
 
 Place maintenant au chapitre un exercice tel qu'il tombe à l'examen national. Contrairement aux exemples travaillés des rungs précédents, ici tu ne lis pas la solution d'abord : tu prends position, tu tentes, et le raisonnement expert ne se dévoile qu'ensuite. C'est en te confrontant à la question **avant** d'avoir la réponse que la méthode se fixe durablement.
 
+### Ce que ces exercices empruntent à d'autres chapitres
+
+Le rung 7 a fait le pont du dénombrement vers les probabilités par l'équiprobabilité — compter les cas favorables, compter les cas possibles, diviser. Un sujet va souvent un cran plus loin et mobilise des outils que **cette leçon n'enseigne pas** :
+
+- **L'indépendance de deux événements**, $p(A\cap B) = p(A)\times p(B)$, et sa distinction d'avec l'**incompatibilité** ($A\cap B = \varnothing$) — deux notions que le vocabulaire courant confond et que le cours sépare nettement. Elles sont dans « **Probabilités conditionnelles** ».
+- **La variable aléatoire, sa loi et son espérance**, dès qu'un sujet demande « le nombre moyen de… » plutôt que « la probabilité que… ». Même chapitre.
+
+Un exercice de probabilités au bac commence presque toujours par du dénombrement et finit ailleurs. Savoir **d'où vient** chaque geste évite de chercher dans le mauvais chapitre.
+
 ### Exercice de type bac
 
 [[exercise:r-bac]]

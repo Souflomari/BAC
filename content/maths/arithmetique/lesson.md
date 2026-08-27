@@ -458,6 +458,12 @@ Le sujet ci-dessous est un **vrai sujet d'examen national** : Sciences Mathémat
 
 [[checkpoint:cp-r6-fermat]]
 
+### Un outil de plus, emprunté aux nombres complexes
+
+Un sujet d'arithmétique peut, rarement mais réellement, faire un détour par les complexes — typiquement en développant $(1+i)^p$ pour en tirer une congruence sur des coefficients binomiaux. L'outil qui le permet est la **formule de Moivre**, $\left(\cos\theta + i\sin\theta\right)^n = \cos(n\theta) + i\sin(n\theta)$, et la forme exponentielle qui va avec.
+
+Rien de tout cela n'appartient à ce chapitre : ces outils sont établis dans « **Nombres complexes : formes et transformations** ». Si un énoncé d'arithmétique te fait écrire une puissance d'un complexe, tu n'as rien oublié de l'arithmétique — c'est simplement qu'un sujet de bac ne connaît pas les frontières entre chapitres.
+
 [[exercise:r-bac]]
 
 Une fois le sujet 2019 compris, voici une **variation fraîche** — un autre nombre premier, un autre exposant — pour vérifier que tu as saisi la chaîne d'outils, et pas seulement mémorisé une suite de calculs.
