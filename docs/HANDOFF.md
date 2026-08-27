@@ -193,15 +193,18 @@ brief standard, cold-executable by Sonnet.
 
 ### 6.1 Ce qui a changé pour l'élève
 
-**Le corpus d'épreuves est passé de 22 à 25 épreuves complètes** (≥ 19,5/20),
-182 entrées de banque, 36 notions dotées. Les trois gagnées ce jour sont **SM
-2023, SM 2024 et SM 2025 normale**, chacune passée de 10,00 à 20,00/20 par la
-conversion de son problème d'analyse.
+**Le corpus d'épreuves est passé de 22 à 27 épreuves complètes** (≥ 19,5/20),
+184 entrées de banque. Les cinq gagnées ce jour sont **SM 2017, 2022, 2023,
+2024 et 2025 normale**, chacune passée de 10,00 à 20,00/20 par la conversion
+de son problème d'analyse.
 
 L'état réel des épreuves SM de session normale, à consulter avant de
-reprendre : 2023/2024/2025 complètes · 2017 et 2022 en conversion · 2021 et
-SExp 2018 transcrits et en vérification · **2020 SUSPENDUE** sur l'arbitrage
-K-0. `docs/sujets/_incoming/README.md` porte le tableau à jour.
+reprendre : 2017/2022/2023/2024/2025 complètes · 2021 en conversion
+(partitionnée) · **2020 normale ET rattrapage SUSPENDUES** sur l'arbitrage
+K-0. Côté SExp, 2018 est vérifiée et en conversion — sa conversion **fonde la
+banque de `derivabilite-etude-fonctions`**, la notion la plus cross-listée du
+corpus, qui n'en avait aucune. `docs/sujets/_incoming/README.md` porte le
+tableau à jour.
 
 ### 6.2 Cinq défauts trouvés en MESURANT le corpus, pas en lisant le code
 
@@ -262,11 +265,20 @@ fait. Les re-passer sous le protocole complet est un arbitrage owner ouvert.
 
 ### 6.5 Ce qui reste à l'arbitrage de l'owner
 
-- **K-0** — SM 2020 est à format « au choix » et l'assembleur la sur-compte
-  déjà. Trois issues, aucune choisie. Un balayage des pages 1 du corpus était
-  **en vol** en fin de session (`docs/audits/format-a-choix.md`) : il dit
-  combien d'épreuves sont concernées, et donc laquelle des trois options est
-  la moins chère.
+- **K-0 — MESURÉ, et le résultat est plus tranchant que l'arbitrage ne le
+  supposait.** Le balayage a été fait : `docs/audits/format-a-choix.md`.
+  **Deux** épreuves à choix sur 61 examinées, pas une — SM 2020 normale ET
+  **SM 2020 rattrapage**, que le recensement marquait « jamais ouvert ». Le
+  format est confiné à SM 2020, inexistant partout ailleurs.
+  Et le fait dur : SM 2020 normale porte trois entrées dont deux s'excluent,
+  donc **un candidat réel plafonne à 7,00** ; l'assembleur affiche **10,50** ;
+  le seuil d'affichage est **9,75**. Cette épreuve n'existe dans « Examens
+  blancs » **que grâce au sur-comptage** — le corriger la fait disparaître de
+  la liste. Le bug ne fausse pas un total, il fabrique une présence.
+  L'option 3 de K-0 (laisser SM 2020 hors du mode examen) coûte donc
+  exactement deux épreuves connues, ce qui en fait la moins chère des trois.
+  Réserve dite par le balayage lui-même : 47 lignes non couvertes, dont 20 en
+  SM — il ne prouve l'absence que sur ce qu'il a ouvert.
 - **K-7 bis** — les cinq identifiants à renommer, ou pas.
 - **Docket B1** — réduit à deux lectures : l'option « le tag filière est
   erroné » est écartée par l'arithmétique des barèmes. Reste (a) la limite
@@ -281,6 +293,26 @@ fait. Les re-passer sous le protocole complet est un arbitrage owner ouvert.
   525 N), selon qu'on arrondit $\sin 10°$ à 0,17 ou non. Le sommet de la leçon
   fournit l'arrondi ; la banque le nomme comme un piège. **Les deux pages se
   contredisent sur une seule et même notion.**
+
+### 6.5 bis Deux critères nés de la campagne, à réutiliser
+
+Ils ne figuraient nulle part et ils valent pour tout le corpus :
+
+- **On ne partitionne pas à travers un renvoi imprimé.** La vérification de
+  SExp 2018 a écarté un découpage parce que l'énoncé porte, noir sur blanc,
+  « on pourra utiliser le résultat de la question II)3)b) » : une carte
+  autonome rendrait ce renvoi pendant, donc cassée pour l'élève qui l'ouvre
+  seule. Quand la dépendance est seulement *mathématique* et non imprimée — le
+  cas de SM 2021 — le partitionnement reste licite, à condition que la carte
+  aval **rétablisse le résultat sur place** au lieu d'y renvoyer.
+
+- **Un défaut apparent du sujet peut être un artefact de la chaîne de
+  diffusion.** Avant d'écrire « défaut du sujet officiel », il faut avoir
+  regardé la source la moins dégradée qu'on puisse atteindre. Sur SM 2021, un
+  « + » que la transcription croyait amputé est **intact** dans la couche
+  300 dpi embarquée du PDF : le trou venait du sous-échantillonnage
+  300 → 150 d'AlloSchool. Sur SExp 2018, à l'inverse, le PDF a **confirmé** un
+  défaut réel — il n'y a aucun point de code là où on croyait lire un symbole.
 
 ### 6.6 Une note de méthode qui vaut plus que les correctifs
 
