@@ -1288,6 +1288,270 @@ entries:
           - math: '\boxed{E_j \approx 1{,}9\times10^{-9}\ \text{J}}'
             note: "Coherent avec le cross-check independant de la note de sourcing."
 
+  # ── bk-2024-r-x4b — 2024 R, Exercice 4 (partie 2) : oscillations libres RLC,
+  #    bilan d'energie entre deux instants dont AUCUN n'est un extremum ──
+  #
+  # NOTE ÉDITORIALE — FLAG DE JUMELAGE (bk-2024-r-x4b face à bk-2025-n-x3 et
+  # bk-2023-n-x3). Les trois finissent sur « calculer l'énergie dissipée par
+  # effet Joule entre deux instants ». Ce ne sont PAS des doublons, et la
+  # différence est précisément ce qui fait la difficulté :
+  #   — dans bk-2025-n-x3 et bk-2023-n-x3, les deux instants sont des extrema
+  #     de u_C, donc i = 0 aux deux bornes et l'énergie y est PUREMENT
+  #     électrique : le terme magnétique disparaît par construction et l'élève
+  #     n'a jamais à l'écrire ;
+  #   — ici, t_1 tombe sur le FLANC MONTANT de u_C (3,30 divisions, entre le
+  #     minimum de 3,0 et le maximum de 4,0), donc i n'est pas nul : les deux
+  #     termes doivent être posés. Que le terme magnétique se révèle ensuite
+  #     négligeable (0,09 % du total) est un RÉSULTAT, pas une dispense.
+  # Proposition : garder les trois, cette entrée servant de cas discriminant.
+  # À l'arbitrage de l'owner.
+  #
+  # NOTE ÉDITORIALE — INCOHÉRENCE DU SUJET OFFICIEL, signalée et NON réparée.
+  # L'échelle des ordonnées de la figure 4 (u_R en mV) est incompatible d'un
+  # facteur ≈ 60 avec les valeurs de L, C, R et E données par l'énoncé : au
+  # premier extremum de u_R (≈ 0,45 division) la figure 3 montre u_C ≈ 0, donc
+  # l'énergie totale s'y réduit au terme magnétique, soit 3,8e-10 J contre
+  # 1,25e-6 J à t = 0 — il faudrait que 99,97 % de l'énergie ait été dissipée
+  # en un quart de pseudopériode, ce qu'une courbe montrant encore trois
+  # pseudopériodes marquées interdit. Contrôle direct : avec
+  # T_0 = 2*pi*sqrt(LC) = 2,8e-4 s, on attend u_R,max ≈ R*C*omega_0*E ≈ 0,56 V,
+  # soit ≈ 560 mV, au lieu des ≈ 9,7 mV tracés. CONSÉQUENCE PRATIQUE : aucune.
+  # Le résultat officiel 1,1 µJ s'obtient bien avec la figure telle qu'elle est
+  # imprimée, justement parce que le terme magnétique y devient négligeable.
+  # L'exercice reste exploitable tel quel — mais aucune leçon et aucun exercice
+  # dérivé ne doit tirer de la figure 4 une valeur d'intensité, d'inductance ou
+  # d'énergie magnétique : elle n'est cohérente qu'avec elle-même.
+  - id: bk-2024-r-x4b
+    title: "Oscillations libres d'un RLC série : équation différentielle en u_C, énergie totale, et bilan de Joule entre deux instants dont aucun n'est un extremum"
+    source:
+      year: 2024
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — 2. Oscillations libres dans un circuit RLC série"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/145769, scan
+        course-422/upload-87471, pages 4 et 5 sur 6 (Exercice 4, partie 2 —
+        oscillations libres dans un circuit RLC série ; barème de la partie
+        = 2,0 pt, recompté question par question : 0,25 + 0,75 + 0,5 + 0,5 =
+        2,0, sur les 3,5 pt de l'exercice complet, dont la partie 1 — réponse
+        d'un dipôle RC à un échelon — est transcrite sous rc-charge/bank.yaml
+        en bk-2024-r-x4). Transcription vérifiée par une passe adversariale
+        indépendante (2026-08-23, docs/sujets/_incoming/pc-spc-2024-r.md,
+        statut « vérifié ») : re-fetch des 6 pages du scan, figures re-décrites
+        depuis le dessin et non depuis l'énoncé, puis physique re-dérivée.
+        AVERTISSEMENT DE PROVENANCE, à conserver dans toute entrée de ce
+        sujet : le fichier de transcription qui portait ce nom contenait en
+        réalité le sujet 2023, assorti d'un faux avertissement « discordance
+        d'année » ; la page 1 du scan, relue au zoom, porte sans ambiguïté
+        « الدورة الاستدراكية 2024 » et la couverture annonce CINQ exercices.
+        Le fichier a été entièrement réécrit. LECTURES GRAPHIQUES, mesurées au
+        pixel par le vérificateur et reprises telles quelles ici : figure 3
+        (u_C en V, abscisse « t » SANS unité ni graduation chiffrée — aucune
+        lecture temporelle absolue n'est possible, et l'exercice n'en demande
+        aucune) — départ au bord supérieur du cadre, u_C(0) = 5,0 V ; extrema
+        successifs -3,9 / +3,3 / -2,65 / +2,2 / -1,7 V aux abscisses 1,0 à 5,0
+        divisions, donc pseudopériode = 2 divisions et trois pseudopériodes
+        complètes dans le cadre ; t_1 mesuré à 3,30 divisions, c'est-à-dire sur
+        le FLANC MONTANT entre le minimum de 3,0 et le maximum de 4,0 div — et
+        NON à un extremum ; u_C(t_1) = -1,5 V (mesure -1,49 V, sous-carreau
+        0,2 V, donc precision ±0,1 V). Figure 4 (u_R en mV — unité relue au
+        zoom x7, bien mV et non V ; même pas de division majeure que la figure
+        3, 59,3 px contre 59,4 px, donc même échelle de temps) — t_1 mesuré à
+        3,30 divisions lui aussi (3,297 et 3,305 div de part et d'autre) : les
+        deux figures se recoupent sans contradiction sur t_1 ; u_R(t_1) =
+        +5,1 mV. CONTRÔLE DE PHASE fait par le vérificateur : u_R proportionnel
+        à i = C du_C/dt, donc un extremum de u_R doit tomber au point
+        d'inflexion de u_C ; mesure 3,47 div contre 3,5 div — les deux courbes
+        sont bien celles du même montage. CONTRE-CALCUL REFAIT ICI, chiffre par
+        chiffre : E_t(0) = 0,5 x 1,0e-7 x 5,0^2 = 1,25e-6 J ; à t_1, terme
+        électrique 0,5 x 1,0e-7 x 1,5^2 = 1,125e-7 J et terme magnétique
+        0,5 x 2,0e-2 x (5,1e-3/50)^2 = 1,04e-10 J, total 1,126e-7 J ; d'où
+        |Delta E_t| = 1,250e-6 - 0,1126e-6 = 1,137e-6 J, soit 1,14 µJ, arrondi
+        à 1,1 µJ — exactement la valeur que la question demande de vérifier.
+        Le terme magnétique pèse 0,09 % du total à t_1 : négligeable, mais il
+        fallait le poser pour le savoir. L'écart entre 1,14 et 1,1 tient
+        entièrement à la précision de lecture de u_C(t_1) : ±0,1 V y déplace le
+        résultat de ±0,015 µJ. INCOHÉRENCE DU SUJET OFFICIEL sur l'échelle des
+        ordonnées de la figure 4 (facteur ≈ 60) : documentée en NOTE
+        ÉDITORIALE ci-dessus, non réparée, sans conséquence sur le résultat
+        demandé. C et L viennent de l'énoncé et de la partie 1 : R = 50 ohms et
+        L = 20 mH sont donnés, C = 0,10 µF est le résultat vérifié en 1-2-2.
+    intro: |-
+      **Oscillations libres dans un circuit RLC série (examen national, session de rattrapage 2024 — Exercice 4, partie 2, 2 points).**
+
+      Les circuits $RC$, $RLC$,… sont utilisés dans les montages électroniques de plusieurs appareils électriques et électroniques. On se propose, dans cet exercice, d'étudier la réponse d'un dipôle RC à un échelon de tension, puis les oscillations libres dans un circuit RLC série.
+
+      Le montage électrique schématisé sur la figure 1 comporte : un générateur idéal de tension de force électromotrice $E$ ; un condensateur de capacité $C$ initialement déchargé ; un conducteur ohmique de résistance $R = 50\ \Omega$ ; une bobine d'inductance $L = 20\ \text{mH}$ et de résistance $r$ ; un interrupteur $K$ à double position.
+
+      *La partie 1 de cet exercice — la réponse du dipôle RC à un échelon de tension — est traitée à part, sous la notion « Dipôle RC : charge et décharge ». Elle établit les deux valeurs dont on se sert ici : $E = 5{,}0\ \text{V}$, lue au départ de la figure 2, et $C = 0{,}10\ \mu\text{F}$, obtenue par $C = \tau/R$ avec $\tau = 5\ \mu\text{s}$ lu à la tangente à l'origine. Tu peux entrer directement dans la partie 2 avec ces deux valeurs.*
+
+      **Partie 2.** Le condensateur précédent étant chargé totalement, on bascule l'interrupteur $K$ en position (2) à un instant pris comme nouvelle origine des dates $t_0 = 0$. Le même système d'acquisition a permis de suivre l'évolution temporelle de la tension $u_C(t)$ aux bornes du condensateur (figure 3) et de la tension $u_R(t)$ aux bornes du conducteur ohmique (figure 4).
+
+      **Figure 1 (schéma).** Un cadre rectangulaire. Branche de gauche : le générateur, symbolisé par un cercle traversé par le fil, avec une flèche verticale montante tracée à sa gauche et étiquetée « $E$ ». Branche du haut : partant du coin supérieur gauche vers la droite, un fil portant une flèche de courant étiquetée « $i$ » (orientée vers la droite) et se terminant par le plot (1) ; à droite, le plot (2) ; entre les deux, la lame de l'interrupteur $K$, dessinée verticale au centre et étiquetée « $K$ » au-dessus, son pivot posé sur la branche médiane verticale. Branche médiane verticale, du pivot de $K$ vers le bas : d'abord le condensateur $C$ (deux armatures horizontales, étiquette « $C$ » à droite), avec la tension $u_C$ fléchée vers le haut à sa gauche ; plus bas le conducteur ohmique $R$ (rectangle vertical, étiquette « $R$ » à droite), avec la tension $u_R$ fléchée vers le haut à sa gauche ; puis le fil rejoint le rail du bas. Branche de droite : du plot (2), le fil descend vers la bobine, dessinée en spires verticales et étiquetée « $(L,r)$ » à droite, puis rejoint le rail du bas. Le condensateur est un condensateur ordinaire : $C$ n'est pas ajustable dans ce sujet. Légende « Figure 1 ».
+
+      **Figure 3 (courbe).** $u_C\ (\text{V})$ en ordonnée ; **l'axe des abscisses est étiqueté « $t$ » sans aucune unité ni graduation chiffrée** — la figure ne permet donc aucune lecture temporelle absolue, et l'exercice n'en demande aucune. Quadrillage à double graduation, dix sous-divisions fines par division majeure, soit $0{,}2\ \text{V}$ par sous-carreau. En ordonnée, traits majeurs tous les $2\ \text{V}$ ; seuls « $2$ », « $0$ » et « $-2$ » sont chiffrés, et le cadre s'étend de $-5\ \text{V}$ à $+5\ \text{V}$, c'est-à-dire une division au-delà des traits $\pm 4\ \text{V}$. En abscisse, le cadre fait exactement six divisions majeures. Courbe d'oscillations amorties : départ à $t = 0$ sur le bord supérieur du cadre, $u_C(0) = 5{,}0\ \text{V}$ ; minimum à $1{,}0$ division $\approx -3{,}9\ \text{V}$ ; maximum à $2{,}0$ div $\approx +3{,}3\ \text{V}$ ; minimum à $3{,}0$ div $\approx -2{,}65\ \text{V}$ ; maximum à $4{,}0$ div $\approx +2{,}2\ \text{V}$ ; minimum à $5{,}0$ div $\approx -1{,}7\ \text{V}$ ; la courbe remonte ensuite et vaut $\approx +1{,}4\ \text{V}$ au bord droit. La pseudopériode vaut donc exactement deux divisions majeures, et le cadre montre trois pseudopériodes complètes. Une droite verticale en pointillés, tracée de l'axe des temps vers le bas jusqu'à la courbe, repère l'instant $t_1$ ; l'étiquette « $t_1$ » est imprimée au-dessus de l'axe, à gauche du pointillé. Position mesurée : $t_1 = 3{,}30$ divisions, c'est-à-dire **sur le flanc montant** entre le minimum de $3{,}0$ div et le maximum de $4{,}0$ div — et non à un extremum. Lecture : $u_C(t_1) = -1{,}5\ \text{V}$ (le sous-carreau valant $0{,}2\ \text{V}$, la précision de lecture est $\pm 0{,}1\ \text{V}$). Légende « Figure 3 ».
+
+      **Figure 4 (courbe).** $u_R$ en **millivolts** en ordonnée — l'unité a été relue au zoom, elle est bien imprimée $\text{mV}$ et non $\text{V}$ ; abscisse étiquetée « $t$ », sans unité ni graduation chiffrée, avec exactement le même pas de division majeure que la figure 3 et six divisions de large : les deux figures partagent donc la même échelle de temps. En ordonnée, traits majeurs tous les $5\ \text{mV}$, seuls « $5$ », « $0$ » et « $-5$ » chiffrés ; le cadre s'étend de $-12{,}5\ \text{mV}$ à $+12{,}5\ \text{mV}$. Courbe d'oscillations amorties, en quadrature avec celle de la figure 3 : départ à $t = 0$ à $\approx 0$, la courbe descendant immédiatement ; minimum à $\approx 0{,}45$ div $-9{,}7\ \text{mV}$ ; maximum à $1{,}47$ div $+8{,}2\ \text{mV}$ ; minimum à $2{,}46$ div $-6{,}7\ \text{mV}$ ; maximum à $3{,}47$ div $+5{,}4\ \text{mV}$ ; minimum à $4{,}5$ div $-4{,}3\ \text{mV}$ ; maximum à $5{,}5$ div $+3{,}5\ \text{mV}$ ; la courbe revient vers $0$ au bord droit. Une droite verticale en pointillés monte de l'axe des temps jusqu'à la courbe et repère $t_1$, l'étiquette « $t_1$ » étant imprimée sous l'axe. Position mesurée : $t_1 = 3{,}30$ divisions — **identique à celle de la figure 3**, les deux lectures se recoupent. Lecture : $u_R(t_1) = +5{,}1\ \text{mV}$. Légende « Figure 4 ».
+    questions:
+      - id: q1
+        part: "2-1 — Ce que dit la maille à l'instant du basculement"
+        stem: |-
+          **2-1-1-** (0,25 pt) En s'aidant de la loi d'additivité des tensions, déterminer la valeur de la tension aux bornes de la bobine juste après le basculement de l'interrupteur $K$ en position (2).
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un quart de point, une seule ligne de calcul — mais elle repose entièrement sur un fait que la leçon pose au rung 2 et que l'énoncé ne rappellera pas : **le courant dans une bobine ne peut pas sauter**. C'est la propriété qui donne toute la question ; si tu la connais, la réponse tient en deux phrases, sinon il n'y a aucun moyen de la deviner.
+
+          **Le mot « juste après » est l'indication.** Il désigne l'instant $t = 0^+$, celui qui suit immédiatement le basculement. Avant le basculement, $K$ était en position (1) et la branche de droite — celle de la bobine — n'était parcourue par aucun courant : $i(0^-) = 0$. La bobine s'oppose à toute variation brutale du courant qui la traverse, donc ce courant ne peut pas passer de $0$ à une valeur finie instantanément :
+
+          $$i(0^+) = i(0^-) = 0$$
+
+          **Ce que cela impose au conducteur ohmique.** Le circuit de la position (2) est une maille série : le même courant traverse $C$, $R$ et la bobine. Si $i(0^+) = 0$, alors la loi d'Ohm donne immédiatement
+
+          $$u_R(0^+) = R\,i(0^+) = 50 \times 0 = 0\ \text{V}$$
+
+          Le conducteur ohmique ne prend **rien** à cet instant. La figure 4 le confirme, d'ailleurs : elle part bien de $u_R \approx 0$.
+
+          **La maille, maintenant.** Dans la maille série $C$ — $R$ — bobine, la loi d'additivité des tensions s'écrit, avec les trois tensions orientées de la même façon en convention récepteur :
+
+          $$u_C + u_R + u_{\text{bobine}} = 0$$
+
+          À $t = 0^+$, le condensateur vient d'être chargé totalement sous la tension du générateur, donc $u_C(0^+) = E = 5{,}0\ \text{V}$ (c'est la valeur établie en partie 1, et la figure 3 la confirme : la courbe part du bord supérieur du cadre). En reportant, avec $u_R(0^+) = 0$ :
+
+          $$u_{\text{bobine}}(0^+) = -\,u_C(0^+) - u_R(0^+) = -5{,}0 - 0 = -5{,}0\ \text{V}$$
+
+          **La valeur à écrire : $\lvert u_{\text{bobine}}(0^+)\rvert = 5{,}0\ \text{V}$**, c'est-à-dire toute la tension du condensateur. Le signe dépend du sens dans lequel tu as fléché la tension de la bobine sur ton schéma ; ce qui compte et ce que le correcteur attend, c'est la **grandeur** — et la phrase qui va avec : à l'instant du basculement, le conducteur ohmique ne prenant rien, la totalité de la tension du condensateur se retrouve aux bornes de la bobine.
+
+          **Le piège nommé de cette question.** Répondre $0\ \text{V}$ « parce que le courant est nul ». C'est confondre les deux dipôles : dans un conducteur ohmique, $u = R\,i$, donc courant nul veut bien dire tension nulle ; dans une bobine, la tension vaut $L\,\frac{di}{dt} + r\,i$, et c'est la **dérivée** du courant qui la fait vivre. Le courant est nul à cet instant précis, mais il est justement sur le point de varier très vite — la dérivée, elle, est maximale. Courant nul et tension nulle sont deux choses différentes dès qu'une bobine est dans le circuit.
+      - id: q2
+        part: "2-1 — Le modèle du régime libre"
+        stem: |-
+          **2-1-2-** (0,75 pt) En s'aidant de la loi d'additivité des tensions, établir l'équation différentielle vérifiée par la tension $u_C(t)$ aux bornes du condensateur.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Comme en partie 1, on veut une équation où ne figure **qu'une seule fonction inconnue** — ici $u_C(t)$, celle que la figure 3 a enregistrée. Le circuit en offre trois enchevêtrées, $u_C$, $u_R$ et $u_{\text{bobine}}$, plus le courant $i$. La méthode est toujours la même : écrire la maille, puis remplacer tout ce qui n'est pas $u_C$ par quelque chose qui s'exprime avec $u_C$.
+
+          **Poser la convention avant d'écrire quoi que ce soit.** C'est l'étape que les copies sautent et qui coûte les signes. Sur la figure 1, $u_C$ et $u_R$ sont fléchées dans le même sens, en série dans la même branche : le même courant les traverse, et je l'oriente de façon que les trois dipôles soient en **convention récepteur**. Avec ce choix, deux relations sont acquises :
+
+          $$u_R = R\,i \qquad\text{et}\qquad i = C\,\frac{du_C}{dt}$$
+
+          La seconde est la définition même de l'intensité, $i = \dfrac{dq}{dt}$, combinée à $q = C\,u_C$ avec $C$ constante.
+
+          **La maille.** En position (2), la maille ne contient plus de générateur — c'est ce que « oscillations **libres** » veut dire : plus personne n'apporte d'énergie, le circuit vit sur celle que le condensateur a stockée. La somme des tensions autour de la maille est donc nulle :
+
+          $$u_C + u_R + u_{\text{bobine}} = 0$$
+
+          **Remplacer, terme par terme.** La bobine réelle porte une inductance **et** une résistance : l'énoncé dit « bobine d'inductance $L$ et de résistance $r$ », donc sa tension vaut
+
+          $$u_{\text{bobine}} = L\,\frac{di}{dt} + r\,i$$
+
+          En reportant $u_R = R\,i$ et cette expression dans la maille :
+
+          $$u_C + R\,i + L\,\frac{di}{dt} + r\,i = 0
+          \qquad\Longleftrightarrow\qquad
+          u_C + (R + r)\,i + L\,\frac{di}{dt} = 0$$
+
+          **Le dernier remplacement, celui qui ferme l'équation.** On y substitue $i = C\,\dfrac{du_C}{dt}$, et donc $\dfrac{di}{dt} = C\,\dfrac{d^2u_C}{dt^2}$ :
+
+          $$u_C + (R + r)\,C\,\frac{du_C}{dt} + L\,C\,\frac{d^2u_C}{dt^2} = 0$$
+
+          **La forme canonique.** On divise par $LC$ (non nul) pour rendre le coefficient de la dérivée seconde égal à $1$ — c'est sous cette forme que la leçon écrit l'oscillateur amorti, et c'est celle qui se compare directement au cours :
+
+          $$\boxed{\ \frac{d^2u_C(t)}{dt^2} + \frac{R + r}{L}\,\frac{du_C(t)}{dt} + \frac{1}{LC}\,u_C(t) = 0\ }$$
+
+          **Lire ce qu'on vient d'écrire, au lieu de s'arrêter au résultat.** Trois termes, trois rôles, et la figure 3 les montre tous les trois :
+          — le terme en $\dfrac{1}{LC}\,u_C$ est le rappel : c'est lui qui fait osciller, et $\dfrac{1}{\sqrt{LC}}$ est la pulsation propre ;
+          — le terme en $\dfrac{R+r}{L}\,\dfrac{du_C}{dt}$ est l'amortissement : proportionnel à la vitesse, il fait décroître l'enveloppe. C'est lui qui rend les extrema successifs de la figure 3 de plus en plus petits ($5{,}0$ puis $-3{,}9$ puis $+3{,}3$…) ;
+          — s'il était absent ($R + r = 0$), il resterait l'oscillateur idéal, d'amplitude constante.
+
+          **Les deux pièges nommés de cette question.** Le premier : **oublier $r$**. L'énoncé a pris soin de dire que la bobine a une résistance ; écrire $\dfrac{R}{L}$ au lieu de $\dfrac{R+r}{L}$, c'est perdre le point sur une donnée qui était sous les yeux. Le second : écrire $i = -C\,\dfrac{du_C}{dt}$ « parce que le condensateur se décharge ». Le signe ne se décide pas d'après ce que fait physiquement le circuit, il se décide d'après la **convention qu'on a posée en début de résolution** — et si on la pose en récepteur, comme la figure 1 y invite, c'est $+$. La preuve que le choix est cohérent : l'équation obtenue a ses trois coefficients positifs, ce qui est la signature d'un oscillateur qui s'amortit. Un signe faux aurait donné un amortissement négatif, c'est-à-dire une amplitude qui explose — en contradiction directe avec la figure 3.
+      - id: q3
+        part: "2-2 — L'énergie du circuit, écrite avec ce que l'on mesure"
+        stem: |-
+          **2-2-** (0,5 pt) Exprimer l'énergie totale $E_t$ du circuit en fonction de $L$, $C$, $u_C(t)$, $R$ et $u_R(t)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énergie totale d'un circuit RLC est la somme de deux réserves : celle du condensateur (électrique) et celle de la bobine (magnétique). La leçon les donne sous cette forme :
+
+          $$E_{\text{élec}} = \frac{1}{2}\,C\,u_C^2(t) \qquad\text{et}\qquad E_{\text{mag}} = \frac{1}{2}\,L\,i^2(t)$$
+
+          Mais lis bien la consigne : elle impose la liste des symboles autorisés — $L$, $C$, $u_C(t)$, $R$ et $u_R(t)$. **$i$ n'y figure pas.** Ce n'est pas une coquetterie de rédaction : c'est l'énoncé qui te dit d'avance comment tu vas exploiter les deux courbes à la question suivante. On ne mesure pas un courant sur ces figures, on mesure deux tensions ; l'expression doit donc être écrite avec des tensions.
+
+          **Le seul pont à construire.** Le conducteur ohmique est traversé par le même courant que la bobine — ils sont en série. La loi d'Ohm le convertit en tension et se retourne :
+
+          $$u_R = R\,i \qquad\Longrightarrow\qquad i = \frac{u_R(t)}{R}$$
+
+          **On reporte, et c'est fini.**
+
+          $$E_t = \frac{1}{2}\,C\,u_C^2(t) + \frac{1}{2}\,L\,i^2(t)
+          = \boxed{\ \frac{1}{2}\,C\,u_C^2(t) + \frac{1}{2}\,L\left(\frac{u_R(t)}{R}\right)^2\ }$$
+
+          **Pourquoi ce n'est pas de la cosmétique.** Sous cette forme, chacun des deux termes se lit **directement sur une figure** : le premier sur la figure 3, le second sur la figure 4. À n'importe quel instant repéré sur les deux courbes, tu as l'énergie totale sans jamais avoir eu besoin de connaître l'échelle des temps — ce qui tombe bien, puisque ni la figure 3 ni la figure 4 ne porte de graduation temporelle chiffrée.
+
+          **Où passe $r$, et pourquoi elle n'est pas là.** La résistance de la bobine ne **stocke** rien : elle dissipe, comme $R$. Une résistance n'apparaît jamais dans un bilan de réserves d'énergie, seulement dans un bilan de pertes. C'est exactement pourquoi $r$ figurait dans l'équation différentielle de la question précédente — qui décrit l'évolution, donc l'amortissement — et ne figure pas ici. La lettre $R$ dans la formule ci-dessus n'est d'ailleurs pas là comme dissipateur : elle sert uniquement de convertisseur entre la tension qu'on lit et le courant qu'on ne lit pas.
+
+          **Le piège nommé de cette question.** Ajouter un troisième terme « d'énergie dissipée » dans $E_t$. Il n'y en a pas : $E_t$ est l'énergie **contenue** dans le circuit à un instant donné, et seuls deux dipôles en contiennent. L'énergie dissipée n'est pas une réserve, c'est ce qui est parti — elle se calcule par une **différence** de $E_t$ entre deux instants, ce que la question suivante demande précisément.
+      - id: q4
+        part: "2-3 — Le bilan, sur deux instants dont aucun n'est un extremum"
+        stem: |-
+          **2-3-** (0,5 pt) En s'aidant des courbes de la figure 3 et de la figure 4, vérifier que l'énergie dissipée par effet Joule dans le circuit entre l'instant $t_0 = 0$ et l'instant $t_1$ est : $E_j = \lvert\Delta E_t\rvert \approx 1{,}1\ \mu\text{J}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le circuit ne reçoit rien de l'extérieur — c'est le régime libre. Tout ce qui a quitté les deux réserves entre $t_0$ et $t_1$ est donc parti en chaleur, dans $R$ et dans $r$. D'où la seule chose à écrire :
+
+          $$E_j = \lvert \Delta E_t \rvert = \lvert E_t(t_1) - E_t(t_0) \rvert = E_t(0) - E_t(t_1)$$
+
+          la dernière égalité étant vraie parce que l'énergie ne peut que décroître ici.
+
+          **L'attention à porter avant de calculer, et c'est ce qui fait cette question.** Regarde **où tombe $t_1$** sur la figure 3 : le pointillé est à $3{,}30$ divisions, c'est-à-dire **sur le flanc montant** entre le minimum de $3{,}0$ div et le maximum de $4{,}0$ div. Ce n'est **pas** un extremum. Conséquence directe : le courant n'y est pas nul, donc le terme magnétique n'est **pas** nul, et le calcul doit poser les **deux** termes. C'est là que cet exercice se distingue de tous ses voisins de banque, où les deux instants du bilan sont des extrema et où le terme magnétique disparaît de lui-même. Ici, il faut aller le chercher sur la figure 4.
+
+          **Les lectures, et rien d'autre.** Figure 3 : $u_C(0) = 5{,}0\ \text{V}$ (bord supérieur du cadre) et $u_C(t_1) = -1{,}5\ \text{V}$. Figure 4 : $u_R(0) \approx 0$ et $u_R(t_1) = +5{,}1\ \text{mV} = 5{,}1\times10^{-3}\ \text{V}$. Les valeurs du circuit : $C = 0{,}10\ \mu\text{F} = 1{,}0\times10^{-7}\ \text{F}$ (établie en partie 1), $L = 20\ \text{mH} = 2{,}0\times10^{-2}\ \text{H}$, $R = 50\ \Omega$.
+
+          **À $t_0 = 0$.** Le condensateur vient d'être chargé et le courant est nul — c'est ce que la question 2-1-1 a établi, et la figure 4 part bien de zéro. Le terme magnétique est donc nul et l'énergie est purement électrique :
+
+          $$E_t(0) = \frac{1}{2}\times 1{,}0\times10^{-7}\times (5{,}0)^2
+          = \frac{1}{2}\times 1{,}0\times10^{-7}\times 25 = 1{,}25\times10^{-6}\ \text{J}$$
+
+          **À $t_1$, les deux termes.** Le terme électrique d'abord :
+
+          $$\frac{1}{2}\,C\,u_C^2(t_1) = \frac{1}{2}\times 1{,}0\times10^{-7}\times (1{,}5)^2
+          = \frac{1}{2}\times 1{,}0\times10^{-7}\times 2{,}25 = 1{,}125\times10^{-7}\ \text{J}$$
+
+          Puis le terme magnétique. On passe d'abord à l'intensité, $i(t_1) = \dfrac{u_R(t_1)}{R} = \dfrac{5{,}1\times10^{-3}}{50} = 1{,}02\times10^{-4}\ \text{A}$, puis :
+
+          $$\frac{1}{2}\,L\,i^2(t_1) = \frac{1}{2}\times 2{,}0\times10^{-2}\times (1{,}02\times10^{-4})^2
+          = \frac{1}{2}\times 2{,}0\times10^{-2}\times 1{,}0404\times10^{-8} = 1{,}04\times10^{-10}\ \text{J}$$
+
+          $$E_t(t_1) = 1{,}125\times10^{-7} + 1{,}04\times10^{-10} = 1{,}126\times10^{-7}\ \text{J}$$
+
+          **Le bilan.**
+
+          $$E_j = 1{,}250\times10^{-6} - 0{,}1126\times10^{-6} = 1{,}137\times10^{-6}\ \text{J}
+          \qquad\Longrightarrow\qquad \boxed{E_j \approx 1{,}1\ \mu\text{J}}$$
+
+          C'est bien la valeur à vérifier. Autrement dit, **91 %** de l'énergie initiale a déjà été dissipée à l'instant $t_1$.
+
+          **L'honnêteté sur le chiffre.** Mon calcul complet donne $1{,}14\ \mu\text{J}$, pas $1{,}1$ tout rond. L'écart n'est pas une erreur : il vient de la précision de lecture de $u_C(t_1)$. Le sous-carreau de la figure 3 vaut $0{,}2\ \text{V}$, donc la lecture $-1{,}5\ \text{V}$ est connue à $\pm 0{,}1\ \text{V}$ près, ce qui déplace le résultat de $\pm 0{,}015\ \mu\text{J}$. Écrire « $\approx 1{,}1\ \mu\text{J}$ » comme le fait l'énoncé, c'est arrondir à la précision réelle de la mesure — c'est la bonne pratique, et l'énoncé a raison de mettre « $\approx$ ».
+
+          **Ce que le terme magnétique t'apprend, une fois calculé.** Il pèse $1{,}04\times10^{-10}$ contre $1{,}125\times10^{-7}$, soit **$0{,}09\ \%$** du total à $t_1$ : négligeable. Mais on ne pouvait le savoir **qu'après** l'avoir posé. C'est exactement la différence entre négliger un terme parce qu'on l'a évalué, et l'oublier parce qu'on ne l'a pas vu.
+
+          **Le piège nommé de cette question.** Traiter $t_1$ comme un extremum et ne garder que le terme électrique. Le raccourci donne ici un résultat presque juste — $1{,}14\ \mu\text{J}$ au lieu de $1{,}137$ — précisément parce que le terme magnétique est minuscule ; mais c'est un coup de chance, pas une méthode, et sur une figure où le courant est important au même instant il coûterait toute la question. Le second piège, plus cher : oublier que la figure 4 est graduée en **millivolts**. Prendre $5{,}1\ \text{V}$ au lieu de $5{,}1\ \text{mV}$ multiplie le terme magnétique par $10^6$ et rend $E_t(t_1)$ plus grand que $E_t(0)$ — un circuit libre qui gagne de l'énergie, ce qui devrait déclencher l'alarme immédiatement.
+        steps:
+          - math: 'E_t = \frac{1}{2}C\,u_C^2(t) + \frac{1}{2}L\left(\frac{u_R(t)}{R}\right)^2'
+            note: "Expression etablie en 2-2 : les deux reserves, ecrites avec les deux tensions que les figures donnent."
+          - math: 'E_t(0) = \frac{1}{2}\times1{,}0\times10^{-7}\times(5{,}0)^2 = 1{,}25\times10^{-6}\ \text{J}'
+            note: "A t=0 le courant est nul (question 2-1-1), donc terme magnetique nul : energie purement electrique."
+          - math: 'i(t_1) = \frac{u_R(t_1)}{R} = \frac{5{,}1\times10^{-3}}{50} = 1{,}02\times10^{-4}\ \text{A}'
+            note: "Figure 4 graduee en MILLIVOLTS : 5,1 mV, pas 5,1 V. Conversion obligatoire avant tout calcul."
+          - math: 'E_t(t_1) = \frac{1}{2}\times1{,}0\times10^{-7}\times(1{,}5)^2 + \frac{1}{2}\times2{,}0\times10^{-2}\times(1{,}02\times10^{-4})^2'
+            note: "t1 tombe sur le flanc montant de u_C (3,30 div), pas sur un extremum : les DEUX termes sont a poser."
+          - math: 'E_t(t_1) = 1{,}125\times10^{-7} + 1{,}04\times10^{-10} = 1{,}126\times10^{-7}\ \text{J}'
+            note: "Le terme magnetique pese 0,09 % du total : negligeable, mais on ne le sait qu'apres l'avoir calcule."
+          - math: 'E_j = |\Delta E_t| = 1{,}250\times10^{-6} - 0{,}1126\times10^{-6} = 1{,}137\times10^{-6}\ \text{J}'
+            note: "Regime libre : rien n'entre, donc tout ce qui quitte les reserves est parti en chaleur dans R et r."
+          - math: '\boxed{E_j \approx 1{,}1\ \mu\text{J}}'
+            note: "Arrondi a la precision reelle de lecture : +/-0,1 V sur u_C(t1) deplace le resultat de +/-0,015 microJ."
+
   # ── bk-2025-n-x3 — 2025 N, Exercice 3 (Partie 2) : decharge C-RL, piege etalon-de-temps ──
   - id: bk-2025-n-x3
     title: "Décharge d'un condensateur dans un dipôle RL : ne pas confondre l'étalon de temps et la pseudo-période, puis bilan énergétique"
