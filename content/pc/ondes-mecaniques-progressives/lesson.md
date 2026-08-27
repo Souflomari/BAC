@@ -116,6 +116,38 @@ Ce qui ne change **rien** à $v$ : la source elle-même. Que la perturbation cr�
 
 [[checkpoint:cp-r3-celerite-vs-point]]
 
+### L'outil qui vérifie une formule sans la connaître : l'équation aux dimensions
+
+Un sujet donne parfois une expression de la célérité en fonction des grandeurs du milieu — par exemple $v=\sqrt{g\,h}$ pour une onde à la surface d'une eau peu profonde, ou $v=\sqrt{F/\mu}$ pour une corde tendue — et demande d'en **vérifier l'homogénéité**. La question paraît étrange la première fois : comment vérifier une formule qu'on n'a pas démontrée ? Justement en ne regardant pas ce qu'elle dit, mais **de quelle nature** est chaque terme.
+
+**Le principe.** Une égalité physique ne peut relier que des grandeurs de **même nature**. On ne compare pas une longueur à une durée. Écrire l'équation aux dimensions, c'est remplacer chaque grandeur par sa nature — notée entre crochets — et vérifier que les deux membres retombent sur la même.
+
+Trois dimensions de base suffisent presque toujours en mécanique : la **longueur** $\text{L}$, la **masse** $\text{M}$, le **temps** $\text{T}$. Tout le reste s'en déduit par les définitions :
+
+$$[v] = \frac{[d]}{[\Delta t]} = \text{L}\cdot\text{T}^{-1}
+\qquad
+[a] = \frac{[v]}{[\Delta t]} = \text{L}\cdot\text{T}^{-2}
+\qquad
+[F] = [m][a] = \text{M}\cdot\text{L}\cdot\text{T}^{-2}$$
+
+Aucune de ces trois n'est à mémoriser : chacune se **retrouve** en une seconde depuis sa définition, et c'est le seul geste à savoir faire.
+
+**Un exemple complet.** Vérifions $v=\sqrt{g\,h}$, où $g$ est l'intensité de la pesanteur et $h$ la profondeur.
+
+$g$ est une accélération, donc $[g] = \text{L}\cdot\text{T}^{-2}$. $h$ est une longueur, donc $[h] = \text{L}$. Le produit :
+
+$$[g\,h] = \text{L}\cdot\text{T}^{-2}\times\text{L} = \text{L}^{2}\cdot\text{T}^{-2}$$
+
+et sa racine carrée :
+
+$$\left[\sqrt{g\,h}\,\right] = \text{L}\cdot\text{T}^{-1}$$
+
+C'est exactement $[v]$. **La relation est homogène.**
+
+**Ce que ce contrôle prouve, et ce qu'il ne prouve pas.** Il prouve qu'une formule *peut* être juste. Il ne prouve **jamais** qu'elle l'est : $v=\sqrt{g\,h}$ et $v=3\sqrt{g\,h}$ sont toutes deux homogènes, et une seule est vraie. L'analyse dimensionnelle ne voit pas les coefficients sans dimension. Mais elle attrape, en dix secondes et sans rien connaître de la physique du problème, toute erreur d'exposant, d'oubli de facteur ou de racine mal placée — c'est-à-dire la grande majorité des erreurs de recopie.
+
+*Cet outil ne sert pas qu'ici.* Il vaut pour toutes les formules de mécanique et d'électricité que tu croiseras : vérifie que $\tau = RC$ est bien un temps, que $\frac{1}{2}Li^2$ est bien une énergie, que $2\pi\sqrt{m/k}$ est bien une durée. Prends le réflexe sur ce chapitre, garde-le pour tous les autres — c'est le contrôle le moins cher de toute la physique.
+
 ### Le retard $\tau$
 
 Puisque $v$ est fixée par le milieu, une perturbation qui parcourt une distance $d$ met un temps bien précis à le faire. Ce temps s'appelle le **retard** $\tau$ : le délai entre l'instant où la source $S$ crée la perturbation et l'instant où un point $M$, situé à la distance $d$ de $S$, la reçoit à son tour.

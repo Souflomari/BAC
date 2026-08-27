@@ -489,6 +489,30 @@ $$v_\ell = \frac{mg}{k} = \frac{0{,}20\times 9{,}8}{2{,}0} = 0{,}98\ \text{m/s}$
 
 On s'arrête là : la loi complète $v(t)$ n'est **pas** demandée, et on ne la dérive pas analytiquement (voir plus bas). Ce qu'on garde, c'est l'équation différentielle elle-même, exploitée pour $v_\ell$ et $\tau$ — exactement ce qu'un TP de chute avec frottement demande de faire à partir de données réelles.
 
+### Une troisième force, quand le fluide est dense : la poussée d'Archimède
+
+Le bilan ci-dessus n'a que deux forces, le poids et le frottement. C'est légitime dans l'**air**, où la poussée d'Archimède est négligeable devant le poids. Ce ne l'est plus dès que le fluide est un **liquide** — et un sujet de bac qui fait tomber une bille dans de l'huile ou dans de l'eau ajoute presque toujours une troisième force.
+
+**Ce qu'elle vaut.** Tout corps plongé dans un fluide subit, de la part de ce fluide, une force verticale dirigée **vers le haut**, de norme égale au poids du fluide déplacé :
+
+$$F_A = \rho_{\text{fluide}}\;V\;g$$
+
+où $V$ est le volume **immergé** du solide et $\rho_{\text{fluide}}$ la masse volumique du fluide. C'est un résultat d'hydrostatique, antérieur à ce chapitre ; on l'emploie ici comme un acquis.
+
+**Ce que ça change au bilan — et ce que ça ne change pas.** Rien à la méthode : bilan, repère, projection, exactement comme plus haut. Avec l'axe $Oy$ vertical orienté **vers le bas**, la poussée est dirigée à l'opposé, donc comptée **négativement**, comme le frottement :
+
+$$m\,\frac{dv}{dt} = mg - F_A - k\,v$$
+
+**Ce que la vitesse limite devient.** En régime permanent, $\dfrac{dv}{dt} = 0$, donc
+
+$$v_\ell = \frac{mg - F_A}{k}$$
+
+La poussée d'Archimède **abaisse** la vitesse limite — le solide tombe moins vite dans un liquide dense que dans l'air, et pas seulement à cause du frottement.
+
+*Le contrôle de cohérence, gratuit :* si $F_A > mg$, la formule donnerait une vitesse limite négative. Ce n'est pas absurde, c'est physique — cela veut dire que le solide **remonte** au lieu de descendre, ce qui est exactement le cas d'un bouchon lâché au fond d'un seau. Le signe du numérateur te dit dans quel sens le mouvement s'établit.
+
+*Le piège nommé :* garder $v_\ell = \dfrac{mg}{k}$ par réflexe alors que l'énoncé a donné une masse volumique de fluide et un volume. Deux données qui n'apparaissent nulle part dans ta résolution sont un signal : l'énoncé ne fournit jamais de valeur pour rien.
+
 ### La limite du cadre
 
 On établit l'équation différentielle, on l'exploite pour trouver $v_\ell$ et $\tau$, on lit la courbe $v=f(t)$ — mais on ne la **résout** jamais analytiquement. Pas de séparation des variables, pas de formule $v(t) = v_\ell\left(1-e^{-t/\tau}\right)$ dérivée à la main : cette frontière est exactement celle que tu retrouveras pour un circuit RLC amorti — établir l'équation différentielle est un objectif du programme, la résoudre à la main n'en est pas un. La suite, pour aller plus loin sans intégrer analytiquement : la résolution **pas à pas**, rung suivant.
