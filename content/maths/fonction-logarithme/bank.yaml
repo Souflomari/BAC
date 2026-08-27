@@ -1030,3 +1030,712 @@ entries:
             note: "Derivee de f en 0 (formule de la question 10), non nulle."
           - math: 'g \text{ derivable en } 0,\ g''(0)\ne0 \implies g^{-1} \text{ derivable en } g(0)=1, \quad \left(g^{-1}\right)''(1) = \dfrac{1}{g''(0)} = 1'
             note: "Theoreme de la derivee d'une reciproque (chapitre Derivabilite et etude de fonctions, hors socle de cette lecon)."
+  # ── bk-2023-r-x1 — 2023 R, Exercice 1 : le probleme d'analyse (10 pts),
+  #    f_n(x) = sqrt(x).(ln x)^n — trois parties, quatre domaines ──
+  #
+  # NOTE ÉDITORIALE — CARTE DES DOMAINES, à lire avant de s'y attaquer. C'est un
+  # problème de 10 points, la moitié de l'épreuve, et il traverse quatre
+  # chapitres. Le classement du vérificateur les recense partie par partie ;
+  # cette entrée reste ENTIÈRE sous fonction-logarithme (slug dominant : le
+  # ressort de tout l'exercice est la croissance comparée ln u / u -> 0,
+  # mobilisée via les réécritures imposées en I-1a et I-1c) et ne crée AUCUNE
+  # entrée ailleurs — l'assemblage d'épreuves somme les bareme_total, et
+  # découper produirait des moitiés orphelines. Le cross-list est honoré dans
+  # le raisonnement, qui nomme le domaine à chaque fois qu'il en change :
+  #   — Partie I, question 1 : continuité à droite, limites -> « Limites et
+  #     continuité » ;
+  #   — Partie I, question 2 : dérivée, tableau de variations, point
+  #     d'inflexion -> « Dérivabilité et étude de fonctions » ;
+  #   — Partie II : deux suites, (u_n) puis (x_n) -> « Suites numériques »,
+  #     avec le TVI et la stricte monotonie de « Dérivabilité » pour II-2a ;
+  #   — Partie III : double intégration par parties et volume de révolution
+  #     -> « Calcul intégral ».
+  # Ce qu'un élève doit réviser avant : ln et croissances comparées d'abord, le
+  # reste au fil des parties.
+  #
+  # NOTE ÉDITORIALE — MOJIBAKE DU SCAN, et pourquoi il ne coûte rien ici. Le
+  # scan de ce sujet remplace les lettres ajourées (N, R, C) par un assortiment
+  # de glyphes cassés, la même lettre étant rendue par deux glyphes différents à
+  # deux lignes d'écart. La passe adversariale a établi deux faits mesurés au
+  # pixel : les étoiles en exposant survivent au mojibake (donc leur ABSENCE est
+  # une lecture, pas une incertitude), et un tofu ne rend jamais un symbole
+  # non-ajouré. Dans cet exercice, les deux occurrences concernées sont les
+  # quantificateurs de la Partie II, lus N* par l'indexation de la suite
+  # (u_n) n>=1 — lecture sans alternative. Aucune valeur numérique n'est touchée.
+  - id: bk-2023-r-x1
+    title: "Problème d'analyse : la famille f_n(x) = √x (ln x)ⁿ — continuité prolongée en 0, variations selon la parité de n, deux suites définies implicitement, et un volume de révolution"
+    source:
+      year: 2023
+      session: rattrapage
+      filiere: "SM"
+      exercise_label: "Exercice 1 — Analyse (10 points)"
+    bareme_total: 10
+    duration_min: 120
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session de rattrapage — examen national Mathématiques, filière
+        Sciences Mathématiques (A) et (B), option française, 4 h, coefficient
+        9, code sujet RS 24F, AlloSchool element/142494, scan
+        course-436/upload-85320, pages 2 et 3 sur 5 (consignes en page 1).
+        Barème de l'exercice = 10 points, recompté partie par partie sur le
+        scan et revérifié ici question par question : Partie I =
+        0,5 + 0,25 + 0,75 + 0,5 + 0,75 + 0,25 + 1 + 0,25 = 4,25 ; Partie II =
+        0,25 + 0,25 + 0,25 + 0,5 + 0,75 + 0,5 + 0,25 + 0,25 + 0,25 = 3,25 ;
+        Partie III = 0,25 + 1 + 0,5 + 0,25 + 0,5 = 2,5 ; total 4,25 + 3,25 +
+        2,5 = 10, conforme à l'annonce de la page 1 (« L'exercice 1 se rapporte
+        à l'analyse (10 pts) »). Transcription vérifiée par une passe
+        adversariale indépendante (2026-08-23,
+        docs/sujets/_incoming/maths-sm-2023-r.md, statut « vérifié ») :
+        re-fetch de element/142494, re-dérivation des chemins d'images depuis
+        le HTML (5 pages 0001 à 0005-big.jpg, 1240x1754 chacune), et re-lecture
+        de chaque page SUR L'IMAGE — chaque nombre, indice, exposant, borne et
+        barème relu sur le scan et jamais sur le texte transcrit. L'exposant
+        1/(2n) a été relu au pixel à ses quatre occurrences (questions I-1a et
+        I-1c). Aucune figure n'est imprimée dans ce sujet : les cinq pages sont
+        du texte mathématique seul. NOTE DE LECTURE (mojibake) : le scan
+        substitue aux lettres ajourées un assortiment de glyphes cassés ; en
+        Partie II le quantificateur s'écrit une fois avec un tofu et une fois
+        avec un glyphe d'angle, pour le même ensemble, lu N* par l'indexation
+        de la suite (u_n) n>=1. La passe adversariale a établi au pixel que les
+        étoiles en exposant survivent au mojibake et qu'un tofu ne rend jamais
+        un symbole non-ajouré — la lecture est donc sans alternative, et
+        aucune valeur n'en dépend. CONTRE-CALCUL REFAIT ICI, identité par
+        identité : (I-1a) (2n)^n (x^(1/2n) ln(x^(1/2n)))^n = (2n)^n . x^(1/2) .
+        (ln x)^n / (2n)^n = sqrt(x)(ln x)^n — identité exacte ; (I-2a)
+        f_n' = (1/(2 sqrt x))(ln x)^n + (n/sqrt x)(ln x)^(n-1) =
+        (1/(2 sqrt x))(ln x)^(n-1)(2n + ln x) — conforme ; (I-2b) la
+        restriction n >= 2 est nécessaire ET suffisante : pour n = 1 le facteur
+        (ln x)^0 vaut 1 et ne s'annule jamais, seule racine x = e^(-2) — la
+        racine est donc bien e^(-2n) et non e^(-2) ; (II-1b) u_(n+1)/u_n =
+        ln beta appartient à ]0,1[ donc la suite décroît ; (II-2b)
+        f_(n+1)(x_n) = f_n(x_n) . ln x_n = ln x_n < 1 donne la croissance ;
+        (II-3) démonstration par l'absurde cohérente — n ln(ln x_n) =
+        ln((ln x_n)^n) tend vers ln(1/sqrt(ell)), qui est FINI, tandis que
+        ell < e forcerait -infini, d'où ell = e ; (III-1b) avec
+        G(t) = (t^2/2) ln^2 t - (t^2/2) ln t + t^2/4, primitive de t(ln t)^2
+        obtenue par la double IPP demandée, F(x) = G(1) - G(x) =
+        -(x^2/2) ln^2 x + (x^2/2) ln x + (1/4)(1 - x^2) — EXACTEMENT
+        l'expression imprimée, signes et coefficients compris ; d'où
+        F(0+) = 1/4, F(0) = 1/4 et V = pi F(0) = pi/4 cm3. Le vérificateur
+        conclut que l'exercice se résout entièrement avec les données
+        transcrites et qu'aucun point ne reste indécidable. AJOUT DE CETTE
+        ENTRÉE AU CORPUS : elle complète l'épreuve SM 2023 rattrapage, dont les
+        exercices 2, 3 et 4 étaient déjà convertis (nombres-complexes-2,
+        structures-algebriques, arithmetique) — l'épreuve passe de 10,00 à
+        20,00 points et devient assemblable en entier dans Examens blancs.
+    intro: |-
+      **Problème d'analyse (examen national, Sciences Mathématiques, session de rattrapage 2023 — Exercice 1, 10 points).**
+
+      *L'épreuve dure 4 heures et comporte quatre exercices indépendants, traitables dans l'ordre choisi par le candidat. Cet exercice à lui seul pèse la moitié du barème. L'usage de la calculatrice n'est pas autorisé.*
+
+      **Partie I.** Pour tout entier naturel **non nul** $n$, on considère la fonction $f_n$ définie sur $I = [0, +\infty[$ par :
+
+      $$f_n(0) = 0 \qquad\text{et}\qquad \left(\forall x \in\, ]0, +\infty[\right)\ ;\quad f_n(x) = \sqrt{x}\,(\ln x)^n$$
+
+      et soit $(C_n)$ sa courbe représentative dans un repère orthonormé $\left(O; \vec{i}, \vec{j}\right)$.
+
+      **Partie II.** On y étudie deux suites construites à partir de cette famille : $u_n = f_n(\beta)$ pour un réel $\beta$ fixé dans $]1, e[$, puis la suite $(x_n)$ définie **implicitement** par $f_n(x_n) = 1$.
+
+      **Partie III.** On y pose $F(x) = \displaystyle\int_x^1 \left(f_1(t)\right)^2 dt$ pour $x \in I$, et l'on termine par un volume de révolution.
+
+      *Aucune figure n'accompagne ce sujet : tout se joue sur le texte. La carte des domaines, pour savoir quoi réviser avant : la Partie I mobilise les limites et la continuité, puis la dérivation et l'étude de fonctions ; la Partie II les suites numériques et le théorème des valeurs intermédiaires ; la Partie III le calcul intégral. Le fil qui traverse tout, et qu'il faut avoir en main dès la première question, c'est la croissance comparée $\dfrac{\ln u}{u} \to 0$ — les deux réécritures imposées par l'énoncé, en I-1a et I-1c, ne servent qu'à la faire apparaître.*
+    questions:
+      - id: q1a
+        part: "Partie I — 1. La fonction au voisinage de 0 et de +∞"
+        stem: |-
+          **1- a)** (0,5 pt) Vérifier que : $\left(\forall x \in\, ]0, +\infty[\right)$ ; $\sqrt{x}\,(\ln x)^n = (2n)^n \left( x^{\frac{1}{2n}} \ln\!\left( x^{\frac{1}{2n}} \right) \right)^n$, en déduire que $f_n$ est continue à droite en $0$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La question a deux moitiés, et la première existe uniquement pour rendre la seconde possible. Telle qu'elle est écrite, $f_n(x) = \sqrt{x}\,(\ln x)^n$ est en $0^+$ une forme indéterminée $0 \times (\pm\infty)$ que rien de connu ne tranche. La réécriture imposée par l'énoncé la transforme en une puissance d'une expression du type $t\ln t$, dont la limite en $0^+$ est, elle, une limite de référence. **L'énoncé te donne la clé : ne cherche pas une autre porte.**
+
+          **La vérification de l'identité, de droite à gauche.** On part du membre de droite, parce que c'est le plus compliqué et que le simplifier est plus sûr que de compliquer le membre de gauche. Posons le calcul en deux temps.
+
+          D'abord, la propriété du logarithme d'une puissance (rung 2) :
+
+          $$\ln\!\left(x^{\frac{1}{2n}}\right) = \frac{1}{2n}\,\ln x$$
+
+          Donc le contenu de la parenthèse vaut $x^{\frac{1}{2n}} \cdot \dfrac{1}{2n}\ln x$. On l'élève à la puissance $n$ :
+
+          $$\left( x^{\frac{1}{2n}} \cdot \frac{1}{2n}\ln x \right)^{\!n}
+          = \left(x^{\frac{1}{2n}}\right)^{\!n} \cdot \frac{1}{(2n)^n}\,(\ln x)^n
+          = x^{\frac{1}{2}} \cdot \frac{(\ln x)^n}{(2n)^n}$$
+
+          car $\left(x^{\frac{1}{2n}}\right)^{n} = x^{\frac{n}{2n}} = x^{\frac{1}{2}} = \sqrt{x}$.
+
+          Il ne reste qu'à multiplier par le facteur $(2n)^n$ placé devant, qui se simplifie exactement avec le dénominateur :
+
+          $$(2n)^n \cdot \sqrt{x}\,\frac{(\ln x)^n}{(2n)^n} = \sqrt{x}\,(\ln x)^n$$
+
+          L'identité est vérifiée pour tout $x > 0$. Remarque le rôle du $(2n)^n$ : il n'est pas décoratif, il est exactement là pour compenser le $\frac{1}{2n}$ qui sort du logarithme quand on l'élève à la puissance $n$.
+
+          **La continuité à droite en $0$, maintenant.** Par définition, $f_n$ est continue à droite en $0$ si $\displaystyle\lim_{x \to 0^+} f_n(x) = f_n(0) = 0$.
+
+          On pose le **changement de variable** que la réécriture appelle : $t = x^{\frac{1}{2n}}$. Quand $x \to 0^+$, on a $t \to 0^+$ également, car $\frac{1}{2n} > 0$. L'expression devient :
+
+          $$f_n(x) = (2n)^n \left(t\,\ln t\right)^n$$
+
+          Or $\displaystyle\lim_{t \to 0^+} t\ln t = 0$ : c'est une **limite de référence** du chapitre — le logarithme diverge vers $-\infty$, mais si lentement que le facteur $t$ l'emporte. La fonction $z \mapsto z^n$ étant continue en $0$, la puissance $n$-ième suit :
+
+          $$\lim_{x \to 0^+} f_n(x) = (2n)^n \times 0^n = 0 = f_n(0)$$
+
+          **Conclusion à écrire :** $f_n$ est continue à droite en $0$, et le prolongement $f_n(0) = 0$ posé par l'énoncé n'est pas arbitraire — c'est le seul qui rende la fonction continue sur $I$ tout entier.
+
+          **Le piège nommé de cette question.** Vouloir conclure directement « $\sqrt{x} \to 0$ et $(\ln x)^n \to \pm\infty$, donc… ». Le produit $0 \times \infty$ ne se tranche pas par inspection : c'est précisément le cas où il faut faire apparaître une croissance comparée. Le second piège, plus discret : oublier que pour $n$ **pair** $(\ln x)^n \to +\infty$ et pour $n$ **impair** $(\ln x)^n \to -\infty$ — l'indétermination est de nature différente selon la parité, alors que la réécriture, elle, les traite d'un seul coup. C'est un troisième avantage de l'indication de l'énoncé.
+      - id: q1b
+        stem: |-
+          **1- b)** (0,25 pt) Calculer $\displaystyle\lim_{x \to +\infty} f_n(x)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un quart de point : il n'y a **aucune** indétermination ici, et la question est là pour te faire remarquer le contraste avec la précédente. Il suffit de regarder les deux facteurs séparément.
+
+          Quand $x \to +\infty$ :
+
+          $$\sqrt{x} \to +\infty \qquad\text{et}\qquad \ln x \to +\infty$$
+
+          Comme $\ln x \to +\infty$, en particulier $\ln x > 0$ à partir d'un certain rang (dès $x > 1$), donc $(\ln x)^n \to +\infty$ **quelle que soit la parité de $n$** — élever un nombre qui tend vers $+\infty$ à une puissance entière positive donne $+\infty$.
+
+          Le produit de deux facteurs qui tendent tous deux vers $+\infty$ tend vers $+\infty$ :
+
+          $$\boxed{\lim_{x \to +\infty} f_n(x) = +\infty}$$
+
+          **Ce qu'il faut avoir compris.** En $0^+$ la parité de $n$ comptait, parce que $\ln x \to -\infty$ et qu'une puissance change le signe d'un négatif selon la parité. En $+\infty$ elle ne compte plus, parce que $\ln x$ est positif. Cette dissymétrie va gouverner toute l'étude des variations en question 2-c : garde-la en tête.
+      - id: q1c
+        stem: |-
+          **1- c)** (0,75 pt) Vérifier que : $\left(\forall x \in\, ]0, +\infty[\right)$ ; $\dfrac{f_n(x)}{x} = (2n)^n \left( \dfrac{\ln\!\left( x^{\frac{1}{2n}} \right)}{x^{\frac{1}{2n}}} \right)^{\!n}$, en déduire $\displaystyle\lim_{x \to +\infty} \dfrac{f_n(x)}{x}$, puis interpréter graphiquement le résultat obtenu.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Même mécanique qu'en 1-a, mais retournée : là-bas la réécriture faisait apparaître $t\ln t$ pour le voisinage de $0$ ; ici elle fait apparaître $\dfrac{\ln t}{t}$, la **croissance comparée** du voisinage de $+\infty$. Trois quarts de point, pour trois gestes distincts — vérifier, calculer, interpréter — et le troisième est celui qu'on oublie.
+
+          **La vérification de l'identité.** Le membre de gauche vaut d'abord, en simplifiant :
+
+          $$\frac{f_n(x)}{x} = \frac{\sqrt{x}\,(\ln x)^n}{x} = \frac{(\ln x)^n}{\sqrt{x}}$$
+
+          car $\dfrac{\sqrt x}{x} = \dfrac{1}{\sqrt x}$. Le membre de droite, maintenant, en réutilisant $\ln\!\left(x^{\frac{1}{2n}}\right) = \dfrac{1}{2n}\ln x$ :
+
+          $$(2n)^n \left( \frac{\frac{1}{2n}\ln x}{x^{\frac{1}{2n}}} \right)^{\!n}
+          = (2n)^n \cdot \frac{1}{(2n)^n} \cdot \frac{(\ln x)^n}{\left(x^{\frac{1}{2n}}\right)^{n}}
+          = \frac{(\ln x)^n}{\sqrt{x}}$$
+
+          Les deux membres coïncident : l'identité est vérifiée sur $]0, +\infty[$.
+
+          **La limite.** On pose de nouveau $t = x^{\frac{1}{2n}}$, qui tend vers $+\infty$ quand $x \to +\infty$. L'expression devient :
+
+          $$\frac{f_n(x)}{x} = (2n)^n \left(\frac{\ln t}{t}\right)^{\!n}$$
+
+          Or $\displaystyle\lim_{t \to +\infty} \frac{\ln t}{t} = 0$ : c'est **la** limite de référence du chapitre, celle qui dit que le logarithme croît plus lentement que toute puissance de $t$. La fonction $z \mapsto z^n$ étant continue en $0$ :
+
+          $$\boxed{\lim_{x \to +\infty} \frac{f_n(x)}{x} = (2n)^n \times 0^n = 0}$$
+
+          **L'interprétation graphique, et c'est le troisième geste.** On sait deux choses maintenant : $f_n(x) \to +\infty$ (question 1-b) et $\dfrac{f_n(x)}{x} \to 0$. La conjonction porte un nom précis dans le cours :
+
+          > $(C_n)$ admet, au voisinage de $+\infty$, une **branche parabolique de direction l'axe des abscisses**.
+
+          **Ce que cela veut dire concrètement.** La courbe monte indéfiniment, mais de moins en moins vite **relativement à $x$** : elle finit par se coucher, se rapprochant de la direction horizontale sans jamais devenir une asymptote. C'est le comportement typique de tout ce qui contient un logarithme — $\sqrt{x}(\ln x)^n$ grandit, mais reste négligeable devant $x$.
+
+          **Le piège nommé de cette question.** Répondre « la courbe admet une asymptote horizontale ». Non : une asymptote horizontale demanderait $f_n(x) \to$ constante finie, alors qu'ici $f_n(x) \to +\infty$. La limite nulle porte sur le **quotient** $f_n(x)/x$, c'est-à-dire sur la pente moyenne, pas sur la fonction. Confondre les deux est l'erreur la plus fréquente sur ce type de question, et elle coûte le tiers du barème.
+      - id: q1d
+        stem: |-
+          **1- d)** (0,5 pt) Calculer, suivant la parité de $n$, $\displaystyle\lim_{x \to 0^+} \dfrac{f_n(x)}{x}$ puis interpréter graphiquement le résultat obtenu.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le quotient $\dfrac{f_n(x)}{x}$ est ici bien plus qu'un calcul : comme $f_n(0) = 0$, on a
+
+          $$\frac{f_n(x)}{x} = \frac{f_n(x) - f_n(0)}{x - 0}$$
+
+          c'est-à-dire exactement le **taux d'accroissement de $f_n$ entre $0$ et $x$**. Sa limite en $0^+$ décide donc de la dérivabilité à droite en $0$. C'est ce que la question appelle « interpréter graphiquement », et c'est là que va la moitié du barème.
+
+          **Le calcul, sans réécriture cette fois.** On repart de la forme simplifiée obtenue en 1-c :
+
+          $$\frac{f_n(x)}{x} = \frac{(\ln x)^n}{\sqrt{x}}$$
+
+          Quand $x \to 0^+$, il n'y a **aucune indétermination** — les deux facteurs poussent dans le même sens :
+          — $\dfrac{1}{\sqrt{x}} \to +\infty$ ;
+          — $\ln x \to -\infty$, donc $(\ln x)^n \to +\infty$ si $n$ est **pair**, et $(\ln x)^n \to -\infty$ si $n$ est **impair**.
+
+          D'où, par produit :
+
+          $$\boxed{\ \lim_{x \to 0^+} \frac{f_n(x)}{x} = +\infty \ \text{ si } n \text{ est pair}\ }
+          \qquad
+          \boxed{\ \lim_{x \to 0^+} \frac{f_n(x)}{x} = -\infty \ \text{ si } n \text{ est impair}\ }$$
+
+          **L'interprétation graphique.** La limite du taux d'accroissement est **infinie**, donc :
+
+          > $f_n$ n'est **pas dérivable à droite en $0$**, et $(C_n)$ admet au point $O$ une **demi-tangente verticale**.
+
+          Le signe précise son orientation : la demi-tangente est dirigée **vers le haut** si $n$ est pair, **vers le bas** si $n$ est impair.
+
+          **Ce qui vient d'être établi et qu'il faut garder.** La courbe part de l'origine en montant à la verticale ($n$ pair) ou en plongeant à la verticale ($n$ impair). Combiné à la question 1-b, on a déjà les deux bouts du portrait : départ vertical en $O$, envol couché en $+\infty$. Il ne manque que ce qui se passe entre les deux — c'est l'objet de la question 2.
+
+          **Le piège nommé de cette question.** Conclure « $f_n$ n'est pas continue en $0$ ». C'est faux, et la question 1-a a démontré le contraire. **Continuité et dérivabilité sont deux choses distinctes** : la fonction arrive bien en $0$ avec la valeur $0$ (elle est continue), mais elle y arrive avec une pente infinie (elle n'est pas dérivable). La tangente verticale est le dessin exact de cette différence.
+      - id: q2a
+        part: "Partie I — 2. Dérivée, variations et point d'inflexion"
+        stem: |-
+          **2- a)** (0,75 pt) Montrer que $f_n$ est dérivable sur $]0; +\infty[$ et que : $\left(\forall x \in\, ]0, +\infty[\right)$ ; $f_n'(x) = \dfrac{1}{2\sqrt{x}}\,(\ln x)^{n-1}\,(2n + \ln x)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une question « montrer que » : le résultat est donné, donc les points sont dans le chemin — justifier la dérivabilité, dériver, **et factoriser jusqu'à la forme imprimée**. Cette dernière étape n'est pas cosmétique : c'est la forme factorisée qui rendra l'étude du signe possible en 2-c.
+
+          **La dérivabilité, en une phrase.** Sur $]0, +\infty[$, la fonction $x \mapsto \sqrt{x}$ est dérivable, et $x \mapsto (\ln x)^n$ l'est aussi comme composée de $\ln$ (dérivable sur $]0,+\infty[$) et de $z \mapsto z^n$ (dérivable sur $\mathbb{R}$). $f_n$ est le **produit** de deux fonctions dérivables sur cet intervalle : elle y est donc dérivable.
+
+          **La dérivation, terme par terme.** On applique la formule du produit $(uv)' = u'v + uv'$ avec $u(x) = \sqrt{x}$ et $v(x) = (\ln x)^n$ :
+
+          $$u'(x) = \frac{1}{2\sqrt{x}}
+          \qquad\text{et}\qquad
+          v'(x) = n\,(\ln x)^{n-1} \cdot \frac{1}{x}$$
+
+          la seconde étant la dérivée d'une puissance composée, $\left(w^n\right)' = n\,w^{n-1}w'$ avec $w = \ln x$.
+
+          $$f_n'(x) = \frac{1}{2\sqrt{x}}\,(\ln x)^n + \sqrt{x} \cdot \frac{n\,(\ln x)^{n-1}}{x}$$
+
+          **La simplification du second terme.** C'est le point technique : $\dfrac{\sqrt{x}}{x} = \dfrac{1}{\sqrt{x}}$, donc
+
+          $$f_n'(x) = \frac{1}{2\sqrt{x}}\,(\ln x)^n + \frac{n\,(\ln x)^{n-1}}{\sqrt{x}}$$
+
+          **La factorisation, qui est le vrai travail.** On met en facteur ce que les deux termes ont en commun : $\dfrac{1}{2\sqrt{x}}$ et $(\ln x)^{n-1}$. Le premier terme donne alors $(\ln x)^{n} = (\ln x)^{n-1} \cdot \ln x$, donc il laisse $\ln x$ ; le second terme, qui vaut $\dfrac{2n\,(\ln x)^{n-1}}{2\sqrt{x}}$, laisse $2n$ :
+
+          $$\boxed{\ f_n'(x) = \frac{1}{2\sqrt{x}}\,(\ln x)^{n-1}\,\left(2n + \ln x\right)\ }$$
+
+          C'est exactement l'expression imprimée par l'énoncé.
+
+          **Pourquoi cette forme et pas une autre.** Trois facteurs, dont on sait lire le signe séparément : $\dfrac{1}{2\sqrt{x}}$ toujours strictement positif, $(\ln x)^{n-1}$ dont le signe dépend de la parité de $n-1$, et $(2n + \ln x)$ affine en $\ln x$ qui s'annule en $x = e^{-2n}$. Toute la question 2-c tient dans cette lecture — c'est pourquoi l'énoncé impose cette factorisation-là.
+
+          **Le piège nommé de cette question.** S'arrêter à la somme non factorisée. Elle est juste, mais elle ne permet pas d'étudier le signe, et une question « montrer que » exige la forme demandée : sans elle, les points ne sont pas acquis, et la suite du problème devient impraticable.
+      - id: q2b
+        stem: |-
+          **2- b)** (0,25 pt) Vérifier que : $\forall n \geq 2$, $f_n'(x) = 0$ si et seulement si $(x = 1$ ou $x = e^{-2n})$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un produit de trois facteurs est nul si et seulement si l'un d'eux l'est. Le premier, $\dfrac{1}{2\sqrt{x}}$, ne s'annule jamais sur $]0,+\infty[$. Il reste deux équations.
+
+          **Premier facteur annulable.**
+
+          $$(\ln x)^{n-1} = 0 \iff \ln x = 0 \iff x = 1$$
+
+          **Attention à la condition $n \geq 2$, qui n'est pas décorative.** Cette équivalence n'est valable que si l'exposant $n-1$ est **strictement positif**, c'est-à-dire si $n \geq 2$. Pour $n = 1$, le facteur vaut $(\ln x)^0 = 1$, qui ne s'annule **jamais** — et $x = 1$ n'est alors pas racine de $f_1'$. C'est précisément pourquoi l'énoncé écrit « $\forall n \geq 2$ » : le cas $n = 1$ est une exception réelle, pas une précaution de rédaction.
+
+          **Second facteur annulable.**
+
+          $$2n + \ln x = 0 \iff \ln x = -2n \iff x = e^{-2n}$$
+
+          en appliquant l'exponentielle, qui est une bijection strictement croissante de $\mathbb{R}$ sur $]0,+\infty[$ — la valeur trouvée est donc bien dans le domaine.
+
+          **Conclusion.** Pour $n \geq 2$ :
+
+          $$f_n'(x) = 0 \iff x = 1 \ \text{ ou } \ x = e^{-2n}$$
+
+          **Le repère à garder pour la suite.** $e^{-2n} < 1$ pour tout $n \geq 1$, puisque $-2n < 0$. Les deux racines sont donc rangées dans cet ordre : $0 < e^{-2n} < 1$, et elles découpent $]0,+\infty[$ en trois intervalles. C'est la trame du tableau de variations de la question suivante.
+
+          **Le piège nommé de cette question.** Écrire $x = e^{-2}$ au lieu de $e^{-2n}$, en oubliant que l'exposant du logarithme est $n$ et que le terme constant du troisième facteur est $2n$. Le contrôle : plus $n$ grandit, plus $e^{-2n}$ se rapproche de $0$ — la racine « fuit » vers l'origine, ce qui est cohérent avec une fonction de plus en plus écrasée près de $0$.
+      - id: q2c
+        stem: |-
+          **2- c)** (1 pt) Étudier, suivant la parité de $n$, le sens de variation de $f_n$ et donner son tableau de variations.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un point entier, le plus gros de la Partie I : c'est une étude de signe complète, à mener **deux fois** — une par parité. Toute l'affaire tient dans le signe du facteur $(\ln x)^{n-1}$, qui dépend de la parité de l'exposant $n-1$, donc de celle de $n$.
+
+          **Le point de départ.** De la question 2-a :
+
+          $$f_n'(x) = \underbrace{\frac{1}{2\sqrt{x}}}_{>\,0} \cdot (\ln x)^{n-1} \cdot (2n + \ln x)$$
+
+          Le premier facteur est strictement positif partout : **le signe de $f_n'$ est celui du produit des deux autres**. Et les racines de la question 2-b découpent le domaine en trois : $]0, e^{-2n}[$, $]e^{-2n}, 1[$, $]1, +\infty[$.
+
+          **Le signe des deux facteurs, intervalle par intervalle.**
+          — Sur $]0, e^{-2n}[$ : $\ln x < -2n < 0$, donc $(2n + \ln x) < 0$, et $\ln x < 0$.
+          — Sur $]e^{-2n}, 1[$ : $-2n < \ln x < 0$, donc $(2n + \ln x) > 0$, et $\ln x < 0$.
+          — Sur $]1, +\infty[$ : $\ln x > 0$, donc les deux facteurs sont positifs.
+
+          Reste à élever $\ln x$ à la puissance $n-1$, et c'est là que la parité entre en scène.
+
+          **Cas $n$ impair** (donc $n - 1$ **pair**) **:** $(\ln x)^{n-1} \geq 0$ partout, nul seulement en $x = 1$. Le signe de $f_n'$ est donc celui de $(2n + \ln x)$ seul :
+
+          | $x$ | $0$ | | $e^{-2n}$ | | $1$ | | $+\infty$ |
+          |---|---|---|---|---|---|---|---|
+          | $f_n'(x)$ | | $-$ | $0$ | $+$ | $0$ | $+$ | |
+          | $f_n$ | $0$ | $\searrow$ | $-\left(\frac{2n}{e}\right)^{n}$ | $\nearrow$ | $0$ | $\nearrow$ | $+\infty$ |
+
+          $f_n$ décroît sur $]0, e^{-2n}]$ puis croît sur $[e^{-2n}, +\infty[$. Elle admet un **minimum global** en $e^{-2n}$, et $x = 1$ est un point où la dérivée s'annule **sans changer de signe** : ce n'est pas un extremum — c'est ce que la question 2-d va exploiter.
+
+          **Cas $n$ pair** (donc $n - 1$ **impair**) **:** $(\ln x)^{n-1}$ a le signe de $\ln x$ : négatif sur $]0,1[$, positif sur $]1,+\infty[$. En multipliant par le signe de $(2n+\ln x)$ relevé ci-dessus :
+
+          | $x$ | $0$ | | $e^{-2n}$ | | $1$ | | $+\infty$ |
+          |---|---|---|---|---|---|---|---|
+          | $f_n'(x)$ | | $+$ | $0$ | $-$ | $0$ | $+$ | |
+          | $f_n$ | $0$ | $\nearrow$ | $\left(\frac{2n}{e}\right)^{n}$ | $\searrow$ | $0$ | $\nearrow$ | $+\infty$ |
+
+          $f_n$ croît, décroît, puis croît : **maximum local** en $e^{-2n}$ et **minimum local** en $x = 1$.
+
+          **Les valeurs remarquables, calculées et non laissées en suspens.** En $x = 1$ : $f_n(1) = \sqrt{1}\,(\ln 1)^n = 0$. En $x = e^{-2n}$ :
+
+          $$f_n\!\left(e^{-2n}\right) = \sqrt{e^{-2n}} \cdot (-2n)^n = e^{-n}\,(-1)^n (2n)^n = (-1)^n \left(\frac{2n}{e}\right)^{\!n}$$
+
+          soit $\left(\frac{2n}{e}\right)^{n} > 0$ si $n$ est pair, et $-\left(\frac{2n}{e}\right)^{n} < 0$ si $n$ est impair — ce qui confirme, sans calcul supplémentaire, qu'il s'agit bien d'un maximum dans un cas et d'un minimum dans l'autre.
+
+          **Le cas $n = 1$, à traiter à part.** La question 2-b l'a écarté : pour $n = 1$, le facteur $(\ln x)^0$ vaut $1$ et ne s'annule jamais. Le signe de $f_1'$ est celui de $(2 + \ln x)$ seul : $f_1$ décroît sur $]0, e^{-2}]$ puis croît sur $[e^{-2}, +\infty[$, avec un minimum $f_1(e^{-2}) = -\dfrac{2}{e}$. Le tableau a la même allure que le cas impair, mais **sans le point stationnaire en $x = 1$**.
+
+          **Le piège nommé de cette question.** Traiter le signe de $(\ln x)^{n-1}$ comme celui de $\ln x$ sans regarder la parité de l'exposant. C'est l'erreur qui échange les deux tableaux et retourne toute la description de la courbe. Le contrôle qui la débusque : les deux cas doivent donner un extremum de signe **opposé** en $e^{-2n}$, puisque $f_n(e^{-2n})$ porte le facteur $(-1)^n$.
+      - id: q2d
+        stem: |-
+          **2- d)** (0,25 pt) Montrer que si $n$ est impair et $n \geq 3$ alors le point d'abscisse $1$ est un point d'inflexion de $(C_n)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un point d'inflexion est un point où la courbe **change de concavité**, c'est-à-dire où $f_n''$ s'annule **en changeant de signe**. La tentation est de calculer $f_n''$ : c'est faisable mais long. Il existe un argument beaucoup plus court, et c'est celui qu'un quart de point récompense.
+
+          **L'argument, en une observation.** Reprenons la forme factorisée :
+
+          $$f_n'(x) = \frac{1}{2\sqrt{x}}\,(\ln x)^{n-1}\,(2n + \ln x)$$
+
+          Plaçons-nous **au voisinage de $x = 1$**. Là, $\ln x$ est proche de $0$, donc $(2n + \ln x)$ est proche de $2n > 0$ : ce facteur est **strictement positif** sur tout un voisinage de $1$. Le facteur $\dfrac{1}{2\sqrt{x}}$ l'est aussi. Enfin, $n$ étant impair avec $n \geq 3$, l'exposant $n-1$ est **pair et au moins égal à $2$**, donc $(\ln x)^{n-1} \geq 0$, avec égalité **uniquement** en $x = 1$.
+
+          Conclusion : sur un voisinage de $1$, $f_n'(x) > 0$ pour $x \neq 1$, et $f_n'(1) = 0$.
+
+          **Ce que cela dit de $f_n'$, et donc de $f_n''$.** La fonction $f_n'$ est positive autour de $1$ et s'annule exactement en $1$ : elle atteint donc en $x = 1$ un **minimum local**, de valeur $0$. Or une fonction dérivable qui admet un minimum local en un point y a une dérivée qui **change de signe, du négatif au positif**. Autrement dit :
+
+          $$f_n''(x) < 0 \text{ juste avant } 1 \qquad\text{et}\qquad f_n''(x) > 0 \text{ juste après } 1$$
+
+          $f_n''$ s'annule en $1$ **en changeant de signe** : le point d'abscisse $1$ est bien un **point d'inflexion** de $(C_n)$.
+
+          **La lecture géométrique, qui rend le résultat visible.** La courbe est concave avant $1$, convexe après, et la tangente en ce point est **horizontale** puisque $f_n'(1) = 0$. C'est donc un point d'inflexion à tangente horizontale : la courbe s'aplatit complètement, marque un palier, puis repart en montant — sans jamais redescendre. C'est exactement ce que le tableau du cas impair montrait avec un « $0$ » entre deux flèches montantes.
+
+          **Pourquoi les deux hypothèses sont nécessaires, et il faut le dire.** Si $n$ était **pair**, $n-1$ serait impair, $(\ln x)^{n-1}$ changerait de signe en $1$, et $x = 1$ serait un **minimum** de $f_n$ — pas un point d'inflexion. Si $n = 1$, le facteur $(\ln x)^{0} = 1$ ne s'annule pas et $x = 1$ n'est même pas un point critique. Les deux conditions « $n$ impair » et « $n \geq 3$ » sont donc toutes deux indispensables : une démonstration qui n'utilise ni l'une ni l'autre est nécessairement fausse quelque part.
+      - id: q3a
+        part: "Partie II — 1. La suite u_n = f_n(β), à β fixé"
+        stem: |-
+          **1- a)** (0,25 pt) Soit $\beta \in\, ]1, e[$ un réel fixé. On considère la suite numérique $(u_n)_{n\geq 1}$ définie par : $\left(\forall n \in \mathbb{N}^*\right)$ ; $u_n = f_n(\beta)$. Montrer que : $\left(\forall n \in \mathbb{N}^*\right)$ ; $0 < u_n < \sqrt{e}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Changement complet de point de vue, et il faut le prendre consciemment : jusqu'ici $n$ était fixé et $x$ variait ; maintenant c'est $\beta$ qui est **fixé** et $n$ qui varie. La variable de la suite est l'**exposant**, pas le point.
+
+          **La traduction de l'hypothèse, qui est toute la question.** $\beta \in\, ]1, e[$, et $\ln$ est strictement croissante, donc :
+
+          $$\ln 1 < \ln \beta < \ln e \qquad\Longrightarrow\qquad 0 < \ln \beta < 1$$
+
+          **Retiens ce fait : $\ln\beta$ est strictement compris entre $0$ et $1$.** C'est lui qui porte les trois questions de cette section — la positivité, la décroissance et la limite en découlent toutes.
+
+          **La minoration.** $u_n = \sqrt{\beta}\,(\ln \beta)^n$ est un produit de deux facteurs strictement positifs : $\sqrt{\beta} > 0$ car $\beta > 1 > 0$, et $(\ln \beta)^n > 0$ car $\ln\beta > 0$. Donc $u_n > 0$.
+
+          **La majoration.** Comme $0 < \ln \beta < 1$, toute puissance entière $n \geq 1$ reste inférieure à $1$ :
+
+          $$(\ln \beta)^n < 1$$
+
+          Donc $u_n = \sqrt{\beta}\,(\ln\beta)^n < \sqrt{\beta}$. Et comme $\beta < e$ et que la racine carrée est croissante, $\sqrt{\beta} < \sqrt{e}$. En enchaînant :
+
+          $$0 < u_n < \sqrt{\beta} < \sqrt{e}$$
+
+          **Ce qui est acquis pour la suite.** La suite est bornée. Combinée à la décroissance de la question suivante, cette borne garantira la convergence sans avoir à calculer quoi que ce soit — même si, ici, la limite se calculera directement.
+      - id: q3b
+        stem: |-
+          **1- b)** (0,25 pt) Montrer que la suite $(u_n)_{n\geq 1}$ est décroissante.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux méthodes existent — comparer $u_{n+1} - u_n$ à $0$, ou comparer $\dfrac{u_{n+1}}{u_n}$ à $1$. Ici la seconde est bien plus rapide, parce que la suite est **géométrique** : c'est le réflexe à avoir dès qu'on voit un terme général de la forme $a \cdot q^{\,n}$.
+
+          **Le quotient, et il se simplifie entièrement.** Les termes sont strictement positifs (question précédente), donc le quotient est licite :
+
+          $$\frac{u_{n+1}}{u_n}
+          = \frac{\sqrt{\beta}\,(\ln \beta)^{n+1}}{\sqrt{\beta}\,(\ln \beta)^{n}}
+          = \ln \beta$$
+
+          Le facteur $\sqrt\beta$ disparaît, et il ne reste que la raison. La suite $(u_n)$ est donc **géométrique de raison $q = \ln\beta$**, de premier terme $u_1 = \sqrt\beta\,\ln\beta$.
+
+          **La conclusion.** On sait de la question précédente que $0 < \ln\beta < 1$, donc :
+
+          $$\frac{u_{n+1}}{u_n} = \ln\beta < 1$$
+
+          Les termes étant strictement positifs, cela équivaut à $u_{n+1} < u_n$ pour tout $n \geq 1$ : la suite $(u_n)_{n\geq 1}$ est **strictement décroissante**.
+
+          **La variante par la différence, si tu préfères.** $u_{n+1} - u_n = \sqrt{\beta}\,(\ln\beta)^n\,(\ln\beta - 1)$, produit d'un facteur strictement positif par $(\ln\beta - 1) < 0$ : négatif. Même conclusion, un peu plus long.
+
+          **Le piège nommé de cette question.** Diviser par $u_n$ sans avoir dit qu'il est non nul, ou conclure de $\frac{u_{n+1}}{u_n} < 1$ à $u_{n+1} < u_n$ sans dire que les termes sont positifs. Si $u_n$ était négatif, l'inégalité se retournerait. La question 1-a n'est pas un préliminaire décoratif : elle est l'hypothèse dont celle-ci a besoin.
+      - id: q3c
+        stem: |-
+          **1- c)** (0,25 pt) Déterminer $\displaystyle\lim_{n \to +\infty} u_n$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La suite est géométrique de raison $q = \ln\beta$ avec $0 < q < 1$ : le résultat du cours s'applique directement, sans détour.
+
+          $$\lim_{n \to +\infty} q^{\,n} = 0 \qquad \text{lorsque } |q| < 1$$
+
+          Le facteur $\sqrt{\beta}$ est une constante, indépendante de $n$ ; il ne change rien à la limite :
+
+          $$\boxed{\lim_{n \to +\infty} u_n = \sqrt{\beta} \times 0 = 0}$$
+
+          **La lecture, qui vaut la peine d'être faite.** $u_n = f_n(\beta)$ : ce résultat dit que **en un point fixé de $]1, e[$, la famille de courbes $(C_n)$ s'écrase vers $0$ quand $n$ grandit**. Ce n'est pas anodin — la question 2 va justement chercher, pour chaque $n$, le point $x_n$ où $f_n$ vaut exactement $1$. Comme la fonction s'aplatit sur $]1,e[$, ce point doit être poussé de plus en plus à droite pour maintenir la valeur $1$. C'est exactement la croissance de $(x_n)$ que la question 2-b va démontrer, et sa convergence vers $e$ qu'on établira à la fin. Les deux sections de cette partie racontent la même chose, vue de deux côtés.
+      - id: q4a
+        part: "Partie II — 2. La suite (xₙ) définie implicitement par fₙ(xₙ) = 1"
+        stem: |-
+          **2- a)** (0,5 pt) Montrer que pour tout entier $n$ non nul, il existe un unique réel $x_n \in\, ]1; e[$ tel que : $f_n(x_n) = 1$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « Il existe un unique » : deux affirmations, deux outils, et il faut fournir les deux. L'existence vient du **théorème des valeurs intermédiaires**, l'unicité de la **stricte monotonie**. Un candidat qui n'en invoque qu'un perd la moitié du barème — c'est le schéma de démonstration le plus rentable de tout le programme d'analyse, et il se rédige toujours pareil.
+
+          **Les trois hypothèses à vérifier, une par une.**
+
+          *Continuité.* $f_n$ est dérivable sur $]0,+\infty[$ (question 2-a de la Partie I), donc continue sur $]1, e[$, qui est inclus dedans.
+
+          *Stricte monotonie.* De l'étude de signe de la question 2-c : sur $]1, +\infty[$, les trois facteurs de $f_n'$ sont strictement positifs — $\dfrac{1}{2\sqrt x} > 0$, $(\ln x)^{n-1} > 0$ car $\ln x > 0$, et $(2n + \ln x) > 0$. Donc $f_n' > 0$ et $f_n$ est **strictement croissante** sur $]1, e[$, **et ce quelle que soit la parité de $n$** — c'est le seul intervalle du domaine où les deux cas coïncident, et c'est pourquoi l'énoncé y place la recherche.
+
+          *Les valeurs aux bornes.* $f_n(1) = \sqrt{1}\,(\ln 1)^n = 0$, et $f_n(e) = \sqrt{e}\,(\ln e)^n = \sqrt{e} \times 1^n = \sqrt{e}$.
+
+          **La conclusion, en une phrase.** $f_n$ est continue et strictement croissante sur $]1, e[$ : elle y réalise donc une **bijection** de $]1, e[$ sur son image $\left]f_n(1),\, f_n(e)\right[ \;=\; \left]0,\, \sqrt{e}\right[$.
+
+          Or $\sqrt{e} \approx 1{,}65 > 1$, donc $1 \in\, ]0, \sqrt{e}[$. **L'équation $f_n(x) = 1$ admet donc une solution et une seule dans $]1, e[$** — c'est $x_n$.
+
+          **Le détail qui décide, et qu'il faut écrire.** Toute la démonstration repose sur $\sqrt{e} > 1$. C'est vrai parce que $e > 1$ et que la racine carrée conserve cette inégalité. Sans cette remarque, rien ne garantit que la valeur $1$ soit atteinte : si l'on avait $f_n(e) < 1$, la suite $(x_n)$ n'existerait tout simplement pas. Un correcteur cherche cette ligne.
+
+          **Le piège nommé de cette question.** Invoquer le TVI et s'arrêter là. Le TVI donne l'**existence**, jamais l'unicité — une fonction continue peut valoir $1$ en dix points. C'est la stricte croissance qui interdit un second passage par la valeur $1$. Les deux arguments sont complémentaires, et aucun ne remplace l'autre.
+      - id: q4b
+        stem: |-
+          **2- b)** (0,75 pt) Montrer que la suite $(x_n)_{n \in \mathbb{N}^*}$ ainsi définie est croissante, en déduire qu'elle est convergente.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $x_n$ n'est donné par aucune formule : il est défini **implicitement**, comme la solution d'une équation. On ne peut donc pas comparer $x_{n+1}$ et $x_n$ par le calcul. La technique — et c'est celle qu'il faut retenir pour toutes les suites définies implicitement — consiste à **évaluer la fonction du rang suivant au point du rang courant**, puis à utiliser la monotonie pour remonter aux abscisses.
+
+          **Le calcul central, et il est court.** Évaluons $f_{n+1}$ en $x_n$ :
+
+          $$f_{n+1}(x_n) = \sqrt{x_n}\,(\ln x_n)^{n+1}
+          = \underbrace{\sqrt{x_n}\,(\ln x_n)^{n}}_{=\,f_n(x_n)\,=\,1} \times \ln x_n
+          = \ln x_n$$
+
+          On a simplement séparé un facteur $\ln x_n$ de la puissance $n+1$, et reconnu $f_n(x_n)$, qui vaut $1$ par définition de $x_n$.
+
+          **L'encadrement qui conclut.** $x_n \in\, ]1, e[$, donc $0 < \ln x_n < 1$. Par conséquent :
+
+          $$f_{n+1}(x_n) = \ln x_n < 1 = f_{n+1}(x_{n+1})$$
+
+          **Le passage aux abscisses.** $f_{n+1}$ est strictement croissante sur $]1, e[$ (même argument qu'en 2-a, valable pour tout rang). Une fonction strictement croissante conserve l'ordre **et le renverse quand on la lit à l'envers** : de $f_{n+1}(x_n) < f_{n+1}(x_{n+1})$ on déduit
+
+          $$x_n < x_{n+1}$$
+
+          La suite $(x_n)_{n \geq 1}$ est donc **strictement croissante**.
+
+          **La convergence.** Par construction, $x_n \in\, ]1, e[$ pour tout $n$, donc la suite est **majorée par $e$**. Une suite croissante et majorée converge (théorème de la limite monotone) : $(x_n)$ est convergente, et sa limite $\ell$ vérifie $\ell \leq e$.
+
+          **Ce qu'on n'a PAS démontré, et qu'il ne faut pas croire acquis.** Le théorème donne la convergence, pas la valeur de la limite. Rien ici ne dit que $\ell = e$ — la suite pourrait très bien converger vers $2$. C'est tout l'objet de la question 3, qui procédera par l'absurde.
+
+          **Le piège nommé de cette question.** Écrire $f_{n+1}(x_{n+1}) = 1 = f_n(x_n)$ et en conclure directement quelque chose sur $x_{n+1}$ et $x_n$. C'est une comparaison entre **deux fonctions différentes** en deux points différents : elle ne dit rien. Il faut impérativement évaluer **une seule et même fonction** — ici $f_{n+1}$ — en deux points, pour que la monotonie ait prise.
+      - id: q5a
+        part: "Partie II — 3. La limite ℓ, obtenue par l'absurde"
+        stem: |-
+          **3- a)** (0,5 pt) On pose $\ell = \displaystyle\lim_{n \to +\infty} x_n$. Montrer que : $1 < \ell \leq e$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux inégalités, et elles ne se démontrent pas de la même façon — c'est la subtilité de la question, et elle vaut la moitié de son barème.
+
+          **La majoration, par passage à la limite.** Pour tout $n$, $x_n < e$. Le passage à la limite dans une inégalité **large** donne $\ell \leq e$. Attention : le passage à la limite **affaiblit** toujours une inégalité stricte — de $x_n < e$ on ne peut conclure que $\ell \leq e$, jamais $\ell < e$. C'est précisément pour cela que l'énoncé écrit $\ell \leq e$ avec un signe large, et c'est ce qui laisse la porte ouverte à la valeur $e$ qu'on trouvera en 3-d.
+
+          **La minoration, et il faut résister au même réflexe.** De $x_n > 1$, le passage à la limite ne donnerait que $\ell \geq 1$ — trop faible, l'énoncé demande une inégalité **stricte**. L'argument qui la fournit est ailleurs : la suite est **croissante** (question 2-b), donc **minorée par son premier terme** :
+
+          $$\ell = \lim_{n\to+\infty} x_n \geq x_1$$
+
+          Or $x_1 \in\, ]1, e[$, donc $x_1 > 1$ **strictement**. En enchaînant :
+
+          $$\ell \geq x_1 > 1$$
+
+          d'où $\ell > 1$. On obtient bien :
+
+          $$\boxed{\,1 < \ell \leq e\,}$$
+
+          **Ce qui est réellement acquis, et pourquoi cela compte.** $\ell > 1$ **strictement** garantit que $\ln \ell > 0$, donc que $\ln\ell$ n'est pas nul — condition sans laquelle $\ln(\ln x_n)$ n'aurait aucun sens à la limite, et sans laquelle la question 3-c s'effondrerait. Cette question n'est pas un préliminaire de confort : elle installe la condition de validité de toute la fin du problème.
+
+          **Le piège nommé de cette question.** Passer à la limite dans $x_n > 1$ et écrire $\ell > 1$. C'est une faute classique et le correcteur la cherche : le passage à la limite ne conserve **jamais** la stricte inégalité. Le contre-exemple qui la tue : $\frac{1}{n} > 0$ pour tout $n$, et pourtant la limite vaut $0$.
+      - id: q5b
+        stem: |-
+          **3- b)** (0,25 pt) Montrer que : $\displaystyle\lim_{n \to +\infty} (\ln x_n)^n = \dfrac{1}{\sqrt{\ell}}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'expression $(\ln x_n)^n$ a un exposant qui varie : on ne sait rien en dire directement. Mais la définition de $x_n$ la relie à quelque chose de simple — il suffit de retourner l'équation qui définit la suite.
+
+          **Le retournement.** Par définition, $f_n(x_n) = 1$, c'est-à-dire :
+
+          $$\sqrt{x_n}\,(\ln x_n)^n = 1
+          \qquad\Longrightarrow\qquad
+          (\ln x_n)^n = \frac{1}{\sqrt{x_n}}$$
+
+          la division étant licite car $x_n > 1 > 0$, donc $\sqrt{x_n} \neq 0$.
+
+          **Le passage à la limite.** Le membre de droite ne contient plus d'exposant variable : c'est une simple composée. On sait que $x_n \to \ell$ avec $\ell > 1 > 0$ (question 3-a), et la fonction $t \mapsto \dfrac{1}{\sqrt{t}}$ est **continue sur $]0, +\infty[$**, donc en $\ell$. Par composition des limites :
+
+          $$\lim_{n \to +\infty} (\ln x_n)^n = \lim_{n \to +\infty} \frac{1}{\sqrt{x_n}} = \boxed{\frac{1}{\sqrt{\ell}}}$$
+
+          **L'information capitale, à retenir pour la question 3-d.** Cette limite est un nombre **fini et strictement positif** — car $\ell$ est fini et strictement positif. Elle n'est ni nulle, ni infinie. Ce fait, apparemment anodin, est exactement l'arme qui produira la contradiction dans deux questions : c'est lui qui interdira à $n\ln(\ln x_n)$ de tendre vers $-\infty$.
+
+          **La remarque qui montre qu'on a compris.** L'hypothèse $\ell > 1$ de la question précédente sert deux fois ici : elle assure $\ell \neq 0$ pour que $\frac{1}{\sqrt\ell}$ existe, et elle assure $\frac{1}{\sqrt\ell} > 0$ pour qu'on puisse en prendre le logarithme. Rien n'est gratuit dans l'enchaînement de cette partie.
+      - id: q5c
+        stem: |-
+          **3- c)** (0,25 pt) Montrer que si $\ell < e$ alors $\displaystyle\lim_{n \to +\infty} n \ln(\ln x_n) = -\infty$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est une implication **conditionnelle** : on ne prétend pas que $\ell < e$, on explore ce qui se passerait dans ce cas. Cette question prépare une démonstration par l'absurde — elle construit la branche qu'on va faire exploser à la question suivante.
+
+          **On suppose donc $\ell < e$, et on en tire les conséquences.** Comme $x_n \to \ell$ et que $\ln$ est continue sur $]0,+\infty[$ :
+
+          $$\ln x_n \longrightarrow \ln \ell$$
+
+          Avec $1 < \ell < e$, la stricte croissance de $\ln$ donne :
+
+          $$\ln 1 < \ln \ell < \ln e \qquad\Longrightarrow\qquad 0 < \ln \ell < 1$$
+
+          **Le second logarithme.** $\ln\ell$ est strictement compris entre $0$ et $1$, donc on peut lui appliquer $\ln$ à nouveau, et le résultat est **strictement négatif** :
+
+          $$\ln(\ln x_n) \longrightarrow \ln(\ln \ell) < 0$$
+
+          car $\ln t < 0$ pour tout $t \in\, ]0,1[$.
+
+          **La conclusion.** On multiplie une suite qui tend vers une constante **strictement négative** par $n$, qui tend vers $+\infty$ :
+
+          $$n \, \ln(\ln x_n) \longrightarrow -\infty$$
+
+          C'est le résultat annoncé. Aucune indétermination : la limite est un produit d'un facteur qui explose vers $+\infty$ par un facteur qui se stabilise sur une valeur strictement négative.
+
+          **Là où la démonstration serait fausse.** Si l'on avait seulement $\ln\ell \leq 1$, avec égalité possible, alors $\ln(\ln\ell)$ pourrait valoir $0$ et le produit $n \times 0$ deviendrait une indétermination $\infty \times 0$. La stricte inégalité $\ell < e$ est donc **indispensable**, et c'est exactement l'hypothèse que l'énoncé pose. C'est le genre de détail qu'un correcteur vérifie.
+      - id: q5d
+        stem: |-
+          **3- d)** (0,25 pt) En déduire la valeur de $\ell$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Les deux questions précédentes ont préparé deux affirmations sur la même quantité. Il ne reste qu'à les confronter — c'est un raisonnement **par l'absurde**, et il faut le rédiger comme tel : supposer, dériver la contradiction, conclure.
+
+          **Ce que dit la question 3-b, traduit.** $(\ln x_n)^n \to \dfrac{1}{\sqrt{\ell}}$, une limite **finie et strictement positive**. On peut donc lui appliquer le logarithme, qui est continu en tout point strictement positif :
+
+          $$\ln\!\left((\ln x_n)^n\right) \longrightarrow \ln\!\left(\frac{1}{\sqrt{\ell}}\right)$$
+
+          Or, par la propriété du logarithme d'une puissance :
+
+          $$\ln\!\left((\ln x_n)^n\right) = n\,\ln(\ln x_n)$$
+
+          Donc $n\,\ln(\ln x_n)$ converge vers **un nombre fini**, à savoir $-\dfrac{1}{2}\ln\ell$.
+
+          **La confrontation.** Supposons, par l'absurde, que $\ell < e$. La question 3-c affirme alors que $n\,\ln(\ln x_n) \to -\infty$. Mais on vient d'établir que cette même suite converge vers un nombre **fini**. Une suite ne peut pas à la fois tendre vers $-\infty$ et converger : **contradiction**.
+
+          L'hypothèse $\ell < e$ est donc fausse. Comme la question 3-a a établi $\ell \leq e$, il ne reste qu'une possibilité :
+
+          $$\boxed{\ \ell = e\ }$$
+
+          **Le contrôle, qui vaut d'être fait.** Vérifions que la valeur trouvée est cohérente avec le reste. Avec $\ell = e$, la question 3-b donne $(\ln x_n)^n \to \dfrac{1}{\sqrt{e}}$. Et de fait, $\ln x_n \to \ln e = 1$ : on a une suite qui tend vers $1$, élevée à une puissance qui tend vers l'infini — une indétermination $1^\infty$, dont la limite $\frac{1}{\sqrt e} \approx 0{,}607$ est parfaitement plausible. Rien ne cloche.
+
+          **La lecture d'ensemble, qui referme la Partie II.** La question 1-c avait montré que $f_n(\beta) \to 0$ en tout $\beta$ fixé de $]1,e[$ : les courbes s'écrasent vers $0$ sur cet intervalle. Pour que $f_n$ continue à valoir $1$ quelque part, le point où elle le fait doit donc fuir vers la seule borne où elle ne s'écrase pas — l'extrémité $e$, où $f_n(e) = \sqrt e$ reste constant. Le résultat $\ell = e$ n'est pas une surprise : c'était annoncé dès la première section de la partie, et la démonstration par l'absurde ne fait que le rendre rigoureux.
+      - id: q6a
+        part: "Partie III — 1. La fonction F et sa forme explicite"
+        stem: |-
+          **1- a)** (0,25 pt) On pose pour tout $x \in I$, $F(x) = \displaystyle\int_x^1 \left(f_1(t)\right)^2 dt$. Montrer que la fonction $F$ est continue sur $I$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La difficulté potentielle est en $t = 0$, borne du domaine où $f_1$ n'est définie que par prolongement. Il faut donc s'assurer que la fonction qu'on intègre est bien continue **jusqu'en $0$ inclus** — et c'est la Partie I qui l'a déjà fait.
+
+          **Ce qu'on intègre, explicité.** Pour $t > 0$ :
+
+          $$\left(f_1(t)\right)^2 = \left(\sqrt{t}\,\ln t\right)^2 = t\,(\ln t)^2$$
+
+          et en $t = 0$, $\left(f_1(0)\right)^2 = 0^2 = 0$. On intègre donc la fonction $g : t \mapsto t(\ln t)^2$, prolongée par $g(0) = 0$.
+
+          **La continuité de $g$ sur $I$.** La question 1-a de la Partie I a établi que $f_1$ est continue à droite en $0$ ; elle est par ailleurs continue sur $]0,+\infty[$ comme produit de fonctions continues. Donc $f_1$ est **continue sur $I = [0, +\infty[$** tout entier. Le carré d'une fonction continue étant continu, $g = (f_1)^2$ est continue sur $I$.
+
+          **La conclusion, en une phrase de cours.** Une fonction continue sur un intervalle y admet des primitives. Soit $G$ une primitive de $g$ sur $I$ ; alors
+
+          $$F(x) = \int_x^1 g(t)\,dt = G(1) - G(x)$$
+
+          $G$ étant dérivable sur $I$, elle y est continue, donc $F$ l'est aussi comme différence d'une constante et d'une fonction continue. **$F$ est continue sur $I$.**
+
+          **Pourquoi cette question minuscule est en réalité l'une des plus utiles du problème.** C'est elle, et elle seule, qui autorisera à la question 2-b d'écrire $F(0) = \lim_{x\to 0^+} F(x)$. Sans la continuité en $0$, la limite calculée en 2-a ne dirait **rien** de la valeur $F(0)$ — et le volume de la question 2-c serait hors d'atteinte. Vingt-cinq centièmes de point qui portent la fin du problème.
+      - id: q6b
+        stem: |-
+          **1- b)** (1 pt) En utilisant une double intégration par parties, montrer que : $\left(\forall x \in\, ]0, +\infty[\right)$ ; $F(x) = -\dfrac{x^2}{2}\ln^2(x) + \dfrac{x^2}{2}\ln(x) + \dfrac{1}{4}\left(1 - x^2\right)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un point entier, la question la plus chère de la Partie III. L'intégrande $t(\ln t)^2$ contient un logarithme au carré : chaque intégration par parties **fait descendre l'exposant du logarithme d'une unité**. Deux IPP suffisent donc à le faire disparaître, et l'énoncé annonce exactement ce plan.
+
+          **Ce qu'on intègre.** $\left(f_1(t)\right)^2 = t\,(\ln t)^2$, donc
+
+          $$F(x) = \int_x^1 t\,(\ln t)^2\,dt$$
+
+          **Première intégration par parties.** Le choix se fait sur un principe : on **dérive** le logarithme (pour en baisser la puissance) et on **intègre** la puissance de $t$.
+
+          $$u(t) = (\ln t)^2,\quad u'(t) = \frac{2\ln t}{t}
+          \qquad\qquad
+          v'(t) = t,\quad v(t) = \frac{t^2}{2}$$
+
+          Les deux fonctions sont de classe $C^1$ sur $]0, +\infty[$, l'IPP est licite :
+
+          $$F(x) = \left[\frac{t^2}{2}(\ln t)^2\right]_x^1 - \int_x^1 \frac{t^2}{2}\cdot\frac{2\ln t}{t}\,dt$$
+
+          Le crochet : en $t = 1$, $(\ln 1)^2 = 0$ donc le terme est nul ; en $t = x$ il vaut $\dfrac{x^2}{2}(\ln x)^2$, à soustraire. L'intégrale restante se simplifie, $\dfrac{t^2}{2}\cdot\dfrac{2\ln t}{t} = t\ln t$ :
+
+          $$F(x) = -\frac{x^2}{2}(\ln x)^2 - \int_x^1 t\ln t\,dt$$
+
+          **Deuxième intégration par parties**, sur $\displaystyle\int_x^1 t\ln t\,dt$, avec le même principe :
+
+          $$u(t) = \ln t,\quad u'(t) = \frac{1}{t}
+          \qquad\qquad
+          v'(t) = t,\quad v(t) = \frac{t^2}{2}$$
+
+          $$\int_x^1 t\ln t\,dt = \left[\frac{t^2}{2}\ln t\right]_x^1 - \int_x^1 \frac{t}{2}\,dt
+          = \left(0 - \frac{x^2}{2}\ln x\right) - \left[\frac{t^2}{4}\right]_x^1$$
+
+          $$\int_x^1 t\ln t\,dt = -\frac{x^2}{2}\ln x - \left(\frac{1}{4} - \frac{x^2}{4}\right)$$
+
+          **Le report, en surveillant le signe moins devant l'intégrale.** C'est ici que les copies se perdent : l'intégrale est **soustraite**, donc tous les signes de ce qu'on vient de calculer se retournent.
+
+          $$F(x) = -\frac{x^2}{2}(\ln x)^2 - \left[-\frac{x^2}{2}\ln x - \frac{1}{4} + \frac{x^2}{4}\right]$$
+
+          $$F(x) = -\frac{x^2}{2}(\ln x)^2 + \frac{x^2}{2}\ln x + \frac{1}{4} - \frac{x^2}{4}$$
+
+          En factorisant les deux derniers termes par $\dfrac{1}{4}$ :
+
+          $$\boxed{\ F(x) = -\frac{x^2}{2}\ln^2(x) + \frac{x^2}{2}\ln(x) + \frac{1}{4}\left(1 - x^2\right)\ }$$
+
+          C'est exactement l'expression imprimée par l'énoncé.
+
+          **Le contrôle gratuit, à faire systématiquement.** Évalue en $x = 1$ : les deux premiers termes contiennent $\ln 1 = 0$ et s'annulent, et le troisième vaut $\frac14(1 - 1) = 0$. On trouve $F(1) = 0$ — ce qui est nécessairement vrai puisque $F(1) = \int_1^1 = 0$. Un résultat qui échoue à ce test est faux ; celui-ci passe.
+
+          **Le piège nommé de cette question.** Perdre le signe moins au report de la seconde IPP : c'est l'erreur qui produit $-\frac{x^2}{2}\ln x$ au lieu de $+\frac{x^2}{2}\ln x$, et le test en $x=1$ ne la détecte pas (le terme s'annule là). Le second piège : mal choisir $u$ et $v'$, en intégrant le logarithme au lieu de le dériver — l'exposant monterait au lieu de descendre, et la seconde IPP serait pire que la première.
+      - id: q7a
+        part: "Partie III — 2. La valeur en 0, et le volume"
+        stem: |-
+          **2- a)** (0,5 pt) Calculer $\displaystyle\lim_{\substack{x \to 0 \\ x > 0}} F(x)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On dispose maintenant d'une expression **explicite** de $F$ : la limite se calcule terme par terme, et chacun est une croissance comparée déjà connue.
+
+          $$F(x) = -\frac{x^2}{2}\ln^2 x + \frac{x^2}{2}\ln x + \frac{1}{4}\left(1 - x^2\right)$$
+
+          **Premier terme : $x^2\ln^2 x$.** C'est le carré de $x\ln x$, dont la limite en $0^+$ est $0$ (limite de référence, déjà utilisée en Partie I) :
+
+          $$\lim_{x\to 0^+} x^2\ln^2 x = \left(\lim_{x\to 0^+} x\ln x\right)^{\!2} = 0^2 = 0$$
+
+          **Deuxième terme : $x^2\ln x$.** Même mécanisme, en écrivant $x^2\ln x = x \cdot (x\ln x) \to 0 \times 0 = 0$. Autre lecture, plus directe : $\ln x$ diverge, mais $x^2$ écrase bien plus vite qu'il ne diverge.
+
+          **Troisième terme.** $\dfrac{1}{4}(1 - x^2) \to \dfrac{1}{4}(1 - 0) = \dfrac{1}{4}$, sans difficulté.
+
+          **La somme.**
+
+          $$\boxed{\lim_{x \to 0^+} F(x) = 0 + 0 + \frac{1}{4} = \frac{1}{4}}$$
+
+          **La remarque qui montre qu'on a compris.** Les deux termes qui portaient un logarithme s'évanouissent tous les deux : c'est le facteur $x^2$ qui gagne à chaque fois. Le comportement de $F$ en $0$ est donc entièrement dicté par le terme **polynomial**, celui qui ne contient aucun logarithme. Cette victoire systématique de la puissance sur le logarithme est le fil rouge de tout le problème, depuis la première question.
+      - id: q7b
+        stem: |-
+          **2- b)** (0,25 pt) En déduire la valeur de $F(0)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le mot « en déduire » signale que la question précédente suffit — mais elle ne suffit qu'à une condition, et c'est cette condition qu'il faut citer.
+
+          **L'argument, en deux lignes.** La question 1-a a établi que $F$ est **continue sur $I$**, donc en particulier continue à droite en $0$. Par définition de la continuité en un point :
+
+          $$F(0) = \lim_{x \to 0^+} F(x) = \boxed{\frac{1}{4}}$$
+
+          **Pourquoi il faut citer la continuité et pas seulement écrire le résultat.** Sans elle, la limite calculée en 2-a ne dirait rien de $F(0)$ : une fonction peut parfaitement avoir une limite en un point et y prendre une autre valeur. C'est exactement la fonction de la question 1-a dans l'architecture du problème — elle n'était pas là pour faire nombre.
+
+          **Le contrôle de vraisemblance.** $F(0) = \int_0^1 t(\ln t)^2 dt$ est l'intégrale d'une fonction **positive** sur $[0,1]$ : elle doit être positive. $\frac14 > 0$ ✔. Et l'intégrande $t(\ln t)^2$ reste modeste sur $[0,1]$ — elle vaut $0$ aux deux bouts, avec un maximum intérieur — donc une valeur de l'ordre du quart est plausible. Rien ne cloche.
+      - id: q7c
+        stem: |-
+          **2- c)** (0,5 pt) Calculer, en $\text{cm}^3$, le volume du solide engendré par la rotation d'un tour complet autour de l'axe des abscisses de la portion de la courbe $(C_1)$ relative à l'intervalle $[0,1]$. (On prendra $\left\|\vec{i}\right\| = 1\ \text{cm}$.)
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La dernière question du problème, et elle est courte — tout le travail a déjà été fait. Il suffit de reconnaître que l'intégrale du volume est **exactement** $F(0)$.
+
+          **La formule du cours.** Le volume engendré par la rotation autour de l'axe des abscisses de la portion de courbe de $f$ sur $[a, b]$ vaut :
+
+          $$V = \pi \int_a^b \left(f(t)\right)^2 dt$$
+
+          en unités de volume. L'idée derrière la formule : chaque tranche perpendiculaire à l'axe est un disque de rayon $|f(t)|$, donc d'aire $\pi f^2(t)$, et l'on somme ces aires le long de l'axe.
+
+          **L'identification, qui est tout le travail restant.** Ici $f = f_1$, $a = 0$ et $b = 1$ :
+
+          $$V = \pi \int_0^1 \left(f_1(t)\right)^2 dt$$
+
+          Or, par définition, $F(0) = \displaystyle\int_0^1 \left(f_1(t)\right)^2 dt$ — les bornes coïncident exactement, dans le bon ordre. Donc :
+
+          $$V = \pi\,F(0) = \pi \times \frac{1}{4}$$
+
+          **L'unité, qu'il ne faut pas négliger.** L'énoncé précise $\left\|\vec{i}\right\| = 1\ \text{cm}$ dans un repère **orthonormé** : l'unité de longueur vaut $1\ \text{cm}$ sur les trois directions, donc l'unité de volume vaut $1\ \text{cm}^3$. Le nombre trouvé est donc directement un nombre de centimètres cubes.
+
+          $$\boxed{\ V = \frac{\pi}{4}\ \text{cm}^3 \approx 0{,}785\ \text{cm}^3\ }$$
+
+          **Le piège nommé de cette question.** Écrire $V = \pi\int_0^1 f_1(t)\,dt$ en oubliant le carré. La formule du volume porte sur le **carré** de la fonction — c'est le rayon du disque qui est $f_1(t)$, et l'aire d'un disque va en $r^2$. Second piège, plus insidieux : croire qu'il faut recalculer l'intégrale. Elle a déjà été calculée deux questions plus tôt ; toute la Partie III était construite pour aboutir ici, et refaire le calcul revient à ne pas avoir vu l'architecture du problème.
+        steps:
+          - math: 'V = \pi \int_0^1 \left(f_1(t)\right)^2 dt'
+            note: "Formule du volume de revolution autour de (Ox) : le CARRE de la fonction, jamais la fonction."
+          - math: 'F(0) = \int_0^1 \left(f_1(t)\right)^2 dt = \frac{1}{4}'
+            note: "Meme integrale, memes bornes : c'est exactement F(0), etabli a la question 2-b."
+          - math: 'V = \pi \times \frac{1}{4}'
+            note: "Repere orthonorme avec norme de i egale a 1 cm : l'unite de volume vaut 1 cm3."
+          - math: '\boxed{V = \frac{\pi}{4}\ \text{cm}^3 \approx 0{,}785\ \text{cm}^3}'
+            note: "Positif et de l'ordre du cm3 : vraisemblable pour une courbe qui reste sous 1 sur [0,1]."
