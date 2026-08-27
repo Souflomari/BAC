@@ -102,6 +102,75 @@ Le sujet **maths SM 2024 rattrapage** est le seul des sept où la passe
 adversariale n'a trouvé **aucun défaut** : ni d'énoncé, ni de
 transcription, ni de lecture laissée en suspens.
 
+## La deuxième vague : les problèmes d'analyse SM (2026-08-23)
+
+La campagne rattrapage bouclée, un second gisement est ouvert dans ce même
+sas. Le diagnostic tient en une phrase : **les six épreuves SM de session
+normale du corpus sont toutes assemblées à 10,00/20**, parce que leurs trois
+exercices d'algèbre sont en banque et que leur volet d'ANALYSE n'y est pas.
+Une épreuve SM consacre la moitié de son barème à l'analyse ; c'est
+exactement la moitié qui manque.
+
+Quatre sujets transcrits à ce jour, tous **NON VÉRIFIÉS**, tous en attente
+d'une passe adversariale :
+
+| Fichier | Ce qui est transcrit | Barème |
+|---|---|---|
+| `maths-sm-2023-n.md` | exercices 1 et 2 (deux volets d'analyse) | 7,75 + 2,25 |
+| `maths-sm-2024-n.md` | exercices 1 et 2 (deux volets d'analyse) | 7,5 + 2,5 |
+| `maths-sm-2025-n.md` | exercice 1 (problème unique) | 10 |
+| `maths-sm-2022-n.md` | exercice 1 (problème unique) | 10 |
+
+Chacun recompté question par question contre la marge du scan, et chacun
+retombe exactement sur les 10 points qui manquent à son épreuve.
+
+**Portée partielle assumée.** Aucun de ces fichiers ne transcrit les
+exercices d'algèbre du même sujet : ils sont déjà en banque, et l'assemblage
+d'épreuves somme les `bareme_total` — les reconvertir fausserait le /20. La
+portée est dite en tête de chaque fichier pour qu'elle ne passe pas pour un
+oubli.
+
+### Ce que cette vague a appris sur les scans
+
+Les quatre sujets ne se ressemblent pas du tout côté fidélité, et c'est le
+renseignement le plus utile pour la suite :
+
+- **2024 N et 2025 N : scans propres.** Lettres ajourées et symbole $\le$
+  rendus correctement, aucune adjudication de glyphe nécessaire.
+- **2023 N : mojibake intermittent.** Le symbole $\le$ y est rendu par une
+  double virgule à cinq endroits, et les lettres ajourées cassent par
+  intervalles — la même lettre rendue par deux glyphes différents à deux
+  lignes d'écart. Chaque occurrence adjugée par la logique, jamais par la
+  forme du glyphe.
+- **2022 N : substitution de police MASSIVE**, systématique et non
+  intermittente. Aucun symbole mathématique non alphabétique ne s'y lit pour
+  ce qu'il montre. Le fichier porte une **table de correspondance complète**,
+  glyphe par glyphe, avec la base de chaque adjudication. Deux pièges y sont
+  isolés : un glyphe qui vaut tantôt $\mathbb{N}$ tantôt $+\infty$ selon le
+  contexte, et un « l » de « ln » absorbé par une parenthèse extensible —
+  celui-ci adjugé non pas à l'œil mais par une **conséquence vérifiable**
+  ($F(1)$ doit valoir $0$, et une seule lecture le donne). C'est ainsi qu'on
+  tranche un glyphe.
+
+### Deux lacunes signalées AVANT conversion, et non pendant
+
+- **`arctan`** apparaît dans le sujet 2025 N. Fonction spécifique à la filière
+  SM, sans rung nulle part dans le corpus. Si l'exercice est converti, il
+  faudra la ponter au point d'usage — comme le corpus le fait déjà pour Rolle
+  et le théorème des accroissements finis.
+- **Le théorème des accroissements finis** est invoqué nommément par les
+  sujets 2023 N et 2024 N. Le docket de complétude le classe en catégorie C
+  (spécifique SM, volontairement non promu au rang de rung) : l'usage est
+  légitime, mais il devra être ponté et non supposé acquis.
+
+### Reste de la vague
+
+`SM 2017 N` (`element/57970`, code **NS25** et non NS24F) et `SM 2020 N`
+(`element/109635`, que le CENSUS signale comme un **format à CHOIX** —
+exercice 1 OU exercice 2 — à contrôler avant toute transcription).
+
+---
+
 ## Ce qui reste à moissonner
 
 Les sessions de rattrapage n'avaient jamais été moissonnées : elles
