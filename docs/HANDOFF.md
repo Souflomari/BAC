@@ -182,3 +182,117 @@ A window that closes mid-build must leave the spec as the handoff.
 **The first work order** for the next session is
 `docs/pipeline/post-fable-work-order.md` — written to the Day-7 tightened
 brief standard, cold-executable by Sonnet.
+
+---
+
+## 6. Addendum du 2026-08-27 — l'arc « annales + audit de l'assembleur »
+
+> **Écrit en fin de session, sur ce qui a réellement atterri.** Ce qui était
+> encore en vol au moment de l'écriture est marqué comme tel : ne le crois pas
+> fait sans regarder le dépôt.
+
+### 6.1 Ce qui a changé pour l'élève
+
+**Le corpus d'épreuves est passé de 22 à 25 épreuves complètes** (≥ 19,5/20),
+182 entrées de banque, 36 notions dotées. Les trois gagnées ce jour sont **SM
+2023, SM 2024 et SM 2025 normale**, chacune passée de 10,00 à 20,00/20 par la
+conversion de son problème d'analyse.
+
+L'état réel des épreuves SM de session normale, à consulter avant de
+reprendre : 2023/2024/2025 complètes · 2017 et 2022 en conversion · 2021 et
+SExp 2018 transcrits et en vérification · **2020 SUSPENDUE** sur l'arbitrage
+K-0. `docs/sujets/_incoming/README.md` porte le tableau à jour.
+
+### 6.2 Cinq défauts trouvés en MESURANT le corpus, pas en lisant le code
+
+Aucun des cinq n'était visible à la lecture. Tous sortent d'un script qui
+compare le dépôt à lui-même. **C'est la méthode à reprendre**, plus que les
+correctifs eux-mêmes.
+
+1. **Le « fait » d'une banque s'allumait sur des exercices jamais ouverts.**
+   42 `entry_id` sont partagés entre notions (un exercice découpé garde son
+   identifiant dans chaque banque) ; la lecture du journal ignorait
+   `notion_id`. **Corrigé** (`revealKey`), **documenté** (K-7, BANK-SPEC §4).
+2. **Neuf épreuves rendues dans le désordre, dont huit à 20,00/20.** Le tri
+   départageait les morceaux d'un exercice alphabétiquement : « Partie 2 »
+   avant « Partie I ». **Corrigé** (`sousOrdre`), **gardé** (2 checks
+   dom-truth sur SPC 2018 et SPC 2025).
+3. **Quatorze épreuves annonçaient un nombre d'exercices faux** — SPC 2023
+   disait « 10 exercices » pour un sujet qui en a quatre. **Corrigé**
+   (`nbExercices`), **gardé**.
+4. **Six glyphes cassés en production** (✔ dans du display math, guillemets
+   français dans un `\text{}`). Ils sortaient dans la sortie d'une porte qui
+   les IMPRIMAIT sans tomber — `throwOnError` ne couvre que l'analyse.
+   **Corrigés**, et **la porte tombe dessus** désormais.
+5. **Cinq identifiants mentent sur leur position** (`x1` là où le libellé dit
+   Exercice 3 ou 5). **NON corrigés, délibérément** : renommer un `entry_id`
+   orpheline les lignes de journal écrites dessus, et ça cascade sur les
+   entrées voisines. Arbitrage owner, posé en **K-7 bis** avec le nom juste de
+   chacune. La porte empêche la dette de croître.
+
+### 6.3 Trois portes neuves dans `validate-content`
+
+Chacune vérifiée dans les DEUX sens (elle tombe sur le défaut, elle passe sur
+le corpus). Si l'une gêne, comprends d'abord ce qu'elle protège :
+
+- **glyphe non rendable** — intercepte le `console.warn` de KaTeX ; un
+  caractère absent de la police se rend en glyphe cassé chez l'élève ;
+- **`notion:` ≠ dossier** — ce champ descend jusqu'à la clé « fait » ; faux,
+  il ferait pointer les marques d'une banque vers une autre notion, en
+  silence ;
+- **position de l'identifiant ≠ libellé** — avec les cinq héritées nommées
+  une par une dans `POSITIONS_HERITEES`.
+
+### 6.4 Le protocole du sas a durci — et pourquoi
+
+Une passe a découvert qu'**AlloSchool sert parfois, depuis son cache CDN, un
+AUTRE sujet que celui demandé** : sous la bonne URL, trois pages sur six
+portaient un autre sujet. Et le vérificateur, la transcription sous les yeux,
+y a « retrouvé » par lecture visuelle les énoncés attendus sur des pages qui
+ne les contenaient pas. **Seule une lecture non visuelle a brisé l'illusion.**
+
+D'où les quatre exigences, désormais dans `docs/sujets/_incoming/README.md` :
+année relue sur **chaque** page · recoupement par un instrument **non
+visuel** · MD5 avec second téléchargement · contrôle du `<title>` servi.
+
+Les passes menées AVANT cette règle portent une **réserve de portée**
+recopiée dans l'en-tête de leur banque — pas seulement dans le sas, qui
+finira archivé. Elles disent ce qu'elles ont fait et ce qu'elles n'ont pas
+fait. Les re-passer sous le protocole complet est un arbitrage owner ouvert.
+
+### 6.5 Ce qui reste à l'arbitrage de l'owner
+
+- **K-0** — SM 2020 est à format « au choix » et l'assembleur la sur-compte
+  déjà. Trois issues, aucune choisie. Un balayage des pages 1 du corpus était
+  **en vol** en fin de session (`docs/audits/format-a-choix.md`) : il dit
+  combien d'épreuves sont concernées, et donc laquelle des trois options est
+  la moins chère.
+- **K-7 bis** — les cinq identifiants à renommer, ou pas.
+- **Docket B1** — réduit à deux lectures : l'option « le tag filière est
+  erroné » est écartée par l'arithmétique des barèmes. Reste (a) la limite
+  SExp dérivée est trop stricte, ou (c) le sujet déborde son cadre. **Le PDF
+  du cadre SExp est nécessaire.**
+- **Docket B2 et B3** — arbitrages pédagogiques de fond (rung
+  Henderson-Hasselbalch ; rung birapport). Volontairement non tranchés : ce ne
+  sont pas des faits qu'une mesure règle.
+- **SM 2021** — slug dominant non tranché, trois options mesurées.
+- **SM 2025** — partitionnement de l'exercice à 10 points, réserve conservée.
+- **PC 2019** — deux réponses publiées pour la même question (532 N contre
+  525 N), selon qu'on arrondit $\sin 10°$ à 0,17 ou non. Le sommet de la leçon
+  fournit l'arrondi ; la banque le nomme comme un piège. **Les deux pages se
+  contredisent sur une seule et même notion.**
+
+### 6.6 Une note de méthode qui vaut plus que les correctifs
+
+Au cours de cette session, **plusieurs agents ont refusé une de mes
+instructions, et chaque fois ils avaient raison** : l'un a recompté 17 barèmes
+là où j'en annonçais 13 ; un autre a refusé d'antidater sa passe en citant mon
+propre commit sur les dates fausses ; un troisième m'a averti qu'un fichier
+bougeait sous mes pieds pendant que j'allais le commiter. Deux autres ont
+signalé d'eux-mêmes la seule porte qu'ils ne pouvaient pas fermer plutôt que
+de laisser croire au quitus.
+
+**Écris les briefs pour que ça reste possible.** Ne donne pas un compte que tu
+n'as pas vérifié — dis « prends-le dans la source et recompte ». Demande
+explicitement de rapporter les écarts au lieu de les lisser. Le corpus s'est
+amélioré à chaque fois qu'un agent m'a contredit.
