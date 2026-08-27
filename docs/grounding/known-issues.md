@@ -479,7 +479,7 @@ though the dislike list does not mention them.
 
 ### K-0. `lib/examens.ts` ne sait pas représenter un exercice « au choix »
 
-**Découvert le 2026-08-23**, en ouvrant le scan de SM 2020 session normale
+**Découvert le 2026-08-27**, en ouvrant le scan de SM 2020 session normale
 pour décider s'il fallait le transcrire. **Confirmé sur le scan lui-même**,
 pas déduit.
 

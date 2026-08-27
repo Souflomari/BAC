@@ -61,7 +61,7 @@ questions, `--strict` sourcing gate, the ≤5-named-exceptions discipline
 census note, never fabricated).
 
 **`duration_min` — the house ratio is ≈ 6 minutes per barème point**
-(written down 2026-08-23 after it drifted). This is a *training* estimate,
+(written down 2026-08-27 after it drifted). This is a *training* estimate,
 not exam pace: the real papers run at 9 min/pt (PC, 3 h for /20) and
 12 min/pt (SM, 4 h for /20), and using those inflates every card. Measured
 across the whole corpus the ratio sits between 4.9 and 7.1 with a median of
@@ -73,7 +73,7 @@ The reason consistency matters more here than precision: `duration_min` is
 displayed to a student deciding what to attempt tonight. A card that reads
 "43 min" next to an identical one reading "29 min" teaches nothing about the
 exercise and everything about who authored it. Eleven entries were
-renormalised on 2026-08-23 for exactly this reason.
+renormalised on 2026-08-27 for exactly this reason.
 
 ## 3. The card — anatomy and behavior
 

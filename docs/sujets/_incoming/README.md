@@ -36,7 +36,7 @@ Donc :
 4. Le déplacement vers `docs/sujets/<matière>/<notion>.md` et la
    conversion en banque se font **après**, jamais en même temps.
 
-## État au 2026-08-23 — LA CHAÎNE EST BOUCLÉE
+## État au 2026-08-27 — LA CHAÎNE EST BOUCLÉE
 
 **Les sept sujets sont vérifiés ET convertis.** Les 30 exercices des sept
 fichiers portent un `Statut: vérifié — re-fetch indépendant + re-dérivation`,
@@ -102,7 +102,7 @@ Le sujet **maths SM 2024 rattrapage** est le seul des sept où la passe
 adversariale n'a trouvé **aucun défaut** : ni d'énoncé, ni de
 transcription, ni de lecture laissée en suspens.
 
-## La deuxième vague : les problèmes d'analyse SM (2026-08-23)
+## La deuxième vague : les problèmes d'analyse SM (2026-08-27)
 
 La campagne rattrapage bouclée, un second gisement est ouvert dans ce même
 sas. Le diagnostic tient en une phrase : **les six épreuves SM de session
@@ -168,6 +168,64 @@ renseignement le plus utile pour la suite :
 `SM 2017 N` (`element/57970`, code **NS25** et non NS24F) et `SM 2020 N`
 (`element/109635`, que le CENSUS signale comme un **format à CHOIX** —
 exercice 1 OU exercice 2 — à contrôler avant toute transcription).
+
+---
+
+## Trois pièges de procédure payés le 2026-08-27, à ne pas repayer
+
+Ces trois-là n'ont rien à voir avec les mathématiques ou la physique. Ils
+viennent de la mécanique du travail, et chacun a coûté quelque chose.
+
+### 1. Des scans qui n'en sont pas — vérifier `file *.jpg`
+
+Un vérificateur a téléchargé les cinq pages d'un scan et obtenu cinq
+« JPEG » de **288 octets**. C'étaient des pages HTML de redirection 301
+(forme `index.ph%70`). Un `curl` naïf les enregistre sans broncher, et
+l'outil de lecture d'images échoue ensuite sans dire pourquoi.
+
+**La parade :** refetcher avec `-L` et un User-Agent de navigateur, puis
+**contrôler systématiquement `file *.jpg`**. Un fichier de quelques centaines
+d'octets n'est jamais une page de scan. Ce contrôle coûte une seconde et
+évite de conclure « le scan est illisible » alors qu'il n'a jamais été
+téléchargé.
+
+### 2. Ne jamais committer un fichier qu'un agent est en train d'écrire
+
+Un commit a été passé au milieu d'une passe de vérification, sur le fichier
+que le vérificateur éditait. Résultat : la version publiée portait sept
+formules mathématiques coupées sur plusieurs lignes, laissant **seize lignes
+avec un `$` non apparié**. Le vérificateur a corrigé après coup, mais la
+version fautive existe dans l'historique.
+
+**La parade :** avant tout `git add`, vérifier qu'aucun agent ne travaille sur
+le chemin visé. Et ne jamais utiliser `git add -A` — nommer les chemins, ce
+que ce projet avait déjà appris à ses dépens lors de la campagne rattrapage.
+
+### 3. Une date fausse dans un enregistrement de provenance
+
+C'est le plus instructif, parce que c'est un vérificateur qui a **refusé une
+consigne** pour l'éviter. La consigne de vérification lui demandait de dater
+sa passe du 2026-08-23 ; il l'a datée du 2026-08-27, date réelle, en disant
+qu'inscrire une fausse date dans un enregistrement de provenance était
+contraire à l'esprit de la tâche.
+
+Il avait raison, et le problème était plus large que sa passe : cette session
+a commencé le 2026-08-23 puis repris le 2026-08-27 après une interruption, et
+tout le travail de la seconde moitié portait par inadvertance la date de la
+première. **Soixante-sept lignes de provenance étaient datées faux** — dans le
+docket de complétude, dans BANK-SPEC, dans les fichiers de ce sas, et dans
+trois notes éditoriales de banques. Elles ont été corrigées en distinguant
+deux cas :
+
+- une date qui **cite** une passe de vérification du rattrapage, réellement
+  faite le 2026-08-23 → conservée ;
+- une date qui **enregistre le travail de la seconde moitié de session** →
+  portée au 2026-08-27.
+
+**La parade :** ne jamais coder une date en dur dans une consigne d'agent.
+Écrire « date du jour » et laisser l'agent la lire. Une date est une donnée
+de provenance au même titre qu'un numéro de page ou une URL — un projet dont
+le risque n°1 est la fidélité ne peut pas se permettre de l'approximer.
 
 ---
 

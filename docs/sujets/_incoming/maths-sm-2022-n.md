@@ -80,7 +80,7 @@ symboles le sont.
 
 ## 2022 — session normale — Exercice 1
 Source: https://www.alloschool.com/element/136604
-Statut: **transcrit (NON vérifié)** — première lecture, 2026-08-23. En attente
+Statut: **transcrit (NON vérifié)** — première lecture, 2026-08-27. En attente
 d'une passe adversariale indépendante avec re-fetch du scan. **Vigilance
 renforcée demandée** (voir la note de lecture ci-dessus).
 

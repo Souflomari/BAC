@@ -1,6 +1,6 @@
 # Examen national Mathématiques — SM — 2023, session NORMALE (NS 24F) — exercices 1 et 2
 
-> **Fichier d'entrée (`_incoming`) — VÉRIFIÉ le 2026-08-23.** Protocole
+> **Fichier d'entrée (`_incoming`) — VÉRIFIÉ le 2026-08-27.** Protocole
 > `docs/sujets/maths/README.md`. Les deux exercices ont subi la passe
 > adversariale indépendante (re-fetch du scan depuis le HTML de la page
 > source, relecture au zoom, re-dérivation complète). Voir
@@ -100,7 +100,7 @@ Aucune **valeur numérique** n'est touchée par ces trois familles.
 
 ## 2023 — session normale — Exercice 1
 Source: https://www.alloschool.com/element/142490
-Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-27)
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B), option française — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : **7,75 points**
@@ -172,7 +172,7 @@ On note $(C)$ sa courbe représentative dans un repère orthonormé $(O, \vec{i}
    **d)** *(0,25)* En déduire que la suite $(u_n)_{n \in \mathbb{N}}$ converge vers $\alpha$.
 
 > **Correction du vérificateur** — exercice 1, passe adversariale du
-> 2026-08-23 (re-fetch indépendant + re-dérivation).
+> 2026-08-27 (re-fetch indépendant + re-dérivation).
 >
 > **Ce qui était faux : rien dans le corps de l'exercice.** Relecture
 > caractère par caractère du scan re-téléchargé (p. 2 pour les Parties I, II
@@ -220,29 +220,27 @@ On note $(C)$ sa courbe représentative dans un repère orthonormé $(O, \vec{i}
 >
 > **Re-dérivation (l'exercice est résoluble de bout en bout, aucune identité
 > imprimée n'est fausse) :**
-> - *I-1a.* $\frac{4}{(2+t)^2} \le \frac{1}{1+t} \iff 4(1+t) \le (2+t)^2
->   \iff 0 \le t^2$ ✔. Et avec $u = \frac{1}{1+t} \in\,]0,1]$ :
->   $\frac{1}{1+t} \le \frac12\left(1+\frac{1}{(1+t)^2}\right)
->   \iff 2u \le 1+u^2 \iff 0 \le (1-u)^2$ ✔.
+> - *I-1a.* $\frac{4}{(2+t)^2} \le \frac{1}{1+t} \iff 4(1+t) \le (2+t)^2 \iff 0 \le t^2$ ✔.
+>   Et avec $u = \frac{1}{1+t} \in\,]0,1]$ :
+>   $\frac{1}{1+t} \le \frac12\left(1+\frac{1}{(1+t)^2}\right) \iff 2u \le 1+u^2 \iff 0 \le (1-u)^2$ ✔.
 > - *I-1b.* Intégration de I-1a sur $[0,x]$ :
 >   $\int_0^x \frac{4}{(2+t)^2}dt = \frac{2x}{2+x}$ ✔ ;
 >   $\int_0^x \frac{dt}{1+t} = \ln(1+x)$ ✔ ;
->   $\frac12\int_0^x\left(1+\frac{1}{(1+t)^2}\right)dt
->   = \frac12\left(x + \frac{x}{1+x}\right)
->   = \frac12\cdot\frac{x^2+2x}{1+x}$ ✔ — **exactement** le membre de droite
+>   $\frac12\int_0^x\left(1+\frac{1}{(1+t)^2}\right)dt = \frac12\left(x + \frac{x}{1+x}\right) = \frac12\cdot\frac{x^2+2x}{1+x}$
+>   ✔ — **exactement** le membre de droite
 >   imprimé. L'encadrement de I-1a est taillé pour produire celui de I-1b.
 > - *I-2.* L'encadrement de I-1b donne
 >   $-\frac{1}{2+x} \le \frac{g(x)-1}{x} \le -\frac{1}{2(1+x)}$, et les deux
 >   bornes tendent vers $-\frac12$ ✔.
-> - *II-2b.* $\left(\frac{e^{-x}-1}{x}\right)g(x) + \frac{g(x)-1}{x}
->   = \frac{g(x)e^{-x} - g(x) + g(x) - 1}{x} = \frac{f(x)-1}{x}$ ✔ (identité
+> - *II-2b.* $\left(\frac{e^{-x}-1}{x}\right)g(x) + \frac{g(x)-1}{x} = \frac{g(x)e^{-x} - g(x) + g(x) - 1}{x} = \frac{f(x)-1}{x}$
+>   ✔ (identité
 >   exacte, télescopage du terme $g(x)$).
 > - *II-2c.* Limite : $(-1)\cdot 1 + \left(-\frac12\right) = -\frac32$, donc
 >   $f'_d(0) = -\frac32$ ✔ — valeur cohérente avec la borne $-\frac32$ de II-4.
 > - *II-3.* Avec $h(x) = \frac{\ln(1+x)}{x}$ et $f = h\,e^{-x}$ :
 >   $f' = e^{-x}(h'-h)$ et
->   $h'-h = \frac{\frac{x}{1+x} - (1+x)\ln(1+x)}{x^2}
->   = \frac{x-(1+x)^2\ln(1+x)}{x^2(1+x)}$ ✔ — **exactement** l'expression
+>   $h'-h = \frac{\frac{x}{1+x} - (1+x)\ln(1+x)}{x^2} = \frac{x-(1+x)^2\ln(1+x)}{x^2(1+x)}$
+>   ✔ — **exactement** l'expression
 >   imprimée.
 > - *II-4a.* **Majoration** (le quotient est $<0$) : il faut
 >   $\ln(1+x) > \frac{x}{(1+x)^2}$, ce que donne la borne **gauche** de I-1b,
@@ -269,7 +267,7 @@ On note $(C)$ sa courbe représentative dans un repère orthonormé $(O, \vec{i}
 
 ## 2023 — session normale — Exercice 2
 Source: https://www.alloschool.com/element/142490
-Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-27)
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B), option française — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : **2,25 points**
@@ -300,7 +298,7 @@ Pour tout $n \in \mathbb{N}^{*}$ et pour tout $k \in \{0\,;1\,;\ldots\,;n\}$, on
    **b)** *(0,5)* En déduire que : $\displaystyle\lim_{n \to +\infty} S_n = \int_0^1 \sqrt{1 + e^{2x}}\ dx$
 
 > **Correction du vérificateur** — exercice 2, passe adversariale du
-> 2026-08-23 (re-fetch indépendant + re-dérivation).
+> 2026-08-27 (re-fetch indépendant + re-dérivation).
 >
 > **Ce qui était faux : rien.** L'exercice 2 tient entier sur la page 3 du
 > scan. Relecture caractère par caractère au zoom : énoncé, quantificateurs,
@@ -318,8 +316,8 @@ Pour tout $n \in \mathbb{N}^{*}$ et pour tout $k \in \{0\,;1\,;\ldots\,;n\}$, on
 >   somme **droite** de $k=1$ à $n$, et **les deux** portent le même exposant
 >   $e^{\frac{2k}{n}}$ (ce n'est pas $2(k+1)/n$ qui réapparaît à droite —
 >   c'est le décalage d'indice qui absorbe le $+1$). Vérifié par le calcul :
->   $\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2(k+1)}{n}}}
->   = \sum_{j=1}^{n}\sqrt{1+e^{\frac{2j}{n}}}$ — la q2-a est donc **la
+>   $\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2(k+1)}{n}}} = \sum_{j=1}^{n}\sqrt{1+e^{\frac{2j}{n}}}$
+>   — la q2-a est donc **la
 >   sommation littérale de la q1-c**, réécrite par changement d'indice à
 >   droite. Les deux paires se répondent exactement.
 > - *Les quatre « ,, » (q1-c ×2, q2-a ×2).* Même glyphe cassé qu'à
@@ -334,11 +332,9 @@ Pour tout $n \in \mathbb{N}^{*}$ et pour tout $k \in \{0\,;1\,;\ldots\,;n\}$, on
 > - *q1-a.* TAF appliqué à $x \mapsto e^{x}$, continue sur
 >   $\left[\frac{k}{n},\frac{k+1}{n}\right]$ et dérivable sur l'ouvert :
 >   $\exists c_k$ intérieur tel que
->   $e^{\frac{k+1}{n}} - e^{\frac{k}{n}}
->   = \left(\frac{k+1}{n}-\frac{k}{n}\right)e^{c_k} = \frac1n e^{c_k}$ ✔.
-> - *q1-b.* $M_kM_{k+1}
->   = \sqrt{\left(\frac1n\right)^2 + \left(\frac1n e^{c_k}\right)^2}
->   = \frac1n\sqrt{1+e^{2c_k}}$ ✔ — l'écart des abscisses vaut bien $\frac1n$,
+>   $e^{\frac{k+1}{n}} - e^{\frac{k}{n}} = \left(\frac{k+1}{n}-\frac{k}{n}\right)e^{c_k} = \frac1n e^{c_k}$ ✔.
+> - *q1-b.* $M_kM_{k+1} = \sqrt{\left(\frac1n\right)^2 + \left(\frac1n e^{c_k}\right)^2} = \frac1n\sqrt{1+e^{2c_k}}$
+>   ✔ — l'écart des abscisses vaut bien $\frac1n$,
 >   et l'écart des ordonnées est exactement la quantité de la q1-a.
 > - *q1-c.* $\frac{k}{n} < c_k < \frac{k+1}{n}$ et croissance de
 >   $t \mapsto \sqrt{1+e^{2t}}$ ✔. (L'encadrement imprimé est large ; le calcul
@@ -362,7 +358,7 @@ Pour tout $n \in \mathbb{N}^{*}$ et pour tout $k \in \{0\,;1\,;\ldots\,;n\}$, on
 ## Classement proposé — **contrôlé** contre l'arborescence réelle
 
 Correspondance vers les slugs `content/maths/`. **Contrôlée par le
-vérificateur le 2026-08-23** (`ls content/maths/`) : les **neuf** slugs cités
+vérificateur le 2026-08-27** (`ls content/maths/`) : les **neuf** slugs cités
 dans ce fichier existent tous — `fonction-logarithme`, `limites-continuite`,
 `derivabilite-etude-fonctions`, `suites-numeriques`, `fonction-exponentielle`,
 `calcul-integral`, ainsi que les trois slugs de la note de portée
@@ -406,7 +402,7 @@ le corpus le fait déjà ailleurs, et non le supposer acquis.
 
 ## Ce que la vérification a trouvé
 
-**Passe adversariale indépendante, 2026-08-23.** Scan re-fetché par le
+**Passe adversariale indépendante, 2026-08-27.** Scan re-fetché par le
 vérificateur, non repris de la transcription.
 
 ### Méthode (ce qui a réellement été fait)
@@ -448,7 +444,7 @@ d'exposant, de borne, de quantificateur, d'intervalle ni de barème.
 | URLs des images re-dérivées du HTML | ✔ conformes (`course-436/upload-85316`, 5 pages) |
 | En-tête p. 1 : NS 24F, 2023 normale, SM (A) et (B) option française, 4 h, coef 9 | ✔ conforme |
 | Carte des composantes p. 1 : 7,75 / 2,25 / 3,5 / 3 / 3,5 | ✔ conforme, somme $=20$ |
-| Barèmes de marge, ex. 1 (13 relevés) | ✔ $1{,}5 + 4{,}0 + 2{,}25 = 7{,}75$ |
+| Barèmes de marge, ex. 1 (17 relevés : 3 + 9 + 5) | ✔ $1{,}5 + 4{,}0 + 2{,}25 = 7{,}75$ |
 | Barèmes de marge, ex. 2 (5 relevés) | ✔ $0{,}5+0{,}25+0{,}5+0{,}5+0{,}5 = 2{,}25$ |
 | Les six « ,, » | ✔ lus $\le$, preuve par le rang $n=0$ de III-2c |
 | $\beta \in \mathbb{R}^{+}$ (pas $\mathbb{R}^{+*}$) | ✔ exposant « + » seul, ×20 |

@@ -27,7 +27,36 @@ Troisième pièce du gisement SM, après 2023 N et 2024 N transcrits en parallè
 - شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) — **Sciences Mathématiques A et B, option française**
 - Durée **4 h** · coefficient **9**
 - Source : https://www.alloschool.com/element/145783
-- Images : `.../course-436/upload-87482/000{1..6}-big.jpg` (**6 fichiers**)
+- Images : `.../course-436/upload-87482/000{1..6}-big.jpg` (**6 fichiers**) —
+  chemin **re-dérivé du HTML** par le vérificateur et confirmé. Empreintes MD5
+  des six pages authentiques, à comparer avant toute relecture (voir l'alerte
+  « fetch empoisonné » ci-dessous) :
+  `0001` `1540741fd5259d81798ff3affbd17aaf` ·
+  `0002` `07b0b8cbf5338ad7867506836ff02604` ·
+  `0003` `1b4991811d66436a282a449608fcb01d` ·
+  `0004` `14afb162b17bae35fb4079b29795a35d` ·
+  `0005` `4a05b9d2f478e31657a5990827e90000` ·
+  `0006` `5fcf9452782f5640cf12bfba7a4c2f0f`
+
+> **⚠ ALERTE VÉRIFICATEUR — le fetch de cette source peut renvoyer un AUTRE
+> sujet.** Découvert pendant cette passe. Le **premier** fetch de
+> `element/145783` a renvoyé, depuis le cache CDN d'AlloSchool, la page du
+> sujet **SM 2022 session normale** : `<title>` et `<h1>` « … 2022 Normale »,
+> PDF `…-2022-normale-sujet.pdf`, images `course-436/upload-84506/000{1..5}`
+> (5 fichiers, `0006` → HTTP 404). Le même incident a touché les **images** :
+> `upload-87482/0001`, `0002` et `0003` ont d'abord été servies avec le
+> **contenu 2022** (pages à mojibake, exercice en $\ln(1+x)$, $F(x)=\int_x^1
+> f(t)\,dt$, EXERCICE2 en $j=e^{i2\pi/3}$), alors que `0004`–`0006` étaient
+> correctes. Un re-téléchargement a rendu les six pages 2025, **stables**
+> (deux téléchargements successifs identiques, et 8 fetches consécutifs du
+> HTML renvoyant tous « 2025 Normale »).
+>
+> **Conséquence de méthode :** un vérificateur qui fetche **une seule fois**
+> et ne recoupe pas peut relire, en toute bonne foi, le sujet d'une **autre
+> année** — c'est exactement le mode d'échec « un fichier entier qui décrivait
+> un autre sujet » du registre projet. **Contrôler systématiquement l'année
+> imprimée dans le bandeau de chaque page** (et, ici, les MD5 ci-dessus)
+> avant de lire quoi que ce soit.
 
 **Deux particularités de pagination, à ne pas prendre pour des erreurs :**
 
@@ -73,7 +102,7 @@ glyphe n'a été nécessaire. **À confirmer par le vérificateur**, pas à hér
 
 ## 2025 — session normale — Exercice 1
 Source: https://www.alloschool.com/element/145783
-Statut: **transcrit (NON vérifié)** — première lecture, 2026-08-23. En attente
+Statut: **transcrit (NON vérifié)** — première lecture, 2026-08-27. En attente
 d'une passe adversariale indépendante avec re-fetch du scan.
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B), option française — Mathématiques, 4 h, coef 9
