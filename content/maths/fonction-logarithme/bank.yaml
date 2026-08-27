@@ -69,6 +69,97 @@
 # problème » (docs/sujets/maths/README.md §0 ; INDEX.md §2) : Ex1 géométrie de
 # l'espace, Ex2 nombres complexes, Ex3 probabilités, puis le Problème — d'où
 # la position `x4` pour les quatre entrées de ce fichier.
+#
+# AJOUT DU 2026-08-27 — bk-2023-n-x1 (2023, session NORMALE, filière SM,
+# Exercice 1 — 7,75 points). Converti depuis
+# docs/sujets/_incoming/maths-sm-2023-n.md (agent-vérificateur-adversarial,
+# 2026-08-27, statut « vérifié » — re-fetch indépendant + re-dérivation,
+# AUCUN défaut trouvé dans le corps de l'exercice). NE PAS CONFONDRE avec
+# bk-2023-n-x4 ci-dessus : même année (2023), même session (normale), mais
+# une épreuve DIFFÉRENTE — bk-2023-n-x4 est le Problème de la filière SExp
+# (code NS 22F, element/137482) ; bk-2023-n-x1 est l'Exercice 1 de la filière
+# SM (code NS 24F, element/142490). Les deux identifiants ne se ressemblent
+# que par coïncidence de position sur des copies différentes ; c'est
+# `source.filiere` (« SExp » contre « SM ») qui les sépare réellement dans
+# l'assemblage d'épreuves de web/src/lib/examens.ts (groupement sur
+# `source.{filiere, year, session}`). Avec l'ajout jumeau de bk-2023-n-x2
+# dans content/maths/calcul-integral/bank.yaml, cette conversion fait passer
+# l'épreuve SM 2023 normale de 10,00 à 20,00/20 dans Examens blancs.
+#
+# RÉSERVE DE PORTÉE SUR CETTE VÉRIFICATION — à lire avant de s'appuyer
+# dessus. La passe qui a validé cet énoncé PRÉCÈDE la règle du 2026-08-27.
+# Une passe ultérieure, sur SM 2025 normale, a découvert qu'AlloSchool peut
+# servir depuis son cache CDN un AUTRE sujet que celui demandé — et qu'une
+# lecture visuelle, la transcription sous les yeux, « retrouve » alors
+# l'énoncé attendu sur des pages qui ne le contiennent pas. Le protocole du
+# sas exige depuis quatre contrôles (docs/sujets/_incoming/README.md,
+# « la lecture visuelle seule ne suffit pas ») : année imprimée relue sur
+# CHAQUE page, recoupement par un instrument NON visuel, MD5 consignés avec
+# un second téléchargement, contrôle du `<title>` servi.
+#   Ce que cette passe-ci a fait : re-dérivation des URLs d'images depuis le
+#   HTML, CONTRÔLE DU `<title>` SERVI (qui nommait la bonne année et la
+#   bonne filière), lecture des pages comme images avec recadrages, et
+#   re-dérivation mathématique de toutes les identités de l'énoncé.
+#   Ce qu'elle n'a pas fait : l'année page par page, le recoupement non
+#   visuel, les MD5 avec second téléchargement.
+# Le contrôle du `<title>` est un vrai garde-fou — il vient du HTML, pas de
+# l'attente du lecteur, et c'est lui qui a mis la passe SM 2025 sur la piste.
+# Risque résiduel FAIBLE MAIS NON NUL : le panachage constaté en 2025
+# touchait les images alors que la page HTML, elle, était correcte.
+# À L'ARBITRAGE DE L'OWNER : re-passer ce sujet sous le protocole complet,
+# ou accepter le niveau de preuve ci-dessus. Cette réserve est recopiée ici
+# — et pas seulement laissée dans le fichier `_incoming` — parce que c'est
+# CE fichier-ci qu'un mainteneur lira le jour où il se demandera d'où sort
+# l'énoncé qu'il a sous les yeux.
+#
+# SCOPE NOTE ADDITIONNELLE (bk-2023-n-x1) : au-delà des outils déjà recensés
+# ci-dessus, ce problème mobilise deux outils supplémentaires, absents du
+# corps R0–R6 de cette leçon :
+#   — le corollaire du théorème des valeurs intermédiaires (continuité +
+#     stricte monotonie ⇒ bijection sur l'intervalle image), pour l'existence
+#     et l'unicité de alpha en Partie III, question 1 — domaine
+#     `derivabilite-etude-fonctions`, déjà utilisé plus haut dans ce fichier
+#     (bk-2021-n-x4, q15) ;
+#   — le théorème des accroissements finis (TAF), énoncé et appliqué
+#     explicitement au point d'usage, pour la majoration géométrique de
+#     Partie III, question 2-b — domaine `derivabilite-etude-fonctions`,
+#     usage neuf dans ce fichier (déjà pratiqué ailleurs dans le corpus SM,
+#     voir content/maths/fonction-exponentielle/bank.yaml, bk-2019-n-x4) ;
+#   — `fonction-exponentielle` : le facteur $e^{-x}$ de $f$, ses limites de
+#     référence et sa dérivée — deuxième usage dans ce fichier après
+#     bk-2024-n-x4 (Partie II tout entière).
+# Le raisonnement nomme le domaine à chaque emprunt, sans jamais le supposer
+# acquis du socle de cette leçon.
+#
+# FLAG DE JUMELAGE — bk-2023-n-x1 face à bk-2023-r-x1 et bk-2024-r-x1
+# (ci-dessous). Les trois sont des problèmes d'analyse SM à quatre exercices
+# indépendants, bâtis sur une suite avec une majoration géométrique. Mais la
+# ressemblance s'arrête au vocabulaire ; le mécanisme diffère sur les trois
+# points qui comptent :
+#   — 2023 R et 2024 R étudient une FAMILLE de fonctions indexée par $n$
+#     ($f_n$), avec une suite définie soit par évaluation en un point fixe
+#     ($u_n=f_n(\beta)$), soit IMPLICITEMENT par une équation $f_n(x_n)=1$ ou
+#     $f_n(\alpha_n)=0$ ; leur limite se détermine par un raisonnement PAR
+#     L'ABSURDE (deux expressions de la même limite qui se contredisent).
+#   — 2023 N (cette entrée) étudie UNE SEULE fonction fixe $f$ ; le "$n$" de
+#     Partie III n'indexe aucune famille de fonctions mais les ITÉRÉS d'une
+#     récurrence $u_{n+1}=\tfrac13 f(u_n)$ — une itération de point fixe
+#     (méthode de Picard), technique absente des deux autres entrées. Sa
+#     limite $\alpha$ n'est pas cherchée par l'absurde : elle est le point
+#     fixe de $F=\tfrac13 f$, obtenu par TVI + stricte monotonie dès la
+#     Partie III q1, et la convergence de $(u_n)$ vers ce point fixe se
+#     démontre par une majoration géométrique EXPLICITE de la vitesse de
+#     convergence ($|u_n-\alpha|\le 2^{-n}|\beta-\alpha|$), obtenue par le TAF
+#     — un outil et une structure de preuve qu'aucune des deux autres
+#     entrées n'emploie.
+#   — 2023 N est en outre la seule des trois en session NORMALE (2023 R et
+#     2024 R sont toutes deux en rattrapage), et la seule bâtie en deux
+#     fonctions superposées : $g(x)=\ln(1+x)/x$ d'abord encadrée (Partie I),
+#     puis $f(x)=g(x)e^{-x}$ construite dessus (Partie II) — une construction
+#     en cascade que ni 2023 R ni 2024 R ne pratiquent.
+# Garder les trois : elles enseignent trois usages différents du même
+# vocabulaire (« suite indexée par $n$ », « limite par majoration ou par
+# l'absurde »), précisément ce qui prévient la mémorisation d'un seul patron.
 
 notion: maths/fonction-logarithme
 
@@ -2289,3 +2380,705 @@ entries:
             note: "Les deux encadrements se referment sur une seule valeur."
           - math: '\boxed{\ell = 1}'
             note: "Controle numerique : alpha_2 = 1,76 ; alpha_10 = 1,21 ; alpha_200 = 1,02. La descente est lente mais sure."
+
+  # ── bk-2023-n-x1 — 2023 N, Exercice 1 : g(x)=ln(1+x)/x encadree, f=g.e^-x,
+  #    et un point fixe itere u_(n+1) = (1/3)f(u_n) qui converge vers alpha ──
+  # Voir NOTE ÉDITORIALE — CARTE DES DOMAINES, SCOPE NOTE ADDITIONNELLE et
+  # FLAG DE JUMELAGE en tete de fichier.
+  - id: bk-2023-n-x1
+    title: "Problème d'analyse : encadrement de ln(1 + x), la fonction f = g·e⁻ˣ, existence d'un point fixe et convergence géométrique d'une suite itérée vers lui"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 1 — Analyse (7,75 points)"
+    bareme_total: 7.75
+    duration_min: 47
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national Mathématiques, filière
+        Sciences Mathématiques (A) et (B), option française (BIOF), 4 h,
+        coefficient 9, code sujet NS 24F, AlloSchool element/142490
+        (course-436/upload-85316), pages 2 et 3 sur 5 (consignes en page 1).
+        Barème de l'exercice : 7,75 points, annoncé en page 1 (carte des
+        composantes : Ex1 = 7,75 ; Ex2 = 2,25 ; Ex3 = 3,5 ; Ex4 = 3 ; Ex5 =
+        3,5 ; somme = 20). Recompte question par question sur l'énoncé
+        transcrit : Partie I = 0,5(1-a) + 0,5(1-b) + 0,5(2) = 1,5 ; Partie II
+        = 0,5(1) + 0,25(2-a) + 0,25(2-b) + 0,5(2-c) + 0,75(3) + 0,5(4-a) +
+        0,25(4-b) + 0,25(5-a) + 0,75(5-b) = 4,0 ; Partie III = 0,5(1) +
+        0,5(2-a) + 0,5(2-b) + 0,5(2-c) + 0,25(2-d) = 2,25 ; total 1,5 + 4,0 +
+        2,25 = 7,75, conforme à la carte de la page 1. ÉCART SIGNALÉ SUR LE
+        COMPTE DE LIGNES (pas sur le total) : ce recompte, fait ligne par
+        ligne contre l'énoncé transcrit, dénombre 17 items de barème (3 pour
+        la Partie I, 9 pour la Partie II, 5 pour la Partie III) — exactement
+        le compte que le fichier source donne lui-même dans sa table « Ce qui
+        a été contrôlé, point par point » (« Barèmes de marge, ex. 1 (17
+        relevés : 3 + 9 + 5) »). La consigne de conversion annonçait « 13
+        barèmes de marge » pour cet exercice ; aucun découpage de l'énoncé
+        transcrit ne redonne 13 (3+9+5=17, et aucune autre partition des neuf
+        valeurs imprimées de la Partie II ne le fait non plus). Le total,
+        lui, est triple confirmé — carte de la page 1, recompte du
+        vérificateur adversarial dans le fichier source, et recompte
+        indépendant ici — et vaut sans ambiguïté 7,75. Écart de comptage
+        rapporté à l'orchestrateur ; n'affecte ni bareme_total ni aucune
+        valeur transcrite. Transcription vérifiée par une passe adversariale
+        indépendante (2026-08-27, docs/sujets/_incoming/maths-sm-2023-n.md,
+        statut « vérifié ») : re-fetch de element/142490, extraction des cinq
+        images depuis le HTML (course-436/upload-85316/0001 à 0005-big.jpg,
+        1240×1754), lecture des pages 2 et 3 SUR L'IMAGE — jamais sur le
+        texte transcrit —, recadrages ×4 à ×20 sur chaque point litigieux
+        (glyphes cassés, exposant de R+, colonne des barèmes), et
+        re-dérivation mathématique complète de chaque « montrer que » de
+        l'énoncé. Résultat de la passe, à retenir : AUCUN défaut trouvé dans
+        le corps de l'exercice — la seule correction, hors énoncé, portait
+        sur le compte des glyphes cassés lus ≤ (cinq annoncés par une
+        première lecture, six recomptés ensuite ; l'énumération, elle, était
+        déjà juste). NOTE DE LECTURE (mojibake, portée sur CET exercice) :
+        deux des six occurrences du glyphe cassé « ,, » lu ≤ tombent ici
+        (Partie III, q2-b et q2-c) — glyphe adjugé au pixel (double virgule
+        basse « „ », posée sur la ligne de base, sans valeur informative,
+        nettement distincte du point-virgule imprimé sur la même ligne),
+        lecture forcée par l'égalité au rang n=0 de la q2-c : $|u_0-\alpha| =
+        |\beta-\alpha| = \frac{1}{2^0}|\beta-\alpha|$ est une égalité, qu'un
+        $<$ strict rendrait fausse. L'autre glyphe cassé concerné est
+        « $\beta \in$ | |$^{+}$ » (Partie III, tête de q2), confirmé
+        $\mathbb{R}^{+}$ (exposant « + » seul au zoom ×20, sans astérisque —
+        contrôle de robustesse : l'astérisque, lui, s'imprime correctement
+        ailleurs dans le même scan) et non $\mathbb{R}^{+*}$ : $\beta = 0$
+        est donc un cas admis, cohérent avec la question III-2-a qui demande
+        $u_n \geq 0$ et non $u_n > 0$. Aucune valeur numérique n'est touchée
+        par ces deux familles de glyphes cassés. Aucune figure n'est imprimée
+        dans ce sujet : la question 5-b de la Partie II demande au candidat
+        de CONSTRUIRE la courbe, sans lui en fournir aucune — absence
+        confirmée par le vérificateur sur les cinq pages du scan, pas
+        supposée. CONTRE-CALCUL INDÉPENDANT, refait pour cette conversion et
+        non recopié du fichier source : chaque encadrement, identité,
+        dérivée, limite et étude de signe des 17 questions a été redérivé
+        séparément (voir le `reasoning` de chaque question) ; aucun écart
+        trouvé avec la re-dérivation du vérificateur adversarial — en
+        particulier I-1a/I-1b (l'encadrement s'intègre exactement), II-2b/2c
+        (l'identité télescope, $f'_d(0)=-\frac32$), II-3 (l'expression de
+        $f'$ retrouvée à l'identique), II-4a (les deux écarts valent
+        $x^2(2x+3)$ et $x^3$, tous deux strictement positifs pour $x>0$), et
+        III-1/2 (existence-unicité de $\alpha$ par TVI + stricte monotonie,
+        puis majoration géométrique par le TAF). FILIÈRE — POINT CRITIQUE :
+        `source.filiere` doit valoir « SM », impérativement. Les identifiants
+        `bk-2023-n-x1` et `bk-2023-n-x2` existent déjà dans le corpus, mais
+        portés par l'épreuve SExp 2023 normale (code NS 22F,
+        element/137482) sous content/maths/geometrie-espace/bank.yaml et
+        content/maths/nombres-complexes-1/bank.yaml. Ce n'est pas un
+        conflit : les identifiants ne sont uniques qu'à l'intérieur d'un
+        `bank.yaml`, et web/src/lib/examens.ts (l. 81) groupe les épreuves
+        sur `source.{filiere, year, session}`, pas sur l'id seul — mais
+        c'est bien `filiere` qui sépare les deux épreuves de 2023 normale
+        dans cet assemblage ; le renseigner faux fusionnerait deux épreuves
+        distinctes en une, et le total sauterait au-dessus de 20. AJOUT AU
+        CORPUS : avec l'ajout jumeau de bk-2023-n-x2 (Exercice 2) dans
+        content/maths/calcul-integral/bank.yaml, cette conversion fait
+        passer l'épreuve SM 2023 normale de 10,00/20 (les trois exercices
+        d'algèbre — nombres complexes, arithmétique, structures algébriques
+        — déjà en banque) à 20,00/20, complète, dans Examens blancs.
+    intro: |-
+      **Problème d'analyse (examen national, Sciences Mathématiques, session normale 2023 — Exercice 1, 7,75 points).**
+
+      *L'épreuve dure 4 heures et comporte cinq exercices indépendants, traitables dans l'ordre choisi par le candidat. Cet exercice à lui seul pèse près de 40 % du barème. L'usage de la calculatrice n'est pas autorisé.*
+
+      **Partie I.** On encadre $\dfrac{1}{1+t}$ entre deux expressions simples, puis on intègre cet encadrement sur $[0,x]$ pour obtenir un encadrement de $\ln(1+x)$ — dont on tire une première limite.
+
+      **Partie II.** On construit $f(x) = g(x)\,e^{-x}$ à partir de $g(x) = \dfrac{\ln(1+x)}{x}$, avec $f(0)=1$ posé par prolongement, et on étudie $f$ en entier sur $[0,+\infty[$ : limite en $+\infty$, continuité et dérivabilité à droite en $0$, dérivée sur $]0,+\infty[$, encadrement de cette dérivée, tableau de variations, courbe $(C)$.
+
+      **Partie III.** On montre que l'équation $f(x)=3x$ admet une unique solution $\alpha$ dans $]0,+\infty[$, puis on construit une suite $(u_n)$ par $u_0=\beta \in \mathbb{R}^{+}$ et $u_{n+1} = \dfrac13 f(u_n)$, et on démontre qu'elle converge vers $\alpha$ — avec une vitesse de convergence explicite, géométrique de raison $\dfrac12$.
+
+      *Aucune figure n'accompagne ce sujet : la question 5-b de la Partie II demande au candidat de construire la courbe lui-même, sans lui en fournir aucune. La carte des domaines, pour savoir quoi réviser avant : cette leçon (fonction-logarithme) porte l'ossature — les encadrements, la propriété du logarithme, la limite de référence $\dfrac{\ln x}{x}\to 0$ — mais Partie I-2 et Partie II-1/2-a empruntent aux limites et à la continuité, Partie II-2-c à II-5 à la dérivabilité et à l'étude de fonctions (dont le facteur $e^{-x}$ mobilise aussi la fonction exponentielle), Partie III-1 au théorème des valeurs intermédiaires (dérivabilité), et Partie III-2 aux suites numériques — avec, pour la seule majoration géométrique de la question 2-b, le théorème des accroissements finis, énoncé et appliqué au moment précis où il sert, jamais supposé acquis. Le fil qui traverse tout le problème : chaque limite délicate se résout en encadrant d'abord, jamais en devinant.*
+    questions:
+      - id: q1a
+        part: "Partie I — 1. Encadrer 1/(1+t), puis ln(1 + x)"
+        stem: |-
+          **1- a)** (0,5 pt) Montrer que : $\forall t \in [0, +\infty[\ ;\quad \dfrac{4}{(2+t)^2} \le \dfrac{1}{1+t} \le \dfrac{1}{2}\left(1 + \dfrac{1}{(1+t)^2}\right)$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux inégalités à établir, et elles ne demandent ni dérivée ni étude de fonction : les trois membres sont des fractions, donc le réflexe est de comparer par équivalence, en multipliant par des quantités qu'on sait positives. C'est la question la plus « gratuite » de tout le problème — mais elle porte tout le reste, comme on le verra dès la question suivante.
+
+          **L'inégalité de gauche.** Pour $t \geq 0$, les trois quantités $(2+t)^2$, $1+t$ et leur produit sont strictement positives : multiplier les deux membres par $(2+t)^2(1+t)$ conserve le sens de l'inégalité.
+
+          $$\frac{4}{(2+t)^2} \le \frac{1}{1+t} \iff 4(1+t) \le (2+t)^2$$
+
+          Développe le membre de droite : $(2+t)^2 = 4+4t+t^2$. L'inégalité devient $4+4t \le 4+4t+t^2$, c'est-à-dire $0 \le t^2$ — vraie pour tout réel $t$, en particulier sur $[0,+\infty[$, avec égalité seulement en $t=0$.
+
+          **L'inégalité de droite, avec un changement de regard.** Pose $u = \dfrac{1}{1+t}$. Comme $t \in [0,+\infty[$, on a $1+t \in [1,+\infty[$, donc $u \in\ ]0,1]$. L'inégalité à montrer devient, en remplaçant :
+
+          $$u \le \frac12\left(1+u^2\right) \iff 2u \le 1+u^2 \iff 0 \le u^2-2u+1 \iff 0 \le (1-u)^2$$
+
+          — vraie pour tout réel $u$, donc en particulier sur $]0,1]$, avec égalité seulement en $u=1$, c'est-à-dire $t=0$.
+
+          **Conclusion.** Les deux inégalités tiennent sur $[0,+\infty[$ tout entier, chacune devenant une égalité exactement en $t=0$ — et nulle part ailleurs. Retiens ce détail : il va resservir en Partie II pour justifier une borne « atteinte », pas seulement approchée.
+
+          **Le piège nommé de cette question.** Vouloir dériver une fonction $t \mapsto \dfrac{1}{1+t} - \dfrac{4}{(2+t)^2}$ pour en étudier le signe. C'est possible, mais beaucoup plus long qu'une simple mise au même dénominateur ou qu'un changement de variable bien choisi — et sur une question à $0{,}5$ point, le temps gagné ici finance les questions plus lourdes de la Partie II.
+        steps:
+          - math: '\dfrac{4}{(2+t)^2} \le \dfrac{1}{1+t} \iff 4(1+t) \le (2+t)^2 \iff 0 \le t^2'
+            note: "Multiplication par (2+t) au carre fois (1+t), toutes deux strictement positives : le sens de l'inegalite est conserve."
+          - math: 'u = \dfrac{1}{1+t} \in\ ]0,1] \quad\text{et}\quad \dfrac{1}{1+t} \le \dfrac12\left(1+\dfrac{1}{(1+t)^2}\right) \iff 0 \le (1-u)^2'
+            note: "Changement de variable u = 1/(1+t) : l'inegalite se ramene a un carre, toujours positif ou nul."
+          - math: '\forall t \in [0,+\infty[\ ;\quad \dfrac{4}{(2+t)^2} \le \dfrac{1}{1+t} \le \dfrac12\left(1+\dfrac{1}{(1+t)^2}\right)'
+            note: "Les deux inegalites tiennent sur tout [0, plus infini[, egalite aux deux bouts seulement en t = 0."
+      - id: q1b
+        stem: |-
+          **1- b)** (0,5 pt) En déduire que : $\forall x \in [0, +\infty[\ ;\quad \dfrac{2x}{2+x} \le \ln(1+x) \le \dfrac{1}{2}\left(\dfrac{x^2+2x}{1+x}\right)$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » interdit de repartir de zéro : il faut **intégrer** l'encadrement de la question précédente. Le signal est dans la forme même du résultat demandé — $\ln(1+x)$ apparaît, et $\ln(1+x) = \displaystyle\int_0^x \dfrac{dt}{1+t}$ est exactement le terme central de la question 1-a, intégré entre $0$ et $x$.
+
+          **La condition à vérifier avant d'intégrer.** Les bornes doivent être dans l'ordre : ici $0 \le x$ pour $x \in [0,+\infty[$, ce qui est acquis. On peut donc intégrer les trois membres de l'encadrement de 1-a sur $[0,x]$, terme à terme.
+
+          **Le terme de gauche.** Une primitive de $\dfrac{4}{(2+t)^2}$ est $-\dfrac{4}{2+t}$ :
+
+          $$\int_0^x \frac{4}{(2+t)^2}\,dt = \left[-\frac{4}{2+t}\right]_0^x = -\frac{4}{2+x} + 2 = \frac{2(2+x)-4}{2+x} = \frac{2x}{2+x}$$
+
+          **Le terme du milieu.** C'est la définition même de $\ln$ :
+
+          $$\int_0^x \frac{dt}{1+t} = \bigl[\ln(1+t)\bigr]_0^x = \ln(1+x) - \ln(1) = \ln(1+x)$$
+
+          **Le terme de droite.** On sépare la somme :
+
+          $$\int_0^x \frac12\left(1+\frac{1}{(1+t)^2}\right)dt = \frac12\left[t - \frac{1}{1+t}\right]_0^x = \frac12\left(x - \frac{1}{1+x} + 1\right) = \frac12 \cdot \frac{x(1+x) + (1+x) - 1}{1+x} = \frac12\cdot\frac{x^2+2x}{1+x}$$
+
+          **Conclusion.** L'intégration de l'encadrement de 1-a donne exactement l'encadrement demandé :
+
+          $$\boxed{\forall x \in [0,+\infty[\ ;\quad \frac{2x}{2+x} \le \ln(1+x) \le \frac12\cdot\frac{x^2+2x}{1+x}}$$
+
+          **Le contrôle qui rassure.** En $x=0$ : les trois membres valent $0$ — cohérent, puisque l'intégrale sur $[0,0]$ est nulle. Et l'encadrement de 1-a était taillé pour produire, une fois intégré, exactement cette forme-ci — c'est pour cela qu'il fallait la démontrer sous cette forme précise et pas une autre.
+
+          **Le piège nommé de cette question.** Refaire l'étude de signe d'une différence, en oubliant que l'énoncé vient de fournir, une question plus tôt, exactement l'outil à intégrer. « En déduire » n'est jamais une invitation à repartir de zéro.
+        steps:
+          - math: '\int_0^x \frac{4}{(2+t)^2}\,dt = \left[-\frac{4}{2+t}\right]_0^x = \frac{2x}{2+x}'
+            note: "Primitive de 4/(2+t) au carre : -4/(2+t). Evaluee entre 0 et x."
+          - math: '\int_0^x \frac{dt}{1+t} = \bigl[\ln(1+t)\bigr]_0^x = \ln(1+x)'
+            note: "Definition meme du logarithme comme primitive de 1/(1+t) qui s'annule en 0."
+          - math: '\int_0^x \frac12\left(1+\frac{1}{(1+t)^2}\right)dt = \frac12\left[t-\frac{1}{1+t}\right]_0^x = \frac12\cdot\frac{x^2+2x}{1+x}'
+            note: "On integre la somme terme a terme, puis on met au meme denominateur."
+          - math: '\forall x \in [0,+\infty[\ ;\quad \frac{2x}{2+x} \le \ln(1+x) \le \frac12\cdot\frac{x^2+2x}{1+x}'
+            note: "Integration de l'encadrement de 1-a entre 0 et x, bornes dans l'ordre 0 <= x."
+      - id: q2
+        part: "Partie I — 2. Une premiere limite, tiree de l'encadrement"
+        stem: |-
+          **2)** (0,5 pt) Soit $g$ la fonction numérique de la variable réelle $x$ définie sur $]0, +\infty[$ par $g(x) = \dfrac{\ln(1+x)}{x}$. Montrer que : $\displaystyle\lim_{\substack{x \to 0 \\ x > 0}} \frac{g(x) - 1}{x} = \frac{-1}{2}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Regarde ce qui se passe si tu essaies de calculer cette limite directement : $g(x) \to 1$ quand $x \to 0^+$ (limite classique de $\ln(1+x)/x$), donc $g(x)-1 \to 0$, et le dénominateur $x \to 0$ aussi. C'est une **forme indéterminée $\frac{0}{0}$** — exactement le genre de limite que l'encadrement de la question 1-b a été construit pour résoudre, sans jamais poser de dérivée.
+
+          **On divise l'encadrement de 1-b par $x$**, strictement positif ici, ce qui conserve le sens des inégalités :
+
+          $$\frac{2x}{2+x} \le \ln(1+x) \le \frac12\cdot\frac{x^2+2x}{1+x}
+          \quad\Longrightarrow\quad
+          \frac{2}{2+x} \le \frac{\ln(1+x)}{x} \le \frac12\cdot\frac{x+2}{1+x}$$
+
+          c'est-à-dire $\dfrac{2}{2+x} \le g(x) \le \dfrac12\cdot\dfrac{x+2}{1+x}$.
+
+          **On soustrait $1$ à chaque membre**, pour faire apparaître $g(x)-1$ :
+
+          $$\frac{2}{2+x}-1 = \frac{2-(2+x)}{2+x} = \frac{-x}{2+x}
+          \qquad\text{et}\qquad
+          \frac12\cdot\frac{x+2}{1+x}-1 = \frac{(x+2)-2(1+x)}{2(1+x)} = \frac{-x}{2(1+x)}$$
+
+          donc $\dfrac{-x}{2+x} \le g(x)-1 \le \dfrac{-x}{2(1+x)}$.
+
+          **On divise par $x>0$** une dernière fois, ce qui conserve toujours le sens :
+
+          $$\boxed{-\frac{1}{2+x} \le \frac{g(x)-1}{x} \le -\frac{1}{2(1+x)}}$$
+
+          **Le passage à la limite.** Quand $x \to 0^+$ : la borne de gauche $-\dfrac{1}{2+x} \to -\dfrac12$, et la borne de droite $-\dfrac{1}{2(1+x)} \to -\dfrac12$. Les deux bornes convergent vers la **même** valeur : le théorème des gendarmes s'applique et force le milieu à converger aussi :
+
+          $$\lim_{\substack{x \to 0\\ x>0}} \frac{g(x)-1}{x} = -\frac12$$
+
+          **Ce qui est réellement établi, et qu'il faut garder pour la Partie II.** Ce quotient est le taux d'accroissement de $g$ entre $0$ et $x$, **si l'on prolonge $g$ par $g(0)=1$** (ce que sa limite en $0$ autorise). Cette limite dit donc que $g$, ainsi prolongée, serait dérivable en $0$ avec un « nombre dérivé » de $-\dfrac12$ — un résultat qui va resservir tel quel dans la question II-2-c.
+
+          **Le piège nommé de cette question.** Essayer une limite « à vue » du type $\ln(1+x) \approx x - \frac{x^2}{2}$ (développement limité). C'est correct mathématiquement mais **hors programme de 2ᵉ Bac** et hors de ce que le barème attend : la voie imposée par l'énoncé — encadrer, diviser, gendarmes — ne demande aucun outil au-delà du cours, et c'est elle qui rapporte les points.
+        steps:
+          - math: '\frac{2x}{2+x} \le \ln(1+x) \le \frac12\cdot\frac{x^2+2x}{1+x} \ \Big/\ x \ \Longrightarrow\ \frac{2}{2+x} \le g(x) \le \frac12\cdot\frac{x+2}{1+x}'
+            note: "Encadrement de la question 1-b divise par x, positif : le sens des inegalites est conserve."
+          - math: '\frac{2}{2+x}-1 = \frac{-x}{2+x} \qquad\text{et}\qquad \frac12\cdot\frac{x+2}{1+x}-1 = \frac{-x}{2(1+x)}'
+            note: "On soustrait 1 aux deux bornes pour faire apparaitre g(x) moins 1."
+          - math: '-\frac{1}{2+x} \le \frac{g(x)-1}{x} \le -\frac{1}{2(1+x)}'
+            note: "Division par x, positif, une derniere fois."
+          - math: '\lim_{x\to 0^+} -\frac{1}{2+x} = -\frac12 \quad\text{et}\quad \lim_{x\to 0^+} -\frac{1}{2(1+x)} = -\frac12 \ \Longrightarrow\ \lim_{x\to 0^+}\frac{g(x)-1}{x} = -\frac12'
+            note: "Les deux bornes convergent vers la meme valeur : theoreme des gendarmes."
+      - id: q3
+        part: "Partie II — 1. La fonction f = g fois e puissance moins x, limite en +infini"
+        stem: |-
+          **1)** (0,5 pt) Soit $f$ la fonction numérique de la variable réelle $x$ définie sur $[0, +\infty[$ par $f(0) = 1$ et $\forall x \in\, ]0, +\infty[\ ;\ f(x) = g(x)\,e^{-x}$. On note $(C)$ sa courbe représentative. Calculer $\displaystyle\lim_{x \to +\infty} f(x)$ puis interpréter graphiquement le résultat obtenu.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $f$ est un produit de deux facteurs, $g(x)$ et $e^{-x}$ : le réflexe est de regarder la limite de chacun séparément avant de les combiner.
+
+          **La limite de $g(x)$ en $+\infty$.** Pose $t = 1+x$ : quand $x \to +\infty$, $t \to +\infty$ aussi, et
+
+          $$g(x) = \frac{\ln(1+x)}{x} = \frac{\ln t}{t-1} = \frac{\ln t}{t}\cdot\frac{t}{t-1}$$
+
+          Le premier facteur, $\dfrac{\ln t}{t}$, tend vers $0$ : c'est **la** limite de référence du chapitre (R4 de cette leçon), celle qui dit que $\ln$ grossit indéfiniment mais infiniment plus lentement que $t$. Le second facteur, $\dfrac{t}{t-1}$, tend vers $1$. Le produit tend donc vers $0 \times 1 = 0$ :
+
+          $$\lim_{x\to+\infty} g(x) = 0$$
+
+          **La limite de $e^{-x}$ en $+\infty$.** C'est une limite de référence de la fonction exponentielle (domaine « fonction-exponentielle », hors du corps de cette leçon) : $e^{-x} = \dfrac{1}{e^x}$, et $e^x \to +\infty$, donc $e^{-x} \to 0$.
+
+          **Le produit.** Les deux facteurs tendent tous deux vers $0$ : ce n'est **pas** une forme indéterminée — $0 \times 0$ se calcule directement, sans détour, contrairement à $0 \times \infty$.
+
+          $$\boxed{\lim_{x\to+\infty} f(x) = 0 \times 0 = 0}$$
+
+          **L'interprétation graphique.** $f(x)$ tend vers une constante finie ($0$) quand $x \to +\infty$ : la courbe $(C)$ admet la droite d'équation $y=0$, c'est-à-dire **l'axe des abscisses**, comme **asymptote horizontale** au voisinage de $+\infty$.
+
+          **Le piège nommé de cette question.** Écrire « $0 \times 0$, forme indéterminée » par réflexe, en confondant avec $0\times\infty$. Un produit de deux facteurs qui tendent chacun vers $0$ tend vers $0$ — il n'y a ici strictement aucune indétermination, et vouloir en chercher une fait perdre du temps sur une question à $0{,}5$ point.
+        steps:
+          - math: 'g(x) = \frac{\ln(1+x)}{x} = \frac{\ln t}{t}\cdot\frac{t}{t-1} \qquad (t = 1+x,\ t\to+\infty)'
+            note: "Changement de variable t = 1+x pour retomber sur la limite de reference ln(t)/t."
+          - math: '\lim_{t\to+\infty}\frac{\ln t}{t} = 0 \ (\text{R4 de cette lecon}), \qquad \lim_{t\to+\infty}\frac{t}{t-1}=1 \ \Longrightarrow\ \lim_{x\to+\infty} g(x) = 0'
+            note: "Limite de reference du chapitre, pas un emprunt : R4 de fonction-logarithme."
+          - math: '\lim_{x\to+\infty} e^{-x} = 0 \quad (\text{fonction exponentielle})'
+            note: "e puissance moins x est l'inverse de e puissance x, qui tend vers plus l'infini."
+          - math: '\lim_{x\to+\infty} f(x) = \lim_{x\to+\infty} g(x)\,e^{-x} = 0\times 0 = 0 \quad (\text{aucune indetermination})'
+            note: "Produit de deux facteurs tendant chacun vers 0 : resultat direct, pas de forme 0 fois l'infini."
+          - math: '(C) \text{ admet la droite } y=0 \text{ pour asymptote horizontale en } +\infty'
+            note: "Limite finie (0) en plus l'infini : lecture graphique directe."
+      - id: q4a
+        part: "Partie II — 2. Continuite et derivabilite a droite en 0"
+        stem: |-
+          **2- a)** (0,25 pt) Montrer que $f$ est continue à droite en $0$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Continue à droite en $0$ signifie $\displaystyle\lim_{x\to 0^+} f(x) = f(0) = 1$. On dispose déjà, de la question I-1-b (divisée par $x$ comme en I-2), d'un encadrement de $g(x)$ valable pour tout $x>0$ : $\dfrac{2}{2+x} \le g(x) \le \dfrac12\cdot\dfrac{x+2}{1+x}$.
+
+          **La limite de $g$ en $0^+$, par gendarmes.** Quand $x\to 0^+$ : la borne de gauche $\dfrac{2}{2+x}\to \dfrac22=1$, la borne de droite $\dfrac12\cdot\dfrac{x+2}{1+x}\to \dfrac12\cdot 2 = 1$. Les deux bornes convergent vers $1$ :
+
+          $$\lim_{x\to 0^+} g(x) = 1$$
+
+          **La limite de $e^{-x}$ en $0^+$.** $\exp$ est continue en $0$ (propriété de la fonction exponentielle), donc $e^{-x} \to e^0 = 1$.
+
+          **Le produit.** Deux facteurs convergents, produit des limites, aucune indétermination :
+
+          $$\lim_{x\to 0^+} f(x) = \lim_{x\to 0^+} g(x)\cdot e^{-x} = 1\times 1 = 1 = f(0)$$
+
+          $f$ est donc continue à droite en $0$.
+
+          **Une seconde route, plus rapide, qui réutilise la question I-2.** La question I-2 a montré que $\dfrac{g(x)-1}{x} \to -\dfrac12$, une limite **finie**. Donc $g(x)-1 = x \cdot \dfrac{g(x)-1}{x} \to 0 \times \left(-\dfrac12\right) = 0$, c'est-à-dire $g(x)\to 1$ directement — sans repasser par l'encadrement. Les deux voies sont valables ; la seconde montre que rien, dans ce problème, n'est isolé.
+
+          **Le piège nommé de cette question.** Invoquer « $g$ est continue comme quotient de fonctions continues » sans remarquer que $g$ n'est **pas définie en $0$** : son domaine est $]0,+\infty[$. Ce qu'on montre ici n'est pas la continuité de $g$ en un point de son domaine, mais l'existence d'une limite qui permet de **prolonger** $f$ par continuité — c'est tout le sens du $f(0)=1$ posé par l'énoncé.
+        steps:
+          - math: '\frac{2}{2+x} \le g(x) \le \frac12\cdot\frac{x+2}{1+x} \ \xrightarrow[x\to 0^+]{} \ 1 \le \lim g(x) \le 1 \ \Longrightarrow\ \lim_{x\to 0^+} g(x) = 1'
+            note: "Meme encadrement qu'a la question I-2, gendarmes en 0."
+          - math: '\lim_{x\to 0^+} e^{-x} = e^{0} = 1 \quad (\text{continuite de exp en 0})'
+            note: "Fonction exponentielle continue partout, en particulier en 0."
+          - math: '\lim_{x\to 0^+} f(x) = 1\times 1 = 1 = f(0) \ \Longrightarrow\ f \text{ continue a droite en } 0'
+            note: "Produit de deux limites finies, aucune indetermination."
+      - id: q4b
+        stem: |-
+          **2- b)** (0,25 pt) Vérifier que : $\forall x \in\, ]0, +\infty[\ ;\quad \dfrac{f(x)-1}{x} = \left(\dfrac{e^{-x}-1}{x}\right)g(x) + \left(\dfrac{g(x)-1}{x}\right)$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une identité algébrique pure, sans limite ni inégalité : elle sert à **préparer** la question 2-c, en cassant le taux d'accroissement de $f$ en deux morceaux dont chacun a déjà une limite connue.
+
+          **Le développement du membre de droite.** Mets tout au même dénominateur $x$ :
+
+          $$\left(\frac{e^{-x}-1}{x}\right)g(x) + \frac{g(x)-1}{x} = \frac{(e^{-x}-1)g(x) + g(x)-1}{x}$$
+
+          **Le développement du numérateur.** Distribue $(e^{-x}-1)g(x) = e^{-x}g(x) - g(x)$ :
+
+          $$(e^{-x}-1)g(x) + g(x) - 1 = e^{-x}g(x) - g(x) + g(x) - 1 = e^{-x}g(x) - 1$$
+
+          Le terme $-g(x)$ et le terme $+g(x)$ s'annulent exactement — c'est un **télescopage**, et c'est le cœur de l'identité.
+
+          **La conclusion.** Il reste $e^{-x}g(x) - 1$, et par définition $f(x) = g(x)e^{-x}$ pour $x>0$ :
+
+          $$\frac{(e^{-x}-1)g(x) + g(x)-1}{x} = \frac{e^{-x}g(x) - 1}{x} = \frac{f(x)-1}{x}$$
+
+          $$\boxed{\forall x \in\, ]0,+\infty[\ ;\quad \frac{f(x)-1}{x} = \left(\frac{e^{-x}-1}{x}\right)g(x) + \frac{g(x)-1}{x}}$$
+
+          **Pourquoi cette décomposition précisément.** Le taux d'accroissement de $f$ en $0$ n'est calculable ni par une formule directe (pas de règle de dérivation d'un produit-composé en un point où l'un des facteurs n'est défini que par prolongement), ni par un DL hors-programme. La décomposer en deux morceaux, dont chacun est **une limite déjà établie** ailleurs dans le problème (l'un une limite de référence de l'exponentielle, l'autre le résultat de la question I-2), est exactement ce qui rend la question 2-c immédiate.
+
+          **Le piège nommé de cette question.** Partir du membre de gauche $\dfrac{f(x)-1}{x}$ et essayer de le « scinder » sans passer par le développement du membre de droite : c'est plus risqué, parce que rien n'indique a priori **où** couper. Partir du membre le plus compliqué (ici la somme de droite) et le simplifier est presque toujours plus sûr que l'inverse.
+        steps:
+          - math: '\left(\frac{e^{-x}-1}{x}\right)g(x) + \frac{g(x)-1}{x} = \frac{(e^{-x}-1)g(x) + g(x) - 1}{x}'
+            note: "Meme denominateur x pour les deux termes."
+          - math: '(e^{-x}-1)g(x) + g(x) - 1 = e^{-x}g(x) - g(x) + g(x) - 1 = e^{-x}g(x) - 1'
+            note: "Telescopage : le moins g(x) et le plus g(x) s'annulent."
+          - math: '\frac{e^{-x}g(x)-1}{x} = \frac{f(x)-1}{x} \quad (\text{car } f(x)=g(x)e^{-x} \text{ pour } x>0)'
+            note: "On reconnait f(x) dans e puissance moins x fois g(x), par definition de f."
+      - id: q4c
+        stem: |-
+          **2- c)** (0,5 pt) En déduire que $f$ est dérivable à droite en $0$ et déterminer $f'_d(0)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $f$ dérivable à droite en $0$ signifie que $\displaystyle\lim_{x\to 0^+} \dfrac{f(x)-f(0)}{x} = \lim_{x\to 0^+}\dfrac{f(x)-1}{x}$ existe et est finie. Grâce à l'identité de la question 2-b, il suffit de calculer la limite de **chaque morceau** de la somme.
+
+          **Le premier morceau : $\dfrac{e^{-x}-1}{x}$.** Quand $x\to 0$, $e^{-x}-1 \to 0$ et $x\to 0$ : c'est une **forme indéterminée $\frac00$**, résolue par une limite de référence de la fonction exponentielle. En posant $h=-x$ :
+
+          $$\frac{e^{-x}-1}{x} = \frac{e^h-1}{-h} = -\frac{e^h-1}{h} \xrightarrow[h\to 0]{} -1$$
+
+          car $\dfrac{e^h-1}{h}\to 1$ quand $h\to 0$ (limite de référence, domaine fonction-exponentielle). Donc $\dfrac{e^{-x}-1}{x} \to -1$.
+
+          **Le second morceau : $g(x)$.** Établi à la question 2-a : $g(x) \to 1$ quand $x\to 0^+$.
+
+          **Le troisième morceau : $\dfrac{g(x)-1}{x}$.** C'est **exactement** le résultat de la question I-2 : $\to -\dfrac12$.
+
+          **On assemble, par produit puis somme de limites finies :**
+
+          $$\lim_{x\to 0^+} \frac{f(x)-1}{x} = \left(\lim \frac{e^{-x}-1}{x}\right)\cdot\left(\lim g(x)\right) + \lim\frac{g(x)-1}{x} = (-1)\times 1 + \left(-\frac12\right) = -\frac32$$
+
+          Cette limite existe et est finie : $f$ est donc **dérivable à droite en $0$**, et
+
+          $$\boxed{f'_d(0) = -\frac32}$$
+
+          **La cohérence à vérifier, et qui vaut d'être notée.** Cette valeur, $-\dfrac32$, va réapparaître comme la borne **atteinte** de l'encadrement de $f'$ établi à la question 4-b : ce n'est pas une coïncidence, c'est le même objet regardé depuis deux questions différentes — le nombre dérivé en $0$ prolonge continûment la dérivée sur $]0,+\infty[$.
+
+          **Le piège nommé de cette question.** Oublier qu'un des trois facteurs de l'identité de 2-b est un **produit** de limites ($\frac{e^{-x}-1}{x}$ fois $g(x)$) et l'autre une **somme** — mélanger les deux opérations dans le calcul final change le résultat. Relis l'identité de 2-b terme à terme avant d'assembler.
+        steps:
+          - math: '\frac{e^{-x}-1}{x} \xrightarrow[x\to 0]{} -1 \quad (\text{forme } \tfrac00,\ \text{limite de reference } \tfrac{e^h-1}{h}\to 1)'
+            note: "Changement de variable h = -x, ramene a la limite de reference de exp en 0."
+          - math: '\lim_{x\to 0^+} g(x) = 1 \ (\text{question 2-a}), \qquad \lim_{x\to 0^+}\frac{g(x)-1}{x} = -\frac12 \ (\text{question I-2})'
+            note: "Deux limites deja etablies plus haut dans le probleme, reutilisees telles quelles."
+          - math: '\lim_{x\to 0^+}\frac{f(x)-1}{x} = (-1)\times 1 + \left(-\frac12\right) = -\frac32'
+            note: "Identite de la question 2-b : produit des deux premieres limites, plus la troisieme."
+          - math: '\boxed{f \text{ derivable a droite en } 0, \quad f''_d(0) = -\frac32}'
+            note: "Limite finie du taux d'accroissement : la derivabilite a droite est acquise, avec ce nombre derive."
+      - id: q5
+        part: "Partie III — 3. Derivabilite sur ]0, plus infini[ et formule de f'"
+        stem: |-
+          **3)** (0,75 pt) Montrer que $f$ est dérivable sur $]0, +\infty[$ puis que : $\forall x \in\, ]0, +\infty[\ ;\quad f'(x) = \dfrac{x - (1+x)^2\ln(1+x)}{x^2(1+x)}\,e^{-x}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Trois quarts de point pour deux tâches : justifier la dérivabilité, puis dériver et **factoriser jusqu'à la forme imprimée** — cette dernière étape n'est pas cosmétique, c'est elle qui rendra l'étude de signe de la question 4-a possible.
+
+          **La dérivabilité, en une phrase.** Sur $]0,+\infty[$ : $g(x) = \dfrac{\ln(1+x)}{x}$ est un quotient de deux fonctions dérivables (numérateur $\ln(1+x)$, dérivable car $1+x>0$ ; dénominateur $x$, dérivable, non nul), donc $g$ y est dérivable ; $x \mapsto e^{-x}$ est dérivable sur $\mathbb{R}$. $f = g \cdot e^{-x}$ est le **produit** de deux fonctions dérivables sur $]0,+\infty[$ : elle y est donc dérivable.
+
+          **La dérivée de $g$, d'abord.** Avec $u=\ln(1+x)$, $u'=\dfrac{1}{1+x}$, et $v=x$, $v'=1$ :
+
+          $$g'(x) = \frac{u'v-uv'}{v^2} = \dfrac{\dfrac{x}{1+x} - \ln(1+x)}{x^2}$$
+
+          **La dérivée de $f = g\cdot e^{-x}$, par la règle du produit.**
+
+          $$f'(x) = g'(x)e^{-x} + g(x)\cdot(-e^{-x}) = e^{-x}\bigl(g'(x)-g(x)\bigr)$$
+
+          **Le calcul de $g'(x)-g(x)$, sur le même dénominateur $x^2$.**
+
+          $$g'(x) - g(x) = \frac{\dfrac{x}{1+x}-\ln(1+x)}{x^2} - \frac{\ln(1+x)}{x} = \frac{\dfrac{x}{1+x}-\ln(1+x) - x\ln(1+x)}{x^2}$$
+
+          Regroupe les deux termes en $\ln(1+x)$ : $-\ln(1+x) - x\ln(1+x) = -(1+x)\ln(1+x)$ :
+
+          $$g'(x)-g(x) = \frac{\dfrac{x}{1+x} - (1+x)\ln(1+x)}{x^2}$$
+
+          **La mise au même dénominateur final**, en multipliant le numérateur et le dénominateur par $(1+x)$ :
+
+          $$g'(x)-g(x) = \frac{x - (1+x)^2\ln(1+x)}{x^2(1+x)}$$
+
+          **La conclusion.**
+
+          $$\boxed{f'(x) = e^{-x}\bigl(g'(x)-g(x)\bigr) = \frac{x-(1+x)^2\ln(1+x)}{x^2(1+x)}\,e^{-x}}$$
+
+          C'est exactement l'expression imprimée par l'énoncé.
+
+          **Le piège nommé de cette question.** Oublier le signe moins dans $f'=g'e^{-x} - g\,e^{-x}$ (dérivée de $e^{-x}$, qui vaut $-e^{-x}$ et non $e^{-x}$) — l'erreur la plus fréquente sur une dérivée de produit avec exponentielle décroissante. Le second piège : s'arrêter à la somme $g'(x)e^{-x}-g(x)e^{-x}$ sans la factoriser par $e^{-x}$ puis réduire au même dénominateur — la forme non réduite est juste, mais ce n'est pas celle que demande l'énoncé, et une question « montrer que » exige la forme imposée.
+        steps:
+          - math: 'g''(x) = \frac{\frac{x}{1+x}-\ln(1+x)}{x^2} \qquad (\text{quotient}, u=\ln(1+x),\ v=x)'
+            note: "Regle du quotient appliquee a g = ln(1+x) sur x."
+          - math: 'f''(x) = g''(x)e^{-x} + g(x)\left(-e^{-x}\right) = e^{-x}\bigl(g''(x)-g(x)\bigr)'
+            note: "Regle du produit pour f = g fois e puissance moins x ; derivee de e puissance moins x = moins e puissance moins x."
+          - math: 'g''(x)-g(x) = \frac{\frac{x}{1+x}-\ln(1+x)}{x^2} - \frac{\ln(1+x)}{x} = \frac{\frac{x}{1+x}-(1+x)\ln(1+x)}{x^2}'
+            note: "Meme denominateur x au carre ; les deux termes en ln(1+x) se regroupent."
+          - math: 'g''(x)-g(x) = \frac{x-(1+x)^2\ln(1+x)}{x^2(1+x)}'
+            note: "On multiplie numerateur et denominateur par (1+x) pour eliminer la fraction imbriquee."
+          - math: '\boxed{f''(x) = \frac{x-(1+x)^2\ln(1+x)}{x^2(1+x)}\,e^{-x}}'
+            note: "Forme exactement imprimee par l'enonce, prete pour l'etude de signe de la question 4."
+      - id: q6a
+        part: "Partie II — 4. Encadrement de f', entre -3/2 et 0"
+        stem: |-
+          **4- a)** (0,5 pt) Montrer que : $\forall x \in\, ]0, +\infty[\ ;\quad -\dfrac{3}{2} < \dfrac{x - (1+x)^2\ln(1+x)}{x^2(1+x)} < 0$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Note $\varphi(x) = \dfrac{x-(1+x)^2\ln(1+x)}{x^2(1+x)}$, le facteur entre parenthèses de la question 3. Deux inégalités à établir, et **chacune sort d'une seule des deux bornes** de l'encadrement I-1-b — c'est pour cela que I-1-b avait été démontré à double sens.
+
+          **La majoration $\varphi(x)<0$.** Comme $x^2(1+x)>0$ pour $x>0$, il suffit de montrer $x-(1+x)^2\ln(1+x) < 0$, c'est-à-dire $\ln(1+x) > \dfrac{x}{(1+x)^2}$. La borne **gauche** de I-1-b donne $\ln(1+x) \ge \dfrac{2x}{2+x}$ ; il suffit donc de comparer $\dfrac{2x}{2+x}$ à $\dfrac{x}{(1+x)^2}$ :
+
+          $$\frac{2x}{2+x} - \frac{x}{(1+x)^2} = \frac{2x(1+x)^2 - x(2+x)}{(2+x)(1+x)^2} = \frac{x\bigl[2(1+x)^2-(2+x)\bigr]}{(2+x)(1+x)^2}$$
+
+          Développe le crochet : $2(1+2x+x^2)-(2+x) = 2+4x+2x^2-2-x = 3x+2x^2 = x(2x+3)$. Donc :
+
+          $$\frac{2x}{2+x} - \frac{x}{(1+x)^2} = \frac{x^2(2x+3)}{(2+x)(1+x)^2} > 0 \quad (x>0)$$
+
+          tous les facteurs étant strictement positifs. Donc $\dfrac{2x}{2+x} > \dfrac{x}{(1+x)^2}$, et comme $\ln(1+x) \ge \dfrac{2x}{2+x}$ : $\ln(1+x) > \dfrac{x}{(1+x)^2}$, **strictement**. D'où $\varphi(x)<0$.
+
+          **La minoration $\varphi(x)>-\dfrac32$.** Il faut $x-(1+x)^2\ln(1+x) > -\dfrac32 x^2(1+x)$, c'est-à-dire $(1+x)^2\ln(1+x) < x + \dfrac32 x^2(1+x)$. La borne **droite** de I-1-b donne $\ln(1+x) \le \dfrac12\cdot\dfrac{x^2+2x}{1+x}$, donc $(1+x)^2\ln(1+x) \le (1+x)\cdot\dfrac{x(x+2)}{2}$. Reste à comparer ce majorant à $x+\dfrac32 x^2(1+x)$ :
+
+          $$x+\frac32 x^2(1+x) - \frac{x(x+2)(1+x)}{2} = x\left[1 + \frac32 x(1+x) - \frac{(x+2)(1+x)}{2}\right]$$
+
+          Développe le crochet sur dénominateur $2$ : $2 + 3x(1+x) - (x+2)(1+x) = (1+x)\bigl[3x-(x+2)\bigr]+2 = (1+x)(2x-2)+2$. Or $(1+x)(2x-2) = 2x^2-2 = 2(x^2-1)$, donc le crochet vaut $\dfrac{2(x^2-1)+2}{2} = x^2$. Donc :
+
+          $$x+\frac32 x^2(1+x) - \frac{x(x+2)(1+x)}{2} = x\times x^2 = x^3 > 0 \quad (x>0)$$
+
+          Donc $(1+x)^2\ln(1+x) \le \dfrac{x(x+2)(1+x)}{2} < x+\dfrac32 x^2(1+x)$, l'écart de $x^3$ rendant l'inégalité finale **strictement** vraie même si la première étape n'était que large. D'où $\varphi(x) > -\dfrac32$.
+
+          **Conclusion.**
+
+          $$\boxed{\forall x\in\,]0,+\infty[\ ;\quad -\frac32 < \varphi(x) < 0}$$
+
+          **Le piège nommé de cette question.** Utiliser la mauvaise borne de I-1-b pour chaque sens : c'est la borne **gauche** (minorant de $\ln(1+x)$) qui produit la **majoration** de $\varphi$ ($\varphi<0$), et c'est la borne **droite** (majorant de $\ln(1+x)$) qui produit la **minoration** de $\varphi$ ($\varphi>-\frac32$) — l'appariement est inversé par rapport à l'intuition naïve « minorant sert à minorer », et s'y perdre annule tout le calcul qui suit.
+        steps:
+          - math: '\frac{2x}{2+x} - \frac{x}{(1+x)^2} = \frac{x^2(2x+3)}{(2+x)(1+x)^2} > 0 \ (x>0) \ \Longrightarrow\ \ln(1+x) > \frac{x}{(1+x)^2} \ \Longrightarrow\ \varphi(x) < 0'
+            note: "Borne GAUCHE de I-1-b : produit la majoration de phi."
+          - math: '(1+x)^2\ln(1+x) \le \frac{x(x+2)(1+x)}{2} \quad (\text{borne DROITE de I-1-b})'
+            note: "On applique la borne droite de I-1-b, multipliee par (1+x) au carre."
+          - math: 'x+\frac32 x^2(1+x) - \frac{x(x+2)(1+x)}{2} = x^3 > 0 \ (x>0) \ \Longrightarrow\ (1+x)^2\ln(1+x) < x+\frac32 x^2(1+x)'
+            note: "Ecart calcule exactement : x au cube, strictement positif pour x > 0."
+          - math: '\boxed{-\frac32 < \varphi(x) < 0} \qquad \varphi(x) = \frac{x-(1+x)^2\ln(1+x)}{x^2(1+x)}'
+            note: "Les deux inegalites reunies, chacune tiree d'une borne differente de I-1-b."
+      - id: q6b
+        stem: |-
+          **4- b)** (0,25 pt) En déduire que : $\forall x \in\, ]0, +\infty[\ ;\quad -\dfrac{3}{2} < f'(x) < 0$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On a $f'(x) = \varphi(x)\,e^{-x}$ (question 3), et on connaît l'encadrement de $\varphi(x)$ (question 4-a) : il reste à multiplier par $e^{-x}$, en faisant attention à l'effet d'une multiplication par un facteur **entre $0$ et $1$** sur un nombre négatif.
+
+          **L'encadrement de $e^{-x}$.** Pour $x>0$ : $-x<0$, donc $e^{-x} < e^0=1$ ; et $e^{-x}>0$ toujours. Donc $0 < e^{-x} < 1$.
+
+          **L'effet sur un négatif.** $\varphi(x) < 0$ (question 4-a). Multiplier un nombre strictement négatif par un facteur **strictement compris entre $0$ et $1$** le rapproche de $0$, donc l'**augmente** :
+
+          $$\varphi(x) < \varphi(x)\cdot e^{-x} < \varphi(x)\cdot 0 = 0$$
+
+          (la première inégalité vient de $e^{-x}<1$ appliqué à $\varphi(x)<0$ — multiplier une inégalité par un facteur positif conserve son sens, donc $\varphi(x)\times 1 > \varphi(x)\times e^{-x}$ ; la seconde vient de $\varphi(x)<0$ et $e^{-x}>0$, produit négatif).
+
+          **On combine avec $\varphi(x)>-\dfrac32$ (question 4-a) :**
+
+          $$-\frac32 < \varphi(x) < \varphi(x)e^{-x} < 0$$
+
+          Et $\varphi(x)e^{-x} = f'(x)$ :
+
+          $$\boxed{\forall x\in\,]0,+\infty[\ ;\quad -\frac32 < f'(x) < 0}$$
+
+          **La lecture, avant même le tableau de variations.** $f'(x)$ est **strictement négative partout** sur $]0,+\infty[$ : $f$ y est donc strictement décroissante, sans aucun point où la dérivée s'annule — le tableau de variations de la question 5-a n'aura donc qu'un seul sens de variation à décrire.
+
+          **Le piège nommé de cette question.** Écrire $\varphi(x)e^{-x} < \varphi(x)$ au lieu de $>$, en oubliant que multiplier un négatif par un nombre plus petit que $1$ (mais positif) l'**augmente**, ne le diminue pas. Teste sur un exemple pour t'en convaincre : $-4 \times 0{,}5 = -2$, et $-2 > -4$.
+        steps:
+          - math: '0 < e^{-x} < 1 \quad (x>0)'
+            note: "e puissance moins x est toujours strictement positif, et strictement inferieur a 1 pour x positif."
+          - math: '\varphi(x) < 0 \ \text{et}\ 0<e^{-x}<1 \ \Longrightarrow\ \varphi(x) < \varphi(x)e^{-x} < 0'
+            note: "Multiplier un negatif par un facteur entre 0 et 1 le rapproche de 0 : l'inegalite s'inverse par rapport a l'intuition naive."
+          - math: '-\frac32 < \varphi(x) < \varphi(x)e^{-x} < 0 \ \Longrightarrow\ \boxed{-\frac32 < f''(x) < 0}'
+            note: "On combine avec la borne -3/2 de la question 4-a, et phi(x) fois e puissance moins x vaut f'(x) par la question 3."
+      - id: q7a
+        part: "Partie II — 5. Tableau de variations et construction de (C)"
+        stem: |-
+          **5- a)** (0,25 pt) Dresser le tableau de variations de $f$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un quart de point, parce que tout le travail est déjà fait : il reste à **assembler** les résultats des questions précédentes en un tableau.
+
+          **Ce qu'on assemble.**
+          — $f$ est continue sur $[0,+\infty[$ (continue à droite en $0$, question 2-a ; continue sur $]0,+\infty[$ comme dérivable, question 3) ;
+          — $f'(x)<0$ pour tout $x>0$ (question 4-b) : $f$ est **strictement décroissante** sur $]0,+\infty[$, et donc, par continuité en $0$, sur $[0,+\infty[$ tout entier ;
+          — $f(0)=1$ (donné) ;
+          — $\displaystyle\lim_{x\to+\infty} f(x) = 0$ (question 1), limite jamais atteinte (asymptote).
+
+          **Le tableau.**
+
+          | $x$ | $0$ | | $+\infty$ |
+          |---|---|---|---|
+          | $f'(x)$ | | $-$ | |
+          | $f(x)$ | $1$ | $\searrow$ | $0$ |
+
+          $f$ décroît strictement de $1$ (valeur atteinte en $0$) vers $0$ (limite, jamais atteinte) sur tout $[0,+\infty[$.
+
+          **Le piège nommé de cette question.** Chercher un extremum local ou un point où $f'$ s'annulerait : la question 4-b a établi $f'(x)<0$ **strictement partout** sur $]0,+\infty[$, sans exception — il n'y a ni palier ni changement de sens à chercher, et en inventer un serait contredire ce qui vient d'être démontré.
+        steps:
+          - math: 'f \text{ continue sur } [0,+\infty[, \quad f''(x) < 0 \ \forall x>0 \ (\text{question 4-b})'
+            note: "Continuite (question 2-a et 3) plus signe de la derivee (question 4-b)."
+          - math: 'f(0) = 1 \quad (\text{donne}), \qquad \lim_{x\to+\infty} f(x) = 0 \quad (\text{question 1})'
+            note: "Les deux valeurs aux bornes du tableau."
+          - math: 'f \text{ strictement decroissante sur } [0,+\infty[, \text{ de } 1 \text{ (atteint) a } 0 \text{ (limite, jamais atteinte)}'
+            note: "Synthese : un seul sens de variation, pas de point stationnaire."
+      - id: q7b
+        stem: |-
+          **5- b)** (0,75 pt) Construire la courbe $(C)$ en faisant apparaître la demi-tangente à droite au point d'abscisse $0$. (On prendra $\|\vec{i}\| = 2\ \text{cm}$.)
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Aucune figure n'est fournie par l'énoncé — c'est au candidat de la construire, à partir des seules données déjà établies dans les questions précédentes. La question ne demande donc pas un nouveau calcul, mais de **rassembler** les ingrédients dans le bon ordre et de les placer correctement sur le repère.
+
+          **Les ingrédients, un par un, chacun déjà démontré.**
+
+          1. **Le point de départ.** $f(0)=1$ : la courbe part du point $(0\,;\,1)$ sur l'axe des ordonnées.
+          2. **La demi-tangente à droite en $0$.** $f'_d(0) = -\dfrac32$ (question 2-c) : au point $(0\,;\,1)$, la courbe part avec une pente de $-\dfrac32$ — une demi-tangente **oblique** (ni verticale ni horizontale), assez raide, orientée vers le bas et vers la droite.
+          3. **Le sens de variation.** $f$ est strictement décroissante sur tout $[0,+\infty[$ (question 5-a) : la courbe descend sans jamais remonter ni se stabiliser en un palier.
+          4. **Le comportement en $+\infty$.** $f(x) \to 0$ (question 1) : la courbe s'approche de l'axe des abscisses sans jamais le toucher — une **asymptote horizontale**, approchée par valeurs strictement positives (puisque $f$ décroît vers $0$ sans jamais l'atteindre, $f(x)>0$ pour tout $x$ fini).
+          5. **L'échelle.** $\|\vec{i}\|=2\ \text{cm}$ : chaque unité en abscisse occupe $2\ \text{cm}$ sur le papier — à respecter pour que la pente $-\dfrac32$ de la demi-tangente soit dessinée avec le bon angle visuel.
+
+          **La forme d'ensemble à tracer.** Une courbe qui part de $(0\,;\,1)$ avec une tangente de pente $-\dfrac32$, descend strictement et continûment, se rapproche de plus en plus lentement de l'axe des abscisses à mesure que $x$ grandit, sans jamais le franchir ni le toucher — la concavité n'étant pas demandée par l'énoncé, aucune inflexion n'est à chercher ni à justifier.
+
+          **Le piège nommé de cette question.** Tracer une tangente **horizontale** en $0$, par réflexe (beaucoup de courbes de ce type démarrent avec une tangente horizontale) : ici $f'_d(0)=-\dfrac32 \ne 0$, la demi-tangente est clairement inclinée, et l'omettre ou la dessiner plate fait perdre l'essentiel des $0{,}75$ point de cette question. Second piège : faire toucher la courbe à l'axe des abscisses en un point fini — la question 1 a établi une limite, jamais une valeur atteinte.
+        steps:
+          - math: '(0\,;\,1) \quad (\text{point de depart, } f(0)=1)'
+            note: "Premier ingredient : la valeur en 0, deja etablie."
+          - math: 'f''_d(0) = -\frac32 \quad (\text{question 2-c, pente de la demi-tangente a droite en 0})'
+            note: "Deuxieme ingredient : la pente de depart, oblique et raide."
+          - math: 'f \text{ strictement decroissante sur } [0,+\infty[ \quad (\text{question 5-a})'
+            note: "Troisieme ingredient : un seul sens de variation, sans palier ni remontee."
+          - math: 'f(x) \to 0^{+} \text{ quand } x\to+\infty \quad (\text{question 1, asymptote } y=0)'
+            note: "Quatrieme ingredient : la courbe s'approche de l'axe des abscisses sans jamais le toucher."
+      - id: q8
+        part: "Partie III — 1. Existence et unicite de alpha, solution de f(x) = 3x"
+        stem: |-
+          **1)** (0,5 pt) Montrer que l'équation d'inconnue $x$ : $f(x) = 3x$, admet une unique solution $\alpha$ dans $]0, +\infty[$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « Il existe une unique » : deux affirmations, deux outils différents. L'existence vient du **théorème des valeurs intermédiaires**, l'unicité de la **stricte monotonie**. Aucun des deux ne remplace l'autre — un candidat qui n'en invoque qu'un perd la moitié du barème.
+
+          **On introduit une fonction auxiliaire.** Pose $\psi(x) = f(x) - 3x$ sur $[0,+\infty[$ : résoudre $f(x)=3x$ revient à résoudre $\psi(x)=0$.
+
+          **Hypothèse 1 : la continuité, vérifiée séparément.** $f$ est continue sur $[0,+\infty[$ (établi aux questions 2-a et 3), et $x\mapsto 3x$ est continue partout. $\psi$, différence de deux fonctions continues, est **continue sur $[0,+\infty[$**.
+
+          **Hypothèse 2 : la stricte monotonie, vérifiée séparément.** Sur $]0,+\infty[$, $\psi'(x) = f'(x) - 3$. Or $f'(x) < 0$ (question 4-b), donc $f'(x) - 3 < 0 - 3 = -3 < 0$. $\psi$ est donc **strictement décroissante** sur $]0,+\infty[$, et par continuité en $0$, sur $[0,+\infty[$ tout entier.
+
+          **Les valeurs qui encadrent le zéro cherché.** $\psi(0) = f(0) - 0 = 1 > 0$. Et $\displaystyle\lim_{x\to+\infty}\psi(x) = \lim_{x\to+\infty}\bigl(f(x)-3x\bigr) = 0 - \infty = -\infty$ (une quantité qui reste bornée, $f(x)\to 0$, moins une quantité qui explose, $3x\to+\infty$ : pas d'indétermination, le résultat est direct).
+
+          **La conclusion, par le corollaire du théorème des valeurs intermédiaires (continuité + stricte monotonie $\Rightarrow$ bijection sur l'intervalle image — domaine « dérivabilité et étude de fonctions », hors du corps de cette leçon).** $\psi$ continue et strictement décroissante sur $[0,+\infty[$ réalise une bijection de $[0,+\infty[$ sur $\psi\bigl([0,+\infty[\bigr) = \left]\displaystyle\lim_{+\infty}\psi,\ \psi(0)\right] = \bigl]-\infty,\,1\bigr]$.
+
+          Or $0 \in\, ]-\infty,1]$ : il existe donc un **unique** $x_0 \in [0,+\infty[$ tel que $\psi(x_0)=0$. Comme $\psi(0)=1\ne 0$, ce $x_0$ n'est pas $0$ : il appartient à $]0,+\infty[$. Note-le $\alpha$.
+
+          $$\boxed{\text{L'équation } f(x)=3x \text{ admet une unique solution } \alpha \text{ dans } ]0,+\infty[}$$
+
+          **Le piège nommé de cette question.** Invoquer le TVI et s'arrêter là. Le TVI donne l'**existence**, jamais l'unicité — une fonction continue peut valoir $0$ en plusieurs points. C'est la stricte décroissance qui interdit un second passage par $0$. Les deux arguments sont complémentaires, et la rédaction doit les faire apparaître **séparément**, comme ci-dessus.
+        steps:
+          - math: '\psi(x) = f(x) - 3x \quad \text{sur } [0,+\infty[, \qquad \psi \text{ continue (f continue + } 3x \text{ continue)}'
+            note: "Fonction auxiliaire. Hypothese 1 verifiee : continuite."
+          - math: '\psi''(x) = f''(x) - 3 < 0 - 3 = -3 < 0 \quad (x>0) \ \Longrightarrow\ \psi \text{ strictement decroissante sur } [0,+\infty['
+            note: "Hypothese 2 verifiee : stricte monotonie, via le signe de f' etabli a la question 4-b."
+          - math: '\psi(0) = 1 > 0, \qquad \lim_{x\to+\infty}\psi(x) = 0-\infty = -\infty'
+            note: "Valeurs aux bornes : borne finie moins la droite qui explose, pas d'indetermination."
+          - math: '\psi \text{ bijection de } [0,+\infty[ \text{ sur } \,]-\infty,1] \ni 0 \ \Longrightarrow\ \exists!\, \alpha \in\,]0,+\infty[,\ \psi(\alpha)=0'
+            note: "Corollaire du TVI (continuite + stricte monotonie), hors socle de cette lecon. Alpha different de 0 car psi(0) = 1."
+      - id: q9a
+        part: "Partie III — 2. La suite (u_n), point fixe itere de F = f sur 3"
+        stem: |-
+          **2- a)** (0,5 pt) Soit $\beta \in \mathbb{R}^{+}$ et $(u_n)_{n \in \mathbb{N}}$ la suite numérique définie par $u_0 = \beta$ et $\forall n \in \mathbb{N}\ ;\ u_{n+1} = \dfrac{1}{3}\,f(u_n)$. Montrer que : $\forall n \in \mathbb{N}\ ;\ u_n \ge 0$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une propriété qui porte sur **tous les rangs $n$**, définie par une relation qui construit chaque terme à partir du précédent : c'est le signal exact d'une démonstration par **récurrence**, avec initialisation et hérédité écrites séparément.
+
+          **Le fait préalable, à établir une fois pour toutes.** Sur $[0,+\infty[$, $f$ est strictement décroissante (question 5-a) de $f(0)=1$ vers une limite de $0$ **jamais atteinte** : donc $f(x) > 0$ pour **tout** $x\ge 0$ fini.
+
+          **Initialisation ($n=0$).** $u_0=\beta$, et $\beta \in \mathbb{R}^{+}$ signifie $\beta \ge 0$ par définition de $\mathbb{R}^{+}$ (borne $0$ incluse). Donc $u_0 \ge 0$ : la propriété est vraie au rang $0$.
+
+          **Hérédité.** Suppose $u_n \ge 0$ pour un rang $n$ fixé (hypothèse de récurrence). Comme $u_n \ge 0$, $u_n$ appartient au domaine $[0,+\infty[$ de $f$, et le fait préalable donne $f(u_n) > 0$. Donc :
+
+          $$u_{n+1} = \frac13 f(u_n) > 0 \ge 0$$
+
+          La propriété est vraie au rang $n+1$.
+
+          **Conclusion.** Par le principe de récurrence, initialisation et hérédité étant toutes deux établies :
+
+          $$\boxed{\forall n \in \mathbb{N}\ ;\quad u_n \ge 0}$$
+
+          **Pourquoi $\mathbb{R}^{+}$ et non $\mathbb{R}^{+*}$ compte ici.** Le glyphe cassé du scan a été adjugé $\mathbb{R}^{+}$ (exposant « + » seul, $\beta=0$ admis) — précisément parce que l'initialisation de cette récurrence n'a besoin **que** de $\beta \ge 0$, jamais de $\beta > 0$ strictement. Le cas limite $\beta=0$ fonctionne sans accroc : $u_1 = \frac13 f(0) = \frac13 > 0$, et la récurrence repart normalement.
+
+          **Le piège nommé de cette question.** Écrire « $f(u_n) \ge 0$ donc $u_{n+1}\ge 0$ » sans avoir d'abord établi que $f$ est **strictement positive** (pas seulement positive ou nulle) sur tout son domaine — ce fait n'est pas immédiat, il vient du tableau de variations complet de la question 5-a, et doit être cité explicitement.
+        steps:
+          - math: 'f \text{ strictement decroissante sur } [0,+\infty[ \text{, de } f(0)=1 \text{ vers une limite } 0 \text{ jamais atteinte} \ \Longrightarrow\ f(x)>0 \ \forall x\ge 0'
+            note: "Fait prealable, tire du tableau de variations complet (question 5-a)."
+          - math: '\text{Initialisation : } u_0 = \beta \ge 0 \quad (\beta \in \mathbb{R}^{+})'
+            note: "R plus inclut 0 : c'est pourquoi le glyphe casse a ete adjuge R plus et non R plus etoile."
+          - math: '\text{Heredite : } u_n \ge 0 \ \Longrightarrow\ f(u_n) > 0 \ \Longrightarrow\ u_{n+1} = \frac13 f(u_n) > 0 \ge 0'
+            note: "u_n dans le domaine de f (positif), donc f(u_n) strictement positif par le fait prealable."
+          - math: '\boxed{\forall n \in \mathbb{N}\ ;\ u_n \ge 0} \quad (\text{recurrence, initialisation + heredite})'
+            note: "Principe de recurrence : les deux etapes etablies separement suffisent pour tout rang n."
+      - id: q9b
+        stem: |-
+          **2- b)** (0,5 pt) Montrer que : $\forall n \in \mathbb{N}\ ;\ |u_{n+1} - \alpha| \le \dfrac{1}{2}|u_n - \alpha|$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Note $F(x) = \dfrac13 f(x)$. Remarque d'abord un fait décisif : $\alpha$ vérifie $f(\alpha)=3\alpha$ (question 1), c'est-à-dire $F(\alpha) = \dfrac13 f(\alpha) = \alpha$ — **$\alpha$ est le point fixe de $F$**, exactement le nombre que la suite $u_{n+1}=F(u_n)$ cherche à atteindre. La question demande de majorer l'écart $|u_{n+1}-\alpha| = |F(u_n)-F(\alpha)|$ : c'est une comparaison de $F$ entre deux points, et l'outil pour cela — hors du corps de cette leçon — est le **théorème des accroissements finis**.
+
+          **Le théorème des accroissements finis (TAF), énoncé ici car il n'appartient pas au socle R0–R6 de cette leçon (domaine « dérivabilité et étude de fonctions »).** Si $h$ est continue sur un intervalle fermé $[p,q]$ et dérivable sur l'intervalle ouvert $]p,q[$, alors il existe $c \in\, ]p,q[$ tel que $h(q)-h(p) = h'(c)(q-p)$.
+
+          **Les hypothèses, vérifiées pour $F=\frac13 f$.** $F$ est continue sur $[0,+\infty[$ (car $f$ l'est, questions 2-a et 3) et dérivable sur $]0,+\infty[$ avec $F'(x)=\frac13 f'(x)$ (car $f$ l'est, question 3). Les deux points $u_n \ge 0$ (question 2-a) et $\alpha>0$ (question 1) sont dans $[0,+\infty[$ ; l'intervalle ouvert entre eux — qu'il s'agisse de $]u_n,\alpha[$ ou $]\alpha,u_n[$ selon leur ordre — est inclus dans $]0,+\infty[$ où $F$ est dérivable, sauf si $u_n=0$, auquel cas l'intervalle ouvert $]0,\alpha[$ reste inclus dans le domaine de dérivabilité : le TAF s'applique dans tous les cas.
+
+          **L'application.** Il existe $c$, strictement compris entre $u_n$ et $\alpha$ (donc $c>0$), tel que :
+
+          $$F(u_n) - F(\alpha) = F'(c)\,(u_n-\alpha)$$
+
+          **La borne sur $F'(c)$.** Comme $c>0$, la question 4-b donne $-\dfrac32 < f'(c) < 0$, donc $|f'(c)| < \dfrac32$, et :
+
+          $$|F'(c)| = \left|\frac13 f'(c)\right| = \frac13|f'(c)| < \frac13\times\frac32 = \frac12$$
+
+          **On prend la valeur absolue de l'égalité du TAF :**
+
+          $$|F(u_n)-F(\alpha)| = |F'(c)|\cdot|u_n-\alpha| < \frac12|u_n-\alpha| \le \frac12|u_n-\alpha|$$
+
+          Or $F(u_n) = u_{n+1}$ (définition de la suite) et $F(\alpha)=\alpha$ (point fixe, établi ci-dessus) :
+
+          $$\boxed{\forall n\in\mathbb{N}\ ;\quad |u_{n+1}-\alpha| \le \frac12|u_n-\alpha|}$$
+
+          **Ce que cette inégalité raconte.** Chaque itération de la récurrence divise l'écart à $\alpha$ par (au moins) $2$ — c'est un argument de **contraction**, la méthode générale pour montrer qu'une suite définie par $u_{n+1}=F(u_n)$ converge vers le point fixe de $F$, dès que $|F'|$ reste majoré par une constante strictement inférieure à $1$.
+
+          **Le piège nommé de cette question.** Appliquer le TAF sans vérifier ses deux hypothèses (continuité sur le fermé, dérivabilité sur l'ouvert) — ici elles sont vraies, mais elles ne le sont que parce que les questions 2-a et 3 les ont établies plus haut ; les admettre sans les citer prive la démonstration de son fondement.
+        steps:
+          - math: 'F(x) = \frac13 f(x), \qquad F(\alpha) = \frac13 f(\alpha) = \frac13(3\alpha) = \alpha \quad (\text{question 1 : } f(\alpha)=3\alpha)'
+            note: "Alpha est le point fixe de F : c'est ce qui relie la question 1 a celle-ci."
+          - math: '\exists\, c \text{ entre } u_n \text{ et } \alpha \ (c>0), \quad F(u_n)-F(\alpha) = F''(c)(u_n-\alpha) \quad (\text{TAF, F continue sur le ferme, derivable sur l ouvert})'
+            note: "Theoreme des accroissements finis, hors socle de cette lecon (domaine derivabilite), enonce et applique ici."
+          - math: '-\frac32 < f''(c) < 0 \ (\text{question 4-b, car } c>0) \ \Longrightarrow\ |F''(c)| = \frac13|f''(c)| < \frac12'
+            note: "Borne sur f' reutilisee de la question 4-b, divisee par 3."
+          - math: '|u_{n+1}-\alpha| = |F(u_n)-F(\alpha)| = |F''(c)|\,|u_n-\alpha| < \frac12|u_n-\alpha| \le \boxed{\frac12|u_n-\alpha|}'
+            note: "Valeur absolue de l'egalite du TAF, puis la borne sur F' de c."
+      - id: q9c
+        stem: |-
+          **2- c)** (0,5 pt) Montrer par récurrence que : $\forall n \in \mathbb{N}\ ;\ |u_n - \alpha| \le \dfrac{1}{2^n}|\beta - \alpha|$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé demande explicitement une récurrence : la question 2-b a établi le passage d'un rang au suivant (diviser l'écart par $2$), il reste à l'enchaîner $n$ fois, proprement, avec initialisation et hérédité séparées.
+
+          **Initialisation ($n=0$).** Le membre de gauche : $|u_0-\alpha| = |\beta-\alpha|$ (car $u_0=\beta$). Le membre de droite : $\dfrac{1}{2^0}|\beta-\alpha| = 1\times|\beta-\alpha| = |\beta-\alpha|$. Les deux membres sont **égaux** :
+
+          $$|u_0-\alpha| = |\beta-\alpha| = \frac{1}{2^0}|\beta-\alpha|$$
+
+          L'inégalité $\le$ est donc vraie au rang $0$ — avec égalité. **C'est précisément ce fait qui a permis d'adjuger le glyphe cassé du scan à $\le$ et non $<$** : un $<$ strict rendrait cette égalité fausse au rang initial.
+
+          **Hérédité.** Suppose $|u_n-\alpha| \le \dfrac{1}{2^n}|\beta-\alpha|$ pour un rang $n$ fixé (hypothèse de récurrence, notée HR). Montre que la propriété passe au rang $n+1$.
+
+          De la question 2-b : $|u_{n+1}-\alpha| \le \dfrac12|u_n-\alpha|$. En appliquant HR au membre de droite, et en multipliant l'inégalité HR par $\dfrac12>0$ (ce qui conserve son sens) :
+
+          $$\frac12|u_n-\alpha| \le \frac12\cdot\frac{1}{2^n}|\beta-\alpha| = \frac{1}{2^{n+1}}|\beta-\alpha|$$
+
+          En chaînant les deux inégalités :
+
+          $$|u_{n+1}-\alpha| \le \frac12|u_n-\alpha| \le \frac{1}{2^{n+1}}|\beta-\alpha|$$
+
+          La propriété est donc vraie au rang $n+1$.
+
+          **Conclusion.** Par le principe de récurrence, initialisation (avec égalité au rang $0$) et hérédité étant toutes deux établies :
+
+          $$\boxed{\forall n\in\mathbb{N}\ ;\quad |u_n-\alpha| \le \frac{1}{2^n}|\beta-\alpha|}$$
+
+          **Le piège nommé de cette question.** Appliquer la question 2-b directement à $|u_n-\alpha|$ au lieu de $|u_{n+1}-\alpha|$ — confondre le rang qu'on **suppose** connu (HR, au rang $n$) et celui qu'on **cherche** à établir (au rang $n+1$) fait s'effondrer toute la chaîne d'inégalités. Il faut toujours partir de $|u_{n+1}-\alpha|$, lui appliquer 2-b, puis **seulement ensuite** invoquer HR sur le $|u_n-\alpha|$ qui apparaît.
+        steps:
+          - math: '\text{Initialisation : } |u_0-\alpha| = |\beta-\alpha| = \frac{1}{2^0}|\beta-\alpha| \quad (\text{egalite au rang } 0)'
+            note: "u_0 = beta par definition. Egalite exacte au rang 0 : c'est elle qui force le symbole a etre <= et non <."
+          - math: '\text{HR : } |u_n-\alpha| \le \frac{1}{2^n}|\beta-\alpha| \quad \text{(hypothese, rang } n\text{)}'
+            note: "Ce qu'on suppose connu, a un rang n fixe quelconque."
+          - math: '|u_{n+1}-\alpha| \le \frac12|u_n-\alpha| \ (\text{question 2-b}) \ \le\ \frac12\cdot\frac{1}{2^n}|\beta-\alpha| \ (\text{HR}) \ =\ \frac{1}{2^{n+1}}|\beta-\alpha|'
+            note: "Heredite : question 2-b d'abord, puis HR appliquee au terme qui en resulte."
+          - math: '\boxed{\forall n \in \mathbb{N}\ ;\ |u_n-\alpha| \le \frac{1}{2^n}|\beta-\alpha|} \quad (\text{recurrence complete})'
+            note: "Initialisation (avec egalite) et heredite etablies separement : la recurrence est complete."
+      - id: q9d
+        stem: |-
+          **2- d)** (0,25 pt) En déduire que la suite $(u_n)_{n \in \mathbb{N}}$ converge vers $\alpha$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On dispose d'un encadrement de $|u_n-\alpha|$ (question 2-c) ; il reste à en tirer la convergence — **par encadrement**, jamais en affirmant que « la majoration décroît donc ça converge » sans le dire proprement.
+
+          **L'encadrement de départ.** Une valeur absolue est toujours positive ou nulle, donc pour tout $n$ :
+
+          $$0 \le |u_n-\alpha| \le \frac{1}{2^n}|\beta-\alpha|$$
+
+          **La limite de la borne de droite.** $|\beta-\alpha|$ est une constante (indépendante de $n$), et $\dfrac{1}{2^n} \to 0$ quand $n\to+\infty$ — limite de référence d'une suite géométrique de raison $q=\dfrac12$, avec $|q|<1$ (chapitre « Suites numériques »). Donc :
+
+          $$\lim_{n\to+\infty} \frac{1}{2^n}|\beta-\alpha| = 0 \times |\beta-\alpha| = 0$$
+
+          **Le théorème des gendarmes.** La borne de gauche (la suite constante $0$) et la borne de droite tendent toutes deux vers $0$ : le théorème des gendarmes force le milieu à converger aussi, vers cette même valeur :
+
+          $$\lim_{n\to+\infty} |u_n-\alpha| = 0$$
+
+          **La conclusion.** $|u_n-\alpha| \to 0$ signifie, par définition même de la limite d'une suite, que $u_n \to \alpha$ :
+
+          $$\boxed{\lim_{n\to+\infty} u_n = \alpha}$$
+
+          **Ce que tout le problème vient de démontrer, relu d'ensemble.** La suite $(u_n)$ ne se contente pas de converger : elle converge **géométriquement vite**, avec un écart à $\alpha$ divisé par au moins $2$ à chaque étape — c'est la signature d'une **itération de point fixe** (méthode de Picard) appliquée à $F=\frac13 f$, rendue possible par le fait que $|F'|<\frac12<1$ partout (question 2-b). Quel que soit le point de départ $\beta \ge 0$ choisi, la suite retombe toujours sur le même $\alpha$ — celui, et le seul, que la question 1 a isolé par TVI et stricte monotonie.
+
+          **Le piège nommé de cette question.** Conclure « la suite est décroissante et minorée, donc elle converge » : rien dans ce problème n'établit que $(u_n)$ est monotone — elle pourrait très bien osciller autour de $\alpha$ en s'en rapprochant. C'est l'encadrement de $|u_n-\alpha|$ par le théorème des gendarmes, et lui seul, qui donne à la fois la convergence et l'identité de la limite en une seule étape.
+        steps:
+          - math: '0 \le |u_n-\alpha| \le \frac{1}{2^n}|\beta-\alpha| \quad (\text{question 2-c, valeur absolue toujours} \ge 0)'
+            note: "Encadrement de depart : la valeur absolue est bornee des deux cotes."
+          - math: '\lim_{n\to+\infty} \frac{1}{2^n} = 0 \ (|q|<1) \ \Longrightarrow\ \lim_{n\to+\infty} \frac{1}{2^n}|\beta-\alpha| = 0'
+            note: "Suite geometrique de raison 1/2 : limite de reference du chapitre Suites numeriques."
+          - math: '\lim_{n\to+\infty} |u_n-\alpha| = 0 \quad (\text{theoreme des gendarmes})'
+            note: "Les deux bornes (0 et 1/2 puissance n fois |beta-alpha|) tendent vers 0 : le milieu aussi."
+          - math: '\boxed{\lim_{n\to+\infty} u_n = \alpha}'
+            note: "Par definition : le taux d'accroissement de u_n a alpha qui tend vers 0 signifie que u_n tend vers alpha."

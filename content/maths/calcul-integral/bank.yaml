@@ -113,6 +113,65 @@
 # est rédigé indépendamment de celui d'exercises.yaml (voix distincte, mêmes
 # mathématiques, mêmes résultats numériques — vérifiés en double) : ce n'est
 # pas une recopie.
+#
+# AJOUT DU 2026-08-27 — bk-2023-n-x2 (2023, session NORMALE, filière SM,
+# Exercice 2 — 2,25 points). TROISIÈME entrée de ce fichier, convertie depuis
+# docs/sujets/_incoming/maths-sm-2023-n.md (agent-vérificateur-adversarial,
+# 2026-08-27, statut « vérifié » — re-fetch indépendant + re-dérivation,
+# AUCUN défaut trouvé dans le corps de l'exercice). Exercice repris EN
+# ENTIER (5 questions, 2,25 pts) : rien à partitionner — tout l'exercice
+# relève du calcul intégral (une somme de Riemann construite point par
+# point, qui converge vers une intégrale). Jumeau éditorial de bk-2024-r-x2
+# ci-dessus, dans ce même fichier : les deux sont des sommes de Riemann SM
+# qui convergent par encadrement + gendarmes, mais bk-2023-n-x2 construit sa
+# somme géométriquement (distances $M_kM_{k+1}$ sur la courbe de $e^x$, via
+# le théorème des accroissements finis pour produire les points intermédiaires
+# $c_k$) là où bk-2024-r-x2 part d'une somme algébrique déjà donnée — deux
+# façons différentes d'arriver à une somme de Riemann, qui se complètent
+# plus qu'elles ne se répètent.
+#
+# RÉSERVE DE PORTÉE SUR CETTE VÉRIFICATION — à lire avant de s'appuyer
+# dessus. La passe qui a validé cet énoncé PRÉCÈDE la règle du 2026-08-27.
+# Une passe ultérieure, sur SM 2025 normale, a découvert qu'AlloSchool peut
+# servir depuis son cache CDN un AUTRE sujet que celui demandé — et qu'une
+# lecture visuelle, la transcription sous les yeux, « retrouve » alors
+# l'énoncé attendu sur des pages qui ne le contiennent pas. Le protocole du
+# sas exige depuis quatre contrôles (docs/sujets/_incoming/README.md,
+# « la lecture visuelle seule ne suffit pas ») : année imprimée relue sur
+# CHAQUE page, recoupement par un instrument NON visuel, MD5 consignés avec
+# un second téléchargement, contrôle du `<title>` servi.
+#   Ce que cette passe-ci a fait : re-dérivation des URLs d'images depuis le
+#   HTML, CONTRÔLE DU `<title>` SERVI (qui nommait la bonne année et la
+#   bonne filière), lecture des pages comme images avec recadrages, et
+#   re-dérivation mathématique de toutes les identités de l'énoncé.
+#   Ce qu'elle n'a pas fait : l'année page par page, le recoupement non
+#   visuel, les MD5 avec second téléchargement.
+# Le contrôle du `<title>` est un vrai garde-fou — il vient du HTML, pas de
+# l'attente du lecteur, et c'est lui qui a mis la passe SM 2025 sur la piste.
+# Risque résiduel FAIBLE MAIS NON NUL : le panachage constaté en 2025
+# touchait les images alors que la page HTML, elle, était correcte.
+# À L'ARBITRAGE DE L'OWNER : re-passer ce sujet sous le protocole complet,
+# ou accepter le niveau de preuve ci-dessus. Cette réserve est recopiée ici
+# — et pas seulement laissée dans le fichier `_incoming` — parce que c'est
+# CE fichier-ci qu'un mainteneur lira le jour où il se demandera d'où sort
+# l'énoncé qu'il a sous les yeux.
+#
+# SCOPE NOTE ADDITIONNELLE (bk-2023-n-x2) : au-delà des sommes de Riemann
+# (déjà signalées SCOPE NOTE 1 ci-dessus — hors socle R0–R9 de cette leçon,
+# au programme SM, admises et appliquées explicitement), cette entrée
+# mobilise un outil supplémentaire qu'aucune des deux entrées précédentes de
+# ce fichier n'utilise : le théorème des accroissements finis (TAF), qui
+# porte la question 1-a EN ENTIER (construction des points intermédiaires
+# $c_k$). Le docket de complétude (docs/audits/lesson-completeness-docket.md,
+# catégorie C) note que Rolle et le TAF sont spécifiques SM et volontairement
+# non promus au rang de rung dans `derivabilite-etude-fonctions` — leur usage
+# ici est donc légitime pour ce sujet SM, mais le théorème est énoncé, ses
+# hypothèses vérifiées et son application faite explicitement au point
+# d'usage (question 1-a), jamais supposé acquis. Domaine
+# `derivabilite-etude-fonctions`, déjà pratiqué ailleurs dans le corpus SM
+# (content/maths/fonction-exponentielle/bank.yaml, bk-2019-n-x4 ; et la
+# question III-2-b de bk-2023-n-x1, content/maths/fonction-logarithme/bank.yaml,
+# ajoutée le même soir).
 
 notion: maths/calcul-integral
 
@@ -638,3 +697,270 @@ entries:
             note: "L'écriture qui conclut : w_n est la somme de deux suites dont on connaît les limites."
           - math: '\lim_{n\to+\infty} w_n = \dfrac{\pi}{4} + 0 = \dfrac{\pi}{4}'
             note: "Limite d'une somme de deux suites convergentes. La convergence de u_n vient de la question 1-b."
+
+  # ── bk-2023-n-x2 — 2023 N (SM), Exercice 2 : distances M_kM_(k+1) sur la
+  #    courbe de e^x, TAF, sommes de Riemann, limite = integrale de racine
+  #    de 1 + e^(2x) ──
+  # TROISIÈME entrée de ce fichier. Voir AJOUT DU 2026-08-27 et SCOPE NOTE
+  # ADDITIONNELLE en tête de fichier.
+  - id: bk-2023-n-x2
+    title: "Distances entre points consécutifs sur la courbe de l'exponentielle : théorème des accroissements finis, encadrement, et limite par sommes de Riemann"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 2 — Analyse (2,25 points)"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national Mathématiques, filière
+        Sciences Mathématiques (A) et (B), option française (BIOF), 4 h,
+        coefficient 9, code sujet NS 24F, AlloSchool element/142490
+        (course-436/upload-85316), page 3 sur 5 (consignes en page 1 ;
+        l'exercice 2 tient entier sur cette seule page). Barème de
+        l'exercice : 2,25 points, annoncé en page 1 (carte des composantes :
+        Ex1 = 7,75 ; Ex2 = 2,25 ; Ex3 = 3,5 ; Ex4 = 3 ; Ex5 = 3,5 ; somme =
+        20). Recompte question par question sur l'énoncé transcrit : 0,5(1-a)
+        + 0,25(1-b) + 0,5(1-c) + 0,5(2-a) + 0,5(2-b) = 2,25, cinq items —
+        conforme au recompte annoncé pour cet exercice et à l'en-tête
+        « EXERCICE2 : (2.25 points) » du scan ; aucun écart ici, contrairement
+        à l'exercice 1 du même sujet (voir bk-2023-n-x1,
+        content/maths/fonction-logarithme/bank.yaml, sourcing.note). Transcription
+        vérifiée par une passe adversariale indépendante (2026-08-27,
+        docs/sujets/_incoming/maths-sm-2023-n.md, statut « vérifié ») :
+        re-fetch de element/142490, lecture de la page 3 SUR L'IMAGE — jamais
+        sur le texte transcrit —, recadrages ×6 à ×12 sur les exposants et
+        bornes de sommation litigieux, re-dérivation mathématique complète de
+        chaque « montrer que » de l'énoncé. Résultat : AUCUN défaut trouvé
+        dans le corps de l'exercice. NOTE DE LECTURE (mojibake) : quatre des
+        six occurrences du glyphe cassé « ,, » lu ≤ dans le sujet entier
+        tombent ici (question 1-c ×2, question 2-a ×2) — même glyphe qu'à
+        l'exercice 1 (double virgule basse « „ », posée sur la ligne de base,
+        sans valeur informative), lu ≤ par le même argument (égalité au rang
+        $n=0$ de l'exercice 1, III-2-c — voir bk-2023-n-x1, sourcing.note).
+        Les exposants de la question 1-c ($e^{2k/n}$ à gauche,
+        $e^{2(k+1)/n}$ à droite) et les bornes de sommation de la question
+        2-a ($k=0$ à $n-1$ à gauche, $k=1$ à $n$ à droite, même exposant
+        $e^{2k/n}$ des deux côtés) ont été relus au zoom ×6 à ×7 : aucune
+        inversion. Aucune figure n'est imprimée dans ce sujet. CONTRE-CALCUL
+        INDÉPENDANT, refait pour cette conversion et non recopié du fichier
+        source : les cinq identités ont été redérivées séparément (voir le
+        `reasoning` de chaque question) ; aucun écart avec la re-dérivation
+        du vérificateur adversarial — en particulier 1-a (le TAF produit
+        exactement $\frac1n e^{c_k}$), 1-b (Pythagore sur les deux
+        coordonnées), 2-a (le changement d'indice $j=k+1$ transforme
+        exactement la somme de droite de 1-c en celle imprimée), et 2-b
+        (les deux sommes encadrantes sont des sommes de Riemann de la même
+        fonction $h(x)=\sqrt{1+e^{2x}}$, continue sur $[0,1]$). FILIÈRE —
+        POINT CRITIQUE : `source.filiere` doit valoir « SM », impérativement
+        — voir la note complète dans bk-2023-n-x1
+        (content/maths/fonction-logarithme/bank.yaml, même conversion, même
+        soir) : les identifiants `bk-2023-n-x1`/`bk-2023-n-x2` existent déjà
+        dans le corpus, mais sous une épreuve SExp différente (code NS 22F,
+        element/137482, content/maths/geometrie-espace/bank.yaml et
+        content/maths/nombres-complexes-1/bank.yaml) ; c'est `filiere` qui
+        sépare les deux épreuves de 2023 normale dans
+        web/src/lib/examens.ts. AJOUT AU CORPUS : avec l'ajout jumeau de
+        bk-2023-n-x1 (Exercice 1) dans
+        content/maths/fonction-logarithme/bank.yaml, cette conversion fait
+        passer l'épreuve SM 2023 normale de 10,00/20 à 20,00/20, complète,
+        dans Examens blancs.
+    intro: |-
+      **Distances sur la courbe de l'exponentielle, et une somme qui devient une intégrale (examen national, Sciences Mathématiques, session normale 2023 — Exercice 2, 2,25 points).**
+
+      On considère $x \mapsto e^x$ et sa courbe représentative $(\Gamma)$ dans un repère orthonormé $(O,\vec i,\vec j)$. Pour $n \in \mathbb{N}^{*}$ fixé et $k \in \{0,1,\ldots,n\}$, on place le point $M_k$ de $(\Gamma)$ d'abscisse $\dfrac{k}{n}$ : les $n+1$ points $M_0,\ldots,M_n$ sont régulièrement espacés en abscisse entre $0$ et $1$. On note $S_n = \displaystyle\sum_{k=0}^{n-1} M_kM_{k+1}$ la somme des distances entre points consécutifs.
+
+      *Le fil de l'exercice.* La question 1 construit, pour chaque segment $[M_k,M_{k+1}]$, un encadrement de sa longueur — en passant par le **théorème des accroissements finis**, énoncé et appliqué exactement au point où il sert (ce théorème n'appartient pas au socle de cette leçon ; voir SCOPE NOTE en tête de fichier). La question 2 somme ces $n$ encadrements et reconnaît, dans les deux sommes qui en résultent, deux **sommes de Riemann** de la même fonction $h(x)=\sqrt{1+e^{2x}}$ (outil du programme SM, lui aussi hors socle R0–R9 de cette leçon — voir SCOPE NOTE 1 en tête de fichier) — d'où la limite $S_n \to \displaystyle\int_0^1 \sqrt{1+e^{2x}}\,dx$.
+
+      *Aucune figure n'accompagne ce sujet. La carte des domaines : question 1-a mobilise le théorème des accroissements finis (domaine « dérivabilité et étude de fonctions », hors socle) ; le reste — distance entre deux points, encadrement, somme, sommes de Riemann, passage à la limite — relève de ce chapitre et du chapitre « suites numériques ».*
+    questions:
+      - id: q1a
+        part: "Question 1 — Le theoreme des accroissements finis, applique a e^x"
+        stem: |-
+          **1- a)** (0,5 pt) Montrer que : $\forall k \in \{0\,;1\,;\ldots\,;(n-1)\}\ \ \exists\, c_k \in\, \left]\dfrac{k}{n}\,;\dfrac{k+1}{n}\right[$ tel que : $e^{\frac{k+1}{n}} - e^{\frac{k}{n}} = \dfrac{1}{n}\,e^{c_k}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé demande l'existence d'un point **intermédiaire** $c_k$ reliant une différence de deux valeurs de $e^x$ à une seule valeur de sa dérivée, multipliée par l'écart des abscisses. C'est très exactement la conclusion du **théorème des accroissements finis** — un théorème qui n'appartient pas au socle de cette leçon (domaine « dérivabilité et étude de fonctions »), et qu'il faut donc énoncer avant de l'appliquer.
+
+          **Le théorème des accroissements finis (TAF), énoncé ici.** Si $h$ est continue sur $[p,q]$ et dérivable sur $]p,q[$, alors il existe $c \in\, ]p,q[$ tel que $h(q)-h(p) = h'(c)\,(q-p)$.
+
+          **Les hypothèses, vérifiées pour $h(x)=e^x$ sur $\left[\dfrac{k}{n},\dfrac{k+1}{n}\right]$.** La fonction exponentielle est continue sur $\mathbb{R}$ tout entier, donc en particulier sur l'intervalle fermé $\left[\dfrac{k}{n},\dfrac{k+1}{n}\right]$ ; elle est dérivable sur $\mathbb{R}$, donc sur l'intervalle ouvert $\left]\dfrac{k}{n},\dfrac{k+1}{n}\right[$, avec $h'(x)=e^x$. Les deux hypothèses du TAF sont réunies.
+
+          **L'application.** Le TAF donne l'existence de $c_k \in\, \left]\dfrac{k}{n},\dfrac{k+1}{n}\right[$ tel que :
+
+          $$e^{\frac{k+1}{n}} - e^{\frac{k}{n}} = e^{c_k}\left(\frac{k+1}{n}-\frac{k}{n}\right) = e^{c_k}\cdot\frac{1}{n}$$
+
+          puisque $\dfrac{k+1}{n}-\dfrac{k}{n} = \dfrac{1}{n}$.
+
+          $$\boxed{\exists\, c_k \in\, \left]\frac{k}{n},\frac{k+1}{n}\right[\ ;\quad e^{\frac{k+1}{n}} - e^{\frac{k}{n}} = \frac{1}{n}\,e^{c_k}}$$
+
+          **Ce que ce résultat prépare.** $c_k$ n'est **pas** calculable explicitement — le TAF garantit son existence, jamais sa valeur. Toute la suite de l'exercice (questions 1-b et 1-c) va travailler avec cette existence seule, en encadrant $c_k$ **entre** les deux bornes qui le contiennent, sans jamais chercher à le déterminer.
+
+          **Le piège nommé de cette question.** Oublier de vérifier — ou même de mentionner — les deux hypothèses du TAF (continuité sur le fermé, dérivabilité sur l'ouvert) avant de l'appliquer : elles sont vraies ici parce que $\exp$ est dérivable sur $\mathbb{R}$ tout entier, un fait qu'il faut citer, pas supposer. Second piège : écrire l'accroissement des abscisses à l'envers, $\dfrac{k}{n}-\dfrac{k+1}{n}$ au lieu de $\dfrac{k+1}{n}-\dfrac{k}{n}$ — cela changerait le signe du résultat.
+        steps:
+          - math: 'h(x) = e^x \text{ continue sur } \mathbb{R}, \text{ derivable sur } \mathbb{R}, \quad h^{\prime}(x) = e^x'
+            note: "Exponentielle continue et derivable partout : les deux hypotheses du TAF sont acquises sur tout intervalle."
+          - math: '\exists\, c_k \in\, \left]\dfrac{k}{n},\dfrac{k+1}{n}\right[\ ;\quad h\!\left(\dfrac{k+1}{n}\right) - h\!\left(\dfrac{k}{n}\right) = h^{\prime}(c_k)\left(\dfrac{k+1}{n}-\dfrac{k}{n}\right) \quad (\text{TAF})'
+            note: "Theoreme des accroissements finis, hors socle de cette lecon, enonce et applique ici a h = exp."
+          - math: '\dfrac{k+1}{n}-\dfrac{k}{n} = \dfrac1n \quad\Longrightarrow\quad \boxed{e^{\frac{k+1}{n}} - e^{\frac{k}{n}} = \dfrac1n\,e^{c_k}}'
+            note: "L'ecart des abscisses vaut 1/n ; h'(c_k) = e puissance c_k puisque h = exp."
+      - id: q1b
+        stem: |-
+          **1- b)** (0,25 pt) Montrer que : $\forall k \in \{0\,;1\,;\ldots\,;(n-1)\}\ ;\quad M_kM_{k+1} = \dfrac{1}{n}\sqrt{1 + e^{2c_k}}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $M_kM_{k+1}$ est une distance entre deux points du plan : le réflexe est la formule de Pythagore, avec les coordonnées de $M_k$ et $M_{k+1}$ données par l'énoncé de tête.
+
+          **Les coordonnées.** $M_k = \left(\dfrac{k}{n}\,;\,e^{\frac{k}{n}}\right)$ et $M_{k+1} = \left(\dfrac{k+1}{n}\,;\,e^{\frac{k+1}{n}}\right)$.
+
+          **L'écart des abscisses.** $\dfrac{k+1}{n} - \dfrac{k}{n} = \dfrac1n$.
+
+          **L'écart des ordonnées.** C'est exactement le résultat de la question 1-a : $e^{\frac{k+1}{n}} - e^{\frac{k}{n}} = \dfrac1n e^{c_k}$.
+
+          **La formule de la distance.**
+
+          $$M_kM_{k+1} = \sqrt{\left(\frac1n\right)^2 + \left(\frac1n e^{c_k}\right)^2} = \sqrt{\frac{1}{n^2} + \frac{1}{n^2}e^{2c_k}} = \sqrt{\frac{1}{n^2}\left(1+e^{2c_k}\right)}$$
+
+          Comme $\dfrac{1}{n^2}>0$, on peut sortir sa racine du radical : $\sqrt{\dfrac{1}{n^2}} = \dfrac1n$ (et $n>0$, donc pas de valeur absolue à porter) :
+
+          $$\boxed{M_kM_{k+1} = \frac1n\sqrt{1+e^{2c_k}}}$$
+
+          **Ce qui rend ce calcul immédiat.** Aucune nouvelle donnée n'est mobilisée : l'écart des abscisses est une constante ($\frac1n$, la largeur commune à tous les segments), et l'écart des ordonnées est **exactement** la quantité que la question 1-a vient de fournir. La question ne fait qu'assembler les deux dans une seule formule connue.
+
+          **Le piège nommé de cette question.** Recalculer $e^{\frac{k+1}{n}}-e^{\frac{k}{n}}$ depuis le début au lieu de réutiliser directement le résultat de 1-a — c'est possible, mais ça ignore que l'énoncé a construit la question précédente précisément pour cet usage. Second piège, plus discret : oublier de sortir $\dfrac1n$ du radical, et laisser une réponse du type $\sqrt{\frac{1+e^{2c_k}}{n^2}}$ non simplifiée — juste mathématiquement, mais pas la forme demandée par l'énoncé.
+        steps:
+          - math: 'M_k = \left(\dfrac{k}{n}\,;\,e^{\frac{k}{n}}\right), \qquad M_{k+1} = \left(\dfrac{k+1}{n}\,;\,e^{\frac{k+1}{n}}\right)'
+            note: "Coordonnees donnees par l'enonce de tete de l'exercice."
+          - math: '\Delta x = \dfrac{k+1}{n}-\dfrac{k}{n} = \dfrac1n, \qquad \Delta y = e^{\frac{k+1}{n}}-e^{\frac{k}{n}} = \dfrac1n e^{c_k} \quad (\text{question 1-a})'
+            note: "Ecart des abscisses constant ; ecart des ordonnees repris tel quel de la question 1-a."
+          - math: 'M_kM_{k+1} = \sqrt{(\Delta x)^2+(\Delta y)^2} = \sqrt{\dfrac{1}{n^2}+\dfrac{1}{n^2}e^{2c_k}} = \sqrt{\dfrac{1}{n^2}\left(1+e^{2c_k}\right)}'
+            note: "Formule de la distance entre deux points (Pythagore), appliquee aux deux ecarts."
+          - math: '\boxed{M_kM_{k+1} = \dfrac1n\sqrt{1+e^{2c_k}}}'
+            note: "On sort la racine de 1 sur n au carre, egale a 1/n car n > 0."
+      - id: q1c
+        stem: |-
+          **1- c)** (0,5 pt) En déduire que : $\forall k \in \{0\,;1\,;\ldots\,;(n-1)\}\ ;\quad \dfrac{1}{n}\sqrt{1 + e^{\frac{2k}{n}}} \le M_kM_{k+1} \le \dfrac{1}{n}\sqrt{1 + e^{\frac{2(k+1)}{n}}}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $M_kM_{k+1}$ dépend de $c_k$, un point qu'on ne connaît pas précisément — mais dont on connaît l'**encadrement** : $c_k \in\, \left]\dfrac{k}{n},\dfrac{k+1}{n}\right[$ (question 1-a). Le geste consiste à encadrer la fonction qui, à $c_k$, associe $M_kM_{k+1}$, en utilisant sa monotonie.
+
+          **La fonction à étudier.** D'après la question 1-b, $M_kM_{k+1} = \dfrac1n\sqrt{1+e^{2c_k}}$ : c'est $\dfrac1n\varphi(c_k)$ avec $\varphi(t)=\sqrt{1+e^{2t}}$.
+
+          **La monotonie de $\varphi$.** $t \mapsto e^{2t}$ est strictement croissante (composée de $t\mapsto 2t$, croissante, et de $\exp$, strictement croissante) ; $t\mapsto 1+e^{2t}$ l'est donc aussi, à valeurs strictement positives ; et $t\mapsto\sqrt{t}$ est strictement croissante sur $]0,+\infty[$. Composée de fonctions strictement croissantes, $\varphi$ est **strictement croissante** sur $\mathbb{R}$.
+
+          **L'encadrement, par monotonie.** $c_k \in\, \left]\dfrac{k}{n},\dfrac{k+1}{n}\right[$ signifie $\dfrac{k}{n} < c_k < \dfrac{k+1}{n}$. Comme $\varphi$ est strictement croissante, elle conserve l'ordre :
+
+          $$\varphi\!\left(\frac{k}{n}\right) < \varphi(c_k) < \varphi\!\left(\frac{k+1}{n}\right)$$
+
+          c'est-à-dire $\sqrt{1+e^{\frac{2k}{n}}} < \sqrt{1+e^{2c_k}} < \sqrt{1+e^{\frac{2(k+1)}{n}}}$. En multipliant par $\dfrac1n>0$ (ce qui conserve le sens) :
+
+          $$\frac1n\sqrt{1+e^{\frac{2k}{n}}} < M_kM_{k+1} < \frac1n\sqrt{1+e^{\frac{2(k+1)}{n}}}$$
+
+          Cette inégalité est **stricte** ; l'énoncé demande la version **large** ($\le$), qui en découle immédiatement — un résultat strict implique toujours le résultat large correspondant :
+
+          $$\boxed{\frac1n\sqrt{1+e^{\frac{2k}{n}}} \le M_kM_{k+1} \le \frac1n\sqrt{1+e^{\frac{2(k+1)}{n}}}}$$
+
+          **Ce que cet encadrement prépare.** $c_k$ a maintenant totalement disparu de l'écriture : $M_kM_{k+1}$ est encadré par deux quantités qui ne dépendent plus que de $k$ et de $n$, directement calculables. C'est cette disparition qui va rendre la sommation de la question 2-a possible.
+
+          **Le piège nommé de cette question.** Intervertir les deux bornes — écrire la borne en $\frac{2(k+1)}{n}$ à gauche —, en oubliant que $\varphi$ est **croissante** : la borne associée au **plus petit** argument ($\frac{k}{n}$) doit être la **plus petite**, donc à gauche.
+        steps:
+          - math: '\varphi(t) = \sqrt{1+e^{2t}} \quad\text{strictement croissante sur } \mathbb{R} \quad (\text{composee de fonctions croissantes})'
+            note: "e puissance 2t croissante, plus 1 reste croissant et positif, racine carree croissante : la composee est croissante."
+          - math: '\dfrac{k}{n} < c_k < \dfrac{k+1}{n} \ \Longrightarrow\ \varphi\!\left(\dfrac{k}{n}\right) < \varphi(c_k) < \varphi\!\left(\dfrac{k+1}{n}\right) \quad (\varphi \text{ croissante})'
+            note: "Encadrement de c_k (question 1-a) transporte par la monotonie stricte de phi."
+          - math: '\dfrac1n\sqrt{1+e^{\frac{2k}{n}}} < M_kM_{k+1} < \dfrac1n\sqrt{1+e^{\frac{2(k+1)}{n}}} \quad (\text{multiplication par } \dfrac1n>0)'
+            note: "M_kM_(k+1) = (1/n) phi(c_k) par la question 1-b ; on multiplie l'encadrement de phi(c_k) par 1/n."
+          - math: '\boxed{\dfrac1n\sqrt{1+e^{\frac{2k}{n}}} \le M_kM_{k+1} \le \dfrac1n\sqrt{1+e^{\frac{2(k+1)}{n}}}}'
+            note: "Le resultat strict implique la version large demandee par l'enonce."
+      - id: q2a
+        part: "Question 2 — La suite (S_n) des longueurs, et sa limite"
+        stem: |-
+          **2)** Soit $(S_n)_{n \in \mathbb{N}^{*}}$ la suite numérique définie par : $\forall n \in \mathbb{N}^{*}\ ;\quad S_n = \displaystyle\sum_{k=0}^{n-1} M_kM_{k+1}$
+
+          **a)** (0,5 pt) Vérifier que : $\forall n \in \mathbb{N}^{*}\ ;\quad \dfrac{1}{n}\displaystyle\sum_{k=0}^{n-1}\sqrt{1 + e^{\frac{2k}{n}}} \le S_n \le \dfrac{1}{n}\displaystyle\sum_{k=1}^{n}\sqrt{1 + e^{\frac{2k}{n}}}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $S_n$ est **une somme** de $n$ termes $M_kM_{k+1}$ ($k$ de $0$ à $n-1$), chacun encadré par la question 1-c. Additionner $n$ inégalités de même sens, terme à terme, est toujours licite : c'est le geste qui produit l'encadrement de $S_n$.
+
+          **La somme des bornes de gauche, directe.**
+
+          $$\sum_{k=0}^{n-1} \frac1n\sqrt{1+e^{\frac{2k}{n}}} = \frac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}}$$
+
+          — c'est déjà exactement le membre de gauche demandé.
+
+          **La somme des bornes de droite, qui demande un changement d'indice.**
+
+          $$\sum_{k=0}^{n-1} \frac1n\sqrt{1+e^{\frac{2(k+1)}{n}}} = \frac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2(k+1)}{n}}}$$
+
+          Pose $j = k+1$ : quand $k$ parcourt $\{0,\ldots,n-1\}$, $j$ parcourt $\{1,\ldots,n\}$, et $\dfrac{2(k+1)}{n}$ devient $\dfrac{2j}{n}$ :
+
+          $$\frac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2(k+1)}{n}}} = \frac1n\sum_{j=1}^{n}\sqrt{1+e^{\frac{2j}{n}}}$$
+
+          Le nom de l'indice de sommation n'a aucune importance ; renomme $j$ en $k$ :
+
+          $$= \frac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}}$$
+
+          — exactement le membre de droite demandé.
+
+          **On somme les $n$ encadrements de la question 1-c**, pour $k=0,\ldots,n-1$ :
+
+          $$\sum_{k=0}^{n-1}\frac1n\sqrt{1+e^{\frac{2k}{n}}} \ \le\ \sum_{k=0}^{n-1} M_kM_{k+1} \ \le\ \sum_{k=0}^{n-1}\frac1n\sqrt{1+e^{\frac{2(k+1)}{n}}}$$
+
+          Le terme du milieu est $S_n$ par définition ; les deux bornes viennent d'être réécrites ci-dessus :
+
+          $$\boxed{\frac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}} \ \le\ S_n \ \le\ \frac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}}}$$
+
+          **Ce qui vient de se passer, à bien remarquer.** La somme de droite porte **le même exposant** $e^{\frac{2k}{n}}$ que la somme de gauche — ce n'est pas $e^{\frac{2(k+1)}{n}}$ qui survit : c'est le **décalage d'indice** ($k=1$ à $n$ au lieu de $k=0$ à $n-1$) qui absorbe entièrement le « $+1$ ». Les deux sommes sont la même fonction évaluée sur deux fenêtres d'indices qui se chevauchent sur $n-1$ termes et diffèrent chacune d'un seul terme aux extrémités.
+
+          **Le piège nommé de cette question.** Laisser l'exposant $e^{\frac{2(k+1)}{n}}$ dans la somme de droite sans faire le changement d'indice — c'est une erreur de transcription qui ne « saute pas aux yeux » parce que la formule reste vraie mathématiquement (c'est la même somme), mais ce n'est **pas** la forme que l'énoncé demande de vérifier. Le changement d'indice n'est pas cosmétique : c'est lui qui prépare la reconnaissance des sommes de Riemann en 2-b.
+        steps:
+          - math: '\sum_{k=0}^{n-1}\dfrac1n\sqrt{1+e^{\frac{2k}{n}}} = \dfrac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}}'
+            note: "Somme des bornes de gauche de la question 1-c : deja la forme demandee."
+          - math: '\sum_{k=0}^{n-1}\dfrac1n\sqrt{1+e^{\frac{2(k+1)}{n}}} \ \underset{j=k+1}{=}\ \dfrac1n\sum_{j=1}^{n}\sqrt{1+e^{\frac{2j}{n}}} = \dfrac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}}'
+            note: "Changement d'indice j = k+1 : le +1 de l'exposant est absorbe par le decalage des bornes de sommation."
+          - math: '\sum_{k=0}^{n-1}\dfrac1n\sqrt{1+e^{\frac{2k}{n}}} \le \sum_{k=0}^{n-1} M_kM_{k+1} \le \sum_{k=0}^{n-1}\dfrac1n\sqrt{1+e^{\frac{2(k+1)}{n}}}'
+            note: "On additionne les n encadrements de la question 1-c, pour k de 0 a n-1."
+          - math: '\boxed{\dfrac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}} \le S_n \le \dfrac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}}}'
+            note: "S_n est le terme du milieu par definition ; les deux bornes viennent d'etre reecrites ci-dessus."
+      - id: q2b
+        stem: |-
+          **b)** (0,5 pt) En déduire que : $\displaystyle\lim_{n \to +\infty} S_n = \int_0^1 \sqrt{1 + e^{2x}}\ dx$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Les deux sommes qui encadrent $S_n$ (question 2-a) ont exactement la forme d'une **somme de Riemann** — un outil du programme SM qui n'appartient pas au socle de cette leçon (voir SCOPE NOTE en tête de fichier), et qu'il faut donc énoncer avant de l'utiliser, comme pour le TAF de la question 1-a.
+
+          **Le théorème des sommes de Riemann, énoncé ici.** Si $h$ est continue sur $[0,1]$, alors :
+
+          $$\frac1n\sum_{k=0}^{n-1} h\!\left(\frac{k}{n}\right) \xrightarrow[n\to+\infty]{} \int_0^1 h(x)\,dx
+          \qquad\text{et}\qquad
+          \frac1n\sum_{k=1}^{n} h\!\left(\frac{k}{n}\right) \xrightarrow[n\to+\infty]{} \int_0^1 h(x)\,dx$$
+
+          — les sommes aux points **gauches** et aux points **droits** de la subdivision régulière de $[0,1]$ convergent toutes deux vers la même intégrale.
+
+          **L'identification de $h$.** Pose $h(x) = \sqrt{1+e^{2x}}$. $h$ est continue sur $[0,1]$ (composée de $x\mapsto e^{2x}$, continue, de $t\mapsto 1+t$, continue, et de $\sqrt{\cdot}$, continue sur $]0,+\infty[$ où $1+e^{2x}$ reste toujours strictement positif). Les deux bornes de la question 2-a sont exactement :
+
+          $$\frac1n\sum_{k=0}^{n-1} h\!\left(\frac{k}{n}\right) \quad\text{(points gauches)}
+          \qquad\text{et}\qquad
+          \frac1n\sum_{k=1}^{n} h\!\left(\frac{k}{n}\right) \quad\text{(points droits)}$$
+
+          **L'application du théorème.** $h$ étant continue sur $[0,1]$, les deux sommes convergent **toutes deux** vers $\displaystyle\int_0^1 h(x)\,dx = \int_0^1 \sqrt{1+e^{2x}}\,dx$.
+
+          **La conclusion, par le théorème des gendarmes.** L'encadrement de la question 2-a place $S_n$ entre deux suites qui tendent vers la **même** limite :
+
+          $$\frac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}} \longrightarrow \int_0^1\sqrt{1+e^{2x}}\,dx
+          \qquad\text{et}\qquad
+          \frac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}} \longrightarrow \int_0^1\sqrt{1+e^{2x}}\,dx$$
+
+          Le théorème des gendarmes force $S_n$, coincé entre les deux, à converger vers cette même valeur :
+
+          $$\boxed{\lim_{n\to+\infty} S_n = \int_0^1 \sqrt{1+e^{2x}}\,dx}$$
+
+          **Ce que le problème vient de démontrer, relu d'ensemble.** $S_n$ est la longueur d'une ligne brisée qui relie $n+1$ points **sur** la courbe $(\Gamma)$ ; à la limite, elle tend vers $\displaystyle\int_0^1\sqrt{1+\bigl(e^x\bigr)'^2}\,dx = \int_0^1\sqrt{1+e^{2x}}\,dx$ — la formule de la **longueur d'un arc de courbe**, ici retrouvée à la main, terme par terme, sans qu'elle n'ait jamais été énoncée comme telle dans l'exercice. C'est le TAF de la question 1-a qui a fabriqué la dérivée $e^{c_k} \approx (e^x)'$ à l'intérieur de chaque distance, et les sommes de Riemann de la question 2-b qui l'ont fait converger vers l'intégrale.
+
+          **Le piège nommé de cette question.** Appliquer le théorème des sommes de Riemann à une seule des deux sommes et en conclure directement la limite de $S_n$, sans passer par l'encadrement puis les gendarmes — $S_n$ lui-même n'est **ni** l'une **ni** l'autre des deux sommes, seulement coincé entre elles ; c'est cette position d'otage entre deux suites de même limite, et rien d'autre, qui donne la limite de $S_n$.
+        steps:
+          - math: 'h(x) = \sqrt{1+e^{2x}} \quad\text{continue sur } [0,1] \quad (\text{composee de fonctions continues, } 1+e^{2x}>0)'
+            note: "Verification de l'hypothese de continuite, seule exigee par le theoreme des sommes de Riemann."
+          - math: '\dfrac1n\sum_{k=0}^{n-1} h\!\left(\dfrac{k}{n}\right) \to \int_0^1 h(x)\,dx \quad\text{et}\quad \dfrac1n\sum_{k=1}^{n} h\!\left(\dfrac{k}{n}\right) \to \int_0^1 h(x)\,dx \quad (\text{sommes de Riemann, hors socle, programme SM})'
+            note: "Theoreme des sommes de Riemann : points gauches ET points droits convergent vers la meme integrale."
+          - math: '\dfrac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}} \le S_n \le \dfrac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}} \quad (\text{question 2-a}), \quad \text{les deux bornes} \to \int_0^1 \sqrt{1+e^{2x}}\,dx'
+            note: "Les deux bornes de l'encadrement de 2-a sont exactement les deux sommes de Riemann ci-dessus."
+          - math: '\boxed{\lim_{n\to+\infty} S_n = \int_0^1 \sqrt{1+e^{2x}}\,dx} \quad (\text{theoreme des gendarmes})'
+            note: "S_n coince entre deux suites de meme limite : la limite lui est imposee."
