@@ -6,7 +6,11 @@
 # de leçon (r-bac + r-variation, [[exercise:]] à R8), pas la rampe embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les QUATRE entrées de ce fichier :
+# exercises.yaml). Les CINQ entrées de ce fichier :
+#   - 2017 session normale (Exercice 4, filière SM, barème 10 points, statut
+#     « vérifié » — agent-vérificateur-adversarial, deux passes,
+#     2026-08-27 — voir la NOTE ÉDITORIALE bk-2017-n-x4 plus bas pour le
+#     détail, dont la table de décodage Adobe Symbol de la Partie 3) ;
 #   - 2019 session normale (Exercice 4, filière SM, barème 10 points, statut
 #     « vérifié » — agent-vérificateur-adversarial, 2026-07-12) ;
 #   - 2020 session normale (Problème, filière SExp, barème 7 points, statut
@@ -18,17 +22,18 @@
 #     « vérifié » — agent-vérificateur-adversarial, 2026-08-27, PASSE SOUS LE
 #     PROTOCOLE COMPLET — voir la NOTE ÉDITORIALE bk-2025-n-x1 plus bas pour
 #     le détail).
-# Les trois premières transcrivent fidèlement les TROIS entrées de
-# docs/sujets/maths/fonction-exponentielle.md — le census de cette notion,
-# qui NE RECENSE PAS ENCORE 2025 : la quatrième entrée (bk-2025-n-x1) est
-# convertie directement depuis docs/sujets/_incoming/maths-sm-2025-n.md,
-# même situation que bk-2024-r-x2 dans
+# Trois d'entre elles (2019, 2020, 2022) transcrivent fidèlement les TROIS
+# entrées de docs/sujets/maths/fonction-exponentielle.md — le census de
+# cette notion, qui NE RECENSE ENCORE NI 2017 NI 2025 : ces deux entrées
+# (bk-2017-n-x4 et bk-2025-n-x1) sont converties directement depuis
+# docs/sujets/_incoming/ (respectivement maths-sm-2017-n.md et
+# maths-sm-2025-n.md), même situation que bk-2024-r-x2 dans
 # content/maths/calcul-integral/bank.yaml (converti depuis _incoming avant
 # que son propre census ne recense le rattrapage). Les STATUTS DIFFÈRENT
-# (trois « vérifié », un « corrigé (conforme au scan) »), tout comme les
-# FILIÈRES (SM pour 2019 et 2025, SExp pour 2020 et 2022) : c'est reporté
-# honnêtement, entrée par entrée, dans `sourcing.note` ci-dessous — aucune
-# des quatre n'est requalifiée. Aucun autre sujet n'est disponible pour
+# (quatre « vérifié », un « corrigé (conforme au scan) »), tout comme les
+# FILIÈRES (SM pour 2017, 2019 et 2025, SExp pour 2020 et 2022) : c'est
+# reporté honnêtement, entrée par entrée, dans `sourcing.note` ci-dessous —
+# aucune des cinq n'est requalifiée. Aucun autre sujet n'est disponible pour
 # cette notion : introuvable = absent, jamais inventé. Raisonnement rédigé à la
 # voix experte de la maison sur 100 % des questions ; barème transcrit tel
 # quel dans les énoncés ; conventions KaTeX (block scalars pour la prose,
@@ -224,6 +229,166 @@
 # 3a/3b ci-dessus, voir la toute première SCOPE NOTE de ce fichier). Même
 # discipline : le théorème est énoncé, ses hypothèses vérifiées, son
 # application faite explicitement au point d'usage, jamais supposé acquis.
+# ─────────────────────────────────────────────────────────────────────────
+#
+# NOTE ÉDITORIALE bk-2017-n-x4 (2017, session normale, Exercice 4, 10 pts,
+# filière SM) — à lire avant toute revue de cette entrée.
+#
+# SOURCE ET PROTOCOLE. Convertie depuis
+# docs/sujets/_incoming/maths-sm-2017-n.md, statut « VÉRIFIÉ EN DEUX PASSES,
+# CLEARÉ POUR CONVERSION ». Historique honnête du fichier source, reporté ici
+# parce qu'il compte : une première passe adversariale (2026-08-27) a été
+# tuée en cours d'écriture (plafond de session) avant d'écrire sa section de
+# preuve — le statut a été ramené à « PASSE INTERROMPUE », jamais laissé à
+# « vérifié » sans preuve. Une SECONDE passe a repris exactement les points
+# laissés ouverts et les a soldés un par un, avec au moins un recoupement NON
+# VISUEL par point (coordonnées PDF réelles, GID de glyphe, ou OCR
+# indépendant) — c'est elle qui autorise le « vérifié » ci-dessous. Les
+# quatre contrôles anti-CDN (title HTML servi, année ET code NS 25 relus en
+# couche texte ET en OCR, MD5 des cinq JPEG + du PDF) ont tous été faits,
+# plus deux ajoutés : concordance JPEG/PDF au pixel (IoU 0,68–0,76) et OCR
+# intégral indépendant du corps des pages 3–5.
+#
+# RECOMPTE DU BARÈME (indépendant, question par question, refait pour cette
+# conversion et non simplement repris du fichier _incoming) :
+#   Partie 1 = 0,25+0,5+0,5+0,5+0,25+0,75+0,5 = 3,25 (q1-1a à q1-3b, 7 questions)
+#   Partie 2 = 0,25+0,5+0,25+0,5+0,5+0,5+0,25+0,25 = 3,00 (q2-1 à q2-4c, 8 questions)
+#   Partie 3 = 0,5+0,25+0,25+0,25+0,5+0,5+0,5+0,5+0,5 = 3,75 (q3-1a à q3-3d, 9 questions)
+#   Total 3,25+3,00+3,75 = 10,00 — conforme à la carte des composantes du
+# sujet (Exercice 4 : 10 pts) et au recompte déjà consigné dans le fichier
+# _incoming, lui-même confirmé une seconde fois par l'OCR de la marge du
+# scan. 24 questions au total (7+8+9), aucun écart trouvé avec le fichier
+# source ni avec l'énoncé du sujet officiel.
+#
+# LE SLUG DOMINANT — fonction-exponentielle, tranché par le fichier source.
+# La fonction ÉTUDIÉE est $f(x)=\left(1+\frac1x\right)e^{-1/x}$ : le $\ln$
+# n'apparaît NULLE PART dans sa définition, ni en Partie 1 (3,25 pts) ni en
+# Partie 2 (3,00 pts) — soit 6,25 points sur 10 sans un seul logarithme. En
+# Partie 3 (3,75 pts), l'objet reste exponentiel : $(a_n)$ est DÉFINIE par
+# $f(a_n)=e^{-1/n}$ ; le $\ln$ n'y entre que comme OUTIL (passage au
+# logarithme en q3-1c, puis l'encadrement classique de $\ln(1+x)$ en q3-2b,
+# réinvesti en q3-3b) — un cross-list solide (nommé au point d'usage
+# ci-dessous), pas le domaine dominant.
+#
+#   | Bloc                                                        | Questions     | Points |
+#   |---------------------------------------------------------------|----------------|--------|
+#   | Étude de f : continuité/dérivabilité en 0, dérivée, limite,    | q1-1a à q1-3b  | 3,25   |
+#   | tableau de variation, point d'inflexion, tracé                 |                |        |
+#   | F et calcul intégral associé : IPP, primitive fermée de f,     | q2-1 à q2-4c   | 3,00   |
+#   | aire en cm², TAF, limite de (u_n)                               |                |        |
+#   | Suite implicite (a_n) : existence/unicité par bijection,       | q3-1a à q3-3d  | 3,75   |
+#   | monotonie, encadrements via ln, minoration et deux limites      |                |        |
+#
+# LA CLÉ DE DÉCODAGE — la substitution de police de la Partie 3. Le fichier
+# source relève SIX identifiants de glyphe (GID) dans une vraie Times New
+# Roman incorporée (police F17, 273 884 octets, Identity-H) : ces GID disent
+# quel glyphe s'affiche, jamais quel symbole mathématique il signifie. La
+# preuve qui tranche le sens tient sur DIX points de code Unicode
+# INDÉPENDANTS, relus dans l'encodage Adobe Symbol, qui retombent tous
+# exactement sur le symbole attendu, sans exception, sur des familles de
+# symboles sans rapport entre elles :
+#   0x22 → universal ($\forall$) · 0xA3 → lessequal ($\le$) · 0xA5 →
+#   infinity ($\infty$) · 0xAE → arrowright ($\to$) · 0xB3 → greaterequal
+#   ($\ge$) · 0xB4 → multiply ($\times$, exercice 3) · 0xBA → equivalence
+#   ($\equiv$, congruence, exercice 3) · 0xCE → element ($\in$) · 0xE6–0xF8 →
+#   fragments de parenthèse extensible · 0xF2 → integral ($\int$, P2 q2-2a).
+# Dix correspondances exactes sur dix : ce n'est pas une coïncidence, c'est
+# une chaîne de production qui a lu des octets encodés en Symbol comme du
+# Latin-1 avant de les composer en Times New Roman. C'est cette clé — pas le
+# GID seul — qui autorise à lire « £ » = $\le$ et « ³ » = $\ge$ dans les
+# stems ci-dessous, sans note par occurrence : le décodage est documenté ICI,
+# une fois, pour tout le fichier, et les stems portent directement le
+# symbole correct.
+#
+# LES COMPTES EXACTS (balayage exhaustif des caractères non-ASCII des pages
+# 3, 4 et 5, pas une lecture à l'œil) :
+#   - 7 occurrences de « £ », LES SEPT valant $\le$, TOUTES en Partie 3
+#     (q3-2a ×2, q3-2b ×2, q3-3b ×2, q3-3c ×1). Aucune en Partie 1 ni Partie
+#     2 pour cet exercice — piège signalé par le fichier source : ce même
+#     glyphe vaut $\mathbb{C}$ ailleurs dans le même PDF (exercice 2), mais
+#     l'exercice 4 n'a aucun complexe, donc les sept sont bien $\le$.
+#   - 3 occurrences de « ³ », LES TROIS valant $\ge$, TOUTES en Partie 3
+#     q3-3a ($a_4\ge1$, $a_n\ge1$, $e^{3/4}\ge2$). « £ » et « ³ » sont deux
+#     inégalités DE SENS OPPOSÉ rendues par deux glyphes qui ne portent
+#     aucun des deux le sens attendu — chaque occurrence a été adjugée par
+#     la cohérence mathématique (revérifiée indépendamment pour cette
+#     conversion, question par question, dans les champs `reasoning`
+#     ci-dessous), jamais par la forme du glyphe.
+#   - 5 occurrences de « ¥ » dans l'exercice 4 : 1× pour $\mathbb{N}$
+#     (q3-1c, « $n\in\mathbb{N}^*$ ») et 4× pour $+\infty$ (q3-2a, q3-2b, et
+#     sous les deux « lim » de q3-3c/q3-3d). LES NEUF occurrences de ce
+#     glyphe dans tout le PDF (les cinq ci-dessus plus quatre autres dans
+#     l'exercice 3, hors périmètre de cette entrée) PORTENT LE MÊME CODE —
+#     0xA5, GID 150 — que la valeur soit $\mathbb{N}$ ou $+\infty$ : le
+#     glyphe ne discrimine pas, seul le CONTEXTE tranche (syntaxe
+#     d'intervalle/de limite pour $+\infty$ ; le français en toutes lettres
+#     de q3-1a, « entier naturel non nul », pour $\mathbb{N}$). Fait honnête
+#     du fichier source, repris tel quel : la clé Adobe Symbol explique les
+#     quatre $+\infty$, elle n'explique PAS les $\mathbb{N}$ — une seconde
+#     police source, non identifiable depuis le fichier, a dû être écrasée
+#     sur les mêmes codes.
+#
+# LES TROIS DÉFAUTS DU SUJET OFFICIEL — documentés ici, PAS réparés dans les
+# stems ci-dessous (règle de la maison : on documente, on ne répare pas) :
+#   1. Le « ; » imprimé à la place d'un « ≃ » en Partie 1 q1-3b (« f(1) ;
+#      0,7 » et « 4e^{-3} ; 0,2 »), DEUX occurrences. Adjugé AU NIVEAU DE
+#      L'OCTET par le fichier source : police F15, vraie Times New Roman,
+#      encodage WinAnsi, SANS table /Differences — donc un point-virgule
+#      AUTHENTIQUE, pas une substitution de plus (une police différente de
+#      la F17 cassée qui produit « £ » et « ³ »). C'est une incohérence du
+#      document officiel, conservée telle quelle dans le stem de q1-3b
+#      ci-dessous, avec une note pour le lecteur.
+#   2. La substitution de police elle-même, sur toute la Partie 3 et sur les
+#      deux « ò »/intégrales de Partie 2 q2-2a. La police cassée (F17) est
+#      RÉELLEMENT INCORPORÉE au PDF (273 884 octets de TrueType) : le dégât
+#      est cuit dans le sujet officiel, ce n'est pas un artefact du rendu
+#      local ni du rastériseur d'AlloSchool (confirmé par la concordance
+#      JPEG/PDF au pixel). N'importe quel lecteur conforme affiche les mêmes
+#      mauvais glyphes qu'un candidat aurait vus en téléchargeant ce PDF.
+#   3. Le quantificateur $\mathbb{N}^*$ de Partie 2 q2-4b est PHYSIQUEMENT
+#      ABSENT du document : à sa place, le PDF pose une image blanche de
+#      2×2 pixels étirée (bbox relevé par le fichier source), sans aucun
+#      glyphe dessous — ce n'est pas une substitution décodable comme les
+#      deux points précédents, c'est un vrai trou. Voir le point suivant.
+#
+# LE TROU DU $\mathbb{N}^*$ (Partie 2 q2-4b) — SIGNALÉ, PAS COMBLÉ EN
+# SILENCE. Le fichier source adjuge $\mathbb{N}^*$ par le contexte (le
+# membre de gauche de l'encadrement, $2(1+\frac1n)e^{-1/n}$, n'est même pas
+# défini en $n=0$ — division par $n$ — donc l'énoncé ne peut viser que
+# $n\ge1$ ; et Partie 3 q3-1a écrit le même quantificateur en toutes
+# lettres, « entier naturel non nul »). Cette conversion suit la même règle
+# que le repère manquant de bk-2020-n-x4 dans cette même banque (q7) : le
+# stem de q2-4b PORTE le symbole que le sens impose ($\mathbb{N}^*$, pour
+# qu'un élève ne bute jamais sur un trou), ET porte une note explicite
+# disant que le document source ne le porte pas (pour qu'un mainteneur ne
+# croie jamais que le sujet l'imprimait).
+#
+# SCOPE NOTE bk-2017-n-x4 (divulgation honnête, authoring-side — même
+# discipline que les SCOPE NOTES de bk-2019-n-x4, bk-2020-n-x4 et
+# bk-2025-n-x1 dans ce même fichier). Cette entrée mobilise plusieurs outils
+# hors du corps R0–R7 de cette leçon, chacun nommé au point d'usage dans les
+# champs `reasoning` ci-dessous :
+#   - la DÉFINITION du nombre dérivé par limite du taux d'accroissement
+#     (dérivabilité à droite en 0, q1-1b) et le POINT D'INFLEXION par
+#     changement de signe de f'' (q1-3a) — outils de
+#     `derivabilite-etude-fonctions`, même écart déjà signalé pour
+#     bk-2019-n-x4 et bk-2020-n-x4 ;
+#   - le THÉORÈME DES ACCROISSEMENTS FINIS (TAF, q2-4a) — même outil de
+#     `derivabilite-etude-fonctions` déjà mobilisé par bk-2019-n-x4 (Rolle
+#     et TAF) dans ce fichier ;
+#   - l'INTÉGRATION PAR PARTIES (IPP, q2-2a) et le théorème de COMPARAISON
+#     des intégrales (q3-2b) — outils de `calcul-integral`, R7 et R4 ;
+#   - le COROLLAIRE DU TVI pour une fonction continue strictement monotone
+#     (existence-unicité de $a_n$, q3-1a) — outil de `limites-continuite`,
+#     R5 ;
+#   - le THÉORÈME DE COMPARAISON et le THÉORÈME DES GENDARMES pour les
+#     suites (q2-4c, q3-3c, q3-3d) — outils de `suites-numeriques`, R6 ;
+#   - le PASSAGE AU LOGARITHME et $\ln(uv)=\ln(u)+\ln(v)$ (q3-1c), et la
+#     primitive de $\frac1{1+t}$ en $\ln(1+t)$ (q3-2b, lecture à l'envers de
+#     la dérivée de $\ln(u)$) — outils de `fonction-logarithme`, R2 et R3.
+# Chaque outil est énoncé explicitement au point d'usage, ses hypothèses
+# vérifiées, son application faite en clair — jamais supposé acquis sans
+# être nommé.
 # ─────────────────────────────────────────────────────────────────────────
 
 notion: maths/fonction-exponentielle
@@ -644,7 +809,7 @@ entries:
       filiere: "SExp"
       exercise_label: "Problème"
     bareme_total: 8.5
-    duration_min: 60
+    duration_min: 51
     sourcing:
       status: sourced
       note: >-
@@ -1704,3 +1869,582 @@ entries:
             note: "Produit de deux suites convergentes : la limite est le produit des limites."
           - math: '\int_0^1 x\,f(x)\,dx = \int_0^{1/2} f(x)\,dx \quad (\text{III-1b}) = \dfrac{1}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac{\pi}{4}\right) \quad (\text{I-5b})'
             note: "On relie a III-1b puis a I-5b : l'exercice boucle sur lui-meme."
+
+  # ── bk-2017-n-x4 — 2017 N, Exercice 4 (SM) : e^(-1/x), primitive fermee, TAF, suite implicite (a_n) ──
+  - id: bk-2017-n-x4
+    title: "Étude d'une fonction exponentielle en 1/x, primitive associée et suite implicite : encadrements et limites"
+    source:
+      year: 2017
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 4"
+    bareme_total: 10
+    duration_min: 60
+    sourcing:
+      status: sourced
+      note: >-
+        2017 session normale — examen national Sciences Mathématiques (SM-A
+        et SM-B, BIOF), Mathématiques (4 h, coef 9), code NS 25, AlloSchool
+        element/57970 (Exercice 4, 10 points, pages 3-5). Transcription
+        VÉRIFIÉE EN DEUX PASSES ADVERSARIALES (2026-08-27) : re-fetch
+        AlloSchool indépendant avec les quatre contrôles anti-CDN (title
+        HTML, année et code NS 25 relus par couche texte ET OCR, MD5 des
+        cinq JPEG + du PDF, concordance JPEG/PDF au pixel), décodage de la
+        substitution de police de la Partie 3 par correspondance Adobe
+        Symbol sur dix points de code indépendants, recompte du barème par
+        trois voies (marge, calcul, OCR) — 3,25+3,00+3,75=10. Statut
+        « vérifié » (docs/sujets/_incoming/maths-sm-2017-n.md). Convertie
+        directement depuis ce fichier _incoming, comme bk-2025-n-x1 dans
+        cette même banque : le census
+        docs/sujets/maths/fonction-exponentielle.md ne recense pas encore
+        2017.
+    intro: |-
+      **Étude de fonction (examen national, session normale 2017, Sciences Mathématiques).**
+
+      On considère la fonction numérique $f$ définie sur $[0, +\infty[$ par :
+
+      $$f(0) = 0 \qquad \text{et} \qquad \left(\forall x \in\, ]0, +\infty[\right)\quad f(x) = \left(1 + \frac{1}{x}\right)e^{-\frac{1}{x}}$$
+
+      Soit $(C)$ la courbe représentative de $f$ dans un repère orthonormé $(O, \vec{i}, \vec{j})$ *(on prend $\|\vec{i}\| = \|\vec{j}\| = 2\,cm$)*.
+    questions:
+      - id: q1-1a
+        part: "Partie 1, 1 — Continuité et dérivabilité à droite en 0"
+        stem: |-
+          **(0,25 pt)** Montrer que la fonction $f$ est continue à droite en $0$.
+        reasoning: |-
+          Continue à droite en $0$ signifie exactement $\lim_{x\to0^+} f(x) = f(0) = 0$ : c'est la définition à vérifier, rien d'autre.
+
+          Pour $x>0$, pose $u=\frac1x$ : quand $x\to0^+$, $u\to+\infty$. Réécris $f$ en fonction de $u$ :
+
+          $$f(x) = (1+u)e^{-u} = u\,e^{-u} + e^{-u}$$
+
+          C'est une forme $\infty\times0$ à retravailler avant de conclure — une forme indéterminée au sens de la notion `limites-continuite` (le produit $u\,e^{-u}$, avec $u\to+\infty$ et $e^{-u}\to0$). Le rung R4 de cette leçon donne directement $\lim_{u\to+\infty} u\,e^{-u} = 0$ (c'est l'inverse de la croissance comparée $e^{u}/u\to+\infty$) ; et $\lim_{u\to+\infty} e^{-u} = 0$ aussi (R4). Somme de deux limites nulles :
+
+          $$\lim_{x\to0^+} f(x) = 0 + 0 = 0 = f(0)$$
+
+          $f$ est donc continue à droite en $0$.
+        steps:
+          - math: 'f(x) = (1+u)e^{-u} = u\,e^{-u} + e^{-u} \quad (u = \tfrac1x \to +\infty \text{ quand } x\to0^+)'
+            note: "On pose u = 1 sur x pour se ramener a une limite en plus l'infini."
+          - math: '\lim_{u\to+\infty} u\,e^{-u} = 0 \quad (\text{inverse de } e^u/u\to+\infty,\ R4)'
+            note: "Croissance comparee du rung R4 : u fois e puissance moins u tend vers 0."
+          - math: '\lim_{u\to+\infty} e^{-u} = 0 \quad (R4)'
+            note: "e puissance moins u tend vers 0 quand u tend vers plus l'infini."
+          - math: '\lim_{x\to0^+} f(x) = 0+0 = 0 = f(0) \ \Rightarrow\ f \text{ continue a droite en } 0'
+            note: "Somme de deux limites nulles : la limite vaut f(0), continuite a droite etablie."
+      - id: q1-1b
+        stem: |-
+          **(0,5 pt)** Montrer que la fonction $f$ est dérivable à droite en $0$.
+        reasoning: |-
+          Dérivable à droite en $0$ signifie que le taux d'accroissement $\dfrac{f(x)-f(0)}{x-0}=\dfrac{f(x)}{x}$ admet une limite finie quand $x\to0^+$ — c'est la définition du nombre dérivé par limite du taux d'accroissement, un outil de la notion `derivabilite-etude-fonctions` (R1), mobilisé ici parce qu'on est à la borne du domaine, là où aucune formule de dérivée n'est encore disponible.
+
+          $$\frac{f(x)}{x} = \frac{e^{-1/x}}{x} + \frac{e^{-1/x}}{x^2}$$
+
+          Avec $u=\frac1x\to+\infty$ (comme à la question précédente), les deux termes deviennent $u\,e^{-u}$ et $u^2e^{-u}$. Le premier tend vers $0$ (déjà établi, question 1-a). Pour le second, écris-le comme un carré pour te ramener à la même croissance comparée : $u^2e^{-u} = \left(u\,e^{-u/2}\right)^2$. Or $u\,e^{-u/2} = \dfrac{2t}{e^{t}}$ avec $t=\dfrac u2\to+\infty$, qui tend vers $0$ (R4, même croissance comparée). Donc $u^2e^{-u}\to0^2=0$.
+
+          $$\lim_{x\to0^+} \frac{f(x)}{x} = 0+0 = 0$$
+
+          La limite existe et est finie : $f$ est dérivable à droite en $0$, avec $f'_d(0)=0$.
+        steps:
+          - math: '\frac{f(x)}{x} = \frac{e^{-1/x}}{x} + \frac{e^{-1/x}}{x^2} = u\,e^{-u} + u^2e^{-u} \quad (u=\tfrac1x)'
+            note: "On developpe le taux d'accroissement en fonction de u = 1 sur x."
+          - math: 'u^2e^{-u} = \left(u\,e^{-u/2}\right)^2,\qquad u\,e^{-u/2} = \frac{2t}{e^{t}} \ (t=\tfrac u2\to+\infty) \to 0 \quad (R4)'
+            note: "On ecrit u carre e puissance moins u comme un carre pour reutiliser la meme croissance comparee."
+          - math: '\Rightarrow\ u^2e^{-u} \to 0^2 = 0'
+            note: "Le carre d'une quantite qui tend vers 0 tend vers 0."
+          - math: '\lim_{x\to0^+} \frac{f(x)}{x} = 0+0=0 \ \Rightarrow\ f \text{ derivable a droite en } 0,\ f''_d(0)=0'
+            note: "Limite finie du taux d'accroissement : f est derivable a droite en 0, de nombre derive 0."
+      - id: q1-1c
+        stem: |-
+          **(0,5 pt)** Montrer que la fonction $f$ est dérivable sur $]0, +\infty[$ puis calculer $f'(x)$ pour tout $x$ dans l'intervalle $]0, +\infty[$.
+        reasoning: |-
+          Sur $]0,+\infty[$, $f$ est un produit de deux fonctions dérivables : $u(x)=1+\dfrac1x$ (dérivable comme somme d'une constante et d'un quotient sans zéro au dénominateur) et $v(x)=e^{-1/x}$, dérivable par composition (R3 : $e^{w}$ est dérivable dès que $w$ l'est, ici $w(x)=-\dfrac1x$, dérivable sur $]0,+\infty[$, sans aucune condition de signe à vérifier contrairement à un logarithme). Somme et produit de fonctions dérivables restent dérivables (`derivabilite-etude-fonctions`, R2) : $f$ est dérivable sur $]0,+\infty[$.
+
+          $$u'(x) = -\frac1{x^2} \qquad\qquad v'(x) = \frac1{x^2}e^{-1/x} \quad (\text{dérivée de } e^{w},\ w'(x)=\tfrac1{x^2})$$
+
+          La règle du produit $(uv)'=u'v+uv'$ donne :
+
+          $$f'(x) = -\frac1{x^2}e^{-1/x} + \left(1+\frac1x\right)\frac1{x^2}e^{-1/x} = \frac{e^{-1/x}}{x^2}\left[-1+1+\frac1x\right] = \frac{e^{-1/x}}{x^2}\times\frac1x$$
+
+          $$f'(x) = \frac{e^{-1/x}}{x^3}$$
+        steps:
+          - math: 'u(x)=1+\dfrac1x,\ u''(x)=-\dfrac1{x^2}\qquad v(x)=e^{-1/x},\ v''(x)=\dfrac1{x^2}e^{-1/x}'
+            note: "Derivees des deux facteurs : u par quotient, v par composition avec e puissance (rung R3)."
+          - math: 'f''(x) = u''(x)v(x)+u(x)v''(x) = -\dfrac1{x^2}e^{-1/x} + \left(1+\dfrac1x\right)\dfrac1{x^2}e^{-1/x}'
+            note: "Regle du produit appliquee aux deux facteurs u et v."
+          - math: 'f''(x) = \dfrac{e^{-1/x}}{x^2}\left[-1+1+\dfrac1x\right] = \dfrac{e^{-1/x}}{x^2}\times\dfrac1x'
+            note: "On factorise par e puissance moins 1 sur x sur x carre ; le crochet se simplifie a 1 sur x."
+          - math: 'f''(x) = \dfrac{e^{-1/x}}{x^3}'
+            note: "Expression finale de la derivee sur ]0, plus l'infini[."
+      - id: q1-2a
+        part: "Partie 1, 2 — Limite en +infini et tableau de variation"
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} f(x)$ puis interpréter graphiquement le résultat obtenu.
+        reasoning: |-
+          Quand $x\to+\infty$, $\dfrac1x\to0$, donc $1+\dfrac1x\to1$ et $e^{-1/x}\to e^0=1$ (continuité de $\exp$, R1/R5). Deux limites finies qui se multiplient — un produit de limites, sans indétermination (`limites-continuite`, R2) :
+
+          $$\lim_{x\to+\infty} f(x) = 1\times1 = 1$$
+
+          Graphiquement, ça veut dire que la courbe $(C)$ se rapproche indéfiniment de la droite horizontale $y=1$ sans jamais l'atteindre : $(C)$ admet la droite d'équation $y=1$ comme **asymptote horizontale** en $+\infty$.
+        steps:
+          - math: '\dfrac1x\to0 \ \Rightarrow\ 1+\dfrac1x\to1 \quad \text{et} \quad e^{-1/x}\to e^0=1 \quad (\text{continuite de } \exp)'
+            note: "Les deux facteurs de f tendent chacun vers une limite finie quand x tend vers plus l'infini."
+          - math: '\lim_{x\to+\infty} f(x) = 1\times1 = 1 \quad (\text{produit de limites finies})'
+            note: "Produit de deux limites finies : pas d'indetermination."
+          - math: '\Rightarrow\ (C) \text{ admet l''asymptote horizontale } y=1 \text{ en } +\infty'
+            note: "Interpretation graphique : la courbe se rapproche de la droite y = 1."
+      - id: q1-2b
+        stem: |-
+          **(0,25 pt)** Donner le tableau de variation de la fonction $f$.
+        reasoning: |-
+          $f'(x) = \dfrac{e^{-1/x}}{x^3}$ pour $x>0$ (question 1-c) : l'exponentielle est toujours strictement positive et $x^3>0$ pour $x>0$, donc $f'(x)>0$ sur tout $]0,+\infty[$. $f$ est donc strictement croissante sur $]0,+\infty[$, et comme elle est aussi continue en $0$ (question 1-a) avec $f(0)=0 < f(x)$ pour tout $x>0$, $f$ est strictement croissante sur $[0,+\infty[$ tout entier.
+
+          Tableau : $f$ croît strictement de $f(0)=0$ à $\displaystyle\lim_{x\to+\infty}f(x)=1$ (question 2-a), sans jamais atteindre $1$.
+        steps:
+          - math: 'f''(x) = \dfrac{e^{-1/x}}{x^3} > 0 \quad (\forall x>0) \quad (e^{-1/x}>0 \text{ toujours},\ x^3>0)'
+            note: "f prime est strictement positive sur tout l'intervalle ]0, plus l'infini[."
+          - math: '\Rightarrow\ f \text{ strictement croissante sur } [0,+\infty[ \, ;\quad f(0)=0,\ \lim_{x\to+\infty}f(x)=1'
+            note: "f croit strictement de 0 a 1 (limite non atteinte), tableau en une seule ligne."
+      - id: q1-3a
+        part: "Partie 1, 3 — Point d'inflexion et tracé"
+        stem: |-
+          **(0,75 pt)** Montrer que la courbe $(C)$ admet un point d'inflexion $I$ dont on déterminera les coordonnées.
+        reasoning: |-
+          Un point d'inflexion est un point où $f''$ change de signe (`derivabilite-etude-fonctions`, R5) : il faut donc calculer $f''$ à partir de $f'(x)=\dfrac{e^{-1/x}}{x^3}$ (question 1-c) et étudier son signe. Pour éviter d'empiler les apostrophes dans les champs de calcul, on y note $f^{(2)}$ la dérivée seconde de $f$ — même objet que $f''$ dans l'énoncé.
+
+          Dérive $f'=e^{-1/x}\times x^{-3}$ comme un produit : la dérivée de $e^{-1/x}$ est $\dfrac1{x^2}e^{-1/x}$ (déjà utilisée en 1-c), celle de $x^{-3}$ est $-3x^{-4}$.
+
+          $$f''(x) = \frac1{x^2}e^{-1/x}\times x^{-3} + e^{-1/x}\times(-3x^{-4}) = e^{-1/x}\left[x^{-5}-3x^{-4}\right] = \frac{e^{-1/x}(1-3x)}{x^5}$$
+
+          Sur $]0,+\infty[$, $e^{-1/x}>0$ et $x^5>0$ toujours : le signe de $f''$ est exactement celui de $(1-3x)$, qui s'annule en $x=\dfrac13$ — positif avant, négatif après. $f''$ change bien de signe en $x=\dfrac13$ : $(C)$ change de concavité (convexe puis concave) à cet endroit précis, c'est un point d'inflexion.
+
+          $$f\left(\frac13\right) = \left(1+3\right)e^{-3} = 4e^{-3}$$
+
+          $$I\left(\frac13,\ 4e^{-3}\right)$$
+        steps:
+          - math: 'f^{(2)}(x) = \dfrac1{x^2}e^{-1/x}\times x^{-3} + e^{-1/x}\times(-3x^{-4}) = e^{-1/x}\left[x^{-5}-3x^{-4}\right]'
+            note: "On derive f prime comme un produit ; f seconde notee f exposant 2 pour eviter d'empiler les apostrophes."
+          - math: 'f^{(2)}(x) = \dfrac{e^{-1/x}(1-3x)}{x^5}'
+            note: "Forme factorisee de f seconde."
+          - math: 'e^{-1/x}>0,\ x^5>0 \ \Rightarrow\ \text{signe de } f^{(2)}(x) = \text{signe de } (1-3x),\ \text{nul en } x=\tfrac13'
+            note: "Le signe de f seconde suit exactement le signe de 1 moins 3x, qui change en x = 1/3."
+          - math: 'f\!\left(\tfrac13\right) = (1+3)e^{-3} = 4e^{-3} \ \Rightarrow\ I\left(\tfrac13,\,4e^{-3}\right)'
+            note: "Coordonnees du point d'inflexion, obtenues en evaluant f en 1/3."
+      - id: q1-3b
+        stem: |-
+          **(0,5 pt)** Tracer la courbe $(C)$. *(On prend : $f(1)\,;\ 0{,}7$ et $4e^{-3}\,;\ 0{,}2$)*
+
+          **Note sur ce signe (fidèle au scan)** : le sujet officiel imprime un point-virgule (« ; ») entre chaque valeur exacte et son approximation, là où le sens attend $\simeq$ — $f(1)=2e^{-1}\approx0{,}7358$ et $4e^{-3}\approx0{,}1991$ sont bien deux valeurs approchées, pas deux énumérations. Conservé tel quel ci-dessus : c'est une incohérence du document source (police authentique, encodage WinAnsi, aucune substitution de glyphe), pas un artefact de transcription.
+        reasoning: |-
+          On ne trace pas au hasard : on reporte tout ce qui a déjà été établi.
+
+          — **Continuité et point de départ** : $f(0)=0$, et $f$ est continue (même dérivable) à droite en $0$ (question 1-a/1-b) — la courbe part bien de l'origine, sans saut.
+          — **Variations** : $f$ est strictement croissante sur $[0,+\infty[$ tout entier (question 2-b), de $0$ à $1$.
+          — **Asymptote** : la droite $y=1$ est asymptote horizontale en $+\infty$ (question 2-a) — la courbe s'aplatit contre cette droite sans jamais la toucher.
+          — **Concavité** : point d'inflexion en $I\left(\frac13,4e^{-3}\right)$ (question 3-a) — convexe avant, concave après.
+          — **Deux repères numériques** donnés par l'énoncé : $f(1)\approx0{,}7$ (un point de la partie croissante) et $4e^{-3}\approx0{,}2$, qui n'est autre que l'ordonnée du point d'inflexion $I$ lui-même (question 3-a) — les deux points fournis pour le tracé sont donc $\left(1,f(1)\right)$ et $I$.
+
+          On place ces repères — l'origine, $I\left(\frac13,0{,}2\right)$, le point $\left(1,0{,}7\right)$, et l'asymptote $y=1$ — puis on relie par une courbe strictement croissante, convexe sur $\left[0,\frac13\right]$, concave sur $\left[\frac13,+\infty\right[$, s'aplatissant contre $y=1$.
+      - id: q2-1
+        part: "Partie 2, 1 — Continuité de F"
+        stem: |-
+          **Partie 2.** On considère la fonction numérique $F$ définie sur $[0, +\infty[$ par :
+
+          $$F(x) = \int_x^{1} f(t)\,dt$$
+
+          **(0,25 pt)** Montrer que la fonction $F$ est continue sur l'intervalle $[0, +\infty[$.
+        reasoning: |-
+          $f$ est continue sur $[0,+\infty[$ tout entier : continue à droite en $0$ (question 1-a) et dérivable donc continue sur $]0,+\infty[$ (question 1-c). Une fonction continue sur un intervalle y admet toujours une primitive (théorème admis) — note $G$ une primitive de $f$ sur $[0,+\infty[$.
+
+          D'après la définition de l'intégrale entre deux bornes (`calcul-integral`, R1) : $\displaystyle\int_x^1 f(t)\,dt = G(1)-G(x)$, donc
+
+          $$F(x) = G(1) - G(x)$$
+
+          $F$ est la différence d'une constante ($G(1)$) et d'une fonction continue ($G$, puisque dérivable) : $F$ est continue sur $[0,+\infty[$.
+        steps:
+          - math: 'f \text{ continue sur } [0,+\infty[ \ \Rightarrow\ f \text{ admet une primitive } G \text{ sur } [0,+\infty[ \quad (\text{theoreme admis})'
+            note: "Toute fonction continue sur un intervalle y admet une primitive."
+          - math: 'F(x) = \int_x^1 f(t)\,dt = G(1)-G(x)'
+            note: "F s'exprime comme la difference d'une constante G(1) et de G(x), definition de l'integrale."
+          - math: '\Rightarrow\ F \text{ continue sur } [0,+\infty[ \quad (\text{difference d''une constante et d''une fonction continue})'
+            note: "G est continue (car derivable), donc F, difference avec une constante, l'est aussi."
+      - id: q2-2a
+        part: "Partie 2, 2 — Intégration par parties et primitive de f"
+        stem: |-
+          **(0,5 pt)** En utilisant la méthode d'intégration par parties, montrer que :
+
+          $$\left(\forall x \in\, ]0, +\infty[\right)\quad \int_x^{1} e^{-\frac{1}{t}}\,dt = e^{-1} - x\,e^{-\frac{1}{x}} - \int_x^{1} \frac{1}{t}\,e^{-\frac{1}{t}}\,dt$$
+        reasoning: |-
+          L'intégration par parties (`calcul-integral`, R7) échange un produit difficile à primitiver contre un autre, plus simple, au prix d'un terme de bord. Ici l'intégrande est $e^{-1/t}\times1$ : pose $u(t)=e^{-1/t}$ (dont la dérivée, déjà calculée en Partie 1, est plus maniable) et $v'(t)=1$ (dont une primitive immédiate est $v(t)=t$).
+
+          $$u(t) = e^{-1/t},\quad u'(t) = \frac1{t^2}e^{-1/t} \qquad\qquad v'(t)=1,\quad v(t)=t$$
+
+          La formule de l'IPP, $\displaystyle\int_x^1 uv' = \big[uv\big]_x^1 - \int_x^1 u'v$ :
+
+          $$\int_x^1 e^{-1/t}\,dt = \big[t\,e^{-1/t}\big]_x^1 - \int_x^1 t\times\frac1{t^2}e^{-1/t}\,dt$$
+
+          Évalue le terme de bord : $\big[t\,e^{-1/t}\big]_x^1 = 1\cdot e^{-1} - x\,e^{-1/x} = e^{-1}-xe^{-1/x}$. Et $t\times\dfrac1{t^2}=\dfrac1t$ dans l'intégrale restante.
+
+          $$\int_x^1 e^{-1/t}\,dt = e^{-1} - x\,e^{-1/x} - \int_x^1 \frac1t\,e^{-1/t}\,dt$$
+        steps:
+          - math: 'u(t)=e^{-1/t},\ u''(t)=\dfrac1{t^2}e^{-1/t} \qquad v''(t)=1,\ v(t)=t'
+            note: "Choix de l'IPP : u derive vers une forme plus simple, v prime se primitive immediatement."
+          - math: '\int_x^1 e^{-1/t}\,dt = \big[t\,e^{-1/t}\big]_x^1 - \int_x^1 t\times\dfrac1{t^2}e^{-1/t}\,dt'
+            note: "Formule de l'integration par parties appliquee aux bornes x et 1."
+          - math: '\big[t\,e^{-1/t}\big]_x^1 = e^{-1} - x\,e^{-1/x}'
+            note: "Evaluation du terme de bord entre x et 1."
+          - math: '\Rightarrow\ \int_x^1 e^{-1/t}\,dt = e^{-1} - x\,e^{-1/x} - \int_x^1 \dfrac1t\,e^{-1/t}\,dt'
+            note: "Le facteur t se simplifie avec le t carre du denominateur : 1 sur t reste dans l'integrale restante."
+      - id: q2-2b
+        stem: |-
+          **(0,25 pt)** Déterminer $\displaystyle\int_x^{1}\left(1 + \frac{1}{t}\right)e^{-\frac{1}{t}}\,dt$ pour tout $x$ de $]0, +\infty[$.
+        reasoning: |-
+          L'intégrande se sépare : $\left(1+\dfrac1t\right)e^{-1/t} = e^{-1/t} + \dfrac1t e^{-1/t}$, donc
+
+          $$\int_x^1\left(1+\frac1t\right)e^{-1/t}\,dt = \int_x^1 e^{-1/t}\,dt + \int_x^1\frac1t e^{-1/t}\,dt$$
+
+          Remplace le premier terme par le résultat de la question précédente :
+
+          $$= \left[e^{-1}-xe^{-1/x}-\int_x^1\frac1te^{-1/t}\,dt\right] + \int_x^1\frac1te^{-1/t}\,dt$$
+
+          Les deux intégrales en $\dfrac1te^{-1/t}$ s'annulent exactement — c'était le but de l'IPP de la question précédente, construite pour faire réapparaître ce terme et le faire disparaître ici :
+
+          $$\int_x^1\left(1+\frac1t\right)e^{-1/t}\,dt = e^{-1}-x\,e^{-1/x}$$
+        steps:
+          - math: '\left(1+\dfrac1t\right)e^{-1/t} = e^{-1/t}+\dfrac1te^{-1/t} \ \Rightarrow\ \int_x^1\left(1+\dfrac1t\right)e^{-1/t}\,dt = \int_x^1 e^{-1/t}\,dt + \int_x^1\dfrac1te^{-1/t}\,dt'
+            note: "On separe l'integrande en deux morceaux."
+          - math: '= \left[e^{-1}-xe^{-1/x}-\int_x^1\dfrac1te^{-1/t}\,dt\right] + \int_x^1\dfrac1te^{-1/t}\,dt \quad (\text{question precedente})'
+            note: "On remplace le premier morceau par le resultat de l'IPP."
+          - math: '\Rightarrow\ \int_x^1\left(1+\dfrac1t\right)e^{-1/t}\,dt = e^{-1}-x\,e^{-1/x}'
+            note: "Les deux integrales en 1 sur t fois e restent s'annulent : c'etait le but de l'IPP precedente."
+      - id: q2-2c
+        stem: |-
+          **(0,5 pt)** Montrer que : $\displaystyle\int_0^{1} f(t)\,dt = e^{-1}$
+        reasoning: |-
+          La question précédente donne, pour tout $x>0$ : $\displaystyle\int_x^1 f(t)\,dt = e^{-1}-xe^{-1/x}$, c'est-à-dire $F(x)=e^{-1}-xe^{-1/x}$ sur $]0,+\infty[$ (puisque $f(t)=\left(1+\frac1t\right)e^{-1/t}$ est exactement l'intégrande de $F$). $\displaystyle\int_0^1 f(t)\,dt$ n'est autre que $F(0)$ : il reste à évaluer $F$ en $0$, où la formule ci-dessus n'est pas directement définie (division par $x$).
+
+          $F$ est continue en $0$ (question 1) : $F(0)=\displaystyle\lim_{x\to0^+}F(x) = e^{-1}-\lim_{x\to0^+}xe^{-1/x}$.
+
+          Avec $u=\dfrac1x\to+\infty$ : $xe^{-1/x}=\dfrac{e^{-u}}{u}$, un quotient dont le numérateur tend vers $0$ et le dénominateur vers $+\infty$ — pas d'indétermination cette fois, la limite est directement $0$.
+
+          $$\int_0^1 f(t)\,dt = F(0) = e^{-1}-0 = e^{-1}$$
+        steps:
+          - math: 'F(x) = e^{-1}-xe^{-1/x} \quad (\forall x>0,\ \text{question 2-b})\, ;\qquad \int_0^1 f(t)\,dt = F(0)'
+            note: "F(0) est exactement l'integrale cherchee, par definition de F."
+          - math: 'F \text{ continue en } 0 \ \Rightarrow\ F(0) = \lim_{x\to0^+}\left(e^{-1}-xe^{-1/x}\right)'
+            note: "F est continue en 0 (question 1) : on prolonge la formule par une limite."
+          - math: 'x\,e^{-1/x} = \dfrac{e^{-u}}{u} \ (u=\tfrac1x\to+\infty) \ \to\ 0 \quad (\text{numerateur vers } 0,\ \text{denominateur vers } +\infty)'
+            note: "Pas d'indetermination : numerateur qui tend vers 0 sur denominateur qui tend vers l'infini."
+          - math: '\Rightarrow\ \int_0^1 f(t)\,dt = e^{-1}-0 = e^{-1}'
+            note: "On conclut en substituant la limite trouvee."
+      - id: q2-3
+        part: "Partie 2, 3 — Aire du domaine (en cm carre)"
+        stem: |-
+          **(0,5 pt)** Calculer en $cm^2$, l'aire du domaine plan limité par la courbe $(C)$ et les droites d'équations : $x = 0$, $x = 2$ et $y = 0$.
+        reasoning: |-
+          $f\ge0$ sur $[0,+\infty[$ tout entier ($f(0)=0$ et, pour $x>0$, $1+\frac1x>0$ et $e^{-1/x}>0$, produit de deux facteurs positifs) : le domaine décrit est donc directement une aire au sens usuel, sans valeur absolue à poser (`calcul-integral`, R8) — $\text{aire} = \displaystyle\int_0^2 f(x)\,dx$ en unités d'aire.
+
+          Découpe par Chasles (`calcul-integral`, R3) en $[0,1]$ et $[1,2]$, pour réutiliser $\displaystyle\int_0^1 f=e^{-1}$ (question 2-c) :
+
+          $$\int_0^2 f(x)\,dx = \int_0^1 f(x)\,dx + \int_1^2 f(x)\,dx = e^{-1} + \int_1^2 f(x)\,dx$$
+
+          Pour $\displaystyle\int_1^2 f$, utilise $F(x)=e^{-1}-xe^{-1/x}$ (question 2-b) : $F(2)=\displaystyle\int_2^1f(t)\,dt$, donc $\displaystyle\int_1^2 f(t)\,dt = -F(2) = -\left(e^{-1}-2e^{-1/2}\right) = 2e^{-1/2}-e^{-1}$.
+
+          $$\int_0^2 f(x)\,dx = e^{-1} + \left(2e^{-1/2}-e^{-1}\right) = 2e^{-1/2} = \frac{2}{\sqrt e} \ \text{u.a.}$$
+
+          Reste à convertir. Le repère est **orthonormé**, d'unité $\|\vec i\|=\|\vec j\|=2\,cm$ (donnée de la Partie 1) : $1\ \text{u.a.} = 2\,cm\times2\,cm = 4\,cm^2$ (`calcul-integral`, R8). L'aire réelle :
+
+          $$\text{aire} = \frac{2}{\sqrt e}\times4 = \frac{8}{\sqrt e} = 8e^{-1/2}\ \text{cm}^2 \approx 4{,}85\ \text{cm}^2$$
+        steps:
+          - math: 'f\ge0 \text{ sur } [0,+\infty[ \ \Rightarrow\ \text{aire} = \int_0^2 f(x)\,dx \quad (\text{u.a.})'
+            note: "f positive ou nulle partout : l'integrale est directement l'aire, sans decoupage de signe."
+          - math: '\int_0^2 f = \int_0^1 f + \int_1^2 f = e^{-1} + \int_1^2 f \quad (\text{Chasles},\ \int_0^1 f = e^{-1}\ \text{question 2-c})'
+            note: "On decoupe par Chasles pour reutiliser le resultat deja etabli sur [0,1]."
+          - math: '\int_1^2 f(t)\,dt = -F(2) = -\left(e^{-1}-2e^{-1/2}\right) = 2e^{-1/2}-e^{-1} \quad (F(x)=e^{-1}-xe^{-1/x},\ \text{question 2-b})'
+            note: "On evalue F en 2 grace a la formule fermee de la question 2-b."
+          - math: '\int_0^2 f(x)\,dx = e^{-1}+2e^{-1/2}-e^{-1} = 2e^{-1/2} = \dfrac{2}{\sqrt e} \ \text{u.a.}'
+            note: "Le terme en e puissance moins 1 s'annule : il reste 2 sur racine de e."
+          - math: '1\ \text{u.a.} = 2\,cm\times2\,cm = 4\,cm^2 \ \Rightarrow\ \text{aire} = \dfrac{2}{\sqrt e}\times4 = \dfrac{8}{\sqrt e}\ cm^2 \approx 4{,}85\ cm^2'
+            note: "Conversion : repere orthonorme d'unite 2 cm, donc 1 u.a. vaut 4 cm carres."
+      - id: q2-4a
+        part: "Partie 2, 4 — La suite (u_n) : accroissements finis et encadrement"
+        stem: |-
+          On considère la suite numérique $(u_n)_{n \ge 0}$ définie par : $u_n = F(n) - F(n+2)$
+
+          **(0,5 pt)** En utilisant le théorème des accroissements finis, montrer que pour tout entier naturel $n$, il existe un réel $v_n$ de l'intervalle $]n, n+2[$ tel que :
+
+          $$u_n = 2\left(1 + \frac{1}{v_n}\right)e^{-\frac{1}{v_n}}$$
+        reasoning: |-
+          Le théorème des accroissements finis (TAF) ne fait pas partie du corps de cette leçon — c'est un outil de la notion `derivabilite-etude-fonctions`, mobilisé ici tel quel, en admettant son énoncé (même discipline que pour bk-2019-n-x4 dans cette même banque).
+
+          $F$ est dérivable sur $[0,+\infty[$ tout entier (question 1 : $F=G(1)-G(x)$ avec $G$ primitive de $f$, donc $F'(x)=-f(x)$), donc a fortiori continue sur $[n,n+2]$ et dérivable sur $]n,n+2[$, pour tout entier naturel $n$. Le TAF garantit alors l'existence d'un réel $v_n\in\,]n,n+2[$ tel que :
+
+          $$F(n+2)-F(n) = F'(v_n)\times\big((n+2)-n\big) = -f(v_n)\times2$$
+
+          D'où $u_n = F(n)-F(n+2) = -\big(F(n+2)-F(n)\big) = 2f(v_n)$, c'est-à-dire
+
+          $$u_n = 2\left(1+\frac1{v_n}\right)e^{-1/v_n}$$
+        steps:
+          - math: 'F''(x) = -f(x) \quad (\text{car } F(x)=G(1)-G(x),\ G \text{ primitive de } f,\ \text{question 1})'
+            note: "F est derivable sur [0, plus l'infini[, de derivee moins f."
+          - math: '\exists\,v_n\in\,]n,n+2[,\quad F(n+2)-F(n) = F''(v_n)\times2 = -2f(v_n) \quad (\text{TAF applique a } F \text{ sur } [n,n+2])'
+            note: "Theoreme des accroissements finis applique a F entre n et n+2."
+          - math: 'u_n = F(n)-F(n+2) = -\big(F(n+2)-F(n)\big) = 2f(v_n) = 2\left(1+\dfrac1{v_n}\right)e^{-1/v_n}'
+            note: "u_n est l'oppose de l'accroissement de F : on obtient exactement la formule demandee."
+      - id: q2-4b
+        stem: |-
+          **(0,25 pt)** Montrer que : $\left(\forall n \in \mathbb{N}^{*}\right)\quad 2\left(1+\frac{1}{n}\right)e^{-\frac{1}{n}} \le u_n \le 2\left(1+\frac{1}{n+2}\right)e^{-\frac{1}{n+2}}$
+
+          **Note sur ce symbole (fidèle au scan)** : le quantificateur écrit ici, $\mathbb{N}^{*}$, est celui qu'impose le sens — le membre de gauche, $2\left(1+\frac1n\right)e^{-1/n}$, n'est même pas défini en $n=0$ (division par $n$), donc l'énoncé ne peut viser que $n\ge1$. Sur le document source, ce symbole est **physiquement absent** : à sa place se trouve une image blanche de 2×2 pixels, étirée, sans aucun glyphe dessous (contrairement aux autres symboles cassés de cette partie, qui sont des substitutions de police décodables — voir la NOTE ÉDITORIALE en tête de fichier). $\mathbb{N}^{*}$ n'est donc pas une lecture mais une adjudication par le contexte, déjà signalée comme telle dans le fichier de vérification amont : le trou est comblé ici pour l'élève, jamais silencieusement.
+        reasoning: |-
+          $v_n\in\,]n,n+2[$ (question précédente), et $f$ est strictement croissante sur $[0,+\infty[$ tout entier (Partie 1, question 2-b) : la monotonie stricte de $f$ transforme l'encadrement de $v_n$ en encadrement de $f(v_n)$ —
+
+          $$n < v_n < n+2 \ \Rightarrow\ f(n) < f(v_n) < f(n+2) \quad (f \text{ strictement croissante})$$
+
+          Comme $u_n = 2f(v_n)$ (question précédente), multiplie l'encadrement par $2>0$ (ce qui conserve le sens) :
+
+          $$2f(n) < u_n < 2f(n+2)$$
+
+          c'est-à-dire, en version large (celle demandée) :
+
+          $$2\left(1+\frac1n\right)e^{-1/n} \le u_n \le 2\left(1+\frac1{n+2}\right)e^{-1/(n+2)}$$
+        steps:
+          - math: 'n<v_n<n+2 \ \Rightarrow\ f(n)<f(v_n)<f(n+2) \quad (f \text{ strictement croissante sur } [0,+\infty[)'
+            note: "La monotonie stricte de f transporte l'encadrement de v_n a f(v_n)."
+          - math: 'u_n = 2f(v_n) \ \Rightarrow\ 2f(n) < u_n < 2f(n+2)'
+            note: "On multiplie l'encadrement par 2, qui est positif : le sens des inegalites est conserve."
+          - math: '\Rightarrow\ 2\left(1+\dfrac1n\right)e^{-1/n} \le u_n \le 2\left(1+\dfrac1{n+2}\right)e^{-1/(n+2)}'
+            note: "On explicite f(n) et f(n+2) : c'est exactement l'encadrement demande."
+      - id: q2-4c
+        stem: |-
+          **(0,25 pt)** En déduire $\displaystyle\lim_{n \to +\infty} u_n$
+        reasoning: |-
+          L'encadrement de la question précédente coince $u_n$ entre $2f(n)$ et $2f(n+2)$. Quand $n\to+\infty$, $n\to+\infty$ et $n+2\to+\infty$ aussi, donc $f(n)\to1$ et $f(n+2)\to1$ (Partie 1, question 2-a) : les deux bornes tendent vers $2\times1=2$.
+
+          Par le théorème des gendarmes pour les suites (`suites-numeriques`, R6), coincée entre deux suites qui tendent vers la même limite, $u_n$ tend vers cette limite commune :
+
+          $$\lim_{n\to+\infty} u_n = 2$$
+        steps:
+          - math: '\lim_{n\to+\infty} f(n) = 1 = \lim_{n\to+\infty} f(n+2) \quad (\text{Partie 1, question 2-a})'
+            note: "Les deux bornes de l'encadrement tendent vers la meme valeur f = 1."
+          - math: '\Rightarrow\ \lim_{n\to+\infty} 2f(n) = \lim_{n\to+\infty} 2f(n+2) = 2'
+            note: "Les deux bornes de l'encadrement de u_n tendent vers 2."
+          - math: '2\left(1+\dfrac1n\right)e^{-1/n} \le u_n \le 2\left(1+\dfrac1{n+2}\right)e^{-1/(n+2)} \ \Rightarrow\ \lim_{n\to+\infty} u_n = 2 \quad (\text{gendarmes})'
+            note: "Theoreme des gendarmes : les deux bornes convergent vers 2, donc u_n aussi."
+      - id: q3-1a
+        part: "Partie 3, 1 — Existence, unicite de a_n et une identite logarithmique"
+        stem: |-
+          **Partie 3.**
+
+          **(0,5 pt)** Montrer que pour tout entier naturel non nul $n$, il existe un nombre réel strictement positif unique $a_n$ tel que : $f(a_n) = e^{-\frac{1}{n}}$
+        reasoning: |-
+          On cherche à résoudre $f(a_n)=e^{-1/n}$ d'inconnue $a_n$ : c'est un problème d'existence-unicité par bijection, le corollaire du théorème des valeurs intermédiaires pour une fonction continue strictement monotone (`limites-continuite`, R5).
+
+          $f$ est continue et strictement croissante sur $[0,+\infty[$ tout entier (Partie 1, questions 1-a et 2-b), donc réalise une bijection de $[0,+\infty[$ sur son image $\left[f(0),\displaystyle\lim_{x\to+\infty}f(x)\right[ = [0,1[$ (les bornes se conservent, $f$ étant croissante, et la borne du haut est exclue puisque $f$ ne l'atteint jamais — elle croît strictement vers elle sans jamais la dépasser ni l'égaler).
+
+          Pour $n\in\mathbb N^*$, $-\dfrac1n<0$, donc $e^{-1/n}\in\,]0,1[\,\subset[0,1[$ : cette valeur est bien dans l'image de $f$. La bijection garantit alors l'existence d'un **unique** $a_n\in[0,+\infty[$ tel que $f(a_n)=e^{-1/n}$. Et comme $e^{-1/n}>0=f(0)$, $a_n\neq0$ : $a_n$ est bien **strictement positif**.
+        steps:
+          - math: 'f \text{ continue et strictement croissante sur } [0,+\infty[ \ \Rightarrow\ f \text{ bijection de } [0,+\infty[ \text{ sur } [0,1['
+            note: "f est une bijection de son domaine vers son image, obtenue en question 1-a et 2-b de la partie 1."
+          - math: 'n\in\mathbb{N}^{*} \ \Rightarrow\ e^{-1/n}\in\,]0,1[\,\subset[0,1['
+            note: "e puissance moins 1 sur n est bien dans l'image de f, entre 0 exclu et 1 exclu."
+          - math: '\Rightarrow\ \exists!\,a_n\in[0,+\infty[,\ f(a_n)=e^{-1/n}\, ;\quad e^{-1/n}>0=f(0) \ \Rightarrow\ a_n\neq0'
+            note: "Existence et unicite par la bijection ; a_n est different de 0, donc strictement positif."
+      - id: q3-1b
+        stem: |-
+          **(0,25 pt)** Montrer que la suite numérique $(a_n)_{n \ge 1}$ est croissante.
+        reasoning: |-
+          $-\dfrac1n$ est strictement croissante en $n$ (car $\dfrac1n$ est strictement décroissante pour $n\ge1$) : pour $n\ge1$, $-\dfrac1{n+1}>-\dfrac1n$. Comme $\exp$ est strictement croissante (R1, dans le corps de cette leçon), l'ordre se conserve en appliquant l'exponentielle :
+
+          $$e^{-1/(n+1)} > e^{-1/n}$$
+
+          Or $f(a_{n+1})=e^{-1/(n+1)}$ et $f(a_n)=e^{-1/n}$ (par définition, question 1-a), donc $f(a_{n+1})>f(a_n)$. Comme $f$ est strictement croissante sur $[0,+\infty[$ (Partie 1, question 2-b), à une plus grande valeur de $f$ correspond nécessairement un plus grand argument :
+
+          $$a_{n+1} > a_n$$
+
+          La suite $(a_n)_{n\ge1}$ est donc strictement croissante, en particulier croissante.
+        steps:
+          - math: 'n\ge1 \ \Rightarrow\ -\dfrac1{n+1}>-\dfrac1n \ \Rightarrow\ e^{-1/(n+1)}>e^{-1/n} \quad (\exp \text{ strictement croissante})'
+            note: "L'exposant croit strictement avec n ; exp conserve l'ordre."
+          - math: 'f(a_{n+1}) = e^{-1/(n+1)} > e^{-1/n} = f(a_n)'
+            note: "Traduction directe via la definition de a_n et a_(n+1)."
+          - math: 'f \text{ strictement croissante} \ \Rightarrow\ a_{n+1} > a_n'
+            note: "f strictement croissante : une plus grande image vient d'un plus grand argument."
+      - id: q3-1c
+        stem: |-
+          **(0,25 pt)** Vérifier que : $\left(\forall n \in \mathbb{N}^{*}\right)\quad -\dfrac{1}{a_n} + \ln\left(1 + \dfrac{1}{a_n}\right) = -\dfrac{1}{n}$
+        reasoning: |-
+          On part de la définition de $a_n$ (question 1-a) : $\left(1+\dfrac1{a_n}\right)e^{-1/a_n} = e^{-1/n}$. Les deux membres sont strictement positifs ($a_n>0$ donc $1+\frac1{a_n}>0$, et une exponentielle est toujours $>0$) : on peut leur appliquer $\ln$ des deux côtés — c'est le passage au logarithme, un outil de `fonction-logarithme`, valide ici précisément parce que les deux membres sont positifs.
+
+          $$\ln\left[\left(1+\frac1{a_n}\right)e^{-1/a_n}\right] = \ln\left(e^{-1/n}\right)$$
+
+          À gauche, $\ln(uv)=\ln u+\ln v$ (`fonction-logarithme`, R2) sépare le produit :
+
+          $$\ln\left(1+\frac1{a_n}\right) + \ln\left(e^{-1/a_n}\right) = \ln\left(e^{-1/n}\right)$$
+
+          Et $\ln(e^k)=k$ pour tout réel $k$ (identité fondamentale de réciprocité, R1 de cette leçon) simplifie les deux termes en $\ln(e^{\cdot})$ :
+
+          $$\ln\left(1+\frac1{a_n}\right) - \frac1{a_n} = -\frac1n$$
+
+          soit, en réordonnant les deux termes du membre de gauche :
+
+          $$-\frac1{a_n} + \ln\left(1+\frac1{a_n}\right) = -\frac1n$$
+        steps:
+          - math: '\left(1+\dfrac1{a_n}\right)e^{-1/a_n} = e^{-1/n} \quad (\text{definition de } a_n,\ \text{les deux membres} > 0)'
+            note: "Definition de a_n, reecrite ; les deux membres sont strictement positifs."
+          - math: '\ln\left[\left(1+\dfrac1{a_n}\right)e^{-1/a_n}\right] = \ln\left(e^{-1/n}\right)'
+            note: "On applique ln aux deux membres, valide car tous deux positifs."
+          - math: '\ln\left(1+\dfrac1{a_n}\right) + \ln\left(e^{-1/a_n}\right) = \ln\left(e^{-1/n}\right) \quad (\ln(uv)=\ln u+\ln v)'
+            note: "Le logarithme du produit se separe en somme de logarithmes."
+          - math: '\ln(e^{k})=k \ \Rightarrow\ \ln\left(1+\dfrac1{a_n}\right) - \dfrac1{a_n} = -\dfrac1n \ \Rightarrow\ -\dfrac1{a_n}+\ln\left(1+\dfrac1{a_n}\right) = -\dfrac1n'
+            note: "ln(e puissance k) vaut k des deux cotes ; on reordonne pour retomber sur l'identite demandee."
+      - id: q3-2a
+        part: "Partie 3, 2 — Un encadrement classique de ln(1+x)"
+        stem: |-
+          **(0,25 pt)** Montrer que : $\left(\forall t \in [0, +\infty[\right)\quad 1 - t \le \dfrac{1}{1+t} \le 1 - t + t^2$
+        reasoning: |-
+          Deux inégalités à établir séparément ; pour chacune, la technique est la même : multiplier par $1+t>0$ (toujours vrai pour $t\ge0$) pour se débarrasser du quotient, ce qui conserve le sens des inégalités.
+
+          **Borne de gauche.** $1-t\le\dfrac1{1+t} \iff (1-t)(1+t)\le1 \iff 1-t^2\le1 \iff -t^2\le0 \iff t^2\ge0$ — toujours vrai.
+
+          **Borne de droite.** $\dfrac1{1+t}\le1-t+t^2 \iff 1\le(1-t+t^2)(1+t)$. Développe le membre de droite : $(1-t+t^2)(1+t) = 1+t-t-t^2+t^2+t^3 = 1+t^3$. Donc l'inégalité devient $1\le1+t^3 \iff t^3\ge0$ — vrai puisque $t\ge0$.
+
+          Les deux bornes tiennent pour tout $t\ge0$.
+        steps:
+          - math: '1-t\le\dfrac1{1+t} \iff (1-t)(1+t)\le1 \iff 1-t^2\le1 \iff t^2\ge0 \quad (\text{toujours vrai})'
+            note: "Borne de gauche : on multiplie par 1+t, positif, puis on developpe."
+          - math: '\dfrac1{1+t}\le1-t+t^2 \iff 1\le(1-t+t^2)(1+t) = 1+t^3'
+            note: "Borne de droite : meme technique, le developpement se simplifie en 1 plus t cube."
+          - math: '1\le1+t^3 \iff t^3\ge0 \quad (\text{vrai car } t\ge0)'
+            note: "t au cube est positif ou nul des que t l'est : l'inegalite tient."
+      - id: q3-2b
+        stem: |-
+          **(0,5 pt)** Montrer que : $\left(\forall x \in [0, +\infty[\right)\quad -\dfrac{x^2}{2} \le -x + \ln(1+x) \le -\dfrac{x^2}{2} + \dfrac{x^3}{3}$
+        reasoning: |-
+          Fixe $x\ge0$. L'encadrement de la question précédente vaut pour tout $t\in[0,x]\subset[0,+\infty[$ : intègre les trois membres sur $[0,x]$ — l'ordre se conserve par intégration (`calcul-integral`, R4, comparaison) —
+
+          $$\int_0^x(1-t)\,dt \ \le\ \int_0^x\frac1{1+t}\,dt \ \le\ \int_0^x(1-t+t^2)\,dt$$
+
+          Calcule chaque morceau. À gauche : $\displaystyle\int_0^x(1-t)dt = \left[t-\frac{t^2}2\right]_0^x = x-\frac{x^2}2$. Au milieu : $\dfrac1{1+t}$ est de la forme $\dfrac{u'}{u}$ avec $u(t)=1+t$ (`fonction-logarithme`, R3 lue à l'envers, exactement comme la primitive $u'e^u$ de R6 pour l'exponentielle) : $\displaystyle\int_0^x\frac1{1+t}dt = \big[\ln(1+t)\big]_0^x = \ln(1+x)-\ln1=\ln(1+x)$. À droite : $\displaystyle\int_0^x(1-t+t^2)dt = \left[t-\frac{t^2}2+\frac{t^3}3\right]_0^x = x-\frac{x^2}2+\frac{x^3}3$.
+
+          $$x-\frac{x^2}2 \ \le\ \ln(1+x) \ \le\ x-\frac{x^2}2+\frac{x^3}3$$
+
+          Soustrais $x$ aux trois membres (opération qui conserve l'ordre) :
+
+          $$-\frac{x^2}2 \ \le\ \ln(1+x)-x \ \le\ -\frac{x^2}2+\frac{x^3}3$$
+
+          c'est-à-dire, en réécrivant $\ln(1+x)-x=-x+\ln(1+x)$ :
+
+          $$-\frac{x^2}2 \ \le\ -x+\ln(1+x) \ \le\ -\frac{x^2}2+\frac{x^3}3$$
+        steps:
+          - math: '\int_0^x(1-t)\,dt \le \int_0^x\dfrac1{1+t}\,dt \le \int_0^x(1-t+t^2)\,dt \quad (\text{comparaison, integration de la question precedente sur } [0,x])'
+            note: "On integre l'encadrement de la question precedente sur [0, x]."
+          - math: '\int_0^x(1-t)\,dt = x-\dfrac{x^2}2 \, ;\qquad \int_0^x\dfrac1{1+t}\,dt = \ln(1+x) \quad (\text{primitive } u''/u)'
+            note: "Primitive du polynome a gauche ; primitive de 1 sur (1+t) au milieu, qui vaut ln(1+t)."
+          - math: '\int_0^x(1-t+t^2)\,dt = x-\dfrac{x^2}2+\dfrac{x^3}3'
+            note: "Primitive du polynome a droite."
+          - math: 'x-\dfrac{x^2}2 \le \ln(1+x) \le x-\dfrac{x^2}2+\dfrac{x^3}3'
+            note: "On rassemble les trois calculs dans l'encadrement."
+          - math: '\Rightarrow\ -\dfrac{x^2}2 \le -x+\ln(1+x) \le -\dfrac{x^2}2+\dfrac{x^3}3 \quad (\text{on soustrait } x \text{ aux trois membres})'
+            note: "On soustrait x partout, ce qui conserve l'ordre : c'est exactement l'encadrement demande."
+      - id: q3-3a
+        part: "Partie 3, 3 — Minoration de a_n et les deux limites finales"
+        stem: |-
+          Soit $n$ un entier naturel supérieur ou égal à $4$.
+
+          **(0,5 pt)** Vérifier que : $a_4 \ge 1$, en déduire que $a_n \ge 1$. *(On admettra que : $e^{\frac{3}{4}} \ge 2$)*
+        reasoning: |-
+          $a_4$ est défini par $f(a_4)=e^{-1/4}$ (question 1-a). Comme $f$ est strictement croissante sur $[0,+\infty[$ (Partie 1, question 2-b), $a_4\ge1 \iff f(a_4)\ge f(1)$ — il suffit donc de comparer $e^{-1/4}$ à $f(1)$.
+
+          $$f(1) = \left(1+1\right)e^{-1} = 2e^{-1} = \frac2e$$
+
+          Compare $e^{-1/4}$ et $\dfrac2e$ : $e^{-1/4}\ge\dfrac2e \iff e^{-1/4}\times e\ge2 \iff e^{3/4}\ge2$ (en multipliant les deux membres par $e>0$, puis en combinant les exposants $-\frac14+1=\frac34$) — exactement l'inégalité admise par l'énoncé. Donc $e^{-1/4}=f(a_4)\ge f(1)$, et par stricte croissance de $f$ :
+
+          $$a_4 \ge 1$$
+
+          Comme $(a_n)$ est croissante (question 1-b) et $n\ge4$ : $a_n\ge a_4\ge1$ pour tout $n\ge4$.
+        steps:
+          - math: 'f(1) = (1+1)e^{-1} = 2e^{-1} = \dfrac2e'
+            note: "On evalue f en 1."
+          - math: 'e^{-1/4}\ge\dfrac2e \iff e^{-1/4}\times e\ge2 \iff e^{3/4}\ge2 \quad (\text{admis})'
+            note: "On combine les exposants : e puissance moins un quart fois e vaut e puissance trois quarts."
+          - math: '\Rightarrow\ f(a_4)=e^{-1/4}\ge f(1) \ \Rightarrow\ a_4\ge1 \quad (f \text{ strictement croissante})'
+            note: "f strictement croissante : une image plus grande donne un argument plus grand."
+          - math: '(a_n) \text{ croissante},\ n\ge4 \ \Rightarrow\ a_n\ge a_4\ge1'
+            note: "La croissance de la suite (question 1-b) propage la minoration a tous les rangs n superieurs ou egaux a 4."
+      - id: q3-3b
+        stem: |-
+          **(0,5 pt)** Montrer que : $1 - \dfrac{2}{3a_n} \le \dfrac{2a_n^2}{n} \le 1$
+
+          *(On pourra utiliser les questions 1-c) et 2-b) de la partie 3)*
+        reasoning: |-
+          Pour $n\ge4$, $a_n\ge1>0$ (question précédente), donc $x=\dfrac1{a_n}\in\,]0,1]\subset[0,+\infty[$ : l'encadrement de la question 2-b s'applique avec ce choix de $x$.
+
+          $$-\frac1{2a_n^2} \ \le\ -\frac1{a_n}+\ln\left(1+\frac1{a_n}\right) \ \le\ -\frac1{2a_n^2}+\frac1{3a_n^3}$$
+
+          (en remplaçant $x^2$ par $\dfrac1{a_n^2}$ et $x^3$ par $\dfrac1{a_n^3}$). Le terme du milieu est exactement celui de l'identité de la question 1-c, qui vaut $-\dfrac1n$ :
+
+          $$-\frac1{2a_n^2} \ \le\ -\frac1n \ \le\ -\frac1{2a_n^2}+\frac1{3a_n^3}$$
+
+          Multiplie les trois membres par $-2a_n^2$. C'est un nombre **négatif** ($a_n^2>0$, donc $-2a_n^2<0$) : multiplier par un négatif **retourne les deux inégalités** —
+
+          $$1 \ \ge\ \frac{2a_n^2}n \ \ge\ 1-\frac2{3a_n}$$
+
+          soit, réécrit dans l'ordre croissant :
+
+          $$1-\frac2{3a_n} \ \le\ \frac{2a_n^2}n \ \le\ 1$$
+        steps:
+          - math: 'a_n\ge1>0 \ \Rightarrow\ x=\dfrac1{a_n}\in\,]0,1] \ \Rightarrow\ -\dfrac1{2a_n^2} \le -\dfrac1{a_n}+\ln\left(1+\dfrac1{a_n}\right) \le -\dfrac1{2a_n^2}+\dfrac1{3a_n^3} \quad (\text{question 2-b})'
+            note: "On applique l'encadrement de la question 2-b avec x = 1 sur a_n."
+          - math: '-\dfrac1{a_n}+\ln\left(1+\dfrac1{a_n}\right) = -\dfrac1n \quad (\text{question 1-c}) \ \Rightarrow\ -\dfrac1{2a_n^2} \le -\dfrac1n \le -\dfrac1{2a_n^2}+\dfrac1{3a_n^3}'
+            note: "Le terme du milieu se remplace par moins 1 sur n grace a l'identite de la question 1-c."
+          - math: '\times(-2a_n^2) \ (\text{negatif, les inegalites se retournent}) \ \Rightarrow\ 1 \ge \dfrac{2a_n^2}n \ge 1-\dfrac2{3a_n}'
+            note: "On multiplie par moins 2 a_n carre, un nombre negatif : les deux inegalites changent de sens."
+          - math: '\Rightarrow\ 1-\dfrac2{3a_n} \le \dfrac{2a_n^2}n \le 1'
+            note: "Meme encadrement, reecrit dans l'ordre croissant : c'est exactement le resultat demande."
+      - id: q3-3c
+        stem: |-
+          **(0,5 pt)** Montrer que : $\sqrt{\dfrac{n}{6}} \le a_n$ *(On pourra utiliser les questions 3-a) et 3-b))*, en déduire $\displaystyle\lim_{n \to +\infty} a_n$
+        reasoning: |-
+          Pour $n\ge4$, la question précédente donne $\dfrac{2a_n^2}n\ge1-\dfrac2{3a_n}$. Comme $a_n\ge1$ (question 3-a), $\dfrac1{a_n}\le1$, donc $\dfrac2{3a_n}\le\dfrac23$, et $1-\dfrac2{3a_n}\ge1-\dfrac23=\dfrac13$.
+
+          $$\frac{2a_n^2}n \ge \frac13 \ \Rightarrow\ a_n^2 \ge \frac n6$$
+
+          $a_n>0$, donc la racine carrée conserve l'ordre :
+
+          $$a_n \ge \sqrt{\frac n6}$$
+
+          Quand $n\to+\infty$, $\sqrt{n/6}\to+\infty$. Coincée au-dessus d'une suite qui diverge vers $+\infty$, $(a_n)$ ne peut faire autrement que diverger aussi — théorème de comparaison pour les suites (`suites-numeriques`, R6) :
+
+          $$\lim_{n\to+\infty} a_n = +\infty$$
+        steps:
+          - math: 'a_n\ge1 \ \Rightarrow\ \dfrac1{a_n}\le1 \ \Rightarrow\ \dfrac2{3a_n}\le\dfrac23 \ \Rightarrow\ 1-\dfrac2{3a_n}\ge\dfrac13'
+            note: "On minore le membre de gauche de l'encadrement precedent, grace a a_n superieur ou egal a 1."
+          - math: '\dfrac{2a_n^2}n \ge 1-\dfrac2{3a_n} \ge \dfrac13 \ \Rightarrow\ a_n^2\ge\dfrac n6 \ \Rightarrow\ a_n\ge\sqrt{\dfrac n6} \quad (a_n>0)'
+            note: "On combine avec la question 3-b, puis on isole a_n par racine carree."
+          - math: '\sqrt{\dfrac n6}\xrightarrow[n\to+\infty]{}+\infty \ \Rightarrow\ \lim_{n\to+\infty} a_n = +\infty \quad (\text{theoreme de comparaison})'
+            note: "a_n est minoree par une suite qui diverge vers plus l'infini : a_n diverge aussi."
+      - id: q3-3d
+        stem: |-
+          **(0,5 pt)** Déterminer $\displaystyle\lim_{n \to +\infty} a_n\sqrt{\dfrac{2}{n}}$
+        reasoning: |-
+          Remarque que $\left(a_n\sqrt{\dfrac2n}\right)^2 = a_n^2\times\dfrac2n = \dfrac{2a_n^2}n$ — exactement la quantité déjà encadrée à la question 3-b :
+
+          $$1-\frac2{3a_n} \ \le\ \left(a_n\sqrt{\frac2n}\right)^2 \ \le\ 1$$
+
+          Quand $n\to+\infty$, $a_n\to+\infty$ (question précédente), donc $\dfrac2{3a_n}\to0$, et la borne de gauche tend vers $1-0=1$ ; la borne de droite est déjà constante, égale à $1$. Par le théorème des gendarmes (`suites-numeriques`, R6), coincé entre deux suites qui tendent toutes deux vers $1$ :
+
+          $$\left(a_n\sqrt{\frac2n}\right)^2 \xrightarrow[n\to+\infty]{} 1$$
+
+          Or $a_n\sqrt{\dfrac2n}>0$ pour tout $n$ (produit de deux quantités strictement positives) : une suite positive dont le carré tend vers $1$ tend elle-même vers $\sqrt1=1$.
+
+          $$\lim_{n\to+\infty} a_n\sqrt{\frac2n} = 1$$
+        steps:
+          - math: '\left(a_n\sqrt{\dfrac2n}\right)^2 = a_n^2\times\dfrac2n = \dfrac{2a_n^2}n'
+            note: "Le carre de la quantite cherchee est exactement celle deja encadree a la question 3-b."
+          - math: '1-\dfrac2{3a_n} \le \left(a_n\sqrt{\dfrac2n}\right)^2 \le 1 \, ;\quad a_n\to+\infty \ \Rightarrow\ \dfrac2{3a_n}\to0'
+            note: "On reutilise l'encadrement de la question 3-b ; a_n diverge, donc le terme en 1 sur a_n tend vers 0."
+          - math: '\Rightarrow\ \left(a_n\sqrt{\dfrac2n}\right)^2 \xrightarrow[n\to+\infty]{} 1 \quad (\text{gendarmes})'
+            note: "Les deux bornes de l'encadrement tendent vers 1 : le carre tend vers 1 par le theoreme des gendarmes."
+          - math: 'a_n\sqrt{\dfrac2n} > 0 \ \Rightarrow\ \lim_{n\to+\infty} a_n\sqrt{\dfrac2n} = \sqrt1 = 1'
+            note: "Une suite positive dont le carre tend vers 1 tend elle-meme vers 1."
