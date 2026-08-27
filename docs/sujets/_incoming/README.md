@@ -121,6 +121,7 @@ exactement la moitié qui manque.
 | `maths-sm-2025-n.md` | exercice 1 (problème unique) | 10 | **vérifiée** — aucun défaut ; c'est cette passe qui a découvert l'incident de cache CDN |
 | `maths-sm-2017-n.md` | exercice 4 (problème unique) | 10 | **vérifiée EN DEUX PASSES, clearée** — la seconde a soldé les 5 points ouverts en trouvant la clé de décodage (chaque point de code lu comme un code **Adobe Symbol** retombe sur le symbole attendu, sur 10 codes indépendants) ; 3 défauts du sujet officiel documentés, dont un ℕ **physiquement absent** du PDF |
 | `maths-sm-2021-n.md` | exercice 1 (problème unique) | 12 | **VÉRIFIÉ, clearé, CONVERTI** (partitionné 5,0 + 7,0) — 4 contrôles anti-CDN + 2 instruments inédits (matrice de corrélation PDF↔JPG, couche 300 dpi) ; **aucun défaut du sujet officiel** ; le « + » que la transcription croyait amputé est intact, c'est le sous-échantillonnage d'AlloSchool |
+| `pc-2012-n.md` | **la PHYSIQUE** de SPC 2012 N (nucléaire 3 · électricité 4,5 · mécanique 5,5) | 13 | **NON VÉRIFIÉ** — transcrit sous les 4 contrôles + les 2 instruments. PDF **natif** : rendu vectoriel, aucun caractère deviné. La chimie (7,00) est déjà en banque et n'est PAS retranscrite |
 | `maths-sexp-2018-n.md` | problème (SExp) | 11 | **VÉRIFIÉ, clearé, CONVERTI** (fonde la banque de `derivabilite-etude-fonctions`) — 4 contrôles + 2 ajoutés (corrigé officiel `NR 22F`, PDF source) ; 12 points du docket soldés. L'anomalie de `<title>` est **arbitrée PASS** : 54/54 des éléments de `course-438` la portent, `course-436` nomme correctement sa filière, et quatre éléments servent un `0001-big.jpg` byte-identique — le fichier servi EST le bon sujet. **Réserve nommée** : le symbole de II-5 est une reconstruction éditoriale (≈), pas une lecture |
 
 **SM 2020 est le sixième, et il est SUSPENDU** — pas oublié. Son format à
@@ -260,9 +261,17 @@ ci-dessus ne nommaient pas. Le premier vaut d'être essayé **en premier** :
   exactement le contrôle qui aurait cassé l'incident SM 2025 immédiatement,
   au lieu d'un OCR page par page.
 
-- **La couche bitonale 300 dpi embarquée dans le PDF.** AlloSchool sert ses
-  images en 150 dpi, mais le PDF lié porte souvent la numérisation d'origine à
-  **300 dpi**, soit le double de résolution. Quand un glyphe est litigieux,
+- **La source la moins dégradée que porte le PDF.** AlloSchool sert ses images
+  en 150 dpi ; le PDF lié fait presque toujours mieux, mais *comment* dépend du
+  sujet, et il faut regarder avant de choisir :
+  — s'il embarque une numérisation, elle est souvent en **300 dpi bitonal**,
+    soit le double de résolution (cas SM 2021) ;
+  — s'il s'agit d'un **document natif avec une vraie couche de texte** (cas
+    PC 2012, produit sous Nitro Pro), c'est encore mieux : on le rend
+    **vectoriellement** à la résolution qu'on veut et on extrait les figures en
+    natif. Sur ce sujet, **aucun caractère n'a eu à être deviné.**
+  Le réflexe est donc : ouvrir le PDF et regarder ce qu'il est, avant de
+  supposer que c'est un scan. Quand un glyphe est litigieux,
   c'est là qu'il faut aller avant de conclure : sur SM 2021, un « + » que la
   transcription croyait amputé (« pixel de croisement sauté ») s'y révèle
   **continu et intact**. Le trou n'était pas dans le sujet — il venait du

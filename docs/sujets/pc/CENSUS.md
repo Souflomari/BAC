@@ -42,7 +42,7 @@ hub : `https://www.alloschool.com/section/4585` (annonce 2008→2025, N+R, compl
 | 2010 | R | — | — | non recherché |
 | 2011 | N | — | — (couverture lue en v0.3 selon INDEX, URL non consignée) | non consigné |
 | 2011 | R | RS28 | `element/94449` · `upload-70317` (7 p.) | sourcé-confirmé |
-| 2012 | N | NS28 | `element/94452` · `upload-70320` (6 p.) | sourcé-confirmé |
+| 2012 | N | NS28 | `element/94452` · `course-422/upload-70320` (6 p.) | **décomposé** (2026-08-27) |
 | 2012 | R | — | — | non recherché |
 | 2013 | N | — | `upload-70326` (7 p.) | sourcé-confirmé |
 | 2013 | R | — | — | non recherché |
@@ -204,7 +204,7 @@ passe. **2022 N passe à carte complète (2026-08-06).**
 | Sujet | Exercice consigné | Slug(s) | Reste du sujet |
 |-------|-------------------|---------|----------------|
 | 2010 N (NS28) | Chimie P1 : saponification, suivi conductimétrique, t½ | `transformations-lentes-rapides` ✓ (cross `suivi-temporel-vitesse` (?)) | carte non consignée — contenu à transcrire |
-| 2012 N (NS28) | Chimie P1 : acide éthanoïque + ammoniac (réaction limitée) + estérification linalol ; Chimie P2 : pile Cu-Zn, K, sens spontané | `transformations-deux-sens` ✓ (cross `esterification-hydrolyse` (?)) ; `evolution-spontanee` ✓ (cross `piles` (?)) | physique non consignée — à transcrire |
+| 2012 N (NS28) | Chimie P1 : acide éthanoïque + ammoniac (réaction limitée) + estérification linalol ; Chimie P2 : pile Cu-Zn, K, sens spontané | `transformations-deux-sens` ✓ (cross `esterification-hydrolyse` (?)) ; `evolution-spontanee` ✓ (cross `piles` (?)) | **PHYSIQUE TRANSCRITE** le 2026-08-27 (`_incoming/pc-2012-n.md`, NON vérifiée) : nucléaire 3,0 → `decroissance-radioactive` (2,0) + `noyaux-masse-energie` (1,0) · électricité 4,5 → `dipole-rl` (2,5) + `rlc-serie` (2,0) · mécanique 5,5 → `chute-mouvements-plans`. 21 questions, 13,00 pts recomptés par DEUX chemins (coordonnées de la couche PDF + relecture des marges). Cartouche : 7 + 13 = 20 ✔ |
 | 2015 N (NS28) | Ex 1 (Chimie), 2e partie : acide benzoïque/eau — τ, Qr,éq, pKA | `etat-equilibre` ✓ (cross `reactions-acido-basiques` (?)) | carte non consignée — à transcrire |
 | 2011 R (RS28) | Mécanique, 1ère situation : grue/poulie — R.F.D. rotation, J∆ | `rotation-axe-fixe` ✓ | carte non consignée — à transcrire |
 
