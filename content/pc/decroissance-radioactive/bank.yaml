@@ -240,6 +240,195 @@ entries:
           - math: '\boxed{t_1 = 2 \times 3{,}8 = 7{,}6\ \text{jours}}'
             note: "Application numérique avec la demi-vie donnée t_1/2 = 3,8 jours."
 
+  # ── bk-2020-n-x3b — 2020 N, Exercice III (volet décroissance) : polonium 210,
+  #    constante radioactive et datation par le rapport des activités ──
+  #
+  # NOTE ÉDITORIALE — POURQUOI CETTE ENTRÉE EXISTE, ET POURQUOI ELLE EST
+  # PARTIELLE. L'exercice III du sujet 2020 session normale vaut 2,5 pt et
+  # couvre DEUX domaines : un volet masse-énergie (équation de désintégration,
+  # énergie libérée lue sur un diagramme d'énergie, défaut de masse) et un volet
+  # décroissance (constante radioactive, datation par les activités). Le premier
+  # est déjà en banque sous content/pc/noyaux-masse-energie/bank.yaml, id
+  # bk-2020-n-x1, pour 1,5 pt — questions 1, 2.1 et 2.2. Cette entrée-ci porte
+  # le RESTE, questions 3 et 4, pour 1,0 pt. 1,5 + 1,0 = 2,5, le barème imprimé.
+  # Le barème est RÉPARTI, jamais dupliqué : l'assemblage d'épreuves
+  # (web/src/lib/examens.ts) somme les bareme_total, et reprendre l'exercice
+  # entier ici ferait passer l'épreuve 2020 à 21,5/20.
+  #
+  # EFFET SUR LE CORPUS, vérifié avant écriture : l'épreuve SPC 2020 session
+  # normale était assemblée à 19,00/20 — il lui manquait exactement ce point.
+  # Elle passe à 20,00 et devient complète.
+  #
+  # NOTE ÉDITORIALE — FLAG DE JUMELAGE (bk-2020-n-x3b face à bk-2022-r-x2b,
+  # la datation au carbone 14). Les deux datent par un rapport d'activités et
+  # utilisent la même loi. La différence, et elle est pédagogiquement utile :
+  #   — la datation au carbone 14 compare deux ÉCHANTILLONS (un bois ancien, un
+  #     bois récent de même masse), et la précision « de même masse » est ce qui
+  #     rend la comparaison licite ;
+  #   — ici il n'y a qu'UN échantillon, suivi dans le temps : a_0 est son
+  #     activité initiale, a_1 la même plus tard. Aucune précaution de masse
+  #     n'est nécessaire, et la question est un vieillissement, pas une datation.
+  # Le rapport est en outre gigantesque (près de 10^7, soit 23 demi-vies), ce qui
+  # ouvre un contrôle que le carbone 14 ne permet pas — compter en demi-vies.
+  # Proposition : garder les deux. À l'arbitrage de l'owner.
+  - id: bk-2020-n-x3b
+    title: "Polonium 210 : constante radioactive à partir de la demi-vie, et l'instant où l'activité a chuté d'un facteur dix millions"
+    source:
+      year: 2020
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice III — volet décroissance (désintégration du polonium 210)"
+    bareme_total: 1.0
+    duration_min: 6
+    sourcing:
+      status: sourced
+      note: >-
+        2020 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28F, AlloSchool element/109742, scan
+        course-422/upload-80870, page 4 sur 7 (Exercice III — désintégration du
+        polonium 210 ; barème de l'exercice complet = 2,5 pt, recompté question
+        par question : 0,5 + 0,5 + 0,5 + 0,5 + 0,5). Transcription vérifiée :
+        re-fetch indépendant AlloSchool + diff OK
+        (docs/sujets/pc/noyaux-masse-energie.md, statut « vérifié »
+        agent-vérificateur 2026-07-11), fiche source qui annonce elle-même le
+        cross-list vers decroissance-radioactive pour ce volet. RÉPARTITION DU
+        BARÈME, à ne pas défaire : les questions 1, 2.1 et 2.2 (1,5 pt) sont
+        déjà en banque sous noyaux-masse-energie/bank.yaml, id bk-2020-n-x1 ;
+        cette entrée porte les questions 3 et 4 (1,0 pt). La somme retombe sur
+        2,5. CONTRE-CALCUL REFAIT ICI, chiffre par chiffre. Question 3 :
+        t_demi = 138 jours = 138 x 24 x 3600 = 11 923 200 s, d'où
+        lambda = ln2 / t_demi = 0,693147 / 1,19232e7 = 5,813e-8 s-1, arrondi
+        5,8e-8 s-1. Question 4 : a_0/a_1 = 3,5e11 / 3,7e4 = 9,4595e6 ;
+        ln(9,4595e6) = 16,0625 ; t_1 = (t_demi / ln2) x ln(a_0/a_1) =
+        199,092 x 16,0625 = 3197,7 jours, arrondi 3,2e3 jours (environ 8,8 ans).
+        CONTRÔLE INDÉPENDANT ajouté ici et non fourni par la source : le nombre
+        de demi-vies écoulées vaut log2(9,4595e6) = 23,17, et 3197,7 / 138 =
+        23,17 — les deux chemins coïncident exactement, ce qui verrouille le
+        résultat sans repasser par le logarithme népérien.
+    intro: |-
+      **Désintégration du polonium 210 — volet décroissance (examen national, session normale 2020 — Exercice III, 1 point sur les 2,5 de l'exercice).**
+
+      *Les questions 1 et 2 de cet exercice — l'équation de désintégration, l'énergie libérée lue sur le diagramme d'énergie et le défaut de masse — sont traitées à part, sous la notion « Noyaux, masse et énergie ». Les deux questions ci-dessous n'en dépendent pas : tout ce dont elles ont besoin est rappelé ici.*
+
+      Le polonium est un métal radioactif rare découvert en 1898 par Pierre Curie. Ce métal de symbole Po et de numéro atomique $84$ est radioactif. Le polonium 210 est le seul isotope que l'on trouve dans la nature. La désintégration d'un noyau de polonium 210 produit un noyau de plomb $^{A}_{Z}\text{Pb}$ avec émission d'une particule $\alpha$.
+
+      **Donnée :** la demi-vie du polonium 210 est $t_{1/2} = 138\ \text{jours}$.
+
+      *Aucune figure n'est nécessaire pour ces deux questions — le diagramme d'énergie du sujet ne sert qu'aux questions 1 et 2.*
+    questions:
+      - id: q3
+        part: "3 — De la demi-vie à la constante radioactive"
+        stem: |-
+          **(0,5 pt)** **3.** Calculer, en $\text{s}^{-1}$, la constante radioactive $\lambda$ du polonium 210.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La demi-vie et la constante radioactive décrivent la même chose — la rapidité de la désintégration — mais dans deux langages différents : $t_{1/2}$ est une **durée**, $\lambda$ une **probabilité de désintégration par unité de temps**. Passer de l'une à l'autre est un geste unique, et l'unité demandée ($\text{s}^{-1}$) dit d'avance où est le piège.
+
+          **La relation, et d'où elle vient.** Au bout d'une demi-vie, il ne reste que la moitié des noyaux :
+
+          $$N\left(t_{1/2}\right) = \frac{N_0}{2}
+          \qquad\text{soit}\qquad
+          N_0\,e^{-\lambda t_{1/2}} = \frac{N_0}{2}$$
+
+          On divise par $N_0$, on applique le logarithme népérien — c'est lui qui fait descendre $\lambda t_{1/2}$ de l'exposant :
+
+          $$e^{-\lambda t_{1/2}} = \frac{1}{2}
+          \qquad\Longrightarrow\qquad
+          -\lambda\,t_{1/2} = \ln\frac{1}{2} = -\ln 2
+          \qquad\Longrightarrow\qquad
+          \boxed{\lambda = \frac{\ln 2}{t_{1/2}}}$$
+
+          Cette relation vaut la peine d'être sue **et** d'être reconstruite : elle tombe en trois lignes, et la reconstruire évite de se demander si c'est $\ln 2$ qui divise ou qui multiplie.
+
+          **La conversion, qui est tout le travail de cette question.** L'énoncé donne $t_{1/2}$ en **jours** et demande $\lambda$ en $\text{s}^{-1}$. Il faut donc convertir, et l'écrire :
+
+          $$t_{1/2} = 138\ \text{jours} = 138 \times 24 \times 3600\ \text{s} = 1{,}19232 \times 10^{7}\ \text{s}$$
+
+          **Le calcul.**
+
+          $$\lambda = \frac{0{,}693}{1{,}19232 \times 10^{7}} = \boxed{5{,}8 \times 10^{-8}\ \text{s}^{-1}}$$
+
+          **Lire ce nombre au lieu de le poser.** $\lambda \approx 5{,}8\times10^{-8}\ \text{s}^{-1}$ signifie qu'à chaque seconde, chaque noyau a environ six chances sur cent millions de se désintégrer. C'est minuscule pour un noyau — et pourtant, sur un échantillon qui en contient $10^{20}$, cela fait des milliards de désintégrations par seconde. C'est exactement ce que l'activité de la question suivante va chiffrer.
+
+          **Le piège nommé de cette question.** Répondre $\lambda = \dfrac{\ln 2}{138} = 5{,}0\times10^{-3}$ sans convertir. Le résultat serait en $\text{jour}^{-1}$, pas en $\text{s}^{-1}$ — et l'écart est d'un facteur $86\,400$. L'unité demandée par l'énoncé n'est jamais décorative : quand elle ne correspond pas à celle de la donnée, c'est **l'annonce d'une conversion**.
+        steps:
+          - math: 'N\!\left(t_{1/2}\right) = \frac{N_0}{2} \quad\Longrightarrow\quad e^{-\lambda t_{1/2}} = \frac{1}{2}'
+            note: "Definition de la demi-vie, reportee dans la loi de decroissance."
+          - math: '-\lambda\,t_{1/2} = -\ln 2 \quad\Longrightarrow\quad \lambda = \frac{\ln 2}{t_{1/2}}'
+            note: "Le logarithme fait descendre l'exposant. Relation a savoir reconstruire, pas seulement retenir."
+          - math: 't_{1/2} = 138 \times 24 \times 3600 = 1{,}19232 \times 10^{7}\ \text{s}'
+            note: "L'unite demandee est la s-1 : la conversion est annoncee par l'enonce lui-meme."
+          - math: '\boxed{\lambda = \frac{0{,}693}{1{,}19232\times10^{7}} = 5{,}8\times10^{-8}\ \text{s}^{-1}}'
+            note: "Six chances sur cent millions par seconde et par noyau."
+      - id: q4
+        part: "4 — Dater par le rapport de deux activités"
+        stem: |-
+          **(0,5 pt)** **4.** Un échantillon de noyaux de polonium 210 a une activité $a_0 = 3{,}5 \cdot 10^{11}\ \text{Bq}$ à un instant de date $t = 0$. Déterminer, en jours, l'instant de date $t_1$ où l'activité de cet échantillon est $a_1 = 3{,}7 \cdot 10^{4}\ \text{Bq}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'activité suit exactement la même décroissance exponentielle que le nombre de noyaux — puisque $a = \lambda N$ et que $\lambda$ est une constante. On peut donc travailler directement sur les activités, sans jamais calculer un nombre de noyaux.
+
+          **La loi, et son retournement.**
+
+          $$a(t) = a_0\,e^{-\lambda t}
+          \qquad\Longrightarrow\qquad
+          a_1 = a_0\,e^{-\lambda t_1}$$
+
+          On divise par $a_0$, on applique le logarithme, on isole $t_1$ :
+
+          $$\frac{a_1}{a_0} = e^{-\lambda t_1}
+          \qquad\Longrightarrow\qquad
+          -\lambda\,t_1 = \ln\!\left(\frac{a_1}{a_0}\right)
+          \qquad\Longrightarrow\qquad
+          t_1 = \frac{1}{\lambda}\,\ln\!\left(\frac{a_0}{a_1}\right)$$
+
+          Au dernier passage, on a **retourné le rapport** pour absorber le signe moins — $-\ln\frac{a_1}{a_0} = \ln\frac{a_0}{a_1}$. Le résultat est ainsi manifestement positif, ce qui est un contrôle en soi.
+
+          **Le raccourci qui évite une conversion.** L'énoncé demande $t_1$ **en jours**, et l'on connaît $t_{1/2}$ en jours. Plutôt que de repasser par $\lambda$ en $\text{s}^{-1}$ puis de reconvertir, on utilise $\dfrac{1}{\lambda} = \dfrac{t_{1/2}}{\ln 2}$ **avec $t_{1/2}$ en jours** :
+
+          $$t_1 = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a_1}\right)$$
+
+          Le résultat sort directement en jours. C'est plus court, et surtout cela supprime deux conversions où l'on peut se tromper.
+
+          **L'application numérique, chiffre par chiffre.** Le rapport d'abord :
+
+          $$\frac{a_0}{a_1} = \frac{3{,}5\times10^{11}}{3{,}7\times10^{4}} = 9{,}46\times10^{6}$$
+
+          Son logarithme :
+
+          $$\ln\!\left(9{,}46\times10^{6}\right) = 16{,}06$$
+
+          Le préfacteur :
+
+          $$\frac{t_{1/2}}{\ln 2} = \frac{138}{0{,}693} = 199{,}1\ \text{jours}$$
+
+          Le produit :
+
+          $$t_1 = 199{,}1 \times 16{,}06 = \boxed{3{,}2 \times 10^{3}\ \text{jours}}$$
+
+          soit environ $3200$ jours, ou **près de neuf ans**.
+
+          **Le contrôle indépendant, et il est particulièrement satisfaisant ici.** Compte en **demi-vies** plutôt qu'en logarithmes. L'activité a été divisée par $9{,}46\times10^{6}$ ; chaque demi-vie la divise par $2$. Il a donc fallu $n$ demi-vies avec $2^{n} = 9{,}46\times10^{6}$, c'est-à-dire
+
+          $$n = \log_2\!\left(9{,}46\times10^{6}\right) = \frac{16{,}06}{0{,}693} = 23{,}2$$
+
+          Et de fait, $\dfrac{3200}{138} = 23{,}2$ ✔. Les deux chemins tombent sur le même nombre. Ce contrôle est gratuit, et il attrape à coup sûr une erreur de rapport inversé ou de préfacteur.
+
+          **Ce que ce nombre raconte.** Vingt-trois demi-vies, c'est énorme : de $3{,}5\times10^{11}$ becquerels — une activité de source industrielle — on est descendu à $3{,}7\times10^{4}$, soit le niveau d'une source d'étalonnage de laboratoire. En moins de neuf ans, un échantillon de polonium 210 devient pratiquement inoffensif. C'est le revers d'une demi-vie courte : très actif, mais vite éteint.
+
+          **Les deux pièges nommés de cette question.** Le premier : **inverser le rapport** et calculer $\ln\frac{a_1}{a_0} = -16{,}06$, ce qui donne un instant **négatif**. Un instant négatif voudrait dire que l'échantillon était moins actif avant qu'après — le signe est un contrôle, pas une contrariété. Le second : reprendre le $\lambda$ de la question précédente, exprimé en $\text{s}^{-1}$, et oublier de reconvertir le résultat de secondes en jours ; on annoncerait $2{,}76\times10^{8}$, un nombre juste en secondes mais faux dans l'unité demandée.
+        steps:
+          - math: 'a_1 = a_0\,e^{-\lambda t_1} \quad\Longrightarrow\quad t_1 = \frac{1}{\lambda}\,\ln\!\left(\frac{a_0}{a_1}\right)'
+            note: "Rapport retourne pour absorber le signe moins : le resultat est manifestement positif."
+          - math: '\frac{1}{\lambda} = \frac{t_{1/2}}{\ln 2} \quad\Longrightarrow\quad t_1 = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a_1}\right)'
+            note: "Avec t_demi en JOURS : le resultat sort en jours, deux conversions evitees."
+          - math: '\frac{a_0}{a_1} = \frac{3{,}5\times10^{11}}{3{,}7\times10^{4}} = 9{,}46\times10^{6} \quad;\quad \ln\!\left(9{,}46\times10^{6}\right) = 16{,}06'
+            note: "Le rapport est gigantesque : pres de dix millions."
+          - math: 't_1 = \frac{138}{0{,}693} \times 16{,}06 = 199{,}1 \times 16{,}06'
+            note: "Prefacteur en jours, logarithme sans dimension."
+          - math: '\boxed{t_1 \approx 3{,}2\times10^{3}\ \text{jours}}'
+            note: "Environ 3200 jours, pres de neuf ans."
+          - math: 'n = \log_2\!\left(9{,}46\times10^{6}\right) = \frac{16{,}06}{0{,}693} = 23{,}2 \quad\text{et}\quad \frac{3200}{138} = 23{,}2'
+            note: "Controle independant en demi-vies : les deux chemins coincident exactement."
+
   # ── bk-2021-n-x3 — 2021 N, Exercice III : désintégration du plutonium 238 ──
   - id: bk-2021-n-x3
     title: "Le plutonium 238 d'un stimulateur cardiaque : désintégration α, demi-vie et activité"
