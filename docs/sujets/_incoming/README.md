@@ -111,7 +111,9 @@ exercices d'algèbre sont en banque et que leur volet d'ANALYSE n'y est pas.
 Une épreuve SM consacre la moitié de son barème à l'analyse ; c'est
 exactement la moitié qui manque.
 
-**Sept sujets transcrits, sept vérifiés.** État au 2026-08-27 :
+### La vague MATHS (SM et SExp) — close
+
+**Sept sujets, sept vérifiés, sept convertis.** État au 2026-08-27 :
 
 | Fichier | Ce qui est transcrit | Barème | Vérification |
 |---|---|---|---|
@@ -121,8 +123,26 @@ exactement la moitié qui manque.
 | `maths-sm-2025-n.md` | exercice 1 (problème unique) | 10 | **vérifiée** — aucun défaut ; c'est cette passe qui a découvert l'incident de cache CDN |
 | `maths-sm-2017-n.md` | exercice 4 (problème unique) | 10 | **vérifiée EN DEUX PASSES, clearée** — la seconde a soldé les 5 points ouverts en trouvant la clé de décodage (chaque point de code lu comme un code **Adobe Symbol** retombe sur le symbole attendu, sur 10 codes indépendants) ; 3 défauts du sujet officiel documentés, dont un ℕ **physiquement absent** du PDF |
 | `maths-sm-2021-n.md` | exercice 1 (problème unique) | 12 | **VÉRIFIÉ, clearé, CONVERTI** (partitionné 5,0 + 7,0) — 4 contrôles anti-CDN + 2 instruments inédits (matrice de corrélation PDF↔JPG, couche 300 dpi) ; **aucun défaut du sujet officiel** ; le « + » que la transcription croyait amputé est intact, c'est le sous-échantillonnage d'AlloSchool |
-| `pc-2012-n.md` | **la PHYSIQUE** de SPC 2012 N (nucléaire 3 · électricité 4,5 · mécanique 5,5) | 13 | **NON VÉRIFIÉ** — transcrit sous les 4 contrôles + les 2 instruments. PDF **natif** : rendu vectoriel, aucun caractère deviné. La chimie (7,00) est déjà en banque et n'est PAS retranscrite |
 | `maths-sexp-2018-n.md` | problème (SExp) | 11 | **VÉRIFIÉ, clearé, CONVERTI** (fonde la banque de `derivabilite-etude-fonctions`) — 4 contrôles + 2 ajoutés (corrigé officiel `NR 22F`, PDF source) ; 12 points du docket soldés. L'anomalie de `<title>` est **arbitrée PASS** : 54/54 des éléments de `course-438` la portent, `course-436` nomme correctement sa filière, et quatre éléments servent un `0001-big.jpg` byte-identique — le fichier servi EST le bon sujet. **Réserve nommée** : le symbole de II-5 est une reconstruction éditoriale (≈), pas une lecture |
+
+### La vague PHYSIQUE-CHIMIE — ouverte
+
+Les cinq épreuves SPC incomplètes du corpus, toutes `sourcé-confirmé`. Elles
+demandent 13 à 18 points chacune : un ordre de grandeur au-dessus de la vague
+maths, où il ne manquait qu'un problème par épreuve.
+
+| Fichier | Ce qui est transcrit | Barème | Vérification |
+|---|---|---|---|
+| `pc-2012-n.md` | **la PHYSIQUE** de SPC 2012 N (nucléaire 3 · électricité 4,5 · mécanique 5,5) | 13 | **NON VÉRIFIÉ** — transcrit sous les 4 contrôles + les 2 instruments ; passe adversariale en cours. PDF **natif** : rendu vectoriel, aucun caractère deviné. La chimie (7,00) est déjà en banque et n'est PAS retranscrite |
+
+**Restent à ouvrir** : SPC 2010 N (manque 15,75, `element/94443`) · SPC 2015 N
+(17,75, `element/94472`) · SPC 2011 R (17,75, `element/94449`) · SPC 2017 N
+(18,25, `element/57711`).
+
+**La règle d'exclusion vaut pour les cinq** : chacune porte DÉJÀ une entrée en
+banque. Retranscrire la même partie ferait dépasser 20 — c'est le mode d'échec
+que la garde dom-truth « aucune épreuve au-dessus de 20 » attrape désormais,
+mais il vaut mieux ne pas l'y envoyer.
 
 **SM 2020 est le sixième, et il est SUSPENDU** — pas oublié. Son format à
 choix n'est pas représentable par l'assembleur d'épreuves ; voir
