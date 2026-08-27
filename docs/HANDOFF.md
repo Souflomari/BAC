@@ -193,18 +193,23 @@ brief standard, cold-executable by Sonnet.
 
 ### 6.1 Ce qui a changé pour l'élève
 
-**Le corpus d'épreuves est passé de 22 à 27 épreuves complètes** (≥ 19,5/20),
-184 entrées de banque. Les cinq gagnées ce jour sont **SM 2017, 2022, 2023,
-2024 et 2025 normale**, chacune passée de 10,00 à 20,00/20 par la conversion
-de son problème d'analyse.
+**Le corpus d'épreuves est passé de 22 à 29 épreuves complètes** (≥ 19,5/20),
+187 entrées de banque, 37 notions dotées. Les sept gagnées ce jour :
+**SM 2017, 2021, 2022, 2023, 2024, 2025 normale et SExp 2018**, chacune
+passée à 20,00/20 par la conversion de son problème d'analyse.
 
-L'état réel des épreuves SM de session normale, à consulter avant de
-reprendre : 2017/2022/2023/2024/2025 complètes · 2021 en conversion
-(partitionnée) · **2020 normale ET rattrapage SUSPENDUES** sur l'arbitrage
-K-0. Côté SExp, 2018 est vérifiée et en conversion — sa conversion **fonde la
-banque de `derivabilite-etude-fonctions`**, la notion la plus cross-listée du
-corpus, qui n'en avait aucune. `docs/sujets/_incoming/README.md` porte le
-tableau à jour.
+Deux d'entre elles étaient **invisibles** pour l'élève — SM 2021 (8,00) et
+SExp 2018 (9,00) sous le seuil d'affichage de 9,75. Elles existent maintenant.
+
+Deux cas méritent d'être connus avant de reprendre :
+- **SM 2021 est PARTITIONNÉE** — Partie I → `fonction-exponentielle` (5,0),
+  Parties II+III → `suites-numeriques` (7,0). Voir §6.5 bis pour le critère.
+- **SExp 2018 FONDE la banque de `derivabilite-etude-fonctions`**, la notion
+  la plus cross-listée du corpus, qui n'en avait aucune.
+
+**2020 normale ET rattrapage restent SUSPENDUES** sur l'arbitrage K-0 — les
+deux seules épreuves SM de session normale qui ne soient pas complètes.
+`docs/sujets/_incoming/README.md` porte le tableau à jour.
 
 ### 6.2 Cinq défauts trouvés en MESURANT le corpus, pas en lisant le code
 
