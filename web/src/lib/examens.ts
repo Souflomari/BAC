@@ -42,6 +42,19 @@ export interface Epreuve {
   session: string;
   /** Somme des barèmes transcrits (≤ 20). */
   pts: number;
+  /**
+   * Nombre d'exercices SUR LE SUJET RÉEL — pas le nombre d'entrées.
+   *
+   * Un exercice du bac se répartit souvent entre plusieurs notions (une
+   * cross-list ne devient jamais une seconde entrée, mais un exercice
+   * authentiquement mixte se DÉCOUPE, et chaque morceau vit dans la banque
+   * de son domaine). `exercices.length` compte donc les morceaux. Mesuré au
+   * 2026-08-27 : 14 des 23 épreuves affichées annonçaient un nombre faux —
+   * SPC 2023 normale disait « 10 exercices » pour un sujet qui en a quatre.
+   * Un élève qui jauge « est-ce que je peux faire ça ce soir » lisait une
+   * copie deux fois plus grosse que la vraie.
+   */
+  nbExercices: number;
   /** Somme des durées honnêtes des entrées (minutes). */
   minutes: number;
   /** Durée officielle de l'épreuve au bac (minutes) : SM 240, sinon 180. */
@@ -152,6 +165,7 @@ export function listEpreuves(): Epreuve[] {
           year: s.year,
           session: s.session,
           pts: 0,
+          nbExercices: 0,
           minutes: 0,
           dureeOfficielleMin: s.filiere === "SM" ? 240 : 180,
           complete: false,
@@ -186,6 +200,13 @@ export function listEpreuves(): Epreuve[] {
         return (a.exerciseLabel ?? "").localeCompare(b.exerciseLabel ?? "", "fr");
       });
       ep.pts = Math.round(ep.pts * 100) / 100;
+      // Les morceaux d'un même exercice partagent son numéro sur la copie ;
+      // les libellés sans numéro exploitable retombent tous sur 99 — ce qui
+      // est correct pour les épreuves du corpus, où ils désignent les parties
+      // d'un seul et même exercice non numéroté.
+      ep.nbExercices = new Set(
+        ep.exercices.map((x) => numeroExercice(x.exerciseLabel))
+      ).size;
       ep.complete = ep.pts >= COMPLETE_MIN;
       return ep;
     })

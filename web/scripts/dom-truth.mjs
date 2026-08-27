@@ -2880,6 +2880,25 @@ try {
       console.log(`  ✓ ${liste.total} épreuves listées, pts en clair`);
     }
 
+    // Le nombre d'exercices annoncé est celui du SUJET, pas celui des
+    // entrées. Un exercice mixte se découpe entre plusieurs banques ; la
+    // carte comptait les morceaux, donc 14 des 23 épreuves affichées
+    // annonçaient un nombre faux — SPC 2023 normale disait « 10 exercices »
+    // pour un sujet qui en a quatre. Témoin : ce même SPC 2023 normale, la
+    // pire divergence du corpus (4 exercices servis en 10 parties).
+    checks++;
+    const compte = await epage.evaluate(() => {
+      const carte = document.querySelector("[data-epreuve='spc-2023-normale']");
+      return carte?.querySelector("[data-epreuve-exos]")?.textContent?.trim() ?? "";
+    });
+    if (!/\b4 exercices\b/.test(compte) || !/\b10 parties\b/.test(compte)) {
+      failures += fail(
+        `spc-2023-normale annonce « ${compte} » — attendu « 4 exercices · 10 parties » (le sujet, puis les morceaux)`
+      );
+    } else {
+      console.log(`  ✓ spc-2023-normale : « ${compte} » — le sujet, puis les morceaux`);
+    }
+
     checks++;
     await epage.goto(`${BASE}/examens/spc-2023-normale`, { waitUntil: "networkidle" });
     const seuil = await epage.evaluate(() => ({

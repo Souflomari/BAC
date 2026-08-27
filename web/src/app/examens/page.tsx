@@ -46,7 +46,16 @@ function CarteEpreuve({ ep }: { ep: Epreuve }) {
             {epreuveTitre(ep)}
           </span>
           <span className="mt-0.5 block text-body-sm text-secondary">
-            {ep.exercices.length} exercices ·{" "}
+            <span data-epreuve-exos>
+              {ep.nbExercices} exercice{ep.nbExercices > 1 ? "s" : ""}
+              {/* Le sujet compte N exercices ; le produit les sert en M
+                  morceaux quand un exercice se répartit entre plusieurs
+                  notions. On dit les deux — sinon la carte annonce 4 et la
+                  page en montre 10. */}
+              {ep.exercices.length > ep.nbExercices &&
+                ` · ${ep.exercices.length} parties`}
+            </span>{" "}
+            ·{" "}
             <span className="mono-inline tabular-nums" data-epreuve-pts>
               {ep.complete
                 ? `${Math.round(ep.pts)} pts`
