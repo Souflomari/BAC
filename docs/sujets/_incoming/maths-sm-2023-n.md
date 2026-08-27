@@ -402,6 +402,34 @@ le corpus le fait déjà ailleurs, et non le supposer acquis.
 
 ## Ce que la vérification a trouvé
 
+> ### ⚠️ Cette passe de vérification PRÉCÈDE la règle du 2026-08-27
+>
+> Une passe ultérieure, sur SM 2025 normale, a découvert qu'AlloSchool peut
+> servir depuis son cache CDN **un autre sujet que celui demandé** — et qu'une
+> lecture visuelle, la transcription sous les yeux, « retrouve » alors
+> l'énoncé attendu sur des pages qui ne le contiennent pas. Le protocole du
+> sas exige depuis quatre contrôles (voir `README.md`, section « la lecture
+> visuelle seule ne suffit pas ») : année imprimée relue sur **chaque** page,
+> recoupement par un instrument **non visuel**, MD5 consignés avec un second
+> téléchargement, et contrôle du `<title>` servi.
+>
+> **Ce que cette passe-ci a effectivement fait**, d'après son propre rapport :
+> elle a re-dérivé les URLs d'images depuis le HTML, **contrôlé le `<title>`
+> servi** (qui nommait la bonne année et la bonne filière), lu les pages
+> comme images avec recadrages, et re-dérivé mathématiquement toutes les
+> identités de l'énoncé.
+>
+> **Ce qu'elle n'a pas fait** : le contrôle de l'année page par page, le
+> recoupement non visuel, et les MD5 avec second téléchargement.
+>
+> Le contrôle du `<title>` est un vrai garde-fou — il vient du HTML, pas de
+> l'attente du lecteur — et c'est précisément lui qui a mis la passe SM 2025
+> sur la piste. Le risque résiduel est donc **faible mais non nul** : le
+> panachage constaté en 2025 touchait les images alors que la page HTML était
+> correcte. **À l'arbitrage de l'owner** : re-passer ce sujet sous le
+> protocole complet, ou accepter le niveau de preuve ci-dessus.
+
+
 **Passe adversariale indépendante, 2026-08-27.** Scan re-fetché par le
 vérificateur, non repris de la transcription.
 
