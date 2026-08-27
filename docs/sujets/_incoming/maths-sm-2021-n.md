@@ -1,19 +1,38 @@
 # Examen national Mathématiques — SM — 2021, session NORMALE (NS 24F) — exercice 1
 
-> **Fichier d'entrée (`_incoming`) — NON VÉRIFIÉ.
-> NON CLEARÉ POUR CONVERSION.** Protocole `docs/sujets/_incoming/README.md`
-> et `docs/sujets/maths/README.md`.
+> **Fichier d'entrée (`_incoming`) — VÉRIFIÉ.
+> CLEARÉ POUR CONVERSION**, sous les deux réserves de classement nommées
+> plus bas. Protocole `docs/sujets/_incoming/README.md` et
+> `docs/sujets/maths/README.md`.
 >
-> **Ceci est une TRANSCRIPTION, pas une vérification.** Elle a été faite le
-> **2026-08-27** par un transcripteur qui a exécuté les **quatre contrôles de
-> provenance** exigés depuis l'incident de cache CDN (§ « Provenance et les
-> quatre contrôles » ci-dessous), puis relu le scan au zoom. Il ne s'est pas
-> auto-validé et n'a pas le droit de le faire : la **passe de vérification est
-> INDÉPENDANTE**, elle re-télécharge le scan elle-même, ne relit jamais le
-> texte transcrit à la place de l'image, et n'a pas encore eu lieu.
+> **Deux passes, dans l'ordre.** *Transcription* le **2026-08-27**, puis
+> *vérification adversariale INDÉPENDANTE* le **2026-08-27** — scan
+> re-téléchargé de zéro, texte transcrit jamais relu à la place de l'image,
+> **les quatre contrôles anti-CDN refaits en entier** plus deux instruments
+> que la transcription n'avait pas ouverts. Le détail, les preuves et le
+> verdict des dix points du docket sont en
+> **§ `Ce que la vérification a trouvé`** (fin de fichier).
 >
-> Tant qu'elle n'a pas laissé sa trace, **aucun bloc de ce fichier ne peut
-> devenir une entrée de `content/maths/*/bank.yaml`**.
+> **Résultat : la transcription de l'énoncé est FIDÈLE — zéro divergence sur
+> les 24 questions, sur le barème et sur l'en-tête. Le SUJET OFFICIEL ne
+> présente aucun défaut.** Les 24 questions ont été re-dérivées une par une.
+>
+> **Ce que la vérification a corrigé au transcripteur** (aucun ne touche le
+> corps de l'énoncé) :
+> 1. le **mécanisme** du « + » de $u_{n+1}$ — conclusion juste, diagnostic
+>    faux : le pixel de croisement est *intact*, et c'est le
+>    **sous-échantillonnage 300 → 150 dpi d'AlloSchool** qui casse le glyphe,
+>    pas la numérisation du sujet. **Prouvé** sur la couche bitonale **300 dpi**
+>    embarquée dans le PDF, où le « + » est parfait ;
+> 2. les marques de marge sont imprimées **`0.5` avec un POINT** — la
+>    transcription les francise en `0,5` 24 fois, alors qu'elle préserve
+>    explicitement le point de « 1.47 » ;
+> 3. l'artefact d'OCR « 2024 » frappe les pages **1, 2 et 3**, non les seules
+>    pages 2 et 3 ;
+> 4. le précédent SM 2025 N invoqué dans l'arbitrage de slug dit
+>    « plus gros bloc **ET** identité » — une conjonction, pas une hiérarchie.
+>
+> **Aucune valeur n'est restée illisible.**
 >
 > **Portée volontairement partielle.** Ce fichier ne transcrit que
 > l'**exercice 1** (le problème d'analyse, 12 pts). Les exercices 2 (nombres
@@ -97,6 +116,13 @@ recadrage est **restreint aux quatre chiffres** et passé en
 `2021`, et la lecture visuelle à ×3 est sans ambiguïté (voir la ligne complète
 citée ci-dessus). **Ne pas conclure à un panachage sur la foi de l'OCR pleine
 page.**
+
+> 🔎 **VÉRIFICATION (2026-08-27) — portée corrigée.** L'artefact est réel et
+> a été reproduit, mais il frappe les pages **1, 2 ET 3** (seule la page 4
+> rend `2021` en pleine page), et non les seules pages 2 et 3. Le remède est
+> inchangé. Les quatre millésimes ont été re-lus visuellement **et** par OCR
+> chiffres-seuls en trois modes `--psm` : **`2021` douze fois sur douze**.
+> Détail en § `Ce que la vérification a trouvé`.
 
 ### Contrôle 2 — recoupement par instrument NON VISUEL
 
@@ -250,17 +276,38 @@ $u_{n\div1}$ n'a aucun sens.
 pas une substitution de police. *(À reconfirmer en vérification — c'est le
 seul caractère de tout l'énoncé qui a demandé une adjudication.)*
 
+> 🔎 **VÉRIFICATION (2026-08-27) — conclusion CONFIRMÉE, diagnostic CORRIGÉ,
+> et le point est désormais PROUVÉ.** Le « + » est juste. Mais le pixel de
+> croisement **n'est pas perdu** : il est intact (ligne 1374, colonne 583,
+> pleine encre) ; ce qui manque, ce sont les deux pixels *adjacents* à la
+> barre, et ils sont à blanc papier franc, pas en gris atténué. **La cause
+> n'est pas la numérisation du sujet mais le sous-échantillonnage 300 → 150
+> dpi qu'AlloSchool applique pour produire les JPG servis** : dans la
+> **couche bitonale 300 dpi embarquée dans le PDF**, le fût du « + » est
+> **continu et traverse la barre, sans le moindre trou**. Le sujet officiel
+> est impeccable ici. Matrices de pixels et démonstration en
+> § `Ce que la vérification a trouvé`, point 1.
+
 **Un point de typographie, à ne pas « corriger » :** la valeur approchée de la
 Partie III q1-b est imprimée **avec un point décimal** — « $< 1.47$ » — et non
 avec la virgule française. Vérifié au zoom ×11 : le séparateur est un point
 carré posé sur la ligne de base. Le reste du sujet n'a aucun autre nombre
 décimal. **Transcrit tel quel.**
 
+> 🔎 **VÉRIFICATION (2026-08-27) — juste pour « 1.47 », mais incomplet.**
+> Le point de « 1.47 » est confirmé (mesuré : 7 px de haut, base sur la ligne
+> de base, **aucune descendante** — une virgule descendrait de 5 à 7 px).
+> Seulement, **« le reste du sujet n'a aucun autre nombre décimal » est
+> inexact** : les **24 marques de la colonne de marge** en sont, et elles
+> portent **le même point** — le scan imprime `0.5`, que ce fichier francise
+> en `0,5` vingt-quatre fois. Écart mineur et sans effet sur la conversion,
+> mais relevé parce qu'il contredit la règle que ce paragraphe pose lui-même.
+
 ---
 
 ## 2021 — session normale — Exercice 1
 Source: https://www.alloschool.com/element/127193
-Statut: **NON VÉRIFIÉ** — transcrit le 2026-08-27 (transcripteur ; quatre contrôles de provenance passés, vérification indépendante non faite)
+Statut: **vérifié** — re-fetch indépendant + re-dérivation des 24 questions + couche 300 dpi du PDF (vérificateur adversarial, 2026-08-27 ; quatre contrôles anti-CDN refaits, zéro divergence sur l'énoncé)
 
 - Filière / épreuve : Sciences Mathématiques (A) et (B), option française — Mathématiques, 4 h, coef 9
 - Code sujet : NS 24F · Barème de l'exercice : **12 points** (imprimé p. 1 *et* en tête du corps p. 2)
@@ -404,6 +451,18 @@ ne présente, à ce stade, aucun défaut propre.
 
 ## Classement proposé vers `content/maths/`
 
+> 🔎 **VÉRIFICATION (2026-08-27) — la proposition ci-dessous est SUPERSÉDÉE.**
+> Le classement a été tranché : voir
+> **§ `⚖️ Le classement — ce que la vérification tranche`** en fin de fichier.
+> En résumé : `suites-numeriques` **si une seule carte** (mesuré à **7,0/12**,
+> non 5,0 — la Partie III est *un* objet, la suite implicite, et ne se
+> découpe pas par outil), et **le précédent SM 2025 N ne s'y oppose pas** :
+> relu dans la banque, il dit « plus gros bloc **ET** identité », une
+> conjonction, jamais une hiérarchie qui ferait gagner l'identité contre une
+> mesure plus grande. La question *une carte ou deux* reste, elle, un
+> arbitrage owner — avec un fait nouveau : **aucune carte SM du dépôt ne
+> dépasse 10 points**, vérifié sur les 14 banques.
+
 **Contrôle d'existence fait.** `ls content/maths/` a été exécuté et rend
 **14 dossiers** : `arithmetique`, `calcul-integral`, `denombrement`,
 `derivabilite-etude-fonctions`, `equations-differentielles`,
@@ -470,6 +529,10 @@ produit, pas de transcription : je la signale, je ne la prends pas.
 
 ## Ce que la vérification devra trancher EN PRIORITÉ
 
+> 🔎 **Les dix points ont été soldés le 2026-08-27** — un par un, avec preuve,
+> en § `Ce que la vérification a trouvé`. Le docket ci-dessous est conservé
+> tel qu'écrit par le transcripteur, comme énoncé du problème.
+
 Par ordre décroissant de coût si c'est faux.
 
 1. **Le « + » de l'indice $u_{n+1}$ dans la ligne de définition de la suite
@@ -530,6 +593,10 @@ adjudication (le « + » du point 1) l'a été par trois mesures convergentes, e
 il est signalé comme tel plutôt que dissimulé. Aucune valeur n'est déclarée
 illisible.
 
+> 🔎 **VÉRIFICATION (2026-08-27) — confirmé.** La passe indépendante n'a laissé
+> elle non plus **aucune valeur illisible**, et l'unique adjudication a été
+> refaite puis **prouvée** sur une source de résolution double.
+
 ### Écarts avec le recensement — pour mémoire
 
 | Point | CENSUS | Ce fichier (lu sur le scan) | Verdict |
@@ -544,3 +611,653 @@ illisible.
 **Aucun écart à signaler.** Le CENSUS avait raison sur les trois points qu'il
 annonçait ; il lui manquait seulement la confirmation du 12 et les
 identifiants d'images.
+
+---
+
+## Ce que la vérification a trouvé
+
+> **Passe adversariale INDÉPENDANTE — 2026-08-27** (date réelle, `date -u` :
+> *Thu Aug 27 18:09:11 UTC 2026*). Le scan a été **re-téléchargé de zéro** ;
+> le texte transcrit n'a jamais été relu à la place de l'image. Les quatre
+> contrôles anti-CDN ont été refaits **en entier**, et **deux instruments que
+> la transcription n'avait pas ouverts** ont été ajoutés — dont l'un
+> (§ « la couche bitonale 300 dpi ») tranche à lui seul le point n°1 du
+> docket, celui qui coûtait le plus cher.
+>
+> **Verdict : la transcription de l'énoncé est FIDÈLE. Zéro divergence sur
+> l'énoncé, sur le barème et sur l'en-tête.** Trois écarts mineurs sont
+> relevés plus bas — un de fidélité typographique (les `0,5` de la marge),
+> deux de *diagnostic* dans les notes du transcripteur (le mécanisme du
+> « + » cassé, et la portée de l'artefact d'OCR « 2024 »). Aucun ne touche
+> le corps de l'énoncé.
+
+### Les quatre contrôles anti-CDN — **les quatre ont été faits**, aucun sauté
+
+| Contrôle | Fait ? | Comment, par moi |
+|---|---|---|
+| 1 — année imprimée sur **chaque** page | ✅ **fait** | lecture ×6 à ×8 des 4 cartouches **+** OCR chiffres-seuls sur recadrage restreint, en 3 modes `--psm` |
+| 2 — recoupement **non visuel** | ✅ **fait** | **six** instruments distincts (détail ci-dessous), dont deux inédits |
+| 3 — MD5 + **second** téléchargement | ✅ **fait** | 2 passes, 2 User-Agents, `Cache-Control: no-cache` + URL cache-bustée, `cmp` octet à octet |
+| 4 — `<title>` et URL servis | ✅ **fait** | `element/127193` re-fetché, `<title>`, `<meta description>`, URL du PDF et chemin d'images extraits du HTML servi |
+
+**Contrôle 1 — l'année, page par page.** Les quatre cartouches ont été
+recadrés et relus séparément, puis l'OCR a été relancé sur le **seul** groupe
+de quatre chiffres, avec `-c tessedit_char_whitelist=0123456789` et en
+`--psm 7`, `8` **et** `13` (douze lectures au total) :
+
+| Page | Numérotation lue | Code lu | Lecture visuelle du millésime | OCR chiffres-seuls (psm 7 / 8 / 13) |
+|---|---|---|---|---|
+| 1/4 | **1 / 4** | `NS 24F` | **2021** (×8) | `2021` / `2021` / `2021` |
+| 2/4 | **2 / 4** | `NS 24F` | **2021** (×6) | `2021` / `2021` / `2021` |
+| 3/4 | **3 / 4** | `NS 24F` | **2021** (×6) | `2021` / `2021` / `2021` |
+| 4/4 | **4 / 4** | `NS 24F` | **2021** (×6) | `2021` / `2021` / `2021` |
+
+**Aucun panachage. Les quatre pages sont du même sujet, même année, même
+code, même mention de filière** (« شعبة العلوم الرياضية (أ) و (ب) (خيار فرنسية) »).
+
+⚠️ **Correction à la note du transcripteur sur l'artefact « 2024 ».** Le piège
+existe et je l'ai reproduit — mais **sa portée est plus large que ce que le
+fichier annonçait**. Le transcripteur écrit que l'OCR pleine page rend l'année
+« 2024 » **sur les pages 2 et 3**. Dans ma passe (`tesseract --psm 6`, pack
+`eng` seul), l'artefact frappe **les pages 1, 2 ET 3** — la page 1 rend
+« Ea 2024 Agclall 5 gall » — et **seule la page 4 rend `2021`** en pleine page.
+Trois pages sur quatre, donc, et non deux. Le remède est bien celui qu'il
+décrit (restreindre le recadrage aux quatre chiffres), mais un agent qui
+attend l'artefact sur 2 pages et le trouve sur 3 pourrait conclure à une
+contamination. **Il n'y en a pas : c'est le même artefact, une page de plus.**
+
+**Contrôle 2 — six instruments non visuels, dont deux inédits.**
+
+1. **OCR intégral des 4 pages** (`--psm 6`) : rend un sujet SM à **trois**
+   exercices — p. 1 « L'épreuve comporte 3 exercices indépendants » et les
+   trois lignes de barème ; p. 2 « EXERCICE1 : (12 points) » ; p. 3
+   « EXERCICE2 : (4 points) » ; p. 4 « EXERCICES : (4 points) » (*lire
+   EXERCICE3*) puis « FIN ». Aucun sujet étranger n'apparaît.
+2. **Métadonnées du PDF** (PyMuPDF, invisibles à l'écran donc non
+   « retrouvables » par lecture) : `title: KM_287-20210614091408` ·
+   `creator: KM_287` · `producer: KONICA MINOLTA bizhub 287` ·
+   `creationDate: D:20210614091408Z` → **14 juin 2021**, la fenêtre de la
+   session normale 2021. `get_text()` vide sur les 4 pages (scan pur) ;
+   **10 / 26 / 11 / 12 images par page** — identique à ce que rapporte la
+   transcription.
+3. **Ancre de date interne au contenu** : l'OCR de la page 4 rend
+   « b) En déduire que: x = 527 **[2021]** » — le module de l'exercice 3 est
+   l'année du sujet. Une page servie depuis un autre millésime ne pourrait
+   pas la porter.
+4. **⭐ INÉDIT — corrélation pixel PDF ↔ JPG, avec matrice de contrôle
+   croisé.** Le PDF et les JPG sont servis par **deux chemins d'actifs
+   différents**. J'ai rendu les 4 pages du PDF à 150 dpi et corrélé chacune
+   avec chacun des 4 JPG servis. La matrice est **diagonale** :
+
+   | | JPG 1 | JPG 2 | JPG 3 | JPG 4 |
+   |---|---|---|---|---|
+   | **PDF p.1** | **0,944** | 0,040 | 0,034 | 0,035 |
+   | **PDF p.2** | 0,037 | **0,893** | 0,130 | 0,104 |
+   | **PDF p.3** | 0,038 | 0,141 | **0,889** | 0,157 |
+   | **PDF p.4** | 0,045 | 0,111 | 0,165 | **0,891** |
+
+   Chaque image servie correspond à la page de même rang du PDF, et à aucune
+   autre. **C'est exactement le contrôle qui aurait cassé l'incident SM 2025
+   en une commande** : un JPG substitué depuis un autre millésime aurait
+   donné une diagonale effondrée.
+5. **⭐ INÉDIT — la couche bitonale 300 dpi embarquée dans le PDF** (voir la
+   section dédiée ci-dessous). Elle porte le corps de l'énoncé au **double**
+   de la résolution des JPG servis, et c'est elle qui tranche le point 1.
+6. **Métrologie de la colonne de marge**, calibrée sur le scan lui-même
+   (voir point 8 du docket) — une mesure de largeur en pixels, sans lecture.
+
+**Aucun des six ne contredit l'attente ; aucun sujet étranger n'apparaît.**
+
+**Contrôle 3 — MD5, deux téléchargements.** Passe 1 (UA Chrome) et passe 2
+(UA `curl-verif/2.0`, `Cache-Control: no-cache`, `Pragma: no-cache`, URL
+cache-bustée). Mes empreintes, **calculées sur mes propres fichiers** :
+
+| Fichier | Octets | MD5 (ma passe 1) | MD5 (ma passe 2) | `cmp` | = transcription ? |
+|---|---|---|---|---|---|
+| `upload-84150/0001-big.jpg` | 319 443 | `1b2212c8282cdbb4bfba85d6027777b9` | identique | ✔ | **oui** |
+| `upload-84150/0002-big.jpg` | 394 636 | `9c55ac2206d31c2256886ae8a18e0103` | identique | ✔ | **oui** |
+| `upload-84150/0003-big.jpg` | 409 943 | `70e9357822840a94b11f0e66bb275a98` | identique | ✔ | **oui** |
+| `upload-84150/0004-big.jpg` | 387 719 | `227d5a6fc0afc2d994b6756527d778be` | identique | ✔ | **oui** |
+| `…-2021-normale-sujet-2.pdf` | 216 956 | `b2687f97bdcad6c1471aaeebdfac5cd7` | identique | ✔ | **oui** |
+
+`file` : *JPEG, JFIF 1.01, density 150×150, baseline, precision 8,
+**1240×1752**, components 1* — niveaux de gris, conforme. **Les cinq
+empreintes recalculées coïncident avec celles de la transcription.**
+
+**Contrôle 4 — ce que le serveur sert.**
+`<title>` : **« Examen National Mathématiques Sciences Maths 2021 Normale -
+Sujet - AlloSchool »**. `<meta name="description">` : « … 2021 Normale -
+Sujet, Examens Nationaux, Mathématiques 2ème BAC Sciences Mathématiques B
+BIOF ». URL du PDF lié :
+`…/examen-national-mathematiques-sciences-maths-2021-normale-sujet-2.pdf`.
+Images : `course-436/upload-84150/000{1..4}` — **quatre pages, et quatre
+seulement** (le HTML n'en liste pas d'autres). Année, filière, session,
+nature : quadruple concordance, sur trois canaux indépendants.
+*(Vérifié au passage : `course-436` est bien le dossier de cours SM — le
+CENSUS l'atteste ligne 70, et SM 2017 N, 2022 N, 2023 N y logent aussi.)*
+
+### ⭐ La couche bitonale 300 dpi — l'instrument que la transcription n'avait pas ouvert
+
+Le PDF servi est un scan Konica en **MRC** (masque + fond). Sous le fond JPEG
+pleine page, chaque page embarque une **couche masque bitonale** qui porte le
+corps de l'énoncé :
+
+| Page PDF | xref | Dimensions | Placement (pt) | Résolution effective |
+|---|---|---|---|---|
+| 2 | 35 | **2120 × 2668** | (36,5 · 119,3) → (545,3 · 759,6) | **300 dpi** |
+| 3 | 87 | **1944 × 2856** | (36,5 · 80,9) → (503,0 · 766,4) | **300 dpi** |
+| 4 | 117 | 2128 × 2508 | (30,7 · 42,5) → (541,4 · 644,4) | 300 dpi |
+
+**Les JPG servis par AlloSchool sont à 150 dpi : la source porte le double.**
+Tout l'énoncé de l'exercice 1 a donc été relu une seconde fois à 300 dpi, sur
+une image **extraite du PDF**, c'est-à-dire par un chemin d'actif différent de
+celui des JPG. *(Réserve honnête : le partage MRC met les `=`, les `−`, les
+barres de fraction, certains `≤` et les `ℝ` dans l'AUTRE couche — ils sont
+absents du masque et présents dans le composite 150 dpi. Ne pas conclure à un
+signe manquant en lisant le masque seul ; je l'ai vérifié pour chacun sur le
+composite.)*
+
+### Les dix points du docket, soldés un par un
+
+#### Point 1 — le « + » de l'indice $u_{n+1}$ · **ADJUGÉ « + », et cette fois PROUVÉ**
+
+L'adjudication du transcripteur est **confirmée**, mais je l'ai refaite sans
+la reprendre, et **son diagnostic du mécanisme est inexact**.
+
+*Ce que montrent les pixels du JPG 150 dpi* (`0002-big.jpg`, matrice de
+niveaux de gris brute, seuil ~128 ; le scan est quasi bi-niveau : toutes les
+valeurs sont soit ≈ 43-45, soit ≈ 253-255) :
+
+```
+col      578 579 580 581 582 583 584 585 586 587
+1371                          43                    ← fût, 1 px
+1372                          44
+1373                         254                    ← BLANC PUR (pas de gris)
+1374          43  44  45  44  44  44  44  45        ← barre, 8 px
+1375                          43  44
+1376                         254                    ← BLANC PUR
+1377                          43
+1378                          45
+```
+
+Le transcripteur conclut à « un “+” dont **le pixel de croisement** a été
+perdu ». **C'est faux : le pixel de croisement est intact** (ligne 1374,
+colonne 583 = 44, pleine encre). Ce qui manque, ce sont les **deux pixels
+immédiatement au-dessus et au-dessous de la barre** (lignes 1373 et 1376), et
+ils sont à **254 — blanc papier franc, pas un gris atténué**.
+
+*L'argument géométrique, qui tient sans le 300 dpi.* Comparaison avec le « + »
+intact de II-2a, sur la même page, même corps :
+
+| Mesure | glyphe litigieux (ligne de définition) | « + » de référence (II-2a) |
+|---|---|---|
+| hauteur totale du glyphe | **8 lignes** (1371→1378) | **8 lignes** (1556→1563) |
+| largeur de la barre | **8 px** | **8 px** |
+| abscisse du fût, depuis le bord gauche de la barre | **+3** | **+3** |
+| lignes d'encre au-dessus de la barre | **3** | **3** |
+| lignes d'encre au-dessous | **4** | **4** |
+| largeur du fût | **1 px** | **1 px** |
+
+Boîte identique, barre identique, fût à la même abscisse relative, même
+répartition 3/4. Et **l'hypothèse « ÷ » est réfutée par deux mesures** :
+(a) l'encre de la ligne 1375 **touche la barre** — un point de division ne
+touche jamais la barre, il en est séparé des deux côtés ;
+(b) le fût fait **1 px de large sur 2 de haut** — c'est un fragment de trait,
+pas un point (un point de « ÷ » à ce corps serait un pâté d'au moins 2×2,
+aussi large que haut).
+
+*La preuve, enfin, par la source.* Le même glyphe, lu dans la **couche
+bitonale 300 dpi du PDF** (`p2_body300`, xref 35), ligne de définition :
+
+```
+2245  ....................##.............
+2246  ....................##.............
+2247  ....................##.............
+2248  ....................##.............
+2249  .....................#.............
+2250  .....................#.............
+2251  ..............#########.####.......   ← barre
+2252  .............################......   ← barre
+2253  .............################......   ← barre
+2254  ....................###............
+2255  .....................#.............
+2256  .....................#.............
+2257  ....................##.............
+2258  ....................##.............
+2259  ....................##.............
+2260  ....................##.............
+```
+
+**Le fût est CONTINU de la ligne 2245 à la ligne 2260 et traverse la barre.
+Aucun trou, nulle part. C'est un « + » sans le moindre défaut.**
+
+**Conclusion.** L'énoncé officiel n'a **aucune anomalie** ici : la source est
+propre. Le « ÷ » apparent est **un artefact du sous-échantillonnage 300 → 150
+dpi effectué par AlloSchool pour produire les JPG servis** — pas un défaut du
+sujet, pas une substitution de police, et pas « un pixel de croisement
+perdu ». **Lecture retenue, définitivement : $u_{n+1} = f_0(u_n)$.**
+*(Corroboration logique : $u_{n\div1}$ n'a pas de sens, et II-2a majore
+$|u_{n+1}-\alpha|$ — le même terme, écrit avec un « + » parfait.)*
+
+#### Point 2 — « $\frac{2e}{1+e} < 1.47$ » · **point décimal CONFIRMÉ, valeur CONFIRMÉE**
+
+Lu à **×14** sur le composite 150 dpi et à **×7** sur la couche 300 dpi : le
+séparateur est un point posé sur la ligne de base. Mesure au pixel, sur la
+couche 300 dpi — le glyphe séparateur occupe les lignes 755→761 et les
+colonnes 1022→1028, soit **7 px de haut, 7 px de large**, et son **bas coïncide
+exactement avec la ligne de base** des chiffres « 1 », « 4 », « 7 » (ligne
+761). **Rien en dessous de 761.** Une virgule, à ce corps, descendrait de 5 à
+7 px sous la ligne de base : il n'y a pas de descendante. → **point décimal,
+pas virgule.**
+
+Les chiffres : **`1` `.` `4` `7`**, sans ambiguïté à ×14. Ni `1,47`, ni `1.42`.
+
+**La valeur est juste, et le sens de l'inégalité aussi** :
+$\frac{2e}{1+e} = \frac{5{,}436563\ldots}{3{,}718281\ldots} = 1{,}462117\ldots < 1{,}47$ ✔
+*(Contrôle par conséquence : `1.42` serait FAUX — $1{,}4621 > 1{,}42$ — donc la
+lecture `1.47` est corroborée par la mathématique elle-même.)*
+Et l'indication sert exactement à III-1b : $f_n(1) = n - \frac{2e}{1+e} > 0$
+dès que $n \ge 2$.
+
+**Transcrit tel quel : correct. À NE PAS franciser à la conversion.**
+
+#### Point 3 — les indices $(C_0)$ et $(C_2)$ de I-4 · **CONFIRMÉS, et un recoupement non visuel EXISTE**
+
+Le transcripteur écrit qu'« aucun recoupement non visuel n'existe sur ce
+point » parce que l'OCR pleine page rend les deux comme « (C,) ». **Il en
+existe un**, et je l'ai fait : en isolant **chaque indice seul**, en
+l'agrandissant ×16 et en le bordant de blanc (ce qui débloque tesseract sur
+les glyphes minuscules), avec `tessedit_char_whitelist=0123456789` :
+
+| Indice isolé | boîte (page 2) | psm 10 | psm 8 | psm 7 | psm 13 |
+|---|---|---|---|---|---|
+| premier | (934, 1044)–(952, 1063) | **`0`** | **`0`** | **`0`** | **`0`** |
+| second | (1012, 1045)–(1029, 1064) | **`2`** | **`2`** | **`2`** | **`2`** |
+
+Plus la lecture visuelle à ×10 (le `0` est un ovale fermé, le `2` un deux
+franc) et à 300 dpi. **$(C_0)$ et $(C_2)$ — quatre modes OCR concordants et
+deux lectures d'image.** Corroboration par le sens : c'est le couple
+$n=0$ / $n\ge1$ de la distinction de cas de I-2c que le tracé illustre.
+
+#### Point 4 — les relations d'ordre de la Partie III · **CONFIRMÉES, le mélange est RÉEL**
+
+Le sujet mélange bien strict et non-strict dans la même partie. Chaque signe
+a été relu **isolément**, et les deux familles ont été départagées **au
+niveau du pixel** sur la couche 300 dpi :
+
+| Question | Signe transcrit | Lecture image | Preuve pixel |
+|---|---|---|---|
+| III-1b | $0 < x_n < 1$ | **`<` strict ×2** | chevron seul |
+| III-2a | $f_{n+1}(x_n) > 0$ | **`>` strict** | chevron seul |
+| III-3a | $\frac1n < x_n < \frac1n(\frac{2e}{1+e})$ | **`<` strict ×2** | chevron lignes 1181→1207, **lignes 1208+ vides — aucune sous-barre** |
+| III-4a | $x_n \le x_2$ | **`≤` non strict** | chevron lignes 1398→1424 **+ barre horizontale pleine lignes 1427→1430** |
+| partout | $n \ge 2$ | **`≥`** | chevron + sous-barre |
+
+La différence est **structurelle et mesurable**, pas une impression : le `≤`
+de III-4a porte une barre de 28 px sous son chevron, le `<` de III-3a n'a
+strictement rien sous le sien.
+
+**Et la mathématique impose exactement ce mélange** — c'est la corroboration
+la plus forte : la suite $(x_n)_{n\ge2}$ est **strictement** décroissante
+(III-2b), donc pour $n \ge 2$ on a $x_n \le x_2$ **avec égalité en $n=2$**,
+qui est dans le domaine. Un `<` serait **faux**. Le `≤` de III-4a est
+obligatoire, et il est indispensable à III-4b
+($0 < (x_n)^n \le (x_2)^n \to 0$).
+
+*Contrôlé aussi hors Partie III : le `≤` de I-2b et celui de II-1b sont bien
+des `≤` (chevron + barre), et I-2b **exige** le `≤` — l'égalité a lieu en
+$x=0$, donc un `<` y serait faux.*
+
+#### Point 5 — les deux exposants $n$ · **CONFIRMÉS tous les deux**
+
+Relus sur la couche **300 dpi**, où ils sont parfaitement nets :
+
+- **II-2b** : $|u_n - \alpha| \le \left(\frac{1}{2}\right)^{\!n}|\alpha|$ —
+  l'exposant est un **`n` italique**, et le facteur $|\alpha|$ est bien là.
+  Ni `n+1`, ni `2`.
+- **III-4b** : $\lim\limits_{n\to+\infty}(x_n)^{\!n}$ — exposant **`n`
+  italique**, indice de limite `n→+∞` présent (lu sur le composite 150 dpi,
+  ×6, la sous-ligne étant dans l'autre couche MRC).
+
+**Corroboration par re-dérivation** : $u_0 = 0$ donne $|u_0-\alpha|=|\alpha|$,
+donc la majoration $\left(\frac12\right)^n|\alpha|$ est exactement le terme
+initial propagé — pas une constante parachutée. Et l'avertissement du
+transcripteur tient : **SM 2025 N porte $\left(\frac12\right)^{n+1}$ SANS
+facteur initial ; ici c'est $\left(\frac12\right)^{n}$ AVEC $|\alpha|$. Les
+deux sujets diffèrent réellement — ne pas normaliser l'un sur l'autre.**
+
+#### Point 6 — le signe « $-$ » du numérateur · **CONFIRMÉ aux deux endroits**
+
+Lu à **×6** sur le composite et sur la couche 300 dpi :
+
+- définition : $f_n(x) = \dfrac{-2e^x}{1+e^x} + nx$ — le `−` unaire est franc,
+  le `+ nx` est un « + » au croisement intact ;
+- dérivée (I-2a) : $f_n'(x) = \dfrac{-2e^x}{(1+e^x)^2} + n$ — même `−`, même
+  `+`.
+
+**Corroboration par re-dérivation :**
+$\left(\frac{-2e^x}{1+e^x}\right)' = \frac{-2e^x(1+e^x)+2e^x\cdot e^x}{(1+e^x)^2} = \frac{-2e^x}{(1+e^x)^2}$ ✔ —
+le scan et le calcul coïncident au signe près de chaque terme. Et sans le
+signe, $f_0$ serait croissante et la distinction de cas de I-2c n'aurait pas
+lieu d'être : **le sujet ne se tiendrait pas.**
+
+#### Point 7 — le « 4 » de I-2b face au « 2 » de I-2a · **CONFIRMÉ**
+
+Lu à **×8** : $\dfrac{4e^x}{(1+e^x)^2} \le 1$ — c'est un **4**, à barre
+oblique et fût vertical, nettement distinct du **2** de $-2e^x$ deux lignes
+plus haut. Confirmé aussi sur la couche 300 dpi.
+
+**Corroboration par re-dérivation :**
+$(1+e^x)^2 - 4e^x = 1 - 2e^x + e^{2x} = (1-e^x)^2 \ge 0$ — **l'identité ne
+marche qu'avec 4**. Avec un 2, l'inégalité $\frac{2e^x}{(1+e^x)^2}\le 1$ serait
+vraie mais triviale et le pontage I-2b → II-1b
+($|f_0'| = \frac12\cdot\frac{4e^x}{(1+e^x)^2} \le \frac12$) s'effondrerait.
+**Le « 4 » est confirmé par sa conséquence autant que par sa forme.**
+
+#### Point 8 — le recompte du barème · **CONFIRMÉ : 24 × 0,5 = 12,0** — et une métrologie qui tranche
+
+La colonne de marge a été **isolée entre ses deux filets verticaux**
+(mesurés : filets à $x \approx 46$–$48$ et $x \approx 142$–$145$ ; colonne
+utile $x \in [60,138]$), puis segmentée automatiquement par profil d'encre —
+**sans le corps du texte**, donc sans contamination possible par la ligne
+voisine.
+
+| Page | Marques détectées | Dont exercice 1 | Reste |
+|---|---|---|---|
+| 2 | **13** | **13** (Partie I ×10 + II-1a, II-1b, II-2a) | — |
+| 3 | **13** | **11** (II-2b, II-2c + Partie III ×9) | 2 → exercice 2 |
+
+**Total exercice 1 : 24 marques.** La frontière est certaine : « EXERCICE2 :
+(4 points) » est imprimé juste après III-4b, lu sur l'image.
+
+**Et voici la mesure qui ferme le point — une métrologie, pas une lecture.**
+Chaque marque a été mesurée en largeur d'encre. **Calibration prise sur le
+scan lui-même**, page 4, où l'exercice 3 porte de vrais `0.25` et `0.75` :
+
+| Valeur | Où | Largeur d'encre mesurée |
+|---|---|---|
+| `0.25` | p. 4, ex. 3 Partie I q1 | **44 px** |
+| `0.75` | p. 4, ex. 3 Partie I q2 | **44 px** |
+| `0.5` | p. 4, huit occurrences | **30–32 px** |
+| `1` | p. 4, ex. 2 q2-a | **7 px** |
+| **les 24 marques de l'exercice 1** | p. 2 et p. 3 | **30 à 32 px — toutes** |
+
+Une valeur à quatre glyphes mesure 44 px sur ce scan ; **aucune des 24
+marques ne dépasse 32**. Il est donc **matériellement impossible** qu'une
+`0,25` ou une `0,75` se cache dans l'exercice 1. L'OCR marque par marque
+(deux modes) rend `0.5`, `.5` ou `05` sur les 26 marques des pages 2-3, et
+jamais autre chose.
+
+$$\text{I} = 0{,}5\times10 = 5{,}0 \quad\cdot\quad \text{II} = 0{,}5\times5 = 2{,}5 \quad\cdot\quad \text{III} = 0{,}5\times9 = 4{,}5 \quad\Rightarrow\quad \mathbf{12{,}0}$$
+
+**Le recompte indépendant retombe exactement sur le barème imprimé.** La
+répartition par partie annoncée par la transcription est juste elle aussi.
+
+*Confirmé au passage : les lignes non cotées ne sont pas des questions —
+« 5- Pour tout réel $t>0$… » (seuls a) et b) portent 0,5), « (On distinguera
+les deux cas…) », les deux « (On prendra …) », les intitulés de Partie et les
+deux lignes d'introduction de suite. Le transcripteur n'en cite que deux ;
+elles sont en réalité **six**, mais son propos visait les seules lignes
+susceptibles d'être **prises pour une question numérotée**, et sur ce
+périmètre restreint son compte est bon.*
+
+#### Point 9 — la composition de la page 1 · **CONFIRMÉE : 3 exercices, 12 + 4 + 4**
+
+Page 1 relue à ×2 et ×10, **et** recoupée par l'OCR pleine page :
+
+> - La durée de l'épreuve est de 4 heures.
+> - L'épreuve comporte **3** exercices indépendants.
+> - Les exercices peuvent être traités selon l'ordre choisi par le candidat.
+>
+> - L'exercice1 se rapporte à l'analyse ……………….…**(12 pts)**
+> - L'exercice2 se rapporte aux nombres complexes……….**(4 pts)**
+> - L'exercice3 se rapporte à l'arithmétique …………........**(4 pts)**
+
+$12+4+4=\mathbf{20}$ ✔ · Le « (12 pts) » a été recadré seul et relu à **×10**
+(sans ambiguïté), **et** l'OCR pleine page le rend indépendamment `(12 pts)`.
+Trois lignes de barème, pas quatre. Cartouche : 4 h, **coef 9**, `NS 24F`,
+Sciences Mathématiques (A) et (B) option française. Bas de page : « L'usage
+de la calculatrice n'est pas autorisé / L'usage de la couleur rouge n'est pas
+autorisé ». Titre du corps p. 2 : **« EXERCICE1 : (12 points) »** — concordant.
+
+**Le « (?) » du CENSUS tombe, et le CENSUS n'a pas à être corrigé** : ses
+trois annonces (3 exercices, 12 pts, pas de structures algébriques) sont
+toutes confirmées.
+
+#### Point 10 — les quatre contrôles de provenance refaits de zéro · **FAITS, tous les quatre**
+
+Détail au § « Les quatre contrôles anti-CDN » ci-dessus. Re-téléchargement
+complet, empreintes recalculées sur mes propres fichiers, et **deux
+instruments supplémentaires** (matrice PDF↔JPG, couche 300 dpi) qui n'étaient
+pas dans la transcription. **L'incident de cache CDN de SM 2025 N ne se
+reproduit pas ici** — et cette fois la démonstration ne repose pas seulement
+sur la stabilité de deux téléchargements, mais sur une **concordance
+inter-actifs** (le PDF et les JPG, servis par deux chemins, portent les mêmes
+quatre pages).
+
+### Écarts trouvés — je ne les lisse pas
+
+1. **⚠️ FIDÉLITÉ TYPOGRAPHIQUE — les marques de marge sont imprimées `0.5`
+   (POINT), la transcription écrit `0,5` (VIRGULE), 24 fois.**
+   Mesuré, pas estimé : sur la couche 300 dpi, le séparateur d'une marque
+   occupe les lignes 508→514 pour une base à 514 — **7 px de haut, 6 de
+   large, aucune descendante**. C'est un point, la même forme que celui de
+   `1.47`. L'OCR marque par marque rend `0.5`, jamais `0,5`.
+   **Ce qui rend l'écart notable, c'est l'incohérence de traitement** : le
+   transcripteur consacre un paragraphe entier à préserver le point de
+   « 1.47 » (« Transcrit tel quel », « à ne pas corriger ») — puis francise
+   silencieusement les 24 marques de la marge, qui portent le même glyphe.
+   **Impact réel : nul pour la conversion** (les marques deviennent des
+   valeurs numériques de points, pas des chaînes). Signalé pour l'exactitude
+   du dossier, pas comme un blocage.
+
+2. **⚠️ DIAGNOSTIC INEXACT — le mécanisme du « + » cassé (point 1).**
+   Conclusion juste (« + »), mécanisme faux : le pixel de croisement n'est
+   pas perdu, il est intact ; ce sont les deux pixels adjacents à la barre
+   qui manquent, et la cause est le **sous-échantillonnage 300 → 150 dpi**
+   d'AlloSchool, **pas la numérisation du sujet**. La source PDF est
+   **impeccable** à cet endroit. Corrigé et prouvé ci-dessus.
+
+3. **⚠️ PORTÉE SOUS-ÉVALUÉE — l'artefact d'OCR « 2024 ».**
+   Annoncé sur les pages 2 et 3 ; il frappe en réalité les pages **1, 2 et 3**
+   (page 4 exceptée). Corrigé ci-dessus, avec le remède inchangé.
+
+4. **RAISONNEMENT À CORRIGER — l'usage du précédent SM 2025 dans l'arbitrage
+   de slug.** Voir la section de classement ci-dessous : le précédent, relu
+   dans `content/maths/fonction-exponentielle/bank.yaml`, ne dit pas ce que
+   la transcription lui fait dire.
+
+**Rien d'autre.** L'énoncé lui-même — les 24 questions, chaque signe, chaque
+exposant, chaque indice — est transcrit **fidèlement**, ligne pour ligne.
+Contrôlés en plus et conformes : le `;` séparateur de I-2b et II-1b (c'est un
+point-virgule, point + virgule superposés, lu à ×12 — pas une virgule), le
+« $y = nx - 2$ » de I-5 (l'OCR pleine page le rend « ny », c'est un artefact :
+l'image et la couche 300 dpi portent bien **`nx`**), et l'absence totale de
+figure imprimée.
+
+### Défauts du SUJET OFFICIEL
+
+**AUCUN.** Contrairement à SM 2024 N (numéros 4 et 5 croisés entre la page 1
+et le corps) et à SM 2017 N (un `;` litigieux authentifié au niveau de
+l'octet), ce sujet ne présente **aucune incohérence propre** :
+
+- page 1, titre de corps et colonne de marge **concordent** sur les 12 points ;
+- la numérotation des questions est continue et sans doublon ;
+- les symboles sont typographiquement corrects **dans la source** (le seul
+  glyphe litigieux est un artefact du rendu 150 dpi d'AlloSchool, pas du
+  sujet) ;
+- **aucune substitution de police, aucun mojibake** — vérifié sur $\mathbb{R}$,
+  $\mathbb{N}$, $\mathbb{C}$, $\le$, $\ge$, $<$, $>$, $\ne$, $\alpha$,
+  $\Delta$, $\infty$, $\vec{\ }$, $\|\cdot\|$ ;
+- et la chaîne logique est complète : I-2b alimente I-2c **et** II-1b ;
+  III-1b alimente III-2a ; III-2b alimente III-4a ; III-4a alimente III-4b ;
+  III-3a alimente III-3b. **Rien ne manque au candidat.**
+
+### Re-dérivation mathématique — les 24 questions refaites
+
+Faite **indépendamment**, sur l'énoncé lu à l'image, sans regarder les
+contrôles du transcripteur. **Tout retombe.**
+
+| Question | Résultat re-dérivé | Verdict |
+|---|---|---|
+| I-1a | $f_n(x)-nx+2 = \frac{2}{1+e^x} \to 0$ → asymptote $y=nx-2$ en $+\infty$ | ✔ et c'est la droite reprise en I-5 |
+| I-1b | $f_n(x)-nx = \frac{-2e^x}{1+e^x}\to 0$ → $(\Delta_n): y=nx$ | ✔ |
+| I-2a | $f_n'(x)=\frac{-2e^x}{(1+e^x)^2}+n$ | ✔ signe à signe |
+| I-2b | $(1+e^x)^2-4e^x=(1-e^x)^2\ge0$, **égalité en $x=0$** | ✔ **impose le $\le$** |
+| I-2c | $n=0$ : $f_0'<0$ partout · $n\ge1$ : $f_n'\ge\frac12>0$ | ✔ la distinction de cas est exactement celle-là |
+| I-3a | $f_n(0)=-1$, $f_n'(0)=n-\frac12$ → $y=(n-\frac12)x-1$ | ✔ |
+| I-3b | $f_n''(x)=\frac{2e^x(e^x-1)}{(1+e^x)^3}$ s'annule **en changeant de signe** au seul $x=0$ | ✔ $I$ unique, et pour **tout** $n$ |
+| I-4 | $(C_0)$ décroissante, $(C_2)$ croissante | ✔ illustre I-2c |
+| I-5a | $A(t)=\int_0^t\frac{2}{1+e^x}dx = 2\ln2-2\ln(1+e^{-t})$ (cm²) | ✔ écart $f_n-(nx-2)=\frac{2}{1+e^x}>0$, aire bien définie |
+| I-5b | $\lim_{t\to+\infty}A(t)=2\ln 2$ | ✔ **finie**, la question a un sens |
+| II-1a | $g=f_0-\mathrm{id}$ strictement décroissante, $+\infty\to-\infty$ → $\alpha$ unique | ✔ |
+| II-1b | $|f_0'|=\frac12\cdot\frac{4e^x}{(1+e^x)^2}\le\frac12$ | ✔ **c'est I-2b divisé par 2** |
+| II-2a | inégalité des accroissements finis | ✔ |
+| II-2b | récurrence, $|u_0-\alpha|=|\alpha|$ car $u_0=0$ | ✔ le facteur initial est justifié |
+| II-2c | $(\frac12)^n\to0$ | ✔ |
+| III-1a | $f_n$ ($n\ge2$) strictement croissante, $-\infty\to+\infty$ → $x_n$ unique | ✔ |
+| III-1b | $f_n(0)=-1<0$ · $f_n(1)=n-\frac{2e}{1+e}>0$ car $\frac{2e}{1+e}<1{,}47\le2\le n$ | ✔ **c'est l'emploi exact de l'indication** |
+| III-2a | $f_{n+1}(x)=f_n(x)+x$ donc $f_{n+1}(x_n)=x_n>0$ | ✔ |
+| III-2b | $f_{n+1}$ croissante et $f_{n+1}(x_{n+1})=0<f_{n+1}(x_n)$ | ✔ décroissance **stricte** |
+| III-2c | décroissante et minorée par 0 | ✔ |
+| III-3a | $nx_n=\frac{2e^{x_n}}{1+e^{x_n}}\in\left]1,\frac{2e}{1+e}\right[$ sur $]0,1[$ | ✔ **les deux `<` stricts sont obligatoires** |
+| III-3b | $x_n\to0$ par encadrement, puis $nx_n=\frac{2e^{x_n}}{1+e^{x_n}}\to\frac22=1$ | ✔ |
+| III-4a | stricte décroissance depuis $n=2$, **égalité en $n=2$** | ✔ **impose le $\le$, un `<` serait FAUX** |
+| III-4b | $0<(x_n)^n\le(x_2)^n\to0$ car $x_2<1$ | ✔ et **III-4a en est la clé** |
+
+**Aucune identité fausse, aucun énoncé insoluble, aucune question orpheline.**
+
+### Verdict de la passe
+
+| | |
+|---|---|
+| **Provenance** | ✅ les quatre contrôles anti-CDN **faits**, + 2 instruments inédits |
+| **Fidélité de l'énoncé** | ✅ **zéro divergence** sur les 24 questions |
+| **Barème** | ✅ 24 × 0,5 = **12,0**, recompté par métrologie calibrée |
+| **En-tête / composition** | ✅ 3 exercices, 12 + 4 + 4 = 20, `NS 24F`, 4 pages |
+| **Mathématique** | ✅ 24 questions re-dérivées, tout retombe |
+| **Défauts du sujet officiel** | ✅ **aucun** |
+| **Écarts relevés** | 3 mineurs (1 typographique, 2 de diagnostic), **aucun bloquant** |
+| **Points laissés illisibles** | **aucun** |
+| **CLEARÉ POUR CONVERSION** | ✅ **OUI**, sous les deux réserves de classement ci-dessous |
+
+### Deux réserves à porter à la conversion — ce ne sont pas des lectures
+
+1. **`0.5` et non `0,5`** dans la marge du scan : si la conversion recopie
+   littéralement les annotations de barème, préserver le point comme pour
+   « 1.47 ». Si elle les transforme en valeurs numériques (cas attendu),
+   l'écart est sans effet.
+2. **L'identifiant `bk-2021-n-x1` est DÉJÀ PRIS** dans
+   `content/maths/limites-continuite/bank.yaml` — par un exercice de filière
+   **SExp** (2021 N, Exercice 1, 2 pts). C'est la leçon **K-7** du dépôt
+   (« un `entry_id` de banque n'identifie rien tout seul ») en situation. La
+   nouvelle entrée SM devra donc **impérativement** porter
+   `filiere: "SM"`, et ne pas être logée dans `limites-continuite` sans
+   traiter la collision. *(Dans `suites-numeriques` et
+   `fonction-exponentielle`, `bk-2021-n-x1` est libre — vérifié entrée par
+   entrée sur les 14 banques : les seules entrées `bk-2021-n-*` existantes
+   sont `x1` SExp/limites-continuite, `x2` SM/nombres-complexes-2, `x2`
+   SExp/suites-numeriques, `x3` SM/arithmetique, `x3` SExp/nombres-complexes-1,
+   `x4` SExp/fonction-logarithme.)*
+
+*Vérifié aussi, contre le dépôt* : les 14 dossiers de `content/maths/`
+existent bien et les cinq slugs cités sont tous réels ; `bk-2021-n-x2`
+(`nombres-complexes-2`) et `bk-2021-n-x3` (`arithmetique`) portent tous deux
+`filiere: "SM"`, `bareme_total: 4`, `NS 24F` — **la mise en garde du fichier
+contre une reconversion de ces deux exercices est fondée**.
+
+---
+
+## ⚖️ Le classement — ce que la vérification tranche, et ce qu'elle laisse à l'owner
+
+**Je tranche une des deux questions, et je dis pourquoi je laisse l'autre.**
+
+### Ce que je tranche : SI une seule carte, alors `suites-numeriques` — pas `fonction-exponentielle`
+
+Le transcripteur proposait `suites-numeriques` tout en refusant d'assumer le
+choix, son principal argument contraire étant le précédent SM 2025 N. **Ce
+précédent, je suis allé le lire dans la banque, et il ne dit pas ce qu'on lui
+fait dire.**
+
+`content/maths/fonction-exponentielle/bank.yaml`, NOTE ÉDITORIALE
+`bk-2025-n-x1`, écrit textuellement :
+
+> « `fonction-exponentielle` est le plus gros bloc unique (3,5/10) **ET**
+> l'identité de l'exercice »
+
+C'est une conjonction, pas une hiérarchie. À SM 2025, l'exponentielle était
+**simultanément** la mesure la plus haute (3,5 contre 2,5 pour les suites) et
+l'identité de l'objet. **Le précédent n'a jamais fait gagner l'identité
+CONTRE une mesure plus grande** — la situation ne s'y est pas présentée.
+Ici elle se présente, et la règle telle qu'elle est écrite (« le plus gros
+bloc unique ») désigne les suites. **Retenir `fonction-exponentielle` ici ne
+serait pas cohérent avec SM 2025 : ce serait l'inverser.**
+
+**Et la mesure n'est pas serrée** — je la refais, en versant chaque question à
+l'objet qu'elle étudie plutôt qu'à l'outil qu'elle emploie :
+
+| Bloc | Questions | Points |
+|---|---|---|
+| **Suites** — récurrente $u_{n+1}=f_0(u_n)$ (Partie II entière) | II-1a→II-2c | **2,5** |
+| **Suites** — implicite $x_n$ solution de $f_n(x)=0$ (Partie III entière) | III-1a→III-4b | **4,5** |
+| Fonction exponentielle — étude de $f_n$ (limites, asymptotes, dérivée, variations, tangente, inflexion, tracé) | I-1a→I-4 | **4,0** |
+| Calcul intégral — aire entre la courbe et son asymptote | I-5a, I-5b | **1,0** |
+
+$$2{,}5+4{,}5+4{,}0+1{,}0 = \mathbf{12{,}0}\ ✔ \qquad\Rightarrow\qquad \texttt{suites-numeriques} = \mathbf{7{,}0/12}$$
+
+**Là où je m'écarte du transcripteur :** il détache 2,0 points de la Partie III
+(III-1a, III-1b, III-2a, III-3a) vers « TVI et encadrements », ce qui ramène
+les suites à 5,0 et rend l'arbitrage serré. **Cette découpe atomise un objet
+unique.** La Partie III est le type canonique de la **suite implicite** : ses
+questions d'existence (III-1a) et de localisation (III-1b) ne sont pas des
+questions de continuité autonomes, ce sont **l'acte de définition de $x_n$** —
+sans elles la suite n'existe pas. Découper au tour de main employé plutôt
+qu'à l'objet étudié reviendrait, symétriquement, à verser I-2a à
+`derivabilite-etude-fonctions` et I-1a à `limites-continuite`, ce qui viderait
+aussi le bloc exponentielle. **Le TVI reste honoré en cross-list, pas en
+mesure.**
+
+À 7,0 contre 4,0 — **58 % du barème, et les deux Parties sur trois qui portent
+la difficulté** — il n'y a plus d'arbitrage à rendre : `suites-numeriques`
+gagne sur la mesure **et** sur la règle du précédent. Cross-lists inchangées et
+justes : `fonction-exponentielle` (Partie I) · `limites-continuite` (TVI et
+encadrements) · `calcul-integral` (I-5) · `derivabilite-etude-fonctions`
+(I-2, I-3).
+
+### Ce que je NE tranche pas : une carte ou deux — **arbitrage owner, et je le recommande**
+
+Ce n'est pas une question de lecture, c'est une décision de produit, et elle
+mérite d'être posée nettement parce que **le fait objectif est nouveau** :
+
+> **À 12 points, cet exercice serait la plus grosse carte du corpus SM — de
+> 20 % au-dessus du maximum actuel.** Vérifié entrée par entrée sur les 14
+> banques : **aucune carte SM ne dépasse 10 points**. Les quatre plus grosses
+> sont `bk-2025-n-x1` (10), `bk-2023-r-x1` (10), `bk-2019-n-x4` (10),
+> `bk-2017-n-x4` (10). Une carte de **12 points et 24 questions** serait sans
+> précédent dans le dépôt.
+
+Le précédent de partition est réel et je l'ai vérifié : `bk-2022-n-x4` (SExp)
+est effectivement scindé en **deux** cartes — `calcul-integral`
+(`bareme_total: 1,5`, label « Exercice 4 — partie “calcul intégral” ») et
+`equations-differentielles` (`bareme_total: 1`, label « Exercice 4 —
+Équations différentielles ») — soit 2,5 réparti, **jamais dupliqué**, avec un
+`exercise_label` distinct par carte. Le mécanisme existe, il est éprouvé, et
+`lib/examens.ts` somme correctement.
+
+**La découpe naturelle est nette et sans reste :**
+
+| Carte | Contenu | Barème | Slug |
+|---|---|---|---|
+| A | **Partie I** — étude de $f_n$ + aire | **5,0** | `fonction-exponentielle` |
+| B | **Parties II + III** — les deux suites | **7,0** | `suites-numeriques` |
+
+$5{,}0 + 7{,}0 = 12{,}0$ ✔ — et la coupure tombe sur une frontière imprimée
+du sujet (« Partie II : »), pas sur un découpage inventé.
+
+**Ma recommandation, sans la prendre à la place de l'owner :** partitionner.
+Une carte de 12 points fait travailler l'élève une heure sans point de sortie,
+et les deux moitiés sont pédagogiquement disjointes (une étude de fonction
+exponentielle d'un côté, deux suites de l'autre). **Si l'owner préfère une
+carte unique, alors c'est `suites-numeriques` — tranché ci-dessus, sans
+réserve.**
+

@@ -120,7 +120,7 @@ exactement la moitié qui manque.
 | `maths-sm-2024-n.md` | exercices 1 et 2 | 7,5 + 2,5 | **vérifiée** — un défaut du SUJET OFFICIEL (numéros 4 et 5 croisés entre la p. 1 et le corps) *(idem)* |
 | `maths-sm-2025-n.md` | exercice 1 (problème unique) | 10 | **vérifiée** — aucun défaut ; c'est cette passe qui a découvert l'incident de cache CDN |
 | `maths-sm-2017-n.md` | exercice 4 (problème unique) | 10 | **vérifiée EN DEUX PASSES, clearée** — la seconde a soldé les 5 points ouverts en trouvant la clé de décodage (chaque point de code lu comme un code **Adobe Symbol** retombe sur le symbole attendu, sur 10 codes indépendants) ; 3 défauts du sujet officiel documentés, dont un ℕ **physiquement absent** du PDF |
-| `maths-sm-2021-n.md` | exercice 1 (problème unique) | 12 | **NON VÉRIFIÉ** — transcrit sous les 4 contrôles de provenance ; vérification indépendante à faire |
+| `maths-sm-2021-n.md` | exercice 1 (problème unique) | 12 | **VÉRIFIÉ, clearé** — 4 contrôles anti-CDN + 2 instruments inédits (matrice de corrélation PDF↔JPG, couche 300 dpi) ; **aucun défaut du sujet officiel** ; le « + » que la transcription croyait amputé est intact, c'est le sous-échantillonnage d'AlloSchool |
 | `maths-sexp-2018-n.md` | problème (SExp) | 11 | **NON VÉRIFIÉ** — transcrit sous les 4 contrôles ; le n°4 passe **avec réserve** (le `<title>` dit « Sciences et Technologies », anomalie systématique de `course-438` — filière nommée d'après le cartouche). Docket à 12 points |
 
 **SM 2020 est le sixième, et il est SUSPENDU** — pas oublié. Son format à
@@ -246,6 +246,32 @@ d'erreur.**
 Un « vérifié » obtenu par lecture visuelle seule, transcription sous les yeux,
 n'est pas un « vérifié ». Il faut au moins un contrôle qui ignore ce que le
 lecteur espère trouver.
+
+### Deux instruments trouvés après coup — à préférer quand le PDF est joignable
+
+La passe SM 2021 (2026-08-27) en a ouvert deux que les quatre exigences
+ci-dessus ne nommaient pas. Le premier vaut d'être essayé **en premier** :
+
+- **La matrice de corrélation PDF ↔ JPG.** Les pages servies en images et les
+  pages du PDF lié doivent se correspondre une à une. Corréler chaque JPG avec
+  chaque page du PDF donne une matrice dont la diagonale doit dominer :
+  mesuré sur SM 2021, diagonale 0,89–0,94 contre 0,03–0,17 hors diagonale.
+  **Un panachage de cache y saute aux yeux en une commande** — c'est
+  exactement le contrôle qui aurait cassé l'incident SM 2025 immédiatement,
+  au lieu d'un OCR page par page.
+
+- **La couche bitonale 300 dpi embarquée dans le PDF.** AlloSchool sert ses
+  images en 150 dpi, mais le PDF lié porte souvent la numérisation d'origine à
+  **300 dpi**, soit le double de résolution. Quand un glyphe est litigieux,
+  c'est là qu'il faut aller avant de conclure : sur SM 2021, un « + » que la
+  transcription croyait amputé (« pixel de croisement sauté ») s'y révèle
+  **continu et intact**. Le trou n'était pas dans le sujet — il venait du
+  sous-échantillonnage 300 → 150 d'AlloSchool.
+
+Ce second point porte une leçon plus large que le glyphe : **un défaut
+apparent du sujet peut être un artefact de la chaîne de diffusion.** Avant
+d'écrire « défaut du sujet officiel », il faut avoir regardé la source la
+moins dégradée qu'on puisse atteindre.
 
 ---
 
