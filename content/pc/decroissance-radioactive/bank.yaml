@@ -1119,3 +1119,253 @@ entries:
             note: "Application numérique de l'expression établie à la question 4."
           - math: '\boxed{E = N_d\times\Delta E_1 \approx 5{,}62\times10^{15}\times0{,}402 \approx 2{,}26\times10^{15}\ \text{MeV}}'
             note: "L'énergie totale libérée entre t1 et t2 est le nombre de désintégrations survenues multiplié par l'énergie libérée à chacune."
+  # ── bk-2022-r-x2b — 2022 R, Exercice 2 (Partie 2) : datation au carbone 14 ──
+  #
+  # NOTE ÉDITORIALE — CE QUE CETTE ENTRÉE APPORTE, ET QUI MANQUAIT. Huit entrées
+  # peuplaient cette banque et AUCUNE ne faisait de datation : elles calculaient
+  # des activités, des demi-vies, des nombres de noyaux désintégrés, des
+  # énergies — jamais un ÂGE. Le rung 5 de la leçon (« Le principe de la
+  # datation ») n'avait donc aucun sujet réel derrière lui. bk-2022-r-x2b est
+  # le premier, et il prend la datation par son cas le plus courant au bac :
+  # le rapport de deux ACTIVITÉS, mesurées sur deux échantillons de même masse.
+  #
+  # NOTE ÉDITORIALE — CROSS-LIST NON DÉDOUBLÉ. Le classement du vérificateur
+  # donne pour cette partie « decroissance-radioactive (dominant) · cross-list
+  # noyaux-masse-energie (question 2 : énergie de liaison) ». La question 2
+  # n'est PAS extraite en entrée séparée : l'assemblage d'épreuves
+  # (web/src/lib/examens.ts) somme les bareme_total, et une entrée de 0,5 pt
+  # d'une seule question serait à la fois un doublon de barème si on la duplique
+  # et un orphelin si on la détache. Le cross-list est honoré dans le
+  # raisonnement de la question 2, qui nomme le domaine et renvoie à la leçon
+  # « Noyaux, masse et énergie » pour le défaut de masse. Même règle que pour
+  # l'exercice 3 du rattrapage 2024.
+  - id: bk-2022-r-x2b
+    title: "Datation au carbone 14 : énergie de liaison du noyau, puis âge d'un bois ancien par le rapport de deux activités"
+    source:
+      year: 2022
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 2 — §2 : datation au carbone 14"
+    bareme_total: 1.5
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/136624, scan
+        course-422/upload-84519, pages 3 et 4 sur 8 (Exercice 2, partie 2 —
+        datation au carbone 14 ; barème de la partie = 1,5 pt, recompté
+        question par question : 0,25 + 0,25 + 0,5 + 0,5 = 1,5, sur les 3,5 pt
+        de l'exercice complet, dont la partie 1 — propagation d'une onde
+        mécanique — est transcrite sous
+        ondes-mecaniques-periodiques/bank.yaml en bk-2022-r-x2. L'énoncé
+        précise que les deux parties sont indépendantes). Transcription
+        vérifiée par une passe adversariale indépendante (2026-08-22,
+        docs/sujets/_incoming/pc-spc-2022-r.md, statut « vérifié ») : re-fetch
+        des 8 pages du scan, figures re-décrites depuis le dessin, physique
+        re-dérivée. Aucune figure n'accompagne cette partie : toutes les
+        données sont dans le texte. CONTRE-CALCUL REFAIT ICI, chiffre par
+        chiffre. Défaut de masse : 6 protons a 1,00728 u font 6,04368 u ;
+        8 neutrons a 1,00866 u font 8,06928 u ; somme des nucléons séparés
+        = 14,11296 u ; moins la masse du noyau 13,99995 u, le défaut vaut
+        0,11301 u. Énergie de liaison : 0,11301 x 931,5 = 105,269 MeV, arrondi
+        105,3 MeV. Contrôle de vraisemblance fait ici et non fourni par la
+        source : l'énergie de liaison PAR NUCLÉON vaut 105,27/14 = 7,52 MeV
+        par nucléon, ce qui place le carbone 14 exactement dans la bande des
+        noyaux légers stables de la courbe d'Aston — la valeur est plausible.
+        Âge : t_1 = (t_demi / ln 2) x ln(a_0/a_1) avec a_0/a_1 = 418/318 =
+        1,31447 et ln(1,31447) = 0,27343 ; t_demi / ln 2 = 5730 / 0,69315 =
+        8267,2 ans ; d'où t_1 = 8267,2 x 0,27343 = 2260,5 ans, arrondi
+        2260 ans, soit environ 2,3 x 10^3 ans. Contrôle : cet âge vaut environ
+        0,39 demi-vie, et l'activité résiduelle attendue après 0,39 demi-vie
+        est 2^(-0,39) = 0,763, à comparer au rapport mesuré 318/418 = 0,761 —
+        les deux coïncident. Réponses du QCM retenues : 1.1-C (6 protons et
+        8 neutrons), 1.2-B (émission beta moins vers l'azote 14).
+    intro: |-
+      **Datation au carbone 14 (examen national, session de rattrapage 2022 — Exercice 2, partie 2, 1,5 point).**
+
+      *Les parties 1 et 2 de cet exercice sont indépendantes. La partie 1 — la propagation d'une onde mécanique à la surface de l'eau — est traitée à part, sous la notion « Ondes mécaniques périodiques ». Rien de ce qui suit n'en dépend.*
+
+      On se propose dans cette partie de déterminer l'âge approximatif d'un morceau de bois ancien à l'aide de la datation au carbone 14. La désintégration du noyau de carbone 14 $\left({}^{14}_{6}\text{C}\right)$ est de type $\beta^-$.
+
+      **Données :**
+      - masse du noyau de carbone 14 : $m\!\left({}^{14}_{6}\text{C}\right) = 13{,}99995\ \text{u}$ ;
+      - masse du neutron : $m_n = 1{,}00866\ \text{u}$ ;
+      - masse du proton : $m_p = 1{,}00728\ \text{u}$ ;
+      - $1\ \text{u} = 931{,}5\ \text{MeV.c}^{-2}$ ;
+      - demi-vie du carbone 14 : $t_{1/2} = 5730\ \text{ans}$.
+
+      *Aucune figure n'accompagne cette partie : toutes les données sont dans le texte.*
+    questions:
+      - id: q1a
+        part: "1 — Le noyau et sa désintégration (QCM)"
+        stem: |-
+          **1.1.** (0,25 pt) *Recopier le numéro de la question et écrire, parmi les quatre réponses proposées, la réponse juste sans aucune justification ni explication.* Le noyau de carbone 14 se compose de :
+
+          | A | 14 protons et 6 neutrons | B | 8 protons et 6 neutrons |
+          |---|---|---|---|
+          | C | 6 protons et 8 neutrons | D | 6 protons et 14 neutrons |
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Tout est dans la notation ${}^{A}_{Z}\text{X}$, et il faut savoir lire ses deux nombres sans hésiter — c'est le rung 1 de la leçon.
+
+          **La lecture de la notation.**
+          — Le nombre du **bas**, $Z = 6$, est le **numéro atomique** : c'est le nombre de **protons**. C'est lui qui identifie l'élément — $Z = 6$, c'est le carbone, toujours.
+          — Le nombre du **haut**, $A = 14$, est le **nombre de masse** : c'est le nombre total de **nucléons**, protons et neutrons confondus.
+
+          **Le nombre de neutrons s'obtient par différence.**
+
+          $$N = A - Z = 14 - 6 = 8$$
+
+          $$\boxed{\text{6 protons et 8 neutrons}} \qquad\text{— réponse C}$$
+
+          **Ce que les trois distracteurs encodent.**
+          — **A (14 protons et 6 neutrons)** : les deux nombres **intervertis**. C'est l'erreur la plus fréquente, et elle a une conséquence immédiate qu'on peut voir : $Z = 14$ désignerait le silicium, pas le carbone.
+          — **D (6 protons et 14 neutrons)** : $A$ pris pour le nombre de neutrons au lieu du nombre total de nucléons. Le noyau aurait alors $20$ nucléons, et son nombre de masse serait $20$, pas $14$.
+          — **B (8 protons et 6 neutrons)** : intervertie **et** mal lue.
+
+          **Le contrôle qui tranche en une seconde.** Le nombre de neutrons est **toujours** plus petit que $A$, puisque $A$ compte aussi les protons. Toute réponse où le nombre de neutrons vaut $A$ — ou le dépasse — est éliminée sans calcul.
+      - id: q1b
+        stem: |-
+          **1.2.** (0,25 pt) L'équation de désintégration du carbone 14 est :
+
+          | A | ${}^{14}_{6}\text{C} \to {}^{0}_{+1}e + {}^{14}_{5}\text{B}$ | B | ${}^{14}_{6}\text{C} \to {}^{0}_{-1}e + {}^{14}_{7}\text{N}$ |
+          |---|---|---|---|
+          | C | ${}^{14}_{6}\text{C} \to {}^{4}_{2}\text{He} + {}^{10}_{4}\text{Be}$ | D | ${}^{14}_{6}\text{C} + {}^{0}_{-1}e \to {}^{14}_{5}\text{B}$ |
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé dit que la désintégration est de type $\beta^-$. Deux critères suffisent alors à trancher, et ils sont indépendants : la **nature de la particule émise**, et les **lois de conservation de Soddy** (rung 2).
+
+          **Premier critère — la particule émise.** Une désintégration $\beta^-$ émet un **électron**, noté ${}^{0}_{-1}e$. Cela élimine d'emblée :
+          — **A**, qui émet ${}^{0}_{+1}e$, un positon — c'est une désintégration $\beta^+$, pas $\beta^-$ ;
+          — **C**, qui émet ${}^{4}_{2}\text{He}$, un noyau d'hélium — c'est une désintégration $\alpha$.
+
+          **Deuxième critère — le sens de la réaction.** La proposition **D** écrit l'électron du côté des **réactifs** : ce serait une **capture** d'électron, pas une émission. Une désintégration produit la particule, elle ne l'absorbe pas.
+
+          **Vérification de la proposition B par les lois de Soddy.** Elles imposent la conservation du nombre de masse $A$ et du nombre de charge $Z$ :
+
+          $$A : \quad 14 = 0 + 14 \quad ✔$$
+          $$Z : \quad 6 = (-1) + 7 \quad ✔$$
+
+          Les deux bilans se ferment.
+
+          $$\boxed{{}^{14}_{6}\text{C} \to {}^{0}_{-1}e + {}^{14}_{7}\text{N}} \qquad\text{— réponse B}$$
+
+          **Le mécanisme, pour comprendre plutôt que retenir.** Dans une désintégration $\beta^-$, un **neutron du noyau se transforme en proton**, avec émission d'un électron. Le nombre total de nucléons ne change pas ($A$ reste $14$), mais un neutron de moins et un proton de plus font monter $Z$ d'une unité : $6 \to 7$. Le noyau fils est donc l'**azote 14**, et c'est cohérent — le carbone 14 a huit neutrons pour six protons, un excès de neutrons, et c'est exactement ce qu'une émission $\beta^-$ corrige.
+
+          **Le piège nommé de cette question.** Faire **descendre** $Z$ au lieu de le faire monter, comme le proposent A et D avec le bore ($Z = 5$). Le repère mnémotechnique sûr : la charge doit se conserver, et l'électron emporte une charge $-1$ ; pour que la somme reste $+6$, le noyau fils doit donc porter $+7$. Le bilan de charge décide seul, sans qu'on ait besoin de se souvenir du sens.
+      - id: q2
+        part: "2 — L'énergie de liaison"
+        stem: |-
+          **2-** (0,5 pt) Calculer, en MeV, l'énergie de liaison $E_\ell$ du noyau de carbone 14.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énergie de liaison est l'énergie qu'il faudrait fournir pour **dissocier** complètement le noyau en ses nucléons libres. Elle se calcule par le **défaut de masse** : un noyau pèse toujours moins que la somme de ses constituants séparés, et cette masse manquante est exactement l'énergie qui les tient ensemble. C'est un outil du chapitre « Noyaux, masse et énergie » — l'équivalence masse-énergie d'Einstein — que l'on emploie ici comme acquis.
+
+          **La relation.**
+
+          $$E_\ell = \Delta m\,c^2 \qquad\text{avec}\qquad \Delta m = \left[Z\,m_p + (A - Z)\,m_n\right] - m(\text{noyau})$$
+
+          **Les nucléons du carbone 14, comptés à partir de la question 1.1 :** $Z = 6$ protons et $A - Z = 8$ neutrons.
+
+          **Le calcul du défaut de masse, terme par terme.**
+
+          $$6\,m_p = 6 \times 1{,}00728 = 6{,}04368\ \text{u}$$
+          $$8\,m_n = 8 \times 1{,}00866 = 8{,}06928\ \text{u}$$
+
+          Somme des nucléons **séparés** :
+
+          $$6{,}04368 + 8{,}06928 = 14{,}11296\ \text{u}$$
+
+          On retranche la masse du noyau **assemblé** :
+
+          $$\Delta m = 14{,}11296 - 13{,}99995 = 0{,}11301\ \text{u}$$
+
+          **Le passage à l'énergie.** L'énoncé fournit $1\ \text{u} = 931{,}5\ \text{MeV.c}^{-2}$, ce qui signifie qu'une masse de $1\ \text{u}$ multipliée par $c^2$ donne $931{,}5\ \text{MeV}$. La conversion est donc une simple multiplication :
+
+          $$E_\ell = 0{,}11301 \times 931{,}5 = \boxed{105{,}3\ \text{MeV}}$$
+
+          **Le contrôle de vraisemblance, qui ne coûte qu'une division.** L'énergie de liaison **par nucléon** vaut
+
+          $$\frac{E_\ell}{A} = \frac{105{,}3}{14} = 7{,}52\ \text{MeV/nucléon}$$
+
+          Or tous les noyaux stables se tiennent entre $7$ et $8{,}8\ \text{MeV}$ par nucléon sur la courbe d'Aston. La valeur trouvée tombe exactement dans cette bande : le résultat est plausible. **Fais systématiquement cette division** — elle attrape en une seconde une erreur de facteur $10$ ou un défaut de masse mal calculé.
+
+          **Les deux pièges nommés de cette question.** Le premier : **compter $A$ protons** au lieu de $Z$, c'est-à-dire écrire $14\,m_p$. Le défaut de masse deviendrait alors négatif ou absurde. Le second : **soustraire dans le mauvais sens**, $m(\text{noyau}) - \sum m(\text{nucléons})$, et annoncer une énergie négative. Le défaut de masse est **toujours positif** — c'est le noyau qui est le plus léger, et c'est ce déficit qui mesure sa cohésion.
+        steps:
+          - math: '\Delta m = \left[6\,m_p + 8\,m_n\right] - m\!\left({}^{14}_{6}\text{C}\right)'
+            note: "Z = 6 protons et A - Z = 8 neutrons, comptes a la question 1.1."
+          - math: '6 \times 1{,}00728 + 8 \times 1{,}00866 = 6{,}04368 + 8{,}06928 = 14{,}11296\ \text{u}'
+            note: "Masse des nucleons SEPARES."
+          - math: '\Delta m = 14{,}11296 - 13{,}99995 = 0{,}11301\ \text{u}'
+            note: "Toujours positif : le noyau assemble est plus leger que ses morceaux."
+          - math: 'E_\ell = 0{,}11301 \times 931{,}5 = \boxed{105{,}3\ \text{MeV}}'
+            note: "1 u vaut 931,5 MeV.c-2 : la conversion est une simple multiplication."
+          - math: '\frac{E_\ell}{A} = \frac{105{,}3}{14} = 7{,}52\ \text{MeV/nucléon}'
+            note: "Controle : tous les noyaux stables sont entre 7 et 8,8 MeV par nucleon. Plausible."
+      - id: q3
+        part: "3 — L'âge du bois"
+        stem: |-
+          **3-** (0,5 pt) Le taux de carbone 14 reste le même dans les tissus des êtres vivants. Ce taux diminue progressivement, suivant la loi de décroissance radioactive, après la mort de ces êtres vivants. L'activité du carbone 14 dans un morceau de bois ancien est $a_1 = 318\ \text{Bq}$, tandis que l'activité du carbone 14 dans un morceau de bois récent de même masse vaut $a_0 = 418\ \text{Bq}$.
+
+          Déterminer, en ans, l'âge approximatif $t_1$ du morceau de bois ancien.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est le principe même de la datation (rung 5), et l'énoncé prend soin de l'expliquer : tant que l'arbre vit, il échange du carbone avec l'atmosphère et son taux de carbone 14 reste constant ; **à sa mort, l'horloge démarre** et le carbone 14 ne fait plus que décroître. Le bois récent joue donc le rôle de l'**état initial** — il donne $a_0$, l'activité qu'avait le bois ancien au moment de sa mort.
+
+          **Pourquoi la précision « de même masse » est indispensable.** L'activité est proportionnelle au nombre de noyaux présents, donc à la masse de l'échantillon. Comparer deux activités n'a de sens que si les deux échantillons ont la même masse — sinon le rapport mesurerait un écart de taille, pas un écart d'âge. Ce n'est pas un détail de rédaction : c'est ce qui rend la mesure possible.
+
+          **La loi, écrite en activités.** L'activité suit la même exponentielle que le nombre de noyaux :
+
+          $$a(t) = a_0\,e^{-\lambda t}
+          \qquad\Longrightarrow\qquad
+          a_1 = a_0\,e^{-\lambda t_1}$$
+
+          **On isole $t_1$.** On divise par $a_0$, puis on applique le logarithme népérien — c'est lui qui fait descendre $t_1$ de l'exposant :
+
+          $$\frac{a_1}{a_0} = e^{-\lambda t_1}
+          \qquad\Longrightarrow\qquad
+          \ln\!\left(\frac{a_1}{a_0}\right) = -\lambda t_1
+          \qquad\Longrightarrow\qquad
+          t_1 = \frac{1}{\lambda}\,\ln\!\left(\frac{a_0}{a_1}\right)$$
+
+          au dernier passage, on a retourné le rapport pour absorber le signe moins — $-\ln\frac{a_1}{a_0} = \ln\frac{a_0}{a_1}$, ce qui rend le résultat manifestement positif.
+
+          **Le lien avec la demi-vie, qu'il faut rappeler au point d'usage.** L'énoncé ne donne pas $\lambda$ mais $t_{1/2}$. La relation du rung 4 les relie :
+
+          $$\lambda = \frac{\ln 2}{t_{1/2}}
+          \qquad\Longrightarrow\qquad
+          \frac{1}{\lambda} = \frac{t_{1/2}}{\ln 2}$$
+
+          D'où la formule de travail :
+
+          $$t_1 = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a_1}\right)$$
+
+          **L'application numérique, chiffre par chiffre.** Le rapport d'abord :
+
+          $$\frac{a_0}{a_1} = \frac{418}{318} = 1{,}3145$$
+
+          Son logarithme :
+
+          $$\ln(1{,}3145) = 0{,}2734$$
+
+          Le préfacteur :
+
+          $$\frac{t_{1/2}}{\ln 2} = \frac{5730}{0{,}6931} = 8267\ \text{ans}$$
+
+          Le produit :
+
+          $$t_1 = 8267 \times 0{,}2734 = \boxed{2{,}26 \times 10^{3}\ \text{ans}}$$
+
+          soit environ **$2260$ ans**.
+
+          **Le contrôle, qui vaut d'être fait et qui ne coûte rien.** L'âge trouvé représente $\dfrac{2260}{5730} = 0{,}39$ demi-vie. Après $0{,}39$ demi-vie, l'activité résiduelle attendue vaut $2^{-0{,}39} = 0{,}763$ de l'activité initiale. Or le rapport **mesuré** vaut $\dfrac{318}{418} = 0{,}761$. Les deux coïncident : le résultat est cohérent. Autre lecture du même contrôle : l'activité a baissé d'un quart environ, donc bien **moins de moitié** — l'âge doit donc être inférieur à une demi-vie, c'est-à-dire à $5730$ ans. C'est le cas.
+
+          **Le piège nommé de cette question.** Confondre $\lambda$ et $t_{1/2}$, et écrire $t_1 = t_{1/2} \times \ln\frac{a_0}{a_1}$ sans diviser par $\ln 2$. On trouverait $1567$ ans au lieu de $2260$ — une erreur de $30\ \%$ que le contrôle en demi-vies débusque immédiatement. Le second piège : **inverser le rapport** et calculer $\ln\frac{a_1}{a_0} = -0{,}273$, ce qui donne un âge **négatif**. Un bois qui aurait un âge négatif devrait mourir dans le futur : le signe est un contrôle, pas une contrariété.
+        steps:
+          - math: 'a_1 = a_0\,e^{-\lambda t_1}'
+            note: "Le bois recent donne a_0 : c'est l'activite qu'avait le bois ancien au moment de sa mort."
+          - math: 't_1 = \frac{1}{\lambda}\,\ln\!\left(\frac{a_0}{a_1}\right)'
+            note: "Rapport retourne pour absorber le signe moins : le resultat est manifestement positif."
+          - math: '\lambda = \frac{\ln 2}{t_{1/2}} \quad\Longrightarrow\quad t_1 = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a_1}\right)'
+            note: "L'enonce donne la demi-vie, pas lambda : le pont se fait par la relation du rung 4."
+          - math: 't_1 = \frac{5730}{0{,}6931} \times \ln\!\left(\frac{418}{318}\right) = 8267 \times 0{,}2734'
+            note: "Rapport 418/318 = 1,3145 ; son logarithme vaut 0,2734."
+          - math: '\boxed{t_1 \approx 2{,}26 \times 10^{3}\ \text{ans}}'
+            note: "Controle : 2260 ans = 0,39 demi-vie, et 2^(-0,39) = 0,763 contre 318/418 = 0,761. Coherent."

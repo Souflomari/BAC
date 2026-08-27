@@ -293,3 +293,209 @@ entries:
             note: "Retard du point M par rapport a S."
           - math: 'T = \frac{1}{N} = \frac{1}{50} = 0{,}02\ \text{s} \implies \tau = 10\,T'
             note: "Verification en nombre de periodes (rung R2) : d = 5 cm = 10 lambda (lambda = 0,5 cm), donc tau = 10 T. Coherent avec le calcul direct."
+  # ── bk-2022-r-x2 — 2022 R, Exercice 2 (Partie 1) : QCM onde sinusoidale a la
+  #    surface de l'eau, tout lu sur une seule courbe y_M(t) ──
+  #
+  # NOTE ÉDITORIALE — PREMIÈRE ENTRÉE DE SESSION DE RATTRAPAGE de cette banque,
+  # qui n'en comptait que deux, toutes deux en session normale. Elle porte la
+  # facture éditoriale de la campagne rattrapage (reasoning ouvrant sur « Ce
+  # qu'on cherche et pourquoi ce geste », fermant sur le piège nommé) ; l'écart
+  # avec les deux entrées plus anciennes est ASSUMÉ et signalé, à l'arbitrage
+  # de l'owner de réaligner les anciennes, jamais l'inverse.
+  #
+  # NOTE ÉDITORIALE — FLAG DE JUMELAGE (bk-2022-r-x2 face à bk-2020-n-x2). Les
+  # deux sont des QCM d'ondes avec lecture de figure. Ce ne sont pas des
+  # doublons :
+  #   — bk-2020-n-x2 lit une figure de CUVE À ONDES, c'est-à-dire une photo de
+  #     l'espace à un instant donné : on y lit une longueur d'onde en comptant
+  #     des rides ;
+  #   — ici la figure est un enregistrement TEMPOREL en un point unique,
+  #     y_M(t) : on n'y lit aucune longueur d'onde directement, seulement une
+  #     période et un retard. La longueur d'onde ne s'obtient qu'au bout d'une
+  #     chaîne de trois questions.
+  # C'est exactement la double périodicité du rung 2, prise par son versant
+  # temporel là où 2020-n la prend par son versant spatial. Proposition :
+  # garder les deux, et les travailler dans cet ordre. À l'arbitrage de l'owner.
+  #
+  # NOTE ÉDITORIALE — CE QUE LE QCM CACHE. L'énoncé demande la réponse « sans
+  # aucune justification ni explication ». Le raisonnement de chaque question
+  # la donne quand même, en entier : un QCM se prépare en sachant produire la
+  # réponse, pas en apprenant à cocher. Chaque question dit aussi POURQUOI les
+  # trois distracteurs sont là — ils encodent chacun une erreur précise, et
+  # c'est le seul endroit du corpus où on peut les lire comme un diagnostic.
+  - id: bk-2022-r-x2
+    title: "QCM d'onde sinusoïdale à la surface de l'eau : fréquence, retard, célérité et longueur d'onde, tout lu sur un seul enregistrement temporel"
+    source:
+      year: 2022
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 2 — §1 : propagation d'une onde mécanique"
+    bareme_total: 2.0
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/136624, scan
+        course-422/upload-84519, pages 3 et 4 sur 8 (Exercice 2, partie 1 —
+        propagation d'une onde mécanique ; barème de la partie = 2,0 pt,
+        recompté question par question : 4 x 0,5 = 2,0, sur les 3,5 pt de
+        l'exercice complet, dont la partie 2 — datation au carbone 14 — est
+        transcrite sous decroissance-radioactive/bank.yaml en bk-2022-r-x2b.
+        L'énoncé précise que les deux parties sont indépendantes).
+        Transcription vérifiée par une passe adversariale indépendante
+        (2026-08-22, docs/sujets/_incoming/pc-spc-2022-r.md, statut
+        « vérifié ») : re-fetch des 8 pages du scan, figures re-décrites depuis
+        le dessin et non depuis l'énoncé, puis physique re-dérivée.
+        CORRECTION DE FIGURE APPORTÉE PAR CETTE PASSE, reprise telle quelle
+        ici : la transcription initiale disait « le cadre monte jusqu'à
+        +6 mm » et plaçait le premier maximum au niveau du trait supérieur du
+        cadre. C'est faux — le trait +6 est un trait INTÉRIEUR du quadrillage,
+        non chiffré, et le cadre le dépasse d'environ 1 mm de chaque côté
+        (mesure : traits principaux tous les 59,5 px pour 3 mm ; bord haut à
+        18 px au-dessus du trait +6, bord bas à 23,5 px au-dessous du trait
+        -6). Même classe de défaut que sur la figure du dosage de l'exercice 1
+        du même sujet : une figure décrite depuis le texte et non depuis le
+        dessin. Les positions TEMPORELLES sont, elles, confirmées au pixel —
+        palier nul de 0 à 10 ms, extrema à 15, 25, 35 et 45 ms, cadre de 0 à
+        50 ms — et le vérificateur note qu'il n'y a ici aucune flèche de
+        calibration, donc aucun risque de la confondre avec une période
+        (défaut déjà rencontré ailleurs dans la campagne). CONTRE-CALCUL
+        REFAIT ICI, chiffre par chiffre : période lue d'un maximum au suivant,
+        de 15 à 35 ms, soit T = 20 ms = 0,020 s, d'où N = 1/T = 50 Hz ;
+        retard lu au départ du mouvement de M, tau = 10 ms = 0,010 s ;
+        célérité v = L/tau = 0,025/0,010 = 2,5 m.s-1 ; longueur d'onde
+        lambda = v.T = 2,5 x 0,020 = 0,050 m = 5 cm. CONTRÔLE DE COHÉRENCE
+        INTERNE, fait ici et non fourni par la source : L = 2,5 cm vaut
+        exactement lambda/2, donc M vibre en OPPOSITION DE PHASE avec S — ce
+        qui est cohérent avec un retard tau = T/2 lu sur la figure. Les quatre
+        réponses se recoupent deux à deux sans écart. Réponses retenues :
+        1-B, 2-C, 3-A, 4-A.
+    intro: |-
+      **Propagation d'une onde mécanique à la surface de l'eau (examen national, session de rattrapage 2022 — Exercice 2, partie 1, 2 points).**
+
+      *Les parties 1 et 2 de cet exercice sont indépendantes. La partie 2 — la datation au carbone 14 — est traitée à part, sous la notion « Décroissance radioactive ». Rien de ce qui suit n'en dépend.*
+
+      On crée, à un instant choisi comme origine des dates $t = 0$, en un point $S$ de la surface de l'eau une onde mécanique progressive sinusoïdale de fréquence $N$. La courbe de la figure ci-dessous représente les variations en fonction du temps de l'élongation $y_M$ d'un point $M$ du milieu de propagation situé à la distance $L = 2{,}5\ \text{cm}$ du point $S$.
+
+      *Consigne officielle : recopier le numéro de la question et écrire, parmi les quatre réponses proposées, la réponse juste — sans aucune justification ni explication.*
+
+      **Figure (courbe).** Axe des ordonnées $y_M\ (\text{mm})$, chiffré $3$, $0$, $-3$, $-6$, sur un quadrillage principal noir de pas $3\ \text{mm}$ ; **un cinquième trait principal non chiffré, à $+6\ \text{mm}$, court à l'intérieur du cadre — c'est lui que touchent les maxima**, le bord supérieur du cadre étant encore au-dessus, vers $+7\ \text{mm}$, et le bord inférieur au-dessous de $-6$, vers $-7\ \text{mm}$. Axe des abscisses $t\ (\text{ms})$, chiffré $10$, $25$, $35$, $45$, traits principaux noirs tous les $5\ \text{ms}$ (chiffrage partiel) ; le bord gauche du cadre est exactement $t = 0$ et le bord droit exactement $t = 50\ \text{ms}$. Sous-quadrillage fin à cinq subdivisions par carreau principal, soit $1\ \text{ms}$ et $0{,}6\ \text{mm}$. La courbe est **nulle de $t = 0$ jusqu'à $t = 10\ \text{ms}$**, puis sinusoïdale d'amplitude $6\ \text{mm}$ : premier maximum $y_M = +6\ \text{mm}$ à $t = 15\ \text{ms}$, zéro descendant à $t = 20\ \text{ms}$, minimum $y_M = -6\ \text{mm}$ à $t = 25\ \text{ms}$, zéro montant à $t = 30\ \text{ms}$, maximum $+6\ \text{mm}$ à $t = 35\ \text{ms}$, zéro à $t = 40\ \text{ms}$, minimum $-6\ \text{mm}$ à $t = 45\ \text{ms}$, puis remontée jusqu'à $y_M = 0$ au bord droit du cadre. Les trois graduations chiffrées $25$, $35$ et $45$ tombent exactement sur trois extrema successifs.
+    questions:
+      - id: q1
+        part: "1 — La fréquence"
+        stem: |-
+          **1-** (0,5 pt) La fréquence de l'onde est :
+
+          | A | $N = 25\ \text{Hz}$ | B | $N = 50\ \text{Hz}$ | C | $N = 100\ \text{Hz}$ | D | $N = 200\ \text{Hz}$ |
+          |---|---|---|---|---|---|---|---|
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La figure donne une élongation en fonction du **temps** : c'est la périodicité **temporelle** qu'on y lit, donc la période $T$, et la fréquence s'en déduit par $N = \dfrac{1}{T}$. C'est le versant temporel de la double périodicité du rung 2.
+
+          **La lecture, faite sur le plus long intervalle possible.** On repère deux points **de même nature** aussi éloignés que possible, pour que l'erreur de lecture pèse le moins. Les maxima sont les plus faciles à situer : le premier est à $t = 15\ \text{ms}$, le suivant à $t = 35\ \text{ms}$.
+
+          $$T = 35 - 15 = 20\ \text{ms} = 20 \times 10^{-3}\ \text{s} = 0{,}020\ \text{s}$$
+
+          **Le contrôle, gratuit.** Les minima sont à $25$ et $45\ \text{ms}$ : même écart de $20\ \text{ms}$ ✔. Et le motif complet de la courbe — maximum, zéro, minimum, zéro, maximum — occupe bien ces $20\ \text{ms}$.
+
+          **Le calcul.**
+
+          $$N = \frac{1}{T} = \frac{1}{0{,}020} = \boxed{50\ \text{Hz}} \qquad\text{— réponse B}$$
+
+          **Ce que les trois distracteurs encodent, et c'est ce qu'un QCM permet de lire.**
+          — **A ($25\ \text{Hz}$)** : c'est $\dfrac{1}{2T}$, l'erreur de qui a compté **deux** périodes là où il n'y en a qu'une — par exemple en prenant l'intervalle du premier maximum au deuxième minimum.
+          — **C ($100\ \text{Hz}$)** : c'est $\dfrac{1}{T/2}$, l'erreur de qui a pris pour période l'écart entre un maximum et le minimum voisin, $10\ \text{ms}$. C'est la faute la plus fréquente sur les lectures de sinusoïde.
+          — **D ($200\ \text{Hz}$)** : c'est $\dfrac{1}{5\ \text{ms}}$, l'erreur de qui a lu la période sur un seul carreau principal du quadrillage.
+
+          **Le piège nommé de cette question.** Confondre demi-période et période. Le remède est mécanique : **toujours** mesurer d'un extremum au suivant **de même sens** — maximum à maximum, ou minimum à minimum — jamais d'un maximum au minimum qui le suit.
+      - id: q2
+        part: "2 — Le retard"
+        stem: |-
+          **2-** (0,5 pt) Le point $M$ reprend le même mouvement de $S$ avec un retard temporel $\tau$ de valeur :
+
+          | A | $\tau = 0{,}1\ \text{s}$ | B | $\tau = 0{,}02\ \text{s}$ | C | $\tau = 0{,}01\ \text{s}$ | D | $\tau = 0{,}2\ \text{s}$ |
+          |---|---|---|---|---|---|---|---|
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le retard $\tau$ est la durée que met la perturbation pour aller de $S$ à $M$. Il se lit **directement** sur la figure, et c'est même le seul renseignement que le palier initial apporte.
+
+          **La lecture, en une observation.** La source $S$ est mise en mouvement à $t = 0$ — l'énoncé le dit. Le point $M$, lui, reste **immobile** ($y_M = 0$) de $t = 0$ jusqu'à $t = 10\ \text{ms}$, puis commence à osciller. Ce palier plat n'est pas un artefact du tracé : c'est le temps qu'il a fallu à l'onde pour parcourir les $2{,}5\ \text{cm}$ qui séparent $S$ de $M$.
+
+          $$\tau = 10\ \text{ms} = 10 \times 10^{-3}\ \text{s} = \boxed{0{,}01\ \text{s}} \qquad\text{— réponse C}$$
+
+          **Ce que cette lecture dit, physiquement.** Aucune information ne voyage instantanément : la perturbation se propage de proche en proche, et chaque point du milieu reproduit le mouvement de la source **avec un décalage** proportionnel à sa distance. C'est le mécanisme du rung 1 — le milieu copie fidèlement la source, mais en retard. Le palier de la figure est la signature visible de ce retard.
+
+          **Ce que les trois distracteurs encodent.**
+          — **B ($0{,}02\ \text{s}$)** : c'est la **période**, réponse de la question précédente recopiée ici. Le retard et la période sont deux durées différentes, même si elles se lisent sur la même figure.
+          — **A ($0{,}1\ \text{s}$)** et **D ($0{,}2\ \text{s}$)** : ce sont les deux précédentes multipliées par $10$ — l'erreur de conversion milliseconde vers seconde.
+
+          **Le piège nommé de cette question.** L'erreur de conversion. La figure est graduée en **millisecondes**, et toutes les réponses proposées sont en secondes : $10\ \text{ms}$ vaut $0{,}010\ \text{s}$, pas $0{,}1\ \text{s}$. Deux des quatre propositions ne sont là que pour attraper ce facteur $10$. Convertis **avant** d'aller chercher dans la liste, jamais après.
+      - id: q3
+        part: "3 — La célérité"
+        stem: |-
+          **3-** (0,5 pt) La célérité de l'onde à la surface de l'eau est :
+
+          | A | $v = 2{,}5\ \text{m.s}^{-1}$ | B | $v = 0{,}25\ \text{m.s}^{-1}$ | C | $v = 25\ \text{m.s}^{-1}$ | D | $v = 0{,}4\ \text{m.s}^{-1}$ |
+          |---|---|---|---|---|---|---|---|
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La célérité est la vitesse de propagation de la perturbation. On connaît maintenant une distance et la durée du trajet correspondant : c'est exactement le quotient des deux.
+
+          **La relation, et d'où elle vient.** L'onde a parcouru la distance $SM = L$ pendant la durée $\tau$ :
+
+          $$v = \frac{L}{\tau}$$
+
+          **Les conversions, avant tout calcul.** $L = 2{,}5\ \text{cm} = 2{,}5 \times 10^{-2}\ \text{m} = 0{,}025\ \text{m}$, et $\tau = 0{,}010\ \text{s}$ (question 2). Les deux unités doivent être SI pour que le résultat soit en $\text{m.s}^{-1}$.
+
+          **Le calcul.**
+
+          $$v = \frac{0{,}025}{0{,}010} = \boxed{2{,}5\ \text{m.s}^{-1}} \qquad\text{— réponse A}$$
+
+          **Le contrôle de vraisemblance.** Une ride à la surface de l'eau qui avance à $2{,}5\ \text{m.s}^{-1}$, soit $9\ \text{km.h}^{-1}$ : c'est l'ordre de grandeur qu'on observe dans une cuve à ondes ou sur un étang. La réponse **C** ($25\ \text{m.s}^{-1}$, soit $90\ \text{km.h}^{-1}$) serait absurde pour de l'eau — c'est presque la vitesse du son dans l'air divisée par $14$, et bien au-delà de ce qu'une ride peut faire.
+
+          **Ce que les trois distracteurs encodent.**
+          — **B ($0{,}25$)** et **C ($25$)** : le facteur $10$ dans un sens ou dans l'autre, c'est-à-dire une conversion ratée sur $L$ (centimètres pris pour des mètres) ou sur $\tau$.
+          — **D ($0{,}4\ \text{m.s}^{-1}$)** : c'est le quotient **inversé**, $\tau/L$, à un facteur d'échelle près — l'erreur de qui divise la durée par la distance.
+
+          **Le piège nommé de cette question.** Enchaîner les conversions à la fin plutôt qu'au début. Ici deux grandeurs doivent être converties, l'une depuis les centimètres et l'autre depuis les millisecondes ; les convertir toutes deux **avant** la division supprime le risque, alors que corriger un facteur $10$ après coup mène presque toujours à en oublier un.
+      - id: q4
+        part: "4 — La longueur d'onde"
+        stem: |-
+          **4-** (0,5 pt) La longueur d'onde $\lambda$ est :
+
+          | A | $\lambda = 5\ \text{cm}$ | B | $\lambda = 2{,}5\ \text{cm}$ | C | $\lambda = 0{,}5\ \text{m}$ | D | $\lambda = 0{,}25\ \text{cm}$ |
+          |---|---|---|---|---|---|---|---|
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La longueur d'onde est la **périodicité spatiale** de l'onde : la distance qui sépare deux points vibrant en phase, ou encore la distance parcourue par l'onde pendant une période. Or la figure est un enregistrement **temporel** en un seul point — on n'y lit aucune distance. Il faut donc passer par la relation qui relie les deux périodicités.
+
+          **La relation de la double périodicité (rung 2).**
+
+          $$\lambda = v\,T = \frac{v}{N}$$
+
+          Elle se lit comme une phrase : pendant une période $T$, la source effectue une oscillation complète, et l'onde avance de $v \times T$ — cette distance-là est justement le motif qui se répète dans l'espace.
+
+          **Le calcul, avec les deux résultats déjà obtenus.**
+
+          $$\lambda = 2{,}5 \times 0{,}020 = 0{,}050\ \text{m} = \boxed{5\ \text{cm}} \qquad\text{— réponse A}$$
+
+          **Le contrôle de cohérence, qui referme la partie et qui vaut d'être fait.** Compare la longueur d'onde à la distance $SM$ :
+
+          $$L = 2{,}5\ \text{cm} = \frac{\lambda}{2}$$
+
+          $M$ est donc à une **demi-longueur d'onde** de la source : il vibre en **opposition de phase** avec elle. Vérification indépendante sur la figure : le retard $\tau = 10\ \text{ms}$ vaut exactement $\dfrac{T}{2}$, ce qui est la définition même de l'opposition de phase. Les quatre réponses de ce QCM se recoupent donc deux à deux, sans le moindre écart — c'est la preuve que la chaîne de lectures est juste de bout en bout.
+
+          **Ce que les trois distracteurs encodent.**
+          — **B ($2{,}5\ \text{cm}$)** : c'est $L$ recopiée. Le piège est réel — l'énoncé donne cette valeur, et il est tentant de croire que la distance source-point EST la longueur d'onde. Elle en vaut ici la moitié, et ce n'est vrai que par coïncidence de ce sujet.
+          — **C ($0{,}5\ \text{m}$)** : $\lambda$ avec un facteur $10$, l'erreur de conversion habituelle.
+          — **D ($0{,}25\ \text{cm}$)** : $L/10$, un facteur $10$ appliqué au mauvais nombre.
+
+          **Le piège nommé de cette question.** Chercher $\lambda$ **sur** la figure. Il n'y est pas : une courbe $y(t)$ ne contient aucune information spatiale directe. La longueur d'onde ne s'obtient ici qu'au terme d'une chaîne de trois questions — période, puis retard, puis célérité — et c'est précisément ce que l'exercice met à l'épreuve. Une figure de **cuve à ondes**, elle, donnerait $\lambda$ directement en comptant les rides ; c'est l'autre versant de la même notion.
+        steps:
+          - math: 'T = 35 - 15 = 20\ \text{ms} = 0{,}020\ \text{s} \quad\Longrightarrow\quad N = \frac{1}{T} = 50\ \text{Hz}'
+            note: "Periode lue d'un maximum au SUIVANT, jamais d'un maximum au minimum voisin."
+          - math: '\tau = 10\ \text{ms} = 0{,}010\ \text{s}'
+            note: "Duree du palier nul : le temps que l'onde met a atteindre M depuis S."
+          - math: 'v = \frac{L}{\tau} = \frac{0{,}025}{0{,}010} = 2{,}5\ \text{m.s}^{-1}'
+            note: "Les DEUX grandeurs converties en SI avant la division, jamais apres."
+          - math: '\lambda = v\,T = 2{,}5 \times 0{,}020 = 0{,}050\ \text{m} = 5\ \text{cm}'
+            note: "Double periodicite : la distance parcourue pendant une periode."
+          - math: 'L = 2{,}5\ \text{cm} = \frac{\lambda}{2} \quad\text{et}\quad \tau = \frac{T}{2}'
+            note: "Controle croise : M vibre en opposition de phase avec S. Les quatre reponses se recoupent."
