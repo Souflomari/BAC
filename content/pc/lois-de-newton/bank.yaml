@@ -1,0 +1,263 @@
+# bank.yaml — la banque « S'entraîner » de lois-de-newton (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon, pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Chaque entrée est une transcription FIDÈLE d'une entrée
+# « vérifié » (re-fetch AlloSchool par un second lecteur, figures re-décrites
+# depuis le dessin, physique re-dérivée). Raisonnement rédigé à la voix
+# experte de la maison sur 100 % des questions, en citant les rungs de la
+# leçon là où c'est naturel ; barème transcrit tel quel dans les énoncés ;
+# conventions KaTeX (block scalars pour la prose, KaTeX brut entre
+# apostrophes simples dans steps[].math, notes sans backslash ni accent —
+# même discipline ASCII que chute-mouvements-plans/bank.yaml).
+#
+# NOTE ÉDITORIALE — CE FICHIER EST NEUF (2026-08-23). `lois-de-newton` était
+# jusqu'ici l'une des notions PC SANS banque : leçon, items, checkpoints et
+# exercices embarqués existaient, mais aucune annale. bk-2024-r-x5 en est la
+# PREMIÈRE entrée. Six autres notions restent dans ce cas — aspects-energetiques,
+# atome-mecanique-newton, controle-catalyse, transformations-deux-sens,
+# transformations-lentes-rapides (PC) et derivabilite-etude-fonctions (maths) —
+# et l'état est consigné tel quel : la page « S'entraîner » n'affiche rien
+# plutôt que d'afficher du remplissage.
+#
+# NOTE ÉDITORIALE — FRONTIÈRE AVEC chute-mouvements-plans. L'exercice 5 du
+# rattrapage 2024 est coupé en deux, et la coupure n'est pas arbitraire :
+#   — partie 1 (ici) : mouvement rectiligne uniformément varié SUR un plan
+#     incliné, avec une force de frottement d'intensité constante. Ni chute
+#     libre, ni mouvement de projectile — c'est le rung 7 de cette leçon
+#     (« solide sur un plan incliné, avec frottement ») et rien d'autre ;
+#   — partie 2 (sous chute-mouvements-plans, bk-2024-r-x5b) : chute libre
+#     après le point B, avec vitesse initiale inclinée.
+# Le classement du vérificateur (docs/sujets/_incoming/pc-spc-2024-r.md) tranche
+# explicitement en ce sens. Les barèmes sont RÉPARTIS, jamais dupliqués :
+# 2,25 pt ici + 2,75 pt là-bas = 5 pt, le barème réel de l'exercice.
+#
+# SCOPE NOTE — la lecture graphique d'une accélération sur une courbe v(t)
+# (question 1-2-1) n'est pas montrée pas à pas par la leçon : le rung 1
+# construit le vecteur vitesse et le rung 3 le vecteur accélération, mais
+# aucun rung ne fait l'exercice « prendre deux points sur une droite v(t) et
+# en tirer le coefficient directeur ». Le pont est fait au point d'usage dans
+# le raisonnement de la question — jamais « on admet ». À remonter à
+# pedagogy-architect : ajouter ce geste au rung 3, ou l'assumer hors périmètre.
+
+notion: pc/lois-de-newton
+
+entries:
+  # ── bk-2024-r-x5 — 2024 R, Exercice 5 (partie 1) : plan incline avec frottement ──
+  - id: bk-2024-r-x5
+    title: "Solide sur un plan incliné avec frottement : la deuxième loi projetée, l'accélération lue sur la courbe v(t), et l'intensité du frottement qui s'en déduit"
+    source:
+      year: 2024
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 5 — 1. Mouvement de (S) le long du parcours AB"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/145769, scan
+        course-422/upload-87471, pages 5 et 6 sur 6 (Exercice 5, partie 1 —
+        mouvement du solide le long du parcours AB ; barème de la partie
+        = 2,25 pt, recompté question par question : 0,5 + 0,5 + 0,5 + 0,75 =
+        2,25, sur les 5 pt de l'exercice complet, dont la partie 2 — chute
+        libre après le point B — est transcrite sous
+        chute-mouvements-plans/bank.yaml en bk-2024-r-x5b). Transcription
+        vérifiée par une passe adversariale indépendante (2026-08-23,
+        docs/sujets/_incoming/pc-spc-2024-r.md, statut « vérifié ») : re-fetch
+        des 6 pages du scan, figures re-décrites depuis le dessin et non depuis
+        l'énoncé, puis physique re-dérivée. AVERTISSEMENT DE PROVENANCE, à
+        conserver dans toute entrée de ce sujet : le fichier de transcription
+        qui portait ce nom contenait en réalité le sujet 2023, assorti d'un
+        faux avertissement « discordance d'année » ; la page 1 du scan, relue
+        au zoom, porte sans ambiguïté « الدورة الاستدراكية 2024 » et la
+        couverture annonce CINQ exercices. Le fichier a été entièrement
+        réécrit. GÉOMÉTRIE DE LA FIGURE 1, re-décrite depuis le dessin et
+        décisive pour les signes : le segment monte de la gauche vers la
+        droite, A est son extrémité HAUTE (à droite) et B son extrémité BASSE
+        (à gauche), où il rejoint l'horizontale — le solide DESCEND donc de A
+        vers B. Le repère R1 est pris en A, avec i1 le long du plan DIRIGÉ VERS
+        B (donc vers le bas de la pente) et j1 perpendiculaire au plan, vers le
+        haut. C'est ce choix qui rend g.sin(alpha) POSITIF dans l'expression à
+        démontrer. FIGURE 2, mesurée au pixel : V_x en m.s-1 en ordonnée, t en
+        s en abscisse, traits majeurs tous les 0,1 s et tous les 0,1 m.s-1,
+        sous-quadrillage fin ; seuls « 0 », « 0,1 » et « 0,2 » sont chiffrés
+        sur chaque axe alors que le cadre va jusqu'à t = 0,6 s (6 divisions) et
+        V_x = 0,5 m.s-1 (5 divisions) — le piège de lecture est là. Tracé : une
+        droite unique, croissante, partant EXACTEMENT du trait 0,1 m.s-1 sur
+        l'axe des ordonnées (ordonnée à l'origine mesurée 0,100) et atteignant
+        0,484 m.s-1 à t = 0,6 s ; pente ajustée sur 268 points de la droite :
+        0,639 m.s-2. CONTRE-CALCUL REFAIT ICI, chiffre par chiffre : pente par
+        deux points de grille (0 ; 0,10) et (0,5 ; 0,42) = 0,32/0,5 =
+        0,64 m.s-2, en accord avec l'ajustement au pixel ; f = m(g.sin(alpha) -
+        a) = 0,100 x (10 x 0,34202 - 0,64) = 0,100 x 2,780 = 0,278 N, arrondi
+        0,28 N ; V_B = V_A + a.t_AB = 0,10 + 0,64 x 1,1 = 0,804 m.s-1, arrondi
+        0,80 m.s-1 — exactement la valeur que la question demande de vérifier,
+        et la droite mesurée extrapolée à t = 1,1 s donne 0,804 m.s-1. La
+        figure 2 VALIDE donc la donnée V_B au lieu de la contredire : aucune
+        incohérence sur cette partie. NB de fidélité : le scan imprime
+        « alpha = 20 » avec un zéro en exposant à la place du symbole degré ;
+        transcrit « 20 degres » ici, comme dans la source vérifiée.
+    intro: |-
+      **Mouvement d'un corps solide sur un plan incliné avec frottement (examen national, session de rattrapage 2024 — Exercice 5, partie 1, 2,25 points).**
+
+      On étudie dans cet exercice le mouvement d'une bille le long d'un parcours $AB$ rectiligne, puis son mouvement en chute libre après le point $B$.
+
+      Le parcours $AB$ est incliné d'un angle $\alpha$ par rapport à l'horizontale. La trajectoire du mouvement de la bille est située dans un plan vertical (figure 1).
+
+      On modélise la bille par un solide $(S)$ de masse $m$ et de centre d'inertie $G$. Durant le mouvement de $(S)$ sur le parcours $AB$, les forces qui s'opposent à son avancement sont équivalentes à une force de même direction, de sens opposé au mouvement et d'intensité constante $f$.
+
+      **Données :** intensité de la pesanteur $g = 10\ \text{m.s}^{-2}$ ; $\alpha = 20°$ ; $m = 100\ \text{g}$.
+
+      On étudie le mouvement de $G$ sur le parcours $AB$ dans un repère orthonormé $R_1(A, \vec{i_1}, \vec{j_1})$, et son mouvement de chute libre dans un repère orthonormé $R(B, \vec{i}, \vec{j})$. Les deux repères sont liés à un référentiel terrestre supposé galiléen.
+
+      *La partie 2 de cet exercice — la chute libre après le point $B$ — est traitée à part, sous la notion « Chute libre et mouvements dans un plan ». Elle repart de la vitesse $V_B$ établie ici.*
+
+      **Figure 1 (schéma).** Un segment incliné monte de la gauche vers la droite ; son extrémité **haute, à droite, est le point $A$** ; son extrémité **basse, à gauche, est le point $B$**, où il coupe une longue droite horizontale — le solide descend donc de $A$ vers $B$. Le solide $(S)$ est figuré par une petite bille grise posée sur le segment, entre $A$ et $B$, plus près de $A$ ; l'étiquette « $(S)$ » est imprimée juste au-dessus d'elle. **Repère $R_1$ en $A$** : de $A$ part vers le haut, perpendiculairement au plan incliné, une flèche épaisse dont l'extrémité est étiquetée « $y_1$ » et sur laquelle est marqué le vecteur unitaire $\vec{j_1}$ ; de $A$ part aussi, **le long du plan et dirigée vers $B$, donc vers le bas de la pente**, une flèche marquant $\vec{i_1}$, l'axe correspondant étant étiqueté « $x_1$ » plus bas sur le plan incliné avec une pointe de flèche dirigée vers $B$. L'angle $\alpha$ est marqué par un arc entre le plan incliné et l'horizontale, du côté droit du point $B$. **Repère $R$ en $B$** : $\vec{i}$ est une flèche horizontale dirigée vers la gauche (l'axe horizontal se prolonge à gauche jusqu'à une pointe étiquetée « $x$ ») ; $\vec{j}$ est une flèche verticale dirigée vers le bas (l'axe vertical descend jusqu'à une pointe étiquetée « $y$ »). Depuis $B$, une flèche oblique vers le bas-gauche, dans le prolongement du plan incliné — donc à l'angle $\alpha$ sous l'horizontale —, est cotée $\vec{V_B}$. En bas à gauche, un point noir étiqueté « $N$ » posé sur une droite horizontale en pointillés qui court de la gauche jusqu'au pied de l'axe vertical $y$. Légende « Figure 1 ».
+
+      **Figure 2 (courbe).** $V_x\ (\text{m.s}^{-1})$ en ordonnée, $t\ (\text{s})$ en abscisse. Quadrillage à double graduation : traits majeurs tous les $0{,}1\ \text{s}$ en abscisse et tous les $0{,}1\ \text{m.s}^{-1}$ en ordonnée, avec un sous-quadrillage fin. **Les seuls chiffrages imprimés sont « $0$ » à l'origine, « $0{,}1$ » et « $0{,}2$ » sur l'axe des temps, et « $0{,}1$ » et « $0{,}2$ » sur l'axe des vitesses — rien d'autre.** Le cadre va bien au-delà de ces chiffrages : il s'étend jusqu'à $t = 0{,}6\ \text{s}$ (six divisions majeures) et jusqu'à $V_x = 0{,}5\ \text{m.s}^{-1}$ (cinq divisions majeures). Tracé : **une droite unique, croissante, partant exactement du trait $0{,}1\ \text{m.s}^{-1}$ sur l'axe des ordonnées** et montant jusqu'au voisinage du coin supérieur droit du cadre, où elle vaut $0{,}484\ \text{m.s}^{-1}$ à $t = 0{,}6\ \text{s}$. Légende « Figure 2 ».
+    questions:
+      - id: q1
+        part: "1-1 — Le modèle, établi et non récité"
+        stem: |-
+          **1-1-** (0,5 pt) En appliquant la deuxième loi de Newton, montrer que l'expression de l'accélération $a_{x1}$ du mouvement de $G$ s'écrit : $a_{x1} = g\sin\alpha - \dfrac{f}{m}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une question « montrer que » : le résultat est donné, donc aucun point ne vient du résultat — ils viennent tous du **chemin**. Le correcteur attend quatre gestes dans l'ordre, et c'est exactement la méthode du rung 5 de la leçon : système, bilan des forces, repère, projection.
+
+          **Le système et le référentiel.** Système : le solide $(S)$, de masse $m$, réduit à son centre d'inertie $G$. Référentiel : terrestre, **supposé galiléen** — l'énoncé le dit, et il faut le réécrire, parce que la deuxième loi n'a de sens que dans un référentiel galiléen (rung 1).
+
+          **Le bilan des forces, en toutes lettres.** Trois forces extérieures s'appliquent à $(S)$ :
+          — le **poids** $\vec{P} = m\vec{g}$, vertical, dirigé vers le bas ;
+          — la **réaction normale** $\vec{R_N}$ du plan, perpendiculaire au plan incliné (le frottement, l'énoncé le dit, est traité séparément) ;
+          — la **force de frottement** $\vec{f}$, de même direction que le mouvement, **de sens opposé** à lui, et d'intensité **constante** $f$.
+
+          **Le repère, et c'est là que tout se joue.** L'énoncé impose $R_1(A, \vec{i_1}, \vec{j_1})$, et la figure 1 en donne le sens : $\vec{i_1}$ est le long du plan et **dirigé vers $B$**, c'est-à-dire **vers le bas de la pente**, puisque $A$ est en haut du segment et $B$ en bas. $\vec{j_1}$ est perpendiculaire au plan, vers l'extérieur. Ce choix est le cœur de la question : c'est lui qui décide de tous les signes qui suivent.
+
+          **La deuxième loi de Newton (rung 3).** Dans un référentiel galiléen :
+
+          $$\sum \vec{F}_{ext} = m\,\vec{a}_G
+          \qquad\text{soit}\qquad
+          \vec{P} + \vec{R_N} + \vec{f} = m\,\vec{a}_G$$
+
+          **La projection sur $\vec{i_1}$, force par force.**
+          — Le **poids** : c'est la décomposition du rung 7. Le plan fait l'angle $\alpha$ avec l'horizontale, donc le poids se décompose en une composante $mg\sin\alpha$ **le long** du plan, dirigée vers le bas de la pente, et une composante $mg\cos\alpha$ perpendiculaire au plan. Comme $\vec{i_1}$ pointe justement vers le bas de la pente, cette composante est **positive** : $P_{x1} = +\,mg\sin\alpha$.
+          — La **réaction normale** est perpendiculaire au plan, donc perpendiculaire à $\vec{i_1}$ : sa projection est **nulle**, $R_{N,x1} = 0$. C'est tout l'intérêt d'avoir choisi un axe le long du plan — cette force disparaît de l'équation du mouvement.
+          — Le **frottement** s'oppose au mouvement. Le solide descend, donc il va dans le sens de $\vec{i_1}$, donc $\vec{f}$ va dans le sens contraire : $f_{x1} = -\,f$.
+
+          L'équation projetée s'écrit donc :
+
+          $$m\,a_{x1} = mg\sin\alpha - f$$
+
+          **On divise par $m$, qui n'est pas nul :**
+
+          $$\boxed{\ a_{x1} = g\sin\alpha - \frac{f}{m}\ }$$
+
+          **Ce que cette expression dit, et qui servira aux questions suivantes.** $g$, $\alpha$, $f$ et $m$ sont tous constants, donc $a_{x1}$ est **constante** : le mouvement est rectiligne uniformément varié. C'est précisément ce que la figure 2 montre — une **droite**, pas une courbe. Les deux se confirment l'une l'autre, et c'est cette constance qui autorisera, à la question 1-3, d'écrire $V = V_A + a_{x1}t$.
+
+          **La projection sur $\vec{j_1}$, pour être complet.** Le mouvement se fait le long du plan, donc l'accélération n'a pas de composante perpendiculaire : $0 = R_N - mg\cos\alpha$, d'où $R_N = mg\cos\alpha$. L'exercice ne le demande pas, mais l'écrire montre que le bilan est complet.
+
+          **Les deux pièges nommés de cette question.** Le premier : **se tromper de fonction trigonométrique**, écrire $g\cos\alpha$ au lieu de $g\sin\alpha$. Le contrôle qui tranche en deux secondes : fais tendre $\alpha$ vers $0$ (plan horizontal). Alors $\sin\alpha \to 0$ et le solide n'est plus entraîné — c'est bien ce qu'on attend. Avec $\cos\alpha$, on trouverait une accélération maximale sur un plan horizontal, ce qui est absurde. Le second : **écrire $+f/m$**. Le signe ne se choisit pas au hasard, il vient du sens de $\vec{i_1}$ comparé au sens du mouvement ; ici le frottement freine une descente, donc il est compté négativement. Un $+$ donnerait un frottement qui accélère le solide.
+      - id: q2
+        part: "1-2 — Ce que la courbe donne directement"
+        stem: |-
+          **1-2-1-** (0,5 pt) La courbe de la figure 2 représente l'évolution temporelle de la vitesse de $G$ le long du trajet $AB$. Déterminer graphiquement la valeur de l'accélération $a_{x1}$ de $G$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'accélération est, par définition, la dérivée de la vitesse par rapport au temps. Sur un graphe $V_x(t)$, la dérivée se lit comme la **pente** de la courbe. Et comme le tracé est une **droite**, cette pente est la même partout : une seule mesure suffit, et elle donne $a_{x1}$ exactement.
+
+          **Le pont à faire, parce que la leçon ne fait pas ce geste pas à pas.** Le rung 3 construit le vecteur accélération comme taux de variation de la vitesse ; il ne montre pas l'opération « prendre deux points d'une droite $v(t)$ et calculer son coefficient directeur ». Voilà le geste, en clair : on choisit **deux points de la droite qui tombent sur des intersections du quadrillage** — jamais deux points lus au jugé — et on forme
+
+          $$a_{x1} = \frac{\Delta V_x}{\Delta t} = \frac{V_2 - V_1}{t_2 - t_1}$$
+
+          **Lire la figure correctement, et c'est là qu'est le piège.** Les chiffrages imprimés s'arrêtent à $0{,}2$ sur les deux axes, mais **le quadrillage, lui, continue** : traits majeurs tous les $0{,}1\ \text{s}$ et tous les $0{,}1\ \text{m.s}^{-1}$, jusqu'à $0{,}6\ \text{s}$ et $0{,}5\ \text{m.s}^{-1}$. On compte donc les divisions au-delà des chiffres imprimés au lieu de s'arrêter là où le sujet a cessé d'écrire.
+
+          **Les deux points choisis.** Le premier est l'**ordonnée à l'origine**, qui tombe exactement sur un trait : à $t_1 = 0$, la droite part de $V_1 = 0{,}10\ \text{m.s}^{-1}$. Le second, pris loin pour que l'erreur de lecture pèse peu : à $t_2 = 0{,}5\ \text{s}$ (cinq divisions), la droite passe par $V_2 = 0{,}42\ \text{m.s}^{-1}$.
+
+          **Le calcul.**
+
+          $$a_{x1} = \frac{0{,}42 - 0{,}10}{0{,}5 - 0} = \frac{0{,}32}{0{,}5}
+          = \boxed{0{,}64\ \text{m.s}^{-2}}$$
+
+          **Le contrôle qui vaut d'être fait.** Vérifie ta droite sur un troisième point : à $t = 0{,}6\ \text{s}$, elle devrait valoir $0{,}10 + 0{,}64 \times 0{,}6 = 0{,}484\ \text{m.s}^{-1}$, ce qui tombe bien au voisinage du coin supérieur droit du cadre — exactement là où le tracé se termine. Le modèle et la figure coïncident.
+
+          **Les deux pièges nommés de cette question.** Le premier, et il coûte tout : **prendre l'ordonnée à l'origine pour zéro** et calculer $0{,}42/0{,}5 = 0{,}84$. La droite ne part **pas** de l'origine — le solide est « envoyé » depuis $A$, il a déjà une vitesse à $t = 0$. Le second : **s'arrêter aux chiffrages imprimés** et n'utiliser que la zone $t \le 0{,}2\ \text{s}$, où le bras de levier de la mesure est court et l'imprécision maximale. Plus les deux points sont éloignés, plus la pente est fiable.
+      - id: q3
+        part: "1-2 — Remonter à la force"
+        stem: |-
+          **1-2-2-** (0,5 pt) Déduire l'intensité $f$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le mot « déduire » est une instruction : on ne recommence rien, on **retourne** l'expression de la question 1-1, dans laquelle $f$ est maintenant la seule inconnue puisque la question 1-2-1 vient de fournir $a_{x1}$.
+
+          **Le retournement.** De $a_{x1} = g\sin\alpha - \dfrac{f}{m}$, on isole le terme de frottement :
+
+          $$\frac{f}{m} = g\sin\alpha - a_{x1}
+          \qquad\Longrightarrow\qquad
+          f = m\left(g\sin\alpha - a_{x1}\right)$$
+
+          **Les valeurs, converties avant tout calcul.** $m = 100\ \text{g} = 0{,}100\ \text{kg}$ — la conversion est obligatoire, le newton se définit avec des kilogrammes. $g = 10\ \text{m.s}^{-2}$, $\alpha = 20°$ donc $\sin 20° = 0{,}342$ (calculatrice en **degrés**), et $a_{x1} = 0{,}64\ \text{m.s}^{-2}$.
+
+          **Le calcul, terme par terme.** D'abord la composante motrice :
+
+          $$g\sin\alpha = 10 \times 0{,}342 = 3{,}42\ \text{m.s}^{-2}$$
+
+          Puis la différence, puis le produit :
+
+          $$f = 0{,}100 \times (3{,}42 - 0{,}64) = 0{,}100 \times 2{,}78
+          = \boxed{0{,}28\ \text{N}}$$
+
+          **Lire ce nombre au lieu de le poser.** Le poids du solide vaut $mg = 0{,}100 \times 10 = 1{,}0\ \text{N}$, et sa composante le long du plan vaut $mg\sin\alpha = 0{,}342\ \text{N}$. Le frottement, à $0{,}28\ \text{N}$, mange donc **plus de $80\ \%$** de ce qui entraîne le solide : il ne reste que $0{,}06\ \text{N}$ pour l'accélérer, ce qui explique une accélération aussi modeste que $0{,}64\ \text{m.s}^{-2}$ — quinze fois moins que $g$. Les trois nombres se tiennent.
+
+          **Les deux pièges nommés de cette question.** Le premier : **garder $m$ en grammes** et annoncer $f = 278\ \text{N}$, une force capable de soulever une personne, pour freiner une bille de $100\ \text{g}$. Un ordre de grandeur invraisemblable est un signal, pas un détail. Le second : la **calculatrice en radians**, qui donnerait $\sin 20 = 0{,}913$ et donc $f = 0{,}85\ \text{N}$ — une valeur supérieure à la composante motrice, c'est-à-dire un solide qui devrait remonter la pente alors que la figure 2 le montre en train d'accélérer. Là encore, la vraisemblance attrape l'erreur avant le correcteur.
+      - id: q4
+        part: "1-3 — Prolonger le modèle au-delà du cadre"
+        stem: |-
+          **1-3-** (0,75 pt) Vérifier que la vitesse de $G$ à son arrivée au point $B$ est $V_B \approx 0{,}8\ \text{m.s}^{-1}$, sachant que la durée mise par le solide $(S)$ pour parcourir le trajet $AB$ est $t_{AB} = 1{,}1\ \text{s}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On veut la vitesse à un instant que **la figure ne montre pas** : le cadre s'arrête à $t = 0{,}6\ \text{s}$ et il faut atteindre $t_{AB} = 1{,}1\ \text{s}$. Autrement dit, on ne lit plus — on **prolonge le modèle**. C'est légitime exactement parce que la question 1-1 a établi que l'accélération est constante sur tout le trajet $AB$, et que la figure 2 l'a confirmé en montrant une droite.
+
+          **La loi horaire du mouvement rectiligne uniformément varié.** Accélération constante veut dire que la vitesse est une fonction affine du temps :
+
+          $$V_x(t) = V_A + a_{x1}\,t$$
+
+          où $V_A$ est la vitesse **à l'instant $t_0 = 0$**, c'est-à-dire au départ de $A$.
+
+          **La valeur de $V_A$, et c'est le point qui sépare les copies.** L'énoncé dit qu'on « **envoie** » le solide depuis $A$ : il n'est pas lâché sans vitesse, on le lance. Cette vitesse initiale se lit directement sur la figure 2 — c'est l'**ordonnée à l'origine** de la droite, qui tombe exactement sur un trait du quadrillage :
+
+          $$V_A = 0{,}10\ \text{m.s}^{-1}$$
+
+          **L'application numérique, chiffre par chiffre.**
+
+          $$V_B = V_A + a_{x1}\,t_{AB} = 0{,}10 + 0{,}64 \times 1{,}1$$
+
+          $$0{,}64 \times 1{,}1 = 0{,}704
+          \qquad\Longrightarrow\qquad
+          V_B = 0{,}10 + 0{,}704 = 0{,}804\ \text{m.s}^{-1}$$
+
+          $$\boxed{V_B \approx 0{,}80\ \text{m.s}^{-1}}$$
+
+          C'est bien la valeur à vérifier.
+
+          **L'honnêteté sur le chiffre.** Le calcul complet donne $0{,}804$, pas $0{,}8$ tout rond, et l'énoncé écrit « $\approx$ » à juste titre : l'accélération elle-même est issue d'une lecture graphique, connue à mieux qu'un pour cent près mais pas exactement. Écrire $0{,}80\ \text{m.s}^{-1}$ à deux chiffres significatifs, c'est respecter la précision réelle des données — ni l'exagérer, ni la perdre.
+
+          **Le contrôle indépendant, qui vaut d'être signalé.** La droite de la figure 2, prolongée jusqu'à $t = 1{,}1\ \text{s}$, passe par $0{,}804\ \text{m.s}^{-1}$. La figure **valide** donc la donnée $V_B$ de l'énoncé au lieu de la contredire — les deux sources d'information se recoupent, ce qui n'est pas toujours le cas dans les sujets.
+
+          **Ce que cette valeur devient ensuite.** $V_B$ n'est pas la fin de l'exercice : c'est la vitesse initiale de la chute libre de la partie 2, où elle sera décomposée selon l'angle $\alpha$. Une erreur ici se propagerait à toute la seconde moitié du sujet — raison de plus pour faire le contrôle ci-dessus.
+
+          **Les deux pièges nommés de cette question.** Le premier : **prendre $V_A = 0$** et trouver $0{,}70\ \text{m.s}^{-1}$. C'est l'erreur jumelle de celle de la question 1-2-1, et elle vient du même réflexe — supposer qu'une courbe de vitesse part de l'origine. Le second : **chercher à lire $V_B$ sur la figure 2**, ne pas trouver $t = 1{,}1\ \text{s}$ dans le cadre, et conclure qu'il manque une donnée. Le cadre s'arrête avant, c'est tout : le modèle, lui, ne s'arrête pas.
+        steps:
+          - math: 'a_{x1} = g\sin\alpha - \frac{f}{m} = \text{constante}'
+            note: "Question 1-1 : tous les termes sont constants, donc mouvement rectiligne uniformement varie."
+          - math: 'V_x(t) = V_A + a_{x1}\,t'
+            note: "Loi horaire de la vitesse quand l'acceleration est constante."
+          - math: 'a_{x1} = \frac{0{,}42 - 0{,}10}{0{,}5 - 0} = 0{,}64\ \text{m.s}^{-2}'
+            note: "Pente lue entre deux points de grille de la figure 2 (question 1-2-1)."
+          - math: 'V_A = 0{,}10\ \text{m.s}^{-1}'
+            note: "Ordonnee a l'origine de la droite : le solide est ENVOYE depuis A, pas lache."
+          - math: 'V_B = 0{,}10 + 0{,}64 \times 1{,}1 = 0{,}10 + 0{,}704 = 0{,}804\ \text{m.s}^{-1}'
+            note: "t_AB = 1,1 s est HORS du cadre de la figure : on prolonge le modele, on ne lit plus."
+          - math: '\boxed{V_B \approx 0{,}80\ \text{m.s}^{-1}}'
+            note: "Deux chiffres significatifs, la precision reelle des lectures. Cette valeur ouvre la partie 2."

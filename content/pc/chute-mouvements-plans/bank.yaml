@@ -1435,6 +1435,246 @@ entries:
           - math: '\boxed{\rho_L \approx 1{,}66\times 10^3\ \text{kg.m}^{-3}}'
             note: "Masse volumique du liquide (L)."
 
+  # ── bk-2024-r-x5b — 2024 R, Exercice 5 (partie 2) : chute libre apres un plan
+  #    incline, dans un repere ou i pointe A GAUCHE et j VERS LE BAS ──
+  #
+  # NOTE ÉDITORIALE — FLAG DE JUMELAGE (bk-2024-r-x5b face à bk-2021-r-x5 et
+  # bk-2023-r-x4). Les trois sont des projectiles de session de rattrapage
+  # lancés avec une vitesse initiale inclinée, et les trois demandent équations
+  # horaires puis équation de trajectoire. Ce ne sont PAS des doublons, et la
+  # différence est celle qui fait perdre les points :
+  #   — 2021 R (tir à l'arc) et 2023 R (service au volley-ball) travaillent dans
+  #     un repère d'orientation USUELLE, axe vertical vers le HAUT, donc avec
+  #     un coefficient de x^2 NÉGATIF et une parabole qui s'ouvre vers le bas ;
+  #   — ici, la figure impose i vers la GAUCHE et j vers le BAS. L'accélération
+  #     de la pesanteur devient +g, les deux coefficients de la trajectoire
+  #     sortent POSITIFS (y = 8,85x^2 + 0,36x) et « y qui augmente » signifie
+  #     « le solide descend ». Un élève qui applique de mémoire la formule des
+  #     deux autres entrées écrit -8,85x^2 et ne retrouve pas l'expression
+  #     imprimée par l'énoncé.
+  # Proposition : garder les trois, cette entrée servant de cas discriminant sur
+  # l'orientation du repère. À l'arbitrage de l'owner.
+  - id: bk-2024-r-x5b
+    title: "Chute libre après un plan incliné : équations horaires et trajectoire dans un repère dont l'axe vertical est dirigé vers le bas"
+    source:
+      year: 2024
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 5 — 2. Mouvement de chute libre de (S)"
+    bareme_total: 2.75
+    duration_min: 17
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool element/145769, scan
+        course-422/upload-87471, pages 5 et 6 sur 6 (Exercice 5, partie 2 —
+        mouvement de chute libre après le point B ; barème de la partie
+        = 2,75 pt, recompté question par question : 1 + 0,5 + 0,5 + 0,75 =
+        2,75, sur les 5 pt de l'exercice complet, dont la partie 1 — mouvement
+        sur le plan incliné avec frottement — est transcrite sous
+        lois-de-newton/bank.yaml en bk-2024-r-x5). Transcription vérifiée par
+        une passe adversariale indépendante (2026-08-23,
+        docs/sujets/_incoming/pc-spc-2024-r.md, statut « vérifié ») : re-fetch
+        des 6 pages du scan, figures re-décrites depuis le dessin et non depuis
+        l'énoncé, puis physique re-dérivée. AVERTISSEMENT DE PROVENANCE, à
+        conserver dans toute entrée de ce sujet : le fichier de transcription
+        qui portait ce nom contenait en réalité le sujet 2023, assorti d'un
+        faux avertissement « discordance d'année » ; la page 1 du scan, relue
+        au zoom, porte sans ambiguïté « الدورة الاستدراكية 2024 » et la
+        couverture annonce CINQ exercices. Le fichier a été entièrement
+        réécrit. ORIENTATION DU REPÈRE, re-décrite depuis le dessin et décisive
+        pour tous les signes de cette partie : dans R(B, i, j), le vecteur i
+        est HORIZONTAL DIRIGÉ VERS LA GAUCHE (l'axe se prolonge à gauche
+        jusqu'à une pointe étiquetée x) et le vecteur j est VERTICAL DIRIGÉ
+        VERS LE BAS (l'axe descend jusqu'à une pointe étiquetée y). C'est cette
+        orientation, et elle seule, qui rend les deux coefficients de la
+        trajectoire positifs. Le vecteur V_B part de B obliquement vers le
+        bas-gauche, dans le prolongement du plan incliné, donc à l'angle alpha
+        SOUS l'horizontale. CONTRE-CALCUL REFAIT ICI, chiffre par chiffre, à
+        partir de V_B = 0,80 m.s-1 (établie en partie 1), alpha = 20 degres et
+        g = 10 m.s-2 : V_B.cos(alpha) = 0,80 x 0,93969 = 0,7518 m.s-1 ;
+        V_B.sin(alpha) = 0,80 x 0,34202 = 0,2736 m.s-1 ; coefficient de x^2
+        = g / (2 x 0,7518^2) = 10 / 1,1303 = 8,847, arrondi 8,85 ; coefficient
+        de x = tan(20 degres) = 0,36397, arrondi 0,36 — les deux coefficients
+        se recoupent avec l'expression imprimée par l'énoncé SANS le moindre
+        écart, ce qui confirme au passage la valeur de V_B trouvée en partie 1.
+        Point N : y(0,20) = 8,85 x 0,04 + 0,36 x 0,20 = 0,354 + 0,072 =
+        0,426 m = 42,6 cm, exactement l'ordonnée annoncée. Vitesse en N :
+        t_N = 0,20 / 0,7518 = 0,2661 s ; V_x = 0,7518 m.s-1 (constante) ;
+        V_y = 10 x 0,2661 + 0,2736 = 2,934 m.s-1 ; V_N = racine(0,7518^2 +
+        2,934^2) = racine(9,174) = 3,029 m.s-1, arrondi 3,0 m.s-1. L'exercice
+        est cohérent de bout en bout : aucune incohérence relevée par le
+        vérificateur sur cette partie.
+    intro: |-
+      **Chute libre après un plan incliné (examen national, session de rattrapage 2024 — Exercice 5, partie 2, 2,75 points).**
+
+      On étudie dans cet exercice le mouvement d'une bille le long d'un parcours $AB$ rectiligne, puis son mouvement en chute libre après le point $B$. Le parcours $AB$ est incliné d'un angle $\alpha$ par rapport à l'horizontale, et la trajectoire est située dans un plan vertical (figure 1). On modélise la bille par un solide $(S)$ de masse $m$ et de centre d'inertie $G$.
+
+      **Données :** intensité de la pesanteur $g = 10\ \text{m.s}^{-2}$ ; $\alpha = 20°$ ; $m = 100\ \text{g}$.
+
+      *La partie 1 de cet exercice — le mouvement sur le plan incliné avec frottement — est traitée à part, sous la notion « Les lois de Newton ». Elle établit la seule valeur dont on a besoin ici : $V_B \approx 0{,}80\ \text{m.s}^{-1}$, la vitesse du solide à son arrivée en $B$. Tu peux entrer directement dans la partie 2 avec cette valeur.*
+
+      **Partie 2.** Le solide $(S)$ quitte le point $B$ avec la vitesse $\vec{V_B}$ faisant l'angle $\alpha$ avec l'horizontale et continue son mouvement, mais en chute libre (figure 1). On choisit l'instant de passage de la bille par le point $B$ comme nouvelle origine des dates $(t = 0)$. Le mouvement de chute libre est étudié dans le repère orthonormé $R(B, \vec{i}, \vec{j})$, lié à un référentiel terrestre supposé galiléen.
+
+      **Figure 1 (schéma).** Un segment incliné monte de la gauche vers la droite ; son extrémité haute, à droite, est le point $A$ ; son extrémité basse, à gauche, est le point $B$, où il coupe une longue droite horizontale. Le solide $(S)$ est figuré par une petite bille grise posée sur le segment, entre $A$ et $B$, plus près de $A$. L'angle $\alpha$ est marqué par un arc entre le plan incliné et l'horizontale, du côté droit du point $B$. **Repère $R$ en $B$ : $\vec{i}$ est une flèche horizontale dirigée vers la gauche** — l'axe horizontal se prolonge à gauche jusqu'à une pointe étiquetée « $x$ » — **et $\vec{j}$ est une flèche verticale dirigée vers le bas** — l'axe vertical descend jusqu'à une pointe étiquetée « $y$ ». Depuis $B$, une flèche oblique vers le bas-gauche, dans le prolongement du plan incliné, donc à l'angle $\alpha$ **sous** l'horizontale, est cotée $\vec{V_B}$. En bas à gauche, un point noir étiqueté « $N$ » posé sur une droite horizontale en pointillés qui court de la gauche jusqu'au pied de l'axe vertical $y$. (Le repère $R_1(A, \vec{i_1}, \vec{j_1})$, également tracé sur la figure, ne sert qu'à la partie 1.) Légende « Figure 1 ».
+    questions:
+      - id: q1
+        part: "2-1 — Les équations horaires, dans le repère que la figure impose"
+        stem: |-
+          **2-1-** (1 pt) Établir, dans le repère orthonormé $R(B, \vec{i}, \vec{j})$, les équations horaires paramétriques $x(t)$ et $y(t)$ du mouvement du centre d'inertie $G$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un point sur quatre de la partie, la question la plus chère : c'est elle qui installe le repère, et **tout le reste en découle**. Une orientation mal lue ici et les trois questions suivantes tombent avec elle.
+
+          **Regarde le repère AVANT d'écrire quoi que ce soit.** C'est l'instruction la plus importante de cet exercice. Sur la figure 1, en $B$ :
+          — $\vec{i}$ est horizontal et **dirigé vers la gauche** ;
+          — $\vec{j}$ est vertical et **dirigé vers le bas**.
+
+          Ce n'est pas l'orientation habituelle. Dans la plupart des sujets, l'axe vertical monte ; ici il **descend**. Conséquence immédiate, et il faut se la dire tout de suite : **le vecteur $\vec{g}$, qui pointe vers le bas, est dans le sens de $\vec{j}$**, donc sa composante est $+g$ et non $-g$. Tous les signes de cette partie sortent de là.
+
+          **Le bilan des forces : une seule.** « Chute libre » a un sens précis : le solide n'est soumis qu'à son **poids**. On néglige l'air, il n'y a plus de contact avec le plan. Donc $\sum \vec{F}_{ext} = \vec{P} = m\vec{g}$.
+
+          **La deuxième loi de Newton, dans le référentiel terrestre supposé galiléen.**
+
+          $$m\vec{g} = m\,\vec{a}_G \qquad\Longrightarrow\qquad \vec{a}_G = \vec{g}$$
+
+          La masse disparaît — c'est la signature de la chute libre : tous les corps y tombent de la même façon, quelle que soit leur masse.
+
+          **La projection, avec l'orientation qu'on vient de lire.**
+
+          $$a_x = 0 \qquad\text{et}\qquad a_y = +\,g = 10\ \text{m.s}^{-2}$$
+
+          $a_x = 0$ parce que le poids est vertical, donc perpendiculaire à $\vec{i}$ : **rien** ne pousse ni ne freine horizontalement. $a_y = +g$ parce que $\vec{j}$ descend, comme on vient de le dire.
+
+          **Les conditions initiales, décomposées.** À $t = 0$, le solide est en $B$, qui est l'origine du repère : $x(0) = 0$ et $y(0) = 0$. Sa vitesse est $\vec{V_B}$, orientée vers le bas-gauche à l'angle $\alpha$ **sous** l'horizontale. Les deux composantes sont donc toutes les deux **positives** dans ce repère, puisque $\vec{i}$ va à gauche et $\vec{j}$ vers le bas :
+
+          $$V_{0x} = V_B\cos\alpha \qquad\text{et}\qquad V_{0y} = V_B\sin\alpha$$
+
+          C'est le cosinus qui va avec l'horizontale et le sinus avec la verticale, parce que $\alpha$ est mesuré **à partir de l'horizontale** — la figure le montre par son arc.
+
+          **On intègre une fois : les vitesses.** Une accélération constante s'intègre en une vitesse affine, la constante d'intégration étant la vitesse initiale :
+
+          $$V_x(t) = V_{0x} = V_B\cos\alpha \qquad\text{(constante)}$$
+          $$V_y(t) = g\,t + V_B\sin\alpha$$
+
+          **On intègre une seconde fois : les positions.** Les constantes d'intégration sont les coordonnées initiales, toutes deux nulles ici puisque l'origine est en $B$ :
+
+          $$\boxed{\ x(t) = V_B\cos\alpha \cdot t \ }
+          \qquad\qquad
+          \boxed{\ y(t) = \frac{1}{2}g\,t^2 + V_B\sin\alpha \cdot t \ }$$
+
+          **Les valeurs numériques, pour la suite.** Avec $V_B = 0{,}80\ \text{m.s}^{-1}$ et $\alpha = 20°$ : $V_B\cos\alpha = 0{,}80 \times 0{,}940 = 0{,}752\ \text{m.s}^{-1}$ et $V_B\sin\alpha = 0{,}80 \times 0{,}342 = 0{,}274\ \text{m.s}^{-1}$.
+
+          **Relire ce qu'on a écrit, pour vérifier que ça décrit bien la figure.** $x(t)$ croît régulièrement : le solide s'éloigne vers la gauche à vitesse horizontale constante — c'est le mouvement uniforme selon $\vec{i}$. $y(t)$ croît de plus en plus vite : le solide descend, de plus en plus rapidement. Les deux ensemble décrivent bien une bille qui quitte $B$ vers le bas-gauche et accélère en tombant, exactement ce que le dessin montre.
+
+          **Les deux pièges nommés de cette question.** Le premier, et c'est le piège central de tout l'exercice : **écrire $a_y = -g$ par habitude**. Dans neuf sujets sur dix l'axe vertical monte et le signe est négatif ; ici il descend. Le contrôle qui tranche : avec $-g$, on obtiendrait $y(t) < 0$, c'est-à-dire un solide qui remonte au-dessus de $B$ alors qu'il tombe. Le second : **intervertir sinus et cosinus**. L'angle est pris depuis l'horizontale, donc le cosinus va avec l'horizontale. Le contrôle : pour $\alpha$ petit (un lancer presque horizontal), $V_{0x}$ doit être proche de $V_B$ tout entier — ce que donne le cosinus, pas le sinus.
+      - id: q2
+        part: "2-2 — De deux équations paramétriques à une seule courbe"
+        stem: |-
+          **2-2-** (0,5 pt) Montrer que l'équation de la trajectoire du centre d'inertie $G$ s'écrit : $y = 8{,}85\,x^{2} + 0{,}36\,x$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Les équations horaires disent **où** est le solide à chaque instant ; l'équation de la trajectoire dit **quelle courbe** il dessine, indépendamment du temps. Le geste est toujours le même : **éliminer $t$** entre les deux équations horaires.
+
+          **Comment on l'élimine.** On isole $t$ dans celle qui le permet le plus simplement — $x(t)$, où $t$ est au premier degré :
+
+          $$x = V_B\cos\alpha \cdot t \qquad\Longrightarrow\qquad t = \frac{x}{V_B\cos\alpha}$$
+
+          C'est licite parce que $V_B\cos\alpha \neq 0$ : le solide ne part pas verticalement.
+
+          **On reporte dans $y(t)$.**
+
+          $$y = \frac{1}{2}g\left(\frac{x}{V_B\cos\alpha}\right)^{2} + V_B\sin\alpha \cdot \frac{x}{V_B\cos\alpha}$$
+
+          **On range, et le second terme se simplifie joliment.** Dans le terme de droite, $V_B$ disparaît et il reste $\dfrac{\sin\alpha}{\cos\alpha} = \tan\alpha$ :
+
+          $$\boxed{\ y = \frac{g}{2\left(V_B\cos\alpha\right)^{2}}\,x^{2} + \tan\alpha \cdot x\ }$$
+
+          C'est la forme littérale à connaître : une **parabole**, et son coefficient de $x$ est simplement la tangente de l'angle de tir.
+
+          **L'application numérique, chiffre par chiffre.** Le premier coefficient : $V_B\cos\alpha = 0{,}80 \times 0{,}93969 = 0{,}75175\ \text{m.s}^{-1}$, dont le carré vaut $0{,}56513$, doublé $1{,}13027$ ; donc
+
+          $$\frac{g}{2\left(V_B\cos\alpha\right)^{2}} = \frac{10}{1{,}13027} = 8{,}847 \approx 8{,}85$$
+
+          Le second : $\tan 20° = 0{,}36397 \approx 0{,}36$.
+
+          $$y = 8{,}85\,x^{2} + 0{,}36\,x$$
+
+          C'est bien l'expression imprimée par l'énoncé.
+
+          **Ce que ce recoupement prouve, et il vaut d'être dit.** Les deux coefficients tombent **exactement** sur les valeurs de l'énoncé, sans le moindre ajustement. Cela ne valide pas seulement le calcul de cette question : cela valide en amont la valeur $V_B = 0{,}80\ \text{m.s}^{-1}$ obtenue en partie 1, donc l'accélération lue sur la figure 2, donc l'intensité $f$ du frottement. Tout l'exercice se referme sur lui-même.
+
+          **Pourquoi les deux coefficients sont POSITIFS, alors qu'on a l'habitude d'un $x^2$ négatif.** C'est la conséquence directe de l'orientation du repère : $\vec{j}$ descend, donc « $y$ grand » veut dire « bas », et une parabole qui s'ouvre vers le bas dans le dessin s'écrit avec un coefficient **positif** dans ce repère-là. Si tu as écrit $-8{,}85\,x^2$, ce n'est pas une erreur de calcul : c'est que tu as travaillé dans le repère habituel au lieu de celui de la figure.
+
+          **Le piège nommé de cette question.** Oublier le **carré** au dénominateur et écrire $\dfrac{g}{2V_B\cos\alpha}$. On obtiendrait $6{,}65$ au lieu de $8{,}85$ — et comme l'énoncé donne la valeur à retrouver, l'écart se voit immédiatement. C'est le principal service que rend une question « montrer que » : elle te dit tout de suite si ton chemin est bon.
+      - id: q3
+        part: "2-3 — Un point appartient-il à la courbe ?"
+        stem: |-
+          **2-3-1-** (0,5 pt) Soit $N$ un point de coordonnées $x_N = 20\ \text{cm}$ et $y_N = 42{,}6\ \text{cm}$. Vérifier que $G$ passe par le point $N$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « Vérifier que $G$ passe par $N$ » veut dire, mathématiquement : **les coordonnées de $N$ satisfont-elles l'équation de la trajectoire ?** On substitue $x_N$ dans l'équation, on calcule le $y$ correspondant, et on le compare à $y_N$. Rien d'autre.
+
+          **La conversion, avant tout calcul.** L'équation $y = 8{,}85\,x^2 + 0{,}36\,x$ a été établie avec $g$ en $\text{m.s}^{-2}$ et $V_B$ en $\text{m.s}^{-1}$ : ses coefficients ne sont valables que si $x$ et $y$ sont en **mètres**. Or l'énoncé donne les coordonnées de $N$ en centimètres. Donc :
+
+          $$x_N = 20\ \text{cm} = 0{,}20\ \text{m}
+          \qquad\text{et}\qquad
+          y_N = 42{,}6\ \text{cm} = 0{,}426\ \text{m}$$
+
+          **Le calcul, terme par terme.**
+
+          $$y(x_N) = 8{,}85 \times (0{,}20)^{2} + 0{,}36 \times 0{,}20$$
+
+          Le premier terme : $(0{,}20)^2 = 0{,}040$, donc $8{,}85 \times 0{,}040 = 0{,}354\ \text{m}$.
+          Le second terme : $0{,}36 \times 0{,}20 = 0{,}072\ \text{m}$.
+
+          $$y(x_N) = 0{,}354 + 0{,}072 = 0{,}426\ \text{m} = \boxed{42{,}6\ \text{cm}}$$
+
+          **La conclusion, qu'il faut écrire en toutes lettres.** La valeur calculée est **exactement** l'ordonnée $y_N$ donnée par l'énoncé. Les coordonnées de $N$ vérifient donc l'équation de la trajectoire : **$G$ passe bien par le point $N$**. Une question de vérification se termine par une phrase de conclusion, pas par un nombre laissé seul.
+
+          **Le piège nommé de cette question.** Ne pas convertir, et injecter $x = 20$ dans l'équation : on obtiendrait $8{,}85 \times 400 + 0{,}36 \times 20 = 3547$, à comparer à $42{,}6$. Un facteur $80$ d'écart, et la tentation de conclure « $G$ ne passe pas par $N$ » — alors que la seule chose qui cloche est l'unité. La règle générale à retenir : **une équation littérale porte les unités avec lesquelles on l'a construite**, et on convertit toujours vers celles-là avant d'y entrer un nombre.
+      - id: q4
+        part: "2-3 — La vitesse en un point de la trajectoire"
+        stem: |-
+          **2-3-2-** (0,75 pt) Calculer la vitesse de $G$ à son arrivée au point $N$ en se basant sur les équations horaires de la vitesse de $G$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La consigne impose la méthode : « en se basant sur les équations horaires de la **vitesse** ». Donc on n'utilise ni le théorème de l'énergie cinétique, ni un raccourci — on passe par les deux composantes $V_x(t)$ et $V_y(t)$, on les évalue à l'instant où le solide est en $N$, et on compose.
+
+          **Le chaînon manquant : à quel instant le solide est-il en $N$ ?** Les équations de vitesse dépendent de $t$, et l'énoncé ne donne pas $t_N$. On le récupère par l'équation horaire de $x$, qui est la plus simple :
+
+          $$x_N = V_B\cos\alpha \cdot t_N
+          \qquad\Longrightarrow\qquad
+          t_N = \frac{x_N}{V_B\cos\alpha} = \frac{0{,}20}{0{,}752} = 0{,}266\ \text{s}$$
+
+          **La composante horizontale : elle n'a pas bougé.** Aucune force horizontale, donc $V_x$ est constante depuis $B$ :
+
+          $$V_x(t_N) = V_B\cos\alpha = 0{,}752\ \text{m.s}^{-1}$$
+
+          **La composante verticale : c'est elle qui a grandi.**
+
+          $$V_y(t_N) = g\,t_N + V_B\sin\alpha = 10 \times 0{,}266 + 0{,}274
+          = 2{,}66 + 0{,}274 = 2{,}934\ \text{m.s}^{-1}$$
+
+          **La composition.** La vitesse est un vecteur ; sa norme se calcule par le théorème de Pythagore appliqué à ses deux composantes orthogonales :
+
+          $$V_N = \sqrt{V_x^{2} + V_y^{2}} = \sqrt{(0{,}752)^{2} + (2{,}934)^{2}}
+          = \sqrt{0{,}566 + 8{,}608} = \sqrt{9{,}174}$$
+
+          $$\boxed{V_N \approx 3{,}0\ \text{m.s}^{-1}}$$
+
+          **Lire ce résultat au lieu de le poser.** Le solide est arrivé en $B$ à $0{,}80\ \text{m.s}^{-1}$ ; il arrive en $N$ à $3{,}0\ \text{m.s}^{-1}$, presque **quatre fois plus vite**, en un quart de seconde et sur $20\ \text{cm}$ d'écart horizontal seulement. C'est cohérent : la chute libre est bien plus efficace que la descente sur le plan, où le frottement mangeait plus de $80\ \%$ de la composante motrice. Et regarde la répartition — $V_y = 2{,}93$ contre $V_x = 0{,}75$ : la vitesse est devenue presque **verticale**, la composante horizontale étant restée figée à sa valeur de départ pendant que la verticale décuplait.
+
+          **Les trois pièges nommés de cette question.** Le premier : **additionner les composantes** au lieu de les composer, et annoncer $0{,}752 + 2{,}934 = 3{,}69\ \text{m.s}^{-1}$. Deux vecteurs perpendiculaires ne s'ajoutent pas comme des nombres. Le deuxième : **oublier $V_B\sin\alpha$** dans $V_y$ et n'écrire que $g\,t_N = 2{,}66\ \text{m.s}^{-1}$. Le solide ne part pas horizontalement — il a déjà une composante verticale en $B$, et l'oublier coûte $0{,}27\ \text{m.s}^{-1}$ sur $V_y$. Le troisième, plus insidieux : **calculer $t_N$ à partir de $y_N$** en résolvant l'équation du second degré $0{,}426 = 5t^2 + 0{,}274t$. Ce n'est pas faux — cela donne bien $t_N = 0{,}266\ \text{s}$ — mais c'est trois fois plus long et cela expose à une erreur de discriminant, alors que l'équation en $x$ est du premier degré et se résout de tête. Choisir la bonne équation fait partie du travail.
+        steps:
+          - math: 't_N = \frac{x_N}{V_B\cos\alpha} = \frac{0{,}20}{0{,}752} = 0{,}266\ \text{s}'
+            note: "L'instant de passage en N, tire de l'equation horaire en x (premier degre, la plus simple)."
+          - math: 'V_x(t_N) = V_B\cos\alpha = 0{,}752\ \text{m.s}^{-1}'
+            note: "Aucune force horizontale : la composante horizontale n'a pas change depuis B."
+          - math: 'V_y(t_N) = g\,t_N + V_B\sin\alpha = 10 \times 0{,}266 + 0{,}274 = 2{,}934\ \text{m.s}^{-1}'
+            note: "Ne pas oublier le terme de vitesse initiale : le solide ne part pas horizontalement."
+          - math: 'V_N = \sqrt{V_x^{2} + V_y^{2}} = \sqrt{0{,}566 + 8{,}608} = \sqrt{9{,}174}'
+            note: "Composition de deux vecteurs perpendiculaires : Pythagore, jamais une somme."
+          - math: '\boxed{V_N \approx 3{,}0\ \text{m.s}^{-1}}'
+            note: "Presque quatre fois la vitesse en B, et devenue quasi verticale (Vy = 2,93 contre Vx = 0,75)."
+
   # ── bk-2025-n-x4 — 2025 N, Exercice 4 (Partie 1) : satellite artificiel, masse de la Terre ──
   - id: bk-2025-n-x4
     title: "Mouvement d'un satellite artificiel : force gravitationnelle et masse de la Terre"
