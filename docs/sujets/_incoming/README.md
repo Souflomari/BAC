@@ -111,15 +111,26 @@ exercices d'algèbre sont en banque et que leur volet d'ANALYSE n'y est pas.
 Une épreuve SM consacre la moitié de son barème à l'analyse ; c'est
 exactement la moitié qui manque.
 
-Quatre sujets transcrits à ce jour, tous **NON VÉRIFIÉS**, tous en attente
-d'une passe adversariale :
+**Cinq sujets transcrits, quatre vérifiés.** État au 2026-08-27 :
 
-| Fichier | Ce qui est transcrit | Barème |
-|---|---|---|
-| `maths-sm-2023-n.md` | exercices 1 et 2 (deux volets d'analyse) | 7,75 + 2,25 |
-| `maths-sm-2024-n.md` | exercices 1 et 2 (deux volets d'analyse) | 7,5 + 2,5 |
-| `maths-sm-2025-n.md` | exercice 1 (problème unique) | 10 |
-| `maths-sm-2022-n.md` | exercice 1 (problème unique) | 10 |
+| Fichier | Ce qui est transcrit | Barème | Vérification |
+|---|---|---|---|
+| `maths-sm-2022-n.md` | exercice 1 (problème unique) | 10 | **vérifiée** — un défaut dans la table de glyphes, corps de l'énoncé juste |
+| `maths-sm-2023-n.md` | exercices 1 et 2 | 7,75 + 2,25 | **vérifiée** — aucun défaut dans les énoncés *(passe antérieure à la règle du 2026-08-27, voir la note de portée du fichier)* |
+| `maths-sm-2024-n.md` | exercices 1 et 2 | 7,5 + 2,5 | **vérifiée** — un défaut du SUJET OFFICIEL (numéros 4 et 5 croisés entre la p. 1 et le corps) *(idem)* |
+| `maths-sm-2025-n.md` | exercice 1 (problème unique) | 10 | **vérifiée** — aucun défaut ; c'est cette passe qui a découvert l'incident de cache CDN |
+| `maths-sm-2017-n.md` | exercice 4 (problème unique) | 10 | **en cours**, sous le protocole complet |
+
+**SM 2020 est le sixième, et il est SUSPENDU** — pas oublié. Son format à
+choix n'est pas représentable par l'assembleur d'épreuves ; voir
+`docs/grounding/known-issues.md` **K-0**, qui pose trois issues possibles et
+n'en choisit aucune. Le transcrire avant l'arbitrage produirait une épreuve à
+23,5/20.
+
+Ce que les quatre passes ont trouvé, en une ligne : **aucun défaut de valeur,
+de borne, d'exposant ou de barème dans aucun des quatre énoncés.** Les trois
+défauts réels étaient ailleurs — dans une table de glyphes, dans la page 1 du
+sujet officiel, et dans le cache d'AlloSchool.
 
 Chacun recompté question par question contre la marge du scan, et chacun
 retombe exactement sur les 10 points qui manquent à son épreuve.
