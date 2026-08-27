@@ -134,10 +134,10 @@ maths, où il ne manquait qu'un problème par épreuve.
 | Fichier | Ce qui est transcrit | Barème | Vérification |
 |---|---|---|---|
 | `pc-2012-n.md` | **la PHYSIQUE** de SPC 2012 N (nucléaire 3 · électricité 4,5 · mécanique 5,5) | 13 | **NON VÉRIFIÉ** — transcrit sous les 4 contrôles + les 2 instruments ; passe adversariale en cours. PDF **natif** : rendu vectoriel, aucun caractère deviné. La chimie (7,00) est déjà en banque et n'est PAS retranscrite |
+| `pc-2010-n.md` | chimie 2ᵉ partie · nucléaire · électricité · mécanique | 15,75 | **NON VÉRIFIÉ** — 4 contrôles + matrice de corrélation (diagonale 0,987–0,994). PDF **born-digital**, figures lues sur les bitmaps d'origine. **⚠️ CONTREDIT LA BANQUE** : $t_{1/2}$ mesuré au pixel à **12,53 min** là où `bk-2010-n-x1` porte ≈ 20 min — une valeur que ce fichier de banque déclarait lui-même non re-vérifiée. **7 défauts du sujet officiel** |
 
-**Restent à ouvrir** : SPC 2010 N (manque 15,75, `element/94443`) · SPC 2015 N
-(17,75, `element/94472`) · SPC 2011 R (17,75, `element/94449`) · SPC 2017 N
-(18,25, `element/57711`).
+**Restent à ouvrir** : SPC 2011 R (17,75, `element/94449`) · SPC 2017 N
+(18,25, `element/57711`). *(SPC 2015 N est en transcription.)*
 
 **La règle d'exclusion vaut pour les cinq** : chacune porte DÉJÀ une entrée en
 banque. Retranscrire la même partie ferait dépasser 20 — c'est le mode d'échec
