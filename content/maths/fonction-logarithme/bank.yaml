@@ -1739,3 +1739,553 @@ entries:
             note: "Repere orthonorme avec norme de i egale a 1 cm : l'unite de volume vaut 1 cm3."
           - math: '\boxed{V = \frac{\pi}{4}\ \text{cm}^3 \approx 0{,}785\ \text{cm}^3}'
             note: "Positif et de l'ordre du cm3 : vraisemblable pour une courbe qui reste sous 1 sur [0,1]."
+  # ── bk-2024-r-x1 — 2024 R, Exercice 1 : la famille f_n(x) = x - x^n ln x,
+  #    la suite (alpha_n) de ses zeros dans ]1;2[, et sa limite ──
+  #
+  # NOTE ÉDITORIALE — CARTE DES DOMAINES. Comme bk-2023-r-x1 ci-dessus, ce
+  # problème traverse plusieurs chapitres et reste ENTIER sous
+  # fonction-logarithme (slug dominant : toute l'étude est une étude avec ln, et
+  # les croissances comparées x^k ln x -> 0 portent quatre questions à elles
+  # seules). Les cross-lists du classement — derivabilite-etude-fonctions,
+  # limites-continuite, suites-numeriques — ne deviennent PAS des entrées : ce
+  # serait un double comptage du barème que lib/examens.ts somme. Ils sont
+  # honorés dans le raisonnement, qui nomme le domaine à chaque changement :
+  #   — question 1-a, 1-b : continuité prolongée, limites, branche infinie ;
+  #   — question 1-c, 1-d, 1-e : dérivabilité à droite, dérivée, variations ;
+  #   — questions 3 et 4 : suite définie implicitement, monotonie, convergence.
+  #
+  # NOTE ÉDITORIALE — FLAG DE JUMELAGE (bk-2024-r-x1 face à bk-2023-r-x1). Les
+  # deux sont des problèmes d'analyse de session de rattrapage bâtis sur une
+  # FAMILLE de fonctions indexée par n, avec une suite définie implicitement par
+  # une équation et une limite obtenue par l'absurde. Ce ne sont pas des
+  # doublons, et la différence est instructive :
+  #   — 2023 R : f_n(x) = sqrt(x)(ln x)^n, la suite (x_n) est CROISSANTE et sa
+  #     limite est la BORNE DROITE e de l'intervalle ; la contradiction vient
+  #     d'une limite finie confrontée à -infini ;
+  #   — 2024 R : f_n(x) = x - x^n ln x, la suite (alpha_n) est DÉCROISSANTE et
+  #     sa limite est la BORNE GAUCHE 1 ; la contradiction vient de +infini
+  #     (le n-1 du membre de gauche) confronté à une limite finie.
+  # Les deux miroirs se répondent. Proposition : garder les deux, et les
+  # travailler dans cet ordre. À l'arbitrage de l'owner.
+  - id: bk-2024-r-x1
+    title: "Problème d'analyse : la famille f_n(x) = x − xⁿ ln x — dérivabilité à droite en 0, courbes emboîtées, et la suite décroissante de leurs zéros dans ]1 ; 2["
+    source:
+      year: 2024
+      session: rattrapage
+      filiere: "SM"
+      exercise_label: "Exercice 1 — Analyse (6,5 points)"
+    bareme_total: 6.5
+    duration_min: 78
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session de rattrapage — examen national Mathématiques, filière
+        Sciences Mathématiques (A) et (B), option française, 4 h, coefficient
+        9, code sujet RS 25, AlloSchool element/145741, scan
+        course-436/upload-87449, page 2 sur 5 (l'énoncé complet tient sur cette
+        seule page ; consignes en page 1). Barème de l'exercice = 6,5 points,
+        recompté question par question sur le scan et revérifié ici :
+        question 1 = 0,25 + 0,75 + 0,5 + 0,5 + 0,5 = 2,5 ; question 2 =
+        0,5 + 0,25 = 0,75 ; question 3 = 0,5 + 0,25 + 0,25 + 0,5 + 0,25 =
+        1,75 ; question 4 = 0,25 + 0,5 + 0,25 + 0,5 = 1,5 ; total 2,5 + 0,75 +
+        1,75 + 1,5 = 6,5, conforme au total imprimé. Transcription vérifiée par
+        une passe adversariale indépendante (2026-08-23,
+        docs/sujets/_incoming/maths-sm-2024-r.md, statut « vérifié ») :
+        re-fetch de element/145741, re-dérivation des chemins d'images depuis
+        le HTML (5 pages, pagination « n/5 » sur chaque page, conforme), et
+        re-lecture du texte caractère par caractère sur l'image — chaque
+        nombre, indice, exposant, borne et quantificateur. L'exposant n de
+        alpha_(n+1) puissance n, à la question 3-b, a été relu au zoom x5
+        parce qu'il porte une question entière. Aucune figure n'accompagne cet
+        exercice. Le vérificateur conclut : AUCUN DÉFAUT TROUVÉ — le sujet
+        officiel est lui-même cohérent, aucune incohérence d'énoncé à
+        signaler, aucun point laissé en lecture à confirmer.
+        CONTRE-CALCUL REFAIT ICI, question par question : (1-d) la dérivée de
+        x^n ln x vaut n x^(n-1) ln x + x^(n-1), d'où f_n'(x) = 1 - x^(n-1) -
+        n x^(n-1) ln x, conforme à l'expression imprimée ; (1-e) le signe se
+        traite en écrivant f_n'(x) = 1 - x^(n-1)(1 + n ln x) — pour x > 1 les
+        deux facteurs dépassent 1 donc le produit aussi et f_n' < 0 ; pour
+        0 < x < 1 le produit est inférieur à 1 dans les deux cas de figure
+        (facteur négatif, ou deux facteurs entre 0 et 1) donc f_n' > 0 ;
+        (3-a) avec ln 2 = 0,7 comme l'énoncé l'impose, f_n(2) = 2 - 0,7 x 2^n,
+        et 2^n >= 4 dès n = 2 donne f_n(2) <= -0,8 < 0 tandis que f_n(1) = 1 >
+        0 : le changement de signe est net et l'existence est acquise ; (3-b)
+        f_(n+1)(alpha_(n+1)) = 0 donne alpha^(n+1) ln alpha = alpha, et la
+        division par alpha (non nul car supérieur à 1) donne exactement
+        l'identité demandée ; (4-b) de f_n(alpha_n) = 0 on tire
+        alpha_n^(n-1) ln alpha_n = 1, et le passage au logarithme donne
+        (n-1) ln alpha_n = -ln(ln alpha_n), d'où le résultat après division par
+        ln alpha_n, non nul car alpha_n > 1 ; (4-d) le membre de gauche n - 1
+        tend vers +infini tandis que l'hypothèse ell > 1 forcerait le membre de
+        droite à converger vers ln(ln ell)/ln ell, fini — contradiction, donc
+        ell = 1. Ce résultat coïncide avec la vérification numérique du
+        vérificateur (alpha_2 environ 1,763, alpha_10 environ 1,205, alpha_200
+        environ 1,020) et avec le contrôle refait ici sur alpha_2, racine de
+        x ln x = 1 : 1,763 x ln(1,763) = 1,763 x 0,5670 = 0,9996. AJOUT DE
+        CETTE ENTRÉE AU CORPUS : l'épreuve SM 2024 rattrapage, dont les
+        exercices 2, 3, 4 et 5 étaient déjà convertis (calcul-integral,
+        nombres-complexes-2, structures-algebriques, arithmetique), passe de
+        13,50 à 20,00 points et devient assemblable en entier dans Examens
+        blancs.
+    intro: |-
+      **Problème d'analyse (examen national, Sciences Mathématiques, session de rattrapage 2024 — Exercice 1, 6,5 points).**
+
+      *L'épreuve dure 4 heures et comporte cinq exercices indépendants, traitables dans l'ordre choisi par le candidat. L'usage de la calculatrice n'est pas autorisé.*
+
+      Soit $n$ un entier naturel supérieur ou égal à $2$. On considère la fonction numérique $f_n$ définie sur $[0, +\infty[$ par :
+
+      $$f_n(0) = 0 \qquad\text{et}\qquad \forall x \in\, ]0, +\infty[\ ;\quad f_n(x) = x - x^n \ln x$$
+
+      et on note $(C_n)$ sa courbe représentative dans un repère orthonormé.
+
+      *Aucune figure n'accompagne cet exercice. La carte des domaines, pour savoir quoi réviser avant : la question 1 mobilise la continuité prolongée, les limites et les branches infinies, puis la dérivabilité à droite et l'étude de variations ; les questions 3 et 4 mobilisent les suites définies implicitement, leur monotonie et leur convergence. Le fil qui traverse tout est la croissance comparée $x^k \ln x \to 0$ en $0^+$ — elle porte à elle seule quatre questions.*
+
+      *Prends note de l'hypothèse $n \geq 2$ : elle n'est pas décorative. La question 1-c tombe en défaut pour $n = 1$, et c'est exactement pour cela que l'énoncé l'exclut.*
+    questions:
+      - id: q1a
+        part: "1 — La fonction : bords, dérivabilité et variations"
+        stem: |-
+          **1- a)** (0,25 pt) Montrer que $f_n$ est continue à droite en $0$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Il faut montrer que $\displaystyle\lim_{x \to 0^+} f_n(x) = f_n(0) = 0$. La fonction est une différence de deux termes ; on traite chacun séparément.
+
+          $$f_n(x) = x - x^n \ln x$$
+
+          **Le premier terme** tend vers $0$ sans difficulté.
+
+          **Le second terme** est une forme indéterminée $0 \times (-\infty)$ : $x^n \to 0$ et $\ln x \to -\infty$. C'est la **croissance comparée** du chapitre qui la tranche :
+
+          $$\lim_{x \to 0^+} x^k \ln x = 0 \qquad \text{pour tout entier } k \geq 1$$
+
+          Ici $n \geq 2 \geq 1$, donc $x^n \ln x \to 0$. Si tu préfères t'appuyer sur la seule limite de référence $x\ln x \to 0$, écris $x^n \ln x = x^{n-1} \cdot (x \ln x) \to 0 \times 0 = 0$, ce qui est licite car $n - 1 \geq 1$.
+
+          **La conclusion.**
+
+          $$\lim_{x \to 0^+} f_n(x) = 0 - 0 = 0 = f_n(0)$$
+
+          $f_n$ est donc **continue à droite en $0$**, et le prolongement $f_n(0) = 0$ posé par l'énoncé est le seul qui rende la fonction continue sur $[0, +\infty[$.
+
+          **Le piège nommé de cette question.** Annoncer que $x^n \ln x \to -\infty$ « parce que $\ln x \to -\infty$ ». La puissance écrase le logarithme, toujours : c'est le contenu même de la croissance comparée, et il faut la citer par son nom, pas la subir.
+      - id: q1b
+        stem: |-
+          **1- b)** (0,75 pt) Montrer que : $\displaystyle\lim_{x\to+\infty} f_n(x) = -\infty$ et $\displaystyle\lim_{x\to+\infty} \dfrac{f_n(x)}{x} = -\infty$ puis interpréter graphiquement le résultat obtenu.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux limites et une interprétation, pour trois quarts de point — et c'est l'interprétation qu'on oublie. Les deux limites, elles, se font par **factorisation par le terme dominant**, la technique standard dès qu'on a une différence de deux quantités qui explosent.
+
+          **La première limite.** On factorise par $x$ :
+
+          $$f_n(x) = x - x^n \ln x = x\left(1 - x^{n-1}\ln x\right)$$
+
+          Comme $n \geq 2$, on a $n - 1 \geq 1$, donc $x^{n-1} \to +\infty$ et $\ln x \to +\infty$ : leur produit tend vers $+\infty$, et
+
+          $$1 - x^{n-1}\ln x \longrightarrow -\infty$$
+
+          Le facteur $x$ tendant vers $+\infty$, le produit donne :
+
+          $$\boxed{\lim_{x \to +\infty} f_n(x) = -\infty}$$
+
+          **La seconde limite.** Elle est en réalité déjà faite — la parenthèse ci-dessus **est** le quotient :
+
+          $$\frac{f_n(x)}{x} = 1 - x^{n-1}\ln x
+          \qquad\Longrightarrow\qquad
+          \boxed{\lim_{x \to +\infty} \frac{f_n(x)}{x} = -\infty}$$
+
+          C'est le bénéfice de la factorisation : une seule écriture donne les deux réponses.
+
+          **L'interprétation graphique, et c'est le troisième geste.** La conjonction « $f_n(x) \to -\infty$ **et** $\dfrac{f_n(x)}{x} \to -\infty$ » porte un nom précis dans le cours :
+
+          > $(C_n)$ admet, au voisinage de $+\infty$, une **branche parabolique de direction l'axe des ordonnées** $(Oy)$.
+
+          **Ce que cela veut dire concrètement.** La courbe plonge vers le bas, et de plus en plus **raide** : sa pente moyenne $\dfrac{f_n(x)}{x}$ n'est pas seulement négative, elle diverge. La courbe se redresse donc vers la verticale — elle finit par descendre presque parallèlement à l'axe des ordonnées.
+
+          **Le piège nommé de cette question.** Confondre les trois cas de branche infinie. Si $\dfrac{f_n(x)}{x}$ tendait vers une constante finie $a$, il faudrait examiner $f_n(x) - ax$ pour trancher entre asymptote oblique et branche parabolique de direction $y = ax$. Ici le quotient **diverge**, ce qui élimine ces deux cas d'un coup et impose la direction $(Oy)$. Le second piège, symétrique : dire « direction $(Ox)$ », qui correspondrait au cas où le quotient tend vers $0$ — c'est-à-dire exactement l'inverse de ce qui se passe.
+      - id: q1c
+        stem: |-
+          **1- c)** (0,5 pt) Montrer que $f_n$ est dérivable à droite en $0$ et que son nombre dérivé à droite en $0$ est égal à $1$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** En $0$, la fonction n'est définie que par un prolongement : aucune formule de dérivation ne s'y applique. Il faut **revenir à la définition** — le taux d'accroissement — et montrer qu'il admet une limite finie.
+
+          **Le taux d'accroissement.** Comme $f_n(0) = 0$ :
+
+          $$\frac{f_n(x) - f_n(0)}{x - 0} = \frac{f_n(x)}{x} = \frac{x - x^n\ln x}{x} = 1 - x^{n-1}\ln x$$
+
+          On retrouve exactement l'expression de la question 1-b, mais on va la faire tendre vers $0^+$ cette fois, et non vers $+\infty$.
+
+          **La limite.** Comme $n \geq 2$, on a $n - 1 \geq 1$, donc la croissance comparée s'applique :
+
+          $$\lim_{x \to 0^+} x^{n-1}\ln x = 0$$
+
+          D'où :
+
+          $$\lim_{x \to 0^+} \frac{f_n(x) - f_n(0)}{x - 0} = 1 - 0 = 1$$
+
+          Cette limite est **finie**. Par définition, $f_n$ est donc **dérivable à droite en $0$**, et
+
+          $$\boxed{f_{n,d}'(0) = 1}$$
+
+          **Où l'hypothèse $n \geq 2$ devient indispensable, et il faut le voir.** Pour $n = 1$, le terme $x^{n-1}\ln x$ deviendrait $x^0 \ln x = \ln x$, qui tend vers $-\infty$ : le taux d'accroissement divergerait et $f_1$ ne serait **pas** dérivable en $0$. L'énoncé écarte $n = 1$ dès la première ligne précisément pour cette raison. Un candidat qui remarque ce point montre qu'il a lu l'énoncé et pas seulement les questions.
+
+          **La lecture géométrique.** $(C_n)$ admet à l'origine une **demi-tangente de pente $1$**, c'est-à-dire dirigée par la droite $y = x$. Toutes les courbes de la famille partent donc de $O$ dans la même direction, quelle que soit la valeur de $n$ — un fait que la question 2 va compléter en montrant comment elles se séparent ensuite.
+      - id: q1d
+        stem: |-
+          **1- d)** (0,5 pt) Montrer que $f_n$ est dérivable sur $]0,+\infty[$ et que : $\forall x \in\, ]0, +\infty[$ ; $f_n'(x) = 1 - x^{n-1} - n\,x^{n-1}\ln x$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une question « montrer que » : le résultat est donné, donc les points sont dans le chemin — justifier la dérivabilité, puis dériver proprement le produit $x^n \ln x$.
+
+          **La dérivabilité, en une phrase.** Sur $]0, +\infty[$, la fonction $x \mapsto x$ est dérivable, $x \mapsto x^n$ l'est aussi, et $x \mapsto \ln x$ l'est sur cet intervalle. $f_n$ est donc dérivable comme **différence** d'une fonction dérivable et d'un **produit** de fonctions dérivables.
+
+          **La dérivée du produit, terme par terme.** On applique $(uv)' = u'v + uv'$ avec $u(x) = x^n$ et $v(x) = \ln x$ :
+
+          $$\left(x^n \ln x\right)' = n\,x^{n-1}\ln x + x^n \cdot \frac{1}{x}$$
+
+          Le second terme se simplifie : $\dfrac{x^n}{x} = x^{n-1}$. Donc
+
+          $$\left(x^n \ln x\right)' = n\,x^{n-1}\ln x + x^{n-1}$$
+
+          **On reporte, en surveillant le signe moins.** $f_n(x) = x - x^n\ln x$, donc le produit est **soustrait** et sa dérivée l'est aussi, en entier :
+
+          $$f_n'(x) = 1 - \left(n\,x^{n-1}\ln x + x^{n-1}\right)$$
+
+          $$\boxed{\ f_n'(x) = 1 - x^{n-1} - n\,x^{n-1}\ln x\ }$$
+
+          C'est exactement l'expression imprimée par l'énoncé.
+
+          **Le contrôle gratuit, à faire systématiquement.** Évalue en $x = 1$ : $f_n'(1) = 1 - 1 - n \times 1 \times 0 = 0$. La dérivée s'annule en $1$ — ce qui est cohérent avec la question suivante, qui va montrer que $f_n$ croît avant $1$ et décroît après. Le contrôle passe.
+
+          **Le piège nommé de cette question.** Distribuer le signe moins sur un seul des deux termes de la dérivée du produit, et écrire $1 - n x^{n-1}\ln x + x^{n-1}$. La parenthèse entière change de signe : les deux termes sont soustraits. C'est l'erreur la plus banale de tout le programme, et ici elle est détectable en trois secondes par le contrôle en $x = 1$, qui ne donnerait plus $0$.
+      - id: q1e
+        stem: |-
+          **1- e)** (0,5 pt) Montrer que $f_n$ est strictement croissante sur $[0;1]$ et strictement décroissante sur $[1,+\infty[$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une étude de signe, mais l'expression $1 - x^{n-1} - n x^{n-1}\ln x$ n'est pas factorisée et ne se prête pas à un tableau de signes naïf. Le geste qui débloque : **mettre $x^{n-1}$ en facteur dans les deux derniers termes**, ce qui isole un « $1$ » d'un côté et un produit de l'autre, puis comparer.
+
+          **La réécriture.**
+
+          $$f_n'(x) = 1 - x^{n-1}\left(1 + n\ln x\right)$$
+
+          Le signe de $f_n'(x)$ se ramène donc à la comparaison du produit $P(x) = x^{n-1}(1 + n\ln x)$ avec $1$ :
+
+          $$f_n'(x) > 0 \iff P(x) < 1
+          \qquad\text{et}\qquad
+          f_n'(x) < 0 \iff P(x) > 1$$
+
+          **Sur $]1, +\infty[$ : c'est immédiat.** Pour $x > 1$ :
+          — $x^{n-1} > 1$, car $n - 1 \geq 1$ et $x > 1$ ;
+          — $\ln x > 0$, donc $1 + n\ln x > 1$.
+
+          Deux facteurs strictement supérieurs à $1$ : leur produit l'est aussi, $P(x) > 1$, donc $f_n'(x) < 0$. **$f_n$ est strictement décroissante sur $[1, +\infty[$.**
+
+          **Sur $]0, 1[$ : deux cas, et il faut les écrire tous les deux.** Pour $0 < x < 1$, on a $\ln x < 0$, donc $1 + n\ln x < 1$. Deux situations selon le signe de ce facteur.
+
+          *Cas 1 — $1 + n\ln x \leq 0$.* Alors $P(x) = x^{n-1}(1 + n\ln x) \leq 0 < 1$, puisque $x^{n-1} > 0$. Donc $f_n'(x) > 0$.
+
+          *Cas 2 — $0 < 1 + n\ln x < 1$.* Alors $P(x)$ est le produit de deux nombres strictement compris entre $0$ et $1$ — car $0 < x^{n-1} < 1$ pour $0 < x < 1$ — donc $P(x) < 1$. Donc $f_n'(x) > 0$.
+
+          Dans les deux cas $f_n'(x) > 0$ : **$f_n$ est strictement croissante sur $]0, 1]$.**
+
+          **Le raccord en $0$.** La question 1-c a établi que $f_n$ est dérivable à droite en $0$ avec $f_{n,d}'(0) = 1 > 0$. La croissance stricte s'étend donc à l'intervalle fermé $[0, 1]$, comme l'énoncé le demande.
+
+          **Le portrait complet, à avoir en tête pour la suite.** $f_n(0) = 0$, la fonction croît jusqu'à $x = 1$ où elle vaut $f_n(1) = 1 - 1^n\ln 1 = 1$, puis décroît vers $-\infty$. Le point $(1\,;\,1)$ est donc le **maximum global**, et il est commun à toutes les courbes de la famille. C'est ce sommet partagé que la question 2 va exploiter, et c'est parce que la fonction décroît strictement de $1$ à $-\infty$ après $x = 1$ qu'elle traverse $0$ une fois et une seule — l'objet de la question 3.
+
+          **Le piège nommé de cette question.** Vouloir étudier le signe de $f_n'$ en cherchant ses racines par un calcul. L'équation $x^{n-1}(1 + n\ln x) = 1$ n'a pas de solution explicite ; la seule voie est la **comparaison** menée ci-dessus. Reconnaître qu'une équation n'est pas résoluble et contourner par des inégalités est un réflexe d'analyse, pas un aveu d'échec.
+      - id: q2a
+        part: "2 — Les courbes de la famille s'emboîtent"
+        stem: |-
+          **2- a)** (0,5 pt) Montrer que pour tout entier $n \geq 2$, on a : $\forall x \in [0, +\infty[$ ; $f_{n+1}(x) \leq f_n(x)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Comparer deux fonctions, c'est **étudier le signe de leur différence**. Ici la différence se calcule et se factorise entièrement — il n'y a aucune astuce à trouver, seulement à mener le calcul jusqu'au bout.
+
+          **La différence, développée.** Pour $x > 0$ :
+
+          $$f_n(x) - f_{n+1}(x) = \left(x - x^n\ln x\right) - \left(x - x^{n+1}\ln x\right)$$
+
+          Les deux termes $x$ s'annulent :
+
+          $$f_n(x) - f_{n+1}(x) = x^{n+1}\ln x - x^n\ln x$$
+
+          **La factorisation.** On met $x^n \ln x$ en facteur :
+
+          $$f_n(x) - f_{n+1}(x) = x^n \ln x\,(x - 1)$$
+
+          **Le signe, facteur par facteur.** $x^n > 0$ pour $x > 0$ : il ne joue aucun rôle. Reste le produit $\ln x \cdot (x-1)$, et c'est là qu'est l'observation :
+
+          — si $0 < x < 1$ : $\ln x < 0$ **et** $x - 1 < 0$ — deux négatifs, produit **positif** ;
+          — si $x = 1$ : les deux facteurs sont nuls, produit **nul** ;
+          — si $x > 1$ : $\ln x > 0$ **et** $x - 1 > 0$ — deux positifs, produit **positif**.
+
+          Dans tous les cas, $\ln x\,(x-1) \geq 0$. Ce n'est pas un hasard : $\ln$ et $x \mapsto x-1$ s'annulent au **même point** $x = 1$ et sont toutes deux croissantes, donc elles ont partout le même signe.
+
+          **Le cas $x = 0$, à ne pas oublier.** L'énoncé demande l'inégalité sur $[0, +\infty[$, borne incluse. En $0$ : $f_n(0) = f_{n+1}(0) = 0$, donc la différence est nulle et l'inégalité large est vérifiée.
+
+          **Conclusion.** Pour tout $x \in [0, +\infty[$ :
+
+          $$f_n(x) - f_{n+1}(x) \geq 0
+          \qquad\Longrightarrow\qquad
+          \boxed{f_{n+1}(x) \leq f_n(x)}$$
+
+          avec égalité **exactement** en $x = 0$ et $x = 1$.
+
+          **Le piège nommé de cette question.** Se contenter d'écrire « $x^{n+1} \leq x^n$ pour $x \leq 1$ donc… ». L'inégalité entre les puissances change de sens en $x = 1$, et le facteur $\ln x$ change de signe au même endroit : les deux renversements se compensent, ce qui est **exactement** le contenu du résultat. Une démonstration qui ne traite qu'un côté de $1$ passe à côté de la moitié de l'énoncé.
+      - id: q2b
+        stem: |-
+          **2- b)** (0,25 pt) En déduire la position relative des deux courbes $(C_n)$ et $(C_{n+1})$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « Position relative » est la traduction géométrique de l'inégalité qu'on vient d'établir. Une réponse complète dit **qui est au-dessus**, sur quel domaine, et **où les courbes se touchent**.
+
+          **La lecture.** $f_{n+1}(x) \leq f_n(x)$ pour tout $x \in [0, +\infty[$, donc :
+
+          > $(C_{n+1})$ est **au-dessous** de $(C_n)$ sur tout l'intervalle $[0, +\infty[$.
+
+          **Les points de contact, qui font la précision de la réponse.** L'égalité a lieu exactement en $x = 0$ et $x = 1$. Les deux courbes se **coupent** donc en deux points, et ces points sont les mêmes pour toute la famille :
+
+          $$O(0\,;\,0) \qquad\text{et}\qquad A(1\,;\,1)$$
+
+          puisque $f_n(0) = 0$ et $f_n(1) = 1$ pour tout $n$.
+
+          **Le portrait d'ensemble, qui vaut d'être formulé.** Toutes les courbes de la famille passent par les deux mêmes points $O$ et $A$, partent de $O$ avec la **même** demi-tangente de pente $1$ (question 1-c), atteignent leur maximum commun en $A$, et s'ordonnent entre elles : plus $n$ grandit, plus la courbe est basse. La famille $(C_n)$ forme donc un **faisceau de courbes emboîtées**, épinglées en deux points fixes et s'écrasant vers le bas à mesure que $n$ croît.
+
+          **Ce que cela annonce pour la question 3.** Si les courbes s'enfoncent quand $n$ grandit, alors leur point de traversée de l'axe des abscisses après $x = 1$ se rapproche de $1$. C'est exactement la décroissance de la suite $(\alpha_n)$ que la question 3-d va démontrer, et sa limite $\ell = 1$ que la question 4 va établir. Voir le dessin avant de faire les calculs rend toute la fin de l'exercice lisible.
+      - id: q3a
+        part: "3 — La suite (αₙ) des zéros dans ]1 ; 2["
+        stem: |-
+          **3- a)** (0,5 pt) Montrer que pour tout $n \geq 2$, il existe un unique réel $\alpha_n \in\, ]1;2[$ tel que : $f_n(\alpha_n) = 0$. *(On prendra $\ln 2 = 0{,}7$.)*
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « Il existe un unique » : deux affirmations, deux outils — le **théorème des valeurs intermédiaires** pour l'existence, la **stricte monotonie** pour l'unicité. C'est le schéma le plus rentable du programme d'analyse, et il se rédige toujours de la même façon : les trois hypothèses, puis la conclusion.
+
+          **Continuité.** $f_n$ est dérivable sur $]0, +\infty[$ (question 1-d), donc continue sur $[1, 2]$.
+
+          **Stricte monotonie.** La question 1-e a établi que $f_n$ est **strictement décroissante** sur $[1, +\infty[$, donc en particulier sur $[1, 2]$.
+
+          **Les valeurs aux bornes, et c'est ici que sert l'indication $\ln 2 = 0{,}7$.**
+
+          En $x = 1$ : $f_n(1) = 1 - 1^n\ln 1 = 1 - 0 = \mathbf{1 > 0}$.
+
+          En $x = 2$ :
+
+          $$f_n(2) = 2 - 2^n\ln 2 = 2 - 0{,}7 \times 2^n$$
+
+          Or $n \geq 2$, donc $2^n \geq 4$, donc $0{,}7 \times 2^n \geq 2{,}8$. D'où :
+
+          $$f_n(2) \leq 2 - 2{,}8 = -0{,}8 < 0$$
+
+          La majoration vaut pour **tout** $n \geq 2$, et elle est même très large : plus $n$ grandit, plus $f_n(2)$ est négatif.
+
+          **La conclusion.** $f_n$ est continue et strictement décroissante sur $[1, 2]$, avec $f_n(1) > 0 > f_n(2)$. Elle réalise donc une **bijection** de $[1, 2]$ sur $[f_n(2),\, 1]$, intervalle qui contient $0$. L'équation $f_n(x) = 0$ admet par conséquent **une solution et une seule** dans $]1, 2[$ — on la note $\alpha_n$.
+
+          **Pourquoi l'énoncé fournit $\ln 2 = 0{,}7$.** La calculatrice est interdite. Sans cette valeur, il serait impossible de décider du signe de $2 - 2^n \ln 2$ — c'est-à-dire impossible d'appliquer le TVI. L'indication n'est pas un confort, c'est une **donnée de l'exercice**, et il faut l'utiliser explicitement.
+
+          **Le piège nommé de cette question.** Invoquer le TVI et s'arrêter là. Le TVI donne l'**existence**, jamais l'unicité — c'est la stricte décroissance qui interdit une seconde traversée. Le second piège : traiter le cas $n = 2$ et écrire « de même pour les autres ». La majoration $2^n \geq 4$ vaut pour tout $n \geq 2$ d'un seul coup ; il faut l'écrire ainsi, en une ligne valable pour tous les rangs.
+        steps:
+          - math: 'f_n(1) = 1 - 1^n \ln 1 = 1 > 0'
+            note: "Valeur au bord gauche : c'est le maximum global de f_n, etabli a la question 1-e."
+          - math: 'f_n(2) = 2 - 2^n \ln 2 = 2 - 0{,}7 \times 2^n'
+            note: "L'enonce impose ln 2 = 0,7 : la calculatrice est interdite, cette valeur est une DONNEE."
+          - math: 'n \geq 2 \Longrightarrow 2^n \geq 4 \Longrightarrow 0{,}7 \times 2^n \geq 2{,}8 \Longrightarrow f_n(2) \leq -0{,}8 < 0'
+            note: "Majoration valable pour TOUS les rangs d'un seul coup, pas rang par rang."
+          - math: 'f_n \text{ continue et strictement décroissante sur } [1,2],\quad f_n(1) > 0 > f_n(2)'
+            note: "TVI pour l'existence, stricte monotonie pour l'unicite : les deux sont necessaires."
+          - math: '\boxed{\exists !\,\alpha_n \in\, ]1;2[\ ;\ f_n(\alpha_n) = 0}'
+            note: "Bijection de [1,2] sur un intervalle contenant 0."
+      - id: q3b
+        stem: |-
+          **3- b)** (0,25 pt) Vérifier que $(\forall n \geq 2)$ $\alpha_{n+1}^{\,n} \ln \alpha_{n+1} = 1$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Lis bien les indices : la relation porte sur $\alpha_{n+1}$, pas sur $\alpha_n$, et l'exposant est $n$, pas $n+1$. C'est un décalage volontaire, et c'est ce qui rendra la question 3-c possible. On part donc de la définition de $\alpha_{n+1}$ et on ajuste l'exposant.
+
+          **Le point de départ.** Par définition, $\alpha_{n+1}$ est le zéro de $f_{n+1}$ dans $]1,2[$ :
+
+          $$f_{n+1}(\alpha_{n+1}) = 0
+          \qquad\text{c'est-à-dire}\qquad
+          \alpha_{n+1} - \alpha_{n+1}^{\,n+1}\ln \alpha_{n+1} = 0$$
+
+          soit, en isolant :
+
+          $$\alpha_{n+1}^{\,n+1}\ln \alpha_{n+1} = \alpha_{n+1}$$
+
+          **La division, qu'il faut justifier.** $\alpha_{n+1} \in\, ]1, 2[$, donc $\alpha_{n+1} > 1 > 0$ : la division par $\alpha_{n+1}$ est licite. En divisant les deux membres :
+
+          $$\frac{\alpha_{n+1}^{\,n+1}}{\alpha_{n+1}}\,\ln\alpha_{n+1} = 1
+          \qquad\Longrightarrow\qquad
+          \boxed{\ \alpha_{n+1}^{\,n}\ln\alpha_{n+1} = 1\ }$$
+
+          en utilisant $\dfrac{x^{n+1}}{x} = x^n$.
+
+          **La lecture, et pourquoi cette identité est utile.** Le facteur $\alpha_{n+1}^{\,n}\ln\alpha_{n+1}$ est **exactement** le terme qui apparaît dans $f_n$ évaluée en $\alpha_{n+1}$ — c'est-à-dire dans une fonction d'indice $n$ évaluée au zéro du rang **suivant**. La question 3-c va s'en servir immédiatement. Tout l'intérêt du décalage d'indices est là : il permet de comparer deux rangs consécutifs, ce qui est le seul moyen d'établir la monotonie d'une suite définie implicitement.
+
+          **Le piège nommé de cette question.** Confondre $\alpha_n$ et $\alpha_{n+1}$ et écrire $\alpha_n^{\,n}\ln\alpha_n = 1$. Cette relation-là est vraie aussi — elle sert d'ailleurs à la question 4-b, sous la forme $\alpha_n^{\,n-1}\ln\alpha_n = 1$ — mais ce n'est pas celle qu'on demande, et elle ne mène nulle part pour la question 3-c.
+      - id: q3c
+        stem: |-
+          **3- c)** (0,25 pt) En déduire que pour tout $n \geq 2$, $f_n(\alpha_{n+1}) = \alpha_{n+1} - 1$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » : la question précédente suffit, il n'y a qu'à substituer. C'est un quart de point qui ne coûte que deux lignes — à condition d'avoir vu que le terme à remplacer est déjà tout prêt.
+
+          **La substitution.** On écrit $f_n$ évaluée en $\alpha_{n+1}$, en appliquant la définition de $f_n$ :
+
+          $$f_n(\alpha_{n+1}) = \alpha_{n+1} - \alpha_{n+1}^{\,n}\ln\alpha_{n+1}$$
+
+          Le terme soustrait est exactement celui dont la question 3-b vient d'établir qu'il vaut $1$ :
+
+          $$\boxed{\ f_n(\alpha_{n+1}) = \alpha_{n+1} - 1\ }$$
+
+          **Le renseignement capital, à extraire tout de suite.** $\alpha_{n+1} \in\, ]1, 2[$, donc $\alpha_{n+1} - 1 > 0$, et par conséquent :
+
+          $$f_n(\alpha_{n+1}) > 0$$
+
+          Autrement dit : **la fonction du rang $n$ est encore strictement positive au zéro du rang $n+1$.** C'est exactement l'information dont la question 3-d a besoin, et c'est pour la produire que les questions 3-b et 3-c existent. Une chaîne de trois questions à un quart de point chacune peut porter tout le reste d'un exercice.
+      - id: q3d
+        stem: |-
+          **3- d)** (0,5 pt) Montrer que la suite $(\alpha_n)_{n\geq 2}$ ainsi définie est strictement décroissante.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $\alpha_n$ n'est donné par aucune formule : il est défini **implicitement**, comme le zéro d'une fonction. Il est donc impossible de comparer $\alpha_{n+1}$ et $\alpha_n$ par le calcul. La technique — celle de toutes les suites définies implicitement — consiste à évaluer **une seule et même fonction** aux deux points, puis à remonter aux abscisses par la monotonie.
+
+          **Les deux valeurs, comparées.** On évalue $f_n$ aux deux points :
+
+          $$f_n(\alpha_n) = 0 \qquad\text{(définition de } \alpha_n\text{)}$$
+          $$f_n(\alpha_{n+1}) = \alpha_{n+1} - 1 > 0 \qquad\text{(question 3-c)}$$
+
+          Donc :
+
+          $$f_n(\alpha_{n+1}) > f_n(\alpha_n)$$
+
+          **Le passage aux abscisses, et c'est là que le sens s'inverse.** Les deux points $\alpha_n$ et $\alpha_{n+1}$ appartiennent à $]1, 2[$, intervalle sur lequel $f_n$ est **strictement décroissante** (question 1-e). Une fonction strictement décroissante **renverse** l'ordre : si les images sont dans un sens, les antécédents sont dans l'autre.
+
+          $$f_n(\alpha_{n+1}) > f_n(\alpha_n)
+          \qquad\Longrightarrow\qquad
+          \alpha_{n+1} < \alpha_n$$
+
+          La suite $(\alpha_n)_{n\geq 2}$ est donc **strictement décroissante**.
+
+          **La vérification par le dessin, qui rend le résultat évident.** La question 2 a montré que $(C_{n+1})$ est **sous** $(C_n)$. Après $x = 1$ les deux courbes descendent ; celle du rang $n+1$ étant plus basse, elle traverse l'axe des abscisses **plus tôt**. Son zéro $\alpha_{n+1}$ est donc à gauche de $\alpha_n$. Le calcul et la géométrie disent la même chose.
+
+          **Le piège nommé de cette question.** Écrire $f_n(\alpha_n) = 0 = f_{n+1}(\alpha_{n+1})$ et croire en tirer quelque chose. C'est une comparaison entre **deux fonctions différentes** évaluées en deux points différents : elle ne dit rien du tout. Il faut impérativement une seule fonction — ici $f_n$ — évaluée aux deux points, pour que la monotonie ait prise. Le second piège : oublier que la fonction **décroît** et conclure $\alpha_{n+1} > \alpha_n$, ce qui retourne le résultat.
+      - id: q3e
+        stem: |-
+          **3- e)** (0,25 pt) En déduire que la suite $(\alpha_n)_{n\geq 2}$ est convergente.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le théorème de la limite monotone : une suite **décroissante et minorée** converge. Il ne reste qu'à fournir le minorant, et il est sous les yeux depuis la question 3-a.
+
+          **Les deux ingrédients.**
+          — La suite est **strictement décroissante** (question 3-d).
+          — Elle est **minorée par $1$** : par construction, $\alpha_n \in\, ]1, 2[$ pour tout $n \geq 2$, donc $\alpha_n > 1$.
+
+          **La conclusion.** Une suite décroissante et minorée est convergente. Donc $(\alpha_n)_{n \geq 2}$ **converge**, et sa limite $\ell$ vérifie $\ell \geq 1$.
+
+          **Ce qu'on n'a PAS démontré, et qu'il ne faut pas croire acquis.** Le théorème donne l'existence de la limite, jamais sa valeur. Rien ici ne dit que $\ell = 1$ : la suite pourrait converger vers $1{,}3$ tout en restant au-dessus de $1$. C'est tout l'objet de la question 4, qui procédera par l'absurde.
+
+          **Le piège nommé de cette question.** Conclure directement $\ell = 1$ « puisque la suite décroît et est minorée par $1$ ». Une suite décroissante minorée par $1$ converge vers sa **borne inférieure**, qui peut être n'importe quel réel supérieur ou égal à $1$ — pas nécessairement le minorant qu'on a choisi. Un minorant n'est pas une limite.
+      - id: q4a
+        part: "4 — La limite ℓ, obtenue par l'absurde"
+        stem: |-
+          **4- a)** (0,25 pt) On pose $\ell = \displaystyle\lim_{n\to+\infty} \alpha_n$. Montrer que : $1 \leq \ell \leq 2$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un encadrement, obtenu par passage à la limite. La seule chose à savoir, et elle est décisive pour la suite : le passage à la limite **affaiblit** toujours une inégalité stricte.
+
+          **L'encadrement de départ.** Par construction, pour tout $n \geq 2$ :
+
+          $$1 < \alpha_n < 2$$
+
+          **Le passage à la limite.** Les inégalités strictes deviennent larges :
+
+          $$\boxed{\,1 \leq \ell \leq 2\,}$$
+
+          **Pourquoi l'énoncé écrit des inégalités LARGES, et pourquoi c'est essentiel.** On ne peut pas conclure $\ell > 1$ : le passage à la limite ne conserve pas la stricte inégalité. Le contre-exemple qui le prouve : $1 + \frac{1}{n} > 1$ pour tout $n$, et pourtant la limite vaut exactement $1$.
+
+          Ce détail n'est pas une subtilité de rédaction — c'est **le pivot de tout l'exercice**. Si l'on pouvait affirmer $\ell > 1$, la question 4-d n'aurait aucun sens : c'est précisément parce que la valeur $\ell = 1$ reste possible que la démonstration par l'absurde des questions 4-c et 4-d va pouvoir la désigner comme la seule.
+
+          **Le contraste avec le problème miroir de 2023.** Dans le problème d'analyse du rattrapage 2023, la suite était **croissante** et l'on démontrait $1 < \ell \leq e$ — l'inégalité stricte du côté gauche s'obtenait par minoration par le **premier terme**, pas par passage à la limite. Ici la suite décroît, ce chemin n'existe pas, et l'encadrement reste large des deux côtés. Même schéma, orientation inversée.
+      - id: q4b
+        stem: |-
+          **4- b)** (0,5 pt) Montrer que pour tout $n \geq 2$, $n - 1 = -\dfrac{\ln(\ln(\alpha_n))}{\ln(\alpha_n)}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On veut faire apparaître $n$ **tout seul** d'un côté de l'égalité. L'idée : $n$ est un exposant dans la relation qui définit $\alpha_n$, et le moyen de faire descendre un exposant est le **logarithme**.
+
+          **Le point de départ.** Par définition de $\alpha_n$ :
+
+          $$f_n(\alpha_n) = 0
+          \qquad\Longrightarrow\qquad
+          \alpha_n - \alpha_n^{\,n}\ln\alpha_n = 0
+          \qquad\Longrightarrow\qquad
+          \alpha_n^{\,n}\ln\alpha_n = \alpha_n$$
+
+          On divise par $\alpha_n$, licite car $\alpha_n > 1 > 0$ :
+
+          $$\alpha_n^{\,n-1}\ln\alpha_n = 1$$
+
+          **La forme utile.** On isole la puissance :
+
+          $$\alpha_n^{\,n-1} = \frac{1}{\ln\alpha_n}$$
+
+          la division étant licite car $\alpha_n > 1$ donne $\ln\alpha_n > 0$, donc non nul.
+
+          **Le passage au logarithme.** Les deux membres sont strictement positifs, on peut donc leur appliquer $\ln$ :
+
+          $$\ln\!\left(\alpha_n^{\,n-1}\right) = \ln\!\left(\frac{1}{\ln\alpha_n}\right)$$
+
+          À gauche, la propriété du logarithme d'une puissance fait descendre l'exposant — c'est exactement ce qu'on cherchait. À droite, $\ln\frac{1}{a} = -\ln a$ :
+
+          $$(n-1)\,\ln\alpha_n = -\ln\!\left(\ln\alpha_n\right)$$
+
+          **La division finale.** $\ln\alpha_n \neq 0$ car $\alpha_n > 1$ :
+
+          $$\boxed{\ n - 1 = -\frac{\ln\!\left(\ln\alpha_n\right)}{\ln\alpha_n}\ }$$
+
+          **Ce que cette identité vaut, et pourquoi elle est l'arme de la question 4-d.** Le membre de gauche est $n - 1$, qui tend vers $+\infty$ **de façon certaine**. Le membre de droite ne dépend que de $\alpha_n$. On dispose donc d'une contrainte : quelle que soit la limite $\ell$, le membre de droite est **obligé** de diverger vers $+\infty$. Toute hypothèse sur $\ell$ qui le ferait converger sera fausse.
+
+          **Le piège nommé de cette question.** Appliquer $\ln$ sans vérifier la stricte positivité des deux membres. Ici tout va bien parce que $\alpha_n > 1$ — donc $\ln\alpha_n > 0$, donc $\ln(\ln\alpha_n)$ existe — mais c'est une conséquence de l'appartenance de $\alpha_n$ à $]1,2[$, pas une évidence. Le double logarithme est une composée fragile : elle exige que l'argument intérieur soit strictement positif, ce qui exclut tout $\alpha_n \leq 1$.
+      - id: q4c
+        stem: |-
+          **4- c)** (0,25 pt) On suppose que $\ell > 1$. Calculer $\displaystyle\lim_{n\to+\infty} \dfrac{\ln(\ln(\alpha_n))}{\ln(\alpha_n)}$ en fonction de $\ell$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une hypothèse est **posée** — $\ell > 1$ — et on en tire les conséquences. On n'affirme rien sur la vraie valeur de $\ell$ : on construit la branche que la question suivante fera exploser. C'est la première moitié d'un raisonnement par l'absurde.
+
+          **Sous l'hypothèse $\ell > 1$.** La suite $\alpha_n$ converge vers $\ell$, et $\ln$ est continue sur $]0, +\infty[$, donc en $\ell$ :
+
+          $$\ln\alpha_n \longrightarrow \ln\ell$$
+
+          Comme $\ell > 1$, on a $\ln\ell > 0$ **strictement**. On peut donc composer une seconde fois par $\ln$, continue en $\ln\ell > 0$ :
+
+          $$\ln\!\left(\ln\alpha_n\right) \longrightarrow \ln\!\left(\ln\ell\right)$$
+
+          **Le quotient.** Le dénominateur tend vers $\ln\ell \neq 0$ : le quotient de deux suites convergentes, dont le dénominateur a une limite non nulle, converge vers le quotient des limites.
+
+          $$\boxed{\ \lim_{n \to +\infty} \frac{\ln\!\left(\ln\alpha_n\right)}{\ln\alpha_n} = \frac{\ln\!\left(\ln\ell\right)}{\ln\ell}\ }$$
+
+          **L'information capitale, à retenir pour la question suivante.** Cette limite est un nombre **fini**. Sa valeur exacte importe peu — ce qui compte, et qui va tout trancher, c'est qu'elle ne soit ni $+\infty$ ni $-\infty$.
+
+          **Là où l'hypothèse est indispensable.** Si $\ell$ valait $1$, alors $\ln\ell = 0$ : le dénominateur tendrait vers $0$ et le double logarithme $\ln(\ln\alpha_n)$ vers $-\infty$. Le quotient deviendrait une forme indéterminée $\frac{-\infty}{0^+}$, et rien de ce qui précède ne s'appliquerait. L'énoncé écarte ce cas par hypothèse **précisément parce que c'est celui qui est vrai** — et la question 4-d va le montrer par élimination.
+      - id: q4d
+        stem: |-
+          **4- d)** (0,5 pt) En déduire la valeur de la limite $\ell$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux questions ont préparé deux affirmations sur la **même** quantité. Il ne reste qu'à les confronter — c'est un raisonnement **par l'absurde**, et il se rédige en trois temps : on suppose, on dérive la contradiction, on conclut.
+
+          **Ce que dit la question 4-b, sans aucune hypothèse.** Pour tout $n \geq 2$ :
+
+          $$\frac{\ln\!\left(\ln\alpha_n\right)}{\ln\alpha_n} = -(n-1)$$
+
+          Le membre de droite tend vers $-\infty$ quand $n \to +\infty$, de façon certaine. Donc le quotient **diverge vers $-\infty$** :
+
+          $$\lim_{n \to +\infty} \frac{\ln\!\left(\ln\alpha_n\right)}{\ln\alpha_n} = -\infty$$
+
+          **La confrontation.** Supposons, par l'absurde, que $\ell > 1$. La question 4-c affirme alors que ce même quotient converge vers $\dfrac{\ln(\ln\ell)}{\ln\ell}$, un nombre **fini**. Une suite ne peut pas à la fois diverger vers $-\infty$ et converger vers un réel : **contradiction**.
+
+          **La conclusion.** L'hypothèse $\ell > 1$ est fausse, donc $\ell \leq 1$. Or la question 4-a a établi $\ell \geq 1$. Les deux inégalités ne laissent qu'une possibilité :
+
+          $$\boxed{\ \ell = 1\ }$$
+
+          **Le contrôle de cohérence, qui referme l'exercice.** Avec $\ell = 1$, on a $\ln\alpha_n \to 0^+$, donc $\ln(\ln\alpha_n) \to -\infty$ : le numérateur plonge vers $-\infty$ pendant que le dénominateur tend vers $0^+$. Le quotient tend bien vers $-\infty$, exactement ce que la relation $-(n-1)$ exige. Aucune contradiction ne subsiste, et l'on voit du même coup pourquoi la question 4-c devait exclure ce cas : c'est celui où le calcul direct est indéterminé.
+
+          **La lecture d'ensemble, qui donne son sens à tout l'exercice.** La question 2 avait montré que les courbes s'emboîtent en s'enfonçant vers le bas quand $n$ grandit, tout en restant épinglées au point $(1\,;\,1)$. Plus $n$ croît, plus la courbe descend vite après ce point, et plus son zéro se rapproche de $1$. Le résultat $\ell = 1$ était donc lisible sur le dessin dès la question 2-b ; les questions 3 et 4 n'ont fait que le rendre rigoureux. C'est le contrôle numérique du vérificateur qui l'illustre : $\alpha_2 \approx 1{,}76$, $\alpha_{10} \approx 1{,}21$, $\alpha_{200} \approx 1{,}02$ — la descente vers $1$ est lente mais inexorable.
+
+          **Le piège nommé de cette question.** Conclure $\ell = 1$ directement de la question 4-a, en disant « la suite décroît et est minorée par $1$, donc elle tend vers $1$ ». C'est faux : une suite décroissante minorée par $1$ peut converger vers n'importe quelle valeur supérieure ou égale à $1$. Toute la mécanique des questions 4-b, 4-c et 4-d n'existe que pour écarter ces autres valeurs — sans elle, on n'a rien démontré.
+        steps:
+          - math: '\frac{\ln(\ln \alpha_n)}{\ln \alpha_n} = -(n-1) \xrightarrow[n \to +\infty]{} -\infty'
+            note: "Question 4-b, valable sans aucune hypothese : le membre de droite diverge, donc le quotient aussi."
+          - math: '\text{Si } \ell > 1 : \quad \frac{\ln(\ln \alpha_n)}{\ln \alpha_n} \longrightarrow \frac{\ln(\ln \ell)}{\ln \ell} \in \mathbb{R}'
+            note: "Question 4-c : sous cette hypothese la meme suite CONVERGE vers un reel fini."
+          - math: '-\infty \neq \text{limite finie} \Longrightarrow \ell \leq 1'
+            note: "Contradiction : une suite ne peut pas diverger et converger. L'hypothese ell > 1 tombe."
+          - math: '1 \leq \ell \quad \text{(question 4-a)} \quad\text{et}\quad \ell \leq 1'
+            note: "Les deux encadrements se referment sur une seule valeur."
+          - math: '\boxed{\ell = 1}'
+            note: "Controle numerique : alpha_2 = 1,76 ; alpha_10 = 1,21 ; alpha_200 = 1,02. La descente est lente mais sure."
