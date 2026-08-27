@@ -7,7 +7,7 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). NEUF entrées ici : les NEUF sujets au statut
+# exercises.yaml). DIX entrées ici : les DIX sujets au statut
 # « vérifié » recensés pour cette notion — 2017 (Exercice 3, NS 25,
 # AlloSchool element/57970), 2019 (Exercice 3, NS 24F,
 # AlloSchool element/68482), 2020 (Exercice 1, NS 25, AlloSchool
@@ -15,26 +15,29 @@
 # 2022 (Exercice 3, NS 24F, AlloSchool element/136604), 2023 (Exercice 4,
 # NS 24F, AlloSchool element/142490), 2024 (Exercice 5, NS 24F, AlloSchool
 # element/145739) et 2025 (Exercice 3, NS 24F, AlloSchool element/145783)
-# pour docs/sujets/maths/arithmetique.md — plus la NEUVIÈME, seule entrée
-# de SESSION DE RATTRAPAGE : 2023 R (Exercice 4, RS 24F, AlloSchool
-# element/142494), recensée par docs/sujets/_incoming/maths-sm-2023-r.md.
+# pour docs/sujets/maths/arithmetique.md — plus DEUX entrées de SESSION DE
+# RATTRAPAGE : 2023 R (Exercice 4, RS 24F, AlloSchool element/142494),
+# recensée par docs/sujets/_incoming/maths-sm-2023-r.md, et 2024 R
+# (Exercice 5, RS 25, AlloSchool element/145741), recensée par
+# docs/sujets/_incoming/maths-sm-2024-r.md.
 # Chacun re-fetché indépendamment et diffé caractère-par-caractère
 # contre son scan par l'agent-vérificateur-adversarial (2026-08-06 pour
 # 2017 — 2e passe indépendante —, 2026-07-12 pour 2019, 2026-08-05 pour
 # 2020/2022/2024, 2026-08-06 pour 2021/2023-N/2025, 2026-08-23 pour
-# 2023-R). Introuvable = absent,
-# jamais inventé : pas de dixième entrée tant qu'un dixième sujet
+# 2023-R et 2024-R). Introuvable = absent,
+# jamais inventé : pas de onzième entrée tant qu'un onzième sujet
 # d'arithmétique n'est pas vérifié. Chapitre SPÉCIFIQUE à la filière
 # Sciences Mathématiques (SM) — absent de l'épreuve Sciences
 # Expérimentales (SVT / Sc. Physiques).
 #
-# PREMIÈRE ENTRÉE DE RATTRAPAGE DES BANQUES DE MATHÉMATIQUES : bk-2023-r-x4.
-# Toutes les autres banques maths du corpus sont en session normale ; la
-# campagne rattrapage commence ici côté maths. Elle apporte avec elle la
-# facture éditoriale de cette campagne (reasoning ouvrant sur « Ce qu'on
-# cherche et pourquoi ce geste », fermant sur le piège nommé), là où les
-# huit entrées C3/B2 gardent leur voix d'origine — écart ASSUMÉ et signalé,
-# à l'arbitrage de l'owner de réaligner les huit anciennes, jamais l'inverse.
+# PREMIÈRE ENTRÉE DE RATTRAPAGE DES BANQUES DE MATHÉMATIQUES : bk-2023-r-x4,
+# rejointe depuis par bk-2024-r-x5. Les autres banques maths du corpus étaient
+# toutes en session normale ; la campagne rattrapage a commencé ici côté maths.
+# Elle apporte avec elle la facture éditoriale de cette campagne (reasoning
+# ouvrant sur « Ce qu'on cherche et pourquoi ce geste », fermant sur le piège
+# nommé), là où les huit entrées C3/B2 gardent leur voix d'origine — écart
+# ASSUMÉ et signalé, à l'arbitrage de l'owner de réaligner les huit anciennes,
+# jamais l'inverse.
 #
 # NOTE ÉDITORIALE (pour la revue) : bk-2019-n-x3 transcrit le MÊME sujet que
 # le sommet de leçon r-bac (exercises.yaml, marqueur [[exercise:r-bac]] à
@@ -46,8 +49,9 @@
 # content/maths/nombres-complexes-1/bank.yaml et sur bk-2021-n-x1 de
 # content/pc/reactions-acido-basiques/bank.yaml.
 #
-# OUTIL HORS-RUNG : les NEUF entrées mobilisent le PETIT THÉORÈME DE
-# FERMAT (p premier, p ∤ a ⟹ a^(p−1) ≡ 1 [p]), qui n'a pas de rung dédié
+# OUTIL HORS-RUNG : NEUF des DIX entrées mobilisent le PETIT THÉORÈME DE
+# FERMAT — bk-2024-r-x5 est la seule qui ne le mobilise pas du tout, elle ne
+# sort d'aucun rung (R1, R2, R4, R5 lui suffisent) — (p premier, p ∤ a ⟹ a^(p−1) ≡ 1 [p]), qui n'a pas de rung dédié
 # dans la leçon (R0–R8 couvrent divisibilité, division euclidienne,
 # congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations
 # diophantiennes — pas Fermat). Le théorème est nommé et justifié au point
@@ -82,8 +86,8 @@
 # questions, citant les rungs mobilisés (R1 division euclidienne, R2
 # congruences, R4 Bézout/coprimalité, R5 Gauss, R6 lemme d'Euclide, R7
 # équations diophantiennes) ; barème transcrit tel quel dans les énoncés
-# (3 points pour 2019/2022/2023-N/2023-R/2024/2025, 3,5 points pour 2020,
-# 4 points pour 2021) ; conventions KaTeX (block scalars pour la prose, KaTeX brut
+# (3 points pour 2019/2022/2023-N/2023-R/2024-N/2024-R/2025, 3,5 points pour
+# 2020, 4 points pour 2021) ; conventions KaTeX (block scalars pour la prose, KaTeX brut
 # entre apostrophes simples dans steps[].math, notes sans backslash).
 
 notion: maths/arithmetique
@@ -1403,3 +1407,279 @@ entries:
             note: "Pour chaque valeur de y, x est determine et tombe juste (Fermat garantit la divisibilite par 7)."
           - math: 'S = \{(288,1),\ (279,2),\ (184,3)\}\ \text{pour}\ p=7;\ \text{aucune solution sinon}'
             note: "Les trois couples solutions, uniquement dans le cas p=7."
+  # ── bk-2024-r-x5 — 2024 R, Exercice 5 : inverse de 10 modulo 23, critere de
+  #    divisibilite par 23, systeme de deux congruences ──
+  #
+  # NOTE ÉDITORIALE — DEUXIÈME ENTRÉE DE RATTRAPAGE DE CETTE BANQUE, après
+  # bk-2023-r-x4. Elle a la même facture éditoriale que celle-ci (reasoning
+  # ouvrant sur « Ce qu'on cherche et pourquoi ce geste », fermant sur le piège
+  # nommé) ; l'écart avec les huit entrées plus anciennes reste ASSUMÉ et
+  # signalé en tête de fichier.
+  #
+  # NOTE ÉDITORIALE — CE QUE CETTE ENTRÉE APPORTE, ET QUI N'ÉTAIT PAS DANS LA
+  # BANQUE. Neuf entrées sur dix mobilisent le petit théorème de Fermat ;
+  # celle-ci ne le mobilise PAS DU TOUT. Elle construit à la place un
+  # **critère de divisibilité** — « 23 divise m si et seulement si 23 divise
+  # q + 7r », où q et r sont le quotient et le reste de m par 10 — puis s'en
+  # sert pour résoudre un système de congruences. C'est le seul exercice de la
+  # banque où l'arithmétique modulaire sert à FABRIQUER un outil de calcul
+  # mental plutôt qu'à démontrer une propriété. Le geste est en outre celui
+  # qu'un élève reconnaîtra du collège (le critère par 7, par 11…), enfin
+  # démontré.
+  #
+  # NOTE ÉDITORIALE — FLAG DE JUMELAGE (bk-2024-r-x5 face à bk-2021-n-x3).
+  # Les deux finissent sur un système de deux congruences à modules premiers
+  # entre eux. La différence :
+  #   — bk-2021-n-x3 (q6-q7) résout par combinaison directe des modules via une
+  #     relation de Bézout établie en Partie I — la voie « restes chinois » ;
+  #   — ici, l'énoncé impose une autre voie : substituer x = 10q + 2 tiré de la
+  #     seconde congruence, puis appliquer à x - 1 le critère de divisibilité
+  #     construit à la question 2. Aucune relation de Bézout n'est réutilisée à
+  #     ce stade — celle de la question 1 a déjà servi, et à autre chose.
+  # Proposition : garder les deux, celle-ci montrant qu'un système se résout
+  # aussi par substitution quand l'énoncé a préparé le terrain.
+  # À l'arbitrage de l'owner.
+  - id: bk-2024-r-x5
+    title: "Inverse de 10 modulo 23 par l'algorithme d'Euclide, critère de divisibilité par 23, et système de deux congruences"
+    source:
+      year: 2024
+      session: rattrapage
+      filiere: "SM"
+      exercise_label: "Exercice 5 — Arithmétique (3 points)"
+    bareme_total: 3
+    duration_min: 36
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session de rattrapage — examen national Mathématiques, filière
+        Sciences Mathématiques (A) et (B), option française, 4 h, coefficient
+        9, code sujet RS 25, AlloSchool element/145741, scan
+        course-436/upload-87449, page 5 sur 5 (l'énoncé complet tient sur cette
+        seule page ; consignes en page 1). Barème de l'exercice = 3 points,
+        recompté question par question sur le scan et revérifié ici :
+        0,5 + 0,5 + 0,75 + 0,75 + 0,5 = 3, conforme à l'annonce de la page 1.
+        Transcription vérifiée par une passe adversariale indépendante
+        (2026-08-23, docs/sujets/_incoming/maths-sm-2024-r.md, statut
+        « vérifié ») : re-fetch de element/145741, re-dérivation des chemins
+        d'images depuis le HTML, et re-lecture de la page sur l'image — chaque
+        nombre, indice, exposant, borne et barème relu sur le scan et jamais
+        sur le texte transcrit. Aucune figure n'accompagne cet exercice.
+        CONTRE-CALCUL REFAIT ICI, chiffre par chiffre. Question 1, algorithme
+        d'Euclide descendant : 23 = 2 x 10 + 3, puis 10 = 3 x 3 + 1, puis
+        3 = 3 x 1 + 0 — le PGCD vaut 1, ce qui garantit l'existence de
+        l'inverse. Remontée : 1 = 10 - 3 x 3 = 10 - 3 x (23 - 2 x 10) =
+        7 x 10 - 3 x 23, d'où u = 7, et le contrôle direct 70 = 3 x 23 + 1
+        confirme 10 x 7 congru a 1 modulo 23. La valeur 7 appartient bien à
+        l'ensemble {1, ..., 22} demandé. Question 3-b, résolution : 23 divise
+        (q + 7) donne q = 23k - 7, et la contrainte q entier naturel impose
+        k >= 1 ; d'où x = 10q + 2 = 230k - 68, soit x = 230t + 162 avec
+        t = k - 1 entier naturel. Contrôle du plus petit élément : 162 = 7 x 23
+        + 1 donc x congru a 1 modulo 23 ✔, et 162 = 16 x 10 + 2 donc x congru a
+        2 modulo 10 ✔. Le module 230 est bien le PPCM de 23 et 10, premiers
+        entre eux. Ces valeurs coïncident avec la re-dérivation du
+        vérificateur, qui annonce u = 7 (car 70 = 3 x 23 + 1) et
+        x = 230t + 162 avec t entier naturel. NB DE PÉRIMÈTRE : contrairement
+        aux neuf autres entrées de cette banque, cet exercice ne mobilise PAS
+        le petit théorème de Fermat. Il n'utilise que des rungs de la leçon —
+        R1 division euclidienne, R2 congruences, R4 Bézout et coprimalité,
+        R5 théorème de Gauss — sans aucun outil hors-rung. AJOUT DE CETTE
+        ENTRÉE AU CORPUS : l'épreuve SM 2024 rattrapage passe de 10,50 à
+        13,50 points ; il lui manque encore l'exercice 1 (analyse, 6,5 pt) pour
+        être assemblable en entier.
+    intro: |-
+      **Arithmétique (examen national, Sciences Mathématiques, session de rattrapage 2024 — Exercice 5, 3 points).**
+
+      *L'épreuve dure 4 heures et comporte cinq exercices indépendants, traitables dans l'ordre choisi par le candidat. L'usage de la calculatrice n'est pas autorisé.*
+
+      Cet exercice construit, en trois temps, un **critère de divisibilité par $23$** — de ceux qu'on apprend au collège pour $3$, $9$ ou $11$, mais cette fois démontré — puis s'en sert pour résoudre un système de deux congruences.
+
+      *Aucune figure n'accompagne cet exercice.*
+    questions:
+      - id: q1
+        part: "1 — L'inverse de 10 modulo 23"
+        stem: |-
+          **1-** (0,5 pt) En utilisant l'algorithme d'Euclide, déterminer l'entier $u \in \{1, 2, \ldots, 22\}$ tel que : $10u \equiv 1\ [23]$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un entier $u$ tel que $10u \equiv 1\ [23]$ s'appelle un **inverse de $10$ modulo $23$**. Chercher un inverse, c'est chercher une relation de Bézout : $10u \equiv 1\ [23]$ signifie exactement qu'il existe un entier $v$ tel que
+
+          $$10u - 23v = 1$$
+
+          Et la machine qui fabrique une telle relation, c'est l'algorithme d'Euclide **descendu puis remonté** — l'énoncé impose d'ailleurs cette méthode, donc une réponse trouvée par tâtonnement, même juste, ne vaudra pas les points.
+
+          **D'abord : cet inverse existe-t-il ?** Oui, et c'est l'algorithme lui-même qui va le dire. Un inverse de $a$ modulo $n$ existe si et seulement si $a$ et $n$ sont **premiers entre eux** (rung 4). C'est le premier renseignement que la descente va fournir.
+
+          **La descente — divisions euclidiennes successives.**
+
+          $$23 = 2 \times 10 + 3$$
+          $$10 = 3 \times 3 + 1$$
+          $$3 = 3 \times 1 + 0$$
+
+          Le dernier reste non nul est $1$ : $\text{PGCD}(23, 10) = 1$. Les deux nombres sont premiers entre eux, l'inverse existe et il est unique modulo $23$.
+
+          **La remontée — on exprime le $1$ à rebours.** On part de l'avant-dernière ligne, celle qui produit le reste $1$, et on remplace chaque reste par son expression tirée de la ligne du dessus.
+
+          $$1 = 10 - 3 \times 3$$
+
+          Le $3$ vient de la première ligne : $3 = 23 - 2 \times 10$. On substitue :
+
+          $$1 = 10 - 3\,(23 - 2 \times 10) = 10 - 3 \times 23 + 6 \times 10$$
+
+          $$1 = 7 \times 10 - 3 \times 23$$
+
+          **La lecture modulo $23$.** Dans cette égalité, le terme $-3 \times 23$ est un multiple de $23$, donc congru à $0$ :
+
+          $$7 \times 10 \equiv 1\ [23] \qquad\Longrightarrow\qquad \boxed{u = 7}$$
+
+          **Le contrôle, immédiat et à ne jamais sauter.** $10 \times 7 = 70$, et $70 = 3 \times 23 + 1 = 69 + 1$. Donc $70 \equiv 1\ [23]$ ✔. Et $7$ appartient bien à $\{1, 2, \ldots, 22\}$, comme l'énoncé le demande.
+
+          **Le piège nommé de cette question.** Donner un $u$ hors de l'intervalle demandé — par exemple $u = 30$, qui convient aussi puisque $30 \equiv 7\ [23]$, mais que l'énoncé exclut. L'inverse n'est unique que **modulo $23$** : il y en a une infinité, et la contrainte $u \in \{1, \ldots, 22\}$ sert précisément à en désigner un seul. Le second piège : oublier la remontée et se contenter d'annoncer $\text{PGCD} = 1$. La descente prouve que l'inverse existe, la remontée le **calcule** — ce sont deux moitiés distinctes du travail.
+        steps:
+          - math: '23 = 2 \times 10 + 3 \quad;\quad 10 = 3 \times 3 + 1 \quad;\quad 3 = 3 \times 1 + 0'
+            note: "Descente d'Euclide. Dernier reste non nul = 1, donc PGCD(23,10) = 1 : l'inverse existe."
+          - math: '1 = 10 - 3 \times 3 = 10 - 3\,(23 - 2 \times 10) = 7 \times 10 - 3 \times 23'
+            note: "Remontee : on remplace chaque reste par son expression tiree de la ligne du dessus."
+          - math: '7 \times 10 \equiv 1\ [23] \quad\text{car}\quad -3 \times 23 \equiv 0\ [23]'
+            note: "Lecture modulo 23 de la relation de Bezout."
+          - math: '\boxed{u = 7}'
+            note: "Controle : 70 = 3 x 23 + 1. Et 7 appartient bien a {1, ..., 22}."
+      - id: q2a
+        part: "2 — Le critère de divisibilité par 23"
+        stem: |-
+          **2-** Soient $m$ un entier naturel et $q$ et $r$, respectivement, le quotient et le reste de la division euclidienne de $m$ par $10$.
+
+          **a)** (0,5 pt) Montrer que : $m \equiv 10(q + ur)\ [23]$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé introduit la division par $10$ — donc, très concrètement, $r$ est le **chiffre des unités** de $m$ et $q$ est le nombre obtenu en effaçant ce chiffre. On cherche à relier $m$ à ces deux morceaux **modulo $23$**, ce qui est le premier pas vers un critère de divisibilité manipulable.
+
+          **Le point de départ : la division euclidienne (rung 1).**
+
+          $$m = 10q + r \qquad \text{avec} \quad 0 \leq r < 10$$
+
+          **Le calcul, mené depuis le membre de droite.** On développe $10(q + ur)$ :
+
+          $$10(q + ur) = 10q + 10ur = 10q + (10u)\,r$$
+
+          On a simplement regroupé $10u$, et c'est tout l'art de la question : ce facteur est exactement celui dont la question 1 vient d'établir qu'il vaut $1$ modulo $23$.
+
+          $$10u \equiv 1\ [23] \qquad\Longrightarrow\qquad (10u)\,r \equiv 1 \times r = r\ [23]$$
+
+          (on a multiplié les deux membres d'une congruence par l'entier $r$, ce qui est licite — rung 2).
+
+          On ajoute $10q$ aux deux membres, opération également licite sur les congruences :
+
+          $$10(q + ur) = 10q + (10u)r \equiv 10q + r = m\ [23]$$
+
+          D'où, en retournant la congruence :
+
+          $$\boxed{\ m \equiv 10(q + ur)\ [23]\ }$$
+
+          **Ce qui vient d'être fabriqué.** Avec $u = 7$, la relation s'écrit $m \equiv 10(q + 7r)\ [23]$. Elle remplace $m$ par une expression construite sur son chiffre des unités et sur le reste du nombre — c'est-à-dire sur des données bien plus petites. C'est le mécanisme de tous les critères de divisibilité, et la question suivante va en tirer la forme utilisable.
+
+          **Le piège nommé de cette question.** Vouloir « simplifier par $10$ » la congruence pour écrire $m/10 \equiv q + ur$. On ne divise pas une congruence par un entier comme on divise une égalité : la simplification n'est licite que si le facteur est **premier avec le module**, et il faut alors le dire. Ici $10$ est bien premier avec $23$, mais la question ne demande pas cette simplification — elle demande la relation dans le sens où elle est écrite. Ne fais pas un pas qui n'est pas demandé, surtout s'il exige une justification que tu n'écris pas.
+      - id: q2b
+        stem: |-
+          **b)** (0,75 pt) Montrer que : $23$ divise $m \iff 23$ divise $(q + ur)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une **équivalence** : deux implications à démontrer, et elles ne coûtent pas le même effort. L'une est immédiate, l'autre demande un théorème — c'est là que va l'essentiel des trois quarts de point.
+
+          **Le sens facile : si $23$ divise $(q + ur)$, alors $23$ divise $m$.** Si $23 \mid (q + ur)$, c'est-à-dire $q + ur \equiv 0\ [23]$, alors en multipliant par $10$ :
+
+          $$10(q + ur) \equiv 0\ [23]$$
+
+          et la question 2-a donne $m \equiv 10(q+ur) \equiv 0\ [23]$, donc $23 \mid m$. Aucune précaution nécessaire : multiplier une congruence par un entier est toujours licite.
+
+          **Le sens délicat : si $23$ divise $m$, alors $23$ divise $(q + ur)$.** Supposons $23 \mid m$. La question 2-a donne alors :
+
+          $$10\,(q + ur) \equiv 0\ [23] \qquad\text{c'est-à-dire}\qquad 23 \mid 10(q+ur)$$
+
+          On voudrait « barrer le $10$ ». **C'est exactement l'endroit où il faut un théorème, pas un réflexe.** Le théorème de Gauss (rung 5) dit : si un entier divise un produit et qu'il est premier avec l'un des facteurs, alors il divise l'autre. Ici :
+
+          — $23 \mid 10 \times (q + ur)$ ;
+          — $23$ et $10$ sont **premiers entre eux** — c'est précisément ce que la descente d'Euclide de la question 1 a établi, $\text{PGCD}(23,10) = 1$.
+
+          Donc, par Gauss, $23 \mid (q + ur)$.
+
+          **Conclusion.** Les deux implications étant établies :
+
+          $$\boxed{\ 23 \mid m \iff 23 \mid (q + ur)\ }$$
+
+          **La variante élégante, si tu préfères une seule ligne.** Multiplie la relation de 2-a par $u$ : $u\,m \equiv 10u\,(q+ur) \equiv q + ur\ [23]$, puisque $10u \equiv 1$. On obtient directement $q + ur \equiv u\,m\ [23]$, et comme $u = 7$ est premier avec $23$, les deux quantités $m$ et $q+ur$ sont nulles modulo $23$ en même temps. Même contenu, rédigé plus court.
+
+          **Le critère, énoncé en clair.** Avec $u = 7$ : **$23$ divise $m$ si et seulement si $23$ divise $q + 7r$**, où $r$ est le chiffre des unités de $m$ et $q$ le nombre privé de ce chiffre. Essaie-le sur $161$ : $q = 16$, $r = 1$, donc $q + 7r = 23$, divisible par $23$ — et en effet $161 = 7 \times 23$. Le critère fonctionne, et on peut l'itérer sur des nombres plus grands.
+
+          **Le piège nommé de cette question.** Simplifier par $10$ sans invoquer Gauss ni la coprimalité. C'est faux en général : $6 \mid 2 \times 9$ mais $6 \nmid 9$. La coprimalité de $10$ et $23$ n'est pas un détail de rédaction, c'est **l'hypothèse** du théorème — et c'est aussi la raison pour laquelle l'exercice a commencé par une descente d'Euclide. Le second piège : ne démontrer qu'un seul sens et croire l'équivalence acquise. Une double implication demande deux démonstrations, ou une chaîne d'équivalences explicitement réversible.
+      - id: q3a
+        part: "3 — Le système de congruences"
+        stem: |-
+          **3-** On considère dans $\mathbb{N}$ le système $(S) : \begin{cases} x \equiv 1\ [23] \\ x \equiv 2\ [10] \end{cases}$
+
+          **a)** (0,75 pt) Montrer que si $x$ est une solution du système $(S)$ alors il existe $q \in \mathbb{N}$ tel que $x = 10q + 2$ et $23$ divise $(q+7)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux congruences, deux modules. La stratégie que l'énoncé a préparée : **traduire la seconde en une écriture explicite de $x$**, puis faire passer la première par le critère de divisibilité construit à la question 2. Rien d'autre n'est nécessaire — et surtout, le critère n'a pas été fabriqué pour rien.
+
+          **La seconde congruence, traduite.** $x \equiv 2\ [10]$ signifie que $x - 2$ est un multiple de $10$, donc qu'il existe un entier $q$ tel que
+
+          $$x = 10q + 2$$
+
+          **Pourquoi $q$ est bien un entier NATUREL, et il faut le justifier.** L'énoncé cherche $x$ dans $\mathbb{N}$, et $0 \leq 2 < 10$ : l'écriture $x = 10q + 2$ est donc exactement la **division euclidienne de $x$ par $10$**, de quotient $q$ et de reste $2$. Le quotient d'une division euclidienne d'un entier naturel par un entier positif est un entier naturel : $q \in \mathbb{N}$. Ce n'est pas une formalité — c'est ce qui permettra, à la question suivante, d'éliminer les valeurs négatives de $q$.
+
+          **La première congruence, maintenant.** $x \equiv 1\ [23]$ équivaut à $23 \mid (x - 1)$. Posons donc
+
+          $$m = x - 1 = 10q + 2 - 1 = 10q + 1$$
+
+          **Le geste central : reconnaître la division euclidienne de $m$ par $10$.** L'écriture $m = 10q + 1$ avec $0 \leq 1 < 10$ est la division euclidienne de $m$ par $10$ : son **quotient est $q$** et son **reste est $r = 1$**. Ce sont exactement les objets de la question 2, et l'on peut donc appliquer le critère :
+
+          $$23 \mid m \iff 23 \mid (q + u r) = (q + 7 \times 1) = (q + 7)$$
+
+          **Conclusion.** $x$ est solution de $(S)$ implique qu'il existe $q \in \mathbb{N}$ tel que
+
+          $$\boxed{\ x = 10q + 2 \quad\text{et}\quad 23 \mid (q + 7)\ }$$
+
+          **Ce qui fait la difficulté de cette question.** Il faut penser à appliquer le critère non pas à $x$, mais à $x - 1$. Rien dans l'énoncé ne le dit ; c'est la forme de la première congruence — $x \equiv 1$, donc $23$ divise $x - 1$ — qui l'impose. C'est le pas que la question récompense à trois quarts de point.
+
+          **Le piège nommé de cette question.** Appliquer le critère à $x$ directement. On écrirait $x = 10q + 2$, donc reste $2$, donc $23 \mid (q + 14)$ — mais cette conclusion répondrait à la question « $23$ divise-t-il $x$ ? », qui n'est pas celle posée. Le système demande $x \equiv 1$, pas $x \equiv 0$. Le second piège : oublier de justifier $q \in \mathbb{N}$ et se retrouver, à la question suivante, incapable d'éliminer les solutions parasites.
+      - id: q3b
+        stem: |-
+          **b)** (0,5 pt) Résoudre dans $\mathbb{N}$ le système $(S)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La question précédente a transformé le système en une seule condition sur $q$. Il ne reste qu'à l'expliciter, puis à revenir à $x$ — en surveillant la contrainte $\mathbb{N}$, qui est ici la seule vraie subtilité.
+
+          **On explicite la condition sur $q$.** $23 \mid (q + 7)$ signifie qu'il existe un entier $k$ tel que
+
+          $$q + 7 = 23k \qquad\Longrightarrow\qquad q = 23k - 7$$
+
+          **La contrainte $q \in \mathbb{N}$, qui élimine des valeurs.** Il faut $23k - 7 \geq 0$, c'est-à-dire $k \geq \dfrac{7}{23}$. Comme $k$ est entier, cela impose $k \geq 1$. La valeur $k = 0$ donnerait $q = -7$, incompatible avec un quotient de division euclidienne dans $\mathbb{N}$.
+
+          **On revient à $x$.**
+
+          $$x = 10q + 2 = 10(23k - 7) + 2 = 230k - 70 + 2 = 230k - 68 \qquad (k \geq 1)$$
+
+          **On réindexe pour une écriture lisible.** En posant $t = k - 1$, donc $t \in \mathbb{N}$ :
+
+          $$x = 230(t+1) - 68 = 230t + 162$$
+
+          $$\boxed{\ \mathcal{S} = \left\{\,230t + 162 \ ;\ t \in \mathbb{N}\,\right\}\ }$$
+
+          La plus petite solution est $x = 162$, et les suivantes s'en déduisent de $230$ en $230$.
+
+          **La vérification, qui est obligatoire et non facultative.** Le raisonnement de 3-a n'a établi qu'une implication (« si $x$ est solution, alors… ») : il faut confirmer que les valeurs trouvées conviennent réellement. Sur $x = 162$ :
+
+          $$162 = 7 \times 23 + 1 \quad\Longrightarrow\quad 162 \equiv 1\ [23] \ ✔$$
+          $$162 = 16 \times 10 + 2 \quad\Longrightarrow\quad 162 \equiv 2\ [10] \ ✔$$
+
+          Et $230$ est un multiple commun de $23$ et de $10$, donc ajouter $230t$ ne change aucune des deux congruences : toutes les valeurs de la famille conviennent.
+
+          **Pourquoi la période vaut $230$, et pas autre chose.** Deux congruences de modules $23$ et $10$ ont un ensemble de solutions périodique de période $\text{PPCM}(23, 10)$. Les deux modules étant premiers entre eux, ce PPCM vaut leur produit, $230$. C'est le contenu du théorème des restes chinois — non nommé par l'énoncé, qui a choisi la voie par substitution, mais c'est bien lui qui garantit qu'il existe une solution et qu'elle est unique modulo $230$.
+
+          **Le piège nommé de cette question.** Oublier la contrainte $k \geq 1$ et annoncer $x = 230k - 68$ pour tout $k \in \mathbb{Z}$, ce qui produirait $x = -68$ — un entier négatif, exclu par l'énoncé qui résout **dans $\mathbb{N}$**. Le second piège : ne pas vérifier. Une chaîne d'implications non réversible peut introduire des solutions parasites ; deux lignes de contrôle les débusquent, et un correcteur les cherche.
+        steps:
+          - math: '23 \mid (q+7) \iff \exists k \in \mathbb{Z},\ q = 23k - 7'
+            note: "Traduction directe de la divisibilite etablie a la question 3-a."
+          - math: 'q \in \mathbb{N} \Longrightarrow 23k - 7 \geq 0 \Longrightarrow k \geq 1'
+            note: "q est un quotient de division euclidienne dans N : k = 0 donnerait q = -7, exclu."
+          - math: 'x = 10q + 2 = 10(23k-7) + 2 = 230k - 68 \quad (k \geq 1)'
+            note: "Retour a x par la premiere relation de la question 3-a."
+          - math: '\boxed{\mathcal{S} = \{\,230t + 162\ ;\ t \in \mathbb{N}\,\}}'
+            note: "Reindexation t = k - 1. Plus petite solution : 162. Periode 230 = PPCM(23,10)."
+          - math: '162 = 7 \times 23 + 1 \quad\text{et}\quad 162 = 16 \times 10 + 2'
+            note: "Verification obligatoire : 3-a n'etablissait qu'une implication."
