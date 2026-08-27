@@ -742,11 +742,27 @@ indépendante, et le cas PC 2019 demande de savoir si le sujet officiel fournit
 ou non l'arrondi — ce que la transcription vérifiée dit absent, mais qui
 mérite le corrigé officiel.
 
-**Piste de garde.** Un balayage mécanique est possible et n'a pas été fait :
-pour chaque entrée de banque, chercher si le même `{filiere, year, session}` +
-la même question apparaît dans un `exercises.yaml`, et comparer les valeurs
-numériques encadrées (`\boxed{}`). Sept entrées sont déjà nommées ci-dessus ;
-le balayage dirait s'il y en a d'autres, et lesquelles divergent.
+**Le balayage a été fait le 2026-08-27 — voici ce qu'il donne.** Pour chacune
+des **37 notions portant à la fois une banque et un `exercises.yaml`**, on
+extrait les valeurs encadrées (`\boxed{}`) des deux côtés et on compare.
+
+- **Il retrouve le cas PC 2019 tout seul** : `pc/lois-de-newton` encadre
+  **525** côté banque, absent du sommet. Le balayage marche.
+- **Il ne trouve aucun cas neuf.** Sa seule autre alerte,
+  `pc/noyaux-masse-energie` (sommet 226 contre banque 210), est un **faux
+  positif** : 226 est le *radium 226* d'un exercice de variation
+  **délibérément fabriqué** (`status: not-applicable`, « fabriqué pour
+  l'exercice »), 210 le *polonium 210* du sujet réel. Deux nucléides
+  différents, pas deux réponses au même calcul — l'heuristique a lu des
+  numéros de masse comme des résultats.
+
+**Ce que le balayage ne couvre PAS**, et qui reste ouvert : il ne voit que les
+valeurs **encadrées**, il ignore les entiers < 10, et il ne compare pas
+question par question. Le cas PC 2010 (t½) lui échappe complètement — la
+valeur n'y est pas dans un `\boxed{}`. **Il ne prouve donc pas l'absence
+d'autres divergences ; il prouve seulement qu'il n'y en a pas dans ce
+périmètre-là.** Un balayage question par question, apparié sur
+`{filiere, year, session}`, reste à écrire.
 
 ### K-1. `get_user_weak_areas` function references missing columns
 **Source.** `backend/supabase/migrations/004_exam_analytics_and_sync.sql`,
