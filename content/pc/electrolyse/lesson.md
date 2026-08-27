@@ -220,6 +220,24 @@ L'eau ne se décompose jamais spontanément en dihydrogène et dioxygène gazeux
 
 [[figure:electrolyse-eau-cellule]]
 
+### Chiffrer un gaz : de la quantité de matière au volume
+
+Le rung 4 a permis de chiffrer des **masses** de métal déposé. Ici les produits sont des **gaz**, et un sujet demande presque toujours un **volume**. Le pont entre les deux tient en une relation, celle du volume molaire.
+
+Dans des conditions de température et de pression données, une mole de n'importe quel gaz occupe le même volume $V_m$, appelé **volume molaire**. L'énoncé le fournit toujours — souvent $V_m = 24\ \text{L.mol}^{-1}$ dans les conditions ordinaires, parfois $22{,}4\ \text{L.mol}^{-1}$ dans les conditions normales. De là :
+
+$$V = n \times V_m \qquad\text{et donc}\qquad n = \frac{V}{V_m}$$
+
+**La chaîne complète, de la durée d'électrolyse au volume de gaz.** C'est l'enchaînement qu'un sujet parcourt, et il vaut d'être vu d'un bloc :
+
+$$I,\ \Delta t \ \longrightarrow\ Q = I\,\Delta t \ \longrightarrow\ n(e^-) = \frac{Q}{F} \ \longrightarrow\ n(\text{gaz}) \ \longrightarrow\ V = n\,V_m$$
+
+L'avant-dernière flèche est la seule qui demande de la réflexion : le passage de $n(e^-)$ à $n(\text{gaz})$ se lit sur la **demi-équation**, jamais ailleurs. Pour le dihydrogène, $2\,H^+ + 2\,e^- \rightleftharpoons H_2$ donne $n(H_2) = \dfrac{n(e^-)}{2}$. Pour le dioxygène, $2\,H_2O \rightleftharpoons O_2 + 4\,e^- + 4\,H^+$ donne $n(O_2) = \dfrac{n(e^-)}{4}$.
+
+*Le contrôle qui vient gratuitement :* on obtient donc toujours **deux fois plus** de dihydrogène que de dioxygène, en quantité de matière comme en volume. C'est exactement ce que dit le bilan global $2\,H_2O \rightarrow 2\,H_2 + O_2$, et c'est visible à l'œil sur le montage — le tube au-dessus de la cathode se remplit deux fois plus vite. Si ton calcul ne donne pas ce rapport de $2$, l'erreur est dans le passage par la demi-équation.
+
+*Le piège nommé :* diviser par le mauvais nombre d'électrons, ou ne pas diviser du tout et poser $n(\text{gaz}) = n(e^-)$. Le coefficient ne se devine pas et ne se retient pas — il se **lit** sur la demi-équation du gaz concerné, à chaque fois.
+
 ### Le dépôt métallique - galvanoplastie
 
 Recouvrir un objet (souvent peu coûteux ou peu résistant à la corrosion) d'une fine couche d'un métal protecteur ou décoratif - argent, or, chrome, nickel, zinc - suit exactement le mécanisme calculé au rung 4. L'objet à recouvrir est branché en **cathode** (borne −) : c'est là que les ions métalliques de la solution sont réduits et viennent se déposer en une fine couche.

@@ -242,6 +242,36 @@ Par la méthode des 63 % : à $t = 1{,}0\ \text{ms}$, on doit lire $u_C \approx 
 
 Et si on refait l'expérience en **augmentant $R$** (ou $C$), même générateur : l'asymptote reste à $E = 10\ \text{V}$ — la valeur finale ne dépend que de $E$ — mais la montée est plus lente, $\tau$ plus grand. C'est $\tau = RC$ qui règle la vitesse, pas la hauteur.
 
+### Une troisième lecture : la droite $\dfrac{du_C}{dt} = f(u_C)$
+
+Les deux méthodes précédentes lisent le temps en abscisse. Un sujet peut te donner une courbe d'un tout autre genre : la **dérivée** $\dfrac{du_C}{dt}$ portée en fonction de $u_C$ — sans aucun axe de temps. La bonne réaction n'est pas de chercher $\tau$ à l'œil, c'est de relire l'équation différentielle de R1, qui donne la réponse d'avance.
+
+Reprends-la et isole la dérivée :
+
+$$RC\,\frac{du_C}{dt} + u_C = E
+\qquad\Longrightarrow\qquad
+\frac{du_C}{dt} = \frac{E}{RC} - \frac{1}{RC}\,u_C$$
+
+Lis cette écriture pour ce qu'elle est : une **fonction affine** de $u_C$. Si l'on porte $\dfrac{du_C}{dt}$ en ordonnée et $u_C$ en abscisse, on obtient donc une **droite**, et ses trois éléments remarquables se lisent directement :
+
+- son **ordonnée à l'origine** (en $u_C = 0$, c'est-à-dire à l'instant initial) vaut $\dfrac{E}{RC} = \dfrac{E}{\tau}$ ;
+- sa **pente** vaut $-\dfrac{1}{RC} = -\dfrac{1}{\tau}$ — elle est **négative**, et c'est la signature du phénomène : plus le condensateur se remplit, plus il se charge lentement ;
+- son **intersection avec l'axe des abscisses**, là où $\dfrac{du_C}{dt} = 0$, donne $u_C = E$ — la tension du régime permanent, celle où plus rien ne bouge.
+
+De n'importe lequel des trois on remonte à $\tau$, puis à $C$ par $\tau = RC$. La pente est la lecture la plus sûre, parce qu'elle s'appuie sur toute la longueur de la droite au lieu d'un seul point.
+
+*Le piège nommé de cette lecture :* prendre la pente pour $\tau$ au lieu de $-\dfrac{1}{\tau}$, ou en oublier le signe. Le contrôle qui tranche : une pente **positive** décrirait un condensateur qui se charge de plus en plus vite à mesure qu'il se remplit — l'inverse exact du mécanisme établi en R1.
+
+### Deux condensateurs en parallèle : une seule capacité équivalente
+
+Un montage d'examen remplace parfois le condensateur unique par **deux condensateurs en parallèle**, de capacités $C_1$ et $C_2$. Rien de ce qui précède ne change, à une substitution près : deux condensateurs en parallèle sont soumis à la **même tension**, et leurs charges s'ajoutent, donc leurs capacités aussi —
+
+$$C_{eq} = C_1 + C_2$$
+
+Le circuit se comporte alors exactement comme un circuit RC ordinaire de capacité $C_{eq}$, avec $\tau = R\,C_{eq}$. C'est un résultat d'électricité générale, pas un mécanisme propre à ce chapitre ; on le rappelle ici parce qu'un sujet peut le supposer connu sans le redonner.
+
+*Attention au sens :* c'est **en parallèle** que les capacités s'ajoutent. En série, elles se composent à l'inverse ($1/C_{eq} = 1/C_1 + 1/C_2$) — c'est le contraire des résistances, et c'est pour cette raison que la confusion est fréquente. Le repère qui ne trompe pas : mettre deux condensateurs côte à côte revient à élargir les armatures, donc à **augmenter** la capacité.
+
 [[checkpoint:cp-r3-tau]]
 
 ---
