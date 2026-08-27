@@ -7,25 +7,39 @@
 # embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les trois entrées ci-dessous sont des transcriptions
-# FIDÈLES des trois entrées « vérifié — agent-vérificateur-adversarial,
-# 2026-08-06 » de docs/sujets/maths/suites-numeriques.md — les SEULES
-# entrées de ce lot vérifiées à ce jour : 2020 session normale, Exercice 1
-# (4 points), 2021 session normale, Exercice 2 (4 points) et 2024 session
-# normale, Exercice 1 (3 points) — toutes filière Sciences Expérimentales,
-# BIOF (SVT et Sciences Physiques). L'entrée 2019 (SM, Exercice 4 Partie II)
-# N'EST PAS reprise ici : elle est déjà le sommet de leçon r-bac
-# (exercises.yaml, marqueur [[exercise:r-bac]] à R10), et c'est la seule
-# entrée SM vérifiée du lot — il n'y a donc pas d'autre sujet SM vérifié
-# disponible pour peupler la banque de ce côté. Les entrées cross-listées
-# (fin de problème d'analyse : 2019 SM Partie II déjà citée, 2019/2022/2023
-# SExp — voir la section « Cross-lists » du fichier de transcription) ne
-# sont pas reprises non plus : ce ne sont pas des études de suite autonomes
-# et complètes au sens de la note de tête du fichier source. Raisonnement
-# rédigé à la voix experte de la maison sur 100 % des questions ; barème
-# transcrit tel quel dans les énoncés ; conventions KaTeX (block scalars
-# pour la prose, KaTeX brut entre apostrophes simples dans steps[].math,
-# notes sans backslash).
+# exercises.yaml). Les trois premières entrées ci-dessous sont des
+# transcriptions FIDÈLES des trois entrées « vérifié —
+# agent-vérificateur-adversarial, 2026-08-06 » de
+# docs/sujets/maths/suites-numeriques.md — les SEULES entrées de ce lot
+# vérifiées à ce jour : 2020 session normale, Exercice 1 (4 points), 2021
+# session normale, Exercice 2 (4 points) et 2024 session normale, Exercice 1
+# (3 points) — toutes filière Sciences Expérimentales, BIOF (SVT et
+# Sciences Physiques). L'entrée 2019 (SM, Exercice 4 Partie II) N'EST PAS
+# reprise ici : elle est déjà le sommet de leçon r-bac (exercises.yaml,
+# marqueur [[exercise:r-bac]] à R10), et c'est la seule entrée SM vérifiée
+# du lot recensé — il n'y a donc pas d'autre sujet SM vérifié disponible
+# dans ce census pour peupler la banque de ce côté. Les entrées
+# cross-listées (fin de problème d'analyse : 2019 SM Partie II déjà citée,
+# 2019/2022/2023 SExp — voir la section « Cross-lists » du fichier de
+# transcription) ne sont pas reprises non plus : ce ne sont pas des études
+# de suite autonomes et complètes au sens de la note de tête du fichier
+# source.
+#
+# QUATRIÈME ENTRÉE — bk-2021-n-x1b (2021 session normale, Exercice 1,
+# Parties II et III, filière SM, barème 7,0 points). Convertie directement
+# depuis docs/sujets/_incoming/maths-sm-2021-n.md (statut « vérifié »,
+# hors du census cité ci-dessus, comme bk-2017-n-x4 et bk-2025-n-x1 le sont
+# déjà pour content/maths/fonction-exponentielle/bank.yaml). C'est le
+# SECOND MORCEAU d'un exercice PARTITIONNÉ — voir la NOTE ÉDITORIALE
+# bk-2021-n-x1b plus bas pour le détail complet du partitionnement, la
+# réserve owner, et pourquoi cette carte reste autonome malgré la coupure.
+#
+# Raisonnement rédigé à la voix experte de la maison sur 100 % des
+# questions ; barème transcrit tel quel dans les énoncés ; conventions
+# KaTeX (block scalars pour la prose, KaTeX brut entre apostrophes simples
+# dans steps[].math — apostrophe DOUBLÉE pour un prime littéral, $f_0'(x)$
+# s'écrit `f_0''(x)` dans la source YAML single-quoted, même convention que
+# content/maths/fonction-exponentielle/bank.yaml — notes sans backslash).
 #
 # SCOPE NOTE (divulgation honnête, authoring-side) : les trois sujets sont
 # des suites récurrentes HOMOGRAPHIQUES (u_{n+1} = (au_n+b)/(cu_n+d)) et
@@ -47,6 +61,161 @@
 # au point d'usage, en nommant explicitement le geste et son rung de
 # rattache le plus proche, sans jamais prétendre que R8 enseigne la forme
 # utilisée telle quelle.
+#
+# ─────────────────────────────────────────────────────────────────────────
+# NOTE ÉDITORIALE bk-2021-n-x1b (2021, session normale, Exercice 1 —
+# PARTIES II ET III SEULES, 7,0 pts sur 12, filière SM) — à lire avant
+# toute revue de cette entrée.
+#
+# SOURCE ET PROTOCOLE. Convertie depuis
+# docs/sujets/_incoming/maths-sm-2021-n.md, statut « VÉRIFIÉ, CLEARÉ POUR
+# CONVERSION ». Deux passes : une transcription (2026-08-27) puis une
+# vérification adversariale INDÉPENDANTE le même jour — scan re-téléchargé
+# de zéro, les quatre contrôles anti-CDN refaits en entier, plus deux
+# instruments inédits (corrélation pixel PDF↔JPG, couche bitonale 300 dpi
+# embarquée dans le PDF). Verdict : transcription FIDÈLE, zéro divergence
+# sur les 24 questions de l'exercice complet, sur le barème et sur
+# l'en-tête. Aucun défaut du sujet officiel.
+#
+# RECOMPTE DU BARÈME DE L'EXERCICE COMPLET (les 24 questions, 12,0 pts),
+# indépendant, à partir de la marge du scan (métrologie calibrée en px,
+# 24 marques mesurées à 30-32 px chacune — matériellement incompatible avec
+# un 0,25 ou un 0,75, qui mesurent 44 px sur ce même scan) :
+#   Partie I = 0,5×10 = 5,0 · Partie II = 0,5×5 = 2,5 · Partie III =
+#   0,5×9 = 4,5 · Total 5,0+2,5+4,5 = 12,0 — conforme au « (12 pts) »
+#   imprimé p.1 ET en tête du corps p.2. CETTE carte ne porte que les
+#   Parties II et III : 2,5+4,5 = 7,0. bareme_total: 7.
+#
+# LE PARTITIONNEMENT — CETTE CARTE EST LE SECOND MORCEAU, PAS L'EXERCICE
+# ENTIER. L'exercice 1 pèse 12,0 pts et 24 questions au total — ce qui en
+# ferait, à lui seul, la plus grosse carte du corpus SM (aucune carte SM du
+# dépôt ne dépasse 10 points, vérifié sur les 14 banques). Il est donc
+# PARTITIONNÉ en deux cartes, sur une frontière imprimée du sujet lui-même
+# (« Partie II : »), exactement comme le précédent bk-2022-n-x4 (partitionné
+# entre content/maths/calcul-integral et content/maths/
+# equations-differentielles) :
+#   - la carte sœur, bk-2021-n-x1 de content/maths/fonction-exponentielle/
+#     bank.yaml — Partie I (étude de $f_n$ : limites, asymptotes, dérivée,
+#     variations, tangente, point d'inflexion, tracé, aire) — 5,0 pts,
+#     10 questions ;
+#   - CETTE carte, bk-2021-n-x1b — Parties II et III (deux suites bâties
+#     sur $f_n$ : une récurrente $u_{n+1}=f_0(u_n)$, une implicite $x_n$
+#     solution de $f_n(x)=0$) — 7,0 pts, 14 questions.
+# $5{,}0+7{,}0=12{,}0$ — les deux morceaux totalisent EXACTEMENT le barème
+# de l'exercice complet. Si une future revue cherche « l'exercice 1 de
+# 2021 » et ne trouve que 7,0 pts ici, ce n'est PAS un exercice manquant :
+# l'autre moitié est dans fonction-exponentielle. NE PAS reconvertir
+# l'exercice complet sous un troisième identifiant — cela dupliquerait le
+# barème et fausserait la reconstitution du /20 de l'épreuve
+# (`web/src/lib/examens.ts` somme les `bareme_total` de toutes les entrées
+# qui partagent une même position sur la copie).
+#
+# CETTE CARTE RESTE AUTONOME MALGRÉ LA COUPURE — ET C'EST VÉRIFIÉ, PAS
+# SUPPOSÉ. L'énoncé imprimé ne porte AUCUN renvoi explicite entre parties
+# (pas de « d'après la question I-2b », pas de « on pourra utiliser »
+# pointant vers la Partie I) : la dépendance mathématique de la Partie II
+# sur la Partie I (par exemple, $|f_0'|\le\frac12$ en q1-b, qui repose sur
+# la même identité $(1+e^x)^2-4e^x=(1-e^x)^2$ que la Partie I établit pour
+# $f_n'$ en général) est réelle mais jamais IMPRIMÉE comme un renvoi — ce
+# qui rend le partitionnement légitime ici. Mais un élève qui ouvre CETTE
+# carte seule n'a pas la Partie I sous les yeux : chaque fait de la Partie I
+# dont cette carte a besoin (dérivée de $f_0$/$f_n$, l'inégalité
+# $\frac{2e^x}{(1+e^x)^2}\le\frac12$, la monotonie de $f_n$ pour $n\ge1$,
+# les limites aux bornes) est donc REDÉMONTRÉ ICI, au point d'usage, sans
+# jamais renvoyer à une question absente — voir en particulier q1-b (la
+# majoration $|f_0'|\le\frac12$, rétablie en entier ci-dessous précisément
+# parce que sa source vit dans l'autre carte) et q3-1a (monotonie et
+# limites de $f_n$ pour $n\ge2$, redérivées plutôt que citées). Contraste
+# volontaire avec un cas écarté ailleurs (SExp 2018) où l'énoncé IMPRIME
+# « on pourra utiliser le résultat de la question II)3)b) » — là, une carte
+# autonome serait littéralement fausse ; ici, rien n'empêche l'autonomie,
+# et cette conversion la tient.
+#
+# RÉSERVE OWNER — LE PARTITIONNEMENT EST UNE DÉCISION DE PRODUIT, PAS UNE
+# LECTURE. Il a été pris ici parce qu'aucune carte SM du corpus ne dépasse
+# 10 points à ce jour, et qu'une carte de 12 pts / 24 questions ferait
+# travailler l'élève une heure sans point de sortie sur deux objets
+# pédagogiquement disjoints (une étude de fonction exponentielle, deux
+# suites). Si l'owner préfère une carte unique de 12 pts, la fusion est
+# MÉCANIQUE : reprendre les questions de bk-2021-n-x1 (fonction-
+# exponentielle) en tête de celles-ci sous un seul `id` (le fichier source
+# _incoming argumente alors pour `suites-numeriques` comme slug dominant
+# unique, sur la mesure — 7,0/12 contre 4,0/12 — ET sur le précédent SM
+# 2025, dont la conjonction « plus gros bloc ET identité » ne fait jamais
+# gagner l'identité contre une mesure plus grande ; voir la section « Le
+# classement » du fichier source). Non tranché ici : signalé, pas décidé à
+# la place de l'owner.
+#
+# UN FAIT DE MÉTHODE QUI VAUT POUR TOUT LE CORPUS — LE « + » DE $u_{n+1}$ QUI
+# N'ÉTAIT PAS CASSÉ. La ligne de définition de la suite $(u_n)$ (« $u_0=0$
+# et $u_{n+1}=f_0(u_n)$ », question centrale de la Partie II) porte, sur le
+# JPG 150 dpi servi par AlloSchool, un « + » dont deux pixels adjacents à
+# la barre sont blanc papier franc — ce qui le fait ressembler à un « ÷ »
+# au premier coup d'œil. La vérification a PROUVÉ, sur la couche bitonale
+# 300 dpi embarquée dans le PDF, que le glyphe est un « + » **intact,
+# continu, sans le moindre trou** : la cause n'est pas un défaut de
+# numérisation du sujet officiel, mais le **sous-échantillonnage 300 →
+# 150 dpi qu'AlloSchool applique** pour produire les JPG qu'il sert. Le
+# sujet officiel est impeccable ici — lecture retenue, définitivement :
+# $u_{n+1}=f_0(u_n)$, jamais $u_{n\div1}$ (qui n'aurait de toute façon aucun
+# sens mathématique). **Leçon générale pour le corpus : un défaut apparent
+# d'un sujet peut être un artefact de la chaîne de diffusion (CDN,
+# ré-échantillonnage) et non du sujet lui-même** — quand une source PDF
+# haute résolution est disponible sous le JPG servi, elle tranche le doute
+# au pixel, pas au jugement.
+#
+# ÉCART DE TRANSCRIPTION NON BLOQUANT, CONSIGNÉ POUR MÉMOIRE. Les 24 marques
+# de barème de la colonne de marge (« 0,5 » par question) sont imprimées
+# sur le scan avec un POINT décimal — `0.5` — et non une virgule, exactement
+# comme la valeur approchée « 1.47 » de la Partie III (q3-1b). Le fichier
+# _incoming francise ces 24 marques en `0,5` alors qu'il préserve
+# explicitement le point de « 1.47 » deux paragraphes plus loin — une
+# incohérence de TRAITEMENT (pas une erreur de valeur : point et virgule
+# désignent le même nombre). Sans effet sur cette conversion : les marques
+# de marge deviennent ici des valeurs numériques (`**(0,5 pt)**` dans les
+# stems, comme partout ailleurs dans ce fichier), pas des chaînes recopiées
+# littéralement — mais consigné pour qu'un futur agent ne redécouvre pas
+# l'écart en pensant à une erreur de lecture.
+#
+# TABLE D'ATTRIBUTION DES 7,0 POINTS DE CETTE CARTE (Parties II et III) :
+#   | Bloc                                                              | Questions        | Points |
+#   |----------------------------------------------------------------------|-------------------|--------|
+#   | Suite récurrente $u_{n+1}=f_0(u_n)$ : point fixe, contraction,        | q2-1a → q2-2c     | 2,5    |
+#   | convergence vers $\alpha$                                             |                   |        |
+#   | Suite implicite $x_n$ solution de $f_n(x)=0$ : existence,             | q3-1a → q3-4b     | 4,5    |
+#   | encadrement, décroissance, convergence, deux limites                  |                   |        |
+# Somme : 2,5+4,5 = 7,0 ✔ — les deux Parties II et III sont deux études de
+# suites complètes, l'objet même de cette leçon ; pas de découpe par outil
+# employé (existence par TVI, monotonie, limite) qui atomiserait chaque
+# suite en fragments épars entre plusieurs notions.
+#
+# SCOPE NOTE bk-2021-n-x1b (divulgation honnête, authoring-side — même
+# discipline que la SCOPE NOTE générique en tête de ce fichier). Trois
+# questions mobilisent un outil hors du corps R0-R10 de cette leçon, nommé
+# explicitement au point d'usage dans le `reasoning` :
+#   - q2-1a (existence-unicité de $\alpha$, point fixe de $f_0$) et q3-1a
+#     (existence-unicité de $x_n$, zéro de $f_n$) : le corollaire du
+#     théorème des valeurs intermédiaires pour une fonction continue
+#     strictement monotone est un outil de `limites-continuite`, R5 — R8 de
+#     cette leçon RÉSOUT $L=f(L)$ mais ne prouve jamais l'existence d'une
+#     solution, il la suppose acquise par ailleurs (théorème de la limite
+#     monotone, R7) ; ici, rien n'est acquis au départ, l'existence doit
+#     être établie de zéro par le TVI — même écart déjà signalé dans
+#     content/maths/fonction-exponentielle/bank.yaml pour bk-2017-n-x4
+#     (q3-1a, existence-unicité de $a_n$) ;
+#   - q2-2a (majoration $|u_{n+1}-\alpha|\le\frac12|u_n-\alpha|$) :
+#     l'inégalité des accroissements finis (corollaire du théorème des
+#     accroissements finis, appliqué ici à $f_0$ entre $\alpha$ et $u_n$)
+#     est un outil de `derivabilite-etude-fonctions`, hors du corps R0-R10 —
+#     EXACTEMENT la même construction, sur la même famille de fonctions,
+#     déjà mobilisée pour bk-2025-n-x1 (question II-3b) dans
+#     content/maths/fonction-exponentielle/bank.yaml, dont le `reasoning`
+#     de q2-2a ci-dessous reprend la même discipline (énoncer le théorème,
+#     vérifier ses hypothèses, l'appliquer en clair).
+# Chaque outil est énoncé explicitement au point d'usage, ses hypothèses
+# vérifiées, son application faite en clair — jamais supposé acquis sans
+# être nommé.
+# ─────────────────────────────────────────────────────────────────────────
 
 notion: maths/suites-numeriques
 
@@ -437,3 +606,304 @@ entries:
             note: "Opérations sur les limites (R5)."
           - math: '\lim_{n\to+\infty} u_n = 1+\dfrac{1}{1} = 2'
             note: "Le dénominateur tend vers 1, non nul : on passe à la limite dans le quotient."
+
+  # ── bk-2021-n-x1b — 2021 N, Exercice 1, PARTIES II ET III (SM) : suite recurrente et suite implicite bâties sur f_n ──
+  - id: bk-2021-n-x1b
+    title: "Suite récurrente par point fixe et suite implicite : deux études de convergence sur une même fonction exponentielle à paramètre (Parties II et III d'un exercice partitionné)"
+    source:
+      year: 2021
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 1 — Parties II et III"
+    bareme_total: 7
+    duration_min: 42
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national Sciences Mathématiques (SM-A
+        et SM-B, option française), Mathématiques (4 h, coef 9), code
+        NS 24F, AlloSchool element/127193 (Exercice 1, 12 points au total ;
+        Parties II et III, 7,0 points). Transcription VÉRIFIÉE EN DEUX
+        PASSES ADVERSARIALES (2026-08-27) : re-fetch AlloSchool indépendant
+        avec les quatre contrôles anti-CDN (title HTML servi, année lue sur
+        les 4 pages en couche texte ET OCR chiffres-seuls, MD5 des 4 JPEG +
+        du PDF avec second téléchargement, corrélation pixel PDF↔JPG), plus
+        la couche bitonale 300 dpi embarquée dans le PDF — c'est cette
+        couche qui a permis d'authentifier le « + » de la ligne de
+        définition de $u_{n+1}$, seul caractère de l'exercice ayant demandé
+        une adjudication. Statut « vérifié », zéro divergence sur les 24
+        questions de l'exercice complet
+        (docs/sujets/_incoming/maths-sm-2021-n.md). Exercice PARTITIONNÉ :
+        cette carte porte les Parties II et III (7,0 pts) ; la Partie I
+        (5,0 pts) vit dans bk-2021-n-x1 de
+        content/maths/fonction-exponentielle/bank.yaml — voir la NOTE
+        ÉDITORIALE bk-2021-n-x1b en tête de ce fichier pour le détail du
+        partitionnement, la réserve owner, et pourquoi cette carte reste
+        autonome malgré la coupure.
+    intro: |-
+      **Étude de fonction à paramètre (examen national, session normale 2021, Sciences Mathématiques) — Parties II et III.**
+
+      Pour tout entier naturel $n$, on considère la fonction $f_n$ définie sur $\mathbb{R}$ par :
+
+      $$f_n(x) = \dfrac{-2e^x}{1+e^x} + nx$$
+
+      Soit $(C_n)$ sa courbe représentative dans un repère orthonormé $(O,\vec{i},\vec{j})$.
+
+      **Portée de cette carte.** Cette carte reprend les **Parties II et III** de l'exercice 1 (7,0 pts sur les 12 de l'exercice complet) : deux études de suites bâties sur $f_n$. La **Partie I** (5,0 pts, l'étude de $f_n$ elle-même) vit dans une carte sœur, `bk-2021-n-x1` de `content/maths/fonction-exponentielle/bank.yaml`. Cette carte est **autonome** : tout ce dont les questions ci-dessous ont besoin de la Partie I (dérivée de $f_n$, monotonie, limites aux bornes) est redémontré au point d'usage, jamais simplement cité.
+
+      **Partie II.** On considère la suite $(u_n)_{n \ge 0}$ définie par :
+
+      $$u_0 = 0 \qquad\text{et}\qquad (\forall n \in \mathbb{N})\ ;\quad u_{n+1} = f_0(u_n)$$
+    questions:
+      - id: q2-1a
+        part: "Partie II, 1 — Point fixe de f0"
+        stem: |-
+          **(0,5 pt)** Montrer que l'équation $f_0(x) = x$ admet une unique solution $\alpha$ dans $\mathbb{R}$
+        reasoning: |-
+          $f_0(x) = \dfrac{-2e^x}{1+e^x}$ (cas $n=0$ de $f_n$). Une équation $f_0(x)=x$ se lit comme la recherche d'un **point fixe** : étudie la fonction auxiliaire $g(x)=f_0(x)-x$, dont un zéro est exactement une solution.
+
+          $g$ est dérivable sur $\mathbb{R}$ (différence de deux fonctions dérivables : $f_0$, quotient à dénominateur $1+e^x$ jamais nul ; et la fonction identité). En dérivant le quotient ($u=-2e^x$, $v=1+e^x$) :
+
+          $$f_0'(x) = \frac{-2e^x(1+e^x)-(-2e^x)(e^x)}{(1+e^x)^2} = \frac{-2e^x}{(1+e^x)^2}$$
+
+          (les deux termes en $e^{2x}$ s'annulent). Cette expression est **négative pour tout $x$** : $-2e^x<0$ et $(1+e^x)^2>0$ toujours. Donc $g'(x)=f_0'(x)-1<0-1<0$ : $g$ est strictement décroissante sur $\mathbb{R}$ tout entier.
+
+          Limites : divise numérateur et dénominateur de $f_0(x)$ par $e^x$, $f_0(x)=\dfrac{-2}{e^{-x}+1}$. Quand $x\to-\infty$, $e^{-x}\to+\infty$, donc $f_0(x)\to0$, et $g(x)=f_0(x)-x\to0-(-\infty)=+\infty$. Quand $x\to+\infty$, $e^{-x}\to0$, donc $f_0(x)\to-2$, et $g(x)\to-2-(+\infty)=-\infty$.
+
+          $g$ continue (dérivable), strictement décroissante, avec une limite $+\infty$ en $-\infty$ et $-\infty$ en $+\infty$ : par le corollaire du théorème des valeurs intermédiaires pour une fonction strictement monotone (`limites-continuite`), $g$ prend la valeur $0$ **exactement une fois**. Ce zéro unique est l'unique réel $\alpha$ tel que $f_0(\alpha)=\alpha$.
+        steps:
+          - math: 'f_0(x) = \dfrac{-2e^x}{1+e^x} \ \Rightarrow\ f_0''(x) = \dfrac{-2e^x(1+e^x)-(-2e^x)(e^x)}{(1+e^x)^2} = \dfrac{-2e^x}{(1+e^x)^2}'
+            note: "Derivee de f0, quotient de deux fonctions derivables ; les termes en e^2x s'annulent."
+          - math: '-2e^x<0,\ (1+e^x)^2>0 \ \Rightarrow\ f_0''(x)<0 \quad (g(x)=f_0(x)-x \ \Rightarrow\ g''(x)=f_0''(x)-1<0)'
+            note: "f0 prime est negative pour tout x : g prime aussi, strictement negative."
+          - math: '\lim_{x\to-\infty} f_0(x) = 0 \ \Rightarrow\ \lim_{x\to-\infty} g(x) = +\infty \qquad \lim_{x\to+\infty} f_0(x) = -2 \ \Rightarrow\ \lim_{x\to+\infty} g(x) = -\infty'
+            note: "Limites de f0 aux deux bornes (numerateur et denominateur divises par e^x), puis de g."
+          - math: '\Rightarrow\ \exists!\ \alpha\in\mathbb{R} \text{ tel que } g(\alpha)=0,\ \text{soit } f_0(\alpha)=\alpha \quad (\text{corollaire du TVI})'
+            note: "g continue, strictement decroissante, change de signe une seule fois : un unique zero."
+      - id: q2-1b
+        stem: |-
+          **(0,5 pt)** Montrer que : $(\forall x \in \mathbb{R})\ ;\quad \big|f_0'(x)\big| \le \dfrac{1}{2}$
+        reasoning: |-
+          La formule de $f_0'(x)=\dfrac{-2e^x}{(1+e^x)^2}$ vient d'être établie (question précédente) ; il reste à majorer $\big|f_0'(x)\big|=\dfrac{2e^x}{(1+e^x)^2}$. Compare ce quotient à $\dfrac12$ en ramenant tout au même dénominateur, toujours strictement positif :
+
+          $$(1+e^x)^2 - 4e^x = 1+2e^x+e^{2x}-4e^x = 1-2e^x+e^{2x} = (1-e^x)^2 \ge 0$$
+
+          un carré, donc toujours positif ou nul, quel que soit $x$. Donc $(1+e^x)^2\ge4e^x$, et en divisant par $(1+e^x)^2>0$ (le sens de l'inégalité se conserve) :
+
+          $$\frac{4e^x}{(1+e^x)^2}\le1 \quad\text{soit}\quad \frac{2e^x}{(1+e^x)^2}\le\frac12$$
+
+          Or $\big|f_0'(x)\big| = \dfrac{2e^x}{(1+e^x)^2}$ (la valeur absolue efface le signe moins de la question précédente) : donc $\big|f_0'(x)\big|\le\dfrac12$ pour tout $x$.
+
+          *(Ce calcul — l'identité $(1+e^x)^2-4e^x=(1-e^x)^2$ — est le même que celui qui sert de point de départ dans la Partie I, carte `bk-2021-n-x1` de `content/maths/fonction-exponentielle/bank.yaml`, où il est établi pour $f_n'$ en général. Il est refait ici en entier, pour le cas particulier $n=0$, pour que cette carte reste autonome.)*
+        steps:
+          - math: '(1+e^x)^2-4e^x = 1-2e^x+e^{2x} = (1-e^x)^2 \ge 0 \quad (\forall x\in\mathbb{R})'
+            note: "Un carre est toujours positif ou nul."
+          - math: '\Rightarrow\ (1+e^x)^2\ge4e^x \ \Rightarrow\ \dfrac{4e^x}{(1+e^x)^2}\le1 \quad (\text{on divise par } (1+e^x)^2>0)'
+            note: "On divise par le carre du denominateur, strictement positif."
+          - math: '\big|f_0''(x)\big| = \dfrac{2e^x}{(1+e^x)^2} \le \dfrac12'
+            note: "On divise l'inegalite precedente par 2 ; la valeur absolue efface le signe moins de f0 prime."
+      - id: q2-2a
+        part: "Partie II, 2 — Contraction et convergence vers alpha"
+        stem: |-
+          **(0,5 pt)** Montrer que : $(\forall n \in \mathbb{N})\ ;\quad |u_{n+1} - \alpha| \le \dfrac{1}{2}|u_n - \alpha|$
+        reasoning: |-
+          C'est le pas central de toute la Partie II : transformer une borne sur la dérivée (question 1-b) en une borne sur l'écart entre deux termes consécutifs de la suite. L'outil est l'**inégalité des accroissements finis** (corollaire du théorème des accroissements finis, notion `derivabilite-etude-fonctions` : si $f$ est dérivable sur un intervalle et $|f'|\le k$ partout sur cet intervalle, alors $|f(b)-f(a)|\le k|b-a|$ pour tous $a,b$ de l'intervalle) — outil hors du corps R0-R10 de cette leçon, déjà mobilisé pour la même construction dans `bk-2025-n-x1` de `content/maths/fonction-exponentielle/bank.yaml`.
+
+          Applique-la à $f_0$ (dérivable sur $\mathbb{R}$, $|f_0'|\le\dfrac12$ partout, question 1-b) entre $a=\alpha$ et $b=u_n$ :
+
+          $$\big|f_0(u_n)-f_0(\alpha)\big| \le \frac12|u_n-\alpha|$$
+
+          Or $f_0(u_n)=u_{n+1}$ (définition de la suite) et $f_0(\alpha)=\alpha$ (définition de $\alpha$, question 1-a) : le membre de gauche est exactement $|u_{n+1}-\alpha|$.
+        steps:
+          - math: 'f_0 \text{ derivable sur } \mathbb{R},\ |f_0''|\le\dfrac12 \ \Rightarrow\ \big|f_0(b)-f_0(a)\big|\le\dfrac12|b-a| \quad (\forall a,b\in\mathbb{R})'
+            note: "Inegalite des accroissements finis, appliquee a f0 sur R tout entier."
+          - math: '\text{avec } a=\alpha,\ b=u_n\ :\ \big|f_0(u_n)-f_0(\alpha)\big|\le\dfrac12|u_n-\alpha|'
+            note: "On applique l'inegalite entre alpha et u_n."
+          - math: 'f_0(u_n)=u_{n+1},\quad f_0(\alpha)=\alpha \ \Rightarrow\ |u_{n+1}-\alpha|\le\dfrac12|u_n-\alpha|'
+            note: "u_{n+1} est f0 de u_n par definition ; alpha est point fixe de f0 par definition."
+      - id: q2-2b
+        stem: |-
+          **(0,5 pt)** En déduire que : $(\forall n \in \mathbb{N})\ ;\quad |u_n - \alpha| \le \left(\dfrac{1}{2}\right)^{n}|\alpha|$
+        reasoning: |-
+          La question précédente donne un pas : d'un rang au suivant, l'écart à $\alpha$ est au moins divisé par $2$. Empile ce pas $n$ fois, par récurrence (R1), pour obtenir la borne au rang $n$ à partir du rang $0$.
+
+          **Initialisation.** Au rang $0$ : $|u_0-\alpha|=|0-\alpha|=|\alpha|=\left(\dfrac12\right)^0|\alpha|$ — égalité, donc vraie.
+
+          **Hérédité.** Suppose $|u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha|$. D'après la question 2-a, $|u_{n+1}-\alpha|\le\dfrac12|u_n-\alpha|$, donc en combinant les deux :
+
+          $$|u_{n+1}-\alpha| \le \frac12\times\left(\frac12\right)^n|\alpha| = \left(\frac12\right)^{n+1}|\alpha|$$
+
+          C'est exactement l'inégalité au rang $n+1$ : par récurrence, elle est vraie pour tout $n$.
+        steps:
+          - math: 'n=0\ :\ |u_0-\alpha| = |0-\alpha| = |\alpha| = \left(\dfrac12\right)^0|\alpha|'
+            note: "Initialisation : egalite au rang 0, car u0 = 0."
+          - math: '|u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha| \ \Rightarrow\ |u_{n+1}-\alpha|\le\dfrac12|u_n-\alpha|\le\dfrac12\left(\dfrac12\right)^n|\alpha| = \left(\dfrac12\right)^{n+1}|\alpha|'
+            note: "Heredite : on reinjecte la question 2-a dans l'hypothese de recurrence."
+          - math: '\Rightarrow\ (\forall n\in\mathbb{N})\ ;\ |u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha| \quad (\text{par recurrence})'
+            note: "Conclusion par recurrence."
+      - id: q2-2c
+        stem: |-
+          **(0,5 pt)** Montrer que la suite $(u_n)_{n \ge 0}$ converge vers $\alpha$
+        reasoning: |-
+          On tient un encadrement de $|u_n-\alpha|$ entre $0$ et une suite explicite qui tend vers $0$ : $\left(\dfrac12\right)^n$ est géométrique de raison $\dfrac12\in\,]{-1};1[$, donc $\left(\dfrac12\right)^n\to0$ (R5), et $|\alpha|$ est une constante, donc $\left(\dfrac12\right)^n|\alpha|\to0$ aussi. Le théorème des gendarmes (R6), appliqué à $0\le|u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha|$, donne $|u_n-\alpha|\to0$ — c'est-à-dire, par définition, $u_n\to\alpha$.
+        steps:
+          - math: '\left|\dfrac12\right|<1 \ \Rightarrow\ \lim_{n\to+\infty}\left(\dfrac12\right)^n = 0 \ \Rightarrow\ \lim_{n\to+\infty}\left(\dfrac12\right)^n|\alpha| = 0'
+            note: "Suite geometrique de raison entre -1 et 1 (R5) : elle tend vers 0."
+          - math: '0\le|u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha|,\quad \left(\dfrac12\right)^n|\alpha|\to0 \ \Rightarrow\ |u_n-\alpha|\to0 \quad (\text{theoreme des gendarmes, R6})'
+            note: "u_n moins alpha est encadre par 0 et une suite qui tend vers 0."
+          - math: '\Rightarrow\ \lim_{n\to+\infty} u_n = \alpha'
+            note: "Par definition de la limite : (u_n) converge vers alpha."
+      - id: q3-1a
+        part: "Partie III, 1 — Existence et encadrement de x_n (n supérieur ou égal à 2)"
+        stem: |-
+          **On suppose dans cette partie que $n \ge 2$.**
+
+          **(0,5 pt)** Montrer que pour tout entier $n \ge 2$, il existe un unique réel $x_n$ solution de l'équation $f_n(x) = 0$
+        reasoning: |-
+          Même schéma de preuve qu'à la question 1-a de la Partie II — existence et unicité d'un zéro par un corollaire du TVI (`limites-continuite`) — mais appliqué directement à $f_n$, pas à une fonction auxiliaire.
+
+          $f_n$ est dérivable sur $\mathbb{R}$, avec $f_n'(x) = \dfrac{-2e^x}{(1+e^x)^2}+n$ (calcul de quotient identique à celui de la question 1-a, plus la dérivée de $nx$ qui vaut $n$). Réutilise l'inégalité $\dfrac{2e^x}{(1+e^x)^2}\le\dfrac12$ établie en question 1-b : pour $n\ge2$,
+
+          $$f_n'(x) = n - \frac{2e^x}{(1+e^x)^2} \ge n-\frac12 \ge 2-\frac12 = \frac32 > 0$$
+
+          $f_n$ est donc strictement croissante sur $\mathbb{R}$ tout entier, pour tout $n\ge2$.
+
+          Pour les limites aux bornes, écris $f_n(x) = nx + \dfrac{-2e^x}{1+e^x}$ : le second terme est borné (compris strictement entre $-2$ et $0$ pour tout $x$, car $\dfrac{2e^x}{1+e^x}$ reste strictement entre $0$ et $2$), donc c'est le terme $nx$ qui pilote entièrement le comportement à l'infini, puisque $n>0$ : une quantité qui diverge vers $\pm\infty$, additionnée d'une quantité bornée, diverge encore vers $\pm\infty$.
+
+          $$\lim_{x\to-\infty} f_n(x) = -\infty \qquad\qquad \lim_{x\to+\infty} f_n(x) = +\infty$$
+
+          $f_n$ continue (dérivable), strictement croissante, d'une limite $-\infty$ à une limite $+\infty$ : par le corollaire du théorème des valeurs intermédiaires pour une fonction strictement monotone, l'équation $f_n(x)=0$ admet une unique solution $x_n$.
+        steps:
+          - math: 'f_n''(x) = \dfrac{-2e^x}{(1+e^x)^2}+n \quad (\text{calcul de quotient identique a la question 1-a})'
+            note: "Derivee de f_n pour n quelconque : meme calcul que pour f0, le terme n s'ajoute."
+          - math: 'n\ge2,\ \dfrac{2e^x}{(1+e^x)^2}\le\dfrac12 \quad(\text{q1-b}) \ \Rightarrow\ f_n''(x) \ge n-\dfrac12 \ge \dfrac32 > 0'
+            note: "On reutilise l'inegalite de la question 1-b : f_n prime reste strictement positive pour n superieur ou egal a 2."
+          - math: '\dfrac{-2e^x}{1+e^x}\in\,]-2,0[ \quad (\text{terme borne}) \ \Rightarrow\ \lim_{x\to-\infty} f_n(x) = -\infty,\quad \lim_{x\to+\infty} f_n(x) = +\infty \quad (n>0)'
+            note: "Le terme exponentiel reste borne ; c'est le terme n fois x qui pilote le comportement a l'infini."
+          - math: '\Rightarrow\ \exists!\ x_n\in\mathbb{R} \text{ tel que } f_n(x_n)=0 \quad (\text{corollaire du TVI})'
+            note: "Continue, strictement croissante, de moins l'infini a plus l'infini : un unique zero."
+      - id: q3-1b
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout entier $n \ge 2$, $0 < x_n < 1$ *(On prendra $\dfrac{2e}{1+e} < 1{,}47$)*
+        reasoning: |-
+          $f_n$ est strictement croissante (question précédente) : pour encadrer son unique zéro $x_n$ entre deux valeurs, il suffit de vérifier que $f_n$ change de signe entre elles.
+
+          $$f_n(0) = \frac{-2e^0}{1+e^0}+0 = \frac{-2}{2} = -1 < 0$$
+
+          $$f_n(1) = \frac{-2e}{1+e}+n$$
+
+          L'indication $\dfrac{2e}{1+e}<1{,}47$ sert exactement ici : comme $n\ge2$, $f_n(1) = n-\dfrac{2e}{1+e} \ge 2-1{,}47 = 0{,}53 > 0$.
+
+          $f_n(0)<0<f_n(1)$, et $f_n$ strictement croissante : son unique zéro $x_n$ est donc strictement compris entre $0$ et $1$.
+        steps:
+          - math: 'f_n(0) = \dfrac{-2}{1+1}+0 = -1 < 0'
+            note: "On evalue f_n en 0."
+          - math: 'f_n(1) = \dfrac{-2e}{1+e}+n \ge n-1{,}47 \ge 2-1{,}47 = 0{,}53 > 0 \quad (\text{indication}\ \tfrac{2e}{1+e}<1{,}47,\ n\ge2)'
+            note: "On evalue f_n en 1 et on utilise l'indication de l'enonce avec n superieur ou egal a 2."
+          - math: 'f_n(0)<0<f_n(1),\ f_n \text{ strictement croissante} \ \Rightarrow\ 0<x_n<1'
+            note: "Le zero unique de f_n est encadre par 0 et 1."
+      - id: q3-2a
+        part: "Partie III, 2 — Décroissance et convergence de (x_n)"
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout entier $n \ge 2$, $f_{n+1}(x_n) > 0$
+        reasoning: |-
+          Astuce clé : relier $f_{n+1}$ à $f_n$ dans leur définition, plutôt que de recalculer $f_{n+1}(x_n)$ depuis zéro. Par définition, $f_{n+1}(x)-f_n(x) = (n+1)x-nx = x$ pour tout $x$ (le morceau exponentiel est identique, seul le terme en $x$ change) — donc $f_{n+1}(x)=f_n(x)+x$.
+
+          En $x=x_n$ : $f_{n+1}(x_n) = f_n(x_n)+x_n = 0+x_n = x_n$, puisque $f_n(x_n)=0$ par définition de $x_n$ (question 1-a). Et $x_n>0$ (question 1-b) : donc $f_{n+1}(x_n)=x_n>0$.
+        steps:
+          - math: 'f_{n+1}(x)-f_n(x) = (n+1)x-nx = x \ \Rightarrow\ f_{n+1}(x) = f_n(x)+x \quad (\forall x\in\mathbb{R})'
+            note: "Le morceau exponentiel de f_n ne depend pas de n : seul le terme en x change entre f_n et f_{n+1}."
+          - math: 'f_{n+1}(x_n) = f_n(x_n)+x_n = 0+x_n = x_n \quad (\text{car } f_n(x_n)=0)'
+            note: "On evalue en x_n, ou f_n s'annule par definition."
+          - math: 'x_n>0 \quad (\text{question 1-b}) \ \Rightarrow\ f_{n+1}(x_n) = x_n > 0'
+            note: "x_n est strictement positif : conclusion."
+      - id: q3-2b
+        stem: |-
+          **(0,5 pt)** En déduire que la suite $(x_n)_{n \ge 2}$ est strictement décroissante.
+        reasoning: |-
+          On a deux informations sur $f_{n+1}$ au même endroit, $x_n$ : $f_{n+1}(x_{n+1})=0$ (définition de $x_{n+1}$) et $f_{n+1}(x_n)>0$ (question précédente). Donc $f_{n+1}(x_n) > f_{n+1}(x_{n+1})$. Or $f_{n+1}$ est strictement croissante sur $\mathbb{R}$ (question 1-a, valable pour tout entier $\ge2$, et $n+1\ge3\ge2$) — une fonction strictement croissante compare les sorties dans le même sens que les entrées : $f_{n+1}(x_n)>f_{n+1}(x_{n+1}) \Rightarrow x_n>x_{n+1}$.
+
+          C'est vrai pour tout $n\ge2$ : la suite $(x_n)_{n\ge2}$ est donc strictement décroissante.
+        steps:
+          - math: 'f_{n+1}(x_{n+1}) = 0 \quad (\text{definition de } x_{n+1}), \qquad f_{n+1}(x_n) > 0 \quad (\text{question 2-a})'
+            note: "Deux valeurs de f_{n+1} : en x_{n+1} elle vaut 0, en x_n elle est strictement positive."
+          - math: 'f_{n+1}(x_n) > f_{n+1}(x_{n+1}),\ f_{n+1} \text{ strictement croissante} \ \Rightarrow\ x_n > x_{n+1}'
+            note: "Une fonction strictement croissante compare les entrees dans le meme sens que les sorties."
+          - math: '\Rightarrow\ (x_n)_{n\ge2} \text{ strictement decroissante}'
+            note: "Vrai pour tout n superieur ou egal a 2 : conclusion."
+      - id: q3-2c
+        stem: |-
+          **(0,5 pt)** Montrer que la suite $(x_n)_{n \ge 2}$ est convergente.
+        reasoning: |-
+          $(x_n)_{n\ge2}$ est strictement décroissante (question précédente) et minorée par $0$ (question 1-b, $x_n>0$ pour tout $n\ge2$) : les deux hypothèses exactes du théorème de la limite monotone (R7) sont réunies — décroissante et minorée. La suite converge.
+        steps:
+          - math: '(x_n)_{n\ge2} \text{ decroissante} \quad (\text{q2-b}), \qquad x_n>0 \quad (\text{q1-b, minoration}) \ \Rightarrow\ (x_n)_{n\ge2} \text{ converge} \quad (\text{theoreme de la limite monotone, R7})'
+            note: "Decroissante et minoree : les deux hypotheses du theoreme de la limite monotone."
+      - id: q3-3a
+        part: "Partie III, 3 — Limites de x_n et de n fois x_n"
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout entier $n \ge 2$, $\dfrac{1}{n} < x_n < \dfrac{1}{n}\left(\dfrac{2e}{1+e}\right)$
+        reasoning: |-
+          Repars de la définition de $x_n$ : $f_n(x_n)=0$ s'écrit $\dfrac{-2e^{x_n}}{1+e^{x_n}}+nx_n=0$, soit $n x_n = \dfrac{2e^{x_n}}{1+e^{x_n}}$ — le membre de droite est une fonction de $x_n$ seul, qu'il suffit d'encadrer avec ce qu'on connaît déjà de $x_n$ (question 1-b : $0<x_n<1$).
+
+          Pose $h(x)=\dfrac{2e^x}{1+e^x}$. C'est une fonction strictement croissante : $h(x)=2-\dfrac{2}{1+e^x}$, et $\dfrac{2}{1+e^x}$ décroît strictement (dénominateur croissant), donc $h$ croît strictement. Comme $0<x_n<1$ et $h$ strictement croissante, $h(0)<h(x_n)<h(1)$ :
+
+          $$h(0) = \frac{2}{2} = 1 \qquad\qquad h(1) = \frac{2e}{1+e}$$
+
+          $$1 < nx_n < \frac{2e}{1+e}$$
+
+          Il ne reste qu'à diviser par $n>0$, sans changer le sens des inégalités :
+
+          $$\frac{1}{n} < x_n < \frac{1}{n}\left(\frac{2e}{1+e}\right)$$
+        steps:
+          - math: 'f_n(x_n)=0 \iff \dfrac{-2e^{x_n}}{1+e^{x_n}}+nx_n=0 \iff nx_n = \dfrac{2e^{x_n}}{1+e^{x_n}}'
+            note: "On reecrit la definition de x_n pour isoler n fois x_n."
+          - math: 'h(x)=\dfrac{2e^x}{1+e^x} = 2-\dfrac{2}{1+e^x} \ \Rightarrow\ h \text{ strictement croissante}'
+            note: "h est 2 moins une fonction decroissante (2 sur 1+e^x) : h croit strictement."
+          - math: '0<x_n<1,\ h \text{ croissante} \ \Rightarrow\ h(0)<h(x_n)<h(1),\quad h(0)=1,\ h(1)=\dfrac{2e}{1+e}'
+            note: "On encadre h(x_n) grace a l'encadrement de x_n de la question 1-b."
+          - math: '1 < nx_n < \dfrac{2e}{1+e} \ \Rightarrow\ \dfrac1n < x_n < \dfrac1n\left(\dfrac{2e}{1+e}\right) \quad (n>0)'
+            note: "On divise par n, strictement positif : le sens des inegalites ne change pas."
+      - id: q3-3b
+        stem: |-
+          **(0,5 pt)** En déduire $\displaystyle\lim_{n \to +\infty} x_n$, puis montrer que $\displaystyle\lim_{n \to +\infty} n x_n = 1$
+        reasoning: |-
+          Le membre de gauche $\dfrac1n$ et le membre de droite $\dfrac1n\left(\dfrac{2e}{1+e}\right)$ de l'encadrement précédent tendent tous deux vers $0$ quand $n\to+\infty$ ($\dfrac{2e}{1+e}$ est une constante) : par le théorème des gendarmes (R6), $x_n\to0$.
+
+          Pour la seconde limite, repars de l'égalité établie à la question 3-a, $nx_n=\dfrac{2e^{x_n}}{1+e^{x_n}}$ : c'est une fonction continue de $x_n$, et $x_n\to0$, donc par continuité de $\exp$ et opérations usuelles sur les limites (R5) :
+
+          $$\lim_{n\to+\infty} nx_n = \frac{2e^0}{1+e^0} = \frac{2}{2} = 1$$
+        steps:
+          - math: '\dfrac1n\to0,\quad \dfrac1n\left(\dfrac{2e}{1+e}\right)\to0 \ \Rightarrow\ x_n\to0 \quad (\text{theoreme des gendarmes, R6, question 3-a})'
+            note: "Les deux bornes de l'encadrement tendent vers 0 : x_n aussi."
+          - math: 'nx_n = \dfrac{2e^{x_n}}{1+e^{x_n}} \quad (\text{question 3-a}),\quad x_n\to0 \ \Rightarrow\ e^{x_n}\to e^0=1'
+            note: "On reutilise l'egalite de la question 3-a ; continuite de exp en 0."
+          - math: '\lim_{n\to+\infty} nx_n = \dfrac{2\times1}{1+1} = 1'
+            note: "On passe a la limite dans le quotient : numerateur et denominateur ont une limite finie, denominateur non nul."
+      - id: q3-4a
+        part: "Partie III, 4 — Comparaison à x_2 et limite de (x_n) puissance n"
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout entier $n \ge 2$, on a : $x_n \le x_2$
+        reasoning: |-
+          La suite $(x_n)_{n\ge2}$ est strictement décroissante à partir du rang $2$ (question 2-b) : $x_2$ est donc son premier terme, le plus grand de tous. Pour tout $n\ge2$, $x_n$ est soit égal à $x_2$ (le cas $n=2$ lui-même), soit strictement plus petit (tous les rangs suivants, par décroissance stricte) — dans les deux cas, $x_n\le x_2$.
+        steps:
+          - math: '(x_n)_{n\ge2} \text{ strictement decroissante} \quad (\text{q2-b}) \ \Rightarrow\ (\forall n\ge2)\ ;\ x_n\le x_2'
+            note: "x_2 est le premier terme d'une suite decroissante : tous les termes suivants lui sont inferieurs ou egaux (egalite au rang n=2)."
+      - id: q3-4b
+        stem: |-
+          **(0,5 pt)** En déduire $\displaystyle\lim_{n \to +\infty} (x_n)^{n}$
+        reasoning: |-
+          Deux ingrédients à combiner : $0<x_n\le x_2$ pour tout $n\ge2$ (question précédente et question 1-b), et $x_2<1$ (question 1-b appliquée au rang $n=2$ — une constante fixe qui ne dépend plus de $n$). La fonction $t\mapsto t^n$ est croissante sur les positifs, donc élever à la puissance $n$ conserve l'inégalité $x_n\le x_2$ :
+
+          $$0 < (x_n)^n \le (x_2)^n$$
+
+          Or $0<x_2<1$ : $(x_2)^n$ est une suite géométrique de raison dans $]0,1[$, donc $(x_2)^n\to0$ (R5, même mécanisme que $\left(\dfrac12\right)^n$ en Partie II). Le théorème des gendarmes (R6), appliqué à $0<(x_n)^n\le(x_2)^n\to0$, donne :
+
+          $$\lim_{n\to+\infty} (x_n)^n = 0$$
+        steps:
+          - math: '0<x_n\le x_2<1 \ \Rightarrow\ 0<(x_n)^n\le(x_2)^n \quad (t\mapsto t^n \text{ croissante sur les positifs})'
+            note: "On eleve a la puissance n, qui conserve l'ordre entre deux quantites positives."
+          - math: '0<x_2<1 \ \Rightarrow\ \lim_{n\to+\infty} (x_2)^n = 0 \quad (R5)'
+            note: "x_2 est une constante entre 0 et 1 : sa puissance n-ieme tend vers 0."
+          - math: '0<(x_n)^n\le(x_2)^n\to0 \ \Rightarrow\ \lim_{n\to+\infty} (x_n)^n = 0 \quad (\text{theoreme des gendarmes, R6})'
+            note: "Encadrement final : conclusion par le theoreme des gendarmes."

@@ -6,7 +6,7 @@
 # de leçon (r-bac + r-variation, [[exercise:]] à R8), pas la rampe embarquée.
 #
 # `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
-# exercises.yaml). Les CINQ entrées de ce fichier :
+# exercises.yaml). Les SIX entrées de ce fichier :
 #   - 2017 session normale (Exercice 4, filière SM, barème 10 points, statut
 #     « vérifié » — agent-vérificateur-adversarial, deux passes,
 #     2026-08-27 — voir la NOTE ÉDITORIALE bk-2017-n-x4 plus bas pour le
@@ -15,6 +15,12 @@
 #     « vérifié » — agent-vérificateur-adversarial, 2026-07-12) ;
 #   - 2020 session normale (Problème, filière SExp, barème 7 points, statut
 #     « vérifié » — agent-vérificateur-adversarial, 2026-08-06) ;
+#   - 2021 session normale (Exercice 1 — PARTIE I SEULE, filière SM, barème
+#     5,0 points sur les 12 de l'exercice complet, statut « vérifié » —
+#     agent-vérificateur-adversarial, deux passes indépendantes, 2026-08-27 —
+#     voir la NOTE ÉDITORIALE bk-2021-n-x1 plus bas : l'exercice est
+#     PARTITIONNÉ, les Parties II et III (7,0 points) vivent dans
+#     `bk-2021-n-x1b` de `content/maths/suites-numeriques/bank.yaml`) ;
 #   - 2022 session normale (Problème, filière SExp, barème 8,5 points, statut
 #     « corrigé (conforme au scan) », PAS « vérifié » — voir la note de
 #     sourcing de l'entrée pour le détail de la correction de figure) ;
@@ -24,21 +30,24 @@
 #     le détail).
 # Trois d'entre elles (2019, 2020, 2022) transcrivent fidèlement les TROIS
 # entrées de docs/sujets/maths/fonction-exponentielle.md — le census de
-# cette notion, qui NE RECENSE ENCORE NI 2017 NI 2025 : ces deux entrées
-# (bk-2017-n-x4 et bk-2025-n-x1) sont converties directement depuis
-# docs/sujets/_incoming/ (respectivement maths-sm-2017-n.md et
-# maths-sm-2025-n.md), même situation que bk-2024-r-x2 dans
-# content/maths/calcul-integral/bank.yaml (converti depuis _incoming avant
-# que son propre census ne recense le rattrapage). Les STATUTS DIFFÈRENT
-# (quatre « vérifié », un « corrigé (conforme au scan) »), tout comme les
-# FILIÈRES (SM pour 2017, 2019 et 2025, SExp pour 2020 et 2022) : c'est
-# reporté honnêtement, entrée par entrée, dans `sourcing.note` ci-dessous —
-# aucune des cinq n'est requalifiée. Aucun autre sujet n'est disponible pour
-# cette notion : introuvable = absent, jamais inventé. Raisonnement rédigé à la
-# voix experte de la maison sur 100 % des questions ; barème transcrit tel
-# quel dans les énoncés ; conventions KaTeX (block scalars pour la prose,
-# KaTeX brut entre apostrophes simples dans steps[].math, notes sans
-# backslash).
+# cette notion, qui NE RECENSE NI 2017, NI 2021, NI 2025 : ces trois entrées
+# (bk-2017-n-x4, bk-2021-n-x1 et bk-2025-n-x1) sont converties directement
+# depuis docs/sujets/_incoming/ (respectivement maths-sm-2017-n.md,
+# maths-sm-2021-n.md et maths-sm-2025-n.md), même situation que bk-2024-r-x2
+# dans content/maths/calcul-integral/bank.yaml (converti depuis _incoming
+# avant que son propre census ne recense le rattrapage). Les STATUTS
+# DIFFÈRENT (cinq « vérifié », un « corrigé (conforme au scan) »), tout
+# comme les FILIÈRES (SM pour 2017, 2019, 2021 et 2025, SExp pour 2020 et
+# 2022) : c'est reporté honnêtement, entrée par entrée, dans `sourcing.note`
+# ci-dessous — aucune des six n'est requalifiée. Aucun autre sujet n'est
+# disponible pour cette notion : introuvable = absent, jamais inventé.
+# Raisonnement rédigé à la voix experte de la maison sur 100 % des
+# questions ; barème transcrit tel quel dans les énoncés ; conventions
+# KaTeX (block scalars pour la prose, KaTeX brut entre apostrophes simples
+# dans steps[].math — apostrophe DOUBLÉE pour un prime littéral, $f'(x)$
+# s'écrit `f''(x)` dans la source YAML single-quoted, comme le fait déjà
+# bk-2017-n-x4 ; $f''$/$f'''$ notés $f^{(2)}$/$f^{(3)}$ pour éviter
+# l'empilement — notes sans backslash).
 #
 # SCOPE NOTE (divulgation honnête, authoring-side — même discipline que la
 # SCOPE NOTE de content/maths/nombres-complexes-1/bank.yaml) : l'entrée 2019
@@ -386,6 +395,133 @@
 #   - le PASSAGE AU LOGARITHME et $\ln(uv)=\ln(u)+\ln(v)$ (q3-1c), et la
 #     primitive de $\frac1{1+t}$ en $\ln(1+t)$ (q3-2b, lecture à l'envers de
 #     la dérivée de $\ln(u)$) — outils de `fonction-logarithme`, R2 et R3.
+# Chaque outil est énoncé explicitement au point d'usage, ses hypothèses
+# vérifiées, son application faite en clair — jamais supposé acquis sans
+# être nommé.
+# ─────────────────────────────────────────────────────────────────────────
+#
+# NOTE ÉDITORIALE bk-2021-n-x1 (2021, session normale, Exercice 1 — PARTIE I
+# SEULE, 5,0 pts sur 12, filière SM) — à lire avant toute revue de cette
+# entrée.
+#
+# SOURCE ET PROTOCOLE. Convertie depuis
+# docs/sujets/_incoming/maths-sm-2021-n.md, statut « VÉRIFIÉ, CLEARÉ POUR
+# CONVERSION ». Deux passes : une transcription (2026-08-27) puis une
+# vérification adversariale INDÉPENDANTE le même jour — scan re-téléchargé
+# de zéro, les quatre contrôles anti-CDN refaits en entier (année lue sur
+# chaque page en couche texte ET en OCR chiffres-seuls, MD5 des 4 JPEG + du
+# PDF avec second téléchargement, `<title>` HTML servi), plus deux
+# instruments inédits (corrélation pixel PDF↔JPG, couche bitonale 300 dpi
+# embarquée dans le PDF). Verdict : transcription FIDÈLE, zéro divergence
+# sur les 24 questions de l'exercice complet, sur le barème et sur
+# l'en-tête. Aucun défaut du sujet officiel.
+#
+# RECOMPTE DU BARÈME DE L'EXERCICE COMPLET (les 24 questions, 12,0 pts),
+# indépendant, à partir de la marge du scan (métrologie calibrée en px,
+# 24 marques mesurées à 30-32 px chacune — matériellement incompatible avec
+# un 0,25 ou un 0,75, qui mesurent 44 px sur ce même scan) :
+#   Partie I = 0,5×10 = 5,0 (q1a, 1b, 2a, 2b, 2c, 3a, 3b, 4, 5a, 5b)
+#   Partie II = 0,5×5 = 2,5 (q1a, 1b, 2a, 2b, 2c)
+#   Partie III = 0,5×9 = 4,5 (q1a, 1b, 2a, 2b, 2c, 3a, 3b, 4a, 4b)
+#   Total 5,0+2,5+4,5 = 12,0 — conforme au « (12 pts) » imprimé p.1 ET en
+# tête du corps p.2, et au recompte déjà consigné dans le fichier
+# _incoming, confirmé une seconde fois par la vérification indépendante.
+# CETTE carte ne porte que la Partie I : bareme_total: 5.
+#
+# LE PARTITIONNEMENT — CETTE CARTE EST UNE MOITIÉ, PAS L'EXERCICE ENTIER.
+# L'exercice 1 pèse 12,0 pts et 24 questions au total — ce qui en ferait,
+# à lui seul, la plus grosse carte du corpus SM (aucune carte SM du dépôt
+# ne dépasse 10 points, vérifié sur les 14 banques : les quatre plus
+# grosses sont bk-2025-n-x1, bk-2023-r-x1, bk-2019-n-x4 et bk-2017-n-x4,
+# toutes à 10). Il est donc PARTITIONNÉ en deux cartes, sur une frontière
+# imprimée du sujet lui-même (« Partie II : »), exactement comme le
+# précédent bk-2022-n-x4 (partitionné entre content/maths/calcul-integral
+# et content/maths/equations-differentielles) :
+#   - CETTE carte, bk-2021-n-x1 — Partie I (étude de $f_n$ : limites,
+#     asymptotes, dérivée, variations, tangente, point d'inflexion, tracé,
+#     aire) — 5,0 pts, 10 questions ;
+#   - la carte sœur, bk-2021-n-x1b de content/maths/suites-numeriques/
+#     bank.yaml — Parties II et III (deux suites bâties sur $f_n$) —
+#     7,0 pts, 14 questions.
+# $5{,}0+7{,}0=12{,}0$ — les deux morceaux totalisent EXACTEMENT le barème de
+# l'exercice complet. Si une future revue cherche « l'exercice 1 de 2021 »
+# et ne trouve que 5,0 pts ici, ce n'est PAS un exercice manquant : l'autre
+# moitié est dans suites-numeriques. NE PAS reconvertir l'exercice complet
+# sous un troisième identifiant — cela dupliquerait le barème et fausserait
+# la reconstitution du /20 de l'épreuve (`web/src/lib/examens.ts` somme les
+# `bareme_total` de toutes les entrées qui partagent une même position sur
+# la copie).
+#
+# RÉSERVE OWNER — LE PARTITIONNEMENT EST UNE DÉCISION DE PRODUIT, PAS UNE
+# LECTURE. Il a été pris ici parce qu'aucune carte SM du corpus ne dépasse
+# 10 points à ce jour, et qu'une carte de 12 pts / 24 questions ferait
+# travailler l'élève une heure sans point de sortie sur deux objets
+# pédagogiquement disjoints (une étude de fonction exponentielle, deux
+# suites). Si l'owner préfère une carte unique de 12 pts, la fusion est
+# MÉCANIQUE : reprendre les questions de bk-2021-n-x1b à la suite de
+# celles-ci sous un seul `id` (le fichier source _incoming argumente alors
+# pour `suites-numeriques` comme slug dominant unique, sur la mesure ET sur
+# le précédent SM 2025 — voir sa section « Le classement »). Non tranché
+# ici : signalé, pas décidé à la place de l'owner.
+#
+# UN FAIT DE MÉTHODE QUI VAUT POUR TOUT LE CORPUS — LE « + » DE $u_{n+1}$ QUI
+# N'ÉTAIT PAS CASSÉ. La ligne de définition de la suite $(u_n)$ (Partie II,
+# hors périmètre de CETTE carte mais le fait vaut d'être consigné ici pour
+# tout futur convertisseur) porte, sur le JPG 150 dpi servi par AlloSchool,
+# un « + » dont deux pixels adjacents à la barre sont blanc papier franc —
+# ce qui le fait ressembler à un « ÷ » au premier coup d'œil. La
+# vérification a PROUVÉ, sur la couche bitonale 300 dpi embarquée dans le
+# PDF, que le glyphe est un « + » **intact, continu, sans le moindre trou** :
+# la cause n'est pas un défaut de numérisation du sujet officiel, mais le
+# **sous-échantillonnage 300 → 150 dpi qu'AlloSchool applique** pour produire
+# les JPG qu'il sert. Le sujet officiel est impeccable ici. **Leçon
+# générale pour le corpus : un défaut apparent d'un sujet peut être un
+# artefact de la chaîne de diffusion (CDN, ré-échantillonnage) et non du
+# sujet lui-même** — quand une source PDF haute résolution est disponible
+# sous le JPG servi, elle tranche le doute au pixel, pas au jugement.
+#
+# ÉCART DE TRANSCRIPTION NON BLOQUANT, CONSIGNÉ POUR MÉMOIRE. Les 24 marques
+# de barème de la colonne de marge (« 0,5 » par question) sont imprimées
+# sur le scan avec un POINT décimal — `0.5` — et non une virgule, exactement
+# comme la valeur approchée « 1.47 » de la Partie III. Le fichier
+# _incoming francise ces 24 marques en `0,5` alors qu'il préserve
+# explicitement le point de « 1.47 » deux paragraphes plus loin — une
+# incohérence de TRAITEMENT (pas une erreur de valeur : point et virgule
+# désignent le même nombre). Sans effet sur cette conversion : les marques
+# de marge deviennent ici des valeurs numériques (`**(0,5 pt)**` dans les
+# stems, comme partout ailleurs dans ce fichier), pas des chaînes recopiées
+# littéralement — mais consigné pour qu'un futur agent ne redécouvre pas
+# l'écart en pensant à une erreur de lecture.
+#
+# TABLE D'ATTRIBUTION DES 5,0 POINTS DE CETTE CARTE (Partie I seule) :
+#   | Bloc                                                        | Questions | Points |
+#   |----------------------------------------------------------------|-----------|--------|
+#   | Limites, asymptotes (oblique en -infini, en +infini)            | q1a, q1b  | 1,0    |
+#   | Dérivée, majoration technique, sens de variation                | q2a-q2c   | 1,5    |
+#   | Tangente en I, point d'inflexion unique                         | q3a, q3b  | 1,0    |
+#   | Tracé de (C0) et (C2)                                            | q4        | 0,5    |
+#   | Aire entre (C_n) et son asymptote, limite de l'aire              | q5a, q5b  | 1,0    |
+# Somme : 1,0+1,5+1,0+0,5+1,0 = 5,0 ✔ — l'identité de cet exercice EST une
+# fonction exponentielle à paramètre : aucun arbitrage de slug à rendre ici.
+#
+# SCOPE NOTE bk-2021-n-x1 (divulgation honnête, authoring-side — même
+# discipline que les SCOPE NOTES des autres entrées de ce fichier). Deux
+# questions mobilisent un outil hors du corps R0-R7 de cette leçon, nommé
+# explicitement au point d'usage dans le `reasoning` :
+#   - q3b (point $I$, seul point d'inflexion) : le critère « changement de
+#     signe de $f_n''$ » est un outil de DÉRIVABILITÉ/ÉTUDE DE FONCTIONS
+#     (dérivée seconde et convexité), du ressort de la notion
+#     `derivabilite-etude-fonctions` — même écart déjà signalé dans ce
+#     fichier pour bk-2020-n-x4 (question de point d'inflexion) et
+#     bk-2017-n-x4 (q1-3a) ;
+#   - q5a/q5b (aire, primitive de $\frac{2}{1+e^x}$) : cette forme n'est ni
+#     $u'e^u$ (R6 de cette leçon, reconnaissance directe) ni immédiatement
+#     $\frac{u'}{u}$ — il faut d'abord réécrire $\frac{2}{1+e^x}$ en
+#     $2-\frac{2e^x}{1+e^x}$ pour faire apparaître un $\frac{u'}{u}$ dont la
+#     primitive est $2\ln(1+e^x)$ ; le calcul de primitive et d'aire
+#     lui-même est un outil de la notion `calcul-integral`, R1/R2 — même
+#     écart déjà signalé dans ce fichier pour bk-2019-n-x4 (Rolle/TAF/IPP)
+#     et bk-2017-n-x4 (IPP, comparaison d'intégrales).
 # Chaque outil est énoncé explicitement au point d'usage, ses hypothèses
 # vérifiées, son application faite en clair — jamais supposé acquis sans
 # être nommé.
@@ -2448,3 +2584,256 @@ entries:
             note: "Les deux bornes de l'encadrement tendent vers 1 : le carre tend vers 1 par le theoreme des gendarmes."
           - math: 'a_n\sqrt{\dfrac2n} > 0 \ \Rightarrow\ \lim_{n\to+\infty} a_n\sqrt{\dfrac2n} = \sqrt1 = 1'
             note: "Une suite positive dont le carre tend vers 1 tend elle-meme vers 1."
+
+  # ── bk-2021-n-x1 — 2021 N, Exercice 1, PARTIE I SEULE (SM) : asymptotes, variations, point d'inflexion, aire ──
+  - id: bk-2021-n-x1
+    title: "Étude d'une fonction exponentielle à paramètre : asymptotes, variations, point d'inflexion et aire (Partie I d'un exercice partitionné)"
+    source:
+      year: 2021
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 1 — Partie I"
+    bareme_total: 5
+    duration_min: 30
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national Sciences Mathématiques (SM-A
+        et SM-B, option française), Mathématiques (4 h, coef 9), code
+        NS 24F, AlloSchool element/127193 (Exercice 1, 12 points au total ;
+        Partie I, 5,0 points). Transcription VÉRIFIÉE EN DEUX PASSES
+        ADVERSARIALES (2026-08-27) : re-fetch AlloSchool indépendant avec
+        les quatre contrôles anti-CDN (title HTML servi, année lue sur les
+        4 pages en couche texte ET OCR chiffres-seuls, MD5 des 4 JPEG + du
+        PDF avec second téléchargement, corrélation pixel PDF↔JPG), plus la
+        couche bitonale 300 dpi embarquée dans le PDF. Statut « vérifié »,
+        zéro divergence sur les 24 questions de l'exercice complet
+        (docs/sujets/_incoming/maths-sm-2021-n.md). Exercice PARTITIONNÉ :
+        cette carte porte la SEULE Partie I (5,0 pts) ; les Parties II et
+        III (7,0 pts) vivent dans bk-2021-n-x1b de
+        content/maths/suites-numeriques/bank.yaml — voir la NOTE ÉDITORIALE
+        bk-2021-n-x1 en tête de ce fichier pour le détail du
+        partitionnement et la réserve owner.
+    intro: |-
+      **Étude de fonction à paramètre (examen national, session normale 2021, Sciences Mathématiques) — Partie I.**
+
+      Pour tout entier naturel $n$, on considère la fonction $f_n$ définie sur $\mathbb{R}$ par :
+
+      $$f_n(x) = \dfrac{-2e^x}{1+e^x} + nx$$
+
+      Soit $(C_n)$ sa courbe représentative dans un repère orthonormé $(O,\vec{i},\vec{j})$ *(on prend $\|\vec{i}\|=\|\vec{j}\|=1\,cm$)*.
+
+      **Portée de cette carte.** Cette carte reprend la **Partie I** de l'exercice 1 (5,0 pts sur les 12 de l'exercice complet) : l'étude de $f_n$ elle-même — limites, asymptotes, dérivée, variations, tangente, point d'inflexion, tracé, aire. Les **Parties II et III** (7,0 pts, deux suites bâties sur cette même fonction) vivent dans une carte sœur, `bk-2021-n-x1b` de `content/maths/suites-numeriques/bank.yaml`.
+    questions:
+      - id: q1a
+        part: "1 — Limite en +infini et asymptote"
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty}\big(f_n(x) - nx + 2\big)$ puis interpréter graphiquement le résultat obtenu.
+        reasoning: |-
+          La quantité à calculer n'est pas $f_n(x)$ elle-même mais son écart à la droite $y=nx-2$ — c'est exactement le test d'une asymptote : si cet écart tend vers $0$, la courbe se rapproche indéfiniment de cette droite. Le terme $nx$ de $f_n$ se simplifie avec le $-nx$ de l'expression : il ne reste que le morceau exponentiel, à réduire au même dénominateur pour reconnaître une limite usuelle.
+
+          $$f_n(x)-nx+2 = \frac{-2e^x}{1+e^x}+2 = \frac{-2e^x+2(1+e^x)}{1+e^x} = \frac{2}{1+e^x}$$
+
+          Quand $x\to+\infty$, $e^x\to+\infty$ (R4), donc $1+e^x\to+\infty$ et $\dfrac{2}{1+e^x}\to0$.
+
+          Graphiquement : l'écart entre $(C_n)$ et la droite d'équation $y=nx-2$ tend vers $0$ quand $x\to+\infty$ — $(C_n)$ admet donc cette droite comme **asymptote** (oblique si $n\ge1$, horizontale si $n=0$) en $+\infty$.
+        steps:
+          - math: 'f_n(x)-nx+2 = \dfrac{-2e^x}{1+e^x}+2 = \dfrac{-2e^x+2(1+e^x)}{1+e^x} = \dfrac{2}{1+e^x}'
+            note: "On reduit au meme denominateur : le terme en nx disparait, il ne reste que le morceau exponentiel."
+          - math: '\lim_{x\to+\infty} e^x = +\infty \ \Rightarrow\ \lim_{x\to+\infty}(1+e^x) = +\infty \ \Rightarrow\ \lim_{x\to+\infty}\dfrac{2}{1+e^x} = 0'
+            note: "Un numerateur constant divise par une quantite qui tend vers plus l'infini : le quotient tend vers 0."
+          - math: '\Rightarrow\ (C_n) \text{ admet la droite } y=nx-2 \text{ comme asymptote en } +\infty'
+            note: "Ecart nul a la limite : c'est la definition d'une asymptote."
+      - id: q1b
+        stem: |-
+          **(0,5 pt)** Montrer que la courbe $(C_n)$ admet, en $-\infty$, une asymptote $(\Delta_n)$ dont on déterminera une équation cartésienne.
+        reasoning: |-
+          Même principe qu'à la question précédente, mais avec l'autre régime : cette fois on compare $f_n(x)$ à la droite $y=nx$ (pas $y=nx-2$), et c'est en $-\infty$ qu'on regarde.
+
+          $$f_n(x)-nx = \frac{-2e^x}{1+e^x}$$
+
+          Quand $x\to-\infty$, $e^x\to0$ (R4), donc $\dfrac{-2e^x}{1+e^x}\to\dfrac{0}{1}=0$.
+
+          L'écart entre $(C_n)$ et la droite $y=nx$ tend vers $0$ en $-\infty$ : $(C_n)$ admet la droite $(\Delta_n): y=nx$ comme asymptote en $-\infty$.
+        steps:
+          - math: 'f_n(x)-nx = \dfrac{-2e^x}{1+e^x}'
+            note: "On isole l'ecart entre f_n et la droite y = nx : le terme nx se simplifie directement."
+          - math: '\lim_{x\to-\infty} e^x = 0 \ \Rightarrow\ \lim_{x\to-\infty}\dfrac{-2e^x}{1+e^x} = \dfrac{0}{1} = 0'
+            note: "e puissance x tend vers 0 en moins l'infini ; le quotient tend donc vers 0 aussi."
+          - math: '\Rightarrow\ (\Delta_n) : y = nx \text{ est asymptote a } (C_n) \text{ en } -\infty'
+            note: "Ecart nul a la limite : equation de l'asymptote."
+      - id: q2a
+        part: "2 — Dérivabilité et expression de la dérivée"
+        stem: |-
+          **(0,5 pt)** Montrer que la fonction $f_n$ est dérivable sur $\mathbb{R}$ et que : $(\forall x \in \mathbb{R})\ ;\quad f_n'(x) = \dfrac{-2e^x}{(1+e^x)^2} + n$
+        reasoning: |-
+          $f_n$ est une somme de deux morceaux : $x\mapsto nx$, polynomial donc dérivable sur $\mathbb{R}$, et $x\mapsto\dfrac{-2e^x}{1+e^x}$, un quotient de deux fonctions dérivables sur $\mathbb{R}$ (numérateur et dénominateur bâtis sur $\exp$, R3) dont le dénominateur $1+e^x$ ne s'annule jamais (il est même toujours strictement supérieur à $1$). Un quotient de fonctions dérivables, à dénominateur qui ne s'annule pas, est dérivable : $f_n$ est donc dérivable sur $\mathbb{R}$ tout entier, comme somme de deux fonctions dérivables.
+
+          Pour la dérivée du quotient, pose $u(x)=-2e^x$ (donc $u'(x)=-2e^x$) et $v(x)=1+e^x$ (donc $v'(x)=e^x$) :
+
+          $$\left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^2} = \frac{-2e^x(1+e^x)-(-2e^x)(e^x)}{(1+e^x)^2}$$
+
+          Développe le numérateur : $-2e^x-2e^{2x}+2e^{2x} = -2e^x$ — les deux termes en $e^{2x}$ s'annulent exactement, signe qu'on a bien mené le calcul. Il reste $\dfrac{-2e^x}{(1+e^x)^2}$, et la dérivée du terme $nx$ ajoute simplement $n$.
+        steps:
+          - math: 'u(x)=-2e^x,\ u''(x)=-2e^x \qquad v(x)=1+e^x,\ v''(x)=e^x'
+            note: "On identifie numerateur et denominateur du quotient et leurs derivees."
+          - math: '\left(\dfrac{u}{v}\right)''(x) = \dfrac{u''v-uv''}{v^2} = \dfrac{-2e^x(1+e^x)-(-2e^x)(e^x)}{(1+e^x)^2}'
+            note: "Formule de la derivee d'un quotient."
+          - math: '-2e^x(1+e^x)-(-2e^x)(e^x) = -2e^x-2e^{2x}+2e^{2x} = -2e^x'
+            note: "Les deux termes en e puissance 2x s'annulent : il reste seulement -2e^x."
+          - math: 'f_n''(x) = \dfrac{-2e^x}{(1+e^x)^2}+n'
+            note: "On ajoute la derivee de nx, qui vaut n : expression finale de f_n prime."
+      - id: q2b
+        stem: |-
+          **(0,5 pt)** Montrer que : $(\forall x \in \mathbb{R})\ ;\quad \dfrac{4e^x}{(1+e^x)^2} \le 1$
+        reasoning: |-
+          Pour comparer un quotient à $1$, ramène tout du même côté et étudie le signe de la différence, une fois multipliée par le dénominateur (toujours strictement positif, donc le sens de l'inégalité ne change pas) :
+
+          $$(1+e^x)^2-4e^x = 1+2e^x+e^{2x}-4e^x = 1-2e^x+e^{2x}$$
+
+          Reconnais une identité remarquable : $1-2e^x+e^{2x} = (1-e^x)^2$ — un carré, toujours positif ou nul, quel que soit $x$ :
+
+          $$(1+e^x)^2-4e^x = (1-e^x)^2 \ge 0$$
+
+          Donc $(1+e^x)^2 \ge 4e^x$, et comme $(1+e^x)^2>0$, diviser conserve le sens de l'inégalité :
+
+          $$\frac{4e^x}{(1+e^x)^2}\le1$$
+
+          avec égalité exactement quand $e^x=1$, c'est-à-dire en $x=0$ — un point à retenir, il resservira.
+        steps:
+          - math: '(1+e^x)^2-4e^x = 1+2e^x+e^{2x}-4e^x = 1-2e^x+e^{2x}'
+            note: "On developpe le carre et on regroupe avec le terme -4e^x."
+          - math: '1-2e^x+e^{2x} = (1-e^x)^2 \ge 0 \quad (\forall x\in\mathbb{R})'
+            note: "Identite remarquable : c'est un carre, donc toujours positif ou nul."
+          - math: '(1+e^x)^2 \ge 4e^x \ \Rightarrow\ \dfrac{4e^x}{(1+e^x)^2}\le1 \quad (\text{car } (1+e^x)^2>0)'
+            note: "On divise par le carre du denominateur, strictement positif : l'inegalite se conserve."
+      - id: q2c
+        stem: |-
+          **(0,5 pt)** En déduire le sens de variation de la fonction $f_n$ sur $\mathbb{R}$
+
+          (On distinguera les deux cas : $n=0$ et $n \ge 1$)
+        reasoning: |-
+          Divise la question précédente par $2$ : $\dfrac{2e^x}{(1+e^x)^2}\le\dfrac12$ pour tout $x$ — c'est exactement, au signe près, le morceau exponentiel de $f_n'(x)=n-\dfrac{2e^x}{(1+e^x)^2}$ (question 2-a, réécrite). Le signe de $f_n'$ dépend donc de la position de $n$ face à ce morceau, borné entre $0$ (exclu) et $\dfrac12$ (inclus).
+
+          **Cas $n=0$.** $f_0'(x) = -\dfrac{2e^x}{(1+e^x)^2}$ : c'est l'opposé d'un quotient de deux quantités strictement positives, donc $f_0'(x)<0$ pour tout $x$ — $f_0$ est **strictement décroissante** sur $\mathbb{R}$.
+
+          **Cas $n\ge1$.** $f_n'(x) = n-\dfrac{2e^x}{(1+e^x)^2} \ge n-\dfrac12 \ge 1-\dfrac12 = \dfrac12 > 0$ : le morceau qu'on soustrait ne dépasse jamais $\dfrac12$, et $n$ vaut au moins $1$, donc $f_n'$ reste strictement positive — $f_n$ est **strictement croissante** sur $\mathbb{R}$.
+        steps:
+          - math: '\dfrac{4e^x}{(1+e^x)^2}\le1 \ \Rightarrow\ \dfrac{2e^x}{(1+e^x)^2}\le\dfrac12 \quad (\text{question 2-b, divisee par } 2)'
+            note: "On divise l'inegalite precedente par 2 pour faire apparaitre le morceau exact de f_n prime."
+          - math: 'n=0\ :\ f_0''(x) = -\dfrac{2e^x}{(1+e^x)^2} < 0 \quad (\forall x\in\mathbb{R})'
+            note: "Pour n=0, f_n prime est l'oppose d'une quantite strictement positive : toujours negative."
+          - math: 'n\ge1\ :\ f_n''(x) = n-\dfrac{2e^x}{(1+e^x)^2} \ge n-\dfrac12 \ge \dfrac12 > 0 \quad (\forall x\in\mathbb{R})'
+            note: "Pour n superieur ou egal a 1, le terme soustrait ne depasse jamais 1/2 : f_n prime reste strictement positive."
+      - id: q3a
+        part: "3 — Tangente et point d'inflexion"
+        stem: |-
+          **(0,5 pt)** Déterminer l'équation de la tangente à la courbe $(C_n)$ au point $I$ d'abscisse $0$
+        reasoning: |-
+          La tangente en un point d'abscisse $a$ a pour équation $y=f_n'(a)(x-a)+f_n(a)$ — il suffit donc de calculer $f_n(0)$ et $f_n'(0)$, deux évaluations directes des expressions déjà établies (questions 1 et 2-a).
+
+          $$f_n(0) = \frac{-2e^0}{1+e^0}+0 = \frac{-2}{2} = -1$$
+
+          $$f_n'(0) = \frac{-2e^0}{(1+e^0)^2}+n = \frac{-2}{4}+n = n-\frac12$$
+
+          D'où l'équation de la tangente en $I(0,-1)$ :
+
+          $$y = \left(n-\frac12\right)x-1$$
+        steps:
+          - math: 'f_n(0) = \dfrac{-2e^0}{1+e^0}+0 = \dfrac{-2}{2} = -1'
+            note: "On evalue f_n en 0 : e^0 vaut 1."
+          - math: 'f_n''(0) = \dfrac{-2e^0}{(1+e^0)^2}+n = \dfrac{-2}{4}+n = n-\dfrac12'
+            note: "On evalue f_n prime en 0, avec l'expression de la question 2-a."
+          - math: 'y = f_n''(0)(x-0)+f_n(0) = \left(n-\dfrac12\right)x-1'
+            note: "Equation de la tangente : coefficient directeur f_n prime de 0, point de passage (0, f_n(0))."
+      - id: q3b
+        stem: |-
+          **(0,5 pt)** Montrer que le point $I$ est le seul point d'inflexion de la courbe $(C_n)$
+        reasoning: |-
+          Un point d'inflexion, c'est l'endroit où la courbe change de concavité — le signal algébrique est un **changement de signe** de la dérivée seconde $f_n''$ (dérivée seconde et convexité : outil de la notion `derivabilite-etude-fonctions`, hors du corps R0-R7 de cette leçon). Calcule $f_n''$ à partir de $f_n'(x)=\dfrac{-2e^x}{(1+e^x)^2}+n$ (question 2-a) — seul le premier morceau contribue, la dérivée d'une constante $n$ étant nulle.
+
+          Redérive comme un quotient : $u(x)=-2e^x$ ($u'=-2e^x$), $v(x)=(1+e^x)^2$ ($v'(x)=2e^x(1+e^x)$, dérivée d'un carré composé) :
+
+          $$f_n^{(2)}(x) = \frac{-2e^x(1+e^x)^2 - (-2e^x)\times2e^x(1+e^x)}{(1+e^x)^4} = \frac{-2e^x(1+e^x)\big[(1+e^x)-2e^x\big]}{(1+e^x)^4}$$
+
+          Simplifie par $(1+e^x)$ (jamais nul) et développe le crochet, $(1+e^x)-2e^x = 1-e^x$ :
+
+          $$f_n^{(2)}(x) = \frac{-2e^x(1-e^x)}{(1+e^x)^3} = \frac{2e^x(e^x-1)}{(1+e^x)^3}$$
+
+          Le facteur $\dfrac{2e^x}{(1+e^x)^3}$ est toujours strictement positif : le signe de $f_n^{(2)}(x)$ est donc exactement celui de $(e^x-1)$, négatif pour $x<0$, nul en $x=0$, positif pour $x>0$ (car $\exp$ est strictement croissante, R1). $f_n''$ s'annule **et change de signe** en $x=0$, et nulle part ailleurs. C'est exactement — et uniquement — l'endroit où la concavité bascule : $I$, d'abscisse $0$, est le seul point d'inflexion de $(C_n)$, quel que soit $n$ (le paramètre $n$ ne pèse pas dans $f_n''$, puisque sa dérivée est nulle — c'est pour ça que c'est le même point $I$ pour toute la famille de courbes).
+        steps:
+          - math: 'f_n^{(2)}(x) = \dfrac{-2e^x(1+e^x)^2-(-2e^x)\times2e^x(1+e^x)}{(1+e^x)^4}'
+            note: "Derivee du quotient donnant f_n prime, seconde fois ; f seconde notee f exposant 2 pour eviter d'empiler les apostrophes."
+          - math: 'f_n^{(2)}(x) = \dfrac{-2e^x(1+e^x)\left[(1+e^x)-2e^x\right]}{(1+e^x)^4} = \dfrac{-2e^x(1-e^x)}{(1+e^x)^3}'
+            note: "On factorise et on simplifie par (1+e^x), qui n'est jamais nul."
+          - math: 'f_n^{(2)}(x) = \dfrac{2e^x(e^x-1)}{(1+e^x)^3}'
+            note: "Forme finale : on distribue le signe moins dans le facteur (1-e^x)."
+          - math: '\dfrac{2e^x}{(1+e^x)^3}>0 \ \Rightarrow\ \text{signe de } f_n^{(2)}(x) = \text{signe de } (e^x-1),\ \text{nul en } x=0 \text{ seulement}'
+            note: "Le signe de f seconde suit exactement le signe de e^x moins 1, qui change de signe une seule fois, en x=0."
+      - id: q4
+        part: "4 — Tracé"
+        stem: |-
+          **(0,5 pt)** Représenter graphiquement dans le même repère, les deux courbes $(C_0)$ et $(C_2)$.
+        reasoning: |-
+          Rien à inventer : on rassemble ce que les questions précédentes ont déjà établi pour chaque courbe, prise séparément.
+
+          **$(C_0)$ — cas $n=0$.** Strictement décroissante sur $\mathbb{R}$ tout entier (question 2-c). Asymptote horizontale $y=0$ en $-\infty$ (question 1-b, avec $n=0$) et asymptote horizontale $y=-2$ en $+\infty$ (question 1-a, avec $n=0$) — la courbe descend d'une asymptote horizontale à l'autre. Passe par $I(0,-1)$ (question 3-a), avec tangente de coefficient directeur $0-\frac12=-\frac12$ en ce point, et c'est son seul point d'inflexion (question 3-b) : convexe pour $x<0$, concave pour $x>0$.
+
+          **$(C_2)$ — cas $n=2$.** Strictement croissante sur $\mathbb{R}$ tout entier (question 2-c, cas $n\ge1$). Asymptote oblique $y=2x$ en $-\infty$ (question 1-b) et asymptote oblique $y=2x-2$ en $+\infty$ (question 1-a) — la courbe se glisse entre deux droites parallèles de pente $2$. Passe par le même point $I(0,-1)$ (le point d'inflexion ne dépend pas de $n$, question 3-b), avec tangente de coefficient directeur $2-\frac12=\frac32$ en ce point.
+
+          Les deux courbes partagent le point $I(0,-1)$ : c'est exactement là que la distinction de cas de la question 2-c prend tout son sens visuel — une famille de courbes qui pivotent toutes autour du même point, en changeant de sens de variation selon $n$.
+      - id: q5a
+        part: "5 — Aire entre la courbe et son asymptote"
+        stem: |-
+          Pour tout réel $t>0$, on pose $A(t)$ l'aire du domaine plan limité par $(C_n)$ et les droites d'équations respectives : $y = nx - 2$, $x = 0$ et $x = t$
+
+          **(0,5 pt)** Calculer $A(t)$ pour tout $t>0$
+        reasoning: |-
+          L'aire entre une courbe et une droite, entre deux bornes, est l'intégrale de leur écart — à condition que ce signe reste constant tout du long, pour se passer d'une valeur absolue. Cet écart, $f_n(x)-(nx-2)$, c'est très exactement la quantité calculée à la question 1-a : $\dfrac{2}{1+e^x}$, qui est **toujours strictement positive** ($e^x>0$ pour tout $x$, donc $1+e^x>0$). $(C_n)$ reste donc toujours au-dessus de la droite $y=nx-2$, et l'aire s'écrit sans valeur absolue :
+
+          $$A(t) = \int_0^t \big[f_n(x)-(nx-2)\big]\,dx = \int_0^t \frac{2}{1+e^x}\,dx \quad (\text{en } cm^2, \text{ repère orthonormé})$$
+
+          Il reste à trouver une primitive de $\dfrac{2}{1+e^x}$ — une forme qui n'est ni $u'e^u$ (R6) ni directement $\dfrac{u'}{u}$. Le geste (technique de `calcul-integral`) : faire apparaître $e^x$ au numérateur pour reconnaître un $\dfrac{u'}{u}$, en écrivant $2$ comme $\dfrac{2(1+e^x)}{1+e^x}$ :
+
+          $$\frac{2}{1+e^x} = \frac{2(1+e^x)-2e^x}{1+e^x} = 2-\frac{2e^x}{1+e^x}$$
+
+          Le second terme est maintenant $\dfrac{u'}{u}$ avec $u(x)=1+e^x$ (donc $u'(x)=e^x$) : sa primitive est $2\ln(1+e^x)$. Celle de la constante $2$ est $2x$. Une primitive de $\dfrac{2}{1+e^x}$ sur $\mathbb{R}$ est donc $x\mapsto2x-2\ln(1+e^x)$, et :
+
+          $$A(t) = \Big[2x-2\ln(1+e^x)\Big]_0^t = \big(2t-2\ln(1+e^t)\big)-\big(0-2\ln2\big)$$
+
+          $$A(t) = 2t-2\ln(1+e^t)+2\ln2 \quad (cm^2)$$
+        steps:
+          - math: 'f_n(x)-(nx-2) = \dfrac{2}{1+e^x} > 0 \quad (\text{question 1-a}) \ \Rightarrow\ A(t) = \int_0^t \dfrac{2}{1+e^x}\,dx'
+            note: "L'ecart est toujours strictement positif : l'aire s'ecrit comme une integrale sans valeur absolue."
+          - math: '\dfrac{2}{1+e^x} = \dfrac{2(1+e^x)-2e^x}{1+e^x} = 2-\dfrac{2e^x}{1+e^x}'
+            note: "On fait apparaitre e^x au numerateur pour reconnaitre la forme u prime sur u."
+          - math: '\text{primitive de } 2-\dfrac{2e^x}{1+e^x} \text{ sur } \mathbb{R}\ :\ x\mapsto 2x-2\ln(1+e^x)'
+            note: "Primitive d'une constante (2x) moins primitive de u prime sur u (2 fois ln de u)."
+          - math: 'A(t) = \Big[2x-2\ln(1+e^x)\Big]_0^t = 2t-2\ln(1+e^t)+2\ln2 \quad (cm^2)'
+            note: "On evalue la primitive entre 0 et t ; ln(1+e^0) vaut ln(2)."
+      - id: q5b
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{t \to +\infty} A(t)$
+        reasoning: |-
+          La forme trouvée, $A(t)=2t-2\ln(1+e^t)+2\ln2$, se présente comme $2t$ moins un logarithme qui diverge aussi — une forme $\infty-\infty$ à retravailler avant de conclure. Factorise $e^t$ à l'intérieur du logarithme, pour faire ressortir explicitement le terme en $t$ :
+
+          $$\ln(1+e^t) = \ln\big(e^t(e^{-t}+1)\big) = \ln(e^t)+\ln(1+e^{-t}) = t+\ln(1+e^{-t})$$
+
+          Réinjecte dans $A(t)$ :
+
+          $$A(t) = 2t-2\big[t+\ln(1+e^{-t})\big]+2\ln2 = -2\ln(1+e^{-t})+2\ln2$$
+
+          Le $2t$ et le $-2t$ se sont annulés exactement — l'indétermination a disparu. Quand $t\to+\infty$, $e^{-t}\to0$ (R4), donc $\ln(1+e^{-t})\to\ln1=0$ (continuité de $\ln$ en $1$), et :
+
+          $$\lim_{t\to+\infty}A(t) = -2\times0+2\ln2 = 2\ln2$$
+
+          Une limite **finie** : l'aire entre $(C_n)$ et son asymptote, prolongée à l'infini, reste bornée — cohérent avec le fait que l'écart $\dfrac{2}{1+e^x}$ s'écrase très vite vers $0$.
+        steps:
+          - math: '\ln(1+e^t) = \ln\big(e^t(e^{-t}+1)\big) = t+\ln(1+e^{-t})'
+            note: "On factorise e^t a l'interieur du log pour faire apparaitre le terme en t explicitement."
+          - math: 'A(t) = 2t-2\big[t+\ln(1+e^{-t})\big]+2\ln2 = -2\ln(1+e^{-t})+2\ln2'
+            note: "Les termes en 2t s'annulent : l'indetermination infini moins infini a disparu."
+          - math: '\lim_{t\to+\infty} e^{-t} = 0 \ \Rightarrow\ \lim_{t\to+\infty}\ln(1+e^{-t}) = \ln1 = 0'
+            note: "e puissance moins t tend vers 0 ; le logarithme, continu en 1, tend vers ln(1) = 0."
+          - math: '\lim_{t\to+\infty} A(t) = 2\ln2'
+            note: "Limite finie de l'aire."

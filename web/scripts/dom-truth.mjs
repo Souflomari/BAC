@@ -2886,6 +2886,37 @@ try {
     // annonçaient un nombre faux — SPC 2023 normale disait « 10 exercices »
     // pour un sujet qui en a quatre. Témoin : ce même SPC 2023 normale, la
     // pire divergence du corpus (4 exercices servis en 10 parties).
+    // AUCUNE épreuve ne peut dépasser 20 points. Le barème national EST /20 ;
+    // un total supérieur ne peut venir que d'un double-comptage — c'est
+    // exactement ce que la règle de répartition interdit (une cross-list ne
+    // devient jamais une seconde entrée). Deux façons connues d'y arriver, et
+    // aucune n'était gardée :
+    //   — un exercice découpé re-converti en entier quelque part ;
+    //   — un sujet à défaut de barème imprimé : PC 2014 normale déclare 13
+    //     points de physique et ses sous-barèmes en totalisent 13,5, donc il
+    //     afficherait 20,5/20 le jour de sa conversion (relevé par le
+    //     balayage docs/audits/format-a-choix.md, 2026-08-27).
+    // Le cas symétrique — une épreuve SUR-comptée par des exercices « au
+    // choix » mutuellement exclusifs — reste hors de portée d'ici : il ne se
+    // voit pas au total. Voir known-issues K-0.
+    checks++;
+    const totaux = await epage.evaluate(() =>
+      [...document.querySelectorAll("[data-epreuve]")].map((c) => ({
+        id: c.getAttribute("data-epreuve"),
+        pts: parseFloat(
+          (c.querySelector("[data-epreuve-pts]")?.textContent ?? "").replace(",", ".")
+        ),
+      }))
+    );
+    const hors20 = totaux.filter((t) => Number.isFinite(t.pts) && t.pts > 20);
+    if (hors20.length) {
+      failures += fail(
+        `épreuve(s) au-dessus de 20 : ${hors20.map((t) => `${t.id}=${t.pts}`).join(", ")} — double-comptage, le barème national est /20`
+      );
+    } else {
+      console.log(`  ✓ ${totaux.length} épreuves, aucune au-dessus de 20 pts`);
+    }
+
     checks++;
     const compte = await epage.evaluate(() => {
       const carte = document.querySelector("[data-epreuve='spc-2023-normale']");
