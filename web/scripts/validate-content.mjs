@@ -144,23 +144,49 @@ function collectIds(node, out) {
  * Returns { checked, fails } — does not print or count; the caller does,
  * so it can prefix the file/field path per the "file → field path" contract.
  */
+/**
+ * Rend une expression et transforme en ÉCHEC le « No character metrics »
+ * de KaTeX.
+ *
+ * Pourquoi c'est un échec et pas un avertissement : `throwOnError` ne couvre
+ * que les erreurs d'ANALYSE. Un caractère que la police n'a pas — un ✔ ou un
+ * guillemet français glissé dans un `\text{}` — s'analyse parfaitement, part
+ * en `console.warn`, et **se rend chez l'élève en glyphe cassé**. La porte
+ * l'imprimait donc sans jamais tomber : six occurrences avaient franchi la
+ * porte et vivaient en production au 2026-08-27 (quatre ✔ dans du display
+ * math, un couple « » dans un `\text{}` — exactement le piège que les
+ * conventions maison nomment déjà).
+ */
+function rendreOuEchouer(expr, displayMode, fails, mode) {
+  const warnOriginal = console.warn;
+  const glyphesManquants = [];
+  console.warn = (...args) => {
+    const msg = args.map(String).join(" ");
+    if (msg.includes("No character metrics")) glyphesManquants.push(msg);
+    else warnOriginal(...args);
+  };
+  try {
+    katex.renderToString(expr, { displayMode, throwOnError: true, strict: false });
+  } catch (err) {
+    fails.push({ mode, expr, msg: err.message.split("\n")[0] });
+  } finally {
+    console.warn = warnOriginal;
+  }
+  for (const g of glyphesManquants) {
+    fails.push({ mode, expr, msg: `${g} — ce caractère se rend en glyphe cassé chez l'élève` });
+  }
+}
+
 function katexFailures(str, rawDisplay) {
   if (typeof str !== "string" || !str.length) return { checked: 0, fails: [] };
   const fails = [];
   if (rawDisplay) {
-    try { katex.renderToString(str, { displayMode: true, throwOnError: true, strict: false }); }
-    catch (err) { fails.push({ mode: "display", expr: str, msg: err.message.split("\n")[0] }); }
+    rendreOuEchouer(str, true, fails, "display");
     return { checked: 1, fails };
   }
   const { display, inline } = mathSpans(str);
-  for (const e of display) {
-    try { katex.renderToString(e, { displayMode: true, throwOnError: true, strict: false }); }
-    catch (err) { fails.push({ mode: "display", expr: e, msg: err.message.split("\n")[0] }); }
-  }
-  for (const e of inline) {
-    try { katex.renderToString(e, { displayMode: false, throwOnError: true, strict: false }); }
-    catch (err) { fails.push({ mode: "inline", expr: e, msg: err.message.split("\n")[0] }); }
-  }
+  for (const e of display) rendreOuEchouer(e, true, fails, "display");
+  for (const e of inline) rendreOuEchouer(e, false, fails, "inline");
   return { checked: display.length + inline.length, fails };
 }
 
@@ -315,6 +341,23 @@ for (const dir of dirs) {
   {
     const doc = yamlDocs["bank.yaml"];
     if (doc) {
+      // `notion:` DOIT nommer le dossier qui héberge le fichier. Ce champ est
+      // porteur depuis le 2026-08-27 : c'est lui qui descend jusqu'à la clé
+      // de révélation (`revealKey(notionId, itemId)` dans lib/student-state),
+      // parce qu'un `entry_id` n'est unique que dans son propre fichier — 42
+      // identifiants du corpus sont partagés entre notions. Un `notion:`
+      // faux ne casserait rien de visible au build : il ferait juste pointer
+      // les « fait » d'une banque vers une autre notion, silencieusement.
+      // Voir BANK-SPEC §4 et known-issues K-7.
+      {
+        const attendu = dir.replace(/^.*content[/\\]/, "").replace(/[/\\]+$/, "").replace(/\\/g, "/");
+        if (typeof doc.notion !== "string" || doc.notion !== attendu) {
+          console.error(
+            `  ✗ ${dir}/bank.yaml: notion="${doc.notion}" ne nomme pas son dossier (attendu "${attendu}") — la clé « fait » pointerait vers une autre notion`
+          );
+          dirFail++;
+        }
+      }
       const arr = Array.isArray(doc.entries) ? doc.entries : [];
       const missingReasoning = [];
       const seenIds = new Set();
