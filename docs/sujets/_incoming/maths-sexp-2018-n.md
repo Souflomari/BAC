@@ -1,17 +1,39 @@
 # Examen national Mathématiques — SExp — 2018, session NORMALE (NS 22F) — le Problème (11 points)
 
-> ## ⚠️ STATUT : **NON VÉRIFIÉ**
+> ## ✅ STATUT : **VÉRIFIÉ** — passe adversariale indépendante du **2026-08-27**
+> ### **CLEARÉ POUR CONVERSION**, avec **une** réserve nommée (le symbole de II-5)
 >
-> **Ce fichier est une TRANSCRIPTION NON VÉRIFIÉE.** Il a été écrit en une
-> passe par un transcripteur, le **2026-08-27** (date réelle, lue par
-> `date -u`). Le transcripteur ne se valide pas lui-même : la vérification
-> est une passe **INDÉPENDANTE**, avec **re-téléchargement du scan**, qui
-> reste **entièrement à faire**.
+> **Transcrit** le 2026-08-27 par un transcripteur, puis **vérifié le même
+> jour par une passe indépendante** qui a re-téléchargé la source depuis zéro
+> et ne s'est jamais servie de la transcription comme d'une attente. Détail,
+> preuves et écarts : **`## Ce que la vérification a trouvé`**, en fin de
+> fichier, où les **12 points du docket sont soldés un par un**.
 >
-> Tant qu'elle n'a pas eu lieu et n'a pas laissé sa trace dans le `Statut:`
-> du bloc, **rien de ce fichier ne peut devenir une entrée de banque**
-> (`content/maths/*/bank.yaml`). Protocole :
-> `docs/sujets/_incoming/README.md`.
+> **Les quatre contrôles anti-CDN sont TOUS faits** — année *et* code
+> **NS22F** relus sur **chacune** des 4 pages (image ×3–×10, couche texte du
+> PDF, *et* identité au pixel du cartouche de code entre les p. 2, 3, 4) ·
+> recoupement **non visuel** par **trois** instruments indépendants (OCR
+> `tesseract`, **couche texte du PDF source** au point de code, re-dérivation
+> symbolique `sympy` des 15 identités) · **MD5 + second téléchargement**
+> (User-Agent différent, `no-cache`, cache-buster : 4/4 octet-pour-octet
+> identiques) · **`<title>` servi**, arbitré explicitement ci-dessous.
+> **Un cinquième contrôle a été ajouté** : le **corrigé officiel**
+> (`element/94704`, code **NR 22F**), que le transcripteur n'avait pas ouvert
+> — il confirme le barème **question par question** et le total de 11,00.
+>
+> **La seule adjudication non lue est déclarée comme telle** : le symbole de
+> relation de **II)5)** (`f(4) ⊔ 4.2`) est **physiquement absent du
+> document** — pas un glyphe, pas un point de code : une **boîte
+> « caractère manquant »** dessinée par une image, exactement comme le
+> $\mathbb{N}^*$ de SM 2017 N. Il est adjugé **$\approx$ par conséquence**
+> ($f(4)=4{,}2198\ldots$). **À convertir comme une reconstruction éditoriale,
+> pas comme une lecture.**
+>
+> **Deux défauts du SUJET OFFICIEL tel que servi**, hors périmètre de ce
+> fichier mais **signalés** : deux autres boîtes « caractère manquant » sur
+> la **page 2**, à la place de $\mathbb{R}$ (Exercice 1, q3-a) et de
+> $\mathbb{C}$ (Exercice 2, q1) — donc dans le périmètre des entrées de
+> banque **déjà converties** `bk-2018-n-x1` et `bk-2018-n-x2`.
 >
 > **Portée volontairement partielle.** Ce fichier ne transcrit que le
 > **Problème** (11 points). Les **exercices 1, 2 et 3** de la même épreuve
@@ -267,8 +289,34 @@ manquant » d'un rendu de secours, mais un **vrai caractère d'une police
 substituée**. Sa forme ne porte donc, elle non plus, **aucune information** :
 seule la conséquence mathématique décide.
 
+> ### ⛔ **CORRIGÉ PAR LA VÉRIFICATION — ce paragraphe est FAUX**
+>
+> Le paragraphe ci-dessus est **laissé en place comme trace**, mais sa
+> conclusion est **réfutée**. Ce n'est **pas** « un vrai caractère d'une
+> police substituée » : c'est **exactement** le rectangle « caractère
+> manquant » qu'il écarte. Le PDF source le prouve — l'objet n'est pas un
+> caractère du tout, c'est une **image** (`Image191`, 2×2 px noirs) dont le
+> masque alpha (`SMask` 408×102, 1 bit) dessine un **rectangle creux fermé
+> sur ses QUATRE côtés**, traits de 2 px. La barre du **haut** mesure
+> **0,59 px** une fois ramenée aux 150 dpi du JPEG : le rasteriseur l'a
+> perdue, et c'est **cela seul** qui fait lire `⊔` plutôt que `□`.
+> **Il n'existe aucun point de code** entre `)` et `4.2` dans le flux
+> (`[(\()-27(4\))-1035(4.2)] TJ`) : le symbole est **absent du document**.
+> *(La lecture $\approx$, elle, tient — elle était déjà adjugée par
+> conséquence, et c'est la seule voie possible.)* Détail : § « Ce que la
+> vérification a trouvé », point 2.
+
 **Une seule occurrence trouvée** dans tout le Problème. *(La vérification doit
 confirmer l'unicité — voir docket, point 3.)*
+
+> **✔ Unicité CONFIRMÉE pour le Problème, par énumération exhaustive** (pas
+> par balayage de l'œil) : le PDF contient **12 images**, dont **11**
+> minuscules portées par des objets d'équation. **Trois** d'entre elles sont
+> des boîtes creuses « caractère manquant » — **une seule** dans le Problème
+> (celle de II-5), les **deux autres en page 2** ($\mathbb{R}$ en Ex. 1 q3-a,
+> $\mathbb{C}$ en Ex. 2 q1). Un *template matching* du glyphe exact sur les
+> quatre rasters rend **1 occurrence, page 4, en (933, 447)** et **0**
+> ailleurs. Point 3 du docket : soldé.
 
 **Ce qui n'est PAS une substitution :** le scan écrit les ensembles
 **`IR`** et **`IN`** (deux caractères, un I accolé au R / au N) au lieu de
@@ -324,7 +372,7 @@ aucune colonne intermédiaire** (aucune valeur charnière n'y figure) :
 
 ## 2018 — session normale — Problème
 Source: https://www.alloschool.com/element/94699
-Statut: **NON VÉRIFIÉ — transcrit le 2026-08-27, en attente de la passe adversariale indépendante**
+Statut: **VÉRIFIÉ** — transcrit le 2026-08-27, **vérifié le 2026-08-27** par une passe adversariale indépendante (re-fetch complet, 4 contrôles anti-CDN + corrigé, couche texte du PDF, re-dérivation `sympy`). **Cleared pour conversion**, réserve : le symbole de II-5 est une **reconstruction éditoriale** ($\approx$), pas une lecture.
 
 - Filière / épreuve : **Sciences Expérimentales** (SVT et Sciences
   Physiques), option française — Mathématiques, **3 h**, **coefficient 7**
@@ -332,9 +380,13 @@ Statut: **NON VÉRIFIÉ — transcrit le 2026-08-27, en attente de la passe adve
 - Images lues : `.../course-438/upload-70450/0003-big.jpg` (Partie I et
   Partie II questions 1 et 2) et `.../0004-big.jpg` (Partie II questions 3
   à 6, et Partie III)
-- Pages du scan : **3 et 4** (sur 4). Le Problème commence au **tiers bas de
-  la page 3**, juste après l'exercice 3, et se termine **au milieu de la
-  page 4** ; le bas de la page 4 est vide.
+- Pages du scan : **3 et 4** (sur 4). Le Problème commence au ~~**tiers bas de
+  la page 3**~~ **milieu de la page 3** *(correction de la vérification : le
+  titre « Problème : (11 points) » est à **y = 739 px sur 1754, soit 42,1 %**
+  de la hauteur — pas au tiers bas ; mesure, pas estimation)*, juste après
+  l'exercice 3, et se termine **au milieu de la page 4** *(dernière encre à
+  y = 1021 px = **58,2 %** ✔)* ; le bas de la page 4 est vide *(**0 pixel
+  d'encre** sous y = 1050 — compté, pas regardé ✔)*.
 - Barèmes de marge : **20 relevés**, recomptés ci-dessous.
 
 ---
@@ -612,3 +664,563 @@ décision. Ordre = ordre de risque décroissant.)*
   comme instrument de contrôle d'identité du scan.
 - Je n'ai **rien écrit d'autre que ce fichier** : aucun `bank.yaml`, aucune
   mise à jour du CENSUS, aucun commit.
+
+---
+
+## Ce que la vérification a trouvé
+
+*(Passe **adversariale indépendante**, écrite le **2026-08-27** — date réelle,
+lue par `date -u` : `Thu Aug 27 18:11:27 UTC 2026`. Méthode : re-fetch complet
+de la page, des 4 JPEG **et du PDF source** que le transcripteur n'avait pas
+ouvert ; lecture des pages **sur l'image** à ×2,2–×30 ; **trois** instruments
+non visuels ; re-dérivation symbolique de toutes les identités. La
+transcription n'a jamais servi d'attente : les valeurs ci-dessous sont
+**mesurées**, puis confrontées.)*
+
+### Ce qui a été fait, et ce qui ne l'a pas été
+
+| Contrôle | Fait ? | Comment |
+|---|---|---|
+| **1. Année ET code sur CHAQUE page** | ✅ | Recadrage ×3 des 4 bandeaux · ×10 sur le cartouche de code de la p. 4 · **diff au pixel** du cartouche entre p. 2/3/4 · **couche texte du PDF** sur les 4 pages |
+| **2. Recoupement NON VISUEL** | ✅ ×3 | (a) OCR `tesseract` 5 des 4 pages · (b) **couche texte du PDF source**, lue au **point de code** · (c) re-dérivation **`sympy`** des 15 identités |
+| **3. MD5 + SECOND téléchargement** | ✅ | UA différent, `Cache-Control: no-cache`, `Pragma: no-cache`, **cache-buster** dans l'URL, répertoire séparé — `cmp` : **4/4 identiques** |
+| **4. `<title>` servi** | ✅ | Arbitré ci-dessous, avec **deux tests que le transcripteur n'avait pas faits** |
+| **5. (ajouté) Le corrigé officiel** | ✅ | `element/94704`, **NR 22F** — confirme le barème question par question |
+| **6. (ajouté) Le PDF source** | ✅ | Couche texte complète, polices, objets d'équation, images et masques alpha |
+| Ré-OCR en arabe | ❌ | `tesseract` n'a que `eng` + `osd` sur cette machine ; l'arabe des bandeaux a été lu **sur l'image** et confirmé par la **couche texte** du PDF (Unicode arabe, police `ABCDEE+Andalus`) |
+| Ouverture des scans du corrigé | ❌ (partiel) | Seule la **couche texte** du PDF du corrigé a été lue ; ses 3 JPEG n'ont pas été recadrés — inutile pour l'énoncé |
+
+**Empreintes relevées par cette passe** — elles **coïncident exactement** avec
+celles de la transcription (donc son fetch et le mien rendent le même octet) :
+
+| Fichier | MD5 | SHA-256 (préfixe) | Taille |
+|---|---|---|---|
+| `0001-big.jpg` | `3b051fc89ef6cc861bad4c05c38422c4` | `57bb5154199d5616…` | 356 300 o |
+| `0002-big.jpg` | `b925017a2ffc040d2b24a0f26ddd5e66` | `63d12a4eadbf9cc8…` | 399 731 o |
+| `0003-big.jpg` | `7240b2efa4a68cdf9c7728b0ca4b1e01` | `2f2fb5f9a56e4f57…` | 392 336 o |
+| `0004-big.jpg` | `e61f70c31ea1f63721aa4bb36cead064` | `d8d72d8e24777bd7…` | 369 424 o |
+| **`…-sujet.pdf`** *(nouveau)* | `85df0ee784338a4a1c3b174363587c15` | `3d5212cb6cab31d2…` | 871 904 o |
+
+**Provenance du PDF, lue dans ses métadonnées** — fait à consigner, sans le
+sur-interpréter : `Producer` = `Creator` = **Microsoft® Word 2013**,
+`Author` = **`moi`**, `CreationDate` = **2018-12-12**, `ModDate` = 2020-03-09.
+Le document servi est donc un **export Word**, postérieur de six mois à la
+session de juin 2018, et **non un scan**. Il porte le cartouche officiel du
+CNEEO, le code NS 22F et la pagination 1/4–4/4 ; mais les défauts de symboles
+relevés plus bas sont, selon toute vraisemblance, des **artefacts de cette
+chaîne de production**, pas nécessairement des défauts du sujet distribué aux
+candidats. La distinction est faite ici plutôt que tue.
+
+---
+
+### Point 1 🔴 — Le `<title>` « Sciences et Technologies ». **ARBITRÉ : anomalie de nommage d'AlloSchool. La transcription est CONFIRMÉE — et son argument était plus faible qu'elle ne le croyait.**
+
+Le titre servi, re-fetché par moi, est bien :
+
+```
+<title>Examen National Maths Sciences et Technologies 2018 Normale - Sujet - AlloSchool</title>
+```
+
+J'ai refait les trois contrôles du transcripteur, **puis deux qu'il n'avait
+pas faits** et qui sont ceux qui tranchent réellement.
+
+**a) Le fil d'Ariane — confirmé.** La `<meta name="description">` de la même
+page dit : « …, Examens nationaux avec corrigés, **Mathématiques 2ème BAC
+Sciences Physiques BIOF**, AlloSchool ». Et la page du cours elle-même,
+`/course/mathematiques-2eme-bac-sciences-physiques-biof`, s'intitule
+**« Mathématiques 2ème BAC Sciences Physiques BIOF »** — sans « Technologies ».
+
+**b) Les deux témoins — confirmés, et le compte est fait.** `element/94525`
+(2017 N) et `element/94485` (2016 N) portent bien le même « Sciences et
+Technologies ». Mais le transcripteur s'est arrêté à **deux** exemples et a
+écrit « systématique ». **J'ai compté** : la page du cours liste **582**
+éléments, dont **54** « Examen National » ; **54 sur 54** portent « Sciences
+et Technologies », et il n'existe que **4 formes de libellé** en tout
+(Normale/Rattrapage × Sujet/Corrigé). **Zéro exception.**
+
+**c) Le cartouche du scan — confirmé au ×2,2, sur les 4 pages.** La p. 1
+imprime : `المادة : الرياضيات` · `مدة الإنجاز : 3` · `المعامل : 7` ·
+`الشعبة أو المسلك :` **`مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية – خيار فرنسية`** ·
+`النموذج : NS 22F` · `الدورة العادية 2018` · `-الموضوع-`. Les p. 2, 3, 4
+réimpriment la même filière dans leur bandeau. **Aucune page ne porte
+`شعبة العلوم الرياضية`** ni aucune mention de technologies.
+
+**d) LE TEST QUE LE TRANSCRIPTEUR N'A PAS FAIT — n° 1 : le libellé
+est-il *jamais* correct ailleurs sur le site ?** Oui. `course-436`
+(Sciences Maths) sert `element/57970` et `element/145783` sous
+**« Examen National *Mathématiques Sciences Maths* 2017 / 2025 Normale »** —
+filière **exacte**. Donc le champ *sait* nommer la filière ; il est
+**faux ici**, il n'est pas *toujours* faux. C'est une **erreur de saisie
+locale**, pas une convention du site. *(C'est un renforcement du verdict du
+transcripteur, pas un démenti : son point (b) montrait la constance dans le
+temps ; celui-ci montre la fausseté par contraste.)*
+
+**e) LE TEST QUE LE TRANSCRIPTEUR N'A PAS FAIT — n° 2, et c'est le
+dangereux : le libellé est-il *couplé au fichier* ?** Non — et le
+découplage est total. Quatre cours servent un « Examen National Maths
+Sciences et Technologies 2018 Normale - Sujet », sous **quatre éléments
+distincts** :
+
+| Cours | Élément | `upload-` | MD5 de `0001-big.jpg` |
+|---|---|---|---|
+| Sciences Physiques (`course-438`) | `94699` | `70450` | `3b051fc89ef6cc861bad4c05c38422c4` |
+| SVT (`course-439`) | `94700` | `70451` | `3b051fc89ef6cc861bad4c05c38422c4` |
+| Sc. et Techn. **Électriques** (`course-441`) | `94702` | `70453` | `3b051fc89ef6cc861bad4c05c38422c4` |
+| Sc. et Techn. **Mécaniques** (`course-442`) | `94703` | `70454` | `3b051fc89ef6cc861bad4c05c38422c4` |
+
+**Les quatre servent le MÊME fichier, octet pour octet.** AlloSchool a
+**dupliqué le sujet SVT + Sciences Physiques dans les cours STE et STM** et
+a collé à toute la famille un libellé unique. C'est de là que vient le mot
+« Technologies » : il est **juste pour deux des quatre cours et faux pour les
+deux autres**, et l'étiquette a été propagée à tous.
+
+**Le sens de l'erreur est décisif, et il nous est favorable.** Le fichier
+servi *est* le sujet SVT + SP — son cartouche le dit en toutes lettres. Ce
+sont **STE et STM** qui reçoivent le mauvais fichier, pas nous. L'hypothèse
+inverse (« `course-438` aurait perdu son sujet au profit de celui des STE »)
+est **exclue** : le sujet STE/STM ne s'intitulerait pas
+`مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية`.
+
+> **VERDICT : PASS.** Le `<title>` est faux **sur le seul mot de la filière**,
+> pour une raison identifiée (duplication de fichiers + libellé unique sur
+> quatre cours), et il est **contredit par la `<meta>`, par le titre du cours,
+> par le cartouche des 4 pages, par le corrigé NR 22F, et par le contre-exemple
+> de `course-436`**. **La passe du transcripteur n'est PAS rejetée.** Nommer
+> la filière d'après le cartouche était la bonne décision.
+
+---
+
+### Point 2 🔴 — Le glyphe `⊔` de II)5). **Lecture $\approx$ CONFIRMÉE. Le raisonnement du transcripteur sur la NATURE du glyphe est RÉFUTÉ. La police substituée est identifiée — il n'y en a pas.**
+
+**Mesure du glyphe, refaite (seuil < 128, détection programmatique, pas à
+l'œil) :** boîte **x = 933–944**, **y = 447–466** dans `0004-big.jpg`, soit
+**12 × 20 px**. *(Le transcripteur annonçait 933–946 / 447–466 ≈ 13 × 20 :
+écart de 2 px sur le bord droit, imputable à son seuil ; sans conséquence.)*
+Relu à **×30**. Les valeurs brutes montrent un tracé **strictement 1 px** :
+colonne 933 (y 447→466), colonne 944 (y 447→466), ligne 466 (x 933→944).
+**Rien au-dessus** : les lignes 440–446 sont à 255 partout, il n'y a même pas
+d'anti-crénelage résiduel. Sur l'image, c'est donc **bien un `⊔`**.
+
+**Mais l'image n'est pas la source.** Dans le PDF, la question II-5 est un
+objet d'équation (`Meta190`, Form XObject, `Matrix [1.3099 0 0 4.3787 0 0]`)
+dont voici le **flux complet** :
+
+```
+BT /F21 12.193 Tf … [(\()-27(4\))-1035(4.2)] TJ ET   % "(4)" puis "4.2"
+BT /F22 12.193 Tf … [(f)] TJ ET                      % "f"
+q 49.063 0 0 12.314 27.908 2.6821 cm /Image191 Do Q  % <-- le "glyphe"
+```
+
+Trois faits, tous vérifiables sur le fichier :
+
+1. **Il n'y a AUCUN caractère entre `)` et `4.2`.** Le crénage `-1035` creuse
+   le blanc, rien ne l'occupe. Le symbole est **littéralement absent du
+   document** : il n'a pas de point de code, donc **pas de codage à décoder**.
+2. **Ce qu'on voit est une IMAGE.** `Image191` : `Width 2`, `Height 2`,
+   `BitsPerComponent 1`, palette indexée `[noir, blanc]`, données `00 00` —
+   soit **4 pixels noirs**, étirés sur 52,9 × 14,5 pt.
+3. **La forme vient du masque alpha.** `SMask` = image 1 bit de **408 × 102**
+   dont l'encre dessine, exactement : ligne 14–15 pleine (42 px), lignes
+   16–78 à 4 px (les deux montants), lignes 79–80 pleines. Soit un
+   **rectangle creux FERMÉ sur ses quatre côtés**, 42 × 67, traits de 2 px.
+
+**Pourquoi le haut disparaît.** L'image occupe 30,2 px de haut sur le raster
+150 dpi pour 102 lignes de masque : facteur **0,296**. Une barre de 2 lignes
+vaut **0,59 px**. Le haut est tombé sous le seuil du rasteriseur, le bas a
+atterri sur une frontière de pixel et a survécu. **`⊔` est un `□` amputé par
+la conversion en JPEG, rien d'autre.**
+
+**Conséquence pour la transcription.** Le paragraphe « Contrôle de
+robustesse » de la table de glyphes affirme le contraire — « ce n'est **pas**
+le rectangle plein/vide "caractère manquant" […] mais un **vrai caractère
+d'une police substituée** ». **C'est faux, et corrigé en place** (encart
+`⛔ CORRIGÉ PAR LA VÉRIFICATION`). Le transcripteur est arrivé à la
+**bonne lecture par le bon raisonnement** (la conséquence mathématique) tout
+en se trompant sur la **cause** ; comme il ne s'était rien autorisé à déduire
+de la forme, l'erreur n'a rien contaminé. C'est exactement la discipline qui
+sauve : *ne rien tirer d'un glyphe qu'on ne comprend pas.*
+
+**La piste Adobe Symbol — essayée, et voici ce qu'elle donne.** La consigne
+demandait de tenter la clé qui avait tout débloqué sur SM 2017. **Elle ne
+s'applique pas au glyphe de II-5** — on ne décode pas un point de code qui
+n'existe pas. **Mais elle s'applique, et parfaitement, à tout le reste du
+document**, et c'est elle qui m'a permis de lire la couche texte : `SymbolMT`
+est **incorporée** (`FontFile2`, `Identity-H`) et ses caractères tombent dans
+la PUA en **`U+F000 + code Symbol`**. Décodage intégral du Problème :
+
+| Code | Symbol (Adobe) | Lu | p. 3 | p. 4 | Où — **recompté, pas estimé** |
+|---|---|---|---|---|---|
+| `0x2B` | `plus` | $+$ | 12 | 5 | — |
+| `0x2D` | `minus` | $-$ | 16 | 11 | — |
+| `0x3D` | `equal` | $=$ | 14 | 8 | — |
+| `0x5B` | `bracketleft` | $[$ | **5** | **2** | I-2 ×2, II-2b ×3, II-3b ×2 |
+| `0x5D` | `bracketright` | $]$ | **5** | **2** | idem |
+| `0xA2` | `minute` | $'$ | 1 | 0 | le $g'(x)$ du tableau imprimé |
+| `0xA3` | `lessequal` | $\le$ | 0 | **2** | **III-1 : `0 ≤ uₙ ≤ 1`, et nulle part ailleurs** |
+| `0xA5` | `infinity` | $\infty$ | **15** | **2** | voir le décompte ci-dessous |
+| `0xAE` | `arrowright` | $\to$ | 4 | 0 | les 4 `lim` de II-1a…1d |
+| `0xF2` | `integral` | $\int$ | 0 | **2** | II-6a, II-6b |
+| `0x28`/`0x29` | parenthèses extensibles | — | 1+1 | 1+1 | le repère $(O,\vec i,\vec j)$ |
+
+**Aucun `0xB3` (`greaterequal`, $\ge$) nulle part** : il n'y a pas une seule
+inégalité au sens inverse dans le Problème. Le piège `£`/`³` de SM 2017
+**n'existe pas ici**.
+
+**Le décompte des 17 `∞` se referme exactement**, ce qui vaut preuve que
+rien n'a été omis : tableau de $g$ 4 (deux lignes × deux bornes) + I-2 2 +
+II-1a 2 + II-1b 2 + II-1c 1 + II-1d 2 + II-2b 2 = **15 en p. 3** ; II-3b 2 =
+**2 en p. 4**. **15 + 2 = 17.** ✔
+
+---
+
+### Point 3 🟠 — Unicité de la substitution. **CONFIRMÉE pour le Problème, par énumération exhaustive. MAIS deux autres boîtes existent en page 2 — le transcripteur ne les a pas vues.**
+
+Au lieu d'un balayage visuel, j'ai **énuméré tous les objets image du PDF** :
+**12 au total** — 1 vraie photo (le bandeau ministériel/amazigh de la p. 1,
+625 × 151, DCT) et **11 micro-images de 2 × 2 px** portées par des objets
+d'équation. Chacune a été classée par la géométrie de son masque alpha :
+
+| Objet | Page | Masque, boîte d'encre | Nature |
+|---|---|---|---|
+| `Meta76/Image87` | 2 | 261 × 16 | flèches de $(O,\vec i,\vec j,\vec k)$ |
+| `Meta92/Image93` | 2 | 879 × 14 | flèches de $\vec{AB}\wedge\vec{AC}=2\vec i+2\vec j+\vec k$ |
+| **`Meta101/Image102`** | **2** | **43 × 68 — creuse, 4 côtés** | **BOÎTE « caractère manquant »** |
+| **`Meta110/Image111`** | **2** | **53 × 85 — creuse, 4 côtés** | **BOÎTE « caractère manquant »** |
+| `Meta114/Image115` | 2 | 159 × 18 | flèches de $(O,\vec u,\vec v)$ |
+| `Meta128/Image129` | 2 | 145 × 16 | flèche de $\overrightarrow{OA}$ |
+| `Meta164/Image165` | 3 | 119 × 15 | flèches de $(O,\vec i,\vec j)$ |
+| `Meta187/Image188` | 4 | 179 × 16 | flèches de $(O,\vec i,\vec j)$ (II-5) |
+| **`Meta190/Image191`** | **4** | **42 × 67 — creuse, 4 côtés** | **BOÎTE — le symbole de II-5** |
+| `Meta193/Image194` | 4 | 113 × 64 | **la flèche $\longmapsto$ de $H:x\mapsto\ldots$** |
+| `Meta196/Image197` | 4 | 113 × 64 | **la flèche $\longmapsto$ de $h:x\mapsto\ldots$** |
+
+- **Dans le Problème (p. 3 + p. 4) : une seule boîte.** ✔ **Le transcripteur
+  a raison.** Et un *template matching* du bitmap exact du `⊔` sur les quatre
+  rasters rend **1 occurrence** (p. 4, (933, 447)) et **0** sur les p. 1, 2, 3.
+- **Les deux `↦` sont de VRAIS dessins de flèche** — vérifié en rendant leur
+  masque : hampe verticale + trait + pointe. La transcription qui écrit
+  `x \mapsto` est **exacte**, ce n'était pas acquis.
+- **Tout le reste du Problème s'imprime juste** : $\le$, $\int$, $\infty$,
+  crochets, exposants, indices sont de **vrais caractères** `SymbolMT`
+  incorporés (cf. point 2). Ce scan **n'a pas** le régime intermittent de
+  SM 2023 N.
+
+#### ⚠️ Défaut du SUJET OFFICIEL, hors périmètre mais à signaler
+
+Les deux boîtes de la **page 2** ne sont pas décoratives — ce sont **deux
+symboles d'ensemble effacés**, et je les ai relus sur l'image :
+
+| Où | Ce que le scan imprime | Ce qui manque |
+|---|---|---|
+| **Exercice 1, q3-a** | `; ( t ∈ ǀ )` — un unique trait vertical | $\mathbb{R}$ *(le $\in$, lui, est un vrai `0xCE`)* |
+| **Exercice 2, q1** | `Résoudre dans l'ensemble ⊓̲ des nombres complexes` | $\mathbb{C}$ |
+
+*(Ici le rasteriseur a gardé d'autres côtés de la boîte que sur la p. 4 —
+un montant dans un cas, les deux barres horizontales dans l'autre : la
+signature d'un même défaut vu à trois échelles différentes.)*
+
+**Ces deux questions sont déjà en banque** (`bk-2018-n-x1`, `bk-2018-n-x2`).
+Rien n'est corrigé ici — **hors périmètre**, ce fichier n'écrit que
+lui-même — mais l'existence du défaut est **consignée** pour qui reprendra
+ces deux entrées. À noter que, dans le **Problème**, $\mathbb{R}$ et
+$\mathbb{N}$ sont écrits **`IR` et `IN`** en vraies capitales Times
+(vérifié caractère par caractère : `U+0049`+`U+0052` ×8, `U+0049`+`U+004E`
+×2) : le document **mélange les deux régimes**, ce que la transcription
+n'avait pas relevé.
+
+---
+
+### Point 4 🟠 — Les vingt barèmes de marge. **RECOMPTÉS TROIS FOIS. Les vingt sont exacts, le total est 11,00.**
+
+Trois relevés indépendants, dont deux non visuels :
+
+1. **Couche texte du PDF**, colonne de marge isolée par sa géométrie
+   (`x0 < 64 pt`, la colonne délimitée par les `LTRect` à x = 27,72 et
+   63,24).
+2. **Recadrage ×5 de la seule colonne de marge**, découpée en bandes et lue
+   panneau par panneau — sans le corps du texte à côté.
+3. **Le corrigé officiel NR 22F**, qui détaille l'attribution des points.
+
+| # | Question | Marge (PDF) | Marge (×5) | Corrigé NR 22F |
+|---|---|---|---|---|
+| 1 | I-1 | 0,25 | 0,25 | `0.25` |
+| 2 | I-2 | 0,5 | 0,5 | `0.25 pour le signe sur chacun des deux intervalles` |
+| 3 | II-1a | 0,5 | 0,5 | `0.25 pour l'égalité et 0.25 pour la limite` |
+| 4 | II-1b | 0,75 | 0,75 | `0.5 pour la limite et 0.25 pour la déduction` |
+| 5 | II-1c | 0,5 | 0,5 | `0.25 pour l'égalité et 0.25 pour la limite` |
+| 6 | II-1d | 0,5 | 0,5 | `0.25 pour la limite et 0.25 pour l'interprétation` |
+| 7 | **II-2a** | **0,25** | **0,25** | `0.25` |
+| 8 | II-2b | 0,5 | 0,5 | `0.25 au dessus + 0.25 en dessous` |
+| 9 | II-3a | 0,75 | 0,75 | `0.75` |
+| 10 | II-3b | 0,5 | 0,5 | `0.25 pour chaque déduction` |
+| 11 | **II-3c** | **0,25** | **0,25** | `0.25` |
+| 12 | **II-4a** | **0,25** | **0,25** | `0.25` |
+| 13 | II-4b | 0,5 | 0,5 | `0.25 …s'annule et change de signe en 1` + `…en 4` |
+| 14 | II-5 | 1 | 1 | `1 point à distribuer selon ce qui est précisé sur la figure` |
+| 15 | II-6a | 0,5 | 0,5 | `0.25 pour la primitive et 0.25 pour la déduction` |
+| 16 | II-6b | 0,75 | 0,75 | `0.5 pour la technique de l'IPP et 0.25 pour le calcul` |
+| 17 | II-6c | 0,75 | 0,75 | `0.5 pour la formule de l'aire et 0.25 pour la valeur en cm²` |
+| 18 | III-1 | 0,75 | 0,75 | `0.75` |
+| 19 | III-2 | 0,5 | 0,5 | `0.5` |
+| 20 | III-3 | 0,75 | 0,75 | `0.5 pour la convergence et 0.25 pour le calcul de la limite` |
+
+**Les trois `0,25` isolés que le transcripteur signalait comme fragiles
+(II-2a, II-3c, II-4a) sont confirmés par les trois instruments.**
+Sous-totaux : **page 3 = 3,75** (8 questions), **page 4 = 7,25** (12
+questions). **3,75 + 7,25 = 11,00.** ✔ **20 questions barémées**, pas 19,
+pas 21.
+
+**Et le /20 de l'épreuve se referme aussi, mesuré et non supposé** — la
+même extraction, appliquée aux autres pages : marge de la **p. 2** =
+`1 + 0,5 + 0,25 + 0,5 + 0,75` (Ex. 1) `+ 0,75 + 0,25 + 0,5 + 0,75 + 0,75`
+(Ex. 2) = **3,00 + 3,00** ; marge de la **p. 3** avant le Problème =
+`1,5 + 0,5 + 1` (Ex. 3) = **3,00**. **3 + 3 + 3 + 11 = 20,00.** ✔
+
+---
+
+### Point 5 🟠 — Le tableau de variations imprimé de $g$ (p. 3). **RE-DÉCRIT DEPUIS L'IMAGE. La description du transcripteur tient, à un détail près.**
+
+Recadrage ×2,6 de la marge droite de la p. 3, plus la couche texte, qui
+donne pour ce bloc **exactement** : `x −∞ +∞` / `′ g(x) +` / `+∞ … g(x) … −∞`
+— et **rien d'autre**.
+
+| Ligne | Ce que je lis sur le dessin |
+|---|---|
+| $x$ | $-\infty$ à gauche, $+\infty$ à droite, **une seule colonne**, aucun trait de séparation intermédiaire |
+| $g'(x)$ | **un seul `+`**, unique sur toute la largeur |
+| $g(x)$ | **une seule flèche montante**, de $-\infty$ (bas gauche) à $+\infty$ (haut droite) |
+
+- (a) **aucune colonne intermédiaire** ✔
+- (b) **un seul `+`** ✔ *(détail : il n'est pas exactement centré — il tombe
+  à ~42 % de la largeur de la cellule, non à 50 %. Sans la moindre
+  conséquence, mais dit plutôt que lissé.)*
+- (c) **aucune valeur portée dans la ligne $g(x)$ — en particulier PAS
+  $g(0)=0$** ✔ **C'est le point qui comptait** : le zéro n'y figure pas, donc
+  la question I)1) garde son objet. Une figure re-dessinée qui l'ajouterait
+  **changerait l'exercice** — l'avertissement du transcripteur est fondé et
+  doit passer dans la conversion.
+
+**Et le tableau est mathématiquement juste** — je l'ai re-démontré plutôt que
+cru : $g'(x)=e^x-2x+3$, $g''(x)=e^x-2$ s'annule en $\ln 2$, et
+$g'(\ln 2)=5-2\ln 2=3{,}6137\ldots>0$. Donc $g'>0$ **partout**, $g$
+strictement croissante, $\lim_{-\infty}g=-\infty$ et $\lim_{+\infty}g=+\infty$.
+
+---
+
+### Point 6 🟡 — Bornes et intervalles de II-2b (et de tous les autres). **CONFIRMÉS UN PAR UN, au point de code.**
+
+Le contrôle est bien meilleur que du recadrage : les crochets sont des
+caractères `SymbolMT` (`0x5B` = `bracketleft`, `0x5D` = `bracketright`), donc
+leur orientation est **lisible sans image**. Total sur le Problème :
+**7 `[` et 7 `]`**. Ils se répartissent **exactement** ainsi :
+
+| Question | Intervalles imprimés | `]` | `[` |
+|---|---|---|---|
+| I-2 | $\left]-\infty,0\right]$ et $\left[0,+\infty\right[$ | 2 | 2 |
+| II-2b | $\left]-\infty,0\right]$, $\left[1,+\infty\right[$, $\left[0,1\right]$ | 2 + 1 | 2 + 1 |
+| II-3b | $\left]-\infty,0\right]$ et $\left[0,+\infty\right[$ | 2 | 2 |
+| | **total** | **7** | **7** |
+
+**7 = 7 et 7 = 7 : il n'y a pas de place pour un crochet mal orienté.**
+Le `[L400` de l'OCR est bien $\left[1,+\infty\right[$ ; relu au ×2,6, et
+cohérent avec le signe de $x^2-x$. **Aucun autre intervalle** n'apparaît dans
+le Problème.
+
+---
+
+### Point 7 🟡 — Les deux expressions de $f$ (II-1a, II-1c). **CONFIRMÉES, exposant compris.**
+
+Lues sur l'image au ×2,6 **et** caractère par caractère dans la couche texte :
+
+- **II-1a** : $f(x)=\dfrac{x^{2}}{e^{x}}-\dfrac{x}{e^{x}}+x$
+- **II-1c** : $f(x)=\dfrac{x^{2}-x+x\,e^{x}}{e^{x}}$ — c'est bien
+  **$x\,e^{x}$**, exposant **positif**, au numérateur.
+
+Le transcripteur avait raison de flaguer ce point comme non auto-vérifiable :
+les deux formes sont vraies, donc une erreur de signe d'exposant ne se
+verrait pas au calcul. Elle se voit ici **au caractère**. Re-dérivation
+`sympy` : `simplify(f - (x**2 - x + x*exp(x))/exp(x)) == 0` ✔ et
+`simplify(f - (x**2/exp(x) - x/exp(x) + x)) == 0` ✔.
+
+---
+
+### Point 8 🟡 — `f(4) ≈ 4,2` et les abscisses d'inflexion `1` et `4`. **CONFIRMÉS.**
+
+- Le `4` de `f(4)` et le `4.2` sont des caractères Times nets — la couche
+  texte donne `(4)` puis `4.2`, sans ambiguïté, et le ×4 le confirme.
+- `1 et 4` de II-4b : lus au ×2,6 (« …d'abscisses respectives **1 et 4** »),
+  confirmés par la couche texte, **et** par le corrigé NR 22F qui écrit
+  « la dérivée seconde s'annule et change de signe **en 1** » / « **en 4** ».
+- Re-dérivation : $f''(x)=(x^{2}-5x+4)e^{-x}$, racines $\{1,4\}$, changement
+  de signe strict en chacune. ✔
+- $f(4)=(16-4)e^{-4}+4=12e^{-4}+4=\mathbf{4{,}2198766\ldots}$ — donc la
+  relation imprimée **ne peut pas** être `=`. ✔
+
+---
+
+### Point 9 🟡 — $u_0=\tfrac12$ et le renvoi « II)3)b) ». **L'ADJUDICATION DU TRANSCRIPTEUR EST CONFIRMÉE — par trois voies, dont deux qu'il n'avait pas.**
+
+L'OCR lit bien `u₀ = 5` (je le reproduis : `II) Soit (u,,) la suite numérique
+définie par: 1, =5`). C'est **faux**, et voici pourquoi, sans avoir à croire
+personne :
+
+1. **Couche texte du PDF** — la ligne III) se décompose en trois altitudes :
+   `1` à y = 447,7 · `u₀ =` … `et u_{n+1}=f(uₙ) pour tout n de IN` à
+   y = 439,3 · `2` à y = 427,9. C'est une **fraction empilée : 1 sur 2**.
+   L'OCR a lu la barre de fraction et le `2` comme un `5`.
+2. **Image au ×2,8** — le $\tfrac12$ est net, barre de fraction comprise.
+3. **Conséquence dynamique, calculée** — avec $u_0=\tfrac12$ :
+   $0{,}5 \to 0{,}348 \to 0{,}188 \to 0{,}0616 \to 0{,}00725 \to \ldots \to 0$
+   (décroissante, dans $[0,1]$ ✔). Avec $u_0=5$ :
+   $5 \to 5{,}135 \to 5{,}260 \to 5{,}376 \to 5{,}485$ — **croissante**, et
+   hors de $[0,1]$ : elle contredirait **à la fois** III-1 et III-2.
+
+**Le renvoi est bien à « II)3)b) »**, lu au ×2,8 (`( on pourra utiliser le
+résultat de la question II)3)b))`, en italique dans le scan) et confirmé au
+caractère. **Et c'est le bon renvoi** : II-3b donne la monotonie de $f$
+($f$ croissante sur $[0,+\infty[$), avec $f(0)=0$ et $f(1)=1$ on obtient
+$f([0,1])\subseteq[0,1]$, donc l'hérédité de $0\le u_n\le 1$. Un renvoi à
+II-2b (position relative de $(C)$ et $(D)$) **ne donnerait pas** cette
+récurrence — il sert, lui, à la question III-2 (décroissance :
+$u_{n+1}-u_n=f(u_n)-u_n\le 0$ sur $[0,1]$).
+
+---
+
+### Point 10 🟢 — La numérotation I) / II) / III). **CONFIRMÉE.**
+
+L'OCR rend la troisième partie `II)`. La **couche texte** donne les trois
+caractères `I` `I` `I` suivis de `)`. Au ×2,8 les **trois hampes** sont
+nettes. Le corrigé NR 22F reprend la même structure : `Problème` ▸ `I` ▸ `II`
+▸ `III`. **Trois parties, correctement numérotées** — donc le renvoi du
+point 9 (« II)3)b) ») pointe bien vers la Partie II.
+
+---
+
+### Point 11 🟢 — Portée du Problème. **CONFIRMÉE, avec une correction de formulation.**
+
+- **Rien du Problème sur les p. 1 et 2.** Reconstruction complète des lignes
+  de la couche texte : p. 1 = cartouche + `INSTRUCTIONS GENERALES` +
+  `COMPOSANTES DU SUJET` ; p. 2 = `Exercice 1 : (3 points)` et
+  `Exercice 2 : (3 points)`, rien d'autre. ✔
+- **Début** : p. 3, `Problème : (11 points )` à **y = 739 px sur 1754**, soit
+  **42,1 %** de la hauteur — c'est le **milieu** de la page, pas le « tiers
+  bas ». *(Correction reportée en place dans le bloc de provenance ; sans
+  conséquence sur le contenu.)* Le Problème occupe ensuite toute la fin de la
+  p. 3 (dernière encre à y = 1593, 90,8 %).
+- **Fin** : p. 4, dernière encre à **y = 1021** (58,2 %), la boîte du tableau
+  se referme à y = 1022. **Sous y = 1050 : 0 pixel d'encre** — compté sur
+  l'image entière, pas estimé. Le bas de la p. 4 est **vide**. ✔
+- **Rien ne manque à la transcription** : les 20 questions barémées de la
+  couche texte correspondent une à une aux 20 questions transcrites.
+
+---
+
+### Point 12 🟢 — Résolubilité de bout en bout. **RE-DÉRIVÉE INDÉPENDAMMENT (`sympy`). Tout se referme ; aucune donnée ne manque.**
+
+| Énoncé | Vérification symbolique | ✔ |
+|---|---|---|
+| $g(0)=0$ | $e^0-0+0-1=0$ | ✔ |
+| $g$ croissante sur $\mathbb{R}$ (tableau donné) | $\min g' = g'(\ln 2)=5-2\ln 2=3{,}6137>0$ | ✔ |
+| $f(x)=\frac{x^2}{e^x}-\frac{x}{e^x}+x$ | identité, `simplify` → 0 | ✔ |
+| $\lim_{+\infty}f=+\infty$ | `limit` → $+\infty$ | ✔ |
+| $\lim_{+\infty}(f-x)=0$ → asymptote $y=x$ | `limit` → 0 | ✔ |
+| $f(x)=\frac{x^2-x+xe^x}{e^x}$ ; $\lim_{-\infty}f$ | identité → 0 ; limite → $+\infty$ | ✔ |
+| $\lim_{-\infty}\frac{f(x)}{x}=-\infty$ (branche parabolique $(Oy)$) | `limit` → $-\infty$ | ✔ |
+| $f(x)-x$ et $x^2-x$ de même signe | $f(x)-x=x(x-1)e^{-x}$, et $e^{-x}>0$ | ✔ |
+| $f'(x)=g(x)e^{-x}$ | `simplify(f' - g·e^{-x})` → 0 | ✔ |
+| $f''(x)=(x^2-5x+4)e^{-x}$, inflexions en 1 et 4 | `simplify` → 0 ; racines $\{1,4\}$ | ✔ |
+| $H'=h$ pour $H=(x^2+2x+2)e^{-x}$, $h=-x^2e^{-x}$ | `simplify(H' - h)` → 0 | ✔ |
+| $\int_0^1 x^2e^{-x}dx=\frac{2e-5}{e}$ | $=2-\frac5e$ ✔ | ✔ |
+| $\int_0^1 xe^{-x}dx=\frac{e-2}{e}$ | $=1-\frac2e$ ✔ | ✔ |
+| **II-6c** (aire, non donnée par l'énoncé) | $\int_0^1(x-f)=\frac3e-1=0{,}10364\ \mathrm{cm}^2$, obtenue **exactement** comme différence des deux intégrales précédentes | ✔ |
+| $u_0=\frac12$, $0\le u_n\le1$, décroissante, limite | points fixes $f(0)=0$, $f(1)=1$ ; suite $\downarrow 0$ | ✔ |
+
+**Quinze identités indépendantes se referment.** Chaque question dispose de
+tout ce qu'il lui faut, et **chaque « montrer que » est vrai** : je n'ai
+trouvé **aucun défaut mathématique dans le sujet officiel**. La chaîne
+II-2b → II-6c et II-3b → III-1 → III-2 → III-3 est complète.
+
+*(Cette re-dérivation est aussi le troisième instrument non visuel du
+contrôle d'identité : un jeu de pages panaché ne produirait pas quinze
+identités qui se referment entre elles.)*
+
+---
+
+### Le classement — **je tranche, avec un argument imprimé dans le sujet**
+
+**`fonction-logarithme` : ÉCARTÉ, et le « (?) » du CENSUS est levé.**
+Recherche de `ln` et `log` sur **les quatre pages** de la couche texte :
+**0 occurrence**. Ce n'est pas « je n'en ai pas vu » — c'est **zéro**, sur
+un texte complet et sans caractère non résolu (`(cid:…)` : 0 sur les 4
+pages). Le Problème est de l'**exponentielle pure**. ❌ pas de cross-list
+`fonction-logarithme`.
+
+**Les poids du transcripteur sont exacts**, recomputés : 4,75 + 2,25 + 2,00 +
+2,00 = **11,00**. ✔
+
+**Répartir ou non — je recommande UNE SEULE ENTRÉE à 11 pts sous
+`derivabilite-etude-fonctions`.** Le transcripteur laissait le choix ouvert
+faute d'argument de fond. Il en existe un, et il n'est pas affaire de goût :
+
+1. **Le sujet imprime lui-même sa dépendance.** III-1 porte, *dans son
+   énoncé*, « ( on pourra utiliser le résultat de la question **II)3)b)** ) ».
+   Une entrée `suites-numeriques` autonome hériterait d'une consigne qui
+   renvoie à un résultat absent de l'entrée. Ce n'est pas une gêne
+   rédactionnelle : c'est un **renvoi imprimé qui deviendrait faux**.
+2. **La même chose vaut pour l'intégrale.** II-6c demande l'aire entre $(C)$
+   et $(D)$ ; elle ne se calcule qu'en sachant **qui est au-dessus de qui**
+   sur $[0,1]$ — établi en II-2b, qui est du domaine `derivabilite-…`. Une
+   entrée `calcul-integral` isolée devrait réimporter II-2b, donc dupliquer.
+3. **Précédent du dépôt** : `maths-sm-2022-n.md` et `maths-sm-2025-n.md` ont
+   gardé entier un problème unique de 10 pts, pour ce motif.
+4. **Sécurité du /20** : `web/src/lib/examens.ts` somme les `bareme_total` ;
+   une entrée unique à 11,00 ne peut pas dériver.
+
+**Les quatre domaines restent honorés dans le `reasoning`** de l'entrée —
+`limites-continuite` (2,25), `calcul-integral` (2,00), `suites-numeriques`
+(2,00), `fonction-exponentielle` (transversal). **Décision finale à
+l'owner** : les deux options bouclent à 11,00 et l'épreuve à 20,00 ; je donne
+une recommandation motivée, pas un fait accompli.
+
+---
+
+### Écarts avec la transcription — la liste complète, rien de lissé
+
+| # | Ce que dit la transcription | Ce que j'ai lu | Gravité |
+|---|---|---|---|
+| 1 | Le glyphe de II-5 « n'est **pas** le rectangle "caractère manquant" mais un vrai caractère d'une police substituée » | **C'est exactement** la boîte « caractère manquant », et ce n'est **pas un caractère** : une image + masque alpha, rectangle creux fermé, sans point de code | **Erreur de fait, corrigée en place.** La **lecture** $\approx$ n'est pas affectée |
+| 2 | « Une seule occurrence trouvée dans tout le Problème » (à confirmer) | ✔ pour le Problème. **Mais 2 autres boîtes en p. 2** ($\mathbb{R}$, $\mathbb{C}$), non vues | Hors périmètre du fichier, **mais dans celui de 2 entrées de banque** |
+| 3 | « Le scan écrit `IR` et `IN` … typographie normale » | Vrai **dans le Problème**. En p. 2 les mêmes symboles sont **effacés** : le document mélange deux régimes | Signalé |
+| 4 | « L'anomalie est systématique sur tout `course-438` » (2 exemples) | Vrai, et **54/54** comptés. Mais l'argument fort manquait : le libellé est **découplé du fichier**, et le même fichier est servi à **4 cours** | Renforcement, pas démenti |
+| 5 | « commence au **tiers bas** de la page 3 » | **42,1 %** de la hauteur = le **milieu** | Cosmétique, corrigé en place |
+| 6 | Boîte du glyphe « x ≈ 933–946 » | **933–944** (seuil < 128) | Négligeable |
+| 7 | « le `+` [du tableau de $g$] centré » | À ~**42 %** de la largeur, pas 50 % | Négligeable |
+| 8 | Le corrigé (`element/94704`) et le **PDF source** non ouverts | Les deux étaient disponibles et **décisifs** (barème question par question ; nature du glyphe ; $u_0$ ; crochets) | Méthode : à faire systématiquement |
+
+**Tout le reste de la transcription — les 20 questions, leurs 20 barèmes, les
+deux fonctions, les deux dérivées, les deux intégrales, les intervalles, la
+suite, le tableau de $g$, le cartouche, la portée — est CONFORME au scan,
+mot à mot et signe à signe.**
+
+### Défauts du SUJET OFFICIEL (tel que servi)
+
+1. **Trois symboles effacés** : la relation de **II-5** (→ $\approx$,
+   reconstruit), $\mathbb{R}$ en **Ex. 1 q3-a**, $\mathbb{C}$ en **Ex. 2 q1**.
+   Cause identifiée : objets d'équation dont un glyphe n'a pas résolu à
+   l'export Word 2013 et a été remplacé par une boîte « caractère manquant ».
+   **Ce sont probablement des défauts de CE PDF** (créé le 2018-12-12), pas
+   du fascicule remis aux candidats — la nuance est faite, pas tranchée.
+2. **Aucun défaut mathématique.** Les quinze identités se referment ; aucune
+   question n'est incalculable ; aucune donnée ne manque.
+3. **Aucun défaut de barème.** 20 valeurs, 11,00, et le corrigé officiel
+   concorde question par question.
+
+### Verdict
+
+> **CLEARÉ POUR CONVERSION.** Une réserve, nommée et unique : le symbole de
+> relation de **II)5)** est une **reconstruction éditoriale** ($\approx$),
+> pas une lecture — il doit être converti comme tel, jamais présenté à
+> l'élève comme un caractère lu. Le tableau de variations de $g$ doit être
+> re-dessiné **sans** $g(0)=0$. Les deux boîtes de la page 2 sont **hors
+> périmètre** et laissées telles quelles, signalées pour qui reprendra
+> `bk-2018-n-x1` et `bk-2018-n-x2`.

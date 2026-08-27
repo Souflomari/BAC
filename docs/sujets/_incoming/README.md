@@ -111,7 +111,7 @@ exercices d'algèbre sont en banque et que leur volet d'ANALYSE n'y est pas.
 Une épreuve SM consacre la moitié de son barème à l'analyse ; c'est
 exactement la moitié qui manque.
 
-**Sept sujets transcrits, cinq vérifiés.** État au 2026-08-27 :
+**Sept sujets transcrits, sept vérifiés.** État au 2026-08-27 :
 
 | Fichier | Ce qui est transcrit | Barème | Vérification |
 |---|---|---|---|
@@ -121,7 +121,7 @@ exactement la moitié qui manque.
 | `maths-sm-2025-n.md` | exercice 1 (problème unique) | 10 | **vérifiée** — aucun défaut ; c'est cette passe qui a découvert l'incident de cache CDN |
 | `maths-sm-2017-n.md` | exercice 4 (problème unique) | 10 | **vérifiée EN DEUX PASSES, clearée** — la seconde a soldé les 5 points ouverts en trouvant la clé de décodage (chaque point de code lu comme un code **Adobe Symbol** retombe sur le symbole attendu, sur 10 codes indépendants) ; 3 défauts du sujet officiel documentés, dont un ℕ **physiquement absent** du PDF |
 | `maths-sm-2021-n.md` | exercice 1 (problème unique) | 12 | **VÉRIFIÉ, clearé** — 4 contrôles anti-CDN + 2 instruments inédits (matrice de corrélation PDF↔JPG, couche 300 dpi) ; **aucun défaut du sujet officiel** ; le « + » que la transcription croyait amputé est intact, c'est le sous-échantillonnage d'AlloSchool |
-| `maths-sexp-2018-n.md` | problème (SExp) | 11 | **NON VÉRIFIÉ** — transcrit sous les 4 contrôles ; le n°4 passe **avec réserve** (le `<title>` dit « Sciences et Technologies », anomalie systématique de `course-438` — filière nommée d'après le cartouche). Docket à 12 points |
+| `maths-sexp-2018-n.md` | problème (SExp) | 11 | **VÉRIFIÉ, clearé** — 4 contrôles + 2 ajoutés (corrigé officiel `NR 22F`, PDF source) ; 12 points du docket soldés. L'anomalie de `<title>` est **arbitrée PASS** : 54/54 des éléments de `course-438` la portent, `course-436` nomme correctement sa filière, et quatre éléments servent un `0001-big.jpg` byte-identique — le fichier servi EST le bon sujet. **Réserve nommée** : le symbole de II-5 est une reconstruction éditoriale (≈), pas une lecture |
 
 **SM 2020 est le sixième, et il est SUSPENDU** — pas oublié. Son format à
 choix n'est pas représentable par l'assembleur d'épreuves ; voir
