@@ -787,6 +787,28 @@ de re-mesurer les valeurs graphiques sur la source la moins dégradée, sujet pa
 sujet — le geste que le protocole du sas impose désormais aux transcriptions
 neuves, mais que le contenu **déjà converti** n'a jamais subi.
 
+**L'exposition, chiffrée le 2026-08-27 : 89 entrées sur 187 — soit 48 % de la
+banque — s'appuient sur une lecture de figure** (« lecture graphique », « le
+palier », « la tangente », « d'après la figure »…). Elles se concentrent sur
+21 notions, et très majoritairement en physique :
+
+| notion | entrées concernées |
+|---|---|
+| `pc/chute-mouvements-plans` | 12 |
+| `pc/rlc-serie` | 11 |
+| `pc/rc-charge` | 9 |
+| `pc/reactions-acido-basiques` | 8 |
+| `maths/fonction-logarithme` · `pc/dipole-rl` | 6 chacune |
+
+Les plus chargées en lectures : `bk-2021-r-x4b` (dipole-rl, 19 mentions),
+`bk-2022-r-x3` (18), `bk-2023-r-x3` (rc-charge, 17).
+
+**C'est une borne HAUTE, pas un décompte de valeurs à risque.** Le repérage
+attrape toute mention de figure, y compris quand le raisonnement décrit un
+schéma sans qu'aucune valeur n'en dépende. Il dit l'ordre de grandeur de la
+surface à re-mesurer, pas le nombre de valeurs fausses — qui peut très bien
+être zéro. Le seul cas avéré à ce jour reste PC 2010.
+
 ### K-1. `get_user_weak_areas` function references missing columns
 **Source.** `backend/supabase/migrations/004_exam_analytics_and_sync.sql`,
 lines 45–74.
