@@ -111,7 +111,7 @@ exercices d'algèbre sont en banque et que leur volet d'ANALYSE n'y est pas.
 Une épreuve SM consacre la moitié de son barème à l'analyse ; c'est
 exactement la moitié qui manque.
 
-**Cinq sujets transcrits, quatre vérifiés.** État au 2026-08-27 :
+**Six sujets transcrits, cinq vérifiés.** État au 2026-08-27 :
 
 | Fichier | Ce qui est transcrit | Barème | Vérification |
 |---|---|---|---|
@@ -119,7 +119,8 @@ exactement la moitié qui manque.
 | `maths-sm-2023-n.md` | exercices 1 et 2 | 7,75 + 2,25 | **vérifiée** — aucun défaut dans les énoncés *(passe antérieure à la règle du 2026-08-27, voir la note de portée du fichier)* |
 | `maths-sm-2024-n.md` | exercices 1 et 2 | 7,5 + 2,5 | **vérifiée** — un défaut du SUJET OFFICIEL (numéros 4 et 5 croisés entre la p. 1 et le corps) *(idem)* |
 | `maths-sm-2025-n.md` | exercice 1 (problème unique) | 10 | **vérifiée** — aucun défaut ; c'est cette passe qui a découvert l'incident de cache CDN |
-| `maths-sm-2017-n.md` | exercice 4 (problème unique) | 10 | **INTERROMPUE** — passe tuée en cours d'écriture ; barème, glyphes, `;` à l'octet et classement établis, mais 5 des 7 points du docket restent ouverts. NON clearé |
+| `maths-sm-2017-n.md` | exercice 4 (problème unique) | 10 | **vérifiée EN DEUX PASSES, clearée** — la seconde a soldé les 5 points ouverts en trouvant la clé de décodage (chaque point de code lu comme un code **Adobe Symbol** retombe sur le symbole attendu, sur 10 codes indépendants) ; 3 défauts du sujet officiel documentés, dont un ℕ **physiquement absent** du PDF |
+| `maths-sm-2021-n.md` | exercice 1 (problème unique) | 12 | **NON VÉRIFIÉ** — transcrit sous les 4 contrôles de provenance ; vérification indépendante à faire |
 
 **SM 2020 est le sixième, et il est SUSPENDU** — pas oublié. Son format à
 choix n'est pas représentable par l'assembleur d'épreuves ; voir
