@@ -139,6 +139,44 @@
 #       noyaux fils produits vaut N_0 − N(t) » est écrit noir sur blanc au
 #       R3 de lesson.md, et c'est exactement la clé de la question 2-3 — le
 #       raisonnement y renvoie plutôt que de le reposer.
+#
+# NOTE ÉDITORIALE — bk-2012-n-x3 (2026-08-28, ajout) : LE CHOIX DE L'`id`, ET
+# POURQUOI. Le sujet source (docs/sujets/_incoming/pc-2012-n.md, statut
+# VÉRIFIÉ — clearé pour conversion, passe adversariale du 2026-08-28) NE
+# NUMÉROTE AUCUN EXERCICE : la page 1 annonce « quatre exercices » mais le
+# corps du sujet introduit chaque bloc par son nom de domaine (Chimie,
+# Physique nucléaire, Electricité, Mécanique), jamais par « Exercice
+# 1/2/3/4 ». Les deux entrées de chimie déjà en banque pour ce même sujet,
+# bk-2012-n-x1 (content/pc/transformations-deux-sens/bank.yaml) et
+# bk-2012-n-x2 (content/pc/evolution-spontanee/bank.yaml), ont donc choisi une
+# numérotation qui encode la POSITION DANS LE CARTOUCHE plutôt qu'un numéro
+# imprimé — x1 pour la Première partie de Chimie, x2 pour sa Deuxième partie.
+# bk-2012-n-x3 CONTINUE cette même séquence plutôt que d'en ouvrir une
+# nouvelle : c'est le deuxième bloc du cartouche (Physique nucléaire). `x2`
+# n'était pas disponible pour ce bloc : déjà pris par la Deuxième partie de la
+# Chimie. Le bloc « Physique nucléaire » se répartit lui-même entre deux
+# notions (voir ci-dessous) ; son second morceau porte le suffixe `b`,
+# bk-2012-n-x3b, sous content/pc/noyaux-masse-energie/bank.yaml — sur le
+# modèle déjà établi ailleurs dans ce corpus pour un exercice scindé
+# (bk-2018-n-x4/x4b, bk-2022-n-x4/x4b, bk-2023-n-x4/x4b, bk-2025-n-x4/x4b ;
+# voir docs/grounding/known-issues.md K-7 bis). Sans cette note, un
+# mainteneur pourrait lire x3 comme une erreur de position sur CE sujet
+# précis — ce n'en est pas une : c'est le sujet lui-même qui ne numérote
+# rien, pas un défaut de conversion.
+#
+# NOTE ÉDITORIALE — bk-2012-n-x3, RÉPARTITION DU BARÈME (PAS DE DOUBLE
+# COMPTAGE). L'exercice « Physique nucléaire » du sujet 2012 N vaut 3,00 pt
+# au total (5 questions : 1-1, 1-2, 1-3, 2-1, 2-2 ; recompte confirmé par
+# deux chemins indépendants — coordonnées de la couche de texte du PDF ET OCR
+# des bandes de marge — dans le sas de vérification). La question 1-3
+# (énergie de liaison par nucléon de l'Uranium 238, comparaison de stabilité
+# avec le Plomb 206) relève thématiquement de noyaux-masse-energie — c'est
+# l'outil du R2/R3 de CETTE AUTRE leçon, pas de celle-ci — et vit à part sous
+# bk-2012-n-x3b (1,0 pt). Cette entrée-ci, bk-2012-n-x3, porte le RESTE : 1-1,
+# 1-2 (conservation, composition du noyau — R1, R2 de cette leçon) et 2-1,
+# 2-2 (datation Uranium-Plomb — R3, R4, R5 de cette leçon), pour 2,0 pt.
+# 2,0 + 1,0 = 3,00, le barème imprimé. Aucune des deux entrées ne reprend la
+# question de l'autre.
 
 notion: pc/decroissance-radioactive
 
@@ -1558,3 +1596,163 @@ entries:
             note: "Rapport 418/318 = 1,3145 ; son logarithme vaut 0,2734."
           - math: '\boxed{t_1 \approx 2{,}26 \times 10^{3}\ \text{ans}}'
             note: "Controle : 2260 ans = 0,39 demi-vie, et 2^(-0,39) = 0,763 contre 318/418 = 0,761. Coherent."
+
+  # ── bk-2012-n-x3 — 2012 N, Physique nucleaire (volet decroissance) : datation Uranium-Plomb ──
+  #
+  # NOTE ÉDITORIALE — voir le bloc en tête de fichier pour le choix de l'`id`
+  # (le sujet ne numérote aucun exercice) et pour la répartition du barème
+  # avec la sœur bk-2012-n-x3b (content/pc/noyaux-masse-energie/bank.yaml).
+  - id: bk-2012-n-x3
+    title: "Datation Uranium-Plomb : composition du noyau d'Uranium 238 et âge d'une roche métallique"
+    source:
+      year: 2012
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice de Physique nucléaire (volet décroissance) : composition du noyau d'Uranium 238 et datation d'une roche métallique"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2012 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool https://www.alloschool.com/element/94452, code sujet
+        NS28, pages 3 et 4 du scan (sur 6) — Physique nucléaire (03 points) :
+        datation à l'aide de l'Uranium-Plomb. Transcription source :
+        docs/sujets/_incoming/pc-2012-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion », passe de transcription du 2026-08-27 PUIS passe
+        adversariale indépendante du 2026-08-28 (re-fetch des six pages et du
+        PDF natif, quatre contrôles anti-CDN refaits, barème recompté par
+        deux chemins indépendants — coordonnées y de la couche de texte du
+        PDF ET OCR des bandes de marge des JPG — les deux concordent).
+        Barème de l'exercice complet recompté sur l'énoncé source :
+        0,5 (1-1) + 0,5 (1-2) + 1 (1-3) + 0,75 (2-1) + 0,25 (2-2) = 3,00 pt,
+        5 questions. La question 1-3 (énergie de liaison par nucléon de
+        l'Uranium 238, comparaison de stabilité avec le Plomb 206) relève de
+        la notion noyaux-masse-energie et est DÉJÀ EN BANQUE à part, sous
+        content/pc/noyaux-masse-energie/bank.yaml, entrée bk-2012-n-x3b
+        (1,0 pt) — pas de double comptage, cette entrée-ci ne porte que
+        1-1, 1-2, 2-1 et 2-2 (2,0 pt). CHOIX DE L'`id` : le sujet ne numérote
+        aucun exercice (voir la NOTE ÉDITORIALE en tête de fichier) ;
+        bk-2012-n-x3 continue la séquence de position du cartouche ouverte
+        par la chimie (bk-2012-n-x1, bk-2012-n-x2 — déjà en banque), x2 étant
+        déjà pris par la Deuxième partie de la Chimie. CONTRE-CALCUL REFAIT
+        ICI, chiffre par chiffre (le sas ne fournit que l'énoncé, aucune
+        valeur numérique attendue à comparer, sinon celles données par
+        l'énoncé lui-même) : conservation de A, 238 = 206 + 4y, d'où y = 8 ;
+        conservation de Z, 92 = 82 - x + 2y, d'où x = 6 (6 émissions β⁻ et 8
+        émissions α dans la chaîne) ; composition du noyau d'Uranium 238 :
+        Z = 92 protons, N = 238 - 92 = 146 neutrons ; rapport de masses
+        m_Pb(t).M(238U) / (m_U(t).M(206Pb)) = (0,01×238)/(10×206) =
+        1,15534×10⁻³, d'où t = (t_1/2/ln2)×ln(1,00115534) ≈
+        6,4924×10⁹ × 1,1546×10⁻³ ≈ 7,50×10⁶ ans (âge cohérent avec une roche
+        métallique jeune à l'échelle de la demi-vie de l'Uranium 238,
+        4,5×10⁹ ans). Aucune figure n'accompagne cet exercice.
+    intro: |-
+      **Datation à l'aide de l'Uranium-Plomb (examen national, session normale 2012 — Physique nucléaire, volet décroissance, 2 points sur les 3 de l'exercice).**
+
+      *La question 1-3 de cet exercice — l'énergie de liaison par nucléon de l'Uranium 238 et la comparaison de stabilité avec le Plomb 206 — est traitée à part, sous la notion « Noyaux, masse et énergie » (entrée bk-2012-n-x3b). Rien de ce qui suit n'en dépend.*
+
+      Pour dater ou suivre l'évolution de quelques phénomènes naturels, les scientifiques ont recours à des méthodes et techniques diverses, se basant essentiellement sur la loi de décroissance radioactive. Parmi ces techniques : la datation par l'Uranium-Plomb.
+
+      Le nucléide Uranium 238 est radioactif : il se transforme en nucléide de Plomb par une succession d'émissions de type $\alpha$ et $\beta^-$. On modélise ces transformations nucléaires par l'équation bilan suivante :
+
+      $$^{238}_{92}\text{U} \;\longrightarrow\; ^{206}_{82}\text{Pb} \;+\; x\ ^{0}_{-1}\text{e} \;+\; y\ ^{4}_{2}\text{He}$$
+
+      **Datation d'une roche métallique.** Le Plomb et l'Uranium se trouvent, avec des proportions différentes, dans les roches métalliques selon leur date de formation. On considère que la présence du plomb dans certaines roches métalliques est due seulement à la désintégration spontanée de l'Uranium 238 au cours du temps.
+
+      On dispose d'un échantillon d'une roche métallique contenant, à la date de sa formation (prise comme origine des dates, $t=0$), un certain nombre de noyaux d'Uranium $^{238}_{92}\text{U}$. Cet échantillon contient, à une date $t$, une masse $m_U(t) = 10\ \text{g}$ d'Uranium 238 et une masse $m_{Pb}(t) = 0{,}01\ \text{g}$ de Plomb 206.
+
+      **Données :**
+      - Masse molaire de l'Uranium 238 : $M(^{238}U) = 238\ \text{g.mol}^{-1}$ ;
+      - Masse molaire du Plomb 206 : $M(^{206}Pb) = 206\ \text{g.mol}^{-1}$ ;
+      - Demi-vie de l'Uranium 238 : $t_{1/2} = 4{,}5.10^{9}\ \text{ans}$.
+
+      *Aucune figure n'accompagne cet exercice : toutes les données sont dans le texte.*
+    questions:
+      - id: q1
+        part: "1 — Étude du noyau d'Uranium 238 : lois de conservation et composition"
+        stem: |-
+          **1-1-** (0,5 pt) Par application des lois de conservation, déterminer les valeurs de $x$ et $y$ signalées dans l'équation bilan.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. L'énoncé précise lui-même que la transformation n'est pas une désintégration isolée mais une succession de plusieurs émissions $\alpha$ et $\beta^-$ : l'équation bilan écrit donc en une seule ligne le résultat net de toute une chaîne. Les deux lois de Soddy s'appliquent au bilan global exactement comme à une désintégration unique — ce qui compte, c'est ce qui entre et ce qui sort, jamais le détail des étapes intermédiaires.
+
+          Conservation du nombre de nucléons $A$. À droite, le plomb en porte 206, chaque électron $^{0}_{-1}\text{e}$ n'en apporte aucun, et chaque particule $\alpha$ ($^{4}_{2}\text{He}$) en apporte 4 :
+
+          $$238 = 206 + 4y \implies y = \frac{238-206}{4} = 8$$
+
+          Conservation de la charge $Z$. Le père porte 92 charges ; le plomb en porte 82, chaque électron émis en emporte $-1$, chaque particule $\alpha$ en emporte $2$ :
+
+          $$92 = 82 - x + 2y \implies x = 2y - 10$$
+
+          avec $y=8$ déjà trouvé, $x = 16 - 10 = 6$.
+
+          Le sens physique, pour ne pas retenir des chiffres nus : la chaîne compte 8 désintégrations $\alpha$ (qui font tomber $A$ de 238 à 206, par paquets de 4) et 6 désintégrations $\beta^-$ (qui corrigent l'excès de charge que les 8 $\alpha$ ont laissé : 8 émissions $\alpha$ font baisser $Z$ de $92$ à $92-16=76$, et il faut remonter de $76$ à $82$, soit $6$ émissions $\beta^-$).
+        steps:
+          - math: '238 = 206 + 4y \implies y = 8'
+            note: "Conservation de A : chaque particule alpha (4/2 He) emporte 4 nucleons, l'electron beta n'en emporte aucun."
+          - math: '92 = 82 - x + 2y \implies x = 2y - 10 = 6'
+            note: "Conservation de Z : chaque electron beta emporte une charge -1, chaque alpha une charge +2."
+          - math: '\boxed{x = 6 \qquad y = 8}'
+            note: "6 emissions beta-moins et 8 emissions alpha dans la chaine complete."
+      - id: q2
+        stem: |-
+          **1-2-** (0,5 pt) Donner la composition du noyau d'Uranium 238.
+        reasoning: |-
+          La notation $^{238}_{92}\text{U}$ verrouille tout : le nombre du bas, $Z=92$, est le nombre de protons ; le nombre du haut, $A=238$, est le nombre total de nucléons. Le nombre de neutrons s'obtient par différence, $N = A - Z$ — jamais lu directement, toujours calculé.
+        steps:
+          - math: 'Z = 92 \qquad N = A - Z = 238 - 92'
+            note: "Z se lit directement en indice ; N s'obtient par difference, jamais lu directement."
+          - math: '\boxed{92\ \text{protons et}\ 146\ \text{neutrons}}'
+            note: "Composition du noyau d'Uranium 238."
+      - id: q3
+        part: "2 — Datation de la roche métallique"
+        stem: |-
+          **2-1-** (0,75 pt) Montrer que l'expression de l'âge de la roche métallique est :
+          $$t = \frac{t_{1/2}}{\ln 2}\,.\,\ln\!\left(1 + \frac{m_{Pb}(t).M(^{238}U)}{m_{U}(t).M(^{206}Pb)}\right)$$
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. La loi de décroissance donne $N(t)$ en fonction de $N_0$, jamais de masses directement : il faut d'abord raisonner en nombres de noyaux, puis convertir en masses à la toute fin — convertir trop tôt fait perdre le fil du calcul.
+
+          Le point de départ, c'est l'hypothèse de l'énoncé : tout le plomb présent vient de la désintégration de l'Uranium, donc chaque noyau de Plomb compte pour un noyau d'Uranium disparu. Si $N_0$ est le nombre de noyaux d'Uranium à la formation de la roche ($t=0$), et $N_U(t)$, $N_{Pb}(t)$ les nombres de noyaux d'Uranium restant et de Plomb formé à la date $t$ :
+
+          $$N_0 = N_U(t) + N_{Pb}(t)$$
+
+          La loi de décroissance (vue au chapitre précédent) donne $N_U(t) = N_0\,e^{-\lambda t}$, donc $N_0 = N_U(t)\,e^{\lambda t}$. On reporte dans le bilan ci-dessus et on divise par $N_U(t)$ :
+
+          $$N_U(t)\,e^{\lambda t} = N_U(t) + N_{Pb}(t) \implies e^{\lambda t} = 1 + \frac{N_{Pb}(t)}{N_U(t)}$$
+
+          Il ne reste qu'à isoler $t$ par le logarithme népérien, puis à remplacer $\lambda$ par $\dfrac{\ln 2}{t_{1/2}}$ — la relation qui relie demi-vie et constante radioactive, déjà établie au chapitre précédent :
+
+          $$t = \frac{1}{\lambda}\ln\!\left(1+\frac{N_{Pb}(t)}{N_U(t)}\right) = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(1+\frac{N_{Pb}(t)}{N_U(t)}\right)$$
+
+          Il reste un dernier pas, hors du chapitre sur la décroissance : passer des nombres de noyaux $N$, qu'on ne mesure jamais directement dans une roche, aux masses $m$, qu'on mesure. C'est un pont de chimie générale, pas de nouvelle physique : le nombre de moles est $n = m/M$, et le nombre de noyaux $N = n \times \mathcal{N}_A$, avec $\mathcal{N}_A$ le nombre d'Avogadro. Pour le rapport $N_{Pb}(t)/N_U(t)$, $\mathcal{N}_A$ se simplifie exactement, qu'il apparaisse ou non dans l'énoncé :
+
+          $$\frac{N_{Pb}(t)}{N_U(t)} = \frac{m_{Pb}(t)/M(^{206}Pb)}{m_U(t)/M(^{238}U)} = \frac{m_{Pb}(t)\,.\,M(^{238}U)}{m_U(t)\,.\,M(^{206}Pb)}$$
+
+          En reportant dans l'expression de $t$, on retrouve exactement la formule demandée.
+        steps:
+          - math: 'N_0 = N_U(t) + N_{Pb}(t) \qquad N_U(t) = N_0\,e^{-\lambda t}'
+            note: "Tout le plomb vient de l'Uranium disparu (hypothese de l'enonce) ; loi de decroissance du chapitre precedent."
+          - math: 'e^{\lambda t} = 1 + \frac{N_{Pb}(t)}{N_U(t)} \implies t = \frac{1}{\lambda}\ln\!\left(1+\frac{N_{Pb}(t)}{N_U(t)}\right)'
+            note: "On isole t par le logarithme neperien, apres avoir divise le bilan par N_U(t)."
+          - math: 't = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(1+\frac{N_{Pb}(t)}{N_U(t)}\right)'
+            note: "On remplace lambda par ln2/t1/2 (relation demi-vie/constante radioactive du chapitre precedent)."
+          - math: '\frac{N_{Pb}(t)}{N_U(t)} = \frac{m_{Pb}(t)/M(^{206}Pb)}{m_U(t)/M(^{238}U)} = \frac{m_{Pb}(t).M(^{238}U)}{m_U(t).M(^{206}Pb)}'
+            note: "Pont mole-masse n=m/M puis N=n.NA (chimie generale) ; NA se simplifie exactement dans le rapport."
+          - math: '\boxed{t = \frac{t_{1/2}}{\ln 2}\,.\,\ln\!\left(1 + \frac{m_{Pb}(t).M(^{238}U)}{m_{U}(t).M(^{206}Pb)}\right)}'
+            note: "Expression demandee, obtenue par substitution du rapport de masses dans l'expression de t."
+      - id: q4
+        stem: |-
+          **2-2-** (0,25 pt) Calculer $t$ en années.
+        reasoning: |-
+          Application numérique directe de l'expression établie à la question précédente, avec les données de l'énoncé : $m_{Pb}(t) = 0{,}01\ \text{g}$, $m_U(t) = 10\ \text{g}$, $M(^{238}U) = 238\ \text{g.mol}^{-1}$, $M(^{206}Pb) = 206\ \text{g.mol}^{-1}$, $t_{1/2} = 4{,}5\times10^{9}\ \text{ans}$.
+
+          Réflexe de vraisemblance avant même de conclure : la masse de plomb formée est mille fois plus petite que la masse d'Uranium restante — la roche a donc consommé une fraction infime de son Uranium initial, et son âge doit être petit devant la demi-vie de $4{,}5\times10^{9}$ ans. Un résultat de l'ordre du milliard d'années serait suspect avant même de vérifier le calcul.
+        steps:
+          - math: '\frac{m_{Pb}(t).M(^{238}U)}{m_{U}(t).M(^{206}Pb)} = \frac{0{,}01\times238}{10\times206} = 1{,}1553\times10^{-3}'
+            note: "Rapport de masses, avec les donnees de l'enonce."
+          - math: '\ln\!\left(1+1{,}1553\times10^{-3}\right) \approx 1{,}1546\times10^{-3}'
+            note: "Pour x petit, ln(1+x) est tres proche de x."
+          - math: '\frac{t_{1/2}}{\ln 2} = \frac{4{,}5\times10^{9}}{0{,}6931} \approx 6{,}4924\times10^{9}\ \text{ans}'
+            note: "Prefacteur de la formule."
+          - math: '\boxed{t \approx 6{,}4924\times10^{9} \times 1{,}1546\times10^{-3} \approx 7{,}50\times10^{6}\ \text{ans}}'
+            note: "Age d'environ 7,5 millions d'annees : petit devant la demi-vie 4,5e9 ans, coherent avec le controle de vraisemblance."

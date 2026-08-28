@@ -121,6 +121,27 @@
 #     = 35\ \Omega$, sans généralisation. Le raisonnement le dit et rappelle
 #     la règle générale (k = somme des résistances de la maille) pour que la
 #     coexistence avec bk-2018-n-x3 et bk-2020-n-x4 ne crée pas de confusion.
+#
+# NOTE ÉDITORIALE — bk-2012-n-x4b (2026-08-28, ajout) : LE CHOIX DE L'`id`, ET
+# POURQUOI. Le sujet source (docs/sujets/_incoming/pc-2012-n.md, statut
+# VÉRIFIÉ — clearé pour conversion, passe adversariale du 2026-08-28) NE
+# NUMÉROTE AUCUN EXERCICE : la page 1 annonce « quatre exercices » mais le
+# corps du sujet introduit chaque bloc par son nom de domaine (Chimie,
+# Physique nucléaire, Electricité, Mécanique), jamais par « Exercice
+# 1/2/3/4 ». Les deux entrées de chimie déjà en banque pour ce même sujet,
+# bk-2012-n-x1 (content/pc/transformations-deux-sens/bank.yaml) et
+# bk-2012-n-x2 (content/pc/evolution-spontanee/bank.yaml), ont donc choisi une
+# numérotation qui encode la POSITION DANS LE CARTOUCHE plutôt qu'un numéro
+# imprimé. Le bloc Electricité de ce même sujet porte bk-2012-n-x4 pour sa
+# Première partie (dipôle RL, sous content/pc/dipole-rl/bank.yaml). Cette
+# entrée-ci, bk-2012-n-x4b, porte le suffixe `b` parce qu'elle est le SECOND
+# morceau de ce même bloc — sa Deuxième partie, oscillations libres RLC — sur
+# le modèle déjà établi ailleurs dans ce corpus pour un exercice scindé
+# (bk-2018-n-x4/x4b, bk-2022-n-x4/x4b, bk-2023-n-x4/x4b, bk-2025-n-x4/x4b ;
+# voir docs/grounding/known-issues.md K-7 bis). PAS DE DOUBLE COMPTAGE : le
+# barème du bloc Electricité complet est 4,50 pt (2,5 sous bk-2012-n-x4 +
+# 2,0 ici). C'est le sujet lui-même, par ses deux titres « Première partie »
+# / « Deuxième partie », qui déclare les deux parties indépendantes.
 
 notion: pc/rlc-serie
 
@@ -1858,3 +1879,182 @@ entries:
             note: "Application numerique : U0=10V (donne), u_C(tA)=7V (lu sur la figure 3), C0=1 microF (Partie 1 du meme sujet, transcrite sous rc-charge)."
           - math: '\boxed{|E_{th}| = 2{,}55\times10^{-5}\ \text{J}}'
             note: "Energie dissipee par effet Joule entre t=0 et tA."
+
+  # ── bk-2012-n-x4b — 2012 N, Electricite, Deuxieme partie : oscillations libres RLC, energie totale ──
+  #
+  # NOTE ÉDITORIALE — voir le bloc en tête de fichier pour le choix de l'`id`
+  # (le sujet ne numérote aucun exercice) et pour la répartition du barème
+  # avec la sœur bk-2012-n-x4 (content/pc/dipole-rl/bank.yaml).
+  #
+  # SCOPE NOTE propre à cette entrée : le montage de la figure 3 ne comporte
+  # NI conducteur ohmique NI interrupteur NI générateur — seule la bobine
+  # (L,r) dissipe (même disposition que bk-2018-n-x3 de ce même fichier, voir
+  # la SCOPE NOTE en tête). L'équation du rung 5 (Lq''+Rq'+q/C=0) s'applique
+  # donc avec $r$ à la place de $R$, et la question 3-2 (dE_T=-r i^2 dt) est
+  # une re-dérivation en une ligne de ce que le rung 3 énonce sans le
+  # démontrer — même geste que bk-2023-r-x3b q2 et bk-2025-n-x3 q4 de ce même
+  # fichier, ici en variable $q$ plutôt qu'en $u_C$ (l'énoncé impose $q$ et
+  # $dq/dt$ à la question 3-1).
+  - id: bk-2012-n-x4b
+    title: "Oscillations libres amorties dans un circuit RLC série : équation différentielle, identification des courbes d'énergie et énergie dissipée"
+    source:
+      year: 2012
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice d'Électricité — Deuxième partie : influence de la résistance sur l'énergie électrique totale d'un circuit RLC série libre"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2012 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool https://www.alloschool.com/element/94452, code sujet
+        NS28, page 5 du scan (sur 6) — Electricité (04,5 points), Deuxième
+        partie : influence de la résistance électrique sur l'énergie
+        électrique totale d'un circuit série RLC libre. Transcription
+        source : docs/sujets/_incoming/pc-2012-n.md, statut « VÉRIFIÉ —
+        clearé pour conversion », passe de transcription du 2026-08-27 PUIS
+        passe adversariale indépendante du 2026-08-28. Barème de la partie
+        recompté sur l'énoncé source : 0,5 (1-) + 0,25 (2-) + 0,5 (3-1-) +
+        0,5 (3-2-) + 0,25 (3-3-) = 2,0 pt, 5 questions, sur les 4,5 pt de
+        l'exercice complet, dont la Première partie (dipôle RL, 2,5 pt) est
+        DÉJÀ EN BANQUE à part, sous content/pc/dipole-rl/bank.yaml, entrée
+        bk-2012-n-x4 — pas de double comptage. CHOIX DE L'`id` : le sujet ne
+        numérote aucun exercice (voir la NOTE ÉDITORIALE en tête de
+        fichier) ; le suffixe `b` marque la Deuxième partie du bloc
+        Electricité, dont la Première partie porte bk-2012-n-x4.
+        FIGURE 4 (énergies E_L, E_C) — POINT LE PLUS CHER DE CE SUJET,
+        adjugé par la passe adversariale au pixel ET par la physique :
+        (a) = courbe en TRAIT PLEIN (part de son maximum à t=0) ;
+        (b) = courbe en POINTILLÉS (part de zéro à t=0). Adjudication par
+        mesure : les pointes des deux flèches d'étiquetage, localisées au
+        pixel sur l'image native (675×403 px, xref 213), touchent
+        respectivement le trait plein (pointe de (a) à t≈0,25ms,
+        E≈14,2mJ, à l'intérieur du trait mesuré [13,7;15,7]) et le
+        pointillé (pointe de (b) à t≈1,34ms, E≈11,1mJ, entre deux points
+        mesurés du pointillé 11,4 et 10,7). Adjudication par la physique,
+        indépendante du dessin : le condensateur est « totalement chargé »
+        à t=0 (donnée de l'énoncé), donc E_C est maximale et E_L=0 à cet
+        instant — cohérent uniquement avec (a)=trait plein=E_C,
+        (b)=pointillés=E_L. RÉSERVE, à ne jamais publier comme un chiffre
+        net : la valeur initiale de la courbe pleine E_C(0) N'EST PAS
+        LISIBLE sur le document — l'axe des ordonnées et sa tête de flèche
+        masquent l'intersection ; deux extrapolations indépendantes donnent
+        E_C(0)≈18,5–19,5 mJ. Aucune question de cette entrée ne s'appuie sur
+        cette valeur ; elle n'est pas publiée comme un chiffre net dans
+        l'intro ci-dessous. Valeurs de maxima utilisées ci-dessous
+        (question 3-3), mesurées au centre du trait après correction de la
+        vérification : ≈9,8 mJ à t=2ms (trait plein) et ≈7,4 mJ à t=3ms
+        (pointillé, valeur inchangée par la vérification). Deux salissures
+        de figure sont documentées dans le sas (un point isolé de 5 px, un
+        tiret vert pâle de 12 px) : elles ne portent aucune valeur et ne
+        sont reproduites nulle part ici.
+    intro: |-
+      **Influence de la résistance électrique sur l'énergie électrique totale d'un circuit série RLC libre (examen national, session normale 2012 — Electricité, Deuxième partie, 2 points sur les 4,5 de l'exercice).**
+
+      *La Première partie de cet exercice — réponse d'un dipôle RL à un échelon de tension ascendant — est indépendante de celle-ci et traitée à part, sous la notion « Dipôle RL » (entrée bk-2012-n-x4).*
+
+      Pour mettre en évidence l'influence de la résistance $r$ de la bobine $(b)$ sur l'énergie électrique totale d'un circuit série RLC libre, on monte, à un instant considéré comme origine des temps, un condensateur de capacité $C$ **totalement chargé**, avec cette bobine, comme l'indique la figure 3.
+
+      **Figure 3 (schéma).** Boucle rectangulaire unique. Branche de gauche : le condensateur, capacité $C$. Branche de droite : la bobine $(b)$, de résistance interne $r$ et d'inductance $L$. Ni interrupteur, ni résistor, ni générateur ne sont dessinés : la résistance du circuit est celle, interne, de la bobine.
+
+      À l'aide d'un matériel informatique convenable, on a pu visualiser les variations de l'énergie emmagasinée dans le condensateur et celle emmagasinée dans la bobine en fonction du temps (figure 4).
+
+      **Figure 4 (courbes d'énergie).** $E_L$, $E_C\ (\text{mJ})$ en fonction de $t\ (\text{ms})$. Graduations noires en ordonnée : $0$, $5$, $10$, $15$ (bord du cadre à $20\ \text{mJ}$). Graduations noires en abscisse : $2$, $4$, $6$, $8$, $10$ (bord du cadre à $12\ \text{ms}$). Deux courbes, distinguées par leur style :
+      - **courbe (a), en trait plein** : part de son **maximum** à $t=0$ (l'intersection exacte avec l'axe n'est pas lisible sur le document — l'axe et sa tête de flèche la masquent), s'annule à $t=1,3,5,7,9,11\ \text{ms}$, et repasse par des maxima décroissants : $\approx9{,}8\ \text{mJ}$ à $t=2$, $\approx5{,}2$ à $t=4$, $\approx2{,}7$ à $t=6$, $\approx1{,}45$ à $t=8$, $\approx0{,}7$ à $t=10$ ;
+      - **courbe (b), en pointillés** : part de **zéro** à $t=0$, atteint un premier maximum $\approx14{,}0\ \text{mJ}$ vers $t\approx0{,}95\ \text{ms}$, s'annule à $t=2,4,6,8,10\ \text{ms}$, et repasse par des maxima décroissants : $\approx7{,}4\ \text{mJ}$ à $t=3$, $\approx4{,}0$ à $t=5$, $\approx2{,}1$ à $t=7$, $\approx1{,}2$ à $t=9$.
+
+      Les maxima des deux courbes alternent toutes les $1\ \text{ms}$ ; l'écart entre deux maxima d'une même courbe vaut $2\ \text{ms}$.
+    questions:
+      - id: q1
+        stem: |-
+          **1-** (0,5 pt) Établir l'équation différentielle vérifiée par la charge $q(t)$ du condensateur.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Même méthode qu'au rung 5 — loi des mailles, chaque tension ramenée à $q$ — mais ce montage-ci n'a PAS de conducteur ohmique séparé (figure 3) : la seule résistance de la maille est celle, interne, de la bobine, $r$. Le coefficient d'amortissement de l'équation du rung 5 s'écrit donc avec $r$ à la place de $R$.
+
+          Quel circuit, exactement ? Une seule maille, deux dipôles : le condensateur et la bobine $(b)$. La loi des mailles s'écrit :
+
+          $$u_C + u_b = 0$$
+
+          Chaque tension, ramenée à $q$ (avec $i=\dfrac{dq}{dt}$, rung 1) :
+
+          $$u_C = \frac{q}{C} \qquad u_b = r\,i + L\,\frac{di}{dt} = r\,\frac{dq}{dt} + L\,\frac{d^2q}{dt^2}$$
+
+          On reporte dans la loi des mailles.
+        steps:
+          - math: 'u_C + u_b = 0'
+            note: "Loi des mailles : une seule maille, deux dipoles (pas de resistor ni de generateur, figure 3)."
+          - math: 'u_C = \frac{q}{C} \qquad u_b = r\,\frac{dq}{dt} + L\,\frac{d^2q}{dt^2}'
+            note: "u_C du rung 2 ; u_b = r i + L di/dt (rung 1), avec i = dq/dt."
+          - math: '\boxed{L\,\frac{d^2q}{dt^2} + r\,\frac{dq}{dt} + \frac{q}{C} = 0}'
+            note: "Equation du rung 5, avec r a la place de R : seule resistance de cette maille, celle interne de la bobine."
+      - id: q2
+        stem: |-
+          **2-** (0,25 pt) Préciser, parmi les courbes $(a)$ et $(b)$ de la figure 4, celle correspondant à l'énergie emmagasinée dans la bobine.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Pas un calcul : une lecture, mais une lecture qui s'appuie sur une donnée de l'énoncé qu'il faut réactiver au bon moment — « condensateur totalement chargé » à l'instant pris comme origine des temps.
+
+          À $t=0$, le condensateur est totalement chargé : la charge $q$ y est donc maximale, et l'énergie électrique $E_C=\dfrac{q^2}{2C}$ (rung 1) y est **maximale** elle aussi. Un condensateur qui vient d'atteindre sa charge maximale n'a, à cet instant précis, encore fait circuler aucun courant significatif : $i=\dfrac{dq}{dt}=0$, donc l'énergie magnétique $E_L=\frac12Li^2$ (rung 1) est **nulle** à $t=0$.
+
+          Sur la figure 4, la courbe $(a)$ part de son maximum à $t=0$ : c'est donc $E_C$. La courbe $(b)$ part de zéro à $t=0$ : c'est donc $E_L$.
+
+          $$\boxed{(b)\ \text{correspond à l'énergie emmagasinée dans la bobine}}$$
+
+          Le piège nommé de cette question. Chercher à distinguer les deux courbes par leur PÉRIODE ou leur AMORTISSEMENT — elles ont la même pseudo-période et le même taux de décroissance (rung 3 : c'est $r$ seul qui gouverne l'amortissement, identique pour les deux formes d'énergie). Ce qui les distingue, c'est uniquement la CONDITION INITIALE — laquelle des deux vaut zéro à $t=0$ — et cette condition vient directement de la phrase « condensateur totalement chargé », pas du dessin.
+      - id: q3
+        part: "3 — Le bilan d'énergie totale"
+        stem: |-
+          **3-1-** (0,5 pt) Écrire l'expression de l'énergie électrique totale $E_T$ en fonction de $C$, $L$, $q$ et $\dfrac{dq}{dt}$.
+        reasoning: |-
+          Exactement la définition du rung 1, transposée à ce montage : l'énergie totale est la somme de ce que stocke le condensateur et de ce que stocke la bobine, à un instant $t$ quelconque — pas seulement à $t=0$. On écrit $E_C$ en fonction de $q$ (rung 1) et $E_L$ en fonction du courant, réexprimé en $\dfrac{dq}{dt}$ (rung 1, $i=dq/dt$), puisque l'énoncé impose ces deux variables précisément.
+        steps:
+          - math: 'E_T = E_C + E_L = \frac{q^2}{2C} + \frac12Li^2'
+            note: "Definition du rung 1 : somme de l'energie electrique et de l'energie magnetique."
+          - math: '\boxed{E_T = \frac{q^2}{2C} + \frac12L\left(\frac{dq}{dt}\right)^2}'
+            note: "i = dq/dt (rung 1) : on remplace le courant par la charge, comme l'exige l'enonce."
+      - id: q4
+        stem: |-
+          **3-2-** (0,5 pt) Montrer que l'énergie totale décroît avec le temps selon la relation : $dE_T = -\,r\,i^{2}\,dt$. Expliquer la cause de cette décroissance.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Le rung 3 ÉNONCE que l'énergie totale décroît par effet Joule dès que $R$ (ici $r$) est non nulle, mais sans le démontrer à partir de l'équation différentielle. On le redémontre ici en une ligne, en dérivant $E_T$ de la question 3-1 par rapport au temps, puis en réinjectant l'équation de la question 1 pour remplacer la parenthèse qui en résulte — jamais « on admet ».
+
+          On dérive $E_T=\dfrac{q^2}{2C}+\dfrac12L\left(\dfrac{dq}{dt}\right)^2$ par rapport au temps (règle de dérivation d'un carré, deux fois) :
+
+          $$\frac{dE_T}{dt} = \frac{q}{C}\frac{dq}{dt} + L\,\frac{dq}{dt}\,\frac{d^2q}{dt^2} = \frac{dq}{dt}\left(\frac{q}{C} + L\,\frac{d^2q}{dt^2}\right)$$
+
+          Or l'équation de la question 1 dit précisément que la parenthèse vaut $-r\,\dfrac{dq}{dt}$ :
+
+          $$\frac{dE_T}{dt} = \frac{dq}{dt}\times\left(-r\,\frac{dq}{dt}\right) = -r\left(\frac{dq}{dt}\right)^2 = -r\,i^2$$
+
+          En multipliant chaque membre par $dt$, on retrouve exactement la relation demandée : $dE_T=-r\,i^2\,dt$.
+
+          La cause, en une phrase (rung 3). Le carré $i^2$ est décisif : la puissance $r\,i^2$ est toujours **positive**, que le courant circule dans un sens ou dans l'autre — la bobine, par sa résistance interne $r$, dissipe de l'énergie par effet Joule à chaque passage du courant, et ne la restitue jamais. C'est cette fuite continue, jamais compensée puisqu'aucun générateur n'entretient les oscillations dans ce montage (figure 3), qui explique la décroissance de l'énergie totale — et, par le rung 1, la décroissance des amplitudes successives des deux courbes de la figure 4.
+        steps:
+          - math: '\frac{dE_T}{dt} = \frac{q}{C}\frac{dq}{dt} + L\,\frac{dq}{dt}\,\frac{d^2q}{dt^2} = \frac{dq}{dt}\left(\frac{q}{C} + L\,\frac{d^2q}{dt^2}\right)'
+            note: "Derivee de E_T (question 3-1) par rapport au temps, regle de derivation d'un carre."
+          - math: '\frac{q}{C} + L\,\frac{d^2q}{dt^2} = -r\,\frac{dq}{dt} \quad \text{(equation de la question 1)}'
+            note: "On isole la parenthese dans l'equation differentielle etablie a la question 1."
+          - math: '\boxed{\frac{dE_T}{dt} = -r\left(\frac{dq}{dt}\right)^2 = -r\,i^2 \implies dE_T = -r\,i^2\,dt}'
+            note: "r i^2 est toujours positif (effet Joule, rung 3) : l'energie totale ne remonte jamais."
+      - id: q5
+        stem: |-
+          **3-3-** (0,25 pt) Déterminer l'énergie dissipée dans le circuit entre les instants $t_1=2\ \text{ms}$ et $t_2=3\ \text{ms}$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. La question 3-2 vient de montrer que $E_T$ ne fait que décroître : toute l'énergie perdue entre deux instants est donc dissipée par effet Joule, et rien d'autre — un bilan, pas une intégrale de $r\,i^2$ à calculer terme à terme (hors du programme). Il suffit de lire $E_T$ aux deux instants demandés sur la figure 4, en additionnant à chaque fois $E_C$ (courbe $(a)$) et $E_L$ (courbe $(b)$, question 2).
+
+          Lecture à $t_1=2\ \text{ms}$. La courbe $(b)$ (pointillés) s'annule exactement à $t=2\ \text{ms}$ : $E_L(2)=0$. La courbe $(a)$ (trait plein) y passe par un maximum : $E_C(2)\approx9{,}8\ \text{mJ}$.
+
+          $$E_T(2) = 9{,}8 + 0 = 9{,}8\ \text{mJ}$$
+
+          Lecture à $t_2=3\ \text{ms}$. La courbe $(a)$ s'annule exactement à $t=3\ \text{ms}$ : $E_C(3)=0$. La courbe $(b)$ y passe par un maximum : $E_L(3)\approx7{,}4\ \text{mJ}$.
+
+          $$E_T(3) = 0 + 7{,}4 = 7{,}4\ \text{mJ}$$
+
+          L'énergie totale a diminué entre les deux instants (cohérent avec la question 3-2) : toute la différence est partie en chaleur dans la résistance $r$ de la bobine.
+        steps:
+          - math: 'E_T(2) = E_C(2) + E_L(2) \approx 9{,}8 + 0 = 9{,}8\ \text{mJ}'
+            note: "Lecture sur la figure 4 : E_L (pointille) s'annule a t=2ms, E_C (trait plein) y est a un maximum."
+          - math: 'E_T(3) = E_C(3) + E_L(3) \approx 0 + 7{,}4 = 7{,}4\ \text{mJ}'
+            note: "E_C (trait plein) s'annule a t=3ms, E_L (pointille) y est a un maximum."
+          - math: '\boxed{E_{dissipee} = E_T(2) - E_T(3) \approx 9{,}8 - 7{,}4 = 2{,}4\ \text{mJ}}'
+            note: "Toute la baisse d'energie totale est dissipee par effet Joule (question 3-2) : rien d'autre ne peut l'absorber."

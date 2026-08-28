@@ -60,6 +60,28 @@
 #     différence des défauts de masse — donc des énergies de liaison — survit
 #     à la soustraction), mais il n'est jamais dérivé pas à pas dans
 #     lesson.md. Ponté au point d'usage dans le raisonnement de la question.
+#
+# NOTE ÉDITORIALE — bk-2012-n-x3b (2026-08-28, ajout) : LE CHOIX DE L'`id`, ET
+# POURQUOI. Le sujet source (docs/sujets/_incoming/pc-2012-n.md, statut
+# VÉRIFIÉ — clearé pour conversion, passe adversariale du 2026-08-28) NE
+# NUMÉROTE AUCUN EXERCICE : la page 1 annonce « quatre exercices » mais le
+# corps du sujet introduit chaque bloc par son nom de domaine (Chimie,
+# Physique nucléaire, Electricité, Mécanique), jamais par « Exercice
+# 1/2/3/4 ». Les deux entrées de chimie déjà en banque pour ce même sujet,
+# bk-2012-n-x1 (content/pc/transformations-deux-sens/bank.yaml) et
+# bk-2012-n-x2 (content/pc/evolution-spontanee/bank.yaml), ont donc choisi une
+# numérotation qui encode la POSITION DANS LE CARTOUCHE plutôt qu'un numéro
+# imprimé — x1 pour la Première partie de Chimie, x2 pour sa Deuxième partie.
+# Le deuxième bloc du cartouche (Physique nucléaire) porte donc bk-2012-n-x3
+# (x2 étant déjà pris par la Chimie), sous
+# content/pc/decroissance-radioactive/bank.yaml. Ce bloc se répartit lui-même
+# entre deux notions : la question 1-3 (énergie de liaison par nucléon de
+# l'Uranium 238, comparaison de stabilité avec le Plomb 206) relève de CETTE
+# leçon-ci et vit à part sous bk-2012-n-x3b — le suffixe `b` marque le second
+# morceau d'un même bloc, sur le modèle déjà établi ailleurs dans ce corpus
+# (bk-2018-n-x4/x4b, bk-2022-n-x4/x4b, bk-2023-n-x4/x4b, bk-2025-n-x4/x4b ;
+# voir docs/grounding/known-issues.md K-7 bis). PAS DE DOUBLE COMPTAGE : le
+# barème de l'exercice complet est 3,00 pt (2,0 sous bk-2012-n-x3 + 1,0 ici).
 
 notion: pc/noyaux-masse-energie
 
@@ -238,3 +260,112 @@ entries:
             note: "Lecture des trois energies de liaison dans le tableau fourni par l'enonce."
           - math: '\boxed{E_{lib} \approx 17{,}455\ \text{MeV}}'
             note: "Coherent avec la valeur canonique de la fusion D-T (environ 17,6 MeV, meme reaction qu'au R4)."
+
+  # ── bk-2012-n-x3b — 2012 N, Physique nucleaire (volet masse-energie) : energie de liaison de l'Uranium 238 ──
+  #
+  # NOTE ÉDITORIALE — voir le bloc en tête de fichier pour le choix de l'`id`
+  # (le sujet ne numérote aucun exercice) et pour la répartition du barème
+  # avec la sœur bk-2012-n-x3 (content/pc/decroissance-radioactive/bank.yaml).
+  - id: bk-2012-n-x3b
+    title: "Énergie de liaison de l'Uranium 238 : stabilité comparée au Plomb 206"
+    source:
+      year: 2012
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice de Physique nucléaire (volet masse-énergie) : énergie de liaison par nucléon de l'Uranium 238"
+    bareme_total: 1.0
+    duration_min: 6
+    sourcing:
+      status: sourced
+      note: >-
+        2012 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool https://www.alloschool.com/element/94452, code sujet
+        NS28, page 3 du scan (sur 6) — Physique nucléaire (03 points) :
+        donnée « énergie de liaison par nucléon du Plomb 206 »,
+        $\mathcal{E}(Pb) = 7{,}87\ \text{MeV/nucléon}$. Transcription source :
+        docs/sujets/_incoming/pc-2012-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion », passe de transcription du 2026-08-27 PUIS passe
+        adversariale indépendante du 2026-08-28. Le symbole imprimé pour
+        cette donnée est un « E script » (police French Script MT, décodé par
+        le nom de la police PUIS revérifié par la forme du glyphe à 500 dpi
+        par la passe adversariale — table de glyphes du sas, 12 lignes sur
+        12 concordantes) : c'est la notation classique de l'énergie de
+        liaison par nucléon, transcrite ici $\mathcal{E}(Pb)$, PAS un $E$
+        romain ni un $\varepsilon$. Barème de l'exercice complet recompté sur
+        l'énoncé source : 0,5 (1-1) + 0,5 (1-2) + 1 (1-3) + 0,75 (2-1) +
+        0,25 (2-2) = 3,00 pt. Les questions 1-1, 1-2, 2-1 et 2-2 (datation
+        Uranium-Plomb, 2,0 pt) sont DÉJÀ EN BANQUE à part, sous
+        content/pc/decroissance-radioactive/bank.yaml, entrée bk-2012-n-x3 —
+        pas de double comptage, cette entrée-ci ne porte que 1-3 (1,0 pt).
+        CHOIX DE L'`id` : le sujet ne numérote aucun exercice (voir la NOTE
+        ÉDITORIALE en tête de fichier) ; le suffixe `b` marque le second
+        morceau du même bloc « Physique nucléaire », sur le modèle déjà
+        établi ailleurs dans ce corpus pour un exercice scindé entre deux
+        notions. CONTRE-CALCUL REFAIT ICI, chiffre par chiffre (le sas ne
+        fournit que l'énoncé, aucune valeur numérique attendue à comparer) :
+        composition de l'Uranium 238, Z=92 protons et N=146 neutrons (établie
+        à la question 1-2, sous bk-2012-n-x3) ; défaut de masse
+        $\Delta m = 92\times1{,}00728 + 146\times1{,}00866 - 238{,}00031 =
+        239{,}93412 - 238{,}00031 = 1{,}93381\ \text{u}$ ; énergie de liaison
+        $E_l = 1{,}93381\times931{,}5 \approx 1801{,}3\ \text{MeV}$ ;
+        énergie de liaison par nucléon
+        $E_l/A = 1801{,}3/238 \approx 7{,}57\ \text{MeV/nucléon}$, à comparer
+        à $\mathcal{E}(Pb) = 7{,}87\ \text{MeV/nucléon}$ donnée par
+        l'énoncé — $7{,}87 > 7{,}57$, le Plomb 206 est donc bien plus stable
+        que l'Uranium 238, ce que la question demande de vérifier.
+    intro: |-
+      **Physique nucléaire — énergie de liaison de l'Uranium 238 (examen national, session normale 2012, 1 point sur les 3 de l'exercice).**
+
+      *Les questions 1-1, 1-2, 2-1 et 2-2 de cet exercice — les lois de conservation de l'équation bilan et la datation d'une roche métallique par le rapport Uranium-Plomb — sont traitées à part, sous la notion « Décroissance radioactive » (entrée bk-2012-n-x3). La question ci-dessous n'en dépend pas : tout ce dont elle a besoin est rappelé ici.*
+
+      Le nucléide Uranium 238 $\left(^{238}_{92}\text{U}\right)$ est radioactif : il se transforme en nucléide de Plomb 206 par une succession d'émissions de type $\alpha$ et $\beta^-$.
+
+      **Données :**
+      - Masse du noyau d'Uranium 238 : $238{,}00031\ \text{u}$ ;
+      - Masse du proton : $1{,}00728\ \text{u}$ ;
+      - Masse du neutron : $1{,}00866\ \text{u}$ ;
+      - L'unité de masse atomique : $1\ \text{u} = 931{,}5\ \text{MeV.c}^{-2}$ ;
+      - Énergie de liaison par nucléon du Plomb 206 : $\mathcal{E}(Pb) = 7{,}87\ \text{MeV/nucléon}$.
+
+      *Aucune figure n'accompagne cet exercice : toutes les données sont dans le texte.*
+    questions:
+      - id: q1
+        stem: |-
+          **1-3-** (1 pt) Calculer l'énergie de liaison par nucléon de l'Uranium 238, et vérifier que le noyau $^{206}_{82}\text{Pb}$ est plus stable que le noyau $^{238}_{92}\text{U}$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste : on ne connaît, pour l'Uranium 238, ni son énergie de liaison ni son énergie de liaison par nucléon directement — seulement la masse du noyau assemblé et celles des nucléons séparés. C'est exactement la donnée dont dépend le défaut de masse $\Delta m$, donc $E_l$ (R2) : on calcule $\Delta m$ d'abord, jamais $E_l$ directement, pour contrôler chaque arrondi avant de multiplier par $931{,}5$.
+
+          La composition du noyau — $Z=92$ protons et $N=146$ neutrons — a été établie à la question 1-2 (sous la notion « Décroissance radioactive »).
+
+          $$\Delta m = Z\,m_p + N\,m_n - m(^{238}_{92}\text{U})$$
+
+          $$\Delta m = 92\times1{,}00728 + 146\times1{,}00866 - 238{,}00031$$
+
+          $$\Delta m = 239{,}93412 - 238{,}00031 = 1{,}93381\ \text{u}$$
+
+          On convertit en énergie avec le facteur donné par l'énoncé :
+
+          $$E_l(U) = 1{,}93381\times931{,}5 \approx 1801{,}3\ \text{MeV}$$
+
+          $E_l$ seule ne compare rien entre deux noyaux de tailles différentes (R3) : $A(U) = 238$ et $A(Pb) = 206$ ne sont pas égaux, donc comparer $1801{,}3$ à une énergie de liaison totale du Plomb, qu'on n'a même pas ici, ne dirait rien. C'est l'énergie de liaison **par nucléon** qui compare honnêtement :
+
+          $$\frac{E_l}{A}(U) = \frac{1801{,}3}{238} \approx 7{,}57\ \text{MeV/nucléon}$$
+
+          On compare directement à la donnée fournie par l'énoncé pour le Plomb 206, $\mathcal{E}(Pb) = 7{,}87\ \text{MeV/nucléon}$ — déjà l'énergie de liaison par nucléon, pas besoin de la recalculer :
+
+          $$7{,}87 > 7{,}57$$
+
+          Plus $E_l/A$ est grand, plus le noyau est stable (R3) : le Plomb 206 est donc bien plus stable que l'Uranium 238 — cohérent avec le fait que l'Uranium 238 est justement le noyau père qui se désintègre spontanément vers lui.
+        steps:
+          - math: '\Delta m = 92\,m_p + 146\,m_n - m(^{238}_{92}\text{U})'
+            note: "Z=92 protons et N=146 neutrons, etablis a la question 1-2 (defaut de masse, R2)."
+          - math: '92\times1{,}00728 + 146\times1{,}00866 = 92{,}66976 + 147{,}26436 = 239{,}93412\ \text{u}'
+            note: "Masse des nucleons SEPARES."
+          - math: '\Delta m = 239{,}93412 - 238{,}00031 = 1{,}93381\ \text{u}'
+            note: "Toujours positif : le noyau assemble est plus leger que ses morceaux."
+          - math: 'E_l(U) = 1{,}93381\times931{,}5 \approx 1801{,}3\ \text{MeV}'
+            note: "1 u vaut 931,5 MeV.c-2 (donnee de l'enonce) : simple multiplication."
+          - math: '\frac{E_l}{A}(U) = \frac{1801{,}3}{238} \approx \boxed{7{,}57\ \text{MeV/nucleon}}'
+            note: "Energie de liaison PAR NUCLEON (R3), seule grandeur qui compare deux noyaux de A differents."
+          - math: '7{,}87 > 7{,}57 \implies \boxed{\text{Pb-206 plus stable que U-238}}'
+            note: "Comparaison a la donnee de l'enonce pour le Plomb 206 ; plus El/A est grand, plus le noyau est stable (R3)."

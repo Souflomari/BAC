@@ -81,6 +81,39 @@
 #     construction — voir la NOTE ÉDITORIALE de classement précédant l'entrée.
 #     Formule de la fréquence propre et conservation de l'énergie réénoncées au
 #     point d'usage, avec renvoi nommé vers la leçon « Circuit RLC série ».
+#
+# NOTE ÉDITORIALE — bk-2012-n-x4 (2026-08-28, ajout) : LE CHOIX DE L'`id`, ET
+# POURQUOI. Le sujet source (docs/sujets/_incoming/pc-2012-n.md, statut
+# VÉRIFIÉ — clearé pour conversion, passe adversariale du 2026-08-28) NE
+# NUMÉROTE AUCUN EXERCICE : la page 1 annonce « quatre exercices » mais le
+# corps du sujet introduit chaque bloc par son nom de domaine (Chimie,
+# Physique nucléaire, Electricité, Mécanique), jamais par « Exercice
+# 1/2/3/4 ». Les deux entrées de chimie déjà en banque pour ce même sujet,
+# bk-2012-n-x1 (content/pc/transformations-deux-sens/bank.yaml) et
+# bk-2012-n-x2 (content/pc/evolution-spontanee/bank.yaml), ont donc choisi une
+# numérotation qui encode la POSITION DANS LE CARTOUCHE plutôt qu'un numéro
+# imprimé — x1 pour la Première partie de Chimie, x2 pour sa Deuxième partie.
+# bk-2012-n-x4 CONTINUE cette même séquence (après bk-2012-n-x3, Physique
+# nucléaire) : c'est le troisième bloc du cartouche, Electricité. Ce bloc
+# imprime lui-même deux parties indépendantes (« Première partie : Réponse
+# d'un dipôle RL … » / « Deuxième partie : … RLC libre ») qui se répartissent
+# entre deux notions ; la Deuxième partie porte le suffixe `b`,
+# bk-2012-n-x4b, sous content/pc/rlc-serie/bank.yaml — sur le modèle déjà
+# établi ailleurs dans ce corpus pour un exercice scindé (bk-2018-n-x4/x4b,
+# bk-2022-n-x4/x4b, bk-2023-n-x4/x4b, bk-2025-n-x4/x4b ; voir
+# docs/grounding/known-issues.md K-7 bis). Sans cette note, un mainteneur
+# pourrait lire x4 comme une erreur de position sur CE sujet précis — ce n'en
+# est pas une : c'est le sujet lui-même qui ne numérote rien.
+#
+# NOTE ÉDITORIALE — bk-2012-n-x4, RÉPARTITION DU BARÈME (PAS DE DOUBLE
+# COMPTAGE). L'exercice « Electricité » du sujet 2012 N vaut 4,50 pt au total
+# (9 questions ; recompte confirmé par deux chemins indépendants dans le sas
+# de vérification). La Première partie — dipôle RL, cette entrée-ci — vaut
+# 2,5 pt (4 questions) ; la Deuxième partie — oscillations libres RLC — vaut
+# 2,0 pt et vit à part sous bk-2012-n-x4b (content/pc/rlc-serie/bank.yaml).
+# 2,5 + 2,0 = 4,50, le barème imprimé. C'est le sujet lui-même, par ses deux
+# titres « Première partie » / « Deuxième partie », qui déclare les deux
+# parties indépendantes — la répartition ne coupe rien qui se réponde.
 
 notion: pc/dipole-rl
 
@@ -1160,3 +1193,140 @@ entries:
             note: "Application numerique, E = 10 V."
           - math: '\boxed{I_m \approx 3{,}16\times10^{-2}\ \text{A} = 31{,}6\ \text{mA}}'
             note: "Intensite maximale du courant dans l'oscillateur LC."
+
+  # ── bk-2012-n-x4 — 2012 N, Electricite, Premiere partie : dipole RL, echelon de tension ascendant ──
+  #
+  # NOTE ÉDITORIALE — voir le bloc en tête de fichier pour le choix de l'`id`
+  # (le sujet ne numérote aucun exercice) et pour la répartition du barème
+  # avec la sœur bk-2012-n-x4b (content/pc/rlc-serie/bank.yaml).
+  - id: bk-2012-n-x4
+    title: "Réponse d'un dipôle RL à un échelon de tension ascendant : équation différentielle et détermination de r et L par la courbe i(t)"
+    source:
+      year: 2012
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice d'Électricité — Première partie : réponse d'un dipôle RL à un échelon de tension ascendant"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2012 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool https://www.alloschool.com/element/94452, code sujet
+        NS28, page 4 du scan (sur 6) — Electricité (04,5 points), Première
+        partie : réponse d'un dipôle RL à un échelon de tension ascendant.
+        Transcription source : docs/sujets/_incoming/pc-2012-n.md, statut
+        « VÉRIFIÉ — clearé pour conversion », passe de transcription du
+        2026-08-27 PUIS passe adversariale indépendante du 2026-08-28
+        (figures 1 et 2 re-mesurées sur les bitmaps NATIFS extraits du PDF,
+        jusqu'à 233 dpi — au-dessus des 150 dpi servis par AlloSchool — et
+        recoupées par trois routes indépendantes : tangente à l'origine,
+        point mesuré à t=1ms contre 120(1-e^-1), et R+r=100 Ω donnant des
+        valeurs rondes r=8 Ω, L=0,10 H). Barème de la partie recompté sur
+        l'énoncé source : 0,5 (1-) + 0,5 (2-1-) + 0,5 (2-2-) + 1 (2-3-) =
+        2,5 pt, 4 questions, sur les 4,5 pt de l'exercice complet, dont la
+        Deuxième partie (oscillations libres RLC, 2,0 pt) est DÉJÀ EN BANQUE
+        à part, sous content/pc/rlc-serie/bank.yaml, entrée bk-2012-n-x4b —
+        pas de double comptage. CHOIX DE L'`id` : le sujet ne numérote aucun
+        exercice (voir la NOTE ÉDITORIALE en tête de fichier) ; bk-2012-n-x4
+        continue la séquence de position du cartouche (chimie = x1/x2,
+        physique nucléaire = x3), et le suffixe `b` marque la Deuxième
+        partie du même bloc Electricité. FIGURE 2 (courbe i(t)) — les
+        valeurs mesurées et CORRIGÉES par la vérification adversariale :
+        graduations noires 0/40/80/120 mA (traits bleus intercalaires tous
+        les 20 mA), plafond mesuré au pixel $I_{max}\approx120\ \text{mA}$ ;
+        point mesuré à $t=1{,}0\ \text{ms}$ : $75{,}3\ \text{mA}$, à comparer
+        à $120(1-e^{-1})=75{,}9\ \text{mA}$ attendu — écart inférieur au
+        pixel ; tangente à l'origine, pente $120{,}0\ \text{mA/ms}$, coupe le
+        niveau $120\ \text{mA}$ à $t=1{,}006\ \text{ms}\approx1\ \text{ms}$.
+        Avec $R=92\ \Omega$ et $E=12\ \text{V}$ imprimés, $I_{max}=120\ \text{mA}$
+        donne $R+r=E/I_{max}=100\ \Omega$, soit $r=8\ \Omega$ et
+        $L=\tau(R+r)=0{,}10\ \text{H}$ — valeurs rondes, signe qu'on lit la
+        bonne courbe (aucune incohérence du sujet officiel relevée ici).
+    intro: |-
+      **Réponse d'un dipôle RL à un échelon de tension ascendant (examen national, session normale 2012 — Electricité, Première partie, 2,5 points sur les 4,5 de l'exercice).**
+
+      *La Deuxième partie de cet exercice — oscillations libres dans un circuit RLC série — est indépendante de celle-ci et traitée à part, sous la notion « Circuit RLC série » (entrée bk-2012-n-x4b).*
+
+      Dans le cadre de la réalisation d'un projet scientifique, une enseignante encadrant un club scientifique propose à un groupe d'élèves de s'assurer du coefficient d'inductance $L$ et de la résistance $r$ d'une bobine $(b)$, et du taux d'influence de cette résistance sur l'énergie électrique totale d'un circuit série RLC libre.
+
+      Le groupe a réalisé le montage de la figure 1, qui se compose de : la bobine $(b)$ ; un résistor de résistance $R = 92\ \Omega$ ; un générateur de force électromotrice $E = 12\ \text{V}$ et de résistance négligeable ; un interrupteur $K$.
+
+      **Figure 1 (schéma, re-décrit depuis l'image, p. 4).** Circuit série en boucle rectangulaire unique. Branche du haut : l'interrupteur $K$, dessiné ouvert. Branche de gauche (verticale) : le générateur, avec la flèche $E$ orientée vers le haut à l'intérieur de la boucle. Branche du bas, de gauche à droite : le résistor $R$, puis la bobine $(b)$. Branche de droite : fil nu. Aucune tension n'est fléchée sur la figure — c'est l'objet de la question 1.
+
+      À l'aide d'un matériel informatique convenable, les élèves ont obtenu expérimentalement la courbe de la figure 2, représentant les variations, en fonction du temps, de l'intensité du courant $i$ traversant le circuit.
+
+      **Figure 2 (courbe, mesurée au pixel sur l'image native extraite du PDF, jusqu'à 233 dpi).** $i\ (\text{mA})$ en fonction de $t\ (\text{ms})$. Graduations noires en ordonnée : $0$, $40$, $80$, $120$ (traits bleus intercalaires tous les $20\ \text{mA}$). Graduations noires en abscisse : $1$, $2$, $3$, $4$, $5$ (traits bleus intercalaires tous les $0{,}5\ \text{ms}$). Courbe croissante, concave, partant de l'origine et plafonnant à $i \approx 120\ \text{mA}$, valeur atteinte vers $t \approx 5\ \text{ms}$. Droite en tirets, tangente à la courbe à l'origine, de pente $120\ \text{mA/ms}$ : elle coupe le niveau du palier $i = 120\ \text{mA}$ à $t \approx 1{,}0\ \text{ms}$.
+    questions:
+      - id: q1
+        stem: |-
+          **1-** (0,5 pt) Recopier la figure 1 sur votre copie, et représenter dessus la tension $u_R$ aux bornes du résistor, et la tension $u_b$ aux bornes de la bobine, en convention récepteur.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Ce n'est pas un calcul : c'est la convention qui gouverne TOUT ce qui suit dans l'exercice (l'équation de la question 2-1 en dépend directement). Le rung 1 de la leçon la pose noir sur blanc : en convention récepteur, la flèche de tension d'un dipôle est orientée dans le MÊME sens que la flèche du courant qui le traverse — le courant « entre » par la borne où la tension est comptée positivement.
+
+          Le résistor $R$ et la bobine $(b)$ sont deux récepteurs traversés par le même courant $i$ (ils sont en série dans la branche du bas de la figure 1). La règle s'applique donc identiquement aux deux : on flèche $u_R$ et $u_b$ chacune dans le même sens que $i$ le long de la branche du bas — c'est-à-dire les deux flèches pointant dans la MÊME direction l'une que l'autre, chacune au-dessus (ou en dessous) de son propre dipôle.
+
+          Le piège nommé de cette question. Flécher les deux tensions en sens opposés l'un de l'autre — une erreur fréquente quand on croit qu'il faut « faire le tour » de la maille en alternant les sens. Il n'y a rien à alterner : les deux dipôles sont traversés par le MÊME courant $i$, donc les deux flèches suivent la MÊME direction, dictée uniquement par le sens de $i$, jamais par la position du dipôle dans la boucle.
+      - id: q2
+        part: "2- Établir l'équation différentielle et lire r, L sur la courbe"
+        stem: |-
+          **2-1-** (0,5 pt) Établir l'équation différentielle vérifiée par $i(t)$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Exactement la méthode du rung 2 : loi des mailles sur la maille série, puis on remplace chaque tension par l'expression de son dipôle — la loi d'Ohm pour $R$ (question 1), et la relation caractéristique de la bobine $u_b = r\,i + L\dfrac{di}{dt}$ (rung 1), qui porte à la fois sa résistance interne $r$ et son inductance $L$. On regroupe ensuite les deux termes résistifs, qui jouent le même rôle du point de vue de la loi d'Ohm, avant de diviser par $L$.
+        steps:
+          - math: 'E = u_R + u_b'
+            note: "Loi des mailles, convention recepteur (question 1)."
+          - math: 'u_R = R\,i \qquad u_b = r\,i + L\,\frac{di}{dt}'
+            note: "Loi d'Ohm pour R ; relation caracteristique de la bobine avec sa resistance interne r et son inductance L (rung 1)."
+          - math: 'E = (R+r)\,i + L\,\frac{di}{dt}'
+            note: "On regroupe les deux termes resistifs R et r (rung 2)."
+          - math: '\boxed{\frac{di}{dt} + \frac{R+r}{L}\,i = \frac{E}{L}}'
+            note: "On divise par L : equation differentielle verifiee par i(t)."
+      - id: q3
+        stem: |-
+          **2-2-** (0,5 pt) La solution de l'équation différentielle est : $i(t) = A\left(1 - e^{-\frac{t}{\tau}}\right)$. Trouver les expressions de $A$ et $\tau$ en fonction des paramètres du circuit.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Même méthode qu'au rung 2 : on n'intègre rien, on identifie. La solution proposée doit vérifier l'équation de la question 2-1 : on calcule sa dérivée, on substitue, et on regroupe pour retrouver la forme de l'équation, terme à terme.
+
+          $$\frac{di}{dt} = \frac{A}{\tau}\,e^{-t/\tau}$$
+
+          On reporte $i(t)$ et $\dfrac{di}{dt}$ dans $\dfrac{di}{dt}+\dfrac{R+r}{L}i=\dfrac{E}{L}$ :
+
+          $$\frac{A}{\tau}e^{-t/\tau} + \frac{R+r}{L}A\left(1-e^{-t/\tau}\right) = \frac{E}{L}$$
+
+          Si — et seulement si — $\dfrac{1}{\tau}=\dfrac{R+r}{L}$, le terme en $e^{-t/\tau}$ s'annule exactement entre les deux occurrences, et il reste $\dfrac{R+r}{L}A=\dfrac{E}{L}$, d'où $A=\dfrac{E}{R+r}$.
+        steps:
+          - math: '\tau = \frac{L}{R+r} \qquad \text{(coefficient de } i \text{ dans l equation, rung 2)}'
+            note: "Identification par substitution : c'est la seule valeur de tau qui annule le terme exponentiel."
+          - math: '\boxed{A = \frac{E}{R+r} \qquad \tau = \frac{L}{R+r}}'
+            note: "A est la valeur du palier (regime permanent, di/dt=0) ; tau est le temps caracteristique."
+      - id: q4
+        stem: |-
+          **2-3-** (1 pt) Déterminer les valeurs de $r$ et $L$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Les deux lectures graphiques de la figure 2 — le palier et la tangente à l'origine (rung 3) — donnent $I_{max}=A$ et $\tau$ ; il suffit ensuite d'inverser les deux relations de la question précédente pour en tirer $r$ puis $L$, avec $R=92\ \Omega$ et $E=12\ \text{V}$ donnés par l'énoncé.
+
+          **Lecture du palier.** La courbe plafonne à $i \approx 120\ \text{mA}$ (figure 2) : $I_{max}=A=120\ \text{mA}$.
+
+          **Lecture de la tangente.** La tangente à l'origine coupe le niveau du palier à $\tau \approx 1{,}0\ \text{ms}$ (figure 2, rung 3).
+
+          On inverse $A=\dfrac{E}{R+r}$ pour isoler $r$ :
+
+          $$R+r = \frac{E}{A} = \frac{12}{0{,}120} = 100\ \Omega \implies r = 100-92 = 8\ \Omega$$
+
+          Puis $\tau=\dfrac{L}{R+r}$ pour isoler $L$ :
+
+          $$L = \tau(R+r) = 1{,}0\times10^{-3}\times100$$
+
+          Le contrôle qui rassure. $r=8\ \Omega$ et $L=0{,}10\ \text{H}$ sont des valeurs rondes — le signe qu'on a bien lu la bonne courbe, pas un artefact de mesure.
+        steps:
+          - math: 'I_{max} = A \approx 120\ \text{mA} \qquad \tau \approx 1{,}0\ \text{ms}'
+            note: "Deux lectures graphiques independantes sur la figure 2 : palier et tangente a l'origine (rung 3)."
+          - math: 'R+r = \frac{E}{A} = \frac{12}{0{,}120} = 100\ \Omega'
+            note: "On inverse A = E/(R+r) ; E = 12 V, R = 92 Ohm donnes par l'enonce."
+          - math: '\boxed{r = 100 - 92 = 8\ \Omega}'
+            note: "Resistance interne de la bobine."
+          - math: 'L = \tau(R+r) = 1{,}0\times10^{-3}\times100'
+            note: "On inverse tau = L/(R+r)."
+          - math: '\boxed{L = 0{,}10\ \text{H}}'
+            note: "Inductance de la bobine : valeur ronde, coherente avec r=8 Ohm."

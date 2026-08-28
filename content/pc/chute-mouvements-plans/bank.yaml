@@ -45,6 +45,38 @@
 # bk-2019-n-x3. À l'arbitrage de l'owner si l'on préfère l'écarter de la
 # banque pour éviter le recoupement sur la même page.
 #
+# NOTE ÉDITORIALE — bk-2012-n-x5 (2026-08-28, ajout) : LE CHOIX DE L'`id`, ET
+# POURQUOI. Le sujet source (docs/sujets/_incoming/pc-2012-n.md, statut
+# VÉRIFIÉ — clearé pour conversion, passe adversariale du 2026-08-28) NE
+# NUMÉROTE AUCUN EXERCICE : la page 1 annonce « quatre exercices » mais le
+# corps du sujet introduit chaque bloc par son nom de domaine (Chimie,
+# Physique nucléaire, Electricité, Mécanique), jamais par « Exercice
+# 1/2/3/4 ». Les deux entrées de chimie déjà en banque pour ce même sujet,
+# bk-2012-n-x1 (content/pc/transformations-deux-sens/bank.yaml) et
+# bk-2012-n-x2 (content/pc/evolution-spontanee/bank.yaml), ont donc choisi une
+# numérotation qui encode la POSITION DANS LE CARTOUCHE plutôt qu'un numéro
+# imprimé. bk-2012-n-x5 continue cette même séquence : c'est le quatrième et
+# dernier bloc du cartouche (chimie=x1/x2, physique nucléaire=x3/x3b,
+# electricité=x4/x4b, mécanique=x5). Contrairement aux deux blocs qui la
+# précèdent, la Mécanique ne se répartit PAS entre plusieurs notions — c'est
+# une entrée UNIQUE, sans suffixe `b` : l'exercice entier (chute d'un solide
+# dans un liquide visqueux, équation différentielle, vitesse limite, méthode
+# d'Euler) relève d'un bout à l'autre de cette seule notion, chute-mouvements-plans.
+#
+# ⚠️ DOUBLON PÉDAGOGIQUE SIGNALÉ, PAS ÉCARTÉ. Cette notion porte déjà un sujet
+# quasi jumeau : bk-2020-n-x5 ci-dessous EST le sommet de leçon r-bac
+# (exercises.yaml, marqueur [[exercise:r-bac]] à R11) — même dispositif (bille
+# dans un liquide visqueux), mêmes rungs mobilisés (R7 équation différentielle
+# + vitesse limite, R8 méthode d'Euler). bk-2012-n-x5 mobilise EXACTEMENT les
+# mêmes rungs, avec en plus la poussée d'Archimède (non négligée ici, alors
+# que 2020 N la néglige explicitement) et une lecture graphique de τ par
+# tangente à l'origine (absente de 2020 N). Ce n'est pas une raison de
+# l'écarter — deux sujets de bac réels sur le même rung, c'est de
+# l'entraînement — mais c'est une décision d'équilibrage de banque qui
+# appartient à l'owner ; elle est nommée ici pour ne pas être découverte
+# après coup (même disposition que la note du sas de conversion,
+# docs/sujets/_incoming/pc-2012-n.md, §« Classement proposé »).
+#
 # SCOPE NOTES (techniques mobilisées au-delà de ce que la leçon montre
 # explicitement pas à pas — pontées au point d'usage dans le raisonnement de
 # la question concernée, PAS corrigées ni simplifiées ici) :
@@ -126,6 +158,21 @@
 #     l'entrée (2ᵉ loi sans frottement, décomposition de V_0, lecture
 #     d'une hauteur à une abscisse donnée, mouvement horizontal uniforme)
 #     reste strictement dans les rungs 1 à 4.
+#   - bk-2012-n-x5, q2 : « Vérifier que $v_G(t)=\frac{B}{A}(1-e^{-t/\tau})$
+#     est solution de l'équation différentielle » — le rung 7 de CETTE leçon
+#     établit l'équation différentielle de la chute avec frottement (avec ou
+#     sans poussée d'Archimède, les deux y sont couvertes) et l'exploite pour
+#     $v_\ell$ et $\tau$, mais n'y VÉRIFIE jamais explicitement une solution
+#     proposée par substitution (« La limite du cadre » du rung 7 : « on ne
+#     la résout jamais analytiquement »). Le GESTE demandé ici — poser une
+#     hypothèse de solution, calculer sa dérivée, substituer, montrer que les
+#     deux membres de l'équation s'égalisent — est enseigné en détail au
+#     rung 2 de la leçon « Dipôle RL » (contenu/content/pc/dipole-rl/lesson.md),
+#     sur une équation différentielle de MÊME STRUCTURE mathématique
+#     ($\frac{di}{dt}+\frac1\tau i = \frac{I_{max}}{\tau}$, identifiée par le
+#     même schéma que $\frac{dv_G}{dt}+A\,v_G=B$ ici). Ponté au point d'usage
+#     dans le raisonnement de la question 2, en nommant explicitement la
+#     leçon sœur — jamais un « on admet ».
 
 notion: pc/chute-mouvements-plans
 
@@ -2023,3 +2070,205 @@ entries:
             note: "Application numerique ; y_E verifie par les deux equations."
           - math: '\boxed{d = OE = \frac{x_E}{\cos\alpha} \approx 69{,}7\ \text{m}}'
             note: "Distance le long du plan, pas la simple abscisse x_E : on divise par cos(alpha)."
+
+  # ── bk-2012-n-x5 — 2012 N, Mecanique : chute d'une bille dans un liquide visqueux, Archimede, Euler ──
+  #
+  # NOTE ÉDITORIALE — voir le bloc en tête de fichier pour le choix de l'`id`
+  # (le sujet ne numérote aucun exercice), pour le doublon pédagogique avec
+  # bk-2020-n-x5/r-bac, et pour la SCOPE NOTE de la question 2 (verification
+  # d'une solution proposee, technique portee depuis dipole-rl R2).
+  - id: bk-2012-n-x5
+    title: "Chute d'une bille dans un liquide visqueux avec poussée d'Archimède : vitesse limite, temps caractéristique et méthode d'Euler"
+    source:
+      year: 2012
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice de Mécanique : étude de la chute d'un solide dans un liquide visqueux"
+    bareme_total: 5.5
+    duration_min: 33
+    sourcing:
+      status: sourced
+      note: >-
+        2012 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), AlloSchool https://www.alloschool.com/element/94452, code sujet
+        NS28, pages 5 et 6 du scan (sur 6) — Mécanique (05,5 points) : étude
+        de la chute d'un solide dans un liquide visqueux. Transcription
+        source : docs/sujets/_incoming/pc-2012-n.md, statut « VÉRIFIÉ —
+        clearé pour conversion », passe de transcription du 2026-08-27 PUIS
+        passe adversariale indépendante du 2026-08-28 (figures 1 et 2
+        re-mesurées sur les bitmaps natifs extraits du PDF, jusqu'à 233 dpi).
+        Barème recompté sur l'énoncé source : 1 (1-) + 0,75 (2-) + 0,5 (3-) +
+        1 (4-) + 1 (5-) + 0,25 (6-) + 1 (7-) = 5,50 pt, 7 questions.
+        ASYMÉTRIE DE BARÈME CONFIRMÉE, PAS LISSÉE : la question 6 (viscosité
+        η) ne vaut que 0,25 pt contre 1 pt pour la question 5 (coefficient
+        k) — relevé deux fois par deux chemins indépendants (couche de texte
+        du PDF ET OCR des bandes de marge), les deux concordent ; ce n'est
+        pas une erreur de transcription. CHOIX DE L'`id` : le sujet ne
+        numérote aucun exercice (voir la NOTE ÉDITORIALE en tête de
+        fichier) ; bk-2012-n-x5 continue la séquence de position du cartouche
+        (chimie=x1/x2, physique nucléaire=x3/x3b, électricité=x4/x4b) — pas
+        de suffixe `b` ici, l'exercice entier relève d'une seule notion.
+        FIGURE 2 (courbe v_G(t)) — valeurs mesurées et confirmées par la
+        vérification adversariale, tranchées au pixel sur l'image native
+        (944×570 px, 233 dpi, xref 244) : palier $v_G \approx 1{,}50\ \text{m/s}$
+        (mesure fine : $1{,}4995\ \text{m/s}$, soit $1{,}50$ à
+        $0{,}007\ \text{m/s}$ près — le trait bleu $1{,}5$ passe EXACTEMENT
+        sur la courbe) ; tangente à l'origine de pente
+        $\approx7{,}54\text{–}7{,}6\ \text{m.s}^{-2}$, coupant le palier à
+        $t\approx0{,}198\text{–}0{,}199\ \text{s}$, arrondi $\tau=0{,}20\ \text{s}$
+        pour une lecture graphique à l'échelle du quadrillage
+        ($0{,}05\ \text{s}$ par division mineure). RÉSERVE, signalée sans
+        conséquence sur les questions de cette entrée : l'équation de la
+        question 7, donnée directement par l'énoncé
+        ($dv_G/dt=7{,}57-5v_G$), impose $v_\ell=7{,}57/5=1{,}514\ \text{m/s}$
+        — un écart de $0{,}9\ \%$ avec la lecture graphique $1{,}50\ \text{m/s}$
+        des questions 3 et 4, identifié par la vérification comme un arrondi
+        assumé du sujet (le graphe est tracé avec des valeurs rondes,
+        lisibles) : AUCUNE question de cette entrée ne fait dépendre l'une
+        des deux valeurs de l'autre, la question 7 étant un exercice
+        d'Euler autonome dont l'énoncé fournit ses propres constantes.
+        CONTRE-CALCUL REFAIT ICI, chiffre par chiffre : $k=m/\tau=4{,}10.10^{-3}/0{,}20=2{,}05.10^{-2}\ \text{kg.s}^{-1}$ ;
+        $\eta=k/(6\pi r)=2{,}05.10^{-2}/(6\pi\times6{,}00.10^{-3})\approx0{,}181\ \text{Pa.s}$ ;
+        $a_1=7{,}57-5\times0{,}25=6{,}32\ \text{m.s}^{-2}$ ;
+        $v_2=0{,}25+6{,}32\times0{,}033\approx0{,}4586\ \text{m.s}^{-1}$, cohérent
+        avec le troisième point du tableau, $a_2=7{,}57-5\times0{,}4586\approx5{,}277$,
+        imprimé $5{,}27$ (tableau auto-cohérent au centième). Une salissure
+        noire de 5 px est documentée dans le sas sur cette même figure
+        ($t\approx1{,}22\ \text{s}$, $v\approx1{,}57\ \text{m/s}$, au-dessus du
+        palier) : elle n'appartient à aucune courbe et n'est reproduite nulle
+        part ici.
+    intro: |-
+      **Étude de la chute d'un solide dans un liquide visqueux (examen national, session normale 2012 — Mécanique, 5,5 points).**
+
+      On remplit un tube gradué par un liquide visqueux, transparent et de masse volumique $\rho$, puis on y laisse tomber, sans vitesse initiale, à l'instant $t=0$, une bille homogène de masse $m$, et de centre d'inertie $G$. On étudie le mouvement de $G$ par rapport à un repère terrestre supposé galiléen. La position de $G$ est repérée à un instant $t$ par l'ordonnée $z$, sur l'axe $(O\vec z)$ **vertical descendant** (figure 1).
+
+      **Figure 1 (schéma).** Un tube vertical, posé sur un socle. Le long du bord droit intérieur, une échelle de graduations non chiffrées. Un axe vertical unique traverse le tube du haut vers le bas et se termine par une flèche pointant vers le bas, étiquetée $z$ : l'axe est donc explicitement descendant. En haut de l'axe, un petit trait marque l'origine $O$. À mi-hauteur, un disque noir plein (la bille), étiqueté $G$.
+
+      On considère que la position de $G$ est confondue avec l'origine de l'axe $(O\vec z)$ à l'instant $t=0$, et que la poussée d'Archimède $\vec F$ **n'est pas négligeable** par rapport aux autres forces appliquées sur la bille. On modélise l'action du liquide sur la bille au cours du mouvement par une force de frottement : $\vec f = -k.\vec{v_G}$, où $\vec{v_G}$ est la vitesse de $G$ à un instant $t$, et $k$ un facteur constant et positif. On rappelle que l'intensité de la poussée d'Archimède est égale au poids du liquide déplacé.
+
+      **Données :**
+      - Rayon de la bille : $r = 6{,}00.10^{-3}\ \text{m}$ ;
+      - Masse de la bille : $m = 4{,}10.10^{-3}\ \text{kg}$.
+
+      **Figure 2 (courbe, mesurée au pixel sur l'image native extraite du PDF, jusqu'à 233 dpi).** $v_G\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$. Graduations noires en ordonnée : $0{,}2$, $0{,}4$, $0{,}6$, $0{,}8$, $1$, $1{,}2$, $1{,}4$ (bord du cadre à $1{,}6\ \text{m/s}$). Graduations noires en abscisse : $0$, $0{,}2$, $0{,}4$, $0{,}6$, $0{,}8$, $1$, $1{,}2$ (bord du cadre à $1{,}4\ \text{s}$). Courbe croissante, concave, partant de l'origine et plafonnant à $v_G \approx 1{,}50\ \text{m.s}^{-1}$, valeur atteinte vers $t \approx 1{,}25\ \text{s}$. Droite en tirets, tangente à la courbe à l'origine : elle coupe le niveau du palier $v_G = 1{,}50\ \text{m/s}$ à $t \approx 0{,}20\ \text{s}$.
+
+      **Tableau imprimé (pour la méthode d'Euler, pas $\Delta t = 0{,}033\ \text{s}$) :**
+
+      | $t\ (\text{s})$ | $v\ (\text{m.s}^{-1})$ | $a\ (\text{m.s}^{-2})$ |
+      |---|---|---|
+      | $0$ | $0$ | $7{,}57$ |
+      | $0{,}033$ | $0{,}25$ | $a_1 = \ldots$ |
+      | $0{,}066$ | $v_2 = \ldots$ | $5{,}27$ |
+    questions:
+      - id: q1
+        stem: |-
+          **1-** (1 pt) Par application de la deuxième loi de Newton, montrer que l'équation différentielle du mouvement de $G$ s'écrit sous la forme :
+          $$\frac{dv_G}{dt} + A.v_G = B$$
+          en exprimant $A$ en fonction de $k$ et $m$, et $B$ en fonction de $g$ (intensité de pesanteur), $m$, $\rho$ et $V$ (volume de la bille).
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Exactement la méthode du rung 7 — bilan des forces, deuxième loi, projection sur l'axe choisi — mais avec les TROIS forces que ce rung couvre en toute généralité : le poids, le frottement, et la poussée d'Archimède, qui n'est ici pas négligeable (l'énoncé le précise explicitement, contrairement à d'autres sujets sur ce même dispositif).
+
+          Bilan des forces. Trois forces s'exercent sur la bille : le poids $\vec P = m\vec g$, la poussée d'Archimède $\vec F = \rho V \vec g$ (avec $V$ le volume de la bille — rappelée par l'énoncé comme le poids du liquide déplacé), et le frottement $\vec f = -k\vec{v_G}$.
+
+          Projection sur l'axe $(O\vec z)$, vertical **descendant** (figure 1). Le poids, orienté vers le bas, se projette positivement ; la poussée d'Archimède, orientée vers le HAUT (elle s'oppose toujours au poids), se projette négativement ; le frottement, qui s'oppose au mouvement (la bille descend), se projette lui aussi négativement.
+        steps:
+          - math: 'm\vec a = \vec P + \vec F + \vec f'
+            note: "Deuxieme loi de Newton (chapitre Lois de Newton) ; trois forces, Archimede n'est PAS negligee ici (rung 7)."
+          - math: 'm\,\frac{dv_G}{dt} = mg - \rho V g - k\,v_G'
+            note: "Projection sur (O,z) descendant : poids +mg, Archimede -rho.V.g (opposee au poids), frottement -k.v_G (oppose au mouvement)."
+          - math: '\frac{dv_G}{dt} = g - \frac{\rho V g}{m} - \frac{k}{m}\,v_G'
+            note: "On divise par la masse m."
+          - math: '\boxed{\frac{dv_G}{dt} + \frac{k}{m}\,v_G = g - \frac{\rho V g}{m}}'
+            note: "Forme demandee : A = k/m, B = g - (rho.V.g)/m."
+      - id: q2
+        stem: |-
+          **2-** (0,75 pt) Vérifier que l'expression
+          $$v_G(t) = \frac{B}{A}\,.\,\left(1 - e^{-\frac{t}{\tau}}\right)$$
+          est solution de l'équation différentielle, où $\tau = \dfrac{1}{A}$ est le temps caractéristique du mouvement.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Le rung 7 de cette leçon établit l'équation différentielle et l'exploite pour $v_\ell$ et $\tau$, mais ne vérifie jamais lui-même qu'une solution proposée la satisfait — c'est exactement le geste enseigné en détail au rung 2 de la leçon « Dipôle RL », sur une équation de MÊME STRUCTURE ($\frac{di}{dt}+\frac1\tau i=\frac{I_{max}}{\tau}$, identique en forme à $\frac{dv_G}{dt}+A\,v_G=B$ ici) : on calcule la dérivée de l'expression proposée, on substitue dans l'équation, et on montre que les deux membres s'égalisent pour TOUT $t$, pas seulement à un instant particulier.
+
+          On dérive $v_G(t)=\dfrac{B}{A}\left(1-e^{-t/\tau}\right)$ par rapport au temps — seul le terme exponentiel dépend de $t$ :
+
+          $$\frac{dv_G}{dt} = \frac{B}{A\tau}\,e^{-t/\tau}$$
+
+          On substitue $v_G(t)$ et $\dfrac{dv_G}{dt}$ dans le membre de gauche de l'équation différentielle, $\dfrac{dv_G}{dt}+A\,v_G$ :
+
+          $$\frac{dv_G}{dt}+A\,v_G = \frac{B}{A\tau}e^{-t/\tau} + A\times\frac{B}{A}\left(1-e^{-t/\tau}\right) = \frac{B}{A\tau}e^{-t/\tau} + B - B\,e^{-t/\tau}$$
+
+          Si — et seulement si — $\tau=\dfrac1A$ (l'énoncé impose précisément cette valeur), alors $\dfrac{1}{A\tau}=1$, et le premier terme devient $B\,e^{-t/\tau}$ :
+
+          $$\frac{dv_G}{dt}+A\,v_G = B\,e^{-t/\tau} + B - B\,e^{-t/\tau} = B$$
+
+          Les deux termes en $e^{-t/\tau}$ s'annulent exactement, et il reste $B$ — c'est-à-dire le membre de droite de l'équation. L'expression proposée est bien solution, **pour tout $t$**, à condition que $\tau=1/A$.
+        steps:
+          - math: '\frac{dv_G}{dt} = \frac{B}{A}\times\frac1\tau\,e^{-t/\tau} = \frac{B}{A\tau}\,e^{-t/\tau}'
+            note: "Derivee de v_G(t) : seul le terme exponentiel depend de t."
+          - math: '\frac{dv_G}{dt}+A\,v_G = \frac{B}{A\tau}e^{-t/\tau} + B\left(1-e^{-t/\tau}\right)'
+            note: "Substitution dans le membre de gauche de l'equation differentielle."
+          - math: '\text{Avec } \tau=\frac1A: \quad \frac{1}{A\tau}=1 \implies \frac{dv_G}{dt}+A\,v_G = B\,e^{-t/\tau} + B - B\,e^{-t/\tau}'
+            note: "C'est la condition tau = 1/A, imposee par l'enonce, qui fait tomber le coefficient du terme exponentiel a 1."
+          - math: '\boxed{\frac{dv_G}{dt}+A\,v_G = B}'
+            note: "Les deux termes exponentiels s'annulent exactement : l'expression proposee verifie bien l'equation, pour tout t."
+      - id: q3
+        stem: |-
+          **3-** (0,5 pt) Écrire l'expression de la vitesse limite $V_{\ell im}$ du centre d'inertie de la bille en fonction de $A$ et $B$.
+        reasoning: |-
+          Exactement la méthode du rung 7 : on annule l'accélération dans l'équation différentielle — un calcul d'une ligne, jamais une résolution complète — et on isole la vitesse limite. On peut aussi la lire directement sur l'expression de $v_G(t)$ de la question 2 : quand $t$ devient grand, le terme $e^{-t/\tau}$ tend vers $0$, et $v_G(t)$ tend vers $\dfrac{B}{A}$ — les deux méthodes donnent le même résultat, ce qui confirme la cohérence de la solution vérifiée à la question 2.
+        steps:
+          - math: '\frac{dv_G}{dt} = 0 \implies A\,V_{\ell im} = B'
+            note: "En regime permanent, l'acceleration s'annule dans l'equation differentielle (rung 7)."
+          - math: '\boxed{V_{\ell im} = \frac{B}{A}}'
+            note: "Coherent avec la limite de v_G(t) quand t devient grand (question 2) : e^(-t/tau) tend vers 0."
+      - id: q4
+        stem: |-
+          **4-** (1 pt) On obtient, à l'aide d'un matériel informatique convenable, la courbe de la figure 2, représentant les variations de la vitesse $v_G$ en fonction du temps. Déterminer graphiquement les valeurs de $V_{\ell im}$ et $\tau$.
+        reasoning: |-
+          Deux lectures graphiques indépendantes, exactement la méthode du rung 7. La vitesse limite est l'ordonnée du palier horizontal que la courbe atteint en régime permanent — une simple lecture d'échelle, aucun calcul. Le temps caractéristique se lit à la tangente à l'origine (pente $g$ à $t=0$, rung 7) : elle coupe l'asymptote $v_G=V_{\ell im}$ à l'instant $t=\tau$.
+        steps:
+          - math: '\boxed{V_{\ell im} \approx 1{,}50\ \text{m.s}^{-1}}'
+            note: "Ordonnee du palier de la figure 2 (regime permanent)."
+          - math: '\boxed{\tau \approx 0{,}20\ \text{s}}'
+            note: "Tangente a l'origine : coupe le palier V_lim a cet instant (methode du rung 7)."
+      - id: q5
+        stem: |-
+          **5-** (1 pt) Déterminer la valeur du coefficient $k$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. $k$ n'apparaît directement dans aucune lecture graphique : il faut passer par une combinaison des résultats déjà établis. La question 1 donne $A=k/m$, donc $k=mA$ ; et $\tau=1/A$ (énoncé de la question 2) donne $A=1/\tau$. On enchaîne les deux, avec $\tau$ lu à la question 4 et $m$ donné dans l'énoncé.
+        steps:
+          - math: 'A = \frac{k}{m} \qquad \tau = \frac1A \implies k = \frac{m}{\tau}'
+            note: "On combine A=k/m (question 1) et tau=1/A (question 2) pour isoler k."
+          - math: 'k = \frac{4{,}10\times10^{-3}}{0{,}20}'
+            note: "Application numerique : m donne par l'enonce, tau lu a la question 4."
+          - math: '\boxed{k \approx 2{,}05\times10^{-2}\ \text{kg.s}^{-1}}'
+            note: "Coefficient de frottement lineaire."
+      - id: q6
+        stem: |-
+          **6-** (0,25 pt) Le coefficient $k$ varie avec le rayon de la bille et la viscosité $\eta$ du liquide selon la relation suivante : $k = 6\pi.\eta.r$. Déterminer la valeur de $\eta$ du liquide utilisé dans cette expérience.
+        reasoning: |-
+          Simple substitution : l'énoncé donne la relation $k=6\pi\eta r$ toute faite, avec $k$ trouvé à la question précédente et $r$ donné dans l'énoncé. On isole $\eta$ et on applique.
+        steps:
+          - math: '\eta = \frac{k}{6\pi r}'
+            note: "On isole eta dans la relation donnee par l'enonce."
+          - math: '\eta = \frac{2{,}05\times10^{-2}}{6\pi\times6{,}00\times10^{-3}}'
+            note: "Application numerique : k de la question 5, r donne par l'enonce."
+          - math: '\boxed{\eta \approx 0{,}181\ \text{Pa.s}}'
+            note: "Viscosite du liquide."
+      - id: q7
+        stem: |-
+          **7-** (1 pt) L'équation différentielle du mouvement de $G$ s'écrit sous la forme : $\dfrac{dv_G}{dt} = 7{,}57 - 5.v_G$. Par application de la méthode d'Euler, et les données du tableau, déterminer les valeurs de $a_1$ et $v_2$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Cette question fournit sa PROPRE équation numérique — un exercice d'Euler autonome, avec un pas $\Delta t=0{,}033\ \text{s}$ imprimé dans le tableau — indépendant des valeurs de $k$, $\eta$ trouvées plus haut. Deux gestes distincts du rung 8, l'un après l'autre.
+
+          $a_1$ : l'accélération à un instant NE SE LIT PAS dans le tableau — elle se recalcule à partir de la vitesse de ce même instant, via l'équation différentielle donnée (rung 8) : $a_1=7{,}57-5\,v_1$, avec $v_1=0{,}25\ \text{m/s}$ (deuxième ligne du tableau).
+
+          $v_2$ : on avance ensuite d'un pas d'Euler depuis l'instant précédent (rung 8), $v_2=v_1+a_1\,\Delta t$, avec le $a_1$ qu'on vient de calculer et $\Delta t=0{,}033\ \text{s}$ (pas imprimé dans le tableau).
+        steps:
+          - math: 'a_1 = 7{,}57 - 5\,v_1 = 7{,}57 - 5\times0{,}25'
+            note: "On evalue l'equation differentielle donnee en v1 = 0,25 m/s (deuxieme ligne du tableau)."
+          - math: '\boxed{a_1 = 6{,}32\ \text{m.s}^{-2}}'
+            note: "Deja en dessous de 7,57 : le frottement a commence a mordre."
+          - math: 'v_2 = v_1 + a_1\,\Delta t = 0{,}25 + 6{,}32\times0{,}033'
+            note: "Recurrence d'Euler (rung 8) entre les instants t1 et t2, avec le pas imprime dans le tableau."
+          - math: '\boxed{v_2 \approx 0{,}459\ \text{m.s}^{-1}}'
+            note: "Coherent avec la troisieme ligne du tableau : a2 = 7,57 - 5x0,4586 = 5,277, imprime 5,27."
