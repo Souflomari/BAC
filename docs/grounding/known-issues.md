@@ -809,6 +809,15 @@ schéma sans qu'aucune valeur n'en dépende. Il dit l'ordre de grandeur de la
 surface à re-mesurer, pas le nombre de valeurs fausses — qui peut très bien
 être zéro. Le seul cas avéré à ce jour reste PC 2010.
 
+**Mais l'exposition est presque entièrement VISIBLE : 87 de ces 89 entrées
+appartiennent à une épreuve complète**, donc affichée à l'élève en mode examen.
+Ce n'est pas une réserve dormante dans du contenu marginal.
+
+**L'inventaire nominatif est dans `docs/audits/lectures-graphiques.md`** — les
+89 entrées avec leur notion, leur sujet, leur barème, leur nombre de mentions
+et leur appartenance à une épreuve complète, triées par coût de re-mesure. Une
+campagne s'y planifie ; un chiffre global, non.
+
 ### K-1. `get_user_weak_areas` function references missing columns
 **Source.** `backend/supabase/migrations/004_exam_analytics_and_sync.sql`,
 lines 45–74.
