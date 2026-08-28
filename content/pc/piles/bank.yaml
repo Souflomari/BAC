@@ -467,3 +467,203 @@ entries:
           **Le piège nommé de cette question : le signe.** Sur la pile argent-chrome (2020 normale, autre entrée de cette banque), la même loi de Faraday donne un $\Delta m$ NÉGATIF — parce que l'électrode qu'on y étudie, le chrome, est l'ANODE : elle se dissout. Ici, l'électrode étudiée est le fer, qui est la CATHODE : elle s'épaissit, $\Delta m$ est POSITIF. Le mot « variation » de l'énoncé n'est pas synonyme de « perte ». Et l'expression que le sujet te demande d'établir ne porte aucun signe moins : c'est ta vérification — si ton raisonnement t'amenait à un $\Delta m$ négatif, il contredirait la formule imposée, et c'est ton identification de la polarité (question 1) qu'il faudrait reprendre.
 
           **Les deux conversions à ne pas rater.** Les milliampères en ampères (facteur $10^{3}$) et les minutes en secondes (facteur $60$). Oublier la seconde conversion donne $1{,}45\cdot10^{-4}$ g, soit une plaque qui gagne un dixième de milligramme en dix minutes — invraisemblable pour un demi-ampère.
+
+  # ── bk-2010-n-x1b — 2010 N, Chimie (Deuxième partie du même exercice que
+  #    bk-2010-n-x1, transformations-lentes-rapides) : pile à combustible
+  #    méthanol/dioxygène ──
+  #
+  # NOTE ÉDITORIALE — LE CHOIX DE L'`id`, ET POURQUOI (2026-08-28, ajout).
+  # Le sujet source (docs/sujets/_incoming/pc-2010-n.md, statut « VÉRIFIÉ —
+  # clearé pour conversion », passe adversariale indépendante du 2026-08-28)
+  # NE NUMÉROTE AUCUN EXERCICE : la page 1 annonce « quatre exercices » mais
+  # le corps du sujet introduit chaque bloc par son nom de domaine (Chimie,
+  # Physique nucléaire, Electricité, Mécanique), jamais par « Exercice
+  # 1/2/3/4 ». Les identifiants `x1…x4` de ce corpus encodent donc la
+  # POSITION AU CARTOUCHE de la page 1 — Chimie (07 pts) = x1, Physique
+  # nucléaire (02 pts) = x2, Electricité (05 pts) = x3, Mécanique (06 pts)
+  # = x4 — pas un numéro imprimé sur le sujet. `x1` est déjà pris par la
+  # PREMIÈRE partie de Chimie (le suivi conductimétrique de l'hydrolyse
+  # basique d'un ester), déjà en banque sous
+  # content/pc/transformations-lentes-rapides/bank.yaml, entrée bk-2010-n-x1
+  # (4,25 pt). Cette entrée-ci transcrit la DEUXIÈME partie du MÊME exercice
+  # de Chimie (l'étude de la pile, 2,75 pt) : elle continue donc la même
+  # séquence de position plutôt que d'en ouvrir une nouvelle, avec le
+  # suffixe `b` réservé aux morceaux d'un même bloc réparti entre plusieurs
+  # notions — même convention que bk-2012-n-x3/x3b
+  # (content/pc/noyaux-masse-energie/bank.yaml, voir sa note éditoriale) et
+  # bk-2024-r-x5/x5b (lois-de-newton/chute-mouvements-plans). Sans cette
+  # note, un mainteneur pourrait lire `x1b` comme une erreur de position sur
+  # CE sujet précis — ce n'en est pas une : c'est le sujet lui-même qui ne
+  # numérote rien, pas un défaut de conversion (docs/grounding/known-issues.md
+  # K-7 bis).
+  #
+  # BARÈME — PAS DE DOUBLE COMPTAGE. La Première partie (4,25 pt, déjà en
+  # banque) et la Deuxième partie (2,75 pt, ici) totalisent 7,00 pt, exactement
+  # le « Chimie : (07 points) » du cartouche. `web/src/lib/examens.ts` somme
+  # les `bareme_total` : les deux entrées cohabitent sans faire compter le
+  # même point deux fois.
+  #
+  # SCOPE NOTE (q2-2 / q2-3) : DEUX défauts confirmés du sujet officiel
+  # portent directement sur ces deux questions, et sont documentés en toutes
+  # lettres dans leur `reasoning` plutôt que réparés en silence — (a) le
+  # titre imprimé de cette partie recopie celui de la Première partie
+  # (« Deuxième partie : Etude de l'hydrolyse d'un ester en milieu basique »)
+  # alors que son contenu réel est l'étude d'une pile ; (b) la Figure 2 ne
+  # porte AUCUNE étiquette « A » ni « B » sur ses deux électrodes — contrôlé
+  # sur le bitmap d'origine 767×411 ET au rendu 400 dpi, ce n'est pas un
+  # artefact de diffusion. Les deux questions restent traitables (la nature
+  # de la réaction et le sens du courant $I$ — flèche rouge, fil de droite,
+  # vers le haut, seule indication d'orientation du dessin — tranchent quelle
+  # électrode fait quoi) mais AUCUNE des deux ne permet d'assigner une lettre
+  # A ou B à une position physique : ce que le raisonnement affirme se limite
+  # à « l'électrode de gauche / du méthanol » et « l'électrode de droite / du
+  # dioxygène », jamais à « A » ou « B » pris seuls.
+  - id: bk-2010-n-x1b
+    title: "Pile à combustible méthanol-dioxygène : demi-équations, identification des électrodes malgré une figure sans étiquette A/B, et volume de méthanol consommé"
+    source:
+      year: 2010
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice de Chimie — Deuxième partie : étude d'une pile à combustible méthanol/dioxygène"
+    bareme_total: 2.75
+    duration_min: 17
+    sourcing:
+      status: sourced
+      note: >-
+        2010 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28, AlloSchool element/94443
+        (course-422/upload-70311, page 3 sur 6) — Chimie, Deuxième partie :
+        étude d'une pile à combustible méthanol/dioxygène, barème 2,75 pt
+        (0,5+0,5+0,75+1) sur les 7,00 pt de l'exercice de Chimie complet,
+        dont la Première partie (hydrolyse basique d'un ester, 4,25 pt) est
+        DÉJÀ EN BANQUE sous
+        content/pc/transformations-lentes-rapides/bank.yaml, entrée
+        bk-2010-n-x1 — pas de double comptage. CHOIX DE L'`id` : le sujet ne
+        numérote aucun exercice (ses titres de section sont Chimie/Physique
+        nucléaire/Electricité/Mécanique, jamais « Exercice 1/2/3/4 ») ; les
+        identifiants x1..x4 de ce corpus encodent la POSITION AU CARTOUCHE,
+        pas un numéro imprimé, et x1 est déjà pris par la Première partie de
+        Chimie — cette entrée prolonge le MÊME exercice et porte donc le
+        suffixe b, bk-2010-n-x1b (voir la note éditoriale en tête de ce
+        fichier). Transcription vérifiée : passe adversariale indépendante du
+        2026-08-28 (docs/sujets/_incoming/pc-2010-n.md, statut « VÉRIFIÉ —
+        clearé pour conversion »), re-fetch du scan sur les bitmaps
+        d'origine, barème recompté géométriquement (0,5+0,5+0,75+1=2,75 ;
+        avec la Première partie, 4,25+2,75=7,00, conforme au cartouche
+        « Chimie : (07 points) »), 27 questions du sujet re-dérivées.
+        DÉFAUT DU SUJET OFFICIEL, documenté et non réparé : le titre imprimé
+        de cette partie est « Deuxième partie : Etude de l'hydrolyse d'un
+        ester en milieu basique » — c'est le titre de la PREMIÈRE partie,
+        recopié par erreur ; son contenu réel est bien l'étude d'une pile,
+        conforme au cartouche p.1 (« Chimie ... Etude d'une pile »). AUTRE
+        DÉFAUT : la Figure 2 (la pile) ne porte AUCUNE étiquette « A » ni
+        « B » sur ses deux électrodes (barres verticales grises), contrôlé
+        sur le bitmap d'origine 767×411 à ×2 et au rendu 400 dpi — pas un
+        artefact de diffusion. La question 2-2 demande pourtant de préciser
+        l'électrode « A ou B » : elle reste traitable par la nature de la
+        réaction et le sens du courant I (flèche rouge, fil de droite,
+        dirigée vers le haut — seule indication d'orientation du dessin),
+        mais la correspondance lettre→électrode n'est PAS donnée par le
+        dessin ; voir le raisonnement de q2-2/q2-3, qui le dit à l'élève
+        plutôt que de trancher en silence. Masse volumique du méthanol
+        utilisée : rho = 0,78 g/cm3, la valeur DE L'ÉNONCÉ (un corrigé de
+        professeur retrouvé pour ce sujet, non officiel, utilise par erreur
+        0,79 — non repris ici).
+    intro: |-
+      **Étude d'une pile à combustible méthanol-dioxygène (examen national, session normale 2010 — Chimie, Deuxième partie, 2,75 points sur les 7,00 de l'exercice de Chimie).**
+
+      *La Première partie de cet exercice — le suivi conductimétrique de l'hydrolyse basique du méthanoate de méthyle — est traitée à part, sous la notion « Transformations lentes et rapides » (entrée bk-2010-n-x1). Rien de ce qui suit n'en dépend.*
+
+      **Deuxième partie : Etude de l'hydrolyse d'un ester en milieu basique** *(titre tel qu'imprimé sur le sujet — défaut du sujet officiel : le contenu réel est l'étude d'une pile, conforme à l'annonce du cartouche « Chimie ... Etude d'une pile »)*
+
+      Cette pile est constituée de deux compartiments séparés par un électrolyte acide, jouant le rôle d'un pont ionique, et de deux électrodes A et B. La pile est alimentée, au cours du fonctionnement, par du méthanol liquide et du dioxygène gazeux (figure 2).
+
+      **Données :** constante de Faraday $\mathcal{F} = 96500\ \text{C.mol}^{-1}$ ; masse volumique du méthanol liquide $\rho = 0{,}78\ \text{g.cm}^{-3}$ ; masse molaire du méthanol $M = 32\ \text{g.mol}^{-1}$ ; couples intervenant dans la transformation : $(\text{O}_{2(g)}/\text{H}_2\text{O}_{(\ell)})$ et $(\text{CO}_{2(g)}/\text{CH}_3\text{OH}_{(\ell)})$.
+
+      Au cours du fonctionnement de la pile, il se produit au voisinage de l'une des électrodes une transformation modélisée par l'équation suivante :
+
+      $$\text{CH}_3\text{OH} + \text{H}_2\text{O} \longrightarrow \text{CO}_2 + a\,\text{H}^{+} + b\,\text{e}^{-}$$
+
+      **Figure 2 — la pile** *(décrite depuis le bitmap d'origine 767×411 extrait du PDF, agrandi ×2 — pas depuis l'énoncé).* Un grand rectangle vu en coupe, divisé en trois bandes verticales : compartiment gauche (blanc), bande centrale à trame de points fins portant « Electrolyte », compartiment droit (blanc). Deux barres verticales épaisses gris foncé, aux deux frontières de l'électrolyte, montant de la base au sommet — **ce sont les deux électrodes, et aucune n'est étiquetée « A » ni « B »** (défaut du sujet officiel, contrôlé sur le bitmap d'origine ET au rendu 400 dpi). Quatre traversées de paroi : en haut à gauche, flèche pleine vers l'intérieur, « Méthanol + eau » ; en bas à gauche, flèche pleine vers l'extérieur, « CO₂ » ; en haut à droite, flèche pleine vers l'intérieur, « O₂ » ; en bas à droite, flèche pleine vers l'extérieur, « Eau ». Du sommet de chaque électrode part un fil vertical ; les deux fils sont reliés en haut par un rectangle étiqueté « R », formant un pont au-dessus de la pile. Sur le fil de **droite**, une flèche **rouge** dirigée **vers le haut**, étiquetée « I » — c'est la seule indication d'orientation du dessin.
+    questions:
+      - id: q1
+        part: "2-1 — Équilibrer la demi-équation"
+        stem: |-
+          **2-1-** (0,5 pt) Déterminer les coefficients $a$ et $b$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Écrire une demi-équation, c'est toujours la même discipline en deux temps, quelle que soit l'espèce : d'abord équilibrer les ATOMES un par un, puis équilibrer la CHARGE électrique — jamais l'inverse, parce que les électrons ne se comptent qu'une fois tout le reste en place. Le rung 1 de la leçon le montre sur un exemple simple ($Zn \rightarrow Zn^{2+} + 2e^-$) ; ici l'espèce organique est plus riche, mais la méthode ne change pas.
+
+          On compte d'abord l'hydrogène, seul élément qui ne soit ni C ni O (déjà équilibrés par l'énoncé : un $\text{CH}_3\text{OH}$, une $\text{H}_2\text{O}$ à gauche ; un $\text{CO}_2$ à droite) : $4$ dans $\text{CH}_3\text{OH}$ plus $2$ dans $\text{H}_2\text{O}$, soit $6$ à gauche ; à droite, seul $\text{H}^+$ en porte, donc $a = 6$.
+
+          Puis on équilibre la charge : le membre de gauche est neutre (deux molécules non chargées), donc le membre de droite doit l'être aussi. À droite, $a$ ions $\text{H}^+$ apportent une charge $+a$ et $b$ électrons une charge $-b$ ; leur somme doit être nulle, ce qui donne $b = a = 6$.
+        steps:
+          - math: '4 + 2 = a \implies a = 6'
+            note: "Conservation de l'hydrogene : 4 dans CH3OH + 2 dans H2O a gauche, tout dans H+ a droite."
+          - math: 'a - b = 0 \implies b = 6'
+            note: "Electroneutralite : le membre de gauche est neutre, donc a.(+1) + b.(-1) = 0."
+      - id: q2
+        part: "2-2 — Identifier l'électrode, en l'absence de lettres sur la figure"
+        stem: |-
+          **2-2-** (0,5 pt) Préciser au voisinage de quelle électrode A ou B se produit cette réaction ? Justifier.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. La réaction donnée LIBÈRE des électrons ($b\,e^-$ à droite) : c'est une oxydation. Le rung 3 de la leçon l'a établi une fois pour toutes — l'électrode où se produit l'oxydation est l'ANODE. Reste à savoir laquelle des deux barres du dessin c'est, et il faut être honnête : le sujet officiel ne le dit pas directement par une étiquette.
+
+          Ce que la figure impose SANS ambiguïté : la réaction consomme du méthanol — c'est donc l'électrode du compartiment où le méthanol est injecté (paroi gauche, en haut : « Méthanol + eau ») et d'où le $\text{CO}_2$ ressort (paroi gauche, en bas) : **l'électrode de gauche**. C'est cohérent avec le sens du courant $I$, seule indication d'orientation du dessin (rung 4 : dans le circuit extérieur, le courant conventionnel va de la borne + vers la borne −) : $I$ sort par le fil de DROITE, donc l'électrode de droite est la borne +, la cathode ; l'électrode de gauche est donc la borne −, l'anode — exactement celle où l'on vient d'identifier l'oxydation du méthanol. Les deux voies concordent.
+
+          $$\boxed{\text{La réaction se produit au voisinage de l'électrode de GAUCHE, celle du méthanol : c'est l'anode, la borne } -}$$
+
+          **Ce que le dessin NE permet PAS de trancher, et il faut le dire.** La Figure 2 du sujet officiel ne porte AUCUNE étiquette « A » ni « B » sur ses deux barres d'électrode — défaut confirmé sur le bitmap d'origine, pas un artefact de reproduction. Rien dans le texte ni dans le dessin ne dit si « A » désigne la barre de gauche ou celle de droite. Tu peux répondre avec certitude « l'électrode du méthanol » ou « l'électrode de gauche » — la physique et le sens de $I$ le permettent sans ambiguïté — mais affirmer « c'est l'électrode A » suppose une convention que le sujet ne fournit pas. (Un corrigé de professeur retrouvé pour ce sujet, non officiel, tranche par décret « A = l'électrode du méthanol » ; ce n'est pas imposé par la figure.)
+      - id: q3
+        part: "2-3 — L'autre électrode, et le même défaut de figure"
+        stem: |-
+          **2-3-** (0,75 pt) Écrire l'équation modélisant la réaction ayant lieu au voisinage de l'autre électrode. Nommer les deux électrodes A et B.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. L'autre électrode (celle de droite, la cathode établie à la question précédente) est le siège de la réduction complémentaire, avec le couple $(\text{O}_2/\text{H}_2\text{O})$ donné dans les données — et la question 2-2 a déjà fixé qui consomme le dioxygène : la paroi de droite, où « O₂ » entre et « Eau » ressort.
+
+          On écrit la demi-équation de réduction de ce couple — même discipline qu'à la question 2-1 : atomes d'abord (l'oxygène, puis l'hydrogène en ajoutant $\text{H}^+$ et $\text{H}_2\text{O}$), charge ensuite (des électrons pour équilibrer) :
+
+          $$\text{O}_2 + 4\,\text{H}^{+} + 4\,e^{-} \longrightarrow 2\,\text{H}_2\text{O}$$
+
+          **Nommer A et B.** Il faut être aussi honnête qu'à la question précédente : la Figure 2 du sujet officiel ne fournit AUCUNE étiquette « A » ni « B ». La physique et le sens de $I$ fixent sans ambiguïté que l'électrode de gauche (méthanol, oxydation) est la borne − et l'électrode de droite (dioxygène, réduction) la borne +, mais rien dans le sujet ne dit laquelle de ces deux barres s'appelle « A » et laquelle « B ». C'est un défaut du sujet officiel, pas de la transcription : la question demande de « nommer les deux électrodes A et B » alors que sa propre figure ne donne pas la correspondance lettre → position.
+        steps:
+          - math: '\text{O}_2 + 4\,\text{H}^{+} + 4\,e^{-} \longrightarrow 2\,\text{H}_2\text{O}'
+            note: "Reduction du dioxygene a l'electrode de droite (celle ou O2 entre, Eau sort) : atomes puis charge."
+      - id: q4
+        part: "2-4 — Le volume de méthanol consommé"
+        stem: |-
+          **2-4-** (1 pt) La pile alimente le circuit extérieur par un courant d'intensité $I = 45\ \text{mA}$ supposée constante durant $\Delta t = 1\ \text{h}\ 30\ \text{min}$. Trouver la valeur du volume $V$ de méthanol consommé au cours de la durée $\Delta t$ de fonctionnement.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Même chaîne à trois maillons qu'au rung 6 de la leçon : la durée de fonctionnement donne la charge débitée, la charge donne la quantité d'électrons échangés, et la stœchiométrie de la demi-équation d'oxydation (question 2-1) donne la quantité de méthanol consommée. Il reste à convertir en masse puis en volume par la masse volumique.
+
+          **Maillon 1 — la charge débitée.** Avec $\Delta t = 1\,\text{h}\,30\,\text{min} = 5400\ \text{s}$ :
+
+          $$Q = I\,\Delta t = 45\times10^{-3}\times5400 = 243\ \text{C}$$
+
+          **Maillon 2 — la quantité d'électrons.**
+
+          $$n(e^-) = \frac{Q}{\mathcal{F}} = \frac{243}{96500} \approx 2{,}518\times10^{-3}\ \text{mol}$$
+
+          **Maillon 3 — la quantité de méthanol.** La demi-équation de la question 2-1 montre que chaque molécule de méthanol oxydée libère $b = 6$ électrons :
+
+          $$n(\text{CH}_3\text{OH}) = \frac{n(e^-)}{6} = \frac{2{,}518\times10^{-3}}{6} \approx 4{,}197\times10^{-4}\ \text{mol}$$
+
+          **De la matière à la masse, puis au volume.**
+
+          $$m = n\times M = 4{,}197\times10^{-4}\times32 \approx 1{,}343\times10^{-2}\ \text{g}$$
+
+          $$V = \frac{m}{\rho} = \frac{1{,}343\times10^{-2}}{0{,}78}$$
+
+          $$\boxed{V \approx 1{,}72\times10^{-2}\ \text{cm}^3}$$
+
+          **Le contrôle.** Un centième de centimètre cube de méthanol pour 90 minutes à 45 mA : un ordre de grandeur cohérent avec un courant de laboratoire, pas industriel — rien d'alarmant. (Un corrigé de professeur retrouvé pour ce sujet, non officiel, utilise par erreur $\rho = 0{,}79$ au lieu du $0{,}78$ de l'énoncé — l'écart ne se voit qu'au troisième chiffre significatif ; la valeur retenue ici utilise la donnée officielle de l'énoncé.)
+        steps:
+          - math: 'Q = I\,\Delta t = 45\times10^{-3}\times5400 = 243\ \text{C}'
+            note: "Charge debitee, Delta t converti en secondes (1h30 = 5400 s)."
+          - math: 'n(e^-) = \frac{Q}{\mathcal{F}} = \frac{243}{96500} \approx 2{,}518\times10^{-3}\ \text{mol}'
+            note: "Conversion charge -> quantite d'electrons (rung 6)."
+          - math: 'n(\text{CH}_3\text{OH}) = \frac{n(e^-)}{6} \approx 4{,}197\times10^{-4}\ \text{mol}'
+            note: "Stoechiometrie de la demi-equation d'oxydation (question 2-1) : 6 electrons par methanol consomme."
+          - math: 'm = n\times M \approx 1{,}343\times10^{-2}\ \text{g}'
+            note: "Masse de methanol consommee, M = 32 g/mol."
+          - math: '\boxed{V = \frac{m}{\rho} \approx 1{,}72\times10^{-2}\ \text{cm}^3}'
+            note: "Volume via la masse volumique de l'enonce, rho = 0,78 g/cm3."

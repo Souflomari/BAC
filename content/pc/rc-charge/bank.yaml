@@ -1129,3 +1129,247 @@ entries:
             note: "On isole C0, avec I0 = 1 microA donné par l'énoncé."
           - math: '\boxed{C_0 = 1\times10^{-6}\ \text{F} = 1\ \mu\text{F}}'
             note: "Résultat à vérifier — conforme à l'énoncé."
+
+  # ── bk-2010-n-x3 — 2010 N, Électricité (position 3 du cartouche), Première
+  #    partie : charge d'un condensateur par un générateur idéal de tension ──
+  #
+  # NOTE ÉDITORIALE — LE CHOIX DE L'`id`, ET POURQUOI (2026-08-28, ajout).
+  # Le sujet source (docs/sujets/_incoming/pc-2010-n.md, statut « VÉRIFIÉ —
+  # clearé pour conversion », passe adversariale indépendante du 2026-08-28)
+  # NE NUMÉROTE AUCUN EXERCICE : la page 1 annonce « quatre exercices » mais
+  # le corps du sujet introduit chaque bloc par son nom de domaine (Chimie,
+  # Physique nucléaire, Electricité, Mécanique), jamais par « Exercice
+  # 1/2/3/4 ». Les identifiants `x1…x4` de ce corpus encodent la POSITION AU
+  # CARTOUCHE de la page 1 — Chimie (07 pts) = x1, Physique nucléaire
+  # (02 pts) = x2, Electricité (05 pts) = x3, Mécanique (06 pts) = x4.
+  # L'Électricité se répartit elle-même en deux parties, dans l'ordre du
+  # sujet : la Première partie (charge d'un condensateur, ici) porte donc x3
+  # SANS suffixe (premier morceau rencontré) ; la Deuxième partie (poste
+  # radio AM) porte le suffixe b, bk-2010-n-x3b, sous
+  # content/pc/ondes-em-modulation/bank.yaml — même convention que
+  # bk-2022-r-x3/x3b/x3c (dipole-rl/rlc-serie/ondes-em-modulation, un même
+  # exercice réparti en trois). Sans cette note, un mainteneur pourrait lire
+  # `x3` comme une erreur de position sur CE sujet précis — ce n'en est pas
+  # une : c'est le sujet lui-même qui ne numérote rien, pas un défaut de
+  # conversion (docs/grounding/known-issues.md K-7 bis).
+  #
+  # BARÈME — RECOMPTE. Première partie (ici) : (0,25+0,25) + 0,5 + 0,5 + 0,5
+  # + 0,25 + 0,25 + 0,75 = 3,25 pt. Deuxième partie (ondes-em-modulation) :
+  # 0,75 + 1 = 1,75 pt. Total 3,25 + 1,75 = 5,00 pt = « Electricité (05
+  # points) » du cartouche.
+  #
+  # ⚠️ DÉFAUT DU SUJET OFFICIEL, PORTÉ ICI EN TOUTES LETTRES (question 1-7).
+  # La droite $(T)$ de la Figure 2 — que l'énoncé lui-même désigne comme « la
+  # tangente à la courbe à l'origine des temps » — N'EST PAS la tangente
+  # mathématique de la courbe tracée. Mesuré sur le bitmap d'origine : la
+  # droite $(T)$ coupe l'axe des temps à $13{,}11\ \text{ms}$ ; la courbe
+  # pleine, elle, est une exponentielle de constante de temps
+  # $12{,}43\ \text{ms}$ (lue indépendamment par la méthode $i_0/e$) — écart
+  # de $5{,}5\ \%$, largement au-delà du bruit de mesure. Les deux méthodes
+  # graphiques légitimes du rung 3 de la leçon (tangente à l'origine, méthode
+  # des 63 %/$1/e$) ne donnent donc PAS le même $\tau$ ici, et donc pas le
+  # même $C_0$ ($2{,}89\ \mu\text{F}$ contre $2{,}76\ \mu\text{F}$). Ce
+  # n'est pas réparé : le raisonnement de q1-7 utilise la droite $(T)$ — la
+  # méthode que l'énoncé désigne explicitement et que le corrigé retrouvé
+  # pour ce sujet confirme ($\tau = 13\ \text{ms}$, valeur non officielle
+  # mais convergente avec la mesure indépendante de la tangente,
+  # $13{,}1\ \text{ms}$) — et le dit nommément, avec la valeur concurrente
+  # ($12{,}4\ \text{ms}$) donnée en note plutôt que tue.
+  #
+  # AUTRE DÉFAUT DU SUJET, SANS INCIDENCE : la Figure 1 (le montage) porte un
+  # interrupteur $K$ dont le dessin ne tranche pas franchement entre ouvert et
+  # fermé (la lame touche les deux bornes au pixel, sur une figure à trop
+  # basse résolution). Aucune question de cette partie ne dépend de son état
+  # — l'énoncé dit explicitement « on ferme l'interrupteur à l'instant t=0 » —
+  # donc l'ambiguïté du dessin est mentionnée dans la description de la
+  # Figure 1 ci-dessous, sans conséquence sur aucun raisonnement.
+  #
+  # TROISIÈME DÉFAUT, SANS INCIDENCE ICI : le $C_0$ de ce circuit RC (Première
+  # partie) et le $C_0$ de l'étage Y de la Figure 3 (Deuxième partie du MÊME
+  # exercice, ondes-em-modulation.md, bk-2010-n-x3b) sont DEUX composants
+  # différents portant le même nom, à deux pages d'écart dans le sujet
+  # officiel — collision de notation confirmée, non réparée. Aucune question
+  # de cette entrée ne fait travailler les deux ensemble.
+  #
+  # SCOPE NOTE (q1-2) : la question demande de « montrer comment brancher un
+  # oscilloscope à mémoire pour visualiser $u_C$ ». Les rungs R0-R4 de la
+  # leçon ne couvrent jamais explicitement la technique de branchement d'un
+  # appareil de mesure (dérivation, masse commune) — seul le PRINCIPE de la
+  # convention récepteur (rung 1) est enseigné. Le pont est fait au point
+  # d'usage dans le raisonnement de la question, sur le même principe que
+  # dipole-rl bk-2022-r-x3, q1 (branchement d'un système d'acquisition en
+  # dérivation).
+  - id: bk-2010-n-x3
+    title: "Charge d'un condensateur par un générateur idéal de tension : équation en q(t), expression du courant, et lecture de R puis C0 sur une figure dont la tangente tracée n'est pas celle de la courbe"
+    source:
+      year: 2010
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice d'Électricité — Première partie : charge d'un condensateur par un générateur idéal de tension"
+    bareme_total: 3.25
+    duration_min: 20
+    sourcing:
+      status: sourced
+      note: >-
+        2010 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28, AlloSchool element/94443
+        (course-422/upload-70311, pages 4 et 5 sur 6) — Electricité, Première
+        partie : charge d'un condensateur par un générateur idéal de tension,
+        barème 3,25 pt ((0,25+0,25)+0,5+0,5+0,5+0,25+0,25+0,75) sur les
+        5,00 pt de l'exercice complet, dont la Deuxième partie (poste radio
+        AM) est transcrite à part sous
+        content/pc/ondes-em-modulation/bank.yaml, entrée bk-2010-n-x3b — pas
+        de double comptage. CHOIX DE L'`id` : le sujet ne numérote aucun
+        exercice ; les identifiants x1..x4 de ce corpus encodent la POSITION
+        AU CARTOUCHE, et l'Électricité (troisième bloc) se répartit en deux
+        parties dans l'ordre du sujet — celle-ci est la première rencontrée,
+        d'où x3 sans suffixe (voir la note éditoriale en tête de ce fichier).
+        Transcription vérifiée : passe adversariale indépendante du
+        2026-08-28 (docs/sujets/_incoming/pc-2010-n.md, statut « VÉRIFIÉ —
+        clearé pour conversion »), mesures faites sur les bitmaps d'origine
+        des figures (485×256 pour la Figure 1, 492×461 pour la Figure 2 —
+        le double de la résolution servie par AlloSchool), 27 questions du
+        sujet re-dérivées. DÉFAUT DU SUJET OFFICIEL, documenté et non réparé
+        (question 1-7) : la droite (T) de la Figure 2, que l'énoncé désigne
+        lui-même comme « la tangente à la courbe à l'origine des temps »,
+        n'est PAS la tangente mathématique de la courbe tracée — mesuré,
+        (T) coupe l'axe des temps à 13,11 ms tandis que la courbe est une
+        exponentielle de tau = 12,43 ms (methode i0/e), ecart 5,5%. Le
+        raisonnement de q1-7 utilise la droite (T) — methode designee par
+        l'enonce et confirmee par un corrige de professeur retrouve pour ce
+        sujet (tau = 13 ms, non officiel) — et signale nommement la valeur
+        concurrente (12,4 ms, 2,76 microF) plutot que de la taire. Second
+        defaut, sans incidence : l'interrupteur K de la Figure 1 est dessine
+        de facon ambigue (lame touchant les deux bornes au pixel) ; aucune
+        question de cette partie ne depend de son etat.
+    intro: |-
+      **Charge d'un condensateur par un générateur idéal de tension (examen national, session normale 2010 — Electricité, Première partie, 3,25 points sur les 5,00 de l'exercice complet).**
+
+      *La Deuxième partie de cet exercice — la réalisation d'un poste radio AM simple — est traitée à part, sous la notion « Ondes électromagnétiques — modulation d'amplitude » (entrée bk-2010-n-x3b). Rien de ce qui suit n'en dépend.*
+
+      Le montage représenté dans la figure 1 se compose de : un générateur idéal de tension de f.é.m. $E = 9\ \text{V}$ ; un conducteur ohmique de résistance $R$ ; un condensateur de capacité $C_0$ ; un interrupteur $K$.
+
+      On ferme l'interrupteur à l'instant $t = 0$, le circuit est désormais traversé par un courant d'intensité $i$ variable en fonction du temps comme l'indique le graphe de la figure 2. *(La droite $(T)$ représente la tangente à la courbe à l'origine des temps.)*
+
+      **Figure 1 — le montage** *(décrite depuis le bitmap d'origine 485×256, agrandi ×2 et ×6 sur $K$ et sur la flèche $i$).* Une seule maille rectangulaire. Branche du haut, de gauche à droite : l'interrupteur $K$ (deux bornes rondes reliées par une lame fine — au zoom ×6, la lame effleure les deux bornes sans trancher franchement ouvert/fermé, défaut du dessin sans incidence puisque l'énoncé impose « on ferme $K$ à $t=0$ ») ; le condensateur $C_0$ ; un rectangle étiqueté « $R$ ». Branche du bas : un cercle étiqueté « $E$ » (le générateur, sans marque de polarité), traversé par le fil, avec à sa gauche une pointe de flèche dirigée vers la GAUCHE portant la lettre « $i$ ».
+
+      **Figure 2 — le graphe $i = f(t)$** *(décrite et mesurée au pixel depuis le bitmap d'origine 492×461, le double de la résolution servie).* Axe vertical « $i(\text{mA})$ », graduations $0{,}5\,;\,1\,;\,1{,}5\,;\,2$. Axe horizontal « $t(\text{ms})$ », graduations $10\,;\,20\,;\,30$, cadre allant jusqu'à $50\ \text{ms}$. La courbe part de l'axe des ordonnées EXACTEMENT sur la graduation $i=2\ \text{mA}$ et décroît de façon monotone, concave vers le haut, vers l'axe des abscisses sans le toucher. La droite $(T)$, en tirets, part du MÊME point $(t=0\,;\,i=2\ \text{mA})$, descend en ligne droite, traverse l'axe des abscisses aux alentours de $t \approx 13\ \text{ms}$ et se prolonge un peu en dessous ; une étiquette « $(T)$ » dans un cartouche blanc, reliée par une flèche, la désigne.
+    questions:
+      - id: q1
+        part: "1-1 — Représenter les tensions, en convention récepteur"
+        stem: |-
+          **1-1-** Recopier sur votre copie le schéma du montage, et représenter dessus, en convention récepteur :
+
+          - **(0,25 pt)** la tension $u_C$ aux bornes du condensateur ;
+          - **(0,25 pt)** la tension $u_R$ aux bornes du conducteur ohmique.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Ce n'est pas un calcul : c'est la convention qui gouverne TOUT ce qui suit dans l'exercice (l'équation différentielle de la question 1-3 en dépend directement). Le rung 1 de la leçon la pose noir sur blanc : en convention récepteur, la flèche de tension d'un dipôle est orientée dans le MÊME sens que la flèche du courant qui le traverse — le courant « entre » par la borne où la tension est comptée positivement.
+
+          $C_0$ et $R$ sont deux récepteurs traversés par le même courant $i$, en série sur la même maille. La règle s'applique identiquement aux deux : on flèche $u_C$ et $u_R$ chacune dans le même sens que $i$ le long de la boucle — la flèche $i$ de la figure 1 pointant vers la gauche sur la branche du bas, le courant remonte donc à gauche vers $K$, traverse $C_0$ puis $R$ de gauche à droite sur la branche du haut, et $u_C$ comme $u_R$ se flèchent dans ce même sens, chacune au-dessus de son propre dipôle.
+
+          **Le piège nommé de cette question.** Flécher les deux tensions en sens opposés l'une de l'autre, par le réflexe de vouloir « alterner » en faisant le tour de la maille. Il n'y a rien à alterner : $C_0$ et $R$ sont traversés par le MÊME courant $i$, donc les deux flèches suivent la MÊME direction, dictée uniquement par le sens de $i$.
+      - id: q2
+        part: "1-2 — Visualiser $u_C$ à l'oscilloscope"
+        stem: |-
+          **1-2-** (0,5 pt) Montrer sur le montage précédent comment faut-il brancher un oscilloscope à mémoire pour visualiser la tension $u_C$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Un oscilloscope (ou un système d'acquisition) mesure une différence de potentiel entre son entrée (la voie) et sa masse (COM) — une masse UNIQUE, partagée par toutes les voies de l'appareil. Pour visualiser une tension $u_X$ d'un dipôle quelconque, on branche donc l'appareil EN DÉRIVATION (en parallèle) à ses bornes, jamais en série, ce qui couperait le circuit — un geste que la leçon ne détaille pas pas à pas, mais qui découle directement du principe de la convention récepteur posé au rung 1 : une tension se mesure entre deux bornes, pas « dans » un courant.
+
+          Le branchement attendu est donc la figure 1 recopiée à l'identique, complétée par les deux fils de l'oscilloscope branchés en dérivation directement sur les deux bornes du condensateur $C_0$ : la masse (COM) sur la borne où $u_C$ est comptée nulle par la flèche de la question 1-1, la voie de mesure sur l'autre borne.
+
+          **Le piège nommé de cette question.** Brancher l'appareil EN SÉRIE dans la boucle, par le réflexe qu'on aurait pour un ampèremètre. L'impédance d'entrée d'un oscilloscope est très élevée : l'insérer en série ouvrirait quasiment le circuit et empêcherait tout courant de circuler.
+      - id: q3
+        part: "1-3 — L'équation différentielle, en charge q(t)"
+        stem: |-
+          **1-3-** (0,5 pt) Établir l'équation différentielle vérifiée par la charge du condensateur $q(t)$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Le rung 1 établit l'équation en $u_C$ ; ici l'énoncé veut l'inconnue en CHARGE, $q(t)$. Le pont ne coûte qu'une ligne, avec les deux relations que ce même rung rappelle : $i = \dfrac{dq}{dt}$ (le courant est le débit de charge) et $q = C_0\,u_C$, d'où $u_C = \dfrac{q}{C_0}$.
+
+          Avec l'orientation posée à la question 1-1 (convention récepteur), la loi des mailles s'écrit :
+
+          $$E = u_R + u_C$$
+        steps:
+          - math: 'E = u_R + u_C'
+            note: "Loi des mailles, convention recepteur (question 1-1)."
+          - math: 'u_R = R\,i = R\,\frac{dq}{dt} \qquad u_C = \frac{q}{C_0}'
+            note: "Loi d'Ohm pour R, avec i = dq/dt ; definition de la capacite (rung 1)."
+          - math: '\boxed{R\,\frac{dq}{dt} + \frac{q}{C_0} = E}'
+            note: "Equation differentielle verifiee par q(t)."
+      - id: q4
+        part: "1-4 — Identifier A et alpha"
+        stem: |-
+          **1-4-** (0,5 pt) La solution de cette équation différentielle s'écrit sous la forme : $q(t) = A\left(1 - e^{-\alpha t}\right)$. Déterminer les expressions de $A$ et de $\alpha$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Même méthode qu'au rung 2 : on n'intègre rien, on IDENTIFIE. La solution proposée doit vérifier l'équation de la question 1-3 : on calcule sa dérivée, on substitue, et on regroupe pour retrouver la forme de l'équation, terme à terme.
+
+          $$\frac{dq}{dt} = A\,\alpha\,e^{-\alpha t}$$
+
+          On substitue dans $R\dfrac{dq}{dt} + \dfrac{q}{C_0} = E$ :
+
+          $$R\,A\,\alpha\,e^{-\alpha t} + \frac{A}{C_0}\left(1-e^{-\alpha t}\right) = E$$
+
+          Pour que cette égalité tienne À CHAQUE INSTANT, le terme constant et le terme en $e^{-\alpha t}$ doivent s'identifier séparément : le terme constant donne $A$, le terme exponentiel (qui doit s'annuler tout seul) donne $\alpha$.
+        steps:
+          - math: '\text{terme constant : } \frac{A}{C_0} = E \implies \boxed{A = E\,C_0}'
+            note: "Le terme sans exponentielle doit egaler E a lui seul."
+          - math: '\text{terme en } e^{-\alpha t} : R\,A\,\alpha - \frac{A}{C_0} = 0 \implies \alpha = \frac{1}{RC_0}'
+            note: "Le terme exponentiel doit s'annuler identiquement : ceci fixe alpha."
+          - math: '\boxed{\alpha = \frac{1}{R\,C_0}}'
+            note: "Constante de temps inverse, homogene a l'inverse d'un temps (question 1-6)."
+      - id: q5
+        part: "1-5 — L'expression du courant"
+        stem: |-
+          **1-5-** (0,25 pt) Montrer que l'expression de l'intensité du courant circulant dans le circuit s'écrit sous la forme : $i(t) = \dfrac{E}{R}\,e^{-\frac{t}{\tau}}$, où $\tau$ est une constante qu'il faut exprimer en fonction de $R$ et $C_0$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Le courant se déduit de $q(t)$ sans nouvelle hypothèse, par $i = \dfrac{dq}{dt}$ (rung 1) — exactement le calcul du rung 2, mené ici à partir de la forme en charge plutôt qu'en tension.
+
+          $$i(t) = \frac{dq}{dt} = A\,\alpha\,e^{-\alpha t} = E\,C_0\times\frac{1}{RC_0}\,e^{-t/(RC_0)}$$
+
+          Le $C_0$ se simplifie, et il reste $i(t) = \dfrac{E}{R}\,e^{-t/(RC_0)}$ — la forme demandée, avec $\tau = RC_0$.
+        steps:
+          - math: 'i(t) = \frac{dq}{dt} = A\,\alpha\,e^{-\alpha t}'
+            note: "Derivee de la forme identifiee a la question 1-4."
+          - math: 'i(t) = (E\,C_0)\times\frac{1}{R\,C_0}\,e^{-t/(RC_0)}'
+            note: "On substitue A = E.C0 et alpha = 1/(R.C0)."
+          - math: '\boxed{i(t) = \frac{E}{R}\,e^{-t/\tau} \qquad \tau = R\,C_0}'
+            note: "Le C0 se simplifie ; tau = R.C0 est la constante de temps."
+      - id: q6
+        part: "1-6 — Analyse dimensionnelle"
+        stem: |-
+          **1-6-** (0,25 pt) Montrer, par analyse dimentionnelle *(« dimentionnelle » tel qu'imprimé — défaut du sujet officiel)*, que $\tau$ est homogène à un temps.
+        reasoning: |-
+          Exactement la vérification d'unité du rung 1 : $R$ se mesure en ohms ($\Omega = V/A$), $C_0$ en farads ($F = A{\cdot}s/V$). Leur produit, unité par unité :
+
+          $$\Omega \times F = \frac{V}{A}\times\frac{A{\cdot}s}{V} = s$$
+        steps:
+          - math: '[\tau] = [R]\times[C_0] = \frac{V}{A}\times\frac{A\cdot s}{V} = s'
+            note: "Produit des unites de R (ohm = V/A) et de C0 (farad = A.s/V) : les volts et les amperes se simplifient, il reste des secondes."
+          - math: '\boxed{\tau = R\,C_0 \text{ est homogene a un temps}}'
+            note: "Confirmation : tau se mesure bien en secondes (rung 1)."
+      - id: q7
+        part: "1-7 — Lire R et C0, sur une figure dont la tangente n'est pas celle de la courbe"
+        stem: |-
+          **1-7-** (0,75 pt) En utilisant le graphe $i = f(t)$, déterminer la résistance $R$ et la capacite $C_0$ *(« capacite » tel qu'imprimé — défaut du sujet officiel)*.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. À $t=0$, l'exponentielle vaut $1$ : $i(0^+) = E/R$, exactement le courant maximal du mécanisme de R1 (toute la tension $E$ tombe d'abord sur $R$, le condensateur encore déchargé). $i(0^+)$ se lit directement sur le départ de la courbe. Puis, pour $C_0 = \tau/R$, il faut $\tau$ — et c'est là que la figure de ce sujet demande une vigilance particulière.
+
+          **La résistance, d'abord — lecture directe.**
+
+          $$i(0^+) = \frac{E}{R} \implies R = \frac{E}{i(0^+)} = \frac{9}{2\times10^{-3}}$$
+
+          **La constante de temps — deux méthodes légitimes du rung 3, qui NE S'ACCORDENT PAS ici.** La méthode de la tangente à l'origine (rung 3) dit que la droite $(T)$, tangente à la courbe en $t=0$, coupe l'axe $i=0$ exactement en $t=\tau$ — c'est d'ailleurs la méthode que l'énoncé désigne lui-même en toutes lettres (« $(T)$ représente la tangente à la courbe à l'origine des temps »). Mesurée sur le bitmap d'origine, cette droite coupe l'axe à $t \approx 13\ \text{ms}$. La seconde méthode du rung 3, celle du point $i_0/e$, donnerait sur ce même graphe environ $12{,}4\ \text{ms}$ — un écart de $5{,}5\ \%$ entre les deux lectures, largement au-delà d'une incertitude de pointage. **C'est un défaut du sujet officiel** : la droite $(T)$ dessinée n'est mathématiquement pas la tangente de la courbe tracée juste à côté d'elle. On ne le répare pas ; on suit la méthode que l'énoncé impose explicitement, celle de $(T)$, ce qui donne $\tau = 13\ \text{ms}$ — valeur confirmée, de façon indépendante, par un corrigé de professeur retrouvé pour ce sujet (non officiel, mais convergent).
+
+          $$\tau = 13\ \text{ms} = 13\times10^{-3}\ \text{s}$$
+
+          **On isole $C_0$.**
+
+          $$C_0 = \frac{\tau}{R}$$
+        steps:
+          - math: '\boxed{R = \frac{9}{2\times10^{-3}} = 4500\ \Omega = 4{,}5\ \text{k}\Omega}'
+            note: "Lecture directe : i(0+) = E/R, avec i(0+) = 2 mA lu sur le depart de la courbe (question 1-5)."
+          - math: '\tau = 13\ \text{ms} = 13\times10^{-3}\ \text{s}'
+            note: "Lecture graphique de tau par la methode de la tangente (T) a l'origine (rung 3), celle que l'enonce designe explicitement. La methode concurrente i0/e donnerait 12,4 ms sur cette meme figure -- defaut du sujet officiel (la tangente dessinee n'est pas celle de la courbe), non retenu ici."
+          - math: 'C_0 = \frac{\tau}{R} = \frac{13\times10^{-3}}{4500}'
+            note: "On inverse tau = R.C0 (question 1-5), avec R trouve ci-dessus."
+          - math: '\boxed{C_0 \approx 2{,}89\times10^{-6}\ \text{F} = 2{,}89\ \mu\text{F}}'
+            note: "Resultat demande. (Avec la methode i0/e concurrente : tau = 12,4 ms donnerait C0 = 2,76 microF - ecart du a l'inconsistance de la figure, pas a une erreur de calcul.)"

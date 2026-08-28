@@ -947,3 +947,138 @@ entries:
             note: "Taux de modulation."
           - math: '\boxed{m<1 \text{ et } F/f \approx 12 \gg 1 \implies \text{bonne modulation}}'
             note: "Les deux conditions du rung 3 sont verifiees."
+
+  # ── bk-2010-n-x3b — 2010 N, Électricité (position 3 du cartouche), Deuxième
+  #    partie : réalisation d'une radio AM simple ──
+  #
+  # NOTE ÉDITORIALE — LE CHOIX DE L'`id`, ET POURQUOI (2026-08-28, ajout).
+  # Le sujet source (docs/sujets/_incoming/pc-2010-n.md, statut « VÉRIFIÉ —
+  # clearé pour conversion », passe adversariale indépendante du 2026-08-28)
+  # NE NUMÉROTE AUCUN EXERCICE : la page 1 annonce « quatre exercices » mais
+  # le corps du sujet introduit chaque bloc par son nom de domaine (Chimie,
+  # Physique nucléaire, Electricité, Mécanique), jamais par « Exercice
+  # 1/2/3/4 ». Les identifiants `x1…x4` de ce corpus encodent la POSITION AU
+  # CARTOUCHE — Chimie = x1, Physique nucléaire = x2, Electricité = x3,
+  # Mécanique = x4. L'Électricité se répartit en deux parties dans l'ordre du
+  # sujet : la Première partie (charge d'un condensateur) porte x3 sans
+  # suffixe, déjà en banque sous content/pc/rc-charge/bank.yaml. Cette
+  # entrée-ci transcrit la Deuxième partie (le poste radio AM) — elle porte
+  # donc le suffixe b, bk-2010-n-x3b, sur le modèle déjà établi ailleurs dans
+  # ce corpus pour un exercice réparti entre plusieurs notions
+  # (bk-2022-r-x3/x3b/x3c : dipole-rl/rlc-serie/ondes-em-modulation). Sans
+  # cette note, un mainteneur pourrait lire `x3b` comme une erreur de position
+  # sur CE sujet précis — ce n'en est pas une : c'est le sujet lui-même qui ne
+  # numérote rien, pas un défaut de conversion (docs/grounding/known-issues.md
+  # K-7 bis).
+  #
+  # BARÈME — RECOMPTE. Deuxième partie (ici) : 0,75 + 1 = 1,75 pt. Première
+  # partie (rc-charge, bk-2010-n-x3) : 3,25 pt. Total 5,00 pt = « Electricité
+  # (05 points) » du cartouche.
+  #
+  # DÉFAUT DU SUJET OFFICIEL, SANS INCIDENCE SUR CETTE ENTRÉE : collision de
+  # notation. Le condensateur $C_0$ du circuit RC de la Première partie
+  # (rc-charge, bk-2010-n-x3) et le condensateur $C_0$ de l'étage Y de la
+  # Figure 3 (ici) sont DEUX composants différents portant le MÊME nom, à deux
+  # pages d'écart dans le sujet officiel. Aucune question ne fait travailler
+  # les deux ensemble — signalé ici pour qu'un futur redessin ne « corrige »
+  # pas silencieusement cette collision en la faisant disparaître.
+  #
+  # SCOPE NOTE (q2-1, rôle de l'étage Z) : le rung 4 de la leçon mentionne le
+  # retrait de la composante continue $U_0$ comme « un simple filtrage qu'on
+  # ne détaille pas ici », sans jamais nommer ni dessiner le montage qui le
+  # réalise. La topologie de l'étage Z ($C_3$ en série, $R_3$ en parallèle —
+  # un filtre passe-haut qui bloque le continu et laisse passer l'alternatif)
+  # est donc pontée au point d'usage dans le raisonnement de la question,
+  # relue sur le dessin de la Figure 3, pas déduite de la physique attendue.
+  - id: bk-2010-n-x3b
+    title: "Réalisation d'une radio AM simple : le rôle des étages Y et Z, puis la sélection de l'émission par le circuit accordé X"
+    source:
+      year: 2010
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice d'Électricité — Deuxième partie : réalisation d'une radio AM simple"
+    bareme_total: 1.75
+    duration_min: 11
+    sourcing:
+      status: sourced
+      note: >-
+        2010 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28, AlloSchool element/94443
+        (course-422/upload-70311, page 5 sur 6) — Electricité, Deuxième
+        partie : réalisation d'une radio AM simple, barème 1,75 pt (0,75+1)
+        sur les 5,00 pt de l'exercice complet, dont la Première partie
+        (charge d'un condensateur) est transcrite à part sous
+        content/pc/rc-charge/bank.yaml, entrée bk-2010-n-x3 — pas de double
+        comptage. CHOIX DE L'`id` : le sujet ne numérote aucun exercice ; les
+        identifiants x1..x4 de ce corpus encodent la POSITION AU CARTOUCHE,
+        et l'Électricité se répartit en deux parties dans l'ordre du sujet —
+        celle-ci est la seconde rencontrée, d'où le suffixe b, bk-2010-n-x3b
+        (voir la note éditoriale en tête de ce fichier). Transcription
+        vérifiée : passe adversariale indépendante du 2026-08-28
+        (docs/sujets/_incoming/pc-2010-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion »), topologie de la Figure 3 relue branche par branche sur
+        le bitmap d'origine 996×380 (pas déduite de la physique attendue),
+        27 questions du sujet re-dérivées. DÉFAUT DU SUJET OFFICIEL, sans
+        incidence ici : « 1 microF = 10^-12 F » imprimé p.5 (c'est le picofarad
+        qui vaut 10^-12 F), sans conséquence car les capacités C1, C2 sont
+        données directement en pF ; et une collision de notation, $C_0$
+        désignant a la fois le condensateur du circuit RC de la Premiere
+        partie ET celui de l'etage Y ici, deux composants differents (voir la
+        note editoriale en tete de ce fichier). Recalcul independant :
+        f1 = 1/(2.pi.racine(L.C1)) = 604,0 kHz ; f2 = 1/(2.pi.racine(L.C2)) =
+        302,0 kHz ; 540 kHz appartient bien a [302 ; 604] kHz.
+    intro: |-
+      **Réalisation d'une radio AM simple (examen national, session normale 2010 — Electricité, Deuxième partie, 1,75 point sur les 5,00 de l'exercice complet).**
+
+      *La Première partie de cet exercice — la charge d'un condensateur par un générateur idéal de tension — est traitée à part, sous la notion « Dipôle RC — réponse à un échelon de tension » (entrée bk-2010-n-x3). Rien de ce qui suit n'en dépend.*
+
+      Au cours d'une séance de travaux pratiques, le montage de la figure 3 a été réalisé pour recevoir une émission radio de fréquence $f = 540\ \text{kHz}$, en utilisant trois étages : X, Y et Z.
+
+      L'étage X est constitué d'une bobine $(b)$ d'inductance $L = 5{,}3\ \text{mH}$ et de résistance négligeable, et d'un condensateur de capacité $C$ ajustable entre deux valeurs : $C_1 = 13{,}1\ \text{pF}$ et $C_2 = 52{,}4\ \text{pF}$. *(L'énoncé rappelle « $1\ \mu\text{F} = 10^{-12}\ \text{F}$ » — défaut du sujet officiel, c'est le picofarad qui vaut $10^{-12}$ F ; sans conséquence, les capacités sont données directement en pF.)*
+
+      **Figure 3 — le poste radio AM** *(décrite depuis le bitmap d'origine 996×380, agrandi ×2, branche par branche — pas depuis la physique attendue).* Schéma-bloc horizontal, lu de gauche à droite, sur deux rails (haut et bas). Trois rectangles en tirets délimitent les trois étages, nommés en dessous : « Etage X », « Etage Y », « Etage Z ».
+
+      - **Antenne**, hors des boîtes, à gauche : un mât surmonté d'un Y, rejoignant le rail haut à l'entrée de X.
+      - **Étage X** : un circuit bouchon en parallèle entre les deux rails — une bobine (spires, étiquette « L ») en branche gauche, un condensateur variable (étiquette « C », flèche oblique) en branche droite ; le rail bas est relié à la masse sous le condensateur.
+      - **Amplification** : un rectangle plein, texte vertical, entre X et Y.
+      - **Étage Y**, de gauche à droite sur le rail haut : une diode « D » **en série** ; un condensateur « $C_0$ » **en parallèle** (rail haut à rail bas) ; un conducteur ohmique « $R_0$ » **en parallèle**. *(Ce $C_0$ est un composant DIFFÉRENT du $C_0$ du circuit RC de la Première partie — collision de notation du sujet officiel, non réparée.)*
+      - **Étage Z**, de gauche à droite sur le rail haut : un condensateur « $C_3$ » **en série** ; un conducteur ohmique « $R_3$ » **en parallèle**.
+      - **Sortie** : les deux rails entrent dans un rectangle « Vers amplificateur puis haut-parleur ».
+    questions:
+      - id: q1
+        part: "2-1 — Le rôle des étages Y et Z"
+        stem: |-
+          **2-1-** (0,75 pt) Quel est le rôle de chacun des étages Y et Z dans la réception de l'émission ?
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Le signal, à la sortie de l'étage X, est une porteuse à haute fréquence dont l'amplitude porte l'information — exactement l'objet du rung 4 de la leçon. Il faut d'abord en extraire l'enveloppe (étage Y), puis nettoyer ce qui reste pour ne garder que le signal utile (étage Z). La topologie de la Figure 3, relue branche par branche, confirme le rôle de chacun.
+
+          **L'étage Y.** Une diode en série sur le rail haut, un condensateur $C_0$ et un conducteur ohmique $R_0$ tous deux en parallèle : c'est exactement le **détecteur de crête** du rung 4. La diode ne laisse passer que les sommets positifs de l'oscillation rapide ; le condensateur se charge à chaque sommet et se décharge lentement à travers $R_0$ entre deux sommets, ce qui reconstitue l'enveloppe $U_0 + s_m(t)$. Le rôle de Y : **démoduler**, c'est-à-dire retracer l'enveloppe du signal reçu.
+
+          **L'étage Z.** Un condensateur $C_3$ en série, un conducteur ohmique $R_3$ en parallèle : c'est un filtre passe-haut, qui bloque une composante continue et laisse passer une composante variable — exactement ce que le rung 4 mentionne, sans le détailler, comme l'étape qui suit la détection de crête (« il ne reste plus qu'à retirer la composante continue $U_0$ »). Le rôle de Z : **éliminer la composante continue** $U_0$ que la détection de crête laisse en plus du signal utile $s_m(t)$, pour ne transmettre que ce dernier vers l'amplificateur.
+
+          **Le contrôle qui rassure.** Les deux étages s'enchaînent dans l'ordre logique de la réception : X sélectionne la station (question suivante), Y en extrait l'enveloppe brute $U_0+s_m(t)$, Z retire $U_0$ pour ne garder que $s_m(t)$, prêt pour l'amplificateur et le haut-parleur.
+      - id: q2
+        part: "2-2 — La sélection par l'étage X"
+        stem: |-
+          **2-2-** (1 pt) S'assurer que l'étage X permet la sélection de l'émission désirée.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Le rung 5 de la leçon établit que le circuit bouchon (bobine + condensateur, exactement l'étage X) sélectionne une station en accordant sa fréquence propre $f_0 = \dfrac{1}{2\pi\sqrt{LC}}$ sur la fréquence porteuse voulue. Ici $C$ n'est pas réglable en continu mais ajustable entre DEUX valeurs, $C_1$ et $C_2$ : l'étage X permet donc de sélectionner toute émission dont la fréquence tombe dans la PLAGE balayée entre les deux fréquences propres extrêmes, $f_0(C_1)$ et $f_0(C_2)$. On calcule les deux bornes et on vérifie que $f=540\ \text{kHz}$ s'y trouve.
+
+          **Borne avec $C_1$** (la plus petite capacité, donc la fréquence la plus haute) :
+
+          $$f_1 = \frac{1}{2\pi\sqrt{L\,C_1}}$$
+
+          **Borne avec $C_2$** (la plus grande capacité, donc la fréquence la plus basse) :
+
+          $$f_2 = \frac{1}{2\pi\sqrt{L\,C_2}}$$
+        steps:
+          - math: 'f_1 = \frac{1}{2\pi\sqrt{5{,}3\times10^{-3}\times13{,}1\times10^{-12}}}'
+            note: "Frequence propre avec la plus petite capacite C1 (rung 5)."
+          - math: '\boxed{f_1 \approx 604{,}0\times10^{3}\ \text{Hz} = 604{,}0\ \text{kHz}}'
+            note: "Borne haute de la plage de selection."
+          - math: 'f_2 = \frac{1}{2\pi\sqrt{5{,}3\times10^{-3}\times52{,}4\times10^{-12}}}'
+            note: "Frequence propre avec la plus grande capacite C2 (rung 5)."
+          - math: '\boxed{f_2 \approx 302{,}0\times10^{3}\ \text{Hz} = 302{,}0\ \text{kHz}}'
+            note: "Borne basse de la plage de selection."
+          - math: '\boxed{540\ \text{kHz} \in [302{,}0\,;\,604{,}0]\ \text{kHz} \implies \text{l etage X permet bien la selection de l emission a 540 kHz}}'
+            note: "540 kHz tombe strictement entre les deux bornes : la station voulue est atteignable en reglant C entre C1 et C2."

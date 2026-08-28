@@ -1756,3 +1756,201 @@ entries:
             note: "Prefacteur de la formule."
           - math: '\boxed{t \approx 6{,}4924\times10^{9} \times 1{,}1546\times10^{-3} \approx 7{,}50\times10^{6}\ \text{ans}}'
             note: "Age d'environ 7,5 millions d'annees : petit devant la demi-vie 4,5e9 ans, coherent avec le controle de vraisemblance."
+
+  # ── bk-2010-n-x2 — 2010 N, Physique nucléaire (position 2 du cartouche) :
+  #    le Radon 222 ──
+  #
+  # NOTE ÉDITORIALE — LE CHOIX DE L'`id`, ET POURQUOI (2026-08-28, ajout).
+  # Le sujet source (docs/sujets/_incoming/pc-2010-n.md, statut « VÉRIFIÉ —
+  # clearé pour conversion », passe adversariale indépendante du 2026-08-28)
+  # NE NUMÉROTE AUCUN EXERCICE : la page 1 annonce « quatre exercices » mais
+  # le corps du sujet introduit chaque bloc par son nom de domaine (Chimie,
+  # Physique nucléaire, Electricité, Mécanique), jamais par « Exercice
+  # 1/2/3/4 ». Les identifiants `x1…x4` de ce corpus encodent donc la
+  # POSITION AU CARTOUCHE de la page 1 — Chimie (07 pts) = x1, Physique
+  # nucléaire (02 pts) = x2, Electricité (05 pts) = x3, Mécanique (06 pts)
+  # = x4. `x1` est déjà pris par la Chimie (deux entrées : bk-2010-n-x1 dans
+  # transformations-lentes-rapides, bk-2010-n-x1b dans piles). Le bloc
+  # « Physique nucléaire » est le DEUXIÈME du cartouche : il porte donc x2,
+  # SANS suffixe — contrairement à la Chimie et à l'Électricité/la Mécanique
+  # de ce même sujet, ce bloc ne se répartit PAS entre plusieurs notions : les
+  # cinq questions (composition du noyau, énergie de liaison, désintégrations
+  # α/β⁻, masse puis durée par l'activité) vivent toutes ici, en UNE seule
+  # entrée — voir la note « CROSS-LIST, PAS DE SCISSION » ci-dessous pour
+  # pourquoi. Même précédent que bk-2012-n-x5 (chute-mouvements-plans, voir sa
+  # note éditoriale) pour un bloc de cartouche qui ne se scinde pas. Sans
+  # cette note, un mainteneur pourrait lire `x2` comme une erreur de position
+  # sur CE sujet précis — ce n'en est pas une : c'est le sujet lui-même qui ne
+  # numérote rien, pas un défaut de conversion (docs/grounding/known-issues.md
+  # K-7 bis).
+  #
+  # CROSS-LIST, PAS DE SCISSION. Les questions 1-1 (composition du noyau) et
+  # 1-3 (lois de Soddy) sont strictement dans cette notion (rungs R1, R2). La
+  # question 1-2 (énergie de liaison par défaut de masse) relève
+  # THÉMATIQUEMENT de noyaux-masse-energie (Δm, E_l = Δm.c²) — même
+  # disposition que bk-2019-n-x2, bk-2022-n-x2, bk-2024-r-x3 et bk-2025-n-x2
+  # ci-dessus dans ce même fichier : reprise EN ENTIER ici, pas découpée en
+  # une seconde entrée, parce que la banque est le corpus complet des annales
+  # de cette page source (BANK-SPEC §1) et qu'une cross-list ne devient jamais
+  # une seconde entrée pour 0,5 pt sur 2,00 — un « orphelin illisible » que le
+  # README interdit. Le raisonnement de q1-2 le signale explicitement plutôt
+  # que de le fondre en silence dans les rungs de cette leçon.
+  #
+  # BARÈME — RECOMPTE. 0,25 (1-1) + 0,5 (1-2) + 0,25 (1-3) + 0,5 (2-1) +
+  # 0,5 (2-2) = 2,00 pt, conforme au « Physique nucléaire (02 points) » du
+  # cartouche et au titre de section imprimé p. 3 du scan.
+  #
+  # POINT DE LITIGE, À NE PAS CONFONDRE. La Chimie 1ʳᵉ partie (déjà en banque,
+  # bk-2010-n-x1) porte un t_1/2 lu graphiquement (≈13 min selon la
+  # vérification, ≈20 min selon la banque publiée, litige non tranché — voir
+  # content/pc/transformations-lentes-rapides/bank.yaml). CETTE entrée-ci ne
+  # touche PAS cette valeur : la demi-vie qu'elle utilise, t_1/2 = 3,9 jours
+  # du Radon 222, est une DONNÉE de l'énoncé (imprimée « Demie vie... »,
+  # défaut de frappe du sujet officiel, sans incidence sur la valeur), jamais
+  # une lecture graphique. Aucun renvoi au litige n'est nécessaire ici.
+  - id: bk-2010-n-x2
+    title: "Le Radon 222 : composition du noyau, énergie de liaison, désintégrations α/β⁻ de l'Uranium 238, puis masse et durée par l'activité"
+    source:
+      year: 2010
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice de Physique nucléaire : étude du Radon 222"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2010 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28, AlloSchool element/94443
+        (course-422/upload-70311, pages 3 et 4 sur 6) — Physique nucléaire
+        (02 points) : étude du Radon 222, barème 2,00 pt
+        (0,25+0,5+0,25+0,5+0,5) — recompte géométrique conforme au cartouche.
+        CHOIX DE L'`id` : le sujet ne numérote aucun exercice (ses titres de
+        section sont Chimie/Physique nucléaire/Electricité/Mécanique, jamais
+        « Exercice 1/2/3/4 ») ; les identifiants x1..x4 de ce corpus encodent
+        la POSITION AU CARTOUCHE — Physique nucléaire est le DEUXIÈME bloc,
+        d'où x2, sans suffixe puisque ce bloc-ci ne se répartit pas entre
+        plusieurs notions (voir la note éditoriale en tête de ce fichier).
+        Transcription vérifiée : passe adversariale indépendante du
+        2026-08-28 (docs/sujets/_incoming/pc-2010-n.md, statut « VÉRIFIÉ —
+        clearé pour conversion »), re-fetch du scan, 27 questions du sujet
+        re-dérivées, dont les cinq de ce bloc recontrôlées indépendamment :
+        composition 86 protons/136 neutrons ; énergie de liaison
+        (86×1,0073+136×1,0087−221,9703)×931,5 ≈ 1714,6 MeV ; Soddy
+        238=222+4x donc x=4 (α), 92=86+2x−y donc y=2 (β⁻) ; masse
+        m0 = a0.M.t_1/2/(NA.ln2) ≈ 8,96×10⁻¹³ g ; durée
+        t = ln(5000/300)/ln2 × 3,9 ≈ 15,83 jours. La question 1-2 (énergie de
+        liaison) relève thématiquement de noyaux-masse-energie — reprise ici
+        EN ENTIER, pas scindée (voir « CROSS-LIST, PAS DE SCISSION » en tête
+        de fichier). « Demie vie » et « 1u = 931,5 Mev/c² » sont des coquilles
+        du sujet officiel (accord, casse), reproduites telles quelles, sans
+        incidence sur les valeurs numériques. AUCUN LIEN avec le litige sur le
+        t_1/2 de la Figure 1 de la Chimie (partie déjà en banque,
+        bk-2010-n-x1) : la demi-vie utilisée ici (3,9 jours) est une DONNÉE
+        imprimée de l'énoncé, jamais une lecture graphique.
+    intro: |-
+      **Le Radon 222 (examen national, session normale 2010 — Physique nucléaire, 2,00 points).**
+
+      Le Radon $^{222}_{86}\text{Rn}$ est un gaz inerte, radioactif naturel. Il résulte de la désintégration spontanée de l'Uranium $^{238}_{92}\text{U}$ présent dans les roches et la terre.
+
+      L'inhalation du Radon 222 est, dans plusieurs pays, la cause essentielle du cancer de poumons, après le tabagisme. Pour lutter contre les risques provoqués par l'exposition des individus au Radon 222, l'OMS recommande l'adoption de $100\ \text{Bq/m}^3$ comme niveau de référence et de ne pas dépasser $300\ \text{Bq/m}^3$ comme valeur limite maximale. *(D'après le site électronique de l'OMS.)*
+
+      **Données :** masse du noyau du Radon 222 $= 221{,}9703\ u$ ; masse du neutron $= 1{,}0087\ u$, masse du proton $= 1{,}0073\ u$ ; $1u = 931{,}5\ \text{Mev/c}^2$ *(« Mev » tel qu'imprimé — défaut du sujet officiel, sans incidence)*, $1\ \text{jour} = 86400\ \text{s}$ ; Demie vie du nucléide $^{222}_{86}\text{Rn}$ *(« Demie vie » tel qu'imprimé — défaut du sujet officiel, sans incidence)* : $t_{1/2} = 3{,}9\ \text{jours}$ ; constante d'Avogadro $\mathcal{N}_A = 6{,}02\times10^{23}\ \text{mol}^{-1}$ ; masse molaire du Radon $M(\text{Rn}) = 222\ \text{g.mol}^{-1}$.
+
+      **1- Désintégration du nucléide d'Uranium $^{238}_{92}\text{U}$.** De la désintégration de l'Uranium 238, résulte le Radon $^{222}_{86}\text{Rn}$ et des particules $\alpha$ et $\beta^-$.
+
+      **2- S'assurer de la pureté de l'air dans une habitation.** À l'instant $t_0$, considéré comme origine des dates, la mesure de l'activité du Radon 222 dans chaque mètre cube d'air se trouvant dans une habitation a donné la valeur $a_0 = 5\times10^{3}\ \text{Bq}$.
+    questions:
+      - id: q1
+        part: "1-1 — La composition du noyau"
+        stem: |-
+          **1-1-** (0,25 pt) Donner la composition du noyau $^{222}_{86}\text{Rn}$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. C'est une lecture directe de la notation $^{A}_{Z}\text{X}$ posée au rung 1 de la leçon : $Z$ (en indice bas) donne directement le nombre de protons, et $N = A - Z$ donne le nombre de neutrons. Rien à calculer avant d'avoir identifié $A$ et $Z$ sur le symbole lui-même.
+        steps:
+          - math: 'Z = 86 \implies 86\ \text{protons}'
+            note: "Numero atomique lu directement sur le symbole (rung 1)."
+          - math: 'N = A - Z = 222 - 86 = 136 \implies 136\ \text{neutrons}'
+            note: "Nombre de nucleons total moins le nombre de protons."
+      - id: q2
+        part: "1-2 — L'énergie de liaison (hors des rungs de cette leçon)"
+        stem: |-
+          **1-2-** (0,5 pt) Calculer en (MeV) l'énergie de liaison du noyau $^{222}_{86}\text{Rn}$.
+        reasoning: |-
+          Cette question sort des rungs R1-R5 de cette leçon : elle relève de la notion « Noyaux, masse et énergie », qui établit le défaut de masse $\Delta m = Z\,m_p + N\,m_n - m_{\text{noyau}}$ et l'énergie de liaison $E_\ell = \Delta m\,c^2$. On la refait ici en entier, sans l'admettre.
+
+          **Le défaut de masse**, avec $Z = 86$ protons et $N = 136$ neutrons (question précédente) :
+
+          $$\Delta m = 86\times1{,}0073 + 136\times1{,}0087 - 221{,}9703$$
+
+          **La conversion en énergie**, par le facteur donné dans les données ($1u = 931{,}5\ \text{MeV/c}^2$) :
+
+          $$E_\ell = \Delta m \times 931{,}5$$
+        steps:
+          - math: '86\times1{,}0073 = 86{,}6278 \qquad 136\times1{,}0087 = 137{,}1832'
+            note: "Masse totale des 86 protons et des 136 neutrons separes."
+          - math: '\Delta m = (86{,}6278 + 137{,}1832) - 221{,}9703 = 223{,}8110 - 221{,}9703 = 1{,}8407\ u'
+            note: "Defaut de masse : masse des nucleons separes moins masse du noyau assemble (toujours positif pour un noyau lie)."
+          - math: '\boxed{E_\ell = 1{,}8407 \times 931{,}5 \approx 1714{,}6\ \text{MeV}}'
+            note: "Energie de liaison, par la conversion 1u = 931,5 MeV/c2 donnee dans l'enonce."
+      - id: q3
+        part: "1-3 — Les lois de Soddy"
+        stem: |-
+          **1-3-** (0,25 pt) Déterminer le nombre de désintégration *(coquille du sujet officiel — singulier tel qu'imprimé)* de type $\alpha$ et de type $\beta^-$ produites par cette transformation nucléaire.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Exactement le rung 2 de la leçon : on ne connaît que le noyau père ($^{238}_{92}\text{U}$), le noyau fils final ($^{222}_{86}\text{Rn}$), et les DEUX types de particules émises au passage — mais pas leur ordre ni leur nombre individuel. Les deux lois de conservation de Soddy (nombre de nucléons, charge) suffisent à retrouver le nombre total de chaque particule, sans avoir besoin de reconstruire la chaîne étape par étape.
+
+          On pose $x$ désintégrations $\alpha$ ($^{4}_{2}\text{He}$) et $y$ désintégrations $\beta^-$ ($^{0}_{-1}e$) :
+
+          $$^{238}_{92}\text{U} \longrightarrow\ ^{222}_{86}\text{Rn} + x\ ^{4}_{2}\text{He} + y\ ^{0}_{-1}e$$
+
+          Conservation du nombre de nucléons ($A$) : $238 = 222 + 4x$, donc $x = 4$.
+
+          Conservation de la charge ($Z$) : $92 = 86 + 2x - y$ ; avec $x=4$, $92 = 86 + 8 - y = 94 - y$, donc $y = 2$.
+        steps:
+          - math: '238 = 222 + 4x \implies x = 4'
+            note: "Conservation du nombre de nucleons A : 4 emissions alpha."
+          - math: '92 = 86 + 2(4) - y \implies y = 2'
+            note: "Conservation de la charge Z, avec x=4 substitue : 2 emissions beta-."
+      - id: q4
+        part: "2-1 — La masse de Radon dans l'air, à partir de l'activité"
+        stem: |-
+          **2-1-** (0,5 pt) Déterminer, à la date $t_0$, la masse du Radon contenu dans chaque mètre cube d'air de cette habitation.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Le rung 4 relie l'activité au nombre de noyaux présents, $a_0 = \lambda\,N_0$, avec $\lambda = \dfrac{\ln 2}{t_{1/2}}$ (même rung). Une fois $N_0$ obtenu, il reste un pont de chimie générale, hors mécanique nucléaire : $N_0$ noyaux correspondent à $n_0 = N_0/\mathcal{N}_A$ moles, donc à une masse $m_0 = n_0\,M(\text{Rn})$.
+
+          **Le nombre de noyaux.** On isole $N_0$ dans $a_0 = \lambda N_0$, avec $\lambda = \ln 2/t_{1/2}$ :
+
+          $$N_0 = \frac{a_0}{\lambda} = \frac{a_0\,t_{1/2}}{\ln 2}$$
+
+          Avec $t_{1/2} = 3{,}9\ \text{jours} = 3{,}9\times86400 = 336960\ \text{s}$ :
+
+          $$N_0 = \frac{5\times10^{3}\times336960}{0{,}6931} \approx 2{,}431\times10^{9}\ \text{noyaux}$$
+
+          **La masse.**
+
+          $$m_0 = \frac{N_0}{\mathcal{N}_A}\times M(\text{Rn}) = \frac{2{,}431\times10^{9}}{6{,}02\times10^{23}}\times222$$
+        steps:
+          - math: 't_{1/2} = 3{,}9\times86400 = 336960\ \text{s}'
+            note: "Conversion de la demi-vie en secondes, pour rester coherent avec a0 en Bq (desintegrations/s)."
+          - math: 'N_0 = \frac{a_0\,t_{1/2}}{\ln 2} = \frac{5\times10^{3}\times336960}{0{,}6931} \approx 2{,}431\times10^{9}'
+            note: "N0 = a0/lambda, avec lambda = ln2/t1/2 (rung 4)."
+          - math: '\boxed{m_0 = \frac{N_0}{\mathcal{N}_A}\times M(\text{Rn}) \approx 8{,}96\times10^{-13}\ \text{g}}'
+            note: "Pont mole-masse (chimie generale) : n0 = N0/NA, puis m0 = n0.M."
+      - id: q5
+        part: "2-2 — Le temps avant d'atteindre le seuil OMS"
+        stem: |-
+          **2-2-** (0,5 pt) Calculer le nombre de jours nécessaires pour que la valeur de l'activité à l'intérieur de cette habitation soit égale à la valeur limite maximale recommandée par l'OMS.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. L'activité suit exactement la loi de décroissance du rung 3, $a(t) = a_0\,e^{-\lambda t}$ (rung 4) : on cherche l'instant $t$ où elle atteint la valeur limite $a_1 = 300\ \text{Bq/m}^3$ de l'OMS, en partant de $a_0 = 5000\ \text{Bq/m}^3$ — exactement l'inversion de la loi que le rung 5 construit pour la datation, appliquée ici non pas à un âge mais à un délai de vieillissement d'un même échantillon.
+
+          $$a(t) = a_0\,e^{-\lambda t} \implies t = \frac{1}{\lambda}\ln\!\left(\frac{a_0}{a_1}\right) = \frac{t_{1/2}}{\ln 2}\ln\!\left(\frac{a_0}{a_1}\right)$$
+        steps:
+          - math: '\frac{a_0}{a_1} = \frac{5000}{300} \approx 16{,}67'
+            note: "Rapport activite initiale sur activite limite recommandee par l'OMS."
+          - math: '\ln(16{,}67) \approx 2{,}8134'
+            note: "Logarithme neperien du rapport."
+          - math: 't = \frac{t_{1/2}}{\ln 2}\times\ln\!\left(\frac{a_0}{a_1}\right) = \frac{3{,}9}{0{,}6931}\times2{,}8134'
+            note: "Inversion de la loi de decroissance (rung 5), appliquee a l'activite (rung 4)."
+          - math: '\boxed{t \approx 15{,}83\ \text{jours}}'
+            note: "Duree pour que l'activite decroisse de a0 = 5000 Bq jusqu'au seuil OMS a1 = 300 Bq, soit environ 15 jours et 20 heures."

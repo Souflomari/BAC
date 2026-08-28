@@ -870,3 +870,142 @@ entries:
             note: "t_AB = 1,1 s est HORS du cadre de la figure : on prolonge le modele, on ne lit plus."
           - math: '\boxed{V_B \approx 0{,}80\ \text{m.s}^{-1}}'
             note: "Deux chiffres significatifs, la precision reelle des lectures. Cette valeur ouvre la partie 2."
+
+  # ── bk-2010-n-x4 — 2010 N, Mécanique (position 4 du cartouche), 1ère partie :
+  #    solide sur le plan incliné AB, sans frottement ──
+  #
+  # NOTE ÉDITORIALE — LE CHOIX DE L'`id`, ET POURQUOI (2026-08-28, ajout).
+  # Le sujet source (docs/sujets/_incoming/pc-2010-n.md, statut « VÉRIFIÉ —
+  # clearé pour conversion », passe adversariale indépendante du 2026-08-28)
+  # NE NUMÉROTE AUCUN EXERCICE : la page 1 annonce « quatre exercices » mais
+  # le corps du sujet introduit chaque bloc par son nom de domaine (Chimie,
+  # Physique nucléaire, Electricité, Mécanique), jamais par « Exercice
+  # 1/2/3/4 ». Les identifiants `x1…x4` de ce corpus encodent la POSITION AU
+  # CARTOUCHE — Chimie = x1, Physique nucléaire = x2, Electricité = x3,
+  # Mécanique = x4. La Mécanique est le QUATRIÈME et dernier bloc : elle porte
+  # donc x4. Le sujet la découpe lui-même en trois parties (plan incliné ;
+  # mouvement dans l'air ; chute dans l'eau) qui relèvent de DEUX notions
+  # différentes — cette entrée-ci transcrit la PREMIÈRE (plan incliné,
+  # lois-de-newton), donc x4 sans suffixe ; les deux suivantes (mouvement dans
+  # l'air, chute dans l'eau) portent les suffixes b et c, sous
+  # content/pc/chute-mouvements-plans/bank.yaml, entrées bk-2010-n-x4b et
+  # bk-2010-n-x4c — même convention que bk-2024-r-x5/x5b (une Mécanique
+  # scindée entre ces deux mêmes notions sœurs). Sans cette note, un
+  # mainteneur pourrait lire `x4` comme une erreur de position sur CE sujet
+  # précis — ce n'en est pas une : c'est le sujet lui-même qui ne numérote
+  # rien, pas un défaut de conversion (docs/grounding/known-issues.md K-7 bis).
+  #
+  # BARÈME — RECOMPTE. Partie 1 (ici) : 0,5+0,5+0,5 = 1,5 pt. Partie 2
+  # (chute-mouvements-plans, bk-2010-n-x4b) : 0,5+0,5+1 = 2,0 pt. Partie 3
+  # (chute-mouvements-plans, bk-2010-n-x4c) : 1+0,5+1 = 2,5 pt. Total
+  # 1,5+2,0+2,5 = 6,00 pt = « Mécanique (06 points) » du cartouche.
+  #
+  # PORTÉE DE CETTE ENTRÉE. Le solide glisse SANS frottement sur AB (l'énoncé
+  # le dit explicitement) : le rung 7 de la leçon traite le même dispositif
+  # AVEC un frottement constant ; ici, il suffit d'omettre le terme de
+  # frottement dans le même bilan à deux forces (poids, réaction normale) —
+  # aucun pont supplémentaire n'est nécessaire, c'est un cas plus simple, pas
+  # un cas différent.
+  - id: bk-2010-n-x4
+    title: "Solide glissant sans frottement sur un plan incliné : les composantes de l'accélération, la vitesse en bas de pente, et la réaction du plan"
+    source:
+      year: 2010
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice de Mécanique — 1ère partie : mouvement sur un plan incliné (sans frottement)"
+    bareme_total: 1.5
+    duration_min: 9
+    sourcing:
+      status: sourced
+      note: >-
+        2010 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28, AlloSchool element/94443
+        (course-422/upload-70311, pages 5 et 6 sur 6) — Mécanique, 1ère
+        partie (« Etude du mouvement sur la partie AB ») : mouvement sur un
+        plan incliné sans frottement, barème 1,50 pt (0,5+0,5+0,5) sur les
+        6,00 pt de l'exercice de Mécanique complet, dont les deux parties
+        suivantes (mouvement dans l'air puis chute dans l'eau) sont
+        transcrites à part sous content/pc/chute-mouvements-plans/bank.yaml,
+        entrées bk-2010-n-x4b et bk-2010-n-x4c — pas de double comptage.
+        CHOIX DE L'`id` : le sujet ne numérote aucun exercice ; les
+        identifiants x1..x4 de ce corpus encodent la POSITION AU CARTOUCHE
+        (Mécanique = quatrième et dernier bloc), voir la note éditoriale en
+        tête de ce fichier. Transcription vérifiée : passe adversariale
+        indépendante du 2026-08-28 (docs/sujets/_incoming/pc-2010-n.md,
+        statut « VÉRIFIÉ — clearé pour conversion »), figure 1 relue sur le
+        bitmap d'origine 740×540 (repère R1(A,i1,j1) : i1 le long du plan de
+        A vers B, j1 perpendiculaire au plan), données AB = 2,4 m,
+        alpha = 20°, g = 9,8, m = 70 Kg (« Kg » tel qu'imprime, coquille de
+        casse du sujet officiel, sans incidence), 27 questions du sujet
+        re-derivees. Recalcul independant : a_x = g.sin(20) = 3,35 m/s2 ;
+        V_B = racine(2 x 3,35 x 2,4) = 4,01 m/s ; R = m.g.cos(20) = 644,6 N.
+    intro: |-
+      **Mouvement sur un plan incliné, sans frottement (examen national, session normale 2010 — Mécanique, 1ère partie, 1,50 point sur les 6,00 de l'exercice complet).**
+
+      *Les deux parties suivantes de cet exercice — le mouvement de G dans l'air puis la chute de G dans l'eau — sont traitées à part, sous la notion « Chute et mouvements sur des plans » (entrées bk-2010-n-x4b et bk-2010-n-x4c). Elles réutilisent la valeur $V_C = 4{,}67\ \text{m.s}^{-1}$, une DONNÉE de l'énoncé de la partie 2, indépendante de ce qui est calculé ici.*
+
+      Les toboggans dans les piscines permettent aux nageurs de glisser et de plonger dans l'eau. On modélise un toboggan par une piste $ABC$ constituée d'une partie $AB$ inclinée d'un angle $\alpha$ par rapport au plan horizontal et d'une partie circulaire $BC$, et on modélise le nageur par un solide $(S)$ de centre d'inertie $G$ et de masse $m$ (figure 1).
+
+      **Données :** $AB = 2{,}4\ \text{m}$, $\alpha = 20°$, $g = 9{,}8\ \text{m.s}^{-2}$, $m = 70\ \text{Kg}$. *(« Kg » tel qu'imprimé sur le sujet officiel — coquille de casse, sans incidence sur la valeur.)*
+
+      **1- Étude du mouvement sur la partie AB.** Le solide $(S)$ part de la position $A$, supposée confondue avec $G$, à l'instant $t=0$, sans vitesse initiale, et glisse SANS FROTTEMENT sur la piste $AB$ (figure 1). On étudie le mouvement de $G$ dans le repère terrestre $\mathcal{R}_1(A, \vec{i_1}, \vec{j_1})$, supposé galiléen.
+
+      **Figure 1 — extrait pertinent à cette partie** *(décrite depuis le bitmap d'origine 740×540, agrandi ×2 puis ×4 — pas depuis l'énoncé).* Un segment droit part de $A$ (en haut à gauche) et descend vers $B$ (en bas à droite). En $A$, le repère $\mathcal{R}_1$ : $\vec{i_1}$ le long du plan, dirigé de $A$ vers $B$ ; $\vec{j_1}$ perpendiculaire au plan, dirigé vers le haut, du côté opposé au plan. Le solide $(S)$, petit rectangle gris avec un point noir en son centre (c'est $G$), est posé à mi-pente. L'angle $\alpha$ est marqué en $B$, entre le plan et une horizontale en tirets.
+    questions:
+      - id: q1
+        part: "1-1 — Les composantes de l'accélération"
+        stem: |-
+          **1-1-** (0,5 pt) Par application de la deuxième loi de Newton, déterminer les composantes du vecteur accélération $\vec{a_G}$ dans le repère $\mathcal{R}_1(A, \vec{i_1}, \vec{j_1})$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Exactement la méthode du rung 5 de la leçon, sur le cas du rung 7 — mais SANS le terme de frottement, puisque l'énoncé précise « glisse sans frottement ». Le bilan des forces ne compte donc que DEUX forces, pas trois : le poids $\vec{P}$ (vertical, vers le bas, $P=mg$) et la réaction normale du plan $\vec{N}$ (perpendiculaire au plan, vers l'extérieur).
+
+          **La deuxième loi de Newton :**
+
+          $$\vec{P} + \vec{N} = m\,\vec{a_G}$$
+
+          **Projection sur $\vec{i_1}$** (le long du plan, sens de la descente $A\to B$) : $\vec{N}$ n'a aucune composante le long du plan ; seul le poids en a une, sa composante motrice $mg\sin\alpha$ (même décomposition qu'au rung 7, testée aux deux cas extrêmes $\alpha\to0°$ et $\alpha\to90°$).
+
+          $$m\,a_x = mg\sin\alpha \implies a_x = g\sin\alpha$$
+
+          **Projection sur $\vec{j_1}$** (perpendiculaire au plan) : le solide reste SUR le plan, donc $a_y=0$ — la même conclusion géométrique qu'au rung 5.
+
+          $$a_y = 0$$
+        steps:
+          - math: '\vec{P} + \vec{N} = m\,\vec{a_G}'
+            note: "Deuxieme loi de Newton, bilan a DEUX forces seulement (pas de frottement, enonce)."
+          - math: 'a_x = g\sin\alpha = 9{,}8\times\sin20^\circ'
+            note: "Projection sur i1 (le long du plan) : seule la composante motrice du poids agit, N n'a pas de composante ici."
+          - math: '\boxed{a_x \approx 3{,}35\ \text{m.s}^{-2} \qquad a_y = 0}'
+            note: "a_y = 0 car le solide reste sur le plan (projection sur j1)."
+      - id: q2
+        part: "1-2 — La vitesse en B"
+        stem: |-
+          **1-2-** (0,5 pt) Déterminer $V_B$, la vitesse de $G$ au point $B$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. L'accélération $a_x$ est constante (question précédente) : le mouvement sur $AB$ est rectiligne uniformément varié, avec un départ sans vitesse initiale en $A$. La relation de Torricelli du MRUV, $V^2 = V_0^2 + 2\,a\,d$, relie directement la vitesse en un point à la distance parcourue, sans passer par le temps — exactement ce que la question demande, puisque la durée du trajet $AB$ n'est pas donnée.
+
+          $$V_B^2 = V_A^2 + 2\,a_x\,AB = 0 + 2\,a_x\,AB$$
+        steps:
+          - math: 'V_B^2 = 2\,a_x\,AB = 2\times3{,}35\times2{,}4'
+            note: "Relation vitesse-distance du MRUV (V_A=0, depart sans vitesse initiale en A)."
+          - math: 'V_B^2 \approx 16{,}08\ \text{m}^2.\text{s}^{-2}'
+            note: "Calcul intermediaire."
+          - math: '\boxed{V_B = \sqrt{16{,}08} \approx 4{,}01\ \text{m.s}^{-1}}'
+            note: "Racine carree du resultat precedent. Cette valeur ne sert pas a la suite : la partie 2 utilise V_C, une donnee independante."
+      - id: q3
+        part: "1-3 — La réaction du plan"
+        stem: |-
+          **1-3-** (0,5 pt) Déterminer l'intensité $R$ de la force associée à l'action du plan $AB$ sur le solide $(S)$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. La réaction du plan sur le solide est exactement la force $\vec{N}$ du bilan de la question 1-1 (l'énoncé la note $R$ ici — même grandeur, autre lettre). Sa valeur est déjà cachée dans la projection sur $\vec{j_1}$ qu'on a laissée de côté à la question 1-1 : puisque $a_y=0$, les deux forces perpendiculaires au plan se compensent exactement.
+
+          $$0 = N - mg\cos\alpha \implies N = mg\cos\alpha$$
+
+          Même test aux deux cas extrêmes qu'au rung 7 : si $\alpha\to0°$ (plan horizontal), $N\to mg$, tout le poids repose sur le plan — cohérent. Si $\alpha\to90°$ (plan vertical), $N\to0$, plus rien ne presse sur un plan qui ne soutient plus rien — cohérent aussi.
+        steps:
+          - math: 'R = N = mg\cos\alpha = 70\times9{,}8\times\cos20^\circ'
+            note: "Projection sur j1 (question 1-1) : a_y=0 donc N=mg.cos(alpha). L'enonce nomme cette force R."
+          - math: 'mg = 70\times9{,}8 = 686\ \text{N}'
+            note: "Poids du solide, calcul intermediaire."
+          - math: '\boxed{R \approx 686\times0{,}9397 \approx 644{,}6\ \text{N}}'
+            note: "Resultat demande."
