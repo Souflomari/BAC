@@ -667,3 +667,154 @@ entries:
             note: "Masse de methanol consommee, M = 32 g/mol."
           - math: '\boxed{V = \frac{m}{\rho} \approx 1{,}72\times10^{-2}\ \text{cm}^3}'
             note: "Volume via la masse volumique de l'enonce, rho = 0,78 g/cm3."
+
+  # ── bk-2017-n-x1 — 2017 N, Exercice I (Partie I) : la pile aluminium-cuivre ──
+  #
+  # NOTE ÉDITORIALE — LE CHOIX DE L'`id` (2026-08-28, ajout). Le sujet source
+  # (docs/sujets/_incoming/pc-2017-n.md, statut « VÉRIFIÉ — clearé pour
+  # conversion, réserves nommées », passe adversariale indépendante du
+  # 2026-08-28) NUMÉROTE ses exercices (Exercice I à IV, cartouche p. 1). Cette
+  # Partie I de l'Exercice I est la PREMIÈRE pièce transcrite de cet exercice :
+  # elle porte donc `x1` sans suffixe. La Partie II du même Exercice I se
+  # découpe elle-même en deux blocs qui vivent sous deux notions différentes —
+  # `x1b` (§1, acide butanoïque + eau, sous reactions-acido-basiques) et `x1c`
+  # (§2, estérification vs anhydride, sous esterification-hydrolyse) — même
+  # convention que bk-2015-n-x1/x1b/x1c documentée dans ce même fichier
+  # ci-dessus (docs/grounding/known-issues.md K-7 bis). `bk-2017-n-x3` est déjà
+  # pris, sous une autre notion, par l'Exercice III Partie II (modulation
+  # d'amplitude, content/pc/ondes-em-modulation/bank.yaml) — non touché ici.
+  - id: bk-2017-n-x1
+    title: "La pile aluminium-cuivre : quotient de réaction face à K, sens spontané, schéma conventionnel et quantité d'électricité débitée"
+    source:
+      year: 2017
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice I — Partie I : la pile aluminium-cuivre"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2017 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28F, AlloSchool element/57711
+        (course-422/upload-45103), page 2 sur 8 — Exercice I ( 7 points ),
+        Partie I : la pile aluminium-cuivre, barème 2,25 pt (0,5+0,5+0,5+0,75),
+        4 questions, sur les 7,00 pt de l'exercice complet dont la Partie II
+        (acide butanoïque + eau, puis estérification vs anhydride) est
+        transcrite à part sous content/pc/reactions-acido-basiques/bank.yaml
+        (bk-2017-n-x1b) et content/pc/esterification-hydrolyse/bank.yaml
+        (bk-2017-n-x1c) — pas de double comptage : 2,25+2,00+2,75 = 7,00.
+        Transcription vérifiée par une passe adversariale indépendante
+        (2026-08-28, docs/sujets/_incoming/pc-2017-n.md, statut « VÉRIFIÉ —
+        clearé pour conversion ») : re-fetch des trois exemplaires parallèles
+        (les trois PDF sont byte-identiques, MD5
+        a05aec48b46ba558a25da9c39ac09550), couche de texte native décodée
+        glyphe par glyphe, 31 des 32 questions du sujet re-dérivées
+        indépendamment. $K = 10^{200}$ est CONFIRMÉ, pas une coquille :
+        $\log K = n\,\Delta E^\circ/0{,}06 = 6\times2{,}00/0{,}06 = 200$ pour le
+        couple $\text{Cu}^{2+}/\text{Cu}$ ($0{,}34\ \text{V}$) face à
+        $\text{Al}^{3+}/\text{Al}$ ($-1{,}66\ \text{V}$). Contre-calcul refait
+        ici, indépendamment de la source vérifiée, chiffre par chiffre :
+        $Q_{r,i} = [\text{Al}^{3+}]_i^2/[\text{Cu}^{2+}]_i^3 =
+        0{,}65^2/0{,}65^3 \approx 1{,}538$ ; $q = 6\,147\ \text{C}$ (en
+        comptant $2$ électrons par ion $\text{Cu}^{2+}$ sur la DEMI-équation de
+        l'électrode, pas $3$ par avancement global — piège nommé dans le
+        raisonnement de la question 4). Les deux valeurs coïncident avec le
+        recompte indépendant de la vérification adversariale (§ 13.13 du
+        fichier source). DÉFAUT DU SUJET OFFICIEL PORTÉ, PAS RÉPARÉ : la
+        page 2 imprime « Les parties l et II sont indépendantes » avec un
+        « l » (L minuscule, U+006C) à la place du « I » — confirmé par
+        décodage du point de code, pas une coquille de transcription ;
+        reconduit tel quel dans l'intro ci-dessous. Aucune valeur de
+        `bk-2017-n-x3` (Exercice III Partie II, $F_p$ en litige) n'est
+        mobilisée ici.
+    intro: |-
+      **La pile aluminium-cuivre (examen national, session normale 2017, Exercice I — Partie I, 2,25 points sur les 7,00 de l'exercice).**
+
+      *« Les parties l et II sont indépendantes »* — ainsi imprimé sur le sujet officiel : le « l » de « l et II » est un L minuscule (et non un « I »), un défaut confirmé au niveau du point de code, reconduit ici tel quel plutôt que corrigé en silence. *La Partie II — acide butanoïque avec l'eau, puis estérification et anhydride sur l'éthanol — est traitée à part, sous les notions « Réactions acido-basiques » et « Estérification et hydrolyse ».*
+
+      Les piles électrochimiques fonctionnent selon le principe suivant : au cours de leur fonctionnement, une partie de l'énergie chimique produite par des réactions spontanées est transformée en énergie électrique. Cette dernière est utilisée au besoin. On étudie sommairement dans cette partie la pile aluminium-cuivre.
+
+      On réalise la pile aluminium-cuivre comme suit :
+      - On plonge une électrode de cuivre dans un bécher contenant le volume $V = 65\ \text{mL}$ d'une solution aqueuse de sulfate de cuivre $\text{Cu}^{2+}_{(aq)} + \text{SO}_{4(aq)}^{2-}$ de concentration molaire initiale en ions $\text{Cu}^{2+}_{(aq)}$ : $\left[\text{Cu}^{2+}_{(aq)}\right]_i = 6{,}5\times10^{-1}\ \text{mol.L}^{-1}$.
+      - On plonge une électrode d'aluminium dans un autre bécher contenant le même volume $V = 65\ \text{mL}$ d'une solution aqueuse de sulfate d'aluminium $2\,\text{Al}^{3+}_{(aq)} + 3\,\text{SO}_{4(aq)}^{2-}$ de concentration molaire initiale en ions aluminium $\text{Al}^{3+}_{(aq)}$ : $\left[\text{Al}^{3+}_{(aq)}\right]_i = 6{,}5\times10^{-1}\ \text{mol.L}^{-1}$.
+      - On relie les deux solutions par un pont salin et on monte en série, entre les deux pôles de la pile, un conducteur ohmique, un ampèremètre et un interrupteur.
+
+      À la fermeture du circuit, un courant d'intensité constante y circule.
+
+      **Données :**
+      - Les couples mis en jeu sont : $\text{Cu}^{2+}_{(aq)}/\text{Cu}_{(s)}$ et $\text{Al}^{3+}_{(aq)}/\text{Al}_{(s)}$ ;
+      - La constante de Faraday : $1\,\mathcal{F} = 9{,}65\times10^{4}\ \text{C.mol}^{-1}$ ;
+      - La constante d'équilibre associée à la réaction
+
+      $$3\,\text{Cu}^{2+}_{(aq)} + 2\,\text{Al}_{(s)} \underset{(2)}{\overset{(1)}{\rightleftarrows}} 3\,\text{Cu}_{(s)} + 2\,\text{Al}^{3+}_{(aq)}$$
+
+      est $K = 10^{200}$ (confirmé : $\log K = n\,\Delta E^\circ/0{,}06 = 6\times2{,}00/0{,}06 = 200$ pour $\text{Cu}^{2+}/\text{Cu}$ face à $\text{Al}^{3+}/\text{Al}$ — ce n'est pas une coquille du sujet).
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** Écrire l'expression du quotient de réaction $Q_{r,i}$ à l'état initial puis calculer sa valeur.
+        reasoning: |-
+          Comme au rung 2 de cette leçon (qui applique le critère du chapitre Évolution spontanée d'un système à la réaction de la pile), le quotient de réaction ne porte que les espèces DISSOUTES : $\text{Cu}_{(s)}$ et $\text{Al}_{(s)}$ sont des solides purs, ils n'entrent pas dans $Q_r$. Pour $3\,\text{Cu}^{2+} + 2\,\text{Al} \rightarrow 3\,\text{Cu} + 2\,\text{Al}^{3+}$, chaque concentration est portée à la puissance de son coefficient stœchiométrique.
+
+          $$Q_{r,i} = \frac{[\text{Al}^{3+}]_i^2}{[\text{Cu}^{2+}]_i^3}$$
+
+          À l'état initial, les deux concentrations valent $6{,}5\times10^{-1}\ \text{mol.L}^{-1}$ (données) :
+
+          $$Q_{r,i} = \frac{(6{,}5\times10^{-1})^2}{(6{,}5\times10^{-1})^3} = \frac{1}{6{,}5\times10^{-1}}$$
+
+          Le piège nommé de cette question. Ne pas confondre l'exposant $2$ (celui de $\text{Al}^{3+}$) avec l'exposant $3$ (celui de $\text{Cu}^{2+}$) : ce sont les coefficients de l'équation telle qu'écrite dans l'énoncé, jamais interchangeables — inverser les deux donnerait une valeur fausse d'un facteur $(6{,}5\times10^{-1})^{-1}$.
+        steps:
+          - math: 'Q_{r,i} = \frac{[\text{Al}^{3+}]_i^2}{[\text{Cu}^{2+}]_i^3}'
+            note: "Solides Cu et Al exclus (rung 2) ; exposants = coefficients de l'equation telle qu'ecrite."
+          - math: 'Q_{r,i} = \frac{(6{,}5\times10^{-1})^2}{(6{,}5\times10^{-1})^3} = \frac{1}{6{,}5\times10^{-1}}'
+            note: "Les deux concentrations initiales valent 0,65 mol/L (donnees)."
+          - math: '\boxed{Q_{r,i} \approx 1{,}538}'
+            note: "Application numerique."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Préciser le sens d'évolution spontanée du système chimique lors du fonctionnement de la pile. Justifier.
+        reasoning: |-
+          Le rung 2 tranche par comparaison de $Q_{r,i}$ à $K$, sans qu'il soit besoin de mémoriser quelle électrode « est plus réactive » : $Q_{r,i} < K$ donne le sens direct, $Q_{r,i} > K$ le sens inverse. Ici $Q_{r,i} \approx 1{,}538$ (question 1) et $K = 10^{200}$ : $Q_{r,i}$ est plus petit que $K$ de $200$ ordres de grandeur — un écart écrasant, qui ne laisse aucune ambiguïté.
+
+          $$\boxed{Q_{r,i} \ll K \implies \text{le systeme evolue dans le sens direct (1)}}$$
+
+          Concrètement (rung 3) : les ions $\text{Cu}^{2+}$ sont réduits au voisinage de l'électrode de cuivre (qui devient la cathode, borne $+$), et l'aluminium métallique est oxydé (l'électrode d'aluminium devient l'anode, borne $-$) — c'est ce sens qui débite le courant observé à la fermeture du circuit.
+
+          Le piège nommé de cette question. Ne pas conclure « $Q_{r,i}$ petit, donc ça recule » : un $Q_{r,i}$ petit signifie au contraire qu'il y a proportionnellement peu de produits et beaucoup de réactifs par rapport à ce que l'équilibre exigerait — la réaction directe a encore tout le chemin à faire pour rejoindre $K$, donc elle avance (rung 2 de la notion Évolution spontanée).
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Représenter le schéma conventionnel de la pile étudiée.
+        reasoning: |-
+          La polarité vient directement de la question 2 et du rung 3 : l'anode (l'aluminium, siège de l'oxydation) est la borne $-$, la cathode (le cuivre, siège de la réduction) est la borne $+$. Le schéma conventionnel suit la convention d'écriture fixe du rung 3 : borne $-$ à gauche, borne $+$ à droite, barre simple pour chaque interface électrode/solution, double barre pour le pont salin.
+
+          $$\boxed{(-)\ \text{Al}_{(s)}\ \big|\ \text{Al}^{3+}_{(aq)}\ \big\|\ \text{Cu}^{2+}_{(aq)}\ \big|\ \text{Cu}_{(s)}\ (+)}$$
+
+          Le piège nommé de cette question, et il coûte le point entier (rung 3) : écrire la pile à l'envers, borne $+$ à gauche. Le contrôle systématique : l'espèce à l'extrême gauche doit être celle qui s'oxyde — ici l'aluminium, cohérent avec le sens établi à la question 2.
+        steps:
+          - math: '(-)\ \text{Al}_{(s)}\ \vert\ \text{Al}^{3+}_{(aq)}\ \Vert\ \text{Cu}^{2+}_{(aq)}\ \vert\ \text{Cu}_{(s)}\ (+)'
+            note: "Anode (borne moins, aluminium) a gauche ; cathode (borne plus, cuivre) a droite ; barre simple = interface electrode-solution, double barre = pont salin."
+      - id: q4
+        stem: |-
+          **(0,75 pt)** Trouver la quantité d'électricité $q$, débitée lorsque la concentration des ions cuivriques devient $\left[\text{Cu}^{2+}_{(aq)}\right] = 1{,}6\times10^{-1}\ \text{mol.L}^{-1}$.
+        reasoning: |-
+          Même chaîne à trois maillons qu'au rung 6 : la matière consommée donne les électrons échangés, les électrons donnent la charge via $q = n(e^-)\,\mathcal{F}$. Premier maillon : la quantité de $\text{Cu}^{2+}$ réellement consommée, à partir de la baisse de concentration et du volume $V = 65\ \text{mL}$ (constant, une seule solution).
+
+          $$\Delta n(\text{Cu}^{2+}) = \left([\text{Cu}^{2+}]_i - [\text{Cu}^{2+}]\right)\times V = (0{,}65-0{,}16)\times0{,}065$$
+
+          Deuxième maillon, et c'est le piège de cette question : il faut compter les électrons sur la DEMI-équation de l'électrode de cuivre, $\text{Cu}^{2+} + 2\,e^- \rightarrow \text{Cu}$ — deux électrons par ion $\text{Cu}^{2+}$ — et non sur le coefficient $3$ de l'équation bilan globale, qui mélangerait l'avancement de la réaction entière avec la stœchiométrie d'une seule demi-équation. Les deux approches, bien menées, redonnent le même nombre : $n(e^-) = 6x$ avec $x$ l'avancement de l'équation bilan (puisque $\Delta n(\text{Cu}^{2+}) = 3x$ et $n(e^-)=2\times3x=6x$), mais partir directement de $\Delta n(\text{Cu}^{2+})$ et du facteur $2$ de la demi-équation évite d'avoir à repasser par $x$.
+
+          $$n(e^-) = 2\times\Delta n(\text{Cu}^{2+})$$
+
+          Troisième maillon : la charge.
+
+          $$q = n(e^-)\times\mathcal{F}$$
+        steps:
+          - math: '\Delta n(\text{Cu}^{2+}) = (0{,}65-0{,}16)\times0{,}065 \approx 3{,}185\times10^{-2}\ \text{mol}'
+            note: "Quantite de Cu2+ consommee, V = 65 mL constant."
+          - math: 'n(e^-) = 2\times\Delta n(\text{Cu}^{2+}) \approx 6{,}37\times10^{-2}\ \text{mol}'
+            note: "Demi-equation de l'electrode de cuivre, Cu2+ + 2e- -> Cu : 2 electrons par ion, PAS le coefficient 3 de l'equation bilan globale."
+          - math: 'q = n(e^-)\times\mathcal{F} = 6{,}37\times10^{-2}\times9{,}65\times10^{4}'
+            note: "Constante de Faraday donnee dans l'enonce."
+          - math: '\boxed{q \approx 6\,147\ \text{C}}'
+            note: "Quantite d'electricite debitee."

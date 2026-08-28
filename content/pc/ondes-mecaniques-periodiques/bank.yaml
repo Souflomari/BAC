@@ -502,3 +502,149 @@ entries:
             note: "Double periodicite : la distance parcourue pendant une periode."
           - math: 'L = 2{,}5\ \text{cm} = \frac{\lambda}{2} \quad\text{et}\quad \tau = \frac{T}{2}'
             note: "Controle croise : M vibre en opposition de phase avec S. Les quatre reponses se recoupent."
+
+  # ── bk-2017-n-x2 — 2017 N, Exercice II : QCM, onde mécanique à la surface de l'eau ──
+  #
+  # NOTE ÉDITORIALE — LE CHOIX DE L'`id` (2026-08-28, ajout). Le sujet source
+  # (docs/sujets/_incoming/pc-2017-n.md, statut « VÉRIFIÉ — clearé pour
+  # conversion, réserves nommées », passe adversariale indépendante du
+  # 2026-08-28) NUMÉROTE ses exercices (I à IV, cartouche p. 1) : ce bloc
+  # transcrit l'Exercice II en entier (pas de partie ni de suffixe), d'où
+  # l'identifiant `x2` sans lettre.
+  #
+  # CONVERSION SANS `choices[]` (BANK-SPEC §5) : les quatre propositions
+  # imprimées derrière chaque puce carrée ■ sont recopiées dans le `stem`
+  # sous forme de tableau Markdown, exactement comme le sujet les présente —
+  # SANS lettre A/B/C/D, puisque le sujet lui-même n'en imprime aucune (la
+  # consigne demande de « recopier le numéro de la question et écrire à côté
+  # […] la réponse juste sans aucune justification ni explication » — pas de
+  # lettre à cocher). Le `reasoning` nomme la valeur correcte et dit pourquoi
+  # chacune des trois autres échoue.
+  - id: bk-2017-n-x2
+    title: "QCM — propagation d'une onde mécanique à la surface de l'eau : longueur d'onde, célérité, datation d'une coupe et retard temporel"
+    source:
+      year: 2017
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice II : propagation d'une onde mécanique à la surface de l'eau"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2017 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28F, AlloSchool element/57711
+        (course-422/upload-45103), page 4 sur 8 — Exercice II ( 2,5 points ),
+        QCM à quatre questions, barème 2,5 pt (0,5+0,5+0,75+0,75). Transcription
+        vérifiée par une passe adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2017-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion ») : FIGURE B (coupe verticale de la surface de l'eau, page
+        4) est un BITMAP (356x57 px, ~57 dpi effectifs, seule figure non
+        vectorielle du périmètre transcrit) ; les mesures ont été prises sur
+        un rendu de PAGE a 1200 dpi, jamais sur le PNG extrait — celui-ci est
+        RETOURNE VERTICALEMENT par rapport a son placement sur la page, un
+        piege technique explicitement signale dans la source. Echelle : la
+        double fleche "1 cm" mesure 24,0 pt, confirmee par le pas des
+        graduations longues de la regle (17 graduations, regression sur 16
+        intervalles : 1 cm = 24,105 pt). Quatre cretes mesurees a x = 195,8 ;
+        292,3 ; 339,8 ; 436,9 pt, ecarts creteacrete 96,5 et 97,1 pt, soit
+        4,00 et 4,03 cm : lambda = 4 cm. Etendue perturbee mesuree des deux
+        cotes de la source S : 174,9 a 461,5 pt, soit +/-5,95 cm ~ +/-6 cm.
+        Chaine de coherence des quatre reponses, verifiee independamment ici :
+        lambda = 4 cm => v = lambda.N = 0,04 x 50 = 2 m/s => t = d/v =
+        0,06/2 = 0,03 s => tau = SM/v = 0,06/2 = 0,03 s ; les quatre lectures
+        se recoupent, ce qu'aucune des trois autres valeurs de lambda proposees
+        au QCM ne permet. Confirme par le corrige non officiel consulte par la
+        source (memes reponses). SCOPE NOTE (question 3) : le corrige non
+        officiel ecrit "t = SM/v = 0,06/2", en reutilisant le SM = 6 cm de la
+        question 4, alors que la question 3 porte sur l'ETENDUE de la
+        perturbation depuis S (mesuree separement, +/-6,0 cm) et non sur la
+        distance SM ; les deux chemins donnent 0,03 s parce que l'etendue
+        mesuree vaut ELLE AUSSI 6,0 cm sur ce sujet precis — une coincidence
+        numerique du sujet, pas une identite generale entre "etendue de la
+        perturbation" et "distance SM", et le raisonnement de la question 3
+        ci-dessous le traite comme tel. Aucune valeur de `bk-2017-n-x3`
+        (Exercice III Partie II, F_p en litige) n'est mobilisee ici.
+    intro: |-
+      **Propagation d'une onde mécanique à la surface de l'eau (examen national, session normale 2017, Exercice II, 2,5 points).**
+
+      *Consigne officielle : recopier le numéro de la question et écrire à côté, parmi les quatre réponses proposées, la réponse juste, sans aucune justification ni explication.*
+
+      On crée, à l'instant $t = 0$, en un point $S$ de la surface de l'eau, une onde mécanique progressive sinusoïdale de fréquence $N = 50\ \text{Hz}$. La figure ci-dessous représente une coupe verticale de la surface de l'eau à un instant $t$. La règle graduée sur le schéma indique l'échelle utilisée.
+
+      **Figure B (coupe verticale, bitmap re-mesuré sur un rendu de page 1200 dpi, jamais sur le PNG extrait — retourné verticalement).** Bandeau horizontal encadré : un rectangle gris uni représente l'eau, sa frontière supérieure est le profil de la surface. Sur la gauche et sur la droite la surface est plate (ligne d'eau horizontale) ; au centre, un train d'ondes. Une règle graduée horizontale est posée juste sous la ligne d'eau ; à son extrémité droite, une double flèche horizontale entre deux graduations longues, légendée « **1 cm** ». La source $S$ est repérée au centre du bandeau, sur un profil symétrique par rapport à elle. Mesure : deux crêtes voisines espacées de $4{,}0\ \text{cm}$ ($\lambda$) ; la zone perturbée s'étend sur environ $6{,}0\ \text{cm}$ de part et d'autre de $S$.
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** La longueur d'onde est :
+
+          | ■ $\lambda = 0{,}2\,\text{cm}$ | ■ $\lambda = 4\,\text{cm}$ | ■ $\lambda = 5\,\text{cm}$ | ■ $\lambda = 6\,\text{cm}$ |
+          |---|---|---|---|
+        reasoning: |-
+          Comme au rung 2, $\lambda$ est la plus petite distance séparant deux points qui vibrent exactement de la même façon — sur une coupe figée, l'écart entre deux crêtes voisines. La règle graduée donne l'échelle ($1\ \text{cm}$ étalonné), et deux crêtes voisines du profil sont séparées de $4{,}0\ \text{cm}$.
+
+          $$\boxed{\lambda = 4\ \text{cm}}$$
+
+          **Pourquoi les trois autres échouent.** $0{,}2\ \text{cm}$ confondrait $\lambda$ avec une fraction de graduation, bien en-deçà de la résolution de la règle imprimée. $5\ \text{cm}$ et $6\ \text{cm}$ surestiment l'écart, comme si on avait mesuré entre une crête et le second creux suivant plutôt qu'entre deux crêtes immédiatement voisines — c'est précisément l'erreur que la règle graduée, posée sous la ligne d'eau, sert à éviter en donnant une échelle de référence directement sur la figure.
+      - id: q2
+        stem: |-
+          **(0,5 pt)** La vitesse de propagation de l'onde à la surface de l'eau est :
+
+          | ■ $v = 2\,\text{m.s}^{-1}$ | ■ $v = 200\,\text{m.s}^{-1}$ | ■ $v = 3\,\text{m.s}^{-1}$ | ■ $v = 8\times10^{-4}\,\text{m.s}^{-1}$ |
+          |---|---|---|---|
+        reasoning: |-
+          La relation de la double périodicité (rung 2), $\lambda = v/N$, relie la longueur d'onde qui vient d'être lue à la fréquence $N = 50\ \text{Hz}$ donnée par l'énoncé. On isole $v$.
+
+          $$v = \lambda\,N = 4\times10^{-2}\times50$$
+
+          $$\boxed{v = 2\ \text{m.s}^{-1}}$$
+
+          **Pourquoi les trois autres échouent.** $200\ \text{m.s}^{-1}$ vient d'un oubli de conversion de $\lambda$ en mètres (garder $4$ au lieu de $0{,}04$). $3\ \text{m.s}^{-1}$ ne se retrouve par aucun des deux chiffres de l'énoncé combinés simplement. $8\times10^{-4}\ \text{m.s}^{-1}$ est l'inverse du produit ($\lambda/N$ au lieu de $\lambda\,N$) — une célérité d'un fraction de millimètre par seconde n'aurait d'ailleurs aucun sens pour une ride à la surface de l'eau.
+        steps:
+          - math: 'v = \lambda\,N = (4\times10^{-2})\times50'
+            note: "Rung 2 : lambda = v/N, isole pour v ; lambda convertie en metres."
+          - math: '\boxed{v = 2\ \text{m.s}^{-1}}'
+            note: "Celerite de propagation."
+      - id: q3
+        stem: |-
+          **(0,75 pt)** L'instant $t$, où la coupe de la surface de l'eau est représentée, a pour valeur :
+
+          | ■ $t = 8\,\text{s}$ | ■ $t = 0{,}03\,\text{s}$ | ■ $t = 0{,}3\,\text{s}$ | ■ $t = 3\,\text{s}$ |
+          |---|---|---|---|
+        reasoning: |-
+          L'onde a été créée en $S$ à $t=0$ ; l'instant $t$ de la coupe est donc la durée qu'il a fallu à la perturbation pour atteindre le bord du domaine déjà agité, mesuré sur la figure de part et d'autre de $S$ : $d \approx 6{,}0\ \text{cm}$. Le mécanisme du retard (rung 1) donne directement $t = d/v$, avec $v = 2\ \text{m.s}^{-1}$ (question 2).
+
+          $$t = \frac{d}{v} = \frac{6{,}0\times10^{-2}}{2}$$
+
+          $$\boxed{t = 0{,}03\ \text{s}}$$
+
+          **Pourquoi les trois autres échouent.** $0{,}3\ \text{s}$ et $3\ \text{s}$ viennent d'un facteur $10$ ou $100$ manqué dans la conversion des centimètres. $8\ \text{s}$ ne correspond à aucune combinaison simple des grandeurs de la figure ; à cette vitesse de $2\ \text{m.s}^{-1}$, l'onde aurait parcouru $16\ \text{m}$ en $8\ \text{s}$, bien au-delà de la petite cuve représentée.
+        steps:
+          - math: 't = \frac{d}{v}'
+            note: "Rung 1 : le retard (ici, le temps ecoule depuis la creation en S) vaut la distance parcourue divisee par la celerite."
+          - math: 't = \frac{6{,}0\times10^{-2}}{2}'
+            note: "d ~ 6,0 cm mesure sur la figure (etendue perturbee de part et d'autre de S), v = 2 m/s (question 2)."
+          - math: '\boxed{t = 0{,}03\ \text{s}}'
+            note: "Instant de la coupe."
+      - id: q4
+        stem: |-
+          **(0,75 pt)** On considère un point M de la surface de l'eau, éloigné de la source S d'une distance SM=6cm. Le point M reprend le même mouvement que celui de S avec un retard temporel $\tau$. La relation entre l'élongation du point M et celle de la source S s'écrit :
+
+          | ■ $y_M(t) = y_S(t - 0{,}3)$ | ■ $y_M(t) = y_S(t + 0{,}03)$ |
+          |---|---|
+          | ■ $y_M(t) = y_S(t - 0{,}03)$ | ■ $y_M(t) = y_S(t + 0{,}3)$ |
+        reasoning: |-
+          Comme au rung 1, un point du milieu rejoue le mouvement de la source avec un retard $\tau = SM/v$ — jamais en avance, puisque l'information ne peut se propager que depuis $S$ vers $M$, jamais l'inverse. Avec $SM = 6\ \text{cm}$ (donnée) et $v = 2\ \text{m.s}^{-1}$ (question 2) :
+
+          $$\tau = \frac{SM}{v} = \frac{6\times10^{-2}}{2}$$
+
+          $$\tau = 0{,}03\ \text{s}$$
+
+          $$\boxed{y_M(t) = y_S(t-0{,}03)}$$
+
+          **Pourquoi les trois autres échouent.** Les deux propositions en $t+\tau$ inverseraient le sens de causalité : elles feraient de $M$ un point qui ANTICIPE le mouvement de $S$, ce qu'aucune onde progressive ne permet (rung 1). $y_S(t-0{,}3)$ reprend le bon signe mais une valeur dix fois trop grande de $\tau$ — le même facteur $10$ qui piège la question 3.
+        steps:
+          - math: '\tau = \frac{SM}{v} = \frac{6\times10^{-2}}{2} = 0{,}03\ \text{s}'
+            note: "Rung 1 : retard = distance / celerite, avec SM = 6 cm (donnee) et v = 2 m/s (question 2)."
+          - math: '\boxed{y_M(t) = y_S(t-0{,}03)}'
+            note: "Retard, jamais avance : le signe moins vient du sens de propagation S vers M."

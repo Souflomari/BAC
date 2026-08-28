@@ -1330,3 +1330,208 @@ entries:
             note: "On inverse tau = L/(R+r)."
           - math: '\boxed{L = 0{,}10\ \text{H}}'
             note: "Inductance de la bobine : valeur ronde, coherente avec r=8 Ohm."
+
+  # ── bk-2017-n-x3b — 2017 N, Exercice III (Partie I) : réponse d'un dipôle RL à un échelon de tension ──
+  #
+  # NOTE ÉDITORIALE — LE CHOIX DE L'`id` (2026-08-28, ajout). Le sujet source
+  # (docs/sujets/_incoming/pc-2017-n.md, statut « VÉRIFIÉ — clearé pour
+  # conversion, réserves nommées », passe adversariale indépendante du
+  # 2026-08-28) NUMÉROTE ses exercices (I à IV, cartouche p. 1). L'identifiant
+  # `bk-2017-n-x3` (position 3 = Exercice III) est DÉJÀ PRIS par la Partie II
+  # de ce même exercice (modulation d'amplitude), sous
+  # content/pc/ondes-em-modulation/bank.yaml — cette entrée-ci, la Partie I,
+  # porte donc le suffixe `b`, même convention que bk-2015-n-x1/x1b/x1c
+  # (K-7 bis). ⛔ RÉSERVE À NE PAS TOUCHER ICI : l'entrée `bk-2017-n-x3` publie
+  # $F_p = 2$ kHz, une valeur réfutée par la vérification adversariale
+  # (mesure : $1\,003 \pm 15$ Hz, 66 écarts-types d'écart) — voir la note
+  # datée en tête de content/pc/ondes-em-modulation/bank.yaml. Cette entrée-ci
+  # ne mobilise AUCUNE valeur de la Partie II ; le litige $F_p$ n'a aucune
+  # incidence sur le dipôle RL de la Partie I.
+  - id: bk-2017-n-x3b
+    title: "Réponse d'un dipôle RL à un échelon de tension : établissement, rupture, résistance interne, inductance et énergie emmagasinée"
+    source:
+      year: 2017
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice III — Partie I : réponse d'un dipôle RL à un échelon de tension"
+    bareme_total: 3.25
+    duration_min: 20
+    sourcing:
+      status: sourced
+      note: >-
+        2017 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28F, AlloSchool element/57711
+        (course-422/upload-45103), page 5 sur 8 — Exercice III ( 5 points ),
+        Partie I : réponse d'un dipôle RL à un échelon de tension, barème
+        3,25 pt (0,25+0,5+0,5+0,5+0,5+0,5+0,5), 7 questions (la question 2.3
+        porte deux sous-questions a/b, chacune notée séparément), sur les
+        5,00 pt de l'exercice complet dont la Partie II (modulation
+        d'amplitude, 1,75 pt) est DÉJÀ EN BANQUE sous
+        content/pc/ondes-em-modulation/bank.yaml, entrée bk-2017-n-x3 — pas
+        de double comptage : 3,25+1,75 = 5,00. Transcription vérifiée par une
+        passe adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2017-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion »), 31 des 32 questions du sujet re-dérivées
+        indépendamment. FIGURE D (page 5, u_R(t) et la tangente (T)) mesurée
+        sur les objets vectoriels du PDF natif : origine calibree sur les
+        lignes de grille noires, une maille = 2 ms horizontalement et 1 V
+        verticalement. Courbe (98 points) : decroissance exponentielle
+        partant de (0 ; 6,00 V). Tangente (T), regression sur 8 tirets :
+        ordonnee a l'origine 5,96-5,98 V (part bien du depart de la courbe),
+        coupe l'axe des temps a t = 2,77-2,78 ms. Contre-calcul refait ici,
+        chiffre par chiffre : I_p = E/(R+r) = 6,5/65 = 0,100 A ; u_R(0) =
+        R.I_p = 60x0,1 = 6,00 V (coherent avec le depart mesure de la
+        courbe) ; r = E/I_p - R = 65-60 = 5 Ohm ; tau = L/(R+r), avec tau lu
+        a 2,8 ms (tangente) donne L = 2,8e-3x65 = 0,182 H = 182 mH -- la
+        valeur meme que la question 2.3-b demande de VERIFIER ; energie a
+        t1=tau : i(tau) = I_p.exp(-1) = 0,03679 A, E_m(tau) =
+        0,5xLxi(tau)^2 ~ 1,23e-4 J. Ces valeurs coincident avec le recompte
+        independant de la verification adversariale (§ 13.11 et § 13.13 du
+        fichier source, ecarts au dernier chiffre pres). L'energie
+        magnetique est notee $\mathscr{E}_m$ dans le sujet officiel (police
+        calligraphique KunstlerScript, occurrence unique de cette police dans
+        tout le document) ; notee $E_m$ ici pour uniformite avec le reste du
+        corpus, meme grandeur (rung R4 : energie emmagasinee dans la bobine).
+        DEFAUT DU SUJET OFFICIEL PORTE, PAS REPARE : "sur la position(1)"
+        (sans espace avant la parenthese, page 5) et "sur la position ( 2)"
+        (avec un espace parasite apres la parenthese ouvrante), reconduits
+        verbatim dans l'intro ci-dessous.
+    intro: |-
+      **Réponse d'un dipôle RL à un échelon de tension (examen national, session normale 2017, Exercice III — Partie I, 3,25 points sur les 5,00 de l'exercice).**
+
+      *La Partie II de cet exercice — la modulation d'amplitude — est indépendante de celle-ci et vit déjà en banque sous la notion « Ondes électromagnétiques et modulation d'amplitude » (entrée bk-2017-n-x3). Rien de ce qui suit n'en dépend.*
+
+      Nous utilisons quotidiennement des appareils électriques et électroniques qui contiennent des circuits comprenant des conducteurs ohmiques, des bobines, des condensateurs et des circuits intégrés réalisant des opérations mathématiques ou logiques. Pour étudier la réponse d'un dipôle RL à un échelon de tension, le professeur de physique a réalisé avec ses élèves le montage électrique schématisé sur la figure 1, qui comporte :
+
+      - Un générateur idéal de tension de force électromotrice $E = 6{,}5\ \text{V}$ ;
+      - Une bobine d'inductance $L$ et de résistance $r$ ;
+      - Un conducteur ohmique de résistance $R = 60\ \Omega$ ;
+      - Un interrupteur $K$ à double position.
+
+      **Figure 1 (schéma).** Circuit en boucle : le générateur $E$ (branche de gauche), un interrupteur $K$ à double position — la position $(1)$ ferme la boucle sur le générateur, la position $(2)$ court-circuite la branche du générateur et referme la boucle directement sur elle-même —, puis, en série, la bobine $(L,r)$ et le conducteur ohmique $R$.
+
+      **1-** Dans une première étape, le professeur étudie l'établissement du courant dans une bobine en mettant l'interrupteur $K$ sur la position(1).
+
+      **2.** Dans une deuxième étape, le professeur étudie la rupture du courant dans la bobine. Lorsque le régime permanent est atteint, il bascule, à un instant $t=0$, l'interrupteur $K$ sur la position ( 2) en prenant les précautions nécessaires. Avec un système informatisé d'acquisition, il obtient la courbe de figure 2 représentant les variations de la tension $u_R(t)$ aux bornes du conducteur ohmique. La droite $(T)$ représente la tangente à la courbe à l'origine des temps.
+
+      **Figure 2 (courbe $u_R(t)$ après la bascule sur la position (2), et sa tangente à l'origine).** Axe des abscisses $t\,(\text{ms})$, gradué $2$ · $4$ · $6$ · $8$ ; axe des ordonnées $u_R\,(\text{V})$, gradué $2$ · $4$ · $6$. Courbe décroissante, exponentielle, partant de $(0\ ;\ 6{,}00\ \text{V})$ et tendant vers $0$. Droite $(T)$ en tirets, tangente à la courbe à l'origine, coupant l'axe des temps à $t \approx 2{,}8\ \text{ms}$.
+    questions:
+      - id: q1
+        part: "1.1 — Convention récepteur"
+        stem: |-
+          **(0,25 pt)** Recopier le schéma de la figure 1, et représenter en convention récepteur la tension $u_R$ aux bornes du conducteur ohmique.
+        reasoning: |-
+          La convention récepteur, posée au rung 1 de la leçon, dit que la flèche de tension d'un dipôle est orientée dans le MÊME sens que la flèche du courant qui le traverse. Le conducteur ohmique $R$ est traversé, comme la bobine, par le même courant $i$ (ils sont en série) : sur la figure 1 recopiée, on flèche $u_R$ le long du fil, dans le sens de $i$, entre les deux bornes de $R$.
+
+          Le piège nommé de cette question. Flécher $u_R$ dans le sens contraire de $i$ — ce serait la convention générateur, réservée au dipôle qui fournit l'énergie (ici, uniquement le générateur $E$). $R$ et la bobine sont deux récepteurs : leurs deux flèches de tension suivent toutes deux le sens de $i$, jamais l'inverse.
+      - id: q2
+        part: "1.2 — L'intensité en régime permanent"
+        stem: |-
+          **(0,5 pt)** Trouver, en fonction des paramètres du circuit, l'expression de l'intensité du courant $I_p$ en régime permanent.
+        reasoning: |-
+          Comme au rung 2, en régime permanent le courant ne varie plus : $\dfrac{di}{dt}=0$, et le terme inductif de la bobine disparaît (rung 1) — elle se comporte alors comme un simple résistor de résistance $r$. Le circuit se réduit à trois éléments en série : le générateur $E$, le résistor $R$ et la résistance interne $r$ de la bobine. La loi d'Ohm globale donne directement $I_p$.
+
+          $$\boxed{I_p = \frac{E}{R+r}}$$
+
+          Le piège nommé de cette question. Oublier $r$ et répondre $I_p = E/R$ : la constante de temps et le régime permanent sont pilotés par la résistance TOTALE de la boucle, jamais par le seul résistor ajouté — exactement le piège que les questions suivantes (2.3-a) exploitent pour en extraire $r$.
+      - id: q3
+        part: "2.1 — L'équation différentielle de la rupture"
+        stem: |-
+          **(0,5 pt)** Établir l'équation différentielle vérifiée par la tension $u_R(t)$.
+        reasoning: |-
+          À la bascule sur la position (2), le générateur est retiré de la boucle (schéma) : il ne reste que $R$ et la bobine $(L,r)$, refermées sur elles-mêmes — exactement le cas de « la rupture du courant » traité au rung 3 de la leçon, avec $R' = R+r$ comme résistance totale de la maille de secours.
+
+          $$L\,\frac{di}{dt} + (R+r)\,i = 0$$
+
+          On exprime tout en $u_R$ plutôt qu'en $i$, puisque c'est $u_R(t)$ que la figure 2 enregistre : $u_R = R\,i \implies i = u_R/R$, donc $\dfrac{di}{dt} = \dfrac{1}{R}\dfrac{du_R}{dt}$.
+
+          $$\frac{L}{R}\frac{du_R}{dt} + (R+r)\frac{u_R}{R} = 0$$
+
+          On multiplie par $R$, non nul :
+
+          $$\boxed{\frac{du_R}{dt} + \frac{R+r}{L}\,u_R = 0}$$
+        steps:
+          - math: 'L\,\frac{di}{dt} + (R+r)\,i = 0'
+            note: "Maille de rupture (rung 3) : plus de generateur, resistance totale R+r."
+          - math: 'u_R = R\,i \implies \frac{di}{dt} = \frac{1}{R}\frac{du_R}{dt}'
+            note: "Loi d'Ohm pour changer de variable, i vers u_R."
+          - math: '\boxed{\frac{du_R}{dt} + \frac{R+r}{L}\,u_R = 0}'
+            note: "Equation differentielle demandee, apres multiplication par R."
+      - id: q4
+        part: "2.2 — Identifier tau par substitution"
+        stem: |-
+          **(0,5 pt)** La solution de cette équation différentielle est $u_R(t) = R.I_p.e^{-\frac{t}{\tau}}$. Trouver l'expression de $\tau$.
+        reasoning: |-
+          Comme au rung 3 (méthode de vérification par substitution), on calcule la dérivée de la solution proposée et on reporte dans l'équation de la question précédente pour identifier $\tau$.
+
+          $$\frac{du_R}{dt} = -\frac{1}{\tau}\,R\,I_p\,e^{-t/\tau} = -\frac{1}{\tau}\,u_R(t)$$
+
+          On reporte dans $\dfrac{du_R}{dt} + \dfrac{R+r}{L}u_R = 0$ :
+
+          $$-\frac{1}{\tau}\,u_R + \frac{R+r}{L}\,u_R = 0 \implies \frac{1}{\tau} = \frac{R+r}{L}$$
+
+          $$\boxed{\tau = \frac{L}{R+r}}$$
+
+          C'est exactement le facteur qui apparaissait déjà au dénominateur de $I_p$ (question 1.2) : le régime permanent de l'établissement et la constante de temps de la rupture partagent la même résistance totale $R+r$, parce que c'est la même boucle qui referme les deux phases.
+        steps:
+          - math: '\frac{du_R}{dt} = -\frac{1}{\tau}\,u_R(t)'
+            note: "Derivee de la solution proposee."
+          - math: '-\frac{1}{\tau} + \frac{R+r}{L} = 0'
+            note: "Identification par substitution dans l'equation de la question 2.1 (rung 3)."
+          - math: '\boxed{\tau = \frac{L}{R+r}}'
+            note: "Meme resistance totale R+r qu'au regime permanent (question 1.2)."
+      - id: q5
+        part: "2.3-a — Lire r sur la courbe"
+        stem: |-
+          **(0,5 pt)** En exploitant la courbe de la figure 2, montrer que la résistance $r$ de la bobine est $r = 5\ \Omega$.
+        reasoning: |-
+          La courbe part de $u_R(0) = 6{,}00\ \text{V}$ (figure 2) — c'est la tension aux bornes de $R$ à l'instant même de la bascule, quand le courant vaut encore $I_p$ (continuité du courant dans la bobine, rung 1 : il ne peut pas sauter). D'où une première lecture, par la loi d'Ohm :
+
+          $$I_p = \frac{u_R(0)}{R} = \frac{6{,}00}{60}$$
+
+          On reporte cette valeur dans l'expression de $I_p$ établie à la question 1.2, où $r$ est la seule inconnue.
+
+          $$I_p = \frac{E}{R+r} \implies r = \frac{E}{I_p} - R$$
+        steps:
+          - math: 'I_p = \frac{u_R(0)}{R} = \frac{6{,}00}{60} = 0{,}100\ \text{A}'
+            note: "u_R(0) lu sur la figure 2 : tension aux bornes de R juste apres la bascule, quand i vaut encore I_p (continuite du courant, rung 1)."
+          - math: 'r = \frac{E}{I_p} - R = \frac{6{,}5}{0{,}100} - 60 = 65-60'
+            note: "On inverse l'expression de I_p (question 1.2)."
+          - math: '\boxed{r = 5\ \Omega}'
+            note: "Resistance interne de la bobine."
+      - id: q6
+        part: "2.3-b — Vérifier L par la tangente"
+        stem: |-
+          **(0,5 pt)** Vérifier que la valeur de l'inductance de la bobine est $L = 182\ \text{m H}$.
+        reasoning: |-
+          Comme au rung 3, la tangente à l'origine de la courbe exponentielle coupe l'axe des temps exactement à $t = \tau$ (elle part de la même ordonnée que la courbe, avec la pente initiale de la décroissance). Sur la figure 2, cette lecture donne $\tau \approx 2{,}8\ \text{ms}$. On retrouve $L$ en inversant $\tau = L/(R+r)$ (question 2.2), avec $R+r = 65\ \Omega$ (question 2.3-a).
+
+          $$L = \tau\,(R+r) = 2{,}8\times10^{-3}\times65$$
+        steps:
+          - math: '\tau \approx 2{,}8\ \text{ms}'
+            note: "Tangente a l'origine de la figure 2 (methode du rung 3) : coupe l'axe des temps a t = tau."
+          - math: 'L = \tau\,(R+r) = 2{,}8\times10^{-3}\times65'
+            note: "On inverse tau = L/(R+r) (question 2.2), R+r = 65 Ohm (question 2.3-a)."
+          - math: '\boxed{L \approx 0{,}182\ \text{H} = 182\ \text{mH}}'
+            note: "Valeur verifiee, conforme a celle imposee par l'enonce."
+      - id: q7
+        part: "2.4 — L'énergie magnétique à l'instant t1 = tau"
+        stem: |-
+          **(0,5 pt)** Trouver la valeur de l'énergie $E_m$ emmagasinée par la bobine à l'instant $t_1 = \tau$.
+        reasoning: |-
+          Comme au rung 4, l'énergie emmagasinée dans la bobine vaut $E_m = \frac{1}{2}Li^2$, avec l'intensité INSTANTANÉE $i(t_1)$ — pas $I_p$, la valeur de régime permanent qui n'a plus cours après la bascule. Pendant la rupture, le courant décroît (rung 3) comme la tension : $i(t) = I_p\,e^{-t/\tau}$, la même loi exponentielle que $u_R(t)$ puisque $u_R = R\,i$.
+
+          À $t_1 = \tau$ :
+
+          $$i(\tau) = I_p\,e^{-1}$$
+
+          $$E_m = \frac{1}{2}\,L\,i(\tau)^2$$
+
+          Le piège nommé de cette question. Utiliser $I_p = 0{,}100\ \text{A}$ directement dans $\frac{1}{2}Li^2$, en oubliant que l'instant demandé, $t_1=\tau$, se situe APRÈS la bascule, en pleine décroissance — le courant y vaut $I_p\,e^{-1} \approx 0{,}368\,I_p$, pas $I_p$ lui-même. Utiliser $I_p$ sans décroissance donnerait une énergie près de $7{,}4$ fois trop grande ($e^2 \approx 7{,}39$).
+        steps:
+          - math: 'i(\tau) = I_p\,e^{-1} = 0{,}100\times e^{-1} \approx 3{,}68\times10^{-2}\ \text{A}'
+            note: "Decroissance exponentielle du courant apres la bascule (rung 3), evaluee a t = tau."
+          - math: 'E_m = \frac{1}{2}\,L\,i(\tau)^2 = \frac{1}{2}\times0{,}182\times(3{,}68\times10^{-2})^2'
+            note: "Rung 4 : energie emmagasinee, avec le courant INSTANTANE i(tau), pas I_p."
+          - math: '\boxed{E_m \approx 1{,}23\times10^{-4}\ \text{J}}'
+            note: "Energie magnetique emmagasinee a l'instant t1 = tau."

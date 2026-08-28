@@ -2374,3 +2374,151 @@ entries:
           **La conclusion sur l'effet de la dilution.** $\tau$ est passé de $0{,}060$ (question 1-2, solution $S_A$ non diluée) à $\tau_1 = 0{,}20$ (solution diluée $S_{A1}$) : **la dilution fait augmenter le taux d'avancement final**. Pourquoi, mécaniquement : reprends $K_A = C\,\tau^2/(1-\tau)$ (relation déjà établie à partir des rungs 4 et 6 de cette leçon, pas un outil neuf). $K_A$ est fixé — c'est le même couple dans les deux béchers — donc si $C$ diminue, le facteur $\tau^2/(1-\tau)$ doit **augmenter** d'autant pour que le produit reste constant, et cette quantité croît avec $\tau$ : diluer force $\tau$ à monter. C'est le cas particulier, pour un acide, de la **loi de dilution** établie nommément au rung 6 de la notion **État d'équilibre d'un système chimique** : diluer un système dont le sens direct augmente le nombre d'espèces dissoutes (ici, une molécule $CH_3COOH$ donne deux entités, $CH_3COO^-$ et $H_3O^+$, contre une seule au départ — l'eau, solvant, n'est pas comptée) fait toujours **augmenter** $\tau$.
 
           **Le piège nommé de cette question.** Ne confonds pas la **force** de l'acide (son $K_A$, son $pK_A$ — une propriété du couple, indépendante de la concentration, rung 6) et son **taux d'avancement final** $\tau$ (une propriété de la **solution**, qui dépend à la fois du couple et de la concentration). $pK_A$ reste $4{,}80$ dans les deux béchers ; $\tau$, lui, quadruple presque. On ne peut jamais comparer la force de deux acides par leur seul $\tau$, sauf à concentration égale.
+
+  # ── bk-2017-n-x1b — 2017 N, Exercice I (Partie II, §1) : l'acide butanoïque et l'eau ──
+  #
+  # NOTE ÉDITORIALE — LE CHOIX DE L'`id` (2026-08-28, ajout). Le sujet source
+  # (docs/sujets/_incoming/pc-2017-n.md, statut « VÉRIFIÉ — clearé pour
+  # conversion, réserves nommées », passe adversariale indépendante du
+  # 2026-08-28) NUMÉROTE ses exercices (I à IV, cartouche p. 1). Ce bloc est le
+  # §1 de la Partie II de l'Exercice I ; `x1` (Partie I, la pile aluminium-cuivre)
+  # est déjà pris sous content/pc/piles/bank.yaml, entrée bk-2017-n-x1 —
+  # cette entrée-ci porte donc le suffixe `b`. Le §2 de la même Partie II
+  # (estérification vs anhydride) porte `x1c`, sous
+  # content/pc/esterification-hydrolyse/bank.yaml — même convention que
+  # bk-2015-n-x1/x1b/x1c (voir la notion État d'équilibre, K-7 bis).
+  - id: bk-2017-n-x1b
+    title: "L'acide butanoïque dans l'eau : taux d'avancement final (question tronquée dans le sujet officiel), quotient de réaction à l'équilibre et pKA"
+    source:
+      year: 2017
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice I — Partie II, §1 : réaction de l'acide butanoïque avec l'eau"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2017 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28F, AlloSchool element/57711
+        (course-422/upload-45103), page 3 sur 8 — Exercice I ( 7 points ),
+        Partie II, §1 : réaction de l'acide butanoïque avec l'eau, barème
+        2,00 pt (0,75+0,75+0,5), 3 questions, sur les 7,00 pt de l'exercice
+        complet dont la Partie I (pile aluminium-cuivre, 2,25 pt) est
+        transcrite sous content/pc/piles/bank.yaml (bk-2017-n-x1) et le §2 de
+        cette même Partie II (estérification vs anhydride, 2,75 pt) sous
+        content/pc/esterification-hydrolyse/bank.yaml (bk-2017-n-x1c) — pas de
+        double comptage : 2,25+2,00+2,75 = 7,00. Transcription vérifiée par
+        une passe adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2017-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion »), 31 des 32 questions du sujet re-dérivées
+        indépendamment. Contre-calcul refait ici, chiffre par chiffre :
+        $[\text{H}_3\text{O}^+]_{eq} = 10^{-3{,}41} \approx 3{,}89\times10^{-4}
+        \ \text{mol.L}^{-1}$ ; $\tau = 3{,}89\times10^{-4}/1{,}0\times10^{-2}
+        \approx 0{,}0389$ (soit $3{,}89\ \%$) ; $Q_{r,eq} =
+        (3{,}89\times10^{-4})^2/(1{,}0\times10^{-2}-3{,}89\times10^{-4})
+        \approx 1{,}57\times10^{-5}$ ; $pK_A \approx 4{,}80$. Ces quatre
+        valeurs coïncident avec le recompte indépendant de la vérification
+        adversariale (§ 13.13 du fichier source, écarts au troisième chiffre
+        significatif près). DÉFAUT DU SUJET OFFICIEL PORTÉ, PAS RÉPARÉ
+        (question 1) : la question 1.1 imprime « Déterminer le taux
+        d'avancement final de la réaction. En déduire. » — la phrase « En
+        déduire » est TRONQUÉE dans le sujet officiel, l'objet de la
+        déduction est physiquement absent (confirmé sur le PDF natif, la
+        ligne s'arrête là et la ligne suivante est la question 1.2). Reconduit
+        verbatim dans le stem ci-dessous, jamais complété en silence ; voir la
+        note de la question 1 pour ce que le contexte de l'exercice permet
+        d'en tirer. Un second défaut cosmétique du sujet touche l'en-tête de
+        cette partie, hors du périmètre transcrit ici : la page 2 imprime
+        « Partie ӏI : Réactions de l'acide butanoïque » avec un « ӏ »
+        (palochka cyrillique U+04CF) à la place du second « I » de « Partie
+        II » — confirmé par décodage du point de code, à ranger aux côtés du
+        « l » minuscule relevé dans bk-2017-n-x1 (piles) : deux graphies
+        fautives différentes du même « I », sur la même page. Aucune valeur
+        de `bk-2017-n-x3` (Exercice III Partie II, $F_p$ en litige) n'est
+        mobilisée ici.
+    intro: |-
+      **Réactions de l'acide butanoïque avec l'eau (examen national, session normale 2017, Exercice I — Partie II, §1, 2,00 points sur les 7,00 de l'exercice).**
+
+      *La Partie I de cet exercice — la pile aluminium-cuivre — vit sous la notion « Piles ». Le §2 de cette même Partie II — estérification de l'acide butanoïque contre anhydride butanoïque sur l'éthanol — vit sous la notion « Estérification et hydrolyse ».*
+
+      L'acide butanoïque $\text{C}_3\text{H}_7\text{COOH}$ est utilisé pour préparer des produits cosmétiques et des arômes alimentaires. On se propose dans cette partie d'étudier la réaction entre l'acide butanoïque et l'eau et de comparer les actions de cet acide et de l'anhydride butanoïque sur l'éthanol $\text{C}_2\text{H}_5\text{OH}$.
+
+      On prépare, dans un laboratoire de chimie, une solution aqueuse d'acide butanoïque de volume $V$ et de concentration molaire $C = 1{,}0\times10^{-2}\ \text{mol.L}^{-1}$. Le pH de cette solution est $\text{pH} = 3{,}41$.
+
+      On modélise la transformation produite par l'équation chimique suivante :
+
+      $$\text{C}_3\text{H}_7\text{COOH}_{(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons \text{C}_3\text{H}_7\text{COO}^-_{(aq)} + \text{H}_3\text{O}^+_{(aq)}$$
+    questions:
+      - id: q1
+        stem: |-
+          **(0,75 pt)** Déterminer le taux d'avancement final de la réaction. En déduire.
+        reasoning: |-
+          Le stem est transcrit tel qu'imprimé, y compris sa phrase finale : « En déduire. », sans objet — un défaut confirmé du sujet officiel (la ligne s'arrête là au même endroit sur le PDF natif, la ligne suivante est déjà la question 1.2). Ce que le raisonnement ci-dessous traite : le calcul du taux d'avancement final $\tau$, qui est la seule partie exploitable de la question ; et, par analogie avec la question 2.3 du §2 de cette même partie (« En déduire laquelle des deux réactions chimiques est totale »), la conclusion la plus naturelle que ce calcul permet — dire si la réaction est limitée ou totale.
+
+          Comme au rung 6 de cette leçon, $\tau = x_f/x_{max}$. Chaque molécule $\text{C}_3\text{H}_7\text{COOH}$ qui a réagi produit exactement un ion $\text{H}_3\text{O}^+$ (équation donnée), donc l'avancement final se lit sur $[\text{H}_3\text{O}^+]_{eq}$ ; une conversion totale de l'acide introduit aurait donné $[\text{H}_3\text{O}^+]_{max} = C$. Le volume $V$ se simplifie dans le rapport :
+
+          $$\tau = \frac{[\text{H}_3\text{O}^+]_{eq}}{C}$$
+
+          D'abord $[\text{H}_3\text{O}^+]_{eq}$, directement depuis le pH (rung 2) :
+
+          $$[\text{H}_3\text{O}^+]_{eq} = 10^{-\text{pH}} = 10^{-3{,}41} \approx 3{,}89\times10^{-4}\ \text{mol.L}^{-1}$$
+
+          Puis le rapport, avec $C = 1{,}0\times10^{-2}\ \text{mol.L}^{-1}$ :
+
+          $$\boxed{\tau \approx 0{,}0389 = 3{,}89\ \%}$$
+
+          **Ce que le contexte permet de traiter à la place de l'« En déduire » manquant.** $\tau$ est très inférieur à $1$ : seulement $3{,}89\ \%$ de l'acide introduit a réagi. On en déduit que la réaction de l'acide butanoïque avec l'eau est **limitée** — exactement le type de conclusion que le §2 de cette même partie (question 2.3) demande explicitement pour un couple de réactions comparées. C'est un acide **faible** (rung 6), signature cohérente avec un $pK_A$ proche de $4{,}8$ (question 3).
+        steps:
+          - math: '[\text{H}_3\text{O}^+]_{eq} = 10^{-\text{pH}} = 10^{-3{,}41} \approx 3{,}89\times10^{-4}\ \text{mol.L}^{-1}'
+            note: "Definition du pH (rung 2), inversee."
+          - math: '\tau = \frac{[\text{H}_3\text{O}^+]_{eq}}{C} = \frac{3{,}89\times10^{-4}}{1{,}0\times10^{-2}}'
+            note: "Rung 6 : x_f/x_max, volume simplifie."
+          - math: '\boxed{\tau \approx 0{,}0389 = 3{,}89\ \%}'
+            note: "Reaction limitee (tau << 1) : c'est ce que le contexte permet de deduire, voir le raisonnement."
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Trouver, en fonction de $C$ et du $pH$, l'expression du quotient de réaction $Q_{r,eq}$ à l'équilibre, puis calculer sa valeur.
+        reasoning: |-
+          Comme dans l'exemple travaillé du rung 4, on reconstitue les trois concentrations à l'équilibre depuis les deux seules données disponibles, $C$ et le pH. L'équation (donnée) produit $\text{C}_3\text{H}_7\text{COO}^-$ et $\text{H}_3\text{O}^+$ en quantités égales, et en négligeant la contribution de l'autoprotolyse de l'eau (hypothèse valable ici, $[\text{H}_3\text{O}^+]_{eq}$ étant très supérieure à $10^{-7}\ \text{mol.L}^{-1}$) :
+
+          $$[\text{C}_3\text{H}_7\text{COO}^-]_{eq} \approx [\text{H}_3\text{O}^+]_{eq} = 10^{-\text{pH}}$$
+
+          Ce qu'il reste de l'acide initial, une fois retirée la part qui a réagi (rung 6) :
+
+          $$[\text{C}_3\text{H}_7\text{COOH}]_{eq} \approx C - [\text{H}_3\text{O}^+]_{eq} = C - 10^{-\text{pH}}$$
+
+          $$\boxed{Q_{r,eq} = \frac{[\text{C}_3\text{H}_7\text{COO}^-]_{eq}\,[\text{H}_3\text{O}^+]_{eq}}{[\text{C}_3\text{H}_7\text{COOH}]_{eq}} = \frac{\left(10^{-\text{pH}}\right)^2}{C-10^{-\text{pH}}}}$$
+
+          Numériquement, avec $10^{-\text{pH}} \approx 3{,}89\times10^{-4}\ \text{mol.L}^{-1}$ (question 1) :
+
+          $$Q_{r,eq} = \frac{(3{,}89\times10^{-4})^2}{1{,}0\times10^{-2}-3{,}89\times10^{-4}}$$
+
+          Le piège nommé de cette question. Ne pas mettre $C$ seule au dénominateur : c'est $[\text{C}_3\text{H}_7\text{COOH}]_{eq}$, la concentration RESTANTE à l'équilibre, qu'il faut y placer — la différence est faible (question 1 vient de montrer que seulement $3{,}89\ \%$ de l'acide a réagi) mais elle n'est pas nulle.
+        steps:
+          - math: 'Q_{r,eq} = \frac{\left(10^{-\text{pH}}\right)^2}{C-10^{-\text{pH}}}'
+            note: "Expression en fonction de C et pH (rung 4), meme geste que l'exemple travaille du rung."
+          - math: 'Q_{r,eq} = \frac{(3{,}89\times10^{-4})^2}{1{,}0\times10^{-2}-3{,}89\times10^{-4}}'
+            note: "Application numerique."
+          - math: '\boxed{Q_{r,eq} \approx 1{,}57\times10^{-5}}'
+            note: "Valeur a l'equilibre."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** En déduire la valeur du $pK_A$ du couple $\text{C}_3\text{H}_7\text{COOH}_{(aq)}\,/\,\text{C}_3\text{H}_7\text{COO}^-_{(aq)}$.
+        reasoning: |-
+          Le rung 4 le pose une fois pour toutes : à l'équilibre, le quotient de réaction se fige exactement à la constante d'équilibre de la réaction. Or l'équation donnée dans l'énoncé EST la réaction de définition de $K_A$ pour ce couple (acide $AH$ + eau $\rightleftharpoons$ base $A^-$ + $\text{H}_3\text{O}^+$) : $K_A = Q_{r,eq}$, sans calcul supplémentaire, en reprenant la valeur de la question 2.
+
+          $$K_A = Q_{r,eq} \approx 1{,}57\times10^{-5}$$
+
+          $$pK_A = -\log K_A = -\log(1{,}57\times10^{-5})$$
+
+          $$\boxed{pK_A \approx 4{,}80}$$
+
+          Le piège nommé de cette question. « En déduire » signale qu'aucun calcul neuf n'est attendu : c'est une simple lecture de la question précédente à travers la définition $K_A = Q_{r,eq}$, puis $pK_A = -\log K_A$ (rung 4). Reprendre depuis les concentrations, en refaisant tout le calcul de la question 2, n'est pas faux mais fait perdre du temps que le mot « déduire » indique précisément d'économiser.
+        steps:
+          - math: 'K_A = Q_{r,eq} \approx 1{,}57\times10^{-5}'
+            note: "L'equation donnee EST la reaction de definition de K_A (rung 4) : K_A = Q_r,eq directement."
+          - math: 'pK_A = -\log K_A = -\log(1{,}57\times10^{-5})'
+            note: "Definition du pK_A (rung 4)."
+          - math: '\boxed{pK_A \approx 4{,}80}'
+            note: "Coherent avec un acide faible, tau petit (question 1)."

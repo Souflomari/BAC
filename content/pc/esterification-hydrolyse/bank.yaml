@@ -630,3 +630,152 @@ entries:
           Avec l'éthanol, cet anhydride réagirait par une réaction à **une seule flèche** — rapide (quelques minutes, souvent sans chauffage) et **totale** ($\tau = 1$, pas de plafond à $2/3$ ni même à $75\ \%$) — puisque le sous-produit n'est plus de l'eau (qui pourrait réhydrolyser l'ester) mais de l'acide benzoïque lui-même.
 
           **Le piège de cette question.** Répondre « il faut chauffer plus fort » ou « ajouter plus de catalyseur » : ce sont des leviers cinétiques (rung R4, question 2-1), qui accélèrent l'arrivée à l'équilibre sans jamais en changer la position. La question demande un réactif de substitution, pas un réglage des conditions expérimentales — c'est le signal qui pointe vers le rung R1 de « Contrôle par un réactif », pas vers un rung déjà mobilisé dans ce même exercice.
+
+  # ── bk-2017-n-x1c — 2017 N, Exercice I (Partie II, §2) : estérification vs anhydride sur l'éthanol ──
+  #
+  # NOTE ÉDITORIALE — LE CHOIX DE L'`id` (2026-08-28, ajout). Le sujet source
+  # (docs/sujets/_incoming/pc-2017-n.md, statut « VÉRIFIÉ — clearé pour
+  # conversion, réserves nommées », passe adversariale indépendante du
+  # 2026-08-28) NUMÉROTE ses exercices (I à IV, cartouche p. 1). Ce bloc est le
+  # §2 de la Partie II de l'Exercice I ; `x1` (Partie I, la pile aluminium-cuivre,
+  # content/pc/piles/bank.yaml) et `x1b` (§1, acide butanoïque + eau,
+  # content/pc/reactions-acido-basiques/bank.yaml) sont déjà pris — cette
+  # entrée-ci porte donc le suffixe `c`, même convention que
+  # bk-2015-n-x1/x1b/x1c (K-7 bis).
+  - id: bk-2017-n-x1c
+    title: "Estérification de l'acide butanoïque contre réaction de l'anhydride butanoïque sur l'éthanol : temps de demi-réaction, taux d'avancement final comparés, et l'équation de la réaction totale"
+    source:
+      year: 2017
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice I — Partie II, §2 : réactions de l'acide butanoïque et de son anhydride sur l'éthanol"
+    bareme_total: 2.75
+    duration_min: 17
+    sourcing:
+      status: sourced
+      note: >-
+        2017 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28F, AlloSchool element/57711
+        (course-422/upload-45103), page 3 sur 8 — Exercice I ( 7 points ),
+        Partie II, §2 : réactions de l'acide butanoïque et de son anhydride
+        sur l'éthanol, barème 2,75 pt (0,5+0,75+0,75+0,75), 4 questions, sur
+        les 7,00 pt de l'exercice complet dont la Partie I (pile
+        aluminium-cuivre, 2,25 pt) est transcrite sous
+        content/pc/piles/bank.yaml (bk-2017-n-x1) et le §1 de cette même
+        Partie II (acide butanoïque + eau, 2,00 pt) sous
+        content/pc/reactions-acido-basiques/bank.yaml (bk-2017-n-x1b) — pas de
+        double comptage : 2,25+2,00+2,75 = 7,00. Transcription vérifiée par
+        une passe adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2017-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion »). FIGURE A (page 3, l'avancement x(t) des deux
+        expériences) mesurée sur les objets vectoriels du PDF natif (listes
+        de points des polylignes), calibrée sur les lignes de grille noires :
+        origine (t=0 ; x=0), une maille = 10 min horizontalement et 0,1 mol
+        verticalement. Courbe (2) (rapide) : plateau mesuré 0,2986-0,2998 mol
+        (sur la ligne de grille 0,3), t_1/2 mesuré a 2,30 min. Courbe (1)
+        (lente) : plateau mesure 0,2009-0,2013 mol (sur la ligne de grille
+        0,2), t_1/2 mesure a 8,26 min. ADJUDICATION DES ETIQUETTES (1)/(2),
+        par chaine de mesure INDEPENDANTE de la proximite des cadres : n0 =
+        0,3 mol des deux reactifs dans les deux experiences donne x_max =
+        0,3 mol ; la question 2.3 exige qu'une seule courbe soit totale ; la
+        courbe qui plafonne a 0,300 (courbe superieure) est donc la totale,
+        c'est l'anhydride, la DEUXIEME experience, etiquette (2) ; la courbe
+        qui plafonne a 0,200 (courbe inferieure) est la LIMITEE, c'est
+        l'esterification, la PREMIERE experience, etiquette (1). Concorde
+        avec la rapidite demandee en 2.2 (la totale est aussi la plus
+        rapide). Contre-calcul refait ici, chiffre par chiffre : tau_f(1,
+        esterification) = 0,2013/0,3 ~ 0,671 ; tau_f(2, anhydride) =
+        0,2986/0,3 ~ 0,995. Ces valeurs coincident avec le recompte
+        independant de la verification adversariale (§ 13.9 et § 13.13 du
+        fichier source) et avec le corrige non officiel consulte par la
+        source (t_1/2 = 8 min et 2 min, tau_f = 0,67 et 1). REMARQUE
+        PEDAGOGIQUE : le tau_f ~ 0,670 de l'esterification simple (question
+        2-3, courbe 1) retombe quasi exactement sur le cas canonique du rung
+        R3 de cette leçon (K=4, tau=2/3~0,667, deux reactifs a chaine
+        lineaire en quantites egales) — n0 = 0,3 mol d'acide butanoique ET de
+        ethanol ici, exactement les conditions du rung R3. Aucune valeur de
+        `bk-2017-n-x3` (Exercice III Partie II, F_p en litige) n'est mobilisee
+        ici.
+    intro: |-
+      **Réactions de l'acide butanoïque et de son anhydride sur l'éthanol (examen national, session normale 2017, Exercice I — Partie II, §2, 2,75 points sur les 7,00 de l'exercice).**
+
+      *La Partie I de cet exercice — la pile aluminium-cuivre — vit sous la notion « Piles ». Le §1 de cette même Partie II — l'acide butanoïque avec l'eau, taux d'avancement final et $pK_A$ — vit sous la notion « Réactions acido-basiques ».*
+
+      Pour comparer la réaction de l'acide butanoïque et la réaction de son anhydride sur l'éthanol, on réalise séparément deux expériences à la même température.
+
+      - **La première expérience** : on introduit dans un ballon la quantité $n_0 = 0{,}3\ \text{mol}$ d'éthanol, la même quantité $n_0$ d'acide butanoïque, et quelques gouttes d'acide sulfurique concentré ; puis on chauffe à reflux le mélange. Une réaction d'estérification se produit.
+      - **La deuxième expérience** : on introduit dans un autre ballon la quantité $n_0 = 0{,}3\ \text{mol}$ d'anhydride butanoïque et la même quantité $n_0$ d'éthanol, puis on chauffe à reflux le mélange. Une réaction chimique se produit.
+
+      Les courbes (1) et (2) de la figure ci-dessous représentent respectivement l'évolution temporelle de l'avancement de la réaction lors de la première et de la deuxième expérience.
+
+      **Figure A (courbes $x(t)$, mesurée sur les objets vectoriels du PDF natif).** Axe des abscisses $t\,(\text{min})$, gradué de $0$ à $70$ ; axe des ordonnées $x\,(\text{mol})$, gradué $0{,}1$ · $0{,}2$ · $0{,}3$. Deux courbes croissantes partant de l'origine, toutes deux asymptotiques. **La courbe (2)** (supérieure) plafonne à $x \approx 0{,}30\ \text{mol}$ — pratiquement la conversion totale des $n_0 = 0{,}3\ \text{mol}$ engagés — et atteint la moitié de son plateau ($0{,}15\ \text{mol}$) vers $t \approx 2{,}3\ \text{min}$. **La courbe (1)** (inférieure) plafonne à $x \approx 0{,}20\ \text{mol}$ et atteint la moitié de son plateau ($0{,}10\ \text{mol}$) vers $t \approx 8{,}3\ \text{min}$. *(L'étiquetage (1)/(2) est confirmé par chaîne de mesure indépendante de la proximité des cadres imprimés — voir le sourcing de cette entrée.)*
+    questions:
+      - id: q1
+        part: "2.1 — Reflux : accélérer sans déplacer"
+        stem: |-
+          **(0,5 pt)** Quel est l'intérêt d'un chauffage à reflux ?
+        reasoning: |-
+          C'est exactement le rung R4 de cette leçon : le chauffage augmente l'agitation thermique, donc la fréquence des chocs efficaces (chapitre Transformations lentes et rapides), dans les deux sens à la fois — il accélère l'atteinte de l'équilibre sans en changer la position. Le montage à reflux permet de chauffer sans perdre de matière : les vapeurs qui s'échappent du mélange bouillant se condensent dans le réfrigérant et retombent dans le ballon, au lieu de s'évaporer dans l'air. *(Le catalyseur acide, quelques gouttes d'acide sulfurique concentré présentes dans la première expérience, joue le même rôle cinétique — voir la notion « Contrôle par un réactif ou par catalyse », rung R2 : il accélère l'estérification ET l'hydrolyse dans les mêmes proportions, sans déplacer l'équilibre.)*
+
+          **Le piège de cette question.** Répondre « pour obtenir plus d'ester » : c'est précisément l'idée que le rung R4 démonte par le test des deux flacons (avec et sans chauffage/catalyseur), qui atteignent la même composition finale à des vitesses différentes. Le reflux et le catalyseur achètent du temps, jamais de l'ester en plus — c'est tout l'intérêt de comparer ici deux réactifs différents (acide contre anhydride) pour changer réellement le rendement, question 2.3 et 2.4.
+      - id: q2
+        part: "2.2 — Lire deux temps de demi-réaction, comparer les vitesses"
+        stem: |-
+          **(0,75 pt)** Déterminer pour chaque expérience la valeur du temps de demi-réaction $t_{1/2}$. En déduire la réaction la plus rapide.
+        reasoning: |-
+          $t_{1/2}$ est défini, au rung R4 de la notion Suivi temporel d'une transformation — vitesse de réaction, comme l'instant où l'avancement atteint la moitié de son plateau observé : $x(t_{1/2}) = x_{plateau}/2$. C'est le plateau RÉELLEMENT atteint par CHAQUE courbe qui sert de référence — pas la valeur commune $n_0 = 0{,}3\ \text{mol}$ — puisqu'une des deux réactions, on va le voir à la question 2.3, ne va pas jusqu'au bout.
+
+          Sur la figure A, la courbe (1) (l'estérification, première expérience) plafonne à $x \approx 0{,}20\ \text{mol}$ ; elle atteint $0{,}10\ \text{mol}$ vers $t \approx 8{,}3\ \text{min}$. La courbe (2) (l'anhydride, deuxième expérience) plafonne à $x \approx 0{,}30\ \text{mol}$ ; elle atteint $0{,}15\ \text{mol}$ vers $t \approx 2{,}3\ \text{min}$.
+
+          $$\boxed{t_{1/2}(\text{esterification}) \approx 8\ \text{min} \qquad t_{1/2}(\text{anhydride}) \approx 2\ \text{min}}$$
+
+          Un $t_{1/2}$ plus petit signifie que l'état final est atteint plus vite : **la réaction de l'anhydride butanoïque sur l'éthanol (deuxième expérience) est la plus rapide.**
+
+          **Le piège de cette question.** Chercher la moitié de $n_0 = 0{,}3\ \text{mol}$ sur les DEUX courbes : ça marche pour la courbe (2), qui plafonne bien à $0{,}3$, mais donnerait une lecture fausse sur la courbe (1), dont le plateau réel ($0{,}20\ \text{mol}$) est inférieur à $n_0$ — exactement la trace visible d'une réaction limitée, objet de la question suivante.
+        steps:
+          - math: 't_{1/2}(1) : x(t_{1/2}) = 0{,}20/2 = 0{,}10\ \text{mol} \implies t_{1/2} \approx 8\ \text{min}'
+            note: "Plateau reellement atteint par la courbe (1), pas n0 = 0,3 mol."
+          - math: 't_{1/2}(2) : x(t_{1/2}) = 0{,}30/2 = 0{,}15\ \text{mol} \implies t_{1/2} \approx 2\ \text{min}'
+            note: "La courbe (2) plafonne bien pres de n0 = 0,3 mol."
+          - math: '\boxed{t_{1/2}(2) < t_{1/2}(1) : \text{la deuxieme experience (anhydride) est la plus rapide}}'
+            note: "Un temps de demi-reaction plus petit signifie un etat final atteint plus vite (rung R4, Suivi temporel)."
+      - id: q3
+        part: "2.3 — Comparer les taux d'avancement final, identifier la réaction totale"
+        stem: |-
+          **(0,75 pt)** Déterminer pour chaque expérience le taux d'avancement final de la réaction. En déduire laquelle des deux réactions chimiques est totale.
+        reasoning: |-
+          $\tau_f = x_f/x_{max}$, avec $x_{max} = n_0 = 0{,}3\ \text{mol}$ commun aux deux expériences (les deux réactifs sont introduits en quantités égales, stœchiométrie $1{:}1$ dans les deux cas), et $x_f$ le plateau réellement lu sur chaque courbe.
+
+          $$\tau_f(1) = \frac{0{,}20}{0{,}30} \approx 0{,}67 \qquad \tau_f(2) = \frac{0{,}30}{0{,}30} \approx 1{,}0$$
+
+          $\tau_f(2) \approx 1$ : la réaction de l'anhydride butanoïque sur l'éthanol (deuxième expérience) est **totale**. $\tau_f(1) \approx 0{,}67$ : la réaction de l'acide butanoïque sur l'éthanol (première expérience, une estérification classique) est **limitée** — et remarque ce que dit ce chiffre : $n_0$ égal des deux réactifs, tous deux à chaîne linéaire sans empêchement stérique, c'est très exactement le cas de l'« estérification simple » du rung R3 de cette leçon, dont le résultat canonique est $\tau = 2/3 \approx 0{,}667$. Le sujet retombe sur ce résultat presque au chiffre près.
+
+          $$\boxed{\text{La reaction de l'anhydride sur l'ethanol (deuxieme experience) est TOTALE ; l'esterification (premiere experience) est LIMITEE}}$$
+
+          **Le piège de cette question.** Diviser par $n_0$ commun, ce qui est correct ici, MAIS sans revérifier que les deux plateaux $x_f$ ont bien été relus sur CHAQUE courbe séparément (question 2.2) : une erreur de lecture de plateau se propage directement dans $\tau_f$, et c'est exactement ce qu'une réaction totale ($\tau_f \to 1$) contre une réaction limitée ($\tau_f < 1$) permet de trancher sans ambiguïté sur ce sujet.
+        steps:
+          - math: '\tau_f(1) = \frac{x_f(1)}{n_0} = \frac{0{,}20}{0{,}30} \approx 0{,}67'
+            note: "Esterification (premiere experience) : proche de 2/3, le cas canonique du rung R3 (K=4, meme n0)."
+          - math: '\tau_f(2) = \frac{x_f(2)}{n_0} = \frac{0{,}30}{0{,}30} \approx 1{,}0'
+            note: "Anhydride (deuxieme experience) : plateau confondu avec n0 = 0,3 mol."
+          - math: '\boxed{\tau_f(2) \approx 1 \implies \text{reaction de l anhydride TOTALE} \qquad \tau_f(1) \approx 0{,}67 \implies \text{esterification LIMITEE}}'
+            note: "Conclusion demandee par l'enonce."
+      - id: q4
+        part: "2.4 — Écrire l'équation de la réaction totale"
+        stem: |-
+          **(0,75 pt)** En utilisant les formules semi-développées, écrire l'équation de la réaction chimique qui se produit lors de la deuxième expérience.
+        reasoning: |-
+          La deuxième expérience met en jeu l'anhydride butanoïque, pas l'acide : c'est le geste du rung R1 de la notion Contrôle par un réactif ou par catalyse — remplacer l'acide carboxylique par son anhydride pour obtenir une réaction rapide ET totale, exactement ce que les questions 2.2 et 2.3 viennent de confirmer par la mesure. L'anhydride butanoïque s'obtient formellement en retirant une molécule d'eau à deux molécules d'acide butanoïque et en soudant les deux restes par un atome d'oxygène central :
+
+          $$\text{C}_3\text{H}_7-\text{CO}-\text{O}-\text{CO}-\text{C}_3\text{H}_7$$
+
+          Avec l'éthanol, il réagit — comme tout anhydride d'acide (rung R1 de « Contrôle par un réactif ou par catalyse ») — par une réaction à UNE SEULE FLÈCHE, puisque le sous-produit n'est plus l'eau (qui pourrait réhydrolyser l'ester formé) mais l'acide butanoïque lui-même :
+
+          $$\boxed{(\text{C}_3\text{H}_7\text{CO})_2\text{O} + \text{C}_2\text{H}_5-\text{OH} \longrightarrow \text{C}_3\text{H}_7-\text{COO}-\text{C}_2\text{H}_5 + \text{C}_3\text{H}_7\text{COOH}}$$
+
+          **Contrôle par le nom.** L'ester formé se nomme, par la règle du rung R1 de cette leçon-ci (radical de l'acide en « -oate », puis « de » et le radical de l'alcool en « -yle ») : **butanoate d'éthyle**.
+
+          **Le piège de cette question.** Écrire une double flèche $\rightleftharpoons$ par réflexe, comme pour l'estérification classique du rung R1-R2 : la réaction d'un anhydride d'acide est TOTALE, une seule flèche $\longrightarrow$ — c'est précisément ce que la question 2.3 vient d'établir par le calcul ($\tau_f(2) \approx 1$), et l'équation doit le refléter.
+        steps:
+          - math: '(\text{C}_3\text{H}_7\text{CO})_2\text{O} + \text{C}_2\text{H}_5-\text{OH} \longrightarrow \text{C}_3\text{H}_7-\text{COO}-\text{C}_2\text{H}_5 + \text{C}_3\text{H}_7\text{COOH}'
+            note: "Reaction TOTALE (une seule fleche) : anhydride + alcool -> ester + acide carboxylique (rung R1, notion Controle par un reactif ou par catalyse)."
