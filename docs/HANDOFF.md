@@ -193,13 +193,18 @@ brief standard, cold-executable by Sonnet.
 
 ### 6.1 Ce qui a changé pour l'élève
 
-**Le corpus d'épreuves est passé de 22 à 29 épreuves complètes** (≥ 19,5/20),
-187 entrées de banque, 37 notions dotées. Les sept gagnées ce jour :
-**SM 2017, 2021, 2022, 2023, 2024, 2025 normale et SExp 2018**, chacune
-passée à 20,00/20 par la conversion de son problème d'analyse.
+**Le corpus d'épreuves est passé de 22 à 32 épreuves complètes** (≥ 19,5/20),
+207 entrées de banque, 37 notions dotées. **Dix gagnées** sur cet arc :
 
-Deux d'entre elles étaient **invisibles** pour l'élève — SM 2021 (8,00) et
-SExp 2018 (9,00) sous le seuil d'affichage de 9,75. Elles existent maintenant.
+- **vague maths** (2026-08-27) : SM 2017, 2021, 2022, 2023, 2024, 2025 normale
+  et SExp 2018 — chacune par la conversion de son problème d'analyse ;
+- **vague physique-chimie** (2026-08-28) : SPC 2010, 2012 et 2015 normale —
+  chacune par la conversion de tout ce qui manquait, 13 à 18 points par sujet.
+
+**Cinq d'entre elles étaient INVISIBLES** pour l'élève, sous le seuil
+d'affichage de 9,75 : SM 2021 (8,00), SExp 2018 (9,00), SPC 2012 (7,00),
+SPC 2010 (4,25) et SPC 2015 (2,25). Elles n'ont pas seulement gagné des
+points — elles ont commencé à exister.
 
 Deux cas méritent d'être connus avant de reprendre :
 - **SM 2021 est PARTITIONNÉE** — Partie I → `fonction-exponentielle` (5,0),
