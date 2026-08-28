@@ -1559,3 +1559,141 @@ entries:
             note: "Resistance de la sonde dans le four."
           - math: '\boxed{\theta_2 \approx 210\ ^\circ\text{C}}'
             note: "Lecture sur la figure 3 (R en fonction de theta) : 0,30 kOhm tombe tres pres de la valeur tabulee 0,296 kOhm a 210 degres C."
+
+  # ── bk-2011-r-x3 — 2011 R, Exercice Électricité — Première phase : décharge d'un condensateur ──
+  # Sœur de bk-2011-r-x3b (content/pc/rlc-serie/bank.yaml, Deuxième phase du
+  # même exercice d'Électricité — ajustement de fréquence + entretien).
+  #
+  # S8, LE NUMÉRO 1-1 IMPRIMÉ DEUX FOIS — traité, non lissé. La numérotation
+  # imprimée du sujet officiel est, dans l'ordre : 1-1, 1-2, 1-1 (bis), 1-3,
+  # 1-4 — confirmé aux deux chemins par la vérification (couche de texte ET
+  # rendu). Les stems ci-dessous reproduisent cette numérotation VRAIE, avec
+  # la note « tel qu'imprimé » sur l'occurrence dupliquée ; les id de question
+  # sont rendus non ambigus par un suffixe (q1-1a / q1-1b) — ce ne sont PAS
+  # les numéros que le sujet imprime, seulement des clés internes distinctes.
+  - id: bk-2011-r-x3
+    title: "Décharge d'un condensateur : équation différentielle, vérification de la solution exponentielle, analyse dimensionnelle et détermination graphique de τ puis C"
+    source:
+      year: 2011
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice Électricité — Première phase : détermination de la capacité d'un condensateur"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2011 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS28 (3 h, coef 7), AlloSchool
+        element/94449 (Exercice « Électricité », § 1 — première phase, la
+        décharge d'un condensateur ; barème 2,50 pt (0,5×5) sur les 5,00 pt
+        de l'exercice complet, dont le § 2 + § 3 — deuxième phase, ajustement
+        de fréquence et entretien des oscillations — sont transcrits à part
+        sous content/pc/rlc-serie/bank.yaml, entrée bk-2011-r-x3b ; pas de
+        double comptage). Transcription source vérifiée par une passe
+        adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2011-r.md, statut « VÉRIFIÉ — clearé pour
+        conversion »), barème recompté par deux chemins concordants. S8 —
+        LE NUMÉRO 1-1 IMPRIMÉ DEUX FOIS, confirmé aux deux chemins (couche de
+        texte native ET rendu) : l'ordre imprimé est 1-1, 1-2, 1-1 (bis),
+        1-3, 1-4 — la troisième question, qui vérifie la solution
+        exponentielle, porte le même numéro que la première. Reproduit dans
+        les stems avec la note « tel qu'imprimé » ; ids de question rendus
+        non ambigus (q1-1a, q1-1b) pour le journal de révélation. LECTURE
+        GRAPHIQUE (q1-4) : $\tau \approx 2{,}4\ \text{ms}$, $C \approx
+        12\ \mu\text{F}$, établie par DEUX méthodes graphiques concordantes
+        sur le bitmap natif de la figure (tangente à l'origine : intersection
+        à $t \approx 2{,}38\ \text{ms}$ ; point $U_0/e$ de la courbe :
+        $t \approx 2{,}44\ \text{ms}$) — aucun corrigé officiel n'existe pour
+        ce sujet, deux chaînes de mesure concordantes sont le plafond de
+        preuve atteignable ici.
+    intro: |-
+      **Détermination de la capacité d'un condensateur par décharge (examen national, session de rattrapage 2011 — Exercice Électricité, Première phase, 2,50 points sur les 5,00 de l'exercice complet).**
+
+      *La Deuxième phase de cet exercice — ajustement de la fréquence d'une note musicale par un circuit RLC série, puis entretien des oscillations — est indépendante dans sa lecture graphique et traitée à part, sous la notion « RLC série » (entrée bk-2011-r-x3b). Rien de ce qui suit n'en dépend.*
+
+      Le piano génère un ensemble de notes musicales classées selon une échelle musicale constituée de sept notes musicales essentielles. Le tableau suivant donne les fréquences correspondantes aux notes musicales essentielles :
+
+      | Note | Do | Ré | Mi | Fa | Sol | La | Si |
+      |---|---|---|---|---|---|---|---|
+      | Fréquence | 262 | 294 | 330 | 349 | 392 | 440 | 494 |
+
+      *(La ligne « Fréquence » ne porte aucune unité sur le sujet officiel — défaut confirmé, reproduit tel quel ; ces valeurs sont exprimées en hertz.)*
+
+      Le but de cet exercice est d'ajuster une note musicale de fréquence déterminée en utilisant un circuit RLC série. Pour ajuster la note souhaitée, un groupe d'élèves a réalisé une expérience en deux phases : la **première phase**, ci-dessous, détermine la capacité $C$ d'un condensateur à l'aide d'un montage convenable ; la **deuxième phase** ajuste la fréquence de la note à l'aide d'un circuit RLC série.
+
+      **Première phase : détermination de la capacité d'un condensateur.** À l'instant $t = 0$, les élèves commencent la décharge d'un condensateur de capacité $C$, initialement chargé, à travers un conducteur ohmique de résistance $R = 200\ \Omega$. La courbe de la figure 1 traduit les variations de la tension $u_C(t)$ aux bornes du condensateur.
+
+      **Figure 1 — la décharge, avec son quadrillage** *(bitmap natif, mesuré au pixel).* Axe des ordonnées $u_C\,(\text{V})$, graduations principales $4$, $8$, $12$ ; axe des abscisses $t\,(\text{ms})$, graduations principales $3$, $6$, $9$, $12$. Une courbe pleine, décroissante, part de $u_C = 12\ \text{V}$ à $t = 0$ et tend vers $0$ sans jamais toucher l'axe. Une DROITE en pointillés part du MÊME point $(0\ ;\ 12\ \text{V})$ et coupe l'axe des temps un peu avant la graduation $3\ \text{ms}$ *(mesurée au pixel : intersection à $t \approx 2{,}38\ \text{ms}$ — c'est la tangente à l'origine de la courbe).*
+    questions:
+      - id: q1-1a
+        stem: |-
+          **(0,5 pt)** **1-1-** Représenter le schéma du dispositif expérimental permettant d'obtenir cette courbe.
+        reasoning: |-
+          Le dispositif de décharge (rung R4) est le plus simple possible : PAS de générateur — celui qui a chargé le condensateur en amont a été débranché — seulement le condensateur $C$, déjà chargé, et le conducteur ohmique $R$, refermés en une seule boucle par l'interrupteur. Le sens du courant s'inverse par rapport à la charge : c'est le condensateur qui, désormais, alimente $R$, et non l'inverse.
+
+          $$\boxed{\text{Une seule maille : condensateur } C \text{ (initialement charge) en serie avec le conducteur ohmique } R, \text{ boucle fermee par l'interrupteur a } t=0}$$
+
+          Le piège nommé de cette question. Laisser un générateur dans le schéma, par réflexe venu du montage de charge. En décharge, le générateur est absent (débranché ou court-circuité) : c'est justement ce qui distingue les deux régimes (rung R1/R4) — sans lui, il n'y a plus de tension imposée « à viser », seulement la tension déjà stockée qui s'évacue dans $R$.
+      - id: q1-2
+        stem: |-
+          **(0,5 pt)** **1-2-** Trouver l'équation différentielle vérifiée par la tension $u_C(t)$ aux bornes du condensateur au cours de la décharge.
+        reasoning: |-
+          Exactement l'équation de décharge établie au rung R4 : sans générateur, la loi des mailles se réduit à $u_R + u_C = 0$. Avec $u_R = R\,i$ et $i = C\,\dfrac{du_C}{dt}$ (définition de la capacité, rung R1), on reporte.
+        steps:
+          - math: 'u_R + u_C = 0 \qquad \text{avec} \qquad u_R = R\,i = R\,C\,\frac{du_C}{dt}'
+            note: "Loi des mailles sans generateur (decharge) ; i = C.duC/dt (rung R1)."
+          - math: '\boxed{RC\,\frac{du_C}{dt} + u_C = 0}'
+            note: "Equation differentielle de la decharge (rung R4)."
+      - id: q1-1b
+        stem: |-
+          **(0,5 pt)** **1-1-** Vérifier que la solution de l'équation différentielle précédente est : $u_C = U_0.e^{-\frac{t}{RC}}$, où $U_0$ est une constante. *(Numéro « 1-1 » tel qu'imprimé sur le sujet officiel — le sujet répète ce numéro, déjà utilisé à la question précédente ; voir S8. Reproduit ici sous l'id `q1-1b` pour lever toute ambiguïté.)*
+        reasoning: |-
+          « Vérifier » signale la méthode du rung R2 : on ne redécouvre pas la solution, on **substitue** la forme proposée dans l'équation et on contrôle qu'elle la satisfait à chaque instant.
+
+          On calcule la dérivée de la forme proposée, $\dfrac{du_C}{dt} = -\dfrac{U_0}{RC}\,e^{-t/RC}$, et on reporte dans le membre de gauche de l'équation de la question précédente :
+
+          $$RC\times\left(-\frac{U_0}{RC}\,e^{-t/RC}\right) + U_0\,e^{-t/RC} = -U_0\,e^{-t/RC} + U_0\,e^{-t/RC} = 0$$
+
+          Le membre de gauche s'annule identiquement, quel que soit $t$ : l'équation est vérifiée, pour n'importe quelle constante $U_0$ — c'est bien la condition initiale, $u_C(0) = U_0$, qui fixera sa valeur (ici $U_0 = 12\ \text{V}$, lu sur la figure 1).
+        steps:
+          - math: '\frac{du_C}{dt} = -\frac{U_0}{RC}\,e^{-t/RC}'
+            note: "Derivee de la forme proposee."
+          - math: 'RC\left(-\frac{U_0}{RC}\,e^{-t/RC}\right) + U_0\,e^{-t/RC} = 0'
+            note: "Substitution dans l'equation de la question 1-2 : le RC se simplifie."
+          - math: '\boxed{u_C(t) = U_0\,e^{-t/RC} \ \text{verifie bien l equation, pour tout } U_0}'
+            note: "U0 est fixee par la condition initiale : U0 = uC(0) = 12 V, lu sur la figure 1."
+      - id: q1-3
+        stem: |-
+          **(0,5 pt)** **1-3-** Par analyse dimensionnelle, montrer que le produit $RC$ est homogène à un temps.
+        reasoning: |-
+          Même contrôle qu'au rung R1 : $R$ se mesure en ohms ($\Omega = \text{V/A}$), $C$ en farads ($\text{F} = \text{A}{\cdot}\text{s/V}$). On multiplie les deux unités.
+        steps:
+          - math: '[R]\times[C] = \frac{\text{V}}{\text{A}}\times\frac{\text{A}\cdot\text{s}}{\text{V}} = \text{s}'
+            note: "Produit des unites de R (ohm = V/A) et de C (farad = A.s/V) : volts et amperes se simplifient."
+          - math: '\boxed{RC \text{ est homogene a un temps}}'
+            note: "Confirme que RC peut jouer le role de la constante de temps tau (rung R1)."
+      - id: q1-4
+        stem: |-
+          **(0,5 pt)** **1-4-** Déterminer graphiquement la constante de temps $\tau$, et déduire la valeur de la capacité $C$ du condensateur étudié.
+        reasoning: |-
+          **Lecture graphique.** Le rung R3 donne deux méthodes équivalentes pour une décroissance exponentielle, adaptées ici au cas de la décharge (asymptote à $0$, et non à $E$) : la tangente à l'origine, qui coupe l'asymptote horizontale ($u_C = 0$, l'axe des temps) exactement en $t = \tau$ ; ou le point où $u_C$ atteint $U_0/e$.
+
+          Sur la figure 1, la droite en pointillés est précisément cette tangente à l'origine — elle part du même point que la courbe, $(0\ ;\ 12\ \text{V})$, et coupe l'axe des temps un peu avant la graduation $3\ \text{ms}$ : mesurée au pixel sur le bitmap natif, l'intersection tombe à $t \approx 2{,}38\ \text{ms}$. Un contrôle indépendant — le point où la courbe (pas la tangente) atteint $U_0/e = 12/e \approx 4{,}4\ \text{V}$ — tombe à $t \approx 2{,}44\ \text{ms}$, une valeur très proche. Les deux méthodes du R3 concordent : on retient la valeur ronde qu'elles encadrent.
+
+          $$\tau \approx 2{,}4\ \text{ms}$$
+
+          On isole $C$ dans $\tau = RC$ (rung R1) :
+
+          $$C = \frac{\tau}{R} = \frac{2{,}4\times10^{-3}}{200}$$
+
+          $$\boxed{C \approx 1{,}2\times10^{-5}\ \text{F} = 12\ \mu\text{F}}$$
+
+          **Une chaîne de mesure, pas une donnée imprimée.** Comme sur toute lecture graphique de ce sujet, aucun corrigé officiel n'existe pour le confirmer : les deux méthodes de lecture, indépendantes l'une de l'autre, qui retombent à moins de $3\ \%$ l'une de l'autre, sont le plafond de preuve atteignable ici.
+        steps:
+          - math: '\tau \approx 2{,}4\ \text{ms}'
+            note: "Lecture graphique (rung R3, methode de la tangente a l'origine ET methode U0/e, les deux concordantes -- voir le raisonnement)."
+          - math: 'C = \frac{\tau}{R} = \frac{2{,}4\times10^{-3}}{200}'
+            note: "tau = RC (rung R1), R=200 Ohm donne dans l'enonce."
+          - math: '\boxed{C \approx 1{,}2\times10^{-5}\ \text{F} = 12\ \mu\text{F}}'
+            note: "Capacite du condensateur -- lecture graphique, aucun corrige officiel n'existe pour ce sujet."

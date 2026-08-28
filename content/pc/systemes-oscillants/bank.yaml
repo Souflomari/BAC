@@ -1326,3 +1326,160 @@ entries:
             note: "Identique a Delta Epe de la question 2 : coherent, puisque Delta Ec = 0."
           - math: '\boxed{\Delta E_m < 0 \implies \text{dissipation par frottement fluide (rung R4, aspects energetiques ; rung R6, regime pseudo-periodique)}}'
             note: "Explication physique du signe negatif."
+
+  # ── bk-2011-r-x4b — 2011 R, Exercice Mécanique — 2ème situation : oscillateur solide-ressort ──
+  # Sœur de bk-2011-r-x1 (content/pc/rotation-axe-fixe/bank.yaml, 1ère
+  # situation du MÊME exercice Mécanique — la grue, 2,25 pt, DÉJÀ EN BANQUE).
+  # 2,25 + 3,25 = 5,50 = le barème vrai de l'exercice Mécanique (la page 6 du
+  # scan imprime « Mécanique (05 points) », en contradiction avec la page 1
+  # qui imprime « Mécanique (05,5 points) » — divergence du sujet officiel,
+  # TRANCHÉE par trois contraintes imprimées indépendantes (recompte des
+  # marges, total de l'épreuve à 20,00, sous-total « Physique : 13 points » de
+  # la page 1) : c'est bien l'en-tête de la page 6 qui est fautif, le barème
+  # réel de l'exercice Mécanique est 5,50. Voir le sourcing.note ci-dessous.
+  - id: bk-2011-r-x4b
+    title: "Oscillateur horizontal {solide, ressort} : amplitude, période propre et phase lues au graphe, raideur déduite, énergie cinétique et vitesse au passage à l'équilibre"
+    source:
+      year: 2011
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice Mécanique — 2ème situation : étude d'un oscillateur mécanique"
+    bareme_total: 3.25
+    duration_min: 20
+    sourcing:
+      status: sourced
+      note: >-
+        2011 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS28 (3 h, coef 7), AlloSchool
+        element/94449 (Exercice « Mécanique », 2ème situation — étude d'un
+        oscillateur mécanique {solide, ressort} ; barème 3,25 pt
+        (0,75+0,75+0,75+1) sur les 5,50 pt de l'exercice Mécanique complet,
+        dont la 1ère situation — une grue, poulie + charge suspendue,
+        2,25 pt — est DÉJÀ EN BANQUE sous
+        content/pc/rotation-axe-fixe/bank.yaml, entrée bk-2011-r-x1 ; pas de
+        double comptage, 2,25+3,25=5,50). BARÈME DE L'EXERCICE MÉCANIQUE,
+        divergence du sujet officiel TRANCHÉE : la page 1 du cartouche
+        imprime « Mécanique (05,5 points) », la page 6 (en-tête de
+        l'exercice) imprime « Mécanique (05 points) ». Trois contraintes
+        imprimées indépendantes tranchent en faveur de 5,50 — le recompte
+        des 32 marges du sujet (par deux chemins concordants), le total de
+        l'épreuve (7,00+2,50+5,00+5,50=20,00, contre 19,50 avec 5,00), et le
+        sous-total « Physique : (13 points) » de la page 1
+        (2,50+5,00+5,50=13,00, contre 12,50 qui se contredirait) : c'est
+        l'en-tête de la page 6 qui est fautif. CROSS-LIST HONORÉ SANS DOUBLE
+        ENTRÉE : les questions 2-3-a et 2-3-b (énergie cinétique, énergie
+        mécanique, vitesse à l'équilibre) relèvent, dans leur définition
+        générale, de la notion « Aspects énergétiques » (rung 5, le ressort
+        emmagasine $\frac12kx^2$) ; nommée et renvoyée dans le raisonnement,
+        jamais dupliquée en entrée séparée. Transcription source vérifiée par
+        une passe adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2011-r.md, statut « VÉRIFIÉ — clearé pour
+        conversion »), barème recompté par deux chemins concordants. LECTURE
+        GRAPHIQUE (q2-1) : $X_m = 4{,}0\ \text{cm}$, $T_0 = 0{,}60\ \text{s}$,
+        $\varphi = 0$, établie par chaîne de mesure au pixel sur le bitmap
+        natif de la figure (minima mesurés à $0{,}285$·$0{,}885$·$1{,}485\ \text{s}$,
+        espacés d'exactement $0{,}600\ \text{s}$) — aucun corrigé officiel
+        n'existe pour ce sujet, c'est le plafond de preuve atteignable ici.
+        Contrôle par conséquence sur $K$ : $K = m_2(2\pi/T_0)^2 \approx
+        19{,}96 \approx 20\ \text{N.m}^{-1}$, une valeur ronde qui conforte
+        les trois lectures graphiques.
+    intro: |-
+      **Étude d'un oscillateur mécanique {solide, ressort} (examen national, session de rattrapage 2011 — Exercice Mécanique, 2ème situation, 3,25 points sur les 5,50 de l'exercice complet).**
+
+      *La 1ère situation de cet exercice — l'étude dynamique d'une grue — est indépendante et déjà en banque à part, sous la notion « Rotation autour d'un axe fixe » (entrée bk-2011-r-x1). Rien de ce qui suit n'en dépend.*
+
+      Les études dynamique et énergétique des systèmes mécaniques, dans différentes situations, permettent la détermination de quelques caractéristiques du système étudié et de suivre son évolution temporelle. On néglige tous les frottements et on prend $g = 10\ \text{m.s}^{-2}$.
+
+      **2ème situation.** On fixe à l'extrémité libre d'un ressort de masse négligeable, à spires non jointives et de raideur $K$, un solide $(S_2)$ de masse $m_2 = 182\ \text{g}$. L'autre extrémité est fixée à un support fixe (figure 2). Le solide $(S_2)$ est susceptible de glisser sur un plan horizontal.
+
+      On écarte le solide $(S_2)$ de sa position d'équilibre, d'une distance $X_m$, et on l'abandonne sans vitesse initiale. Pour étudier le mouvement du centre de gravité $G_2$ du solide $(S_2)$, on choisit un repère galiléen $(O,\vec{i})$, tel que $G_2$ coïncide à l'équilibre avec l'origine $O$. On repère la position de $G_2$ à un instant $t$ dans le repère $(O,\vec{i})$, par son abscisse $x$.
+
+      L'équation différentielle du mouvement de $G_2$ s'écrit sous la forme $\ddot{x} + \dfrac{K}{m_2}x = 0$, et sa solution est : $x(t) = X_m\cos\!\left(\dfrac{2\pi}{T_0}t + \varphi\right)$.
+
+      Une étude expérimentale a permis de tracer la courbe représentée sur la figure 3.
+
+      **Figure 2 — l'oscillateur horizontal.** À gauche, un mur hachuré. Un ressort à spires non jointives (une douzaine de boucles) part du mur, horizontalement, et se raccorde à un bloc carré portant un point plein en son centre : l'étiquette $(S_2)$ est au-dessus du bloc, l'étiquette $G_2$ en dessous. Le ressort et le bloc reposent sur un plan horizontal. Sous ce plan, un axe horizontal fléché vers la droite porte un point $O$ (étiqueté sous l'axe), placé exactement à l'aplomb de $G_2$ — le dessin représente donc la position d'équilibre, cohérent avec « $G_2$ coïncide à l'équilibre avec l'origine $O$ » — et, à sa droite, une courte flèche $\vec{i}$.
+
+      **Figure 3 — la courbe $x(t)$, avec son quadrillage** *(bitmap natif, mesuré au pixel).* Axe des ordonnées $x\,(\text{cm})$, graduations principales $4$, $2$, $0$, $-2$, $-4$ ; axe des abscisses $t\,(\text{s})$, graduations principales $0{,}3$, $0{,}6$, $0{,}9$, $1{,}2$. La courbe part de $x(0) \approx +3{,}98\ \text{cm}$ à $t = 0$, un MAXIMUM (le premier maximum mesuré tombe à $t \approx 0{,}03\ \text{s}$, à moins de deux pixels de l'axe des ordonnées). Minima mesurés à $t \approx 0{,}285$, $0{,}885$ et $1{,}485\ \text{s}$ — espacés d'exactement $0{,}600\ \text{s}$ ; amplitudes lues : $+4{,}03$ / $-3{,}97$ / $-3{,}97$ / $+4{,}00\ \text{cm}$.
+    questions:
+      - id: q2-1
+        stem: |-
+          **(0,75 pt)** **2-1-** Déterminer graphiquement les grandeurs suivantes : l'amplitude $X_m$, la période propre $T_0$ et la phase $\varphi$ à l'origine des dates.
+        reasoning: |-
+          **Lecture graphique** (rung 2). L'amplitude $X_m$ est l'écart maximal atteint par la courbe : les extrema de la figure 3 touchent $+4$ et $-4\ \text{cm}$ (mesurés à $0{,}03$ à $0{,}05\ \text{cm}$ près des traits chiffrés) :
+
+          $$X_m = 4{,}0\ \text{cm} = 4{,}0\times10^{-2}\ \text{m}$$
+
+          La période propre $T_0$ se lit entre deux passages identiques, en prenant l'écart le plus large possible pour limiter l'erreur : les trois minima mesurés, à $0{,}285$, $0{,}885$ et $1{,}485\ \text{s}$, sont espacés d'EXACTEMENT $0{,}600\ \text{s}$ à chaque fois — une régularité qui confirme la lecture :
+
+          $$T_0 = 0{,}60\ \text{s}$$
+
+          La phase $\varphi$ ne se lit pas séparément : elle se lit sur la FORME du départ. La solution proposée s'écrit $x(t) = X_m\cos\!\left(\frac{2\pi}{T_0}t+\varphi\right)$ ; à $t=0$, $x(0) = X_m\cos\varphi$. La courbe part de $x(0) \approx X_m$ (le sommet même du premier maximum, à $t\approx0{,}03\ \text{s}$, à peine après l'origine) : c'est un cosinus qui démarre DÉJÀ à son maximum, donc $\cos\varphi = 1$.
+
+          $$\boxed{X_m = 4{,}0\ \text{cm} \qquad T_0 = 0{,}60\ \text{s} \qquad \varphi = 0\ \text{rad}}$$
+        steps:
+          - math: '\boxed{X_m = 4{,}0\ \text{cm}}'
+            note: "Lecture graphique : extrema de la courbe (figure 3) touchant +4 et -4 cm."
+          - math: '\boxed{T_0 = 0{,}60\ \text{s}}'
+            note: "Lecture graphique : trois minima consecutifs, espaces d'exactement 0,600 s a chaque fois."
+          - math: 'x(0) \approx X_m \implies \cos\varphi = 1'
+            note: "La courbe demarre a son maximum (t=0 tombe quasiment sur le premier sommet) : c'est un cosinus non dephase."
+          - math: '\boxed{\varphi = 0\ \text{rad}}'
+            note: "Phase a l'origine des dates."
+      - id: q2-2
+        stem: |-
+          **(0,75 pt)** **2-2-** En déduire la valeur de la raideur $K$ du ressort.
+        reasoning: |-
+          L'équation différentielle de l'énoncé donne $\omega_0^2 = K/m_2$, et la période propre $T_0 = 2\pi/\omega_0$ (rung 1) ; il reste à retourner la relation avec la valeur de $T_0$ lue à la question précédente.
+        steps:
+          - math: 'T_0 = 2\pi\sqrt{\frac{m_2}{K}} \implies K = \frac{4\pi^2\,m_2}{T_0^2}'
+            note: "On retourne la relation du rung 1."
+          - math: 'K = \frac{4\pi^2\times0{,}182}{(0{,}60)^2}'
+            note: "Application numerique : m2=182 g=0,182 kg, T0=0,60 s (question 2-1)."
+          - math: '\boxed{K \approx 19{,}96 \approx 20\ \text{N.m}^{-1}}'
+            note: "Valeur ronde : conforte les trois lectures graphiques de la question 2-1."
+      - id: q2-3a
+        part: "2-3 — Bilan énergétique de l'oscillateur"
+        stem: |-
+          **(0,75 pt)** **2-3-a-** On choisit comme état de référence de l'énergie potentielle de pesanteur le plan horizontal auquel appartient $G_2$ à l'équilibre, et comme état de référence de l'énergie potentielle d'élasticité le ressort non déformé. Montrer que l'expression de l'énergie cinétique $E_C$ du solide $(S_2)$ s'écrit sous la forme : $E_C = \dfrac{K}{2}(X_m^2 - x^2)$.
+        reasoning: |-
+          C'est le pendule d'énergie de la notion « Aspects énergétiques » (rung 5), appliqué à cet oscillateur horizontal : sans frottement, l'énergie mécanique $E_m = E_C + E_{pe}$ se CONSERVE, avec $E_{pe} = \frac{K}{2}x^2$ l'énergie potentielle élastique. On évalue $E_m$ là où elle est la plus simple à calculer : aux positions extrêmes $x = \pm X_m$, où le solide s'arrête un instant pour repartir en sens inverse, $E_C = 0$ et toute l'énergie est élastique.
+
+          $$E_m = E_C(\pm X_m) + E_{pe}(\pm X_m) = 0 + \frac{K}{2}X_m^2 = \frac{K}{2}X_m^2$$
+
+          $E_m$ étant constante à tout instant $t$ (conservation), on l'égale à sa forme générale $E_C(t) + \frac{K}{2}x^2(t)$ et on isole $E_C$.
+        steps:
+          - math: 'E_m = E_C + E_{pe} = E_C + \frac{K}{2}x^2 \qquad \text{(constante, sans frottement)}'
+            note: "Pendule d'energie (Aspects energetiques, rung 5) : Em = Ec + Epe, conservee."
+          - math: 'E_m = \frac{K}{2}X_m^2 \qquad \text{(evaluee a un extremum, ou } E_C=0\text{)}'
+            note: "Aux positions extremes x=+-Xm, la vitesse s'annule : toute l'energie y est elastique."
+          - math: '\boxed{E_C = E_m - \frac{K}{2}x^2 = \frac{K}{2}X_m^2 - \frac{K}{2}x^2 = \frac{K}{2}\left(X_m^2 - x^2\right)}'
+            note: "On isole Ec, en egalant les deux expressions de l'energie mecanique constante."
+      - id: q2-3b
+        stem: |-
+          **(1 pt)** **2-3-b-** Trouver l'expression de l'énergie mécanique $E_m$ du système {solide $(S_2)$ – ressort} en fonction de $X_m$ et $K$, et déduire la valeur de la vitesse $V_{G2}$ au passage de $G_2$ à la position d'équilibre dans le sens positif.
+        reasoning: |-
+          **L'énergie mécanique** vient directement du calcul de la question précédente, évaluée à un extremum (ou l'énergie totale est purement élastique) :
+
+          $$\boxed{E_m = \frac{K}{2}\,X_m^2}$$
+
+          **La vitesse à l'équilibre.** Au passage par $x = 0$ (position d'équilibre), l'énergie potentielle élastique $E_{pe} = \frac{K}{2}x^2$ s'annule : toute l'énergie mécanique — constante, sans frottement — est alors CINÉTIQUE. C'est l'exact opposé de la situation aux extrema (question 2-3-a), où c'est $E_C$ qui s'annule : les deux réservoirs de la notion « Aspects énergétiques » (rung 5) se vident l'un dans l'autre à tour de rôle.
+
+          $$\frac{1}{2}m_2\,V_{G2}^2 = E_m = \frac{K}{2}X_m^2 \implies V_{G2}^2 = \frac{K}{m_2}X_m^2 \implies |V_{G2}| = X_m\sqrt{\frac{K}{m_2}}$$
+
+          $$|V_{G2}| = 4{,}0\times10^{-2}\times\sqrt{\frac{20}{0{,}182}} = 4{,}0\times10^{-2}\times\sqrt{109{,}9} \approx 4{,}0\times10^{-2}\times10{,}48$$
+
+          $$\boxed{V_{G2} \approx +0{,}42\ \text{m.s}^{-1}}$$
+
+          Le signe est POSITIF parce que la question précise explicitement « dans le sens positif » (le sens de $\vec{i}$, fixé par le repère $(O,\vec{i})$ de l'énoncé) : à l'équilibre le solide passe deux fois par cycle, une fois dans chaque sens, avec la même norme de vitesse — seul le signe change.
+
+          Le piège nommé de cette question. Réutiliser $x$ (variable générale) au lieu de $X_m$ dans $E_m$ : l'énergie MÉCANIQUE est une CONSTANTE du mouvement, elle ne dépend d'aucun $x$ particulier — c'est justement pour cela qu'on peut l'évaluer une fois pour toutes, à l'extremum où le calcul est le plus simple, puis la réutiliser à n'importe quel autre instant, ici à $x=0$.
+        steps:
+          - math: '\boxed{E_m = \frac{K}{2}\,X_m^2}'
+            note: "Energie mecanique, constante (sans frottement), evaluee a un extremum (question 2-3-a)."
+          - math: '\frac12m_2\,V_{G2}^2 = \frac{K}{2}X_m^2 \implies V_{G2} = X_m\sqrt{\frac{K}{m_2}}'
+            note: "A x=0, Epe=0 : toute l'energie mecanique est cinetique (rung 5, aspects energetiques)."
+          - math: 'V_{G2} = 4{,}0\times10^{-2}\times\sqrt{\frac{20}{0{,}182}}'
+            note: "Application numerique : Xm=0,04 m, K=20 N/m (question 2-2), m2=0,182 kg."
+          - math: '\boxed{V_{G2} \approx +0{,}42\ \text{m.s}^{-1}}'
+            note: "Signe positif : passage dans le sens de i (impose par l'enonce, sens positif)."

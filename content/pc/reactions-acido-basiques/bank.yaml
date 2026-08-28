@@ -75,6 +75,27 @@
 # de bk-2020-n-x1 (mêmes volumes, mêmes concentrations) — voir le commentaire
 # au-dessus de l'entrée pour ce qui la distingue malgré tout des trois autres.
 #
+# HOMONYME D'IDENTIFIANT AVEC content/pc/rotation-axe-fixe/bank.yaml — NON UNE
+# ERREUR ICI, à lire avant de toucher à l'entrée bk-2011-r-x1 ci-dessous.
+# L'entrée bk-2011-r-x1 de CE fichier (Chimie, Partie I — acide méthanoïque)
+# et l'entrée bk-2011-r-x1 DÉJÀ EN BANQUE dans
+# content/pc/rotation-axe-fixe/bank.yaml (Mécanique, 1ère situation — la grue)
+# portent le MÊME id, sur le MÊME sujet (2011, rattrapage), dans deux fichiers
+# différents : ce n'est pas un doublon, ce sont deux exercices DISTINCTS —
+# c'est couvert par docs/grounding/known-issues.md K-7 (un entry_id n'est
+# unique que dans son propre fichier ; la clé du journal porte notion_id +
+# item_id ; l'assembleur d'épreuves de web/src/lib/examens.ts trie par
+# libellé, jamais par id seul). L'entrée de rotation-axe-fixe est MAL NOMMÉE :
+# la Mécanique est le 4ᵉ et dernier exercice du cartouche de la page 1
+# (Chimie · Les ondes · Electricité · Mécanique), elle devrait porter x4, pas
+# x1 — défaut d'identifiant confirmé par une passe adversariale indépendante
+# du 2026-08-28, consigné à K-7 bis, arbitrage owner encore ouvert, rien
+# renommé nulle part. L'entrée CI-DESSOUS porte la position VRAIE : la Chimie
+# est bien le 1ᵉʳ exercice du sujet, x1 lui revient de droit. Ne pas
+# « résoudre » cette collision en renommant CE fichier vers x1b ou un autre
+# suffixe au prétexte de l'homonyme : c'est l'AUTRE fichier (rotation-axe-fixe)
+# qui ment sur sa position, pas celui-ci.
+#
 # Le 2025 R (bk-2025-r-x1, ajouté le 2026-08-27) est la CINQUIÈME entrée de
 # rattrapage ; c'est le §1 de l'exercice 1 (étude d'une solution aqueuse
 # d'acide éthanoïque : équation, taux d'avancement, pK_A calculé PUIS relu
@@ -2522,3 +2543,188 @@ entries:
             note: "Definition du pK_A (rung 4)."
           - math: '\boxed{pK_A \approx 4{,}80}'
             note: "Coherent avec un acide faible, tau petit (question 1)."
+
+  # ── bk-2011-r-x1 — 2011 R, Exercice de Chimie (Partie I) : acide méthanoïque, eau puis dosage par la soude ──
+  # PREMIER exercice VRAI du sujet 2011 R (voir le bloc HOMONYME D'IDENTIFIANT
+  # en tête de fichier — collision assumée avec rotation-axe-fixe, K-7 bis).
+  # Sa Partie II (pile Nickel-Zinc, indépendante) est transcrite à part sous
+  # content/pc/piles/bank.yaml, entrée bk-2011-r-x1b.
+  - id: bk-2011-r-x1
+    title: "Acide méthanoïque : réaction avec l'eau (taux d'avancement, pKA) puis dosage pH-métrique par la soude (équivalence, indicateur coloré)"
+    source:
+      year: 2011
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice de Chimie — Partie I : étude d'une solution d'acide méthanoïque"
+    bareme_total: 5
+    duration_min: 30
+    sourcing:
+      status: sourced
+      note: >-
+        2011 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS28 (3 h, coef 7), AlloSchool
+        element/94449 (Chimie, Partie I — étude d'une solution d'acide
+        méthanoïque : réaction avec l'eau puis dosage par une solution
+        d'hydroxyde de sodium ; barème 5,00 pt (2,50+2,50) sur les 7,00 pt de
+        l'exercice de Chimie complet, dont la Partie II — pile Nickel-Zinc,
+        2,00 pt — est transcrite à part sous content/pc/piles/bank.yaml,
+        entrée bk-2011-r-x1b ; pas de double comptage). IDENTIFIANT : la
+        Chimie est le 1er exercice du cartouche de la page 1 (Chimie · Les
+        ondes · Electricité · Mécanique) ; bk-2011-r-x1 lui revient de droit.
+        Le MÊME id bk-2011-r-x1 existe déjà, sur le MÊME sujet, dans
+        content/pc/rotation-axe-fixe/bank.yaml — CE N'EST PAS le même
+        exercice : cette entrée-là transcrit la Mécanique (1ère situation, la
+        grue), le 4ᵉ exercice du sujet, mal nommée x1 au lieu de x4 (défaut
+        d'identifiant confirmé, docs/grounding/known-issues.md K-7 bis,
+        arbitrage owner ouvert, rien renommé) ; K-7 couvre la coexistence des
+        deux (un entry_id n'est unique que dans son propre fichier).
+        Transcription source vérifiée par une passe adversariale indépendante
+        (2026-08-28, docs/sujets/_incoming/pc-2011-r.md, statut « VÉRIFIÉ —
+        clearé pour conversion »), barème recompté par deux chemins
+        concordants (couche de texte du PDF + bandes d'encre des JPG, 32/32
+        valeurs, aucun écart). pKA RECALCULÉ ET CORRIGÉ à 3,74 (le fichier
+        source transcrit portait « ≈ 3,8 ») : $K_A = C_a\tau^2/(1-\tau)
+        \approx 1{,}81\times10^{-4}$, $pK_A \approx 3{,}74$ ; contrôle
+        interne élégant, à $V_b = 10\ \text{mL} = V_{bE}/2$
+        (demi-équivalence) le sujet donne $\text{pH} = 3{,}74$, et
+        $\text{pH} = pK_A$ à la demi-équivalence — le pH-mètre de la figure
+        affiche d'ailleurs littéralement « 3.74 ». DÉFAUT DU SUJET OFFICIEL,
+        reproduit verbatim et non réparé (S2) : l'équation de la question 1
+        note l'eau $\text{H}_2\text{O}_{(aq)}$ au lieu de
+        $\text{H}_2\text{O}_{(\ell)}$ (l'eau est le solvant, une espèce
+        liquide pure, jamais « aqueuse ») — sans conséquence sur le calcul
+        demandé.
+    intro: |-
+      **Étude d'une solution d'acide méthanoïque, puis dosage par la soude (examen national, session de rattrapage 2011 — Exercice de Chimie, Partie I, 5,00 points sur les 7,00 de l'exercice complet).**
+
+      *La Partie II de cet exercice — l'étude de la pile Nickel-Zinc — est indépendante et traitée à part, sous la notion « Piles » (entrée bk-2011-r-x1b). Rien de ce qui suit n'en dépend.*
+
+      L'acide méthanoïque est l'un des médicaments efficaces pour débarrasser les abeilles productrices de miel des parasites prédateurs. Le but de cette partie est l'étude de la réaction de l'acide méthanoïque avec l'eau, puis avec une solution d'hydroxyde de sodium.
+
+      **Données** (toutes les mesures à $25\,^\circ\text{C}$) : produit ionique de l'eau $K_e = 10^{-14}$ ; zones de virage de trois indicateurs colorés :
+
+      | Indicateur coloré | Hélianthine | Rouge de méthyle | Phénolphtaléine |
+      |---|---|---|---|
+      | Zone de virage | 3,1 – 4,4 | 4,2 – 6,2 | 8,2 – 10 |
+
+      **1 — Réaction de l'acide méthanoïque avec l'eau.** On considère une solution $(S_a)$ d'acide méthanoïque de volume $V$ et de concentration molaire $C_a = 10^{-2}\ \text{mol.L}^{-1}$. La mesure du pH de cette solution donne $\text{pH} = 2{,}9$. On modélise la réaction entre l'acide méthanoïque et l'eau par l'équation suivante :
+
+      $$\text{HCOOH}_{(aq)} + \text{H}_2\text{O}_{(aq)} \rightleftharpoons \text{HCOO}^-_{(aq)} + \text{H}_3\text{O}^+_{(aq)}$$
+
+      *(L'eau est notée $\text{H}_2\text{O}_{(aq)}$ dans le sujet officiel, et non $\text{H}_2\text{O}_{(\ell)}$ — défaut du sujet officiel, reproduit tel quel ; l'eau est le solvant, une espèce liquide pure, jamais « aqueuse », mais cela ne change rien au calcul demandé.)*
+
+      **2 — Réaction de l'acide méthanoïque avec une solution d'hydroxyde de sodium.** Le dispositif de la figure ci-contre est utilisé pour titrer un volume $V_a = 20\ \text{mL}$ de la solution $(S_a)$ précédente par une solution $(S_b)$ d'hydroxyde de sodium de concentration molaire $C_b = 10^{-2}\ \text{mol.L}^{-1}$.
+
+      **Figure — le dispositif de dosage** *(bitmap natif du sujet, sans légende « Figure n » — décrite depuis les mesures au pixel de la source vérifiée).* De gauche à droite : une burette graduée **(1)**, montée verticalement sur une potence, terminée en pointe au-dessus du bécher ; une électrode de pH-mètre **(2)** plongée dans le bécher depuis le haut ; un agitateur magnétique **(3)**, bloc gris sous le bécher portant un petit barreau aimanté au fond ; le liquide contenu dans le bécher **(4)**, repéré sous la surface. Le pH-mètre, relié par un câble à l'électrode, affiche `3.74` (point décimal, alors que l'énoncé écrit « pH = 3,74 » avec une virgule).
+    questions:
+      - id: q1-1
+        part: "1 — Réaction de l'acide méthanoïque avec l'eau"
+        stem: |-
+          **(0,5 pt)** **1-1-** Construire le tableau d'avancement de l'évolution du système.
+        reasoning: |-
+          On raisonne en concentrations (le volume $V$ n'est pas donné numériquement, mais il est commun à toutes les espèces et se simplifiera partout), avec l'avancement volumique $y$. À l'état initial, seul l'acide est apporté, à la concentration $C_a$ ; l'eau est le solvant, en large excès, on ne la suit pas. Chaque coefficient stœchiométrique valant $1$, un avancement $y$ fait baisser $\text{HCOOH}$ de $y$ et monter chacun des deux produits de $y$.
+
+          | État | $\text{HCOOH}$ | $\text{HCOO}^-$ | $\text{H}_3\text{O}^+$ |
+          |---|:---:|:---:|:---:|
+          | initial | $C_a$ | $0$ | $0$ |
+          | en cours | $C_a - y$ | $y$ | $y$ |
+          | final (éq.) | $C_a - y_f$ | $y_f$ | $y_f$ |
+
+          À l'équilibre, $[\text{HCOO}^-]_{eq} = [\text{H}_3\text{O}^+]_{eq} = y_f$ : les deux produits sont formés à parts égales, exactement ce qui sert à la question suivante.
+      - id: q1-2
+        stem: |-
+          **(1 pt)** **1-2-** Montrer que le taux d'avancement final de cette transformation s'écrit sous la forme : $\tau = \dfrac{10^{-pH}}{C_a}$. Calculer la valeur de $\tau$, et conclure.
+        reasoning: |-
+          Le taux d'avancement final compare l'avancement réellement atteint à celui d'une réaction supposée totale : $\tau = y_f/y_{max}$. Le tableau de la question précédente montre que l'avancement final se lit directement sur $[\text{H}_3\text{O}^+]_{eq}$, connue par le pH (rung 2, $[\text{H}_3\text{O}^+] = 10^{-pH}$) ; une conversion totale de l'acide apporté donnerait $y_{max} = C_a$. On divise l'un par l'autre.
+
+          Numériquement, $\tau = 10^{-2{,}9}/10^{-2} = 10^{-0{,}9} \approx 0{,}126$, soit $12{,}6\ \%$. C'est très inférieur à $1$ : l'acide méthanoïque ne réagit que très partiellement avec l'eau — exactement la signature d'un acide **faible** (rung 6), cohérente avec le $pK_A$ trouvé à la question 1-4.
+        steps:
+          - math: '\tau = \frac{y_f}{y_{max}} = \frac{[\text{H}_3\text{O}^+]_{eq}}{C_a} = \frac{10^{-pH}}{C_a}'
+            note: "Avancement final lu sur H3O+ (produit a parts egales avec HCOO-), avancement maximal = Ca."
+          - math: '\tau = \frac{10^{-2{,}9}}{10^{-2}} = 10^{-0{,}9}'
+            note: "Application numerique, pH=2,9 et Ca=1e-2 mol/L."
+          - math: '\boxed{\tau \approx 0{,}126 = 12{,}6\ \%}'
+            note: "Tau tres inferieur a 1 : reaction limitee, acide faible."
+      - id: q1-3
+        stem: |-
+          **(0,5 pt)** **1-3-** Exprimer le quotient de réaction $Q_{r,\text{éq}}$ à l'équilibre en fonction de $C_a$ et $\tau$.
+        reasoning: |-
+          Cette écriture générale — un quotient de réaction à l'équilibre exprimé avec $\tau$ plutôt qu'avec des concentrations chiffrées — appartient, dans sa DÉFINITION GÉNÉRALE, à la notion « État d'équilibre d'un système chimique » (rungs 2 et 3 : le taux d'avancement final, le quotient de réaction). On l'applique ici au cas particulier de cette réaction. Le tableau de la question 1-1, relu avec $\tau$ : chaque produit vaut $[\text{HCOO}^-]_{eq} = [\text{H}_3\text{O}^+]_{eq} = \tau\,C_a$, et il reste $[\text{HCOOH}]_{eq} = C_a(1-\tau)$ d'acide non dissocié. On reporte dans le quotient associé à l'équation de la question 1.
+        steps:
+          - math: 'Q_{r,\text{éq}} = \frac{[\text{HCOO}^-]_{eq}\,[\text{H}_3\text{O}^+]_{eq}}{[\text{HCOOH}]_{eq}} = \frac{(\tau C_a)(\tau C_a)}{C_a(1-\tau)}'
+            note: "Concentrations d'equilibre ecrites avec tau (produits = tau.Ca, acide restant = Ca(1-tau))."
+          - math: '\boxed{Q_{r,\text{éq}} = \frac{C_a\,\tau^2}{1-\tau}}'
+            note: "Le Ca au numerateur se simplifie une fois."
+      - id: q1-4
+        stem: |-
+          **(0,5 pt)** **1-4-** Déterminer la valeur de la constante $pK_A$ du couple $(\text{HCOOH}_{(aq)}/\text{HCOO}^-_{(aq)})$.
+        reasoning: |-
+          À l'équilibre, le quotient de réaction se fige exactement à la constante d'équilibre de la réaction (rung 4). Or l'équation de la question 1 EST la réaction de définition de $K_A$ pour ce couple (acide + eau $\rightleftharpoons$ base + $\text{H}_3\text{O}^+$) : $K_A = Q_{r,\text{éq}}$, sans calcul neuf, en reprenant l'expression de la question 1-3 et le $\tau$ de la question 1-2.
+
+          $$K_A = \frac{C_a\,\tau^2}{1-\tau} = \frac{10^{-2}\times(0{,}126)^2}{1-0{,}126} \approx 1{,}81\times10^{-4}$$
+
+          $$\boxed{pK_A = -\log K_A \approx 3{,}74}$$
+
+          **Un contrôle qui referme la boucle, plus loin dans cet exercice.** À la question 2-2, le sujet donne $\text{pH} = 3{,}74$ à $V_b = 10\ \text{mL}$, exactement $V_{bE}/2$ (demi-équivalence, question 2-3) : or à la demi-équivalence, $\text{pH} = pK_A$ (rung 10). Les deux voies — celle-ci, purement calculée à partir de la Partie 1, et celle-là, lue sur le dosage de la Partie 2 — retombent sur la même valeur, $3{,}74$. Ce n'est pas un hasard : c'est la signature d'un sujet auto-cohérent, et c'est la valeur à retenir (pas un arrondi du type « $pK_A \approx 3{,}8$ », qui masquerait cette coïncidence).
+        steps:
+          - math: 'K_A = Q_{r,\text{éq}} = \frac{C_a\,\tau^2}{1-\tau} = \frac{10^{-2}\times(0{,}126)^2}{1-0{,}126}'
+            note: "L'equation de la question 1 EST la reaction de definition de K_A : K_A = Qr,eq directement."
+          - math: '\boxed{K_A \approx 1{,}81\times10^{-4}}'
+            note: "Constante d'acidite du couple."
+          - math: '\boxed{pK_A = -\log K_A \approx 3{,}74}'
+            note: "Valeur corrigee (le sujet transcrit portait environ 3,8) ; confirmee au point 2-2 par la lecture a la demi-equivalence."
+      - id: q2-1
+        part: "2 — Dosage par une solution d'hydroxyde de sodium"
+        stem: |-
+          **(1 pt)** **2-1-** Écrire les noms correspondants aux numéros (1), (2) et (3) des composants du dispositif, et le nom de la solution correspondante au numéro (4).
+        reasoning: |-
+          Un dosage pH-métrique (rung 9) mobilise toujours le même quatuor d'objets, et la figure les montre chacun à sa place fonctionnelle : la burette **(1)**, montée sur une potence et terminée en pointe au-dessus du bécher, contient et verse le réactif titrant, la solution $(S_b)$ d'hydroxyde de sodium ; l'électrode **(2)**, plongée dans le mélange, est la sonde du pH-mètre, qui mesure le pH au fil du versement ; l'agitateur magnétique **(3)**, sous le bécher, homogénéise le mélange à chaque ajout, pour que la mesure de pH soit représentative de tout le bécher et non d'une seule goutte ; enfin **(4)** désigne le liquide contenu dans le bécher lui-même — au tout début du dosage, c'est la solution titrée $(S_a)$ d'acide méthanoïque (puis, au fil du versement, le mélange réactionnel).
+
+          $$\boxed{(1) = \text{burette} \quad (2) = \text{électrode du pH-mètre} \quad (3) = \text{agitateur magnétique} \quad (4) = \text{la solution } (S_a)\text{ d'acide méthanoïque}}$$
+      - id: q2-2
+        stem: |-
+          **(0,5 pt)** **2-2-** Le pH du mélange prend la valeur $\text{pH} = 3{,}74$, lorsque le volume de la solution $(S_b)$ versé est $V_b = 10\ \text{mL}$. À l'aide du tableau d'avancement, s'assurer, en calculant le taux d'avancement final, que cette réaction est totale.
+        reasoning: |-
+          Avant l'équivalence, verser $(S_b)$ transforme progressivement $\text{HCOOH}$ en $\text{HCOO}^-$ : le mélange est un couple acide/base en présence des deux formes, exactement la situation du rung 5 (diagramme de prédominance), qui donne $\log\!\left(\dfrac{[\text{HCOO}^-]}{[\text{HCOOH}]}\right) = \text{pH} - pK_A$. On connaît maintenant $pK_A \approx 3{,}74$ (question 1-4) et le $\text{pH} = 3{,}74$ mesuré : les deux sont ÉGAUX, donc l'écart est nul, donc le rapport vaut $1$ : les deux formes sont en quantités égales dans le bécher à cet instant.
+
+          Comme le carbone du méthanoate se conserve intégralement entre les deux formes, $n(\text{HCOO}^-) + n(\text{HCOOH restant}) = n_0(\text{acide}) = C_a V_a = 10^{-2}\times20\times10^{-3} = 2{,}0\times10^{-4}\ \text{mol}$ ; à égalité, chacune vaut donc $1{,}0\times10^{-4}\ \text{mol}$ — c'est l'avancement final, $x_f = n(\text{HCOO}^-) = 1{,}0\times10^{-4}\ \text{mol}$.
+
+          Avant l'équivalence, c'est la base versée qui limite l'avancement maximal possible : $x_{max} = n_0(\text{base versée}) = C_b V_b = 10^{-2}\times10\times10^{-3} = 1{,}0\times10^{-4}\ \text{mol}$.
+
+          $$\tau = \frac{x_f}{x_{max}} = \frac{1{,}0\times10^{-4}}{1{,}0\times10^{-4}} = 1{,}00$$
+
+          $$\boxed{\tau = 100\ \%\ \implies\ \text{la réaction est totale}}$$
+
+          **Le contrôle, indépendant du calcul.** C'est cohérent avec le rung 9 : la réaction support d'un dosage doit être quasi totale ($K \gg 1$), et ici $K = K_A/K_e = 1{,}81\times10^{-4}/10^{-14} \approx 1{,}8\times10^{10}$ — un $K$ écrasant, qui impose $\tau \approx 1$ sans même refaire le calcul par les quantités de matière.
+        steps:
+          - math: '\text{pH} = pK_A + \log\!\left(\frac{n(\text{HCOO}^-)}{n(\text{HCOOH})}\right) \ \text{et}\ \text{pH} = pK_A \implies n(\text{HCOO}^-) = n(\text{HCOOH})'
+            note: "pH mesure = pKA trouve a la question 1-4 : les deux formes sont en quantites egales."
+          - math: 'n(\text{HCOO}^-) = \frac{C_a V_a}{2} = \frac{2{,}0\times10^{-4}}{2} = 1{,}0\times10^{-4}\ \text{mol} = x_f'
+            note: "Conservation du carbone du methanoate entre HCOOH restant et HCOO- forme."
+          - math: 'x_{max} = C_b V_b = 10^{-2}\times10\times10^{-3} = 1{,}0\times10^{-4}\ \text{mol}'
+            note: "Avant l'equivalence, la base versee limite l'avancement maximal possible."
+          - math: '\boxed{\tau = \frac{x_f}{x_{max}} = 1{,}00 = 100\ \%}'
+            note: "Reaction totale."
+      - id: q2-3
+        stem: |-
+          **(0,5 pt)** **2-3-** Calculer le volume $V_{bE}$ qu'on doit verser pour atteindre l'équivalence.
+        reasoning: |-
+          À l'équivalence, les réactifs ont été introduits dans les proportions stœchiométriques ($1{:}1$ ici) : la quantité d'acide initialement présente égale la quantité de base versée — une égalité de quantités de matière, jamais une valeur de pH imposée (rung 9).
+        steps:
+          - math: 'C_a\,V_a = C_b\,V_{bE}'
+            note: "Relation d'equivalence : egalite des quantites de matiere."
+          - math: 'V_{bE} = \frac{C_a\,V_a}{C_b} = \frac{10^{-2}\times20}{10^{-2}}'
+            note: "Application numerique : Ca=Cb=1e-2 mol/L, Va=20 mL."
+          - math: '\boxed{V_{bE} = 20\ \text{mL}}'
+            note: "Volume a l'equivalence."
+      - id: q2-4
+        stem: |-
+          **(0,5 pt)** **2-4-** Préciser en justifiant, parmi les indicateurs colorés indiqués dans le tableau précédent, celui le plus convenable à ce dosage.
+        reasoning: |-
+          Le critère du rung 11 : la zone de virage de l'indicateur doit **encadrer** le pH à l'équivalence, pour que le changement de couleur tombe dans le saut. Ici un acide FAIBLE est dosé par une base FORTE : le rung 9 l'établit noir sur blanc pour ce cas précis — à l'équivalence, il ne reste que la base conjuguée $\text{HCOO}^-$ en solution (tout l'acide a été consommé), qui réagit avec l'eau et rend le milieu **basique** — donc $\text{pH}_E > 7$, sans même avoir besoin d'en calculer la valeur précise.
+
+          On teste les trois zones du tableau contre cette seule contrainte $\text{pH}_E > 7$ : l'hélianthine ($3{,}1$–$4{,}4$) et le rouge de méthyle ($4{,}2$–$6{,}2$) sont entièrement en dessous de $7$, ils ne peuvent pas encadrer $\text{pH}_E$. Seule la phénolphtaléine ($8{,}2$–$10$) est au-dessus de $7$.
+
+          $$\boxed{\text{L'indicateur convenable est la phénolphtaléine.}}$$
+
+          Le piège nommé de cette question. Chercher à calculer $\text{pH}_E$ au chiffre près avant de choisir : le raisonnement qualitatif — acide faible dosé par base forte, donc $\text{pH}_E > 7$ — suffit à lui seul à éliminer les deux autres indicateurs, dont les zones ne dépassent jamais $7$.

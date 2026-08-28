@@ -679,3 +679,126 @@ entries:
           **Le contrôle qui confirme.** L'émetteur est entre les deux microphones, et l'écran montre que $M_1$ reçoit avant $M_2$ : il est donc plus proche de $M_1$, ce qui impose $0 < \ell < \dfrac{d}{2} = 1{,}425\ \text{m}$. La valeur $1{,}085\ \text{m}$ tombe bien dans cet intervalle. Un résultat négatif, ou supérieur à $1{,}425\ \text{m}$, aurait signalé une erreur de raisonnement — pas d'arithmétique.
 
           **Le piège nommé de cette question, et c'est là que se joue le $0{,}75$ pt.** Oublier que $M_1$ aussi attend son propre son, et écrire $\tau = \dfrac{d - \ell}{v}$ comme si seul le trajet vers $M_2$ comptait. On obtient alors $\ell = d - v\,\tau = 2{,}85 - 0{,}68 = 2{,}17\ \text{m}$ — une valeur supérieure à $d/2$, qui placerait l'émetteur plus près de $M_2$ que de $M_1$, en contradiction directe avec l'ordre des salves à l'écran. Variante du même oubli : $\ell = v\,\tau = 0{,}68\ \text{m}$, qui traite $\tau$ comme s'il était le temps de vol jusqu'à $M_1$. **Le facteur $2$ de $(d - 2\ell)$ est toute la difficulté de la question** : il vient de ce que déplacer l'émetteur de $1\ \text{cm}$ vers $M_1$ raccourcit un trajet de $1\ \text{cm}$ **et** allonge l'autre de $1\ \text{cm}$. Dernier réflexe à s'interdire : mesurer $\ell$ à la règle sur la figure 1 — elle n'est pas à l'échelle, l'énoncé la dessine avec $\ell/d \approx 0{,}30$ alors que le calcul donne $0{,}38$.
+
+  # ── bk-2011-r-x2 — 2011 R, Exercice Les ondes : ultrasons dans l'air puis échographie d'une nappe de pétrole ──
+  - id: bk-2011-r-x2
+    title: "Ondes ultrasonores : célérité dans l'air par lecture d'oscillogramme, puis épaisseur d'une nappe de pétrole par échographie"
+    source:
+      year: 2011
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice Les ondes : célérité dans l'air puis épaisseur d'une nappe de pétrole"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2011 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS28 (3 h, coef 7), AlloSchool
+        element/94449 (Exercice « Les ondes », § 1 — détermination de la
+        célérité de propagation d'une onde ultrasonore dans l'air, § 2 —
+        détermination de l'épaisseur d'une nappe souterraine de pétrole ;
+        barème 2,50 pt (1,50 + 1,00) sur les 20,00 pt du sujet). Les deux
+        paragraphes relèvent tous deux de la propagation d'un signal et du
+        retard temporel (R3) et sont réunis dans une seule entrée pour ne
+        pas orpheliner le § 2 (une seule question, 1,00 pt). Transcription
+        source vérifiée par une passe adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2011-r.md, statut « VÉRIFIÉ — clearé pour
+        conversion »), barème recompté par deux chemins concordants. LECTURE
+        GRAPHIQUE (§ 1, q1-1) : $\tau = 1{,}5\ \text{ms}$, établie par une
+        chaîne de mesure au pixel sur le bitmap natif de la figure — la
+        flèche « 0,2 ms » couvre en réalité DEUX mailles du quadrillage
+        (1 maille = 0,1 ms), et l'écart entre les salves A et B vaut 15
+        mailles ; deux chaînes de mesure concordantes (couche de texte +
+        bitmap), aucun corrigé officiel n'existe pour ce sujet — c'est le
+        plafond de preuve atteignable. FIGURE 4 (§ 2), axe `t(s)` relu au
+        pixel ×8 (un seul glyphe `s`, ni `m` ni `µ` devant) : $L = 780\ \text{m}$
+        est la valeur qui découle fidèlement des graduations imprimées ;
+        l'ordre de grandeur est surprenant pour une nappe souterraine, mais
+        rien dans le sujet ne permet de requalifier l'unité — le scan fait
+        foi, la valeur est publiée telle qu'elle se déduit.
+    intro: |-
+      **Les ondes : détermination de la célérité de propagation d'une onde ultrasonore dans l'air, puis de l'épaisseur d'une nappe souterraine de pétrole (examen national, session de rattrapage 2011 — Exercice Les ondes, 2,50 points).**
+
+      L'échographie utilisant les ondes ultrasonores est une méthode de détermination des épaisseurs des nappes souterraines. Cet exercice vise à déterminer la célérité de propagation des ondes ultrasonores dans l'air, ainsi que l'épaisseur d'une nappe souterraine de pétrole.
+
+      **§ 1 — Détermination de la célérité des ondes ultrasonores dans l'air.** On place sur un banc rectiligne un émetteur $E$ d'ondes ultrasonores, et deux récepteurs $R_1$ et $R_2$ distants de $d = 0{,}5\ \text{m}$ (figure 1). On visualise sur l'écran d'un oscilloscope, aux entrées $Y_1$ et $Y_2$, les signaux reçus par les deux récepteurs. On obtient l'oscillogramme représenté sur la figure 2. $A$ représente le début du signal reçu par $R_1$, et $B$ le début de celui reçu par $R_2$.
+
+      **Figure 1 — le banc à ultrasons.** Un boîtier étiqueté $E$ (l'émetteur) ; une ligne horizontale part de lui et traverse la figure vers la droite, avec une flèche indiquant le sens de propagation. $R_1$, identique, posé sur la ligne, ergot tourné vers la gauche ; $R_2$, identique, en dessous et à droite. Deux pointillés verticaux descendent des positions de $R_1$ et $R_2$ ; entre eux, en bas, une flèche à double pointe cotée $d = 0{,}5\ \text{m}$, tendue exactement entre $R_1$ et $R_2$.
+
+      **Figure 2 — l'oscillogramme, avec son quadrillage.** Deux traces horizontales : la trace supérieure (voie $Y_1$, signal reçu par $R_1$) porte une salve d'encre dense étiquetée $A$ ; la trace inférieure (voie $Y_2$, signal reçu par $R_2$) porte une salve identique, décalée vers la droite, étiquetée $B$. Une flèche à double pointe, au-dessus des deux traces, est étiquetée « $0{,}2\ \text{ms}$ » — *(mesurée au pixel sur le bitmap natif : ses deux pointes tombent sur des lignes de quadrillage distantes de DEUX mailles, donc 1 maille = 0,1 ms, et non 0,2 ms comme l'étiquette pourrait le laisser croire au premier regard).* L'écart entre le début de la salve $A$ et le début de la salve $B$ vaut, mesuré sur ce même quadrillage, exactement 15 mailles.
+
+      **§ 2 — Détermination de l'épaisseur d'une nappe souterraine de pétrole.** Pour déterminer l'épaisseur $L$ d'une nappe souterraine de pétrole, un ingénieur utilise la sonde d'un appareil d'échographie. La sonde envoie, perpendiculairement à la surface libre de la couche de pétrole, à l'instant $t_0 = 0$, un signal ultrasonore de très courte durée. Une partie du signal se réfléchit sur cette surface, tandis que l'autre partie continue la propagation dans la couche de pétrole pour se réfléchir une deuxième fois sur son fond, et revenir vers la sonde. À l'instant $t_1$, la sonde révèle la raie $P_1$ correspondant à l'onde réfléchie sur la surface libre ; à l'instant $t_2$, elle révèle la raie $P_2$ correspondant à l'onde réfléchie sur le fond de la couche de pétrole (figure 4).
+
+      **Figure 3 — la sonde et la nappe.** Un petit carré étiqueté « Sonde », en haut. Une ligne verticale en descend, portant une flèche vers le bas (aller) et une flèche vers le haut (retour). Deux traits horizontaux épais délimitent une bande grisée, la couche de pétrole : le trait supérieur porte l'étiquette « Surface libre », le trait inférieur l'étiquette « Fond ». À droite, une double flèche verticale entre les deux traits, cotée « $L$ ».
+
+      **Figure 4 — le spectre des raies.** Axe vertical fléché, étiqueté « Amplitude des raies » ; axe horizontal fléché, étiqueté **`t(s)`** *(relu au pixel ×8 sur le bitmap natif : un seul glyphe, `s`, ni `m` ni `µ` devant — l'axe est bien en secondes)*. Origine à `0`. Deux raies verticales partant de l'axe des temps : $P_1$, la plus haute, à l'abscisse graduée `1` ; $P_2$, plus basse (environ les deux tiers de la hauteur de $P_1$), à l'abscisse graduée `2,2`.
+
+      **Donnée : la célérité de propagation des ondes ultrasonores dans le pétrole brut est $v = 1{,}3\ \text{km.s}^{-1}$.**
+    questions:
+      - id: q1-1
+        part: "§ 1 — Célérité des ondes ultrasonores dans l'air"
+        stem: |-
+          **(0,5 pt)** **1-1-** Déterminer à partir de l'oscillogramme de la figure 2, le retard horaire $\tau$ entre les deux signaux reçus par les deux récepteurs $R_1$ et $R_2$.
+        reasoning: |-
+          **Lecture graphique.** Le retard se lit comme au R3 de cette leçon : l'écart horizontal entre deux points homologues des deux signaux (ici, le début de chaque salve), converti en temps grâce au quadrillage de l'oscilloscope. La difficulté propre à cette figure est de bien calibrer une maille : la flèche « 0,2 ms » imprimée ne couvre pas UNE maille du quadrillage, mais DEUX — ses deux pointes tombent chacune sur une ligne, et il y a une ligne intermédiaire entre les deux. Donc 1 maille $= 0{,}1\ \text{ms}$, et non $0{,}2\ \text{ms}$.
+
+          Le début de la salve $A$ et le début de la salve $B$ sont séparés, sur ce quadrillage, de $15$ mailles.
+
+          $$\tau = 15 \times 0{,}1\ \text{ms} = 1{,}5\ \text{ms}$$
+
+          **Le piège nommé de cette question.** Lire « 1 maille = 0,2 ms » directement sur l'étiquette de la flèche, sans vérifier combien de mailles elle enjambe réellement. Cette lecture, appliquée aux mêmes 15 mailles, donnerait $\tau = 3{,}0\ \text{ms}$ — le double de la valeur correcte — et fausserait en cascade la célérité de la question suivante.
+        steps:
+          - math: '1\ \text{maille} = 0{,}1\ \text{ms}'
+            note: "La fleche 0,2 ms enjambe DEUX mailles du quadrillage (lecture au pixel), pas une seule."
+          - math: '\tau = 15\ \text{mailles} \times 0{,}1\ \text{ms/maille}'
+            note: "Ecart mesure entre le debut de la salve A et le debut de la salve B."
+          - math: '\boxed{\tau = 1{,}5\ \text{ms} = 1{,}5\times10^{-3}\ \text{s}}'
+            note: "Retard graphique -- deux chaines de mesure concordantes (couche de texte du sujet + bitmap), aucun corrige officiel n'existe pour ce sujet."
+      - id: q1-2
+        stem: |-
+          **(0,5 pt)** **1-2-** Calculer $v_{air}$ la vitesse de propagation des ondes ultrasonores dans l'air.
+        reasoning: |-
+          Application directe de la définition de R3, $v = d/\tau$, avec $d$ la distance entre les deux récepteurs (donnée, figure 1) et $\tau$ le retard trouvé à la question précédente.
+        steps:
+          - math: 'v_{air} = \frac{d}{\tau} = \frac{0{,}5}{1{,}5\times10^{-3}}'
+            note: "Definition de la celerite (R3) : distance parcourue divisee par la duree mise pour la parcourir."
+          - math: '\boxed{v_{air} \approx 333\ \text{m.s}^{-1}}'
+            note: "Valeur canonique de la celerite du son dans l'air : le resultat se recoupe avec la physique connue."
+      - id: q1-3
+        stem: |-
+          **(0,5 pt)** **1-3-** Écrire l'expression de l'élongation $y_B(t)$ du point $B$ à l'instant $t$, en fonction de l'élongation du point $A$.
+        reasoning: |-
+          C'est exactement l'écriture du retard établie en R3 : le point $B$ (plus loin de la source que $A$) reproduit le même mouvement que $A$, mais avec un temps de retard $\tau$ — ce qu'il fait à l'instant $t$ est ce que $A$ faisait $\tau$ plus tôt, à l'instant $t - \tau$.
+        steps:
+          - math: '\boxed{y_B(t) = y_A(t - \tau)}'
+            note: "Relation du retard (R3) : B reproduit le mouvement de A, decale de tau."
+      - id: q2
+        part: "§ 2 — Épaisseur de la nappe souterraine de pétrole"
+        stem: |-
+          **(1 pt)** **2-** Déterminer l'épaisseur $L$ de la couche de pétrole, sachant que la célérité de propagation des ondes ultrasonores dans le pétrole brut est $v = 1{,}3\ \text{km.s}^{-1}$.
+        reasoning: |-
+          **La géométrie du trajet.** Les deux raies $P_1$ et $P_2$ partagent EXACTEMENT le même trajet aller, de la sonde jusqu'à la surface libre : c'est là que les deux ondes se séparent, l'une réfléchie immédiatement (donnant $P_1$ à $t_1$), l'autre continuant jusqu'au fond de la couche avant de revenir (donnant $P_2$ à $t_2$). L'écart $t_2 - t_1$ n'est donc PAS un temps de trajet complet : c'est la différence entre les deux trajets, c'est-à-dire exactement le temps d'un aller-retour supplémentaire À L'INTÉRIEUR de la couche de pétrole, sur l'épaisseur $L$ — descente ET remontée, donc $2L$.
+
+          En reprenant la relation du R3, $\text{distance} = v \times \text{durée}$, appliquée à ce trajet supplémentaire de longueur $2L$ :
+
+          $$t_2 - t_1 = \frac{2L}{v} \implies L = \frac{v\,(t_2 - t_1)}{2}$$
+
+          **La lecture graphique, sur la figure 4.** $t_1$ se lit à l'abscisse graduée `1`, $t_2$ à l'abscisse graduée `2,2`, sur un axe imprimé et pixel-vérifié `t(s)` — l'unité est bien la seconde, pas la milliseconde ni la microseconde. $t_2 - t_1 = 1{,}2\ \text{s}$.
+
+          $$L = \frac{1\,300 \times 1{,}2}{2}$$
+
+          $$\boxed{L = 780\ \text{m}}$$
+
+          **Une remarque d'honnêteté sur l'ordre de grandeur, sans toucher au résultat.** $780\ \text{m}$ est une épaisseur considérable pour une « nappe souterraine » — l'échographie industrielle de ce type mesure d'ordinaire des couches de quelques mètres à quelques dizaines de mètres, avec des écarts temporels en microsecondes ou en millisecondes, pas en secondes. Le calcul, lui, est irréprochable : il applique fidèlement les deux données imprimées ($v = 1{,}3\ \text{km.s}^{-1}$ et l'axe `t(s)`, vérifié au pixel). On consigne l'observation, on ne requalifie pas l'unité de la figure — le scan fait foi.
+        steps:
+          - math: 't_2 - t_1 = \frac{2L}{v}'
+            note: "P1 et P2 partagent le meme trajet aller jusqu'a la surface : l'ecart t2-t1 est le temps d'un aller-retour supplementaire sur 2L, dans la couche de petrole."
+          - math: 'L = \frac{v\,(t_2 - t_1)}{2}'
+            note: "On isole L."
+          - math: 't_2 - t_1 = 2{,}2 - 1 = 1{,}2\ \text{s}'
+            note: "Lecture graphique sur la figure 4, axe t(s) verifie au pixel."
+          - math: 'L = \frac{1\,300\times1{,}2}{2}'
+            note: "Application numerique, v=1,3 km/s = 1300 m/s."
+          - math: '\boxed{L = 780\ \text{m}}'
+            note: "Valeur qui decoule fidelement des donnees imprimees ; ordre de grandeur surprenant pour une nappe, non requalifie -- le scan fait foi."

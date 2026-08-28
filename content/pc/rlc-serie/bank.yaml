@@ -2058,3 +2058,137 @@ entries:
             note: "E_C (trait plein) s'annule a t=3ms, E_L (pointille) y est a un maximum."
           - math: '\boxed{E_{dissipee} = E_T(2) - E_T(3) \approx 9{,}8 - 7{,}4 = 2{,}4\ \text{mJ}}'
             note: "Toute la baisse d'energie totale est dissipee par effet Joule (question 3-2) : rien d'autre ne peut l'absorber."
+
+  # ── bk-2011-r-x3b — 2011 R, Exercice Électricité — Deuxième phase : ajustement de fréquence + entretien ──
+  # Sœur de bk-2011-r-x3 (content/pc/rc-charge/bank.yaml, Première phase du
+  # même exercice d'Électricité — détermination de C par décharge).
+  - id: bk-2011-r-x3b
+    title: "Circuit RLC série amorti : équation différentielle, pseudopériode lue au graphe, inductance déduite, énergie à un instant donné, puis entretien des oscillations et note émise"
+    source:
+      year: 2011
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice Électricité — Deuxième phase : ajustement de la fréquence de la note musicale, et entretien des oscillations"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2011 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS28 (3 h, coef 7), AlloSchool
+        element/94449 (Exercice « Électricité », § 2 — deuxième phase,
+        ajustement de la fréquence d'une note musicale par un circuit RLC
+        série (1,75 pt) — § 3, entretien des oscillations et note émise
+        (0,75 pt) ; barème 2,50 pt sur les 5,00 pt de l'exercice complet,
+        dont le § 1 — première phase, décharge d'un condensateur — est
+        transcrit à part sous content/pc/rc-charge/bank.yaml, entrée
+        bk-2011-r-x3 ; pas de double comptage). Les § 2 et § 3 sont réunis
+        dans une seule entrée : le § 3 (entretien, fréquence propre → note)
+        est la suite directe du § 2 sur le MÊME circuit, il ne se tient pas
+        seul. Transcription source vérifiée par une passe adversariale
+        indépendante (2026-08-28, docs/sujets/_incoming/pc-2011-r.md,
+        statut « VÉRIFIÉ — clearé pour conversion »), barème recompté par
+        deux chemins concordants. LECTURE GRAPHIQUE (q2-2) :
+        $T \approx 3{,}4\ \text{ms}$, établie par chaîne de mesure au pixel
+        (passages par zéro, minima et maxima successifs, moyenne
+        $\approx 3{,}42\ \text{ms}$), arrondie à la valeur ronde $3{,}4\ \text{ms}$
+        par DEUX contrôles par conséquence indépendants : l'instant demandé à
+        la question 2-4 ($t = 3{,}4\ \text{ms}$) tombe exactement sur un
+        maximum mesuré ($3{,}36\ \text{ms}$), et la fréquence propre déduite,
+        $N_0 = 1/T$, tombe exactement sur la fréquence du « Ré » du tableau
+        (294 Hz) — aucun corrigé officiel n'existe pour ce sujet, ces deux
+        contrôles par conséquence sont le plafond de preuve atteignable ici.
+    intro: |-
+      **Ajustement de la fréquence d'une note musicale, puis entretien des oscillations (examen national, session de rattrapage 2011 — Exercice Électricité, Deuxième phase, 2,50 points sur les 5,00 de l'exercice complet).**
+
+      *La Première phase de cet exercice — la détermination de la capacité $C$ d'un condensateur par décharge — est indépendante dans sa lecture graphique et traitée à part, sous la notion « RC : charge d'un condensateur » (entrée bk-2011-r-x3). Rien de ce qui suit n'en dépend.*
+
+      Le but de cet exercice est d'ajuster une note musicale de fréquence déterminée en utilisant un circuit RLC série. Rappel du tableau des fréquences des notes musicales essentielles *(sans unité imprimée sur le sujet officiel — défaut confirmé, reproduit tel quel ; ces valeurs sont en hertz)* :
+
+      | Note | Do | Ré | Mi | Fa | Sol | La | Si |
+      |---|---|---|---|---|---|---|---|
+      | Fréquence | 262 | 294 | 330 | 349 | 392 | 440 | 494 |
+
+      **§ 2 — Ajustement de la fréquence de la note musicale.** Les élèves ont réalisé le montage expérimental représenté sur la figure 2, constitué de : un générateur de tension de f.é.m. $E = 12\ \text{V}$ et de résistance interne négligeable ; un conducteur ohmique de résistance $R = 200\ \Omega$ ; une bobine de coefficient d'inductance $L$ ajustable et de résistance interne négligeable ; un condensateur de capacité $C' = 0{,}5\ \mu\text{F}$ ; un interrupteur $K$ à double position.
+
+      Après avoir chargé le condensateur (position 1), les élèves ont basculé l'interrupteur à la position (2) à un instant choisi comme origine des temps. Ils ont obtenu, par l'intermédiaire d'une interface informatique, la courbe représentée sur la figure 3.
+
+      **Figure 2 — le montage.** Circuit rectangulaire à trois branches verticales entre un rail supérieur (interrompu) et un rail inférieur (continu). Branche de gauche : le générateur $E$ (cercle traversé par le fil). Au sommet, l'interrupteur $K$ : trois bornes alignées, `1`, `0`, `2` ; les bornes 1 et 2 sont les positions de bascule, la borne 0 est le pivot. Branche du milieu (celle qui descend du pivot de $K$) : le condensateur $C'$, puis, plus bas, le conducteur ohmique $R$. Branche de droite : la bobine $L$ (inductance réglable). *En position 1, le générateur charge $C'$ à travers $R$ ; en position 2, $C'$ se décharge dans la maille $\{C', R, L\}$ — la présence de $R$ dans cette maille de décharge explique le régime pseudo-périodique amorti observé sur la figure 3.*
+
+      **Figure 3 — les oscillations amorties, avec son quadrillage** *(bitmap natif, mesuré au pixel).* Axe des ordonnées $u_{C'}\,(\text{V})$, graduations principales $9$, $6$, $3$, $0$, $-3$, $-6$ ; axe des abscisses $t\,(\text{ms})$, graduations principales $2$, $4$, $6$, $8$. La courbe part de $u_{C'} \approx 12\ \text{V}$ à $t = 0$ (au-dessus de la dernière graduation imprimée) et oscille en s'amortissant : premier maximum suivant à $t \approx 3{,}36\ \text{ms}$ ($u_{C'} \approx +6{,}75\ \text{V}$), passages par zéro et extrema successifs mesurés au pixel, écarts moyens $\approx 3{,}42\ \text{ms}$ entre deux maxima consécutifs.
+
+      **§ 3 — Entretien des oscillations et note émise.** Les élèves ont ajouté au montage RLC' précédent un appareil d'entretien des oscillations, et ils ont relié le circuit à un haut-parleur qui transforme l'onde électrique de fréquence $N_0$ en une onde sonore de même fréquence.
+    questions:
+      - id: q2-1
+        part: "§ 2 — Ajustement de la fréquence de la note musicale"
+        stem: |-
+          **(0,5 pt)** **2-1-** Établir l'équation différentielle vérifiée par la tension $u_{C'}$ entre les bornes du condensateur.
+        reasoning: |-
+          Même méthode qu'au rung 5 de cette leçon (loi des mailles, chaque tension ramenée à l'inconnue demandée) : en position 2, le générateur est débranché de la maille — il ne reste que $\{C', R, L\}$, en série, sans source. La loi des mailles s'écrit $u_{C'} + u_R + u_L = 0$, avec $u_R = R\,i$ et $u_L = L\,\dfrac{di}{dt}$ ; on ramène le courant à $u_{C'}$ par $i = C'\,\dfrac{du_{C'}}{dt}$ (définition de la capacité).
+        steps:
+          - math: 'u_{C''} + u_R + u_L = 0 \qquad \text{avec} \qquad i = C''\frac{du_{C''}}{dt}'
+            note: "Loi des mailles, position 2 (pas de generateur dans cette maille)."
+          - math: 'u_R = R\,C''\frac{du_{C''}}{dt} \qquad u_L = L\,C''\frac{d^2u_{C''}}{dt^2}'
+            note: "Chaque tension ramenee a u_C' via i = C'.duC'/dt (rung 1)."
+          - math: '\boxed{L\,C''\,\frac{d^2u_{C''}}{dt^2} + R\,C''\,\frac{du_{C''}}{dt} + u_{C''} = 0}'
+            note: "Equation differentielle du circuit RLC amorti (rung 5), ecrite en u_C' plutot qu'en q."
+      - id: q2-2
+        stem: |-
+          **(0,25 pt)** **2-2-** Déterminer graphiquement la valeur de la pseudopériode $T$.
+        reasoning: |-
+          **Lecture graphique** (rung 6) : la pseudo-période se lit entre deux maxima consécutifs de la courbe amortie. La chaîne de mesure au pixel, sur les extrema successifs de la figure 3, donne un écart moyen $\approx 3{,}42\ \text{ms}$.
+
+          **Deux contrôles par conséquence, indépendants l'un de l'autre, qui ramènent cette mesure à la valeur ronde $3{,}4\ \text{ms}$.** D'abord, $u_{C'}(0) = 12\ \text{V}$ est un maximum (le circuit part sans courant, $i(0)=0$, donc $du_{C'}/dt(0)=0$, donc $u_{C'}$ y est extrémale) : le maximum suivant tombe donc exactement à $t = T$. Or la question 2-4, plus loin, demande l'énergie « à l'instant $t = 3{,}4\ \text{ms}$ » — précisément là où la mesure place le premier maximum ($3{,}36\ \text{ms}$, à $1{,}1\ \%$ près). Ensuite, la fréquence propre déduite $N_0 = 1/T$ doit désigner UNE note du tableau (question 3-2) : avec $T = 3{,}4\ \text{ms}$, $N_0 = 294\ \text{Hz}$ tombe exactement sur le Ré du tableau, au hertz près.
+
+          $$\boxed{T \approx 3{,}4\ \text{ms}}$$
+        steps:
+          - math: 'T_{mesure} \approx 3{,}42\ \text{ms}'
+            note: "Mesure directe au pixel, ecart moyen entre extrema consecutifs de la figure 3."
+          - math: '\boxed{T \approx 3{,}4\ \text{ms}}'
+            note: "Arrondi confirme par deux controles par consequence : le maximum a t=3,36 ms (question 2-4) et N0=1/T=294 Hz=Re (question 3-2)."
+      - id: q2-3
+        stem: |-
+          **(0,5 pt)** **2-3-** On considère que la valeur de la pseudopériode $T$ est égale à la valeur de la période propre $T_0$ de l'oscillateur LC. En déduire la valeur de $L$.
+        reasoning: |-
+          L'énoncé autorise l'approximation $T \approx T_0$ — légitime quand l'amortissement reste modéré (rung 4 : la pseudo-période d'un régime amorti est proche, mais pas rigoureusement égale, à la période propre du cas idéal sans $R$). Avec $T_0 = 2\pi\sqrt{LC'}$ (rung 2, cas idéal), on isole $L$.
+        steps:
+          - math: 'T_0 = 2\pi\sqrt{L\,C''} \implies L = \frac{T_0^2}{4\pi^2\,C''}'
+            note: "On retourne la relation du cas ideal (rung 2), avec T0 approxime par T (question 2-2)."
+          - math: 'L = \frac{(3{,}4\times10^{-3})^2}{4\pi^2\times0{,}5\times10^{-6}}'
+            note: "Application numerique : T=3,4 ms, C'=0,5 microF donne dans l'enonce."
+          - math: '\boxed{L \approx 0{,}59\ \text{H}}'
+            note: "Inductance de la bobine."
+      - id: q2-4
+        stem: |-
+          **(0,5 pt)** **2-4-** Calculer la valeur de l'énergie totale emmagasinée dans le circuit à l'instant $t = 3{,}4\ \text{ms}$.
+        reasoning: |-
+          Le contrôle de la question 2-2 l'a établi : $t = 3{,}4\ \text{ms}$ tombe exactement sur un maximum de $u_{C'}$. En un extremum, $\dfrac{du_{C'}}{dt} = 0$, donc $i = C'\,\dfrac{du_{C'}}{dt} = 0$ : l'énergie magnétique de la bobine, $\frac12Li^2$, est nulle à cet instant précis. Toute l'énergie totale y est donc électrique, entièrement portée par le condensateur.
+        steps:
+          - math: 'i(3{,}4\ \text{ms}) = 0 \implies E_T = \frac12L\,i^2 + \frac12C''\,u_{C''}^2 = \frac12C''\,u_{C''}^2'
+            note: "t=3,4 ms est un maximum de u_C' (question 2-2) : le courant y est nul, l'energie y est purement electrique."
+          - math: 'E_T = \frac12\times0{,}5\times10^{-6}\times(6{,}75)^2'
+            note: "u_C'(3,4 ms) approx 6,75 V, lu sur la figure 3 (premier maximum)."
+          - math: '\boxed{E_T \approx 1{,}1\times10^{-5}\ \text{J}}'
+            note: "Energie totale emmagasinee, purement electrique a cet instant."
+      - id: q3-1
+        part: "§ 3 — Entretien des oscillations et note émise"
+        stem: |-
+          **(0,25 pt)** **3-1-** Quel est le rôle de l'appareil d'entretien du point de vue énergétique ?
+        reasoning: |-
+          Le rung 7 de cette leçon répond exactement à cette question, pour ce montage même : sans entretien, $R$ dissipe de l'énergie par effet Joule à chaque cycle, et les oscillations s'amortissent (c'est ce que montre la figure 3). L'appareil d'entretien restitue, à chaque cycle, une énergie électrique EXACTEMENT égale à celle que $R$ vient de dissiper.
+
+          $$\boxed{\text{L'appareil d'entretien compense exactement l'énergie dissipée par effet Joule dans } R \text{ à chaque cycle}}$$
+
+          Il ne « donne pas le rythme » : c'est toujours $L$ et $C'$ qui fixent la fréquence propre — le générateur d'entretien ne fait que combler la fuite, pour que l'amplitude cesse de décroître.
+      - id: q3-2
+        stem: |-
+          **(0,5 pt)** **3-2-** En vous basant sur le tableau des fréquences des notes, déterminer la note musicale émise par le haut-parleur.
+        reasoning: |-
+          Une fois les oscillations entretenues, le circuit oscille indéfiniment à sa fréquence propre $N_0 = 1/T_0$ (rung 7), et c'est cette fréquence que le haut-parleur transforme en onde sonore de même fréquence. Avec $T_0 \approx T = 3{,}4\ \text{ms}$ (question 2-2) :
+        steps:
+          - math: 'N_0 = \frac{1}{T_0} = \frac{1}{3{,}4\times10^{-3}}'
+            note: "Frequence propre, T0 approxime par la pseudo-periode T (question 2-2)."
+          - math: '\boxed{N_0 \approx 294\ \text{Hz}}'
+            note: "Comparee au tableau des frequences."
+          - math: '\boxed{N_0 = 294\ \text{Hz} = \text{la note Re}}'
+            note: "Coincide au hertz pres avec la valeur du tableau : confirme aussi l'arrondi T=3,4 ms de la question 2-2."
