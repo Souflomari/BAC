@@ -133,8 +133,8 @@ maths, où il ne manquait qu'un problème par épreuve.
 
 | Fichier | Ce qui est transcrit | Barème | Vérification |
 |---|---|---|---|
-| `pc-2012-n.md` | **la PHYSIQUE** de SPC 2012 N (nucléaire 3 · électricité 4,5 · mécanique 5,5) | 13 | **NON VÉRIFIÉ** — transcrit sous les 4 contrôles + les 2 instruments ; passe adversariale en cours. PDF **natif** : rendu vectoriel, aucun caractère deviné. La chimie (7,00) est déjà en banque et n'est PAS retranscrite |
-| `pc-2010-n.md` | chimie 2ᵉ partie · nucléaire · électricité · mécanique | 15,75 | **NON VÉRIFIÉ** — 4 contrôles + matrice de corrélation (diagonale 0,987–0,994). PDF **born-digital**, figures lues sur les bitmaps d'origine. **⚠️ CONTREDIT LA BANQUE** : $t_{1/2}$ mesuré au pixel à **12,53 min** là où `bk-2010-n-x1` porte ≈ 20 min — une valeur que ce fichier de banque déclarait lui-même non re-vérifiée. **7 défauts du sujet officiel** |
+| `pc-2012-n.md` | **la PHYSIQUE** de SPC 2012 N (nucléaire 3 · électricité 4,5 · mécanique 5,5) | 13 | **VÉRIFIÉ, clearé** (2026-08-28) — barème refait par DEUX chemins, aucune divergence. Les (a)/(b) de la fig. 4 **confirmés**, et par la physique en plus de la mesure. **Une lecture de la transcription corrigée** : « la courbe part de 17,5 mJ » est faux (intersection masquée par l'axe) — E_C(0) ≈ 18,5–19,5, valeur déclarée NON LISIBLE. **Défaut du sujet officiel : les deux couples étiquetés `pKA1`**, ce qui rend une question insoluble |
+| `pc-2010-n.md` | chimie 2ᵉ partie · nucléaire · électricité · mécanique | 15,75 | **VÉRIFIÉ, clearé** (2026-08-28) — barème identique, 27/27 questions re-dérivées. **⚠️ LA BANQUE A TORT, TRANCHÉ** : $t_{1/2} \approx$ **13 min** (12,6–13,0) contre les ≈ 20 min de `bk-2010-n-x1`, par mesure au pixel PUIS par un corrigé trouvé après coup. **NEUF défauts du sujet officiel** (pas sept) — dont la tangente dessinée qui n'est pas la tangente de la courbe (5,5 % d'écart, elle porte une question) |
 
 **Restent à ouvrir** : SPC 2011 R (17,75, `element/94449`) · SPC 2017 N
 (18,25, `element/57711`). *(SPC 2015 N est en transcription.)*

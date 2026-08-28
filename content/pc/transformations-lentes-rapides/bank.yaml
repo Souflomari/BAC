@@ -93,51 +93,53 @@
 # bk-2024-r-x5 dans lois-de-newton/bank.yaml) avant toute promotion en
 # contenu affiché sans réserve.
 #
-# ⚠️ MISE À JOUR DU 2026-08-27 — LE RE-FETCH A ÉTÉ FAIT, ET IL CONTREDIT LA
-# VALEUR. La seconde voie que ce bloc réclamait — « un re-fetch du scan mesuré
-# au pixel » — a été empruntée pendant la transcription de la physique du même
-# sujet (docs/sujets/_incoming/pc-2010-n.md, NON VÉRIFIÉE à ce jour).
+# ⚠️ TRANCHÉ LE 2026-08-28 — LA VALEUR DE CETTE ENTRÉE EST FAUSSE.
 #
 #   ce que porte cette entrée : t_{1/2} ≈ 20 min   (repris du sommet r-bac)
-#   ce que donne la mesure    : t_{1/2} = 12,53 min (intervalle 11,7–13,5)
+#   ce que donne la mesure    : t_{1/2} ≈ 13 min   (12,6–13,0 ; élargi 12,3–13,3)
+#   ce que dit un corrigé     : « t_{1/2} ≃ 13 mn »
 #
-# La mesure a été faite sur le bitmap D'ORIGINE extrait du PDF (754×515), pas
-# sur le 150 dpi servi par AlloSchool, et elle porte sa calibration : le
-# palier mesuré donne 1,044–1,05 mS contre 1,06 prédit par la relation
-# imprimée de l'énoncé, et le quadrillage a été COMPTÉ (10 subdivisions), pas
-# estimé. G(t_{1/2}) = 1,78 mS y est atteint à 12,53 min.
+# DEUX CHEMINS INDÉPENDANTS, l'un après l'autre. (1) Une passe adversariale a
+# mesuré sur l'objet bitmap d'origine du PDF (xref 149, 754×515) : calibration
+# par moindres carrés sur 10 traits en t (résidu max 0,83 px) et 7 en G
+# (0,47 px), quadrillage COMPTÉ sur les deux axes, extraction sous-pixel du
+# tracé sur 34 lignes propres. (2) Elle a ENSUITE trouvé un corrigé
+# (element/39366) qui écrit « t_{1/2} ≃ 13 mn » — trouvé après la mesure, donc
+# sans effet sur elle.
 #
-# RIEN N'EST CHANGÉ ICI, DÉLIBÉRÉMENT. Une valeur physique publiée ne se
-# corrige pas sur une seule lecture, si documentée soit-elle : la mesure vient
-# d'une passe de TRANSCRIPTION, pas d'une vérification indépendante, et elle
-# n'a pas encore été recoupée.
+# Correction de fond au passage : la cible n'est pas 1,780 mS mais 1,769 — la
+# courbe est tracée depuis les conductivités EXACTES, pas depuis la relation
+# arrondie. Vérifié aux deux bouts (palier mesuré 1,0495 contre 1,047 prédit ;
+# départ 2,490 contre 2,491). Les 20 min exigeraient une erreur de 0,20 mS,
+# soit 31 px, soit quatre petits carreaux.
 #
-# LA TROISIÈME VOIE — LE CORRIGÉ OFFICIEL — N'A PAS ÉTÉ TROUVÉE (2026-08-27).
-# Recherche faite : la page de l'élément (94443) ne liste aucun frère ; le
-# cours parent a été téléchargé et parcouru — ses voisins immédiats sont tous
-# des « Sujet » (94426 = SPC 2009 R, 57723 = SPC 2010 R, 94446 = SPC 2011 N,
-# 57696 = SPC 2009 N), et les seuls « Corrigé » du cours portent sur des
-# devoirs et des séries d'exercices, jamais sur un examen national ; les
-# identifiants adjacents (94444, 94445) ont été sondés et rendent d'autres
-# « Sujet ». La recherche du site est pilotée en JS et ne rend rien
-# d'exploitable en HTTP.
+# RÉSERVE SUR LE CORRIGÉ : ce n'est PAS le corrigé officiel — pas de code
+# NR28, pas de cartouche ministériel, export Word 2013, en arabe — et il porte
+# ses propres fautes (un « C_0 = 1,89 µF » que sa ligne précédente calcule à
+# 2,89 ; « 504 kHz » trois fois ; un sin(45°) écrit sur une arithmétique de
+# 20°). Il concorde avec la mesure, il ne la remplace pas.
 #
-# CE N'EST PAS UNE PREUVE D'INEXISTENCE — je n'ai pas énuméré AlloSchool en
-# entier, et le corrigé peut vivre ailleurs. Mais par ces moyens-là il est
-# introuvable, et **attendre ce corrigé revient peut-être à attendre rien**.
+# ─────────────────────────────────────────────────────────────────────────
+# RECTIFICATION D'UNE AFFIRMATION QUE J'AVAIS ÉCRITE ICI LE 2026-08-27.
+# J'avais écrit, en rapportant ma recherche infructueuse : « les seuls
+# "Corrigé" du cours portent sur des devoirs et des séries d'exercices, jamais
+# sur un examen national ». C'EST FAUX. Le cours course-422 en porte 48 pour
+# des examens nationaux. La règle réelle est autre, et elle explique pourquoi
+# je n'ai rien trouvé : **la série SPC n'a de corrigés qu'à partir de 2016** —
+# de 2008 à 2015, les éléments sont des « Sujet » seuls. Une lacune
+# systématique, pas un accident sur 2010. Sonder les identifiants adjacents ne
+# pouvait donc rien donner, et ma conclusion était juste pour une mauvaise
+# raison. Le corrigé trouvé vit dans un TOUT AUTRE cours, arabophone.
+# ─────────────────────────────────────────────────────────────────────────
 #
-# CE QUE ÇA CHANGE POUR LA DÉCISION. Si aucun corrigé n'est atteignable, la
-# mesure au pixel est la SEULE preuve disponible, et l'arbitrage se réduit à :
-# (a) accepter la mesure documentée et corriger la valeur, ou (b) commander
-# une SECONDE mesure indépendante et ne trancher qu'en cas d'accord. La
-# deuxième reste la plus prudente — mais l'attentisme, lui, n'est plus une
-# option neutre : il laisse une valeur en litige devant l'élève.
+# CE QUI RESTE À FAIRE, ET QUI N'EST PAS FAIT ICI. La valeur n'est toujours
+# pas corrigée dans le contenu — délibérément : elle vit à DEUX endroits, ici
+# et dans le sommet r-bac de exercises.yaml, et les deux doivent bouger
+# ensemble sous peine de recréer la divergence que known-issues K-8 décrit.
+# C'est une correction de contenu pédagogique publié : elle revient à l'owner,
+# pas à une passe automatique. Le dossier est complet pour la prendre.
 #
-# En attendant, la valeur affichée à l'élève est en litige, et ce commentaire
-# est là pour qu'on ne la promeuve pas « sans réserve » en croyant le gap
-# refermé. Il l'est — mais pas dans le sens attendu.
-#
-# Suivi : docs/sujets/_incoming/pc-2010-n.md, priorité de vérification n° 1.
+# Suivi : docs/sujets/_incoming/pc-2010-n.md (VÉRIFIÉ), known-issues K-8.
 
 notion: pc/transformations-lentes-rapides
 
