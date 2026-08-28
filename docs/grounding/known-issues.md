@@ -799,6 +799,19 @@ là ; personne n'était allé re-mesurer. C'est le troisième cas où un
 avertissement écrit par l'auteur signale exactement la valeur qui se révélera
 fausse.
 
+**Vérifié le 2026-08-28 par une passe indépendante : SEPT mesures**, dont une
+sans aucune calibration (20 franchissements entre les deux repères imprimés =
+10 périodes pour 10 ms) et une sans le PDF (le seul JPG servi). $F_p = 1\,003
+\pm 15$ Hz ; **2 kHz est à 66 σ**.
+
+**Et la nature du défaut est pire que « une réponse fausse ».** Dans
+`exercises.yaml`, la valeur est dans l'**ÉNONCÉ** : « on **relève** la période
+de l'oscillation rapide : $T_p = 0{,}5$ ms ». Elle est donnée à l'élève comme
+une **lecture de la figure** — que la figure contredit. Un élève qui lit
+vraiment le graphe trouve le double et conclut qu'il s'est trompé. Une donnée
+fabriquée posée en prémisse ne se corrige pas comme un résultat : elle apprend
+à se défier de sa propre lecture.
+
 **Conséquence méthodologique, et c'est le vrai enseignement de K-8 :** un
 contrôle **interne au dépôt** ne peut attraper que la divergence. Il est
 structurellement aveugle à l'héritage — quand une valeur fausse a été recopiée
