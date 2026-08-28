@@ -193,20 +193,23 @@ brief standard, cold-executable by Sonnet.
 
 ### 6.1 Ce qui a changé pour l'élève
 
-**Le corpus d'épreuves est passé de 22 à 33 épreuves complètes** (≥ 19,5/20),
-214 entrées de banque, **38 notions dotées**. **Onze gagnées** sur cet arc :
+**Le corpus d'épreuves est passé de 22 à 34 épreuves complètes** (≥ 19,5/20),
+220 entrées de banque, **38 notions dotées**. **Douze gagnées** sur cet arc :
 
 - **vague maths** (2026-08-27) : SM 2017, 2021, 2022, 2023, 2024, 2025 normale
   et SExp 2018 — chacune par la conversion de son problème d'analyse ;
-- **vague physique-chimie** (2026-08-28) : SPC 2010, 2012, 2015 et 2017
-  normale — chacune par la conversion de tout ce qui manquait, 13 à 18,25
-  points par sujet. La conversion de 2017 **fonde la banque
-  d'`aspects-energetiques`**, qui n'en avait jamais eu.
+- **vague physique-chimie** (2026-08-28) : SPC 2010, 2012, 2015, 2017
+  normale et **2011 rattrapage** — les CINQ sujets du recensement, chacun par
+  transcription sous protocole complet, vérification adversariale
+  indépendante, puis conversion de tout ce qui manquait (13 à 18,25 points
+  par sujet). La conversion de 2017 **fonde la banque
+  d'`aspects-energetiques`**, qui n'en avait jamais eu. **La campagne SPC est
+  close, cinq sur cinq.**
 
-**Six d'entre elles étaient INVISIBLES** pour l'élève, sous le seuil
+**Sept d'entre elles étaient INVISIBLES** pour l'élève, sous le seuil
 d'affichage de 9,75 : SM 2021 (8,00), SExp 2018 (9,00), SPC 2012 (7,00),
-SPC 2010 (4,25), SPC 2015 (2,25) et SPC 2017 (1,75 — le plus gros manque du
-corpus). Elles n'ont pas seulement gagné des
+SPC 2010 (4,25), SPC 2015 (2,25), SPC 2011 R (2,25) et SPC 2017 (1,75 — le
+plus gros manque du corpus). Elles n'ont pas seulement gagné des
 points — elles ont commencé à exister.
 
 Deux cas méritent d'être connus avant de reprendre :
