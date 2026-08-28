@@ -294,10 +294,36 @@ fait. Les re-passer sous le protocole complet est un arbitrage owner ouvert.
   sont pas des faits qu'une mesure règle.
 - **SM 2021** — slug dominant non tranché, trois options mesurées.
 - **SM 2025** — partitionnement de l'exercice à 10 points, réserve conservée.
-- **PC 2019** — deux réponses publiées pour la même question (532 N contre
-  525 N), selon qu'on arrondit $\sin 10°$ à 0,17 ou non. Le sommet de la leçon
-  fournit l'arrondi ; la banque le nomme comme un piège. **Les deux pages se
-  contredisent sur une seule et même notion.**
+- **PC 2019** — **deux réponses publiées pour la même question** : 532 N au
+  sommet de leçon, 525 N en banque, selon qu'on arrondit $\sin 10°$ à 0,17 ou
+  qu'on garde 0,1736. Le sommet fournit l'arrondi ; la banque garde la valeur
+  précise et note qu'arrondir tôt déplace le résultat de 7 N.
+  *(Rectification : j'ai d'abord décrit ça comme « la banque appelle piège ce
+  que la leçon prescrit », ce qui est trop fort — les deux textes donnent des
+  conseils défendables et un élève peut tenir les deux. Ce qui reste vrai et
+  suffit : **deux réponses publiées coexistent pour une seule question**, et
+  la donnée arrondie est absente de la transcription vérifiée du sujet.)*
+
+- **K-8 — les valeurs graphiques jamais re-mesurées.** La fiche est neuve et
+  c'est la plus lourde des trois. Elle établit que :
+  — **deux valeurs publiées sont en litige** (PC 2019 ci-dessus ; et PC 2010,
+    où la banque affiche $t_{1/2} \approx 20$ min quand une mesure au pixel
+    donne **12,53 min**) ;
+  — ce sont **deux modes d'échec différents** : divergence (les deux endroits
+    se contredisent) contre héritage (la banque a recopié le sommet, donc le
+    dépôt est cohérent avec lui-même *et faux ensemble*) ;
+  — **aucun contrôle interne au dépôt n'attrape l'héritage.** Deux balayages
+    ont été écrits et exécutés ; ils retrouvent PC 2019 et ratent PC 2010, par
+    construction ;
+  — **89 entrées sur 187 — 48 % de la banque — reposent sur une lecture de
+    figure.** C'est une borne HAUTE de la surface exposée, pas un compte de
+    valeurs fausses ;
+  — et **le corrigé officiel de PC 2010 est introuvable** (recherche détaillée
+    dans le `bank.yaml` de `transformations-lentes-rapides`), donc attendre
+    l'arbitre revient peut-être à attendre rien.
+  **La décision** : accepter la mesure documentée, commander une seconde
+  mesure indépendante, ou lancer une campagne de re-mesure. Aucune porte
+  automatique ne fermera cette fiche.
 
 ### 6.5 bis Deux critères nés de la campagne, à réutiliser
 
