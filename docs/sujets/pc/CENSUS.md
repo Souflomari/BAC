@@ -52,7 +52,7 @@ hub : `https://www.alloschool.com/section/4585` (annonce 2008→2025, N+R, compl
 | 2015 | R | — | `element/94476` · `course-422/upload-70343` (7 p.) ; jumeaux `94475`/`94477` | **sourcé-listé** (2026-08-28) | trouvé incidemment par la vérification de 2015 N. Jamais ouvert |
 | 2016 | N | — | `upload-45091` (8 p.) | sourcé-confirmé |
 | 2016 | R | — | `element/57705` · `upload-45097` (7 p.) | sourcé-confirmé |
-| 2017 | N | NS28F | `element/57711` · `upload-45103` (8 p.) | sourcé-confirmé |
+| 2017 | N | NS28F | `element/57711` (+ jumeaux `57710`/`57712`, PDF byte-identiques) · `upload-45103` (8 p.) ; **corrigé `57713`-`57715`** | **décomposé** (2026-08-28) | PDF natif pdfFactory, figures vectorielles. Ex I 7 · Ex II 2,5 · Ex III 5 · Ex IV 5,5 = 20. **⚠️ RÉFUTE `bk-2017-n-x3` ET le sommet r-bac** : $F_p$ publié à 2 kHz, mesuré et corrigé à **1 kHz**. 46 coquilles sur 25 types ; question 1.1 p. 3 **tronquée** ; plan incliné dessiné à 9,24° pour α = 23° |
 | 2017 | R | — | `element/57717` | sourcé-listé |
 | 2018 | N | NS28F | `element/57726` · `upload-45118` (8 p.) | sourcé-confirmé |
 | 2018 | R | — | `element/57732` | sourcé-listé |

@@ -774,6 +774,30 @@ ne sont pas de la même nature.**
 |---|---|---|
 | **PC 2019** | 532 des deux côtés, **525 côté banque seulement** | **DIVERGENCE** — les deux endroits se contredisent |
 | **PC 2010** | **20 des deux côtés**, rien d'autre | **HÉRITAGE** — la banque a repris le sommet ; le dépôt est cohérent avec lui-même *et faux ensemble* |
+| **PC 2017** | **2 kHz des deux côtés**, rien d'autre | **HÉRITAGE**, et le pire des trois — voir ci-dessous |
+
+**TROISIÈME CAS, TROUVÉ LE 2026-08-28 — et c'est le plus grave.**
+`bk-2017-n-x3` et le sommet r-bac publient $F_p = 2$ kHz ; le scan porte
+**1 kHz**. Trois preuves convergentes, dont une extérieure au dépôt :
+
+1. mesure sur la **polyligne native** de la figure (PDF natif, figures
+   vectorielles) — 22 crêtes, période moyenne **0,9962 ms** ;
+2. contrôle d'échelle **indépendant du comptage** — les repères imprimés 5 ms
+   et 15 ms sont exactement les deux minima d'enveloppe, avec 10 oscillations
+   pleines entre eux, donc $T_p = 1{,}0$ ms ;
+3. **le corrigé l'écrit mot pour mot** : « 10×Tp = 10ms alors Tp = 1ms et
+   Fp = 1000Hz ».
+
+**Pourquoi il est pire que PC 2010** : la valeur ne vit pas seulement en
+banque. Elle est dans le **sommet de leçon r-bac**, rendu aux élèves au rung
+R6 « Exercice de type bac ». Un élève la rencontre **dans le cours**, pas
+seulement dans une carte d'entraînement.
+
+**Et l'origine était écrite d'avance.** L'en-tête de la banque dit, depuis sa
+conversion, que la valeur est « reprise à l'identique de r-bac ». L'aveu était
+là ; personne n'était allé re-mesurer. C'est le troisième cas où un
+avertissement écrit par l'auteur signale exactement la valeur qui se révélera
+fausse.
 
 **Conséquence méthodologique, et c'est le vrai enseignement de K-8 :** un
 contrôle **interne au dépôt** ne peut attraper que la divergence. Il est

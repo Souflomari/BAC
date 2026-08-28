@@ -77,6 +77,42 @@
 # donne l'enveloppe et les repères d'abscisse mais ne détaille pas ce
 # comptage ; la valeur $T_p = 0{,}5$ ms ($F_p = 2$ kHz) est reprise à
 # l'identique de r-bac (voir la note de sourcing de l'entrée ci-dessous).
+#
+# ⚠️ CETTE VALEUR EST FAUSSE — MESURÉE LE 2026-08-28.
+#
+#   ce que publient cette entrée ET le sommet r-bac : F_p = 2 kHz (T_p = 0,5 ms)
+#   ce que porte le scan                            : F_p = 1 kHz (T_p = 1,0 ms)
+#
+# TROIS PREUVES CONVERGENTES, dont une extérieure au dépôt :
+#   1. Mesure sur la POLYLIGNE NATIVE de la figure 4 (le PDF est natif,
+#      figures vectorielles) : 22 crêtes, période moyenne 0,9962 ms.
+#   2. Contrôle d'échelle indépendant du comptage : les repères imprimés
+#      5 ms et 15 ms sont EXACTEMENT les deux minima d'enveloppe, et la
+#      porteuse y accomplit 10 oscillations pleines — donc T_p = 10/10 = 1,0 ms.
+#   3. Le CORRIGÉ (element/57713-57715) l'écrit mot pour mot :
+#      « 10×Tp = 10ms alors Tp = 1ms et Fp = 1000Hz ».
+#
+# L'ORIGINE EST ÉCRITE DEUX LIGNES PLUS HAUT : la valeur a été « reprise à
+# l'identique de r-bac », jamais re-dérivée. C'est le motif d'HÉRITAGE que
+# known-issues K-8 décrit — la banque a recopié le sommet, donc le dépôt est
+# cohérent avec lui-même ET faux ensemble. Aucun contrôle interne ne pouvait
+# l'attraper ; seule la re-mesure contre le scan l'a fait.
+#
+# CE QUI AGGRAVE CE CAS par rapport à PC 2010 : la valeur ne vit pas seulement
+# en banque. Elle est dans le SOMMET DE LEÇON r-bac (exercises.yaml), rendu
+# aux élèves au rung R6 « Exercice de type bac ». Un élève la rencontre dans
+# le cours, pas seulement dans une carte d'entraînement.
+#
+# RIEN N'EST CHANGÉ ICI, DÉLIBÉRÉMENT — et pour la même raison que PC 2010 :
+# la valeur vit à DEUX endroits, et les corriger séparément recréerait la
+# divergence que K-8 décrit. Les deux doivent bouger ensemble, et c'est une
+# correction de contenu pédagogique publié : elle revient à l'owner.
+#
+# EN SENS INVERSE, un drapeau de cette même entrée peut être LEVÉ : le
+# « 3 V / 1 V, lecture d'échelle à confirmer » est confirmé (2,989 V et
+# 0,986 V mesurés). Et f_s = 100 Hz est juste.
+#
+# Suivi : docs/sujets/_incoming/pc-2017-n.md, known-issues K-8.
 # Même disposition assumée que chute-mouvements-plans bk-2020-n-x5 et
 # rc-charge bk-2019-n-x3 — à l'arbitrage de l'owner si l'on préfère écarter
 # cette entrée de la banque pour éviter le recoupement sur la même page.
