@@ -24,7 +24,13 @@ Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérific
 - Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
 - Code sujet : RS28 · Barème de l'exercice « Mécanique » : 5,5 points au total
   (la **page de garde** annonce « Mécanique (05,5 points) » ; l'**en-tête page 6**
-  imprime « Mécanique (05 points) » — divergence du scan signalée). La
+  imprime « Mécanique (05 points) » — **divergence TRANCHÉE le 2026-08-28 :
+  c'est la PAGE 6 qui est fautive**, par trois contraintes imprimées et
+  indépendantes — le recompte des marges donne 5,50 ; le total de l'épreuve
+  ferait sinon 19,50 ; et le sous-total « Physique : (13 points) » de la
+  page 1 se contredirait lui-même. Le `bareme_total = 2.25` de
+  `bk-2011-r-x1` n'est pas affecté. Établi par la transcription de
+  `docs/sujets/_incoming/pc-2011-r.md`). La
   **1ère situation** transcrite ici vaut **2,25 points** (1,5 + 0,75).
 - Images lues (reproductibilité) : `.../course-422/upload-70317/0006-big.jpg`
   (1ère situation, rotation) ; `.../0007-big.jpg` (2ème situation, oscillateur)
