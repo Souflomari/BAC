@@ -38,11 +38,11 @@ hub : `https://www.alloschool.com/section/4585` (annonce 2008→2025, N+R, compl
 | 2008 | R | — | — | non recherché |
 | 2009 | N | — | `upload-45088` (8 p.) | sourcé-confirmé |
 | 2009 | R | — | — | non recherché |
-| 2010 | N | NS28 | `element/94443` · `upload-70311` (6 p.) | **décomposé** (2026-08-27) |
+| 2010 | N | NS28 | `element/94443` · `upload-70311` (6 p.) | **décomposé + VÉRIFIÉ** (2026-08-28) | PDF *born-digital*. **9 défauts du sujet officiel** — dont la tangente dessinée qui n'est PAS la tangente de la courbe (13,1 ms contre 12,4 ms, 5,5 % d'écart, et elle porte une question) ; « 1 μF = 10⁻¹² F » ; les électrodes A et B jamais nommées sur la figure qu'une question interroge. **⚠️ RÉFUTE UNE VALEUR PUBLIÉE** : $t_{1/2} \approx$ **13 min** contre les ≈ 20 min de `bk-2010-n-x1`, par mesure au pixel PUIS par un corrigé (`element/39366`, arabophone, non officiel). **Doublon d'élément : `94444`.** Corrigés SPC : la série n'en a qu'à partir de **2016** |
 | 2010 | R | — | `element/57723` | **sourcé-listé** (2026-08-27) | trouvé incidemment en cherchant le corrigé de 2010 N : c'est un voisin immédiat du sujet dans le cours parent. Jamais ouvert |
 | 2011 | N | — | — (couverture lue en v0.3 selon INDEX, URL non consignée) | non consigné |
 | 2011 | R | RS28 | `element/94449` · `upload-70317` (7 p.) | sourcé-confirmé |
-| 2012 | N | NS28 | `element/94452` · `course-422/upload-70320` (6 p.) | **décomposé** (2026-08-27) |
+| 2012 | N | NS28 | `element/94452` · `course-422/upload-70320` (6 p.) | **décomposé + VÉRIFIÉ** (2026-08-28) | PDF natif Nitro Pro. Barème refait par deux chemins. **Défaut du sujet officiel : les DEUX couples étiquetés `pKA1`**, ce qui rend une question formellement insoluble — la banque le corrigeait déjà en silence, correction désormais **déclarée** dans `transformations-deux-sens`. Une lecture de la transcription corrigée : E_C(0) n'est **pas** 17,5 mJ mais 18,5–19,5, et la valeur est déclarée **NON LISIBLE** |
 | 2012 | R | — | — | non recherché |
 | 2013 | N | — | `upload-70326` (7 p.) | sourcé-confirmé |
 | 2013 | R | — | — | non recherché |
