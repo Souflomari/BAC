@@ -39,7 +39,7 @@ hub : `https://www.alloschool.com/section/4585` (annonce 2008→2025, N+R, compl
 | 2009 | N | — | `upload-45088` (8 p.) | sourcé-confirmé |
 | 2009 | R | — | — | non recherché |
 | 2010 | N | NS28 | `element/94443` · `upload-70311` (6 p.) | **décomposé** (2026-08-27) |
-| 2010 | R | — | — | non recherché |
+| 2010 | R | — | `element/57723` | **sourcé-listé** (2026-08-27) | trouvé incidemment en cherchant le corrigé de 2010 N : c'est un voisin immédiat du sujet dans le cours parent. Jamais ouvert |
 | 2011 | N | — | — (couverture lue en v0.3 selon INDEX, URL non consignée) | non consigné |
 | 2011 | R | RS28 | `element/94449` · `upload-70317` (7 p.) | sourcé-confirmé |
 | 2012 | N | NS28 | `element/94452` · `course-422/upload-70320` (6 p.) | **décomposé** (2026-08-27) |
