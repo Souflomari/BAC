@@ -134,7 +134,7 @@ maths, où il ne manquait qu'un problème par épreuve.
 | Fichier | Ce qui est transcrit | Barème | Vérification |
 |---|---|---|---|
 | `pc-2012-n.md` | **la PHYSIQUE** de SPC 2012 N (nucléaire 3 · électricité 4,5 · mécanique 5,5) | 13 | **VÉRIFIÉ, clearé** (2026-08-28) — barème refait par DEUX chemins, aucune divergence. Les (a)/(b) de la fig. 4 **confirmés**, et par la physique en plus de la mesure. **Une lecture de la transcription corrigée** : « la courbe part de 17,5 mJ » est faux (intersection masquée par l'axe) — E_C(0) ≈ 18,5–19,5, valeur déclarée NON LISIBLE. **Défaut du sujet officiel : les deux couples étiquetés `pKA1`**, ce qui rend une question insoluble |
-| `pc-2015-n.md` | 8 blocs : électrolyse · estérification · ondes+astate (QCM) · RC · modulation · balle de golf · oscillateur | 17,75 | **NON VÉRIFIÉ** — 4 contrôles + 2 instruments, PDF **natif** rendu à 300 dpi, 12 figures extraites. **Défaut du sujet officiel** : `ρ = 0;78 g.L⁻¹` — point-virgule ET unité fausse d'un facteur 1000 (avec g·L⁻¹ le rendement dépasse 8900 %). **17 coquilles**. Étiquettes de courbes tranchées par une chaîne de mesure (τ → R → température, 3 concordances à moins de 1 °C) |
+| `pc-2015-n.md` | 8 blocs : électrolyse · estérification · ondes+astate (QCM) · RC · modulation · balle de golf · oscillateur | 17,75 | **VÉRIFIÉ, clearé** (2026-08-28), **une condition nommée**. 27/27 questions re-dérivées (le transcripteur en avait fait 6) ; 26 résolubles. **Défaut du sujet officiel** : `ρ = 0;78 g.L⁻¹` — point-virgule ET unité fausse d'un facteur 1000, ce qui rend la **question 2-3 insoluble** telle qu'imprimée (rendement **8 846 %** au lieu de 75,00 %). Décision owner avant de convertir CETTE question ; précédent maison applicable (PC 2012, correction déclarée). **25 coquilles distinctes** (pas 17). Étiquettes de courbes confirmées par la chaîne refaite de zéro, **plus le contrôle en sens inverse** |
 | `pc-2010-n.md` | chimie 2ᵉ partie · nucléaire · électricité · mécanique | 15,75 | **VÉRIFIÉ, clearé** (2026-08-28) — barème identique, 27/27 questions re-dérivées. **⚠️ LA BANQUE A TORT, TRANCHÉ** : $t_{1/2} \approx$ **13 min** (12,6–13,0) contre les ≈ 20 min de `bk-2010-n-x1`, par mesure au pixel PUIS par un corrigé trouvé après coup. **NEUF défauts du sujet officiel** (pas sept) — dont la tangente dessinée qui n'est pas la tangente de la courbe (5,5 % d'écart, elle porte une question) |
 
 **Restent à ouvrir** : SPC 2011 R (17,75, `element/94449`) · SPC 2017 N
@@ -302,6 +302,22 @@ Ce second point porte une leçon plus large que le glyphe : **un défaut
 apparent du sujet peut être un artefact de la chaîne de diffusion.** Avant
 d'écrire « défaut du sujet officiel », il faut avoir regardé la source la
 moins dégradée qu'on puisse atteindre.
+
+- **Les trois exemplaires parallèles (PC seulement) — trouvé le 2026-08-28.**
+  AlloSchool sert **chaque sujet de physique-chimie sous TROIS cours** :
+  `course-421` (SM-A), `course-422` (SM-B) et `course-423` (Sciences
+  Physiques). Les trois PDF sont **byte-identiques** (MD5 unique), et leurs
+  JPG le sont aussi d'un `upload-` à l'autre.
+
+  **Comparer les MD5 des trois exemplaires est donc un contrôle de cache très
+  fort, en une commande** : un panachage n'affecterait pas les trois de la
+  même façon. À préférer, quand les trois existent, à un OCR page par page.
+
+  **Et ça corrige une erreur que cette campagne répétait.** Plusieurs fichiers
+  disent que le conteneur « annonce à tort Sciences Mathématiques B » pour un
+  sujet SPC. **Ce n'est pas une anomalie** : c'est un cross-listing normal, et
+  l'exemplaire correctement libellé existe (pour 2015 N, `element/94474`). Il
+  n'y a rien à arbitrer — seulement à ne plus le signaler comme suspect.
 
 ---
 

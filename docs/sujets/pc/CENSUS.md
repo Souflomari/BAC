@@ -48,8 +48,8 @@ hub : `https://www.alloschool.com/section/4585` (annonce 2008→2025, N+R, compl
 | 2013 | R | — | — | non recherché |
 | 2014 | N | — | `upload-70333` (7 p.) | sourcé-confirmé |
 | 2014 | R | — | `element/94469` · `upload-70336` (7 p.) | sourcé-confirmé |
-| 2015 | N | NS28 | `element/94472` · `upload-70340` (7 p.) | **décomposé** (2026-08-28) |
-| 2015 | R | — | — | non recherché |
+| 2015 | N | NS28 | `element/94472` · `upload-70340` (7 p.) ; **exemplaire correctement libellé `94474`** | **décomposé + VÉRIFIÉ** (2026-08-28) | 27/27 questions re-dérivées, 26 résolubles. **Défaut du sujet officiel rendant la q. 2-3 insoluble** : `ρ = 0;78 g.L⁻¹` (point-virgule + unité fausse d'un facteur 1000 → rendement 8 846 % au lieu de 75 %). 25 coquilles distinctes. **Aucun corrigé officiel** (la série SPC n'en a qu'à partir de 2016) |
+| 2015 | R | — | `element/94476` · `course-422/upload-70343` (7 p.) ; jumeaux `94475`/`94477` | **sourcé-listé** (2026-08-28) | trouvé incidemment par la vérification de 2015 N. Jamais ouvert |
 | 2016 | N | — | `upload-45091` (8 p.) | sourcé-confirmé |
 | 2016 | R | — | `element/57705` · `upload-45097` (7 p.) | sourcé-confirmé |
 | 2017 | N | NS28F | `element/57711` · `upload-45103` (8 p.) | sourcé-confirmé |
