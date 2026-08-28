@@ -93,6 +93,30 @@
 #     synthèse des relations déjà données au rung R4 (θ̇(t) obtenue par
 #     dérivation de θ(t) à la question 2-1), pas une technique nouvelle.
 #     Signalé au point d'usage, pour mémoire — pas une lacune de fond.
+#   - bk-2015-n-x4b, q2 et q3 : le lien entre le travail d'une force
+#     conservative et la variation de son énergie potentielle associée
+#     ($W(\vec F_{rappel})=-\Delta E_{pe}$) et la règle $\Delta E_m=W(\vec f)$
+#     appartiennent tous deux au chapitre Aspects énergétiques (rungs R5 et
+#     R4 de cette autre leçon) — même pont, même disposition que
+#     bk-2018-n-x4b, q3 ci-dessus. Pontés au point d'usage dans le
+#     raisonnement des deux questions.
+#
+# NOTE ÉDITORIALE — bk-2015-n-x4b (2026-08-28, ajout). Exercice 4, Deuxième
+# partie, du sujet 2015 N — la PREMIÈRE entrée AMORTIE de cette banque :
+# les six entrées ci-dessus sont toutes des oscillateurs SANS frottement
+# (rungs R1-R5) ; celle-ci porte des frottements fluides explicitement non
+# négligeables (rung R6, régime pseudo-périodique) — un angle inédit dans
+# le corpus de cette notion. La Première partie du même Exercice 4 (la
+# balle de golf) est indépendante et vit sous
+# content/pc/chute-mouvements-plans/bank.yaml, entrée bk-2015-n-x4. Le
+# classement du sujet source propose ici un cross-list vers
+# `aspects-energetiques`, notion qui n'a aujourd'hui AUCUNE entrée de
+# banque (voir content/pc/aspects-energetiques — aucun bank.yaml) ; fonder
+# sa banque avec ce bloc serait défendable (précédent : maths-sexp-2018-n a
+# fondé la banque de derivabilite-etude-fonctions), mais c'est un
+# arbitrage d'owner, pas pris ici — l'entrée est placée sous
+# `systemes-oscillants` (dominant, dispositif solide-ressort-plaque déjà
+# central à cette leçon), avec le cross-list honoré dans le raisonnement.
 
 notion: pc/systemes-oscillants
 
@@ -1177,3 +1201,128 @@ entries:
             note: "Lecture de theta-point a t2=3,4 s sur la figure 3 (juste apres le maximum de t=3s), PAS theta-point_max."
           - math: '\boxed{W_C \approx 1{,}3\times10^{-4}\ \text{J}}'
             note: "Travail du couple de torsion entre t1=0 et t2=3,4 s."
+
+  # ── bk-2015-n-x4b — 2015 N, Exercice 4 (Deuxième partie) : oscillateur horizontal amorti ──
+  # Sœur de bk-2015-n-x4 (chute-mouvements-plans, Première partie du même
+  # Exercice 4, indépendante). PREMIÈRE entrée AMORTIE de cette banque :
+  # voir la NOTE ÉDITORIALE en tête de fichier.
+  - id: bk-2015-n-x4b
+    title: "Oscillateur horizontal amorti par frottement fluide : régime pseudo-périodique, variation d'énergie potentielle élastique et travail de la force de rappel, puis variation d'énergie mécanique"
+    source:
+      year: 2015
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — Deuxième partie : étude d'un oscillateur horizontal soumis aux actions de frottements fluides"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28, AlloSchool element/94472 (Exercice 4,
+        Deuxième partie — oscillateur horizontal amorti par frottement
+        fluide ; barème de la partie = 2,50 pt (0,5+1+1), sous-total
+        imprimé « Deuxième partie (02,5 points) », sur les 05,5 pt de
+        l'exercice complet, dont la Première partie (la balle de golf,
+        3,0 pt) est transcrite sous content/pc/chute-mouvements-plans/bank.yaml,
+        entrée bk-2015-n-x4 — pas de double comptage. Transcription
+        vérifiée par une passe adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2015-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion ») : 27/27 questions du sujet re-dérivées, dont les
+        trois de ce bloc, et la Figure 3 ($x(t)$) re-calibrée
+        indépendamment sur le bitmap natif (le tiret `0,3` sur l'axe des
+        temps retombe à $415$ px/s, le tiret `1` sur l'axe des abscisses à
+        $38{,}7$ px/cm) — $x(t_0=0)=+2{,}50$ cm, $x(t_1=1{,}20\ \text{s})
+        =+1{,}00$ cm confirmés au dixième de millimètre près, et la
+        pseudo-période $T\approx0{,}60$ s établie sur trois maxima
+        successifs ($t=0$, $0{,}60$, $1{,}20$ s), ce qui place $t_1$
+        EXACTEMENT sur le troisième maximum — un point dont dépend toute
+        la question 3 (vitesse nulle aux deux bornes). Physique re-dérivée
+        ici, conforme à la source : $\Delta E_{pe} = \frac12k(x_1^2-x_0^2)
+        = \frac12\times20\times(0{,}0100^2-0{,}0250^2) \approx
+        -5{,}25\times10^{-3}$ J, $W(\vec F) = -\Delta E_{pe} \approx
+        +5{,}25\times10^{-3}$ J ; $E_c$ nulle aux deux bornes (les deux
+        sont des extrema de la courbe) $\Rightarrow \Delta E_m =
+        \Delta E_{pe} \approx -5{,}25\times10^{-3}$ J. Aucune divergence.
+        Cinq coquilles du sujet officiel reproduites telles quelles et
+        signalées au point d'usage : « coincïde » (tréma mal placé),
+        « d'un distance », « d'aquisition », « Quel régime des
+        oscillations mis en évidence » (verbe manquant), « figue »,
+        « l' énergie » (espace parasite après l'apostrophe).
+    intro: |-
+      **Étude d'un oscillateur horizontal soumis aux actions de frottements fluides (examen national, session normale 2015, Exercice 4 — Deuxième partie, 2,50 points sur les 05,5 de l'exercice complet).**
+
+      *La Première partie de cet exercice — le mouvement d'une balle de golf — est indépendante de celle-ci et vit sous la notion « Chute et mouvements sur des plans » (entrée bk-2015-n-x4).*
+
+      On étudie dans cette partie les oscillations d'un système mécanique (solide-ressort) dans une situation où les frottements fluides ne sont pas négligeables.
+
+      On considère un solide $(S)$ de masse $m$ et de centre d'inertie $G$, fixé à l'extrémité d'un ressort, de masse négligeable, à spires non jointives et de raideur $k = 20\ \text{N.m}^{-1}$, dont l'autre extrémité est fixée à un support $A$ fixe. On fixe à $(S)$, à l'aide d'une tige, une plaque qu'on immerge partiellement dans un liquide visqueux, comme indiqué sur la figure 2.
+
+      **Données :**
+      - On néglige les masses de la tige et de la plaque devant la masse du solide $(S)$ ;
+      - On repère la position de $G$ sur l'axe $(O,x)$ à l'instant $t$, par l'abscisse $x$ ;
+      - La position $G_0$ de $G$ à l'équilibre, coincïde avec l'origine $O$ de l'axe $(O,x)$ *(« coincïde », tréma sur le i au lieu du e — défaut du sujet officiel, sans incidence)* ;
+      - On étudie le mouvement de $G$ dans un repère terrestre supposé galiléen ;
+      - On choisit la position $G_0$ comme état de référence de l'énergie potentielle d'élasticité de l'oscillateur, et le plan horizontal passant par $G$ comme état de référence de l'énergie potentielle de pesanteur ;
+      - Le ressort est non déformé à l'équilibre.
+
+      On écarte le solide $(S)$ de sa position d'équilibre, d'un distance $d$ *(« d'un distance » tel qu'imprimé, sans l'accord attendu — défaut du sujet officiel, sans incidence)* et on le lâche sans vitesse initiale. Une carte d'aquisition informatique *(« aquisition » tel qu'imprimé — défaut du sujet officiel, sans incidence)* permet de tracer les variations de l'abscisse de $G$ en fonction du temps (figure 3).
+
+      **Figure 2 (dispositif, schéma pour redessin).** Un mur hachuré à gauche (support $A$ fixe), un ressort à spires reliant $A$ au solide $(S)$ ; $(S)$ porte le point $G$ en son centre. Une tige descend de $(S)$ jusqu'à une plaque partiellement immergée dans un récipient de liquide visqueux, en dessous. L'axe $(O,x)$ est horizontal, orienté vers la droite, l'origine $O$ étant exactement à l'aplomb de $G$ (position d'équilibre).
+
+      **Figure 3 ($x(t)$, description ET mesures).** Une seule courbe : une sinusoïde amortie, partant d'un maximum à $t_0=0$ ($x(t_0)=+2{,}50\ \text{cm}$, soit la distance $d$ de l'énoncé), oscillant autour de $x=0$ avec une amplitude qui décroît à chaque aller-retour — le régime que la question 1 demande d'identifier. **Trois maxima successifs relevés à $t=0$, $t\approx0{,}60$ s et $t=1{,}20$ s** (donc une pseudo-période $T\approx0{,}60$ s) : $t_1=1{,}20\ \text{s}$ tombe ainsi EXACTEMENT sur ce troisième maximum, avec $x(t_1)=+1{,}00\ \text{cm}$.
+    questions:
+      - id: q1
+        part: "Deuxième partie — Oscillateur horizontal amorti"
+        stem: |-
+          **1-** (0,5 pt) Quel régime des oscillations mis en évidence par la courbe de la figue 3 ? *(« Quel régime des oscillations mis en évidence », verbe manquant, et « figue » pour « figure » — défauts du sujet officiel, sans incidence.)*
+        reasoning: |-
+          Exactement la méthode du rung R6 : deux questions, dans l'ordre, jamais une formule. Première question — le solide dépasse-t-il l'équilibre au moins une fois de plus après le premier passage ? La figure 3 montre plusieurs allers-retours, avec des maxima successifs qui décroissent en amplitude ($+2{,}50$ cm, puis moins, puis $+1{,}00$ cm à $t_1$) : le solide oscille encore, il n'y a donc même pas besoin de passer à la seconde question du rung R6 (réservée aux régimes SANS dépassement, critique ou apériodique).
+
+          $$\boxed{\text{Régime pseudo-périodique}}$$
+
+          **Le piège de cette question.** Confondre la décroissance de l'AMPLITUDE (bien réelle, visible d'un maximum au suivant) avec une décroissance du RYTHME. Le rung R6 le distingue explicitement : ce qui fuit, c'est l'énergie (donc l'amplitude), pas la pseudo-période, qui reste ici très proche d'une valeur constante ($T\approx0{,}60$ s entre les trois maxima relevés) — c'est justement cette régularité du rythme qui permet de reconnaître, sans ambiguïté, que $t_1=1{,}20$ s retombe sur un maximum plutôt qu'à un instant quelconque.
+      - id: q2
+        stem: |-
+          **2-** (1 pt) En calculant la variation de l'énergie potentielle d'élasticité de l'oscillateur entre les instants $t_0 = 0$ et $t_1 = 1{,}2\ \text{s}$, trouver le travail $W(\vec{F})$ de la force de rappel appliquée par le ressort entre ces deux instants.
+        reasoning: |-
+          Deux outils, deux provenances différentes. L'expression $E_{pe}=\frac12kx^2$ vient du rung R5 de cette leçon (le pendule élastique, un aperçu). Le lien entre le travail d'une force conservative et sa variation d'énergie potentielle, $W(\vec F_{rappel})=-\Delta E_{pe}$, appartient au chapitre « Aspects énergétiques » (signalé comme tel par R5 lui-même, exactement comme pour bk-2018-n-x4b ci-dessus dans cette même banque) — emprunté ici, pas démontré à ce stade du cours.
+
+          On convertit d'abord les deux positions lues sur la figure 3 en mètres : $x_0=x(t_0)=+2{,}50\ \text{cm}=0{,}0250\ \text{m}$ ; $x_1=x(t_1)=+1{,}00\ \text{cm}=0{,}0100\ \text{m}$.
+
+          $$\Delta E_{pe} = E_{pe}(t_1) - E_{pe}(t_0) = \frac12k\,x_1^2 - \frac12k\,x_0^2 = \frac12k\left(x_1^2-x_0^2\right)$$
+        steps:
+          - math: 'x_0 = 2{,}50\ \text{cm} = 0{,}0250\ \text{m} \qquad x_1 = 1{,}00\ \text{cm} = 0{,}0100\ \text{m}'
+            note: "Positions lues sur la figure 3 aux instants t0 et t1, converties en metres."
+          - math: '\Delta E_{pe} = \frac12k\left(x_1^2-x_0^2\right) = \frac12\times20\times(0{,}0100^2-0{,}0250^2)'
+            note: "Rung R5 (Epe = 1/2 k x^2), applique aux deux instants."
+          - math: '\boxed{\Delta E_{pe} \approx -5{,}25\times10^{-3}\ \text{J} = -5{,}25\ \text{mJ}}'
+            note: "L'energie potentielle elastique diminue : x1 est plus proche de l'equilibre que x0."
+          - math: 'W(\vec F) = -\Delta E_{pe}'
+            note: "Travail de la force de rappel = oppose de la variation d'energie potentielle associee (chapitre Aspects energetiques, rung R5 de cette lecon-ci le signale sans le demontrer)."
+          - math: '\boxed{W(\vec F) \approx +5{,}25\times10^{-3}\ \text{J} = +5{,}25\ \text{mJ}}'
+            note: "Travail positif : le ressort, en se detendant de x0 vers x1, fournit du travail moteur."
+      - id: q3
+        stem: |-
+          **3-** (1 pt) Déterminer la variation de l' énergie mécanique $\Delta E_m$ du système entre les instants $t_0$ et $t_1$. Donner une explication du résultat obtenu. *(« l' énergie », espace parasite après l'apostrophe — défaut du sujet officiel, sans incidence.)*
+        reasoning: |-
+          $\Delta E_m = \Delta E_c + \Delta E_{pe}$ (le pendule d'énergie du rung R5, cinétique plus potentielle élastique — pas de terme de pesanteur, le mouvement étant horizontal). Le point qui rend cette question propre, établi à la figure 3 : $t_0$ ET $t_1$ sont TOUS DEUX des maxima de $x(t)$ — $t_0$ parce que le solide y est lâché sans vitesse initiale (énoncé), $t_1$ parce qu'il tombe exactement sur le troisième maximum relevé (pseudo-période $T\approx0{,}60$ s, question 1). Aux deux instants, le solide s'arrête un instant pour repartir en sens inverse : $\dot x=0$, donc $E_c=0$ aux deux bornes.
+
+          $$\Delta E_c = 0 \implies \Delta E_m = \Delta E_{pe} \approx -5{,}25\times10^{-3}\ \text{J}$$
+
+          **L'explication demandée.** Le chapitre « Aspects énergétiques » (rung R4) établit que, dès qu'un frottement est présent, $\Delta E_m = W(\vec f) < 0$ — l'énergie mécanique DIMINUE, dissipée sous forme de chaleur par le frottement fluide. C'est très exactement le mécanisme du rung R6 de cette leçon-ci : le régime pseudo-périodique identifié à la question 1 EST la signature visible de cette fuite d'énergie, cycle après cycle — l'amplitude qui décroît d'un maximum au suivant sur la figure 3 est la trace directe de ce $\Delta E_m$ négatif.
+
+          $$\boxed{\Delta E_m \approx -5{,}25\times10^{-3}\ \text{J} < 0 \implies \text{energie dissipee par le frottement fluide (regime pseudo-periodique, rung R6)}}$$
+
+          **Le piège de cette question.** Croire qu'il faut recalculer une énergie cinétique aux deux instants, alors que la lecture graphique (question 1, la pseudo-période) dit directement que $t_0$ et $t_1$ sont deux extrema — donc deux instants de vitesse nulle. Chercher $\dot x(t_1)$ par un calcul serait, ici, un détour inutile : c'est la régularité du rythme, pas une formule, qui établit $E_c(t_1)=0$.
+        steps:
+          - math: '\dot x(t_0)=0 \text{ (lache sans vitesse initiale)} \qquad \dot x(t_1)=0 \text{ (t1 = 3e maximum, pseudo-periode)}'
+            note: "t0 et t1 sont tous deux des extrema de x(t) (figure 3, question 1) : vitesse nulle aux deux bornes."
+          - math: '\Delta E_c = E_c(t_1)-E_c(t_0) = 0-0 = 0'
+            note: "Consequence directe : la variation d'energie cinetique est nulle."
+          - math: '\Delta E_m = \Delta E_c + \Delta E_{pe} = 0 + \Delta E_{pe}'
+            note: "Pendule d'energie (rung R5) : Em = Ec + Epe, pas de terme de pesanteur (mouvement horizontal)."
+          - math: '\boxed{\Delta E_m \approx -5{,}25\times10^{-3}\ \text{J}}'
+            note: "Identique a Delta Epe de la question 2 : coherent, puisque Delta Ec = 0."
+          - math: '\boxed{\Delta E_m < 0 \implies \text{dissipation par frottement fluide (rung R4, aspects energetiques ; rung R6, regime pseudo-periodique)}}'
+            note: "Explication physique du signe negatif."

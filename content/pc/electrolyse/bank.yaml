@@ -64,8 +64,25 @@
 # deux observations chimiques (dépôt d'or, dégagement de dichlore) plutôt
 # que d'une polarité déjà dessinée sur un dispositif donné. Sa Partie 2,
 # indépendante (étude d'une solution aqueuse de méthylamine), est transcrite
-# sous content/pc/reactions-acido-basiques, entrée bk-2022-r-x1b. La banque
-# compte 5 entrées distinctes en pratique (la rail affichera « 5 sujets »).
+# sous content/pc/reactions-acido-basiques, entrée bk-2022-r-x1b. Le sixième
+# sujet, 2015 N Exercice 1 (Première Partie, électrolyse d'une solution
+# concentrée de chlorure de sodium), vient de
+# docs/sujets/_incoming/pc-2015-n.md — vérifié par une passe adversariale
+# indépendante (2026-08-28) : 5 contrôles de provenance, figure re-mesurée
+# en composantes connexes sur le bitmap natif, 27/27 questions du sujet
+# re-dérivées. Recoupement PARTIEL avec bk-2019-n-x1 : même couple
+# $H_2O/H_2$ à la cathode (l'eau se réduit, milieu qui devient basique),
+# mais l'anode y échange les ions chlorure et non les ions iodure, et
+# aucune valeur numérique ne coïncide ($I=3$ A, $\Delta t=25$ min,
+# $V_m=25{,}0$ L/mol ici, contre $I=0{,}5$ A et aucun $V_m$ là-bas — la
+# question posée en 2019 chiffre une DURÉE à partir d'une masse déposée à
+# la cathode, celle-ci un VOLUME de gaz à partir d'un courant donné à
+# l'anode). **CHOIX DE L'`id` : voir la note de sourcing de l'entrée
+# elle-même** — le suffixe -x1 sans lettre est déjà pris par
+# `bk-2015-n-x1` dans `content/pc/etat-equilibre/bank.yaml` (une pièce
+# différente du même Exercice 1), donc cette entrée porte -x1b
+# (docs/grounding/known-issues.md K-7 bis). La banque compte 6 entrées
+# distinctes en pratique (la rail affichera « 6 sujets »).
 #
 # SCOPE NOTE (technique mobilisée au-delà de ce que la leçon montre
 # explicitement pas à pas — pontée au point d'usage dans le raisonnement de
@@ -93,6 +110,11 @@
 #     phrase sur le sens de variation de $Q_r$ sous forçage, soit la
 #     question reste balisée hors rung comme telle. Pas corrigé
 #     unilatéralement ici.
+#   - bk-2015-n-x1b, q3 : même pont que bk-2018-n-x1, q4 (voir ci-dessus) —
+#     convertir une quantité de matière de dichlore gazeux en volume exige
+#     n = V/V_m (volume molaire des gaz). Aucun rung de cette leçon
+#     n'introduit cette relation ; pontée au point d'usage dans le
+#     raisonnement de la question 3.
 
 notion: pc/electrolyse
 
@@ -661,3 +683,130 @@ entries:
             note: "Conversion en minutes, demandee par l'enonce."
           - math: '\boxed{\Delta t \approx 15{,}2\ \text{min}}'
             note: "Soit environ 15 min 11 s : duree courte, coherente avec une fine couche d'or et un courant faible de 50 mA."
+
+  # ── bk-2015-n-x1b — 2015 N, Exercice 1 (Première Partie) : électrolyse d'une solution de chlorure de sodium ──
+  # Voir la NOTE ÉDITORIALE en tête de fichier pour le choix du suffixe b
+  # (le suffixe x1 sans lettre est déjà pris par une pièce différente du
+  # même Exercice 1, en banque sous content/pc/etat-equilibre/bank.yaml).
+  - id: bk-2015-n-x1b
+    title: "Électrolyse d'une solution concentrée de chlorure de sodium : anode et cathode par la polarité du générateur, équations aux électrodes, et volume de dichlore par la loi de Faraday"
+    source:
+      year: 2015
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Première Partie : électrolyse d'une solution de chlorure de sodium"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28, AlloSchool element/94472 (Exercice 1,
+        Première Partie — électrolyse d'une solution concentrée de chlorure
+        de sodium ; barème de la partie = 2,25 pt, sous-total IMPRIMÉ dans
+        le corps du sujet, page 2 (« Première Partie (2,25 points) »), sur
+        les 07 pt de l'exercice complet, dont la Deuxième Partie (4,75 pt)
+        se répartit en deux : le §1 (acide benzoïque + eau, 2,25 pt) est
+        DÉJÀ en banque sous content/pc/etat-equilibre/bank.yaml, entrée
+        bk-2015-n-x1 ; le §2 (estérification, 2,50 pt) est transcrit sous
+        content/pc/esterification-hydrolyse/bank.yaml, entrée
+        bk-2015-n-x1c — pas de double comptage entre les trois entrées.
+        CHOIX DE L'`id` : ce sujet numérote ses exercices (Ex 1 à Ex 4),
+        contrairement à PC 2010 et 2012, qui n'en numérotent aucun ; le
+        suffixe -x1 SANS lettre est déjà pris par `bk-2015-n-x1`
+        (Deuxième Partie, §1), qui vivait en banque avant que cette
+        campagne ne transcrive le reste du sujet. Cette entrée-ci, qui
+        transcrit la PREMIÈRE Partie de l'exercice (physiquement la
+        première sur le scan, mais la deuxième pièce entrée en banque
+        puisque x1 était déjà pris), porte donc le suffixe b — même
+        convention que bk-2010-n-x4b/x4c ou bk-2022-r-x3b/x3c ailleurs
+        dans ce corpus, pour un exercice réparti entre plusieurs notions
+        (docs/grounding/known-issues.md K-7 bis). Barème recompté par
+        appariement marge↔question sur le scan : 0,5+0,75+1 = 2,25 pt,
+        conforme au sous-total imprimé. Transcription vérifiée par une
+        passe adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2015-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion ») : 5 contrôles de provenance (dont un cinquième,
+        inédit, comparant les trois exemplaires byte-identiques servis par
+        course-421/422/423), figure re-mesurée par analyse en composantes
+        connexes sur le bitmap natif (le `+` du générateur est à GAUCHE du
+        cercle, relié à l'électrode (B) ; le `−` à DROITE, relié à
+        l'électrode (A) — topologie du fil tracée ligne par ligne, pas
+        devinée), et 27 questions du sujet entier re-dérivées, dont les
+        trois de ce bloc. Physique re-dérivée ici, conforme à la source :
+        $Q = I\Delta t = 3\times1500 = 4500$ C $\Rightarrow n(e^-) =
+        Q/\mathcal{F} \approx 4{,}66\times10^{-2}$ mol $\Rightarrow
+        n(Cl_2) = n(e^-)/2 \approx 2{,}33\times10^{-2}$ mol $\Rightarrow
+        V(Cl_2) = n(Cl_2)\times V_m \approx 0{,}583$ L — aucune divergence
+        avec la source.
+    intro: |-
+      **Électrolyse d'une solution concentrée de chlorure de sodium (examen national, session normale 2015, Exercice 1 — Première Partie, 2,25 points).**
+
+      L'électrolyse permet d'obtenir des gaz d'une grande pureté.
+
+      On réalise l'électrolyse d'une solution concentrée de chlorure de sodium $(\text{Na}^+_{(aq)} + \text{Cl}^-_{(aq)})$ : on obtient un dégagement de dichlore au voisinage de l'une des électrodes, et un dégagement de dihydrogène au voisinage de l'autre électrode ; de plus, le milieu réactionnel devient basique au cours de la transformation chimique.
+
+      **Données :**
+      - Les couples intervenant dans la transformation chimique : $(\text{H}_2\text{O}_{(\ell)}/\text{H}_{2(g)})$ et $(\text{Cl}_{2(g)}/\text{Cl}^-_{(aq)})$ ;
+      - Le faraday : $\mathcal{F} = 9{,}65\times10^{4}\ \text{C.mol}^{-1}$ ;
+      - Le volume molaire dans les conditions de l'expérience : $V_m = 25{,}0\ \text{L.mol}^{-1}$.
+
+      **Figure (schéma du dispositif, sans numéro imprimé).** Un tube en U contient la solution. En haut, un générateur — un cercle traversé par le fil du circuit — porte le signe $+$ à sa **gauche** et le signe $-$ à sa **droite**. Le fil descend de chaque côté vers une électrode : celle de gauche, reliée à la borne $+$, porte l'étiquette « Electrode (B) » ; celle de droite, reliée à la borne $-$, porte l'étiquette « Electrode (A) ». Chaque branche du tube porte, en haut, une sortie de gaz (« Sortie du gaz ») — le dessin ne dit pas quel gaz sort de quel côté, c'est précisément ce que les questions 1 et 2 établissent. En bas, une légende désigne la « Solution concentrée de chlorure de sodium ».
+    questions:
+      - id: q1
+        part: "Première Partie — Électrolyse d'une solution de chlorure de sodium"
+        stem: |-
+          **1-** (0,5 pt) Déterminer laquelle, parmi les électrodes (A) et (B), joue le rôle de l'anode, et celle qui joue le rôle de la cathode.
+        reasoning: |-
+          Comme au rung 1, l'anode et la cathode se distinguent par le mécanisme qui s'y produit — jamais par leur position sur le papier. Mais ici, contrairement à bk-2022-r-x1 de cette même banque (électrolyse de l'or, sans aucune polarité dessinée), le générateur EST représenté avec ses deux bornes : c'est donc le rung 2 qui tranche directement. En électrolyse, c'est le générateur qui impose la polarité, et sa borne $+$ arrache des électrons à l'électrode qu'elle alimente — ce qui y force une oxydation.
+
+          Sur la figure, le signe $+$ est à GAUCHE du cercle du générateur, et le fil de gauche rejoint l'électrode (B) ; le signe $-$ est à DROITE, et le fil de droite rejoint l'électrode (A).
+
+          L'électrode (B), reliée à la borne $+$, est donc l'**anode** (siège de l'oxydation) ; l'électrode (A), reliée à la borne $-$, est la **cathode** (siège de la réduction).
+
+          **Le piège de cette question.** Deviner la polarité au lieu de la lire : elle est bel et bien donnée sur ce sujet (contrairement à bk-2022-r-x1), et rien n'oblige la borne $+$ à être à droite ou à gauche par convention — c'est le signe imprimé à côté du cercle qui tranche, ici à gauche.
+      - id: q2
+        stem: |-
+          **2-** (0,75 pt) Écrire l'équation de la réaction ayant lieu au voisinage de chaque électrode, et l'équation bilan de cette électrolyse.
+        reasoning: |-
+          Même geste qu'au rung 1 : une demi-équation par électrode, dans le sens que le mécanisme impose, puis la somme équilibrée en électrons.
+
+          À l'anode (B), il faut une espèce qui CÈDE des électrons. Parmi les deux couples donnés, seul $\text{Cl}^-$ — la forme réduite du couple $\text{Cl}_2/\text{Cl}^-$ — peut le faire : il s'oxyde en dichlore, cohérent avec le dégagement de gaz observé à ce voisinage.
+
+          À la cathode (A), il faut une espèce qui CAPTE des électrons. Aucun cation métallique n'est en jeu ici (contrairement au chromage ou au dorage d'autres entrées de cette banque) : c'est l'eau elle-même, via le couple $\text{H}_2\text{O}/\text{H}_2$, qui se réduit en dihydrogène — en libérant, au passage, des ions hydroxyde $\text{HO}^-$. C'est exactement ce qui explique le second fait rapporté par l'énoncé : le milieu devient basique.
+
+          Les deux demi-équations échangent chacune $2\,e^-$ : elles s'annulent directement dans la somme, sans qu'il faille en multiplier aucune.
+
+          **Le piège de cette question.** Chercher un cation métallique à réduire à la cathode, par réflexe (c'est le cas dans la plupart des autres électrolyses de cette banque) : ici la solution ne contient que $\text{Na}^+$, un ion qui n'est PAS réductible en solution aqueuse (il ne fait partie d'aucun des deux couples donnés) — c'est l'eau du solvant qui réagit à sa place, et c'est ce détail qui produit la basicité observée.
+        steps:
+          - math: '2\,Cl^-_{(aq)} \rightarrow Cl_{2(g)} + 2\,e^-'
+            note: "A l'anode (B) : oxydation des ions chlorure."
+          - math: '2\,H_2O_{(\ell)} + 2\,e^- \rightarrow H_{2(g)} + 2\,HO^-_{(aq)}'
+            note: "A la cathode (A) : reduction de l'eau, liberation d'ions hydroxyde - explique le milieu qui devient basique."
+          - math: '\boxed{2\,H_2O_{(\ell)} + 2\,Cl^-_{(aq)} \rightarrow H_{2(g)} + Cl_{2(g)} + 2\,HO^-_{(aq)}}'
+            note: "Bilan : les 2 electrons de chaque cote s'eliminent."
+      - id: q3
+        part: "Première Partie — Loi de Faraday : volume de dichlore"
+        stem: |-
+          **3-** (1 pt) Le générateur alimente le circuit avec un courant électrique d'intensité constante $I = 3\ \text{A}$. Calculer le volume du dichlore formé pendant la durée $\Delta t = 25\ \text{min}$.
+        reasoning: |-
+          On applique la chaîne du rung 4, dans le sens direct cette fois (contrairement à bk-2019-n-x1 ou bk-2023-r-x1 de cette même banque, où c'était une masse ou une durée à retrouver) : le courant et la durée sont donnés, donc la quantité d'électricité $Q$ se calcule directement ; la constante de Faraday la convertit en quantité de matière d'électrons ; et la demi-équation de l'ANODE (question 2) — pas celle de la cathode, puisque c'est le dichlore, formé à l'anode, qui est demandé ici — dit que chaque molécule de $\text{Cl}_2$ mobilise deux électrons.
+
+          SCOPE NOTE (voir l'en-tête du fichier, comme pour bk-2018-n-x1) : convertir cette quantité de matière de gaz en volume par le volume molaire $V_m$ n'est traité par aucun rung de cette leçon — R4 ne chiffre que des masses déposées, jamais des volumes de gaz. C'est une relation générale de chimie ($n = V/V_m$), mobilisée ici sans qu'aucun rung ne l'introduise, avec le $V_m$ donné dans l'énoncé.
+        steps:
+          - math: '\Delta t = 25\ \text{min} = 25\times60 = 1500\ \text{s}'
+            note: "Conversion de la duree en secondes avant tout calcul de charge."
+          - math: 'Q = I\,\Delta t = 3\times1500 = 4500\ \text{C}'
+            note: "Quantite d'electricite debitee par le generateur, intensite constante (rung 4)."
+          - math: 'n(e^-) = \frac{Q}{\mathcal{F}} = \frac{4500}{9{,}65\times10^{4}}'
+            note: "Loi de Faraday : conversion de la charge en quantite de matiere d'electrons."
+          - math: '\boxed{n(e^-) \approx 4{,}66\times10^{-2}\ \text{mol}}'
+            note: "Application numerique."
+          - math: 'n(Cl_2) = \frac{n(e^-)}{2} \approx \frac{4{,}66\times10^{-2}}{2}'
+            note: "2 Cl- -> Cl2 + 2 e- (question 2, demi-equation de l'anode) : deux electrons par molecule de dichlore formee."
+          - math: '\boxed{n(Cl_2) \approx 2{,}33\times10^{-2}\ \text{mol}}'
+            note: "Application numerique."
+          - math: 'V(Cl_2) = n(Cl_2)\times V_m \approx 2{,}33\times10^{-2}\times25{,}0'
+            note: "Conversion mole -> volume par le volume molaire des gaz, donne dans l'enonce (hors rungs de cette lecon, meme pont que bk-2018-n-x1)."
+          - math: '\boxed{V(Cl_2) \approx 0{,}583\ \text{L}}'
+            note: "Volume de dichlore degage pendant Delta t."

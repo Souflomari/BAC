@@ -177,6 +177,21 @@
 # 2-2 (datation Uranium-Plomb — R3, R4, R5 de cette leçon), pour 2,0 pt.
 # 2,0 + 1,0 = 3,00, le barème imprimé. Aucune des deux entrées ne reprend la
 # question de l'autre.
+#
+# NOTE ÉDITORIALE — bk-2015-n-x2b (2026-08-28, ajout). Sœur de bk-2015-n-x2
+# dans content/pc/propagation-onde-lumineuse/bank.yaml : les deux blocs
+# (« Ondes » et « Physique nucléaire ») forment ensemble l'Exercice 2 du
+# sujet 2015 N, avec une numérotation de questions CONTINUE (1 à 5, pas
+# 1 à 3 puis 1 à 2) — les deux entrées partagent donc le même
+# `exercise_label` « Exercice 2 », et leurs questions 4 et 5 portent ces
+# numéros-là, pas 1 et 2, pour rester fidèles à la copie. Format QCM
+# complet (deux questions, quatre propositions chacune, lettres A-D
+# ajoutées à la conversion — le sujet ne les imprime pas). Aucun
+# recoupement thématique avec noyaux-masse-energie sur ce bloc précis
+# (contrairement à plusieurs entrées ci-dessus) : les deux questions
+# (identification du noyau fils par les lois de Soddy, demi-vie par la
+# pente d'un graphe ln(N) = f(t)) sont entièrement dans les rungs R2-R4 de
+# CETTE leçon.
 
 notion: pc/decroissance-radioactive
 
@@ -1954,3 +1969,118 @@ entries:
             note: "Inversion de la loi de decroissance (rung 5), appliquee a l'activite (rung 4)."
           - math: '\boxed{t \approx 15{,}83\ \text{jours}}'
             note: "Duree pour que l'activite decroisse de a0 = 5000 Bq jusqu'au seuil OMS a1 = 300 Bq, soit environ 15 jours et 20 heures."
+
+  # ── bk-2015-n-x2b — 2015 N, Exercice 2 (Physique nucléaire) : Astate 211, QCM ──
+  # Sœur de bk-2015-n-x2 (propagation-onde-lumineuse, bloc « Ondes » du même
+  # Exercice 2) : voir la NOTE ÉDITORIALE en tête de fichier pour le partage
+  # du barème, de l'`exercise_label` et de la numérotation continue des
+  # questions (4 et 5, pas 1 et 2).
+  - id: bk-2015-n-x2b
+    title: "Décroissance radioactive de l'Astate 211 : noyau de Bismuth par les lois de Soddy, et demi-vie par la pente d'un graphe ln(N) = f(t) (QCM)"
+    source:
+      year: 2015
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 2 — Physique nucléaire : décroissance radioactive de l'Astate 211"
+    bareme_total: 1.5
+    duration_min: 9
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28, AlloSchool element/94472 (Exercice 2, bloc
+        « Physique nucléaire » — décroissance radioactive de l'Astate 211,
+        format QCM ; barème du bloc = 1,5 pt (0,5+1), sous-total imprimé
+        « Physique nucléaire (01,5 points) », sur les 03 pt de l'Exercice 2
+        complet, dont le bloc « Ondes » (1,5 pt, questions 1 à 3) est
+        transcrit sous content/pc/propagation-onde-lumineuse/bank.yaml,
+        entrée bk-2015-n-x2 — les deux blocs partagent le même
+        `exercise_label` « Exercice 2 » et la numérotation continue 1 à 5
+        du sujet, ces deux questions-ci portant les numéros 4 et 5.
+        Transcription vérifiée par une passe adversariale indépendante
+        (2026-08-28, docs/sujets/_incoming/pc-2015-n.md, statut « VÉRIFIÉ —
+        clearé pour conversion ») : les 4 propositions de chacune des 2
+        questions relues mot pour mot contre la couche de texte native, et
+        le graphe $\ln(N) = f(t)$ re-mesuré au zoom ×10 sur le bitmap natif
+        — les deux valeurs de l'axe vertical sont bien $37{,}94$ et
+        $37{,}65$ (pas $37{,}04$ ni $37{,}85$), la droite passant
+        exactement par le point $(3\ \text{h}\,;\,37{,}65)$. Physique
+        re-dérivée ici, conforme à la source : lois de Soddy,
+        $211 = 207+4$ et $85 = 83+2$, donc $^{207}_{83}\text{Bi}$ ; pente
+        $= (37{,}65-37{,}94)/3 = -0{,}09667\ \text{h}^{-1}$, donc
+        $\lambda = 0{,}09667\ \text{h}^{-1}$ et $t_{1/2} = \ln2/\lambda =
+        3\ln2/0{,}29 \approx 7{,}17$ h — exactement la troisième
+        proposition imprimée. Aucune divergence. *(Recoupement externe,
+        hors sujet, cité par le vérificateur mais non repris dans le
+        `reasoning` de l'élève : la demi-vie tabulée de $^{211}$At vaut
+        $\approx 7{,}21$ h, cohérente avec les $7{,}17$ h lus ici.)*
+    intro: |-
+      **Décroissance radioactive de l'Astate 211 (examen national, session normale 2015, Exercice 2 — bloc « Physique nucléaire », 1,5 point).**
+
+      L'astate 211, radioemetteur $\alpha$, est utilisé en medecine nucléaire, pour diagnostiquer et suivre l'évolution de quelques tumeurs cancéreuses. *(« astate » en minuscule, « radioemetteur » et « medecine » tels qu'imprimés à cet endroit précis — défauts du sujet officiel ; le mot « Astate » porte un A majuscule aux trois autres occurrences du sujet, sans incidence ici.)*
+
+      La radioactivité de ce noyau donne naissance à un noyau de Bismuth $^{x}_{y}\text{Bi}$.
+
+      La courbe ci-contre représente les variations de $\ln(N)$ en fonction du temps ($N$ : nombre de noyaux d'Astate 211 restants à l'instant $t$).
+
+      **Figure (graphe $\ln(N) = f(t)$, description ET mesure).** Deux axes : $\ln(N)$ en ordonnée, $t\ (\text{h})$ en abscisse. Aucun quadrillage ; seuls quatre repères sont portés — sur l'axe vertical, deux tirets étiquetés $37{,}94$ (le plus haut) et $37{,}65$ ; sur l'axe horizontal, l'origine $0$ et un repère à $3$. La courbe est une **droite décroissante**, partant exactement du point $(0\,;\,37{,}94)$ et passant exactement par le point $(3\ \text{h}\,;\,37{,}65)$ — deux traits pointillés matérialisent cette lecture. Un segment vertical en pointillés, sous les graduations, signale une rupture d'échelle sur l'axe des ordonnées (l'origine n'est pas $\ln N = 0$).
+    questions:
+      - id: q1
+        part: "Bloc « Physique nucléaire » — Astate 211 (QCM)"
+        stem: |-
+          **4-** (0,5 pt) Le noyau de Bismuth résultant de la désintegration *(« désintegration » tel qu'imprimé — défaut du sujet officiel, sans incidence)* de $^{211}_{85}\text{At}$ est :
+
+          | | |
+          |---|---|
+          | **A** | $^{206}_{83}\text{Bi}$ |
+          | **B** | $^{207}_{82}\text{Bi}$ |
+          | **C** | $^{207}_{83}\text{Bi}$ |
+          | **D** | $^{208}_{84}\text{Bi}$ |
+        reasoning: |-
+          L'énoncé dit que l'Astate 211 est un radioémetteur $\alpha$ : la particule émise est donc $^{4}_{2}\text{He}$ — c'est cette information, pas les quatre propositions, qui fixe tout (rung R2, les lois de Soddy). On pose l'équation avec le Bismuth comme fils inconnu :
+
+          $$^{211}_{85}\text{At} \longrightarrow\ ^{A}_{Z}\text{Bi} +\ ^{4}_{2}\text{He}$$
+
+          Conservation du nombre de nucléons : $211 = A + 4 \implies A = 207$. Conservation de la charge : $85 = Z + 2 \implies Z = 83$.
+
+          $$\boxed{^{211}_{85}\text{At} \longrightarrow\ ^{207}_{83}\text{Bi} +\ ^{4}_{2}\text{He}}$$
+
+          **Pourquoi les trois autres échouent, chacune sur UNE des deux conservations.** A ($^{206}_{83}\text{Bi}$) a le bon $Z$ mais un $A$ faux — $211-4=207$, pas $206$ : la conservation du nombre de nucléons est violée. B ($^{207}_{82}\text{Bi}$) a le bon $A$ mais un $Z$ faux — $85-2=83$, pas $82$ : la conservation de la charge est violée. D ($^{208}_{84}\text{Bi}$) viole les deux à la fois, et dans le mauvais sens : $A$ et $Z$ y sont plus grands que dans le père après une émission $\alpha$, ce qui n'a pas de sens — une émission RETIRE de la matière et de la charge, elle n'en ajoute jamais.
+
+          $$\boxed{\text{C}}$$
+        steps:
+          - math: '211 = A + 4 \implies A = 207'
+            note: "Conservation du nombre de nucleons (rung R2, lois de Soddy)."
+          - math: '85 = Z + 2 \implies Z = 83'
+            note: "Conservation de la charge (rung R2, lois de Soddy)."
+          - math: '\boxed{^{207}_{83}\text{Bi}}'
+            note: "Reponse C."
+      - id: q2
+        stem: |-
+          **5-** (1 pt) La demi-vie $t_{1/2}$ de l'Astate 211 est :
+
+          | | |
+          |---|---|
+          | **A** | $t_{1/2} = 4{,}19\ \text{h}$ |
+          | **B** | $t_{1/2} = 5{,}50\ \text{h}$ |
+          | **C** | $t_{1/2} = 7{,}17\ \text{h}$ |
+          | **D** | $t_{1/2} = 27{,}30\ \text{h}$ |
+        reasoning: |-
+          Le rung R3 donne $N(t) = N_0e^{-\lambda t}$ ; en prenant le logarithme népérien des deux membres — exactement le geste déjà fait au rung R4 pour isoler $t_{1/2}$ — on obtient $\ln N = \ln N_0 - \lambda t$ : une droite de pente $-\lambda$. C'est précisément ce que trace la figure : il suffit de lire cette pente entre les deux points donnés, puis d'appliquer $t_{1/2} = \ln 2/\lambda$ (rung R4).
+
+          $$\lambda = -\frac{37{,}65-37{,}94}{3-0} = \frac{0{,}29}{3} \approx 0{,}09667\ \text{h}^{-1}$$
+
+          $$t_{1/2} = \frac{\ln 2}{\lambda} = \frac{3\ln 2}{0{,}29} \approx 7{,}17\ \text{h}$$
+
+          **Pourquoi les trois autres échouent — vérifié en sens inverse, pas juste affirmé.** Plutôt que de deviner d'où viennent A, B et D, on les teste directement contre le graphe : pour chaque $t_{1/2}$ proposée, on calcule $\lambda = \ln2/t_{1/2}$, puis la valeur de $\ln N$ que cette droite prédirait à $t=3\ \text{h}$ en partant de $37{,}94$, et on compare au point RÉELLEMENT tracé, $37{,}65$.
+
+          Pour A ($4{,}19$ h) : $\lambda \approx 0{,}1654\ \text{h}^{-1}$, la droite prédit $\ln N(3) \approx 37{,}94-0{,}1654\times3 \approx 37{,}44$ — une chute bien plus raide que celle du graphe. Pour B ($5{,}50$ h) : $\lambda \approx 0{,}1260\ \text{h}^{-1}$, prédiction $\approx 37{,}94-0{,}378 \approx 37{,}56$ — encore trop raide. Pour D ($27{,}30$ h) : $\lambda \approx 0{,}0254\ \text{h}^{-1}$, prédiction $\approx 37{,}94-0{,}076 \approx 37{,}86$ — cette fois beaucoup trop plate. Seule C ($7{,}17$ h) retombe exactement sur $37{,}65$, le point que la figure trace réellement.
+
+          $$\boxed{\text{C}}$$
+        steps:
+          - math: '\lambda = \frac{37{,}94-37{,}65}{3-0} = \frac{0{,}29}{3} \approx 0{,}09667\ \text{h}^{-1}'
+            note: "Pente de la droite ln(N) = ln(N0) - lambda.t, lue entre les deux points donnes du graphe."
+          - math: 't_{1/2} = \frac{\ln 2}{\lambda} = \frac{3\ln 2}{0{,}29}'
+            note: "Rung R4 : demi-vie a partir de lambda."
+          - math: '\boxed{t_{1/2} \approx 7{,}17\ \text{h}}'
+            note: "Reponse C."

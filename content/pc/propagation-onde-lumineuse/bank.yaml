@@ -100,6 +100,38 @@
 #     une question ouverte — renforcent le même signal pour l'orchestrateur /
 #     pedagogy-architect : R5 gagnerait à nommer explicitement « milieu
 #     dispersif ». Pas corrigé unilatéralement ici.
+#   - bk-2015-n-x2, q3 : l'énergie d'un photon, $E = hc/\lambda$. AUCUN rung
+#     de cette leçon (R1–R5, qui ne traitent que la propagation, l'indice,
+#     la diffraction, la couleur et la dispersion) n'introduit la nature
+#     corpusculaire de la lumière ni la relation $E=h\nu$ — et aucune autre
+#     notion du corpus PC actuel ne le fait non plus (vérifié :
+#     `noyaux-masse-energie` couvre l'énergie de liaison NUCLÉAIRE, pas le
+#     photon). La relation est mobilisée ici comme un résultat de cours
+#     général, hors de toute leçon de ce corpus, exactement comme
+#     `decroissance-radioactive` mobilise l'énergie de liaison par nucléon
+#     (domaine `noyaux-masse-energie`, signalé de la même façon dans son
+#     propre fichier). Signalé pour l'orchestrateur / pedagogy-architect :
+#     ce corpus PC n'a aujourd'hui aucune notion qui introduise la
+#     quantification de l'énergie lumineuse ($E=h\nu$) ; soit un rung de
+#     cette leçon (ou une nouvelle notion) l'introduit, soit la question
+#     reste balisée hors rung comme telle. Pas corrigé unilatéralement ici.
+#
+# Le 2015 N (bk-2015-n-x2, ajouté le 2026-08-28) est la QUATRIÈME entrée de
+# cette banque — première à porter un format QCM complet (trois questions,
+# quatre propositions chacune, aucune case cochée sur le sujet imprimé ; le
+# sujet ne numérote pas les propositions par lettre, les lettres A–D
+# ci-dessous sont ajoutées à la conversion, même convention que
+# bk-2022-n-x1 dans content/pc/electrolyse/bank.yaml). C'est le premier
+# bloc (« Ondes ») d'un Exercice 2 dont la seconde moitié (« Physique
+# nucléaire », questions 4 et 5) est indépendante et vit sous
+# content/pc/decroissance-radioactive/bank.yaml, entrée bk-2015-n-x2b — les
+# deux entrées partagent le même `exercise_label` « Exercice 2 » pour que
+# `numeroExercice()` (web/src/lib/examens.ts) les compte comme UN seul
+# exercice, conformément au sujet. Aucun recoupement avec les trois autres
+# entrées de cette banque : fibre optique, oscilloscope à deux voies et
+# indice de réfraction retrouvé par un retard temporel sont inédits dans le
+# corpus de cette notion (les trois autres passent par un prisme ou une
+# fente de diffraction, jamais par une fibre optique).
 
 notion: pc/propagation-onde-lumineuse
 
@@ -840,3 +872,147 @@ entries:
           — La lumière va $\dfrac{3}{4}$ aussi vite dans ce liquide que dans le vide, ce qui correspond bien à un indice $\dfrac{4}{3}$. Les deux nombres se répondent.
 
           **Le piège nommé de cette question.** Écrire $v_L = c \times n_L = 4\cdot10^{8}\ \text{m.s}^{-1}$, c'est-à-dire multiplier au lieu de diviser. Le résultat dépasse $c$, ce qui est physiquement impossible — le contrôle attrape l'erreur avant le correcteur. Le moyen de ne jamais se tromper de sens : l'indice **ralentit** la lumière, donc il doit être au **dénominateur**.
+
+  # ── bk-2015-n-x2 — 2015 N, Exercice 2 (Ondes) : fibre optique, QCM ──
+  # Sœur de bk-2015-n-x2b (decroissance-radioactive, bloc « Physique
+  # nucléaire » du même Exercice 2) : voir la NOTE ÉDITORIALE en tête de
+  # fichier pour le partage du barème et le partage de l'`exercise_label`.
+  - id: bk-2015-n-x2
+    title: "Propagation d'une onde lumineuse dans une fibre optique : retard temporel, indice de réfraction et énergie d'un photon (QCM)"
+    source:
+      year: 2015
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 2 — Ondes : propagation des ondes lumineuses dans un milieu transparent"
+    bareme_total: 1.5
+    duration_min: 9
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28, AlloSchool element/94472 (Exercice 2,
+        bloc « Ondes » — propagation d'une onde lumineuse dans une fibre
+        optique, format QCM ; barème du bloc = 1,5 pt (0,5+0,5+0,5),
+        sous-total imprimé « Ondes (01,5 points) », sur les 03 pt de
+        l'Exercice 2 complet, dont le bloc « Physique nucléaire »
+        (2,0 pt... en réalité 1,5 pt, questions 4 et 5) est transcrit sous
+        content/pc/decroissance-radioactive/bank.yaml, entrée
+        bk-2015-n-x2b — les deux blocs partagent la même numérotation de
+        questions (1 à 5, continue) et le même `exercise_label` « Exercice
+        2 » pour ne compter qu'un seul exercice dans l'assemblage
+        (web/src/lib/examens.ts). Transcription vérifiée par une passe
+        adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2015-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion ») : les 4 propositions de chacune des 3 questions
+        relues mot pour mot contre la couche de texte native (20/20
+        conformes, contrôle croisé par comptage des cases Wingdings 0xA7 —
+        exactement 5 questions × 4 propositions sur la page 4), et la
+        Figure 2 (écran d'oscilloscope) re-mesurée au pixel sur le bitmap
+        natif : décalage entre les deux fronts montants = 174 px, soit
+        $174/35{,}0 \approx 4{,}97$ division, arrondi à $5{,}0$ div par le
+        sujet. Physique re-dérivée ici, conforme à la source : $\tau =
+        5{,}0\times0{,}2 = 1{,}0\ \mu\text{s}$ ; $n = c/v =
+        3\times10^{8}/1{,}87\times10^{8} \approx 1{,}604$, arrondi à
+        $1{,}6$ (la proposition imprimée) ; $E = hc/\lambda =
+        (6{,}63\times10^{-34}\times3\times10^{8})/(530\times10^{-9})
+        \approx 3{,}753\times10^{-19}$ J, conforme à la proposition
+        imprimée $3{,}75\times10^{-19}$. Aucune divergence. SCOPE NOTE
+        (q3, énergie du photon) : voir l'en-tête du fichier — $E=hc/\lambda$
+        n'est enseignée par aucun rung de cette leçon ni d'aucune autre
+        notion du corpus PC actuel.
+    intro: |-
+      **Propagation des ondes lumineuses dans un milieu transparent (examen national, session normale 2015, Exercice 2 — bloc « Ondes », 1,5 point).**
+
+      Les fibres optiques permettent la transmission d'informations numériques avec des vitesses très grandes et à haut débits *(« haut débits » tel qu'imprimé — défaut du sujet officiel, sans incidence)*, en comparaison avec d'autres milieux.
+
+      Pour déterminer l'indice de réfraction du milieu transparent constituant le cœur d'une fibre optique, on réalise le dispositif expérimental représenté sue la figure 1 *(« sue » tel qu'imprimé — défaut du sujet officiel, sans incidence)*, où les récepteurs $R_1$ et $R_2$ permettent de transformer l'onde lumineuse monochromatique issue de la source laser en tension électrique, qu'on affiche sur l'écran d'un oscilloscope comme indiqué sur la figure 2.
+
+      **On donne :**
+      - Sensibilité horizontale : $S_H = 0{,}2\ \mu\text{s.div}^{-1}$ ;
+      - Célérité de propagation de la lumière dans le vide : $c = 3\times10^{8}\ \text{m.s}^{-1}$ ;
+      - Constante de Planck : $h = 6{,}63\times10^{-34}\ \text{J.s}$.
+
+      **Figure 1 (dispositif, sans redessin détaillé nécessaire).** Une source laser envoie un faisceau, via une fibre optique, jusqu'à deux récepteurs $R_1$ et $R_2$ placés le long du trajet — $R_1$ en amont, $R_2$ en aval, à une certaine distance l'un de l'autre le long de la fibre. Chaque récepteur, mis à la masse, transforme la lumière reçue en tension et l'envoie vers une voie de l'oscilloscope (« Entrée 1 » pour $R_1$, « Entrée 2 » pour $R_2$).
+
+      **Figure 2 (écran d'oscilloscope, description ET mesure).** Écran quadrillé de $10$ divisions horizontales sur $8$ verticales. Deux créneaux (traces rectangulaires) de même forme et de même largeur, l'un sur la voie de $R_1$ (le plus à gauche), l'autre sur la voie de $R_2$ — décalé vers la droite, puisque la lumière met un temps fini à parcourir la fibre entre $R_1$ et $R_2$. **Le décalage horizontal entre les deux fronts montants vaut $5{,}0$ divisions.**
+    questions:
+      - id: q1
+        part: "Bloc « Ondes » — fibre optique (QCM)"
+        stem: |-
+          **1-** (0,5 pt) Le retard temporel $\tau$ enregistré entre $R_1$ et $R_2$ est :
+
+          | | |
+          |---|---|
+          | **A** | $\tau = 0{,}6\ \mu\text{s}$ |
+          | **B** | $\tau = 1{,}0\ \mu\text{s}$ |
+          | **C** | $\tau = 1{,}4\ \mu\text{s}$ |
+          | **D** | $\tau = 1{,}0\ \text{ms}$ |
+        reasoning: |-
+          Un retard temporel entre deux voies d'un oscilloscope se lit exactement comme une constante de temps ou une période sur n'importe quel oscillogramme : on compte un nombre de divisions, on multiplie par la sensibilité horizontale. Ici, le décalage entre les deux fronts montants (le signal de $R_1$ arrive, puis celui de $R_2$, retardé par le trajet dans la fibre) vaut $5{,}0$ divisions (figure 2).
+
+          $$\tau = 5{,}0\ \text{div}\times S_H = 5{,}0\times0{,}2$$
+
+          $$\boxed{\tau = 1{,}0\ \mu\text{s}}$$
+
+          **Pourquoi les trois autres échouent.** A ($0{,}6\ \mu\text{s}$) correspondrait à un décalage de seulement $3{,}0$ div — un mauvais comptage, en oubliant une partie de la largeur du créneau. C ($1{,}4\ \mu\text{s}$) correspondrait à $7{,}0$ div — l'erreur inverse, en comptant au-delà du front montant jusqu'au front descendant du créneau suivant. D ($1{,}0\ \text{ms}$) a le bon chiffre mais la mauvaise unité : confondre $\mu\text{s}$ (microseconde, $10^{-6}$ s) et ms (milliseconde, $10^{-3}$ s) donne un facteur $1000$ d'écart — un retard d'une milliseconde entre deux points d'une même fibre optique serait d'ailleurs physiquement absurde pour une distance de laboratoire.
+
+          $$\boxed{\text{B}}$$
+        steps:
+          - math: '\tau = 5{,}0\ \text{div}\times S_H = 5{,}0\times0{,}2'
+            note: "Lecture du decalage entre les deux fronts montants sur la figure 2, multiplie par la sensibilite horizontale."
+          - math: '\boxed{\tau = 1{,}0\ \mu\text{s}}'
+            note: "Retard temporel entre R1 et R2 - reponse B."
+      - id: q2
+        stem: |-
+          **2-** (0,5 pt) Sachant que la célérité de propagation de l'onde lumineuse à l'intérieur du cœur de la fibre optique est $v = 1{,}87\times10^{8}\ \text{m.s}^{-1}$, l'indice de réfraction $n$ du milieu transparent constituant le cœur de la fibre optique est :
+
+          | | |
+          |---|---|
+          | **A** | $n = 0{,}63$ |
+          | **B** | $n = 1{,}5$ |
+          | **C** | $n = 1{,}6$ |
+          | **D** | $n = 1{,}7$ |
+        reasoning: |-
+          C'est l'application directe du rung R2 : $n = c/v$, avec $c$ la célérité dans le vide (donnée) et $v$ la célérité dans le cœur de la fibre (donnée par cette question).
+
+          $$n = \frac{c}{v} = \frac{3\times10^{8}}{1{,}87\times10^{8}} \approx 1{,}604$$
+
+          $$\boxed{n \approx 1{,}6}$$
+
+          **Pourquoi les trois autres échouent.** A ($0{,}63$) est le piège le plus dangereux, parce qu'il n'a rien d'un mauvais calcul : c'est l'INVERSE de la bonne réponse, $v/c$ au lieu de $c/v$. Le contrôle du rung R2 le disqualifie avant même de comparer aux autres propositions : un indice de réfraction vaut TOUJOURS au moins $1$ (rung R2, $n \geq 1$ puisque $v \leq c$ dans tout milieu matériel) — $0{,}63 < 1$ ne peut pas être une réponse, quel que soit le calcul qui y mène. B ($1{,}5$) et D ($1{,}7$) encadrent la bonne valeur : ce sont des distracteurs numériques plausibles, qui ne tombent juste qu'en arrondissant mal $3/1{,}87$ dans la mauvaise direction.
+
+          $$\boxed{\text{C}}$$
+        steps:
+          - math: 'n = \frac{c}{v} = \frac{3\times10^{8}}{1{,}87\times10^{8}}'
+            note: "Rung R2 : n = c/v, avec c dans le vide et v dans le coeur de la fibre."
+          - math: '\boxed{n \approx 1{,}6}'
+            note: "Indice de refraction du coeur de la fibre - reponse C."
+      - id: q3
+        stem: |-
+          **3-** (0,5 pt) Sachant que la longueur d'onde de l'onde lumineuse issue du laser est $\lambda = 530\ \text{nm}$, l'énergie d'un photon dans cette radiation (en J) est :
+
+          | | |
+          |---|---|
+          | **A** | $E \approx 1{,}17\times10^{-48}$ |
+          | **B** | $E \approx 3{,}75\times10^{-19}$ |
+          | **C** | $E \approx 35{,}7\times10^{-19}$ |
+          | **D** | $E \approx 3{,}75\times10^{-28}$ |
+        reasoning: |-
+          SCOPE NOTE (voir l'en-tête du fichier) : l'énergie d'un photon, $E = hc/\lambda$, n'est enseignée par aucun rung de cette leçon (qui reste tout entière dans le cadre ondulatoire) ni d'aucune autre notion de ce corpus. C'est un résultat de cours général — la quantification de l'énergie lumineuse — mobilisé ici tel quel, avec la constante de Planck donnée dans l'énoncé.
+
+          $$E = \frac{hc}{\lambda}$$
+
+          On convertit d'abord $\lambda$ en mètres : $530\ \text{nm} = 530\times10^{-9}\ \text{m}$.
+
+          $$E = \frac{6{,}63\times10^{-34}\times3\times10^{8}}{530\times10^{-9}} \approx 3{,}753\times10^{-19}\ \text{J}$$
+
+          $$\boxed{E \approx 3{,}75\times10^{-19}\ \text{J}}$$
+
+          **Pourquoi les trois autres échouent, chacune par une erreur précise.** D ($3{,}75\times10^{-28}$) porte exactement les mêmes chiffres que la bonne réponse : c'est le signal d'une conversion d'unité oubliée — diviser par $\lambda = 530$ (en nanomètres, sans le convertir en mètres) au lieu de $530\times10^{-9}$ donne très exactement ce nombre, décalé de $10^{9}$. C ($35{,}7\times10^{-19}$) est $10$ fois trop grand : c'est l'erreur inverse, un facteur $10$ perdu dans la conversion (par exemple $\lambda = 53\ \text{nm}$ au lieu de $530\ \text{nm}$). A ($1{,}17\times10^{-48}$) vient d'une confusion de formule : calculer $E = h\nu$ avec une fréquence obtenue en INVERSANT $\nu = \lambda/c$ au lieu de $\nu = c/\lambda$ — la même inversion c/v ↔ v/c que le piège A de la question 2, ici appliquée à la fréquence plutôt qu'à l'indice.
+
+          $$\boxed{\text{B}}$$
+        steps:
+          - math: 'E = \frac{hc}{\lambda} = \frac{6{,}63\times10^{-34}\times3\times10^{8}}{530\times10^{-9}}'
+            note: "Energie d'un photon (hors rungs de cette lecon), avec lambda converti en metres avant division."
+          - math: '\boxed{E \approx 3{,}75\times10^{-19}\ \text{J}}'
+            note: "Reponse B."

@@ -317,6 +317,42 @@ entries:
   # l'acide restant a la fin d'une esterification pour en tirer le rendement
   # — est absent des deux autres entrees de cette banque (bk-2018-n-x1 donne
   # directement n_E ; bk-2023-n-x1 lit x_eq sur une courbe n_a = f(t)).
+  #
+  # Le 2015 N (bk-2015-n-x1c, ajouté le 2026-08-28) est la QUATRIÈME entrée
+  # de cette banque. C'est le §2 de la Deuxième Partie de l'Exercice 1
+  # (étude de la réaction de l'acide benzoïque avec l'éthanol : rôle du
+  # catalyseur, équation, rendement, réactif de substitution ; 2,50 pt) ;
+  # le §1 de cette même Deuxième Partie (acide benzoïque + eau : taux
+  # d'avancement, pKA) est DÉJÀ en banque sous
+  # content/pc/etat-equilibre/bank.yaml, entrée bk-2015-n-x1 — pas de
+  # double comptage.
+  #
+  # ⚠️ CORRECTION ASSUMÉE DU SUJET OFFICIEL, portée par cette entrée. Le
+  # sujet imprime la masse volumique de l'éthanol « ρ = 0;78g.L⁻¹ » —
+  # séparateur décimal fautif (point-virgule) ET unité fausse d'un facteur
+  # 1000. Telle quelle, la question 2-3 est insoluble (rendement de
+  # 8846 %, physiquement impossible). L'entrée retient 0,78 g·mL⁻¹, la
+  # masse volumique RÉELLE de l'éthanol — une constante physique connue,
+  # pas une interprétation — sur le même principe que PC 2012 N
+  # (content/pc/transformations-deux-sens/bank.yaml, bloc « CORRECTION
+  # ASSUMÉE DU SUJET OFFICIEL »). Le détail complet, avec ce que le sujet
+  # imprime et sur quelle base la valeur est retenue, est déclaré au point
+  # d'usage dans l'`intro` de `bk-2015-n-x1c` (commentaire juste après la
+  # donnée) et rappelé dans son `sourcing.note`.
+  #
+  # CROSS-LIST `controle-catalyse`, RATTACHÉ À LA BONNE QUESTION. Le sujet
+  # source propose ce cross-list pour la question 2-1 (rôle du
+  # catalyseur) ; vérifié ici contre les deux leçons, ce n'est pas la
+  # bonne question : 2-1 est entièrement couverte par le rung R4 de CETTE
+  # leçon (le catalyseur accélère l'estérification et l'hydrolyse dans les
+  # mêmes proportions, sans déplacer l'équilibre). Le cross-list réel
+  # porte sur la question 2-4 (réactif de substitution pour améliorer le
+  # rendement) : c'est le rung R1 de « Contrôle par un réactif ou par
+  # catalyse » qui introduit l'anhydride d'acide, réactif « rapide et
+  # total » qui remplace l'acide carboxylique — exactement la réponse
+  # attendue ici. Nommé et ponté au point d'usage dans le raisonnement de
+  # la question 2-4, pas converti en entrée séparée (0,5 pt, un orphelin
+  # illisible s'il était détaché).
   - id: bk-2025-r-x1b
     title: "Estérification de l'acide éthanoïque par l'éthanol : acide restant dosé par la soude, rendement"
     source:
@@ -407,3 +443,190 @@ entries:
           $$\boxed{r \approx 0{,}670 = 67{,}0\ \%}$$
 
           **Le piège nommé de cette question.** Ne calcule pas le rendement à partir de l'acide **restant** directement ($n_r/n_0$) : ce rapport donnerait la fraction d'acide **n'ayant pas réagi**, pas la fraction convertie en ester. Il faut d'abord passer par l'avancement $x = n_0 - n_r$, puis rapporter $x$ à $x_{max}$ — deux soustractions dans des directions opposées, faciles à inverser sous pression.
+
+  # ── bk-2015-n-x1c — 2015 N, Exercice 1 (Deuxième Partie, §2) : estérification acide benzoïque + éthanol ──
+  # Voir la NOTE ÉDITORIALE au-dessus de bk-2025-r-x1b pour le choix du
+  # suffixe c (le §1 de cette même Deuxième Partie, DÉJÀ en banque sous
+  # content/pc/etat-equilibre/bank.yaml, porte x1 sans lettre ; ce §2-ci,
+  # transcrit par la même campagne que l'entrée sœur bk-2015-n-x1b
+  # d'`electrolyse` — Première Partie du même Exercice 1 — porte c) et pour
+  # la CORRECTION ASSUMÉE du sujet officiel, déclarée en détail ci-dessous
+  # dans l'`intro` de cette entrée, au point d'usage.
+  - id: bk-2015-n-x1c
+    title: "Estérification de l'acide benzoïque par l'éthanol : rôle du catalyseur, équation, rendement (donnée corrigée), et réactif de substitution"
+    source:
+      year: 2015
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Deuxième Partie, §2 : réaction de l'acide benzoïque avec l'éthanol"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28, AlloSchool element/94472 (Exercice 1,
+        Deuxième Partie, §2 — réaction de l'acide benzoïque avec l'éthanol ;
+        barème du §2 = 2,50 pt (0,5+0,5+1+0,5), pas de sous-total imprimé
+        pour le §2 seul — c'est le complément du §1 (2,25 pt, DÉJÀ en
+        banque sous content/pc/etat-equilibre/bank.yaml, entrée
+        bk-2015-n-x1) dans les 4,75 pt imprimés de la Deuxième Partie ; sur
+        les 07 pt de l'exercice complet, dont la Première Partie
+        (électrolyse, 2,25 pt) est transcrite sous
+        content/pc/electrolyse/bank.yaml, entrée bk-2015-n-x1b — pas de
+        double comptage entre les trois entrées. Transcription vérifiée par
+        une passe adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2015-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion, sous la seule réserve nommée » — précisément celle
+        traitée ici) : re-fetch indépendant, couche de texte native ET
+        rendu vectoriel 600 dpi relus sur les deux chaînes, 27/27 questions
+        du sujet re-dérivées. RÉSERVE NOMMÉE ET TRANCHÉE ICI (question
+        2-3) : le sujet imprime « La masse volumique de l'éthanol pur :
+        ρ = 0;78g.L⁻¹ » — point-virgule en guise de séparateur décimal, et
+        unité fausse d'un facteur 1000. Telle qu'imprimée, la donnée rend
+        la question 2-3 insoluble : avec $0{,}78\ \text{g.L}^{-1}$, les
+        $10$ mL d'éthanol ne pèseraient que $7{,}8\times10^{-3}$ g
+        ($1{,}70\times10^{-4}$ mol), l'éthanol deviendrait le réactif
+        limitant, et la masse maximale d'ester ne vaudrait que
+        $0{,}0254$ g — alors que l'énoncé annonce $2{,}25$ g d'ester
+        OBTENUS : un rendement de $8846\ \%$, physiquement impossible.
+        DÉCISION D'OWNER, PRISE ICI : convertir avec la valeur utilisable,
+        $\rho = 0{,}78\ \text{g.mL}^{-1}$ (= $0{,}78\ \text{kg.L}^{-1}$),
+        la masse volumique RÉELLE de l'éthanol — une constante physique
+        connue, pas une interprétation — et DÉCLARER la correction, plutôt
+        que de la faire en silence. Avec cette valeur : $n(\text{acide}) =
+        2{,}44/122 = 2{,}00\times10^{-2}$ mol (exactement) ; $n(\text{éthanol})
+        = (10\times0{,}78)/46 \approx 0{,}1696$ mol, en large excès ;
+        l'acide benzoïque est donc le réactif limitant,
+        $m_{max}(\text{ester}) = 2{,}00\times10^{-2}\times150 = 3{,}00$ g,
+        et le rendement $= 2{,}25/3{,}00 = \mathbf{75{,}00\ \%}$ exactement
+        — un nombre rond, qui confirme la lecture. Précédent maison
+        exactement de cette forme : PC 2012 N (les deux couples y étaient
+        étiquetés $pK_{A1}$), converti avec correction déclarée — voir
+        content/pc/transformations-deux-sens/bank.yaml, bloc « CORRECTION
+        ASSUMÉE DU SUJET OFFICIEL ». Aucun corrigé officiel n'existe pour
+        ce sujet (recherche faite par le vérificateur : la série SPC n'a de
+        corrigés qu'à partir de 2016, et les voisins d'élément dans les
+        trois cours AlloSchool sont tous des sujets, jamais des corrigés) :
+        la question devait être arbitrée sans corrigé, et l'est ici.
+        CROSS-LIST `controle-catalyse` (question 2-4, réactif de
+        substitution → anhydride d'acide, rung R1) : voir la note
+        éditoriale au-dessus de bk-2025-r-x1b pour pourquoi ce cross-list
+        est rattaché à 2-4 et non à 2-1, contrairement au classement
+        proposé par le sujet source.
+    intro: |-
+      **Réaction de l'acide benzoïque avec l'éthanol (examen national, session normale 2015, Exercice 1 — Deuxième Partie, §2, 2,50 points).**
+
+      *Le §1 de cette même Deuxième Partie — taux d'avancement final et $pK_A$ du couple $(\text{C}_6\text{H}_5\text{COOH}/\text{C}_6\text{H}_5\text{COO}^-)$ — vit sous la notion « État d'équilibre d'un système chimique », entrée bk-2015-n-x1. Cette entrée-ci en est indépendante.*
+
+      L'acide benzoïque est utilisé dans la conservation des aliments et des boissons non alcooliques, ainsi que dans la fabrication de plusieurs composés organiques.
+
+      **Données :**
+      - Toutes les mesures ont été faites à $25\ ^\circ\text{C}$ ;
+      - Masse molaire de l'acide benzoïque : $M(\text{C}_6\text{H}_5\text{COOH}) = 122\ \text{g.mol}^{-1}$ ;
+      - Masse molaire de l'éthanol : $M(\text{C}_2\text{H}_5\text{OH}) = 46\ \text{g.mol}^{-1}$ ;
+      - Masse volumique de l'éthanol pur : $\rho = 0{,}78\ \text{g.mL}^{-1}$ <!-- CORRECTION ASSUMÉE DU SUJET OFFICIEL, déclarée le 2026-08-28.
+           Le sujet imprime, mot pour mot : « La masse volumique de l'éthanol
+           pur : ρ = 0;78g.L-1 ». Deux fautes dans cette seule donnée : un
+           point-virgule à la place de la virgule décimale, et une unité
+           fausse d'un facteur 1000 (g.L-1 au lieu de g.mL-1).
+           Telle quelle, la question 2-3 est INSOLUBLE : avec 0,78 g.L-1, les
+           10 mL d'éthanol ne pèsent que 7,8e-3 g (1,70e-4 mol), l'éthanol
+           deviendrait le réactif limitant, et la masse maximale d'ester ne
+           vaudrait que 0,0254 g — alors que l'énoncé annonce 2,25 g d'ester
+           OBTENUS : un rendement de 8846 %, physiquement impossible.
+           Cette entrée retient 0,78 g.mL-1 (= 0,78 kg.L-1) : c'est la masse
+           volumique RÉELLE de l'éthanol, une constante physique connue, et
+           non une interprétation — reconnaître une valeur que le sujet a
+           mal typographiée deux fois à la fois (séparateur ET unité). Avec
+           elle, le rendement vaut 75,00 % exactement — un nombre rond, ce
+           qui confirme la lecture. C'est une réparation DÉLIBÉRÉE, faite
+           ici et déclarée, pas une erreur de transcription : le même choix
+           a déjà été fait sur PC 2012 N (les deux couples y étaient
+           étiquetés pKA1 ; voir
+           content/pc/transformations-deux-sens/bank.yaml, bloc "CORRECTION
+           ASSUMÉE DU SUJET OFFICIEL"). Aucun corrigé officiel n'existe pour
+           ce sujet (recherche faite, voir
+           docs/sujets/_incoming/pc-2015-n.md, "Ce que la vérification a
+           trouvé", point 3) : la décision est prise ici, au point d'usage,
+           plutôt que tranchée par un corrigé. --> ;
+      - Masse molaire du benzoate d'éthyle : $M(\text{C}_6\text{H}_5\text{COOC}_2\text{H}_5) = 150\ \text{g.mol}^{-1}$.
+
+      *Le benzoate d'éthyle est caractérisé par le goût des cerises, c'est pourquoi il est utilisé dans l'industrie alimentaire pour donner ce goût aux aliments synthétisés (encadré du sujet officiel).*
+
+      Pour préparer le benzoate d'éthyle au laboratoire, on mélange dans un ballon un échantillon d'acide benzoïque de masse $m_{ac} = 2{,}44\ \text{g}$ avec un volume $V_{a\ell} = 10\ \text{mL}$ d'éthanol pur, puis on y ajoute quelques gouttes d'acide sulfurique concentré jouant le rôle d'un catalyseur. Le mélange est chauffé à reflux à température constante.
+    questions:
+      - id: q1
+        part: "§2 — Réaction de l'acide benzoïque avec l'éthanol"
+        stem: |-
+          **2-1.** (0,5 pt) Quel est le rôle du catalyseur dans cette réaction ?
+        reasoning: |-
+          C'est très exactement le rung R4 de cette leçon : un catalyseur acide — ici quelques gouttes d'acide sulfurique concentré, le même réactif que celui du rung R0 — accélère l'estérification, mais **dans les deux sens à la fois** : il facilite tout autant l'hydrolyse inverse. Le rapport entre les deux vitesses, celui-là même qui fixe la position de l'équilibre, ne bouge donc pas.
+
+          Le catalyseur permet d'atteindre l'état final (l'équilibre entre l'acide, l'éthanol, l'ester et l'eau) **plus rapidement**, sans changer ni le rendement final ni la composition du mélange à l'équilibre.
+
+          **Le piège de cette question.** Répondre « il améliore le rendement » : c'est précisément l'idée fausse que le rung R4 démonte par le test des deux flacons (avec et sans catalyseur), qui atteignent la **même** composition finale à des vitesses différentes. Le catalyseur achète du temps, jamais de l'ester en plus.
+      - id: q2
+        stem: |-
+          **2-2.** (0,5 pt) Écrire, en utilisant les formules semi-développées, l'équation modélisant la transformation ayant lieu entre l'acide benzoïque et l'éthanol.
+        reasoning: |-
+          On applique le geste du rung R1 : le groupe $-COOH$ de l'acide et le groupe $-OH$ de l'alcool se combinent, une molécule d'eau en part, et ce qui reste des deux chaînes se relie par le groupe ester $-COO-$. Ici $R = \text{C}_6\text{H}_5-$ (le radical de l'acide benzoïque, un groupe phényle) et $R' = \text{C}_2\text{H}_5-$ (le radical de l'éthanol).
+
+          $$\boxed{\text{C}_6\text{H}_5-\text{COOH} + \text{C}_2\text{H}_5-\text{OH} \rightleftharpoons \text{C}_6\text{H}_5-\text{COO}-\text{C}_2\text{H}_5 + \text{H}_2\text{O}}$$
+
+          Double flèche, comme toujours pour une estérification (rung R2) : c'est une réaction limitée, pas totale — exactement ce que le rendement de la question 2-3 va vérifier avec un chiffre.
+
+          **Le nom de l'ester, pour vérifier l'écriture.** Radical de l'acide benzoïque : « benzoate ». Radical de l'éthanol : « éthyle ». L'ester formé est donc le **benzoate d'éthyle** — cohérent avec la masse molaire donnée dans l'énoncé, $M = 150\ \text{g.mol}^{-1}$, et avec le contrôle gratuit $M(\text{ester}) = M(\text{acide}) + M(\text{éthanol}) - M(\text{H}_2\text{O}) = 122+46-18 = 150$.
+
+          **Le piège de cette question.** L'énoncé demande les formules **semi-développées** : écrire l'équation générale $R-COOH + R'-OH \rightleftharpoons R-COO-R' + H_2O$ sans remplacer $R$ et $R'$ par $\text{C}_6\text{H}_5-$ et $\text{C}_2\text{H}_5-$ ne répond pas à la consigne.
+      - id: q3
+        stem: |-
+          **2-3.** (1 pt) On obtient à la fin de la réaction une quantité de masse $m_e = 2{,}25\ \text{g}$ de benzoate d'éthyle. Calculer le rendement de cette réaction.
+        reasoning: |-
+          Le rendement rapporte l'ester réellement obtenu à celui qu'aurait donné une réaction **totale** : $r = m_{obtenue}/m_{max}$, la version en masses du même geste qu'au rung R3 ($\tau$, en avancement). Il faut d'abord identifier le réactif limitant — et ici, contrairement au cas de l'estérification simple du rung R3 (quantités égales), les deux réactifs ne sont PAS en proportions égales : il faut convertir les deux masses en quantités de matière et comparer.
+
+          $$n(\text{acide}) = \frac{m_{ac}}{M(\text{acide})} = \frac{2{,}44}{122} = 2{,}00\times10^{-2}\ \text{mol}$$
+
+          Pour l'éthanol, il faut d'abord passer par sa masse — c'est ici qu'intervient la donnée $\rho$, dont la valeur utilisable est $0{,}78\ \text{g.mL}^{-1}$ (voir la correction déclarée dans les données ci-dessus) :
+
+          $$m(\text{éthanol}) = \rho \times V_{a\ell} = 0{,}78\times10 = 7{,}8\ \text{g} \implies n(\text{éthanol}) = \frac{7{,}8}{46} \approx 0{,}1696\ \text{mol}$$
+
+          L'éthanol ($\approx 0{,}17$ mol) est en **large excès** devant l'acide benzoïque ($0{,}0200$ mol) : avec une stœchiométrie $1{:}1{:}1{:}1$ (question 2-2), c'est l'acide benzoïque qui est le réactif **limitant**. La masse maximale d'ester correspond donc à la conversion totale de l'acide :
+
+          $$m_{max} = n(\text{acide})\times M(\text{ester}) = 2{,}00\times10^{-2}\times150 = 3{,}00\ \text{g}$$
+
+          $$r = \frac{m_e}{m_{max}} = \frac{2{,}25}{3{,}00}$$
+
+          $$\boxed{r = 0{,}75 = 75{,}00\ \%}$$
+
+          Un rendement rond, cohérent avec un couple acide/alcool tous deux sans empêchement stérique majeur — nettement plus proche des $66{,}7\ \%$ de l'« estérification simple » du rung R3 (quantités égales) qu'il ne l'aurait été sans excès d'éthanol, exactement ce que prédit le rung R5 : un réactif en excès pousse l'équilibre plus loin que $\tau \approx 2/3$.
+
+          **Le piège de cette question.** Prendre l'acide comme réactif limitant par réflexe (« c'est toujours l'acide dans les exercices simples ») sans vérifier le calcul : ici c'est vrai, mais seulement parce que $n(\text{éthanol}) \gg n(\text{acide})$ — un calcul qu'il faut refaire à chaque énoncé, jamais supposer. Deuxième piège : garder l'unité imprimée sans la questionner, alors qu'une masse volumique en g/L (ce que la coquille imprime) donnerait une masse d'éthanol mille fois trop petite et un rendement supérieur à $100\ \%$ — un signal qui doit alerter, jamais être accepté tel quel (voir la correction déclarée dans les données).
+        steps:
+          - math: 'n(\text{acide}) = \frac{2{,}44}{122} = 2{,}00\times10^{-2}\ \text{mol}'
+            note: "Quantite de matiere d'acide benzoique, depuis la masse donnee."
+          - math: 'm(\text{ethanol}) = \rho\times V_{a\ell} = 0{,}78\times10 = 7{,}8\ \text{g}'
+            note: "Masse d'ethanol, avec la valeur utilisable de rho (0,78 g/mL, corrigee - voir les donnees)."
+          - math: 'n(\text{ethanol}) = \frac{7{,}8}{46} \approx 0{,}1696\ \text{mol}'
+            note: "Quantite de matiere d'ethanol : tres superieure a celle de l'acide, donc ethanol en exces."
+          - math: 'n(\text{ethanol}) \gg n(\text{acide}) \implies \text{acide benzoique = reactif limitant}'
+            note: "Stoechiometrie 1:1:1:1 (question 2-2) : le reactif le moins abondant limite la reaction."
+          - math: 'm_{max} = n(\text{acide})\times M(\text{ester}) = 2{,}00\times10^{-2}\times150 = 3{,}00\ \text{g}'
+            note: "Masse maximale d'ester si l'acide, limitant, etait totalement converti."
+          - math: 'r = \frac{m_e}{m_{max}} = \frac{2{,}25}{3{,}00}'
+            note: "Rendement = masse reellement obtenue / masse maximale theorique."
+          - math: '\boxed{r = 0{,}75 = 75{,}00\ \%}'
+            note: "Valeur ronde : coherente avec l'exces d'ethanol (rung R5), au-dessus des 66,7 pourcent de l'esterification simple (rung R3)."
+      - id: q4
+        stem: |-
+          **2-4.** (0,5 pt) Pour améliorer le rendement de synthèse de benzoate d'éthyle, on remplace l'acide benzoïque par un autre réactif. Donner le nom de ce réactif et écrire da formule semi-développée. *(« da » tel qu'imprimé — défaut du sujet officiel, sans incidence)*
+        reasoning: |-
+          SCOPE NOTE (voir la note éditoriale en tête de fichier) : le rendement obtenu à la question 2-3 ($75\ \%$) est déjà au-dessus des $66{,}7\ \%$ de l'estérification simple, grâce à l'excès d'éthanol — mais rester avec l'acide benzoïque, aussi favorisée soit la réaction, plafonne toujours à un équilibre. Pour dépasser tout plafond d'équilibre, le levier n'est ni un déplacement (rung R5 de cette leçon-ci, déjà exploité par l'excès d'éthanol) ni un catalyseur (question 2-1) : c'est de **changer de réactif**, le geste du rung R1 de la notion « Contrôle par un réactif ou par catalyse ».
+
+          On remplace l'acide benzoïque $\text{C}_6\text{H}_5-\text{COOH}$ par son **anhydride**, l'anhydride benzoïque : on prend deux molécules d'acide benzoïque, on leur retire une molécule d'eau, et on soude les deux restes par un atome d'oxygène central.
+
+          $$\boxed{\text{C}_6\text{H}_5-\text{CO}-\text{O}-\text{CO}-\text{C}_6\text{H}_5}$$
+
+          Avec l'éthanol, cet anhydride réagirait par une réaction à **une seule flèche** — rapide (quelques minutes, souvent sans chauffage) et **totale** ($\tau = 1$, pas de plafond à $2/3$ ni même à $75\ \%$) — puisque le sous-produit n'est plus de l'eau (qui pourrait réhydrolyser l'ester) mais de l'acide benzoïque lui-même.
+
+          **Le piège de cette question.** Répondre « il faut chauffer plus fort » ou « ajouter plus de catalyseur » : ce sont des leviers cinétiques (rung R4, question 2-1), qui accélèrent l'arrivée à l'équilibre sans jamais en changer la position. La question demande un réactif de substitution, pas un réglage des conditions expérimentales — c'est le signal qui pointe vers le rung R1 de « Contrôle par un réactif », pas vers un rung déjà mobilisé dans ce même exercice.

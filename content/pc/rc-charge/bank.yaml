@@ -201,6 +201,22 @@
 #     et (1/2).C.E^2 en régime permanent) est en revanche dans le corps
 #     enseigné, rung 4 — aucun pont requis.
 
+#
+# NOTE ÉDITORIALE — bk-2015-n-x3 (2026-08-28, ajout). Exercice 3, Première
+# partie, du sujet 2015 N — sonde thermique (thermistance) dont la
+# résistance décroît avec la température. La Deuxième partie du même
+# Exercice 3 (modulation d'amplitude) est indépendante et vit sous
+# content/pc/ondes-em-modulation/bank.yaml, entrée bk-2015-n-x3b. ANGLE
+# INÉDIT dans cette banque : aucune autre entrée n'utilise une thermistance
+# (un R qui varie avec la température plutôt qu'un R fixe) ; l'adjudication
+# des trois étiquettes de température (205/185/175 °C) aux trois courbes de
+# la Figure 2 a demandé, côté vérification, une chaîne de mesure complète
+# (τ → R=τ/C → lecture de la Figure 3, trois concordances à moins de 1 °C) —
+# le cadre `185°C` étant à 1,0 px de DEUX courbes différentes, la proximité
+# seule ne tranchait pas (voir sourcing.note). Cette chaîne n'est PAS
+# reproduite dans l'énoncé student-facing : les trois courbes portent leurs
+# étiquettes imprimées, exactement comme sur le sujet réel.
+
 notion: pc/rc-charge
 
 entries:
@@ -1373,3 +1389,173 @@ entries:
             note: "On inverse tau = R.C0 (question 1-5), avec R trouve ci-dessus."
           - math: '\boxed{C_0 \approx 2{,}89\times10^{-6}\ \text{F} = 2{,}89\ \mu\text{F}}'
             note: "Resultat demande. (Avec la methode i0/e concurrente : tau = 12,4 ms donnerait C0 = 2,76 microF - ecart du a l'inconsistance de la figure, pas a une erreur de calcul.)"
+
+  # ── bk-2015-n-x3 — 2015 N, Exercice 3 (Première partie) : dipôle RC, sonde thermique (thermistance) ──
+  # Sœur de bk-2015-n-x3b (ondes-em-modulation, Deuxième partie du même
+  # Exercice 3) : les deux parties sont explicitement indépendantes sur le
+  # sujet, mais partagent le même `exercise_label` « Exercice 3 ».
+  - id: bk-2015-n-x3
+    title: "Dipôle RC avec une sonde thermique (thermistance) : équation différentielle, identification de la solution, lecture de τ à une température donnée, puis température par la loi R(θ)"
+    source:
+      year: 2015
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — Première partie : dipôle RC soumis à un échelon de tension ascendant"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28, AlloSchool element/94472 (Exercice 3,
+        Première partie — dipôle RC soumis à un échelon de tension
+        ascendant, avec une sonde thermique thermistance ; barème de la
+        partie = 2,50 pt (0,5×5), sous-total imprimé « Première partie
+        (02,5 points) », sur les 04,5 pt de l'exercice complet, dont la
+        Deuxième partie (modulation d'amplitude, 2,0 pt) est transcrite
+        sous content/pc/ondes-em-modulation/bank.yaml, entrée
+        bk-2015-n-x3b — pas de double comptage. Transcription vérifiée par
+        une passe adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2015-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion ») : 27/27 questions du sujet re-dérivées, dont les cinq
+        de ce bloc. L'ADJUDICATION DES TROIS ÉTIQUETTES DE TEMPÉRATURE
+        (205/185/175 °C) AUX TROIS COURBES DE LA FIGURE 2 — le point le
+        plus cher de ce sujet — a été tranchée par une chaîne de mesure
+        complète, PAS par la proximité visuelle (le cadre `185°C` est à
+        1,0 px de DEUX courbes différentes sur le bitmap natif) : $\tau$
+        mesuré par ajustement exponentiel sur chaque courbe
+        ($0{,}502\,/\,1{,}102\,/\,1{,}604$ ms) $\to R=\tau/C$ avec
+        $C=1{,}5\ \mu\text{F}$ ($336{,}5\,/\,736{,}9\,/\,1069{,}6\ \Omega$)
+        $\to$ lecture de la Figure 3, qui redonne
+        $205{,}3\,/\,185{,}1\,/\,175{,}2\ ^\circ\text{C}$ — trois
+        concordances à moins de $1\ ^\circ\text{C}$ avec les étiquettes
+        imprimées, plus un contrôle en sens inverse (des étiquettes vers
+        les $\tau$ prédits, qui concordent aussi). Attribution confirmée :
+        `205°C` = la courbe la plus raide, `185°C` = celle du milieu,
+        `175°C` = la plus molle — l'ordre visuel gauche→droite, mais établi
+        par mesure, pas par lecture. Cette chaîne de vérification N'EST
+        PAS reproduite dans l'énoncé ci-dessous : l'élève lit les trois
+        étiquettes imprimées sur la figure, exactement comme sur la copie
+        réelle. Physique re-dérivée ici, conforme à la source : $\tau_1
+        \approx 0{,}50$ ms à $205\ ^\circ\text{C}$ ; $R_2 = \tau_2/C =
+        0{,}45\times10^{-3}/1{,}5\times10^{-6} = 300\ \Omega = 0{,}30\
+        \text{k}\Omega$, qui se lit sur la Figure 3 à $\theta_2 \approx
+        210\ ^\circ\text{C}$ (valeur tabulée à $210\ ^\circ\text{C}$ :
+        $0{,}296\ \text{k}\Omega$, à moins de $2\ \%$). Quatre coquilles du
+        sujet officiel reproduites telles quelles et signalées au point
+        d'usage : « thérmomètres » (3×), « thérmistance », « Le
+        fonctionnent », « convension », « différentes température ».
+    intro: |-
+      **Étude d'un dipôle RC soumis à un échelon de tension ascendant (examen national, session normale 2015, Exercice 3 — Première partie, 2,50 points sur les 04,5 de l'exercice complet).**
+
+      *La Deuxième partie de cet exercice — l'étude de la modulation d'amplitude — est indépendante de celle-ci et vit sous la notion « Ondes électromagnétiques — modulation d'amplitude » (entrée bk-2015-n-x3b).*
+
+      Les thérmomètres électroniques permettent le repérage des hautes températures non repérables à l'aide des thérmomètres à mercure ou à alcool. Le fonctionnent de certains de ces thérmomètres utilise le comportement du circuit RC soumis à un échelon de tension ascendant, où $R$ est la résistance d'une thermistance. *(« thérmomètres » ×3, « fonctionnent » pour « fonctionnement » : défauts du sujet officiel, sans incidence.)*
+
+      Pour établir la relation entre la résistance $R$ et la température $\theta$, une enseignante réalise le montage expérimental représenté sur la figure 1, constitué de :
+
+      - Un condensateur de capacité $C = 1{,}5\ \mu\text{F}$ ;
+      - Une sonde thermique, sous forme d'une thérmistance de résistance variable avec $\theta$ *(« thérmistance » tel qu'imprimé — défaut du sujet officiel, sans incidence)* ;
+      - Interrupteur $K$ ;
+      - Générateur idéal de tension de f.é.m. $E = 6\ \text{V}$ ;
+      - Interface informatique permettant de suivre l'évolution de la tension $u_C$ aux bornes du condensateur en fonction du temps.
+
+      Après immersion de la sonde thermique dans un milieu de température $\theta$ ajustable et fermeture de l'interrupteur, l'enseignante charge le condensateur à différentes température *(« différentes température » tel qu'imprimé, sans le pluriel attendu — défaut du sujet officiel, sans incidence)*. Les courbes de la figure 2 résument les résultats obtenus.
+
+      **Figure 1 — le montage (schéma pour redessin).** Une maille unique : la thermistance $R$ (représentée par un rectangle plein) est enfermée dans un cadre en tirets légendé « Milieu de température $\theta$ » (une flèche descendante l'y désigne) ; l'interrupteur $K$, ouvert ; le générateur idéal, avec une flèche de tension $E$ orientée ; et le condensateur $C$. L'interface informatique est branchée en dérivation aux bornes du condensateur, par deux fils.
+
+      **Figure 2 — les trois courbes $u_C(t)$ (description ET valeurs).** Trois courbes, toutes issues de l'origine $(0\,;\,0)$, toutes croissantes, toutes asymptotiques à $u_C = 6\ \text{V}$ ($=E$), d'autant plus « molles » (lentes à monter) qu'elles sont à droite. Axe des temps gradué $1,2,3,4,5\ \text{ms}$ ; axe des tensions gradué $2,4,6\ \text{V}$. Chacune porte, dans un cadre blanc posé sur le quadrillage, son étiquette de température : **`205°C`** sur la courbe la plus raide (la plus à gauche), **`185°C`** sur celle du milieu, **`175°C`** sur la plus molle (la plus à droite).
+
+      **Figure 3 — $R$ en fonction de $\theta$ (description ET valeurs).** Une seule courbe, décroissante et convexe, avec une double rupture d'échelle (les deux axes ne partent pas de zéro). Axe $\theta(°C)$ gradué de $170$ à $220$ ; axe $R(\text{k}\Omega)$ gradué de $0,2$ à $1$. Valeurs lisibles sur la courbe :
+
+      | $\theta$ (°C) | 170 | 175 | 180 | 185 | 190 | 195 | 200 | 205 | 210 | 215 | 220 |
+      |---|---|---|---|---|---|---|---|---|---|---|---|
+      | $R$ (kΩ) | 1,273 | 1,075 | 0,883 | 0,740 | 0,614 | 0,495 | 0,412 | 0,341 | 0,296 | 0,260 | 0,230 |
+    questions:
+      - id: q1
+        part: "Première partie — Dipôle RC avec sonde thermique"
+        stem: |-
+          **1-1-** (0,5 pt) Recopier, sur la copie de rédaction, le montage de la figure 1, et représenter dessus la tension $u_C(t)$ aux bornes du condensateur, et $u_R(t)$ aux bornes de la sonde thermique, en convension récepteur. *(« convension » tel qu'imprimé — défaut du sujet officiel, sans incidence.)*
+        reasoning: |-
+          Exactement le rung R1 : dans une boucle série où $C$ et la thermistance $R$ sont traversés par le MÊME courant, la convention récepteur flèche chaque tension dans le même sens que ce courant — pas en alternant d'un dipôle à l'autre, pas en devinant un signe. On flèche donc $u_C$ au-dessus du condensateur et $u_R$ au-dessus de la thermistance, toutes deux orientées dans le sens de circulation du courant imposé par le générateur $E$ à la fermeture de $K$.
+
+          **Le piège nommé de cette question.** Flécher $u_C$ et $u_R$ en sens opposés, par le réflexe de vouloir « faire le tour » de la maille en alternant les signes. $C$ et la thermistance sont en série, traversés par le même courant : les deux flèches suivent la MÊME direction, celle de ce courant.
+      - id: q2
+        stem: |-
+          **1-2-** (0,5 pt) Établir l'équation différentielle vérifiée par $u_C(t)$.
+        reasoning: |-
+          Rien ne distingue cette thermistance d'un conducteur ohmique ordinaire du point de vue du circuit : c'est une résistance, simplement sensible à la température. La construction du rung R1 s'applique donc telle quelle. Loi des mailles en convention récepteur (question 1-1) :
+
+          $$E = u_R + u_C$$
+
+          On exprime $u_R$ par la loi d'Ohm, et le courant par les deux relations rappelées au rung 1 ($i=\frac{dq}{dt}$, $q=Cu_C$), ce qui donne $u_R = RC\dfrac{du_C}{dt}$.
+        steps:
+          - math: 'E = u_R + u_C'
+            note: "Loi des mailles, convention recepteur (question 1-1)."
+          - math: 'u_R = R\,i = R\,C\frac{du_C}{dt}'
+            note: "Loi d'Ohm pour la thermistance R, avec i = C du_C/dt (rung R1)."
+          - math: '\boxed{R\,C\,\frac{du_C}{dt} + u_C = E}'
+            note: "Meme forme que le rung R1 : la thermistance joue exactement le role de R."
+      - id: q3
+        stem: |-
+          **1-3-** (0,5 pt) La solution de cette équation différentielle s'écrit sous la forme : $u_C(t) = A + B\cdot e^{-\frac{t}{\tau}}$. Trouver les constantes $A$ et $B$.
+        reasoning: |-
+          Même méthode qu'au rung R2 : on n'intègre rien, on injecte la forme proposée dans l'équation différentielle et on identifie terme à terme, plutôt que de recopier une formule de mémoire.
+
+          $$\frac{du_C}{dt} = -\frac{B}{\tau}\,e^{-t/\tau}$$
+
+          On substitue dans $RC\dfrac{du_C}{dt} + u_C = E$ :
+
+          $$RC\left(-\frac{B}{\tau}\right)e^{-t/\tau} + A + B\,e^{-t/\tau} = E$$
+
+          Pour que cette égalité tienne à chaque instant, le terme constant et le terme en $e^{-t/\tau}$ doivent s'identifier séparément — exactement comme au rung R2 : le terme constant donne $A$, le terme exponentiel (qui doit s'annuler tout seul) fixe la relation entre $\tau$, $R$ et $C$, et la condition initiale $u_C(0)=0$ (condensateur déchargé à la fermeture de $K$) donne $B$.
+        steps:
+          - math: '\text{terme constant : } A = E'
+            note: "Le terme sans exponentielle doit egaler E a lui seul (rung R2)."
+          - math: '\text{condition initiale : } u_C(0) = A + B = 0 \implies B = -A = -E'
+            note: "Le condensateur est decharge a la fermeture de K (rung R1)."
+          - math: '\boxed{A = E = 6\ \text{V} \qquad B = -E = -6\ \text{V}}'
+            note: "Meme forme que u_C(t) = E(1-e^{-t/tau}) du rung R2, ecrite ici A + B.e^{-t/tau}."
+      - id: q4
+        part: "1-4 et 1-5 — Lire τ, puis remonter à la température"
+        stem: |-
+          **1-4-** (0,5 pt) Déterminer la constante de temps $\tau_1$ à la température $\theta_1 = 205\ ^\circ\text{C}$, puis en déduire l'influence d'une élévation de température sur la durée de charge du condensateur.
+        reasoning: |-
+          On lit $\tau_1$ sur la courbe étiquetée `205°C` de la figure 2, par l'une des deux méthodes du rung R3 (tangente à l'origine, ou le point à $63\,\%$ de l'asymptote $6\ \text{V}$, soit $u_C \approx 3{,}8\ \text{V}$) : c'est la courbe la plus raide des trois, celle qui atteint son palier la première.
+
+          $$\tau_1 \approx 0{,}50\ \text{ms}$$
+
+          **L'influence de la température.** Les trois courbes de la figure 2 se lisent ensemble : `205°C` (la plus raide) a le $\tau$ le plus PETIT ; `175°C` (la plus molle) a le $\tau$ le plus GRAND. Puisque $\tau = RC$ (rung R1) et que $C$ est fixe (le même condensateur pour les trois courbes), c'est la résistance $R$ de la thermistance qui doit diminuer quand la température monte, pour que $\tau$ diminue avec elle.
+
+          $$\boxed{\text{Une élévation de température RACCOURCIT la durée de charge du condensateur}}$$
+
+          — le signe exact opposé de ce qu'on observerait avec un conducteur ohmique ordinaire, dont la résistance ne dépend pas de $\theta$ (une thermistance de ce type est dite « à coefficient de température négatif »).
+
+          **Le piège de cette question.** Répondre « τ augmente avec la température », par l'intuition qu'un système chauffé est plus « agité » donc plus lent à se stabiliser. C'est confondre deux mécanismes : ici, $\tau$ ne dépend que de $R$ et de $C$ (rung R1), jamais directement de l'agitation thermique — et c'est précisément parce que $R$, la résistance PARTICULIÈRE de cette sonde, décroît avec $\theta$ (une propriété du composant, lue sur les trois courbes) que $\tau$ décroît à son tour.
+        steps:
+          - math: '\tau_1 \approx 0{,}50\ \text{ms}'
+            note: "Lecture graphique sur la courbe etiquetee 205 degres C de la figure 2 (rung R3 : tangente a l'origine ou methode des 63 pourcent)."
+          - math: '\tau(205\,^\circ\text{C}) < \tau(185\,^\circ\text{C}) < \tau(175\,^\circ\text{C}) \implies R(205\,^\circ\text{C}) < R(185\,^\circ\text{C}) < R(175\,^\circ\text{C})'
+            note: "tau = RC (rung R1), C fixe pour les trois courbes : l'ordre des tau donne directement l'ordre des R."
+          - math: '\boxed{\text{une elevation de temperature RACCOURCIT la charge}}'
+            note: "Thermistance a coefficient de temperature negatif : R diminue quand theta augmente."
+      - id: q5
+        stem: |-
+          **1-5-** (0,5 pt) Pour mesurer la température $\theta_2$ d'un four électrique, l'enseignante pose la sonde précédente dans le four, puis elle détermine, par utilisation du même montage précédent (figure 1), la constante de temps $\tau_2$. Elle trouve comme valeur : $\tau_2 = 0{,}45\ \text{ms}$. La courbe de la figure 3 représente les variations de la résistance $R$ de la sonde thermique en fonction de la température $\theta$. Déterminer la valeur de la température $\theta_2$ à l'intérieur du four électrique.
+        reasoning: |-
+          Deux étapes, dans cet ordre précis : d'abord remonter de $\tau_2$ à $R_2$ par $\tau = RC$ (rung R1, le même pont qu'aux questions précédentes) — le graphe de la figure 2 ne sert plus à rien ici, c'est une nouvelle mesure, dans un nouveau milieu ; ensuite lire $\theta_2$ sur la figure 3, qui relie $R$ et $\theta$ directement, sans passer par $\tau$.
+
+          $$R_2 = \frac{\tau_2}{C} = \frac{0{,}45\times10^{-3}}{1{,}5\times10^{-6}} = 300\ \Omega = 0{,}30\ \text{k}\Omega$$
+
+          On reporte $R_2 = 0{,}30\ \text{k}\Omega$ sur la figure 3 : c'est une lecture franche, sur une valeur très proche d'une graduation tabulée ($0{,}296\ \text{k}\Omega$ à $210\ ^\circ\text{C}$).
+
+          $$\boxed{\theta_2 \approx 210\ ^\circ\text{C}}$$
+
+          **Le piège de cette question.** Réutiliser une des trois courbes de la figure 2 (par exemple chercher où $\tau = 0{,}45$ ms parmi les trois courbes déjà tracées) au lieu de repasser par $R = \tau/C$ puis la figure 3. Les trois courbes de la figure 2 ne correspondent qu'à TROIS températures précises ($205$, $185$, $175\ ^\circ\text{C}$) : le four n'a aucune raison de tomber pile sur l'une d'elles, et c'est exactement pour ça que la figure 3 — qui couvre, elle, une plage CONTINUE de températures — est fournie séparément.
+        steps:
+          - math: 'R_2 = \frac{\tau_2}{C} = \frac{0{,}45\times10^{-3}}{1{,}5\times10^{-6}}'
+            note: "tau = RC (rung R1), avec C = 1,5 microF donne dans l'enonce."
+          - math: '\boxed{R_2 = 300\ \Omega = 0{,}30\ \text{k}\Omega}'
+            note: "Resistance de la sonde dans le four."
+          - math: '\boxed{\theta_2 \approx 210\ ^\circ\text{C}}'
+            note: "Lecture sur la figure 3 (R en fonction de theta) : 0,30 kOhm tombe tres pres de la valeur tabulee 0,296 kOhm a 210 degres C."

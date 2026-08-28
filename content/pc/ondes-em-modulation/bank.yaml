@@ -97,6 +97,19 @@
 # La leçon ne modélise nulle part, pas à pas, ce cas de figure (deux voies
 # affichées séparément plutôt que la sortie unique) ; le pont est fait au
 # point d'usage dans le raisonnement des questions concernées.
+#
+# NOTE ÉDITORIALE — bk-2015-n-x3b (2026-08-28, ajout). Sœur de bk-2015-n-x3
+# dans content/pc/rc-charge/bank.yaml (Première partie du même Exercice 3,
+# indépendante) — les deux entrées partagent le même `exercise_label`
+# « Exercice 3 ». Geste dominant : établir la forme canonique $A[1+m\cos(2\pi
+# ft)]$ à partir du produit brut $k\,u_1\,u_2$ (même geste que bk-2017-n-x3,
+# question 1), puis lire $f$ et $F$ sur un oscillogramme dont la seule
+# calibration est une annotation « 1div » (même piège de division que
+# bk-2025-r-x3b), puis $m$ via les extrema de l'enveloppe (même geste que
+# bk-2025-r-x3b, question 2). Aucun recoupement numérique avec les entrées
+# existantes : $U_0=6$ V et $U_{1m}$ y jouent des rôles différents de
+# $U_0$/$S_m$ des autres sujets, et les fréquences ($250$ Hz / $5{,}0$ kHz)
+# ne coïncident avec aucune entrée déjà en banque.
 
 notion: pc/ondes-em-modulation
 
@@ -1082,3 +1095,120 @@ entries:
             note: "Borne basse de la plage de selection."
           - math: '\boxed{540\ \text{kHz} \in [302{,}0\,;\,604{,}0]\ \text{kHz} \implies \text{l etage X permet bien la selection de l emission a 540 kHz}}'
             note: "540 kHz tombe strictement entre les deux bornes : la station voulue est atteignable en reglant C entre C1 et C2."
+
+  # ── bk-2015-n-x3b — 2015 N, Exercice 3 (Deuxième partie) : modulation d'amplitude ──
+  # Sœur de bk-2015-n-x3 (rc-charge, Première partie du même Exercice 3) :
+  # voir la NOTE ÉDITORIALE en tête de fichier pour le partage de
+  # l'`exercise_label`. La numérotation des figures ne redémarre PAS entre
+  # les deux parties de cet exercice (Figure 4 et Figure 5, pas Figure 1 et
+  # Figure 2) — reproduit tel quel, conforme au sujet.
+  - id: bk-2015-n-x3b
+    title: "Modulation d'amplitude par circuit multiplieur : forme canonique établie depuis le produit brut, fréquences par l'annotation « 1div », taux de modulation"
+    source:
+      year: 2015
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — Deuxième partie : étude de la modulation d'amplitude"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28, AlloSchool element/94472 (Exercice 3,
+        Deuxième partie — étude de la modulation d'amplitude ; barème de la
+        partie = 2,00 pt (0,75+0,5+0,75), sous-total imprimé « Deuxième
+        partie (02 points) », sur les 04,5 pt de l'exercice complet, dont
+        la Première partie (dipôle RC avec sonde thermique, 2,5 pt) est
+        transcrite sous content/pc/rc-charge/bank.yaml, entrée
+        bk-2015-n-x3 — pas de double comptage. Transcription vérifiée par
+        une passe adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2015-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion ») : 27/27 questions du sujet re-dérivées, dont les
+        trois de ce bloc. L'AMBIGUÏTÉ DE LA DIVISION (l'annotation `1div`)
+        est LEVÉE PAR MESURE dans la source : la double flèche `1div` va
+        d'une ligne noire à la ligne bleue suivante du quadrillage, soit
+        exactement UN intervalle fin — pas deux, comme le laisserait
+        craindre un premier coup d'œil (la lecture alternative,
+        $f=500$ Hz/$F=10$ kHz, est réfutée par la mesure au pixel). Figure
+        5 re-mesurée : $T_m$ (période de l'enveloppe, entre les deux bosses)
+        $=8{,}00$ div $\to 4{,}0$ ms $\to f=250$ Hz ; $T_p$ (période de la
+        porteuse, écart médian de 34 intervalles de crêtes) $=0{,}402$ div
+        $\to 0{,}2$ ms $\to F=5{,}0$ kHz ; $U_{max}=4{,}97$ div $\to 5{,}0$ V ;
+        $U_{min}=0{,}97$ div $\to 1{,}0$ V. Physique re-dérivée ici,
+        conforme à la source : $A=k\,U_0\,U_{2m}$, $m=U_{1m}/U_0$ (forme
+        canonique) ; $m=(5-1)/(5+1)=0{,}67<1$ et $F/f=20\geq10$ — les deux
+        critères de bonne modulation, cohérence interne parfaite. Trois
+        coquilles du sujet officiel reproduites telles quelles et
+        signalées au point d'usage : « l'aides », « électromagnétique »
+        (sans le pluriel), « Parmis », « adoptées », « expresions ».
+    intro: |-
+      **Étude de la modulation d'amplitude (examen national, session normale 2015, Exercice 3 — Deuxième partie, 2,00 points sur les 04,5 de l'exercice complet).**
+
+      *La Première partie de cet exercice — l'étude d'un dipôle RC avec une sonde thermique — est indépendante de celle-ci et vit sous la notion « Dipôle RC — réponse à un échelon de tension » (entrée bk-2015-n-x3).*
+
+      La transmission d'informations sur de grandes distances à l'aides d'ondes électromagnétique, nécessite la modulation d'amplitude. Parmis les composants adoptées dans cette opération : le circuit multiplieur. *(« l'aides », « électromagnétique » sans pluriel, « Parmis », « adoptées » : défauts du sujet officiel, sans incidence.)*
+
+      Au cours d'une séance de travaux pratiques, un groupe d'élèves applique à l'entrée $E_1$ du circuit multiplieur une tension sinusoïdale d'expression $u_1(t) = U_0 + U_{1m}\cos(2\pi\,f\,t)$, et à l'entrée $E_2$ du circuit multiplieur une tension sinusoïdale d'expression $u_2(t) = U_{2m}\cos(2\pi\,F\,t)$ correspondant à une onde porteuse (figure 4). $U_0$ est la composante continue de tension.
+
+      **Figure 4 — le circuit multiplieur (schéma pour redessin).** Un carré traversé d'une grande croix « × » (le symbole du multiplieur). Deux entrées à gauche, $E_1$ (en haut) et $E_2$ (en bas) ; une sortie à droite, $S$. Une ligne de masse en bas, avec le symbole de terre. Trois flèches de tension verticales, toutes dirigées vers le haut : $u_1(t)$ vers $E_1$, $u_2(t)$ vers $E_2$, $u_S(t)$ vers la sortie.
+
+      **Figure 5 — le signal modulé, à l'oscilloscope (description ET mesures).** Écran quadrillé de $14$ divisions horizontales sur $12$ verticales, lignes alternées noires et bleues. **Une annotation `1div`, en gras**, surmonte une double flèche horizontale qui va d'une ligne noire à la ligne bleue suivante — **c'est cette annotation, et elle seule, qui définit la division** : une division est l'écart entre deux lignes consécutives, quelle que soit leur couleur (sans elle, on lirait à tort une division = deux intervalles). Une seule trace, dense : une porteuse rapide dont l'amplitude est elle-même modulée, symétrique par rapport à la ligne médiane. **Amplitude maximale de l'enveloppe** $U_{max} = 5{,}0$ div ; **amplitude minimale** $U_{min} = 1{,}0$ div ; **période du signal modulant** (entre deux maxima d'enveloppe) $T_m = 8{,}0$ div ; **période de la porteuse** $T_p = 0{,}4$ div. Après réglage des sensibilités de l'oscilloscope sur **1 V/div** et **0,5 ms/div**, les élèves ont visualisé cette tension de sortie.
+    questions:
+      - id: q1
+        part: "Deuxième partie — Modulation d'amplitude"
+        stem: |-
+          **2-1-** (0,75 pt) L'expression de la tension $u_S(t)$ à la sortie du circuit multiplieur est : $u_S(t) = k\,u_1(t)\,u_2(t)$, avec $k$ une constante caractérisant le circuit multiplieur. Montrer que l'amplitude de la tension $u_S(t)$ s'écrit sous la forme : $U_S = A\,[\,1 + m\cos(2\pi\,f\,t)\,]$, en précisant les expressions de $A$ et $m$.
+        reasoning: |-
+          Comme au rung 2 (la forme générale $s(t)=(U_0+s_m(t))\cos(2\pi f_p t)$), l'enjeu n'est pas de résoudre une équation mais de reconnaître la même structure dans le produit du multiplieur — ici avec les entrées inversées par rapport à l'exercice le plus proche de cette banque (bk-2017-n-x3) : c'est $u_1$, sur $E_1$, qui porte la composante continue $U_0$, et $u_2$, sur $E_2$, qui est la porteuse pure. On part de la définition, on remplace $u_1$ et $u_2$, puis on met $U_0$ en facteur à l'intérieur de $u_1$ — exactement le geste du rung 2 — pour faire apparaître d'un bloc l'amplitude globale $A$ (tout ce qui multiplie l'oscillation rapide $\cos(2\pi F t)$) et le taux de modulation $m$ (rung 3, $S_m/U_0$ ici renommé $U_{1m}/U_0$).
+        steps:
+          - math: 'u_S(t) = k\,u_1(t)\,u_2(t) = k\left[U_0+U_{1m}\cos(2\pi f t)\right]U_{2m}\cos(2\pi F t)'
+            note: "Definition du multiplieur (enonce) : on remplace u1 et u2 par leurs expressions."
+          - math: 'U_0+U_{1m}\cos(2\pi f t) = U_0\left[1+\frac{U_{1m}}{U_0}\cos(2\pi f t)\right]'
+            note: "Mise en facteur de U0 (rung 2) : c'est ce geste qui fait apparaitre A et m."
+          - math: 'u_S(t) = \underbrace{k\,U_0\,U_{2m}}_{A}\left[1+\underbrace{\frac{U_{1m}}{U_0}}_{m}\cos(2\pi f t)\right]\cos(2\pi F t)'
+            note: "On reporte : la forme canonique demandee apparait, avec A et m identifies."
+          - math: '\boxed{A = k\,U_0\,U_{2m} \qquad m = \frac{U_{1m}}{U_0}}'
+            note: "Reponse aux deux expressions demandees."
+      - id: q2
+        stem: |-
+          **2-2-** (0,5 pt) Après réglage des sensibilités de l'oscilloscope sur : 1 V/div et 0,5 ms/div, les élèves ont visualisé la tension de sortie $u_S(t)$ obtenue. La figure 5 représente les variations de cette tension. Déterminer la fréquence $f$ du signal modulant, et la fréquence $F$ de l'onde porteuse.
+        reasoning: |-
+          Deux échelles de temps distinctes coexistent sur la figure 5 — exactement la distinction du rung 3 entre l'oscillation rapide (la porteuse, $F$) et l'enveloppe lente (le signal modulant, $f$). La figure ne porte AUCUN axe gradué en temps : la seule échelle est l'annotation `1div`, qui fixe combien vaut un intervalle de quadrillage — et c'est là le vrai piège de cette question, pas le calcul lui-même. Une fois la division correctement identifiée (un seul intervalle fin, pas deux), la sensibilité horizontale donnée ($0{,}5$ ms/div) convertit directement les deux durées lues en divisions.
+
+          $$T_m = 8{,}0\ \text{div}\times0{,}5 = 4{,}0\ \text{ms} \implies f = \frac{1}{T_m} = \frac{1}{4{,}0\times10^{-3}}$$
+
+          $$T_p = 0{,}4\ \text{div}\times0{,}5 = 0{,}2\ \text{ms} \implies F = \frac{1}{T_p} = \frac{1}{0{,}2\times10^{-3}}$$
+
+          **Le contrôle qui rassure.** $F/f = 20 \geq 10$ : la porteuse oscille bien plus vite que le signal modulant (première condition du rung 3, $f_p \gg f_{signal}$) — cohérent avec le fait que l'enveloppe se dessine nettement sur la figure 5.
+
+          **Le piège de cette question.** Lire une division comme DEUX intervalles du quadrillage au lieu d'UN — une erreur facile puisque le quadrillage alterne des lignes noires et bleues, et qu'on pourrait croire que seul un changement de couleur marque une vraie division. L'annotation `1div` tranche explicitement : elle va d'une ligne noire à la ligne bleue suivante, donc un seul intervalle. Se tromper sur ce point double ou divise par deux les deux fréquences trouvées, sans qu'aucun signal n'alerte automatiquement — $f=500$ Hz et $F=10$ kHz resteraient, eux aussi, des valeurs plausibles pour un signal modulant audible et une porteuse radio.
+        steps:
+          - math: 'T_m = 8{,}0\ \text{div}\times0{,}5\ \text{ms/div} = 4{,}0\ \text{ms}'
+            note: "Periode du signal modulant (l'enveloppe), lue en divisions selon l'annotation 1div puis convertie."
+          - math: '\boxed{f = \frac{1}{4{,}0\times10^{-3}} = 250\ \text{Hz}}'
+            note: "Frequence du signal modulant."
+          - math: 'T_p = 0{,}4\ \text{div}\times0{,}5\ \text{ms/div} = 0{,}2\ \text{ms}'
+            note: "Periode de la porteuse (oscillation rapide), meme conversion."
+          - math: '\boxed{F = \frac{1}{0{,}2\times10^{-3}} = 5{,}0\times10^{3}\ \text{Hz} = 5{,}0\ \text{kHz}}'
+            note: "Frequence de l'onde porteuse."
+      - id: q3
+        stem: |-
+          **2-3-** (0,75 pt) Montrer, en calculant la valeur du taux de modulation $m$, que la modulation est bonne.
+        reasoning: |-
+          L'enveloppe supérieure de $u_S(t)$ vaut $A(1+m)$ à son maximum et $A(1-m)$ à son minimum — la lecture directe de la forme canonique établie à la question 2-1, prise à $\cos(2\pi ft)=+1$ puis $-1$ (rung 3). Le rapport de ces deux extrema élimine $A$ et ne laisse que $m$, sans qu'il soit nécessaire de connaître $A$ séparément — pas plus que les volts par division, d'ailleurs : $U_{max}$ et $U_{min}$ peuvent rester en divisions, puisque $m$ est un RAPPORT.
+
+          $$m = \frac{U_{max}-U_{min}}{U_{max}+U_{min}} = \frac{5{,}0-1{,}0}{5{,}0+1{,}0}$$
+
+          $$\boxed{m \approx 0{,}67 < 1}$$
+
+          La modulation est donc bonne : $m<1$ (rung 3, la condition suffisante à elle seule pour que l'enveloppe reste toujours positive et fidèle au signal), ET $F/f=20\geq10$ (question 2-2, l'autre condition du rung 3) — les deux critères de bonne modulation sont vérifiés ensemble.
+
+          **Le piège de cette question.** Croire qu'il faut connaître les volts par division pour calculer $m$ : ce n'est pas le cas, puisque $m$ est un rapport de deux longueurs mesurées dans la MÊME unité — travailler directement en divisions, sans jamais les convertir en volts, donne exactement le même résultat. Convertir inutilement en volts n'est pas faux, mais fait perdre du temps sans rien gagner en précision.
+        steps:
+          - math: 'm = \frac{U_{max}-U_{min}}{U_{max}+U_{min}} = \frac{5{,}0-1{,}0}{5{,}0+1{,}0}'
+            note: "Rapport des extrema de l'enveloppe (rung 3) : elimine A, pas besoin de connaitre les volts par division."
+          - math: '\boxed{m \approx 0{,}67 < 1}'
+            note: "Taux de modulation."
+          - math: '\boxed{m<1 \text{ et } F/f=20\geq10 \implies \text{bonne modulation}}'
+            note: "Les deux conditions du rung 3 sont verifiees ensemble."

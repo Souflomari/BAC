@@ -173,6 +173,23 @@
 #     même schéma que $\frac{dv_G}{dt}+A\,v_G=B$ ici). Ponté au point d'usage
 #     dans le raisonnement de la question 2, en nommant explicitement la
 #     leçon sœur — jamais un « on admet ».
+#
+# NOTE ÉDITORIALE — bk-2015-n-x4 (2026-08-28, ajout). Exercice 4, Première
+# partie, du sujet 2015 N — la balle de golf sur un parcours en trois
+# segments (horizontal, incliné, horizontal), avec vérification chiffrée du
+# passage par le centre du trou. La Deuxième partie du même Exercice 4
+# (oscillateur horizontal amorti) est indépendante et vit sous
+# content/pc/systemes-oscillants/bank.yaml, entrée bk-2015-n-x4b.
+# CROSS-LIST `lois-de-newton` (question 1, application explicite de la
+# 2ᵉ loi) : le geste est entièrement redémontré ici (rung R2 de CETTE
+# leçon, qui EST la 2ᵉ loi appliquée au tir en deux axes) — nommé pour
+# mémoire, pas converti en entrée séparée (le classement du sujet source le
+# signale comme cross-list, mais rien dans cette question ne sort des
+# rungs R2-R4 de chute-mouvements-plans). Aucun recoupement numérique avec
+# les autres entrées de cette banque : $v_0=10$ m/s, $\alpha=45°$ (ici
+# l'angle de LANCEMENT, pas de plan incliné), un parcours en trois segments
+# et une vérification de passage par un point précis (le trou, à $x_T
+# \approx 7{,}95$ m) sont inédits dans le corpus de cette notion.
 
 notion: pc/chute-mouvements-plans
 
@@ -2574,3 +2591,144 @@ entries:
             note: "Recurrence d'Euler (rung 8) : Delta t = 1,5e-2 s, deduit des dates du tableau."
           - math: '\boxed{V_{i+2} \approx -1{,}71\ \text{m.s}^{-1}}'
             note: "Coherent avec la 3e ligne du tableau : 2x1,71^2-0,7 = 5,148, imprime 5,15 -- le tableau se boucle sur lui-meme."
+
+  # ── bk-2015-n-x4 — 2015 N, Exercice 4 (Première partie) : la balle de golf ──
+  # Sœur de bk-2015-n-x4b (systemes-oscillants, Deuxième partie du même
+  # Exercice 4, indépendante). Voir la NOTE ÉDITORIALE en tête de fichier
+  # pour le cross-list `lois-de-newton` de la question 1.
+  - id: bk-2015-n-x4
+    title: "La balle de golf dans le champ de pesanteur uniforme : équations horaires par la 2ᵉ loi de Newton, trajectoire, sommet, et vérification chiffrée du passage par le trou"
+    source:
+      year: 2015
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — Première partie : étude du mouvement d'une balle de golf dans le champ de pesanteur uniforme"
+    bareme_total: 3.0
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28, AlloSchool element/94472 (Exercice 4,
+        Première partie — mouvement d'une balle de golf dans le champ de
+        pesanteur uniforme ; barème de la partie = 3,00 pt (1+0,5+0,75+0,75),
+        sous-total imprimé « Première partie (03 points) », sur les 05,5 pt
+        de l'exercice complet, dont la Deuxième partie (oscillateur
+        horizontal amorti, 2,5 pt) est transcrite sous
+        content/pc/systemes-oscillants/bank.yaml, entrée bk-2015-n-x4b —
+        pas de double comptage. Transcription vérifiée par une passe
+        adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2015-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion ») : 27/27 questions du sujet re-dérivées, dont les
+        quatre de ce bloc — celui-ci cité nommément par le vérificateur
+        comme « le contrôle le plus parlant » du sujet entier : la
+        trajectoire parabolique passe par le centre du trou $T$ à
+        $0{,}3$ mm près sur un parcours de 8 m, sans qu'aucune des trois
+        longueurs ni des deux angles ne soit arrondie pour ça. Physique
+        re-dérivée ici, conforme à la source : $y(x) = x - 0{,}1x^2$ (avec
+        $v_0=10$ m/s, $\theta=45°$, $g=10$ m.s⁻²) ; $x_S = 5{,}000$ m ; $B =
+        (2{,}2+4\cos24°\,;\,4\sin24°) \approx (5{,}854\,;\,1{,}6273)$ m,
+        $T = (B_x+2{,}1\,;\,B_y) \approx (7{,}954\,;\,1{,}6273)$ m ; $y(x_T)
+        = 7{,}954 - 0{,}1\times7{,}954^2 \approx 1{,}6274$ m, contre $y_T
+        \approx 1{,}6273$ m — écart de l'ordre de $0{,}1$ mm, cohérent avec
+        les $0{,}3$ mm annoncés par le vérificateur (arrondis
+        intermédiaires différents, même conclusion). Aucune divergence.
+    intro: |-
+      **Étude du mouvement d'une balle de golf dans le champ de pesanteur uniforme (examen national, session normale 2015, Exercice 4 — Première partie, 3,00 points sur les 05,5 de l'exercice complet).**
+
+      *La Deuxième partie de cet exercice — l'étude d'un oscillateur horizontal soumis à des frottements fluides — est indépendante de celle-ci et vit sous la notion « Systèmes oscillants » (entrée bk-2015-n-x4b).*
+
+      Un circuit dans le terrain de golf est constitué de trois parties :
+      - Partie horizontale $OA$ de longueur $OA = 2{,}2\ \text{m}$ ;
+      - Partie $AB$ de longueur $AB = 4\ \text{m}$, inclinée d'un angle $\alpha = 24°$ par rapport au plan horizontal ;
+      - Partie $BC$ horizontale contenant un trou de centre $T$ situé à la distance $BT = 2{,}1\ \text{m}$ du point $B$.
+
+      Les points $B$, $T$ et $C$ sont alignés. On néglige l'action de l'air et les dimensions de la balle. On prendra $g = 10\ \text{m.s}^{-2}$. L'étude du mouvement de la balle se fait dans un repère $(O,\vec{i},\vec{j})$ lié à la terre et supposé galiléen.
+
+      On lance, à l'instant $t = 0$, à partir du point $O$, la balle vers le trou $T$, avec une vitesse initiale de valeur $V_0 = 10\ \text{m.s}^{-1}$. Le vecteur $\vec{V_0}$ est incliné d'un angle $\theta = 45°$ par rapport à l'axe $(O,x)$ (figure 1).
+
+      **Figure 1 (le parcours, schéma pour redessin).** Repère $(O,\vec i,\vec j)$, origine en bas à gauche. Le vecteur $\vec{V_0}$ part de $O$ vers le haut-droite, à $45°$ au-dessus de l'axe $(O,x)$ — l'angle $\theta$ est marqué par un arc entre $\vec{V_0}$ et l'axe. Le parcours, en trait épais : $O \to A$ horizontal (confondu avec l'axe des abscisses) ; $A \to B$ montant vers la droite, l'angle $\alpha$ étant marqué entre $AB$ et une horizontale en tirets prolongeant l'axe depuis $A$ ; $B \to C$ horizontal, interrompu par une encoche (le trou), avec $T$ marqué en son centre. Aucune cote chiffrée sur le dessin — les longueurs et les angles ne sont donnés que dans le texte ; la figure n'est pas à l'échelle.
+    questions:
+      - id: q1
+        part: "Première partie — La balle de golf dans le champ de pesanteur uniforme"
+        stem: |-
+          **1-** (1 pt) Par application de la deuxième loi de Newton, établir les équations horaires $x(t)$ et $y(t)$ du mouvement de la balle.
+        reasoning: |-
+          C'est exactement le rung R2 : un projectile lancé avec une vitesse inclinée, sans frottement, ne subit que son poids $\vec P = m\vec g$. La deuxième loi de Newton — cross-list vers « Les lois de Newton », dont c'est l'énoncé général, $\sum\vec F_{ext} = m\vec a_G$ — donne ici $\vec a_G = \vec g$ : la masse de la balle disparaît complètement de l'équation, elle ne reparaîtra à aucune étape des questions suivantes.
+
+          $\vec g$ est purement vertical : en projetant sur les deux axes du repère $(O,\vec i,\vec j)$, on obtient deux équations scalaires INDÉPENDANTES, $a_x=0$ et $a_y=-g$. On primitive deux fois chacune, avec les conditions initiales du lancer : à $t=0$, la balle est en $O$ (donc $x(0)=y(0)=0$) et sa vitesse est $\vec{V_0}$, de composantes $V_{0x}=V_0\cos\theta$ et $V_{0y}=V_0\sin\theta$ (projection de $\vec{V_0}$ sur les deux axes).
+
+          $$V_{0x} = 10\cos45° \approx 7{,}071\ \text{m.s}^{-1} \qquad V_{0y} = 10\sin45° \approx 7{,}071\ \text{m.s}^{-1}$$
+
+          (Les deux composantes sont égales, une conséquence directe de $\theta=45°$ exactement — $\cos45°=\sin45°$ — pas une coïncidence des données.)
+        steps:
+          - math: '\vec a_G = \vec g \implies a_x = 0 \qquad a_y = -g'
+            note: "2e loi de Newton (cross-list lois-de-newton) : seul le poids agit, projection sur les deux axes independants (rung R2)."
+          - math: 'V_{0x} = V_0\cos\theta = 10\cos45^\circ \approx 7{,}071\ \text{m.s}^{-1} \qquad V_{0y} = V_0\sin\theta = 10\sin45^\circ \approx 7{,}071\ \text{m.s}^{-1}'
+            note: "Projection de la vitesse initiale sur les deux axes (rung R2)."
+          - math: 'x(t) = V_{0x}\,t \qquad y(t) = V_{0y}\,t - \frac{1}{2}g\,t^2'
+            note: "Deux primitivations successives, origine au point de lancement O (rung R2)."
+          - math: '\boxed{x(t) \approx 7{,}071\,t \qquad y(t) \approx 7{,}071\,t - 5\,t^2}'
+            note: "Equations horaires du mouvement, avec g = 10 m/s2 donne dans l'enonce."
+      - id: q2
+        stem: |-
+          **2-** (0,5 pt) En déduire l'équation de la trajectoire de la balle.
+        reasoning: |-
+          Le rung R3 élimine le temps entre $x(t)$ et $y(t)$ : on isole $t=x/V_{0x}$ dans la première équation, on substitue dans la seconde. Avec $\theta=45°$, le résultat se simplifie particulièrement, puisque $\tan\theta=1$ et $\cos^2\theta=0{,}5$.
+
+          $$y(x) = \tan\theta\cdot x - \frac{g}{2V_0^2\cos^2\theta}\,x^2 = 1\times x - \frac{10}{2\times10^2\times0{,}5}\,x^2$$
+        steps:
+          - math: 'y(x) = \tan\theta\cdot x - \frac{g}{2V_0^2\cos^2\theta}\,x^2'
+            note: "Elimination du temps entre x(t) et y(t) (rung R3)."
+          - math: '\tan45^\circ = 1 \qquad \frac{g}{2V_0^2\cos^2 45^\circ} = \frac{10}{2\times100\times0{,}5} = 0{,}1'
+            note: "Simplification propre a theta = 45 degres."
+          - math: '\boxed{y(x) = x - 0{,}1\,x^2}'
+            note: "Equation de la trajectoire (une parabole tournee vers le bas, rung R3)."
+      - id: q3
+        stem: |-
+          **3-** (0,75 pt) Déterminer la valeur de $x_S$, abscisse du sommet de la trajectoire de la balle.
+        reasoning: |-
+          Le rung R4 pose le critère du sommet : c'est l'instant où la vitesse verticale s'annule, $V_{0y}-g\,t=0$, avant de redescendre. On en tire $t_{sommet}$, puis $x_S$ en le reportant dans $x(t)$ (question 1) — pas dans $y(x)$, qui donnerait une hauteur, pas une abscisse.
+
+          $$t_{sommet} = \frac{V_{0y}}{g} = \frac{7{,}071}{10} \approx 0{,}7071\ \text{s}$$
+
+          $$x_S = V_{0x}\times t_{sommet} = 7{,}071\times0{,}7071$$
+
+          **Le contrôle qui rassure.** Puisque $y(x)=x-0{,}1x^2$ est une parabole $y=Ax-Bx^2$, son sommet — le point où la pente $dy/dx$ s'annule — se trouve, par un pur argument de calcul, à $x=A/(2B)=1/(2\times0{,}1)=5$ : exactement la même valeur, retrouvée par une voie complètement indépendante (la géométrie de la courbe plutôt que la cinématique). Les deux méthodes du rung R4 (temporelle et géométrique) s'accordent.
+        steps:
+          - math: 't_{sommet} = \frac{V_{0y}}{g} = \frac{7{,}071}{10} \approx 0{,}7071\ \text{s}'
+            note: "Instant du sommet : la vitesse verticale s'annule (rung R4)."
+          - math: 'x_S = V_{0x}\times t_{sommet} = 7{,}071\times0{,}7071'
+            note: "On reporte dans x(t), PAS dans y(x) : x_S est une abscisse, pas une hauteur."
+          - math: '\boxed{x_S = 5{,}000\ \text{m}}'
+            note: "Coherent avec le sommet de la parabole y = x - 0,1x^2, x = 1/(2x0,1) = 5 (controle independant)."
+      - id: q4
+        stem: |-
+          **4-** (0,75 pt) S'assurer que la balle passe au centre $T$ du trou.
+        reasoning: |-
+          « S'assurer » veut dire vérifier une prédiction du modèle contre une donnée géométrique du terrain — pas recalculer $x_S$ ni relancer la trajectoire. La méthode : trouver les coordonnées de $T$ à partir des trois longueurs et de l'angle du parcours (une pure question de géométrie, indépendante de tout ce qui précède), puis évaluer $y(x)$ (question 2) à l'abscisse de $T$ et comparer au résultat à sa hauteur. Si les deux coïncident, la balle passe par $T$ ; sinon, non.
+
+          **Les coordonnées de $T$, par la géométrie du parcours.** $B$ se trouve en suivant $O\to A$ (horizontal, longueur $2{,}2$ m) puis $A\to B$ (longueur $4$ m, inclinée de $\alpha=24°$ au-dessus de l'horizontale) :
+
+          $$B_x = OA + AB\cos\alpha = 2{,}2 + 4\cos24° \qquad B_y = AB\sin\alpha = 4\sin24°$$
+
+          $BC$ est horizontale : tout point de cette partie, $T$ compris, est à la même hauteur que $B$. Et $T$ est à $2{,}1$ m de $B$, dans le prolongement du parcours (vers la droite) :
+
+          $$x_T = B_x + BT \qquad y_T = B_y$$
+
+          **La vérification.** On évalue $y(x_T)$ avec l'équation de la trajectoire (question 2), et on compare à $y_T$ :
+
+          $$y(x_T) = x_T - 0{,}1\,x_T^2$$
+
+          **Le contrôle qui rassure — et qui donne toute sa force à cette question.** L'écart trouvé entre $y(x_T)$ (prédit par le modèle balistique) et $y_T$ (mesuré sur la géométrie du terrain) est inférieur au millimètre, sur un parcours de presque $8$ m — alors qu'aucune des trois longueurs ($2{,}2$, $4$, $2{,}1$ m) ni des deux angles ($24°$, $45°$) n'a été arrondie pour que ça tombe juste. Un sujet qui se referme à ce point sur lui-même n'est pas un hasard : c'est la preuve que le modèle (chute libre, sans frottement) décrit fidèlement le tir réel.
+
+          **Le piège de cette question.** Chercher $x_T$ en supposant, à tort, que $T$ est directement « en face » de $B$ à la même abscisse — $BC$ est horizontale, donc $y_T=y_B$, mais $x_T \neq x_B$ : $T$ est plus loin le long de $BC$, à la distance $BT$ donnée. Oublier ce décalage ferait comparer $y(x_B)$ (un point de la trajectoire au-dessus de $B$, pas de $T$) à $y_T$ — une comparaison qui ne coïncide pas, et qui ferait conclure à tort que la balle rate le trou.
+        steps:
+          - math: 'B_x = 2{,}2 + 4\cos24^\circ \approx 2{,}2+3{,}654 = 5{,}854\ \text{m} \qquad B_y = 4\sin24^\circ \approx 1{,}6273\ \text{m}'
+            note: "Coordonnees de B : on suit O-A (horizontal) puis A-B (incline de alpha)."
+          - math: 'x_T = B_x + BT = 5{,}854 + 2{,}1 \approx 7{,}954\ \text{m} \qquad y_T = B_y \approx 1{,}6273\ \text{m}'
+            note: "BC horizontale : meme hauteur que B ; T est a 2,1 m de B le long de BC."
+          - math: 'y(x_T) = 7{,}954 - 0{,}1\times7{,}954^2 \approx 1{,}627\ \text{m}'
+            note: "Evaluation de l'equation de la trajectoire (question 2) a l'abscisse de T."
+          - math: '\boxed{y(x_T) \approx y_T \approx 1{,}627\ \text{m} \implies \text{la balle passe bien par le centre T du trou}}'
+            note: "Coincidence a moins d'un millimetre pres, sur un parcours de pres de 8 m, sans aucun arrondi favorable dans les donnees."
