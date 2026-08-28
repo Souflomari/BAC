@@ -131,7 +131,8 @@ give.
 ## 5. Validator + harness extensions (same commit as the renderer)
 
 - `validate-content.mjs`: parse `bank.yaml` when present — schema check,
-  exactly-one-correct n/a (no MCQs in v1), reasoning non-empty on every
+  exactly-one-correct n/a (no `choices[]` field in v1 — see below), reasoning
+  non-empty on every
   question, KaTeX-in-YAML on stems/reasoning/steps, sourcing gate with
   `--strict` promotion, `source.year/session` present and consistent with
   the sourcing note, unique entry ids, `bk-` id convention.
@@ -141,6 +142,28 @@ give.
   AND zero emitter traffic from bank interactions (extends the existing
   network-silence sweep); (d) provenance badge text matches bank.yaml.
 - `build-learner-inputs.mjs`: no change (bank has no tagged MCQs in v1).
+
+**« No MCQs in v1 » bans the FIELD, not the exercise type — clarified
+2026-08-28.** The wording above was read by a transcription pass as "a bac
+exercise containing a QCM cannot be banked", which would have capped SPC 2015
+at 17,00/20 and kept it invisible. That reading is wrong, and the corpus
+already shows the right one.
+
+A QCM exercise **is** convertible, and four entries already do it
+(`bk-2020-n-x2` in `ondes-mecaniques-periodiques`, two in
+`decroissance-radioactive`, one in `chute-mouvements-plans`). The pattern:
+
+- the four printed options go **inside the `stem`, as a Markdown table** —
+  the student sees them exactly as the real paper prints them;
+- there is **no `choices[]` field**, so the validator's ban holds and no
+  self-scoring UI is implied;
+- the `reasoning` names the correct option **and says why the others fail** —
+  which is strictly more demanding than picking a letter, and is what the
+  attempt-first contract asks for anyway.
+
+What v1 genuinely excludes is the *machine-scored MCQ apparatus* (`choices[]`,
+exactly-one-correct validation, misconception tagging) — that lives in
+`items.yaml` and `checkpoints.yaml`, not here.
 
 ## 6. Pilot (B0 gate)
 

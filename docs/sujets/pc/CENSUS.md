@@ -48,7 +48,7 @@ hub : `https://www.alloschool.com/section/4585` (annonce 2008→2025, N+R, compl
 | 2013 | R | — | — | non recherché |
 | 2014 | N | — | `upload-70333` (7 p.) | sourcé-confirmé |
 | 2014 | R | — | `element/94469` · `upload-70336` (7 p.) | sourcé-confirmé |
-| 2015 | N | NS28 | `element/94472` · `upload-70340` (7 p.) | sourcé-confirmé |
+| 2015 | N | NS28 | `element/94472` · `upload-70340` (7 p.) | **décomposé** (2026-08-28) |
 | 2015 | R | — | — | non recherché |
 | 2016 | N | — | `upload-45091` (8 p.) | sourcé-confirmé |
 | 2016 | R | — | `element/57705` · `upload-45097` (7 p.) | sourcé-confirmé |
