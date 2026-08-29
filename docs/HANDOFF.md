@@ -193,8 +193,8 @@ brief standard, cold-executable by Sonnet.
 
 ### 6.1 Ce qui a changé pour l'élève
 
-**Le corpus d'épreuves est passé de 22 à 34 épreuves complètes** (≥ 19,5/20),
-220 entrées de banque, **38 notions dotées**. **Douze gagnées** sur cet arc :
+**Le corpus d'épreuves est passé de 22 à 36 épreuves complètes** (≥ 19,5/20),
+234 entrées de banque, **38 notions dotées**. **Quatorze gagnées** sur cet arc :
 
 - **vague maths** (2026-08-27) : SM 2017, 2021, 2022, 2023, 2024, 2025 normale
   et SExp 2018 — chacune par la conversion de son problème d'analyse ;
@@ -205,6 +205,16 @@ brief standard, cold-executable by Sonnet.
   par sujet). La conversion de 2017 **fonde la banque
   d'`aspects-energetiques`**, qui n'en avait jamais eu. **La campagne SPC est
   close, cinq sur cinq.**
+- **vague SPC 2 — les sujets à zéro** (2026-08-29) : **SPC 2011 normale**
+  (6 entrées, 35ᵉ épreuve) et **SPC 2015 rattrapage** (8 entrées, 36ᵉ) —
+  deux sujets qui n'avaient AUCUNE entrée, chacun transcrit EN ENTIER
+  (premières intégrales du sas), vérifié par passe adversariale, puis
+  converti à 20,00/20. 2011 N porte la **garde S1** (figure officielle à
+  l'échelle fausse d'un facteur 3,24 : déclarée en bloc ⛔, aucune valeur
+  absolue n'en est tirée, t½ par lecture relative) ; 2015 R déclare ses
+  quatre défauts F1–F4 (dont le « Po » imprimé pour le plomb, corrigé en
+  Pb par CORRECTION ASSUMÉE). Le troisième sujet à zéro, **2010 R, est en
+  transcription** au moment de cette mise à jour.
 
 **Sept d'entre elles étaient INVISIBLES** pour l'élève, sous le seuil
 d'affichage de 9,75 : SM 2021 (8,00), SExp 2018 (9,00), SPC 2012 (7,00),

@@ -802,3 +802,148 @@ entries:
             note: "Application numerique, v=1,3 km/s = 1300 m/s."
           - math: '\boxed{L = 780\ \text{m}}'
             note: "Valeur qui decoule fidelement des donnees imprimees ; ordre de grandeur surprenant pour une nappe, non requalifie -- le scan fait foi."
+
+  # ── bk-2015-r-x2 — 2015 R, Exercice 2 (❖ Ondes) : célérité d'un ébranlement le long d'une corde (QCM) ──
+  #
+  # NOTE ÉDITORIALE — UN SEUL exercice imprimé, DEUX notions. L'Exercice 2 du
+  # sujet SPC 2015 rattrapage (03 points) est un QCM à numérotation CONTINUE
+  # de 1 à 5 : les questions 1-3 (« ❖ Ondes », 1,5 pt) sont ici, les
+  # questions 4-5 (« ❖ Physique nucléaire », 1,5 pt) sous
+  # content/pc/decroissance-radioactive/bank.yaml, entrée bk-2015-r-x2b. Les
+  # deux entrées partagent le même numéro d'exercice dans l'exercise_label
+  # (« Exercice 2 ») pour que numeroExercice() d'examens.ts ne compte pas
+  # deux exercices — précédent direct : bk-2015-n-x2/x2b (2015 N, même
+  # découpage). Barème réparti, jamais dupliqué : 1,5 + 1,5 = 03 pt.
+  # QCM au format BANK-SPEC §5 : les 4 propositions de chaque question dans
+  # un tableau Markdown DANS le stem (verbatim du sujet), PAS de champ
+  # choices[] ; le reasoning nomme la bonne réponse et dit pourquoi les
+  # trois autres échouent.
+  - id: bk-2015-r-x2
+    title: "Célérité d'un ébranlement le long d'une corde filmée : durée entre deux photos, distance parcourue et célérité (QCM)"
+    source:
+      year: 2015
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 2 — Ondes : ébranlement le long d'une corde (QCM)"
+    bareme_total: 1.5
+    duration_min: 9
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28 (3 h, coef 7), AlloSchool
+        element/94476 (course-422, jumeaux byte-identiques 94475/94477),
+        pages 3-4 sur 7 — Exercice 2 ( 03 points ), bloc « ❖ Ondes »,
+        sous-total imprimé « Ondes (01,5 points) », questions 1 à 3 du QCM
+        (0,5+0,5+0,5 = 1,5 pt) ; le bloc « ❖ Physique nucléaire » (questions
+        4-5, 1,5 pt) est transcrit sous
+        content/pc/decroissance-radioactive/bank.yaml, entrée bk-2015-r-x2b
+        — même exercise_label « Exercice 2 », numérotation continue 1-5, pas
+        de double comptage : 1,5+1,5 = 03 pt. Transcription vérifiée par une
+        passe adversariale indépendante (2026-08-29,
+        docs/sujets/_incoming/pc-2015-r.md, statut « ✅ VÉRIFIÉ — clearé pour
+        conversion ») : les 4 propositions de chacune des 3 questions relues
+        verbatim sur la couche de texte native, les cases ▪ Wingdings
+        comptées (20 sur la page 4 = 5 questions × 4 propositions, aucune
+        proposition orpheline), et la figure des photos re-mesurée au pixel
+        sur le bitmap natif (402×428, 171 dpi effectifs) : règle (R) = 1 m ↔
+        131 px bord à bord (≈ 2 carreaux majeurs de 65 px), emprises de
+        l'ébranlement 135-187 px (photo N°8) et 265-317 px (photo N°12),
+        déplacement 130 px sur le bord avant COMME sur le bord arrière →
+        d = 130/131 = 0,99 ≈ 1,00 m CONFIRMÉ (§ V.6). Re-dérivation
+        (transcripteur puis vérificateur, concordants) : Δt = (12−8)/25 =
+        0,16 s ; v = d/Δt = 6,25 m.s⁻¹ — les deux parmi les propositions
+        imprimées. Aucun corrigé officiel n'existe (la série SPC n'en a qu'à
+        partir de 2016) ; le corrigé non officiel svt-assilah n'est
+        corroborant que sur sa page 1 (Exercice 1, dosage) — il ne couvre
+        pas ce bloc et n'est jamais une autorité : le plafond de preuve est
+        la double chaîne de mesure concordante.
+    intro: |-
+      **Ondes le long d'une corde (examen national, session de rattrapage 2015 — Exercice 2, bloc « Ondes », 1,5 point sur les 03 de l'exercice complet).**
+
+      *L'Exercice 2 est un QCM de cinq questions à numérotation continue : les questions 1 à 3 (Ondes) sont ici ; les questions 4 et 5 (Physique nucléaire) vivent sous la notion « Décroissance radioactive » (entrée bk-2015-r-x2b).*
+
+      L'exercice comprend cinq questions, à chacune on a proposé quatres réponses. Recopier sur la copie, le numéro de la question et écrire à coté la réponse juste, parmi les quatres réponses proposées, sans aucune justification. *(« quatres » (×2), « à coté » et la virgule après « Recopier sur la copie » tels qu'imprimés — défauts du sujet officiel, sans incidence)*
+
+      Pour déterminer la célérité de propagation d'une onde le long d'une corde, le professeur de physique demande à l'un des élèves de produire un ébranlement à l'une des extrémité d'une corde horizontale, et en même temps, il demande à une élève de filmer la séquence à l'aide d'une caméra numérique réglée sur la prise de **25 images par seconde**. *(« à l'une des extrémité » tel qu'imprimé)*
+
+      Une règle blanche (R) de logueur **1 m**, a été placée au voisinage de la corde comme échelle de mesure. *(« logueur » tel qu'imprimé)*
+
+      Après traitement informatique avec un logiciel convenable, le professeur choisit parmi les photos obtenues, les photos N°8 et N°12 (Figure ci-dessus), pour les étudier et les exploiter.
+
+      **Figure (photos N°8 et N°12, page 3 du sujet, sans numéro — re-décrite et re-mesurée au pixel par la vérification).** Deux panneaux superposés sur quadrillage (les lignes majeures espacées d'environ un demi-mètre à l'échelle de la règle). **Panneau haut, « Photo N°8 »** : la corde, trait horizontal épais, porte un ébranlement en S — une crête PUIS un creux dans le sens de lecture ; la règle blanche (R), rectangle à bord noir posé SOUS la corde à droite, couvre **deux carreaux majeurs** pour son mètre de longueur. **Panneau bas, « Photo N°12 »** : même corde, même règle exactement au même endroit ; l'ébranlement, de forme inchangée, s'est déplacé vers la droite. **Mesure de la vérification : entre les deux photos, l'ébranlement s'est déplacé — sur son bord avant comme sur son bord arrière — d'exactement la longueur de la règle, soit deux carreaux majeurs ($d = 130\ \text{px}$ pour une règle de $131\ \text{px}$).**
+    questions:
+      - id: q1
+        part: "❖ Ondes (QCM, questions 1 à 3)"
+        stem: |-
+          **1-** (0,5 pt) La durée $\Delta t$ séparant la prise des deux photos N°8 et N°12 de l'onde est :
+
+          | | |
+          |---|---|
+          | **A** | $\Delta t = 0{,}12\ \text{s}$ |
+          | **B** | $\Delta t = 0{,}16\ \text{s}$ |
+          | **C** | $\Delta t = 0{,}20\ \text{s}$ |
+          | **D** | $\Delta t = 0{,}24\ \text{s}$ |
+        reasoning: |-
+          La caméra prend $25$ images par seconde : deux photos consécutives sont séparées de $\dfrac{1}{25} = 0{,}04\ \text{s}$. Entre la photo N°8 et la photo N°12, il s'écoule $12-8 = 4$ **intervalles** :
+
+          $$\Delta t = 4\times\frac{1}{25} = 0{,}16\ \text{s}$$
+
+          $$\boxed{\text{B}}$$
+
+          **Pourquoi les trois autres échouent — chacune est une erreur de comptage identifiable.** A ($0{,}12\ \text{s}$) compte $3$ intervalles, comme si l'écart des numéros devait être diminué de $1$. C ($0{,}20\ \text{s}$) compte $5$ — c'est le piège classique : compter les PHOTOS ($8, 9, 10, 11, 12$, soit cinq images) au lieu des intervalles qui les séparent (quatre). D ($0{,}24\ \text{s}$) compte $6$ intervalles, sans lecture cohérente possible. La règle sûre : $n$ photos numérotées consécutivement = $n-1$ intervalles, et ici l'écart des numéros ($12-8$) EST directement le nombre d'intervalles.
+        steps:
+          - math: '\frac{1}{25} = 0{,}04\ \text{s entre deux images consécutives}'
+            note: "25 images par seconde (donnee de l'enonce)."
+          - math: '\Delta t = (12-8)\times0{,}04 = 0{,}16\ \text{s}'
+            note: "L'ecart des numeros de photos EST le nombre d'intervalles."
+          - math: '\boxed{\text{B : } \Delta t = 0{,}16\ \text{s}}'
+            note: "C (0,20 s) compterait les 5 photos au lieu des 4 intervalles."
+      - id: q2
+        stem: |-
+          **2-** (0,5 pt) La distance d  parcourue par l'onde pendant la durée $\Delta t$ est :
+
+          | | |
+          |---|---|
+          | **A** | $d = 2\ \text{cm}$ |
+          | **B** | $d = 0{,}50\ \text{m}$ |
+          | **C** | $d = 1{,}00\ \text{m}$ |
+          | **D** | $d = 1{,}50\ \text{m}$ |
+        reasoning: |-
+          L'ébranlement se propage SANS se déformer (rung R1 : c'est la perturbation qui voyage, la matière de la corde ne fait que monter et descendre) : on peut donc suivre n'importe quel point identifiable de sa forme — son bord avant, son bord arrière — entre les deux photos, à condition de comparer des points HOMOLOGUES.
+
+          La règle (R) donne l'échelle : $1\ \text{m}$ pour deux carreaux majeurs du quadrillage. Entre la photo N°8 et la photo N°12, le bord avant ET le bord arrière de l'ébranlement se sont déplacés de **deux carreaux majeurs** — exactement la longueur de la règle (mesure de la vérification : $130\ \text{px}$ de déplacement pour une règle de $131\ \text{px}$) :
+
+          $$\boxed{\text{C : } d = 1{,}00\ \text{m}}$$
+
+          **Pourquoi les trois autres échouent.** A ($2\ \text{cm}$) lirait une distance « sur le papier », sans passer par l'échelle — la règle est imprimée précisément pour interdire cette lecture. B ($0{,}50\ \text{m}$) ne compte qu'UN carreau majeur : c'est ce qu'on trouve en comparant deux points non homologues (la crête d'une photo avec le creux de l'autre, par exemple), la moitié du déplacement réel. D ($1{,}50\ \text{m}$) exigerait trois carreaux de déplacement — aucun point de l'ébranlement ne se déplace d'autant entre les deux photos.
+        steps:
+          - math: '1\ \text{m (règle)} = 2\ \text{carreaux majeurs}'
+            note: "L'echelle est donnee par la regle (R), pas par le papier."
+          - math: 'd = 2\ \text{carreaux} = 1{,}00\ \text{m}'
+            note: "Deplacement identique du bord avant et du bord arriere : la forme se conserve (rung R1)."
+          - math: '\boxed{\text{C : } d = 1{,}00\ \text{m}}'
+            note: "B (0,50 m) comparerait des points non homologues ; A ignorerait l'echelle."
+      - id: q3
+        stem: |-
+          **3-** (0,5 pt) La célerité de propagation de l'onde le long de la corde est : *(« célerité » tel qu'imprimé — défaut du sujet officiel, sans incidence)*
+
+          | | |
+          |---|---|
+          | **A** | $v = 5{,}10\ \text{m.s}^{-1}$ |
+          | **B** | $v = 6{,}25\ \text{m.s}^{-1}$ |
+          | **C** | $v = 7{,}30\ \text{m.s}^{-1}$ |
+          | **D** | $v = 10{,}50\ \text{m.s}^{-1}$ |
+        reasoning: |-
+          La célérité d'une onde progressive (rung R3) est le rapport de la distance parcourue à la durée du parcours — et les questions 1 et 2 viennent d'établir les deux :
+
+          $$v = \frac{d}{\Delta t} = \frac{1{,}00}{0{,}16}$$
+
+          $$\boxed{\text{B : } v = 6{,}25\ \text{m.s}^{-1}}$$
+
+          **Pourquoi les trois autres échouent.** Seule $6{,}25\ \text{m.s}^{-1}$ vaut exactement $d/\Delta t$ avec les valeurs correctes : $5{,}10$ et $7{,}30$ ne correspondent à aucun rapport exact des valeurs proposées aux questions 1 et 2, et $10{,}50$ supposerait un déplacement presque double (ou une durée presque moitié) de ce que montrent les photos. Remarque de prudence propre aux QCM en cascade : une erreur aux questions 1 ou 2 peut retomber « par chance » sur une proposition ici ($1{,}50/0{,}24 = 6{,}25$ aussi !) — c'est la cohérence de TOUTE la chaîne ($4$ intervalles, $2$ carreaux, $6{,}25$) qui valide le triplet, pas une case isolée.
+        steps:
+          - math: 'v = \frac{d}{\Delta t} = \frac{1{,}00}{0{,}16}'
+            note: "Celerite d'une onde progressive (rung R3) : distance / duree."
+          - math: '\boxed{\text{B : } v = 6{,}25\ \text{m.s}^{-1}}'
+            note: "Coherent avec le triplet complet : 4 intervalles, 2 carreaux, 6,25 m/s."

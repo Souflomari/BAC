@@ -2192,3 +2192,163 @@ entries:
             note: "Comparee au tableau des frequences."
           - math: '\boxed{N_0 = 294\ \text{Hz} = \text{la note Re}}'
             note: "Coincide au hertz pres avec la valeur du tableau : confirme aussi l'arrondi T=3,4 ms de la question 2-2."
+
+  # ── bk-2015-r-x3b — 2015 R, Exercice 3 (§ 2) : oscillations libres dans un circuit RLC série ──
+  #
+  # NOTE ÉDITORIALE — UN SEUL exercice imprimé, DEUX notions. L'Exercice 3 du
+  # sujet SPC 2015 rattrapage (04,5 points) comprend deux paragraphes : le
+  # § 1 (dipôle RL, 2,00 pt) vit sous content/pc/dipole-rl/bank.yaml, entrée
+  # bk-2015-r-x3, le § 2 (oscillations libres RLC, 2,50 pt) est ici. Les
+  # deux entrées partagent le même numéro d'exercice dans l'exercise_label
+  # (« Exercice 3 ») pour que numeroExercice() d'examens.ts ne compte pas
+  # deux exercices. Barème réparti, jamais dupliqué : 2,00 + 2,50 = 04,5 pt.
+  # Ce § réutilise les valeurs établies au § 1 (L = 0,2 H, r = 10 Ω,
+  # R = 90 Ω) — dépendance dite dans l'intro, pas re-démontrée ici.
+  - id: bk-2015-r-x3b
+    title: "Oscillations libres dans un circuit RLC série : équation différentielle, capacité par la pseudo-période, énergie du circuit à un sommet et régime pseudo-périodique"
+    source:
+      year: 2015
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 3 — § 2 : oscillations libres dans un circuit RLC série"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28 (3 h, coef 7), AlloSchool
+        element/94476 (course-422, jumeaux byte-identiques 94475/94477),
+        page 5 sur 7 — Exercice 3 ( 04,5 points ), § 2 : oscillations
+        libres dans un circuit RLC série ; barème 2,50 pt (0,5×5), 5
+        questions, AUCUN sous-total imprimé pour ce § ; le § 1 (dipôle RL,
+        2,00 pt) est transcrit sous content/pc/dipole-rl/bank.yaml, entrée
+        bk-2015-r-x3 — même exercise_label « Exercice 3 », pas de double
+        comptage : 2,00+2,50 = 04,5 pt. Transcription vérifiée par une
+        passe adversariale indépendante (2026-08-29,
+        docs/sujets/_incoming/pc-2015-r.md, statut « ✅ VÉRIFIÉ — clearé
+        pour conversion ») : figure 3 re-mesurée au pixel sur le bitmap
+        natif (766×467, 217 dpi effectifs), calibration 18,77 px/V et
+        8,33 px/ms : u_C(0) = 9,0 V CONFIRMÉ (la citation de pixel
+        « y = 49 » de la première transcription est fausse, l'encre est à
+        y ≈ 65 — valeur juste, pixel corrigé, § V.6) ; les 8 extrema
+        re-tracés à ≤ 0,1 V / 0,3 ms (−7,9 ; +6,4 ; −5,7 ; +4,56 à
+        35,6 ms — sommet posé SUR la majeure 36 ms ; −4,1 ; +3,2 ; −3,0 ;
+        +2,2) ; T = 17,9 ± 0,1 ms ≈ 18 ms CONFIRMÉ sur six intervalles
+        max→max et min→min. Aval concordant (transcripteur puis
+        vérificateur) : C = T²/(4π²L) ≈ 4,1.10⁻⁵ F avec L = 0,2 H (§ 1) ;
+        ℰ₁ = ½C·u² ≈ 4,2.10⁻⁴ J avec u_C(36 ms) = 4,5 V. Le glyphe ℰ de la
+        question 2-4 est imprimé en Kunstler Script sur le sujet (rendu
+        $\mathcal{E}_1$ ici) ; « péride » (2-3) tel qu'imprimé. Aucun
+        corrigé officiel n'existe (la série SPC n'en a qu'à partir de
+        2016) ; le corrigé non officiel svt-assilah n'est corroborant que
+        sur sa page 1 (Exercice 1, dosage) — il ne couvre pas ce bloc et
+        n'est jamais une autorité : le plafond de preuve est la double
+        chaîne de mesure concordante.
+    intro: |-
+      **Oscillations libres dans un circuit RLC série (examen national, session de rattrapage 2015 — Exercice 3, § 2, 2,50 points sur les 04,5 de l'exercice complet).**
+
+      *Le § 1 de cet exercice — la réponse du dipôle RL à un échelon de tension — vit sous la notion « Dipôle RL » (entrée bk-2015-r-x3) ; on en réutilise ici les valeurs établies : $L = 0{,}2\ \text{H}$, $r = 10\ \Omega$, $R = 90\ \Omega$.*
+
+      **2- Oscillations libres dans un circuit RLC série :**
+
+      Pour obtenir des oscillations électriques libres, on remplace, le générateur, dans le circuit précédent (Figure 1), par un condensateur de capacité $C$ initialement chargé. *(Les virgules autour de « le générateur » sont telles qu'imprimées — défaut du sujet officiel, sans incidence)*
+
+      Le suivi de l'évolution de la tension $u_C$ aux bornes du condensateur en fonction du temps, à l'aide d'un matériel informatique convenable, permet d'obtenir la courbe de la figure 3.
+
+      **Figure 3 (la courbe $u_C(t)$, page 5 du sujet — re-décrite et re-mesurée au pixel par la vérification).** Quadrillage à lignes majeures ; axe vertical « $u_C$ (V) » gradué $9$, $6$, $3$, $0$, $-3$, $-6$ (**1 carreau majeur = 3 V**) ; axe horizontal « t (ms) » avec les étiquettes $9$, $18$, $36$ sous les majeures correspondantes (**1 carreau majeur = 9 ms**). Une **sinusoïde amortie** partant de $u_C(0) = 9{,}0\ \text{V}$ : premier minimum $\approx -7{,}9\ \text{V}$ vers $9\ \text{ms}$, premier maximum $\approx +6{,}4\ \text{V}$ vers $18\ \text{ms}$, puis $\approx -5{,}7\ \text{V}$, et un maximum local $+4{,}5\ \text{V}$ dont le sommet est posé **exactement sur la majeure $t = 36\ \text{ms}$** ; l'amplitude continue de décroître ensuite ($-4{,}1$ ; $+3{,}2$ ; $-3{,}0$ ; $+2{,}2\ \text{V}$). L'écart entre deux maxima (ou deux minima) successifs est constant : **$T \approx 18\ \text{ms}$** — les étiquettes imprimées $9/18/36$ tombent sur le premier minimum, le premier maximum et le deuxième maximum.
+    questions:
+      - id: q2-1
+        part: "2 — Oscillations libres dans le circuit RLC"
+        stem: |-
+          **2-1-** (0,5 pt) Représenter le schéma du dispositif expérimental, et montrer dessus, le branchement du système d'acquisition permettant de suivre $u_C(t)$. *(La virgule après « montrer dessus » est telle qu'imprimée — défaut du sujet officiel, sans incidence)*
+        reasoning: |-
+          Le circuit est celui du § 1 avec le générateur remplacé par le condensateur : **une seule maille série** contenant le condensateur $C$ (initialement chargé), la bobine ($L$, $r$) et le résistor $R$.
+
+          Le système d'acquisition doit suivre $u_C(t)$ : sa voie de mesure se branche donc **aux bornes du condensateur** — la borne de mesure sur une armature, la référence (masse) sur l'autre. C'est le même geste que le branchement d'un oscilloscope (rung 6) : on mesure toujours une tension ENTRE les deux bornes du dipôle visé, jamais « sur un fil ».
+
+          $$\boxed{\text{Maille série } C + (L, r) + R \text{, acquisition branchée aux bornes de } C}$$
+
+          Le piège nommé de cette question. Brancher la voie de mesure aux bornes du résistor : on acquerrait $u_R(t)$ — proportionnelle au COURANT, donc nulle aux extrema de $u_C$ — et non $u_C(t)$ ; la courbe obtenue serait en quadrature avec la figure 3, pas superposable à elle.
+      - id: q2-2
+        stem: |-
+          **2-2-** (0,5 pt) Etablir l'équation différentielle vérifiée par la tension $u_C(t)$.
+        reasoning: |-
+          C'est le geste du rung 5 — le circuit réel, avec sa résistance totale $R_T = R + r$ (le résistor ET la résistance interne de la bobine). Loi des mailles sur la maille série, en convention récepteur :
+
+          $$u_C = u_{bobine} + u_R = r\,i + L\frac{di}{dt} + R\,i$$
+
+          On exprime tout en $u_C$ : le courant de décharge est $i = -C\,\dfrac{du_C}{dt}$ (la charge de l'armature suivie diminue quand le condensateur se vide), donc $\dfrac{di}{dt} = -C\,\dfrac{d^2u_C}{dt^2}$. En reportant et en réarrangeant :
+
+          $$\boxed{LC\,\frac{d^2u_C}{dt^2} + (R+r)\,C\,\frac{du_C}{dt} + u_C = 0}$$
+
+          (De façon équivalente : $\dfrac{d^2u_C}{dt^2} + \dfrac{R+r}{L}\,\dfrac{du_C}{dt} + \dfrac{1}{LC}\,u_C = 0$.)
+
+          Le piège nommé de cette question. Écrire l'équation du circuit IDÉAL ($LC\,u_C'' + u_C = 0$, rung 2) en oubliant le terme résistif : la figure 3 montre une amplitude qui DÉCROÎT — la trace visible du terme en $du_C/dt$ — et la question 2-5 demandera précisément d'expliquer cette décroissance. L'équation doit contenir $R + r$, pas seulement $R$ : le courant traverse aussi la résistance interne de la bobine (§ 1 : $r = 10\ \Omega$).
+        steps:
+          - math: 'u_C = r\,i + L\frac{di}{dt} + R\,i'
+            note: "Loi des mailles sur la maille serie (rung 5), bobine reelle (L, r) + resistor R."
+          - math: 'i = -C\,\frac{du_C}{dt}'
+            note: "Courant de decharge : la charge de l'armature suivie diminue."
+          - math: '\boxed{LC\,\frac{d^2u_C}{dt^2} + (R+r)\,C\,\frac{du_C}{dt} + u_C = 0}'
+            note: "Equation du regime libre amorti -- le terme en (R+r) explique l'amplitude decroissante de la figure 3."
+      - id: q2-3
+        stem: |-
+          **2-3-** (0,5 pt) Calculer la valeur de la capacité du condensateur, sachant que la valeur de la pseudo période est égale à celle de la péride propre de l'oscillateur. *(« péride » tel qu'imprimé — défaut du sujet officiel, sans incidence)*
+        reasoning: |-
+          Deux temps : lire la pseudo-période sur la figure, puis inverser la formule de la période propre.
+
+          **Lire $T$.** L'écart entre deux maxima successifs de la figure 3 : le premier maximum est à $18\ \text{ms}$, le deuxième à $36\ \text{ms}$ — deux étiquettes IMPRIMÉES sur l'axe, la lecture est directe :
+
+          $$T = 36 - 18 = 18\ \text{ms}$$
+
+          **Inverser $T_0$.** L'énoncé autorise $T = T_0$, et le rung 2 donne $T_0 = 2\pi\sqrt{LC}$, avec $L = 0{,}2\ \text{H}$ établie au § 1 :
+
+          $$C = \frac{T^2}{4\pi^2 L} = \frac{(18\times10^{-3})^2}{4\pi^2\times0{,}2}$$
+
+          $$\boxed{C \approx 4{,}1\times10^{-5}\ \text{F} \approx 41\ \mu\text{F}}$$
+
+          Le piège nommé de cette question. Se tromper d'un facteur $10^3$ en oubliant de convertir les millisecondes : $T$ entre dans la formule AU CARRÉ, donc l'erreur d'unité y est élevée au carré aussi — un $T$ laissé en « 18 » donnerait un $C$ un million de fois trop grand. Toujours $T = 18\times10^{-3}\ \text{s}$ avant d'élever au carré.
+        steps:
+          - math: 'T = 36 - 18 = 18\ \text{ms}'
+            note: "Pseudo-periode lue entre les deux maxima etiquetes de la figure 3 (verifiee sur 6 intervalles : 17,9 +/- 0,1 ms)."
+          - math: 'T = T_0 = 2\pi\sqrt{LC} \implies C = \frac{T^2}{4\pi^2 L}'
+            note: "Periode propre (rung 2), inversee ; L = 0,2 H etablie au paragraphe 1."
+          - math: 'C = \frac{(18\times10^{-3})^2}{4\pi^2\times0{,}2}'
+            note: "Conversion en secondes AVANT le carre : erreur d'unite au carre sinon."
+          - math: '\boxed{C \approx 4{,}1\times10^{-5}\ \text{F} \approx 41\ \mu\text{F}}'
+            note: "Capacite du condensateur."
+      - id: q2-4
+        stem: |-
+          **2-4-** (0,5 pt) Déterminer la valeur $\mathcal{E}_1$ de l'énergie du circuit à l'instant $t = 36\ \text{ms}$. *(Le sujet imprime le symbole $\mathcal{E}$ en écriture script — police Kunstler Script — rendu ici $\mathcal{E}_1$)*
+        reasoning: |-
+          L'énergie du circuit se partage à chaque instant entre le condensateur et la bobine (rung 1) : $\mathcal{E} = \dfrac{1}{2}C\,u_C^2 + \dfrac{1}{2}L\,i^2$. Tout l'art de la question est de choisir l'INSTANT : à $t = 36\ \text{ms}$, la figure 3 montre un **maximum local** de $u_C$ — et à un extremum, $\dfrac{du_C}{dt} = 0$, donc $i = -C\,\dfrac{du_C}{dt} = 0$ : la bobine est vide, TOUTE l'énergie du circuit est dans le condensateur.
+
+          $$\mathcal{E}_1 = \frac{1}{2}C\,u_C^2(36\ \text{ms}) = \frac{1}{2}\times4{,}1\times10^{-5}\times(4{,}5)^2$$
+
+          $$\boxed{\mathcal{E}_1 \approx 4{,}2\times10^{-4}\ \text{J}}$$
+
+          avec $u_C(36\ \text{ms}) = +4{,}5\ \text{V}$ lu sur la figure (le sommet local posé exactement sur la majeure $36\ \text{ms}$ — un carreau et demi de $3\ \text{V}$).
+
+          Le piège nommé de cette question. Utiliser $u_C(0) = 9\ \text{V}$ par réflexe « énergie initiale » : la question demande l'énergie À $t = 36\ \text{ms}$, et le circuit en a déjà dissipé plus des trois quarts ($\frac{1}{2}C\times9^2 \approx 1{,}7\times10^{-3}\ \text{J}$ au départ contre $4{,}2\times10^{-4}\ \text{J}$ ici). C'est précisément cette décroissance que la question 2-5 fait commenter.
+        steps:
+          - math: 'u_C(36\ \text{ms}) = +4{,}5\ \text{V},\quad \text{maximum local} \implies i = 0'
+            note: "A un extremum de u_C, du_C/dt = 0 donc i = 0 : toute l'energie est dans le condensateur (rung 1)."
+          - math: '\mathcal{E}_1 = \frac{1}{2}C\,u_C^2 = \frac{1}{2}\times4{,}1\times10^{-5}\times(4{,}5)^2'
+            note: "Energie du circuit reduite a l'energie electrostatique, avec C de la question 2-3."
+          - math: '\boxed{\mathcal{E}_1 \approx 4{,}2\times10^{-4}\ \text{J}}'
+            note: "Bien moins que l'energie initiale (~1,7e-3 J a 9 V) : la dissipation est deja passee par la."
+      - id: q2-5
+        stem: |-
+          **2-5-** (0,5 pt) Justifier, du point de vue énergétique, le régime oscillatoire représenté sur la figure 3.
+        reasoning: |-
+          La figure 3 montre des oscillations dont l'amplitude **décroît** sans que les oscillations cessent : c'est le régime **pseudo-périodique** (rung 4, résistance modérée).
+
+          La justification énergétique, en deux constats (rung 3 — R est le frein) :
+
+          - l'énergie totale du circuit, $\mathcal{E} = \frac{1}{2}C\,u_C^2 + \frac{1}{2}L\,i^2$, **diminue au cours du temps** — la question 2-4 vient de le chiffrer ($\approx 1{,}7\times10^{-3}\ \text{J}$ à $t=0$, $4{,}2\times10^{-4}\ \text{J}$ à $36\ \text{ms}$) — parce que la résistance totale $R + r$ dissipe de l'énergie **par effet Joule** à chaque instant où un courant circule ;
+          - mais cette dissipation est assez lente pour que l'échange d'énergie entre le condensateur et la bobine (le balancement du rung 1) se poursuive : le système oscille encore, chaque balancement rendant un peu moins que le précédent — d'où des extrema de plus en plus faibles, à pseudo-période constante.
+
+          $$\boxed{\text{Dissipation par effet Joule dans } R + r \implies \text{amplitude décroissante : régime pseudo-périodique}}$$
+
+          Le piège nommé de cette question. Répondre « l'énergie se conserve en passant du condensateur à la bobine » : c'est le circuit IDÉAL du rung 2. Ici la conservation est précisément ce qui est PERDU — et c'est la décroissance de l'enveloppe, pas l'oscillation elle-même, que la question demande de justifier.

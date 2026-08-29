@@ -190,6 +190,31 @@
 # l'angle de LANCEMENT, pas de plan incliné), un parcours en trois segments
 # et une vérification de passage par un point précis (le trou, à $x_T
 # \approx 7{,}95$ m) sont inédits dans le corpus de cette notion.
+#
+# NOTE ÉDITORIALE — bk-2011-n-x4b (2026-08-29, ajout). Situation 3 de
+# l'exercice « Mécanique (05,5 points) » du sujet 2011 N (le skieur sur
+# glace) : G quitte la piste en D avec une vitesse v_D inclinée de θ = 45°
+# et tombe en P. Source : docs/sujets/_incoming/pc-2011-n.md, statut
+# « VÉRIFIÉ — clearé pour conversion » (passe adversariale indépendante du
+# 2026-08-29). Sœur de bk-2011-n-x4 (content/pc/lois-de-newton/bank.yaml,
+# situations 1 + 2 du même exercice) — même découpe que le précédent 2010 N
+# (bk-2010-n-x4 / x4b ci-dessus) : le barème est RÉPARTI, jamais dupliqué,
+# 3,25 + 2,25 = 5,50 pt, le « (05,5 points) » imprimé. LA SITUATION EST
+# AUTOPORTANTE, ET LA CARTE NE FABRIQUE AUCUNE DÉPENDANCE : θ = 45° et les
+# coordonnées de P (x_G = 15 m ; y_G = −5 m) suffisent — v_D est
+# l'INCONNUE de la question 3-2, pas une donnée héritée des situations
+# 1–2 (la donnée v_C = 12 m.s⁻¹ de la situation 2 ne sert à rien ici).
+# Aucun recoupement numérique avec les autres entrées de cette banque.
+#
+# SCOPE NOTE — bk-2011-n-x4b, q2 : extraire la VITESSE INITIALE v_D de
+# l'équation de la trajectoire évaluée en un point donné (P) n'est modélisé
+# nulle part pas à pas dans la leçon : R3 établit l'équation de la
+# trajectoire, R4 n'en tire que la flèche et la portée, R5 discute
+# l'influence de v_0 et α sans jamais RÉSOUDRE en v_0 depuis un point de
+# passage. Le geste (substituer les coordonnées de P, isoler v_D²
+# algébriquement, conclure par une racine carrée) est refait pas à pas au
+# point d'usage dans le raisonnement de la question 3-2 — jamais
+# « on admet ».
 
 notion: pc/chute-mouvements-plans
 
@@ -2732,3 +2757,110 @@ entries:
             note: "Evaluation de l'equation de la trajectoire (question 2) a l'abscisse de T."
           - math: '\boxed{y(x_T) \approx y_T \approx 1{,}627\ \text{m} \implies \text{la balle passe bien par le centre T du trou}}'
             note: "Coincidence a moins d'un millimetre pres, sur un parcours de pres de 8 m, sans aucun arrondi favorable dans les donnees."
+
+  # ── bk-2011-n-x4b — 2011 N, Mécanique (situation 3) : le skieur quitte la
+  #    piste en D et tombe en P ──
+  # Sœur de bk-2011-n-x4 (lois-de-newton, situations 1 + 2 du même
+  # exercice) : barème réparti 3,25 + 2,25 = 5,50, situation autoportante —
+  # voir la NOTE ÉDITORIALE et la SCOPE NOTE en tête de fichier.
+  - id: bk-2011-n-x4b
+    title: "Skieur quittant la piste en D : équations horaires et équation de la trajectoire, puis vitesse v_D déterminée depuis le point de chute P"
+    source:
+      year: 2011
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Mécanique — situation 3 : étude du mouvement dans le champ de pesanteur uniforme"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2011 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28, AlloSchool element/94445 (Mécanique — étude
+        du mouvement d'un sportif (skieur), situation 3 : chute parabolique
+        de D à P dans le champ de pesanteur uniforme ; barème 2,25 pt
+        (1,25+1), 2 questions, sur les 05,5 pt de l'exercice de Mécanique
+        complet, dont les situations 1 et 2 — plan incliné puis plan
+        horizontal avec frottement — sont transcrites à part sous
+        content/pc/lois-de-newton/bank.yaml, entrée bk-2011-n-x4 ; pas de
+        double comptage : 3,25+2,25 = 5,50, le « (05,5 points) » imprimé
+        page 1, même découpe que le précédent 2010 N, bk-2010-n-x4/x4b).
+        CHOIX DE L'`id` : le sujet ne numérote aucun exercice ; les
+        identifiants x1..x4 encodent la POSITION AU CARTOUCHE (Mécanique =
+        quatrième bloc), et le suffixe `b` marque le second morceau d'un
+        exercice réparti (K-7 bis). LA SITUATION EST AUTOPORTANTE : θ = 45°
+        et les coordonnées de P suffisent — v_D est l'INCONNUE de la
+        question 3-2, pas une donnée héritée des situations 1–2 ; aucune
+        dépendance n'est fabriquée (voir la note éditoriale en tête de
+        fichier). Transcription source vérifiée par une passe adversariale
+        indépendante du 2026-08-29 (docs/sujets/_incoming/pc-2011-n.md,
+        statut « VÉRIFIÉ — clearé pour conversion »), barème recompté par
+        quatre chaînes concordantes, 27/27 questions du sujet re-dérivées —
+        dont les deux de ce bloc : équations horaires et trajectoire
+        littérales ; v_D = (x_P/cosθ).rac(g/(2(x_P.tanθ − y_P))) =
+        rac(112,5) ≈ 10,6 m.s⁻¹. Un corrigé non officiel (TelmidTice /
+        talamidi.com, même signature interne, MD5 vérifié) recoupe cette
+        valeur (10,6 m/s) à titre de RECOUPEMENT, jamais comme autorité. La
+        figure est re-décrite DEPUIS le bitmap natif par la passe de
+        vérification (P est bien SUR la ligne de sol, cohérent avec
+        y_G = −5 m puisque D, l'origine, est au sommet de l'arc C'D',
+        au-dessus du sol — V.6 du fichier source). Coquilles typographiques
+        du sujet reproduites verbatim, non corrigées : T4 (« (D,ı⃗′, ȷ⃗′) ,
+        et » — espace avant la virgule), T5 (« y_G = - 5 m » — espace entre
+        le signe moins et le nombre) ; T1 (doubles espaces) et T2 (primes
+        en apostrophes droites) non représentables en Markdown. Voir
+        docs/sujets/_incoming/pc-2011-n.md §9 pour le registre complet des
+        35 types de défauts du sujet.
+    intro: |-
+      **Mouvement d'un skieur dans le champ de pesanteur uniforme (examen national, session normale 2011 — Mécanique, situation 3, 2,25 points sur les 5,50 de l'exercice complet).**
+
+      *Les deux premières situations de cet exercice — le plan incliné $A'B'$ puis le plan horizontal $B'C'$ avec frottement — sont traitées à part, sous la notion « Les lois de Newton » (entrée bk-2011-n-x4). Cette situation-ci est autoportante : l'angle $\theta$ et les coordonnées du point de chute $P$ suffisent — $v_D$ est l'inconnue à déterminer, pas une valeur héritée de ce qui précède.*
+
+      Le but de cet exercice est d'étudier le mouvement d'un sportif, pratiquant le ski sur des trajectoires de glace diverses. La dernière partie du circuit, $C'D'$, est circulaire ; la trajectoire de $G$ remonte le long de cet arc jusqu'au point $D$, où $G$ quitte la piste. On modélise le sportif et ses accessoires par un solide $(S)$ de masse $m = 65\ \text{Kg}$ *(« Kg » tel qu'imprimé — majuscule au kilogramme, sans incidence)*, et de centre d'inertie $G$. On prendra : $g = 10\ \text{m.s}^{-2}$.
+
+      **3- Étude du mouvement dans le champ de pesanteur uniforme.** Lorsque le solide $(S)$ quitte la piste, $G$ passe en $D$, à un instant considéré comme nouvelle origine des temps, avec une vitesse $\vec{v}_D$ inclinée d'un angle $\theta = 45°$ par rapport au plan horizontal. Le solide $(S)$ tombe à la position $P$. On étudie le mouvement de $G$ dans le repère galiléen $(D,\vec{i}\,', \vec{j}\,')$ , et on néglige l'action de l'air au cours du mouvement. *(L'espace avant la virgule qui suit le repère est tel qu'imprimé — défaut typographique du sujet officiel, sans incidence.)*
+
+      **Figure (extrait pertinent à cette situation — re-décrit depuis le bitmap natif).** L'origine des axes est au point $D$, au SOMMET de l'arc $C'D'$, au-dessus de la ligne de sol : axe $Y'$ vertical vers le haut, axe $X'$ horizontal vers la droite (il court au-dessus de la ligne de sol jusqu'au bord droit de la figure) ; vecteurs unitaires $\vec{i}\,'$ (horizontal, vers la droite) et $\vec{j}\,'$ (vertical, vers le haut). La flèche $\vec{v}_D$ part de $D$ vers le haut à droite, l'angle $\theta$ étant marqué par un arc entre $\vec{v}_D$ et l'axe $X'$. Le point $P$ (étiquette grasse) est SUR la ligne de sol, à droite — cohérent avec $y_G = -5\ \text{m}$, puisque $D$, l'origine du repère, est au-dessus du sol.
+    questions:
+      - id: q1
+        part: "3-1 — Équations horaires et trajectoire"
+        stem: |-
+          **3-1-** (1,25 pt) Trouver les expressions littérales des équations horaires $x(t)$ et $y(t)$ du mouvement de $G$, et déduire l'expression littérale de l'équation de la trajectoire.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Exactement le mécanisme du rung 2 : l'action de l'air est négligée (énoncé), donc la SEULE force est le poids — c'est une chute libre, et la deuxième loi de Newton donne $\vec{a} = \vec{g}$, que le repère $(D, \vec{i}\,', \vec{j}\,')$ décompose en deux axes INDÉPENDANTS : $a_x = 0$ (rien n'agit horizontalement) et $a_y = -g$ ($\vec{j}\,'$ pointe vers le haut).
+
+          **Les conditions initiales**, lues dans l'énoncé : l'origine des positions est en $D$ (l'origine du repère) et l'origine des temps à l'instant du passage en $D$ — exactement la convention des rungs — avec une vitesse initiale $\vec{v}_D$ inclinée de $\theta$ au-dessus de l'horizontale, donc de composantes $v_D\cos\theta$ et $v_D\sin\theta$.
+
+          **Deux primitivations successives** (rung 2), puis l'élimination du temps (rung 3) : la première équation horaire donne $t = \dfrac{x}{v_D\cos\theta}$, qu'on reporte dans la seconde pour obtenir la trajectoire.
+        steps:
+          - math: 'a_x = 0 \qquad a_y = -g'
+            note: "Chute libre : seul le poids agit (air neglige), deuxieme loi projetee dans (D, i prime, j prime) -- rung 2."
+          - math: 'v_x(t) = v_D\cos\theta \qquad v_y(t) = -g\,t + v_D\sin\theta'
+            note: "Premiere primitivation, avec les composantes de v_D comme conditions initiales."
+          - math: '\boxed{x(t) = v_D\cos\theta\cdot t \qquad y(t) = -\frac12\,g\,t^2 + v_D\sin\theta\cdot t}'
+            note: "Deuxieme primitivation, origine des positions en D : x(0) = y(0) = 0."
+          - math: '\boxed{y = -\frac{g\,x^2}{2\,v_D^2\cos^2\theta} + x\tan\theta}'
+            note: "Elimination du temps t = x/(v_D.cos(theta)) entre les deux equations horaires (rung 3)."
+      - id: q2
+        part: "3-2 — La vitesse v_D, depuis le point de chute P (scope note en tête de fichier)"
+        stem: |-
+          **3-2-** (1 pt) Déterminer $v_D$, la vitesse de $G$ au moment où il quitte le point $D$, sachant que les coordonnées de $G$ à l'arrivée en $P$ sont : $x_G = 15\ \text{m}$ et $y_G = -\ 5\ \text{m}$. *(« - 5 m », avec un espace entre le signe moins et le nombre, tel qu'imprimé — défaut typographique du sujet officiel, sans incidence.)*
+        reasoning: |-
+          SCOPE NOTE (voir l'en-tête du fichier) : résoudre l'équation de la trajectoire EN LA VITESSE INITIALE, depuis un point de passage connu, n'est modélisé pas à pas nulle part dans la leçon — le geste est refait ici entièrement.
+
+          Ce qu'on cherche et pourquoi ce geste. $P$ est un point de la trajectoire : ses coordonnées $(x_P = 15\ \text{m}\,;\,y_P = -5\ \text{m})$ VÉRIFIENT l'équation de la question 3-1, dans laquelle $v_D$ est la seule inconnue. On substitue, puis on isole $v_D^2$ :
+
+          $$y_P = -\frac{g\,x_P^2}{2\,v_D^2\cos^2\theta} + x_P\tan\theta \implies \frac{g\,x_P^2}{2\,v_D^2\cos^2\theta} = x_P\tan\theta - y_P$$
+
+          $$v_D^2 = \frac{g\,x_P^2}{2\cos^2\theta\left(x_P\tan\theta - y_P\right)} \qquad \text{soit} \qquad v_D = \frac{x_P}{\cos\theta}\sqrt{\frac{g}{2\left(x_P\tan\theta - y_P\right)}}$$
+
+          **Le piège nommé de cette question.** Le signe de $y_P$ : le point $P$ est EN DESSOUS de $D$, donc $y_P = -5\ \text{m}$ est négatif — et le soustraire l'AJOUTE : $x_P\tan\theta - y_P = 15 - (-5) = 20\ \text{m}$. Écrire $15 - 5 = 10$ (en oubliant que $y_P$ porte déjà son signe) fausserait $v_D$ d'un facteur $\sqrt{2}$.
+        steps:
+          - math: 'y_P = -\frac{g\,x_P^2}{2\,v_D^2\cos^2\theta} + x_P\tan\theta'
+            note: "P est un point de la trajectoire : on substitue ses coordonnees dans l equation de la question 3-1."
+          - math: 'v_D^2 = \frac{g\,x_P^2}{2\cos^2\theta\left(x_P\tan\theta - y_P\right)}'
+            note: "Isolation algebrique de v_D au carre -- geste hors rungs, ponte ici pas a pas (scope note en tete de fichier)."
+          - math: 'v_D^2 = \frac{10\times15^2}{2\times0{,}5\times\left(15\times1 - (-5)\right)} = \frac{2250}{20} = 112{,}5'
+            note: "theta = 45 degres : cos carre vaut 0,5 et tan vaut 1 ; x_P.tan(theta) - y_P = 15 + 5 = 20 (le piege de signe)."
+          - math: '\boxed{v_D = \sqrt{112{,}5} \approx 10{,}6\ \text{m.s}^{-1}}'
+            note: "Vitesse de G au moment ou il quitte D -- concordante avec le corrige non officiel (10,6 m/s)."

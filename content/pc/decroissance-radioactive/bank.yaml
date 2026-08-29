@@ -192,6 +192,32 @@
 # (identification du noyau fils par les lois de Soddy, demi-vie par la
 # pente d'un graphe ln(N) = f(t)) sont entièrement dans les rungs R2-R4 de
 # CETTE leçon.
+#
+# NOTE ÉDITORIALE — bk-2011-n-x2 (2026-08-29, ajout). Exercice « Physique
+# nucléaire (03 points) » du sujet 2011 N (carbone 14 : équation β⁻,
+# composition du noyau fils, énergie libérée, datation d'une statue par
+# l'activité). Source : docs/sujets/_incoming/pc-2011-n.md, statut
+# « VÉRIFIÉ — clearé pour conversion » (passe adversariale indépendante du
+# 2026-08-29). CHOIX DE L'`id` : le sujet ne numérote aucun exercice (ses
+# titres de section sont Chimie / Physique nucléaire / électricité /
+# Mécanique) ; les identifiants x1..x4 de ce corpus encodent la POSITION AU
+# CARTOUCHE — Physique nucléaire est le DEUXIÈME bloc, d'où x2, sans
+# suffixe puisque ce bloc ne se répartit pas entre plusieurs notions (même
+# disposition que bk-2010-n-x2 ci-dessus). CROSS-LIST noyaux-masse-energie,
+# HONORÉ SANS SECONDE ENTRÉE : la seule question 1-3 (énergie ΔE libérée
+# par la désintégration, 1 pt) relève thématiquement de cette autre notion
+# — sous le seuil d'une entrée autonome (règle du sas : le barème est
+# RÉPARTI, jamais dupliqué, et un cross-list qui ne pèserait qu'une
+# question ne devient pas une entrée orpheline). Elle est reprise ICI, en
+# entier, et son raisonnement nomme la leçon sœur et refait la
+# démonstration complète — même disposition que les notes 1, 3 et 6
+# ci-dessus. LA DEMI-VIE EST LA DONNÉE DE L'ÉNONCÉ : t_1/2 = 5570 ans (la
+# leçon cite 5730 ans au R3 — les deux valeurs circulent selon les tables ;
+# la donnée imprimée fait foi dans la carte, comme toujours). Coquilles du
+# sujet officiel reproduites verbatim, non corrigées : G8 (« et la
+# datation avec. »), G9 (« que bois de la statue »), S5 (« Mev » et l'item
+# de données sans point-virgule final) — voir
+# docs/sujets/_incoming/pc-2011-n.md §9.
 
 notion: pc/decroissance-radioactive
 
@@ -2084,3 +2110,263 @@ entries:
             note: "Rung R4 : demi-vie a partir de lambda."
           - math: '\boxed{t_{1/2} \approx 7{,}17\ \text{h}}'
             note: "Reponse C."
+
+  # ── bk-2015-r-x2b — 2015 R, Exercice 2 (❖ Physique nucléaire) : désintégration du Polonium 210, QCM ──
+  #
+  # ⚠️ CORRECTION ASSUMÉE DU SUJET OFFICIEL (F1), portée par cette entrée. Le
+  # sujet imprime, verbatim (page 4) : « Le noyau de Polonium ²¹⁰₈₄Po , se
+  # désintègre en un noyau de Plomb ²⁰⁶₈₂Po . » — le noyau FILS est nommé
+  # « Plomb » mais symbolisé « Po » (le symbole du Polonium), avec A = 206 et
+  # Z = 82 corrects. Défaut confirmé par la vérification adversariale sur le
+  # rendu vectoriel 400 dpi ET sur la couche de texte (pc-2015-r.md § V.4).
+  # Cette entrée écrit Pb dans le contenu élève et DÉCLARE la correction ici
+  # plutôt que de la faire en silence : Z = 82 EST le plomb — une constante
+  # de la classification périodique, pas une interprétation — et laisser
+  # « Po » sous le nom « Plomb » enseignerait une incohérence. La question
+  # reste résoluble dans les deux rendus (le bilan A/Z suffit). Précédent
+  # maison : PC 2012 N (pKA1 en double) et PC 2015 N (ρ = 0;78 g.L⁻¹) —
+  # voir content/pc/esterification-hydrolyse/bank.yaml, bloc « CORRECTION
+  # ASSUMÉE » de bk-2015-n-x1c. Pas de corrigé officiel pour trancher (la
+  # série SPC n'en a qu'à partir de 2016) ; le corrigé non officiel
+  # svt-assilah (t1887) n'a pu être lu que sur sa page 1 (Exercice 1, le
+  # dosage) — il ne couvre pas ce bloc et n'est jamais une autorité.
+  #
+  # NOTE ÉDITORIALE — sœur de bk-2015-r-x2 (ondes-mecaniques-progressives,
+  # bloc « ❖ Ondes » du même Exercice 2) : un seul exercice imprimé, même
+  # exercise_label « Exercice 2 », numérotation continue 1-5 (ces deux
+  # questions-ci portent les numéros 4 et 5), barème réparti 1,5 + 1,5 =
+  # 03 pt — précédent direct : bk-2015-n-x2/x2b. QCM au format BANK-SPEC §5 :
+  # propositions en tableau dans le stem, pas de champ choices[].
+  - id: bk-2015-r-x2b
+    title: "Désintégration du Polonium 210 en Plomb 206 : nature de la particule émise par les lois de Soddy, et activité après trois demi-vies (QCM)"
+    source:
+      year: 2015
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 2 — Physique nucléaire : désintégration du Polonium 210 (QCM)"
+    bareme_total: 1.5
+    duration_min: 9
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28 (3 h, coef 7), AlloSchool
+        element/94476 (course-422, jumeaux byte-identiques 94475/94477),
+        page 4 sur 7 — Exercice 2 ( 03 points ), bloc « ❖ Physique
+        nucléaire », sous-total imprimé « Physique nucléaire (01,5
+        points) », questions 4 et 5 du QCM (0,75+0,75 = 1,5 pt) ; le bloc
+        « ❖ Ondes » (questions 1-3, 1,5 pt) est transcrit sous
+        content/pc/ondes-mecaniques-progressives/bank.yaml, entrée
+        bk-2015-r-x2 — même exercise_label « Exercice 2 », numérotation
+        continue 1-5, pas de double comptage : 1,5+1,5 = 03 pt.
+        Transcription vérifiée par une passe adversariale indépendante
+        (2026-08-29, docs/sujets/_incoming/pc-2015-r.md, statut
+        « ✅ VÉRIFIÉ — clearé pour conversion ») : les 4 propositions de
+        chacune des 2 questions relues verbatim sur la couche de texte
+        native (les fractions de la question 5 imprimées en fractions
+        verticales), cases ▪ comptées (20 = 5×4 sur la page). CORRECTION
+        ASSUMÉE F1, déclarée dans le bloc de commentaire au-dessus de cette
+        entrée : le sujet imprime « Po » pour le noyau fils pourtant nommé
+        « Plomb » (A = 206, Z = 82 corrects) — cette entrée écrit Pb et
+        déclare la correction, précédent PC 2012 N / PC 2015 N.
+        Re-dérivation (transcripteur puis vérificateur, concordants) :
+        bilan 210−206 = 4 et 84−82 = 2 → particule α ; a(3t½)/a₀ = 2⁻³ =
+        1/8 — les deux réponses parmi les propositions imprimées. Aucun
+        corrigé officiel n'existe (la série SPC n'en a qu'à partir de
+        2016) ; le corrigé non officiel svt-assilah n'est corroborant que
+        sur sa page 1 (Exercice 1, dosage) — il ne couvre pas ce bloc et
+        n'est jamais une autorité : le plafond de preuve est la double
+        re-dérivation concordante.
+    intro: |-
+      **Physique nucléaire (examen national, session de rattrapage 2015 — Exercice 2, bloc « Physique nucléaire », 1,5 point sur les 03 de l'exercice complet).**
+
+      *L'Exercice 2 est un QCM de cinq questions à numérotation continue : les questions 1 à 3 (Ondes) vivent sous la notion « Ondes mécaniques progressives » (entrée bk-2015-r-x2), qui porte aussi la consigne imprimée en tête de l'exercice — recopier le numéro de la question et écrire à côté la réponse juste, sans aucune justification. Les questions 4 et 5 sont ici.*
+
+      Le noyau de Polonium $^{210}_{84}\text{Po}$, se désintègre en un noyau de Plomb $^{206}_{82}\text{Pb}$. *(La virgule entre sujet et verbe est telle qu'imprimée. Le symbole du noyau fils est CORRIGÉ : le sujet officiel imprime « Po » là où l'élément nommé est le Plomb — défaut F1, correction déclarée, voir la note de sourcing ; A = 206 et Z = 82 sont ceux du sujet.)*
+    questions:
+      - id: q1
+        part: "❖ Physique nucléaire (QCM, questions 4 et 5)"
+        stem: |-
+          **4-** (0,75 pt) Au cours de cette désintegration, il y'a émission d'une particule sous forme : *(« désintegration », « il y'a » et « sous forme » tels qu'imprimés — défauts du sujet officiel, sans incidence)*
+
+          | | |
+          |---|---|
+          | **A** | Particule $\alpha$ |
+          | **B** | Neutron |
+          | **C** | Electron |
+          | **D** | Positron |
+        reasoning: |-
+          On pose l'équation de désintégration avec la particule émise en inconnue, et on applique les lois de conservation de Soddy (rung R2) — ce sont les nombres A et Z imprimés qui tranchent, pas le nom des noyaux :
+
+          $$^{210}_{84}\text{Po} \longrightarrow\ ^{206}_{82}\text{Pb} +\ ^{A}_{Z}X$$
+
+          Conservation du nombre de nucléons : $A = 210 - 206 = 4$. Conservation de la charge : $Z = 84 - 82 = 2$. La particule $^{4}_{2}X$ est le noyau d'hélium $^{4}_{2}\text{He}$ :
+
+          $$\boxed{\text{A : particule } \alpha}$$
+
+          **Pourquoi les trois autres échouent — chacune contre les deux conservations.** B (neutron, $^{1}_{0}n$) donnerait un fils $^{209}_{84}$ : ni le bon $A$ ni le bon $Z$. C (électron, $\beta^-$ : $^{\;\;0}_{-1}e$) conserverait $A = 210$ et donnerait $Z = 85$ — une désintégration $\beta^-$ ne change jamais le nombre de nucléons, or il en manque $4$ ici. D (positron, $\beta^+$ : $^{0}_{1}e$) conserverait aussi $A = 210$ avec $Z = 83$. Seule l'émission $\alpha$ retire à la fois $4$ nucléons et $2$ charges — exactement l'écart entre père et fils.
+        steps:
+          - math: 'A = 210 - 206 = 4'
+            note: "Conservation du nombre de nucleons (rung R2, lois de Soddy)."
+          - math: 'Z = 84 - 82 = 2'
+            note: "Conservation de la charge (rung R2, lois de Soddy)."
+          - math: '\boxed{^{4}_{2}\text{He} : \text{particule } \alpha\ \text{(réponse A)}}'
+            note: "Seule l'emission alpha retire 4 nucleons ET 2 charges a la fois."
+      - id: q2
+        stem: |-
+          **5-** (0,75 pt) On considère un échantillon radioactif de Polonium 210, de demi-vie $t_{1/2}$. Son activité initiale est $a_0$, et son activité à un instant $t$ est $a(t)$ :
+
+          A l'instant $t_1 = 3\,t_{1/2}$, le rapport $\dfrac{a(t_1)}{a_0}$ est égal à :
+
+          | | |
+          |---|---|
+          | **A** | $\dfrac{1}{3}$ |
+          | **B** | $\dfrac{1}{6}$ |
+          | **C** | $\dfrac{1}{8}$ |
+          | **D** | $\dfrac{1}{9}$ |
+        reasoning: |-
+          La demi-vie (rung R4) divise l'activité par $2$ — et chaque demi-vie supplémentaire divise ENCORE par $2$, parce que la décroissance est exponentielle (rung R3), jamais linéaire. Après trois demi-vies :
+
+          $$\frac{a(3\,t_{1/2})}{a_0} = \left(\frac{1}{2}\right)^3 = \frac{1}{8}$$
+
+          $$\boxed{\text{C : } \frac{1}{8}}$$
+
+          On peut le retrouver par la loi elle-même : $a(t) = a_0\,e^{-\lambda t}$ avec $\lambda = \ln 2/t_{1/2}$, donc $a(3t_{1/2})/a_0 = e^{-3\ln 2} = 2^{-3} = 1/8$.
+
+          **Pourquoi les trois autres échouent — toutes traitent l'exponentielle comme une arithmétique.** A ($1/3$) suppose une décroissance LINÉAIRE — « trois demi-vies, donc divisé par trois » — c'est LE contresens que le rung R3 démonte : la moitié de ce qui RESTE disparaît à chaque demi-vie, pas la moitié du stock initial. B ($1/6$) combine les deux nombres de l'énoncé ($2\times3$) sans loi derrière. D ($1/9$) élève le mauvais nombre au carré ($3^2$), comme si la demi-vie divisait par $3$. La seule opération légitime est $2^n$ pour $n$ demi-vies : $2^3 = 8$.
+        steps:
+          - math: '\frac{a(3\,t_{1/2})}{a_0} = \left(\frac{1}{2}\right)^{3} = \frac{1}{8}'
+            note: "Chaque demi-vie divise l'activite par 2 (rung R4) ; trois demi-vies divisent par 2^3."
+          - math: '\boxed{\text{C : } \frac{1}{8}}'
+            note: "Controle par la loi : a0.exp(-3.ln2) = a0/8 (rung R3)."
+
+  # ── bk-2011-n-x2 — 2011 N, Physique nucléaire : radioactivité du carbone 14
+  #    et datation d'une statue en bois ──
+  # Cross-list noyaux-masse-energie (question 1-3 seulement, 1 pt) : honoré
+  # dans le raisonnement de la question, PAS de seconde entrée — voir la
+  # NOTE ÉDITORIALE en tête de fichier.
+  - id: bk-2011-n-x2
+    title: "Radioactivité du carbone 14 et datation d'une statue en bois : équation de la désintégration β⁻, composition du noyau fils, énergie libérée, et âge par l'activité"
+    source:
+      year: 2011
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Physique nucléaire : étude de la radioactivité du carbone 14 et son utilisation dans la datation"
+    bareme_total: 3.0
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2011 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28, AlloSchool element/94445 (Physique nucléaire —
+        étude de la radioactivité du carbone 14 et datation d'une statue en
+        bois ; barème 3,00 pt (0,75+0,25+1+1), 4 questions — le
+        « (03 points) » imprimé page 1 et en bande de section). CHOIX DE
+        L'`id` : le sujet ne numérote aucun exercice ; les identifiants
+        x1..x4 encodent la POSITION AU CARTOUCHE — Physique nucléaire est le
+        deuxième bloc, d'où x2 sans suffixe (voir la note éditoriale en tête
+        de ce fichier). Transcription source vérifiée par une passe
+        adversariale indépendante du 2026-08-29
+        (docs/sujets/_incoming/pc-2011-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion »), barème recompté par quatre chaînes concordantes,
+        27/27 questions du sujet re-dérivées — dont les quatre de ce bloc :
+        désintégration β⁻, noyau fils 7 protons / 7 neutrons,
+        ΔE = 0,186 MeV libérée, âge ≈ 1 612,5 ans. Un corrigé non officiel
+        (TelmidTice / talamidi.com, même signature interne « forums SVT
+        d'Asilah », MD5 vérifié) confirme ces valeurs à titre de
+        RECOUPEMENT, jamais comme autorité. CROSS-LIST noyaux-masse-energie,
+        HONORÉ SANS SECONDE ENTRÉE : la question 1-3 (1 pt) relève
+        thématiquement de cette autre notion ; elle est reprise ici en
+        entier et son raisonnement refait la démonstration complète en
+        nommant la leçon sœur (règle « barème réparti, jamais dupliqué » —
+        un cross-list d'une seule question ne devient pas une entrée
+        orpheline). LA DEMI-VIE EST LA DONNÉE DE L'ÉNONCÉ : t_1/2 =
+        5570 ans (la leçon de cette notion cite 5730 ans — les deux valeurs
+        circulent selon les tables ; la donnée imprimée fait foi). Coquilles
+        du sujet officiel reproduites verbatim, non corrigées : G8
+        (« étudier la radioactivité du carbone 14 et la datation avec. ») ;
+        G9 (« de même nature que bois de la statue ») ; S5 (« 1u = 931,5
+        Mev/c² », seul item de la liste de données sans point-virgule
+        final) ; T1 (doubles espaces, non représentables en Markdown). Voir
+        docs/sujets/_incoming/pc-2011-n.md §9 pour le registre complet des
+        35 types de défauts du sujet.
+    intro: |-
+      **Étude de la radioactivité du carbone 14 et datation d'une statue en bois (examen national, session normale 2011 — Physique nucléaire, 3,00 points).**
+
+      La datation par le carbone 14 est parmi les techniques adoptées par les savants pour déterminer l'âge de quelques fossiles et roches. La teneur en ce carbone reste constante dans l'atmosphère et dans les êtres vivants, mais commence à diminuer juste après la mort de ces derniers à cause de la radioactivité.
+
+      Le but de cet exercice est d'étudier la radioactivité du carbone 14 et la datation avec. *(« et la datation avec. » tel qu'imprimé sur le sujet officiel — tour calqué ; la page 1 du même sujet écrit « et son utilisation dans la datation ». Sans incidence.)*
+
+      **Données :**
+      - La demi-vie du carbone 14 : $t_{1/2} = 5570\ \text{ans}$ ;
+      - $1u = 931{,}5\ \text{Mev/c}^2$ *(« Mev » tel qu'imprimé — défaut du sujet officiel, sans incidence ; c'est aussi le seul item de la liste sans point-virgule final)*
+      - Masses des particules en unité de masse atomique (u)
+
+      | Particule | $^{14}_{6}\text{C}$ | $^{14}_{7}\text{N}$ | Electron |
+      |---|---|---|---|
+      | Masse (u) | $13{,}9999$ | $13{,}9992$ | $0{,}0005$ |
+
+      **1- Radioactivité du carbone 14.** De la radioactivité spontanée du nucléide carbone $^{14}_{6}\text{C}$, résulte l'azote $^{14}_{7}\text{N}$.
+    questions:
+      - id: q1
+        part: "1-1 — L'équation de la désintégration"
+        stem: |-
+          **1-1-** (0,75 pt) Écrire l'équation de cette désintégration en précisant le type de la radioactivité.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Exactement le rung 2 de la leçon — dont l'exemple travaillé est précisément ce noyau-là. On écrit l'équation avec la particule émise inconnue, puis les deux lois de conservation de Soddy fixent cette particule sans rien deviner : conservation du nombre de nucléons $A$ et conservation de la charge $Z$.
+
+          Le père est $^{14}_{6}\text{C}$, le fils est $^{14}_{7}\text{N}$ (donné par l'énoncé). Pour la particule émise $^{A}_{Z}X$ : conservation de $A$ : $14 = 14 + A$, donc $A = 0$ ; conservation de $Z$ : $6 = 7 + Z$, donc $Z = -1$. La particule $^{0}_{-1}e$ est un électron : c'est une désintégration $\beta^-$ — cohérent avec le rung 1, qui repère l'excès de neutrons du carbone 14 comme la cause de son instabilité (un neutron se transforme en proton, d'où $Z$ qui augmente d'une unité à $A$ constant).
+        steps:
+          - math: '14 = 14 + A \implies A = 0 \qquad 6 = 7 + Z \implies Z = -1'
+            note: "Lois de Soddy (rung 2) : conservation du nombre de nucleons et de la charge, appliquees a la particule emise."
+          - math: '\boxed{^{14}_{6}\text{C} \longrightarrow\ ^{14}_{7}\text{N} +\ ^{0}_{-1}e}'
+            note: "Equation de la desintegration."
+          - math: '\boxed{\text{radioactivite } \beta^-}'
+            note: "La particule emise est un electron : desintegration beta moins."
+      - id: q2
+        part: "1-2 — La composition du noyau fils"
+        stem: |-
+          **1-2-** (0,25 pt) Donner la composition du noyau fils.
+        reasoning: |-
+          Lecture directe de la notation $^{A}_{Z}\text{X}$ posée au rung 1 de la leçon, appliquée au fils $^{14}_{7}\text{N}$ : $Z$ donne le nombre de protons, $N = A - Z$ le nombre de neutrons.
+        steps:
+          - math: 'Z = 7 \implies 7\ \text{protons}'
+            note: "Numero atomique lu directement sur le symbole du noyau fils (rung 1)."
+          - math: '\boxed{N = A - Z = 14 - 7 = 7 \implies 7\ \text{neutrons}}'
+            note: "Nombre de nucleons total moins le nombre de protons : 7 protons et 7 neutrons."
+      - id: q3
+        part: "1-3 — L'énergie libérée (cross-list « Noyaux, masse et énergie »)"
+        stem: |-
+          **1-3-** (1 pt) Calculer, en MeV, l'énergie $\Delta E$ libérée par la désintégration d'un noyau de carbone 14.
+        reasoning: |-
+          Cette question sort des rungs R1–R5 de cette leçon : elle relève de la notion « Noyaux, masse et énergie », qui établit l'équivalence masse-énergie $E = \Delta m\,c^2$ et le bilan de masse d'une réaction nucléaire. On la refait ici en entier, sans l'admettre (voir la note éditoriale en tête de fichier — cross-list honoré ici, pas de seconde entrée).
+
+          **Le bilan de masse.** On compare la masse AVANT (le noyau de carbone 14) à la masse APRÈS (le noyau d'azote 14 ET l'électron émis — l'oublier est le piège classique de cette question, et l'énoncé donne sa masse précisément pour qu'on l'utilise) :
+
+          $$\Delta m = \left[m(^{14}_{7}\text{N}) + m(e)\right] - m(^{14}_{6}\text{C})$$
+
+          **La conversion en énergie**, par le facteur donné dans les données ($1u = 931{,}5\ \text{MeV/c}^2$) : $\Delta m < 0$ signifie que le système PERD de la masse — cette masse manquante est précisément l'énergie libérée, $\Delta E = |\Delta m| \times 931{,}5$ MeV.
+        steps:
+          - math: 'm(^{14}_{7}\text{N}) + m(e) = 13{,}9992 + 0{,}0005 = 13{,}9997\ u'
+            note: "Masse totale APRES desintegration : noyau fils PLUS electron emis (l oublier est le piege de la question)."
+          - math: '\Delta m = 13{,}9997 - 13{,}9999 = -0{,}0002\ u'
+            note: "Bilan de masse : negatif, le systeme perd de la masse -- la reaction libere de l energie."
+          - math: '\boxed{\Delta E = |\Delta m|\times931{,}5 = 0{,}0002\times931{,}5 \approx 0{,}186\ \text{MeV}}'
+            note: "Equivalence masse-energie (notion Noyaux, masse et energie), conversion par 1u = 931,5 MeV/c2."
+      - id: q4
+        part: "2 — Datation par le carbone 14"
+        stem: |-
+          **2-** (1 pt) Les archéologues ont trouvé une statue en bois d'activité $135\ \text{Bq}$. Sachant que l'activité d'un morceau de bois récent, de même masse et de même nature que bois de la statue, est $165\ \text{Bq}$. *(« que bois » tel qu'imprimé — article manquant, défaut du sujet officiel, sans incidence.)* Déterminer, en années, l'âge approximatif de la statue en bois.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. C'est le principe de la datation du rung 5, mot pour mot : le bois récent, de même masse et de même nature, donne l'activité $a_0 = 165\ \text{Bq}$ qu'avait la statue de son vivant ; depuis la mort de l'arbre, l'activité décroît selon $a(t) = a_0\,e^{-\lambda t}$ (rung 4), et elle vaut aujourd'hui $a = 135\ \text{Bq}$. On inverse la loi pour extraire $t$, avec $\lambda = \dfrac{\ln 2}{t_{1/2}}$ (rung 4) :
+
+          $$a = a_0\,e^{-\lambda t} \implies t = \frac{1}{\lambda}\ln\!\left(\frac{a_0}{a}\right) = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a}\right)$$
+
+          **Le piège nommé de cette question.** Ne pas inverser le rapport : c'est $a_0/a = 165/135 > 1$ qui va dans le logarithme (l'activité a DIMINUÉ depuis la mort, donc le rapport référence-sur-mesure est plus grand que $1$ et le temps sort positif). Écrire $135/165$ donnerait un âge négatif — un signal d'alarme, pas une convention.
+        steps:
+          - math: 't = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a}\right) \qquad \frac{a_0}{a} = \frac{165}{135} \approx 1{,}222'
+            note: "Inversion de la loi de decroissance appliquee a l activite (rungs 4 et 5) ; a0 est l activite du bois RECENT."
+          - math: 't = \frac{5570}{0{,}6931}\times\ln(1{,}222) = \frac{5570}{0{,}6931}\times0{,}2007'
+            note: "lambda = ln2/t_1/2, avec la demi-vie DONNEE par l enonce (5570 ans)."
+          - math: '\boxed{t \approx 1612{,}5\ \text{ans} \approx 1613\ \text{ans}}'
+            note: "Age approximatif de la statue -- concordant avec le corrige non officiel (1 612,5 ans)."

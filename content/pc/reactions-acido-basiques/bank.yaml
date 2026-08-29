@@ -2728,3 +2728,187 @@ entries:
           $$\boxed{\text{L'indicateur convenable est la phénolphtaléine.}}$$
 
           Le piège nommé de cette question. Chercher à calculer $\text{pH}_E$ au chiffre près avant de choisir : le raisonnement qualitatif — acide faible dosé par base forte, donc $\text{pH}_E > 7$ — suffit à lui seul à éliminer les deux autres indicateurs, dont les zones ne dépassent jamais $7$.
+
+  # ── bk-2015-r-x1 — 2015 R, Exercice 1 (Première partie) : dosage pH-métrique de l'acide éthanoïque ──
+  # PREMIÈRE entrée du sujet SPC 2015 rattrapage (RS 28) dans tout le corpus :
+  # avant la campagne de conversion du 2026-08-29, cette épreuve était
+  # invisible (0/20 assemblé). Les huit blocs du sujet sont convertis par la
+  # même campagne ; la Deuxième partie de ce même Exercice 1 (synthèse de la
+  # phéromone, 3,00 pt) vit sous content/pc/esterification-hydrolyse/bank.yaml,
+  # entrée bk-2015-r-x1b — pas de double comptage : 4,00 + 3,00 = 07 pt, le
+  # barème imprimé de l'exercice.
+  # CROSS-LIST `etat-equilibre` (le rapport des concentrations à l'équilibre
+  # de la question 1-5) honoré dans le reasoning, PAS de seconde entrée —
+  # règle « barème réparti, jamais dupliqué » du sas (_incoming/README.md).
+  - id: bk-2015-r-x1
+    title: "Dosage pH-métrique de l'acide éthanoïque par la soude : dispositif, réaction support, concentration à l'équivalence, prédominance et demi-équivalence"
+    source:
+      year: 2015
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Première partie : dosage acide-base"
+    bareme_total: 4
+    duration_min: 24
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28 (3 h, coef 7), AlloSchool
+        element/94476 (course-422, jumeaux byte-identiques 94475/94477),
+        pages 2-3 sur 7 — Exercice 1 ( 07 points ), Première partie : dosage
+        acide-base ; barème 4,00 pt (0,75+1+1+0,5+0,75), 5 questions, AUCUN
+        sous-total imprimé pour cette partie (recomposé depuis les marges,
+        deux chemins concordants) ; la Deuxième partie (synthèse de la
+        phéromone, 3,00 pt) est transcrite sous
+        content/pc/esterification-hydrolyse/bank.yaml, entrée bk-2015-r-x1b —
+        pas de double comptage : 4,00+3,00 = 07 pt. Transcription vérifiée
+        par une passe adversariale indépendante (2026-08-29,
+        docs/sujets/_incoming/pc-2015-r.md, statut « ✅ VÉRIFIÉ — clearé pour
+        conversion ») : re-fetch de zéro, barème recompté par deux chemins
+        (couche de texte du PDF + bandes de marge des JPG, 34/34 valeurs),
+        figure du dosage re-mesurée au pixel sur le bitmap natif (1093×583,
+        163 dpi effectifs) : v_bE = 10,0 mL (pic de la dérivée centré sur la
+        10e majeure après l'origine), échelle 1 carreau majeur = 1 mL / 2
+        unités de pH (verrouillée par pH = pK_A = 4,8 à la demi-équivalence
+        ET par le plateau basique ≈ 11,3 cohérent avec l'excès d'hydroxyde
+        calculé ; l'autre lecture, 1 carreau = 1 pH, rendrait 2,4 à la
+        demi-équivalence — physiquement impossible) ; pH(0) ≈ 3,45. UNE
+        CORRECTION DE DESCRIPTION reprise du vérificateur (§ V.6) : le pic
+        de la dérivée n'est PAS tronqué au bord du cadre — son apex pointu
+        est DANS le cadre, ≈ 0,9 carreau sous le bord (valeur ≈ 12,2 sur
+        l'axe partagé) ; sans effet sur aucune question, mais la description
+        de figure ci-dessous suit la mesure, pas la première transcription.
+        CORROBORATION EXTERNE, propre à CE bloc et à lui seul : la page 1 du
+        corrigé NON OFFICIEL svt-assilah (fil t1887, fichiers
+        ppcr15.pdf/corppcr15.pdf) a été atteinte et lue par le vérificateur —
+        sept points de contrôle, sept concordances (schéma légendé ;
+        équation et « totale et rapide » ; V_be = 10 mL lu sur la courbe ;
+        C_a = 1,5.10⁻² mol.L⁻¹ ; CH₃COO⁻ dominant à pH 7 ; méthode
+        pH = pK_A pour 1-5). Ce corrigé n'est corroborant QUE sur cette
+        page 1 (les blocs 2-8 du sujet n'en bénéficient pas) et n'est JAMAIS
+        une autorité — toutes les valeurs ci-dessous sont dérivées puis
+        comparées, pas copiées. Aucun corrigé officiel n'existe pour ce
+        sujet (la série SPC n'en a qu'à partir de 2016, inventaire
+        AlloSchool refait par le vérificateur). CROSS-LIST `etat-equilibre`
+        (question 1-5, le rapport des concentrations à l'équilibre) honoré
+        dans le reasoning, pas dupliqué.
+    intro: |-
+      **Dosage acide-base (examen national, session de rattrapage 2015 — Exercice 1, Première partie, 4,00 points sur les 07 de l'exercice complet).**
+
+      *La Deuxième partie de cet exercice — la synthèse de la phéromone (P) — est indépendante et traitée à part, sous la notion « Estérification et hydrolyse » (entrée bk-2015-r-x1b). Rien de ce qui suit n'en dépend.*
+
+      Quelques insectes, commes les abeilles et les fourmies, communiquent entre elles à l'aide de substances chimiques organiques, appelées phéromones, pour se défendre ou se féconder… *(« commes », « fourmies », « entre elles » tels qu'imprimés — défauts du sujet officiel, sans incidence)*
+
+      Le but de cet exercice dans sa première partie, est d'étudier la réaction d'une solution d'acide éthanoïque avec une solution d'hydroxyde de sodium, et dans sa deuxième partie, à l'étude de la synthèse de la phéromone (P) à partir de l'acide éthanoïque.
+
+      **Les deux parties sont indépendantes**
+
+      **Données :**
+      - Toutes les mesures ont été faites à $25\,^\circ\text{C}$ ;
+      - $pK_A(\text{CH}_3\text{COOH}/\text{CH}_3\text{COO}^-) = 4{,}8$ ;
+      - La masse molaire de l'acide éthanoïque est : $M(\text{CH}_3\text{COOH}) = 60\ \text{g.mol}^{-1}$ ;
+      - La masse volumique de l'acide éthanoïque pur est : $\rho = 1{,}05\ \text{g.mL}^{-1}$ ;
+      - La masse molaire de la phéromone est : $M(\text{P}) = 130\ \text{g.mol}^{-1}$.
+
+      **Première partie :** *Etude de la réaction de l'acide éthanoïque avec l'hydroxyde de sodium* *(le titre imprimé porte une apostrophe doublée — « l'’acide » — défaut typographique du sujet officiel, sans incidence)*
+
+      Pour déterminer la concentration molaire d'une solution d'acide éthanoïque, on le neutralise par une solution d'hydroxyde de sodium $(\text{Na}^+_{(aq)} + \text{HO}^-_{(aq)})$ de concentration molaire $C_b = 1{,}5.10^{-2}\ \text{mol.L}^{-1}$. On ajoute progressivement, à un volume $v_a = 10\ \text{mL}$ d'une solution d'acide éthanoïque $(S_a)$, de concentration molaire $C_a$, un volume $v_b$ de la solution $(S_b)$ d'hydroxyde de sodium, puis on mesure le pH du mélange.
+
+      La figure suivante donne les courbes $\text{pH} = f(v_b)$ et $\dfrac{d\text{pH}}{dv_b} = f(v_b)$ de ce dosage.
+
+      **Figure (courbes du dosage, page 2 du sujet, sans numéro — re-décrite et re-mesurée au pixel par la vérification).** Cadre sur quadrillage millimétré ; axe vertical étiqueté « pH , dpH/dv_b », axe horizontal « v_b (mL) ». Étiquettes imprimées : « 0 » sous l'origine, « 1 » sous la PREMIÈRE ligne majeure verticale, « 2 » en face d'une ligne majeure horizontale — soit **1 carreau majeur = 1 mL** en abscisse et **1 carreau majeur = 2 unités de pH** en ordonnée (cadre 0–15 mL × 0–14). Deux courbes noires : la courbe **pH**, croissante à saut — $\text{pH} \approx 3{,}45$ à $v_b \approx 0$ ; $\text{pH} = 4{,}8$ à $v_b = 5\ \text{mL}$ ; saut brutal autour de $v_b = 10\ \text{mL}$ (de $6{,}5$ à $v_b = 9{,}8\ \text{mL}$ jusqu'à $10{,}4$ à $v_b = 10{,}5\ \text{mL}$) ; plateau final $\approx 11{,}3$ — et la courbe **dérivée** $d\text{pH}/dv_b$, quasi nulle partout, avec un pic très étroit à sommet pointu **centré sur la majeure $v_b = 10{,}0\ \text{mL}$**.
+    questions:
+      - id: q1-1
+        part: "Première partie — dosage acide-base"
+        stem: |-
+          **1-1-** (0,75 pt) Représenter, sur la copie de rédaction, un schéma légendé du dispositif expérimental permettant de réaliser le dosage acide-base par mesure de pH.
+        reasoning: |-
+          Un dosage pH-métrique (rung 9) mobilise toujours le même quatuor d'objets, chacun à sa place fonctionnelle — et c'est chaque LÉGENDE qui rapporte les points, pas la beauté du dessin :
+
+          - la **burette graduée**, montée sur potence, contient le réactif titrant : la solution $(S_b)$ d'hydroxyde de sodium, versée progressivement ;
+          - le **bécher** contient la prise d'essai titrée : $v_a = 10\ \text{mL}$ de la solution $(S_a)$ d'acide éthanoïque ;
+          - la **sonde du pH-mètre** plonge dans le bécher et suit le pH au fil du versement ;
+          - l'**agitateur magnétique** (avec son barreau aimanté) homogénéise le mélange à chaque ajout, pour que la mesure vaille pour tout le bécher et non pour une seule goutte.
+
+          Le piège nommé de cette question. Inverser burette et bécher : le titrant — celui dont on connaît la concentration, $C_b$ — va TOUJOURS dans la burette, parce que c'est son volume versé qu'on mesure ; la solution de concentration inconnue $C_a$ attend dans le bécher. Un schéma inversé décrit un autre dosage que celui de l'énoncé.
+      - id: q1-2
+        stem: |-
+          **1-2-** (1 pt) Ecrire l'équation modélisant la réaction ayant lieu au cours du dosage, et donner ses deux caractéristiques.
+        reasoning: |-
+          L'acide éthanoïque cède son proton à l'ion hydroxyde — le transfert de proton du rung 1, entre l'acide du couple $\text{CH}_3\text{COOH}/\text{CH}_3\text{COO}^-$ et la base du couple $\text{H}_2\text{O}/\text{HO}^-$ :
+
+          $$\boxed{\text{CH}_3\text{COOH}_{(aq)} + \text{HO}^-_{(aq)} \longrightarrow \text{CH}_3\text{COO}^-_{(aq)} + \text{H}_2\text{O}_{(\ell)}}$$
+
+          Ses deux caractéristiques : elle est **totale** (quasi totale) et **rapide** — exactement les deux qualités qu'une réaction support de dosage DOIT avoir (rung 9) : totale pour que la quantité versée mesure fidèlement la quantité titrée, rapide pour que chaque lecture de pH corresponde à un état d'équilibre atteint. On peut le chiffrer : $K = K_A/K_e = 10^{-4{,}8}/10^{-14} = 10^{9{,}2} \gg 1$.
+
+          Le piège nommé de cette question. Écrire une double flèche $\rightleftharpoons$ par réflexe « acide faible » : l'acide éthanoïque est bien un acide faible DANS L'EAU, mais ici il réagit avec $\text{HO}^-$, une base bien plus forte que l'eau — la constante $K = 10^{9{,}2}$ est écrasante, la flèche simple est méritée, et c'est précisément l'une des deux caractéristiques demandées.
+      - id: q1-3
+        stem: |-
+          **1-3-** (1 pt) Calculer la valeur de la concentration $C_a$ de la solution d'acide éthanoïque.
+        reasoning: |-
+          Deux temps : lire le volume équivalent sur la figure, puis appliquer la relation d'équivalence.
+
+          **Lire $v_{bE}$.** C'est le rôle de la courbe dérivée (rung 10) : $\dfrac{d\text{pH}}{dv_b}$ passe par un maximum très marqué à l'équivalence. Son pic est centré sur la majeure $v_b = 10{,}0\ \text{mL}$ — et le saut de la courbe pH se produit au même endroit :
+
+          $$v_{bE} = 10{,}0\ \text{mL}$$
+
+          **La relation d'équivalence** (rung 9) : à l'équivalence, les réactifs ont été introduits dans les proportions stœchiométriques ($1{:}1$ ici) — une égalité de quantités de matière, jamais une condition sur le pH :
+
+          $$C_a\,v_a = C_b\,v_{bE} \implies C_a = \frac{C_b\,v_{bE}}{v_a} = \frac{1{,}5.10^{-2}\times10}{10}$$
+
+          $$\boxed{C_a = 1{,}5.10^{-2}\ \text{mol.L}^{-1}}$$
+
+          Le piège nommé de cette question. Chercher l'équivalence « là où pH = 7 » : la neutralité n'a rien à voir avec l'équivalence (rung 9) — ici, à l'équivalence, le pH vaut environ $8{,}5$, pas $7$, parce qu'il ne reste en solution que la base conjuguée $\text{CH}_3\text{COO}^-$. Le repère fiable est le pic de la dérivée, pas une valeur de pH décrétée d'avance.
+        steps:
+          - math: 'v_{bE} = 10{,}0\ \text{mL}'
+            note: "Pic de la derivee dpH/dv_b, centre sur la 10e ligne majeure (1 carreau = 1 mL)."
+          - math: 'C_a\,v_a = C_b\,v_{bE}'
+            note: "Relation d'equivalence (rung 9) : egalite des quantites de matiere, jamais une condition sur le pH."
+          - math: 'C_a = \frac{C_b\,v_{bE}}{v_a} = \frac{1{,}5.10^{-2}\times10}{10}'
+            note: "Application numerique : Cb = 1,5e-2 mol/L, va = 10 mL."
+          - math: '\boxed{C_a = 1{,}5.10^{-2}\ \text{mol.L}^{-1}}'
+            note: "Ici va = vbE, donc Ca = Cb : une coincidence du sujet, pas une regle."
+      - id: q1-4
+        stem: |-
+          **1-4-** (0,5 pt) Préciser, en justifiant, laquelle des deux éspèces $\text{CH}_3\text{COOH}$ et $\text{CH}_3\text{COO}^-$ est dominante dans le mélage réactionnel à $\text{pH} = 7$. *(« éspèces », « mélage » tels qu'imprimés — défauts du sujet officiel, sans incidence)*
+        reasoning: |-
+          Le diagramme de prédominance du rung 5 tranche en une comparaison : la forme basique du couple domine dès que $\text{pH} > pK_A$, la forme acide domine en dessous.
+
+          Ici $\text{pH} = 7 > pK_A = 4{,}8$ :
+
+          $$\boxed{\text{CH}_3\text{COO}^-\ \text{est l'espèce dominante à pH} = 7}$$
+
+          Pour le chiffrer plutôt que l'affirmer (rung 8) : $\log\dfrac{[\text{CH}_3\text{COO}^-]}{[\text{CH}_3\text{COOH}]} = \text{pH} - pK_A = 2{,}2$, soit un rapport $10^{2{,}2} \approx 160$ — la base conjuguée est environ $160$ fois plus abondante que l'acide.
+
+          Le piège nommé de cette question. Comparer le pH à $7$ (la neutralité) au lieu de le comparer au $pK_A$ : la frontière entre les deux formes d'UN couple est son $pK_A$, une propriété du couple — jamais le $7$ de la neutralité de l'eau, qui est une propriété du solvant.
+        steps:
+          - math: '\text{pH} = 7 > pK_A = 4{,}8 \implies \text{CH}_3\text{COO}^-\ \text{dominant}'
+            note: "Diagramme de predominance (rung 5) : au-dessus du pKA, la forme basique domine."
+          - math: '\frac{[\text{CH}_3\text{COO}^-]}{[\text{CH}_3\text{COOH}]} = 10^{\,\text{pH}-pK_A} = 10^{2{,}2} \approx 160'
+            note: "Chiffrage (rung 8) : la base conjuguee est environ 160 fois plus abondante."
+      - id: q1-5
+        stem: |-
+          **1-5-** (0,75 pt) Trouver, à l'aide de la courbe du dosage, le volume $v_b$ à ajouter pour que : $\dfrac{\left[\text{CH}_3\text{COOH}\right]_{eq}}{\left[\text{CH}_3\text{COO}^-\right]_{eq}} = 1$.
+        reasoning: |-
+          Manipuler un rapport de concentrations À L'ÉQUILIBRE appartient, dans sa définition générale, à la notion « État d'équilibre d'un système chimique » (le quotient de réaction figé à l'équilibre) ; on l'applique ici au couple du dosage, à travers la constante d'acidité du rung 4 :
+
+          $$K_A = \frac{[\text{CH}_3\text{COO}^-]_{eq}\,[\text{H}_3\text{O}^+]_{eq}}{[\text{CH}_3\text{COOH}]_{eq}}$$
+
+          Si le rapport demandé vaut $1$, les deux concentrations sont égales et se simplifient : $K_A = [\text{H}_3\text{O}^+]_{eq}$, c'est-à-dire
+
+          $$\text{pH} = pK_A = 4{,}8$$
+
+          Reste à LIRE la courbe, comme l'énoncé l'exige : le pH vaut $4{,}8$ à
+
+          $$\boxed{v_b = 5\ \text{mL}}$$
+
+          — soit exactement $v_{bE}/2$ : ce n'est pas un hasard, c'est la demi-équivalence (rung 10), où la moitié de l'acide a été convertie en sa base conjuguée, les deux formes étant alors à parts égales.
+
+          Le piège nommé de cette question. Répondre « $v_b = v_{bE}/2 = 5\ \text{mL}$ » sans passer par $\text{pH} = pK_A$ ni par la courbe : le résultat est le même, mais l'énoncé demande « à l'aide de la courbe » — la chaîne attendue est rapport $= 1 \Rightarrow \text{pH} = pK_A = 4{,}8 \Rightarrow$ lecture graphique de $v_b$. Et attention au sens du rapport : l'énoncé met l'ACIDE au numérateur ; rapport $= 1$ rend la question symétrique, mais un rapport différent de $1$ ne l'aurait pas été.
+        steps:
+          - math: '\frac{[\text{CH}_3\text{COOH}]_{eq}}{[\text{CH}_3\text{COO}^-]_{eq}} = 1 \implies K_A = [\text{H}_3\text{O}^+]_{eq}'
+            note: "Rapport des concentrations a l'equilibre (definition generale : notion Etat d'equilibre) applique a la definition du KA (rung 4)."
+          - math: '\text{pH} = pK_A = 4{,}8'
+            note: "Les deux formes a parts egales : pH = pKA."
+          - math: '\boxed{v_b = 5\ \text{mL} = \frac{v_{bE}}{2}}'
+            note: "Lecture sur la courbe du dosage : pH = 4,8 atteint a vb = 5 mL, la demi-equivalence (rung 10)."

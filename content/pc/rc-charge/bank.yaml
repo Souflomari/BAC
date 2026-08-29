@@ -200,6 +200,15 @@
 #     la question 3. La formule d'énergie elle-même (E_C = (1/2).C.u_C^2,
 #     et (1/2).C.E^2 en régime permanent) est en revanche dans le corps
 #     enseigné, rung 4 — aucun pont requis.
+#   - bk-2011-n-x3, q2-1 (et ses applications q2-2 / q2-3) : isoler la date
+#     t_S dans u_C(t_S) = U_S exige d'INVERSER l'exponentielle par le
+#     logarithme népérien (t_S = τ.ln(E/(E−U_S))). Aucun rung de cette
+#     leçon ne manipule ln : R2 vérifie la solution par substitution, R3
+#     lit τ graphiquement (tangente à l'origine, 63 %) — jamais par
+#     résolution algébrique d'une date. Le pont (ln est la réciproque de
+#     l'exponentielle, une ligne) est refait au point d'usage dans le
+#     raisonnement de la question 2-1, puis réutilisé en 2-2 / 2-3 par
+#     renvoi — jamais « on admet ».
 
 #
 # NOTE ÉDITORIALE — bk-2015-n-x3 (2026-08-28, ajout). Exercice 3, Première
@@ -216,6 +225,32 @@
 # seule ne tranchait pas (voir sourcing.note). Cette chaîne n'est PAS
 # reproduite dans l'énoncé student-facing : les trois courbes portent leurs
 # étiquettes imprimées, exactement comme sur le sujet réel.
+#
+# NOTE ÉDITORIALE — bk-2011-n-x3 (2026-08-29, ajout). Exercice
+# « électricité (04,5 points) » du sujet 2011 N — le principe de
+# fonctionnement d'une minuterie d'immeuble : charge d'un RC sous échelon,
+# lectures graphiques de A et τ, puis durée d'allumage de la lampe et
+# résistance limite R_S. Source : docs/sujets/_incoming/pc-2011-n.md,
+# statut « VÉRIFIÉ — clearé pour conversion » (passe adversariale
+# indépendante du 2026-08-29). CHOIX DE L'`id` : le sujet ne numérote aucun
+# exercice ; les identifiants x1..x4 encodent la POSITION AU CARTOUCHE —
+# l'Électricité est le TROISIÈME bloc, d'où x3, sans suffixe (bloc non
+# réparti). La banque contient déjà bk-2011-r-x3 (session de RATTRAPAGE
+# 2011) : PAS de collision (`-n-` ≠ `-r-`, BANK-SPEC §4), et les deux
+# sujets ne se recoupent pas — décharge et capacité inconnue là-bas ;
+# charge, minuterie et durée d'allumage ici, aucun recoupement numérique
+# (R = 200 Ω / C = 12 µF / τ = 2,4 ms là-bas, contre E = 25 V récoltée sur
+# la figure / C = 220 µF / τ = 40 s / R ≈ 1,8×10⁵ Ω ici). DEUX DÉFAUTS DU
+# SUJET OFFICIEL PORTÉS, PAS RÉPARÉS : S4 — l'équation horaire de la
+# question 1-2 est imprimée SANS premier membre (« l'équation horaire :
+# A.(1−e^(−t/τ)) », il manque « u_C = ») — reproduite telle quelle avec
+# l'annotation « tel qu'imprimé », le raisonnement rétablit le membre
+# manquant en le DISANT ; S3 — la bande de section imprime « électricité
+# (04,5 points) » (minuscule initiale, police divergente, là où la page 1
+# imprime « Electricité ») — documenté dans le sourcing.note, le label
+# étudiant porte « Électricité ». E n'est PAS donnée numériquement par
+# l'énoncé : elle se récolte sur la figure 2 (asymptote, A = E = 25 V) —
+# même genre de récolte que bk-2023-r-x3, q3.
 
 notion: pc/rc-charge
 
@@ -1697,3 +1732,194 @@ entries:
             note: "tau = RC (rung R1), R=200 Ohm donne dans l'enonce."
           - math: '\boxed{C \approx 1{,}2\times10^{-5}\ \text{F} = 12\ \mu\text{F}}'
             note: "Capacite du condensateur -- lecture graphique, aucun corrige officiel n'existe pour ce sujet."
+
+  # ── bk-2011-n-x3 — 2011 N, Électricité : le principe de fonctionnement
+  #    d'une minuterie (charge du RC, durée d'allumage de la lampe) ──
+  # S4 (équation horaire imprimée sans premier membre) porté, pas réparé ;
+  # scope note ln : voir l'en-tête du fichier.
+  - id: bk-2011-n-x3
+    title: "La minuterie d'un immeuble : équation différentielle de la charge, identification de A et τ, lectures graphiques, puis durée d'allumage de la lampe et résistance limite"
+    source:
+      year: 2011
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Électricité : étude du principe de fonctionnement d'une minuterie"
+    bareme_total: 4.5
+    duration_min: 27
+    sourcing:
+      status: sourced
+      note: >-
+        2011 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28, AlloSchool element/94445 (Électricité —
+        étude du principe de fonctionnement d'une minuterie ; barème
+        4,50 pt (0,5+0,75+0,25+0,75+1+0,5+0,75), 7 questions — le
+        « (04,5 points) » imprimé page 1). CHOIX DE L'`id` : le sujet ne
+        numérote aucun exercice ; les identifiants x1..x4 encodent la
+        POSITION AU CARTOUCHE — l'Électricité est le troisième bloc, d'où
+        x3 sans suffixe ; bk-2011-r-x3, déjà dans cette banque, est la
+        session de RATTRAPAGE de la même année — aucune collision (voir la
+        note éditoriale en tête de fichier). Transcription source vérifiée
+        par une passe adversariale indépendante du 2026-08-29
+        (docs/sujets/_incoming/pc-2011-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion »), barème recompté par quatre chaînes concordantes,
+        27/27 questions du sujet re-dérivées. LECTURES GRAPHIQUES (q1-4) :
+        A = 25 V et τ = 40 s, établies par une chaîne au pixel refaite DEUX
+        fois indépendamment sur le bitmap natif de la figure 2 (asymptote :
+        encre à 24,8 V vers t ≈ 190 s, exactement ce qu'une exponentielle
+        A = 25 / τ = 40 donne ; tangente à l'origine : ajustement sur
+        69 tirets, résidu rms 0,63 px, coupe le niveau de l'asymptote à
+        t = 40,0 s ; contrôles par la pente → 40,6 s et par 63 % → 39,5 s),
+        d'où R = τ/C ≈ 1,8×10⁵ Ω. Un corrigé non officiel (TelmidTice /
+        talamidi.com, même signature interne, MD5 vérifié) recoupe ces
+        valeurs (A = E = 25 V ; τ = 40 s ; R ≈ 182 kΩ ; t_S = 36,65 s ;
+        R_S ≈ 3,97×10⁵ Ω) à titre de RECOUPEMENT, jamais comme autorité.
+        DÉFAUTS DU SUJET OFFICIEL PORTÉS, PAS RÉPARÉS : S4 — l'équation
+        horaire de la question 1-2 est imprimée SANS premier membre
+        (« l'équation horaire : A.(1−e^(−t/τ)) » — il manque « u_C = ») :
+        reproduite telle quelle, avec annotation, le raisonnement rétablit
+        le membre manquant en le disant ; S3 — la bande de section imprime
+        « électricité (04,5 points) », minuscule initiale et police
+        divergente, là où la page 1 imprime « Electricité » (le label de
+        cette carte porte la casse de la page 1) ; S6 — le τ de la question
+        2-1 est imprimé dans une police différente des quatre autres τ du
+        sujet (défaut invisible à l'œil, établi par décodage, sans
+        incidence) ; S7 — « Étude du circuit RC » est le SEUL intitulé du
+        document à capitale accentuée (sans incidence). Coquilles de langue
+        et de typographie reproduites verbatim, non corrigées : G10 (« d'un
+        l'immeuble »), G11 (« chez soi » ×2 pour « chez lui »), G20 (« La
+        figure 1, représente » et « La figure 2, représente » — virgule
+        entre sujet et verbe), T3 (« minuterie: » sans espace), T4
+        (« U_S , exprimer » — espace avant la virgule) ; T1 (doubles
+        espaces) et T2 (apostrophes droites mêlées aux courbes) non
+        représentables en Markdown. Voir docs/sujets/_incoming/pc-2011-n.md
+        §9 pour le registre complet des 35 types de défauts du sujet.
+    intro: |-
+      **Étude du principe de fonctionnement d'une minuterie (examen national, session normale 2011 — Électricité, 4,50 points).**
+
+      La minuterie est utilisée pour contrôler la consommation d'énergie dans les immeubles. C'est un appareil qui permet d'éteindre automatiquement les lampes des escaliers et couloirs après une durée préalablement ajustable.
+
+      On vise à étudier le principe de fonctionnement d'une minuterie.
+
+      La figure 1, représente une partie d'un circuit simplifié d'une minuterie *(« La figure 1, représente » tel qu'imprimé — virgule entre sujet et verbe, défaut du sujet officiel, sans incidence)*, constitué de :
+      - Un générateur idéal de tension, de force électromotrice $E$ ;
+      - Un interrupteur $K$ ;
+      - Un conducteur ohmique de résistance $R$ ;
+      - Un condensateur de capacité $C$ ;
+      - Un bouton poussoir $P$ qui joue le rôle d'un interrupteur. (Il est fermé seulement quand on appuie dessus).
+      - Un composant électronique qui permet l'allumage de la lampe $L$ tant que la tension $u_C$ aux bornes du condensateur est inférieure ou égale à une tension limite $U_S$.
+
+      On admet que l'intensité du courant électrique à l'entrée du composant électronique reste nulle à tout instant.
+
+      **Figure 1 — le circuit de la minuterie** *(re-décrit depuis le bitmap natif du sujet).* À gauche, le générateur (cercle, borne $+$ en haut, $-$ en bas), avec une flèche verticale étiquetée $E$ à sa droite. Du pôle $+$, le fil monte, passe par l'interrupteur $K$, et rejoint le nœud $A$. De $A$, le conducteur ohmique $R$ descend au nœud $B$ ; de $B$, le condensateur $C$ descend au nœud $D$, la flèche de tension $u_C$ étant dessinée à droite du condensateur, pointant vers le HAUT (de $D$ vers $B$). Le bouton poussoir $P$ est branché entre les MÊMES nœuds $B$ et $D$ — en PARALLÈLE du condensateur. Le fil du bas relie le pôle $-$ du générateur à $D$ et continue vers la droite. Une boîte « Composant électronique », à droite, prend ses deux bornes d'entrée sur $B$ (fil du haut) et $D$ (fil du bas) — l'entrée du composant est donc aux bornes du condensateur ; la lampe $L$ (cercle croisé) est reliée à ses deux bornes de sortie.
+
+      **1- Étude du circuit RC.** À l'instant initial ($t = 0$ s), le condensateur est déchargé. On ferme l'interrupteur $K$, le bouton poussoir $P$ est relâché (figure 1), le condensateur se charge progressivement à l'aide du générateur. On visualise l'évolution de la tension $u_C(t)$ aux bornes du condensateur à l'aide d'une interface informatique convenable.
+
+      **Figure 2 — la courbe $u_C(t)$, telle qu'imprimée** *(chaîne de mesure au pixel dans le sourcing).* Axe vertical $u_C\,(\text{V})$, graduations majeures $5$, $10$, $15$, $20$, $25$ (lignes intermédiaires aux demi-pas) ; axe horizontal $t\,(\text{s})$, origine $0$, graduations majeures $20$, $40$, $60$, …, $180$ (intermédiaires aux $10\ \text{s}$ impaires). La courbe part de l'origine et croît en décélérant vers une asymptote horizontale au niveau de la ligne $25\ \text{V}$. Une droite en pointillés — la tangente à la courbe à l'origine — monte raide depuis l'origine, atteint le niveau de l'asymptote à l'aplomb de la graduation $40\ \text{s}$, et se prolonge au-delà.
+
+      **2- Détermination de la durée de fonctionnement de la minuterie:** *(deux-points collé au mot, sans l'espace que le document met partout ailleurs — tel qu'imprimé, T3.)* La durée nécessaire pour qu'un habitant d'un l'immeuble *(« d'un l'immeuble » tel qu'imprimé — article doublé, défaut du sujet officiel, sans incidence)* arrive à la porte de sa maison est $\Delta t = 80\ \text{s}$.
+    questions:
+      - id: q1
+        part: "1-1 — L'équation différentielle"
+        stem: |-
+          **1-1-** (0,5 pt) Montrer que la tension $u_C$ vérifie l'équation différentielle : $u_C + RC\dfrac{du_C}{dt} = E$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. C'est l'équation de la charge du rung R1, mais il faut d'abord justifier que le circuit se RÉDUIT bien à la boucle $E$–$R$–$C$ : le bouton poussoir $P$, branché en parallèle du condensateur, est RELÂCHÉ (donc ouvert — aucun courant ne le traverse), et l'énoncé admet que l'intensité à l'entrée du composant électronique reste nulle à tout instant. Tout le courant $i$ qui traverse $R$ va donc intégralement charger le condensateur : $i = C\,\dfrac{du_C}{dt}$ (rung R1). Il reste la loi des mailles sur l'unique boucle active.
+        steps:
+          - math: 'E = u_R + u_C \qquad u_R = R\,i'
+            note: "Loi des mailles sur la boucle E-R-C (K ferme), loi d Ohm pour R."
+          - math: 'i = C\,\frac{du_C}{dt} \quad \text{(P relache et entree du composant sans courant : tout le courant de R charge C)}'
+            note: "Definition de la capacite (rung R1) : aucune derivation de courant vers P ni vers le composant."
+          - math: '\boxed{u_C + RC\,\frac{du_C}{dt} = E}'
+            note: "Substitution dans la loi des mailles : l equation demandee."
+      - id: q2
+        part: "1-2 — Identifier A et τ (le sujet imprime l'équation sans premier membre — S4)"
+        stem: |-
+          **1-2-** (0,75 pt) Déterminer les expressions de $A$ et $\tau$, pour que l'équation horaire : $A.(1 - e^{-\frac{t}{\tau}})$ soit solution de l'équation différentielle précédente. *(L'équation horaire est imprimée SANS premier membre — il manque « $u_C =$ » ; défaut du sujet officiel, consigné et non réparé : il faut lire $u_C = A\left(1 - e^{-t/\tau}\right)$.)*
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. La méthode du rung R2 : on n'intègre rien, on IDENTIFIE. On substitue la forme proposée — en rétablissant le premier membre manquant, $u_C = A\left(1-e^{-t/\tau}\right)$ (défaut S4 du sujet, dit dans l'énoncé ci-dessus) — dans l'équation de la question 1-1, et on exige qu'elle soit vérifiée À CHAQUE INSTANT : le terme constant et le terme en $e^{-t/\tau}$ doivent s'identifier séparément.
+
+          $$\frac{du_C}{dt} = \frac{A}{\tau}\,e^{-t/\tau}$$
+
+          $$A\left(1-e^{-t/\tau}\right) + \frac{RC\,A}{\tau}\,e^{-t/\tau} = E \iff A + A\,e^{-t/\tau}\left(\frac{RC}{\tau} - 1\right) = E$$
+        steps:
+          - math: '\text{terme constant : } A = E'
+            note: "Le terme sans exponentielle doit egaler E a lui seul."
+          - math: '\text{terme en } e^{-t/\tau} : \frac{RC}{\tau} - 1 = 0 \implies \tau = RC'
+            note: "Le terme exponentiel doit s annuler identiquement, a chaque instant."
+          - math: '\boxed{A = E \qquad \tau = RC}'
+            note: "Identification complete (rung R2)."
+      - id: q3
+        part: "1-3 — Analyse dimensionnelle"
+        stem: |-
+          **1-3-** (0,25 pt) À l'aide d'une analyse dimensionnelle, montrer que $\tau$ est homogène à un temps.
+        reasoning: |-
+          Le contrôle d'homogénéité du rung R1 : $R$ se mesure en ohms ($\Omega = \text{V/A}$), $C$ en farads ($\text{F} = \text{A}{\cdot}\text{s/V}$). On multiplie les deux unités : volts et ampères se simplifient, il reste des secondes.
+        steps:
+          - math: '[\tau] = [R]\times[C] = \frac{\text{V}}{\text{A}}\times\frac{\text{A}\cdot\text{s}}{\text{V}} = \text{s}'
+            note: "Produit des unites de R (ohm = V/A) et de C (farad = A.s/V)."
+          - math: '\boxed{\tau = RC \text{ est homogene a un temps}}'
+            note: "tau se mesure bien en secondes (rung R1)."
+      - id: q4
+        part: "1-4 — Lectures graphiques de A et τ, puis R"
+        stem: |-
+          **1-4-** (0,75 pt) La figure 2, représente les variations de $u_C(t)$. *(« La figure 2, représente » tel qu'imprimé — virgule entre sujet et verbe, défaut du sujet officiel, sans incidence.)* Déterminer graphiquement les valeurs de $A$ et $\tau$, et déduire la valeur de la résistance $R$, sachant que la capacité du condensateur est : $C = 220\ \mu\text{F}$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Deux lectures du rung R3, puis une inversion de $\tau = RC$.
+
+          **$A$ — l'asymptote.** Quand $t \to \infty$, $e^{-t/\tau} \to 0$ et $u_C \to A$ : la valeur de $A$ est le niveau de l'asymptote horizontale de la courbe. Sur la figure 2, ce palier est au niveau de la ligne $25\ \text{V}$. Et comme $A = E$ (question 1-2), cette lecture RÉCOLTE aussi la f.é.m., que l'énoncé ne donne nulle part ailleurs : $E = 25\ \text{V}$ — elle servira aux questions 2-2 et 2-3.
+
+          **$\tau$ — la tangente à l'origine.** Le rung R3 l'établit sur cette courbe croissante exactement : la tangente à l'origine coupe l'asymptote $u_C = A$ à l'instant $t = \tau$. Sur la figure 2, la droite en pointillés atteint le niveau du palier à l'aplomb de la graduation $40\ \text{s}$. Contrôle par la seconde méthode du même rung — les $63\ \%$ : $0{,}63\times25 \approx 15{,}8\ \text{V}$, un niveau que la courbe atteint bien vers $t \approx 40\ \text{s}$. Les deux lectures concordent.
+
+          **$R$, en isolant dans $\tau = RC$.**
+        steps:
+          - math: '\boxed{A = 25\ \text{V}} \quad \text{(niveau de l asymptote ; et } A = E \text{, question 1-2 : la f.e.m. est recoltee ici)}'
+            note: "Lecture du palier de la courbe (rung R3). E = 25 V servira aux questions 2-2 et 2-3."
+          - math: '\boxed{\tau = 40\ \text{s}} \quad \text{(tangente a l origine coupant le niveau de l asymptote ; controle 63 \% concordant)}'
+            note: "Methode de la tangente a l origine (rung R3), recoupee par la methode des 63 %."
+          - math: 'R = \frac{\tau}{C} = \frac{40}{220\times10^{-6}}'
+            note: "On isole R dans tau = RC (question 1-2), avec C = 220 microfarads."
+          - math: '\boxed{R \approx 1{,}8\times10^{5}\ \Omega}'
+            note: "Soit environ 182 kOhm -- concordant avec le corrige non officiel."
+      - id: q5
+        part: "2-1 — Exprimer t_S (le pont ln — voir la scope note)"
+        stem: |-
+          **2-1-** (1 pt) Soit $t_S$ la date à laquelle la tension $u_C$ atteint la valeur limite $U_S$ , exprimer $t_S$ en fonction de $E$, $\tau$ et $U_S$. *(« $U_S$ , exprimer » tel qu'imprimé — espace avant la virgule, défaut typographique du sujet officiel, sans incidence.)*
+        reasoning: |-
+          SCOPE NOTE (voir l'en-tête du fichier) : aucun rung de cette leçon ne manipule le logarithme népérien — R3 lit $\tau$ graphiquement, jamais par résolution algébrique d'une date. Le pont tient en une ligne : $\ln$ est la fonction RÉCIPROQUE de l'exponentielle ($\ln(e^x) = x$ pour tout $x$), c'est donc l'outil qui extrait un temps prisonnier d'un exposant. On le refait ici pas à pas, jamais « on admet ».
+
+          On écrit que la solution de la question 1-2 vaut $U_S$ à l'instant $t_S$, et on isole méthodiquement : d'abord l'exponentielle seule, puis son exposant par $\ln$, puis $t_S$.
+
+          $$E\left(1-e^{-t_S/\tau}\right) = U_S \implies e^{-t_S/\tau} = \frac{E-U_S}{E}$$
+
+          En prenant le logarithme népérien des deux membres, et en utilisant $\ln(a/b) = -\ln(b/a)$ pour rendre le résultat positif :
+        steps:
+          - math: 'e^{-t_S/\tau} = \frac{E-U_S}{E} \implies -\frac{t_S}{\tau} = \ln\!\left(\frac{E-U_S}{E}\right)'
+            note: "L exponentielle est isolee, puis ln extrait l exposant (ln est la reciproque de exp -- pont hors rungs, voir la scope note en tete de fichier)."
+          - math: '\boxed{t_S = \tau\,\ln\!\left(\frac{E}{E-U_S}\right)}'
+            note: "Le signe moins retourne le rapport dans le logarithme : E > E - U_S, donc t_S est bien positif."
+      - id: q6
+        part: "2-2 — La lampe s'éteint-elle avant l'arrivée ?"
+        stem: |-
+          **2-2-** (0,5 pt) Sachant que $U_S = 15\ \text{V}$, montrer que la lampe $L$ s'éteint avant que l'habitant de l'immeuble n'arrive chez soi. *(« chez soi » tel qu'imprimé — pour « chez lui », défaut de langue du sujet officiel, sans incidence.)*
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Le composant électronique maintient la lampe allumée TANT QUE $u_C \le U_S$ (énoncé) : la lampe s'éteint donc exactement à la date $t_S$ de la question 2-1. On l'évalue avec les valeurs récoltées à la question 1-4 ($E = 25\ \text{V}$, $\tau = 40\ \text{s}$) et on la compare à la durée $\Delta t = 80\ \text{s}$ dont l'habitant a besoin.
+        steps:
+          - math: 't_S = 40\times\ln\!\left(\frac{25}{25-15}\right) = 40\times\ln(2{,}5)'
+            note: "Expression de la question 2-1, avec E = 25 V et tau = 40 s recoltes a la question 1-4."
+          - math: 't_S = 40\times0{,}916 \approx 36{,}7\ \text{s}'
+            note: "ln(2,5) est environ 0,916 -- concordant avec le corrige non officiel (36,65 s)."
+          - math: '\boxed{t_S \approx 36{,}7\ \text{s} < \Delta t = 80\ \text{s} : \text{la lampe s eteint AVANT l arrivee de l habitant}}'
+            note: "La duree d allumage est inferieure aux 80 s necessaires : il faut modifier le circuit (question 2-3)."
+      - id: q7
+        part: "2-3 — La résistance limite R_S"
+        stem: |-
+          **2-3-** (0,75 pt) Déterminer la valeur limite $R_S$ de la résistance du conducteur ohmique qui permettra à l'habitant d'arriver chez soi *(« chez soi » tel qu'imprimé — G11)* avant que la lampe s'éteigne. (On considère que les valeurs de $C$, $E$ et $U_S$ n'ont pas changé).
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. La durée d'allumage $t_S = RC\,\ln\!\left(\dfrac{E}{E-U_S}\right)$ (questions 1-2 et 2-1) est PROPORTIONNELLE à $R$ : augmenter la résistance ralentit la charge (le mécanisme du rung R1 — moins de courant, une charge plus lente) et retarde l'extinction. La valeur LIMITE $R_S$ est celle pour laquelle la lampe s'éteint exactement à l'arrivée de l'habitant, $t_S = \Delta t$ ; toute résistance $R \ge R_S$ convient.
+
+          $$R_S\,C\,\ln\!\left(\frac{E}{E-U_S}\right) = \Delta t \implies R_S = \frac{\Delta t}{C\,\ln\!\left(\frac{E}{E-U_S}\right)}$$
+        steps:
+          - math: 'R_S = \frac{\Delta t}{C\,\ln(2{,}5)} = \frac{80}{220\times10^{-6}\times0{,}916}'
+            note: "Condition limite t_S = Delta t = 80 s, avec C, E et U_S inchanges (enonce) -- meme pont ln que la question 2-1."
+          - math: '\boxed{R_S \approx 3{,}97\times10^{5}\ \Omega}'
+            note: "Toute resistance superieure ou egale a R_S laisse la lampe allumee jusqu a l arrivee -- concordant avec le corrige non officiel."

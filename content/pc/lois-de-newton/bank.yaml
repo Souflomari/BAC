@@ -87,6 +87,33 @@
 #     ambiguïté de lecture propre à cette entrée (source : « V_G ≈ 9,5 m.s⁻¹
 #     vers t ≈ 2 s, lecture d'échelle à confirmer ») résolue au point d'usage
 #     par un contrôle aval (t_B tombe rond à 4,0 s).
+#
+# NOTE ÉDITORIALE — bk-2011-n-x4 (2026-08-29, ajout). Exercice « Mécanique
+# (05,5 points) » du sujet 2011 N (le skieur sur glace), situations 1 + 2 :
+# plan incliné SANS frottement, puis plan horizontal AVEC frottement
+# constant. Source : docs/sujets/_incoming/pc-2011-n.md, statut « VÉRIFIÉ —
+# clearé pour conversion » (passe adversariale indépendante du 2026-08-29).
+# CHOIX DE L'`id` : le sujet ne numérote aucun exercice ; les identifiants
+# x1..x4 encodent la POSITION AU CARTOUCHE — la Mécanique est le QUATRIÈME
+# bloc. DÉCOUPE EN DEUX ENTRÉES, PRÉCÉDENT 2010 N : l'exercice porte trois
+# situations mais DEUX physiques (dynamique rectiligne sur les parties
+# A'B' et B'C' ; projectile après D). Même découpe que bk-2010-n-x4 (ici) /
+# bk-2010-n-x4b (chute-mouvements-plans) : le barème est RÉPARTI, jamais
+# dupliqué — 3,25 pt ici (questions 1-1, 1-2, 1-3, 2-1, 2-2) + 2,25 pt sous
+# content/pc/chute-mouvements-plans/bank.yaml (bk-2011-n-x4b : questions
+# 3-1, 3-2) = 5,50 pt, le « (05,5 points) » imprimé. La donnée
+# v_C = 12 m.s⁻¹ de la question 2-2 ne sert PAS à la situation 3 — les
+# deux entrées sont autonomes. PORTÉE : la situation 1 est le dispositif du
+# rung 7 SANS le terme de frottement (l'énoncé le dit : « glisse ainsi sans
+# frottements ») — cas plus simple, pas un cas différent, même disposition
+# que bk-2010-n-x4 ; la situation 2 (plan horizontal, frottement constant,
+# décélération) est déjà couverte par bk-2017-n-x4 (le skieur 2017,
+# 2ᵉ partie) — aucun recoupement numérique (α = 23°, f DONNÉE = 15 N,
+# g = 9,8 là-bas ; α = 14°, f INCONNUE à déterminer depuis v_B et v_C,
+# g = 10 ici — le sens de la question est inversé). Figure re-décrite
+# DEPUIS le bitmap par la passe de vérification (position de A' corrigée
+# contre l'image : le départ de la piste est en haut à gauche, au-dessus du
+# plan horizontal — V.6 du fichier source).
 
 notion: pc/lois-de-newton
 
@@ -1221,3 +1248,412 @@ entries:
             note: "Relation vitesse-distance du MRUV (rung 6) : v^2 = v0^2+2.a_x.d, avec v=0 a l'arret."
           - math: '\boxed{BC \approx 104{,}17\ \text{m}}'
             note: "Distance parcourue de B a C, verifiee independamment par BC = v0.t_c + 0,5.a_x.t_c^2."
+
+  # ── bk-2011-n-x4 — 2011 N, Mécanique (situations 1 + 2) : le skieur sur le
+  #    plan incliné A'B' puis sur le plan horizontal B'C' ──
+  # Sœur de bk-2011-n-x4b (chute-mouvements-plans, situation 3 du même
+  # exercice) : barème réparti 3,25 + 2,25 = 5,50 — voir la NOTE ÉDITORIALE
+  # en tête de fichier.
+  - id: bk-2011-n-x4
+    title: "Skieur sur un plan incliné puis un plan horizontal : accélération par la deuxième loi de Newton, vitesse en bas de pente par les équations horaires, et intensité du frottement"
+    source:
+      year: 2011
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Mécanique — situations 1 et 2 : mouvement du skieur sur les parties A'B' et B'C'"
+    bareme_total: 3.25
+    duration_min: 20
+    sourcing:
+      status: sourced
+      note: >-
+        2011 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28, AlloSchool element/94445 (Mécanique — étude
+        du mouvement d'un sportif (skieur), situations 1 et 2 : plan
+        incliné sans frottement puis plan horizontal avec frottement
+        constant ; barème 3,25 pt (0,75+0,25+0,75+0,5+1), 5 questions, sur
+        les 05,5 pt de l'exercice de Mécanique complet, dont la situation 3
+        — chute parabolique de D à P — est transcrite à part sous
+        content/pc/chute-mouvements-plans/bank.yaml, entrée bk-2011-n-x4b ;
+        pas de double comptage : 3,25+2,25 = 5,50, le « (05,5 points) »
+        imprimé page 1, même découpe que le précédent 2010 N). CHOIX DE
+        L'`id` : le sujet ne numérote aucun exercice ; les identifiants
+        x1..x4 encodent la POSITION AU CARTOUCHE — la Mécanique est le
+        quatrième bloc (voir la note éditoriale en tête de ce fichier).
+        Transcription source vérifiée par une passe adversariale
+        indépendante du 2026-08-29 (docs/sujets/_incoming/pc-2011-n.md,
+        statut « VÉRIFIÉ — clearé pour conversion »), barème recompté par
+        quatre chaînes concordantes, 27/27 questions du sujet re-dérivées —
+        dont les cinq de ce bloc : a_G = g.sin(14°) ≈ 2,42 m.s⁻² ;
+        v_B = rac(2×10×sin14°×82,7) = rac(400,1) ≈ 20,0 m.s⁻¹ (le 82,7 m de
+        l'énoncé est calibré pour un résultat rond) ;
+        f = m(v_B²−v_C²)/(2L) = 65×256/200 ≈ 83,2 N. Un corrigé non
+        officiel (TelmidTice / talamidi.com, même signature interne, MD5
+        vérifié) recoupe ces valeurs (2,42 ; 20 ; 83,2 N par deux méthodes)
+        à titre de RECOUPEMENT, jamais comme autorité. La figure de la
+        piste (sans numéro sur le sujet) est re-décrite DEPUIS le bitmap
+        natif par la passe de vérification — position de A' corrigée contre
+        l'image (départ de la piste en haut à gauche, au-dessus du plan
+        horizontal ; V.6 du fichier source). DÉFAUT DU SUJET OFFICIEL PORTÉ,
+        PAS RÉPARÉ : S8 — « le repère(A.ı⃗) » est imprimé sans espace après
+        « repère » et avec un POINT entre A et le vecteur unitaire au lieu
+        de la virgule (reproduit tel quel, avec annotation). Coquilles de
+        langue et de typographie reproduites verbatim, non corrigées : G12
+        (« montagnards »), G13 (« Le ski sur la glace, est » — virgule
+        entre sujet et verbe), G14 (« 65 Kg »), G15 (« tel que » pour
+        « telles que »), G16 (« frottements modélisées »), G17 (« on
+        choisit, un repère »), G18 (pas de point final au paragraphe de la
+        situation 2), G19 (« v_C vitesse de G au point C » — apposition
+        sans virgule d'ouverture), G20 (« ci-dessous, est constitué ») ;
+        T1 (doubles espaces) non représentable en Markdown. Voir
+        docs/sujets/_incoming/pc-2011-n.md §9 pour le registre complet des
+        35 types de défauts du sujet.
+    intro: |-
+      **Mouvement d'un skieur sur un plan incliné puis un plan horizontal (examen national, session normale 2011 — Mécanique, situations 1 et 2, 3,25 points sur les 5,50 de l'exercice complet).**
+
+      *La troisième situation de cet exercice — le mouvement de $G$ dans le champ de pesanteur uniforme après le point $D$ — est indépendante et traitée à part, sous la notion « Chute et mouvements sur des plans » (entrée bk-2011-n-x4b). Rien de ce qui suit n'y est réutilisé.*
+
+      Le ski sur la glace, est l'un des sports les plus répandus dans les régions montagnards. *(« la glace, est » — virgule entre sujet et verbe — et « montagnards » tels qu'imprimés sur le sujet officiel ; sans incidence.)* Les pratiquants de ce sport visent à réaliser des résultats positifs et battre des records.
+
+      Le but de cet exercice est d'étudier le mouvement d'un sportif, pratiquant le ski sur des trajectoires de glace diverses.
+
+      Le circuit de ski représenté sur la figure ci-dessous, est constitué de trois parties : *(« ci-dessous, est constitué » tel qu'imprimé — virgule entre sujet et verbe, sans incidence.)*
+      - Une partie $A'B'$ rectiligne de longueur $A'B' = 82{,}7\ \text{m}$, inclinée d'un angle $\alpha = 14°$ par rapport au plan horizontal ;
+      - Une partie $B'C'$ rectiligne horizontale, de longueur $L = 100\ \text{m}$ ;
+      - Une partie $C'D'$ circulaire.
+
+      **Figure (la piste, sans numéro sur le sujet — re-décrite depuis le bitmap natif, extrait pertinent aux situations 1 et 2).** Une ligne de sol horizontale en tirets, étiquetée « Plan horizontal », porte les points $B'$ et $C'$. Le point $A'$ — le DÉPART de la piste — est en haut à gauche, nettement au-dessus du plan horizontal : la piste (trait plein) descend de $A'$ à $B'$, l'angle $\alpha$ étant marqué par un petit arc entre ce segment et la ligne de sol au voisinage de $B'$ ; elle continue horizontalement de $B'$ à $C'$, puis remonte en arc de cercle de $C'$ vers $D'$. La trajectoire de $G$ (pointillés fins, parallèle à la piste, au-dessus d'elle) part de $A$ (au-dessus de $A'$), où est dessiné le vecteur unitaire $\vec{i}$ dirigé vers le bas de la pente, passe par le skieur dessiné (silhouette avec skis, centre marqué $G$), puis par $B$ et $C$ (au-dessus de $B'$ et $C'$).
+
+      On modélise le sportif et ses accessoires par un solide $(S)$ de masse $m = 65\ \text{Kg}$ *(« Kg » tel qu'imprimé — majuscule au kilogramme, sans incidence)*, et de centre d'inertie $G$. On prendra : $g = 10\ \text{m.s}^{-2}$. $G$ passe au cours de son mouvement par les positions $A$, $B$, $C$ et $D$ représentées sur la figure, tel que *(« tel que » tel qu'imprimé — pour « telles que », sans incidence)* : $A'B' = AB$ et $B'C' = BC$.
+
+      **1- Étude du mouvement sur la partie A'B'.** À l'instant $t = 0$, $G$ part de $A$ sans vitesse initiale, le solide $(S)$ glisse ainsi sans frottements sur la partie $A'B'$. On repère la position de $G$, à un instant $t$, par l'abscisse $x$ dans le repère$(A.\vec{i})$ *(« le repère(A.ı⃗) » tel qu'imprimé — pas d'espace après « repère » et un POINT entre $A$ et $\vec{i}$ au lieu de la virgule, défaut du sujet officiel S8)*, et on considère que $x_G = 0$ à l'instant $t = 0$.
+
+      **2- Étude du mouvement sur la partie B'C'.** Le solide $(S)$ poursuit son mouvement sur la partie $B'C'$, où il subit des frottements modélisées *(« modélisées » tel qu'imprimé — accord fautif, sans incidence)* par une force $\vec{f}$ constante, tangente à la trajectoire et de sens inverse à celui du mouvement. On considère que la valeur de la vitesse de $G$ au point $B$ ne varie pas lors du passage du solide $(S)$ du plan incliné au plan horizontal. Pour étudier le mouvement de $G$ sur cette partie, on choisit, *(virgule parasite telle qu'imprimée)* un repère horizontal d'origine confondue avec le point $B$, et l'instant du passage de $G$ en ce point comme nouvelle origine des temps *(le paragraphe s'arrête là, sans point final, sur le sujet officiel)*
+    questions:
+      - id: q1
+        part: "1-1 — L'accélération sur le plan incliné"
+        stem: |-
+          **1-1-** (0,75 pt) Par application de la deuxième loi de Newton, établir l'expression de l'accélération $a_G$ du mouvement de $G$ en fonction de $g$ et $\alpha$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Exactement la méthode du rung 5, sur le dispositif du rung 7 — mais SANS le terme de frottement, puisque l'énoncé précise « glisse ainsi sans frottements ». Le bilan des forces ne compte donc que DEUX forces : le poids $\vec{P}$ (vertical, vers le bas, $P = mg$) et la réaction du plan $\vec{R}$, perpendiculaire au plan puisqu'il n'y a pas de composante de frottement.
+
+          **La deuxième loi de Newton**, dans le référentiel terrestre supposé galiléen :
+
+          $$\vec{P} + \vec{R} = m\,\vec{a}_G$$
+
+          **Projection sur $\vec{i}$** (le long du plan, sens de la descente $A \to B$) : $\vec{R}$ n'a aucune composante le long du plan ; seule reste la composante motrice du poids, $mg\sin\alpha$ (même décomposition qu'au rung 7 — contrôle aux cas extrêmes : $\alpha \to 0°$ donne $0$, plus rien ne tire le skieur sur un plan horizontal ; $\alpha \to 90°$ donne $g$, la chute libre).
+        steps:
+          - math: '\vec{P} + \vec{R} = m\,\vec{a}_G'
+            note: "Deuxieme loi de Newton (rung 5), bilan a DEUX forces : pas de frottement sur A prime B prime (enonce)."
+          - math: 'm\,a_G = mg\sin\alpha \implies \boxed{a_G = g\sin\alpha}'
+            note: "Projection sur i (le long de la pente, sens de la descente) : R est perpendiculaire au plan, seule la composante motrice du poids reste (rung 7)."
+          - math: 'a_G = 10\times\sin14^\circ \approx 2{,}42\ \text{m.s}^{-2}'
+            note: "Application numerique, utile aux questions suivantes."
+      - id: q2
+        part: "1-2 — La nature du mouvement"
+        stem: |-
+          **1-2-** (0,25 pt) Déterminer en justifiant votre réponse la nature du mouvement de $G$ sur cette partie.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. La nature d'un mouvement rectiligne se lit sur son accélération : $a_G = g\sin\alpha$ (question 1-1) est CONSTANTE ($g$ et $\alpha$ le sont), non nulle, et dirigée dans le sens du mouvement (la descente, avec un départ sans vitesse initiale — la vitesse ne peut que croître dans ce sens).
+
+          $$\boxed{\text{mouvement rectiligne uniformement accelere (MRUV)}}$$
+
+          La trajectoire est rectiligne (le segment $AB$), l'accélération est constante et de même sens que la vitesse : les deux mots de la réponse — « rectiligne » et « uniformément accéléré » — se justifient séparément, et le correcteur attend les deux.
+      - id: q3
+        part: "1-3 — La vitesse en B, par les équations horaires"
+        stem: |-
+          **1-3-** (0,75 pt) À l'aide des équations horaires du mouvement, trouver la valeur $v_B$ de la vitesse de $G$ lors du passage par la position $B$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. L'énoncé impose le chemin : les ÉQUATIONS HORAIRES du MRUV (rung 5), avec les conditions initiales de cette situation — départ de $A$ sans vitesse initiale, $x_G = 0$ à $t = 0$ :
+
+          $$x(t) = \frac12\,a_G\,t^2 \qquad v(t) = a_G\,t$$
+
+          $G$ passe en $B$ quand $x = AB = A'B' = 82{,}7\ \text{m}$ (l'énoncé pose $A'B' = AB$). On extrait la date $t_B$ de la première équation, on la reporte dans la seconde — l'élimination de $t_B$ donne $v_B = \sqrt{2\,a_G\,AB}$, sans jamais avoir besoin de la valeur de $t_B$ elle-même.
+        steps:
+          - math: 'x(t_B) = AB \implies t_B = \sqrt{\frac{2\,AB}{a_G}}'
+            note: "Date du passage en B, extraite de l equation horaire des positions."
+          - math: 'v_B = a_G\,t_B = \sqrt{2\,a_G\,AB} = \sqrt{2\times10\times\sin14^\circ\times82{,}7}'
+            note: "Report dans l equation horaire des vitesses : t_B s elimine."
+          - math: 'v_B^2 = 2\times10\times\sin14^\circ\times82{,}7 \approx 400{,}1'
+            note: "Le 82,7 m de l enonce est calibre pour un resultat rond."
+          - math: '\boxed{v_B \approx 20{,}0\ \text{m.s}^{-1}}'
+            note: "Vitesse au passage en B -- concordante avec le corrige non officiel."
+      - id: q4
+        part: "2-1 — La nature du mouvement sur BC"
+        stem: |-
+          **2-1-** (0,5 pt) En appliquant la deuxième loi de Newton, déterminer la nature du mouvement de $G$ sur le trajet $BC$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Même méthode (rung 5), mais le bilan compte maintenant TROIS forces : le poids $\vec{P}$, la réaction normale $\vec{R}$ du plan horizontal, et le frottement $\vec{f}$, constant, tangent à la trajectoire et opposé au mouvement (énoncé).
+
+          $$\vec{P} + \vec{R} + \vec{f} = m\,\vec{a}_G$$
+
+          **Projection verticale** : le mouvement reste horizontal, donc $R = P$ — les deux forces verticales se compensent et ne pilotent rien.
+
+          **Projection sur l'axe horizontal du mouvement** (origine en $B$, sens de $B$ vers $C$) : seul $\vec{f}$ a une composante, et elle est négative puisque le frottement s'oppose au mouvement :
+
+          $$m\,a_G = -f \implies a_G = -\frac{f}{m}$$
+
+          $a_G$ est CONSTANTE ($f$ et $m$ le sont), non nulle, et de sens OPPOSÉ à la vitesse : le mouvement est rectiligne uniformément retardé (décéléré).
+        steps:
+          - math: '\vec{P} + \vec{R} + \vec{f} = m\,\vec{a}_G'
+            note: "Deuxieme loi de Newton, bilan a TROIS forces sur le plan horizontal (frottement constant, enonce)."
+          - math: 'm\,a_G = -f \implies a_G = -\frac{f}{m} = \text{constante} < 0'
+            note: "Projection horizontale : P et R se compensent verticalement, seul le frottement reste, oppose au mouvement."
+          - math: '\boxed{\text{mouvement rectiligne uniformement retarde (decelere)}}'
+            note: "Acceleration constante de sens oppose a la vitesse."
+      - id: q5
+        part: "2-2 — L'intensité du frottement"
+        stem: |-
+          **2-2-** (1 pt) Trouver l'expression de l'intensité $f$ de la force de frottement en fonction de $m$, $L$, $v_B$ et $v_C$ vitesse de $G$ au point $C$ *(apposition sans virgule d'ouverture, telle qu'imprimée — sans incidence)*, puis calculer $f$.
+
+          On donne : $v_C = 12\ \text{m.s}^{-1}$.
+        reasoning: |-
+          Ce qu'on cherche et pourquoi ce geste. Le mouvement sur $BC$ est un MRUV d'accélération $a_G = -f/m$ (question 2-1) ; aucune durée n'est donnée, mais les DEUX vitesses ($v_B$, $v_C$) et la DISTANCE ($BC = B'C' = L$) le sont — exactement la configuration de la relation vitesse-déplacement du MRUV, $v^2 - v_0^2 = 2\,a\,d$, qu'on retrouve au besoin en éliminant $t$ entre les deux équations horaires (le même geste qu'à la question 1-3).
+
+          $$v_C^2 - v_B^2 = 2\,a_G\,L = -\frac{2\,f\,L}{m}$$
+
+          On isole $f$ — le signe s'occupe de lui-même : $v_C < v_B$, donc le membre de gauche est négatif, et $f$ sort positive, comme une intensité doit l'être.
+
+          **Le piège nommé de cette question.** Prendre $v_B$ de la question 1-3 est correct ($20{,}0\ \text{m.s}^{-1}$), parce que l'énoncé précise que la vitesse « ne varie pas lors du passage du plan incliné au plan horizontal » — mais attention à l'ordre du carré : c'est $v_B^2 - v_C^2$ au numérateur (la vitesse DIMINUE), pas l'inverse, sans quoi $f$ sortirait négative.
+        steps:
+          - math: 'v_C^2 - v_B^2 = 2\,a_G\,L = -\frac{2\,f\,L}{m}'
+            note: "Relation vitesse-deplacement du MRUV entre B et C, avec a_G = -f/m (question 2-1) et BC = L."
+          - math: '\boxed{f = \frac{m\left(v_B^2 - v_C^2\right)}{2L}}'
+            note: "Expression demandee : f positive car v_B > v_C."
+          - math: 'f = \frac{65\times\left(20^2 - 12^2\right)}{2\times100} = \frac{65\times256}{200}'
+            note: "Application numerique avec v_B = 20,0 m/s (question 1-3, conservee au passage en B) et v_C = 12 m/s."
+          - math: '\boxed{f \approx 83{,}2\ \text{N}}'
+            note: "Intensite du frottement -- concordante avec le corrige non officiel (83,2 N, par deux methodes)."
+
+  # ── bk-2015-r-x4 — 2015 R, Exercice 4 (Première partie) : mouvement d'un skieur, plan incliné puis plan horizontal ──
+  #
+  # NOTE ÉDITORIALE — LE CHOIX DE L'`id` (convention K-7 bis) : ce bloc est la
+  # Première partie de l'Exercice 4 du sujet SPC 2015 rattrapage — première
+  # pièce de l'exercice sur la copie, d'où `x4` sans suffixe. La seconde
+  # partie (pendule de torsion par diagrammes d'énergie, 2,50 pt — étiquetée
+  # « Première partie » par ERREUR sur la p. 7 du sujet, défaut F2 déclaré
+  # là-bas) vit sous content/pc/aspects-energetiques/bank.yaml, entrée
+  # bk-2015-r-x4b. Même exercise_label « Exercice 4 » sur les deux entrées ;
+  # barème réparti, jamais dupliqué : 3,00 + 2,50 = 05,5 pt. Précédent
+  # DIRECT : 2017 N, même découpage skieur/torsion, mêmes deux notions
+  # (bk-2017-n-x4 / bk-2017-n-x4b).
+  #
+  # SCOPE NOTE (technique mobilisée au-delà de ce que la leçon montre pas à
+  # pas — pontée au point d'usage, PAS corrigée ici) : la méthode d'EULER
+  # (question 2-2) n'est enseignée par aucun rung de cette leçon — elle est
+  # construite pas à pas dans la leçon « Chute verticale et mouvements
+  # plans » (content/pc/chute-mouvements-plans, figures euler-*). Le
+  # reasoning de la question 2-2 fait le pont explicitement. À remonter à
+  # pedagogy-architect si un renvoi de leçon est souhaité ; pas résolu ici.
+  - id: bk-2015-r-x4
+    title: "Mouvement d'un skieur : plan incliné sans frottements (accélération, réaction, vitesse), puis plan horizontal avec deux frottements (équation différentielle et méthode d'Euler)"
+    source:
+      year: 2015
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — Première partie : étude du mouvement d'un skieur"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28 (3 h, coef 7), AlloSchool
+        element/94476 (course-422, jumeaux byte-identiques 94475/94477),
+        pages 5-6 sur 7 — Exercice 4 ( 05,5 points ), Première partie :
+        étude du mouvement d'un skieur, sous-total imprimé « Première
+        partie (03 points) » ; barème 3,00 pt (0,5+0,5+0,5+0,5+1), 5
+        questions ; la seconde partie (pendule de torsion, 2,50 pt,
+        étiquetée « Première partie » par erreur sur la p. 7 — défaut F2)
+        est transcrite sous content/pc/aspects-energetiques/bank.yaml,
+        entrée bk-2015-r-x4b — même exercise_label « Exercice 4 », pas de
+        double comptage : 3,00+2,50 = 05,5 pt. Transcription vérifiée par
+        une passe adversariale indépendante (2026-08-29,
+        docs/sujets/_incoming/pc-2015-r.md, statut « ✅ VÉRIFIÉ — clearé
+        pour conversion ») : tableau d'Euler relu verbatim sur la couche de
+        texte (y compris « - 0,57 » avec espace et « -0,55 » sans), figure
+        descriptive du circuit de ski conforme élément par élément (§ V.6).
+        Re-dérivation concordante (transcripteur puis vérificateur) : a_G =
+        g·sin18° = 3,03 m·s⁻² ; R = mg·cos18° = 559 N ; v_B =
+        √(2×3,03×80) ≈ 22,0 m·s⁻¹ (cohérent avec le tableau d'Euler,
+        v(0,4 s) = 21,77 de la phase suivante) ; l'équation imprimée de 2-1
+        retombe exactement (6/60 = 0,1 et 0,06/60 = 10⁻³) ; Euler :
+        a_{i+1} ≈ −0,56 m·s⁻², v_{i+2} ≈ 21,3 m·s⁻¹. DÉFAUT DE NOTATION du
+        sujet, reproduit et non réparé : les intensités des frottements
+        sont données SANS unité (« f⃗₁ = −6.i⃗ », N attendus ; « f⃗₂ =
+        −0,06.v².i⃗ », 0,06 en N·s²·m⁻² attendu) — annoté dans l'intro.
+        Aucun corrigé officiel n'existe (la série SPC n'en a qu'à partir de
+        2016) ; le corrigé non officiel svt-assilah n'est corroborant que
+        sur sa page 1 (Exercice 1, dosage) — il ne couvre pas ce bloc et
+        n'est jamais une autorité : le plafond de preuve est la double
+        re-dérivation concordante.
+    intro: |-
+      **Étude du mouvement d'un skieur (examen national, session de rattrapage 2015 — Exercice 4, Première partie, 3,00 points sur les 05,5 de l'exercice complet).**
+
+      *Les deux parties de cet exercice sont indépendantes — le sujet imprime « Les deux partie sont indépendantes » [sic]. La seconde partie — l'étude énergétique d'un pendule de torsion — vit à part, sous la notion « Aspects énergétiques » (entrée bk-2015-r-x4b). Rien de ce qui suit n'en dépend.*
+
+      La pratique du sport du ski, dans les stations des montagnes, attire de plus en plus l'intension des jeunes marocains, parcequ'elle intégre les qualités du plasir et l'aventure. *(« l'intension », « parcequ'elle », « intégre », « plasir » et « et l'aventure » tels qu'imprimés — défauts du sujet officiel, sans incidence)*
+
+      Le but de cet exercice est d'étudier le mouvement du centre d'inertie d'un skieur et ses accessoires sur le circuit du ski. *(« et ses accessoires », sans « de », tel qu'imprimé — tournure répétée six fois sur la page)*
+
+      La figure ci-dessous, représente un circuit de ski constitué de deux parties :
+      - Partie $A'B'$ rectiligne et inclinée d'un angle $\alpha$ par rapport au plan horizontal ;
+      - Partie $B'C'$ rectiligne et horizontale.
+
+      **Figure (le circuit de ski, page 6 du sujet, sans numéro — re-décrite depuis le bitmap natif).** Une ligne pleine descend de gauche à droite du point $A'$ au point $B'$ (bas de pente), puis continue horizontalement de $B'$ à $C'$. L'angle $\alpha$ est marqué par un petit arc entre la pente et une ligne horizontale en pointillés au pied de la pente. Sur la pente, le repère incliné : le point $A$ (posé SUR la pente, au-dessus de $A'$), l'axe $y'$ en pointillés perpendiculaire à la pente avec le vecteur $\vec{j'}$, le vecteur $\vec{i'}$ dirigé vers le BAS de la pente, et l'axe $x'$ en pointillés parallèle à la pente, passant par $G$ — un point noir au centre d'un petit dessin de skieur, entre $A$ et $B'$. Sur la partie horizontale : le point $B$ (au-dessus de $B'$), le vecteur $\vec{i}$ vers la droite, et l'axe $X$ en pointillés passant par $C$ (au-dessus de $C'$).
+
+      **Données :**
+      - $g = 9{,}8\ \text{m.s}^{-2}$ ;
+      - Longueur de la partie $A'B'$ : $A'B' = 80\ \text{m}$ ;
+      - Masse du skieur et ses accessoires : $m = 60\ \text{kg}$ ;
+      - L'angle d'inclinaison : $\alpha = 18°$. *(Le sujet imprime « L'angled'inclinaison » sans espace visible — défaut de composition, sans incidence)*
+
+      **1- Etude du mouvement du skieur et ses accessoires sur la partie inclinée sans frottements.**
+
+      On étudie le mouvement du centre d'inertie $G$ du système $(S)$, formé du skieur et ses accessoires, dans le repère $(\text{A}, \vec{i'}, \vec{j'})$ lié à la terre et supposé galiléen. *(« lié à la terre », minuscule, tel qu'imprimé)*
+
+      A un instant $t = 0$, choisi comme origine des temps, le système $(S)$ part sans vitesse initiale d'une position où $G$ coincide avec $A$. *(« coincide » tel qu'imprimé)*
+
+      Le mouvement de $G$ se fait suivant la ligne de plus grande pente du plan incliné $AB$, tel que : $AB = A'B'$.
+
+      **2- Etude du mouvement du skieur et ses accessoires sur la partie horizontale avec frottements.**
+
+      Le mouvement de $G$ se fait sur la partie $BC$, tel que : $BC = B'C'$. On étudie le mouvement du centre d'inertie $G$ du système $(S)$ formé du skieur et ses accessoires dans le repère $(\text{B}, \vec{i})$ lié à la terre et supposé galiléen. On prend $x_G = 0$, à un instant $t = 0$, considéré comme nouvelle origine des dates.
+
+      Le système subit au cours de son mouvement deux types de frottements :
+      - Frottements dus au contact entre la partie $B'C'$ et le système $(S)$, modélisés par une force constante : $\vec{f_1} = -6.\vec{i}$ ;
+      - Frottements dus à l'action de l'air, modélisés par la force : $\vec{f_2} = -0{,}06.v^2.\vec{i}$, où $v$ représente la vitesse du centre d'inertie $G$.
+
+      *(Les intensités des deux frottements sont imprimées SANS unité — défaut de notation du sujet officiel : il faut lire $6$ en newtons et $0{,}06$ en $\text{N.s}^2\text{.m}^{-2}$ pour que l'équation de la question 2-1 soit homogène.)*
+    questions:
+      - id: q1-1
+        part: "1 — Sur la partie inclinée, sans frottements"
+        stem: |-
+          Par application de la deuxième loi de Newton, trouver :
+
+          **1-1-** (0,5 pt) La valeur de l'accélération $a_G$ du mouvement du centre d'inertie $G$.
+        reasoning: |-
+          La méthode du rung 7, dans sa version SANS frottement : système $(S)$ réduit à $G$, référentiel terrestre supposé galiléen (énoncé), bilan à DEUX forces seulement — le poids $\vec{P} = m\vec{g}$ et la réaction du plan $\vec{R}$, perpendiculaire au plan puisque le contact est sans frottement.
+
+          $$\vec{P} + \vec{R} = m\,\vec{a_G}$$
+
+          **Projection sur $\vec{i'}$** (le long de la pente, vers le bas) : le poids se décompose comme au rung 7 — composante $mg\sin\alpha$ le long de la pente, motrice ; $\vec{R}$, perpendiculaire à $\vec{i'}$, ne projette rien.
+
+          $$m\,a_G = mg\sin\alpha \implies a_G = g\sin\alpha = 9{,}8\times\sin 18°$$
+
+          $$\boxed{a_G \approx 3{,}03\ \text{m.s}^{-2}}$$
+
+          L'accélération ne dépend pas de la masse — les $60\ \text{kg}$ ne servent qu'à la question suivante.
+
+          Le piège nommé de cette question. Confondre $\sin$ et $\cos$ : le contrôle en deux secondes, faire tendre $\alpha \to 0$ (piste horizontale) — le skieur ne doit plus accélérer, ce que donne $\sin 0 = 0$, jamais $\cos 0 = 1$.
+        steps:
+          - math: '\vec{P} + \vec{R} = m\,\vec{a_G}'
+            note: "Deuxieme loi de Newton (rung 7), bilan a DEUX forces : sans frottement, R est normale au plan."
+          - math: 'm\,a_G = mg\sin\alpha'
+            note: "Projection sur i' : le poids projette mg.sin(alpha), R ne projette rien."
+          - math: '\boxed{a_G = g\sin\alpha = 9{,}8\times\sin 18° \approx 3{,}03\ \text{m.s}^{-2}}'
+            note: "Independante de la masse."
+      - id: q1-2
+        stem: |-
+          **1-2-** (0,5 pt) L'intensité $R$ de la force modélisant l'action du plan incliné sur $(S)$.
+        reasoning: |-
+          On récupère la projection sur $\vec{j'}$, laissée de côté à la question 1-1 : le système reste SUR le plan, donc l'accélération perpendiculaire au plan est nulle, et les deux forces perpendiculaires se compensent exactement (rung 7) :
+
+          $$0 = R - mg\cos\alpha \implies R = mg\cos\alpha = 60\times9{,}8\times\cos 18°$$
+
+          $$\boxed{R \approx 559\ \text{N}}$$
+
+          Sans frottement, l'action du plan se réduit à sa composante normale : $R$ EST cette composante, il n'y a rien à composer.
+
+          Le piège nommé de cette question. Répondre $R = mg = 588\ \text{N}$ : la réaction ne compense le poids EN ENTIER que sur un plan horizontal — sur un plan incliné, elle ne compense que la composante perpendiculaire, $mg\cos\alpha$, le reste du poids étant précisément ce qui accélère le skieur (question 1-1). Et à l'inverse du skieur de 2017 (bk-2017-n-x4, dans cette même banque), il n'y a PAS de Pythagore à faire ici : le contact est sans frottement, l'action du plan est purement normale.
+        steps:
+          - math: '0 = R - mg\cos\alpha'
+            note: "Projection sur j' (rung 7) : le systeme reste sur le plan, acceleration perpendiculaire nulle."
+          - math: 'R = mg\cos\alpha = 60\times9{,}8\times\cos 18°'
+            note: "Sans frottement, l'action du plan est purement normale -- pas de Pythagore ici."
+          - math: '\boxed{R \approx 559\ \text{N}}'
+            note: "Inferieure a mg = 588 N : la reaction ne compense que la composante perpendiculaire du poids."
+      - id: q1-3
+        stem: |-
+          **1-3-** (0,5 pt) La valeur $v_B$ de la vitesse de $G$ au passage par la position $B$.
+        reasoning: |-
+          L'accélération est constante (question 1-1) et le départ se fait sans vitesse depuis $A$ : mouvement rectiligne uniformément accéléré, et la relation vitesse-distance du MRUV (rung 6) relie directement $v_B$ à la longueur parcourue $AB = 80\ \text{m}$, sans passer par le temps :
+
+          $$v_B^2 - v_A^2 = 2\,a_G\,AB \implies v_B = \sqrt{2\,a_G\,AB} = \sqrt{2\times3{,}03\times80}$$
+
+          $$\boxed{v_B \approx 22{,}0\ \text{m.s}^{-1}}$$
+
+          (soit environ $79\ \text{km.h}^{-1}$ — plausible pour un skieur lancé sur $80\ \text{m}$ de pente, et cohérent avec le tableau de la question 2-2, où $v$ vaut encore $21{,}77\ \text{m.s}^{-1}$ à $0{,}4\ \text{s}$ après le passage en $B$).
+
+          Le piège nommé de cette question. Écrire $v_B = a_G\,t$ et chercher un temps que l'énoncé ne donne pas : la relation $v^2 = 2\,a\,d$ existe précisément pour court-circuiter le chronomètre quand on connaît la distance — c'est la voie directe ici.
+        steps:
+          - math: 'v_B^2 = 2\,a_G\,AB'
+            note: "Relation vitesse-distance du MRUV (rung 6), depart sans vitesse initiale."
+          - math: 'v_B = \sqrt{2\times3{,}03\times80}'
+            note: "a_G de la question 1-1, AB = A'B' = 80 m (donnee)."
+          - math: '\boxed{v_B \approx 22{,}0\ \text{m.s}^{-1}}'
+            note: "Coherent avec le tableau d'Euler de la partie 2 (v = 21,77 m/s a t = 0,4 s)."
+      - id: q2-1
+        part: "2 — Sur la partie horizontale, avec frottements"
+        stem: |-
+          **2-1-** (0,5 pt) Par application de la deuxième loi de Newton, montrer que l'équation différentielle vérifiée par la vitesse $v$, s'écrit sous la forme : $\dfrac{dv}{dt} + 10^{-3}.v^2 + 0{,}1 = 0$. *(La virgule après « la vitesse $v$ » est telle qu'imprimée — défaut du sujet officiel, sans incidence)*
+        reasoning: |-
+          La méthode du rung 5, sur le plan horizontal : bilan à QUATRE forces — le poids $\vec{P}$, la réaction normale du plan $\vec{R_N}$, et les DEUX frottements de l'énoncé, $\vec{f_1} = -6.\vec{i}$ (contact) et $\vec{f_2} = -0{,}06.v^2.\vec{i}$ (air).
+
+          $$\vec{P} + \vec{R_N} + \vec{f_1} + \vec{f_2} = m\,\vec{a_G}$$
+
+          **Projection sur $\vec{i}$** (horizontal) : $\vec{P}$ et $\vec{R_N}$ sont verticaux, leurs projections sont nulles — il ne reste que les frottements, tous deux opposés au mouvement :
+
+          $$m\,\frac{dv}{dt} = -6 - 0{,}06\,v^2$$
+
+          On divise par $m = 60\ \text{kg}$ :
+
+          $$\frac{dv}{dt} = -\frac{6}{60} - \frac{0{,}06}{60}\,v^2 = -0{,}1 - 10^{-3}\,v^2$$
+
+          $$\boxed{\frac{dv}{dt} + 10^{-3}.v^2 + 0{,}1 = 0}$$
+
+          — exactement la forme imprimée : $6/60 = 0{,}1$ et $0{,}06/60 = 10^{-3}$, les deux coefficients tombent juste.
+
+          Le piège nommé de cette question. Oublier de diviser par la masse (écrire $dv/dt + 0{,}06\,v^2 + 6 = 0$) : la deuxième loi donne $m\,a$, pas $a$ — et le contrôle est offert par l'énoncé lui-même, puisque la forme cible est imprimée : si tes coefficients ne sont pas $10^{-3}$ et $0{,}1$, c'est la division par $60$ qui manque.
+        steps:
+          - math: '\vec{P} + \vec{R_N} + \vec{f_1} + \vec{f_2} = m\,\vec{a_G}'
+            note: "Deuxieme loi de Newton (rung 5), bilan a quatre forces sur le plan horizontal."
+          - math: 'm\,\frac{dv}{dt} = -6 - 0{,}06\,v^2'
+            note: "Projection sur i : P et R_N verticaux ne projettent rien ; les deux frottements s'opposent au mouvement."
+          - math: '\boxed{\frac{dv}{dt} + 10^{-3}.v^2 + 0{,}1 = 0}'
+            note: "Division par m = 60 : 6/60 = 0,1 et 0,06/60 = 1e-3 -- la forme imprimee retombe exactement."
+      - id: q2-2
+        stem: |-
+          **2-2-** (1 pt) En exploitant le tableau ci-contre, et en utilisant la méthode d'Euler, calculer les valeurs : $a_{i+1}$ et $v_{i+2}$.
+
+          | $t\,(\text{s})$ | $v\,(\text{m.s}^{-1})$ | $a\,(\text{m.s}^{-2})$ |
+          |---|---|---|
+          | $t_i = 0{,}4$ | $21{,}77$ | $-0{,}57$ |
+          | $t_{i+1} = 0{,}8$ | $21{,}54$ | $a_{i+1}$ |
+          | $t_{i+2} = 1{,}2$ | $v_{i+2}$ | $-0{,}55$ |
+        reasoning: |-
+          La méthode d'Euler n'est construite pas à pas par aucun rung de CETTE leçon — c'est le geste central de la leçon « Chute verticale et mouvements plans », qu'on transpose ici : à chaque ligne du tableau, l'équation différentielle donne l'accélération À PARTIR de la vitesse de la même ligne, et la vitesse de la ligne suivante s'obtient en avançant d'un pas $\Delta t = t_{i+1} - t_i = 0{,}4\ \text{s}$.
+
+          **Premier calcul — $a_{i+1}$, par l'équation différentielle évaluée à la ligne $i+1$** (question 2-1) :
+
+          $$a_{i+1} = -\left(10^{-3}\,v_{i+1}^2 + 0{,}1\right) = -\left(10^{-3}\times(21{,}54)^2 + 0{,}1\right) = -(0{,}464 + 0{,}1)$$
+
+          $$\boxed{a_{i+1} \approx -0{,}56\ \text{m.s}^{-2}}$$
+
+          **Second calcul — $v_{i+2}$, par le pas d'Euler depuis la ligne $i+1$** :
+
+          $$v_{i+2} = v_{i+1} + a_{i+1}\times\Delta t = 21{,}54 + (-0{,}564)\times0{,}4$$
+
+          $$\boxed{v_{i+2} \approx 21{,}3\ \text{m.s}^{-1}}$$
+
+          Le contrôle qui rassure : la valeur trouvée s'insère exactement dans la logique du tableau — $a_{i+1} \approx -0{,}56$ tombe entre les $-0{,}57$ et $-0{,}55$ imprimés (la décélération faiblit à mesure que $v$ décroît, puisque le terme en $v^2$ diminue), et $v_{i+2} = 21{,}3 < 21{,}54$ : le skieur ralentit bien.
+
+          Le piège nommé de cette question. Avancer $v_{i+2}$ avec la MAUVAISE accélération — $a_i = -0{,}57$ (la ligne du dessus) ou $a_{i+2} = -0{,}55$ (la ligne d'arrivée) au lieu de $a_{i+1}$ qu'on vient de calculer : le pas d'Euler part TOUJOURS de l'état courant ($t_{i+1}$) avec l'accélération de CET état. Second piège : oublier que le pas vaut $0{,}4\ \text{s}$ (lu sur la colonne des temps), pas $1\ \text{s}$.
+        steps:
+          - math: 'a_{i+1} = -\left(10^{-3}\times(21{,}54)^2 + 0{,}1\right)'
+            note: "L'equation differentielle (question 2-1) evaluee avec la vitesse de la MEME ligne, v_{i+1} = 21,54 m/s."
+          - math: '\boxed{a_{i+1} \approx -0{,}56\ \text{m.s}^{-2}}'
+            note: "Tombe entre -0,57 et -0,55 : la deceleration faiblit avec v (terme en v^2)."
+          - math: 'v_{i+2} = v_{i+1} + a_{i+1}\,\Delta t = 21{,}54 - 0{,}564\times0{,}4'
+            note: "Pas d'Euler, Delta t = 0,4 s lu sur la colonne des temps -- methode construite dans la lecon Chute et mouvements plans."
+          - math: '\boxed{v_{i+2} \approx 21{,}3\ \text{m.s}^{-1}}'
+            note: "Le skieur ralentit : coherent avec le tableau."
