@@ -66,6 +66,36 @@
 # qu'un FLAG DE JUMELAGE avec bk-2021-n-x1 (même réaction chimique, réactif
 # limitant inversé) : voir le commentaire au-dessus de l'entrée pour le
 # détail des trois.
+#
+# Le 2011 N (bk-2011-n-x1, ajouté le 2026-08-29) est la QUATRIÈME entrée de
+# cette banque — Chimie, Partie I (cinétique de l'action de l'acide
+# sulfurique sur le zinc, suivie par mesure de pression). Source :
+# docs/sujets/_incoming/pc-2011-n.md, statut « VÉRIFIÉ — clearé pour
+# conversion » (passe adversariale indépendante du 2026-08-29).
+#
+# ⛔ LA GARDE S1, PORTÉE PAR CETTE ENTRÉE — condition de la clearance du
+# sujet. La figure 1 du sujet officiel (courbe ΔP(t), question 6) est
+# tracée sur une échelle INCOMPATIBLE avec ses propres données : plateau
+# imprimé ≈ 736,9 ± 2 hPa (mesuré au pixel sur le bitmap natif, deux
+# chaînes indépendantes) contre ≈ 227 hPa imposé par les données de
+# l'énoncé (ΔP_max = x_max.R.T/V, x_max établi à la question 3) — un
+# facteur ≈ 3,24. Mécanisme identifié et vérifié à moins de 1 % : la
+# courbe a été tracée avec x_max = n_i(H3O+) = 0,03 mol (comme si l'ion
+# oxonium, et non le zinc, était le réactif limitant) — 0,03×8,314×298 /
+# 10⁻³ ≈ 743,6 hPa, à moins de 1 % du plateau imprimé. AUCUNE valeur
+# absolue de ΔP n'est utilisée nulle part dans l'entrée ci-dessous — la
+# question 6 reste résoluble parce que sa lecture est purement RELATIVE
+# au palier (x(t)/x_max = ΔP(t)/ΔP_max, question 5), insensible à cette
+# échelle fautive : seul l'axe des temps compte. Même traitement que les
+# corrections déjà déclarées de la campagne (PC 2012 N, pK_A1 ; PC 2015
+# N, ρ de l'éthanol) — défaut du sujet OFFICIEL, consigné, jamais réparé
+# en silence, jamais utilisé comme s'il était correct.
+#
+# SCOPE NOTE : aucune. Les 6 questions mobilisent exactement les méthodes
+# du corps enseigné — tableau d'avancement et réactif limitant (R2),
+# principe du substitut monotone appliqué à une mesure de pression plutôt
+# qu'à une absorbance ou une conductivité (R1), et définition/lecture
+# graphique de t_1/2 (R4). Aucun pont de portée n'a été nécessaire.
 
 notion: pc/suivi-temporel-vitesse
 
@@ -456,3 +486,183 @@ entries:
           $$\boxed{v(3\ \text{min}) \approx 1{,}6\ \text{mmol.L}^{-1}.\text{min}^{-1}}$$
 
           **Le piège nommé de cette question.** Diviser $0{,}08\ \text{mmol.min}^{-1}$ par $V=50$ (en oubliant la conversion en litres) donnerait un résultat mille fois trop grand, dans la mauvaise unité — alors que l'énoncé demande explicitement des $\text{mmol.L}^{-1}.\text{min}^{-1}$. La conversion $\text{mL}\to\text{L}$ n'est pas optionnelle ici, elle est **imposée par l'énoncé** — contrairement à d'autres sujets de cette même banque où $V$ est déjà donné en litres et où aucune conversion n'est nécessaire.
+
+  # ── bk-2011-n-x1 — 2011 N, Chimie Partie I : cinétique de l'action de
+  #    l'acide sulfurique sur le zinc, par mesure de pression ──
+  # ⛔ GARDE S1 (voir la note éditoriale en tête de fichier) : la figure 1 du
+  # sujet officiel est tracée sur une échelle de ΔP incompatible avec ses
+  # propres données (facteur ≈ 3,24). AUCUNE valeur absolue de ΔP n'est
+  # utilisée dans le raisonnement ci-dessous ; la question 6 lit t_1/2 par
+  # une comparaison purement RELATIVE au palier (question 5), insensible au
+  # défaut.
+  - id: bk-2011-n-x1
+    title: "Action de l'acide sulfurique sur le zinc suivie par mesure de pression : tableau d'avancement, x(t) via la loi des gaz parfaits, et temps de demi-réaction lu à mi-hauteur du palier"
+    source:
+      year: 2011
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Chimie — Partie I : Suivi d'une transformation chimique par mesure de pression"
+    bareme_total: 4.5
+    duration_min: 27
+    sourcing:
+      status: sourced
+      note: >-
+        2011 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28, AlloSchool element/94445 (Chimie, Partie I —
+        suivi de l'action de l'acide sulfurique sur le zinc par mesure de
+        pression ; barème 4,50 pt (0,5+1+0,5+1+0,5+1), 6 questions, sur les
+        07,00 pt de l'exercice de Chimie complet, dont la seconde partie —
+        électrolyse pour l'argenture d'une pièce de cuivre — est transcrite
+        à part sous content/pc/electrolyse/bank.yaml, entrée bk-2011-n-x1b ;
+        pas de double comptage : 4,50+2,50=7,00, le « (07 points) » imprimé
+        page 1). Transcription source vérifiée par une passe adversariale
+        indépendante du 2026-08-29 (docs/sujets/_incoming/pc-2011-n.md,
+        statut « VÉRIFIÉ — clearé pour conversion »), barème recompté par
+        quatre chaînes concordantes (extraction PyMuPDF + lecture visuelle
+        sur planche-contact ×4 des JPG), 27/27 questions du sujet
+        re-dérivées. Un corrigé non officiel (TelmidTice / talamidi.com,
+        même signature interne, MD5 vérifié) confirme les valeurs de cette
+        partie (x_max, t_1/2 ≈ 42 min) à titre de RECOUPEMENT, jamais comme
+        autorité — il ne calcule d'ailleurs jamais ΔP_max depuis les
+        données et ne voit donc pas le défaut S1 ci-dessous.
+
+        ⛔ LA GARDE S1 (condition de la clearance de ce sujet, portée par
+        cette entrée). La figure 1 (courbe ΔP(t), question 6) est tracée
+        par le sujet officiel sur une échelle INCOMPATIBLE avec ses propres
+        données : son plateau imprimé mesure ≈ 736,9 ± 2 hPa (chaîne au
+        pixel sur le bitmap natif, deux passes indépendantes) alors que les
+        données de l'énoncé imposent, par la relation de la question 4,
+        ΔP_max = x_max.R.T/V ≈ 227 hPa (x_max = 9,17×10⁻³ mol, question 3)
+        — un facteur ≈ 3,24. Mécanisme identifié et vérifié à moins de
+        1 % : la courbe a été tracée avec x_max = n_i(H3O+) = 0,03 mol
+        (comme si l'ion oxonium était limitant, à la stœchiométrie 1) au
+        lieu du véritable réactif limitant, le zinc, établi à la question 3
+        — 0,03×8,314×298/10⁻³ ≈ 743,6 hPa, à moins de 1 % du plateau
+        imprimé. AUCUNE valeur absolue de ΔP n'est utilisée nulle part dans
+        le raisonnement ci-dessous, pas même comme intermédiaire de calcul.
+        La question 6 reste résoluble parce que sa lecture est purement
+        RELATIVE au palier (voir le raisonnement de cette question) : par
+        la relation établie en question 5, x(t)/x_max = ΔP(t)/ΔP_max, donc
+        t_1/2 se lit à la MI-HAUTEUR DU PALIER, quelle que soit la valeur —
+        juste ou fausse — que ce palier représente en hPa ; seul l'axe des
+        TEMPS compte, et il n'est pas affecté par ce défaut (t_1/2 mesuré
+        indépendamment à 41,1–41,7 min selon le plateau retenu, soit
+        ≈ 42 min, concordant avec le corrigé non officiel). Défaut du sujet
+        OFFICIEL, consigné ici, jamais réparé en silence — même traitement
+        que les corrections déjà déclarées de la campagne (PC 2012 N,
+        pK_A1 ; PC 2015 N, ρ de l'éthanol).
+
+        Coquilles de langue et de typographie du registre du sujet (G1
+        « peut-être » pour « peut être » ; G2 « Soitent » pour « Soient » ;
+        G3 « interieur » ; G4 « presssion » ; G5 « Zinc » avec majuscule
+        médiane ; G6 « traçer » ; T6 les deux tirets demi-cadratins de
+        « P – P₀ » ; T7 le barème « 0 ,5 » de la question 1) sont
+        reproduites verbatim dans le chapeau et les énoncés ci-dessous, non
+        corrigées ; T7 est en outre annotée « tel qu'imprimé » directement
+        sur la carte. Voir docs/sujets/_incoming/pc-2011-n.md §9 pour le
+        registre complet des 35 types de défauts du sujet.
+    intro: |-
+      **Suivi de l'action de l'acide sulfurique sur le zinc, par mesure de pression (examen national, session normale 2011 — Chimie, Partie I, 4,50 points sur les 7,00 de l'exercice complet).**
+
+      *La seconde partie de cet exercice — l'argenture d'une pièce de cuivre par électrolyse — est indépendante et traitée à part, sous la notion « Électrolyse » (entrée bk-2011-n-x1b). Rien de ce qui suit n'en dépend.*
+
+      Le dihydrogène est considéré comme un combustible possédant une haute énergie non polluante. Il peut-être synthétisé au laboratoire par action des acides sur quelques métaux. *(« peut-être » tel qu'imprimé sur le sujet officiel — trait d'union fautif, sans incidence.)*
+
+      Le but de cet exercice est le suivi de l'action de l'acide sulfurique sur le zinc par mesure de pression.
+
+      **Données :**
+      - Tous les gaz sont considérés comme parfaits ;
+      - Toutes les mesures ont été faites à $25\,^\circ\text{C}$ ;
+      - On rappelle la loi des gaz parfaits : $P.V = n.R.T$ ;
+      - La masse molaire atomique du zinc : $M(Zn) = 65{,}4\ \text{g.mol}^{-1}$.
+
+      On modélise la réaction du zinc $Zn_{(S)}$ avec une solution d'acide sulfurique $\left(2\,H_3O^+_{(aq)} + SO_4^{2-}\right)$, par l'équation chimique suivante :
+
+      $$Zn_{(S)} + 2\,H_3O^+_{(aq)} \rightleftharpoons Zn^{2+}_{(aq)} + H_{2(g)} + 2\,H_2O_{(\ell)}$$
+
+      Pour étudier la cinétique de cette réaction, on introduit dans un ballon de volume constant $V = 1\ \text{L}$, une quantité de masse $m = 0{,}6\ \text{g}$ de poudre de Zinc *(« de Zinc », avec majuscule, tel qu'imprimé)* $Zn_{(S)}$, et on y verse à l'instant $t_0 = 0$, un volume $V_a = 75\ \text{mL}$ de la solution aqueuse d'acide sulfurique de concentration en ions oxonium $[H_3O^+] = 0{,}4\ \text{mol.L}^{-1}$. On mesure la pression $P$ à l'interieur du ballon, à chaque instant, à l'aide d'un capteur de presssion. *(« interieur » et « presssion » tels qu'imprimés sur le sujet officiel.)*
+
+      **Figure 1 — la courbe $\Delta P(t)$, telle qu'imprimée sur le sujet officiel.** Repère orthogonal. Axe vertical $\Delta P\ (\text{hPa})$, gradué $0,\ 200,\ 400,\ 600$ ; axe horizontal $t\ (\text{min})$, gradué $50,\ 100,\ 150,\ 200,\ 250$. Quadrillage fin de pas $5\ \text{min} \times 20\ \text{hPa}$. La courbe part de l'origine, croît en décélérant, et plafonne à droite, à une hauteur voisine de la ligne $600$ (soit $\approx 740\ \text{hPa}$ à lire naïvement sur cette échelle imprimée).
+
+      ⛔ *Cette échelle imprimée est un DÉFAUT DU SUJET OFFICIEL, consigné et non réparé — le plateau imprimé (≈ 740 hPa) contredit d'un facteur ≈ 3,24 la valeur que les données de l'énoncé imposent (≈ 227 hPa) ; le mécanisme identifié est une courbe tracée avec le mauvais réactif limitant (voir `sourcing.note` pour le détail complet). **Aucune valeur absolue de ΔP n'est utilisée dans ce qui suit** — seules la FORME de la courbe (croissance, plateau) et une lecture RELATIVE à mi-hauteur du palier, insensible à ce défaut, servent à la question 6.*
+    questions:
+      - id: q1
+        part: "1 — Le tableau d'avancement"
+        stem: |-
+          **(0 ,5 pt)** *(barème tel qu'imprimé — espace avant la virgule, T7.)* Soitent $n_i(H_3O^+)$ et $n_i(Zn)$ les quantités de matière initiales respectivement des ions oxonium et du Zn. Recopier, sur votre copie de rédaction, le tableau descriptif suivant et le compléter. *(« Soitent » tel qu'imprimé, pour « Soient ».)*
+        reasoning: |-
+          C'est exactement la construction du rung 2 : une ligne par état d'avancement (initial, intermédiaire, maximal), chaque espèce évoluant selon son coefficient stœchiométrique dans l'équation — $1$ pour $Zn$, $Zn^{2+}$ et $H_2$ ; $2$ pour $H_3O^+$ ; $H_2O$, le solvant, reste « en excès » et n'entre pas dans le compte. On complète chaque colonne en RETRANCHANT le coefficient fois l'avancement pour un réactif, en l'AJOUTANT pour un produit — sans introduire aucune valeur numérique à ce stade : ni le réactif limitant, ni $x_{max}$, ne sont encore connus (ce sera l'objet des questions 2 et 3).
+
+          | État | Avancement | $n(Zn)$ | $n(H_3O^+)$ | $n(Zn^{2+})$ | $n(H_2)$ | $n(H_2O)$ |
+          |---|---|---|---|---|---|---|
+          | Initial | $x=0$ | $n_i(Zn)$ | $n_i(H_3O^+)$ | $0$ | $0$ | en excès |
+          | Intermédiaire | $x$ | $n_i(Zn)-x$ | $n_i(H_3O^+)-2x$ | $x$ | $x$ | en excès |
+          | Maximal | $x_{max}$ | $n_i(Zn)-x_{max}$ | $n_i(H_3O^+)-2x_{max}$ | $x_{max}$ | $x_{max}$ | en excès |
+      - id: q2
+        stem: |-
+          **(1 pt)** Calculer $n_i(H_3O^+)$ et $n_i(Zn)$.
+        reasoning: |-
+          Deux calculs indépendants, chacun une application directe d'une définition : la concentration donne la quantité d'ions oxonium apportée par le volume $V_a$ versé ; la masse molaire donne la quantité de zinc à partir de la masse pesée $m$.
+        steps:
+          - math: 'n_i(H_3O^+) = [H_3O^+]\times V_a = 0{,}4\times0{,}075'
+            note: "Definition de la concentration molaire, avec Va converti en litres."
+          - math: '\boxed{n_i(H_3O^+) = 0{,}03\ \text{mol}}'
+            note: "Quantite initiale d'ions oxonium."
+          - math: 'n_i(Zn) = \frac{m}{M(Zn)} = \frac{0{,}6}{65{,}4}'
+            note: "Quantite de matiere a partir de la masse pesee et de la masse molaire du zinc."
+          - math: '\boxed{n_i(Zn) \approx 9{,}17\times10^{-3}\ \text{mol}}'
+            note: "Quantite initiale de zinc."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Déterminer le réactif limitant et déduire l'avancement maximal $x_{max}$ de la réaction.
+        reasoning: |-
+          Le réactif limitant est celui dont le rapport quantité/coefficient stœchiométrique est le plus petit — c'est lui qui s'annule en premier dans le tableau du rung 2. On compare donc $n_i(Zn)/1$ à $n_i(H_3O^+)/2$, pas les deux quantités brutes entre elles (comparer $9{,}17\times10^{-3}$ à $0{,}03$ directement ignorerait que $H_3O^+$ est consommé DEUX FOIS plus vite que $Zn$, à cause du coefficient $2$).
+        steps:
+          - math: '\frac{n_i(Zn)}{1} = 9{,}17\times10^{-3}\ \text{mol} \qquad \frac{n_i(H_3O^+)}{2} = \frac{0{,}03}{2} = 0{,}015\ \text{mol}'
+            note: "On compare les quantites DIVISEES par leur coefficient stoechiometrique, pas les quantites brutes."
+          - math: '9{,}17\times10^{-3} < 0{,}015 \implies Zn\ \text{est le reactif limitant}'
+            note: "Le plus petit rapport designe le reactif limitant : c'est Zn, pas H3O+."
+          - math: '\boxed{x_{max} = n_i(Zn) \approx 9{,}17\times10^{-3}\ \text{mol}}'
+            note: "Zn a un coefficient 1 : x_max vaut directement sa quantite initiale."
+      - id: q4
+        part: "Établir x(t) à partir d'une mesure de pression"
+        stem: |-
+          **(1 pt)** Par application de la loi des gaz parfaits, et à l'aide du tableau descriptif précédent, établir l'expression de l'avancement $x(t)$ de la réaction à un instant $t$ en fonction de $R$, $T$, $V$ et $\Delta P$, où $\Delta P = P - P_0$, avec $P_0$ la pression initiale mesurée à l'instant $t_0 = 0$ et $P$ la pression mesurée à l'instant $t$.
+        reasoning: |-
+          Exactement le principe du rung 1 : on ne mesure jamais $x$ directement, on mesure une grandeur SUBSTITUT qui lui est reliée par une loi connue — ici, ce n'est pas une absorbance ou une conductivité, c'est une pression. Le tableau de la question 1 dit que le seul gaz produit est $H_2$, en quantité $x(t)$ à l'instant $t$ : c'est donc l'apparition de ce gaz, seule, qui fait monter la pression au-delà de sa valeur initiale $P_0$. En appliquant la loi des gaz parfaits à ce $H_2$ formé, dans le volume constant $V$ du ballon :
+        steps:
+          - math: 'n(H_2) = x(t) \quad \text{(coefficient 1 dans le tableau, question 1)}'
+            note: "Le seul gaz produit est H2, en quantite egale a l'avancement x(t)."
+          - math: '\Delta P \cdot V = x(t)\cdot R\cdot T'
+            note: "Loi des gaz parfaits P.V=n.R.T appliquee au H2 forme : DeltaP est la pression due a ce gaz, dans le volume V constant."
+          - math: '\boxed{x(t) = \frac{\Delta P \cdot V}{R\cdot T}}'
+            note: "Expression demandee."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** Soit $\Delta P_{max} = P_{max}-P_0$ la variation maximale de la pression et $x_{max}$ l'avancement maximal de la réaction. Montrer la relation : $x(t) = x_{max}\dfrac{\Delta P}{\Delta P_{max}}$.
+        reasoning: |-
+          On applique la MÊME relation qu'à la question précédente, mais cette fois à l'état final, où l'avancement vaut $x_{max}$ et la variation de pression $\Delta P_{max}$. Diviser les deux relations terme à terme fait disparaître le facteur $V/(RT)$ — commun aux deux et jamais donné numériquement dans cet énoncé — et ne laisse plus qu'un rapport entre grandeurs mesurables.
+        steps:
+          - math: '\Delta P_{max}\cdot V = x_{max}\cdot R\cdot T \quad \text{(meme relation qu a la question 4, a l etat final)}'
+            note: "Loi des gaz parfaits appliquee a l'etat final, ou l'avancement vaut x_max."
+          - math: '\frac{x(t)}{x_{max}} = \frac{\Delta P\cdot V/(R\cdot T)}{\Delta P_{max}\cdot V/(R\cdot T)} = \frac{\Delta P}{\Delta P_{max}}'
+            note: "Division terme a terme des deux relations (question 4 et ci-dessus) : V/(RT) se simplifie."
+          - math: '\boxed{x(t) = x_{max}\,\frac{\Delta P}{\Delta P_{max}}}'
+            note: "Relation demandee."
+      - id: q6
+        part: "Lecture graphique de t_1/2 — la garde S1 s'applique ici"
+        stem: |-
+          **(1 pt)** Une étude expérimentale a permis de traçer la courbe de la figure 1, traduisant les variations de $\Delta P$ en fonction du temps. Trouver graphiquement la valeur du temps de demi-réaction $t_{1/2}$. *(« traçer » tel qu'imprimé, pour « tracer ».)*
+        reasoning: |-
+          ⛔ **La garde S1 s'applique intégralement à cette question — voir la note en tête de fiche.** On ne va PAS lire un $\Delta P_{max}$ en hPa sur cette figure : son échelle imprimée est incompatible avec les données (facteur ≈ 3,24, voir `sourcing.note`), et toute valeur qu'on en tirerait serait fausse. On n'en a heureusement pas besoin.
+
+          Par définition (rung 4), $t_{1/2}$ est l'instant où $x(t_{1/2}) = x_{max}/2$. Par la relation établie à la question 5, $x(t)/x_{max} = \Delta P(t)/\Delta P_{max}$ — un rapport de deux hauteurs sur CETTE MÊME courbe, quelle que soit l'unité ou la justesse de l'étalonnage vertical. La condition sur $x$ se traduit donc en une condition purement RELATIVE sur la figure :
+
+          $$x(t_{1/2}) = \frac{x_{max}}{2} \iff \Delta P(t_{1/2}) = \frac{\Delta P_{max}}{2}$$
+
+          C'est la MI-HAUTEUR DU PALIER — un point que l'on repère visuellement sans jamais lire le nombre d'hPa qu'il représente : on prend le milieu, en hauteur, entre l'origine et le plateau, et on lit l'abscisse du point de la courbe qui l'atteint. Cette lecture ne dépend que de la FORME de la courbe et de l'axe des temps — le seul des deux axes que le défaut S1 ne touche pas.
+        steps:
+          - math: 'x(t_{1/2}) = \frac{x_{max}}{2} \iff \Delta P(t_{1/2}) = \frac{\Delta P_{max}}{2} \quad \text{(question 5, rapport insensible a l echelle verticale)}'
+            note: "Condition de definition du rung 4, traduite en une lecture RELATIVE (mi-hauteur du palier), pas en une valeur absolue de DeltaP."
+          - math: '\boxed{t_{1/2} \approx 42\ \text{min}}'
+            note: "Lecture graphique : abscisse du point de la figure 1 a mi-hauteur du plateau -- aucune valeur absolue de DeltaP utilisee (garde S1)."

@@ -115,6 +115,36 @@
 #     n = V/V_m (volume molaire des gaz). Aucun rung de cette leçon
 #     n'introduit cette relation ; pontée au point d'usage dans le
 #     raisonnement de la question 3.
+#   - bk-2011-n-x1b, q3 : comparer la quantité d'ions Ag+ DISPONIBLE dans
+#     chaque solution à la quantité NÉCESSAIRE pour déposer m(Ag) (question
+#     2) reprend le principe du réactif limitant — déjà vu ailleurs dans le
+#     corpus (ex. suivi-temporel-vitesse, rung R2, tableau d'avancement) —
+#     mais aucun rung de CETTE leçon ne l'applique explicitement à une
+#     quantité d'ions consommés par électrolyse : R4 chiffre toujours un
+#     dépôt à partir d'un courant et d'une durée, jamais une limite de
+#     stock d'ions disponibles. Pontée au point d'usage dans le
+#     raisonnement de la question 3.
+#
+# NOTE ÉDITORIALE — bk-2011-n-x1b (2026-08-29, ajout). Seconde partie de
+# l'exercice de Chimie du sujet 2011 N (argenture d'une pièce de cuivre par
+# électrolyse d'une solution de nitrate d'argent) ; la première partie
+# (cinétique par mesure de pression) est en banque sous
+# content/pc/suivi-temporel-vitesse/bank.yaml, entrée bk-2011-n-x1. **S2,
+# NUMÉROTATION CORRIGÉE DANS LA CARTE** : le sujet officiel titre CETTE
+# partie « Partie I : Etude quantitative d'une électrolyse » — la
+# DEUXIÈME occurrence de « Partie I » dans le même exercice (la p. 1
+# annonce pourtant bien deux volets distincts, et le corrigé non officiel
+# la retitre en silence « Partie II »). Le titre étudiant porte la
+# numérotation vraie, avec une note. **LA DEMI-ÉQUATION DE CATHODE DU
+# CORRIGÉ NON OFFICIEL EST FAUSSE** (voir `sourcing.note` de l'entrée) :
+# $Ag^+ + 2e^- \rightleftharpoons Ag$, non équilibrée — la demi-équation
+# correcte utilisée ici est $Ag^+ + e^- \rightleftharpoons Ag$, un seul
+# électron par atome d'argent déposé, cohérent avec la propre chaîne
+# numérique du corrigé ($n(Ag)=n(e^-)$). Aucun recoupement numérique avec
+# les cinq autres sujets de cette banque : couple $Ag^+/Ag$ inédit ici,
+# générateur sans polarité marquée (identification des électrodes par
+# observation, comme bk-2018-n-x1), et une question de choix de solution
+# suffisante (q3) absente ailleurs dans ce fichier.
 
 notion: pc/electrolyse
 
@@ -810,3 +840,118 @@ entries:
             note: "Conversion mole -> volume par le volume molaire des gaz, donne dans l'enonce (hors rungs de cette lecon, meme pont que bk-2018-n-x1)."
           - math: '\boxed{V(Cl_2) \approx 0{,}583\ \text{L}}'
             note: "Volume de dichlore degage pendant Delta t."
+
+  # ── bk-2011-n-x1b — 2011 N, Chimie seconde partie [imprimée « Partie I »,
+  #    S2] : argenture d'une pièce de cuivre par électrolyse ──
+  - id: bk-2011-n-x1b
+    title: "Argenture d'une pièce de cuivre par électrolyse d'une solution de nitrate d'argent : demi-équations, masse déposée par la loi de Faraday, et choix de la solution suffisante"
+    source:
+      year: 2011
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Chimie — « Partie I » [sic, seconde partie] : Étude quantitative d'une électrolyse"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2011 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28, AlloSchool element/94445 (Chimie, seconde
+        partie — argenture d'une pièce de cuivre par électrolyse d'une
+        solution de nitrate d'argent ; barème 2,50 pt (1+1+0,5), 3
+        questions, sur les 07,00 pt de l'exercice de Chimie complet, dont
+        la première partie — suivi cinétique par mesure de pression — est
+        transcrite à part sous content/pc/suivi-temporel-vitesse/bank.yaml,
+        entrée bk-2011-n-x1 ; pas de double comptage : 4,50+2,50=7,00).
+        CHOIX DE L'`id` : le suffixe `b` suit le patron déjà établi ailleurs
+        dans ce corpus pour la seconde partie d'un exercice de Chimie (ex.
+        bk-2015-n-x1b, docs/grounding/known-issues.md K-7 bis).
+        Transcription source vérifiée par une passe adversariale
+        indépendante du 2026-08-29 (docs/sujets/_incoming/pc-2011-n.md,
+        statut « VÉRIFIÉ — clearé pour conversion »), 27/27 questions du
+        sujet re-dérivées. **S2, PORTÉ MAIS NUMÉROTÉ CORRECTEMENT DANS LA
+        CARTE** : le titre imprimé par le sujet officiel pour cette partie
+        est, mot pour mot, « Partie I : Etude quantitative d'une
+        électrolyse » — la DEUXIÈME occurrence de « Partie I » dans le même
+        exercice de Chimie (la page 1 annonce pourtant bien deux volets
+        distincts, et le corrigé non officiel lui-même la retitre en
+        silence « Partie II »). Le titre ci-dessous porte la numérotation
+        VRAIE (« seconde partie »), avec cette note ; `exercise_label`
+        documente le texte tel qu'imprimé entre guillemets. **LA
+        DEMI-ÉQUATION DE CATHODE DU CORRIGÉ NON OFFICIEL EST FAUSSE** : ce
+        corrigé (TelmidTice / talamidi.com, même signature interne,
+        authentifié par MD5 mais non officiel) imprime, dans ses deux
+        exemplaires retrouvés, $Ag^+ + 2e^- \rightleftharpoons Ag$ — non
+        équilibrée en électrons — alors que sa PROPRE chaîne numérique
+        utilise $n(Ag)=n(e^-)$, soit un seul électron par atome d'argent.
+        La demi-équation correcte, utilisée ci-dessous, est $Ag^+_{(aq)} +
+        e^- \rightleftharpoons Ag_{(s)}$ ; le corrigé n'est cité que comme
+        RECOUPEMENT de valeurs (m(Ag) ≈ 1,51 g ; (S2) permet d'obtenir
+        cette masse), jamais comme source d'une équation. Coquilles de
+        langue reproduites verbatim, non corrigées (G7 « complétement »
+        pour « complètement » ; T1 doubles espaces) — voir
+        docs/sujets/_incoming/pc-2011-n.md §9 pour le registre complet.
+    intro: |-
+      **Argenture d'une pièce de cuivre par électrolyse (examen national, session normale 2011 — Chimie, seconde partie, 2,50 points sur les 7,00 de l'exercice complet).**
+
+      *(Le sujet officiel imprime le titre de cette partie « Partie I : Etude quantitative d'une électrolyse » — la DEUXIÈME occurrence de « Partie I » dans le même exercice de Chimie ; c'est un défaut du sujet, consigné, la numérotation ci-dessus est la vraie.)*
+
+      *La première partie de cet exercice — le suivi cinétique de l'action de l'acide sulfurique sur le zinc par mesure de pression — est indépendante et traitée à part, sous la notion « Suivi temporel d'une transformation » (entrée bk-2011-n-x1). Rien de ce qui suit n'en dépend.*
+
+      La galvanisation est l'une des applications industrielles de l'électrolyse, visant à recouvrir un métal par une couche fine d'un autre métal, dans un but de protection ou d'esthétique.
+
+      Le but de cet exercice est l'étude de l'opération d'argenture d'une pièce de cuivre à l'aide de l'électrolyse.
+
+      **Données :**
+      - Les couples intervenants : $\left(O_{2(g)}/H_2O_{(\ell)}\right)$ et $\left(Ag^+_{(aq)}/Ag_{(s)}\right)$ ;
+      - $1\ \mathcal{F} = 96500\ \text{C.mol}^{-1}$ ;
+      - La masse molaire atomique de l'argent : $M(Ag) = 108\ \text{g.mol}^{-1}$.
+
+      On immerge complétement *(« complétement » tel qu'imprimé, pour « complètement ».)* une plaque de cuivre dans une solution $(S)$ de nitrate d'argent $\left(Ag^+_{(aq)} + NO_3^{-}{}_{(aq)}\right)$ de concentration molaire $C$ et de volume $V=0{,}5\ \text{L}$. On relie la plaque par un fil conducteur à l'un des pôles d'un générateur électrique $G$, dont l'autre pôle est relié à une électrode en graphite (figure 2). Après la fermeture de l'interrupteur $K$, le générateur $G$ alimente, pendant $\Delta t = 45\ \text{min}$, le circuit par un courant d'intensité constante $I=0{,}5\ \text{A}$. On obtient un dégagement du dioxygène $O_2$ au voisinage de l'électrode de graphite et un dépôt d'argent de façon uniforme sur l'autre électrode.
+
+      **Figure 2 (schéma du dispositif).** Un générateur $G$ (cercle, en haut au centre), deux fils descendant de part et d'autre — AUCUNE polarité $+/-$ n'est marquée sur $G$. Branche de gauche : interrupteur $K$ (ouvert), puis une électrode rectangulaire blanche, non hachurée, partiellement immergée, étiquetée « Plaque de cuivre ». Branche de droite : une électrode rectangulaire hachurée, plus grande, immergée, étiquetée « Electrode de graphite ». Le bécher contient la « Solution de nitrate d'argent ».
+    questions:
+      - id: q1
+        stem: |-
+          **(1 pt)** Écrire la demi-équation modélisant la transformation ayant lieu au voisinage de chaque électrode.
+        reasoning: |-
+          Comme au rung 1 : on décide d'abord OXYDATION ou RÉDUCTION à chaque électrode, à partir de ce que l'énoncé OBSERVE — aucune polarité n'est marquée sur le générateur $G$ (figure 2), donc rien à lire de ce côté-là, exactement comme pour bk-2018-n-x1 dans cette même banque. Un dépôt de métal à partir d'un ion en solution est une RÉDUCTION : l'énoncé dit que l'argent se dépose sur la plaque de cuivre, donc c'est là que $Ag^+$ capte un électron pour redevenir $Ag$ métal — la plaque de cuivre est la cathode. Un dégagement de dioxygène au voisinage de l'électrode de graphite est une OXYDATION de l'eau (seul couple disponible pour l'oxygène dans les données) — l'électrode de graphite est l'anode.
+        steps:
+          - math: 'Ag^+_{(aq)} + e^- \rightarrow Ag_{(s)}'
+            note: "Cathode = plaque de cuivre : reduction des ions argent, un seul electron par atome depose."
+          - math: '2\,H_2O_{(\ell)} \rightarrow O_{2(g)} + 4\,H^+_{(aq)} + 4\,e^-'
+            note: "Anode = electrode de graphite : oxydation de l'eau, degagement de dioxygene."
+      - id: q2
+        stem: |-
+          **(1 pt)** Trouver l'expression de la masse $m(Ag)$ d'argent formé en fonction de : $I$, $\Delta t$, $M(Ag)$ et $\mathcal{F}$. Calculer sa valeur.
+        reasoning: |-
+          La chaîne du rung 4, dans le sens direct : le courant et la durée donnent la quantité d'électricité $Q$ ; la constante de Faraday la convertit en quantité de matière d'électrons ; et la demi-équation de la cathode (question 1) dit qu'un seul électron dépose un atome d'argent — contrairement au zinc ou au plomb d'autres sujets de cette banque, où il en fallait deux.
+        steps:
+          - math: 'Q = I\,\Delta t \qquad n(e^-) = \frac{Q}{\mathcal{F}} = \frac{I\,\Delta t}{\mathcal{F}}'
+            note: "Quantite d'electricite puis quantite de matiere d'electrons, loi de Faraday (rung 4)."
+          - math: 'n(Ag) = n(e^-) \quad \text{(un seul electron par atome d argent, question 1)}'
+            note: "Coefficient 1 dans la demi-equation de cathode : n(Ag) = n(e-), pas n(e-)/2."
+          - math: '\boxed{m(Ag) = n(Ag)\times M(Ag) = \frac{I\,\Delta t\,M(Ag)}{\mathcal{F}}}'
+            note: "Expression litterale demandee."
+          - math: '\Delta t = 45\ \text{min} = 2700\ \text{s}'
+            note: "Conversion de la duree en secondes avant application numerique."
+          - math: 'n(e^-) = \frac{0{,}5\times2700}{96500} \approx 1{,}40\times10^{-2}\ \text{mol}'
+            note: "Application numerique de la loi de Faraday."
+          - math: '\boxed{m(Ag) = 1{,}40\times10^{-2}\times108 \approx 1{,}51\ \text{g}}'
+            note: "Masse d'argent deposee pendant Delta t."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** On dispose de deux solutions $(S_1)$ et $(S_2)$ de nitrate d'argent, de concentrations respectives $C_1 = 1{,}8\times10^{-2}\ \text{mol.L}^{-1}$ et $C_2 = 3\times10^{-2}\ \text{mol.L}^{-1}$ et de même volume $V = 0{,}5\ \text{L}$. Déterminer parmi ces deux solutions celle qui permet d'obtenir la masse $m(Ag)$.
+        reasoning: |-
+          SCOPE NOTE (voir l'en-tête du fichier) : aucun rung de cette leçon ne compare explicitement une quantité d'ions DISPONIBLE à une quantité NÉCESSAIRE — R4 suppose toujours assez de réactif en solution. Le principe reste celui d'un réactif limitant (déjà vu ailleurs dans le corpus, ex. suivi-temporel-vitesse) : une solution ne peut fournir le dépôt calculé à la question 2 que si elle contient AU MOINS $n(Ag) \approx 1{,}40\times10^{-2}\ \text{mol}$ d'ions $Ag^+$ — sans quoi la solution s'épuise avant la fin des $\Delta t = 45\ \text{min}$, et le dépôt réel s'arrête plus tôt, avec une masse plus faible que $m(Ag)$.
+        steps:
+          - math: 'n_1(Ag^+) = C_1\times V = 1{,}8\times10^{-2}\times0{,}5 = 9{,}0\times10^{-3}\ \text{mol}'
+            note: "Quantite d'ions Ag+ disponible dans (S1)."
+          - math: '9{,}0\times10^{-3} < 1{,}40\times10^{-2} \implies (S_1)\ \text{insuffisante : depot limite a } 9{,}0\times10^{-3}\times108 \approx 0{,}972\ \text{g}'
+            note: "(S1) n'a pas assez d'ions Ag+ pour soutenir le depot complet calcule a la question 2."
+          - math: 'n_2(Ag^+) = C_2\times V = 3\times10^{-2}\times0{,}5 = 1{,}5\times10^{-2}\ \text{mol}'
+            note: "Quantite d'ions Ag+ disponible dans (S2)."
+          - math: '1{,}5\times10^{-2} > 1{,}40\times10^{-2} \implies (S_2)\ \text{suffisante : jusqu a } 1{,}5\times10^{-2}\times108 \approx 1{,}62\ \text{g}'
+            note: "(S2) contient plus d'ions Ag+ que necessaire : le depot complet m(Ag) est atteignable, avec des ions restants."
+          - math: '\boxed{(S_2)\ \text{permet d obtenir la masse } m(Ag) \approx 1{,}51\ \text{g}}'
+            note: "Reponse : (S2), seule des deux a fournir assez d'ions Ag+."
