@@ -2939,6 +2939,42 @@ try {
     // on le laisse sous le seuil d'affichage (une conversion en cours reste
     // invisible tant qu'elle est sous 9,75 — c'est voulu, et c'est ce qui
     // permet de committer un travail à moitié fait sans le montrer).
+    // LE COMPTE D'EXERCICES NE PEUT PAS S'EFFONDRER À UN (2026-09-03).
+    //
+    // `nbExercices` compte les numéros d'exercice DISTINCTS d'une épreuve.
+    // Quand la lecture de ces numéros échoue, elle échoue de façon
+    // caractéristique : tous les morceaux retombent sur la même valeur par
+    // défaut, l'ensemble se réduit à un élément, et la carte annonce
+    // « 1 exercice » pour une épreuve qui en a quatre. C'est exactement ce
+    // qu'affichait SPC 2011 normale, dont le sujet nomme ses exercices par
+    // discipline au lieu de les numéroter — et l'ordre des exercices était
+    // faux avec.
+    //
+    // La borne basse est donc calée sur la SIGNATURE de la panne, pas sur
+    // une intuition : l'effondrement produit toujours 1. Mesuré ce jour sur
+    // les 37 épreuves du corpus, le compte réel va de 3 à 5 — ce qui est la
+    // structure d'une épreuve du bac marocain. La borne haute est large
+    // exprès : elle n'a pas de panne connue à attraper, elle interdit
+    // seulement l'absurde.
+    checks++;
+    const comptes = await epage.evaluate(() =>
+      [...document.querySelectorAll("[data-epreuve]")].map((c) => ({
+        id: c.getAttribute("data-epreuve"),
+        n: parseInt(c.querySelector("[data-epreuve-exos]")?.textContent ?? "0", 10),
+      }))
+    );
+    const absurdes = comptes.filter((c) => !(c.n >= 2 && c.n <= 8));
+    if (absurdes.length) {
+      failures += fail(
+        `compte d'exercices absurde : ${absurdes.map((c) => `${c.id}=${c.n}`).join(", ")} — ` +
+          `un compte de 1 est la signature d'un effondrement de la lecture des numéros d'exercice ` +
+          `(tous les morceaux retombent sur la même valeur par défaut). Corpus mesuré : 3 à 5.`
+      );
+    } else {
+      const vus = [...new Set(comptes.map((c) => c.n))].sort((a, b) => a - b);
+      console.log(`  ✓ ${comptes.length} épreuves, compte d'exercices dans [${vus.join(", ")}]`);
+    }
+
     checks++;
     const BANDE_TOLEREE = new Set([
       // id → la raison, qui doit être un arbitrage owner consigné.
