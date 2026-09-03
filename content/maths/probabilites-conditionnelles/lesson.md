@@ -124,10 +124,14 @@ L'outil central de cette notion, c'est l'**arbre pondéré**. Il dessine visuell
 
 Voici comment le lire. Prenons un exemple concret : dans une classe, 60 % des élèves pratiquent un sport collectif ($P(A) = 0{,}6$). Parmi les sportifs, 50 % jouent au football ($P(B|A) = 0{,}5$). Parmi les non-sportifs, 20 % jouent quand même au football ($P(B|\bar{A}) = 0{,}2$).
 
-<!-- SLOT D'AMÉLIORATION : figure arbre pondéré (diagram-author, ADR 0017 —
-     schéma structurel = SVG codé). Le marqueur ci-dessous est un no-op
-     silencieux tant que media/arbre-pondere.svg n'existe pas. La prose
-     adjacente référence l'arbre : dette C5 notée au HANDOFF. -->
+<!-- La figure EXISTE : media/arbre-pondere.svg, construite le 2026-08-22,
+     stagée en 3 étapes — et le marqueur apparaît trois fois dans cette
+     leçon, une par étape (le renderer avance d'une étape à chaque
+     occurrence). Ce commentaire annonçait le contraire jusqu'au
+     2026-09-03 : il datait d'avant la construction et n'avait jamais été
+     retiré, pas plus que le point 7 du HANDOFF. Un slot qui se dit vide
+     alors qu'il est rempli coûte cher — il envoie le lecteur refaire ce
+     qui est fait. -->
 
 [[figure:arbre-pondere]]
 
@@ -272,10 +276,14 @@ $$\boxed{P(B) = P(A) \cdot P(B|A) + P(\bar{A}) \cdot P(B|\bar{A})}$$
 
 C'est la **formule des probabilités totales**.
 
-<!-- SLOT D'AMÉLIORATION : figure arbre pondéré (diagram-author, ADR 0017 —
-     schéma structurel = SVG codé). Le marqueur ci-dessous est un no-op
-     silencieux tant que media/arbre-pondere.svg n'existe pas. La prose
-     adjacente référence l'arbre : dette C5 notée au HANDOFF. -->
+<!-- La figure EXISTE : media/arbre-pondere.svg, construite le 2026-08-22,
+     stagée en 3 étapes — et le marqueur apparaît trois fois dans cette
+     leçon, une par étape (le renderer avance d'une étape à chaque
+     occurrence). Ce commentaire annonçait le contraire jusqu'au
+     2026-09-03 : il datait d'avant la construction et n'avait jamais été
+     retiré, pas plus que le point 7 du HANDOFF. Un slot qui se dit vide
+     alors qu'il est rempli coûte cher — il envoie le lecteur refaire ce
+     qui est fait. -->
 
 [[figure:arbre-pondere]]
 
@@ -325,10 +333,14 @@ $$P(A|B) = P_B(A) = \frac{P(A \cap B)}{P(B)} = \frac{P(A \cap B)}{P(A \cap B) + 
 3. La feuille qui nous intéresse est $A \cap B$.
 4. Diviser : $P(A|B) = \frac{P(A \cap B)}{P(B)}$.
 
-<!-- SLOT D'AMÉLIORATION : figure arbre pondéré (diagram-author, ADR 0017 —
-     schéma structurel = SVG codé). Le marqueur ci-dessous est un no-op
-     silencieux tant que media/arbre-pondere.svg n'existe pas. La prose
-     adjacente référence l'arbre : dette C5 notée au HANDOFF. -->
+<!-- La figure EXISTE : media/arbre-pondere.svg, construite le 2026-08-22,
+     stagée en 3 étapes — et le marqueur apparaît trois fois dans cette
+     leçon, une par étape (le renderer avance d'une étape à chaque
+     occurrence). Ce commentaire annonçait le contraire jusqu'au
+     2026-09-03 : il datait d'avant la construction et n'avait jamais été
+     retiré, pas plus que le point 7 du HANDOFF. Un slot qui se dit vide
+     alors qu'il est rempli coûte cher — il envoie le lecteur refaire ce
+     qui est fait. -->
 
 [[figure:arbre-pondere]]
 

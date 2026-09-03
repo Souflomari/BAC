@@ -69,11 +69,29 @@
    **ledger §11's twelve Day-11 calls** remain FABLE-DECIDED /
    OWNER-REVIEW-PENDING except where marked OWNER-DIRECTED.
 7. **The maths notion is pre-sprint debt.** It predates template v2 and the
-   week's grammars: rungs authored at h3 (one rail entry, no ordinals), the
-   arbre-pondéré figure never built while the prose references it (C5 —
-   diagram-author lane), summit unsourced, no attempt-first/derivation
-   grammar. Its five leak classes were fixed in the final batch, but the
-   full template-v2 retrofit is a dispatched notion-pass of its own.
+   week's grammars: rungs authored at h3 (one rail entry, no ordinals),
+   ~~the arbre-pondéré figure never built while the prose references it
+   (C5 — diagram-author lane)~~, summit unsourced, no
+   attempt-first/derivation grammar. Its five leak classes were fixed in
+   the final batch, but the full template-v2 retrofit is a dispatched
+   notion-pass of its own.
+
+   **La dette C5 est PÉRIMÉE — rectifiée le 2026-09-03.** La figure existe
+   depuis le 2026-08-22 : `content/maths/probabilites-conditionnelles/media/arbre-pondere.svg`,
+   avec son sidecar d'étapes (3 étapes) et son aria-label. Elle est
+   même citée comme **référence or maths** par le skill
+   `figure-authoring`. Ni ce point du HANDOFF ni le commentaire de la
+   leçon n'avaient été mis à jour quand elle a été construite, si bien
+   que le dépôt annonçait à deux endroits une dette payée — et j'ai
+   moi-même perdu du temps à vouloir la payer une seconde fois avant de
+   faire un `ls`. La leçon a été rectifiée dans le même mouvement.
+
+   *Ce que la figure avait en revanche de réel, et qui est corrigé le
+   même jour : onze couleurs codées en dur (boîtes quasi blanches
+   éclatant en thème sombre, étiquettes d'arêtes à ~2:1 de contraste),
+   une police qui détonnait de ses deux sœurs, et un
+   `text { text-anchor: middle }` non scopé qui débordait sur les autres
+   figures de la page.*
 
 ## 1. External-audit triage (July 2026 — full text at
 `docs/audits/external-design-audit-2026-07.md`; verification measurements
