@@ -199,7 +199,46 @@ add_("<!-- GÉNÉRÉ par scripts/figure-geometrie-espace-2019.py — ne pas édi
 # ── step-1 : le repère et les trois points ──────────────────────────────
 add_('<g id="step-1">')
 O = (0.0, 0.0, 0.0)
-for vec, nom in (((3.1, 0, 0), "x"), ((0, 3.1, 0), "y"), ((0, 0, 3.1), "z")):
+# Les axes sont BORNÉS AU CADRE (correctif du 2026-09-03).
+#
+# _cadre() ci-dessus cadre sur l'action et laisse volontairement déborder la
+# sphère et le plan — c'est un choix assumé et documenté. Mais les extrémités
+# des axes ne figurent PAS dans les points qu'il considère : leur débordement
+# n'était pas un choix, c'était un effet de bord. Mesuré sur le SVG produit :
+# l'axe y courait jusqu'à x = 1030 et son étiquette à 1089, l'axe z jusqu'à
+# y = −232 et son étiquette à −291, pour un cadre de 640 × 500. Deux des trois
+# axes d'un repère 3D sortaient donc du dessin AVEC leur pointe et leur nom :
+# l'élève ne pouvait plus dire lequel était y et lequel était z.
+#
+# Les allonger dans le cadre serait faux (il faudrait dézoomer, et le
+# docstring de _cadre() explique justement pourquoi on ne le fait pas : ça
+# écrase A, B, C et Oméga en un petit tas). On les RACCOURCIT donc : chaque
+# axe garde sa direction et s'arrête à la longueur qui laisse sa pointe ET
+# son étiquette dans le cadre.
+MARGE_AXE = 22.0  # place pour la pointe et le nom de l'axe
+
+
+def _longueur_visible(direction, maxi=3.1):
+    """La plus grande longueur, le long de `direction`, dont la pointe et
+    l'étiquette (posée à 1,13 × la longueur) tiennent dans le viewBox."""
+    lo, hi = 0.0, maxi
+    for _ in range(40):
+        milieu = (lo + hi) / 2
+        ex, ey = P(mul(direction, milieu * 1.13))
+        dedans = (
+            MARGE_AXE <= ex <= LARGEUR - MARGE_AXE
+            and MARGE_AXE <= ey <= HAUTEUR - MARGE_AXE
+        )
+        if dedans:
+            lo = milieu
+        else:
+            hi = milieu
+    return lo
+
+
+for direction, nom in (((1.0, 0, 0), "x"), ((0, 1.0, 0), "y"), ((0, 0, 1.0), "z")):
+    L = _longueur_visible(direction)
+    vec = mul(direction, L)
     add_(fleche(O, vec, "var(--figure-grid)", largeur=1.6, tete=7))
     ex, ey = P(mul(vec, 1.13))
     add_(texte(ex - 4, ey + 4, nom, 14, "var(--figure-grid)"))
