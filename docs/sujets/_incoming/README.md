@@ -145,10 +145,20 @@ maths, où il ne manquait qu'un problème par épreuve.
 
 | `pc-2012-r.md` | **SUJET ENTIER** (4ᵉ intégrale) — électrolyse · cinétique d'hydrolyse · diffraction · circuit LC · réception AM · Kepler (Jupiter/Io) | 20,00 | **⚠️ NON VÉRIFIÉ** (2026-09-03). **L'édition française est MINISTÉRIELLE**, établie par cinq preuves (code `RS28` au cartouche, formule d'époque, pieds de page vides à 300 dpi, barème miroir de l'arabe) — **l'inverse de 2010 R, et ça change la méthode** : les écarts FR/AR sont ici des défauts de l'édition OFFICIELLE, pas des artefacts de traduction. **Défaut grave F1** : la question désigne « les parties 1 et 2 » là où l'arabe dit deux fois « 2 et 3 » — le corrigé répond pour 2 et 3, et la figure donne raison à l'arabe (la partie 1 est le circuit d'accord, elle ne démodule rien). Barème 20,00 par trois chemins. **Le corrigé arabe, témoin inédit, se trompe sur la vitesse volumique** (il divise par le volume d'ester, facteur 3,33) : la valeur juste est 2,5·10⁻² mol·L⁻¹·min⁻¹ |
 
+| `pc-2013-r.md` | **SUJET ENTIER** (5ᵉ intégrale) — électrolyse NiCl₂ · acide méthanoïque · estérification · iode 131 · RL · RLC · pendule pesant | 20,00 | **⚠️ NON VÉRIFIÉ** (2026-09-03). **Édition française MINISTÉRIELLE**, et la preuve est plus forte que pour 2012 R : le **code `RS28` est imprimé, identique à celui de l'original arabe** — un traducteur privé n'a pas de code d'examen. 33/33 questions résolubles. **PIÈGE NEUF POUR LE PROTOCOLE : les chiffres de la couche de texte arabe sont FAUX ET PLAUSIBLES** — « الشكل 1 » s'extrait « الشكل 3 ». Barème, légendes et dates relus au rendu. **Défaut du sujet F1** (les deux éditions) : l'amortissement dessiné correspond à R ≈ 50 Ω contre 208,4 Ω imposés par le circuit. **Le corrigé se contredit lui-même** sur E_m (il lit 10 mJ en 2θm/3, ce qui impose 22,5 — et écrit 25) |
+
 **Vague SPC 4 (les rattrapages localisés par la prospection arabophone).**
-2012 R est transcrit ; 2013 R l'est en parallèle. Ces deux-là avaient
-sujet ET corrigé localisés d'avance, et l'original arabe disponible dès
-la transcription — un avantage qu'aucune passe précédente n'avait.
+2012 R et 2013 R sont transcrits. Ces deux-là avaient sujet ET corrigé
+localisés d'avance, et l'original arabe disponible dès la transcription
+— un avantage qu'aucune passe précédente n'avait. **Leurs deux résultats
+de provenance sont concordants et opposés à celui de 2010 R : les deux
+éditions françaises sont ministérielles.** La question de provenance se
+pose donc sujet par sujet ; elle ne se règle pas par la série.
+
+**Restent `non recherché` : 2008 R et 2009 R** — et leurs identifiants
+sont désormais connus (`57693` et `94426`, relevés hors périmètre par la
+passe 2013 R). 2009 R est un fax numérisé sans couche de texte : pour
+cette seule session, le français est la meilleure source.
 
 **Vague SPC 2 (les trois sujets à zéro entrée) : CLOSE côté transcription.**
 SPC 2011 N et SPC 2015 R sont **vérifiés ET convertis** (20,00 chacun,
