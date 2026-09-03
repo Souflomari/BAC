@@ -257,23 +257,46 @@ export function listEpreuves(): Epreuve[] {
       // L'ordre du sujet réel : numéro d'exercice, puis rang de la sous-partie
       // (§N, « Partie II », « Première partie »… — voir sousOrdre), et le
       // titre en dernier recours seulement.
+      // LE REPLI SUR L'IDENTIFIANT NE VAUT QUE POUR UNE ÉPREUVE ENTIÈREMENT
+      // MUETTE — restriction ajoutée le 2026-09-03, après une régression que
+      // le repli avait lui-même causée.
+      //
+      // Le repli sert les sujets qui ne numérotent PAS leurs exercices (SPC
+      // 2010 N, 2011 N, 2011 R, 2012 N : « Chimie », « Électricité »…). Mais
+      // appliqué entrée par entrée, il abîme les épreuves MIXTES. Les sujets
+      // de maths SExp numérotent « Exercice 1..4 » puis referment sur un
+      // « Problème » — sans numéro, et volontairement : le problème est la
+      // dernière partie de l'épreuve. Le repli lui prêtait le numéro de
+      // l'identifiant qu'il partage avec un exercice voisin (K-7 : un
+      // exercice découpé garde son id dans chaque notion), et SExp 2022
+      // affichait le Problème AVANT l'exercice 4. Sans le repli, un libellé
+      // muet tombe à 99, c'est-à-dire en dernier — ce qui est exactement
+      // juste pour un « Problème ».
+      //
+      // La restriction est donc : on ne lit les identifiants QUE si aucun
+      // libellé de l'épreuve ne porte de numéro. Dans ce cas seul, 99 pour
+      // tout le monde ne départage plus rien, et l'identifiant est la seule
+      // information de position disponible.
+      const aucunLibelleNumerote = ep.exercices.every(
+        (x) => numeroExercice(x.exerciseLabel) === 99
+      );
       ep.exercices.sort((a, b) => {
-        // Le libellé d'abord ; l'identifiant quand le libellé se tait
-        // (sujet qui nomme ses exercices par discipline — voir numeroDepuisId).
         const na = numeroExercice(a.exerciseLabel);
         const nb = numeroExercice(b.exerciseLabel);
-        let d =
-          (na === 99 ? numeroDepuisId(a.entry.id) : na) -
-          (nb === 99 ? numeroDepuisId(b.entry.id) : nb);
+        let d = aucunLibelleNumerote
+          ? numeroDepuisId(a.entry.id) - numeroDepuisId(b.entry.id)
+          : na - nb;
         if (d !== 0) return d;
         const sa = sousOrdre(a.exerciseLabel);
         const sb = sousOrdre(b.exerciseLabel);
         d = sa[0] - sb[0] || sa[1] - sb[1];
         if (d !== 0) return d;
-        // Même repli pour départager les morceaux : la lettre de l'identifiant
-        // dit leur ordre sur la copie quand le libellé ne le dit pas.
-        d = rangDepuisId(a.entry.id) - rangDepuisId(b.entry.id);
-        if (d !== 0) return d;
+        // Même repli, sous la même restriction, pour départager les morceaux :
+        // la lettre de l'identifiant dit leur ordre sur la copie.
+        if (aucunLibelleNumerote) {
+          d = rangDepuisId(a.entry.id) - rangDepuisId(b.entry.id);
+          if (d !== 0) return d;
+        }
         return (a.exerciseLabel ?? "").localeCompare(b.exerciseLabel ?? "", "fr");
       });
       ep.pts = Math.round(ep.pts * 100) / 100;
@@ -283,9 +306,11 @@ export function listEpreuves(): Epreuve[] {
       // ses exercices « Chimie », « Physique nucléaire », « Électricité »,
       // « Mécanique » — annonçait « 1 exercice » pour une épreuve qui en
       // compte QUATRE, ses six morceaux retombant tous sur le même 99.
+      // Même restriction que le tri : seule une épreuve dont AUCUN libellé
+      // n'est numéroté se compte sur les identifiants.
       ep.nbExercices = new Set(
         ep.exercices.map((x) => {
-          const n = numeroExercice(x.exerciseLabel);
+          const n = aucunLibelleNumerote ? 99 : numeroExercice(x.exerciseLabel);
           return n === 99 ? numeroDepuisId(x.entry.id) : n;
         })
       ).size;

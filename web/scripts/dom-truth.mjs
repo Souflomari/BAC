@@ -3075,6 +3075,21 @@ try {
         id: "spc-2010-normale",
         motifs: [/Chimie — Première partie/, /Chimie — Deuxième partie/, /Physique nucléaire/, /Mécanique — 1ère partie/, /Mécanique — 2ᵉ partie/, /Mécanique — 3ᵉ partie/],
       },
+      {
+        // L'ÉPREUVE MIXTE — et le témoin d'une régression que le repli sur
+        // l'identifiant avait lui-même causée (2026-09-03, même passe).
+        // Les sujets de maths SExp numérotent « Exercice 1..4 » puis
+        // referment sur un « Problème », sans numéro et volontairement : le
+        // problème est la DERNIÈRE partie. Appliqué entrée par entrée, le
+        // repli lui prêtait le numéro de l'identifiant qu'il partage avec un
+        // exercice voisin (K-7 : un exercice découpé garde son id dans chaque
+        // notion), et le Problème remontait AVANT l'exercice 4. Le repli ne
+        // s'applique donc plus qu'aux épreuves dont AUCUN libellé n'est
+        // numéroté ; ailleurs, un libellé muet retombe en dernier — ce qui
+        // est exactement juste pour un « Problème ».
+        id: "sexp-2022-normale",
+        motifs: [/^Exercice 1$/, /^Exercice 2$/, /^Exercice 3$/, /Exercice 4 — Équations/, /Exercice 4 — partie/, /^Problème$/],
+      },
     ];
     for (const { id, motifs } of attendus) {
       checks++;
