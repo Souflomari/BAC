@@ -3060,6 +3060,21 @@ try {
         id: "spc-2011-normale",
         motifs: [/^Chimie — Partie I\b/, /Physique nucléaire/, /Électricité/, /situations 1 et 2/, /situation 3/],
       },
+      {
+        // L'ORDINAL ÉCRIT EN CHIFFRE AVANT LE MOT (témoin ajouté le
+        // 2026-09-03, même passe). SPC 2010 normale numérote ses parties de
+        // mécanique « 1ère partie », « 2ᵉ partie », « 3ᵉ partie ». Aucune
+        // des quatre conventions de sousOrdre ne lisait cette forme — et
+        // l'absence était pire qu'une lacune, parce que la liste ORDINAUX
+        // reconnaissait « 1ère » sans reconnaître « 2ᵉ » ni « 3ᵉ ». La
+        // première partie prenait le rang 1, les suivantes restaient à 0, et
+        // le tri ascendant les faisait passer AVANT elle : l'élève lisait
+        // 2ᵉ, 3ᵉ, puis 1ère — la partie qui pose le problème arrivait en
+        // dernier. Une cinquième convention lit désormais cette forme, le
+        // superscript U+1D49 compris.
+        id: "spc-2010-normale",
+        motifs: [/Chimie — Première partie/, /Chimie — Deuxième partie/, /Physique nucléaire/, /Mécanique — 1ère partie/, /Mécanique — 2ᵉ partie/, /Mécanique — 3ᵉ partie/],
+      },
     ];
     for (const { id, motifs } of attendus) {
       checks++;

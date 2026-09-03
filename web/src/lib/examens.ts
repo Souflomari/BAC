@@ -177,6 +177,24 @@ function sousOrdre(label?: string): [number, number] {
     if (sousJeton) b = parseInt(sousJeton[1], 10);
   } else if ((m = q.match(/partie\s+([IVX]+|\d+)/i))) {
     a = romainOuArabe(m[1]) ?? 0;
+  } else if ((m = q.match(/(\d+)\s*(?:ers?|[èeé]res?|re|ᵉ|[èe]mes?|e)?\s*(?:partie|situation|phase)/i))) {
+    // CINQUIÈME CONVENTION : l'ordinal écrit en CHIFFRE avant le mot —
+    // « 1ère partie », « 2ᵉ partie », « 3ᵉ partie », « 2ème situation ».
+    // Ajoutée le 2026-09-03, après un désordre constaté au rendu.
+    //
+    // Elle manquait, et son absence était pire qu'une simple lacune : la
+    // liste ORDINAUX ci-dessous reconnaît « 1ère » (son motif accepte la
+    // forme chiffrée pour le PREMIER rang seulement), mais rien ne
+    // reconnaissait « 2ᵉ » ni « 3ᵉ ». La première partie recevait donc le
+    // rang 1 quand les suivantes restaient à 0 — et le tri ascendant les
+    // faisait passer AVANT elle. Sur SPC 2010 normale, l'élève lisait la
+    // mécanique dans l'ordre 2ᵉ, 3ᵉ, 1ère : la partie qui pose le problème
+    // arrivait en dernier.
+    //
+    // Le superscript « ᵉ » (U+1D49) est explicitement prévu : c'est la
+    // forme qu'emploient les libellés du corpus, et un « e » ordinaire ne
+    // l'attrape pas.
+    a = parseInt(m[1], 10);
   } else {
     for (const [re, v] of ORDINAUX) {
       if (re.test(q) && /partie|situation/i.test(q)) {
