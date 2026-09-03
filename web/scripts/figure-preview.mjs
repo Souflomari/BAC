@@ -2,7 +2,9 @@
  * figure-preview.mjs — l'audit VISUEL d'une figure, sans lancer le site.
  *
  * Pourquoi : `validate-content` vérifie la STRUCTURE d'une figure (compte
- * d'étapes == max step-N, contrat de couleurs), jamais son RENDU. Or le
+ * d'étapes == max step-N, contrat de couleurs — cette dernière porte n'a
+ * réellement existé qu'à partir du 2026-09-03 ; cette docstring l'affirmait
+ * depuis des semaines alors que rien ne la vérifiait), jamais son RENDU. Or le
  * défaut n°1 constaté sur les figures est visuel : étiquettes qui se
  * chevauchent, courbe qui sort du cadre, repère écrasé. La bible §10 exige
  * de REGARDER — cet outil rend ce regard bon marché : il compose une page

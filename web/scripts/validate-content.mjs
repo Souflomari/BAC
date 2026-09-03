@@ -638,6 +638,81 @@ for (const dir of dirs) {
     const stagesFiles = mediaFiles.filter((f) => f.endsWith(".stages.json"));
     const stagedSlugs = new Set(stagesFiles.map((f) => f.replace(/\.stages\.json$/, "")));
 
+    // ── LE CONTRAT DE COULEUR DES FIGURES (skill figure-authoring) ──────────
+    // « Couleurs UNIQUEMENT var(--figure-…). Jamais hex/currentColor. » La
+    // règle était écrite, le grep de contrôle était même prescrit — mais rien
+    // ne l'exécutait, et figure-preview.mjs affirmait dans sa docstring que
+    // CETTE porte la vérifiait déjà. Elle ne l'a jamais fait. Une exigence
+    // sans mécanisme finit ignorée : c'est la leçon des portes, appliquée à
+    // la couleur.
+    //
+    // POURQUOI ÇA COMPTE, concrètement : les jetons basculent entre thèmes
+    // (--figure-surface passe de #FFFFFF à #1A1917, --figure-ink de presque
+    // noir à presque blanc). Une couleur codée en dur ne bascule pas. Mesuré
+    // le 2026-09-03 sur arbre-pondere : en thème sombre, ses boîtes quasi
+    // blanches éclataient sur la page et ses étiquettes d'arêtes tombaient
+    // à 2:1 de contraste — alors qu'elles portent les probabilités
+    // conditionnelles, le sujet même de la figure.
+    //
+    // L'EXCEPTION EST PRÉVUE, ET ELLE DOIT ÊTRE ARGUMENTÉE DANS LE FICHIER.
+    // Certaines couleurs SONT l'information : le spectre d'un prisme, la
+    // teinte d'un indicateur coloré. Aucun jeton ne peut les remplacer sans
+    // rendre la figure fausse. Une figure dans ce cas déclare, en commentaire
+    // XML, `COULEURS SÉMANTIQUES:` suivi de sa raison — sur le modèle des
+    // blocs CORRECTION ASSUMÉE des banques. Le précédent existait déjà :
+    // lambda-nu-changement-milieu écrivait « Rouge littéral (#C0392B, PAS un
+    // token) » bien avant cette porte. On ne supprime pas l'exception, on
+    // exige qu'elle soit dite.
+    const COULEUR_EN_DUR =
+      /(?:fill|stroke|stop-color|color|flood-color|lighting-color)\s*[:=]\s*"?\s*(#[0-9a-fA-F]{3,8}|currentColor)\b/g;
+    for (const file of svgFiles) {
+      const src = fs.readFileSync(path.join(mediaDir, file), "utf8");
+      const trouvees = [...new Set([...src.matchAll(COULEUR_EN_DUR)].map((m) => m[1]))];
+      if (!trouvees.length) continue;
+      // Deux sorties, et deux seulement. Toutes deux exigent que la raison
+      // soit ÉCRITE DANS LE FICHIER, là où le prochain lecteur la trouvera.
+      //   · COULEURS SÉMANTIQUES — la couleur EST l'information.
+      //   · DETTE OWNER — une figure héritée dont le sort (corriger ou
+      //     supprimer) est un arbitrage owner ouvert : la repeindre
+      //     reviendrait à décider de la garder. Le marqueur doit nommer
+      //     l'arbitrage, faute de quoi il n'est qu'un interrupteur pour
+      //     faire taire la porte.
+      if (/COULEURS\s+SÉMANTIQUES\s*:/i.test(src)) continue;
+      if (/DETTE\s+OWNER\s*:/i.test(src)) continue;
+      console.error(
+        `  ✗ ${dir}: media/${file} → ${trouvees.length} couleur(s) codée(s) en dur ` +
+          `(${trouvees.slice(0, 4).join(", ")}${trouvees.length > 4 ? "…" : ""}) — ` +
+          `ces couleurs ne basculent pas avec le thème. Utilise var(--figure-ink|ink-soft|surface|grid|accent), ` +
+          `ou, si la couleur EST l'information (spectre, indicateur coloré), déclare-le dans le fichier ` +
+          `par un commentaire « COULEURS SÉMANTIQUES: <la raison> ».`
+      );
+      dirFail++;
+    }
+
+    // Corollaire du même contrat : un <style> de SVG inliné n'est PAS scopé —
+    // il s'applique au document ENTIER. Une règle nue comme `text { … }`
+    // atteint donc les <text> de toutes les AUTRES figures de la page.
+    // Démontré le 2026-09-03 : neuf figures déclaraient
+    // `text { text-anchor: middle }`, et co-rendre l'une d'elles avec
+    // bezout-remontee poussait QUATORZE textes de cette dernière hors de son
+    // cadre. Les figures sont inlinées en production (MediaDiagram,
+    // dangerouslySetInnerHTML) : la fuite est réelle. Ce qui est propre à
+    // une figure se déclare sur SA racine ou par SES classes.
+    const SELECTEUR_NU = /^[ \t]*(text|tspan|rect|circle|line|path|polygon|polyline|g|svg)\s*(?:,[^{]*)?\{/gm;
+    for (const file of svgFiles) {
+      const src = fs.readFileSync(path.join(mediaDir, file), "utf8");
+      for (const bloc of src.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)) {
+        const nus = [...new Set([...bloc[1].matchAll(SELECTEUR_NU)].map((m) => m[1]))];
+        if (!nus.length) continue;
+        console.error(
+          `  ✗ ${dir}: media/${file} → sélecteur(s) non scopé(s) dans <style> : ${nus.join(", ")} — ` +
+            `un <style> de SVG inliné s'applique à TOUTE la page et déforme les autres figures. ` +
+            `Porte la règle sur la racine (style="…") ou sur une classe propre à cette figure.`
+        );
+        dirFail++;
+      }
+    }
+
     for (const file of stagesFiles) {
       const slug = file.replace(/\.stages\.json$/, "");
       const svgPath = path.join(mediaDir, `${slug}.svg`);

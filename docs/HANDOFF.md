@@ -52,7 +52,20 @@
    decision 4); **the D10 legacy figure bug** —
    `content/pc/rlc-serie/media/energy-exchange.svg` uses hex colors and
    labels a cos² peak-to-peak interval « T₀ » where physics says T₀/2
-   (orphaned from lessons but in the repo: fix or delete, owner eyes);
+   (orphaned from lessons but in the repo: fix or delete, owner eyes)
+   — **et sa voisine `loi-mailles-build.svg` relève du MÊME arbitrage**,
+   découverte le 2026-09-03 par la porte de couleur alors neuve : couleurs
+   codées en dur elles aussi, et la pire du corpus au rendu sombre (49 %
+   de la surface reste claire — deux grands panneaux blancs sur page
+   sombre). Aucune leçon ne l'appelle par un marqueur `[[figure:]]`, mais
+   elle EST câblée dans l'app (aria-label dans `NotionBody`, slug dans
+   `MediaDiagram`) : quelqu'un l'a branchée, ce qui fait de son sort une
+   question (la corriger et la servir, ou la retirer avec son câblage) et
+   non un nettoyage. Les deux fichiers portent désormais un bloc
+   `DETTE OWNER:` qui dit tout cela en place ; la porte de couleur les
+   laisse passer sur ce marqueur seul, donc l'arbitrage reste visible sans
+   bloquer la CI. **Ni l'une ni l'autre n'a été repeinte — repeindre
+   reviendrait à décider qu'on les garde.**
    **ledger §11's twelve Day-11 calls** remain FABLE-DECIDED /
    OWNER-REVIEW-PENDING except where marked OWNER-DIRECTED.
 7. **The maths notion is pre-sprint debt.** It predates template v2 and the

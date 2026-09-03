@@ -27,16 +27,25 @@
     légende baké ici (même convention que les autres figures migrées).
   -->
   <style>
-    .apt-edge   { stroke: #3e5c86; stroke-width: 2; fill: none; opacity: .65; }
-    .apt-node   { fill: #e7ecf3; stroke: #c2cbda; stroke-width: 1.5; }
-    .apt-root   { fill: #dfe6f1; stroke: #b4c0d6; stroke-width: 1.5; }
-    .apt-leaf   { fill: #f8fafc; stroke: #d3dae6; stroke-width: 1.5; }
-    .apt-leafB-ring { fill: none; stroke: #3e5c86; stroke-width: 2; }
-    .apt-nlabel { font: 600 18px -apple-system, "Segoe UI", Roboto, sans-serif; fill: #222a37; }
-    .apt-elabel { font: 500 14px -apple-system, "Segoe UI", Roboto, sans-serif; fill: #324c70; }
-    .apt-leaftop{ font: 600 14px -apple-system, "Segoe UI", Roboto, sans-serif; fill: #2a3340; }
-    .apt-leafval{ font: 600 14px -apple-system, "Segoe UI", Roboto, sans-serif; fill: #4b566a; }
-    .apt-tag    { font: 600 11px -apple-system, "Segoe UI", Roboto, sans-serif; fill: #3e5c86; }
+    /* Jetons de thème UNIQUEMENT (contrat de figure). Cette figure portait
+       onze couleurs codées en dur : en thème sombre, ses boîtes quasi
+       blanches éclataient sur la page et ses étiquettes d'arêtes — qui
+       portent pourtant les probabilités conditionnelles, le sujet même de
+       la figure — tombaient à 2:1 de contraste. La police aussi détonnait :
+       Segoe UI quand ses deux sœurs de la même leçon sont en IBM Plex Sans.
+       L'ACCENT marque UNE seule idée, comme le veut le contrat : les deux
+       feuilles où B se produit (l'anneau et son étiquette), c'est-à-dire
+       exactement ce que la troisième étape enseigne. */
+    .apt-edge   { stroke: var(--figure-ink-soft); stroke-width: 2; fill: none; opacity: .65; }
+    .apt-node   { fill: var(--figure-surface); stroke: var(--figure-ink-soft); stroke-width: 1.5; }
+    .apt-root   { fill: var(--figure-grid); stroke: var(--figure-ink-soft); stroke-width: 1.5; }
+    .apt-leaf   { fill: var(--figure-surface); stroke: var(--figure-grid); stroke-width: 1.5; }
+    .apt-leafB-ring { fill: none; stroke: var(--figure-accent); stroke-width: 2; }
+    .apt-nlabel { font: 600 18px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .apt-elabel { font: 500 14px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .apt-leaftop{ font: 600 14px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .apt-leafval{ font: 600 14px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .apt-tag    { font: 600 11px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
   </style>
 
   <!-- ══════════════════════════════════════════════════════
