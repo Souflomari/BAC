@@ -74,6 +74,7 @@ const declarations = jetons.map(([, k, v]) => `  ${k}: ${v.trim()};`).join("\n")
  * contrat. Taille naturelle préservée (1 unité de viewBox = 1 px), donc la
  * remarque du 2026-08-22 sur la stabilité des métriques tient toujours.
  */
+let largeurMax = 0;
 const cartes = fichiers
   .map((f) => {
     const abs = path.isAbsolute(f) ? f : path.join(RACINE, f);
@@ -85,10 +86,20 @@ const cartes = fichiers
     }
     const [, , , w, h] = vb;
     // Injecté dans la COPIE servie au navigateur, pas dans le fichier.
-    const dimensionne = svg.replace(
-      /<svg\b/,
-      `<svg style="width:${Number(w)}px;height:${Number(h)}px"`
-    );
+    //
+    // FUSIONNÉ, jamais ajouté (piège payé le 2026-09-03, dans l'heure qui a
+    // suivi le correctif de dimensionnement) : une figure peut porter son
+    // PROPRE style sur la racine — par exemple `text-anchor:middle` scopé à
+    // elle seule. Poser un second attribut `style` produit un doublon, et le
+    // parseur HTML ne garde que le PREMIER : le style de la figure était
+    // silencieusement jeté, et les neuf figures concernées se remettaient à
+    // s'aligner à gauche. Le diagnostic a failli être « ma correction des
+    // figures est fausse » alors que c'était l'instrument.
+    const dims = `width:${Number(w)}px;height:${Number(h)}px`;
+    const dimensionne = /<svg\b[^>]*\sstyle="/.test(svg)
+      ? svg.replace(/(<svg\b[^>]*\sstyle=")/, `$1${dims};`)
+      : svg.replace(/<svg\b/, `<svg style="${dims}"`);
+    largeurMax = Math.max(largeurMax, Number(w));
     return `<h2>${path.basename(f)}</h2><div class="carte">${dimensionne}</div>`;
   })
   .join("\n");
@@ -116,7 +127,15 @@ writeFileSync(page_html, html, "utf8");
 const navigateur = await chromium.launch({
   executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium",
 });
-const page = await navigateur.newPage({ viewport: { width: 900, height: 1200 } });
+// La fenêtre s'adapte à la figure la plus large (piège payé le 2026-09-03) :
+// à 900 px fixes, une figure de 920 était bridée par le `max-width: 100%` de
+// la carte et la capture la rognait à droite. J'ai failli déclarer un
+// débordement sur `univers-restreint` — dont la sonde disait pourtant, avec
+// raison, que rien ne sortait du viewBox. Un instrument ne doit jamais
+// fabriquer le défaut qu'il prétend détecter.
+const page = await navigateur.newPage({
+  viewport: { width: Math.max(900, largeurMax + 100), height: 1200 },
+});
 await page.goto(`file://${page_html}`, { waitUntil: "networkidle" });
 // Les métriques de texte ne sont stables qu'une fois les polices appliquées :
 // sans cette attente, un même fichier mesuré seul ou en lot ne donne pas le
