@@ -50,11 +50,46 @@ const bloc = sombre ? css.slice(css.indexOf(".dark")) : css.slice(0, css.indexOf
 const jetons = [...bloc.matchAll(/(--(?:figure|color)-[A-Za-z0-9-]+):\s*([^;]+);/g)];
 const declarations = jetons.map(([, k, v]) => `  ${k}: ${v.trim()};`).join("\n");
 
+/**
+ * PIÈGE PAYÉ N°2 (2026-09-03) — l'instrument rendait des carrés de 26 px.
+ *
+ * Le contrat de figure impose `viewBox` SEUL, sans width/height : c'est ce
+ * qui laisse le composant décider de la taille en page. Mais un SVG sans
+ * width/height n'a pas de taille intrinsèque, et son défaut CSS (100 %)
+ * ne peut pas se résoudre dans un conteneur en `width: max-content` — la
+ * dépendance est circulaire. Chromium tranchait autrefois en faveur du
+ * 300×150 par défaut ; il tranche désormais à ZÉRO. Les captures
+ * mesuraient alors 26×26 — exactement le padding (2×12) plus la bordure
+ * (2×1) de la carte, un SVG effondré à rien.
+ *
+ * Le défaut était SILENCIEUX de la pire façon : la sonde de débordement et
+ * de chevauchement continuait d'annoncer « aucun défaut » (getBBox() lit
+ * le système de coordonnées du viewBox, indifférent à la taille rendue),
+ * si bien que l'outil affirmait une figure saine en produisant une image
+ * vide. Un instrument d'audit VISUEL qui ne montre rien tout en certifiant
+ * que tout va bien est pire que pas d'instrument.
+ *
+ * Le correctif dimensionne chaque SVG depuis son propre viewBox, ICI, dans
+ * le harnais — jamais dans le fichier, qui doit rester conforme au
+ * contrat. Taille naturelle préservée (1 unité de viewBox = 1 px), donc la
+ * remarque du 2026-08-22 sur la stabilité des métriques tient toujours.
+ */
 const cartes = fichiers
   .map((f) => {
     const abs = path.isAbsolute(f) ? f : path.join(RACINE, f);
     const svg = readFileSync(abs, "utf8").replace(/<\?xml[^>]*\?>/, "");
-    return `<h2>${path.basename(f)}</h2><div class="carte">${svg}</div>`;
+    const vb = svg.match(/viewBox="\s*([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)\s*"/);
+    if (!vb) {
+      console.error(`  ✗ ${path.basename(f)} : pas de viewBox lisible — impossible de dimensionner`);
+      process.exit(1);
+    }
+    const [, , , w, h] = vb;
+    // Injecté dans la COPIE servie au navigateur, pas dans le fichier.
+    const dimensionne = svg.replace(
+      /<svg\b/,
+      `<svg style="width:${Number(w)}px;height:${Number(h)}px"`
+    );
+    return `<h2>${path.basename(f)}</h2><div class="carte">${dimensionne}</div>`;
   })
   .join("\n");
 
@@ -89,11 +124,43 @@ await page.goto(`file://${page_html}`, { waitUntil: "networkidle" });
 await page.evaluate(() => document.fonts.ready);
 await page.waitForTimeout(400);
 
+// L'INSTRUMENT SE CONTRÔLE LUI-MÊME (ajouté avec le correctif du 2026-09-03).
+// La leçon du carré de 26 px : un outil d'audit visuel doit prouver qu'il a
+// rendu quelque chose avant de dire quoi que ce soit du contenu. On compare
+// la boîte rendue à la taille attendue du viewBox : un écart franc signifie
+// que c'est le HARNAIS qui a échoué, pas la figure — et on le dit en
+// échouant, plutôt qu'en livrant une image vide accompagnée d'un verdict
+// rassurant.
 const cartesDom = await page.$$(".carte");
+let harnaisCasse = 0;
 for (let i = 0; i < cartesDom.length; i++) {
   const nom = path.basename(fichiers[i], ".svg") + (sombre ? "-sombre" : "") + ".png";
+  const boite = await cartesDom[i].boundingBox();
+  const attendu = await cartesDom[i].evaluate((el) => {
+    const svg = el.querySelector("svg");
+    const vb = (svg?.getAttribute("viewBox") || "0 0 0 0").split(/\s+/).map(Number);
+    return { w: vb[2], h: vb[3] };
+  });
+  const rendu = { w: (boite?.width ?? 0) - 26, h: (boite?.height ?? 0) - 26 };
+  if (rendu.w < attendu.w * 0.5 || rendu.h < attendu.h * 0.5) {
+    console.error(
+      `  ✗ ${nom} : HARNAIS EN ÉCHEC — le SVG s'est rendu à ${Math.round(rendu.w)}×${Math.round(rendu.h)} ` +
+        `pour un viewBox de ${attendu.w}×${attendu.h}. La capture ne montrerait rien : ne t'y fie pas. ` +
+        `(Cause déjà vue : un SVG à viewBox seul n'a pas de taille intrinsèque et s'effondre à zéro — ` +
+        `voir PIÈGE PAYÉ N°2 en tête de fichier.)`
+    );
+    harnaisCasse++;
+    continue;
+  }
   await cartesDom[i].screenshot({ path: path.join(sortie, nom) });
-  console.log(`  ✓ ${nom}`);
+  console.log(`  ✓ ${nom}  (${Math.round(rendu.w)}×${Math.round(rendu.h)})`);
+}
+if (harnaisCasse) {
+  await navigateur.close();
+  console.error(
+    `\n${harnaisCasse} figure(s) non capturée(s) : l'instrument refuse de certifier ce qu'il n'a pas rendu.`
+  );
+  process.exit(1);
 }
 
 /**
