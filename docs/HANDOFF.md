@@ -349,6 +349,18 @@ fait. Les re-passer sous le protocole complet est un arbitrage owner ouvert.
   Réserve dite par le balayage lui-même : 47 lignes non couvertes, dont 20 en
   SM — il ne prouve l'absence que sur ce qu'il a ouvert.
 - **K-7 bis** — les cinq identifiants à renommer, ou pas.
+  **⚠️ CE N'EST PLUS UNE QUESTION DE NOMMAGE — mesuré au rendu le
+  2026-09-03.** `bk-2011-r-x1` est porté par DEUX entrées : la chimie
+  Partie I et la mécanique 1ère situation. Or l'assembleur lit désormais
+  la position sur l'identifiant quand le libellé ne porte pas
+  « Exercice N » (ce qui est le cas de SPC 2011 rattrapage, dont le
+  sujet nomme ses exercices par discipline). L'identifiant ment, donc
+  **l'épreuve sort dans le désordre** : sa mécanique s'insère entre les
+  deux parties de chimie. Aucun correctif de tri ne peut y remédier —
+  seul le renommage le peut. Les deux autres épreuves du même cas
+  (2010 N, 2011 N, 2012 N) ont été remises dans l'ordre le même jour ;
+  celle-ci reste cassée, et elle est **servie**. Le nom juste est déjà
+  écrit dans K-7 bis (`bk-2011-r-x1` → `x4`).
 - **PC 2010 R — l'anatomie du sujet : position sur la copie contre libellé
   imprimé.** *(Neuf, 2026-09-03 ; bloque la conversion des six blocs.)*
   L'édition servie numérote la physique « Exercice 1/2/3 » et laisse la
