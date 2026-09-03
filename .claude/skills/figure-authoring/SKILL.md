@@ -11,8 +11,32 @@ description: Auteur de figures pédagogiques codées (SVG) et de leur mise en é
   variables en italique ; « ln » et les mots droits.
 - Couleurs UNIQUEMENT `var(--figure-surface|ink|ink-soft|grid|accent)`
   (+ `--figure-energy-C/L` réservés énergie). Jamais hex/currentColor/
-  foreignObject/gradients.
-- `viewBox` seul (pas de width/height) ; autonome ; statique.
+  foreignObject/gradients. **Porte réelle depuis le 2026-09-03**
+  (`validate-content`) — avant, la règle était écrite et rien ne
+  l'exécutait. Deux sorties, toutes deux à ARGUMENTER dans le fichier :
+  `COULEURS SÉMANTIQUES:` quand la couleur EST l'information (spectre
+  d'un prisme, indicateur coloré — un spectre en nuances d'encre n'est
+  plus un spectre), et `DETTE OWNER:` pour une figure héritée dont le
+  sort est un arbitrage ouvert.
+- **Aucun sélecteur nu dans un `<style>`** (`text { … }`, `rect { … }`).
+  Un `<style>` de SVG inliné n'est PAS scopé : il s'applique au document
+  ENTIER. Prouvé le 2026-09-03 — neuf figures déclaraient
+  `text { text-anchor: middle }` et co-rendre l'une d'elles avec
+  `bezout-remontee` poussait QUATORZE textes de cette dernière hors de
+  son cadre. Ce qui est propre à une figure va sur SA racine
+  (`style="…"`) ou sur SES classes. Gardé par `validate-content`.
+- `viewBox` seul, en principe. **Dans les faits, 123 des 258 figures
+  portent width/height sur leur racine et rendent correctement**
+  (mesuré le 2026-09-03) : la règle est une préférence, pas un
+  invariant, et il n'y a AUCUNE raison de lancer une migration des 123.
+  Ce qu'il faut savoir en revanche : un SVG sans width/height n'a pas de
+  taille intrinsèque et s'effondre à zéro dans un conteneur en
+  `width: max-content` — c'est ce qui avait cassé l'outil d'aperçu.
+- **Le cadre doit contenir le texte.** Élargis le `viewBox` plutôt que
+  de déplacer une étiquette bien placée. Le premier balayage visuel réel
+  du corpus (2026-09-03, rendu possible par la réparation de l'outil) a
+  trouvé 17 figures au texte rogné — dont une unité d'axe affichée
+  « λ (n ».
 - L'accent marque UNE idée par figure (répétée = une idée, précédent
   demi-vies). Courbes CALCULÉES depuis la vraie formule ; toute
   exagération schématique divulguée en commentaire d'en-tête ET, si
@@ -37,11 +61,29 @@ description: Auteur de figures pédagogiques codées (SVG) et de leur mise en é
 ## Vérification (chaque figure, pas d'exception)
 
 1. `node web/scripts/validate-content.mjs content/<matière>/<leçon>` vert.
-2. Grep anti-contrat : `grep -E '#[0-9a-fA-F]{3,6}|currentColor|foreignObject'` vide.
-3. Rendu réel : build + screenshot (shots.mjs) clair + sombre — REGARDER
-   (collisions d'étiquettes = le défaut n°1 constaté).
-4. aria-label français ajouté à `FIGURE_ARIA_LABELS` (NotionBody.tsx) ;
-   schéma structurel → `STRUCTURAL_SLUGS` (MediaDiagram.tsx).
+   Cette porte couvre désormais les couleurs et les sélecteurs nus ; le
+   grep manuel qui figurait ici n'est plus le filet, il est redondant.
+2. **Rendu réel :**
+   `node web/scripts/figure-preview.mjs [--dark] <chemin.svg>` — clair ET
+   sombre, et **REGARDE les PNG**. L'outil dit lui-même que sa détection
+   de chevauchement est indicative et non certifiante : elle DIRIGE le
+   regard, elle ne le remplace pas. Sa détection de débordement, elle,
+   est fiable.
+   *Il refuse maintenant de capturer ce qu'il n'a pas rendu.* Pendant une
+   période indéterminée il produisait des carrés de 26 px en annonçant
+   « aucun défaut » : un SVG effondré renvoie des `getBBox()` nuls, donc
+   aucun texte ne peut sortir d'un cadre nul — l'œil et la mesure morts
+   ensemble, sans un signal. S'il te dit « HARNAIS EN ÉCHEC », le fautif
+   est l'outil, pas ta figure.
+3. **Un aria-label sur la racine du SVG**, en français, décrivant ce que
+   la figure MONTRE. C'est lui que le lecteur d'écran annonce : depuis le
+   2026-09-03, `figureAriaLabel` va le chercher dans le fichier.
+   `FIGURE_ARIA_LABELS` (NotionBody.tsx) reste prioritaire mais n'est
+   plus obligatoire — ne l'utilise que pour reformuler quand la
+   description du fichier ne convient pas au rôle de région. *(Avant ce
+   correctif, 102 des 246 figures appelées par une leçon étaient
+   annoncées par leur slug : « arbre pondere ».)*
+   Schéma structurel → `STRUCTURAL_SLUGS` (MediaDiagram.tsx).
 
 Références or : `content/pc/rc-charge/media/uc-charge.svg` (courbe),
 `content/pc/dipole-rl/media/rl-schema.svg` (schéma),
