@@ -345,6 +345,21 @@ fait. Les re-passer sous le protocole complet est un arbitrage owner ouvert.
   et c'est ce qui rend l'arbitrage moins arbitraire qu'il n'en a l'air :
   **l'original arabe n'imprime aucun numéro d'exercice** — la numérotation
   litigieuse est un artefact de la traduction, pas du ministère.
+
+  **INSTRUIT LE 2026-09-03 par la passe de vérification — un élément
+  décisif est apparu.** L'original arabe ne se contente pas de ne pas
+  numéroter : il **dit ce qu'il est**, par une phrase que la traduction
+  française a **supprimée** — « quatre exercices : **un en chimie** et
+  trois en physique ». Le sujet décrit donc lui-même son anatomie, et
+  cette description coïncide avec la position sur la copie. Conséquences
+  mesurées sur l'assembleur (`numeroExercice()` de `lib/examens.ts`), les
+  trois issues passant la gate : **(a)** donne l'ordre 1, 2, 3, 4 et
+  `nbExercices` = **4** — ce que le sujet dit de lui-même ; **(b)** place
+  la chimie en dernier ; **(c)**, le précédent 2011 N appliqué à la
+  lettre, donne `nbExercices` = **1**, ce qui afficherait « 1 exercice »
+  pour une épreuve qui en compte quatre. L'arbitrage reste à l'owner,
+  mais il ne se joue plus entre trois conventions également défendables :
+  une seule reproduit ce que le sujet déclare de lui-même.
 - **PC 2010 R — le statut d'un sujet qui n'est pas l'édition officielle.**
   *(Neuf, même date, plus large que le sujet.)* Le document français servi
   par AlloSchool est une **traduction professorale signée**, au cartouche
