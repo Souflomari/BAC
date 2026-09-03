@@ -39,7 +39,7 @@ hub : `https://www.alloschool.com/section/4585` (annonce 2008→2025, N+R, compl
 | 2009 | N | — | `upload-45088` (8 p.) | sourcé-confirmé |
 | 2009 | R | — | — | non recherché |
 | 2010 | N | NS28 | `element/94443` · `upload-70311` (6 p.) | **décomposé + VÉRIFIÉ** (2026-08-28) | PDF *born-digital*. **9 défauts du sujet officiel** — dont la tangente dessinée qui n'est PAS la tangente de la courbe (13,1 ms contre 12,4 ms, 5,5 % d'écart, et elle porte une question) ; « 1 μF = 10⁻¹² F » ; les électrodes A et B jamais nommées sur la figure qu'une question interroge. **⚠️ RÉFUTE UNE VALEUR PUBLIÉE** : $t_{1/2} \approx$ **13 min** contre les ≈ 20 min de `bk-2010-n-x1`, par mesure au pixel PUIS par un corrigé (`element/39366`, arabophone, non officiel). ~~Doublon d'élément : `94444`~~ — **RECTIFIÉ le 2026-08-28 : ce n'est pas un doublon**, c'est l'exemplaire `course-423` (Sciences Physiques) du cross-listing normal à trois cours. Je l'avais étiqueté « doublon » avant de comprendre la structure. Corrigés SPC : la série n'en a qu'à partir de **2016** |
-| 2010 | R | — | `element/57723` | **sourcé-listé** (2026-08-27) | trouvé incidemment en cherchant le corrigé de 2010 N : c'est un voisin immédiat du sujet dans le cours parent. Jamais ouvert |
+| 2010 | R | **RS28** *(établi par l'original arabe, absent du document français)* | `element/57723` · jumeaux MD5-identiques ; **original arabe + corrigé : `element/39367` / `39368` (cours arabophone `course-311`)** | **décomposé** (2026-09-03) | SUJET ENTIER transcrit (`_incoming/pc-2010-r.md`, **NON vérifié**) : Chimie 7 (aspirine synthèse 3,75 + aspirine/eau 3,25) · Ex1 fibre optique 3 · Ex2 élec 4,5 (LC 3 + modulation 1,5) · Ex3 Mars 5,5 = **20,00**, 30 questions. **⚠️ LE DOCUMENT FRANÇAIS N'EST PAS L'ÉDITION MINISTÉRIELLE** : traduction professorale signée (OUSBANE & EL AAMRANI), cartouche « المسالك الدولية » anachronique (cadre 2014+), aucun code d'examen imprimé. **L'original arabe ET son corrigé ont été trouvés** — barème confronté 30/30, quatre défauts requalifiés par cette confrontation. **Question d'anatomie ouverte** : la physique est imprimée « Exercice 1/2/3 » et la chimie sans numéro — position contre libellé, arbitrage owner avant conversion (§ 7.1 du sas) |
 | 2011 | N | NS28 | `element/94445`/`94446`/`94447` · `upload-70313`/`70314`/`70315` (7 p.) | **décomposé + VÉRIFIÉ + CONVERTI** (2026-08-29, 6 entrées `bk-2011-n-x1…x4b` = 20,00 — 35ᵉ épreuve complète ; garde S1 implémentée dans x1 : aucune valeur absolue de ΔP tirée de la figure, bloc ⛔ déclaré au fil du texte élève) | PDF **hybride** Nitro Pro (figures bitmap 130–176 dpi, frère exact de 2011 R — même re-fabrication du 2020-03-09 à 26 s près). Chimie 7 · nucléaire 3 · élec 4,5 · méca 5,5 = 20, **27 questions, barème confirmé par QUATRE chaînes**. **⚠️ Défaut de fond S1** : le plateau de la figure 1 de chimie (≈ 740 hPa mesuré) contredit les données imprimées (≈ 227 hPa attendus, facteur 3,26 ; courbe tracée avec x_max = nᵢ(H₃O⁺) = 0,03 mol) ; t½ reste résoluble (≈ 42 min). **Corrigé non officiel** (auteur : forum SVT d'Asilah, servi par DEUX agrégateurs indépendants — TelmidTice et talamidi.com, MD5 identiques) : 27/27 valeurs concordantes, **mais** il imprime une demi-équation non équilibrée, corrige un défaut en silence et **ne voit pas S1** — excellent témoin de valeurs, pas un arbitre. **S1 CONFIRMÉ par la vérification** (plateau 736,9 ± 2 hPa contre 227,4 attendus, facteur 3,24, mécanisme validé à <1 %) ; garde de conversion : aucune valeur absolue de ΔP ne doit être tirée de la figure |
 | 2011 | R | RS28 | `element/94449` (+ jumeaux `94448`/`94450`, PDF byte-identiques) · `upload-70317` (7 p.) | **décomposé + VÉRIFIÉ** (2026-08-28) | PDF **hybride** — couche de texte native mais **figures en bitmap 141–196 dpi** (premier des cinq PC dans ce cas ; toute lecture graphique est plafonnée par le pixel, chiffré figure par figure). Chimie 7 · Ondes 2,5 · Élec 5 · Méca 5,5 = 20. **⚠️ La divergence « 05 / 05,5 » est TRANCHÉE** : c'est la p. 6 qui est fautive (voir `rotation-axe-fixe.md`). **Aucun corrigé n'existe.** 40 occurrences de défauts sur 32 types |
 | 2012 | N | NS28 | `element/94452` · `course-422/upload-70320` (6 p.) | **décomposé + VÉRIFIÉ** (2026-08-28) | PDF natif Nitro Pro. Barème refait par deux chemins. **Défaut du sujet officiel : les DEUX couples étiquetés `pKA1`**, ce qui rend une question formellement insoluble — la banque le corrigeait déjà en silence, correction désormais **déclarée** dans `transformations-deux-sens`. Une lecture de la transcription corrigée : E_C(0) n'est **pas** 17,5 mJ mais 18,5–19,5, et la valeur est déclarée **NON LISIBLE** |
@@ -71,9 +71,13 @@ hub : `https://www.alloschool.com/section/4585` (annonce 2008→2025, N+R, compl
 | 2025 | N | NS28F | `element/145796` · `upload-87489` (6 p.) | sourcé-confirmé |
 | 2025 | R | — | `element/145799` | sourcé-listé |
 
-**Bilan : 29/36 sourcés** (20 confirmés + 9 listés) · 1 `non consigné` (2011 N)
-· 6 `non recherché` (rattrapages 2008, 2009, 2010, 2012, 2013, 2015 — le hub
-AlloSchool les annonce, à résoudre en un fetch chacun).
+**Bilan (recompté ligne à ligne le 2026-09-03) : 32/36 sourcés** — 8
+`décomposé` + 15 `sourcé-confirmé` + 9 `sourcé-listé` — et **4 `non
+recherché`** : les rattrapages 2008, 2009, 2012 et 2013, que le hub
+AlloSchool annonce et qu'un fetch chacun résoudrait. *(2010 R, 2011 N et
+2015 R sont sortis du non-recherché pendant la vague SPC 2 : transcrits
+intégralement tous les trois ; 2011 N et 2015 R vérifiés ET convertis,
+2010 R en attente de passe adversariale.)*
 
 Corrigés (non recensés en détail ici) : `element/<n>` connus pour 2017–2024
 N+R (INDEX §2) ; **2025 : corrigés non publiés** au sourcing 2026-07.
@@ -222,8 +226,15 @@ ci-dessus (§ Sujets à carte complète).
 - **Sourcé-listé, jamais ouvert** : 2017 R, 2018 R, 2019 R, 2020 R, 2021 R,
   2022 R, 2023 R, 2024 R, 2025 R — `contenu à transcrire` (confirmer
   l'en-tête SPC à l'ouverture).
-- **Non recherché** : 2008 R, 2009 R, 2010 R, 2012 R, 2013 R, 2015 R + URL
-  2011 N à re-résoudre.
+- **Non recherché** : 2008 R, 2009 R, 2012 R, 2013 R. *(2010 R, 2011 N,
+  2011 R et 2015 R sont sortis de cette liste : tous transcrits, et trois
+  d'entre eux convertis — voir leurs lignes du § 1.)*
+- **Gisement de corrigés pré-2016 identifié (2026-09-03)** : le cours
+  arabophone **`course-311`** publie l'original arabe ET son corrigé pour
+  2010 N (`element/39366`) et 2010 R (`39367`/`39368`) — alors que la série
+  SPC francophone n'a de corrigés qu'à partir de 2016. Les rattrapages
+  arabes voisins (2011 R, 2012 R…) y ont probablement leurs paires aussi :
+  c'est la piste à tirer pour les lignes `non recherché` ci-dessus.
 
 ---
 

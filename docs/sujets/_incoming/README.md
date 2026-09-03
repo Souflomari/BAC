@@ -141,8 +141,12 @@ maths, où il ne manquait qu'un problème par épreuve.
 | `pc-2011-r.md` | 6 blocs : acide méthanoïque · pile Ni-Zn · ondes · RC · RLC · oscillateur | 17,75 | **VÉRIFIÉ, clearé** (2026-08-28) — 32/32 barèmes recomptés, 10 figures re-mesurées sur les bitmaps natifs, **sans corrigé** : deux chaînes de mesure concordantes sont le plafond de preuve. **Un argument de la transcription réfuté, sa conclusion tenue** (sept sous-groupes contigus refont 2,25 — l'exclusion tient par les marges par question). pK_a corrigé à **3,74**. Le **L = 780 m** est réel (axe `t(s)` pixel-vérifié) |
 | `pc-2010-n.md` | chimie 2ᵉ partie · nucléaire · électricité · mécanique | 15,75 | **VÉRIFIÉ, clearé** (2026-08-28) — barème identique, 27/27 questions re-dérivées. **⚠️ LA BANQUE A TORT, TRANCHÉ** : $t_{1/2} \approx$ **13 min** (12,6–13,0) contre les ≈ 20 min de `bk-2010-n-x1`, par mesure au pixel PUIS par un corrigé trouvé après coup. **NEUF défauts du sujet officiel** (pas sept) — dont la tangente dessinée qui n'est pas la tangente de la courbe (5,5 % d'écart, elle porte une question) |
 
-**Restent à ouvrir** : SPC 2011 R (17,75, `element/94449`) · SPC 2017 N
-(18,25, `element/57711`). *(SPC 2015 N est en transcription.)*
+| `pc-2010-r.md` | **SUJET ENTIER** (3ᵉ intégrale) — aspirine (synthèse) · aspirine + eau · fibre optique · circuit LC · modulation · planète Mars | 20,00 | **⚠️ NON VÉRIFIÉ** (2026-08-29) — en attente de passe adversariale. **FAIT DE PROVENANCE MAJEUR** : le document français servi par AlloSchool n'est **PAS l'édition ministérielle** — chaque page porte « *Traduction : Pr. Hassan OUSBANE & Pr. Abdelaziz EL AAMRANI* », le cartouche imprime un cadre « المسالك الدولية » créé en 2014+ (anachronique pour 2010) et **aucun code d'examen**. **L'original arabe A ÉTÉ TROUVÉ, et son corrigé avec** (cours arabophone `course-311`, éléments `39367`/`39368`) : barème confronté 30/30, code réel **RS28** établi, quatre défauts requalifiés. Confrontation à l'arabe **partielle** (valeurs, barème, titres, figures — pas de lecture phrase à phrase). **Une question d'architecture posée à l'owner** : les identifiants suivent-ils la POSITION sur la copie (chimie = x1, la physique décalée) ou le LIBELLÉ imprimé (« Exercice 1 » = les ondes) ? Le précédent 2011 R dit position ; la gate refuse un id contredisant son libellé — deux issues rédigées, **aucune choisie** |
+
+**Vague SPC 2 (les trois sujets à zéro entrée) : CLOSE côté transcription.**
+SPC 2011 N et SPC 2015 R sont **vérifiés ET convertis** (20,00 chacun,
+35ᵉ et 36ᵉ épreuves complètes) ; SPC 2010 R est **transcrit, non vérifié**
+— sa passe adversariale et son arbitrage d'anatomie restent à faire.
 
 **La règle d'exclusion vaut pour les cinq** : chacune porte DÉJÀ une entrée en
 banque. Retranscrire la même partie ferait dépasser 20 — c'est le mode d'échec
