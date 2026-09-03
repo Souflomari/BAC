@@ -2917,6 +2917,52 @@ try {
       console.log(`  ✓ ${totaux.length} épreuves, aucune au-dessus de 20 pts`);
     }
 
+    // La garde symétrique de la précédente, et elle manquait. Le seuil HAUT
+    // (> 20) était gardé ; le seuil BAS ne l'était pas, alors que c'est lui
+    // qui décide ce que l'élève voit. Une épreuve entre 9,75 et 19,5 entre
+    // dans la liste en annonçant honnêtement « X pts sur 20 » — mais elle
+    // reste une épreuve à moitié convertie présentée comme une épreuve, et
+    // l'élève qui la choisit pour se chronométrer travaille sur un sujet
+    // amputé sans l'avoir voulu.
+    //
+    // Au 2026-09-03 le corpus a atteint la propriété « aucune épreuve à
+    // moitié montrée » : 36 complètes, zéro sous 9,75, et une seule dans la
+    // bande — SM 2020 normale, que l'owner a explicitement suspendue (K-0 :
+    // son format à choix n'est pas représentable par l'assembleur, et son
+    // total de 10,50 est lui-même un sur-comptage d'exercices mutuellement
+    // exclusifs ; un candidat réel y plafonne à 7,00). C'est la SEULE
+    // exception, et elle est nommée ici pour que sa disparition — le jour
+    // où K-0 est tranché — fasse échouer ce test au lieu de passer inaperçue.
+    //
+    // Cette propriété est fragile : une seule conversion partielle la casse.
+    // La discipline qu'elle encode : on convertit un sujet jusqu'au bout, ou
+    // on le laisse sous le seuil d'affichage (une conversion en cours reste
+    // invisible tant qu'elle est sous 9,75 — c'est voulu, et c'est ce qui
+    // permet de committer un travail à moitié fait sans le montrer).
+    checks++;
+    const BANDE_TOLEREE = new Set([
+      // id → la raison, qui doit être un arbitrage owner consigné.
+      "sm-2020-normale", // K-0, suspendue : format à choix, voir known-issues
+    ]);
+    const aMoitie = totaux.filter(
+      (t) => Number.isFinite(t.pts) && t.pts < 19.5 && !BANDE_TOLEREE.has(t.id)
+    );
+    const toleree = totaux.filter((t) => BANDE_TOLEREE.has(t.id));
+    if (aMoitie.length) {
+      failures += fail(
+        `épreuve(s) à moitié convertie(s) et pourtant listée(s) : ${aMoitie
+          .map((t) => `${t.id}=${t.pts}`)
+          .join(", ")} — l'élève verrait un sujet amputé présenté comme une épreuve. ` +
+          `Termine la conversion (≥ 19,5), ou repasse-la sous le seuil d'affichage (< 9,75). ` +
+          `Si c'est un cas d'arbitrage owner, inscris-le dans BANDE_TOLEREE avec sa raison.`
+      );
+    } else {
+      console.log(
+        `  ✓ aucune épreuve à moitié montrée (${totaux.length - toleree.length} complètes` +
+          `${toleree.length ? `, ${toleree.length} tolérée(s) nommément : ${toleree.map((t) => t.id).join(", ")}` : ""})`
+      );
+    }
+
     checks++;
     const compte = await epage.evaluate(() => {
       const carte = document.querySelector("[data-epreuve='spc-2023-normale']");
