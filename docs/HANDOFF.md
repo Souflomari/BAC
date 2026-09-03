@@ -213,8 +213,20 @@ brief standard, cold-executable by Sonnet.
   l'échelle fausse d'un facteur 3,24 : déclarée en bloc ⛔, aucune valeur
   absolue n'en est tirée, t½ par lecture relative) ; 2015 R déclare ses
   quatre défauts F1–F4 (dont le « Po » imprimé pour le plomb, corrigé en
-  Pb par CORRECTION ASSUMÉE). Le troisième sujet à zéro, **2010 R, est en
-  transcription** au moment de cette mise à jour.
+  Pb par CORRECTION ASSUMÉE). Le troisième sujet à zéro, **2010 R, est
+  TRANSCRIT** (20,00 points en six blocs, `_incoming/pc-2010-r.md`) et **en
+  cours de vérification** ; sa conversion est en outre **bloquée par un
+  arbitrage owner** (voir §6.5, question d'anatomie).
+
+> **Un seuil franchi, à ne pas perdre de vue :** le corpus ne compte plus
+> **aucune épreuve invisible**. Mesuré le 2026-09-03 sur le dépôt : 36
+> épreuves complètes (≥ 19,5), **zéro sous le seuil d'affichage de 9,75**,
+> et une seule épreuve listée-non-complète — SM 2020 normale (10,50), le
+> cas K-0 suspendu. Autrement dit : tout ce qui est en banque est
+> désormais soit une épreuve entière, soit l'unique cas que l'owner a
+> explicitement mis en attente. Cette propriété est fragile — une seule
+> conversion partielle la casse. Si tu convertis un sujet, va au bout, ou
+> laisse-le à zéro.
 
 **Sept d'entre elles étaient INVISIBLES** pour l'élève, sous le seuil
 d'affichage de 9,75 : SM 2021 (8,00), SExp 2018 (9,00), SPC 2012 (7,00),
@@ -306,6 +318,28 @@ fait. Les re-passer sous le protocole complet est un arbitrage owner ouvert.
   Réserve dite par le balayage lui-même : 47 lignes non couvertes, dont 20 en
   SM — il ne prouve l'absence que sur ce qu'il a ouvert.
 - **K-7 bis** — les cinq identifiants à renommer, ou pas.
+- **PC 2010 R — l'anatomie du sujet : position sur la copie contre libellé
+  imprimé.** *(Neuf, 2026-09-03 ; bloque la conversion des six blocs.)*
+  L'édition servie numérote la physique « Exercice 1/2/3 » et laisse la
+  chimie **sans numéro** : la position sur la copie donne chimie = 1, ondes
+  = 2, électricité = 3, mécanique = 4, tandis que le libellé imprimé du bloc
+  « ondes » dit *Exercice 1*. Le précédent 2011 R a endossé la **position** ;
+  mais `validate-content` refuse un identifiant qui contredit son libellé.
+  Deux issues sont rédigées au § 7.1 du sas, **aucune choisie** : (a) garder
+  les identifiants par position et faire porter aux `exercise_label` la
+  double lecture (« Exercice 2 (imprimé : Exercice 1) ») ; (b) aligner les
+  identifiants sur l'imprimé et loger la chimie hors numérotation. À noter,
+  et c'est ce qui rend l'arbitrage moins arbitraire qu'il n'en a l'air :
+  **l'original arabe n'imprime aucun numéro d'exercice** — la numérotation
+  litigieuse est un artefact de la traduction, pas du ministère.
+- **PC 2010 R — le statut d'un sujet qui n'est pas l'édition officielle.**
+  *(Neuf, même date, plus large que le sujet.)* Le document français servi
+  par AlloSchool est une **traduction professorale signée**, au cartouche
+  anachronique et sans code d'examen ; l'original arabe existe et a été
+  trouvé. Question de principe que l'owner doit trancher une fois pour
+  toutes, car elle se reposera : **une traduction non ministérielle est-elle
+  une source acceptable pour la banque**, et si oui, sous quelle mention
+  côté élève ? Le corpus n'a jamais eu à le dire jusqu'ici.
 - **Docket B1** — réduit à deux lectures : l'option « le tag filière est
   erroné » est écartée par l'arithmétique des barèmes. Reste (a) la limite
   SExp dérivée est trop stricte, ou (c) le sujet déborde son cadre. **Le PDF
