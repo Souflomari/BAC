@@ -219,6 +219,47 @@ const defauts = await page.evaluate(() => {
         });
       }
     }
+    // LE MASQUAGE EST UNE TECHNIQUE LÉGITIME, et la sonde l'ignorait
+    // (corrigé le 2026-09-03). Une figure stagée qui REMPLACE un texte à
+    // l'étape suivante — « Circuit RLC série » qui devient « Circuit LC
+    // idéal », l'équation amortie qui devient l'équation idéale — pose un
+    // aplat opaque à la couleur du fond par-dessus l'ancien texte, puis
+    // écrit le nouveau. Les deux <text> restent dans le DOM (le SVG peint
+    // en ordre document, le dernier gagne) et se recouvrent donc à 100 %
+    // au sens des boîtes — alors que l'élève n'en voit qu'un.
+    //
+    // C'était une classe ENTIÈRE de faux positifs : sur les 38
+    // chevauchements du premier balayage du corpus, tous portaient sur des
+    // figures stagées, et ceux à 100 % étaient précisément des
+    // remplacements masqués — le masque est même documenté en commentaire
+    // dans rlc-schema.svg. Une sonde qui crie au défaut sur une technique
+    // que le corpus emploie exprès finit ignorée, ce qui la rend pire
+    // qu'absente.
+    //
+    // On regarde donc ce qui est peint ENTRE les deux textes : si un
+    // élément opaque, posé après le premier et avant le second, couvre le
+    // premier, le recouvrement est voulu et on se tait.
+    const estOpaque = (el) => {
+      const st = getComputedStyle(el);
+      const f = st.fill;
+      if (!f || f === "none" || f.startsWith("url(")) return false;
+      if (parseFloat(st.fillOpacity || "1") < 0.95) return false;
+      if (parseFloat(st.opacity || "1") < 0.95) return false;
+      // rgba(...) avec alpha faible
+      const m = f.match(/rgba?\([^)]*?,\s*([\d.]+)\s*\)/);
+      if (m && parseFloat(m[1]) < 0.95) return false;
+      return true;
+    };
+    const couvre = (bb, cible) =>
+      bb.x <= cible.x + 0.5 && bb.y <= cible.y + 0.5 &&
+      bb.x + bb.width >= cible.x + cible.width - 0.5 &&
+      bb.y + bb.height >= cible.y + cible.height - 0.5;
+    const tousLesNoeuds = [...svg.querySelectorAll("*")];
+    const rang = new Map(tousLesNoeuds.map((el, k) => [el, k]));
+    const masques = tousLesNoeuds.filter(
+      (el) => /^(rect|circle|ellipse|polygon|path)$/i.test(el.tagName) && estOpaque(el)
+    );
+
     for (let i = 0; i < boites.length; i++) {
       for (let j = i + 1; j < boites.length; j++) {
         const a = boites[i].b, c = boites[j].b;
@@ -229,6 +270,15 @@ const defauts = await page.evaluate(() => {
         const aire = ox * oy;
         const petite = Math.min(a.width * a.height, c.width * c.height);
         if (petite > 0 && aire / petite > 0.4) {
+          // Le premier texte est-il effacé avant que le second soit peint ?
+          const rA = rang.get(boites[i].t), rB = rang.get(boites[j].t);
+          const masque = masques.some((m) => {
+            const r = rang.get(m);
+            if (!(r > rA && r < rB)) return false;
+            let bb; try { bb = m.getBBox(); } catch { return false; }
+            return couvre(bb, a);
+          });
+          if (masque) continue; // remplacement voulu, pas une collision
           out.push({
             fig: iFig, type: "chevauche", txt: boites[i].s.slice(0, 26),
             detail: `avec « ${boites[j].s.slice(0, 26)} » — ${Math.round((aire / petite) * 100)} % de recouvrement`,
