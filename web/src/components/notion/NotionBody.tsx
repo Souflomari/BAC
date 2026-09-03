@@ -269,11 +269,34 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   "pendule-pesant-energie": "Le pendule pesant : en haut, la géométrie de la hauteur exacte z = L(1 − cos θ), construite à partir de la projection L cos θ — ni la longueur du fil L seule, ni l'arc parcouru Lθ ; en bas, l'échange d'énergie en fonction de θ, Epp et Ec en paraboles opposées sous un plafond Em constant, se croisant en deux points",
 };
 
-function figureAriaLabel(slug: string): string {
+function figureAriaLabel(slug: string, svg?: string): string {
+  // Trois sources, dans cet ordre.
+  //
+  //   1. FIGURE_ARIA_LABELS — le libellé écrit à la main ci-dessus, qui reste
+  //      prioritaire : c'est là qu'on formule autrement quand la description
+  //      du fichier ne convient pas au rôle de région.
+  //   2. L'aria-label que porte le SVG lui-même. Ajouté le 2026-09-03, et
+  //      c'est le vrai correctif : mesuré ce jour-là, 102 des 246 figures
+  //      appelées par une leçon n'avaient PAS d'entrée au registre et
+  //      retombaient donc sur le slug. Le DOM rendu annonçait « arbre
+  //      pondere » — sans accents, sans sens — pour une figure dont le
+  //      fichier porte pourtant « Arbre pondéré : racine vers A et A barre,
+  //      puis vers B et B barre, quatre feuilles avec leurs produits… ». La
+  //      description existait, écrite par l'auteur de la figure, et on
+  //      l'ignorait au profit d'un slug déformé. Aller la chercher corrige
+  //      les 102 d'un coup, sans réécrire à la main ce qui est déjà écrit,
+  //      et ferme la dérive : une figure neuve est désormais correctement
+  //      annoncée sans qu'on ait à penser au registre.
+  //   3. Le slug, en dernier recours seulement — pour une figure dont le
+  //      fichier n'a pas d'aria-label. C'est un pis-aller, pas une cible.
+  //
   // Route through frenchTypography so the screen-reader-announced layer carries
   // the same curly apostrophe / narrow-no-break-space orthotypography as the
   // visible copy (ADR 0024 content pass — the announced layer must not regress).
-  return frenchTypography(FIGURE_ARIA_LABELS[slug] ?? slug.replace(/-/g, " "));
+  const duFichier = svg?.match(/<svg\b[^>]*\saria-label="([^"]+)"/)?.[1];
+  return frenchTypography(
+    FIGURE_ARIA_LABELS[slug] ?? duFichier ?? slug.replace(/-/g, " ")
+  );
 }
 
 // ── Step caption map: (slug × stepNumber) → caption text ─────────────────────
@@ -608,7 +631,7 @@ export function NotionBody({
             key={key}
             svg={svg}
             slug={seg.slug}
-            label={figureAriaLabel(seg.slug)}
+            label={figureAriaLabel(seg.slug, svg)}
             stages={stagesSpec.stages}
             initialStage={Math.min(occurrence, stagesSpec.stages.length)}
             interactiveConfig={mediaInteractive[seg.slug]}
@@ -631,7 +654,7 @@ export function NotionBody({
           key={key}
           slug={seg.slug}
           svg={svg}
-          label={figureAriaLabel(seg.slug)}
+          label={figureAriaLabel(seg.slug, svg)}
           visibleSteps={visibleSteps}
           stepCaption={caption}
         />
@@ -652,7 +675,7 @@ export function NotionBody({
             key={key}
             svg={svg}
             spec={spec}
-            label={figureAriaLabel(seg.slug)}
+            label={figureAriaLabel(seg.slug, svg)}
           />
         );
       }
@@ -661,7 +684,7 @@ export function NotionBody({
         <MotionDiagram
           key={key}
           svg={svg}
-          label={figureAriaLabel(seg.slug)}
+          label={figureAriaLabel(seg.slug, svg)}
         />
       );
     }
