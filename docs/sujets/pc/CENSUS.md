@@ -79,8 +79,27 @@ AlloSchool annonce et qu'un fetch chacun résoudrait. *(2010 R, 2011 N et
 intégralement tous les trois ; 2011 N et 2015 R vérifiés ET convertis,
 2010 R en attente de passe adversariale.)*
 
-Corrigés (non recensés en détail ici) : `element/<n>` connus pour 2017–2024
-N+R (INDEX §2) ; **2025 : corrigés non publiés** au sourcing 2026-07.
+Corrigés (non recensés en détail ici) : `element/<n>` connus pour ~~2017~~
+**2016**–2024 N+R (INDEX §2) ; **2025 : corrigés non publiés** au sourcing
+2026-07. *(Année de départ rectifiée le 2026-09-03 : `57702`/`57708`
+existent bien pour 2016, recomptés élément par élément — voir
+`docs/audits/gisement-arabophone.md` § 1.)*
+
+> **UN SECOND GISEMENT DE CORRIGÉS EXISTE, et il couvre 2008–2015** —
+> c'est-à-dire précisément les années où la série francophone n'en a
+> aucun. Le cours arabophone **`course-311`** publie **34 paires sujet +
+> corrigé de 2008 à 2024, N et R, sans un seul trou** ; c'est un cours
+> propre, pas un miroir (aucun de ses 68 éléments n'est cross-listé).
+> Inventaire complet et identifiants dans
+> `docs/audits/gisement-arabophone.md`.
+>
+> **La réserve qui compte, et elle est sévère :** un corrigé arabe et son
+> homologue français ne font PAS toujours deux témoins. De **2016 à
+> 2019**, deux mains distinctes signent les deux éditions. Mais de **2020
+> à 2024**, une SEULE main signe les deux — même auteur, souvent le même
+> jour, même pagination, le français mot pour mot la traduction de
+> l'arabe. Pour ces années-là, croire tenir deux témoins indépendants
+> serait une erreur de méthode exactement du type que K-8 décrit.
 
 ---
 
@@ -226,9 +245,21 @@ ci-dessus (§ Sujets à carte complète).
 - **Sourcé-listé, jamais ouvert** : 2017 R, 2018 R, 2019 R, 2020 R, 2021 R,
   2022 R, 2023 R, 2024 R, 2025 R — `contenu à transcrire` (confirmer
   l'en-tête SPC à l'ouverture).
-- **Non recherché** : 2008 R, 2009 R, 2012 R, 2013 R. *(2010 R, 2011 N,
-  2011 R et 2015 R sont sortis de cette liste : tous transcrits, et trois
-  d'entre eux convertis — voir leurs lignes du § 1.)*
+- **Non recherché — mais désormais LOCALISÉS, sujet ET corrigé** (prospection
+  du 2026-09-03, `docs/audits/gisement-arabophone.md` § 4) :
+
+  | Session | Sujet | Corrigé | Note |
+  |---|---|---|---|
+  | 2008 R | `element/39357` | `39358` | contrôle anti-cache tenu sur 1 page / 6 seulement |
+  | 2009 R | `element/39362` | `39363` | **fax numérisé, sans couche de texte** — inexploitable sans OCR ; pour cette seule session, le français reste la meilleure source |
+  | 2012 R | `element/39377` | `39378` | code `RS28` lu sur 5 pages / 6, barème de couverture relevé |
+  | 2013 R | `element/39382` | `39383` | idem 5/6 |
+
+  Ce ne sont plus des lignes vides : ce sont quatre candidats de
+  transcription avec leur source et leur témoin déjà identifiés.
+  *(2010 R, 2011 N, 2011 R et 2015 R sont sortis de cette liste
+  auparavant : tous transcrits, et trois d'entre eux convertis — voir
+  leurs lignes du § 1.)*
 - **Gisement de corrigés pré-2016 identifié (2026-09-03)** : le cours
   arabophone **`course-311`** publie l'original arabe ET son corrigé pour
   2010 N (`element/39366`) et 2010 R (`39367`/`39368`) — alors que la série
