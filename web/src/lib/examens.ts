@@ -100,6 +100,42 @@ function numeroExercice(label?: string): number {
   return romainOuArabe(m[1]) ?? 99;
 }
 
+/**
+ * Le numéro d'exercice lu sur l'IDENTIFIANT, quand le libellé n'en porte pas.
+ *
+ * POURQUOI, et ce que ça a coûté de ne pas l'avoir. `numeroExercice` ne sait
+ * lire que « Exercice N » — c'est la forme des libellés de la plupart des
+ * sujets. Mais certains sujets ne numérotent PAS leurs exercices : ils les
+ * nomment par discipline. SPC 2011 normale imprime « Chimie », « Physique
+ * nucléaire », « Électricité », « Mécanique », et ses libellés ont été
+ * transcrits fidèlement, sans numéro. Les six morceaux retombaient donc tous
+ * sur 99, le tri s'effondrait sur le `localeCompare` final, et l'épreuve
+ * sortait DANS LE DÉSORDRE : l'électricité en tête, la chimie en dernier, et
+ * la situation 3 de mécanique AVANT les situations 1 et 2 — qu'elle suppose
+ * pourtant connues. Constaté au rendu le 2026-09-03, sur une épreuve
+ * complète et servie.
+ *
+ * L'information manquante existait ailleurs, et de façon garantie : la
+ * convention K-7 bis (`docs/grounding/known-issues.md`) veut que l'identifiant
+ * d'une entrée dise sa POSITION SUR LA COPIE — `-x<N>` pour le numéro
+ * d'exercice, une lettre pour chaque morceau d'un exercice découpé. On la lit
+ * donc ici plutôt que d'exiger des libellés qu'ils inventent un numéro que le
+ * sujet n'imprime pas.
+ *
+ * Le libellé garde la priorité : quand il dit « Exercice 3 », c'est lui qui
+ * fait foi. L'identifiant ne parle que dans son silence.
+ */
+function numeroDepuisId(id?: string): number {
+  const m = id?.match(/-x(\d+)/i);
+  return m ? parseInt(m[1], 10) : 99;
+}
+
+/** Le rang du morceau (a=0, b=1, c=2…) lu sur le suffixe de l'identifiant. */
+function rangDepuisId(id?: string): number {
+  const m = id?.match(/-x\d+([a-z])/i);
+  return m ? m[1].toLowerCase().charCodeAt(0) - 96 : 0;
+}
+
 const ORDINAUX: ReadonlyArray<readonly [RegExp, number]> = [
   [/premi[eè]re?|1\s*[eè]?re/i, 1],
   [/deuxi[eè]me|seconde/i, 2],
@@ -204,21 +240,36 @@ export function listEpreuves(): Epreuve[] {
       // (§N, « Partie II », « Première partie »… — voir sousOrdre), et le
       // titre en dernier recours seulement.
       ep.exercices.sort((a, b) => {
-        let d = numeroExercice(a.exerciseLabel) - numeroExercice(b.exerciseLabel);
+        // Le libellé d'abord ; l'identifiant quand le libellé se tait
+        // (sujet qui nomme ses exercices par discipline — voir numeroDepuisId).
+        const na = numeroExercice(a.exerciseLabel);
+        const nb = numeroExercice(b.exerciseLabel);
+        let d =
+          (na === 99 ? numeroDepuisId(a.entry.id) : na) -
+          (nb === 99 ? numeroDepuisId(b.entry.id) : nb);
         if (d !== 0) return d;
         const sa = sousOrdre(a.exerciseLabel);
         const sb = sousOrdre(b.exerciseLabel);
         d = sa[0] - sb[0] || sa[1] - sb[1];
         if (d !== 0) return d;
+        // Même repli pour départager les morceaux : la lettre de l'identifiant
+        // dit leur ordre sur la copie quand le libellé ne le dit pas.
+        d = rangDepuisId(a.entry.id) - rangDepuisId(b.entry.id);
+        if (d !== 0) return d;
         return (a.exerciseLabel ?? "").localeCompare(b.exerciseLabel ?? "", "fr");
       });
       ep.pts = Math.round(ep.pts * 100) / 100;
-      // Les morceaux d'un même exercice partagent son numéro sur la copie ;
-      // les libellés sans numéro exploitable retombent tous sur 99 — ce qui
-      // est correct pour les épreuves du corpus, où ils désignent les parties
-      // d'un seul et même exercice non numéroté.
+      // Les morceaux d'un même exercice partagent son numéro sur la copie.
+      // Quand le libellé n'en porte pas, on lit celui de l'identifiant (même
+      // repli que le tri) : sans cela, SPC 2011 normale — dont le sujet nomme
+      // ses exercices « Chimie », « Physique nucléaire », « Électricité »,
+      // « Mécanique » — annonçait « 1 exercice » pour une épreuve qui en
+      // compte QUATRE, ses six morceaux retombant tous sur le même 99.
       ep.nbExercices = new Set(
-        ep.exercices.map((x) => numeroExercice(x.exerciseLabel))
+        ep.exercices.map((x) => {
+          const n = numeroExercice(x.exerciseLabel);
+          return n === 99 ? numeroDepuisId(x.entry.id) : n;
+        })
       ).size;
       ep.complete = ep.pts >= COMPLETE_MIN;
       return ep;

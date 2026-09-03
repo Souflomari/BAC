@@ -3044,6 +3044,22 @@ try {
         // façons d'écrire un rang dans un seul exercice.
         motifs: [/Partie 1\. Charge/, /2\. Décharge/, /Partie 3/],
       },
+      {
+        // LE SUJET QUI NE NUMÉROTE PAS SES EXERCICES (témoin ajouté le
+        // 2026-09-03, après un défaut constaté au rendu). SPC 2011 normale
+        // nomme ses exercices par DISCIPLINE — « Chimie », « Physique
+        // nucléaire », « Électricité », « Mécanique » — et ses libellés le
+        // reproduisent fidèlement, donc sans « Exercice N ». Les six morceaux
+        // retombaient tous sur le même rang par défaut, le tri s'effondrait
+        // sur le localeCompare final, et l'épreuve sortait dans le désordre :
+        // l'électricité en tête, la chimie en dernier, et la SITUATION 3 de
+        // mécanique avant les situations 1 et 2 qu'elle suppose connues.
+        // La carte annonçait « 1 exercice » pour une épreuve qui en a quatre.
+        // Le tri lit désormais le numéro sur l'identifiant (convention K-7
+        // bis : l'id dit la position sur la copie) quand le libellé se tait.
+        id: "spc-2011-normale",
+        motifs: [/^Chimie — Partie I\b/, /Physique nucléaire/, /Électricité/, /situations 1 et 2/, /situation 3/],
+      },
     ];
     for (const { id, motifs } of attendus) {
       checks++;
@@ -3062,7 +3078,7 @@ try {
             (manquant ? " (un libellé témoin a disparu)" : "")
         );
       } else {
-        console.log(`  ✓ ${id} : ${labels.length} exercices, les 3 témoins dans l'ordre du sujet`);
+        console.log(`  ✓ ${id} : ${labels.length} exercices, les ${motifs.length} témoins dans l'ordre du sujet`);
       }
     }
     await opage.close();
