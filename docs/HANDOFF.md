@@ -495,3 +495,127 @@ de laisser croire au quitus.
 n'as pas vérifié — dis « prends-le dans la source et recompte ». Demande
 explicitement de rapporter les écarts au lieu de les lisser. Le corpus s'est
 amélioré à chaque fois qu'un agent m'a contredit.
+
+---
+
+## 7. Addendum du 2026-09-03 — l'arc « les instruments mentaient »
+
+> Écrit en fin de session, sur ce qui a réellement atterri. Deux passes de
+> vérification (SPC 2012 R et 2013 R) étaient encore en vol au moment de
+> l'écriture : elles ne sont PAS comptées ici.
+
+### 7.1 Le fil conducteur, et il vaut plus que la liste des correctifs
+
+**À chaque fois, l'outil censé détecter le problème affirmait qu'il n'y en
+avait pas.** Ce n'est pas une coïncidence de la soirée, c'est un mode d'échec
+à reconnaître :
+
+- `figure-preview` rendait des SVG effondrés à **zéro pixel** et concluait
+  « aucun défaut » — sur un rendu nul, `getBBox()` renvoie des boîtes nulles,
+  donc aucun texte ne peut sortir d'un cadre nul. L'œil ET la mesure morts
+  ensemble, sans un signal. Il refuse désormais de capturer ce qu'il n'a pas
+  rendu.
+- Le **contrat de couleur** des figures était écrit dans le skill, son grep de
+  contrôle prescrit, et la docstring de `figure-preview` affirmait que
+  `validate-content` le vérifiait déjà. **Cette porte n'avait jamais existé.**
+- Le **registre d'aria-labels** avait l'air complet : il couvrait 144 figures
+  sur 246, et les 102 autres étaient annoncées à l'élève par leur slug
+  (« arbre pondere »).
+- L'**inventaire des 89 lectures de figure** était bâti à la main sur une
+  banque de 187 entrées ; elle en comptait 234. 47 entrées jamais passées au
+  repérage, toutes servies.
+- Le dépôt annonçait à **deux endroits** une dette payée douze jours plus tôt
+  (la figure `arbre-pondere`), et j'ai commencé la session en me préparant à
+  la payer une seconde fois avant de faire un `ls`.
+
+**La contre-mesure n'est pas « mieux lire les documents ». C'est de mesurer le
+rendu, et d'exiger d'un instrument qu'il prouve avoir rendu quelque chose
+avant de croire ce qu'il dit.**
+
+### 7.2 Et mes propres corrections ont fait la même chose deux fois
+
+À consigner sans indulgence, parce que c'est la même leçon vue de l'intérieur :
+
+1. Mon correctif d'ordre des exercices, appliqué entrée par entrée, **a cassé
+   les épreuves mixtes** : le « Problème » des sujets SExp remontait avant
+   l'exercice 4, alors qu'il tombait correctement en dernier auparavant.
+   Trouvé en mesurant le rendu, pas en relisant le correctif.
+2. Mon **test négatif de garde passait** — j'avais neutralisé la lecture du
+   libellé, mais la ligne suivante rattrapait silencieusement. Un test qui ne
+   casse que la moitié d'une chaîne ne prouve rien sur la garde.
+
+**Un test négatif doit casser la chaîne ENTIÈRE que la garde protège.**
+
+### 7.3 Ce qui a changé pour l'élève
+
+- **SPC 2011 normale et 2015 rattrapage converties** — 35ᵉ et 36ᵉ épreuves
+  complètes, 20,00 chacune. Le corpus ne compte plus **aucune épreuve
+  invisible** (36 complètes, zéro sous le seuil, une seule dans la bande : SM
+  2020, suspendue sur K-0), et cette propriété est désormais **gardée**.
+- **Quatre épreuves sortaient dans le désordre** — 2010 N, 2011 N, 2011 R,
+  2012 N. Trois sont réparées ; 2011 R ne peut pas l'être sans renommer un
+  identifiant (voir 6.5, K-7 bis).
+- **17 figures avaient du texte rogné**, dont une unité d'axe affichée
+  « λ (n » sur la figure qui enseigne les raies spectrales.
+- **102 figures** étaient annoncées aux lecteurs d'écran par leur slug.
+- **Neuf figures déversaient leur CSS sur toute la page** — une figure en
+  démolissait une autre, quatorze textes hors cadre.
+
+### 7.4 K-8 recule pour la première fois — et deux valeurs publiées tombent
+
+`docs/audits/k8-remesure-2017-2019.md`. 11 entrées re-mesurées contre un
+second correcteur d'une autre main : **8 confirmées, 2 réfutées**. Surface
+89 → 78 (puis recomptée à 143 sur 234 par le générateur neuf, voir 7.5). Taux
+de défaut mesuré : **27 %**.
+
+`bk-2018-n-x4b` est le **premier cas d'HÉRITAGE attesté** : période et phase
+fausses à la fois en banque et dans le sommet rendu à l'élève. Le contrôle qui
+tranche ne demande aucune mesure fine — six extrema sur 1,25 s, impossible
+avec la période publiée.
+
+**Troisième mode d'échec, neuf : le DRAPEAU PERDU.** La transcription écrit
+« lecture à confirmer », la conversion garde la valeur et laisse la réserve
+derrière. **4 lectures fausses sur 6 drapeautées, contre 1 sur 9 non
+drapeautées** — c'est le meilleur prédicteur connu, et il commande l'ordre de
+la prochaine campagne (`docs/audits/drapeaux-non-leves.md`).
+
+### 7.5 Trois documents qui ne peuvent plus pourrir en silence
+
+- `lectures-graphiques.md` est **généré** (`web/scripts/lectures-graphiques.mjs`,
+  mode `--check`). Sa calibration contre le relevé manuel a corrigé **les deux
+  listes** : deux faux positifs du manuel (il comptait « figure » dans des
+  phrases disant qu'il n'y en a pas) et un vrai manque du script.
+- `drapeaux-non-leves.md` — l'ordre de passage, avec ses limites dites : la
+  valeur la plus fausse trouvée à ce jour ne portait de drapeau **nulle part**.
+- `gisement-arabophone.md` — 34 paires sujet+corrigé, mais la réserve compte
+  autant que la trouvaille : **de 2020 à 2024, l'arabe et le français sont de
+  la même main**. Deux documents, un seul témoin.
+
+### 7.6 La provenance se pose sujet par sujet, jamais par série
+
+Trois cas, trois réponses, à un an d'intervalle : l'édition française de
+**2010 R est une traduction professorale** (crédit signé, cartouche
+anachronique, aucun code d'examen) ; celles de **2012 R et 2013 R sont
+ministérielles** (code `RS28` imprimé, identique à l'arabe pour 2013 R).
+
+La vérification de 2010 R a créé une catégorie de défaut qui n'existait pas —
+l'**artefact de traduction**, distinct du défaut imprimé et de l'artefact
+d'extraction — en trouvant une consigne **durcie** par le traducteur
+(« établir » là où l'arabe écrit « écris »). Elle **ne s'applique pas** aux
+deux sujets ministériels.
+
+Et un piège d'extraction neuf, à porter au protocole : **les chiffres de la
+couche de texte arabe peuvent être faux ET PLAUSIBLES** (« الشكل 1 » s'extrait
+« الشكل 3 »). Rien ne signale l'erreur. Sur une source arabe, un chiffre
+extrait ne vaut rien tant qu'il n'a pas été **regardé au rendu**.
+
+### 7.7 Les corrigés, jaugés pour ce qu'ils sont
+
+**Trois corrigés pris en défaut dans la même soirée** : celui de 2010 R (+1,2 %
+sur la masse de Mars), celui de 2012 R (divise par le volume d'ester au lieu du
+volume total, facteur 3,33), celui de 2013 R (**se contredit lui-même** — il
+lit 10 mJ aux deux tiers de l'amplitude, ce qui impose 22,5, et écrit 25).
+
+Le contrôle marche dans les deux sens : sur PC 2017, c'est le vérificateur qui
+s'était trompé là où le corrigé avait raison. **Témoin de valeurs, jamais
+arbitre** — K-8 le dit, et la soirée l'a vérifié quatre fois.
