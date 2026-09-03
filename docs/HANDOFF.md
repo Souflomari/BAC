@@ -438,6 +438,29 @@ fait. Les re-passer sous le protocole complet est un arbitrage owner ouvert.
   mesure indépendante, ou lancer une campagne de re-mesure. Aucune porte
   automatique ne fermera cette fiche.
 
+  **PREMIÈRE CAMPAGNE FAITE LE 2026-09-03 — et elle change les termes de la
+  décision.** `docs/audits/k8-remesure-2017-2019.md` : les 11 entrées de
+  SPC 2017 N / 2018 N / 2019 N re-mesurées contre un second correcteur
+  d'une autre main. **8 confirmées, 2 réfutées.** La surface passe de 89 à
+  78 entrées, et surtout le taux de défaut cesse d'être supposé : **27 %**,
+  soit une vingtaine d'entrées suspectes parmi les 78 restantes.
+
+  **Deux dossiers de litige neufs, qui s'ajoutent aux trois du §6.5** —
+  `bk-2018-n-x3` (période lue 2 ms contre 2,513 mesurée, donc 58 % d'écart
+  sur L, et une description de figure qui décrit un dessin inexistant) et
+  `bk-2018-n-x4b` (période et phase fausses en banque ET dans le sommet
+  rendu à l'élève : le premier cas d'HÉRITAGE attesté, celui que K-8 dit
+  indétectable de l'intérieur). **Rien n'a été corrigé** — même règle que
+  les trois autres : une valeur en litige se documente, l'owner tranche.
+
+  **Ce que la campagne apporte pour la suite, plus que ses deux prises :**
+  un TROISIÈME mode d'échec, le **drapeau perdu** (la transcription écrit
+  « lecture à confirmer », la conversion garde la valeur et laisse la
+  réserve derrière), et le tri qui en découle — **4 lectures fausses sur 6
+  drapeautées contre 1 sur 9 non drapeautées**. La prochaine campagne doit
+  trier `lectures-graphiques.md` par drapeau non levé, pas par nombre de
+  mentions.
+
 ### 6.5 bis Deux critères nés de la campagne, à réutiliser
 
 Ils ne figuraient nulle part et ils valent pour tout le corpus :

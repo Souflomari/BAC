@@ -843,8 +843,44 @@ Les plus chargées en lectures : `bk-2021-r-x4b` (dipole-rl, 19 mentions),
 **C'est une borne HAUTE, pas un décompte de valeurs à risque.** Le repérage
 attrape toute mention de figure, y compris quand le raisonnement décrit un
 schéma sans qu'aucune valeur n'en dépende. Il dit l'ordre de grandeur de la
-surface à re-mesurer, pas le nombre de valeurs fausses — qui peut très bien
-être zéro. Le seul cas avéré à ce jour reste PC 2010.
+surface à re-mesurer, pas le nombre de valeurs fausses — ~~qui peut très bien
+être zéro. Le seul cas avéré à ce jour reste PC 2010.~~
+
+> **RECTIFIÉ LE 2026-09-03 — ces deux phrases sont fausses, et la première
+> campagne de re-mesure les a réfutées.**
+> `docs/audits/k8-remesure-2017-2019.md` a re-mesuré les **11 entrées** de
+> SPC 2017 N / 2018 N / 2019 N — la seule fenêtre où un second correcteur
+> d'une AUTRE MAIN existe (voir `docs/audits/gisement-arabophone.md` § 2.2 :
+> de 2020 à 2024, l'arabe et le français sont du même auteur, donc un seul
+> témoin).
+>
+> - **8 confirmées, 2 RÉFUTÉES**, 1 laissée au litige déjà ouvert (F_p 2017).
+> - Le nombre de valeurs fausses n'est donc pas zéro : il y en a **au moins
+>   quatre** parmi les 89, et **le taux mesuré est de 3 sur 11 (27 %)**, ce
+>   qui projette une vingtaine d'entrées suspectes parmi les 78 restantes.
+> - **La surface non re-mesurée passe de 89 à 78 entrées.**
+>
+> **`bk-2018-n-x4b` est le cas d'HÉRITAGE le plus net du corpus** — celui que
+> cette fiche décrit comme indétectable de l'intérieur, désormais attesté :
+> période et phase fausses À LA FOIS en banque et dans le sommet rendu à
+> l'élève, la banque déclarant elle-même son alignement sur le sommet. Le
+> contrôle qui tranche ne demande aucune mesure fine : la figure montre SIX
+> extrema sur 1,25 s, ce qui est impossible avec la période publiée.
+>
+> **UN TROISIÈME MODE D'ÉCHEC, à ajouter aux deux ci-dessus : LE DRAPEAU
+> PERDU.** La transcription de SPC 2018 portait « lecture d'échelle à
+> confirmer » ; la conversion a gardé la valeur et laissé la réserve
+> derrière. C'est le résultat le plus exploitable de la passe : **4 lectures
+> fausses sur 6 drapeautées, contre 1 sur 9 non drapeautées.** Trier
+> l'inventaire par **drapeau non levé**, plutôt que par nombre de mentions,
+> aurait atteint les deux entrées réfutées — c'est l'ordre de priorité que
+> la prochaine campagne doit suivre.
+>
+> Réserve nommée, qui corrige une attente naturelle : l'édition arabe n'est
+> **pas** une meilleure règle sur 2016–2019 — mesurée figure par figure, elle
+> porte le même dessin à 0,02 % près. Ce qui a permis de trancher, c'est que
+> les DEUX éditions sont vectorielles. L'échantillon reste petit (n = 11) et
+> concentré : 7 des 11 sur SPC 2018 N, où vivent les deux défauts.
 
 **Mais l'exposition est presque entièrement VISIBLE : 87 de ces 89 entrées
 appartiennent à une épreuve complète**, donc affichée à l'élève en mode examen.
