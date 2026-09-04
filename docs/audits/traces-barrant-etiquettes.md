@@ -44,99 +44,81 @@ chaque cas est chiffré en **pourcentage de la largeur de l'étiquette**.
 Elle n'est PAS une porte, et ne doit pas le devenir avant que la campagne
 ci-dessous soit finie — sinon il faudrait la désarmer, ce qui est la
 manière ordinaire de perdre une porte.
+## La mesure — deux états
 
-## La mesure
+**Au relevé (2026-09-04, avant toute correction) : 195 cas dans 91
+figures.** Après la campagne du même jour (trois vagues, 30 figures
+ouvertes et corrigées) :
 
-**195 cas dans 91 figures** (sur 258 statiques), thème clair.
+| Gravité (part de l'étiquette traversée) | Au relevé | Aujourd'hui |
+|---|---:|---:|
+| ≥ 80 % — le mot est rayé de bout en bout | 46 | **0** |
+| 60–80 % | 11 | 4 |
+| 40–60 % | 23 | 17 |
+| 20–40 % | 55 | 50 |
+| < 20 % — un coin écorné | 60 | 71 |
+| **total** | **195** | **142** |
 
-| Gravité (part de l'étiquette traversée) | Cas |
-|---|---:|
-| ≥ 80 % — le mot est rayé de bout en bout | 38 |
-| 60–80 % | 11 |
-| 40–60 % | 21 |
-| 20–40 % | 53 |
-| < 20 % — un coin écorné | 72 |
+**La tranche grave est vidée.** Ce qui reste est majoritairement de
+l'écornure : un trait qui coupe un coin de boîte, pas un mot rayé. Les
+chiffres des tranches basses bougent peu, et parfois montent : déplacer
+une étiquette de 12 px la sort d'un tracé et l'amène parfois à en frôler
+un autre. C'est le prix, et il est petit.
 
-La médiane est à 29 %. **La moitié des cas sont des écornures**, l'autre
-moitié va de la gêne réelle au mot illisible.
+## Ce que la campagne a appris sur l'instrument
 
-## Les figures les plus touchées
+Trois faux positifs ont été trouvés EN REGARDANT, et corrigés dans la
+sonde plutôt que dans les figures :
+
+1. **La rature est voulue.** `division-euclidienne-droite` barre
+   « q = -13 ? » exprès, `double-specificite` barre deux issues « jamais
+   observées ». La sonde ne peut pas deviner l'intention : la figure la
+   déclare par `data-rature` sur le trait — même contrat que
+   `COULEURS SÉMANTIQUES:` pour la porte de couleur.
+2. **`getBBox` rend la boîte EM, pas la boîte d'encre.** Pour « … », « . »
+   ou « , », l'encre tient dans le bas et tout le haut est vide : quatre
+   « … » posés au bord d'une droite numérotée sortaient à 94 % alors que
+   les points sont bien SOUS l'axe. Leur boîte est désormais rétrécie à
+   son tiers bas.
+3. **Un texte TOURNÉ n'a pas de boîte axée utile.** L'englobante d'un
+   texte incliné à 28° est bien plus grande que le texte, et toute droite
+   parallèle la traverse : la sonde a cru barrer « pente = 4π²/(GM) »
+   alors que l'étiquette longe sa droite à 11 px, comme une étiquette de
+   pente doit le faire. Le point échantillonné est maintenant ramené dans
+   le repère PROPRE du texte — exact, quelle que soit la rotation.
+
+## Les figures qui restent touchées
 
 | Figure | Cas |
 |---|---:|
-| `pangee-reconstruction-preuves.svg` | 8 |
-| `vecteur-vitesse-tangente.svg` | 6 |
-| `explication-bk-2019-n-x1.svg` | 6 |
+| `pangee-reconstruction-preuves.svg` | 7 |
 | `pli-faille-profondeur.svg` | 6 |
 | `valeur-moyenne-rectangle.svg` | 6 |
-| `double-specificite.svg` | 5 |
-| `division-euclidienne-droite.svg` | 5 |
 | `subduction-andes.svg` | 5 |
 | `transfert-direct-chaleur.svg` | 5 |
-| `courant-vs-electrons.svg` | 4 |
-| `vallee-stabilite.svg` | 4 |
-| `p-liste-cadenas.svg` | 4 |
 | `courbe-exponentielle.svg` | 4 |
 | `multiplication-par-i.svg` | 4 |
-| `triangle-pascal.svg` | 3 |
-| `continuite-tvi.svg` | 3 |
-| `lecture-Ve-courbe-dosage.svg` | 3 |
-| `asymptotes.svg` | 3 |
 | `arbre-pondere.svg` | 3 |
 | `omega-vitesse-point.svg` | 3 |
+| `orbite-geostationnaire.svg` | 3 |
+| `double-specificite.svg` | 3 |
+| `tangente-derivee.svg` | 3 |
+| `courbe-logarithme.svg` | 2 |
+| `ec-parabole.svg` | 2 |
+| `spirale-rayonnement.svg` | 2 |
+| `uc-decharge.svg` | 2 |
+| `direct-vs-pile.svg` | 2 |
+| `proba-enfant-atteint.svg` | 2 |
+| `trois-discontinuites.svg` | 2 |
+| `reponse-humorale-cellulaire.svg` | 2 |
 
 ## Le détail, par gravité décroissante
 
 | % | Figure | Étiquette barrée | Trait |
 |---:|---|---|---:|
-| 125 | `triangle-pascal.svg` | « 1 » | 1.5 px |
-| 125 | `triangle-pascal.svg` | « 2 » | 1.5 px |
-| 125 | `triangle-pascal.svg` | « 6 » | 1.5 px |
-| 116 | `courant-vs-electrons.svg` | « e− » | 1.8 px |
-| 113 | `droite-point-direction.svg` | « M » | 1.8 px |
-| 113 | `vecteur-vitesse-tangente.svg` | « vmoy » | 2.3 px |
-| 110 | `vecteur-vitesse-tangente.svg` | « G2' » | 2.5 px |
-| 109 | `vallee-stabilite.svg` | « 12C » | 1.2 px |
-| 106 | `pile-daniell.svg` | « K+ » | 1.2 px |
-| 102 | `regimes-uc.svg` | « T0 » | 1.6 px |
-| 100 | `continuite-tvi.svg` | « k = 0,5 » | 1.8 px |
-| 100 | `lecture-Ve-courbe-dosage.svg` | « ce n’est PAS VE » | 1.2 px |
-| 100 | `moment-force.svg` | « F » | 1.4 px |
-| 100 | `p-liste-cadenas.svg` | « roue 1 » | 1.5 px |
-| 100 | `sphere-plan.svg` | « d » | 2.0 px |
-| 100 | `vecteur-vitesse-tangente.svg` | « G2' » | 2.6 px |
-| 99 | `antenne-quart-onde.svg` | « (1,80 m) » | 1.4 px |
-| 99 | `continuite-tvi.svg` | « f(a) = 2 » | 1.0 px |
-| 99 | `courant-vs-electrons.svg` | « pont salin » | 2.2 px |
-| 99 | `double-specificite.svg` | « glucose direct » | 1.3 px |
-| 99 | `double-specificite.svg` | « autre coupure » | 1.3 px |
-| 99 | `exhumation-erosion-granite.svg` | « GNEISS » | 2.0 px |
-| 99 | `reponse-primaire-secondaire.svg` | « t (jours) » | 1.4 px |
-| 98 | `asymptotes.svg` | « y = 2 » | 1.8 px |
-| 98 | `datation-c14.svg` | « A0 » | 2.4 px |
-| 96 | `explication-bk-2019-n-x1.svg` | « C » | 1.1 px |
-| 95 | `vecteur-vitesse-tangente.svg` | « G2 » | 2.5 px |
-| 94 | `division-euclidienne-droite.svg` | « … » | 1.4 px |
-| 94 | `division-euclidienne-droite.svg` | « … » | 1.4 px |
-| 94 | `division-euclidienne-droite.svg` | « … » | 1.4 px |
-| 94 | `division-euclidienne-droite.svg` | « … » | 1.4 px |
-| 93 | `droite-point-direction.svg` | « t·u » | 1.8 px |
-| 93 | `explication-bk-2019-n-x1.svg` | « A » | 2.4 px |
-| 93 | `qr-vs-k-echelle.svg` | « K » | 1.4 px |
-| 92 | `critere-evolution-qr-k.svg` | « K » | 1.4 px |
-| 88 | `concentration-substrat-enzyme.svg` | « palier (saturation) » | 1.6 px |
-| 81 | `pangee-reconstruction-preuves.svg` | « Inde » | 1.0 px |
-| 80 | `explication-bk-2019-n-x1.svg` | « C » | 1.8 px |
-| 76 | `kepler3-linearisation.svg` | « pente = 4π² / (GM) » | 2.4 px |
-| 74 | `euler-taille-de-pas.svg` | « Δt = 0,05 s (grand pas — s » | 2.4 px |
-| 73 | `vecteur-vitesse-tangente.svg` | « vmoy » | 2.5 px |
-| 72 | `p-liste-cadenas.svg` | « roue 1 » | 1.5 px |
 | 71 | `courbe-logarithme.svg` | « ln x ≤ x − 1 » | 2.4 px |
 | 71 | `pangee-reconstruction-preuves.svg` | « Mesosaurus » | 3.0 px |
-| 69 | `explication-bk-2019-n-x1.svg` | « O » | 1.1 px |
-| 68 | `p-liste-cadenas.svg` | « roue 1 » | 1.5 px |
 | 63 | `sphere-plan.svg` | « M » | 2.0 px |
-| 63 | `vecteur-vitesse-tangente.svg` | « G2' » | 2.3 px |
 | 61 | `rendement-esterification.svg` | « τ(t) » | 2.4 px |
 | 58 | `distance-deux-pythagore.svg` | « AB » | 1.6 px |
 | 58 | `refroidissement-modeles.svg` | « 29,5 °C » | 2.6 px |
@@ -148,13 +130,9 @@ moitié va de la gêne réelle au mot illisible.
 | 54 | `origin-uL.svg` | « pente = di/dt » | 2.2 px |
 | 54 | `positions-droite-droite.svg` | « (BC) » | 2.2 px |
 | 53 | `direct-vs-pile.svg` | « pont salin » | 1.6 px |
-| 53 | `division-euclidienne-droite.svg` | « q = -13 ? » | 1.6 px |
 | 53 | `proba-enfant-atteint.svg` | « a//a — 1/4 » | 2.2 px |
 | 53 | `proba-enfant-atteint.svg` | « a//a — 1/4 » | 2.2 px |
-| 51 | `vallee-stabilite.svg` | « N = Z » | 1.2 px |
 | 49 | `trois-discontinuites.svg` | « f(1) = 1 » | 2.1 px |
-| 45 | `courant-vs-electrons.svg` | « pont salin » | 1.5 px |
-| 45 | `pile-daniell.svg` | « pont salin » | 1.5 px |
 | 41 | `arbre-pondere.svg` | « P(B̅\|A) = 0,5 » | 2.0 px |
 | 41 | `reponse-humorale-cellulaire.svg` | « signal » | 1.4 px |
 | 41 | `reponse-humorale-cellulaire.svg` | « signal » | 1.4 px |
@@ -164,11 +142,8 @@ moitié va de la gêne réelle au mot illisible.
 | 38 | `courbe-exponentielle.svg` | « y = ex » | 1.8 px |
 | 37 | `exp-au-dessus-de-x-plus-1.svg` | « e − 2 ≈ 0,72 » | 1.8 px |
 | 37 | `exp-au-dessus-de-x-plus-1.svg` | « y = x + 1 » | 1.8 px |
-| 37 | `p-liste-cadenas.svg` | « roue 2 » | 1.5 px |
 | 36 | `disjonction-alleles.svg` | « Gamète G — 1/2 » | 2.2 px |
-| 35 | `continuite-tvi.svg` | « k = 0,5 » | 2.4 px |
 | 35 | `cube-diagonales.svg` | « (BD) » | 2.0 px |
-| 34 | `asymptotes.svg` | « x = 2 » | 1.8 px |
 | 34 | `pli-faille-profondeur.svg` | « suivie de haut en bas » | 3.4 px |
 | 34 | `travail-ressort-triangle.svg` | « F(x) = kx » | 1.3 px |
 | 34 | `zone-virage-sur-saut.svg` | « E (pHE ≈ 8,5) » | 2.4 px |
@@ -266,7 +241,6 @@ moitié va de la gêne réelle au mot illisible.
 | 9 | `pli-faille-profondeur.svg` | « compression horizontale » | 2.2 px |
 | 9 | `pli-faille-profondeur.svg` | « compression horizontale » | 1.4 px |
 | 9 | `vallee-stabilite.svg` | « hors de la vallée, même tr » | 1.2 px |
-| 8 | `asymptotes.svg` | « f(x) = 2 + 1/(x - 2) » | 1.4 px |
 | 8 | `courbe-aston.svg` | « 4He — 7,08 MeV/nucléon » | 1.2 px |
 | 8 | `datation-c14.svg` | « mort de l'organisme (t = 0 » | 2.4 px |
 | 7 | `montage-resonance.svg` | « floue (amortissement fort) » | 2.6 px |
@@ -287,27 +261,33 @@ moitié va de la gêne réelle au mot illisible.
 
 ## Les gestes qui corrigent
 
-Par ordre de préférence, tirés des cas déjà réparés :
+Par ordre de préférence, tirés des 30 figures réparées :
 
-1. **Changer l'ORDRE DE PEINTURE.** Le plus fréquent et le plus propre :
-   si le tracé est peint APRÈS le texte, le déplacer avant suffit (l'axe
-   de symétrie du triangle de Pascal doit passer SOUS les cases, pas à
-   travers les chiffres). Attention au symétrique : une bande translucide
-   peinte après des étiquettes les délave (`frontieres-plaques`).
+1. **Changer l'ORDRE DE PEINTURE.** Le plus propre quand il s'applique :
+   la bande de manteau de `frontieres-plaques` délavait les étiquettes
+   qu'elle recouvrait — peinte avant, tout rentre dans l'ordre.
 2. **Faire partir le trait du BORD et non du CENTRE** de ce qu'il relie
-   (`arbre-denombrement`).
-3. **Décaler l'étiquette** perpendiculairement au tracé, du côté libre.
-4. **Poser une pastille opaque** quand aucune zone n'est libre — et la
+   (`arbre-denombrement` : les arêtes barraient le mot du nœud d'où elles
+   partaient).
+3. **Router autrement.** L'éventail de `p-liste-cadenas` traversait les
+   quatre roues et leurs étiquettes ; en montant au-dessus des boîtes
+   puis en redescendant dans chacune, il ne croise plus rien.
+4. **Interrompre le tracé** quand il appartient à une étape postérieure et
+   que l'ordre de peinture ne peut donc rien (l'axe de symétrie du
+   triangle de Pascal, en quatre segments qui contournent les cases).
+5. **Décaler l'étiquette du côté libre** de ce qu'elle nomme — le cas le
+   plus fréquent, et de loin : l'étiquette d'une ligne écrite SUR cette
+   ligne. Onze figures d'un coup.
+6. **Poser une pastille opaque** quand aucune zone n'est libre, et la
    faire lire comme une pastille (`detecteur-crete`).
 
 ## Ce que cet inventaire ne dit pas
 
-- Il porte sur le **thème clair** seulement. La liste serait identique en
-  sombre (les métriques ne dépendent pas du thème), la gêne non.
+- Il porte sur le **thème clair** seulement.
 - Il ne voit **que les textes** : un tracé qui en barre un autre, ou une
   étiquette qui sort de SON panneau sans sortir du cadre, restent hors
   mesure. Cette dernière classe a fait un dégât réel dans
   `travail-force-signe` et n'est gardée par rien.
-- Il ignore les `.motion.svg`, dont le rendu statique n'est l'état d'aucun
-  instant du film.
-
+- Il ignore les `.motion.svg`.
+- **Ce n'est toujours pas une porte.** 142 cas subsistent : l'armer
+  aujourd'hui obligerait à la désarmer demain.

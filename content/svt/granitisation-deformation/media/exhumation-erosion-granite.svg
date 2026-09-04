@@ -63,7 +63,11 @@
 
     <!-- Gneiss, ≈20 km -->
     <rect x="205" y="290" width="340" height="34" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
-    <text x="375" y="311" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-ink)">GNEISS</text>
+    <!-- « GNEISS » remonte dans sa bande : l'étape 3 fait passer la surface
+         érodée à y=307, en plein milieu du mot (mesuré 99 %). Que la ligne
+         traverse la BANDE est le sujet même de l'étape ; qu'elle traverse le
+         MOT ne l'est pas. -->
+    <text x="375" y="301" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-ink)">GNEISS</text>
 
     <!-- Pluton de granite, la racine, ≈30 km -->
     <ellipse cx="375" cy="416" rx="95" ry="38" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.4"/>

@@ -242,10 +242,14 @@ for direction, nom in (((1.0, 0, 0), "x"), ((0, 1.0, 0), "y"), ((0, 0, 1.0), "z"
     add_(fleche(O, vec, "var(--figure-grid)", largeur=1.6, tete=7))
     ex, ey = P(mul(vec, 1.13))
     add_(texte(ex - 4, ey + 4, nom, 14, "var(--figure-grid)"))
-add_(point(O, "O", -16, 16, C_SOFT, 3.2))
-add_(point(A, "A", 11, -7))
+add_(point(O, "O", -18, 30, C_SOFT, 3.2))
+# Décalages ÉLARGIS (2026-09-04) : à 11 px, les étiquettes A et C tombaient
+# dans le sommet du triangle ABC — l'angle y est aigu, et le raccord mitré du
+# tracé y forme une pointe qui entrait dans la boîte du texte (mesuré 93 % et
+# 96 % de sa largeur par la sonde de figure-preview).
+add_(point(A, "A", 14, 24))
 add_(point(B, "B", 11, -7))
-add_(point(C, "C", 12, 18))
+add_(point(C, "C", -32, 24))
 add_("</g>")
 
 # ── step-2 : les deux vecteurs du plan ─────────────────────────────────

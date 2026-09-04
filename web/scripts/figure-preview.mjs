@@ -259,7 +259,23 @@ const defauts = await page.evaluate(() => {
       return { x: x0, y: y0, width: Math.max(...xs) - x0, height: Math.max(...ys) - y0 };
     };
     const textes = [...svg.querySelectorAll("text")];
-    const boites = textes.map((t) => ({ t, b: boiteRacine(t), s: t.textContent.trim() }));
+    // On garde DEUX descriptions de chaque texte :
+    //   · `b`   — sa boîte englobante dans le repère racine, pour comparer des
+    //            textes entre eux ;
+    //   · `loc` + `inv` — sa boîte dans SON PROPRE repère, et la matrice qui y
+    //            ramène un point. Indispensable pour un texte TOURNÉ : la
+    //            boîte englobante axée d'un texte incliné à 28° est bien plus
+    //            grande que le texte, et toute droite parallèle à celui-ci la
+    //            traverse. La sonde des tracés a cru barrer « pente = 4π²/(GM) »
+    //            (kepler3-linearisation) alors que l'étiquette longe sa droite
+    //            à 11 px de distance, comme une étiquette de pente doit le faire.
+    const boites = textes.map((t) => {
+      let inv = null;
+      try {
+        if (versRacine && t.getScreenCTM) inv = versRacine.multiply(t.getScreenCTM()).inverse();
+      } catch { inv = null; }
+      return { t, b: boiteRacine(t), loc: t.getBBox(), inv, s: t.textContent.trim() };
+    });
     for (const { t, b, s } of boites) {
       if (!s) continue;
       if (b.x < vx - 1 || b.x + b.width > vx + vw + 1 || b.y + b.height > vy + vh + 1) {
@@ -408,6 +424,10 @@ const defauts = await page.evaluate(() => {
         const y = m ? m.b * pt.x + m.d * pt.y + m.f : pt.y;
         for (const bt of boites) {
           if (!bt.s) continue;
+          // Point ramené dans le repère PROPRE du texte (exact, même tourné).
+          const px = bt.inv ? bt.inv.a * x + bt.inv.c * y + bt.inv.e : x;
+          const py = bt.inv ? bt.inv.b * x + bt.inv.d * y + bt.inv.f : y;
+          const bb = bt.inv ? bt.loc : bt.b;
           // getBBox rend la boîte EM, pas la boîte d'encre. Pour la plupart
           // des mots l'écart est sans conséquence ; pour « … », « . », « , »
           // ou « _ », l'encre tient dans le bas de la boîte et tout le haut
@@ -418,12 +438,12 @@ const defauts = await page.evaluate(() => {
           // bas — c'est étroit et c'est dit, plutôt que large et faux.
           const encreBasse = /^[…._,]+$/.test(bt.s);
           const hautBoite = encreBasse
-            ? bt.b.y + bt.b.height * 0.62
-            : bt.b.y + bt.b.height * 0.15;
-          const basBoite = bt.b.y + bt.b.height * 0.85;
+            ? bb.y + bb.height * 0.62
+            : bb.y + bb.height * 0.15;
+          const basBoite = bb.y + bb.height * 0.85;
           if (
-            x > bt.b.x && x < bt.b.x + bt.b.width &&
-            y > hautBoite && y < basBoite
+            px > bb.x && px < bb.x + bb.width &&
+            py > hautBoite && py < basBoite
           ) {
             dedans.set(bt, (dedans.get(bt) ?? 0) + pas);
           }
@@ -450,6 +470,7 @@ const defauts = await page.evaluate(() => {
       };
       for (const [bt, longueur] of dedans) {
         const proche = bouts.some((pt) => distBoite(bt.b, pt) <= 8);
+        const largeurTexte = bt.inv ? bt.loc.width : bt.b.width;
         if (longueur < (proche ? 20 : 10)) continue;
         const rT = rang.get(bt.t), rG = rang.get(g);
         const protege = masques.some((mk) => {
@@ -462,7 +483,7 @@ const defauts = await page.evaluate(() => {
         out.push({
           fig: iFig, type: "barre", txt: bt.s.slice(0, 26),
           detail: `traversé par un <${g.tagName.toLowerCase()}> tracé à ${largeur.toFixed(1)} px ` +
-                  `sur ${Math.round(longueur)} px — soit ${Math.round((longueur / Math.max(bt.b.width, 1)) * 100)} % ` +
+                  `sur ${Math.round(longueur)} px — soit ${Math.round((longueur / Math.max(largeurTexte, 1)) * 100)} % ` +
                   `de la largeur de l'étiquette` +
                   ` · texte en (${Math.round(bt.b.x)};${Math.round(bt.b.y + bt.b.height)})` +
                   ` · tracé ${g.getAttribute("d") ? "d=" + g.getAttribute("d").slice(0, 28).replace(/\s+/g, " ") : [...g.attributes].filter((at) => /^(x1|y1|x2|y2|cx|cy|r|points)$/.test(at.name)).map((at) => at.name + "=" + at.value.slice(0, 12)).join(" ")}`,

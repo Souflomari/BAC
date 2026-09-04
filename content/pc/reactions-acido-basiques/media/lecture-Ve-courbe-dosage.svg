@@ -104,8 +104,11 @@
     <line x1="90" y1="188" x2="356" y2="188" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
     <circle cx="356" cy="188" r="4" fill="var(--figure-ink-soft)"/>
     <line x1="352" y1="180" x2="330" y2="166" stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="2,2"/>
-    <text x="326" y="153" text-anchor="end" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">ici, pH = 7 — avant le saut,</text>
-    <text x="326" y="166" text-anchor="end" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">ce n&#8217;est PAS V<tspan dy="3" font-size="8">E</tspan></text>
+    <!-- Les deux lignes remontent de 12 px : la seconde était traversée sur
+         toute sa largeur par l'horizontale pH = 7 (y=164), qui court de
+         x=90 à x=390 — l'avertissement « ce n'est PAS V_E » était rayé. -->
+    <text x="326" y="141" text-anchor="end" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">ici, pH = 7 — avant le saut,</text>
+    <text x="326" y="154" text-anchor="end" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">ce n&#8217;est PAS V<tspan dy="3" font-size="8">E</tspan></text>
 
     <!-- Demi-équivalence : V_E/2 = 7,5 mL, pH ≈ pKA ≈ 4,8 -->
     <line x1="240" y1="223.2" x2="240" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>

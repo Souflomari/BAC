@@ -77,7 +77,10 @@
     <!-- Axe des abscisses : t (jours) -->
     <line x1="90" y1="380" x2="800" y2="380" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
     <polygon points="810,380 798,375.5 798,384.5" fill="var(--figure-ink-soft)"/>
-    <text x="800" y="384" text-anchor="end" font-size="10.5" font-style="italic" fill="var(--figure-ink-soft)">t (jours)</text>
+    <!-- Le nom de l'axe passe AU-DESSUS de l'axe : posé à y=384 il était
+         traversé par l'axe lui-même sur toute sa largeur (mesuré 99 %), et
+         la ligne des graduations occupe y=398 juste dessous. -->
+    <text x="800" y="370" text-anchor="end" font-size="10.5" font-style="italic" fill="var(--figure-ink-soft)">t (jours)</text>
 
     <!-- Axe des ordonnées : titre d'anticorps, log -->
     <line x1="90" y1="380" x2="90" y2="45" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
