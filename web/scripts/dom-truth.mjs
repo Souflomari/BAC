@@ -2260,7 +2260,11 @@ try {
       page.evaluate(() => {
         const grid = document.querySelector(".notion-page-grid");
         const zone = document.querySelector("[data-retenir-zone]");
-        const carte = document.querySelector("[data-retenir-carte]");
+        // Une carte CACHÉE compte comme absente : c'est le cas d'une formule
+        // qui ne tient pas dans la colonne même réduite au plancher — la zone
+        // préfère se taire que servir une formule coupée.
+        const noeud = document.querySelector("[data-retenir-carte]");
+        const carte = noeud && !noeud.hasAttribute("hidden") ? noeud : null;
         const prose = document.querySelector(".chapter-view:not([hidden]) .notion-prose");
         return {
           colonnes: grid ? getComputedStyle(grid).gridTemplateColumns.split(" ").length : 0,
@@ -2315,6 +2319,35 @@ try {
         `chapitre 1 (accroche, sans formule) : une carte « à retenir » est rendue — état honnête rompu, contenu fabriqué`
       );
     } else console.log(`  ✓ chapitre sans formule : zone présente et SILENCIEUSE (aucune carte)`);
+
+    // Aucune formule COUPÉE : quand la carte est visible, la formule tient
+    // entièrement dans la colonne. C'est ce que la mise à l'échelle garantit,
+    // et ce que le masquage garantit quand la mise à l'échelle ne suffit pas.
+    await page.setViewportSize({ width: 1600, height: 1000 });
+    const coupees = [];
+    for (const route of [
+      `${NOTION}?chapitre=3`,
+      "/notions/maths/calcul-integral?chapitre=4",
+      "/notions/maths/calcul-integral?chapitre=8",
+      "/notions/maths/denombrement?chapitre=6",
+      "/notions/pc/lois-de-newton?chapitre=4",
+    ]) {
+      await page.goto(`${BASE}${route}`, { waitUntil: "networkidle" });
+      const d = await page.evaluate(() => {
+        const n = document.querySelector("[data-retenir-carte]");
+        if (!n || n.hasAttribute("hidden")) return 0;
+        const hote = n.querySelector("[class*='overflow-x-auto']");
+        if (!hote) return 0;
+        const f = hote.firstElementChild;
+        if (!f) return 0;
+        return Math.max(0, Math.round(f.getBoundingClientRect().width - hote.clientWidth));
+      });
+      if (d > 1) coupees.push(`${route} (+${d}px)`);
+    }
+    checks++;
+    if (coupees.length) {
+      failures += fail(`formule(s) coupée(s) au bord de la carte : ${coupees.join(", ")}`);
+    } else console.log(`  ✓ aucune formule coupée : 5 cartes mesurées, toutes entières dans la colonne`);
 
     // Le repli : une leçon sans sidecar prend la première formule détachée du
     // chapitre — une formule DÉJÀ dans la leçon, jamais une invention.

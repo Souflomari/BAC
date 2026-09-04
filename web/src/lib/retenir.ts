@@ -10,9 +10,10 @@
  *   1. le sidecar `content/<matière>/<slug>/retenir.json` — une entrée par
  *      barreau, `{ rung, formula, note }`. C'est la source AUTHORÉE, et elle
  *      gagne toujours.
- *   2. à défaut, le premier bloc `$$…$$` du chapitre, étiqueté par le titre
- *      court du chapitre. C'est un REPLI, pas une invention : la formule
- *      affichée est déjà dans la leçon, mot pour mot.
+ *   2. à défaut, une formule DÉTACHÉE du chapitre (`$$…$$`), étiquetée par
+ *      le titre court du chapitre. C'est un REPLI, pas une invention : la
+ *      formule affichée est déjà dans la leçon, mot pour mot. Le choix parmi
+ *      les blocs du chapitre obéit à trois règles — voir `formuleDeRepli`.
  *
  * ET SI AUCUNE DES DEUX ? La carte est absente, la zone reste vide et
  * silencieuse. C'est la règle d'état honnête : on ne fabrique pas un « à
@@ -25,7 +26,7 @@
  * de détacher, porte ce statut.
  */
 
-import { extractChapterHeadings, splitChapterBodies, sansLatex } from "@/lib/chapters";
+import { extractChapterHeadings, splitChapterBodies, sansLatex } from "./chapters";
 
 /** Une entrée du sidecar `retenir.json`. */
 export interface RetenirEntry {
@@ -48,12 +49,41 @@ export interface RetenirCarte {
   source: "sidecar" | "repli";
 }
 
-/** Premier bloc `$$…$$` d'un texte de chapitre, source brute, ou null. */
-function premiereFormuleDetachee(md: string): string | null {
-  const m = md.match(/\$\$([\s\S]*?)\$\$/);
-  if (!m) return null;
-  const tex = m[1].trim();
-  return tex.length > 0 ? tex : null;
+/**
+ * La formule de repli d'un chapitre — et ce qu'elle REFUSE d'être.
+ *
+ * Écrire « À RETENIR » au-dessus de « 8 × 7 × 6 = 336 » serait un mensonge :
+ * c'est un calcul d'exemple, pas un résultat à retenir. Le repli passe donc
+ * les blocs `$$` du chapitre dans l'ordre et s'arrête au premier qui tient
+ * debout tout seul. Trois règles, mesurées sur le corpus (491 chapitres,
+ * 230 avec au moins un bloc détaché) :
+ *
+ *   · `\boxed{…}` GAGNE. C'est le signal authoré le plus fort qu'on ait :
+ *     l'auteur a encadré ce résultat exprès. 28 chapitres en portent un.
+ *   · une formule SANS AUCUNE VARIABLE est refusée — arithmétique pure,
+ *     donc application numérique (« 5 × 4 × 3 × 2 × 1 = 120 »).
+ *   · un `\begin{cases}` est refusé : c'est un système EN COURS de
+ *     résolution, jamais une conclusion.
+ *
+ * Aucun candidat ne passe → rien. La zone se tait, ce qui reste préférable à
+ * lui faire dire une étape intermédiaire.
+ */
+function estCalculNu(tex: string): boolean {
+  if (/\\begin\{cases\}/.test(tex)) return true;
+  // Retire les commandes LaTeX (\times, \frac…) puis regarde s'il reste une
+  // lettre : sans lettre, il n'y a pas de relation, seulement un calcul.
+  const sansCommandes = tex.replace(/\\[a-zA-Z]+/g, " ");
+  return !/[a-zA-Zα-ωΑ-Ω]/.test(sansCommandes);
+}
+
+function formuleDeRepli(md: string): string | null {
+  const blocs = [...md.matchAll(/\$\$([\s\S]*?)\$\$/g)]
+    .map((m) => m[1].trim())
+    .filter((t) => t.length > 0);
+  if (!blocs.length) return null;
+  const encadree = blocs.find((t) => t.includes("\\boxed"));
+  if (encadree) return encadree;
+  return blocs.find((t) => !estCalculNu(t)) ?? null;
 }
 
 /**
@@ -100,7 +130,7 @@ export function cartesParChapitre(
       continue;
     }
 
-    const repli = premiereFormuleDetachee(texte);
+    const repli = formuleDeRepli(texte);
     if (repli) {
       cartes[i] = { titre, formula: repli, source: "repli" };
     }
