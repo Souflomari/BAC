@@ -758,5 +758,23 @@ inchangées (rehype-slug lit le texte, pas le niveau). Tout le reste de
 l'ossature était propre : h1 unique, figures nommées, boutons nommés, listes
 bien formées.
 
-**Reste ouverte : la connexion lente** — ce que la page montre avant d'être
-chargée. Le seul chiffre qu'on en ait est le flash du chapitre 1 (§8.3).
+**La connexion lente — un défaut, et il est à l'arbitrage.** Le *Cumulative
+Layout Shift* (ce que la page fait bouger en chargeant) vaut **0,000 sur les
+sept pages testées sans bridage** — c'est exactement pourquoi personne ne
+l'avait vu, une machine de développement ne peut pas trouver ce défaut. Bridé
+à 3G lent, **`/examens/<id>` décroche à 0,320 (« mauvais » au sens Core Web
+Vitals)** : le bouton « Commencer l'épreuve » monte de 98 px, 8,4 secondes
+après le début du chargement. Un élève qui appuie à cet instant appuie à côté.
+
+Cause isolée par élimination : fontes bloquées, le CLS tombe à 0,000. C'est
+l'échange de fonte (`font-display: swap`) qui recoupe les lignes du seuil
+d'épreuve. Les fontes sont déjà préchargées et leurs substituts portent déjà
+un `size-adjust` : ce n'est pas un oubli de configuration.
+
+**GATE PROPRIÉTAIRE.** Un essai a chiffré l'option : passer le sérif en
+`display: optional` fait tomber `suites-numeriques` de 0,091 à 0,002 mais ne
+change rien sur la page d'épreuve, dont le texte est en fonte d'INTERFACE.
+L'essai a été défait — changer le `font-display` de la fonte d'identité
+modifie ce qu'un élève voit en première visite lente, et c'est un arbitrage,
+pas un correctif. Outil : `web/scripts/cls-sweep.mjs`. Pas de porte armée :
+on n'arme pas une porte sur une classe qui n'est pas propre.

@@ -408,3 +408,40 @@ On n'a ni desserré la porte, ni renommé le contenu pour lui plaire : on lui
 a donné le critère qu'elle voulait dire depuis le début — *un sommet
 légataire n'a aucun marqueur d'exercice après lui*. Vérifié dans les deux
 sens.
+
+---
+
+## Annexe 7 — la connexion lente (2026-09-04) : le bouton qui se dérobe
+
+Septième et dernière fenêtre. Le *Cumulative Layout Shift* mesure ce que la
+page fait BOUGER pendant qu'elle charge — le bouton qui se déplace sous le
+doigt au moment où on appuie. Seuils Core Web Vitals : ≤ 0,10 bon, ≤ 0,25 à
+améliorer, au-delà mauvais.
+
+**Sans bridage réseau, les sept pages testées valent 0,000.** C'est
+exactement pourquoi personne ne l'avait vu : la mesure depuis une machine de
+développement ne PEUT PAS trouver ce défaut.
+
+**Bridé à 3G lent (400 kb/s, 400 ms de latence), une page décroche :
+`/examens/<id>` à 0,320 — mauvais.** Le bouton « Commencer l'épreuve » monte
+de 98 px, 8,4 secondes après le début du chargement. Un élève qui appuie à
+cet instant appuie à côté.
+
+**Cause isolée par élimination, pas par intuition** : en bloquant les
+fichiers de fontes, le CLS tombe à 0,000. C'est l'échange de fonte
+(`font-display: swap`) qui re-coupe les lignes du seuil d'épreuve et déplace
+tout ce qui suit. Les fontes sont déjà préchargées (six fichiers) et leurs
+substituts portent déjà un `size-adjust` — ce n'est donc pas un oubli de
+configuration : c'est la largeur des glyphes qui change, et une ligne qui se
+recoupe déplace tout le bloc.
+
+**Un essai chiffré, puis défait.** Passer le sérif en `display: optional`
+fait tomber `suites-numeriques` de 0,091 à 0,002 — mais ne change RIEN sur
+la page d'épreuve, dont le texte est en fonte d'INTERFACE. L'essai a été
+annulé : changer le `font-display` de la fonte d'identité modifie ce qu'un
+élève voit en première visite lente, et c'est **un arbitrage de propriétaire,
+pas un correctif**. Le chiffre est là pour qu'il se décide sur un fait.
+
+**Pas de porte.** On n'arme pas une porte sur une classe qui n'est pas
+propre. `web/scripts/cls-sweep.mjs` reste un outil ; la ligne de dette est
+ci-dessous et dans le HANDOFF.
