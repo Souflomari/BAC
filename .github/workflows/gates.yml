@@ -86,6 +86,27 @@ jobs:
             || { echo "::warning::dom-truth cold-boot retry 1"; npm run dom-truth; } \
             || { echo "::warning::dom-truth cold-boot retry 2"; npm run dom-truth; }
 
+      # PORTE FIGURES (2026-09-04). figure-preview mesure cinq classes de
+      # défaut sur les 258 SVG statiques ; DEUX seulement sont armées, et
+      # seulement parce qu'elles sont propres :
+      #   · « déborde »      — un texte qui sort du cadre de la figure ;
+      #   · « hors panneau » — un texte qui sort de SON panneau et se fait
+      #     donc attribuer au panneau voisin.
+      # Les trois autres (chevauchements, tracés qui barrent, aplats clairs en
+      # thème sombre) restent des OUTILS : leur classe n'est pas vide, et
+      # armer une porte sur une classe sale oblige à la désarmer le lendemain.
+      # Les exceptions légitimes sont déclarées DANS les fichiers
+      # (data-hors-panneau, data-rature), jamais dans une liste ici.
+      - name: Porte figures (cadre + panneau)
+        run: |
+          # Chemins relatifs à la RACINE du dépôt : figure-preview les résout
+          # contre elle, pas contre le cwd (même convention que
+          # validate-content, qui fait le même sed juste au-dessus).
+          svgs=$(find ../content -path '*/media/*.svg' -not -name '*.motion.svg' | sed 's|^\.\./||' | sort)
+          test -n "$svgs"
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/figure-preview.mjs --porte $svgs
+
       - name: Model-id hygiene gate
         working-directory: .
         run: |

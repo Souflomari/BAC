@@ -38,6 +38,16 @@ const RACINE = path.dirname(WEB);
 
 const args = process.argv.slice(2);
 const sombre = args.includes("--dark");
+// --porte : sortie non nulle si une classe ARMÉE trouve quoi que ce soit.
+// Seules deux classes sont armées, et seulement parce qu'elles sont PROPRES
+// sur tout le corpus au 2026-09-04 :
+//   · « déborde »      — un texte qui sort du cadre de la figure (0 cas) ;
+//   · « hors panneau » — un texte qui sort de SON panneau (0 cas).
+// « barre » (85 cas, tous sous 30 %) et « chevauche » (7 cas, tous dans la
+// figure sous dette owner) restent INFORMATIFS : armer une porte sur une
+// classe sale, c'est devoir la désarmer le lendemain.
+const porte = args.includes("--porte");
+const CLASSES_ARMEES = new Set(["déborde", "hors panneau"]);
 const fichiers = args.filter((a) => !a.startsWith("--"));
 
 if (fichiers.length === 0) {
@@ -667,3 +677,18 @@ if (defauts.length === 0) {
   }
 }
 console.log("\nLa mesure ne remplace pas le regard : ouvre les PNG.");
+
+if (porte) {
+  const bloquants = defauts.filter((d) => CLASSES_ARMEES.has(d.type));
+  if (bloquants.length) {
+    console.error(
+      `\n━━ porte figures : ${bloquants.length} défaut(s) de classe armée ━━\n` +
+        "   (« déborde » = texte hors du cadre ; « hors panneau » = texte qui\n" +
+        "    sort de son panneau et se fait attribuer au voisin)"
+    );
+    process.exit(1);
+  }
+  console.log(
+    `porte figures : ${fichiers.length} figure(s), aucune sortie de cadre, aucune sortie de panneau ✓`
+  );
+}

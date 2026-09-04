@@ -452,6 +452,16 @@ signale.
   traversé par le bord de sa boîte (`tour-des-ensembles`) ; deux lignes
   passant par-dessus la bordure et la flèche (`pli-faille-profondeur`).
 
-**État : 0 cas.** Cette classe-ci est propre — mais la sonde n'est pas
-encore une porte, faute d'avoir été négativement testée sur un cas
-réintroduit ; elle vit dans `figure-preview`, avec les quatre autres.
+**État : 0 cas — et la porte est ARMÉE.** `figure-preview --porte` sort en
+erreur si l'une des deux classes PROPRES trouve quoi que ce soit : « déborde »
+(texte hors du cadre) et « hors panneau ». Testée dans les deux sens : en
+remettant l'équation de `tour-des-ensembles` à son ancien x, la porte échoue
+(sortie 1) ; remise en place, elle passe. Elle tourne en CI sur les 258 SVG
+statiques, après dom-truth.
+
+Les trois autres classes restent des OUTILS et le resteront tant qu'elles ne
+seront pas vides : chevauchements (7, tous dans la figure sous dette owner),
+tracés qui barrent (85, tous sous 30 %), aplats clairs en thème sombre (2,
+la même dette). **Armer une porte sur une classe sale oblige à la désarmer
+le lendemain** — c'est la règle, et c'est pour ça que trois des cinq sondes
+n'en sont pas une.
