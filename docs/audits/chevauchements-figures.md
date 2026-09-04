@@ -321,3 +321,49 @@ de focus absente ne se signalera pas tout seul. Porte armée dans dom-truth
   « … trigonométrique ») partagent leurs 24 premiers caractères, et une clé
   textuelle les déclarait « focus bloqué ». Deux éléments ne peuvent pas
   occuper le même point.
+
+---
+
+## Annexe 5 — le texte à 200 % (2026-09-04, WCAG 2.2 SC 1.4.4)
+
+Cinquième fenêtre. La norme demande que le texte puisse doubler « sans perte
+de contenu ni de fonctionnalité ». On double la taille de la racine et on
+regarde deux choses : la page défile-t-elle horizontalement, et un texte
+est-il **coupé** par une boîte qui cache son débordement — la perte
+silencieuse, la pire des deux.
+
+**À l'ouverture : 227 signalements sur 67 pages.** Trois causes, toutes
+structurelles :
+
+1. **Onze titres de leçon débordaient** (15 à 221 px). Cause exacte : le
+   masthead est une grille `[1fr 400px]`, et un élément de grille a
+   `min-width: auto` — sa piste ne peut donc pas descendre sous la largeur
+   **min-content** de son contenu, ici le plus long mot du titre.
+   « différentielles » à 128 px mesure 814 px à lui seul : la piste gonflait,
+   poussait la couverture hors cadre, et la page débordait de 139 px.
+   `min-w-0` sur la colonne. **Et il faut les deux** :
+   `overflow-wrap: break-word` autorise la coupure du mot, mais ne change pas
+   la taille min-content — l'un sans l'autre ne suffit pas.
+
+2. **Huit tableaux poussaient la page** (jusqu'à 335 px sur un écran de
+   1280). Leur confinement défilant existait déjà dans `globals.css` — il
+   était simplement enfermé dans une media query `max-width: 600px`. Or la
+   condition qu'il traite n'est pas une largeur d'écran : c'est un rapport
+   entre un contenu et sa boîte. Règle sortie de la media query.
+
+3. **Les titres des cartes d'exercice étaient COUPÉS** par le
+   `overflow-hidden` qui arrondit leurs coins — jusqu'à 55 px de texte perdu,
+   sans ellipse, sans rien. Le conteneur du titre défile désormais.
+
+**Après : 0 signalement à 1280 px** (227 → 0). Porte armée dans dom-truth
+(210 contrôles) sur cinq surfaces, avec ses trois exclusions écrites — elles
+sont des faux positifs par construction : `sr-only` (masqué jusqu'au focus),
+`katex-mathml` (couche MathML, masquée par nature), et tout
+`text-overflow: ellipsis` (troncature VOULUE, doublée d'un `title`).
+
+**Ce qui reste, dit tel quel :** à 360 px ET 200 % de texte — soit 180 px
+d'équivalent CSS — 25 leçons défilent encore de 47 à 200 px. C'est en
+dessous de ce que la norme vise (SC 1.4.10 « Reflow » cible 320 px
+d'équivalent, atteint et vérifié à 100 %), et le débord ne s'isole plus sur
+une classe de composant : il est réparti. Ce n'est donc pas une porte
+manquante, c'est un plancher de mise en page. Noté, pas caché.

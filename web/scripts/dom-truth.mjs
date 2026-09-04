@@ -2652,6 +2652,75 @@ try {
     else console.log(`  ✓ ${arrets} arrêts de tabulation sur 3 surfaces, aucun défaut`);
   }
 
+  // ── Texte à 200 % : WCAG 2.2 SC 1.4.4 (« Resize text ») ──────────────────
+  //
+  // « Le texte peut être redimensionné jusqu'à 200 % sans perte de contenu ni
+  // de fonctionnalité. » Fenêtre ouverte le 2026-09-04, jamais mesurée. On
+  // double la taille de la racine et on regarde deux choses :
+  //
+  //   · la page défile-t-elle horizontalement (contenu poussé hors cadre) ;
+  //   · un texte est-il COUPÉ par une boîte qui cache son débordement — la
+  //     perte silencieuse, la pire des deux.
+  //
+  // À l'ouverture : 227 signalements sur 67 pages. Onze titres de leçon
+  // débordaient de 15 à 221 px (piste de grille `1fr` sans `min-w-0` : sa
+  // largeur min-content était celle du plus long mot du titre) ; huit
+  // tableaux poussaient la page jusqu'à 335 px (leur confinement défilant
+  // existait, mais enfermé sous 600 px) ; et les titres des cartes
+  // d'exercice étaient coupés par le `overflow-hidden` qui arrondit leurs
+  // coins, jusqu'à 55 px de texte perdu sans rien pour le dire.
+  //
+  // TROIS EXCLUSIONS, écrites parce qu'elles sont des faux positifs par
+  // construction : `sr-only` (masqué jusqu'au focus), `katex-mathml` (la
+  // couche MathML, masquée par nature), et tout `text-overflow: ellipsis`
+  // (une troncature VOULUE, doublée d'un `title`).
+  {
+    console.log(`\n[200 %] SWEEP: texte doublé, rien de perdu (SC 1.4.4)`);
+    const zp = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    const soucis = [];
+    for (const r of [
+      "/notions/maths/equations-differentielles",
+      "/notions/maths/limites-continuite",
+      "/notions/svt/theorie-tectonique-plaques",
+      "/notions/maths/denombrement",
+      "/",
+    ]) {
+      await zp.goto(`${BASE}${r}`, { waitUntil: "networkidle" });
+      const m = await zp.evaluate(() => {
+        document.querySelectorAll("[data-chapter-section]").forEach((s) => (s.hidden = false));
+        document.documentElement.style.fontSize = "32px";
+        const debord = document.documentElement.scrollWidth - window.innerWidth;
+        const coupes = [];
+        for (const el of document.querySelectorAll("main *")) {
+          const cs = getComputedStyle(el);
+          if (cs.overflow !== "hidden" && cs.overflowY !== "hidden" && cs.overflowX !== "hidden") continue;
+          if (cs.overflowX === "auto" || cs.overflowY === "auto" || cs.overflowX === "scroll") continue;
+          if (cs.textOverflow === "ellipsis") continue;
+          if (!el.textContent || !el.textContent.trim()) continue;
+          const cl = String(el.className);
+          if (/sr-only|katex-mathml/.test(cl)) continue;
+          const q = el.getBoundingClientRect();
+          if (!q.width || q.right <= 0 || q.left >= window.innerWidth) continue;
+          let op = 1;
+          for (let n = el; n; n = n.parentElement) op *= parseFloat(getComputedStyle(n).opacity || "1");
+          if (op < 0.1) continue;
+          const d = Math.max(el.scrollWidth - el.clientWidth, el.scrollHeight - el.clientHeight);
+          if (d > 2 && el.clientHeight > 0) {
+            coupes.push(`${el.tagName.toLowerCase()} +${d}px « ${el.textContent.trim().replace(/\s+/g, " ").slice(0, 24)} »`);
+          }
+        }
+        document.documentElement.style.fontSize = "";
+        return { debord, coupes: [...new Set(coupes)].slice(0, 2) };
+      });
+      if (m.debord > 1) soucis.push(`${r} débord ${m.debord}px`);
+      for (const c of m.coupes) soucis.push(`${r} COUPÉ ${c}`);
+    }
+    await zp.close();
+    checks++;
+    if (soucis.length) failures += fail(`texte à 200 % : ${soucis.slice(0, 5).join(" | ")}`);
+    else console.log(`  ✓ 5 surfaces à 200 % de texte : aucun débord, aucun texte coupé`);
+  }
+
   // (F7) KaTeX accessibility parity: every formula ships MathML.
   {
     console.log(`\n[${NOTION}] SWEEP: KaTeX MathML parity`);

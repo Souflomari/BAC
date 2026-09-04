@@ -115,7 +115,12 @@ export function BankCard({
           "state-layer focus-ring [--focus-radius:12px]"
         )}
       >
-        <div className="flex-1 min-w-0">
+        {/* `overflow-x-auto` : la carte porte `overflow-hidden` pour arrondir
+            ses coins, et à 200 % de taille de texte (SC 1.4.4) un titre
+            d'exercice contenant une formule en ligne — insécable — était
+            COUPÉ par ce clip, jusqu'à 55 caractères perdus sans rien pour le
+            signaler. Il défile désormais dans sa propre boîte. */}
+        <div className="flex-1 min-w-0 overflow-x-auto">
           <div className="flex items-start justify-between gap-3">
             <h3 className="font-display text-h3 font-semibold text-primary">
               {entry.title}

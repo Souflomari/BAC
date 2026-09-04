@@ -160,6 +160,36 @@ h3:hover .heading-anchor,
   }
 }
 
+/* ── Les mots longs doivent pouvoir casser (2026-09-04, SC 1.4.4) ──────────
+   Le français a des mots longs et les titres sont gros. À 200 % de taille de
+   texte — ce que la norme exige de supporter sans perte de contenu — le h1
+   « Équations différentielles » mesure plus que la page et débordait de 139 px ;
+   huit leçons faisaient de même, et les titres des cartes d'exercice étaient
+   COUPÉS par le `overflow-hidden` qui arrondit leurs coins (jusqu'à 55 px de
+   texte perdu, sans rien pour le dire).
+
+   `overflow-wrap: break-word` n'agit QUE quand le mot ne peut pas tenir
+   autrement : à taille normale, rien ne change. On ne met pas `hyphens: auto`,
+   qui couperait des titres à l'affichage courant pour un gain nul.
+
+   La règle est posée sur `body`, pas sur les seuls titres : le premier essai
+   ne visait que h1–h6 et laissait déborder les libellés de chapitre, les
+   titres de cartes d'exercice et les puces — même cause, mêmes mots français
+   longs, à un endroit différent. Une règle qui ne s'applique QUE quand un mot
+   ne rentre pas n'a pas besoin d'être ciblée. */
+body {
+  overflow-wrap: break-word;
+}
+
+/* Une formule EN LIGNE est insécable. Dans les cartes d'items, le conteneur
+   défile déjà (McqItem/ChoiceButton) ; dans la PROSE, une formule encadrée un
+   peu longue poussait encore la page à 200 % de texte (calcul-integral, 335 px).
+   Le paragraphe défile donc, comme `.katex-display` juste dessous. Inerte à
+   taille normale : mesuré, la prose ne déborde à aucune largeur de téléphone. */
+.prose-lesson p {
+  overflow-x: auto;
+}
+
 /* ── La figure sur un téléphone (2026-09-04) ────────────────────────────────
    Le SVG remplit la largeur disponible. Sur un téléphone, la bande de lecture
    fait 328 px : une figure dessinée sur 900 unités est réduite au tiers, et ses
@@ -580,12 +610,20 @@ h3:hover .heading-anchor,
    longue (équations chimiques…) ne peut pas se replier. Les deux défilent
    dans leur propre boîte — la page, elle, ne défile jamais horizontalement.
    (Le math display est déjà contenu par .katex-display plus bas.) */
+/* Le tableau défile à TOUTE largeur, plus seulement sous 600px. Un tableau
+   ne peut pas descendre sous son min-content : à 200 % de taille de texte
+   (SC 1.4.4), huit tableaux du corpus faisaient déborder la page jusqu'à
+   335 px sur un écran de 1280. La règle était déjà écrite ici — elle était
+   simplement enfermée dans une media query de largeur, alors que la
+   condition qu'elle traite n'est pas une largeur d'écran mais un rapport
+   entre un contenu et sa boîte. */
+.prose-lesson table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 @media (max-width: 600px) {
-  .prose-lesson table {
-    display: block;
-    max-width: 100%;
-    overflow-x: auto;
-  }
   .prose-lesson p > .katex,
   .prose-lesson li > .katex,
   .prose-lesson td > .katex {

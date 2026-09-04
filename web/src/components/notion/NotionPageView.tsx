@@ -262,7 +262,16 @@ export function NotionPageView({
               fin du « wideOption mort en prod » que la spec réclamait. */}
           {(wideOption === "m1" || !wideOption) ? (
             <div className="bp-large:grid bp-large:grid-cols-[1fr_400px] bp-large:items-center bp-large:gap-12">
-              <div>{masthead}</div>
+              {/* `min-w-0` : un élément de grille a `min-width: auto`, donc sa
+                  piste ne peut pas descendre sous la largeur MIN-CONTENT de
+                  son contenu — ici le plus long mot du titre. À 200 % de
+                  taille de texte (SC 1.4.4), « différentielles » mesure 814 px
+                  à lui seul : la piste 1fr gonflait, poussait la couverture
+                  hors cadre et faisait déborder la page de 139 px. Onze leçons
+                  au titre long faisaient de même. `overflow-wrap: break-word`
+                  (globals.css) autorise la coupure du mot MAIS ne change pas
+                  la taille min-content — il faut les deux. */}
+              <div className="min-w-0">{masthead}</div>
               <div className="hidden bp-large:block" aria-hidden="true">
                 <Cover
                   subject={meta.subject}
