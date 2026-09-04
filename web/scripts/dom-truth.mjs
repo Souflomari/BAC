@@ -3426,6 +3426,53 @@ try {
     }
   }
 
+  // ── SWEEP: LES CHAPITRES NON ACTIFS SONT PRÉSENTS ET MASQUÉS, PAS ABSENTS.
+  //
+  //    C'est l'invariant qui fait marcher quatre choses d'un coup : le ⌘F du
+  //    navigateur trouve dans TOUTE la leçon, l'impression déplie tout, un
+  //    lien profond vers n'importe quel titre s'ouvre sans requête, et — on
+  //    l'a mesuré le 2026-09-04 — la leçon reste entièrement utilisable
+  //    quand le réseau tombe (`docs/audits/hors-ligne.md`).
+  //
+  //    Il a un prix, mesuré lui aussi : 43 000 nœuds et six secondes
+  //    d'attente sur un téléphone bon marché
+  //    (`docs/audits/poids-et-reactivite.md`). L'arbitrage entre les deux
+  //    appartient au propriétaire — et c'est PRÉCISÉMENT pourquoi ce
+  //    contrôle existe : tant que la décision n'est pas prise, une
+  //    « optimisation » qui rendrait les chapitres à la demande casserait
+  //    les quatre propriétés en silence. La porte oblige à la prendre
+  //    explicitement.
+  {
+    console.log(`\n[${NOTION}] SWEEP: chapitres non actifs — présents dans le DOM, masqués, non vides`);
+    await page.goto(`${BASE}${NOTION}`, { waitUntil: "networkidle" });
+    checks++;
+    const etat = await page.evaluate(() => {
+      const secs = [...document.querySelectorAll("[data-chapter-section]")];
+      const actif = secs.findIndex((s) => s.getAttribute("data-chapter-active") === "true");
+      const autres = secs.filter((_, i) => i !== actif);
+      return {
+        total: secs.length,
+        actif,
+        nonMasques: autres.filter((s) => !s.hidden).length,
+        vides: autres.filter((s) => (s.textContent || "").trim().length < 80).length,
+        // le texte d'un chapitre lointain est-il vraiment là ?
+        dernierTexte: (secs[secs.length - 1]?.textContent || "").trim().length,
+      };
+    });
+    if (etat.total < 2) {
+      failures += fail(`${NOTION} : ${etat.total} chapitre(s) — la leçon témoin doit en avoir plusieurs`);
+    } else if (etat.nonMasques > 0) {
+      failures += fail(`${NOTION} : ${etat.nonMasques} chapitre(s) non actifs NON masqués — deux chapitres s'affichent en même temps`);
+    } else if (etat.vides > 0) {
+      failures += fail(
+        `${NOTION} : ${etat.vides} chapitre(s) masqués sont VIDES — ils sont présents mais pas rendus. ` +
+          `Le ⌘F, l'impression, les liens profonds et la lecture hors ligne reposent sur leur contenu réel.`
+      );
+    } else {
+      console.log(`  ✓ ${etat.total} chapitres, ${etat.total - 1} masqués et pleins (le dernier porte ${etat.dernierTexte} caractères)`);
+    }
+  }
+
   // ── SWEEP: LE LIEN D'ÉVITEMENT EXISTE, EST PREMIER, ET FONCTIONNE.
   //
   //    Mesuré le 2026-09-04 (`scripts/annonce-sweep.mjs`) : il en existait un,

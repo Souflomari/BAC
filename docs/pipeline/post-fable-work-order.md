@@ -141,7 +141,37 @@ trois paliers desktop ; un shot par chapitre via `?chapitre=n` sur la leçon
 de preuve. Le hack thème (classList) est une dette CONNUE (ledger 11.12) —
 ne le corrige que si trivial, sinon laisse.
 
-## Item 5 — Batterie dom-truth §5 complète
+## Item 5 — Batterie dom-truth §5 complète — **FAIT (2026-09-04)**
+
+Mesuré avant d'écrire quoi que ce soit : **cinq des six assertions étaient
+déjà couvertes**, par des balayages écrits depuis. StagedFigure
+absence/présence + transport + impression + motion : le balayage
+`SWEEP: StagedFigure`. Lien profond `?chapitre=3` actif et affordance
+« Chapitre 3 / 11 » : le contrôle de thème sombre les vérifie tous deux au
+passage. `RetenirZone` état honnête : son propre balayage (§3.2/§3.3).
+
+**LA SIXIÈME MANQUAIT, ET C'ÉTAIT LA PLUS IMPORTANTE** — « chapitre 2
+`hidden` présent dans le DOM ». Elle est armée : les chapitres non actifs
+doivent être PRÉSENTS, MASQUÉS et NON VIDES.
+
+Cet invariant fait marcher quatre choses d'un coup : le ⌘F du navigateur
+trouve dans toute la leçon, l'impression déplie tout, un lien profond
+s'ouvre sans requête, et la leçon reste utilisable quand le réseau tombe
+(`docs/audits/hors-ligne.md`). Il a un prix mesuré — 43 000 nœuds, six
+secondes d'attente sur un téléphone bon marché
+(`docs/audits/poids-et-reactivite.md`) — et l'arbitrage entre les deux
+appartient au propriétaire. **C'est justement pourquoi la porte existe :
+tant que la décision n'est pas prise, une « optimisation » qui rendrait les
+chapitres à la demande casserait les quatre propriétés en silence.**
+
+Testée dans les deux sens, et le premier essai n'a rien prouvé : en ne
+rendant QUE le chapitre actif, dom-truth s'écroule avant d'arriver à ce
+balayage (dix contrôles antérieurs supposent les autres chapitres). Refait
+en gardant les chapitres mais en retirant `hidden` : la porte nomme
+exactement le défaut — « 9 chapitre(s) non actifs NON masqués ». Restauré,
+251 contrôles, 0 échec.
+
+### Contrat d'origine
 
 Contrat : spec §5. Ajouts : StagedFigure absence/présence après clic
 (précédent exact `:133` + le clic de shots.mjs `:190`) ; chapitre 2
