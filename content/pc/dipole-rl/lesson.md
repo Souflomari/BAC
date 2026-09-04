@@ -220,7 +220,8 @@ Reprends-la et isole la dérivée :
 
 $$L\,\frac{di}{dt} + (R+r)\,i = E
 \qquad\Longrightarrow\qquad
-\frac{di}{dt} = \frac{E}{L} - \frac{R+r}{L}\,i$$
+\frac{di}{dt} = \frac{E}{L} - \frac{R+r}{L}\,i
+$$
 
 C'est une **fonction affine** de $i$. Si l'on porte $\dfrac{di}{dt}$ en ordonnée et $i$ en abscisse, on obtient donc une **droite**, dont les trois éléments remarquables se lisent directement :
 

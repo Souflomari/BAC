@@ -128,7 +128,8 @@ $$[v] = \frac{[d]}{[\Delta t]} = \text{L}\cdot\text{T}^{-1}
 \qquad
 [a] = \frac{[v]}{[\Delta t]} = \text{L}\cdot\text{T}^{-2}
 \qquad
-[F] = [m][a] = \text{M}\cdot\text{L}\cdot\text{T}^{-2}$$
+[F] = [m][a] = \text{M}\cdot\text{L}\cdot\text{T}^{-2}
+$$
 
 Aucune de ces trois n'est à mémoriser : chacune se **retrouve** en une seconde depuis sa définition, et c'est le seul geste à savoir faire.
 

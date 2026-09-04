@@ -811,3 +811,43 @@ sont VIDES ; et **les sept cas restants au-dessus de 20 % portent chacun une
 raison écrite dans leur fichier** — deux dettes owner, deux dans une scène
 3-D où aucune position n'est libre, trois où les déplacements essayés
 faisaient pire. Ce n'est pas un reliquat, c'est une décision.
+
+### 8.7 Le poids et la réactivité — un arbitrage de plus, et un défaut vivant
+
+Premier angle mort de la liste `INSTRUMENTS.md`, ouvert et refermé le même
+jour. Le détail complet est dans `docs/audits/poids-et-reactivite.md` ; voici
+ce qu'un successeur doit savoir sans l'ouvrir.
+
+**LE FAIT.** Une leçon dense **se peint en 0,5 s et ne répond à aucun appui
+pendant 6,7 s** sur un téléphone bon marché (processeur bridé ×6). Ce n'est
+pas une page lente, c'est une page qui a l'air prête et qui ignore le doigt —
+la pire forme. Invisible depuis une machine de développement : 0,86 s au même
+endroit. Le témoin qui achève la démonstration : `svt/moyens-de-defense`,
+leçon complète mais SANS formules, 1 506 nœuds, répond en 0,8 s.
+
+**LA CAUSE.** 992 formules × ~40 nœuds de KaTeX = **43 000 nœuds, dont 92 %
+de KaTeX et 98 % dans des chapitres MASQUÉS**.
+
+**CE QUI A ÉTÉ FAIT, ET CE QUE ÇA VAUT.** KaTeX est désormais posé comme une
+CHAÎNE HTML et non comme un arbre React (`web/src/lib/rehypeKatexHtml.ts`),
+avec **identité du DOM prouvée octet par octet sur les 70 routes**
+(`web/scripts/katex-identite.mjs`). Gain réel mais partiel : **−19 à −28 %
+de blocage à ×6**, dans le bruit à ×4 et ×1. Environ une seconde et demie
+rendue à l'élève visé. **Ça ne referme pas le sujet.**
+
+**CE QUI RESTE — POUR LE PROPRIÉTAIRE.** Le vrai levier vaut ~85 % du
+défaut : ne pas servir les 14 chapitres d'un coup. Mais cela casse quatre
+propriétés que le produit tient aujourd'hui — l'impression déplie tout, le
+⌘F du navigateur trouve dans toute la leçon, un lien profond s'ouvre sans
+requête, et une fois chargée la leçon ne dépend plus du réseau. C'est une
+décision de PRODUIT. Le chiffre est là pour qu'elle se prenne sur un fait,
+pas pour la prendre.
+
+**UN DÉFAUT VIVANT TROUVÉ EN CHEMIN.** Cinq leçons affichaient du **LaTeX
+brut en rouge** à l'élève : un bloc `$$…$$` multi-lignes dont la fermeture
+était collée en fin de ligne. `validate-content` disait « math ok » parce
+qu'il extrayait les blocs avec une expression permissive ; `remark-math` ne
+ferme que sur une ligne `$$` seule, avalait le paragraphe suivant et le
+donnait à KaTeX. Corrigé dans les cinq leçons, et la règle est désormais une
+porte, testée dans les deux sens. **Troisième défaut de la semaine dont la
+cause est l'écart entre ce qu'une porte MODÉLISE et ce que le moteur FAIT.**

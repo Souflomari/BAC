@@ -5,6 +5,9 @@
  * BUILD stays green even with broken content. This validator surfaces what the
  * build hides:
  *   - every $…$ / $$…$$ block parses under KaTeX (throwOnError)
+ *   - un bloc $$ multi-lignes se ferme sur une ligne « $$ » SEULE (sinon
+ *     remark-math avale le paragraphe suivant — cinq cas vivants le
+ *     2026-09-04)
  *   - items.yaml / checkpoints.yaml / exercises.yaml / derivations.yaml parse
  *   - MEDIA MARKERS resolve to a backing asset (the honest-state guard):
  *       [[figure:slug]]  → media/<slug>.svg           MUST exist (else renders nothing)
@@ -995,6 +998,46 @@ for (const dir of dirs) {
     for (const e of exprs) {
       try { katex.renderToString(e, { displayMode: mode === "display", throwOnError: true, strict: false }); }
       catch (err) { console.error(`  ✗ ${dir} [${mode}] "${e.slice(0, 60)}" → ${err.message.split("\n")[0]}`); dirFail++; }
+    }
+  }
+
+  // La CLÔTURE d'un bloc $$…$$ multi-lignes doit être sur SA PROPRE LIGNE.
+  //
+  // Pourquoi cette porte existe (2026-09-04, cinq défauts vivants trouvés en
+  // comparant deux rendus) : le contrôle KaTeX juste au-dessus extrait les
+  // blocs avec `/\$\$([\s\S]*?)\$\$/` — permissif. `remark-math`, lui, ne
+  // ferme un bloc de flux QUE sur une ligne ne contenant que `$$`. Quand la
+  // fermeture est collée à la fin de la dernière ligne de formule, le moteur
+  // continue de lire : il avale le paragraphe suivant et rend du LaTeX BRUT
+  // EN ROUGE à l'élève. Le validateur disait « math ok » ; la page disait le
+  // contraire.
+  //
+  // Cinq leçons en portaient un — equations-differentielles, geometrie-espace,
+  // dipole-rl, ondes-mecaniques-progressives, rc-charge. Aucun n'était visible
+  // dans la source : la formule y est parfaitement lisible.
+  {
+    // Sur le fichier BRUT : les numéros de ligne annoncés doivent être ceux
+    // que l'auteur voit dans son éditeur, pas ceux d'un tableau filtré.
+    const l = md.split("\n");
+    for (let i = 0; i < l.length; i++) {
+      if (!l[i].startsWith("$$")) continue;
+      const seule = l[i].trim() === "$$";
+      const complete = !seule && l[i].trimEnd().endsWith("$$") && l[i].trim().length > 3;
+      if (complete) continue; // $$…$$ sur une seule ligne : forme valide
+      // Bloc ouvrant : la fermeture doit être une ligne « $$ » seule.
+      let j = i + 1;
+      for (; j < l.length; j++) {
+        if (l[j].trim() === "$$") break;
+        if (l[j].trimEnd().endsWith("$$")) {
+          console.error(
+            `  ✗ ${dir}: bloc $$ ouvert ligne ${i + 1} et fermé ligne ${j + 1} EN FIN DE LIGNE — ` +
+              `remark-math ne ferme que sur une ligne « $$ » seule ; le paragraphe suivant sera avalé et rendu en LaTeX brut`
+          );
+          dirFail++;
+          break;
+        }
+      }
+      i = j;
     }
   }
 

@@ -347,7 +347,8 @@ $$a\,y''(x) + b\,y'(x) + c\,y(x) = 0$$
 
 $$a\,r^2e^{rx} + b\,r\,e^{rx} + c\,e^{rx} = 0
 \qquad\Longleftrightarrow\qquad
-\left(a r^2 + b r + c\right)e^{rx} = 0$$
+\left(a r^2 + b r + c\right)e^{rx} = 0
+$$
 
 Or $e^{rx}$ ne s'annule **jamais**. Le produit est donc nul si et seulement si la parenthèse l'est :
 

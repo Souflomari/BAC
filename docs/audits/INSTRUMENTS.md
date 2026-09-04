@@ -16,7 +16,7 @@
 
 | Instrument | Mesure | Ne dit RIEN de |
 |---|---|---|
-| `web/scripts/validate-content.mjs` | La SOURCE : math équilibrée, YAML valide, marqueurs qui résolvent, jargon d'autorat (codes R, « rung ») hors du texte visible, niveaux de titres sans saut, sommet légataire | Le RENDU. Une figure structurellement valide peut être illisible ; c'est `figure-preview` qui le dit |
+| `web/scripts/validate-content.mjs` | La SOURCE : math équilibrée, YAML valide, marqueurs qui résolvent, jargon d'autorat (codes R, « rung ») hors du texte visible, niveaux de titres sans saut, sommet légataire, **fermeture d'un bloc `$$` sur sa propre ligne** | Le RENDU. Une figure structurellement valide peut être illisible ; c'est `figure-preview` qui le dit |
 | `web/scripts/dom-truth.mjs` | Le RENDU, 210 contrôles : styles calculés contre les jetons, anatomie de page, pagination, ancres accentuées, débord à 320 px, taille naturelle des figures, cibles tactiles, tabulation, texte à 200 % | Le corpus ENTIER — il échantillonne quelques leçons témoins. Les balayages ci-dessous font le tour complet |
 | `web/scripts/token-gate.mjs` | Une seule syntaxe de consommation des jetons (pas de `-[var(--…)]`, pas de hex, pas de rupture Tailwind morte) | Si le jeton lui-même est juste — c'est `contrast-gate` |
 | `web/scripts/contrast-gate.mjs` | Les 80 paires de la palette, ratio par ratio, clair ET sombre | Le contraste d'une figure : les couleurs y sont peintes en jetons, mais leur VOISINAGE n'est pas jugé |
@@ -30,6 +30,8 @@
 | `web/scripts/zoom-sweep.mjs` | Le corpus avec le texte doublé (SC 1.4.4) : débord et texte COUPÉ | Le zoom NAVIGATEUR (qui redimensionne tout, pas seulement le texte) |
 | `web/scripts/cls-sweep.mjs` | Le saut de mise en page au chargement, réseau libre puis 3G bridé | Le TEMPS de chargement lui-même (LCP, TTFB) — jamais mesuré sur ce projet |
 | `web/scripts/pagination-probe.mjs` | 11 promesses × 5 leçons : un seul chapitre visible, liens profonds, flèches bornées, ancres, impression dépliée | Ce que l'élève COMPREND de la pagination — aucune mesure ne le dira |
+| `web/scripts/poids-sweep.mjs` | Trois passes : (A) le document seul sur les 70 routes, (B) LCP/TTFB/poids ventilé par type, réseau libre puis 3G, (C) **processeur bridé ×1/×4/×6 — blocage total et temps au bout duquel un APPUI change enfin de chapitre** | Le réseau RÉEL (DNS, TLS, CDN, cache Vercel) : tout est un build local. Et la consommation de données d'un forfait — l'accueil tire ~920 ko de préchargement RSC, après la peinture donc hors chronomètre |
+| `web/scripts/katex-identite.mjs` | Que deux builds rendent le MÊME DOM : les 70 routes chargées dans un navigateur, `outerHTML` sérialisé après hydratation et comparé octet par octet | Rien du rendu VISUEL — deux DOM identiques ont forcément la même image, mais l'inverse n'est pas vrai |
 | `web/scripts/hunt.mjs` | Le balayage adversarial de toutes les routes | — |
 | `web/scripts/item-stats.mjs` | Le biais de position des bonnes réponses, avant/après mélange | La QUALITÉ des distracteurs |
 | `web/scripts/regle-atelier.mjs` | La règle NORTH-STAR-V2 §4, rendue mécanique | — |
@@ -48,8 +50,10 @@
 
 Écrit ici pour que la prochaine session n'ait pas à le redécouvrir :
 
-1. **Le temps de chargement.** LCP, TTFB, poids des pages. `cls-sweep`
-   bride le réseau mais ne mesure que le saut.
+1. **La consommation de données.** L'accueil tire ~920 ko de préchargement
+   RSC des leçons visibles (comportement par défaut de `next/link`). C'est
+   APRÈS la peinture, donc invisible au chronomètre — mais pas au forfait
+   d'un élève. Ni mesuré en continu, ni arbitré.
 2. **Le lecteur d'écran, pour de vrai.** L'ossature est vérifiée (titres,
    noms accessibles, landmarks) ; ce qui est ANNONCÉ, dans quel ordre, avec
    quelles interruptions par `aria-live`, ne l'est pas.
@@ -60,6 +64,13 @@
 5. **Le comportement hors ligne** et la reprise après coupure.
 6. **La production.** Tout ce document parle d'un build local. La synchro
    de production reste NON VÉRIFIÉE (CLAUDE.md).
+
+*(Le point 1 de la version du matin — « le temps de chargement : LCP, TTFB,
+poids des pages » — a été instrumenté le jour même par `poids-sweep`, et sa
+passe la plus utile n'était dans aucun des trois mots : le PROCESSEUR bridé.
+Une leçon dense se peint en 0,5 s et reste sourde 6,7 s sur un téléphone bon
+marché. Voir `docs/audits/poids-et-reactivite.md`. Ce qui reste sous ce
+numéro, c'est la consommation de données — une autre question.)*
 
 *(Le point 5 de la première version de cette liste — « le texte qui sort de
 son panneau », nommé le 2026-09-03 et non instrumenté — a été mesuré et

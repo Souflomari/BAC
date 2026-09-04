@@ -250,7 +250,8 @@ Reprends-la et isole la dérivée :
 
 $$RC\,\frac{du_C}{dt} + u_C = E
 \qquad\Longrightarrow\qquad
-\frac{du_C}{dt} = \frac{E}{RC} - \frac{1}{RC}\,u_C$$
+\frac{du_C}{dt} = \frac{E}{RC} - \frac{1}{RC}\,u_C
+$$
 
 Lis cette écriture pour ce qu'elle est : une **fonction affine** de $u_C$. Si l'on porte $\dfrac{du_C}{dt}$ en ordonnée et $u_C$ en abscisse, on obtient donc une **droite**, et ses trois éléments remarquables se lisent directement :
 

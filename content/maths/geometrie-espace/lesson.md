@@ -323,7 +323,8 @@ Or $\overrightarrow{MA}-\overrightarrow{MB} = \overrightarrow{BA}$ (relation de 
 
 $$2\,\overrightarrow{BA}\cdot\overrightarrow{MI} = 0
 \qquad\Longleftrightarrow\qquad
-\overrightarrow{AB}\cdot\overrightarrow{IM} = 0$$
+\overrightarrow{AB}\cdot\overrightarrow{IM} = 0
+$$
 
 **Lis le résultat.** C'est exactement la forme $\vec{n}\cdot\overrightarrow{A_0M}=0$ posée en tête de ce chapitre, avec $\vec{n} = \overrightarrow{AB}$ et $A_0 = I$ :
 

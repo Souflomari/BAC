@@ -20,7 +20,8 @@ import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
 import remarkFrenchTypography from "@/lib/remarkFrenchTypography";
-import rehypeKatex from "rehype-katex";
+import rehypeKatexHtml from "@/lib/rehypeKatexHtml";
+import { KatexSpan } from "./KatexSpan";
 import rehypeSlug from "rehype-slug";
 import { cn } from "@/lib/utils";
 
@@ -133,9 +134,9 @@ export function LessonRenderer({ markdown, className }: LessonRendererProps) {
         remarkPlugins={[remarkMath, remarkGfm, remarkFrenchTypography]}
         rehypePlugins={[
           rehypeSlug,
-          [rehypeKatex, { strict: false, trust: false }],
+          [rehypeKatexHtml, { strict: false, trust: false }],
         ]}
-        components={{ h2: RungHeading, h3: SubHeading }}
+        components={{ h2: RungHeading, h3: SubHeading, span: KatexSpan }}
       >
         {markdown}
       </ReactMarkdown>
