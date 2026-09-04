@@ -142,12 +142,18 @@
     <!-- Point : valeur réelle de la courbe à t = tau -->
     <circle cx="164" cy="160.2" r="3.2" fill="var(--figure-energy-C)"/>
     <!-- Ligne de repère discrète vers le label -->
-    <line x1="167" y1="162" x2="222" y2="183"
+    <!-- REMONTÉES AU-DESSUS DE LA COURBE (2026-09-04) : posées à y=186 et
+         y=199, les deux lignes étaient couchées SUR la décroissance, qui
+         rayait la seconde sur 55 % de sa largeur. Le filet de rappel part
+         toujours du point (τ, 0,37E) — il pointe maintenant vers le haut au
+         lieu de vers le bas, et l'annotation vit dans la zone vide entre la
+         boîte formule et la courbe. -->
+    <line x1="167" y1="162" x2="244" y2="152"
           stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
-    <text x="228" y="186" font-size="9.5" fill="var(--figure-ink)">u<tspan
+    <text x="250" y="150" font-size="9.5" fill="var(--figure-ink)">u<tspan
           dy="3" font-size="7">C</tspan><tspan dy="-3">(τ) ≈ 0,37 · E</tspan>
     </text>
-    <text x="228" y="199" font-size="9" fill="var(--figure-ink-soft)">(37 % de E restants)</text>
+    <text x="250" y="163" font-size="9" fill="var(--figure-ink-soft)">(37 % de E restants)</text>
   </g><!-- /step-3 -->
 
 </svg>

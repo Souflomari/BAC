@@ -152,7 +152,12 @@
       "pente = di/dt" ancré à côté du sommet du triangle (x=150, y=183),
       pas sur l'axe — claire association avec le triangle [finding 6].
     -->
-    <text x="156" y="180" text-anchor="start"
+    <!-- REMONTÉE de 14 px (2026-09-04) : à y=180 elle était couchée sur la
+         droite i(t) elle-même (y≈182 à cette abscisse), qui la rayait sur
+         54 % de sa largeur. La droite MONTE : une étiquette horizontale
+         posée près d'elle est rattrapée par la pente sur sa propre longueur —
+         il faut dégager la hauteur du texte PLUS la montée sur sa largeur. -->
+    <text x="156" y="166" text-anchor="start"
           font-size="8.5" fill="var(--figure-ink-soft)">pente = di/dt</text>
   </g><!-- /step-2 -->
 

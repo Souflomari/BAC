@@ -152,7 +152,12 @@
 
     <!-- Point plein : la valeur réellement atteinte -->
     <circle cx="337.5" cy="468.89" r="3.5" fill="var(--figure-accent)"/>
-    <text x="345" y="472" font-size="9.5" font-weight="600" fill="var(--figure-accent)">f(1) = 1</text>
+    <!-- PASSÉE À GAUCHE DU POINT (2026-09-04) : à droite du point plein, la
+         branche x² repart en montant depuis ce point exact et rayait
+         l'étiquette sur 49 % de sa largeur — la valeur atteinte barrée par la
+         courbe qui l'atteint. À gauche, entre la branche x+1 (au-dessus) et
+         l'axe (en dessous), la bande est libre. -->
+    <text x="330" y="472" text-anchor="end" font-size="9.5" font-weight="600" fill="var(--figure-accent)">f(1) = 1</text>
   </g><!-- /step-3 -->
 
   <!-- ══════════════════════════════════════════════════════

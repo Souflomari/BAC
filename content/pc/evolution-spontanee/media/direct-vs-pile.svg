@@ -168,7 +168,13 @@
     <path d="M450,175 Q470,112 490,175" fill="none" stroke="var(--figure-ink)" stroke-width="1.2" stroke-linecap="round"/>
     <circle cx="450" cy="175" r="2" fill="var(--figure-ink)"/>
     <circle cx="490" cy="175" r="2" fill="var(--figure-ink)"/>
-    <text x="470" y="102" text-anchor="middle" font-size="8" fill="var(--figure-ink-soft)">pont salin</text>
+    <!-- DESCENDUE entre l'ampèremètre et l'arche (2026-09-04) : à y=102 elle
+         tombait dans le cercle de l'ampèremètre (centre 470;90, rayon 13),
+         qui la rayait sur 53 % de sa largeur — l'étiquette du pont salin
+         posée sur un autre instrument. À y=132 elle est sous le cercle et
+         au-dessus du sommet de l'arche (y≈143), donc contre ce qu'elle
+         nomme. -->
+    <text x="470" y="132" text-anchor="middle" font-size="8" fill="var(--figure-ink-soft)">pont salin</text>
     <text x="470" y="238" text-anchor="middle" font-size="7.5" font-style="italic" fill="var(--figure-ink-soft)">
       maintient
     </text>
@@ -188,10 +194,15 @@
     <text x="470" y="94.5" text-anchor="middle" font-size="11" font-style="italic" fill="var(--figure-ink)">A</text>
     <line x1="470" y1="90" x2="479" y2="80" stroke="var(--figure-accent)" stroke-width="1.8" stroke-linecap="round"/>
 
-    <!-- Flèche d'électrons, forcée par le fil -->
-    <line x1="420" y1="76" x2="445" y2="76" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
-    <polygon points="445,76 434,71 434,81" fill="var(--figure-accent)"/>
-    <text x="432" y="65" text-anchor="middle" font-size="11" fill="var(--figure-accent)"
+    <!-- Flèche d'électrons, forcée par le fil.
+         PASSÉE SOUS LE FIL (2026-09-04) : dessinée à y=76, au-dessus du fil,
+         elle traversait le TITRE du panneau (« Détour forcé (pile) », y=76) —
+         le titre rayé par la flèche. Sous le fil (y=90), la bande jusqu'aux
+         béchers est libre, et la flèche reste collée au conducteur qu'elle
+         décrit. -->
+    <line x1="420" y1="104" x2="445" y2="104" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="445,104 434,99 434,109" fill="var(--figure-accent)"/>
+    <text x="432" y="122" text-anchor="middle" font-size="11" fill="var(--figure-accent)"
           ><tspan font-style="italic">e</tspan><tspan dy="-5" font-size="8" font-style="normal">−</tspan></text>
 
     <!-- Conclusion du panneau -->

@@ -129,9 +129,16 @@
 
   <g id="step-2">
     <!-- Élimination de a//a : lavage + croix, AJOUTÉS par-dessus la case du step-1 -->
+    <!-- data-rature : ces deux traits BARRENT « a//a — 1/4 » exprès — c'est
+         le cas éliminé par « sachant sain », et le rayer EST le propos de
+         l'étape. La sonde de figures les signalait comme deux tracés
+         traversant une étiquette à 53 % ; c'est exact, et c'est voulu.
+         L'exception est écrite ici, dans le fichier, pas dans une liste
+         ailleurs (convention : division-euclidienne-droite,
+         double-specificite). -->
     <rect x="505" y="368" width="105" height="36" fill="var(--figure-ink-soft)" fill-opacity="0.25"/>
-    <line x1="509" y1="372" x2="606" y2="400" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
-    <line x1="509" y1="400" x2="606" y2="372" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <line data-rature="1" x1="509" y1="372" x2="606" y2="400" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <line data-rature="1" x1="509" y1="400" x2="606" y2="372" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
 
     <!-- Crochet sous les 2 cas restants (3/4) -->
     <line x1="190" y1="412" x2="505" y2="412" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>

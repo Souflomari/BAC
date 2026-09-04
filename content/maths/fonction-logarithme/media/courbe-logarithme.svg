@@ -182,15 +182,23 @@
           stroke="var(--figure-accent)" stroke-width="1.8"
           stroke-dasharray="6,4" stroke-linecap="round"/>
 
-    <!-- Étiquette de la tangente, accolée à la droite -->
-    <text x="230" y="80" font-size="13" fill="var(--figure-accent)"><tspan
+    <!-- Étiquette de la tangente, accolée à la droite — ANCRÉE À DROITE
+         (2026-09-04) : ancrée à gauche en x=230 elle s'étendait jusqu'à
+         x≈290 et la tangente, qui passe en x≈240 à cette hauteur, la rayait.
+         Ancrée à droite, elle se termine juste avant la droite au lieu de la
+         chevaucher, et reste accolée — ce qui était le but. -->
+    <text x="232" y="80" text-anchor="end" font-size="13" fill="var(--figure-accent)"><tspan
           font-style="italic">y</tspan><tspan> = </tspan><tspan
           font-style="italic">x</tspan><tspan> − 1</tspan></text>
 
-    <!-- Boîte formule : la concavité, lue graphiquement -->
-    <rect x="405" y="48" width="210" height="32" rx="5"
+    <!-- Boîte formule : la concavité, lue graphiquement.
+         DESCENDUE de y=48 à y=132 (2026-09-04) : à sa hauteur d'origine, la
+         COURBE elle-même traversait la boîte et rayait la formule sur 71 %
+         de sa largeur — la conclusion de la figure barrée par son propre
+         sujet. Sous la courbe, à droite, la zone est vide jusqu'à l'axe. -->
+    <rect x="405" y="132" width="210" height="32" rx="5"
           fill="var(--figure-accent)" fill-opacity="0.12"/>
-    <text x="510" y="69" text-anchor="middle" font-size="13"
+    <text x="510" y="153" text-anchor="middle" font-size="13"
           fill="var(--figure-accent)"><tspan>ln</tspan><tspan
           font-style="italic"> x</tspan><tspan> ≤ </tspan><tspan
           font-style="italic">x</tspan><tspan> − 1</tspan></text>

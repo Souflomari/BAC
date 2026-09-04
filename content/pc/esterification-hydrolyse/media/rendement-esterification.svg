@@ -109,7 +109,11 @@
       stroke-linecap="round" stroke-linejoin="round"/>
 
     <!-- Étiquette identifiant la courbe elle-même -->
-    <text x="150" y="160" font-size="10.5" font-style="italic"
+    <!-- DESCENDUE sous la courbe (2026-09-04) : posée en (150;160) elle
+         était exactement SUR la montée, et le tracé la rayait sur 61 % de sa
+         largeur — la courbe barrait le nom de la courbe. Sous elle, entre la
+         montée et l'axe des temps, la zone est vide. -->
+    <text x="168" y="200" font-size="10.5" font-style="italic"
           fill="var(--figure-ink)">τ(t)</text>
   </g><!-- /step-1 -->
 

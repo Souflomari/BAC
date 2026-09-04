@@ -97,7 +97,13 @@
              C685,355 645,362 610,352 C588,345 578,325 582,305
              C584,292 587,280 590,270 Z"
           fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
-    <text x="648" y="312" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">Australie</text>
+    <!-- DESCENDUE de 26 px (2026-09-04) : le marqueur Glossopteris de
+         l'étape 2 (cercle en 645;305) se posait exactement sur le nom du
+         continent et le rayait sur 39 % de sa largeur. Comme pour
+         « Mesosaurus », c'est une preuve d'une étape qui vient barrer
+         l'étiquette d'une autre — le défaut naît de la superposition des
+         étapes, jamais visible en regardant une seule. -->
+    <text x="648" y="338" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">Australie</text>
   </g><!-- /step-1 -->
 
   <g id="step-2">
@@ -105,7 +111,12 @@
     <ellipse cx="300" cy="330" rx="22" ry="13" fill="var(--figure-accent)" fill-opacity="0.28" stroke="var(--figure-accent)" stroke-width="1.2"/>
     <ellipse cx="390" cy="330" rx="22" ry="13" fill="var(--figure-accent)" fill-opacity="0.28" stroke="var(--figure-accent)" stroke-width="1.2"/>
     <line x1="322" y1="330" x2="368" y2="330" stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3"/>
-    <text x="345" y="352" text-anchor="middle" font-size="9.5" font-style="italic" fill="var(--figure-accent)">Mesosaurus</text>
+    <!-- REMONTÉE au-dessus du trait pointillé (2026-09-04) : posée à y=352,
+         elle tombait sur la bande épaisse des chaînes plissées (étape 3), qui
+         la rayait sur 71 % de sa largeur — la preuve paléontologique barrée
+         par la preuve géologique. Au-dessus, l'inter-ellipse est libre, et
+         c'est aussi de ce côté-là que « Cynognathus » porte la sienne. -->
+    <text x="345" y="324" text-anchor="middle" font-size="9.5" font-style="italic" fill="var(--figure-accent)">Mesosaurus</text>
 
     <!-- Cynognathus — à cheval sur la jointure, plus haut -->
     <ellipse cx="308" cy="222" rx="18" ry="11" fill="var(--figure-accent)" fill-opacity="0.28" stroke="var(--figure-accent)" stroke-width="1.2"/>

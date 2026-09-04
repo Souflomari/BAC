@@ -138,9 +138,14 @@
     <!-- Annotation secondaire (ink / ink-soft, comme la note "méthode des 37 %" du gold) -->
     <line x1="241" y1="55" x2="248" y2="90"
           stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
-    <text x="253" y="95" font-size="10" fill="var(--figure-ink)">pente = dx/dt (à t<tspan
+    <!-- REMONTÉES de 12 px (2026-09-04) : la seconde ligne, à y=108, était
+         traversée par la courbe x(t) elle-même sur 57 % de sa largeur — la
+         phrase qui explique la tangente rayée par la donnée. Au-dessus, la
+         bande entre la boîte formule (bas à y=80) et le palier de la courbe
+         (y≈122) est libre. -->
+    <text x="253" y="83" font-size="10" fill="var(--figure-ink)">pente = dx/dt (à t<tspan
           dy="3" font-size="7">1</tspan><tspan dy="-3">)</tspan></text>
-    <text x="253" y="108" font-size="9" fill="var(--figure-ink-soft)">(la droite ne touche x(t) qu'en ce seul point)</text>
+    <text x="253" y="96" font-size="9" fill="var(--figure-ink-soft)">(la droite ne touche x(t) qu'en ce seul point)</text>
 
     <!-- Boîte formule -->
     <rect x="405" y="48" width="210" height="32" rx="5"

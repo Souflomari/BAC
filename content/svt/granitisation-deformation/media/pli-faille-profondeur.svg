@@ -104,7 +104,12 @@
     <line x1="215" y1="135" x2="315" y2="118" stroke="var(--figure-ink)" stroke-width="3.4" stroke-linecap="round"/>
     <line x1="445" y1="178" x2="535" y2="188" stroke="var(--figure-ink)" stroke-width="3.4" stroke-linecap="round"/>
 
-    <text x="385" y="168" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-ink)">faille</text>
+    <!-- ANCRÉE À GAUCHE DU PLAN DE FAILLE (2026-09-04) : centrée en x=385,
+         elle était traversée par l'arête (330;95)→(430;205) — le plan de
+         faille lui-même, qui passe en x≈396 à cette hauteur — sur 40 % de sa
+         largeur. Ancrée à droite, elle se termine avant le plan au lieu de
+         l'enjamber, et reste dans le compartiment gauche. -->
+    <text x="385" y="168" text-anchor="end" font-size="10" font-style="italic" fill="var(--figure-ink)">faille</text>
 
     <text x="215" y="160" font-size="11" font-weight="700" fill="var(--figure-ink)">froid,</text>
     <text x="215" y="174" font-size="10.5" fill="var(--figure-ink-soft)">peu confiné</text>

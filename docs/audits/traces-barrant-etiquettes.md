@@ -289,5 +289,48 @@ Par ordre de préférence, tirés des 30 figures réparées :
   mesure. Cette dernière classe a fait un dégât réel dans
   `travail-force-signe` et n'est gardée par rien.
 - Il ignore les `.motion.svg`.
-- **Ce n'est toujours pas une porte.** 142 cas subsistent : l'armer
+- **Ce n'est toujours pas une porte.** 115 cas subsistent : l'armer
   aujourd'hui obligerait à la désarmer demain.
+
+---
+
+## Vague 4 (2026-09-04) — la tranche 40 % et au-dessus est vidée
+
+`142 → 115` cas, `75 → 62` figures. Les deux tranches hautes sont
+maintenant à zéro :
+
+| tranche | avant | après |
+|---|---|---|
+| ≥ 60 % | 4 | **0** |
+| 40–59 % | 17 | **0** |
+| 20–39 % | 50 | 47 |
+| < 20 % | 71 | 68 |
+
+Dix-huit figures reprises. **Chaque correctif a été REGARDÉ**, pas seulement
+mesuré : le PNG avant, la mesure, le PNG après.
+
+**Deux gestes nouveaux, que les vagues précédentes n'avaient pas eus :**
+
+1. **Sortir de la trajectoire, au lieu de longer.** Sur `ec-parabole`,
+   remonter l'étiquette de 8 px l'a fait passer de 56 % à 30 % — et pas à
+   zéro : la droite est OBLIQUE, elle descend de 277 à 260 sur la longueur du
+   texte et la retraversait par l'autre bout. Une étiquette horizontale
+   posée près d'une ligne inclinée est toujours rattrapée par la pente sur sa
+   propre largeur. Il faut dégager la hauteur du texte **plus** la montée sur
+   sa longueur — ou changer d'endroit. Même leçon sur `origin-uL`.
+2. **Reconnaître une rature VOULUE.** Sur `proba-enfant-atteint`, les deux
+   traits qui barrent « a//a — 1/4 » sont le propos de l'étape (le cas
+   éliminé par « sachant sain »). Ce n'est pas un défaut : c'est un
+   `data-rature`, et l'exception est écrite dans le fichier, à côté du trait.
+
+**Un défaut de composition d'étapes, vu deux fois** dans
+`pangee-reconstruction-preuves` : une preuve d'une étape vient barrer
+l'étiquette d'une autre (« Mesosaurus » sous la bande des chaînes plissées,
+« Australie » sous le marqueur Glossopteris). Ce défaut n'existe dans AUCUNE
+étape prise seule — il naît de leur superposition, et c'est exactement ce
+qu'une relecture étape par étape ne peut pas voir.
+
+**Et un titre de panneau rayé** (`direct-vs-pile`) : la flèche d'électrons,
+dessinée au-dessus du fil, traversait « Détour forcé (pile) ». Mesuré à 18 %
+seulement — la mesure sous-estime ce cas-là, parce qu'un titre rayé se voit
+bien avant qu'un mot le soit à moitié.

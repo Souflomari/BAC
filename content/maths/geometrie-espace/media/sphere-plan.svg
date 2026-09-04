@@ -95,7 +95,12 @@
     <text x="284" y="427" font-size="12" fill="var(--figure-ink-soft)">(= A)</text>
 
     <circle cx="430.6" cy="390" r="4" fill="var(--figure-ink)"/>
-    <text x="440" y="382" font-size="16" font-style="italic" fill="var(--figure-ink)">M</text>
-    <text x="440" y="398" font-size="11" fill="var(--figure-ink-soft)">point quelconque du cercle</text>
+    <!-- ÉCARTÉES de la silhouette (2026-09-04) : M est un point DE la sphère,
+         donc son étiquette posée juste à côté tombait sur le grand cercle,
+         qui la rayait sur 63 % de sa largeur. Décalées de 10 px vers la
+         droite et 4 px vers le haut, elles passent à l'extérieur du disque
+         (centre 330;300, rayon 135) tout en restant accolées au point. -->
+    <text x="450" y="378" font-size="16" font-style="italic" fill="var(--figure-ink)">M</text>
+    <text x="450" y="396" font-size="11" fill="var(--figure-ink-soft)">point quelconque du cercle</text>
   </g><!-- /step-3 -->
 </svg>

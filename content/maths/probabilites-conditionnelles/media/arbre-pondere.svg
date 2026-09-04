@@ -56,7 +56,9 @@
     <line class="apt-edge" x1="62" y1="235" x2="330" y2="340"/>
 
     <text class="apt-elabel" x="188" y="166">P(A) = 0,6</text>
-    <text class="apt-elabel" x="188" y="306">P(A&#x0305;) = 0,4</text>
+    <!-- Même règle que ci-dessous : une branche DESCENDANTE rattrape son
+         étiquette sur la longueur du texte. 306 → 318. -->
+    <text class="apt-elabel" x="188" y="318">P(A&#x0305;) = 0,4</text>
 
     <rect class="apt-root" x="34" y="216" width="56" height="38" rx="11"/>
     <text class="apt-nlabel" x="62" y="241">&#x3A9;</text>
@@ -77,9 +79,15 @@
     <line class="apt-edge" x1="330" y1="340" x2="660" y2="410"/>
 
     <text class="apt-elabel" x="500" y="88">P(B|A) = 0,5</text>
-    <text class="apt-elabel" x="500" y="168">P(B&#x0305;|A) = 0,5</text>
+    <!-- DESCENDUE sous sa branche (2026-09-04) : à y=168 elle était posée sur
+         l'arête A → A∩B̅ (qui passe entre y≈149 et y≈162 sur la longueur du
+         texte) et s'en trouvait rayée sur 41 % de sa largeur. Les trois
+         autres étiquettes d'arête sont déjà du côté EXTÉRIEUR de leur
+         branche — au-dessus pour celles qui montent, en dessous pour celles
+         qui descendent ; celle-ci ne l'était pas. -->
+    <text class="apt-elabel" x="500" y="184">P(B&#x0305;|A) = 0,5</text>
     <text class="apt-elabel" x="500" y="312">P(B|A&#x0305;) = 0,2</text>
-    <text class="apt-elabel" x="500" y="392">P(B&#x0305;|A&#x0305;) = 0,8</text>
+    <text class="apt-elabel" x="500" y="404">P(B&#x0305;|A&#x0305;) = 0,8</text>
 
     <g>
       <rect class="apt-leaf" x="586" y="48" width="156" height="44" rx="12"/>

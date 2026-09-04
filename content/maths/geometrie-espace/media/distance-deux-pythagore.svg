@@ -107,7 +107,12 @@
 
     <!-- ── Hypoténuse AB, accent — second Pythagore, à la verticale ─────── -->
     <line x1="250" y1="265" x2="480" y2="285" stroke="var(--figure-accent)" stroke-width="2.6"/>
-    <text x="330" y="252" font-size="15" font-style="italic" fill="var(--figure-accent)">AB</text>
+    <!-- DESCENDUE dans l'entre-deux (2026-09-04) : posée à y=252, l'étiquette
+         chevauchait la ligne pointillée A→P, qui la rayait sur 58 % de sa
+         largeur. Elle nomme pourtant le segment PLEIN A→B, situé plus bas ;
+         à y=270 elle tombe dans l'espace libre entre les deux, du côté de ce
+         qu'elle désigne. -->
+    <text x="330" y="270" font-size="15" font-style="italic" fill="var(--figure-accent)">AB</text>
 
     <text x="492" y="264" font-size="13" fill="var(--figure-ink)">|z<tspan dy="3" font-size="70%">B</tspan><tspan dy="-3">&#8722;z</tspan><tspan dy="3" font-size="70%">A</tspan><tspan dy="-3">|</tspan></text>
 

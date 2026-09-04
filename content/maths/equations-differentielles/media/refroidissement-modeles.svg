@@ -135,7 +135,11 @@
     <text x="220" y="239" font-size="9.5" fill="var(--figure-ink)">45,8 °C</text>
 
     <circle cx="310" cy="291.5" r="3.6" fill="var(--figure-ink)"/>
-    <text x="300" y="283" text-anchor="end" font-size="9.5" fill="var(--figure-ink)">29,5 °C</text>
+    <!-- REMONTÉE au-dessus de la courbe (2026-09-04) : à y=283 l'étiquette
+         était posée sur le modèle B, qui la rayait sur 58 % de sa largeur —
+         la mesure barrée par le modèle censé la vérifier. Les trois autres
+         valeurs sont déjà au-dessus de leur point ; celle-ci ne l'était pas. -->
+    <text x="330" y="286" text-anchor="end" font-size="9.5" fill="var(--figure-ink)">29,5 °C</text>
   </g><!-- /step-2 -->
 
   <g id="step-3">
