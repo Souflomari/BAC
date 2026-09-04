@@ -966,3 +966,34 @@ lignes de prose lisibles — sont armés dans `dom-truth` sur sept pages
 témoins, et **testés dans les deux sens** : un `min-width: 420px` posé sur la
 colonne de prose fait échouer dix contrôles en nommant les 176 px de débord ;
 retiré, tout repasse.
+
+### 8.11 Le lien d'évitement était là où il ne sert à rien
+
+Quatrième angle mort ouvert : ce qu'un lecteur d'écran ANNONCE. Détail dans
+`docs/audits/annonce-lecteur-ecran.md`.
+
+**LE DÉFAUT, SUR 68 PAGES SUR 68.** Le site avait un lien « Aller au contenu
+de la leçon » — mais seulement sur les pages de leçon, et APRÈS l'en-tête.
+Un lecteur d'écran devait traverser le wordmark, la recherche, le sélecteur
+de filière et le menu Notions **avant d'atteindre le lien censé lui épargner
+exactement ce trajet**. Sur les six pages hors leçon, il n'y en avait aucun.
+Un lien d'évitement qui n'est pas le premier focusable n'est pas un lien
+d'évitement.
+
+**ET UN ATTRIBUT DE PLUS POUR QU'IL MARCHE.** Après activation, le focus
+restait sur `<body>` : Chromium déplace le « point de départ de tabulation »
+(la touche suivante tombe bien dans `<main>` — vérifié) mais ne focalise pas
+la cible, et plusieurs lecteurs d'écran repartent alors du haut de la page.
+`tabIndex={-1}` sur `<main>`, et le comportement cesse de dépendre d'une
+heuristique de navigateur.
+
+**LA MOITIÉ SAINE DU RAPPORT, qui compte autant.** Aucune région
+`aria-live="assertive"` dans tout le site — les quatre familles de régions
+live sont `polite`, et ce sont exactement les bons endroits (compteur
+d'étape, position de chapitre, retour d'un choix, valeur d'une figure
+interactive). Aucun recul franc dans l'ordre de tabulation sur 68 pages. Le
+focus survit au changement de chapitre, et le changement est annoncé.
+
+**LA PORTE NE VÉRIFIE PAS LA PRÉSENCE DU LIEN, ELLE VÉRIFIE QU'IL MARCHE** :
+première tabulation, visibilité au focus, et déplacement réel du focus dans
+`<main>`. Testée dans les deux sens.

@@ -2,6 +2,7 @@ import "mafs/core.css";
 
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/ui/SiteHeader";
+import { LienEvitement } from "@/components/ui/LienEvitement";
 import { listNotions } from "@/lib/content";
 import { Atelier } from "@/components/atelier/Atelier";
 
@@ -31,6 +32,7 @@ export const metadata: Metadata = {
 export default function AtelierPage() {
   return (
     <>
+      <LienEvitement />
       {/* PAS de container surchargé (audit R6, P1-10) : STUDIO-SPEC §2 —
           le header garde la bande `page` sur TOUTES les routes, le
           wordmark ne saute jamais. Seul le <main> de l'atelier prend la
@@ -38,7 +40,7 @@ export default function AtelierPage() {
       <SiteHeader
         notions={listNotions().map((n) => ({ subject: n.subject, slug: n.slug, title: n.title, readingMinutes: n.readingMinutes }))}
       />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Atelier />
       </main>
     </>

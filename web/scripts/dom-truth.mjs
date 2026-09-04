@@ -3426,6 +3426,70 @@ try {
     }
   }
 
+  // ── SWEEP: LE LIEN D'ÉVITEMENT EXISTE, EST PREMIER, ET FONCTIONNE.
+  //
+  //    Mesuré le 2026-09-04 (`scripts/annonce-sweep.mjs`) : il en existait un,
+  //    mais SEULEMENT sur les pages de leçon et APRÈS l'en-tête. Un lecteur
+  //    d'écran traversait donc le wordmark, la recherche, le sélecteur de
+  //    filière et le menu Notions avant d'atteindre le lien censé lui
+  //    épargner exactement ce trajet ; sur les six pages hors leçon, il n'y
+  //    en avait aucun. 68 pages sur 68 étaient concernées.
+  //
+  //    La porte ne vérifie pas la PRÉSENCE du lien, elle vérifie qu'il MARCHE,
+  //    en trois faits : la première tabulation l'atteint, il devient visible
+  //    en recevant le focus (sinon il est inutilisable pour qui voit), et
+  //    l'activer déplace vraiment le focus dans <main>. Ce dernier point a
+  //    demandé `tabIndex={-1}` sur la cible : sans lui, Chromium déplaçait
+  //    seulement le point de départ de tabulation et le focus restait sur
+  //    <body>.
+  {
+    console.log("\n[clavier] SWEEP: le lien d'évitement est premier, visible au focus, et déplace le focus");
+    const kpage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    for (const route of ["/", "/examens", "/matieres/pc", NOTION, "/atelier", "/commencer"]) {
+      await kpage.goto(`${BASE}${route}`, { waitUntil: "networkidle" });
+      await kpage.keyboard.press("Tab");
+      checks++;
+      const premier = await kpage.evaluate(() => {
+        const e = document.activeElement;
+        if (!e || e === document.body) return null;
+        const r = e.getBoundingClientRect();
+        return {
+          texte: (e.textContent || "").trim(),
+          href: e.getAttribute("href") || "",
+          visible: r.width > 1 && r.height > 1,
+        };
+      });
+      if (!premier || !/^#/.test(premier.href) || !/aller au contenu/i.test(premier.texte)) {
+        failures += fail(
+          `${route} : la première tabulation donne « ${premier?.texte ?? "(rien)"} » — ` +
+            `le lien d'évitement doit être le PREMIER focusable du document`
+        );
+        continue;
+      }
+      if (!premier.visible) {
+        failures += fail(`${route} : le lien d'évitement reste invisible alors qu'il a le focus`);
+        continue;
+      }
+      await kpage.keyboard.press("Enter");
+      await kpage.waitForTimeout(250);
+      const arrivee = await kpage.evaluate(() => {
+        const cible = document.getElementById("main-content");
+        return {
+          cible: !!cible,
+          dedans: !!cible && (document.activeElement === cible || cible.contains(document.activeElement)),
+        };
+      });
+      if (!arrivee.cible) {
+        failures += fail(`${route} : le lien d'évitement pointe vers #main-content, qui n'existe pas sur cette page`);
+      } else if (!arrivee.dedans) {
+        failures += fail(`${route} : lien d'évitement activé, mais le focus n'est pas entré dans <main> (tabIndex manquant sur la cible ?)`);
+      } else {
+        console.log(`  ✓ ${route} : premier au clavier, visible, et le focus entre dans <main>`);
+      }
+    }
+    await kpage.close();
+  }
+
   // ── SWEEP: WCAG 1.4.10 (Reflow) DANS SA FORME STRICTE — 320 × 256 px.
   //
   //    La norme parle d'une largeur de 320 px CSS **et d'une hauteur de

@@ -21,6 +21,7 @@
 
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
+import { LienEvitement } from "./LienEvitement";
 import { cn } from "@/lib/utils";
 
 interface PageShellProps {
@@ -98,10 +99,20 @@ export function PageShell({
       {/* Le manifeste des notions alimente le panneau Notions et la
           palette ⌘K — chargé ICI, côté serveur : le header client le
           reçoit en props (~62 titres, quelques Ko). */}
+      <LienEvitement />
+
       <SiteHeader container={bandeHeader} notions={notions} />
 
       <main
         id="main-content"
+        // `tabIndex={-1}` pour que la CIBLE du lien d'évitement reçoive
+        // vraiment le focus. Sans lui, Chromium se contente de déplacer le
+        // « point de départ de navigation séquentielle » : la tabulation
+        // suivante tombe bien dans <main> (vérifié), mais l'élément lui-même
+        // n'est jamais focalisé, et plusieurs lecteurs d'écran continuent
+        // alors d'annoncer depuis le haut de la page. Un attribut, et le
+        // comportement cesse de dépendre d'une heuristique de navigateur.
+        tabIndex={-1}
         className={cn(
           "flex-1",
           // No page-entry animation: a scale/fade on every mount is unsolicited
