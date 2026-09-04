@@ -410,3 +410,48 @@ les deux tranches basses documentées et aucune porte armée.
    texte de largeur `w`, il faut dégager `hauteur_du_texte + p·w`. Sur
    `deflexion-magnetique` (pente 0,84, texte ~50 px), 18 px ont fait passer
    de 28 % à **37 %** — plus mauvais qu'avant. 32 px ont réglé l'affaire.
+---
+
+## Sonde 5 (2026-09-04) — le texte qui sort de SON panneau
+
+La classe était **nommée depuis la veille** — un cas réel corrigé à la main
+sur `travail-force-signe` — et **sans instrument**. Elle l'a maintenant.
+
+Elle est différente du « texte hors cadre » : l'étiquette reste dans la
+figure, mais elle déborde du PANNEAU auquel elle appartient — la moitié d'un
+diptyque, la boîte d'une étape, la bande d'une zone. Ce qu'on lit n'est pas
+faux, il est **mal attribué** : une légende du panneau A qui empiète sur le
+panneau B semble parler de B.
+
+**Définition mécanique.** Pour chaque texte, le PLUS PETIT rectangle qui
+contient son centre est son panneau ; s'il en sort de plus de 12 px, on le
+signale.
+
+**Trois exclusions, et chacune a été payée par un faux positif :**
+
+| exclusion | pourquoi | ce qu'elle a supprimé |
+|---|---|---|
+| rectangle > 85 % du cadre | c'est le FOND, pas un panneau | le fond de `bilan-forces-chute-frottement` (650 px pour un cadre de 740) |
+| rectangle TOURNÉ | c'est un objet du dessin, pas un cadre — sa boîte axe-alignée ne veut rien dire | la tige de `pendule-pesant-bras-levier` : « boîte » de 169×227, étiquette « sortant » de 31 px alors qu'elle est simplement posée à côté |
+| seuil à 12 px | une étiquette d'AXE vit par convention juste en dehors de l'aire tracée | une vingtaine de « t (s) », « y », « U₀ », « uC » à 4–9 px |
+
+**Relevé : 9 cas réels.** Tous traités le jour même.
+
+- **3 straddles LÉGITIMES** (`lambda-nu-changement-milieu`) : « même ν de
+  part et d'autre de l'interface » est centrée SUR l'interface parce que
+  c'est son propos. Marquées `data-hors-panneau`, exception écrite dans le
+  fichier — même contrat que `data-rature`.
+- **1 straddle légitime par format** (`tour-des-ensembles`) : la ligne
+  d'explication fait 122 px, la boîte ℕ en fait 100 ; les quatre lignes
+  débordent de leur boîte par construction.
+- **5 défauts réels, corrigés** : une plaque de synthèse de 416 px sous un
+  texte de 567 (`paquet-qui-se-deforme` — la légende n'était soulignée qu'en
+  son milieu) ; deux chiffres du panneau « cas audio » écrits DANS le panneau
+  « cas porteuse » (`antenne-quart-onde`) ; une légende de zone à moitié dans
+  la marge (`solidus-seuil-anatexie`) ; une équation dont le « 3 » était
+  traversé par le bord de sa boîte (`tour-des-ensembles`) ; deux lignes
+  passant par-dessus la bordure et la flèche (`pli-faille-profondeur`).
+
+**État : 0 cas.** Cette classe-ci est propre — mais la sonde n'est pas
+encore une porte, faute d'avoir été négativement testée sur un cas
+réintroduit ; elle vit dans `figure-preview`, avec les quatre autres.

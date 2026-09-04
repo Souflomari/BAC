@@ -178,8 +178,14 @@
     <circle cx="520" cy="70" r="1.3" fill="var(--figure-ink-soft)"/>
 
     <line x1="528" y1="178" x2="535" y2="175" stroke="var(--figure-accent)" stroke-width="0.9"/>
-    <text x="538" y="176" font-size="12.5" font-weight="600" fill="var(--figure-accent)">λ/4 = 75 km</text>
-    <text x="538" y="191" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">(impossible à construire)</text>
+    <!-- ANCRÉES À DROITE, RENTRÉES DANS LEUR PANNEAU (2026-09-04) : ancrées à
+         gauche en x=538, les deux lignes s'étendaient jusqu'à x≈621 et
+         sortaient de 41 px du panneau 2 (qui s'arrête à 580) pour se poser
+         SUR le panneau 3. Un chiffre du cas audio écrit dans le cadre du cas
+         porteuse : la mesure était juste, et le défaut est d'attribution, pas
+         de place. Ancrées à droite avant le mât, elles restent chez elles. -->
+    <text x="520" y="176" text-anchor="end" font-size="12.5" font-weight="600" fill="var(--figure-accent)">λ/4 = 75 km</text>
+    <text x="520" y="191" text-anchor="end" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">(impossible à construire)</text>
   </g><!-- /step-2 -->
 
   <!-- ══════════════════════════════════════════════════════

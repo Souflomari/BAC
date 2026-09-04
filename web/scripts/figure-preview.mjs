@@ -558,6 +558,92 @@ const defauts = await page.evaluate((sombreActif) => {
         });
       }
     }
+
+    // ── SONDE 5 : le texte qui sort de SON panneau ────────────────────────
+    //
+    // Classe nommée le 2026-09-03 (un cas réel corrigé à la main sur
+    // travail-force-signe), restée sans instrument jusqu'ici. Elle est
+    // DIFFÉRENTE du « texte hors cadre » : l'étiquette reste bien dans la
+    // figure, mais elle déborde du PANNEAU auquel elle appartient — la moitié
+    // gauche d'un diptyque, la boîte d'une étape, la bande d'une zone. Ce
+    // qu'on lit alors n'est pas faux, c'est mal attribué : une légende du
+    // panneau A qui empiète sur le panneau B semble parler de B.
+    //
+    // DÉFINITION MÉCANIQUE : pour chaque texte, on prend le PLUS PETIT
+    // rectangle qui contient son centre — c'est son panneau. S'il déborde de
+    // ce rectangle de plus de 2 px, on le signale. Le fond de figure est un
+    // rectangle comme un autre : un texte qui n'est dans aucune boîte plus
+    // petite est jugé par rapport à lui, ce qui est exactement le bon
+    // critère.
+    //
+    // TROIS EXCLUSIONS, écrites parce qu'elles sont légitimes :
+    //   · un rectangle qui occupe plus de 85 % de la largeur OU de la hauteur
+    //     du cadre n'est pas un panneau mais le FOND de la figure — et un
+    //     texte ne « sort » pas de son fond, il sort du cadre, ce que la
+    //     sonde 1 mesure déjà. (88 % laissait passer le fond de
+    //     bilan-forces-chute-frottement, large de 650 pour un cadre de 740.) ;
+    //   · un texte dont le centre n'est dans AUCUN rectangle (étiquette
+    //     posée sur le blanc) n'a pas de panneau à respecter ;
+    //   · `data-hors-panneau` sur le texte, pour une légende volontairement
+    //     à cheval (aucun cas connu à ce jour — l'attribut existe pour que
+    //     l'exception, si elle arrive, soit ÉCRITE dans le fichier).
+    // Un rectangle TOURNÉ n'est pas un panneau : c'est un objet du dessin
+    // (la tige d'un pendule, une lame, une flèche épaisse), et sa boîte
+    // englobante axe-alignée n'a aucun sens comme cadre d'appartenance.
+    // Piège payé une fois : la tige de `pendule-pesant-bras-levier`, inclinée,
+    // donnait une « boîte » de 169×227 dont l'étiquette « rappel vers θ = 0 »
+    // sortait de 31 px — alors qu'elle est simplement posée à côté du dessin.
+    const nonTourne = (r) => {
+      try {
+        const m = versRacine && r.getScreenCTM ? versRacine.multiply(r.getScreenCTM()) : null;
+        return !m || (Math.abs(m.b) < 0.01 && Math.abs(m.c) < 0.01);
+      } catch { return true; }
+    };
+    const rects = [...svg.querySelectorAll("rect")]
+      .filter(nonTourne)
+      .map((r) => ({ el: r, b: boiteRacine(r) }))
+      .filter((r) => r.b && r.b.width > 30 && r.b.height > 20);
+    const cadreW = vw || 0;
+    const cadreH = vh || 0;
+    for (const bt of boites) {
+      if (!bt.s || !bt.b || bt.t.hasAttribute("data-hors-panneau")) continue;
+      const cx = bt.b.x + bt.b.width / 2;
+      const cy = bt.b.y + bt.b.height / 2;
+      const contenants = rects.filter(
+        (r) =>
+          cx >= r.b.x && cx <= r.b.x + r.b.width &&
+          cy >= r.b.y && cy <= r.b.y + r.b.height &&
+          (!cadreW || r.b.width <= cadreW * 0.85) &&
+          (!cadreH || r.b.height <= cadreH * 0.85)
+      );
+      if (!contenants.length) continue;
+      contenants.sort((u, v) => u.b.width * u.b.height - v.b.width * v.b.height);
+      const p = contenants[0].b;
+      const debG = p.x - bt.b.x;
+      const debD = bt.b.x + bt.b.width - (p.x + p.width);
+      const debH = p.y - bt.b.y;
+      const debB = bt.b.y + bt.b.height - (p.y + p.height);
+      const pire = Math.max(debG, debD, debH, debB);
+      // SEUIL À 12 px, et il est motivé. Le premier relevé (seuil 2 px) a
+      // rendu 50 cas, dont une vingtaine d'étiquettes d'AXE — « t (s) », « y »,
+      // « U₀ », « uC » — qui dépassent de 4 à 9 px du rectangle du graphe.
+      // C'est la convention même d'un repère : l'étiquette d'axe vit juste en
+      // dehors de l'aire tracée. Et ce que cette sonde cherche, c'est
+      // l'étiquette MAL ATTRIBUÉE — celle qui empiète assez sur le panneau
+      // voisin pour sembler lui appartenir. Cinq pixels n'attribuent rien à
+      // personne ; douze, oui.
+      if (pire < 12) continue;
+      const cote = pire === debG ? "à gauche" : pire === debD ? "à droite" : pire === debH ? "en haut" : "en bas";
+      out.push({
+        fig: iFig,
+        type: "hors panneau",
+        txt: bt.s.slice(0, 26),
+        detail:
+          `sort de ${Math.round(pire)} px ${cote} de son panneau ` +
+          `(${Math.round(p.width)}×${Math.round(p.height)} en ${Math.round(p.x)};${Math.round(p.y)}) ` +
+          `· texte ${Math.round(bt.b.width)}×${Math.round(bt.b.height)} en ${Math.round(bt.b.x)};${Math.round(bt.b.y)}`,
+      });
+    }
   });
   return out;
 }, sombre);

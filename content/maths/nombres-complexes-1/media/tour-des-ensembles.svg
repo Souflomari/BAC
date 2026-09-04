@@ -101,9 +101,21 @@
     <text x="120" y="485" text-anchor="middle" font-size="18" font-weight="700"
           fill="var(--figure-ink)">ℕ</text>
 
-    <text x="130" y="430" font-size="12" fill="var(--figure-ink)"><tspan
+    <!-- RENTRÉE DANS LA BOÎTE ℕ (2026-09-04) : à x=130, l'équation
+         « x + 5 = 3 » s'étendait jusqu'à x=188 alors que la boîte s'arrête à
+         170 — le bord de ℕ passait à travers le « 3 ». Les quatre lignes
+         d'équation partagent une indentation commune, mais la boîte la plus
+         intérieure est aussi la plus étroite : c'est elle qui donne la
+         limite. La ligne d'explication, elle, déborde de toutes les boîtes
+         par construction et n'a jamais été alignée sur elles. -->
+    <text x="108" y="430" font-size="12" fill="var(--figure-ink)"><tspan
           font-style="italic">x</tspan><tspan> + 5 = 3</tspan></text>
-    <text x="130" y="446" font-size="10" fill="var(--figure-ink-soft)">(pas de solution dans ℕ)</text>
+    <!-- data-hors-panneau : cette ligne fait 122 px, la boîte ℕ en fait 100.
+         Elle déborde donc par CONSTRUCTION, comme les trois autres lignes
+         d'explication débordent de leur propre boîte — c'est le format de la
+         figure (l'équation dans la boîte, l'explication en travers), pas un
+         accident de placement. L'exception est écrite ici. -->
+    <text data-hors-panneau="1" x="108" y="446" font-size="10" fill="var(--figure-ink-soft)">(pas de solution dans ℕ)</text>
   </g><!-- /step-1 -->
 
   <!-- ══════════════════════════════════════════════════════

@@ -142,7 +142,11 @@
           dy="2.5" font-size="7">2</tspan><tspan dy="-2.5"> — après propagation</tspan></text>
 
     <!-- Synthèse -->
-    <rect x="112" y="414" width="416" height="34" rx="6"
+    <!-- ÉLARGI À LA MESURE DE SA PHRASE (2026-09-04) : la plaque faisait
+         416 px pour un texte de 567 — la synthèse débordait de 75 px de
+         CHAQUE côté de son propre fond, qui ne soulignait donc que son
+         milieu. 583 px avec 8 px de marge de part et d'autre. -->
+    <rect x="29" y="414" width="583" height="34" rx="6"
           fill="var(--figure-accent)" fill-opacity="0.12"/>
     <text x="320" y="436" text-anchor="middle" font-size="12.5"
           fill="var(--figure-accent)">La fréquence de la source ne change jamais — seule la forme du paquet dépend du milieu</text>

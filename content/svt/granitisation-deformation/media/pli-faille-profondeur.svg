@@ -85,10 +85,14 @@
     <path d="M375,100 C330,140 420,170 375,220 C330,260 420,300 375,350 C345,385 405,410 375,440"
           fill="none" stroke="var(--figure-ink-soft)" stroke-width="2.2"
           stroke-dasharray="7,5" stroke-linecap="round"/>
-    <text x="472" y="162" font-size="10.5" fill="var(--figure-ink-soft)">la même couche,</text>
+    <!-- ANCRÉES À DROITE DANS LE PANNEAU (2026-09-04) : ancrées à gauche en
+         x=472, les deux lignes s'étendaient jusqu'à x≈585 et sortaient de
+         25 px du cadre de la coupe (qui s'arrête à 560) — le texte passait
+         par-dessus la bordure et la flèche de compression. -->
+    <text x="552" y="162" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">la même couche,</text>
     <!-- REMONTÉE de 16 px (2026-09-04) : la ligne de rappel (445;178)→(535;188)
          la traversait sur 34 % de sa largeur. -->
-    <text x="472" y="176" font-size="10.5" fill="var(--figure-ink-soft)">suivie de haut en bas</text>
+    <text x="552" y="176" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">suivie de haut en bas</text>
   </g><!-- /step-1 -->
 
   <!-- ══════════════════════════════════════════════════════

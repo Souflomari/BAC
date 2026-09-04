@@ -121,7 +121,11 @@
              C568.9,240 584.4,240 600,200"
           fill="none" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
 
-    <text x="320" y="135" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">
+    <!-- data-hors-panneau : cette phrase parle des DEUX milieux, donc elle
+         est centrée SUR l'interface et déborde du rectangle du verre — c'est
+         son propos, pas un défaut. L'exception est écrite ici, comme
+         data-rature pour un trait qui barre exprès. -->
+    <text data-hors-panneau="1" x="320" y="135" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">
       même ν de part et d'autre de l'interface
     </text>
   </g><!-- /step-2 -->
@@ -147,8 +151,10 @@
     </text>
 
     <!-- ── Annotations de lecture ────────────────────────────────────────── -->
-    <text x="330" y="314" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-accent)">ν inchangée → couleur inchangée</text>
-    <text x="330" y="330" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-accent)">seule λ diminue</text>
+    <!-- data-hors-panneau : la conclusion compare les deux milieux ; centrée
+         sur l'interface, elle déborde forcément du rectangle du verre. -->
+    <text data-hors-panneau="1" x="330" y="314" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-accent)">ν inchangée → couleur inchangée</text>
+    <text data-hors-panneau="1" x="330" y="330" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-accent)">seule λ diminue</text>
   </g><!-- /step-3 -->
 
 </svg>
