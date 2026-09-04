@@ -148,6 +148,78 @@ def num(n: int, table: dict[int, int]) -> str | None:
     return str(c) if c else None
 
 
+# ── LES SLUGS DE LEÇON ────────────────────────────────────────────────────
+#
+# « Tu as déjà rencontré, dans la leçon sur la vérité (la-verite, chapitre 6),
+# la démarche de Descartes. » `la-verite` est un NOM DE DOSSIER. L'élève ne
+# l'a jamais vu ; ce qu'il lit, dans le rail et dans le fil d'Ariane, c'est
+# le TITRE : « La vérité ». Même classe que les codes de barreau, même
+# remède — remplacer par ce que l'élève voit.
+#
+# Seuls les slugs À TIRET sont traités. `autrui`, `travail`, `bonheur` sont
+# aussi des mots français ordinaires, et la leçon « Autrui » écrit
+# légitimement « autrui » à chaque paragraphe : les toucher casserait le
+# texte pour réparer une fuite qui n'existe pas.
+def titres_par_slug() -> dict[str, str]:
+    out: dict[str, str] = {}
+    for lecon in CONTENU.rglob("lesson.md"):
+        slug = lecon.parent.name
+        if "-" not in slug:
+            continue
+        premiere = lecon.read_text(encoding="utf-8").split("\n", 1)[0]
+        titre = premiere.lstrip("# ").strip()
+        if titre:
+            out[slug] = titre
+    return out
+
+
+TITRES = titres_par_slug()
+
+
+def reecrire_slugs(ligne: str) -> str:
+    # CE QUI EST ENTRE ACCENTS GRAVES EST DU CODE, ET LE RESTE.
+    # « transcrites dans la banque sœur `calcul-integral/bank.yaml` » : un
+    # chemin de dépôt, que remplacer par un titre rendrait absurde
+    # (« `« Calcul intégral »/bank.yaml` »). Payé une fois, en relisant la
+    # sortie. Que ces identifiants soient VISIBLES par l'élève est une autre
+    # fuite, d'une autre nature — elle se traite en réécrivant la phrase, pas
+    # en substituant un mot.
+    # NUANCE, ET ELLE COMPTE. Un accent grave autour d'un CHEMIN
+    # (`calcul-integral/bank.yaml`) protège une référence de dépôt : on n'y
+    # touche pas. Un accent grave autour du SEUL SLUG (« tu l'as dans
+    # `la-liberte` ») ne protège rien du tout : l'élève voit un identifiant
+    # dans une boîte à chasse fixe, ce qui est la fuite elle-même, en plus
+    # voyant. Celui-là, on le remplace par le titre — accents graves compris,
+    # car un titre de leçon n'est pas du code.
+    protege: list[str] = []
+
+    def garder(m: re.Match) -> str:
+        interieur = m.group(1)
+        if interieur in TITRES:
+            return f"« {TITRES[interieur]} »"
+        protege.append(m.group(0))
+        return f"\x04CODE{len(protege) - 1}\x04"
+
+    ligne = re.sub(r"`([^`]*)`", garder, ligne)
+
+    for slug, titre in TITRES.items():
+        if slug not in ligne:
+            continue
+        s = re.escape(slug)
+        # « (la-verite, chapitre 8) » et « la-verite chapitre 8 »
+        ligne = re.sub(rf"(?<![\w/-]){s},?\s+(?:le\s+)?chapitre\s+(\d+)(?![\w-])",
+                       lambda m: f"chapitre {m.group(1)} de « {titre} »", ligne)
+        # « dans la leçon la-liberte », « la leçon « … » » déjà correcte
+        ligne = re.sub(rf"(?<![\w/-])(la\s+le[çc]on\s+){s}(?![\w-])",
+                       lambda m: f"{m.group(1)}« {titre} »", ligne)
+        # tout autre emploi nu : « dans le-devoir », « (la-verite) »
+        ligne = re.sub(rf"(?<![\w/-]){s}(?![\w-])", f"« {titre} »", ligne)
+
+    for i, brut in enumerate(protege):
+        ligne = ligne.replace(f"\x04CODE{i}\x04", brut)
+    return ligne
+
+
 def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichier: str, no: int,
                    index: dict[str, dict[int, int]] | None = None) -> str:
     """Réécrit une ligne de prose. Signale ce qu'elle ne sait pas traiter."""
@@ -163,6 +235,8 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
     #
     # On remplace donc chaque renvoi externe par une sentinelle le temps du
     # traitement, et on le restitue tel quel à la fin.
+    ligne = reecrire_slugs(ligne)
+
     # ── RENVOI EXTERNE À L'ENVERS : « R7 de « Calcul intégral » » ───────────
     #
     # Le détecteur ci-dessous cherche le titre AVANT le code (« … dans « L'État »,
@@ -656,7 +730,9 @@ def traiter(chemin: Path, ecrire: bool, journal: list[str],
     for i, (brute, m) in enumerate(zip(lignes, masquees), start=1):
         # « rung » sans code compte aussi : c'est le même jargon, sans le
         # chiffre. Filtrer sur le seul R<n> laissait 221 occurrences derrière.
-        if not re.search(r"\bR\d+\b", m) and not re.search(r"\brungs?\b", m, flags=re.I):
+        if (not re.search(r"\bR\d+\b", m)
+                and not re.search(r"\brungs?\b", m, flags=re.I)
+                and not any(sl in m for sl in TITRES)):
             continue
         lignes[i - 1] = reecrire_ligne(lignes[i - 1], table, journal, court, i, index)
     neuf = "\n".join(lignes)

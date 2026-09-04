@@ -2701,7 +2701,7 @@ entries:
 
       **Partie III.** On montre que l'équation $f(x)=3x$ admet une unique solution $\alpha$ dans $]0,+\infty[$, puis on construit une suite $(u_n)$ par $u_0=\beta \in \mathbb{R}^{+}$ et $u_{n+1} = \dfrac13 f(u_n)$, et on démontre qu'elle converge vers $\alpha$ — avec une vitesse de convergence explicite, géométrique de raison $\dfrac12$.
 
-      *Aucune figure n'accompagne ce sujet : la question 5-b de la Partie II demande au candidat de construire la courbe lui-même, sans lui en fournir aucune. La carte des domaines, pour savoir quoi réviser avant : cette leçon (fonction-logarithme) porte l'ossature — les encadrements, la propriété du logarithme, la limite de référence $\dfrac{\ln x}{x}\to 0$ — mais Partie I-2 et Partie II-1/2-a empruntent aux limites et à la continuité, Partie II-2-c à II-5 à la dérivabilité et à l'étude de fonctions (dont le facteur $e^{-x}$ mobilise aussi la fonction exponentielle), Partie III-1 au théorème des valeurs intermédiaires (dérivabilité), et Partie III-2 aux suites numériques — avec, pour la seule majoration géométrique de la question 2-b, le théorème des accroissements finis, énoncé et appliqué au moment précis où il sert, jamais supposé acquis. Le fil qui traverse tout le problème : chaque limite délicate se résout en encadrant d'abord, jamais en devinant.*
+      *Aucune figure n'accompagne ce sujet : la question 5-b de la Partie II demande au candidat de construire la courbe lui-même, sans lui en fournir aucune. La carte des domaines, pour savoir quoi réviser avant : cette leçon (« Fonction logarithme ») porte l'ossature — les encadrements, la propriété du logarithme, la limite de référence $\dfrac{\ln x}{x}\to 0$ — mais Partie I-2 et Partie II-1/2-a empruntent aux limites et à la continuité, Partie II-2-c à II-5 à la dérivabilité et à l'étude de fonctions (dont le facteur $e^{-x}$ mobilise aussi la fonction exponentielle), Partie III-1 au théorème des valeurs intermédiaires (dérivabilité), et Partie III-2 aux suites numériques — avec, pour la seule majoration géométrique de la question 2-b, le théorème des accroissements finis, énoncé et appliqué au moment précis où il sert, jamais supposé acquis. Le fil qui traverse tout le problème : chaque limite délicate se résout en encadrant d'abord, jamais en devinant.*
     questions:
       - id: q1a
         part: "Partie I — 1. Encadrer 1/(1+t), puis ln(1 + x)"
@@ -2826,7 +2826,7 @@ entries:
 
           $$\lim_{x\to+\infty} g(x) = 0$$
 
-          **La limite de $e^{-x}$ en $+\infty$.** C'est une limite de référence de la fonction exponentielle (domaine « fonction-exponentielle », hors du corps de cette leçon) : $e^{-x} = \dfrac{1}{e^x}$, et $e^x \to +\infty$, donc $e^{-x} \to 0$.
+          **La limite de $e^{-x}$ en $+\infty$.** C'est une limite de référence de la fonction exponentielle (domaine « « Fonction exponentielle » », hors du corps de cette leçon) : $e^{-x} = \dfrac{1}{e^x}$, et $e^x \to +\infty$, donc $e^{-x} \to 0$.
 
           **Le produit.** Les deux facteurs tendent tous deux vers $0$ : ce n'est **pas** une forme indéterminée — $0 \times 0$ se calcule directement, sans détour, contrairement à $0 \times \infty$.
 
@@ -2839,7 +2839,7 @@ entries:
           - math: 'g(x) = \frac{\ln(1+x)}{x} = \frac{\ln t}{t}\cdot\frac{t}{t-1} \qquad (t = 1+x,\ t\to+\infty)'
             note: "Changement de variable t = 1+x pour retomber sur la limite de reference ln(t)/t."
           - math: '\lim_{t\to+\infty}\frac{\ln t}{t} = 0 \ (\text{R4 de cette lecon}), \qquad \lim_{t\to+\infty}\frac{t}{t-1}=1 \ \Longrightarrow\ \lim_{x\to+\infty} g(x) = 0'
-            note: "Limite de reference du chapitre, pas un emprunt : Le chapitre 5 de fonction-logarithme."
+            note: "Limite de reference du chapitre, pas un emprunt : Le chapitre 5 de « Fonction logarithme »."
           - math: '\lim_{x\to+\infty} e^{-x} = 0 \quad (\text{fonction exponentielle})'
             note: "e puissance moins x est l'inverse de e puissance x, qui tend vers plus l'infini."
           - math: '\lim_{x\to+\infty} f(x) = \lim_{x\to+\infty} g(x)\,e^{-x} = 0\times 0 = 0 \quad (\text{aucune indetermination})'
@@ -2917,7 +2917,7 @@ entries:
 
           $$\frac{e^{-x}-1}{x} = \frac{e^h-1}{-h} = -\frac{e^h-1}{h} \xrightarrow[h\to 0]{} -1$$
 
-          car $\dfrac{e^h-1}{h}\to 1$ quand $h\to 0$ (limite de référence, domaine fonction-exponentielle). Donc $\dfrac{e^{-x}-1}{x} \to -1$.
+          car $\dfrac{e^h-1}{h}\to 1$ quand $h\to 0$ (limite de référence, domaine « Fonction exponentielle »). Donc $\dfrac{e^{-x}-1}{x} \to -1$.
 
           **Le second morceau : $g(x)$.** Établi à la question 2-a : $g(x) \to 1$ quand $x\to 0^+$.
 
@@ -3382,7 +3382,7 @@ entries:
 
       *Le fil de l'exercice.* Après continuité et une première limite (questions 1-2), l'exercice construit un encadrement délicat par le théorème des accroissements finis (question 3), qui sert ensuite à établir la dérivabilité à droite en $1$ (question 4). La question 5 retrouve le signe de $f'$ par un détour inattendu — deux intégrales, $I(x)$ et $J(x)$ — plutôt que par un calcul direct de dérivée seule. Les questions 6 et 7 en tirent le tableau de variations, la courbe et l'existence d'un unique point fixe $a$ dans $]1,2[$ de $x\mapsto1+f(x)$ — que la question 8 approche par une suite itérée, avec une vitesse de convergence géométrique explicite.
 
-      *Aucune figure n'est imprimée : la question 6-b demande au candidat de construire la courbe lui-même. La carte des domaines : cette leçon (fonction-logarithme) porte l'ossature — le taux d'accroissement de $\ln$ en $1$ (chapitre 4), la limite de référence $\ln x/x\to0$ (chapitre 5) — mais les questions 1, 2 et 3-c empruntent aux limites et à la continuité, la question 3-b au théorème des accroissements finis (dérivabilité et étude de fonctions, spécifique SM, énoncé et appliqué au point d'usage, jamais supposé acquis), les questions 4, 5-c/5-d, 6 et 7 à la dérivabilité et à l'étude de fonctions, la question 5 dans son entier au calcul intégral, et la question 8 aux suites numériques — avec, pour la question 8-a, un second usage du même théorème des accroissements finis qu'à la question 3-b.*
+      *Aucune figure n'est imprimée : la question 6-b demande au candidat de construire la courbe lui-même. La carte des domaines : cette leçon (« Fonction logarithme ») porte l'ossature — le taux d'accroissement de $\ln$ en $1$ (chapitre 4), la limite de référence $\ln x/x\to0$ (chapitre 5) — mais les questions 1, 2 et 3-c empruntent aux limites et à la continuité, la question 3-b au théorème des accroissements finis (dérivabilité et étude de fonctions, spécifique SM, énoncé et appliqué au point d'usage, jamais supposé acquis), les questions 4, 5-c/5-d, 6 et 7 à la dérivabilité et à l'étude de fonctions, la question 5 dans son entier au calcul intégral, et la question 8 aux suites numériques — avec, pour la question 8-a, un second usage du même théorème des accroissements finis qu'à la question 3-b.*
     questions:
       - id: q1
         part: "1. Continuite a droite en 1"
@@ -4035,7 +4035,7 @@ entries:
 
       **Partie E.** On compare, pour chaque entier $k$, la valeur $f(k)$ à l'intégrale de $f$ sur $[k,k+1]$ : l'écart $\Delta_k$ est encadré grâce à la décroissance de $f$, ce qui permet d'encadrer puis d'étudier la convergence de la somme $S_n=\sum_{k=0}^{n-1}\Delta_k$.
 
-      *Aucune figure n'accompagne ce sujet : la question B-3-b demande au candidat de construire la courbe lui-même, avec $\|\vec i\|=\|\vec j\|=2\,\text{cm}$. La carte des domaines, pour savoir quoi réviser avant : cette leçon (fonction-logarithme) porte l'ossature — l'encadrement de $\ln(1+x)$ (Partie A) et la construction de $f$ à partir de lui (Partie B) — mais la Partie B-1 emprunte aux limites et à la continuité, la Partie B-1b à B-3 (et la notion même de sens de variation, tangente, tableau) à la dérivabilité et à l'étude de fonctions — y compris l'existence-unicité du point fixe $\alpha$ en Partie C-1, par le théorème des valeurs intermédiaires —, la Partie C-2 et la Partie E tout entière aux suites numériques, et la Partie D tout entière — plus la Partie E, qui réutilise l'intégrale de $f$ comme une moyenne — au calcul intégral. Le fil qui traverse tout le problème : chaque limite délicate se résout en encadrant d'abord, jamais en devinant — exactement la méthode ouverte par la Partie A.*
+      *Aucune figure n'accompagne ce sujet : la question B-3-b demande au candidat de construire la courbe lui-même, avec $\|\vec i\|=\|\vec j\|=2\,\text{cm}$. La carte des domaines, pour savoir quoi réviser avant : cette leçon (« Fonction logarithme ») porte l'ossature — l'encadrement de $\ln(1+x)$ (Partie A) et la construction de $f$ à partir de lui (Partie B) — mais la Partie B-1 emprunte aux limites et à la continuité, la Partie B-1b à B-3 (et la notion même de sens de variation, tangente, tableau) à la dérivabilité et à l'étude de fonctions — y compris l'existence-unicité du point fixe $\alpha$ en Partie C-1, par le théorème des valeurs intermédiaires —, la Partie C-2 et la Partie E tout entière aux suites numériques, et la Partie D tout entière — plus la Partie E, qui réutilise l'intégrale de $f$ comme une moyenne — au calcul intégral. Le fil qui traverse tout le problème : chaque limite délicate se résout en encadrant d'abord, jamais en devinant — exactement la méthode ouverte par la Partie A.*
     questions:
       - id: q1
         part: "Partie A — 1. Un encadrement algebrique, brique de depart"

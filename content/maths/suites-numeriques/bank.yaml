@@ -707,7 +707,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que : $(\forall n \in \mathbb{N})\ ;\quad |u_{n+1} - \alpha| \le \dfrac{1}{2}|u_n - \alpha|$
         reasoning: |-
-          C'est le pas central de toute la Partie II : transformer une borne sur la dérivée (question 1-b) en une borne sur l'écart entre deux termes consécutifs de la suite. L'outil est l'**inégalité des accroissements finis** (corollaire du théorème des accroissements finis, notion `derivabilite-etude-fonctions` : si $f$ est dérivable sur un intervalle et $|f'|\le k$ partout sur cet intervalle, alors $|f(b)-f(a)|\le k|b-a|$ pour tous $a,b$ de l'intervalle) — outil hors du corps des chapitres 1 à 12 de cette leçon, déjà mobilisé pour la même construction dans `bk-2025-n-x1` de `content/maths/fonction-exponentielle/bank.yaml`.
+          C'est le pas central de toute la Partie II : transformer une borne sur la dérivée (question 1-b) en une borne sur l'écart entre deux termes consécutifs de la suite. L'outil est l'**inégalité des accroissements finis** (corollaire du théorème des accroissements finis, notion « Dérivabilité et étude des fonctions » : si $f$ est dérivable sur un intervalle et $|f'|\le k$ partout sur cet intervalle, alors $|f(b)-f(a)|\le k|b-a|$ pour tous $a,b$ de l'intervalle) — outil hors du corps des chapitres 1 à 12 de cette leçon, déjà mobilisé pour la même construction dans `bk-2025-n-x1` de `content/maths/fonction-exponentielle/bank.yaml`.
 
           Applique-la à $f_0$ (dérivable sur $\mathbb{R}$, $|f_0'|\le\dfrac12$ partout, question 1-b) entre $a=\alpha$ et $b=u_n$ :
 
@@ -760,7 +760,7 @@ entries:
 
           **(0,5 pt)** Montrer que pour tout entier $n \ge 2$, il existe un unique réel $x_n$ solution de l'équation $f_n(x) = 0$
         reasoning: |-
-          Même schéma de preuve qu'à la question 1-a de la Partie II — existence et unicité d'un zéro par un corollaire du TVI (`limites-continuite`) — mais appliqué directement à $f_n$, pas à une fonction auxiliaire.
+          Même schéma de preuve qu'à la question 1-a de la Partie II — existence et unicité d'un zéro par un corollaire du TVI (« Limites et continuité ») — mais appliqué directement à $f_n$, pas à une fonction auxiliaire.
 
           $f_n$ est dérivable sur $\mathbb{R}$, avec $f_n'(x) = \dfrac{-2e^x}{(1+e^x)^2}+n$ (calcul de quotient identique à celui de la question 1-a, plus la dérivée de $nx$ qui vaut $n$). Réutilise l'inégalité $\dfrac{2e^x}{(1+e^x)^2}\le\dfrac12$ établie en question 1-b : pour $n\ge2$,
 

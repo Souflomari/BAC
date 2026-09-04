@@ -117,7 +117,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que pour tout $x$ de $]0,+\infty[$, $g'(x) = \dfrac{\sqrt{x} - 1}{x}$
         reasoning: |-
-          Cette question mobilise le calcul de dérivée — un outil du chapitre dérivabilité (derivabilite-etude-fonctions), en dehors du corps des chapitres 2 à 7 de cette leçon, qui ne traite que limites, continuité et TVI. On admet ici les deux dérivées usuelles : celle de $x\mapsto 2\sqrt{x}$ vaut $\dfrac{1}{\sqrt{x}}$, celle de $x\mapsto -\ln x$ vaut $-\dfrac{1}{x}$ (et la dérivée de la constante $-2$ est nulle). Il ne reste qu'à mettre les deux termes obtenus au même dénominateur $x$ pour retomber exactement sur la forme demandée.
+          Cette question mobilise le calcul de dérivée — un outil du chapitre dérivabilité (« Dérivabilité et étude des fonctions »), en dehors du corps des chapitres 2 à 7 de cette leçon, qui ne traite que limites, continuité et TVI. On admet ici les deux dérivées usuelles : celle de $x\mapsto 2\sqrt{x}$ vaut $\dfrac{1}{\sqrt{x}}$, celle de $x\mapsto -\ln x$ vaut $-\dfrac{1}{x}$ (et la dérivée de la constante $-2$ est nulle). Il ne reste qu'à mettre les deux termes obtenus au même dénominateur $x$ pour retomber exactement sur la forme demandée.
         steps:
           - math: 'g''(x) = \dfrac{1}{\sqrt{x}} - \dfrac{1}{x}'
             note: "Dérivée terme à terme : dérivée de 2 racine de x égale 1 sur racine de x, dérivée de la constante -2 est nulle, dérivée de moins ln x est moins 1 sur x."
@@ -141,7 +141,7 @@ entries:
         stem: |-
           **(0,5 pt)** en déduire que pour tout $x$ de $[1,+\infty[$, $0 \le \ln x \le 2\sqrt{x}$ *(remarquer que $2\sqrt{x} - 2 \le 2\sqrt{x}$)*
         reasoning: |-
-          On exploite la monotonie établie à la question précédente : $g$ croissante sur $[1,+\infty[$ signifie que $g(x) \ge g(1)$ pour tout $x \ge 1$. On calcule d'abord $g(1)$, puis on développe l'inégalité $g(x) \ge 0$ pour isoler $\ln x$. L'indication de l'énoncé (retirer $2$ ne peut que diminuer) fournit la seconde moitié de l'encadrement sans calcul supplémentaire. La borne inférieure $\ln x \ge 0$ vient, elle, d'une propriété du logarithme lui-même (croissance de $\ln$, $\ln 1 = 0$) — un fait du chapitre fonction-logarithme, pas de cette leçon, mobilisé ici comme brique déjà connue.
+          On exploite la monotonie établie à la question précédente : $g$ croissante sur $[1,+\infty[$ signifie que $g(x) \ge g(1)$ pour tout $x \ge 1$. On calcule d'abord $g(1)$, puis on développe l'inégalité $g(x) \ge 0$ pour isoler $\ln x$. L'indication de l'énoncé (retirer $2$ ne peut que diminuer) fournit la seconde moitié de l'encadrement sans calcul supplémentaire. La borne inférieure $\ln x \ge 0$ vient, elle, d'une propriété du logarithme lui-même (croissance de $\ln$, $\ln 1 = 0$) — un fait du chapitre « Fonction logarithme », pas de cette leçon, mobilisé ici comme brique déjà connue.
         steps:
           - math: 'g(1) = 2\sqrt{1}-2-\ln 1 = 2-2-0 = 0'
             note: "On évalue g au point 1 : racine de 1 vaut 1, ln de 1 vaut 0."
@@ -190,7 +190,7 @@ entries:
         stem: |-
           **(0,75 pt)** Calculer l'intégrale $\displaystyle\int_1^4 g(x)\,dx$
         reasoning: |-
-          Une fois la primitive $G$ établie, le calcul de l'intégrale est immédiat par le théorème fondamental du calcul intégral — $\displaystyle\int_a^b g(x)\,dx = G(b)-G(a)$ — un résultat du chapitre calcul-integral, également hors du corps des chapitres 2 à 7 de cette leçon. Le travail se réduit alors à deux évaluations numériques de $G$, en $4$ puis en $1$, et à leur différence.
+          Une fois la primitive $G$ établie, le calcul de l'intégrale est immédiat par le théorème fondamental du calcul intégral — $\displaystyle\int_a^b g(x)\,dx = G(b)-G(a)$ — un résultat du chapitre « Calcul intégral », également hors du corps des chapitres 2 à 7 de cette leçon. Le travail se réduit alors à deux évaluations numériques de $G$, en $4$ puis en $1$, et à leur différence.
         steps:
           - math: '\displaystyle\int_1^4 g(x)\,dx = G(4)-G(1)'
             note: "G est une primitive de g (question précédente) : l'intégrale se calcule directement par différence des valeurs de G aux bornes (chapitre calcul intégral)."
@@ -236,7 +236,7 @@ entries:
         stem: |-
           **(0,5 pt)** Résoudre dans $\mathbb{R}$ l'équation : $e^{2x} - 4e^x + 3 = 0$
         reasoning: |-
-          L'équation mélange $e^{2x}$ et $e^x$ : le réflexe est de reconnaître un trinôme du second degré déguisé, en posant $t=e^x$ (toujours strictement positif — propriété de la fonction exponentielle, chapitre fonction-exponentielle, en dehors du corps des chapitres 2 à 7 de cette leçon). Comme $e^{2x}=(e^x)^2=t^2$, l'équation devient $t^2-4t+3=0$, un trinôme ordinaire qu'on factorise en $(t-1)(t-3)$. Reste à revenir à $x$ : $e^x=t$ s'inverse par $x=\ln t$, l'exponentielle étant une bijection strictement croissante de $\mathbb{R}$ sur $]0,+\infty[$.
+          L'équation mélange $e^{2x}$ et $e^x$ : le réflexe est de reconnaître un trinôme du second degré déguisé, en posant $t=e^x$ (toujours strictement positif — propriété de la fonction exponentielle, chapitre « Fonction exponentielle », en dehors du corps des chapitres 2 à 7 de cette leçon). Comme $e^{2x}=(e^x)^2=t^2$, l'équation devient $t^2-4t+3=0$, un trinôme ordinaire qu'on factorise en $(t-1)(t-3)$. Reste à revenir à $x$ : $e^x=t$ s'inverse par $x=\ln t$, l'exponentielle étant une bijection strictement croissante de $\mathbb{R}$ sur $]0,+\infty[$.
         steps:
           - math: 't = e^x \quad (t>0)'
             note: "Changement de variable : on pose t égal e puissance x, toujours strictement positif."
@@ -291,12 +291,12 @@ entries:
         reasoning: |-
           Ce type d'énoncé est un signal direct du corollaire d'existence du chapitre 6 : on pose la fonction auxiliaire $\varphi(x)=e^{2x}+e^x+4x$ et on vérifie les ingrédients de la méthode dans l'ordre — continuité, puis signes opposés aux bornes (aucune unicité n'est demandée, donc pas besoin de monotonie).
 
-          $\varphi$ est continue sur $\mathbb{R}$ comme somme de la fonction exponentielle (continue sur $\mathbb{R}$, résultat de référence du chapitre fonction-exponentielle, mobilisé ici comme brique au même titre que les fonctions usuelles listées au chapitre 5) et de la fonction polynôme $x\mapsto 4x$ (continue sur $\mathbb{R}$, boîte à outils du chapitre 5) — une somme de fonctions continues est continue, chapitre 5. On calcule ensuite $\varphi(-1)$ et $\varphi(0)$ : les signes sont opposés, donc le corollaire d'existence du chapitre 6 s'applique directement.
+          $\varphi$ est continue sur $\mathbb{R}$ comme somme de la fonction exponentielle (continue sur $\mathbb{R}$, résultat de référence du chapitre « Fonction exponentielle », mobilisé ici comme brique au même titre que les fonctions usuelles listées au chapitre 5) et de la fonction polynôme $x\mapsto 4x$ (continue sur $\mathbb{R}$, boîte à outils du chapitre 5) — une somme de fonctions continues est continue, chapitre 5. On calcule ensuite $\varphi(-1)$ et $\varphi(0)$ : les signes sont opposés, donc le corollaire d'existence du chapitre 6 s'applique directement.
         steps:
           - math: '\varphi(x) = e^{2x}+e^x+4x'
             note: "On pose une fonction auxiliaire pour appliquer la méthode du TVI (chapitre 6)."
           - math: '\varphi \ \text{est continue sur } \mathbb{R} \ \text{(somme de la fonction exponentielle et de la fonction polynome, toutes deux continues)}'
-            note: "Fonction exponentielle continue sur R (résultat de référence, fonction-exponentielle) et fonction polynôme 4x continue sur R (boîte à outils R4) : leur somme est continue, chapitre 5."
+            note: "Fonction exponentielle continue sur R (résultat de référence, « Fonction exponentielle ») et fonction polynôme 4x continue sur R (boîte à outils R4) : leur somme est continue, chapitre 5."
           - math: '\varphi(-1) = e^{-2}+e^{-1}-4 \approx 0{,}135+0{,}368-4 \approx -3{,}497 < 0'
             note: "Valeur approchée à la calculatrice : nettement négative."
           - math: '\varphi(0) = e^0+e^0+0 = 1+1 = 2 > 0'

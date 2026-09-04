@@ -144,7 +144,7 @@ dépend : si tu rates la thèse, tu bâtis toute ta copie sur une base fausse.
 Pour l'apprendre, on va travailler du début à la fin sur un seul texte, que
 tu vas voir se soutenir sous tes yeux, en entier — Bakounine, *La Liberté*.
 C'est le même texte que tu as déjà rencontré (ou que tu rencontreras) dans la
-leçon `la-liberte` : là, on en tirait la philosophie ; ici, on ne réutilise
+leçon « La liberté » : là, on en tirait la philosophie ; ici, on ne réutilise
 que la structure de son raisonnement pour apprendre le geste. Si le contenu
 te manque, une phrase suffira à chaque fois pour t'y raccrocher — inutile de
 réexpliquer la notion.
@@ -263,7 +263,7 @@ module — une phrase, pas un développement. Pour Bakounine : ce texte
 appartient au module de la morale et de la politique, autour de la notion de
 liberté, et plus précisément de l'axe liberté et autrui — la question de
 savoir si la présence des autres limite ma liberté ou, au contraire, la rend
-possible. *(Le contenu complet de cette notion, tu l'as dans `la-liberte` —
+possible. *(Le contenu complet de cette notion, tu l'as dans « La liberté » —
 ici on ne fait que la nommer pour situer le texte, on n'y revient pas.)*
 
 **Poser le problème (طرح الإشكال),** c'est autre chose qu'une simple
@@ -459,7 +459,7 @@ laisse l'auteur de côté. »*
 
 Pour la thèse de Bakounine (je ne suis libre que par la liberté des
 autres), deux positions **convergentes** — déjà rencontrées dans
-`la-liberte`, on ne les redéveloppe pas ici :
+« La liberté », on ne les redéveloppe pas ici :
 
 - **Rousseau**, pour qui la loi qu'on se prescrit collectivement — donc *avec*
   les autres citoyens — est ce qui fonde la liberté civile plutôt que sa
@@ -555,7 +555,7 @@ Pour chaque question : cherche vraiment, engage une réponse, puis seulement
 ouvre le raisonnement expert et compare-le au tien.
 
 **Le premier texte** — d'Emmanuel Kant, sur le devoir — reprend une
-opposition que tu as peut-être déjà croisée dans `le-devoir` (agir *par*
+opposition que tu as peut-être déjà croisée dans « Le devoir » (agir *par*
 devoir plutôt que *conformément* au devoir) ; ici, c'est uniquement la
 méthode qui t'intéresse, pas le contenu à réapprendre.
 

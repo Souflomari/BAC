@@ -218,12 +218,12 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer l'inductance $L$ de la bobine. (On prend $\pi^{2} = 10$).
         reasoning: |-
-          On inverse la formule du chapitre 3, $T_0 = 2\pi\sqrt{LC}$, pour isoler $L$. Il manque une donnée que cette partie ne fournit pas : la capacité $C$. Elle a été déterminée dans la Partie I du même sujet (charge du condensateur à travers $R$, transcrite sous la notion rc-charge) : $C = 10\ \mu\text{F}$ — un pont entre les deux parties du même exercice, pas une donnée nouvelle à deviner.
+          On inverse la formule du chapitre 3, $T_0 = 2\pi\sqrt{LC}$, pour isoler $L$. Il manque une donnée que cette partie ne fournit pas : la capacité $C$. Elle a été déterminée dans la Partie I du même sujet (charge du condensateur à travers $R$, transcrite sous la notion « Dipôle RC — réponse à un échelon de tension ») : $C = 10\ \mu\text{F}$ — un pont entre les deux parties du même exercice, pas une donnée nouvelle à deviner.
         steps:
           - math: 'T_0 = 2\pi\sqrt{LC} \implies L = \frac{T_0^2}{4\pi^2 C}'
             note: "On isole L (chapitre 3), avec T0 lu a la question precedente."
           - math: 'L = \frac{(20\times10^{-3})^2}{4\times10\times10\times10^{-6}} = \frac{4\times10^{-4}}{4\times10^{-4}}'
-            note: "Application numerique : T0 = 20 ms, C = 10 microF (valeur venant de la Partie I, meme sujet, transcrite sous rc-charge), pi^2 = 10."
+            note: "Application numerique : T0 = 20 ms, C = 10 microF (valeur venant de la Partie I, meme sujet, transcrite sous « Dipôle RC — réponse à un échelon de tension »), pi^2 = 10."
           - math: '\boxed{L = 1\ \text{H}}'
             note: "Valeur ronde, coherente avec l'ordre de grandeur d'une bobine de ce type de montage bac."
       - id: q4a
@@ -437,14 +437,14 @@ entries:
         stem: |-
           **(0,5 pt)** Sachant que la pseudopériode est égale à la période propre, trouver la capacité $C$ du condensateur. (On prend : $\pi^{2} = 10$).
         reasoning: |-
-          L'énoncé donne ici l'approximation du chapitre 7 ($T \approx T_0$ pour un amortissement faible) comme une égalité à utiliser directement : $T_0 = T = 10\ \text{ms}$, lu sur la figure 4 par la méthode du chapitre 7 (extrema exactement espacés de $10\ \text{ms}$). On inverse ensuite $T_0 = 2\pi\sqrt{LC}$ (chapitre 3) pour isoler $C$, avec $L = 1\ \text{H}$ — une valeur établie en Partie I (réponse du dipôle RL, hors périmètre RLC, transcrite sous dipole-rl.md), pas une donnée de cette partie-ci.
+          L'énoncé donne ici l'approximation du chapitre 7 ($T \approx T_0$ pour un amortissement faible) comme une égalité à utiliser directement : $T_0 = T = 10\ \text{ms}$, lu sur la figure 4 par la méthode du chapitre 7 (extrema exactement espacés de $10\ \text{ms}$). On inverse ensuite $T_0 = 2\pi\sqrt{LC}$ (chapitre 3) pour isoler $C$, avec $L = 1\ \text{H}$ — une valeur établie en Partie I (réponse du dipôle RL, hors périmètre RLC, transcrite sous « Dipôle RL ».md), pas une donnée de cette partie-ci.
         steps:
           - math: 'T_0 = T = 10\ \text{ms}'
             note: "Pseudo-periode lue sur la figure 4 (chapitre 7), prise egale a T0 par hypothese de l'enonce."
           - math: 'T_0 = 2\pi\sqrt{LC} \implies C = \frac{T_0^2}{4\pi^2 L}'
             note: "On isole C (chapitre 3)."
           - math: 'C = \frac{(10\times10^{-3})^2}{4\times10\times1} = \frac{10^{-4}}{40}'
-            note: "Application numerique, avec L = 1 H (etabli en Partie I, hors perimetre RLC, transcrite sous dipole-rl.md) et pi^2 = 10 donne par l'enonce."
+            note: "Application numerique, avec L = 1 H (etabli en Partie I, hors perimetre RLC, transcrite sous « Dipôle RL ».md) et pi^2 = 10 donne par l'enonce."
           - math: '\boxed{C = 2{,}5\ \mu\text{F}}'
             note: "Valeur ronde, coherente avec les autres sujets de cette banque."
       - id: q2a
@@ -452,12 +452,12 @@ entries:
         stem: |-
           **(0,5 pt)** Trouver, dans le système international d'unités, la valeur de $k_0$.
         reasoning: |-
-          Le chapitre 8 donne la condition d'entretien pour une seule résistance ($k=R$). Ici, comme à la question 1b, deux résistances dissipent en série — $R$ et $r$ — donc la condition se généralise : le coefficient d'amortissement de la loi des mailles avec générateur est $(R+r-k)$, et l'entretien l'annule, soit $k_0 = R+r$. $R=90\ \Omega$ est donné dans cette partie ; $r=10\ \Omega$ vient de la Partie I (dipole-rl.md, hors périmètre RLC).
+          Le chapitre 8 donne la condition d'entretien pour une seule résistance ($k=R$). Ici, comme à la question 1b, deux résistances dissipent en série — $R$ et $r$ — donc la condition se généralise : le coefficient d'amortissement de la loi des mailles avec générateur est $(R+r-k)$, et l'entretien l'annule, soit $k_0 = R+r$. $R=90\ \Omega$ est donné dans cette partie ; $r=10\ \Omega$ vient de la Partie I (« Dipôle RL ».md, hors périmètre RLC).
         steps:
           - math: 'u_C + u_R + u_{bobine} = u_G \implies L\frac{d^2q}{dt^2} + (R+r-k)\frac{dq}{dt} + \frac{q}{C} = 0'
             note: "Meme substitution qu'au chapitre 8, avec R remplace par R+r (les deux resistances s'additionnent dans la loi des mailles, comme a la question 1b)."
           - math: 'k_0 = R + r = 90 + 10'
-            note: "Entretien (chapitre 8) : on annule le coefficient (R+r-k) ; r = 10 ohms etabli en Partie I (dipole-rl.md, hors perimetre RLC)."
+            note: "Entretien (chapitre 8) : on annule le coefficient (R+r-k) ; r = 10 ohms etabli en Partie I (« Dipôle RL ».md, hors perimetre RLC)."
           - math: '\boxed{k_0 = 100\ \text{(unites SI)}}'
             note: "k0 est homogene a une resistance (u_G = k.i), donc s'exprime en ohms."
       - id: q2b
@@ -607,12 +607,12 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire la valeur de $L$. (on prend $\pi^{2} = 10$).
         reasoning: |-
-          On inverse la formule établie à la question 3, $T_0 = 2\pi\sqrt{LC}$ (même geste qu'au sujet 2019 ci-dessus, question 3), pour isoler $L$. Il manque une donnée que cette partie ne fournit pas : la capacité $C$. Elle a été déterminée dans la Partie I du même sujet (réponse d'un dipôle RC à un échelon de tension, transcrite sous une autre notion — rc-charge) : $C = 12\ \mu\text{F}$ — un pont entre les deux parties du même exercice, pas une donnée nouvelle à deviner.
+          On inverse la formule établie à la question 3, $T_0 = 2\pi\sqrt{LC}$ (même geste qu'au sujet 2019 ci-dessus, question 3), pour isoler $L$. Il manque une donnée que cette partie ne fournit pas : la capacité $C$. Elle a été déterminée dans la Partie I du même sujet (réponse d'un dipôle RC à un échelon de tension, transcrite sous une autre notion — « Dipôle RC — réponse à un échelon de tension ») : $C = 12\ \mu\text{F}$ — un pont entre les deux parties du même exercice, pas une donnée nouvelle à deviner.
         steps:
           - math: 'T_0 = 2\pi\sqrt{LC} \implies L = \frac{T_0^2}{4\pi^2 C}'
             note: "On isole L (meme inversion qu'au sujet 2019 ci-dessus, question 3)."
           - math: 'L = \frac{(21\times10^{-3})^2}{4\times10\times12\times10^{-6}} = \frac{441\times10^{-6}}{480\times10^{-6}}'
-            note: "Application numerique : T0 = 21 ms (question precedente), C = 12 microF (valeur venant de la Partie I, meme sujet, transcrite sous rc-charge), pi^2 = 10 donne par l'enonce."
+            note: "Application numerique : T0 = 21 ms (question precedente), C = 12 microF (valeur venant de la Partie I, meme sujet, transcrite sous « Dipôle RC — réponse à un échelon de tension »), pi^2 = 10 donne par l'enonce."
           - math: '\boxed{L \approx 0{,}92\ \text{H}}'
             note: "Valeur coherente avec l'ordre de grandeur d'une bobine de ce type de montage bac ; c'est cette valeur, et non 1,63 H, que donnerait a tort l'ancienne lecture T0 = 28 ms."
 
@@ -855,7 +855,7 @@ entries:
         stem: |-
           **(0,5 pt)** Choisir, parmi les courbes $(C_1)$, $(C_2)$ et $(C_3)$ de la figure 3, la courbe qui représente l'évolution de la tension $u_C(t)$. Justifier votre réponse.
         reasoning: |-
-          Deux critères, comme à la question 2a du sujet 2019 ci-dessus. D'abord le régime : l'équation de la question précédente ne contient aucun terme d'amortissement — c'est le cas idéal du chapitre 4/4, amplitude **constante**, jamais amortie. La courbe $(C_3)$, qui décroît, est donc exclue d'emblée. Ensuite l'amplitude : le condensateur a été chargé totalement avant la bascule de $K$, donc $u_C(0)$ doit valoir $U_0 = E$, la tension du palier de charge établie dans la section 1 du même sujet (réponse RC, transcrite sous rc-charge.md) — soit $12\ \text{V}$. $(C_2)$, malgré une amplitude constante, plafonne à $10\ \text{V}$ : elle est donc elle aussi exclue. Seule $(C_1)$ satisfait les deux critères à la fois.
+          Deux critères, comme à la question 2a du sujet 2019 ci-dessus. D'abord le régime : l'équation de la question précédente ne contient aucun terme d'amortissement — c'est le cas idéal du chapitre 4/4, amplitude **constante**, jamais amortie. La courbe $(C_3)$, qui décroît, est donc exclue d'emblée. Ensuite l'amplitude : le condensateur a été chargé totalement avant la bascule de $K$, donc $u_C(0)$ doit valoir $U_0 = E$, la tension du palier de charge établie dans la section 1 du même sujet (réponse RC, transcrite sous « Dipôle RC — réponse à un échelon de tension ».md) — soit $12\ \text{V}$. $(C_2)$, malgré une amplitude constante, plafonne à $10\ \text{V}$ : elle est donc elle aussi exclue. Seule $(C_1)$ satisfait les deux critères à la fois.
 
           La courbe **$(C_1)$** représente $u_C(t)$ : amplitude constante (cohérent avec l'équation idéale) et amplitude $12\ \text{V}$ (cohérent avec $U_0 = E$).
       - id: q3
@@ -1160,14 +1160,14 @@ entries:
         stem: |-
           **(0,5 pt)** Trouver la valeur de la capacité $C$ du condensateur. (On prend $\pi^2 = 10$).
         reasoning: |-
-          Piège à éviter en premier : le repère porté sur la figure — un coin en L, deux flèches à une seule pointe chacune — n'est PAS une mesure de période. Chaque flèche du coin couvre exactement **une division** (« $5\text{V}$ » verticalement, « $0{,}5\ \text{ms}$ » horizontalement) : c'est un étalonnage des deux axes, pas un repère de temps caractéristique de la courbe. Une fois l'échelle posée (1 division $= 0{,}5\ \text{ms}$), on applique la méthode du chapitre 7 : deux maxima consécutifs, à $t=0$ et $t=2{,}0\ \text{ms}$ (4 divisions), donnent $T_0 = 2{,}0\ \text{ms}$. On inverse ensuite $T_0 = 2\pi\sqrt{LC}$ (chapitre 3) pour isoler $C$, avec $L = 1\ \text{H}$ établi au §1 du même sujet (dipôle RL, hors périmètre RLC, transcrit sous dipole-rl.md) — un pont entre les deux parties du même exercice, pas une donnée nouvelle à deviner.
+          Piège à éviter en premier : le repère porté sur la figure — un coin en L, deux flèches à une seule pointe chacune — n'est PAS une mesure de période. Chaque flèche du coin couvre exactement **une division** (« $5\text{V}$ » verticalement, « $0{,}5\ \text{ms}$ » horizontalement) : c'est un étalonnage des deux axes, pas un repère de temps caractéristique de la courbe. Une fois l'échelle posée (1 division $= 0{,}5\ \text{ms}$), on applique la méthode du chapitre 7 : deux maxima consécutifs, à $t=0$ et $t=2{,}0\ \text{ms}$ (4 divisions), donnent $T_0 = 2{,}0\ \text{ms}$. On inverse ensuite $T_0 = 2\pi\sqrt{LC}$ (chapitre 3) pour isoler $C$, avec $L = 1\ \text{H}$ établi au §1 du même sujet (dipôle RL, hors périmètre RLC, transcrit sous « Dipôle RL ».md) — un pont entre les deux parties du même exercice, pas une donnée nouvelle à deviner.
         steps:
           - math: 'T_0 = 2{,}0\ \text{ms}'
             note: "Lu entre deux maxima consecutifs (chapitre 7), avec l'echelle du coin en L : 4 divisions x 0,5 ms."
           - math: 'T_0 = 2\pi\sqrt{LC} \implies C = \frac{T_0^2}{4\pi^2 L}'
             note: "On isole C (chapitre 3)."
           - math: 'C = \frac{(2\times10^{-3})^2}{4\times10\times1} = \frac{4\times10^{-6}}{40}'
-            note: "Application numerique : T0 = 2,0 ms, L = 1 H (etabli au paragraphe 1, hors perimetre RLC, transcrit sous dipole-rl.md), pi^2 = 10 donne par l'enonce."
+            note: "Application numerique : T0 = 2,0 ms, L = 1 H (etabli au paragraphe 1, hors perimetre RLC, transcrit sous « Dipôle RL ».md), pi^2 = 10 donne par l'enonce."
           - math: '\boxed{C = 0{,}1\ \mu\text{F}}'
             note: "Valeur ronde, coherente avec les autres sujets de cette banque."
       - id: q3
@@ -1256,7 +1256,7 @@ entries:
 
       *Rappel du montage (décrit en tête de l'exercice, section 1) :* le montage électrique représenté par le schéma de la figure 1 comporte un générateur de tension de force électromotrice $E$ ; un condensateur de capacité $C$ ajustable, initialement déchargé ; un conducteur ohmique de résistance $R = 35\ \Omega$ ; un interrupteur $K$ à double position ; une bobine d'inductance $L$ et de résistance négligeable.
 
-      *Rappel de la section précédente du même exercice (établi à la section 1, transcrite sous rc-charge — voir la note de portée) :* la capacité est ajustée à la valeur $C_0 = 10\ \mu\text{F}$, et la charge du palier atteinte en régime permanent vaut $120\ \mu\text{C}$ sous $E = 12\ \text{V}$.
+      *Rappel de la section précédente du même exercice (établi à la section 1, transcrite sous « Dipôle RC — réponse à un échelon de tension » — voir la note de portée) :* la capacité est ajustée à la valeur $C_0 = 10\ \mu\text{F}$, et la charge du palier atteinte en régime permanent vaut $120\ \mu\text{C}$ sous $E = 12\ \text{V}$.
 
       Lorsque le régime permanent est atteint, on bascule l'interrupteur $K$ en position (2) à un instant pris comme nouvelle origine des dates $t_0 = 0$. Le même système d'acquisition informatisé, utilisé dans la charge du condensateur, a permis d'obtenir la courbe d'évolution temporelle de la charge $q(t)$ du condensateur (figure 3).
 
@@ -1350,7 +1350,7 @@ entries:
 
           $$q(0) = 120\ \mu\text{C} = 120\times10^{-6}\ \text{C} \qquad q(t_1) = 40\ \mu\text{C} = 40\times10^{-6}\ \text{C}$$
 
-          **L'application numérique**, avec $C_0 = 10\ \mu\text{F}$ établi à la section 1 du même sujet (transcrite sous rc-charge) — un pont entre les deux sections, pas une donnée à deviner :
+          **L'application numérique**, avec $C_0 = 10\ \mu\text{F}$ établi à la section 1 du même sujet (transcrite sous « Dipôle RC — réponse à un échelon de tension ») — un pont entre les deux sections, pas une donnée à deviner :
 
           $$q(0)^2 - q(t_1)^2 = \left(120^2 - 40^2\right)\times10^{-12} = (14400 - 1600)\times10^{-12} = 12800\times10^{-12} = 1{,}28\times10^{-8}$$
 
@@ -1871,12 +1871,12 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer $|E_{th}|$, l'énergie dissipée par effet Joule dans le circuit entre les instants $t = 0$ et $t = t_A$.
         reasoning: |-
-          $t=0$ et $t_A$ sont tous deux des extrema de $u_C$ (le maximum initial et le deuxième maximum) : le courant y est nul dans les deux cas (chapitre 2), donc l'énergie totale y est purement électrique. L'énergie dissipée est la différence — chapitre 4/4, $r$ ne fait que dissiper, jamais restituer, cohérent avec le signe négatif trouvé à la question 3. $u_C(0) = U_0 = 10\ \text{V}$ (donné) et $u_C(t_A) = 7\ \text{V}$ (touche le pointillé, lu sur la figure 3) ; $C_0 = 1\ \mu\text{F}$ vient de la Partie 1 du même sujet (charge par générateur de courant, transcrite sous rc-charge.md) — un pont entre les deux parties du même exercice.
+          $t=0$ et $t_A$ sont tous deux des extrema de $u_C$ (le maximum initial et le deuxième maximum) : le courant y est nul dans les deux cas (chapitre 2), donc l'énergie totale y est purement électrique. L'énergie dissipée est la différence — chapitre 4/4, $r$ ne fait que dissiper, jamais restituer, cohérent avec le signe négatif trouvé à la question 3. $u_C(0) = U_0 = 10\ \text{V}$ (donné) et $u_C(t_A) = 7\ \text{V}$ (touche le pointillé, lu sur la figure 3) ; $C_0 = 1\ \mu\text{F}$ vient de la Partie 1 du même sujet (charge par générateur de courant, transcrite sous « Dipôle RC — réponse à un échelon de tension ».md) — un pont entre les deux parties du même exercice.
         steps:
           - math: 'E_{th} = E_T(0) - E_T(t_A) = \frac{1}{2}C_0\,u_C(0)^2 - \frac{1}{2}C_0\,u_C(t_A)^2'
             note: "i=0 en t=0 et en tA (deux extrema de u_C) : toute l'energie y est electrique."
           - math: 'E_{th} = \frac{1}{2}\times1\times10^{-6}\times\left(10^2 - 7^2\right) = \frac{1}{2}\times10^{-6}\times(100-49)'
-            note: "Application numerique : U0=10V (donne), u_C(tA)=7V (lu sur la figure 3), C0=1 microF (Partie 1 du meme sujet, transcrite sous rc-charge)."
+            note: "Application numerique : U0=10V (donne), u_C(tA)=7V (lu sur la figure 3), C0=1 microF (Partie 1 du meme sujet, transcrite sous « Dipôle RC — réponse à un échelon de tension »)."
           - math: '\boxed{|E_{th}| = 2{,}55\times10^{-5}\ \text{J}}'
             note: "Energie dissipee par effet Joule entre t=0 et tA."
 

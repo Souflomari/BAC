@@ -304,7 +304,7 @@ Dans les deux cas, après la fente ou la porte, l'onde garde $f = 40\ \text{kHz}
 
 ### Ce qui reste hors de cette leçon
 
-La diffraction de la **lumière**, et la relation quantitative qui en donne la demi-largeur angulaire, $\theta = \lambda/a$, ne sont pas traitées ici : elles appartiennent à la leçon sur l'onde lumineuse (`propagation-onde-lumineuse`). Ce qu'on vient d'établir — la condition $a \lesssim \lambda$, les caractéristiques conservées, le montage — vaut pour les ondes mécaniques ; le prolongement quantitatif et le cas de la lumière se trouvent ailleurs.
+La diffraction de la **lumière**, et la relation quantitative qui en donne la demi-largeur angulaire, $\theta = \lambda/a$, ne sont pas traitées ici : elles appartiennent à la leçon sur l'onde lumineuse (« Propagation d'une onde lumineuse »). Ce qu'on vient d'établir — la condition $a \lesssim \lambda$, les caractéristiques conservées, le montage — vaut pour les ondes mécaniques ; le prolongement quantitatif et le cas de la lumière se trouvent ailleurs.
 
 [[checkpoint:cp-r5-diffraction]]
 

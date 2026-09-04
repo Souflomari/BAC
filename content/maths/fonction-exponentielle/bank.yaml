@@ -660,7 +660,7 @@ entries:
         stem: |-
           **(0,5 pt)** En appliquant le théorème de ROLLE à la fonction $f'$, montrer qu'il existe un réel $x_0$ de l'intervalle $]0,1[$ tel que : $f''(x_0) = 0$
         reasoning: |-
-          Rolle et les accroissements finis ne font pas partie du corps de cette leçon (chapitres 1 à 8) — ce sont des outils de la notion `derivabilite-etude-fonctions` ; on les mobilise ici tels quels, en admettant leurs énoncés (voir la SCOPE NOTE en tête de fichier). Pour éviter d'empiler les apostrophes dans les champs de calcul, on y note $f^{(2)}$ et $f^{(3)}$ les dérivées seconde et troisième de $f$ — même objet que $f''$ et $f'''$ dans l'énoncé.
+          Rolle et les accroissements finis ne font pas partie du corps de cette leçon (chapitres 1 à 8) — ce sont des outils de la notion « Dérivabilité et étude des fonctions » ; on les mobilise ici tels quels, en admettant leurs énoncés (voir la SCOPE NOTE en tête de fichier). Pour éviter d'empiler les apostrophes dans les champs de calcul, on y note $f^{(2)}$ et $f^{(3)}$ les dérivées seconde et troisième de $f$ — même objet que $f''$ et $f'''$ dans l'énoncé.
 
           Le théorème de Rolle s'applique à une fonction continue sur $[a,b]$, dérivable sur $]a,b[$, prenant la même valeur aux deux bornes : il garantit alors un point où la dérivée s'annule. On l'applique ici à $f'$ elle-même (pas à $f$) sur $[0,1]$ : $f'$ est continue sur $[0,1]$ et dérivable sur $]0,1[$ (construite comme $f$, à partir de $e^{-x}$ et d'un polynôme), et $f'(0)=f'(1)=0$ (question 2b) — les deux bornes coïncident. Rolle appliqué à $f'$ garantit donc l'existence d'un réel $x_0\in\,]0,1[$ tel que $(f')'(x_0)=f^{(2)}(x_0)=0$.
         steps:
@@ -758,7 +758,7 @@ entries:
         stem: |-
           **(0,75 pt)** Montrer que : $\displaystyle\int_0^\alpha f(x)\,dx = \dfrac{2}{3}\alpha\left(\alpha^2 - 3\right)$, en déduire que : $\dfrac{3}{2} < \alpha \le \sqrt{3}$
         reasoning: |-
-          On cherche une primitive de $f(x)=4xe^{-x}+2x^2-4x$. Le terme $2x^2-4x$ se primitive directement. Le terme $4xe^{-x}$ n'est PAS de la forme $u'e^u$ (chapitre 7 ne s'applique pas ici : l'exposant est $-x$ mais le facteur devant est $4x$, pas une constante fois $-1$) — il faut une intégration par parties (IPP), un outil de la notion `calcul-integral`, pas du corps des chapitres 1 à 8 de cette leçon. Avec $u=x$, $dv=4e^{-x}dx$ : $\int 4xe^{-x}dx = -4xe^{-x}+\int4e^{-x}dx = -4(x+1)e^{-x}$.
+          On cherche une primitive de $f(x)=4xe^{-x}+2x^2-4x$. Le terme $2x^2-4x$ se primitive directement. Le terme $4xe^{-x}$ n'est PAS de la forme $u'e^u$ (chapitre 7 ne s'applique pas ici : l'exposant est $-x$ mais le facteur devant est $4x$, pas une constante fois $-1$) — il faut une intégration par parties (IPP), un outil de la notion « Calcul intégral », pas du corps des chapitres 1 à 8 de cette leçon. Avec $u=x$, $dv=4e^{-x}dx$ : $\int 4xe^{-x}dx = -4xe^{-x}+\int4e^{-x}dx = -4(x+1)e^{-x}$.
 
           Une primitive de $f$ est donc $F(x) = -4(x+1)e^{-x} + \tfrac23x^3 - 2x^2$. On calcule $F(0)=-4$ et $F(\alpha)$, en utilisant l'identité $e^{-\alpha}=1-\tfrac{\alpha}2$ (question 2d) pour remplacer $e^{-\alpha}$ et simplifier : les termes en $\alpha^2$ s'annulent, il reste $F(\alpha)=\tfrac23\alpha^3-2\alpha-4$.
 
@@ -801,7 +801,7 @@ entries:
 
           **(0,5 pt)** Montrer par récurrence que : $(\forall n \in \mathbb{N})\ u_n < \alpha$ *(utiliser la question 5-a) de la PARTIE I)*
         reasoning: |-
-          Le théorème de la limite monotone, invoqué plus loin dans cette partie, est un outil de la notion `suites-numeriques` (voir la SCOPE NOTE en tête de fichier).
+          Le théorème de la limite monotone, invoqué plus loin dans cette partie, est un outil de la notion « Suites numériques » (voir la SCOPE NOTE en tête de fichier).
 
           **Initialisation :** $u_0<\alpha$ est l'hypothèse de départ sur la suite.
 
@@ -1365,7 +1365,7 @@ entries:
         stem: |-
           **(0,75 pt)** Calculer $f''(x)$ pour tout $x$ de $\mathbb{R}$ puis montrer que $A(2,2)$ est un point d'inflexion de $(C)$
         reasoning: |-
-          La notion de point d'inflexion par changement de signe de $f''$ est un outil de la notion `derivabilite-etude-fonctions` — on l'applique ici tel quel, comme au problème 2022 de cette même banque (question 5c).
+          La notion de point d'inflexion par changement de signe de $f''$ est un outil de la notion « Dérivabilité et étude des fonctions » — on l'applique ici tel quel, comme au problème 2022 de cette même banque (question 5c).
 
           On repart de $f'(x) = -(e^{x-2}-1)^2$ (question précédente), une composée du carré appliqué à $v(x)=e^{x-2}-1$. La dérivée de $v$ est $v'(x)=e^{x-2}$ (dérivée de $e^{x-2}$, chapitre 4 ; la constante $-1$ disparaît). La règle de dérivation d'une composée $(-v^2)' = -2v\,v'$ donne directement :
 
@@ -1429,7 +1429,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que la fonction $f$ admet une fonction réciproque $f^{-1}$ définie sur $\mathbb{R}$
         reasoning: |-
-          La construction d'une fonction réciproque à partir d'une bijection est un outil de la notion `derivabilite-etude-fonctions` — on l'applique ici tel quel, même démarche qu'au problème 2022 de cette même banque (question 7a).
+          La construction d'une fonction réciproque à partir d'une bijection est un outil de la notion « Dérivabilité et étude des fonctions » — on l'applique ici tel quel, même démarche qu'au problème 2022 de cette même banque (question 7a).
 
           $f$ est continue (car dérivable, question 4-a) et strictement décroissante sur $\mathbb{R}$ tout entier (question 4-b). Une fonction continue et strictement monotone sur un intervalle réalise une bijection de cet intervalle sur son image. Ici l'image est $f(\mathbb{R}) = \left]\displaystyle\lim_{x\to+\infty}f,\ \displaystyle\lim_{x\to-\infty}f\right[$ (les bornes s'inversent, $f$ étant décroissante) $=\,]-\infty,+\infty[=\mathbb{R}$ (question 1). Donc $f$ réalise une bijection de $\mathbb{R}$ sur $\mathbb{R}$, et admet une fonction réciproque $f^{-1}$ définie sur $\mathbb{R}$.
       - id: q8b
@@ -1447,7 +1447,7 @@ entries:
         reasoning: |-
           La remarque de l'énoncé est exactement le résultat de la question 6 : on y a calculé $f(2+\ln3)=2-\ln3$ (dans le sens direct) ; par définition de la réciproque, cela se relit $f^{-1}(2-\ln3)=2+\ln3$.
 
-          La dérivée d'une fonction réciproque s'obtient par $\left(f^{-1}\right)'(y) = \dfrac{1}{f'\left(f^{-1}(y)\right)}$ (outil de `derivabilite-etude-fonctions`, déjà mobilisé au problème 2022 de cette même banque, question 7b). Ici $y=2-\ln3$, et $f^{-1}(y)=2+\ln3$ : il reste à calculer $f'(2+\ln3)$.
+          La dérivée d'une fonction réciproque s'obtient par $\left(f^{-1}\right)'(y) = \dfrac{1}{f'\left(f^{-1}(y)\right)}$ (outil de « Dérivabilité et étude des fonctions », déjà mobilisé au problème 2022 de cette même banque, question 7b). Ici $y=2-\ln3$, et $f^{-1}(y)=2+\ln3$ : il reste à calculer $f'(2+\ln3)$.
 
           $f'(x)=-(e^{x-2}-1)^2$ (question 4-a). En $x=2+\ln3$ : $e^{x-2}=e^{\ln3}=3$ (chapitre 2), donc $f'(2+\ln3) = -(3-1)^2 = -4$.
 
@@ -2054,7 +2054,7 @@ entries:
 
           $$f(x) = (1+u)e^{-u} = u\,e^{-u} + e^{-u}$$
 
-          C'est une forme $\infty\times0$ à retravailler avant de conclure — une forme indéterminée au sens de la notion `limites-continuite` (le produit $u\,e^{-u}$, avec $u\to+\infty$ et $e^{-u}\to0$). le chapitre 5 de cette leçon donne directement $\lim_{u\to+\infty} u\,e^{-u} = 0$ (c'est l'inverse de la croissance comparée $e^{u}/u\to+\infty$) ; et $\lim_{u\to+\infty} e^{-u} = 0$ aussi (chapitre 5). Somme de deux limites nulles :
+          C'est une forme $\infty\times0$ à retravailler avant de conclure — une forme indéterminée au sens de la notion « Limites et continuité » (le produit $u\,e^{-u}$, avec $u\to+\infty$ et $e^{-u}\to0$). le chapitre 5 de cette leçon donne directement $\lim_{u\to+\infty} u\,e^{-u} = 0$ (c'est l'inverse de la croissance comparée $e^{u}/u\to+\infty$) ; et $\lim_{u\to+\infty} e^{-u} = 0$ aussi (chapitre 5). Somme de deux limites nulles :
 
           $$\lim_{x\to0^+} f(x) = 0 + 0 = 0 = f(0)$$
 
@@ -2072,7 +2072,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que la fonction $f$ est dérivable à droite en $0$.
         reasoning: |-
-          Dérivable à droite en $0$ signifie que le taux d'accroissement $\dfrac{f(x)-f(0)}{x-0}=\dfrac{f(x)}{x}$ admet une limite finie quand $x\to0^+$ — c'est la définition du nombre dérivé par limite du taux d'accroissement, un outil de la notion `derivabilite-etude-fonctions` (chapitre 2), mobilisé ici parce qu'on est à la borne du domaine, là où aucune formule de dérivée n'est encore disponible.
+          Dérivable à droite en $0$ signifie que le taux d'accroissement $\dfrac{f(x)-f(0)}{x-0}=\dfrac{f(x)}{x}$ admet une limite finie quand $x\to0^+$ — c'est la définition du nombre dérivé par limite du taux d'accroissement, un outil de la notion « Dérivabilité et étude des fonctions » (chapitre 2), mobilisé ici parce qu'on est à la borne du domaine, là où aucune formule de dérivée n'est encore disponible.
 
           $$\frac{f(x)}{x} = \frac{e^{-1/x}}{x} + \frac{e^{-1/x}}{x^2}$$
 
@@ -2094,7 +2094,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que la fonction $f$ est dérivable sur $]0, +\infty[$ puis calculer $f'(x)$ pour tout $x$ dans l'intervalle $]0, +\infty[$.
         reasoning: |-
-          Sur $]0,+\infty[$, $f$ est un produit de deux fonctions dérivables : $u(x)=1+\dfrac1x$ (dérivable comme somme d'une constante et d'un quotient sans zéro au dénominateur) et $v(x)=e^{-1/x}$, dérivable par composition (chapitre 4 : $e^{w}$ est dérivable dès que $w$ l'est, ici $w(x)=-\dfrac1x$, dérivable sur $]0,+\infty[$, sans aucune condition de signe à vérifier contrairement à un logarithme). Somme et produit de fonctions dérivables restent dérivables (`derivabilite-etude-fonctions`, chapitre 3) : $f$ est dérivable sur $]0,+\infty[$.
+          Sur $]0,+\infty[$, $f$ est un produit de deux fonctions dérivables : $u(x)=1+\dfrac1x$ (dérivable comme somme d'une constante et d'un quotient sans zéro au dénominateur) et $v(x)=e^{-1/x}$, dérivable par composition (chapitre 4 : $e^{w}$ est dérivable dès que $w$ l'est, ici $w(x)=-\dfrac1x$, dérivable sur $]0,+\infty[$, sans aucune condition de signe à vérifier contrairement à un logarithme). Somme et produit de fonctions dérivables restent dérivables (« Dérivabilité et étude des fonctions », chapitre 3) : $f$ est dérivable sur $]0,+\infty[$.
 
           $$u'(x) = -\frac1{x^2} \qquad\qquad v'(x) = \frac1{x^2}e^{-1/x} \quad (\text{dérivée de } e^{w},\ w'(x)=\tfrac1{x^2})$$
 
@@ -2117,7 +2117,7 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} f(x)$ puis interpréter graphiquement le résultat obtenu.
         reasoning: |-
-          Quand $x\to+\infty$, $\dfrac1x\to0$, donc $1+\dfrac1x\to1$ et $e^{-1/x}\to e^0=1$ (continuité de $\exp$, chapitres 2 et 6). Deux limites finies qui se multiplient — un produit de limites, sans indétermination (`limites-continuite`, chapitre 3) :
+          Quand $x\to+\infty$, $\dfrac1x\to0$, donc $1+\dfrac1x\to1$ et $e^{-1/x}\to e^0=1$ (continuité de $\exp$, chapitres 2 et 6). Deux limites finies qui se multiplient — un produit de limites, sans indétermination (« Limites et continuité », chapitre 3) :
 
           $$\lim_{x\to+\infty} f(x) = 1\times1 = 1$$
 
@@ -2146,7 +2146,7 @@ entries:
         stem: |-
           **(0,75 pt)** Montrer que la courbe $(C)$ admet un point d'inflexion $I$ dont on déterminera les coordonnées.
         reasoning: |-
-          Un point d'inflexion est un point où $f''$ change de signe (`derivabilite-etude-fonctions`, chapitre 6) : il faut donc calculer $f''$ à partir de $f'(x)=\dfrac{e^{-1/x}}{x^3}$ (question 1-c) et étudier son signe. Pour éviter d'empiler les apostrophes dans les champs de calcul, on y note $f^{(2)}$ la dérivée seconde de $f$ — même objet que $f''$ dans l'énoncé.
+          Un point d'inflexion est un point où $f''$ change de signe (« Dérivabilité et étude des fonctions », chapitre 6) : il faut donc calculer $f''$ à partir de $f'(x)=\dfrac{e^{-1/x}}{x^3}$ (question 1-c) et étudier son signe. Pour éviter d'empiler les apostrophes dans les champs de calcul, on y note $f^{(2)}$ la dérivée seconde de $f$ — même objet que $f''$ dans l'énoncé.
 
           Dérive $f'=e^{-1/x}\times x^{-3}$ comme un produit : la dérivée de $e^{-1/x}$ est $\dfrac1{x^2}e^{-1/x}$ (déjà utilisée en 1-c), celle de $x^{-3}$ est $-3x^{-4}$.
 
@@ -2192,7 +2192,7 @@ entries:
         reasoning: |-
           $f$ est continue sur $[0,+\infty[$ tout entier : continue à droite en $0$ (question 1-a) et dérivable donc continue sur $]0,+\infty[$ (question 1-c). Une fonction continue sur un intervalle y admet toujours une primitive (théorème admis) — note $G$ une primitive de $f$ sur $[0,+\infty[$.
 
-          D'après la définition de l'intégrale entre deux bornes (`calcul-integral`, chapitre 2) : $\displaystyle\int_x^1 f(t)\,dt = G(1)-G(x)$, donc
+          D'après la définition de l'intégrale entre deux bornes (« Calcul intégral », chapitre 2) : $\displaystyle\int_x^1 f(t)\,dt = G(1)-G(x)$, donc
 
           $$F(x) = G(1) - G(x)$$
 
@@ -2211,7 +2211,7 @@ entries:
 
           $$\left(\forall x \in\, ]0, +\infty[\right)\quad \int_x^{1} e^{-\frac{1}{t}}\,dt = e^{-1} - x\,e^{-\frac{1}{x}} - \int_x^{1} \frac{1}{t}\,e^{-\frac{1}{t}}\,dt$$
         reasoning: |-
-          L'intégration par parties (`calcul-integral`, chapitre 8) échange un produit difficile à primitiver contre un autre, plus simple, au prix d'un terme de bord. Ici l'intégrande est $e^{-1/t}\times1$ : pose $u(t)=e^{-1/t}$ (dont la dérivée, déjà calculée en Partie 1, est plus maniable) et $v'(t)=1$ (dont une primitive immédiate est $v(t)=t$).
+          L'intégration par parties (« Calcul intégral », chapitre 8) échange un produit difficile à primitiver contre un autre, plus simple, au prix d'un terme de bord. Ici l'intégrande est $e^{-1/t}\times1$ : pose $u(t)=e^{-1/t}$ (dont la dérivée, déjà calculée en Partie 1, est plus maniable) et $v'(t)=1$ (dont une primitive immédiate est $v(t)=t$).
 
           $$u(t) = e^{-1/t},\quad u'(t) = \frac1{t^2}e^{-1/t} \qquad\qquad v'(t)=1,\quad v(t)=t$$
 
@@ -2278,9 +2278,9 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer en $cm^2$, l'aire du domaine plan limité par la courbe $(C)$ et les droites d'équations : $x = 0$, $x = 2$ et $y = 0$.
         reasoning: |-
-          $f\ge0$ sur $[0,+\infty[$ tout entier ($f(0)=0$ et, pour $x>0$, $1+\frac1x>0$ et $e^{-1/x}>0$, produit de deux facteurs positifs) : le domaine décrit est donc directement une aire au sens usuel, sans valeur absolue à poser (`calcul-integral`, chapitre 9) — $\text{aire} = \displaystyle\int_0^2 f(x)\,dx$ en unités d'aire.
+          $f\ge0$ sur $[0,+\infty[$ tout entier ($f(0)=0$ et, pour $x>0$, $1+\frac1x>0$ et $e^{-1/x}>0$, produit de deux facteurs positifs) : le domaine décrit est donc directement une aire au sens usuel, sans valeur absolue à poser (« Calcul intégral », chapitre 9) — $\text{aire} = \displaystyle\int_0^2 f(x)\,dx$ en unités d'aire.
 
-          Découpe par Chasles (`calcul-integral`, chapitre 4) en $[0,1]$ et $[1,2]$, pour réutiliser $\displaystyle\int_0^1 f=e^{-1}$ (question 2-c) :
+          Découpe par Chasles (« Calcul intégral », chapitre 4) en $[0,1]$ et $[1,2]$, pour réutiliser $\displaystyle\int_0^1 f=e^{-1}$ (question 2-c) :
 
           $$\int_0^2 f(x)\,dx = \int_0^1 f(x)\,dx + \int_1^2 f(x)\,dx = e^{-1} + \int_1^2 f(x)\,dx$$
 
@@ -2288,7 +2288,7 @@ entries:
 
           $$\int_0^2 f(x)\,dx = e^{-1} + \left(2e^{-1/2}-e^{-1}\right) = 2e^{-1/2} = \frac{2}{\sqrt e} \ \text{u.a.}$$
 
-          Reste à convertir. Le repère est **orthonormé**, d'unité $\|\vec i\|=\|\vec j\|=2\,cm$ (donnée de la Partie 1) : $1\ \text{u.a.} = 2\,cm\times2\,cm = 4\,cm^2$ (`calcul-integral`, chapitre 9). L'aire réelle :
+          Reste à convertir. Le repère est **orthonormé**, d'unité $\|\vec i\|=\|\vec j\|=2\,cm$ (donnée de la Partie 1) : $1\ \text{u.a.} = 2\,cm\times2\,cm = 4\,cm^2$ (« Calcul intégral », chapitre 9). L'aire réelle :
 
           $$\text{aire} = \frac{2}{\sqrt e}\times4 = \frac{8}{\sqrt e} = 8e^{-1/2}\ \text{cm}^2 \approx 4{,}85\ \text{cm}^2$$
         steps:
@@ -2311,7 +2311,7 @@ entries:
 
           $$u_n = 2\left(1 + \frac{1}{v_n}\right)e^{-\frac{1}{v_n}}$$
         reasoning: |-
-          Le théorème des accroissements finis (TAF) ne fait pas partie du corps de cette leçon — c'est un outil de la notion `derivabilite-etude-fonctions`, mobilisé ici tel quel, en admettant son énoncé (même discipline que pour bk-2019-n-x4 dans cette même banque).
+          Le théorème des accroissements finis (TAF) ne fait pas partie du corps de cette leçon — c'est un outil de la notion « Dérivabilité et étude des fonctions », mobilisé ici tel quel, en admettant son énoncé (même discipline que pour bk-2019-n-x4 dans cette même banque).
 
           $F$ est dérivable sur $[0,+\infty[$ tout entier (question 1 : $F=G(1)-G(x)$ avec $G$ primitive de $f$, donc $F'(x)=-f(x)$), donc a fortiori continue sur $[n,n+2]$ et dérivable sur $]n,n+2[$, pour tout entier naturel $n$. Le TAF garantit alors l'existence d'un réel $v_n\in\,]n,n+2[$ tel que :
 
@@ -2357,7 +2357,7 @@ entries:
         reasoning: |-
           L'encadrement de la question précédente coince $u_n$ entre $2f(n)$ et $2f(n+2)$. Quand $n\to+\infty$, $n\to+\infty$ et $n+2\to+\infty$ aussi, donc $f(n)\to1$ et $f(n+2)\to1$ (Partie 1, question 2-a) : les deux bornes tendent vers $2\times1=2$.
 
-          Par le théorème des gendarmes pour les suites (`suites-numeriques`, chapitre 7), coincée entre deux suites qui tendent vers la même limite, $u_n$ tend vers cette limite commune :
+          Par le théorème des gendarmes pour les suites (« Suites numériques », chapitre 7), coincée entre deux suites qui tendent vers la même limite, $u_n$ tend vers cette limite commune :
 
           $$\lim_{n\to+\infty} u_n = 2$$
         steps:
@@ -2374,7 +2374,7 @@ entries:
 
           **(0,5 pt)** Montrer que pour tout entier naturel non nul $n$, il existe un nombre réel strictement positif unique $a_n$ tel que : $f(a_n) = e^{-\frac{1}{n}}$
         reasoning: |-
-          On cherche à résoudre $f(a_n)=e^{-1/n}$ d'inconnue $a_n$ : c'est un problème d'existence-unicité par bijection, le corollaire du théorème des valeurs intermédiaires pour une fonction continue strictement monotone (`limites-continuite`, chapitre 6).
+          On cherche à résoudre $f(a_n)=e^{-1/n}$ d'inconnue $a_n$ : c'est un problème d'existence-unicité par bijection, le corollaire du théorème des valeurs intermédiaires pour une fonction continue strictement monotone (« Limites et continuité », chapitre 6).
 
           $f$ est continue et strictement croissante sur $[0,+\infty[$ tout entier (Partie 1, questions 1-a et 2-b), donc réalise une bijection de $[0,+\infty[$ sur son image $\left[f(0),\displaystyle\lim_{x\to+\infty}f(x)\right[ = [0,1[$ (les bornes se conservent, $f$ étant croissante, et la borne du haut est exclue puisque $f$ ne l'atteint jamais — elle croît strictement vers elle sans jamais la dépasser ni l'égaler).
 
@@ -2410,11 +2410,11 @@ entries:
         stem: |-
           **(0,25 pt)** Vérifier que : $\left(\forall n \in \mathbb{N}^{*}\right)\quad -\dfrac{1}{a_n} + \ln\left(1 + \dfrac{1}{a_n}\right) = -\dfrac{1}{n}$
         reasoning: |-
-          On part de la définition de $a_n$ (question 1-a) : $\left(1+\dfrac1{a_n}\right)e^{-1/a_n} = e^{-1/n}$. Les deux membres sont strictement positifs ($a_n>0$ donc $1+\frac1{a_n}>0$, et une exponentielle est toujours $>0$) : on peut leur appliquer $\ln$ des deux côtés — c'est le passage au logarithme, un outil de `fonction-logarithme`, valide ici précisément parce que les deux membres sont positifs.
+          On part de la définition de $a_n$ (question 1-a) : $\left(1+\dfrac1{a_n}\right)e^{-1/a_n} = e^{-1/n}$. Les deux membres sont strictement positifs ($a_n>0$ donc $1+\frac1{a_n}>0$, et une exponentielle est toujours $>0$) : on peut leur appliquer $\ln$ des deux côtés — c'est le passage au logarithme, un outil de « Fonction logarithme », valide ici précisément parce que les deux membres sont positifs.
 
           $$\ln\left[\left(1+\frac1{a_n}\right)e^{-1/a_n}\right] = \ln\left(e^{-1/n}\right)$$
 
-          À gauche, $\ln(uv)=\ln u+\ln v$ (`fonction-logarithme`, chapitre 3) sépare le produit :
+          À gauche, $\ln(uv)=\ln u+\ln v$ (« Fonction logarithme », chapitre 3) sépare le produit :
 
           $$\ln\left(1+\frac1{a_n}\right) + \ln\left(e^{-1/a_n}\right) = \ln\left(e^{-1/n}\right)$$
 
@@ -2457,11 +2457,11 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que : $\left(\forall x \in [0, +\infty[\right)\quad -\dfrac{x^2}{2} \le -x + \ln(1+x) \le -\dfrac{x^2}{2} + \dfrac{x^3}{3}$
         reasoning: |-
-          Fixe $x\ge0$. L'encadrement de la question précédente vaut pour tout $t\in[0,x]\subset[0,+\infty[$ : intègre les trois membres sur $[0,x]$ — l'ordre se conserve par intégration (`calcul-integral`, chapitre 5, comparaison) —
+          Fixe $x\ge0$. L'encadrement de la question précédente vaut pour tout $t\in[0,x]\subset[0,+\infty[$ : intègre les trois membres sur $[0,x]$ — l'ordre se conserve par intégration (« Calcul intégral », chapitre 5, comparaison) —
 
           $$\int_0^x(1-t)\,dt \ \le\ \int_0^x\frac1{1+t}\,dt \ \le\ \int_0^x(1-t+t^2)\,dt$$
 
-          Calcule chaque morceau. À gauche : $\displaystyle\int_0^x(1-t)dt = \left[t-\frac{t^2}2\right]_0^x = x-\frac{x^2}2$. Au milieu : $\dfrac1{1+t}$ est de la forme $\dfrac{u'}{u}$ avec $u(t)=1+t$ (`fonction-logarithme`, chapitre 4 lue à l'envers, exactement comme la primitive $u'e^u$ du chapitre 7 pour l'exponentielle) : $\displaystyle\int_0^x\frac1{1+t}dt = \big[\ln(1+t)\big]_0^x = \ln(1+x)-\ln1=\ln(1+x)$. À droite : $\displaystyle\int_0^x(1-t+t^2)dt = \left[t-\frac{t^2}2+\frac{t^3}3\right]_0^x = x-\frac{x^2}2+\frac{x^3}3$.
+          Calcule chaque morceau. À gauche : $\displaystyle\int_0^x(1-t)dt = \left[t-\frac{t^2}2\right]_0^x = x-\frac{x^2}2$. Au milieu : $\dfrac1{1+t}$ est de la forme $\dfrac{u'}{u}$ avec $u(t)=1+t$ (« Fonction logarithme », chapitre 4 lue à l'envers, exactement comme la primitive $u'e^u$ du chapitre 7 pour l'exponentielle) : $\displaystyle\int_0^x\frac1{1+t}dt = \big[\ln(1+t)\big]_0^x = \ln(1+x)-\ln1=\ln(1+x)$. À droite : $\displaystyle\int_0^x(1-t+t^2)dt = \left[t-\frac{t^2}2+\frac{t^3}3\right]_0^x = x-\frac{x^2}2+\frac{x^3}3$.
 
           $$x-\frac{x^2}2 \ \le\ \ln(1+x) \ \le\ x-\frac{x^2}2+\frac{x^3}3$$
 
@@ -2550,7 +2550,7 @@ entries:
 
           $$a_n \ge \sqrt{\frac n6}$$
 
-          Quand $n\to+\infty$, $\sqrt{n/6}\to+\infty$. Coincée au-dessus d'une suite qui diverge vers $+\infty$, $(a_n)$ ne peut faire autrement que diverger aussi — théorème de comparaison pour les suites (`suites-numeriques`, chapitre 7) :
+          Quand $n\to+\infty$, $\sqrt{n/6}\to+\infty$. Coincée au-dessus d'une suite qui diverge vers $+\infty$, $(a_n)$ ne peut faire autrement que diverger aussi — théorème de comparaison pour les suites (« Suites numériques », chapitre 7) :
 
           $$\lim_{n\to+\infty} a_n = +\infty$$
         steps:
@@ -2568,7 +2568,7 @@ entries:
 
           $$1-\frac2{3a_n} \ \le\ \left(a_n\sqrt{\frac2n}\right)^2 \ \le\ 1$$
 
-          Quand $n\to+\infty$, $a_n\to+\infty$ (question précédente), donc $\dfrac2{3a_n}\to0$, et la borne de gauche tend vers $1-0=1$ ; la borne de droite est déjà constante, égale à $1$. Par le théorème des gendarmes (`suites-numeriques`, chapitre 7), coincé entre deux suites qui tendent toutes deux vers $1$ :
+          Quand $n\to+\infty$, $a_n\to+\infty$ (question précédente), donc $\dfrac2{3a_n}\to0$, et la borne de gauche tend vers $1-0=1$ ; la borne de droite est déjà constante, égale à $1$. Par le théorème des gendarmes (« Suites numériques », chapitre 7), coincé entre deux suites qui tendent toutes deux vers $1$ :
 
           $$\left(a_n\sqrt{\frac2n}\right)^2 \xrightarrow[n\to+\infty]{} 1$$
 
@@ -2750,7 +2750,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que le point $I$ est le seul point d'inflexion de la courbe $(C_n)$
         reasoning: |-
-          Un point d'inflexion, c'est l'endroit où la courbe change de concavité — le signal algébrique est un **changement de signe** de la dérivée seconde $f_n''$ (dérivée seconde et convexité : outil de la notion `derivabilite-etude-fonctions`, hors du corps des chapitres 1 à 8 de cette leçon). Calcule $f_n''$ à partir de $f_n'(x)=\dfrac{-2e^x}{(1+e^x)^2}+n$ (question 2-a) — seul le premier morceau contribue, la dérivée d'une constante $n$ étant nulle.
+          Un point d'inflexion, c'est l'endroit où la courbe change de concavité — le signal algébrique est un **changement de signe** de la dérivée seconde $f_n''$ (dérivée seconde et convexité : outil de la notion « Dérivabilité et étude des fonctions », hors du corps des chapitres 1 à 8 de cette leçon). Calcule $f_n''$ à partir de $f_n'(x)=\dfrac{-2e^x}{(1+e^x)^2}+n$ (question 2-a) — seul le premier morceau contribue, la dérivée d'une constante $n$ étant nulle.
 
           Redérive comme un quotient : $u(x)=-2e^x$ ($u'=-2e^x$), $v(x)=(1+e^x)^2$ ($v'(x)=2e^x(1+e^x)$, dérivée d'un carré composé) :
 
@@ -2793,7 +2793,7 @@ entries:
 
           $$A(t) = \int_0^t \big[f_n(x)-(nx-2)\big]\,dx = \int_0^t \frac{2}{1+e^x}\,dx \quad (\text{en } cm^2, \text{ repère orthonormé})$$
 
-          Il reste à trouver une primitive de $\dfrac{2}{1+e^x}$ — une forme qui n'est ni $u'e^u$ (chapitre 7) ni directement $\dfrac{u'}{u}$. Le geste (technique de `calcul-integral`) : faire apparaître $e^x$ au numérateur pour reconnaître un $\dfrac{u'}{u}$, en écrivant $2$ comme $\dfrac{2(1+e^x)}{1+e^x}$ :
+          Il reste à trouver une primitive de $\dfrac{2}{1+e^x}$ — une forme qui n'est ni $u'e^u$ (chapitre 7) ni directement $\dfrac{u'}{u}$. Le geste (technique de « Calcul intégral ») : faire apparaître $e^x$ au numérateur pour reconnaître un $\dfrac{u'}{u}$, en écrivant $2$ comme $\dfrac{2(1+e^x)}{1+e^x}$ :
 
           $$\frac{2}{1+e^x} = \frac{2(1+e^x)-2e^x}{1+e^x} = 2-\frac{2e^x}{1+e^x}$$
 

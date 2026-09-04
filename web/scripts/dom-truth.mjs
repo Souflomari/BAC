@@ -3308,6 +3308,60 @@ try {
     await rpage.close();
   }
 
+  // ── SWEEP: aucun SLUG de leçon dans le texte que l'élève lit.
+  //
+  //    « Tu as déjà rencontré, dans la leçon sur la vérité (la-verite,
+  //    chapitre 6), la démarche de Descartes. » `la-verite` est un nom de
+  //    DOSSIER : l'élève ne l'a jamais vu, et ce qu'il lit partout ailleurs
+  //    — rail, fil d'Ariane — c'est le titre, « La vérité ». Dix-huit
+  //    occurrences sur trois pages, dont quatre dans une boîte à chasse fixe
+  //    (entre accents graves), ce qui les rendait plus voyantes, pas moins.
+  //
+  //    LA MESURE EST AU NIVEAU DU RENDU, pas de la source — c'est toute la
+  //    leçon de la journée — mais SANS navigateur : on tire le HTML des 62
+  //    leçons, on retire les <script> (la charge RSC n'est lue par personne)
+  //    et les balises, et on cherche dans le texte. Trois secondes pour le
+  //    corpus entier.
+  //
+  //    Seuls les slugs À TIRET comptent. `autrui`, `travail`, `bonheur` sont
+  //    des mots français ordinaires : la leçon « Autrui » écrit
+  //    légitimement « autrui » à chaque paragraphe.
+  {
+    console.log("\n[notion] SWEEP: aucun slug de leçon dans le texte rendu");
+    const slugs = [];
+    const routesLecons = [];
+    for (const subject of readdirSync(CONTENT_ROOT).filter((n) => !n.startsWith("_") && !n.startsWith("."))) {
+      const sdir = path.join(CONTENT_ROOT, subject);
+      if (!statSync(sdir).isDirectory()) continue;
+      for (const slug of readdirSync(sdir).filter((n) => !n.startsWith("_") && !n.startsWith("."))) {
+        try { statSync(path.join(sdir, slug, "lesson.md")); } catch { continue; }
+        routesLecons.push(`/notions/${subject}/${slug}`);
+        if (slug.includes("-")) slugs.push(slug);
+      }
+    }
+    checks++;
+    const motif = new RegExp(
+      `(?<![\\w/-])(${slugs.map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})(?![\\w/-])`,
+      "g",
+    );
+    let fautifs = 0;
+    for (const route of routesLecons) {
+      const html = await (await fetch(`${BASE}${route}`)).text();
+      const texte = html
+        .replace(/<script[\s\S]*?<\/script>/g, " ")
+        .replace(/<style[\s\S]*?<\/style>/g, " ")
+        .replace(/<[^>]+>/g, " ");
+      const trouves = [...new Set(texte.match(motif) ?? [])];
+      if (!trouves.length) continue;
+      fautifs++;
+      failures += fail(
+        `${route} : slug(s) de leçon dans le texte rendu — ${trouves.slice(0, 4).join(", ")} ` +
+          `(écris le TITRE entre guillemets : c'est ce que l'élève lit dans le rail)`
+      );
+    }
+    if (!fautifs) console.log(`  ✓ ${routesLecons.length} leçons, ${slugs.length} slugs cherchés, 0 trouvé`);
+  }
+
   // ── SWEEP: l'écriture de DROITE À GAUCHE, là où le corpus en contient.
   //
   //    L'épreuve de philosophie du bac marocain est EN ARABE : la leçon de
