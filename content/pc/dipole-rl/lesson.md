@@ -237,7 +237,7 @@ Deux lectures suffisent donc à identifier complètement le circuit. Et note ce 
 
 Tout ce qui précède décrit l'**établissement** : on ferme l'interrupteur, le courant monte. Un sujet demande aussi, très souvent, ce qui se passe à la **rupture** — quand on rouvre. C'est le même mécanisme, pris par l'autre bout, et il produit un phénomène spectaculaire qu'il faut savoir expliquer.
 
-**Le fait de départ, c'est celui du chapitre 2.** Une bobine s'oppose aux **variations** du courant qui la traverse. À la fermeture, elle freinait la montée ; à l'ouverture, elle s'oppose à la chute — et cette fois elle a de quoi le faire, puisqu'elle a stocké de l'énergie $E_L = \frac{1}{2}Li^2$ (chapitre 4 ci-après).
+**Le fait de départ, c'est celui du chapitre 2.** Une bobine s'oppose aux **variations** du courant qui la traverse. À la fermeture, elle freinait la montée ; à l'ouverture, elle s'oppose à la chute — et cette fois elle a de quoi le faire, puisqu'elle a stocké de l'énergie $E_L = \frac{1}{2}Li^2$ (chapitre 5 ci-après).
 
 **Le problème que cela pose.** Si l'on ouvrait brutalement le circuit, le courant devrait passer de $I_{max}$ à $0$ en un temps quasi nul. La tension aux bornes de la bobine, $u = L\dfrac{di}{dt}$, deviendrait alors **énorme** en valeur absolue — c'est l'étincelle qu'on voit jaillir à l'interrupteur, et c'est ce qui détruit les composants d'un montage réel.
 

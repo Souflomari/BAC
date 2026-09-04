@@ -50,7 +50,7 @@ Le **droit** — on précisera au chapitre 3 pourquoi on l'appelle plus exacteme
 
 La **justice**, en revanche, désigne un idéal — un principe d'après lequel on peut juger si une action, une situation, une répartition, ou même une loi elle-même, est équitable ou non. Le trait décisif de la justice ainsi entendue, c'est précisément qu'elle sert de MESURE : on l'invoque pour évaluer le droit positif, pas seulement pour le décrire. Dire qu'une loi est juste ou injuste suppose de disposer d'un critère qui ne se confond pas avec le simple fait que cette loi existe et qu'elle a été votée dans les formes.
 
-### Le mécanisme précis de la situation de R0
+### Le mécanisme précis de la situation du chapitre 1
 
 **Voici pourquoi la situation du chapitre 1 est philosophiquement intéressante, et pas seulement triste.** Le tribunal n'a commis aucune erreur de droit : il a correctement établi qu'aucune règle en vigueur n'avait été violée — sur ce point purement juridique, sa décision est irréprochable. Mais le sentiment d'injustice que la plupart des élèves éprouvent malgré tout ne porte pas sur l'application de la règle : il porte sur le CONTENU de la règle elle-même, ou plus précisément sur son silence — le fait qu'aucune règle n'ait, à ce moment-là, protégé la rivière et le village. Ce sentiment révèle qu'on juge la loi (et son silence) à l'aune d'un critère qui n'est pas lui-même une loi : c'est précisément ce critère-là que la suite de la leçon va chercher à identifier.
 
@@ -62,7 +62,7 @@ La **justice**, en revanche, désigne un idéal — un principe d'après lequel 
 
 ## R2 — Droit positif et droit naturel : deux manières de fonder le droit
 
-### Reprendre la question laissée ouverte par R1
+### Reprendre la question laissée ouverte par le chapitre 2
 
 Le chapitre 2 a établi qu'on peut juger une loi injuste sans pour autant nier qu'elle soit du droit valide. Mais au nom de quoi, précisément ? Il existe, sur ce point, une réponse ancienne et influente : la tradition du droit naturel, ou **jusnaturalisme**.
 
@@ -88,7 +88,7 @@ Le **droit naturel**, à l'inverse, désigne — selon la tradition jusnaturalis
 
 ## R3 — Le positivisme juridique de Kelsen : séparer le droit et la morale
 
-### Une réponse inverse à la question de R2
+### Une réponse inverse à la question du chapitre 3
 
 Face à la tradition jusnaturaliste, une autre tradition — le **positivisme juridique** — répond presque à l'opposé. Son représentant le plus rigoureux, au XXe siècle, est le juriste et philosophe autrichien Hans Kelsen (*Théorie pure du droit*, 1934).
 
@@ -179,7 +179,7 @@ Rawls soutient que des participants raisonnant ainsi, derrière le voile d'ignor
 
 ## R6 — Légalité et légitimité : une loi légale peut-elle être illégitime ?
 
-### Reprendre, une dernière fois, la question de R0
+### Reprendre, une dernière fois, la question du chapitre 1
 
 Les chapitres précédents ont donné plusieurs manières de juger le CONTENU d'une loi (droit naturel, positivisme, justice commutative/distributive, justice comme équité). Il reste une dernière distinction, décisive pour clore la leçon : celle entre **légalité** et **légitimité**.
 

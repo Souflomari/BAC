@@ -123,16 +123,16 @@ entries:
 
       On admet que $2969$ (l'année amazighe actuelle) est un **nombre premier**. Soient $n$ et $m$ deux entiers naturels vérifiant $n^8 + m^8 \equiv 0\ [2969]$.
 
-      L'exercice enchaîne, en une seule chaîne serrée, le théorème de Bézout (R4), les congruences et leurs puissances (R2), le petit théorème de Fermat — hors-rung, rappelé au moment où il sert — et le lemme d'Euclide « un premier qui divise une puissance divise la base » (R6).
+      L'exercice enchaîne, en une seule chaîne serrée, le théorème de Bézout (chapitre 5), les congruences et leurs puissances (chapitre 3), le petit théorème de Fermat — hors-chapitre, rappelé au moment où il sert — et le lemme d'Euclide « un premier qui divise une puissance divise la base » (chapitre 7).
     questions:
       - id: q1
         part: "Partie A — Un inverse de $n$ modulo $2969$ par Bézout"
         stem: |-
           **(0,5 pt)** On suppose dans cette question que $2969$ **ne divise pas** $n$. En utilisant le théorème de Bézout, montrer que : $(\exists u \in \mathbb{Z})\ ;\ u \times n \equiv 1\ [2969]$
         reasoning: |-
-          $2969$ est premier (admis) : ses seuls diviseurs positifs sont $1$ et lui-même. Comme on suppose $2969 \nmid n$, leur seul diviseur commun possible est $1$, donc $\mathrm{PGCD}(2969, n) = 1$ — ils sont **premiers entre eux** (rung R4).
+          $2969$ est premier (admis) : ses seuls diviseurs positifs sont $1$ et lui-même. Comme on suppose $2969 \nmid n$, leur seul diviseur commun possible est $1$, donc $\mathrm{PGCD}(2969, n) = 1$ — ils sont **premiers entre eux** (chapitre 5).
 
-          Le théorème de Bézout (rung R4) donne alors des entiers $u, v$ tels que $u\,n + 2969\,v = 1$. On lit cette égalité **modulo $2969$** : le terme $2969\,v$ est un multiple de $2969$, donc congru à $0$ (rung R2), et il reste $u\,n \equiv 1 \pmod{2969}$. L'entier $u$ est un **inverse de $n$** modulo $2969$.
+          Le théorème de Bézout (chapitre 5) donne alors des entiers $u, v$ tels que $u\,n + 2969\,v = 1$. On lit cette égalité **modulo $2969$** : le terme $2969\,v$ est un multiple de $2969$, donc congru à $0$ (chapitre 3), et il reste $u\,n \equiv 1 \pmod{2969}$. L'entier $u$ est un **inverse de $n$** modulo $2969$.
         steps:
           - math: '\mathrm{PGCD}(2969,\,n) = 1'
             note: "2969 premier et 2969 ne divise pas n : leur seul diviseur commun possible est 1."
@@ -144,14 +144,14 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que : $(u \times m)^8 \equiv -1\ [2969]$ et que $(u \times m)^{2968} \equiv -1\ [2969]$ *(On remarque que : $2968 = 8 \times 371$)*
         reasoning: |-
-          On part de la relation de l'énoncé $n^8 + m^8 \equiv 0 \pmod{2969}$, donc $m^8 \equiv -\,n^8$. On multiplie par $u^8$ pour faire apparaître $(u\,m)^8$ d'un côté et $(u\,n)^8$ de l'autre — et $(u\,n)^8 \equiv 1$ puisque $u\,n \equiv 1$ (compatibilité des congruences avec les puissances, rung R2).
+          On part de la relation de l'énoncé $n^8 + m^8 \equiv 0 \pmod{2969}$, donc $m^8 \equiv -\,n^8$. On multiplie par $u^8$ pour faire apparaître $(u\,m)^8$ d'un côté et $(u\,n)^8$ de l'autre — et $(u\,n)^8 \equiv 1$ puisque $u\,n \equiv 1$ (compatibilité des congruences avec les puissances, chapitre 3).
 
           Il reste à monter en exposant. Comme $2968 = 8 \times 371$, on écrit $(u\,m)^{2968} = \big((u\,m)^8\big)^{371}$, donc $(u\,m)^{2968} \equiv (-1)^{371}$. L'exposant $371$ est **impair**, donc $(-1)^{371} = -1$ : c'est là que le « $371$ impair » fait tout le travail.
         steps:
           - math: 'm^8 \equiv -\,n^8 \pmod{2969}'
             note: "Reecriture directe de n huit plus m huit congru a 0."
           - math: '(u\,m)^8 = u^8\,m^8 \equiv u^8\,(-\,n^8) = -\,(u\,n)^8 \equiv -1 \pmod{2969}'
-            note: "On multiplie par u puissance 8 ; (u fois n) puissance 8 est congru a 1 car u fois n est congru a 1 (R2)."
+            note: "On multiplie par u puissance 8 ; (u fois n) puissance 8 est congru a 1 car u fois n est congru a 1 (chapitre 3)."
           - math: '(u\,m)^{2968} = \big((u\,m)^8\big)^{371} \equiv (-1)^{371} = -1 \pmod{2969}'
             note: "2968 egale 8 fois 371 ; 371 est impair, donc moins un puissance 371 vaut moins un."
       - id: q3
@@ -172,7 +172,7 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire qu'on a aussi $(u \times m)^{2968} \equiv 1\ [2969]$
         reasoning: |-
-          C'est ici qu'intervient le **petit théorème de Fermat** — un outil du programme SM qui déborde le corps de rungs de la leçon (aucun rung dédié ; R0–R8 couvrent divisibilité, division euclidienne, congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations diophantiennes, mais pas Fermat) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$.
+          C'est ici qu'intervient le **petit théorème de Fermat** — un outil du programme SM qui déborde le corps des chapitres de la leçon (aucun chapitre dédié ; chapitres 1 à 9 couvrent divisibilité, division euclidienne, congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations diophantiennes, mais pas Fermat) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$.
 
           On applique ce théorème avec $p = 2969$ (premier, admis) et $a = u\,m$. La condition $p \nmid a$ est exactement le résultat de la question précédente : $2969 \nmid u\,m$. Comme $p - 1 = 2968$, il vient directement $(u\,m)^{2968} \equiv 1 \pmod{2969}$.
         steps:
@@ -199,16 +199,16 @@ entries:
         reasoning: |-
           Deux implications à établir.
 
-          **Sens réciproque ($\Longleftarrow$).** Si $n \equiv 0$ et $m \equiv 0 \pmod{2969}$, alors $n^8 \equiv 0$ et $m^8 \equiv 0$, donc leur somme $n^8 + m^8 \equiv 0$ (rung R2 : compatibilité de la congruence avec l'addition). Immédiat.
+          **Sens réciproque ($\Longleftarrow$).** Si $n \equiv 0$ et $m \equiv 0 \pmod{2969}$, alors $n^8 \equiv 0$ et $m^8 \equiv 0$, donc leur somme $n^8 + m^8 \equiv 0$ (chapitre 3 : compatibilité de la congruence avec l'addition). Immédiat.
 
-          **Sens direct ($\Longrightarrow$).** Supposons $n^8 + m^8 \equiv 0 \pmod{2969}$. Le raisonnement de la Partie A (questions 1 à 5) montre que l'hypothèse $2969 \nmid n$ mène à une contradiction ; donc $2969 \mid n$, soit $n \equiv 0$. Alors $m^8 \equiv -\,n^8 \equiv 0 \pmod{2969}$, donc $2969 \mid m^8$. Comme $2969$ est **premier**, le lemme d'Euclide (rung R6) donne $2969 \mid m$, c'est-à-dire $m \equiv 0$.
+          **Sens direct ($\Longrightarrow$).** Supposons $n^8 + m^8 \equiv 0 \pmod{2969}$. Le raisonnement de la Partie A (questions 1 à 5) montre que l'hypothèse $2969 \nmid n$ mène à une contradiction ; donc $2969 \mid n$, soit $n \equiv 0$. Alors $m^8 \equiv -\,n^8 \equiv 0 \pmod{2969}$, donc $2969 \mid m^8$. Comme $2969$ est **premier**, le lemme d'Euclide (chapitre 7) donne $2969 \mid m$, c'est-à-dire $m \equiv 0$.
         steps:
           - math: 'n \equiv 0 \ \text{et}\ m \equiv 0 \pmod{2969} \implies n^8 + m^8 \equiv 0 \pmod{2969}'
             note: "Sens reciproque : une somme de deux multiples de 2969 est un multiple de 2969."
           - math: 'n^8 + m^8 \equiv 0 \pmod{2969} \implies 2969 \mid n \implies n \equiv 0 \pmod{2969}'
             note: "Sens direct : la question 5 donne 2969 divise n."
           - math: 'm^8 \equiv 0 \pmod{2969} \implies 2969 \mid m^8 \implies 2969 \mid m'
-            note: "Puis m puissance 8 congru a 0 ; 2969 premier, le lemme d'Euclide (R6) donne 2969 divise m, soit m congru a 0."
+            note: "Puis m puissance 8 congru a 0 ; 2969 premier, le lemme d'Euclide (chapitre 7) donne 2969 divise m, soit m congru a 0."
 
   # ── bk-2020-n-x1 — 2020 N, Exercice 1 : coprimalité, Fermat modulo 13, équation diophantienne sans solution ──
   - id: bk-2020-n-x1
@@ -238,7 +238,7 @@ entries:
 
       On considère dans $\mathbb{Z}\times\mathbb{Z}$ l'équation $(D) : 7x^3 - 13y = 5$.
 
-      L'exercice mobilise les congruences et leurs puissances (R2), la coprimalité avec un nombre premier (R4), et le petit théorème de Fermat — hors-rung, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — pour montrer, par deux calculs contradictoires du même $x^{12}$ modulo $13$, que $(D)$ n'a **aucune solution**.
+      L'exercice mobilise les congruences et leurs puissances (chapitre 3), la coprimalité avec un nombre premier (chapitre 5), et le petit théorème de Fermat — hors-chapitre, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — pour montrer, par deux calculs contradictoires du même $x^{12}$ modulo $13$, que $(D)$ n'a **aucune solution**.
     questions:
       - id: q1
         part: "Partie A — $x$ premier avec $13$, puis Fermat"
@@ -247,7 +247,7 @@ entries:
         reasoning: |-
           On raisonne par l'absurde. Si $13 \mid x$, alors $13 \mid x^3$, donc $13 \mid 7x^3$. Comme $13 \mid 13y$ trivialement, la différence $7x^3 - 13y$ serait aussi divisible par $13$ — or cette différence vaut $5$ par l'équation $(D)$, et $13 \nmid 5$ (5 est strictement plus petit que 13 et non nul). Contradiction : $13$ ne divise pas $x$.
 
-          Comme $13$ est premier, ses seuls diviseurs sont $1$ et $13$ ; puisque $13 \nmid x$, leur seul diviseur commun possible est $1$. Donc $\mathrm{PGCD}(x,13)=1$ : $x$ et $13$ sont premiers entre eux (rung R4).
+          Comme $13$ est premier, ses seuls diviseurs sont $1$ et $13$ ; puisque $13 \nmid x$, leur seul diviseur commun possible est $1$. Donc $\mathrm{PGCD}(x,13)=1$ : $x$ et $13$ sont premiers entre eux (chapitre 5).
         steps:
           - math: '13 \mid x \implies 13 \mid 7x^3 \ \text{et}\ 13 \mid 13y'
             note: "Hypothese absurde : si 13 divise x, il divise aussi 7 fois x cube et, trivialement, 13 fois y."
@@ -259,7 +259,7 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que : $x^{12} \equiv 1\ [13]$
         reasoning: |-
-          Le petit théorème de Fermat — hors-rung, déjà utilisé au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. Ici $p=13$ (premier) et $a=x$, avec $13 \nmid x$ établi à la question précédente. Comme $p-1=12$, le théorème donne directement $x^{12} \equiv 1 \pmod{13}$.
+          Le petit théorème de Fermat — hors-chapitre, déjà utilisé au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. Ici $p=13$ (premier) et $a=x$, avec $13 \nmid x$ établi à la question précédente. Comme $p-1=12$, le théorème donne directement $x^{12} \equiv 1 \pmod{13}$.
         steps:
           - math: 'x^{12} \equiv 1 \pmod{13}'
             note: "Petit theoreme de Fermat : p = 13 premier, 13 ne divise pas x (question precedente), donc x puissance douze congru a 1 modulo 13."
@@ -267,7 +267,7 @@ entries:
         stem: |-
           **(1 pt)** Montrer que : $x^{3} \equiv 10\ [13]$
         reasoning: |-
-          On repart de l'équation $(D)$ : $7x^3 - 13y = 5$, donc $7x^3 = 5 + 13y$, c'est-à-dire $7x^3 \equiv 5 \pmod{13}$ (le terme $13y$ disparaît modulo 13, rung R2).
+          On repart de l'équation $(D)$ : $7x^3 - 13y = 5$, donc $7x^3 = 5 + 13y$, c'est-à-dire $7x^3 \equiv 5 \pmod{13}$ (le terme $13y$ disparaît modulo 13, chapitre 3).
 
           On veut isoler $x^3$ : il faut « diviser par 7 », ce qui, en arithmétique modulaire, revient à multiplier par un **inverse de 7 modulo 13**. On le trouve par tâtonnement : $7 \times 2 = 14 \equiv 1 \pmod{13}$, donc $2$ est cet inverse. On multiplie les deux membres de $7x^3 \equiv 5 \pmod{13}$ par $2$ : à gauche, $2 \times 7 \equiv 1$, donc il reste $x^3$ ; à droite, $2 \times 5 = 10$. D'où $x^3 \equiv 10 \pmod{13}$.
         steps:
@@ -281,7 +281,7 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que : $x^{12} \equiv 3\ [13]$
         reasoning: |-
-          On élève la congruence $x^3 \equiv 10 \pmod{13}$ (question précédente) à la puissance $4$ — puisque $12 = 3\times4$ (compatibilité des congruences avec les puissances, rung R2) : $x^{12} = (x^3)^4 \equiv 10^4 \pmod{13}$.
+          On élève la congruence $x^3 \equiv 10 \pmod{13}$ (question précédente) à la puissance $4$ — puisque $12 = 3\times4$ (compatibilité des congruences avec les puissances, chapitre 3) : $x^{12} = (x^3)^4 \equiv 10^4 \pmod{13}$.
 
           Reste à calculer $10^4$ modulo 13 sans le calculer en entier. $10^2 = 100$, et $100 = 7\times13+9$, donc $10^2 \equiv 9 \pmod{13}$. Alors $10^4 = (10^2)^2 \equiv 9^2 = 81 \pmod{13}$, et $81 = 6\times13+3$, donc $81 \equiv 3 \pmod{13}$. D'où $x^{12} \equiv 3 \pmod{13}$.
         steps:
@@ -335,14 +335,14 @@ entries:
 
       Soit $n$ un entier naturel strictement supérieur à $1$. On considère dans $\mathbb{N}^2$ l'équation $(E_n) : (x+1)^n - x^n = ny$. Soit $(x,y)$ une solution de l'équation $(E_n)$ dans $\mathbb{N}^2$ et soit $p$ le plus petit diviseur premier de $n$.
 
-      L'exercice enchaîne les congruences et leurs puissances (R2), la coprimalité et le lemme d'Euclide (R4, R6), le petit théorème de Fermat — hors-rung, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — et, dans le cas $n$ impair, une construction de Bézout (R4) entre $n$ et $p-1$, pour montrer que $(E_n)$ n'admet **jamais** de solution dans $\mathbb{Z}^2$, que $n$ soit pair ou impair.
+      L'exercice enchaîne les congruences et leurs puissances (chapitre 3), la coprimalité et le lemme d'Euclide (chapitres 5 et 7), le petit théorème de Fermat — hors-chapitre, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — et, dans le cas $n$ impair, une construction de Bézout (chapitre 5) entre $n$ et $p-1$, pour montrer que $(E_n)$ n'admet **jamais** de solution dans $\mathbb{Z}^2$, que $n$ soit pair ou impair.
     questions:
       - id: q1
         part: "Partie A — $p$ divise $n$ : une congruence, puis une coprimalité"
         stem: |-
           **(0,25 pt)** Montrer que : $(x+1)^n \equiv x^n\ [p]$
         reasoning: |-
-          $p$ est un diviseur premier de $n$ (c'est même, par hypothèse, le plus petit), donc $p \mid n$. Comme $(x,y)$ vérifie $(E_n)$, on a $(x+1)^n - x^n = ny$, et $p \mid n$ entraîne $p \mid ny$ (rung R1 : un diviseur de $n$ divise tout multiple de $n$). Donc $ny \equiv 0 \pmod p$, c'est-à-dire $(x+1)^n - x^n \equiv 0 \pmod p$, soit $(x+1)^n \equiv x^n \pmod p$.
+          $p$ est un diviseur premier de $n$ (c'est même, par hypothèse, le plus petit), donc $p \mid n$. Comme $(x,y)$ vérifie $(E_n)$, on a $(x+1)^n - x^n = ny$, et $p \mid n$ entraîne $p \mid ny$ (chapitre 2 : un diviseur de $n$ divise tout multiple de $n$). Donc $ny \equiv 0 \pmod p$, c'est-à-dire $(x+1)^n - x^n \equiv 0 \pmod p$, soit $(x+1)^n \equiv x^n \pmod p$.
         steps:
           - math: 'p \mid n \implies p \mid ny'
             note: "p divise n (c'est son plus petit diviseur premier), donc p divise tout multiple de n, en particulier ny."
@@ -354,9 +354,9 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que $p$ est premier avec $x$ et avec $(x+1)$.
         reasoning: |-
-          On montre que $p$ ne divise ni $x$ ni $x+1$, ce qui équivaut à leur coprimalité puisque $p$ est premier (rung R4 : pour un nombre premier, ne pas diviser un entier revient à lui être premier avec lui).
+          On montre que $p$ ne divise ni $x$ ni $x+1$, ce qui équivaut à leur coprimalité puisque $p$ est premier (chapitre 5 : pour un nombre premier, ne pas diviser un entier revient à lui être premier avec lui).
 
-          Suppose par l'absurde $p \mid x$. Alors $x^n \equiv 0 \pmod p$, donc, par la question précédente, $(x+1)^n \equiv x^n \equiv 0 \pmod p$, donc $p \mid (x+1)^n$. Comme $p$ est premier, le lemme d'Euclide (rung R6 : « un premier qui divise une puissance divise la base ») donne $p \mid (x+1)$. Mais alors $p$ diviserait à la fois $x$ et $x+1$, donc leur différence $1$ — impossible puisque $p \geq 2$. Donc $p \nmid x$.
+          Suppose par l'absurde $p \mid x$. Alors $x^n \equiv 0 \pmod p$, donc, par la question précédente, $(x+1)^n \equiv x^n \equiv 0 \pmod p$, donc $p \mid (x+1)^n$. Comme $p$ est premier, le lemme d'Euclide (chapitre 7 : « un premier qui divise une puissance divise la base ») donne $p \mid (x+1)$. Mais alors $p$ diviserait à la fois $x$ et $x+1$, donc leur différence $1$ — impossible puisque $p \geq 2$. Donc $p \nmid x$.
 
           Le même argument, en échangeant les rôles, s'applique à $x+1$ : si $p \mid (x+1)$, alors $(x+1)^n \equiv 0 \pmod p$, donc $x^n \equiv 0 \pmod p$ (même question précédente), donc $p \mid x$ (même lemme d'Euclide) — et de nouveau $p$ diviserait $x$ et $x+1$, contradiction. Donc $p \nmid (x+1)$ non plus.
 
@@ -365,7 +365,7 @@ entries:
           - math: 'p \mid x \implies x^n \equiv 0 \pmod p \implies (x+1)^n \equiv 0 \pmod p \implies p \mid (x+1)^n'
             note: "Hypothese absurde : si p divise x, sa puissance n-ieme aussi, et par la question precedente (x+1) puissance n aussi."
           - math: 'p\ \text{premier et}\ p \mid (x+1)^n \implies p \mid (x+1)'
-            note: "Lemme d'Euclide (R6) : un premier qui divise une puissance divise la base."
+            note: "Lemme d'Euclide (chapitre 7) : un premier qui divise une puissance divise la base."
           - math: 'p \mid x \ \text{et}\ p \mid (x+1) \implies p \mid 1'
             note: "p diviserait alors leur difference, qui vaut 1 : impossible car p est superieur ou egal a 2."
           - math: 'p \nmid x \ \text{et, par le meme argument,}\ p \nmid (x+1) \implies \mathrm{PGCD}(p,x) = \mathrm{PGCD}(p,x+1) = 1'
@@ -374,7 +374,7 @@ entries:
         stem: |-
           **(0,25 pt)** En déduire que : $(x+1)^{p-1} \equiv x^{p-1}\ [p]$
         reasoning: |-
-          Le petit théorème de Fermat — hors-rung, déjà mobilisé au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. La question précédente donne $p \nmid x$ et $p \nmid (x+1)$ : le théorème s'applique aux deux.
+          Le petit théorème de Fermat — hors-chapitre, déjà mobilisé au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. La question précédente donne $p \nmid x$ et $p \nmid (x+1)$ : le théorème s'applique aux deux.
 
           D'où $x^{p-1} \equiv 1 \pmod p$ et $(x+1)^{p-1} \equiv 1 \pmod p$. Les deux membres sont congrus au même nombre $1$, donc congrus entre eux : $(x+1)^{p-1} \equiv x^{p-1} \pmod p$.
         steps:
@@ -402,11 +402,11 @@ entries:
         stem: |-
           **(0,5 pt)** On suppose que $n$ est impair. Montrer qu'il existe un couple $(u,v)$ de $\mathbb{Z}^2$ tel que : $nu + (p-1)v = 1$. *(On rappelle que $p$ est le plus petit diviseur premier de $n$.)*
         reasoning: |-
-          On veut appliquer le théorème de Bézout (rung R4) à $n$ et $p-1$ : il suffit de montrer qu'ils sont premiers entre eux.
+          On veut appliquer le théorème de Bézout (chapitre 5) à $n$ et $p-1$ : il suffit de montrer qu'ils sont premiers entre eux.
 
           Pose $d = \mathrm{PGCD}(n, p-1)$. Comme $d \mid (p-1)$ et $p-1 \geq 1$, on a $d \leq p-1 < p$. Si $d > 1$, alors $d$ possède un diviseur premier $q$, avec $q \leq d < p$. Or $q \mid d \mid n$, donc $q$ serait un diviseur premier de $n$ strictement plus petit que $p$ — ce qui contredit le fait que $p$ est **le plus petit** diviseur premier de $n$. Donc $d = 1$ : $n$ et $p-1$ sont premiers entre eux.
 
-          Le théorème de Bézout (R4) donne alors directement des entiers $u, v$ tels que $nu + (p-1)v = 1$.
+          Le théorème de Bézout (chapitre 5) donne alors directement des entiers $u, v$ tels que $nu + (p-1)v = 1$.
         steps:
           - math: 'd = \mathrm{PGCD}(n, p-1) \implies d \mid (p-1) \implies d \leq p - 1 < p'
             note: "Un diviseur de p moins 1 est plus petit que p."
@@ -415,15 +415,15 @@ entries:
           - math: 'q \mid n\ \text{et}\ q < p \implies \text{contradiction avec}\ p\ \text{plus petit diviseur premier de}\ n'
             note: "Contradiction : p est par definition le plus petit diviseur premier de n."
           - math: '\mathrm{PGCD}(n,p-1) = 1 \implies (\exists\ u,v \in \mathbb{Z})\ nu + (p-1)v = 1'
-            note: "d = 1 : n et p-1 sont premiers entre eux, Bezout (R4) donne u et v."
+            note: "d = 1 : n et p-1 sont premiers entre eux, Bezout (chapitre 5) donne u et v."
       - id: q6
         stem: |-
           **(0,25 pt)** Soient $q$ et $r$ respectivement le quotient et le reste dans la division euclidienne de $u$ par $(p-1)$. Vérifier que : $nr = 1 - (p-1)(v+nq)$.
         reasoning: |-
-          La division euclidienne de $u$ par $(p-1)$ (rung R1) s'écrit $u = (p-1)q + r$, avec $0 \leq r < p-1$. On substitue cette écriture de $u$ dans l'égalité de Bézout $nu + (p-1)v = 1$ de la question précédente, puis on isole le terme en $r$ — c'est une vérification algébrique directe, pas un nouveau résultat.
+          La division euclidienne de $u$ par $(p-1)$ (chapitre 2) s'écrit $u = (p-1)q + r$, avec $0 \leq r < p-1$. On substitue cette écriture de $u$ dans l'égalité de Bézout $nu + (p-1)v = 1$ de la question précédente, puis on isole le terme en $r$ — c'est une vérification algébrique directe, pas un nouveau résultat.
         steps:
           - math: 'u = (p-1)q + r'
-            note: "Division euclidienne de u par (p-1), rung R1."
+            note: "Division euclidienne de u par (p-1), chapitre 2."
           - math: 'n\big[(p-1)q + r\big] + (p-1)v = 1'
             note: "On remplace u dans l'egalite de Bezout nu + (p-1)v = 1."
           - math: 'n(p-1)q + nr + (p-1)v = 1 \implies nr = 1 - (p-1)v - n(p-1)q'
@@ -454,13 +454,13 @@ entries:
         reasoning: |-
           On va montrer que l'existence d'une solution force $p \mid x$, ce qui contredit directement la question 1.b) — et referme la boucle.
 
-          Les questions 1.a) et 1.c) ($(x+1)^n \equiv x^n\ [p]$ et $(x+1)^{p-1} \equiv x^{p-1}\ [p]$) ne dépendent que de $p\mid n$ et de l'équation elle-même : elles restent valables pour l'hypothétique solution $(x,y)\in\mathbb{Z}^2$. On les élève respectivement aux puissances $r$ et $v'$ — deux entiers **positifs ou nuls** d'après les questions 3.b) et 3.c), donc ces élévations sont légitimes (rung R2 : compatibilité de la congruence avec les puissances).
+          Les questions 1.a) et 1.c) ($(x+1)^n \equiv x^n\ [p]$ et $(x+1)^{p-1} \equiv x^{p-1}\ [p]$) ne dépendent que de $p\mid n$ et de l'équation elle-même : elles restent valables pour l'hypothétique solution $(x,y)\in\mathbb{Z}^2$. On les élève respectivement aux puissances $r$ et $v'$ — deux entiers **positifs ou nuls** d'après les questions 3.b) et 3.c), donc ces élévations sont légitimes (chapitre 3 : compatibilité de la congruence avec les puissances).
 
           Or la question 3.c) donne $nr = 1 + (p-1)v'$. On sépare donc un facteur $(x+1)$, respectivement $x$ : $(x+1)^{nr} = (x+1)\cdot(x+1)^{(p-1)v'}$ et $x^{nr} = x\cdot x^{(p-1)v'}$.
 
           En remplaçant $(x+1)^{(p-1)v'}$ par $x^{(p-1)v'}$ (ils sont congrus modulo $p$, on multiplie cette congruence par $x+1$) dans la congruence de la question 1.a) élevée à la puissance $r$, puis en comparant à $x^{nr} = x\cdot x^{(p-1)v'}$, il reste $(x+1)\cdot x^{(p-1)v'} \equiv x\cdot x^{(p-1)v'} \pmod p$.
 
-          En factorisant, $\big[(x+1)-x\big]\cdot x^{(p-1)v'} \equiv 0$, c'est-à-dire $x^{(p-1)v'} \equiv 0 \pmod p$ : donc $p \mid x^{(p-1)v'}$. Comme $p$ est premier, le lemme d'Euclide (rung R6) donne $p \mid x$.
+          En factorisant, $\big[(x+1)-x\big]\cdot x^{(p-1)v'} \equiv 0$, c'est-à-dire $x^{(p-1)v'} \equiv 0 \pmod p$ : donc $p \mid x^{(p-1)v'}$. Comme $p$ est premier, le lemme d'Euclide (chapitre 7) donne $p \mid x$.
 
           C'est exactement la contradiction cherchée : la question 1.b) affirmait que $p$ est premier **avec** $x$, c'est-à-dire $p \nmid x$. L'hypothèse de départ — l'existence d'une solution $(x,y)$ de $(E_n)$, avec $n$ impair — est donc fausse. Combinée à la question 2 (le cas $n$ pair), la conclusion couvre tous les $n > 1$ : $(E_n)$ n'admet aucune solution dans $\mathbb{Z}^2$.
         steps:
@@ -473,7 +473,7 @@ entries:
           - math: '\big[(x+1)-x\big]\cdot x^{(p-1)v''} \equiv 0 \pmod p \implies p \mid x^{(p-1)v''}'
             note: "En factorisant : x plus 1 moins x vaut 1, donc x puissance (p-1)v prime est congru a 0 modulo p."
           - math: 'p\ \text{premier et}\ p \mid x^{(p-1)v''} \implies p \mid x'
-            note: "Lemme d'Euclide (R6). Or la question 1.b affirmait p premier avec x : contradiction."
+            note: "Lemme d'Euclide (chapitre 7). Or la question 1.b affirmait p premier avec x : contradiction."
 
   # ── bk-2024-n-x5 — 2024 N, Exercice 5 : Fermat pour deux premiers p et q, résolution modulo 221 ──
   - id: bk-2024-n-x5
@@ -505,14 +505,14 @@ entries:
 
       Soient $p$ et $q$ deux nombres premiers distincts et $r$ un entier naturel premier avec $p$ et avec $q$.
 
-      L'exercice construit une version « à deux modules » du petit théorème de Fermat — hors-rung, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — en s'appuyant sur le corollaire du théorème de Gauss (R5), puis l'applique à une équation modulaire concrète, où l'exposant $192$ se révèle être exactement $(p-1)(q-1)$ pour $p=13$ et $q=17$.
+      L'exercice construit une version « à deux modules » du petit théorème de Fermat — hors-chapitre, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — en s'appuyant sur le corollaire du théorème de Gauss (chapitre 6), puis l'applique à une équation modulaire concrète, où l'exposant $192$ se révèle être exactement $(p-1)(q-1)$ pour $p=13$ et $q=17$.
     questions:
       - id: q1
         part: "Partie A — Fermat pour $p$, puis pour $q$"
         stem: |-
           **(1 pt)** Montrer que $p$ divise $r^{p-1} - 1$ et que $q$ divise $r^{q-1} - 1$.
         reasoning: |-
-          Le petit théorème de Fermat — hors-rung, déjà mobilisé au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : si un nombre premier $\pi$ ne divise pas un entier $a$, alors $a^{\pi-1} \equiv 1 \pmod \pi$, c'est-à-dire $\pi \mid (a^{\pi-1}-1)$.
+          Le petit théorème de Fermat — hors-chapitre, déjà mobilisé au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : si un nombre premier $\pi$ ne divise pas un entier $a$, alors $a^{\pi-1} \equiv 1 \pmod \pi$, c'est-à-dire $\pi \mid (a^{\pi-1}-1)$.
 
           On l'applique une première fois avec $\pi = p$ et $a = r$ : $r$ est premier avec $p$ par hypothèse, donc $p \mid (r^{p-1}-1)$. On l'applique une seconde fois avec $\pi = q$ et $a = r$ : $r$ est aussi premier avec $q$ par hypothèse, donc $q \mid (r^{q-1}-1)$.
         steps:
@@ -524,7 +524,7 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que $p$ et $q$ divisent $r^{(p-1)(q-1)} - 1$.
         reasoning: |-
-          On repart de $p \mid (r^{p-1}-1)$, c'est-à-dire $r^{p-1} \equiv 1 \pmod p$. On élève cette congruence à la puissance $(q-1)$ (rung R2 : compatibilité des congruences avec les puissances) : $r^{(p-1)(q-1)} = \left(r^{p-1}\right)^{q-1} \equiv 1^{q-1} = 1 \pmod p$. Donc $p \mid \left(r^{(p-1)(q-1)}-1\right)$.
+          On repart de $p \mid (r^{p-1}-1)$, c'est-à-dire $r^{p-1} \equiv 1 \pmod p$. On élève cette congruence à la puissance $(q-1)$ (chapitre 3 : compatibilité des congruences avec les puissances) : $r^{(p-1)(q-1)} = \left(r^{p-1}\right)^{q-1} \equiv 1^{q-1} = 1 \pmod p$. Donc $p \mid \left(r^{(p-1)(q-1)}-1\right)$.
 
           Le même argument, en partant de $q \mid (r^{q-1}-1)$ et en élevant à la puissance $(p-1)$ cette fois, donne $r^{(p-1)(q-1)} \equiv 1 \pmod q$, donc $q \mid \left(r^{(p-1)(q-1)}-1\right)$.
         steps:
@@ -536,12 +536,12 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $pq$ divise $r^{(p-1)(q-1)} - 1$.
         reasoning: |-
-          $p$ et $q$ sont deux nombres premiers **distincts**, donc $\mathrm{PGCD}(p,q)=1$. On dispose (question précédente) de $p \mid c$ et $q \mid c$, avec $c = r^{(p-1)(q-1)}-1$. C'est exactement la situation du corollaire du théorème de Gauss (rung R5) : si $a \mid c$, $b \mid c$ et $\mathrm{PGCD}(a,b)=1$, alors $ab \mid c$. Avec $a=p$, $b=q$, on obtient $pq \mid \left(r^{(p-1)(q-1)}-1\right)$.
+          $p$ et $q$ sont deux nombres premiers **distincts**, donc $\mathrm{PGCD}(p,q)=1$. On dispose (question précédente) de $p \mid c$ et $q \mid c$, avec $c = r^{(p-1)(q-1)}-1$. C'est exactement la situation du corollaire du théorème de Gauss (chapitre 6) : si $a \mid c$, $b \mid c$ et $\mathrm{PGCD}(a,b)=1$, alors $ab \mid c$. Avec $a=p$, $b=q$, on obtient $pq \mid \left(r^{(p-1)(q-1)}-1\right)$.
         steps:
           - math: '\mathrm{PGCD}(p,q) = 1'
             note: "p et q sont deux premiers distincts : leur seul diviseur commun possible est 1."
           - math: 'p \mid c\ \text{et}\ q \mid c\ \text{et}\ \mathrm{PGCD}(p,q)=1 \implies pq \mid c \qquad (c = r^{(p-1)(q-1)}-1)'
-            note: "Corollaire du theoreme de Gauss (R5) : deux diviseurs premiers entre eux d'un meme nombre, leur produit le divise aussi."
+            note: "Corollaire du theoreme de Gauss (chapitre 6) : deux diviseurs premiers entre eux d'un meme nombre, leur produit le divise aussi."
       - id: q4
         part: 'Partie B — Résoudre $2024^{192}x \equiv 3\ [221]$'
         stem: |-
@@ -549,7 +549,7 @@ entries:
         reasoning: |-
           L'exposant $192$ n'est pas choisi au hasard : avec $p=13$ et $q=17$ (les deux facteurs premiers donnés de $221$), $(p-1)(q-1) = 12 \times 16 = 192$ — exactement l'exposant de l'équation. Ça invite à réutiliser la question 1.c) avec $r = 2024$.
 
-          Reste à vérifier l'hypothèse : $2024$ est-il premier avec $13$ et avec $17$ ? Division euclidienne : $2024 = 13 \times 155 + 9$, donc $2024 \equiv 9 \pmod{13}$, un reste non nul — $13 \nmid 2024$, et $13$ étant premier, $2024$ et $13$ sont premiers entre eux (rung R4). De même $2024 = 17 \times 119 + 1$, donc $2024 \equiv 1 \pmod{17}$, reste non nul également — $2024$ et $17$ sont premiers entre eux.
+          Reste à vérifier l'hypothèse : $2024$ est-il premier avec $13$ et avec $17$ ? Division euclidienne : $2024 = 13 \times 155 + 9$, donc $2024 \equiv 9 \pmod{13}$, un reste non nul — $13 \nmid 2024$, et $13$ étant premier, $2024$ et $13$ sont premiers entre eux (chapitre 5). De même $2024 = 17 \times 119 + 1$, donc $2024 \equiv 1 \pmod{17}$, reste non nul également — $2024$ et $17$ sont premiers entre eux.
 
           La question 1.c) s'applique donc avec $p=13$, $q=17$, $r=2024$ : $pq = 221$ divise $2024^{192}-1$, c'est-à-dire $2024^{192} \equiv 1 \pmod{221}$.
 
@@ -609,7 +609,7 @@ entries:
 
       **Partie III :** on considère dans $\mathbb{Z}$ le système à deux équations $(S) : \begin{cases} x^{41} \equiv 4\ [43] \\ x^{47} \equiv 10\ [47] \end{cases}$
 
-      L'exercice enchaîne la résolution complète d'une équation diophantienne (R7, construite sur Bézout R4 et Gauss R5), le petit théorème de Fermat — hors-rung, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — appliqué deux fois, modulo $43$ puis, sous sa forme $a^p \equiv a\ [p]$, modulo $47$, et enfin une résolution de système de congruences par combinaison directe des deux modules via la relation de Bézout de la Partie I — une technique de type « restes chinois », non nommée et sans rung dédié, construite ici entièrement à partir de R4.
+      L'exercice enchaîne la résolution complète d'une équation diophantienne (chapitre 8, construite sur Bézout R4 et Gauss R5), le petit théorème de Fermat — hors-chapitre, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — appliqué deux fois, modulo $43$ puis, sous sa forme $a^p \equiv a\ [p]$, modulo $47$, et enfin une résolution de système de congruences par combinaison directe des deux modules via la relation de Bézout de la Partie I — une technique de type « restes chinois », non nommée et sans chapitre dédié, construite ici entièrement à partir du chapitre 5.
     questions:
       - id: q1
         part: "Partie I — Bézout : $47x - 43y = 1$"
@@ -624,16 +624,16 @@ entries:
         stem: |-
           **(0,75 pt)** Résoudre dans $\mathbb{Z} \times \mathbb{Z}$ l'équation $(E)$
         reasoning: |-
-          C'est exactement la méthode du rung R7 : une fois une solution particulière connue, on soustrait l'équation générale de l'équation particulière, on divise par $\mathrm{PGCD}(47,43)$, puis Gauss (R5) isole l'inconnue.
+          C'est exactement la méthode du chapitre 8 : une fois une solution particulière connue, on soustrait l'équation générale de l'équation particulière, on divise par $\mathrm{PGCD}(47,43)$, puis Gauss (chapitre 6) isole l'inconnue.
 
           $47$ et $43$ sont deux nombres premiers **distincts**, donc $\mathrm{PGCD}(47,43)=1$. On soustrait $(E)$ de sa version au couple particulier $(x_0,y_0)=(11,12)$ (question précédente) : $47(x-11) - 43(y-12) = 0$, c'est-à-dire $47(x-11) = 43(y-12)$.
 
-          Le membre de gauche montre que $43$ divise $47(x-11)$ ; comme $\mathrm{PGCD}(43,47)=1$, le théorème de Gauss (R5) donne $43 \mid (x-11)$. Donc $x - 11 = 43k$ pour un entier $k$, c'est-à-dire $x = 11 + 43k$. En reportant dans l'égalité : $47 \times 43k = 43(y-12)$, donc $47k = y - 12$, c'est-à-dire $y = 12 + 47k$.
+          Le membre de gauche montre que $43$ divise $47(x-11)$ ; comme $\mathrm{PGCD}(43,47)=1$, le théorème de Gauss (chapitre 6) donne $43 \mid (x-11)$. Donc $x - 11 = 43k$ pour un entier $k$, c'est-à-dire $x = 11 + 43k$. En reportant dans l'égalité : $47 \times 43k = 43(y-12)$, donc $47k = y - 12$, c'est-à-dire $y = 12 + 47k$.
         steps:
           - math: '47(x-11) = 43(y-12)'
             note: "On soustrait l'equation (E) de sa version au couple particulier (11,12)."
           - math: '\mathrm{PGCD}(43,47) = 1 \ \text{et}\ 43 \mid 47(x-11) \implies 43 \mid (x-11)'
-            note: "43 et 47 sont deux premiers distincts, donc premiers entre eux (R4) ; Gauss (R5) isole x moins 11."
+            note: "43 et 47 sont deux premiers distincts, donc premiers entre eux (chapitre 5) ; Gauss (chapitre 6) isole x moins 11."
           - math: 'x = 11 + 43k, \qquad y = 12 + 47k \qquad (k \in \mathbb{Z})'
             note: "On reporte x moins 11 egale 43k dans l'egalite : 47k egale y moins 12."
       - id: q3
@@ -641,25 +641,25 @@ entries:
         stem: |-
           **(0,5 pt)** Soit $x \in \mathbb{Z}$ une solution de l'équation $(F)$. Montrer que $x$ et $43$ sont premiers entre eux, en déduire que : $x^{42} \equiv 1\ [43]$
         reasoning: |-
-          Si $43 \mid x$, alors $x^{41} \equiv 0 \pmod{43}$ ; or $(F)$ dit $x^{41} \equiv 4 \pmod{43}$, et $4 \not\equiv 0 \pmod{43}$ (car $0 < 4 < 43$). Contradiction : $43$ ne divise pas $x$. Comme $43$ est premier, son seul diviseur commun possible avec $x$ est alors $1$, donc $\mathrm{PGCD}(43,x)=1$ (rung R4).
+          Si $43 \mid x$, alors $x^{41} \equiv 0 \pmod{43}$ ; or $(F)$ dit $x^{41} \equiv 4 \pmod{43}$, et $4 \not\equiv 0 \pmod{43}$ (car $0 < 4 < 43$). Contradiction : $43$ ne divise pas $x$. Comme $43$ est premier, son seul diviseur commun possible avec $x$ est alors $1$, donc $\mathrm{PGCD}(43,x)=1$ (chapitre 5).
 
-          C'est ici qu'intervient le **petit théorème de Fermat** — hors-rung, déjà mobilisé au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : $p$ premier et $p \nmid a$ entraîne $a^{p-1} \equiv 1 \pmod p$. Avec $p=43$ et $a=x$, cela donne directement $x^{42} \equiv 1 \pmod{43}$.
+          C'est ici qu'intervient le **petit théorème de Fermat** — hors-chapitre, déjà mobilisé au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : $p$ premier et $p \nmid a$ entraîne $a^{p-1} \equiv 1 \pmod p$. Avec $p=43$ et $a=x$, cela donne directement $x^{42} \equiv 1 \pmod{43}$.
         steps:
           - math: '43 \mid x \implies x^{41} \equiv 0 \pmod{43}'
             note: "Hypothese absurde : si 43 divise x, sa puissance 41-ieme aussi est congrue a 0."
           - math: '4 \not\equiv 0 \pmod{43} \implies 43 \nmid x \implies \mathrm{PGCD}(43,x) = 1'
-            note: "Or (F) donne x puissance 41 congru a 4, et 4 n'est pas congru a 0 modulo 43. Contradiction, donc 43 premier avec x (R4)."
+            note: "Or (F) donne x puissance 41 congru a 4, et 4 n'est pas congru a 0 modulo 43. Contradiction, donc 43 premier avec x (chapitre 5)."
           - math: 'x^{42} \equiv 1 \pmod{43}'
             note: "Petit theoreme de Fermat : p = 43, 43 ne divise pas x, donc x puissance 42 congru a 1."
       - id: q4
         stem: |-
           **(0,5 pt)** Montrer que : $4x \equiv 1\ [43]$, en déduire que : $x \equiv 11\ [43]$
         reasoning: |-
-          On écrit $x^{42} = x \times x^{41}$. Comme $x^{41} \equiv 4 \pmod{43}$ (l'équation $(F)$ elle-même) et $x^{42} \equiv 1 \pmod{43}$ (question précédente), la compatibilité des congruences avec le produit (rung R2) donne $x \times 4 \equiv 1 \pmod{43}$, c'est-à-dire $4x \equiv 1 \pmod{43}$.
+          On écrit $x^{42} = x \times x^{41}$. Comme $x^{41} \equiv 4 \pmod{43}$ (l'équation $(F)$ elle-même) et $x^{42} \equiv 1 \pmod{43}$ (question précédente), la compatibilité des congruences avec le produit (chapitre 3) donne $x \times 4 \equiv 1 \pmod{43}$, c'est-à-dire $4x \equiv 1 \pmod{43}$.
 
           Il reste à isoler $x$ : c'est-à-dire trouver un inverse de $4$ modulo $43$. Or la Partie I l'a déjà fourni sans qu'on ait besoin de le chercher par tâtonnement : $47 \equiv 4 \pmod{43}$ (car $47 - 43 = 4$) et $-43 \equiv 0 \pmod{43}$, donc l'identité de Bézout $47 \times 11 - 43 \times 12 = 1$ de la question 1, lue modulo $43$, devient exactement $4 \times 11 \equiv 1 \pmod{43}$.
 
-          On a donc deux congruences pour le même produit : $4x \equiv 1$ et $4 \times 11 \equiv 1 \pmod{43}$. En soustrayant, $4(x-11) \equiv 0 \pmod{43}$, donc $43 \mid 4(x-11)$. Comme $\mathrm{PGCD}(43,4)=1$ ($43$ est premier et ne divise pas $4$), le théorème de Gauss (rung R5) donne $43 \mid (x-11)$, c'est-à-dire $x \equiv 11 \pmod{43}$.
+          On a donc deux congruences pour le même produit : $4x \equiv 1$ et $4 \times 11 \equiv 1 \pmod{43}$. En soustrayant, $4(x-11) \equiv 0 \pmod{43}$, donc $43 \mid 4(x-11)$. Comme $\mathrm{PGCD}(43,4)=1$ ($43$ est premier et ne divise pas $4$), le théorème de Gauss (chapitre 6) donne $43 \mid (x-11)$, c'est-à-dire $x \equiv 11 \pmod{43}$.
         steps:
           - math: 'x^{42} = x \times x^{41} \equiv 4x \pmod{43}'
             note: "On decompose x puissance 42 en x fois x puissance 41, congru a 4 par (F)."
@@ -668,21 +668,21 @@ entries:
           - math: '47 \times 11 - 43 \times 12 = 1 \implies 4 \times 11 \equiv 1 \pmod{43}'
             note: "L'identite de Bezout de la question 1, lue modulo 43 (47 congru a 4, moins 43 fois 12 congru a 0), donne directement un inverse de 4."
           - math: '4(x-11) \equiv 0 \pmod{43} \implies 43 \mid (x-11) \implies x \equiv 11 \pmod{43}'
-            note: "43 premier avec 4 (R4) : Gauss (R5) simplifie le facteur 4, laissant x congru a 11."
+            note: "43 premier avec 4 (chapitre 5) : Gauss (chapitre 6) simplifie le facteur 4, laissant x congru a 11."
       - id: q5
         stem: |-
           **(0,5 pt)** Donner l'ensemble des solutions dans $\mathbb{Z}$ de l'équation $(F)$
         reasoning: |-
           On a montré que toute solution de $(F)$ vérifie $x \equiv 11 \pmod{43}$. Reste la réciproque : est-ce que $x \equiv 11 \pmod{43}$ suffit pour retrouver $x^{41} \equiv 4 \pmod{43}$ ?
 
-          Comme $43$ est premier et $x \equiv 11 \not\equiv 0 \pmod{43}$, le petit théorème de Fermat donne $x^{42} \equiv 1 \pmod{43}$. Et $4x \equiv 4 \times 11 = 44 \equiv 1 \pmod{43}$ (question précédente). Donc $x^{42} \equiv 4x \pmod{43}$, c'est-à-dire $x(x^{41} - 4) \equiv 0 \pmod{43}$. Comme $43$ est premier et ne divise pas $x$, le lemme d'Euclide (rung R6) force $43 \mid (x^{41}-4)$, c'est-à-dire $x^{41} \equiv 4 \pmod{43}$.
+          Comme $43$ est premier et $x \equiv 11 \not\equiv 0 \pmod{43}$, le petit théorème de Fermat donne $x^{42} \equiv 1 \pmod{43}$. Et $4x \equiv 4 \times 11 = 44 \equiv 1 \pmod{43}$ (question précédente). Donc $x^{42} \equiv 4x \pmod{43}$, c'est-à-dire $x(x^{41} - 4) \equiv 0 \pmod{43}$. Comme $43$ est premier et ne divise pas $x$, le lemme d'Euclide (chapitre 7) force $43 \mid (x^{41}-4)$, c'est-à-dire $x^{41} \equiv 4 \pmod{43}$.
 
           L'équivalence est donc complète : $(F) \iff x \equiv 11 \pmod{43}$. L'ensemble des solutions est $S = \{\, 11 + 43k \ : \ k \in \mathbb{Z} \,\}$.
         steps:
           - math: 'x \equiv 11 \pmod{43} \implies x^{42} \equiv 1 \pmod{43} \ \text{et}\ 4x \equiv 44 \equiv 1 \pmod{43}'
             note: "Reciproque : Fermat redonne x puissance 42 congru a 1, et 4 fois 11 egale 44 congru a 1."
           - math: 'x^{42} \equiv 4x \pmod{43} \implies x(x^{41}-4) \equiv 0 \pmod{43} \implies x^{41} \equiv 4 \pmod{43}'
-            note: "43 premier et ne divise pas x (lemme d'Euclide, R6) : force x puissance 41 congru a 4."
+            note: "43 premier et ne divise pas x (lemme d'Euclide, chapitre 7) : force x puissance 41 congru a 4."
           - math: 'S = \{\, 11 + 43k \ : \ k \in \mathbb{Z} \,\}'
             note: "Ensemble des solutions de (F) dans Z."
       - id: q6
@@ -775,19 +775,19 @@ entries:
 
       Soit $p$ un nombre premier impair. On considère dans $\mathbb{Z}$ l'équation $(E) : x^2 \equiv 2\ [p]$.
 
-      L'exercice combine le petit théorème de Fermat — hors-rung, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) —, le lemme d'Euclide (R6) et le théorème de Gauss (R5), avec deux outils entièrement extérieurs au corps de la leçon arithmétique : une identité combinatoire sur les coefficients binomiaux $C_p^k$ (fournie par l'énoncé, non démontrée dans la leçon) et la formule de Moivre en forme trigonométrique — un registre qui relève de la notion nombres complexes, pas de l'arithmétique. Les deux sont bridgés au point d'usage dans le raisonnement, jamais supposés acquis.
+      L'exercice combine le petit théorème de Fermat — hors-chapitre, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) —, le lemme d'Euclide (chapitre 7) et le théorème de Gauss (chapitre 6), avec deux outils entièrement extérieurs au corps de la leçon arithmétique : une identité combinatoire sur les coefficients binomiaux $C_p^k$ (fournie par l'énoncé, non démontrée dans la leçon) et la formule de Moivre en forme trigonométrique — un registre qui relève de la notion nombres complexes, pas de l'arithmétique. Les deux sont bridgés au point d'usage dans le raisonnement, jamais supposés acquis.
     questions:
       - id: q1
         part: "Partie A — Fermat, puis un carré qui se factorise"
         stem: |-
           **(0,25 pt)** Montrer que : $2^{p-1} \equiv 1\ [p]$
         reasoning: |-
-          $p$ est premier et **impair** (hypothèse de l'énoncé), donc $p \neq 2$ : le seul diviseur premier de $2$ étant $2$ lui-même, $p$ ne divise pas $2$. Comme $p$ est premier, cela donne $\mathrm{PGCD}(p,2)=1$ (rung R4).
+          $p$ est premier et **impair** (hypothèse de l'énoncé), donc $p \neq 2$ : le seul diviseur premier de $2$ étant $2$ lui-même, $p$ ne divise pas $2$. Comme $p$ est premier, cela donne $\mathrm{PGCD}(p,2)=1$ (chapitre 5).
 
-          C'est ici qu'intervient le **petit théorème de Fermat** — hors-rung, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : $p$ premier et $p \nmid a$ entraîne $a^{p-1} \equiv 1 \pmod p$. Avec $a=2$, cela donne directement $2^{p-1} \equiv 1 \pmod p$.
+          C'est ici qu'intervient le **petit théorème de Fermat** — hors-chapitre, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : $p$ premier et $p \nmid a$ entraîne $a^{p-1} \equiv 1 \pmod p$. Avec $a=2$, cela donne directement $2^{p-1} \equiv 1 \pmod p$.
         steps:
           - math: 'p\ \text{premier et impair} \implies p \nmid 2 \implies \mathrm{PGCD}(p,2) = 1'
-            note: "p est impair donc different de 2, seul diviseur premier de 2 : p ne divise pas 2 (R4)."
+            note: "p est impair donc different de 2, seul diviseur premier de 2 : p ne divise pas 2 (chapitre 5)."
           - math: '2^{p-1} \equiv 1 \pmod p'
             note: "Petit theoreme de Fermat avec a = 2 : p premier et p ne divise pas 2."
       - id: q2
@@ -798,14 +798,14 @@ entries:
 
           $$\left(2^{\frac{p-1}{2}}-1\right)\left(2^{\frac{p-1}{2}}+1\right) = 2^{p-1}-1$$
 
-          Donc $p$ divise ce produit. Comme $p$ est premier, le lemme d'Euclide (rung R6 : « un premier qui divise un produit divise l'un des deux facteurs ») donne $p \mid \left(2^{\frac{p-1}{2}}-1\right)$ ou $p \mid \left(2^{\frac{p-1}{2}}+1\right)$ — c'est-à-dire $2^{\frac{p-1}{2}} \equiv 1 \pmod p$ ou $2^{\frac{p-1}{2}} \equiv -1 \pmod p$.
+          Donc $p$ divise ce produit. Comme $p$ est premier, le lemme d'Euclide (chapitre 7 : « un premier qui divise un produit divise l'un des deux facteurs ») donne $p \mid \left(2^{\frac{p-1}{2}}-1\right)$ ou $p \mid \left(2^{\frac{p-1}{2}}+1\right)$ — c'est-à-dire $2^{\frac{p-1}{2}} \equiv 1 \pmod p$ ou $2^{\frac{p-1}{2}} \equiv -1 \pmod p$.
         steps:
           - math: 'p \mid (2^{p-1}-1)'
             note: "Reecriture de la question precedente : 2 puissance p moins 1 congru a 1."
           - math: '\left(2^{\frac{p-1}{2}}-1\right)\left(2^{\frac{p-1}{2}}+1\right) = 2^{p-1}-1'
             note: "Identite fournie par l'enonce : le produit indique se developpe exactement en 2 puissance p moins 1, moins 1."
           - math: 'p\ \text{premier et}\ p \mid \left(2^{\frac{p-1}{2}}-1\right)\left(2^{\frac{p-1}{2}}+1\right) \implies 2^{\frac{p-1}{2}} \equiv 1 \pmod p \ \text{ou}\ 2^{\frac{p-1}{2}} \equiv -1 \pmod p'
-            note: "Lemme d'Euclide (R6) : p premier divise un produit, donc divise l'un des deux facteurs."
+            note: "Lemme d'Euclide (chapitre 7) : p premier divise un produit, donc divise l'un des deux facteurs."
       - id: q3
         part: "Partie B — Une solution de l'équation (E) : coprimalité avec p"
         stem: |-
@@ -813,28 +813,28 @@ entries:
         reasoning: |-
           Si $p \mid x$, alors $x^2 \equiv 0 \pmod p$ ; or $(E)$ dit $x^2 \equiv 2 \pmod p$, donc $0 \equiv 2 \pmod p$, c'est-à-dire $p \mid 2$. Mais $p$ est un premier **impair**, donc $p \geq 3 > 2$ : $p$ ne peut pas diviser $2$. Contradiction : $p$ ne divise pas $x$.
 
-          Comme $p$ est premier, son seul diviseur commun possible avec $x$ est alors $1$ : $\mathrm{PGCD}(p,x)=1$ (rung R4).
+          Comme $p$ est premier, son seul diviseur commun possible avec $x$ est alors $1$ : $\mathrm{PGCD}(p,x)=1$ (chapitre 5).
         steps:
           - math: 'p \mid x \implies x^2 \equiv 0 \pmod p'
             note: "Hypothese absurde : si p divise x, son carre est congru a 0."
           - math: '0 \equiv 2 \pmod p \implies p \mid 2'
             note: "Or (E) donne x carre congru a 2 : contradiction avec 0 congru a 2."
           - math: 'p\ \text{premier impair} \implies p \geq 3 \implies p \nmid 2 \implies \mathrm{PGCD}(p,x) = 1'
-            note: "p est superieur ou egal a 3 et ne divise pas 2 : impossible, donc p ne divise pas x, et p premier donne p premier avec x (R4)."
+            note: "p est superieur ou egal a 3 et ne divise pas 2 : impossible, donc p ne divise pas x, et p premier donne p premier avec x (chapitre 5)."
       - id: q4
         stem: |-
           **(0,5 pt)** En déduire que : $2^{\frac{p-1}{2}} \equiv 1\ [p]$ *(On pourra utiliser le théorème de Fermat.)*
         reasoning: |-
           C'est le **petit théorème de Fermat**, déjà mobilisé au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : $p$ premier et $p \nmid x$ (question précédente) entraîne $x^{p-1} \equiv 1 \pmod p$.
 
-          Or $x^{p-1} = \left(x^2\right)^{\frac{p-1}{2}}$ (l'exposant $\frac{p-1}{2}$ est un entier, car $p$ est impair, donc $p-1$ est pair). Comme $x^2 \equiv 2 \pmod p$ (l'équation $(E)$), la compatibilité des congruences avec les puissances (rung R2) donne $\left(x^2\right)^{\frac{p-1}{2}} \equiv 2^{\frac{p-1}{2}} \pmod p$.
+          Or $x^{p-1} = \left(x^2\right)^{\frac{p-1}{2}}$ (l'exposant $\frac{p-1}{2}$ est un entier, car $p$ est impair, donc $p-1$ est pair). Comme $x^2 \equiv 2 \pmod p$ (l'équation $(E)$), la compatibilité des congruences avec les puissances (chapitre 3) donne $\left(x^2\right)^{\frac{p-1}{2}} \equiv 2^{\frac{p-1}{2}} \pmod p$.
 
           En combinant les deux : $2^{\frac{p-1}{2}} \equiv x^{p-1} \equiv 1 \pmod p$.
         steps:
           - math: 'p \nmid x \implies x^{p-1} \equiv 1 \pmod p'
             note: "Petit theoreme de Fermat, applique a x (question precedente)."
           - math: 'x^{p-1} = \left(x^2\right)^{\frac{p-1}{2}} \equiv 2^{\frac{p-1}{2}} \pmod p'
-            note: "p impair rend (p moins 1)/2 entier ; x carre congru a 2 (equation E), eleve a cette puissance (R2)."
+            note: "p impair rend (p moins 1)/2 entier ; x carre congru a 2 (equation E), eleve a cette puissance (chapitre 3)."
           - math: '2^{\frac{p-1}{2}} \equiv x^{p-1} \equiv 1 \pmod p'
             note: "Les deux congruences partagent le meme x puissance p moins 1 : elles se recoupent."
       - id: q5
@@ -842,24 +842,24 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que pour tout $k \in \{1, 2, \ldots, p-1\}$, $p$ divise $C_p^k$. *(On rappelle que : $\left(\forall k \in \{1, 2, \ldots, p-1\}\right)\ C_p^k = \dfrac{p!}{k!\,(p-k)!}$ et que $k\,C_p^k = p\,C_{p-1}^{k-1}$.)*
         reasoning: |-
-          L'identité $k\,C_p^k = p\,C_{p-1}^{k-1}$ est **fournie par l'énoncé** — c'est un fait de dénombrement (coefficients binomiaux), extérieur au corps de la leçon arithmétique (R0–R8 ne couvrent pas les $C_p^k$) : on l'utilise telle quelle, sans la redémontrer.
+          L'identité $k\,C_p^k = p\,C_{p-1}^{k-1}$ est **fournie par l'énoncé** — c'est un fait de dénombrement (coefficients binomiaux), extérieur au corps de la leçon arithmétique (chapitres 1 à 9 ne couvrent pas les $C_p^k$) : on l'utilise telle quelle, sans la redémontrer.
 
-          Elle dit que $p \mid k\,C_p^k$ (le membre de droite est visiblement un multiple de $p$). Pour $k \in \{1, \ldots, p-1\}$, on a $1 \leq k < p$ et $p$ est premier, donc $p \nmid k$, c'est-à-dire $\mathrm{PGCD}(p,k)=1$ (rung R4).
+          Elle dit que $p \mid k\,C_p^k$ (le membre de droite est visiblement un multiple de $p$). Pour $k \in \{1, \ldots, p-1\}$, on a $1 \leq k < p$ et $p$ est premier, donc $p \nmid k$, c'est-à-dire $\mathrm{PGCD}(p,k)=1$ (chapitre 5).
 
-          Le théorème de Gauss (rung R5) s'applique alors : $p \mid k\,C_p^k$ et $\mathrm{PGCD}(p,k)=1$ entraîne $p \mid C_p^k$.
+          Le théorème de Gauss (chapitre 6) s'applique alors : $p \mid k\,C_p^k$ et $\mathrm{PGCD}(p,k)=1$ entraîne $p \mid C_p^k$.
         steps:
           - math: 'k\,C_p^k = p\,C_{p-1}^{k-1} \implies p \mid k\,C_p^k'
             note: "Identite fournie par l'enonce : le membre de droite est un multiple de p."
           - math: 'k \in \{1,\ldots,p-1\} \implies 1 \leq k < p \implies p \nmid k \implies \mathrm{PGCD}(p,k) = 1'
-            note: "p est premier et strictement superieur a k : p ne divise pas k (R4)."
+            note: "p est premier et strictement superieur a k : p ne divise pas k (chapitre 5)."
           - math: 'p \mid k\,C_p^k \ \text{et}\ \mathrm{PGCD}(p,k)=1 \implies p \mid C_p^k'
-            note: "Theoreme de Gauss (R5) : on simplifie le facteur k, premier avec p."
+            note: "Theoreme de Gauss (chapitre 6) : on simplifie le facteur k, premier avec p."
       - id: q6
         part: "Partie D — La formule de Moivre pour $(1+i)^p$"
         stem: |-
           **(0,25 pt)** En utilisant la formule de Moivre, montrer que : $(1+i)^p = 2^{\frac{p}{2}}\cos\!\left(p\dfrac{\pi}{4}\right) + i\,2^{\frac{p}{2}}\sin\!\left(p\dfrac{\pi}{4}\right)$ *($i$ étant le nombre complexe tel que : $i^2 = -1$)*
         reasoning: |-
-          Cette question quitte entièrement le terrain de l'arithmétique : elle mobilise la **forme trigonométrique** d'un nombre complexe et la **formule de Moivre** — un registre qui relève de la notion nombres complexes, absent du corps R0–R8 de la leçon arithmétique. On le convoque ici tel qu'il est enseigné dans cette autre notion.
+          Cette question quitte entièrement le terrain de l'arithmétique : elle mobilise la **forme trigonométrique** d'un nombre complexe et la **formule de Moivre** — un registre qui relève de la notion nombres complexes, absent du corps des chapitres 1 à 9 de la leçon arithmétique. On le convoque ici tel qu'il est enseigné dans cette autre notion.
 
           On écrit $1+i$ sous forme trigonométrique : son module est $|1+i| = \sqrt{1^2+1^2} = \sqrt{2}$, et son argument est $\frac{\pi}{4}$ (car $\cos\frac{\pi}{4} = \sin\frac{\pi}{4} = \frac{\sqrt2}{2}$). Donc $1+i = \sqrt{2}\left(\cos\frac{\pi}{4} + i\sin\frac{\pi}{4}\right)$.
 
@@ -883,7 +883,7 @@ entries:
 
           Chaque $C_p^{2k}$ est un coefficient binomial, donc un **entier** — et une somme finie de tels termes (multipliés par $\pm1$) est encore un entier. Donc $2^{\frac{p}{2}}\cos\!\left(p\frac{\pi}{4}\right) \in \mathbb{Z}$.
 
-          Pour la congruence, on isole le terme $k=0$ : $C_p^0 = 1$. Pour $k$ allant de $1$ à $\frac{p-1}{2}$, l'indice $2k$ parcourt $2, 4, \ldots, p-1$ — tous dans $\{1,\ldots,p-1\}$ — donc la question 3 s'applique : $p \mid C_p^{2k}$ pour chacun de ces termes, c'est-à-dire $C_p^{2k} \equiv 0 \pmod p$. Modulo $p$, la somme se réduit donc au seul terme $k=0$ (compatibilité de la congruence avec la somme, rung R2) :
+          Pour la congruence, on isole le terme $k=0$ : $C_p^0 = 1$. Pour $k$ allant de $1$ à $\frac{p-1}{2}$, l'indice $2k$ parcourt $2, 4, \ldots, p-1$ — tous dans $\{1,\ldots,p-1\}$ — donc la question 3 s'applique : $p \mid C_p^{2k}$ pour chacun de ces termes, c'est-à-dire $C_p^{2k} \equiv 0 \pmod p$. Modulo $p$, la somme se réduit donc au seul terme $k=0$ (compatibilité de la congruence avec la somme, chapitre 3) :
 
           $$\sum_{k=0}^{\frac{p-1}{2}} (-1)^k C_p^{2k} \equiv (-1)^0 C_p^0 = 1 \pmod p$$
 
@@ -965,7 +965,7 @@ entries:
 
       Soit $q$ un nombre premier qui divise $S$.
 
-      L'exercice est un raisonnement par l'absurde en deux temps, et c'est ce qui fait sa difficulté : la question 2 travaille sous une hypothèse — « $p$ et $q-1$ sont premiers entre eux » — dont la question 3 démontre qu'elle est **intenable**. Tout ce que la question 2 établit est donc vrai *sous cette hypothèse seulement*, et sert uniquement à fabriquer la contradiction finale. Les outils mobilisés : les congruences et leurs puissances (R2), la coprimalité et le théorème de Bézout (R4), les nombres premiers et le lemme d'Euclide (R6), plus le **petit théorème de Fermat** — hors-rung, rappelé au point d'usage comme partout ailleurs dans cette banque.
+      L'exercice est un raisonnement par l'absurde en deux temps, et c'est ce qui fait sa difficulté : la question 2 travaille sous une hypothèse — « $p$ et $q-1$ sont premiers entre eux » — dont la question 3 démontre qu'elle est **intenable**. Tout ce que la question 2 établit est donc vrai *sous cette hypothèse seulement*, et sert uniquement à fabriquer la contradiction finale. Les outils mobilisés : les congruences et leurs puissances (chapitre 3), la coprimalité et le théorème de Bézout (chapitre 5), les nombres premiers et le lemme d'Euclide (chapitre 7), plus le **petit théorème de Fermat** — hors-chapitre, rappelé au point d'usage comme partout ailleurs dans cette banque.
     questions:
       - id: q1
         part: "Partie A — Deux congruences qui valent $1$ modulo $q$"
@@ -978,11 +978,11 @@ entries:
 
           $$S = 1 + p + p^2 + \ldots + p^{p-1} = 1 + p\big(1 + p + \ldots + p^{p-2}\big)$$
 
-          Le second terme est un multiple de $p$, donc $S \equiv 1 \pmod p$ (rung R2). Comme $p$ est premier impair, $p \geq 3 > 1$, donc $1 \not\equiv 0 \pmod p$ : **$p$ ne divise pas $S$**.
+          Le second terme est un multiple de $p$, donc $S \equiv 1 \pmod p$ (chapitre 3). Comme $p$ est premier impair, $p \geq 3 > 1$, donc $1 \not\equiv 0 \pmod p$ : **$p$ ne divise pas $S$**.
 
           **Deuxième temps — $q \neq p$.** Par hypothèse $q \mid S$. Si l'on avait $q = p$, on obtiendrait $p \mid S$, ce qu'on vient d'exclure. Donc $q \neq p$.
 
-          **Troisième temps — la coprimalité.** Pose $d = \mathrm{PGCD}(p,q)$. $d$ divise $p$, qui est premier : donc $d = 1$ ou $d = p$. Si $d = p$, alors $p \mid q$ ; or $q$ est premier et $p > 1$, donc $p = q$ — exclu au temps précédent. Il reste $d = 1$ : $p$ et $q$ sont premiers entre eux (rung R4).
+          **Troisième temps — la coprimalité.** Pose $d = \mathrm{PGCD}(p,q)$. $d$ divise $p$, qui est premier : donc $d = 1$ ou $d = p$. Si $d = p$, alors $p \mid q$ ; or $q$ est premier et $p > 1$, donc $p = q$ — exclu au temps précédent. Il reste $d = 1$ : $p$ et $q$ sont premiers entre eux (chapitre 5).
 
           **Le piège à éviter.** Écrire « $p$ et $q$ sont premiers, donc premiers entre eux » est **faux** tel quel : deux nombres premiers **égaux** ont pour PGCD ce nombre premier, pas $1$. La distinction $q \neq p$ n'est pas une formalité de rédaction, c'est exactement le travail de la question — et elle se paie par le calcul de $S$ modulo $p$. Un correcteur qui ne voit pas ce calcul ne voit pas la question.
         steps:
@@ -995,12 +995,12 @@ entries:
           - math: 'd = \mathrm{PGCD}(p,q) \mid p,\ p\ \text{premier} \implies d \in \{1,\,p\};\ d = p \implies p \mid q \implies p = q'
             note: "Un diviseur commun divise p premier, donc vaut 1 ou p ; le cas p forcerait p = q, exclu."
           - math: '\mathrm{PGCD}(p,q) = 1'
-            note: "Il ne reste que 1 : p et q sont premiers entre eux (R4)."
+            note: "Il ne reste que 1 : p et q sont premiers entre eux (chapitre 5)."
       - id: q2
         stem: |-
           **(0,25 pt)** En déduire que : $p^{q-1} \equiv 1\ [q]$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » signale que la question précédente fournit exactement l'hypothèse manquante d'un théorème. Ce théorème, c'est le **petit théorème de Fermat** — un outil du programme SM qui déborde le corps de rungs de la leçon (R0–R8 couvrent divisibilité, division euclidienne, congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations diophantiennes, mais pas Fermat) : si $\ell$ est un nombre **premier** et si $\ell \nmid a$, alors $a^{\ell-1} \equiv 1 \pmod{\ell}$.
+          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » signale que la question précédente fournit exactement l'hypothèse manquante d'un théorème. Ce théorème, c'est le **petit théorème de Fermat** — un outil du programme SM qui déborde le corps des chapitres de la leçon (chapitres 1 à 9 couvrent divisibilité, division euclidienne, congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations diophantiennes, mais pas Fermat) : si $\ell$ est un nombre **premier** et si $\ell \nmid a$, alors $a^{\ell-1} \equiv 1 \pmod{\ell}$.
 
           Ici le module est $q$ — c'est lui le « premier » du théorème — et la base est $p$.
 
@@ -1031,18 +1031,18 @@ entries:
 
           $$\boxed{(p-1)S = p^p - 1}$$
 
-          **Deuxième temps — la congruence.** Par hypothèse $q \mid S$. Un diviseur de $S$ divise tout multiple de $S$ (rung R1), donc $q \mid (p-1)S$, c'est-à-dire $q \mid p^p - 1$, soit :
+          **Deuxième temps — la congruence.** Par hypothèse $q \mid S$. Un diviseur de $S$ divise tout multiple de $S$ (chapitre 2), donc $q \mid (p-1)S$, c'est-à-dire $q \mid p^p - 1$, soit :
 
           $$\boxed{p^p \equiv 1 \pmod q}$$
 
-          **Le piège à éviter.** Utiliser la factorisation **dans le mauvais sens**. Ici on va du facile au facile : $q \mid S \Rightarrow q \mid (p-1)S$. Le sens inverse — conclure $q \mid S$ à partir de $q \mid (p-1)S$ — exigerait le lemme d'Euclide (R6) **et** l'hypothèse $q \nmid (p-1)$, dont on ne dispose pas. Devant un produit, demande-toi toujours quelle implication tu es en train d'écrire.
+          **Le piège à éviter.** Utiliser la factorisation **dans le mauvais sens**. Ici on va du facile au facile : $q \mid S \Rightarrow q \mid (p-1)S$. Le sens inverse — conclure $q \mid S$ à partir de $q \mid (p-1)S$ — exigerait le lemme d'Euclide (chapitre 7) **et** l'hypothèse $q \nmid (p-1)$, dont on ne dispose pas. Devant un produit, demande-toi toujours quelle implication tu es en train d'écrire.
         steps:
           - math: '(p-1)S = \big(p + p^2 + \ldots + p^{p}\big) - \big(1 + p + \ldots + p^{p-1}\big)'
             note: "On distribue : p fois S moins S. Les deux parentheses partagent tous les termes de p a p puissance p moins 1."
           - math: '(p-1)S = p^p - 1'
             note: "Somme telescopique : il ne survit que p puissance p et le moins 1."
           - math: 'q \mid S \implies q \mid (p-1)S = p^p - 1'
-            note: "Un diviseur de S divise tout multiple de S (R1)."
+            note: "Un diviseur de S divise tout multiple de S (chapitre 2)."
           - math: 'p^p \equiv 1 \pmod q'
             note: "q divise p puissance p moins 1 : c'est exactement la congruence demandee."
       - id: q4
@@ -1052,7 +1052,7 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** On dispose de deux exposants qui ramènent $p$ à $1$ modulo $q$ : l'exposant $q-1$ (question 1-b) et l'exposant $p$ (question 1-c). L'hypothèse de cette question dit que ces deux exposants sont **premiers entre eux** — et c'est précisément la situation où Bézout fabrique l'exposant $1$ à partir des deux autres. Or $p^1$, c'est $p$ lui-même : la congruence cherchée tombera toute seule.
 
-          **Premier temps — Bézout.** $p$ et $q-1$ sont premiers entre eux (hypothèse), donc le théorème de Bézout (rung R4) donne un couple $(u,v) \in \mathbb{Z}^2$ tel que :
+          **Premier temps — Bézout.** $p$ et $q-1$ sont premiers entre eux (hypothèse), donc le théorème de Bézout (chapitre 5) donne un couple $(u,v) \in \mathbb{Z}^2$ tel que :
 
           $$u\,p + v\,(q-1) = 1$$
 
@@ -1073,7 +1073,7 @@ entries:
           **Le piège à éviter.** La rédaction qu'on lit partout écrit directement $p = (p^p)^u \times (p^{q-1})^v$ et conclut. Elle manipule une puissance d'exposant **négatif** — un objet qui n'a de sens que dans le groupe des inversibles modulo $q$, hors du corps de ce chapitre. Le réaménagement des coefficients de Bézout ci-dessus coûte deux lignes et rend l'argument irréprochable : c'est le genre de détail qui sépare une copie juste d'une copie qui « ressemble » à la correction.
         steps:
           - math: '\mathrm{PGCD}(p,\,q-1) = 1 \implies (\exists\,(u,v) \in \mathbb{Z}^2)\ u\,p + v\,(q-1) = 1'
-            note: "Theoreme de Bezout (R4), applique aux deux exposants."
+            note: "Theoreme de Bezout (chapitre 5), applique aux deux exposants."
           - math: '(u,v) \longmapsto \big(u + k(q-1),\ v - kp\big)\ \text{pour}\ k\ \text{assez grand} \implies u \geq 1,\ v < 0'
             note: "On peut choisir le couple de Bezout : les deux termes ajoutes se compensent, et un k assez grand rend u positif, donc v negatif."
           - math: 'u\,p = 1 + (-v)(q-1),\qquad u \geq 1,\ -v > 0'
@@ -1088,7 +1088,7 @@ entries:
         stem: |-
           **(0,25 pt)** En déduire que $S \equiv 1\ [q]$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** $S$ est une somme de puissances de $p$. Dès qu'on sait ce que vaut $p$ modulo $q$, on sait ce que vaut chaque terme, donc la somme entière : c'est la compatibilité des congruences avec le produit et la somme (rung R2) qui autorise ce remplacement terme à terme.
+          **Ce qu'on cherche et pourquoi ce geste.** $S$ est une somme de puissances de $p$. Dès qu'on sait ce que vaut $p$ modulo $q$, on sait ce que vaut chaque terme, donc la somme entière : c'est la compatibilité des congruences avec le produit et la somme (chapitre 3) qui autorise ce remplacement terme à terme.
 
           La question précédente donne $p \equiv 1 \pmod q$, donc pour tout entier $k \geq 0$ :
 
@@ -1105,7 +1105,7 @@ entries:
           **Le piège à éviter.** Compter $p-1$ termes parce que le dernier exposant est $p-1$. On obtiendrait $S \equiv p-1$, et toute la contradiction de la question suivante s'effondrerait. Une somme d'exposants allant de $0$ à $n$ compte toujours $n+1$ termes — vérifie-le sur $p = 3$ : $S = 1 + 3 + 9$, trois termes, pas deux.
         steps:
           - math: 'p \equiv 1 \pmod q \implies p^k \equiv 1^k = 1 \pmod q \quad (k \geq 0)'
-            note: "Compatibilite de la congruence avec les puissances (R2)."
+            note: "Compatibilite de la congruence avec les puissances (chapitre 3)."
           - math: 'S = p^0 + p^1 + \ldots + p^{p-1} \ \text{compte}\ p\ \text{termes}'
             note: "Les exposants vont de 0 a p moins 1 : cela fait bien p termes, pas p moins 1."
           - math: 'S \equiv \underbrace{1 + 1 + \ldots + 1}_{p\ \text{termes}} = p \equiv 1 \pmod q'
@@ -1121,7 +1121,7 @@ entries:
 
           $$\mathrm{PGCD}(p,\,q-1) \neq 1$$
 
-          **Deuxième temps — il n'y a qu'une autre possibilité.** $\mathrm{PGCD}(p, q-1)$ divise $p$, qui est **premier** : il vaut donc $1$ ou $p$ (rung R6). Le cas $1$ vient d'être écarté, donc :
+          **Deuxième temps — il n'y a qu'une autre possibilité.** $\mathrm{PGCD}(p, q-1)$ divise $p$, qui est **premier** : il vaut donc $1$ ou $p$ (chapitre 7). Le cas $1$ vient d'être écarté, donc :
 
           $$\mathrm{PGCD}(p,\,q-1) = p \implies p \mid (q-1)$$
 
@@ -1138,7 +1138,7 @@ entries:
           - math: '0 \equiv 1 \pmod q \implies q \mid 1 \implies \text{contradiction}\ (q \geq 2)'
             note: "Les deux congruences sont incompatibles : q premier vaut au moins 2 et ne divise pas 1."
           - math: '\mathrm{PGCD}(p,\,q-1) \mid p,\ p\ \text{premier} \implies \mathrm{PGCD}(p,\,q-1) \in \{1,\,p\}'
-            note: "Un diviseur de p premier vaut 1 ou p (R6)."
+            note: "Un diviseur de p premier vaut 1 ou p (chapitre 7)."
           - math: '\mathrm{PGCD}(p,\,q-1) = p \implies p \mid (q-1) \implies q \equiv 1 \pmod p'
             note: "Le cas 1 etant ecarte, il reste p : donc p divise q moins 1."
 
@@ -1174,23 +1174,23 @@ entries:
 
       Soient $p$ un nombre premier impair et $a$ un entier premier avec $p$.
 
-      L'exercice construit, de A à Z, le **critère d'Euler** — hors-rung, dérivé ici uniquement à partir du petit théorème de Fermat (lui-même hors-rung, déjà rencontré au sommet de leçon 2019, rupture-gate cp-r6-fermat) et du lemme d'Euclide (R6) — puis l'applique deux fois, avec $p=11$ à chaque fois : une fois pour garantir, via Bézout (R4), l'existence d'une solution à une équation diophantienne paramétrée par $n$, une fois pour montrer qu'une équation modulo $11$ n'a aucune solution entière.
+      L'exercice construit, de A à Z, le **critère d'Euler** — hors-chapitre, dérivé ici uniquement à partir du petit théorème de Fermat (lui-même hors-chapitre, déjà rencontré au sommet de leçon 2019, rupture-gate cp-r6-fermat) et du lemme d'Euclide (chapitre 7) — puis l'applique deux fois, avec $p=11$ à chaque fois : une fois pour garantir, via Bézout (chapitre 5), l'existence d'une solution à une équation diophantienne paramétrée par $n$, une fois pour montrer qu'une équation modulo $11$ n'a aucune solution entière.
     questions:
       - id: q1
         part: "Partie A — Fermat et un carré qui se factorise"
         stem: |-
           **(0,5 pt)** Montrer que $a^{\frac{p-1}{2}} \equiv 1\ [p]$ ou $a^{\frac{p-1}{2}} \equiv -1\ [p]$.
         reasoning: |-
-          $a$ est premier avec $p$ par hypothèse (rung R4), donc le **petit théorème de Fermat** — hors-rung, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — s'applique : $a^{p-1} \equiv 1 \pmod p$.
+          $a$ est premier avec $p$ par hypothèse (chapitre 5), donc le **petit théorème de Fermat** — hors-chapitre, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — s'applique : $a^{p-1} \equiv 1 \pmod p$.
 
-          On retrouve ici le même geste qu'à chaque fois qu'une puissance paire cache une différence de carrés : $a^{p-1} - 1 = \left(a^{\frac{p-1}{2}}\right)^2 - 1 = \left(a^{\frac{p-1}{2}}-1\right)\left(a^{\frac{p-1}{2}}+1\right)$ (l'exposant $\frac{p-1}{2}$ est un entier, car $p$ est impair). Comme $p \mid (a^{p-1}-1)$, $p$ divise ce produit. $p$ étant premier, le lemme d'Euclide (rung R6) donne $p \mid \left(a^{\frac{p-1}{2}}-1\right)$ ou $p \mid \left(a^{\frac{p-1}{2}}+1\right)$ — c'est-à-dire $a^{\frac{p-1}{2}} \equiv 1 \pmod p$ ou $a^{\frac{p-1}{2}} \equiv -1 \pmod p$.
+          On retrouve ici le même geste qu'à chaque fois qu'une puissance paire cache une différence de carrés : $a^{p-1} - 1 = \left(a^{\frac{p-1}{2}}\right)^2 - 1 = \left(a^{\frac{p-1}{2}}-1\right)\left(a^{\frac{p-1}{2}}+1\right)$ (l'exposant $\frac{p-1}{2}$ est un entier, car $p$ est impair). Comme $p \mid (a^{p-1}-1)$, $p$ divise ce produit. $p$ étant premier, le lemme d'Euclide (chapitre 7) donne $p \mid \left(a^{\frac{p-1}{2}}-1\right)$ ou $p \mid \left(a^{\frac{p-1}{2}}+1\right)$ — c'est-à-dire $a^{\frac{p-1}{2}} \equiv 1 \pmod p$ ou $a^{\frac{p-1}{2}} \equiv -1 \pmod p$.
         steps:
           - math: 'a^{p-1} \equiv 1 \pmod p'
             note: "Petit theoreme de Fermat : a premier avec p."
           - math: 'a^{p-1} - 1 = \left(a^{\frac{p-1}{2}}-1\right)\left(a^{\frac{p-1}{2}}+1\right)'
             note: "Difference de carres : p impair rend (p moins 1)/2 entier."
           - math: 'p \mid \left(a^{\frac{p-1}{2}}-1\right)\left(a^{\frac{p-1}{2}}+1\right) \implies a^{\frac{p-1}{2}} \equiv 1 \pmod p \ \text{ou}\ a^{\frac{p-1}{2}} \equiv -1 \pmod p'
-            note: "Lemme d'Euclide (R6) : p premier divise un produit, donc l'un des deux facteurs."
+            note: "Lemme d'Euclide (chapitre 7) : p premier divise un produit, donc l'un des deux facteurs."
       - id: q2
         part: "Partie B — L'équation (E) : une solution $x_0$"
         stem: |-
@@ -1198,19 +1198,19 @@ entries:
         reasoning: |-
           Si $p \mid x_0$, alors $x_0^2 \equiv 0 \pmod p$, donc $a\,x_0^2 \equiv 0 \pmod p$ ; or l'équation dit $a\,x_0^2 \equiv 1 \pmod p$, donc $0 \equiv 1 \pmod p$, c'est-à-dire $p \mid 1$ — impossible, puisque $p \geq 2$. Contradiction : $p$ ne divise pas $x_0$.
 
-          Comme $p$ est premier, $\mathrm{PGCD}(p,x_0)=1$ (rung R4). Le petit théorème de Fermat — hors-rung, déjà mobilisé à la question 1 — s'applique alors à $x_0$ : $x_0^{p-1} \equiv 1 \pmod p$.
+          Comme $p$ est premier, $\mathrm{PGCD}(p,x_0)=1$ (chapitre 5). Le petit théorème de Fermat — hors-chapitre, déjà mobilisé à la question 1 — s'applique alors à $x_0$ : $x_0^{p-1} \equiv 1 \pmod p$.
         steps:
           - math: 'p \mid x_0 \implies a\,x_0^2 \equiv 0 \pmod p'
             note: "Hypothese absurde : si p divise x zero, son carre et donc a fois son carre sont congrus a 0."
           - math: '0 \equiv 1 \pmod p \implies p \mid 1'
             note: "Or l'equation donne a fois x zero carre congru a 1 : contradiction, p diviserait 1."
           - math: 'p \nmid x_0 \implies \mathrm{PGCD}(p,x_0) = 1 \implies x_0^{p-1} \equiv 1 \pmod p'
-            note: "p premier avec x zero (R4) ; petit theoreme de Fermat (question 1)."
+            note: "p premier avec x zero (chapitre 5) ; petit theoreme de Fermat (question 1)."
       - id: q3
         stem: |-
           **(0,25 pt)** En déduire que : $a^{\frac{p-1}{2}} \equiv 1\ [p]$
         reasoning: |-
-          On élève l'équation $a\,x_0^2 \equiv 1 \pmod p$ à la puissance $\frac{p-1}{2}$ (rung R2 : compatibilité de la congruence avec les puissances) :
+          On élève l'équation $a\,x_0^2 \equiv 1 \pmod p$ à la puissance $\frac{p-1}{2}$ (chapitre 3 : compatibilité de la congruence avec les puissances) :
 
           $$\left(a\,x_0^2\right)^{\frac{p-1}{2}} \equiv 1^{\frac{p-1}{2}} = 1 \pmod p$$
 
@@ -1219,7 +1219,7 @@ entries:
           $$a^{\frac{p-1}{2}} \times 1 \equiv 1 \pmod p \implies a^{\frac{p-1}{2}} \equiv 1 \pmod p$$
         steps:
           - math: '\left(a\,x_0^2\right)^{\frac{p-1}{2}} \equiv 1 \pmod p'
-            note: "On eleve l'equation de depart a la puissance (p-1)/2 (R2)."
+            note: "On eleve l'equation de depart a la puissance (p-1)/2 (chapitre 3)."
           - math: '\left(a\,x_0^2\right)^{\frac{p-1}{2}} = a^{\frac{p-1}{2}} \times x_0^{\,p-1}'
             note: "On factorise le membre de gauche."
           - math: 'x_0^{\,p-1} \equiv 1 \pmod p \implies a^{\frac{p-1}{2}} \equiv 1 \pmod p'
@@ -1243,11 +1243,11 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que l'équation $(E) : 11x + \left(2^{2n+1} - 1\right)y = 1$ admet au moins une solution dans $\mathbb{Z}^2$.
         reasoning: |-
-          Le théorème de Bézout (rung R4, cas particulier à $1$) garantit une solution entière à $11x + \left(2^{2n+1}-1\right)y = 1$ dès que $11$ et $2^{2n+1}-1$ sont premiers entre eux. C'est donc ce qu'il reste à établir.
+          Le théorème de Bézout (chapitre 5, cas particulier à $1$) garantit une solution entière à $11x + \left(2^{2n+1}-1\right)y = 1$ dès que $11$ et $2^{2n+1}-1$ sont premiers entre eux. C'est donc ce qu'il reste à établir.
 
           $11$ est premier, donc $\mathrm{PGCD}\!\left(11,\,2^{2n+1}-1\right)$ vaut $1$ ou $11$. Supposons par l'absurde qu'il vaille $11$, c'est-à-dire $11 \mid \left(2^{2n+1}-1\right)$. La question précédente, appliquée avec $p=11$ (bien un premier impair), donnerait alors $2^{\frac{11-1}{2}} \equiv 1 \pmod{11}$, c'est-à-dire $2^5 \equiv 1 \pmod{11}$.
 
-          Or $2^5 = 32 = 2 \times 11 + 10$, donc $2^5 \equiv 10 \pmod{11}$, et $10 \not\equiv 1 \pmod{11}$. Contradiction : $11$ ne divise pas $2^{2n+1}-1$. Donc $\mathrm{PGCD}\!\left(11,\,2^{2n+1}-1\right) = 1$, et le théorème de Bézout (R4) fournit directement des entiers $x,y$ tels que $11x + \left(2^{2n+1}-1\right)y = 1$.
+          Or $2^5 = 32 = 2 \times 11 + 10$, donc $2^5 \equiv 10 \pmod{11}$, et $10 \not\equiv 1 \pmod{11}$. Contradiction : $11$ ne divise pas $2^{2n+1}-1$. Donc $\mathrm{PGCD}\!\left(11,\,2^{2n+1}-1\right) = 1$, et le théorème de Bézout (chapitre 5) fournit directement des entiers $x,y$ tels que $11x + \left(2^{2n+1}-1\right)y = 1$.
         steps:
           - math: '11\ \text{premier} \implies \mathrm{PGCD}\!\left(11,\,2^{2n+1}-1\right) \in \{1,11\}'
             note: "Les seuls diviseurs positifs de 11 sont 1 et 11."
@@ -1256,7 +1256,7 @@ entries:
           - math: '2^5 = 32 \equiv 10 \pmod{11} \ \text{et}\ 10 \not\equiv 1 \pmod{11}'
             note: "Calcul direct : 32 egale 2 fois 11 plus 10. Contradiction avec la congruence attendue."
           - math: '\mathrm{PGCD}\!\left(11,\,2^{2n+1}-1\right) = 1 \implies (\exists\ x,y \in \mathbb{Z})\ 11x + \left(2^{2n+1}-1\right)y = 1'
-            note: "11 ne divise pas 2 puissance 2n+1 moins 1 : le PGCD vaut donc 1, et Bezout (R4) fournit x et y."
+            note: "11 ne divise pas 2 puissance 2n+1 moins 1 : le PGCD vaut donc 1, et Bezout (chapitre 5) fournit x et y."
       - id: q6
         part: "Partie D — L'équation (F) : $x^2+5x+2$ modulo $11$"
         stem: |-
@@ -1331,7 +1331,7 @@ entries:
 
       On admet que $2017$ est un nombre premier, et que $2016 = 2^5\,3^2\,7$. Soit $p$ un nombre premier supérieur ou égal à $5$.
 
-      L'exercice mobilise le petit théorème de Fermat — hors-rung, rappelé au point d'usage — pour contraindre $p$ à une seule valeur possible via la factorisation de $2016$, puis termine par une résolution explicite de l'équation $px+y^{p-1}=2017$ dans $\mathbb{N}^*\times\mathbb{N}^*$.
+      L'exercice mobilise le petit théorème de Fermat — hors-chapitre, rappelé au point d'usage — pour contraindre $p$ à une seule valeur possible via la factorisation de $2016$, puis termine par une résolution explicite de l'équation $px+y^{p-1}=2017$ dans $\mathbb{N}^*\times\mathbb{N}^*$.
     questions:
       - id: q1
         part: "Partie A — Encadrer $p$, puis exclure $p$ diviseur de $y$"
@@ -1366,7 +1366,7 @@ entries:
         stem: |-
           **(0,75 pt)** Montrer que : $y^{p-1} \equiv 1\ [p]$ et en déduire que $p$ divise $2016$
         reasoning: |-
-          C'est ici qu'intervient le **petit théorème de Fermat** — un outil du programme SM qui déborde le corps de rungs de la leçon (aucun rung dédié ; R0–R8 couvrent divisibilité, division euclidienne, congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations diophantiennes, mais pas Fermat) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. On l'applique avec $a=y$ : $p$ est premier (donné, $p\geq5$) et $p \nmid y$ (question précédente), donc $y^{p-1} \equiv 1 \pmod p$.
+          C'est ici qu'intervient le **petit théorème de Fermat** — un outil du programme SM qui déborde le corps des chapitres de la leçon (aucun chapitre dédié ; chapitres 1 à 9 couvrent divisibilité, division euclidienne, congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations diophantiennes, mais pas Fermat) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. On l'applique avec $a=y$ : $p$ est premier (donné, $p\geq5$) et $p \nmid y$ (question précédente), donc $y^{p-1} \equiv 1 \pmod p$.
 
           On réduit ensuite l'équation elle-même modulo $p$ : le terme $px$ disparaît, donc $y^{p-1} \equiv px+y^{p-1} = 2017 \pmod p$. En combinant les deux congruences pour $y^{p-1}$, il vient $1 \equiv 2017 \pmod p$, c'est-à-dire $p \mid (2017-1) = 2016$.
         steps:
@@ -1506,7 +1506,7 @@ entries:
 
           Et la machine qui fabrique une telle relation, c'est l'algorithme d'Euclide **descendu puis remonté** — l'énoncé impose d'ailleurs cette méthode, donc une réponse trouvée par tâtonnement, même juste, ne vaudra pas les points.
 
-          **D'abord : cet inverse existe-t-il ?** Oui, et c'est l'algorithme lui-même qui va le dire. Un inverse de $a$ modulo $n$ existe si et seulement si $a$ et $n$ sont **premiers entre eux** (rung 4). C'est le premier renseignement que la descente va fournir.
+          **D'abord : cet inverse existe-t-il ?** Oui, et c'est l'algorithme lui-même qui va le dire. Un inverse de $a$ modulo $n$ existe si et seulement si $a$ et $n$ sont **premiers entre eux** (chapitre 5). C'est le premier renseignement que la descente va fournir.
 
           **La descente — divisions euclidiennes successives.**
 
@@ -1551,7 +1551,7 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** L'énoncé introduit la division par $10$ — donc, très concrètement, $r$ est le **chiffre des unités** de $m$ et $q$ est le nombre obtenu en effaçant ce chiffre. On cherche à relier $m$ à ces deux morceaux **modulo $23$**, ce qui est le premier pas vers un critère de divisibilité manipulable.
 
-          **Le point de départ : la division euclidienne (rung 1).**
+          **Le point de départ : la division euclidienne (chapitre 2).**
 
           $$m = 10q + r \qquad \text{avec} \quad 0 \leq r < 10$$
 
@@ -1563,7 +1563,7 @@ entries:
 
           $$10u \equiv 1\ [23] \qquad\Longrightarrow\qquad (10u)\,r \equiv 1 \times r = r\ [23]$$
 
-          (on a multiplié les deux membres d'une congruence par l'entier $r$, ce qui est licite — rung 2).
+          (on a multiplié les deux membres d'une congruence par l'entier $r$, ce qui est licite — chapitre 3).
 
           On ajoute $10q$ aux deux membres, opération également licite sur les congruences :
 
@@ -1592,7 +1592,7 @@ entries:
 
           $$10\,(q + ur) \equiv 0\ [23] \qquad\text{c'est-à-dire}\qquad 23 \mid 10(q+ur)$$
 
-          On voudrait « barrer le $10$ ». **C'est exactement l'endroit où il faut un théorème, pas un réflexe.** Le théorème de Gauss (rung 5) dit : si un entier divise un produit et qu'il est premier avec l'un des facteurs, alors il divise l'autre. Ici :
+          On voudrait « barrer le $10$ ». **C'est exactement l'endroit où il faut un théorème, pas un réflexe.** Le théorème de Gauss (chapitre 6) dit : si un entier divise un produit et qu'il est premier avec l'un des facteurs, alors il divise l'autre. Ici :
 
           — $23 \mid 10 \times (q + ur)$ ;
           — $23$ et $10$ sont **premiers entre eux** — c'est précisément ce que la descente d'Euclide de la question 1 a établi, $\text{PGCD}(23,10) = 1$.

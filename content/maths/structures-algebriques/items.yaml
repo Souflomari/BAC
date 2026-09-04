@@ -302,7 +302,7 @@ items:
       3. $\times$ est distributive par rapport à $+$ :
       $$x \times (y+z) = x\times y + x \times z, \qquad (y+z)\times x = y\times x + z \times x$$
       Aucune exigence de symétrique pour $\times$ : c'est ce qui distingue
-      l'anneau du corps (R6).
+      l'anneau du corps (chapitre 9).
 
   - id: SA-6
     rung: "R6"
@@ -349,7 +349,7 @@ items:
       $\mathbb{Z}$ — la seule valeur candidate, $\frac{1}{2}$, n'est pas
       un entier.
     solution: |
-      $(\mathbb{Z},+,\times)$ est bien un anneau (R5). Pour être un corps,
+      $(\mathbb{Z},+,\times)$ est bien un anneau (chapitre 7). Pour être un corps,
       il faudrait en plus que tout entier non nul ait un symétrique pour
       $\times$ dans $\mathbb{Z}$. Prenons $2$ : l'équation $2x=1$ n'a pas
       de solution entière (la seule solution réelle est $x=\frac{1}{2}
@@ -365,7 +365,7 @@ items:
     skill_code: maths_structures_alg
     tags: [misconception_driven, maths_structures_alg, lci, cloture]
     stem: >
-      Sur l'horloge à 12 heures (R0), on définit $\oplus$ par : on additionne
+      Sur l'horloge à 12 heures (chapitre 1), on définit $\oplus$ par : on additionne
       normalement, puis on garde le reste modulo $12$. Que vaut $10 \oplus 6$ ?
     type: mcq
     choices:
@@ -411,7 +411,7 @@ items:
     skill_code: maths_structures_alg
     tags: [misconception_driven, maths_structures_alg, symetrique]
     stem: >
-      Sur l'horloge (addition modulo $12$, R0), quelle heure faut-il ajouter
+      Sur l'horloge (addition modulo $12$, chapitre 1), quelle heure faut-il ajouter
       à $8$h pour revenir à $0$h, l'heure neutre ?
     type: mcq
     choices:
@@ -456,7 +456,7 @@ items:
     skill_code: maths_structures_alg
     tags: [misconception_driven, maths_structures_alg, commutativite]
     stem: >
-      Le calcul $3\oplus7 = 7\oplus3$ (sur l'horloge, modulo $12$, R0)
+      Le calcul $3\oplus7 = 7\oplus3$ (sur l'horloge, modulo $12$, chapitre 1)
       illustre quelle propriété de $\oplus$ ?
     type: mcq
     choices:
@@ -775,14 +775,14 @@ items:
           Les quatre axiomes du groupe (interne, associative, neutre,
           symétrique pour chaque élément) n'impliquent pas la commutativité :
           c'est une propriété indépendante, en plus, qui définit le groupe
-          COMMUTATIF (R4). Des groupes non commutatifs existent bel et bien.
+          COMMUTATIF (chapitre 6). Des groupes non commutatifs existent bel et bien.
       - id: B
         text: "Non, mais seulement parce que $(\\mathbb{Z}/4\\mathbb{Z},+)$ vérifie la commutativité tandis que sa loi $\\times$ ne vérifie pas l'associativité."
         correct: false
         misconception: mc.math.structures_algebriques.assoc-commut-confusion
         feedback: >
           L'associativité de $\times$ sur $\mathbb{Z}/4\mathbb{Z}$ est bien
-          vérifiée (héritée de $\mathbb{Z}$, R2) — ce n'est pas là que ça
+          vérifiée (héritée de $\mathbb{Z}$, chapitre 3) — ce n'est pas là que ça
           bloque. Et la question porte sur le groupe $(\mathbb{Z}/4\mathbb{Z},+)$,
           pas sur $\times$ : il ne faut pas mélanger les deux lois ni les
           deux propriétés.
@@ -805,7 +805,7 @@ items:
       bien — la composition de fonctions en donne un exemple.
     solution: |
       Les quatre axiomes du groupe sont indépendants de la commutativité.
-      Le contre-exemple du R4 le montre : avec $f(x)=x+1$ et $g(x)=2x$,
+      Le contre-exemple du chapitre 6 le montre : avec $f(x)=x+1$ et $g(x)=2x$,
       $(f\circ g)(0)=1$ alors que $(g\circ f)(0)=2$ — la composition n'est
       pas commutative ici, bien que ce soit une loi de groupe (associative,
       avec neutre $id$ et symétriques). Un groupe n'est donc pas toujours
@@ -817,7 +817,7 @@ items:
     skill_code: maths_structures_alg
     tags: [misconception_driven, maths_structures_alg, groupe_commutatif]
     stem: >
-      Reprends $f(x)=x+1$ et $g(x)=2x$ (R4). Calcule $(f\circ g)(3)$ et
+      Reprends $f(x)=x+1$ et $g(x)=2x$ (chapitre 6). Calcule $(f\circ g)(3)$ et
       $(g\circ f)(3)$. Que montre ce calcul ?
     type: mcq
     choices:
@@ -840,7 +840,7 @@ items:
           Ce calcul montre que $\circ$ n'est pas commutative pour CES DEUX
           fonctions précises — pas que la composition n'est JAMAIS
           commutative en général : le groupe des symétries du rectangle
-          (R3–R4), lui, a une loi de composition parfaitement commutative.
+          (chapitres 4 à 6), lui, a une loi de composition parfaitement commutative.
       - id: D
         text: "$(f\\circ g)(3)=7$ et $(g\\circ f)(3)=7$ : les deux résultats coïncident, donc $\\circ$ est commutative pour ce couple."
         correct: false
@@ -850,7 +850,7 @@ items:
     correct_feedback: >
       $(f\circ g)(3) = f(g(3)) = f(6) = 7$ et $(g\circ f)(3) = g(f(3)) =
       g(4) = 8$. Les résultats diffèrent : ce nouvel exemple confirme,
-      comme au R4 avec $x=0$, que la composition de $f$ et $g$ n'est pas
+      comme au chapitre 6 avec $x=0$, que la composition de $f$ et $g$ n'est pas
       commutative.
     solution: |
       $$g(3)=6, \quad f(6)=7 \quad\Rightarrow\quad (f\circ g)(3)=7$$
@@ -864,7 +864,7 @@ items:
     skill_code: maths_structures_alg
     tags: [misconception_driven, maths_structures_alg, groupe_commutatif]
     stem: >
-      Dans le groupe des symétries du rectangle $(E,\circ)$ (R3), calcule
+      Dans le groupe des symétries du rectangle $(E,\circ)$ (chapitre 4), calcule
       $s_v\circ r$ et $r\circ s_v$ à l'aide de la table. Le groupe est-il
       commutatif pour ce couple ?
     type: mcq
@@ -877,7 +877,7 @@ items:
           Un seul contre-exemple (celui de $f$ et $g$) montre que CETTE
           composition précise n'est pas commutative — il ne prouve rien
           pour toutes les autres lois de composition. Ce groupe-ci a une
-          table entièrement symétrique (R4), donc il EST commutatif : il
+          table entièrement symétrique (chapitre 6), donc il EST commutatif : il
           faut vérifier au cas par cas, pas généraliser un résultat négatif
           à toutes les situations.
       - id: B
@@ -892,22 +892,22 @@ items:
         correct: false
         misconception: mc.math.structures_algebriques.groupe-implique-commutatif
         feedback: >
-          Un groupe n'est pas toujours commutatif (R4) : c'est une
+          Un groupe n'est pas toujours commutatif (chapitre 6) : c'est une
           propriété indépendante des quatre axiomes du groupe, à vérifier
           séparément — pas une conséquence automatique. Ici le calcul
           confirme bien l'égalité, mais parce que LA TABLE DE CE GROUPE
           PRÉCIS est symétrique, pas parce que « tout groupe est
           commutatif ».
       - id: D
-        text: "$s_v\\circ r = s_h$ et $r\\circ s_v = s_h$ : les deux coïncident, cohérent avec le fait que ce groupe est commutatif (table entièrement symétrique, R4)."
+        text: "$s_v\\circ r = s_h$ et $r\\circ s_v = s_h$ : les deux coïncident, cohérent avec le fait que ce groupe est commutatif (table entièrement symétrique, chapitre 6)."
         correct: true
     correct_feedback: >
       $s_v\circ r = s_h$ (ligne $s_v$, colonne $r$) et $r\circ s_v = s_h$
       (ligne $r$, colonne $s_v$) : les deux coïncident, ce qui est cohérent
-      avec la symétrie de la table entière déjà observée au R4 — ce groupe
+      avec la symétrie de la table entière déjà observée au chapitre 6 — ce groupe
       est commutatif.
     solution: |
-      Sur la table du R3 : ligne $s_v$, colonne $r$ donne $s_h$ ; ligne
+      Sur la table du chapitre 4 : ligne $s_v$, colonne $r$ donne $s_h$ ; ligne
       $r$, colonne $s_v$ donne aussi $s_h$. Les deux résultats coïncident,
       comme pour toutes les autres paires (la table entière est symétrique
       par rapport à sa diagonale) : le groupe des symétries du rectangle
@@ -929,13 +929,13 @@ items:
         text: "Rien : un seul triplet ne prouve jamais une propriété pour tous les triplets, donc on ne peut pas savoir si $\\times$ est distributive sur tout $\\mathbb{Z}/4\\mathbb{Z}$."
         correct: false
         feedback: >
-          Comme pour l'associativité (R2, R3), on peut invoquer un argument
+          Comme pour l'associativité (chapitres 3 et 4), on peut invoquer un argument
           d'HÉRITAGE : la distributivité de $\times$ sur $+$ est déjà vraie
           sur $\mathbb{Z}$ pour tous les triplets, et cette propriété se
-          transmet telle quelle au calcul modulo $4$ (R5). Ce n'est donc
+          transmet telle quelle au calcul modulo $4$ (chapitre 7). Ce n'est donc
           pas un simple exemple isolé qui reste incertain.
       - id: B
-        text: "$3\\times(2+3) = 3\\times1=3$ et $3\\times2+3\\times3 = 2+1=3$ : les deux membres coïncident, cohérent avec la distributivité de $\\times$ par rapport à $+$, déjà établie en général (R5) pour cet anneau."
+        text: "$3\\times(2+3) = 3\\times1=3$ et $3\\times2+3\\times3 = 2+1=3$ : les deux membres coïncident, cohérent avec la distributivité de $\\times$ par rapport à $+$, déjà établie en général (chapitre 7) pour cet anneau."
         correct: true
       - id: C
         text: "$3\\times(2+3) = 3\\times1=3$, mais $3\\times2+3\\times3 = 6+9=15$ (sans réduire modulo $4$), donc les deux membres ne coïncident pas."
@@ -955,7 +955,7 @@ items:
           La distributivité ne dit rien sur le fait que
           $(\mathbb{Z}/4\mathbb{Z},\times)$ soit un groupe — c'est une
           question séparée (celle du symétrique pour $\times$), et on a
-          déjà vu au R5 que $2$ n'a pas de symétrique pour $\times$ :
+          déjà vu au chapitre 7 que $2$ n'a pas de symétrique pour $\times$ :
           $(\mathbb{Z}/4\mathbb{Z},\times)$ n'est pas un groupe.
     correct_feedback: >
       $3\times(2+3) = 3\times1 = 3$ et $3\times2+3\times3 = 2+1 = 3$ (tous
@@ -987,7 +987,7 @@ items:
         correct: false
         misconception: mc.math.structures_algebriques.groupe-anneau
         feedback: >
-          La définition de l'anneau (R5) n'exige PAS que $\times$ ait un
+          La définition de l'anneau (chapitre 7) n'exige PAS que $\times$ ait un
           neutre : un anneau exige seulement que $(E,+)$ soit un groupe
           commutatif, et que $\times$ soit associative et distributive par
           rapport à $+$. L'absence de neutre pour $\times$ n'est pas un
@@ -1008,19 +1008,19 @@ items:
         correct: false
         misconception: mc.math.structures_algebriques.groupe-anneau
         feedback: >
-          C'est la définition du CORPS (R6), pas de l'anneau : un anneau
+          C'est la définition du CORPS (chapitre 9), pas de l'anneau : un anneau
           n'exige aucun symétrique pour $\times$. Confondre les deux fait
           croire qu'un anneau doit se comporter comme
           $(\mathbb{Q},+,\times)$, alors que $(\mathbb{Z},+,\times)$
           (anneau, pas corps) montre bien que ce n'est pas exigé.
     correct_feedback: >
-      La définition de l'anneau (R5) n'exige pas de neutre pour $\times$,
+      La définition de l'anneau (chapitre 7) n'exige pas de neutre pour $\times$,
       seulement que $(E,+)$ soit un groupe commutatif et que $\times$ soit
       associative et distributive par rapport à $+$ — toutes ces conditions
       sont vérifiées ici. $(2\mathbb{Z},+,\times)$ est donc bien un anneau,
       même sans élément neutre pour $\times$.
     solution: |
-      Les trois exigences de la définition de l'anneau (R5) sont vérifiées :
+      Les trois exigences de la définition de l'anneau (chapitre 7) sont vérifiées :
       $(E,+)$ groupe commutatif, $\times$ associative, $\times$ distributive
       par rapport à $+$. Aucune de ces trois exigences ne porte sur
       l'existence d'un neutre pour $\times$ : $(2\mathbb{Z},+,\times)$ est
@@ -1047,8 +1047,8 @@ items:
         correct: false
         misconception: mc.math.structures_algebriques.generalisation-hative
         feedback: >
-          Cette conclusion, vraie pour $\mathbb{Z}$ (R6) et pour
-          $(\mathbb{Z}/4\mathbb{Z},\times)$ (R5), ne se transpose pas
+          Cette conclusion, vraie pour $\mathbb{Z}$ (chapitre 9) et pour
+          $(\mathbb{Z}/4\mathbb{Z},\times)$ (chapitre 7), ne se transpose pas
           automatiquement à $\mathbb{Z}/5\mathbb{Z}$ : ici, les calculs
           donnés montrent que $1,2,3,4$ ont chacun un symétrique. Il faut
           vérifier CE cas précis, pas recopier la conclusion d'un exemple
@@ -1061,7 +1061,7 @@ items:
           de $n$ ne détermine pas si $(\mathbb{Z}/n\mathbb{Z},+,\times)$
           est un anneau : TOUT $(\mathbb{Z}/n\mathbb{Z},+,\times)$, quel
           que soit $n$, est un anneau (même $\mathbb{Z}/4\mathbb{Z}$, où
-          $4$ n'est pas premier, R5). C'est le fait d'être un CORPS qui
+          $4$ n'est pas premier, chapitre 7). C'est le fait d'être un CORPS qui
           dépend de la primalité de $n$.
       - id: D
         text: "Oui, mais seulement pour les éléments $1$ et $4$, qui sont leur propre symétrique — $2$ et $3$ n'en ont pas besoin."
@@ -1077,7 +1077,7 @@ items:
       possèdent un symétrique pour $\times$ dans $\mathbb{Z}/5\mathbb{Z}$
       lui-même : $(\mathbb{Z}/5\mathbb{Z},+,\times)$ est donc un corps —
       contrairement à $(\mathbb{Z}/4\mathbb{Z},+,\times)$, où $2$ n'a pas
-      de symétrique pour $\times$ (R5).
+      de symétrique pour $\times$ (chapitre 7).
     solution: |
       On vérifie, pour chaque élément non nul, l'existence d'un symétrique
       pour $\times$ dans $\mathbb{Z}/5\mathbb{Z}$ :
@@ -1103,7 +1103,7 @@ items:
         correct: false
         misconception: mc.math.structures_algebriques.groupe-anneau
         feedback: >
-          Dès la définition de l'anneau (R5), $(E,+)$ doit DÉJÀ être un
+          Dès la définition de l'anneau (chapitre 7), $(E,+)$ doit DÉJÀ être un
           groupe commutatif — ce n'est pas une exigence propre au corps. Ce
           qui distingue le corps, c'est une condition sur $\times$
           (commutativité et symétrique pour tout élément non nul), pas sur
@@ -1135,7 +1135,7 @@ items:
       pour $\times$. Rien de plus n'est exigé sur $+$, qui est déjà un
       groupe commutatif dès la définition de l'anneau.
     solution: |
-      D'après la synthèse du R6 : un anneau exige $(E,+)$ groupe
+      D'après la synthèse du chapitre 9 : un anneau exige $(E,+)$ groupe
       commutatif, $\times$ associative et distributive. Un corps ajoute
       deux conditions supplémentaires sur $\times$ seulement : $\times$
       commutative, et tout élément non nul inversible pour $\times$. C'est
@@ -1149,7 +1149,7 @@ items:
     skill_code: maths_structures_alg
     tags: [misconception_driven, maths_structures_alg, axiomes_groupe, synthese]
     stem: >
-      On munit $E=\{0,1,2,3,4\}$ de l'addition modulo $5$ (R7, exercice
+      On munit $E=\{0,1,2,3,4\}$ de l'addition modulo $5$ (chapitre 10, exercice
       « à toi de jouer »). Lequel de ces raisonnements vérifie correctement,
       sans en sauter aucun, que $(E,+)$ est un groupe commutatif ?
     type: mcq
@@ -1186,7 +1186,7 @@ items:
           L'associativité n'est jamais automatique du fait de l'existence
           d'un neutre — ce sont deux axiomes indépendants. Ici
           l'associativité se justifie par héritage depuis $\mathbb{Z}$
-          (comme au R2), mais elle doit être explicitement mentionnée, pas
+          (comme au chapitre 3), mais elle doit être explicitement mentionnée, pas
           supposée.
     correct_feedback: >
       Vérifier un groupe (et sa commutativité) exige de passer en revue,

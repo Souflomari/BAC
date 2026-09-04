@@ -44,7 +44,7 @@ exercises:
         stem: |-
           **(0,5 pt)** Écrire l'équation de la désintégration $\alpha$ du plutonium 238 $^{238}_{94}\text{Pu}$, en identifiant le noyau fils parmi les noyaux donnés.
         reasoning: |-
-          Une désintégration $\alpha$ émet un noyau d'hélium $^{4}_{2}\text{He}$. On ne connaît que le père et le type de particule émise : les deux lois de conservation de Soddy (établies au R2) suffisent à reconstruire le fils, on n'a besoin de rien d'autre. On pose le fils inconnu $^{A}_{Z}\text{Y}$ et on applique **les deux** lois ensemble — conservation du nombre de nucléons ET conservation de la charge. Le piège classique de l'$\alpha$ est de ne toucher qu'à une seule des deux grandeurs : ici $A$ *et* $Z$ diminuent, car la particule $\alpha$ emporte 4 nucléons *et* 2 charges positives. Le $Z$ trouvé se lit ensuite dans le tableau des données.
+          Une désintégration $\alpha$ émet un noyau d'hélium $^{4}_{2}\text{He}$. On ne connaît que le père et le type de particule émise : les deux lois de conservation de Soddy (établies au chapitre 3) suffisent à reconstruire le fils, on n'a besoin de rien d'autre. On pose le fils inconnu $^{A}_{Z}\text{Y}$ et on applique **les deux** lois ensemble — conservation du nombre de nucléons ET conservation de la charge. Le piège classique de l'$\alpha$ est de ne toucher qu'à une seule des deux grandeurs : ici $A$ *et* $Z$ diminuent, car la particule $\alpha$ emporte 4 nucléons *et* 2 charges positives. Le $Z$ trouvé se lit ensuite dans le tableau des données.
         steps:
           - math: '^{238}_{94}\text{Pu} \longrightarrow\ ^{A}_{Z}\text{Y} +\ ^{4}_{2}\text{He}'
             note: "On pose l'équation avec le noyau fils inconnu et la particule α."
@@ -59,24 +59,24 @@ exercises:
         stem: |-
           **(0,5 pt)** Déterminer graphiquement la demi-vie $t_{1/2}$ du plutonium 238.
         reasoning: |-
-          La demi-vie est la durée au bout de laquelle l'activité tombe à la moitié de sa valeur initiale — l'activité $a(t) = a_0\,e^{-\lambda t}$ suit exactement la même loi que le nombre de noyaux, donc $t_{1/2}$ se lit aussi bien sur $a$ que sur $N$ (c'est le point du R4). On part de $a_0 \approx 10^{11}\ \text{Bq}$, on repère l'ordonnée $\dfrac{a_0}{2} = 5\times10^{10}\ \text{Bq}$ (une graduation de l'axe), on rejoint la courbe, puis on redescend sur l'axe des temps.
+          La demi-vie est la durée au bout de laquelle l'activité tombe à la moitié de sa valeur initiale — l'activité $a(t) = a_0\,e^{-\lambda t}$ suit exactement la même loi que le nombre de noyaux, donc $t_{1/2}$ se lit aussi bien sur $a$ que sur $N$ (c'est le point du chapitre 5). On part de $a_0 \approx 10^{11}\ \text{Bq}$, on repère l'ordonnée $\dfrac{a_0}{2} = 5\times10^{10}\ \text{Bq}$ (une graduation de l'axe), on rejoint la courbe, puis on redescend sur l'axe des temps.
 
           $$\frac{a_0}{2} = 5\times10^{10}\ \text{Bq} \quad\Longrightarrow\quad t_{1/2} \approx 88\ \text{ans}$$
       - id: q3
         stem: |-
           **(0,5 pt)** En déduire que la constante radioactive $\lambda$ du plutonium 238 vaut environ $\lambda \approx 7{,}88\times10^{-3}\ \text{ans}^{-1}$.
         reasoning: |-
-          $\lambda$ n'est pas lu sur la courbe : on le déduit de $t_{1/2}$ par la relation établie au R4, $t_{1/2} = \dfrac{\ln 2}{\lambda}$, qu'on inverse. C'est là que la distinction demi-vie / constante radioactive se joue : $t_{1/2}$ et $\lambda$ ne sont pas la même grandeur ni de simples inverses l'une de l'autre — elles sont reliées par le facteur $\ln 2 \approx 0{,}693$.
+          $\lambda$ n'est pas lu sur la courbe : on le déduit de $t_{1/2}$ par la relation établie au chapitre 5, $t_{1/2} = \dfrac{\ln 2}{\lambda}$, qu'on inverse. C'est là que la distinction demi-vie / constante radioactive se joue : $t_{1/2}$ et $\lambda$ ne sont pas la même grandeur ni de simples inverses l'une de l'autre — elles sont reliées par le facteur $\ln 2 \approx 0{,}693$.
         steps:
           - math: 't_{1/2} = \frac{\ln 2}{\lambda} \implies \lambda = \frac{\ln 2}{t_{1/2}}'
-            note: "On inverse la relation demi-vie ↔ constante radioactive du R4."
+            note: "On inverse la relation demi-vie ↔ constante radioactive du chapitre 5."
           - math: '\lambda = \frac{\ln 2}{88} \approx \frac{0{,}693}{88} \approx 7{,}88\times10^{-3}\ \text{ans}^{-1}'
             note: "Application numérique avec t_1/2 ≈ 88 ans : on retrouve bien la valeur annoncée."
       - id: q4
         stem: |-
           **(0,5 pt)** Trouver le nombre $N_0$ de noyaux de plutonium 238 présents à $t = 0$ dans le stimulateur.
         reasoning: |-
-          Le lien entre l'activité et le nombre de noyaux est $a = \lambda N$ (R4) : l'activité n'est pas le nombre de noyaux, c'est le nombre de désintégrations par seconde, et le facteur qui relie les deux est justement $\lambda$. À $t = 0$ : $a_0 = \lambda N_0$, donc $N_0 = \dfrac{a_0}{\lambda}$. Attention aux unités — c'est le vrai piège de la question : $a_0$ est en becquerels, donc en désintégrations **par seconde**, alors que $\lambda$ vient d'être calculée en $\text{ans}^{-1}$. Il faut convertir $\lambda$ en $\text{s}^{-1}$ avant de diviser (d'où la donnée $1\ \text{an} = 365\ \text{jours}$).
+          Le lien entre l'activité et le nombre de noyaux est $a = \lambda N$ (chapitre 5) : l'activité n'est pas le nombre de noyaux, c'est le nombre de désintégrations par seconde, et le facteur qui relie les deux est justement $\lambda$. À $t = 0$ : $a_0 = \lambda N_0$, donc $N_0 = \dfrac{a_0}{\lambda}$. Attention aux unités — c'est le vrai piège de la question : $a_0$ est en becquerels, donc en désintégrations **par seconde**, alors que $\lambda$ vient d'être calculée en $\text{ans}^{-1}$. Il faut convertir $\lambda$ en $\text{s}^{-1}$ avant de diviser (d'où la donnée $1\ \text{an} = 365\ \text{jours}$).
         steps:
           - math: 'a_0 = \lambda N_0 \implies N_0 = \frac{a_0}{\lambda}'
             note: "On inverse la relation activité ↔ nombre de noyaux a = λN."
@@ -89,12 +89,12 @@ exercises:
         stem: |-
           **(0,5 pt)** Le stimulateur fonctionne de façon efficace tant que le nombre de noyaux de plutonium 238 qui se sont désintégrés ne dépasse pas $30\ \%$ du nombre de noyaux présents à $t = 0$. Déterminer, en années, la durée maximale $t_{max}$ de fonctionnement efficace.
         reasoning: |-
-          Le premier geste est de traduire la condition en une condition sur $N(t)$. Le nombre de noyaux désintégrés à l'instant $t$ vaut $N_0 - N(t)$ (les noyaux fils, R3). « Pas plus de $30\ \%$ désintégrés » signifie donc $N_0 - N(t) \leq 0{,}30\,N_0$, c'est-à-dire qu'il reste **au moins** $70\ \%$ des noyaux : $N(t) \geq 0{,}70\,N_0$. À la limite $t_{max}$, il en reste exactement $70\ \%$. On inverse alors la loi de décroissance comme au R5 (datation), en passant par le logarithme. Ici on garde $\lambda$ en $\text{ans}^{-1}$ pour obtenir directement $t_{max}$ en années.
+          Le premier geste est de traduire la condition en une condition sur $N(t)$. Le nombre de noyaux désintégrés à l'instant $t$ vaut $N_0 - N(t)$ (les noyaux fils, chapitre 4). « Pas plus de $30\ \%$ désintégrés » signifie donc $N_0 - N(t) \leq 0{,}30\,N_0$, c'est-à-dire qu'il reste **au moins** $70\ \%$ des noyaux : $N(t) \geq 0{,}70\,N_0$. À la limite $t_{max}$, il en reste exactement $70\ \%$. On inverse alors la loi de décroissance comme au chapitre 6 (datation), en passant par le logarithme. Ici on garde $\lambda$ en $\text{ans}^{-1}$ pour obtenir directement $t_{max}$ en années.
         steps:
           - math: 'N_0 - N(t) \leq 0{,}30\,N_0 \iff N(t) \geq 0{,}70\,N_0'
             note: "Traduction de la condition : pas plus de 30 % désintégrés, donc au moins 70 % restants."
           - math: '0{,}70 = e^{-\lambda t_{max}} \implies t_{max} = \frac{1}{\lambda}\ln\!\left(\frac{1}{0{,}70}\right)'
-            note: "À la limite N(t_max) = 0,70 N_0 ; on isole le temps par le logarithme (méthode du R5)."
+            note: "À la limite N(t_max) = 0,70 N_0 ; on isole le temps par le logarithme (méthode du chapitre 6)."
           - math: 't_{max} = \frac{\ln(1{,}43)}{7{,}88\times10^{-3}} \approx \frac{0{,}357}{7{,}88\times10^{-3}} \approx 45\ \text{ans}'
             note: "Application numérique avec λ en ans⁻¹ : le résultat sort directement en années."
 
@@ -142,7 +142,7 @@ exercises:
         stem: |-
           En déduire la constante radioactive $\lambda$ de l'iode 131.
         reasoning: |-
-          Même geste qu'au sujet : $\lambda$ se déduit de $t_{1/2}$ par $t_{1/2} = \dfrac{\ln 2}{\lambda}$ (R4), qu'on inverse. On garde ici $\lambda$ en $\text{jour}^{-1}$, cohérent avec la demi-vie exprimée en jours.
+          Même geste qu'au sujet : $\lambda$ se déduit de $t_{1/2}$ par $t_{1/2} = \dfrac{\ln 2}{\lambda}$ (chapitre 5), qu'on inverse. On garde ici $\lambda$ en $\text{jour}^{-1}$, cohérent avec la demi-vie exprimée en jours.
         steps:
           - math: '\lambda = \frac{\ln 2}{t_{1/2}} = \frac{\ln 2}{8}'
             note: "On inverse la relation demi-vie ↔ constante radioactive."
@@ -152,7 +152,7 @@ exercises:
         stem: |-
           Déterminer le nombre $N_0$ de noyaux d'iode 131 présents à $t = 0$ dans l'échantillon.
         reasoning: |-
-          On repart de la relation activité ↔ nombre de noyaux $A = \lambda N$ (R4), retournée : $N_0 = \dfrac{A_0}{\lambda}$. Comme au sujet, le piège est l'unité : $A_0$ est en becquerels (désintégrations par **seconde**), donc il faut $\lambda$ en $\text{s}^{-1}$, pas en $\text{jour}^{-1}$. D'où la conversion via $1\ \text{jour} = 86\,400\ \text{s}$.
+          On repart de la relation activité ↔ nombre de noyaux $A = \lambda N$ (chapitre 5), retournée : $N_0 = \dfrac{A_0}{\lambda}$. Comme au sujet, le piège est l'unité : $A_0$ est en becquerels (désintégrations par **seconde**), donc il faut $\lambda$ en $\text{s}^{-1}$, pas en $\text{jour}^{-1}$. D'où la conversion via $1\ \text{jour} = 86\,400\ \text{s}$.
         steps:
           - math: 'A_0 = \lambda N_0 \implies N_0 = \frac{A_0}{\lambda}'
             note: "On inverse a = λN pour isoler le nombre de noyaux."
@@ -164,9 +164,9 @@ exercises:
         stem: |-
           Au bout de combien de jours l'activité de l'échantillon sera-t-elle tombée à $5\ \%$ de sa valeur initiale $A_0$ ?
         reasoning: |-
-          L'activité suit la même loi exponentielle que le nombre de noyaux, $A(t) = A_0\,e^{-\lambda t}$ : on inverse cette loi pour trouver le temps, comme au R5. On veut $A(t) = 0{,}05\,A_0$, donc $0{,}05 = e^{-\lambda t}$, d'où $t = \dfrac{1}{\lambda}\ln\!\left(\dfrac{1}{0{,}05}\right)$. Ici $\dfrac{1}{0{,}05} = 20$ n'est pas une puissance de 2, donc on passe obligatoirement par le logarithme (pas par un comptage de demi-vies). On garde $\lambda$ en $\text{jour}^{-1}$ pour obtenir $t$ en jours.
+          L'activité suit la même loi exponentielle que le nombre de noyaux, $A(t) = A_0\,e^{-\lambda t}$ : on inverse cette loi pour trouver le temps, comme au chapitre 6. On veut $A(t) = 0{,}05\,A_0$, donc $0{,}05 = e^{-\lambda t}$, d'où $t = \dfrac{1}{\lambda}\ln\!\left(\dfrac{1}{0{,}05}\right)$. Ici $\dfrac{1}{0{,}05} = 20$ n'est pas une puissance de 2, donc on passe obligatoirement par le logarithme (pas par un comptage de demi-vies). On garde $\lambda$ en $\text{jour}^{-1}$ pour obtenir $t$ en jours.
         steps:
           - math: '0{,}05 = e^{-\lambda t} \implies t = \frac{1}{\lambda}\ln\!\left(\frac{1}{0{,}05}\right) = \frac{\ln 20}{\lambda}'
-            note: "On isole le temps par le logarithme (méthode d'inversion du R5)."
+            note: "On isole le temps par le logarithme (méthode d'inversion du chapitre 6)."
           - math: 't = \frac{\ln 20}{8{,}66\times10^{-2}} \approx \frac{3{,}00}{8{,}66\times10^{-2}} \approx 35\ \text{jours}'
             note: "Application numérique avec λ en jour⁻¹ : le résultat sort en jours."

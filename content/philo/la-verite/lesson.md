@@ -72,7 +72,7 @@ Ce que ce découpage permet de voir, précisément, dans la situation du chapitr
 
 ## R2 — La théorie de la correspondance : le vrai comme adéquation (Aristote)
 
-### Ce que R1 laisse en suspens
+### Ce que le chapitre 2 laisse en suspens
 
 Le chapitre 2 a distingué opinion et vérité sans dire ce qui, précisément, fait qu'un énoncé est vrai plutôt que faux. Aristote (IVe siècle av. J.-C., *Métaphysique*, livre Gamma) propose ici la réponse la plus intuitive, et la plus ancienne, du programme.
 
@@ -106,7 +106,7 @@ Une difficulté surgit dès qu'on cherche à appliquer ce critère concrètement
 
 ## R3 — La théorie de la cohérence : le vrai comme accord interne d'un système
 
-### Ce que la limite de R2 invite à chercher
+### Ce que la limite du chapitre 3 invite à chercher
 
 Si l'on ne peut jamais sortir totalement de la pensée pour vérifier, de l'extérieur, l'adéquation d'un énoncé au réel brut, une autre stratégie s'offre : chercher un critère de vérité qui n'exige pas de sortir de la pensée — un critère purement interne.
 
@@ -224,7 +224,7 @@ Sarah est absolument certaine — elle donne des détails précis, elle est sinc
 
 ## R7 — Popper : la vérité scientifique, provisoire et réfutable
 
-### Ce que R6 laisse en suspens pour la science
+### Ce que le chapitre 7 laisse en suspens pour la science
 
 Si la certitude ne garantit jamais la vérité, une question se pose avec une acuité particulière pour les sciences : existe-t-il, au moins là, une manière rigoureuse de s'approcher progressivement du vrai, sans jamais prétendre à une certitude absolue et définitive ? Popper (XXe siècle, *La logique de la découverte scientifique*, 1934 ; *Conjectures et réfutations*, 1963) répond à cette question par un critère précis de ce qui mérite le nom de science.
 

@@ -190,38 +190,38 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que l'équation différentielle vérifiée par la tension $u_c(t)$ aux bornes du condensateur s'écrit : $\dfrac{d^{2}u_c}{dt^{2}} + \dfrac{1}{LC}\, u_c = 0$.
         reasoning: |-
-          Même mécanisme qu'au rung 2, mais l'énoncé demande la relation directement en $u_c$ plutôt qu'en $q$ — les deux variables sont liées par $q = C u_c$. Circuit LC idéal (rien n'indique de résistance sur cette branche : c'est le cas $R \approx 0$ du rung 3) : la loi des mailles donne $u_C + u_L = 0$. On exprime le courant à partir de $u_c$ plutôt que l'inverse ($i = C\frac{du_c}{dt}$, la même relation $i = \frac{dq}{dt}$ du rung 1 réécrite avec $q = Cu_c$), puis $u_L$ suit — le même geste qu'au rung 2, juste réarrangé pour éliminer $q$ au profit de $u_c$.
+          Même mécanisme qu'au chapitre 3, mais l'énoncé demande la relation directement en $u_c$ plutôt qu'en $q$ — les deux variables sont liées par $q = C u_c$. Circuit LC idéal (rien n'indique de résistance sur cette branche : c'est le cas $R \approx 0$ du chapitre 4) : la loi des mailles donne $u_C + u_L = 0$. On exprime le courant à partir de $u_c$ plutôt que l'inverse ($i = C\frac{du_c}{dt}$, la même relation $i = \frac{dq}{dt}$ du chapitre 2 réécrite avec $q = Cu_c$), puis $u_L$ suit — le même geste qu'au chapitre 3, juste réarrangé pour éliminer $q$ au profit de $u_c$.
         steps:
           - math: 'u_C + u_L = 0'
-            note: "Loi des mailles, cas ideal (R negligeable), comme au rung 2."
+            note: "Loi des mailles, cas ideal (R negligeable), comme au chapitre 3."
           - math: 'i = \frac{dq}{dt} = C\frac{du_c}{dt}'
-            note: "On exprime le courant directement en u_c (q = C u_c), plutot qu'en q comme au rung 2."
+            note: "On exprime le courant directement en u_c (q = C u_c), plutot qu'en q comme au chapitre 3."
           - math: 'u_L = L\frac{di}{dt} = LC\frac{d^2u_c}{dt^2}'
-            note: "Tension bobine (rung 2), avec i deja exprime en u_c."
+            note: "Tension bobine (chapitre 3), avec i deja exprime en u_c."
           - math: '\boxed{\frac{d^2u_c}{dt^2} + \frac{1}{LC}\,u_c = 0}'
             note: "Substitution dans la loi des mailles et division par LC : la forme demandee."
       - id: q2a
         stem: |-
           **(0,5 pt)** L'une des trois courbes (a), (b) ou (c) de la figure 3 représente, pour cette expérience, l'évolution de la tension $u_c(t)$. Indiquer la courbe qui représente l'évolution de la tension $u_c(t)$ lors de cette expérience. Justifier votre réponse.
         reasoning: |-
-          Deux critères, tous deux tirés de ce qu'on vient d'établir. D'abord l'équation de la question 1 ne contient aucun terme en $R$ — c'est le cas idéal du rung 3, amplitude **constante**, jamais amortie : la courbe (a), qui décroît, est donc exclue d'emblée. Ensuite la condition initiale : avant $t=0$, le régime permanent était établi avec $K$ en position (1), donc le condensateur était chargé au maximum — $u_c(0)$ doit être un **extremum**, exactement comme le cosinus du rung 2 qui démarre à son maximum quand $\varphi = 0$. La courbe (c), malgré son amplitude constante, ne part pas d'un extremum : elle est donc elle aussi exclue. Seule la courbe (b) satisfait les deux critères à la fois.
+          Deux critères, tous deux tirés de ce qu'on vient d'établir. D'abord l'équation de la question 1 ne contient aucun terme en $R$ — c'est le cas idéal du chapitre 4, amplitude **constante**, jamais amortie : la courbe (a), qui décroît, est donc exclue d'emblée. Ensuite la condition initiale : avant $t=0$, le régime permanent était établi avec $K$ en position (1), donc le condensateur était chargé au maximum — $u_c(0)$ doit être un **extremum**, exactement comme le cosinus du chapitre 3 qui démarre à son maximum quand $\varphi = 0$. La courbe (c), malgré son amplitude constante, ne part pas d'un extremum : elle est donc elle aussi exclue. Seule la courbe (b) satisfait les deux critères à la fois.
 
           La courbe **(b)** représente $u_c(t)$ : amplitude constante (cohérent avec l'équation idéale, sans terme d'amortissement) et départ à l'extremum $+10\ \text{V}$ (cohérent avec la charge maximale acquise avant la bascule de $K$).
       - id: q2b
         stem: |-
           **(0,25 pt)** Trouver la période propre $T_0$ de l'oscillateur LC.
         reasoning: |-
-          Méthode du rung 6 : on repère deux maxima consécutifs sur la courbe identifiée (b) et on lit l'écart temporel. Le premier maximum est à $t=0$ (départ), le suivant vers $t\approx 20\ \text{ms}$ — c'est directement $T_0$, sans avoir besoin de passer par une soustraction puisque le premier maximum coïncide avec l'origine.
+          Méthode du chapitre 7 : on repère deux maxima consécutifs sur la courbe identifiée (b) et on lit l'écart temporel. Le premier maximum est à $t=0$ (départ), le suivant vers $t\approx 20\ \text{ms}$ — c'est directement $T_0$, sans avoir besoin de passer par une soustraction puisque le premier maximum coïncide avec l'origine.
 
           $$T_0 \approx 20\ \text{ms}$$
       - id: q3
         stem: |-
           **(0,5 pt)** Déterminer l'inductance $L$ de la bobine. (On prend $\pi^{2} = 10$).
         reasoning: |-
-          On inverse la formule du rung 2, $T_0 = 2\pi\sqrt{LC}$, pour isoler $L$. Il manque une donnée que cette partie ne fournit pas : la capacité $C$. Elle a été déterminée dans la Partie I du même sujet (charge du condensateur à travers $R$, transcrite sous la notion rc-charge) : $C = 10\ \mu\text{F}$ — un pont entre les deux parties du même exercice, pas une donnée nouvelle à deviner.
+          On inverse la formule du chapitre 3, $T_0 = 2\pi\sqrt{LC}$, pour isoler $L$. Il manque une donnée que cette partie ne fournit pas : la capacité $C$. Elle a été déterminée dans la Partie I du même sujet (charge du condensateur à travers $R$, transcrite sous la notion rc-charge) : $C = 10\ \mu\text{F}$ — un pont entre les deux parties du même exercice, pas une donnée nouvelle à deviner.
         steps:
           - math: 'T_0 = 2\pi\sqrt{LC} \implies L = \frac{T_0^2}{4\pi^2 C}'
-            note: "On isole L (rung 2), avec T0 lu a la question precedente."
+            note: "On isole L (chapitre 3), avec T0 lu a la question precedente."
           - math: 'L = \frac{(20\times10^{-3})^2}{4\times10\times10\times10^{-6}} = \frac{4\times10^{-4}}{4\times10^{-4}}'
             note: "Application numerique : T0 = 20 ms, C = 10 microF (valeur venant de la Partie I, meme sujet, transcrite sous rc-charge), pi^2 = 10."
           - math: '\boxed{L = 1\ \text{H}}'
@@ -231,26 +231,26 @@ entries:
         stem: |-
           **(0,5 pt)** À l'aide de la courbe représentant l'évolution de la tension $u_c(t)$ pour cette expérience, trouver l'énergie totale $E_t$ du circuit.
         reasoning: |-
-          Le circuit est idéal (rung 1) : l'énergie totale se calcule à n'importe quel instant, le plus simple étant un extremum de $u_c$, où le courant est nul et toute l'énergie est électrique. La courbe (b) atteint $\pm10\ \text{V}$ à ses extrema — on prend $U_0 = 10\ \text{V}$.
+          Le circuit est idéal (chapitre 2) : l'énergie totale se calcule à n'importe quel instant, le plus simple étant un extremum de $u_c$, où le courant est nul et toute l'énergie est électrique. La courbe (b) atteint $\pm10\ \text{V}$ à ses extrema — on prend $U_0 = 10\ \text{V}$.
         steps:
           - math: 'E_t = \frac{1}{2}C\,U_0^2 = \frac{1}{2}\times10\times10^{-6}\times10^2'
-            note: "Au maximum de u_c, le courant est nul (rung 1) : toute l'energie est dans le condensateur."
+            note: "Au maximum de u_c, le courant est nul (chapitre 2) : toute l'energie est dans le condensateur."
           - math: '\boxed{E_t = 5\times10^{-4}\ \text{J}}'
             note: "Application numerique, avec C = 10 microF (Partie I) et U0 = 10 V (amplitude lue sur la courbe b)."
       - id: q4b
         stem: |-
           **(0,5 pt)** En déduire l'énergie magnétique $E_{m1}$ emmagasinée dans la bobine à l'instant $t_1 = 12\ \text{ms}$.
         reasoning: |-
-          Le rung 1 donne la relation-clé : l'énergie totale est conservée dans le cas idéal, donc $E_{m1} = E_t - E_{c1}$, où $E_{c1}$ est l'énergie électrique restante à $t_1$. Pour la trouver, on a besoin de $u_c(t_1)$ : la courbe (b) est le cosinus $u_c(t) = U_0\cos\!\left(\frac{2\pi t}{T_0}\right)$ identifié aux questions précédentes ($\varphi = 0$ car départ à l'extremum). On l'évalue à $t_1 = 12\ \text{ms}$.
+          Le chapitre 2 donne la relation-clé : l'énergie totale est conservée dans le cas idéal, donc $E_{m1} = E_t - E_{c1}$, où $E_{c1}$ est l'énergie électrique restante à $t_1$. Pour la trouver, on a besoin de $u_c(t_1)$ : la courbe (b) est le cosinus $u_c(t) = U_0\cos\!\left(\frac{2\pi t}{T_0}\right)$ identifié aux questions précédentes ($\varphi = 0$ car départ à l'extremum). On l'évalue à $t_1 = 12\ \text{ms}$.
         steps:
           - math: 'u_c(t_1) = U_0\cos\!\left(\frac{2\pi t_1}{T_0}\right) = 10\cos\!\left(\frac{2\pi\times12}{20}\right)'
-            note: "Forme cosinus identifiee (rung 2), evaluee a t1 = 12 ms avec T0 = 20 ms."
+            note: "Forme cosinus identifiee (chapitre 3), evaluee a t1 = 12 ms avec T0 = 20 ms."
           - math: 'u_c(t_1) = 10\cos(216^\circ) \approx 10\times(-0{,}809) \approx -8{,}09\ \text{V}'
             note: "L'angle 216 degres depasse 180 : le cosinus est negatif, coherent avec la courbe qui redescend a cet instant."
           - math: 'E_{c1} = \frac{1}{2}C\,u_c(t_1)^2 = \frac{1}{2}\times10\times10^{-6}\times8{,}09^2 \approx 3{,}27\times10^{-4}\ \text{J}'
             note: "Energie electrique restant dans le condensateur a t1."
           - math: '\boxed{E_{m1} = E_t - E_{c1} \approx 5\times10^{-4} - 3{,}27\times10^{-4} \approx 1{,}7\times10^{-4}\ \text{J}}'
-            note: "Conservation de l'energie totale (rung 1) : ce qui n'est pas dans le condensateur est dans la bobine."
+            note: "Conservation de l'energie totale (chapitre 2) : ce qui n'est pas dans le condensateur est dans la bobine."
 
   # ── bk-2018-n-x3 — 2018 N, Exercice III (Partie II) : RLC série, pseudo-periode puis entretien ──
   - id: bk-2018-n-x3
@@ -301,28 +301,28 @@ entries:
         stem: |-
           **(0,25 pt)** Pourquoi observe-t-on des oscillations pseudopériodiques ?
         reasoning: |-
-          Le rung 3 pose exactement cette question, et la réponse est celle du rung 4 : la bobine a une résistance propre $r$ non nulle (elle n'est pas idéale) — $r$ dissipe de l'énergie par effet Joule à chaque cycle (rung 3, « R est le frein »), donc l'amplitude des oscillations décroît d'un cycle à l'autre. C'est précisément la signature du régime pseudo-périodique (rung 4) : oscillations présentes, mais amplitude qui s'amortit progressivement.
+          Le chapitre 4 pose exactement cette question, et la réponse est celle du chapitre 5 : la bobine a une résistance propre $r$ non nulle (elle n'est pas idéale) — $r$ dissipe de l'énergie par effet Joule à chaque cycle (chapitre 4, « R est le frein »), donc l'amplitude des oscillations décroît d'un cycle à l'autre. C'est précisément la signature du régime pseudo-périodique (chapitre 5) : oscillations présentes, mais amplitude qui s'amortit progressivement.
       - id: q2a
         part: "Entretien des oscillations avec un générateur $u_G(t) = k\\,i(t)$"
         stem: |-
           **(0,5 pt)** Pour obtenir des oscillations électriques entretenues, un générateur $G$ délivrant une tension proportionnelle à l'intensité du courant $u_G(t) = k\, i(t)$ est inséré en série dans le circuit précédent. Établir l'équation différentielle vérifiée par la charge $q(t)$.
         reasoning: |-
-          Même méthode qu'au rung 7 — loi des mailles avec le générateur inséré — mais avec une différence structurelle : ce montage n'a pas de conducteur ohmique séparé, la seule résistance du circuit est celle de la bobine elle-même, $r$. On remplace donc le $R$ générique du rung 7 par $r$ dans le même schéma de substitution.
+          Même méthode qu'au chapitre 8 — loi des mailles avec le générateur inséré — mais avec une différence structurelle : ce montage n'a pas de conducteur ohmique séparé, la seule résistance du circuit est celle de la bobine elle-même, $r$. On remplace donc le $R$ générique du chapitre 8 par $r$ dans le même schéma de substitution.
         steps:
           - math: 'u_C + u_{bobine} = u_G \qquad \text{avec} \qquad u_{bobine} = L\frac{d^2q}{dt^2} + r\frac{dq}{dt}'
-            note: "Loi des mailles avec generateur (rung 7) ; ici la bobine porte elle-meme la seule resistance du circuit, r, il n'y a pas de R separe."
+            note: "Loi des mailles avec generateur (chapitre 8) ; ici la bobine porte elle-meme la seule resistance du circuit, r, il n'y a pas de R separe."
           - math: '\frac{q}{C} + L\frac{d^2q}{dt^2} + r\frac{dq}{dt} = k\frac{dq}{dt}'
-            note: "Chaque tension remplacee par son expression en q, comme au rung 7."
+            note: "Chaque tension remplacee par son expression en q, comme au chapitre 8."
           - math: '\boxed{L\frac{d^2q}{dt^2} + (r-k)\frac{dq}{dt} + \frac{q}{C} = 0}'
-            note: "Meme structure qu'au rung 7, avec r a la place de R (seule resistance ici)."
+            note: "Meme structure qu'au chapitre 8, avec r a la place de R (seule resistance ici)."
       - id: q2b
         stem: |-
           **(0,25 pt)** En ajustant le paramètre $k$ sur la valeur $k = 5$ (exprimée dans le système d'unités international), les oscillations deviennent sinusoïdales (figure 6). Déterminer la valeur de $r$.
         reasoning: |-
-          Rung 7 : l'entretien (oscillations sinusoïdales à amplitude constante) annule le coefficient d'amortissement de l'équation qu'on vient d'établir. Ici ce coefficient est $(r-k)$ — pas $(R-k)$, puisqu'il n'y a pas de $R$ séparé dans ce montage. La condition est donc $r = k$, directement.
+          Chapitre 8 : l'entretien (oscillations sinusoïdales à amplitude constante) annule le coefficient d'amortissement de l'équation qu'on vient d'établir. Ici ce coefficient est $(r-k)$ — pas $(R-k)$, puisqu'il n'y a pas de $R$ séparé dans ce montage. La condition est donc $r = k$, directement.
         steps:
           - math: 'r - k = 0 \implies r = k'
-            note: "Condition d'entretien (rung 7), generalisee : ici r joue le role que R joue au rung 7."
+            note: "Condition d'entretien (chapitre 8), generalisee : ici r joue le role que R joue au chapitre 8."
           - math: '\boxed{r = 5\ \Omega}'
             note: "Application numerique directe, k = 5 SI etant donne par l'enonce."
       - id: q2c
@@ -331,12 +331,12 @@ entries:
 
           *Figure 6 (courbe) :* $q\ (\mu\text{C})$ en fonction de $t\ (\text{ms})$ ; sinusoïde d'amplitude **constante** oscillant entre $+q_m$ et $-q_m$ ; les maxima successifs apparaissent vers $t\approx1\ \text{ms}$ puis $t\approx3\ \text{ms}$ (période $\approx2\ \text{ms}$).
         reasoning: |-
-          Une fois l'entretien réalisé (question précédente), le circuit obéit à l'équation idéale du rung 2 — la période observée sur la figure 6 n'est plus une pseudo-période approchée, c'est exactement $T_0$. On la lit entre deux maxima consécutifs (rung 6) : $t\approx1\ \text{ms}$ et $t\approx3\ \text{ms}$, soit $T_0\approx2\ \text{ms}$. On inverse ensuite $T_0 = 2\pi\sqrt{LC}$ (rung 2) avec $C = 2{,}5\ \mu\text{F}$ donné. Ce sujet ne fournit pas l'indication « $\pi^2 = 10$ » utilisée ailleurs : on garde la valeur usuelle de $\pi^2$, comme dans les exemples numériques de la leçon elle-même.
+          Une fois l'entretien réalisé (question précédente), le circuit obéit à l'équation idéale du chapitre 3 — la période observée sur la figure 6 n'est plus une pseudo-période approchée, c'est exactement $T_0$. On la lit entre deux maxima consécutifs (chapitre 7) : $t\approx1\ \text{ms}$ et $t\approx3\ \text{ms}$, soit $T_0\approx2\ \text{ms}$. On inverse ensuite $T_0 = 2\pi\sqrt{LC}$ (chapitre 3) avec $C = 2{,}5\ \mu\text{F}$ donné. Ce sujet ne fournit pas l'indication « $\pi^2 = 10$ » utilisée ailleurs : on garde la valeur usuelle de $\pi^2$, comme dans les exemples numériques de la leçon elle-même.
         steps:
           - math: 'T_0 = t_2 - t_1 = 3 - 1 = 2\ \text{ms}'
-            note: "Deux maxima consecutifs sur la figure 6 (rung 6) ; sous entretien, c'est exactement T0, pas une pseudo-periode approchee."
+            note: "Deux maxima consecutifs sur la figure 6 (chapitre 7) ; sous entretien, c'est exactement T0, pas une pseudo-periode approchee."
           - math: 'T_0 = 2\pi\sqrt{LC} \implies L = \frac{T_0^2}{4\pi^2 C}'
-            note: "On isole L (rung 2)."
+            note: "On isole L (chapitre 3)."
           - math: 'L = \frac{(2\times10^{-3})^2}{4\pi^2\times2{,}5\times10^{-6}} \approx \frac{4\times10^{-6}}{9{,}87\times10^{-5}}'
             note: "Application numerique, avec la valeur usuelle de pi^2 (aucune indication pi^2 = 10 dans ce sujet)."
           - math: '\boxed{L \approx 40\ \text{mH}}'
@@ -416,33 +416,33 @@ entries:
         stem: |-
           **(0,25 pt)** Quel est le régime d'oscillation mis en évidence par la courbe de la figure 4 ?
         reasoning: |-
-          Rung 4 : la courbe oscille (elle change de signe plusieurs fois) mais chaque maximum successif est plus bas que le précédent — amplitude décroissante. C'est exactement la signature du régime pseudo-périodique : ni le régime périodique (amplitude constante, exclu ici), ni le régime apériodique (pas d'oscillation du tout, exclu aussi puisque la courbe croise bien l'axe plusieurs fois).
+          Chapitre 5 : la courbe oscille (elle change de signe plusieurs fois) mais chaque maximum successif est plus bas que le précédent — amplitude décroissante. C'est exactement la signature du régime pseudo-périodique : ni le régime périodique (amplitude constante, exclu ici), ni le régime apériodique (pas d'oscillation du tout, exclu aussi puisque la courbe croise bien l'axe plusieurs fois).
 
           Le régime est **pseudo-périodique**.
       - id: q1b
         stem: |-
           **(0,5 pt)** Établir l'équation différentielle vérifiée par la tension $u_c(t)$.
         reasoning: |-
-          Même méthode qu'au rung 5 (loi des mailles, cas amorti, exprimé ici en $u_c$ comme à la question 1 du sujet 2019 ci-dessus), mais avec une extension : la résistance qui amortit n'est pas une seule $R$, ce sont **deux** contributions en série — le conducteur ohmique $R=90\ \Omega$ ET la résistance propre $r$ de la bobine $(L,r)$, que le rung 5 ne décompose jamais explicitement. On les additionne au même endroit de la loi des mailles, puisqu'elles jouent exactement le même rôle physique (dissiper par effet Joule).
+          Même méthode qu'au chapitre 6 (loi des mailles, cas amorti, exprimé ici en $u_c$ comme à la question 1 du sujet 2019 ci-dessus), mais avec une extension : la résistance qui amortit n'est pas une seule $R$, ce sont **deux** contributions en série — le conducteur ohmique $R=90\ \Omega$ ET la résistance propre $r$ de la bobine $(L,r)$, que le chapitre 6 ne décompose jamais explicitement. On les additionne au même endroit de la loi des mailles, puisqu'elles jouent exactement le même rôle physique (dissiper par effet Joule).
         steps:
           - math: 'u_C + u_R + u_{bobine} = 0 \qquad \text{avec} \qquad u_{bobine} = L\frac{di}{dt} + r\,i'
-            note: "Loi des mailles (rung 5), pas de generateur dans cette partie ; deux resistances ici, R externe et r (resistance propre de la bobine), alors que le rung 5 n'en compte qu'une."
+            note: "Loi des mailles (chapitre 6), pas de generateur dans cette partie ; deux resistances ici, R externe et r (resistance propre de la bobine), alors que le chapitre 6 n'en compte qu'une."
           - math: 'u_c + Ri + ri + L\frac{di}{dt} = 0 \implies u_c + (R+r)i + L\frac{di}{dt} = 0'
             note: "On regroupe les deux termes resistifs, R et r, qui jouent le meme role dans la loi des mailles."
           - math: 'i = C\frac{du_c}{dt} \implies u_c + (R+r)C\frac{du_c}{dt} + LC\frac{d^2u_c}{dt^2} = 0'
-            note: "On exprime i en u_c (meme geste qu'au rung 2 et qu'a la question 1 du sujet 2019 ci-dessus)."
+            note: "On exprime i en u_c (meme geste qu'au chapitre 3 et qu'a la question 1 du sujet 2019 ci-dessus)."
           - math: '\boxed{\frac{d^2u_c}{dt^2} + \frac{R+r}{L}\frac{du_c}{dt} + \frac{1}{LC}\,u_c = 0}'
-            note: "Division par LC ; forme standard du cas amorti (rung 5), R+r jouant le role de la resistance totale."
+            note: "Division par LC ; forme standard du cas amorti (chapitre 6), R+r jouant le role de la resistance totale."
       - id: q1c
         stem: |-
           **(0,5 pt)** Sachant que la pseudopériode est égale à la période propre, trouver la capacité $C$ du condensateur. (On prend : $\pi^{2} = 10$).
         reasoning: |-
-          L'énoncé donne ici l'approximation du rung 6 ($T \approx T_0$ pour un amortissement faible) comme une égalité à utiliser directement : $T_0 = T = 10\ \text{ms}$, lu sur la figure 4 par la méthode du rung 6 (extrema exactement espacés de $10\ \text{ms}$). On inverse ensuite $T_0 = 2\pi\sqrt{LC}$ (rung 2) pour isoler $C$, avec $L = 1\ \text{H}$ — une valeur établie en Partie I (réponse du dipôle RL, hors périmètre RLC, transcrite sous dipole-rl.md), pas une donnée de cette partie-ci.
+          L'énoncé donne ici l'approximation du chapitre 7 ($T \approx T_0$ pour un amortissement faible) comme une égalité à utiliser directement : $T_0 = T = 10\ \text{ms}$, lu sur la figure 4 par la méthode du chapitre 7 (extrema exactement espacés de $10\ \text{ms}$). On inverse ensuite $T_0 = 2\pi\sqrt{LC}$ (chapitre 3) pour isoler $C$, avec $L = 1\ \text{H}$ — une valeur établie en Partie I (réponse du dipôle RL, hors périmètre RLC, transcrite sous dipole-rl.md), pas une donnée de cette partie-ci.
         steps:
           - math: 'T_0 = T = 10\ \text{ms}'
-            note: "Pseudo-periode lue sur la figure 4 (rung 6), prise egale a T0 par hypothese de l'enonce."
+            note: "Pseudo-periode lue sur la figure 4 (chapitre 7), prise egale a T0 par hypothese de l'enonce."
           - math: 'T_0 = 2\pi\sqrt{LC} \implies C = \frac{T_0^2}{4\pi^2 L}'
-            note: "On isole C (rung 2)."
+            note: "On isole C (chapitre 3)."
           - math: 'C = \frac{(10\times10^{-3})^2}{4\times10\times1} = \frac{10^{-4}}{40}'
             note: "Application numerique, avec L = 1 H (etabli en Partie I, hors perimetre RLC, transcrite sous dipole-rl.md) et pi^2 = 10 donne par l'enonce."
           - math: '\boxed{C = 2{,}5\ \mu\text{F}}'
@@ -452,24 +452,24 @@ entries:
         stem: |-
           **(0,5 pt)** Trouver, dans le système international d'unités, la valeur de $k_0$.
         reasoning: |-
-          Le rung 7 donne la condition d'entretien pour une seule résistance ($k=R$). Ici, comme à la question 1b, deux résistances dissipent en série — $R$ et $r$ — donc la condition se généralise : le coefficient d'amortissement de la loi des mailles avec générateur est $(R+r-k)$, et l'entretien l'annule, soit $k_0 = R+r$. $R=90\ \Omega$ est donné dans cette partie ; $r=10\ \Omega$ vient de la Partie I (dipole-rl.md, hors périmètre RLC).
+          Le chapitre 8 donne la condition d'entretien pour une seule résistance ($k=R$). Ici, comme à la question 1b, deux résistances dissipent en série — $R$ et $r$ — donc la condition se généralise : le coefficient d'amortissement de la loi des mailles avec générateur est $(R+r-k)$, et l'entretien l'annule, soit $k_0 = R+r$. $R=90\ \Omega$ est donné dans cette partie ; $r=10\ \Omega$ vient de la Partie I (dipole-rl.md, hors périmètre RLC).
         steps:
           - math: 'u_C + u_R + u_{bobine} = u_G \implies L\frac{d^2q}{dt^2} + (R+r-k)\frac{dq}{dt} + \frac{q}{C} = 0'
-            note: "Meme substitution qu'au rung 7, avec R remplace par R+r (les deux resistances s'additionnent dans la loi des mailles, comme a la question 1b)."
+            note: "Meme substitution qu'au chapitre 8, avec R remplace par R+r (les deux resistances s'additionnent dans la loi des mailles, comme a la question 1b)."
           - math: 'k_0 = R + r = 90 + 10'
-            note: "Entretien (rung 7) : on annule le coefficient (R+r-k) ; r = 10 ohms etabli en Partie I (dipole-rl.md, hors perimetre RLC)."
+            note: "Entretien (chapitre 8) : on annule le coefficient (R+r-k) ; r = 10 ohms etabli en Partie I (dipole-rl.md, hors perimetre RLC)."
           - math: '\boxed{k_0 = 100\ \text{(unites SI)}}'
             note: "k0 est homogene a une resistance (u_G = k.i), donc s'exprime en ohms."
       - id: q2b
         stem: |-
           **(0,75 pt)** Sachant que l'expression de l'intensité $i(t)$ dans le circuit s'écrit ainsi : $i(t) = I_m\cos\!\left(\dfrac{2\pi}{T_0}\, t + \varphi\right)$, déterminer les valeurs de $I_m$, $T_0$ et $\varphi$.
         reasoning: |-
-          Sous entretien, le circuit obéit à l'équation idéale (rung 7) : $i(t)$ est un cosinus pur, exactement la forme donnée. $I_m$ se lit directement comme l'amplitude de la figure 6 ; $T_0$ se lit comme l'écart entre deux extrema consécutifs (rung 6) — et coïncide avec la pseudo-période de la figure 4, comme l'énoncé le suggère. Pour $\varphi$, on utilise la condition initiale : la courbe part de l'axe ($i(0)=0$) en décroissant, ce qui fixe le signe de $\varphi$ sans ambiguïté.
+          Sous entretien, le circuit obéit à l'équation idéale (chapitre 8) : $i(t)$ est un cosinus pur, exactement la forme donnée. $I_m$ se lit directement comme l'amplitude de la figure 6 ; $T_0$ se lit comme l'écart entre deux extrema consécutifs (chapitre 7) — et coïncide avec la pseudo-période de la figure 4, comme l'énoncé le suggère. Pour $\varphi$, on utilise la condition initiale : la courbe part de l'axe ($i(0)=0$) en décroissant, ce qui fixe le signe de $\varphi$ sans ambiguïté.
         steps:
           - math: 'I_m = 8{,}0\ \text{mA} = 8{,}0\times10^{-3}\ \text{A}'
             note: "Lecture directe de l'amplitude sur la figure 6 (courbe entre +8 et -8 mA)."
           - math: 'T_0 = 10\ \text{ms}'
-            note: "Ecart entre deux extrema consecutifs (rung 6) ; identique a la pseudo-periode mesuree sur la figure 4, comme l'enonce le suggere."
+            note: "Ecart entre deux extrema consecutifs (chapitre 7) ; identique a la pseudo-periode mesuree sur la figure 4, comme l'enonce le suggere."
           - math: 'i(0) = I_m\cos\varphi = 0 \quad \text{et} \quad \left.\frac{di}{dt}\right|_{t=0} < 0'
             note: "La courbe part de zero en decroissant a t=0 (figure 6)."
           - math: '\boxed{\varphi = \frac{\pi}{2}}'
@@ -478,17 +478,17 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer l'énergie totale $E_t$ du circuit.
         reasoning: |-
-          Comme au sujet 2019 ci-dessus (question 4a), le régime est maintenant équivalent au cas idéal (rung 1) : l'énergie totale est conservée et se calcule au moment le plus simple, ici le maximum du courant ($u_C = 0$, toute l'énergie est magnétique).
+          Comme au sujet 2019 ci-dessus (question 4a), le régime est maintenant équivalent au cas idéal (chapitre 2) : l'énergie totale est conservée et se calcule au moment le plus simple, ici le maximum du courant ($u_C = 0$, toute l'énergie est magnétique).
         steps:
           - math: 'E_t = \frac{1}{2}L\,I_m^2 = \frac{1}{2}\times1\times(8{,}0\times10^{-3})^2'
-            note: "Au maximum du courant, toute l'energie est dans la bobine (rung 1) ; en regime entretenu l'energie totale est constante, ce calcul vaut a tout instant."
+            note: "Au maximum du courant, toute l'energie est dans la bobine (chapitre 2) ; en regime entretenu l'energie totale est constante, ce calcul vaut a tout instant."
           - math: '\boxed{E_t \approx 3{,}2\times10^{-5}\ \text{J}}'
             note: "Application numerique."
       - id: q2d
         stem: |-
           **(0,5 pt)** Trouver l'énergie électrique $E_{e1}$ emmagasinée dans le condensateur à l'instant $t_1 = 16\ \text{ms}$.
         reasoning: |-
-          Même geste qu'au sujet 2019 ci-dessus (question 4b) : conservation de l'énergie totale (rung 1), $E_{e1} = E_t - E_m(t_1)$. On calcule d'abord $E_m(t_1)$ à partir de $i(t_1)$, évalué avec l'expression identifiée à la question précédente.
+          Même geste qu'au sujet 2019 ci-dessus (question 4b) : conservation de l'énergie totale (chapitre 2), $E_{e1} = E_t - E_m(t_1)$. On calcule d'abord $E_m(t_1)$ à partir de $i(t_1)$, évalué avec l'expression identifiée à la question précédente.
         steps:
           - math: 'i(t_1) = I_m\cos\!\left(\frac{2\pi}{T_0}t_1+\varphi\right) = 8{,}0\times10^{-3}\cos\!\left(\frac{2\pi}{10}\times16+\frac{\pi}{2}\right)'
             note: "On evalue i(t) a t1 = 16 ms avec les valeurs de la question precedente."
@@ -497,7 +497,7 @@ entries:
           - math: 'E_m(t_1) = \frac{1}{2}L\,i(t_1)^2 = \frac{1}{2}\times1\times(4{,}7\times10^{-3})^2 \approx 1{,}1\times10^{-5}\ \text{J}'
             note: "Energie magnetique a cet instant."
           - math: '\boxed{E_{e1} = E_t - E_m(t_1) \approx 3{,}2\times10^{-5} - 1{,}1\times10^{-5} \approx 2{,}1\times10^{-5}\ \text{J}}'
-            note: "Conservation de l'energie totale (rung 1) : ce qui n'est pas dans la bobine est dans le condensateur."
+            note: "Conservation de l'energie totale (chapitre 2) : ce qui n'est pas dans la bobine est dans le condensateur."
 
   # ── bk-2021-n-x4 — 2021 N, Exercice IV (Partie II) : oscillations non amorties dans un circuit LC ──
   - id: bk-2021-n-x4
@@ -569,38 +569,38 @@ entries:
         stem: |-
           **(0,25 pt)** Préciser, parmi les trois régimes d'oscillations, le régime mis en évidence par la courbe de la figure 4.
         reasoning: |-
-          Même critère qu'au rung 4 : on regarde la forme générale de la courbe. La figure 4 est une sinusoïde (allure cosinus) d'amplitude **constante**, tangente aux mêmes traits $+144$ et $-144\ \mu\text{C}$ à chaque cycle — aucune décroissance visible d'un pic à l'autre. C'est la signature du régime **périodique** (rung 4), pas pseudo-périodique (qui demanderait une enveloppe décroissante) ni apériodique (qui ne oscillerait pas du tout). Cohérent avec la figure 3 : la boucle ne comporte aucun conducteur ohmique, seulement la bobine $L$ (résistance négligeable) et le condensateur $D$ — exactement le cas idéal $R \approx 0$ du rung 1.
+          Même critère qu'au chapitre 5 : on regarde la forme générale de la courbe. La figure 4 est une sinusoïde (allure cosinus) d'amplitude **constante**, tangente aux mêmes traits $+144$ et $-144\ \mu\text{C}$ à chaque cycle — aucune décroissance visible d'un pic à l'autre. C'est la signature du régime **périodique** (chapitre 5), pas pseudo-périodique (qui demanderait une enveloppe décroissante) ni apériodique (qui ne oscillerait pas du tout). Cohérent avec la figure 3 : la boucle ne comporte aucun conducteur ohmique, seulement la bobine $L$ (résistance négligeable) et le condensateur $D$ — exactement le cas idéal $R \approx 0$ du chapitre 2.
 
           Le régime est **périodique**.
       - id: q2
         stem: |-
           **(0,5 pt)** Établir l'équation différentielle vérifiée par la charge $q(t)$ du condensateur.
         reasoning: |-
-          Même mécanisme qu'au rung 2 (et qu'à la question 1 du sujet 2019 ci-dessus, écrite en $u_c$ plutôt qu'en $q$) : circuit LC idéal — la figure 3 confirme l'absence de tout conducteur ohmique dans la boucle, donc $R \approx 0$ comme au rung 1. La loi des mailles donne $u_L + u_C = 0$, puis chaque tension s'exprime avec son origine physique établie au rung 1 et au rung 2 : $u_C = \frac{q}{C}$, et $u_L = L\frac{di}{dt}$ où $i = \frac{dq}{dt}$.
+          Même mécanisme qu'au chapitre 3 (et qu'à la question 1 du sujet 2019 ci-dessus, écrite en $u_c$ plutôt qu'en $q$) : circuit LC idéal — la figure 3 confirme l'absence de tout conducteur ohmique dans la boucle, donc $R \approx 0$ comme au chapitre 2. La loi des mailles donne $u_L + u_C = 0$, puis chaque tension s'exprime avec son origine physique établie au chapitre 2 et au chapitre 3 : $u_C = \frac{q}{C}$, et $u_L = L\frac{di}{dt}$ où $i = \frac{dq}{dt}$.
         steps:
           - math: 'u_L + u_C = 0'
-            note: "Loi des mailles, cas ideal comme au rung 2 ; figure 3 confirme l'absence de tout conducteur ohmique dans la boucle."
+            note: "Loi des mailles, cas ideal comme au chapitre 3 ; figure 3 confirme l'absence de tout conducteur ohmique dans la boucle."
           - math: 'u_C = \frac{q}{C} \qquad u_L = L\frac{di}{dt} = L\frac{d^2q}{dt^2}'
-            note: "Definitions du rung 1 et du rung 2, avec i = dq/dt substitue dans u_L."
+            note: "Definitions du chapitre 2 et du chapitre 3, avec i = dq/dt substitue dans u_L."
           - math: '\boxed{L\frac{d^2q}{dt^2} + \frac{q}{C} = 0}'
-            note: "Substitution dans la loi des mailles et regroupement : forme standard du cas ideal (rung 2)."
+            note: "Substitution dans la loi des mailles et regroupement : forme standard du cas ideal (chapitre 3)."
       - id: q3
         stem: |-
           **(0,5 pt)** Trouver l'expression de la période propre $T_0$ de l'oscillateur en fonction de $L$ et de $C$ pour que l'expression $q(t) = Q_m \cos\!\left(\dfrac{2\pi}{T_0}\,t\right)$ soit solution de cette équation différentielle.
         reasoning: |-
-          Même démarche que la vérification du rung 2 (derivation:verification-cosinus) : on injecte la forme cosinus proposée par l'énoncé — ici sans déphasage, cohérent avec la courbe de la figure 4 qui part bien de son maximum à $t=0$ — dans l'équation établie à la question précédente, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
+          Même démarche que la vérification du chapitre 3 (derivation:verification-cosinus) : on injecte la forme cosinus proposée par l'énoncé — ici sans déphasage, cohérent avec la courbe de la figure 4 qui part bien de son maximum à $t=0$ — dans l'équation établie à la question précédente, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
         steps:
           - math: 'q(t) = Q_m\cos\!\left(\frac{2\pi}{T_0}\,t\right) \implies \frac{d^2q}{dt^2} = -\frac{4\pi^2}{T_0^2}\,q'
-            note: "Derivee seconde du cosinus propose par l'enonce (meme geste qu'au rung 2, derivation verification-cosinus)."
+            note: "Derivee seconde du cosinus propose par l'enonce (meme geste qu'au chapitre 3, derivation verification-cosinus)."
           - math: '-\frac{4\pi^2 L}{T_0^2}\,q + \frac{q}{C} = 0 \implies \frac{4\pi^2 L}{T_0^2} = \frac{1}{C}'
             note: "Substitution dans l'equation de la question precedente ; q se simplifie, il n'est jamais nul en permanence."
           - math: '\boxed{T_0 = 2\pi\sqrt{LC}}'
-            note: "On isole T0 : meme expression qu'au rung 2, retrouvee ici par la meme methode de substitution."
+            note: "On isole T0 : meme expression qu'au chapitre 3, retrouvee ici par la meme methode de substitution."
       - id: q4
         stem: |-
           **(0,25 pt)** Déterminer graphiquement la valeur de $T_0$.
         reasoning: |-
-          Même méthode que dans les sujets précédents (rung 6, et question 2b du sujet 2019 ci-dessus) : on repère deux maxima consécutifs sur la courbe. Le premier maximum est à $t=0$ ($Q_m = 144\ \mu\text{C}$, exactement tangent au trait principal non chiffré supérieur) ; le maximum suivant tombe exactement sur le repère chiffré $t=21\ \text{ms}$ (figure 4, lecture pixel-mesurée — voir la note de sourcing pour l'historique de cette lecture). L'écart entre les deux, dont le premier coïncide avec l'origine, donne directement $T_0$ sans soustraction.
+          Même méthode que dans les sujets précédents (chapitre 7, et question 2b du sujet 2019 ci-dessus) : on repère deux maxima consécutifs sur la courbe. Le premier maximum est à $t=0$ ($Q_m = 144\ \mu\text{C}$, exactement tangent au trait principal non chiffré supérieur) ; le maximum suivant tombe exactement sur le repère chiffré $t=21\ \text{ms}$ (figure 4, lecture pixel-mesurée — voir la note de sourcing pour l'historique de cette lecture). L'écart entre les deux, dont le premier coïncide avec l'origine, donne directement $T_0$ sans soustraction.
 
           $$T_0 = 21\ \text{ms}$$
       - id: q5
@@ -684,9 +684,9 @@ entries:
         stem: |-
           **(0,5 pt)** Affecter chaque courbe à la résistance qui lui correspond.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Deux courbes, deux résistances, et un seul critère qui les sépare : la **vitesse d'amortissement**. C'est l'étape 4 du rung 6 — quand on dispose de deux tracés obtenus avec le même $L$ et le même $C$ mais des $R$ différentes, celui qui s'éteint le plus vite est celui de la plus grande résistance. Rien d'autre n'est à calculer.
+          **Ce qu'on cherche et pourquoi ce geste.** Deux courbes, deux résistances, et un seul critère qui les sépare : la **vitesse d'amortissement**. C'est l'étape 4 du chapitre 7 — quand on dispose de deux tracés obtenus avec le même $L$ et le même $C$ mais des $R$ différentes, celui qui s'éteint le plus vite est celui de la plus grande résistance. Rien d'autre n'est à calculer.
 
-          Le raisonnement physique derrière ce critère est celui du rung 3 : $R$ ne nourrit pas les oscillations, $R$ les freine. À chaque passage du courant elle dissipe de l'énergie par effet Joule, avec une puissance $P = R\,i^2$ toujours positive. Plus $R$ est grande, plus cette ponction est rapide, plus l'amplitude s'effondre vite.
+          Le raisonnement physique derrière ce critère est celui du chapitre 4 : $R$ ne nourrit pas les oscillations, $R$ les freine. À chaque passage du courant elle dissipe de l'énergie par effet Joule, avec une puissance $P = R\,i^2$ toujours positive. Plus $R$ est grande, plus cette ponction est rapide, plus l'amplitude s'effondre vite.
 
           On lit alors les deux tracés :
 
@@ -695,7 +695,7 @@ entries:
 
           $$\boxed{\text{courbe (a)} \longrightarrow R_3 = 10\ \Omega \qquad \text{courbe (b)} \longrightarrow R_4 = 100\ \Omega}$$
 
-          **Le piège de cette question.** Ne cherche pas à départager les deux courbes sur leur **période** : elles ont exactement la même. Les extrema de (a) et ceux de (b) tombent aux mêmes dates ($\approx 22$, $45$, $67\ \text{ms}$) — c'est visible directement sur la figure 5. Le rythme est fixé par $L$ et $C$, jamais par $R$ (rung 3, rung 6 étape 4) ; $R$ ne contrôle que la vitesse d'extinction. Un élève qui répond « (b) a une période plus courte donc sa résistance est plus grande » invente une différence que le graphe ne montre pas.
+          **Le piège de cette question.** Ne cherche pas à départager les deux courbes sur leur **période** : elles ont exactement la même. Les extrema de (a) et ceux de (b) tombent aux mêmes dates ($\approx 22$, $45$, $67\ \text{ms}$) — c'est visible directement sur la figure 5. Le rythme est fixé par $L$ et $C$, jamais par $R$ (chapitre 4, chapitre 7 étape 4) ; $R$ ne contrôle que la vitesse d'extinction. Un élève qui répond « (b) a une période plus courte donc sa résistance est plus grande » invente une différence que le graphe ne montre pas.
       - id: q2
         part: "2- Pseudopériode lue, période propre calculée"
         stem: |-
@@ -703,13 +703,13 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** Deux gestes distincts, à ne pas mélanger : d'abord une **lecture** sur le graphe (la pseudopériode $T$, mesurée), puis un **calcul** à partir des composants (la période propre $T_0$, prédite par le modèle idéal). La question ne prend son sens que si les deux viennent de sources indépendantes — c'est leur rapprochement qui « vérifie » quelque chose.
 
-          **Premier temps — lire $T$ sur la courbe (a).** La résistance $R_3$ est celle de la courbe (a), établie à la question précédente. Méthode du rung 6, étape 2 : on repère deux **maxima consécutifs** et on soustrait leurs dates. La figure 5 a été construite pour ce relevé — ses deux seules graduations chiffrées, $45$ et $90\ \text{ms}$, tombent exactement sur deux maxima successifs de (a) :
+          **Premier temps — lire $T$ sur la courbe (a).** La résistance $R_3$ est celle de la courbe (a), établie à la question précédente. Méthode du chapitre 7, étape 2 : on repère deux **maxima consécutifs** et on soustrait leurs dates. La figure 5 a été construite pour ce relevé — ses deux seules graduations chiffrées, $45$ et $90\ \text{ms}$, tombent exactement sur deux maxima successifs de (a) :
 
           $$T = t_{n+1} - t_n = 90 - 45 = 45\ \text{ms}$$
 
           $$\boxed{T = 45\ \text{ms} = 45\times10^{-3}\ \text{s}}$$
 
-          **Deuxième temps — calculer $T_0$.** La période propre est celle du circuit **idéal** LC, celui qu'on obtiendrait en effaçant toute résistance (rung 2) :
+          **Deuxième temps — calculer $T_0$.** La période propre est celle du circuit **idéal** LC, celui qu'on obtiendrait en effaçant toute résistance (chapitre 3) :
 
           $$T_0 = 2\pi\sqrt{LC}$$
 
@@ -727,7 +727,7 @@ entries:
 
           $$\boxed{T = 45\ \text{ms} \approx T_0 = 44{,}9\ \text{ms}}$$
 
-          L'approximation $T \approx T_0$ du rung 4 est donc bien vérifiée — ce qui est cohérent avec la question 1 : la courbe (a) est celle du **faible** amortissement, et c'est précisément à faible amortissement que cette approximation vaut.
+          L'approximation $T \approx T_0$ du chapitre 5 est donc bien vérifiée — ce qui est cohérent avec la question 1 : la courbe (a) est celle du **faible** amortissement, et c'est précisément à faible amortissement que cette approximation vaut.
 
           **Les deux pièges de cette question.** Le premier est de mesurer $T$ entre un maximum et le minimum qui suit : sur la figure 5, cet écart vaut $22{,}5\ \text{ms}$ — c'est $T/2$, la moitié de la réponse. Une pseudopériode se lit toujours entre deux extrema **de même sens**. Le second est de croire que $T = T_0$ en général : c'est faux, et l'énoncé prend soin d'écrire « approximativement ». L'égalité n'est approchée que tant que l'amortissement reste faible — applique-la à la courbe (b), fortement amortie, et tu sors du domaine de validité.
       - id: q3
@@ -735,17 +735,17 @@ entries:
         stem: |-
           **(0,5 pt)** Les courbes de la figure 6 représentent, pour la résistance $R_3$, l'évolution de l'énergie électrique $E_e(t)$ emmagasinée dans le condensateur ainsi que l'évolution de l'énergie magnétique $E_m(t)$ emmagasinée dans la bobine. Déterminer l'énergie dissipée par effet Joule entre les instants de dates $t_0 = 0$ et $t_1 = 11{,}25\ \text{ms}$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** L'énergie dissipée ne se lit sur aucune courbe — elle se déduit d'un **bilan**. Le circuit ne contient que trois choses : le condensateur qui stocke $E_e$, la bobine qui stocke $E_m$, et la résistance qui ne fait que prendre (rung 3, $P = R\,i^2 > 0$). Donc tout ce que l'énergie totale a perdu entre deux dates est parti en chaleur, et nulle part ailleurs :
+          **Ce qu'on cherche et pourquoi ce geste.** L'énergie dissipée ne se lit sur aucune courbe — elle se déduit d'un **bilan**. Le circuit ne contient que trois choses : le condensateur qui stocke $E_e$, la bobine qui stocke $E_m$, et la résistance qui ne fait que prendre (chapitre 4, $P = R\,i^2 > 0$). Donc tout ce que l'énergie totale a perdu entre deux dates est parti en chaleur, et nulle part ailleurs :
 
           $$E_J = \big[E_e(t_0) + E_m(t_0)\big] - \big[E_e(t_1) + E_m(t_1)\big]$$
 
           Il n'y a plus qu'à lire quatre valeurs sur la figure 6.
 
-          **À $t_0 = 0$.** La courbe $C_1$ ($E_e$) part de son maximum, sur le niveau chiffré $1{,}80\ \text{mJ}$ ; la courbe $C_2$ ($E_m$) part de zéro. C'est cohérent avec le rung 1 : à l'instant du branchement, le condensateur vient d'être totalement chargé et le courant n'a pas encore démarré, donc toute l'énergie est électrique.
+          **À $t_0 = 0$.** La courbe $C_1$ ($E_e$) part de son maximum, sur le niveau chiffré $1{,}80\ \text{mJ}$ ; la courbe $C_2$ ($E_m$) part de zéro. C'est cohérent avec le chapitre 2 : à l'instant du branchement, le condensateur vient d'être totalement chargé et le courant n'a pas encore démarré, donc toute l'énergie est électrique.
 
           $$E_e(0) = 1{,}80\ \text{mJ} \qquad E_m(0) = 0 \qquad E_{\text{tot}}(0) = 1{,}80\ \text{mJ}$$
 
-          **À $t_1 = 11{,}25\ \text{ms}$.** Regarde d'abord où tombe cette date : $T/4 = 45/4 = 11{,}25\ \text{ms}$, exactement un quart de pseudopériode. C'est l'instant du basculement complet décrit au rung 1 — le condensateur est vide, le courant est maximal. La figure 6 le confirme : $C_1$ s'annule précisément là, et c'est là que $C_2$ passe par son premier sommet, chiffré par le trait d'aide pointillé à $1{,}26\ \text{mJ}$.
+          **À $t_1 = 11{,}25\ \text{ms}$.** Regarde d'abord où tombe cette date : $T/4 = 45/4 = 11{,}25\ \text{ms}$, exactement un quart de pseudopériode. C'est l'instant du basculement complet décrit au chapitre 2 — le condensateur est vide, le courant est maximal. La figure 6 le confirme : $C_1$ s'annule précisément là, et c'est là que $C_2$ passe par son premier sommet, chiffré par le trait d'aide pointillé à $1{,}26\ \text{mJ}$.
 
           $$E_e(t_1) = 0 \qquad E_m(t_1) = 1{,}26\ \text{mJ} \qquad E_{\text{tot}}(t_1) = 1{,}26\ \text{mJ}$$
 
@@ -755,7 +755,7 @@ entries:
 
           $$\boxed{E_J = 0{,}54\ \text{mJ} = 5{,}4\times10^{-4}\ \text{J}}$$
 
-          **Le contrôle qui rassure.** L'énergie de départ se recalcule à la main depuis la figure 5, sans passer par la figure 6 : la charge initiale y vaut $q_0 = 0{,}6\ \text{mC}$, et le rung 1 donne $E_e = \dfrac{q_0^2}{2C}$.
+          **Le contrôle qui rassure.** L'énergie de départ se recalcule à la main depuis la figure 5, sans passer par la figure 6 : la charge initiale y vaut $q_0 = 0{,}6\ \text{mC}$, et le chapitre 2 donne $E_e = \dfrac{q_0^2}{2C}$.
 
           $$E_e(0) = \frac{(0{,}6\times10^{-3})^2}{2\times100\times10^{-6}} = \frac{3{,}6\times10^{-7}}{2\times10^{-4}} = 1{,}8\times10^{-3}\ \text{J} = 1{,}80\ \text{mJ}$$
 
@@ -841,43 +841,43 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que l'équation différentielle vérifiée par la tension $u_C(t)$ s'écrit sous la forme : $\dfrac{d^2u_C}{dt^2} + \dfrac{1}{LC}u_C = 0$.
         reasoning: |-
-          Même mécanisme qu'au rung 2, écrit directement en $u_C$ comme à la question 1 du sujet 2019 ci-dessus. Ici la résistance négligée n'est pas un conducteur ohmique séparé — ce montage n'en a pas — c'est la résistance propre $r$ de la bobine elle-même, que l'énoncé demande explicitement de négliger dans ce premier cas : $R \approx 0$ au sens du rung 1. La loi des mailles donne $u_C + u_L = 0$, puis on exprime le courant à partir de $u_C$ ($i = C\frac{du_C}{dt}$, la relation $i = \frac{dq}{dt}$ du rung 1 réécrite avec $q = Cu_C$), et $u_L$ suit.
+          Même mécanisme qu'au chapitre 3, écrit directement en $u_C$ comme à la question 1 du sujet 2019 ci-dessus. Ici la résistance négligée n'est pas un conducteur ohmique séparé — ce montage n'en a pas — c'est la résistance propre $r$ de la bobine elle-même, que l'énoncé demande explicitement de négliger dans ce premier cas : $R \approx 0$ au sens du chapitre 2. La loi des mailles donne $u_C + u_L = 0$, puis on exprime le courant à partir de $u_C$ ($i = C\frac{du_C}{dt}$, la relation $i = \frac{dq}{dt}$ du chapitre 2 réécrite avec $q = Cu_C$), et $u_L$ suit.
         steps:
           - math: 'u_C + u_L = 0'
-            note: "Loi des mailles, cas ideal (rung 1) : ici c'est la resistance propre de la bobine qu'on neglige, il n'y a pas de conducteur ohmique separe dans ce montage."
+            note: "Loi des mailles, cas ideal (chapitre 2) : ici c'est la resistance propre de la bobine qu'on neglige, il n'y a pas de conducteur ohmique separe dans ce montage."
           - math: 'i = \frac{dq}{dt} = C\frac{du_C}{dt}'
             note: "Courant exprime directement en u_C (q = C u_C), meme geste qu'a la question 1 du sujet 2019 ci-dessus."
           - math: 'u_L = L\frac{di}{dt} = LC\frac{d^2u_C}{dt^2}'
-            note: "Tension bobine (rung 2), avec i deja exprime en u_C."
+            note: "Tension bobine (chapitre 3), avec i deja exprime en u_C."
           - math: '\boxed{\frac{d^2u_C}{dt^2} + \frac{1}{LC}\,u_C = 0}'
             note: "Substitution dans la loi des mailles et division par LC : la forme demandee."
       - id: q2
         stem: |-
           **(0,5 pt)** Choisir, parmi les courbes $(C_1)$, $(C_2)$ et $(C_3)$ de la figure 3, la courbe qui représente l'évolution de la tension $u_C(t)$. Justifier votre réponse.
         reasoning: |-
-          Deux critères, comme à la question 2a du sujet 2019 ci-dessus. D'abord le régime : l'équation de la question précédente ne contient aucun terme d'amortissement — c'est le cas idéal du rung 3/4, amplitude **constante**, jamais amortie. La courbe $(C_3)$, qui décroît, est donc exclue d'emblée. Ensuite l'amplitude : le condensateur a été chargé totalement avant la bascule de $K$, donc $u_C(0)$ doit valoir $U_0 = E$, la tension du palier de charge établie dans la section 1 du même sujet (réponse RC, transcrite sous rc-charge.md) — soit $12\ \text{V}$. $(C_2)$, malgré une amplitude constante, plafonne à $10\ \text{V}$ : elle est donc elle aussi exclue. Seule $(C_1)$ satisfait les deux critères à la fois.
+          Deux critères, comme à la question 2a du sujet 2019 ci-dessus. D'abord le régime : l'équation de la question précédente ne contient aucun terme d'amortissement — c'est le cas idéal du chapitre 4/4, amplitude **constante**, jamais amortie. La courbe $(C_3)$, qui décroît, est donc exclue d'emblée. Ensuite l'amplitude : le condensateur a été chargé totalement avant la bascule de $K$, donc $u_C(0)$ doit valoir $U_0 = E$, la tension du palier de charge établie dans la section 1 du même sujet (réponse RC, transcrite sous rc-charge.md) — soit $12\ \text{V}$. $(C_2)$, malgré une amplitude constante, plafonne à $10\ \text{V}$ : elle est donc elle aussi exclue. Seule $(C_1)$ satisfait les deux critères à la fois.
 
           La courbe **$(C_1)$** représente $u_C(t)$ : amplitude constante (cohérent avec l'équation idéale) et amplitude $12\ \text{V}$ (cohérent avec $U_0 = E$).
       - id: q3
         stem: |-
           **(0,5 pt)** La solution de l'équation différentielle précédente est $u_C(t) = U_0\cos\!\left(\dfrac{2\pi}{T_0}t\right)$, où $U_0$ est la valeur maximale de la tension et $T_0$ la période propre des oscillations. Trouver l'expression de $T_0$ en fonction de $L$ et $C$.
         reasoning: |-
-          Même démarche que la vérification du rung 2 (derivation:verification-cosinus), et que la question 3 du sujet 2021 ci-dessus : on injecte la forme cosinus proposée par l'énoncé dans l'équation établie à la question 1, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
+          Même démarche que la vérification du chapitre 3 (derivation:verification-cosinus), et que la question 3 du sujet 2021 ci-dessus : on injecte la forme cosinus proposée par l'énoncé dans l'équation établie à la question 1, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
         steps:
           - math: 'u_C(t) = U_0\cos\!\left(\frac{2\pi}{T_0}t\right) \implies \frac{d^2u_C}{dt^2} = -\frac{4\pi^2}{T_0^2}\,u_C'
-            note: "Derivee seconde du cosinus propose par l'enonce (meme geste qu'au rung 2)."
+            note: "Derivee seconde du cosinus propose par l'enonce (meme geste qu'au chapitre 3)."
           - math: '-\frac{4\pi^2}{T_0^2}\,u_C + \frac{1}{LC}u_C = 0 \implies \frac{4\pi^2}{T_0^2} = \frac{1}{LC}'
             note: "Substitution dans l'equation de la question 1 ; u_C se simplifie, il n'est jamais nul en permanence."
           - math: '\boxed{T_0 = 2\pi\sqrt{LC}}'
-            note: "On isole T0 : meme expression qu'au rung 2."
+            note: "On isole T0 : meme expression qu'au chapitre 3."
       - id: q4
         stem: |-
           **(0,5 pt)** Montrer que la valeur de l'inductance est : $L = 0{,}05\ \text{H}$. (on prend $\pi^2 = 10$).
         reasoning: |-
-          On inverse la formule de la question précédente pour isoler $L$. Il manque la valeur numérique de $T_0$ : on la lit sur la courbe $(C_1)$ identifiée à la question 2 (méthode du rung 6, deux maxima consécutifs) — le premier maximum est à $t = 0$ (départ, condensateur chargé au maximum), le suivant vers $t \approx 10\ \text{ms}$, d'où $T_0 \approx 10\ \text{ms}$. $C = 50\ \mu\text{F}$ est donné directement dans l'énoncé de cette section, pas besoin de pontage cross-notion ici (à la différence des sujets 2019/2020/2021 ci-dessus).
+          On inverse la formule de la question précédente pour isoler $L$. Il manque la valeur numérique de $T_0$ : on la lit sur la courbe $(C_1)$ identifiée à la question 2 (méthode du chapitre 7, deux maxima consécutifs) — le premier maximum est à $t = 0$ (départ, condensateur chargé au maximum), le suivant vers $t \approx 10\ \text{ms}$, d'où $T_0 \approx 10\ \text{ms}$. $C = 50\ \mu\text{F}$ est donné directement dans l'énoncé de cette section, pas besoin de pontage cross-notion ici (à la différence des sujets 2019/2020/2021 ci-dessus).
         steps:
           - math: 'T_0 \approx 10\ \text{ms}'
-            note: "Lu sur (C1) (rung 6) : deux maxima consecutifs, le premier a t=0."
+            note: "Lu sur (C1) (chapitre 7) : deux maxima consecutifs, le premier a t=0."
           - math: 'T_0 = 2\pi\sqrt{LC} \implies L = \frac{T_0^2}{4\pi^2 C}'
             note: "On isole L (question precedente)."
           - math: 'L = \frac{(10\times10^{-3})^2}{4\times10\times50\times10^{-6}} = \frac{10^{-4}}{2\times10^{-3}}'
@@ -889,15 +889,15 @@ entries:
         stem: |-
           **(0,5 pt)** Écrire l'expression de l'énergie totale $E_t$ du circuit en fonction de $C$, $u_C(t)$, $L$ et $i(t)$.
         reasoning: |-
-          C'est directement la formule du rung 1 : l'énergie totale, à un instant donné, est la somme de ce qui est stocké dans le condensateur et de ce qui est stocké dans la bobine — quel que soit le régime. Ce qui change dans ce deuxième cas, ce n'est pas la formule (toujours vraie instant par instant), c'est que cette somme n'est **plus constante** au fil du temps : la résistance $r$, non négligeable ici, la fait décroître (rung 3/4).
+          C'est directement la formule du chapitre 2 : l'énergie totale, à un instant donné, est la somme de ce qui est stocké dans le condensateur et de ce qui est stocké dans la bobine — quel que soit le régime. Ce qui change dans ce deuxième cas, ce n'est pas la formule (toujours vraie instant par instant), c'est que cette somme n'est **plus constante** au fil du temps : la résistance $r$, non négligeable ici, la fait décroître (chapitre 4/4).
         steps:
           - math: '\boxed{E_t = \frac{1}{2}C\,u_C(t)^2 + \frac{1}{2}L\,i(t)^2}'
-            note: "Somme des deux energies stockees a l'instant t (rung 1), valable dans les deux cas ; seule la constance de cette somme differe entre le cas ideal et le cas amorti."
+            note: "Somme des deux energies stockees a l'instant t (chapitre 2), valable dans les deux cas ; seule la constance de cette somme differe entre le cas ideal et le cas amorti."
       - id: q6
         stem: |-
           **(0,75 pt)** En exploitant les courbes de la figure 4, trouver l'énergie $\Delta E$ dissipée dans le circuit entre les instants $t_0 = 0$ et $t_1 = 9\ \text{ms}$.
         reasoning: |-
-          La méthode : $\Delta E = E_t(t_0) - E_t(t_1)$, où $E_t$ est la formule établie à la question précédente — R (ici $r$) ne fait que dissiper, jamais restituer (rung 3), donc cette différence est toujours positive. À $t_0 = 0$, les deux courbes donnent directement les deux grandeurs : $i(0) = 0$ (la courbe de gauche part de zéro) et $u_C(0) = 12\ \text{V}$ (la courbe de droite part de ce niveau, le même palier $E = 12\ \text{V}$ qu'à la question 2, pontage cross-notion avec la section 1) — toute l'énergie initiale est électrique.
+          La méthode : $\Delta E = E_t(t_0) - E_t(t_1)$, où $E_t$ est la formule établie à la question précédente — R (ici $r$) ne fait que dissiper, jamais restituer (chapitre 4), donc cette différence est toujours positive. À $t_0 = 0$, les deux courbes donnent directement les deux grandeurs : $i(0) = 0$ (la courbe de gauche part de zéro) et $u_C(0) = 12\ \text{V}$ (la courbe de droite part de ce niveau, le même palier $E = 12\ \text{V}$ qu'à la question 2, pontage cross-notion avec la section 1) — toute l'énergie initiale est électrique.
 
           Pour $t_1 = 9\ \text{ms}$, la même méthode : lire $u_C(9\ \text{ms})$ et $i(9\ \text{ms})$ sur les deux courbes de la figure 4. $t = 9\ \text{ms}$ est à $3$ carreaux fins après le repère $7{,}5$ : la tension remonte vers son maximum $+7\ \text{V}$ (atteint à $10\ \text{ms}$) et se lit $u_C(9) \approx 6\ \text{V}$ ; le courant redescend de son maximum $+250\ \text{mA}$ (à $7{,}5\ \text{ms}$) vers son zéro de $10\ \text{ms}$ et se lit $i(9) \approx 150\ \text{mA}$. (Lectures graphiques au demi-carreau près, mesurées sur le scan original lors d'une passe de mesure dédiée — voir sourcing.)
         steps:
@@ -1026,13 +1026,13 @@ entries:
         stem: |-
           **2.1.** (0,5 pt) Établir l'équation différentielle vérifiée par la charge $q(t)$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Le rung 5 établit l'équation différentielle du cas amorti pour un circuit RLC série avec un conducteur ohmique $R$ explicite : $Lq''+Rq'+q/C=0$. Ce montage-ci (figure 4) est différent sur un point précis : il n'y a AUCUN conducteur ohmique séparé — seuls le condensateur $C$ et la bobine $(L,r)$ ferment la boucle. La seule résistance du circuit est donc la résistance PROPRE $r$ de la bobine, celle-là même établie à la section précédente ($r=10\ \Omega$). Le geste du rung 5 reste identique ; seul le nom de la résistance change.
+          **Ce qu'on cherche et pourquoi ce geste.** Le chapitre 6 établit l'équation différentielle du cas amorti pour un circuit RLC série avec un conducteur ohmique $R$ explicite : $Lq''+Rq'+q/C=0$. Ce montage-ci (figure 4) est différent sur un point précis : il n'y a AUCUN conducteur ohmique séparé — seuls le condensateur $C$ et la bobine $(L,r)$ ferment la boucle. La seule résistance du circuit est donc la résistance PROPRE $r$ de la bobine, celle-là même établie à la section précédente ($r=10\ \Omega$). Le geste du chapitre 6 reste identique ; seul le nom de la résistance change.
 
           **La loi des mailles**, sur cette boucle sans générateur :
 
           $$u_C + u_{bobine} = 0$$
 
-          **Chaque tension par son dipôle** — $u_C = q/C$ (rung 2), et $u_{bobine} = L\dfrac{d^2q}{dt^2} + r\dfrac{dq}{dt}$ (relation caractéristique de la bobine, ici avec $i=dq/dt$) :
+          **Chaque tension par son dipôle** — $u_C = q/C$ (chapitre 3), et $u_{bobine} = L\dfrac{d^2q}{dt^2} + r\dfrac{dq}{dt}$ (relation caractéristique de la bobine, ici avec $i=dq/dt$) :
 
           $$\frac{q}{C} + L\frac{d^2q}{dt^2} + r\frac{dq}{dt} = 0$$
 
@@ -1040,23 +1040,23 @@ entries:
 
           $$\boxed{L\frac{d^2q}{dt^2} + r\frac{dq}{dt} + \frac{q}{C} = 0}$$
 
-          **Le contrôle qui rassure.** Cette équation garde exactement la structure du rung 5 — un terme d'inertie ($Lq''$), un terme d'amortissement (ici $rq'$), un terme de rappel ($q/C$) — avec $r$ jouant le rôle que $R$ joue d'ordinaire. Rien d'étonnant : $r$ dissipe de l'énergie par effet Joule exactement comme le ferait un conducteur ohmique (rung 3, « R est le frein »), qu'elle soit isolée dans son propre composant ou logée à l'intérieur de la bobine.
+          **Le contrôle qui rassure.** Cette équation garde exactement la structure du chapitre 6 — un terme d'inertie ($Lq''$), un terme d'amortissement (ici $rq'$), un terme de rappel ($q/C$) — avec $r$ jouant le rôle que $R$ joue d'ordinaire. Rien d'étonnant : $r$ dissipe de l'énergie par effet Joule exactement comme le ferait un conducteur ohmique (chapitre 4, « R est le frein »), qu'elle soit isolée dans son propre composant ou logée à l'intérieur de la bobine.
 
-          **Le piège de cette question.** Écrire l'équation SANS terme d'amortissement, en croyant que « pas de $R$ dans l'énoncé » veut dire « pas de résistance du tout » — et retomber ainsi, à tort, sur l'équation idéale du rung 2. La figure 5 dément cette lecture sans ambiguïté : les amplitudes successives ($2{,}45$ puis $2{,}0$ puis $1{,}47\ \text{mC}$…) décroissent nettement, la signature même du régime pseudo-périodique (rung 4) — et un régime amorti exige un terme dissipatif dans l'équation, ici porté par $r$.
+          **Le piège de cette question.** Écrire l'équation SANS terme d'amortissement, en croyant que « pas de $R$ dans l'énoncé » veut dire « pas de résistance du tout » — et retomber ainsi, à tort, sur l'équation idéale du chapitre 3. La figure 5 dément cette lecture sans ambiguïté : les amplitudes successives ($2{,}45$ puis $2{,}0$ puis $1{,}47\ \text{mC}$…) décroissent nettement, la signature même du régime pseudo-périodique (chapitre 5) — et un régime amorti exige un terme dissipatif dans l'équation, ici porté par $r$.
         steps:
           - math: 'u_C + u_{bobine} = 0 \qquad \text{avec} \qquad u_C = \frac{q}{C}, \quad u_{bobine} = L\frac{d^2q}{dt^2} + r\frac{dq}{dt}'
-            note: "Loi des mailles (rung 5) ; pas de conducteur ohmique separe dans ce montage, seule r (resistance propre de la bobine, section 1) dissipe."
+            note: "Loi des mailles (chapitre 6) ; pas de conducteur ohmique separe dans ce montage, seule r (resistance propre de la bobine, section 1) dissipe."
           - math: '\frac{q}{C} + L\frac{d^2q}{dt^2} + r\frac{dq}{dt} = 0'
             note: "Substitution directe dans la loi des mailles."
           - math: '\boxed{L\frac{d^2q}{dt^2} + r\frac{dq}{dt} + \frac{q}{C} = 0}'
-            note: "Forme standard du cas amorti (rung 5), avec r a la place de R."
+            note: "Forme standard du cas amorti (chapitre 6), avec r a la place de R."
       - id: q2
         stem: |-
           **2.2.** (0,75 pt) Sachant que la pseudopériode est approximativement égale à la période propre $T_0$ des oscillations, déterminer la capacité $C$ du condensateur. (On prend $\pi^2 = 10$.)
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé donne ici l'approximation du rung 6 ($T\approx T_0$, valable pour un amortissement faible) comme une égalité à utiliser directement. Il faut donc, dans l'ordre : lire la pseudopériode $T$ sur la figure 5 (méthode du rung 6, deux maxima consécutifs), poser $T_0=T$, puis inverser la formule du rung 2, $T_0=2\pi\sqrt{LC}$, pour isoler $C$.
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé donne ici l'approximation du chapitre 7 ($T\approx T_0$, valable pour un amortissement faible) comme une égalité à utiliser directement. Il faut donc, dans l'ordre : lire la pseudopériode $T$ sur la figure 5 (méthode du chapitre 7, deux maxima consécutifs), poser $T_0=T$, puis inverser la formule du chapitre 3, $T_0=2\pi\sqrt{LC}$, pour isoler $C$.
 
-          **La lecture de la pseudopériode.** Le rung 6 prescrit de repérer deux maxima consécutifs et de soustraire leurs abscisses. La figure 5 en donne deux : $t_1\approx0{,}10\ \text{s}$ et $t_2\approx0{,}196\ \text{s}$.
+          **La lecture de la pseudopériode.** Le chapitre 7 prescrit de repérer deux maxima consécutifs et de soustraire leurs abscisses. La figure 5 en donne deux : $t_1\approx0{,}10\ \text{s}$ et $t_2\approx0{,}196\ \text{s}$.
 
           $$T = t_2 - t_1 = 0{,}196 - 0{,}100 = 0{,}096\ \text{s}$$
 
@@ -1064,11 +1064,11 @@ entries:
 
           $$T \approx 0{,}10\ \text{s}$$
 
-          **On pose $T_0=T$**, comme l'énoncé le demande explicitement ici (l'égalité approchée du rung 6, prise comme une égalité de travail) :
+          **On pose $T_0=T$**, comme l'énoncé le demande explicitement ici (l'égalité approchée du chapitre 7, prise comme une égalité de travail) :
 
           $$T_0 \approx 0{,}10\ \text{s} = 1{,}0\times10^{-1}\ \text{s}$$
 
-          **On inverse $T_0=2\pi\sqrt{LC}$** (rung 2) pour isoler $C$, avec $L=1\ \text{H}$ (donné dans cette section) et $\pi^2=10$ (imposé par l'énoncé) :
+          **On inverse $T_0=2\pi\sqrt{LC}$** (chapitre 3) pour isoler $C$, avec $L=1\ \text{H}$ (donné dans cette section) et $\pi^2=10$ (imposé par l'énoncé) :
 
           $$T_0 = 2\pi\sqrt{LC} \implies T_0^2 = 4\pi^2 LC \implies C = \frac{T_0^2}{4\pi^2 L}$$
 
@@ -1078,14 +1078,14 @@ entries:
 
           **Le contrôle qui rassure.** $L=1\ \text{H}$ est précisément la valeur $L_1=2L_0$ de la question 1.6 de la section précédente — cette coïncidence n'est pas un hasard : c'est la même bobine, réglée sur la même position. Et $250\ \mu\text{F}$ redonne exactement, en sens inverse, $T_0=2\pi\sqrt{1\times2{,}5\times10^{-4}}=2\pi\times1{,}58\times10^{-2}\approx0{,}0993\ \text{s}\approx0{,}10\ \text{s}$ — cohérent avec la lecture graphique.
 
-          **Le piège de cette question.** Utiliser $r=10\ \Omega$ (établi à la section précédente) dans ce calcul. Il n'a AUCUN rôle ici : $T_0=2\pi\sqrt{LC}$ ne dépend que de $L$ et $C$ (rung 2 — « R n'apparaît nulle part » dans la période propre, et $r$ y joue exactement le même rôle que $R$). Le faire intervenir ne fait que compliquer un calcul qui n'en a pas besoin. Deuxième piège, plus classique : mélanger $\pi^2=10$ et la vraie valeur $\pi^2\approx9{,}87$ dans le même calcul — l'énoncé impose $\pi^2=10$ pour TOUT le calcul, pas seulement pour une étape.
+          **Le piège de cette question.** Utiliser $r=10\ \Omega$ (établi à la section précédente) dans ce calcul. Il n'a AUCUN rôle ici : $T_0=2\pi\sqrt{LC}$ ne dépend que de $L$ et $C$ (chapitre 3 — « R n'apparaît nulle part » dans la période propre, et $r$ y joue exactement le même rôle que $R$). Le faire intervenir ne fait que compliquer un calcul qui n'en a pas besoin. Deuxième piège, plus classique : mélanger $\pi^2=10$ et la vraie valeur $\pi^2\approx9{,}87$ dans le même calcul — l'énoncé impose $\pi^2=10$ pour TOUT le calcul, pas seulement pour une étape.
         steps:
           - math: 'T = t_2 - t_1 = 0{,}196 - 0{,}100 = 0{,}096\ \text{s} \approx 0{,}10\ \text{s}'
-            note: "Pseudoperiode lue entre deux maxima consecutifs (rung 6) ; confirmee par deux lectures independantes entre minima (0,098 s chacune)."
+            note: "Pseudoperiode lue entre deux maxima consecutifs (chapitre 7) ; confirmee par deux lectures independantes entre minima (0,098 s chacune)."
           - math: 'T_0 \approx T \approx 0{,}10\ \text{s}'
-            note: "Approximation imposee par l'enonce (rung 6)."
+            note: "Approximation imposee par l'enonce (chapitre 7)."
           - math: 'T_0 = 2\pi\sqrt{LC} \implies C = \frac{T_0^2}{4\pi^2 L}'
-            note: "On isole C (rung 2)."
+            note: "On isole C (chapitre 3)."
           - math: 'C = \frac{(0{,}10)^2}{4\times10\times1} = \frac{0{,}01}{40}'
             note: "Application numerique : T0 = 0,10 s, L = 1 H (donne dans cette section), pi^2 = 10 (impose par l'enonce)."
           - math: '\boxed{C = 2{,}5\times10^{-4}\ \text{F} = 250\ \mu\text{F}}'
@@ -1147,25 +1147,25 @@ entries:
         stem: |-
           **(0,25 pt)** Établir l'équation différentielle vérifiée par la tension $u_C(t)$ entre les bornes du condensateur.
         reasoning: |-
-          Même mécanisme qu'à la question 1 du sujet 2022 ci-dessus, et qu'au rung 2 : circuit LC pur (la figure 3 ne montre aucun conducteur ohmique dans la boucle, et la bobine $(b)$ n'est pas dite résistive ici). Loi des mailles $u_C + u_L = 0$, puis $u_C = \frac{q}{C}$ et $i = \frac{dq}{dt} = C\frac{du_C}{dt}$ (rung 1) pour aboutir à $u_L = LC\frac{d^2u_C}{dt^2}$.
+          Même mécanisme qu'à la question 1 du sujet 2022 ci-dessus, et qu'au chapitre 3 : circuit LC pur (la figure 3 ne montre aucun conducteur ohmique dans la boucle, et la bobine $(b)$ n'est pas dite résistive ici). Loi des mailles $u_C + u_L = 0$, puis $u_C = \frac{q}{C}$ et $i = \frac{dq}{dt} = C\frac{du_C}{dt}$ (chapitre 2) pour aboutir à $u_L = LC\frac{d^2u_C}{dt^2}$.
         steps:
           - math: 'u_C + u_L = 0'
-            note: "Loi des mailles, cas ideal (rung 1) : aucun conducteur ohmique dans la boucle (figure 3)."
+            note: "Loi des mailles, cas ideal (chapitre 2) : aucun conducteur ohmique dans la boucle (figure 3)."
           - math: 'i = C\frac{du_C}{dt} \qquad u_L = L\frac{di}{dt} = LC\frac{d^2u_C}{dt^2}'
             note: "Meme substitution qu'a la question 1 du sujet 2022 ci-dessus."
           - math: '\boxed{\frac{d^2u_C}{dt^2} + \frac{1}{LC}\,u_C = 0}'
-            note: "Forme standard du cas ideal (rung 2)."
+            note: "Forme standard du cas ideal (chapitre 3)."
       - id: q2
         part: "Exploiter la courbe : ne pas confondre le repère d'échelle et la période"
         stem: |-
           **(0,5 pt)** Trouver la valeur de la capacité $C$ du condensateur. (On prend $\pi^2 = 10$).
         reasoning: |-
-          Piège à éviter en premier : le repère porté sur la figure — un coin en L, deux flèches à une seule pointe chacune — n'est PAS une mesure de période. Chaque flèche du coin couvre exactement **une division** (« $5\text{V}$ » verticalement, « $0{,}5\ \text{ms}$ » horizontalement) : c'est un étalonnage des deux axes, pas un repère de temps caractéristique de la courbe. Une fois l'échelle posée (1 division $= 0{,}5\ \text{ms}$), on applique la méthode du rung 6 : deux maxima consécutifs, à $t=0$ et $t=2{,}0\ \text{ms}$ (4 divisions), donnent $T_0 = 2{,}0\ \text{ms}$. On inverse ensuite $T_0 = 2\pi\sqrt{LC}$ (rung 2) pour isoler $C$, avec $L = 1\ \text{H}$ établi au §1 du même sujet (dipôle RL, hors périmètre RLC, transcrit sous dipole-rl.md) — un pont entre les deux parties du même exercice, pas une donnée nouvelle à deviner.
+          Piège à éviter en premier : le repère porté sur la figure — un coin en L, deux flèches à une seule pointe chacune — n'est PAS une mesure de période. Chaque flèche du coin couvre exactement **une division** (« $5\text{V}$ » verticalement, « $0{,}5\ \text{ms}$ » horizontalement) : c'est un étalonnage des deux axes, pas un repère de temps caractéristique de la courbe. Une fois l'échelle posée (1 division $= 0{,}5\ \text{ms}$), on applique la méthode du chapitre 7 : deux maxima consécutifs, à $t=0$ et $t=2{,}0\ \text{ms}$ (4 divisions), donnent $T_0 = 2{,}0\ \text{ms}$. On inverse ensuite $T_0 = 2\pi\sqrt{LC}$ (chapitre 3) pour isoler $C$, avec $L = 1\ \text{H}$ établi au §1 du même sujet (dipôle RL, hors périmètre RLC, transcrit sous dipole-rl.md) — un pont entre les deux parties du même exercice, pas une donnée nouvelle à deviner.
         steps:
           - math: 'T_0 = 2{,}0\ \text{ms}'
-            note: "Lu entre deux maxima consecutifs (rung 6), avec l'echelle du coin en L : 4 divisions x 0,5 ms."
+            note: "Lu entre deux maxima consecutifs (chapitre 7), avec l'echelle du coin en L : 4 divisions x 0,5 ms."
           - math: 'T_0 = 2\pi\sqrt{LC} \implies C = \frac{T_0^2}{4\pi^2 L}'
-            note: "On isole C (rung 2)."
+            note: "On isole C (chapitre 3)."
           - math: 'C = \frac{(2\times10^{-3})^2}{4\times10\times1} = \frac{4\times10^{-6}}{40}'
             note: "Application numerique : T0 = 2,0 ms, L = 1 H (etabli au paragraphe 1, hors perimetre RLC, transcrit sous dipole-rl.md), pi^2 = 10 donne par l'enonce."
           - math: '\boxed{C = 0{,}1\ \mu\text{F}}'
@@ -1174,20 +1174,20 @@ entries:
         stem: |-
           **(0,75 pt)** Trouver l'énergie magnétique $E_m$ emmagasinée dans la bobine à l'instant $t = 1{,}8\ \text{ms}$.
         reasoning: |-
-          Même geste qu'à la question 4b du sujet 2019 ci-dessus : circuit idéal (rung 1), énergie totale conservée, $E_m = E_t - E_C(t)$. On évalue d'abord $u_C(1{,}8\ \text{ms})$ avec la forme cosinus identifiée par la courbe ($u_C(0) = +U_0$, donc phase nulle), en utilisant $T_0 = 2{,}0\ \text{ms}$ et $U_0 = 10\ \text{V}$ (amplitude lue à la question précédente).
+          Même geste qu'à la question 4b du sujet 2019 ci-dessus : circuit idéal (chapitre 2), énergie totale conservée, $E_m = E_t - E_C(t)$. On évalue d'abord $u_C(1{,}8\ \text{ms})$ avec la forme cosinus identifiée par la courbe ($u_C(0) = +U_0$, donc phase nulle), en utilisant $T_0 = 2{,}0\ \text{ms}$ et $U_0 = 10\ \text{V}$ (amplitude lue à la question précédente).
         steps:
           - math: 'E_t = \frac{1}{2}C\,U_0^2 = \frac{1}{2}\times0{,}1\times10^{-6}\times10^2'
-            note: "Energie totale, conservee dans le cas ideal (rung 1) ; calculee au maximum de u_C, ou tout est electrique."
+            note: "Energie totale, conservee dans le cas ideal (chapitre 2) ; calculee au maximum de u_C, ou tout est electrique."
           - math: '\boxed{E_t = 5\times10^{-6}\ \text{J}}'
             note: "Application numerique."
           - math: 'u_C(1{,}8) = U_0\cos\!\left(\frac{2\pi\times1{,}8}{2{,}0}\right) = 10\cos(1{,}8\pi)'
-            note: "Forme cosinus identifiee (rung 2), evaluee a t = 1,8 ms avec T0 = 2,0 ms."
+            note: "Forme cosinus identifiee (chapitre 3), evaluee a t = 1,8 ms avec T0 = 2,0 ms."
           - math: 'u_C(1{,}8) = 10\cos(324^\circ) \approx 10\times0{,}809 \approx 8{,}09\ \text{V}'
             note: "1,8 ms correspond a 0,9 periode, soit 324 degres ; le cosinus reste positif juste avant de refermer le cycle."
           - math: 'E_C(1{,}8) = \frac{1}{2}C\,u_C(1{,}8)^2 = \frac{1}{2}\times0{,}1\times10^{-6}\times8{,}09^2 \approx 3{,}27\times10^{-6}\ \text{J}'
             note: "Energie electrique restant dans le condensateur a cet instant."
           - math: '\boxed{E_m \approx 5\times10^{-6} - 3{,}27\times10^{-6} \approx 1{,}7\times10^{-6}\ \text{J}}'
-            note: "Conservation de l'energie totale (rung 1) : ce qui n'est pas dans le condensateur est dans la bobine."
+            note: "Conservation de l'energie totale (chapitre 2) : ce qui n'est pas dans le condensateur est dans la bobine."
 
   # ── bk-2023-r-x3b — 2023 R, Exercice 3 (section 2) : RLC amorti, bilan d'energie entre deux extrema, entretien ──
   - id: bk-2023-r-x3b
@@ -1273,11 +1273,11 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** Le mot « montrer » impose la destination : ce n'est pas seulement l'équation qu'on doit produire, c'est CETTE écriture-là, celle où le coefficient de $\dfrac{d^2q}{dt^2}$ vaut exactement $1$. Le geste se fait donc en deux temps, et le second est aussi noté que le premier : d'abord la loi des mailles ramenée à la seule inconnue $q$, ensuite une division par $L$ pour normaliser.
 
-          **Quel circuit, exactement ?** L'interrupteur est en position (2) : le générateur est hors du jeu, la maille active fait le tour du conducteur ohmique $R$, du condensateur $C_0$ et de la bobine $L$ (figure 1). Trois dipôles en série, donc trois tensions dont la somme est nulle — c'est la loi des mailles du rung 5, appliquée telle quelle :
+          **Quel circuit, exactement ?** L'interrupteur est en position (2) : le générateur est hors du jeu, la maille active fait le tour du conducteur ohmique $R$, du condensateur $C_0$ et de la bobine $L$ (figure 1). Trois dipôles en série, donc trois tensions dont la somme est nulle — c'est la loi des mailles du chapitre 6, appliquée telle quelle :
 
           $$u_R + u_C + u_L = 0$$
 
-          **Chaque tension, ramenée à $q$.** On garde l'orientation du rung 1, où le courant est le débit de charge de l'armature dont on suit la charge $q$ :
+          **Chaque tension, ramenée à $q$.** On garde l'orientation du chapitre 2, où le courant est le débit de charge de l'armature dont on suit la charge $q$ :
 
           $$i = \frac{dq}{dt}$$
 
@@ -1287,7 +1287,7 @@ entries:
 
           $$L\,\frac{d^2q}{dt^2} + R\,\frac{dq}{dt} + \frac{q}{C_0} = 0$$
 
-          C'est déjà l'équation du rung 5, à l'identique. Il ne reste que la mise en forme demandée : on divise **chaque** terme par $L$.
+          C'est déjà l'équation du chapitre 6, à l'identique. Il ne reste que la mise en forme demandée : on divise **chaque** terme par $L$.
 
           $$\boxed{\frac{d^2q}{dt^2} + \frac{R}{L}\,\frac{dq}{dt} + \frac{1}{LC_0}\,q = 0}$$
 
@@ -1303,17 +1303,17 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** Question en mots, mais la réponse attendue n'est pas un commentaire de courbe : c'est une chaîne énergétique. Il faut relier trois choses — la présence de $R$, la perte d'énergie totale, et la hauteur des extrema successifs — dans cet ordre. Dire « les oscillations s'essoufflent » ou « le condensateur finit par se vider » ne raccroche à rien.
 
-          **Premier maillon — $R$ prend, toujours, et ne rend jamais.** C'est le rung 3. Le courant traverse le conducteur ohmique, qui dissipe en chaleur une puissance
+          **Premier maillon — $R$ prend, toujours, et ne rend jamais.** C'est le chapitre 4. Le courant traverse le conducteur ohmique, qui dissipe en chaleur une puissance
 
           $$p_J = R\,i^2 \geqslant 0$$
 
           Ce carré est décisif : la puissance dissipée est positive que le courant aille dans un sens ou dans l'autre. À chaque aller comme à chaque retour du pendule électrique, $R$ prélève.
 
-          **Deuxième maillon — l'énergie totale décroît.** Le rung 1 pose l'énergie du circuit comme la somme de l'électrique et de la magnétique :
+          **Deuxième maillon — l'énergie totale décroît.** Le chapitre 2 pose l'énergie du circuit comme la somme de l'électrique et de la magnétique :
 
           $$E = \frac{q^2}{2C_0} + \frac{1}{2}L\,i^2$$
 
-          Le rung 3 affirme qu'elle décroît par effet Joule ; on peut le **redémontrer en une ligne** avec l'équation de la question 2-1, sans rien admettre. On dérive :
+          Le chapitre 4 affirme qu'elle décroît par effet Joule ; on peut le **redémontrer en une ligne** avec l'équation de la question 2-1, sans rien admettre. On dérive :
 
           $$\frac{dE}{dt} = \frac{q}{C_0}\,\frac{dq}{dt} + L\,i\,\frac{di}{dt} = i\left(\frac{q}{C_0} + L\,\frac{d^2q}{dt^2}\right)$$
 
@@ -1327,7 +1327,7 @@ entries:
 
           **La réponse, en une phrase.** Le conducteur ohmique $R$ dissipe de l'énergie par effet Joule à chaque passage du courant ; l'énergie totale du circuit décroît donc continûment, et comme à chaque extremum cette énergie est entièrement stockée dans le condensateur sous la forme $\dfrac{q_{\max}^2}{2C_0}$, la charge maximale — donc l'amplitude — diminue d'un extremum au suivant.
 
-          **Le piège de cette question.** Il consiste à faire disparaître l'énergie : « elle se perd », « elle s'épuise ». Rien ne se perd — elle **change de forme**, du couple condensateur-bobine vers la chaleur du conducteur ohmique, et le bilan de la question suivante la compte au joule près. Piège jumeau, sur la courbe cette fois : croire que l'amortissement ralentit aussi les oscillations. Il n'en est rien — les extrema de la figure 3 restent régulièrement espacés, la pseudo-période est constante. $R$ contrôle la vitesse d'extinction, jamais le rythme, qui reste fixé par $L$ et $C_0$ (rung 3, rung 6 étape 4).
+          **Le piège de cette question.** Il consiste à faire disparaître l'énergie : « elle se perd », « elle s'épuise ». Rien ne se perd — elle **change de forme**, du couple condensateur-bobine vers la chaleur du conducteur ohmique, et le bilan de la question suivante la compte au joule près. Piège jumeau, sur la courbe cette fois : croire que l'amortissement ralentit aussi les oscillations. Il n'en est rien — les extrema de la figure 3 restent régulièrement espacés, la pseudo-période est constante. $R$ contrôle la vitesse d'extinction, jamais le rythme, qui reste fixé par $L$ et $C_0$ (chapitre 4, chapitre 7 étape 4).
       - id: q3
         part: "2 — Le bilan : l'énergie dissipée entre t0 et t1"
         stem: |-
@@ -1368,7 +1368,7 @@ entries:
         stem: |-
           **2-4.** (0,5 pt) Pour entretenir les oscillations amorties obtenues, on introduit en série dans le circuit un générateur délivrant une tension $u_g = k.i(t)$ avec $u_g$ exprimée en volt (V) et $i(t)$ exprimée en ampère (A) et $k$ une constante positive. Déterminer la valeur de $k$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** « Entretenir » a un sens précis et un seul : faire disparaître le terme d'amortissement de l'équation, celui en $\dfrac{dq}{dt}$. On ne cherche donc pas $k$ par un raisonnement énergétique approximatif — on réécrit la maille avec le générateur dedans, on regroupe, et on annule le coefficient qui freine. C'est exactement la démarche du rung 7.
+          **Ce qu'on cherche et pourquoi ce geste.** « Entretenir » a un sens précis et un seul : faire disparaître le terme d'amortissement de l'équation, celui en $\dfrac{dq}{dt}$. On ne cherche donc pas $k$ par un raisonnement énergétique approximatif — on réécrit la maille avec le générateur dedans, on regroupe, et on annule le coefficient qui freine. C'est exactement la démarche du chapitre 8.
 
           **La nouvelle maille.** Le générateur d'entretien est en série : sa tension apparaît au second membre.
 
@@ -1392,9 +1392,9 @@ entries:
 
           **Pourquoi $R$ seul, et pas $R + r$.** L'énoncé a précisé que la bobine est « de résistance négligeable » : $R$ est la seule résistance de la maille, et c'est donc la totalité de ce qu'il faut compenser. Dans les sujets 2018 et 2020 de cette même banque, la bobine est résistive et la condition devient $k = r$ ou $k = R + r$. La règle n'est pas « $k$ vaut $R$ », elle est « $k$ vaut la somme de toutes les résistances de la maille » — ici cette somme se réduit à $35\ \Omega$.
 
-          **Le contrôle qui rassure.** Avec $k = R$, l'équation devient $L\,\dfrac{d^2q}{dt^2} + \dfrac{q}{C_0} = 0$ : c'est mot pour mot l'équation du circuit LC idéal du rung 2. Les oscillations redeviennent sinusoïdales d'amplitude constante, à la période propre $T_0 = 2\pi\sqrt{LC_0}$ — soit, avec le $L = 0{,}1\ \text{H}$ que l'énoncé donne à la section 3, environ $6{,}3\ \text{ms}$, exactement le rythme que la figure 3 montrait déjà avant l'entretien.
+          **Le contrôle qui rassure.** Avec $k = R$, l'équation devient $L\,\dfrac{d^2q}{dt^2} + \dfrac{q}{C_0} = 0$ : c'est mot pour mot l'équation du circuit LC idéal du chapitre 3. Les oscillations redeviennent sinusoïdales d'amplitude constante, à la période propre $T_0 = 2\pi\sqrt{LC_0}$ — soit, avec le $L = 0{,}1\ \text{H}$ que l'énoncé donne à la section 3, environ $6{,}3\ \text{ms}$, exactement le rythme que la figure 3 montrait déjà avant l'entretien.
 
-          **Le piège de cette question.** Croire que « plus $k$ est grand, mieux les oscillations sont entretenues ». Faux, et l'équation le dit : si $k > R$, le coefficient $(R-k)$ devient **négatif**, et le terme cesse de freiner pour se mettre à pousser — l'amplitude grandirait à chaque cycle, ce qui n'est pas un entretien mais une divergence. L'entretien est un réglage exact, une égalité, pas un maximum. Piège jumeau, conceptuel : penser que ce générateur « impose sa fréquence » au circuit. Il n'impose rien — $k$ n'apparaît nulle part dans $T_0 = 2\pi\sqrt{LC_0}$. Son rôle est de rendre à chaque instant exactement ce que $R$ prélève, rien de plus ; le rythme reste celui de la structure interne, $L$ et $C_0$ (rung 7).
+          **Le piège de cette question.** Croire que « plus $k$ est grand, mieux les oscillations sont entretenues ». Faux, et l'équation le dit : si $k > R$, le coefficient $(R-k)$ devient **négatif**, et le terme cesse de freiner pour se mettre à pousser — l'amplitude grandirait à chaque cycle, ce qui n'est pas un entretien mais une divergence. L'entretien est un réglage exact, une égalité, pas un maximum. Piège jumeau, conceptuel : penser que ce générateur « impose sa fréquence » au circuit. Il n'impose rien — $k$ n'apparaît nulle part dans $T_0 = 2\pi\sqrt{LC_0}$. Son rôle est de rendre à chaque instant exactement ce que $R$ prélève, rien de plus ; le rythme reste celui de la structure interne, $L$ et $C_0$ (chapitre 8).
 
   # ── bk-2024-n-x4 — 2024 N, Exercice 4 (Partie 1) : decharge C-RL amortie, energetique ──
   - id: bk-2024-n-x4
@@ -1457,31 +1457,31 @@ entries:
         stem: |-
           **(0,25 pt)** Expliquer de point de vue énergétique l'amortissement observé des oscillations dans le circuit.
         reasoning: |-
-          Même réponse qu'à la question 1 du sujet 2018 ci-dessus, et le cœur du rung 3 : ce circuit comporte deux éléments résistifs — le conducteur ohmique $R_0$ ET la résistance propre $r$ de la bobine — qui dissipent tous deux de l'énergie par effet Joule à chaque passage de courant ($P = Ri^2 > 0$, toujours positive, rung 3 : « R est le frein »). L'énergie totale du circuit (rung 1) diminue donc à chaque cycle, ce qui se traduit par une amplitude qui décroît d'une oscillation à l'autre — la signature même du régime pseudo-périodique (rung 4).
+          Même réponse qu'à la question 1 du sujet 2018 ci-dessus, et le cœur du chapitre 4 : ce circuit comporte deux éléments résistifs — le conducteur ohmique $R_0$ ET la résistance propre $r$ de la bobine — qui dissipent tous deux de l'énergie par effet Joule à chaque passage de courant ($P = Ri^2 > 0$, toujours positive, chapitre 4 : « R est le frein »). L'énergie totale du circuit (chapitre 2) diminue donc à chaque cycle, ce qui se traduit par une amplitude qui décroît d'une oscillation à l'autre — la signature même du régime pseudo-périodique (chapitre 5).
       - id: q2
         stem: |-
           **(0,5 pt)** Établir l'équation différentielle vérifiée par la tension $u_C(t)$ aux bornes du condensateur.
         reasoning: |-
-          Même méthode qu'à la question 1b du sujet 2020 ci-dessus (rung 5, généralisé) : deux résistances en série, le conducteur ohmique $R_0$ (l'énoncé fixe $R=R_0$ pour cette courbe) et la résistance propre $r$ de la bobine, qu'on additionne au même endroit de la loi des mailles puisqu'elles jouent le même rôle physique.
+          Même méthode qu'à la question 1b du sujet 2020 ci-dessus (chapitre 6, généralisé) : deux résistances en série, le conducteur ohmique $R_0$ (l'énoncé fixe $R=R_0$ pour cette courbe) et la résistance propre $r$ de la bobine, qu'on additionne au même endroit de la loi des mailles puisqu'elles jouent le même rôle physique.
         steps:
           - math: 'u_C + u_R + u_{bobine} = 0 \qquad \text{avec} \qquad u_{bobine} = L\frac{di}{dt} + r\,i'
-            note: "Loi des mailles (rung 5) ; deux resistances ici, R0 (conducteur ohmique ajustable) et r (resistance propre de la bobine), comme a la question 1b du sujet 2020 ci-dessus."
+            note: "Loi des mailles (chapitre 6) ; deux resistances ici, chapitre 1 (conducteur ohmique ajustable) et r (resistance propre de la bobine), comme a la question 1b du sujet 2020 ci-dessus."
           - math: 'u_C + (R_0+r)\,i + L\frac{di}{dt} = 0'
             note: "On regroupe les deux termes resistifs."
           - math: 'i = C\frac{du_C}{dt} \implies u_C + (R_0+r)C\frac{du_C}{dt} + LC\frac{d^2u_C}{dt^2} = 0'
-            note: "On exprime i en u_C (rung 2)."
+            note: "On exprime i en u_C (chapitre 3)."
           - math: '\boxed{\frac{d^2u_C}{dt^2} + \frac{R_0+r}{L}\frac{du_C}{dt} + \frac{1}{LC}\,u_C = 0}'
-            note: "Division par LC ; forme standard du cas amorti (rung 5), R0+r jouant le role de la resistance totale."
+            note: "Division par LC ; forme standard du cas amorti (chapitre 6), R0+r jouant le role de la resistance totale."
       - id: q3
         stem: |-
           **(0,5 pt)** Indiquer, en justifiant, dans quel dipôle est principalement emmagasinée l'énergie totale de l'oscillateur à l'instant $t_1$ puis à l'instant $t_2$ (figure 2).
         reasoning: |-
-          C'est exactement la mise en garde du rung 1 (« arrête-toi — qui stocke quoi, à quel instant ? ») : condensateur et bobine ne stockent jamais leur maximum au même instant, ils sont en opposition de phase. $t_1$ est un passage par zéro de $u_C$ : le condensateur est vide, $E_C = 0$ — toute l'énergie restante est donc dans la **bobine** (magnétique). $t_2$ est un extremum de $u_C$ : le courant y est nul (rung 1, un extremum de tension coïncide avec un zéro de courant), donc $E_L = 0$ — toute l'énergie restante est dans le **condensateur** (électrique). C'est précisément le motif du pendule d'énergie du rung 1, transposé au régime amorti : l'échange $E_C \leftrightarrow E_L$ continue à l'intérieur de chaque cycle, même si l'enveloppe totale décroît.
+          C'est exactement la mise en garde du chapitre 2 (« arrête-toi — qui stocke quoi, à quel instant ? ») : condensateur et bobine ne stockent jamais leur maximum au même instant, ils sont en opposition de phase. $t_1$ est un passage par zéro de $u_C$ : le condensateur est vide, $E_C = 0$ — toute l'énergie restante est donc dans la **bobine** (magnétique). $t_2$ est un extremum de $u_C$ : le courant y est nul (chapitre 2, un extremum de tension coïncide avec un zéro de courant), donc $E_L = 0$ — toute l'énergie restante est dans le **condensateur** (électrique). C'est précisément le motif du pendule d'énergie du chapitre 2, transposé au régime amorti : l'échange $E_C \leftrightarrow E_L$ continue à l'intérieur de chaque cycle, même si l'enveloppe totale décroît.
       - id: q4
         stem: |-
           **(0,75 pt)** Calculer $E_j = |\Delta E_t|$ l'énergie dissipée par effet Joule dans le circuit entre les instants $t = 0$ et $t = t_2$.
         reasoning: |-
-          $t_1$ et $t_2$ étant respectivement un zéro et un extremum de $u_C$ (question précédente), et $t=0$ étant lui aussi un extremum ($u_C(0) = +6{,}0\ \text{V}$, le condensateur totalement chargé au départ) : le courant est nul à la fois en $t=0$ et en $t_2$, donc l'énergie totale y est purement électrique. $E_j$ se calcule alors comme la différence des deux énergies électriques — rung 3 : R (ici $R_0+r$) ne fait que dissiper, jamais restituer, donc cette différence est bien l'énergie perdue par effet Joule.
+          $t_1$ et $t_2$ étant respectivement un zéro et un extremum de $u_C$ (question précédente), et $t=0$ étant lui aussi un extremum ($u_C(0) = +6{,}0\ \text{V}$, le condensateur totalement chargé au départ) : le courant est nul à la fois en $t=0$ et en $t_2$, donc l'énergie totale y est purement électrique. $E_j$ se calcule alors comme la différence des deux énergies électriques — chapitre 4 : R (ici $R_0+r$) ne fait que dissiper, jamais restituer, donc cette différence est bien l'énergie perdue par effet Joule.
         steps:
           - math: 'E_j = E_t(0) - E_t(t_2) = \frac{1}{2}C\,u_C(0)^2 - \frac{1}{2}C\,u_C(t_2)^2'
             note: "i=0 en t=0 et en t2 (deux extrema de u_C, question precedente) : toute l'energie y est electrique."
@@ -1605,7 +1605,7 @@ entries:
         stem: |-
           **2-1-1-** (0,25 pt) En s'aidant de la loi d'additivité des tensions, déterminer la valeur de la tension aux bornes de la bobine juste après le basculement de l'interrupteur $K$ en position (2).
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Un quart de point, une seule ligne de calcul — mais elle repose entièrement sur un fait que la leçon pose au rung 2 et que l'énoncé ne rappellera pas : **le courant dans une bobine ne peut pas sauter**. C'est la propriété qui donne toute la question ; si tu la connais, la réponse tient en deux phrases, sinon il n'y a aucun moyen de la deviner.
+          **Ce qu'on cherche et pourquoi ce geste.** Un quart de point, une seule ligne de calcul — mais elle repose entièrement sur un fait que la leçon pose au chapitre 3 et que l'énoncé ne rappellera pas : **le courant dans une bobine ne peut pas sauter**. C'est la propriété qui donne toute la question ; si tu la connais, la réponse tient en deux phrases, sinon il n'y a aucun moyen de la deviner.
 
           **Le mot « juste après » est l'indication.** Il désigne l'instant $t = 0^+$, celui qui suit immédiatement le basculement. Avant le basculement, $K$ était en position (1) et la branche de droite — celle de la bobine — n'était parcourue par aucun courant : $i(0^-) = 0$. La bobine s'oppose à toute variation brutale du courant qui la traverse, donc ce courant ne peut pas passer de $0$ à une valeur finie instantanément :
 
@@ -1825,42 +1825,42 @@ entries:
         stem: |-
           **(0,5 pt)** Établir l'équation différentielle vérifiée par $u_C(t)$.
         reasoning: |-
-          Même structure que la question 2a du sujet 2018 ci-dessus : ce montage n'a pas de conducteur ohmique séparé, seule la résistance propre $r$ de la bobine $(L,r)$ dissipe. On applique donc le rung 5 avec $r$ à la place de $R$.
+          Même structure que la question 2a du sujet 2018 ci-dessus : ce montage n'a pas de conducteur ohmique séparé, seule la résistance propre $r$ de la bobine $(L,r)$ dissipe. On applique donc le chapitre 6 avec $r$ à la place de $R$.
         steps:
           - math: 'u_C + u_{bobine} = 0 \qquad \text{avec} \qquad u_{bobine} = L\frac{di}{dt} + r\,i'
-            note: "Loi des mailles (rung 5) ; seule resistance ici : r, la resistance propre de la bobine, comme a la question 2a du sujet 2018 ci-dessus."
+            note: "Loi des mailles (chapitre 6) ; seule resistance ici : r, la resistance propre de la bobine, comme a la question 2a du sujet 2018 ci-dessus."
           - math: 'i = C_0\frac{du_C}{dt} \implies u_C + rC_0\frac{du_C}{dt} + LC_0\frac{d^2u_C}{dt^2} = 0'
-            note: "On exprime i en u_C (rung 2)."
+            note: "On exprime i en u_C (chapitre 3)."
           - math: '\boxed{\frac{d^2u_C}{dt^2} + \frac{r}{L}\frac{du_C}{dt} + \frac{1}{LC_0}\,u_C = 0}'
-            note: "Division par LC0 ; forme standard du cas amorti (rung 5), r jouant seul le role de la resistance totale."
+            note: "Division par LC0 ; forme standard du cas amorti (chapitre 6), r jouant seul le role de la resistance totale."
       - id: q2
         part: "Exploiter la courbe : ne pas confondre l'étalon de temps et la pseudo-période"
         stem: |-
           **(0,5 pt)** En exploitant la courbe de la figure 3, déterminer la valeur de la pseudopériode des oscillations.
         reasoning: |-
-          Le piège de cette figure, précisément : la double flèche imprimée, étiquetée « $7\times10^{-5}\ \text{s}$ », a l'air de mesurer un intervalle caractéristique de la courbe — mais elle ne couvre qu'**une seule division** du quadrillage, entre $t_B$ et le trait principal suivant. C'est l'étalon de l'axe des temps, pas la pseudo-période : la confondre avec la période donnerait une valeur environ quatre fois trop petite. La bonne méthode reste celle du rung 6 : on repère deux **maxima consécutifs** de la courbe — le maximum initial à $t=0$ et le deuxième maximum, à la division 4 (l'instant $t_A$, qui touche le pointillé $7\ \text{V}$) — et on compte l'écart en nombre de divisions, qu'on convertit ensuite avec l'étalon.
+          Le piège de cette figure, précisément : la double flèche imprimée, étiquetée « $7\times10^{-5}\ \text{s}$ », a l'air de mesurer un intervalle caractéristique de la courbe — mais elle ne couvre qu'**une seule division** du quadrillage, entre $t_B$ et le trait principal suivant. C'est l'étalon de l'axe des temps, pas la pseudo-période : la confondre avec la période donnerait une valeur environ quatre fois trop petite. La bonne méthode reste celle du chapitre 7 : on repère deux **maxima consécutifs** de la courbe — le maximum initial à $t=0$ et le deuxième maximum, à la division 4 (l'instant $t_A$, qui touche le pointillé $7\ \text{V}$) — et on compte l'écart en nombre de divisions, qu'on convertit ensuite avec l'étalon.
         steps:
           - math: 'T = 4 \times (\text{1 division}) = 4 \times 7\times10^{-5}\ \text{s}'
-            note: "Deux maxima consecutifs (rung 6) : t=0 et t_A, soit 4 divisions - PAS la double fleche imprimee, qui ne couvre qu'une seule division."
+            note: "Deux maxima consecutifs (chapitre 7) : t=0 et t_A, soit 4 divisions - PAS la double fleche imprimee, qui ne couvre qu'une seule division."
           - math: '\boxed{T = 2{,}8\times10^{-4}\ \text{s}}'
             note: "Pseudo-periode ; coherente avec T0 = 2 pi sqrt(L C0) = 2,81e-4 s (L=2mH, Partie 3 du meme sujet ; C0=1 microF, Partie 1)."
       - id: q3
         stem: |-
           **(0,5 pt)** Déterminer, en exploitant la courbe de la figure 3, le signe de l'intensité du courant $i$ entre l'instant $t_A$ et l'instant $t_B$.
         reasoning: |-
-          Rung 1 : $i = C_0\frac{du_C}{dt}$, le signe de $i$ suit donc directement le sens de variation de $u_C$. Entre $t_A$ (le deuxième maximum, sur le pointillé $7\ \text{V}$) et $t_B$ (le passage par zéro descendant qui suit, une division plus loin), la courbe est en train de **redescendre** depuis son maximum vers zéro : $u_C$ décroît, donc $\frac{du_C}{dt} < 0$.
+          Chapitre 2 : $i = C_0\frac{du_C}{dt}$, le signe de $i$ suit donc directement le sens de variation de $u_C$. Entre $t_A$ (le deuxième maximum, sur le pointillé $7\ \text{V}$) et $t_B$ (le passage par zéro descendant qui suit, une division plus loin), la courbe est en train de **redescendre** depuis son maximum vers zéro : $u_C$ décroît, donc $\frac{du_C}{dt} < 0$.
 
           Le courant $i$ est **négatif** entre $t_A$ et $t_B$.
       - id: q4
         stem: |-
           **(0,5 pt)** Montrer que : $\dfrac{dE_T}{dt} = -r \cdot i^2$, avec $E_T$ l'énergie totale du circuit à un instant $t$.
         reasoning: |-
-          On part de la formule du rung 1, $E_T = \frac{1}{2}C_0 u_C^2 + \frac{1}{2}Li^2$, et on la dérive par rapport au temps — le geste que le rung 1 ne fait jamais explicitement (il énonce la conservation dans le cas idéal ; ici on va plus loin en dérivant dans le cas amorti). On réinjecte ensuite l'équation de la question 1 pour remplacer $\frac{di}{dt}$, ce qui fait apparaître exactement le terme demandé.
+          On part de la formule du chapitre 2, $E_T = \frac{1}{2}C_0 u_C^2 + \frac{1}{2}Li^2$, et on la dérive par rapport au temps — le geste que le chapitre 2 ne fait jamais explicitement (il énonce la conservation dans le cas idéal ; ici on va plus loin en dérivant dans le cas amorti). On réinjecte ensuite l'équation de la question 1 pour remplacer $\frac{di}{dt}$, ce qui fait apparaître exactement le terme demandé.
         steps:
           - math: '\frac{dE_T}{dt} = C_0\,u_C\frac{du_C}{dt} + L\,i\frac{di}{dt}'
             note: "Derivee de E_T = (1/2)C0 uC^2 + (1/2)L i^2 par rapport au temps (regle de derivation d'un carre)."
           - math: 'i = C_0\frac{du_C}{dt} \implies C_0\,u_C\frac{du_C}{dt} = u_C\,i'
-            note: "On remplace du_C/dt par i/C0 (definition du courant, rung 1)."
+            note: "On remplace du_C/dt par i/C0 (definition du courant, chapitre 2)."
           - math: 'L\frac{di}{dt} = -u_C - r\,i \quad \text{(loi des mailles, question 1)} \implies L\,i\frac{di}{dt} = -u_C\,i - r\,i^2'
             note: "On isole L di/dt dans l'equation de la question 1, puis on multiplie par i."
           - math: '\frac{dE_T}{dt} = u_C\,i + \left(-u_C\,i - r\,i^2\right)'
@@ -1871,7 +1871,7 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer $|E_{th}|$, l'énergie dissipée par effet Joule dans le circuit entre les instants $t = 0$ et $t = t_A$.
         reasoning: |-
-          $t=0$ et $t_A$ sont tous deux des extrema de $u_C$ (le maximum initial et le deuxième maximum) : le courant y est nul dans les deux cas (rung 1), donc l'énergie totale y est purement électrique. L'énergie dissipée est la différence — rung 3/4, $r$ ne fait que dissiper, jamais restituer, cohérent avec le signe négatif trouvé à la question 3. $u_C(0) = U_0 = 10\ \text{V}$ (donné) et $u_C(t_A) = 7\ \text{V}$ (touche le pointillé, lu sur la figure 3) ; $C_0 = 1\ \mu\text{F}$ vient de la Partie 1 du même sujet (charge par générateur de courant, transcrite sous rc-charge.md) — un pont entre les deux parties du même exercice.
+          $t=0$ et $t_A$ sont tous deux des extrema de $u_C$ (le maximum initial et le deuxième maximum) : le courant y est nul dans les deux cas (chapitre 2), donc l'énergie totale y est purement électrique. L'énergie dissipée est la différence — chapitre 4/4, $r$ ne fait que dissiper, jamais restituer, cohérent avec le signe négatif trouvé à la question 3. $u_C(0) = U_0 = 10\ \text{V}$ (donné) et $u_C(t_A) = 7\ \text{V}$ (touche le pointillé, lu sur la figure 3) ; $C_0 = 1\ \mu\text{F}$ vient de la Partie 1 du même sujet (charge par générateur de courant, transcrite sous rc-charge.md) — un pont entre les deux parties du même exercice.
         steps:
           - math: 'E_{th} = E_T(0) - E_T(t_A) = \frac{1}{2}C_0\,u_C(0)^2 - \frac{1}{2}C_0\,u_C(t_A)^2'
             note: "i=0 en t=0 et en tA (deux extrema de u_C) : toute l'energie y est electrique."
@@ -1970,13 +1970,13 @@ entries:
         stem: |-
           **1-** (0,5 pt) Établir l'équation différentielle vérifiée par la charge $q(t)$ du condensateur.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Même méthode qu'au rung 5 — loi des mailles, chaque tension ramenée à $q$ — mais ce montage-ci n'a PAS de conducteur ohmique séparé (figure 3) : la seule résistance de la maille est celle, interne, de la bobine, $r$. Le coefficient d'amortissement de l'équation du rung 5 s'écrit donc avec $r$ à la place de $R$.
+          Ce qu'on cherche et pourquoi ce geste. Même méthode qu'au chapitre 6 — loi des mailles, chaque tension ramenée à $q$ — mais ce montage-ci n'a PAS de conducteur ohmique séparé (figure 3) : la seule résistance de la maille est celle, interne, de la bobine, $r$. Le coefficient d'amortissement de l'équation du chapitre 6 s'écrit donc avec $r$ à la place de $R$.
 
           Quel circuit, exactement ? Une seule maille, deux dipôles : le condensateur et la bobine $(b)$. La loi des mailles s'écrit :
 
           $$u_C + u_b = 0$$
 
-          Chaque tension, ramenée à $q$ (avec $i=\dfrac{dq}{dt}$, rung 1) :
+          Chaque tension, ramenée à $q$ (avec $i=\dfrac{dq}{dt}$, chapitre 2) :
 
           $$u_C = \frac{q}{C} \qquad u_b = r\,i + L\,\frac{di}{dt} = r\,\frac{dq}{dt} + L\,\frac{d^2q}{dt^2}$$
 
@@ -1985,38 +1985,38 @@ entries:
           - math: 'u_C + u_b = 0'
             note: "Loi des mailles : une seule maille, deux dipoles (pas de resistor ni de generateur, figure 3)."
           - math: 'u_C = \frac{q}{C} \qquad u_b = r\,\frac{dq}{dt} + L\,\frac{d^2q}{dt^2}'
-            note: "u_C du rung 2 ; u_b = r i + L di/dt (rung 1), avec i = dq/dt."
+            note: "u_C du chapitre 3 ; u_b = r i + L di/dt (chapitre 2), avec i = dq/dt."
           - math: '\boxed{L\,\frac{d^2q}{dt^2} + r\,\frac{dq}{dt} + \frac{q}{C} = 0}'
-            note: "Equation du rung 5, avec r a la place de R : seule resistance de cette maille, celle interne de la bobine."
+            note: "Equation du chapitre 6, avec r a la place de R : seule resistance de cette maille, celle interne de la bobine."
       - id: q2
         stem: |-
           **2-** (0,25 pt) Préciser, parmi les courbes $(a)$ et $(b)$ de la figure 4, celle correspondant à l'énergie emmagasinée dans la bobine.
         reasoning: |-
           Ce qu'on cherche et pourquoi ce geste. Pas un calcul : une lecture, mais une lecture qui s'appuie sur une donnée de l'énoncé qu'il faut réactiver au bon moment — « condensateur totalement chargé » à l'instant pris comme origine des temps.
 
-          À $t=0$, le condensateur est totalement chargé : la charge $q$ y est donc maximale, et l'énergie électrique $E_C=\dfrac{q^2}{2C}$ (rung 1) y est **maximale** elle aussi. Un condensateur qui vient d'atteindre sa charge maximale n'a, à cet instant précis, encore fait circuler aucun courant significatif : $i=\dfrac{dq}{dt}=0$, donc l'énergie magnétique $E_L=\frac12Li^2$ (rung 1) est **nulle** à $t=0$.
+          À $t=0$, le condensateur est totalement chargé : la charge $q$ y est donc maximale, et l'énergie électrique $E_C=\dfrac{q^2}{2C}$ (chapitre 2) y est **maximale** elle aussi. Un condensateur qui vient d'atteindre sa charge maximale n'a, à cet instant précis, encore fait circuler aucun courant significatif : $i=\dfrac{dq}{dt}=0$, donc l'énergie magnétique $E_L=\frac12Li^2$ (chapitre 2) est **nulle** à $t=0$.
 
           Sur la figure 4, la courbe $(a)$ part de son maximum à $t=0$ : c'est donc $E_C$. La courbe $(b)$ part de zéro à $t=0$ : c'est donc $E_L$.
 
           $$\boxed{(b)\ \text{correspond à l'énergie emmagasinée dans la bobine}}$$
 
-          Le piège nommé de cette question. Chercher à distinguer les deux courbes par leur PÉRIODE ou leur AMORTISSEMENT — elles ont la même pseudo-période et le même taux de décroissance (rung 3 : c'est $r$ seul qui gouverne l'amortissement, identique pour les deux formes d'énergie). Ce qui les distingue, c'est uniquement la CONDITION INITIALE — laquelle des deux vaut zéro à $t=0$ — et cette condition vient directement de la phrase « condensateur totalement chargé », pas du dessin.
+          Le piège nommé de cette question. Chercher à distinguer les deux courbes par leur PÉRIODE ou leur AMORTISSEMENT — elles ont la même pseudo-période et le même taux de décroissance (chapitre 4 : c'est $r$ seul qui gouverne l'amortissement, identique pour les deux formes d'énergie). Ce qui les distingue, c'est uniquement la CONDITION INITIALE — laquelle des deux vaut zéro à $t=0$ — et cette condition vient directement de la phrase « condensateur totalement chargé », pas du dessin.
       - id: q3
         part: "3 — Le bilan d'énergie totale"
         stem: |-
           **3-1-** (0,5 pt) Écrire l'expression de l'énergie électrique totale $E_T$ en fonction de $C$, $L$, $q$ et $\dfrac{dq}{dt}$.
         reasoning: |-
-          Exactement la définition du rung 1, transposée à ce montage : l'énergie totale est la somme de ce que stocke le condensateur et de ce que stocke la bobine, à un instant $t$ quelconque — pas seulement à $t=0$. On écrit $E_C$ en fonction de $q$ (rung 1) et $E_L$ en fonction du courant, réexprimé en $\dfrac{dq}{dt}$ (rung 1, $i=dq/dt$), puisque l'énoncé impose ces deux variables précisément.
+          Exactement la définition du chapitre 2, transposée à ce montage : l'énergie totale est la somme de ce que stocke le condensateur et de ce que stocke la bobine, à un instant $t$ quelconque — pas seulement à $t=0$. On écrit $E_C$ en fonction de $q$ (chapitre 2) et $E_L$ en fonction du courant, réexprimé en $\dfrac{dq}{dt}$ (chapitre 2, $i=dq/dt$), puisque l'énoncé impose ces deux variables précisément.
         steps:
           - math: 'E_T = E_C + E_L = \frac{q^2}{2C} + \frac12Li^2'
-            note: "Definition du rung 1 : somme de l'energie electrique et de l'energie magnetique."
+            note: "Definition du chapitre 2 : somme de l'energie electrique et de l'energie magnetique."
           - math: '\boxed{E_T = \frac{q^2}{2C} + \frac12L\left(\frac{dq}{dt}\right)^2}'
-            note: "i = dq/dt (rung 1) : on remplace le courant par la charge, comme l'exige l'enonce."
+            note: "i = dq/dt (chapitre 2) : on remplace le courant par la charge, comme l'exige l'enonce."
       - id: q4
         stem: |-
           **3-2-** (0,5 pt) Montrer que l'énergie totale décroît avec le temps selon la relation : $dE_T = -\,r\,i^{2}\,dt$. Expliquer la cause de cette décroissance.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Le rung 3 ÉNONCE que l'énergie totale décroît par effet Joule dès que $R$ (ici $r$) est non nulle, mais sans le démontrer à partir de l'équation différentielle. On le redémontre ici en une ligne, en dérivant $E_T$ de la question 3-1 par rapport au temps, puis en réinjectant l'équation de la question 1 pour remplacer la parenthèse qui en résulte — jamais « on admet ».
+          Ce qu'on cherche et pourquoi ce geste. Le chapitre 4 ÉNONCE que l'énergie totale décroît par effet Joule dès que $R$ (ici $r$) est non nulle, mais sans le démontrer à partir de l'équation différentielle. On le redémontre ici en une ligne, en dérivant $E_T$ de la question 3-1 par rapport au temps, puis en réinjectant l'équation de la question 1 pour remplacer la parenthèse qui en résulte — jamais « on admet ».
 
           On dérive $E_T=\dfrac{q^2}{2C}+\dfrac12L\left(\dfrac{dq}{dt}\right)^2$ par rapport au temps (règle de dérivation d'un carré, deux fois) :
 
@@ -2028,14 +2028,14 @@ entries:
 
           En multipliant chaque membre par $dt$, on retrouve exactement la relation demandée : $dE_T=-r\,i^2\,dt$.
 
-          La cause, en une phrase (rung 3). Le carré $i^2$ est décisif : la puissance $r\,i^2$ est toujours **positive**, que le courant circule dans un sens ou dans l'autre — la bobine, par sa résistance interne $r$, dissipe de l'énergie par effet Joule à chaque passage du courant, et ne la restitue jamais. C'est cette fuite continue, jamais compensée puisqu'aucun générateur n'entretient les oscillations dans ce montage (figure 3), qui explique la décroissance de l'énergie totale — et, par le rung 1, la décroissance des amplitudes successives des deux courbes de la figure 4.
+          La cause, en une phrase (chapitre 4). Le carré $i^2$ est décisif : la puissance $r\,i^2$ est toujours **positive**, que le courant circule dans un sens ou dans l'autre — la bobine, par sa résistance interne $r$, dissipe de l'énergie par effet Joule à chaque passage du courant, et ne la restitue jamais. C'est cette fuite continue, jamais compensée puisqu'aucun générateur n'entretient les oscillations dans ce montage (figure 3), qui explique la décroissance de l'énergie totale — et, par le chapitre 2, la décroissance des amplitudes successives des deux courbes de la figure 4.
         steps:
           - math: '\frac{dE_T}{dt} = \frac{q}{C}\frac{dq}{dt} + L\,\frac{dq}{dt}\,\frac{d^2q}{dt^2} = \frac{dq}{dt}\left(\frac{q}{C} + L\,\frac{d^2q}{dt^2}\right)'
             note: "Derivee de E_T (question 3-1) par rapport au temps, regle de derivation d'un carre."
           - math: '\frac{q}{C} + L\,\frac{d^2q}{dt^2} = -r\,\frac{dq}{dt} \quad \text{(equation de la question 1)}'
             note: "On isole la parenthese dans l'equation differentielle etablie a la question 1."
           - math: '\boxed{\frac{dE_T}{dt} = -r\left(\frac{dq}{dt}\right)^2 = -r\,i^2 \implies dE_T = -r\,i^2\,dt}'
-            note: "r i^2 est toujours positif (effet Joule, rung 3) : l'energie totale ne remonte jamais."
+            note: "r i^2 est toujours positif (effet Joule, chapitre 4) : l'energie totale ne remonte jamais."
       - id: q5
         stem: |-
           **3-3-** (0,25 pt) Déterminer l'énergie dissipée dans le circuit entre les instants $t_1=2\ \text{ms}$ et $t_2=3\ \text{ms}$.
@@ -2124,19 +2124,19 @@ entries:
         stem: |-
           **(0,5 pt)** **2-1-** Établir l'équation différentielle vérifiée par la tension $u_{C'}$ entre les bornes du condensateur.
         reasoning: |-
-          Même méthode qu'au rung 5 de cette leçon (loi des mailles, chaque tension ramenée à l'inconnue demandée) : en position 2, le générateur est débranché de la maille — il ne reste que $\{C', R, L\}$, en série, sans source. La loi des mailles s'écrit $u_{C'} + u_R + u_L = 0$, avec $u_R = R\,i$ et $u_L = L\,\dfrac{di}{dt}$ ; on ramène le courant à $u_{C'}$ par $i = C'\,\dfrac{du_{C'}}{dt}$ (définition de la capacité).
+          Même méthode qu'au chapitre 6 de cette leçon (loi des mailles, chaque tension ramenée à l'inconnue demandée) : en position 2, le générateur est débranché de la maille — il ne reste que $\{C', R, L\}$, en série, sans source. La loi des mailles s'écrit $u_{C'} + u_R + u_L = 0$, avec $u_R = R\,i$ et $u_L = L\,\dfrac{di}{dt}$ ; on ramène le courant à $u_{C'}$ par $i = C'\,\dfrac{du_{C'}}{dt}$ (définition de la capacité).
         steps:
           - math: 'u_{C''} + u_R + u_L = 0 \qquad \text{avec} \qquad i = C''\frac{du_{C''}}{dt}'
             note: "Loi des mailles, position 2 (pas de generateur dans cette maille)."
           - math: 'u_R = R\,C''\frac{du_{C''}}{dt} \qquad u_L = L\,C''\frac{d^2u_{C''}}{dt^2}'
-            note: "Chaque tension ramenee a u_C' via i = C'.duC'/dt (rung 1)."
+            note: "Chaque tension ramenee a u_C' via i = C'.duC'/dt (chapitre 2)."
           - math: '\boxed{L\,C''\,\frac{d^2u_{C''}}{dt^2} + R\,C''\,\frac{du_{C''}}{dt} + u_{C''} = 0}'
-            note: "Equation differentielle du circuit RLC amorti (rung 5), ecrite en u_C' plutot qu'en q."
+            note: "Equation differentielle du circuit RLC amorti (chapitre 6), ecrite en u_C' plutot qu'en q."
       - id: q2-2
         stem: |-
           **(0,25 pt)** **2-2-** Déterminer graphiquement la valeur de la pseudopériode $T$.
         reasoning: |-
-          **Lecture graphique** (rung 6) : la pseudo-période se lit entre deux maxima consécutifs de la courbe amortie. La chaîne de mesure au pixel, sur les extrema successifs de la figure 3, donne un écart moyen $\approx 3{,}42\ \text{ms}$.
+          **Lecture graphique** (chapitre 7) : la pseudo-période se lit entre deux maxima consécutifs de la courbe amortie. La chaîne de mesure au pixel, sur les extrema successifs de la figure 3, donne un écart moyen $\approx 3{,}42\ \text{ms}$.
 
           **Deux contrôles par conséquence, indépendants l'un de l'autre, qui ramènent cette mesure à la valeur ronde $3{,}4\ \text{ms}$.** D'abord, $u_{C'}(0) = 12\ \text{V}$ est un maximum (le circuit part sans courant, $i(0)=0$, donc $du_{C'}/dt(0)=0$, donc $u_{C'}$ y est extrémale) : le maximum suivant tombe donc exactement à $t = T$. Or la question 2-4, plus loin, demande l'énergie « à l'instant $t = 3{,}4\ \text{ms}$ » — précisément là où la mesure place le premier maximum ($3{,}36\ \text{ms}$, à $1{,}1\ \%$ près). Ensuite, la fréquence propre déduite $N_0 = 1/T$ doit désigner UNE note du tableau (question 3-2) : avec $T = 3{,}4\ \text{ms}$, $N_0 = 294\ \text{Hz}$ tombe exactement sur le Ré du tableau, au hertz près.
 
@@ -2150,10 +2150,10 @@ entries:
         stem: |-
           **(0,5 pt)** **2-3-** On considère que la valeur de la pseudopériode $T$ est égale à la valeur de la période propre $T_0$ de l'oscillateur LC. En déduire la valeur de $L$.
         reasoning: |-
-          L'énoncé autorise l'approximation $T \approx T_0$ — légitime quand l'amortissement reste modéré (rung 4 : la pseudo-période d'un régime amorti est proche, mais pas rigoureusement égale, à la période propre du cas idéal sans $R$). Avec $T_0 = 2\pi\sqrt{LC'}$ (rung 2, cas idéal), on isole $L$.
+          L'énoncé autorise l'approximation $T \approx T_0$ — légitime quand l'amortissement reste modéré (chapitre 5 : la pseudo-période d'un régime amorti est proche, mais pas rigoureusement égale, à la période propre du cas idéal sans $R$). Avec $T_0 = 2\pi\sqrt{LC'}$ (chapitre 3, cas idéal), on isole $L$.
         steps:
           - math: 'T_0 = 2\pi\sqrt{L\,C''} \implies L = \frac{T_0^2}{4\pi^2\,C''}'
-            note: "On retourne la relation du cas ideal (rung 2), avec T0 approxime par T (question 2-2)."
+            note: "On retourne la relation du cas ideal (chapitre 3), avec T0 approxime par T (question 2-2)."
           - math: 'L = \frac{(3{,}4\times10^{-3})^2}{4\pi^2\times0{,}5\times10^{-6}}'
             note: "Application numerique : T=3,4 ms, C'=0,5 microF donne dans l'enonce."
           - math: '\boxed{L \approx 0{,}59\ \text{H}}'
@@ -2175,7 +2175,7 @@ entries:
         stem: |-
           **(0,25 pt)** **3-1-** Quel est le rôle de l'appareil d'entretien du point de vue énergétique ?
         reasoning: |-
-          Le rung 7 de cette leçon répond exactement à cette question, pour ce montage même : sans entretien, $R$ dissipe de l'énergie par effet Joule à chaque cycle, et les oscillations s'amortissent (c'est ce que montre la figure 3). L'appareil d'entretien restitue, à chaque cycle, une énergie électrique EXACTEMENT égale à celle que $R$ vient de dissiper.
+          Le chapitre 8 de cette leçon répond exactement à cette question, pour ce montage même : sans entretien, $R$ dissipe de l'énergie par effet Joule à chaque cycle, et les oscillations s'amortissent (c'est ce que montre la figure 3). L'appareil d'entretien restitue, à chaque cycle, une énergie électrique EXACTEMENT égale à celle que $R$ vient de dissiper.
 
           $$\boxed{\text{L'appareil d'entretien compense exactement l'énergie dissipée par effet Joule dans } R \text{ à chaque cycle}}$$
 
@@ -2184,7 +2184,7 @@ entries:
         stem: |-
           **(0,5 pt)** **3-2-** En vous basant sur le tableau des fréquences des notes, déterminer la note musicale émise par le haut-parleur.
         reasoning: |-
-          Une fois les oscillations entretenues, le circuit oscille indéfiniment à sa fréquence propre $N_0 = 1/T_0$ (rung 7), et c'est cette fréquence que le haut-parleur transforme en onde sonore de même fréquence. Avec $T_0 \approx T = 3{,}4\ \text{ms}$ (question 2-2) :
+          Une fois les oscillations entretenues, le circuit oscille indéfiniment à sa fréquence propre $N_0 = 1/T_0$ (chapitre 8), et c'est cette fréquence que le haut-parleur transforme en onde sonore de même fréquence. Avec $T_0 \approx T = 3{,}4\ \text{ms}$ (question 2-2) :
         steps:
           - math: 'N_0 = \frac{1}{T_0} = \frac{1}{3{,}4\times10^{-3}}'
             note: "Frequence propre, T0 approxime par la pseudo-periode T (question 2-2)."
@@ -2265,7 +2265,7 @@ entries:
         reasoning: |-
           Le circuit est celui du § 1 avec le générateur remplacé par le condensateur : **une seule maille série** contenant le condensateur $C$ (initialement chargé), la bobine ($L$, $r$) et le résistor $R$.
 
-          Le système d'acquisition doit suivre $u_C(t)$ : sa voie de mesure se branche donc **aux bornes du condensateur** — la borne de mesure sur une armature, la référence (masse) sur l'autre. C'est le même geste que le branchement d'un oscilloscope (rung 6) : on mesure toujours une tension ENTRE les deux bornes du dipôle visé, jamais « sur un fil ».
+          Le système d'acquisition doit suivre $u_C(t)$ : sa voie de mesure se branche donc **aux bornes du condensateur** — la borne de mesure sur une armature, la référence (masse) sur l'autre. C'est le même geste que le branchement d'un oscilloscope (chapitre 7) : on mesure toujours une tension ENTRE les deux bornes du dipôle visé, jamais « sur un fil ».
 
           $$\boxed{\text{Maille série } C + (L, r) + R \text{, acquisition branchée aux bornes de } C}$$
 
@@ -2274,7 +2274,7 @@ entries:
         stem: |-
           **2-2-** (0,5 pt) Etablir l'équation différentielle vérifiée par la tension $u_C(t)$.
         reasoning: |-
-          C'est le geste du rung 5 — le circuit réel, avec sa résistance totale $R_T = R + r$ (le résistor ET la résistance interne de la bobine). Loi des mailles sur la maille série, en convention récepteur :
+          C'est le geste du chapitre 6 — le circuit réel, avec sa résistance totale $R_T = R + r$ (le résistor ET la résistance interne de la bobine). Loi des mailles sur la maille série, en convention récepteur :
 
           $$u_C = u_{bobine} + u_R = r\,i + L\frac{di}{dt} + R\,i$$
 
@@ -2284,10 +2284,10 @@ entries:
 
           (De façon équivalente : $\dfrac{d^2u_C}{dt^2} + \dfrac{R+r}{L}\,\dfrac{du_C}{dt} + \dfrac{1}{LC}\,u_C = 0$.)
 
-          Le piège nommé de cette question. Écrire l'équation du circuit IDÉAL ($LC\,u_C'' + u_C = 0$, rung 2) en oubliant le terme résistif : la figure 3 montre une amplitude qui DÉCROÎT — la trace visible du terme en $du_C/dt$ — et la question 2-5 demandera précisément d'expliquer cette décroissance. L'équation doit contenir $R + r$, pas seulement $R$ : le courant traverse aussi la résistance interne de la bobine (§ 1 : $r = 10\ \Omega$).
+          Le piège nommé de cette question. Écrire l'équation du circuit IDÉAL ($LC\,u_C'' + u_C = 0$, chapitre 3) en oubliant le terme résistif : la figure 3 montre une amplitude qui DÉCROÎT — la trace visible du terme en $du_C/dt$ — et la question 2-5 demandera précisément d'expliquer cette décroissance. L'équation doit contenir $R + r$, pas seulement $R$ : le courant traverse aussi la résistance interne de la bobine (§ 1 : $r = 10\ \Omega$).
         steps:
           - math: 'u_C = r\,i + L\frac{di}{dt} + R\,i'
-            note: "Loi des mailles sur la maille serie (rung 5), bobine reelle (L, r) + resistor R."
+            note: "Loi des mailles sur la maille serie (chapitre 6), bobine reelle (L, r) + resistor R."
           - math: 'i = -C\,\frac{du_C}{dt}'
             note: "Courant de decharge : la charge de l'armature suivie diminue."
           - math: '\boxed{LC\,\frac{d^2u_C}{dt^2} + (R+r)\,C\,\frac{du_C}{dt} + u_C = 0}'
@@ -2302,7 +2302,7 @@ entries:
 
           $$T = 36 - 18 = 18\ \text{ms}$$
 
-          **Inverser $T_0$.** L'énoncé autorise $T = T_0$, et le rung 2 donne $T_0 = 2\pi\sqrt{LC}$, avec $L = 0{,}2\ \text{H}$ établie au § 1 :
+          **Inverser $T_0$.** L'énoncé autorise $T = T_0$, et le chapitre 3 donne $T_0 = 2\pi\sqrt{LC}$, avec $L = 0{,}2\ \text{H}$ établie au § 1 :
 
           $$C = \frac{T^2}{4\pi^2 L} = \frac{(18\times10^{-3})^2}{4\pi^2\times0{,}2}$$
 
@@ -2313,7 +2313,7 @@ entries:
           - math: 'T = 36 - 18 = 18\ \text{ms}'
             note: "Pseudo-periode lue entre les deux maxima etiquetes de la figure 3 (verifiee sur 6 intervalles : 17,9 +/- 0,1 ms)."
           - math: 'T = T_0 = 2\pi\sqrt{LC} \implies C = \frac{T^2}{4\pi^2 L}'
-            note: "Periode propre (rung 2), inversee ; L = 0,2 H etablie au paragraphe 1."
+            note: "Periode propre (chapitre 3), inversee ; L = 0,2 H etablie au paragraphe 1."
           - math: 'C = \frac{(18\times10^{-3})^2}{4\pi^2\times0{,}2}'
             note: "Conversion en secondes AVANT le carre : erreur d'unite au carre sinon."
           - math: '\boxed{C \approx 4{,}1\times10^{-5}\ \text{F} \approx 41\ \mu\text{F}}'
@@ -2322,7 +2322,7 @@ entries:
         stem: |-
           **2-4-** (0,5 pt) Déterminer la valeur $\mathcal{E}_1$ de l'énergie du circuit à l'instant $t = 36\ \text{ms}$. *(Le sujet imprime le symbole $\mathcal{E}$ en écriture script — police Kunstler Script — rendu ici $\mathcal{E}_1$)*
         reasoning: |-
-          L'énergie du circuit se partage à chaque instant entre le condensateur et la bobine (rung 1) : $\mathcal{E} = \dfrac{1}{2}C\,u_C^2 + \dfrac{1}{2}L\,i^2$. Tout l'art de la question est de choisir l'INSTANT : à $t = 36\ \text{ms}$, la figure 3 montre un **maximum local** de $u_C$ — et à un extremum, $\dfrac{du_C}{dt} = 0$, donc $i = -C\,\dfrac{du_C}{dt} = 0$ : la bobine est vide, TOUTE l'énergie du circuit est dans le condensateur.
+          L'énergie du circuit se partage à chaque instant entre le condensateur et la bobine (chapitre 2) : $\mathcal{E} = \dfrac{1}{2}C\,u_C^2 + \dfrac{1}{2}L\,i^2$. Tout l'art de la question est de choisir l'INSTANT : à $t = 36\ \text{ms}$, la figure 3 montre un **maximum local** de $u_C$ — et à un extremum, $\dfrac{du_C}{dt} = 0$, donc $i = -C\,\dfrac{du_C}{dt} = 0$ : la bobine est vide, TOUTE l'énergie du circuit est dans le condensateur.
 
           $$\mathcal{E}_1 = \frac{1}{2}C\,u_C^2(36\ \text{ms}) = \frac{1}{2}\times4{,}1\times10^{-5}\times(4{,}5)^2$$
 
@@ -2333,7 +2333,7 @@ entries:
           Le piège nommé de cette question. Utiliser $u_C(0) = 9\ \text{V}$ par réflexe « énergie initiale » : la question demande l'énergie À $t = 36\ \text{ms}$, et le circuit en a déjà dissipé plus des trois quarts ($\frac{1}{2}C\times9^2 \approx 1{,}7\times10^{-3}\ \text{J}$ au départ contre $4{,}2\times10^{-4}\ \text{J}$ ici). C'est précisément cette décroissance que la question 2-5 fait commenter.
         steps:
           - math: 'u_C(36\ \text{ms}) = +4{,}5\ \text{V},\quad \text{maximum local} \implies i = 0'
-            note: "A un extremum de u_C, du_C/dt = 0 donc i = 0 : toute l'energie est dans le condensateur (rung 1)."
+            note: "A un extremum de u_C, du_C/dt = 0 donc i = 0 : toute l'energie est dans le condensateur (chapitre 2)."
           - math: '\mathcal{E}_1 = \frac{1}{2}C\,u_C^2 = \frac{1}{2}\times4{,}1\times10^{-5}\times(4{,}5)^2'
             note: "Energie du circuit reduite a l'energie electrostatique, avec C de la question 2-3."
           - math: '\boxed{\mathcal{E}_1 \approx 4{,}2\times10^{-4}\ \text{J}}'
@@ -2342,16 +2342,16 @@ entries:
         stem: |-
           **2-5-** (0,5 pt) Justifier, du point de vue énergétique, le régime oscillatoire représenté sur la figure 3.
         reasoning: |-
-          La figure 3 montre des oscillations dont l'amplitude **décroît** sans que les oscillations cessent : c'est le régime **pseudo-périodique** (rung 4, résistance modérée).
+          La figure 3 montre des oscillations dont l'amplitude **décroît** sans que les oscillations cessent : c'est le régime **pseudo-périodique** (chapitre 5, résistance modérée).
 
-          La justification énergétique, en deux constats (rung 3 — R est le frein) :
+          La justification énergétique, en deux constats (chapitre 4 — R est le frein) :
 
           - l'énergie totale du circuit, $\mathcal{E} = \frac{1}{2}C\,u_C^2 + \frac{1}{2}L\,i^2$, **diminue au cours du temps** — la question 2-4 vient de le chiffrer ($\approx 1{,}7\times10^{-3}\ \text{J}$ à $t=0$, $4{,}2\times10^{-4}\ \text{J}$ à $36\ \text{ms}$) — parce que la résistance totale $R + r$ dissipe de l'énergie **par effet Joule** à chaque instant où un courant circule ;
-          - mais cette dissipation est assez lente pour que l'échange d'énergie entre le condensateur et la bobine (le balancement du rung 1) se poursuive : le système oscille encore, chaque balancement rendant un peu moins que le précédent — d'où des extrema de plus en plus faibles, à pseudo-période constante.
+          - mais cette dissipation est assez lente pour que l'échange d'énergie entre le condensateur et la bobine (le balancement du chapitre 2) se poursuive : le système oscille encore, chaque balancement rendant un peu moins que le précédent — d'où des extrema de plus en plus faibles, à pseudo-période constante.
 
           $$\boxed{\text{Dissipation par effet Joule dans } R + r \implies \text{amplitude décroissante : régime pseudo-périodique}}$$
 
-          Le piège nommé de cette question. Répondre « l'énergie se conserve en passant du condensateur à la bobine » : c'est le circuit IDÉAL du rung 2. Ici la conservation est précisément ce qui est PERDU — et c'est la décroissance de l'enveloppe, pas l'oscillation elle-même, que la question demande de justifier.
+          Le piège nommé de cette question. Répondre « l'énergie se conserve en passant du condensateur à la bobine » : c'est le circuit IDÉAL du chapitre 3. Ici la conservation est précisément ce qui est PERDU — et c'est la décroissance de l'enveloppe, pas l'oscillation elle-même, que la question demande de justifier.
 
   # ── bk-2013-r-x3b — 2013 R, Electricité, deuxième expérience : oscillations amorties dans un circuit RLC série ──
   #
@@ -2571,7 +2571,7 @@ entries:
         stem: |-
           **1-** (0,25 pt) A quel des trois régimes d'oscillations, correspond la courbe de la figure 4 ? *(La consigne est reproduite telle qu'imprimée : « Auquel des trois régimes […] correspond » serait attendu, et la virgule entre sujet et verbe est parasite. C'est la seule faute de syntaxe du sujet qui tombe dans une consigne notée.)*
         reasoning: |-
-          Le rung R4 pose les trois régimes, et le critère de tri est visuel avant d'être calculatoire — **combien de fois la tension change-t-elle de signe ?**
+          le chapitre 5 pose les trois régimes, et le critère de tri est visuel avant d'être calculatoire — **combien de fois la tension change-t-elle de signe ?**
 
           - **Régime périodique** : amplitude constante, oscillation qui ne s'éteint jamais. C'est le cas idéal $R = 0$, jamais observé sur un vrai circuit.
           - **Régime pseudo-périodique** : la tension **oscille encore** — elle change de signe à intervalles réguliers — mais l'amplitude **décroît** d'une alternance à l'autre.
@@ -2581,7 +2581,7 @@ entries:
 
           $$\boxed{\text{régime pseudo-périodique}}$$
 
-          **Le contrôle par le calcul** (rung R4) : le régime est pseudo-périodique tant que la résistance totale reste inférieure à la résistance critique,
+          **Le contrôle par le calcul** (chapitre 5) : le régime est pseudo-périodique tant que la résistance totale reste inférieure à la résistance critique,
 
           $$R_{tot} < 2\sqrt{\frac{L}{C}} = 2\sqrt{\frac{0{,}2}{0{,}2\times10^{-6}}} = 2\sqrt{10^{6}} = 2\,000\ \Omega$$
 
@@ -2592,7 +2592,7 @@ entries:
         stem: |-
           **2-** (0,5 pt) Etablir l'équation différentielle vérifiée par la tension $u_C$.
         reasoning: |-
-          **La méthode du rung R5, en trois gestes** — c'est la même que dans le cas idéal (rung R2), avec un terme de plus.
+          **La méthode du chapitre 6, en trois gestes** — c'est la même que dans le cas idéal (chapitre 3), avec un terme de plus.
 
           **1. Loi des mailles sur le circuit fermé.** Il n'y a pas de générateur : la somme des tensions sur la boucle est nulle. En orientant comme la figure 3 :
 
@@ -2612,7 +2612,7 @@ entries:
 
           $$\boxed{\frac{d^2u_C}{dt^2} + \frac{R'+r}{L}\,\frac{du_C}{dt} + \frac{1}{L\,C}\,u_C = 0}$$
 
-          **Ce que chaque terme raconte** (rung R3). Le terme en dérivée seconde et le terme en $u_C$ sont ceux de l'oscillateur idéal : ce sont eux qui produisent le balancement d'énergie entre condensateur et bobine. Le terme du **milieu**, celui en $\dfrac{du_C}{dt}$, est le **frein** : il porte la résistance totale, il n'existe que parce que le circuit dissipe, et c'est lui qui fera décroître l'enveloppe. Le supprimer — c'est exactement ce que la question 5 va chercher à faire — rend les oscillations sinusoïdales.
+          **Ce que chaque terme raconte** (chapitre 4). Le terme en dérivée seconde et le terme en $u_C$ sont ceux de l'oscillateur idéal : ce sont eux qui produisent le balancement d'énergie entre condensateur et bobine. Le terme du **milieu**, celui en $\dfrac{du_C}{dt}$, est le **frein** : il porte la résistance totale, il n'existe que parce que le circuit dissipe, et c'est lui qui fera décroître l'enveloppe. Le supprimer — c'est exactement ce que la question 5 va chercher à faire — rend les oscillations sinusoïdales.
 
           **Le piège de cette question.** Oublier $r$ et écrire $R'/L$ : la bobine est réelle, sa résistance interne est en série avec $R'$, et c'est la **somme** $R' + r = 208{,}4\ \Omega$ qui amortit. Second piège : écrire $i = -C\,du_C/dt$ sans que le schéma le justifie — le signe se lit sur l'orientation de la figure 3, pas sur l'habitude.
         steps:
@@ -2630,7 +2630,7 @@ entries:
         stem: |-
           **3-** (0,5 pt) En considérant que la pseudopériode $T$ est égale la *(sic, pour « égale **à** la »)* période propre $T_0$ de l'oscillateur LC, vérifier la valeur de l'inductance de la bobine étudiée. *(L'original arabe précise « la valeur du coefficient d'induction **$L$** de la bobine étudiée » ; le symbole est tombé dans l'édition française — sans conséquence, $L$ étant défini dans la première expérience.)*
         reasoning: |-
-          **L'approximation que la consigne autorise.** En toute rigueur, la pseudo-période d'un circuit amorti est légèrement supérieure à la période propre. Mais tant que l'amortissement reste faible devant la résistance critique — ici $208{,}4\ \Omega$ contre $2\,000\ \Omega$ —, l'écart est négligeable, et la consigne dit explicitement de poser $T = T_0$. On utilise donc la formule de Thomson du rung R2 :
+          **L'approximation que la consigne autorise.** En toute rigueur, la pseudo-période d'un circuit amorti est légèrement supérieure à la période propre. Mais tant que l'amortissement reste faible devant la résistance critique — ici $208{,}4\ \Omega$ contre $2\,000\ \Omega$ —, l'écart est négligeable, et la consigne dit explicitement de poser $T = T_0$. On utilise donc la formule de Thomson du chapitre 3 :
 
           $$T_0 = 2\pi\sqrt{L\,C} \qquad\Longrightarrow\qquad L = \frac{T^2}{4\pi^2\,C}$$
 
@@ -2654,7 +2654,7 @@ entries:
           **Le piège de cette question.** Prendre $T = \pi/5\ \text{ms}$ en croyant que le repère marque la période entière : $L$ sortirait quatre fois trop petit ($0{,}05\ \text{H}$), et la « vérification » échouerait sans qu'on sache pourquoi. Compte les passages par zéro avant de conclure.
         steps:
           - math: 'T = T_0 = 2\pi\sqrt{LC} \implies L = \frac{T^2}{4\pi^2 C}'
-            note: "Formule de Thomson (rung R2), inversee. L'approximation T = T0 est autorisee par la consigne."
+            note: "Formule de Thomson (chapitre 3), inversee. L'approximation T = T0 est autorisee par la consigne."
           - math: 'T = 2\times\frac{\pi}{5} = \frac{2\pi}{5}\ \text{ms} \approx 1{,}26\ \text{ms}'
             note: "Lecture sur la figure 4 : le repere pi/5 marque la demi-pseudo-periode."
           - math: 'L = \frac{\left(\frac{2\pi}{5}\right)^2\times10^{-6}}{4\pi^2\times 0{,}2\times10^{-6}} = \frac{4\pi^2/25}{4\pi^2\times 0{,}2}'
@@ -2667,7 +2667,7 @@ entries:
         reasoning: |-
           **CROSS-LIST honoré ici (« Aspects énergétiques »).** Le bilan d'énergie d'un oscillateur amorti relève aussi de cette autre notion. Il pèse cette seule question, $0{,}5\ \text{pt}$ sur les $2{,}75$ du bloc : la règle de la maison veut qu'un cross-list de ce poids — et orphelin, une seule question — soit honoré dans le raisonnement plutôt que dédoublé en entrée. La démonstration est donc refaite ici en entier.
 
-          **Le principe, et il tient en une phrase** (rung R1, puis R3). L'énergie totale du circuit se partage à chaque instant entre le condensateur et la bobine :
+          **Le principe, et il tient en une phrase** (chapitre 2, puis R3). L'énergie totale du circuit se partage à chaque instant entre le condensateur et la bobine :
 
           $$\mathcal{E}(t) = \underbrace{\frac{1}{2}C\,u_C^2}_{\text{électrostatique}} + \underbrace{\frac{1}{2}L\,i^2}_{\text{magnétique}}$$
 
@@ -2699,7 +2699,7 @@ entries:
           **Le piège de cette question.** Prendre le signe de $u_C(3T/2)$ au sérieux dans le calcul : l'énergie dépend du **carré** de la tension, donc $(-3{,}5)^2 = 12{,}25$, et le signe disparaît. Second piège : oublier que le courant est nul aux deux bornes et tenter de calculer $\frac12 L i^2$ — inutile, et impossible sans dériver la courbe à la main.
         steps:
           - math: '\mathcal{E} = \frac{1}{2}C\,u_C^2 + \frac{1}{2}L\,i^2'
-            note: "Energie totale du circuit : electrostatique dans le condensateur, magnetique dans la bobine (rung R1)."
+            note: "Energie totale du circuit : electrostatique dans le condensateur, magnetique dans la bobine (chapitre 2)."
           - math: 'i(t_0) = 0 \quad\text{et}\quad i(t_1) = 0 \qquad \left(i = C\frac{du_C}{dt},\ \text{nul aux extremums de } u_C\right)'
             note: "A t = 0 le circuit vient d'etre ferme ; a t = 3T/2 la courbe passe par un extremum. Le terme magnetique s'annule aux deux bornes."
           - math: '\boxed{W_J = \frac{1}{2}C\left[u_C^2(0) - u_C^2\!\left(\tfrac{3}{2}T\right)\right]}'
@@ -2717,7 +2717,7 @@ entries:
 
           Etablir, dans ce cas, l'équation différentielle vérifiée par la charge $q(t)$ du condensateur.
         reasoning: |-
-          C'est exactement le dispositif du rung R7 — le générateur d'entretien —, et la démarche est celle de la question 2, avec **une** modification : la somme des tensions n'est plus nulle, elle vaut $u_G$.
+          C'est exactement le dispositif du chapitre 8 — le générateur d'entretien —, et la démarche est celle de la question 2, avec **une** modification : la somme des tensions n'est plus nulle, elle vaut $u_G$.
 
           **1. La loi des mailles, avec le générateur.**
 
@@ -2753,11 +2753,11 @@ entries:
         stem: |-
           **5-2-** (0,5 pt) On fixe le paramètre $k$ sur la valeur $208{,}4$ pour obtenir des oscillations électriques sinusoïdales. Vérifier la valeur de la résistance $r$ de la bobine étudiée.
         reasoning: |-
-          **La condition d'entretien, c'est le rung R7.** Des oscillations **sinusoïdales** sont des oscillations d'amplitude **constante** : l'enveloppe ne décroît plus. Or, dans l'équation de la question 5-1, tout l'amortissement est porté par le terme du premier ordre. Il faut donc, et il suffit, que son coefficient s'annule :
+          **La condition d'entretien, c'est le chapitre 8.** Des oscillations **sinusoïdales** sont des oscillations d'amplitude **constante** : l'enveloppe ne décroît plus. Or, dans l'équation de la question 5-1, tout l'amortissement est porté par le terme du premier ordre. Il faut donc, et il suffit, que son coefficient s'annule :
 
           $$R' + r - k = 0$$
 
-          L'équation se réduit alors à $\dfrac{d^2q}{dt^2} + \dfrac{1}{LC}\,q = 0$ — l'oscillateur harmonique idéal du rung R2, dont la solution est une sinusoïde pure de période $T_0 = 2\pi\sqrt{LC}$.
+          L'équation se réduit alors à $\dfrac{d^2q}{dt^2} + \dfrac{1}{LC}\,q = 0$ — l'oscillateur harmonique idéal du chapitre 3, dont la solution est une sinusoïde pure de période $T_0 = 2\pi\sqrt{LC}$.
 
           **L'inversion, immédiate :**
 
@@ -2777,7 +2777,7 @@ entries:
           - math: '\frac{d^2q}{dt^2} + \frac{R^{\prime}+r-k}{L}\frac{dq}{dt} + \frac{1}{LC}\,q = 0'
             note: "Equation etablie a la question 5-1 : tout l'amortissement est dans le terme du premier ordre."
           - math: '\text{oscillations sinusoidales} \iff R^{\prime}+r-k = 0'
-            note: "Condition d'entretien (rung R7) : le coefficient d'amortissement doit s'annuler."
+            note: "Condition d'entretien (chapitre 8) : le coefficient d'amortissement doit s'annuler."
           - math: '\frac{d^2q}{dt^2} + \frac{1}{LC}\,q = 0'
             note: "Ce qui reste : l'oscillateur harmonique ideal, de solution sinusoidale pure."
           - math: '\boxed{r = k - R^{\prime} = 208{,}4 - 200 = 8{,}4\ \Omega}'
@@ -3034,7 +3034,7 @@ entries:
         stem: |-
           **1-** (0,5 pt) Etablir l'équation différentielle vérifiée par la charge $q$ du condensateur.
         reasoning: |-
-          On est en **position 2** : le circuit ne contient plus que le condensateur et la bobine, tous deux idéaux (générateur et résistor hors circuit, bobine de résistance négligeable). C'est le cas idéal du rung 2, et il se construit en trois gestes.
+          On est en **position 2** : le circuit ne contient plus que le condensateur et la bobine, tous deux idéaux (générateur et résistor hors circuit, bobine de résistance négligeable). C'est le cas idéal du chapitre 3, et il se construit en trois gestes.
 
           **Geste 1 — la loi des mailles.** La maille ne contient que deux dipôles, donc la somme de leurs tensions est nulle :
 
@@ -3046,7 +3046,7 @@ entries:
 
           $$\frac{q}{C} + L\frac{\mathrm{d}^2q}{\mathrm{d}t^2} = 0 \qquad \Longleftrightarrow \qquad \boxed{\frac{\mathrm{d}^2q}{\mathrm{d}t^2} + \frac{1}{LC}\,q = 0}$$
 
-          **Comment lire cette équation, plutôt que de la subir.** C'est l'équation d'un **oscillateur harmonique** : une dérivée seconde, plus une constante positive fois la fonction, égale zéro. Aucun terme en $\dfrac{\mathrm{d}q}{\mathrm{d}t}$ — et c'est **précisément l'absence de ce terme** qui dit que le circuit est idéal. Le terme du premier ordre, quand il existe, porte toute la résistance et donc tout l'amortissement (rung 5) ; ici il n'y a pas de résistance, donc pas d'amortissement, donc des oscillations qui ne s'éteignent jamais.
+          **Comment lire cette équation, plutôt que de la subir.** C'est l'équation d'un **oscillateur harmonique** : une dérivée seconde, plus une constante positive fois la fonction, égale zéro. Aucun terme en $\dfrac{\mathrm{d}q}{\mathrm{d}t}$ — et c'est **précisément l'absence de ce terme** qui dit que le circuit est idéal. Le terme du premier ordre, quand il existe, porte toute la résistance et donc tout l'amortissement (chapitre 6) ; ici il n'y a pas de résistance, donc pas d'amortissement, donc des oscillations qui ne s'éteignent jamais.
 
           **Le piège de cette question.** Garder $R$ dans la maille. Le résistor est bien dans le circuit — mais dans la **branche du haut**, celle qui sert à la charge en position 1. En position 2, la lame de $K$ a basculé : la maille active est condensateur + bobine, et $R$ n'y est plus. Lire la figure avant d'écrire la maille est la moitié du travail.
         steps:
@@ -3062,7 +3062,7 @@ entries:
         stem: |-
           **2-** (0,25 pt) Trouver l'expression de la période propre $T_0$ de l'oscillateur en fonction de $L$ et $C$, pour que l'expression $q(t) = Q_m \cos\!\left(\dfrac{2\pi}{T_0}t\right)$ soit solution de cette équation différentielle.
         reasoning: |-
-          La méthode est celle du rung 2, et le mot « pour que … soit solution » la dicte : **on ne résout pas l'équation, on injecte la solution proposée et on impose qu'elle marche.**
+          La méthode est celle du chapitre 3, et le mot « pour que … soit solution » la dicte : **on ne résout pas l'équation, on injecte la solution proposée et on impose qu'elle marche.**
 
           On dérive deux fois. En posant $\omega_0 = \dfrac{2\pi}{T_0}$ :
 
@@ -3205,7 +3205,7 @@ entries:
 
           Montrer que l'énergie $E_T$ se conserve. Calculer sa valeur.
         reasoning: |-
-          Deux demandes distinctes, et la première est une **démonstration** — pas une affirmation. C'est le cœur du rung 1 (le pendule d'énergie), et cette question relève aussi de la notion sœur « **Aspects énergétiques** », honorée ici sans être dupliquée : le barème est réparti, jamais compté deux fois.
+          Deux demandes distinctes, et la première est une **démonstration** — pas une affirmation. C'est le cœur du chapitre 2 (le pendule d'énergie), et cette question relève aussi de la notion sœur « **Aspects énergétiques** », honorée ici sans être dupliquée : le barème est réparti, jamais compté deux fois.
 
           **Ce qu'il faut écrire.** L'énergie totale est la somme des deux termes :
 
@@ -3221,7 +3221,7 @@ entries:
 
           Le crochet vaut $1$ à chaque instant. **$E_T$ ne dépend plus du temps : elle est constante.** L'énergie n'est ni créée ni perdue — elle **fait l'aller-retour** entre le condensateur et la bobine, deux fois par période, exactement au rythme des arches de la figure 2.
 
-          **Pourquoi ça ne pouvait pas être autrement, et c'est le contrôle de sens.** Le circuit ne contient **aucune résistance** : ni le résistor (hors circuit en position 2), ni la bobine (résistance négligeable, l'énoncé le dit). Or la résistance est le seul dipôle qui **dissipe** de l'énergie, par effet Joule (rung 3). Sans elle, rien ne s'échappe. C'est la traduction énergétique de ce qu'on avait déjà vu sur l'équation différentielle de la question 1 : pas de terme du premier ordre, pas d'amortissement, pas de perte.
+          **Pourquoi ça ne pouvait pas être autrement, et c'est le contrôle de sens.** Le circuit ne contient **aucune résistance** : ni le résistor (hors circuit en position 2), ni la bobine (résistance négligeable, l'énoncé le dit). Or la résistance est le seul dipôle qui **dissipe** de l'énergie, par effet Joule (chapitre 4). Sans elle, rien ne s'échappe. C'est la traduction énergétique de ce qu'on avait déjà vu sur l'équation différentielle de la question 1 : pas de terme du premier ordre, pas d'amortissement, pas de perte.
 
           **La valeur.** Le plus simple est de l'évaluer à l'instant $t = 0$, où toute l'énergie est dans le condensateur ($i = 0$, la bobine ne stocke rien) :
 

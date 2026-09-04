@@ -129,38 +129,38 @@ entries:
         stem: |-
           **(0,5 pt)** Écrire l'expression de l'énergie mécanique du pendule en fonction de C, $J_\Delta$, θ et la vitesse angulaire $\dot\theta$.
         reasoning: |-
-          Comme au rung 6, le pendule de torsion emmagasine son énergie dans deux réservoirs distincts, qui ne se mélangent jamais : l'énergie cinétique de rotation, portée par l'inertie $J_\Delta$ et la vitesse angulaire $\dot\theta$ (l'analogue rotationnel exact de $\frac{1}{2}mv^2$) ; et l'énergie potentielle de torsion, portée par la raideur $C$ du fil et l'angle $\theta$ — jamais par $J_\Delta$, qui n'est pas un rappel mais une inertie.
+          Comme au chapitre 7, le pendule de torsion emmagasine son énergie dans deux réservoirs distincts, qui ne se mélangent jamais : l'énergie cinétique de rotation, portée par l'inertie $J_\Delta$ et la vitesse angulaire $\dot\theta$ (l'analogue rotationnel exact de $\frac{1}{2}mv^2$) ; et l'énergie potentielle de torsion, portée par la raideur $C$ du fil et l'angle $\theta$ — jamais par $J_\Delta$, qui n'est pas un rappel mais une inertie.
 
           $$E_c = \frac{1}{2}J_\Delta\,\dot\theta^2 \qquad E_{p,torsion} = \frac{1}{2}C\,\theta^2$$
 
           $$\boxed{E_m = E_c + E_{p,torsion} = \frac{1}{2}J_\Delta\,\dot\theta^2 + \frac{1}{2}C\,\theta^2}$$
 
-          Le piège nommé de cette question. Mettre $J_\Delta$ dans le terme de rappel, ou $C$ dans le terme cinétique — les deux réservoirs suivent une règle stricte (rung 6) : l'inertie ($J_\Delta$) ne vit jamais dans $E_p$, le rappel ($C$) ne vit jamais dans $E_c$. C'est exactement le même partage que pour le ressort ($m$ dans $E_c$, $k$ dans $E_{pe}$), habillé en rotation.
+          Le piège nommé de cette question. Mettre $J_\Delta$ dans le terme de rappel, ou $C$ dans le terme cinétique — les deux réservoirs suivent une règle stricte (chapitre 7) : l'inertie ($J_\Delta$) ne vit jamais dans $E_p$, le rappel ($C$) ne vit jamais dans $E_c$. C'est exactement le même partage que pour le ressort ($m$ dans $E_c$, $k$ dans $E_{pe}$), habillé en rotation.
         steps:
           - math: 'E_c = \frac{1}{2}J_\Delta\,\dot\theta^2 \qquad E_{p,torsion} = \frac{1}{2}C\,\theta^2'
-            note: "Les deux reservoirs (rung 6) : inertie de rotation dans E_c, raideur du fil dans E_p."
+            note: "Les deux reservoirs (chapitre 7) : inertie de rotation dans E_c, raideur du fil dans E_p."
           - math: '\boxed{E_m = \frac{1}{2}J_\Delta\,\dot\theta^2 + \frac{1}{2}C\,\theta^2}'
             note: "Energie mecanique du pendule de torsion."
       - id: q2
         stem: |-
           **(0,75 pt)** Déterminer la valeur de la constante de torsion $C$ du fil en acier.
         reasoning: |-
-          La figure H ne trace que $E_C(\theta)$, pas $E_m$ directement : il faut d'abord en extraire $E_m$, puis $C$, en deux temps — exactement la méthode de lecture des diagrammes d'énergie établie au rung 5, transposée de la variable $x$ à la variable $\theta$.
+          La figure H ne trace que $E_C(\theta)$, pas $E_m$ directement : il faut d'abord en extraire $E_m$, puis $C$, en deux temps — exactement la méthode de lecture des diagrammes d'énergie établie au chapitre 6, transposée de la variable $x$ à la variable $\theta$.
 
-          **Premier temps : lire $E_m$ au sommet.** Sans frottement, $E_m$ est constante (rung 6) — elle vaut ce que $E_C$ vaut là où $E_{p,torsion}$ s'annule, c'est-à-dire à $\theta=0$ (référence de l'énergie potentielle de torsion, énoncé). C'est précisément le SOMMET de la parabole $E_C(\theta)$, qui touche la ligne de grille non étiquetée à $16\ \text{mJ}$.
+          **Premier temps : lire $E_m$ au sommet.** Sans frottement, $E_m$ est constante (chapitre 7) — elle vaut ce que $E_C$ vaut là où $E_{p,torsion}$ s'annule, c'est-à-dire à $\theta=0$ (référence de l'énergie potentielle de torsion, énoncé). C'est précisément le SOMMET de la parabole $E_C(\theta)$, qui touche la ligne de grille non étiquetée à $16\ \text{mJ}$.
 
           $$E_m = E_C(\theta=0) = 16\ \text{mJ} = 1{,}6\times10^{-2}\ \text{J}$$
 
-          **Deuxième temps : passer par l'écart maximal.** Aux deux zéros de la courbe, $\theta = \pm\theta_m$, l'énergie cinétique s'annule ($E_C=0$, le pendule s'arrête un instant avant de repartir) : toute l'énergie mécanique y est alors de l'énergie potentielle de torsion (rung 6, même logique que le passage par les positions extrêmes du ressort au rung 5).
+          **Deuxième temps : passer par l'écart maximal.** Aux deux zéros de la courbe, $\theta = \pm\theta_m$, l'énergie cinétique s'annule ($E_C=0$, le pendule s'arrête un instant avant de repartir) : toute l'énergie mécanique y est alors de l'énergie potentielle de torsion (chapitre 7, même logique que le passage par les positions extrêmes du ressort au chapitre 6).
 
           $$E_m = \frac{1}{2}C\,\theta_m^2 \implies C = \frac{2\,E_m}{\theta_m^2}$$
 
           Le piège nommé de cette question. Lire $E_m$ directement sur l'axe des ordonnées comme si le point $14$ (le dernier trait CHIFFRÉ) était le sommet : le sommet touche en réalité la ligne de grille suivante, non étiquetée, à $16\ \text{mJ}$ — c'est le seul comptage de maille non trivial de la figure, et la source du sujet le signale explicitement comme le point fragile de cette lecture.
         steps:
           - math: 'E_m = E_C(\theta=0) = 16\ \text{mJ} = 1{,}6\times10^{-2}\ \text{J}'
-            note: "Sommet de la parabole, une maille au-dessus du 14 imprime (rung 5, lecture d'un diagramme d'energie transposee a theta)."
+            note: "Sommet de la parabole, une maille au-dessus du 14 imprime (chapitre 6, lecture d'un diagramme d'energie transposee a theta)."
           - math: 'E_m = \frac{1}{2}C\,\theta_m^2 \implies C = \frac{2\,E_m}{\theta_m^2}'
-            note: "Aux zeros de E_C (theta = +/- theta_m), toute l'energie est potentielle de torsion (rung 6)."
+            note: "Aux zeros de E_C (theta = +/- theta_m), toute l'energie est potentielle de torsion (chapitre 7)."
           - math: 'C = \frac{2\times1{,}6\times10^{-2}}{0{,}8^2} = \frac{3{,}2\times10^{-2}}{0{,}64}'
             note: "theta_m = 0,8 rad (enonce)."
           - math: '\boxed{C \approx 0{,}05\ \text{N.m.rad}^{-1}}'
@@ -173,14 +173,14 @@ entries:
 
           $$E_m = \frac{1}{2}J_\Delta\,\dot\theta_{max}^2 \implies J_\Delta = \frac{2\,E_m}{\dot\theta_{max}^2}$$
 
-          avec $E_m = 1{,}6\times10^{-2}\ \text{J}$, la même valeur qu'à la question 2 — l'énergie mécanique ne se recalcule pas, elle est la même à tout instant (rung 6).
+          avec $E_m = 1{,}6\times10^{-2}\ \text{J}$, la même valeur qu'à la question 2 — l'énergie mécanique ne se recalcule pas, elle est la même à tout instant (chapitre 7).
 
-          Le contrôle qui rassure. On peut aussi retrouver $J_\Delta$ par la période propre du pendule, $T_0 = 2\pi\sqrt{J_\Delta/C}$ (notion « Systèmes oscillants », rung 4) : les deux méthodes — énergétique ici, dynamique là-bas — décrivent le même pendule et doivent s'accorder, même si celle-ci se passe entièrement de $T_0$.
+          Le contrôle qui rassure. On peut aussi retrouver $J_\Delta$ par la période propre du pendule, $T_0 = 2\pi\sqrt{J_\Delta/C}$ (notion « Systèmes oscillants », chapitre 5) : les deux méthodes — énergétique ici, dynamique là-bas — décrivent le même pendule et doivent s'accorder, même si celle-ci se passe entièrement de $T_0$.
 
           Le piège nommé de cette question. Réutiliser $\theta_m$ au lieu de $\dot\theta_{max}$ dans la formule de $E_c$, ou l'inverse à la question 2 : les deux questions sont symétriques (l'une exploite le sommet en $E_C$, l'autre les zéros), mais chacune n'utilise qu'UNE seule des deux grandeurs extrêmes — jamais les deux à la fois dans la même expression.
         steps:
           - math: 'E_m = \frac{1}{2}J_\Delta\,\dot\theta_{max}^2 \implies J_\Delta = \frac{2\,E_m}{\dot\theta_{max}^2}'
-            note: "A theta=0, E_p,torsion=0 : toute l'energie mecanique est cinetique (rung 6), meme E_m qu'a la question 2."
+            note: "A theta=0, E_p,torsion=0 : toute l'energie mecanique est cinetique (chapitre 7), meme E_m qu'a la question 2."
           - math: 'J_\Delta = \frac{2\times1{,}6\times10^{-2}}{2{,}31^2} = \frac{3{,}2\times10^{-2}}{5{,}336}'
             note: "theta_dot_max = 2,31 rad/s (enonce)."
           - math: '\boxed{J_\Delta \approx 6{,}0\times10^{-3}\ \text{kg.m}^2}'
@@ -307,7 +307,7 @@ entries:
         stem: |-
           **1-** (0,5 pt) Affecter, à chaque courbe, l'énergie correspondante. Justifier.
         reasoning: |-
-          On identifie chaque courbe par ses ZÉROS — le geste de lecture des diagrammes d'énergie du rung 5, transposé du ressort au fil de torsion (rung 6) :
+          On identifie chaque courbe par ses ZÉROS — le geste de lecture des diagrammes d'énergie du chapitre 6, transposé du ressort au fil de torsion (chapitre 7) :
 
           - la courbe **(b)** s'annule à $\theta = 0$, la position d'équilibre — or c'est exactement là que l'énergie potentielle de torsion est nulle (référence choisie par l'énoncé), et elle croît comme $\frac{1}{2}C\theta^2$ quand on s'en écarte : **(b) est $E_p$**, l'énergie potentielle de torsion ;
           - la courbe **(a)** s'annule à $\theta = \pm\theta_m = \pm0{,}4\ \text{rad}$, les élongations extrêmes — or c'est là que la barre s'immobilise un instant avant de repartir ($\dot\theta = 0$), donc que l'énergie cinétique s'annule ; et elle culmine à $\theta = 0$, au passage par l'équilibre, où la barre va le plus vite : **(a) est $E_C$**, l'énergie cinétique.
@@ -321,11 +321,11 @@ entries:
         stem: |-
           **2-** (0,5 pt) Déterminer la valeur de la constante de torsion $C$ du fil métallique.
         reasoning: |-
-          Sans frottement, l'énergie mécanique est constante (rung 6) : elle vaut ce que $E_C$ vaut à l'équilibre — le SOMMET de la courbe (a), sur la ligne majeure de $1{,}6\ \text{mJ}$ :
+          Sans frottement, l'énergie mécanique est constante (chapitre 7) : elle vaut ce que $E_C$ vaut à l'équilibre — le SOMMET de la courbe (a), sur la ligne majeure de $1{,}6\ \text{mJ}$ :
 
           $$E_m = E_C(\theta = 0) = 1{,}6\ \text{mJ} = 1{,}6\times10^{-3}\ \text{J}$$
 
-          Aux élongations extrêmes $\theta = \pm\theta_m$, toute cette énergie est potentielle de torsion (la barre s'y arrête) — et le rung 6 donne son expression, $\frac{1}{2}C\theta^2$ :
+          Aux élongations extrêmes $\theta = \pm\theta_m$, toute cette énergie est potentielle de torsion (la barre s'y arrête) — et le chapitre 7 donne son expression, $\frac{1}{2}C\theta^2$ :
 
           $$E_m = \frac{1}{2}C\,\theta_m^2 \implies C = \frac{2\,E_m}{\theta_m^2} = \frac{2\times1{,}6\times10^{-3}}{(0{,}4)^2}$$
 
@@ -338,7 +338,7 @@ entries:
           - math: 'E_m = E_C(\theta=0) = 1{,}6\ \text{mJ}'
             note: "Sommet de (a), huit carreaux de 0,2 mJ -- verrouille par le croisement des courbes a E_m/2 = 0,8 mJ."
           - math: 'E_m = \frac{1}{2}C\,\theta_m^2 \implies C = \frac{2\,E_m}{\theta_m^2}'
-            note: "Aux elongations extremes, toute l'energie est potentielle de torsion (rung 6)."
+            note: "Aux elongations extremes, toute l'energie est potentielle de torsion (chapitre 7)."
           - math: 'C = \frac{2\times1{,}6\times10^{-3}}{0{,}16}'
             note: "theta_m = 0,4 rad (enonce)."
           - math: '\boxed{C = 0{,}02\ \text{N.m.rad}^{-1}}'
@@ -349,11 +349,11 @@ entries:
         reasoning: |-
           Deux temps : lire $E_C$ à $\theta_1$, puis en extraire $\dot\theta$.
 
-          **Lire $E_C(\theta_1)$.** Par conservation (rung 6) — ou directement sur la courbe (a) à $\theta = 0{,}2\ \text{rad}$ :
+          **Lire $E_C(\theta_1)$.** Par conservation (chapitre 7) — ou directement sur la courbe (a) à $\theta = 0{,}2\ \text{rad}$ :
 
           $$E_C(\theta_1) = E_m - \frac{1}{2}C\,\theta_1^2 = 1{,}6\times10^{-3} - \frac{1}{2}\times0{,}02\times(0{,}2)^2 = 1{,}6\times10^{-3} - 4\times10^{-4} = 1{,}2\times10^{-3}\ \text{J}$$
 
-          **En extraire $|\dot\theta|$.** L'énergie cinétique d'un solide en ROTATION s'écrit $E_C = \frac{1}{2}J_\Delta\,\dot\theta^2$ — l'analogue rotationnel du $\frac{1}{2}mv^2$ du rung 1, construit dans la notion « Rotation d'un solide autour d'un axe fixe » ($J_\Delta$ y joue le rôle de la masse, $\dot\theta$ celui de la vitesse) :
+          **En extraire $|\dot\theta|$.** L'énergie cinétique d'un solide en ROTATION s'écrit $E_C = \frac{1}{2}J_\Delta\,\dot\theta^2$ — l'analogue rotationnel du $\frac{1}{2}mv^2$ du chapitre 2, construit dans la notion « Rotation d'un solide autour d'un axe fixe » ($J_\Delta$ y joue le rôle de la masse, $\dot\theta$ celui de la vitesse) :
 
           $$|\dot\theta| = \sqrt{\frac{2\,E_C(\theta_1)}{J_\Delta}} = \sqrt{\frac{2\times1{,}2\times10^{-3}}{2{,}4\times10^{-3}}} = \sqrt{1{,}0}$$
 
@@ -364,7 +364,7 @@ entries:
           Le piège nommé de cette question. Mélanger les deux réservoirs : à $\theta_1 = 0{,}2\ \text{rad}$, le pendule N'EST NI à l'équilibre ni à l'élongation maximale — il faut soustraire l'énergie potentielle du moment ($4\times10^{-4}\ \text{J}$) avant d'inverser $\frac{1}{2}J_\Delta\dot\theta^2$. Utiliser $E_m$ entière donnerait $|\dot\theta| \approx 1{,}15\ \text{rad.s}^{-1}$, faux.
         steps:
           - math: 'E_C(\theta_1) = E_m - \frac{1}{2}C\,\theta_1^2 = 1{,}6\times10^{-3} - 4\times10^{-4} = 1{,}2\times10^{-3}\ \text{J}'
-            note: "Conservation de E_m (rung 6) ; lisible aussi directement sur la courbe (a) a theta = 0,2 rad."
+            note: "Conservation de E_m (chapitre 7) ; lisible aussi directement sur la courbe (a) a theta = 0,2 rad."
           - math: 'E_C = \frac{1}{2}J_\Delta\,\dot\theta^2 \implies |\dot\theta| = \sqrt{\frac{2\,E_C}{J_\Delta}}'
             note: "Energie cinetique de rotation (notion Rotation autour d'un axe fixe) : J_Delta joue le role de la masse."
           - math: '|\dot\theta| = \sqrt{\frac{2\times1{,}2\times10^{-3}}{2{,}4\times10^{-3}}} = \sqrt{1{,}0}'
@@ -375,18 +375,18 @@ entries:
         stem: |-
           **4-** (0,75 pt) Calculer le travail du couple de torsion $W_C$ lorsque l'oscillateur passe de la position d'équilibre repérée par l'abscisse angulaire $\theta = 0$, à la position repérée par l'abscisse angulaire $\theta_1$.
         reasoning: |-
-          Le couple de torsion est la force de rappel du fil — celle-là même dont l'énergie potentielle de torsion $\frac{1}{2}C\theta^2$ garde la trace (rung 6). Son travail se calcule donc comme celui du poids au rung 3 : par la VARIATION d'énergie potentielle, changée de signe — jamais par « couple × angle », le couple n'étant pas constant :
+          Le couple de torsion est la force de rappel du fil — celle-là même dont l'énergie potentielle de torsion $\frac{1}{2}C\theta^2$ garde la trace (chapitre 7). Son travail se calcule donc comme celui du poids au chapitre 4 : par la VARIATION d'énergie potentielle, changée de signe — jamais par « couple × angle », le couple n'étant pas constant :
 
           $$W_C(0 \to \theta_1) = -\Delta E_{p,torsion} = -\left(\frac{1}{2}C\,\theta_1^2 - 0\right) = -\frac{1}{2}\times0{,}02\times(0{,}2)^2$$
 
           $$\boxed{W_C = -4\times10^{-4}\ \text{J}}$$
 
-          Le signe dit la physique : de $\theta = 0$ à $\theta_1 = 0{,}2\ \text{rad}$, la barre S'ÉCARTE de l'équilibre, et le couple de rappel — qui tire toujours vers l'équilibre — travaille CONTRE le mouvement : travail résistant, négatif. C'est exactement l'énergie que la question 3 a vue disparaître du réservoir cinétique ($1{,}6 - 1{,}2 = 0{,}4\ \text{mJ}$) : le théorème de l'énergie cinétique (rung 2) referme la boucle, puisque le couple de torsion est ici la seule action qui travaille.
+          Le signe dit la physique : de $\theta = 0$ à $\theta_1 = 0{,}2\ \text{rad}$, la barre S'ÉCARTE de l'équilibre, et le couple de rappel — qui tire toujours vers l'équilibre — travaille CONTRE le mouvement : travail résistant, négatif. C'est exactement l'énergie que la question 3 a vue disparaître du réservoir cinétique ($1{,}6 - 1{,}2 = 0{,}4\ \text{mJ}$) : le théorème de l'énergie cinétique (chapitre 3) referme la boucle, puisque le couple de torsion est ici la seule action qui travaille.
 
           Le piège nommé de cette question. Écrire $W_C = +\frac{1}{2}C\theta_1^2$ (oublier le signe moins de $W = -\Delta E_p$), ou calculer $\frac{1}{2}C(\theta_m^2 - \theta_1^2)$ en partant de l'élongation maximale : l'énoncé fait partir le trajet de $\theta = 0$, pas de $\theta_m$ — lire les bornes du trajet AVANT de poser le calcul.
         steps:
           - math: 'W_C(0 \to \theta_1) = -\Delta E_{p,torsion} = -\left(\frac{1}{2}C\,\theta_1^2 - 0\right)'
-            note: "Travail d'une force conservative = moins la variation de son energie potentielle (meme geste que le poids, rung 3)."
+            note: "Travail d'une force conservative = moins la variation de son energie potentielle (meme geste que le poids, chapitre 4)."
           - math: 'W_C = -\frac{1}{2}\times0{,}02\times(0{,}2)^2'
             note: "C = 0,02 N.m/rad (question 2), theta_1 = 0,2 rad, depart a theta = 0 (E_p nulle)."
           - math: '\boxed{W_C = -4\times10^{-4}\ \text{J}}'

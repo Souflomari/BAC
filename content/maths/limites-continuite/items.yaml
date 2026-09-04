@@ -25,7 +25,7 @@ misconceptions:
       s'agit d'une limite de référence admise, et retombe sur un réflexe
       erroné : conclure que la limite vaut $0$ (lecture littérale de
       « 0/0 »), conclure qu'elle n'existe pas (en essayant d'appliquer la
-      factorisation du R3 à une expression non polynomiale), ou confondre
+      factorisation du chapitre 4 à une expression non polynomiale), ou confondre
       « forme indéterminée » avec « nécessairement infinie ou inexistante ».
     contradicts_principle: >-
       $\lim_{x\to 0}\frac{\sin x}{x}=1$ est une limite de RÉFÉRENCE, établie
@@ -46,7 +46,7 @@ misconceptions:
       l'inverse, en croyant qu'une substitution valide (par exemple $u=x-a$
       quand $x\to a$) laisse malgré tout le résultat dépendant du paramètre
       de décalage utilisé pour la construire ; ou, une fois correctement
-      redirigé vers les tableaux du R2, en oubliant d'étudier le signe du
+      redirigé vers les tableaux du chapitre 3, en oubliant d'étudier le signe du
       dénominateur des deux côtés.
     contradicts_principle: >-
       La condition d'application est unique et non négociable : SEUL compte
@@ -580,7 +580,7 @@ items:
     tags: ["lecture-tableau", "limite-intuitive"]
     primary_misconception: mc.math.maths_limites_continuite.confond-point-et-voisinage
     stem: >
-      Reprends le tableau de valeurs de l'accroche (R0) pour
+      Reprends le tableau de valeurs de l'accroche (chapitre 1) pour
       $f(x)=\dfrac{x^2-1}{x-1}$ : pour $x=0{,}9$, $0{,}99$, $0{,}999$, on a
       $f(x)=1{,}9$, $1{,}99$, $1{,}999$ ; pour $x=1{,}001$, $1{,}01$,
       $1{,}1$, on a $f(x)=2{,}001$, $2{,}01$, $2{,}1$. Que suggère ce
@@ -645,7 +645,7 @@ items:
         misconception: mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale
         feedback: >
           Cette simplification est exactement celle qui permettra de
-          calculer la LIMITE en $1$ (tu la reverras au R3), mais elle ne
+          calculer la LIMITE en $1$ (tu la reverras au chapitre 4), mais elle ne
           change rien au fait que $f(1)$ lui-même reste indéfini : la
           fonction de départ exige de diviser par $1-1=0$ en $x=1$, quelle
           que soit la réécriture algébrique effectuée « avant » de
@@ -687,7 +687,7 @@ items:
     tags: ["limite-intuitive", "lecture-tableau"]
     primary_misconception: mc.math.maths_limites_continuite.confond-point-et-voisinage
     stem: >
-      D'après le tableau de valeurs du R0, $f(x)$ se rapproche de $2$
+      D'après le tableau de valeurs du chapitre 1, $f(x)$ se rapproche de $2$
       quand $x$ se rapproche de $1$, par la gauche comme par la droite.
       Quelle est l'interprétation correcte de cette observation ?
     type: mcq
@@ -713,7 +713,7 @@ items:
           valeurs — il suggère une conjecture, il ne la prouve pas. C'est
           justement pour ça que la leçon promet de revenir sur cet exemple
           « sans tableau ni calculatrice » : la preuve, elle, viendra d'un
-          calcul algébrique (R3).
+          calcul algébrique (chapitre 4).
       - id: D
         text: "Le tableau ne permet rien d'affirmer, car on n'a testé que six valeurs de $x$ parmi une infinité possible."
         correct: false
@@ -731,7 +731,7 @@ items:
     solution: |
       Le tableau montre un resserrement net et cohérent vers $2$ des deux
       côtés de $1$ : c'est une conjecture numérique solide, mais pas une
-      preuve. La leçon y reviendra au R3 pour la démontrer par le calcul.
+      preuve. La leçon y reviendra au chapitre 4 pour la démontrer par le calcul.
 
   - id: LIMCONT-10
     rung: "R1"
@@ -925,7 +925,7 @@ items:
         misconception: null
         feedback: >
           C'est justement l'intérêt des tableaux d'opérations sur les
-          limites (R2) : connaître seulement les DEUX limites (ici $-4$ et
+          limites (chapitre 3) : connaître seulement les DEUX limites (ici $-4$ et
           $+\infty$) suffit à déterminer le résultat, sans avoir besoin des
           expressions précises de $f$ et $g$ — sauf dans les quatre cas de
           forme indéterminée, qui ne s'applique pas ici.
@@ -935,7 +935,7 @@ items:
       $\lim_{x \to +\infty} (f \times g) = -\infty$.
     solution: |
       $\lim f(x) = -4 < 0$ et $\lim g(x) = +\infty$. D'après le tableau des
-      produits de limites (R2), $L<0$ et $+\infty$ donnent $-\infty$ :
+      produits de limites (chapitre 3), $L<0$ et $+\infty$ donnent $-\infty$ :
       $$\lim_{x \to +\infty} \big(f(x) \times g(x)\big) = -\infty$$
 
   - id: LIMCONT-14
@@ -1259,7 +1259,7 @@ items:
         correct: false
         misconception: null
         feedback: >
-          La technique du terme dominant (R3) s'applique aussi bien aux
+          La technique du terme dominant (chapitre 4) s'applique aussi bien aux
           FORMES $\infty-\infty$ (différences de puissances, comme ici)
           qu'aux formes $\frac{\infty}{\infty}$ (quotients) : dans les deux
           cas, on factorise la puissance de plus haut degré. Ici,
@@ -1425,20 +1425,20 @@ items:
         misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
         feedback: >
           $\frac{0}{0}$ n'est pas une valeur numérique — ce n'est pas $0$
-          (déjà vu au R0 pour $f(1)$ avec $\frac{x^2-1}{x-1}$). C'est
+          (déjà vu au chapitre 1 pour $f(1)$ avec $\frac{x^2-1}{x-1}$). C'est
           précisément parce que cette forme ne se lit pas littéralement
           qu'il faut un outil séparé : ici, le résultat de référence
           $\lim\frac{\sin x}{x}=1$, pas une lecture directe de « 0/0 ».
       - id: C
         text: >-
-          La limite n'existe pas : comme au R3, il faudrait factoriser
+          La limite n'existe pas : comme au chapitre 4, il faudrait factoriser
           $\sin x$ et $x$ par un facteur commun, mais $\sin x$ n'étant pas
           un polynôme, cette factorisation est impossible.
         correct: false
         misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
         feedback: >
           L'impossibilité de factoriser algébriquement ne veut pas dire que
-          la limite n'existe pas — elle veut dire que la technique du R3
+          la limite n'existe pas — elle veut dire que la technique du chapitre 4
           (réservée aux polynômes et aux racines) ne s'applique pas ICI.
           $\frac{\sin x}{x}$ a bien une limite, $1$ : c'est un résultat de
           référence à connaître, pas à redémontrer par factorisation à
@@ -1453,7 +1453,7 @@ items:
         feedback: >
           « Indéterminée » ne veut pas dire « forcément infinie » — ça veut
           dire que la forme symbolique seule ne suffit pas à connaître la
-          réponse (rappel du R2 : trois expressions en « $\infty-\infty$ »
+          réponse (rappel du chapitre 3 : trois expressions en « $\infty-\infty$ »
           donnaient trois réponses différentes). Ici, le calcul de référence
           (géométrique, admis) donne une valeur finie et non nulle : $1$.
     correct_feedback: >
@@ -1464,7 +1464,7 @@ items:
       substituer.
     solution: |
       La substitution directe donne $\frac{\sin 0}{0}=\frac{0}{0}$, une
-      forme indéterminée qu'aucune des techniques du R3 (factorisation,
+      forme indéterminée qu'aucune des techniques du chapitre 4 (factorisation,
       conjugué, terme dominant) ne permet de lever, puisque $\sin x$ n'est
       pas un polynôme. $\frac{\sin x}{x}$ est une limite de RÉFÉRENCE,
       établie par un argument géométrique et admise :
@@ -1567,7 +1567,7 @@ items:
         feedback: >
           $\frac{0}{0}$ n'est pas une valeur numérique. Cette forme indique
           qu'il faut passer par la dérivation via le conjugué $1+\cos x$
-          (comme au R3), pas conclure « $0$ » directement.
+          (comme au chapitre 4), pas conclure « $0$ » directement.
     correct_feedback: >
       Exact : en multipliant par le conjugué $1+\cos x$, on fait apparaître
       $1-\cos^2 x=\sin^2 x$, d'où
@@ -1651,7 +1651,7 @@ items:
           pas vers $0$ (il tend vers $1$), donc le formulaire trigonométrique
           ne s'applique pas. Le numérateur tend vers $\sin(1)\neq 0$ et le
           dénominateur vers $0$ : c'est le cas « nombre non nul divisé par
-          $0$ » du R2, qui donne un résultat infini de signes opposés à
+          $0$ » du chapitre 3, qui donne un résultat infini de signes opposés à
           gauche et à droite.
         correct: true
       - id: B
@@ -1683,7 +1683,7 @@ items:
         misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
         feedback: >
           Le signe de $\sin(1)$ est bien positif, mais le signe du
-          DÉNOMINATEUR change selon le côté (rappel du R2) : pour
+          DÉNOMINATEUR change selon le côté (rappel du chapitre 3) : pour
           $x\to 0^{+}$, $x>0$ donc $\frac{\sin(1)}{x}\to+\infty$ ; pour
           $x\to 0^{-}$, $x<0$ donc $\frac{\sin(1)}{x}\to-\infty$. Les deux
           limites latérales étant différentes, la limite globale n'existe
@@ -1700,7 +1700,7 @@ items:
       formulaire trigonométrique ne s'applique donc pas.
 
       Le numérateur $\sin(x+1) \to \sin(1) \neq 0$, et le dénominateur
-      $x\to 0$ : c'est le cas « nombre non nul divisé par $0$ » du R2.
+      $x\to 0$ : c'est le cas « nombre non nul divisé par $0$ » du chapitre 3.
       $$\lim_{x \to 0^{+}} \frac{\sin(x+1)}{x} = +\infty \qquad\qquad
       \lim_{x \to 0^{-}} \frac{\sin(x+1)}{x} = -\infty$$
       Les deux limites latérales diffèrent : la limite globale n'existe

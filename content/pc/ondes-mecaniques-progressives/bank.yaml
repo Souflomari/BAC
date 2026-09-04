@@ -184,14 +184,14 @@ entries:
         stem: |-
           **(0,5 pt)** Les ondes ultrasonores sont-elles longitudinales ou transversales ? Justifier.
         reasoning: |-
-          Les ultrasons sont des ondes sonores, seulement trop aiguës pour être entendues — R4 établit que le son se propage par compressions et dilatations successives du milieu, exactement le mécanisme du ressort étudié en R2. Le critère de R2 : on compare la direction du déplacement de la matière à la direction de propagation. Dans une compression qui court le long d'un milieu (air, liquide), les molécules oscillent dans l'axe même où la perturbation avance — les deux directions coïncident.
+          Les ultrasons sont des ondes sonores, seulement trop aiguës pour être entendues — le chapitre 5 établit que le son se propage par compressions et dilatations successives du milieu, exactement le mécanisme du ressort étudié au chapitre 3. Le critère du chapitre 3 : on compare la direction du déplacement de la matière à la direction de propagation. Dans une compression qui court le long d'un milieu (air, liquide), les molécules oscillent dans l'axe même où la perturbation avance — les deux directions coïncident.
 
           L'onde ultrasonore est donc longitudinale, et non transversale (qui exigerait un déplacement perpendiculaire à la propagation, comme sur une corde).
       - id: q2
         stem: |-
           **(0,5 pt)** En exploitant la figure 2, déterminer la valeur du retard temporel $\tau$ entre les deux ondes reçues.
         reasoning: |-
-          Même geste qu'en R4 pour la mesure au double microphone : le décalage horizontal entre les débuts des deux salves, compté en divisions sur l'écran, se convertit en temps grâce à la sensibilité horizontale (base de temps) de l'oscilloscope. Sur la figure 2, ce décalage vaut $2$ divisions.
+          Même geste qu'au chapitre 5 pour la mesure au double microphone : le décalage horizontal entre les débuts des deux salves, compté en divisions sur l'écran, se convertit en temps grâce à la sensibilité horizontale (base de temps) de l'oscilloscope. Sur la figure 2, ce décalage vaut $2$ divisions.
         steps:
           - math: '\tau = 2\ \text{div}\times 2\ \text{ms/div}'
             note: "Comptage du decalage horizontal entre les deux salves sur la figure 2, converti via la base de temps 2 ms/division."
@@ -203,10 +203,10 @@ entries:
 
           $$\tau = L\left(\dfrac{1}{V_{air}} - \dfrac{1}{V_p}\right).$$
         reasoning: |-
-          Les deux ondes partent ensemble, à $t_0=0$ (même source, le GBF), et parcourent la même distance $L$ — mais pas à la même célérité, donc pas dans le même temps : c'est exactement la relation de R3, $\tau=d/v$, appliquée séparément à chaque milieu. L'onde dans l'air met $t_{air}=L/V_{air}$, celle dans le pétrole met $t_p=L/V_p$. Comme le pétrole est plus dense que l'air, R3 dit que sa célérité y est plus grande — l'onde du pétrole arrive donc en premier, et le retard $\tau$ observé est celui de l'onde de l'air par rapport à celle du pétrole : la différence de ces deux durées.
+          Les deux ondes partent ensemble, à $t_0=0$ (même source, le GBF), et parcourent la même distance $L$ — mais pas à la même célérité, donc pas dans le même temps : c'est exactement la relation du chapitre 4, $\tau=d/v$, appliquée séparément à chaque milieu. L'onde dans l'air met $t_{air}=L/V_{air}$, celle dans le pétrole met $t_p=L/V_p$. Comme le pétrole est plus dense que l'air, chapitre 4 dit que sa célérité y est plus grande — l'onde du pétrole arrive donc en premier, et le retard $\tau$ observé est celui de l'onde de l'air par rapport à celle du pétrole : la différence de ces deux durées.
         steps:
           - math: 't_{air} = \frac{L}{V_{air}} \qquad t_p = \frac{L}{V_p}'
-            note: "Duree de parcours de chaque onde sur la distance L (R3 : temps = distance / celerite)."
+            note: "Duree de parcours de chaque onde sur la distance L (chapitre 4 : temps = distance / celerite)."
           - math: '\tau = t_{air} - t_p = \frac{L}{V_{air}} - \frac{L}{V_p}'
             note: "Le retard est la difference des durees : l'onde de l'air, plus lente, arrive apres celle du petrole."
           - math: '\boxed{\tau = L\left(\frac{1}{V_{air}} - \frac{1}{V_p}\right)}'
@@ -224,7 +224,7 @@ entries:
           - math: '\frac{1}{V_p} \approx 7{,}7\times10^{-4}\ \text{s.m}^{-1}'
             note: "On garde plusieurs chiffres significatifs : petite difference de deux termes voisins."
           - math: '\boxed{V_p \approx 1{,}3\times10^{3}\ \text{m.s}^{-1}}'
-            note: "On inverse. Bien superieure a V_air = 340 m/s, coherent avec R3 : un milieu plus dense relaie la perturbation plus vite."
+            note: "On inverse. Bien superieure a V_air = 340 m/s, coherent avec le chapitre 4 : un milieu plus dense relaie la perturbation plus vite."
 
   # ── bk-2022-n-x2 — 2022 N, Exercice 2 (Partie 1) : célérité du son dans l'air ──
   - id: bk-2021-r-x2
@@ -381,21 +381,21 @@ entries:
         stem: |-
           **1.1.** (0,25 pt) L'onde sonore est une onde transversale.
         reasoning: |-
-          D'après R4, le son se propage par compressions et dilatations successives de l'air, dans la même direction que celle où il avance — exactement le mécanisme du ressort étudié en R2. C'est le critère « déplacement parallèle à la propagation » qui définit une onde longitudinale, pas transversale (qui exigerait un déplacement perpendiculaire, comme sur une corde).
+          D'après le chapitre 5, le son se propage par compressions et dilatations successives de l'air, dans la même direction que celle où il avance — exactement le mécanisme du ressort étudié au chapitre 3. C'est le critère « déplacement parallèle à la propagation » qui définit une onde longitudinale, pas transversale (qui exigerait un déplacement perpendiculaire, comme sur une corde).
 
           L'affirmation est fausse : l'onde sonore est longitudinale.
       - id: q1b
         stem: |-
           **1.2.** (0,25 pt) L'onde sonore ne se propage pas dans le vide.
         reasoning: |-
-          Une onde sonore est une onde mécanique (R1) : elle a besoin d'un milieu matériel, déformable et élastique, pour se propager de proche en proche — sans matière à déformer, rien ne peut relayer la perturbation. R4 le rappelle explicitement pour le son.
+          Une onde sonore est une onde mécanique (chapitre 2) : elle a besoin d'un milieu matériel, déformable et élastique, pour se propager de proche en proche — sans matière à déformer, rien ne peut relayer la perturbation. Le chapitre 5 le rappelle explicitement pour le son.
 
           L'affirmation est vraie : l'onde sonore ne se propage pas dans le vide.
       - id: q2
         stem: |-
           **(0,25 pt)** Déterminer la durée $\Delta t$ mise par le signal pour arriver au récepteur $R$.
         reasoning: |-
-          Même lecture que celle décrite en R4 pour la mesure au double microphone : le décalage horizontal entre les deux signaux, compté en divisions de la grille, se convertit en temps grâce à l'étalonnage donné par la double flèche « $0{,}5\ \text{ms}$ », qui couvre exactement une division. Sur la figure 2, le bord du signal (b) est exactement 5 divisions plus loin que celui du signal (a) : ce décalage, c'est $\Delta t$, le retard de R3 appliqué ici entre l'émission et la réception.
+          Même lecture que celle décrite au chapitre 5 pour la mesure au double microphone : le décalage horizontal entre les deux signaux, compté en divisions de la grille, se convertit en temps grâce à l'étalonnage donné par la double flèche « $0{,}5\ \text{ms}$ », qui couvre exactement une division. Sur la figure 2, le bord du signal (b) est exactement 5 divisions plus loin que celui du signal (a) : ce décalage, c'est $\Delta t$, le retard du chapitre 4 appliqué ici entre l'émission et la réception.
         steps:
           - math: '\Delta t = 5\ \text{divisions} \times 0{,}5\ \text{ms/division}'
             note: "Comptage direct sur la grille (figure 2) : le bord du signal (b) est exactement 5 divisions apres celui du signal (a), etalonnage 0,5 ms par division."
@@ -405,12 +405,12 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer la célérité $v$ des ondes sonores dans l'air.
         reasoning: |-
-          On applique directement la définition de R3, $v=d/\Delta t$, avec ici $d=L$ (la distance émetteur-récepteur, donnée) et $\Delta t$ le retard trouvé à la question précédente — exactement la méthode déjà illustrée en R4 avec les deux microphones, qui donnait la même valeur numérique.
+          On applique directement la définition du chapitre 4, $v=d/\Delta t$, avec ici $d=L$ (la distance émetteur-récepteur, donnée) et $\Delta t$ le retard trouvé à la question précédente — exactement la méthode déjà illustrée au chapitre 5 avec les deux microphones, qui donnait la même valeur numérique.
         steps:
           - math: 'v = \frac{L}{\Delta t} = \frac{0{,}85}{2{,}5\times10^{-3}}'
-            note: "Definition de la celerite (R3) : distance parcourue divisee par la duree mise pour la parcourir."
+            note: "Definition de la celerite (chapitre 4) : distance parcourue divisee par la duree mise pour la parcourir."
           - math: '\boxed{v \approx 340\ \text{m.s}^{-1}}'
-            note: "Valeur canonique de la celerite du son dans l'air (coherente avec R4)."
+            note: "Valeur canonique de la celerite du son dans l'air (coherente avec le chapitre 5)."
 
   # ── bk-2024-n-x2 — 2024 N, Exercice 2 : onde circulaire à la surface de l'eau ──
   - id: bk-2024-n-x2
@@ -467,18 +467,18 @@ entries:
           | C | Lors de la diffraction dans un même milieu, la célérité de l'onde est modifiée. |
           | D | Les ondes mécaniques progressives peuvent se propager dans le vide. |
         reasoning: |-
-          On élimine d'abord ce qu'on peut trancher avec les rungs de cette leçon. Proposition D : R1 est explicite, une onde mécanique a besoin d'un milieu matériel pour exister — elle ne se propage jamais dans le vide. D est fausse. Proposition C : la diffraction change la direction ou la forme du front d'onde, mais ne change ni le milieu ni sa rigidité — or R3 établit que c'est seulement le milieu qui fixe la célérité ; la diffraction ne la modifie donc pas. C est fausse. Proposition A : R3 montre que la célérité caractérise toute onde progressive, périodique ou non — ce n'est donc pas un trait qui caractérise spécifiquement le caractère périodique de l'onde ; A est trop imprécise pour être la bonne réponse.
+          On élimine d'abord ce qu'on peut trancher avec les chapitres de cette leçon. Proposition D : Le chapitre 2 est explicite, une onde mécanique a besoin d'un milieu matériel pour exister — elle ne se propage jamais dans le vide. D est fausse. Proposition C : la diffraction change la direction ou la forme du front d'onde, mais ne change ni le milieu ni sa rigidité — or R3 établit que c'est seulement le milieu qui fixe la célérité ; la diffraction ne la modifie donc pas. C est fausse. Proposition A : Le chapitre 4 montre que la célérité caractérise toute onde progressive, périodique ou non — ce n'est donc pas un trait qui caractérise spécifiquement le caractère périodique de l'onde ; A est trop imprécise pour être la bonne réponse.
 
-          Reste B, qui est la définition usuelle d'un milieu dispersif — un milieu où la célérité dépend de la période (ou de la fréquence) de l'onde qui le traverse. Cette notion de dispersion n'est pas construite dans les rungs R0–R5 de cette leçon (le pointeur d'échelle de R1 renvoie explicitement la périodicité au chapitre suivant, « Ondes mécaniques progressives périodiques ») ; on la reconnaît ici par élimination des trois autres propositions, toutes tranchables avec R1 et R3. La proposition juste est donc B.
+          Reste B, qui est la définition usuelle d'un milieu dispersif — un milieu où la célérité dépend de la période (ou de la fréquence) de l'onde qui le traverse. Cette notion de dispersion n'est pas construite dans les chapitres 1 à 6 de cette leçon (le pointeur d'échelle du chapitre 2 renvoie explicitement la périodicité au chapitre suivant, « Ondes mécaniques progressives périodiques ») ; on la reconnaît ici par élimination des trois autres propositions, toutes tranchables avec les chapitres 2 et 4. La proposition juste est donc B.
       - id: q2a
         part: "Exploitation du tableau des rayons du front d'onde"
         stem: |-
           **2-1.** (0,5 pt) Déterminer la valeur de la célérité $v$ de l'onde.
         reasoning: |-
-          Exactement la méthode de R3–R4 : la célérité, c'est une distance parcourue par le front d'onde divisée par la durée mise pour la parcourir. Entre les instants $t_1$ et $t_2$, le front avance du rayon $r_1$ au rayon $r_2$ — la distance parcourue par le front pendant cet intervalle est donc $r_2-r_1$, et la durée est $t_2-t_1=1{,}5\ \text{s}$ (donnée directement dans la définition de $t_2$ du tableau). R3 établit que la célérité ne dépend que du milieu (ici, l'eau) : elle est donc la même entre $0$ et $t_1$ qu'entre $t_1$ et $t_2$, ce qui justifie de la calculer sur l'intervalle où l'on connaît une durée exploitable.
+          Exactement la méthode des chapitres 4 à 5 : la célérité, c'est une distance parcourue par le front d'onde divisée par la durée mise pour la parcourir. Entre les instants $t_1$ et $t_2$, le front avance du rayon $r_1$ au rayon $r_2$ — la distance parcourue par le front pendant cet intervalle est donc $r_2-r_1$, et la durée est $t_2-t_1=1{,}5\ \text{s}$ (donnée directement dans la définition de $t_2$ du tableau). Le chapitre 4 établit que la célérité ne dépend que du milieu (ici, l'eau) : elle est donc la même entre $0$ et $t_1$ qu'entre $t_1$ et $t_2$, ce qui justifie de la calculer sur l'intervalle où l'on connaît une durée exploitable.
         steps:
           - math: 'v = \frac{r_2 - r_1}{t_2 - t_1} = \frac{56 - 14}{1{,}5}\ \text{cm.s}^{-1}'
-            note: "Definition de la celerite (R3) appliquee entre les instants t1 et t2 : distance parcourue par le front divisee par la duree."
+            note: "Definition de la celerite (chapitre 4) appliquee entre les instants t1 et t2 : distance parcourue par le front divisee par la duree."
           - math: 'v = \frac{42}{1{,}5} = 28\ \text{cm.s}^{-1}'
             note: "Application numerique."
           - math: '\boxed{v = 0{,}28\ \text{m.s}^{-1}}'
@@ -487,10 +487,10 @@ entries:
         stem: |-
           **2-2.** (0,5 pt) En déduire la valeur de l'instant $t_2$.
         reasoning: |-
-          La célérité étant fixée par le milieu (R3), elle est aussi celle du trajet entre $t=0$ (où le front part de $r=0$, en $O$) et $t_1$. On isole donc $t_1$ à partir de $v=r_1/t_1$ (retard de R3 appliqué ici entre $O$ et le rayon $r_1$), puis on utilise la relation donnée dans le tableau, $t_2=t_1+1{,}5$, pour obtenir $t_2$.
+          La célérité étant fixée par le milieu (chapitre 4), elle est aussi celle du trajet entre $t=0$ (où le front part de $r=0$, en $O$) et $t_1$. On isole donc $t_1$ à partir de $v=r_1/t_1$ (retard du chapitre 4 appliqué ici entre $O$ et le rayon $r_1$), puis on utilise la relation donnée dans le tableau, $t_2=t_1+1{,}5$, pour obtenir $t_2$.
         steps:
           - math: 't_1 = \frac{r_1}{v} = \frac{14\times10^{-2}}{0{,}28}'
-            note: "Meme celerite qu'a la question precedente (R3 : elle ne depend que du milieu), appliquee entre O (r=0, t=0) et r_1."
+            note: "Meme celerite qu'a la question precedente (chapitre 4 : elle ne depend que du milieu), appliquee entre O (r=0, t=0) et r_1."
           - math: '\boxed{t_1 = 0{,}5\ \text{s}}'
             note: "Application numerique."
           - math: 't_2 = t_1 + 1{,}5 = 0{,}5 + 1{,}5'
@@ -502,17 +502,17 @@ entries:
         stem: |-
           **3-1.** (0,5 pt) En utilisant les équations aux dimensions, vérifier l'homogénéité de cette relation.
         reasoning: |-
-          Cette vérification ne repose sur aucun rung de cette leçon — l'équation aux dimensions est un outil transversal (utilisé dans toutes les notions de mécanique), pas une technique introduite ici. On écrit les dimensions de chaque grandeur : $[g]=\text{L.T}^{-2}$ (accélération), $[h]=\text{L}$ (longueur). Le produit $g.h$ a donc pour dimension $\text{L}^2.\text{T}^{-2}$, et sa racine carrée $\text{L.T}^{-1}$ — exactement la dimension d'une vitesse, celle de $v$ dans la définition de R3 ($v=d/\Delta t$, une longueur sur un temps). La relation est donc homogène.
+          Cette vérification ne repose sur aucun chapitre de cette leçon — l'équation aux dimensions est un outil transversal (utilisé dans toutes les notions de mécanique), pas une technique introduite ici. On écrit les dimensions de chaque grandeur : $[g]=\text{L.T}^{-2}$ (accélération), $[h]=\text{L}$ (longueur). Le produit $g.h$ a donc pour dimension $\text{L}^2.\text{T}^{-2}$, et sa racine carrée $\text{L.T}^{-1}$ — exactement la dimension d'une vitesse, celle de $v$ dans la définition du chapitre 4 ($v=d/\Delta t$, une longueur sur un temps). La relation est donc homogène.
         steps:
           - math: '[g.h] = \text{L.T}^{-2}\times\text{L} = \text{L}^2.\text{T}^{-2}'
             note: "Dimension du produit g fois h : g est une acceleration (L.T^-2), h une longueur (L)."
           - math: '\left[\sqrt{g.h}\right] = \text{L.T}^{-1} = [v]'
-            note: "La racine carree donne la dimension d'une vitesse, coherente avec [v] = [d]/[Delta t] (R3)."
+            note: "La racine carree donne la dimension d'une vitesse, coherente avec [v] = [d]/[Delta t] (chapitre 4)."
       - id: q3b
         stem: |-
           **3-2.** (0,5 pt) Calculer $h$.
         reasoning: |-
-          On isole $h$ dans la relation $v=\sqrt{g.h}$ donnée dans l'énoncé, en réutilisant la valeur de $v$ trouvée à la question 2-1 — une célérité fixée par le milieu (R3), donc la même tout au long de la propagation observée dans le tableau.
+          On isole $h$ dans la relation $v=\sqrt{g.h}$ donnée dans l'énoncé, en réutilisant la valeur de $v$ trouvée à la question 2-1 — une célérité fixée par le milieu (chapitre 4), donc la même tout au long de la propagation observée dans le tableau.
         steps:
           - math: 'v = \sqrt{g.h} \implies h = \frac{v^2}{g}'
             note: "On isole h par elevation au carre des deux membres."
@@ -585,15 +585,15 @@ entries:
         stem: |-
           **(0,25 pt)** Définir une onde mécanique longitudinale.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Une définition à $0{,}25$ pt, mais deux mots à définir : « mécanique » et « longitudinale ». Le correcteur attend les deux morceaux ; n'en donner qu'un, c'est perdre la moitié du point. Alors on construit la phrase en deux temps, chacun tiré d'un rung différent de la leçon.
+          **Ce qu'on cherche et pourquoi ce geste.** Une définition à $0{,}25$ pt, mais deux mots à définir : « mécanique » et « longitudinale ». Le correcteur attend les deux morceaux ; n'en donner qu'un, c'est perdre la moitié du point. Alors on construit la phrase en deux temps, chacun tiré d'un chapitre différent de la leçon.
 
-          **Premier morceau — « onde mécanique » (R1).** C'est la propagation, de proche en proche, d'une perturbation dans un milieu matériel élastique, **sans transport de matière**. Deux exigences dans cette phrase : il faut un milieu matériel (donc jamais dans le vide), et la matière ne voyage pas — chaque point du milieu se contente d'osciller autour de sa position d'équilibre puis de passer la perturbation à son voisin. Ce qui voyage, c'est la perturbation et l'énergie qu'elle porte.
+          **Premier morceau — « onde mécanique » (chapitre 2).** C'est la propagation, de proche en proche, d'une perturbation dans un milieu matériel élastique, **sans transport de matière**. Deux exigences dans cette phrase : il faut un milieu matériel (donc jamais dans le vide), et la matière ne voyage pas — chaque point du milieu se contente d'osciller autour de sa position d'équilibre puis de passer la perturbation à son voisin. Ce qui voyage, c'est la perturbation et l'énergie qu'elle porte.
 
-          **Second morceau — « longitudinale » (R2).** Le critère de R2 consiste à comparer **deux directions** : celle selon laquelle la perturbation déplace les points du milieu, et celle selon laquelle l'onde avance. L'onde est longitudinale quand ces deux directions sont **parallèles** (et transversale quand elles sont perpendiculaires).
+          **Second morceau — « longitudinale » (chapitre 3).** Le critère du chapitre 3 consiste à comparer **deux directions** : celle selon laquelle la perturbation déplace les points du milieu, et celle selon laquelle l'onde avance. L'onde est longitudinale quand ces deux directions sont **parallèles** (et transversale quand elles sont perpendiculaires).
 
           **La définition complète, à écrire sur la copie.** Une onde mécanique longitudinale est la propagation d'une perturbation dans un milieu matériel, sans transport de matière, telle que le déplacement des points du milieu se fait **parallèlement à la direction de propagation** de l'onde.
 
-          **L'exemple qui la rend concrète, et c'est celui de l'exercice.** Le son dans l'air (R4) : il se propage par compressions et dilatations successives des couches d'air, dans la direction même où il avance — exactement le mécanisme du ressort comprimé de R2, transposé aux tranches d'air.
+          **L'exemple qui la rend concrète, et c'est celui de l'exercice.** Le son dans l'air (chapitre 5) : il se propage par compressions et dilatations successives des couches d'air, dans la direction même où il avance — exactement le mécanisme du ressort comprimé du chapitre 3, transposé aux tranches d'air.
 
           **Le piège nommé de cette question.** Ne définir que la seconde moitié — « les points du milieu vibrent parallèlement à la propagation » — en oubliant de dire ce qu'est une onde **mécanique**. C'est la faute la plus fréquente sur cette question, et elle coûte la moitié du point. Le piège miroir, celui que l'item **d)** de la question suivante te tend justement, consiste à croire que « longitudinale » signifie que la matière avance avec l'onde : non, elle oscille sur place.
       - id: q2
@@ -610,19 +610,19 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** L'énoncé dit « sans justification » : sur la copie, quatre mots suffisent. Mais pour toi qui t'entraînes, chaque item doit être rattaché à un fait du cours — sinon tu mémorises quatre phrases au lieu de comprendre une idée. Les voici, un par un.
 
-          **a) FAUX.** Une onde lumineuse est une onde **électromagnétique** : ce qui s'y propage, ce sont des variations couplées d'un champ électrique et d'un champ magnétique, pas une déformation de la matière. La preuve quotidienne : la lumière du Soleil nous parvient à travers le vide interplanétaire, ce qu'aucune onde mécanique ne peut faire (R1 exige un milieu matériel).
+          **a) FAUX.** Une onde lumineuse est une onde **électromagnétique** : ce qui s'y propage, ce sont des variations couplées d'un champ électrique et d'un champ magnétique, pas une déformation de la matière. La preuve quotidienne : la lumière du Soleil nous parvient à travers le vide interplanétaire, ce qu'aucune onde mécanique ne peut faire (chapitre 2 exige un milieu matériel).
 
           **b) FAUX.** La diffraction, c'est ce qui arrive à une onde qui rencontre une ouverture ou un obstacle de taille comparable à sa longueur d'onde : le front d'onde **change de forme** et l'onde s'étale au-delà de l'obstacle. Ce qui change, c'est la géométrie du front — pas la longueur d'onde.
 
-          Pourquoi, précisément ? Reconstruisons-le au lieu de l'admettre. Pour une onde périodique de période $T$, la longueur d'onde $\lambda$ est la distance parcourue par le front pendant une période. C'est la relation $v = d/\Delta t$ de R3, appliquée à $d = \lambda$ et $\Delta t = T$ :
+          Pourquoi, précisément ? Reconstruisons-le au lieu de l'admettre. Pour une onde périodique de période $T$, la longueur d'onde $\lambda$ est la distance parcourue par le front pendant une période. C'est la relation $v = d/\Delta t$ du chapitre 4, appliquée à $d = \lambda$ et $\Delta t = T$ :
 
           $$\lambda = v\,T$$
 
-          Regarde alors les deux facteurs. La période $T$ est **imposée par la source** : un obstacle placé sur le trajet ne change pas le rythme auquel la source émet. La célérité $v$ est **fixée par le milieu** (R3), et l'énoncé précise « dans un même milieu » — donc $v$ ne bouge pas non plus. Les deux facteurs du produit étant inchangés, $\lambda$ l'est aussi. La proposition est fausse.
+          Regarde alors les deux facteurs. La période $T$ est **imposée par la source** : un obstacle placé sur le trajet ne change pas le rythme auquel la source émet. La célérité $v$ est **fixée par le milieu** (chapitre 4), et l'énoncé précise « dans un même milieu » — donc $v$ ne bouge pas non plus. Les deux facteurs du produit étant inchangés, $\lambda$ l'est aussi. La proposition est fausse.
 
-          **c) VRAI.** C'est l'énoncé même de R3 : la célérité d'une onde mécanique ne dépend que du milieu (sa nature et son état), jamais de la source. L'exercice l'illustre en donnant $v = 340\ \text{m.s}^{-1}$ **dans l'air** — une valeur qui n'a de sens qu'accompagnée du nom du milieu ; dans l'eau ou dans un solide, elle serait bien plus grande.
+          **c) VRAI.** C'est l'énoncé même du chapitre 4 : la célérité d'une onde mécanique ne dépend que du milieu (sa nature et son état), jamais de la source. L'exercice l'illustre en donnant $v = 340\ \text{m.s}^{-1}$ **dans l'air** — une valeur qui n'a de sens qu'accompagnée du nom du milieu ; dans l'eau ou dans un solide, elle serait bien plus grande.
 
-          **d) FAUX.** C'est exactement ce que R1 interdit : une onde mécanique se propage **sans transport de matière**, qu'elle soit longitudinale ou transversale. Dans une onde sonore, les tranches d'air se resserrent puis s'écartent autour de leur position d'équilibre ; aucune tranche d'air ne fait le trajet de l'émetteur au microphone. C'est le bouchon de l'accroche (R0), qui monte et redescend sans jamais rejoindre le bord.
+          **d) FAUX.** C'est exactement ce que le chapitre 2 interdit : une onde mécanique se propage **sans transport de matière**, qu'elle soit longitudinale ou transversale. Dans une onde sonore, les tranches d'air se resserrent puis s'écartent autour de leur position d'équilibre ; aucune tranche d'air ne fait le trajet de l'émetteur au microphone. C'est le bouchon de l'accroche (chapitre 1), qui monte et redescend sans jamais rejoindre le bord.
 
           **Le fil qui relie les quatre.** a) et c) portent sur la même idée vue des deux côtés — une onde mécanique a besoin d'un milieu, et c'est ce milieu qui fixe sa célérité. b) et d) sont deux façons de tester si tu confonds « l'onde change » et « ce qui porte l'onde change ».
 
@@ -631,7 +631,7 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer le retard temporel $\tau$ avec lequel le son arrive en $M_2$ par rapport à $M_1$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** $\tau$ est une durée, et l'écran de l'oscilloscope n'affiche aucune graduation chiffrée en temps : la seule information temporelle est la **sensibilité horizontale**, $0{,}5\ \text{ms}$ par division. Le geste est donc toujours le même, celui de R4 (la mesure au double microphone) : compter le décalage entre les deux salves **en divisions**, puis multiplier par la sensibilité.
+          **Ce qu'on cherche et pourquoi ce geste.** $\tau$ est une durée, et l'écran de l'oscilloscope n'affiche aucune graduation chiffrée en temps : la seule information temporelle est la **sensibilité horizontale**, $0{,}5\ \text{ms}$ par division. Le geste est donc toujours le même, celui du chapitre 5 (la mesure au double microphone) : compter le décalage entre les deux salves **en divisions**, puis multiplier par la sensibilité.
 
           **La lecture.** Sur la figure 2, la salve (A) est collée au bord gauche de l'écran et la salve (B) est plus loin à droite. Le décalage horizontal entre les deux vaut **4 divisions**.
 
@@ -654,7 +654,7 @@ entries:
 
           **La géométrie, posée d'abord.** L'émetteur est à la distance $\ell$ de $M_1$. Comme il est situé entre $M_1$ et $M_2$, qui sont distants de $d$, sa distance à $M_2$ vaut $d - \ell$.
 
-          **Les deux durées, par R3 ($\tau = d/v$ appliqué deux fois).** Le son émis à l'instant $t_0$ atteint $M_1$ puis $M_2$ :
+          **Les deux durées, par le chapitre 4 ($\tau = d/v$ appliqué deux fois).** Le son émis à l'instant $t_0$ atteint $M_1$ puis $M_2$ :
 
           $$t_1 = \frac{\ell}{v} \qquad\text{et}\qquad t_2 = \frac{d - \ell}{v}$$
 
@@ -741,7 +741,7 @@ entries:
         stem: |-
           **(0,5 pt)** **1-1-** Déterminer à partir de l'oscillogramme de la figure 2, le retard horaire $\tau$ entre les deux signaux reçus par les deux récepteurs $R_1$ et $R_2$.
         reasoning: |-
-          **Lecture graphique.** Le retard se lit comme au R3 de cette leçon : l'écart horizontal entre deux points homologues des deux signaux (ici, le début de chaque salve), converti en temps grâce au quadrillage de l'oscilloscope. La difficulté propre à cette figure est de bien calibrer une maille : la flèche « 0,2 ms » imprimée ne couvre pas UNE maille du quadrillage, mais DEUX — ses deux pointes tombent chacune sur une ligne, et il y a une ligne intermédiaire entre les deux. Donc 1 maille $= 0{,}1\ \text{ms}$, et non $0{,}2\ \text{ms}$.
+          **Lecture graphique.** Le retard se lit comme au chapitre 4 de cette leçon : l'écart horizontal entre deux points homologues des deux signaux (ici, le début de chaque salve), converti en temps grâce au quadrillage de l'oscilloscope. La difficulté propre à cette figure est de bien calibrer une maille : la flèche « 0,2 ms » imprimée ne couvre pas UNE maille du quadrillage, mais DEUX — ses deux pointes tombent chacune sur une ligne, et il y a une ligne intermédiaire entre les deux. Donc 1 maille $= 0{,}1\ \text{ms}$, et non $0{,}2\ \text{ms}$.
 
           Le début de la salve $A$ et le début de la salve $B$ sont séparés, sur ce quadrillage, de $15$ mailles.
 
@@ -759,20 +759,20 @@ entries:
         stem: |-
           **(0,5 pt)** **1-2-** Calculer $v_{air}$ la vitesse de propagation des ondes ultrasonores dans l'air.
         reasoning: |-
-          Application directe de la définition de R3, $v = d/\tau$, avec $d$ la distance entre les deux récepteurs (donnée, figure 1) et $\tau$ le retard trouvé à la question précédente.
+          Application directe de la définition du chapitre 4, $v = d/\tau$, avec $d$ la distance entre les deux récepteurs (donnée, figure 1) et $\tau$ le retard trouvé à la question précédente.
         steps:
           - math: 'v_{air} = \frac{d}{\tau} = \frac{0{,}5}{1{,}5\times10^{-3}}'
-            note: "Definition de la celerite (R3) : distance parcourue divisee par la duree mise pour la parcourir."
+            note: "Definition de la celerite (chapitre 4) : distance parcourue divisee par la duree mise pour la parcourir."
           - math: '\boxed{v_{air} \approx 333\ \text{m.s}^{-1}}'
             note: "Valeur canonique de la celerite du son dans l'air : le resultat se recoupe avec la physique connue."
       - id: q1-3
         stem: |-
           **(0,5 pt)** **1-3-** Écrire l'expression de l'élongation $y_B(t)$ du point $B$ à l'instant $t$, en fonction de l'élongation du point $A$.
         reasoning: |-
-          C'est exactement l'écriture du retard établie en R3 : le point $B$ (plus loin de la source que $A$) reproduit le même mouvement que $A$, mais avec un temps de retard $\tau$ — ce qu'il fait à l'instant $t$ est ce que $A$ faisait $\tau$ plus tôt, à l'instant $t - \tau$.
+          C'est exactement l'écriture du retard établie au chapitre 4 : le point $B$ (plus loin de la source que $A$) reproduit le même mouvement que $A$, mais avec un temps de retard $\tau$ — ce qu'il fait à l'instant $t$ est ce que $A$ faisait $\tau$ plus tôt, à l'instant $t - \tau$.
         steps:
           - math: '\boxed{y_B(t) = y_A(t - \tau)}'
-            note: "Relation du retard (R3) : B reproduit le mouvement de A, decale de tau."
+            note: "Relation du retard (chapitre 4) : B reproduit le mouvement de A, decale de tau."
       - id: q2
         part: "§ 2 — Épaisseur de la nappe souterraine de pétrole"
         stem: |-
@@ -780,7 +780,7 @@ entries:
         reasoning: |-
           **La géométrie du trajet.** Les deux raies $P_1$ et $P_2$ partagent EXACTEMENT le même trajet aller, de la sonde jusqu'à la surface libre : c'est là que les deux ondes se séparent, l'une réfléchie immédiatement (donnant $P_1$ à $t_1$), l'autre continuant jusqu'au fond de la couche avant de revenir (donnant $P_2$ à $t_2$). L'écart $t_2 - t_1$ n'est donc PAS un temps de trajet complet : c'est la différence entre les deux trajets, c'est-à-dire exactement le temps d'un aller-retour supplémentaire À L'INTÉRIEUR de la couche de pétrole, sur l'épaisseur $L$ — descente ET remontée, donc $2L$.
 
-          En reprenant la relation du R3, $\text{distance} = v \times \text{durée}$, appliquée à ce trajet supplémentaire de longueur $2L$ :
+          En reprenant la relation du chapitre 4, $\text{distance} = v \times \text{durée}$, appliquée à ce trajet supplémentaire de longueur $2L$ :
 
           $$t_2 - t_1 = \frac{2L}{v} \implies L = \frac{v\,(t_2 - t_1)}{2}$$
 
@@ -910,7 +910,7 @@ entries:
           | **C** | $d = 1{,}00\ \text{m}$ |
           | **D** | $d = 1{,}50\ \text{m}$ |
         reasoning: |-
-          L'ébranlement se propage SANS se déformer (rung R1 : c'est la perturbation qui voyage, la matière de la corde ne fait que monter et descendre) : on peut donc suivre n'importe quel point identifiable de sa forme — son bord avant, son bord arrière — entre les deux photos, à condition de comparer des points HOMOLOGUES.
+          L'ébranlement se propage SANS se déformer (chapitre 2 : c'est la perturbation qui voyage, la matière de la corde ne fait que monter et descendre) : on peut donc suivre n'importe quel point identifiable de sa forme — son bord avant, son bord arrière — entre les deux photos, à condition de comparer des points HOMOLOGUES.
 
           La règle (R) donne l'échelle : $1\ \text{m}$ pour deux carreaux majeurs du quadrillage. Entre la photo N°8 et la photo N°12, le bord avant ET le bord arrière de l'ébranlement se sont déplacés de **deux carreaux majeurs** — exactement la longueur de la règle (mesure de la vérification : $130\ \text{px}$ de déplacement pour une règle de $131\ \text{px}$) :
 
@@ -921,7 +921,7 @@ entries:
           - math: '1\ \text{m (règle)} = 2\ \text{carreaux majeurs}'
             note: "L'echelle est donnee par la regle (R), pas par le papier."
           - math: 'd = 2\ \text{carreaux} = 1{,}00\ \text{m}'
-            note: "Deplacement identique du bord avant et du bord arriere : la forme se conserve (rung R1)."
+            note: "Deplacement identique du bord avant et du bord arriere : la forme se conserve (chapitre 2)."
           - math: '\boxed{\text{C : } d = 1{,}00\ \text{m}}'
             note: "B (0,50 m) comparerait des points non homologues ; A ignorerait l'echelle."
       - id: q3
@@ -935,7 +935,7 @@ entries:
           | **C** | $v = 7{,}30\ \text{m.s}^{-1}$ |
           | **D** | $v = 10{,}50\ \text{m.s}^{-1}$ |
         reasoning: |-
-          La célérité d'une onde progressive (rung R3) est le rapport de la distance parcourue à la durée du parcours — et les questions 1 et 2 viennent d'établir les deux :
+          La célérité d'une onde progressive (chapitre 4) est le rapport de la distance parcourue à la durée du parcours — et les questions 1 et 2 viennent d'établir les deux :
 
           $$v = \frac{d}{\Delta t} = \frac{1{,}00}{0{,}16}$$
 
@@ -944,6 +944,6 @@ entries:
           **Pourquoi les trois autres échouent.** Seule $6{,}25\ \text{m.s}^{-1}$ vaut exactement $d/\Delta t$ avec les valeurs correctes : $5{,}10$ et $7{,}30$ ne correspondent à aucun rapport exact des valeurs proposées aux questions 1 et 2, et $10{,}50$ supposerait un déplacement presque double (ou une durée presque moitié) de ce que montrent les photos. Remarque de prudence propre aux QCM en cascade : une erreur aux questions 1 ou 2 peut retomber « par chance » sur une proposition ici ($1{,}50/0{,}24 = 6{,}25$ aussi !) — c'est la cohérence de TOUTE la chaîne ($4$ intervalles, $2$ carreaux, $6{,}25$) qui valide le triplet, pas une case isolée.
         steps:
           - math: 'v = \frac{d}{\Delta t} = \frac{1{,}00}{0{,}16}'
-            note: "Celerite d'une onde progressive (rung R3) : distance / duree."
+            note: "Celerite d'une onde progressive (chapitre 4) : distance / duree."
           - math: '\boxed{\text{B : } v = 6{,}25\ \text{m.s}^{-1}}'
             note: "Coherent avec le triplet complet : 4 intervalles, 2 carreaux, 6,25 m/s."

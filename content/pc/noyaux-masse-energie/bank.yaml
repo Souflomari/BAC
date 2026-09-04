@@ -162,10 +162,10 @@ entries:
         stem: |-
           **(0,5 pt)** **2.2.** Calculer le défaut de masse $\Delta m$ du noyau de polonium 210, exprimé en kilogramme (kg).
         reasoning: |-
-          L'énergie de liaison du polonium, elle, se lit entre le niveau le plus haut du diagramme — les $126$ neutrons et $84$ protons totalement séparés — et le niveau du noyau assemblé : c'est l'énergie qu'il faudrait fournir pour tout dissocier. $E_l$ et le défaut de masse mesurent la même chose, reliés par $E_l = \Delta m\,c^2$ (R2) : on obtient $\Delta m$ en u en divisant $E_l$ par le facteur $931{,}41$ donné dans l'énoncé, puis on convertit ces u en kilogrammes avec le second facteur donné, $1\ \text{u} = 1{,}66\times10^{-27}\ \text{kg}$ — deux conversions successives l'une après l'autre, jamais un mélange direct des unités.
+          L'énergie de liaison du polonium, elle, se lit entre le niveau le plus haut du diagramme — les $126$ neutrons et $84$ protons totalement séparés — et le niveau du noyau assemblé : c'est l'énergie qu'il faudrait fournir pour tout dissocier. $E_l$ et le défaut de masse mesurent la même chose, reliés par $E_l = \Delta m\,c^2$ (chapitre 3) : on obtient $\Delta m$ en u en divisant $E_l$ par le facteur $931{,}41$ donné dans l'énoncé, puis on convertit ces u en kilogrammes avec le second facteur donné, $1\ \text{u} = 1{,}66\times10^{-27}\ \text{kg}$ — deux conversions successives l'une après l'autre, jamais un mélange direct des unités.
         steps:
           - math: 'E_l(\text{Po}) = E(126\,\text{n} + 84\,\text{p}) - E(^{210}_{84}\text{Po})'
-            note: "Energie de liaison = ecart entre le sommet (nucleons separes) et le niveau du noyau (R2)."
+            note: "Energie de liaison = ecart entre le sommet (nucleons separes) et le niveau du noyau (chapitre 3)."
           - math: 'E_l(\text{Po}) = 1{,}971820\times10^{5} - 1{,}955372\times10^{5} = 1644{,}8\ \text{MeV}'
             note: "Lecture des deux niveaux sur le diagramme : ecart de 0,016448x10^5 MeV."
           - math: '\Delta m = \dfrac{E_l}{c^2} = \dfrac{1644{,}8}{931{,}41}\ \text{u} \approx 1{,}766\ \text{u}'
@@ -226,40 +226,40 @@ entries:
         stem: |-
           **(0,25 pt)** **2-1.** Pour chaque affirmation suivante, répondre par vrai ou faux en justifiant. **a-** L'énergie qu'il faut fournir à un noyau de tritium au repos pour le dissocier en ces nucléons au repos est de $8{,}475\ \text{MeV}$.
         reasoning: |-
-          C'est très exactement la définition du R2 : l'énergie de liaison $E_l$ d'un noyau est l'énergie qu'il faut fournir depuis l'extérieur pour le dissocier complètement en ses nucléons séparés et immobiles — jamais une énergie que le noyau contiendrait et pourrait relâcher tout seul. Le tableau fourni par l'énoncé donne directement $E_\ell(^{3}_{1}\text{H}) = 8{,}475\ \text{MeV}$ : l'affirmation ne fait que reformuler cette valeur en mots. Elle est donc vraie, sans le moindre calcul supplémentaire.
+          C'est très exactement la définition du chapitre 3 : l'énergie de liaison $E_l$ d'un noyau est l'énergie qu'il faut fournir depuis l'extérieur pour le dissocier complètement en ses nucléons séparés et immobiles — jamais une énergie que le noyau contiendrait et pourrait relâcher tout seul. Le tableau fourni par l'énoncé donne directement $E_\ell(^{3}_{1}\text{H}) = 8{,}475\ \text{MeV}$ : l'affirmation ne fait que reformuler cette valeur en mots. Elle est donc vraie, sans le moindre calcul supplémentaire.
         steps:
           - math: 'E_\ell(^{3}_{1}\text{H}) = 8{,}475\ \text{MeV}'
             note: "Valeur lue directement dans le tableau des energies de liaison fourni par l'enonce."
           - math: '\boxed{\text{Vrai}}'
-            note: "L'affirmation reformule exactement la definition de l'energie de liaison (R2)."
+            note: "L'affirmation reformule exactement la definition de l'energie de liaison (chapitre 3)."
       - id: q1b
         stem: |-
           **(0,25 pt)** **b-** Le tritium est plus stable que le deutérium.
         reasoning: |-
-          $E_l$ seule ne compare rien entre deux noyaux de tailles différentes (R3) : le tritium a $3$ nucléons, le deutérium seulement $2$, donc comparer $8{,}475$ à $2{,}366$ directement ne dirait rien de leur stabilité relative — il faut diviser chacune par son propre $A$ pour obtenir l'énergie de liaison par nucléon, la seule grandeur qui compare honnêtement. Une fois cette division faite, le tritium l'emporte nettement sur le deutérium : l'affirmation est vraie.
+          $E_l$ seule ne compare rien entre deux noyaux de tailles différentes (chapitre 4) : le tritium a $3$ nucléons, le deutérium seulement $2$, donc comparer $8{,}475$ à $2{,}366$ directement ne dirait rien de leur stabilité relative — il faut diviser chacune par son propre $A$ pour obtenir l'énergie de liaison par nucléon, la seule grandeur qui compare honnêtement. Une fois cette division faite, le tritium l'emporte nettement sur le deutérium : l'affirmation est vraie.
         steps:
           - math: '\dfrac{E_\ell(^{3}_{1}\text{H})}{A} = \dfrac{8{,}475}{3} \approx 2{,}83\ \text{MeV/nucleon}'
-            note: "Energie de liaison PAR NUCLEON du tritium (R3) ; A = 3."
+            note: "Energie de liaison PAR NUCLEON du tritium (chapitre 4) ; A = 3."
           - math: '\dfrac{E_\ell(^{2}_{1}\text{H})}{A} = \dfrac{2{,}366}{2} \approx 1{,}18\ \text{MeV/nucleon}'
             note: "Energie de liaison par nucleon du deuterium ; A = 2."
           - math: '2{,}83 > 1{,}18'
             note: "Le tritium est mieux lie par nucleon que le deuterium."
           - math: '\boxed{\text{Vrai}}'
-            note: "Plus E_l/A est grand, plus le noyau est stable (R3) : le tritium est plus stable que le deuterium."
+            note: "Plus E_l/A est grand, plus le noyau est stable (chapitre 4) : le tritium est plus stable que le deuterium."
       - id: q2
         stem: |-
           **(0,5 pt)** **2-2.** Calculer, en unité MeV, l'énergie libérée $E_{lib} = |\Delta E|$ par la réaction de fusion d'un noyau de tritium et d'un noyau de deutérium.
         reasoning: |-
-          Au R4, on calcule l'énergie libérée par une réaction à partir de la variation de masse totale, $\Delta m = m_{\text{produits}} - m_{\text{réactifs}}$, puis $|E| = |\Delta m|\,c^2$ — exactement la réaction $^{2}_{1}\text{H} + \ ^{3}_{1}\text{H} \rightarrow\ ^{4}_{2}\text{He} + \ ^{1}_{0}\text{n}$ étudiée au R4 lui-même. Ici, l'énoncé ne donne pas les masses des noyaux mais leurs énergies de liaison : on passe par le pont $E_l = \Delta m\,c^2$ du R2, appliqué à chaque noyau plutôt qu'au bilan global — un neutron libre, non lié, n'a pas d'énergie de liaison. La masse de chaque noyau composé « manque » exactement de $E_l/c^2$ par rapport à ses nucléons séparés ; en sommant ce manque des deux côtés de la réaction, les nucléons eux-mêmes se compensent exactement (leur nombre total est conservé), et il ne reste que la différence des énergies de liaison. L'énergie libérée est donc simplement l'énergie de liaison du noyau formé, moins la somme des énergies de liaison des noyaux consommés — sans jamais reconvertir en masses.
+          Au chapitre 5, on calcule l'énergie libérée par une réaction à partir de la variation de masse totale, $\Delta m = m_{\text{produits}} - m_{\text{réactifs}}$, puis $|E| = |\Delta m|\,c^2$ — exactement la réaction $^{2}_{1}\text{H} + \ ^{3}_{1}\text{H} \rightarrow\ ^{4}_{2}\text{He} + \ ^{1}_{0}\text{n}$ étudiée au chapitre 5 lui-même. Ici, l'énoncé ne donne pas les masses des noyaux mais leurs énergies de liaison : on passe par le pont $E_l = \Delta m\,c^2$ du chapitre 3, appliqué à chaque noyau plutôt qu'au bilan global — un neutron libre, non lié, n'a pas d'énergie de liaison. La masse de chaque noyau composé « manque » exactement de $E_l/c^2$ par rapport à ses nucléons séparés ; en sommant ce manque des deux côtés de la réaction, les nucléons eux-mêmes se compensent exactement (leur nombre total est conservé), et il ne reste que la différence des énergies de liaison. L'énergie libérée est donc simplement l'énergie de liaison du noyau formé, moins la somme des énergies de liaison des noyaux consommés — sans jamais reconvertir en masses.
         steps:
           - math: '^{2}_{1}\text{H} + \ ^{3}_{1}\text{H} \longrightarrow\ ^{4}_{2}\text{He} + \ ^{1}_{0}\text{n}'
-            note: "Reaction de fusion (A et Z conserves : 2+3=4+1 ; 1+1=2+0) - la meme reaction qu'au R4."
+            note: "Reaction de fusion (A et Z conserves : 2+3=4+1 ; 1+1=2+0) - la meme reaction qu'au chapitre 5."
           - math: 'E_{lib} = E_\ell(^{4}_{2}\text{He}) - \left[E_\ell(^{2}_{1}\text{H}) + E_\ell(^{3}_{1}\text{H})\right]'
-            note: "Pont E_l -> Delta m (R2) applique aux deux membres de la reaction (R4) ; le neutron libre n'a pas d'energie de liaison."
+            note: "Pont E_l -> Delta m (chapitre 3) applique aux deux membres de la reaction (chapitre 5) ; le neutron libre n'a pas d'energie de liaison."
           - math: 'E_{lib} = 28{,}296 - (2{,}366+8{,}475) = 28{,}296 - 10{,}841'
             note: "Lecture des trois energies de liaison dans le tableau fourni par l'enonce."
           - math: '\boxed{E_{lib} \approx 17{,}455\ \text{MeV}}'
-            note: "Coherent avec la valeur canonique de la fusion D-T (environ 17,6 MeV, meme reaction qu'au R4)."
+            note: "Coherent avec la valeur canonique de la fusion D-T (environ 17,6 MeV, meme reaction qu'au chapitre 5)."
 
   # ── bk-2012-n-x3b — 2012 N, Physique nucleaire (volet masse-energie) : energie de liaison de l'Uranium 238 ──
   #
@@ -333,7 +333,7 @@ entries:
         stem: |-
           **1-3-** (1 pt) Calculer l'énergie de liaison par nucléon de l'Uranium 238, et vérifier que le noyau $^{206}_{82}\text{Pb}$ est plus stable que le noyau $^{238}_{92}\text{U}$.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste : on ne connaît, pour l'Uranium 238, ni son énergie de liaison ni son énergie de liaison par nucléon directement — seulement la masse du noyau assemblé et celles des nucléons séparés. C'est exactement la donnée dont dépend le défaut de masse $\Delta m$, donc $E_l$ (R2) : on calcule $\Delta m$ d'abord, jamais $E_l$ directement, pour contrôler chaque arrondi avant de multiplier par $931{,}5$.
+          Ce qu'on cherche et pourquoi ce geste : on ne connaît, pour l'Uranium 238, ni son énergie de liaison ni son énergie de liaison par nucléon directement — seulement la masse du noyau assemblé et celles des nucléons séparés. C'est exactement la donnée dont dépend le défaut de masse $\Delta m$, donc $E_l$ (chapitre 3) : on calcule $\Delta m$ d'abord, jamais $E_l$ directement, pour contrôler chaque arrondi avant de multiplier par $931{,}5$.
 
           La composition du noyau — $Z=92$ protons et $N=146$ neutrons — a été établie à la question 1-2 (sous la notion « Décroissance radioactive »).
 
@@ -347,7 +347,7 @@ entries:
 
           $$E_l(U) = 1{,}93381\times931{,}5 \approx 1801{,}3\ \text{MeV}$$
 
-          $E_l$ seule ne compare rien entre deux noyaux de tailles différentes (R3) : $A(U) = 238$ et $A(Pb) = 206$ ne sont pas égaux, donc comparer $1801{,}3$ à une énergie de liaison totale du Plomb, qu'on n'a même pas ici, ne dirait rien. C'est l'énergie de liaison **par nucléon** qui compare honnêtement :
+          $E_l$ seule ne compare rien entre deux noyaux de tailles différentes (chapitre 4) : $A(U) = 238$ et $A(Pb) = 206$ ne sont pas égaux, donc comparer $1801{,}3$ à une énergie de liaison totale du Plomb, qu'on n'a même pas ici, ne dirait rien. C'est l'énergie de liaison **par nucléon** qui compare honnêtement :
 
           $$\frac{E_l}{A}(U) = \frac{1801{,}3}{238} \approx 7{,}57\ \text{MeV/nucléon}$$
 
@@ -355,10 +355,10 @@ entries:
 
           $$7{,}87 > 7{,}57$$
 
-          Plus $E_l/A$ est grand, plus le noyau est stable (R3) : le Plomb 206 est donc bien plus stable que l'Uranium 238 — cohérent avec le fait que l'Uranium 238 est justement le noyau père qui se désintègre spontanément vers lui.
+          Plus $E_l/A$ est grand, plus le noyau est stable (chapitre 4) : le Plomb 206 est donc bien plus stable que l'Uranium 238 — cohérent avec le fait que l'Uranium 238 est justement le noyau père qui se désintègre spontanément vers lui.
         steps:
           - math: '\Delta m = 92\,m_p + 146\,m_n - m(^{238}_{92}\text{U})'
-            note: "Z=92 protons et N=146 neutrons, etablis a la question 1-2 (defaut de masse, R2)."
+            note: "Z=92 protons et N=146 neutrons, etablis a la question 1-2 (defaut de masse, chapitre 3)."
           - math: '92\times1{,}00728 + 146\times1{,}00866 = 92{,}66976 + 147{,}26436 = 239{,}93412\ \text{u}'
             note: "Masse des nucleons SEPARES."
           - math: '\Delta m = 239{,}93412 - 238{,}00031 = 1{,}93381\ \text{u}'
@@ -366,6 +366,6 @@ entries:
           - math: 'E_l(U) = 1{,}93381\times931{,}5 \approx 1801{,}3\ \text{MeV}'
             note: "1 u vaut 931,5 MeV.c-2 (donnee de l'enonce) : simple multiplication."
           - math: '\frac{E_l}{A}(U) = \frac{1801{,}3}{238} \approx \boxed{7{,}57\ \text{MeV/nucleon}}'
-            note: "Energie de liaison PAR NUCLEON (R3), seule grandeur qui compare deux noyaux de A differents."
+            note: "Energie de liaison PAR NUCLEON (chapitre 4), seule grandeur qui compare deux noyaux de A differents."
           - math: '7{,}87 > 7{,}57 \implies \boxed{\text{Pb-206 plus stable que U-238}}'
-            note: "Comparaison a la donnee de l'enonce pour le Plomb 206 ; plus El/A est grand, plus le noyau est stable (R3)."
+            note: "Comparaison a la donnee de l'enonce pour le Plomb 206 ; plus El/A est grand, plus le noyau est stable (chapitre 4)."

@@ -40,7 +40,7 @@ $$\ln(\exp(x)) = x \ \text{ pour tout } x \in \mathbb{R} \qquad\qquad \exp(\ln(x
 
 Applique $\ln$ après $\exp$, ou $\exp$ après $\ln$ : tu reviens à ton point de départ. C'est exactement le sens de « réciproque ».
 
-### Répondre aux deux questions du R0
+### Répondre aux deux questions du chapitre 1
 
 **Que vaut $\exp(0)$ ?** Par définition, $\exp(0)$ est l'unique réel positif dont le logarithme vaut $0$. Or on sait (chapitre précédent, chapitre 2) que $\ln(1) = 0$, et que $1$ est le SEUL réel dont le log s'annule ($\ln$ strictement croissante, donc injective). Donc :
 
@@ -80,7 +80,7 @@ Attention aussi à l'erreur symétrique : ce n'est pas $\exp$ qui a un domaine r
 
 ## R2 — Propriétés algébriques : quand la somme redevient un produit
 
-### Retour à la deuxième question du R0
+### Retour à la deuxième question du chapitre 1
 
 On a demandé au chapitre 1 : comment $E(a+b)$ devrait-il s'exprimer à partir de $E(a)$ et $E(b)$ ? Puisque $\ln$ transforme un produit en somme ($\ln(uv) = \ln(u)+\ln(v)$), sa réciproque doit faire le trajet inverse : transformer une somme en produit. Vérifions-le proprement, sans se contenter de l'intuition.
 

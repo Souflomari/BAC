@@ -64,7 +64,7 @@ L'**identité personnelle**, enfin, désigne ce qui fait qu'un individu-personne
 
 ## R2 — Kant : le critère de la personne — un être raisonnable, une fin en soi
 
-### Ce que R1 laisse en suspens
+### Ce que le chapitre 2 laisse en suspens
 
 Le chapitre 2 a distingué individu et personne sans dire ce qui, précisément, fait qu'un individu mérite d'être traité comme une personne plutôt que comme une simple chose. Kant (déjà rencontré dans la leçon « Le devoir », chapitre 3 ; XVIIIe siècle, *Fondements de la métaphysique des mœurs*, 1785) fournit ici le critère le plus rigoureux du programme.
 
@@ -173,7 +173,7 @@ Hume semble avoir dissous jusqu'au fil le plus ténu qui reliait le moi d'hier �
 
 **Le concept central de ce chapitre : l'imputabilité.** On ne peut juger moralement ou juridiquement responsable qu'un être à qui l'on peut **imputer** — attribuer — un acte : un être capable d'en comprendre la portée, d'avoir été en mesure d'agir autrement, et de pouvoir en assumer les conséquences (louange, blâme, sanction, réparation). C'est précisément pour cette raison que le droit ne tient pas un très jeune enfant, ou un individu jugé irresponsable au sens pénal (atteint, au moment des faits, d'un trouble ayant aboli son discernement), pour responsable au même titre qu'un adulte en pleine possession de ses facultés — non par indulgence, mais parce que la condition même de l'imputabilité (comprendre ce qu'on fait, avoir pu choisir autrement) lui fait, à ce moment précis, défaut.
 
-### Comment R2 et R3 s'articulent ici
+### Comment les chapitres 3 et 4 s'articulent ici
 
 **Voici comment les deux critères précédents se rejoignent, dans ce chapitre, pour fonder l'imputabilité.** Le critère kantien (chapitre 3 — être un être raisonnable, capable d'autonomie) explique POURQUOI seuls des êtres de ce genre peuvent être tenus pour responsables : seul un être capable de comprendre une règle et de choisir librement de la suivre ou de l'enfreindre peut être dit avoir « manqué » à son devoir. Le critère lockéen (chapitre 4 — la continuité de conscience) explique ensuite CE QUI fait que celui qu'on juge aujourd'hui est bien le MÊME sujet que celui qui a agi hier : on ne peut justement punir ou récompenser quelqu'un pour un acte que s'il est, au sens forensique que Locke donne lui-même à ce terme, la même personne que celle qui l'a commis.
 

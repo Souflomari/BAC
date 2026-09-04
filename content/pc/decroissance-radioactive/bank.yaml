@@ -267,7 +267,7 @@ entries:
         stem: |-
           **(0,5 pt)** Parmi les deux noyaux $^{222}_{86}\text{Rn}$ et $^{218}_{84}\text{Po}$, lequel est le plus stable ? Justifier la réponse.
         reasoning: |-
-          Ce critère de stabilité n'est pas celui du R1 de cette leçon (le rapport $N/Z$, la vallée de stabilité) : c'est celui, complémentaire, de la notion noyaux-masse-energie — plus l'énergie de liaison par nucléon $E_\ell/A$ est grande, plus chaque nucléon est fortement retenu, donc plus le noyau est stable. Il suffit de comparer les deux valeurs données dans le tableau, sans aucun calcul.
+          Ce critère de stabilité n'est pas celui du chapitre 2 de cette leçon (le rapport $N/Z$, la vallée de stabilité) : c'est celui, complémentaire, de la notion noyaux-masse-energie — plus l'énergie de liaison par nucléon $E_\ell/A$ est grande, plus chaque nucléon est fortement retenu, donc plus le noyau est stable. Il suffit de comparer les deux valeurs données dans le tableau, sans aucun calcul.
 
           $$E_\ell/A(\text{Po}) = 7{,}73\ \text{MeV/nucléon} \; > \; E_\ell/A(\text{Rn}) = 7{,}69\ \text{MeV/nucléon}$$
 
@@ -294,7 +294,7 @@ entries:
           - $E_{lib} = 6{,}24\ \text{MeV}$
           - $E_{lib} = 3420{,}6\ \text{MeV}$
         reasoning: |-
-          Toujours hors des rungs de cette leçon (domaine noyaux-masse-energie), mais le principe se déduit directement de la question précédente : l'énergie libérée est l'écart entre l'énergie de liaison totale des produits (plus liés, donc à plus basse énergie) et celle du noyau père. On a besoin des trois énergies de liaison totales — celle du radon et celle du polonium, obtenues comme à la question 2 en multipliant par $A$, et celle de l'hélium, déjà calculée. Plutôt que de calculer les quatre propositions une par une, on calcule directement $E_{lib}$ et on regarde laquelle des quatre elle égale.
+          Toujours hors des chapitres de cette leçon (domaine noyaux-masse-energie), mais le principe se déduit directement de la question précédente : l'énergie libérée est l'écart entre l'énergie de liaison totale des produits (plus liés, donc à plus basse énergie) et celle du noyau père. On a besoin des trois énergies de liaison totales — celle du radon et celle du polonium, obtenues comme à la question 2 en multipliant par $A$, et celle de l'hélium, déjà calculée. Plutôt que de calculer les quatre propositions une par une, on calcule directement $E_{lib}$ et on regarde laquelle des quatre elle égale.
         steps:
           - math: 'E_{lib} = \big[E_\ell(\text{Po}) + E_\ell(\text{He})\big] - E_\ell(\text{Rn})'
             note: "L'énergie libérée est l'écart entre l'énergie de liaison totale des produits et celle du père."
@@ -310,12 +310,12 @@ entries:
         stem: |-
           **(0,5 pt)** On considère un échantillon de noyaux du radon 222 ayant, à l'instant $t=0$, une activité $a_0$. Trouver, en jours, l'instant de date $t_1$ à laquelle cet échantillon a une activité $a_1 = \dfrac{a_0}{4}$.
         reasoning: |-
-          Ici on retombe en plein cœur de cette leçon (R4) : l'activité suit exactement la même loi exponentielle que le nombre de noyaux, donc la propriété « après $n$ demi-vies, il reste $1/2^n$ » s'applique aussi bien à $a(t)$. Le réflexe à avoir avant de se jeter sur le logarithme : $1/4$ est-elle une puissance entière de $1/2$ ? Oui, $1/4 = (1/2)^2$ — donc $t_1$ correspond à exactement deux demi-vies, sans avoir besoin de résoudre quoi que ce soit.
+          Ici on retombe en plein cœur de cette leçon (chapitre 5) : l'activité suit exactement la même loi exponentielle que le nombre de noyaux, donc la propriété « après $n$ demi-vies, il reste $1/2^n$ » s'applique aussi bien à $a(t)$. Le réflexe à avoir avant de se jeter sur le logarithme : $1/4$ est-elle une puissance entière de $1/2$ ? Oui, $1/4 = (1/2)^2$ — donc $t_1$ correspond à exactement deux demi-vies, sans avoir besoin de résoudre quoi que ce soit.
         steps:
           - math: '\frac{a_1}{a_0} = \frac{1}{4} = \left(\frac{1}{2}\right)^2'
             note: "Le rapport demandé est une puissance entière de 1/2 : deux demi-vies exactement, pas besoin du logarithme."
           - math: 't_1 = 2 \times t_{1/2}'
-            note: "Propriété du R4 : après n demi-vies, il reste 1/2^n du départ, sur N comme sur l'activité."
+            note: "Propriété du chapitre 5 : après n demi-vies, il reste 1/2^n du départ, sur N comme sur l'activité."
           - math: '\boxed{t_1 = 2 \times 3{,}8 = 7{,}6\ \text{jours}}'
             note: "Application numérique avec la demi-vie donnée t_1/2 = 3,8 jours."
 
@@ -551,7 +551,7 @@ entries:
         stem: |-
           **(0,5 pt)** Écrire l'équation de désintégration alpha du plutonium 238 en identifiant le noyau fils.
         reasoning: |-
-          Une désintégration $\alpha$ émet un noyau d'hélium $^{4}_{2}\text{He}$. On ne connaît que le père et le type de particule émise : les deux lois de conservation de Soddy, posées au R2, suffisent à reconstruire le fils sans rien d'autre. On pose le fils inconnu $^{A}_{Z}\text{Y}$ et on applique les deux conservations ensemble — nombre de nucléons ET charge. Le piège classique de l'$\alpha$ est de ne toucher qu'à une seule des deux grandeurs : ici $A$ et $Z$ diminuent tous les deux, car la particule $\alpha$ emporte à la fois 4 nucléons et 2 charges positives. Le $Z$ trouvé se lit ensuite dans le tableau des données.
+          Une désintégration $\alpha$ émet un noyau d'hélium $^{4}_{2}\text{He}$. On ne connaît que le père et le type de particule émise : les deux lois de conservation de Soddy, posées au chapitre 3, suffisent à reconstruire le fils sans rien d'autre. On pose le fils inconnu $^{A}_{Z}\text{Y}$ et on applique les deux conservations ensemble — nombre de nucléons ET charge. Le piège classique de l'$\alpha$ est de ne toucher qu'à une seule des deux grandeurs : ici $A$ et $Z$ diminuent tous les deux, car la particule $\alpha$ emporte à la fois 4 nucléons et 2 charges positives. Le $Z$ trouvé se lit ensuite dans le tableau des données.
         steps:
           - math: '^{238}_{94}\text{Pu} \longrightarrow\ ^{A}_{Z}\text{Y} +\ ^{4}_{2}\text{He}'
             note: "On pose l'équation avec le noyau fils inconnu et la particule alpha."
@@ -566,24 +566,24 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer graphiquement la demi-vie $t_{1/2}$ du plutonium 238.
         reasoning: |-
-          La demi-vie est la durée au bout de laquelle l'activité tombe à la moitié de sa valeur initiale — l'activité suit exactement la même loi que le nombre de noyaux (R4), donc $t_{1/2}$ se lit aussi bien sur $a(t)$ que sur $N(t)$. On part de $a_0 \approx 10^{11}\ \text{Bq}$, on repère l'ordonnée $a_0/2 = 5\times10^{10}\ \text{Bq}$ — une graduation de l'axe donnée dans l'énoncé —, on rejoint la courbe, puis on redescend sur l'axe des temps.
+          La demi-vie est la durée au bout de laquelle l'activité tombe à la moitié de sa valeur initiale — l'activité suit exactement la même loi que le nombre de noyaux (chapitre 5), donc $t_{1/2}$ se lit aussi bien sur $a(t)$ que sur $N(t)$. On part de $a_0 \approx 10^{11}\ \text{Bq}$, on repère l'ordonnée $a_0/2 = 5\times10^{10}\ \text{Bq}$ — une graduation de l'axe donnée dans l'énoncé —, on rejoint la courbe, puis on redescend sur l'axe des temps.
 
           $$\frac{a_0}{2} = 5\times10^{10}\ \text{Bq} \quad\Longrightarrow\quad t_{1/2} \approx 88\ \text{ans}$$
       - id: q3
         stem: |-
           **(0,5 pt)** En déduire que la valeur de la constante radioactive $\lambda$ est : $\lambda \approx 7{,}88\times10^{-3}\ \text{ans}^{-1}$.
         reasoning: |-
-          $\lambda$ ne se lit pas directement sur la courbe : on le déduit de $t_{1/2}$ par la relation du R4, $t_{1/2} = \ln 2/\lambda$, qu'on inverse. C'est précisément le point à garder net du R4 : $t_{1/2}$ et $\lambda$ ne sont pas la même grandeur ni de simples inverses l'une de l'autre — elles sont reliées par le facteur $\ln 2 \approx 0{,}693$.
+          $\lambda$ ne se lit pas directement sur la courbe : on le déduit de $t_{1/2}$ par la relation du chapitre 5, $t_{1/2} = \ln 2/\lambda$, qu'on inverse. C'est précisément le point à garder net du chapitre 5 : $t_{1/2}$ et $\lambda$ ne sont pas la même grandeur ni de simples inverses l'une de l'autre — elles sont reliées par le facteur $\ln 2 \approx 0{,}693$.
         steps:
           - math: 't_{1/2} = \frac{\ln 2}{\lambda} \implies \lambda = \frac{\ln 2}{t_{1/2}}'
-            note: "On inverse la relation demi-vie ↔ constante radioactive du R4."
+            note: "On inverse la relation demi-vie ↔ constante radioactive du chapitre 5."
           - math: '\boxed{\lambda = \frac{\ln 2}{88} \approx \frac{0{,}693}{88} \approx 7{,}88\times10^{-3}\ \text{ans}^{-1}}'
             note: "Application numérique avec t_1/2 ≈ 88 ans (question 2) : on retrouve bien la valeur annoncée."
       - id: q4
         stem: |-
           **(0,5 pt)** Trouver le nombre $N_0$ de noyaux de plutonium 238 présents à $t = 0$ dans ce stimulateur cardiaque (on prend : $1\ \text{an} = 365\ \text{jours}$).
         reasoning: |-
-          Le lien entre l'activité et le nombre de noyaux est $a = \lambda N$ (R4) : l'activité n'est pas le nombre de noyaux, c'est le nombre de désintégrations par seconde, et $\lambda$ est justement le facteur qui relie les deux. À $t = 0$ : $a_0 = \lambda N_0$, donc $N_0 = a_0/\lambda$. Le vrai piège de la question est l'unité, pas la formule : $a_0$ est en becquerels, donc en désintégrations PAR SECONDE, alors que $\lambda$ vient d'être calculée en $\text{ans}^{-1}$. Il faut convertir $\lambda$ en $\text{s}^{-1}$ avant de diviser — d'où la donnée $1\ \text{an} = 365\ \text{jours}$ fournie dans l'énoncé.
+          Le lien entre l'activité et le nombre de noyaux est $a = \lambda N$ (chapitre 5) : l'activité n'est pas le nombre de noyaux, c'est le nombre de désintégrations par seconde, et $\lambda$ est justement le facteur qui relie les deux. À $t = 0$ : $a_0 = \lambda N_0$, donc $N_0 = a_0/\lambda$. Le vrai piège de la question est l'unité, pas la formule : $a_0$ est en becquerels, donc en désintégrations PAR SECONDE, alors que $\lambda$ vient d'être calculée en $\text{ans}^{-1}$. Il faut convertir $\lambda$ en $\text{s}^{-1}$ avant de diviser — d'où la donnée $1\ \text{an} = 365\ \text{jours}$ fournie dans l'énoncé.
         steps:
           - math: 'a_0 = \lambda N_0 \implies N_0 = \frac{a_0}{\lambda}'
             note: "On inverse la relation activité ↔ nombre de noyaux a = λN."
@@ -596,12 +596,12 @@ entries:
         stem: |-
           **(0,5 pt)** On considère que ce stimulateur fonctionne de façon efficace lorsque le nombre de noyaux de plutonium 238 qui se désintègrent ne dépasse pas 30 % du nombre de noyaux présents dans l'échantillon à $t = 0$. Déterminer, en ans, la durée maximale $t_{max}$ du fonctionnement efficace du stimulateur cardiaque.
         reasoning: |-
-          Premier geste : traduire la condition en une condition sur $N(t)$. Le nombre de noyaux désintégrés à l'instant $t$ vaut $N_0 - N(t)$. « Pas plus de 30 % désintégrés » signifie donc $N_0 - N(t) \leq 0{,}30\,N_0$, c'est-à-dire qu'il reste AU MOINS 70 % des noyaux : $N(t) \geq 0{,}70\,N_0$. À la limite $t_{max}$, il en reste exactement 70 %. Contrairement à la question 4 de l'exercice précédent (le radon), $0{,}70$ n'est pas une puissance de $1/2$ : on ne peut pas compter des demi-vies entières, il faut inverser la loi de décroissance par le logarithme, exactement comme au R5 (datation). On garde ici $\lambda$ en $\text{ans}^{-1}$ pour obtenir directement $t_{max}$ en années.
+          Premier geste : traduire la condition en une condition sur $N(t)$. Le nombre de noyaux désintégrés à l'instant $t$ vaut $N_0 - N(t)$. « Pas plus de 30 % désintégrés » signifie donc $N_0 - N(t) \leq 0{,}30\,N_0$, c'est-à-dire qu'il reste AU MOINS 70 % des noyaux : $N(t) \geq 0{,}70\,N_0$. À la limite $t_{max}$, il en reste exactement 70 %. Contrairement à la question 4 de l'exercice précédent (le radon), $0{,}70$ n'est pas une puissance de $1/2$ : on ne peut pas compter des demi-vies entières, il faut inverser la loi de décroissance par le logarithme, exactement comme au chapitre 6 (datation). On garde ici $\lambda$ en $\text{ans}^{-1}$ pour obtenir directement $t_{max}$ en années.
         steps:
           - math: 'N_0 - N(t) \leq 0{,}30\,N_0 \iff N(t) \geq 0{,}70\,N_0'
             note: "Traduction de la condition : pas plus de 30 % désintégrés, donc au moins 70 % restants."
           - math: '0{,}70 = e^{-\lambda t_{max}} \implies t_{max} = \frac{1}{\lambda}\ln\!\left(\frac{1}{0{,}70}\right)'
-            note: "À la limite N(t_max) = 0,70 N_0 ; on isole le temps par le logarithme (méthode d'inversion du R5)."
+            note: "À la limite N(t_max) = 0,70 N_0 ; on isole le temps par le logarithme (méthode d'inversion du chapitre 6)."
           - math: '\boxed{t_{max} = \frac{\ln(1{,}43)}{7{,}88\times10^{-3}} \approx \frac{0{,}357}{7{,}88\times10^{-3}} \approx 45\ \text{ans}}'
             note: "Application numérique avec λ en ans⁻¹ : le résultat sort directement en années."
 
@@ -811,10 +811,10 @@ entries:
         stem: |-
           **(0,5 pt)** Écrire l'équation de désintégration de l'iode131 en identifiant le noyau $^A_Z X$ produit au cours de cette désintégration.
         reasoning: |-
-          On ne connaît que le père (l'iode 131) et le type de désintégration ($\beta^-$, donné dans le chapeau) : les deux lois de Soddy (R2) suffisent à reconstruire le fils. Différence avec les exemples déjà vus : l'énoncé ne donne pas un tableau symbole ↔ Z direct, mais un tableau D'ISOTOPES. Il faut donc d'abord trouver, par Soddy, À LA FOIS le $A$ et le $Z$ du fils, puis chercher dans le tableau lequel des isotopes proposés a ces deux nombres précis — pas seulement le bon élément (déterminé par $Z$ seul), mais le bon isotope (déterminé aussi par $A$).
+          On ne connaît que le père (l'iode 131) et le type de désintégration ($\beta^-$, donné dans le chapeau) : les deux lois de Soddy (chapitre 3) suffisent à reconstruire le fils. Différence avec les exemples déjà vus : l'énoncé ne donne pas un tableau symbole ↔ Z direct, mais un tableau D'ISOTOPES. Il faut donc d'abord trouver, par Soddy, À LA FOIS le $A$ et le $Z$ du fils, puis chercher dans le tableau lequel des isotopes proposés a ces deux nombres précis — pas seulement le bon élément (déterminé par $Z$ seul), mais le bon isotope (déterminé aussi par $A$).
         steps:
           - math: '^{131}_{53}\text{I} \longrightarrow\ ^{A}_{Z}\text{X} +\ ^{0}_{-1}\text{e}'
-            note: "On pose l'équation avec le noyau fils inconnu et l'électron émis en β⁻ (R2)."
+            note: "On pose l'équation avec le noyau fils inconnu et l'électron émis en β⁻ (chapitre 3)."
           - math: 'A = 131 + 0 \implies A = 131'
             note: "Conservation du nombre de nucléons : l'électron ne porte aucun nucléon, A ne change pas."
           - math: '53 = Z + (-1) \implies Z = 54'
@@ -825,7 +825,7 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer, en MeV, l'énergie libérée $|\Delta E|$ par la désintégration d'un noyau d'iode 131.
         reasoning: |-
-          Hors des rungs de cette leçon (domaine noyaux-masse-energie, pas développé dans R1–R5) : l'énergie libérée par une désintégration provient du défaut de masse entre le père et l'ensemble des produits — le père est légèrement plus lourd que ce qu'il donne, et cet excédent de masse devient de l'énergie via $E=\Delta m\,c^2$.
+          Hors des chapitres de cette leçon (domaine noyaux-masse-energie, pas développé dans les chapitres 2 à 6) : l'énergie libérée par une désintégration provient du défaut de masse entre le père et l'ensemble des produits — le père est légèrement plus lourd que ce qu'il donne, et cet excédent de masse devient de l'énergie via $E=\Delta m\,c^2$.
         steps:
           - math: '|\Delta E| = \big[m(\text{I}) - m(\text{Xe}) - m(\beta^-)\big] \times 931{,}5'
             note: "L'énergie libérée est le défaut de masse entre le père et les produits, converti en énergie via 1 u = 931,5 MeV/c² donné dans l'énoncé."
@@ -837,33 +837,33 @@ entries:
         stem: |-
           **(0,25 pt)** Déterminer graphiquement la demi-vie $t_{1/2}$ de l'iode 131.
         reasoning: |-
-          La demi-vie se lit directement là où l'activité tombe à sa moitié — l'activité $a(t)=a_0e^{-\lambda t}$ suit exactement la même loi que $N(t)$ (R4). Ici, la lecture ne demande même pas d'estimer une moitié à l'œil : la courbe passe EXACTEMENT par l'intersection des repères de la grille $t=8$ jours et $a=2\times10^6\ \text{Bq}$, et $2\times10^6$ est bien la moitié de $a_0=4{,}0\times10^6\ \text{Bq}$ lu à l'origine.
+          La demi-vie se lit directement là où l'activité tombe à sa moitié — l'activité $a(t)=a_0e^{-\lambda t}$ suit exactement la même loi que $N(t)$ (chapitre 5). Ici, la lecture ne demande même pas d'estimer une moitié à l'œil : la courbe passe EXACTEMENT par l'intersection des repères de la grille $t=8$ jours et $a=2\times10^6\ \text{Bq}$, et $2\times10^6$ est bien la moitié de $a_0=4{,}0\times10^6\ \text{Bq}$ lu à l'origine.
 
           $$t_{1/2} = 8\ \text{jours}$$
       - id: q4
         stem: |-
           **(0,5 pt)** Calculer le nombre $N_0$ de noyaux d'iode présents dans la dose à $t = 0$.
         reasoning: |-
-          Le lien entre l'activité et le nombre de noyaux est $a=\lambda N$ (R4) : à $t=0$, $a_0=\lambda N_0$, donc $N_0=a_0/\lambda$. Il faut d'abord $\lambda$, qui ne se lit pas sur la courbe mais se déduit de $t_{1/2}$ par $t_{1/2}=\ln2/\lambda$ (R4). Ici $a_0$ est en becquerels, donc en désintégrations par seconde : il faut $\lambda$ en $\text{s}^{-1}$, donc convertir $t_{1/2}$ en secondes avant de diviser.
+          Le lien entre l'activité et le nombre de noyaux est $a=\lambda N$ (chapitre 5) : à $t=0$, $a_0=\lambda N_0$, donc $N_0=a_0/\lambda$. Il faut d'abord $\lambda$, qui ne se lit pas sur la courbe mais se déduit de $t_{1/2}$ par $t_{1/2}=\ln2/\lambda$ (chapitre 5). Ici $a_0$ est en becquerels, donc en désintégrations par seconde : il faut $\lambda$ en $\text{s}^{-1}$, donc convertir $t_{1/2}$ en secondes avant de diviser.
         steps:
           - math: '\lambda = \frac{\ln 2}{t_{1/2}} = \frac{\ln 2}{8\times 86400}'
-            note: "On inverse la relation demi-vie ↔ constante radioactive du R4, avec t1/2 converti en secondes."
+            note: "On inverse la relation demi-vie ↔ constante radioactive du chapitre 5, avec t1/2 converti en secondes."
           - math: '\lambda \approx 1{,}003\times10^{-6}\ \text{s}^{-1}'
             note: "Application numérique."
           - math: 'N_0 = \frac{a_0}{\lambda} = \frac{4{,}0\times10^{6}}{1{,}003\times10^{-6}}'
-            note: "On inverse a = λN (R4) : le nombre de noyaux se déduit de l'activité et de λ."
+            note: "On inverse a = λN (chapitre 5) : le nombre de noyaux se déduit de l'activité et de λ."
           - math: '\boxed{N_0 \approx 3{,}99\times10^{12}\ \text{noyaux}}'
             note: "Application numérique avec a0 = 4,0×10⁶ Bq lu à l'origine de la courbe."
       - id: q5
         stem: |-
           **(0,5 pt)** En utilisant la loi de décroissance radioactive, déterminer, en jours, l'instant $t_1$ où 95% des noyaux d'iode 131 se sont désintégrés.
         reasoning: |-
-          95 % désintégrés signifie qu'il reste 5 % des noyaux initiaux, soit $N(t_1)/N_0 = 0{,}05$. Ce n'est pas une puissance entière de $1/2$ : impossible de compter un nombre entier de demi-vies pour obtenir cette fraction, il faut inverser la loi de décroissance par le logarithme, exactement comme au R5 (datation).
+          95 % désintégrés signifie qu'il reste 5 % des noyaux initiaux, soit $N(t_1)/N_0 = 0{,}05$. Ce n'est pas une puissance entière de $1/2$ : impossible de compter un nombre entier de demi-vies pour obtenir cette fraction, il faut inverser la loi de décroissance par le logarithme, exactement comme au chapitre 6 (datation).
         steps:
           - math: '\frac{N(t_1)}{N_0} = 1 - 0{,}95 = 0{,}05'
             note: "95 % désintégrés signifie qu'il reste 5 % des noyaux initiaux."
           - math: 't_1 = \frac{1}{\lambda}\ln\!\left(\frac{1}{0{,}05}\right) = \frac{\ln 20}{\lambda}'
-            note: "On inverse la loi de décroissance par le logarithme (méthode du R5)."
+            note: "On inverse la loi de décroissance par le logarithme (méthode du chapitre 6)."
           - math: '\lambda = \frac{\ln 2}{8} \approx 8{,}66\times10^{-2}\ \text{jour}^{-1}'
             note: "On reprend λ en jour⁻¹ (cohérent avec t1/2 = 8 jours), pour obtenir directement t1 en jours."
           - math: '\boxed{t_1 = \frac{\ln 20}{8{,}66\times10^{-2}} \approx \frac{2{,}996}{8{,}66\times10^{-2}} \approx 34{,}6\ \text{jours}}'
@@ -925,23 +925,23 @@ entries:
 
           A. Le tritium se désintègre justement vers $^3_2\text{He}$ (on l'établit à la question suivante) : le nombre de masse est le nombre du HAUT dans la notation $^A_Z X$, donc $A=3$ pour $^3_2\text{He}$, pas 5 (l'énoncé additionne sans doute $A$ et $Z$, $3+2=5$, par erreur). Faux.
 
-          B. Le tritium, sujet même de cet exercice, en est le contre-exemple direct : c'est l'un des noyaux les plus légers qui existent (seulement 3 nucléons), et pourtant il est émetteur $\beta^-$ — exactement l'exemple utilisé au R1 pour établir que ce n'est pas la taille du noyau qui décide de sa stabilité, mais son rapport $N/Z$. Faux.
+          B. Le tritium, sujet même de cet exercice, en est le contre-exemple direct : c'est l'un des noyaux les plus légers qui existent (seulement 3 nucléons), et pourtant il est émetteur $\beta^-$ — exactement l'exemple utilisé au chapitre 2 pour établir que ce n'est pas la taille du noyau qui décide de sa stabilité, mais son rapport $N/Z$. Faux.
 
-          C. La propriété du R4 donne directement la fraction RESTANTE après $n$ demi-vies : $N_0/2^n$. Ici $n=2$, donc $N_0/4 = 25\%$ restants — c'est-à-dire $75\%$ désintégrés, pas $25\%$. L'énoncé confond la fraction restante et la fraction désintégrée, exactement le piège signalé au R4. Faux.
+          C. La propriété du chapitre 5 donne directement la fraction RESTANTE après $n$ demi-vies : $N_0/2^n$. Ici $n=2$, donc $N_0/4 = 25\%$ restants — c'est-à-dire $75\%$ désintégrés, pas $25\%$. L'énoncé confond la fraction restante et la fraction désintégrée, exactement le piège signalé au chapitre 5. Faux.
 
-          D. Hors des rungs de cette leçon (domaine noyaux-masse-energie, non développé dans R1–R5) : un noyau lié a une masse INFÉRIEURE à la somme des masses de ses nucléons séparés — c'est ce défaut de masse qui devient l'énergie de liaison. Faux.
+          D. Hors des chapitres de cette leçon (domaine noyaux-masse-energie, non développé dans les chapitres 2 à 6) : un noyau lié a une masse INFÉRIEURE à la somme des masses de ses nucléons séparés — c'est ce défaut de masse qui devient l'énergie de liaison. Faux.
 
-          E. Également hors des rungs de cette leçon : c'est un fait général vrai — dans toute réaction nucléaire qui libère de l'énergie, cette énergie provient d'une perte de masse ($E=\Delta m\,c^2$), et la fission ne fait pas exception. Vrai.
+          E. Également hors des chapitres de cette leçon : c'est un fait général vrai — dans toute réaction nucléaire qui libère de l'énergie, cette énergie provient d'une perte de masse ($E=\Delta m\,c^2$), et la fission ne fait pas exception. Vrai.
 
           Une seule affirmation vraie, comme l'exige l'énoncé : $\boxed{\text{E}}$.
       - id: q2
         stem: |-
           **(0,25 pt)** Écrire l'équation de la réaction de désintégration du noyau du tritium.
         reasoning: |-
-          Même démarche que pour l'exemple du carbone 14 au R2 : on pose le fils inconnu et on applique les deux lois de Soddy. Le tritium a un rapport $N/Z=2$ pour un noyau aussi léger (2 neutrons pour 1 seul proton, R1) — trop de neutrons, donc désintégration $\beta^-$ : un neutron devient un proton, $Z$ augmente d'une unité, $A$ ne bouge pas.
+          Même démarche que pour l'exemple du carbone 14 au chapitre 3 : on pose le fils inconnu et on applique les deux lois de Soddy. Le tritium a un rapport $N/Z=2$ pour un noyau aussi léger (2 neutrons pour 1 seul proton, chapitre 2) — trop de neutrons, donc désintégration $\beta^-$ : un neutron devient un proton, $Z$ augmente d'une unité, $A$ ne bouge pas.
         steps:
           - math: '^{3}_{1}\text{H} \longrightarrow\ ^{A}_{Z}\text{Y} +\ ^{0}_{-1}\text{e}'
-            note: "On pose l'équation avec le fils inconnu et l'électron émis en β⁻ (R2)."
+            note: "On pose l'équation avec le fils inconnu et l'électron émis en β⁻ (chapitre 3)."
           - math: 'A = 3 + 0 \implies A = 3'
             note: "Conservation du nombre de nucléons : l'électron ne porte aucun nucléon, A ne change pas."
           - math: '1 = Z + (-1) \implies Z = 2'
@@ -952,19 +952,19 @@ entries:
         stem: |-
           **(0,25 pt)** Établir la relation entre la demi-vie $t_{1/2}$ et la constante radioactive $\lambda$.
         reasoning: |-
-          C'est exactement la dérivation du R4, à reproduire ici : on repart de la définition de $t_{1/2}$ (l'instant où il reste la moitié des noyaux initiaux) injectée dans la loi de décroissance $N(t)=N_0e^{-\lambda t}$ (R3), puis on isole $t_{1/2}$.
+          C'est exactement la dérivation du chapitre 5, à reproduire ici : on repart de la définition de $t_{1/2}$ (l'instant où il reste la moitié des noyaux initiaux) injectée dans la loi de décroissance $N(t)=N_0e^{-\lambda t}$ (chapitre 4), puis on isole $t_{1/2}$.
         steps:
           - math: '\frac{N_0}{2} = N_0\,e^{-\lambda t_{1/2}}'
-            note: "Par définition, la demi-vie est l'instant où il reste la moitié des noyaux initiaux (R4)."
+            note: "Par définition, la demi-vie est l'instant où il reste la moitié des noyaux initiaux (chapitre 5)."
           - math: '\frac{1}{2} = e^{-\lambda t_{1/2}} \implies \ln\!\left(\frac{1}{2}\right) = -\lambda t_{1/2}'
             note: "On simplifie par N0, puis on passe au logarithme népérien des deux membres."
           - math: '\boxed{t_{1/2} = \frac{\ln 2}{\lambda}}'
-            note: "ln(1/2) = -ln 2, d'où la relation demi-vie ↔ constante radioactive établie au R4."
+            note: "ln(1/2) = -ln 2, d'où la relation demi-vie ↔ constante radioactive établie au chapitre 5."
       - id: q4
         stem: |-
           **(0,5 pt)** À un instant $t_0 = 0$ on a un échantillon du tritium radioactif de masse $m_0 = 2\ \mu\text{g}$. Calculer en unité Bq, l'activité $a_1$ de l'échantillon à l'instant où 90% des noyaux du tritium sont désintégrés.
         reasoning: |-
-          La chaîne complète : demi-vie → λ, masse → N0 (via la quantité de matière), puis N0 → nombre de noyaux restants une fois 90 % désintégrés, et enfin $a_1=\lambda N$ (R4) sur ce nombre RESTANT — pas sur $N_0$, piège à éviter : l'activité mesure ce qui se désintègre maintenant, donc dépend du nombre de noyaux encore présents à cet instant, pas du nombre de départ.
+          La chaîne complète : demi-vie → λ, masse → N0 (via la quantité de matière), puis N0 → nombre de noyaux restants une fois 90 % désintégrés, et enfin $a_1=\lambda N$ (chapitre 5) sur ce nombre RESTANT — pas sur $N_0$, piège à éviter : l'activité mesure ce qui se désintègre maintenant, donc dépend du nombre de noyaux encore présents à cet instant, pas du nombre de départ.
         steps:
           - math: 't_{1/2} = 12{,}32 \times 3{,}16\times10^{7} \approx 3{,}89\times10^{8}\ \text{s}'
             note: "Conversion de la demi-vie en secondes, pour rester cohérent avec une activité en becquerels."
@@ -975,7 +975,7 @@ entries:
           - math: 'N = 0{,}10\,N_0 \approx 4{,}01\times10^{16}\ \text{noyaux}'
             note: "90 % désintégrés signifie qu'il en reste 10 % — c'est ce nombre restant qui fixe l'activité, pas N0."
           - math: '\boxed{a_1 = \lambda N \approx 1{,}78\times10^{-9}\times4{,}01\times10^{16} \approx 7{,}1\times10^{7}\ \text{Bq}}'
-            note: "Application de a = λN (R4) au nombre de noyaux restants."
+            note: "Application de a = λN (chapitre 5) au nombre de noyaux restants."
 
   # ── bk-2024-n-x3 — 2024 N, Exercice 3 : désintégration de l'iridium 192 ──
   - id: bk-2024-n-x3
@@ -1017,10 +1017,10 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer la composition du noyau de l'iridium $^{192}_{77}\text{Ir}$.
         reasoning: |-
-          La notation $^A_Z X$ verrouille tout (R1) : $Z$, en indice, compte les protons ; $A$, en exposant, compte le nombre total de nucléons. Le nombre de neutrons se retrouve par soustraction, $N=A-Z$ — il n'est jamais donné directement.
+          La notation $^A_Z X$ verrouille tout (chapitre 2) : $Z$, en indice, compte les protons ; $A$, en exposant, compte le nombre total de nucléons. Le nombre de neutrons se retrouve par soustraction, $N=A-Z$ — il n'est jamais donné directement.
         steps:
           - math: 'Z = 77 \implies 77\ \text{protons}'
-            note: "Le numéro atomique Z, en indice de la notation, compte les protons (R1)."
+            note: "Le numéro atomique Z, en indice de la notation, compte les protons (chapitre 2)."
           - math: 'N = A - Z = 192 - 77 = 115\ \text{neutrons}'
             note: "Le nombre de neutrons est ce qui reste une fois les protons retirés du nombre de masse A."
           - math: '\boxed{77\ \text{protons et } 115\ \text{neutrons, pour } A = 192\ \text{nucléons}}'
@@ -1029,7 +1029,7 @@ entries:
         stem: |-
           **(0,5 pt)** Écrire l'équation de désintégration de l'iridium 192 en précisant le type de cette désintégration.
         reasoning: |-
-          Ici, c'est le noyau fils (le platine) qui est donné dans l'énoncé, et c'est la particule chargée émise qui est l'inconnue — l'inverse de la situation la plus habituelle. Peu importe laquelle des trois grandeurs manque : les deux lois de Soddy (R2) suffisent toujours à la retrouver à partir des deux autres.
+          Ici, c'est le noyau fils (le platine) qui est donné dans l'énoncé, et c'est la particule chargée émise qui est l'inconnue — l'inverse de la situation la plus habituelle. Peu importe laquelle des trois grandeurs manque : les deux lois de Soddy (chapitre 3) suffisent toujours à la retrouver à partir des deux autres.
         steps:
           - math: '^{192}_{77}\text{Ir} \longrightarrow\ ^{192}_{78}\text{Pt} +\ ^{A}_{Z}\text{p}'
             note: "On pose l'équation avec le platine (donné) et la particule émise comme inconnue."
@@ -1038,31 +1038,31 @@ entries:
           - math: '77 = 78 + Z \implies Z = -1'
             note: "Conservation de la charge : le platine porte une charge de plus que l'iridium, donc la particule émise porte -1."
           - math: '\boxed{^{192}_{77}\text{Ir} \longrightarrow\ ^{192}_{78}\text{Pt} +\ ^{0}_{-1}\text{e}}'
-            note: "A = 0, Z = -1 : c'est un électron — une désintégration β⁻ (Z augmente d'une unité, R2), accompagnée du rayonnement γ car le platine formé est produit dans un état excité (même mécanisme que le cobalt 60 du R2)."
+            note: "A = 0, Z = -1 : c'est un électron — une désintégration β⁻ (Z augmente d'une unité, chapitre 3), accompagnée du rayonnement γ car le platine formé est produit dans un état excité (même mécanisme que le cobalt 60 du chapitre 3)."
       - id: q3
         stem: |-
           **(0,5 pt)** On suppose que le corps humain ne contient pas initialement de l'iridium. À la date $t = 0$, on implante à un patient un fil métallique contenant une source d'iridium 192. L'activité de cette source à cette date est : $a_0 = 1{,}08\times10^{-2}\ \text{Bq}$. Calculer $N_0$ le nombre de noyaux d'iridium 192 se trouvant dans cette source à $t = 0$.
         reasoning: |-
-          Le lien entre l'activité et le nombre de noyaux est $a=\lambda N$ (R4) : à $t=0$, $N_0=a_0/\lambda$. La demi-vie est déjà donnée en secondes, donc λ sort directement dans la bonne unité pour diviser $a_0$ (en becquerels).
+          Le lien entre l'activité et le nombre de noyaux est $a=\lambda N$ (chapitre 5) : à $t=0$, $N_0=a_0/\lambda$. La demi-vie est déjà donnée en secondes, donc λ sort directement dans la bonne unité pour diviser $a_0$ (en becquerels).
         steps:
           - math: '\lambda = \frac{\ln 2}{t_{1/2}} = \frac{0{,}693}{6{,}3936\times10^{6}} \approx 1{,}084\times10^{-7}\ \text{s}^{-1}'
-            note: "Relation demi-vie ↔ constante radioactive du R4."
+            note: "Relation demi-vie ↔ constante radioactive du chapitre 5."
           - math: 'N_0 = \frac{a_0}{\lambda} = \frac{1{,}08\times10^{-2}}{1{,}084\times10^{-7}}'
-            note: "On inverse a = λN (R4) : le nombre de noyaux se déduit de l'activité et de λ."
+            note: "On inverse a = λN (chapitre 5) : le nombre de noyaux se déduit de l'activité et de λ."
           - math: '\boxed{N_0 \approx 1{,}0\times10^{5}\ \text{noyaux}}'
             note: "Une activité aussi faible (un peu plus d'une désintégration par minute) correspond à un échantillon minuscule, cohérent avec une source implantée localement."
       - id: q4
         stem: |-
           **(0,5 pt)** Déterminer $N_d$ le nombre de noyaux d'iridium 192 désintégrés au bout de deux ans ($\Delta t = 730\ \text{jours}$). Commenter le résultat obtenu.
         reasoning: |-
-          730 jours ne fait pas un nombre entier de demi-vies de 74 jours : impossible de compter des divisions par 2 une à une, il faut appliquer directement la loi de décroissance sous sa forme en puissance de 2, $N(t)=N_0\times2^{-t/t_{1/2}}$ — la même démarche que l'exemple du carbone 14 au R3, où la fraction restante après 1000 ans se calculait sans compter de demi-vies entières.
+          730 jours ne fait pas un nombre entier de demi-vies de 74 jours : impossible de compter des divisions par 2 une à une, il faut appliquer directement la loi de décroissance sous sa forme en puissance de 2, $N(t)=N_0\times2^{-t/t_{1/2}}$ — la même démarche que l'exemple du carbone 14 au chapitre 4, où la fraction restante après 1000 ans se calculait sans compter de demi-vies entières.
         steps:
           - math: '\frac{\Delta t}{t_{1/2}} = \frac{730}{74} \approx 9{,}86'
             note: "Nombre de demi-vies écoulées, non entier — on applique la loi exponentielle directement plutôt que de compter des divisions par 2."
           - math: 'N(\Delta t) = N_0 \times 2^{-9{,}86} \approx 0{,}0011\,N_0'
-            note: "La propriété N0/2^n du R4 se généralise à un nombre non entier de demi-vies via cette même forme en puissance de 2."
+            note: "La propriété N0/2^n du chapitre 5 se généralise à un nombre non entier de demi-vies via cette même forme en puissance de 2."
           - math: '\boxed{N_d = N_0 - N(\Delta t) \approx 0{,}9989\,N_0}'
-            note: "Presque tous les noyaux initiaux ont désintégré : à près de 10 demi-vies écoulées, on dépasse le seuil « moins de 0,1 % restant » signalé au R4 — la source est pratiquement épuisée au bout de deux ans, ce qui est précisément le sens du « commenter » demandé."
+            note: "Presque tous les noyaux initiaux ont désintégré : à près de 10 demi-vies écoulées, on dépasse le seuil « moins de 0,1 % restant » signalé au chapitre 5 — la source est pratiquement épuisée au bout de deux ans, ce qui est précisément le sens du « commenter » demandé."
 
   # ── bk-2024-r-x3 — 2024 R, Exercice 3 : famille radioactive du bismuth 212 ──
   - id: bk-2024-r-x3
@@ -1133,9 +1133,9 @@ entries:
         stem: |-
           (0,25 pt) Identifier, en justifiant, le type de la désintégration (1).
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Un diagramme de famille radioactive n'est rien d'autre qu'une suite d'équations de désintégration dessinées : chaque flèche va d'un noyau père à son noyau fils, et le type de la désintégration se lit dans le DÉPLACEMENT des deux coordonnées entre le point de départ et le point d'arrivée. Aucune donnée numérique n'est nécessaire — les deux lois de Soddy du R2 suffisent, appliquées à l'envers.
+          **Ce qu'on cherche et pourquoi ce geste.** Un diagramme de famille radioactive n'est rien d'autre qu'une suite d'équations de désintégration dessinées : chaque flèche va d'un noyau père à son noyau fils, et le type de la désintégration se lit dans le DÉPLACEMENT des deux coordonnées entre le point de départ et le point d'arrivée. Aucune donnée numérique n'est nécessaire — les deux lois de Soddy du chapitre 3 suffisent, appliquées à l'envers.
 
-          **D'abord, la convention des axes.** Ce diagramme n'est pas la vallée de stabilité du R1 : ici l'ordonnée porte le nombre de masse $A$ (et non le nombre de neutrons $N$), l'abscisse porte le numéro atomique $Z$. Un déplacement horizontal est donc un changement de $Z$ à $A$ constant, et un déplacement vertical un changement de $A$.
+          **D'abord, la convention des axes.** Ce diagramme n'est pas la vallée de stabilité du chapitre 2 : ici l'ordonnée porte le nombre de masse $A$ (et non le nombre de neutrons $N$), l'abscisse porte le numéro atomique $Z$. Un déplacement horizontal est donc un changement de $Z$ à $A$ constant, et un déplacement vertical un changement de $A$.
 
           La flèche (1) part de $^{212}_{82}\text{Pb}$ et arrive sur $^{212}_{83}\text{Bi}$ :
 
@@ -1159,7 +1159,7 @@ entries:
         stem: |-
           (0,25 pt) Reconnaitre le nucléide $^{A}_{Z}\text{X}$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Reconnaître un nucléide, c'est donner son couple $(Z\,;\,A)$ puis LIRE son nom dans $Z$ — car c'est le numéro atomique, et lui seul, qui désigne l'élément chimique (R1). Le point $^{A}_{Z}\text{X}$ étant placé sur le diagramme, ses deux coordonnées se lisent directement sur les axes ; la flèche (3) permet ensuite de contrôler cette lecture par le calcul.
+          **Ce qu'on cherche et pourquoi ce geste.** Reconnaître un nucléide, c'est donner son couple $(Z\,;\,A)$ puis LIRE son nom dans $Z$ — car c'est le numéro atomique, et lui seul, qui désigne l'élément chimique (chapitre 2). Le point $^{A}_{Z}\text{X}$ étant placé sur le diagramme, ses deux coordonnées se lisent directement sur les axes ; la flèche (3) permet ensuite de contrôler cette lecture par le calcul.
 
           **La lecture.** Le point $^{A}_{Z}\text{X}$ occupe le nœud $(Z = 82\,;\,A = 208)$ : donc $Z = 82$ et $A = 208$.
 
@@ -1183,7 +1183,7 @@ entries:
 
           Ecrire l'équation de cette désintégration.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Ici le père ET le fils sont donnés : c'est la particule émise qui est l'inconnue. Le geste ne change pas d'un iota — on pose l'équation avec l'inconnue et on applique les deux lois de Soddy (R2). Le diagramme annonce d'ailleurs la réponse : la flèche (2) descend de quatre crans en $A$ et recule de deux crans en $Z$, la signature exacte de l'émission d'un noyau d'hélium.
+          **Ce qu'on cherche et pourquoi ce geste.** Ici le père ET le fils sont donnés : c'est la particule émise qui est l'inconnue. Le geste ne change pas d'un iota — on pose l'équation avec l'inconnue et on applique les deux lois de Soddy (chapitre 3). Le diagramme annonce d'ailleurs la réponse : la flèche (2) descend de quatre crans en $A$ et recule de deux crans en $Z$, la signature exacte de l'émission d'un noyau d'hélium.
 
           $$^{212}_{83}\text{Bi} \longrightarrow\ ^{208}_{81}\text{Tl} +\ ^{A'}_{Z'}\text{p}$$
 
@@ -1195,7 +1195,7 @@ entries:
 
           $$\boxed{^{212}_{83}\text{Bi} \longrightarrow\ ^{208}_{81}\text{Tl} +\ ^{4}_{2}\text{He} \qquad \text{désintégration } \alpha}$$
 
-          C'est cohérent avec le R2 : la voie $\alpha$ est celle des noyaux LOURDS, et $A = 212$ place le bismuth 212 largement dans cette catégorie.
+          C'est cohérent avec le chapitre 3 : la voie $\alpha$ est celle des noyaux LOURDS, et $A = 212$ place le bismuth 212 largement dans cette catégorie.
 
           **Le piège à nommer.** Le SENS de la flèche (2). Elle relie deux points, et sa pointe est en bas, sur le thallium : c'est donc le bismuth qui se désintègre, pas l'inverse. Lue à l'envers, elle décrirait un thallium qui capte une particule — une réaction provoquée, pas une désintégration spontanée — et les conservations donneraient $A' = -4$ et $Z' = -2$, une particule qui n'existe pas. Un nombre de nucléons négatif dans le résultat est le signal qu'on a inversé père et fils.
       - id: q2-2
@@ -1203,7 +1203,7 @@ entries:
         stem: |-
           (0,5 pt) Déterminer, en unité (MeV), $E_{\text{libérée}} = |\Delta E|$ la valeur de l'énergie libérée par cette désintégration.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** *Cette question déborde des rungs de cette leçon : l'équivalence masse-énergie appartient à la notion noyaux-masse-energie, elle n'est pas établie en R1–R5. Elle est donc refaite ici en entier, sans rien admettre.* L'énergie libérée par une désintégration vient de ce que le noyau père est plus LOURD que l'ensemble de ses produits : la masse manquante $|\Delta m|$ est convertie en énergie selon $E = |\Delta m|\,c^2$. Tout le travail consiste à faire la soustraction proprement, puis à convertir des unités de masse atomique en MeV — ce que la donnée $1\ \text{u} = 931{,}5\ \text{MeV.c}^{-2}$ permet en une seule multiplication.
+          **Ce qu'on cherche et pourquoi ce geste.** *Cette question déborde des chapitres de cette leçon : l'équivalence masse-énergie appartient à la notion noyaux-masse-energie, elle n'est pas établie aux chapitres 2 à 6. Elle est donc refaite ici en entier, sans rien admettre.* L'énergie libérée par une désintégration vient de ce que le noyau père est plus LOURD que l'ensemble de ses produits : la masse manquante $|\Delta m|$ est convertie en énergie selon $E = |\Delta m|\,c^2$. Tout le travail consiste à faire la soustraction proprement, puis à convertir des unités de masse atomique en MeV — ce que la donnée $1\ \text{u} = 931{,}5\ \text{MeV.c}^{-2}$ permet en une seule multiplication.
 
           **Premier temps — le défaut de masse.** On compare la masse du père à la somme des masses des produits de l'équation établie à la question précédente, le thallium et la particule $\alpha$ :
 
@@ -1229,9 +1229,9 @@ entries:
 
           Montrer que l'expression de la demi-vie $t_{1/2}$ du bismuth $^{212}_{83}\text{Bi}$ est : $t_{1/2} = \dfrac{t_1.\ln 2}{\ln\!\left(\dfrac{N_0}{N_0 - N_1}\right)}$. Calculer sa valeur en minute.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Toute la question tient dans un seul mot de l'énoncé : $N_1$ est le nombre de noyaux de thallium **formés**, pas le nombre de bismuths restants. Or la loi de décroissance (R3) ne parle que des noyaux RESTANTS. Le premier geste est donc une traduction du comptage ; ensuite seulement viennent les deux gestes déjà connus — inverser la loi par le logarithme (R5), puis remplacer $\lambda$ par $\ln 2/t_{1/2}$ (R4).
+          **Ce qu'on cherche et pourquoi ce geste.** Toute la question tient dans un seul mot de l'énoncé : $N_1$ est le nombre de noyaux de thallium **formés**, pas le nombre de bismuths restants. Or la loi de décroissance (chapitre 4) ne parle que des noyaux RESTANTS. Le premier geste est donc une traduction du comptage ; ensuite seulement viennent les deux gestes déjà connus — inverser la loi par le logarithme (chapitre 6), puis remplacer $\lambda$ par $\ln 2/t_{1/2}$ (chapitre 5).
 
-          **Premier temps — traduire le comptage.** La désintégration (2) transforme un bismuth en un thallium, un pour un. Les $N_1$ thalliums présents à $t_1$ sont donc exactement les bismuths qui ont disparu — c'est le rappel explicite du R3 : le nombre de noyaux fils produits vaut $N_0 - N(t)$.
+          **Premier temps — traduire le comptage.** La désintégration (2) transforme un bismuth en un thallium, un pour un. Les $N_1$ thalliums présents à $t_1$ sont donc exactement les bismuths qui ont disparu — c'est le rappel explicite du chapitre 4 : le nombre de noyaux fils produits vaut $N_0 - N(t)$.
 
           $$N_1 = N_0 - N(t_1) \qquad\Longleftrightarrow\qquad N(t_1) = N_0 - N_1$$
 
@@ -1245,7 +1245,7 @@ entries:
 
           $$\lambda\,t_1 = \ln\!\left(\frac{N_0}{N_0 - N_1}\right)$$
 
-          **Quatrième temps — faire apparaître la demi-vie.** Le R4 donne $\lambda = \dfrac{\ln 2}{t_{1/2}}$. En reportant :
+          **Quatrième temps — faire apparaître la demi-vie.** Le chapitre 5 donne $\lambda = \dfrac{\ln 2}{t_{1/2}}$. En reportant :
 
           $$\frac{\ln 2}{t_{1/2}}\,t_1 = \ln\!\left(\frac{N_0}{N_0 - N_1}\right)$$
 
@@ -1322,11 +1322,11 @@ entries:
         reasoning: |-
           Quatre propositions, une seule vraie.
 
-          A. Le numéro atomique $Z=48$ donne directement le nombre de protons (R1) : 48, pas 59. (59 est le nombre de NEUTRONS, $N=A-Z=107-48=59$ — l'énoncé confond les deux nombres.) Faux.
+          A. Le numéro atomique $Z=48$ donne directement le nombre de protons (chapitre 2) : 48, pas 59. (59 est le nombre de NEUTRONS, $N=A-Z=107-48=59$ — l'énoncé confond les deux nombres.) Faux.
 
-          B. C'est le sens inverse : $\lambda$ mesure la probabilité de désintégration par unité de temps (R3), et $t_{1/2}=\ln2/\lambda$ (R4) — plus $\lambda$ est GRAND, plus $t_{1/2}$ est petite, plus la désintégration est rapide. Faux.
+          B. C'est le sens inverse : $\lambda$ mesure la probabilité de désintégration par unité de temps (chapitre 4), et $t_{1/2}=\ln2/\lambda$ (chapitre 5) — plus $\lambda$ est GRAND, plus $t_{1/2}$ est petite, plus la désintégration est rapide. Faux.
 
-          C. Le diagramme $(N,Z)$ de cette leçon (R1, la vallée de stabilité) place $Z$ en abscisse (horizontale) et $N$ en ordonnée (verticale). Deux isotopes partagent le même $Z$ mais des $N$ différents : ils sont donc alignés sur une droite VERTICALE, à $Z$ fixé — une droite verticale est perpendiculaire à l'axe horizontal des $Z$. Vrai.
+          C. Le diagramme $(N,Z)$ de cette leçon (chapitre 2, la vallée de stabilité) place $Z$ en abscisse (horizontale) et $N$ en ordonnée (verticale). Deux isotopes partagent le même $Z$ mais des $N$ différents : ils sont donc alignés sur une droite VERTICALE, à $Z$ fixé — une droite verticale est perpendiculaire à l'axe horizontal des $Z$. Vrai.
 
           D. C'est encore le sens inverse : plus l'énergie de liaison par nucléon $E_\ell/A$ est GRANDE, plus chaque nucléon est fortement retenu, donc plus la cohésion est forte — pas l'inverse. Faux.
 
@@ -1335,7 +1335,7 @@ entries:
         stem: |-
           **(0,5 pt)** Écrire l'équation de désintégration d'un noyau de cadmium $^{107}_{48}\text{Cd}$ en précisant le type de cette désintégration.
         reasoning: |-
-          Comme le fils (l'argent) est donné dans l'énoncé, c'est ici la particule émise qui est l'inconnue des deux lois de Soddy (R2) — le père et le fils sont tous deux connus, il suffit d'appliquer les deux conservations pour identifier ce qui est éjecté.
+          Comme le fils (l'argent) est donné dans l'énoncé, c'est ici la particule émise qui est l'inconnue des deux lois de Soddy (chapitre 3) — le père et le fils sont tous deux connus, il suffit d'appliquer les deux conservations pour identifier ce qui est éjecté.
         steps:
           - math: '^{107}_{48}\text{Cd} \longrightarrow\ ^{107}_{47}\text{Ag} +\ ^{A}_{Z}\text{e}'
             note: "On pose l'équation avec l'argent (donné) et la particule émise comme inconnue."
@@ -1344,15 +1344,15 @@ entries:
           - math: '48 = 47 + Z \implies Z = 1'
             note: "Conservation de la charge : l'argent porte une charge de moins que le cadmium, donc la particule émise porte +1."
           - math: '\boxed{^{107}_{48}\text{Cd} \longrightarrow\ ^{107}_{47}\text{Ag} +\ ^{0}_{+1}\text{e}}'
-            note: "A = 0, Z = +1 : c'est un positron — une désintégration β+ (Z diminue d'une unité, R2), cohérente avec un cadmium trop riche en protons par rapport à l'argent."
+            note: "A = 0, Z = +1 : c'est un positron — une désintégration β+ (Z diminue d'une unité, chapitre 3), cohérente avec un cadmium trop riche en protons par rapport à l'argent."
       - id: q3
         stem: |-
           **(0,5 pt)** Un laboratoire reçoit à la date $t = 0$ un échantillon de $^{107}_{48}\text{Cd}$ d'activité $a_0 = 1{,}25\times10^{12}\ \text{Bq}$. À l'instant $t_1 = 2\,t_{1/2}$ l'activité de cet échantillon est $a_1$ et à l'instant $t_2 = 3\,t_{1/2}$ son activité est $a_2$. Établir l'expression $a_2 = \dfrac{a_1}{2}$.
         reasoning: |-
-          Pas besoin de calculer $a_0$ ni $\lambda$ numériquement : la propriété du R4 (après $n$ demi-vies, il reste $1/2^n$, aussi bien sur $N$ que sur l'activité) donne directement $a_1$ et $a_2$ comme fractions de $a_0$, et le rapport des deux fractions donne le résultat demandé.
+          Pas besoin de calculer $a_0$ ni $\lambda$ numériquement : la propriété du chapitre 5 (après $n$ demi-vies, il reste $1/2^n$, aussi bien sur $N$ que sur l'activité) donne directement $a_1$ et $a_2$ comme fractions de $a_0$, et le rapport des deux fractions donne le résultat demandé.
         steps:
           - math: 'a_1 = a_0\left(\frac{1}{2}\right)^2 = \frac{a_0}{4}'
-            note: "t1 = 2 t1/2 : deux demi-vies écoulées, la propriété du R4 donne directement le quart."
+            note: "t1 = 2 t1/2 : deux demi-vies écoulées, la propriété du chapitre 5 donne directement le quart."
           - math: 'a_2 = a_0\left(\frac{1}{2}\right)^3 = \frac{a_0}{8}'
             note: "t2 = 3 t1/2 : trois demi-vies écoulées, un huitième."
           - math: '\boxed{\frac{a_2}{a_1} = \frac{a_0/8}{a_0/4} = \frac{1}{2} \implies a_2 = \frac{a_1}{2}}'
@@ -1361,21 +1361,21 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que l'expression de $N_d$, le nombre de noyaux désintégrés entre les instants $t_1$ et $t_2$, est : $N_d = \dfrac{a_0\,t_{1/2}}{8\ln 2}$.
         reasoning: |-
-          Le nombre de noyaux désintégrés entre $t_1$ et $t_2$ est la différence des noyaux présents à ces deux instants, $N(t_1)-N(t_2)$. On repasse par $a=\lambda N$ (R4) pour relier chaque $N$ à l'activité, connue, puis on réexprime $1/\lambda$ en fonction de $t_{1/2}$ pour faire apparaître la forme demandée.
+          Le nombre de noyaux désintégrés entre $t_1$ et $t_2$ est la différence des noyaux présents à ces deux instants, $N(t_1)-N(t_2)$. On repasse par $a=\lambda N$ (chapitre 5) pour relier chaque $N$ à l'activité, connue, puis on réexprime $1/\lambda$ en fonction de $t_{1/2}$ pour faire apparaître la forme demandée.
         steps:
           - math: 'N_d = N(t_1) - N(t_2) = \frac{a_1}{\lambda} - \frac{a_2}{\lambda} = \frac{a_1 - a_2}{\lambda}'
-            note: "On repasse par a = λN (R4) pour relier le nombre de noyaux à l'activité."
+            note: "On repasse par a = λN (chapitre 5) pour relier le nombre de noyaux à l'activité."
           - math: 'a_1 - a_2 = \frac{a_0}{4} - \frac{a_0}{8} = \frac{a_0}{8}'
             note: "Avec a1 = a0/4 et a2 = a0/8 établis à la question précédente."
           - math: '\frac{1}{\lambda} = \frac{t_{1/2}}{\ln 2}'
-            note: "On réexprime 1/λ en fonction de t1/2 (R4), pour faire apparaître t1/2 dans le résultat."
+            note: "On réexprime 1/λ en fonction de t1/2 (chapitre 5), pour faire apparaître t1/2 dans le résultat."
           - math: '\boxed{N_d = \frac{a_0}{8}\times\frac{t_{1/2}}{\ln 2} = \frac{a_0\,t_{1/2}}{8\ln 2}}'
             note: "On assemble les deux morceaux : c'est exactement l'expression à établir."
       - id: q5
         stem: |-
           **(0,5 pt)** Déterminer, en unité MeV, la valeur de l'énergie libérée $E$ lors de la désintégration de cet échantillon entre les instants $t_1$ et $t_2$.
         reasoning: |-
-          Hors des rungs de cette leçon (domaine noyaux-masse-energie, pas développé dans R1–R5) : l'énergie totale libérée est le nombre de désintégrations survenues (ici $N_d$, établi à la question précédente) multiplié par l'énergie libérée à chaque désintégration individuelle (le défaut de masse converti via $E=\Delta m\,c^2$).
+          Hors des chapitres de cette leçon (domaine noyaux-masse-energie, pas développé dans les chapitres 2 à 6) : l'énergie totale libérée est le nombre de désintégrations survenues (ici $N_d$, établi à la question précédente) multiplié par l'énergie libérée à chaque désintégration individuelle (le défaut de masse converti via $E=\Delta m\,c^2$).
         steps:
           - math: '\Delta m = m(\text{Cd}) - m(\text{Ag}) - m(^{A}_{Z}\text{e}) = 106{,}88045 - 106{,}87947 - 5{,}486\times10^{-4}'
             note: "Défaut de masse par désintégration : la masse du père dépasse la somme des masses des produits."
@@ -1474,7 +1474,7 @@ entries:
           |---|---|---|---|
           | C | 6 protons et 8 neutrons | D | 6 protons et 14 neutrons |
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Tout est dans la notation ${}^{A}_{Z}\text{X}$, et il faut savoir lire ses deux nombres sans hésiter — c'est le rung 1 de la leçon.
+          **Ce qu'on cherche et pourquoi ce geste.** Tout est dans la notation ${}^{A}_{Z}\text{X}$, et il faut savoir lire ses deux nombres sans hésiter — c'est le chapitre 2 de la leçon.
 
           **La lecture de la notation.**
           — Le nombre du **bas**, $Z = 6$, est le **numéro atomique** : c'est le nombre de **protons**. C'est lui qui identifie l'élément — $Z = 6$, c'est le carbone, toujours.
@@ -1500,7 +1500,7 @@ entries:
           |---|---|---|---|
           | C | ${}^{14}_{6}\text{C} \to {}^{4}_{2}\text{He} + {}^{10}_{4}\text{Be}$ | D | ${}^{14}_{6}\text{C} + {}^{0}_{-1}e \to {}^{14}_{5}\text{B}$ |
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé dit que la désintégration est de type $\beta^-$. Deux critères suffisent alors à trancher, et ils sont indépendants : la **nature de la particule émise**, et les **lois de conservation de Soddy** (rung 2).
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé dit que la désintégration est de type $\beta^-$. Deux critères suffisent alors à trancher, et ils sont indépendants : la **nature de la particule émise**, et les **lois de conservation de Soddy** (chapitre 3).
 
           **Premier critère — la particule émise.** Une désintégration $\beta^-$ émet un **électron**, noté ${}^{0}_{-1}e$. Cela élimine d'emblée :
           — **A**, qui émet ${}^{0}_{+1}e$, un positon — c'est une désintégration $\beta^+$, pas $\beta^-$ ;
@@ -1575,7 +1575,7 @@ entries:
 
           Déterminer, en ans, l'âge approximatif $t_1$ du morceau de bois ancien.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** C'est le principe même de la datation (rung 5), et l'énoncé prend soin de l'expliquer : tant que l'arbre vit, il échange du carbone avec l'atmosphère et son taux de carbone 14 reste constant ; **à sa mort, l'horloge démarre** et le carbone 14 ne fait plus que décroître. Le bois récent joue donc le rôle de l'**état initial** — il donne $a_0$, l'activité qu'avait le bois ancien au moment de sa mort.
+          **Ce qu'on cherche et pourquoi ce geste.** C'est le principe même de la datation (chapitre 6), et l'énoncé prend soin de l'expliquer : tant que l'arbre vit, il échange du carbone avec l'atmosphère et son taux de carbone 14 reste constant ; **à sa mort, l'horloge démarre** et le carbone 14 ne fait plus que décroître. Le bois récent joue donc le rôle de l'**état initial** — il donne $a_0$, l'activité qu'avait le bois ancien au moment de sa mort.
 
           **Pourquoi la précision « de même masse » est indispensable.** L'activité est proportionnelle au nombre de noyaux présents, donc à la masse de l'échantillon. Comparer deux activités n'a de sens que si les deux échantillons ont la même masse — sinon le rapport mesurerait un écart de taille, pas un écart d'âge. Ce n'est pas un détail de rédaction : c'est ce qui rend la mesure possible.
 
@@ -1595,7 +1595,7 @@ entries:
 
           au dernier passage, on a retourné le rapport pour absorber le signe moins — $-\ln\frac{a_1}{a_0} = \ln\frac{a_0}{a_1}$, ce qui rend le résultat manifestement positif.
 
-          **Le lien avec la demi-vie, qu'il faut rappeler au point d'usage.** L'énoncé ne donne pas $\lambda$ mais $t_{1/2}$. La relation du rung 4 les relie :
+          **Le lien avec la demi-vie, qu'il faut rappeler au point d'usage.** L'énoncé ne donne pas $\lambda$ mais $t_{1/2}$. La relation du chapitre 5 les relie :
 
           $$\lambda = \frac{\ln 2}{t_{1/2}}
           \qquad\Longrightarrow\qquad
@@ -1632,7 +1632,7 @@ entries:
           - math: 't_1 = \frac{1}{\lambda}\,\ln\!\left(\frac{a_0}{a_1}\right)'
             note: "Rapport retourne pour absorber le signe moins : le resultat est manifestement positif."
           - math: '\lambda = \frac{\ln 2}{t_{1/2}} \quad\Longrightarrow\quad t_1 = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a_1}\right)'
-            note: "L'enonce donne la demi-vie, pas lambda : le pont se fait par la relation du rung 4."
+            note: "L'enonce donne la demi-vie, pas lambda : le pont se fait par la relation du chapitre 5."
           - math: 't_1 = \frac{5730}{0{,}6931} \times \ln\!\left(\frac{418}{318}\right) = 8267 \times 0{,}2734'
             note: "Rapport 418/318 = 1,3145 ; son logarithme vaut 0,2734."
           - math: '\boxed{t_1 \approx 2{,}26 \times 10^{3}\ \text{ans}}'
@@ -1907,18 +1907,18 @@ entries:
         stem: |-
           **1-1-** (0,25 pt) Donner la composition du noyau $^{222}_{86}\text{Rn}$.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. C'est une lecture directe de la notation $^{A}_{Z}\text{X}$ posée au rung 1 de la leçon : $Z$ (en indice bas) donne directement le nombre de protons, et $N = A - Z$ donne le nombre de neutrons. Rien à calculer avant d'avoir identifié $A$ et $Z$ sur le symbole lui-même.
+          Ce qu'on cherche et pourquoi ce geste. C'est une lecture directe de la notation $^{A}_{Z}\text{X}$ posée au chapitre 2 de la leçon : $Z$ (en indice bas) donne directement le nombre de protons, et $N = A - Z$ donne le nombre de neutrons. Rien à calculer avant d'avoir identifié $A$ et $Z$ sur le symbole lui-même.
         steps:
           - math: 'Z = 86 \implies 86\ \text{protons}'
-            note: "Numero atomique lu directement sur le symbole (rung 1)."
+            note: "Numero atomique lu directement sur le symbole (chapitre 2)."
           - math: 'N = A - Z = 222 - 86 = 136 \implies 136\ \text{neutrons}'
             note: "Nombre de nucleons total moins le nombre de protons."
       - id: q2
-        part: "1-2 — L'énergie de liaison (hors des rungs de cette leçon)"
+        part: "1-2 — L'énergie de liaison (hors des chapitres de cette leçon)"
         stem: |-
           **1-2-** (0,5 pt) Calculer en (MeV) l'énergie de liaison du noyau $^{222}_{86}\text{Rn}$.
         reasoning: |-
-          Cette question sort des rungs R1-R5 de cette leçon : elle relève de la notion « Noyaux, masse et énergie », qui établit le défaut de masse $\Delta m = Z\,m_p + N\,m_n - m_{\text{noyau}}$ et l'énergie de liaison $E_\ell = \Delta m\,c^2$. On la refait ici en entier, sans l'admettre.
+          Cette question sort des chapitres 2 à 6 de cette leçon : elle relève de la notion « Noyaux, masse et énergie », qui établit le défaut de masse $\Delta m = Z\,m_p + N\,m_n - m_{\text{noyau}}$ et l'énergie de liaison $E_\ell = \Delta m\,c^2$. On la refait ici en entier, sans l'admettre.
 
           **Le défaut de masse**, avec $Z = 86$ protons et $N = 136$ neutrons (question précédente) :
 
@@ -1939,7 +1939,7 @@ entries:
         stem: |-
           **1-3-** (0,25 pt) Déterminer le nombre de désintégration *(coquille du sujet officiel — singulier tel qu'imprimé)* de type $\alpha$ et de type $\beta^-$ produites par cette transformation nucléaire.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Exactement le rung 2 de la leçon : on ne connaît que le noyau père ($^{238}_{92}\text{U}$), le noyau fils final ($^{222}_{86}\text{Rn}$), et les DEUX types de particules émises au passage — mais pas leur ordre ni leur nombre individuel. Les deux lois de conservation de Soddy (nombre de nucléons, charge) suffisent à retrouver le nombre total de chaque particule, sans avoir besoin de reconstruire la chaîne étape par étape.
+          Ce qu'on cherche et pourquoi ce geste. Exactement le chapitre 3 de la leçon : on ne connaît que le noyau père ($^{238}_{92}\text{U}$), le noyau fils final ($^{222}_{86}\text{Rn}$), et les DEUX types de particules émises au passage — mais pas leur ordre ni leur nombre individuel. Les deux lois de conservation de Soddy (nombre de nucléons, charge) suffisent à retrouver le nombre total de chaque particule, sans avoir besoin de reconstruire la chaîne étape par étape.
 
           On pose $x$ désintégrations $\alpha$ ($^{4}_{2}\text{He}$) et $y$ désintégrations $\beta^-$ ($^{0}_{-1}e$) :
 
@@ -1958,7 +1958,7 @@ entries:
         stem: |-
           **2-1-** (0,5 pt) Déterminer, à la date $t_0$, la masse du Radon contenu dans chaque mètre cube d'air de cette habitation.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Le rung 4 relie l'activité au nombre de noyaux présents, $a_0 = \lambda\,N_0$, avec $\lambda = \dfrac{\ln 2}{t_{1/2}}$ (même rung). Une fois $N_0$ obtenu, il reste un pont de chimie générale, hors mécanique nucléaire : $N_0$ noyaux correspondent à $n_0 = N_0/\mathcal{N}_A$ moles, donc à une masse $m_0 = n_0\,M(\text{Rn})$.
+          Ce qu'on cherche et pourquoi ce geste. Le chapitre 5 relie l'activité au nombre de noyaux présents, $a_0 = \lambda\,N_0$, avec $\lambda = \dfrac{\ln 2}{t_{1/2}}$ (même chapitre). Une fois $N_0$ obtenu, il reste un pont de chimie générale, hors mécanique nucléaire : $N_0$ noyaux correspondent à $n_0 = N_0/\mathcal{N}_A$ moles, donc à une masse $m_0 = n_0\,M(\text{Rn})$.
 
           **Le nombre de noyaux.** On isole $N_0$ dans $a_0 = \lambda N_0$, avec $\lambda = \ln 2/t_{1/2}$ :
 
@@ -1975,7 +1975,7 @@ entries:
           - math: 't_{1/2} = 3{,}9\times86400 = 336960\ \text{s}'
             note: "Conversion de la demi-vie en secondes, pour rester coherent avec a0 en Bq (desintegrations/s)."
           - math: 'N_0 = \frac{a_0\,t_{1/2}}{\ln 2} = \frac{5\times10^{3}\times336960}{0{,}6931} \approx 2{,}431\times10^{9}'
-            note: "N0 = a0/lambda, avec lambda = ln2/t1/2 (rung 4)."
+            note: "N0 = a0/lambda, avec lambda = ln2/t1/2 (chapitre 5)."
           - math: '\boxed{m_0 = \frac{N_0}{\mathcal{N}_A}\times M(\text{Rn}) \approx 8{,}96\times10^{-13}\ \text{g}}'
             note: "Pont mole-masse (chimie generale) : n0 = N0/NA, puis m0 = n0.M."
       - id: q5
@@ -1983,7 +1983,7 @@ entries:
         stem: |-
           **2-2-** (0,5 pt) Calculer le nombre de jours nécessaires pour que la valeur de l'activité à l'intérieur de cette habitation soit égale à la valeur limite maximale recommandée par l'OMS.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. L'activité suit exactement la loi de décroissance du rung 3, $a(t) = a_0\,e^{-\lambda t}$ (rung 4) : on cherche l'instant $t$ où elle atteint la valeur limite $a_1 = 300\ \text{Bq/m}^3$ de l'OMS, en partant de $a_0 = 5000\ \text{Bq/m}^3$ — exactement l'inversion de la loi que le rung 5 construit pour la datation, appliquée ici non pas à un âge mais à un délai de vieillissement d'un même échantillon.
+          Ce qu'on cherche et pourquoi ce geste. L'activité suit exactement la loi de décroissance du chapitre 4, $a(t) = a_0\,e^{-\lambda t}$ (chapitre 5) : on cherche l'instant $t$ où elle atteint la valeur limite $a_1 = 300\ \text{Bq/m}^3$ de l'OMS, en partant de $a_0 = 5000\ \text{Bq/m}^3$ — exactement l'inversion de la loi que le chapitre 6 construit pour la datation, appliquée ici non pas à un âge mais à un délai de vieillissement d'un même échantillon.
 
           $$a(t) = a_0\,e^{-\lambda t} \implies t = \frac{1}{\lambda}\ln\!\left(\frac{a_0}{a_1}\right) = \frac{t_{1/2}}{\ln 2}\ln\!\left(\frac{a_0}{a_1}\right)$$
         steps:
@@ -1992,7 +1992,7 @@ entries:
           - math: '\ln(16{,}67) \approx 2{,}8134'
             note: "Logarithme neperien du rapport."
           - math: 't = \frac{t_{1/2}}{\ln 2}\times\ln\!\left(\frac{a_0}{a_1}\right) = \frac{3{,}9}{0{,}6931}\times2{,}8134'
-            note: "Inversion de la loi de decroissance (rung 5), appliquee a l'activite (rung 4)."
+            note: "Inversion de la loi de decroissance (chapitre 6), appliquee a l'activite (chapitre 5)."
           - math: '\boxed{t \approx 15{,}83\ \text{jours}}'
             note: "Duree pour que l'activite decroisse de a0 = 5000 Bq jusqu'au seuil OMS a1 = 300 Bq, soit environ 15 jours et 20 heures."
 
@@ -2063,7 +2063,7 @@ entries:
           | **C** | $^{207}_{83}\text{Bi}$ |
           | **D** | $^{208}_{84}\text{Bi}$ |
         reasoning: |-
-          L'énoncé dit que l'Astate 211 est un radioémetteur $\alpha$ : la particule émise est donc $^{4}_{2}\text{He}$ — c'est cette information, pas les quatre propositions, qui fixe tout (rung R2, les lois de Soddy). On pose l'équation avec le Bismuth comme fils inconnu :
+          L'énoncé dit que l'Astate 211 est un radioémetteur $\alpha$ : la particule émise est donc $^{4}_{2}\text{He}$ — c'est cette information, pas les quatre propositions, qui fixe tout (chapitre 3, les lois de Soddy). On pose l'équation avec le Bismuth comme fils inconnu :
 
           $$^{211}_{85}\text{At} \longrightarrow\ ^{A}_{Z}\text{Bi} +\ ^{4}_{2}\text{He}$$
 
@@ -2076,9 +2076,9 @@ entries:
           $$\boxed{\text{C}}$$
         steps:
           - math: '211 = A + 4 \implies A = 207'
-            note: "Conservation du nombre de nucleons (rung R2, lois de Soddy)."
+            note: "Conservation du nombre de nucleons (chapitre 3, lois de Soddy)."
           - math: '85 = Z + 2 \implies Z = 83'
-            note: "Conservation de la charge (rung R2, lois de Soddy)."
+            note: "Conservation de la charge (chapitre 3, lois de Soddy)."
           - math: '\boxed{^{207}_{83}\text{Bi}}'
             note: "Reponse C."
       - id: q2
@@ -2092,7 +2092,7 @@ entries:
           | **C** | $t_{1/2} = 7{,}17\ \text{h}$ |
           | **D** | $t_{1/2} = 27{,}30\ \text{h}$ |
         reasoning: |-
-          Le rung R3 donne $N(t) = N_0e^{-\lambda t}$ ; en prenant le logarithme népérien des deux membres — exactement le geste déjà fait au rung R4 pour isoler $t_{1/2}$ — on obtient $\ln N = \ln N_0 - \lambda t$ : une droite de pente $-\lambda$. C'est précisément ce que trace la figure : il suffit de lire cette pente entre les deux points donnés, puis d'appliquer $t_{1/2} = \ln 2/\lambda$ (rung R4).
+          le chapitre 4 donne $N(t) = N_0e^{-\lambda t}$ ; en prenant le logarithme népérien des deux membres — exactement le geste déjà fait au chapitre 5 pour isoler $t_{1/2}$ — on obtient $\ln N = \ln N_0 - \lambda t$ : une droite de pente $-\lambda$. C'est précisément ce que trace la figure : il suffit de lire cette pente entre les deux points donnés, puis d'appliquer $t_{1/2} = \ln 2/\lambda$ (chapitre 5).
 
           $$\lambda = -\frac{37{,}65-37{,}94}{3-0} = \frac{0{,}29}{3} \approx 0{,}09667\ \text{h}^{-1}$$
 
@@ -2107,7 +2107,7 @@ entries:
           - math: '\lambda = \frac{37{,}94-37{,}65}{3-0} = \frac{0{,}29}{3} \approx 0{,}09667\ \text{h}^{-1}'
             note: "Pente de la droite ln(N) = ln(N0) - lambda.t, lue entre les deux points donnes du graphe."
           - math: 't_{1/2} = \frac{\ln 2}{\lambda} = \frac{3\ln 2}{0{,}29}'
-            note: "Rung R4 : demi-vie a partir de lambda."
+            note: "Chapitre R4 : demi-vie a partir de lambda."
           - math: '\boxed{t_{1/2} \approx 7{,}17\ \text{h}}'
             note: "Reponse C."
 
@@ -2196,7 +2196,7 @@ entries:
           | **C** | Electron |
           | **D** | Positron |
         reasoning: |-
-          On pose l'équation de désintégration avec la particule émise en inconnue, et on applique les lois de conservation de Soddy (rung R2) — ce sont les nombres A et Z imprimés qui tranchent, pas le nom des noyaux :
+          On pose l'équation de désintégration avec la particule émise en inconnue, et on applique les lois de conservation de Soddy (chapitre 3) — ce sont les nombres A et Z imprimés qui tranchent, pas le nom des noyaux :
 
           $$^{210}_{84}\text{Po} \longrightarrow\ ^{206}_{82}\text{Pb} +\ ^{A}_{Z}X$$
 
@@ -2207,9 +2207,9 @@ entries:
           **Pourquoi les trois autres échouent — chacune contre les deux conservations.** B (neutron, $^{1}_{0}n$) donnerait un fils $^{209}_{84}$ : ni le bon $A$ ni le bon $Z$. C (électron, $\beta^-$ : $^{\;\;0}_{-1}e$) conserverait $A = 210$ et donnerait $Z = 85$ — une désintégration $\beta^-$ ne change jamais le nombre de nucléons, or il en manque $4$ ici. D (positron, $\beta^+$ : $^{0}_{1}e$) conserverait aussi $A = 210$ avec $Z = 83$. Seule l'émission $\alpha$ retire à la fois $4$ nucléons et $2$ charges — exactement l'écart entre père et fils.
         steps:
           - math: 'A = 210 - 206 = 4'
-            note: "Conservation du nombre de nucleons (rung R2, lois de Soddy)."
+            note: "Conservation du nombre de nucleons (chapitre 3, lois de Soddy)."
           - math: 'Z = 84 - 82 = 2'
-            note: "Conservation de la charge (rung R2, lois de Soddy)."
+            note: "Conservation de la charge (chapitre 3, lois de Soddy)."
           - math: '\boxed{^{4}_{2}\text{He} : \text{particule } \alpha\ \text{(réponse A)}}'
             note: "Seule l'emission alpha retire 4 nucleons ET 2 charges a la fois."
       - id: q2
@@ -2225,7 +2225,7 @@ entries:
           | **C** | $\dfrac{1}{8}$ |
           | **D** | $\dfrac{1}{9}$ |
         reasoning: |-
-          La demi-vie (rung R4) divise l'activité par $2$ — et chaque demi-vie supplémentaire divise ENCORE par $2$, parce que la décroissance est exponentielle (rung R3), jamais linéaire. Après trois demi-vies :
+          La demi-vie (chapitre 5) divise l'activité par $2$ — et chaque demi-vie supplémentaire divise ENCORE par $2$, parce que la décroissance est exponentielle (chapitre 4), jamais linéaire. Après trois demi-vies :
 
           $$\frac{a(3\,t_{1/2})}{a_0} = \left(\frac{1}{2}\right)^3 = \frac{1}{8}$$
 
@@ -2233,12 +2233,12 @@ entries:
 
           On peut le retrouver par la loi elle-même : $a(t) = a_0\,e^{-\lambda t}$ avec $\lambda = \ln 2/t_{1/2}$, donc $a(3t_{1/2})/a_0 = e^{-3\ln 2} = 2^{-3} = 1/8$.
 
-          **Pourquoi les trois autres échouent — toutes traitent l'exponentielle comme une arithmétique.** A ($1/3$) suppose une décroissance LINÉAIRE — « trois demi-vies, donc divisé par trois » — c'est LE contresens que le rung R3 démonte : la moitié de ce qui RESTE disparaît à chaque demi-vie, pas la moitié du stock initial. B ($1/6$) combine les deux nombres de l'énoncé ($2\times3$) sans loi derrière. D ($1/9$) élève le mauvais nombre au carré ($3^2$), comme si la demi-vie divisait par $3$. La seule opération légitime est $2^n$ pour $n$ demi-vies : $2^3 = 8$.
+          **Pourquoi les trois autres échouent — toutes traitent l'exponentielle comme une arithmétique.** A ($1/3$) suppose une décroissance LINÉAIRE — « trois demi-vies, donc divisé par trois » — c'est LE contresens que le chapitre 4 démonte : la moitié de ce qui RESTE disparaît à chaque demi-vie, pas la moitié du stock initial. B ($1/6$) combine les deux nombres de l'énoncé ($2\times3$) sans loi derrière. D ($1/9$) élève le mauvais nombre au carré ($3^2$), comme si la demi-vie divisait par $3$. La seule opération légitime est $2^n$ pour $n$ demi-vies : $2^3 = 8$.
         steps:
           - math: '\frac{a(3\,t_{1/2})}{a_0} = \left(\frac{1}{2}\right)^{3} = \frac{1}{8}'
-            note: "Chaque demi-vie divise l'activite par 2 (rung R4) ; trois demi-vies divisent par 2^3."
+            note: "Chaque demi-vie divise l'activite par 2 (chapitre 5) ; trois demi-vies divisent par 2^3."
           - math: '\boxed{\text{C : } \frac{1}{8}}'
-            note: "Controle par la loi : a0.exp(-3.ln2) = a0/8 (rung R3)."
+            note: "Controle par la loi : a0.exp(-3.ln2) = a0/8 (chapitre 4)."
 
   # ── bk-2011-n-x2 — 2011 N, Physique nucléaire : radioactivité du carbone 14
   #    et datation d'une statue en bois ──
@@ -2313,12 +2313,12 @@ entries:
         stem: |-
           **1-1-** (0,75 pt) Écrire l'équation de cette désintégration en précisant le type de la radioactivité.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Exactement le rung 2 de la leçon — dont l'exemple travaillé est précisément ce noyau-là. On écrit l'équation avec la particule émise inconnue, puis les deux lois de conservation de Soddy fixent cette particule sans rien deviner : conservation du nombre de nucléons $A$ et conservation de la charge $Z$.
+          Ce qu'on cherche et pourquoi ce geste. Exactement le chapitre 3 de la leçon — dont l'exemple travaillé est précisément ce noyau-là. On écrit l'équation avec la particule émise inconnue, puis les deux lois de conservation de Soddy fixent cette particule sans rien deviner : conservation du nombre de nucléons $A$ et conservation de la charge $Z$.
 
-          Le père est $^{14}_{6}\text{C}$, le fils est $^{14}_{7}\text{N}$ (donné par l'énoncé). Pour la particule émise $^{A}_{Z}X$ : conservation de $A$ : $14 = 14 + A$, donc $A = 0$ ; conservation de $Z$ : $6 = 7 + Z$, donc $Z = -1$. La particule $^{0}_{-1}e$ est un électron : c'est une désintégration $\beta^-$ — cohérent avec le rung 1, qui repère l'excès de neutrons du carbone 14 comme la cause de son instabilité (un neutron se transforme en proton, d'où $Z$ qui augmente d'une unité à $A$ constant).
+          Le père est $^{14}_{6}\text{C}$, le fils est $^{14}_{7}\text{N}$ (donné par l'énoncé). Pour la particule émise $^{A}_{Z}X$ : conservation de $A$ : $14 = 14 + A$, donc $A = 0$ ; conservation de $Z$ : $6 = 7 + Z$, donc $Z = -1$. La particule $^{0}_{-1}e$ est un électron : c'est une désintégration $\beta^-$ — cohérent avec le chapitre 2, qui repère l'excès de neutrons du carbone 14 comme la cause de son instabilité (un neutron se transforme en proton, d'où $Z$ qui augmente d'une unité à $A$ constant).
         steps:
           - math: '14 = 14 + A \implies A = 0 \qquad 6 = 7 + Z \implies Z = -1'
-            note: "Lois de Soddy (rung 2) : conservation du nombre de nucleons et de la charge, appliquees a la particule emise."
+            note: "Lois de Soddy (chapitre 3) : conservation du nombre de nucleons et de la charge, appliquees a la particule emise."
           - math: '\boxed{^{14}_{6}\text{C} \longrightarrow\ ^{14}_{7}\text{N} +\ ^{0}_{-1}e}'
             note: "Equation de la desintegration."
           - math: '\boxed{\text{radioactivite } \beta^-}'
@@ -2328,10 +2328,10 @@ entries:
         stem: |-
           **1-2-** (0,25 pt) Donner la composition du noyau fils.
         reasoning: |-
-          Lecture directe de la notation $^{A}_{Z}\text{X}$ posée au rung 1 de la leçon, appliquée au fils $^{14}_{7}\text{N}$ : $Z$ donne le nombre de protons, $N = A - Z$ le nombre de neutrons.
+          Lecture directe de la notation $^{A}_{Z}\text{X}$ posée au chapitre 2 de la leçon, appliquée au fils $^{14}_{7}\text{N}$ : $Z$ donne le nombre de protons, $N = A - Z$ le nombre de neutrons.
         steps:
           - math: 'Z = 7 \implies 7\ \text{protons}'
-            note: "Numero atomique lu directement sur le symbole du noyau fils (rung 1)."
+            note: "Numero atomique lu directement sur le symbole du noyau fils (chapitre 2)."
           - math: '\boxed{N = A - Z = 14 - 7 = 7 \implies 7\ \text{neutrons}}'
             note: "Nombre de nucleons total moins le nombre de protons : 7 protons et 7 neutrons."
       - id: q3
@@ -2339,7 +2339,7 @@ entries:
         stem: |-
           **1-3-** (1 pt) Calculer, en MeV, l'énergie $\Delta E$ libérée par la désintégration d'un noyau de carbone 14.
         reasoning: |-
-          Cette question sort des rungs R1–R5 de cette leçon : elle relève de la notion « Noyaux, masse et énergie », qui établit l'équivalence masse-énergie $E = \Delta m\,c^2$ et le bilan de masse d'une réaction nucléaire. On la refait ici en entier, sans l'admettre (voir la note éditoriale en tête de fichier — cross-list honoré ici, pas de seconde entrée).
+          Cette question sort des chapitres 2 à 6 de cette leçon : elle relève de la notion « Noyaux, masse et énergie », qui établit l'équivalence masse-énergie $E = \Delta m\,c^2$ et le bilan de masse d'une réaction nucléaire. On la refait ici en entier, sans l'admettre (voir la note éditoriale en tête de fichier — cross-list honoré ici, pas de seconde entrée).
 
           **Le bilan de masse.** On compare la masse AVANT (le noyau de carbone 14) à la masse APRÈS (le noyau d'azote 14 ET l'électron émis — l'oublier est le piège classique de cette question, et l'énoncé donne sa masse précisément pour qu'on l'utilise) :
 
@@ -2358,14 +2358,14 @@ entries:
         stem: |-
           **2-** (1 pt) Les archéologues ont trouvé une statue en bois d'activité $135\ \text{Bq}$. Sachant que l'activité d'un morceau de bois récent, de même masse et de même nature que bois de la statue, est $165\ \text{Bq}$. *(« que bois » tel qu'imprimé — article manquant, défaut du sujet officiel, sans incidence.)* Déterminer, en années, l'âge approximatif de la statue en bois.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. C'est le principe de la datation du rung 5, mot pour mot : le bois récent, de même masse et de même nature, donne l'activité $a_0 = 165\ \text{Bq}$ qu'avait la statue de son vivant ; depuis la mort de l'arbre, l'activité décroît selon $a(t) = a_0\,e^{-\lambda t}$ (rung 4), et elle vaut aujourd'hui $a = 135\ \text{Bq}$. On inverse la loi pour extraire $t$, avec $\lambda = \dfrac{\ln 2}{t_{1/2}}$ (rung 4) :
+          Ce qu'on cherche et pourquoi ce geste. C'est le principe de la datation du chapitre 6, mot pour mot : le bois récent, de même masse et de même nature, donne l'activité $a_0 = 165\ \text{Bq}$ qu'avait la statue de son vivant ; depuis la mort de l'arbre, l'activité décroît selon $a(t) = a_0\,e^{-\lambda t}$ (chapitre 5), et elle vaut aujourd'hui $a = 135\ \text{Bq}$. On inverse la loi pour extraire $t$, avec $\lambda = \dfrac{\ln 2}{t_{1/2}}$ (chapitre 5) :
 
           $$a = a_0\,e^{-\lambda t} \implies t = \frac{1}{\lambda}\ln\!\left(\frac{a_0}{a}\right) = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a}\right)$$
 
           **Le piège nommé de cette question.** Ne pas inverser le rapport : c'est $a_0/a = 165/135 > 1$ qui va dans le logarithme (l'activité a DIMINUÉ depuis la mort, donc le rapport référence-sur-mesure est plus grand que $1$ et le temps sort positif). Écrire $135/165$ donnerait un âge négatif — un signal d'alarme, pas une convention.
         steps:
           - math: 't = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a}\right) \qquad \frac{a_0}{a} = \frac{165}{135} \approx 1{,}222'
-            note: "Inversion de la loi de decroissance appliquee a l activite (rungs 4 et 5) ; a0 est l activite du bois RECENT."
+            note: "Inversion de la loi de decroissance appliquee a l activite (chapitre 5 et 5) ; a0 est l activite du bois RECENT."
           - math: 't = \frac{5570}{0{,}6931}\times\ln(1{,}222) = \frac{5570}{0{,}6931}\times0{,}2007'
             note: "lambda = ln2/t_1/2, avec la demi-vie DONNEE par l enonce (5570 ans)."
           - math: '\boxed{t \approx 1612{,}5\ \text{ans} \approx 1613\ \text{ans}}'
@@ -2524,7 +2524,7 @@ entries:
         stem: |-
           **1-1-** (0,5 pt) La désintégration d'un noyau d'iode ${}^{131}_{53}\text{I}$ donne naissance à un noyau ${}^{131}_{54}\text{Xe}$. Ecrire la l'équation *(sic — mot dupliqué dans le sujet)* modélisant cette désintégration, et préciser son type.
         reasoning: |-
-          Les deux **lois de conservation de Soddy** (rung R2) suffisent, et elles se posent avant de nommer quoi que ce soit :
+          Les deux **lois de conservation de Soddy** (chapitre 3) suffisent, et elles se posent avant de nommer quoi que ce soit :
 
           - conservation du **nombre de masse** $A$ : $131 = 131 + A_P$, donc la particule émise a $A_P = 0$ ;
           - conservation du **nombre de charge** $Z$ : $53 = 54 + Z_P$, donc $Z_P = 53 - 54 = -1$.
@@ -2533,7 +2533,7 @@ entries:
 
           $$\boxed{{}^{131}_{53}\text{I} \;\longrightarrow\; {}^{131}_{54}\text{Xe} + {}^{\ 0}_{-1}e}$$
 
-          **Le contrôle de vraisemblance, à faire dans l'autre sens** (rung R1). Le noyau père a $Z = 53$ protons et $131 - 53 = 78$ neutrons : un rapport $N/Z \approx 1{,}47$, trop riche en neutrons pour un noyau de cette taille. C'est exactement la situation qui déclenche une désintégration $\beta^-$ : à l'intérieur du noyau, un **neutron se transforme en proton** avec émission d'un électron. Le $Z$ augmente d'une unité ($53 \to 54$), le $A$ ne bouge pas — ce que l'énoncé annonçait, et que les deux lois viennent de confirmer.
+          **Le contrôle de vraisemblance, à faire dans l'autre sens** (chapitre 2). Le noyau père a $Z = 53$ protons et $131 - 53 = 78$ neutrons : un rapport $N/Z \approx 1{,}47$, trop riche en neutrons pour un noyau de cette taille. C'est exactement la situation qui déclenche une désintégration $\beta^-$ : à l'intérieur du noyau, un **neutron se transforme en proton** avec émission d'un électron. Le $Z$ augmente d'une unité ($53 \to 54$), le $A$ ne bouge pas — ce que l'énoncé annonçait, et que les deux lois viennent de confirmer.
 
           **Le piège de cette question.** Écrire $Z_P = +1$ en soustrayant dans le mauvais sens et conclure « $\beta^+$ ». Le signe se lit sur la loi de conservation, pas sur l'intuition : le fils a **plus** de charge que le père, donc la particule emportée est **négative**. *(C'est précisément l'erreur d'arithmétique que commet le corrigé arabe de ce sujet — il écrit « donc $Z = 1$ » avant de conclure correctement $\beta^-$ : la conclusion est juste, la déduction écrite ne l'est pas.)*
       - id: q2
@@ -2573,7 +2573,7 @@ entries:
 
           Calculer le nombre $N_0$ de noyaux d'iode 131 radioactifs se trouvant dans l'échantillon d'épinard étudié à l'origine des temps.
         reasoning: |-
-          **La relation qui fait tout le travail** (rung R4) : l'activité d'un échantillon est proportionnelle au nombre de noyaux encore présents,
+          **La relation qui fait tout le travail** (chapitre 5) : l'activité d'un échantillon est proportionnelle au nombre de noyaux encore présents,
 
           $$a = \lambda\,N \qquad\text{avec}\qquad \lambda = \frac{\ln 2}{t_{1/2}}$$
 
@@ -2594,7 +2594,7 @@ entries:
           - math: '\lambda = \frac{\ln 2}{t_{1/2}} = \frac{0{,}693}{691200} \approx 1{,}00\times10^{-6}\ \text{s}^{-1}'
             note: "Constante radioactive de l'iode 131, en inverse de seconde."
           - math: 'a_0 = \lambda\,N_0 \implies N_0 = \frac{a_0}{\lambda} = \frac{a_0\,t_{1/2}}{\ln 2}'
-            note: "Relation activite-nombre de noyaux (rung R4), inversee."
+            note: "Relation activite-nombre de noyaux (chapitre 5), inversee."
           - math: 'N_0 = \frac{8000\times 691200}{0{,}693}'
             note: "Application numerique, toutes grandeurs en unites SI."
           - math: '\boxed{N_0 \approx 7{,}98\times10^{9}\ \text{noyaux} \approx 8\times10^{9}}'
@@ -2609,7 +2609,7 @@ entries:
 
           $$a(t) \le 2\,000\ \text{Bq} \qquad\text{avec}\qquad a(t) = a_0\,e^{-\lambda t} \quad\text{et}\quad a_0 = 8\,000\ \text{Bq}$$
 
-          **La loi de décroissance s'applique à l'activité comme au nombre de noyaux** (rung R4) : puisque $a = \lambda N$ et que $\lambda$ est une constante, $a(t)$ décroît exactement comme $N(t)$, avec la même demi-vie.
+          **La loi de décroissance s'applique à l'activité comme au nombre de noyaux** (chapitre 5) : puisque $a = \lambda N$ et que $\lambda$ est une constante, $a(t)$ décroît exactement comme $N(t)$, avec la même demi-vie.
 
           **Le raccourci que le sujet a préparé, et il faut le voir.** Le rapport $\dfrac{a_0}{a} = \dfrac{8\,000}{2\,000} = 4$ est une **puissance de 2**. Or la demi-vie est précisément la durée au bout de laquelle l'activité est divisée par $2$. Diviser par $4 = 2^2$, c'est donc attendre **deux demi-vies** — sans logarithme, sans calculatrice :
 
@@ -2617,7 +2617,7 @@ entries:
 
           $$\boxed{t_{min} = 2\,t_{1/2} = 2\times 8 = 16\ \text{jours}}$$
 
-          **La voie générale, quand le rapport n'est pas une puissance de 2** (rung R5, celui de la datation, lu à l'envers) : on inverse la loi,
+          **La voie générale, quand le rapport n'est pas une puissance de 2** (chapitre 6, celui de la datation, lu à l'envers) : on inverse la loi,
 
           $$t = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a}\right) = \frac{8}{\ln 2}\times\ln 4 = \frac{8 \times 2\ln 2}{\ln 2} = 16\ \text{jours}$$
 

@@ -46,14 +46,14 @@ exercises:
 
       $$(x+yi)\ast(a+bi) = xa + \left(x^2 b + a^2 y\right)i$$
 
-      L'exercice enchaîne les outils du chapitre dans leur ordre naturel : on étudie d'abord la loi $\ast$ elle-même (R1–R2), puis on montre qu'un sous-ensemble bien choisi en fait un groupe (R3), on y repère un sous-groupe, et l'on termine en identifiant ce groupe à un ensemble de matrices par un **isomorphisme** (R7). Rien de neuf à inventer — chaque question applique un geste déjà construit dans la leçon.
+      L'exercice enchaîne les outils du chapitre dans leur ordre naturel : on étudie d'abord la loi $\ast$ elle-même (chapitres 2 à 3), puis on montre qu'un sous-ensemble bien choisi en fait un groupe (chapitre 4), on y repère un sous-groupe, et l'on termine en identifiant ce groupe à un ensemble de matrices par un **isomorphisme** (chapitre 10). Rien de neuf à inventer — chaque question applique un geste déjà construit dans la leçon.
     questions:
       - id: q1a
         part: "Partie A — La loi $*$ et ses propriétés"
         stem: |-
           **(0,25 pt)** Montrer que la loi $\ast$ est commutative sur $\mathbb{C}$.
         reasoning: |-
-          La commutativité (R2) compare $z_1 \ast z_2$ et $z_2 \ast z_1$ : il faut montrer que les deux donnent le même complexe, **pour tous** $z_1,z_2$, pas sur un exemple. On calcule les deux membres avec la définition et on compare partie réelle et partie imaginaire séparément.
+          La commutativité (chapitre 3) compare $z_1 \ast z_2$ et $z_2 \ast z_1$ : il faut montrer que les deux donnent le même complexe, **pour tous** $z_1,z_2$, pas sur un exemple. On calcule les deux membres avec la définition et on compare partie réelle et partie imaginaire séparément.
 
           Le calcul repose entièrement sur la commutativité de $+$ et $\times$ dans $\mathbb{R}$ (déjà connue) : $xa=ax$ et $x^2 b + a^2 y = a^2 y + x^2 b$ ne sont que des réécritures de sommes et produits de réels.
         steps:
@@ -69,7 +69,7 @@ exercises:
         stem: |-
           **(0,5 pt)** Montrer que la loi $\ast$ est associative sur $\mathbb{C}$.
         reasoning: |-
-          L'associativité (R2) met en jeu **trois** éléments $z_1,z_2,z_3$ et compare les deux parenthésages $(z_1\ast z_2)\ast z_3$ et $z_1\ast(z_2\ast z_3)$. On développe chaque membre jusqu'au bout et on vérifie qu'ils coïncident terme à terme.
+          L'associativité (chapitre 3) met en jeu **trois** éléments $z_1,z_2,z_3$ et compare les deux parenthésages $(z_1\ast z_2)\ast z_3$ et $z_1\ast(z_2\ast z_3)$. On développe chaque membre jusqu'au bout et on vérifie qu'ils coïncident terme à terme.
 
           Posons $z_1=x+yi$, $z_2=a+bi$, $z_3=c+di$. Le point de vigilance est le calcul de la partie imaginaire : on applique la définition **deux fois**, en réutilisant à chaque étape la partie réelle et la partie imaginaire du résultat intermédiaire.
         steps:
@@ -87,7 +87,7 @@ exercises:
         stem: |-
           **(0,25 pt)** Montrer que la loi $\ast$ admet un élément neutre $e$ que l'on déterminera.
         reasoning: |-
-          Un neutre (R2) est un complexe $e$ fixe tel que $z\ast e = z$ pour **tout** $z$. On pose $e=\alpha+\beta i$ et on impose l'égalité $z\ast e = z$ ; comme elle doit tenir pour tout $z=x+yi$, on identifie les coefficients pour trouver $\alpha$ et $\beta$.
+          Un neutre (chapitre 3) est un complexe $e$ fixe tel que $z\ast e = z$ pour **tout** $z$. On pose $e=\alpha+\beta i$ et on impose l'égalité $z\ast e = z$ ; comme elle doit tenir pour tout $z=x+yi$, on identifie les coefficients pour trouver $\alpha$ et $\beta$.
 
           La commutativité déjà établie dispense de vérifier séparément $e\ast z = z$ : les deux côtés sont automatiquement égaux.
         steps:
@@ -101,7 +101,7 @@ exercises:
         stem: |-
           **(0,25 pt)** Soit $(x,y)\in\mathbb{R}^*\times\mathbb{R}$. Montrer que $x+yi$ admet $\dfrac{1}{x}-\dfrac{y}{x^4}i$ comme symétrique pour la loi $\ast$.
         reasoning: |-
-          Un symétrique (R2) de $x+yi$ est un complexe $s$ tel que $(x+yi)\ast s = e = 1$. La condition $x\neq 0$ est là pour que $\dfrac{1}{x}$ et $\dfrac{y}{x^4}$ existent — c'est exactement pourquoi l'énoncé écarte $x=0$.
+          Un symétrique (chapitre 3) de $x+yi$ est un complexe $s$ tel que $(x+yi)\ast s = e = 1$. La condition $x\neq 0$ est là pour que $\dfrac{1}{x}$ et $\dfrac{y}{x^4}$ existent — c'est exactement pourquoi l'énoncé écarte $x=0$.
 
           On n'a rien à « deviner » : le candidat est fourni, il suffit de **vérifier** que son produit $\ast$ avec $x+yi$ redonne le neutre $1$ — partie réelle égale à $1$, partie imaginaire nulle.
         steps:
@@ -116,7 +116,7 @@ exercises:
         stem: |-
           On pose $E = \left\{\, x+yi \ \mid\ x\in\mathbb{R}_+^*,\ y\in\mathbb{R} \,\right\}$. **(0,25 pt)** Montrer que $E$ est stable pour la loi $\ast$.
         reasoning: |-
-          La stabilité (R1) demande que, pour tous $z_1,z_2\in E$, le résultat $z_1\ast z_2$ appartienne **encore** à $E$ — c'est la condition « loi interne », mais restreinte au sous-ensemble $E$. Ici appartenir à $E$ signifie une seule chose : avoir une partie réelle **strictement positive**.
+          La stabilité (chapitre 2) demande que, pour tous $z_1,z_2\in E$, le résultat $z_1\ast z_2$ appartienne **encore** à $E$ — c'est la condition « loi interne », mais restreinte au sous-ensemble $E$. Ici appartenir à $E$ signifie une seule chose : avoir une partie réelle **strictement positive**.
 
           Il suffit donc de regarder la partie réelle du produit $\ast$ et de vérifier qu'elle reste positive quand les deux facteurs le sont.
         steps:
@@ -130,7 +130,7 @@ exercises:
         stem: |-
           **(0,5 pt)** Montrer que $(E,\ast)$ est un groupe commutatif.
         reasoning: |-
-          On coche les quatre axiomes du groupe (R3), **pour l'ensemble $E$** cette fois, en réutilisant tout ce qui précède — c'est l'intérêt d'avoir travaillé la loi $\ast$ en général d'abord. Loi interne : c'est la stabilité (q2a). Associativité et commutativité : héritées de $\mathbb{C}$ (q1a, q1b), donc valables a fortiori sur $E$.
+          On coche les quatre axiomes du groupe (chapitre 4), **pour l'ensemble $E$** cette fois, en réutilisant tout ce qui précède — c'est l'intérêt d'avoir travaillé la loi $\ast$ en général d'abord. Loi interne : c'est la stabilité (q2a). Associativité et commutativité : héritées de $\mathbb{C}$ (q1a, q1b), donc valables a fortiori sur $E$.
 
           Restent le neutre et les symétriques, qu'il faut vérifier **dans $E$** : le neutre $e=1$ a une partie réelle $1>0$, donc $e\in E$ ; et le symétrique de $x+yi$ (avec $x>0$) a pour partie réelle $\dfrac{1}{x}>0$, donc il appartient lui aussi à $E$. C'est là que la condition $x>0$ paie.
         steps:
@@ -235,7 +235,7 @@ exercises:
         stem: |-
           Montrer que la loi $\diamond$ est commutative et associative sur $\mathbb{R}^2$.
         reasoning: |-
-          Exactement les gestes de q1a–q1b du sujet : pour la commutativité (R2), on compare $(a,b)\diamond(c,d)$ et $(c,d)\diamond(a,b)$ composante par composante ; pour l'associativité, on développe les deux parenthésages sur un triplet $(a,b),(c,d),(e,f)$ et on vérifie qu'ils coïncident.
+          Exactement les gestes de q1a–q1b du sujet : pour la commutativité (chapitre 3), on compare $(a,b)\diamond(c,d)$ et $(c,d)\diamond(a,b)$ composante par composante ; pour l'associativité, on développe les deux parenthésages sur un triplet $(a,b),(c,d),(e,f)$ et on vérifie qu'ils coïncident.
 
           Tout repose sur la commutativité et l'associativité de $+$ et $\times$ dans $\mathbb{R}$ : $ad+bc = cb+da$ pour la commutativité, et les deux parenthésages valent tous deux $(ace,\ acf+ade+bce)$ pour l'associativité.
         steps:
@@ -251,7 +251,7 @@ exercises:
         stem: |-
           Montrer que $\diamond$ admet $(1,0)$ pour élément neutre, et que, pour $a\neq 0$, le couple $(a,b)$ admet $\left(\dfrac{1}{a},\ -\dfrac{b}{a^2}\right)$ pour symétrique.
         reasoning: |-
-          Neutre et symétrique (R2), comme en q1c–q1d. Pour le neutre, on résout $(a,b)\diamond(e_1,e_2) = (a,b)$ ; l'égalité devant tenir pour tout $(a,b)$, on identifie $e_1=1$ et $e_2=0$. Pour le symétrique, on vérifie que le candidat donné ramène au neutre $(1,0)$.
+          Neutre et symétrique (chapitre 3), comme en q1c–q1d. Pour le neutre, on résout $(a,b)\diamond(e_1,e_2) = (a,b)$ ; l'égalité devant tenir pour tout $(a,b)$, on identifie $e_1=1$ et $e_2=0$. Pour le symétrique, on vérifie que le candidat donné ramène au neutre $(1,0)$.
 
           La condition $a\neq 0$ est là pour que $\dfrac{1}{a}$ et $\dfrac{b}{a^2}$ existent — même rôle que $x\neq 0$ dans le sujet.
         steps:

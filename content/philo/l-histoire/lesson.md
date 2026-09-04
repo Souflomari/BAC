@@ -70,7 +70,7 @@ L'**Histoire**, enfin — avec une majuscule, dans l'usage qu'on lui donne ici �
 
 ## R2 — Hegel : la ruse de la raison — l'Histoire comme réalisation de la liberté
 
-### Ce que R1 laisse en suspens
+### Ce que le chapitre 2 laisse en suspens
 
 Le chapitre 2 a distingué l'histoire comme discipline et l'Histoire comme processus, sans dire si ce second processus possède, ou non, une direction d'ensemble. Hegel (XIXe siècle, *La Raison dans l'histoire*, leçons données à partir de 1822, publiées à titre posthume) est le philosophe qui a soutenu, avec la plus grande rigueur systématique, que l'Histoire a bel et bien un sens — au double sens du mot : une signification ET une direction.
 

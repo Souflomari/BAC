@@ -411,7 +411,7 @@ entries:
 
       et $(C)$ sa courbe représentative dans un repère orthonormé $(O,\vec{i},\vec{j})$ *(unité : 1 cm)*.
 
-      Point de vigilance qui traverse tout le problème : $\ln$ n'existe que sur $]0,+\infty[$, et $(\ln u)' = \dfrac{u'}{u}$ ne se lit que là où $u>0$. Garde en tête la hiérarchie des croissances vue en cours (R4) : $x$ écrase $\ln x$ à l'infini.
+      Point de vigilance qui traverse tout le problème : $\ln$ n'existe que sur $]0,+\infty[$, et $(\ln u)' = \dfrac{u'}{u}$ ne se lit que là où $u>0$. Garde en tête la hiérarchie des croissances vue en cours (chapitre 5) : $x$ écrase $\ln x$ à l'infini.
 
       La **première partie** étudie $f$ (limites, variations, convexité, position par rapport à la droite $(\Delta):y=x$, puis une aire). La **deuxième partie** exploite cette étude pour la suite $(u_n)$ définie par $u_0=1$ et $u_{n+1}=f(u_n)$.
     questions:
@@ -420,10 +420,10 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer $\displaystyle\lim_{\substack{x \to 0 \\ x > 0}} f(x)$ puis interpréter le résultat géométriquement.
         reasoning: |-
-          En $0^+$, on examine chaque morceau de $f$ séparément : $x\to 0$ (fini), mais $\ln x \to -\infty$ (limite de référence, R4), donc $-\ln x\to+\infty$ et $(\ln x)^2\to+\infty$. Tous les termes qui bougent partent vers $+\infty$ — aucune indétermination, la somme suit. Une limite infinie en une borne finie du domaine se lit toujours de la même façon géométriquement : $x=0$ est asymptote verticale à $(C)$.
+          En $0^+$, on examine chaque morceau de $f$ séparément : $x\to 0$ (fini), mais $\ln x \to -\infty$ (limite de référence, chapitre 5), donc $-\ln x\to+\infty$ et $(\ln x)^2\to+\infty$. Tous les termes qui bougent partent vers $+\infty$ — aucune indétermination, la somme suit. Une limite infinie en une borne finie du domaine se lit toujours de la même façon géométriquement : $x=0$ est asymptote verticale à $(C)$.
         steps:
           - math: '\lim_{x \to 0^+} \ln x = -\infty \implies \lim_{x \to 0^+} (\ln x)^2 = +\infty'
-            note: "Limite de reference en 0+ (R4), au carre."
+            note: "Limite de reference en 0+ (chapitre 5), au carre."
           - math: '\lim_{x \to 0^+} f(x) = \lim_{x \to 0^+}\left(x+\tfrac12-\ln x+\tfrac12(\ln x)^2\right) = +\infty'
             note: "Somme de termes qui partent tous vers +infini : pas d'indetermination. Asymptote verticale x=0."
       - id: q2
@@ -440,7 +440,7 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que $\displaystyle\lim_{x \to +\infty} f(x) = +\infty$.
         reasoning: |-
-          La forme factorisée de la question précédente sert exactement à lever l'indétermination $\infty-\infty$ qui apparaîtrait sinon. Quand $x\to+\infty$, $\ln x\to+\infty$ (R4), donc $\frac12\ln x - 1 \to+\infty$ : le produit de deux facteurs tendant vers $+\infty$ tend vers $+\infty$, et $x+\frac12\to+\infty$ s'ajoute sans changer le sens.
+          La forme factorisée de la question précédente sert exactement à lever l'indétermination $\infty-\infty$ qui apparaîtrait sinon. Quand $x\to+\infty$, $\ln x\to+\infty$ (chapitre 5), donc $\frac12\ln x - 1 \to+\infty$ : le produit de deux facteurs tendant vers $+\infty$ tend vers $+\infty$, et $x+\frac12\to+\infty$ s'ajoute sans changer le sens.
         steps:
           - math: '\lim_{x\to+\infty}\left(\tfrac12\ln x - 1\right) = +\infty, \quad \lim_{x\to+\infty}\ln x = +\infty'
             note: "Les deux facteurs du produit tendent vers +infini."
@@ -450,19 +450,19 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que pour tout $x$ de $]0,+\infty[$, $\dfrac{(\ln x)^2}{x} = 4\left(\dfrac{\ln\sqrt{x}}{\sqrt{x}}\right)^2$ puis en déduire que $\displaystyle\lim_{x \to +\infty} \dfrac{(\ln x)^2}{x} = 0$.
         reasoning: |-
-          On part du membre de droite : $\ln\sqrt x = \frac12\ln x$ (propriété racine carrée, R2) et $(\sqrt x)^2=x$. Le carré fait apparaître $\frac14\frac{(\ln x)^2}{x}$, et le facteur $4$ compense exactement ce quart. Une fois l'égalité posée, la limite se lit sur le carré de $\frac{\ln\sqrt x}{\sqrt x}$ : en posant $t=\sqrt x$ (qui tend vers $+\infty$ avec $x$), c'est $\left(\frac{\ln t}{t}\right)^2$, qui tend vers $0$ par croissances comparées (R4).
+          On part du membre de droite : $\ln\sqrt x = \frac12\ln x$ (propriété racine carrée, chapitre 3) et $(\sqrt x)^2=x$. Le carré fait apparaître $\frac14\frac{(\ln x)^2}{x}$, et le facteur $4$ compense exactement ce quart. Une fois l'égalité posée, la limite se lit sur le carré de $\frac{\ln\sqrt x}{\sqrt x}$ : en posant $t=\sqrt x$ (qui tend vers $+\infty$ avec $x$), c'est $\left(\frac{\ln t}{t}\right)^2$, qui tend vers $0$ par croissances comparées (chapitre 5).
         steps:
           - math: '\ln\sqrt{x} = \tfrac12\ln x, \qquad (\sqrt{x})^2 = x'
-            note: "Propriete racine carree (R2)."
+            note: "Propriete racine carree (chapitre 3)."
           - math: '4\left(\dfrac{\ln\sqrt{x}}{\sqrt{x}}\right)^2 = 4\cdot\dfrac{\frac14(\ln x)^2}{x} = \dfrac{(\ln x)^2}{x}'
             note: "Le carre du 1/2 donne 1/4, compense par le facteur 4."
           - math: 't=\sqrt{x}\to+\infty, \quad \dfrac{\ln t}{t}\to 0 \implies \dfrac{(\ln x)^2}{x} = 4\left(\dfrac{\ln t}{t}\right)^2 \to 0'
-            note: "Croissances comparees (R4) appliquees a t = racine de x."
+            note: "Croissances comparees (chapitre 5) appliquees a t = racine de x."
       - id: q5
         stem: |-
           **(0,75 pt)** Montrer que $(C)$ admet au voisinage de $+\infty$ une branche parabolique de direction asymptotique la droite $(\Delta)$ d'équation $y = x$.
         reasoning: |-
-          Une branche parabolique de direction $(\Delta):y=x$ demande deux vérifications : la pente $\frac{f(x)}{x}$ tend vers $1$ (la direction), mais l'écart $f(x)-x$ ne tend pas vers un réel fini — sinon $(\Delta)$ serait une vraie asymptote. Pour la pente, on divise chaque terme par $x$ et on utilise les croissances comparées : $\frac{\ln x}{x}\to0$ (R4) et $\frac{(\ln x)^2}{x}\to0$ (question précédente). Pour l'écart, $\frac12(\ln x)^2$ domine et pousse vers $+\infty$.
+          Une branche parabolique de direction $(\Delta):y=x$ demande deux vérifications : la pente $\frac{f(x)}{x}$ tend vers $1$ (la direction), mais l'écart $f(x)-x$ ne tend pas vers un réel fini — sinon $(\Delta)$ serait une vraie asymptote. Pour la pente, on divise chaque terme par $x$ et on utilise les croissances comparées : $\frac{\ln x}{x}\to0$ (chapitre 5) et $\frac{(\ln x)^2}{x}\to0$ (question précédente). Pour l'écart, $\frac12(\ln x)^2$ domine et pousse vers $+\infty$.
         steps:
           - math: '\dfrac{f(x)}{x} = 1+\dfrac{1}{2x}-\dfrac{\ln x}{x}+\dfrac{(\ln x)^2}{2x} \xrightarrow[x\to+\infty]{} 1'
             note: "Chaque terme sauf 1 tend vers 0 (croissances comparees) : la pente tend vers 1."
@@ -485,10 +485,10 @@ entries:
         stem: |-
           **(1 pt)** Montrer que pour tout $x$ de $]0,+\infty[$, $f'(x) = \dfrac{x - 1 + \ln x}{x}$.
         reasoning: |-
-          On dérive terme à terme, en traitant $\frac12(\ln x)^2$ comme une composée : $(\ln u)'=\frac{u'}{u}$ étendu au carré (rung R3) donne $\left(\frac12u^2\right)'=u'u$ avec $u=\ln x$, $u'=\frac1x$, soit $\frac{\ln x}{x}$. Les deux autres termes donnent $1$ et $-\frac1x$. On réduit au même dénominateur $x$.
+          On dérive terme à terme, en traitant $\frac12(\ln x)^2$ comme une composée : $(\ln u)'=\frac{u'}{u}$ étendu au carré (chapitre 4) donne $\left(\frac12u^2\right)'=u'u$ avec $u=\ln x$, $u'=\frac1x$, soit $\frac{\ln x}{x}$. Les deux autres termes donnent $1$ et $-\frac1x$. On réduit au même dénominateur $x$.
         steps:
           - math: 'f''(x) = 1-\dfrac1x+\dfrac{\ln x}{x}'
-            note: "Derivee de x, -ln x, et 1/2 (ln x) carre (regle (ln u)'=u'/u, R3)."
+            note: "Derivee de x, -ln x, et 1/2 (ln x) carre (regle (ln u)'=u'/u, chapitre 4)."
           - math: 'f''(x) = \dfrac{x-1+\ln x}{x}'
             note: "Reduction au meme denominateur x."
       - id: q8
@@ -645,7 +645,7 @@ entries:
 
       On considère la fonction numérique $f$ définie sur $]0,+\infty[$ par $f(x) = 2 - \dfrac{2}{x} + (1 - \ln x)^2$, et $(C_f)$ sa courbe représentative dans un repère orthonormé $(O,\vec{i},\vec{j})$ *(unité : 1 cm)*.
 
-      Deux techniques reviennent tout au long du problème et méritent d'être repérées d'emblée : la substitution $t=\sqrt x$ pour ramener une limite en $x$ à une croissance comparée de référence (R4), et la lecture du signe de $f''$ directement sur les VARIATIONS déjà connues de $f'$ (pas besoin de recalculer $f''$ à chaque fois : $f''=(f')'$).
+      Deux techniques reviennent tout au long du problème et méritent d'être repérées d'emblée : la substitution $t=\sqrt x$ pour ramener une limite en $x$ à une croissance comparée de référence (chapitre 5), et la lecture du signe de $f''$ directement sur les VARIATIONS déjà connues de $f'$ (pas besoin de recalculer $f''$ à chaque fois : $f''=(f')'$).
     questions:
       - id: q1
         part: "Partie 1 — Limites, asymptote et branche parabolique"
@@ -662,41 +662,41 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $\displaystyle\lim_{x \to 0^+} x(\ln x)^2 = 0$ et que $\displaystyle\lim_{x \to +\infty} \dfrac{(\ln x)^2}{x} = 0$ *(On peut poser : $t = \sqrt{x}$)*.
         reasoning: |-
-          Les deux limites se ramènent, via $t=\sqrt x$, aux résultats de référence du cours (R4). En $0^+$ : $x=t^2$, $t\to0^+$, et $\ln x=2\ln t$, donc $x(\ln x)^2=4t^2(\ln t)^2=4(t\ln t)^2$ ; or $t\ln t\to0$ (corollaire des croissances comparées, R4), donc le carré aussi. En $+\infty$ : $t\to+\infty$, $\frac{(\ln x)^2}{x}=\frac{4(\ln t)^2}{t^2}=4\left(\frac{\ln t}{t}\right)^2\to0$ par croissances comparées (R4).
+          Les deux limites se ramènent, via $t=\sqrt x$, aux résultats de référence du cours (chapitre 5). En $0^+$ : $x=t^2$, $t\to0^+$, et $\ln x=2\ln t$, donc $x(\ln x)^2=4t^2(\ln t)^2=4(t\ln t)^2$ ; or $t\ln t\to0$ (corollaire des croissances comparées, chapitre 5), donc le carré aussi. En $+\infty$ : $t\to+\infty$, $\frac{(\ln x)^2}{x}=\frac{4(\ln t)^2}{t^2}=4\left(\frac{\ln t}{t}\right)^2\to0$ par croissances comparées (chapitre 5).
         steps:
           - math: 't=\sqrt{x}\to0^+, \quad x(\ln x)^2 = t^2(2\ln t)^2 = 4(t\ln t)^2 \to 0'
-            note: "t ln t tend vers 0 en 0+ (corollaire des croissances comparees, R4)."
+            note: "t ln t tend vers 0 en 0+ (corollaire des croissances comparees, chapitre 5)."
           - math: 't=\sqrt{x}\to+\infty, \quad \dfrac{(\ln x)^2}{x} = \dfrac{4(\ln t)^2}{t^2} = 4\left(\dfrac{\ln t}{t}\right)^2 \to 0'
-            note: "Croissances comparees en +infini (R4)."
+            note: "Croissances comparees en +infini (chapitre 5)."
       - id: q3
         stem: |-
           **(0,5 pt)** Déduire que $\displaystyle\lim_{x \to 0^+} f(x) = -\infty$, puis donner une interprétation géométrique du résultat.
         reasoning: |-
-          On repart de la forme de la question 1 : $f(x)=\frac{3x-2-2x\ln x+x(\ln x)^2}{x}$. Au numérateur, quand $x\to0^+$ : $3x\to0$, $x\ln x\to0$ (limite de référence, R4) et $x(\ln x)^2\to0$ (question précédente) — il ne reste que le $-2$. Le numérateur tend donc vers $-2$, et le dénominateur $x\to0^+$ : le quotient tend vers $-\infty$. Une limite infinie en une borne finie du domaine signifie que $x=0$ est asymptote verticale à $(C_f)$.
+          On repart de la forme de la question 1 : $f(x)=\frac{3x-2-2x\ln x+x(\ln x)^2}{x}$. Au numérateur, quand $x\to0^+$ : $3x\to0$, $x\ln x\to0$ (limite de référence, chapitre 5) et $x(\ln x)^2\to0$ (question précédente) — il ne reste que le $-2$. Le numérateur tend donc vers $-2$, et le dénominateur $x\to0^+$ : le quotient tend vers $-\infty$. Une limite infinie en une borne finie du domaine signifie que $x=0$ est asymptote verticale à $(C_f)$.
         steps:
           - math: '3x-2-2x\ln x+x(\ln x)^2 \xrightarrow[x\to0^+]{} 0-2-2\times0+0 = -2'
-            note: "x ln x tend vers 0 (R4), x (ln x) carre tend vers 0 (question precedente)."
+            note: "x ln x tend vers 0 (chapitre 5), x (ln x) carre tend vers 0 (question precedente)."
           - math: '\lim_{x\to0^+} f(x) = \lim_{x\to0^+}\dfrac{-2}{x} = -\infty'
             note: "Numerateur vers -2, denominateur vers 0+ : asymptote verticale x=0."
       - id: q4
         stem: |-
           **(0,75 pt)** Calculer $\displaystyle\lim_{x \to +\infty} f(x)$, puis montrer que la courbe $(C_f)$ admet une branche parabolique de direction l'axe des abscisses au voisinage de $+\infty$.
         reasoning: |-
-          Pour la limite : $-\frac2x\to0$ et $(1-\ln x)^2\to+\infty$ (car $\ln x\to+\infty$), donc $f(x)\to+\infty$. Pour la branche parabolique de direction l'axe des abscisses, il faut montrer $\frac{f(x)}{x}\to0$ (la courbe monte, mais infiniment plus lentement qu'aucune droite non horizontale). On développe $(1-\ln x)^2/x$ et on reconnaît des croissances comparées : $\frac{(\ln x)^2}{x}\to0$ (question 2) et $\frac{\ln x}{x}\to0$ (R4).
+          Pour la limite : $-\frac2x\to0$ et $(1-\ln x)^2\to+\infty$ (car $\ln x\to+\infty$), donc $f(x)\to+\infty$. Pour la branche parabolique de direction l'axe des abscisses, il faut montrer $\frac{f(x)}{x}\to0$ (la courbe monte, mais infiniment plus lentement qu'aucune droite non horizontale). On développe $(1-\ln x)^2/x$ et on reconnaît des croissances comparées : $\frac{(\ln x)^2}{x}\to0$ (question 2) et $\frac{\ln x}{x}\to0$ (chapitre 5).
         steps:
           - math: '\lim_{x\to+\infty}\left(2-\dfrac2x\right) = 2, \quad \lim_{x\to+\infty}(1-\ln x)^2 = +\infty \implies \lim_{x\to+\infty} f(x) = +\infty'
             note: "(1-ln x) carre part vers +infini."
           - math: '\dfrac{f(x)}{x} = \dfrac2x-\dfrac{2}{x^2}+\dfrac{(\ln x)^2-2\ln x+1}{x} \xrightarrow[x\to+\infty]{} 0'
-            note: "Chaque terme tend vers 0 (croissances comparees, R4, et question 2) : branche parabolique de direction l'axe des abscisses."
+            note: "Chaque terme tend vers 0 (croissances comparees, chapitre 5, et question 2) : branche parabolique de direction l'axe des abscisses."
       - id: q5
         part: "Partie 2 — Dérivée, variations et concavité"
         stem: |-
           **(0,5 pt)** Montrer que pour tout $x \in ]0,+\infty[$ : $f'(x) = \dfrac{2(1 - x + x\ln x)}{x^2}$.
         reasoning: |-
-          On dérive $f(x)=2-\frac2x+(1-\ln x)^2$ terme à terme. $-\frac2x$ se dérive en $\frac{2}{x^2}$. Le carré est une composée : $\left((1-\ln x)^2\right)'=2(1-\ln x)\cdot\left(-\frac1x\right)$, en appliquant $(\ln u)'=\frac{u'}{u}$ à l'intérieur $1-\ln x$ (règle du R3, ici combinée à la règle de la composée par un carré). On réduit ensuite au même dénominateur $x^2$.
+          On dérive $f(x)=2-\frac2x+(1-\ln x)^2$ terme à terme. $-\frac2x$ se dérive en $\frac{2}{x^2}$. Le carré est une composée : $\left((1-\ln x)^2\right)'=2(1-\ln x)\cdot\left(-\frac1x\right)$, en appliquant $(\ln u)'=\frac{u'}{u}$ à l'intérieur $1-\ln x$ (règle du chapitre 4, ici combinée à la règle de la composée par un carré). On réduit ensuite au même dénominateur $x^2$.
         steps:
           - math: 'f''(x) = \dfrac{2}{x^2} - 2(1-\ln x)\cdot\dfrac1x = \dfrac{2}{x^2}-\dfrac{2(1-\ln x)}{x}'
-            note: "Derivee de -2/x, et du carre (1-ln x) au carre via (ln u)'=u'/u (R3)."
+            note: "Derivee de -2/x, et du carre (1-ln x) au carre via (ln u)'=u'/u (chapitre 4)."
           - math: 'f''(x) = \dfrac{2-2x(1-\ln x)}{x^2} = \dfrac{2-2x+2x\ln x}{x^2} = \dfrac{2(1-x+x\ln x)}{x^2}'
             note: "Reduction au denominateur commun x carre, puis facteur 2."
       - id: q6
@@ -881,17 +881,17 @@ entries:
 
       et $(C)$ sa courbe représentative dans un repère orthonormé $(O, \vec{i}, \vec{j})$ *(unité : 1cm)*.
 
-      Point de vigilance qui traverse tout le problème : $f$ est prolongée par continuité en $0$ — le vérifier est justement la première question. Garde en tête le corollaire de croissances comparées vu en cours (R4) : $x\ln x \to 0$ quand $x\to 0^+$, c'est ce qui rend ce prolongement possible.
+      Point de vigilance qui traverse tout le problème : $f$ est prolongée par continuité en $0$ — le vérifier est justement la première question. Garde en tête le corollaire de croissances comparées vu en cours (chapitre 5) : $x\ln x \to 0$ quand $x\to 0^+$, c'est ce qui rend ce prolongement possible.
     questions:
       - id: q1
         part: "Continuité de f en 0"
         stem: |-
           **(0,5 pt)** Montrer que $f$ est continue à droite au point $0$.
         reasoning: |-
-          Continue à droite en $0$ signifie $\displaystyle\lim_{x\to0^+} f(x) = f(0)$. On calcule cette limite avec le corollaire de croissances comparées de la leçon (R4) : $x\ln x \to 0$ quand $x\to0^+$. Comme $f(x)=2x\ln x-2x$ pour $x>0$, chaque terme tend vers $0$, et la limite vaut $f(0)=0$.
+          Continue à droite en $0$ signifie $\displaystyle\lim_{x\to0^+} f(x) = f(0)$. On calcule cette limite avec le corollaire de croissances comparées de la leçon (chapitre 5) : $x\ln x \to 0$ quand $x\to0^+$. Comme $f(x)=2x\ln x-2x$ pour $x>0$, chaque terme tend vers $0$, et la limite vaut $f(0)=0$.
         steps:
           - math: '\lim_{x \to 0^+} x\ln x = 0'
-            note: "Corollaire de croissances comparees, R4 (limite de reference en 0+)."
+            note: "Corollaire de croissances comparees, chapitre 5 (limite de reference en 0+)."
           - math: '\lim_{x\to0^+} f(x) = \lim_{x\to0^+}\left(2x\ln x - 2x\right) = 2\times 0 - 0 = 0 = f(0)'
             note: "Les deux termes tendent vers 0 : continuite a droite en 0 verifiee."
       - id: q2
@@ -899,7 +899,7 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} f(x)$.
         reasoning: |-
-          On met $2x$ en facteur commun : $f(x)=2x(\ln x - 1)$. Quand $x\to+\infty$, $\ln x\to+\infty$ (R4), donc $\ln x - 1\to+\infty$ : les deux facteurs $2x$ et $\ln x-1$ tendent vers $+\infty$, leur produit aussi. Pas d'indétermination.
+          On met $2x$ en facteur commun : $f(x)=2x(\ln x - 1)$. Quand $x\to+\infty$, $\ln x\to+\infty$ (chapitre 5), donc $\ln x - 1\to+\infty$ : les deux facteurs $2x$ et $\ln x-1$ tendent vers $+\infty$, leur produit aussi. Pas d'indétermination.
         steps:
           - math: 'f(x) = 2x\ln x - 2x = 2x(\ln x - 1)'
             note: "Mise en facteur de 2x."
@@ -909,7 +909,7 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} \dfrac{f(x)}{x}$ puis interpréter géométriquement le résultat.
         reasoning: |-
-          En divisant la forme factorisée de la question précédente par $x$, il reste $\dfrac{f(x)}{x}=2\ln x - 2$, qui tend vers $+\infty$ car $\ln x\to+\infty$ (R4). Quand le rapport $\dfrac{f(x)}{x}$ part lui-même à l'infini, la courbe grossit plus vite que n'importe quelle droite passant par l'origine : c'est une branche parabolique de direction $(O,\vec{j})$ (l'axe des ordonnées).
+          En divisant la forme factorisée de la question précédente par $x$, il reste $\dfrac{f(x)}{x}=2\ln x - 2$, qui tend vers $+\infty$ car $\ln x\to+\infty$ (chapitre 5). Quand le rapport $\dfrac{f(x)}{x}$ part lui-même à l'infini, la courbe grossit plus vite que n'importe quelle droite passant par l'origine : c'est une branche parabolique de direction $(O,\vec{j})$ (l'axe des ordonnées).
         steps:
           - math: '\dfrac{f(x)}{x} = \dfrac{2x(\ln x - 1)}{x} = 2\ln x - 2'
             note: "Division par x, x non nul."
@@ -922,7 +922,7 @@ entries:
         stem: |-
           **(0,75 pt)** Calculer $\displaystyle\lim_{x \to 0^+} \dfrac{f(x)}{x}$ et interpréter géométriquement le résultat.
         reasoning: |-
-          Comme $f(0)=0$, ce rapport est exactement le taux d'accroissement de $f$ entre $0$ et $x$ : $\dfrac{f(x)}{x}=\dfrac{f(x)-f(0)}{x-0}$. Sur $]0,+\infty[$, $\dfrac{f(x)}{x}=2\ln x-2$ (même calcul que la question précédente, valable ici aussi), qui tend vers $-\infty$ quand $x\to0^+$ car $\ln x\to-\infty$ (R4). Un taux d'accroissement qui part à l'infini signale une tangente verticale : $(C)$ admet une demi-tangente verticale au point $(0,0)$.
+          Comme $f(0)=0$, ce rapport est exactement le taux d'accroissement de $f$ entre $0$ et $x$ : $\dfrac{f(x)}{x}=\dfrac{f(x)-f(0)}{x-0}$. Sur $]0,+\infty[$, $\dfrac{f(x)}{x}=2\ln x-2$ (même calcul que la question précédente, valable ici aussi), qui tend vers $-\infty$ quand $x\to0^+$ car $\ln x\to-\infty$ (chapitre 5). Un taux d'accroissement qui part à l'infini signale une tangente verticale : $(C)$ admet une demi-tangente verticale au point $(0,0)$.
         steps:
           - math: '\dfrac{f(x)}{x} = \dfrac{f(x)-f(0)}{x-0} = 2\ln x - 2 \quad (x>0)'
             note: "Taux d'accroissement en 0, meme formule que f(x)/x."
@@ -944,12 +944,12 @@ entries:
         stem: |-
           **(0,5 pt)** Dresser le tableau de variations de la fonction $f$ sur $[0, +\infty[$.
         reasoning: |-
-          Le signe de $f'(x)=2\ln x$ est celui de $\ln x$ (le facteur $2$ est positif) : négatif sur $]0,1[$, nul en $1$, positif sur $]1,+\infty[$ (R1). $f$ décroît donc sur $[0,1]$ puis croît sur $[1,+\infty[$, avec un minimum en $x=1$ valant $f(1)=2\ln1-2=-2$. On complète avec $f(0)=0$ (donné) et $\displaystyle\lim_{x\to+\infty}f(x)=+\infty$ (question 2).
+          Le signe de $f'(x)=2\ln x$ est celui de $\ln x$ (le facteur $2$ est positif) : négatif sur $]0,1[$, nul en $1$, positif sur $]1,+\infty[$ (chapitre 2). $f$ décroît donc sur $[0,1]$ puis croît sur $[1,+\infty[$, avec un minimum en $x=1$ valant $f(1)=2\ln1-2=-2$. On complète avec $f(0)=0$ (donné) et $\displaystyle\lim_{x\to+\infty}f(x)=+\infty$ (question 2).
         steps:
           - math: 'f''(x) = 2\ln x, \quad x>0 \implies \text{signe}(f'') = \text{signe}(\ln x)'
             note: "Le facteur 2 est positif : le signe de f' suit celui de ln x."
           - math: 'f''(x) < 0 \text{ sur } ]0,1[, \quad f''(1)=0, \quad f''(x) > 0 \text{ sur } ]1,+\infty['
-            note: "Signe de ln x autour de 1 (R1)."
+            note: "Signe de ln x autour de 1 (chapitre 2)."
           - math: 'f(1) = 2\ln 1 - 2 = -2'
             note: "Minimum de f, atteint en x=1. f decroit de f(0)=0 a -2, puis croit de -2 a plus l'infini."
       - id: q7
@@ -957,10 +957,10 @@ entries:
         stem: |-
           **(0,5 pt)** Résoudre dans l'intervalle $]0, +\infty[$ les équations $f(x) = 0$ et $f(x) = x$.
         reasoning: |-
-          Pour $f(x)=0$, on repart de la forme factorisée $f(x)=2x(\ln x-1)$ (question 2) : sur $]0,+\infty[$, $x\ne0$, donc l'équation équivaut à $\ln x=1$, soit $x=e$ (définition de $e$, R5). Pour $f(x)=x$, on regroupe : $2x\ln x-3x=0$, soit $x(2\ln x-3)=0$ ; comme $x\ne0$, il reste $\ln x=\dfrac32$, soit $x=e^{3/2}$ — cohérent avec l'indication $e^{3/2}\simeq4.5$ donnée à la question suivante pour la construction.
+          Pour $f(x)=0$, on repart de la forme factorisée $f(x)=2x(\ln x-1)$ (question 2) : sur $]0,+\infty[$, $x\ne0$, donc l'équation équivaut à $\ln x=1$, soit $x=e$ (définition de $e$, chapitre 6). Pour $f(x)=x$, on regroupe : $2x\ln x-3x=0$, soit $x(2\ln x-3)=0$ ; comme $x\ne0$, il reste $\ln x=\dfrac32$, soit $x=e^{3/2}$ — cohérent avec l'indication $e^{3/2}\simeq4.5$ donnée à la question suivante pour la construction.
         steps:
           - math: 'f(x)=0 \iff 2x(\ln x - 1) = 0 \iff \ln x = 1 \iff x = e \quad (x\ne0 \text{ sur } ]0,+\infty[)'
-            note: "Produit nul, x non nul sur le domaine considere. x=e par definition de e (R5)."
+            note: "Produit nul, x non nul sur le domaine considere. x=e par definition de e (chapitre 6)."
           - math: 'f(x)=x \iff 2x\ln x - 3x = 0 \iff x(2\ln x - 3) = 0 \iff \ln x = \dfrac32 \iff x = e^{3/2}'
             note: "Meme methode, x non nul."
       - id: q8
@@ -1136,7 +1136,7 @@ entries:
 
       **Partie II.** On considère la fonction numérique $f$ définie par $f(x) = x + 1 - \ln\left(e^x - x\right)$.
 
-      Point de vigilance qui traverse tout le problème : la Partie I n'est pas un hors-d'œuvre isolé — elle sert à garantir que $e^x-x>0$ pour tout $x$ réel, condition sans laquelle $\ln(e^x-x)$ de la Partie II n'aurait aucun sens (rappel R1 : $\ln$ n'existe que sur $]0,+\infty[$).
+      Point de vigilance qui traverse tout le problème : la Partie I n'est pas un hors-d'œuvre isolé — elle sert à garantir que $e^x-x>0$ pour tout $x$ réel, condition sans laquelle $\ln(e^x-x)$ de la Partie II n'aurait aucun sens (rappel du chapitre 2 : $\ln$ n'existe que sur $]0,+\infty[$).
     questions:
       - id: q1
         part: "Partie I — Comparer u(x)=e^x et v(x)=x, puis une aire"
@@ -1166,34 +1166,34 @@ entries:
         stem: |-
           **(0,25 pt)** Vérifier que $f$ est définie sur $\mathbb{R}$.
         reasoning: |-
-          $f(x)=x+1-\ln(e^x-x)$ n'a de sens que là où $e^x-x>0$ (rappel de domaine du $\ln$, R1). Or c'est précisément ce que la Partie I vient d'établir pour tout $x$ réel : $f$ est donc définie sur $\mathbb{R}$ tout entier.
+          $f(x)=x+1-\ln(e^x-x)$ n'a de sens que là où $e^x-x>0$ (rappel de domaine du $\ln$, chapitre 2). Or c'est précisément ce que la Partie I vient d'établir pour tout $x$ réel : $f$ est donc définie sur $\mathbb{R}$ tout entier.
         steps:
           - math: '\forall x\in\mathbb{R},\ e^x - x > 0 \quad (\text{Partie I, question 2})'
             note: "Reutilisation directe du resultat de la Partie I."
           - math: 'e^x-x>0 \implies \ln(e^x-x) \text{ existe pour tout } x \implies f \text{ est definie sur } \mathbb{R}'
-            note: "Le domaine du ln (R1) est verifie partout : f est definie sur R tout entier."
+            note: "Le domaine du ln (chapitre 2) est verifie partout : f est definie sur R tout entier."
       - id: q5
         stem: |-
           **(0,5 pt)** Montrer que pour tout $x \in \mathbb{R}$, $f(x) = 1 - \ln\left(1 - xe^{-x}\right)$.
         reasoning: |-
-          On factorise l'intérieur du $\ln$ par $e^x$ (jamais nul) : $e^x-x=e^x\left(1-xe^{-x}\right)$. La propriété du produit (R2) donne $\ln(e^x-x)=\ln(e^x)+\ln(1-xe^{-x})$, et $\ln(e^x)=x$ pour tout réel $x$ (propriété de la réciprocité entre $\ln$ et l'exponentielle, chapitre « Fonction exponentielle », hors socle de cette leçon). En remplaçant dans $f(x)=x+1-\ln(e^x-x)$, les deux $x$ s'annulent.
+          On factorise l'intérieur du $\ln$ par $e^x$ (jamais nul) : $e^x-x=e^x\left(1-xe^{-x}\right)$. La propriété du produit (chapitre 3) donne $\ln(e^x-x)=\ln(e^x)+\ln(1-xe^{-x})$, et $\ln(e^x)=x$ pour tout réel $x$ (propriété de la réciprocité entre $\ln$ et l'exponentielle, chapitre « Fonction exponentielle », hors socle de cette leçon). En remplaçant dans $f(x)=x+1-\ln(e^x-x)$, les deux $x$ s'annulent.
         steps:
           - math: 'e^x - x = e^x\left(1-xe^{-x}\right)'
             note: "On factorise par e^x, jamais nul."
           - math: '\ln(e^x-x) = \ln(e^x) + \ln\left(1-xe^{-x}\right) = x + \ln\left(1-xe^{-x}\right)'
-            note: "Propriete du produit (R2) ; ln(e^x)=x, propriete de la reciproque de ln, chapitre Fonction exponentielle, hors socle."
+            note: "Propriete du produit (chapitre 3) ; ln(e^x)=x, propriete de la reciproque de ln, chapitre Fonction exponentielle, hors socle."
           - math: 'f(x) = x+1-\Big(x+\ln(1-xe^{-x})\Big) = 1 - \ln\left(1-xe^{-x}\right)'
             note: "Les x s'annulent."
       - id: q6
         stem: |-
           **(0,5 pt)** En déduire que $\displaystyle\lim_{x \to +\infty} f(x) = 1$, puis interpréter géométriquement ce résultat.
         reasoning: |-
-          On part de l'écriture de la question précédente. Quand $x\to+\infty$, $xe^{-x}\to0$ (limite de référence de l'exponentielle, analogue de la limite $x\ln x\to0$ du R4 mais pour $e^{-x}$, chapitre « Fonction exponentielle », hors socle de cette leçon), donc $1-xe^{-x}\to1$, et par continuité de $\ln$ en $1$ (R1/R5), $\ln(1-xe^{-x})\to\ln(1)=0$. Donc $f(x)\to1-0=1$. Géométriquement, la droite $y=1$ est asymptote horizontale à $(\mathcal{C}_f)$ au voisinage de $+\infty$.
+          On part de l'écriture de la question précédente. Quand $x\to+\infty$, $xe^{-x}\to0$ (limite de référence de l'exponentielle, analogue de la limite $x\ln x\to0$ du chapitre 5 mais pour $e^{-x}$, chapitre « Fonction exponentielle », hors socle de cette leçon), donc $1-xe^{-x}\to1$, et par continuité de $\ln$ en $1$ (chapitres 2 et 6), $\ln(1-xe^{-x})\to\ln(1)=0$. Donc $f(x)\to1-0=1$. Géométriquement, la droite $y=1$ est asymptote horizontale à $(\mathcal{C}_f)$ au voisinage de $+\infty$.
         steps:
           - math: '\lim_{x\to+\infty} xe^{-x} = 0 \quad (\text{limite de reference de l''exponentielle, hors socle})'
-            note: "Analogue, pour l'exponentielle, du corollaire x ln x tend vers 0 du R4."
+            note: "Analogue, pour l'exponentielle, du corollaire x ln x tend vers 0 du chapitre 5."
           - math: '\lim_{x\to+\infty}\big(1-xe^{-x}\big) = 1 \implies \lim_{x\to+\infty}\ln\big(1-xe^{-x}\big) = \ln(1) = 0'
-            note: "Continuite de ln en 1, deja etablie R1/R5."
+            note: "Continuite de ln en 1, deja etablie aux chapitres 2 et 6."
           - math: '\lim_{x\to+\infty} f(x) = 1-0 = 1'
             note: "Asymptote horizontale y=1 en plus l'infini."
       - id: q7
@@ -1201,7 +1201,7 @@ entries:
         stem: |-
           **(0,25 pt)** Calculer $\displaystyle\lim_{x \to -\infty} f(x)$.
         reasoning: |-
-          Quand $x\to-\infty$, $e^x\to0$ (limite de référence de l'exponentielle, hors socle) et $-x\to+\infty$ : leur somme $e^x-x\to+\infty$. Par la limite de référence du $\ln$ en $+\infty$ (R4), $\ln(e^x-x)\to+\infty$. Donc $f(x)=x+1-\ln(e^x-x)$ est somme de deux termes qui tendent tous les deux vers $-\infty$ ($x+1\to-\infty$ et $-\ln(e^x-x)\to-\infty$) : pas d'indétermination, $f(x)\to-\infty$.
+          Quand $x\to-\infty$, $e^x\to0$ (limite de référence de l'exponentielle, hors socle) et $-x\to+\infty$ : leur somme $e^x-x\to+\infty$. Par la limite de référence du $\ln$ en $+\infty$ (chapitre 5), $\ln(e^x-x)\to+\infty$. Donc $f(x)=x+1-\ln(e^x-x)$ est somme de deux termes qui tendent tous les deux vers $-\infty$ ($x+1\to-\infty$ et $-\ln(e^x-x)\to-\infty$) : pas d'indétermination, $f(x)\to-\infty$.
         steps:
           - math: '\lim_{x\to-\infty} e^x = 0, \quad \lim_{x\to-\infty} (-x) = +\infty \implies \lim_{x\to-\infty} (e^x-x) = +\infty'
             note: "Limite de reference de l'exponentielle en moins l'infini (hors socle), plus -x qui domine."
@@ -1213,7 +1213,7 @@ entries:
         stem: |-
           **(0,5 pt)** Vérifier que pour tout $x < 0$, $f(x) = x + 1 - \ln(-x) - \ln\left(1 - \dfrac{1}{xe^{-x}}\right)$.
         reasoning: |-
-          Pour $x<0$, on factorise cette fois par $-x$ (strictement positif) plutôt que par $e^x$ : $e^x-x=-x\left(1-\dfrac{e^x}{x}\right)$, et $\dfrac{e^x}{x}=\dfrac1{xe^{-x}}$. La propriété du produit (R2) s'applique car les deux facteurs $-x$ et $1-\dfrac1{xe^{-x}}$ sont strictement positifs pour $x<0$. En substituant dans $f(x)=x+1-\ln(e^x-x)$, on obtient l'écriture demandée.
+          Pour $x<0$, on factorise cette fois par $-x$ (strictement positif) plutôt que par $e^x$ : $e^x-x=-x\left(1-\dfrac{e^x}{x}\right)$, et $\dfrac{e^x}{x}=\dfrac1{xe^{-x}}$. La propriété du produit (chapitre 3) s'applique car les deux facteurs $-x$ et $1-\dfrac1{xe^{-x}}$ sont strictement positifs pour $x<0$. En substituant dans $f(x)=x+1-\ln(e^x-x)$, on obtient l'écriture demandée.
         steps:
           - math: 'x<0 \implies e^x - x = -x\left(1-\dfrac{e^x}{x}\right) = -x\left(1-\dfrac{1}{xe^{-x}}\right)'
             note: "On factorise par -x, strictement positif pour x negatif ; e^x/x = 1/(x e^-x)."
@@ -1225,14 +1225,14 @@ entries:
         stem: |-
           **(0,75 pt)** Calculer $\displaystyle\lim_{x \to -\infty} \dfrac{f(x)}{x}$ puis déduire que la courbe $(\mathcal{C}_f)$ admet une branche parabolique de direction la droite d'équation $y = x$ au voisinage de $-\infty$.
         reasoning: |-
-          On divise la forme de la question précédente par $x$ (négatif, non nul) et on pose $X=-x$ (qui tend vers $+\infty$) pour se ramener aux limites de référence. Le terme $\dfrac{\ln(-x)}{x}$ devient $-\dfrac{\ln X}{X}\to0$ par croissances comparées (R4, même limite de référence que dans la leçon, ici appliquée à $X$). Le dernier terme tend aussi vers $0$ : $xe^{-x}=-Xe^X\to-\infty$ (l'exponentielle écrase $X$, hors socle), donc $\dfrac1{xe^{-x}}\to0$ et $\ln\left(1-\dfrac1{xe^{-x}}\right)\to\ln(1)=0$. Il reste $\dfrac{f(x)}{x}\to1$ : c'est la direction de $(\Delta):y=x$. Mais l'écart $f(x)-x=1-\ln(e^x-x)$ tend vers $-\infty$ (question 7) — pas de limite finie, donc pas d'asymptote : c'est une branche parabolique de direction $(\Delta)$.
+          On divise la forme de la question précédente par $x$ (négatif, non nul) et on pose $X=-x$ (qui tend vers $+\infty$) pour se ramener aux limites de référence. Le terme $\dfrac{\ln(-x)}{x}$ devient $-\dfrac{\ln X}{X}\to0$ par croissances comparées (chapitre 5, même limite de référence que dans la leçon, ici appliquée à $X$). Le dernier terme tend aussi vers $0$ : $xe^{-x}=-Xe^X\to-\infty$ (l'exponentielle écrase $X$, hors socle), donc $\dfrac1{xe^{-x}}\to0$ et $\ln\left(1-\dfrac1{xe^{-x}}\right)\to\ln(1)=0$. Il reste $\dfrac{f(x)}{x}\to1$ : c'est la direction de $(\Delta):y=x$. Mais l'écart $f(x)-x=1-\ln(e^x-x)$ tend vers $-\infty$ (question 7) — pas de limite finie, donc pas d'asymptote : c'est une branche parabolique de direction $(\Delta)$.
         steps:
           - math: '\dfrac{f(x)}{x} = 1+\dfrac1x-\dfrac{\ln(-x)}{x}-\dfrac1x\ln\left(1-\dfrac{1}{xe^{-x}}\right) \quad (x<0)'
             note: "On divise par x la forme de la question precedente."
           - math: 'X=-x\to+\infty,\quad \dfrac{\ln(-x)}{x} = \dfrac{\ln X}{-X} = -\dfrac{\ln X}{X} \to 0 \quad (\text{croissances comparees, R4})'
-            note: "Meme limite de reference que R4, avec le changement de variable X=-x."
+            note: "Meme limite de reference que le chapitre 5, avec le changement de variable X=-x."
           - math: 'xe^{-x} = -Xe^{X} \to -\infty \implies \dfrac{1}{xe^{-x}} \to 0 \implies \ln\left(1-\dfrac{1}{xe^{-x}}\right) \to \ln(1) = 0'
-            note: "L'exponentielle ecrase X (hors socle) ; continuite de ln en 1 (R1/R5)."
+            note: "L'exponentielle ecrase X (hors socle) ; continuite de ln en 1 (chapitres 2 et 6)."
           - math: '\lim_{x\to-\infty} \dfrac{f(x)}{x} = 1+0-0-0 = 1'
             note: "La pente tend vers 1 : direction de (Delta):y=x."
           - math: 'f(x)-x = 1-\ln(e^x-x) \xrightarrow[x\to-\infty]{} -\infty \quad (\text{question 7})'
@@ -1242,7 +1242,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que pour tout $x \in \mathbb{R}$ : $f'(x) = \dfrac{1 - x}{e^x - x}$.
         reasoning: |-
-          On dérive $f(x)=x+1-\ln(e^x-x)$ : le terme $\ln(e^x-x)$ est une composée, on applique $(\ln u)'=\dfrac{u'}{u}$ (R3) avec $u(x)=e^x-x$, $u'(x)=e^x-1$. Il reste à réduire $1-\dfrac{e^x-1}{e^x-x}$ au même dénominateur.
+          On dérive $f(x)=x+1-\ln(e^x-x)$ : le terme $\ln(e^x-x)$ est une composée, on applique $(\ln u)'=\dfrac{u'}{u}$ (chapitre 4) avec $u(x)=e^x-x$, $u'(x)=e^x-1$. Il reste à réduire $1-\dfrac{e^x-1}{e^x-x}$ au même dénominateur.
         steps:
           - math: 'u(x)=e^x-x,\ u''(x)=e^x-1 \implies \big(\ln(e^x-x)\big)'' = \dfrac{e^x-1}{e^x-x} \quad (\text{regle } (\ln u)''=u''/u, \text{ R3})'
             note: "On derive l'interieur du ln."
@@ -1295,12 +1295,12 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que : $e^{\alpha} - e^{\beta} = \alpha - \beta$.
         reasoning: |-
-          On réécrit d'abord l'équation $f(x)=x$ sous une forme plus maniable, avec la méthode du R6 : isoler le $\ln$ puis utiliser l'injectivité de $\ln$. $f(x)=x \iff \ln(e^x-x)=1$. Or $1=\ln(e)$ (définition de $e$, R5), donc par injectivité de $\ln$ (R1, stricte croissance) : $e^x-x=e$. En appliquant cette équivalence aux deux solutions $\alpha$ et $\beta$ de la question précédente, on obtient deux égalités qu'il suffit de soustraire.
+          On réécrit d'abord l'équation $f(x)=x$ sous une forme plus maniable, avec la méthode du chapitre 7 : isoler le $\ln$ puis utiliser l'injectivité de $\ln$. $f(x)=x \iff \ln(e^x-x)=1$. Or $1=\ln(e)$ (définition de $e$, chapitre 6), donc par injectivité de $\ln$ (chapitre 2, stricte croissance) : $e^x-x=e$. En appliquant cette équivalence aux deux solutions $\alpha$ et $\beta$ de la question précédente, on obtient deux égalités qu'il suffit de soustraire.
         steps:
           - math: 'f(x)=x \iff x+1-\ln(e^x-x)=x \iff \ln(e^x-x)=1'
             note: "On isole le terme en ln."
           - math: '\ln(e^x-x) = 1 = \ln(e) \iff e^x-x=e \quad (\text{injectivite de ln, R1/R6}; \ \ln(e)=1 \text{ par definition, R5})'
-            note: "Equation resolue par injectivite, comme au R6."
+            note: "Equation resolue par injectivite, comme au chapitre 7."
           - math: 'f(\alpha)=\alpha,\ f(\beta)=\beta \implies e^{\alpha}-\alpha = e \quad \text{et} \quad e^{\beta}-\beta = e'
             note: "Alpha et beta sont les deux solutions donnees par la question precedente."
           - math: '\big(e^{\alpha}-\alpha\big)-\big(e^{\beta}-\beta\big) = 0 \implies e^{\alpha}-e^{\beta} = \alpha-\beta'
@@ -1452,7 +1452,7 @@ entries:
 
           **La vérification de l'identité, de droite à gauche.** On part du membre de droite, parce que c'est le plus compliqué et que le simplifier est plus sûr que de compliquer le membre de gauche. Posons le calcul en deux temps.
 
-          D'abord, la propriété du logarithme d'une puissance (rung 2) :
+          D'abord, la propriété du logarithme d'une puissance (chapitre 3) :
 
           $$\ln\!\left(x^{\frac{1}{2n}}\right) = \frac{1}{2n}\,\ln x$$
 
@@ -2822,7 +2822,7 @@ entries:
 
           $$g(x) = \frac{\ln(1+x)}{x} = \frac{\ln t}{t-1} = \frac{\ln t}{t}\cdot\frac{t}{t-1}$$
 
-          Le premier facteur, $\dfrac{\ln t}{t}$, tend vers $0$ : c'est **la** limite de référence du chapitre (R4 de cette leçon), celle qui dit que $\ln$ grossit indéfiniment mais infiniment plus lentement que $t$. Le second facteur, $\dfrac{t}{t-1}$, tend vers $1$. Le produit tend donc vers $0 \times 1 = 0$ :
+          Le premier facteur, $\dfrac{\ln t}{t}$, tend vers $0$ : c'est **la** limite de référence du chapitre (chapitre 5 de cette leçon), celle qui dit que $\ln$ grossit indéfiniment mais infiniment plus lentement que $t$. Le second facteur, $\dfrac{t}{t-1}$, tend vers $1$. Le produit tend donc vers $0 \times 1 = 0$ :
 
           $$\lim_{x\to+\infty} g(x) = 0$$
 
@@ -2839,7 +2839,7 @@ entries:
           - math: 'g(x) = \frac{\ln(1+x)}{x} = \frac{\ln t}{t}\cdot\frac{t}{t-1} \qquad (t = 1+x,\ t\to+\infty)'
             note: "Changement de variable t = 1+x pour retomber sur la limite de reference ln(t)/t."
           - math: '\lim_{t\to+\infty}\frac{\ln t}{t} = 0 \ (\text{R4 de cette lecon}), \qquad \lim_{t\to+\infty}\frac{t}{t-1}=1 \ \Longrightarrow\ \lim_{x\to+\infty} g(x) = 0'
-            note: "Limite de reference du chapitre, pas un emprunt : R4 de fonction-logarithme."
+            note: "Limite de reference du chapitre, pas un emprunt : Le chapitre 5 de fonction-logarithme."
           - math: '\lim_{x\to+\infty} e^{-x} = 0 \quad (\text{fonction exponentielle})'
             note: "e puissance moins x est l'inverse de e puissance x, qui tend vers plus l'infini."
           - math: '\lim_{x\to+\infty} f(x) = \lim_{x\to+\infty} g(x)\,e^{-x} = 0\times 0 = 0 \quad (\text{aucune indetermination})'
@@ -3189,7 +3189,7 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** Note $F(x) = \dfrac13 f(x)$. Remarque d'abord un fait décisif : $\alpha$ vérifie $f(\alpha)=3\alpha$ (question 1), c'est-à-dire $F(\alpha) = \dfrac13 f(\alpha) = \alpha$ — **$\alpha$ est le point fixe de $F$**, exactement le nombre que la suite $u_{n+1}=F(u_n)$ cherche à atteindre. La question demande de majorer l'écart $|u_{n+1}-\alpha| = |F(u_n)-F(\alpha)|$ : c'est une comparaison de $F$ entre deux points, et l'outil pour cela — hors du corps de cette leçon — est le **théorème des accroissements finis**.
 
-          **Le théorème des accroissements finis (TAF), énoncé ici car il n'appartient pas au socle R0–R6 de cette leçon (domaine « dérivabilité et étude de fonctions »).** Si $h$ est continue sur un intervalle fermé $[p,q]$ et dérivable sur l'intervalle ouvert $]p,q[$, alors il existe $c \in\, ]p,q[$ tel que $h(q)-h(p) = h'(c)(q-p)$.
+          **Le théorème des accroissements finis (TAF), énoncé ici car il n'appartient pas au socle des chapitres 1 à 7 de cette leçon (domaine « dérivabilité et étude de fonctions »).** Si $h$ est continue sur un intervalle fermé $[p,q]$ et dérivable sur l'intervalle ouvert $]p,q[$, alors il existe $c \in\, ]p,q[$ tel que $h(q)-h(p) = h'(c)(q-p)$.
 
           **Les hypothèses, vérifiées pour $F=\frac13 f$.** $F$ est continue sur $[0,+\infty[$ (car $f$ l'est, questions 2-a et 3) et dérivable sur $]0,+\infty[$ avec $F'(x)=\frac13 f'(x)$ (car $f$ l'est, question 3). Les deux points $u_n \ge 0$ (question 2-a) et $\alpha>0$ (question 1) sont dans $[0,+\infty[$ ; l'intervalle ouvert entre eux — qu'il s'agisse de $]u_n,\alpha[$ ou $]\alpha,u_n[$ selon leur ordre — est inclus dans $]0,+\infty[$ où $F$ est dérivable, sauf si $u_n=0$, auquel cas l'intervalle ouvert $]0,\alpha[$ reste inclus dans le domaine de dérivabilité : le TAF s'applique dans tous les cas.
 
@@ -3382,7 +3382,7 @@ entries:
 
       *Le fil de l'exercice.* Après continuité et une première limite (questions 1-2), l'exercice construit un encadrement délicat par le théorème des accroissements finis (question 3), qui sert ensuite à établir la dérivabilité à droite en $1$ (question 4). La question 5 retrouve le signe de $f'$ par un détour inattendu — deux intégrales, $I(x)$ et $J(x)$ — plutôt que par un calcul direct de dérivée seule. Les questions 6 et 7 en tirent le tableau de variations, la courbe et l'existence d'un unique point fixe $a$ dans $]1,2[$ de $x\mapsto1+f(x)$ — que la question 8 approche par une suite itérée, avec une vitesse de convergence géométrique explicite.
 
-      *Aucune figure n'est imprimée : la question 6-b demande au candidat de construire la courbe lui-même. La carte des domaines : cette leçon (fonction-logarithme) porte l'ossature — le taux d'accroissement de $\ln$ en $1$ (R3), la limite de référence $\ln x/x\to0$ (R4) — mais les questions 1, 2 et 3-c empruntent aux limites et à la continuité, la question 3-b au théorème des accroissements finis (dérivabilité et étude de fonctions, spécifique SM, énoncé et appliqué au point d'usage, jamais supposé acquis), les questions 4, 5-c/5-d, 6 et 7 à la dérivabilité et à l'étude de fonctions, la question 5 dans son entier au calcul intégral, et la question 8 aux suites numériques — avec, pour la question 8-a, un second usage du même théorème des accroissements finis qu'à la question 3-b.*
+      *Aucune figure n'est imprimée : la question 6-b demande au candidat de construire la courbe lui-même. La carte des domaines : cette leçon (fonction-logarithme) porte l'ossature — le taux d'accroissement de $\ln$ en $1$ (chapitre 4), la limite de référence $\ln x/x\to0$ (chapitre 5) — mais les questions 1, 2 et 3-c empruntent aux limites et à la continuité, la question 3-b au théorème des accroissements finis (dérivabilité et étude de fonctions, spécifique SM, énoncé et appliqué au point d'usage, jamais supposé acquis), les questions 4, 5-c/5-d, 6 et 7 à la dérivabilité et à l'étude de fonctions, la question 5 dans son entier au calcul intégral, et la question 8 aux suites numériques — avec, pour la question 8-a, un second usage du même théorème des accroissements finis qu'à la question 3-b.*
     questions:
       - id: q1
         part: "1. Continuite a droite en 1"
@@ -3395,7 +3395,7 @@ entries:
 
           $$f(x) = \frac{\ln x}{(x-1)(x+1)} = \frac{\ln x - \ln 1}{x-1} \times \frac{1}{x+1}$$
 
-          **Le premier facteur : un taux d'accroissement de $\ln$.** $\dfrac{\ln x-\ln 1}{x-1}$ est exactement le taux d'accroissement de $\ln$ entre $1$ et $x$. Comme $\ln$ est dérivable en $1$ (R3 de cette leçon), avec $\ln'(1)=\dfrac11=1$, ce taux tend vers $\ln'(1)=1$ quand $x\to 1$.
+          **Le premier facteur : un taux d'accroissement de $\ln$.** $\dfrac{\ln x-\ln 1}{x-1}$ est exactement le taux d'accroissement de $\ln$ entre $1$ et $x$. Comme $\ln$ est dérivable en $1$ (chapitre 4 de cette leçon), avec $\ln'(1)=\dfrac11=1$, ce taux tend vers $\ln'(1)=1$ quand $x\to 1$.
 
           **Le second facteur, immédiat.** $\dfrac{1}{x+1} \to \dfrac{1}{2}$ quand $x\to 1$.
 
@@ -3405,7 +3405,7 @@ entries:
 
           $f$ est donc continue à droite en $1$.
 
-          **Le piège nommé de cette question.** Essayer une factorisation ou un développement limité de $\ln x$ au voisinage de $1$, hors programme. Le taux d'accroissement de $\ln$ en $1$ est exactement l'outil du cours (R3, définition de la dérivée) — inutile de chercher plus loin.
+          **Le piège nommé de cette question.** Essayer une factorisation ou un développement limité de $\ln x$ au voisinage de $1$, hors programme. Le taux d'accroissement de $\ln$ en $1$ est exactement l'outil du cours (chapitre 4, définition de la dérivée) — inutile de chercher plus loin.
         steps:
           - math: 'f(x) = \dfrac{\ln x}{(x-1)(x+1)} = \dfrac{\ln x - \ln 1}{x-1} \times \dfrac{1}{x+1}'
             note: "Factorisation du denominateur, pour faire apparaitre un taux d'accroissement."
@@ -3418,13 +3418,13 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} f(x)$ puis interpréter graphiquement le résultat obtenu.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** $f(x)=\dfrac{\ln x}{x^2-1}$ : le numérateur $\ln x \to +\infty$ et le dénominateur $x^2-1\to+\infty$ également — forme $\dfrac{\infty}{\infty}$. Le réflexe est de faire apparaître la limite de référence $\dfrac{\ln x}{x}\to 0$ (R4), en factorisant un $x$ au dénominateur.
+          **Ce qu'on cherche et pourquoi ce geste.** $f(x)=\dfrac{\ln x}{x^2-1}$ : le numérateur $\ln x \to +\infty$ et le dénominateur $x^2-1\to+\infty$ également — forme $\dfrac{\infty}{\infty}$. Le réflexe est de faire apparaître la limite de référence $\dfrac{\ln x}{x}\to 0$ (chapitre 5), en factorisant un $x$ au dénominateur.
 
           **La réécriture.**
 
           $$f(x) = \frac{\ln x}{x^2-1} = \frac{\ln x}{x} \times \frac{x}{x^2-1} = \frac{\ln x}{x} \times \frac{1}{x - \frac1x}$$
 
-          **Les deux facteurs séparément.** $\dfrac{\ln x}{x} \to 0$ quand $x\to+\infty$ (R4, limite de référence). Et $x-\dfrac1x \to +\infty$, donc $\dfrac{1}{x-\frac1x} \to 0$.
+          **Les deux facteurs séparément.** $\dfrac{\ln x}{x} \to 0$ quand $x\to+\infty$ (chapitre 5, limite de référence). Et $x-\dfrac1x \to +\infty$, donc $\dfrac{1}{x-\frac1x} \to 0$.
 
           **Le produit.** Deux facteurs qui tendent chacun vers $0$ : pas d'indétermination, le produit tend vers $0$.
 
@@ -3432,7 +3432,7 @@ entries:
 
           **L'interprétation graphique.** $(C)$ admet la droite $y=0$ — l'axe des abscisses — comme asymptote horizontale au voisinage de $+\infty$.
 
-          **Le piège nommé de cette question.** Écrire $\dfrac{\ln x}{x^2-1} \sim \dfrac{\ln x}{x^2}$ sans justifier l'équivalence, ou invoquer directement « croissances comparées » sans jamais faire apparaître $\dfrac{\ln x}{x}$ — la forme R4 exacte du cours. Le détour par $\dfrac{\ln x}{x}\times\dfrac{1}{x-\frac1x}$ relie proprement cette limite à la limite de référence, sans admettre une extension non démontrée.
+          **Le piège nommé de cette question.** Écrire $\dfrac{\ln x}{x^2-1} \sim \dfrac{\ln x}{x^2}$ sans justifier l'équivalence, ou invoquer directement « croissances comparées » sans jamais faire apparaître $\dfrac{\ln x}{x}$ — la forme du chapitre 5 exacte du cours. Le détour par $\dfrac{\ln x}{x}\times\dfrac{1}{x-\frac1x}$ relie proprement cette limite à la limite de référence, sans admettre une extension non démontrée.
         steps:
           - math: 'f(x) = \dfrac{\ln x}{x^2-1} = \dfrac{\ln x}{x} \times \dfrac{1}{x-\frac1x}'
             note: "On fait apparaitre la limite de reference ln(x)/x en factorisant x au denominateur."
@@ -3471,7 +3471,7 @@ entries:
 
           *(On pourra utiliser le théorème des accroissements finis sur l'intervalle $[0\,;t]$)*
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé lui-même indique la voie : le théorème des accroissements finis (TAF) sur $[0,t]$. Ce théorème n'appartient pas au socle R0–R6 de cette leçon (domaine « dérivabilité et étude de fonctions », spécifique au programme SM) : il faut l'énoncer, vérifier ses hypothèses, puis l'appliquer — jamais le supposer acquis.
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé lui-même indique la voie : le théorème des accroissements finis (TAF) sur $[0,t]$. Ce théorème n'appartient pas au socle des chapitres 1 à 7 de cette leçon (domaine « dérivabilité et étude de fonctions », spécifique au programme SM) : il faut l'énoncer, vérifier ses hypothèses, puis l'appliquer — jamais le supposer acquis.
 
           **Le théorème des accroissements finis (TAF), énoncé ici.** Si $h$ est continue sur un intervalle fermé $[p,q]$ et dérivable sur l'intervalle ouvert $]p,q[$, alors il existe $c\in\,]p,q[$ tel que $h(q)-h(p)=h'(c)(q-p)$.
 
@@ -3625,7 +3625,7 @@ entries:
 
           Montrer que : $\forall x \in [1, +\infty[$, $\ 0 \le I(x) \le J(x)$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** $I$ et $J$ sont deux intégrales entre les mêmes bornes $1$ et $x\ge1$ : les comparer revient à comparer leurs intégrandes sur $[1,x]$, puis à intégrer l'inégalité (domaine « calcul intégral », R4 de ce chapitre — positivité et comparaison — hors socle de cette leçon).
+          **Ce qu'on cherche et pourquoi ce geste.** $I$ et $J$ sont deux intégrales entre les mêmes bornes $1$ et $x\ge1$ : les comparer revient à comparer leurs intégrandes sur $[1,x]$, puis à intégrer l'inégalité (domaine « calcul intégral », chapitre 5 de ce chapitre — positivité et comparaison — hors socle de cette leçon).
 
           **Le cas $x=1$.** Les deux intégrales sont nulles (bornes égales) : $I(1)=J(1)=0$, l'inégalité $0\le I(1)\le J(1)$ est une égalité.
 
@@ -3633,7 +3633,7 @@ entries:
 
           $$0 \le \frac{t^2-1}{t^3} \le \frac{t^2-1}{t^2}$$
 
-          **L'intégration de cet encadrement sur $[1,x]$.** Par positivité et comparaison de l'intégrale (R4, calcul intégral — hors socle de cette leçon), intégrer une inégalité entre fonctions continues sur $[1,x]$ (avec $1\le x$) conserve son sens :
+          **L'intégration de cet encadrement sur $[1,x]$.** Par positivité et comparaison de l'intégrale (chapitre 5, calcul intégral — hors socle de cette leçon), intégrer une inégalité entre fonctions continues sur $[1,x]$ (avec $1\le x$) conserve son sens :
 
           $$\int_1^x 0\,dt \ \le\ \int_1^x \frac{t^2-1}{t^3}\,dt \ \le\ \int_1^x \frac{t^2-1}{t^2}\,dt$$
 
@@ -3653,7 +3653,7 @@ entries:
         stem: |-
           **5- b)** (0,5 pt) Montrer que pour tout $x \in [1, +\infty[$, $\ I(x) = \ln(x) - \dfrac{x^2-1}{2x^2}$ et $J(x) = \dfrac{(x-1)^2}{x}$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Deux calculs de primitives directs : décomposer chaque intégrande en une somme de termes simples, primitiver terme à terme (linéarité, R2 de calcul intégral), puis évaluer entre $1$ et $x$.
+          **Ce qu'on cherche et pourquoi ce geste.** Deux calculs de primitives directs : décomposer chaque intégrande en une somme de termes simples, primitiver terme à terme (linéarité, chapitre 3 de calcul intégral), puis évaluer entre $1$ et $x$.
 
           **Le calcul de $I(x)$.** Sépare l'intégrande :
 

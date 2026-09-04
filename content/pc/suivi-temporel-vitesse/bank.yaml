@@ -159,7 +159,7 @@ entries:
         stem: |-
           **(0,75 pt)** Dresser le tableau d'avancement de cette réaction et déterminer la valeur de l'avancement final $x_f$ sachant que cette réaction est totale.
         reasoning: |-
-          On dresse le tableau d'avancement comme au rung 2 : une ligne pour chaque espèce, chacune évoluant selon son coefficient stoechiométrique (ici tous égaux à $1$). Pour $x_f$, on cherche le réactif limitant — celui qui s'annule en premier. L'énoncé précise que l'éthanoate d'éthyle est introduit **en excès** : c'est donc $\text{HO}^-$ qui limite la réaction. La réaction étant totale, $\text{HO}^-$ est intégralement consommé quand l'avancement atteint sa valeur finale, qui vaut alors exactement la quantité initiale d'hydroxyde — pas besoin de comparer deux quotients, l'excès de l'un des réactifs est donné directement par l'énoncé.
+          On dresse le tableau d'avancement comme au chapitre 3 : une ligne pour chaque espèce, chacune évoluant selon son coefficient stoechiométrique (ici tous égaux à $1$). Pour $x_f$, on cherche le réactif limitant — celui qui s'annule en premier. L'énoncé précise que l'éthanoate d'éthyle est introduit **en excès** : c'est donc $\text{HO}^-$ qui limite la réaction. La réaction étant totale, $\text{HO}^-$ est intégralement consommé quand l'avancement atteint sa valeur finale, qui vaut alors exactement la quantité initiale d'hydroxyde — pas besoin de comparer deux quotients, l'excès de l'un des réactifs est donné directement par l'énoncé.
         steps:
           - math: 'n(\text{HO}^-) = n_0(\text{HO}^-) - x = 10^{-3} - x \quad (\text{mol})'
             note: "Ion hydroxyde consomme, coefficient 1 ; l'ethanoate d'ethyle, en exces, n'est pas limitant."
@@ -172,15 +172,15 @@ entries:
         stem: |-
           **(0,25 pt)** Définir le temps de demi-réaction $t_{1/2}$.
         reasoning: |-
-          C'est la définition du rung 4 : $t_{1/2}$ est l'instant où l'avancement atteint la moitié de sa valeur finale, $x(t_{1/2}) = \dfrac{x_f}{2}$. La définition porte sur la courbe d'avancement $x(t)$ elle-même, pas sur une fraction de la durée totale d'observation — et comme $x(t)$ ne fait que croître, de $0$ à $x_f$, sans jamais redescendre, elle traverse cette valeur une fois et une seule : $t_{1/2}$ est donc parfaitement défini.
+          C'est la définition du chapitre 5 : $t_{1/2}$ est l'instant où l'avancement atteint la moitié de sa valeur finale, $x(t_{1/2}) = \dfrac{x_f}{2}$. La définition porte sur la courbe d'avancement $x(t)$ elle-même, pas sur une fraction de la durée totale d'observation — et comme $x(t)$ ne fait que croître, de $0$ à $x_f$, sans jamais redescendre, elle traverse cette valeur une fois et une seule : $t_{1/2}$ est donc parfaitement défini.
       - id: q3
         stem: |-
           **(0,5 pt)** À l'aide de l'expression $\sigma = f(x)$ et de la courbe de la figure 1, déterminer la valeur de $t_{1/2}$.
         reasoning: |-
-          Piège à éviter : on ne lit pas $t_{1/2}$ directement sur l'axe des temps, parce que la courbe fournie donne $\sigma(t)$, pas $x(t)$. Il faut donc traduire la condition du rung 4, $x = x_f/2$, en une condition sur $\sigma$ — la seule grandeur portée en ordonnée sur cette figure — grâce à la relation $\sigma = f(x)$ donnée dans l'énoncé. Une fois cette valeur de $\sigma$ calculée, on lit sur la courbe l'abscisse du point où elle est atteinte.
+          Piège à éviter : on ne lit pas $t_{1/2}$ directement sur l'axe des temps, parce que la courbe fournie donne $\sigma(t)$, pas $x(t)$. Il faut donc traduire la condition du chapitre 5, $x = x_f/2$, en une condition sur $\sigma$ — la seule grandeur portée en ordonnée sur cette figure — grâce à la relation $\sigma = f(x)$ donnée dans l'énoncé. Une fois cette valeur de $\sigma$ calculée, on lit sur la courbe l'abscisse du point où elle est atteinte.
         steps:
           - math: 'x = \dfrac{x_f}{2} = \dfrac{10^{-3}}{2} = 0{,}5\times10^{-3}\ \text{mol}'
-            note: "Moitie de l'avancement final trouve en q1 (definition du rung 4)."
+            note: "Moitie de l'avancement final trouve en q1 (definition du chapitre 5)."
           - math: '\sigma\!\left(\tfrac{x_f}{2}\right) = 0{,}25 - 160\times 0{,}5\times10^{-3} = 0{,}25 - 0{,}08'
             note: "On convertit la condition sur x en condition sur sigma via la relation donnee."
           - math: '\sigma\!\left(\tfrac{x_f}{2}\right) = 0{,}17\ \text{S.m}^{-1}'
@@ -191,10 +191,10 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que la vitesse volumique de la réaction à un instant $t$ s'écrit sous la forme : $v = -\dfrac{1}{160\,V_0} \cdot \dfrac{d\sigma}{dt}$.
         reasoning: |-
-          On part de la définition générale du rung 2, $v = \dfrac{1}{V_0}\dfrac{dx}{dt}$ — mais ici ce n'est pas $x$ qu'on mesure en continu, c'est $\sigma$. Le principe reste celui du rung 1 (une grandeur substitut, liée de façon connue à $x$) : il suffit d'exprimer $x$ en fonction de $\sigma$ en inversant la relation donnée, puis de dériver par rapport au temps. L'inversion fait apparaître un signe moins, qui n'a rien d'anormal : $\sigma$ décroît précisément parce que $x$ croît.
+          On part de la définition générale du chapitre 3, $v = \dfrac{1}{V_0}\dfrac{dx}{dt}$ — mais ici ce n'est pas $x$ qu'on mesure en continu, c'est $\sigma$. Le principe reste celui du chapitre 2 (une grandeur substitut, liée de façon connue à $x$) : il suffit d'exprimer $x$ en fonction de $\sigma$ en inversant la relation donnée, puis de dériver par rapport au temps. L'inversion fait apparaître un signe moins, qui n'a rien d'anormal : $\sigma$ décroît précisément parce que $x$ croît.
         steps:
           - math: 'v = \dfrac{1}{V_0}\dfrac{dx}{dt}'
-            note: "Definition de la vitesse volumique de reaction (rung 2)."
+            note: "Definition de la vitesse volumique de reaction (chapitre 3)."
           - math: '\sigma = 0{,}25 - 160\,x \implies x = \dfrac{0{,}25-\sigma}{160}'
             note: "On inverse la relation sigma = f(x) donnee dans l'enonce (0,25 est une constante)."
           - math: '\dfrac{dx}{dt} = -\dfrac{1}{160}\dfrac{d\sigma}{dt}'
@@ -205,10 +205,10 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer, en $\text{mol.m}^{-3}.\text{min}^{-1}$, la valeur $v_1$ de cette vitesse à l'instant $t_1 = 4\ \text{min}$.
         reasoning: |-
-          $\dfrac{d\sigma}{dt}$ en $t_1$, c'est la pente de la tangente $(T)$ tracée en ce point (méthode du rung 3) : on lit ses coordonnées pour l'estimer. Cette pente est négative, puisque $\sigma$ décroît ; reportée dans la formule de la question précédente, le signe moins devant la compense, et $v_1$ ressort positif, comme il se doit pour une vitesse. Un seul piège reste à surveiller : l'énoncé demande $v_1$ en $\text{mol.m}^{-3}.\text{min}^{-1}$, donc $V_0$ doit être converti en $\text{m}^3$ — pas laissé en litres.
+          $\dfrac{d\sigma}{dt}$ en $t_1$, c'est la pente de la tangente $(T)$ tracée en ce point (méthode du chapitre 4) : on lit ses coordonnées pour l'estimer. Cette pente est négative, puisque $\sigma$ décroît ; reportée dans la formule de la question précédente, le signe moins devant la compense, et $v_1$ ressort positif, comme il se doit pour une vitesse. Un seul piège reste à surveiller : l'énoncé demande $v_1$ en $\text{mol.m}^{-3}.\text{min}^{-1}$, donc $V_0$ doit être converti en $\text{m}^3$ — pas laissé en litres.
         steps:
           - math: '\left.\dfrac{d\sigma}{dt}\right|_{t_1} \approx -0{,}01\ \text{S.m}^{-1}.\text{min}^{-1}'
-            note: "Pente de la tangente (T) lue au point t1 = 4 min sur la figure 1 (rung 3), pente negative."
+            note: "Pente de la tangente (T) lue au point t1 = 4 min sur la figure 1 (chapitre 4), pente negative."
           - math: 'V_0 = 100\ \text{mL} = 100\times10^{-6}\ \text{m}^3 = 10^{-4}\ \text{m}^3'
             note: "Conversion en m3, imposee par l'unite demandee (mol.m-3.min-1)."
           - math: 'v_1 = -\dfrac{1}{160\,V_0}\left.\dfrac{d\sigma}{dt}\right|_{t_1} = -\dfrac{1}{160\times10^{-4}}\times(-0{,}01)'
@@ -275,20 +275,20 @@ entries:
         reasoning: |-
           L'énoncé ne demande pas de justification, mais le raisonnement, lui, ne se saute pas.
 
-          **a. Vrai.** La concentration initiale des réactifs est bien l'un des deux facteurs cinétiques du chapitre précédent, avec la température (rappelés au rung 4) : augmenter la concentration initiale augmente la fréquence des chocs entre entités réactives, donc accélère la réaction dès l'instant $t=0$.
+          **a. Vrai.** La concentration initiale des réactifs est bien l'un des deux facteurs cinétiques du chapitre précédent, avec la température (rappelés au chapitre 5) : augmenter la concentration initiale augmente la fréquence des chocs entre entités réactives, donc accélère la réaction dès l'instant $t=0$.
 
-          **b. Faux.** C'est le piège de cette série : il n'existe pas de règle universelle qui fixe la fin d'une transformation à un multiple précis de $t_{1/2}$. Le rung 3 le rappelle explicitement : une transformation lente s'approche de son état final progressivement, de plus en plus lentement, sans qu'on puisse désigner un instant exact où elle « s'arrête » tout à fait — la courbe $x(t)$ tend vers $x_{max}$ sans jamais l'atteindre exactement. Affirmer que c'est *toujours* terminé à $2\,t_{1/2}$ généralise abusivement un ordre de grandeur en une règle absolue.
+          **b. Faux.** C'est le piège de cette série : il n'existe pas de règle universelle qui fixe la fin d'une transformation à un multiple précis de $t_{1/2}$. Le chapitre 4 le rappelle explicitement : une transformation lente s'approche de son état final progressivement, de plus en plus lentement, sans qu'on puisse désigner un instant exact où elle « s'arrête » tout à fait — la courbe $x(t)$ tend vers $x_{max}$ sans jamais l'atteindre exactement. Affirmer que c'est *toujours* terminé à $2\,t_{1/2}$ généralise abusivement un ordre de grandeur en une règle absolue.
 
-          **c. Vrai.** C'est exactement le mécanisme du rung 3 : la vitesse d'une réaction dépend directement de la fréquence des chocs efficaces entre entités réactives — plus ils sont nombreux et efficaces, plus la réaction avance vite.
+          **c. Vrai.** C'est exactement le mécanisme du chapitre 4 : la vitesse d'une réaction dépend directement de la fréquence des chocs efficaces entre entités réactives — plus ils sont nombreux et efficaces, plus la réaction avance vite.
       - id: q2
         part: "Partie 1 — Lecture du temps de demi-réaction"
         stem: |-
           **(0,5 pt)** Déterminer graphiquement $t_{1/2}$, le temps de demi-réaction.
         reasoning: |-
-          On applique la méthode du rung 4 : on repère d'abord $x_{max}$, le palier vers lequel tend la courbe, on calcule sa moitié, puis on lit sur la courbe l'abscisse du point où cette moitié est atteinte.
+          On applique la méthode du chapitre 5 : on repère d'abord $x_{max}$, le palier vers lequel tend la courbe, on calcule sa moitié, puis on lit sur la courbe l'abscisse du point où cette moitié est atteinte.
         steps:
           - math: 'x_{max} \approx 0{,}5\ \text{mmol}'
-            note: "Palier de la courbe, lu sur la figure 1 (methode du rung 4)."
+            note: "Palier de la courbe, lu sur la figure 1 (methode du chapitre 5)."
           - math: '\dfrac{x_{max}}{2} \approx 0{,}25\ \text{mmol}'
             note: "Moitie de l'avancement maximal."
           - math: '\boxed{t_{1/2} \approx 24\ \text{h}}'
@@ -298,14 +298,14 @@ entries:
         stem: |-
           **(1 pt)** Déterminer, en unité $\text{mmol.L}^{-1}.\text{h}^{-1}$, la vitesse volumique de la réaction à l'instant $t_1$.
         reasoning: |-
-          Comme au rung 2, $v(t_1) = \dfrac{1}{V}\left.\dfrac{dx}{dt}\right|_{t_1}$, et $\left.\dfrac{dx}{dt}\right|_{t_1}$ est la pente de la tangente $(T)$ tracée en ce point (rung 3). On lit deux points sur cette droite plutôt que d'estimer la pente à l'oeil : son ordonnée à l'origine ($t=0$) et le point de tangence marqué par la croix ($t_1=60\ \text{h}$), tous deux transcrits dans l'énoncé. Ici, contrairement au sujet de conductimétrie, $x$ est déjà en mmol et $V$ déjà en litres — l'unité demandée ne réclame aucune conversion supplémentaire.
+          Comme au chapitre 3, $v(t_1) = \dfrac{1}{V}\left.\dfrac{dx}{dt}\right|_{t_1}$, et $\left.\dfrac{dx}{dt}\right|_{t_1}$ est la pente de la tangente $(T)$ tracée en ce point (chapitre 4). On lit deux points sur cette droite plutôt que d'estimer la pente à l'oeil : son ordonnée à l'origine ($t=0$) et le point de tangence marqué par la croix ($t_1=60\ \text{h}$), tous deux transcrits dans l'énoncé. Ici, contrairement au sujet de conductimétrie, $x$ est déjà en mmol et $V$ déjà en litres — l'unité demandée ne réclame aucune conversion supplémentaire.
         steps:
           - math: '\text{pente}(T) \approx \dfrac{0{,}41 - 0{,}26}{60 - 0} = \dfrac{0{,}15}{60}'
             note: "Deux points de (T) : ordonnee a l'origine (t=0, x=0,26 mmol) et point de tangence (t1=60 h, x=0,41 mmol)."
           - math: '\text{pente}(T) \approx 2{,}5\times10^{-3}\ \text{mmol.h}^{-1}'
-            note: "Pente de la tangente, estimee par lecture graphique (rung 3)."
+            note: "Pente de la tangente, estimee par lecture graphique (chapitre 4)."
           - math: 'v(t_1) = \dfrac{1}{V}\times\text{pente}(T) = \dfrac{2{,}5\times10^{-3}}{0{,}200}'
-            note: "Definition de la vitesse volumique (rung 2) ; V = 0,200 L, deja dans l'unite demandee."
+            note: "Definition de la vitesse volumique (chapitre 3) ; V = 0,200 L, deja dans l'unite demandee."
           - math: '\boxed{v(t_1) \approx 1{,}3\times10^{-2}\ \text{mmol.L}^{-1}.\text{h}^{-1}}'
             note: "Vitesse volumique de la reaction a t1 = 60 h."
 
@@ -426,9 +426,9 @@ entries:
         stem: |-
           **3-1. (0,5 pt)** Écrire, en utilisant les formules semi-développées, l'équation de la réaction associée à l'hydrolyse basique de l'éthanoate d'éthyle.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** L'hydrolyse d'un ester est la réaction **inverse** de l'estérification (rung R2 de la notion **Estérification et hydrolyse**) : $R-COO-R' + H_2O \rightleftharpoons R-COOH + R'-OH$. Ici, la réaction se produit en présence d'ions hydroxyde $HO^-$ — c'est une **hydrolyse basique**, une variante que ni cette leçon-ci (« Suivi temporel d'une transformation ») ni « Estérification et hydrolyse » ne construisent nommément (SCOPE NOTE, voir le commentaire en tête de cette entrée). On la reconstruit à partir de ce que ces deux leçons établissent séparément.
+          **Ce qu'on cherche et pourquoi ce geste.** L'hydrolyse d'un ester est la réaction **inverse** de l'estérification (chapitre 3 de la notion **Estérification et hydrolyse**) : $R-COO-R' + H_2O \rightleftharpoons R-COOH + R'-OH$. Ici, la réaction se produit en présence d'ions hydroxyde $HO^-$ — c'est une **hydrolyse basique**, une variante que ni cette leçon-ci (« Suivi temporel d'une transformation ») ni « Estérification et hydrolyse » ne construisent nommément (SCOPE NOTE, voir le commentaire en tête de cette entrée). On la reconstruit à partir de ce que ces deux leçons établissent séparément.
 
-          L'éthanoate d'éthyle, $CH_3-COO-CH_2-CH_3$, est l'ester (le seul réactif portant le groupe $-COO-$ entre deux chaînes carbonées, rung R1) : son hydrolyse donnerait, en milieu neutre, l'acide éthanoïque et l'éthanol (rung R2). Mais ici, l'ion $HO^-$, base **forte**, neutralise l'acide carboxylique dès qu'il se forme — il le retire donc en permanence de l'équilibre d'hydrolyse, exactement le principe de déplacement d'équilibre par élimination d'un produit établi au rung R5 (là-bas, appliqué à retirer l'eau ou l'ester pour pousser l'**estérification** ; ici, c'est l'acide qui est retiré, ce qui pousse l'**hydrolyse**, la réaction inverse). L'équilibre est ainsi tiré jusqu'à sa fin : la réaction devient **totale**, flèche simple — cohérence avec l'énoncé, qui la donne explicitement comme telle.
+          L'éthanoate d'éthyle, $CH_3-COO-CH_2-CH_3$, est l'ester (le seul réactif portant le groupe $-COO-$ entre deux chaînes carbonées, chapitre 2) : son hydrolyse donnerait, en milieu neutre, l'acide éthanoïque et l'éthanol (chapitre 3). Mais ici, l'ion $HO^-$, base **forte**, neutralise l'acide carboxylique dès qu'il se forme — il le retire donc en permanence de l'équilibre d'hydrolyse, exactement le principe de déplacement d'équilibre par élimination d'un produit établi au chapitre 6 (là-bas, appliqué à retirer l'eau ou l'ester pour pousser l'**estérification** ; ici, c'est l'acide qui est retiré, ce qui pousse l'**hydrolyse**, la réaction inverse). L'équilibre est ainsi tiré jusqu'à sa fin : la réaction devient **totale**, flèche simple — cohérence avec l'énoncé, qui la donne explicitement comme telle.
 
           $$\boxed{CH_3-COO-CH_2-CH_3 + HO^-_{(aq)} \longrightarrow CH_3-COO^-_{(aq)} + CH_3-CH_2-OH}$$
 
@@ -437,18 +437,18 @@ entries:
         stem: |-
           **3-2. (0,5 pt)** Répondre par vrai ou faux, en justifiant, à l'affirmation suivante : « La vitesse volumique $v(t)$ de cette réaction diminue au cours du temps ».
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** C'est exactement l'affirmation du rung 3 de cette leçon : $v(t)$ est maximale au tout début de la réaction et décroît continûment ensuite, en tendant vers zéro à mesure que la réaction s'achève.
+          **Ce qu'on cherche et pourquoi ce geste.** C'est exactement l'affirmation du chapitre 4 de cette leçon : $v(t)$ est maximale au tout début de la réaction et décroît continûment ensuite, en tendant vers zéro à mesure que la réaction s'achève.
 
           $$\boxed{\text{VRAI}}$$
 
-          **La justification.** La vitesse volumique dépend directement de la fréquence des chocs efficaces entre entités réactives (rung 3) : plus il y a de réactifs par unité de volume, plus ils se croisent souvent. Or les quantités de réactifs restants — l'éthanoate d'éthyle et l'ion hydroxyde — diminuent continûment à mesure que l'avancement $x$ augmente (tableau d'avancement, rung 2) : moins de réactifs, c'est moins de chocs efficaces par seconde, donc une vitesse plus faible. C'est visible directement sur la courbe $x(t)$ de la figure 2 : elle est concave, sa pente — donc $v(t)$ — diminue sans cesse depuis l'origine.
+          **La justification.** La vitesse volumique dépend directement de la fréquence des chocs efficaces entre entités réactives (chapitre 4) : plus il y a de réactifs par unité de volume, plus ils se croisent souvent. Or les quantités de réactifs restants — l'éthanoate d'éthyle et l'ion hydroxyde — diminuent continûment à mesure que l'avancement $x$ augmente (tableau d'avancement, chapitre 3) : moins de réactifs, c'est moins de chocs efficaces par seconde, donc une vitesse plus faible. C'est visible directement sur la courbe $x(t)$ de la figure 2 : elle est concave, sa pente — donc $v(t)$ — diminue sans cesse depuis l'origine.
 
           **Le piège nommé de cette question.** Ne confonds pas cette décroissance de $v(t)$ avec une réaction qui « ralentit puis s'arrête à un instant précis » : $v(t)$ tend vers $0$ mais l'avancement, lui, continue de croître (de plus en plus lentement) jusqu'à $x_{max}$ — ce sont deux affirmations différentes, et seule celle sur $v(t)$ est posée ici.
       - id: q3
         stem: |-
           **3-3. (0,5 pt)** Déterminer graphiquement $t_{1/2}$ le temps de demi-réaction.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** La méthode du rung 4 : repérer $x_{max}$, calculer sa moitié, lire sur la courbe l'abscisse où cette moitié est atteinte — $t_{1/2}$ se lit toujours à $x_f/2$, **jamais** à la moitié de la durée totale représentée sur le graphe (un piège d'autant plus tentant ici que le cadre s'arrête pile à $t=8\ \text{min}$, dont la moitié, $4\ \text{min}$, coïncide numériquement avec la bonne réponse — par coïncidence de ce cadre précis, pas par définition).
+          **Ce qu'on cherche et pourquoi ce geste.** La méthode du chapitre 5 : repérer $x_{max}$, calculer sa moitié, lire sur la courbe l'abscisse où cette moitié est atteinte — $t_{1/2}$ se lit toujours à $x_f/2$, **jamais** à la moitié de la durée totale représentée sur le graphe (un piège d'autant plus tentant ici que le cadre s'arrête pile à $t=8\ \text{min}$, dont la moitié, $4\ \text{min}$, coïncide numériquement avec la bonne réponse — par coïncidence de ce cadre précis, pas par définition).
 
           **Trouver $x_{max}$ : quel réactif est limitant ?** $n_{01}(\text{ester}) = 0{,}8\ \text{mmol}$ contre $n_0(HO^-) = 1{,}0\ \text{mmol}$ : c'est l'éthanoate d'éthyle qui est en défaut. La réaction étant totale (énoncé), l'ester limitant est intégralement consommé à l'avancement final :
 
@@ -467,7 +467,7 @@ entries:
         stem: |-
           **3-4. (0,75 pt)** Déterminer, en unité $\text{mmol.L}^{-1}.\text{min}^{-1}$, la vitesse volumique de la réaction à l'instant $t = 3\ \text{min}$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** $v(t) = \dfrac{1}{V}\dfrac{dx}{dt}$ (rung 2), et $\dfrac{dx}{dt}$ à $t=3\ \text{min}$ est la pente de la tangente $(T)$ tracée en ce point (rung 3) : on lit deux points de cette droite plutôt que d'estimer sa pente à l'œil.
+          **Ce qu'on cherche et pourquoi ce geste.** $v(t) = \dfrac{1}{V}\dfrac{dx}{dt}$ (chapitre 3), et $\dfrac{dx}{dt}$ à $t=3\ \text{min}$ est la pente de la tangente $(T)$ tracée en ce point (chapitre 4) : on lit deux points de cette droite plutôt que d'estimer sa pente à l'œil.
 
           **La pente de $(T)$, à partir des deux points donnés.** Le point de contact (croix ×) est à $(3\ \text{min}\,;\,0{,}32\ \text{mmol})$, et $(T)$ coupe l'axe des ordonnées à $(0\,;\,0{,}08\ \text{mmol})$ :
 
@@ -591,7 +591,7 @@ entries:
         stem: |-
           **(0 ,5 pt)** *(barème tel qu'imprimé — espace avant la virgule, T7.)* Soitent $n_i(H_3O^+)$ et $n_i(Zn)$ les quantités de matière initiales respectivement des ions oxonium et du Zn. Recopier, sur votre copie de rédaction, le tableau descriptif suivant et le compléter. *(« Soitent » tel qu'imprimé, pour « Soient ».)*
         reasoning: |-
-          C'est exactement la construction du rung 2 : une ligne par état d'avancement (initial, intermédiaire, maximal), chaque espèce évoluant selon son coefficient stœchiométrique dans l'équation — $1$ pour $Zn$, $Zn^{2+}$ et $H_2$ ; $2$ pour $H_3O^+$ ; $H_2O$, le solvant, reste « en excès » et n'entre pas dans le compte. On complète chaque colonne en RETRANCHANT le coefficient fois l'avancement pour un réactif, en l'AJOUTANT pour un produit — sans introduire aucune valeur numérique à ce stade : ni le réactif limitant, ni $x_{max}$, ne sont encore connus (ce sera l'objet des questions 2 et 3).
+          C'est exactement la construction du chapitre 3 : une ligne par état d'avancement (initial, intermédiaire, maximal), chaque espèce évoluant selon son coefficient stœchiométrique dans l'équation — $1$ pour $Zn$, $Zn^{2+}$ et $H_2$ ; $2$ pour $H_3O^+$ ; $H_2O$, le solvant, reste « en excès » et n'entre pas dans le compte. On complète chaque colonne en RETRANCHANT le coefficient fois l'avancement pour un réactif, en l'AJOUTANT pour un produit — sans introduire aucune valeur numérique à ce stade : ni le réactif limitant, ni $x_{max}$, ne sont encore connus (ce sera l'objet des questions 2 et 3).
 
           | État | Avancement | $n(Zn)$ | $n(H_3O^+)$ | $n(Zn^{2+})$ | $n(H_2)$ | $n(H_2O)$ |
           |---|---|---|---|---|---|---|
@@ -616,7 +616,7 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer le réactif limitant et déduire l'avancement maximal $x_{max}$ de la réaction.
         reasoning: |-
-          Le réactif limitant est celui dont le rapport quantité/coefficient stœchiométrique est le plus petit — c'est lui qui s'annule en premier dans le tableau du rung 2. On compare donc $n_i(Zn)/1$ à $n_i(H_3O^+)/2$, pas les deux quantités brutes entre elles (comparer $9{,}17\times10^{-3}$ à $0{,}03$ directement ignorerait que $H_3O^+$ est consommé DEUX FOIS plus vite que $Zn$, à cause du coefficient $2$).
+          Le réactif limitant est celui dont le rapport quantité/coefficient stœchiométrique est le plus petit — c'est lui qui s'annule en premier dans le tableau du chapitre 3. On compare donc $n_i(Zn)/1$ à $n_i(H_3O^+)/2$, pas les deux quantités brutes entre elles (comparer $9{,}17\times10^{-3}$ à $0{,}03$ directement ignorerait que $H_3O^+$ est consommé DEUX FOIS plus vite que $Zn$, à cause du coefficient $2$).
         steps:
           - math: '\frac{n_i(Zn)}{1} = 9{,}17\times10^{-3}\ \text{mol} \qquad \frac{n_i(H_3O^+)}{2} = \frac{0{,}03}{2} = 0{,}015\ \text{mol}'
             note: "On compare les quantites DIVISEES par leur coefficient stoechiometrique, pas les quantites brutes."
@@ -629,7 +629,7 @@ entries:
         stem: |-
           **(1 pt)** Par application de la loi des gaz parfaits, et à l'aide du tableau descriptif précédent, établir l'expression de l'avancement $x(t)$ de la réaction à un instant $t$ en fonction de $R$, $T$, $V$ et $\Delta P$, où $\Delta P = P - P_0$, avec $P_0$ la pression initiale mesurée à l'instant $t_0 = 0$ et $P$ la pression mesurée à l'instant $t$.
         reasoning: |-
-          Exactement le principe du rung 1 : on ne mesure jamais $x$ directement, on mesure une grandeur SUBSTITUT qui lui est reliée par une loi connue — ici, ce n'est pas une absorbance ou une conductivité, c'est une pression. Le tableau de la question 1 dit que le seul gaz produit est $H_2$, en quantité $x(t)$ à l'instant $t$ : c'est donc l'apparition de ce gaz, seule, qui fait monter la pression au-delà de sa valeur initiale $P_0$. En appliquant la loi des gaz parfaits à ce $H_2$ formé, dans le volume constant $V$ du ballon :
+          Exactement le principe du chapitre 2 : on ne mesure jamais $x$ directement, on mesure une grandeur SUBSTITUT qui lui est reliée par une loi connue — ici, ce n'est pas une absorbance ou une conductivité, c'est une pression. Le tableau de la question 1 dit que le seul gaz produit est $H_2$, en quantité $x(t)$ à l'instant $t$ : c'est donc l'apparition de ce gaz, seule, qui fait monter la pression au-delà de sa valeur initiale $P_0$. En appliquant la loi des gaz parfaits à ce $H_2$ formé, dans le volume constant $V$ du ballon :
         steps:
           - math: 'n(H_2) = x(t) \quad \text{(coefficient 1 dans le tableau, question 1)}'
             note: "Le seul gaz produit est H2, en quantite egale a l'avancement x(t)."
@@ -656,14 +656,14 @@ entries:
         reasoning: |-
           ⛔ **La garde S1 s'applique intégralement à cette question — voir la note en tête de fiche.** On ne va PAS lire un $\Delta P_{max}$ en hPa sur cette figure : son échelle imprimée est incompatible avec les données (facteur ≈ 3,24, voir `sourcing.note`), et toute valeur qu'on en tirerait serait fausse. On n'en a heureusement pas besoin.
 
-          Par définition (rung 4), $t_{1/2}$ est l'instant où $x(t_{1/2}) = x_{max}/2$. Par la relation établie à la question 5, $x(t)/x_{max} = \Delta P(t)/\Delta P_{max}$ — un rapport de deux hauteurs sur CETTE MÊME courbe, quelle que soit l'unité ou la justesse de l'étalonnage vertical. La condition sur $x$ se traduit donc en une condition purement RELATIVE sur la figure :
+          Par définition (chapitre 5), $t_{1/2}$ est l'instant où $x(t_{1/2}) = x_{max}/2$. Par la relation établie à la question 5, $x(t)/x_{max} = \Delta P(t)/\Delta P_{max}$ — un rapport de deux hauteurs sur CETTE MÊME courbe, quelle que soit l'unité ou la justesse de l'étalonnage vertical. La condition sur $x$ se traduit donc en une condition purement RELATIVE sur la figure :
 
           $$x(t_{1/2}) = \frac{x_{max}}{2} \iff \Delta P(t_{1/2}) = \frac{\Delta P_{max}}{2}$$
 
           C'est la MI-HAUTEUR DU PALIER — un point que l'on repère visuellement sans jamais lire le nombre d'hPa qu'il représente : on prend le milieu, en hauteur, entre l'origine et le plateau, et on lit l'abscisse du point de la courbe qui l'atteint. Cette lecture ne dépend que de la FORME de la courbe et de l'axe des temps — le seul des deux axes que le défaut S1 ne touche pas.
         steps:
           - math: 'x(t_{1/2}) = \frac{x_{max}}{2} \iff \Delta P(t_{1/2}) = \frac{\Delta P_{max}}{2} \quad \text{(question 5, rapport insensible a l echelle verticale)}'
-            note: "Condition de definition du rung 4, traduite en une lecture RELATIVE (mi-hauteur du palier), pas en une valeur absolue de DeltaP."
+            note: "Condition de definition du chapitre 5, traduite en une lecture RELATIVE (mi-hauteur du palier), pas en une valeur absolue de DeltaP."
           - math: '\boxed{t_{1/2} \approx 42\ \text{min}}'
             note: "Lecture graphique : abscisse du point de la figure 1 a mi-hauteur du plateau -- aucune valeur absolue de DeltaP utilisee (garde S1)."
 
@@ -958,7 +958,7 @@ entries:
 
           *(La droite $(T)$ représente la tangente à la courbe au point d'abscisse $t = 20\ \text{min}$.)*
         reasoning: |-
-          C'est le geste du rung 2, et il tient en deux temps qu'il ne faut pas mélanger : **une pente, puis une division par un volume**.
+          C'est le geste du chapitre 3, et il tient en deux temps qu'il ne faut pas mélanger : **une pente, puis une division par un volume**.
 
           **Temps 1 — la pente de la tangente.** $\dfrac{\mathrm{d}x}{\mathrm{d}t}$ à l'instant $t = 20\ \text{min}$ est, par définition, le **coefficient directeur de la tangente** à la courbe en ce point — et l'énoncé a fait le plus dur en la traçant : c'est la droite $(T)$. On ne dérive rien, on ne devine rien ; on prend **deux points bien séparés sur la droite $(T)$ elle-même**, jamais sur la courbe, et on fait le quotient des accroissements. Les deux bouts du segment tracé sont les points les plus sûrs, parce qu'ils sont les plus éloignés l'un de l'autre — une erreur de lecture d'un carreau y pèse le moins :
 
@@ -994,7 +994,7 @@ entries:
 
           *(Le tracé donne $0{,}0849$ mesuré au vectoriel et $0{,}0852$ au pixel : à un carreau fin près — un carreau fin vaut $0{,}001\ \text{mol}$ —, c'est $0{,}085\ \text{mol}$.)*
 
-          **$t_{1/2}$ : la définition du rung 4, appliquée à la lettre.** Le temps de demi-réaction est l'instant où **l'avancement atteint la moitié de sa valeur finale** — pas la moitié de la durée d'observation, pas la moitié du palier en temps :
+          **$t_{1/2}$ : la définition du chapitre 5, appliquée à la lettre.** Le temps de demi-réaction est l'instant où **l'avancement atteint la moitié de sa valeur finale** — pas la moitié de la durée d'observation, pas la moitié du palier en temps :
 
           $$x(t_{1/2}) = \frac{x_f}{2} = \frac{0{,}085}{2} = 0{,}0425\ \text{mol}$$
 
@@ -1011,7 +1011,7 @@ entries:
           - math: '\boxed{x_f \approx 0{,}085\ \text{mol}}'
             note: "Ordonnee du palier : au-dela, l'avancement ne bouge plus. Mesure 0,0849 au vectoriel et 0,0852 au pixel."
           - math: 'x(t_{1/2}) = \frac{x_f}{2} = \frac{0{,}085}{2} = 0{,}0425\ \text{mol}'
-            note: "Definition du rung 4 : la MOITIE DE L'AVANCEMENT FINAL, pas la moitie de la duree d'observation."
+            note: "Definition du chapitre 5 : la MOITIE DE L'AVANCEMENT FINAL, pas la moitie de la duree d'observation."
           - math: '\boxed{t_{1/2} \approx 28\ \text{min}}'
             note: "Abscisse du point de la courbe d'ordonnee 0,0425 mol. Toute lecture entre 28 et 29 min est recevable : deux chaines de mesure independantes donnent 28,1 et 29,1 min."
       - id: q5
@@ -1020,7 +1020,7 @@ entries:
         reasoning: |-
           C'est la question la plus lourde du bloc — $1{,}5$ point, plus du tiers de l'exercice — et elle se fait en **trois temps**, dont le premier est le seul qui demande un calcul.
 
-          **Temps 1 — les quantités initiales, à partir des volumes.** Ni l'ester ni l'eau ne sont donnés en moles : ils sont donnés en **volumes**, avec leur masse volumique. Il faut donc passer par la masse (rung 2) :
+          **Temps 1 — les quantités initiales, à partir des volumes.** Ni l'ester ni l'eau ne sont donnés en moles : ils sont donnés en **volumes**, avec leur masse volumique. Il faut donc passer par la masse (chapitre 3) :
 
           $$n = \frac{m}{M} = \frac{\rho\,V}{M}$$
 

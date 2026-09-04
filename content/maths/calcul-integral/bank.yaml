@@ -281,12 +281,12 @@ entries:
 
           « Vérifier qu'une fonction proposée est une primitive » ne demande jamais d'intégrer : ça demande de **dériver** la fonction proposée et de retomber sur $h$. $x \mapsto x\,e^x$ est un produit, donc on applique la règle de dérivation d'un produit avec $u(x)=x$ et $v(x)=e^x$ (chapitre « Dérivation »).
 
-          Une fois la primitive $F(x)=x\,e^x$ confirmée, calculer $I$ ne demande rien de plus que la définition du R1 : $I = F(0)-F(-1)$. Le rung R1 a déjà réglé une inquiétude possible — le choix de la primitive ne change jamais le résultat, puisqu'une éventuelle constante additive s'annulerait dans la soustraction — donc on prend directement cette primitive, la plus simple à écrire, sans en chercher une autre. Le seul point à surveiller : le signe en $x=-1$, où $F(-1) = -1\times e^{-1} = -e^{-1}$ est négatif, et l'on soustrait ce nombre négatif.
+          Une fois la primitive $F(x)=x\,e^x$ confirmée, calculer $I$ ne demande rien de plus que la définition du chapitre 2 : $I = F(0)-F(-1)$. le chapitre 2 a déjà réglé une inquiétude possible — le choix de la primitive ne change jamais le résultat, puisqu'une éventuelle constante additive s'annulerait dans la soustraction — donc on prend directement cette primitive, la plus simple à écrire, sans en chercher une autre. Le seul point à surveiller : le signe en $x=-1$, où $F(-1) = -1\times e^{-1} = -e^{-1}$ est négatif, et l'on soustrait ce nombre négatif.
         steps:
           - math: '\bigl(x\,e^x\bigr)^{\prime} = 1\cdot e^x + x\cdot e^x = (x+1)e^x = h(x)'
             note: "On dérive la candidate x fois e^x (règle du produit) et on retrouve h(x) : c'est bien une primitive de h."
           - math: 'I = \int_{-1}^{0} h(x)\,\mathrm{d}x = \bigl[x\,e^x\bigr]_{-1}^{0} = 0\cdot e^{0} - (-1)\cdot e^{-1}'
-            note: "Définition du R1 : F(0) moins F(-1), avec F(x) = x fois e^x."
+            note: "Définition du chapitre 2 : F(0) moins F(-1), avec F(x) = x fois e^x."
           - math: 'I = 0 - \bigl(-e^{-1}\bigr) = e^{-1} = \dfrac{1}{e}'
             note: "En 0, x fois e^x vaut 0 ; en -1, il vaut -1/e. Donc I = 0 moins (-1/e) = 1/e."
       - id: q1b
@@ -294,16 +294,16 @@ entries:
         stem: |-
           **(0,75 pt)** À l'aide d'une intégration par parties, calculer $J = \displaystyle\int_{-1}^{0} (x+1)^2 e^x\,\mathrm{d}x$.
         reasoning: |-
-          $(x+1)^2 e^x$ est un produit de deux facteurs qui ne se primitivent pas facilement l'un sans l'autre — exactement le signal repéré au R7 pour sortir l'intégration par parties. Reste à décider lequel des deux facteurs on dérive et lequel on primitive.
+          $(x+1)^2 e^x$ est un produit de deux facteurs qui ne se primitivent pas facilement l'un sans l'autre — exactement le signal repéré au chapitre 8 pour sortir l'intégration par parties. Reste à décider lequel des deux facteurs on dérive et lequel on primitive.
 
           Dériver $(x+1)^2$ donne $2(x+1)$ — un facteur de degré plus bas, donc plus simple. Primitiver $e^x$ redonne $e^x$ — immédiat. On pose donc $u=(x+1)^2$ (à dériver) et $v'=e^x$ (à primitiver), jamais l'inverse : prendre $u=e^x$ ne simplifierait rien, puisque dériver l'exponentielle la laisse identique à elle-même.
 
-          La formule du R7, $\int u\,v' = [uv] - \int u'v$, transforme alors $J$ en un terme de bord moins $\displaystyle\int_{-1}^{0} 2(x+1)e^x\,\mathrm{d}x$. Et ce n'est pas une nouvelle intégrale à calculer depuis zéro : $(x+1)e^x$, c'est exactement $h(x)$ — la fonction de la question 1a, déjà intégrée sur ce même intervalle. L'intégrale restante vaut donc $2I$, directement, sans reprendre le calcul depuis le départ.
+          La formule du chapitre 8, $\int u\,v' = [uv] - \int u'v$, transforme alors $J$ en un terme de bord moins $\displaystyle\int_{-1}^{0} 2(x+1)e^x\,\mathrm{d}x$. Et ce n'est pas une nouvelle intégrale à calculer depuis zéro : $(x+1)e^x$, c'est exactement $h(x)$ — la fonction de la question 1a, déjà intégrée sur ce même intervalle. L'intégrale restante vaut donc $2I$, directement, sans reprendre le calcul depuis le départ.
         steps:
           - math: 'u = (x+1)^2,\quad u^{\prime} = 2(x+1),\qquad v^{\prime} = e^x,\quad v = e^x'
             note: "On dérive (x+1) au carré (ça devient 2(x+1)) et on primitive e^x (ça reste e^x)."
           - math: 'J = \bigl[(x+1)^2 e^x\bigr]_{-1}^{0} - \int_{-1}^{0} 2(x+1)e^x\,\mathrm{d}x'
-            note: "Formule du R7 : terme de bord moins l'intégrale du produit dérivé fois primitivé."
+            note: "Formule du chapitre 8 : terme de bord moins l'intégrale du produit dérivé fois primitivé."
           - math: '\bigl[(x+1)^2 e^x\bigr]_{-1}^{0} = (0+1)^2 e^{0} - (-1+1)^2 e^{-1} = 1 - 0 = 1'
             note: "En 0 : 1 au carré fois 1 = 1. En -1 : 0 au carré fois 1/e = 0. Le terme de bord vaut 1."
           - math: '\int_{-1}^{0} 2(x+1)e^x\,\mathrm{d}x = 2\int_{-1}^{0} (x+1)e^x\,\mathrm{d}x = 2\int_{-1}^{0} h(x)\,\mathrm{d}x = 2I'
@@ -402,7 +402,7 @@ entries:
         stem: |-
           **(0,25 pt)** Calculer l'intégrale : $\displaystyle\int_0^1 \frac{1}{1+x^2}\, dx$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Calculer une intégrale, c'est toujours le même geste depuis le R1 : trouver une primitive $F$ de l'intégrande, puis écrire $F(b)-F(a)$. Toute la question tient donc dans une seule reconnaissance — quelle fonction a pour dérivée $\dfrac{1}{1+x^2}$ ?
+          **Ce qu'on cherche et pourquoi ce geste.** Calculer une intégrale, c'est toujours le même geste depuis le chapitre 2 : trouver une primitive $F$ de l'intégrande, puis écrire $F(b)-F(a)$. Toute la question tient donc dans une seule reconnaissance — quelle fonction a pour dérivée $\dfrac{1}{1+x^2}$ ?
 
           C'est la fonction **arctangente**, la réciproque de la restriction de $\tan$ à $\left]-\frac{\pi}{2},\frac{\pi}{2}\right[$ : par construction, $\arctan$ est dérivable sur $\mathbb{R}$ et
 
@@ -410,7 +410,7 @@ entries:
 
           C'est une primitive de référence du programme de Sciences Mathématiques, au même titre que $\ln$ pour $\dfrac1x$ ou $e^x$ pour lui-même : elle se reconnaît, elle ne se redémontre pas en pleine épreuve. Le $0{,}25$ point du barème dit d'ailleurs exactement cela — c'est une question de lecture, pas de calcul.
 
-          Applique alors la définition du R1 :
+          Applique alors la définition du chapitre 2 :
 
           $$\int_0^1 \frac{1}{1+x^2}\,\mathrm{d}x = \left[\arctan x\right]_0^1 = \arctan(1) - \arctan(0)$$
 
@@ -423,7 +423,7 @@ entries:
           - math: '\left(\arctan x\right)^{\prime} = \dfrac{1}{1+x^2} \qquad (x \in \mathbb{R})'
             note: "Primitive de référence du programme SM : arctan est la primitive de 1/(1+x^2) qui s'annule en 0."
           - math: '\int_0^1 \dfrac{1}{1+x^2}\,\mathrm{d}x = \bigl[\arctan x\bigr]_0^1 = \arctan(1) - \arctan(0)'
-            note: "Définition du R1 : F(1) moins F(0)."
+            note: "Définition du chapitre 2 : F(1) moins F(0)."
           - math: '\arctan(1) = \dfrac{\pi}{4},\qquad \arctan(0) = 0 \qquad\Longrightarrow\qquad \int_0^1 \dfrac{1}{1+x^2}\,\mathrm{d}x = \dfrac{\pi}{4}'
             note: "tan(pi/4) = 1 et tan(0) = 0, avec pi/4 dans l'intervalle de définition de arctan."
       - id: q1-b
@@ -466,7 +466,7 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que : $\displaystyle\int_0^1 \frac{1}{\left(1+x^2\right)^2}\, dx \leq 1$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Première réaction à corriger : on ne te demande **pas** de calculer cette intégrale. Regarde le barème — $0{,}25$ point. Une valeur exacte ne vaudrait jamais si peu ; on te demande une **majoration**, et la majoration la plus simple qui soit. C'est le R4 (comparaison) qui est visé, pas une primitive.
+          **Ce qu'on cherche et pourquoi ce geste.** Première réaction à corriger : on ne te demande **pas** de calculer cette intégrale. Regarde le barème — $0{,}25$ point. Une valeur exacte ne vaudrait jamais si peu ; on te demande une **majoration**, et la majoration la plus simple qui soit. C'est le chapitre 5 (comparaison) qui est visé, pas une primitive.
 
           Le geste : majorer l'intégrande par une constante sur $[0,1]$, puis intégrer l'inégalité.
 
@@ -476,13 +476,13 @@ entries:
 
           (le passage au carré conserve l'inégalité parce que les deux membres sont positifs ; le passage à l'inverse la retourne, pour la même raison.)
 
-          Applique la comparaison du R4 sur $[0,1]$, où les bornes sont bien dans l'ordre $0 \leq 1$ :
+          Applique la comparaison du chapitre 5 sur $[0,1]$, où les bornes sont bien dans l'ordre $0 \leq 1$ :
 
           $$\int_0^1 \frac{1}{\left(1+x^2\right)^2}\,\mathrm{d}x \leq \int_0^1 1\,\mathrm{d}x = \bigl[x\bigr]_0^1 = 1$$
 
           $$\boxed{\int_0^1 \frac{1}{\left(1+x^2\right)^2}\,\mathrm{d}x \leq 1}$$
 
-          C'est aussi, mot pour mot, l'inégalité de la moyenne du R5 avec $M=1$ et $b-a=1$ : les deux rédactions valent le même point.
+          C'est aussi, mot pour mot, l'inégalité de la moyenne du chapitre 6 avec $M=1$ et $b-a=1$ : les deux rédactions valent le même point.
 
           **Le piège à éviter.** Vouloir la valeur exacte. Elle existe — elle vaut $\dfrac{\pi}{8}+\dfrac14 \approx 0{,}643$ — mais elle s'obtient par un changement de variable ou une intégration par parties astucieuse qui **ne sont pas au programme de 2ème Bac**. En te lançant dedans, tu perds dix minutes sur une question à $0{,}25$ point, et tu rates les questions 4 et 5 qui en valent $1{,}75$. Retiens la leçon générale : **quand un énoncé demande $\leq$ et non $=$, il demande une majoration, et le barème te dit à quel point elle a le droit d'être grossière.** Ici $0{,}643 \leq 1$ : la majoration est large, et c'est parfaitement suffisant pour la question 5-a.
         steps:
@@ -491,7 +491,7 @@ entries:
           - math: '(\forall x \in [0,1])\ ;\quad \dfrac{1}{\left(1+x^2\right)^{2}} \leq 1'
             note: "Passage à l'inverse entre nombres strictement positifs : le sens s'inverse."
           - math: '\int_0^1 \dfrac{1}{\left(1+x^2\right)^{2}}\,\mathrm{d}x \leq \int_0^1 1\,\mathrm{d}x = \bigl[x\bigr]_0^1 = 1'
-            note: "Comparaison du R4, bornes dans l'ordre 0 <= 1. Rédaction équivalente : inégalité de la moyenne (R5) avec M = 1."
+            note: "Comparaison du chapitre 5, bornes dans l'ordre 0 <= 1. Rédaction équivalente : inégalité de la moyenne (chapitre 6) avec M = 1."
       - id: q3-a
         part: "Question 3 — Encadrer $e^x-1$, puis $e^x-1-x$"
         stem: |-
@@ -544,11 +544,11 @@ entries:
 
           $$0 \leq e^t - 1 \leq e\,t$$
 
-          Les bornes sont dans l'ordre ($0 \leq x$), donc la comparaison du R4 autorise à intégrer les trois membres entre $0$ et $x$ :
+          Les bornes sont dans l'ordre ($0 \leq x$), donc la comparaison du chapitre 5 autorise à intégrer les trois membres entre $0$ et $x$ :
 
           $$\int_0^x 0\,\mathrm{d}t \ \leq\ \int_0^x \left(e^t-1\right)\mathrm{d}t \ \leq\ \int_0^x e\,t\,\mathrm{d}t$$
 
-          Reste à calculer les trois morceaux, par le R1. Le membre de gauche vaut $0$. Le membre du milieu, avec la primitive $t \mapsto e^t - t$ :
+          Reste à calculer les trois morceaux, par le chapitre 2. Le membre de gauche vaut $0$. Le membre du milieu, avec la primitive $t \mapsto e^t - t$ :
 
           $$\int_0^x \left(e^t-1\right)\mathrm{d}t = \bigl[e^t - t\bigr]_0^x = \left(e^x - x\right) - \left(e^0 - 0\right) = e^x - x - 1$$
 
@@ -558,16 +558,16 @@ entries:
 
           $$\boxed{\left(\forall x \in [0,1]\right)\ ;\quad 0 \leq e^x - 1 - x \leq \frac{e}{2}x^2}$$
 
-          **Le piège à éviter.** Intégrer une inégalité n'est légitime que si les bornes sont **dans l'ordre croissant** — c'est une hypothèse explicite du R4, pas un détail. Ici $0 \leq x$ le garantit, mais il faut le dire. Et garde en tête ce que cet encadrement raconte : $e^x$ est coincé entre $1+x$ et $1+x+\frac{e}{2}x^2$. Quand $x$ est petit, l'erreur commise en remplaçant $e^x-1$ par $x$ est d'ordre $x^2$ — donc négligeable devant $x$. C'est exactement le levier qui va faire s'effondrer l'écart $w_n-u_n$ dans les questions suivantes.
+          **Le piège à éviter.** Intégrer une inégalité n'est légitime que si les bornes sont **dans l'ordre croissant** — c'est une hypothèse explicite du chapitre 5, pas un détail. Ici $0 \leq x$ le garantit, mais il faut le dire. Et garde en tête ce que cet encadrement raconte : $e^x$ est coincé entre $1+x$ et $1+x+\frac{e}{2}x^2$. Quand $x$ est petit, l'erreur commise en remplaçant $e^x-1$ par $x$ est d'ordre $x^2$ — donc négligeable devant $x$. C'est exactement le levier qui va faire s'effondrer l'écart $w_n-u_n$ dans les questions suivantes.
         steps:
           - math: 'x \in [0,1] \ \Longrightarrow\ [0,x] \subset [0,1] \ \Longrightarrow\ (\forall t \in [0,x])\ ;\ 0 \leq e^{t} - 1 \leq e\,t'
             note: "Question 3-a appliquée à t, après renommage de la variable pour ne pas confondre variable et borne."
           - math: '\int_0^x 0\,\mathrm{d}t \ \leq\ \int_0^x \left(e^{t}-1\right)\mathrm{d}t \ \leq\ \int_0^x e\,t\,\mathrm{d}t'
-            note: "Comparaison du R4, licite parce que les bornes sont dans l'ordre 0 <= x."
+            note: "Comparaison du chapitre 5, licite parce que les bornes sont dans l'ordre 0 <= x."
           - math: '\int_0^x \left(e^{t}-1\right)\mathrm{d}t = \bigl[e^{t} - t\bigr]_0^x = e^{x} - x - 1'
             note: "Primitive de e^t - 1 : e^t - t. En 0 elle vaut 1, d'où le -1 final."
           - math: '\int_0^x e\,t\,\mathrm{d}t = e\left[\dfrac{t^{2}}{2}\right]_0^x = \dfrac{e}{2}x^{2}'
-            note: "e est une constante : elle sort par linéarité (R2)."
+            note: "e est une constante : elle sort par linéarité (chapitre 3)."
           - math: '(\forall x \in [0,1])\ ;\quad 0 \leq e^{x} - 1 - x \leq \dfrac{e}{2}x^{2}'
             note: "L'erreur commise en remplaçant e^x - 1 par x est d'ordre x au carré."
       - id: q4-a
@@ -646,7 +646,7 @@ entries:
           **(0,25 pt)** En déduire que pour tout entier $n \geq 1$ et pour tout entier $k \in \{1, 2, \ldots, n\}$, on a :
           $$\frac{1}{n}\left(1+\left(\frac{k}{n}\right)^2\right)^{-2} \leq \int_{\frac{k-1}{n}}^{\frac{k}{n}} \left(1+x^2\right)^{-2} dx$$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Regarde le membre de gauche : $\dfrac{1}{n}$ est exactement la **longueur** de l'intervalle d'intégration $\left[\frac{k-1}{n},\frac{k}{n}\right]$, et $\left(1+\left(\frac{k}{n}\right)^2\right)^{-2}$ est exactement $\varphi\!\left(\frac{k}{n}\right)$, la valeur de $\varphi$ à l'**extrémité droite** de cet intervalle. Le membre de gauche est donc l'aire d'un rectangle : largeur $\frac1n$, hauteur $\varphi\!\left(\frac{k}{n}\right)$. L'inégalité dit que ce rectangle est **sous** la courbe. C'est le R5 (inégalité de la moyenne), ou le R4 appliqué à une fonction constante — au choix.
+          **Ce qu'on cherche et pourquoi ce geste.** Regarde le membre de gauche : $\dfrac{1}{n}$ est exactement la **longueur** de l'intervalle d'intégration $\left[\frac{k-1}{n},\frac{k}{n}\right]$, et $\left(1+\left(\frac{k}{n}\right)^2\right)^{-2}$ est exactement $\varphi\!\left(\frac{k}{n}\right)$, la valeur de $\varphi$ à l'**extrémité droite** de cet intervalle. Le membre de gauche est donc l'aire d'un rectangle : largeur $\frac1n$, hauteur $\varphi\!\left(\frac{k}{n}\right)$. L'inégalité dit que ce rectangle est **sous** la courbe. C'est le chapitre 6 (inégalité de la moyenne), ou le chapitre 5 appliqué à une fonction constante — au choix.
 
           D'abord, l'intervalle est bien dans le domaine où l'on sait travailler : pour $k \in \{1,\dots,n\}$, $\dfrac{k-1}{n} \geq 0$ et $\dfrac{k}{n} \leq 1$, donc $\left[\frac{k-1}{n},\frac{k}{n}\right] \subset [0,1]$.
 
@@ -689,7 +689,7 @@ entries:
 
           $$x_k^2 \leq \frac{1}{n}\int_{\frac{k-1}{n}}^{\frac{k}{n}} \left(1+x^2\right)^{-2}\mathrm{d}x$$
 
-          Somme sur $k$ de $1$ à $n$. Les $n$ intégrales portent sur des tranches consécutives et adjacentes : $\left[0,\frac1n\right]$, $\left[\frac1n,\frac2n\right]$, …, $\left[\frac{n-1}{n},1\right]$. Par la relation de Chasles (R3), appliquée $n-1$ fois, elles se recollent exactement en une seule intégrale de $0$ à $1$ :
+          Somme sur $k$ de $1$ à $n$. Les $n$ intégrales portent sur des tranches consécutives et adjacentes : $\left[0,\frac1n\right]$, $\left[\frac1n,\frac2n\right]$, …, $\left[\frac{n-1}{n},1\right]$. Par la relation de Chasles (chapitre 4), appliquée $n-1$ fois, elles se recollent exactement en une seule intégrale de $0$ à $1$ :
 
           $$\sum_{k=1}^{n} x_k^2 \ \leq\ \frac{1}{n}\sum_{k=1}^{n}\int_{\frac{k-1}{n}}^{\frac{k}{n}} \left(1+x^2\right)^{-2}\mathrm{d}x \ =\ \frac{1}{n}\int_{0}^{1}\left(1+x^2\right)^{-2}\mathrm{d}x$$
 
@@ -714,7 +714,7 @@ entries:
           - math: 'x_k^{2} \leq \dfrac{1}{n}\int_{\frac{k-1}{n}}^{\frac{k}{n}} \left(1+x^2\right)^{-2}\mathrm{d}x'
             note: "Question 4-c multipliée par 1/n, qui est positif : le sens de l'inégalité est conservé."
           - math: '\sum_{k=1}^{n} x_k^{2} \leq \dfrac{1}{n}\sum_{k=1}^{n}\int_{\frac{k-1}{n}}^{\frac{k}{n}} \left(1+x^2\right)^{-2}\mathrm{d}x = \dfrac{1}{n}\int_{0}^{1}\left(1+x^2\right)^{-2}\mathrm{d}x'
-            note: "Les n tranches sont adjacentes : la relation de Chasles (R3) les recolle en une seule intégrale de 0 à 1."
+            note: "Les n tranches sont adjacentes : la relation de Chasles (chapitre 4) les recolle en une seule intégrale de 0 à 1."
           - math: '\int_0^1 \left(1+x^2\right)^{-2}\mathrm{d}x \leq 1 \quad\Longrightarrow\quad \sum_{k=1}^{n} x_k^{2} \leq \dfrac{1}{n}'
             note: "C'est la question 2, qui trouve ici son unique emploi de tout l'exercice."
           - math: '0 \leq w_n - u_n \leq \dfrac{e}{2}\sum_{k=1}^{n} x_k^{2} \leq \dfrac{e}{2}\times\dfrac{1}{n} = \dfrac{e}{2n}'
@@ -730,7 +730,7 @@ entries:
 
           $$\left(\forall n \geq 1\right)\ ;\quad 0 \leq w_n - u_n \leq \frac{e}{2n}$$
 
-          Or $\displaystyle\lim_{n\to+\infty} \frac{e}{2n} = 0$ (c'est $\frac{e}{2}$ fois $\frac1n$, et $e$ est une constante) et la suite constante nulle tend vers $0$. Le théorème des gendarmes (chapitre « Suites numériques », R6) s'applique aux trois membres :
+          Or $\displaystyle\lim_{n\to+\infty} \frac{e}{2n} = 0$ (c'est $\frac{e}{2}$ fois $\frac1n$, et $e$ est une constante) et la suite constante nulle tend vers $0$. Le théorème des gendarmes (chapitre « Suites numériques », chapitre 7) s'applique aux trois membres :
 
           $$\lim_{n\to+\infty} \left(w_n - u_n\right) = 0$$
 
@@ -751,7 +751,7 @@ entries:
           - math: '(\forall n \geq 1)\ ;\quad 0 \leq w_n - u_n \leq \dfrac{e}{2n} \qquad\text{et}\qquad \lim_{n\to+\infty}\dfrac{e}{2n} = 0'
             note: "Question 5-a, plus la limite de e/(2n) : e est une constante, 1/n tend vers 0."
           - math: '\lim_{n\to+\infty}\left(w_n - u_n\right) = 0'
-            note: "Théorème des gendarmes (Suites numériques, R6) appliqué aux trois membres."
+            note: "Théorème des gendarmes (Suites numériques, chapitre 7) appliqué aux trois membres."
           - math: 'w_n = u_n + \left(w_n - u_n\right)'
             note: "L'écriture qui conclut : w_n est la somme de deux suites dont on connaît les limites."
           - math: '\lim_{n\to+\infty} w_n = \dfrac{\pi}{4} + 0 = \dfrac{\pi}{4}'
@@ -831,7 +831,7 @@ entries:
 
       On considère $x \mapsto e^x$ et sa courbe représentative $(\Gamma)$ dans un repère orthonormé $(O,\vec i,\vec j)$. Pour $n \in \mathbb{N}^{*}$ fixé et $k \in \{0,1,\ldots,n\}$, on place le point $M_k$ de $(\Gamma)$ d'abscisse $\dfrac{k}{n}$ : les $n+1$ points $M_0,\ldots,M_n$ sont régulièrement espacés en abscisse entre $0$ et $1$. On note $S_n = \displaystyle\sum_{k=0}^{n-1} M_kM_{k+1}$ la somme des distances entre points consécutifs.
 
-      *Le fil de l'exercice.* La question 1 construit, pour chaque segment $[M_k,M_{k+1}]$, un encadrement de sa longueur — en passant par le **théorème des accroissements finis**, énoncé et appliqué exactement au point où il sert (ce théorème n'appartient pas au socle de cette leçon ; voir SCOPE NOTE en tête de fichier). La question 2 somme ces $n$ encadrements et reconnaît, dans les deux sommes qui en résultent, deux **sommes de Riemann** de la même fonction $h(x)=\sqrt{1+e^{2x}}$ (outil du programme SM, lui aussi hors socle R0–R9 de cette leçon — voir SCOPE NOTE 1 en tête de fichier) — d'où la limite $S_n \to \displaystyle\int_0^1 \sqrt{1+e^{2x}}\,dx$.
+      *Le fil de l'exercice.* La question 1 construit, pour chaque segment $[M_k,M_{k+1}]$, un encadrement de sa longueur — en passant par le **théorème des accroissements finis**, énoncé et appliqué exactement au point où il sert (ce théorème n'appartient pas au socle de cette leçon ; voir SCOPE NOTE en tête de fichier). La question 2 somme ces $n$ encadrements et reconnaît, dans les deux sommes qui en résultent, deux **sommes de Riemann** de la même fonction $h(x)=\sqrt{1+e^{2x}}$ (outil du programme SM, lui aussi hors socle des chapitres 1 à 10 de cette leçon — voir SCOPE NOTE 1 en tête de fichier) — d'où la limite $S_n \to \displaystyle\int_0^1 \sqrt{1+e^{2x}}\,dx$.
 
       *Aucune figure n'accompagne ce sujet. La carte des domaines : question 1-a mobilise le théorème des accroissements finis (domaine « dérivabilité et étude de fonctions », hors socle) ; le reste — distance entre deux points, encadrement, somme, sommes de Riemann, passage à la limite — relève de ce chapitre et du chapitre « suites numériques ».*
     questions:
@@ -1105,7 +1105,7 @@ entries:
         stem: |-
           **1- a)** (0,5 pt) Montrer que $F$ est continue, strictement croissante sur $[0\,;1]$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** $F(x)=\displaystyle\int_0^x e^{t^2}\,dt$ est, par définition même de l'intégrale comme primitive (R1 de ce chapitre — exactement le geste qui donnait $\int_1^x \frac1t\,dt=\ln x$), une primitive de $t\mapsto e^{t^2}$ sur $[0,1]$, décalée pour s'annuler en $0$.
+          **Ce qu'on cherche et pourquoi ce geste.** $F(x)=\displaystyle\int_0^x e^{t^2}\,dt$ est, par définition même de l'intégrale comme primitive (chapitre 2 de ce chapitre — exactement le geste qui donnait $\int_1^x \frac1t\,dt=\ln x$), une primitive de $t\mapsto e^{t^2}$ sur $[0,1]$, décalée pour s'annuler en $0$.
 
           $t\mapsto e^{t^2}$ est continue sur $[0,1]$ (composée de $t\mapsto t^2$, continue, et de $\exp$, continue — domaine « fonction exponentielle »), donc elle y admet des primitives (fait admis pour toute fonction continue sur un intervalle). $F$ est l'une de ces primitives : elle est donc **dérivable** sur $[0,1]$, avec $F^{\prime}(x) = e^{x^2}$.
 
@@ -1116,7 +1116,7 @@ entries:
           - math: 't \mapsto e^{t^2} \text{ continue sur } [0,1] \quad (\text{composee, admet des primitives})'
             note: "Fonction continue sur un intervalle : elle y admet des primitives (fait admis)."
           - math: 'F \text{ est une primitive de } t\mapsto e^{t^2} \text{ sur } [0,1] \implies F \text{ derivable}, \quad F^{\prime}(x) = e^{x^2}'
-            note: "Definition de l'integrale comme primitive (R1), appliquee a F elle-meme."
+            note: "Definition de l'integrale comme primitive (chapitre 2), appliquee a F elle-meme."
           - math: 'F^{\prime}(x) = e^{x^2} > 0 \ \forall x \implies F \text{ strictement croissante sur } [0,1]; \quad F \text{ derivable} \implies F \text{ continue}'
             note: "Exponentielle toujours strictement positive : le signe de F prime est immediat."
       - id: q1b
@@ -1228,7 +1228,7 @@ entries:
 
           $$\ell = \frac1\beta \times \frac{e-1}{2} = \boxed{\frac{e-1}{2\beta}}$$
 
-          **Ce que le problème vient de démontrer, relu d'ensemble.** La moyenne des valeurs de $F^{-1}$ sur $[0,\beta]$ — c'est ce que $\ell$ représente, à $\frac1\beta$ près (R6, valeur moyenne d'une fonction) — ne dépendait, au bout du compte, que de $e$ et de $\beta$ : la fonction $F^{-1}$ elle-même n'a jamais eu besoin d'être connue explicitement, exactement comme $F$ à la question 1-a. Le changement de variable de la question 2-b a transporté tout le problème sur le terrain où $F$, elle, **est** connue.
+          **Ce que le problème vient de démontrer, relu d'ensemble.** La moyenne des valeurs de $F^{-1}$ sur $[0,\beta]$ — c'est ce que $\ell$ représente, à $\frac1\beta$ près (chapitre 7, valeur moyenne d'une fonction) — ne dépendait, au bout du compte, que de $e$ et de $\beta$ : la fonction $F^{-1}$ elle-même n'a jamais eu besoin d'être connue explicitement, exactement comme $F$ à la question 1-a. Le changement de variable de la question 2-b a transporté tout le problème sur le terrain où $F$, elle, **est** connue.
 
           **Le piège nommé de cette question.** Refaire un changement de variable ($w=u^2$, par exemple) alors que la primitive $\frac12 e^{u^2}$ se lit directement, en reconnaissant la forme $u^{\prime}e^u$ composée — un détour inutile sur une question à $0{,}5$ point qui se termine en une ligne.
         steps:

@@ -264,7 +264,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer par récurrence que pour tout $n$ de $\mathbb{N}$, $u_n > 0$
         reasoning: |-
-          C'est une propriété portant sur **tous** les rangs $n$ : le raisonnement par récurrence (R1) est l'outil naturel. Le point délicat de l'hérédité est de contrôler le signe du dénominateur $2u_n+5$ — s'il reste strictement positif, le quotient garde le signe de son numérateur.
+          C'est une propriété portant sur **tous** les rangs $n$ : le raisonnement par récurrence (chapitre 2) est l'outil naturel. Le point délicat de l'hérédité est de contrôler le signe du dénominateur $2u_n+5$ — s'il reste strictement positif, le quotient garde le signe de son numérateur.
         steps:
           - math: 'u_0 = \dfrac{3}{2} > 0'
             note: "Initialisation : vrai au rang 0."
@@ -279,7 +279,7 @@ entries:
         reasoning: |-
           Deux gestes en un. D'abord une comparaison algébrique directe (pas de récurrence) : on compare $u_{n+1}$ à $\dfrac{2}{5}u_n$ en divisant par $u_n>0$ (question 2), ce qui ramène tout à comparer $\dfrac{2}{2u_n+5}$ à $\dfrac{2}{5}$ — deux fractions de même numérateur, où le plus grand dénominateur donne la plus petite valeur.
 
-          Ensuite, pour « en déduire » l'encadrement géométrique, on récidive le mécanisme du R1 : au lieu de majorer par une constante (R3), on majore par une suite géométrique qui se resserre à chaque rang — l'hérédité empile l'inégalité $u_{n+1}\le\frac{2}{5}u_n$ qu'on vient de démontrer sur l'hypothèse de récurrence.
+          Ensuite, pour « en déduire » l'encadrement géométrique, on récidive le mécanisme du chapitre 2 : au lieu de majorer par une constante (chapitre 4), on majore par une suite géométrique qui se resserre à chaque rang — l'hérédité empile l'inégalité $u_{n+1}\le\frac{2}{5}u_n$ qu'on vient de démontrer sur l'hypothèse de récurrence.
         steps:
           - math: 'u_n>0 \implies \left(u_{n+1}\le\dfrac{2}{5}u_n \iff \dfrac{2u_n}{2u_n+5}\le\dfrac{2}{5}u_n \iff \dfrac{2}{2u_n+5}\le\dfrac{2}{5}\right)'
             note: "On part de l'inégalité à montrer et on divise par u_n, strictement positif (question 2) : le sens est conservé."
@@ -297,12 +297,12 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer $\lim u_n$
         reasoning: |-
-          On dispose d'un minorant constant $u_n>0$ et d'un majorant explicite $u_n\le\dfrac{3}{2}\left(\dfrac{2}{5}\right)^n$ (question 3a). Ce majorant est une suite géométrique de raison $\dfrac{2}{5}\in\,]{-1};1[$, donc elle tend vers 0 (R5). Deux suites qui encadrent $(u_n)$ et convergent toutes deux vers 0 : c'est exactement la structure du théorème des gendarmes (R6), même si l'une des deux bornes — ici 0 — est constante.
+          On dispose d'un minorant constant $u_n>0$ et d'un majorant explicite $u_n\le\dfrac{3}{2}\left(\dfrac{2}{5}\right)^n$ (question 3a). Ce majorant est une suite géométrique de raison $\dfrac{2}{5}\in\,]{-1};1[$, donc elle tend vers 0 (chapitre 6). Deux suites qui encadrent $(u_n)$ et convergent toutes deux vers 0 : c'est exactement la structure du théorème des gendarmes (chapitre 7), même si l'une des deux bornes — ici 0 — est constante.
         steps:
           - math: '\left|\dfrac{2}{5}\right|<1 \implies \lim_{n\to+\infty}\left(\dfrac{2}{5}\right)^n = 0 \implies \lim_{n\to+\infty}\dfrac{3}{2}\left(\dfrac{2}{5}\right)^n = 0'
-            note: "Suite géométrique de raison entre -1 et 1 (R5) : elle tend vers 0."
+            note: "Suite géométrique de raison entre -1 et 1 (chapitre 6) : elle tend vers 0."
           - math: '0 < u_n \le \dfrac{3}{2}\left(\dfrac{2}{5}\right)^n, \quad \lim_{n\to+\infty}\dfrac{3}{2}\left(\dfrac{2}{5}\right)^n = 0'
-            note: "u_n est encadrée par 0 et une suite qui tend vers 0 (théorème des gendarmes, R6)."
+            note: "u_n est encadrée par 0 et une suite qui tend vers 0 (théorème des gendarmes, chapitre 7)."
           - math: '\lim_{n\to+\infty} u_n = 0'
             note: "Conclusion."
       - id: q4a
@@ -312,7 +312,7 @@ entries:
 
           **(0,75 pt)** Montrer que $(v_n)$ est une suite géométrique de raison $\dfrac{2}{5}$
         reasoning: |-
-          On calcule $v_{n+1}$ à partir de la définition et de la relation de récurrence de $(u_n)$, puis on cherche à faire réapparaître $v_n$ dans le résultat — c'est le geste dit « de la suite homographique » (voir SCOPE NOTE en tête de fichier) : une transformation qui ne se limite pas à soustraire le point fixe, contrairement à ce que le R8 enseigne ($v_n=u_n-L$), mais qui combine numérateur et dénominateur de $u_n$ dans un rapport choisi. On travaille en fraction, en réduisant tout au même dénominateur $2u_n+5$ avant de simplifier.
+          On calcule $v_{n+1}$ à partir de la définition et de la relation de récurrence de $(u_n)$, puis on cherche à faire réapparaître $v_n$ dans le résultat — c'est le geste dit « de la suite homographique » (voir SCOPE NOTE en tête de fichier) : une transformation qui ne se limite pas à soustraire le point fixe, contrairement à ce que le chapitre 9 enseigne ($v_n=u_n-L$), mais qui combine numérateur et dénominateur de $u_n$ dans un rapport choisi. On travaille en fraction, en réduisant tout au même dénominateur $2u_n+5$ avant de simplifier.
         steps:
           - math: 'v_{n+1} = \dfrac{4u_{n+1}}{2u_{n+1}+3}, \qquad u_{n+1}=\dfrac{2u_n}{2u_n+5}'
             note: "On part de la définition de v à n+1 et on y injecte la relation de récurrence de u."
@@ -328,12 +328,12 @@ entries:
         stem: |-
           **(1 pt)** Déterminer $v_n$ en fonction de $n$ et en déduire $u_n$ en fonction de $n$ pour tout $n$ de $\mathbb{N}$.
         reasoning: |-
-          La formule explicite d'une suite géométrique (R2) donne directement $v_n$ à partir de $v_0$ et de la raison. Il reste ensuite à inverser la définition $v_n=\dfrac{4u_n}{2u_n+3}$ pour isoler $u_n$ — une manipulation algébrique une fois qu'on connaît $v_n$.
+          La formule explicite d'une suite géométrique (chapitre 3) donne directement $v_n$ à partir de $v_0$ et de la raison. Il reste ensuite à inverser la définition $v_n=\dfrac{4u_n}{2u_n+3}$ pour isoler $u_n$ — une manipulation algébrique une fois qu'on connaît $v_n$.
         steps:
           - math: 'v_0 = \dfrac{4u_0}{2u_0+3} = \dfrac{4\times\frac{3}{2}}{2\times\frac{3}{2}+3} = \dfrac{6}{6} = 1'
             note: "Premier terme de la suite géométrique v."
           - math: 'v_n = v_0\left(\dfrac{2}{5}\right)^n = \left(\dfrac{2}{5}\right)^n'
-            note: "Formule explicite d'une suite géométrique (R2), avec v0 = 1."
+            note: "Formule explicite d'une suite géométrique (chapitre 3), avec v0 = 1."
           - math: 'v_n=\dfrac{4u_n}{2u_n+3} \implies v_n(2u_n+3) = 4u_n \implies 2v_nu_n+3v_n = 4u_n \implies u_n(4-2v_n) = 3v_n'
             note: "On repart de la définition de v_n et on isole les termes en u_n."
           - math: 'u_n = \dfrac{3v_n}{4-2v_n} = \dfrac{3\left(\frac{2}{5}\right)^n}{4-2\left(\frac{2}{5}\right)^n}'
@@ -389,7 +389,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer par récurrence que pour tout $n$ de $\mathbb{N}$, $0 < u_n \le \dfrac{1}{2}$
         reasoning: |-
-          Propriété portant sur tous les rangs $n$ : récurrence (R1). Le point à surveiller à l'hérédité est le dénominateur $3-2u_n$ — il faut d'abord le contrôler pour être sûr que la fraction garde un signe connu, avant de comparer $u_{n+1}$ à $\dfrac{1}{2}$.
+          Propriété portant sur tous les rangs $n$ : récurrence (chapitre 2). Le point à surveiller à l'hérédité est le dénominateur $3-2u_n$ — il faut d'abord le contrôler pour être sûr que la fraction garde un signe connu, avant de comparer $u_{n+1}$ à $\dfrac{1}{2}$.
         steps:
           - math: 'u_0 = \dfrac{1}{2}, \quad 0 < \dfrac{1}{2} \le \dfrac{1}{2}'
             note: "Initialisation : vrai au rang 0 (égalité large)."
@@ -406,7 +406,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que pour tout $n$ de $\mathbb{N}$, $\dfrac{u_{n+1}}{u_n} \le \dfrac{1}{2}$
         reasoning: |-
-          Variante du quotient pour la monotonie (R4, utile ici car $(u_n)$ est strictement positive d'après la question 2) : plutôt que d'étudier le signe de $u_{n+1}-u_n$, on compare directement $\dfrac{u_{n+1}}{u_n}$ à $\dfrac{1}{2}$.
+          Variante du quotient pour la monotonie (chapitre 5, utile ici car $(u_n)$ est strictement positive d'après la question 2) : plutôt que d'étudier le signe de $u_{n+1}-u_n$, on compare directement $\dfrac{u_{n+1}}{u_n}$ à $\dfrac{1}{2}$.
         steps:
           - math: 'u_n>0 \implies \dfrac{u_{n+1}}{u_n} = \dfrac{1}{3-2u_n}'
             note: "On divise u_{n+1} par u_n, licite car u_n > 0 (question 2)."
@@ -420,7 +420,7 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire la monotonie de la suite $(u_n)$
         reasoning: |-
-          On relit le résultat précédent avec la méthode du quotient (R4) : pour une suite strictement positive, comparer $\dfrac{u_{n+1}}{u_n}$ à $1$ donne le sens de variation. Ici le quotient est majoré par $\dfrac{1}{2}$, strictement inférieur à $1$.
+          On relit le résultat précédent avec la méthode du quotient (chapitre 5) : pour une suite strictement positive, comparer $\dfrac{u_{n+1}}{u_n}$ à $1$ donne le sens de variation. Ici le quotient est majoré par $\dfrac{1}{2}$, strictement inférieur à $1$.
         steps:
           - math: '\dfrac{u_{n+1}}{u_n}\le\dfrac{1}{2}<1, \quad u_n>0 \implies u_{n+1}\le\dfrac{1}{2}u_n < u_n'
             note: "u_n strictement positif : multiplier l'inégalité par u_n conserve le sens."
@@ -431,7 +431,7 @@ entries:
         stem: |-
           **(0,75 pt)** Montrer que pour tout $n$ de $\mathbb{N}$, $0 < u_n \le \left(\dfrac{1}{2}\right)^{n+1}$ ; puis calculer la limite de la suite $(u_n)$
         reasoning: |-
-          Même mécanisme qu'en bk-2020-n-x1 (question 3a) : on transforme $u_{n+1}\le\dfrac{1}{2}u_n$ (issu de la question 3a, en multipliant le quotient par $u_n>0$) en un encadrement géométrique par récurrence, en empilant l'inégalité à chaque rang. La limite s'obtient ensuite par le théorème des gendarmes (R6), le majorant géométrique tendant vers 0 (R5).
+          Même mécanisme qu'en bk-2020-n-x1 (question 3a) : on transforme $u_{n+1}\le\dfrac{1}{2}u_n$ (issu de la question 3a, en multipliant le quotient par $u_n>0$) en un encadrement géométrique par récurrence, en empilant l'inégalité à chaque rang. La limite s'obtient ensuite par le théorème des gendarmes (chapitre 7), le majorant géométrique tendant vers 0 (chapitre 6).
         steps:
           - math: 'u_0 = \dfrac{1}{2} = \left(\dfrac{1}{2}\right)^{0+1}'
             note: "Initialisation : égalité au rang 0."
@@ -440,19 +440,19 @@ entries:
           - math: '0 < u_n \le \left(\dfrac{1}{2}\right)^{n+1} \quad \text{pour tout } n \text{ de } \mathbb{N}'
             note: "Par récurrence, l'encadrement géométrique est établi."
           - math: '\left|\dfrac{1}{2}\right|<1 \implies \lim_{n\to+\infty}\left(\dfrac{1}{2}\right)^{n+1} = 0'
-            note: "Suite géométrique de raison entre -1 et 1 (R5) : elle tend vers 0."
+            note: "Suite géométrique de raison entre -1 et 1 (chapitre 6) : elle tend vers 0."
           - math: '0<u_n\le\left(\dfrac{1}{2}\right)^{n+1}, \quad \left(\dfrac{1}{2}\right)^{n+1}\to 0 \implies \lim_{n\to+\infty} u_n = 0'
-            note: "Théorème des gendarmes (R6) : u_n est coincée entre 0 et une suite qui tend vers 0."
+            note: "Théorème des gendarmes (chapitre 7) : u_n est coincée entre 0 et une suite qui tend vers 0."
       - id: q4b
         stem: |-
           On pose $v_n = \ln\left(3 - 2u_n\right)$ pour tout $n$ de $\mathbb{N}$.
 
           **(0,5 pt)** Calculer $\lim v_n$
         reasoning: |-
-          $(u_n)$ tend vers $0$ (question 4a), donc $3-2u_n$ tend vers $3$ par les opérations usuelles sur les limites (R5). Reste à faire passer le logarithme à travers cette limite : $\ln$ est une fonction continue en $3$, donc $\ln(3-2u_n)$ tend vers $\ln(3)$ — le même principe de continuité que le R8 utilise pour justifier $f(u_n)\to f(L)$, mais appliqué ici à une fonction extérieure à la récurrence ($\ln$, pas la fonction de la relation $u_{n+1}=f(u_n)$) plutôt qu'à la résolution d'un point fixe.
+          $(u_n)$ tend vers $0$ (question 4a), donc $3-2u_n$ tend vers $3$ par les opérations usuelles sur les limites (chapitre 6). Reste à faire passer le logarithme à travers cette limite : $\ln$ est une fonction continue en $3$, donc $\ln(3-2u_n)$ tend vers $\ln(3)$ — le même principe de continuité que le chapitre 9 utilise pour justifier $f(u_n)\to f(L)$, mais appliqué ici à une fonction extérieure à la récurrence ($\ln$, pas la fonction de la relation $u_{n+1}=f(u_n)$) plutôt qu'à la résolution d'un point fixe.
         steps:
           - math: '\lim_{n\to+\infty} u_n = 0 \implies \lim_{n\to+\infty} (3-2u_n) = 3-2\times 0 = 3'
-            note: "Opérations usuelles sur les limites (R5)."
+            note: "Opérations usuelles sur les limites (chapitre 6)."
           - math: '\lim_{n\to+\infty} v_n = \lim_{n\to+\infty} \ln(3-2u_n) = \ln(3)'
             note: "Continuité du logarithme en 3 : la limite passe à travers ln."
       - id: q5a
@@ -472,14 +472,14 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire $u_n$ en fonction de $n$ pour tout $n$ de $\mathbb{N}$
         reasoning: |-
-          L'égalité précédente dit que la suite $w_n = \dfrac{1}{u_n}-1$ vérifie $w_{n+1}=3w_n$ : elle est géométrique de raison $3$ (R2) — c'est la technique de la suite homographique évoquée en tête de fichier (SCOPE NOTE), une transformation par « inverse moins une constante », différente de la forme $v_n=u_n-L$ enseignée au R8. Une fois $w_n$ connue explicitement, on inverse la définition pour revenir à $u_n$.
+          L'égalité précédente dit que la suite $w_n = \dfrac{1}{u_n}-1$ vérifie $w_{n+1}=3w_n$ : elle est géométrique de raison $3$ (chapitre 3) — c'est la technique de la suite homographique évoquée en tête de fichier (SCOPE NOTE), une transformation par « inverse moins une constante », différente de la forme $v_n=u_n-L$ enseignée au chapitre 9. Une fois $w_n$ connue explicitement, on inverse la définition pour revenir à $u_n$.
         steps:
           - math: 'w_n = \dfrac{1}{u_n} - 1, \quad w_{n+1} = 3w_n \quad \text{(question 5a)}'
-            note: "On nomme la suite auxiliaire : elle est géométrique de raison 3 (R2)."
+            note: "On nomme la suite auxiliaire : elle est géométrique de raison 3 (chapitre 3)."
           - math: 'w_0 = \dfrac{1}{u_0} - 1 = \dfrac{1}{\frac{1}{2}} - 1 = 2-1 = 1'
             note: "Premier terme de la suite géométrique w."
           - math: 'w_n = w_0\times 3^n = 3^n'
-            note: "Formule explicite d'une suite géométrique (R2), avec w0 = 1."
+            note: "Formule explicite d'une suite géométrique (chapitre 3), avec w0 = 1."
           - math: '\dfrac{1}{u_n} - 1 = 3^n \implies \dfrac{1}{u_n} = 1+3^n \implies u_n = \dfrac{1}{1+3^n}'
             note: "On inverse la définition de w_n pour retrouver u_n."
 
@@ -526,7 +526,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer par récurrence que $2 \le u_n \le 4$, pour tout entier naturel $n$
         reasoning: |-
-          Encadrement par récurrence (R1, R3) : l'intervalle $[2\,;\,4]$ doit être **stable** par la relation de récurrence. La forme $u_{n+1}=4-\dfrac{6}{1+u_n}$ (question 1a) est idéale pour ça : elle isole le terme variable $\dfrac{6}{1+u_n}$, dont il suffit d'encadrer les valeurs.
+          Encadrement par récurrence (chapitres 2 et 4) : l'intervalle $[2\,;\,4]$ doit être **stable** par la relation de récurrence. La forme $u_{n+1}=4-\dfrac{6}{1+u_n}$ (question 1a) est idéale pour ça : elle isole le terme variable $\dfrac{6}{1+u_n}$, dont il suffit d'encadrer les valeurs.
         steps:
           - math: 'u_0 = 4, \quad 2\le 4\le 4'
             note: "Initialisation : vrai au rang 0."
@@ -555,14 +555,14 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que la suite $(u_n)$ est décroissante et en déduire que $(u_n)$ est convergente.
         reasoning: |-
-          Le signe du pas $u_{n+1}-u_n$ vient de trois facteurs (question 2a), qu'on signe un par un sur l'intervalle $[2\,;\,4]$ établi à la question 1b : $u_n-1\ge 1>0$, $2-u_n\le 0$ (car $u_n\ge2$), et $1+u_n>0$. Un facteur positif fois un facteur négatif ou nul, divisé par un facteur positif, est négatif ou nul — la suite décroît. Combinée à la minoration par $2$ (question 1b), c'est exactement les deux hypothèses du théorème de la limite monotone (R7).
+          Le signe du pas $u_{n+1}-u_n$ vient de trois facteurs (question 2a), qu'on signe un par un sur l'intervalle $[2\,;\,4]$ établi à la question 1b : $u_n-1\ge 1>0$, $2-u_n\le 0$ (car $u_n\ge2$), et $1+u_n>0$. Un facteur positif fois un facteur négatif ou nul, divisé par un facteur positif, est négatif ou nul — la suite décroît. Combinée à la minoration par $2$ (question 1b), c'est exactement les deux hypothèses du théorème de la limite monotone (chapitre 8).
         steps:
           - math: '2\le u_n\le 4 \implies u_n-1\ge 1>0, \quad 2-u_n\le 0, \quad 1+u_n\ge 3>0'
             note: "On signe les trois facteurs sur l'intervalle [2;4] établi à la question 1b."
           - math: 'u_{n+1}-u_n = \dfrac{(u_n-1)(2-u_n)}{1+u_n} \le 0'
             note: "Facteur positif fois facteur négatif ou nul, divisé par un facteur positif : le résultat est négatif ou nul."
           - math: '(u_n) \text{ décroissante et minorée par } 2 \implies (u_n) \text{ converge}'
-            note: "Théorème de la limite monotone (R7) : les deux hypothèses sont réunies."
+            note: "Théorème de la limite monotone (chapitre 8) : les deux hypothèses sont réunies."
       - id: q3a
         part: "Une suite homographique auxiliaire"
         stem: |-
@@ -584,12 +584,12 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $u_n = 1 + \dfrac{1}{1 - \left(\dfrac{2}{3}\right)^{n+1}}$, pour tout entier naturel $n$
         reasoning: |-
-          La formule explicite d'une suite géométrique (R2) donne $v_n$ directement. Il reste à inverser la définition $v_n=\dfrac{2-u_n}{1-u_n}$ pour isoler $u_n$ — la même manipulation qu'à la fin de bk-2020-n-x1.
+          La formule explicite d'une suite géométrique (chapitre 3) donne $v_n$ directement. Il reste à inverser la définition $v_n=\dfrac{2-u_n}{1-u_n}$ pour isoler $u_n$ — la même manipulation qu'à la fin de bk-2020-n-x1.
         steps:
           - math: 'v_0 = \dfrac{2-u_0}{1-u_0} = \dfrac{2-4}{1-4} = \dfrac{-2}{-3} = \dfrac{2}{3}'
             note: "Premier terme de la suite géométrique v."
           - math: 'v_n = v_0\left(\dfrac{2}{3}\right)^n = \left(\dfrac{2}{3}\right)^{n+1}'
-            note: "Formule explicite (R2), avec v0 = 2/3 : l'exposant se décale à n+1."
+            note: "Formule explicite (chapitre 3), avec v0 = 2/3 : l'exposant se décale à n+1."
           - math: 'v_n = \dfrac{2-u_n}{1-u_n} \implies v_n(1-u_n) = 2-u_n \implies u_n(1-v_n) = 2-v_n'
             note: "On repart de la définition de v_n et on isole les termes en u_n."
           - math: 'u_n = \dfrac{2-v_n}{1-v_n} = \dfrac{(1-v_n)+1}{1-v_n} = 1+\dfrac{1}{1-v_n} = 1+\dfrac{1}{1-\left(\frac{2}{3}\right)^{n+1}}'
@@ -598,12 +598,12 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer la limite de la suite $(u_n)$
         reasoning: |-
-          Comme $-1<\dfrac{2}{3}<1$, la suite géométrique $\left(\dfrac{2}{3}\right)^{n+1}$ tend vers $0$ (R5) ; le dénominateur $1-\left(\dfrac{2}{3}\right)^{n+1}$ tend donc vers $1$, non nul, ce qui autorise à passer à la limite dans le quotient (R5, opérations sur les limites). On retrouve — deux méthodes différentes, même réponse — une valeur cohérente avec la convergence déjà garantie par le théorème de la limite monotone à la question 2b.
+          Comme $-1<\dfrac{2}{3}<1$, la suite géométrique $\left(\dfrac{2}{3}\right)^{n+1}$ tend vers $0$ (chapitre 6) ; le dénominateur $1-\left(\dfrac{2}{3}\right)^{n+1}$ tend donc vers $1$, non nul, ce qui autorise à passer à la limite dans le quotient (chapitre 6, opérations sur les limites). On retrouve — deux méthodes différentes, même réponse — une valeur cohérente avec la convergence déjà garantie par le théorème de la limite monotone à la question 2b.
         steps:
           - math: '\left|\dfrac{2}{3}\right|<1 \implies \lim_{n\to+\infty}\left(\dfrac{2}{3}\right)^{n+1} = 0'
-            note: "Suite géométrique de raison entre -1 et 1 (R5)."
+            note: "Suite géométrique de raison entre -1 et 1 (chapitre 6)."
           - math: '\lim_{n\to+\infty}\left(1-\left(\dfrac{2}{3}\right)^{n+1}\right) = 1-0 = 1'
-            note: "Opérations sur les limites (R5)."
+            note: "Opérations sur les limites (chapitre 6)."
           - math: '\lim_{n\to+\infty} u_n = 1+\dfrac{1}{1} = 2'
             note: "Le dénominateur tend vers 1, non nul : on passe à la limite dans le quotient."
 
@@ -707,7 +707,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que : $(\forall n \in \mathbb{N})\ ;\quad |u_{n+1} - \alpha| \le \dfrac{1}{2}|u_n - \alpha|$
         reasoning: |-
-          C'est le pas central de toute la Partie II : transformer une borne sur la dérivée (question 1-b) en une borne sur l'écart entre deux termes consécutifs de la suite. L'outil est l'**inégalité des accroissements finis** (corollaire du théorème des accroissements finis, notion `derivabilite-etude-fonctions` : si $f$ est dérivable sur un intervalle et $|f'|\le k$ partout sur cet intervalle, alors $|f(b)-f(a)|\le k|b-a|$ pour tous $a,b$ de l'intervalle) — outil hors du corps R0-R10 de cette leçon, déjà mobilisé pour la même construction dans `bk-2025-n-x1` de `content/maths/fonction-exponentielle/bank.yaml`.
+          C'est le pas central de toute la Partie II : transformer une borne sur la dérivée (question 1-b) en une borne sur l'écart entre deux termes consécutifs de la suite. L'outil est l'**inégalité des accroissements finis** (corollaire du théorème des accroissements finis, notion `derivabilite-etude-fonctions` : si $f$ est dérivable sur un intervalle et $|f'|\le k$ partout sur cet intervalle, alors $|f(b)-f(a)|\le k|b-a|$ pour tous $a,b$ de l'intervalle) — outil hors du corps des chapitres 1 à 12 de cette leçon, déjà mobilisé pour la même construction dans `bk-2025-n-x1` de `content/maths/fonction-exponentielle/bank.yaml`.
 
           Applique-la à $f_0$ (dérivable sur $\mathbb{R}$, $|f_0'|\le\dfrac12$ partout, question 1-b) entre $a=\alpha$ et $b=u_n$ :
 
@@ -725,7 +725,7 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que : $(\forall n \in \mathbb{N})\ ;\quad |u_n - \alpha| \le \left(\dfrac{1}{2}\right)^{n}|\alpha|$
         reasoning: |-
-          La question précédente donne un pas : d'un rang au suivant, l'écart à $\alpha$ est au moins divisé par $2$. Empile ce pas $n$ fois, par récurrence (R1), pour obtenir la borne au rang $n$ à partir du rang $0$.
+          La question précédente donne un pas : d'un rang au suivant, l'écart à $\alpha$ est au moins divisé par $2$. Empile ce pas $n$ fois, par récurrence (chapitre 2), pour obtenir la borne au rang $n$ à partir du rang $0$.
 
           **Initialisation.** Au rang $0$ : $|u_0-\alpha|=|0-\alpha|=|\alpha|=\left(\dfrac12\right)^0|\alpha|$ — égalité, donc vraie.
 
@@ -745,10 +745,10 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que la suite $(u_n)_{n \ge 0}$ converge vers $\alpha$
         reasoning: |-
-          On tient un encadrement de $|u_n-\alpha|$ entre $0$ et une suite explicite qui tend vers $0$ : $\left(\dfrac12\right)^n$ est géométrique de raison $\dfrac12\in\,]{-1};1[$, donc $\left(\dfrac12\right)^n\to0$ (R5), et $|\alpha|$ est une constante, donc $\left(\dfrac12\right)^n|\alpha|\to0$ aussi. Le théorème des gendarmes (R6), appliqué à $0\le|u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha|$, donne $|u_n-\alpha|\to0$ — c'est-à-dire, par définition, $u_n\to\alpha$.
+          On tient un encadrement de $|u_n-\alpha|$ entre $0$ et une suite explicite qui tend vers $0$ : $\left(\dfrac12\right)^n$ est géométrique de raison $\dfrac12\in\,]{-1};1[$, donc $\left(\dfrac12\right)^n\to0$ (chapitre 6), et $|\alpha|$ est une constante, donc $\left(\dfrac12\right)^n|\alpha|\to0$ aussi. Le théorème des gendarmes (chapitre 7), appliqué à $0\le|u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha|$, donne $|u_n-\alpha|\to0$ — c'est-à-dire, par définition, $u_n\to\alpha$.
         steps:
           - math: '\left|\dfrac12\right|<1 \ \Rightarrow\ \lim_{n\to+\infty}\left(\dfrac12\right)^n = 0 \ \Rightarrow\ \lim_{n\to+\infty}\left(\dfrac12\right)^n|\alpha| = 0'
-            note: "Suite geometrique de raison entre -1 et 1 (R5) : elle tend vers 0."
+            note: "Suite geometrique de raison entre -1 et 1 (chapitre 6) : elle tend vers 0."
           - math: '0\le|u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha|,\quad \left(\dfrac12\right)^n|\alpha|\to0 \ \Rightarrow\ |u_n-\alpha|\to0 \quad (\text{theoreme des gendarmes, R6})'
             note: "u_n moins alpha est encadre par 0 et une suite qui tend vers 0."
           - math: '\Rightarrow\ \lim_{n\to+\infty} u_n = \alpha'
@@ -835,7 +835,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que la suite $(x_n)_{n \ge 2}$ est convergente.
         reasoning: |-
-          $(x_n)_{n\ge2}$ est strictement décroissante (question précédente) et minorée par $0$ (question 1-b, $x_n>0$ pour tout $n\ge2$) : les deux hypothèses exactes du théorème de la limite monotone (R7) sont réunies — décroissante et minorée. La suite converge.
+          $(x_n)_{n\ge2}$ est strictement décroissante (question précédente) et minorée par $0$ (question 1-b, $x_n>0$ pour tout $n\ge2$) : les deux hypothèses exactes du théorème de la limite monotone (chapitre 8) sont réunies — décroissante et minorée. La suite converge.
         steps:
           - math: '(x_n)_{n\ge2} \text{ decroissante} \quad (\text{q2-b}), \qquad x_n>0 \quad (\text{q1-b, minoration}) \ \Rightarrow\ (x_n)_{n\ge2} \text{ converge} \quad (\text{theoreme de la limite monotone, R7})'
             note: "Decroissante et minoree : les deux hypotheses du theoreme de la limite monotone."
@@ -868,9 +868,9 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire $\displaystyle\lim_{n \to +\infty} x_n$, puis montrer que $\displaystyle\lim_{n \to +\infty} n x_n = 1$
         reasoning: |-
-          Le membre de gauche $\dfrac1n$ et le membre de droite $\dfrac1n\left(\dfrac{2e}{1+e}\right)$ de l'encadrement précédent tendent tous deux vers $0$ quand $n\to+\infty$ ($\dfrac{2e}{1+e}$ est une constante) : par le théorème des gendarmes (R6), $x_n\to0$.
+          Le membre de gauche $\dfrac1n$ et le membre de droite $\dfrac1n\left(\dfrac{2e}{1+e}\right)$ de l'encadrement précédent tendent tous deux vers $0$ quand $n\to+\infty$ ($\dfrac{2e}{1+e}$ est une constante) : par le théorème des gendarmes (chapitre 7), $x_n\to0$.
 
-          Pour la seconde limite, repars de l'égalité établie à la question 3-a, $nx_n=\dfrac{2e^{x_n}}{1+e^{x_n}}$ : c'est une fonction continue de $x_n$, et $x_n\to0$, donc par continuité de $\exp$ et opérations usuelles sur les limites (R5) :
+          Pour la seconde limite, repars de l'égalité établie à la question 3-a, $nx_n=\dfrac{2e^{x_n}}{1+e^{x_n}}$ : c'est une fonction continue de $x_n$, et $x_n\to0$, donc par continuité de $\exp$ et opérations usuelles sur les limites (chapitre 6) :
 
           $$\lim_{n\to+\infty} nx_n = \frac{2e^0}{1+e^0} = \frac{2}{2} = 1$$
         steps:
@@ -897,7 +897,7 @@ entries:
 
           $$0 < (x_n)^n \le (x_2)^n$$
 
-          Or $0<x_2<1$ : $(x_2)^n$ est une suite géométrique de raison dans $]0,1[$, donc $(x_2)^n\to0$ (R5, même mécanisme que $\left(\dfrac12\right)^n$ en Partie II). Le théorème des gendarmes (R6), appliqué à $0<(x_n)^n\le(x_2)^n\to0$, donne :
+          Or $0<x_2<1$ : $(x_2)^n$ est une suite géométrique de raison dans $]0,1[$, donc $(x_2)^n\to0$ (chapitre 6, même mécanisme que $\left(\dfrac12\right)^n$ en Partie II). Le théorème des gendarmes (chapitre 7), appliqué à $0<(x_n)^n\le(x_2)^n\to0$, donne :
 
           $$\lim_{n\to+\infty} (x_n)^n = 0$$
         steps:

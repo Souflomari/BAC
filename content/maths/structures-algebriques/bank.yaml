@@ -309,7 +309,7 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que la loi $\ast$ est commutative sur $\mathbb{C}$
         reasoning: |-
-          La commutativité (rung R2) demande $z_1 \ast z_2 = z_2 \ast z_1$ pour **tous** $z_1,z_2 \in \mathbb{C}$ — pas sur un exemple isolé. On calcule les deux membres directement avec la définition de $\ast$, en échangeant les rôles des deux complexes dans la formule, puis on compare partie réelle et partie imaginaire.
+          La commutativité (chapitre 3) demande $z_1 \ast z_2 = z_2 \ast z_1$ pour **tous** $z_1,z_2 \in \mathbb{C}$ — pas sur un exemple isolé. On calcule les deux membres directement avec la définition de $\ast$, en échangeant les rôles des deux complexes dans la formule, puis on compare partie réelle et partie imaginaire.
 
           Le calcul se ramène entièrement à la commutativité de $+$ et $\times$ sur $\mathbb{R}$, déjà connue depuis le collège : $xa=ax$, et $x^2b+a^2y$ n'est qu'une réécriture, dans un autre ordre, de $a^2y+x^2b$.
         steps:
@@ -325,7 +325,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que la loi $\ast$ est associative sur $\mathbb{C}$
         reasoning: |-
-          Contrairement à la commutativité, l'associativité (rung R2) ne se lit jamais directement — elle met en jeu **trois** éléments à la fois, et ici $\mathbb{C}$ est infini : pas de table possible, seulement le calcul. On pose trois complexes $z_1=x+yi$, $z_2=a+bi$, $z_3=c+di$, on développe les deux parenthésages $(z_1\ast z_2)\ast z_3$ et $z_1\ast(z_2\ast z_3)$ jusqu'au bout, et on vérifie qu'ils coïncident terme à terme.
+          Contrairement à la commutativité, l'associativité (chapitre 3) ne se lit jamais directement — elle met en jeu **trois** éléments à la fois, et ici $\mathbb{C}$ est infini : pas de table possible, seulement le calcul. On pose trois complexes $z_1=x+yi$, $z_2=a+bi$, $z_3=c+di$, on développe les deux parenthésages $(z_1\ast z_2)\ast z_3$ et $z_1\ast(z_2\ast z_3)$ jusqu'au bout, et on vérifie qu'ils coïncident terme à terme.
 
           Le point de vigilance : on applique la définition de $\ast$ **deux fois de suite**, en réutilisant à chaque étape la partie réelle et la partie imaginaire du résultat intermédiaire — une erreur de recopie à ce stade casse tout le calcul.
         steps:
@@ -341,7 +341,7 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que la loi $\ast$ admet un élément neutre $e$ que l'on déterminera.
         reasoning: |-
-          Un neutre (rung R2) est un complexe $e$ fixe, unique, tel que $z\ast e=z$ pour **tout** $z\in\mathbb{C}$. On pose $e=p+qi$ et on impose cette égalité ; comme elle doit tenir pour tous $x,y$ réels à la fois, on identifie séparément le coefficient qui multiplie $x$ (partie réelle) et celui qui doit annuler tout terme parasite (partie imaginaire), pour en déduire $p$ et $q$.
+          Un neutre (chapitre 3) est un complexe $e$ fixe, unique, tel que $z\ast e=z$ pour **tout** $z\in\mathbb{C}$. On pose $e=p+qi$ et on impose cette égalité ; comme elle doit tenir pour tous $x,y$ réels à la fois, on identifie séparément le coefficient qui multiplie $x$ (partie réelle) et celui qui doit annuler tout terme parasite (partie imaginaire), pour en déduire $p$ et $q$.
 
           La commutativité déjà établie à la question précédente dispense de vérifier $e\ast z=z$ séparément : les deux membres sont automatiquement égaux.
         steps:
@@ -357,7 +357,7 @@ entries:
         stem: |-
           **(0,25 pt)** Soit $(x,y) \in \mathbb{R}^* \times \mathbb{R}$. Montrer que le nombre complexe $x+yi$ admet le nombre complexe $\dfrac{1}{x} - \dfrac{y}{x^4}i$ comme symétrique pour la loi $\ast$
         reasoning: |-
-          Un symétrique (rung R2) de $x+yi$ est un complexe $s$ tel que $(x+yi)\ast s$ redonne le neutre $e=1$ trouvé à la question précédente. La condition $x\neq0$ sert uniquement à garantir que $\dfrac1x$ et $\dfrac{y}{x^4}$ existent — c'est exactement pour ça que l'énoncé exclut $x=0$ du domaine.
+          Un symétrique (chapitre 3) de $x+yi$ est un complexe $s$ tel que $(x+yi)\ast s$ redonne le neutre $e=1$ trouvé à la question précédente. La condition $x\neq0$ sert uniquement à garantir que $\dfrac1x$ et $\dfrac{y}{x^4}$ existent — c'est exactement pour ça que l'énoncé exclut $x=0$ du domaine.
 
           Rien à deviner ici : le candidat est donné, il suffit de **vérifier** — poser $a=\dfrac1x$, $b=-\dfrac{y}{x^4}$ dans la définition de $\ast$, et constater que le résultat vaut $1$.
         steps:
@@ -372,7 +372,7 @@ entries:
         stem: |-
           On considère le sous-ensemble $E$ de $\mathbb{C}$ défini par : $E = \left\{ x+yi \ / \ x \in \mathbb{R}_+^*\ ;\ y \in \mathbb{R} \right\}$. **(0,25 pt)** Montrer que $E$ est stable pour la loi $\ast$ dans $\mathbb{C}$
         reasoning: |-
-          La stabilité de $E$ (rung R1, la condition « interne » restreinte à un sous-ensemble) demande que $z_1\ast z_2$ reste dans $E$ dès que $z_1,z_2\in E$. Appartenir à $E$ signifie une seule chose : avoir une partie réelle strictement positive. $E$ est infini — impossible de le vérifier sur une table comme au R1 — donc on regarde directement la formule de $\ast$ et on observe le signe de la partie réelle du résultat.
+          La stabilité de $E$ (chapitre 2, la condition « interne » restreinte à un sous-ensemble) demande que $z_1\ast z_2$ reste dans $E$ dès que $z_1,z_2\in E$. Appartenir à $E$ signifie une seule chose : avoir une partie réelle strictement positive. $E$ est infini — impossible de le vérifier sur une table comme au chapitre 2 — donc on regarde directement la formule de $\ast$ et on observe le signe de la partie réelle du résultat.
 
           La partie réelle de $z_1\ast z_2$ est $xa$, produit de deux réels strictement positifs, donc strictement positif : le résultat reste dans $E$, sans condition supplémentaire sur sa partie imaginaire (elle peut être n'importe quel réel dans $E$).
         steps:
@@ -386,9 +386,9 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $(E,\ast)$ est un groupe commutatif.
         reasoning: |-
-          On reprend la liste de contrôle du groupe (rung R3), cette fois restreinte à $E$ — en réutilisant, sans les refaire, tous les résultats déjà établis : la loi interne, c'est la stabilité de la question précédente ; l'associativité et la commutativité sont héritées de $\mathbb{C}$ tout entier (questions 1 et 2 : ce qui est vrai pour tous les complexes reste vrai en particulier pour ceux de $E$).
+          On reprend la liste de contrôle du groupe (chapitre 4), cette fois restreinte à $E$ — en réutilisant, sans les refaire, tous les résultats déjà établis : la loi interne, c'est la stabilité de la question précédente ; l'associativité et la commutativité sont héritées de $\mathbb{C}$ tout entier (questions 1 et 2 : ce qui est vrai pour tous les complexes reste vrai en particulier pour ceux de $E$).
 
-          Restent le neutre et les symétriques, à vérifier **dans $E$**, pas seulement dans $\mathbb{C}$ : le neutre $e=1=1+0i$ a une partie réelle $1>0$, donc $e\in E$ ; et le symétrique de $x+yi$ (avec $x>0$, donc $x\neq0$, le domaine de la question 4) a pour partie réelle $\dfrac1x$, qui reste $>0$ dès que $x>0$ — c'est là que la condition $x>0$ paie. Les quatre axiomes tiennent dans $E$, et la commutativité aussi (rung R4) : $(E,\ast)$ est un groupe commutatif.
+          Restent le neutre et les symétriques, à vérifier **dans $E$**, pas seulement dans $\mathbb{C}$ : le neutre $e=1=1+0i$ a une partie réelle $1>0$, donc $e\in E$ ; et le symétrique de $x+yi$ (avec $x>0$, donc $x\neq0$, le domaine de la question 4) a pour partie réelle $\dfrac1x$, qui reste $>0$ dès que $x>0$ — c'est là que la condition $x>0$ paie. Les quatre axiomes tiennent dans $E$, et la commutativité aussi (chapitre 6) : $(E,\ast)$ est un groupe commutatif.
         steps:
           - math: '\ast \ \text{interne sur } E\ (\text{q5}); \quad \text{associative et commutative}\ (\text{q2, q1})'
             note: "Deux axiomes hérités de C, un obtenu à la question précédente."
@@ -403,7 +403,7 @@ entries:
         stem: |-
           On considère le sous-ensemble $G$ de $E$ défini par : $G = \left\{ 1+yi\ /\ y \in \mathbb{R} \right\}$. **(0,5 pt)** Montrer que $G$ est un sous-groupe de $(E,\ast)$
         reasoning: |-
-          $G$ est inclus dans $E$ (partie réelle $1>0$ pour tout élément de $G$) — reste à montrer que $(G,\ast)$ est **lui-même** un groupe, exactement la même démarche qu'à la question précédente pour $E$, un cran plus bas : on recoche les quatre axiomes du R3, mais cette fois restreints à $G$.
+          $G$ est inclus dans $E$ (partie réelle $1>0$ pour tout élément de $G$) — reste à montrer que $(G,\ast)$ est **lui-même** un groupe, exactement la même démarche qu'à la question précédente pour $E$, un cran plus bas : on recoche les quatre axiomes du chapitre 4, mais cette fois restreints à $G$.
 
           Stabilité : combiner deux éléments de $G$ redonne un résultat de partie réelle $1\times1=1$, donc encore dans $G$. Associativité : héritée automatiquement de $\mathbb{C}$ (question 2), donc valable a fortiori sur $G$. Neutre : $e=1=1+0i \in G$ (cas $y=0$). Symétrique : celui de $1+yi$, donné par la formule de la question 4 avec $x=1$, vaut $1-yi$ — encore de la forme $1+(\cdot)i$, donc dans $G$. Les quatre axiomes tenant dans $G$, $(G,\ast)$ est un groupe : c'est exactement ce que signifie « $G$ est un sous-groupe de $(E,\ast)$ ».
         steps:
@@ -422,7 +422,7 @@ entries:
         stem: |-
           On considère l'ensemble $F = \left\{ M(x,y) = \begin{pmatrix} x & y \\ 0 & x \end{pmatrix} \ / \ x \in \mathbb{R}_+^*\ ;\ y \in \mathbb{R} \right\}$. **(0,25 pt)** Montrer que $F$ est stable pour la loi $\times$ dans $M_2(\mathbb{R})$
         reasoning: |-
-          Même geste que pour $E$ à la question 5 (rung R1, stabilité), mais transposé aux matrices et à la loi $\times$ de $M_2(\mathbb{R})$ : on calcule le produit de deux matrices quelconques de $F$ et on vérifie que le résultat garde la même forme, avec un coefficient diagonal strictement positif.
+          Même geste que pour $E$ à la question 5 (chapitre 2, stabilité), mais transposé aux matrices et à la loi $\times$ de $M_2(\mathbb{R})$ : on calcule le produit de deux matrices quelconques de $F$ et on vérifie que le résultat garde la même forme, avec un coefficient diagonal strictement positif.
 
           Le produit de deux matrices triangulaires supérieures à coefficients diagonaux égaux (la forme $M(x,y)$) reste de cette même forme — c'est ce que le calcul matriciel, ligne par colonne, confirme directement.
         steps:
@@ -436,7 +436,7 @@ entries:
         stem: |-
           Soit $\varphi$ l'application de $E$ vers $F$ qui à tout nombre complexe $x+yi$ de $E$ fait correspondre la matrice $M(x^2,y) = \begin{pmatrix} x^2 & y \\ 0 & x^2 \end{pmatrix}$ de $F$. **(0,5 pt)** Montrer que $\varphi$ est un isomorphisme de $(E,\ast)$ vers $(F,\times)$
         reasoning: |-
-          Un isomorphisme (rung R7) est **à la fois** bijectif et morphisme — le pont introduit juste avant l'exercice dans la leçon. Trois choses à établir, dans cet ordre : $\varphi$ transforme la loi $\ast$ en la loi $\times$ (le morphisme, le cœur du calcul), $\varphi$ ne colle jamais deux éléments distincts de $E$ sur la même image (injectivité), et $\varphi$ atteint bien toute matrice de $F$ (surjectivité).
+          Un isomorphisme (chapitre 10) est **à la fois** bijectif et morphisme — le pont introduit juste avant l'exercice dans la leçon. Trois choses à établir, dans cet ordre : $\varphi$ transforme la loi $\ast$ en la loi $\times$ (le morphisme, le cœur du calcul), $\varphi$ ne colle jamais deux éléments distincts de $E$ sur la même image (injectivité), et $\varphi$ atteint bien toute matrice de $F$ (surjectivité).
 
           Le morphisme se vérifie en développant $\varphi(z_1\ast z_2)$ d'un côté et $\varphi(z_1)\times\varphi(z_2)$ de l'autre (avec la règle de produit de la question précédente) : c'est précisément le carré dans la définition $\varphi(x+yi)=M(x^2,y)$ qui fait coïncider $(xa)^2$ et $x^2a^2$ — sans ce carré, les deux membres ne coïncideraient pas. Pour l'injectivité, $x,a>0$ et $x^2=a^2$ forcent $x=a$ (le carré est injectif sur les réels strictement positifs, pas sur $\mathbb{R}$ tout entier — c'est exactement pourquoi $E$ exige $x>0$). Pour la surjectivité, toute matrice $M(u,v)$ de $F$ (donc $u>0$) admet l'antécédent $\sqrt{u}+vi \in E$.
         steps:
@@ -456,7 +456,7 @@ entries:
         stem: |-
           **(0,25 pt)** En déduire que $(F,\times)$ est un groupe commutatif.
         reasoning: |-
-          C'est le rendement direct de l'isomorphisme (rung R7) : puisque $(E,\ast)$ est un groupe commutatif (question 6) et que $\varphi$ en est un isomorphisme vers $(F,\times)$ (question précédente), toute la structure se **transporte** — commutativité, neutre, symétriques compris. Aucun axiome n'a besoin d'être re-vérifié directement sur $F$.
+          C'est le rendement direct de l'isomorphisme (chapitre 10) : puisque $(E,\ast)$ est un groupe commutatif (question 6) et que $\varphi$ en est un isomorphisme vers $(F,\times)$ (question précédente), toute la structure se **transporte** — commutativité, neutre, symétriques compris. Aucun axiome n'a besoin d'être re-vérifié directement sur $F$.
 
           Comme repère concret : l'image du neutre $e=1$ de $E$ est $\varphi(1)=M(1^2,0)=M(1,0)=I$, la matrice unité — cohérent avec le fait que $(M_2(\mathbb{R}),+,\times)$ admet $I$ comme unité, rappelé en tête d'énoncé.
         steps:
@@ -504,14 +504,14 @@ entries:
 
       $$E = \left\{ \begin{pmatrix} 1 & x \\ 0 & y \end{pmatrix} \ /\ x \in \mathbb{R}\ \text{ et }\ y \in \mathbb{R}^* \right\}$$
 
-      L'exercice enchaîne stabilité (rung R1), groupe non commutatif (rung R3, avec le contraste du rung R4), puis un homomorphisme (rung R7) qui transporte cette fois la structure d'un groupe **déjà connu**, $(\mathbb{R}^*,\times)$, vers un sous-ensemble plus restreint $F$ — le sens inverse de l'isomorphisme du sujet 2019, mais le même geste.
+      L'exercice enchaîne stabilité (chapitre 2), groupe non commutatif (chapitre 4, avec le contraste du chapitre 6), puis un homomorphisme (chapitre 10) qui transporte cette fois la structure d'un groupe **déjà connu**, $(\mathbb{R}^*,\times)$, vers un sous-ensemble plus restreint $F$ — le sens inverse de l'isomorphisme du sujet 2019, mais le même geste.
     questions:
       - id: q1
         part: "L'ensemble $E$ : stabilité, non-commutativité, un calcul de vérification"
         stem: |-
           **(0,5 pt)** Montrer que $E$ est une partie stable de $(M_2(\mathbb{R}),\times)$
         reasoning: |-
-          La stabilité de $E$ (rung R1, ici restreinte à ce sous-ensemble de $M_2(\mathbb{R})$) demande que le produit de deux éléments de $E$ reste dans $E$. Appartenir à $E$ signifie une forme précise : un $1$ fixe en haut à gauche, un $0$ fixe en bas à gauche, un réel quelconque en haut à droite, et un réel **non nul** en bas à droite. On calcule le produit matriciel de deux éléments génériques de $E$ et on vérifie que le résultat garde cette forme.
+          La stabilité de $E$ (chapitre 2, ici restreinte à ce sous-ensemble de $M_2(\mathbb{R})$) demande que le produit de deux éléments de $E$ reste dans $E$. Appartenir à $E$ signifie une forme précise : un $1$ fixe en haut à gauche, un $0$ fixe en bas à gauche, un réel quelconque en haut à droite, et un réel **non nul** en bas à droite. On calcule le produit matriciel de deux éléments génériques de $E$ et on vérifie que le résultat garde cette forme.
 
           Le seul point qui demande un peu d'attention est le coefficient en bas à droite du résultat : c'est un produit de deux réels non nuls, donc lui-même non nul — c'est précisément ce qui maintient le résultat dans $E$, et non dans un ensemble plus large où ce coefficient pourrait s'annuler.
         steps:
@@ -525,7 +525,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que la multiplication n'est pas commutative dans $E$
         reasoning: |-
-          Pour réfuter la commutativité (rung R2), un seul contre-exemple numérique suffit — pas besoin de traiter le cas général en entier, contrairement à ce qui serait nécessaire pour la **prouver**. On compare d'abord les deux formules générales, obtenues en échangeant les rôles des deux facteurs dans le calcul de la question précédente : les coefficients bas-droit coïncident toujours ($yb=by$, car $\times$ est commutative dans $\mathbb{R}$), mais rien ne garantit que les coefficients haut-droit coïncident.
+          Pour réfuter la commutativité (chapitre 3), un seul contre-exemple numérique suffit — pas besoin de traiter le cas général en entier, contrairement à ce qui serait nécessaire pour la **prouver**. On compare d'abord les deux formules générales, obtenues en échangeant les rôles des deux facteurs dans le calcul de la question précédente : les coefficients bas-droit coïncident toujours ($yb=by$, car $\times$ est commutative dans $\mathbb{R}$), mais rien ne garantit que les coefficients haut-droit coïncident.
 
           Il suffit alors de choisir des valeurs numériques simples où ces deux coefficients haut-droit diffèrent effectivement, pour obtenir deux matrices produits distinctes selon l'ordre.
         steps:
@@ -543,7 +543,7 @@ entries:
 
           $$\begin{pmatrix} 1 & x \\ 0 & y \end{pmatrix}\begin{pmatrix} 1 & -\dfrac{x}{y} \\ 0 & \dfrac{1}{y} \end{pmatrix} = \begin{pmatrix} 1 & -\dfrac{x}{y} \\ 0 & \dfrac{1}{y} \end{pmatrix}\begin{pmatrix} 1 & x \\ 0 & y \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$$
         reasoning: |-
-          Ce calcul prépare directement le symétrique du rung R2, mais dans un ensemble déjà su non commutatif (question précédente) : il faut donc vérifier les **deux** produits, dans les deux ordres, sans supposer que l'un entraîne l'autre. Rien à deviner — le candidat est donné par l'énoncé, il suffit d'appliquer deux fois la règle de multiplication établie à la question 1, et de constater que les deux produits valent l'unité $I$.
+          Ce calcul prépare directement le symétrique du chapitre 3, mais dans un ensemble déjà su non commutatif (question précédente) : il faut donc vérifier les **deux** produits, dans les deux ordres, sans supposer que l'un entraîne l'autre. Rien à deviner — le candidat est donné par l'énoncé, il suffit d'appliquer deux fois la règle de multiplication établie à la question 1, et de constater que les deux produits valent l'unité $I$.
 
           Le quotient par $y$ est licite à chaque étape : $y \in \mathbb{R}^*$, donc jamais nul.
         steps:
@@ -558,9 +558,9 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $(E,\times)$ est un groupe non commutatif.
         reasoning: |-
-          On reprend la liste de contrôle du groupe (rung R3), restreinte à $E$, en réutilisant sans les refaire les résultats déjà établis : loi interne, c'est la stabilité de la question 1 ; associativité, un fait général admis — la multiplication des matrices est **toujours** associative dans $M_2(\mathbb{R})$, exactement comme la composition des applications l'était pour le groupe des symétries du rectangle au rung R3.
+          On reprend la liste de contrôle du groupe (chapitre 4), restreinte à $E$, en réutilisant sans les refaire les résultats déjà établis : loi interne, c'est la stabilité de la question 1 ; associativité, un fait général admis — la multiplication des matrices est **toujours** associative dans $M_2(\mathbb{R})$, exactement comme la composition des applications l'était pour le groupe des symétries du rectangle au chapitre 4.
 
-          Restent le neutre et le symétrique. Le neutre $I = \begin{pmatrix}1&0\\0&1\end{pmatrix}$ appartient à $E$ (avec $x=0$ réel et $y=1$ non nul) — c'est le rappel de tête d'énoncé. Le symétrique de chaque élément est exactement le candidat vérifié à la question 3 : il reste dans $E$ car $y \neq 0$ entraîne $\dfrac{1}{y} \neq 0$. Les quatre axiomes tiennent dans $E$ : $(E,\times)$ est un groupe, non commutatif par la question 2 (rung R4, mais en négatif — c'est le contre-exemple qui compte ici, pas la définition positive).
+          Restent le neutre et le symétrique. Le neutre $I = \begin{pmatrix}1&0\\0&1\end{pmatrix}$ appartient à $E$ (avec $x=0$ réel et $y=1$ non nul) — c'est le rappel de tête d'énoncé. Le symétrique de chaque élément est exactement le candidat vérifié à la question 3 : il reste dans $E$ car $y \neq 0$ entraîne $\dfrac{1}{y} \neq 0$. Les quatre axiomes tiennent dans $E$ : $(E,\times)$ est un groupe, non commutatif par la question 2 (chapitre 6, mais en négatif — c'est le contre-exemple qui compte ici, pas la définition positive).
         steps:
           - math: '\times \ \text{interne sur } E \ (\text{q1}); \qquad \times \ \text{associative} \ (\text{produit matriciel, toujours associatif})'
             note: "Deux axiomes : le premier vient de la question 1, le second est un fait général admis."
@@ -575,7 +575,7 @@ entries:
         stem: |-
           On considère le sous-ensemble $F$ de $E$ défini par : $F = \left\{ M(x) = \begin{pmatrix} 1 & x-1 \\ 0 & x \end{pmatrix} \ /\ x \in \mathbb{R}^* \right\}$. **(0,5 pt)** Montrer que l'application $\varphi$ définie par : $(\forall x \in \mathbb{R}^*)$ ; $\varphi(x) = M(x)$ est un homomorphisme de $(\mathbb{R}^*,\times)$ vers $(E,\times)$.
         reasoning: |-
-          Un homomorphisme (le geste-pont du rung R7, sans exiger la bijectivité pour l'instant) demande que $\varphi$ transforme la loi $\times$ de $\mathbb{R}^*$ en la loi $\times$ de $E$ : $\varphi(x \times t)$ doit égaler $\varphi(x) \times \varphi(t)$, pour tous $x,t \in \mathbb{R}^*$. On développe le produit matriciel $\varphi(x) \times \varphi(t)$ avec la règle de la question 1 (adaptée : ici le coefficient haut-droit vaut $x-1$, pas un réel libre), et on doit retrouver exactement $\varphi(xt) = M(xt)$.
+          Un homomorphisme (le geste-pont du chapitre 10, sans exiger la bijectivité pour l'instant) demande que $\varphi$ transforme la loi $\times$ de $\mathbb{R}^*$ en la loi $\times$ de $E$ : $\varphi(x \times t)$ doit égaler $\varphi(x) \times \varphi(t)$, pour tous $x,t \in \mathbb{R}^*$. On développe le produit matriciel $\varphi(x) \times \varphi(t)$ avec la règle de la question 1 (adaptée : ici le coefficient haut-droit vaut $x-1$, pas un réel libre), et on doit retrouver exactement $\varphi(xt) = M(xt)$.
 
           Le calcul se ramène à une simplification algébrique sur $\mathbb{R}$ : le $-1$ et le $t$ introduits par la formule de la question 1 s'annulent pour laisser $xt-1$, exactement le coefficient haut-droit attendu de $M(xt)$.
         steps:
@@ -591,7 +591,7 @@ entries:
         stem: |-
           **(1 pt)** En déduire que $(F,\times)$ est un groupe commutatif dont on précisera l'élément neutre.
         reasoning: |-
-          On mobilise le pont du rung R7 une seconde fois, mais dans l'autre sens que le sujet 2019 : ici $\varphi$ part d'un groupe **déjà connu**, $(\mathbb{R}^*,\times)$, commutatif par le rappel de tête d'énoncé, et son homomorphisme (question précédente) a pour image exactement $F$ — $F$ est **défini** comme l'ensemble des $M(x)$ pour $x \in \mathbb{R}^*$, c'est-à-dire $\varphi(\mathbb{R}^*)$ lui-même. $\varphi$ est de plus trivialement bijective de $\mathbb{R}^*$ vers $F$ : deux réels distincts $x$ et $t$ donnent deux matrices distinctes, puisque leur coefficient bas-droit ($x$ ou $t$) les distingue déjà — $\varphi$ est injective, et surjective sur $F$ par construction même de $F$.
+          On mobilise le pont du chapitre 10 une seconde fois, mais dans l'autre sens que le sujet 2019 : ici $\varphi$ part d'un groupe **déjà connu**, $(\mathbb{R}^*,\times)$, commutatif par le rappel de tête d'énoncé, et son homomorphisme (question précédente) a pour image exactement $F$ — $F$ est **défini** comme l'ensemble des $M(x)$ pour $x \in \mathbb{R}^*$, c'est-à-dire $\varphi(\mathbb{R}^*)$ lui-même. $\varphi$ est de plus trivialement bijective de $\mathbb{R}^*$ vers $F$ : deux réels distincts $x$ et $t$ donnent deux matrices distinctes, puisque leur coefficient bas-droit ($x$ ou $t$) les distingue déjà — $\varphi$ est injective, et surjective sur $F$ par construction même de $F$.
 
           $\varphi$ est donc un isomorphisme de $(\mathbb{R}^*,\times)$ vers $(F,\times)$ : toute la structure de $(\mathbb{R}^*,\times)$ se transporte, sans re-vérifier aucun axiome sur $F$. $(F,\times)$ est un groupe commutatif, de neutre $\varphi(1) = M(1) = I$.
         steps:
@@ -641,14 +641,14 @@ entries:
 
       Soit $E = \left\{ M(a,b) = \begin{pmatrix} a & 3b \\ b & a \end{pmatrix} \ /\ (a,b) \in \mathbb{Z}^2 \right\}$
 
-      L'exercice construit un anneau de matrices à coefficients entiers (rung R5, avec deux propriétés supplémentaires — commutativité et unité, un cran plus loin que la définition de base), puis un homomorphisme multiplicatif (rung R7) vers $(\mathbb{Z},\times)$ qui sert d'outil de mesure : c'est lui qui décide, plus loin, quels éléments de $E$ sont inversibles.
+      L'exercice construit un anneau de matrices à coefficients entiers (chapitre 7, avec deux propriétés supplémentaires — commutativité et unité, un cran plus loin que la définition de base), puis un homomorphisme multiplicatif (chapitre 10) vers $(\mathbb{Z},\times)$ qui sert d'outil de mesure : c'est lui qui décide, plus loin, quels éléments de $E$ sont inversibles.
     questions:
       - id: q1
         part: "L'ensemble $E$ : sous-groupe additif, produit, anneau commutatif et unitaire"
         stem: |-
           **(0,25 pt)** Montrer que $E$ est un sous-groupe de $(M_2(\mathbb{R}),+)$
         reasoning: |-
-          Montrer que $E$ est un sous-groupe de $(M_2(\mathbb{R}),+)$, c'est montrer que $(E,+)$ est **lui-même** un groupe — la même démarche qu'au rung R3, mais restreinte à $E$ : on recoche les quatre axiomes, un par un, à l'intérieur de $E$.
+          Montrer que $E$ est un sous-groupe de $(M_2(\mathbb{R}),+)$, c'est montrer que $(E,+)$ est **lui-même** un groupe — la même démarche qu'au chapitre 4, mais restreinte à $E$ : on recoche les quatre axiomes, un par un, à l'intérieur de $E$.
 
           La stabilité se lit sur l'addition matricielle coefficient par coefficient : les coefficients de $M(a,b)+M(c,d)$ restent des entiers, puisque $\mathbb{Z}$ est stable pour $+$. L'associativité est héritée de $M_2(\mathbb{R})$ tout entier, où elle est déjà acquise. Le neutre $O$ et l'opposé de chaque $M(a,b)$ ont eux aussi des coefficients entiers, puisque $\mathbb{Z}$ est stable par passage à l'opposé — les quatre axiomes tiennent dans $E$.
         steps:
@@ -674,7 +674,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $(E,+,\times)$ est un anneau commutatif et unitaire.
         reasoning: |-
-          La définition de base d'un anneau (rung R5) demande $(E,+)$ groupe commutatif, $\times$ associative, et $\times$ distributive par rapport à $+$. Ici, on nous demande d'aller un cran plus loin — exactement comme le rung R6 ajoute deux exigences à la définition de l'anneau pour obtenir un corps, sauf qu'ici on s'arrête à « commutatif et unitaire », sans exiger l'inversibilité de tous les éléments non nuls.
+          La définition de base d'un anneau (chapitre 7) demande $(E,+)$ groupe commutatif, $\times$ associative, et $\times$ distributive par rapport à $+$. Ici, on nous demande d'aller un cran plus loin — exactement comme le chapitre 9 ajoute deux exigences à la définition de l'anneau pour obtenir un corps, sauf qu'ici on s'arrête à « commutatif et unitaire », sans exiger l'inversibilité de tous les éléments non nuls.
 
           $(E,+)$ est un groupe (question 1) ; sa commutativité est héritée de $+$ sur $M_2(\mathbb{R})$, où elle tient toujours (même quand $\times$ ne l'est pas). Associativité et distributivité de $\times$ sont héritées de $M_2(\mathbb{R})$ tout entier, qui est déjà un anneau (rappel de tête d'énoncé). Reste ce qui ne s'hérite **pas** automatiquement : $M_2(\mathbb{R})$ lui-même n'est **pas** commutatif pour $\times$ (rappel), donc la commutativité de $\times$ sur $E$ doit être vérifiée directement, avec la formule de la question 2. L'unité $I=M(1,0)$, elle, s'hérite sans difficulté : $I$ est déjà l'unité de tout $M_2(\mathbb{R})$, et $I \in E$.
         steps:
@@ -693,7 +693,7 @@ entries:
         stem: |-
           Soit $\varphi$ l'application définie de $E$ vers $\mathbb{Z}$ par : $\forall(a,b) \in \mathbb{Z}^2$ ; $\varphi(M(a,b)) = |a^2 - 3b^2|$. **(0,5 pt)** Montrer que $\varphi$ est un homomorphisme de $(E,\times)$ vers $(\mathbb{Z},\times)$.
         reasoning: |-
-          Le geste-pont du rung R7, appliqué à une application qui ne sera **pas** bijective (deux matrices peuvent avoir la même valeur $\varphi$) — mais un homomorphisme n'a besoin que de transformer la loi, pas d'être bijectif. Il faut montrer $\varphi(M(a,b)\times M(c,d)) = \varphi(M(a,b)) \times \varphi(M(c,d))$, c'est-à-dire $|(ac+3bd)^2 - 3(ad+bc)^2| = |a^2-3b^2| \cdot |c^2-3d^2|$, en utilisant la formule du produit établie à la question 2.
+          Le geste-pont du chapitre 10, appliqué à une application qui ne sera **pas** bijective (deux matrices peuvent avoir la même valeur $\varphi$) — mais un homomorphisme n'a besoin que de transformer la loi, pas d'être bijectif. Il faut montrer $\varphi(M(a,b)\times M(c,d)) = \varphi(M(a,b)) \times \varphi(M(c,d))$, c'est-à-dire $|(ac+3bd)^2 - 3(ad+bc)^2| = |a^2-3b^2| \cdot |c^2-3d^2|$, en utilisant la formule du produit établie à la question 2.
 
           Le calcul algébrique clé — développer $(ac+3bd)^2 - 3(ad+bc)^2$ et le factoriser en $(a^2-3b^2)(c^2-3d^2)$ — est un peu long, mais chaque terme se simplifie proprement ; la valeur absolue neutralise ensuite tout problème de signe.
         steps:
@@ -791,7 +791,7 @@ entries:
         stem: |-
           **(0,25 pt)** Est-ce que $(E,+,\times)$ est un corps ? justifier votre réponse.
         reasoning: |-
-          Un corps (rung R6) demande, en plus de l'anneau commutatif et unitaire déjà établi (question 3), que **tout** élément non nul possède un symétrique pour $\times$ — pas seulement certains d'entre eux. La question 6 donne exactement le test : un élément inversible doit forcément avoir $\varphi = 1$. Il suffit donc d'exhiber un seul élément non nul de $E$ dont $\varphi$ diffère de $1$ pour conclure que ce n'est **pas** un corps — même logique de contre-exemple qu'au rung R6 pour $(\mathbb{Z},+,\times)$.
+          Un corps (chapitre 9) demande, en plus de l'anneau commutatif et unitaire déjà établi (question 3), que **tout** élément non nul possède un symétrique pour $\times$ — pas seulement certains d'entre eux. La question 6 donne exactement le test : un élément inversible doit forcément avoir $\varphi = 1$. Il suffit donc d'exhiber un seul élément non nul de $E$ dont $\varphi$ diffère de $1$ pour conclure que ce n'est **pas** un corps — même logique de contre-exemple qu'au chapitre 9 pour $(\mathbb{Z},+,\times)$.
 
           $M(2,0)$ convient : il est non nul ($a=2\neq0$), mais $\varphi(M(2,0)) = |4-0| = 4 \neq 1$. Par la contraposée de la question 6, $M(2,0)$ n'est pas inversible dans $(E,\times)$.
         steps:
@@ -841,7 +841,7 @@ entries:
 
       ($\bar{d}$ étant le conjugué du nombre complexe $d$)
 
-      L'exercice reprend l'enchaînement complet du chapitre — commutativité, associativité, neutre et symétrique (rung R2), puis les quatre axiomes du groupe (rung R3) et le contraste avec un groupe non commutatif (rung R4), pour finir sur un sous-groupe (même technique que pour $G$ au sujet 2019). La loi $T$ vit sur un ensemble de **couples**, pas sur $\mathbb{C}$ seul : chaque calcul mobilise en plus les propriétés du conjugué déjà connues du chapitre sur les nombres complexes.
+      L'exercice reprend l'enchaînement complet du chapitre — commutativité, associativité, neutre et symétrique (chapitre 3), puis les quatre axiomes du groupe (chapitre 4) et le contraste avec un groupe non commutatif (chapitre 6), pour finir sur un sous-groupe (même technique que pour $G$ au sujet 2019). La loi $T$ vit sur un ensemble de **couples**, pas sur $\mathbb{C}$ seul : chaque calcul mobilise en plus les propriétés du conjugué déjà connues du chapitre sur les nombres complexes.
     questions:
       - id: q1
         part: "La loi $T$ : un exemple qui casse la commutativité"
@@ -862,7 +862,7 @@ entries:
         stem: |-
           **(0,25 pt)** En déduire que la loi $T$ n'est pas commutative dans $\mathbb{C}\times\mathbb{C}^*$
         reasoning: |-
-          La question précédente a calculé, pour les deux mêmes couples $(i,2)$ et $(1,i)$, le résultat de $T$ dans les deux ordres possibles : $(2,2i)$ d'un côté, $(2+i,2i)$ de l'autre. Il suffit de comparer : les premières composantes diffèrent ($2 \neq 2+i$), donc les deux couples résultats sont distincts. Un seul contre-exemple suffit pour réfuter la commutativité, exactement comme au rung R2.
+          La question précédente a calculé, pour les deux mêmes couples $(i,2)$ et $(1,i)$, le résultat de $T$ dans les deux ordres possibles : $(2,2i)$ d'un côté, $(2+i,2i)$ de l'autre. Il suffit de comparer : les premières composantes diffèrent ($2 \neq 2+i$), donc les deux couples résultats sont distincts. Un seul contre-exemple suffit pour réfuter la commutativité, exactement comme au chapitre 3.
         steps:
           - math: '(i,2)\,T\,(1,i) = (2,\ 2i), \qquad (1,i)\,T\,(i,2) = (2+i,\ 2i) \quad (\text{q1})'
             note: "Les deux résultats déjà calculés."
@@ -875,7 +875,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que la loi $T$ est associative dans $\mathbb{C}\times\mathbb{C}^*$
         reasoning: |-
-          Comme au rung R2, l'associativité met en jeu **trois** éléments à la fois et ne se lit sur aucune table : on la teste par le calcul, en développant les deux parenthésages jusqu'au bout. Ici, chaque application de $T$ fait apparaître un conjugué — le point de vigilance est de bien conjuguer le **produit** $df$ dans le second parenthésage, en utilisant la propriété déjà connue du chapitre sur les complexes : le conjugué d'un produit est le produit des conjugués.
+          Comme au chapitre 3, l'associativité met en jeu **trois** éléments à la fois et ne se lit sur aucune table : on la teste par le calcul, en développant les deux parenthésages jusqu'au bout. Ici, chaque application de $T$ fait apparaître un conjugué — le point de vigilance est de bien conjuguer le **produit** $df$ dans le second parenthésage, en utilisant la propriété déjà connue du chapitre sur les complexes : le conjugué d'un produit est le produit des conjugués.
 
           Les deux parenthésages, une fois développés, donnent exactement la même paire — la clé étant que $\overline{df} = \bar{d}\,\bar{f}$.
         steps:
@@ -894,7 +894,7 @@ entries:
         stem: |-
           **(0,25 pt)** Vérifier que $(0,1)$ est l'élément neutre pour $T$ dans $\mathbb{C}\times\mathbb{C}^*$
         reasoning: |-
-          Un neutre (rung R2) doit vérifier l'égalité **dans les deux ordres** — $(a,b)\,T\,(0,1) = (a,b)$ **et** $(0,1)\,T\,(a,b) = (a,b)$ — puisque $T$ vient de se révéler non commutative (question 2) : l'une des deux égalités ne garantit jamais l'autre ici. On applique simplement la définition de $T$ dans les deux sens, en se rappelant que le conjugué d'un réel est lui-même.
+          Un neutre (chapitre 3) doit vérifier l'égalité **dans les deux ordres** — $(a,b)\,T\,(0,1) = (a,b)$ **et** $(0,1)\,T\,(a,b) = (a,b)$ — puisque $T$ vient de se révéler non commutative (question 2) : l'une des deux égalités ne garantit jamais l'autre ici. On applique simplement la définition de $T$ dans les deux sens, en se rappelant que le conjugué d'un réel est lui-même.
         steps:
           - math: '(a,b)\,T\,(0,1) = \big(a\bar{1}+0,\ b\cdot1\big) = (a,\ b)'
             note: "Le conjugué de 1 (réel) est 1 lui-même."
@@ -919,7 +919,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $(\mathbb{C}\times\mathbb{C}^*,\ T)$ est un groupe non commutatif.
         reasoning: |-
-          On coche les quatre axiomes du rung R3, sur $\mathbb{C}\times\mathbb{C}^*$ tout entier cette fois, en réutilisant ce qui précède. Loi interne : pour $(a,b),(c,d)$ avec $b,d$ non nuls, $bd$ reste non nul (produit de deux complexes non nuls) et $a\bar{d}+c$ reste un complexe — le résultat reste dans $\mathbb{C}\times\mathbb{C}^*$. Associativité : question 3. Neutre : $(0,1)$, question 4. Symétrique de chaque $(a,b)$ : le candidat vérifié à la question 5, dont la seconde composante $\dfrac{1}{b}$ reste non nulle puisque $b\neq0$.
+          On coche les quatre axiomes du chapitre 4, sur $\mathbb{C}\times\mathbb{C}^*$ tout entier cette fois, en réutilisant ce qui précède. Loi interne : pour $(a,b),(c,d)$ avec $b,d$ non nuls, $bd$ reste non nul (produit de deux complexes non nuls) et $a\bar{d}+c$ reste un complexe — le résultat reste dans $\mathbb{C}\times\mathbb{C}^*$. Associativité : question 3. Neutre : $(0,1)$, question 4. Symétrique de chaque $(a,b)$ : le candidat vérifié à la question 5, dont la seconde composante $\dfrac{1}{b}$ reste non nulle puisque $b\neq0$.
 
           Les quatre axiomes tiennent : $(\mathbb{C}\times\mathbb{C}^*,T)$ est un groupe. Non commutatif, par la question 2.
         steps:
@@ -936,7 +936,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $\mathbb{R}\times\mathbb{R}^*$ est stable par la loi de composition interne $T$
         reasoning: |-
-          Comme au rung R1, la stabilité demande que le résultat de $T$ reste dans $\mathbb{R}\times\mathbb{R}^*$ dès que les deux couples de départ y sont. Ici, la différence avec $\mathbb{C}\times\mathbb{C}^*$ tout entier tient à un seul détail : quand $d$ est réel, son conjugué $\bar{d}$ vaut $d$ lui-même — la barre de conjugaison disparaît purement et simplement.
+          Comme au chapitre 2, la stabilité demande que le résultat de $T$ reste dans $\mathbb{R}\times\mathbb{R}^*$ dès que les deux couples de départ y sont. Ici, la différence avec $\mathbb{C}\times\mathbb{C}^*$ tout entier tient à un seul détail : quand $d$ est réel, son conjugué $\bar{d}$ vaut $d$ lui-même — la barre de conjugaison disparaît purement et simplement.
         steps:
           - math: '(a,b),(c,d) \in \mathbb{R}\times\mathbb{R}^* \ \Longrightarrow\ a,c \in \mathbb{R},\ b,d \in \mathbb{R}^*, \quad \bar{d} = d'
             note: "d est réel, donc égal à son propre conjugué."
@@ -950,7 +950,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $\mathbb{R}\times\mathbb{R}^*$ est un sous-groupe du groupe $(\mathbb{C}\times\mathbb{C}^*,\ T)$
         reasoning: |-
-          Montrer qu'un sous-ensemble est un sous-groupe, c'est montrer qu'il est **lui-même** un groupe pour la même loi — la démarche déjà suivie pour $G$ au sujet 2019 : on recoche les quatre axiomes du rung R3, restreints cette fois à $\mathbb{R}\times\mathbb{R}^*$.
+          Montrer qu'un sous-ensemble est un sous-groupe, c'est montrer qu'il est **lui-même** un groupe pour la même loi — la démarche déjà suivie pour $G$ au sujet 2019 : on recoche les quatre axiomes du chapitre 4, restreints cette fois à $\mathbb{R}\times\mathbb{R}^*$.
 
           Stabilité : question précédente. Associativité : héritée de $\mathbb{C}\times\mathbb{C}^*$ tout entier (question 3), où elle tient pour tous les éléments, donc en particulier pour ceux de $\mathbb{R}\times\mathbb{R}^*$. Neutre : $(0,1)$ a bien $0 \in \mathbb{R}$ et $1 \in \mathbb{R}^*$, donc $(0,1) \in \mathbb{R}\times\mathbb{R}^*$. Symétrique : pour $(a,b)$ réel, la barre de conjugaison sur $b$ disparaît, donc le symétrique $\left(-\dfrac{a}{b},\dfrac1b\right)$ (question 5, avec $\bar b = b$) a ses deux composantes réelles, la seconde non nulle — il reste dans $\mathbb{R}\times\mathbb{R}^*$.
         steps:
@@ -1046,7 +1046,7 @@ entries:
 
           $2i = 0 + 2i$ : le facteur de droite donne $x' = 0$ et $y' = 2$.
 
-          Le réflexe à installer : $1$ n'est pas « un réel qu'on met de côté ». La loi est définie sur $\mathbb{C}$ tout entier (rung R1 : une loi interne combine deux éléments de l'ensemble et rend un élément de l'ensemble), et $1$ est le complexe de partie réelle $1$ et de partie imaginaire $0$, ni plus ni moins.
+          Le réflexe à installer : $1$ n'est pas « un réel qu'on met de côté ». La loi est définie sur $\mathbb{C}$ tout entier (chapitre 2 : une loi interne combine deux éléments de l'ensemble et rend un élément de l'ensemble), et $1$ est le complexe de partie réelle $1$ et de partie imaginaire $0$, ni plus ni moins.
 
           **L'application.** Partie réelle du résultat : $xy' + y^5x' = 1 \times 2 + 0^5 \times 0 = 2 + 0 = 2$. Partie imaginaire : $yy' = 0 \times 2 = 0$.
 
@@ -1066,7 +1066,7 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que la loi de composition interne $\ast$ n'est pas commutative.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** On demande de montrer qu'une propriété **universelle** est fausse. Le rung R2 fixe la règle une fois pour toutes : « pour tous $z, z'$ » se réfute par **un seul** couple qui la met en défaut. Un contre-exemple, pas un raisonnement général — et la question 1-a vient d'en fournir la moitié gratuitement.
+          **Ce qu'on cherche et pourquoi ce geste.** On demande de montrer qu'une propriété **universelle** est fausse. le chapitre 3 fixe la règle une fois pour toutes : « pour tous $z, z'$ » se réfute par **un seul** couple qui la met en défaut. Un contre-exemple, pas un raisonnement général — et la question 1-a vient d'en fournir la moitié gratuitement.
 
           **La seconde moitié.** On reprend les mêmes nombres, dans l'autre ordre. $2i = 0 + 2i$ est maintenant le facteur de gauche : $x = 0$, $y = 2$. Et $1 = 1 + 0i$ le facteur de droite : $x' = 1$, $y' = 0$.
 
@@ -1085,7 +1085,7 @@ entries:
           - math: '2i \ast 1 = \left(0 \times 0 + 2^5 \times 1\right) + i\left(2 \times 0\right) = 32'
             note: "Le 2 de la partie imaginaire de gauche est maintenant élevé à la puissance 5."
           - math: '1 \ast 2i = 2 \neq 32 = 2i \ast 1'
-            note: "Un seul contre-exemple suffit à réfuter une propriété universelle (R2)."
+            note: "Un seul contre-exemple suffit à réfuter une propriété universelle (chapitre 3)."
           - math: '\ast \ \text{n''est pas commutative}'
             note: "Conclusion."
       - id: q2
@@ -1093,7 +1093,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que la loi $\ast$ est associative.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Cette fois la propriété doit être établie **pour tous** les triplets, donc il faut des lettres et un calcul complet. Le rung R2 le dit explicitement : l'associativité ne se lit pas, elle se teste — on calcule $(z \ast z') \ast z''$ d'un côté, $z \ast (z' \ast z'')$ de l'autre, et on compare les deux expressions finales. Aucune astuce ne remplace ce double calcul.
+          **Ce qu'on cherche et pourquoi ce geste.** Cette fois la propriété doit être établie **pour tous** les triplets, donc il faut des lettres et un calcul complet. le chapitre 3 le dit explicitement : l'associativité ne se lit pas, elle se teste — on calcule $(z \ast z') \ast z''$ d'un côté, $z \ast (z' \ast z'')$ de l'autre, et on compare les deux expressions finales. Aucune astuce ne remplace ce double calcul.
 
           La seule vraie difficulté est comptable : à chaque étape, le résultat intermédiaire est lui-même un complexe, dont il faut identifier proprement la partie réelle et la partie imaginaire avant de le réinjecter dans la loi. On pose donc $z = x+iy$, $z' = x'+iy'$, $z'' = x''+iy''$, avec les six lettres réelles.
 
@@ -1109,7 +1109,7 @@ entries:
 
           Remarque à garder pour la Partie I question 4-b : cette associativité est prouvée sur $\mathbb{C}$ **tout entier**. Elle sera donc acquise, sans une ligne de plus, sur n'importe quelle partie de $\mathbb{C}$ — c'est exactement l'héritage décrit au chapitre « Sous-groupe ».
 
-          **Le piège à éviter.** Tester l'associativité sur un triplet de nombres et conclure. Le R2 nomme cette erreur : un exemple ne prouve jamais une propriété universelle, il ne peut que la réfuter. Second piège, plus insidieux : croire que la non-commutativité établie en 1-b compromet l'associativité. Les deux propriétés sont indépendantes — la composition des fonctions, citée au R4, est le contre-exemple classique d'une loi associative et non commutative, et c'est très exactement le régime dans lequel on est ici.
+          **Le piège à éviter.** Tester l'associativité sur un triplet de nombres et conclure. Le chapitre 3 nomme cette erreur : un exemple ne prouve jamais une propriété universelle, il ne peut que la réfuter. Second piège, plus insidieux : croire que la non-commutativité établie en 1-b compromet l'associativité. Les deux propriétés sont indépendantes — la composition des fonctions, citée au chapitre 6, est le contre-exemple classique d'une loi associative et non commutative, et c'est très exactement le régime dans lequel on est ici.
         steps:
           - math: 'z \ast z'' = \underbrace{\left(xy'' + y^5x''\right)}_{X} + i\,\underbrace{\left(yy''\right)}_{Y}'
             note: "Premier calcul intermédiaire : identifier partie réelle X et partie imaginaire Y avant de réinjecter."
@@ -1150,7 +1150,7 @@ entries:
         stem: |-
           **(0,25 pt)** En déduire que $(\mathbb{C}, \ast)$ n'est pas un groupe.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » interdit de repartir de zéro : il faut fabriquer la contradiction avec les deux égalités déjà obtenues, et rien d'autre. Le rung R3 rappelle qu'un groupe exige **quatre** axiomes ; il suffit d'en mettre un seul en défaut. On procède par l'absurde.
+          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » interdit de repartir de zéro : il faut fabriquer la contradiction avec les deux égalités déjà obtenues, et rien d'autre. le chapitre 4 rappelle qu'un groupe exige **quatre** axiomes ; il suffit d'en mettre un seul en défaut. On procède par l'absurde.
 
           **La chaîne.** Supposons que $(\mathbb{C},\ast)$ soit un groupe, de neutre $e$. Alors le complexe $1$ possède un symétrique $s$, c'est-à-dire un complexe tel que $s \ast 1 = e$. Partons de l'égalité établie aux questions 1-a et 3-a :
 
@@ -1163,12 +1163,12 @@ entries:
 
           Les deux membres de départ étant égaux, leurs images le sont aussi : $2i = 1+2i$, donc $0 = 1$. Absurde. Par conséquent $(\mathbb{C},\ast)$ n'est pas un groupe.
 
-          **Ce qui échoue exactement, et pourquoi ça éclaire la suite.** La contradiction ci-dessus suffit pour la copie, mais il vaut la peine de voir quel axiome tombe. Le neutre existe pourtant : $z \ast i = (x \times 1 + y^5 \times 0) + i(y \times 1) = x + iy = z$ et $i \ast z = (0 \times y + 1^5 \times x) + i(1 \times y) = x+iy = z$, donc $i$ est bien neutre pour $\ast$ sur $\mathbb{C}$ tout entier. C'est le **quatrième** axiome du R3 qui tombe : le complexe $1$ n'a aucun symétrique, puisque la question 3-a a montré que $1 \ast (x'+iy') = y'$ est toujours **réel**, donc jamais égal à $i$. Et l'on comprend du même coup le choix de la question 4 : les fautifs sont exactement les complexes de partie imaginaire nulle, que $E$ va écarter.
+          **Ce qui échoue exactement, et pourquoi ça éclaire la suite.** La contradiction ci-dessus suffit pour la copie, mais il vaut la peine de voir quel axiome tombe. Le neutre existe pourtant : $z \ast i = (x \times 1 + y^5 \times 0) + i(y \times 1) = x + iy = z$ et $i \ast z = (0 \times y + 1^5 \times x) + i(1 \times y) = x+iy = z$, donc $i$ est bien neutre pour $\ast$ sur $\mathbb{C}$ tout entier. C'est le **quatrième** axiome du chapitre 4 qui tombe : le complexe $1$ n'a aucun symétrique, puisque la question 3-a a montré que $1 \ast (x'+iy') = y'$ est toujours **réel**, donc jamais égal à $i$. Et l'on comprend du même coup le choix de la question 4 : les fautifs sont exactement les complexes de partie imaginaire nulle, que $E$ va écarter.
 
-          **Le piège à éviter.** Répondre « $(\mathbb{C},\ast)$ n'est pas un groupe car $\ast$ n'est pas commutative » (question 1-b). La commutativité **n'est pas** un axiome de groupe : le R3 en compte quatre, et elle n'y figure pas — elle définit le groupe \astcommutatif\ast au R4, un cas particulier. La question 4-b construira d'ailleurs un groupe qui n'est pas commutatif, ce qui règle définitivement la confusion.
+          **Le piège à éviter.** Répondre « $(\mathbb{C},\ast)$ n'est pas un groupe car $\ast$ n'est pas commutative » (question 1-b). La commutativité **n'est pas** un axiome de groupe : le chapitre 4 en compte quatre, et elle n'y figure pas — elle définit le groupe \astcommutatif\ast au chapitre 6, un cas particulier. La question 4-b construira d'ailleurs un groupe qui n'est pas commutatif, ce qui règle définitivement la confusion.
         steps:
           - math: '\text{Supposons} \ (\mathbb{C},\ast) \ \text{groupe de neutre} \ e \ \Longrightarrow\ \exists s \in \mathbb{C},\ s \ast 1 = e'
-            note: "Raisonnement par l'absurde : on suppose l'axiome 4 du R3 satisfait pour l'élément 1."
+            note: "Raisonnement par l'absurde : on suppose l'axiome 4 du chapitre 4 satisfait pour l'élément 1."
           - math: 's \ast (1 \ast 2i) = (s \ast 1) \ast 2i = e \ast 2i = 2i'
             note: "L'associativité de la question 2 est ce qui autorise le regroupement."
           - math: 's \ast \big(1 \ast (1+2i)\big) = (s \ast 1) \ast (1+2i) = e \ast (1+2i) = 1+2i'
@@ -1176,7 +1176,7 @@ entries:
           - math: '1 \ast 2i = 1 \ast (1+2i) \ \Longrightarrow\ 2i = 1+2i \ \Longrightarrow\ 0 = 1'
             note: "Contradiction : (C,∗) n'est pas un groupe."
           - math: 'z \ast i = z \ \text{et} \ i \ast z = z \quad \text{mais} \quad 1 \ast (x''+iy'') = y'' \in \mathbb{R}, \ \text{jamais égal à} \ i'
-            note: "Diagnostic : le neutre i existe ; c'est le symétrique de 1 qui n'existe pas (axiome 4 du R3)."
+            note: "Diagnostic : le neutre i existe ; c'est le symétrique de 1 qui n'existe pas (axiome 4 du chapitre 4)."
       - id: q4-a
         part: "Partie I — L'ensemble $E$ : stabilité, puis groupe non commutatif"
         stem: |-
@@ -1184,7 +1184,7 @@ entries:
 
           **(0,25 pt)** Montrer que $E$ est stable dans $(\mathbb{C}, \ast)$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** « Stable » est le mot du rung R1 : une partie $E$ de $\mathbb{C}$ est stable pour $\ast$ lorsque combiner deux éléments de $E$ ne fait jamais sortir de $E$. C'est la première des trois conditions du critère du sous-groupe, et c'est ici la condition sans laquelle la question 4-b n'aurait même pas de sens — on ne parle pas de la structure de $(E,\ast)$ si $\ast$ n'est pas une loi **interne** sur $E$.
+          **Ce qu'on cherche et pourquoi ce geste.** « Stable » est le mot du chapitre 2 : une partie $E$ de $\mathbb{C}$ est stable pour $\ast$ lorsque combiner deux éléments de $E$ ne fait jamais sortir de $E$. C'est la première des trois conditions du critère du sous-groupe, et c'est ici la condition sans laquelle la question 4-b n'aurait même pas de sens — on ne parle pas de la structure de $(E,\ast)$ si $\ast$ n'est pas une loi **interne** sur $E$.
 
           Ce qui caractérise $E$ tient en une ligne : $E$ est l'ensemble des complexes de partie imaginaire **non nulle**. La forme $x+yi$ n'impose rien à $x$ ($x$ parcourt $\mathbb{R}$), tout à $y$ ($y$ parcourt $\mathbb{R}^*$). La vérification portera donc entièrement sur la partie imaginaire du résultat.
 
@@ -1209,12 +1209,12 @@ entries:
           - math: 'y \neq 0 \ \text{et} \ y'' \neq 0 \ \Longrightarrow\ yy'' \neq 0, \quad \text{donc} \ yy'' \in \mathbb{R}^*'
             note: "Le point décisif : un produit de deux réels non nuls est non nul."
           - math: 'z \ast z'' \in E \quad : \quad E \ \text{est stable dans} \ (\mathbb{C},\ast)'
-            note: "∗ est donc une loi de composition interne sur E (R1)."
+            note: "∗ est donc une loi de composition interne sur E (chapitre 2)."
       - id: q4-b
         stem: |-
           **(0,5 pt)** Montrer que $(E, \ast)$ est un groupe non commutatif.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Deux affirmations, et la question vaut $0{,}5$ point parce qu'elle en attend bien deux : la structure de groupe (les quatre axiomes du R3), puis le refus de la commutativité (un contre-exemple, R2). Et il faut résister à une tentation : $E$ est une partie de $\mathbb{C}$, mais $(\mathbb{C},\ast)$ **n'est pas un groupe** (question 3-b) — le critère du sous-groupe est donc inapplicable ici, faute de groupe ambiant. On reprend la liste de contrôle du R3, en récoltant au passage tout ce qui a déjà été prouvé.
+          **Ce qu'on cherche et pourquoi ce geste.** Deux affirmations, et la question vaut $0{,}5$ point parce qu'elle en attend bien deux : la structure de groupe (les quatre axiomes du chapitre 4), puis le refus de la commutativité (un contre-exemple, chapitre 3). Et il faut résister à une tentation : $E$ est une partie de $\mathbb{C}$, mais $(\mathbb{C},\ast)$ **n'est pas un groupe** (question 3-b) — le critère du sous-groupe est donc inapplicable ici, faute de groupe ambiant. On reprend la liste de contrôle du chapitre 4, en récoltant au passage tout ce qui a déjà été prouvé.
 
           **1. Loi interne.** C'est exactement la question 4-a. ✓
 
@@ -1250,7 +1250,7 @@ entries:
           **Le piège à éviter.** Recycler le contre-exemple de la question 1-b sans vérifier que ses deux facteurs sont dans $E$. C'est l'erreur la plus coûteuse de la question, parce qu'elle est invisible : le calcul est juste, mais il porte sur des nombres dont l'un n'appartient pas à l'ensemble étudié, et il ne prouve donc rien sur $(E,\ast)$. Le réflexe : avant d'écrire un contre-exemple, relire la définition de l'ensemble et cocher l'appartenance de **chaque** nombre qu'on y met.
         steps:
           - math: '\text{1. } \ast \ \text{interne sur} \ E \quad (\text{q4-a})'
-            note: "Premier axiome du R3, déjà acquis."
+            note: "Premier axiome du chapitre 4, déjà acquis."
           - math: '\text{2. } \ast \ \text{associative sur} \ \mathbb{C} \ (\text{q2}) \ \Longrightarrow\ \text{associative sur} \ E'
             note: "Héritage : une propriété universelle vraie sur C vaut sur toute partie de C."
           - math: '\text{3. } \ i = 0 + 1\cdot i \in E, \qquad z \ast i = z \ \text{et} \ i \ast z = z'
@@ -1264,7 +1264,7 @@ entries:
           - math: '(1+i) \ast 2i = 2+2i \neq 32+2i = 2i \ast (1+i), \qquad 1+i \in E,\ 2i \in E'
             note: "Contre-exemple INTERNE à E : celui de la question 1-b utilisait 1, qui n'est pas dans E."
           - math: '(E,\ast) \ \text{est un groupe non commutatif}'
-            note: "Quatre axiomes cochés (R3), commutativité réfutée (R2/R4)."
+            note: "Quatre axiomes cochés (chapitre 4), commutativité réfutée (chapitres 3 et 6)."
       - id: q5
         part: "Partie II — $F$, un sous-groupe de $(E,\\ast)$"
         stem: |-
@@ -1288,7 +1288,7 @@ entries:
 
           Les trois conditions tiennent : $F$ est un sous-groupe de $(E,\ast)$, donc $(F,\ast)$ est un groupe.
 
-          **Le piège à éviter.** Repasser les quatre axiomes du R3 sur $F$ — en particulier rédiger à nouveau l'associativité. C'est du temps perdu pour zéro point, et le chapitre le dit : l'associativité s'hérite, le reste se vérifie. L'erreur symétrique, plus coûteuse, est de s'arrêter à deux conditions sur trois en oubliant les symétriques : le chapitre le montre sur $\mathbb{N}$ dans $(\mathbb{Z},+)$, où neutre et stabilité passent mais où un seul symétrique qui s'échappe suffit à tout faire tomber. Ici la troisième condition est même la plus rapide des trois — à condition d'avoir gardé la formule du symétrique établie en 4-b plutôt que de la recalculer.
+          **Le piège à éviter.** Repasser les quatre axiomes du chapitre 4 sur $F$ — en particulier rédiger à nouveau l'associativité. C'est du temps perdu pour zéro point, et le chapitre le dit : l'associativité s'hérite, le reste se vérifie. L'erreur symétrique, plus coûteuse, est de s'arrêter à deux conditions sur trois en oubliant les symétriques : le chapitre le montre sur $\mathbb{N}$ dans $(\mathbb{Z},+)$, où neutre et stabilité passent mais où un seul symétrique qui s'échappe suffit à tout faire tomber. Ici la troisième condition est même la plus rapide des trois — à condition d'avoir gardé la formule du symétrique établie en 4-b plutôt que de la recalculer.
         steps:
           - math: 'yi = 0 + yi, \quad 0 \in \mathbb{R},\ y \in \mathbb{R}^* \ \Longrightarrow\ F \subset E'
             note: "L'inclusion préalable, sans laquelle « sous-groupe de (E,∗) » n'a pas de sens."
@@ -1335,7 +1335,7 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que $\varphi$ est un homomorphisme de $(\mathbb{R}, +)$ vers $(\mathbb{C}, \ast)$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Un homomorphisme — ce que la leçon appelle un **morphisme** au rung R7 — est une application qui respecte les lois : l'image d'une composition est la composition des images. Ici, la loi de départ est $+$ sur $\mathbb{R}$, la loi d'arrivée est $\ast$ sur $\mathbb{C}$, et l'égalité à établir est donc
+          **Ce qu'on cherche et pourquoi ce geste.** Un homomorphisme — ce que la leçon appelle un **morphisme** au chapitre 10 — est une application qui respecte les lois : l'image d'une composition est la composition des images. Ici, la loi de départ est $+$ sur $\mathbb{R}$, la loi d'arrivée est $\ast$ sur $\mathbb{C}$, et l'égalité à établir est donc
 
           $$\forall (x,x') \in \mathbb{R}^2, \qquad \varphi(x+x') = \varphi(x) \ast \varphi(x')$$
 
@@ -1360,16 +1360,16 @@ entries:
           - math: '(x+i)\ast(x''+i) = \left(x \times 1 + 1^5 \times x''\right) + i\left(1 \times 1\right) = (x+x'') + i'
             note: "L'exposant 5 est neutralisé par y = 1 : c'est pourquoi ∗ dégénère en addition sur G."
           - math: '\varphi(x+x'') = \varphi(x) \ast \varphi(x''), \qquad \forall (x,x'') \in \mathbb{R}^2'
-            note: "Les deux membres coïncident : phi est un homomorphisme (le morphisme du rung R7)."
+            note: "Les deux membres coïncident : phi est un homomorphisme (le morphisme du chapitre 10)."
       - id: q6-c
         stem: |-
           **(0,25 pt)** En déduire que $(G, \ast)$ est un groupe commutatif.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » interdit de repartir des axiomes : tout le travail a été fait, il s'agit de le **transporter**. C'est le rung R7 dans sa forme la plus économique — un isomorphisme fait passer une structure d'un ensemble à l'autre sans re-vérification.
+          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » interdit de repartir des axiomes : tout le travail a été fait, il s'agit de le **transporter**. C'est le chapitre 10 dans sa forme la plus économique — un isomorphisme fait passer une structure d'un ensemble à l'autre sans re-vérification.
 
           **Le montage, et le détour obligé.** Attention à l'ensemble d'arrivée annoncé par la question 6-b : $(\mathbb{C},\ast)$ **n'est pas un groupe** (question 3-b). On ne peut donc pas invoquer « l'image d'un groupe par un morphisme est un sous-groupe de l'arrivée » — il n'y a pas de groupe à l'arrivée. Le passage se fait par $E$ : la question 6-a a relevé $G \subset E$ (tout élément $x+i$ a pour partie imaginaire $1 \neq 0$), et $(E,\ast)$ **est** un groupe (question 4-b). Le calcul de la question 6-b, qui ne dépend d'aucune propriété de $\mathbb{C}$ hors de la formule de $\ast$, vaut donc tel quel comme morphisme de $(\mathbb{R},+)$ vers $(E,\ast)$.
 
-          Les trois ingrédients du R7 sont alors en place :
+          Les trois ingrédients du chapitre 10 sont alors en place :
 
           - $(\mathbb{R},+)$ est un groupe **commutatif** — le groupe de référence, connu depuis toujours ;
           - $\varphi$ est un morphisme de $(\mathbb{R},+)$ vers $(E,\ast)$ : question 6-b ;
@@ -1386,7 +1386,7 @@ entries:
           - math: 'G \subset E \ (\operatorname{Im}(x+i) = 1 \neq 0) \quad \text{et} \quad (E,\ast) \ \text{groupe} \ (\text{q4-b})'
             note: "L'ambiant qui convient est E, pas C."
           - math: '\varphi \ \text{morphisme} \ (\text{q6-b}), \quad \varphi \ \text{bijective de} \ \mathbb{R} \ \text{sur} \ G \ (\text{q6-a})'
-            note: "Morphisme + bijectivité sur G : phi est un isomorphisme (rung R7)."
+            note: "Morphisme + bijectivité sur G : phi est un isomorphisme (chapitre 10)."
           - math: '(\mathbb{R},+) \ \text{groupe commutatif} \ \xrightarrow{\ \varphi\ } \ (G,\ast) \ \text{groupe commutatif}'
             note: "La structure se transporte intégralement, sans revérifier un seul axiome."
           - math: '\text{neutre} = \varphi(0) = i, \qquad \text{symétrique de} \ x+i \ \text{est} \ \varphi(-x) = -x+i'
@@ -1444,14 +1444,14 @@ entries:
 
       On considère l'ensemble $E = \left\{ M(x,y) = \begin{pmatrix} x+y & y \\ 2y & x-y \end{pmatrix} \ /\ (x,y) \in \mathbb{R}^2 \right\}$
 
-      L'exercice construit d'abord, sur $\mathbb{R}$, un anneau commutatif et unitaire de matrices (rung R5, avec les deux extensions déjà rencontrées au sujet 2022) — puis montre, par un contre-exemple, qu'il **n'est pas un corps** (rung R6). La seconde partie restreint les mêmes coefficients à $\mathbb{Q}$ : sur ce sous-ensemble plus étroit, la même famille de matrices devient, cette fois, un véritable corps — identifié par un isomorphisme (rung R7) à $F = \mathbb{Q}[\sqrt3]$.
+      L'exercice construit d'abord, sur $\mathbb{R}$, un anneau commutatif et unitaire de matrices (chapitre 7, avec les deux extensions déjà rencontrées au sujet 2022) — puis montre, par un contre-exemple, qu'il **n'est pas un corps** (chapitre 9). La seconde partie restreint les mêmes coefficients à $\mathbb{Q}$ : sur ce sous-ensemble plus étroit, la même famille de matrices devient, cette fois, un véritable corps — identifié par un isomorphisme (chapitre 10) à $F = \mathbb{Q}[\sqrt3]$.
     questions:
       - id: q1
         part: "Partie I — $E$ : sous-groupe additif et sous-espace vectoriel"
         stem: |-
           **(0,5 pt)** Montrer que $E$ est un sous-groupe de $(M_2(\mathbb{R}), +)$.
         reasoning: |-
-          Montrer que $E$ est un sous-groupe de $(M_2(\mathbb{R}),+)$, c'est montrer que $(E,+)$ est **lui-même** un groupe — la même démarche qu'au rung R3, mais restreinte à $E$ : on recoche les quatre axiomes, un par un, à l'intérieur de $E$. C'est exactement le geste déjà mené pour l'ensemble $E$ du sujet 2022 (matrices à coefficients entiers), ici avec des coefficients réels.
+          Montrer que $E$ est un sous-groupe de $(M_2(\mathbb{R}),+)$, c'est montrer que $(E,+)$ est **lui-même** un groupe — la même démarche qu'au chapitre 4, mais restreinte à $E$ : on recoche les quatre axiomes, un par un, à l'intérieur de $E$. C'est exactement le geste déjà mené pour l'ensemble $E$ du sujet 2022 (matrices à coefficients entiers), ici avec des coefficients réels.
 
           La stabilité se lit directement sur l'addition matricielle, coefficient par coefficient : le résultat reste de la forme $M(\cdot,\cdot)$. L'associativité est héritée de $M_2(\mathbb{R})$ tout entier. Le neutre $O=M(0,0)$ et l'opposé $-M(x,y)=M(-x,-y)$ restent eux aussi de cette forme — les quatre axiomes tiennent dans $E$.
         steps:
@@ -1469,7 +1469,7 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que $E$ est un sous-espace vectoriel de $(M_2(\mathbb{R}), +, \cdot)$.
         reasoning: |-
-          Montrer que $E$ est un sous-espace vectoriel de $(M_2(\mathbb{R}),+,\cdot)$ mobilise une notion d'un chapitre antérieur du cursus (les espaces vectoriels), rappelée en tête d'énoncé — pas un outil neuf de ce chapitre sur les structures algébriques. Le geste reste néanmoins très proche de la stabilité du rung R1 : $E$ est non vide (il contient $O$, question précédente), stable pour $+$ (déjà établi), et il reste seulement à vérifier la stabilité pour la multiplication par un réel $\lambda$.
+          Montrer que $E$ est un sous-espace vectoriel de $(M_2(\mathbb{R}),+,\cdot)$ mobilise une notion d'un chapitre antérieur du cursus (les espaces vectoriels), rappelée en tête d'énoncé — pas un outil neuf de ce chapitre sur les structures algébriques. Le geste reste néanmoins très proche de la stabilité du chapitre 2 : $E$ est non vide (il contient $O$, question précédente), stable pour $+$ (déjà établi), et il reste seulement à vérifier la stabilité pour la multiplication par un réel $\lambda$.
 
           Le calcul est direct : multiplier chaque coefficient de $M(x,y)$ par $\lambda$ revient à multiplier $x$ et $y$ par $\lambda$ dans la même formule, donc le résultat reste de la forme $M(\cdot,\cdot)$.
         steps:
@@ -1500,7 +1500,7 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que $(E, +, \times)$ est un anneau commutatif et unitaire.
         reasoning: |-
-          On va un cran plus loin que la définition de base de l'anneau (rung R5) : après avoir établi que $(E,+)$ est un groupe commutatif (q1, commutativité héritée de $+$ sur $M_2(\mathbb{R})$, où elle tient toujours) et que $\times$ est associative et distributive sur $E$ (héritées de $M_2(\mathbb{R})$ tout entier, déjà un anneau), reste ce qui ne s'hérite **pas** automatiquement : $M_2(\mathbb{R})$ n'est **pas** commutatif pour $\times$ (rappel de tête d'énoncé), donc la commutativité de $\times$ sur $E$ se vérifie directement, avec la formule de la question précédente.
+          On va un cran plus loin que la définition de base de l'anneau (chapitre 7) : après avoir établi que $(E,+)$ est un groupe commutatif (q1, commutativité héritée de $+$ sur $M_2(\mathbb{R})$, où elle tient toujours) et que $\times$ est associative et distributive sur $E$ (héritées de $M_2(\mathbb{R})$ tout entier, déjà un anneau), reste ce qui ne s'hérite **pas** automatiquement : $M_2(\mathbb{R})$ n'est **pas** commutatif pour $\times$ (rappel de tête d'énoncé), donc la commutativité de $\times$ sur $E$ se vérifie directement, avec la formule de la question précédente.
 
           L'unité s'hérite sans difficulté : $I=M(1,0)$ est déjà l'unité de tout $M_2(\mathbb{R})$, et $I\in E$.
         steps:
@@ -1531,9 +1531,9 @@ entries:
         stem: |-
           **(0,25 pt)** En déduire que $(E, +, \times)$ n'est pas un corps.
         reasoning: |-
-          Un corps exige (rung R6) que **tout** élément non nul possède un symétrique pour $\times$. On vient d'exhiber deux matrices non nulles — $M(\sqrt3,1)$ et $M(-\sqrt3,1)$ ont chacune un coefficient $y=1\neq0$ en haut à droite, donc aucune des deux n'est la matrice nulle $O$ — dont le produit vaut pourtant $O$ (question précédente).
+          Un corps exige (chapitre 9) que **tout** élément non nul possède un symétrique pour $\times$. On vient d'exhiber deux matrices non nulles — $M(\sqrt3,1)$ et $M(-\sqrt3,1)$ ont chacune un coefficient $y=1\neq0$ en haut à droite, donc aucune des deux n'est la matrice nulle $O$ — dont le produit vaut pourtant $O$ (question précédente).
 
-          Or dans un corps, ceci est impossible : si $M(\sqrt3,1)$ admettait un inverse pour $\times$, multiplier les deux membres de $M(\sqrt3,1)\times M(-\sqrt3,1)=O$ par cet inverse donnerait $M(-\sqrt3,1) = M(\sqrt3,1)^{-1}\times O = O$ — contradiction, puisque $M(-\sqrt3,1)$ est non nulle. $M(\sqrt3,1)$ est donc un élément non nul de $E$ sans symétrique pour $\times$ : l'exigence du rung R6 échoue, $(E,+,\times)$ n'est pas un corps.
+          Or dans un corps, ceci est impossible : si $M(\sqrt3,1)$ admettait un inverse pour $\times$, multiplier les deux membres de $M(\sqrt3,1)\times M(-\sqrt3,1)=O$ par cet inverse donnerait $M(-\sqrt3,1) = M(\sqrt3,1)^{-1}\times O = O$ — contradiction, puisque $M(-\sqrt3,1)$ est non nulle. $M(\sqrt3,1)$ est donc un élément non nul de $E$ sans symétrique pour $\times$ : l'exigence du chapitre 9 échoue, $(E,+,\times)$ n'est pas un corps.
         steps:
           - math: 'M(\sqrt3,1) \neq O \quad \text{et} \quad M(-\sqrt3,1) \neq O \qquad (\text{coefficient } y=1\neq0 \text{ dans les deux})'
             note: "Les deux facteurs du produit de la question précédente sont non nuls."
@@ -1544,7 +1544,7 @@ entries:
           - math: 'M(-\sqrt3,1) = O \quad \text{contredit} \quad M(-\sqrt3,1) \neq O'
             note: "Contradiction : M(√3,1) ne peut donc pas être inversible dans (E,×)."
           - math: '(E,+,\times) \ \text{ne constitue pas un corps}'
-            note: "Un seul élément non nul sans symétrique suffit à réfuter l'exigence du rung R6."
+            note: "Un seul élément non nul sans symétrique suffit à réfuter l'exigence du chapitre 9."
       - id: q7
         part: "Partie II — $F$ et $G$ : un sous-groupe multiplicatif"
         stem: |-
@@ -1601,7 +1601,7 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que $\varphi$ est un homomorphisme de $(F - \{0\}, \times)$ vers $(E, \times)$.
         reasoning: |-
-          Le geste-pont du rung R7 : il faut montrer $\varphi(z\times w) = \varphi(z)\times\varphi(w)$ pour tous $z,w\in F-\{0\}$ — en notant $z=x+y\sqrt3$ et $w=a+b\sqrt3$ les deux éléments, pour éviter la confusion des primes. Le produit $z\times w$ a déjà été développé à la question précédente (question 2) : $(xa+3yb)+(xb+ya)\sqrt3$. Son image par $\varphi$ est donc $M(xa+3yb,\ xb+ya)$.
+          Le geste-pont du chapitre 10 : il faut montrer $\varphi(z\times w) = \varphi(z)\times\varphi(w)$ pour tous $z,w\in F-\{0\}$ — en notant $z=x+y\sqrt3$ et $w=a+b\sqrt3$ les deux éléments, pour éviter la confusion des primes. Le produit $z\times w$ a déjà été développé à la question précédente (question 2) : $(xa+3yb)+(xb+ya)\sqrt3$. Son image par $\varphi$ est donc $M(xa+3yb,\ xb+ya)$.
 
           De l'autre côté, $\varphi(z)\times\varphi(w) = M(x,y)\times M(a,b)$, qui vaut exactement $M(xa+3yb,\ xb+ya)$ par la formule de la question 3 (Partie I) — le même calcul matriciel, appliqué cette fois à des coefficients rationnels. Les deux membres coïncident : $\varphi$ transforme $\times$ en $\times$, c'est un homomorphisme.
         steps:
@@ -1619,7 +1619,7 @@ entries:
         stem: |-
           **(0,25 pt)** En déduire que $(G - \{O\}, \times)$ est un groupe commutatif.
         reasoning: |-
-          On mobilise le pont du rung R7 : $(F-\{0\},\times)$ est un groupe commutatif (question 2 — sous-groupe de $(\mathbb{R}^*,\times)$, qui est lui-même commutatif, donc $F-\{0\}$ l'hérite), et $\varphi$ en est un homomorphisme (question précédente) dont l'image est exactement $G-\{O\}$ (question 3-a) : $\varphi$ est donc **surjective** de $F-\{0\}$ sur $G-\{O\}$.
+          On mobilise le pont du chapitre 10 : $(F-\{0\},\times)$ est un groupe commutatif (question 2 — sous-groupe de $(\mathbb{R}^*,\times)$, qui est lui-même commutatif, donc $F-\{0\}$ l'hérite), et $\varphi$ en est un homomorphisme (question précédente) dont l'image est exactement $G-\{O\}$ (question 3-a) : $\varphi$ est donc **surjective** de $F-\{0\}$ sur $G-\{O\}$.
 
           $\varphi$ est de plus injective : deux couples rationnels distincts $(x,y)\neq(a,b)$ donnent deux matrices $M(x,y)\neq M(a,b)$ (leurs coefficients diffèrent déjà), donc deux images distinctes. $\varphi$ est un isomorphisme de $(F-\{0\},\times)$ vers $(G-\{O\},\times)$ : toute la structure de groupe commutatif se transporte, sans re-vérifier aucun axiome sur $G-\{O\}$.
         steps:
@@ -1640,7 +1640,7 @@ entries:
         reasoning: |-
           Synthèse finale, en réutilisant tout ce qui précède plutôt qu'en repartant de zéro. $(G,+)$ est un sous-groupe de $(E,+)$ : même démarche qu'à la question 1 pour $E$, avec $\mathbb{Q}$ à la place de $\mathbb{R}$ — $\mathbb{Q}$ est stable pour $+$ et le passage à l'opposé, donc $G$ l'est aussi. Associativité, distributivité et commutativité de $\times$ sur $G$ s'héritent directement de $E$ (Partie I, question 3-b) : ce qui est vrai pour **tous** les éléments de $E$ reste vrai en particulier pour ceux de $G\subset E$. L'unité $I=M(1,0)$ appartient à $G$, puisque $(1,0)\in\mathbb{Q}^2$.
 
-          Reste l'exigence propre au corps (rung R6) : **tout** élément non nul de $G$ a-t-il un symétrique pour $\times$ ? C'est exactement ce que dit la question précédente — $(G-\{O\},\times)$ est un groupe, donc chaque élément non nul de $G$ possède un symétrique, qui reste dans $G$. Les conditions du R6 sont réunies : $(G,+,\times)$ est un corps commutatif.
+          Reste l'exigence propre au corps (chapitre 9) : **tout** élément non nul de $G$ a-t-il un symétrique pour $\times$ ? C'est exactement ce que dit la question précédente — $(G-\{O\},\times)$ est un groupe, donc chaque élément non nul de $G$ possède un symétrique, qui reste dans $G$. Les conditions du chapitre 9 sont réunies : $(G,+,\times)$ est un corps commutatif.
         steps:
           - math: '(G,+) \ \text{sous-groupe de} \ (E,+) \quad (\mathbb{Q} \ \text{stable pour} \ + \ \text{et le passage à l opposé, même geste que pour} \ E \ \text{en q1})'
             note: "Premier ingrédient de l'anneau, restreint à Q."
@@ -1649,9 +1649,9 @@ entries:
           - math: 'I = M(1,0) \in G \quad ((1,0)\in\mathbb{Q}^2)'
             note: "L'unité appartient à G."
           - math: '(G-\{O\},\times) \ \text{groupe} \quad (\text{q11}) \ \Longrightarrow\ \text{tout élément non nul de } G \text{ a un symétrique pour} \ \times'
-            note: "C'est exactement l'exigence supplémentaire du rung R6, déjà établie."
+            note: "C'est exactement l'exigence supplémentaire du chapitre 9, déjà établie."
           - math: '(G,+,\times) \ \text{est un corps commutatif}'
-            note: "Anneau commutatif unitaire, et tout élément non nul inversible pour × : les conditions du R6 sont réunies."
+            note: "Anneau commutatif unitaire, et tout élément non nul inversible pour × : les conditions du chapitre 9 sont réunies."
 
   # ── bk-2023-r-x3 — 2023 R, Exercice 3 : sous-groupe E de (M3(R),+), homomorphismes φ et ψ, lois ∗ et T sur R×C, corps commutatif (G,∗,T) ──
   - id: bk-2023-r-x3
@@ -1765,7 +1765,7 @@ entries:
 
           **(0,5 pt)** Montrer que $\varphi$ est un homomorphisme de $(E,+)$ vers $\left(\mathbb{R}\times\mathbb{C},\ast\right)$ et que $\varphi(E) = \mathbb{R}\times\mathbb{C}$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Deux choses distinctes, et la question vaut $0{,}5$ point parce qu'elle en attend bien deux. D'abord l'égalité de morphisme $\varphi(M + M') = \varphi(M) \ast \varphi(M')$ — le geste-pont du rung R7 : on calcule les deux membres séparément et on constate qu'ils coïncident. Ensuite la **surjectivité** $\varphi(E) = \mathbb{R}\times\mathbb{C}$, qui est une autre affirmation : tout couple de l'ensemble d'arrivée doit avoir un antécédent dans $E$.
+          **Ce qu'on cherche et pourquoi ce geste.** Deux choses distinctes, et la question vaut $0{,}5$ point parce qu'elle en attend bien deux. D'abord l'égalité de morphisme $\varphi(M + M') = \varphi(M) \ast \varphi(M')$ — le geste-pont du chapitre 10 : on calcule les deux membres séparément et on constate qu'ils coïncident. Ensuite la **surjectivité** $\varphi(E) = \mathbb{R}\times\mathbb{C}$, qui est une autre affirmation : tout couple de l'ensemble d'arrivée doit avoir un antécédent dans $E$.
 
           **Le morphisme.** Membre de gauche : la question 1 a déjà établi $M(a,b,c) + M(a',b',c') = M(a+a',b+b',c+c')$, donc son image par $\varphi$ est $\left(a+a',\ (b+b') + (c+c')i\right)$.
 
@@ -1795,7 +1795,7 @@ entries:
         stem: |-
           **(0,25 pt)** En déduire que $\left(\mathbb{R}\times\mathbb{C},\ast\right)$ est un groupe commutatif.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » interdit ici de repartir des axiomes : tout le travail a été fait, il s'agit de le **transporter**. C'est le rung R7 dans sa forme la plus économique — un isomorphisme fait passer une structure d'un ensemble à l'autre sans re-vérification.
+          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » interdit ici de repartir des axiomes : tout le travail a été fait, il s'agit de le **transporter**. C'est le chapitre 10 dans sa forme la plus économique — un isomorphisme fait passer une structure d'un ensemble à l'autre sans re-vérification.
 
           Les trois ingrédients sont en place. $(E,+)$ est un groupe commutatif : question 1, comme sous-groupe du groupe commutatif $\left(M_3(\mathbb{R}),+\right)$. $\varphi$ est un homomorphisme de $(E,+)$ vers $\left(\mathbb{R}\times\mathbb{C},\ast\right)$, et il est bijectif de $E$ sur $\mathbb{R}\times\mathbb{C}$ : question 2-a, surjectivité démontrée puis injectivité relevée. $\varphi$ est donc un **isomorphisme** de $(E,+)$ sur $\left(\mathbb{R}\times\mathbb{C},\ast\right)$, et toute la structure de groupe commutatif passe telle quelle.
 
@@ -1828,7 +1828,7 @@ entries:
 
           Comparons composante par composante avec le résultat de départ, $\left(x\operatorname{Re}(z') + x'\operatorname{Re}(z),\ zz'\right)$. La première composante est une somme de deux réels : elle ne change pas d'ordre près, puisque l'addition est commutative dans $\mathbb{R}$. La seconde composante est un produit de deux complexes : $z'z = zz'$, puisque la multiplication est commutative dans $\mathbb{C}$. Les deux résultats sont donc égaux, pour tous les couples.
 
-          **Le piège à éviter.** Tester la formule sur un couple particulier — par exemple $(1,i)$ et $(0,1)$ — et conclure. Un exemple ne prouve jamais une propriété universelle ; c'est l'erreur que le rung R2 nomme explicitement à propos de l'associativité, et elle est ici exactement la même. Et pendant qu'on y est : la commutativité de $T$ ne dit **rien** de son associativité. La question 3-c montrera qu'une loi peut parfaitement être commutative et non associative — ce sont deux propriétés indépendantes.
+          **Le piège à éviter.** Tester la formule sur un couple particulier — par exemple $(1,i)$ et $(0,1)$ — et conclure. Un exemple ne prouve jamais une propriété universelle ; c'est l'erreur que le chapitre 3 nomme explicitement à propos de l'associativité, et elle est ici exactement la même. Et pendant qu'on y est : la commutativité de $T$ ne dit **rien** de son associativité. La question 3-c montrera qu'une loi peut parfaitement être commutative et non associative — ce sont deux propriétés indépendantes.
         steps:
           - math: '(x,z)\,T\,(x'',z'') = \left(x\operatorname{Re}(z'') + x''\operatorname{Re}(z),\ zz''\right)'
             note: "La formule, appliquée dans l'ordre donné."
@@ -1844,7 +1844,7 @@ entries:
         stem: |-
           **(0,25 pt)** Vérifier que $(0,1)$ est l'élément neutre de $T$ dans $\mathbb{R}\times\mathbb{C}$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Le neutre est donné : il n'y a rien à chercher, seulement à **vérifier**. Par définition (rung R2), $e$ est neutre si $u\,T\,e = e\,T\,u = u$ pour tout $u$. Ici $e = (0,1)$, c'est-à-dire le couple dont la première composante est le réel $0$ et la seconde le complexe $1$.
+          **Ce qu'on cherche et pourquoi ce geste.** Le neutre est donné : il n'y a rien à chercher, seulement à **vérifier**. Par définition (chapitre 3), $e$ est neutre si $u\,T\,e = e\,T\,u = u$ pour tout $u$. Ici $e = (0,1)$, c'est-à-dire le couple dont la première composante est le réel $0$ et la seconde le complexe $1$.
 
           On applique la formule avec $(x',z') = (0,1)$. Première composante : $x\operatorname{Re}(1) + 0\cdot\operatorname{Re}(z)$. Or $\operatorname{Re}(1) = 1$ — le réel $1$, vu comme complexe, s'écrit $1 + 0i$, sa partie réelle vaut $1$. Donc cette composante vaut $x\cdot 1 + 0 = x$. Seconde composante : $z \times 1 = z$. On retrouve $(x,z)$.
 
@@ -1868,15 +1868,15 @@ entries:
         stem: |-
           **(0,5 pt)** Vérifier que $\forall x \in \mathbb{R}$, $(1,i)\,T\,(x,-i) = (0,1)$ ; en déduire que $T$ est non associative dans $\mathbb{R}\times\mathbb{C}$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** La vérification est un calcul de trois lignes ; c'est la déduction qui porte la question. L'égalité annoncée dit que $(1,i)$ possède une **infinité** de symétriques pour $T$ — un pour chaque réel $x$. Or le rung R2 démontre que, lorsqu'une loi est associative et possède un neutre, le symétrique d'un élément est **unique**. Une infinité de symétriques est donc incompatible avec l'associativité : c'est la contraposée de ce théorème qui conclut.
+          **Ce qu'on cherche et pourquoi ce geste.** La vérification est un calcul de trois lignes ; c'est la déduction qui porte la question. L'égalité annoncée dit que $(1,i)$ possède une **infinité** de symétriques pour $T$ — un pour chaque réel $x$. Or le chapitre 3 démontre que, lorsqu'une loi est associative et possède un neutre, le symétrique d'un élément est **unique**. Une infinité de symétriques est donc incompatible avec l'associativité : c'est la contraposée de ce théorème qui conclut.
 
           **La vérification.** On applique la formule de $T$ avec $(1,i)$ et $(x,-i)$. Première composante : $1\cdot\operatorname{Re}(-i) + x\cdot\operatorname{Re}(i)$. Le complexe $i$ s'écrit $0 + 1i$, donc $\operatorname{Re}(i) = 0$ ; de même $-i = 0 - 1i$, donc $\operatorname{Re}(-i) = 0$. Les deux termes s'annulent, quel que soit $x$ : la première composante vaut $0$. Seconde composante : $i \times (-i) = -i^2 = -(-1) = 1$. On obtient $(0,1)$, et cela pour **tout** $x$ réel.
 
-          **La déduction.** $(0,1)$ est le neutre de $T$ (question 3-b). L'égalité qu'on vient d'établir, jointe à la commutativité (question 3-a), dit donc que $(x,-i)$ est un symétrique de $(1,i)$ — et ce, pour chaque valeur réelle de $x$. Si $T$ était associative, le rung R2 imposerait à ce symétrique d'être unique ; or $(0,-i)$ et $(1,-i)$ sont deux symétriques distincts du même élément $(1,i)$. Contradiction : $T$ n'est pas associative.
+          **La déduction.** $(0,1)$ est le neutre de $T$ (question 3-b). L'égalité qu'on vient d'établir, jointe à la commutativité (question 3-a), dit donc que $(x,-i)$ est un symétrique de $(1,i)$ — et ce, pour chaque valeur réelle de $x$. Si $T$ était associative, le chapitre 3 imposerait à ce symétrique d'être unique ; or $(0,-i)$ et $(1,-i)$ sont deux symétriques distincts du même élément $(1,i)$. Contradiction : $T$ n'est pas associative.
 
           On peut aussi produire le contre-exemple explicite, plus court à lire qu'à trouver. Posons $u = (0,-i)$, $v = (1,i)$ et $w = (1,-i)$. D'un côté, $u\,T\,v = (0,1)$ par ce qui précède et la commutativité, donc $(u\,T\,v)\,T\,w = (0,1)\,T\,w = w = (1,-i)$, puisque $(0,1)$ est neutre. De l'autre, $v\,T\,w = (1,i)\,T\,(1,-i) = (0,1)$ par la même égalité prise en $x=1$, donc $u\,T\,(v\,T\,w) = u\,T\,(0,1) = u = (0,-i)$. Les deux résultats diffèrent : $(1,-i) \neq (0,-i)$.
 
-          **Le piège à éviter.** Conclure « le symétrique n'est pas unique, donc $T$ n'est pas associative » sans citer le théorème qui lie les deux. L'unicité du symétrique n'est pas une évidence : elle se démontre, au rung R2, et sa démonstration **utilise l'associativité** au moment de redéplacer les parenthèses. C'est exactement ce maillon qui autorise ici la contraposée — sans lui, la phrase n'est qu'une intuition. Et méfie-toi de la tentation inverse : le fait que $T$ soit commutative (question 3-a) ne rattrape rien, la commutativité ne dit rien de l'associativité.
+          **Le piège à éviter.** Conclure « le symétrique n'est pas unique, donc $T$ n'est pas associative » sans citer le théorème qui lie les deux. L'unicité du symétrique n'est pas une évidence : elle se démontre, au chapitre 3, et sa démonstration **utilise l'associativité** au moment de redéplacer les parenthèses. C'est exactement ce maillon qui autorise ici la contraposée — sans lui, la phrase n'est qu'une intuition. Et méfie-toi de la tentation inverse : le fait que $T$ soit commutative (question 3-a) ne rattrape rien, la commutativité ne dit rien de l'associativité.
         steps:
           - math: '\operatorname{Re}(i) = 0, \qquad \operatorname{Re}(-i) = 0'
             note: "i s'écrit 0 + 1i et −i s'écrit 0 − 1i : leurs parties réelles sont nulles."
@@ -1885,7 +1885,7 @@ entries:
           - math: '(0,1) \ \text{neutre} \ (\text{q3-b}) \ \Longrightarrow\ (x,-i) \ \text{est un symétrique de} \ (1,i), \ \text{pour tout} \ x \in \mathbb{R}'
             note: "Avec la commutativité (q3-a), les deux égalités de la définition du symétrique sont acquises."
           - math: '\text{R2}: \ \text{loi associative à neutre} \ \Longrightarrow\ \text{symétrique unique}. \quad \text{Ici} \ (0,-i) \neq (1,-i) \ \text{sont deux symétriques de} \ (1,i)'
-            note: "Contraposée du théorème d'unicité du symétrique (R2) : l'associativité tombe."
+            note: "Contraposée du théorème d'unicité du symétrique (chapitre 3) : l'associativité tombe."
           - math: 'u = (0,-i),\ v = (1,i),\ w = (1,-i): \quad (u\,T\,v)\,T\,w = (0,1)\,T\,w = (1,-i)'
             note: "Contre-exemple explicite, premier parenthésage."
           - math: 'u\,T\,(v\,T\,w) = u\,T\,(0,1) = (0,-i) \ \neq \ (1,-i)'
@@ -1984,13 +1984,13 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $\left(G,\ast,T\right)$ est un corps commutatif.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Deux routes mènent au but, et il vaut la peine de voir pourquoi la seconde est la bonne. La première consiste à recocher un à un, sur $G$, tous les axiomes du rung R6 : $(G,\ast)$ groupe commutatif, $T$ interne, associative et commutative sur $G$, un neutre pour $T$ distinct du zéro, tout élément non nul inversible pour $T$, et la distributivité de $T$ sur $\ast$. C'est faisable — presque tout est déjà démontré — mais c'est long. La seconde route est celle du rung R7, dans le prolongement de la question 4-c : construire un isomorphisme qui transporte **les deux lois à la fois**, depuis un corps déjà connu.
+          **Ce qu'on cherche et pourquoi ce geste.** Deux routes mènent au but, et il vaut la peine de voir pourquoi la seconde est la bonne. La première consiste à recocher un à un, sur $G$, tous les axiomes du chapitre 9 : $(G,\ast)$ groupe commutatif, $T$ interne, associative et commutative sur $G$, un neutre pour $T$ distinct du zéro, tout élément non nul inversible pour $T$, et la distributivité de $T$ sur $\ast$. C'est faisable — presque tout est déjà démontré — mais c'est long. La seconde route est celle du chapitre 10, dans le prolongement de la question 4-c : construire un isomorphisme qui transporte **les deux lois à la fois**, depuis un corps déjà connu.
 
           **L'application.** Prolongeons $\psi$ à $\mathbb{C}$ tout entier : posons $\Psi(z) = \left(\operatorname{Im}(z),\ z\right)$ pour tout $z \in \mathbb{C}$. Par définition de $G$, $\Psi$ est surjective de $\mathbb{C}$ sur $G$ ; elle est injective, car deux complexes distincts donnent des couples de secondes composantes distinctes. $\Psi$ est donc une bijection de $\mathbb{C}$ sur $G$.
 
           **Les deux compatibilités.** Elles sont déjà acquises, et c'est là que le travail précédent paie. Pour $+$ et $\ast$ : le calcul de stabilité de la question 4-a donne exactement $\Psi(z) \ast \Psi(z') = \Psi(z+z')$, pour tous complexes $z, z'$. Pour $\times$ et $T$ : le calcul de la question 4-b donne $\Psi(z)\,T\,\Psi(z') = \Psi(z\,z')$ — et l'on a noté à ce moment-là que ce calcul n'utilise jamais $z \neq 0$, il vaut donc sur $\mathbb{C}$ tout entier, c'est ce qui autorise le prolongement.
 
-          **La conclusion.** $\Psi$ est une bijection de $\mathbb{C}$ sur $G$ compatible avec les deux lois à la fois : c'est un isomorphisme de $\left(\mathbb{C},+,\times\right)$ sur $\left(G,\ast,T\right)$. Or $\left(\mathbb{C},+,\times\right)$ est un corps commutatif — un fait acquis, au même titre que $\left(\mathbb{Q},+,\times\right)$ au rung R6. Toute la structure se transporte d'un coup : associativité et commutativité des deux lois, distributivité, existence des neutres et inversibilité de tout élément non nul. Donc $\left(G,\ast,T\right)$ est un corps commutatif.
+          **La conclusion.** $\Psi$ est une bijection de $\mathbb{C}$ sur $G$ compatible avec les deux lois à la fois : c'est un isomorphisme de $\left(\mathbb{C},+,\times\right)$ sur $\left(G,\ast,T\right)$. Or $\left(\mathbb{C},+,\times\right)$ est un corps commutatif — un fait acquis, au même titre que $\left(\mathbb{Q},+,\times\right)$ au chapitre 9. Toute la structure se transporte d'un coup : associativité et commutativité des deux lois, distributivité, existence des neutres et inversibilité de tout élément non nul. Donc $\left(G,\ast,T\right)$ est un corps commutatif.
 
           Les repères concrets, pour finir : le zéro du corps est $\Psi(0) = (0,0)$, son unité est $\Psi(1) = (0,1)$, et les deux sont bien distincts — un corps exige que son unité ne soit pas son zéro. L'inversibilité de tout élément non nul est exactement le résultat de la question 4-c, retrouvé par une autre voie.
 
@@ -2046,7 +2046,7 @@ entries:
 
       Soient la matrice $A = \begin{pmatrix} -1 & -1 & 0 \\ -1 & -1 & 0 \\ -1 & 1 & -2 \end{pmatrix}$ et l'ensemble $E = \left\{ M(x) = I + xA\ /\ x \in \mathbb{R} \right\}$.
 
-      L'exercice enchaîne d'abord un groupe multiplicatif obtenu en retirant un seul élément de $E$ (rung R3, avec une stabilité conditionnelle que les sujets 2019 et 2022 n'avaient pas), puis une seconde loi $T$ sur $E$ tout entier avec un isomorphisme depuis $(\mathbb{R},+)$ (rung R7), pour terminer sur un corps commutatif (rung R6) où $T$ joue le rôle de $+$.
+      L'exercice enchaîne d'abord un groupe multiplicatif obtenu en retirant un seul élément de $E$ (chapitre 4, avec une stabilité conditionnelle que les sujets 2019 et 2022 n'avaient pas), puis une seconde loi $T$ sur $E$ tout entier avec un isomorphisme depuis $(\mathbb{R},+)$ (chapitre 10), pour terminer sur un corps commutatif (chapitre 9) où $T$ joue le rôle de $+$.
     questions:
       - id: q1
         part: "Le carré de $A$, et le produit $M(x)\\times M(y)$"
@@ -2129,9 +2129,9 @@ entries:
         stem: |-
           **(1 pt)** Montrer que : $\left( E - \left\{ M\!\left(\dfrac{1}{2}\right) \right\}, \times \right)$ est un groupe commutatif.
         reasoning: |-
-          On coche les quatre axiomes du rung R3, sur $E-\left\{M\!\left(\dfrac12\right)\right\}$, en réutilisant ce qui précède. Loi interne : question précédente. Associativité : héritée de $M_3(\mathbb{R})$ tout entier, comme dans tous les exemples de ce chapitre. Commutativité : immédiate sur la formule de la question 1-b, $x+y-2xy$ est symétrique en $x$ et $y$.
+          On coche les quatre axiomes du chapitre 4, sur $E-\left\{M\!\left(\dfrac12\right)\right\}$, en réutilisant ce qui précède. Loi interne : question précédente. Associativité : héritée de $M_3(\mathbb{R})$ tout entier, comme dans tous les exemples de ce chapitre. Commutativité : immédiate sur la formule de la question 1-b, $x+y-2xy$ est symétrique en $x$ et $y$.
 
-          Restent le neutre et le symétrique, à trouver en résolvant sur le paramètre réel $x$ — exactement comme au R2, mais ici l'inconnue est un réel, pas un complexe. Neutre $e$ : $x+e-2xe=x$ pour tout $x$ donne $e(1-2x)=0$ pour tout $x$, donc $e=0$ — soit $M(0)=I$, qui est bien dans l'ensemble car $0\neq\dfrac12$. Symétrique de $x\neq\dfrac12$ : on résout $x+y-2xy=0$ en $y$, ce qui donne $y=\dfrac{x}{2x-1}$ (licite car $x\neq\dfrac12$) — et l'équation $y=\dfrac12$ donnerait $2x=2x-1$, soit $0=-1$, impossible : $y$ n'est jamais égal à $\dfrac12$, quel que soit $x$. Le symétrique reste donc toujours dans l'ensemble.
+          Restent le neutre et le symétrique, à trouver en résolvant sur le paramètre réel $x$ — exactement comme au chapitre 3, mais ici l'inconnue est un réel, pas un complexe. Neutre $e$ : $x+e-2xe=x$ pour tout $x$ donne $e(1-2x)=0$ pour tout $x$, donc $e=0$ — soit $M(0)=I$, qui est bien dans l'ensemble car $0\neq\dfrac12$. Symétrique de $x\neq\dfrac12$ : on résout $x+y-2xy=0$ en $y$, ce qui donne $y=\dfrac{x}{2x-1}$ (licite car $x\neq\dfrac12$) — et l'équation $y=\dfrac12$ donnerait $2x=2x-1$, soit $0=-1$, impossible : $y$ n'est jamais égal à $\dfrac12$, quel que soit $x$. Le symétrique reste donc toujours dans l'ensemble.
         steps:
           - math: '\times \ \text{interne} \ (\text{q5}); \qquad \times \ \text{associative} \ (\text{produit matriciel, toujours associatif})'
             note: "Deux axiomes : le premier vient de la question précédente, le second est un fait général."
@@ -2154,7 +2154,7 @@ entries:
 
           **(0,5 pt)** Montrer que $\varphi$ est un homomorphisme de $(\mathbb{R},+)$ vers $(E,T)$ et que $\varphi(\mathbb{R}) = E$.
         reasoning: |-
-          Le geste-pont du rung R7 : il faut montrer $\varphi(x+y) = \varphi(x)\,T\,\varphi(y)$ pour tous $x,y$ réels, puis que $\varphi$ atteint tout $E$. On applique la définition de $T$ aux deux images $\varphi(x)=M\!\left(\dfrac{1-x}{2}\right)$ et $\varphi(y)=M\!\left(\dfrac{1-y}{2}\right)$, et on doit retrouver exactement $\varphi(x+y)=M\!\left(\dfrac{1-(x+y)}{2}\right)$.
+          Le geste-pont du chapitre 10 : il faut montrer $\varphi(x+y) = \varphi(x)\,T\,\varphi(y)$ pour tous $x,y$ réels, puis que $\varphi$ atteint tout $E$. On applique la définition de $T$ aux deux images $\varphi(x)=M\!\left(\dfrac{1-x}{2}\right)$ et $\varphi(y)=M\!\left(\dfrac{1-y}{2}\right)$, et on doit retrouver exactement $\varphi(x+y)=M\!\left(\dfrac{1-(x+y)}{2}\right)$.
 
           Pour $\varphi(\mathbb{R})=E$ : tout élément de $E$ s'écrit $M(z)$ pour un certain réel $z$, et $z=\dfrac{1-x}{2}$ se résout en $x=1-2z$ — donc $M(z)=\varphi(1-2z)$, tout élément de $E$ a un antécédent par $\varphi$.
         steps:
@@ -2172,7 +2172,7 @@ entries:
         stem: |-
           **(0,25 pt)** En déduire que $(E,T)$ est un groupe commutatif.
         reasoning: |-
-          On mobilise le pont du rung R7 : $(\mathbb{R},+)$ est un groupe commutatif archi-connu, $\varphi$ est un homomorphisme surjectif de $\mathbb{R}$ sur $E$ (question précédente), et $\varphi$ est de plus injective — deux réels distincts $x\neq y$ donnent $\dfrac{1-x}{2}\neq\dfrac{1-y}{2}$, donc $\varphi(x)\neq\varphi(y)$. $\varphi$ est donc un isomorphisme de $(\mathbb{R},+)$ vers $(E,T)$ : toute la structure de groupe commutatif se transporte, sans re-vérifier aucun axiome sur $E$.
+          On mobilise le pont du chapitre 10 : $(\mathbb{R},+)$ est un groupe commutatif archi-connu, $\varphi$ est un homomorphisme surjectif de $\mathbb{R}$ sur $E$ (question précédente), et $\varphi$ est de plus injective — deux réels distincts $x\neq y$ donnent $\dfrac{1-x}{2}\neq\dfrac{1-y}{2}$, donc $\varphi(x)\neq\varphi(y)$. $\varphi$ est donc un isomorphisme de $(\mathbb{R},+)$ vers $(E,T)$ : toute la structure de groupe commutatif se transporte, sans re-vérifier aucun axiome sur $E$.
 
           Comme repère concret, le neutre de $(E,T)$ est l'image du neutre $0$ de $(\mathbb{R},+)$ : $\varphi(0)=M\!\left(\dfrac12\right)$ — précisément l'élément qui avait dû être **retiré** pour obtenir un groupe multiplicatif aux questions 3 et 4. Ce n'est pas une coïncidence : c'est le même élément qui joue tour à tour le rôle du neutre pour $T$ et de l'obstacle à l'inversibilité pour $\times$, comme $0$ dans un anneau usuel.
         steps:
@@ -2189,9 +2189,9 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $(E,T,\times)$ est un corps commutatif.
         reasoning: |-
-          On pourrait recocher un à un tous les axiomes du corps (rung R6) directement sur $E$, mais un raccourci, dans l'esprit du rung R7, va beaucoup plus vite : on sait déjà que $\varphi(x)\,T\,\varphi(y) = \varphi(x+y)$ (question 5-a) — $\varphi$ transporte $+$ en $T$. Reste à vérifier si $\varphi$ transporte **aussi** $\times$ sur $\mathbb{R}$ en $\times$ sur $E$ : c'est un fait nouveau, pas donné par l'énoncé sous forme de sous-question, mais qui se calcule directement avec la formule de la question 1-b.
+          On pourrait recocher un à un tous les axiomes du corps (chapitre 9) directement sur $E$, mais un raccourci, dans l'esprit du chapitre 10, va beaucoup plus vite : on sait déjà que $\varphi(x)\,T\,\varphi(y) = \varphi(x+y)$ (question 5-a) — $\varphi$ transporte $+$ en $T$. Reste à vérifier si $\varphi$ transporte **aussi** $\times$ sur $\mathbb{R}$ en $\times$ sur $E$ : c'est un fait nouveau, pas donné par l'énoncé sous forme de sous-question, mais qui se calcule directement avec la formule de la question 1-b.
 
-          Si les deux vérifications tiennent, $\varphi$ transporte **d'un coup** toute la structure de corps de $(\mathbb{R},+,\times)$ — un corps archi-connu, comme $\mathbb{Q}$ au rung R6 — vers $(E,T,\times)$ : commutativité des deux lois, distributivité, neutres, et inversibilité de tout élément non nul pour $\times$ compris. Ce dernier point recoupe exactement le résultat déjà établi aux questions 3 et 4 : le seul élément sans symétrique pour $\times$, $M\!\left(\dfrac12\right)$, est précisément le neutre de $T$ (question 5-b) — jamais concerné par l'exigence du R6, qui ne porte que sur les éléments non nuls.
+          Si les deux vérifications tiennent, $\varphi$ transporte **d'un coup** toute la structure de corps de $(\mathbb{R},+,\times)$ — un corps archi-connu, comme $\mathbb{Q}$ au chapitre 9 — vers $(E,T,\times)$ : commutativité des deux lois, distributivité, neutres, et inversibilité de tout élément non nul pour $\times$ compris. Ce dernier point recoupe exactement le résultat déjà établi aux questions 3 et 4 : le seul élément sans symétrique pour $\times$, $M\!\left(\dfrac12\right)$, est précisément le neutre de $T$ (question 5-b) — jamais concerné par l'exigence du chapitre 9, qui ne porte que sur les éléments non nuls.
         steps:
           - math: '\varphi(x)\times\varphi(y) = M\!\left(\dfrac{1-x}{2}\right)\times M\!\left(\dfrac{1-y}{2}\right) = M\!\left(\dfrac{1-x}{2}+\dfrac{1-y}{2}-2\cdot\dfrac{1-x}{2}\cdot\dfrac{1-y}{2}\right)'
             note: "Produit des images, via la formule × de la question 1-b."
@@ -2202,7 +2202,7 @@ entries:
           - math: '\varphi \ \text{isomorphisme pour} \ + \ \text{et pour} \ \times \ \Longrightarrow\ (E,T,\times) \ \text{hérite de toute la structure de} \ (\mathbb{R},+,\times)'
             note: "Les deux lois se transportent à la fois : corps, commutatif, distributif."
           - math: '(E,T,\times) \ \text{est un corps commutatif}'
-            note: "Seul M(1/2) = φ(0), le neutre de T, n'a pas de symétrique pour × — cohérent, puisque l'exigence du R6 ne porte que sur les éléments non nuls."
+            note: "Seul M(1/2) = φ(0), le neutre de T, n'a pas de symétrique pour × — cohérent, puisque l'exigence du chapitre 9 ne porte que sur les éléments non nuls."
 
   # ── bk-2017-n-x1 — 2017 N, Exercice 1 : matrices 3×3, loi T via pivot A, homomorphisme depuis (C*,×), corps commutatif ──
   - id: bk-2017-n-x1
@@ -2236,14 +2236,14 @@ entries:
 
       On pose $A = \begin{pmatrix}1&0&0\\1&1&0\\1&1&1\end{pmatrix}$ et, pour tout $(a,b)$ de $\mathbb{R}^2$, $M(a,b) = \begin{pmatrix}a&b&-b\\0&0&0\\b&-a&a\end{pmatrix}$. On considère $E = \{M(a,b)\ /\ (a,b) \in \mathbb{R}^2\}$.
 
-      L'exercice construit une loi $T$ sur $M_3(\mathbb{R})$ via la matrice pivot $A$ ($M_1\,T\,M_2 = M_1\times A\times M_2$), montre qu'elle imite exactement le produit complexe sur $E$, puis transporte, via un homomorphisme (rung R7) depuis $(\mathbb{C}^*,\times)$, toute la structure de corps commutatif de $\mathbb{C}$ vers $(E,+,T)$.
+      L'exercice construit une loi $T$ sur $M_3(\mathbb{R})$ via la matrice pivot $A$ ($M_1\,T\,M_2 = M_1\times A\times M_2$), montre qu'elle imite exactement le produit complexe sur $E$, puis transporte, via un homomorphisme (chapitre 10) depuis $(\mathbb{C}^*,\times)$, toute la structure de corps commutatif de $\mathbb{C}$ vers $(E,+,T)$.
     questions:
       - id: q1
         part: "L'ensemble $E$ : sous-groupe additif, puis stabilité de la loi $T$"
         stem: |-
           **(0,5 pt)** Montrer que $E$ est un sous-groupe du groupe $(M_3(\mathbb{R}),+)$
         reasoning: |-
-          Montrer que $E$ est un sous-groupe de $(M_3(\mathbb{R}),+)$, c'est montrer que $(E,+)$ est **lui-même** un groupe — même démarche qu'au rung R3, restreinte à $E$ : on recoche les quatre axiomes un par un.
+          Montrer que $E$ est un sous-groupe de $(M_3(\mathbb{R}),+)$, c'est montrer que $(E,+)$ est **lui-même** un groupe — même démarche qu'au chapitre 4, restreinte à $E$ : on recoche les quatre axiomes un par un.
 
           La stabilité se lit directement sur les coefficients : $M(a,b)+M(c,d)$ garde exactement la forme $M(\cdot,\cdot)$. L'associativité et la commutativité de $+$ sont héritées de $M_3(\mathbb{R})$ tout entier. Le neutre $O = M(0,0)$ appartient à $E$, et l'opposé $-M(a,b)$ vaut $M(-a,-b)$ — encore de la forme $M(\cdot,\cdot)$, donc dans $E$. Les quatre axiomes tiennent : $E$ est un sous-groupe de $(M_3(\mathbb{R}),+)$.
         steps:
@@ -2272,7 +2272,7 @@ entries:
         stem: |-
           Soit $\varphi$ l'application de $\mathbb{C}^*$ dans $E$ qui à tout nombre complexe non nul $a+ib$ (où $(a,b)\in\mathbb{R}^2$) fait correspondre la matrice $M(a,b)$ de $E$. **(0,75 pt)** Vérifier que $\varphi$ est un homomorphisme de $(\mathbb{C}^*,\times)$ vers $(E,T)$ et que $\varphi(\mathbb{C}^*) = E^*$ où $E^* = E\setminus\{M(0,0)\}$
         reasoning: |-
-          Le geste-pont du rung R7 : deux choses à établir. D'abord, que $\varphi$ transforme $\times$ en $T$ — c'est immédiat maintenant, la question 2 vient exactement de le calculer : pour $z_1=a+ib$ et $z_2=c+id$, $z_1z_2=(ac-bd)+i(ad+bc)$, donc $\varphi(z_1z_2)=M(ac-bd,ad+bc)$, qui est très exactement le résultat trouvé pour $\varphi(z_1)\,T\,\varphi(z_2)=M(a,b)\,T\,M(c,d)$ à la question 2. C'est le pivot $A$ qui fait coïncider les deux calculs.
+          Le geste-pont du chapitre 10 : deux choses à établir. D'abord, que $\varphi$ transforme $\times$ en $T$ — c'est immédiat maintenant, la question 2 vient exactement de le calculer : pour $z_1=a+ib$ et $z_2=c+id$, $z_1z_2=(ac-bd)+i(ad+bc)$, donc $\varphi(z_1z_2)=M(ac-bd,ad+bc)$, qui est très exactement le résultat trouvé pour $\varphi(z_1)\,T\,\varphi(z_2)=M(a,b)\,T\,M(c,d)$ à la question 2. C'est le pivot $A$ qui fait coïncider les deux calculs.
 
           Ensuite, $\varphi(\mathbb{C}^*)=E^*$. L'application $(a,b)\mapsto M(a,b)$ est injective — les coefficients de $M(a,b)$ redonnent $a$ et $b$ directement — donc $\varphi$ l'est aussi sur $\mathbb{C}^*$. Un complexe $a+ib$ est non nul exactement quand $(a,b)\neq(0,0)$, c'est-à-dire quand $M(a,b)\neq M(0,0)$ : l'image de $\varphi$ tombe donc exactement dans $E\setminus\{M(0,0)\}=E^*$, et réciproquement tout $M(a,b)\in E^*$ a pour antécédent le complexe non nul $a+ib$.
         steps:
@@ -2288,7 +2288,7 @@ entries:
         stem: |-
           **(0,75 pt)** En déduire que $(E^*,T)$ est un groupe commutatif dont on déterminera l'élément neutre $J$
         reasoning: |-
-          $(\mathbb{C}^*,\times)$ est un groupe commutatif (rappel de tête d'énoncé). La question précédente donne un homomorphisme $\varphi$, bijectif de $\mathbb{C}^*$ vers $E^*$ (injectif et d'image exactement $E^*$) : c'est un isomorphisme. Toute la structure se transporte (rung R7) : $(E^*,T)$ est un groupe, commutatif car $\times$ l'est ($\varphi(z_1)\,T\,\varphi(z_2)=\varphi(z_1z_2)=\varphi(z_2z_1)=\varphi(z_2)\,T\,\varphi(z_1)$, et $\varphi$ atteint tout $E^*$).
+          $(\mathbb{C}^*,\times)$ est un groupe commutatif (rappel de tête d'énoncé). La question précédente donne un homomorphisme $\varphi$, bijectif de $\mathbb{C}^*$ vers $E^*$ (injectif et d'image exactement $E^*$) : c'est un isomorphisme. Toute la structure se transporte (chapitre 10) : $(E^*,T)$ est un groupe, commutatif car $\times$ l'est ($\varphi(z_1)\,T\,\varphi(z_2)=\varphi(z_1z_2)=\varphi(z_2z_1)=\varphi(z_2)\,T\,\varphi(z_1)$, et $\varphi$ atteint tout $E^*$).
 
           L'élément neutre $J$ de $(E^*,T)$ est l'image du neutre $1$ de $(\mathbb{C}^*,\times)$ : $J=\varphi(1)=\varphi(1+i\cdot0)=M(1,0)$.
         steps:
@@ -2319,9 +2319,9 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que $(E,+,T)$ est un corps commutatif.
         reasoning: |-
-          Il ne reste qu'à assembler ce qui précède, exactement les conditions du rung R6. $(E,+)$ est un groupe commutatif (question 1, commutativité héritée de $M_3(\mathbb{R})$). $T$ est interne (question 2), associative — un fait général : $T$ n'est jamais qu'un produit matriciel ordinaire encadré par le pivot fixe $A$, donc $\big(M_1\,T\,M_2\big)\,T\,M_3 = M_1\times A\times M_2\times A\times M_3 = M_1\,T\big(M_2\,T\,M_3\big)$, sans autre argument que l'associativité du produit matriciel, déjà acquise —, commutative (formule générale de la question 2, symétrique en $(a,b)\leftrightarrow(c,d)$) et distributive par rapport à $+$ (question précédente) : c'est un anneau commutatif, unitaire d'élément unité $J=M(1,0)$ (question 4).
+          Il ne reste qu'à assembler ce qui précède, exactement les conditions du chapitre 9. $(E,+)$ est un groupe commutatif (question 1, commutativité héritée de $M_3(\mathbb{R})$). $T$ est interne (question 2), associative — un fait général : $T$ n'est jamais qu'un produit matriciel ordinaire encadré par le pivot fixe $A$, donc $\big(M_1\,T\,M_2\big)\,T\,M_3 = M_1\times A\times M_2\times A\times M_3 = M_1\,T\big(M_2\,T\,M_3\big)$, sans autre argument que l'associativité du produit matriciel, déjà acquise —, commutative (formule générale de la question 2, symétrique en $(a,b)\leftrightarrow(c,d)$) et distributive par rapport à $+$ (question précédente) : c'est un anneau commutatif, unitaire d'élément unité $J=M(1,0)$ (question 4).
 
-          Reste l'exigence propre au corps : tout élément non nul de $E$ doit posséder un symétrique pour $T$. C'est exactement le contenu de la question 4 : $(E^*,T)$, c'est-à-dire $(E\setminus\{M(0,0)\},T)$, est un groupe — donc chaque élément non nul de $E$ a un symétrique pour $T$, qui reste dans $E$. Toutes les conditions du R6 sont réunies : $(E,+,T)$ est un corps commutatif.
+          Reste l'exigence propre au corps : tout élément non nul de $E$ doit posséder un symétrique pour $T$. C'est exactement le contenu de la question 4 : $(E^*,T)$, c'est-à-dire $(E\setminus\{M(0,0)\},T)$, est un groupe — donc chaque élément non nul de $E$ a un symétrique pour $T$, qui reste dans $E$. Toutes les conditions du chapitre 9 sont réunies : $(E,+,T)$ est un corps commutatif.
         steps:
           - math: '(E,+)\ \text{groupe commutatif}\ (\text{q1}), \qquad T\ \text{interne}\ (\text{q2})'
             note: "Deux premiers ingredients."
@@ -2332,6 +2332,6 @@ entries:
           - math: 'T\ \text{distributive par rapport a}\ +\ (\text{q5}), \qquad J=M(1,0)\ \text{unite}\ (\text{q4})'
             note: "Anneau commutatif et unitaire."
           - math: '(E^*,T) = (E\setminus\{M(0,0)\},T)\ \text{groupe}\ (\text{q4}) \implies \text{tout element non nul de}\ E\ \text{a un symetrique pour}\ T'
-            note: "Exigence propre au corps (rung R6), deja etablie."
+            note: "Exigence propre au corps (chapitre 9), deja etablie."
           - math: '(E,+,T)\ \text{est un corps commutatif}'
-            note: "Toutes les conditions du R6 sont reunies."
+            note: "Toutes les conditions du chapitre 9 sont reunies."

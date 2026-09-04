@@ -185,7 +185,7 @@ misconceptions:
       est $-t/\tau$, obtenu en réécrivant l'équation sous la forme $y'=ay+b$.
 
   - id: mc.math.maths_equations_differentielles.modele-taux-constant
-    label: "Modèle A du R0 : taux de refroidissement constant"
+    label: "Modèle A du chapitre 1 : taux de refroidissement constant"
     description: >-
       L'élève suppose que le café perd le même nombre de degrés par minute
       jusqu'au palier, puis s'arrête net — un taux de variation constant.
@@ -320,13 +320,13 @@ items:
     correct_feedback: >
       Le palier est $y_p=-b/a=-6/(-2)=3$ (une fonction constante $y=3$
       vérifie bien $0=-2\times 3+6$). La solution générale est le palier
-      plus la famille homogène du R1 : $y(x)=Ce^{-2x}+3$.
+      plus la famille homogène du chapitre 2 : $y(x)=Ce^{-2x}+3$.
     solution: |
       **Étape 1 — solution constante (palier) :**
       $$y_p = -\frac{b}{a} = -\frac{6}{-2} = 3$$
 
       **Étape 2 — ramener au cas $y'=ay$ :** en posant $z=y-y_p$, on montre
-      $z'=-2z$ (R2), donc $z(x)=Ce^{-2x}$.
+      $z'=-2z$ (chapitre 3), donc $z(x)=Ce^{-2x}$.
 
       **Étape 3 — solution générale :**
       $$y(x) = Ce^{-2x} + 3, \qquad C \in \mathbb{R}$$
@@ -374,7 +374,7 @@ items:
           $Ce^{2\times 1}=6$ (une relation EXPONENTIELLE), pas en divisant
           linéairement par $a$.
     correct_feedback: >
-      La solution générale est $y(x)=Ce^{2x}$ (R1, $a=2$). La condition
+      La solution générale est $y(x)=Ce^{2x}$ (chapitre 2, $a=2$). La condition
       $y(1)=6$ donne $Ce^{2}=6$, donc $C=6e^{-2}$, et
       $y(x)=6e^{-2}e^{2x}=6e^{2(x-1)}$.
     solution: |
@@ -439,7 +439,7 @@ items:
       **Identifier $\omega$ :**
       $$\omega^2 = 9 \implies \omega = 3$$
 
-      **Solution générale (R4) :**
+      **Solution générale (chapitre 5) :**
       $$y(x) = A\cos(3x) + B\sin(3x), \qquad A,B \in \mathbb{R}$$
 
   # ── R4 · déterminer A et B (ne pas oublier le facteur ω) ────────────────────
@@ -568,7 +568,7 @@ items:
     tags: [modele_refroidissement, ecart_pilote]
     primary_misconception: mc.math.maths_equations_differentielles.modele-taux-constant
     stem: >
-      Reprends le café du R0. Le tableau du R0 montre que le rythme de
+      Reprends le café du chapitre 1. Le tableau du chapitre 1 montre que le rythme de
       refroidissement (l'écart de température sur des intervalles de $5$
       minutes identiques) diminue au fil du temps : environ $5{,}5\
       °\text{C}/\text{min}$ au début, puis $3{,}3\ °\text{C}/\text{min}$ un
@@ -580,7 +580,7 @@ items:
         correct: false
         misconception: mc.math.maths_equations_differentielles.modele-taux-constant
         feedback: >
-          C'est le modèle A du R0, et il contredit directement les
+          C'est le modèle A du chapitre 1, et il contredit directement les
           données : si le rythme était constant, il serait resté à
           $5{,}5\ °\text{C}/\text{min}$ sur les deux intervalles de $5$
           minutes. Or il a chuté à $3{,}3\ °\text{C}/\text{min}$ — le
@@ -605,12 +605,12 @@ items:
         feedback: >
           Ceci ferait dépendre la dérivée directement de $t$, pas de la
           fonction $T$ elle-même — ce n'est plus le mécanisme d'une
-          équation différentielle telle que définie au R0 (où $T'$
+          équation différentielle telle que définie au chapitre 1 (où $T'$
           s'exprime à partir de $T$, pas à partir de $t$ directement).
     correct_feedback: >
       Le ralentissement observé est la signature d'une vitesse
       proportionnelle à l'écart $T(t)-20$, qui diminue lui-même avec le
-      temps — le modèle B du R0, formalisé par $T'(t)=-k(T(t)-20)$.
+      temps — le modèle B du chapitre 1, formalisé par $T'(t)=-k(T(t)-20)$.
     solution: |
       **Comparer les deux intervalles :** entre $t=0$ et $t=5$, le
       rythme est $\approx 5{,}5\ °\text{C}/\text{min}$ ; entre $t=5$ et
@@ -629,7 +629,7 @@ items:
     tags: [equation_t, ecart_pilote]
     primary_misconception: mc.math.maths_equations_differentielles.modele-sans-ecart
     stem: >
-      Le café du R0 se refroidit selon un mécanisme où l'écart avec la
+      Le café du chapitre 1 se refroidit selon un mécanisme où l'écart avec la
       température de la pièce ($20\ °\text{C}$) pilote la vitesse de
       refroidissement. Avant de calculer quoi que ce soit : laquelle de
       ces équations traduit correctement ce mécanisme, avec $k>0$ ?
@@ -652,7 +652,7 @@ items:
           Erreur de signe : avec $k>0$, ce $+k$ ferait CROÎTRE l'écart
           $T(t)-20$ au lieu de le réduire — le café s'éloignerait de
           plus en plus de $20\ °\text{C}$ au lieu de s'en rapprocher,
-          contredisant l'observation du R0.
+          contredisant l'observation du chapitre 1.
       - id: C
         text: "$T'(t) = -k\\big(T(t)-20\\big)$"
         correct: true
@@ -663,10 +663,10 @@ items:
         feedback: >
           Ce membre de droite est une constante fixe, indépendante de
           $T(t)$ : c'est le modèle A (rythme constant), déjà écarté par
-          les données du R0 — le rythme observé change avec le temps, il
+          les données du chapitre 1 — le rythme observé change avec le temps, il
           ne peut pas être un nombre figé.
     correct_feedback: >
-      Le mécanisme du R0 : la vitesse de refroidissement est
+      Le mécanisme du chapitre 1 : la vitesse de refroidissement est
       proportionnelle à l'écart $T(t)-20$, avec un signe moins car $T$
       diminue quand cet écart est positif — $T'(t)=-k(T(t)-20)$.
     solution: |
@@ -681,7 +681,7 @@ items:
     tags: [definition_eq_diff, fonction_inconnue]
     primary_misconception: mc.math.maths_equations_differentielles.ed-inconnue-nombre
     stem: >
-      D'après le R0, qu'est-ce qui caractérise une « équation
+      D'après le chapitre 1, qu'est-ce qui caractérise une « équation
       différentielle », par opposition à une équation « ordinaire »
       comme $2x+3=7$ ?
     type: mcq
@@ -694,7 +694,7 @@ items:
           Ce choix traite encore l'inconnue comme un nombre. Or dans une
           équation différentielle, l'inconnue est une FONCTION tout
           entière : « une solution n'est donc pas un nombre : c'est une
-          fonction tout entière » (R1).
+          fonction tout entière » (chapitre 2).
       - id: B
         text: "C'est une équation où on cherche $x$ tel que $y'(x)=0$, c'est-à-dire les points où $y$ est stationnaire."
         correct: false
@@ -721,7 +721,7 @@ items:
       entière ; elle relie $y'$ à $y$ (pas $y'$ à $x$ directement) — ce
       qui la distingue d'une équation numérique classique.
     solution: |
-      Exemple du R0 : $T'(t) = -k(T(t)-20)$ relie la dérivée $T'$ à la
+      Exemple du chapitre 1 : $T'(t) = -k(T(t)-20)$ relie la dérivée $T'$ à la
       fonction $T$ elle-même, pas à $t$ directement. Résoudre, c'est
       trouver TOUTES les fonctions $T$ qui vérifient cette relation en
       chaque instant $t$ — pas une seule valeur numérique.
@@ -773,7 +773,7 @@ items:
       $y'=-4y$ a pour solutions $y(x)=Ce^{-4x}$ ; ici $C=2$. Vérification
       : $y'(x)=-8e^{-4x}=-4\times 2e^{-4x}=-4y(x)$.
     solution: |
-      La solution générale de $y'=-4y$ est $y(x)=Ce^{-4x}$ (R1). Pour
+      La solution générale de $y'=-4y$ est $y(x)=Ce^{-4x}$ (chapitre 2). Pour
       $C=2$ :
       $$y(x)=2e^{-4x}, \qquad y'(x)=-8e^{-4x}=-4\,y(x)$$
       L'égalité est bien vérifiée pour tout $x \in \mathbb{R}$.
@@ -926,8 +926,8 @@ items:
       $a=2$, $b=0$ : $y'=2y$.
     solution: |
       La solution générale $Ce^{2x}$ (sans terme additif) correspond à
-      $b=0$ et $a=2$ (R1). Toute équation avec $b\neq 0$ introduit un
-      palier $-b/a$ qui s'ajoute à $Ce^{2x}$ (R2) — ce qui exclut les
+      $b=0$ et $a=2$ (chapitre 2). Toute équation avec $b\neq 0$ introduit un
+      palier $-b/a$ qui s'ajoute à $Ce^{2x}$ (chapitre 3) — ce qui exclut les
       trois autres équations.
 
   # ── R3 · condition initiale avec palier, et unicité de la courbe choisie ────────
@@ -970,13 +970,13 @@ items:
           $-f(x)+5=-8e^{-x}+5$ — les deux ne coïncident que si $5=0$,
           ce qui est faux.
     correct_feedback: >
-      Solution générale (R2) : $f(x)=Ce^{-x}+5$ (palier
+      Solution générale (chapitre 3) : $f(x)=Ce^{-x}+5$ (palier
       $y_p=-b/a=5$). $f(0)=8 \Rightarrow C+5=8 \Rightarrow C=3$. Donc
       $f(x)=3e^{-x}+5$.
     solution: |
       **Palier :** $y_p=-b/a=-5/(-1)=5$.
 
-      **Solution générale (R2) :** $f(x)=Ce^{-x}+5$.
+      **Solution générale (chapitre 3) :** $f(x)=Ce^{-x}+5$.
 
       **Condition initiale :** $f(0)=C+5=8 \implies C=3$.
 
@@ -1029,7 +1029,7 @@ items:
       (une seule inconnue $C$, une seule solution) : elle isole
       EXACTEMENT une courbe dans la famille infinie de départ.
     solution: |
-      Solution générale (R1) : $y(x)=Ce^{0{,}5x}$.
+      Solution générale (chapitre 2) : $y(x)=Ce^{0{,}5x}$.
 
       $$y(2) = Ce^{1} = 10 \implies C = 10e^{-1}$$
 
@@ -1307,7 +1307,7 @@ items:
       $N(t)=50e^{0{,}2t}$. $N(t)=100 \iff e^{0{,}2t}=2 \iff
       0{,}2t=\ln 2 \iff t=\dfrac{\ln 2}{0{,}2}=5\ln 2\approx 3{,}47$ h.
     solution: |
-      **Solution générale (R1, $a=0{,}2$) :** $N(t)=Ce^{0{,}2t}$, et
+      **Solution générale (chapitre 2, $a=0{,}2$) :** $N(t)=Ce^{0{,}2t}$, et
       $N(0)=50 \implies C=50$, donc $N(t)=50e^{0{,}2t}$.
 
       **Résoudre $N(t)=100$ :**

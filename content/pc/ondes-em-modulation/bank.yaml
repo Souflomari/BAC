@@ -218,12 +218,12 @@ entries:
 
           $$u_s(t) = A\left[1 + m \cos(2\pi f_s\,t)\right]\cos(2\pi F_p\,t)$$
         reasoning: |-
-          Comme au rung 2 (la forme générale $s(t)=(U_0+s_m(t))\cos(2\pi f_p t)$), l'enjeu n'est pas de résoudre une équation mais de reconnaître la même structure dans le produit du multiplieur. On part de la définition $u_s = k\,u_1\,u_2$, on remplace $u_1$ et $u_2$ par leurs expressions, puis on met en facteur la composante continue $U_0$ à l'intérieur de $u_2$ — exactement le geste du rung 2. C'est cette mise en facteur qui fait apparaître d'un bloc l'amplitude globale $A$ (tout ce qui multiplie l'oscillation rapide $\cos(2\pi F_p t)$) et le taux de modulation $m$ (le rapport $S_m/U_0$, défini au rung 3). Il ne reste plus qu'à identifier terme à terme avec la forme canonique demandée.
+          Comme au chapitre 3 (la forme générale $s(t)=(U_0+s_m(t))\cos(2\pi f_p t)$), l'enjeu n'est pas de résoudre une équation mais de reconnaître la même structure dans le produit du multiplieur. On part de la définition $u_s = k\,u_1\,u_2$, on remplace $u_1$ et $u_2$ par leurs expressions, puis on met en facteur la composante continue $U_0$ à l'intérieur de $u_2$ — exactement le geste du chapitre 3. C'est cette mise en facteur qui fait apparaître d'un bloc l'amplitude globale $A$ (tout ce qui multiplie l'oscillation rapide $\cos(2\pi F_p t)$) et le taux de modulation $m$ (le rapport $S_m/U_0$, défini au chapitre 4). Il ne reste plus qu'à identifier terme à terme avec la forme canonique demandée.
         steps:
           - math: 'u_s(t) = k\,u_1(t)\,u_2(t) = k\,P_m\cos(2\pi F_p\,t)\left[U_0 + S_m\cos(2\pi f_s\,t)\right]'
             note: "Definition du multiplieur (enonce) : on remplace u1 et u2 par leurs expressions."
           - math: 'U_0 + S_m\cos(2\pi f_s\,t) = U_0\left[1 + \frac{S_m}{U_0}\cos(2\pi f_s\,t)\right]'
-            note: "Mise en facteur de U0 (rung 2) : c'est ce geste qui fait apparaitre A et m."
+            note: "Mise en facteur de U0 (chapitre 3) : c'est ce geste qui fait apparaitre A et m."
           - math: 'u_s(t) = \underbrace{k\,P_m\,U_0}_{A}\left[1 + \underbrace{\frac{S_m}{U_0}}_{m}\cos(2\pi f_s\,t)\right]\cos(2\pi F_p\,t)'
             note: "On reporte : la forme canonique demandee apparait, avec A et m identifies."
           - math: '\boxed{A = k\,P_m\,U_0 \qquad m = \frac{S_m}{U_0}}'
@@ -233,10 +233,10 @@ entries:
         stem: |-
           **(0,5 pt)** Trouver les fréquences $F_p$ de la porteuse et $f_s$ de la tension modulante.
         reasoning: |-
-          Deux échelles de temps distinctes coexistent sur l'oscillogramme — précisément la distinction faite au rung 3 entre l'oscillation rapide (la porteuse, $F_p$) et l'enveloppe lente (la modulante, $f_s$). L'enveloppe accomplit une période complète entre les deux repères donnés sur l'axe des abscisses ; cette durée donne $T_s$, d'où $f_s = 1/T_s$. La porteuse, elle, est l'oscillation la plus rapide sous l'enveloppe ; sa période $T_p$ se lit séparément, sur un intervalle bien plus court, et donne $F_p = 1/T_p$.
+          Deux échelles de temps distinctes coexistent sur l'oscillogramme — précisément la distinction faite au chapitre 4 entre l'oscillation rapide (la porteuse, $F_p$) et l'enveloppe lente (la modulante, $f_s$). L'enveloppe accomplit une période complète entre les deux repères donnés sur l'axe des abscisses ; cette durée donne $T_s$, d'où $f_s = 1/T_s$. La porteuse, elle, est l'oscillation la plus rapide sous l'enveloppe ; sa période $T_p$ se lit séparément, sur un intervalle bien plus court, et donne $F_p = 1/T_p$.
         steps:
           - math: 'T_s = t_2 - t_1 = 15\ \text{ms} - 5\ \text{ms} = 10\ \text{ms} = 10\times10^{-3}\ \text{s}'
-            note: "Periode de l'enveloppe (rung 3), lue entre les deux reperes de l'axe des abscisses."
+            note: "Periode de l'enveloppe (chapitre 4), lue entre les deux reperes de l'axe des abscisses."
           - math: 'f_s = \frac{1}{T_s} = \frac{1}{10\times10^{-3}} = 100\ \text{Hz}'
             note: "Frequence de la tension modulante."
           - math: 'F_p = \frac{1}{T_p} = \frac{1}{0{,}5\times10^{-3}} = 2000\ \text{Hz} = 2\ \text{kHz}'
@@ -245,14 +245,14 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer le taux de modulation et en déduire la qualité de modulation.
         reasoning: |-
-          L'enveloppe supérieure de la figure 4 vaut $A(1+m)$ à son maximum et $A(1-m)$ à son minimum — c'est directement la lecture de la forme établie à la question 1, prise à $\cos(2\pi f_s t) = +1$ puis $-1$. Le rapport de ces deux extrema élimine $A$ et ne laisse que $m$, sans qu'il soit nécessaire de connaître $A$ séparément. La qualité se tranche ensuite au seul critère du rung 3 : $m < 1$ signe une bonne modulation, $m \geq 1$ une surmodulation.
+          L'enveloppe supérieure de la figure 4 vaut $A(1+m)$ à son maximum et $A(1-m)$ à son minimum — c'est directement la lecture de la forme établie à la question 1, prise à $\cos(2\pi f_s t) = +1$ puis $-1$. Le rapport de ces deux extrema élimine $A$ et ne laisse que $m$, sans qu'il soit nécessaire de connaître $A$ séparément. La qualité se tranche ensuite au seul critère du chapitre 4 : $m < 1$ signe une bonne modulation, $m \geq 1$ une surmodulation.
         steps:
           - math: 'U_{s,\max} = A(1+m) = 3\ \text{V} \qquad U_{s,\min} = A(1-m) = 1\ \text{V}'
             note: "Lecture des extrema de l'enveloppe sur la figure 4 (drapeau d'echelle a confirmer, conserve)."
           - math: 'm = \frac{U_{s,\max} - U_{s,\min}}{U_{s,\max} + U_{s,\min}} = \frac{3-1}{3+1} = 0{,}5'
-            note: "Le rapport des extrema elimine A (rung 3) ; il ne reste que m."
+            note: "Le rapport des extrema elimine A (chapitre 4) ; il ne reste que m."
           - math: '\boxed{m = 0{,}5 < 1 \implies \text{bonne modulation}}'
-            note: "Critere du rung 3 : m < 1, l'enveloppe reste positive et fidele au signal modulant."
+            note: "Critere du chapitre 4 : m < 1, l'enveloppe reste positive et fidele au signal modulant."
 
   # ── bk-2021-n-x4 — 2021 N, Exercice IV (Partie III) : lecture d'un oscillogramme a deux voies ──
   - id: bk-2021-n-x4
@@ -327,7 +327,7 @@ entries:
         stem: |-
           **(0,25 pt)** Définir la modulation d'amplitude.
         reasoning: |-
-          La définition attendue est celle du rung 2 : la modulation d'amplitude consiste à faire varier, au rythme du signal informatif basse fréquence $s(t)$, l'amplitude d'une tension porteuse sinusoïdale — tout en gardant sa fréquence $F_p$ rigoureusement constante. Ici il ne s'agit pas d'un calcul mais de restituer clairement les deux idées du rung 2 : ce qui varie (l'amplitude instantanée $U_0+s(t)$, qui suit fidèlement $s(t)$) et ce qui ne varie jamais (la fréquence $F_p$ de l'oscillation rapide).
+          La définition attendue est celle du chapitre 3 : la modulation d'amplitude consiste à faire varier, au rythme du signal informatif basse fréquence $s(t)$, l'amplitude d'une tension porteuse sinusoïdale — tout en gardant sa fréquence $F_p$ rigoureusement constante. Ici il ne s'agit pas d'un calcul mais de restituer clairement les deux idées du chapitre 3 : ce qui varie (l'amplitude instantanée $U_0+s(t)$, qui suit fidèlement $s(t)$) et ce qui ne varie jamais (la fréquence $F_p$ de l'oscillation rapide).
 
           La modulation d'amplitude est le procédé qui consiste à faire varier l'amplitude d'une tension porteuse sinusoïdale de fréquence fixe $F_p$, au rythme d'un signal informatif basse fréquence $s(t)$, la fréquence de l'oscillation rapide restant, elle, inchangée.
       - id: q2a
@@ -335,7 +335,7 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer graphiquement les fréquences $F_p$ et $f_s$.
         reasoning: |-
-          Deux voies distinctes coexistent sur la figure 6 — exactement la distinction du rung 3 entre oscillation rapide (porteuse $u_1$) et oscillation lente (modulante $u_2$), mais ici lues chacune directement sur son propre tracé plutôt que sur l'enveloppe d'un signal unique (le sujet 2017 N ci-dessus, lui, procédait par enveloppe). Pour $f_s$, on lit la période de $u_2$ en divisions, convertie avec la sensibilité horizontale donnée ($2\ \text{ms/div}$). Pour $F_p$, on compte le nombre d'oscillations de $u_1$ sur une division puis on convertit en fréquence — un comptage fin, la source elle-même le signale comme une lecture délicate sur un tracé aussi resserré.
+          Deux voies distinctes coexistent sur la figure 6 — exactement la distinction du chapitre 4 entre oscillation rapide (porteuse $u_1$) et oscillation lente (modulante $u_2$), mais ici lues chacune directement sur son propre tracé plutôt que sur l'enveloppe d'un signal unique (le sujet 2017 N ci-dessus, lui, procédait par enveloppe). Pour $f_s$, on lit la période de $u_2$ en divisions, convertie avec la sensibilité horizontale donnée ($2\ \text{ms/div}$). Pour $F_p$, on compte le nombre d'oscillations de $u_1$ sur une division puis on convertit en fréquence — un comptage fin, la source elle-même le signale comme une lecture délicate sur un tracé aussi resserré.
         steps:
           - math: 'T_s \approx 4\ \text{div} \times 2\ \text{ms/div} = 8\ \text{ms}'
             note: "Periode de u2 (modulante) lue sur la figure 6, convertie avec la sensibilite horizontale (2 ms/div)."
@@ -347,22 +347,22 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer graphiquement la valeur de $S_m$ et celle de $U_0$.
         reasoning: |-
-          Sur la figure 6, l'oscillation $u_2$ (la modulante décalée) oscille entre les traits $+1$ et $+2$ division — sa valeur moyenne donne directement la composante continue $U_0$ (rung 2 : $u_2(t)=U_0+s(t)$), et l'écart entre son maximum et cette moyenne donne l'amplitude $S_m$ de la partie variable $s(t)$. La sensibilité verticale ($1\ \text{V/div}$) convertit ces divisions en volts.
+          Sur la figure 6, l'oscillation $u_2$ (la modulante décalée) oscille entre les traits $+1$ et $+2$ division — sa valeur moyenne donne directement la composante continue $U_0$ (chapitre 3 : $u_2(t)=U_0+s(t)$), et l'écart entre son maximum et cette moyenne donne l'amplitude $S_m$ de la partie variable $s(t)$. La sensibilité verticale ($1\ \text{V/div}$) convertit ces divisions en volts.
         steps:
           - math: 'U_0 = \frac{2{,}00 + 1{,}00}{2}\ \text{div} \times 1\ \text{V/div} = 1{,}5\ \text{V}'
-            note: "Valeur moyenne de u2 (rung 2 : U0 est la composante continue) ; sensibilite verticale 1 V/div."
+            note: "Valeur moyenne de u2 (chapitre 3 : U0 est la composante continue) ; sensibilite verticale 1 V/div."
           - math: 'S_m = (2{,}00 - 1{,}5)\ \text{div} \times 1\ \text{V/div} = 0{,}5\ \text{V}'
             note: "Ecart entre le maximum de u2 et sa valeur moyenne U0."
       - id: q3
         stem: |-
           **(0,5 pt)** La modulation réalisée dans ce cas sera-t-elle de bonne qualité ? Justifier votre réponse.
         reasoning: |-
-          Les deux conditions de bonne modulation du rung 3 se re-testent ici avec les valeurs lues aux questions précédentes. D'abord $F_p \gg f_s$ : la porteuse doit osciller beaucoup plus vite que la modulante pour que l'enveloppe se dessine nettement — sans cette condition, il n'y aurait pas assez d'oscillations de porteuse par cycle de modulante pour tracer une enveloppe lisible. Ensuite $m = S_m/U_0 < 1$ : l'amplitude instantanée $U_0+s(t)$ doit rester positive à tout instant, sans quoi l'oscillation rapide change brutalement de phase et l'enveloppe ne reproduit plus fidèlement le signal — c'est la surmodulation. On vérifie les deux avec $F_p \approx 1500\ \text{Hz}$, $f_s \approx 125\ \text{Hz}$, $S_m = 0{,}5\ \text{V}$ et $U_0 = 1{,}5\ \text{V}$.
+          Les deux conditions de bonne modulation du chapitre 4 se re-testent ici avec les valeurs lues aux questions précédentes. D'abord $F_p \gg f_s$ : la porteuse doit osciller beaucoup plus vite que la modulante pour que l'enveloppe se dessine nettement — sans cette condition, il n'y aurait pas assez d'oscillations de porteuse par cycle de modulante pour tracer une enveloppe lisible. Ensuite $m = S_m/U_0 < 1$ : l'amplitude instantanée $U_0+s(t)$ doit rester positive à tout instant, sans quoi l'oscillation rapide change brutalement de phase et l'enveloppe ne reproduit plus fidèlement le signal — c'est la surmodulation. On vérifie les deux avec $F_p \approx 1500\ \text{Hz}$, $f_s \approx 125\ \text{Hz}$, $S_m = 0{,}5\ \text{V}$ et $U_0 = 1{,}5\ \text{V}$.
         steps:
           - math: '\frac{F_p}{f_s} = \frac{1500}{125} = 12 \gg 1'
-            note: "Premiere condition du rung 3 : la porteuse oscille bien plus vite que la modulante."
+            note: "Premiere condition du chapitre 4 : la porteuse oscille bien plus vite que la modulante."
           - math: 'm = \frac{S_m}{U_0} = \frac{0{,}5}{1{,}5} = \frac{1}{3} \approx 0{,}33 < 1'
-            note: "Seconde condition du rung 3 : taux de modulation inferieur a 1, pas de surmodulation."
+            note: "Seconde condition du chapitre 4 : taux de modulation inferieur a 1, pas de surmodulation."
           - math: '\boxed{\text{les deux conditions sont verifiees} \implies \text{bonne modulation}}'
             note: "Conclusion : Fp >> fs et m < 1 sont toutes deux respectees."
 
@@ -441,20 +441,20 @@ entries:
         stem: |-
           **3.1.** (0,5 pt) Quel est le rôle de chacune des deux parties 1 et 3 de ce montage ?
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** La question saute délibérément la Partie 2 (le détecteur de crête, diode + $RC$) pour ne demander que les rôles des Parties 1 et 3 — deux étages que la figure 6 place respectivement AVANT et APRÈS le détecteur. Il faut identifier, pour chacun, à quel maillon de la chaîne de réception (rungs R4 et R5 de la leçon) il correspond.
+          **Ce qu'on cherche et pourquoi ce geste.** La question saute délibérément la Partie 2 (le détecteur de crête, diode + $RC$) pour ne demander que les rôles des Parties 1 et 3 — deux étages que la figure 6 place respectivement AVANT et APRÈS le détecteur. Il faut identifier, pour chacun, à quel maillon de la chaîne de réception (chapitres 5 et 6 de la leçon) il correspond.
 
-          **Partie 1 : le circuit d'accord.** Une bobine $L$ réglable en parallèle avec un condensateur $C_1$ — exactement le circuit bouchon du rung 5. Son rôle est de SÉLECTIONNER, parmi toutes les porteuses captées simultanément par l'antenne (rung 5 : « l'antenne reçoit tout, en même temps »), celle dont la fréquence coïncide avec la fréquence propre $f_0=\dfrac{1}{2\pi\sqrt{LC_1}}$ du circuit — réglable en ajustant $L$.
+          **Partie 1 : le circuit d'accord.** Une bobine $L$ réglable en parallèle avec un condensateur $C_1$ — exactement le circuit bouchon du chapitre 6. Son rôle est de SÉLECTIONNER, parmi toutes les porteuses captées simultanément par l'antenne (chapitre 6 : « l'antenne reçoit tout, en même temps »), celle dont la fréquence coïncide avec la fréquence propre $f_0=\dfrac{1}{2\pi\sqrt{LC_1}}$ du circuit — réglable en ajustant $L$.
 
-          **Partie 3 : éliminer la composante continue.** Un condensateur $C_2$ en série, suivi d'un conducteur ohmique $R_2$ en dérivation vers la masse. Le rung 4 le mentionne en une phrase, sans le détailler : une fois l'enveloppe $U_0+s_m(t)$ reconstituée par le détecteur de crête de la Partie 2, « il ne reste plus qu'à retirer la composante continue $U_0$ [...] pour obtenir $s_m(t)$ ». C'est précisément ce que fait un condensateur monté en série sur le fil de signal : il bloque toute composante constante (un condensateur en régime permanent ne laisse passer aucun courant continu) et ne transmet que la partie qui VARIE dans le temps — donc $s_m(t)$ seul, débarrassé de $U_0$. Le rôle de la Partie 3 est donc d'éliminer la composante continue $U_0$ et de ne transmettre que le signal informatif utile $s_m(t)$ vers la suite de la chaîne (amplification puis haut-parleur).
+          **Partie 3 : éliminer la composante continue.** Un condensateur $C_2$ en série, suivi d'un conducteur ohmique $R_2$ en dérivation vers la masse. Le chapitre 5 le mentionne en une phrase, sans le détailler : une fois l'enveloppe $U_0+s_m(t)$ reconstituée par le détecteur de crête de la Partie 2, « il ne reste plus qu'à retirer la composante continue $U_0$ [...] pour obtenir $s_m(t)$ ». C'est précisément ce que fait un condensateur monté en série sur le fil de signal : il bloque toute composante constante (un condensateur en régime permanent ne laisse passer aucun courant continu) et ne transmet que la partie qui VARIE dans le temps — donc $s_m(t)$ seul, débarrassé de $U_0$. Le rôle de la Partie 3 est donc d'éliminer la composante continue $U_0$ et de ne transmettre que le signal informatif utile $s_m(t)$ vers la suite de la chaîne (amplification puis haut-parleur).
 
           **Le piège de cette question.** Confondre le rôle de la Partie 1 avec celui de la Partie 2. Le circuit d'accord (Partie 1) ne fait AUCUNE démodulation : il sélectionne une porteuse entière, enveloppe comprise, sans y toucher. C'est la diode et le dipôle $RC$ de la Partie 2, seuls, qui extraient l'enveloppe. Deuxième piège, sur la Partie 3 : croire qu'un condensateur en série amplifie ou filtre activement les hautes fréquences — en réalité, c'est un simple blocage du continu, pas un composant actif.
       - id: q2
         stem: |-
           **3.2.** (0,5 pt) Déterminer la valeur de l'inductance $L$ de la bobine qui permet de recevoir l'onde radio de fréquence $f_0$. (On prend $\pi^2 = 10$.)
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** C'est l'exemple numérique du rung 5, mais résolu à l'envers : là, on fixait $L$ et on isolait $C$ pour accorder le circuit sur une porteuse donnée ; ici $C_1$ est fixée par construction et c'est $L$ qu'il faut régler pour que la fréquence propre coïncide avec $f_0$. Même condition d'accord, même geste d'isolement — seule l'inconnue change de place.
+          **Ce qu'on cherche et pourquoi ce geste.** C'est l'exemple numérique du chapitre 6, mais résolu à l'envers : là, on fixait $L$ et on isolait $C$ pour accorder le circuit sur une porteuse donnée ; ici $C_1$ est fixée par construction et c'est $L$ qu'il faut régler pour que la fréquence propre coïncide avec $f_0$. Même condition d'accord, même geste d'isolement — seule l'inconnue change de place.
 
-          **La condition d'accord** (rung 5), avec la fréquence propre du circuit calée sur la porteuse voulue :
+          **La condition d'accord** (chapitre 6), avec la fréquence propre du circuit calée sur la porteuse voulue :
 
           $$f_0 = \frac{1}{2\pi\sqrt{LC_1}} \implies 2\pi\sqrt{LC_1} = \frac{1}{f_0} \implies LC_1 = \frac{1}{4\pi^2 f_0^2} \implies \boxed{L = \frac{1}{4\pi^2 f_0^2 C_1}}$$
 
@@ -468,12 +468,12 @@ entries:
 
           $$\boxed{L = \frac{1}{99{,}89} \approx 1{,}00\times10^{-2}\ \text{H} = 10\ \text{mH}}$$
 
-          **Le contrôle qui rassure.** $10\ \text{mH}$ est un ordre de grandeur tout à fait réaliste pour la bobine d'un circuit d'accord dans la bande des grandes ondes (autour de $170$–$280\ \text{kHz}$) — c'est d'ailleurs la même famille que l'exemple du rung 5, qui accordait $300\ \mu\text{H}$ sur une porteuse dix fois plus élevée, $900\ \text{kHz}$ : une porteuse plus basse exige, à capacité comparable, une inductance plus grande — cohérent.
+          **Le contrôle qui rassure.** $10\ \text{mH}$ est un ordre de grandeur tout à fait réaliste pour la bobine d'un circuit d'accord dans la bande des grandes ondes (autour de $170$–$280\ \text{kHz}$) — c'est d'ailleurs la même famille que l'exemple du chapitre 6, qui accordait $300\ \mu\text{H}$ sur une porteuse dix fois plus élevée, $900\ \text{kHz}$ : une porteuse plus basse exige, à capacité comparable, une inductance plus grande — cohérent.
 
           **Le piège de cette question.** Poser $\pi=10$ au lieu de $\pi^2=10$ : ça multiplie $4\pi^2$ par un facteur $10/4\approx2{,}5$ supplémentaire et fausse tout le résultat. Deuxième piège, sur les préfixes : $C_1$ est en PICOfarads ($10^{-12}$), pas en microfarads ; convertir $85{,}4\ \text{pF}$ en $85{,}4\times10^{-6}\ \text{F}$ par réflexe multiplierait $L$ par un facteur $10^6$ et donnerait une valeur absurde, à des kilomètres de l'ordre de grandeur attendu pour une bobine d'accord.
         steps:
           - math: 'f_0 = \frac{1}{2\pi\sqrt{LC_1}} \implies \boxed{L = \frac{1}{4\pi^2 f_0^2 C_1}}'
-            note: "Condition d'accord (rung 5), isolee pour L au lieu de C."
+            note: "Condition d'accord (chapitre 6), isolee pour L au lieu de C."
           - math: 'f_0^2 = (1{,}71\times10^5)^2 = 2{,}9241\times10^{10}\ \text{Hz}^2'
             note: "f0 = 171 kHz convertie en Hz avant d'etre elevee au carre."
           - math: '4\pi^2 f_0^2 C_1 = 40\times2{,}9241\times10^{10}\times8{,}54\times10^{-11} \approx 99{,}89'
@@ -559,10 +559,10 @@ entries:
           | C | La fréquence du signal modulant est $100\ \text{Hz}$. |
           | D | La fréquence de la porteuse est $200\ \text{Hz}$. |
         reasoning: |-
-          Deux échelles de temps cohabitent sur la figure 5 — exactement la distinction du rung 3 entre l'oscillation rapide (la porteuse) et l'enveloppe lente (le signal modulant). Le repère en L donne l'échelle (1 division = 1 ms, 1 division = 2 V) ; on lit la période de l'enveloppe entre deux renflements successifs pour $f_s$, et la période de l'oscillation rapide, comptée sur l'ensemble du tracé, pour $f_p$. Il ne reste plus qu'à confronter ces deux valeurs aux quatre propositions.
+          Deux échelles de temps cohabitent sur la figure 5 — exactement la distinction du chapitre 4 entre l'oscillation rapide (la porteuse) et l'enveloppe lente (le signal modulant). Le repère en L donne l'échelle (1 division = 1 ms, 1 division = 2 V) ; on lit la période de l'enveloppe entre deux renflements successifs pour $f_s$, et la période de l'oscillation rapide, comptée sur l'ensemble du tracé, pour $f_p$. Il ne reste plus qu'à confronter ces deux valeurs aux quatre propositions.
         steps:
           - math: 'T_s \approx 5\ \text{ms}'
-            note: "Periode de l'enveloppe (rung 3), lue entre deux renflements successifs (t=0 et t=5,0 ms)."
+            note: "Periode de l'enveloppe (chapitre 4), lue entre deux renflements successifs (t=0 et t=5,0 ms)."
           - math: 'f_s = \frac{1}{T_s} = \frac{1}{5\times10^{-3}} = 200\ \text{Hz}'
             note: "Frequence du signal modulant."
           - math: 'T_p \approx 0{,}25\ \text{ms}'
@@ -576,34 +576,34 @@ entries:
         stem: |-
           **(0,5 pt)** **a.** Le taux de modulation est $m = 0{,}4$.
         reasoning: |-
-          L'enveloppe supérieure de la figure 5 vaut $A(1+m)$ à son maximum et $A(1-m)$ à son minimum — la lecture directe de la forme donnée dans l'intro, prise à $\cos(2\pi f_s t)=+1$ puis $-1$ (rung 3). Le rapport de ces deux extrema, lus au repère en L, élimine $A$ et ne laisse que $m$.
+          L'enveloppe supérieure de la figure 5 vaut $A(1+m)$ à son maximum et $A(1-m)$ à son minimum — la lecture directe de la forme donnée dans l'intro, prise à $\cos(2\pi f_s t)=+1$ puis $-1$ (chapitre 4). Le rapport de ces deux extrema, lus au repère en L, élimine $A$ et ne laisse que $m$.
         steps:
           - math: 'U_{\max} = 3\ \text{div} \times 2\ \text{V/div} = 6\ \text{V} \qquad U_{\min} = 1\ \text{div} \times 2\ \text{V/div} = 2\ \text{V}'
-            note: "Extrema de l'enveloppe, lus via le repere en L (rung 3)."
+            note: "Extrema de l'enveloppe, lus via le repere en L (chapitre 4)."
           - math: 'm = \frac{U_{\max}-U_{\min}}{U_{\max}+U_{\min}} = \frac{6-2}{6+2} = 0{,}5'
-            note: "Le rapport des extrema elimine A ; il ne reste que m (rung 3)."
+            note: "Le rapport des extrema elimine A ; il ne reste que m (chapitre 4)."
           - math: '\boxed{m = 0{,}5 \neq 0{,}4 \implies \text{affirmation fausse}}'
             note: "La valeur proposee (0,4) ne correspond pas a la valeur lue (0,5) ; l'affirmation est fausse."
       - id: q2b
         stem: |-
           **(0,25 pt)** **b.** La valeur de la composante continue de la tension est $U_0 = 2\ \text{V}$.
         reasoning: |-
-          La composante continue $U_0$ est la valeur moyenne de l'enveloppe (rung 2 : $u_2(t) = U_0 + s(t)$, l'enveloppe oscille entre $U_0-S_m$ et $U_0+S_m$) : on la retrouve en moyennant les deux mêmes extrema que ceux utilisés à la question précédente.
+          La composante continue $U_0$ est la valeur moyenne de l'enveloppe (chapitre 3 : $u_2(t) = U_0 + s(t)$, l'enveloppe oscille entre $U_0-S_m$ et $U_0+S_m$) : on la retrouve en moyennant les deux mêmes extrema que ceux utilisés à la question précédente.
         steps:
           - math: 'U_0 = \frac{U_{\max}+U_{\min}}{2} = \frac{6+2}{2} = 4\ \text{V}'
-            note: "Composante continue = valeur moyenne de l'enveloppe (rung 2)."
+            note: "Composante continue = valeur moyenne de l'enveloppe (chapitre 3)."
           - math: '\boxed{U_0 = 4\ \text{V} \neq 2\ \text{V} \implies \text{affirmation fausse}}'
             note: "La valeur proposee (2 V) ne correspond pas a la valeur lue (4 V) ; l'affirmation est fausse."
       - id: q3
         stem: |-
           **(0,5 pt)** Représenter l'allure du spectre de fréquences du signal modulé $u(t)$ sans respect d'échelle très précise.
         reasoning: |-
-          Cette question mobilise une technique que la leçon ne couvre pas : R2-R3 décrivent le signal modulé dans le domaine temporel (l'enveloppe), jamais dans le domaine fréquentiel — aucun rung à citer ici. On applique directement la relation trigonométrique de produit-somme, $\cos p \cos q = \frac{1}{2}[\cos(p-q)+\cos(p+q)]$, à la forme canonique donnée dans l'intro : le terme en $\cos(2\pi f_s t)\cos(2\pi f_p t)$ se scinde en deux oscillations pures, à $f_p-f_s$ et $f_p+f_s$. Le spectre attendu porte donc trois raies : une raie centrale à $f_p$, encadrée de deux raies latérales symétriques à $f_p \pm f_s$, chacune de hauteur moitié de la raie centrale (puisque $m=0{,}5$).
+          Cette question mobilise une technique que la leçon ne couvre pas : chapitres 3 à 4 décrivent le signal modulé dans le domaine temporel (l'enveloppe), jamais dans le domaine fréquentiel — aucun chapitre à citer ici. On applique directement la relation trigonométrique de produit-somme, $\cos p \cos q = \frac{1}{2}[\cos(p-q)+\cos(p+q)]$, à la forme canonique donnée dans l'intro : le terme en $\cos(2\pi f_s t)\cos(2\pi f_p t)$ se scinde en deux oscillations pures, à $f_p-f_s$ et $f_p+f_s$. Le spectre attendu porte donc trois raies : une raie centrale à $f_p$, encadrée de deux raies latérales symétriques à $f_p \pm f_s$, chacune de hauteur moitié de la raie centrale (puisque $m=0{,}5$).
         steps:
           - math: 'u(t) = A\cos(2\pi f_p t) + A m \cos(2\pi f_s t)\cos(2\pi f_p t)'
             note: "On developpe la forme canonique donnee par l'enonce."
           - math: 'Am\cos(2\pi f_s t)\cos(2\pi f_p t) = \frac{Am}{2}\cos(2\pi (f_p-f_s) t) + \frac{Am}{2}\cos(2\pi (f_p+f_s) t)'
-            note: "Relation trigonometrique produit-somme (hors rungs de la lecon), appliquee directement."
+            note: "Relation trigonometrique produit-somme (hors chapitres de la lecon), appliquee directement."
           - math: 'u(t) = A\cos(2\pi f_p t) + \frac{Am}{2}\cos(2\pi (f_p-f_s) t) + \frac{Am}{2}\cos(2\pi (f_p+f_s) t)'
             note: "Trois composantes pures : le spectre est fait de trois raies."
           - math: 'f_p - f_s = 4000 - 200 = 3800\ \text{Hz} \qquad f_p + f_s = 4000 + 200 = 4200\ \text{Hz}'
@@ -686,7 +686,7 @@ entries:
         stem: |-
           **(0,25 pt)** **3-1.** Donner le rôle de ce circuit bouchon LC.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Un quart de point, une phrase — mais il faut la bonne. Le geste consiste à partir du problème que ce circuit résout, pas de sa description. Le problème est celui du rung 5 : l'antenne ne trie rien. Elle capte SIMULTANÉMENT toutes les ondes électromagnétiques qui la traversent, celles de toutes les stations à la fois, superposées en une seule tension. Sans un dispositif de tri placé juste derrière, on entendrait toutes les stations en même temps.
+          **Ce qu'on cherche et pourquoi ce geste.** Un quart de point, une phrase — mais il faut la bonne. Le geste consiste à partir du problème que ce circuit résout, pas de sa description. Le problème est celui du chapitre 6 : l'antenne ne trie rien. Elle capte SIMULTANÉMENT toutes les ondes électromagnétiques qui la traversent, celles de toutes les stations à la fois, superposées en une seule tension. Sans un dispositif de tri placé juste derrière, on entendrait toutes les stations en même temps.
 
           Le circuit bouchon est ce dispositif de tri. C'est une bobine $L$ et un condensateur $C$ montés en parallèle — donc un circuit oscillant, qui possède sa propre fréquence :
 
@@ -696,13 +696,13 @@ entries:
 
           **Le rôle demandé est donc : sélectionner une seule station** — c'est-à-dire une seule onde porteuse, de fréquence $f_p$ — parmi toutes celles captées ensemble par l'antenne, en réglant $C$ pour que la fréquence propre du circuit coïncide avec la porteuse voulue.
 
-          **Le piège de cette question.** Il est en deux moitiés, et beaucoup tombent dans la première. (1) Confondre **sélectionner** et **démoduler**. Le circuit bouchon ne récupère aucune information : il ne fait que choisir une porteuse. Extraire le signal informatif de l'enveloppe, c'est le travail du détecteur de crête — diode plus dipôle $RC$ — qui vient APRÈS lui dans la chaîne (rung 4). Répondre « il sert à démoduler le signal » coûte le quart de point. (2) Croire que régler $C$ agit sur l'émetteur. Tourner le bouton d'une radio ne change évidemment rien à la fréquence qu'émet la station : cela ne change que la fréquence propre du RÉCEPTEUR, jusqu'à ce qu'elle s'accorde sur elle.
+          **Le piège de cette question.** Il est en deux moitiés, et beaucoup tombent dans la première. (1) Confondre **sélectionner** et **démoduler**. Le circuit bouchon ne récupère aucune information : il ne fait que choisir une porteuse. Extraire le signal informatif de l'enveloppe, c'est le travail du détecteur de crête — diode plus dipôle $RC$ — qui vient APRÈS lui dans la chaîne (chapitre 5). Répondre « il sert à démoduler le signal » coûte le quart de point. (2) Croire que régler $C$ agit sur l'émetteur. Tourner le bouton d'une radio ne change évidemment rien à la fréquence qu'émet la station : cela ne change que la fréquence propre du RÉCEPTEUR, jusqu'à ce qu'elle s'accorde sur elle.
       - id: q2
         part: "3- Détection d'un signal modulé en amplitude — balayer toute la bande"
         stem: |-
           **(0,75 pt)** **3-2.** Trouver les valeurs limites $C_1$ et $C_2$ de la capacité $C$ du condensateur pour balayer la plage de fréquences qui va en modulation d'amplitude de $f_1 = 150\ \text{kHz}$ à $f_2 = 280\ \text{kHz}$ (on prend $\pi^2 = 10$).
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** La leçon fait ce geste une fois : on fixe la fréquence qu'on veut capter, et on isole $C$ dans la condition d'accord (rung 5). Ici on demande de **balayer une bande entière** — de $f_1$ à $f_2$ —, et un condensateur variable ne prend pas une valeur mais parcourt un intervalle. Le geste est donc le même, exécuté DEUX fois : une fois à chaque extrémité de la bande. Les deux capacités obtenues sont les bornes de l'intervalle de réglage.
+          **Ce qu'on cherche et pourquoi ce geste.** La leçon fait ce geste une fois : on fixe la fréquence qu'on veut capter, et on isole $C$ dans la condition d'accord (chapitre 6). Ici on demande de **balayer une bande entière** — de $f_1$ à $f_2$ —, et un condensateur variable ne prend pas une valeur mais parcourt un intervalle. Le geste est donc le même, exécuté DEUX fois : une fois à chaque extrémité de la bande. Les deux capacités obtenues sont les bornes de l'intervalle de réglage.
 
           La leçon accorde le circuit sur une fréquence unique et ne dit nulle part dans quel sens $C$ varie quand $f$ varie ; refaisons donc l'isolement complet, il tient en une ligne. On part de la fréquence propre du circuit oscillant, accordée sur la porteuse voulue ($f_0 = f$) :
 
@@ -818,15 +818,15 @@ entries:
         stem: |-
           **(0,25 pt)** Quel est le rôle de l'étage 2 ?
         reasoning: |-
-          L'étage 2 regroupe une diode $D$ et un dipôle $R$-$C_0$ : c'est très exactement le détecteur de crête décrit au rung 4 (R4) — la diode ne laisse passer que la partie positive de l'oscillation rapide déjà sélectionnée par l'étage 1, et le condensateur $C_0$, chargé quasi instantanément à chaque sommet puis se déchargeant plus lentement dans $R$, retrace l'enveloppe de la tension. Le rôle de l'étage 2 est donc la démodulation : extraire le signal informatif basse fréquence (l'enveloppe) de l'onde déjà sélectionnée en fréquence par l'étage 1 (le circuit bouchon du rung 5).
+          L'étage 2 regroupe une diode $D$ et un dipôle $R$-$C_0$ : c'est très exactement le détecteur de crête décrit au chapitre 5 (chapitre 5) — la diode ne laisse passer que la partie positive de l'oscillation rapide déjà sélectionnée par l'étage 1, et le condensateur $C_0$, chargé quasi instantanément à chaque sommet puis se déchargeant plus lentement dans $R$, retrace l'enveloppe de la tension. Le rôle de l'étage 2 est donc la démodulation : extraire le signal informatif basse fréquence (l'enveloppe) de l'onde déjà sélectionnée en fréquence par l'étage 1 (le circuit bouchon du chapitre 6).
       - id: q2
         stem: |-
           **(0,75 pt)** Trouver la valeur $C_1$ à laquelle il faut ajuster la capacité $C$ pour capter le signal modulé de fréquence $f_p = 162\ \text{kHz}$ sachant que $L = 2\ \text{mH}$ (on prend $\pi^2 = 10$).
         reasoning: |-
-          On connaît déjà, du rung 5, la condition d'accord $f_0 = 1/(2\pi\sqrt{LC})$ et le geste qui en découle : on isole $C$ pour obtenir la capacité qui place $f_0$ exactement sur la porteuse qu'on veut capter — exactement l'exemple numérique du rung 5, mais ici avec une bobine et une porteuse différentes, et $\pi^2 = 10$ imposé par l'énoncé (au lieu de la valeur usuelle $\pi^2 \approx 9{,}87$) pour simplifier le calcul à la main.
+          On connaît déjà, du chapitre 6, la condition d'accord $f_0 = 1/(2\pi\sqrt{LC})$ et le geste qui en découle : on isole $C$ pour obtenir la capacité qui place $f_0$ exactement sur la porteuse qu'on veut capter — exactement l'exemple numérique du chapitre 6, mais ici avec une bobine et une porteuse différentes, et $\pi^2 = 10$ imposé par l'énoncé (au lieu de la valeur usuelle $\pi^2 \approx 9{,}87$) pour simplifier le calcul à la main.
         steps:
           - math: 'f_0 = \frac{1}{2\pi\sqrt{LC}} \quad\Longrightarrow\quad C = \frac{1}{(2\pi f_0)^2\,L} = \frac{1}{4\pi^2 f_0^2 L}'
-            note: "On isole C dans la condition d'accord (rung 5), comme dans l'exemple numerique du rung."
+            note: "On isole C dans la condition d'accord (chapitre 6), comme dans l'exemple numerique du chapitre."
           - math: 'C_1 = \frac{1}{4\pi^2\,f_p^2\,L}, \qquad f_p = 162\times10^{3}\ \text{Hz}, \quad L = 2\times10^{-3}\ \text{H}, \quad \pi^2 = 10'
             note: "On accorde le circuit sur la porteuse a capter (f0 = fp) ; valeurs de l'enonce, pi^2 = 10 impose."
           - math: '(162\times10^{3})^2 = 2{,}6244\times10^{10}\ \text{Hz}^2'
@@ -834,12 +834,12 @@ entries:
           - math: 'C_1 = \frac{1}{4\times10\times2{,}6244\times10^{10}\times2\times10^{-3}} \approx 4{,}76\times10^{-10}\ \text{F}'
             note: "Application numerique."
           - math: '\boxed{C_1 \approx 4{,}76\times10^{-10}\ \text{F} \approx 476\ \text{pF}}'
-            note: "Ordre de grandeur realiste d'un condensateur d'accord (rung 5)."
+            note: "Ordre de grandeur realiste d'un condensateur d'accord (chapitre 6)."
       - id: q3
         stem: |-
           **(0,5 pt)** La fréquence du signal modulant est $f_s = 5\ \text{kHz}$. Si on ajuste $R$ à la valeur $R_0 = 1{,}5\ \text{k}\Omega$, aura-t-on une démodulation de bonne qualité ? Justifier.
         reasoning: |-
-          Au rung 4, le détecteur de crête ne retrace fidèlement l'enveloppe que si sa décharge, entre deux sommets de la porteuse, respecte un compromis : assez lente pour ne pas redescendre avant le sommet suivant de la porteuse (donc la constante de temps $R_0C_0$ doit être grande devant la période de la porteuse, $1/f_p$), mais assez rapide pour ne pas rater les variations de l'enveloppe elle-même (donc $R_0C_0$ doit rester petit devant la période du signal modulant, $1/f_s$). Le rung 4 décrit ce compromis en mots (« charge rapide, décharge lente [qui] rattrape le sommet suivant ») ; ici on le teste numériquement, avec $C_0 = 1\ \mu\text{F}$ — la valeur fixée dans la Partie 1 du même sujet (rc-charge.md, sujet 2025 session normale, vérifié), puisque l'énoncé de cette Partie 3 renvoie explicitement au condensateur « précédemment utilisé » sans en redonner la valeur ici.
+          Au chapitre 5, le détecteur de crête ne retrace fidèlement l'enveloppe que si sa décharge, entre deux sommets de la porteuse, respecte un compromis : assez lente pour ne pas redescendre avant le sommet suivant de la porteuse (donc la constante de temps $R_0C_0$ doit être grande devant la période de la porteuse, $1/f_p$), mais assez rapide pour ne pas rater les variations de l'enveloppe elle-même (donc $R_0C_0$ doit rester petit devant la période du signal modulant, $1/f_s$). Le chapitre 5 décrit ce compromis en mots (« charge rapide, décharge lente [qui] rattrape le sommet suivant ») ; ici on le teste numériquement, avec $C_0 = 1\ \mu\text{F}$ — la valeur fixée dans la Partie 1 du même sujet (rc-charge.md, sujet 2025 session normale, vérifié), puisque l'énoncé de cette Partie 3 renvoie explicitement au condensateur « précédemment utilisé » sans en redonner la valeur ici.
         steps:
           - math: 'R_0 C_0 = 1{,}5\times10^{3} \times 1\times10^{-6} = 1{,}5\times10^{-3}\ \text{s}'
             note: "Constante de temps du detecteur de crete, avec C0 = 1 microF (Partie 1 du meme sujet, rc-charge.md, verifie)."
@@ -850,7 +850,7 @@ entries:
           - math: 'R_0C_0 = 1{,}5\times10^{-3}\ \text{s} \not\ll \frac{1}{f_s} = 2{,}0\times10^{-4}\ \text{s} \qquad (R_0C_0 > 1/f_s)'
             note: "Seconde borne violee : la decharge est trop lente pour suivre l'enveloppe."
           - math: '\boxed{R_0C_0 > \frac{1}{f_s} \implies \text{demodulation de mauvaise qualite} \implies \text{reponse : non}}'
-            note: "La double inegalite du rung 4 n'est pas verifiee sur sa borne haute ; la reponse est non."
+            note: "La double inegalite du chapitre 5 n'est pas verifiee sur sa borne haute ; la reponse est non."
 
   # ── bk-2025-r-x3b — 2025 R, Exercice 3 (§2) : modulation d'amplitude,
   #    lecture par calibration graphique ──
@@ -934,7 +934,7 @@ entries:
         stem: |-
           **1-** (0,5 pt) Déterminer la fréquence $F$ de la porteuse et la fréquence $f$ de l'onde sonore.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Deux échelles de temps cohabitent dans la figure 4 — exactement la distinction du rung 3 entre l'oscillation rapide (la porteuse, $F$) et l'enveloppe lente (le signal sonore, $f$). Ici aucune des deux périodes ne se lit directement sur un axe gradué en temps : seule une double flèche de calibration (« $0{,}10$ » sur $2$ carreaux) donne l'échelle, et il faut compter des motifs (crêtes, extrema) sur un nombre de carreaux connu pour en déduire chaque période.
+          **Ce qu'on cherche et pourquoi ce geste.** Deux échelles de temps cohabitent dans la figure 4 — exactement la distinction du chapitre 4 entre l'oscillation rapide (la porteuse, $F$) et l'enveloppe lente (le signal sonore, $f$). Ici aucune des deux périodes ne se lit directement sur un axe gradué en temps : seule une double flèche de calibration (« $0{,}10$ » sur $2$ carreaux) donne l'échelle, et il faut compter des motifs (crêtes, extrema) sur un nombre de carreaux connu pour en déduire chaque période.
 
           **L'échelle.** La calibration donne $2$ carreaux $=0{,}10\ \text{ms}$, donc $1$ carreau $=0{,}05\ \text{ms}$.
 
@@ -954,7 +954,7 @@ entries:
 
           $$\boxed{f \approx 1{,}7\times10^{3}\ \text{Hz} = 1{,}7\ \text{kHz}}$$
 
-          **Le contrôle qui rassure.** $f\approx1{,}7\ \text{kHz}$ tombe bien dans le domaine audible annoncé par l'énoncé (« onde sonore audible de fréquence $f$ »), et $F/f\approx12$ : la porteuse oscille bien plus vite que le signal (condition 1 du rung 3, $f_p\gg f_{signal}$) — cohérent avec le fait que l'enveloppe se dessine nettement sur la figure 4.
+          **Le contrôle qui rassure.** $f\approx1{,}7\ \text{kHz}$ tombe bien dans le domaine audible annoncé par l'énoncé (« onde sonore audible de fréquence $f$ »), et $F/f\approx12$ : la porteuse oscille bien plus vite que le signal (condition 1 du chapitre 4, $f_p\gg f_{signal}$) — cohérent avec le fait que l'enveloppe se dessine nettement sur la figure 4.
 
           **Le piège de cette question.** Compter une distance entre un extremum de bord et l'extremum voisin sans vérifier qu'il s'agit bien de deux extrema de MÊME type consécutifs (ici deux minima) — l'énoncé précise lui-même que l'enveloppe fait deux périodes et un quart dans le cadre, donc un comptage naïf sur un intervalle mal choisi ne donne pas une période entière. Deuxième piège : confondre la double flèche de calibration (« $0{,}10$ » sur $2$ carreaux) avec une flèche de période — l'énoncé le précise explicitement, ce n'en est pas une, c'est un simple étalon de longueur.
         steps:
@@ -965,14 +965,14 @@ entries:
           - math: '\boxed{F = 2{,}0\times10^{4}\ \text{Hz} = 20\ \text{kHz}}'
             note: "Frequence de la porteuse."
           - math: 'T_{env} = 12\times0{,}05\ \text{ms} = 0{,}60\ \text{ms} \implies f = \frac{1}{0{,}60\times10^{-3}}'
-            note: "Enveloppe : minima consecutifs distants de 12 carreaux (rung 3)."
+            note: "Enveloppe : minima consecutifs distants de 12 carreaux (chapitre 4)."
           - math: '\boxed{f \approx 1{,}7\times10^{3}\ \text{Hz} = 1{,}7\ \text{kHz}}'
             note: "Frequence de l'onde sonore, bien dans le domaine audible."
       - id: q2
         stem: |-
           **2-** (0,75 pt) Déterminer la valeur de $A$ et celle de $m$. Conclure à propos de la qualité de la modulation.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** L'enveloppe supérieure de $u_S(t)$ vaut $A(1+m)$ à ses maxima et $A(1-m)$ à ses minima — la lecture directe de la forme canonique donnée dans l'énoncé, prise à $\cos(2\pi ft)=+1$ puis $-1$ (rung 3). La somme des deux extrema élimine $m$ et ne laisse que $A$ ; leur différence sur leur somme élimine $A$ et ne laisse que $m$.
+          **Ce qu'on cherche et pourquoi ce geste.** L'enveloppe supérieure de $u_S(t)$ vaut $A(1+m)$ à ses maxima et $A(1-m)$ à ses minima — la lecture directe de la forme canonique donnée dans l'énoncé, prise à $\cos(2\pi ft)=+1$ puis $-1$ (chapitre 4). La somme des deux extrema élimine $m$ et ne laisse que $A$ ; leur différence sur leur somme élimine $A$ et ne laisse que $m$.
 
           **La lecture.** Aux maxima d'enveloppe, les crêtes culminent à $\approx9{,}7$ carreaux ($1$ carreau $=0{,}165\ \text{V}$, calibration verticale de la figure 4) :
 
@@ -992,26 +992,26 @@ entries:
 
           $$\boxed{m = 0{,}60}$$
 
-          **Conclure sur la qualité de la modulation.** Le rung 3 fixe DEUX conditions pour une bonne modulation, pas une seule : $f_p\gg f_{signal}$ ET $m<1$. La première est vérifiée à la question précédente ($F/f\approx12$) ; ici, $m=0{,}60<1$ : la seconde l'est aussi.
+          **Conclure sur la qualité de la modulation.** Le chapitre 4 fixe DEUX conditions pour une bonne modulation, pas une seule : $f_p\gg f_{signal}$ ET $m<1$. La première est vérifiée à la question précédente ($F/f\approx12$) ; ici, $m=0{,}60<1$ : la seconde l'est aussi.
 
           $$\boxed{m=0{,}60<1 \text{ et } F/f\approx12\gg1 \implies \text{modulation de bonne qualite}}$$
 
-          **Le contrôle qui rassure.** $U_{min}=0{,}4\ \text{V}$ reste nettement au-dessus de zéro — cohérent avec $m<1$ : si $m$ avait atteint ou dépassé $1$, l'enveloppe inférieure aurait touché ou franchi l'axe $u_S=0$, signe visible de surmodulation (rung 3) ; ce n'est pas le cas ici.
+          **Le contrôle qui rassure.** $U_{min}=0{,}4\ \text{V}$ reste nettement au-dessus de zéro — cohérent avec $m<1$ : si $m$ avait atteint ou dépassé $1$, l'enveloppe inférieure aurait touché ou franchi l'axe $u_S=0$, signe visible de surmodulation (chapitre 4) ; ce n'est pas le cas ici.
 
-          **Le piège de cette question.** Lire les extrema sur les lignes chiffrées de la figure 4 ($0{,}33\ \text{V}$ et $-0{,}33\ \text{V}$, soit $2$ carreaux) plutôt qu'à l'endroit RÉEL où les crêtes culminent ($9{,}7$ et $2{,}4$ carreaux) — les lignes chiffrées ne marquent que des repères d'axe, pas les crêtes de la porteuse elle-même ; s'y arrêter donnerait $U_{max}=0{,}33\ \text{V}$, une valeur bien trop petite qui ne correspond à aucune crête réelle du tracé. Deuxième piège : oublier la seconde condition ($f_p\gg f_{signal}$) et conclure uniquement sur $m<1$ — les deux conditions du rung 3 sont nécessaires ensemble, ni l'une ni l'autre ne suffit seule.
+          **Le piège de cette question.** Lire les extrema sur les lignes chiffrées de la figure 4 ($0{,}33\ \text{V}$ et $-0{,}33\ \text{V}$, soit $2$ carreaux) plutôt qu'à l'endroit RÉEL où les crêtes culminent ($9{,}7$ et $2{,}4$ carreaux) — les lignes chiffrées ne marquent que des repères d'axe, pas les crêtes de la porteuse elle-même ; s'y arrêter donnerait $U_{max}=0{,}33\ \text{V}$, une valeur bien trop petite qui ne correspond à aucune crête réelle du tracé. Deuxième piège : oublier la seconde condition ($f_p\gg f_{signal}$) et conclure uniquement sur $m<1$ — les deux conditions du chapitre 4 sont nécessaires ensemble, ni l'une ni l'autre ne suffit seule.
         steps:
           - math: 'U_{max} \approx 9{,}7\times0{,}165 \approx 1{,}6\ \text{V} \qquad U_{min} \approx 2{,}4\times0{,}165 \approx 0{,}4\ \text{V}'
             note: "Lecture des cretes de porteuse aux extrema d'enveloppe (1 carreau = 0,165 V)."
           - math: 'A = \frac{U_{max}+U_{min}}{2} = \frac{1{,}6+0{,}4}{2}'
-            note: "Somme des extrema : elimine m (rung 3)."
+            note: "Somme des extrema : elimine m (chapitre 4)."
           - math: '\boxed{A = 1{,}0\ \text{V}}'
             note: "Amplitude A."
           - math: 'm = \frac{U_{max}-U_{min}}{U_{max}+U_{min}} = \frac{1{,}2}{2{,}0}'
-            note: "Rapport des extrema : elimine A (rung 3)."
+            note: "Rapport des extrema : elimine A (chapitre 4)."
           - math: '\boxed{m = 0{,}60 < 1}'
             note: "Taux de modulation."
           - math: '\boxed{m<1 \text{ et } F/f \approx 12 \gg 1 \implies \text{bonne modulation}}'
-            note: "Les deux conditions du rung 3 sont verifiees."
+            note: "Les deux conditions du chapitre 4 sont verifiees."
 
   # ── bk-2010-n-x3b — 2010 N, Électricité (position 3 du cartouche), Deuxième
   #    partie : réalisation d'une radio AM simple ──
@@ -1115,11 +1115,11 @@ entries:
         stem: |-
           **2-1-** (0,75 pt) Quel est le rôle de chacun des étages Y et Z dans la réception de l'émission ?
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Le signal, à la sortie de l'étage X, est une porteuse à haute fréquence dont l'amplitude porte l'information — exactement l'objet du rung 4 de la leçon. Il faut d'abord en extraire l'enveloppe (étage Y), puis nettoyer ce qui reste pour ne garder que le signal utile (étage Z). La topologie de la Figure 3, relue branche par branche, confirme le rôle de chacun.
+          Ce qu'on cherche et pourquoi ce geste. Le signal, à la sortie de l'étage X, est une porteuse à haute fréquence dont l'amplitude porte l'information — exactement l'objet du chapitre 5 de la leçon. Il faut d'abord en extraire l'enveloppe (étage Y), puis nettoyer ce qui reste pour ne garder que le signal utile (étage Z). La topologie de la Figure 3, relue branche par branche, confirme le rôle de chacun.
 
-          **L'étage Y.** Une diode en série sur le rail haut, un condensateur $C_0$ et un conducteur ohmique $R_0$ tous deux en parallèle : c'est exactement le **détecteur de crête** du rung 4. La diode ne laisse passer que les sommets positifs de l'oscillation rapide ; le condensateur se charge à chaque sommet et se décharge lentement à travers $R_0$ entre deux sommets, ce qui reconstitue l'enveloppe $U_0 + s_m(t)$. Le rôle de Y : **démoduler**, c'est-à-dire retracer l'enveloppe du signal reçu.
+          **L'étage Y.** Une diode en série sur le rail haut, un condensateur $C_0$ et un conducteur ohmique $R_0$ tous deux en parallèle : c'est exactement le **détecteur de crête** du chapitre 5. La diode ne laisse passer que les sommets positifs de l'oscillation rapide ; le condensateur se charge à chaque sommet et se décharge lentement à travers $R_0$ entre deux sommets, ce qui reconstitue l'enveloppe $U_0 + s_m(t)$. Le rôle de Y : **démoduler**, c'est-à-dire retracer l'enveloppe du signal reçu.
 
-          **L'étage Z.** Un condensateur $C_3$ en série, un conducteur ohmique $R_3$ en parallèle : c'est un filtre passe-haut, qui bloque une composante continue et laisse passer une composante variable — exactement ce que le rung 4 mentionne, sans le détailler, comme l'étape qui suit la détection de crête (« il ne reste plus qu'à retirer la composante continue $U_0$ »). Le rôle de Z : **éliminer la composante continue** $U_0$ que la détection de crête laisse en plus du signal utile $s_m(t)$, pour ne transmettre que ce dernier vers l'amplificateur.
+          **L'étage Z.** Un condensateur $C_3$ en série, un conducteur ohmique $R_3$ en parallèle : c'est un filtre passe-haut, qui bloque une composante continue et laisse passer une composante variable — exactement ce que le chapitre 5 mentionne, sans le détailler, comme l'étape qui suit la détection de crête (« il ne reste plus qu'à retirer la composante continue $U_0$ »). Le rôle de Z : **éliminer la composante continue** $U_0$ que la détection de crête laisse en plus du signal utile $s_m(t)$, pour ne transmettre que ce dernier vers l'amplificateur.
 
           **Le contrôle qui rassure.** Les deux étages s'enchaînent dans l'ordre logique de la réception : X sélectionne la station (question suivante), Y en extrait l'enveloppe brute $U_0+s_m(t)$, Z retire $U_0$ pour ne garder que $s_m(t)$, prêt pour l'amplificateur et le haut-parleur.
       - id: q2
@@ -1127,7 +1127,7 @@ entries:
         stem: |-
           **2-2-** (1 pt) S'assurer que l'étage X permet la sélection de l'émission désirée.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Le rung 5 de la leçon établit que le circuit bouchon (bobine + condensateur, exactement l'étage X) sélectionne une station en accordant sa fréquence propre $f_0 = \dfrac{1}{2\pi\sqrt{LC}}$ sur la fréquence porteuse voulue. Ici $C$ n'est pas réglable en continu mais ajustable entre DEUX valeurs, $C_1$ et $C_2$ : l'étage X permet donc de sélectionner toute émission dont la fréquence tombe dans la PLAGE balayée entre les deux fréquences propres extrêmes, $f_0(C_1)$ et $f_0(C_2)$. On calcule les deux bornes et on vérifie que $f=540\ \text{kHz}$ s'y trouve.
+          Ce qu'on cherche et pourquoi ce geste. Le chapitre 6 de la leçon établit que le circuit bouchon (bobine + condensateur, exactement l'étage X) sélectionne une station en accordant sa fréquence propre $f_0 = \dfrac{1}{2\pi\sqrt{LC}}$ sur la fréquence porteuse voulue. Ici $C$ n'est pas réglable en continu mais ajustable entre DEUX valeurs, $C_1$ et $C_2$ : l'étage X permet donc de sélectionner toute émission dont la fréquence tombe dans la PLAGE balayée entre les deux fréquences propres extrêmes, $f_0(C_1)$ et $f_0(C_2)$. On calcule les deux bornes et on vérifie que $f=540\ \text{kHz}$ s'y trouve.
 
           **Borne avec $C_1$** (la plus petite capacité, donc la fréquence la plus haute) :
 
@@ -1138,11 +1138,11 @@ entries:
           $$f_2 = \frac{1}{2\pi\sqrt{L\,C_2}}$$
         steps:
           - math: 'f_1 = \frac{1}{2\pi\sqrt{5{,}3\times10^{-3}\times13{,}1\times10^{-12}}}'
-            note: "Frequence propre avec la plus petite capacite C1 (rung 5)."
+            note: "Frequence propre avec la plus petite capacite C1 (chapitre 6)."
           - math: '\boxed{f_1 \approx 604{,}0\times10^{3}\ \text{Hz} = 604{,}0\ \text{kHz}}'
             note: "Borne haute de la plage de selection."
           - math: 'f_2 = \frac{1}{2\pi\sqrt{5{,}3\times10^{-3}\times52{,}4\times10^{-12}}}'
-            note: "Frequence propre avec la plus grande capacite C2 (rung 5)."
+            note: "Frequence propre avec la plus grande capacite C2 (chapitre 6)."
           - math: '\boxed{f_2 \approx 302{,}0\times10^{3}\ \text{Hz} = 302{,}0\ \text{kHz}}'
             note: "Borne basse de la plage de selection."
           - math: '\boxed{540\ \text{kHz} \in [302{,}0\,;\,604{,}0]\ \text{kHz} \implies \text{l etage X permet bien la selection de l emission a 540 kHz}}'
@@ -1212,12 +1212,12 @@ entries:
         stem: |-
           **2-1-** (0,75 pt) L'expression de la tension $u_S(t)$ à la sortie du circuit multiplieur est : $u_S(t) = k\,u_1(t)\,u_2(t)$, avec $k$ une constante caractérisant le circuit multiplieur. Montrer que l'amplitude de la tension $u_S(t)$ s'écrit sous la forme : $U_S = A\,[\,1 + m\cos(2\pi\,f\,t)\,]$, en précisant les expressions de $A$ et $m$.
         reasoning: |-
-          Comme au rung 2 (la forme générale $s(t)=(U_0+s_m(t))\cos(2\pi f_p t)$), l'enjeu n'est pas de résoudre une équation mais de reconnaître la même structure dans le produit du multiplieur — ici avec les entrées inversées par rapport à l'exercice le plus proche de cette banque (bk-2017-n-x3) : c'est $u_1$, sur $E_1$, qui porte la composante continue $U_0$, et $u_2$, sur $E_2$, qui est la porteuse pure. On part de la définition, on remplace $u_1$ et $u_2$, puis on met $U_0$ en facteur à l'intérieur de $u_1$ — exactement le geste du rung 2 — pour faire apparaître d'un bloc l'amplitude globale $A$ (tout ce qui multiplie l'oscillation rapide $\cos(2\pi F t)$) et le taux de modulation $m$ (rung 3, $S_m/U_0$ ici renommé $U_{1m}/U_0$).
+          Comme au chapitre 3 (la forme générale $s(t)=(U_0+s_m(t))\cos(2\pi f_p t)$), l'enjeu n'est pas de résoudre une équation mais de reconnaître la même structure dans le produit du multiplieur — ici avec les entrées inversées par rapport à l'exercice le plus proche de cette banque (bk-2017-n-x3) : c'est $u_1$, sur $E_1$, qui porte la composante continue $U_0$, et $u_2$, sur $E_2$, qui est la porteuse pure. On part de la définition, on remplace $u_1$ et $u_2$, puis on met $U_0$ en facteur à l'intérieur de $u_1$ — exactement le geste du chapitre 3 — pour faire apparaître d'un bloc l'amplitude globale $A$ (tout ce qui multiplie l'oscillation rapide $\cos(2\pi F t)$) et le taux de modulation $m$ (chapitre 4, $S_m/U_0$ ici renommé $U_{1m}/U_0$).
         steps:
           - math: 'u_S(t) = k\,u_1(t)\,u_2(t) = k\left[U_0+U_{1m}\cos(2\pi f t)\right]U_{2m}\cos(2\pi F t)'
             note: "Definition du multiplieur (enonce) : on remplace u1 et u2 par leurs expressions."
           - math: 'U_0+U_{1m}\cos(2\pi f t) = U_0\left[1+\frac{U_{1m}}{U_0}\cos(2\pi f t)\right]'
-            note: "Mise en facteur de U0 (rung 2) : c'est ce geste qui fait apparaitre A et m."
+            note: "Mise en facteur de U0 (chapitre 3) : c'est ce geste qui fait apparaitre A et m."
           - math: 'u_S(t) = \underbrace{k\,U_0\,U_{2m}}_{A}\left[1+\underbrace{\frac{U_{1m}}{U_0}}_{m}\cos(2\pi f t)\right]\cos(2\pi F t)'
             note: "On reporte : la forme canonique demandee apparait, avec A et m identifies."
           - math: '\boxed{A = k\,U_0\,U_{2m} \qquad m = \frac{U_{1m}}{U_0}}'
@@ -1226,13 +1226,13 @@ entries:
         stem: |-
           **2-2-** (0,5 pt) Après réglage des sensibilités de l'oscilloscope sur : 1 V/div et 0,5 ms/div, les élèves ont visualisé la tension de sortie $u_S(t)$ obtenue. La figure 5 représente les variations de cette tension. Déterminer la fréquence $f$ du signal modulant, et la fréquence $F$ de l'onde porteuse.
         reasoning: |-
-          Deux échelles de temps distinctes coexistent sur la figure 5 — exactement la distinction du rung 3 entre l'oscillation rapide (la porteuse, $F$) et l'enveloppe lente (le signal modulant, $f$). La figure ne porte AUCUN axe gradué en temps : la seule échelle est l'annotation `1div`, qui fixe combien vaut un intervalle de quadrillage — et c'est là le vrai piège de cette question, pas le calcul lui-même. Une fois la division correctement identifiée (un seul intervalle fin, pas deux), la sensibilité horizontale donnée ($0{,}5$ ms/div) convertit directement les deux durées lues en divisions.
+          Deux échelles de temps distinctes coexistent sur la figure 5 — exactement la distinction du chapitre 4 entre l'oscillation rapide (la porteuse, $F$) et l'enveloppe lente (le signal modulant, $f$). La figure ne porte AUCUN axe gradué en temps : la seule échelle est l'annotation `1div`, qui fixe combien vaut un intervalle de quadrillage — et c'est là le vrai piège de cette question, pas le calcul lui-même. Une fois la division correctement identifiée (un seul intervalle fin, pas deux), la sensibilité horizontale donnée ($0{,}5$ ms/div) convertit directement les deux durées lues en divisions.
 
           $$T_m = 8{,}0\ \text{div}\times0{,}5 = 4{,}0\ \text{ms} \implies f = \frac{1}{T_m} = \frac{1}{4{,}0\times10^{-3}}$$
 
           $$T_p = 0{,}4\ \text{div}\times0{,}5 = 0{,}2\ \text{ms} \implies F = \frac{1}{T_p} = \frac{1}{0{,}2\times10^{-3}}$$
 
-          **Le contrôle qui rassure.** $F/f = 20 \geq 10$ : la porteuse oscille bien plus vite que le signal modulant (première condition du rung 3, $f_p \gg f_{signal}$) — cohérent avec le fait que l'enveloppe se dessine nettement sur la figure 5.
+          **Le contrôle qui rassure.** $F/f = 20 \geq 10$ : la porteuse oscille bien plus vite que le signal modulant (première condition du chapitre 4, $f_p \gg f_{signal}$) — cohérent avec le fait que l'enveloppe se dessine nettement sur la figure 5.
 
           **Le piège de cette question.** Lire une division comme DEUX intervalles du quadrillage au lieu d'UN — une erreur facile puisque le quadrillage alterne des lignes noires et bleues, et qu'on pourrait croire que seul un changement de couleur marque une vraie division. L'annotation `1div` tranche explicitement : elle va d'une ligne noire à la ligne bleue suivante, donc un seul intervalle. Se tromper sur ce point double ou divise par deux les deux fréquences trouvées, sans qu'aucun signal n'alerte automatiquement — $f=500$ Hz et $F=10$ kHz resteraient, eux aussi, des valeurs plausibles pour un signal modulant audible et une porteuse radio.
         steps:
@@ -1248,22 +1248,22 @@ entries:
         stem: |-
           **2-3-** (0,75 pt) Montrer, en calculant la valeur du taux de modulation $m$, que la modulation est bonne.
         reasoning: |-
-          L'enveloppe supérieure de $u_S(t)$ vaut $A(1+m)$ à son maximum et $A(1-m)$ à son minimum — la lecture directe de la forme canonique établie à la question 2-1, prise à $\cos(2\pi ft)=+1$ puis $-1$ (rung 3). Le rapport de ces deux extrema élimine $A$ et ne laisse que $m$, sans qu'il soit nécessaire de connaître $A$ séparément — pas plus que les volts par division, d'ailleurs : $U_{max}$ et $U_{min}$ peuvent rester en divisions, puisque $m$ est un RAPPORT.
+          L'enveloppe supérieure de $u_S(t)$ vaut $A(1+m)$ à son maximum et $A(1-m)$ à son minimum — la lecture directe de la forme canonique établie à la question 2-1, prise à $\cos(2\pi ft)=+1$ puis $-1$ (chapitre 4). Le rapport de ces deux extrema élimine $A$ et ne laisse que $m$, sans qu'il soit nécessaire de connaître $A$ séparément — pas plus que les volts par division, d'ailleurs : $U_{max}$ et $U_{min}$ peuvent rester en divisions, puisque $m$ est un RAPPORT.
 
           $$m = \frac{U_{max}-U_{min}}{U_{max}+U_{min}} = \frac{5{,}0-1{,}0}{5{,}0+1{,}0}$$
 
           $$\boxed{m \approx 0{,}67 < 1}$$
 
-          La modulation est donc bonne : $m<1$ (rung 3, la condition suffisante à elle seule pour que l'enveloppe reste toujours positive et fidèle au signal), ET $F/f=20\geq10$ (question 2-2, l'autre condition du rung 3) — les deux critères de bonne modulation sont vérifiés ensemble.
+          La modulation est donc bonne : $m<1$ (chapitre 4, la condition suffisante à elle seule pour que l'enveloppe reste toujours positive et fidèle au signal), ET $F/f=20\geq10$ (question 2-2, l'autre condition du chapitre 4) — les deux critères de bonne modulation sont vérifiés ensemble.
 
           **Le piège de cette question.** Croire qu'il faut connaître les volts par division pour calculer $m$ : ce n'est pas le cas, puisque $m$ est un rapport de deux longueurs mesurées dans la MÊME unité — travailler directement en divisions, sans jamais les convertir en volts, donne exactement le même résultat. Convertir inutilement en volts n'est pas faux, mais fait perdre du temps sans rien gagner en précision.
         steps:
           - math: 'm = \frac{U_{max}-U_{min}}{U_{max}+U_{min}} = \frac{5{,}0-1{,}0}{5{,}0+1{,}0}'
-            note: "Rapport des extrema de l'enveloppe (rung 3) : elimine A, pas besoin de connaitre les volts par division."
+            note: "Rapport des extrema de l'enveloppe (chapitre 4) : elimine A, pas besoin de connaitre les volts par division."
           - math: '\boxed{m \approx 0{,}67 < 1}'
             note: "Taux de modulation."
           - math: '\boxed{m<1 \text{ et } F/f=20\geq10 \implies \text{bonne modulation}}'
-            note: "Les deux conditions du rung 3 sont verifiees ensemble."
+            note: "Les deux conditions du chapitre 4 sont verifiees ensemble."
 
   # ── bk-2012-r-x3b — 2012 R, Électricité § II : réception d'une onde AM et démodulation ──
   #
@@ -1569,7 +1569,7 @@ entries:
 
           **1-1-** (0,25 pt) Quel est le rôle de la partie 1 ?
         reasoning: |-
-          La partie 1 est un **circuit bouchon** — une bobine et un condensateur **en parallèle** — relié à l'antenne. Son rôle est la **SÉLECTION** : parmi toutes les ondes que l'antenne capte simultanément, il ne retient que celle dont la fréquence est égale à sa propre **fréquence propre**. C'est l'**accord** sur une station (rung R5).
+          La partie 1 est un **circuit bouchon** — une bobine et un condensateur **en parallèle** — relié à l'antenne. Son rôle est la **SÉLECTION** : parmi toutes les ondes que l'antenne capte simultanément, il ne retient que celle dont la fréquence est égale à sa propre **fréquence propre**. C'est l'**accord** sur une station (chapitre 6).
 
           **Pourquoi il faut un tel étage, et c'est le point de fond.** Une antenne est un capteur **aveugle** : elle reçoit en même temps toutes les ondes électromagnétiques qui passent — toutes les stations de la bande, plus le bruit. Sans filtre, on entendrait tout à la fois, donc rien. Le circuit bouchon résout ce problème parce que son **impédance est maximale à sa fréquence propre** : à cette fréquence-là, et à elle seule, une tension notable apparaît à ses bornes ; toutes les autres sont court-circuitées vers la masse.
 
@@ -1582,7 +1582,7 @@ entries:
 
           Calculer $L_1$.
         reasoning: |-
-          **La condition à écrire, et c'est toute la question.** Recevoir une station, c'est **accorder** le circuit bouchon sur sa fréquence : sa fréquence propre doit être égale à la fréquence de l'onde reçue (rung R5).
+          **La condition à écrire, et c'est toute la question.** Recevoir une station, c'est **accorder** le circuit bouchon sur sa fréquence : sa fréquence propre doit être égale à la fréquence de l'onde reçue (chapitre 6).
 
           $$f = f_0 = \frac{1}{2\pi\sqrt{L_1 C_1}}$$
 
@@ -1599,7 +1599,7 @@ entries:
           **Les deux pièges de cette question.** Le premier : **oublier de convertir les kilohertz**, et calculer avec $f = 160$. Le résultat sort alors $10^{6}$ fois trop grand — $2{,}1\times10^{3}\ \text{H}$, une bobine impossible. Le second : **oublier le carré sur $f$** ou le $4\pi^2$ ; on part de $f_0 = \dfrac{1}{2\pi\sqrt{L_1C_1}}$ et l'on élève **les deux membres au carré avant** d'isoler, ce qui fait apparaître $4\pi^2$ et $f^2$ ensemble. Aucune des deux fautes ne se voit sans contrôle d'ordre de grandeur.
         steps:
           - math: 'f = f_0 = \frac{1}{2\pi\sqrt{L_1 C_1}}'
-            note: "Condition d'accord : la frequence propre du circuit bouchon egale la frequence de l'onde a recevoir (rung R5)."
+            note: "Condition d'accord : la frequence propre du circuit bouchon egale la frequence de l'onde a recevoir (chapitre 6)."
           - math: '\boxed{L_1 = \frac{1}{4\pi^{2} f^{2} C_1}}'
             note: "On eleve les deux membres au carre AVANT d'isoler : c'est la que naissent le 4 pi carre et le f carre."
           - math: 'L_1 = \frac{1}{4\pi^{2} \times \left(1{,}60\times10^{5}\right)^{2} \times 4{,}7\times10^{-10}} = \frac{1}{4{,}75\times10^{2}}'
@@ -1663,7 +1663,7 @@ entries:
                Voir docs/sujets/_incoming/pc-2012-r.md, F1 / D1 / V.6 / V.15 /
                V.16, et la NOTE EDITORIALE en tete de cette entree. -->
         reasoning: |-
-          **La réponse porte sur les parties 2 et 3** — pas sur les parties 1 et 2 (voir l'avertissement porté à l'énoncé). Démoduler, c'est retrouver le signal informatif à partir de l'onde reçue, et cela se fait en **deux étapes successives**, une par partie (rung R4).
+          **La réponse porte sur les parties 2 et 3** — pas sur les parties 1 et 2 (voir l'avertissement porté à l'énoncé). Démoduler, c'est retrouver le signal informatif à partir de l'onde reçue, et cela se fait en **deux étapes successives**, une par partie (chapitre 5).
 
           **Rôle de la partie 2 — la détection d'enveloppe, c'est-à-dire l'élimination de la porteuse haute fréquence.** Elle est faite de deux organes qui travaillent ensemble :
 
@@ -1711,6 +1711,6 @@ entries:
           - math: 'u_{GM} \;\longrightarrow\; \text{courbe (a)}'
             note: "Noeud G, apres la diode et le filtre C2/R2 : l'enveloppe AVEC sa composante continue. Courbe entierement au-dessus de l'axe, valeur moyenne environ +2 divisions."
           - math: 'u_{HM} \;\longrightarrow\; \text{courbe (c)}'
-            note: "Noeud H, apres C3 et R3 : le signal modulant seul, centre sur zero."
+            note: "Noeud H, apres C3 et le chapitre 4 : le signal modulant seul, centre sur zero."
           - math: '\text{(a) et (c) : même amplitude } 0{,}97\ \text{div, même période } \approx 5{,}1\ \text{div, décalage } \approx 2\ \text{div}'
             note: "L'argument mesure qui verrouille l'association : (a) et (c) portent la MEME sinusoide, la seule difference etant la composante continue retiree par la partie 3."

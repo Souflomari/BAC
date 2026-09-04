@@ -180,7 +180,7 @@ Le chapitre 2 a annoncé que le non-soi ne se limite pas aux microbes. Voici l'i
 
 Ce qui compte pour la reconnaissance immunitaire, ce n'est pas l'origine génétique d'une cellule, mais la conformité de ce qu'elle affiche à sa surface, à un instant donné, avec le répertoire habituel du soi. Une cellule infectée ou cancéreuse a beau être « de moi » : si elle affiche des molécules que mon système immunitaire n'a jamais appris à tolérer (parce qu'elles n'existaient pas avant l'infection ou la mutation), elle est traitée comme du non-soi — et peut être ciblée. C'est un mécanisme de surveillance essentiel : sans lui, une infection virale ou une tumeur naissante ne serait jamais détectée par l'organisme lui-même.
 
-### Fermeture de l'arc : les deux histoires du R0, résolues
+### Fermeture de l'arc : les deux histoires du chapitre 1, résolues
 
 La **transfusion dangereuse** (premier cas du chapitre 1) s'explique entièrement par le chapitre 5 : si la poche de sang transfusée porte un agglutinogène reconnu par une agglutinine du plasma du patient, une agglutination massive se produit — un mécanisme antigène-anticorps précis et prévisible, pas un accident imprévisible. D'où le contrôle de compatibilité fait avant toute transfusion, même en urgence.
 

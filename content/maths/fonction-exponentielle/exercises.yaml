@@ -62,9 +62,9 @@ exercises:
         stem: |-
           **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} f(x)$ et $\displaystyle\lim_{x \to -\infty} f(x)$.
         reasoning: |-
-          On regarde chaque morceau. En $+\infty$ : $e^{\frac{x}{2}} \to +\infty$ (R4), donc $\left(e^{\frac{x}{2}}-1\right)^2 \to +\infty$, et le facteur $x \to +\infty$ : le produit tend vers $+\infty$, sans indétermination (deux facteurs qui explosent vers $+\infty$).
+          On regarde chaque morceau. En $+\infty$ : $e^{\frac{x}{2}} \to +\infty$ (chapitre 5), donc $\left(e^{\frac{x}{2}}-1\right)^2 \to +\infty$, et le facteur $x \to +\infty$ : le produit tend vers $+\infty$, sans indétermination (deux facteurs qui explosent vers $+\infty$).
 
-          En $-\infty$ : $e^{\frac{x}{2}} \to 0$ (limite de référence, R4), donc $\left(e^{\frac{x}{2}}-1\right)^2 \to (0-1)^2 = 1$ — un facteur **fini**. Le facteur $x \to -\infty$ l'emporte : le produit tend vers $-\infty$. Ici encore aucune indétermination : un facteur fini non nul multiplié par une quantité qui diverge suit cette dernière.
+          En $-\infty$ : $e^{\frac{x}{2}} \to 0$ (limite de référence, chapitre 5), donc $\left(e^{\frac{x}{2}}-1\right)^2 \to (0-1)^2 = 1$ — un facteur **fini**. Le facteur $x \to -\infty$ l'emporte : le produit tend vers $-\infty$. Ici encore aucune indétermination : un facteur fini non nul multiplié par une quantité qui diverge suit cette dernière.
         steps:
           - math: |-
               \lim_{x \to +\infty} e^{\frac{x}{2}} = +\infty \ \Rightarrow\ \lim_{x \to +\infty}\left(e^{\frac{x}{2}}-1\right)^2 = +\infty
@@ -74,7 +74,7 @@ exercises:
             note: "Produit de deux facteurs tendant vers +∞."
           - math: |-
               \lim_{x \to -\infty} e^{\frac{x}{2}} = 0 \ \Rightarrow\ \left(e^{\frac{x}{2}}-1\right)^2 \to (0-1)^2 = 1
-            note: "En -∞, e^{x/2} → 0 (limite de référence R4) : le carré tend vers 1, valeur finie."
+            note: "En -∞, e^{x/2} → 0 (limite de référence du chapitre 5) : le carré tend vers 1, valeur finie."
           - math: |-
               \lim_{x \to -\infty} f(x) = \lim_{x \to -\infty} x \times 1 = -\infty
             note: "x → -∞ multiplié par un facteur → 1 : pas d'indétermination, la limite est -∞."
@@ -113,7 +113,7 @@ exercises:
         stem: |-
           **(0,75 pt)** Étudier le signe de $\big(f(x) - x\big)$ pour tout $x$ de $\mathbb{R}$ et en déduire la position relative de la courbe $(C)$ et de la droite $(\Delta)$.
         reasoning: |-
-          On repart de la forme factorisée $f(x)-x = x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-2\right)$. Le facteur $e^{\frac{x}{2}}$ est **toujours strictement positif** (R1) : il ne compte pas dans le signe. Reste le signe de $x\left(e^{\frac{x}{2}}-2\right)$.
+          On repart de la forme factorisée $f(x)-x = x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-2\right)$. Le facteur $e^{\frac{x}{2}}$ est **toujours strictement positif** (chapitre 2) : il ne compte pas dans le signe. Reste le signe de $x\left(e^{\frac{x}{2}}-2\right)$.
 
           On localise le zéro de $e^{\frac{x}{2}}-2$ : $e^{\frac{x}{2}}=2 \iff \frac{x}{2}=\ln 2 \iff x = 2\ln 2 = \ln 4$. Ainsi $e^{\frac{x}{2}}-2>0 \iff x>\ln 4$. En croisant avec le signe de $x$ (zéro en $0$) :
 
@@ -137,7 +137,7 @@ exercises:
         stem: |-
           **(0,5 pt)** Montrer que pour tout $x$ de $\mathbb{R}$ : $f'(x) = \left(e^{\frac{x}{2}} - 1\right)^2 + x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}} - 1\right)$.
         reasoning: |-
-          $f$ est un produit $f=u\,v$ avec $u(x)=x$ et $v(x)=\left(e^{\frac{x}{2}}-1\right)^2$. On dérive $v$ comme une composée : $v'(x) = 2\left(e^{\frac{x}{2}}-1\right)\cdot\frac{1}{2}e^{\frac{x}{2}} = e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)$ (la dérivée de l'intérieur $e^{\frac{x}{2}}$ est $\frac{1}{2}e^{\frac{x}{2}}$, sans condition de signe puisque $e^{u}$ est dérivable partout, R3). La règle du produit $(uv)'=u'v+uv'$ donne alors directement l'expression demandée.
+          $f$ est un produit $f=u\,v$ avec $u(x)=x$ et $v(x)=\left(e^{\frac{x}{2}}-1\right)^2$. On dérive $v$ comme une composée : $v'(x) = 2\left(e^{\frac{x}{2}}-1\right)\cdot\frac{1}{2}e^{\frac{x}{2}} = e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)$ (la dérivée de l'intérieur $e^{\frac{x}{2}}$ est $\frac{1}{2}e^{\frac{x}{2}}$, sans condition de signe puisque $e^{u}$ est dérivable partout, chapitre 4). La règle du produit $(uv)'=u'v+uv'$ donne alors directement l'expression demandée.
         steps:
           - math: |-
               u(x) = x,\quad v(x) = \left(e^{\frac{x}{2}}-1\right)^2,\qquad v'(x) = 2\left(e^{\frac{x}{2}}-1\right)\cdot\tfrac{1}{2}e^{\frac{x}{2}} = e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)
@@ -325,7 +325,7 @@ exercises:
         stem: |-
           Calculer $\displaystyle\lim_{x \to -\infty} f(x)$ et $\displaystyle\lim_{x \to +\infty} f(x)$, puis interpréter géométriquement.
         reasoning: |-
-          En $-\infty$ : $e^{x} \to 0$ (R4), donc $f(x) \to \dfrac{0-1}{0+1} = -1$. La droite $y=-1$ est **asymptote horizontale** en $-\infty$.
+          En $-\infty$ : $e^{x} \to 0$ (chapitre 5), donc $f(x) \to \dfrac{0-1}{0+1} = -1$. La droite $y=-1$ est **asymptote horizontale** en $-\infty$.
 
           En $+\infty$ : $e^{x}\to+\infty$ donnerait la forme indéterminée $\frac{\infty}{\infty}$ ; on lève l'indétermination en divisant haut et bas par $e^{x}$ : $f(x) = \dfrac{1-e^{-x}}{1+e^{-x}}$, et $e^{-x}\to 0$, donc $f(x)\to \dfrac{1-0}{1+0} = 1$. La droite $y=1$ est **asymptote horizontale** en $+\infty$.
         steps:

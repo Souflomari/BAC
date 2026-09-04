@@ -66,17 +66,17 @@ exercises:
         stem: |-
           **(0,5 pt)** En déduire la célérité $V$ de l'onde à la surface de l'eau.
         reasoning: |-
-          La célérité relie la longueur d'onde (répétition spatiale) et la fréquence (répétition temporelle) par la relation dérivée en R2 : $\lambda = V\,T = V/N$, donc $V = \lambda\,N$. Ici la fréquence est donnée ($N = 20\ \text{Hz}$) et $\lambda$ vient d'être lue au graphe — il ne reste qu'à multiplier. On n'a pas besoin de mesurer une durée : la fréquence porte déjà l'information temporelle.
+          La célérité relie la longueur d'onde (répétition spatiale) et la fréquence (répétition temporelle) par la relation dérivée au chapitre 3 : $\lambda = V\,T = V/N$, donc $V = \lambda\,N$. Ici la fréquence est donnée ($N = 20\ \text{Hz}$) et $\lambda$ vient d'être lue au graphe — il ne reste qu'à multiplier. On n'a pas besoin de mesurer une durée : la fréquence porte déjà l'information temporelle.
         steps:
           - math: 'V = \lambda\,N'
-            note: "On isole V dans la relation λ = V/N = VT (R2), avec N la fréquence donnée."
+            note: "On isole V dans la relation λ = V/N = VT (chapitre 3), avec N la fréquence donnée."
           - math: 'V = 1{,}5\times10^{-2} \times 20 = 0{,}30\ \text{m/s}'
             note: "Application numérique : λ = 1,5 cm = 1,5e-2 m, N = 20 Hz."
       - id: q4
         stem: |-
           **(0,5 pt)** Le point $M$, situé à la distance $d = SM$ de $S$, est le front de l'onde à la date $t_1$. Exprimer le retard temporel $\tau$ du mouvement de $M$ par rapport à celui de $S$ en fonction de la période $T$ de l'onde, puis calculer $\tau$.
         reasoning: |-
-          Le point $M$ ne fait que **rejouer**, avec un retard, le mouvement que $S$ a fait plus tôt : $y_M(t) = y_S(t - \tau)$ avec $\tau = d/V$ (R1). Pour exprimer ce retard **en fonction de $T$**, on remarque que la distance $SM$ se lit sur la figure en nombre de longueurs d'onde : le profil montre deux arches complètes entre $S$ et $M$, soit $SM = 2\lambda$. Or l'onde parcourt exactement une longueur d'onde $\lambda$ pendant une période $T$ (c'est le sens de $\lambda = VT$) ; parcourir $2\lambda$ prend donc $2T$. On peut le retrouver par le calcul en remplaçant $V = \lambda/T$ dans $\tau = d/V$ — la longueur d'onde se simplifie et il ne reste que le compte de périodes.
+          Le point $M$ ne fait que **rejouer**, avec un retard, le mouvement que $S$ a fait plus tôt : $y_M(t) = y_S(t - \tau)$ avec $\tau = d/V$ (chapitre 2). Pour exprimer ce retard **en fonction de $T$**, on remarque que la distance $SM$ se lit sur la figure en nombre de longueurs d'onde : le profil montre deux arches complètes entre $S$ et $M$, soit $SM = 2\lambda$. Or l'onde parcourt exactement une longueur d'onde $\lambda$ pendant une période $T$ (c'est le sens de $\lambda = VT$) ; parcourir $2\lambda$ prend donc $2T$. On peut le retrouver par le calcul en remplaçant $V = \lambda/T$ dans $\tau = d/V$ — la longueur d'onde se simplifie et il ne reste que le compte de périodes.
         steps:
           - math: '\tau = \frac{d}{V} = \frac{SM}{\lambda/T} = \frac{SM}{\lambda}\,T'
             note: "On remplace V = λ/T (de λ = VT) : le retard vaut le nombre de longueurs d'onde SM/λ multiplié par T."

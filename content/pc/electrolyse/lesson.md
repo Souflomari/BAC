@@ -26,13 +26,13 @@ C'est tout l'objet de cette leçon : l'électrolyse, la transformation forcée.
 
 ### Ce qu'on appelle une cellule d'électrolyse
 
-Une **cellule d'électrolyse**, c'est un dispositif à trois ingrédients : deux électrodes, plongées dans un **électrolyte** - un milieu contenant des ions mobiles, capable de conduire le courant (le plus souvent une solution aqueuse ionique, mais ce peut aussi être un sel fondu, tu le verras au chapitre 5) -, le tout relié non pas par un simple fil, mais par un **générateur électrique extérieur**.
+Une **cellule d'électrolyse**, c'est un dispositif à trois ingrédients : deux électrodes, plongées dans un **électrolyte** - un milieu contenant des ions mobiles, capable de conduire le courant (le plus souvent une solution aqueuse ionique, mais ce peut aussi être un sel fondu, tu le verras au chapitre 6) -, le tout relié non pas par un simple fil, mais par un **générateur électrique extérieur**.
 
 C'est précisément ce troisième ingrédient qui change tout par rapport à la pile.
 
 ### Ce qui bascule : qui commande, la chimie ou le générateur ?
 
-Dans une pile (leçon précédente, chapitre 1), on empêchait le contact direct entre le réducteur et l'oxydant pour forcer les électrons à faire un détour par un fil - mais le sens de ce détour restait entièrement dicté par la chimie elle-même : c'est la comparaison $Q_{r,i}$ face à $K$ qui décidait quelle électrode cède ses électrons et laquelle les reçoit. La pile ne fait qu'obéir à ce que la réaction veut faire spontanément ; elle se contente de canaliser ce mouvement à travers un circuit exploitable.
+Dans une pile (leçon précédente, chapitre 2), on empêchait le contact direct entre le réducteur et l'oxydant pour forcer les électrons à faire un détour par un fil - mais le sens de ce détour restait entièrement dicté par la chimie elle-même : c'est la comparaison $Q_{r,i}$ face à $K$ qui décidait quelle électrode cède ses électrons et laquelle les reçoit. La pile ne fait qu'obéir à ce que la réaction veut faire spontanément ; elle se contente de canaliser ce mouvement à travers un circuit exploitable.
 
 Dans une cellule d'électrolyse, ce n'est plus la chimie qui dicte le sens : c'est le générateur, un objet extérieur au système chimique, qui impose sa loi - y compris quand cette loi va à l'encontre de ce que $Q_{r,i}$ face à $K$ aurait décidé tout seul.
 
@@ -50,7 +50,7 @@ Un courant électrique circule dans les deux dispositifs - dans une pile comme d
 
 Regarde d'où vient l'énergie dans chaque cas. Dans une pile, c'est la réaction chimique spontanée elle-même qui est la source : elle libère de l'énergie parce qu'elle évolue vers son équilibre ($Q_{r,i} < K$, elle « veut » avancer), et cette énergie est récupérée sous forme électrique dans le circuit extérieur. La pile est un générateur : elle fournit de l'énergie électrique à qui veut bien s'y brancher.
 
-Dans une cellule d'électrolyse, c'est l'inverse. Le générateur extérieur doit fournir de l'énergie électrique pour forcer une réaction qui n'irait jamais spontanément dans ce sens ($Q_{r,i}$ face à $K$ s'y opposerait si on laissait faire la chimie seule). Cette énergie électrique ne disparaît pas : elle se retrouve stockée sous forme d'énergie chimique dans les produits qu'on vient de fabriquer de force - le dépôt de zinc de l'accroche, ou, tu le verras au chapitre 5, un gaz comme le dihydrogène. Une cellule d'électrolyse ne produit jamais d'énergie électrique nette : elle en **consomme**, pour construire quelque chose que la chimie, seule, refuserait de construire.
+Dans une cellule d'électrolyse, c'est l'inverse. Le générateur extérieur doit fournir de l'énergie électrique pour forcer une réaction qui n'irait jamais spontanément dans ce sens ($Q_{r,i}$ face à $K$ s'y opposerait si on laissait faire la chimie seule). Cette énergie électrique ne disparaît pas : elle se retrouve stockée sous forme d'énergie chimique dans les produits qu'on vient de fabriquer de force - le dépôt de zinc de l'accroche, ou, tu le verras au chapitre 6, un gaz comme le dihydrogène. Une cellule d'électrolyse ne produit jamais d'énergie électrique nette : elle en **consomme**, pour construire quelque chose que la chimie, seule, refuserait de construire.
 
 Si une cellule d'électrolyse produisait plus d'énergie électrique qu'elle n'en reçoit, on aurait construit une machine qui crée de l'énergie à partir de rien - ce qui ne peut pas arriver. Le générateur donne toujours plus d'énergie électrique à la cellule que ce que la réaction, seule, n'en aurait jamais fourni dans ce sens ; une partie de cette énergie se retrouve stockée dans les produits, le reste se dissipe en chaleur par effet Joule dans les fils et l'électrolyte.
 
@@ -72,13 +72,13 @@ Reste une question qu'on n'a pas encore tranchée : la cathode (zinc, ici) est-e
 
 ### Rappel de la pile, et ce qui semble aller de soi
 
-Dans une pile (leçon précédente, chapitre 3), l'anode - siège de l'oxydation - est toujours la borne −, et la cathode - siège de la réduction - est toujours la borne +. La raison en était mécanique : l'oxydation libère des électrons qui s'*accumulent* dans le métal de l'anode, la rendant relativement négative ; la réduction *consomme* des électrons à la cathode, l'appauvrissant, donc la rendant relativement positive.
+Dans une pile (leçon précédente, chapitre 4), l'anode - siège de l'oxydation - est toujours la borne −, et la cathode - siège de la réduction - est toujours la borne +. La raison en était mécanique : l'oxydation libère des électrons qui s'*accumulent* dans le métal de l'anode, la rendant relativement négative ; la réduction *consomme* des électrons à la cathode, l'appauvrissant, donc la rendant relativement positive.
 
 Il serait naturel de supposer que cette association tient aussi pour une cellule d'électrolyse. Ce n'est pas le cas - et comprendre pourquoi est le cœur de cette leçon.
 
 ### Pourquoi la polarité s'inverse
 
-Reprends le mécanisme du chapitre 1 : dans une électrolyse, c'est le générateur qui *impose* la polarité, et cette polarité imposée qui *force* le mécanisme chimique - la flèche causale s'est inversée par rapport à la pile.
+Reprends le mécanisme du chapitre 2 : dans une électrolyse, c'est le générateur qui *impose* la polarité, et cette polarité imposée qui *force* le mécanisme chimique - la flèche causale s'est inversée par rapport à la pile.
 
 Concrètement : le générateur, par sa borne +, tire des électrons hors d'une électrode. Tirer des électrons hors d'un métal, c'est forcer les espèces à son contact à en céder pour combler le manque - c'est-à-dire forcer une **oxydation**. Cette électrode, reliée à la borne + du générateur, est donc l'**anode**.
 
@@ -118,7 +118,7 @@ Remarque bien ce que cette dernière ligne veut dire : le zinc reste, dans les d
 
 ### Pourquoi un générateur trop faible ne suffit pas
 
-Toute cellule d'électrolyse, même avant qu'on y branche un générateur, contient déjà les ingrédients d'une pile : deux électrodes, un électrolyte, un couple oxydant/réducteur de chaque côté. Elle possède donc, comme n'importe quelle pile, une tendance spontanée à évoluer dans un sens précis - le sens que $Q_{r,i}$ face à $K$ imposerait si on la laissait faire seule -, et une force électromotrice propre, $E$, qui mesure cette tendance (leçon précédente, chapitre 5).
+Toute cellule d'électrolyse, même avant qu'on y branche un générateur, contient déjà les ingrédients d'une pile : deux électrodes, un électrolyte, un couple oxydant/réducteur de chaque côté. Elle possède donc, comme n'importe quelle pile, une tendance spontanée à évoluer dans un sens précis - le sens que $Q_{r,i}$ face à $K$ imposerait si on la laissait faire seule -, et une force électromotrice propre, $E$, qui mesure cette tendance (leçon précédente, chapitre 6).
 
 Le générateur qu'on branche pour forcer le sens *contraire* doit donc surmonter cette tendance naturelle, pas seulement s'y ajouter. Si la tension imposée par le générateur reste inférieure à $E$, la réaction continue d'évoluer, au moins en partie, dans son sens spontané - le générateur ne fait alors que freiner ce sens naturel, sans jamais l'inverser. Il faut que la tension imposée dépasse $E$, en valeur absolue et branchée en opposition au sens spontané, pour que le sens forcé l'emporte réellement.
 
@@ -144,7 +144,7 @@ Reviens à l'exemple : à $U = 0{,}9\ \text{V}$, rien ne s'inverse - le courant 
 
 ### La même loi, un sens inversé
 
-Tu connais déjà cette relation (leçon précédente, chapitre 6) : le courant $I$, maintenu pendant une durée $\Delta t$, fait circuler une quantité d'électricité
+Tu connais déjà cette relation (leçon précédente, chapitre 7) : le courant $I$, maintenu pendant une durée $\Delta t$, fait circuler une quantité d'électricité
 
 $$Q = I\,\Delta t$$
 
@@ -158,7 +158,7 @@ $$I\,\Delta t = n(e^-)\,F$$
 
 Cette relation ne dépend en rien du dispositif - pile ou électrolyse - dans lequel le courant circule : c'est une relation purement électrique entre charge, courant, durée et quantité de matière d'électrons.
 
-Ce qui change, c'est le **sens physique** de ce qu'elle mesure. Dans une pile (chapitre 6, leçon précédente), cette relation chiffrait l'**usure** : la masse de réactif qui disparaît irréversiblement de l'anode à mesure que la pile fonctionne. Dans une électrolyse, elle chiffre au contraire un **dépôt** ou une **transformation forcée** : la masse de matière qui apparaît à une électrode, construite de force par le courant que le générateur impose.
+Ce qui change, c'est le **sens physique** de ce qu'elle mesure. Dans une pile (chapitre 7, leçon précédente), cette relation chiffrait l'**usure** : la masse de réactif qui disparaît irréversiblement de l'anode à mesure que la pile fonctionne. Dans une électrolyse, elle chiffre au contraire un **dépôt** ou une **transformation forcée** : la masse de matière qui apparaît à une électrode, construite de force par le courant que le générateur impose.
 
 ### Exemple travaillé
 
@@ -176,7 +176,7 @@ $$n(Zn) = \frac{n(e^-)}{2} \approx 5{,}6\times10^{-3}\ \text{mol}$$
 
 $$m(Zn) = n(Zn) \times M(Zn) \approx 5{,}6\times10^{-3} \times 65{,}4 \approx 0{,}37\ \text{g}$$
 
-Remarque quelque chose de frappant : ce sont exactement les mêmes $1080\ \text{C}$, la même quantité de matière d'électrons, et la même masse de zinc - $0{,}37\ \text{g}$ - que dans l'exemple travaillé du chapitre 6 de la leçon sur les piles. Mais là où cette masse de zinc **disparaissait** progressivement de l'anode (la pile s'usait), ici elle **apparaît** à la cathode (l'électrolyse la dépose). Le calcul ne change pas d'un iota ; c'est le sens physique de la transformation qui s'est inversé - exactement comme le générateur a inversé le sens de la réaction elle-même.
+Remarque quelque chose de frappant : ce sont exactement les mêmes $1080\ \text{C}$, la même quantité de matière d'électrons, et la même masse de zinc - $0{,}37\ \text{g}$ - que dans l'exemple travaillé du chapitre 7 de la leçon sur les piles. Mais là où cette masse de zinc **disparaissait** progressivement de l'anode (la pile s'usait), ici elle **apparaît** à la cathode (l'électrolyse la dépose). Le calcul ne change pas d'un iota ; c'est le sens physique de la transformation qui s'est inversé - exactement comme le générateur a inversé le sens de la réaction elle-même.
 
 À l'anode, le cuivre se dissout selon la même logique : $n(Cu) = n(e^-)/2 \approx 5{,}6\times10^{-3}\ \text{mol}$, soit une masse dissoute $m(Cu) \approx 5{,}6\times10^{-3} \times 63{,}5 \approx 0{,}36\ \text{g}$.
 
@@ -222,7 +222,7 @@ L'eau ne se décompose jamais spontanément en dihydrogène et dioxygène gazeux
 
 ### Chiffrer un gaz : de la quantité de matière au volume
 
-Le chapitre 4 a permis de chiffrer des **masses** de métal déposé. Ici les produits sont des **gaz**, et un sujet demande presque toujours un **volume**. Le pont entre les deux tient en une relation, celle du volume molaire.
+Le chapitre 5 a permis de chiffrer des **masses** de métal déposé. Ici les produits sont des **gaz**, et un sujet demande presque toujours un **volume**. Le pont entre les deux tient en une relation, celle du volume molaire.
 
 Dans des conditions de température et de pression données, une mole de n'importe quel gaz occupe le même volume $V_m$, appelé **volume molaire**. L'énoncé le fournit toujours — souvent $V_m = 24\ \text{L.mol}^{-1}$ dans les conditions ordinaires, parfois $22{,}4\ \text{L.mol}^{-1}$ dans les conditions normales. De là :
 
@@ -240,9 +240,9 @@ L'avant-dernière flèche est la seule qui demande de la réflexion : le passage
 
 ### Le dépôt métallique - galvanoplastie
 
-Recouvrir un objet (souvent peu coûteux ou peu résistant à la corrosion) d'une fine couche d'un métal protecteur ou décoratif - argent, or, chrome, nickel, zinc - suit exactement le mécanisme calculé au chapitre 4. L'objet à recouvrir est branché en **cathode** (borne −) : c'est là que les ions métalliques de la solution sont réduits et viennent se déposer en une fine couche.
+Recouvrir un objet (souvent peu coûteux ou peu résistant à la corrosion) d'une fine couche d'un métal protecteur ou décoratif - argent, or, chrome, nickel, zinc - suit exactement le mécanisme calculé au chapitre 5. L'objet à recouvrir est branché en **cathode** (borne −) : c'est là que les ions métalliques de la solution sont réduits et viennent se déposer en une fine couche.
 
-Souvent, l'autre électrode est constituée du métal même qu'on veut déposer - une **anode soluble** : elle s'oxyde et se dissout progressivement, ce qui réalimente la solution en ions métalliques à mesure qu'ils se déposent sur l'objet, et permet de maintenir la concentration à peu près constante tout au long du procédé. C'est très exactement ce que fait la lame de cuivre dans l'exemple du chapitre 4 - elle joue le rôle d'une anode soluble pour la cellule considérée.
+Souvent, l'autre électrode est constituée du métal même qu'on veut déposer - une **anode soluble** : elle s'oxyde et se dissout progressivement, ce qui réalimente la solution en ions métalliques à mesure qu'ils se déposent sur l'objet, et permet de maintenir la concentration à peu près constante tout au long du procédé. C'est très exactement ce que fait la lame de cuivre dans l'exemple du chapitre 5 - elle joue le rôle d'une anode soluble pour la cellule considérée.
 
 ### La production industrielle de l'aluminium
 

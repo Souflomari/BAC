@@ -366,7 +366,7 @@ Place maintenant au chapitre un exercice tel qu'il tombe à l'examen national. C
 
 ### Ce que ces exercices empruntent à d'autres chapitres
 
-Le chapitre 7 a fait le pont du dénombrement vers les probabilités par l'équiprobabilité — compter les cas favorables, compter les cas possibles, diviser. Un sujet va souvent un cran plus loin et mobilise des outils que **cette leçon n'enseigne pas** :
+Le chapitre 8 a fait le pont du dénombrement vers les probabilités par l'équiprobabilité — compter les cas favorables, compter les cas possibles, diviser. Un sujet va souvent un cran plus loin et mobilise des outils que **cette leçon n'enseigne pas** :
 
 - **L'indépendance de deux événements**, $p(A\cap B) = p(A)\times p(B)$, et sa distinction d'avec l'**incompatibilité** ($A\cap B = \varnothing$) — deux notions que le vocabulaire courant confond et que le cours sépare nettement. Elles sont dans « **Probabilités conditionnelles** ».
 - **La variable aléatoire, sa loi et son espérance**, dès qu'un sujet demande « le nombre moyen de… » plutôt que « la probabilité que… ». Même chapitre.

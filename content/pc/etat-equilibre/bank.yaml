@@ -111,16 +111,16 @@ entries:
         stem: |-
           **(0,75 pt)** Montrer que le taux d'avancement final de la réaction de l'acide benzoïque avec l'eau est $\tau = 0{,}072$.
         reasoning: |-
-          $\tau$ compare l'avancement réellement atteint à celui d'une réaction supposée totale, $\tau = \dfrac{x_f}{x_{max}}$ (rung 2). Ici, un acide et un ion formé un pour un : d'après le tableau d'avancement, chaque molécule d'acide qui réagit libère à la fois un ion $C_6H_5COO^-$ et un ion $H_3O^+$, donc les deux concentrations à l'équilibre sont égales et valent l'avancement volumique final $x_f$. Si la réaction allait jusqu'au bout, tout l'acide apporté (concentration $C$) serait converti : $x_{max} = C$.
+          $\tau$ compare l'avancement réellement atteint à celui d'une réaction supposée totale, $\tau = \dfrac{x_f}{x_{max}}$ (chapitre 3). Ici, un acide et un ion formé un pour un : d'après le tableau d'avancement, chaque molécule d'acide qui réagit libère à la fois un ion $C_6H_5COO^-$ et un ion $H_3O^+$, donc les deux concentrations à l'équilibre sont égales et valent l'avancement volumique final $x_f$. Si la réaction allait jusqu'au bout, tout l'acide apporté (concentration $C$) serait converti : $x_{max} = C$.
 
           La conductivité mesurée est le pont entre l'expérience et $x_f$ : comme on néglige les ions $HO^-$, seuls les deux ions du couple conduisent, donc $\sigma = (\lambda_1+\lambda_2)\,x_f$. On en tire $x_f$, puis $\tau$.
         steps:
           - math: '[C_6H_5COO^-]_{eq} = [H_3O^+]_{eq} = x_f'
-            note: "Tableau d'avancement (volume constant) : les deux ions se forment un pour un, meme concentration a l'equilibre (rung 2)."
+            note: "Tableau d'avancement (volume constant) : les deux ions se forment un pour un, meme concentration a l'equilibre (chapitre 3)."
           - math: '\sigma = \lambda_1\,[C_6H_5COO^-]_{eq} + \lambda_2\,[H_3O^+]_{eq} = (\lambda_1+\lambda_2)\,x_f'
             note: "Loi de la conductivite ; les ions HO- sont negliges (enonce)."
           - math: 'x_f = \dfrac{\sigma}{\lambda_1+\lambda_2} \qquad x_{max} = C'
-            note: "Si la reaction etait totale, tout l'acide (concentration C) serait converti (rung 2)."
+            note: "Si la reaction etait totale, tout l'acide (concentration C) serait converti (chapitre 3)."
           - math: '\tau = \dfrac{x_f}{x_{max}} = \dfrac{\sigma}{C\,(\lambda_1+\lambda_2)}'
             note: "On combine les deux relations precedentes."
           - math: '\boxed{\tau = \dfrac{2{,}76\times10^{-2}}{10\times(3{,}23\times10^{-3}+35\times10^{-3})} \approx 0{,}072}'
@@ -129,22 +129,22 @@ entries:
         stem: |-
           **(0,75 pt)** Trouver l'expression du quotient de réaction à l'équilibre $Q_{r,eq}$ en fonction de la concentration $C$ et du taux d'avancement final $\tau$.
         reasoning: |-
-          On construit d'abord $Q_r$ selon la règle du rung 3 : produits sur réactifs, chaque coefficient devenant un exposant (ici tous valent $1$), l'eau — solvant en large excès — étant exclue. Puis on passe à l'équilibre en réinjectant les concentrations en fonction de $\tau$ : puisque $\tau = \dfrac{x_f}{x_{max}}$ et $x_{max} = C$ (question précédente), on a $x_f = \tau C$, donc les deux ions valent $\tau C$ et l'acide restant vaut $C - \tau C = C(1-\tau)$.
+          On construit d'abord $Q_r$ selon la règle du chapitre 4 : produits sur réactifs, chaque coefficient devenant un exposant (ici tous valent $1$), l'eau — solvant en large excès — étant exclue. Puis on passe à l'équilibre en réinjectant les concentrations en fonction de $\tau$ : puisque $\tau = \dfrac{x_f}{x_{max}}$ et $x_{max} = C$ (question précédente), on a $x_f = \tau C$, donc les deux ions valent $\tau C$ et l'acide restant vaut $C - \tau C = C(1-\tau)$.
         steps:
           - math: 'Q_{r,eq} = \dfrac{[C_6H_5COO^-]_{eq}\,[H_3O^+]_{eq}}{[C_6H_5COOH]_{eq}}'
-            note: "Produits sur reactifs, coefficients tous egaux a 1 ; l'eau (solvant) est exclue de Qr (rung 3)."
+            note: "Produits sur reactifs, coefficients tous egaux a 1 ; l'eau (solvant) est exclue de Qr (chapitre 4)."
           - math: '[C_6H_5COO^-]_{eq} = [H_3O^+]_{eq} = \tau\,C \qquad [C_6H_5COOH]_{eq} = C - \tau C = C(1-\tau)'
-            note: "x_f = tau x_max = tau C (rung 2), reinjecte dans le tableau d'avancement."
+            note: "x_f = tau x_max = tau C (chapitre 3), reinjecte dans le tableau d'avancement."
           - math: '\boxed{Q_{r,eq} = \dfrac{(\tau C)(\tau C)}{C(1-\tau)} = \dfrac{C\,\tau^2}{1-\tau}}'
-            note: "Concentrations rapportees a c-standard = 1 mol/L, Qr est donc sans unite (rung 3)."
+            note: "Concentrations rapportees a c-standard = 1 mol/L, Qr est donc sans unite (chapitre 4)."
       - id: q3
         stem: |-
           **(0,75 pt)** Déduire la valeur de la constante $pK_A$ du couple $(C_6H_5COOH / C_6H_5COO^-)$.
         reasoning: |-
-          À l'équilibre, $Q_r$ se fige à la valeur de la constante d'équilibre $K$ (rung 4). Pour une réaction entre un acide et l'eau, cette constante $K$ porte un nom particulier — la constante d'acidité $K_A$ du couple acide/base, un vocabulaire qui n'appartient pas à cette leçon mais que tu as déjà rencontré (voir la SCOPE NOTE en tête de fichier) — sa valeur numérique se calcule exactement comme n'importe quel $K$, avec l'expression trouvée à la question précédente. Il reste à convertir $C$ en $\text{mol/L}$ (l'énoncé le donne en $\text{mol/m}^3$) avant l'application numérique, puis à passer au $pK_A = -\log K_A$.
+          À l'équilibre, $Q_r$ se fige à la valeur de la constante d'équilibre $K$ (chapitre 5). Pour une réaction entre un acide et l'eau, cette constante $K$ porte un nom particulier — la constante d'acidité $K_A$ du couple acide/base, un vocabulaire qui n'appartient pas à cette leçon mais que tu as déjà rencontré (voir la SCOPE NOTE en tête de fichier) — sa valeur numérique se calcule exactement comme n'importe quel $K$, avec l'expression trouvée à la question précédente. Il reste à convertir $C$ en $\text{mol/L}$ (l'énoncé le donne en $\text{mol/m}^3$) avant l'application numérique, puis à passer au $pK_A = -\log K_A$.
         steps:
           - math: 'K_A = Q_{r,eq} = \dfrac{C\,\tau^2}{1-\tau}'
-            note: "A l'equilibre Qr,eq = K (rung 4) ; pour un acide dans l'eau cette constante s'appelle KA."
+            note: "A l'equilibre Qr,eq = K (chapitre 5) ; pour un acide dans l'eau cette constante s'appelle KA."
           - math: 'C = 10\ \text{mol}\cdot\text{m}^{-3} = 1{,}0\times10^{-2}\ \text{mol}\cdot\text{L}^{-1}'
             note: "Conversion : 1 m3 = 1000 L, donc 10 mol/m3 = 1,0e-2 mol/L."
           - math: 'K_A = \dfrac{1{,}0\times10^{-2}\times(0{,}072)^2}{1-0{,}072} \approx 5{,}6\times10^{-5}'
@@ -195,7 +195,7 @@ entries:
         stem: |-
           **(0,5 pt)** **1.1-** Écrire l'équation de la réaction de l'acide éthanoïque avec l'eau.
         reasoning: |-
-          La mise en solution d'un acide **faible** dans l'eau est une transformation **limitée** : elle s'arrête sur un état d'équilibre (rung 1), donc on l'écrit avec la double flèche $\rightleftharpoons$, jamais une simple flèche. L'acide $CH_3COOH$ cède un proton à l'eau, qui joue ici le rôle de base (couple $H_3O^+/H_2O$) :
+          La mise en solution d'un acide **faible** dans l'eau est une transformation **limitée** : elle s'arrête sur un état d'équilibre (chapitre 2), donc on l'écrit avec la double flèche $\rightleftharpoons$, jamais une simple flèche. L'acide $CH_3COOH$ cède un proton à l'eau, qui joue ici le rôle de base (couple $H_3O^+/H_2O$) :
 
           $$CH_3COOH_{(aq)} + H_2O_{(l)} \rightleftharpoons CH_3COO^-_{(aq)} + H_3O^+_{(aq)}$$
       - id: q2
@@ -204,16 +204,16 @@ entries:
           $$\alpha(CH_3COOH) = \dfrac{[CH_3COOH]_{eq}}{[CH_3COOH]_{eq} + [CH_3COO^-]_{eq}}.$$
           En vous aidant du tableau d'avancement, montrer que $\alpha(CH_3COOH) = 1 - \tau$ avec $\tau$ étant le taux d'avancement final de la réaction de l'acide éthanoïque avec l'eau. Calculer alors la valeur de $\alpha(CH_3COOH)$.
         reasoning: |-
-          On relit chaque terme de la définition dans le tableau d'avancement (rung 2) : $[CH_3COOH]_{eq} = C_A - x_f$ (ce qui reste de l'acide) et $[CH_3COO^-]_{eq} = x_f$ (ce qui s'est formé) — les deux se retrouvent dans le dénominateur, dont la somme redonne exactement $C_A$ (bilan de matière : tout l'acide introduit se retrouve, à l'équilibre, soit encore sous forme $CH_3COOH$, soit sous forme $CH_3COO^-$). En remplaçant dans $\alpha$, le dénominateur se simplifie en $C_A$, et il ne reste que $(C_A-x_f)/C_A = 1 - x_f/C_A$ — or $x_f/C_A$ est exactement $\tau$ (rung 2, puisque $x_{max}=C_A$ ici, même raisonnement qu'au rung 2 pour l'acide benzoïque).
+          On relit chaque terme de la définition dans le tableau d'avancement (chapitre 3) : $[CH_3COOH]_{eq} = C_A - x_f$ (ce qui reste de l'acide) et $[CH_3COO^-]_{eq} = x_f$ (ce qui s'est formé) — les deux se retrouvent dans le dénominateur, dont la somme redonne exactement $C_A$ (bilan de matière : tout l'acide introduit se retrouve, à l'équilibre, soit encore sous forme $CH_3COOH$, soit sous forme $CH_3COO^-$). En remplaçant dans $\alpha$, le dénominateur se simplifie en $C_A$, et il ne reste que $(C_A-x_f)/C_A = 1 - x_f/C_A$ — or $x_f/C_A$ est exactement $\tau$ (chapitre 3, puisque $x_{max}=C_A$ ici, même raisonnement qu'au chapitre 3 pour l'acide benzoïque).
 
           Pour la valeur numérique de $\alpha$, il faut d'abord $\tau$ : ici c'est le $pH$, et non une conductivité, qui donne accès à l'avancement. Chaque molécule d'acide qui réagit libère un ion $H_3O^+$ (même relation un pour un que dans le tableau d'avancement ci-dessus), donc $x_f = [H_3O^+]_{eq} = 10^{-pH}$.
         steps:
           - math: '[CH_3COOH]_{eq} = C_A - x_f \qquad [CH_3COO^-]_{eq} = x_f'
-            note: "Tableau d'avancement (rung 2) : ce qui reste de l'acide, ce qui s'est forme."
+            note: "Tableau d'avancement (chapitre 3) : ce qui reste de l'acide, ce qui s'est forme."
           - math: '\alpha(CH_3COOH) = \dfrac{C_A-x_f}{(C_A-x_f)+x_f} = \dfrac{C_A-x_f}{C_A} = 1-\dfrac{x_f}{C_A}'
             note: "Le denominateur se simplifie en C_A (bilan de matiere)."
           - math: '\boxed{\alpha(CH_3COOH) = 1-\tau}'
-            note: "x_f/C_A = tau car x_max = C_A ici, stoechiometrie 1 pour 1 (rung 2)."
+            note: "x_f/C_A = tau car x_max = C_A ici, stoechiometrie 1 pour 1 (chapitre 3)."
           - math: '[H_3O^+]_{eq} = 10^{-pH} = 10^{-3{,}05} \approx 8{,}91\times10^{-4}\ \text{mol/L}'
             note: "Le pH donne directement la concentration en ions H3O+ a l'equilibre."
           - math: 'x_f = [H_3O^+]_{eq} \qquad \tau = \dfrac{x_f}{C_A} = \dfrac{8{,}91\times10^{-4}}{5\times10^{-2}} \approx 1{,}78\times10^{-2}'
@@ -224,10 +224,10 @@ entries:
         stem: |-
           **(0,5 pt)** **1.3-** Montrer que la valeur du $pK_{A1} = pK_A(CH_3COOH_{(aq)}/CH_3COO^-_{(aq)})$ est : $pK_{A1} \simeq 4{,}79$.
         reasoning: |-
-          À l'équilibre, $Q_r$ se fige à la valeur de la constante d'équilibre $K$ (rung 4), qui porte ici le nom de constante d'acidité $K_A$ du couple, puisque la réaction est celle d'un acide avec l'eau (même pont qu'à la question 1.3 du sujet 2015 — voir la SCOPE NOTE en tête de fichier). On construit $Q_{r,eq}$ selon la règle du rung 3 (produits sur réactifs, eau exclue), en réutilisant les résultats de la question précédente : $[CH_3COO^-]_{eq} = [H_3O^+]_{eq}$ (même ion formé un pour un) et $[CH_3COOH]_{eq} = C_A\,\alpha$ (directement, par définition de $\alpha$).
+          À l'équilibre, $Q_r$ se fige à la valeur de la constante d'équilibre $K$ (chapitre 5), qui porte ici le nom de constante d'acidité $K_A$ du couple, puisque la réaction est celle d'un acide avec l'eau (même pont qu'à la question 1.3 du sujet 2015 — voir la SCOPE NOTE en tête de fichier). On construit $Q_{r,eq}$ selon la règle du chapitre 4 (produits sur réactifs, eau exclue), en réutilisant les résultats de la question précédente : $[CH_3COO^-]_{eq} = [H_3O^+]_{eq}$ (même ion formé un pour un) et $[CH_3COOH]_{eq} = C_A\,\alpha$ (directement, par définition de $\alpha$).
         steps:
           - math: 'K_A = Q_{r,eq} = \dfrac{[CH_3COO^-]_{eq}\,[H_3O^+]_{eq}}{[CH_3COOH]_{eq}}'
-            note: "A l'equilibre Qr,eq = K (rung 4), eau exclue (rung 3)."
+            note: "A l'equilibre Qr,eq = K (chapitre 5), eau exclue (chapitre 4)."
           - math: '[CH_3COO^-]_{eq} = [H_3O^+]_{eq} \qquad [CH_3COOH]_{eq} = C_A\,\alpha'
             note: "Meme ion un pour un (question precedente) ; CH3COOHeq = CA alpha par definition de alpha."
           - math: 'K_A = \dfrac{[H_3O^+]_{eq}^2}{C_A\,\alpha} = \dfrac{(8{,}91\times10^{-4})^2}{5\times10^{-2}\times0{,}982}'

@@ -274,16 +274,16 @@ entries:
         reasoning: |-
           Deux tâches emboîtées. La première est une pure réécriture algébrique : distribue $e^{-x}=\dfrac1{e^x}$ sur les deux termes de $x^2-x$. Rien à limiter encore — mais c'est CETTE forme précise, « polynôme divisé par $e^x$ », que la seconde tâche exige.
 
-          Pour la limite, ne te contente jamais d'invoquer « croissances comparées » en l'air : ramène chaque fraction à la forme EXACTE du R4 de la leçon « Fonction exponentielle » ($e^t/t\to+\infty$ quand $t\to+\infty$). $\dfrac{x}{e^x}$ en est l'inverse direct. $\dfrac{x^2}{e^x}$ demande un pas de plus : pose $t=\dfrac x2$ — exactement le changement de variable que le cours utilise lui-même pour établir $e^x/x\to+\infty$ — pour l'écrire comme un carré de cette même forme.
+          Pour la limite, ne te contente jamais d'invoquer « croissances comparées » en l'air : ramène chaque fraction à la forme EXACTE du chapitre 5 de la leçon « Fonction exponentielle » ($e^t/t\to+\infty$ quand $t\to+\infty$). $\dfrac{x}{e^x}$ en est l'inverse direct. $\dfrac{x^2}{e^x}$ demande un pas de plus : pose $t=\dfrac x2$ — exactement le changement de variable que le cours utilise lui-même pour établir $e^x/x\to+\infty$ — pour l'écrire comme un carré de cette même forme.
 
           Les deux fractions s'effacent ; il ne reste que le $+x$, qui part vers $+\infty$. Une somme d'un terme qui s'annule et d'un terme qui diverge : pas d'indétermination, la limite suit le terme qui explose.
         steps:
           - math: 'f(x) = (x^{2}-x)e^{-x}+x = x^{2}e^{-x} - x\,e^{-x} + x = \dfrac{x^{2}}{e^{x}} - \dfrac{x}{e^{x}} + x'
             note: "On distribue e a la puissance moins x sur les deux termes de x carre moins x, puis on ecrit e a la puissance moins x comme 1 sur e a la puissance x."
           - math: '\dfrac{x}{e^{x}} = \dfrac{1}{e^{x}/x} \longrightarrow 0 \quad \left(\text{inverse de } \dfrac{e^{x}}{x}\to+\infty,\ R4\right)'
-            note: "x sur e puissance x est l'inverse direct de la croissance comparee de reference du rung R4 de fonction-exponentielle."
+            note: "x sur e puissance x est l'inverse direct de la croissance comparee de reference du chapitre 5 de fonction-exponentielle."
           - math: 't=\dfrac{x}{2}\ (\to+\infty \text{ quand } x\to+\infty), \qquad \dfrac{x^{2}}{e^{x}} = \dfrac{(2t)^{2}}{e^{2t}} = 4\left(\dfrac{t}{e^{t}}\right)^{2} \longrightarrow 0'
-            note: "Meme changement de variable que celui du cours pour etablir e^x/x -> plus l'infini : on ramene x carre sur e puissance x a la forme exacte du R4, elevee au carre."
+            note: "Meme changement de variable que celui du cours pour etablir e^x/x -> plus l'infini : on ramene x carre sur e puissance x a la forme exacte du chapitre 5, elevee au carre."
           - math: '\lim_{x\to+\infty} f(x) = 0 - 0 + \lim_{x\to+\infty} x = +\infty'
             note: "Les deux fractions s'effacent ; il ne reste que le terme plus x, qui part vers plus l'infini : pas d'indetermination."
       - id: qII1b
@@ -308,12 +308,12 @@ entries:
         reasoning: |-
           Pourquoi le sujet te fait vérifier CETTE forme avant de calculer la limite : si tu essaies la limite directement sur l'écriture de départ $(x^2-x)e^{-x}+x$ en $-\infty$, tu tombes sur $(+\infty)+(-\infty)$ — une vraie indétermination, puisque $x^2-x\to+\infty$ et $e^{-x}\to+\infty$ font exploser le premier terme, pendant que $+x\to-\infty$. La réécriture au même dénominateur $e^x$ transforme cette bagarre en une seule fraction, où numérateur et dénominateur se traitent séparément.
 
-          Numérateur : $x^2-x\to+\infty$ (terme dominant $x^2$), et $x\,e^x\to0$ — c'est le corollaire de croissance comparée du R4, tel quel, sans extension à justifier. Le numérateur part donc vers $+\infty$. Dénominateur : $e^x\to0^+$, toujours strictement positif. Une quantité qui explose divisée par une quantité positive qui s'efface part elle aussi vers $+\infty$.
+          Numérateur : $x^2-x\to+\infty$ (terme dominant $x^2$), et $x\,e^x\to0$ — c'est le corollaire de croissance comparée du chapitre 5, tel quel, sans extension à justifier. Le numérateur part donc vers $+\infty$. Dénominateur : $e^x\to0^+$, toujours strictement positif. Une quantité qui explose divisée par une quantité positive qui s'efface part elle aussi vers $+\infty$.
         steps:
           - math: 'f(x) = \dfrac{x^{2}}{e^{x}} - \dfrac{x}{e^{x}} + x = \dfrac{x^{2}}{e^{x}} - \dfrac{x}{e^{x}} + \dfrac{x\,e^{x}}{e^{x}} = \dfrac{x^{2}-x+x\,e^{x}}{e^{x}}'
             note: "On met x au meme denominateur e a la puissance x que les deux autres termes de la question 1a."
           - math: '\lim_{x\to-\infty}\left(x^{2}-x\right) = +\infty \qquad \lim_{x\to-\infty} x\,e^{x} = 0 \quad (\text{corollaire du R4, fonction-exponentielle})'
-            note: "x carre moins x part vers plus l'infini (terme dominant x carre) ; x fois e puissance x s'efface en moins l'infini, corollaire direct du rung R4."
+            note: "x carre moins x part vers plus l'infini (terme dominant x carre) ; x fois e puissance x s'efface en moins l'infini, corollaire direct du chapitre 5."
           - math: '\lim_{x\to-\infty}\left(x^{2}-x+x\,e^{x}\right) = +\infty \qquad \lim_{x\to-\infty} e^{x} = 0^{+}'
             note: "Le numerateur part vers plus l'infini ; le denominateur s'efface en restant strictement positif."
           - math: '\lim_{x\to-\infty} f(x) = +\infty'
@@ -325,14 +325,14 @@ entries:
         reasoning: |-
           Repars de l'écriture de départ de $f$ et divise chaque terme par $x$ : $\dfrac{x^2-x}{x}$ se simplifie en $x-1$ (division terme à terme d'un polynôme par $x$, valable pour $x\ne0$), et il reste $(x-1)e^{-x}+1$.
 
-          En $-\infty$ : $x-1\to-\infty$, et $e^{-x}\to+\infty$ (pose $X=-x\to+\infty$, c'est directement la première limite du R4, $e^X\to+\infty$, rien qu'un changement de nom de variable). Un produit de deux limites infinies **n'est jamais une forme indéterminée** — contrairement à une somme du type $\infty-\infty$ — le signe se lit directement par la règle des signes : négatif fois positif donne $-\infty$.
+          En $-\infty$ : $x-1\to-\infty$, et $e^{-x}\to+\infty$ (pose $X=-x\to+\infty$, c'est directement la première limite du chapitre 5, $e^X\to+\infty$, rien qu'un changement de nom de variable). Un produit de deux limites infinies **n'est jamais une forme indéterminée** — contrairement à une somme du type $\infty-\infty$ — le signe se lit directement par la règle des signes : négatif fois positif donne $-\infty$.
 
           Interprétation : un rapport $f(x)/x$ qui part à l'infini (et non vers une valeur finie) signifie que $(C)$ ne rejoint AUCUNE droite oblique en $-\infty$ — elle s'écrase contre la direction verticale. C'est la définition même d'une branche parabolique de direction $(Oy)$.
         steps:
           - math: '\dfrac{f(x)}{x} = \dfrac{(x^{2}-x)e^{-x}+x}{x} = \dfrac{x^{2}-x}{x}\,e^{-x} + 1 = (x-1)e^{-x}+1'
             note: "On divise chaque terme de f(x) par x ; x carre moins x sur x se simplifie en x moins 1."
           - math: '\lim_{x\to-\infty}(x-1) = -\infty \qquad \lim_{x\to-\infty} e^{-x} = \lim_{X\to+\infty} e^{X} = +\infty \quad (X=-x,\ R4)'
-            note: "x moins 1 part vers moins l'infini ; e puissance moins x, avec X = moins x, redonne directement la premiere limite du rung R4."
+            note: "x moins 1 part vers moins l'infini ; e puissance moins x, avec X = moins x, redonne directement la premiere limite du chapitre 5."
           - math: '\lim_{x\to-\infty} (x-1)e^{-x} = -\infty \quad (\text{produit de deux limites infinies, jamais indetermine}) \ \Longrightarrow\ \lim_{x\to-\infty}\dfrac{f(x)}{x} = -\infty'
             note: "Un produit de deux quantites infinies se lit par la regle des signes : negatif fois positif donne moins l'infini, sans indetermination."
           - math: '\lim_{x\to-\infty}\dfrac{f(x)}{x} = -\infty \ (\text{limite infinie}) \ \Longrightarrow\ (C) \text{ admet une branche parabolique de direction } (Oy) \text{ en } -\infty'
@@ -342,7 +342,7 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer $f(x) - x$ et $x^{2} - x$ ont le même signe pour tout $x$ de $\mathbb{R}$.
         reasoning: |-
-          Tu as déjà l'expression : $f(x)-x=(x^2-x)e^{-x}$ (établie en 1b). Le facteur $e^{-x}$ est **strictement positif pour tout réel $x$** — l'exponentielle ne s'annule jamais et ne change jamais de signe (R1 de « Fonction exponentielle »). Multiplier $x^2-x$ par un facteur toujours strictement positif change sa grandeur mais jamais son signe : les deux quantités sont donc toujours du même signe, sans qu'aucun cas particulier ne soit à distinguer.
+          Tu as déjà l'expression : $f(x)-x=(x^2-x)e^{-x}$ (établie en 1b). Le facteur $e^{-x}$ est **strictement positif pour tout réel $x$** — l'exponentielle ne s'annule jamais et ne change jamais de signe (chapitre 2 de « Fonction exponentielle »). Multiplier $x^2-x$ par un facteur toujours strictement positif change sa grandeur mais jamais son signe : les deux quantités sont donc toujours du même signe, sans qu'aucun cas particulier ne soit à distinguer.
         steps:
           - math: 'f(x)-x = (x^{2}-x)e^{-x} \quad (\text{deja etabli en question } 1b)'
             note: "Meme calcul que la question 1b, reutilise directement."
@@ -372,7 +372,7 @@ entries:
         stem: |-
           **(0,75 pt)** Montrer que $f'(x) = g(x)e^{-x}$ pour tout $x$ de $\mathbb{R}$.
         reasoning: |-
-          Dérive $f(x)=(x^2-x)e^{-x}+x$ terme à terme. Le produit $(x^2-x)e^{-x}$ demande la règle du produit, avec $u=x^2-x$ ($u'=2x-1$) et $v=e^{-x}$ ($v'=-e^{-x}$, dérivée de $e^u$ avec $u=-x$, R3 de « Fonction exponentielle »). Ajoute la dérivée du $+x$, qui vaut $1$.
+          Dérive $f(x)=(x^2-x)e^{-x}+x$ terme à terme. Le produit $(x^2-x)e^{-x}$ demande la règle du produit, avec $u=x^2-x$ ($u'=2x-1$) et $v=e^{-x}$ ($v'=-e^{-x}$, dérivée de $e^u$ avec $u=-x$, chapitre 4 de « Fonction exponentielle »). Ajoute la dérivée du $+x$, qui vaut $1$.
 
           La dernière étape n'est pas un calcul, c'est une VÉRIFICATION d'égalité : développe $g(x)e^{-x}$ de ton côté et compare terme à terme avec ce que tu viens d'obtenir pour $f'$. Le terme $e^x\cdot e^{-x}$ de $g(x)e^{-x}$ se simplifie en $1$ — c'est précisément ce $1$ qui vient rejoindre le « $+1$ » de $f'$, et le reste coïncide exactement.
         steps:
@@ -389,14 +389,14 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que la fonction $f$ est décroissante sur $\left]-\infty, 0\right]$ et croissante sur $\left[0, +\infty\right[$.
         reasoning: |-
-          Le signe de $f'(x)=g(x)e^{-x}$ est celui de $g(x)$ SEUL : $e^{-x}$ étant toujours strictement positif, il ne pèse jamais sur le signe (même argument qu'en question 2a). Il ne reste donc qu'à relire le signe de $g$, déjà établi en Partie I question 2 : négatif sur $]-\infty,0]$, positif sur $[0,+\infty[$. Le lien entre le signe de $f'$ et le sens de variation de $f$ est le résultat central du rung R4 de cette leçon : $f'\le0$ signifie $f$ décroissante, $f'\ge0$ signifie $f$ croissante.
+          Le signe de $f'(x)=g(x)e^{-x}$ est celui de $g(x)$ SEUL : $e^{-x}$ étant toujours strictement positif, il ne pèse jamais sur le signe (même argument qu'en question 2a). Il ne reste donc qu'à relire le signe de $g$, déjà établi en Partie I question 2 : négatif sur $]-\infty,0]$, positif sur $[0,+\infty[$. Le lien entre le signe de $f'$ et le sens de variation de $f$ est le résultat central du chapitre 5 de cette leçon : $f'\le0$ signifie $f$ décroissante, $f'\ge0$ signifie $f$ croissante.
         steps:
           - math: 'e^{-x} > 0 \ (\forall x) \ \Longrightarrow\ \text{le signe de } f''(x) \text{ est celui de } g(x)'
             note: "Le facteur e puissance moins x etant toujours positif, il ne change jamais le signe : seul g(x) decide."
           - math: 'g(x) \le 0 \text{ sur } \left]-\infty,0\right] \ (\text{Partie I, question 2}) \ \Longrightarrow\ f''(x) \le 0 \ \Longrightarrow\ f \text{ decroissante sur cet intervalle}'
             note: "Resultat de la Partie I question 2, reutilise ici : g negatif entraine f prime negatif."
           - math: 'g(x) \ge 0 \text{ sur } \left[0,+\infty\right[ \ (\text{Partie I, question 2}) \ \Longrightarrow\ f''(x) \ge 0 \ \Longrightarrow\ f \text{ croissante sur cet intervalle}'
-            note: "Meme raisonnement sur l'autre intervalle : g positif entraine f prime positif (rung R4, signe de f prime donne le sens de variation)."
+            note: "Meme raisonnement sur l'autre intervalle : g positif entraine f prime positif (chapitre 5, signe de f prime donne le sens de variation)."
       - id: qII3c
         part: "Partie II, 3) — Tableau de variations de f"
         stem: |-
@@ -426,14 +426,14 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que la courbe $(C)$ admet deux points d'inflexion d'abscisses respectives $1$ et $4$.
         reasoning: |-
-          Un point d'inflexion, ce n'est pas « $f''$ s'annule » — c'est « $f''$ s'annule EN CHANGEANT DE SIGNE » (rung R5). Factorise $x^2-5x+4=(x-1)(x-4)$ : deux racines simples et distinctes. Comme $e^{-x}$ est toujours strictement positif, le signe de $f''$ est exactement celui de $(x-1)(x-4)$, qui bascule réellement à chacune de ces deux racines (positif à l'extérieur de $[1,4]$, négatif à l'intérieur) — ce n'est pas un simple contact avec zéro, c'est un vrai changement de signe, aux DEUX endroits.
+          Un point d'inflexion, ce n'est pas « $f''$ s'annule » — c'est « $f''$ s'annule EN CHANGEANT DE SIGNE » (chapitre 6). Factorise $x^2-5x+4=(x-1)(x-4)$ : deux racines simples et distinctes. Comme $e^{-x}$ est toujours strictement positif, le signe de $f''$ est exactement celui de $(x-1)(x-4)$, qui bascule réellement à chacune de ces deux racines (positif à l'extérieur de $[1,4]$, négatif à l'intérieur) — ce n'est pas un simple contact avec zéro, c'est un vrai changement de signe, aux DEUX endroits.
         steps:
           - math: 'x^{2}-5x+4 = (x-1)(x-4) \qquad e^{-x}>0 \ (\forall x) \ \Longrightarrow\ \text{signe de } f^{(2)}(x) = \text{signe de } (x-1)(x-4)'
             note: "On factorise le trinome ; le facteur exponentiel, toujours positif, ne pese jamais sur le signe."
           - math: '(x-1)(x-4) < 0 \text{ sur } \left]1,4\right[ \qquad (x-1)(x-4) > 0 \text{ ailleurs, avec changement strict en } x=1 \text{ et } x=4'
             note: "Deux racines simples et distinctes : le signe bascule reellement a chaque racine, pas un simple contact avec zero."
           - math: 'f^{(2)} \text{ s''annule en changeant de signe en } x=1 \text{ et en } x=4 \ \Longrightarrow\ (C) \text{ admet deux points d''inflexion, d''abscisses } 1 \text{ et } 4'
-            note: "Definition du point d'inflexion (rung R5) : changement STRICT de signe de la derivee seconde, verifie ici aux deux racines."
+            note: "Definition du point d'inflexion (chapitre 6) : changement STRICT de signe de la derivee seconde, verifie ici aux deux racines."
       - id: qII5
         part: "Partie II, 5) — Construction de (D) et (C)"
         stem: |-
@@ -455,12 +455,12 @@ entries:
         reasoning: |-
           Deux tâches, à ne pas confondre. « Montrer qu'une fonction proposée est une primitive » ne demande jamais d'intégrer — ça demande de **dériver** la fonction proposée et de retomber sur $h$. $H$ est un produit, règle du produit habituelle.
 
-          Une fois $H'=h$ confirmé, la déduction se fait via la définition du R1 de « Calcul intégral » ($\int_a^b = F(b)-F(a)$) — mais applique-la à $h$, pas directement à ce qu'on te demande : $x^2e^{-x}=-h(x)$ (l'opposé de $h$), donc l'intégrale cherchée est l'OPPOSÉE de $\int_0^1 h(x)\,dx$, que $H$ calcule.
+          Une fois $H'=h$ confirmé, la déduction se fait via la définition du chapitre 2 de « Calcul intégral » ($\int_a^b = F(b)-F(a)$) — mais applique-la à $h$, pas directement à ce qu'on te demande : $x^2e^{-x}=-h(x)$ (l'opposé de $h$), donc l'intégrale cherchée est l'OPPOSÉE de $\int_0^1 h(x)\,dx$, que $H$ calcule.
         steps:
           - math: 'H''(x) = (2x+2)e^{-x} + (x^{2}+2x+2)(-e^{-x}) = \bigl[(2x+2)-(x^{2}+2x+2)\bigr]e^{-x} = -x^{2}e^{-x} = h(x)'
             note: "Regle du produit sur H, puis simplification : on retrouve exactement h(x)."
           - math: '\int_{0}^{1} x^{2}e^{-x}\,dx = -\int_{0}^{1} h(x)\,dx = -\bigl[H(1)-H(0)\bigr] = H(0)-H(1)'
-            note: "x carre e puissance moins x est l'oppose de h(x) : on change le signe de l'integrale de h, definie par H (rung R1)."
+            note: "x carre e puissance moins x est l'oppose de h(x) : on change le signe de l'integrale de h, definie par H (chapitre 2)."
           - math: 'H(0) = (0+0+2)e^{0} = 2 \qquad H(1) = (1+2+2)e^{-1} = \dfrac{5}{e}'
             note: "Valeurs de H aux deux bornes."
           - math: '\int_{0}^{1} x^{2}e^{-x}\,dx = 2 - \dfrac{5}{e} = \dfrac{2e-5}{e}'
@@ -470,12 +470,12 @@ entries:
         stem: |-
           **(0,75 pt)** A l'aide d'une intégration par parties montrer que $\displaystyle\int_{0}^{1} x e^{-x}\,dx = \dfrac{e - 2}{e}$.
         reasoning: |-
-          $x\,e^{-x}$ est un produit dont aucun des deux facteurs ne se primitive facilement avec l'autre en place — le signal exact du R7 de « Calcul intégral » pour sortir l'intégration par parties. Choisis $u=x$ (à dériver, ça devient $1$ : plus simple) et $v'=e^{-x}$ (à primitiver, immédiat) — jamais l'inverse : dériver $e^{-x}$ ne le simplifierait pas, il resterait une exponentielle.
+          $x\,e^{-x}$ est un produit dont aucun des deux facteurs ne se primitive facilement avec l'autre en place — le signal exact du chapitre 8 de « Calcul intégral » pour sortir l'intégration par parties. Choisis $u=x$ (à dériver, ça devient $1$ : plus simple) et $v'=e^{-x}$ (à primitiver, immédiat) — jamais l'inverse : dériver $e^{-x}$ ne le simplifierait pas, il resterait une exponentielle.
         steps:
           - math: 'u = x,\quad u^{\prime}=1,\qquad v^{\prime}=e^{-x},\quad v=-e^{-x}'
             note: "On derive x (ca devient 1) et on primitive e puissance moins x (ca devient moins e puissance moins x)."
           - math: '\int_{0}^{1} x\,e^{-x}\,dx = \bigl[-x\,e^{-x}\bigr]_{0}^{1} - \int_{0}^{1} \bigl(-e^{-x}\bigr)\,dx = \bigl[-x\,e^{-x}\bigr]_{0}^{1} + \int_{0}^{1} e^{-x}\,dx'
-            note: "Formule de l'integration par parties (rung R7) : terme de bord moins l'integrale de u prime fois v."
+            note: "Formule de l'integration par parties (chapitre R7) : terme de bord moins l'integrale de u prime fois v."
           - math: '\bigl[-x\,e^{-x}\bigr]_{0}^{1} = -1\times e^{-1} - 0 = -\dfrac{1}{e}'
             note: "En 1 : moins e puissance moins 1. En 0 : le terme s'annule (le facteur x est nul)."
           - math: '\int_{0}^{1} e^{-x}\,dx = \bigl[-e^{-x}\bigr]_{0}^{1} = -e^{-1} - (-1) = 1 - \dfrac{1}{e}'
@@ -487,7 +487,7 @@ entries:
         stem: |-
           **(0,75 pt)** Calculer en $cm^{2}$ l'aire du domaine plan limité par $(C)$ et $(D)$ et les droites d'équations $x = 0$ et $x = 1$.
         reasoning: |-
-          Une aire entre deux courbes s'obtient en intégrant la différence DU DESSUS MOINS LE DESSOUS (R8 de « Calcul intégral »), jamais dans un ordre arbitraire. Il faut donc savoir qui est où sur $[0,1]$ : la question 2b l'a établi, $(C)$ est **en dessous** de $(D)$ sur cet intervalle. C'est donc $x-f(x)$ — et non $f(x)-x$, qui donnerait un nombre négatif — qu'il faut intégrer.
+          Une aire entre deux courbes s'obtient en intégrant la différence DU DESSUS MOINS LE DESSOUS (chapitre 9 de « Calcul intégral »), jamais dans un ordre arbitraire. Il faut donc savoir qui est où sur $[0,1]$ : la question 2b l'a établi, $(C)$ est **en dessous** de $(D)$ sur cet intervalle. C'est donc $x-f(x)$ — et non $f(x)-x$, qui donnerait un nombre négatif — qu'il faut intégrer.
 
           Le repère est orthonormé, unité $1$ cm, donc $1$ unité d'aire vaut exactement $1\,\text{cm}^2$ : le résultat de l'intégrale se lit directement en $\text{cm}^2$, sans conversion. Et $x-f(x)$, une fois développé, n'est rien d'autre que la différence des deux intégrales déjà calculées aux questions 6a et 6b — aucun nouveau calcul d'intégrale à faire.
         steps:
@@ -506,7 +506,7 @@ entries:
         stem: |-
           **(0,75 pt)** Montrer que $0 \le u_{n} \le 1$ pour tout $n$ de $\mathbb{N}$ *( on pourra utiliser le résultat de la question II)3)b) )*.
         reasoning: |-
-          La suite est définie par récurrence ($u_{n+1}=f(u_n)$) : la propriété à démontrer se prouve donc par récurrence (rung R1 de « Suites numériques », le mécanisme des dominos), pas par un calcul direct.
+          La suite est définie par récurrence ($u_{n+1}=f(u_n)$) : la propriété à démontrer se prouve donc par récurrence (chapitre chapitre 2 de « Suites numériques », le mécanisme des dominos), pas par un calcul direct.
 
           Initialisation immédiate : $u_0=\frac12\in[0,1]$.
 
@@ -544,9 +544,9 @@ entries:
         stem: |-
           **(0,75 pt)** En déduire que $(u_{n})$ est convergente et déterminer sa limite.
         reasoning: |-
-          Deux étapes distinctes. D'abord la convergence, garantie SANS connaître la valeur : $(u_n)$ est décroissante (III-2) et minorée par $0$ (III-1) — c'est exactement l'hypothèse du théorème de la limite monotone (rung R7 de « Suites numériques »).
+          Deux étapes distinctes. D'abord la convergence, garantie SANS connaître la valeur : $(u_n)$ est décroissante (III-2) et minorée par $0$ (III-1) — c'est exactement l'hypothèse du théorème de la limite monotone (chapitre chapitre 8 de « Suites numériques »).
 
-          Ensuite, trouver la valeur : c'est la méthode du rung R8 pour les suites $u_{n+1}=f(u_n)$. $f$ est continue sur $\mathbb{R}$ (somme et produit de fonctions continues), donc si $u_n\to L$, passer à la limite dans $u_{n+1}=f(u_n)$ donne $L=f(L)$ — $L$ est un **point fixe** de $f$. Résous cette équation : $(L^2-L)e^{-L}+L=L$ se simplifie en $(L^2-L)e^{-L}=0$, et comme $e^{-L}$ n'est jamais nul, il reste $L(L-1)=0$, donc $L=0$ ou $L=1$.
+          Ensuite, trouver la valeur : c'est la méthode du chapitre R8 pour les suites $u_{n+1}=f(u_n)$. $f$ est continue sur $\mathbb{R}$ (somme et produit de fonctions continues), donc si $u_n\to L$, passer à la limite dans $u_{n+1}=f(u_n)$ donne $L=f(L)$ — $L$ est un **point fixe** de $f$. Résous cette équation : $(L^2-L)e^{-L}+L=L$ se simplifie en $(L^2-L)e^{-L}=0$, et comme $e^{-L}$ n'est jamais nul, il reste $L(L-1)=0$, donc $L=0$ ou $L=1$.
 
           Pour trancher entre les deux, réutilise la monotonie : la suite décroît à partir de $u_0=\frac12$, donc **tous** ses termes — et leur limite — restent $\le\frac12$. Comme $\frac12<1$, la valeur $L=1$ est impossible : il reste $L=0$.
         steps:

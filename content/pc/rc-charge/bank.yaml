@@ -292,7 +292,7 @@ entries:
         stem: |-
           **(0,5 pt)** Établir l'équation différentielle vérifiée par $q(t)$ au cours de la charge du condensateur.
         reasoning: |-
-          Même geste qu'en R1 de la leçon, mais avec la charge $q$ comme inconnue plutôt que $u_C$ : on part de la loi des mailles sur la boucle série, $E = u_R + u_C$ (convention récepteur), puis on exprime chaque tension avec la grandeur qui caractérise son dipôle — la loi d'Ohm pour $R$, la définition de la capacité pour $C$ — et le courant avec le débit de charge $i = \dfrac{dq}{dt}$. Tout doit finir en fonction de la seule inconnue $q$, sinon l'équation mélange deux grandeurs et ne se résout pas.
+          Même geste qu'au chapitre 2 de la leçon, mais avec la charge $q$ comme inconnue plutôt que $u_C$ : on part de la loi des mailles sur la boucle série, $E = u_R + u_C$ (convention récepteur), puis on exprime chaque tension avec la grandeur qui caractérise son dipôle — la loi d'Ohm pour $R$, la définition de la capacité pour $C$ — et le courant avec le débit de charge $i = \dfrac{dq}{dt}$. Tout doit finir en fonction de la seule inconnue $q$, sinon l'équation mélange deux grandeurs et ne se résout pas.
         steps:
           - math: 'E = u_R + u_C'
             note: "Loi des mailles sur la boucle série, convention récepteur pour R et C."
@@ -306,7 +306,7 @@ entries:
         stem: |-
           **(0,5 pt)** Trouver, en fonction des paramètres du circuit, les expressions des constantes $A$ et $\alpha$ pour que la solution de cette équation différentielle s'écrive sous la forme $q(t) = A\left(1 - e^{-\alpha t}\right)$.
         reasoning: |-
-          La méthode du physicien, exactement celle de R2 de la leçon : on n'intègre pas par une machinerie, on injecte la forme proposée dans l'équation différentielle et on identifie. Deux morceaux doivent s'équilibrer séparément — le terme constant, seul survivant quand $t$ devient grand (le régime permanent), fixe $A$ ; le terme en exponentielle, qui doit s'annuler à chaque instant, fixe $\alpha$.
+          La méthode du physicien, exactement celle du chapitre 3 de la leçon : on n'intègre pas par une machinerie, on injecte la forme proposée dans l'équation différentielle et on identifie. Deux morceaux doivent s'équilibrer séparément — le terme constant, seul survivant quand $t$ devient grand (le régime permanent), fixe $A$ ; le terme en exponentielle, qui doit s'annuler à chaque instant, fixe $\alpha$.
         steps:
           - math: 'q(t) = A\left(1 - e^{-\alpha t}\right) \implies \frac{dq}{dt} = A\,\alpha\,e^{-\alpha t}'
             note: "Dérivée de la forme proposée, à injecter dans l'équation."
@@ -317,20 +317,20 @@ entries:
           - math: 'R\,A\,\alpha - \frac{A}{C} = 0 \implies \alpha = \frac{1}{RC}'
             note: "Terme exponentiel : il doit s'annuler à chaque instant, ce qui impose alpha."
           - math: '\boxed{A = C\,E \qquad \alpha = \frac{1}{RC} = \frac{1}{\tau}}'
-            note: "alpha est l'inverse de la constante de temps : le groupement RC de R1 reparaît."
+            note: "alpha est l'inverse de la constante de temps : le groupement RC du chapitre 2 reparaît."
       - id: q3
         part: "I — Exploitation graphique de la courbe q(t)"
         stem: |-
           **(0,25 pt)** Déterminer graphiquement la valeur de la charge $Q$ du condensateur quand le régime permanent est établi.
         reasoning: |-
-          En régime permanent, $t \gg \tau$ donc $e^{-\alpha t} \to 0$ et $q \to A = Q$ — le même raisonnement qu'en R2 pour $u_C \to E$. La charge finale se lit donc directement sur le palier horizontal de la courbe, l'asymptote vers laquelle $q(t)$ se stabilise, sans aucun calcul.
+          En régime permanent, $t \gg \tau$ donc $e^{-\alpha t} \to 0$ et $q \to A = Q$ — le même raisonnement qu'au chapitre 3 pour $u_C \to E$. La charge finale se lit donc directement sur le palier horizontal de la courbe, l'asymptote vers laquelle $q(t)$ se stabilise, sans aucun calcul.
 
           $$Q = 100\ \mu\text{C} = 100\times10^{-6}\ \text{C}$$
       - id: q4
         stem: |-
           **(0,25 pt)** Déterminer graphiquement la valeur de la constante de temps $\tau$.
         reasoning: |-
-          C'est la méthode de la tangente à l'origine, vue en R3 : la tangente $(T)$ tracée en $t=0$ coupe l'asymptote horizontale exactement à l'abscisse $t = \tau$ — une propriété exacte de la pente initiale, $A\alpha = A/\tau$. L'énoncé indique que $(T)$ coupe le palier $q = 100\ \mu\text{C}$ vers $t = 1\ \text{ms}$ : on lit $\tau$ directement, sans calcul.
+          C'est la méthode de la tangente à l'origine, vue au chapitre 4 : la tangente $(T)$ tracée en $t=0$ coupe l'asymptote horizontale exactement à l'abscisse $t = \tau$ — une propriété exacte de la pente initiale, $A\alpha = A/\tau$. L'énoncé indique que $(T)$ coupe le palier $q = 100\ \mu\text{C}$ vers $t = 1\ \text{ms}$ : on lit $\tau$ directement, sans calcul.
 
           $$\tau = 1\ \text{ms} = 1\times10^{-3}\ \text{s}$$
       - id: q5
@@ -388,7 +388,7 @@ entries:
         stem: |-
           **(0,5 pt)** Établir l'équation différentielle vérifiée par la tension $u_{C_2}(t)$ au cours de la décharge du condensateur.
         reasoning: |-
-          Même situation que le paragraphe « Et si on décharge ? » de R4 : le générateur est déconnecté, il ne reste que $R$ et $C_2$ en boucle fermée. La loi des mailles perd son second membre — plus de f.é.m. qui pousse — et devient $u_R + u_{C_2} = 0$. On exprime chaque tension comme pendant la charge : $u_R = R\,i$ par la loi d'Ohm, et $i = C_2\dfrac{du_{C_2}}{dt}$ par $i = \dfrac{dq}{dt}$ et $q = C_2 u_{C_2}$ — la même relation courant-tension qu'à la charge, le condensateur ne « sait » pas s'il charge ou décharge.
+          Même situation que le paragraphe « Et si on décharge ? » du chapitre 5 : le générateur est déconnecté, il ne reste que $R$ et $C_2$ en boucle fermée. La loi des mailles perd son second membre — plus de f.é.m. qui pousse — et devient $u_R + u_{C_2} = 0$. On exprime chaque tension comme pendant la charge : $u_R = R\,i$ par la loi d'Ohm, et $i = C_2\dfrac{du_{C_2}}{dt}$ par $i = \dfrac{dq}{dt}$ et $q = C_2 u_{C_2}$ — la même relation courant-tension qu'à la charge, le condensateur ne « sait » pas s'il charge ou décharge.
         steps:
           - math: 'u_R + u_{C_2} = 0'
             note: "Loi des mailles sur la boucle R-C2 seule, générateur déconnecté."
@@ -400,7 +400,7 @@ entries:
         stem: |-
           **(0,5 pt)** La solution de cette équation différentielle est de la forme $u_{C_2}(t) = E\, e^{-t/\tau}$. Trouver l'expression de la constante de temps $\tau$ en fonction de $R$ et $C_2$.
         reasoning: |-
-          Encore le geste de R2 : on injecte la forme proposée dans l'équation et on exige l'égalité à chaque instant. Ici l'équation est homogène, second membre nul, donc il n'y a qu'un seul terme exponentiel à annuler : son coefficient doit être nul quel que soit $t$, ce qui fixe $\tau$ directement.
+          Encore le geste du chapitre 3 : on injecte la forme proposée dans l'équation et on exige l'égalité à chaque instant. Ici l'équation est homogène, second membre nul, donc il n'y a qu'un seul terme exponentiel à annuler : son coefficient doit être nul quel que soit $t$, ce qui fixe $\tau$ directement.
         steps:
           - math: 'u_{C_2}(t) = E\,e^{-t/\tau} \implies \frac{du_{C_2}}{dt} = -\frac{E}{\tau}\,e^{-t/\tau}'
             note: "Dérivée de la forme proposée, à injecter dans l'équation."
@@ -412,7 +412,7 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer de nouveau la valeur de la capacité $C_2$.
         reasoning: |-
-          On lit $\tau$ sur la courbe par la méthode de la tangente à l'origine — la même construction qu'en R3, mais appliquée à une décroissance : la pente à l'origine vaut $-E/\tau$, donc une droite partant de $E$ avec cette pente atteint $0$ après une durée $\tau$. La tangente à l'origine coupe donc l'axe des abscisses exactement en $t = \tau$, et l'énoncé indique que cela se produit vers $t = 4\ \text{ms}$. On remonte ensuite à $C_2$ par $\tau = RC_2$, puisque $R$ est donnée.
+          On lit $\tau$ sur la courbe par la méthode de la tangente à l'origine — la même construction qu'au chapitre 4, mais appliquée à une décroissance : la pente à l'origine vaut $-E/\tau$, donc une droite partant de $E$ avec cette pente atteint $0$ après une durée $\tau$. La tangente à l'origine coupe donc l'axe des abscisses exactement en $t = \tau$, et l'énoncé indique que cela se produit vers $t = 4\ \text{ms}$. On remonte ensuite à $C_2$ par $\tau = RC_2$, puisque $R$ est donnée.
         steps:
           - math: '\tau = 4{,}0\ \text{ms} = 4{,}0\times10^{-3}\ \text{s}'
             note: "Lecture graphique : la tangente a l'origine coupe l'axe des abscisses a t = tau."
@@ -470,17 +470,17 @@ entries:
         stem: |-
           **(0,5 pt)** Quel est l'intérêt de monter des condensateurs en parallèle ?
         reasoning: |-
-          Question de cours sur les condensateurs, hors des rungs de cette leçon : R0–R4 étudient un condensateur **unique** soumis à un échelon de tension, jamais une association de plusieurs condensateurs. En montant deux condensateurs en parallèle sous la même tension $u_{AB}$, les charges qu'ils portent s'additionnent — la capacité équivalente $C_{eq} = C_1 + C_2$ est donc strictement supérieure à celle de chaque condensateur pris isolément.
+          Question de cours sur les condensateurs, hors des chapitres de cette leçon : chapitres 1 à 5 étudient un condensateur **unique** soumis à un échelon de tension, jamais une association de plusieurs condensateurs. En montant deux condensateurs en parallèle sous la même tension $u_{AB}$, les charges qu'ils portent s'additionnent — la capacité équivalente $C_{eq} = C_1 + C_2$ est donc strictement supérieure à celle de chaque condensateur pris isolément.
 
           L'intérêt de l'association en parallèle est d'obtenir, à partir de composants disponibles, une capacité équivalente plus grande que celle de chacun des deux condensateurs pris séparément — donc de stocker davantage de charge sous une même tension.
       - id: q2
         stem: |-
           **(0,75 pt)** En exploitant la courbe de la figure 2, déterminer la valeur de la capacité $C_{eq}$ du condensateur équivalent aux deux condensateurs $(c_1)$ et $(c_2)$.
         reasoning: |-
-          On réutilise la relation rappelée au rung 1 — la charge posée sur les armatures fixe la tension, $q = Cu_C$ — généralisée ici au condensateur équivalent : $q = C_{eq}\,u_{AB}$ à chaque instant, quelle que soit la façon dont le courant $I_0$ les a chargés. Cette relation dit que $q$ est proportionnelle à $u_{AB}$, une droite passant par l'origine, et que son coefficient de proportionnalité **est** $C_{eq}$. Il suffit donc de lire la pente sur le graphe fourni : la droite rejoint exactement le coin $(6\ \text{V}\,;\,60\ \mu\text{C})$ du quadrillage en partant de l'origine.
+          On réutilise la relation rappelée au chapitre 2 — la charge posée sur les armatures fixe la tension, $q = Cu_C$ — généralisée ici au condensateur équivalent : $q = C_{eq}\,u_{AB}$ à chaque instant, quelle que soit la façon dont le courant $I_0$ les a chargés. Cette relation dit que $q$ est proportionnelle à $u_{AB}$, une droite passant par l'origine, et que son coefficient de proportionnalité **est** $C_{eq}$. Il suffit donc de lire la pente sur le graphe fourni : la droite rejoint exactement le coin $(6\ \text{V}\,;\,60\ \mu\text{C})$ du quadrillage en partant de l'origine.
         steps:
           - math: 'q = C_{eq}\,u_{AB}'
-            note: "Definition de la capacite (rung 1), generalisee au condensateur equivalent : q proportionnelle a u, droite par l'origine."
+            note: "Definition de la capacite (chapitre 2), generalisee au condensateur equivalent : q proportionnelle a u, droite par l'origine."
           - math: 'C_{eq} = \frac{q}{u_{AB}} = \frac{60\times10^{-6}}{6}'
             note: "Pente de la droite, lue sur le quadrillage : elle passe exactement par (6 V ; 60 microC)."
           - math: '\boxed{C_{eq} = 10\times10^{-6}\ \text{F} = 10\ \mu\text{F}}'
@@ -489,10 +489,10 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire la valeur de la capacité $C_2$.
         reasoning: |-
-          Les deux condensateurs $(c_1)$ et $(c_2)$ sont montés en parallèle (figure 1) : pour cette association, les charges s'additionnent à tension commune, $q = q_1 + q_2 = C_1u_{AB} + C_2u_{AB}$, donc les capacités s'additionnent, $C_{eq} = C_1 + C_2$ — un résultat du cours sur les condensateurs, hors des rungs de cette leçon (qui ne traitent qu'un condensateur unique). On isole $C_2$, avec $C_{eq}$ tout juste lu (question 2) et $C_1$ donné par l'énoncé.
+          Les deux condensateurs $(c_1)$ et $(c_2)$ sont montés en parallèle (figure 1) : pour cette association, les charges s'additionnent à tension commune, $q = q_1 + q_2 = C_1u_{AB} + C_2u_{AB}$, donc les capacités s'additionnent, $C_{eq} = C_1 + C_2$ — un résultat du cours sur les condensateurs, hors des chapitres de cette leçon (qui ne traitent qu'un condensateur unique). On isole $C_2$, avec $C_{eq}$ tout juste lu (question 2) et $C_1$ donné par l'énoncé.
         steps:
           - math: 'C_{eq} = C_1 + C_2'
-            note: "Association en parallele : les capacites s'additionnent (regle du cours, hors rungs de cette lecon)."
+            note: "Association en parallele : les capacites s'additionnent (regle du cours, hors chapitres de cette lecon)."
           - math: 'C_2 = C_{eq} - C_1 = 10 - 7{,}5'
             note: "On isole C2, avec Ceq lu a la question 2 et C1 = 7,5 microF donne par l'enonce."
           - math: '\boxed{C_2 = 2{,}5\ \mu\text{F}}'
@@ -541,14 +541,14 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que l'équation différentielle vérifiée par la tension $u_c(t)$ s'écrit sous la forme : $\dfrac{du_c}{dt} = -\dfrac{1}{RC}u_c + \dfrac{E}{RC}$.
         reasoning: |-
-          Même geste qu'en R1 de la leçon, avec les mêmes notations : loi des mailles sur la boucle série, $E = u_R + u_C$ en convention récepteur ; $u_R = Ri$ par la loi d'Ohm ; puis $i = C\dfrac{du_c}{dt}$, obtenu de $i = \dfrac{dq}{dt}$ et $q = Cu_c$ — exactement les deux relations rappelées au rung 1. On substitue, on isole la dérivée en divisant toute l'équation par $RC$ (l'étape que R1 fait pour retrouver $\dfrac{du_C}{dt} = \dfrac{E-u_C}{RC}$), puis on sépare le second membre en deux termes pour obtenir exactement la forme demandée ici.
+          Même geste qu'au chapitre 2 de la leçon, avec les mêmes notations : loi des mailles sur la boucle série, $E = u_R + u_C$ en convention récepteur ; $u_R = Ri$ par la loi d'Ohm ; puis $i = C\dfrac{du_c}{dt}$, obtenu de $i = \dfrac{dq}{dt}$ et $q = Cu_c$ — exactement les deux relations rappelées au chapitre 2. On substitue, on isole la dérivée en divisant toute l'équation par $RC$ (l'étape que le chapitre 2 fait pour retrouver $\dfrac{du_C}{dt} = \dfrac{E-u_C}{RC}$), puis on sépare le second membre en deux termes pour obtenir exactement la forme demandée ici.
         steps:
           - math: 'E = u_R + u_c'
-            note: "Loi des mailles sur la boucle serie, convention recepteur (rung 1)."
+            note: "Loi des mailles sur la boucle serie, convention recepteur (chapitre 2)."
           - math: 'u_R = R\,i = R\,C\frac{du_c}{dt}'
-            note: "Loi d'Ohm, avec i = C du_c/dt (de i = dq/dt et q = C u_c, rung 1)."
+            note: "Loi d'Ohm, avec i = C du_c/dt (de i = dq/dt et q = C u_c, chapitre 2)."
           - math: 'RC\frac{du_c}{dt} + u_c = E'
-            note: "Meme equation qu'au rung 1, ici en notation u_c."
+            note: "Meme equation qu'au chapitre 2, ici en notation u_c."
           - math: '\boxed{\frac{du_c}{dt} = -\frac{1}{RC}\,u_c + \frac{E}{RC}}'
             note: "On divise par RC et on separe les deux termes du second membre : forme demandee."
       - id: q2
@@ -556,12 +556,12 @@ entries:
         stem: |-
           **(0,5 pt)** En exploitant la courbe de la figure 2, montrer que la capacité du condensateur est : $C = 12\ \mu\text{F}$.
         reasoning: |-
-          Nouvelle lecture graphique, à ponter avec la question précédente : la leçon ne trace jamais $\dfrac{du_C}{dt}$ en fonction de $u_C$ elle-même — ses courbes sont $q(t)$, $u_C(t)$ ou $i(t)$ contre le temps, lues par la tangente à l'origine ou la méthode des $63\ \%$ (R3). Mais l'équation établie en question 1 EST la droite qu'on regarde ici : $\dfrac{du_c}{dt} = -\dfrac{1}{RC}u_c + \dfrac{E}{RC}$ est affine en $u_c$, de pente $-\dfrac{1}{RC}$ et d'ordonnée à l'origine $\dfrac{E}{RC}$. Deux lectures suffisent : à $u_c = 0$ (ordonnée à l'origine), on lit $\dfrac{E}{RC} = 1000\ \text{V.s}^{-1}$ ; là où la droite coupe l'axe des abscisses ($\dfrac{du_c}{dt}=0$), on lit directement $u_c = E = 12\ \text{V}$ — c'est le régime permanent, retrouvé ici par lecture graphique plutôt que par la limite $t\to\infty$ vue en R2. Une fois $E$ connu, on combine les deux lectures pour remonter à $RC$, puis à $C$ puisque $R$ est donnée.
+          Nouvelle lecture graphique, à ponter avec la question précédente : la leçon ne trace jamais $\dfrac{du_C}{dt}$ en fonction de $u_C$ elle-même — ses courbes sont $q(t)$, $u_C(t)$ ou $i(t)$ contre le temps, lues par la tangente à l'origine ou la méthode des $63\ \%$ (chapitre 4). Mais l'équation établie en question 1 EST la droite qu'on regarde ici : $\dfrac{du_c}{dt} = -\dfrac{1}{RC}u_c + \dfrac{E}{RC}$ est affine en $u_c$, de pente $-\dfrac{1}{RC}$ et d'ordonnée à l'origine $\dfrac{E}{RC}$. Deux lectures suffisent : à $u_c = 0$ (ordonnée à l'origine), on lit $\dfrac{E}{RC} = 1000\ \text{V.s}^{-1}$ ; là où la droite coupe l'axe des abscisses ($\dfrac{du_c}{dt}=0$), on lit directement $u_c = E = 12\ \text{V}$ — c'est le régime permanent, retrouvé ici par lecture graphique plutôt que par la limite $t\to\infty$ vue au chapitre 3. Une fois $E$ connu, on combine les deux lectures pour remonter à $RC$, puis à $C$ puisque $R$ est donnée.
         steps:
           - math: 'u_c = 0 \implies \frac{du_c}{dt} = \frac{E}{RC} = 1000\ \text{V.s}^{-1}'
             note: "Ordonnee a l'origine de la droite (figure 2) : lecture directe."
           - math: '\frac{du_c}{dt} = 0 \implies u_c = E = 12\ \text{V}'
-            note: "Abscisse ou la droite coupe l'axe : regime permanent, u_c = E (rung 2), retrouve ici par lecture graphique."
+            note: "Abscisse ou la droite coupe l'axe : regime permanent, u_c = E (chapitre 3), retrouve ici par lecture graphique."
           - math: 'RC = \frac{E}{1000} = \frac{12}{1000} = 1{,}2\times10^{-2}\ \text{s}'
             note: "On combine les deux lectures : E/(RC) = 1000 et E = 12 donnent RC."
           - math: 'C = \frac{RC}{R} = \frac{1{,}2\times10^{-2}}{10^{3}}'
@@ -621,13 +621,13 @@ entries:
         stem: |-
           (0,5 pt) Montrer que la valeur de $R_1$ est : $R_1 = 120\ \Omega$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** On demande une résistance, et aucun ohmmètre n'apparaît nulle part : la seule information disponible est la courbe $i(t)$. Il faut donc trouver l'instant où le circuit se laisse lire le plus simplement — et cet instant, c'est $t = 0$. Le condensateur est initialement déchargé, donc à la fermeture il ne s'oppose encore à rien : toute la force électromotrice tombe sur le conducteur ohmique. C'est le mécanisme du rung 1 de la leçon, regardé à son tout premier instant.
+          **Ce qu'on cherche et pourquoi ce geste.** On demande une résistance, et aucun ohmmètre n'apparaît nulle part : la seule information disponible est la courbe $i(t)$. Il faut donc trouver l'instant où le circuit se laisse lire le plus simplement — et cet instant, c'est $t = 0$. Le condensateur est initialement déchargé, donc à la fermeture il ne s'oppose encore à rien : toute la force électromotrice tombe sur le conducteur ohmique. C'est le mécanisme du chapitre 2 de la leçon, regardé à son tout premier instant.
 
           Loi des mailles sur la boucle série, en convention récepteur :
 
           $$E = u_R + u_C = R_1\,i + u_C$$
 
-          À $t = 0^+$, le condensateur est déchargé et sa tension est continue (rung 2) : $u_C(0^+) = u_C(0^-) = 0$. Il reste :
+          À $t = 0^+$, le condensateur est déchargé et sa tension est continue (chapitre 3) : $u_C(0^+) = u_C(0^-) = 0$. Il reste :
 
           $$E = R_1\,i(0^+) \quad\Longrightarrow\quad i(0^+) = \frac{E}{R_1} = I_0$$
 
@@ -643,7 +643,7 @@ entries:
         stem: |-
           (0,5 pt) Montrer que l'équation différentielle vérifiée par l'intensité du courant s'écrit sous la forme : $i + R_1 C\,\dfrac{di}{dt} = 0$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** La leçon établit toujours l'équation différentielle avec $u_C$ pour inconnue (rung 1). Ici l'inconnue est le COURANT, et la courbe fournie est celle de $i(t)$ : il faut donc une équation en $i$. Le geste qui y mène n'est pas dans les rungs, mais il est court et il vaut d'être ajouté à ton répertoire — **on dérive la loi des mailles par rapport au temps**. C'est légitime parce que la maille est vraie à CHAQUE instant, pas seulement à un instant : deux fonctions du temps égales ont des dérivées égales.
+          **Ce qu'on cherche et pourquoi ce geste.** La leçon établit toujours l'équation différentielle avec $u_C$ pour inconnue (chapitre 2). Ici l'inconnue est le COURANT, et la courbe fournie est celle de $i(t)$ : il faut donc une équation en $i$. Le geste qui y mène n'est pas dans les chapitres, mais il est court et il vaut d'être ajouté à ton répertoire — **on dérive la loi des mailles par rapport au temps**. C'est légitime parce que la maille est vraie à CHAQUE instant, pas seulement à un instant : deux fonctions du temps égales ont des dérivées égales.
 
           On repart de la maille, avec $u_R = R_1 i$ (loi d'Ohm) :
 
@@ -653,7 +653,7 @@ entries:
 
           $$0 = R_1\,\frac{di}{dt} + \frac{du_C}{dt}$$
 
-          Reste à exprimer $\dfrac{du_C}{dt}$ avec le courant. Les deux relations du rung 1 le donnent : $i = \dfrac{dq}{dt}$ et $q = C\,u_C$, donc $i = C\dfrac{du_C}{dt}$, c'est-à-dire
+          Reste à exprimer $\dfrac{du_C}{dt}$ avec le courant. Les deux relations du chapitre 2 le donnent : $i = \dfrac{dq}{dt}$ et $q = C\,u_C$, donc $i = C\dfrac{du_C}{dt}$, c'est-à-dire
 
           $$\frac{du_C}{dt} = \frac{i}{C}$$
 
@@ -671,7 +671,7 @@ entries:
         stem: |-
           (0,5 pt) Déterminer l'expression de la constante de temps $\tau$ pour que la fonction $i = I_0.e^{-\frac{t}{\tau}}$ soit solution de cette équation différentielle.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** C'est exactement la méthode du physicien du rung 2 : on n'intègre pas l'équation par une machinerie, on injecte la forme proposée dedans et on regarde à quelle condition elle passe. La condition qui tombe EST l'expression de $\tau$ — elle n'est pas à mémoriser, elle se récolte.
+          **Ce qu'on cherche et pourquoi ce geste.** C'est exactement la méthode du physicien du chapitre 3 : on n'intègre pas l'équation par une machinerie, on injecte la forme proposée dedans et on regarde à quelle condition elle passe. La condition qui tombe EST l'expression de $\tau$ — elle n'est pas à mémoriser, elle se récolte.
 
           On dérive la forme proposée :
 
@@ -697,7 +697,7 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** La question précédente a donné $\tau = R_1 C$, et $R_1$ est connue depuis la question 1 : il ne manque donc que $\tau$ pour tenir $C$. Et $\tau$ se lit sur la figure, par la tangente à l'origine.
 
-          **Le pont à faire.** Le rung 3 énonce la méthode de la tangente sur la courbe CROISSANTE $u_C(t)$ : la tangente en $t=0$ coupe l'asymptote horizontale $u_C = E$ en $t = \tau$. Ici la courbe est décroissante — mais c'est la même propriété, avec la même démonstration en une ligne. La pente à l'origine vaut
+          **Le pont à faire.** Le chapitre 4 énonce la méthode de la tangente sur la courbe CROISSANTE $u_C(t)$ : la tangente en $t=0$ coupe l'asymptote horizontale $u_C = E$ en $t = \tau$. Ici la courbe est décroissante — mais c'est la même propriété, avec la même démonstration en une ligne. La pente à l'origine vaut
 
           $$\frac{di}{dt}(0) = -\frac{I_0}{\tau}$$
 
@@ -763,14 +763,14 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que l'équation différentielle vérifiée par la tension $u_C(t)$ s'écrit sous la forme : $\dfrac{du_C}{dt} + \dfrac{1}{RC}u_C = \dfrac{E}{RC}$.
         reasoning: |-
-          Même geste qu'en R1 de la leçon : loi des mailles sur la boucle série, $E = u_R + u_C$ en convention récepteur ; $u_R = Ri$ par la loi d'Ohm ; puis $i = C\dfrac{du_C}{dt}$, obtenu de $i = \dfrac{dq}{dt}$ et $q = Cu_C$ — les deux relations rappelées au rung 1. On substitue, on obtient $RC\dfrac{du_C}{dt} + u_C = E$ — exactement l'équation boxée en R1 — puis on divise toute l'équation par $RC$ pour isoler la dérivée, ce qui donne la forme demandée ici.
+          Même geste qu'au chapitre 2 de la leçon : loi des mailles sur la boucle série, $E = u_R + u_C$ en convention récepteur ; $u_R = Ri$ par la loi d'Ohm ; puis $i = C\dfrac{du_C}{dt}$, obtenu de $i = \dfrac{dq}{dt}$ et $q = Cu_C$ — les deux relations rappelées au chapitre 2. On substitue, on obtient $RC\dfrac{du_C}{dt} + u_C = E$ — exactement l'équation boxée au chapitre 2 — puis on divise toute l'équation par $RC$ pour isoler la dérivée, ce qui donne la forme demandée ici.
         steps:
           - math: 'E = u_R + u_C'
-            note: "Loi des mailles sur la boucle série, convention récepteur (rung 1)."
+            note: "Loi des mailles sur la boucle série, convention récepteur (chapitre 2)."
           - math: 'u_R = R\,i = R\,C\frac{du_C}{dt}'
-            note: "Loi d'Ohm, avec i = C du_C/dt (de i = dq/dt et q = C u_C, rung 1)."
+            note: "Loi d'Ohm, avec i = C du_C/dt (de i = dq/dt et q = C u_C, chapitre 2)."
           - math: 'RC\frac{du_C}{dt} + u_C = E'
-            note: "Même équation qu'en R1 de la leçon."
+            note: "Même équation qu'au chapitre 2 de la leçon."
           - math: '\boxed{\frac{du_C}{dt} + \frac{1}{RC}\,u_C = \frac{E}{RC}}'
             note: "On divise par RC : forme demandée."
       - id: q2
@@ -778,19 +778,19 @@ entries:
         stem: |-
           **(0,5 pt)** La solution de cette équation différentielle est de la forme $u_C(t) = E\left(1 - e^{-t/RC}\right)$. Établir l'expression de l'intensité du courant $i(t)$ en fonction de $E$, $R$, $C$ et $t$.
         reasoning: |-
-          C'est exactement le calcul mené en R2 de la leçon : le courant se déduit de $u_C$ sans nouvelle hypothèse, par $i = C\dfrac{du_C}{dt}$. On dérive la forme donnée, on remplace, et le $C$ se simplifie avec le $C$ du dénominateur — on retrouve le résultat déjà établi en R2, ici avec $RC$ à la place de $\tau$ (puisque $\tau = RC$).
+          C'est exactement le calcul mené au chapitre 3 de la leçon : le courant se déduit de $u_C$ sans nouvelle hypothèse, par $i = C\dfrac{du_C}{dt}$. On dérive la forme donnée, on remplace, et le $C$ se simplifie avec le $C$ du dénominateur — on retrouve le résultat déjà établi au chapitre 3, ici avec $RC$ à la place de $\tau$ (puisque $\tau = RC$).
         steps:
           - math: '\frac{du_C}{dt} = \frac{E}{RC}\,e^{-t/RC}'
             note: "Dérivée de la forme donnée."
           - math: 'i(t) = C\frac{du_C}{dt} = C\cdot\frac{E}{RC}\,e^{-t/RC}'
-            note: "i = C du_C/dt (rung 1) ; on substitue la dérivée."
+            note: "i = C du_C/dt (chapitre 2) ; on substitue la dérivée."
           - math: '\boxed{i(t) = \frac{E}{R}\,e^{-t/RC}}'
-            note: "Le C se simplifie : même résultat qu'en R2 de la leçon."
+            note: "Le C se simplifie : même résultat qu'au chapitre 3 de la leçon."
       - id: q3
         stem: |-
           **(0,5 pt)** En exploitant les courbes de la figure 2, déterminer la valeur de la résistance $R$.
         reasoning: |-
-          L'expression établie à la question précédente donne, à $t=0$ (où $e^0=1$), $i(0^+) = \dfrac{E}{R}$ — le courant maximal du mécanisme de R1, toute la tension $E$ tombant d'abord sur la résistance. Deux lectures graphiques suffisent : $E$ se lit sur le palier de $(C_1)$, et $i(0^+)$ se lit sur la valeur de départ de $(C_2)$. On isole ensuite $R$.
+          L'expression établie à la question précédente donne, à $t=0$ (où $e^0=1$), $i(0^+) = \dfrac{E}{R}$ — le courant maximal du mécanisme du chapitre 2, toute la tension $E$ tombant d'abord sur la résistance. Deux lectures graphiques suffisent : $E$ se lit sur le palier de $(C_1)$, et $i(0^+)$ se lit sur la valeur de départ de $(C_2)$. On isole ensuite $R$.
         steps:
           - math: 'i(0^+) = \frac{E}{R}'
             note: "À t=0, l'exponentielle vaut 1 (question précédente)."
@@ -804,10 +804,10 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que la capacité $C$ du condensateur est : $C = 50\ \mu\text{F}$.
         reasoning: |-
-          C'est la méthode de la tangente à l'origine, vue en R3 : la droite $(T)$, tangente à $(C_1)$ en $t=0$, coupe l'asymptote horizontale exactement à l'abscisse $t = \tau$. L'énoncé indique que $(T)$ coupe le palier à $t = 50\ \text{ms}$ : on lit $\tau$ directement. On remonte ensuite à $C$ par $\tau = RC$, avec $R$ tout juste trouvée (question précédente).
+          C'est la méthode de la tangente à l'origine, vue au chapitre 4 : la droite $(T)$, tangente à $(C_1)$ en $t=0$, coupe l'asymptote horizontale exactement à l'abscisse $t = \tau$. L'énoncé indique que $(T)$ coupe le palier à $t = 50\ \text{ms}$ : on lit $\tau$ directement. On remonte ensuite à $C$ par $\tau = RC$, avec $R$ tout juste trouvée (question précédente).
         steps:
           - math: '\tau = RC = 50\ \text{ms} = 50\times10^{-3}\ \text{s}'
-            note: "Lecture graphique : la tangente (T) coupe le palier de (C1) en t = 50 ms (rung 3)."
+            note: "Lecture graphique : la tangente (T) coupe le palier de (C1) en t = 50 ms (chapitre 4)."
           - math: 'C = \frac{\tau}{R} = \frac{50\times10^{-3}}{1000}'
             note: "On inverse tau = RC ; R = 1000 ohms vient de la question précédente."
           - math: '\boxed{C = 5{,}0\times10^{-5}\ \text{F} = 50\ \mu\text{F}}'
@@ -881,9 +881,9 @@ entries:
         stem: |-
           **1-1.** (0,5 pt) Établir l'équation différentielle vérifiée par la charge $q(t)$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** On veut une équation qui ne contienne qu'UNE seule fonction inconnue du temps. Le circuit, lui, en offre trois à la fois — $q$, $u_C$ et $i$ — reliées entre elles. Le geste est donc toujours le même : écrire la loi des mailles, puis remplacer chaque tension par ce que son dipôle impose, jusqu'à ce que seule $q$ subsiste. C'est le mécanisme du rung 1 de la leçon, à ceci près que l'inconnue demandée ici est la CHARGE et non $u_C$.
+          **Ce qu'on cherche et pourquoi ce geste.** On veut une équation qui ne contienne qu'UNE seule fonction inconnue du temps. Le circuit, lui, en offre trois à la fois — $q$, $u_C$ et $i$ — reliées entre elles. Le geste est donc toujours le même : écrire la loi des mailles, puis remplacer chaque tension par ce que son dipôle impose, jusqu'à ce que seule $q$ subsiste. C'est le mécanisme du chapitre 2 de la leçon, à ceci près que l'inconnue demandée ici est la CHARGE et non $u_C$.
 
-          **Le pont à faire.** Le rung 1 établit l'équation en $u_C$ ; le passage à $q$ ne coûte qu'une ligne, avec les deux relations que ce même rung rappelle : $i = \dfrac{dq}{dt}$ (le courant est le débit de charge) et $q = C\,u_C$ (définition de la capacité), d'où $u_C = \dfrac{q}{C}$.
+          **Le pont à faire.** Le chapitre 2 établit l'équation en $u_C$ ; le passage à $q$ ne coûte qu'une ligne, avec les deux relations que ce même chapitre rappelle : $i = \dfrac{dq}{dt}$ (le courant est le débit de charge) et $q = C\,u_C$ (définition de la capacité), d'où $u_C = \dfrac{q}{C}$.
 
           Interrupteur en position (1) : la maille active est celle du générateur, de $R$ et de $C$. En convention récepteur pour $R$ et pour $C$ :
 
@@ -911,7 +911,7 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** Le mot « vérifier » est un ordre : la valeur $C_0 = 10\ \mu\text{F}$ ne doit surtout pas être réutilisée comme donnée, il faut la RETROUVER par un chemin indépendant. Or la seule grandeur du circuit déjà connue est $R = 35\ \Omega$, et la seule grandeur mesurable sur la figure 2 qui contienne la capacité est la constante de temps $\tau = RC$. Le chemin est donc forcé : lire $\tau$ sur le graphe, puis en déduire $C$.
 
-          **Le pont à faire.** Le rung 3 démontre la méthode de la tangente à l'origine sur la courbe $u_C(t)$, qui coupe l'asymptote $u_C = E$ en $t = \tau$. Ici la courbe est $q(t)$ — la démonstration se refait en une ligne, à l'identique. La solution est $q(t) = Q\left(1 - e^{-t/\tau}\right)$ avec $Q$ la charge du palier, donc la pente à l'origine vaut
+          **Le pont à faire.** Le chapitre 4 démontre la méthode de la tangente à l'origine sur la courbe $u_C(t)$, qui coupe l'asymptote $u_C = E$ en $t = \tau$. Ici la courbe est $q(t)$ — la démonstration se refait en une ligne, à l'identique. La solution est $q(t) = Q\left(1 - e^{-t/\tau}\right)$ avec $Q$ la charge du palier, donc la pente à l'origine vaut
 
           $$\frac{dq}{dt}(0) = \frac{Q}{\tau}$$
 
@@ -931,7 +931,7 @@ entries:
 
           La valeur annoncée est retrouvée : la lecture $\tau = 0{,}35\ \text{ms}$ était donc juste.
 
-          **Le contrôle qui rassure.** Deux recoupements gratuits sur la même figure. D'abord la méthode des 63 % (rung 3) : à $t = \tau$ la courbe doit passer par $0{,}632\,Q = 0{,}632\times120 \approx 75{,}8\ \mu\text{C}$, et c'est bien la hauteur du tracé à $0{,}35\ \text{ms}$. Ensuite la fin de charge : le régime permanent est atteint vers $5\tau = 5\times0{,}35 = 1{,}75\ \text{ms}$, et la courbe rejoint effectivement le palier vers $t \approx 1{,}8\ \text{ms}$. Trois lectures indépendantes qui se confirment.
+          **Le contrôle qui rassure.** Deux recoupements gratuits sur la même figure. D'abord la méthode des 63 % (chapitre 4) : à $t = \tau$ la courbe doit passer par $0{,}632\,Q = 0{,}632\times120 \approx 75{,}8\ \mu\text{C}$, et c'est bien la hauteur du tracé à $0{,}35\ \text{ms}$. Ensuite la fin de charge : le régime permanent est atteint vers $5\tau = 5\times0{,}35 = 1{,}75\ \text{ms}$, et la courbe rejoint effectivement le palier vers $t \approx 1{,}8\ \text{ms}$. Trois lectures indépendantes qui se confirment.
 
           **Le piège de cette question.** Il est dans le sous-quadrillage, et il double la réponse. Une division majeure de l'axe des temps vaut $0{,}5\ \text{ms}$ et se subdivise en **dix** petits carreaux, donc un petit carreau vaut $0{,}05\ \text{ms}$ : l'intersection tombe sur le septième petit trait, soit $7\times0{,}05 = 0{,}35\ \text{ms}$. Compter en supposant cinq carreaux par division — le réflexe naturel quand le sous-quadrillage est fin et pâle — donne $0{,}70\ \text{ms}$ et, par $C = \tau/R$, une capacité de $20\ \mu\text{F}$, le double. Avant de compter des carreaux, compte-les entre deux traits CHIFFRÉS. Piège jumeau : c'est la TANGENTE qui coupe le palier, pas la courbe — la courbe, elle, ne l'atteint jamais vraiment, elle s'y confond seulement au bout d'environ $5\tau$.
       - id: q3
@@ -939,7 +939,7 @@ entries:
         stem: |-
           **1-3.** (0,5 pt) Déterminer la valeur de $E_e$ l'énergie électrique emmagasinée dans le condensateur en régime permanent.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Le rung 4 donne la formule : $E_C = \dfrac{1}{2}C\,u_C^2$, et en régime permanent $u_C$ vaut $E$. Mais attention — l'énoncé n'a jamais donné de valeur numérique à $E$ ; il dit seulement « un générateur de tension de force électromotrice $E$ ». Il y a donc une étape avant l'application numérique : aller chercher $E$ sur la figure.
+          **Ce qu'on cherche et pourquoi ce geste.** Le chapitre 5 donne la formule : $E_C = \dfrac{1}{2}C\,u_C^2$, et en régime permanent $u_C$ vaut $E$. Mais attention — l'énoncé n'a jamais donné de valeur numérique à $E$ ; il dit seulement « un générateur de tension de force électromotrice $E$ ». Il y a donc une étape avant l'application numérique : aller chercher $E$ sur la figure.
 
           **Trouver $E$.** En régime permanent le courant est nul (le condensateur est plein, plus rien ne circule), donc $u_R = R\,i = 0$ et la maille se réduit à $u_C = E$. Or la charge du palier et cette tension sont liées par $q = C\,u_C$, avec le palier lu sur la figure 2 :
 
@@ -947,7 +947,7 @@ entries:
 
           $$E = u_C(\infty) = \frac{Q}{C_0} = \frac{120\times10^{-6}}{10\times10^{-6}} = 12\ \text{V}$$
 
-          **L'énergie.** On applique la formule du rung 4 avec $u_C = E = 12\ \text{V}$ et $C_0 = 10\times10^{-6}\ \text{F}$ :
+          **L'énergie.** On applique la formule du chapitre 5 avec $u_C = E = 12\ \text{V}$ et $C_0 = 10\times10^{-6}\ \text{F}$ :
 
           $$E_e = \frac{1}{2}\,C_0\,E^2 = \frac{1}{2}\times 10\times10^{-6}\times 12^2 = \frac{1}{2}\times 10^{-5}\times 144$$
 
@@ -959,7 +959,7 @@ entries:
 
           Même valeur par un chemin qui n'utilise pas $E$ : le résultat est verrouillé.
 
-          **Le piège de cette question.** Il porte un nom — confondre l'énergie EMMAGASINÉE avec l'énergie FOURNIE. Le générateur a débité la charge $Q$ sous la tension constante $E$, donc il a fourni $W = Q\,E = 120\times10^{-6}\times12 = 1{,}44\times10^{-3}\ \text{J}$, exactement le DOUBLE de $E_e$. L'autre moitié n'a pas disparu : elle a été dissipée par effet Joule dans $R$ pendant toute la charge (rung 4). Répondre $1{,}44\ \text{mJ}$, c'est oublier le facteur $\dfrac{1}{2}$ — et ce facteur n'est pas une décoration, il est la moitié perdue en chaleur. Piège jumeau, purement numérique : le carré porte sur la tension seule, pas sur la capacité ; garder $C$ en microfarads en croyant que « les µ se compensent » donne $7{,}2\times10^{2}$ au lieu de $7{,}2\times10^{-4}$. Convertis en farads avant de multiplier.
+          **Le piège de cette question.** Il porte un nom — confondre l'énergie EMMAGASINÉE avec l'énergie FOURNIE. Le générateur a débité la charge $Q$ sous la tension constante $E$, donc il a fourni $W = Q\,E = 120\times10^{-6}\times12 = 1{,}44\times10^{-3}\ \text{J}$, exactement le DOUBLE de $E_e$. L'autre moitié n'a pas disparu : elle a été dissipée par effet Joule dans $R$ pendant toute la charge (chapitre 5). Répondre $1{,}44\ \text{mJ}$, c'est oublier le facteur $\dfrac{1}{2}$ — et ce facteur n'est pas une décoration, il est la moitié perdue en chaleur. Piège jumeau, purement numérique : le carré porte sur la tension seule, pas sur la capacité ; garder $C$ en microfarads en croyant que « les µ se compensent » donne $7{,}2\times10^{2}$ au lieu de $7{,}2\times10^{-4}$. Convertis en farads avant de multiplier.
 
   # ── bk-2024-r-x4 — 2024 R, Exercice 4 (partie 1) : échelon RC lu sur u_R(t), tangente à l'origine ──
   # FLAG DE JUMELAGE avec bk-2021-r-x4 (2021 R) — voir la note éditoriale en
@@ -1030,9 +1030,9 @@ entries:
         stem: |-
           **1-1-** (0,5 pt) En utilisant la loi d'additivité des tensions, montrer que l'équation différentielle vérifiée par la tension $u_R(t)$ s'écrit sous la forme : $\dfrac{du_R(t)}{dt} + \dfrac{1}{RC}u_R(t) = 0$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** On veut une équation qui ne contienne qu'UNE seule fonction inconnue du temps. Le circuit en offre trois à la fois — $u_C$, $u_R$ et $i$ — reliées entre elles. C'est le mécanisme du rung 1 de la leçon, à ceci près que l'inconnue demandée ici n'est ni $u_C$ ni la charge : c'est la tension aux bornes du CONDUCTEUR OHMIQUE, celle que le système d'acquisition a réellement enregistrée.
+          **Ce qu'on cherche et pourquoi ce geste.** On veut une équation qui ne contienne qu'UNE seule fonction inconnue du temps. Le circuit en offre trois à la fois — $u_C$, $u_R$ et $i$ — reliées entre elles. C'est le mécanisme du chapitre 2 de la leçon, à ceci près que l'inconnue demandée ici n'est ni $u_C$ ni la charge : c'est la tension aux bornes du CONDUCTEUR OHMIQUE, celle que le système d'acquisition a réellement enregistrée.
 
-          **Le pont à faire.** Le rung 1 n'établit l'équation qu'en $u_C$, et il l'obtient en substituant directement dans la maille. Ici la substitution directe ne suffit pas : $u_C$ ne s'exprime pas avec $u_R$ sans passer par le temps. Le geste qui débloque est court et il vaut d'être ajouté à ton répertoire — **on dérive la loi des mailles par rapport au temps**. C'est légitime parce que la maille est vraie à CHAQUE instant, pas seulement à un instant : deux fonctions du temps égales ont des dérivées égales.
+          **Le pont à faire.** Le chapitre 2 n'établit l'équation qu'en $u_C$, et il l'obtient en substituant directement dans la maille. Ici la substitution directe ne suffit pas : $u_C$ ne s'exprime pas avec $u_R$ sans passer par le temps. Le geste qui débloque est court et il vaut d'être ajouté à ton répertoire — **on dérive la loi des mailles par rapport au temps**. C'est légitime parce que la maille est vraie à CHAQUE instant, pas seulement à un instant : deux fonctions du temps égales ont des dérivées égales.
 
           Interrupteur en position (1) : la maille active est celle du générateur, de $R$ et de $C$. Loi d'additivité des tensions, en convention récepteur :
 
@@ -1042,7 +1042,7 @@ entries:
 
           $$0 = \frac{du_R}{dt} + \frac{du_C}{dt}$$
 
-          Reste à exprimer $\dfrac{du_C}{dt}$ avec $u_R$. Les deux relations du rung 1 le donnent : $i = \dfrac{dq}{dt}$ et $q = C\,u_C$, donc $i = C\dfrac{du_C}{dt}$, c'est-à-dire
+          Reste à exprimer $\dfrac{du_C}{dt}$ avec $u_R$. Les deux relations du chapitre 2 le donnent : $i = \dfrac{dq}{dt}$ et $q = C\,u_C$, donc $i = C\dfrac{du_C}{dt}$, c'est-à-dire
 
           $$\frac{du_C}{dt} = \frac{i}{C}$$
 
@@ -1056,7 +1056,7 @@ entries:
 
           **Le contrôle qui rassure.** Le même résultat s'obtient sans jamais dériver la maille, par un chemin entièrement différent : de $E = u_R + u_C$ on tire $u_C = E - u_R$, donc $\dfrac{du_C}{dt} = -\dfrac{du_R}{dt}$ ; alors $u_R = R\,i = R\,C\dfrac{du_C}{dt} = -RC\dfrac{du_R}{dt}$, qui se range exactement en $\dfrac{du_R}{dt} + \dfrac{u_R}{RC} = 0$. Deux routes indépendantes, une seule équation : elle est juste.
 
-          **Le piège de cette question.** Il est dans le signe, et il est invisible si on va vite. Beaucoup écrivent $i = C\dfrac{du_R}{dt}$ « par analogie », alors que la relation du rung 1 porte sur la tension du CONDENSATEUR, $i = C\dfrac{du_C}{dt}$, et que $u_C$ et $u_R$ varient en sens opposés puisque leur somme est constante. Cette confusion donne $\dfrac{du_R}{dt} - \dfrac{u_R}{RC} = 0$, dont la solution est une exponentielle CROISSANTE $e^{+t/RC}$ — une tension qui exploserait, alors que la figure 2 montre une décroissance. Piège jumeau : s'étonner de la disparition de $E$ et le rajouter au second membre. Rien ne s'est perdu — dériver une constante l'efface, voilà tout ; et cette différence a un sens physique, car sans second membre la solution tend vers zéro, ce qui est bien le comportement de $u_R$, alors que $u_C$, elle, tendait vers $E$.
+          **Le piège de cette question.** Il est dans le signe, et il est invisible si on va vite. Beaucoup écrivent $i = C\dfrac{du_R}{dt}$ « par analogie », alors que la relation du chapitre 2 porte sur la tension du CONDENSATEUR, $i = C\dfrac{du_C}{dt}$, et que $u_C$ et $u_R$ varient en sens opposés puisque leur somme est constante. Cette confusion donne $\dfrac{du_R}{dt} - \dfrac{u_R}{RC} = 0$, dont la solution est une exponentielle CROISSANTE $e^{+t/RC}$ — une tension qui exploserait, alors que la figure 2 montre une décroissance. Piège jumeau : s'étonner de la disparition de $E$ et le rajouter au second membre. Rien ne s'est perdu — dériver une constante l'efface, voilà tout ; et cette différence a un sens physique, car sans second membre la solution tend vers zéro, ce qui est bien le comportement de $u_R$, alors que $u_C$, elle, tendait vers $E$.
       - id: q2
         part: "1-2 — Lire E au tout premier instant"
         stem: |-
@@ -1064,7 +1064,7 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** L'énoncé ne donne aucune valeur numérique à $E$ — seulement « un générateur idéal de tension de force électromotrice $E$ ». Il faut donc la récolter sur la figure. Or la figure ne trace pas $u_C$, elle trace $u_R$ : il faut trouver l'instant où la maille livre $E$ directement à partir de $u_R$, et cet instant est $t_0 = 0$.
 
-          Le condensateur est **initialement déchargé**, et sa tension est continue (rung 2) : elle ne peut pas sauter à la fermeture du circuit.
+          Le condensateur est **initialement déchargé**, et sa tension est continue (chapitre 3) : elle ne peut pas sauter à la fermeture du circuit.
 
           $$u_C(0^+) = u_C(0^-) = 0$$
 
@@ -1072,7 +1072,7 @@ entries:
 
           $$E = u_R(0^+) + u_C(0^+) = u_R(0^+)$$
 
-          C'est le mécanisme du rung 1 regardé à son tout premier instant : tant que le condensateur est vide, il ne s'oppose encore à rien et toute la force électromotrice tombe sur le conducteur ohmique. On lit donc $E$ sur l'ordonnée de départ de la courbe, qui part du bord supérieur du cadre :
+          C'est le mécanisme du chapitre 2 regardé à son tout premier instant : tant que le condensateur est vide, il ne s'oppose encore à rien et toute la force électromotrice tombe sur le conducteur ohmique. On lit donc $E$ sur l'ordonnée de départ de la courbe, qui part du bord supérieur du cadre :
 
           $$\boxed{E = u_R(0) = 5{,}0\ \text{V}}$$
 
@@ -1086,7 +1086,7 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** Le mot « vérifier » est un ordre : la valeur $0{,}10\ \mu\text{F}$ ne doit surtout pas être réutilisée comme donnée, il faut la RETROUVER par un chemin indépendant. Or la seule grandeur du circuit déjà connue est $R = 50\ \Omega$, et la seule grandeur mesurable sur la figure 2 qui contienne la capacité est la constante de temps $\tau = RC$ — le groupement identifié à la question 1, où il apparaît au dénominateur. Le chemin est donc forcé : lire $\tau$ sur le graphe, puis en déduire $C$.
 
-          **Le pont à faire.** Le rung 3 démontre la méthode de la tangente à l'origine sur la courbe CROISSANTE $u_C(t)$, où la tangente coupe l'asymptote $u_C = E$ en $t = \tau$. Ici la courbe décroît vers zéro, et la tangente coupe l'axe des abscisses — la démonstration se refait en une ligne, à l'identique. La solution de l'équation de la question 1 est $u_R(t) = E\,e^{-t/\tau}$, donc la pente à l'origine vaut
+          **Le pont à faire.** Le chapitre 4 démontre la méthode de la tangente à l'origine sur la courbe CROISSANTE $u_C(t)$, où la tangente coupe l'asymptote $u_C = E$ en $t = \tau$. Ici la courbe décroît vers zéro, et la tangente coupe l'axe des abscisses — la démonstration se refait en une ligne, à l'identique. La solution de l'équation de la question 1 est $u_R(t) = E\,e^{-t/\tau}$, donc la pente à l'origine vaut
 
           $$\frac{du_R}{dt}(0) = -\frac{E}{\tau}$$
 
@@ -1106,7 +1106,7 @@ entries:
 
           La valeur annoncée est retrouvée exactement : la lecture $\tau = 5\ \mu\text{s}$ était donc juste.
 
-          **Le contrôle qui rassure.** Deux recoupements gratuits sur la même figure. D'abord la méthode des $63\ \%$ retournée (rung 3) : sur une décroissance, à $t = \tau$ il reste $37\ \%$ de la valeur de départ, soit $u_R(\tau) = 5 \times e^{-1} \approx 5 \times 0{,}37 = 1{,}8\ \text{V}$ — et c'est bien la hauteur du tracé au repère $\tau$. Ensuite la fin du régime transitoire : elle est atteinte vers $5\tau = 25\ \mu\text{s}$, et la courbe rejoint effectivement zéro juste avant le bord droit du cadre, à $30\ \mu\text{s}$. Trois lectures indépendantes qui se confirment : c'est le meilleur signal qu'on puisse avoir en copie.
+          **Le contrôle qui rassure.** Deux recoupements gratuits sur la même figure. D'abord la méthode des $63\ \%$ retournée (chapitre 4) : sur une décroissance, à $t = \tau$ il reste $37\ \%$ de la valeur de départ, soit $u_R(\tau) = 5 \times e^{-1} \approx 5 \times 0{,}37 = 1{,}8\ \text{V}$ — et c'est bien la hauteur du tracé au repère $\tau$. Ensuite la fin du régime transitoire : elle est atteinte vers $5\tau = 25\ \mu\text{s}$, et la courbe rejoint effectivement zéro juste avant le bord droit du cadre, à $30\ \mu\text{s}$. Trois lectures indépendantes qui se confirment : c'est le meilleur signal qu'on puisse avoir en copie.
 
           **Le piège de cette question.** Il est dans le préfixe, et il coûte un facteur mille. L'axe des temps est en MICROsecondes : $\tau = 5\ \mu\text{s} = 5\times10^{-6}\ \text{s}$, et non $5\times10^{-3}\ \text{s}$. Traiter les $\mu\text{s}$ comme des $\text{ms}$ donne $C = \dfrac{5\times10^{-3}}{50} = 1\times10^{-4}\ \text{F} = 100\ \mu\text{F}$ au lieu de $0{,}10\ \mu\text{F}$ — mille fois trop, et l'erreur ne se dénonce pas toute seule si on ne regarde pas l'ordre de grandeur. Deuxième piège, sur le chiffrage : le repère « $\tau$ » est imprimé sur le PREMIER trait majeur, et les nombres $10$ et $20$ n'apparaissent que sur le deuxième et le quatrième ; lire $\tau = 10\ \mu\text{s}$ parce que $10$ est le premier nombre écrit double la réponse, $C = 0{,}20\ \mu\text{F}$. Compte toujours le pas de division entre deux traits CHIFFRÉS — ici $(20 - 10)/2 = 5\ \mu\text{s}$ par trait majeur — avant de lire un repère non chiffré. Piège jumeau, celui de toutes les tangentes : c'est la DROITE $(T)$ qui coupe l'axe des temps, pas la courbe — la courbe, elle, n'atteint jamais vraiment zéro, elle s'en approche seulement, et il lui faut environ $5\tau$ pour que ce soit indiscernable.
 
@@ -1157,14 +1157,14 @@ entries:
         stem: |-
           **(0,5 pt)** Exprimer la tension $u_C(t)$ en fonction de $I_0$, $C_0$ et $t$.
         reasoning: |-
-          On reprend les deux relations rappelées au rung 1 — le courant est le débit de charge, $i = \dfrac{dq}{dt}$, et la charge posée sur les armatures fixe la tension, $q = C_0 u_C$. Mais le mécanisme qui construit l'équation de R1 — la boucle qui se referme sur elle-même, $i = \dfrac{E-u_C}{R}$, un courant qui ralentit à mesure que $u_C$ monte — ne s'applique pas ici : le générateur $G$ est un générateur **idéal de courant**, qui impose $I_0$ constant dans toute la boucle série, quelle que soit la tension à ses bornes. Contrairement à l'échelon de tension des rungs R0–R4, le courant ne dépend jamais de $u_C$ : il ne ralentit pas. Le courant qui charge $C_0$ vaut donc $I_0$ à chaque instant, et l'on intègre directement.
+          On reprend les deux relations rappelées au chapitre 2 — le courant est le débit de charge, $i = \dfrac{dq}{dt}$, et la charge posée sur les armatures fixe la tension, $q = C_0 u_C$. Mais le mécanisme qui construit l'équation du chapitre 2 — la boucle qui se referme sur elle-même, $i = \dfrac{E-u_C}{R}$, un courant qui ralentit à mesure que $u_C$ monte — ne s'applique pas ici : le générateur $G$ est un générateur **idéal de courant**, qui impose $I_0$ constant dans toute la boucle série, quelle que soit la tension à ses bornes. Contrairement à l'échelon de tension des chapitres 1 à 5, le courant ne dépend jamais de $u_C$ : il ne ralentit pas. Le courant qui charge $C_0$ vaut donc $I_0$ à chaque instant, et l'on intègre directement.
         steps:
           - math: 'i(t) = \frac{dq}{dt} = I_0'
-            note: "Générateur idéal de courant : I0 imposé constant dans toute la boucle série, sans ralentir (contrairement à l'échelon de tension des rungs R0-R4)."
+            note: "Générateur idéal de courant : I0 imposé constant dans toute la boucle série, sans ralentir (contrairement à l'échelon de tension des chapitres 1 à 5)."
           - math: 'q(t) = I_0\,t'
             note: "On intègre à courant constant, avec q(0)=0 (condensateur initialement déchargé)."
           - math: '\boxed{u_C(t) = \frac{q(t)}{C_0} = \frac{I_0}{C_0}\,t}'
-            note: "Définition de la capacité (rung 1) : q = C0 uC."
+            note: "Définition de la capacité (chapitre 2) : q = C0 uC."
       - id: q2
         part: "1 — Vérification numérique de la capacité $C_0$"
         stem: |-
@@ -1314,7 +1314,7 @@ entries:
           - **(0,25 pt)** la tension $u_C$ aux bornes du condensateur ;
           - **(0,25 pt)** la tension $u_R$ aux bornes du conducteur ohmique.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Ce n'est pas un calcul : c'est la convention qui gouverne TOUT ce qui suit dans l'exercice (l'équation différentielle de la question 1-3 en dépend directement). Le rung 1 de la leçon la pose noir sur blanc : en convention récepteur, la flèche de tension d'un dipôle est orientée dans le MÊME sens que la flèche du courant qui le traverse — le courant « entre » par la borne où la tension est comptée positivement.
+          Ce qu'on cherche et pourquoi ce geste. Ce n'est pas un calcul : c'est la convention qui gouverne TOUT ce qui suit dans l'exercice (l'équation différentielle de la question 1-3 en dépend directement). Le chapitre 2 de la leçon la pose noir sur blanc : en convention récepteur, la flèche de tension d'un dipôle est orientée dans le MÊME sens que la flèche du courant qui le traverse — le courant « entre » par la borne où la tension est comptée positivement.
 
           $C_0$ et $R$ sont deux récepteurs traversés par le même courant $i$, en série sur la même maille. La règle s'applique identiquement aux deux : on flèche $u_C$ et $u_R$ chacune dans le même sens que $i$ le long de la boucle — la flèche $i$ de la figure 1 pointant vers la gauche sur la branche du bas, le courant remonte donc à gauche vers $K$, traverse $C_0$ puis $R$ de gauche à droite sur la branche du haut, et $u_C$ comme $u_R$ se flèchent dans ce même sens, chacune au-dessus de son propre dipôle.
 
@@ -1324,7 +1324,7 @@ entries:
         stem: |-
           **1-2-** (0,5 pt) Montrer sur le montage précédent comment faut-il brancher un oscilloscope à mémoire pour visualiser la tension $u_C$.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Un oscilloscope (ou un système d'acquisition) mesure une différence de potentiel entre son entrée (la voie) et sa masse (COM) — une masse UNIQUE, partagée par toutes les voies de l'appareil. Pour visualiser une tension $u_X$ d'un dipôle quelconque, on branche donc l'appareil EN DÉRIVATION (en parallèle) à ses bornes, jamais en série, ce qui couperait le circuit — un geste que la leçon ne détaille pas pas à pas, mais qui découle directement du principe de la convention récepteur posé au rung 1 : une tension se mesure entre deux bornes, pas « dans » un courant.
+          Ce qu'on cherche et pourquoi ce geste. Un oscilloscope (ou un système d'acquisition) mesure une différence de potentiel entre son entrée (la voie) et sa masse (COM) — une masse UNIQUE, partagée par toutes les voies de l'appareil. Pour visualiser une tension $u_X$ d'un dipôle quelconque, on branche donc l'appareil EN DÉRIVATION (en parallèle) à ses bornes, jamais en série, ce qui couperait le circuit — un geste que la leçon ne détaille pas pas à pas, mais qui découle directement du principe de la convention récepteur posé au chapitre 2 : une tension se mesure entre deux bornes, pas « dans » un courant.
 
           Le branchement attendu est donc la figure 1 recopiée à l'identique, complétée par les deux fils de l'oscilloscope branchés en dérivation directement sur les deux bornes du condensateur $C_0$ : la masse (COM) sur la borne où $u_C$ est comptée nulle par la flèche de la question 1-1, la voie de mesure sur l'autre borne.
 
@@ -1334,7 +1334,7 @@ entries:
         stem: |-
           **1-3-** (0,5 pt) Établir l'équation différentielle vérifiée par la charge du condensateur $q(t)$.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Le rung 1 établit l'équation en $u_C$ ; ici l'énoncé veut l'inconnue en CHARGE, $q(t)$. Le pont ne coûte qu'une ligne, avec les deux relations que ce même rung rappelle : $i = \dfrac{dq}{dt}$ (le courant est le débit de charge) et $q = C_0\,u_C$, d'où $u_C = \dfrac{q}{C_0}$.
+          Ce qu'on cherche et pourquoi ce geste. Le chapitre 2 établit l'équation en $u_C$ ; ici l'énoncé veut l'inconnue en CHARGE, $q(t)$. Le pont ne coûte qu'une ligne, avec les deux relations que ce même chapitre rappelle : $i = \dfrac{dq}{dt}$ (le courant est le débit de charge) et $q = C_0\,u_C$, d'où $u_C = \dfrac{q}{C_0}$.
 
           Avec l'orientation posée à la question 1-1 (convention récepteur), la loi des mailles s'écrit :
 
@@ -1343,7 +1343,7 @@ entries:
           - math: 'E = u_R + u_C'
             note: "Loi des mailles, convention recepteur (question 1-1)."
           - math: 'u_R = R\,i = R\,\frac{dq}{dt} \qquad u_C = \frac{q}{C_0}'
-            note: "Loi d'Ohm pour R, avec i = dq/dt ; definition de la capacite (rung 1)."
+            note: "Loi d'Ohm pour R, avec i = dq/dt ; definition de la capacite (chapitre 2)."
           - math: '\boxed{R\,\frac{dq}{dt} + \frac{q}{C_0} = E}'
             note: "Equation differentielle verifiee par q(t)."
       - id: q4
@@ -1351,7 +1351,7 @@ entries:
         stem: |-
           **1-4-** (0,5 pt) La solution de cette équation différentielle s'écrit sous la forme : $q(t) = A\left(1 - e^{-\alpha t}\right)$. Déterminer les expressions de $A$ et de $\alpha$.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Même méthode qu'au rung 2 : on n'intègre rien, on IDENTIFIE. La solution proposée doit vérifier l'équation de la question 1-3 : on calcule sa dérivée, on substitue, et on regroupe pour retrouver la forme de l'équation, terme à terme.
+          Ce qu'on cherche et pourquoi ce geste. Même méthode qu'au chapitre 3 : on n'intègre rien, on IDENTIFIE. La solution proposée doit vérifier l'équation de la question 1-3 : on calcule sa dérivée, on substitue, et on regroupe pour retrouver la forme de l'équation, terme à terme.
 
           $$\frac{dq}{dt} = A\,\alpha\,e^{-\alpha t}$$
 
@@ -1372,7 +1372,7 @@ entries:
         stem: |-
           **1-5-** (0,25 pt) Montrer que l'expression de l'intensité du courant circulant dans le circuit s'écrit sous la forme : $i(t) = \dfrac{E}{R}\,e^{-\frac{t}{\tau}}$, où $\tau$ est une constante qu'il faut exprimer en fonction de $R$ et $C_0$.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Le courant se déduit de $q(t)$ sans nouvelle hypothèse, par $i = \dfrac{dq}{dt}$ (rung 1) — exactement le calcul du rung 2, mené ici à partir de la forme en charge plutôt qu'en tension.
+          Ce qu'on cherche et pourquoi ce geste. Le courant se déduit de $q(t)$ sans nouvelle hypothèse, par $i = \dfrac{dq}{dt}$ (chapitre 2) — exactement le calcul du chapitre 3, mené ici à partir de la forme en charge plutôt qu'en tension.
 
           $$i(t) = \frac{dq}{dt} = A\,\alpha\,e^{-\alpha t} = E\,C_0\times\frac{1}{RC_0}\,e^{-t/(RC_0)}$$
 
@@ -1389,26 +1389,26 @@ entries:
         stem: |-
           **1-6-** (0,25 pt) Montrer, par analyse dimentionnelle *(« dimentionnelle » tel qu'imprimé — défaut du sujet officiel)*, que $\tau$ est homogène à un temps.
         reasoning: |-
-          Exactement la vérification d'unité du rung 1 : $R$ se mesure en ohms ($\Omega = V/A$), $C_0$ en farads ($F = A{\cdot}s/V$). Leur produit, unité par unité :
+          Exactement la vérification d'unité du chapitre 2 : $R$ se mesure en ohms ($\Omega = V/A$), $C_0$ en farads ($F = A{\cdot}s/V$). Leur produit, unité par unité :
 
           $$\Omega \times F = \frac{V}{A}\times\frac{A{\cdot}s}{V} = s$$
         steps:
           - math: '[\tau] = [R]\times[C_0] = \frac{V}{A}\times\frac{A\cdot s}{V} = s'
             note: "Produit des unites de R (ohm = V/A) et de C0 (farad = A.s/V) : les volts et les amperes se simplifient, il reste des secondes."
           - math: '\boxed{\tau = R\,C_0 \text{ est homogene a un temps}}'
-            note: "Confirmation : tau se mesure bien en secondes (rung 1)."
+            note: "Confirmation : tau se mesure bien en secondes (chapitre 2)."
       - id: q7
         part: "1-7 — Lire R et C0, sur une figure dont la tangente n'est pas celle de la courbe"
         stem: |-
           **1-7-** (0,75 pt) En utilisant le graphe $i = f(t)$, déterminer la résistance $R$ et la capacite $C_0$ *(« capacite » tel qu'imprimé — défaut du sujet officiel)*.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. À $t=0$, l'exponentielle vaut $1$ : $i(0^+) = E/R$, exactement le courant maximal du mécanisme de R1 (toute la tension $E$ tombe d'abord sur $R$, le condensateur encore déchargé). $i(0^+)$ se lit directement sur le départ de la courbe. Puis, pour $C_0 = \tau/R$, il faut $\tau$ — et c'est là que la figure de ce sujet demande une vigilance particulière.
+          Ce qu'on cherche et pourquoi ce geste. À $t=0$, l'exponentielle vaut $1$ : $i(0^+) = E/R$, exactement le courant maximal du mécanisme du chapitre 2 (toute la tension $E$ tombe d'abord sur $R$, le condensateur encore déchargé). $i(0^+)$ se lit directement sur le départ de la courbe. Puis, pour $C_0 = \tau/R$, il faut $\tau$ — et c'est là que la figure de ce sujet demande une vigilance particulière.
 
           **La résistance, d'abord — lecture directe.**
 
           $$i(0^+) = \frac{E}{R} \implies R = \frac{E}{i(0^+)} = \frac{9}{2\times10^{-3}}$$
 
-          **La constante de temps — deux méthodes légitimes du rung 3, qui NE S'ACCORDENT PAS ici.** La méthode de la tangente à l'origine (rung 3) dit que la droite $(T)$, tangente à la courbe en $t=0$, coupe l'axe $i=0$ exactement en $t=\tau$ — c'est d'ailleurs la méthode que l'énoncé désigne lui-même en toutes lettres (« $(T)$ représente la tangente à la courbe à l'origine des temps »). Mesurée sur le bitmap d'origine, cette droite coupe l'axe à $t \approx 13\ \text{ms}$. La seconde méthode du rung 3, celle du point $i_0/e$, donnerait sur ce même graphe environ $12{,}4\ \text{ms}$ — un écart de $5{,}5\ \%$ entre les deux lectures, largement au-delà d'une incertitude de pointage. **C'est un défaut du sujet officiel** : la droite $(T)$ dessinée n'est mathématiquement pas la tangente de la courbe tracée juste à côté d'elle. On ne le répare pas ; on suit la méthode que l'énoncé impose explicitement, celle de $(T)$, ce qui donne $\tau = 13\ \text{ms}$ — valeur confirmée, de façon indépendante, par un corrigé de professeur retrouvé pour ce sujet (non officiel, mais convergent).
+          **La constante de temps — deux méthodes légitimes du chapitre 4, qui NE S'ACCORDENT PAS ici.** La méthode de la tangente à l'origine (chapitre 4) dit que la droite $(T)$, tangente à la courbe en $t=0$, coupe l'axe $i=0$ exactement en $t=\tau$ — c'est d'ailleurs la méthode que l'énoncé désigne lui-même en toutes lettres (« $(T)$ représente la tangente à la courbe à l'origine des temps »). Mesurée sur le bitmap d'origine, cette droite coupe l'axe à $t \approx 13\ \text{ms}$. La seconde méthode du chapitre 4, celle du point $i_0/e$, donnerait sur ce même graphe environ $12{,}4\ \text{ms}$ — un écart de $5{,}5\ \%$ entre les deux lectures, largement au-delà d'une incertitude de pointage. **C'est un défaut du sujet officiel** : la droite $(T)$ dessinée n'est mathématiquement pas la tangente de la courbe tracée juste à côté d'elle. On ne le répare pas ; on suit la méthode que l'énoncé impose explicitement, celle de $(T)$, ce qui donne $\tau = 13\ \text{ms}$ — valeur confirmée, de façon indépendante, par un corrigé de professeur retrouvé pour ce sujet (non officiel, mais convergent).
 
           $$\tau = 13\ \text{ms} = 13\times10^{-3}\ \text{s}$$
 
@@ -1419,7 +1419,7 @@ entries:
           - math: '\boxed{R = \frac{9}{2\times10^{-3}} = 4500\ \Omega = 4{,}5\ \text{k}\Omega}'
             note: "Lecture directe : i(0+) = E/R, avec i(0+) = 2 mA lu sur le depart de la courbe (question 1-5)."
           - math: '\tau = 13\ \text{ms} = 13\times10^{-3}\ \text{s}'
-            note: "Lecture graphique de tau par la methode de la tangente (T) a l'origine (rung 3), celle que l'enonce designe explicitement. La methode concurrente i0/e donnerait 12,4 ms sur cette meme figure -- defaut du sujet officiel (la tangente dessinee n'est pas celle de la courbe), non retenu ici."
+            note: "Lecture graphique de tau par la methode de la tangente (T) a l'origine (chapitre 4), celle que l'enonce designe explicitement. La methode concurrente i0/e donnerait 12,4 ms sur cette meme figure -- defaut du sujet officiel (la tangente dessinee n'est pas celle de la courbe), non retenu ici."
           - math: 'C_0 = \frac{\tau}{R} = \frac{13\times10^{-3}}{4500}'
             note: "On inverse tau = R.C0 (question 1-5), avec R trouve ci-dessus."
           - math: '\boxed{C_0 \approx 2{,}89\times10^{-6}\ \text{F} = 2{,}89\ \mu\text{F}}'
@@ -1512,30 +1512,30 @@ entries:
         stem: |-
           **1-1-** (0,5 pt) Recopier, sur la copie de rédaction, le montage de la figure 1, et représenter dessus la tension $u_C(t)$ aux bornes du condensateur, et $u_R(t)$ aux bornes de la sonde thermique, en convension récepteur. *(« convension » tel qu'imprimé — défaut du sujet officiel, sans incidence.)*
         reasoning: |-
-          Exactement le rung R1 : dans une boucle série où $C$ et la thermistance $R$ sont traversés par le MÊME courant, la convention récepteur flèche chaque tension dans le même sens que ce courant — pas en alternant d'un dipôle à l'autre, pas en devinant un signe. On flèche donc $u_C$ au-dessus du condensateur et $u_R$ au-dessus de la thermistance, toutes deux orientées dans le sens de circulation du courant imposé par le générateur $E$ à la fermeture de $K$.
+          Exactement le chapitre 2 : dans une boucle série où $C$ et la thermistance $R$ sont traversés par le MÊME courant, la convention récepteur flèche chaque tension dans le même sens que ce courant — pas en alternant d'un dipôle à l'autre, pas en devinant un signe. On flèche donc $u_C$ au-dessus du condensateur et $u_R$ au-dessus de la thermistance, toutes deux orientées dans le sens de circulation du courant imposé par le générateur $E$ à la fermeture de $K$.
 
           **Le piège nommé de cette question.** Flécher $u_C$ et $u_R$ en sens opposés, par le réflexe de vouloir « faire le tour » de la maille en alternant les signes. $C$ et la thermistance sont en série, traversés par le même courant : les deux flèches suivent la MÊME direction, celle de ce courant.
       - id: q2
         stem: |-
           **1-2-** (0,5 pt) Établir l'équation différentielle vérifiée par $u_C(t)$.
         reasoning: |-
-          Rien ne distingue cette thermistance d'un conducteur ohmique ordinaire du point de vue du circuit : c'est une résistance, simplement sensible à la température. La construction du rung R1 s'applique donc telle quelle. Loi des mailles en convention récepteur (question 1-1) :
+          Rien ne distingue cette thermistance d'un conducteur ohmique ordinaire du point de vue du circuit : c'est une résistance, simplement sensible à la température. La construction du chapitre 2 s'applique donc telle quelle. Loi des mailles en convention récepteur (question 1-1) :
 
           $$E = u_R + u_C$$
 
-          On exprime $u_R$ par la loi d'Ohm, et le courant par les deux relations rappelées au rung 1 ($i=\frac{dq}{dt}$, $q=Cu_C$), ce qui donne $u_R = RC\dfrac{du_C}{dt}$.
+          On exprime $u_R$ par la loi d'Ohm, et le courant par les deux relations rappelées au chapitre 2 ($i=\frac{dq}{dt}$, $q=Cu_C$), ce qui donne $u_R = RC\dfrac{du_C}{dt}$.
         steps:
           - math: 'E = u_R + u_C'
             note: "Loi des mailles, convention recepteur (question 1-1)."
           - math: 'u_R = R\,i = R\,C\frac{du_C}{dt}'
-            note: "Loi d'Ohm pour la thermistance R, avec i = C du_C/dt (rung R1)."
+            note: "Loi d'Ohm pour la thermistance R, avec i = C du_C/dt (chapitre 2)."
           - math: '\boxed{R\,C\,\frac{du_C}{dt} + u_C = E}'
-            note: "Meme forme que le rung R1 : la thermistance joue exactement le role de R."
+            note: "Meme forme que le chapitre 2 : la thermistance joue exactement le role de R."
       - id: q3
         stem: |-
           **1-3-** (0,5 pt) La solution de cette équation différentielle s'écrit sous la forme : $u_C(t) = A + B\cdot e^{-\frac{t}{\tau}}$. Trouver les constantes $A$ et $B$.
         reasoning: |-
-          Même méthode qu'au rung R2 : on n'intègre rien, on injecte la forme proposée dans l'équation différentielle et on identifie terme à terme, plutôt que de recopier une formule de mémoire.
+          Même méthode qu'au chapitre 3 : on n'intègre rien, on injecte la forme proposée dans l'équation différentielle et on identifie terme à terme, plutôt que de recopier une formule de mémoire.
 
           $$\frac{du_C}{dt} = -\frac{B}{\tau}\,e^{-t/\tau}$$
 
@@ -1543,42 +1543,42 @@ entries:
 
           $$RC\left(-\frac{B}{\tau}\right)e^{-t/\tau} + A + B\,e^{-t/\tau} = E$$
 
-          Pour que cette égalité tienne à chaque instant, le terme constant et le terme en $e^{-t/\tau}$ doivent s'identifier séparément — exactement comme au rung R2 : le terme constant donne $A$, le terme exponentiel (qui doit s'annuler tout seul) fixe la relation entre $\tau$, $R$ et $C$, et la condition initiale $u_C(0)=0$ (condensateur déchargé à la fermeture de $K$) donne $B$.
+          Pour que cette égalité tienne à chaque instant, le terme constant et le terme en $e^{-t/\tau}$ doivent s'identifier séparément — exactement comme au chapitre 3 : le terme constant donne $A$, le terme exponentiel (qui doit s'annuler tout seul) fixe la relation entre $\tau$, $R$ et $C$, et la condition initiale $u_C(0)=0$ (condensateur déchargé à la fermeture de $K$) donne $B$.
         steps:
           - math: '\text{terme constant : } A = E'
-            note: "Le terme sans exponentielle doit egaler E a lui seul (rung R2)."
+            note: "Le terme sans exponentielle doit egaler E a lui seul (chapitre 3)."
           - math: '\text{condition initiale : } u_C(0) = A + B = 0 \implies B = -A = -E'
-            note: "Le condensateur est decharge a la fermeture de K (rung R1)."
+            note: "Le condensateur est decharge a la fermeture de K (chapitre 2)."
           - math: '\boxed{A = E = 6\ \text{V} \qquad B = -E = -6\ \text{V}}'
-            note: "Meme forme que u_C(t) = E(1-e^{-t/tau}) du rung R2, ecrite ici A + B.e^{-t/tau}."
+            note: "Meme forme que u_C(t) = E(1-e^{-t/tau}) du chapitre 3, ecrite ici A + B.e^{-t/tau}."
       - id: q4
         part: "1-4 et 1-5 — Lire τ, puis remonter à la température"
         stem: |-
           **1-4-** (0,5 pt) Déterminer la constante de temps $\tau_1$ à la température $\theta_1 = 205\ ^\circ\text{C}$, puis en déduire l'influence d'une élévation de température sur la durée de charge du condensateur.
         reasoning: |-
-          On lit $\tau_1$ sur la courbe étiquetée `205°C` de la figure 2, par l'une des deux méthodes du rung R3 (tangente à l'origine, ou le point à $63\,\%$ de l'asymptote $6\ \text{V}$, soit $u_C \approx 3{,}8\ \text{V}$) : c'est la courbe la plus raide des trois, celle qui atteint son palier la première.
+          On lit $\tau_1$ sur la courbe étiquetée `205°C` de la figure 2, par l'une des deux méthodes du chapitre 4 (tangente à l'origine, ou le point à $63\,\%$ de l'asymptote $6\ \text{V}$, soit $u_C \approx 3{,}8\ \text{V}$) : c'est la courbe la plus raide des trois, celle qui atteint son palier la première.
 
           $$\tau_1 \approx 0{,}50\ \text{ms}$$
 
-          **L'influence de la température.** Les trois courbes de la figure 2 se lisent ensemble : `205°C` (la plus raide) a le $\tau$ le plus PETIT ; `175°C` (la plus molle) a le $\tau$ le plus GRAND. Puisque $\tau = RC$ (rung R1) et que $C$ est fixe (le même condensateur pour les trois courbes), c'est la résistance $R$ de la thermistance qui doit diminuer quand la température monte, pour que $\tau$ diminue avec elle.
+          **L'influence de la température.** Les trois courbes de la figure 2 se lisent ensemble : `205°C` (la plus raide) a le $\tau$ le plus PETIT ; `175°C` (la plus molle) a le $\tau$ le plus GRAND. Puisque $\tau = RC$ (chapitre 2) et que $C$ est fixe (le même condensateur pour les trois courbes), c'est la résistance $R$ de la thermistance qui doit diminuer quand la température monte, pour que $\tau$ diminue avec elle.
 
           $$\boxed{\text{Une élévation de température RACCOURCIT la durée de charge du condensateur}}$$
 
           — le signe exact opposé de ce qu'on observerait avec un conducteur ohmique ordinaire, dont la résistance ne dépend pas de $\theta$ (une thermistance de ce type est dite « à coefficient de température négatif »).
 
-          **Le piège de cette question.** Répondre « τ augmente avec la température », par l'intuition qu'un système chauffé est plus « agité » donc plus lent à se stabiliser. C'est confondre deux mécanismes : ici, $\tau$ ne dépend que de $R$ et de $C$ (rung R1), jamais directement de l'agitation thermique — et c'est précisément parce que $R$, la résistance PARTICULIÈRE de cette sonde, décroît avec $\theta$ (une propriété du composant, lue sur les trois courbes) que $\tau$ décroît à son tour.
+          **Le piège de cette question.** Répondre « τ augmente avec la température », par l'intuition qu'un système chauffé est plus « agité » donc plus lent à se stabiliser. C'est confondre deux mécanismes : ici, $\tau$ ne dépend que de $R$ et de $C$ (chapitre 2), jamais directement de l'agitation thermique — et c'est précisément parce que $R$, la résistance PARTICULIÈRE de cette sonde, décroît avec $\theta$ (une propriété du composant, lue sur les trois courbes) que $\tau$ décroît à son tour.
         steps:
           - math: '\tau_1 \approx 0{,}50\ \text{ms}'
-            note: "Lecture graphique sur la courbe etiquetee 205 degres C de la figure 2 (rung R3 : tangente a l'origine ou methode des 63 pourcent)."
+            note: "Lecture graphique sur la courbe etiquetee 205 degres C de la figure 2 (chapitre 4 : tangente a l'origine ou methode des 63 pourcent)."
           - math: '\tau(205\,^\circ\text{C}) < \tau(185\,^\circ\text{C}) < \tau(175\,^\circ\text{C}) \implies R(205\,^\circ\text{C}) < R(185\,^\circ\text{C}) < R(175\,^\circ\text{C})'
-            note: "tau = RC (rung R1), C fixe pour les trois courbes : l'ordre des tau donne directement l'ordre des R."
+            note: "tau = RC (chapitre 2), C fixe pour les trois courbes : l'ordre des tau donne directement l'ordre des R."
           - math: '\boxed{\text{une elevation de temperature RACCOURCIT la charge}}'
             note: "Thermistance a coefficient de temperature negatif : R diminue quand theta augmente."
       - id: q5
         stem: |-
           **1-5-** (0,5 pt) Pour mesurer la température $\theta_2$ d'un four électrique, l'enseignante pose la sonde précédente dans le four, puis elle détermine, par utilisation du même montage précédent (figure 1), la constante de temps $\tau_2$. Elle trouve comme valeur : $\tau_2 = 0{,}45\ \text{ms}$. La courbe de la figure 3 représente les variations de la résistance $R$ de la sonde thermique en fonction de la température $\theta$. Déterminer la valeur de la température $\theta_2$ à l'intérieur du four électrique.
         reasoning: |-
-          Deux étapes, dans cet ordre précis : d'abord remonter de $\tau_2$ à $R_2$ par $\tau = RC$ (rung R1, le même pont qu'aux questions précédentes) — le graphe de la figure 2 ne sert plus à rien ici, c'est une nouvelle mesure, dans un nouveau milieu ; ensuite lire $\theta_2$ sur la figure 3, qui relie $R$ et $\theta$ directement, sans passer par $\tau$.
+          Deux étapes, dans cet ordre précis : d'abord remonter de $\tau_2$ à $R_2$ par $\tau = RC$ (chapitre 2, le même pont qu'aux questions précédentes) — le graphe de la figure 2 ne sert plus à rien ici, c'est une nouvelle mesure, dans un nouveau milieu ; ensuite lire $\theta_2$ sur la figure 3, qui relie $R$ et $\theta$ directement, sans passer par $\tau$.
 
           $$R_2 = \frac{\tau_2}{C} = \frac{0{,}45\times10^{-3}}{1{,}5\times10^{-6}} = 300\ \Omega = 0{,}30\ \text{k}\Omega$$
 
@@ -1589,7 +1589,7 @@ entries:
           **Le piège de cette question.** Réutiliser une des trois courbes de la figure 2 (par exemple chercher où $\tau = 0{,}45$ ms parmi les trois courbes déjà tracées) au lieu de repasser par $R = \tau/C$ puis la figure 3. Les trois courbes de la figure 2 ne correspondent qu'à TROIS températures précises ($205$, $185$, $175\ ^\circ\text{C}$) : le four n'a aucune raison de tomber pile sur l'une d'elles, et c'est exactement pour ça que la figure 3 — qui couvre, elle, une plage CONTINUE de températures — est fournie séparément.
         steps:
           - math: 'R_2 = \frac{\tau_2}{C} = \frac{0{,}45\times10^{-3}}{1{,}5\times10^{-6}}'
-            note: "tau = RC (rung R1), avec C = 1,5 microF donne dans l'enonce."
+            note: "tau = RC (chapitre 2), avec C = 1,5 microF donne dans l'enonce."
           - math: '\boxed{R_2 = 300\ \Omega = 0{,}30\ \text{k}\Omega}'
             note: "Resistance de la sonde dans le four."
           - math: '\boxed{\theta_2 \approx 210\ ^\circ\text{C}}'
@@ -1665,26 +1665,26 @@ entries:
         stem: |-
           **(0,5 pt)** **1-1-** Représenter le schéma du dispositif expérimental permettant d'obtenir cette courbe.
         reasoning: |-
-          Le dispositif de décharge (rung R4) est le plus simple possible : PAS de générateur — celui qui a chargé le condensateur en amont a été débranché — seulement le condensateur $C$, déjà chargé, et le conducteur ohmique $R$, refermés en une seule boucle par l'interrupteur. Le sens du courant s'inverse par rapport à la charge : c'est le condensateur qui, désormais, alimente $R$, et non l'inverse.
+          Le dispositif de décharge (chapitre 5) est le plus simple possible : PAS de générateur — celui qui a chargé le condensateur en amont a été débranché — seulement le condensateur $C$, déjà chargé, et le conducteur ohmique $R$, refermés en une seule boucle par l'interrupteur. Le sens du courant s'inverse par rapport à la charge : c'est le condensateur qui, désormais, alimente $R$, et non l'inverse.
 
           $$\boxed{\text{Une seule maille : condensateur } C \text{ (initialement charge) en serie avec le conducteur ohmique } R, \text{ boucle fermee par l'interrupteur a } t=0}$$
 
-          Le piège nommé de cette question. Laisser un générateur dans le schéma, par réflexe venu du montage de charge. En décharge, le générateur est absent (débranché ou court-circuité) : c'est justement ce qui distingue les deux régimes (rung R1/R4) — sans lui, il n'y a plus de tension imposée « à viser », seulement la tension déjà stockée qui s'évacue dans $R$.
+          Le piège nommé de cette question. Laisser un générateur dans le schéma, par réflexe venu du montage de charge. En décharge, le générateur est absent (débranché ou court-circuité) : c'est justement ce qui distingue les deux régimes (chapitres 2 et 5) — sans lui, il n'y a plus de tension imposée « à viser », seulement la tension déjà stockée qui s'évacue dans $R$.
       - id: q1-2
         stem: |-
           **(0,5 pt)** **1-2-** Trouver l'équation différentielle vérifiée par la tension $u_C(t)$ aux bornes du condensateur au cours de la décharge.
         reasoning: |-
-          Exactement l'équation de décharge établie au rung R4 : sans générateur, la loi des mailles se réduit à $u_R + u_C = 0$. Avec $u_R = R\,i$ et $i = C\,\dfrac{du_C}{dt}$ (définition de la capacité, rung R1), on reporte.
+          Exactement l'équation de décharge établie au chapitre 5 : sans générateur, la loi des mailles se réduit à $u_R + u_C = 0$. Avec $u_R = R\,i$ et $i = C\,\dfrac{du_C}{dt}$ (définition de la capacité, chapitre 2), on reporte.
         steps:
           - math: 'u_R + u_C = 0 \qquad \text{avec} \qquad u_R = R\,i = R\,C\,\frac{du_C}{dt}'
-            note: "Loi des mailles sans generateur (decharge) ; i = C.duC/dt (rung R1)."
+            note: "Loi des mailles sans generateur (decharge) ; i = C.duC/dt (chapitre 2)."
           - math: '\boxed{RC\,\frac{du_C}{dt} + u_C = 0}'
-            note: "Equation differentielle de la decharge (rung R4)."
+            note: "Equation differentielle de la decharge (chapitre 5)."
       - id: q1-1b
         stem: |-
           **(0,5 pt)** **1-1-** Vérifier que la solution de l'équation différentielle précédente est : $u_C = U_0.e^{-\frac{t}{RC}}$, où $U_0$ est une constante. *(Numéro « 1-1 » tel qu'imprimé sur le sujet officiel — le sujet répète ce numéro, déjà utilisé à la question précédente ; voir S8. Reproduit ici sous l'id `q1-1b` pour lever toute ambiguïté.)*
         reasoning: |-
-          « Vérifier » signale la méthode du rung R2 : on ne redécouvre pas la solution, on **substitue** la forme proposée dans l'équation et on contrôle qu'elle la satisfait à chaque instant.
+          « Vérifier » signale la méthode du chapitre 3 : on ne redécouvre pas la solution, on **substitue** la forme proposée dans l'équation et on contrôle qu'elle la satisfait à chaque instant.
 
           On calcule la dérivée de la forme proposée, $\dfrac{du_C}{dt} = -\dfrac{U_0}{RC}\,e^{-t/RC}$, et on reporte dans le membre de gauche de l'équation de la question précédente :
 
@@ -1702,23 +1702,23 @@ entries:
         stem: |-
           **(0,5 pt)** **1-3-** Par analyse dimensionnelle, montrer que le produit $RC$ est homogène à un temps.
         reasoning: |-
-          Même contrôle qu'au rung R1 : $R$ se mesure en ohms ($\Omega = \text{V/A}$), $C$ en farads ($\text{F} = \text{A}{\cdot}\text{s/V}$). On multiplie les deux unités.
+          Même contrôle qu'au chapitre 2 : $R$ se mesure en ohms ($\Omega = \text{V/A}$), $C$ en farads ($\text{F} = \text{A}{\cdot}\text{s/V}$). On multiplie les deux unités.
         steps:
           - math: '[R]\times[C] = \frac{\text{V}}{\text{A}}\times\frac{\text{A}\cdot\text{s}}{\text{V}} = \text{s}'
             note: "Produit des unites de R (ohm = V/A) et de C (farad = A.s/V) : volts et amperes se simplifient."
           - math: '\boxed{RC \text{ est homogene a un temps}}'
-            note: "Confirme que RC peut jouer le role de la constante de temps tau (rung R1)."
+            note: "Confirme que RC peut jouer le role de la constante de temps tau (chapitre 2)."
       - id: q1-4
         stem: |-
           **(0,5 pt)** **1-4-** Déterminer graphiquement la constante de temps $\tau$, et déduire la valeur de la capacité $C$ du condensateur étudié.
         reasoning: |-
-          **Lecture graphique.** Le rung R3 donne deux méthodes équivalentes pour une décroissance exponentielle, adaptées ici au cas de la décharge (asymptote à $0$, et non à $E$) : la tangente à l'origine, qui coupe l'asymptote horizontale ($u_C = 0$, l'axe des temps) exactement en $t = \tau$ ; ou le point où $u_C$ atteint $U_0/e$.
+          **Lecture graphique.** le chapitre 4 donne deux méthodes équivalentes pour une décroissance exponentielle, adaptées ici au cas de la décharge (asymptote à $0$, et non à $E$) : la tangente à l'origine, qui coupe l'asymptote horizontale ($u_C = 0$, l'axe des temps) exactement en $t = \tau$ ; ou le point où $u_C$ atteint $U_0/e$.
 
-          Sur la figure 1, la droite en pointillés est précisément cette tangente à l'origine — elle part du même point que la courbe, $(0\ ;\ 12\ \text{V})$, et coupe l'axe des temps un peu avant la graduation $3\ \text{ms}$ : mesurée au pixel sur le bitmap natif, l'intersection tombe à $t \approx 2{,}38\ \text{ms}$. Un contrôle indépendant — le point où la courbe (pas la tangente) atteint $U_0/e = 12/e \approx 4{,}4\ \text{V}$ — tombe à $t \approx 2{,}44\ \text{ms}$, une valeur très proche. Les deux méthodes du R3 concordent : on retient la valeur ronde qu'elles encadrent.
+          Sur la figure 1, la droite en pointillés est précisément cette tangente à l'origine — elle part du même point que la courbe, $(0\ ;\ 12\ \text{V})$, et coupe l'axe des temps un peu avant la graduation $3\ \text{ms}$ : mesurée au pixel sur le bitmap natif, l'intersection tombe à $t \approx 2{,}38\ \text{ms}$. Un contrôle indépendant — le point où la courbe (pas la tangente) atteint $U_0/e = 12/e \approx 4{,}4\ \text{V}$ — tombe à $t \approx 2{,}44\ \text{ms}$, une valeur très proche. Les deux méthodes du chapitre 4 concordent : on retient la valeur ronde qu'elles encadrent.
 
           $$\tau \approx 2{,}4\ \text{ms}$$
 
-          On isole $C$ dans $\tau = RC$ (rung R1) :
+          On isole $C$ dans $\tau = RC$ (chapitre 2) :
 
           $$C = \frac{\tau}{R} = \frac{2{,}4\times10^{-3}}{200}$$
 
@@ -1727,9 +1727,9 @@ entries:
           **Une chaîne de mesure, pas une donnée imprimée.** Comme sur toute lecture graphique de ce sujet, aucun corrigé officiel n'existe pour le confirmer : les deux méthodes de lecture, indépendantes l'une de l'autre, qui retombent à moins de $3\ \%$ l'une de l'autre, sont le plafond de preuve atteignable ici.
         steps:
           - math: '\tau \approx 2{,}4\ \text{ms}'
-            note: "Lecture graphique (rung R3, methode de la tangente a l'origine ET methode U0/e, les deux concordantes -- voir le raisonnement)."
+            note: "Lecture graphique (chapitre 4, methode de la tangente a l'origine ET methode U0/e, les deux concordantes -- voir le raisonnement)."
           - math: 'C = \frac{\tau}{R} = \frac{2{,}4\times10^{-3}}{200}'
-            note: "tau = RC (rung R1), R=200 Ohm donne dans l'enonce."
+            note: "tau = RC (chapitre 2), R=200 Ohm donne dans l'enonce."
           - math: '\boxed{C \approx 1{,}2\times10^{-5}\ \text{F} = 12\ \mu\text{F}}'
             note: "Capacite du condensateur -- lecture graphique, aucun corrige officiel n'existe pour ce sujet."
 
@@ -1823,12 +1823,12 @@ entries:
         stem: |-
           **1-1-** (0,5 pt) Montrer que la tension $u_C$ vérifie l'équation différentielle : $u_C + RC\dfrac{du_C}{dt} = E$.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. C'est l'équation de la charge du rung R1, mais il faut d'abord justifier que le circuit se RÉDUIT bien à la boucle $E$–$R$–$C$ : le bouton poussoir $P$, branché en parallèle du condensateur, est RELÂCHÉ (donc ouvert — aucun courant ne le traverse), et l'énoncé admet que l'intensité à l'entrée du composant électronique reste nulle à tout instant. Tout le courant $i$ qui traverse $R$ va donc intégralement charger le condensateur : $i = C\,\dfrac{du_C}{dt}$ (rung R1). Il reste la loi des mailles sur l'unique boucle active.
+          Ce qu'on cherche et pourquoi ce geste. C'est l'équation de la charge du chapitre 2, mais il faut d'abord justifier que le circuit se RÉDUIT bien à la boucle $E$–$R$–$C$ : le bouton poussoir $P$, branché en parallèle du condensateur, est RELÂCHÉ (donc ouvert — aucun courant ne le traverse), et l'énoncé admet que l'intensité à l'entrée du composant électronique reste nulle à tout instant. Tout le courant $i$ qui traverse $R$ va donc intégralement charger le condensateur : $i = C\,\dfrac{du_C}{dt}$ (chapitre 2). Il reste la loi des mailles sur l'unique boucle active.
         steps:
           - math: 'E = u_R + u_C \qquad u_R = R\,i'
             note: "Loi des mailles sur la boucle E-R-C (K ferme), loi d Ohm pour R."
           - math: 'i = C\,\frac{du_C}{dt} \quad \text{(P relache et entree du composant sans courant : tout le courant de R charge C)}'
-            note: "Definition de la capacite (rung R1) : aucune derivation de courant vers P ni vers le composant."
+            note: "Definition de la capacite (chapitre 2) : aucune derivation de courant vers P ni vers le composant."
           - math: '\boxed{u_C + RC\,\frac{du_C}{dt} = E}'
             note: "Substitution dans la loi des mailles : l equation demandee."
       - id: q2
@@ -1836,7 +1836,7 @@ entries:
         stem: |-
           **1-2-** (0,75 pt) Déterminer les expressions de $A$ et $\tau$, pour que l'équation horaire : $A.(1 - e^{-\frac{t}{\tau}})$ soit solution de l'équation différentielle précédente. *(L'équation horaire est imprimée SANS premier membre — il manque « $u_C =$ » ; défaut du sujet officiel, consigné et non réparé : il faut lire $u_C = A\left(1 - e^{-t/\tau}\right)$.)*
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. La méthode du rung R2 : on n'intègre rien, on IDENTIFIE. On substitue la forme proposée — en rétablissant le premier membre manquant, $u_C = A\left(1-e^{-t/\tau}\right)$ (défaut S4 du sujet, dit dans l'énoncé ci-dessus) — dans l'équation de la question 1-1, et on exige qu'elle soit vérifiée À CHAQUE INSTANT : le terme constant et le terme en $e^{-t/\tau}$ doivent s'identifier séparément.
+          Ce qu'on cherche et pourquoi ce geste. La méthode du chapitre 3 : on n'intègre rien, on IDENTIFIE. On substitue la forme proposée — en rétablissant le premier membre manquant, $u_C = A\left(1-e^{-t/\tau}\right)$ (défaut S4 du sujet, dit dans l'énoncé ci-dessus) — dans l'équation de la question 1-1, et on exige qu'elle soit vérifiée À CHAQUE INSTANT : le terme constant et le terme en $e^{-t/\tau}$ doivent s'identifier séparément.
 
           $$\frac{du_C}{dt} = \frac{A}{\tau}\,e^{-t/\tau}$$
 
@@ -1847,35 +1847,35 @@ entries:
           - math: '\text{terme en } e^{-t/\tau} : \frac{RC}{\tau} - 1 = 0 \implies \tau = RC'
             note: "Le terme exponentiel doit s annuler identiquement, a chaque instant."
           - math: '\boxed{A = E \qquad \tau = RC}'
-            note: "Identification complete (rung R2)."
+            note: "Identification complete (chapitre 3)."
       - id: q3
         part: "1-3 — Analyse dimensionnelle"
         stem: |-
           **1-3-** (0,25 pt) À l'aide d'une analyse dimensionnelle, montrer que $\tau$ est homogène à un temps.
         reasoning: |-
-          Le contrôle d'homogénéité du rung R1 : $R$ se mesure en ohms ($\Omega = \text{V/A}$), $C$ en farads ($\text{F} = \text{A}{\cdot}\text{s/V}$). On multiplie les deux unités : volts et ampères se simplifient, il reste des secondes.
+          Le contrôle d'homogénéité du chapitre 2 : $R$ se mesure en ohms ($\Omega = \text{V/A}$), $C$ en farads ($\text{F} = \text{A}{\cdot}\text{s/V}$). On multiplie les deux unités : volts et ampères se simplifient, il reste des secondes.
         steps:
           - math: '[\tau] = [R]\times[C] = \frac{\text{V}}{\text{A}}\times\frac{\text{A}\cdot\text{s}}{\text{V}} = \text{s}'
             note: "Produit des unites de R (ohm = V/A) et de C (farad = A.s/V)."
           - math: '\boxed{\tau = RC \text{ est homogene a un temps}}'
-            note: "tau se mesure bien en secondes (rung R1)."
+            note: "tau se mesure bien en secondes (chapitre 2)."
       - id: q4
         part: "1-4 — Lectures graphiques de A et τ, puis R"
         stem: |-
           **1-4-** (0,75 pt) La figure 2, représente les variations de $u_C(t)$. *(« La figure 2, représente » tel qu'imprimé — virgule entre sujet et verbe, défaut du sujet officiel, sans incidence.)* Déterminer graphiquement les valeurs de $A$ et $\tau$, et déduire la valeur de la résistance $R$, sachant que la capacité du condensateur est : $C = 220\ \mu\text{F}$.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Deux lectures du rung R3, puis une inversion de $\tau = RC$.
+          Ce qu'on cherche et pourquoi ce geste. Deux lectures du chapitre 4, puis une inversion de $\tau = RC$.
 
           **$A$ — l'asymptote.** Quand $t \to \infty$, $e^{-t/\tau} \to 0$ et $u_C \to A$ : la valeur de $A$ est le niveau de l'asymptote horizontale de la courbe. Sur la figure 2, ce palier est au niveau de la ligne $25\ \text{V}$. Et comme $A = E$ (question 1-2), cette lecture RÉCOLTE aussi la f.é.m., que l'énoncé ne donne nulle part ailleurs : $E = 25\ \text{V}$ — elle servira aux questions 2-2 et 2-3.
 
-          **$\tau$ — la tangente à l'origine.** Le rung R3 l'établit sur cette courbe croissante exactement : la tangente à l'origine coupe l'asymptote $u_C = A$ à l'instant $t = \tau$. Sur la figure 2, la droite en pointillés atteint le niveau du palier à l'aplomb de la graduation $40\ \text{s}$. Contrôle par la seconde méthode du même rung — les $63\ \%$ : $0{,}63\times25 \approx 15{,}8\ \text{V}$, un niveau que la courbe atteint bien vers $t \approx 40\ \text{s}$. Les deux lectures concordent.
+          **$\tau$ — la tangente à l'origine.** le chapitre 4 l'établit sur cette courbe croissante exactement : la tangente à l'origine coupe l'asymptote $u_C = A$ à l'instant $t = \tau$. Sur la figure 2, la droite en pointillés atteint le niveau du palier à l'aplomb de la graduation $40\ \text{s}$. Contrôle par la seconde méthode du même chapitre — les $63\ \%$ : $0{,}63\times25 \approx 15{,}8\ \text{V}$, un niveau que la courbe atteint bien vers $t \approx 40\ \text{s}$. Les deux lectures concordent.
 
           **$R$, en isolant dans $\tau = RC$.**
         steps:
           - math: '\boxed{A = 25\ \text{V}} \quad \text{(niveau de l asymptote ; et } A = E \text{, question 1-2 : la f.e.m. est recoltee ici)}'
-            note: "Lecture du palier de la courbe (rung R3). E = 25 V servira aux questions 2-2 et 2-3."
+            note: "Lecture du palier de la courbe (chapitre 4). E = 25 V servira aux questions 2-2 et 2-3."
           - math: '\boxed{\tau = 40\ \text{s}} \quad \text{(tangente a l origine coupant le niveau de l asymptote ; controle 63 \% concordant)}'
-            note: "Methode de la tangente a l origine (rung R3), recoupee par la methode des 63 %."
+            note: "Methode de la tangente a l origine (chapitre 4), recoupee par la methode des 63 %."
           - math: 'R = \frac{\tau}{C} = \frac{40}{220\times10^{-6}}'
             note: "On isole R dans tau = RC (question 1-2), avec C = 220 microfarads."
           - math: '\boxed{R \approx 1{,}8\times10^{5}\ \Omega}'
@@ -1885,7 +1885,7 @@ entries:
         stem: |-
           **2-1-** (1 pt) Soit $t_S$ la date à laquelle la tension $u_C$ atteint la valeur limite $U_S$ , exprimer $t_S$ en fonction de $E$, $\tau$ et $U_S$. *(« $U_S$ , exprimer » tel qu'imprimé — espace avant la virgule, défaut typographique du sujet officiel, sans incidence.)*
         reasoning: |-
-          SCOPE NOTE (voir l'en-tête du fichier) : aucun rung de cette leçon ne manipule le logarithme népérien — R3 lit $\tau$ graphiquement, jamais par résolution algébrique d'une date. Le pont tient en une ligne : $\ln$ est la fonction RÉCIPROQUE de l'exponentielle ($\ln(e^x) = x$ pour tout $x$), c'est donc l'outil qui extrait un temps prisonnier d'un exposant. On le refait ici pas à pas, jamais « on admet ».
+          SCOPE NOTE (voir l'en-tête du fichier) : aucun chapitre de cette leçon ne manipule le logarithme népérien — le chapitre 4 lit $\tau$ graphiquement, jamais par résolution algébrique d'une date. Le pont tient en une ligne : $\ln$ est la fonction RÉCIPROQUE de l'exponentielle ($\ln(e^x) = x$ pour tout $x$), c'est donc l'outil qui extrait un temps prisonnier d'un exposant. On le refait ici pas à pas, jamais « on admet ».
 
           On écrit que la solution de la question 1-2 vaut $U_S$ à l'instant $t_S$, et on isole méthodiquement : d'abord l'exponentielle seule, puis son exposant par $\ln$, puis $t_S$.
 
@@ -1894,7 +1894,7 @@ entries:
           En prenant le logarithme népérien des deux membres, et en utilisant $\ln(a/b) = -\ln(b/a)$ pour rendre le résultat positif :
         steps:
           - math: 'e^{-t_S/\tau} = \frac{E-U_S}{E} \implies -\frac{t_S}{\tau} = \ln\!\left(\frac{E-U_S}{E}\right)'
-            note: "L exponentielle est isolee, puis ln extrait l exposant (ln est la reciproque de exp -- pont hors rungs, voir la scope note en tete de fichier)."
+            note: "L exponentielle est isolee, puis ln extrait l exposant (ln est la reciproque de exp -- pont hors chapitres, voir la scope note en tete de fichier)."
           - math: '\boxed{t_S = \tau\,\ln\!\left(\frac{E}{E-U_S}\right)}'
             note: "Le signe moins retourne le rapport dans le logarithme : E > E - U_S, donc t_S est bien positif."
       - id: q6
@@ -1915,7 +1915,7 @@ entries:
         stem: |-
           **2-3-** (0,75 pt) Déterminer la valeur limite $R_S$ de la résistance du conducteur ohmique qui permettra à l'habitant d'arriver chez soi *(« chez soi » tel qu'imprimé — G11)* avant que la lampe s'éteigne. (On considère que les valeurs de $C$, $E$ et $U_S$ n'ont pas changé).
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. La durée d'allumage $t_S = RC\,\ln\!\left(\dfrac{E}{E-U_S}\right)$ (questions 1-2 et 2-1) est PROPORTIONNELLE à $R$ : augmenter la résistance ralentit la charge (le mécanisme du rung R1 — moins de courant, une charge plus lente) et retarde l'extinction. La valeur LIMITE $R_S$ est celle pour laquelle la lampe s'éteint exactement à l'arrivée de l'habitant, $t_S = \Delta t$ ; toute résistance $R \ge R_S$ convient.
+          Ce qu'on cherche et pourquoi ce geste. La durée d'allumage $t_S = RC\,\ln\!\left(\dfrac{E}{E-U_S}\right)$ (questions 1-2 et 2-1) est PROPORTIONNELLE à $R$ : augmenter la résistance ralentit la charge (le mécanisme du chapitre 2 — moins de courant, une charge plus lente) et retarde l'extinction. La valeur LIMITE $R_S$ est celle pour laquelle la lampe s'éteint exactement à l'arrivée de l'habitant, $t_S = \Delta t$ ; toute résistance $R \ge R_S$ convient.
 
           $$R_S\,C\,\ln\!\left(\frac{E}{E-U_S}\right) = \Delta t \implies R_S = \frac{\Delta t}{C\,\ln\!\left(\frac{E}{E-U_S}\right)}$$
         steps:

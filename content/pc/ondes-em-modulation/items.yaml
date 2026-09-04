@@ -159,7 +159,7 @@ items:
       L'amplitude instantanée $U_0+s_m(t)$ suit fidèlement les hauts et les
       bas du signal informatif, décalée de $U_0$. La fréquence de
       l'oscillation rapide, $f_p$, ne change jamais : c'est elle qui permet
-      à l'antenne de rayonner efficacement (R1), pas elle qui porte
+      à l'antenne de rayonner efficacement (chapitre 2), pas elle qui porte
       l'information.
     solution: |
       $$s(t) = \big(U_0 + s_m(t)\big)\cos(2\pi f_p t)$$
@@ -234,7 +234,7 @@ items:
       largement $f_p \gg f_{signal}$.
     solution: |
       La porteuse est, par définition, la fréquence haute et fixe qui
-      autorise un rayonnement efficace (R1) ; le signal informatif est la
+      autorise un rayonnement efficace (chapitre 2) ; le signal informatif est la
       fréquence basse, celle qui varie et porte le message.
 
       Ici $f_p = 1\ \text{MHz} = 10^{6}\ \text{Hz}$ et
@@ -416,7 +416,7 @@ items:
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
         feedback: >
-          Cette étape-là, c'est la démodulation (détection de crête, R4),
+          Cette étape-là, c'est la démodulation (détection de crête, chapitre 5),
           qui intervient après le circuit accordé. Le circuit accordé, lui,
           sélectionne une porteuse parmi plusieurs : il ne touche pas encore
           au signal informatif à l'intérieur.
@@ -795,7 +795,7 @@ items:
     correct_feedback: >
       Une porteuse seule oscille toujours de la même façon : rien n'y
       varie au rythme d'un message. C'est en faisant varier son amplitude
-      au rythme de $s_m(t)$ qu'on lui fait porter une information (R2).
+      au rythme de $s_m(t)$ qu'on lui fait porter une information (chapitre 3).
     solution: |
       $u_p(t)=U_0\cos(2\pi f_p t)$ est parfaitement répétitive : elle se
       reproduit identique à chaque période, sans rien qui distingue un
@@ -907,7 +907,7 @@ items:
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
         feedback: >
-          C'est le rôle du circuit accordé (R5), pas celui de la diode :
+          C'est le rôle du circuit accordé (chapitre 6), pas celui de la diode :
           la sélection de station se fait avant, la diode intervient
           ensuite pour démoduler.
     correct_feedback: >
@@ -1505,7 +1505,7 @@ items:
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
         feedback: >
-          La sélection de station est le rôle du circuit accordé (R5), en
+          La sélection de station est le rôle du circuit accordé (chapitre 6), en
           amont, pas de la diode : celle-ci participe à la démodulation,
           une étape distincte.
     correct_feedback: >

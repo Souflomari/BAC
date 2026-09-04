@@ -111,7 +111,7 @@ Sartre (XXe siècle, *L'Être et le Néant*, 1943) prolonge, à sa manière, l'i
      regard"), très couramment citée telle quelle dans les manuels français de terminale -- édition et
      pagination exactes à vérifier avant publication si une référence précise (page) est requise. -->
 
-### Applique le mécanisme : reviens à la chambre de R0
+### Applique le mécanisme : reviens à la chambre du chapitre 1
 
 **Ce que ce mécanisme permet de voir, précisément, dans la scène du chapitre 1 :** ce qui a basculé, dans l'instant où ta sœur est entrée, ce n'est pas seulement une peur ordinaire de son jugement — c'est la découverte brutale que tu existes aussi comme un objet regardé, en train de te donner en spectacle à toi-même sans public — une dimension de ton être qu'aucune répétition solitaire, aussi longue soit-elle, n'aurait jamais pu te révéler par elle-même. Le rougissement, la voix qui se casse : les signes mêmes de cette découverte, imposée de l'extérieur.
 
@@ -144,7 +144,7 @@ Cette thèse éclaire la réplique la plus célèbre de Sartre, tirée de la pi�
 
 **Voici l'erreur la plus fréquente à son sujet, et ce qu'il faut lui substituer.** On cite souvent cette phrase comme si Sartre voulait simplement dire que les autres sont pénibles, agaçants, une source ordinaire de contrariété — un sens de bon sens, presque une plainte. Ce n'est pas ce que la phrase signifie chez Sartre. Dans la pièce, trois personnages morts se retrouvent enfermés ensemble pour l'éternité, dans une pièce sans miroir : chacun ne peut plus se voir ni se juger que par le regard des deux autres, un regard qu'il ne peut ni fuir, ni faire taire, ni contrôler, et qui le fige, pour toujours, dans une image de lui-même qu'il n'a pas choisie. **Le sens exact de la formule :** l'enfer, ce n'est pas la simple présence désagréable d'autrui — c'est d'être structurellement dépendant du regard d'un autre pour savoir ce que je suis, sans jamais pouvoir reprendre, une fois pour toutes, la maîtrise de cette image de moi qu'un regard étranger fixe et fige, hors de mon contrôle.
 
-### Applique la distinction : le regard qui objective, dans la chambre de R0
+### Applique la distinction : le regard qui objective, dans la chambre du chapitre 1
 
 Reviens, une nouvelle fois, à la scène du chapitre 1. Le regard de ta sœur ne t'a pas seulement révélé une part de toi-même (chapitre 4) : il t'a aussi, dans le même mouvement, figé dans un rôle que tu n'as pas choisi — celui qu'on a surpris en train de jouer, tout seul, à l'orateur. Tu ne contrôles plus, à cet instant, l'image que ce regard s'est faite de toi ; tenter de « rattraper » la situation par une blague ou une explication, c'est précisément chercher à redevenir sujet, à reprendre la main sur un regard qui, pour un instant, t'avait réduit à un objet dans le monde de quelqu'un d'autre.
 
@@ -178,7 +178,7 @@ Husserl cherchait à connaître autrui (par analogie) ; Hegel et Sartre décriva
 
 **Le point le plus étranger à tout ce qu'on a vu jusqu'ici, et le plus important à isoler :** cette responsabilité, chez Levinas, est **asymétrique** — je suis responsable d'autrui indépendamment de ce que lui-même fait ou ne fait pas en retour envers moi. Ce n'est pas une reconnaissance mutuelle à construire à deux, comme chez Hegel ; ce n'est pas davantage un conflit entre deux libertés égales qui se disputent la position de sujet, comme chez Sartre. C'est un appel à sens unique, qui m'oblige moi, quelle que soit la réponse de l'autre. Pour Levinas, cette responsabilité — l'éthique, entendue comme rapport à autrui — précède la connaissance et la liberté ; elle en est même, à ses yeux, la condition la plus profonde.
 
-### Applique la distinction : le visage, pas le regard, dans la chambre de R0
+### Applique la distinction : le visage, pas le regard, dans la chambre du chapitre 1
 
 **Ce que Levinas changerait à la lecture de la scène du chapitre 1 :** là où Sartre voyait, dans le regard de ta sœur, une menace pour ta liberté (elle te fige, elle t'objective), Levinas verrait, dans son seul fait d'être là, présente, vulnérable elle-même dans cet instant, un appel muet à être reconnue, respectée — un appel qui ne dépend pas de ce qu'elle pense de toi, ni de ce que tu ressens face à elle, mais qui s'impose dès qu'un visage humain se trouve devant toi.
 

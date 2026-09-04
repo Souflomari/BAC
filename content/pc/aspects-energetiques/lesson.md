@@ -48,7 +48,7 @@ Cette grandeur va être au centre de toute la leçon : le chapitre suivant const
 
 ## R2 — Le mécanisme : le théorème de l'énergie cinétique
 
-### La question que ce rung résout
+### La question que ce chapitre résout
 
 On sait, depuis les lois de Newton, que la somme des forces détermine l'accélération : $\sum \vec{F}_{ext} = m\vec{a}_G$. Mais retrouver une vitesse à partir de là demande, en général, tout un détour : bilan des forces, projection, primitivation une fois pour la vitesse, une deuxième fois pour la position. Ce chapitre construit un raccourci qui relie directement les forces à la variation de $E_c$, sans repasser par tout ce détour.
 
@@ -136,7 +136,7 @@ Retiens cette image : c'est exactement ce qu'il nous faudra pour le ressort, un 
 
 ## R3 — Le travail du poids ne dépend pas du chemin suivi
 
-### Revenons à la question de R0
+### Revenons à la question du chapitre 1
 
 Tu as maintenant l'outil qu'il faut : le TEC dit que $\Delta E_c = \sum W(\vec{F}_{ext})$. Pour comparer la bille en chute libre et la bille sur le toboggan, il faut donc comparer le travail du poids sur les deux trajets — l'un rectiligne vertical, l'autre un chemin sinueux. Est-ce que ces deux travaux sont égaux ?
 
@@ -160,7 +160,7 @@ Voici le réflexe fautif à éliminer : penser qu'un chemin plus long "fatigue" 
 
 [[figure:travail-poids-chemin]]
 
-### Résoudre la question de R0
+### Résoudre la question du chapitre 1
 
 La bille en chute libre et la bille sur le toboggan partent toutes deux de la même altitude et arrivent toutes deux à la même altitude, sans frottement dans les deux cas. Donc $W(\vec{P})$ est **strictement le même** dans les deux cas, malgré la longueur très différente des deux chemins. Par le TEC, $\Delta E_c$ ne dépend, ici, que de $W(\vec{P})$ (aucune autre force ne travaille : les frottements sont négligés, et la réaction de la piste, si elle en exerce une, est perpendiculaire au déplacement à chaque instant, donc de travail nul) — donc $\Delta E_c$ est le même dans les deux cas, et les deux billes arrivent avec **exactement la même vitesse**.
 

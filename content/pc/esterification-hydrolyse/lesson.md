@@ -169,7 +169,7 @@ Tu as vu, dans le chapitre sur les transformations lentes et rapides, que la con
 
 Un chimiste dispose de deux leviers, en plus de la concentration déjà connue, pour l'accélérer : le **chauffage** et un **catalyseur acide** (typiquement, quelques gouttes d'acide sulfurique concentré - exactement ce qui était versé dans le ballon du chapitre précédent).
 
-### Teste ta prédiction du rung R0
+### Teste ta prédiction du chapitre 1
 
 Voici le test qui tranche. Deux flacons contiennent chacun le même mélange équimolaire d'acide et d'alcool (estérification simple, $K = 4$).
 

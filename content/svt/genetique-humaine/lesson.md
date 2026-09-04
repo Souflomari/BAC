@@ -75,7 +75,7 @@ $$\Longrightarrow \text{l'allèle est récessif, et les deux parents sont hété
 
 C'est un raisonnement par élimination, pas une supposition : si l'allèle était dominant, l'un des deux parents devrait être atteint, puisqu'il porterait forcément cet allèle pour le transmettre. Comme aucun des deux ne l'est, l'hypothèse dominante est directement contredite par l'observation — il ne reste que l'hypothèse récessive.
 
-### Application à la famille du R1
+### Application à la famille du chapitre 2
 
 Reprends le tableau : I-1 et I-2 sont tous les deux sains, et pourtant leur fille II-1 est atteinte de drépanocytose. D'après le test ci-dessus, l'allèle est **récessif**. Notons-le, comme dans le chapitre précédent, avec la lettre $A$ pour l'allèle sain (dominant) et $a$ pour l'allèle drépanocytaire (récessif). On peut alors affirmer, avec certitude :
 
@@ -184,7 +184,7 @@ Regarde en arrière : certaines déductions de cette leçon sont **certaines** (
 3. **Attribuer les génotypes certains**, individu par individu, à partir du mode déduit.
 4. **Pour un individu dont le génotype reste incertain** (phénotype sain, mais parents connus hétérozygotes) : ne garder, parmi les cas de l'échiquier, que ceux compatibles avec le phénotype observé, puis **renormaliser** les proportions à l'intérieur de ce sous-ensemble.
 
-### Cas d'étude : reprendre la famille du R1-R2, et calculer enfin le génotype de II-2
+### Cas d'étude : reprendre la famille des chapitres 2 à 3, et calculer enfin le génotype de II-2
 
 Rappel du chapitre 3 : I-1 et I-2 sont $A//a$ ; II-1 (atteinte) est $a//a$ ; II-2 (sain) reste incertain. L'échiquier $A//a \times A//a$ donne, parmi TOUS les enfants possibles (atteints ou non) : $\frac14$ de $A//A$, $\frac24$ de $A//a$, $\frac14$ de $a//a$.
 

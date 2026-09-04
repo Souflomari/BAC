@@ -56,7 +56,7 @@ La **violence**, enfin, désigne un usage de la force sur autrui qui ne procède
 
 Trois conditions, déjà esquissées dans la leçon « L'État », permettent de trancher : la contrainte découle d'une règle à l'élaboration de laquelle celui qui la subit a, en principe, part (une loi, non un caprice) ; elle s'applique selon une procédure connue à l'avance, la même pour tous ; et elle peut être contestée devant un tiers impartial, qui n'est ni la victime, ni l'auteur de l'acte initial. **Voici pourquoi cette troisième condition est décisive.** Locke le remarquait déjà à propos de l'état de nature (cf. « L'État », chapitre 4) : dès que je deviens juge dans ma propre cause, je m'incline presque inévitablement à me montrer partial en ma propre faveur. Un acte de contrainte accompli par quelqu'un qui est à la fois accusateur, juge et exécuteur — sans qu'aucun tiers ne puisse venir vérifier si la réaction était proportionnée, justifiée, nécessaire — reste, quelle que soit la culpabilité réelle de sa cible, un acte de violence au sens précis du terme, et non une force légitime.
 
-### Applique la distinction : reviens à R0
+### Applique la distinction : reviens au chapitre 1
 
 **Ce que cette distinction permet de voir, précisément, dans la scène du chapitre 1 :** les quatre voisins ont exercé une force sur un homme dont la culpabilité, ce soir-là, ne faisait guère de doute. Mais rien ne les habilitait, eux, à décider seuls de la sanction, ni à l'infliger eux-mêmes sans qu'aucun tiers ne puisse en vérifier la proportion — ils étaient, tout à la fois, ceux qui accusaient, ceux qui jugeaient et ceux qui exécutaient. C'est très exactement ce qui distingue leur geste de celui, tout aussi physique, qu'un policier aurait légitimement pu accomplir : non la violence du contact, mais l'absence de toute procédure et de tout tiers impartial encadrant son usage.
 
@@ -84,7 +84,7 @@ Tu as déjà rencontré ce principe kantien dans les leçons « Le devoir » et 
 
 On peut relire ce mécanisme à la lumière du conflit des libertés décrit par Sartre (cf. la leçon « Autrui », chapitre 5) : chaque conscience cherche à demeurer sujet, jamais purement objet dans le regard ou l'action d'un autre. Le regard, chez Sartre, opère déjà une forme d'objectivation — mais elle reste réversible, puisque je peux, à tout instant, regarder à mon tour et redevenir sujet. **La violence physique pousse ce même mécanisme à son terme le plus radical :** pendant l'instant où elle s'exerce, la victime ne peut plus retourner le regard ni reprendre la position de sujet — elle est réduite, par la contrainte physique elle-même, à un pur objet manipulable, sans plus aucune prise sur la situation, le temps que dure l'acte.
 
-### Applique le mécanisme : reviens à R0
+### Applique le mécanisme : reviens au chapitre 1
 
 **Ce que ce critère permet de voir, précisément, dans la scène du chapitre 1 :** quelle que soit la culpabilité du voleur, l'instant où il a été frappé au sol, incapable de se relever, est l'instant où il a cessé d'être traité comme un sujet capable de répondre, de s'expliquer, d'être entendu — pour devenir un pur objet sur lequel une force se décharge. C'est précisément ce que préserve, à l'inverse, un procès, même sévère : l'accusé y reste, en droit, un sujet qui peut témoigner, contester, être entendu par un tiers — une possibilité que le passage à tabac, lui, supprime entièrement.
 
@@ -108,7 +108,7 @@ Tu as déjà rencontré, dans la leçon « L'État » (chapitre 3), le raisonnem
 
 **Ce que ce raisonnement change à la façon de comprendre le Léviathan :** l'État, chez Hobbes, n'introduit donc pas la violence dans une humanité par ailleurs pacifique — il est, à l'inverse, ce qui la contient, en retirant à chacun son droit privé de se faire justice lui-même et en le concentrant dans les mains d'un souverain unique, seul habilité à en décider l'usage légitime.
 
-### Applique le mécanisme : reviens à R0
+### Applique le mécanisme : reviens au chapitre 1
 
 **Ce que Hobbes dirait de la scène du chapitre 1 :** ce que les quatre voisins ont fait, cette nuit-là, c'est reprendre, l'espace de vingt minutes, ce droit de nature que le contrat social est censé leur avoir fait déposer entre les mains d'une autorité commune — un retour local et passager à la condition même que l'État existe pour empêcher.
 
@@ -152,7 +152,7 @@ Rousseau (XVIIIe siècle, *Discours sur l'origine et les fondements de l'inégal
 
 **Le point à ne surtout pas manquer :** pour Rousseau, ce n'est donc pas la nature humaine qui rend l'homme violent envers son semblable — c'est, à l'inverse, la société elle-même, et en particulier l'institution de la propriété et la comparaison qu'elle engendre, qui corrompt un être originellement paisible et compatissant.
 
-### Applique la distinction : reviens à R0
+### Applique la distinction : reviens au chapitre 1
 
 **Ce que Rousseau dirait de la scène du chapitre 1 :** la violence de cette nuit-là s'expliquerait moins par une nature agressive — chez le voleur comme chez les quatre voisins — que par des rapports sociaux précis : la misère ou l'exclusion qui a rendu le vol nécessaire pour l'un, l'insécurité et la peur accumulées par les cambriolages répétés qui ont fait déborder la colère des autres. Ni le voleur ni les quatre voisins ne seraient, pour Rousseau, violents « par nature » — la scène tout entière serait le symptôme d'un contexte social qui a manqué à chacun.
 
@@ -164,7 +164,7 @@ Rousseau (XVIIIe siècle, *Discours sur l'origine et les fondements de l'inégal
 
 ## R5 — La violence peut-elle servir une fin juste ? Le débat sur la violence révolutionnaire
 
-### Une question distincte de celle de R1
+### Une question distincte de celle du chapitre 2
 
 Le chapitre 2 demandait ce qui distingue, À L'INTÉRIEUR d'un ordre légal donné, une force légitime d'un acte de violence. Mais une autre question se pose quand c'est l'ordre existant LUI-MÊME qui est jugé profondément injuste : que dire d'une violence qui viserait, non à faire respecter la loi en vigueur, mais à renverser un ordre jugé illégitime dans son ensemble ?
 
@@ -183,7 +183,7 @@ Frantz Fanon (XXe siècle, psychiatre et essayiste, *Les Damnés de la terre*, 1
 
 **Voici, à présent, ce que cette justification rencontre comme limites.** Reprends le chapitre 3 : même mobilisée au service d'une fin jugée juste, la violence reste, dans son geste même, une négation de la personne d'autrui — fût-il oppresseur — puisqu'elle contourne sa liberté au lieu de s'y adresser. Reprends aussi la critique anarchiste (« L'État », chapitre 7) : toute concentration de pouvoir, y compris conquise par une lutte jugée juste, tend structurellement à se retourner contre ceux-là mêmes qu'elle devait libérer. De fait, l'histoire de nombreux mouvements de libération montre que la violence, une fois mobilisée comme moyen, ne s'arrête pas nécessairement une fois la fin visée atteinte : elle peut se retourner contre d'anciens alliés, ou fonder un nouvel ordre qui reproduit, sous une autre bannière, des logiques de contrainte comparables à celles qu'il combattait.
 
-### Applique la tension : reviens à R0
+### Applique la tension : reviens au chapitre 1
 
 **Ce que cette tension permet de voir, à une tout autre échelle, dans la scène du chapitre 1 :** le geste des quatre voisins pose déjà, en miniature, exactement ce dilemme — une fin jugée juste (protéger le quartier, faire cesser les cambriolages) suffit-elle à légitimer n'importe quel moyen mis à son service, ou la nature du moyen employé reste-t-elle, elle aussi, à juger indépendamment de la fin poursuivie ?
 
@@ -213,11 +213,11 @@ Gandhi (XXe siècle, figure du mouvement d'indépendance indien) refuse les deux
      traduction française précise ; à vérifier sur l'édition de référence avant publication si une
      citation exacte est requise. -->
 
-### Ce que cela évite, à la fois par rapport à R5 et à la passivité
+### Ce que cela évite, à la fois par rapport au chapitre 6 et à la passivité
 
 Comparé à la violence révolutionnaire (chapitre 6), le satyagraha refuse de nier la personne de l'adversaire, même en le combattant activement. Comparé à la pure soumission, il refuse tout autant de renoncer à résister : il agit, avec constance et organisation, contre l'ordre jugé injuste — mais par des moyens qui n'en nient pas, eux, la liberté ni la personne, ni celle de l'adversaire ni celle du résistant lui-même.
 
-### Applique la distinction : reviens à R0
+### Applique la distinction : reviens au chapitre 1
 
 **Ce que Gandhi dirait de la scène du chapitre 1 :** si les quatre voisins avaient répondu à l'insécurité de leur quartier par une résistance active mais non-violente — organiser une présence collective visible et continue, documenter et rendre publiques les défaillances répétées de la police, alerter les autorités avec insistance — ils auraient agi avec autant de détermination, sans reproduire sur le voleur le geste même qu'ils lui reprochaient : une atteinte à l'intégrité et à la sécurité d'autrui.
 
@@ -229,7 +229,7 @@ Comparé à la violence révolutionnaire (chapitre 6), le satyagraha refuse de n
 
 ## R7 — Au-delà du monopole légitime : l'État peut-il être lui-même une forme de violence ?
 
-### Ce que R1 laisse en suspens
+### Ce que le chapitre 2 laisse en suspens
 
 Le chapitre 2 a établi les critères — loi, procédure, tiers impartial — qui distinguent, chez Weber, une contrainte légitime d'un acte de violence. Mais cette légitimité, une fois établie sociologiquement (reconnue, obéie), suffit-elle à mettre l'État définitivement à l'abri de toute violence — ou peut-il continuer d'exercer, par d'autres moyens que la contrainte physique directe, une forme de domination qui ne dit pas son nom ?
 

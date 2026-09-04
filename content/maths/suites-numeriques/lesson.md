@@ -476,7 +476,7 @@ $$u_{n+1} = \frac{a\,u_n + b}{c\,u_n + d} \qquad \text{avec } c \neq 0$$
 
 On dit alors que la suite est **homographique** : le terme suivant est un quotient de deux expressions affines du terme précédent. Par exemple $u_{n+1} = \dfrac{2u_n}{u_n+4}$, ou $u_{n+1} = \dfrac{u_n}{5-2u_n}$, ou $u_{n+1} = \dfrac{3u_n-1}{u_n+2}$. Le $c \neq 0$ est tout ce qui change : si $c = 0$, on divise par une constante et on retombe sur une relation affine, donc sur le chapitre 9.
 
-### Le geste du R8, mis à l’épreuve
+### Le geste du chapitre 9, mis à l’épreuve
 
 Travaillons sur un exemple concret d’un bout à l’autre : $u_0 = 3$ et
 

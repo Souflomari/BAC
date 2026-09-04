@@ -55,13 +55,13 @@ exercises:
           - **B.** n'est formée que de deux radiations différentes ;
           - **C.** est polychromatique.
         reasoning: |-
-          Un prisme ne crée pas des couleurs à partir de rien : il ne fait que dévier différemment des couleurs **déjà présentes** dans le faisceau incident (c'est la dispersion, revue en R5). Si l'écran montre tout un spectre étalé, c'est donc que la lumière blanche contenait, dès le départ, un mélange de plusieurs longueurs d'onde. Une lumière d'une seule couleur (monochromatique) ressortirait en un unique trait dévié, jamais en spectre. La bonne réponse est donc **C : la lumière blanche est polychromatique** (elle superpose toutes les couleurs du spectre visible).
+          Un prisme ne crée pas des couleurs à partir de rien : il ne fait que dévier différemment des couleurs **déjà présentes** dans le faisceau incident (c'est la dispersion, revue au chapitre 6). Si l'écran montre tout un spectre étalé, c'est donc que la lumière blanche contenait, dès le départ, un mélange de plusieurs longueurs d'onde. Une lumière d'une seule couleur (monochromatique) ressortirait en un unique trait dévié, jamais en spectre. La bonne réponse est donc **C : la lumière blanche est polychromatique** (elle superpose toutes les couleurs du spectre visible).
       - id: q2
         part: "Partie 2 — Deux radiations dans le prisme : fréquence, célérités, dispersion"
         stem: |-
           **(0,5 pt)** On éclaire maintenant le prisme successivement par deux radiations, l'une rouge, l'autre jaune. Calculer la fréquence $\nu_j$ de la radiation jaune.
         reasoning: |-
-          La fréquence d'une radiation est **imposée par la source** et ne dépend pas du milieu traversé (R4) : on peut donc la calculer à partir de la longueur d'onde **dans le vide** $\lambda_{0j}$, la seule des deux valeurs qui ne dépend pas du trajet. La relation qui relie fréquence, longueur d'onde et célérité est $\lambda = v/\nu$ ; dans le vide, $v = c$, donc $\lambda_{0j} = c/\nu_j$, d'où $\nu_j = c/\lambda_{0j}$. Attention à convertir la longueur d'onde en mètres avant de diviser.
+          La fréquence d'une radiation est **imposée par la source** et ne dépend pas du milieu traversé (chapitre 5) : on peut donc la calculer à partir de la longueur d'onde **dans le vide** $\lambda_{0j}$, la seule des deux valeurs qui ne dépend pas du trajet. La relation qui relie fréquence, longueur d'onde et célérité est $\lambda = v/\nu$ ; dans le vide, $v = c$, donc $\lambda_{0j} = c/\nu_j$, d'où $\nu_j = c/\lambda_{0j}$. Attention à convertir la longueur d'onde en mètres avant de diviser.
         steps:
           - math: '\lambda_{0j} = \dfrac{c}{\nu_j} \implies \nu_j = \dfrac{c}{\lambda_{0j}}'
             note: "On part de λ = c/ν dans le vide, puis on isole la fréquence."
@@ -81,13 +81,13 @@ exercises:
         stem: |-
           **(0,25 pt)** Quelle propriété du prisme est mise en évidence par les résultats de la question précédente ?
         reasoning: |-
-          Les deux célérités trouvées sont **différentes** : $v_j \approx 1{,}81\times10^{8}\ \text{m.s}^{-1}$ pour le jaune, $v_r \approx 1{,}85\times10^{8}\ \text{m.s}^{-1}$ pour le rouge. Or dans un milieu, $v = c/n$ : deux vitesses différentes signifient deux indices différents, donc l'indice du verre **dépend de la couleur** (de la fréquence) de la radiation. C'est exactement la propriété qui rend la dispersion possible (R5) : le prisme est un **milieu dispersif**. C'est pour cela que la lumière blanche, mélange de plusieurs couleurs, en ressort étalée en spectre.
+          Les deux célérités trouvées sont **différentes** : $v_j \approx 1{,}81\times10^{8}\ \text{m.s}^{-1}$ pour le jaune, $v_r \approx 1{,}85\times10^{8}\ \text{m.s}^{-1}$ pour le rouge. Or dans un milieu, $v = c/n$ : deux vitesses différentes signifient deux indices différents, donc l'indice du verre **dépend de la couleur** (de la fréquence) de la radiation. C'est exactement la propriété qui rend la dispersion possible (chapitre 6) : le prisme est un **milieu dispersif**. C'est pour cela que la lumière blanche, mélange de plusieurs couleurs, en ressort étalée en spectre.
       - id: q5
         part: "Partie 3 — Diffraction par une fente, puis par un cheveu"
         stem: |-
           **(0,5 pt)** On éclaire maintenant, avec une radiation laser de longueur d'onde $\lambda$, une fente fine horizontale de largeur $a = 0{,}06\ \text{mm}$. Sur un écran placé à la distance $D$ de la fente, on observe une figure de diffraction : des taches alignées verticalement, dont la tache centrale a une largeur $L$. Établir l'expression de $L$ en fonction de $\lambda$, $a$ et $D$ (l'angle $\theta$ étant petit, on prend $\tan\theta \approx \theta$).
         reasoning: |-
-          La diffraction étale le faisceau de part et d'autre de la direction incidente, sur un demi-écart angulaire $\theta = \lambda/a$ (formule de R3). Sur l'écran, à la distance $D$, ce demi-angle se traduit par une demi-largeur de la tache centrale $L/2 = D\tan\theta$. Comme $\theta$ est petit, $\tan\theta \approx \theta = \lambda/a$, donc $L/2 = D\lambda/a$. La tache étant symétrique, sa largeur totale est le double.
+          La diffraction étale le faisceau de part et d'autre de la direction incidente, sur un demi-écart angulaire $\theta = \lambda/a$ (formule du chapitre 4). Sur l'écran, à la distance $D$, ce demi-angle se traduit par une demi-largeur de la tache centrale $L/2 = D\tan\theta$. Comme $\theta$ est petit, $\tan\theta \approx \theta = \lambda/a$, donc $L/2 = D\lambda/a$. La tache étant symétrique, sa largeur totale est le double.
         steps:
           - math: '\theta = \dfrac{\lambda}{a} \qquad \text{et} \qquad \dfrac{L}{2} = D\tan\theta \approx D\,\theta'
             note: "Demi-écart angulaire de diffraction, et demi-largeur lue sur l'écran (petits angles)."
@@ -148,7 +148,7 @@ exercises:
         stem: |-
           On dirige ensuite le même faisceau vert dans une cuve remplie d'un liquide transparent d'indice de réfraction $n = 1{,}47$. Calculer la vitesse $v$ de propagation de la lumière dans ce liquide, ainsi que sa longueur d'onde $\lambda$ dans le liquide.
         reasoning: |-
-          Deux relations de R2 et R4, à ne pas confondre : la vitesse se retrouve par $v = c/n$ (l'indice ralentit la lumière, $v < c$ car $n \geq 1$), et la longueur d'onde dans le milieu par $\lambda = \lambda_0/n$ (elle diminue, puisque $v$ diminue et que $\nu$ reste fixe). Ce sont les mêmes gestes que dans le sujet, transposés d'un prisme à un liquide.
+          Deux relations des chapitres 3 et 5, à ne pas confondre : la vitesse se retrouve par $v = c/n$ (l'indice ralentit la lumière, $v < c$ car $n \geq 1$), et la longueur d'onde dans le milieu par $\lambda = \lambda_0/n$ (elle diminue, puisque $v$ diminue et que $\nu$ reste fixe). Ce sont les mêmes gestes que dans le sujet, transposés d'un prisme à un liquide.
         steps:
           - math: 'v = \dfrac{c}{n} = \dfrac{3\times10^{8}}{1{,}47} \approx 2{,}04\times10^{8}\ \text{m.s}^{-1}'
             note: "v < c, cohérent avec n ≥ 1 (le liquide ralentit la lumière)."
@@ -158,7 +158,7 @@ exercises:
         stem: |-
           La couleur perçue de ce faisceau change-t-elle lorsqu'il pénètre dans le liquide ? Justifie à partir de la fréquence.
         reasoning: |-
-          Le piège serait de conclure à partir de la valeur numérique de $\lambda$ dans le liquide. Or ce qui fixe la couleur perçue, c'est la **fréquence** $\nu$ — et elle est imposée par la source, donc **invariante** en changeant de milieu (R4). On la calcule dans le vide, $\nu = c/\lambda_0$, et cette valeur reste la même dans le liquide. Le faisceau reste donc vert, même si sa longueur d'onde y vaut numériquement $362\ \text{nm}$.
+          Le piège serait de conclure à partir de la valeur numérique de $\lambda$ dans le liquide. Or ce qui fixe la couleur perçue, c'est la **fréquence** $\nu$ — et elle est imposée par la source, donc **invariante** en changeant de milieu (chapitre 5). On la calcule dans le vide, $\nu = c/\lambda_0$, et cette valeur reste la même dans le liquide. Le faisceau reste donc vert, même si sa longueur d'onde y vaut numériquement $362\ \text{nm}$.
         steps:
           - math: '\nu = \dfrac{c}{\lambda_0} = \dfrac{3\times10^{8}}{532\times10^{-9}} \approx 5{,}6\times10^{14}\ \text{Hz}'
             note: "Fréquence imposée par la source ; elle ne change pas dans le liquide."
@@ -176,7 +176,7 @@ exercises:
         stem: |-
           On envoie enfin de la lumière blanche à travers un prisme en verre flint, pour lequel $n_{rouge} = 1{,}613$ et $n_{violet} = 1{,}632$. Quelle couleur, du rouge ou du violet, est la plus déviée par le prisme ? Laquelle se propage le plus vite **dans le verre** ? Justifie.
         reasoning: |-
-          Tout se joue sur l'indice, qui dépend de la couleur (R5). La loi de Descartes rapproche d'autant plus le rayon réfracté de la normale que $n$ est grand : puisque $n_{violet} > n_{rouge}$, le **violet est le plus dévié**. Et comme $v = c/n$, un indice plus grand donne une vitesse plus faible : le **rouge**, d'indice plus petit, se propage **le plus vite** dans le verre. C'est cette double dépendance en $n$ — déviation et vitesse — qui étale la lumière blanche en spectre, exactement comme la question 4 du sujet le mettait en évidence avec les célérités du rouge et du jaune.
+          Tout se joue sur l'indice, qui dépend de la couleur (chapitre 6). La loi de Descartes rapproche d'autant plus le rayon réfracté de la normale que $n$ est grand : puisque $n_{violet} > n_{rouge}$, le **violet est le plus dévié**. Et comme $v = c/n$, un indice plus grand donne une vitesse plus faible : le **rouge**, d'indice plus petit, se propage **le plus vite** dans le verre. C'est cette double dépendance en $n$ — déviation et vitesse — qui étale la lumière blanche en spectre, exactement comme la question 4 du sujet le mettait en évidence avec les célérités du rouge et du jaune.
         steps:
           - math: 'v_{rouge} = \dfrac{c}{n_{rouge}} = \dfrac{3\times10^{8}}{1{,}613} \approx 1{,}86\times10^{8}\ \text{m.s}^{-1}'
             note: "Indice plus petit pour le rouge : vitesse plus grande."

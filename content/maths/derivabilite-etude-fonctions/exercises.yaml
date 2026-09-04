@@ -51,9 +51,9 @@ exercises:
         stem: |-
           **(0,5 pt)** Montrer que $f$ est dérivable sur $\mathbb{R}$ et que, pour tout $x$ réel, $f'(x) = 4\left(e^{-x}-1\right)(1-x)$.
         reasoning: |-
-          $f$ est une somme de produits de fonctions qu'on sait dérivables sur $\mathbb{R}$ tout entier : $x \mapsto x$, $x \mapsto e^{-x}$ (composée de $x \mapsto -x$ et de $\exp$), et les fonctions constantes. Une somme et un produit de fonctions dérivables restent dérivables — ce sont exactement les règles vues en R2-R3 de cette leçon, ici appliquées telles quelles : $f$ est donc dérivable sur $\mathbb{R}$, sans qu'il soit besoin de revenir à la définition par la limite du taux d'accroissement.
+          $f$ est une somme de produits de fonctions qu'on sait dérivables sur $\mathbb{R}$ tout entier : $x \mapsto x$, $x \mapsto e^{-x}$ (composée de $x \mapsto -x$ et de $\exp$), et les fonctions constantes. Une somme et un produit de fonctions dérivables restent dérivables — ce sont exactement les règles vues aux chapitres 3 à 4 de cette leçon, ici appliquées telles quelles : $f$ est donc dérivable sur $\mathbb{R}$, sans qu'il soit besoin de revenir à la définition par la limite du taux d'accroissement.
 
-          Pour calculer $f'$, on développe d'abord $f(x)$, puis on dérive terme à terme : le terme en $x \cdot e^{-x}$ demande la règle du produit (R2), les deux autres termes sont des dérivées usuelles. Le résultat brut ne ressemble pas encore à la forme factorisée demandée par l'énoncé — il faut ensuite factoriser en repérant le facteur commun $(1-x)$.
+          Pour calculer $f'$, on développe d'abord $f(x)$, puis on dérive terme à terme : le terme en $x \cdot e^{-x}$ demande la règle du produit (chapitre 3), les deux autres termes sont des dérivées usuelles. Le résultat brut ne ressemble pas encore à la forme factorisée demandée par l'énoncé — il faut ensuite factoriser en repérant le facteur commun $(1-x)$.
         steps:
           - math: 'f(x) = 4x\,e^{-x} + 2x^2 - 4x'
             note: "On développe f pour pouvoir dériver terme à terme."
@@ -117,18 +117,18 @@ exercises:
         reasoning: |-
           La question précédente a établi que, pour tout $x \neq x_0$ dans $[0,1]$, le quotient $\dfrac{f''(x)}{x-x_0}$ est strictement positif. Un quotient positif signifie que le numérateur et le dénominateur ont le même signe. Donc : si $x < x_0$ (donc $x-x_0 < 0$), alors $f''(x) < 0$ aussi ; si $x > x_0$ (donc $x-x_0>0$), alors $f''(x) > 0$ aussi.
 
-          Autrement dit, $f''$ est négative avant $x_0$ et positive après — elle change de signe exactement en $x_0$ (où elle s'annule, d'après la question A). Un changement de signe de $f''$ est précisément le critère du point d'inflexion (vu en R5 de cette leçon) : la concavité de la courbe $(C)$ bascule en ce point, de concave (avant $x_0$) à convexe (après $x_0$).
+          Autrement dit, $f''$ est négative avant $x_0$ et positive après — elle change de signe exactement en $x_0$ (où elle s'annule, d'après la question A). Un changement de signe de $f''$ est précisément le critère du point d'inflexion (vu au chapitre 6 de cette leçon) : la concavité de la courbe $(C)$ bascule en ce point, de concave (avant $x_0$) à convexe (après $x_0$).
 
-          Reste la condition de domaine, vue en R5 comme le piège qui empêchait l'asymptote verticale de l'exemple $\frac{x^2-x+1}{x-1}$ d'être un point d'inflexion : il faut que $f$ soit réellement définie (et deux fois dérivable) en $x_0$. Ici, $f$ est définie sur $\mathbb{R}$ tout entier, et $x_0 \in\ ]0,1[ \subset \mathbb{R}$ : la condition est automatiquement acquise, sans qu'il y ait le moindre piège de ce type. Le point $I(x_0, f(x_0))$ est donc bien un point d'inflexion de $(C)$ — sans qu'on ait eu besoin de connaître $x_0$ explicitement.
+          Reste la condition de domaine, vue au chapitre 6 comme le piège qui empêchait l'asymptote verticale de l'exemple $\frac{x^2-x+1}{x-1}$ d'être un point d'inflexion : il faut que $f$ soit réellement définie (et deux fois dérivable) en $x_0$. Ici, $f$ est définie sur $\mathbb{R}$ tout entier, et $x_0 \in\ ]0,1[ \subset \mathbb{R}$ : la condition est automatiquement acquise, sans qu'il y ait le moindre piège de ce type. Le point $I(x_0, f(x_0))$ est donc bien un point d'inflexion de $(C)$ — sans qu'on ait eu besoin de connaître $x_0$ explicitement.
         steps:
           - math: 'x < x_0 \ \Longrightarrow\ x - x_0 < 0 \ \Longrightarrow\ f''''(x) < 0'
             note: "Un quotient positif impose que le numérateur et le dénominateur aient le même signe."
           - math: 'x > x_0 \ \Longrightarrow\ x - x_0 > 0 \ \Longrightarrow\ f''''(x) > 0'
             note: "Même raisonnement de l'autre côté de x0."
           - math: 'f'''' \text{ change de signe en } x_0, \quad x_0 \in\ ]0,1[\ \subset\ \mathbb{R} = \text{dom}(f)'
-            note: "f est definie sur R tout entier, donc en particulier en x0 : aucune restriction de domaine ne fait obstacle ici, contrairement a l'exemple de l'asymptote verticale vu en R5."
+            note: "f est definie sur R tout entier, donc en particulier en x0 : aucune restriction de domaine ne fait obstacle ici, contrairement a l'exemple de l'asymptote verticale vu au chapitre 6."
           - math: '\Longrightarrow\ I\left(x_0, f(x_0)\right) \text{ est un point d''inflexion de } (C)'
-            note: "Changement de signe de f seconde + domaine verifie = point d'inflexion, exactement le critere pose en R5."
+            note: "Changement de signe de f seconde + domaine verifie = point d'inflexion, exactement le critere pose au chapitre 6."
 
   # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ─────────
   - id: r-variation

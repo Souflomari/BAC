@@ -141,7 +141,7 @@ $$k = -\frac{b}{a}$$
 
 (On a besoin ici que $a \neq 0$ — sinon cette division n'a pas de sens, et l'équation $y'=b$ se traite directement comme une primitive constante, hors du cadre de ce chapitre.) La fonction constante $y_p(x) = -\dfrac{b}{a}$ est donc bien une solution — on l'appelle la **solution particulière constante**, ou le **palier** de l'équation.
 
-### Étape 2 : ramener le cas général au R1
+### Étape 2 : ramener le cas général au chapitre 2
 
 **Ce qu'on cherche ici, et pourquoi ce geste :** on connaît déjà toutes les solutions de $z'=az$ (chapitre 2). L'idée : montrer que l'écart entre n'importe quelle solution $y$ de notre équation et le palier $y_p$ vérifie exactement cette équation plus simple.
 
@@ -229,7 +229,7 @@ $$h(0) = 18e^{-6} \approx 18 \times 0{,}00248 \approx 0{,}045$$
 
 Remarque : $h(0)$ est très petit — cohérent avec $a=3>0$ (croissance exponentielle) : en remontant de $x=2$ vers $x=0$, on redescend fortement, exactement comme prédit par le sens de variation étudié au chapitre 2.
 
-### Fermeture de l'arc : la tasse de café du R0
+### Fermeture de l'arc : la tasse de café du chapitre 1
 
 Reprenons le modèle posé en ouverture : $T'(t) = -k\big(T(t)-20\big)$, avec $k=0{,}1\ \text{min}^{-1}$ (une constante propre à cette tasse, dans cette pièce), et $T(0)=90$.
 
@@ -372,7 +372,7 @@ $$y(x) = e^{\alpha x}\left(A\cos(\beta x) + B\sin(\beta x)\right), \qquad A,B \i
 
 Dans les trois cas, deux constantes libres $A$ et $B$ — c'est la signature d'une équation du **second** ordre, et il faudra toujours **deux** conditions initiales pour les fixer, exactement comme plus haut.
 
-### Arrête-toi : l'oscillateur du R4 est le cas 3
+### Arrête-toi : l'oscillateur du chapitre 5 est le cas 3
 
 Vérifie-le, c'est ce qui fait tenir le chapitre ensemble. L'équation $y''+\omega^2y=0$ s'écrit $ay''+by'+cy=0$ avec $a=1$, $b=0$ et $c=\omega^2$. Son équation caractéristique est donc
 

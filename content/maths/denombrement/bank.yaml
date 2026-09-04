@@ -93,7 +93,7 @@ entries:
       - $B$ : « Obtenir trois boules de même couleur. »
       - $C$ : « Obtenir au moins deux boules de même couleur. »
 
-      Point de méthode : « simultanément » signale un tirage **sans ordre et sans remise** — chaque résultat est un sous-ensemble de 3 boules parmi les 10, compté par une **combinaison** (rung R5). Les boules étant indiscernables au toucher, tous ces tirages sont **équiprobables** (rung R7) : chaque probabilité demandée est un quotient de dénombrements, $\dfrac{\text{card}(E)}{\text{card}(\Omega)}$, avec $\text{card}(\Omega) = \binom{10}{3} = 120$ commun à toutes les questions.
+      Point de méthode : « simultanément » signale un tirage **sans ordre et sans remise** — chaque résultat est un sous-ensemble de 3 boules parmi les 10, compté par une **combinaison** (chapitre 6). Les boules étant indiscernables au toucher, tous ces tirages sont **équiprobables** (chapitre 8) : chaque probabilité demandée est un quotient de dénombrements, $\dfrac{\text{card}(E)}{\text{card}(\Omega)}$, avec $\text{card}(\Omega) = \binom{10}{3} = 120$ commun à toutes les questions.
     questions:
       - id: q1
         part: "Deux probabilités directes"
@@ -102,7 +102,7 @@ entries:
         reasoning: |-
           **Pour $A$** (« trois vertes ») : il n'y a que 3 boules vertes dans toute l'urne, donc il n'existe qu'**une seule** façon de les prendre toutes les trois à la fois — $\binom{3}{3} = 1$. D'où $p(A) = \dfrac{1}{120}$, directement sur le dénominateur commun $120$.
 
-          **Pour $B$** (« trois de même couleur ») : trois couleurs sont en jeu, donc trois façons DISJOINTES de réaliser $B$ — trois vertes, ou trois rouges, ou trois noires — et le mot « ou » entre ces trois cas déclenche le **principe additif** (rung R1) : on compte chaque cas séparément puis on additionne. Un piège discret à repérer : il n'y a qu'**une seule** boule noire dans l'urne, donc il est strictement impossible d'en tirer trois — ce cas contribue $0$, mais il faut le voir et l'écarter explicitement plutôt que l'oublier en ne considérant que le vert et le rouge.
+          **Pour $B$** (« trois de même couleur ») : trois couleurs sont en jeu, donc trois façons DISJOINTES de réaliser $B$ — trois vertes, ou trois rouges, ou trois noires — et le mot « ou » entre ces trois cas déclenche le **principe additif** (chapitre 2) : on compte chaque cas séparément puis on additionne. Un piège discret à repérer : il n'y a qu'**une seule** boule noire dans l'urne, donc il est strictement impossible d'en tirer trois — ce cas contribue $0$, mais il faut le voir et l'écarter explicitement plutôt que l'oublier en ne considérant que le vert et le rouge.
         steps:
           - math: '\text{card}(\Omega) = \binom{10}{3} = \dfrac{10 \times 9 \times 8}{3 \times 2 \times 1} = 120'
             note: "Tirage simultané de 3 boules parmi 10 : dénominateur commun à toute la suite de l'exercice."
@@ -117,9 +117,9 @@ entries:
         stem: |-
           **(1 pt)** Calculer $p(C)$.
         reasoning: |-
-          « Au moins deux boules de même couleur » se décompose en deux cas incompatibles : soit les **trois** boules sont de la même couleur — c'est exactement l'événement $B$ de la question précédente, déjà compté ($\text{card}(B) = 21$) — soit **exactement deux** boules sont d'une même couleur et la troisième d'une couleur différente. Ces deux cas ne peuvent pas se produire ensemble, donc principe additif (rung R1) : on calcule le second cas puis on l'ajoute au premier.
+          « Au moins deux boules de même couleur » se décompose en deux cas incompatibles : soit les **trois** boules sont de la même couleur — c'est exactement l'événement $B$ de la question précédente, déjà compté ($\text{card}(B) = 21$) — soit **exactement deux** boules sont d'une même couleur et la troisième d'une couleur différente. Ces deux cas ne peuvent pas se produire ensemble, donc principe additif (chapitre 2) : on calcule le second cas puis on l'ajoute au premier.
 
-          Le second cas se compte couleur par couleur, et chaque couleur est elle-même un « et » entre deux groupes — la paire d'une couleur, ET une boule d'une AUTRE couleur — donc principe multiplicatif (rung R1) à l'intérieur de chaque couleur. Paire verte : $\binom{3}{2}$ façons, et la troisième boule est prise parmi les $10-3=7$ boules non vertes. Paire rouge : $\binom{6}{2}$ façons, troisième boule parmi les $10-6=4$ non rouges. Une paire noire est impossible : il n'y a qu'une seule boule noire, donc $\binom{1}{2}=0$ — ce cas ne contribue rien, comme pour $B$.
+          Le second cas se compte couleur par couleur, et chaque couleur est elle-même un « et » entre deux groupes — la paire d'une couleur, ET une boule d'une AUTRE couleur — donc principe multiplicatif (chapitre 2) à l'intérieur de chaque couleur. Paire verte : $\binom{3}{2}$ façons, et la troisième boule est prise parmi les $10-3=7$ boules non vertes. Paire rouge : $\binom{6}{2}$ façons, troisième boule parmi les $10-6=4$ non rouges. Une paire noire est impossible : il n'y a qu'une seule boule noire, donc $\binom{1}{2}=0$ — ce cas ne contribue rien, comme pour $B$.
         steps:
           - math: '\binom{3}{2}\times\binom{7}{1} = 3\times 7 = 21'
             note: "Exactement deux vertes : la paire verte (2 parmi 3) ET une boule non verte (1 parmi les 7 rouges ou noire)."
@@ -163,7 +163,7 @@ entries:
 
       Une urne contient dix boules : trois boules blanches, trois boules vertes et quatre boules rouges, indiscernables au toucher. On tire au hasard simultanément trois boules de l'urne.
 
-      Même point de méthode qu'à la question précédente : « simultanément » signale une **combinaison** (rung R5) pour compter les tirages, et l'indiscernabilité des boules donne l'**équiprobabilité** (rung R7) — chaque probabilité est un quotient de dénombrements sur le même dénominateur $\text{card}(\Omega) = \binom{10}{3} = 120$.
+      Même point de méthode qu'à la question précédente : « simultanément » signale une **combinaison** (chapitre 6) pour compter les tirages, et l'indiscernabilité des boules donne l'**équiprobabilité** (chapitre 8) — chaque probabilité est un quotient de dénombrements sur le même dénominateur $\text{card}(\Omega) = \binom{10}{3} = 120$.
     questions:
       - id: q1
         part: "Partie A — L'univers et un comptage direct"
@@ -182,7 +182,7 @@ entries:
         stem: |-
           **(0,75 pt)** Calculer $p(B)$ ; où $B$ est l'évènement « Obtenir trois boules blanches ou trois boules vertes »
         reasoning: |-
-          Le « ou » relie ici deux événements qui ne peuvent pas se produire ensemble — un tirage de 3 boules ne peut pas être à la fois « les 3 blanches » et « les 3 vertes » — donc principe additif (rung R1) : on additionne les deux cardinaux. Il n'y a qu'une seule façon de prendre les 3 blanches ($\binom{3}{3}=1$) et une seule de prendre les 3 vertes ($\binom{3}{3}=1$), les deux groupes ayant exactement 3 boules chacun.
+          Le « ou » relie ici deux événements qui ne peuvent pas se produire ensemble — un tirage de 3 boules ne peut pas être à la fois « les 3 blanches » et « les 3 vertes » — donc principe additif (chapitre 2) : on additionne les deux cardinaux. Il n'y a qu'une seule façon de prendre les 3 blanches ($\binom{3}{3}=1$) et une seule de prendre les 3 vertes ($\binom{3}{3}=1$), les deux groupes ayant exactement 3 boules chacun.
         steps:
           - math: '\text{card}(B) = \underbrace{\binom{3}{3}}_{\text{3 blanches}} + \underbrace{\binom{3}{3}}_{\text{3 vertes}} = 1+1 = 2'
             note: "Deux cas incompatibles, chacun réduit à une seule combinaison possible : principe additif."
@@ -193,7 +193,7 @@ entries:
         stem: |-
           **(0,75 pt)** Montrer que $p(C) = \dfrac{1}{2}$ ; où $C$ est l'évènement « Obtenir exactement une boule rouge »
         reasoning: |-
-          « Exactement une rouge » se décompose en deux choix qui se font ENSEMBLE : choisir **la** boule rouge parmi les 4 rouges, ET choisir les **2 autres** boules parmi les 6 non-rouges. Le « et » entre deux groupes distincts déclenche le principe multiplicatif (rung R1) — on multiplie les deux combinaisons, on ne les additionne surtout pas.
+          « Exactement une rouge » se décompose en deux choix qui se font ENSEMBLE : choisir **la** boule rouge parmi les 4 rouges, ET choisir les **2 autres** boules parmi les 6 non-rouges. Le « et » entre deux groupes distincts déclenche le principe multiplicatif (chapitre 2) — on multiplie les deux combinaisons, on ne les additionne surtout pas.
         steps:
           - math: '\binom{4}{1} = 4'
             note: "Choisir la seule boule rouge parmi les 4 rouges."
@@ -249,14 +249,14 @@ entries:
 
       On tire simultanément au hasard deux boules de cette urne.
 
-      Même point de méthode que dans les deux sujets précédents : « simultanément » signale une combinaison (rung R5) pour compter les tirages, et l'indiscernabilité des boules donne l'équiprobabilité (rung R7) — chaque probabilité est un quotient de dénombrements sur le même dénominateur $\text{card}(\Omega) = \binom{7}{2} = 21$.
+      Même point de méthode que dans les deux sujets précédents : « simultanément » signale une combinaison (chapitre 6) pour compter les tirages, et l'indiscernabilité des boules donne l'équiprobabilité (chapitre 8) — chaque probabilité est un quotient de dénombrements sur le même dénominateur $\text{card}(\Omega) = \binom{7}{2} = 21$.
     questions:
       - id: q1
         part: "Partie A — Deux probabilités par comptage direct"
         stem: |-
           **(0,5 pt)** Montrer que $p(A) = \dfrac{1}{3}$, où $A$ est l'évènement « les deux boules tirées portent le même numéro »
         reasoning: |-
-          « Même numéro » pour une paire signifie que les deux boules viennent du MÊME groupe : trois façons disjointes de réaliser $A$ — les deux du groupe n°1, ou les deux du groupe n°2, ou les deux du groupe n°3 — donc principe additif (rung R1) : on compte chaque groupe séparément puis on additionne. Il n'y a qu'une seule boule numéro 3 dans l'urne, donc il est impossible d'en tirer deux : ce cas contribue $0$, à voir et écarter explicitement plutôt qu'oublier.
+          « Même numéro » pour une paire signifie que les deux boules viennent du MÊME groupe : trois façons disjointes de réaliser $A$ — les deux du groupe n°1, ou les deux du groupe n°2, ou les deux du groupe n°3 — donc principe additif (chapitre 2) : on compte chaque groupe séparément puis on additionne. Il n'y a qu'une seule boule numéro 3 dans l'urne, donc il est impossible d'en tirer deux : ce cas contribue $0$, à voir et écarter explicitement plutôt qu'oublier.
         steps:
           - math: '\text{card}(\Omega) = \binom{7}{2} = \dfrac{7\times6}{2\times1} = 21'
             note: "Tirage simultané de 2 boules parmi 7 : dénominateur commun à toute la suite de l'exercice."
@@ -268,7 +268,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $p(B) = \dfrac{5}{21}$, où $B$ est l'évènement « La somme des numéros des boules tirées est 4 »
         reasoning: |-
-          Une somme de $4$ avec deux numéros parmi $\{1,2,3\}$ n'a que deux décompositions possibles : $1+3$ ou $2+2$. Ces deux cas sont incompatibles (une paire ne peut pas être à la fois « un 1 et un 3 » et « deux 2 »), donc principe additif (rung R1). Le cas $1+3$ est lui-même un « et » entre deux groupes distincts — une boule n°1 ET la boule n°3 — donc principe multiplicatif à l'intérieur de ce cas ; le cas $2+2$ ne demande qu'un seul choix, les deux boules n°2 prises ensemble.
+          Une somme de $4$ avec deux numéros parmi $\{1,2,3\}$ n'a que deux décompositions possibles : $1+3$ ou $2+2$. Ces deux cas sont incompatibles (une paire ne peut pas être à la fois « un 1 et un 3 » et « deux 2 »), donc principe additif (chapitre 2). Le cas $1+3$ est lui-même un « et » entre deux groupes distincts — une boule n°1 ET la boule n°3 — donc principe multiplicatif à l'intérieur de ce cas ; le cas $2+2$ ne demande qu'un seul choix, les deux boules n°2 prises ensemble.
         steps:
           - math: '\binom{4}{1}\times\binom{1}{1} = 4\times1 = 4'
             note: "Somme 4 par (n°1, n°3) : une boule n°1 parmi 4 ET la boule n°3, unique — principe multiplicatif."
@@ -295,7 +295,7 @@ entries:
         stem: |-
           **(0,5 pt)** Les événements $A$ et $B$ sont-ils indépendants ? Justifier.
         reasoning: |-
-          On sort ici du terrain strictement balisé par le corps de la leçon : R1 à R7 ne définissent pas l'indépendance de deux événements. Le critère se pose pourtant simplement, et se teste directement avec les trois probabilités déjà obtenues : deux événements sont indépendants si et seulement si la probabilité de leur intersection est égale au produit de leurs probabilités ; sinon, ils ne le sont pas. On compare donc $p(A\cap B)$, calculé à la question précédente, au produit $p(A)\times p(B)$ des questions 1 et 2, sur un dénominateur commun pour rendre la comparaison directe.
+          On sort ici du terrain strictement balisé par le corps de la leçon : chapitres 2 à 8 ne définissent pas l'indépendance de deux événements. Le critère se pose pourtant simplement, et se teste directement avec les trois probabilités déjà obtenues : deux événements sont indépendants si et seulement si la probabilité de leur intersection est égale au produit de leurs probabilités ; sinon, ils ne le sont pas. On compare donc $p(A\cap B)$, calculé à la question précédente, au produit $p(A)\times p(B)$ des questions 1 et 2, sur un dénominateur commun pour rendre la comparaison directe.
         steps:
           - math: 'p(A)\times p(B) = \dfrac13\times\dfrac{5}{21} = \dfrac{5}{63}'
             note: "Produit des deux probabilités calculées aux questions 1 et 2."
@@ -340,14 +340,14 @@ entries:
       $B$ : « les trois boules tirées portent le même nombre » ;
       $C$ : « les trois boules tirées sont de même couleur et portent le même nombre ».
 
-      Même point de méthode que dans les autres sujets de cette banque : tirage simultané → combinaison (rung R5) ; boules indiscernables → équiprobabilité (rung R7) ; chaque probabilité est un quotient de dénombrements sur le même dénominateur $\text{card}(\Omega) = \binom{9}{3} = 84$.
+      Même point de méthode que dans les autres sujets de cette banque : tirage simultané → combinaison (chapitre 6) ; boules indiscernables → équiprobabilité (chapitre 8) ; chaque probabilité est un quotient de dénombrements sur le même dénominateur $\text{card}(\Omega) = \binom{9}{3} = 84$.
     questions:
       - id: q1
         part: "Partie A — Trois probabilités par dénombrement"
         stem: |-
           **(1,5 pt)** Montrer que $p(A) = \dfrac{1}{6}$, $p(B) = \dfrac{1}{4}$ et $p(C) = \dfrac{1}{42}$
         reasoning: |-
-          **Pour $A$** (« même couleur ») : deux cas disjoints — les trois rouges, ou les trois blanches — donc principe additif (rung R1) : $\binom{5}{3}$ façons de prendre 3 rouges parmi les 5, plus $\binom{4}{3}$ façons de prendre 3 blanches parmi les 4.
+          **Pour $A$** (« même couleur ») : deux cas disjoints — les trois rouges, ou les trois blanches — donc principe additif (chapitre 2) : $\binom{5}{3}$ façons de prendre 3 rouges parmi les 5, plus $\binom{4}{3}$ façons de prendre 3 blanches parmi les 4.
 
           **Pour $B$** (« même nombre ») : il faut d'abord regrouper les boules par nombre plutôt que par couleur, tous groupes confondus. Le nombre $1$ figure sur $2$ boules rouges et $1$ boule blanche, soit $3$ boules au total ; le nombre $2$ figure sur $3$ boules rouges et $3$ boules blanches, soit $6$ boules. Trois boules « même nombre » viennent donc soit des $3$ boules « nombre 1 », soit des $6$ boules « nombre 2 » — deux cas disjoints, principe additif à nouveau.
 
@@ -356,11 +356,11 @@ entries:
           - math: '\text{card}(\Omega) = \binom{9}{3} = \dfrac{9\times8\times7}{3\times2\times1} = 84'
             note: "Tirage simultané de 3 boules parmi 9 : dénominateur commun à toute la suite de l'exercice."
           - math: '\text{card}(A) = \underbrace{\binom{5}{3}}_{\text{3 rouges}} + \underbrace{\binom{4}{3}}_{\text{3 blanches}} = 10+4 = 14 \implies p(A) = \dfrac{14}{84} = \dfrac16'
-            note: "Deux couleurs, deux cas incompatibles : principe additif (R1)."
+            note: "Deux couleurs, deux cas incompatibles : principe additif (chapitre 2)."
           - math: '\underbrace{2}_{\text{rouges portant 1}} + \underbrace{1}_{\text{blanches portant 1}} = 3, \qquad \underbrace{3}_{\text{rouges portant 2}} + \underbrace{3}_{\text{blanches portant 2}} = 6'
             note: "On regroupe les boules par nombre, toutes couleurs confondues : 3 boules portent le 1, 6 portent le 2."
           - math: '\text{card}(B) = \underbrace{\binom{3}{3}}_{\text{numéro 1}} + \underbrace{\binom{6}{3}}_{\text{numéro 2}} = 1+20 = 21 \implies p(B) = \dfrac{21}{84} = \dfrac14'
-            note: "Deux groupes de même nombre, deux cas incompatibles : principe additif (R1)."
+            note: "Deux groupes de même nombre, deux cas incompatibles : principe additif (chapitre 2)."
           - math: '\text{card}(C) = \underbrace{\binom{3}{3}}_{\text{rouges, numéro 2}} + \underbrace{\binom{3}{3}}_{\text{blanches, numéro 2}} = 1+1 = 2 \implies p(C) = \dfrac{2}{84} = \dfrac{1}{42}'
             note: "Seuls les rouges numéro 2 (3 boules) et les blanches numéro 2 (3 boules) permettent une même couleur ET un même nombre à la fois."
       - id: q2
@@ -370,7 +370,7 @@ entries:
 
           **(0,5 pt)** Déterminer les paramètres de la variable aléatoire binomiale $X$
         reasoning: |-
-          On sort ici du terrain balisé par le corps de la leçon : R1 à R7 couvrent le dénombrement et l'équiprobabilité (R7), pas les variables aléatoires. Le principe reste pourtant simple à énoncer avec ce qu'on a déjà : on répète $n=3$ fois la même expérience, remise dans l'urne oblige — chaque répétition a donc exactement la même probabilité de succès, $p=p(A)=\dfrac16$ (question précédente), et les répétitions sont indépendantes les unes des autres puisqu'on repart à chaque fois de l'urne complète. C'est exactement la situation qui définit une loi binomiale $\mathcal B(n,p)$ : compter le nombre de succès sur $n$ répétitions indépendantes d'une même expérience à deux issues.
+          On sort ici du terrain balisé par le corps de la leçon : chapitres 2 à 8 couvrent le dénombrement et l'équiprobabilité (chapitre 8), pas les variables aléatoires. Le principe reste pourtant simple à énoncer avec ce qu'on a déjà : on répète $n=3$ fois la même expérience, remise dans l'urne oblige — chaque répétition a donc exactement la même probabilité de succès, $p=p(A)=\dfrac16$ (question précédente), et les répétitions sont indépendantes les unes des autres puisqu'on repart à chaque fois de l'urne complète. C'est exactement la situation qui définit une loi binomiale $\mathcal B(n,p)$ : compter le nombre de succès sur $n$ répétitions indépendantes d'une même expérience à deux issues.
         steps:
           - math: 'n = 3\ \text{répétitions}, \qquad p = p(A) = \dfrac16\ \text{(question précédente)}'
             note: "Trois répétitions indépendantes de la même expérience (remise), succès = réalisation de A."

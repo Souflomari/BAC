@@ -994,7 +994,7 @@ items:
           calculant des termes.
     correct_feedback: >
       Calculer trois ou quatre termes ne couvre qu'un nombre fini de rangs.
-      Pour « $u_n\leq50$ pour tout $n$ », il faut le même outil qu'au R1 :
+      Pour « $u_n\leq50$ pour tout $n$ », il faut le même outil qu'au chapitre 2 :
       initialisation ($u_0=10\leq50$) puis hérédité (si $u_n\leq50$, montrer
       que $u_{n+1}=0{,}5u_n+20\leq0{,}5\times50+20=45\leq50$).
     solution: |
@@ -1046,7 +1046,7 @@ items:
         text: "La conclusion n'est pas justifiée, car il faudrait au contraire d'abord vérifier que la suite est bornée avant de parler de monotonie."
         correct: false
         feedback: >
-          Bornée et monotone sont deux propriétés indépendantes (voir R3) :
+          Bornée et monotone sont deux propriétés indépendantes (voir le chapitre 4) :
           il n'est pas nécessaire de démontrer l'une avant l'autre. Le vrai
           problème ici est ailleurs — c'est l'absence de preuve valable pour
           tous les rangs, pas un ordre de démonstration à respecter.
@@ -1133,7 +1133,7 @@ items:
     primary_misconception: mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine
     stem: >
       Soit $f(x) = 0{,}5x+10$ et $(u_n)$ définie par $u_{n+1}=f(u_n)$, avec
-      $u_0=100$ (donc tous les $u_n>20$, comme démontré au R1). Un élève
+      $u_0=100$ (donc tous les $u_n>20$, comme démontré au chapitre 2). Un élève
       calcule $f(x)-x = 10-0{,}5x$ et, sans vérifier sur quel intervalle
       vivent les $u_n$, affirme : « $f(x)-x>0$ pour $x<20$, donc la suite
       est croissante. » Cette conclusion est-elle correcte pour NOTRE
@@ -1141,7 +1141,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Non : le signe de $f(x)-x$ doit être étudié sur l'intervalle où vivent réellement les $u_n$ — ici $x>20$ (d'après le R1), pas $x<20$. Sur cet intervalle, $f(x)-x=10-0{,}5x<0$ : la suite est en réalité décroissante."
+        text: "Non : le signe de $f(x)-x$ doit être étudié sur l'intervalle où vivent réellement les $u_n$ — ici $x>20$ (d'après le chapitre 2), pas $x<20$. Sur cet intervalle, $f(x)-x=10-0{,}5x<0$ : la suite est en réalité décroissante."
         correct: true
       - id: B
         text: "Oui, le calcul de $f(x)-x$ montre bien que la suite est croissante."
@@ -1149,7 +1149,7 @@ items:
         feedback: >
           Le calcul $f(x)-x>0$ pour $x<20$ est vrai en lui-même, mais il ne
           s'applique pas à notre suite : les $u_n$ vivent tous dans
-          l'intervalle $x>20$ (d'après R1), pas $x<20$. Sur $x>20$, c'est
+          l'intervalle $x>20$ (d'après le chapitre 2), pas $x<20$. Sur $x>20$, c'est
           l'inverse : $f(x)-x<0$, donc la suite est décroissante.
       - id: C
         text: "Non, car la méthode $f(x)-x$ ne s'applique jamais aux suites récurrentes de la forme $u_{n+1}=f(u_n)$ ; seule la différence $u_{n+1}-u_n$ calculée directement est valable."
@@ -1170,7 +1170,7 @@ items:
     correct_feedback: >
       Le signe de $f(x)-x$ doit être étudié précisément sur l'intervalle où
       vivent les $u_n$, pas sur un intervalle arbitraire. Ici, tous les
-      $u_n>20$ (R1), donc c'est le signe de $f(x)-x$ pour $x>20$ qui compte
+      $u_n>20$ (chapitre 2), donc c'est le signe de $f(x)-x$ pour $x>20$ qui compte
       : $10-0{,}5x<0$ sur cet intervalle, donc $(u_n)$ est décroissante — ce
       qui confirme le résultat déjà établi directement dans la leçon.
     solution: |
@@ -1179,7 +1179,7 @@ items:
       Ce signe DÉPEND de $x$ : positif pour $x<20$, négatif pour $x>20$,
       nul en $x=20$.
 
-      Comme $u_0=100$ et qu'on a montré (R1) que $u_n>20$ pour tout $n$,
+      Comme $u_0=100$ et qu'on a montré (chapitre 2) que $u_n>20$ pour tout $n$,
       c'est le comportement de $f(x)-x$ sur l'intervalle $x>20$ qui
       s'applique à notre suite — pas celui sur $x<20$, qui concernerait une
       suite partant d'une valeur initiale différente. Sur $x>20$ :
@@ -1522,7 +1522,7 @@ items:
       Le théorème de la limite monotone donne l'EXISTENCE d'une limite $L$
       (avec $L\geq3$ ici, puisque la limite ne peut pas descendre sous le
       minorant), mais jamais sa VALEUR. Trouver la valeur exacte de $L$ est
-      une étape séparée, distincte (par exemple via le point fixe, R8).
+      une étape séparée, distincte (par exemple via le point fixe, chapitre 9).
     solution: |
       **Ce que le théorème garantit :** $(u_n)$ décroissante et minorée par
       3 $\Rightarrow$ $(u_n)$ converge vers un certain $L$, avec $L\geq3$.
@@ -1533,7 +1533,7 @@ items:
       plus grande que le minorant utilisé pour prouver la convergence.
 
       Trouver la valeur exacte de $L$ demande une étape séparée : résoudre
-      $L=f(L)$ si la suite est du type $u_{n+1}=f(u_n)$ (R8), ou tout autre
+      $L=f(L)$ si la suite est du type $u_{n+1}=f(u_n)$ (chapitre 9), ou tout autre
       argument spécifique au problème.
 
   - id: SUITES-26
@@ -1554,7 +1554,7 @@ items:
         feedback: >
           Le nom du théorème le dit : il exige la MONOTONIE (croissante ou
           décroissante), en plus de la majoration/minoration. Être bornée
-          seule ne suffit pas — c'est justement le piège que R3 met en
+          seule ne suffit pas — c'est justement le piège que le chapitre 4 met en
           garde : bornée et monotone sont deux propriétés indépendantes.
       - id: C
         text: "Oui, car toute suite bornée converge nécessairement, qu'elle soit monotone ou non."
@@ -1588,8 +1588,8 @@ items:
 
       Le théorème de la limite monotone exige précisément la MONOTONIE en
       plus du bornage — c'est le lien manquant qui empêche de conclure ici.
-      Bornée (R3) et monotone (R4) restent deux propriétés indépendantes ;
-      c'est seulement leur combinaison qui garantit la convergence (R7).
+      Bornée (chapitre 4) et monotone (chapitre 5) restent deux propriétés indépendantes ;
+      c'est seulement leur combinaison qui garantit la convergence (chapitre 8).
 
   - id: SUITES-27
     rung: "R8"
@@ -1699,7 +1699,7 @@ items:
         correct: false
         feedback: >
           C'est justement l'intérêt de la technique de la suite auxiliaire
-          (R2, R8) : transformer une suite $u_{n+1}=f(u_n)$ qui n'est
+          (chapitres 3 et 9) : transformer une suite $u_{n+1}=f(u_n)$ qui n'est
           NI arithmétique NI géométrique en une suite auxiliaire $v_n$ qui,
           elle, EST géométrique. La nature de $(u_n)$ ne restreint pas celle
           de $(v_n)$.
@@ -1905,10 +1905,10 @@ items:
       Le théorème de la limite monotone s'énonce : « Toute suite CROISSANTE
       ET MAJORÉE converge. » Les deux conditions sont nécessaires
       ensemble — une suite croissante mais non majorée diverge vers
-      $+\infty$ (R7).
+      $+\infty$ (chapitre 8).
 
       Pour compléter la rédaction, il faudrait démontrer par récurrence
-      (comme au R3) que $u_n\leq15$ pour tout $n$ (avec $15$ le point fixe
+      (comme au chapitre 4) que $u_n\leq15$ pour tout $n$ (avec $15$ le point fixe
       de $f(x)=\frac{2}{5}x+9$, trouvé en résolvant $L=\frac{2}{5}L+9
       \Rightarrow \frac{3}{5}L=9 \Rightarrow L=15$) : c'est seulement une
       fois cette majoration établie, en plus de la croissance, que le
@@ -2013,7 +2013,7 @@ items:
         text: "La suite n'a pas de limite unique, car deux méthodes différentes (théorème de la limite monotone et formule explicite) donneraient a priori deux résultats potentiellement différents."
         correct: false
         feedback: >
-          La limite d'une suite convergente est toujours UNIQUE (R5) : deux
+          La limite d'une suite convergente est toujours UNIQUE (chapitre 6) : deux
           méthodes valides appliquées à la même suite doivent nécessairement
           donner le même résultat. Ici, les deux méthodes donnent bien
           $15$ toutes les deux — ce n'est pas une coïncidence, c'est une
@@ -2022,11 +2022,11 @@ items:
         text: "$\\lim u_n = 15$ (car $-1<\\frac{2}{5}<1$ donc $(0{,}4)^n\\to0$) ; ce résultat confirme, par un calcul indépendant, la convergence déjà garantie par le théorème de la limite monotone — une vérification croisée entre les deux méthodes."
         correct: true
     correct_feedback: >
-      Comme $-1<\frac{2}{5}<1$, $\left(\frac{2}{5}\right)^n\to0$ (R5), donc
+      Comme $-1<\frac{2}{5}<1$, $\left(\frac{2}{5}\right)^n\to0$ (chapitre 6), donc
       $\lim u_n = 15-13\times0=15$. Ce résultat confirme, par un calcul
       totalement indépendant, la convergence déjà établie par le théorème de
       la limite monotone — exactement la vérification croisée illustrée
-      dans la leçon (R8) avec l'exemple du réservoir.
+      dans la leçon (chapitre 9) avec l'exemple du réservoir.
     solution: |
       $$\lim_{n\to+\infty}\left(\frac{2}{5}\right)^n = 0 \quad\text{car } -1<\frac{2}{5}<1$$
 
@@ -2038,7 +2038,7 @@ items:
       valeur ($15$) sans passer par un théorème d'existence — mais elle
       n'est pas toujours accessible dans un problème de bac. Les deux
       méthodes, quand elles sont toutes deux disponibles, doivent
-      nécessairement s'accorder (unicité de la limite, R5) : c'est une
+      nécessairement s'accorder (unicité de la limite, chapitre 6) : c'est une
       bonne vérification croisée, jamais une redondance inutile.
 
 # ──────────────────────────────────────────────────────────────────────────────

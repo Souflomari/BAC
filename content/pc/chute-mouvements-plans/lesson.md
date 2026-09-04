@@ -96,7 +96,7 @@ $$a_x = 0 \qquad \text{et} \qquad a_y = -g$$
 
 Arrête-toi sur ce que dit la première équation, parce que c'est le cœur de cette leçon : **l'accélération horizontale est nulle, à tout instant du vol, du lancer jusqu'à l'impact.** Ce n'est pas une approximation qui vaudrait « au début » puis s'éroderait — c'est une égalité qui tient à chaque instant, tant qu'aucune force horizontale n'apparaît (et il n'y en a aucune ici, puisque la seule force est le poids, purement vertical).
 
-### Ce que ça implique pour $v_x(t)$ — et pourquoi ta prédiction du R0 se teste ici
+### Ce que ça implique pour $v_x(t)$ — et pourquoi ta prédiction du chapitre 1 se teste ici
 
 Une accélération horizontale nulle, constante, se primitive en une vitesse horizontale **constante** :
 
@@ -154,7 +154,7 @@ Les équations horaires $x(t)$ et $y(t)$ du chapitre précédent disent où se t
 
 $$x(t) = v_{0x}\,t$$
 
-Cette relation est réversible tant que $v_{0x} \neq 0$ (c'est-à-dire tant que $\alpha \neq 90^\circ$ — le seul cas où elle ne le serait pas est la chute verticale pure du chapitre 1, qui n'a pas de trajectoire à proprement parler puisque $x$ reste nul). On peut donc isoler $t$ :
+Cette relation est réversible tant que $v_{0x} \neq 0$ (c'est-à-dire tant que $\alpha \neq 90^\circ$ — le seul cas où elle ne le serait pas est la chute verticale pure du chapitre 2, qui n'a pas de trajectoire à proprement parler puisque $x$ reste nul). On peut donc isoler $t$ :
 
 $$t = \frac{x}{v_{0x}}$$
 
@@ -207,7 +207,7 @@ Retiens l'image : la flèche, c'est « jusqu'où ça monte » ; la portée, c'es
 
 ### Calculer la flèche : le sommet, c'est $v_y = 0$
 
-Le sommet de la trajectoire est l'instant où le projectile cesse un instant de monter avant de redescendre — exactement le même critère qu'au chapitre 1 pour la balle lancée à la verticale : la vitesse verticale s'y annule.
+Le sommet de la trajectoire est l'instant où le projectile cesse un instant de monter avant de redescendre — exactement le même critère qu'au chapitre 2 pour la balle lancée à la verticale : la vitesse verticale s'y annule.
 
 $$v_y(t) = v_{0y} - g\,t = 0$$
 
@@ -233,7 +233,7 @@ $$y(t) = t\left(v_{0y} - \frac{1}{2}g\,t\right) = 0$$
 
 $$t = 0 \quad \text{ou} \quad t_{portee} = \frac{2v_{0y}}{g}$$
 
-Remarque immédiatement : $t_{portee} = 2\,t_{sommet}$ — exactement la même symétrie « montée = descente » observée au chapitre 1. Ce n'est toujours pas un hasard : la trajectoire $y(x)$ est une parabole (chapitre 4), et une parabole est symétrique par rapport à son sommet.
+Remarque immédiatement : $t_{portee} = 2\,t_{sommet}$ — exactement la même symétrie « montée = descente » observée au chapitre 2. Ce n'est toujours pas un hasard : la trajectoire $y(x)$ est une parabole (chapitre 4), et une parabole est symétrique par rapport à son sommet.
 
 La **portée** est la position horizontale à cet instant :
 
@@ -404,9 +404,9 @@ Et la vitesse à la sortie ? Elle vaut toujours $v_0 = 1{,}0\times 10^{7}\ \text
 
 ## R7 — La chute verticale réelle : quand le fluide freine
 
-### Ce qui change par rapport au rung 1
+### Ce qui change par rapport au chapitre 2
 
-Au chapitre 1, on avait négligé l'air ; ici, on ne le néglige plus. Un solide qui tombe dans un fluide réel — l'air, l'eau, l'huile — subit une seconde force, la **force de frottement fluide**, qui s'oppose au mouvement. Puisque l'objet descend, cette force est dirigée vers le haut.
+Au chapitre 2, on avait négligé l'air ; ici, on ne le néglige plus. Un solide qui tombe dans un fluide réel — l'air, l'eau, l'huile — subit une seconde force, la **force de frottement fluide**, qui s'oppose au mouvement. Puisque l'objet descend, cette force est dirigée vers le haut.
 
 Le programme retient deux modèles pour cette force, selon la vitesse :
 
@@ -417,7 +417,7 @@ Dans les deux cas, retiens l'essentiel : **la force de frottement croît avec la
 
 ### Établir l'équation différentielle
 
-On garde la méthode du chapitre 1 — bilan, repère, projection — mais on choisit ici un axe $Oy$ **vertical, orienté vers le bas** (le sens de la chute), pour simplifier l'écriture. Ce n'est pas le même choix qu'aux chapitres 1 à 6 : c'est volontaire, et ça ne change rien au fond — comme au chapitre 1, le signe qu'on trouve dépend toujours de l'axe choisi, jamais d'une règle à mémoriser.
+On garde la méthode du chapitre 2 — bilan, repère, projection — mais on choisit ici un axe $Oy$ **vertical, orienté vers le bas** (le sens de la chute), pour simplifier l'écriture. Ce n'est pas le même choix qu'aux chapitres 2 à 6 : c'est volontaire, et ça ne change rien au fond — comme au chapitre 2, le signe qu'on trouve dépend toujours de l'axe choisi, jamais d'une règle à mémoriser.
 
 Dans le cas du frottement linéaire, deux forces : le poids $mg$ (positif, dans le sens de $Oy$) et le frottement $-kv$ (négatif, il s'oppose au mouvement). La deuxième loi de Newton, projetée :
 
@@ -437,7 +437,7 @@ $$\tau\,\frac{dv}{dt} = v_\ell - v \qquad \text{avec} \qquad \tau = \frac{m}{k} 
 
 $$\frac{dv}{dt}\bigg|_{t=0} = g - \frac{k}{m}\times 0 = g$$
 
-Au tout début, l'objet accélère donc **exactement comme en chute libre** (chapitre 1) : le frottement ne « mord » que lorsque la vitesse s'est installée.
+Au tout début, l'objet accélère donc **exactement comme en chute libre** (chapitre 2) : le frottement ne « mord » que lorsque la vitesse s'est installée.
 
 ### Prends position avant de voir la courbe
 
@@ -465,7 +465,7 @@ Ce qui est nul à $v_\ell$, ce n'est pas le frottement : c'est la **somme** des 
 
 ### La masse revient
 
-Regarde de nouveau $v_\ell = mg/k$ : elle contient $m$. Contraste frontal avec les chapitres 1 à 3, où la masse avait **disparu** ($\vec a_G = \vec g$, indépendant de $m$) — au point qu'on avait pu dire que tous les objets tombent pareil, quelle que soit leur masse. Cette règle ne vaut que **sans frottement**. Dès qu'un frottement fluide entre en jeu, deux objets de même forme (même $k$) mais de masses différentes n'ont **pas** la même vitesse limite : le plus lourd va plus vite — il lui faut une vitesse plus grande pour que $kv$ compense son poids plus important.
+Regarde de nouveau $v_\ell = mg/k$ : elle contient $m$. Contraste frontal avec les chapitres 2 à 3, où la masse avait **disparu** ($\vec a_G = \vec g$, indépendant de $m$) — au point qu'on avait pu dire que tous les objets tombent pareil, quelle que soit leur masse. Cette règle ne vaut que **sans frottement**. Dès qu'un frottement fluide entre en jeu, deux objets de même forme (même $k$) mais de masses différentes n'ont **pas** la même vitesse limite : le plus lourd va plus vite — il lui faut une vitesse plus grande pour que $kv$ compense son poids plus important.
 
 [[figure:sandbox-chute-frottement]]
 
@@ -523,7 +523,7 @@ On établit l'équation différentielle, on l'exploite pour trouver $v_\ell$ et 
 
 ### Le problème : on connaît la pente, pas la courbe
 
-L'équation différentielle du chapitre 7, $\dfrac{dv}{dt} = g - \dfrac{k}{m}v$, donne à chaque instant la **pente** de la courbe $v(t)$ — pas $v(t)$ elle-même, et on ne va pas la résoudre analytiquement (chapitre 7). L'idée d'Euler : avancer par **petits pas** de durée $\Delta t$, en supposant que, sur un pas assez court, la pente reste à peu près constante — égale à sa valeur au début du pas.
+L'équation différentielle du chapitre 8, $\dfrac{dv}{dt} = g - \dfrac{k}{m}v$, donne à chaque instant la **pente** de la courbe $v(t)$ — pas $v(t)$ elle-même, et on ne va pas la résoudre analytiquement (chapitre 8). L'idée d'Euler : avancer par **petits pas** de durée $\Delta t$, en supposant que, sur un pas assez court, la pente reste à peu près constante — égale à sa valeur au début du pas.
 
 ### La formule centrale
 
@@ -545,11 +545,11 @@ C'est une valeur **approchée**. Pendant tout le pas $\Delta t$, on a supposé l
 
 [[figure:euler-taille-de-pas]]
 
-### Exemple travaillé : le tableau d'Euler de la bille du rung 7
+### Exemple travaillé : le tableau d'Euler de la bille du chapitre 8
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* appliquer la récurrence d'Euler, pas après pas, à la bille du chapitre 7, et vérifier que la suite de valeurs obtenue se dirige bien vers la vitesse limite calculée là-bas — une cohérence croisée entre les deux méthodes, pas un hasard.
+*Ce qu'on cherche ici, et pourquoi ce geste :* appliquer la récurrence d'Euler, pas après pas, à la bille du chapitre 8, et vérifier que la suite de valeurs obtenue se dirige bien vers la vitesse limite calculée là-bas — une cohérence croisée entre les deux méthodes, pas un hasard.
 
-Même bille qu'au chapitre 7 : $m = 0{,}20\ \text{kg}$, $k = 2{,}0\ \text{kg/s}$, $g \approx 9{,}8\ \text{m/s}^2$, $v_0 = 0$. On choisit un pas $\Delta t = 0{,}020\ \text{s}$, et on applique $a_i = 9{,}8 - 10{,}0\,v_i$ puis $v_{i+1}=v_i+a_i\Delta t$ à chaque ligne :
+Même bille qu'au chapitre 8 : $m = 0{,}20\ \text{kg}$, $k = 2{,}0\ \text{kg/s}$, $g \approx 9{,}8\ \text{m/s}^2$, $v_0 = 0$. On choisit un pas $\Delta t = 0{,}020\ \text{s}$, et on applique $a_i = 9{,}8 - 10{,}0\,v_i$ puis $v_{i+1}=v_i+a_i\Delta t$ à chaque ligne :
 
 | $t_i\ (\text{s})$ | $v_i\ (\text{m/s})$ | $a_i = 9{,}8 - 10{,}0\,v_i\ (\text{m/s}^2)$ | $v_{i+1}=v_i+a_i\Delta t\ (\text{m/s})$ |
 |---|---|---|---|
@@ -560,7 +560,7 @@ Même bille qu'au chapitre 7 : $m = 0{,}20\ \text{kg}$, $k = 2{,}0\ \text{kg/s}$
 
 [[figure:tableau-euler-pas-a-pas]]
 
-Deux choses à remarquer, et qui ne sont pas des coïncidences. D'abord, $a_i$ **décroît** à chaque ligne ($9{,}80 \to 7{,}84 \to 6{,}27 \to 5{,}02\ \text{m/s}^2$) : le frottement mord de plus en plus, exactement le mécanisme du chapitre 7. Recalculer $a_i$ à chaque pas — plutôt que garder $a=g$ fixe comme en chute libre — est ce qui capture cet effet ; garder $a=g$ tout du long reviendrait à ignorer le frottement, et donnerait une droite au lieu d'une courbe qui s'aplatit. Ensuite, la suite $v_i$ ($0 \to 0{,}196 \to 0{,}353 \to 0{,}478 \to 0{,}579\ \text{m/s}$) se dirige vers $v_\ell = 0{,}98\ \text{m/s}$ établi au chapitre 7 : à $t=0{,}060\ \text{s}$, on n'y est pas encore — normal, $\tau = 0{,}10\ \text{s}$ n'est pas atteint — mais la tendance est la bonne, et c'est cette cohérence entre l'équation différentielle (chapitre 7) et le calcul pas à pas (ici) qui valide la méthode.
+Deux choses à remarquer, et qui ne sont pas des coïncidences. D'abord, $a_i$ **décroît** à chaque ligne ($9{,}80 \to 7{,}84 \to 6{,}27 \to 5{,}02\ \text{m/s}^2$) : le frottement mord de plus en plus, exactement le mécanisme du chapitre 8. Recalculer $a_i$ à chaque pas — plutôt que garder $a=g$ fixe comme en chute libre — est ce qui capture cet effet ; garder $a=g$ tout du long reviendrait à ignorer le frottement, et donnerait une droite au lieu d'une courbe qui s'aplatit. Ensuite, la suite $v_i$ ($0 \to 0{,}196 \to 0{,}353 \to 0{,}478 \to 0{,}579\ \text{m/s}$) se dirige vers $v_\ell = 0{,}98\ \text{m/s}$ établi au chapitre 8 : à $t=0{,}060\ \text{s}$, on n'y est pas encore — normal, $\tau = 0{,}10\ \text{s}$ n'est pas atteint — mais la tendance est la bonne, et c'est cette cohérence entre l'équation différentielle (chapitre 8) et le calcul pas à pas (ici) qui valide la méthode.
 
 ### La limite du cadre
 
@@ -576,15 +576,15 @@ Deux corps quelconques, de masses $m_A$ et $m_B$, séparés d'une distance $r$, 
 
 $$\vec F_{B\to A} = -G\,\frac{m_A\,m_B}{r^2}\,\vec u_{A\to B}$$
 
-où $G$ est la **constante de gravitation universelle** (la même pour tous les corps de l'Univers) et $\vec u_{A\to B}$ le vecteur unitaire dirigé de $A$ vers $B$. Le signe « $-$ » dit que la force est **attractive** : elle pointe en sens contraire de $\vec u_{A\to B}$, donc de $A$ vers $B$ — chaque corps est tiré vers l'autre, jamais repoussé. Retiens la structure, comme pour la force de Lorentz au chapitre 6 : une direction (ici, toujours selon la droite qui joint les deux corps) et une norme, $F = G\,m_Am_B/r^2$, qui décroît quand $r$ augmente.
+où $G$ est la **constante de gravitation universelle** (la même pour tous les corps de l'Univers) et $\vec u_{A\to B}$ le vecteur unitaire dirigé de $A$ vers $B$. Le signe « $-$ » dit que la force est **attractive** : elle pointe en sens contraire de $\vec u_{A\to B}$, donc de $A$ vers $B$ — chaque corps est tiré vers l'autre, jamais repoussé. Retiens la structure, comme pour la force de Lorentz au chapitre 7 : une direction (ici, toujours selon la droite qui joint les deux corps) et une norme, $F = G\,m_Am_B/r^2$, qui décroît quand $r$ augmente.
 
 ### Le cas du satellite : une force toujours dirigée vers le centre
 
 Considère un satellite de masse $m$, en orbite **circulaire** de rayon $r$ autour de la Terre (masse $M$). À chaque position du satellite, la force gravitationnelle qu'il subit pointe vers le **centre** de la Terre. Cette direction change à chaque instant — parce que le satellite se déplace — mais elle reste **toujours perpendiculaire** à la vitesse, elle-même tangente au cercle. Une force ainsi dirigée en permanence vers le centre de la trajectoire s'appelle une force **centripète**.
 
-### Même raisonnement qu'au rung 6, une autre force
+### Même raisonnement qu'au chapitre 7, une autre force
 
-Une force perpendiculaire à la vitesse à chaque instant : exactement la situation de la force de Lorentz au chapitre 6. Le même raisonnement s'applique mot pour mot. Décompose l'accélération dans la base de Freinet, comme au chapitre 6 :
+Une force perpendiculaire à la vitesse à chaque instant : exactement la situation de la force de Lorentz au chapitre 7. Le même raisonnement s'applique mot pour mot. Décompose l'accélération dans la base de Freinet, comme au chapitre 7 :
 
 $$\vec a = \frac{dv}{dt}\vec u_T + \frac{v^2}{r}\vec u_N$$
 
@@ -592,7 +592,7 @@ La force gravitationnelle étant purement normale, la projection de $\vec F = m\
 
 $$m\,\frac{dv}{dt} = 0 \quad\Longrightarrow\quad \frac{dv}{dt}=0$$
 
-La **norme** de la vitesse ne change donc pas : le satellite se déplace à vitesse constante sur son cercle — un **mouvement circulaire uniforme**. Comme la force de Lorentz au chapitre 6, la force gravitationnelle ne **travaille** pas : elle dévie en permanence, sans jamais accélérer ni ralentir.
+La **norme** de la vitesse ne change donc pas : le satellite se déplace à vitesse constante sur son cercle — un **mouvement circulaire uniforme**. Comme la force de Lorentz au chapitre 7, la force gravitationnelle ne **travaille** pas : elle dévie en permanence, sans jamais accélérer ni ralentir.
 
 C'est aussi la réponse à une objection naturelle : si aucune force ne pousse le satellite vers l'avant, comment garde-t-il sa vitesse ? Il n'a besoin d'aucune force tangentielle pour ça — un objet soumis à une force purement perpendiculaire à son mouvement garde la norme de sa vitesse par inertie (première loi de Newton). Le rôle de la force centripète n'est jamais de maintenir la vitesse, seulement de courber la trajectoire.
 
@@ -606,7 +606,7 @@ $$v^2 = \frac{GM}{r}$$
 
 $$v = \sqrt{\frac{GM}{r}}$$
 
-Regarde ce qui vient de se passer : la masse $m$ du satellite, présente des deux côtés de la première ligne, s'est **simplifiée**. La vitesse orbitale ne dépend **pas** de la masse du satellite : un satellite lourd et un satellite léger, sur la même orbite, ont exactement la même vitesse. Nouvel écho de ce que tu as vu aux chapitres 2 et 3 : la masse disparaissait déjà de la trajectoire d'un projectile en chute libre, pour la même raison de fond — la deuxième loi divise par $m$ des deux côtés dès que la force elle-même est proportionnelle à $m$.
+Regarde ce qui vient de se passer : la masse $m$ du satellite, présente des deux côtés de la première ligne, s'est **simplifiée**. La vitesse orbitale ne dépend **pas** de la masse du satellite : un satellite lourd et un satellite léger, sur la même orbite, ont exactement la même vitesse. Nouvel écho de ce que tu as vu aux chapitres 3 et 3 : la masse disparaissait déjà de la trajectoire d'un projectile en chute libre, pour la même raison de fond — la deuxième loi divise par $m$ des deux côtés dès que la force elle-même est proportionnelle à $m$.
 
 Remarque enfin le sens de la dépendance en $r$ : plus l'orbite est **haute** (grand $r$), plus la vitesse orbitale est **faible**.
 
@@ -628,7 +628,7 @@ Un satellite décrit une orbite circulaire de rayon $r = 6{,}80\times 10^6\ \tex
 
 **Bilan :** la seule force sur le satellite est la force gravitationnelle exercée par la Terre — c'est elle qui joue, à cette altitude, le rôle du poids du satellite.
 
-**Force centripète $\Rightarrow$ mouvement circulaire uniforme :** même raisonnement qu'au chapitre 6 (voir plus haut).
+**Force centripète $\Rightarrow$ mouvement circulaire uniforme :** même raisonnement qu'au chapitre 7 (voir plus haut).
 
 **Vitesse orbitale** (deuxième loi projetée sur la normale) :
 
@@ -636,7 +636,7 @@ $$v = \sqrt{\frac{GM_T}{r}} = \sqrt{\frac{6{,}67\times 10^{-11}\times 5{,}97\tim
 
 $$v \approx \sqrt{5{,}85\times 10^7} \approx 7{,}65\times 10^3\ \text{m/s} \approx 7{,}65\ \text{km/s}$$
 
-Cette valeur, obtenue sans connaître la masse du satellite (elle a disparu de la formule, comme aux chapitres 2 et 3), est cohérente avec la vitesse orbitale réelle de la Station spatiale internationale, en orbite à peu près à cette altitude. Compare enfin cette force avec celle du chapitre 6 : les deux sont centripètes, les deux ne travaillent pas, les deux courbent une trajectoire sans jamais changer la norme de la vitesse — mais l'une est électromagnétique (Lorentz), l'autre gravitationnelle. Même méthode, deux natures de force différentes.
+Cette valeur, obtenue sans connaître la masse du satellite (elle a disparu de la formule, comme aux chapitres 3 et 3), est cohérente avec la vitesse orbitale réelle de la Station spatiale internationale, en orbite à peu près à cette altitude. Compare enfin cette force avec celle du chapitre 7 : les deux sont centripètes, les deux ne travaillent pas, les deux courbent une trajectoire sans jamais changer la norme de la vitesse — mais l'une est électromagnétique (Lorentz), l'autre gravitationnelle. Même méthode, deux natures de force différentes.
 
 ### La limite du cadre
 
@@ -658,9 +658,9 @@ Précision importante avant d'aller plus loin : le programme ne demande de **cal
 
 ### Établir la 3e loi, cas circulaire
 
-Deux expressions de la vitesse orbitale $v$, pour un satellite en orbite circulaire de rayon $r$ et de période $T$ : celle établie au chapitre 9 à partir de la deuxième loi, et celle, purement géométrique, du périmètre du cercle parcouru en une période :
+Deux expressions de la vitesse orbitale $v$, pour un satellite en orbite circulaire de rayon $r$ et de période $T$ : celle établie au chapitre 10 à partir de la deuxième loi, et celle, purement géométrique, du périmètre du cercle parcouru en une période :
 
-$$v = \sqrt{\frac{GM}{r}} \qquad \text{(chapitre 9)} \qquad \qquad v = \frac{2\pi r}{T} \qquad \text{(MCU : périmètre / période)}$$
+$$v = \sqrt{\frac{GM}{r}} \qquad \text{(chapitre 10)} \qquad \qquad v = \frac{2\pi r}{T} \qquad \text{(MCU : périmètre / période)}$$
 
 Ces deux expressions désignent la même vitesse : on peut les égaler.
 
@@ -702,7 +702,7 @@ Une dernière précision, qui trompe souvent : dire qu'un satellite géostationn
 
 ### Exemple travaillé : le rayon de l'orbite géostationnaire
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* appliquer la 3e loi établie plus haut à la Terre du chapitre 9 (mêmes $G$, $M_T$), pour retrouver le rayon — et donc l'altitude — de l'unique orbite géostationnaire terrestre.
+*Ce qu'on cherche ici, et pourquoi ce geste :* appliquer la 3e loi établie plus haut à la Terre du chapitre 10 (mêmes $G$, $M_T$), pour retrouver le rayon — et donc l'altitude — de l'unique orbite géostationnaire terrestre.
 
 On reprend la Terre du chapitre précédent : $G = 6{,}67\times 10^{-11}\ \text{N}\cdot\text{m}^2/\text{kg}^2$, $M_T = 5{,}97\times 10^{24}\ \text{kg}$, rayon terrestre $R_T \approx 6{,}37\times 10^6\ \text{m}$. On prend $T = 24\ \text{h} = 8{,}64\times 10^4\ \text{s}$.
 

@@ -57,7 +57,7 @@ $$NH_4^+ + H_2O \rightleftharpoons NH_3 + H_3O^+$$
 
 C'est l'équation d'une réaction acido-basique complète : l'ion ammonium (acide du couple 1) a cédé son proton à l'eau (base du couple 2), donnant l'ammoniac (base du couple 1) et l'ion oxonium $H_3O^+$ (acide du couple 2).
 
-### Un détail qui va tout changer dans les rungs suivants : l'eau joue les deux rôles
+### Un détail qui va tout changer dans les chapitres suivants : l'eau joue les deux rôles
 
 Regarde bien ce qu'on vient de faire : on a utilisé l'eau comme **base**, dans le couple $H_3O^+/H_2O$. Mais l'eau appartient aussi à un second couple, $H_2O/HO^-$, où cette fois c'est elle l'**acide** :
 
@@ -115,7 +115,7 @@ Dans les deux sens, la même règle : décomposer plutôt que deviner.
 
 ### Construire la réaction de l'eau sur elle-même
 
-Tu as vu au chapitre précédent que l'eau est un ampholyte : elle est base dans le couple $H_3O^+/H_2O$, et acide dans le couple $H_2O/HO^-$. Rien n'empêche alors une molécule d'eau de céder un proton... à une *autre* molécule d'eau. C'est exactement la même construction qu'à l'exemple travaillé du chapitre 1 : on additionne les deux demi-équations et le $H^+$ s'annule.
+Tu as vu au chapitre précédent que l'eau est un ampholyte : elle est base dans le couple $H_3O^+/H_2O$, et acide dans le couple $H_2O/HO^-$. Rien n'empêche alors une molécule d'eau de céder un proton... à une *autre* molécule d'eau. C'est exactement la même construction qu'à l'exemple travaillé du chapitre 2 : on additionne les deux demi-équations et le $H^+$ s'annule.
 
 Une molécule d'eau joue l'acide (elle cède un proton) :
 
@@ -191,7 +191,7 @@ Beaucoup de réactions, en solution, ne vont pas jusqu'au bout : réactifs et pr
 
 ### Appliquer cette idée à un couple acide/base : définir $K_A$
 
-Applique ce principe à la réaction d'un acide $AH$ avec l'eau, construite exactement comme au chapitre 1 :
+Applique ce principe à la réaction d'un acide $AH$ avec l'eau, construite exactement comme au chapitre 2 :
 
 $$AH + H_2O \rightleftharpoons A^- + H_3O^+$$
 
@@ -292,7 +292,7 @@ Le rapport est très inférieur à $1$ : pour environ $160$ ions $NH_4^+$, on ne
 
 ## R6 — Force et concentration : deux choses différentes (retour à l'accroche)
 
-### Refermer la question posée en R0
+### Refermer la question posée au chapitre 1
 
 Reviens aux deux béchers de l'accroche : même concentration $c = 1{,}0 \times 10^{-2}\ \text{mol/L}$, et pourtant $\text{pH} = 2{,}0$ pour l'acide chlorhydrique contre $\text{pH} = 3{,}4$ pour l'acide éthanoïque. Tu as maintenant tous les outils pour comprendre pourquoi.
 
@@ -304,7 +304,7 @@ $$\text{pH} = -\log(c) = -\log(1{,}0 \times 10^{-2}) = 2{,}0$$
 
 C'est exactement la valeur mesurée dans le bécher 1. Rien à ajuster : l'acide fort donne tout son proton, un point c'est tout.
 
-Un **acide faible**, comme l'acide éthanoïque, ne réagit que **partiellement** avec l'eau : un équilibre s'installe, avec $[AH]_{eq}$ encore largement présent à la fin — c'est exactement ce que tu as calculé au chapitre 4, où $[CH_3COOH]_{eq} \approx 9{,}6 \times 10^{-3}\ \text{mol/L}$ restait très proche de $c$ tout entier. Beaucoup moins de $H_3O^+$ est produit qu'avec un acide fort à la même concentration, donc le pH est plus élevé : $3{,}4$ au lieu de $2{,}0$.
+Un **acide faible**, comme l'acide éthanoïque, ne réagit que **partiellement** avec l'eau : un équilibre s'installe, avec $[AH]_{eq}$ encore largement présent à la fin — c'est exactement ce que tu as calculé au chapitre 5, où $[CH_3COOH]_{eq} \approx 9{,}6 \times 10^{-3}\ \text{mol/L}$ restait très proche de $c$ tout entier. Beaucoup moins de $H_3O^+$ est produit qu'avec un acide fort à la même concentration, donc le pH est plus élevé : $3{,}4$ au lieu de $2{,}0$.
 
 ### Chiffrer « à quel point » la réaction a eu lieu : le taux d'avancement final $\tau$
 
@@ -314,7 +314,7 @@ $$\tau = \frac{x_f}{x_{max}}$$
 
 où $x_f$ est l'avancement réellement atteint à l'équilibre, et $x_{max}$ l'avancement qu'on aurait si la réaction allait jusqu'au bout. $\tau$ est donc compris entre $0$ (rien ne s'est passé) et $1$ (réaction totale).
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* reprends l'acide éthanoïque du chapitre 4, dans un volume $V$. $x_{max}$ correspond à la disparition complète de l'acide introduit, soit $x_{max} = c \times V$. $x_f$ se lit sur la quantité de $H_3O^+$ réellement formée, $x_f \approx [H_3O^+]_{eq} \times V$. Le volume $V$ se simplifie dans le rapport :
+*Ce qu'on cherche ici, et pourquoi ce geste :* reprends l'acide éthanoïque du chapitre 5, dans un volume $V$. $x_{max}$ correspond à la disparition complète de l'acide introduit, soit $x_{max} = c \times V$. $x_f$ se lit sur la quantité de $H_3O^+$ réellement formée, $x_f \approx [H_3O^+]_{eq} \times V$. Le volume $V$ se simplifie dans le rapport :
 
 $$\tau = \frac{x_f}{x_{max}} = \frac{[H_3O^+]_{eq} \times V}{c \times V} = \frac{[H_3O^+]_{eq}}{c} = \frac{4{,}0 \times 10^{-4}}{1{,}0 \times 10^{-2}} = 0{,}040$$
 
@@ -409,11 +409,11 @@ Seulement $24\,\%$ d'avancement : bien moins que l'exemple 1, et c'est cohérent
 
 ### Depuis « qui l'emporte » vers « dans quelle proportion »
 
-Au chapitre 5, tu as appris à répondre à une question binaire : à un pH donné, qui domine, $AH$ ou $A^-$ ? Le diagramme de prédominance te donne un camp gagnant, jamais un score. Or deux solutions où $A^-$ l'emporte peuvent être très différentes l'une de l'autre — l'une à $55\,\%$ de $A^-$, l'autre à $99{,}9\,\%$. Le diagramme de prédominance ne fait aucune différence entre les deux. Il te faut un outil qui, au lieu de désigner un vainqueur, te donne le score exact : le **diagramme de distribution**.
+Au chapitre 6, tu as appris à répondre à une question binaire : à un pH donné, qui domine, $AH$ ou $A^-$ ? Le diagramme de prédominance te donne un camp gagnant, jamais un score. Or deux solutions où $A^-$ l'emporte peuvent être très différentes l'une de l'autre — l'une à $55\,\%$ de $A^-$, l'autre à $99{,}9\,\%$. Le diagramme de prédominance ne fait aucune différence entre les deux. Il te faut un outil qui, au lieu de désigner un vainqueur, te donne le score exact : le **diagramme de distribution**.
 
 ### Définir les pourcentages
 
-Reprends le rapport déjà établi au chapitre 5 :
+Reprends le rapport déjà établi au chapitre 6 :
 
 $$\frac{[A^-]}{[AH]} = 10^{\text{pH}-pK_A}$$
 
@@ -449,7 +449,7 @@ Regarde bien la différence de nature entre les deux objets. Le diagramme de pr�
 
 ### Teste l'idée avant de la croire : « à la frontière, la forme dominante a déjà tout pris »
 
-Voici une lecture trop rapide de la frontière du chapitre 5 : puisque $AH$ domine juste en dessous de $pK_A$ et que $A^-$ domine juste au-dessus, on pourrait croire qu'à $\text{pH} = pK_A$ pile, on bascule d'un coup — une forme à quasiment $100\,\%$, l'autre déjà évanouie.
+Voici une lecture trop rapide de la frontière du chapitre 6 : puisque $AH$ domine juste en dessous de $pK_A$ et que $A^-$ domine juste au-dessus, on pourrait croire qu'à $\text{pH} = pK_A$ pile, on bascule d'un coup — une forme à quasiment $100\,\%$, l'autre déjà évanouie.
 
 Teste-le avec la formule que tu viens d'établir. À $\text{pH} = pK_A$, l'exposant $pK_A - \text{pH}$ vaut $0$, donc $\%A^- = 100/(1+10^0) = 100/2 = 50$. Les deux pourcentages valent $50$, pas $0$ et $100$. La frontière du diagramme de prédominance n'est pas un instant de bascule brutale : c'est le point exact où les deux formes coexistent à parts strictement égales. Rien n'a « déjà disparu » — c'est même l'endroit où les deux formes sont les plus également représentées de toute la courbe.
 
@@ -461,13 +461,13 @@ Calcule maintenant $\%A^-$ pour chacune avec la formule établie plus haut. Pour
 
 ### Teste l'idée avant de la croire : « le croisement est à pH = 7 »
 
-Reprends le couple $NH_4^+/NH_3$ du chapitre 5, de $pK_A \approx 9{,}2$. Si le croisement à $50/50$ se produisait toujours à $\text{pH} = 7$ (la neutralité), on devrait trouver $\%NH_3 \approx 50\,\%$ à $\text{pH} = 7$.
+Reprends le couple $NH_4^+/NH_3$ du chapitre 6, de $pK_A \approx 9{,}2$. Si le croisement à $50/50$ se produisait toujours à $\text{pH} = 7$ (la neutralité), on devrait trouver $\%NH_3 \approx 50\,\%$ à $\text{pH} = 7$.
 
-Or tu as déjà calculé, au chapitre 5, qu'à $\text{pH} = 7{,}0$ le rapport $[NH_3]/[NH_4^+] \approx 6{,}3\times10^{-3}$ — $NH_4^+$ écrase $NH_3$ dans un rapport d'environ $160$ pour $1$. On est très loin de $50/50$. Le croisement réel de ce couple se produit à $\text{pH} = pK_A \approx 9{,}2$, pas à $7$. La confusion vient d'un mélange entre deux constantes qui n'ont rien à voir : $pK_e = 14$ (propriété de l'eau, chapitre 3) fixe la neutralité à $\text{pH} = 7$ ; $pK_A$ (propriété du **couple** étudié) fixe, lui, le croisement des courbes de distribution — et $pK_A$ change d'un couple à l'autre, alors que $pK_e$ reste le même pour toute solution aqueuse à $25\,^\circ\text{C}$.
+Or tu as déjà calculé, au chapitre 6, qu'à $\text{pH} = 7{,}0$ le rapport $[NH_3]/[NH_4^+] \approx 6{,}3\times10^{-3}$ — $NH_4^+$ écrase $NH_3$ dans un rapport d'environ $160$ pour $1$. On est très loin de $50/50$. Le croisement réel de ce couple se produit à $\text{pH} = pK_A \approx 9{,}2$, pas à $7$. La confusion vient d'un mélange entre deux constantes qui n'ont rien à voir : $pK_e = 14$ (propriété de l'eau, chapitre 4) fixe la neutralité à $\text{pH} = 7$ ; $pK_A$ (propriété du **couple** étudié) fixe, lui, le croisement des courbes de distribution — et $pK_A$ change d'un couple à l'autre, alors que $pK_e$ reste le même pour toute solution aqueuse à $25\,^\circ\text{C}$.
 
 ### Exemple travaillé : lire trois points de la courbe
 
-Reprends le couple $CH_3COOH/CH_3COO^-$, $pK_A = 4{,}8$ (chapitre 4).
+Reprends le couple $CH_3COOH/CH_3COO^-$, $pK_A = 4{,}8$ (chapitre 5).
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on veut voir, sur trois pH espacés d'une unité autour de $pK_A$, à quel point la composition bascule vite — c'est ce qui donne à la courbe sa forme en « S ».
 
@@ -491,9 +491,9 @@ Le programme limite l'exploitation du diagramme de distribution à un couple $AH
 
 ### Pourquoi une flèche simple, et pas $\rightleftharpoons$
 
-Au chapitre 7, tu as vu qu'une réaction entre deux couples n'est exploitable comme réaction quasi totale que si $K \gg 1$. Un **titrage** (ou dosage) a précisément besoin de cette totalité : il ne sert à rien de verser un réactif titrant si la réaction ne consomme pas *tout* le réactif titré de façon fiable.
+Au chapitre 8, tu as vu qu'une réaction entre deux couples n'est exploitable comme réaction quasi totale que si $K \gg 1$. Un **titrage** (ou dosage) a précisément besoin de cette totalité : il ne sert à rien de verser un réactif titrant si la réaction ne consomme pas *tout* le réactif titré de façon fiable.
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* vérifions-le sur le cas qui nous occupera pour les trois prochains chapitres — doser l'acide éthanoïque $CH_3COOH$ ($pK_{A1} = 4{,}8$) par la soude, c'est-à-dire par les ions hydroxyde $HO^-$. $HO^-$ est la base du couple $H_2O/HO^-$, dont on retient, par convention usuelle, $pK_{A2} = pK_e = 14$ (chapitre 3). On applique directement la formule établie au chapitre 7 :
+*Ce qu'on cherche ici, et pourquoi ce geste :* vérifions-le sur le cas qui nous occupera pour les trois prochains chapitres — doser l'acide éthanoïque $CH_3COOH$ ($pK_{A1} = 4{,}8$) par la soude, c'est-à-dire par les ions hydroxyde $HO^-$. $HO^-$ est la base du couple $H_2O/HO^-$, dont on retient, par convention usuelle, $pK_{A2} = pK_e = 14$ (chapitre 4). On applique directement la formule établie au chapitre 8 :
 
 $$CH_3COOH + HO^- \rightleftharpoons CH_3COO^- + H_2O$$
 
@@ -501,7 +501,7 @@ $$K = \frac{K_{A1}}{K_{A2}} = 10^{pK_{A2}-pK_{A1}}$$
 
 $$K = 10^{14-4{,}8} = 10^{9{,}2} \approx 1{,}6\times10^{9}$$
 
-$K$ est gigantesque : la réaction est quasi totale, exactement le cas $K \gg 1$ du chapitre 7. C'est pour cette raison — et uniquement pour cette raison — qu'on a le droit d'écrire une flèche simple :
+$K$ est gigantesque : la réaction est quasi totale, exactement le cas $K \gg 1$ du chapitre 8. C'est pour cette raison — et uniquement pour cette raison — qu'on a le droit d'écrire une flèche simple :
 
 $$CH_3COOH + HO^- \rightarrow CH_3COO^- + H_2O$$
 
@@ -539,15 +539,15 @@ Regarde la relation que tu viens d'établir : $C_A V_A = C_B V_E$, donc $V_E = C
 
 ### Teste l'idée avant de la croire : « une réaction limitée pourrait aussi servir de dosage »
 
-Reviens au chapitre 7, exemple travaillé 2 : le mélange $CH_3COOH$ / $HCOO^-$, avec $K = 0{,}10$ — ni grand ni petit. Pourrait-on utiliser une telle réaction comme réaction support d'un titrage ?
+Reviens au chapitre 8, exemple travaillé 2 : le mélange $CH_3COOH$ / $HCOO^-$, avec $K = 0{,}10$ — ni grand ni petit. Pourrait-on utiliser une telle réaction comme réaction support d'un titrage ?
 
-Non : avec $K = 0{,}10$, tu as calculé au chapitre 7 un taux d'avancement final $\tau \approx 0{,}240$ — seulement $24\,\%$ de réaction. À aucun volume versé la réaction n'est complète : il resterait, à tout instant, un mélange de réactif et de produit dans des proportions floues, sans palier net avant/après. Aucun volume particulier ne se distinguerait par un saut de pH exploitable. C'est exactement pour cette raison que le chapitre 7 exige $K \gg 1$ pour une réaction *totale, rapide et unique* : sans cette totalité, il n'existe pas d'équivalence nette à repérer.
+Non : avec $K = 0{,}10$, tu as calculé au chapitre 8 un taux d'avancement final $\tau \approx 0{,}240$ — seulement $24\,\%$ de réaction. À aucun volume versé la réaction n'est complète : il resterait, à tout instant, un mélange de réactif et de produit dans des proportions floues, sans palier net avant/après. Aucun volume particulier ne se distinguerait par un saut de pH exploitable. C'est exactement pour cette raison que le chapitre 8 exige $K \gg 1$ pour une réaction *totale, rapide et unique* : sans cette totalité, il n'existe pas d'équivalence nette à repérer.
 
 ### Exemple travaillé : poser la relation, l'utiliser
 
 On dose $V_A = 20{,}0\ \text{mL}$ d'une solution d'acide éthanoïque de concentration inconnue $C_A$, par une solution de soude de concentration $C_B = 0{,}10\ \text{mol/L}$.
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on veut $C_A$, mais on ne la connaît pas encore directement — il faut d'abord passer par $V_E$, qu'on ne peut lire que sur la courbe expérimentale (ce sera l'objet du chapitre 10). Pour l'instant, on pose juste la démarche.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on veut $C_A$, mais on ne la connaît pas encore directement — il faut d'abord passer par $V_E$, qu'on ne peut lire que sur la courbe expérimentale (ce sera l'objet du chapitre 11). Pour l'instant, on pose juste la démarche.
 
 D'abord, l'équation support, justifiée plus haut par $K \gg 1$ :
 
@@ -607,7 +607,7 @@ Regarde la courbe $\dfrac{d\text{pH}}{dV} = f(V)$ que tu viens de tracer : elle 
 
 Sur cette même courbe, repère le volume $V_E/2$ — la moitié du volume équivalent — et lis le pH à cet endroit-là. Tu vas trouver $\text{pH} \approx pK_A$ du couple titré (une propriété que tu retrouveras plus bas). Ce point est-il l'équivalence ?
 
-Non. À $V_E/2$, seule la **moitié** du titré initial a réagi — le titré est encore majoritairement en excès dans le bécher, ce n'est pas du tout l'instant « juste stœchiométrique » défini au chapitre 9. La **demi-équivalence** est un point utile — elle donne accès au $pK_A$ du couple, sans calcul — mais ce n'est pas l'équivalence : sur la courbe, ce sont deux points géométriquement distincts ($V_E/2$ n'est pas le point d'inflexion), et il faut les distinguer soigneusement.
+Non. À $V_E/2$, seule la **moitié** du titré initial a réagi — le titré est encore majoritairement en excès dans le bécher, ce n'est pas du tout l'instant « juste stœchiométrique » défini au chapitre 10. La **demi-équivalence** est un point utile — elle donne accès au $pK_A$ du couple, sans calcul — mais ce n'est pas l'équivalence : sur la courbe, ce sont deux points géométriquement distincts ($V_E/2$ n'est pas le point d'inflexion), et il faut les distinguer soigneusement.
 
 ### Exemple travaillé : les trois lectures sur la même courbe
 
@@ -619,11 +619,11 @@ Reprends le dosage des chapitres précédents : acide éthanoïque, $V_A = 20{,}
 
 (2) Sur la courbe dérivée $\dfrac{d\text{pH}}{dV} = f(V)$ : le maximum tombe à la même abscisse, $V = 15{,}0\ \text{mL}$ — les deux méthodes s'accordent.
 
-(3) À la demi-équivalence, $V_E/2 = 7{,}5\ \text{mL}$ : on y lit $\text{pH} \approx 4{,}8$ — exactement le $pK_A$ du couple $CH_3COOH/CH_3COO^-$ trouvé au chapitre 4. Deux points bien distincts sur la même courbe : $7{,}5\ \text{mL}$ (demi-équivalence, $\text{pH} \approx pK_A$) et $15{,}0\ \text{mL}$ (équivalence, le saut).
+(3) À la demi-équivalence, $V_E/2 = 7{,}5\ \text{mL}$ : on y lit $\text{pH} \approx 4{,}8$ — exactement le $pK_A$ du couple $CH_3COOH/CH_3COO^-$ trouvé au chapitre 5. Deux points bien distincts sur la même courbe : $7{,}5\ \text{mL}$ (demi-équivalence, $\text{pH} \approx pK_A$) et $15{,}0\ \text{mL}$ (équivalence, le saut).
 
 [[figure:lecture-Ve-courbe-dosage]]
 
-Avec $V_E = 15{,}0\ \text{mL}$ confirmé, tu peux boucler le calcul amorcé au chapitre 9 : $C_A = C_B V_E / V_A = 7{,}5\times10^{-2}\ \text{mol/L}$.
+Avec $V_E = 15{,}0\ \text{mL}$ confirmé, tu peux boucler le calcul amorcé au chapitre 10 : $C_A = C_B V_E / V_A = 7{,}5\times10^{-2}\ \text{mol/L}$.
 
 ### Ce que ce chapitre ne couvre pas
 
@@ -635,17 +635,17 @@ Le programme exige que $V_E$ (et $\text{pH}_E$) soient **repérés graphiquement
 
 ### Un indicateur, c'est un couple acide/base de plus
 
-Reviens aux chapitres 5 et 8 : la forme qui prédomine dans une solution impose ce qu'on y observe. Un **indicateur coloré** est lui-même un couple acide/base faible, noté $HIn/In^-$, dont la particularité est que ses deux formes ont des **couleurs différentes** — c'est ce qui le rend utile. Comme pour n'importe quel couple, à un pH donné, c'est la forme qui prédomine qui impose ce qu'on voit.
+Reviens aux chapitres 6 et 8 : la forme qui prédomine dans une solution impose ce qu'on y observe. Un **indicateur coloré** est lui-même un couple acide/base faible, noté $HIn/In^-$, dont la particularité est que ses deux formes ont des **couleurs différentes** — c'est ce qui le rend utile. Comme pour n'importe quel couple, à un pH donné, c'est la forme qui prédomine qui impose ce qu'on voit.
 
 ### La zone de virage
 
-Entre les deux couleurs pures, il existe une plage de pH où les deux formes coexistent en proportions suffisamment comparables pour qu'aucune des deux couleurs n'écrase l'autre à l'œil : c'est la **zone de virage**, approximativement l'intervalle $pK_A(\text{indicateur}) \pm 1$. En dehors de cette zone, une seule couleur domine visuellement (c'est le résultat du chapitre 8 : à plus d'une unité de $pK_A$, une forme dépasse déjà $\sim 91\,\%$).
+Entre les deux couleurs pures, il existe une plage de pH où les deux formes coexistent en proportions suffisamment comparables pour qu'aucune des deux couleurs n'écrase l'autre à l'œil : c'est la **zone de virage**, approximativement l'intervalle $pK_A(\text{indicateur}) \pm 1$. En dehors de cette zone, une seule couleur domine visuellement (c'est le résultat du chapitre 9 : à plus d'une unité de $pK_A$, une forme dépasse déjà $\sim 91\,\%$).
 
 ### Le critère de choix
 
 [[figure:zone-virage-sur-saut]]
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on veut qu'un indicateur, ajouté au bécher, change de couleur **au moment même** où l'on franchit l'équivalence — ni avant, ni après. On choisit donc un indicateur dont la **zone de virage contient le $\text{pH}_E$** lu au chapitre 10. Vois-le concrètement : superpose la zone de virage (une bande horizontale de pH) sur le saut de la courbe de dosage. Si la bande **coupe** le saut, le changement de couleur se produit au voisinage immédiat du saut — donc quasi au bon volume $V_E$. Si la bande ne coupe pas le saut, la couleur change à un volume qui n'a rien à voir avec l'équivalence.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on veut qu'un indicateur, ajouté au bécher, change de couleur **au moment même** où l'on franchit l'équivalence — ni avant, ni après. On choisit donc un indicateur dont la **zone de virage contient le $\text{pH}_E$** lu au chapitre 11. Vois-le concrètement : superpose la zone de virage (une bande horizontale de pH) sur le saut de la courbe de dosage. Si la bande **coupe** le saut, le changement de couleur se produit au voisinage immédiat du saut — donc quasi au bon volume $V_E$. Si la bande ne coupe pas le saut, la couleur change à un volume qui n'a rien à voir avec l'équivalence.
 
 ### Teste l'idée avant de la croire : « n'importe quel indicateur convient »
 
@@ -661,7 +661,7 @@ Toujours la même confusion qui revient, cette fois appliquée à l'indicateur :
 
 Même avec le bon indicateur — la phénolphtaléine ici —, le changement de couleur donne-t-il $V_E$ au millilitre près ?
 
-Non, mais c'est une **bonne approximation**, précisément parce que la zone de virage de la phénolphtaléine encadre $\text{pH}_E \approx 8{,}5$ : le virage se produit dans l'intervalle très raide du saut, donc à un volume très proche de $V_E$. Ce n'est vrai **qu'à cette condition** — la zone doit encadrer $\text{pH}_E$. L'indicateur **repère** l'équivalence, il ne la **définit** pas : la définition reste celle du chapitre 9, une égalité de quantités de matière, et la vraie référence reste la lecture par tangentes ou dérivée du chapitre 10.
+Non, mais c'est une **bonne approximation**, précisément parce que la zone de virage de la phénolphtaléine encadre $\text{pH}_E \approx 8{,}5$ : le virage se produit dans l'intervalle très raide du saut, donc à un volume très proche de $V_E$. Ce n'est vrai **qu'à cette condition** — la zone doit encadrer $\text{pH}_E$. L'indicateur **repère** l'équivalence, il ne la **définit** pas : la définition reste celle du chapitre 10, une égalité de quantités de matière, et la vraie référence reste la lecture par tangentes ou dérivée du chapitre 11.
 
 ### Exemple travaillé : choisir, pour de vrai
 
@@ -673,7 +673,7 @@ Retiens la phrase qui résume tout ce chapitre : la couleur change quasi au saut
 
 ### Ce que ce chapitre ne couvre pas
 
-Le traitement du choix d'indicateur reste **qualitatif** : on superpose une zone de virage et un saut, on ne modélise pas quantitativement l'équilibre coloré de l'indicateur (pas de calcul du rapport $[In^-]/[HIn]$ pour prédire une teinte intermédiaire, au-delà de la logique de prédominance déjà vue au chapitre 5). Et comme dans toute cette leçon, on reste dans le cadre de Brønsted.
+Le traitement du choix d'indicateur reste **qualitatif** : on superpose une zone de virage et un saut, on ne modélise pas quantitativement l'équilibre coloré de l'indicateur (pas de calcul du rapport $[In^-]/[HIn]$ pour prédire une teinte intermédiaire, au-delà de la logique de prédominance déjà vue au chapitre 6). Et comme dans toute cette leçon, on reste dans le cadre de Brønsted.
 
 ---
 

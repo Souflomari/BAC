@@ -394,7 +394,7 @@ items:
       totale, même longueur, mais un $J_\Delta$ trois fois plus grand pour le
       système où la masse est concentrée aux extrémités.
     solution: |
-      **Système 1 — tige homogène (valeur usuelle, R3) :**
+      **Système 1 — tige homogène (valeur usuelle, chapitre 4) :**
       $$J_1 = \frac{1}{12}mL^2 = \frac{1}{12}\times 4{,}0\times 2{,}0^2 = \frac{1}{12}\times 16 \approx 1{,}33\ \text{kg}\cdot\text{m}^2$$
 
       **Système 2 — deux masses ponctuelles à $d = L/2 = 1{,}0\ \text{m}$ de l'axe :**
@@ -684,7 +684,7 @@ items:
       à l'axe qui détermine la résistance du système au changement de
       rotation. Une masse proche de l'axe s'oppose moins à la mise en
       rotation qu'une masse éloignée : l'essai 1 atteint donc une vitesse
-      angulaire plus grande. Ce sera formalisé au rung suivant avec le
+      angulaire plus grande. Ce sera formalisé au chapitre suivant avec le
       moment d'inertie $J_\Delta$.
     solution: |
       Les deux essais partagent tout, sauf un détail : où sont assis les
@@ -842,7 +842,7 @@ items:
       Ce que révèle l'accroche, c'est que la masse totale ne suffit jamais
       à décrire la réponse d'un système à une poussée en rotation : sa
       répartition par rapport à l'axe compte tout autant, sinon plus. Ce
-      sera formalisé au rung R3 avec le moment d'inertie $J_\Delta$.
+      sera formalisé au chapitre 4 avec le moment d'inertie $J_\Delta$.
     solution: |
       L'observation (même poussée, même masse totale, réponses
       différentes) ne peut s'expliquer ni par un frottement variable, ni
@@ -1058,9 +1058,9 @@ items:
       d'application. Une force radiale a une ligne d'action qui passe par
       l'axe : son bras de levier est nul, donc son moment est nul, même
       loin de l'axe et même pour une force intense. C'est la deuxième des
-      « deux façons d'avoir un moment nul » vues en R2.
+      « deux façons d'avoir un moment nul » vues au chapitre 3.
     solution: |
-      **Rappel — deux façons d'avoir un moment nul (R2) :**
+      **Rappel — deux façons d'avoir un moment nul (chapitre 3) :**
       - force appliquée exactement sur l'axe ($d=0$) ;
       - force dirigée radialement, sans composante tangentielle (le cas
         présent).
@@ -1138,7 +1138,7 @@ items:
       0{,}50^2 = 0{,}5\ \text{kg}\cdot\text{m}^2$. Par additivité,
       $J_{total} = 1{,}0 + 0{,}5 = 1{,}5\ \text{kg}\cdot\text{m}^2$.
     solution: |
-      **Contribution du disque (valeur usuelle, R3) :**
+      **Contribution du disque (valeur usuelle, chapitre 4) :**
       $$J_{disque} = \frac{1}{2}MR^2 = \frac{1}{2}\times 8{,}0\times
       0{,}50^2 = 1{,}0\ \text{kg}\cdot\text{m}^2$$
 
@@ -1146,7 +1146,7 @@ items:
       $$J_{masse} = m\,d^2 = 2{,}0\times 0{,}50^2 = 0{,}5\
       \text{kg}\cdot\text{m}^2$$
 
-      **Par additivité (R3) :**
+      **Par additivité (chapitre 4) :**
       $$J_{total} = J_{disque} + J_{masse} = 1{,}0 + 0{,}5 = 1{,}5\
       \text{kg}\cdot\text{m}^2$$
 
@@ -1207,7 +1207,7 @@ items:
     correct_feedback: >
       $\ddot\theta = \mathcal{M}_\Delta / J_\Delta = 3{,}6 / 0{,}45 =
       8{,}0\ \text{rad/s}^2$. La réaction de l'axe, sans frottement, a un
-      moment nul (R2) : le moment du moteur est donc le seul terme du
+      moment nul (chapitre 3) : le moment du moteur est donc le seul terme du
       bilan.
     solution: |
       **Relation fondamentale de la dynamique de rotation :**
@@ -1317,7 +1317,7 @@ items:
         feedback: >
           La formule est $E_c = \frac12 J_\Delta\,\omega^2$ : le facteur
           $\frac12$ n'est pas optionnel, il vient directement de $E_c =
-          \frac12 m v^2$ appliquée point par point (R3). L'oublier double
+          \frac12 m v^2$ appliquée point par point (chapitre 4). L'oublier double
           le résultat.
       - id: B
         text: >-
@@ -1349,7 +1349,7 @@ items:
       $E_c = \frac12 J_\Delta\,\omega^2 = \frac12\times 0{,}60\times 10^2 =
       \frac12\times 0{,}60\times 100 = 30\ \text{J}$.
     solution: |
-      **Énergie cinétique de rotation (R5) :**
+      **Énergie cinétique de rotation (chapitre 6) :**
       $$E_c = \frac{1}{2}J_\Delta\,\omega^2$$
 
       **Application numérique :**
@@ -1441,7 +1441,7 @@ items:
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee
         feedback: >
-          $J_\Delta$ est additif (R3) : le moment d'inertie total inclut
+          $J_\Delta$ est additif (chapitre 4) : le moment d'inertie total inclut
           la contribution du disque ET celle de la masse ponctuelle, $J_
           {total} = J_{disque} + J_{masse}$. Ignorer la masse ajoutée
           revient à calculer l'énergie du disque seul, pas celle du
@@ -1473,17 +1473,17 @@ items:
         correct: true
     correct_feedback: >
       $J_{total} = J_{disque}+J_{masse} = 3{,}0+2{,}0 = 5{,}0\
-      \text{kg}\cdot\text{m}^2$ (additivité, R3). $E_c = \frac12
+      \text{kg}\cdot\text{m}^2$ (additivité, chapitre 4). $E_c = \frac12
       J_{total}\,\omega^2 = \frac12\times 5{,}0\times 4{,}0^2 = \frac12
       \times 5{,}0\times 16 = 40\ \text{J}$.
     solution: |
-      **Moment d'inertie total, par additivité (R3) :**
+      **Moment d'inertie total, par additivité (chapitre 4) :**
       $$J_{total} = J_{disque} + J_{masse} = 3{,}0 + 2{,}0 = 5{,}0\ \text{kg}\cdot\text{m}^2$$
 
-      **Énergie cinétique de rotation (R5) :**
+      **Énergie cinétique de rotation (chapitre 6) :**
       $$E_c = \frac{1}{2}J_{total}\,\omega^2 = \frac{1}{2}\times 5{,}0\times 4{,}0^2 = \frac{1}{2}\times 5{,}0\times 16 = 40\ \text{J}$$
 
-      L'additivité de $J_\Delta$ établie en R3 se transmet directement au
+      L'additivité de $J_\Delta$ établie au chapitre 4 se transmet directement au
       calcul de l'énergie cinétique totale, à condition d'utiliser le bon
       $J_{total}$ (une somme, jamais un produit) et de ne pas oublier le
       facteur $\frac12$.
@@ -1519,7 +1519,7 @@ items:
         feedback: >
           Le vrai bras de levier du poids n'est pas $d=\Delta G$ lui-même,
           mais la distance entre l'axe et la LIGNE D'ACTION verticale du
-          poids, qui vaut $d\sin\theta$ (R6). Prendre $d$ seul revient à
+          poids, qui vaut $d\sin\theta$ (chapitre 7). Prendre $d$ seul revient à
           ignorer que le bras de levier change avec l'angle d'écart —
           il ne serait égal à $d$ que si $\theta = 90°$.
       - id: C
@@ -1552,13 +1552,13 @@ items:
           où $d$ est bien une longueur et $\sin\theta$ un facteur sans
           dimension.
     correct_feedback: >
-      Le bras de levier du poids est $d\sin\theta$ (R6, triangle rectangle
+      Le bras de levier du poids est $d\sin\theta$ (chapitre 7, triangle rectangle
       $\Delta G$/verticale) : $\mathcal{M}_\Delta(\vec P) = -mg\,d\sin
       \theta = -1{,}2\times 9{,}8\times 0{,}40\times 0{,}50 \approx
       -2{,}4\ \text{N}\cdot\text{m}$. Le signe négatif traduit le fait que
       ce moment ramène toujours $\theta$ vers $0$.
     solution: |
-      **Moment du poids par rapport à $\Delta$ (R6) :**
+      **Moment du poids par rapport à $\Delta$ (chapitre 7) :**
       $$\mathcal{M}_\Delta(\vec P) = -mg\,d\sin\theta$$
 
       **Application numérique**, avec $\sin 30° = 0{,}50$ :
@@ -1632,7 +1632,7 @@ items:
       **Calcul intermédiaire :**
       $$mg\,d = 0{,}90\times 9{,}8\times 0{,}25 = 2{,}205\ \text{N}\cdot\text{m}$$
 
-      **Période propre (R6) :**
+      **Période propre (chapitre 7) :**
       $$T_0 = 2\pi\sqrt{\frac{J_\Delta}{mg\,d}} = 2\pi\sqrt{\frac{0{,}18}{2{,}205}} = 2\pi\sqrt{0{,}0816} \approx 1{,}8\ \text{s}$$
 
       Cette formule ne coïncide avec celle du pendule simple
@@ -1752,7 +1752,7 @@ items:
         misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
         feedback: >
           Le moment de la force tangentielle appliquée sur la jante est
-          $\mathcal{M}_\Delta(\vec F) = R\times F$, pas $F$ seule (R2) : le
+          $\mathcal{M}_\Delta(\vec F) = R\times F$, pas $F$ seule (chapitre 3) : le
           bras de levier n'est pas optionnel. L'omettre revient à
           confondre l'intensité d'une force avec son moment.
       - id: C
@@ -1763,7 +1763,7 @@ items:
         misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
         feedback: >
           Le moment d'inertie d'un disque est $J_\Delta = \frac12 mR^2$
-          (R3), pas $m$ tout seul : il dépend aussi de la répartition de
+          (chapitre 4), pas $m$ tout seul : il dépend aussi de la répartition de
           la masse par rapport à l'axe, via $R^2$. Confondre $J_\Delta$
           avec la masse ignore complètement la géométrie du disque.
       - id: D
@@ -1777,13 +1777,13 @@ items:
       \text{rad/s}^2$. En partant du repos, $\omega = \ddot\theta\,t =
       20\times 2{,}0 = 40\ \text{rad/s}$.
     solution: |
-      **Moment d'inertie du disque (R3) :**
+      **Moment d'inertie du disque (chapitre 4) :**
       $$J_\Delta = \frac{1}{2}mR^2 = \frac{1}{2}\times 4{,}0\times 0{,}20^2 = 0{,}08\ \text{kg}\cdot\text{m}^2$$
 
-      **Moment de la force tangentielle sur la jante (R2), bras de levier $R$ :**
+      **Moment de la force tangentielle sur la jante (chapitre 3), bras de levier $R$ :**
       $$\mathcal{M}_\Delta(\vec F) = R\times F = 0{,}20\times 8{,}0 = 1{,}6\ \text{N}\cdot\text{m}$$
 
-      **Accélération angulaire (relation fondamentale, R4) :**
+      **Accélération angulaire (relation fondamentale, chapitre 5) :**
       $$\ddot\theta = \frac{\mathcal{M}_\Delta(\vec F)}{J_\Delta} = \frac{1{,}6}{0{,}08} = 20\ \text{rad/s}^2$$
 
       **Vitesse angulaire après $t=2{,}0\ \text{s}$, en partant du repos :**
@@ -1826,7 +1826,7 @@ items:
           \sum_i m_i d_i^2$ ne dépend que de la distance des masses à
           l'axe (dans le plan perpendiculaire à l'axe), jamais de leur
           position le long de l'axe lui-même — c'est exactement la
-          remarque faite pour le cylindre en R3.
+          remarque faite pour le cylindre au chapitre 4.
       - id: C
         text: >-
           La pièce de monnaie (la plus courte) atteint une vitesse
@@ -1847,7 +1847,7 @@ items:
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
         feedback: >
-          C'est précisément la remarque faite en R3 : pour un cylindre
+          C'est précisément la remarque faite au chapitre 4 : pour un cylindre
           plein homogène tournant autour de son axe de révolution, $J_
           \Delta = \frac12 mR^2$ ne contient ni la longueur ni
           l'épaisseur. Ces deux informations ne sont donc pas nécessaires
@@ -1855,11 +1855,11 @@ items:
     correct_feedback: >
       Un disque plein et un cylindre plein homogènes de même masse et même
       rayon ont exactement le même $J_\Delta = \frac12 mR^2$, quelle que
-      soit leur longueur (ou épaisseur) le long de l'axe (R3) : à moment
+      soit leur longueur (ou épaisseur) le long de l'axe (chapitre 4) : à moment
       de force égal et durée égale, ils atteignent donc rigoureusement la
       même vitesse angulaire.
     solution: |
-      **Moment d'inertie, identique pour les deux solides (R3) :**
+      **Moment d'inertie, identique pour les deux solides (chapitre 4) :**
       $$J_{disque} = J_{cylindre} = \frac{1}{2}mR^2$$
 
       Cette expression ne contient ni la longueur du cylindre ni
@@ -1934,17 +1934,17 @@ items:
           garde une vitesse constante, sans accélérer.
     correct_feedback: >
       Une fois le pédalage arrêté, le seul moment restant est celui de la
-      réaction de l'axe — toujours nul (R2, axe sans frottement) : $\sum
+      réaction de l'axe — toujours nul (chapitre 3, axe sans frottement) : $\sum
       \mathcal{M}_\Delta(\vec F_{ext}) = 0$, donc $\ddot\theta = 0$
-      (relation fondamentale, R4). La roue continue de tourner à $\omega =
+      (relation fondamentale, chapitre 5). La roue continue de tourner à $\omega =
       12\ \text{rad/s}$, indéfiniment, sans jamais ralentir ni accélérer.
     solution: |
       **Bilan des moments après l'arrêt du pédalage :** seule la réaction
-      de l'axe subsiste, et son moment est toujours nul (R2 : elle
+      de l'axe subsiste, et son moment est toujours nul (chapitre 3 : elle
       s'applique sur l'axe lui-même). Donc :
       $$\sum \mathcal{M}_\Delta(\vec F_{ext}) = 0$$
 
-      **Relation fondamentale (R4) :**
+      **Relation fondamentale (chapitre 5) :**
       $$J_\Delta\,\ddot\theta = 0 \quad\Rightarrow\quad \ddot\theta = 0$$
 
       La vitesse angulaire reste constante, égale à $12\ \text{rad/s}$,

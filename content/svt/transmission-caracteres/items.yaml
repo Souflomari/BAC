@@ -47,7 +47,7 @@ items:
       (l'aspect visible) sont deux informations distinctes. Dès qu'un allèle
       domine l'autre, un homozygote dominant et un hétérozygote partagent le
       même phénotype tout en ayant des génotypes différents — c'est
-      exactement le piège que révèle le test-cross (R5).
+      exactement le piège que révèle le test-cross (chapitre 6).
     solution: |
       **Génotype vs phénotype :** le génotype est la composition allélique
       réelle ($G//G$ ou $G//g$) ; le phénotype est ce qu'on observe
@@ -55,7 +55,7 @@ items:
 
       **Conséquence :** l'observation du phénotype seul ne permet jamais de
       distinguer un homozygote dominant d'un hétérozygote. Il faut un outil
-      supplémentaire (le test-cross, R5) pour lever cette ambiguïté.
+      supplémentaire (le test-cross, chapitre 6) pour lever cette ambiguïté.
 
   - id: TC-2
     rung: "R2"
@@ -87,13 +87,13 @@ items:
           ne produit qu'UN SEUL type de gamète ($J$ pour l'un, $j$ pour
           l'autre) : il n'y a donc qu'une seule combinaison possible dans
           l'échiquier, pas deux. Le rapport 50-50 est celui d'un test-cross
-          (R5), pas celui d'un croisement de deux lignées pures.
+          (chapitre 6), pas celui d'un croisement de deux lignées pures.
       - id: D
         text: "$\\frac{3}{4}$ jaunes et $\\frac{1}{4}$ vertes, comme pour un croisement F1 $\\times$ F1."
         correct: false
         feedback: >
           Ce rapport 3:1 est celui de la génération F2 (croisement de deux
-          hétérozygotes, R3), pas celui de la F1. Ici, on croise deux lignées
+          hétérozygotes, chapitre 4), pas celui de la F1. Ici, on croise deux lignées
           PURES (P), qui ne produisent chacune qu'un seul type de gamète — le
           résultat est donc uniforme, pas un mélange de proportions.
     correct_feedback: >
@@ -137,7 +137,7 @@ items:
         text: "$0$, car les deux parents sont gris."
         correct: false
         feedback: >
-          C'est le piège du R1 : un parent au phénotype gris peut être
+          C'est le piège du chapitre 2 : un parent au phénotype gris peut être
           hétérozygote et porter, sans le montrer, l'allèle $g$. Le
           phénotype des parents ne détermine pas à lui seul le phénotype de
           toute la descendance — c'est justement ce que montre l'échiquier
@@ -216,10 +216,10 @@ items:
       donc $P(c//c \, ; \, l//l) = \frac{1}{4} \times \frac{1}{4} =
       \frac{1}{16}$ — la plus petite des quatre classes du rapport $9:3:3:1$.
     solution: |
-      **Rapport monohybride pour chaque gène séparément (R3) :**
+      **Rapport monohybride pour chaque gène séparément (chapitre 4) :**
       $$P(\text{corps noir}) = \frac{1}{4} \qquad P(\text{ailes vestigiales}) = \frac{1}{4}$$
 
-      **Indépendance des deux gènes (R4) — on multiplie :**
+      **Indépendance des deux gènes (chapitre 5) — on multiplie :**
       $$P(\text{noir et vestigiales}) = \frac{1}{4} \times \frac{1}{4} = \frac{1}{16}$$
 
       **Vérification :** les quatre classes du dihybridisme totalisent
@@ -249,7 +249,7 @@ items:
         feedback: >
           C'est retomber dans le piège que le test-cross sert justement à
           éviter : le phénotype gris seul ne permet pas de conclure sur le
-          génotype (R1). C'est la RÉPARTITION des phénotypes chez les petits
+          génotype (chapitre 2). C'est la RÉPARTITION des phénotypes chez les petits
           — pas l'apparence du parent testé — qui révèle son génotype réel.
           Ici, la répartition 50-50 signe précisément l'hétérozygotie.
       - id: C

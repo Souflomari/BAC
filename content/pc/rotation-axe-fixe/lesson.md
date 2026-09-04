@@ -419,7 +419,7 @@ Le signe négatif confirme que le moment du poids ramène toujours la tige vers 
 Un sujet de rotation fait rarement tourner un solide dans le vide. Il l'accroche à un fil qui passe sur une poulie, le pose sur un plan incliné, ou lui demande un bilan d'énergie. Deux outils reviennent alors, que **cette leçon n'enseigne pas** :
 
 - **La décomposition du poids sur un plan incliné** — la composante $mg\sin\alpha$ le long de la pente, $mg\cos\alpha$ perpendiculairement. Elle est établie dans « **Les lois de Newton** », au chapitre consacré au solide sur un plan incliné, et reprise dans « **Chute libre et mouvements dans un plan** ». Un exercice de rotation la mobilise dès qu'un objet en translation tire le solide tournant.
-- **Le travail d'une force et le théorème de l'énergie cinétique**, dans « **Aspects énergétiques** ». Ce chapitre-ci donne l'énergie cinétique de rotation $E_c = \frac{1}{2}J_\Delta\,\dot\theta^{\,2}$ (chapitre 5), mais pas la machinerie du travail qui la fait varier.
+- **Le travail d'une force et le théorème de l'énergie cinétique**, dans « **Aspects énergétiques** ». Ce chapitre-ci donne l'énergie cinétique de rotation $E_c = \frac{1}{2}J_\Delta\,\dot\theta^{\,2}$ (chapitre 6), mais pas la machinerie du travail qui la fait varier.
 
 Ce ne sont pas des manques : un exercice de mécanique assemble presque toujours translation et rotation, cinématique et énergie. Savoir **d'où vient** chaque geste évite de croire qu'on a oublié une formule de ce chapitre.
 

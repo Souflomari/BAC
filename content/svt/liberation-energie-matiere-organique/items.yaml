@@ -88,7 +88,7 @@ items:
         text: "Parce que la glycolyse ne consomme aucun ATP : elle n'en produit."
         correct: false
         feedback: >
-          C'est l'oubli précis que ce rung corrige : les premières réactions
+          C'est l'oubli précis que ce chapitre corrige : les premières réactions
           de la glycolyse investissent 2 ATP pour phosphoryler le glucose et
           le rendre réactif, avant que les étapes suivantes n'en produisent
           4. Sans cet investissement, il n'y aurait pas de bilan net de 2 —
@@ -100,7 +100,7 @@ items:
         correct: false
         feedback: >
           La chaîne respiratoire n'est pas dans le cytoplasme : elle est sur
-          la membrane interne de la mitochondrie (R4). Les ATP de la
+          la membrane interne de la mitochondrie (chapitre 5). Les ATP de la
           glycolyse viennent de la phosphorylation au niveau du substrat, un
           mécanisme direct qui ne fait intervenir ni chaîne respiratoire ni
           dioxygène.
@@ -112,9 +112,9 @@ items:
         feedback: >
           Un $NADH,H^+$ n'est pas de l'ATP : c'est un transporteur
           d'électrons, dont le potentiel énergétique ne devient de l'ATP
-          qu'après passage par la chaîne respiratoire (R4), et seulement en
+          qu'après passage par la chaîne respiratoire (chapitre 5), et seulement en
           présence de dioxygène. Les compter directement comme de l'ATP est
-          l'erreur signalée dans ce rung.
+          l'erreur signalée dans ce chapitre.
     correct_feedback: >
       Le bilan net résulte d'une soustraction : 4 ATP produits moins 2 ATP
       investis au départ pour amorcer la coupure du glucose. C'est ce solde,
@@ -126,7 +126,7 @@ items:
       par phosphorylation au niveau du substrat.
 
       **Bilan net :** $4 - 2 = 2$ ATP par glucose, plus 2 $NADH,H^+$ (qui ne
-      deviendront de l'ATP que via la chaîne respiratoire, R4-R5).
+      deviendront de l'ATP que via la chaîne respiratoire, chapitres 5 à 6).
 
   - id: LIB-3
     rung: "R3"
@@ -161,7 +161,7 @@ items:
         text: "6 $CO_2$, mais tous libérés pendant la glycolyse, avant l'entrée dans la mitochondrie."
         correct: false
         feedback: >
-          La glycolyse ne libère aucun $CO_2$ (R2) : elle coupe le glucose en
+          La glycolyse ne libère aucun $CO_2$ (chapitre 3) : elle coupe le glucose en
           deux pyruvates sans perte de carbone. Le $CO_2$ n'apparaît qu'à
           partir de l'oxydation du pyruvate et du cycle de Krebs, dans la
           matrice mitochondriale.
@@ -179,10 +179,10 @@ items:
       2 $CO_2$ (oxydation des pyruvates) + 4 $CO_2$ (deux tours du cycle de
       Krebs) = 6 $CO_2$, exactement le nombre de carbones du glucose de
       départ. C'est la signature d'une oxydation complète — tout le contraire
-      de ce qui se passe en fermentation (R6).
+      de ce qui se passe en fermentation (chapitre 7).
     solution: |
       **Traçage des carbones :** glucose (6 C) → 2 pyruvate (3 C chacun, sans
-      perte, R2) → oxydation de chaque pyruvate (1 $CO_2$ chacun, soit 2 au
+      perte, chapitre 3) → oxydation de chaque pyruvate (1 $CO_2$ chacun, soit 2 au
       total) → 2 tours du cycle de Krebs (2 $CO_2$ par tour, soit 4 au
       total).
 
@@ -232,7 +232,7 @@ items:
         correct: false
         feedback: >
           Le glucose est déjà entièrement dégradé bien avant la chaîne
-          respiratoire (glycolyse puis cycle de Krebs, R2-R3) : il ne reste
+          respiratoire (glycolyse puis cycle de Krebs, chapitres 3 à 4) : il ne reste
           plus de glucose à ce stade. Le dioxygène réagit avec les électrons
           et les ions $H^+$ sortis de la chaîne, pas avec le glucose.
     correct_feedback: >
@@ -275,7 +275,7 @@ items:
           Ce n'est pas une question de quantité de dioxygène dans l'air (elle
           ne change pas), mais de la vitesse à laquelle ce dioxygène peut
           être acheminé et utilisé par les mitochondries des fibres
-          musculaires en pleine action — exactement le point du R0.
+          musculaires en pleine action — exactement le point du chapitre 1.
       - id: C
         text: >
           La fermentation lactique remplace complètement la respiration
@@ -294,7 +294,7 @@ items:
           musculaires elles-mêmes.
         correct: false
         feedback: >
-          C'est l'erreur classique signalée en R6 : la fermentation lactique
+          C'est l'erreur classique signalée au chapitre 7 : la fermentation lactique
           n'est pas réservée aux micro-organismes. Les cellules musculaires
           humaines la réalisent elles-mêmes, ponctuellement, quand l'apport
           en dioxygène ne suit plus la demande.
@@ -336,7 +336,7 @@ items:
         text: "La fermentation détruit une partie du glucose sous forme de chaleur avant même la glycolyse."
         correct: false
         feedback: >
-          La glycolyse elle-même est identique dans les deux voies (R2) : ce
+          La glycolyse elle-même est identique dans les deux voies (chapitre 3) : ce
           qui diffère, c'est ce qui se passe APRÈS, pas une perte de glucose
           en amont.
       - id: C
@@ -348,7 +348,7 @@ items:
           La fermentation n'utilise pas du tout le cycle de Krebs — c'est
           précisément pour cela que son bilan s'arrête à 2 ATP. Le cycle de
           Krebs et la chaîne respiratoire exigent tous deux la présence de
-          dioxygène (R3-R4, R6).
+          dioxygène (chapitres 4, 5 et 7).
       - id: D
         text: >
           La fermentation nécessite davantage d'étapes biochimiques que la
@@ -367,7 +367,7 @@ items:
     solution: |
       **Ce qui manque à la fermentation :** le cycle de Krebs (matrice) et la
       chaîne respiratoire / phosphorylation oxydative (membrane interne),
-      tous deux dépendants du dioxygène (R3-R5).
+      tous deux dépendants du dioxygène (chapitres 4 à 6).
 
       **Conséquence :** la fermentation se limite au bilan de la glycolyse
       seule (2 ATP nets), alors que la respiration complète extrait, via ces

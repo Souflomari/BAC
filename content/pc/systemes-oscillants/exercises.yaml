@@ -75,7 +75,7 @@ exercises:
         stem: |-
           **(0,25 pt)** Déterminer la phase à l'origine $\varphi$ à partir des conditions initiales du lâcher.
         reasoning: |-
-          On n'invente pas $\varphi$ : on le lit dans les conditions initiales, exactement comme en R2. Le solide part de son écart maximal négatif, $x(0) = -X_m$, et il est lâché **sans vitesse**, $v(0) = 0$. On injecte $t = 0$ dans l'équation horaire et on identifie.
+          On n'invente pas $\varphi$ : on le lit dans les conditions initiales, exactement comme au chapitre 3. Le solide part de son écart maximal négatif, $x(0) = -X_m$, et il est lâché **sans vitesse**, $v(0) = 0$. On injecte $t = 0$ dans l'équation horaire et on identifie.
 
           La condition sur la position suffit presque à trancher : $\cos\varphi = -1$ n'a qu'une solution dans $[0, 2\pi[$, à savoir $\varphi = \pi$. La condition sur la vitesse sert alors de vérification — et elle passe, car $\sin\pi = 0$ donne bien $v(0) = 0$.
         steps:
@@ -127,7 +127,7 @@ exercises:
         stem: |-
           En déduire la raideur $k$ du ressort.
         reasoning: |-
-          On inverse la relation $\omega_0 = \sqrt{k/m}$ établie en R1 pour le pendule élastique — c'est le même $\omega_0$ qu'on vient de mesurer, donc $k$ se déduit directement, sans nouvelle expérience. Ici l'inconnue est $k$ (pas $m$, comme au sujet) : c'est le point de la variation, reconnaître laquelle des deux grandeurs on cherche.
+          On inverse la relation $\omega_0 = \sqrt{k/m}$ établie au chapitre 2 pour le pendule élastique — c'est le même $\omega_0$ qu'on vient de mesurer, donc $k$ se déduit directement, sans nouvelle expérience. Ici l'inconnue est $k$ (pas $m$, comme au sujet) : c'est le point de la variation, reconnaître laquelle des deux grandeurs on cherche.
         steps:
           - math: '\omega_0^2 = \frac{k}{m} \implies k = m\,\omega_0^2'
             note: "On isole k dans la relation de la pulsation propre du pendule élastique."
@@ -137,7 +137,7 @@ exercises:
         stem: |-
           Écrire l'équation horaire $x(t)$ du mouvement.
         reasoning: |-
-          On identifie $X_m$ et $\varphi$ à partir des conditions initiales, comme au sujet — mais le lâcher est différent. Ici le solide part de l'écart maximal **positif**, $x(0) = +X_m$, sans vitesse : c'est le cas $\varphi = 0$ de R2 (et non $\varphi = \pi$ comme au sujet 2018, où le départ était du côté négatif). Reconnaître ce changement de signe, c'est tout l'intérêt de la variation.
+          On identifie $X_m$ et $\varphi$ à partir des conditions initiales, comme au sujet — mais le lâcher est différent. Ici le solide part de l'écart maximal **positif**, $x(0) = +X_m$, sans vitesse : c'est le cas $\varphi = 0$ du chapitre 3 (et non $\varphi = \pi$ comme au sujet 2018, où le départ était du côté négatif). Reconnaître ce changement de signe, c'est tout l'intérêt de la variation.
         steps:
           - math: 'x(0) = X_m\cos\varphi = +X_m \implies \cos\varphi = 1 \implies \varphi = 0'
             note: "Départ depuis l'écart maximal positif : x(0) = +X_m, d'où φ = 0 (à comparer au φ = π du sujet, où le départ était négatif)."
@@ -147,6 +147,6 @@ exercises:
         stem: |-
           On refait l'expérience en ajoutant un léger frottement fluide. Le dispositif indique que l'intervalle entre deux passages successifs par l'écart maximal du même côté reste voisin de $0{,}40\ \text{s}$, mais que cet écart maximal diminue à chaque aller-retour. Quel régime observe-t-on ? Justifier.
         reasoning: |-
-          La question teste directement la trichotomie de R6 — reconnaître le régime à partir de deux indices, pas réciter une définition. Deux faits sont donnés : (1) les oscillations persistent, avec un intervalle de temps régulier entre extrêmes ; (2) l'amplitude décroît d'un cycle au suivant. C'est la signature exacte du **régime pseudo-périodique**, pour un amortissement faible.
+          La question teste directement la trichotomie du chapitre 7 — reconnaître le régime à partir de deux indices, pas réciter une définition. Deux faits sont donnés : (1) les oscillations persistent, avec un intervalle de temps régulier entre extrêmes ; (2) l'amplitude décroît d'un cycle au suivant. C'est la signature exacte du **régime pseudo-périodique**, pour un amortissement faible.
 
-          Le point à ne pas rater : l'intervalle reste voisin de $0{,}40\ \text{s}$, c'est-à-dire de la période propre $T_0$. C'est cohérent avec ce qu'on a établi en R6 — le frottement fait fuir l'amplitude (via le terme $h\dot{x}$), mais ne touche pas au terme de rappel $kx$ qui fixe le rythme ; pour un amortissement faible, $T \approx T_0$. Ce n'est ni le régime périodique (l'amplitude ne serait pas décroissante), ni un régime apériodique (il n'y aurait plus d'aller-retour du tout).
+          Le point à ne pas rater : l'intervalle reste voisin de $0{,}40\ \text{s}$, c'est-à-dire de la période propre $T_0$. C'est cohérent avec ce qu'on a établi au chapitre 7 — le frottement fait fuir l'amplitude (via le terme $h\dot{x}$), mais ne touche pas au terme de rappel $kx$ qui fixe le rythme ; pour un amortissement faible, $T \approx T_0$. Ce n'est ni le régime périodique (l'amplitude ne serait pas décroissante), ni un régime apériodique (il n'y aurait plus d'aller-retour du tout).

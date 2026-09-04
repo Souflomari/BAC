@@ -566,24 +566,24 @@ entries:
         reasoning: |-
           Développe d'abord le produit pour séparer les deux régimes : $f(x) = 4x\,e^{-x} + 2x^2 - 4x$. C'est cette forme qui rend chaque limite lisible.
 
-          En $+\infty$ : $x\,e^{-x}\to 0$ — c'est l'inverse de la croissance comparée $\dfrac{e^x}{x}\to+\infty$ (R4) — donc $4x\,e^{-x}\to 0$. Le reste, $2x^2-4x$, est dominé par $2x^2\to+\infty$. Une quantité qui tend vers $0$ plus une quantité qui tend vers $+\infty$ : pas d'indétermination, la somme suit le terme qui diverge.
+          En $+\infty$ : $x\,e^{-x}\to 0$ — c'est l'inverse de la croissance comparée $\dfrac{e^x}{x}\to+\infty$ (chapitre 5) — donc $4x\,e^{-x}\to 0$. Le reste, $2x^2-4x$, est dominé par $2x^2\to+\infty$. Une quantité qui tend vers $0$ plus une quantité qui tend vers $+\infty$ : pas d'indétermination, la somme suit le terme qui diverge.
 
           En $-\infty$, c'est plus délicat : $x\,e^{-x}$ est un produit de $x\to-\infty$ par $e^{-x}\to+\infty$ — jamais indéterminé, un produit de deux limites infinies de signes opposés donne directement $-\infty$ — donc $4x\,e^{-x}\to-\infty$ ; mais $2x^2-4x\to+\infty$ aussi. Cette fois on a $-\infty+\infty$, une vraie indétermination : il faut comparer la vitesse des deux termes. On factorise par le terme exponentiel, qui l'emporte toujours sur un polynôme :
 
           $$f(x) = 4x\,e^{-x}\left[1 + \frac{2x^2-4x}{4x\,e^{-x}}\right] = 4x\,e^{-x}\left[1 + \frac{(x-2)e^{x}}{2}\right]$$
 
-          Le crochet tend vers $1$ : $x\,e^{x}\to 0$ en $-\infty$ (c'est le corollaire du R4) et $e^{x}\to 0$, donc $(x-2)e^x = xe^x - 2e^x \to 0$. Il reste $4x\,e^{-x}\to-\infty$ multiplié par un facteur qui tend vers $1$ : la limite est $-\infty$.
+          Le crochet tend vers $1$ : $x\,e^{x}\to 0$ en $-\infty$ (c'est le corollaire du chapitre 5) et $e^{x}\to 0$, donc $(x-2)e^x = xe^x - 2e^x \to 0$. Il reste $4x\,e^{-x}\to-\infty$ multiplié par un facteur qui tend vers $1$ : la limite est $-\infty$.
         steps:
           - math: 'f(x) = 4x\,e^{-x} + 2x^2 - 4x'
             note: "On développe le produit : 4x fois e puissance moins x, plus 4x fois un demi x moins 4x."
           - math: '\lim_{x\to+\infty} x\,e^{-x} = 0 \quad (\text{inverse de } e^x/x\to+\infty,\ R4)'
-            note: "En plus l'infini, x fois e puissance moins x tend vers 0 : c'est l'inverse de la croissance comparée du rung R4."
+            note: "En plus l'infini, x fois e puissance moins x tend vers 0 : c'est l'inverse de la croissance comparée du chapitre 5."
           - math: '\lim_{x\to+\infty} (2x^2-4x) = +\infty \ \Rightarrow\ \lim_{x\to+\infty} f(x) = +\infty'
             note: "Le polynôme 2x carré moins 4x tend vers plus l'infini ; la somme suit ce terme, pas d'indétermination."
           - math: 'f(x) = 4x\,e^{-x}\left[1 + \frac{(x-2)e^{x}}{2}\right]'
             note: "On factorise par le terme exponentiel pour lever l'indétermination en moins l'infini."
           - math: '\lim_{x\to-\infty} x\,e^{x} = 0 \quad (\text{corollaire } R4) \ \Rightarrow\ \lim_{x\to-\infty}\left[1+\frac{(x-2)e^x}{2}\right] = 1'
-            note: "x fois e puissance x tend vers 0 en moins l'infini (corollaire du rung R4) : le crochet tend vers 1."
+            note: "x fois e puissance x tend vers 0 en moins l'infini (corollaire du chapitre 5) : le crochet tend vers 1."
           - math: '\lim_{x\to-\infty} 4x\,e^{-x} = -\infty \ \Rightarrow\ \lim_{x\to-\infty} f(x) = -\infty'
             note: "Produit direct, x vers moins l'infini fois e puissance moins x vers plus l'infini : moins l'infini, multiplié par un facteur qui tend vers 1."
       - id: q2a
@@ -591,12 +591,12 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $f$ est dérivable sur $\mathbb{R}$ et que $(\forall x \in \mathbb{R})\ ;\ f'(x) = 4\left(e^{-x} - 1\right)(1 - x)$
         reasoning: |-
-          $f$ est bâtie sur $x\mapsto e^{-x}$, dérivable sur $\mathbb{R}$ sans aucune condition de signe à vérifier (R3 : $e^{u}$ est dérivable dès que $u$ l'est, ici $u(x)=-x$), et sur des termes polynomiaux. Somme et produit de fonctions dérivables sur $\mathbb{R}$ : $f$ est dérivable sur $\mathbb{R}$.
+          $f$ est bâtie sur $x\mapsto e^{-x}$, dérivable sur $\mathbb{R}$ sans aucune condition de signe à vérifier (chapitre 4 : $e^{u}$ est dérivable dès que $u$ l'est, ici $u(x)=-x$), et sur des termes polynomiaux. Somme et produit de fonctions dérivables sur $\mathbb{R}$ : $f$ est dérivable sur $\mathbb{R}$.
 
-          On dérive à partir de la forme développée $f(x)=4xe^{-x}+2x^2-4x$ (question 1) : $(4xe^{-x})' = 4e^{-x} - 4xe^{-x}$ (règle du produit, avec $(e^{-x})'=-e^{-x}$ par R3), et $(2x^2-4x)'=4x-4$. Il reste à vérifier que la somme obtenue coïncide avec la forme factorisée demandée, en développant celle-ci à l'envers.
+          On dérive à partir de la forme développée $f(x)=4xe^{-x}+2x^2-4x$ (question 1) : $(4xe^{-x})' = 4e^{-x} - 4xe^{-x}$ (règle du produit, avec $(e^{-x})'=-e^{-x}$ par le chapitre 4), et $(2x^2-4x)'=4x-4$. Il reste à vérifier que la somme obtenue coïncide avec la forme factorisée demandée, en développant celle-ci à l'envers.
         steps:
           - math: '(4x\,e^{-x})'' = 4e^{-x} + 4x(-e^{-x}) = 4e^{-x} - 4x\,e^{-x}'
-            note: "Dérivée du produit 4x fois e puissance moins x, avec la dérivée de e puissance moins x égale à moins e puissance moins x (rung R3)."
+            note: "Dérivée du produit 4x fois e puissance moins x, avec la dérivée de e puissance moins x égale à moins e puissance moins x (chapitre 4)."
           - math: 'f''(x) = 4e^{-x} - 4x\,e^{-x} + 4x - 4'
             note: "On ajoute la dérivée du reste, 2x carré moins 4x, qui vaut 4x moins 4."
           - math: '4(e^{-x}-1)(1-x) = 4\left[e^{-x} - x\,e^{-x} - 1 + x\right] = 4e^{-x} - 4x\,e^{-x} - 4 + 4x'
@@ -607,7 +607,7 @@ entries:
         reasoning: |-
           Le facteur $4$ est positif : le signe de $f'$ est celui du produit $(e^{-x}-1)(1-x)$. On étudie chaque facteur séparément.
 
-          $e^{-x}-1$ : $\exp$ est strictement croissante (R1), donc $e^{-x}>e^0=1 \iff -x>0 \iff x<0$. Ce facteur est positif pour $x<0$, nul en $0$, négatif pour $x>0$.
+          $e^{-x}-1$ : $\exp$ est strictement croissante (chapitre 2), donc $e^{-x}>e^0=1 \iff -x>0 \iff x<0$. Ce facteur est positif pour $x<0$, nul en $0$, négatif pour $x>0$.
 
           $1-x$ : positif pour $x<1$, nul en $1$, négatif pour $x>1$.
 
@@ -633,7 +633,7 @@ entries:
 
           $f\!\left(\tfrac32\right) = 6\left(e^{-3/2}-\tfrac14\right)$. Avec l'indication $e^{3/2}=4{,}5$, $e^{-3/2}=\tfrac{1}{4{,}5}=\tfrac29\approx0{,}222$, donc $f\!\left(\tfrac32\right)\approx6(0{,}222-0{,}25)<0$.
 
-          $f(2)=8e^{-2}$, strictement positif ($e^{-2}>0$ toujours, R1).
+          $f(2)=8e^{-2}$, strictement positif ($e^{-2}>0$ toujours, chapitre 2).
 
           $f\!\left(\tfrac32\right)<0<f(2)$ sur un intervalle où $f$ est continue et strictement croissante : il existe un unique $\alpha\in\left]\tfrac32,2\right[$ tel que $f(\alpha)=0$.
         steps:
@@ -660,7 +660,7 @@ entries:
         stem: |-
           **(0,5 pt)** En appliquant le théorème de ROLLE à la fonction $f'$, montrer qu'il existe un réel $x_0$ de l'intervalle $]0,1[$ tel que : $f''(x_0) = 0$
         reasoning: |-
-          Rolle et les accroissements finis ne font pas partie du corps de cette leçon (R0–R7) — ce sont des outils de la notion `derivabilite-etude-fonctions` ; on les mobilise ici tels quels, en admettant leurs énoncés (voir la SCOPE NOTE en tête de fichier). Pour éviter d'empiler les apostrophes dans les champs de calcul, on y note $f^{(2)}$ et $f^{(3)}$ les dérivées seconde et troisième de $f$ — même objet que $f''$ et $f'''$ dans l'énoncé.
+          Rolle et les accroissements finis ne font pas partie du corps de cette leçon (chapitres 1 à 8) — ce sont des outils de la notion `derivabilite-etude-fonctions` ; on les mobilise ici tels quels, en admettant leurs énoncés (voir la SCOPE NOTE en tête de fichier). Pour éviter d'empiler les apostrophes dans les champs de calcul, on y note $f^{(2)}$ et $f^{(3)}$ les dérivées seconde et troisième de $f$ — même objet que $f''$ et $f'''$ dans l'énoncé.
 
           Le théorème de Rolle s'applique à une fonction continue sur $[a,b]$, dérivable sur $]a,b[$, prenant la même valeur aux deux bornes : il garantit alors un point où la dérivée s'annule. On l'applique ici à $f'$ elle-même (pas à $f$) sur $[0,1]$ : $f'$ est continue sur $[0,1]$ et dérivable sur $]0,1[$ (construite comme $f$, à partir de $e^{-x}$ et d'un polynôme), et $f'(0)=f'(1)=0$ (question 2b) — les deux bornes coïncident. Rolle appliqué à $f'$ garantit donc l'existence d'un réel $x_0\in\,]0,1[$ tel que $(f')'(x_0)=f^{(2)}(x_0)=0$.
         steps:
@@ -758,7 +758,7 @@ entries:
         stem: |-
           **(0,75 pt)** Montrer que : $\displaystyle\int_0^\alpha f(x)\,dx = \dfrac{2}{3}\alpha\left(\alpha^2 - 3\right)$, en déduire que : $\dfrac{3}{2} < \alpha \le \sqrt{3}$
         reasoning: |-
-          On cherche une primitive de $f(x)=4xe^{-x}+2x^2-4x$. Le terme $2x^2-4x$ se primitive directement. Le terme $4xe^{-x}$ n'est PAS de la forme $u'e^u$ (R6 ne s'applique pas ici : l'exposant est $-x$ mais le facteur devant est $4x$, pas une constante fois $-1$) — il faut une intégration par parties (IPP), un outil de la notion `calcul-integral`, pas du corps R0–R7 de cette leçon. Avec $u=x$, $dv=4e^{-x}dx$ : $\int 4xe^{-x}dx = -4xe^{-x}+\int4e^{-x}dx = -4(x+1)e^{-x}$.
+          On cherche une primitive de $f(x)=4xe^{-x}+2x^2-4x$. Le terme $2x^2-4x$ se primitive directement. Le terme $4xe^{-x}$ n'est PAS de la forme $u'e^u$ (chapitre 7 ne s'applique pas ici : l'exposant est $-x$ mais le facteur devant est $4x$, pas une constante fois $-1$) — il faut une intégration par parties (IPP), un outil de la notion `calcul-integral`, pas du corps des chapitres 1 à 8 de cette leçon. Avec $u=x$, $dv=4e^{-x}dx$ : $\int 4xe^{-x}dx = -4xe^{-x}+\int4e^{-x}dx = -4(x+1)e^{-x}$.
 
           Une primitive de $f$ est donc $F(x) = -4(x+1)e^{-x} + \tfrac23x^3 - 2x^2$. On calcule $F(0)=-4$ et $F(\alpha)$, en utilisant l'identité $e^{-\alpha}=1-\tfrac{\alpha}2$ (question 2d) pour remplacer $e^{-\alpha}$ et simplifier : les termes en $\alpha^2$ s'annulent, il reste $F(\alpha)=\tfrac23\alpha^3-2\alpha-4$.
 
@@ -828,14 +828,14 @@ entries:
 
           **(0,5 pt)** Montrer que : $(\forall x \in \mathbb{R})\ ;\ g(x) > 0$ *(On prendra : $\ln 2 = 0,69$)*
         reasoning: |-
-          $g$ est construite comme $f$, à partir de $e^{-x}$ et d'un polynôme : dérivable sur $\mathbb{R}$ (R3), $g'(x)=-e^{-x}+\tfrac12$. Cette dérivée s'annule quand $e^{-x}=\tfrac12$, c'est-à-dire $x=\ln2$ (en passant au $\ln$, R1). $g$ décroît avant $\ln2$, croît après : $g$ atteint son minimum global en $x=\ln2$.
+          $g$ est construite comme $f$, à partir de $e^{-x}$ et d'un polynôme : dérivable sur $\mathbb{R}$ (chapitre 4), $g'(x)=-e^{-x}+\tfrac12$. Cette dérivée s'annule quand $e^{-x}=\tfrac12$, c'est-à-dire $x=\ln2$ (en passant au $\ln$, chapitre 2). $g$ décroît avant $\ln2$, croît après : $g$ atteint son minimum global en $x=\ln2$.
 
           $g(\ln2) = e^{-\ln2}+\tfrac{\ln2}{2}-\tfrac34 = \tfrac12+\tfrac{\ln2}{2}-\tfrac34 = \tfrac{\ln2}{2}-\tfrac14$. Avec l'indication $\ln2\approx0{,}69$ : $g(\ln2)\approx0{,}345-0{,}25=0{,}095>0$.
 
           Le minimum de $g$ sur $\mathbb{R}$ est strictement positif : donc $g(x)>0$ pour tout réel $x$.
         steps:
           - math: 'g''(x) = -e^{-x}+\dfrac12'
-            note: "Dérivée de g, construite comme f : dérivable partout (rung R3)."
+            note: "Dérivée de g, construite comme f : dérivable partout (chapitre 4)."
           - math: 'g''(x) = 0 \iff e^{-x} = \dfrac12 \iff x = \ln 2'
             note: "On résout g prime égale zéro, en passant au logarithme."
           - math: 'g \text{ décroît sur } ]-\infty,\ln2],\ \text{croît sur } [\ln2,+\infty[ \ \Rightarrow\ \min_{\mathbb{R}} g = g(\ln2)'
@@ -980,16 +980,16 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} f(x)$ et $\displaystyle\lim_{x \to -\infty} f(x)$.
         reasoning: |-
-          On regarde chaque morceau. En $+\infty$ : $e^{\frac{x}{2}} \to +\infty$ (R4), donc $\left(e^{\frac{x}{2}}-1\right)^2 \to +\infty$, et le facteur $x \to +\infty$ : le produit tend vers $+\infty$, sans indétermination (deux facteurs qui explosent vers $+\infty$).
+          On regarde chaque morceau. En $+\infty$ : $e^{\frac{x}{2}} \to +\infty$ (chapitre 5), donc $\left(e^{\frac{x}{2}}-1\right)^2 \to +\infty$, et le facteur $x \to +\infty$ : le produit tend vers $+\infty$, sans indétermination (deux facteurs qui explosent vers $+\infty$).
 
-          En $-\infty$ : $e^{\frac{x}{2}} \to 0$ (limite de référence, R4), donc $\left(e^{\frac{x}{2}}-1\right)^2 \to (0-1)^2 = 1$ — un facteur fini. Le facteur $x \to -\infty$ l'emporte : le produit tend vers $-\infty$. Ici encore aucune indétermination : un facteur fini non nul multiplié par une quantité qui diverge suit cette dernière.
+          En $-\infty$ : $e^{\frac{x}{2}} \to 0$ (limite de référence, chapitre 5), donc $\left(e^{\frac{x}{2}}-1\right)^2 \to (0-1)^2 = 1$ — un facteur fini. Le facteur $x \to -\infty$ l'emporte : le produit tend vers $-\infty$. Ici encore aucune indétermination : un facteur fini non nul multiplié par une quantité qui diverge suit cette dernière.
         steps:
           - math: '\lim_{x \to +\infty} e^{\frac{x}{2}} = +\infty \ \Rightarrow\ \lim_{x \to +\infty}\left(e^{\frac{x}{2}}-1\right)^2 = +\infty'
             note: "En plus l'infini, e puissance x sur 2 tend vers plus l'infini donc son carré diminué de 1 tend vers plus l'infini."
           - math: '\lim_{x \to +\infty} f(x) = \lim_{x \to +\infty} x\left(e^{\frac{x}{2}}-1\right)^2 = +\infty'
             note: "Produit de deux facteurs tendant vers plus l'infini."
           - math: '\lim_{x \to -\infty} e^{\frac{x}{2}} = 0 \ \Rightarrow\ \left(e^{\frac{x}{2}}-1\right)^2 \to (0-1)^2 = 1'
-            note: "En moins l'infini, e puissance x sur 2 tend vers 0 (limite de référence R4) : le carré tend vers 1, valeur finie."
+            note: "En moins l'infini, e puissance x sur 2 tend vers 0 (limite de référence du chapitre 5) : le carré tend vers 1, valeur finie."
           - math: '\lim_{x \to -\infty} f(x) = \lim_{x \to -\infty} x \times 1 = -\infty'
             note: "x tend vers moins l'infini multiplié par un facteur qui tend vers 1 : pas d'indétermination, la limite est moins l'infini."
       - id: q2
@@ -1022,7 +1022,7 @@ entries:
         stem: |-
           **(0,75 pt)** Étudier le signe de $\big(f(x) - x\big)$ pour tout $x$ de $\mathbb{R}$ et en déduire la position relative de la courbe $(C)$ et de la droite $(\Delta)$.
         reasoning: |-
-          On repart de la forme factorisée $f(x)-x = x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-2\right)$. Le facteur $e^{\frac{x}{2}}$ est toujours strictement positif (R1) : il ne compte pas dans le signe. Reste le signe de $x\left(e^{\frac{x}{2}}-2\right)$.
+          On repart de la forme factorisée $f(x)-x = x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-2\right)$. Le facteur $e^{\frac{x}{2}}$ est toujours strictement positif (chapitre 2) : il ne compte pas dans le signe. Reste le signe de $x\left(e^{\frac{x}{2}}-2\right)$.
 
           On localise le zéro de $e^{\frac{x}{2}}-2$ : $e^{\frac{x}{2}}=2 \iff \frac{x}{2}=\ln 2 \iff x = 2\ln 2 = \ln 4$. Ainsi $e^{\frac{x}{2}}-2>0 \iff x>\ln 4$. En croisant avec le signe de $x$ (zéro en $0$) :
 
@@ -1043,7 +1043,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que pour tout $x$ de $\mathbb{R}$ : $f'(x) = \left(e^{\frac{x}{2}} - 1\right)^2 + x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}} - 1\right)$.
         reasoning: |-
-          $f$ est un produit $f=u\,v$ avec $u(x)=x$ et $v(x)=\left(e^{\frac{x}{2}}-1\right)^2$. On dérive $v$ comme une composée : $v'(x) = 2\left(e^{\frac{x}{2}}-1\right)\cdot\frac{1}{2}e^{\frac{x}{2}} = e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)$ (la dérivée de l'intérieur $e^{\frac{x}{2}}$ vaut $\frac{1}{2}e^{\frac{x}{2}}$, sans condition de signe puisque $e^{u}$ est dérivable partout, R3). La règle du produit $(uv)'=u'v+uv'$ donne alors directement l'expression demandée.
+          $f$ est un produit $f=u\,v$ avec $u(x)=x$ et $v(x)=\left(e^{\frac{x}{2}}-1\right)^2$. On dérive $v$ comme une composée : $v'(x) = 2\left(e^{\frac{x}{2}}-1\right)\cdot\frac{1}{2}e^{\frac{x}{2}} = e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)$ (la dérivée de l'intérieur $e^{\frac{x}{2}}$ vaut $\frac{1}{2}e^{\frac{x}{2}}$, sans condition de signe puisque $e^{u}$ est dérivable partout, chapitre 4). La règle du produit $(uv)'=u'v+uv'$ donne alors directement l'expression demandée.
         steps:
           - math: 'u(x) = x,\quad v(x) = \left(e^{\frac{x}{2}}-1\right)^2,\qquad v''(x) = 2\left(e^{\frac{x}{2}}-1\right)\cdot\tfrac{1}{2}e^{\frac{x}{2}} = e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)'
             note: "Dérivée de la composée (e^{x/2}-1) au carré : 2(e^{x/2}-1) fois la dérivée de l'intérieur, un demi e^{x/2}."
@@ -1233,21 +1233,21 @@ entries:
 
       et $(C)$ sa courbe représentative dans un repère orthonormé $(O,\vec{i}\,;\vec{j})$ *(unité : 2 cm)*.
 
-      Fil conducteur : ce problème enchaîne limites et asymptote oblique, position relative à une droite, une dérivée qui se reconnaît comme l'opposé d'un carré (donc jamais positive), un point d'inflexion, une équation résolue par le théorème des valeurs intermédiaires, une construction de courbe, puis une fonction réciproque. Garde en tête que $e^{x-2}>0$ ne change jamais de signe (R1) : c'est ce facteur toujours positif qui pilote une bonne partie des signes de l'étude — combiné ici au signe d'un carré, toujours négatif une fois l'opposé pris.
+      Fil conducteur : ce problème enchaîne limites et asymptote oblique, position relative à une droite, une dérivée qui se reconnaît comme l'opposé d'un carré (donc jamais positive), un point d'inflexion, une équation résolue par le théorème des valeurs intermédiaires, une construction de courbe, puis une fonction réciproque. Garde en tête que $e^{x-2}>0$ ne change jamais de signe (chapitre 2) : c'est ce facteur toujours positif qui pilote une bonne partie des signes de l'étude — combiné ici au signe d'un carré, toujours négatif une fois l'opposé pris.
     questions:
       - id: q1
         part: "Limites de f aux bornes du domaine"
         stem: |-
           **(0,5 pt)** Montrer que $\displaystyle\lim_{x \to -\infty} f(x) = +\infty$ et $\displaystyle\lim_{x \to +\infty} f(x) = -\infty$
         reasoning: |-
-          On isole d'abord le comportement du facteur exponentiel $e^{x-2}$ — limite de référence du R4, appliquée à l'exposant $x-2$ plutôt qu'à $x$ directement.
+          On isole d'abord le comportement du facteur exponentiel $e^{x-2}$ — limite de référence du chapitre 5, appliquée à l'exposant $x-2$ plutôt qu'à $x$ directement.
 
           En $-\infty$ : $e^{x-2}\to0$, donc le produit $e^{x-2}\left(e^{x-2}-4\right)\to0\times(-4)=0$ (un facteur qui s'efface multiplié par un facteur qui tend vers une valeur finie). Il reste $f(x) = -x + \dfrac52 - \dfrac12\,e^{x-2}(e^{x-2}-4)$ : un terme qui explose vers $+\infty$, plus une constante, moins une quantité qui s'efface — aucune indétermination, la limite est $+\infty$.
 
           En $+\infty$ : $e^{x-2}\to+\infty$, donc $e^{x-2}-4\to+\infty$ aussi, et leur produit $e^{x-2}(e^{x-2}-4)\to+\infty$ (produit de deux facteurs qui explosent). Ici, pas besoin de factoriser pour lever une indétermination : $-x\to-\infty$ ET $-\dfrac12\,e^{x-2}(e^{x-2}-4)\to-\infty$ — les deux termes de $f$ partent déjà dans la même direction. Une somme de deux quantités qui tendent toutes deux vers $-\infty$ (plus une constante) tend vers $-\infty$, sans qu'il y ait à trancher un $+\infty-\infty$.
         steps:
           - math: '\lim_{x\to-\infty} e^{x-2} = 0 \quad (R4)'
-            note: "En moins l'infini, e puissance x moins 2 tend vers 0, meme limite que e puissance x (rung R4), appliquee a l'exposant x moins 2."
+            note: "En moins l'infini, e puissance x moins 2 tend vers 0, meme limite que e puissance x (chapitre 5), appliquee a l'exposant x moins 2."
           - math: 'e^{x-2}\left(e^{x-2}-4\right) \xrightarrow[x\to-\infty]{} 0\times(-4) = 0'
             note: "Le produit tend vers 0 : un facteur qui s'efface multiplie par un facteur qui tend vers moins 4."
           - math: 'f(x) = -x+\tfrac52-\tfrac12\,e^{x-2}(e^{x-2}-4) \ \Rightarrow\ \lim_{x\to-\infty} f(x) = +\infty'
@@ -1265,7 +1265,7 @@ entries:
 
           $$f(x) - \left(-x+\frac52\right) = -\frac12 e^{x-2}\left(e^{x-2}-4\right)$$
 
-          En $-\infty$, $e^{x-2}\to0$ (R4), donc ce produit tend vers $-\frac12\times0\times(-4)=0$. L'écart s'annule à la limite : $(\Delta)$ est bien asymptote à $(C)$ au voisinage de $-\infty$.
+          En $-\infty$, $e^{x-2}\to0$ (chapitre 5), donc ce produit tend vers $-\frac12\times0\times(-4)=0$. L'écart s'annule à la limite : $(\Delta)$ est bien asymptote à $(C)$ au voisinage de $-\infty$.
         steps:
           - math: 'f(x) - \left(-x+\tfrac52\right) = -\tfrac12 e^{x-2}\left(e^{x-2}-4\right)'
             note: "L'ecart entre f et la droite (Delta) se reduit au troisieme terme de f : les deux premiers coincident exactement avec (Delta)."
@@ -1277,14 +1277,14 @@ entries:
         stem: |-
           **(0,75 pt)** Résoudre l'équation $e^{x-2} - 4 = 0$ puis montrer que la courbe $(C)$ est au dessus de $(\Delta)$ sur l'intervalle $]-\infty, 2 + \ln 4]$ et en dessous de $(\Delta)$ sur l'intervalle $[2 + \ln 4, +\infty[$
         reasoning: |-
-          On résout d'abord $e^{x-2}=4$ : par l'identité fondamentale $e^{X}=k \iff X=\ln k$ (R7, ici $k=4>0$), $x-2=\ln4$, donc $x=2+\ln4$ — l'unique solution, par injectivité de $\exp$.
+          On résout d'abord $e^{x-2}=4$ : par l'identité fondamentale $e^{X}=k \iff X=\ln k$ (chapitre 8, ici $k=4>0$), $x-2=\ln4$, donc $x=2+\ln4$ — l'unique solution, par injectivité de $\exp$.
 
-          On repart de l'écart calculé à la question précédente, $f(x)-\left(-x+\frac52\right) = -\frac12 e^{x-2}(e^{x-2}-4)$. Le facteur $e^{x-2}$ est toujours strictement positif (R1) : il ne compte pas dans le signe. Le signe de l'écart est donc celui de $-\left(e^{x-2}-4\right)$, c'est-à-dire celui de $4-e^{x-2}$.
+          On repart de l'écart calculé à la question précédente, $f(x)-\left(-x+\frac52\right) = -\frac12 e^{x-2}(e^{x-2}-4)$. Le facteur $e^{x-2}$ est toujours strictement positif (chapitre 2) : il ne compte pas dans le signe. Le signe de l'écart est donc celui de $-\left(e^{x-2}-4\right)$, c'est-à-dire celui de $4-e^{x-2}$.
 
-          $\exp$ étant strictement croissante (R1), $e^{x-2}<4 \iff x-2<\ln4 \iff x<2+\ln4$. Donc pour $x\le2+\ln4$ : $4-e^{x-2}\ge0$, l'écart est $\ge0$, $(C)$ est au-dessus de $(\Delta)$. Pour $x\ge2+\ln4$ : $4-e^{x-2}\le0$, l'écart est $\le0$, $(C)$ est en dessous de $(\Delta)$. Les deux courbes se touchent exactement en $x=2+\ln4$.
+          $\exp$ étant strictement croissante (chapitre 2), $e^{x-2}<4 \iff x-2<\ln4 \iff x<2+\ln4$. Donc pour $x\le2+\ln4$ : $4-e^{x-2}\ge0$, l'écart est $\ge0$, $(C)$ est au-dessus de $(\Delta)$. Pour $x\ge2+\ln4$ : $4-e^{x-2}\le0$, l'écart est $\le0$, $(C)$ est en dessous de $(\Delta)$. Les deux courbes se touchent exactement en $x=2+\ln4$.
         steps:
           - math: 'e^{x-2}=4 \iff x-2=\ln4 \iff x=2+\ln4 \quad (R7)'
-            note: "Injectivite de exp (rung R7) : on passe au logarithme des deux cotes de l'equation."
+            note: "Injectivite de exp (chapitre 8) : on passe au logarithme des deux cotes de l'equation."
           - math: 'f(x)-\left(-x+\tfrac52\right) = -\tfrac12 e^{x-2}\left(e^{x-2}-4\right), \qquad e^{x-2}>0 \quad (R1)'
             note: "Le facteur e puissance x moins 2 est toujours strictement positif : il ne change jamais le signe de l'ecart."
           - math: 'f(x)-\left(-x+\tfrac52\right) \text{ a le signe de } \left(4-e^{x-2}\right)'
@@ -1303,7 +1303,7 @@ entries:
 
           $$e^{x-2}\left(e^{x-2}-4\right) \ge e^{x-2}\times\dfrac12e^{x-2} = \dfrac12e^{2x-4}$$
 
-          Or $\dfrac{e^{2x-4}}{x}\to+\infty$ : en posant $X=2x-4$ (donc $x=\dfrac{X+4}{2}$, et $X\to+\infty$ avec $x$), $\dfrac{e^{2x-4}}{x} = \dfrac{e^{X}}{(X+4)/2} = 2\times\dfrac{e^{X}}{X}\times\dfrac{X}{X+4}$ — le premier facteur tend vers $+\infty$ (R4, croissances comparées) et le second vers $1$ : le produit tend vers $+\infty$.
+          Or $\dfrac{e^{2x-4}}{x}\to+\infty$ : en posant $X=2x-4$ (donc $x=\dfrac{X+4}{2}$, et $X\to+\infty$ avec $x$), $\dfrac{e^{2x-4}}{x} = \dfrac{e^{X}}{(X+4)/2} = 2\times\dfrac{e^{X}}{X}\times\dfrac{X}{X+4}$ — le premier facteur tend vers $+\infty$ (chapitre 5, croissances comparées) et le second vers $1$ : le produit tend vers $+\infty$.
 
           Comme $e^{x-2}(e^{x-2}-4)$ reste toujours au-dessus d'une quantité, $\dfrac12e^{2x-4}$, dont le quotient par $x$ tend déjà vers $+\infty$, $\dfrac{e^{x-2}(e^{x-2}-4)}{x}\to+\infty$ aussi, forcée de suivre.
 
@@ -1316,7 +1316,7 @@ entries:
           - math: 'e^{x-2}\ge8 \ \Rightarrow\ e^{x-2}-4\ge\tfrac12e^{x-2} \ \Rightarrow\ e^{x-2}\left(e^{x-2}-4\right)\ge\tfrac12e^{2x-4}'
             note: "Pour x assez grand, on minore le produit par la moitie du carre du terme exponentiel."
           - math: '\dfrac{e^{2x-4}}{x} = 2\times\dfrac{e^{X}}{X}\times\dfrac{X}{X+4} \xrightarrow[X=2x-4\to+\infty]{} +\infty \quad (R4)'
-            note: "Changement de variable X egal 2x moins 4 : on retrouve directement la croissance comparee du rung R4."
+            note: "Changement de variable X egal 2x moins 4 : on retrouve directement la croissance comparee du chapitre 5."
           - math: '\dfrac{e^{x-2}(e^{x-2}-4)}{x} \ge \dfrac12\dfrac{e^{2x-4}}{x} \ \Rightarrow\ \dfrac{e^{x-2}(e^{x-2}-4)}{x} \to +\infty'
             note: "Minoree par une quantite qui explose : forcee de suivre."
           - math: '\dfrac{f(x)}{x} \to -1+0-\tfrac12\times(+\infty) = -\infty'
@@ -1328,7 +1328,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que pour tout $x$ de $\mathbb{R}$, $f'(x) = -\left(e^{x-2} - 1\right)^2$
         reasoning: |-
-          On pose $u=e^{x-2}$ : $u$ est dérivable sur $\mathbb{R}$ et égale à sa propre dérivée, $u'(x)=e^{x-2}=u$ (R3, la fonction intérieure $x-2$ ayant pour dérivée $1$). En termes de $u$, $f(x) = -x+\frac52 - \frac12u(u-4) = -x+\frac52-\frac12u^2+2u$.
+          On pose $u=e^{x-2}$ : $u$ est dérivable sur $\mathbb{R}$ et égale à sa propre dérivée, $u'(x)=e^{x-2}=u$ (chapitre 4, la fonction intérieure $x-2$ ayant pour dérivée $1$). En termes de $u$, $f(x) = -x+\frac52 - \frac12u(u-4) = -x+\frac52-\frac12u^2+2u$.
 
           On dérive terme à terme, en utilisant $u'=u$ : $f'(x) = -1 - u\,u'+2u' = -1+u'(2-u) = -1+u(2-u)$ (on remplace $u'$ par $u$).
 
@@ -1341,7 +1341,7 @@ entries:
           - math: 'u = e^{x-2}, \qquad f(x) = -x + \tfrac52 - \tfrac12u^2 + 2u \quad (\text{substitution})'
             note: "On pose u egal e puissance x moins 2 : f se reecrit comme un polynome du second degre en u."
           - math: 'f''(x) = -1 + 2u - u^2 \quad (\text{derivation terme a terme, u est sa propre derivee, R3})'
-            note: "On derive terme a terme ; u etant sa propre derivee (rung R3), le facteur u apparait directement."
+            note: "On derive terme a terme ; u etant sa propre derivee (chapitre 4), le facteur u apparait directement."
           - math: 'f''(x) = -\left(u^2 - 2u + 1\right) = -(u-1)^2'
             note: "On reconnait le carre parfait u au carre moins 2u plus 1."
           - math: 'f''(x) = -\left(e^{x-2}-1\right)^2 \quad (\text{retour a } u = e^{x-2})'
@@ -1350,7 +1350,7 @@ entries:
         stem: |-
           **(0,25 pt)** Dresser le tableau de variations de la fonction $f$
         reasoning: |-
-          $f'(x)=-(e^{x-2}-1)^2$ (question précédente) est l'opposé d'un carré : toujours $\le0$, quel que soit $x$. L'égalité $f'(x)=0$ n'a lieu que si $e^{x-2}-1=0$, c'est-à-dire $e^{x-2}=1 \iff x-2=0 \iff x=2$ (R1) — un seul point isolé. Comme $f'$ ne s'annule qu'en un point isolé sans y changer de signe (elle reste négative de part et d'autre), $f$ reste strictement décroissante sur $\mathbb{R}$ tout entier, sans aucun palier.
+          $f'(x)=-(e^{x-2}-1)^2$ (question précédente) est l'opposé d'un carré : toujours $\le0$, quel que soit $x$. L'égalité $f'(x)=0$ n'a lieu que si $e^{x-2}-1=0$, c'est-à-dire $e^{x-2}=1 \iff x-2=0 \iff x=2$ (chapitre 2) — un seul point isolé. Comme $f'$ ne s'annule qu'en un point isolé sans y changer de signe (elle reste négative de part et d'autre), $f$ reste strictement décroissante sur $\mathbb{R}$ tout entier, sans aucun palier.
 
           On complète avec les limites de la question 1 et la valeur remarquable en $x=2$ : $f(2) = -2+\frac52-\frac12\times1\times(1-4) = \frac12+\frac32 = 2$.
         steps:
@@ -1367,18 +1367,18 @@ entries:
         reasoning: |-
           La notion de point d'inflexion par changement de signe de $f''$ est un outil de la notion `derivabilite-etude-fonctions` — on l'applique ici tel quel, comme au problème 2022 de cette même banque (question 5c).
 
-          On repart de $f'(x) = -(e^{x-2}-1)^2$ (question précédente), une composée du carré appliqué à $v(x)=e^{x-2}-1$. La dérivée de $v$ est $v'(x)=e^{x-2}$ (dérivée de $e^{x-2}$, R3 ; la constante $-1$ disparaît). La règle de dérivation d'une composée $(-v^2)' = -2v\,v'$ donne directement :
+          On repart de $f'(x) = -(e^{x-2}-1)^2$ (question précédente), une composée du carré appliqué à $v(x)=e^{x-2}-1$. La dérivée de $v$ est $v'(x)=e^{x-2}$ (dérivée de $e^{x-2}$, chapitre 4 ; la constante $-1$ disparaît). La règle de dérivation d'une composée $(-v^2)' = -2v\,v'$ donne directement :
 
           $$f''(x) = -2\left(e^{x-2}-1\right)\times e^{x-2} = -2e^{x-2}\left(e^{x-2}-1\right)$$
 
-          Pour le signe : $e^{x-2}>0$ toujours (R1), donc le signe de $f''$ est celui de $-\left(e^{x-2}-1\right)$, c'est-à-dire celui de $1-e^{x-2}$. Comme $\exp$ est strictement croissante (R1), $e^{x-2}<1 \iff x-2<0 \iff x<2$. Donc $f''(x)>0$ pour $x<2$ (courbe convexe), $f''(x)<0$ pour $x>2$ (courbe concave), et $f''(2)=0$.
+          Pour le signe : $e^{x-2}>0$ toujours (chapitre 2), donc le signe de $f''$ est celui de $-\left(e^{x-2}-1\right)$, c'est-à-dire celui de $1-e^{x-2}$. Comme $\exp$ est strictement croissante (chapitre 2), $e^{x-2}<1 \iff x-2<0 \iff x<2$. Donc $f''(x)>0$ pour $x<2$ (courbe convexe), $f''(x)<0$ pour $x>2$ (courbe concave), et $f''(2)=0$.
 
           $f''$ change de signe exactement en $x=2$ : c'est la définition même d'un point d'inflexion — la concavité de $(C)$ bascule de convexe à concave en cet endroit précis.
 
           Reste à vérifier que le point correspondant est bien $A(2,2)$ : on a déjà calculé $f(2)=2$ (question 4-b). Donc le point d'inflexion est $I(2,f(2))=A(2,2)$.
         steps:
           - math: 'v(x) = e^{x-2}-1, \quad v''(x) = e^{x-2}'
-            note: "v est la parenthese au carre dans f prime ; sa derivee est e puissance x moins 2 (rung R3)."
+            note: "v est la parenthese au carre dans f prime ; sa derivee est e puissance x moins 2 (chapitre 4)."
           - math: 'f^{(2)}(x) = -2\,v(x)\,v''(x) = -2\left(e^{x-2}-1\right)e^{x-2} = -2e^{x-2}\left(e^{x-2}-1\right)'
             note: "Derivee de moins v au carre : moins 2 fois v fois v prime."
           - math: 'e^{x-2}>0 \ \Rightarrow\ \text{signe de } f^{(2)}(x) = \text{signe de } \left(1-e^{x-2}\right)'
@@ -1394,7 +1394,7 @@ entries:
         reasoning: |-
           $f$ est continue (car dérivable, question 4-a) et strictement décroissante sur $\mathbb{R}$ tout entier (question 4-b), de $+\infty$ à $-\infty$. Une fonction continue et strictement monotone sur un intervalle réalise une bijection de cet intervalle sur son image (corollaire du théorème des valeurs intermédiaires) — ici $f(\mathbb{R})=\,]-\infty,+\infty[=\mathbb{R}$ (question 1) : $0$ appartient à cette image, donc l'équation $f(x)=0$ admet une unique solution $\alpha$ sur $\mathbb{R}$ tout entier. Reste à localiser $\alpha$ précisément entre $2+\ln3$ et $2+\ln4$ : il suffit de vérifier un changement de signe de $f$ à ces deux bornes, la stricte monotonie garantissant alors l'unicité sur ce sous-intervalle.
 
-          $f(2+\ln3)$ : ici $x-2=\ln3$, donc $e^{x-2}=3$ (identité fondamentale $e^{\ln k}=k$, R1). $f(2+\ln3) = -(2+\ln3)+\frac52-\frac12\times3\times(3-4) = -(2+\ln3)+\frac52+\frac32 = -(2+\ln3)+4 = 2-\ln3$. Comme $\ln3\approx1{,}1<2$, $2-\ln3>0$.
+          $f(2+\ln3)$ : ici $x-2=\ln3$, donc $e^{x-2}=3$ (identité fondamentale $e^{\ln k}=k$, chapitre 2). $f(2+\ln3) = -(2+\ln3)+\frac52-\frac12\times3\times(3-4) = -(2+\ln3)+\frac52+\frac32 = -(2+\ln3)+4 = 2-\ln3$. Comme $\ln3\approx1{,}1<2$, $2-\ln3>0$.
 
           $f(2+\ln4)$ : $e^{x-2}=4$, et $4-4=0$ annule le second terme entièrement. $f(2+\ln4) = -(2+\ln4)+\frac52-\frac12\times4\times0 = \frac12-\ln4$. Comme $\ln4\approx1{,}4>\frac12$, $\frac12-\ln4<0$.
 
@@ -1436,7 +1436,7 @@ entries:
         stem: |-
           **(0,75 pt)** Construire dans le même repère $(O,\vec{i}\,,\vec{j})$ la courbe représentative de la fonction $f^{-1}$ *(remarquer que la droite $(\Delta)$ est perpendiculaire à la première bissectrice du repère)*
         reasoning: |-
-          La courbe de $f^{-1}$ est le symétrique de $(C)$ par rapport à la première bissectrice, la droite d'équation $y=x$ (fait général sur les fonctions réciproques, déjà utilisé au R5 du chapitre pour la courbe de $\exp$ elle-même). Concrètement : chaque point $(x,f(x))$ de $(C)$ a pour symétrique le point $(f(x),x)$ sur la courbe de $f^{-1}$ — par exemple, $A(2,2)$, situé exactement sur la droite $y=x$, est son propre symétrique : il reste un point d'inflexion de la courbe de $f^{-1}$ aussi.
+          La courbe de $f^{-1}$ est le symétrique de $(C)$ par rapport à la première bissectrice, la droite d'équation $y=x$ (fait général sur les fonctions réciproques, déjà utilisé au chapitre 6 du chapitre pour la courbe de $\exp$ elle-même). Concrètement : chaque point $(x,f(x))$ de $(C)$ a pour symétrique le point $(f(x),x)$ sur la courbe de $f^{-1}$ — par exemple, $A(2,2)$, situé exactement sur la droite $y=x$, est son propre symétrique : il reste un point d'inflexion de la courbe de $f^{-1}$ aussi.
 
           La remarque de l'énoncé est le raccourci utile pour placer l'asymptote : une droite de coefficient directeur $-1$, comme $(\Delta):y=-x+\frac52$, est toujours perpendiculaire à la première bissectrice (produit des coefficients directeurs $-1\times1=-1$) — et une droite perpendiculaire à $y=x$ est sa propre image par la symétrie d'axe $y=x$ (échanger $x$ et $y$ dans $y=-x+\frac52$ redonne $x=-y+\frac52$, soit $y=-x+\frac52$, la même droite). $(\Delta)$ sert donc d'asymptote aux deux courbes : à $(C)$ en $-\infty$ (question 2-a), et par symétrie, à la courbe de $f^{-1}$ en $+\infty$.
 
@@ -1449,7 +1449,7 @@ entries:
 
           La dérivée d'une fonction réciproque s'obtient par $\left(f^{-1}\right)'(y) = \dfrac{1}{f'\left(f^{-1}(y)\right)}$ (outil de `derivabilite-etude-fonctions`, déjà mobilisé au problème 2022 de cette même banque, question 7b). Ici $y=2-\ln3$, et $f^{-1}(y)=2+\ln3$ : il reste à calculer $f'(2+\ln3)$.
 
-          $f'(x)=-(e^{x-2}-1)^2$ (question 4-a). En $x=2+\ln3$ : $e^{x-2}=e^{\ln3}=3$ (R1), donc $f'(2+\ln3) = -(3-1)^2 = -4$.
+          $f'(x)=-(e^{x-2}-1)^2$ (question 4-a). En $x=2+\ln3$ : $e^{x-2}=e^{\ln3}=3$ (chapitre 2), donc $f'(2+\ln3) = -(3-1)^2 = -4$.
 
           $$\left(f^{-1}\right)'(2-\ln3) = \frac{1}{f'(2+\ln3)} = \frac{1}{-4} = -\frac14$$
         steps:
@@ -1548,7 +1548,7 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer $\displaystyle\lim_{x \to -\infty} f(x)$ puis en déduire $\displaystyle\lim_{x \to +\infty} f(x)$
         reasoning: |-
-          En $-\infty$, chaque brique de $f$ a une limite connue : $e^x\to0$ et $e^{2x}\to0$ (croissance stricte de exp, R1). Le numérateur tend vers $0$, le dénominateur vers $0+e=e$ — pas d'indétermination, un quotient dont le dénominateur tend vers une limite non nulle se traite terme à terme.
+          En $-\infty$, chaque brique de $f$ a une limite connue : $e^x\to0$ et $e^{2x}\to0$ (croissance stricte de exp, chapitre 2). Le numérateur tend vers $0$, le dénominateur vers $0+e=e$ — pas d'indétermination, un quotient dont le dénominateur tend vers une limite non nulle se traite terme à terme.
 
           $$\lim_{x\to-\infty} f(x) = \dfrac{0}{0+e} = 0$$
 
@@ -1559,7 +1559,7 @@ entries:
           (le changement de nom $u=1-x$ ne fait que suivre où va la limite déjà calculée). Les deux limites valent $0$.
         steps:
           - math: '\lim_{x\to-\infty} e^{x} = 0,\quad \lim_{x\to-\infty} e^{2x} = 0 \ \Rightarrow\ \lim_{x\to-\infty} f(x) = \dfrac{0}{e} = 0'
-            note: "e puissance x et e puissance 2x tendent tous deux vers 0 en moins l'infini (rung R1) : le denominateur tend vers e, non nul."
+            note: "e puissance x et e puissance 2x tendent tous deux vers 0 en moins l'infini (chapitre 2) : le denominateur tend vers e, non nul."
           - math: 'x\to+\infty \ \Rightarrow\ 1-x\to-\infty,\quad f(x)=f(1-x) \quad (\text{I-1a})'
             note: "On reutilise la symetrie plutot que refaire le calcul : quand x tend vers plus l'infini, 1-x tend vers moins l'infini."
           - math: '\lim_{x\to+\infty} f(x) = \lim_{u\to-\infty} f(u) = 0'
@@ -1574,7 +1574,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que : $(\forall x \in \mathbb{R})\ ;\quad f'(x) = f(x)\,\dfrac{1 - e^{2x-1}}{1 + e^{2x-1}}$
         reasoning: |-
-          $f$ est un quotient de fonctions dérivables sur $\mathbb{R}$ (numérateur et dénominateur bâtis sur $e^x$, dérivable partout sans condition, R3), et le dénominateur $e^{2x}+e$ ne s'annule jamais (somme de deux termes strictement positifs) : $f$ est dérivable sur $\mathbb{R}$. La règle du quotient donne directement une première forme de $f'$, qu'il faut ensuite faire correspondre à la forme demandée — pas la retrouver par hasard, la RECONNAÎTRE en factorisant $e^{2x-1}=\frac{e^{2x}}{e}$.
+          $f$ est un quotient de fonctions dérivables sur $\mathbb{R}$ (numérateur et dénominateur bâtis sur $e^x$, dérivable partout sans condition, chapitre 4), et le dénominateur $e^{2x}+e$ ne s'annule jamais (somme de deux termes strictement positifs) : $f$ est dérivable sur $\mathbb{R}$. La règle du quotient donne directement une première forme de $f'$, qu'il faut ensuite faire correspondre à la forme demandée — pas la retrouver par hasard, la RECONNAÎTRE en factorisant $e^{2x-1}=\frac{e^{2x}}{e}$.
 
           $$f'(x) = \dfrac{e^x(e^{2x}+e) - e^x\cdot 2e^{2x}}{(e^{2x}+e)^2} = \dfrac{e^x(e-e^{2x})}{(e^{2x}+e)^2}$$
 
@@ -1602,7 +1602,7 @@ entries:
         reasoning: |-
           Le signe de $f'(x)=f(x)\frac{1-e^{2x-1}}{1+e^{2x-1}}$ (I-2a) est celui du facteur $\frac{1-e^{2x-1}}{1+e^{2x-1}}$ seul : $f(x)$ est un quotient de deux quantités strictement positives (numérateur $e^x>0$, dénominateur $e^{2x}+e>0$), donc $f(x)>0$ pour tout $x$ ; et $1+e^{2x-1}>0$ toujours, donc le dénominateur du facteur ne change jamais le signe non plus. Reste le numérateur $1-e^{2x-1}$.
 
-          $\exp$ strictement croissante (R1) : $e^{2x-1}<1=e^0 \iff 2x-1<0 \iff x<\dfrac12$. Donc $f'(x)>0$ sur $\left]-\infty,\frac12\right[$, $f'\left(\frac12\right)=0$, $f'(x)<0$ sur $\left]\frac12,+\infty\right[$ : $f$ est strictement croissante sur $\left]-\infty,\frac12\right]$, strictement décroissante sur $\left[\frac12,+\infty\right[$, avec un MAXIMUM en $x=\frac12$.
+          $\exp$ strictement croissante (chapitre 2) : $e^{2x-1}<1=e^0 \iff 2x-1<0 \iff x<\dfrac12$. Donc $f'(x)>0$ sur $\left]-\infty,\frac12\right[$, $f'\left(\frac12\right)=0$, $f'(x)<0$ sur $\left]\frac12,+\infty\right[$ : $f$ est strictement croissante sur $\left]-\infty,\frac12\right]$, strictement décroissante sur $\left[\frac12,+\infty\right[$, avec un MAXIMUM en $x=\frac12$.
 
           $$f\left(\dfrac12\right) = \dfrac{e^{1/2}}{e^{1}+e} = \dfrac{\sqrt e}{2e} = \dfrac{1}{2\sqrt e}$$
 
@@ -1771,7 +1771,7 @@ entries:
 
           $$(\forall x \in \mathbb{R})\ ;\quad |f'(x)| \le f(x)$$
         reasoning: |-
-          D'après I-2a, $f'(x)=f(x)\times\dfrac{1-e^{2x-1}}{1+e^{2x-1}}$. Pose $u=e^{2x-1}$ : $u>0$ pour tout réel $x$ (exponentielle toujours strictement positive, R1). Montrer $|f'(x)|\le f(x)$ revient, puisque $f(x)>0$ (I-2b), à montrer $\left|\dfrac{1-u}{1+u}\right|\le1$.
+          D'après I-2a, $f'(x)=f(x)\times\dfrac{1-e^{2x-1}}{1+e^{2x-1}}$. Pose $u=e^{2x-1}$ : $u>0$ pour tout réel $x$ (exponentielle toujours strictement positive, chapitre 2). Montrer $|f'(x)|\le f(x)$ revient, puisque $f(x)>0$ (I-2b), à montrer $\left|\dfrac{1-u}{1+u}\right|\le1$.
 
           C'est une inégalité générale sur $u>0$ : il faut vérifier les deux sens. D'un côté $1-u<1+u \iff -u<u \iff 0<2u$, vrai car $u>0$ — donc $\dfrac{1-u}{1+u}<1$. De l'autre, $-(1+u)<1-u \iff -1-u<1-u \iff -1<1$, toujours vrai — donc $-1<\dfrac{1-u}{1+u}$. Les deux bornes tiennent :
 
@@ -2054,7 +2054,7 @@ entries:
 
           $$f(x) = (1+u)e^{-u} = u\,e^{-u} + e^{-u}$$
 
-          C'est une forme $\infty\times0$ à retravailler avant de conclure — une forme indéterminée au sens de la notion `limites-continuite` (le produit $u\,e^{-u}$, avec $u\to+\infty$ et $e^{-u}\to0$). Le rung R4 de cette leçon donne directement $\lim_{u\to+\infty} u\,e^{-u} = 0$ (c'est l'inverse de la croissance comparée $e^{u}/u\to+\infty$) ; et $\lim_{u\to+\infty} e^{-u} = 0$ aussi (R4). Somme de deux limites nulles :
+          C'est une forme $\infty\times0$ à retravailler avant de conclure — une forme indéterminée au sens de la notion `limites-continuite` (le produit $u\,e^{-u}$, avec $u\to+\infty$ et $e^{-u}\to0$). le chapitre 5 de cette leçon donne directement $\lim_{u\to+\infty} u\,e^{-u} = 0$ (c'est l'inverse de la croissance comparée $e^{u}/u\to+\infty$) ; et $\lim_{u\to+\infty} e^{-u} = 0$ aussi (chapitre 5). Somme de deux limites nulles :
 
           $$\lim_{x\to0^+} f(x) = 0 + 0 = 0 = f(0)$$
 
@@ -2063,7 +2063,7 @@ entries:
           - math: 'f(x) = (1+u)e^{-u} = u\,e^{-u} + e^{-u} \quad (u = \tfrac1x \to +\infty \text{ quand } x\to0^+)'
             note: "On pose u = 1 sur x pour se ramener a une limite en plus l'infini."
           - math: '\lim_{u\to+\infty} u\,e^{-u} = 0 \quad (\text{inverse de } e^u/u\to+\infty,\ R4)'
-            note: "Croissance comparee du rung R4 : u fois e puissance moins u tend vers 0."
+            note: "Croissance comparee du chapitre 5 : u fois e puissance moins u tend vers 0."
           - math: '\lim_{u\to+\infty} e^{-u} = 0 \quad (R4)'
             note: "e puissance moins u tend vers 0 quand u tend vers plus l'infini."
           - math: '\lim_{x\to0^+} f(x) = 0+0 = 0 = f(0) \ \Rightarrow\ f \text{ continue a droite en } 0'
@@ -2072,11 +2072,11 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que la fonction $f$ est dérivable à droite en $0$.
         reasoning: |-
-          Dérivable à droite en $0$ signifie que le taux d'accroissement $\dfrac{f(x)-f(0)}{x-0}=\dfrac{f(x)}{x}$ admet une limite finie quand $x\to0^+$ — c'est la définition du nombre dérivé par limite du taux d'accroissement, un outil de la notion `derivabilite-etude-fonctions` (R1), mobilisé ici parce qu'on est à la borne du domaine, là où aucune formule de dérivée n'est encore disponible.
+          Dérivable à droite en $0$ signifie que le taux d'accroissement $\dfrac{f(x)-f(0)}{x-0}=\dfrac{f(x)}{x}$ admet une limite finie quand $x\to0^+$ — c'est la définition du nombre dérivé par limite du taux d'accroissement, un outil de la notion `derivabilite-etude-fonctions` (chapitre 2), mobilisé ici parce qu'on est à la borne du domaine, là où aucune formule de dérivée n'est encore disponible.
 
           $$\frac{f(x)}{x} = \frac{e^{-1/x}}{x} + \frac{e^{-1/x}}{x^2}$$
 
-          Avec $u=\frac1x\to+\infty$ (comme à la question précédente), les deux termes deviennent $u\,e^{-u}$ et $u^2e^{-u}$. Le premier tend vers $0$ (déjà établi, question 1-a). Pour le second, écris-le comme un carré pour te ramener à la même croissance comparée : $u^2e^{-u} = \left(u\,e^{-u/2}\right)^2$. Or $u\,e^{-u/2} = \dfrac{2t}{e^{t}}$ avec $t=\dfrac u2\to+\infty$, qui tend vers $0$ (R4, même croissance comparée). Donc $u^2e^{-u}\to0^2=0$.
+          Avec $u=\frac1x\to+\infty$ (comme à la question précédente), les deux termes deviennent $u\,e^{-u}$ et $u^2e^{-u}$. Le premier tend vers $0$ (déjà établi, question 1-a). Pour le second, écris-le comme un carré pour te ramener à la même croissance comparée : $u^2e^{-u} = \left(u\,e^{-u/2}\right)^2$. Or $u\,e^{-u/2} = \dfrac{2t}{e^{t}}$ avec $t=\dfrac u2\to+\infty$, qui tend vers $0$ (chapitre 5, même croissance comparée). Donc $u^2e^{-u}\to0^2=0$.
 
           $$\lim_{x\to0^+} \frac{f(x)}{x} = 0+0 = 0$$
 
@@ -2094,7 +2094,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que la fonction $f$ est dérivable sur $]0, +\infty[$ puis calculer $f'(x)$ pour tout $x$ dans l'intervalle $]0, +\infty[$.
         reasoning: |-
-          Sur $]0,+\infty[$, $f$ est un produit de deux fonctions dérivables : $u(x)=1+\dfrac1x$ (dérivable comme somme d'une constante et d'un quotient sans zéro au dénominateur) et $v(x)=e^{-1/x}$, dérivable par composition (R3 : $e^{w}$ est dérivable dès que $w$ l'est, ici $w(x)=-\dfrac1x$, dérivable sur $]0,+\infty[$, sans aucune condition de signe à vérifier contrairement à un logarithme). Somme et produit de fonctions dérivables restent dérivables (`derivabilite-etude-fonctions`, R2) : $f$ est dérivable sur $]0,+\infty[$.
+          Sur $]0,+\infty[$, $f$ est un produit de deux fonctions dérivables : $u(x)=1+\dfrac1x$ (dérivable comme somme d'une constante et d'un quotient sans zéro au dénominateur) et $v(x)=e^{-1/x}$, dérivable par composition (chapitre 4 : $e^{w}$ est dérivable dès que $w$ l'est, ici $w(x)=-\dfrac1x$, dérivable sur $]0,+\infty[$, sans aucune condition de signe à vérifier contrairement à un logarithme). Somme et produit de fonctions dérivables restent dérivables (`derivabilite-etude-fonctions`, chapitre 3) : $f$ est dérivable sur $]0,+\infty[$.
 
           $$u'(x) = -\frac1{x^2} \qquad\qquad v'(x) = \frac1{x^2}e^{-1/x} \quad (\text{dérivée de } e^{w},\ w'(x)=\tfrac1{x^2})$$
 
@@ -2105,7 +2105,7 @@ entries:
           $$f'(x) = \frac{e^{-1/x}}{x^3}$$
         steps:
           - math: 'u(x)=1+\dfrac1x,\ u''(x)=-\dfrac1{x^2}\qquad v(x)=e^{-1/x},\ v''(x)=\dfrac1{x^2}e^{-1/x}'
-            note: "Derivees des deux facteurs : u par quotient, v par composition avec e puissance (rung R3)."
+            note: "Derivees des deux facteurs : u par quotient, v par composition avec e puissance (chapitre 4)."
           - math: 'f''(x) = u''(x)v(x)+u(x)v''(x) = -\dfrac1{x^2}e^{-1/x} + \left(1+\dfrac1x\right)\dfrac1{x^2}e^{-1/x}'
             note: "Regle du produit appliquee aux deux facteurs u et v."
           - math: 'f''(x) = \dfrac{e^{-1/x}}{x^2}\left[-1+1+\dfrac1x\right] = \dfrac{e^{-1/x}}{x^2}\times\dfrac1x'
@@ -2117,7 +2117,7 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} f(x)$ puis interpréter graphiquement le résultat obtenu.
         reasoning: |-
-          Quand $x\to+\infty$, $\dfrac1x\to0$, donc $1+\dfrac1x\to1$ et $e^{-1/x}\to e^0=1$ (continuité de $\exp$, R1/R5). Deux limites finies qui se multiplient — un produit de limites, sans indétermination (`limites-continuite`, R2) :
+          Quand $x\to+\infty$, $\dfrac1x\to0$, donc $1+\dfrac1x\to1$ et $e^{-1/x}\to e^0=1$ (continuité de $\exp$, chapitres 2 et 6). Deux limites finies qui se multiplient — un produit de limites, sans indétermination (`limites-continuite`, chapitre 3) :
 
           $$\lim_{x\to+\infty} f(x) = 1\times1 = 1$$
 
@@ -2146,7 +2146,7 @@ entries:
         stem: |-
           **(0,75 pt)** Montrer que la courbe $(C)$ admet un point d'inflexion $I$ dont on déterminera les coordonnées.
         reasoning: |-
-          Un point d'inflexion est un point où $f''$ change de signe (`derivabilite-etude-fonctions`, R5) : il faut donc calculer $f''$ à partir de $f'(x)=\dfrac{e^{-1/x}}{x^3}$ (question 1-c) et étudier son signe. Pour éviter d'empiler les apostrophes dans les champs de calcul, on y note $f^{(2)}$ la dérivée seconde de $f$ — même objet que $f''$ dans l'énoncé.
+          Un point d'inflexion est un point où $f''$ change de signe (`derivabilite-etude-fonctions`, chapitre 6) : il faut donc calculer $f''$ à partir de $f'(x)=\dfrac{e^{-1/x}}{x^3}$ (question 1-c) et étudier son signe. Pour éviter d'empiler les apostrophes dans les champs de calcul, on y note $f^{(2)}$ la dérivée seconde de $f$ — même objet que $f''$ dans l'énoncé.
 
           Dérive $f'=e^{-1/x}\times x^{-3}$ comme un produit : la dérivée de $e^{-1/x}$ est $\dfrac1{x^2}e^{-1/x}$ (déjà utilisée en 1-c), celle de $x^{-3}$ est $-3x^{-4}$.
 
@@ -2192,7 +2192,7 @@ entries:
         reasoning: |-
           $f$ est continue sur $[0,+\infty[$ tout entier : continue à droite en $0$ (question 1-a) et dérivable donc continue sur $]0,+\infty[$ (question 1-c). Une fonction continue sur un intervalle y admet toujours une primitive (théorème admis) — note $G$ une primitive de $f$ sur $[0,+\infty[$.
 
-          D'après la définition de l'intégrale entre deux bornes (`calcul-integral`, R1) : $\displaystyle\int_x^1 f(t)\,dt = G(1)-G(x)$, donc
+          D'après la définition de l'intégrale entre deux bornes (`calcul-integral`, chapitre 2) : $\displaystyle\int_x^1 f(t)\,dt = G(1)-G(x)$, donc
 
           $$F(x) = G(1) - G(x)$$
 
@@ -2211,7 +2211,7 @@ entries:
 
           $$\left(\forall x \in\, ]0, +\infty[\right)\quad \int_x^{1} e^{-\frac{1}{t}}\,dt = e^{-1} - x\,e^{-\frac{1}{x}} - \int_x^{1} \frac{1}{t}\,e^{-\frac{1}{t}}\,dt$$
         reasoning: |-
-          L'intégration par parties (`calcul-integral`, R7) échange un produit difficile à primitiver contre un autre, plus simple, au prix d'un terme de bord. Ici l'intégrande est $e^{-1/t}\times1$ : pose $u(t)=e^{-1/t}$ (dont la dérivée, déjà calculée en Partie 1, est plus maniable) et $v'(t)=1$ (dont une primitive immédiate est $v(t)=t$).
+          L'intégration par parties (`calcul-integral`, chapitre 8) échange un produit difficile à primitiver contre un autre, plus simple, au prix d'un terme de bord. Ici l'intégrande est $e^{-1/t}\times1$ : pose $u(t)=e^{-1/t}$ (dont la dérivée, déjà calculée en Partie 1, est plus maniable) et $v'(t)=1$ (dont une primitive immédiate est $v(t)=t$).
 
           $$u(t) = e^{-1/t},\quad u'(t) = \frac1{t^2}e^{-1/t} \qquad\qquad v'(t)=1,\quad v(t)=t$$
 
@@ -2278,9 +2278,9 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer en $cm^2$, l'aire du domaine plan limité par la courbe $(C)$ et les droites d'équations : $x = 0$, $x = 2$ et $y = 0$.
         reasoning: |-
-          $f\ge0$ sur $[0,+\infty[$ tout entier ($f(0)=0$ et, pour $x>0$, $1+\frac1x>0$ et $e^{-1/x}>0$, produit de deux facteurs positifs) : le domaine décrit est donc directement une aire au sens usuel, sans valeur absolue à poser (`calcul-integral`, R8) — $\text{aire} = \displaystyle\int_0^2 f(x)\,dx$ en unités d'aire.
+          $f\ge0$ sur $[0,+\infty[$ tout entier ($f(0)=0$ et, pour $x>0$, $1+\frac1x>0$ et $e^{-1/x}>0$, produit de deux facteurs positifs) : le domaine décrit est donc directement une aire au sens usuel, sans valeur absolue à poser (`calcul-integral`, chapitre 9) — $\text{aire} = \displaystyle\int_0^2 f(x)\,dx$ en unités d'aire.
 
-          Découpe par Chasles (`calcul-integral`, R3) en $[0,1]$ et $[1,2]$, pour réutiliser $\displaystyle\int_0^1 f=e^{-1}$ (question 2-c) :
+          Découpe par Chasles (`calcul-integral`, chapitre 4) en $[0,1]$ et $[1,2]$, pour réutiliser $\displaystyle\int_0^1 f=e^{-1}$ (question 2-c) :
 
           $$\int_0^2 f(x)\,dx = \int_0^1 f(x)\,dx + \int_1^2 f(x)\,dx = e^{-1} + \int_1^2 f(x)\,dx$$
 
@@ -2288,7 +2288,7 @@ entries:
 
           $$\int_0^2 f(x)\,dx = e^{-1} + \left(2e^{-1/2}-e^{-1}\right) = 2e^{-1/2} = \frac{2}{\sqrt e} \ \text{u.a.}$$
 
-          Reste à convertir. Le repère est **orthonormé**, d'unité $\|\vec i\|=\|\vec j\|=2\,cm$ (donnée de la Partie 1) : $1\ \text{u.a.} = 2\,cm\times2\,cm = 4\,cm^2$ (`calcul-integral`, R8). L'aire réelle :
+          Reste à convertir. Le repère est **orthonormé**, d'unité $\|\vec i\|=\|\vec j\|=2\,cm$ (donnée de la Partie 1) : $1\ \text{u.a.} = 2\,cm\times2\,cm = 4\,cm^2$ (`calcul-integral`, chapitre 9). L'aire réelle :
 
           $$\text{aire} = \frac{2}{\sqrt e}\times4 = \frac{8}{\sqrt e} = 8e^{-1/2}\ \text{cm}^2 \approx 4{,}85\ \text{cm}^2$$
         steps:
@@ -2357,7 +2357,7 @@ entries:
         reasoning: |-
           L'encadrement de la question précédente coince $u_n$ entre $2f(n)$ et $2f(n+2)$. Quand $n\to+\infty$, $n\to+\infty$ et $n+2\to+\infty$ aussi, donc $f(n)\to1$ et $f(n+2)\to1$ (Partie 1, question 2-a) : les deux bornes tendent vers $2\times1=2$.
 
-          Par le théorème des gendarmes pour les suites (`suites-numeriques`, R6), coincée entre deux suites qui tendent vers la même limite, $u_n$ tend vers cette limite commune :
+          Par le théorème des gendarmes pour les suites (`suites-numeriques`, chapitre 7), coincée entre deux suites qui tendent vers la même limite, $u_n$ tend vers cette limite commune :
 
           $$\lim_{n\to+\infty} u_n = 2$$
         steps:
@@ -2374,7 +2374,7 @@ entries:
 
           **(0,5 pt)** Montrer que pour tout entier naturel non nul $n$, il existe un nombre réel strictement positif unique $a_n$ tel que : $f(a_n) = e^{-\frac{1}{n}}$
         reasoning: |-
-          On cherche à résoudre $f(a_n)=e^{-1/n}$ d'inconnue $a_n$ : c'est un problème d'existence-unicité par bijection, le corollaire du théorème des valeurs intermédiaires pour une fonction continue strictement monotone (`limites-continuite`, R5).
+          On cherche à résoudre $f(a_n)=e^{-1/n}$ d'inconnue $a_n$ : c'est un problème d'existence-unicité par bijection, le corollaire du théorème des valeurs intermédiaires pour une fonction continue strictement monotone (`limites-continuite`, chapitre 6).
 
           $f$ est continue et strictement croissante sur $[0,+\infty[$ tout entier (Partie 1, questions 1-a et 2-b), donc réalise une bijection de $[0,+\infty[$ sur son image $\left[f(0),\displaystyle\lim_{x\to+\infty}f(x)\right[ = [0,1[$ (les bornes se conservent, $f$ étant croissante, et la borne du haut est exclue puisque $f$ ne l'atteint jamais — elle croît strictement vers elle sans jamais la dépasser ni l'égaler).
 
@@ -2390,7 +2390,7 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que la suite numérique $(a_n)_{n \ge 1}$ est croissante.
         reasoning: |-
-          $-\dfrac1n$ est strictement croissante en $n$ (car $\dfrac1n$ est strictement décroissante pour $n\ge1$) : pour $n\ge1$, $-\dfrac1{n+1}>-\dfrac1n$. Comme $\exp$ est strictement croissante (R1, dans le corps de cette leçon), l'ordre se conserve en appliquant l'exponentielle :
+          $-\dfrac1n$ est strictement croissante en $n$ (car $\dfrac1n$ est strictement décroissante pour $n\ge1$) : pour $n\ge1$, $-\dfrac1{n+1}>-\dfrac1n$. Comme $\exp$ est strictement croissante (chapitre 2, dans le corps de cette leçon), l'ordre se conserve en appliquant l'exponentielle :
 
           $$e^{-1/(n+1)} > e^{-1/n}$$
 
@@ -2414,11 +2414,11 @@ entries:
 
           $$\ln\left[\left(1+\frac1{a_n}\right)e^{-1/a_n}\right] = \ln\left(e^{-1/n}\right)$$
 
-          À gauche, $\ln(uv)=\ln u+\ln v$ (`fonction-logarithme`, R2) sépare le produit :
+          À gauche, $\ln(uv)=\ln u+\ln v$ (`fonction-logarithme`, chapitre 3) sépare le produit :
 
           $$\ln\left(1+\frac1{a_n}\right) + \ln\left(e^{-1/a_n}\right) = \ln\left(e^{-1/n}\right)$$
 
-          Et $\ln(e^k)=k$ pour tout réel $k$ (identité fondamentale de réciprocité, R1 de cette leçon) simplifie les deux termes en $\ln(e^{\cdot})$ :
+          Et $\ln(e^k)=k$ pour tout réel $k$ (identité fondamentale de réciprocité, chapitre 2 de cette leçon) simplifie les deux termes en $\ln(e^{\cdot})$ :
 
           $$\ln\left(1+\frac1{a_n}\right) - \frac1{a_n} = -\frac1n$$
 
@@ -2457,11 +2457,11 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que : $\left(\forall x \in [0, +\infty[\right)\quad -\dfrac{x^2}{2} \le -x + \ln(1+x) \le -\dfrac{x^2}{2} + \dfrac{x^3}{3}$
         reasoning: |-
-          Fixe $x\ge0$. L'encadrement de la question précédente vaut pour tout $t\in[0,x]\subset[0,+\infty[$ : intègre les trois membres sur $[0,x]$ — l'ordre se conserve par intégration (`calcul-integral`, R4, comparaison) —
+          Fixe $x\ge0$. L'encadrement de la question précédente vaut pour tout $t\in[0,x]\subset[0,+\infty[$ : intègre les trois membres sur $[0,x]$ — l'ordre se conserve par intégration (`calcul-integral`, chapitre 5, comparaison) —
 
           $$\int_0^x(1-t)\,dt \ \le\ \int_0^x\frac1{1+t}\,dt \ \le\ \int_0^x(1-t+t^2)\,dt$$
 
-          Calcule chaque morceau. À gauche : $\displaystyle\int_0^x(1-t)dt = \left[t-\frac{t^2}2\right]_0^x = x-\frac{x^2}2$. Au milieu : $\dfrac1{1+t}$ est de la forme $\dfrac{u'}{u}$ avec $u(t)=1+t$ (`fonction-logarithme`, R3 lue à l'envers, exactement comme la primitive $u'e^u$ de R6 pour l'exponentielle) : $\displaystyle\int_0^x\frac1{1+t}dt = \big[\ln(1+t)\big]_0^x = \ln(1+x)-\ln1=\ln(1+x)$. À droite : $\displaystyle\int_0^x(1-t+t^2)dt = \left[t-\frac{t^2}2+\frac{t^3}3\right]_0^x = x-\frac{x^2}2+\frac{x^3}3$.
+          Calcule chaque morceau. À gauche : $\displaystyle\int_0^x(1-t)dt = \left[t-\frac{t^2}2\right]_0^x = x-\frac{x^2}2$. Au milieu : $\dfrac1{1+t}$ est de la forme $\dfrac{u'}{u}$ avec $u(t)=1+t$ (`fonction-logarithme`, chapitre 4 lue à l'envers, exactement comme la primitive $u'e^u$ du chapitre 7 pour l'exponentielle) : $\displaystyle\int_0^x\frac1{1+t}dt = \big[\ln(1+t)\big]_0^x = \ln(1+x)-\ln1=\ln(1+x)$. À droite : $\displaystyle\int_0^x(1-t+t^2)dt = \left[t-\frac{t^2}2+\frac{t^3}3\right]_0^x = x-\frac{x^2}2+\frac{x^3}3$.
 
           $$x-\frac{x^2}2 \ \le\ \ln(1+x) \ \le\ x-\frac{x^2}2+\frac{x^3}3$$
 
@@ -2550,7 +2550,7 @@ entries:
 
           $$a_n \ge \sqrt{\frac n6}$$
 
-          Quand $n\to+\infty$, $\sqrt{n/6}\to+\infty$. Coincée au-dessus d'une suite qui diverge vers $+\infty$, $(a_n)$ ne peut faire autrement que diverger aussi — théorème de comparaison pour les suites (`suites-numeriques`, R6) :
+          Quand $n\to+\infty$, $\sqrt{n/6}\to+\infty$. Coincée au-dessus d'une suite qui diverge vers $+\infty$, $(a_n)$ ne peut faire autrement que diverger aussi — théorème de comparaison pour les suites (`suites-numeriques`, chapitre 7) :
 
           $$\lim_{n\to+\infty} a_n = +\infty$$
         steps:
@@ -2568,7 +2568,7 @@ entries:
 
           $$1-\frac2{3a_n} \ \le\ \left(a_n\sqrt{\frac2n}\right)^2 \ \le\ 1$$
 
-          Quand $n\to+\infty$, $a_n\to+\infty$ (question précédente), donc $\dfrac2{3a_n}\to0$, et la borne de gauche tend vers $1-0=1$ ; la borne de droite est déjà constante, égale à $1$. Par le théorème des gendarmes (`suites-numeriques`, R6), coincé entre deux suites qui tendent toutes deux vers $1$ :
+          Quand $n\to+\infty$, $a_n\to+\infty$ (question précédente), donc $\dfrac2{3a_n}\to0$, et la borne de gauche tend vers $1-0=1$ ; la borne de droite est déjà constante, égale à $1$. Par le théorème des gendarmes (`suites-numeriques`, chapitre 7), coincé entre deux suites qui tendent toutes deux vers $1$ :
 
           $$\left(a_n\sqrt{\frac2n}\right)^2 \xrightarrow[n\to+\infty]{} 1$$
 
@@ -2634,7 +2634,7 @@ entries:
 
           $$f_n(x)-nx+2 = \frac{-2e^x}{1+e^x}+2 = \frac{-2e^x+2(1+e^x)}{1+e^x} = \frac{2}{1+e^x}$$
 
-          Quand $x\to+\infty$, $e^x\to+\infty$ (R4), donc $1+e^x\to+\infty$ et $\dfrac{2}{1+e^x}\to0$.
+          Quand $x\to+\infty$, $e^x\to+\infty$ (chapitre 5), donc $1+e^x\to+\infty$ et $\dfrac{2}{1+e^x}\to0$.
 
           Graphiquement : l'écart entre $(C_n)$ et la droite d'équation $y=nx-2$ tend vers $0$ quand $x\to+\infty$ — $(C_n)$ admet donc cette droite comme **asymptote** (oblique si $n\ge1$, horizontale si $n=0$) en $+\infty$.
         steps:
@@ -2652,7 +2652,7 @@ entries:
 
           $$f_n(x)-nx = \frac{-2e^x}{1+e^x}$$
 
-          Quand $x\to-\infty$, $e^x\to0$ (R4), donc $\dfrac{-2e^x}{1+e^x}\to\dfrac{0}{1}=0$.
+          Quand $x\to-\infty$, $e^x\to0$ (chapitre 5), donc $\dfrac{-2e^x}{1+e^x}\to\dfrac{0}{1}=0$.
 
           L'écart entre $(C_n)$ et la droite $y=nx$ tend vers $0$ en $-\infty$ : $(C_n)$ admet la droite $(\Delta_n): y=nx$ comme asymptote en $-\infty$.
         steps:
@@ -2667,7 +2667,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que la fonction $f_n$ est dérivable sur $\mathbb{R}$ et que : $(\forall x \in \mathbb{R})\ ;\quad f_n'(x) = \dfrac{-2e^x}{(1+e^x)^2} + n$
         reasoning: |-
-          $f_n$ est une somme de deux morceaux : $x\mapsto nx$, polynomial donc dérivable sur $\mathbb{R}$, et $x\mapsto\dfrac{-2e^x}{1+e^x}$, un quotient de deux fonctions dérivables sur $\mathbb{R}$ (numérateur et dénominateur bâtis sur $\exp$, R3) dont le dénominateur $1+e^x$ ne s'annule jamais (il est même toujours strictement supérieur à $1$). Un quotient de fonctions dérivables, à dénominateur qui ne s'annule pas, est dérivable : $f_n$ est donc dérivable sur $\mathbb{R}$ tout entier, comme somme de deux fonctions dérivables.
+          $f_n$ est une somme de deux morceaux : $x\mapsto nx$, polynomial donc dérivable sur $\mathbb{R}$, et $x\mapsto\dfrac{-2e^x}{1+e^x}$, un quotient de deux fonctions dérivables sur $\mathbb{R}$ (numérateur et dénominateur bâtis sur $\exp$, chapitre 4) dont le dénominateur $1+e^x$ ne s'annule jamais (il est même toujours strictement supérieur à $1$). Un quotient de fonctions dérivables, à dénominateur qui ne s'annule pas, est dérivable : $f_n$ est donc dérivable sur $\mathbb{R}$ tout entier, comme somme de deux fonctions dérivables.
 
           Pour la dérivée du quotient, pose $u(x)=-2e^x$ (donc $u'(x)=-2e^x$) et $v(x)=1+e^x$ (donc $v'(x)=e^x$) :
 
@@ -2750,7 +2750,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que le point $I$ est le seul point d'inflexion de la courbe $(C_n)$
         reasoning: |-
-          Un point d'inflexion, c'est l'endroit où la courbe change de concavité — le signal algébrique est un **changement de signe** de la dérivée seconde $f_n''$ (dérivée seconde et convexité : outil de la notion `derivabilite-etude-fonctions`, hors du corps R0-R7 de cette leçon). Calcule $f_n''$ à partir de $f_n'(x)=\dfrac{-2e^x}{(1+e^x)^2}+n$ (question 2-a) — seul le premier morceau contribue, la dérivée d'une constante $n$ étant nulle.
+          Un point d'inflexion, c'est l'endroit où la courbe change de concavité — le signal algébrique est un **changement de signe** de la dérivée seconde $f_n''$ (dérivée seconde et convexité : outil de la notion `derivabilite-etude-fonctions`, hors du corps des chapitres 1 à 8 de cette leçon). Calcule $f_n''$ à partir de $f_n'(x)=\dfrac{-2e^x}{(1+e^x)^2}+n$ (question 2-a) — seul le premier morceau contribue, la dérivée d'une constante $n$ étant nulle.
 
           Redérive comme un quotient : $u(x)=-2e^x$ ($u'=-2e^x$), $v(x)=(1+e^x)^2$ ($v'(x)=2e^x(1+e^x)$, dérivée d'un carré composé) :
 
@@ -2760,7 +2760,7 @@ entries:
 
           $$f_n^{(2)}(x) = \frac{-2e^x(1-e^x)}{(1+e^x)^3} = \frac{2e^x(e^x-1)}{(1+e^x)^3}$$
 
-          Le facteur $\dfrac{2e^x}{(1+e^x)^3}$ est toujours strictement positif : le signe de $f_n^{(2)}(x)$ est donc exactement celui de $(e^x-1)$, négatif pour $x<0$, nul en $x=0$, positif pour $x>0$ (car $\exp$ est strictement croissante, R1). $f_n''$ s'annule **et change de signe** en $x=0$, et nulle part ailleurs. C'est exactement — et uniquement — l'endroit où la concavité bascule : $I$, d'abscisse $0$, est le seul point d'inflexion de $(C_n)$, quel que soit $n$ (le paramètre $n$ ne pèse pas dans $f_n''$, puisque sa dérivée est nulle — c'est pour ça que c'est le même point $I$ pour toute la famille de courbes).
+          Le facteur $\dfrac{2e^x}{(1+e^x)^3}$ est toujours strictement positif : le signe de $f_n^{(2)}(x)$ est donc exactement celui de $(e^x-1)$, négatif pour $x<0$, nul en $x=0$, positif pour $x>0$ (car $\exp$ est strictement croissante, chapitre 2). $f_n''$ s'annule **et change de signe** en $x=0$, et nulle part ailleurs. C'est exactement — et uniquement — l'endroit où la concavité bascule : $I$, d'abscisse $0$, est le seul point d'inflexion de $(C_n)$, quel que soit $n$ (le paramètre $n$ ne pèse pas dans $f_n''$, puisque sa dérivée est nulle — c'est pour ça que c'est le même point $I$ pour toute la famille de courbes).
         steps:
           - math: 'f_n^{(2)}(x) = \dfrac{-2e^x(1+e^x)^2-(-2e^x)\times2e^x(1+e^x)}{(1+e^x)^4}'
             note: "Derivee du quotient donnant f_n prime, seconde fois ; f seconde notee f exposant 2 pour eviter d'empiler les apostrophes."
@@ -2793,7 +2793,7 @@ entries:
 
           $$A(t) = \int_0^t \big[f_n(x)-(nx-2)\big]\,dx = \int_0^t \frac{2}{1+e^x}\,dx \quad (\text{en } cm^2, \text{ repère orthonormé})$$
 
-          Il reste à trouver une primitive de $\dfrac{2}{1+e^x}$ — une forme qui n'est ni $u'e^u$ (R6) ni directement $\dfrac{u'}{u}$. Le geste (technique de `calcul-integral`) : faire apparaître $e^x$ au numérateur pour reconnaître un $\dfrac{u'}{u}$, en écrivant $2$ comme $\dfrac{2(1+e^x)}{1+e^x}$ :
+          Il reste à trouver une primitive de $\dfrac{2}{1+e^x}$ — une forme qui n'est ni $u'e^u$ (chapitre 7) ni directement $\dfrac{u'}{u}$. Le geste (technique de `calcul-integral`) : faire apparaître $e^x$ au numérateur pour reconnaître un $\dfrac{u'}{u}$, en écrivant $2$ comme $\dfrac{2(1+e^x)}{1+e^x}$ :
 
           $$\frac{2}{1+e^x} = \frac{2(1+e^x)-2e^x}{1+e^x} = 2-\frac{2e^x}{1+e^x}$$
 
@@ -2823,7 +2823,7 @@ entries:
 
           $$A(t) = 2t-2\big[t+\ln(1+e^{-t})\big]+2\ln2 = -2\ln(1+e^{-t})+2\ln2$$
 
-          Le $2t$ et le $-2t$ se sont annulés exactement — l'indétermination a disparu. Quand $t\to+\infty$, $e^{-t}\to0$ (R4), donc $\ln(1+e^{-t})\to\ln1=0$ (continuité de $\ln$ en $1$), et :
+          Le $2t$ et le $-2t$ se sont annulés exactement — l'indétermination a disparu. Quand $t\to+\infty$, $e^{-t}\to0$ (chapitre 5), donc $\ln(1+e^{-t})\to\ln1=0$ (continuité de $\ln$ en $1$), et :
 
           $$\lim_{t\to+\infty}A(t) = -2\times0+2\ln2 = 2\ln2$$
 

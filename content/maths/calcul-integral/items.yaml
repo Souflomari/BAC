@@ -151,7 +151,7 @@ items:
           Ce choix ajoute $5$ au résultat final, comme si la constante ne
           disparaissait pas. Mais $F(3)-F(1) = \left(9+5\right) -
           \left(\tfrac13+5\right)$ : les deux $5$ s'annulent dans la
-          soustraction, exactement comme démontré au R1. Le résultat ne
+          soustraction, exactement comme démontré au chapitre 2. Le résultat ne
           dépend jamais de la constante choisie pour la primitive.
       - id: C
         text: "$-\\dfrac{26}{3}$"
@@ -227,7 +227,7 @@ items:
       \mathrm{d}x - 2\int_0^2 g(x)\,\mathrm{d}x = 3\times 5 - 2\times 3 =
       15-6=9$.
     solution: |
-      **Linéarité (R2) :**
+      **Linéarité (chapitre 3) :**
       $$\int_0^2 \big(3f(x)-2g(x)\big)\,\mathrm{d}x = 3\int_0^2 f(x)\,\mathrm{d}x - 2\int_0^2 g(x)\,\mathrm{d}x$$
 
       **Application numérique :**
@@ -260,7 +260,7 @@ items:
         correct: false
         feedback: >
           C'est l'inégalité inversée. Puisque $f \leq g$ sur tout
-          l'intervalle, la comparaison du R4 donne $\int_1^4 f \leq \int_1^4
+          l'intervalle, la comparaison du chapitre 5 donne $\int_1^4 f \leq \int_1^4
           g = 10$, pas l'inverse.
       - id: D
         text: "On ne peut rien affirmer, car le signe de $f$ n'est pas garanti."
@@ -268,7 +268,7 @@ items:
         feedback: >
           L'énoncé donne justement $0 \leq f(x)$ sur tout l'intervalle : le
           signe de $f$ est garanti positif. Combinée à $f \leq g$, la
-          positivité et la comparaison du R4 suffisent pour encadrer
+          positivité et la comparaison du chapitre 5 suffisent pour encadrer
           $\int_1^4 f$ entre $0$ et $10$.
     correct_feedback: >
       Par positivité, $\int_1^4 f(x)\,\mathrm{d}x \geq 0$ (car $f \geq 0$).
@@ -276,10 +276,10 @@ items:
       \mathrm{d}x = 10$ (car $f \leq g$). Les deux bornes combinées donnent
       l'encadrement.
     solution: |
-      **Positivité (R4) :** $f \geq 0$ sur $[1,4]$, donc
+      **Positivité (chapitre 5) :** $f \geq 0$ sur $[1,4]$, donc
       $$\int_1^4 f(x)\,\mathrm{d}x \geq 0$$
 
-      **Comparaison (R4) :** $f \leq g$ sur $[1,4]$, donc
+      **Comparaison (chapitre 5) :** $f \leq g$ sur $[1,4]$, donc
       $$\int_1^4 f(x)\,\mathrm{d}x \leq \int_1^4 g(x)\,\mathrm{d}x = 10$$
 
       **Conclusion :** $0 \leq \int_1^4 f(x)\,\mathrm{d}x \leq 10$.
@@ -323,7 +323,7 @@ items:
       $\mu = \dfrac{1}{b-a}\int_a^b f(x)\,\mathrm{d}x = \dfrac{1}{5-2}\times
       12 = \dfrac{12}{3} = 4$.
     solution: |
-      **Définition (R6) :**
+      **Définition (chapitre 7) :**
       $$\mu = \frac{1}{b-a}\int_a^b f(x)\,\mathrm{d}x = \frac{1}{5-2}\times 12$$
 
       $$\mu = \frac{12}{3} = 4$$
@@ -371,7 +371,7 @@ items:
       Avec $u=x$, $u'=1$ est plus simple que $u$ — c'est le signal que
       $u=x$ est le bon choix. Et $v'=e^{2x}$ se primitive facilement en
       $v=\tfrac12 e^{2x}$. Le terme en $v'$ disparaît au profit d'un terme
-      en $u'\cdot v$ plus simple, exactement le mécanisme du R7.
+      en $u'\cdot v$ plus simple, exactement le mécanisme du chapitre 8.
     solution: |
       **Choix : $u=x$ ($u'=1$), $v'=e^{2x}$ ($v=\tfrac12 e^{2x}$).**
 
@@ -424,13 +424,13 @@ items:
           sur $[2,3]$. Traiter tout l'intervalle comme s'il était
           uniformément négatif ignore le changement de signe en $x=2$.
     correct_feedback: >
-      Il faut découper au point où $f$ change de signe (Chasles, R3),
+      Il faut découper au point où $f$ change de signe (Chasles, chapitre 4),
       prendre l'opposé de l'intégrale là où $f \leq 0$, garder l'intégrale
       telle quelle là où $f \geq 0$, puis additionner :
       $\tfrac{16}{3}+\tfrac{7}{3} = \tfrac{23}{3}$ u.a. — exactement le
-      calcul fait au R8.
+      calcul fait au chapitre 9.
     solution: |
-      **Découpage à la racine $x=2$ (Chasles, R3) :**
+      **Découpage à la racine $x=2$ (Chasles, chapitre 4) :**
 
       Sur $[0,2]$, $f \leq 0$ : $\text{aire}_{[0,2]} = -\int_0^2 f(x)\,\mathrm{d}x = \dfrac{16}{3}$
 
@@ -482,7 +482,7 @@ items:
         feedback: >
           Sur un graphique vitesse-temps, l'aire sous la courbe se lit bien
           comme une distance (produit vitesse × temps), quelles que soient
-          les unités des axes — c'est le principe rappelé au début du rung.
+          les unités des axes — c'est le principe rappelé au début du chapitre.
           Le problème n'est pas la nature des axes, c'est la forme courbe
           du contour.
     correct_feedback: >
@@ -496,7 +496,7 @@ items:
       droite). Ici, $v(t)=t^2$ n'est ni l'une ni l'autre : c'est une
       parabole, un contour courbe qu'aucune formule de géométrie plane
       classique ne mesure exactement. C'est précisément le problème que ce
-      chapitre va résoudre, à partir du rung suivant.
+      chapitre va résoudre, à partir du chapitre suivant.
 
   - id: CI-8
     rung: "R0"
@@ -547,13 +547,13 @@ items:
       reliant $(0,0)$ à $(2,4)$ (vérifie-le en $t=1$ : $1<2$). L'aire sous
       la parabole est donc strictement plus petite que l'aire du triangle,
       $4$ — cohérent avec la valeur exacte $\frac83\approx2{,}67$ trouvée
-      au rung suivant.
+      au chapitre suivant.
     solution: |
       Compare $t^2$ à la droite $y=2t$ (qui relie $(0,0)$ à $(2,4)$) sur
       $[0,2]$ : $2t-t^2 = t(2-t) \geq 0$ pour $t \in [0,2]$, donc $t^2 \leq
       2t$ sur tout l'intervalle. L'aire sous la parabole est donc
       inférieure ou égale à l'aire sous la droite, qui est $4$. La valeur
-      exacte, calculée au rung suivant, est $\frac83\approx2{,}67 < 4$.
+      exacte, calculée au chapitre suivant, est $\frac83\approx2{,}67 < 4$.
 
   - id: CI-9
     rung: "R0"
@@ -620,7 +620,7 @@ items:
     stem: >
       On sait que $\ln$ est une primitive de $t \mapsto \dfrac1t$ sur
       $\left]0,+\infty\right[$. En appliquant la définition de l'intégrale
-      du R1, que vaut $\displaystyle\int_2^x \frac1t\,\mathrm{d}t$ pour
+      du chapitre 2, que vaut $\displaystyle\int_2^x \frac1t\,\mathrm{d}t$ pour
       $x>2$ ?
     type: mcq
     choices:
@@ -641,7 +641,7 @@ items:
         correct: false
         feedback: >
           Ce résultat oublie de soustraire la valeur de la primitive à la
-          borne inférieure, $\ln(2)$. La définition du R1 est toujours une
+          borne inférieure, $\ln(2)$. La définition du chapitre 2 est toujours une
           différence $F(b)-F(a)$, jamais la valeur de $F$ au seul point
           $b$.
       - id: D
@@ -654,12 +654,12 @@ items:
           $F(b-a)$ : la soustraction porte sur les valeurs de $F$, pas sur
           les bornes avant d'appliquer $F$.
     correct_feedback: >
-      Par définition (R1), $\int_2^x \frac1t\,\mathrm{d}t = F(x)-F(2)$ où
+      Par définition (chapitre 2), $\int_2^x \frac1t\,\mathrm{d}t = F(x)-F(2)$ où
       $F=\ln$. Donc $\int_2^x \frac1t\,\mathrm{d}t = \ln(x)-\ln(2)$ : la
       variable d'intégration $t$ disparaît, remplacée par les deux bornes
       numériques évaluées séparément dans $\ln$.
     solution: |
-      **Définition (R1) appliquée à $F=\ln$ :**
+      **Définition (chapitre 2) appliquée à $F=\ln$ :**
       $$\int_2^x \frac1t\,\mathrm{d}t = F(x)-F(2) = \ln(x)-\ln(2)$$
 
       La lettre $t$ n'est qu'une variable muette utilisée pour décrire la
@@ -685,7 +685,7 @@ items:
         text: "Oui : la définition $F(b)-F(a)$ ne s'applique que si $f\\geq0$ sur tout l'intervalle."
         correct: false
         feedback: >
-          Non — relis la définition du R1 : elle suppose seulement que $f$
+          Non — relis la définition du chapitre 2 : elle suppose seulement que $f$
           est CONTINUE sur $[a,b]$, sans aucune condition de signe. C'est
           seulement l'INTERPRÉTATION en aire (« $\int_a^b f$ est l'aire
           sous la courbe ») qui exige $f\geq0$, pas la définition
@@ -710,21 +710,21 @@ items:
           $F(x)=\frac{x^2}{2}$ sur tout $\mathbb{R}$. Le signe de $x$
           n'empêche en rien l'existence d'une primitive.
     correct_feedback: >
-      La définition du R1 exige seulement que $f$ soit continue sur
+      La définition du chapitre 2 exige seulement que $f$ soit continue sur
       $[a,b]$ — aucune condition de signe. Le fait que $\int_a^b f(x)\,
       \mathrm{d}x$ représente une AIRE est une interprétation
       supplémentaire, valable uniquement quand $f\geq0$ ; la définition
       elle-même, $F(b)-F(a)$, fonctionne pour toute fonction continue, quel
       que soit son signe.
     solution: |
-      **Définition (R1) :** $\int_{-2}^1 x\,\mathrm{d}x = F(1)-F(-2)$ avec
+      **Définition (chapitre 2) :** $\int_{-2}^1 x\,\mathrm{d}x = F(1)-F(-2)$ avec
       $F(x)=\frac{x^2}{2}$, sans aucune condition sur le signe de $f$.
 
       $$\int_{-2}^1 x\,\mathrm{d}x = \frac{1}{2} - \frac{4}{2} = \frac12 - 2 = -\frac32$$
 
       Le résultat est négatif — cohérent avec le fait que $f(x)=x<0$
       domine sur une plus grande portion de $[-2,1]$. Ce nombre négatif
-      n'est PAS une aire (l'interprétation en aire du R1 suppose
+      n'est PAS une aire (l'interprétation en aire du chapitre 2 suppose
       $f\geq0$), mais c'est bien la valeur de l'intégrale au sens de la
       définition.
 
@@ -744,7 +744,7 @@ items:
         text: "Oui, car la linéarité de l'intégrale permet de multiplier les deux intégrales entre elles."
         correct: false
         feedback: >
-          La linéarité (R2) ne porte que sur les SOMMES et les produits
+          La linéarité (chapitre 3) ne porte que sur les SOMMES et les produits
           par un facteur CONSTANT — $\int(f+g)=\int f+\int g$ et $\int kf =
           k\int f$. Elle ne dit rien sur le produit de deux fonctions
           $f(x)g(x)$ : en général, $\int_a^b f(x)g(x)\,\mathrm{d}x \neq
@@ -773,14 +773,14 @@ items:
         text: "Non, car la linéarité ne s'applique qu'aux sommes et aux produits par une constante, jamais au produit de deux fonctions."
         correct: true
     correct_feedback: >
-      La linéarité de l'intégrale (R2) ne concerne que $\int(f+g)$ et
+      La linéarité de l'intégrale (chapitre 3) ne concerne que $\int(f+g)$ et
       $\int kf$ pour $k$ CONSTANT. Le produit $f(x)g(x)$ de deux fonctions
       n'a pas de règle de décomposition aussi simple : en général,
       $\int_a^b f(x)g(x)\,\mathrm{d}x \neq \int_a^b f(x)\,\mathrm{d}x
       \times \int_a^b g(x)\,\mathrm{d}x$. (C'est même pour traiter certains
-      produits que l'intégration par parties, R7, sera nécessaire.)
+      produits que l'intégration par parties, chapitre 8, sera nécessaire.)
     solution: |
-      La linéarité (R2) s'écrit $\int_a^b(f+g) = \int_a^b f + \int_a^b g$
+      La linéarité (chapitre 3) s'écrit $\int_a^b(f+g) = \int_a^b f + \int_a^b g$
       et $\int_a^b kf = k\int_a^b f$ — uniquement pour une somme ou un
       facteur CONSTANT $k$. Un produit de deux fonctions $f(x)g(x)$
       n'entre dans aucun de ces deux cas : $f(x)$ n'est pas une constante,
@@ -928,16 +928,16 @@ items:
         text: "On ne peut pas savoir, car $6>2$ alors que l'intégrale s'écrit habituellement avec la borne du bas plus petite que celle du haut."
         correct: false
         feedback: >
-          C'est justement pour ce genre de cas que la convention du R3
+          C'est justement pour ce genre de cas que la convention du chapitre 4
           existe : elle donne un sens à $\int_b^a$ même quand $b>a$, à
           savoir $\int_b^a f(x)\,\mathrm{d}x = -\int_a^b f(x)\,\mathrm{d}x$.
           Ce n'est pas une situation indéterminée, c'est une définition.
     correct_feedback: >
-      Par la convention du R3, $\int_b^a f(x)\,\mathrm{d}x = -\int_a^b
+      Par la convention du chapitre 4, $\int_b^a f(x)\,\mathrm{d}x = -\int_a^b
       f(x)\,\mathrm{d}x$. Donc $\int_6^2 f(x)\,\mathrm{d}x = -\int_2^6
       f(x)\,\mathrm{d}x = -15$.
     solution: |
-      **Convention (R3) :**
+      **Convention (chapitre 4) :**
       $$\int_6^2 f(x)\,\mathrm{d}x = -\int_2^6 f(x)\,\mathrm{d}x = -15$$
 
       Cette convention découle directement de la définition $F(b)-F(a)$ :
@@ -966,7 +966,7 @@ items:
           compris un $c$ situé en dehors du segment délimité par les deux
           bornes de l'intégrale recherchée — c'est justement ce que
           permettent les conventions sur $\int_a^a$ et $\int_b^a=-\int_a^b$
-          vues au début du R3.
+          vues au début du chapitre 4.
       - id: B
         text: "$14$"
         correct: false
@@ -1015,7 +1015,7 @@ items:
         text: "Oui, car $f\\geq0$ garantit que toute intégrale de $f$ est positive, quel que soit l'ordre des bornes."
         correct: false
         feedback: >
-          La propriété de positivité du R4 exige explicitement $a\leq b$ :
+          La propriété de positivité du chapitre 5 exige explicitement $a\leq b$ :
           elle dit $\int_a^b f \geq 0$ quand $a\leq b$ et $f\geq0$ sur
           $[a,b]$. Ici les bornes sont inversées ($5$ puis $2$), donc cette
           propriété ne s'applique pas directement à $\int_5^2 f$.
@@ -1029,27 +1029,27 @@ items:
           $f\geq0$ sur $[2,5]$ implique bien quelque chose : $\int_2^5
           f(x)\,\mathrm{d}x \geq 0$ (bornes dans l'ordre croissant). C'est
           seulement pour $\int_5^2 f$ — bornes inversées — que le signe
-          change, via la convention du R3.
+          change, via la convention du chapitre 4.
       - id: D
         text: "Oui, car une aire est toujours positive, quel que soit le sens dans lequel on la parcourt."
         correct: false
         feedback: >
           $\int_5^2 f(x)\,\mathrm{d}x$ n'est pas une aire, c'est une
           intégrale signée avec les bornes inversées : par convention
-          (R3), $\int_5^2 f = -\int_2^5 f$. Le signe négatif vient de
+          (chapitre 4), $\int_5^2 f = -\int_2^5 f$. Le signe négatif vient de
           cette convention sur l'ordre des bornes, pas d'un changement de
           sens de « parcours » d'une aire.
     correct_feedback: >
-      La positivité (R4) donne $\int_2^5 f(x)\,\mathrm{d}x \geq 0$, car les
+      La positivité (chapitre 5) donne $\int_2^5 f(x)\,\mathrm{d}x \geq 0$, car les
       bornes sont dans l'ordre croissant ($2\leq5$) et $f\geq0$. Mais
       $\int_5^2 f(x)\,\mathrm{d}x = -\int_2^5 f(x)\,\mathrm{d}x$
-      (convention du R3), donc $\int_5^2 f(x)\,\mathrm{d}x \leq 0$ :
+      (convention du chapitre 4), donc $\int_5^2 f(x)\,\mathrm{d}x \leq 0$ :
       l'inversion des bornes change le signe.
     solution: |
-      **Positivité (R4), bornes dans l'ordre croissant :**
+      **Positivité (chapitre 5), bornes dans l'ordre croissant :**
       $$\int_2^5 f(x)\,\mathrm{d}x \geq 0 \quad (\text{car } 2\leq5 \text{ et } f\geq0 \text{ sur } [2,5])$$
 
-      **Convention (R3) pour les bornes inversées :**
+      **Convention (chapitre 4) pour les bornes inversées :**
       $$\int_5^2 f(x)\,\mathrm{d}x = -\int_2^5 f(x)\,\mathrm{d}x \leq 0$$
 
       La propriété de positivité exige $a\leq b$ ; l'appliquer sans
@@ -1075,13 +1075,13 @@ items:
           La continuité ne garantit rien de tel : $f$ et $g$ peuvent très
           bien vérifier $f\leq g$ aux deux bornes tout en ayant $g<f$
           quelque part au milieu de l'intervalle (les deux courbes peuvent
-          se croiser deux fois entre $1$ et $4$). La propriété du R4 exige
+          se croiser deux fois entre $1$ et $4$). La propriété du chapitre 5 exige
           l'inégalité sur TOUT l'intervalle, sans exception.
       - id: B
         text: "Oui, car la propriété de comparaison ne porte que sur les valeurs de $f$ et $g$ aux bornes de l'intégrale."
         correct: false
         feedback: >
-          C'est l'inverse : la propriété de comparaison du R4 porte sur le
+          C'est l'inverse : la propriété de comparaison du chapitre 5 porte sur le
           comportement de $f$ et $g$ SUR TOUT L'INTERVALLE $[a,b]$, pas
           seulement en $x=a$ et $x=b$. Ce qui se passe strictement entre
           les bornes compte tout autant.
@@ -1089,22 +1089,22 @@ items:
         text: "Non, car la comparaison des intégrales ne s'applique qu'à des fonctions positives."
         correct: false
         feedback: >
-          La comparaison (R4) ne demande pas que $f$ et $g$ soient
+          La comparaison (chapitre 5) ne demande pas que $f$ et $g$ soient
           positives — seulement que $f\leq g$ sur tout l'intervalle. La
-          démonstration du R4 applique la positivité à la différence
+          démonstration du chapitre 5 applique la positivité à la différence
           $g-f$, ce qui fonctionne même si $f$ et $g$ prennent des valeurs
           négatives.
       - id: D
         text: "Non : la comparaison des intégrales exige $f(x)\\leq g(x)$ pour TOUT $x$ de l'intervalle $[1,4]$, pas seulement aux deux extrémités."
         correct: true
     correct_feedback: >
-      La propriété de comparaison du R4 s'appuie sur $f\leq g$ sur TOUT
+      La propriété de comparaison du chapitre 5 s'appuie sur $f\leq g$ sur TOUT
       l'intervalle $[a,b]$ (elle applique la positivité à $g-f\geq0$
       partout). Une inégalité vérifiée seulement aux deux bornes ne suffit
       pas : $f$ et $g$ pourraient très bien se croiser entre $1$ et $4$,
       rendant la conclusion fausse.
     solution: |
-      La démonstration de la comparaison (R4) applique la positivité à
+      La démonstration de la comparaison (chapitre 5) applique la positivité à
       $g-f\geq0$ **sur tout l'intervalle** $[a,b]$. Si $g-f$ n'est
       positive qu'aux deux bornes mais change de signe entre les deux,
       rien ne garantit $\int_a^b(g-f)\geq0$ — l'hypothèse de la propriété
@@ -1157,7 +1157,7 @@ items:
       f(x)\,\mathrm{d}x\leq6\times5$, soit $10\leq\int_3^8 f(x)\,
       \mathrm{d}x\leq30$.
     solution: |
-      **Inégalité de la moyenne (R5), $m=2$, $M=6$, $b-a=8-3=5$ :**
+      **Inégalité de la moyenne (chapitre 6), $m=2$, $M=6$, $b-a=8-3=5$ :**
       $$m(b-a) \leq \int_3^8 f(x)\,\mathrm{d}x \leq M(b-a)$$
       $$2\times5 \leq \int_3^8 f(x)\,\mathrm{d}x \leq 6\times5$$
       $$10 \leq \int_3^8 f(x)\,\mathrm{d}x \leq 30$$
@@ -1208,7 +1208,7 @@ items:
       $f(x)=\sqrt x$ est croissante sur $[4,9]$, donc son minimum sur cet
       intervalle est atteint à la borne inférieure, $f(4)=2$, et son
       maximum à la borne supérieure, $f(9)=3$. D'où $m=2$ et $M=3$ —
-      exactement le même raisonnement que pour $e^x$ au R5.
+      exactement le même raisonnement que pour $e^x$ au chapitre 6.
     solution: |
       $f(x)=\sqrt x$ est croissante sur $[4,9]$ (chapitre "Fonction racine
       carrée" / dérivée $f'(x)=\frac{1}{2\sqrt x}>0$), donc son minimum
@@ -1253,16 +1253,16 @@ items:
         text: "On ne peut rien affirmer, car on ne connaît pas le signe de $f$."
         correct: false
         feedback: >
-          Le corollaire du R5 s'applique précisément à $|f(x)|\leq M$ sans
+          Le corollaire du chapitre 6 s'applique précisément à $|f(x)|\leq M$ sans
           avoir besoin de connaître le signe de $f$ — c'est tout l'intérêt
           de raisonner sur la valeur absolue de $f$ plutôt que sur $f$
           elle-même. Le signe de $f$ n'est pas nécessaire ici.
     correct_feedback: >
-      D'après le corollaire du R5 (appliqué à $m=-M$), $\left|\int_a^b
+      D'après le corollaire du chapitre 6 (appliqué à $m=-M$), $\left|\int_a^b
       f(x)\,\mathrm{d}x\right| \leq M(b-a)$. Ici $M=3$ et $b-a=4$, donc
       $\left|\int_0^4 f(x)\,\mathrm{d}x\right| \leq 3\times4=12$.
     solution: |
-      **Corollaire (R5) :** si $|f(x)|\leq M$ sur $[a,b]$, alors
+      **Corollaire (chapitre 6) :** si $|f(x)|\leq M$ sur $[a,b]$, alors
       $$\left|\int_a^b f(x)\,\mathrm{d}x\right| \leq M(b-a)$$
 
       Ici $M=3$, $b-a=4-0=4$ :
@@ -1312,7 +1312,7 @@ items:
       **Intégrale :**
       $$\int_1^4(2x+1)\,\mathrm{d}x = \Big[x^2+x\Big]_1^4 = (16+4)-(1+1) = 18$$
 
-      **Valeur moyenne (R6) :**
+      **Valeur moyenne (chapitre 7) :**
       $$\mu = \frac{1}{4-1}\times18 = \frac{18}{3} = 6$$
 
   - id: CI-23
@@ -1344,7 +1344,7 @@ items:
           La symétrie de $x^2$ par rapport à l'axe des ordonnées (en
           $x=0$) ne dit rien sur son comportement sur l'intervalle
           $[0,4]$, qui ne contient pas de partie symétrique par rapport à
-          $x=0$. La valeur moyenne se calcule par la définition du R6, pas
+          $x=0$. La valeur moyenne se calcule par la définition du chapitre 7, pas
           en invoquant une symétrie qui ne s'applique pas ici.
       - id: C
         text: "Non : la valeur moyenne se calcule par $\\mu=\\frac{1}{b-a}\\int_a^b f(x)\\,\\mathrm{d}x$, et ce nombre ne coïncide en général pas avec $f$ évaluée au milieu de l'intervalle."
@@ -1353,7 +1353,7 @@ items:
         text: "Non, car la formule de la valeur moyenne ne s'applique qu'à des fonctions affines."
         correct: false
         feedback: >
-          La définition de la valeur moyenne (R6) s'applique à TOUTE
+          La définition de la valeur moyenne (chapitre 7) s'applique à TOUTE
           fonction continue, pas seulement aux fonctions affines — c'est
           d'ailleurs pour une fonction affine que la valeur moyenne
           coïnciderait avec la valeur au milieu de l'intervalle, un cas
@@ -1394,7 +1394,7 @@ items:
           Le signe entre le terme de bord et l'intégrale restante est un
           MOINS, pas un plus. La formule de l'IPP est $\int_a^b uv' =
           [uv]_a^b - \int_a^b u'v$ — le signe moins vient directement de
-          la règle de dérivation du produit isolée au R7, pas d'un choix
+          la règle de dérivation du produit isolée au chapitre 8, pas d'un choix
           arbitraire.
       - id: B
         text: "$\\int_0^1 x\\,e^x\\,\\mathrm{d}x = \\big[x\\,e^x\\big]_0^1 - \\int_0^1 e^x\\,\\mathrm{d}x$"
@@ -1418,19 +1418,19 @@ items:
           l'intégrale restante était identique à celle de départ, l'IPP ne
           ferait progresser aucun calcul.
     correct_feedback: >
-      La formule de l'IPP (R7) est $\int_a^b u(x)v'(x)\,\mathrm{d}x =
+      La formule de l'IPP (chapitre 8) est $\int_a^b u(x)v'(x)\,\mathrm{d}x =
       \big[u(x)v(x)\big]_a^b - \int_a^b u'(x)v(x)\,\mathrm{d}x$. Avec
       $u=x$, $u'=1$, $v=e^x$ : $\int_0^1 x\,e^x\,\mathrm{d}x =
       \big[x\,e^x\big]_0^1 - \int_0^1 1\times e^x\,\mathrm{d}x =
       \big[x\,e^x\big]_0^1 - \int_0^1 e^x\,\mathrm{d}x$.
     solution: |
-      **Formule générale (R7) :**
+      **Formule générale (chapitre 8) :**
       $$\int_a^b u(x)v'(x)\,\mathrm{d}x = \big[u(x)v(x)\big]_a^b - \int_a^b u'(x)v(x)\,\mathrm{d}x$$
 
       Avec $u=x$ ($u'=1$) et $v'=e^x$ ($v=e^x$) :
       $$\int_0^1 x\,e^x\,\mathrm{d}x = \big[x\,e^x\big]_0^1 - \int_0^1 e^x\,\mathrm{d}x$$
 
-      (Le calcul complet donne $1$, comme dans l'exemple travaillé du R7.)
+      (Le calcul complet donne $1$, comme dans l'exemple travaillé du chapitre 8.)
 
   - id: CI-25
     rung: "R7"
@@ -1637,7 +1637,7 @@ items:
           sur tout l'intervalle : comme $f$ change de signe en $x=2$, les
           parties positive et négative s'annulent partiellement dans cette
           différence, donc ce nombre n'est pas l'aire — exactement le
-          piège identifié au R8.
+          piège identifié au chapitre 9.
       - id: C
         text: "Calculer $\\left|F(3)-F(0)\\right|$, en prenant la valeur absolue du résultat global."
         correct: false
@@ -1645,7 +1645,7 @@ items:
           Prendre la valeur absolue APRÈS avoir tout combiné ne corrige
           pas l'annulation partielle entre la partie où $f\leq0$ et celle
           où $f\geq0$ : il faut découper en $x=2$ AVANT de prendre les
-          valeurs absolues, comme vu au R8, pas après avoir calculé
+          valeurs absolues, comme vu au chapitre 9, pas après avoir calculé
           l'intégrale globale.
       - id: D
         text: "Calculer $F(2)-F(0)$ pour l'aire sur $[0,2]$ et $F(3)-F(2)$ pour l'aire sur $[2,3]$, sans changer aucun signe, puis additionner."
@@ -1657,11 +1657,11 @@ items:
           négatif directement au morceau positif ne redonne pas la vraie
           aire totale.
     correct_feedback: >
-      Comme $f$ change de signe en $x=2$, il faut découper (Chasles, R3)
+      Comme $f$ change de signe en $x=2$, il faut découper (Chasles, chapitre 4)
       et traiter chaque morceau selon son signe : l'opposé de l'intégrale
       là où $f\leq0$, l'intégrale telle quelle là où $f\geq0$, puis
-      additionner — exactement la méthode du R8, appliquée ici à une
-      primitive obtenue par IPP (R7).
+      additionner — exactement la méthode du chapitre 9, appliquée ici à une
+      primitive obtenue par IPP (chapitre 8).
     solution: |
       **Sur $[0,2]$, $f\leq0$ :**
       $$\text{aire}_{[0,2]} = -\big(F(2)-F(0)\big) = -\Big((-1)e^2-(-3)e^0\Big) = -\big(-e^2+3\big) = e^2-3$$
@@ -1696,8 +1696,8 @@ items:
         text: "On ne peut rien affirmer sur la valeur moyenne de $g$ sans connaître son expression explicite."
         correct: false
         feedback: >
-          On PEUT affirmer quelque chose : la comparaison $f\leq g$ (R4),
-          combinée à la définition de la valeur moyenne (R6), donne
+          On PEUT affirmer quelque chose : la comparaison $f\leq g$ (chapitre 5),
+          combinée à la définition de la valeur moyenne (chapitre 7), donne
           directement $\mu_g\geq\mu_f=3$, sans avoir besoin de connaître
           l'expression de $g$.
       - id: C
@@ -1705,20 +1705,20 @@ items:
         correct: false
         feedback: >
           C'est l'inégalité inversée. $f\leq g$ sur tout l'intervalle
-          donne $\int f\leq\int g$ (R4), donc en divisant par $b-a>0$ (ce
+          donne $\int f\leq\int g$ (chapitre 5), donc en divisant par $b-a>0$ (ce
           qui ne change pas le sens de l'inégalité), $\mu_f\leq\mu_g$ — la
           valeur moyenne de $g$ est AU MOINS celle de $f$, pas au plus.
       - id: D
         text: "La valeur moyenne de $g$ est supérieure ou égale à $3$, mais elle n'est pas déterminée précisément."
         correct: true
     correct_feedback: >
-      Par comparaison (R4), $f\leq g$ sur $[2,6]$ donne $\int_2^6 f(x)\,
+      Par comparaison (chapitre 5), $f\leq g$ sur $[2,6]$ donne $\int_2^6 f(x)\,
       \mathrm{d}x \leq \int_2^6 g(x)\,\mathrm{d}x$. En divisant les deux
       membres par $b-a=4>0$ (ce qui préserve le sens de l'inégalité), on
       obtient $\mu_f\leq\mu_g$, donc $\mu_g\geq3$ — sans pouvoir dire plus
       précisément quelle est cette valeur.
     solution: |
-      **Comparaison (R4) :** $f\leq g$ sur $[2,6]$ $\Rightarrow$
+      **Comparaison (chapitre 5) :** $f\leq g$ sur $[2,6]$ $\Rightarrow$
       $$\int_2^6 f(x)\,\mathrm{d}x \leq \int_2^6 g(x)\,\mathrm{d}x$$
 
       **Division par $b-a=4>0$ (préserve le sens) :**
@@ -1773,7 +1773,7 @@ items:
       $\mu = \dfrac{1}{b-a}\int_a^b q(x)\,\mathrm{d}x = \dfrac{1}{2-0}
       \times(e^2-3) = \dfrac{e^2-3}{2}$.
     solution: |
-      **Valeur moyenne (R6), appliquée au résultat de l'IPP :**
+      **Valeur moyenne (chapitre 7), appliquée au résultat de l'IPP :**
       $$\mu = \frac{1}{2-0}\int_0^2 q(x)\,\mathrm{d}x = \frac{e^2-3}{2}$$
 
       (Vérification de l'intégrale par IPP : avec $u=2-x$, $u'=-1$,

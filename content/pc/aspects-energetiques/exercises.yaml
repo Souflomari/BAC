@@ -73,7 +73,7 @@ exercises:
         stem: |-
           **(0,5 pt)** Trouver la valeur de l'énergie potentielle élastique $E_{pe1}$ du système mécanique à la date $t_1 = 0{,}5\ \text{s}$.
         reasoning: |-
-          Le réflexe correct est de **localiser le solide avant de calculer une énergie**. À $t_1 = 0{,}5\ \text{s} = T_0/2$, une demi-période s'est écoulée depuis le lâcher au minimum : le solide est passé à l'extrême opposé. On le vérifie avec l'équation horaire : $x(t_1) = X_m\cos\left(\frac{2\pi\times0{,}5}{1} + \pi\right) = X_m\cos(2\pi) = +X_m$. Le solide est donc à l'allongement maximal $x = +X_m$. L'énergie potentielle élastique se calcule alors avec $E_{pe} = \frac{1}{2}Kx^2$ (établie en R5, aire du triangle sous $F = Kx$) — et comme on est à un extrême où la vitesse s'annule, cette valeur est aussi l'énergie mécanique totale : $E_{pe1} = E_m$.
+          Le réflexe correct est de **localiser le solide avant de calculer une énergie**. À $t_1 = 0{,}5\ \text{s} = T_0/2$, une demi-période s'est écoulée depuis le lâcher au minimum : le solide est passé à l'extrême opposé. On le vérifie avec l'équation horaire : $x(t_1) = X_m\cos\left(\frac{2\pi\times0{,}5}{1} + \pi\right) = X_m\cos(2\pi) = +X_m$. Le solide est donc à l'allongement maximal $x = +X_m$. L'énergie potentielle élastique se calcule alors avec $E_{pe} = \frac{1}{2}Kx^2$ (établie au chapitre 6, aire du triangle sous $F = Kx$) — et comme on est à un extrême où la vitesse s'annule, cette valeur est aussi l'énergie mécanique totale : $E_{pe1} = E_m$.
         steps:
           - math: 'x(t_1) = X_m\cos\left(\frac{2\pi\times0{,}5}{1} + \pi\right) = X_m\cos(2\pi) = +X_m'
             note: "À t1 = T0/2, le solide est à l'extrême opposé du départ : x = +X_m."
@@ -85,10 +85,10 @@ exercises:
         stem: |-
           **(0,75 pt)** Calculer le travail $W_{AB}(\vec{F})$ de la force de rappel $\vec{F}$ lorsque le centre d'inertie $G$ se déplace de la position $A$ d'abscisse $x_A = X_m$ à la position $B$ d'abscisse $x_B = -X_m$.
         reasoning: |-
-          Ici, le résultat est plus subtil qu'il n'en a l'air, et c'est exactement ce que la question teste. Le travail de la force de rappel est l'opposé de la variation de l'énergie potentielle élastique (R5) : $W_{AB}(\vec{F}) = -\Delta E_{pe} = E_{pe}(x_A) - E_{pe}(x_B)$. Or $E_{pe}$ ne dépend que de $x^2$ : aux deux positions $A$ et $B$, l'abscisse a la même valeur absolue $X_m$, donc **la même énergie potentielle**. La différence est nulle : $W_{AB}(\vec{F}) = 0$. Physiquement, sur la première moitié du trajet ($X_m \to 0$) la force de rappel ramène le solide vers l'équilibre, elle est motrice (travail positif) ; sur la seconde moitié ($0 \to -X_m$) elle s'oppose à l'éloignement, elle est résistante (travail négatif de même valeur) — les deux se compensent exactement. Le solide repart avec la même énergie potentielle qu'au départ.
+          Ici, le résultat est plus subtil qu'il n'en a l'air, et c'est exactement ce que la question teste. Le travail de la force de rappel est l'opposé de la variation de l'énergie potentielle élastique (chapitre 6) : $W_{AB}(\vec{F}) = -\Delta E_{pe} = E_{pe}(x_A) - E_{pe}(x_B)$. Or $E_{pe}$ ne dépend que de $x^2$ : aux deux positions $A$ et $B$, l'abscisse a la même valeur absolue $X_m$, donc **la même énergie potentielle**. La différence est nulle : $W_{AB}(\vec{F}) = 0$. Physiquement, sur la première moitié du trajet ($X_m \to 0$) la force de rappel ramène le solide vers l'équilibre, elle est motrice (travail positif) ; sur la seconde moitié ($0 \to -X_m$) elle s'oppose à l'éloignement, elle est résistante (travail négatif de même valeur) — les deux se compensent exactement. Le solide repart avec la même énergie potentielle qu'au départ.
         steps:
           - math: 'W_{AB}(\vec{F}) = -\Delta E_{pe} = E_{pe}(x_A) - E_{pe}(x_B) = \frac{1}{2}K\,x_A^2 - \frac{1}{2}K\,x_B^2'
-            note: "Le travail de la force de rappel est l'opposé de la variation d'E_pe (R5)."
+            note: "Le travail de la force de rappel est l'opposé de la variation d'E_pe (chapitre 6)."
           - math: '\frac{1}{2}K\,X_m^2 - \frac{1}{2}K\,(-X_m)^2 = \frac{1}{2}K\,X_m^2 - \frac{1}{2}K\,X_m^2'
             note: "x est élevé au carré : (−X_m)² = (X_m)², donc E_pe est la même en A et en B."
           - math: '\boxed{W_{AB}(\vec{F}) = 0\ \text{J}}'
@@ -188,7 +188,7 @@ exercises:
         stem: |-
           En déduire, par un bilan d'énergie, la vitesse $v$ du point matériel à son passage par la position la plus basse.
         reasoning: |-
-          Sans frottement, l'énergie mécanique se conserve. Au lâcher, la vitesse est nulle : toute l'énergie est potentielle de pesanteur, $E_m = mgz$. Au point le plus bas, on prend cette position comme référence d'altitude ($z = 0$, donc $E_{pp} = 0$) : toute l'énergie mécanique y est cinétique, $E_m = \frac{1}{2}mv^2$. On égale les deux et on isole $v$ — la masse se simplifie, exactement comme pour la chute libre (R2). C'est le même raccourci énergétique : la vitesse au point bas sans jamais résoudre l'équation horaire.
+          Sans frottement, l'énergie mécanique se conserve. Au lâcher, la vitesse est nulle : toute l'énergie est potentielle de pesanteur, $E_m = mgz$. Au point le plus bas, on prend cette position comme référence d'altitude ($z = 0$, donc $E_{pp} = 0$) : toute l'énergie mécanique y est cinétique, $E_m = \frac{1}{2}mv^2$. On égale les deux et on isole $v$ — la masse se simplifie, exactement comme pour la chute libre (chapitre 3). C'est le même raccourci énergétique : la vitesse au point bas sans jamais résoudre l'équation horaire.
         steps:
           - math: 'mgz = \frac{1}{2}mv^2 \implies v = \sqrt{2gz}'
             note: "Conservation : toute l'E_pp du départ devient E_c au point bas ; m se simplifie."

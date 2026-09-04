@@ -53,28 +53,28 @@ exercises:
         stem: |-
           **(0,5 pt)** On suppose dans cette partie que $2969$ **ne divise pas** $n$. En utilisant le théorème de Bézout, montrer qu'il existe un entier $u$ tel que $u\,n \equiv 1 \pmod{2969}$.
         reasoning: |-
-          $2969$ est premier : ses seuls diviseurs positifs sont $1$ et $2969$. Comme on suppose $2969 \nmid n$, le seul diviseur commun possible de $2969$ et $n$ est $1$, donc $\mathrm{PGCD}(2969, n) = 1$ : ils sont **premiers entre eux** (R4).
+          $2969$ est premier : ses seuls diviseurs positifs sont $1$ et $2969$. Comme on suppose $2969 \nmid n$, le seul diviseur commun possible de $2969$ et $n$ est $1$, donc $\mathrm{PGCD}(2969, n) = 1$ : ils sont **premiers entre eux** (chapitre 5).
 
           Le théorème de Bézout donne alors des entiers $u, v$ tels que $u\,n + 2969\,v = 1$. On lit cette égalité **modulo $2969$** : le terme $2969\,v$ est un multiple de $2969$, donc congru à $0$, et il reste $u\,n \equiv 1 \pmod{2969}$. L'entier $u$ est un **inverse de $n$** modulo $2969$.
         steps:
           - math: '\mathrm{PGCD}(2969,\,n) = 1'
-            note: "2969 premier et 2969 ne divise pas n : leur seul diviseur commun est 1 (R4)."
+            note: "2969 premier et 2969 ne divise pas n : leur seul diviseur commun est 1 (chapitre 5)."
           - math: 'u\,n + 2969\,v = 1'
-            note: "Théorème de Bézout, appliqué à une paire d'entiers premiers entre eux (R4)."
+            note: "Théorème de Bézout, appliqué à une paire d'entiers premiers entre eux (chapitre 5)."
           - math: 'u\,n \equiv 1 \pmod{2969}'
             note: "On réduit modulo 2969 : le terme 2969·v est ≡ 0."
       - id: q1b
         stem: |-
           **(0,5 pt)** En déduire que $(u\,m)^8 \equiv -1 \pmod{2969}$, puis que $(u\,m)^{2968} \equiv -1 \pmod{2969}$. *(On remarque que $2968 = 8 \times 371$.)*
         reasoning: |-
-          On part de la relation de l'énoncé $n^8 + m^8 \equiv 0 \pmod{2969}$, donc $m^8 \equiv -\,n^8$. On multiplie par $u^8$ pour faire apparaître $(u\,m)^8$ d'un côté et $(u\,n)^8$ de l'autre — et $(u\,n)^8 \equiv 1$ puisque $u\,n \equiv 1$ (compatibilité des congruences avec les puissances, R2).
+          On part de la relation de l'énoncé $n^8 + m^8 \equiv 0 \pmod{2969}$, donc $m^8 \equiv -\,n^8$. On multiplie par $u^8$ pour faire apparaître $(u\,m)^8$ d'un côté et $(u\,n)^8$ de l'autre — et $(u\,n)^8 \equiv 1$ puisque $u\,n \equiv 1$ (compatibilité des congruences avec les puissances, chapitre 3).
 
           Il reste à monter en exposant. Comme $2968 = 8 \times 371$, on écrit $(u\,m)^{2968} = \big((u\,m)^8\big)^{371}$, donc $(u\,m)^{2968} \equiv (-1)^{371}$. L'exposant $371$ est **impair**, donc $(-1)^{371} = -1$ : c'est là que le « $371$ impair » fait tout le travail.
         steps:
           - math: 'm^8 \equiv -\,n^8 \pmod{2969}'
             note: "Réécriture directe de n^8 + m^8 ≡ 0."
           - math: '(u\,m)^8 = u^8\,m^8 \equiv u^8\,(-\,n^8) = -\,(u\,n)^8 \equiv -1 \pmod{2969}'
-            note: "On multiplie par u^8 ; (u·n)^8 ≡ 1 car u·n ≡ 1 (R2)."
+            note: "On multiplie par u^8 ; (u·n)^8 ≡ 1 car u·n ≡ 1 (chapitre 3)."
           - math: '(u\,m)^{2968} = \big((u\,m)^8\big)^{371} \equiv (-1)^{371} = -1 \pmod{2969}'
             note: "2968 = 8×371 ; 371 est impair, donc (−1)^371 = −1."
       - id: q1c
@@ -124,14 +124,14 @@ exercises:
 
           **Sens réciproque ($\Longleftarrow$).** Si $n \equiv 0$ et $m \equiv 0 \pmod{2969}$, alors $n^8 \equiv 0$ et $m^8 \equiv 0$, donc leur somme $n^8 + m^8 \equiv 0$. Immédiat.
 
-          **Sens direct ($\Longrightarrow$).** Supposons $n^8 + m^8 \equiv 0 \pmod{2969}$. Le raisonnement de la Partie A montre que l'hypothèse $2969 \nmid n$ mène à une contradiction ; donc $2969 \mid n$, soit $n \equiv 0$. Alors $m^8 \equiv -\,n^8 \equiv 0 \pmod{2969}$, donc $2969 \mid m^8$. Comme $2969$ est **premier**, le lemme d'Euclide (R6) donne $2969 \mid m$, c'est-à-dire $m \equiv 0$.
+          **Sens direct ($\Longrightarrow$).** Supposons $n^8 + m^8 \equiv 0 \pmod{2969}$. Le raisonnement de la Partie A montre que l'hypothèse $2969 \nmid n$ mène à une contradiction ; donc $2969 \mid n$, soit $n \equiv 0$. Alors $m^8 \equiv -\,n^8 \equiv 0 \pmod{2969}$, donc $2969 \mid m^8$. Comme $2969$ est **premier**, le lemme d'Euclide (chapitre 7) donne $2969 \mid m$, c'est-à-dire $m \equiv 0$.
         steps:
           - math: 'n \equiv 0 \ \text{et}\ m \equiv 0 \pmod{2969} \implies n^8 + m^8 \equiv 0 \pmod{2969}'
             note: "Sens ⟸ : une somme de deux multiples de 2969 est un multiple de 2969."
           - math: 'n^8 + m^8 \equiv 0 \pmod{2969} \implies 2969 \mid n \implies n \equiv 0 \pmod{2969}'
             note: "Sens ⟹ : la question (2a) donne 2969 | n."
           - math: 'm^8 \equiv 0 \pmod{2969} \implies 2969 \mid m^8 \implies 2969 \mid m'
-            note: "Puis m^8 ≡ 0 ; 2969 premier, le lemme d'Euclide (R6) donne 2969 | m, soit m ≡ 0."
+            note: "Puis m^8 ≡ 0 ; 2969 premier, le lemme d'Euclide (chapitre 7) donne 2969 | m, soit m ≡ 0."
 
   # ── r-variation — jumeau frais anti-mémorisation (PAS un vrai sujet) ──────
   # Même chaîne profonde que r-bac (Bézout → inverse → (u·m)^4 ≡ −1 → Fermat →
@@ -157,26 +157,26 @@ exercises:
         stem: |-
           On suppose que $101$ **ne divise pas** $n$. En utilisant le théorème de Bézout, montrer qu'il existe un entier $u$ tel que $u\,n \equiv 1 \pmod{101}$.
         reasoning: |-
-          $101$ est premier et $101 \nmid n$ : leur seul diviseur commun est $1$, donc $\mathrm{PGCD}(101, n) = 1$ (R4). Le théorème de Bézout fournit alors $u, v$ tels que $u\,n + 101\,v = 1$, qu'on lit modulo $101$ : $u\,n \equiv 1$. L'entier $u$ est un inverse de $n$ modulo $101$.
+          $101$ est premier et $101 \nmid n$ : leur seul diviseur commun est $1$, donc $\mathrm{PGCD}(101, n) = 1$ (chapitre 5). Le théorème de Bézout fournit alors $u, v$ tels que $u\,n + 101\,v = 1$, qu'on lit modulo $101$ : $u\,n \equiv 1$. L'entier $u$ est un inverse de $n$ modulo $101$.
         steps:
           - math: '\mathrm{PGCD}(101,\,n) = 1'
-            note: "101 premier et 101 ∤ n : premiers entre eux (R4)."
+            note: "101 premier et 101 ∤ n : premiers entre eux (chapitre 5)."
           - math: 'u\,n + 101\,v = 1'
-            note: "Théorème de Bézout (R4)."
+            note: "Théorème de Bézout (chapitre 5)."
           - math: 'u\,n \equiv 1 \pmod{101}'
             note: "Réduction modulo 101 : 101·v ≡ 0."
       - id: q1b
         stem: |-
           En déduire que $(u\,m)^4 \equiv -1 \pmod{101}$, puis que $(u\,m)^{100} \equiv -1 \pmod{101}$. *(On remarque que $100 = 4 \times 25$.)*
         reasoning: |-
-          De $n^4 + m^4 \equiv 0$, on tire $m^4 \equiv -\,n^4$. On multiplie par $u^4$ : $(u\,m)^4 \equiv -(u\,n)^4 \equiv -1$, car $(u\,n)^4 \equiv 1$ (R2).
+          De $n^4 + m^4 \equiv 0$, on tire $m^4 \equiv -\,n^4$. On multiplie par $u^4$ : $(u\,m)^4 \equiv -(u\,n)^4 \equiv -1$, car $(u\,n)^4 \equiv 1$ (chapitre 3).
 
           Puis $100 = 4 \times 25$ donne $(u\,m)^{100} = \big((u\,m)^4\big)^{25} \equiv (-1)^{25}$. L'exposant $25$ est **impair**, donc $(-1)^{25} = -1$.
         steps:
           - math: 'm^4 \equiv -\,n^4 \pmod{101}'
             note: "Réécriture de n^4 + m^4 ≡ 0."
           - math: '(u\,m)^4 = u^4\,m^4 \equiv -\,(u\,n)^4 \equiv -1 \pmod{101}'
-            note: "On multiplie par u^4 ; (u·n)^4 ≡ 1 (R2)."
+            note: "On multiplie par u^4 ; (u·n)^4 ≡ 1 (chapitre 3)."
           - math: '(u\,m)^{100} = \big((u\,m)^4\big)^{25} \equiv (-1)^{25} = -1 \pmod{101}'
             note: "100 = 4×25 ; 25 impair, donc (−1)^25 = −1."
       - id: q1c
@@ -218,11 +218,11 @@ exercises:
         reasoning: |-
           **Sens réciproque ($\Longleftarrow$).** Si $n \equiv 0$ et $m \equiv 0$, alors $n^4 \equiv 0$ et $m^4 \equiv 0$, donc $n^4 + m^4 \equiv 0$.
 
-          **Sens direct ($\Longrightarrow$).** Si $n^4 + m^4 \equiv 0$, la Partie A force $101 \mid n$, soit $n \equiv 0$. Alors $m^4 \equiv -\,n^4 \equiv 0$, donc $101 \mid m^4$ ; $101$ étant premier, le lemme d'Euclide (R6) donne $101 \mid m$, soit $m \equiv 0$.
+          **Sens direct ($\Longrightarrow$).** Si $n^4 + m^4 \equiv 0$, la Partie A force $101 \mid n$, soit $n \equiv 0$. Alors $m^4 \equiv -\,n^4 \equiv 0$, donc $101 \mid m^4$ ; $101$ étant premier, le lemme d'Euclide (chapitre 7) donne $101 \mid m$, soit $m \equiv 0$.
         steps:
           - math: 'n \equiv 0 \ \text{et}\ m \equiv 0 \pmod{101} \implies n^4 + m^4 \equiv 0 \pmod{101}'
             note: "Sens ⟸ : somme de deux multiples de 101."
           - math: 'n^4 + m^4 \equiv 0 \pmod{101} \implies 101 \mid n \implies n \equiv 0 \pmod{101}'
             note: "Sens ⟹ : question (2a)."
           - math: 'm^4 \equiv 0 \pmod{101} \implies 101 \mid m^4 \implies 101 \mid m'
-            note: "101 premier, lemme d'Euclide (R6) : 101 | m, soit m ≡ 0."
+            note: "101 premier, lemme d'Euclide (chapitre 7) : 101 | m, soit m ≡ 0."

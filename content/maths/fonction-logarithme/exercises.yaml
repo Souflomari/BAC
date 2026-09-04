@@ -53,7 +53,7 @@ exercises:
         stem: |-
           **(0,5 pt)** Calculer $\displaystyle\lim_{\substack{x \to 0 \\ x > 0}} f(x)$ puis interpréter le résultat géométriquement.
         reasoning: |-
-          En $0^+$, on repère d'abord le comportement de chaque morceau. Le terme $x$ tend vers $0$ (fini), mais $\ln x \to -\infty$ (limite de référence de la leçon, R4), donc $-\ln x \to +\infty$ et surtout $(\ln x)^2 \to +\infty$. Il n'y a **aucune indétermination** : tous les termes qui bougent poussent vers $+\infty$. La somme tend donc vers $+\infty$.
+          En $0^+$, on repère d'abord le comportement de chaque morceau. Le terme $x$ tend vers $0$ (fini), mais $\ln x \to -\infty$ (limite de référence de la leçon, chapitre 5), donc $-\ln x \to +\infty$ et surtout $(\ln x)^2 \to +\infty$. Il n'y a **aucune indétermination** : tous les termes qui bougent poussent vers $+\infty$. La somme tend donc vers $+\infty$.
 
           Une limite infinie en une borne finie du domaine se lit géométriquement : la droite verticale $x=0$ (l'axe des ordonnées) est **asymptote verticale** à $(C)$.
         steps:
@@ -75,7 +75,7 @@ exercises:
         stem: |-
           **(0,5 pt)** En déduire que $\displaystyle\lim_{x \to +\infty} f(x) = +\infty$.
         reasoning: |-
-          La forme factorisée de la question précédente est faite pour lever toute indétermination. Quand $x \to +\infty$, $\ln x \to +\infty$ (R4), donc $\dfrac12\ln x - 1 \to +\infty$ : le produit $\left(\dfrac12\ln x - 1\right)\ln x$ est un produit de deux quantités qui tendent vers $+\infty$, il tend donc vers $+\infty$. En ajoutant $x + \dfrac12 \to +\infty$, la somme tend vers $+\infty$ — toujours sans indétermination.
+          La forme factorisée de la question précédente est faite pour lever toute indétermination. Quand $x \to +\infty$, $\ln x \to +\infty$ (chapitre 5), donc $\dfrac12\ln x - 1 \to +\infty$ : le produit $\left(\dfrac12\ln x - 1\right)\ln x$ est un produit de deux quantités qui tendent vers $+\infty$, il tend donc vers $+\infty$. En ajoutant $x + \dfrac12 \to +\infty$, la somme tend vers $+\infty$ — toujours sans indétermination.
         steps:
           - math: '\lim_{x \to +\infty} \left(\tfrac{1}{2}\ln x - 1\right) = +\infty \quad\text{et}\quad \lim_{x \to +\infty} \ln x = +\infty'
             note: "Les deux facteurs tendent vers +∞."
@@ -85,12 +85,12 @@ exercises:
         stem: |-
           **(0,5 pt)** Montrer que pour tout $x$ de $]0,+\infty[$, $\dfrac{(\ln x)^2}{x} = 4\left(\dfrac{\ln\sqrt{x}}{\sqrt{x}}\right)^2$, puis en déduire que $\displaystyle\lim_{x \to +\infty} \dfrac{(\ln x)^2}{x} = 0$.
         reasoning: |-
-          L'égalité se démontre en partant de la droite : on utilise la propriété racine carrée de la leçon, $\ln\sqrt{x} = \dfrac12\ln x$ (R2), et $\sqrt{x}^2 = x$. Le carré fait apparaître $\dfrac14\dfrac{(\ln x)^2}{x}$, que le facteur $4$ ramène à $\dfrac{(\ln x)^2}{x}$.
+          L'égalité se démontre en partant de la droite : on utilise la propriété racine carrée de la leçon, $\ln\sqrt{x} = \dfrac12\ln x$ (chapitre 3), et $\sqrt{x}^2 = x$. Le carré fait apparaître $\dfrac14\dfrac{(\ln x)^2}{x}$, que le facteur $4$ ramène à $\dfrac{(\ln x)^2}{x}$.
 
-          Cette réécriture n'est pas gratuite : elle transforme la limite en un carré de la quantité $\dfrac{\ln\sqrt{x}}{\sqrt{x}}$. Or en posant $t=\sqrt{x}$ (qui tend vers $+\infty$ avec $x$), $\dfrac{\ln\sqrt{x}}{\sqrt{x}} = \dfrac{\ln t}{t} \to 0$ par **croissances comparées** (R4). Le carré tend donc vers $0$, et $4\times 0 = 0$.
+          Cette réécriture n'est pas gratuite : elle transforme la limite en un carré de la quantité $\dfrac{\ln\sqrt{x}}{\sqrt{x}}$. Or en posant $t=\sqrt{x}$ (qui tend vers $+\infty$ avec $x$), $\dfrac{\ln\sqrt{x}}{\sqrt{x}} = \dfrac{\ln t}{t} \to 0$ par **croissances comparées** (chapitre 5). Le carré tend donc vers $0$, et $4\times 0 = 0$.
         steps:
           - math: '\ln\sqrt{x} = \tfrac{1}{2}\ln x \quad\text{et}\quad (\sqrt{x})^2 = x'
-            note: "Propriété racine carrée (R2) et définition de la racine."
+            note: "Propriété racine carrée (chapitre 3) et définition de la racine."
           - math: '4\left(\dfrac{\ln\sqrt{x}}{\sqrt{x}}\right)^2 = 4\cdot\dfrac{\tfrac{1}{4}(\ln x)^2}{x} = \dfrac{(\ln x)^2}{x}'
             note: "Le carré du numérateur donne 1/4 (ln x)^2 ; le carré du dénominateur donne x ; le 4 compense le 1/4."
           - math: '\lim_{t \to +\infty} \dfrac{\ln t}{t} = 0 \ \ (t=\sqrt{x}) \quad\Longrightarrow\quad \lim_{x \to +\infty} \dfrac{(\ln x)^2}{x} = 4\cdot 0^2 = 0'
@@ -101,7 +101,7 @@ exercises:
         reasoning: |-
           Une branche parabolique de direction la droite $y=x$ se démontre en deux temps : la pente $\dfrac{f(x)}{x}$ tend vers $1$ (la direction de $(\Delta)$), mais l'écart $f(x)-x$ ne tend **pas** vers une limite finie — il part à l'infini, ce qui empêche $(\Delta)$ d'être une vraie asymptote et laisse une branche parabolique.
 
-          Pour $\dfrac{f(x)}{x}$, on divise chaque terme par $x$ et on utilise les croissances comparées : $\dfrac{\ln x}{x}\to 0$ (R4) et $\dfrac{(\ln x)^2}{x}\to 0$ (question 2c). Pour $f(x)-x = \dfrac12 - \ln x + \dfrac12(\ln x)^2$, le terme $\dfrac12(\ln x)^2$ domine et pousse vers $+\infty$.
+          Pour $\dfrac{f(x)}{x}$, on divise chaque terme par $x$ et on utilise les croissances comparées : $\dfrac{\ln x}{x}\to 0$ (chapitre 5) et $\dfrac{(\ln x)^2}{x}\to 0$ (question 2c). Pour $f(x)-x = \dfrac12 - \ln x + \dfrac12(\ln x)^2$, le terme $\dfrac12(\ln x)^2$ domine et pousse vers $+\infty$.
         steps:
           - math: '\dfrac{f(x)}{x} = 1 + \dfrac{1}{2x} - \dfrac{\ln x}{x} + \dfrac{(\ln x)^2}{2x} \xrightarrow[x \to +\infty]{} 1'
             note: "Chaque terme sauf le 1 tend vers 0 (croissances comparées, question 2c) : la pente tend vers 1, la direction de (Δ)."
@@ -285,7 +285,7 @@ exercises:
         stem: |-
           Calculer $\displaystyle\lim_{x \to 0^+} f(x)$ et interpréter géométriquement.
         reasoning: |-
-          En $0^+$ : $x \to 0$ (fini), tandis que $\ln x \to -\infty$ (R4), donc $\ln x - 1 \to -\infty$ et $(\ln x - 1)^2 \to +\infty$. Comme ce carré est **retranché**, $f(x) = x - (\ln x - 1)^2 \to -\infty$. Une limite $-\infty$ en la borne finie $0$ signifie que la droite $x=0$ (axe des ordonnées) est **asymptote verticale** à $(C)$.
+          En $0^+$ : $x \to 0$ (fini), tandis que $\ln x \to -\infty$ (chapitre 5), donc $\ln x - 1 \to -\infty$ et $(\ln x - 1)^2 \to +\infty$. Comme ce carré est **retranché**, $f(x) = x - (\ln x - 1)^2 \to -\infty$. Une limite $-\infty$ en la borne finie $0$ signifie que la droite $x=0$ (axe des ordonnées) est **asymptote verticale** à $(C)$.
         steps:
           - math: '\lim_{x \to 0^+} \ln x = -\infty \ \Rightarrow\ \lim_{x \to 0^+} (\ln x - 1)^2 = +\infty'
             note: "ln x - 1 tend vers -∞, son carré vers +∞."

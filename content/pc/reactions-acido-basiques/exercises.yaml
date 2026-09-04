@@ -52,14 +52,14 @@ exercises:
         stem: |-
           **(0,5 pt)** Écrire l'équation de la réaction du dosage.
         reasoning: |-
-          La réaction support d'un titrage doit être totale, rapide et unique : on l'écrit donc avec une **flèche simple** (rung 9). Ici l'acide faible $\text{AH}$ cède son proton à l'ion hydroxyde $\text{HO}^-$ de la soude, base forte. On combine le couple $\text{AH}/\text{A}^-$ (agissant en acide) et le couple $\text{H}_2\text{O}/\text{HO}^-$ (l'ion $\text{HO}^-$ agissant en base) ; le proton échangé s'annule dans le bilan.
+          La réaction support d'un titrage doit être totale, rapide et unique : on l'écrit donc avec une **flèche simple** (chapitre 10). Ici l'acide faible $\text{AH}$ cède son proton à l'ion hydroxyde $\text{HO}^-$ de la soude, base forte. On combine le couple $\text{AH}/\text{A}^-$ (agissant en acide) et le couple $\text{H}_2\text{O}/\text{HO}^-$ (l'ion $\text{HO}^-$ agissant en base) ; le proton échangé s'annule dans le bilan.
 
           $$\text{AH}_{(aq)} + \text{HO}^-_{(aq)} \rightarrow \text{A}^-_{(aq)} + \text{H}_2\text{O}_{(l)}$$
       - id: q2
         stem: |-
           **(0,5 pt)** Déterminer graphiquement les coordonnées $\text{pH}_E$ et $V_{bE}$ du point d'équivalence.
         reasoning: |-
-          L'équivalence est le **milieu du saut** de pH — le point d'inflexion de la courbe (rung 10) — et non le point où $\text{pH} = 7$. On le repère par la méthode des tangentes (deux tangentes parallèles aux branches encadrant le saut, puis la médiane équidistante) ou par le maximum de la dérivée $d\text{pH}/dV$. Le saut étant centré au voisinage de $V_b = 20\ \text{mL}$ et s'étendant d'environ $\text{pH} = 6$ à $\text{pH} = 11$, on lit :
+          L'équivalence est le **milieu du saut** de pH — le point d'inflexion de la courbe (chapitre 11) — et non le point où $\text{pH} = 7$. On le repère par la méthode des tangentes (deux tangentes parallèles aux branches encadrant le saut, puis la médiane équidistante) ou par le maximum de la dérivée $d\text{pH}/dV$. Le saut étant centré au voisinage de $V_b = 20\ \text{mL}$ et s'étendant d'environ $\text{pH} = 6$ à $\text{pH} = 11$, on lit :
 
           $$V_{bE} \approx 20\ \text{mL} \qquad \text{pH}_E \approx 8{,}5$$
 
@@ -71,7 +71,7 @@ exercises:
           À l'équivalence, les réactifs ont été introduits dans les proportions stœchiométriques ($1{:}1$ ici) : la quantité d'acide initialement présente égale la quantité de base versée. Cela se traduit par la relation d'équivalence $C_a V_a = C_b V_{bE}$ — une égalité de **quantités de matière**, jamais une valeur de pH imposée. On isole $C_a$.
         steps:
           - math: 'C_a\,V_a = C_b\,V_{bE}'
-            note: "Relation d'équivalence : égalité des quantités de matière (rung 9)."
+            note: "Relation d'équivalence : égalité des quantités de matière (chapitre 10)."
           - math: 'C_a = \dfrac{C_b\,V_{bE}}{V_a} = \dfrac{0{,}1 \times 20}{20} = 0{,}1\ \text{mol/L}'
             note: "Application numérique : VbE = 20 mL lu au saut, Va = 20 mL, Cb = 0,1 mol/L."
       - id: q4
@@ -172,12 +172,12 @@ exercises:
         stem: |-
           Pour repérer l'équivalence par un indicateur coloré, on dispose de l'hélianthine ($3{,}1$–$4{,}4$), du rouge de méthyle ($4{,}4$–$6{,}2$) et du bleu de bromothymol, BBT ($6{,}0$–$7{,}6$). Lequel choisir ? Justifier.
         reasoning: |-
-          Le critère de choix (rung 11) : la zone de virage de l'indicateur doit **encadrer** $\text{pH}_E$, pour que le changement de couleur se produise au voisinage du saut. On teste chaque zone contre $\text{pH}_E \approx 5{,}5$ : l'hélianthine ($3{,}1$–$4{,}4$) ne contient pas $5{,}5$ — écartée ; le BBT ($6{,}0$–$7{,}6$) ne contient pas non plus $5{,}5$ — écarté ; seul le **rouge de méthyle** ($4{,}4$–$6{,}2$) contient $5{,}5$ : c'est lui qu'on retient. Le critère n'est pas « virer à $\text{pH} = 7$ » : chaque indicateur vire dans sa propre zone.
+          Le critère de choix (chapitre 12) : la zone de virage de l'indicateur doit **encadrer** $\text{pH}_E$, pour que le changement de couleur se produise au voisinage du saut. On teste chaque zone contre $\text{pH}_E \approx 5{,}5$ : l'hélianthine ($3{,}1$–$4{,}4$) ne contient pas $5{,}5$ — écartée ; le BBT ($6{,}0$–$7{,}6$) ne contient pas non plus $5{,}5$ — écarté ; seul le **rouge de méthyle** ($4{,}4$–$6{,}2$) contient $5{,}5$ : c'est lui qu'on retient. Le critère n'est pas « virer à $\text{pH} = 7$ » : chaque indicateur vire dans sa propre zone.
       - id: q5
         stem: |-
           On lit $\text{pH} = 9{,}6$ à la demi-équivalence ($V_a = V_{aE}/2 = 8{,}0\ \text{mL}$). En déduire le rapport $\dfrac{[\text{NH}_3]}{[\text{NH}_4^+]}$ à ce point, puis le $pK_A$ du couple $\text{NH}_4^+/\text{NH}_3$.
         reasoning: |-
-          À la demi-équivalence, la moitié de la base initiale a été convertie en acide conjugué : les deux formes du couple sont présentes en quantités égales, donc leur rapport vaut $1$. La relation entre pH et $pK_A$ (rung 4/5) donne alors, au logarithme de $1$ près, $\text{pH} = pK_A$ : la demi-équivalence livre directement le $pK_A$. C'est un point **distinct** de l'équivalence — à ne pas confondre avec elle.
+          À la demi-équivalence, la moitié de la base initiale a été convertie en acide conjugué : les deux formes du couple sont présentes en quantités égales, donc leur rapport vaut $1$. La relation entre pH et $pK_A$ (chapitre 5/5) donne alors, au logarithme de $1$ près, $\text{pH} = pK_A$ : la demi-équivalence livre directement le $pK_A$. C'est un point **distinct** de l'équivalence — à ne pas confondre avec elle.
         steps:
           - math: '\dfrac{[\text{NH}_3]}{[\text{NH}_4^+]} = 1'
             note: "À la demi-équivalence, la moitié de la base a réagi : les deux formes du couple sont à égalité."

@@ -283,35 +283,35 @@ entries:
         stem: |-
           **(1 pt)** En appliquant la deuxième loi de Newton, montrer que l'équation différentielle vérifiée par la vitesse s'écrit sous la forme : $\dfrac{dv_G}{dt} + \dfrac{1}{\tau}.v_G = A$, en précisant l'expression du temps caractéristique $\tau$ en fonction de $k$ et $m$ et l'expression de la constante $A$ en fonction de $g$, $m$, $\rho$ et $V$.
         reasoning: |-
-          On suit la méthode du rung 7 — bilan, deuxième loi, projection — mais avec un bilan à **trois** forces, pas deux : le rung ne traite explicitement que poids + frottement, sans poussée d'Archimède. Ici l'énoncé précise que $\vec F_a$ n'est *pas* négligeable, donc on l'ajoute comme troisième force, constante, dirigée vers le haut (donc opposée au sens de l'axe $Oy$, orienté vers le bas comme au rung 7). On projette la deuxième loi sur cet axe, on divise par $m$, puis on regroupe : le terme en $v_G$ donne $1/\tau$ — exactement la même identification qu'au rung 7, inchangée par l'ajout d'Archimède, puisque seul le frottement dépend de $v_G$. Le terme constant, lui, absorbe désormais *deux* contributions — le poids et Archimède — plutôt qu'une seule ($A=g$ au rung 7) : c'est précisément là que la poussée d'Archimède change le résultat par rapport au cours.
+          On suit la méthode du chapitre 8 — bilan, deuxième loi, projection — mais avec un bilan à **trois** forces, pas deux : le chapitre ne traite explicitement que poids + frottement, sans poussée d'Archimède. Ici l'énoncé précise que $\vec F_a$ n'est *pas* négligeable, donc on l'ajoute comme troisième force, constante, dirigée vers le haut (donc opposée au sens de l'axe $Oy$, orienté vers le bas comme au chapitre 8). On projette la deuxième loi sur cet axe, on divise par $m$, puis on regroupe : le terme en $v_G$ donne $1/\tau$ — exactement la même identification qu'au chapitre 8, inchangée par l'ajout d'Archimède, puisque seul le frottement dépend de $v_G$. Le terme constant, lui, absorbe désormais *deux* contributions — le poids et Archimède — plutôt qu'une seule ($A=g$ au chapitre 8) : c'est précisément là que la poussée d'Archimède change le résultat par rapport au cours.
         steps:
           - math: '\vec P + \vec f + \vec F_a = m\vec a'
-            note: "Deuxieme loi de Newton : trois forces cette fois (le rung 7 du cours n'en compte que deux)."
+            note: "Deuxieme loi de Newton : trois forces cette fois (le chapitre 8 du cours n'en compte que deux)."
           - math: 'm\frac{dv_G}{dt} = mg - k\,v_G - \rho V g'
             note: "Projection sur (O, j) oriente vers le bas : poids +mg, frottement -k v_G, Archimede -rho V g (elle pointe vers le haut, contre le sens de l'axe)."
           - math: '\frac{dv_G}{dt} = \left(g - \frac{\rho V g}{m}\right) - \frac{k}{m}\,v_G'
             note: "On divise par m et on regroupe les termes constants d'un cote."
           - math: '\boxed{\frac{dv_G}{dt} + \frac{1}{\tau}\,v_G = A} \qquad \text{avec} \qquad \tau = \frac{m}{k} \qquad \text{et} \qquad A = g - \frac{\rho V g}{m}'
-            note: "On identifie terme a terme : le coefficient de v_G donne 1/tau (inchange par rapport au rung 7), le terme constant donne A (qui, lui, contient desormais Archimede)."
+            note: "On identifie terme a terme : le coefficient de v_G donne 1/tau (inchange par rapport au chapitre 8), le terme constant donne A (qui, lui, contient desormais Archimede)."
       - id: q2
         stem: |-
           **(0,5 pt)** Déterminer graphiquement la valeur de la vitesse limite $v_{Glim}$ et la valeur de $\tau$.
         reasoning: |-
-          Même lecture graphique qu'au rung 7 et qu'au rung 8 (exemple travaillé, cette même bille) : la vitesse limite se lit à l'ordonnée du palier horizontal de la courbe $v_G(t)$ ; le temps caractéristique $\tau$ se lit à l'abscisse où la tangente à l'origine (pente $A$, l'équivalent local de $g$ ici) coupe cette asymptote. Sur la figure 2 fournie, le palier se situe à $v_{Glim}=0{,}50\ \text{m/s}$ et la tangente coupe l'asymptote à $t=54\ \text{ms}$.
+          Même lecture graphique qu'au chapitre 8 et qu'au chapitre 9 (exemple travaillé, cette même bille) : la vitesse limite se lit à l'ordonnée du palier horizontal de la courbe $v_G(t)$ ; le temps caractéristique $\tau$ se lit à l'abscisse où la tangente à l'origine (pente $A$, l'équivalent local de $g$ ici) coupe cette asymptote. Sur la figure 2 fournie, le palier se situe à $v_{Glim}=0{,}50\ \text{m/s}$ et la tangente coupe l'asymptote à $t=54\ \text{ms}$.
 
           $$v_{Glim} = 0{,}50\ \text{m.s}^{-1} \qquad \tau = 54\ \text{ms} = 0{,}054\ \text{s}$$
       - id: q3
         stem: |-
           **(1 pt)** Trouver la valeur de $k$ et celle de $A$.
         reasoning: |-
-          La question 1 a identifié $\tau=m/k$ et $A=g-\rho Vg/m$ — mais pour les *valeurs numériques*, pas besoin de connaître $\rho$, $V$ ni $g$ séparément : on dispose déjà de $m$ (donnée) et de $\tau$, $v_{Glim}$ (lus au graphe, question 2). $\tau=m/k$ s'inverse directement pour donner $k$. Et en régime permanent (rung 7 : « annuler l'accélération dans l'équation différentielle »), $0 = A - v_{Glim}/\tau$, donc $A = v_{Glim}/\tau$ — encore une fois, aucune résolution complète de l'équation différentielle, seulement une lecture au régime stabilisé.
+          La question 1 a identifié $\tau=m/k$ et $A=g-\rho Vg/m$ — mais pour les *valeurs numériques*, pas besoin de connaître $\rho$, $V$ ni $g$ séparément : on dispose déjà de $m$ (donnée) et de $\tau$, $v_{Glim}$ (lus au graphe, question 2). $\tau=m/k$ s'inverse directement pour donner $k$. Et en régime permanent (chapitre 8 : « annuler l'accélération dans l'équation différentielle »), $0 = A - v_{Glim}/\tau$, donc $A = v_{Glim}/\tau$ — encore une fois, aucune résolution complète de l'équation différentielle, seulement une lecture au régime stabilisé.
         steps:
           - math: 'k = \frac{m}{\tau} = \frac{2\times10^{-2}}{0{,}054}'
             note: "On inverse tau = m/k (identification de la question 1), avec m donne et tau lu au graphe (question 2)."
           - math: '\boxed{k \approx 0{,}37\ \text{kg.s}^{-1}}'
             note: "Application numerique."
           - math: 'A = \frac{v_{Glim}}{\tau} = \frac{0{,}50}{0{,}054}'
-            note: "En regime permanent (rung 7), v_Glim = A tau ; on isole A avec les deux valeurs lues au graphe."
+            note: "En regime permanent (chapitre 8), v_Glim = A tau ; on isole A avec les deux valeurs lues au graphe."
           - math: '\boxed{A \approx 9{,}26\ \text{m.s}^{-2}}'
             note: "Coherent avec l'equation numerique donnee a la question suivante : le pont se referme."
       - id: q4
@@ -321,12 +321,12 @@ entries:
 
           En utilisant la méthode d'Euler et les données du tableau suivant, calculer la valeur approchée de $a_3$ et celle de $v_4$.
         reasoning: |-
-          Geste central d'Euler (rung 8) : la pente $a_i$ ne se lit jamais dans le tableau, elle se **recalcule** à chaque instant à partir de $v_i$ courant, via l'équation différentielle numérique donnée. On calcule d'abord $a_3$ en évaluant cette équation en $v_3=0{,}126\ \text{m/s}$ (la ligne $t=0{,}015\ \text{s}$) ; puis on avance d'un pas $\Delta t=0{,}005\ \text{s}$ (l'écart entre deux lignes du tableau) avec la formule $v_{i+1}=v_i+a_i\Delta t$ pour obtenir $v_4$.
+          Geste central d'Euler (chapitre 9) : la pente $a_i$ ne se lit jamais dans le tableau, elle se **recalcule** à chaque instant à partir de $v_i$ courant, via l'équation différentielle numérique donnée. On calcule d'abord $a_3$ en évaluant cette équation en $v_3=0{,}126\ \text{m/s}$ (la ligne $t=0{,}015\ \text{s}$) ; puis on avance d'un pas $\Delta t=0{,}005\ \text{s}$ (l'écart entre deux lignes du tableau) avec la formule $v_{i+1}=v_i+a_i\Delta t$ pour obtenir $v_4$.
         steps:
           - math: 'a_3 = 9{,}26 - 18{,}52\times v_3 = 9{,}26 - 18{,}52\times 0{,}126'
             note: "On evalue l'equation differentielle numerique en v_3 = 0,126 m/s (ligne t = 0,015 s du tableau)."
           - math: '\boxed{a_3 \approx 6{,}93\ \text{m.s}^{-2}}'
-            note: "Deja bien en dessous de A = 9,26 : le frottement mord de plus en plus, exactement le mecanisme du rung 7."
+            note: "Deja bien en dessous de A = 9,26 : le frottement mord de plus en plus, exactement le mecanisme du chapitre 8."
           - math: 'v_4 = v_3 + a_3\,\Delta t = 0{,}126 + 6{,}93\times 0{,}005'
             note: "Recurrence d'Euler entre t = 0,015 s et t = 0,020 s, avec le pas Delta t = 0,005 s lu dans le tableau."
           - math: '\boxed{v_4 \approx 0{,}161\ \text{m.s}^{-1}}'
@@ -382,22 +382,22 @@ entries:
         stem: |-
           **(0,5 pt)** En appliquant la deuxième loi de Newton, montrer que les équations différentielles vérifiées par les coordonnées $x_G(t)$ et $y_G(t)$ du centre d'inertie G dans le repère $(C, \vec{i_1}, \vec{j_1})$ s'écrivent ainsi : $\dfrac{dx_G}{dt} = V_C.\cos\alpha$ et $\dfrac{dy_G}{dt} = -g.t + V_C.\sin\alpha$
         reasoning: |-
-          C'est très exactement la méthode du rung 2, transposée telle quelle : le système ne subit que son poids (frottements négligés), donc $\vec a_G=\vec g$, et cette accélération se projette en deux équations **indépendantes** sur le repère $(C,\vec i_1,\vec j_1)$ — $a_x=0$, $a_y=-g$ — parce que $\vec g$ est purement vertical. Ce que l'énoncé appelle ici « équations différentielles » sont en réalité les vitesses déjà primitivées une fois, avec pour condition initiale la vitesse $\vec V_C$ au passage par $C$ (l'instant $t=0$ de cette phase) : $v_{0x}=V_C\cos\alpha$ et $v_{0y}=V_C\sin\alpha$, la même décomposition qu'au rung 2.
+          C'est très exactement la méthode du chapitre 3, transposée telle quelle : le système ne subit que son poids (frottements négligés), donc $\vec a_G=\vec g$, et cette accélération se projette en deux équations **indépendantes** sur le repère $(C,\vec i_1,\vec j_1)$ — $a_x=0$, $a_y=-g$ — parce que $\vec g$ est purement vertical. Ce que l'énoncé appelle ici « équations différentielles » sont en réalité les vitesses déjà primitivées une fois, avec pour condition initiale la vitesse $\vec V_C$ au passage par $C$ (l'instant $t=0$ de cette phase) : $v_{0x}=V_C\cos\alpha$ et $v_{0y}=V_C\sin\alpha$, la même décomposition qu'au chapitre 3.
         steps:
           - math: '\vec P = m\vec a_G \implies \vec a_G = \vec g'
-            note: "Seul le poids s'exerce (frottements negliges) : deuxieme loi de Newton, exactement comme au rung 2."
+            note: "Seul le poids s'exerce (frottements negliges) : deuxieme loi de Newton, exactement comme au chapitre 3."
           - math: 'a_x = 0 \qquad a_y = -g'
-            note: "Projection sur (C, i1, j1) : j1 vertical vers le haut, i1 horizontal, meme repere-type qu'au rung 2 (g purement vertical)."
+            note: "Projection sur (C, i1, j1) : j1 vertical vers le haut, i1 horizontal, meme repere-type qu'au chapitre 3 (g purement vertical)."
           - math: '\boxed{\frac{dx_G}{dt} = V_C\cos\alpha \qquad \frac{dy_G}{dt} = -g\,t + V_C\sin\alpha}'
-            note: "Premiere primitivation, avec la vitesse initiale V_C au point C decomposee comme au rung 2 : V_C cos(alpha) et V_C sin(alpha)."
+            note: "Premiere primitivation, avec la vitesse initiale V_C au point C decomposee comme au chapitre 3 : V_C cos(alpha) et V_C sin(alpha)."
       - id: q2
         stem: |-
           **(0,5 pt)** Les expressions numériques des équations horaires $x_G(t)$ et $y_G(t)$ du mouvement de G s'écrivent ainsi : $x_G(t) = 19{,}02.t$ et $y_G(t) = -5.t^2 + 6{,}18.t$ ($x_G$ et $y_G$ exprimées en mètre et $t$ en seconde). Vérifier que la vitesse de G au point C est : $V_C = 20\ \text{m.s}^{-1}$.
         reasoning: |-
-          On identifie d'abord les deux composantes de la vitesse initiale en comparant les équations horaires numériques aux formes générales du rung 2 : le coefficient de $t$ dans $x_G(t)$ est $v_{0x}=V_C\cos\alpha$, et celui dans $y_G(t)$ (à côté du terme en $t$, sachant que le coefficient de $t^2$ vaut $-g/2$) est $v_{0y}=V_C\sin\alpha$. Une fois les deux composantes connues, on remonte à la norme par Pythagore — la démarche inverse de la décomposition $v_{0x}=v_0\cos\alpha$, $v_{0y}=v_0\sin\alpha$ vue au rung 2.
+          On identifie d'abord les deux composantes de la vitesse initiale en comparant les équations horaires numériques aux formes générales du chapitre 3 : le coefficient de $t$ dans $x_G(t)$ est $v_{0x}=V_C\cos\alpha$, et celui dans $y_G(t)$ (à côté du terme en $t$, sachant que le coefficient de $t^2$ vaut $-g/2$) est $v_{0y}=V_C\sin\alpha$. Une fois les deux composantes connues, on remonte à la norme par Pythagore — la démarche inverse de la décomposition $v_{0x}=v_0\cos\alpha$, $v_{0y}=v_0\sin\alpha$ vue au chapitre 3.
         steps:
           - math: 'x_G(t) = V_C\cos\alpha \cdot t = 19{,}02\,t \implies V_C\cos\alpha = 19{,}02\ \text{m.s}^{-1}'
-            note: "On identifie le coefficient de t dans x_G(t) a V_C cos(alpha) (rung 2)."
+            note: "On identifie le coefficient de t dans x_G(t) a V_C cos(alpha) (chapitre 3)."
           - math: 'y_G(t) = V_C\sin\alpha \cdot t - \frac{g}{2}t^2 = 6{,}18\,t - 5\,t^2 \implies V_C\sin\alpha = 6{,}18\ \text{m.s}^{-1}'
             note: "Meme identification sur y_G(t) : le coefficient de t donne V_C sin(alpha) (et -g/2 = -5 confirme au passage g = 10 m/s^2)."
           - math: 'V_C = \sqrt{(V_C\cos\alpha)^2 + (V_C\sin\alpha)^2} = \sqrt{19{,}02^2 + 6{,}18^2}'
@@ -409,24 +409,24 @@ entries:
         stem: |-
           **(0,5 pt)** On considère qu'un saut est réussi si la condition $CP \geq 30\ \text{m}$ est vérifiée. Montrer que le saut effectué dans ce cas n'est pas réussi.
         reasoning: |-
-          Exactement la méthode « portée » du rung 4 : $P$ est le point où $G$ retombe à la même hauteur que $C$ (donc $y_G=0$), l'autre racine — en plus de $t=0$ — de $y_G(t)=0$. On la trouve en factorisant $y_G(t)$ ; puis $CP$ est la position horizontale $x_G$ à cet instant. On compare le résultat numérique aux $30\ \text{m}$ exigés : c'est en dessous, le saut échoue.
+          Exactement la méthode « portée » du chapitre 5 : $P$ est le point où $G$ retombe à la même hauteur que $C$ (donc $y_G=0$), l'autre racine — en plus de $t=0$ — de $y_G(t)=0$. On la trouve en factorisant $y_G(t)$ ; puis $CP$ est la position horizontale $x_G$ à cet instant. On compare le résultat numérique aux $30\ \text{m}$ exigés : c'est en dessous, le saut échoue.
         steps:
           - math: 'y_G(t) = 0 \implies t\left(-5\,t + 6{,}18\right) = 0 \implies t = 0 \ \text{ou}\ t_P = \frac{6{,}18}{5}'
-            note: "Meme geste qu'au rung 4 pour la portee : le point d'atterrissage est l'autre racine de y(t) = 0."
+            note: "Meme geste qu'au chapitre 5 pour la portee : le point d'atterrissage est l'autre racine de y(t) = 0."
           - math: '\boxed{t_P \approx 1{,}236\ \text{s}}'
             note: "Instant ou G repasse par la hauteur de C (P est a la meme hauteur que C, figure 1)."
           - math: 'CP = x_G(t_P) = 19{,}02\times 1{,}236'
-            note: "La portee est la position horizontale a cet instant, comme au rung 4."
+            note: "La portee est la position horizontale a cet instant, comme au chapitre 5."
           - math: '\boxed{CP \approx 23{,}5\ \text{m} < 30\ \text{m}}'
             note: "La condition CP >= 30 m n'est pas verifiee : le saut n'est pas reussi."
       - id: q3b
         stem: |-
           **(0,5 pt)** Déterminer la vitesse minimale $V_{min}$ avec laquelle doit passer G par le point C pour que le saut soit réussi.
         reasoning: |-
-          On réutilise directement la formule de la portée établie au rung 4, $D=\dfrac{v_0^2\sin(2\alpha)}{g}$, en gardant l'angle $\alpha=18°$ fixé (rien dans l'énoncé ne le change) et en faisant varier seulement la vitesse au décollage $V_0=V_C$. La vitesse minimale est celle qui amène $D$ exactement au seuil de réussite, $D=30\ \text{m}$ : on résout pour $V_{min}$.
+          On réutilise directement la formule de la portée établie au chapitre 5, $D=\dfrac{v_0^2\sin(2\alpha)}{g}$, en gardant l'angle $\alpha=18°$ fixé (rien dans l'énoncé ne le change) et en faisant varier seulement la vitesse au décollage $V_0=V_C$. La vitesse minimale est celle qui amène $D$ exactement au seuil de réussite, $D=30\ \text{m}$ : on résout pour $V_{min}$.
         steps:
           - math: 'D(\alpha, V_0) = \frac{V_0^2\sin(2\alpha)}{g}'
-            note: "Formule de la portee du rung 4, avec alpha = 18 degres fixe (seule la vitesse au tremplin change ici)."
+            note: "Formule de la portee du chapitre 5, avec alpha = 18 degres fixe (seule la vitesse au tremplin change ici)."
           - math: '30 = \frac{V_{min}^2\sin(2\times 18^\circ)}{g} \implies V_{min}^2 = \frac{30\,g}{\sin 36^\circ}'
             note: "On impose CP = 30 m exactement (le seuil de reussite) et on isole V_min."
           - math: 'V_{min}^2 = \frac{30\times 10}{0{,}588} \approx 510'
@@ -492,7 +492,7 @@ entries:
         stem: |-
           **(0,5 pt)** En appliquant la deuxième loi de Newton sur la bille, montrer que l'équation différentielle du mouvement du centre d'inertie $G$ s'écrit : $\dfrac{dv}{dt} + \dfrac{k}{m}\,v = g$.
         reasoning: |-
-          On applique la méthode du rung 7 — bilan des forces, deuxième loi, projection sur l'axe choisi. Seules deux forces s'exercent ici (la poussée d'Archimède est explicitement négligée, contrairement à d'autres sujets sur cette même expérience) : le poids $\vec P=m\vec g$ et le frottement $\vec f=-k\,v\,\vec j$. Avec l'axe $(O,\vec j)$ orienté vers le bas, le poids se projette positivement et le frottement négativement (il s'oppose au mouvement). On projette, on divise par $m$, et on range le terme en $v$ à gauche pour retrouver la forme demandée.
+          On applique la méthode du chapitre 8 — bilan des forces, deuxième loi, projection sur l'axe choisi. Seules deux forces s'exercent ici (la poussée d'Archimède est explicitement négligée, contrairement à d'autres sujets sur cette même expérience) : le poids $\vec P=m\vec g$ et le frottement $\vec f=-k\,v\,\vec j$. Avec l'axe $(O,\vec j)$ orienté vers le bas, le poids se projette positivement et le frottement négativement (il s'oppose au mouvement). On projette, on divise par $m$, et on range le terme en $v$ à gauche pour retrouver la forme demandée.
         steps:
           - math: 'm\vec a = \vec P + \vec f'
             note: "Deuxieme loi de Newton ; deux forces seulement, Archimede negligee par hypothese."
@@ -506,7 +506,7 @@ entries:
         stem: |-
           **(0,25 pt)** Trouver l'expression de la vitesse limite $v_\ell$ de $G$ en fonction de $g$, $m$ et $k$.
         reasoning: |-
-          La vitesse limite est celle du régime permanent (rung 7) : on annule l'accélération dans l'équation différentielle — un calcul d'une ligne, jamais une résolution complète — et on isole $v_\ell$. Physiquement, à cet instant le frottement a grandi jusqu'à compenser exactement le poids.
+          La vitesse limite est celle du régime permanent (chapitre 8) : on annule l'accélération dans l'équation différentielle — un calcul d'une ligne, jamais une résolution complète — et on isole $v_\ell$. Physiquement, à cet instant le frottement a grandi jusqu'à compenser exactement le poids.
         steps:
           - math: '\frac{dv}{dt} = 0 \implies g - \frac{k}{m}\,v_\ell = 0'
             note: "En regime permanent, l'acceleration s'annule dans l'equation differentielle."
@@ -516,7 +516,7 @@ entries:
         stem: |-
           **(0,25 pt)** La courbe de la figure 2 représente l'évolution de la vitesse $v$ du centre d'inertie $G$ de la bille. Déterminer graphiquement la valeur de $v_\ell$.
         reasoning: |-
-          En régime permanent, la courbe $v=f(t)$ atteint un palier horizontal (rung 7) : la vitesse limite se lit directement comme l'ordonnée de ce palier, sans aucun calcul, une simple lecture d'échelle.
+          En régime permanent, la courbe $v=f(t)$ atteint un palier horizontal (chapitre 8) : la vitesse limite se lit directement comme l'ordonnée de ce palier, sans aucun calcul, une simple lecture d'échelle.
 
           $$v_\ell \approx 1{,}5\ \text{m.s}^{-1}$$
       - id: q4
@@ -534,7 +534,7 @@ entries:
         stem: |-
           **(0,5 pt)** À l'aide des données du tableau et de la méthode d'Euler, calculer l'accélération $a_1$ à l'instant $t_1$.
         reasoning: |-
-          L'accélération à un instant ne se lit pas dans le tableau : elle se recalcule à partir de la vitesse de ce même instant (rung 8), via l'équation différentielle vérifiée à la question 4. On applique donc $a_1 = 10 - 6{,}67\,v_1$ avec $v_1 = 0{,}150\ \text{m.s}^{-1}$.
+          L'accélération à un instant ne se lit pas dans le tableau : elle se recalcule à partir de la vitesse de ce même instant (chapitre 9), via l'équation différentielle vérifiée à la question 4. On applique donc $a_1 = 10 - 6{,}67\,v_1$ avec $v_1 = 0{,}150\ \text{m.s}^{-1}$.
         steps:
           - math: 'a_1 = 10 - 6{,}67\,v_1 = 10 - 6{,}67\times 0{,}150'
             note: "On evalue l'equation differentielle en v_1 = 0,150 m/s."
@@ -544,7 +544,7 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer la vitesse $v_3$ à l'instant $t_3$, sachant que le pas de calcul est $\Delta t = 0{,}015\ \text{s}$.
         reasoning: |-
-          On avance d'un pas d'Euler depuis $t_2$ (rung 8) : $v_3=v_2+a_2\Delta t$. Le tableau fournit directement $v_2=0{,}285\ \text{m.s}^{-1}$ et $a_2=8{,}10\ \text{m.s}^{-2}$ — inutile de recalculer $a_2$. Réflexe d'homogénéité : $a_2\Delta t$ multiplie une accélération par un temps, donc c'est bien une vitesse.
+          On avance d'un pas d'Euler depuis $t_2$ (chapitre 9) : $v_3=v_2+a_2\Delta t$. Le tableau fournit directement $v_2=0{,}285\ \text{m.s}^{-1}$ et $a_2=8{,}10\ \text{m.s}^{-2}$ — inutile de recalculer $a_2$. Réflexe d'homogénéité : $a_2\Delta t$ multiplie une accélération par un temps, donc c'est bien une vitesse.
         steps:
           - math: 'v_3 = v_2 + a_2\,\Delta t = 0{,}285 + 8{,}10\times 0{,}015'
             note: "Recurrence d'Euler entre t2 et t3, avec les valeurs du tableau."
@@ -610,14 +610,14 @@ entries:
         stem: |-
           **(0,5 pt)** Quelle est la nature du mouvement de G ? justifier votre réponse.
         reasoning: |-
-          La figure 2 montre une droite passant par l'origine — une vitesse qui croît linéairement avec le temps, donc une accélération constante. C'est la signature graphique d'un mouvement rectiligne uniformément accéléré (le même critère qu'au rung 1 pour une chute verticale : une droite $v(t)$ signe un $a$ constant).
+          La figure 2 montre une droite passant par l'origine — une vitesse qui croît linéairement avec le temps, donc une accélération constante. C'est la signature graphique d'un mouvement rectiligne uniformément accéléré (le même critère qu'au chapitre 2 pour une chute verticale : une droite $v(t)$ signe un $a$ constant).
 
           Le mouvement de $G$ est rectiligne (trajectoire verticale) et uniformément accéléré : sa vitesse croît proportionnellement au temps (droite passant par l'origine sur la figure 2), donc son accélération est constante.
       - id: q1b
         stem: |-
           **(0,5 pt)** Peut-on considérer que le mouvement du parachutiste, durant cette phase, est une chute libre ? Justifier votre réponse.
         reasoning: |-
-          On lit la pente de la droite de la figure 2 : elle vaut $10\ \text{m.s}^{-2}$ (confirmée par les points $(1;10)$, $(2;20)$, $(3;30)$), exactement $g$. Au rung 1, la chute libre se caractérise précisément par $a=g$ — pas approximativement, et sur toute la durée de la phase (la droite ne s'incurve jamais, contrairement à la courbe du rung 7 pour une chute avec frottement, qui s'aplatit vers un palier). On peut donc considérer cette phase comme une chute libre.
+          On lit la pente de la droite de la figure 2 : elle vaut $10\ \text{m.s}^{-2}$ (confirmée par les points $(1;10)$, $(2;20)$, $(3;30)$), exactement $g$. Au chapitre 2, la chute libre se caractérise précisément par $a=g$ — pas approximativement, et sur toute la durée de la phase (la droite ne s'incurve jamais, contrairement à la courbe du chapitre 8 pour une chute avec frottement, qui s'aplatit vers un palier). On peut donc considérer cette phase comme une chute libre.
 
           Oui : $a = 10\ \text{m.s}^{-2} = g$ sur toute la phase 1 (droite, jamais de courbure) — ce mouvement est assimilable à une chute libre.
       - id: q2a
@@ -625,10 +625,10 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que l'équation différentielle vérifiée par la vitesse $v$ s'écrit : $\dfrac{dv}{dt} + \dfrac{\alpha}{m}.v^2 = g$.
         reasoning: |-
-          Même méthode qu'au rung 7, mais avec le second modèle de frottement présenté là-bas — quadratique, $f=k v^2$ — ici baptisé $\alpha$ plutôt que $k$ (l'énoncé réserve la lettre $k$ à autre chose : le vecteur unitaire de l'axe $\vec k$). Le poids et le frottement sont les deux seules forces ; le frottement s'oppose au mouvement, donc pointe en sens contraire du sens de la chute — c'est-à-dire contre le sens de $\vec k$, exactement comme au rung 7.
+          Même méthode qu'au chapitre 8, mais avec le second modèle de frottement présenté là-bas — quadratique, $f=k v^2$ — ici baptisé $\alpha$ plutôt que $k$ (l'énoncé réserve la lettre $k$ à autre chose : le vecteur unitaire de l'axe $\vec k$). Le poids et le frottement sont les deux seules forces ; le frottement s'oppose au mouvement, donc pointe en sens contraire du sens de la chute — c'est-à-dire contre le sens de $\vec k$, exactement comme au chapitre 8.
         steps:
           - math: 'm\vec a = \vec P + \vec F \qquad \text{avec} \qquad \vec F = -\alpha\,v^2\,\vec k'
-            note: "Deuxieme loi de Newton : poids et frottement quadratique (rung 7, modele f = k v^2, ici renomme alpha)."
+            note: "Deuxieme loi de Newton : poids et frottement quadratique (chapitre 8, modele f = k v^2, ici renomme alpha)."
           - math: 'm\frac{dv}{dt} = mg - \alpha\,v^2'
             note: "Projection sur l'axe (O, k), oriente vers le bas comme la chute : poids +mg, frottement -alpha v^2 (il s'oppose au mouvement)."
           - math: '\boxed{\frac{dv}{dt} + \frac{\alpha}{m}\,v^2 = g}'
@@ -637,17 +637,17 @@ entries:
         stem: |-
           **(0,25 pt)** Trouver l'expression de la vitesse limite $V_\ell$ du mouvement en fonction de $m$, $g$ et $\alpha$.
         reasoning: |-
-          Même geste qu'au rung 7 : on annule l'accélération dans l'équation différentielle, sans jamais la résoudre en entier. Mais comme le frottement dépend ici de $v^2$ (et non de $v$), l'égalité poids = frottement fait apparaître un carré, d'où une racine carrée à l'arrivée — exactement la remarque faite au rung 7 pour le modèle quadratique.
+          Même geste qu'au chapitre 8 : on annule l'accélération dans l'équation différentielle, sans jamais la résoudre en entier. Mais comme le frottement dépend ici de $v^2$ (et non de $v$), l'égalité poids = frottement fait apparaître un carré, d'où une racine carrée à l'arrivée — exactement la remarque faite au chapitre 8 pour le modèle quadratique.
         steps:
           - math: '\frac{dv}{dt}=0 \implies g - \frac{\alpha}{m}V_\ell^2 = 0'
-            note: "Regime permanent : on annule l'acceleration, comme au rung 7."
+            note: "Regime permanent : on annule l'acceleration, comme au chapitre 8."
           - math: '\boxed{V_\ell = \sqrt{\frac{mg}{\alpha}}}'
-            note: "Racine carree car le frottement depend de v^2 (rung 7, cas quadratique) et non de v directement."
+            note: "Racine carree car le frottement depend de v^2 (chapitre 8, cas quadratique) et non de v directement."
       - id: q2c
         stem: |-
           **(0,25 pt)** Déterminer graphiquement $V_\ell$.
         reasoning: |-
-          Comme au rung 7, la vitesse limite se lit directement au palier horizontal de la courbe $v=f(t)$, sans aucun calcul. Sur la figure 3, le palier se situe à la sous-graduation $5$.
+          Comme au chapitre 8, la vitesse limite se lit directement au palier horizontal de la courbe $v=f(t)$, sans aucun calcul. Sur la figure 3, le palier se situe à la sous-graduation $5$.
 
           $$V_\ell \approx 5{,}0\ \text{m.s}^{-1}$$
       - id: q2d
@@ -665,16 +665,16 @@ entries:
         stem: |-
           **(0,5 pt)** Sachant que la durée totale du mouvement de G depuis le début de la chute jusqu'à l'arrivée au sol est $\Delta t = 70\ \text{s}$, trouver la distance $d$ parcourue par G durant le régime initial de la phase 2.
         reasoning: |-
-          Aucune formule directe ne donne cette distance : il faut découper le vol en segments dont on connaît chacun la distance parcourue, puis retrancher du total. Trois morceaux : la phase 1, chute libre de durée $\Delta t_1=4\ \text{s}$, dont la distance se calcule par $\frac{1}{2}g\Delta t_1^2$ (rung 1) ; le régime permanent de la phase 2, où la vitesse est quasi constante à $V_\ell$ (rung 7) sur une durée qu'on obtient en comptant — durée totale $\Delta t=70\ \text{s}$, moins la phase 1, moins les $30\ \text{s}$ de régime initial de la phase 2 lus sur la figure 3 (la ligne pointillée verticale) ; et enfin le régime initial de la phase 2 lui-même, dont la distance $d$ est justement l'inconnue. La hauteur totale de chute $h$ se répartit entre ces trois segments, d'où $d = h - h_1 - h_{perm}$.
+          Aucune formule directe ne donne cette distance : il faut découper le vol en segments dont on connaît chacun la distance parcourue, puis retrancher du total. Trois morceaux : la phase 1, chute libre de durée $\Delta t_1=4\ \text{s}$, dont la distance se calcule par $\frac{1}{2}g\Delta t_1^2$ (chapitre 2) ; le régime permanent de la phase 2, où la vitesse est quasi constante à $V_\ell$ (chapitre 8) sur une durée qu'on obtient en comptant — durée totale $\Delta t=70\ \text{s}$, moins la phase 1, moins les $30\ \text{s}$ de régime initial de la phase 2 lus sur la figure 3 (la ligne pointillée verticale) ; et enfin le régime initial de la phase 2 lui-même, dont la distance $d$ est justement l'inconnue. La hauteur totale de chute $h$ se répartit entre ces trois segments, d'où $d = h - h_1 - h_{perm}$.
         steps:
           - math: 'h_1 = \frac{1}{2}g\,\Delta t_1^2 = \frac{1}{2}\times 10\times 4^2'
-            note: "Phase 1, chute libre (question 1b) : distance parcourue en un temps Delta t1, formule du rung 1."
+            note: "Phase 1, chute libre (question 1b) : distance parcourue en un temps Delta t1, formule du chapitre 2."
           - math: '\boxed{h_1 = 80\ \text{m}}'
             note: "Hauteur perdue durant la phase 1 (parachute ferme)."
           - math: 't_{perm} = \Delta t - \Delta t_1 - 30 = 70 - 4 - 30 = 36\ \text{s}'
             note: "Duree du regime permanent de la phase 2 : duree totale du vol, moins la phase 1, moins les 30 s de regime initial de la phase 2 lus sur la figure 3."
           - math: 'h_{perm} = V_\ell\times t_{perm} = 5{,}0\times 36'
-            note: "En regime permanent la vitesse est quasi constante (rung 7) : distance = vitesse x duree."
+            note: "En regime permanent la vitesse est quasi constante (chapitre 8) : distance = vitesse x duree."
           - math: '\boxed{h_{perm} = 180\ \text{m}}'
             note: "Distance parcourue durant le regime permanent de la phase 2."
           - math: '\boxed{d = h - h_1 - h_{perm} = 660 - 80 - 180 = 400\ \text{m}}'
@@ -746,7 +746,7 @@ entries:
         stem: |-
           (0,5 pt) En appliquant la deuxième loi de Newton, établir les équations différentielles vérifiées par $v_x$ et $v_y$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Établir une équation différentielle, c'est toujours la même chaîne, dans cet ordre : système, bilan des forces, deuxième loi de Newton, projection sur les axes. Ici l'énoncé t'a déjà fait la moitié du chemin en précisant qu'on néglige la résistance de l'air **et** la poussée d'Archimède : il ne reste qu'une seule force, le poids. C'est très exactement la situation du rung 2.
+          **Ce qu'on cherche et pourquoi ce geste.** Établir une équation différentielle, c'est toujours la même chaîne, dans cet ordre : système, bilan des forces, deuxième loi de Newton, projection sur les axes. Ici l'énoncé t'a déjà fait la moitié du chemin en précisant qu'on néglige la résistance de l'air **et** la poussée d'Archimède : il ne reste qu'une seule force, le poids. C'est très exactement la situation du chapitre 3.
 
           **Le système.** La flèche, de masse $m$, dans le référentiel terrestre supposé galiléen.
 
@@ -756,7 +756,7 @@ entries:
 
           $$\sum \vec{F}_{ext} = m\,\vec{a}_G \quad\Longrightarrow\quad m\vec{g} = m\,\vec{a}_G \quad\Longrightarrow\quad \vec{a}_G = \vec{g}$$
 
-          La masse se simplifie et disparaît : l'accélération de la flèche ne dépend pas de sa masse, c'est le résultat central du rung 2. C'est aussi pourquoi l'énoncé donne $m$ sans jamais s'en servir.
+          La masse se simplifie et disparaît : l'accélération de la flèche ne dépend pas de sa masse, c'est le résultat central du chapitre 3. C'est aussi pourquoi l'énoncé donne $m$ sans jamais s'en servir.
 
           **La projection.** Sur la figure 1, $\vec{j}$ est orienté **vers le haut**, $\vec{i}$ vers la droite. Le vecteur $\vec{g}$ est purement vertical et dirigé vers le bas : sa composante horizontale est nulle, sa composante verticale vaut $-g$.
 
@@ -764,7 +764,7 @@ entries:
 
           $$\boxed{\frac{dv_x}{dt} = 0 \qquad \frac{dv_y}{dt} = -g}$$
 
-          **Le piège de cette question — le signe, et d'où il vient.** Le $-$ devant $g$ n'est pas une règle à mémoriser : il vient du choix d'axe lu sur la figure 1, où $\vec{j}$ pointe vers le haut alors que $\vec{g}$ pointe vers le bas. Si l'énoncé avait orienté $\vec{j}$ vers le bas (comme au rung 7, pour les chutes freinées), la même projection donnerait $+g$. Regarde toujours la figure avant d'écrire le signe. Second point, tout aussi important : les deux équations sont **indépendantes** — aucune ne contient la composante de l'autre. C'est ce découplage qui permet de traiter le mouvement horizontal et le mouvement vertical séparément dans toute la suite.
+          **Le piège de cette question — le signe, et d'où il vient.** Le $-$ devant $g$ n'est pas une règle à mémoriser : il vient du choix d'axe lu sur la figure 1, où $\vec{j}$ pointe vers le haut alors que $\vec{g}$ pointe vers le bas. Si l'énoncé avait orienté $\vec{j}$ vers le bas (comme au chapitre 8, pour les chutes freinées), la même projection donnerait $+g$. Regarde toujours la figure avant d'écrire le signe. Second point, tout aussi important : les deux équations sont **indépendantes** — aucune ne contient la composante de l'autre. C'est ce découplage qui permet de traiter le mouvement horizontal et le mouvement vertical séparément dans toute la suite.
       - id: q2
         part: "Établir le modèle du mouvement dans le champ de pesanteur"
         stem: |-
@@ -774,13 +774,13 @@ entries:
 
           **Primitivation.** De $\dfrac{dv_x}{dt} = 0$ on tire que $v_x$ est **constante** au cours du temps, donc égale à sa valeur initiale $v_x(0)$. De $\dfrac{dv_y}{dt} = -g$ on tire $v_y(t) = -g\,t + v_y(0)$.
 
-          **Les conditions initiales.** À $t = 0$, le vecteur vitesse est $\vec{V}_0$, de norme $V_0$, faisant l'angle $\alpha$ avec l'horizontale. On le décompose comme au rung 2 : la composante portée par $\vec{i}$ est le côté adjacent à l'angle, celle portée par $\vec{j}$ est le côté opposé.
+          **Les conditions initiales.** À $t = 0$, le vecteur vitesse est $\vec{V}_0$, de norme $V_0$, faisant l'angle $\alpha$ avec l'horizontale. On le décompose comme au chapitre 3 : la composante portée par $\vec{i}$ est le côté adjacent à l'angle, celle portée par $\vec{j}$ est le côté opposé.
 
           $$v_x(0) = V_0\cos\alpha \qquad\qquad v_y(0) = V_0\sin\alpha$$
 
           $$\boxed{v_x(t) = V_0\cos\alpha \qquad\qquad v_y(t) = -g\,t + V_0\sin\alpha}$$
 
-          **La vérification aux cas extrêmes**, celle du rung 2, pour être sûr de ne pas avoir échangé $\sin$ et $\cos$ : si $\alpha \to 0°$ (tir parfaitement horizontal), toute la vitesse doit être horizontale — $\cos 0° = 1$ et $\sin 0° = 0$ donnent bien $v_x(0) = V_0$ et $v_y(0) = 0$. Si $\alpha \to 90°$ (tir vertical), l'inverse. Les rôles sont bons.
+          **La vérification aux cas extrêmes**, celle du chapitre 3, pour être sûr de ne pas avoir échangé $\sin$ et $\cos$ : si $\alpha \to 0°$ (tir parfaitement horizontal), toute la vitesse doit être horizontale — $\cos 0° = 1$ et $\sin 0° = 0$ donnent bien $v_x(0) = V_0$ et $v_y(0) = 0$. Si $\alpha \to 90°$ (tir vertical), l'inverse. Les rôles sont bons.
 
           **Le piège de cette question.** « $v_x$ est constante » ne veut **pas** dire « le mouvement est uniforme ». La norme du vecteur vitesse, elle, change tout le temps, puisque $v_y$ change : c'est le mouvement **horizontal** qui est uniforme, pas le mouvement de la flèche. Et ne confonds pas ces expressions avec les équations horaires $x(t)$ et $y(t)$ : ici on n'a primitivé qu'une seule fois, on parle encore de vitesses. Il faudra primitiver une seconde fois — à la question 4 — pour parler de positions.
       - id: q3-1
@@ -850,7 +850,7 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** $V_E$ est la **norme** du vecteur vitesse à l'instant précis où la flèche touche la cible. On ne peut pas la calculer avant de savoir **quand** cet instant arrive. Le chemin est donc en deux temps : d'abord la date $t_E$, lue sur le mouvement **horizontal** ; ensuite les deux composantes de la vitesse à cette date, recomposées par Pythagore.
 
-          *Un pont, au passage.* Le cours décompose $\vec{V}_0$ en ses deux composantes (rung 2) et annule $v_y$ au sommet (rung 4), mais il ne recompose jamais explicitement une vitesse en cours de vol. C'est pourtant le même Pythagore qu'à la question 3.3, lu dans le même sens — seul l'instant change : $t_E$ au lieu de $t = 0$.
+          *Un pont, au passage.* Le cours décompose $\vec{V}_0$ en ses deux composantes (chapitre 3) et annule $v_y$ au sommet (chapitre 5), mais il ne recompose jamais explicitement une vitesse en cours de vol. C'est pourtant le même Pythagore qu'à la question 3.3, lu dans le même sens — seul l'instant change : $t_E$ au lieu de $t = 0$.
 
           **Premier temps — la date $t_E$.** Le point E est sur la verticale passant par C, à la distance horizontale $D = 80\ \text{m}$ de O. Le point de tir A est **sur l'axe** $\overrightarrow{Oy}$ (figure 1), donc son abscisse est nulle : $x_A = 0$. L'équation horaire horizontale s'écrit alors sans décalage, en primitivant une seconde fois $v_x = $ constante :
 
@@ -945,31 +945,31 @@ entries:
         stem: |-
           **(0,5 pt)** La courbe de la figure 2 présente deux zones. Attribuer à chaque zone le régime correspondant.
         reasoning: |-
-          Même critère qu'au rung 7 : une courbe $v(t)$ qui croît en se courbant correspond au régime où le frottement grandit avec $v$ sans encore avoir rattrapé le poids — c'est le **régime initial** (transitoire) ; un palier horizontal correspond au régime où frottement et poids se compensent exactement, accélération nulle — c'est le **régime permanent**. Sur la figure 2, « zone1 » est la portion courbée qui précède la frontière $t=0{,}50\ \text{s}$ : c'est le régime initial. « zone2 » est le palier qui suit : c'est le régime permanent — cohérent avec le fait que cette frontière tombe exactement à $5\tau$ ($5\times 0{,}100\ \text{s}$), l'ordre de grandeur usuel où le régime transitoire s'éteint.
+          Même critère qu'au chapitre 8 : une courbe $v(t)$ qui croît en se courbant correspond au régime où le frottement grandit avec $v$ sans encore avoir rattrapé le poids — c'est le **régime initial** (transitoire) ; un palier horizontal correspond au régime où frottement et poids se compensent exactement, accélération nulle — c'est le **régime permanent**. Sur la figure 2, « zone1 » est la portion courbée qui précède la frontière $t=0{,}50\ \text{s}$ : c'est le régime initial. « zone2 » est le palier qui suit : c'est le régime permanent — cohérent avec le fait que cette frontière tombe exactement à $5\tau$ ($5\times 0{,}100\ \text{s}$), l'ordre de grandeur usuel où le régime transitoire s'éteint.
 
           $$\text{zone1} = \text{régime initial (transitoire)} \qquad \text{zone2} = \text{régime permanent}$$
       - id: q2
         stem: |-
           **(0,75 pt)** Par application de la deuxième loi de Newton, montrer que l'équation différentielle du mouvement de $G$ s'écrit ainsi : $\dfrac{dv}{dt} + \dfrac{1}{\tau}.v = g\!\left(1 - \dfrac{\rho_r}{\rho_a}\right)$ où $\tau$ est le temps caractéristique du mouvement qu'on exprimera en fonction de $m$ et $k$.
         reasoning: |-
-          On suit la méthode du rung 7 — bilan, deuxième loi, projection — avec un bilan à **trois** forces plutôt que deux, exactement le pont déjà fait pour bk-2018-n-x4 : le rung 7 ne traite explicitement que poids + frottement, jamais Archimède. Mais il y a ici un pas de plus qu'en 2018 : l'énoncé donne la masse volumique $\rho_a$ **de la bille elle-même**, pas celle du liquide — donc $F_a=\rho_r V g$ contient encore une inconnue, $V$, qu'aucune donnée ne fournit directement. On la fait disparaître en revenant à la définition de la masse volumique de la bille, $m=\rho_a V$ (une relation de base, hors mécanique), qui donne $V=m/\rho_a$. Une fois cette substitution faite, la suite est identique au rung 7 : projeter, diviser par $m$, identifier le coefficient de $v$ à $1/\tau$ (inchangé, puisque seul le frottement dépend de $v$) et regrouper les deux termes constants (poids et Archimède) de l'autre côté.
+          On suit la méthode du chapitre 8 — bilan, deuxième loi, projection — avec un bilan à **trois** forces plutôt que deux, exactement le pont déjà fait pour bk-2018-n-x4 : le chapitre 8 ne traite explicitement que poids + frottement, jamais Archimède. Mais il y a ici un pas de plus qu'en 2018 : l'énoncé donne la masse volumique $\rho_a$ **de la bille elle-même**, pas celle du liquide — donc $F_a=\rho_r V g$ contient encore une inconnue, $V$, qu'aucune donnée ne fournit directement. On la fait disparaître en revenant à la définition de la masse volumique de la bille, $m=\rho_a V$ (une relation de base, hors mécanique), qui donne $V=m/\rho_a$. Une fois cette substitution faite, la suite est identique au chapitre 8 : projeter, diviser par $m$, identifier le coefficient de $v$ à $1/\tau$ (inchangé, puisque seul le frottement dépend de $v$) et regrouper les deux termes constants (poids et Archimède) de l'autre côté.
         steps:
           - math: 'm\vec a = \vec P + \vec f + \vec F_a'
-            note: "Deuxieme loi de Newton : trois forces (poids, frottement, poussee d'Archimede), meme structure qu'au rung 7 plus Archimede (comme bk-2018-n-x4 q1)."
+            note: "Deuxieme loi de Newton : trois forces (poids, frottement, poussee d'Archimede), meme structure qu'au chapitre 8 plus Archimede (comme bk-2018-n-x4 q1)."
           - math: 'm\frac{dv}{dt} = mg - k\,v - \rho_r V g'
             note: "Projection sur (O,k) oriente vers le bas : poids +mg, frottement -kv, Archimede -rho_r V g (elle pointe vers le haut)."
           - math: 'm = \rho_a V \implies V = \frac{m}{\rho_a}'
-            note: "La bille est homogene : sa propre masse volumique rho_a relie sa masse et son volume -- pas une relation du rung 7, mais une definition de base (masse volumique) mobilisee ici pour eliminer V."
+            note: "La bille est homogene : sa propre masse volumique rho_a relie sa masse et son volume -- pas une relation du chapitre 8, mais une definition de base (masse volumique) mobilisee ici pour eliminer V."
           - math: 'm\frac{dv}{dt} = mg\left(1-\frac{\rho_r}{\rho_a}\right) - k\,v'
             note: "On substitue V = m/rho_a dans le terme d'Archimede, puis on regroupe les deux termes constants (poids et Archimede) ensemble."
           - math: '\boxed{\frac{dv}{dt} + \frac{1}{\tau}v = g\left(1-\frac{\rho_r}{\rho_a}\right)} \qquad \text{avec} \qquad \tau = \frac{m}{k}'
-            note: "On divise par m : le coefficient de v redonne 1/tau comme au rung 7 (inchange par Archimede, qui ne depend pas de v) ; le terme constant, lui, contient desormais rho_r/rho_a."
+            note: "On divise par m : le coefficient de v redonne 1/tau comme au chapitre 8 (inchange par Archimede, qui ne depend pas de v) ; le terme constant, lui, contient desormais rho_r/rho_a."
       - id: q3a
         part: "Exploitation graphique de la figure 2"
         stem: |-
           **(0,5 pt)** Déterminer graphiquement la valeur de $\tau$ puis en déduire, dans le système international d'unités, la valeur de $k$.
         reasoning: |-
-          Même lecture qu'au rung 7 : le temps caractéristique $\tau$ se lit à l'abscisse où la tangente à l'origine (pente $A$, l'équivalent local de $g$ ici) coupe l'asymptote horizontale du palier. Sur la figure 2 fournie, cette intersection tombe exactement sur $t=0{,}100\ \text{s}$.
+          Même lecture qu'au chapitre 8 : le temps caractéristique $\tau$ se lit à l'abscisse où la tangente à l'origine (pente $A$, l'équivalent local de $g$ ici) coupe l'asymptote horizontale du palier. Sur la figure 2 fournie, cette intersection tombe exactement sur $t=0{,}100\ \text{s}$.
 
           $$\tau \approx 0{,}100\ \text{s}$$
 
@@ -983,14 +983,14 @@ entries:
         stem: |-
           **(0,25 pt)** Déterminer graphiquement la valeur de la vitesse limite $V_\ell$.
         reasoning: |-
-          Comme au rung 7, la vitesse limite se lit directement comme l'ordonnée du palier horizontal de la courbe $v=f(t)$, sans aucun calcul. Sur la figure 2, le palier se situe deux traits fins au-dessus du repère $0{,}8$.
+          Comme au chapitre 8, la vitesse limite se lit directement comme l'ordonnée du palier horizontal de la courbe $v=f(t)$, sans aucun calcul. Sur la figure 2, le palier se situe deux traits fins au-dessus du repère $0{,}8$.
 
           $$V_\ell \approx 0{,}880\ \text{m.s}^{-1}$$
       - id: q4
         stem: |-
           **(0,75 pt)** Trouver l'expression de la masse volumique $\rho_r$ de l'huile de ricin en fonction de $\tau$, $g$, $\rho_a$ et $V_\ell$. Calculer sa valeur.
         reasoning: |-
-          L'équation de la question 2 donne, en régime permanent ($dv/dt=0$), $V_\ell/\tau = g\left(1-\rho_r/\rho_a\right)$ — exactement le même geste qu'au rung 7 (annuler l'accélération dans l'équation différentielle), mais appliqué ici à une équation qui contient $\rho_r/\rho_a$ au lieu de $v$ seul. On isole $\rho_r$ algébriquement, puis on convertit $\rho_a$ en unités SI ($7{,}8\ \text{g.cm}^{-3} = 7{,}8\times 10^3\ \text{kg.m}^{-3}$) avant l'application numérique.
+          L'équation de la question 2 donne, en régime permanent ($dv/dt=0$), $V_\ell/\tau = g\left(1-\rho_r/\rho_a\right)$ — exactement le même geste qu'au chapitre 8 (annuler l'accélération dans l'équation différentielle), mais appliqué ici à une équation qui contient $\rho_r/\rho_a$ au lieu de $v$ seul. On isole $\rho_r$ algébriquement, puis on convertit $\rho_a$ en unités SI ($7{,}8\ \text{g.cm}^{-3} = 7{,}8\times 10^3\ \text{kg.m}^{-3}$) avant l'application numérique.
         steps:
           - math: '\frac{V_\ell}{\tau} = g\left(1-\frac{\rho_r}{\rho_a}\right) \implies \rho_r = \rho_a\left(1-\frac{V_\ell}{g\,\tau}\right)'
             note: "Regime permanent (question 2, acceleration nulle) resolu pour rho_r."
@@ -1060,31 +1060,31 @@ entries:
           | C | $F_{T/S} = G\dfrac{M_T.m_s}{R_T^2}$ |
           | D | $F_{T/S} = G\dfrac{(M_T.m_s)^2}{(R_T+h_1)^2}$ |
         reasoning: |-
-          La loi de gravitation du rung 9 fait intervenir la **distance qui sépare les deux corps** — ici, la distance entre le centre de la Terre $O$ et le satellite, pas l'altitude toute seule. Cette distance vaut $R_T+h_1$ (le rayon de la Terre plus l'altitude), jamais $h_1$ seul ni $R_T$ seul. Ça élimine A (utilise $h_1$ seul — ce serait la distance depuis la surface d'une Terre de rayon nul) et C (utilise $R_T$ seul — ce serait la force à la surface même de la Terre, pas à l'altitude du satellite). D est éliminée pour une autre raison, dimensionnelle : elle élève le produit des masses au carré, ce qui n'a pas la forme $Gm_Am_B/r^2$ du rung 9. Seule B respecte à la fois la bonne distance et la bonne structure de la loi.
+          La loi de gravitation du chapitre 10 fait intervenir la **distance qui sépare les deux corps** — ici, la distance entre le centre de la Terre $O$ et le satellite, pas l'altitude toute seule. Cette distance vaut $R_T+h_1$ (le rayon de la Terre plus l'altitude), jamais $h_1$ seul ni $R_T$ seul. Ça élimine A (utilise $h_1$ seul — ce serait la distance depuis la surface d'une Terre de rayon nul) et C (utilise $R_T$ seul — ce serait la force à la surface même de la Terre, pas à l'altitude du satellite). D est éliminée pour une autre raison, dimensionnelle : elle élève le produit des masses au carré, ce qui n'a pas la forme $Gm_Am_B/r^2$ du chapitre 10. Seule B respecte à la fois la bonne distance et la bonne structure de la loi.
       - id: q1b
         stem: |-
           **(0,5 pt)** En appliquant la deuxième loi de Newton, montrer que l'expression de la vitesse $v$ de $S$ est : $v = \sqrt{\dfrac{G.M_T}{R_T+h_1}}$.
         reasoning: |-
-          Exactement la méthode du rung 9 : la force gravitationnelle est purement centripète (dirigée vers $O$), donc sa projection sur la tangente est nulle — le mouvement est circulaire uniforme — et sa projection sur la normale égale $m_s\,v^2/r$. On identifie cette projection normale à la norme de la force trouvée en 1.1 (option B), avec $r=R_T+h_1$, puis on isole $v$.
+          Exactement la méthode du chapitre 10 : la force gravitationnelle est purement centripète (dirigée vers $O$), donc sa projection sur la tangente est nulle — le mouvement est circulaire uniforme — et sa projection sur la normale égale $m_s\,v^2/r$. On identifie cette projection normale à la norme de la force trouvée en 1.1 (option B), avec $r=R_T+h_1$, puis on isole $v$.
         steps:
           - math: 'm_s\frac{v^2}{R_T+h_1} = G\frac{M_T\,m_s}{(R_T+h_1)^2}'
-            note: "Deuxieme loi projetee sur la normale (rung 9), avec la force trouvee a la question 1.1 (option B)."
+            note: "Deuxieme loi projetee sur la normale (chapitre 10), avec la force trouvee a la question 1.1 (option B)."
           - math: 'v^2 = \frac{G\,M_T}{R_T+h_1}'
-            note: "La masse m_s du satellite se simplifie des deux cotes -- meme mecanisme qu'au rung 9."
+            note: "La masse m_s du satellite se simplifie des deux cotes -- meme mecanisme qu'au chapitre 10."
           - math: '\boxed{v = \sqrt{\frac{G\,M_T}{R_T+h_1}}}'
             note: "On prend la racine carree : c'est l'expression demandee."
       - id: q1c
         stem: |-
           **(0,5 pt)** Vérifier que la période de révolution du mouvement de $S$ autour de la Terre est : $T_1 \approx 1{,}75\ \text{h}$.
         reasoning: |-
-          Comme au rung 10, on relie la vitesse orbitale à la période par la géométrie du cercle — la distance parcourue en une période est le périmètre $2\pi r$ — puis on calcule $v$ numériquement avec la formule de la question 1.2 avant de convertir.
+          Comme au chapitre 11, on relie la vitesse orbitale à la période par la géométrie du cercle — la distance parcourue en une période est le périmètre $2\pi r$ — puis on calcule $v$ numériquement avec la formule de la question 1.2 avant de convertir.
         steps:
           - math: 'r = R_T + h_1 = 6380 + 1000 = 7380\ \text{km} = 7{,}38\times 10^6\ \text{m}'
             note: "Distance Terre-satellite en unites SI."
           - math: 'v = \sqrt{\frac{G\,M_T}{r}} = \sqrt{\frac{6{,}67\times 10^{-11}\times 5{,}97\times 10^{24}}{7{,}38\times 10^6}} \approx 7{,}35\times 10^3\ \text{m.s}^{-1}'
             note: "Application numerique de la formule etablie en 1.2."
           - math: 'T_1 = \frac{2\pi r}{v} \approx \frac{2\pi\times 7{,}38\times 10^6}{7{,}35\times 10^3} \approx 6{,}31\times 10^3\ \text{s}'
-            note: "Perimetre du cercle divise par la vitesse (rung 10) : c'est la periode."
+            note: "Perimetre du cercle divise par la vitesse (chapitre 11) : c'est la periode."
           - math: '\boxed{T_1 \approx 1{,}754\ \text{h} \approx 1{,}75\ \text{h}}'
             note: "Conversion en heures (3600 s = 1 h) : la valeur annoncee par l'enonce est verifiee."
       - id: q2
@@ -1092,14 +1092,14 @@ entries:
         stem: |-
           **(0,75 pt)** Le satellite $S$ est placé sur une autre orbite circulaire située à une altitude $h_2$ de la surface de la Terre. Il a alors un mouvement circulaire uniforme de période de révolution $T_2 = 24\ \text{h}$. En utilisant la troisième loi de Kepler, déterminer l'altitude $h_2$.
         reasoning: |-
-          La troisième loi de Kepler (rung 10) dit que $T^2/r^3$ est la **même constante** pour toutes les orbites autour d'un même astre — donc pour les deux orbites de ce satellite, $T_1^2/r_1^3 = T_2^2/r_2^3$, avec $r_1=7380\ \text{km}$ et $T_1$ déjà connus (question 1.3). On isole $r_2$, puis on retranche $R_T$ pour obtenir l'altitude $h_2$ demandée.
+          La troisième loi de Kepler (chapitre 11) dit que $T^2/r^3$ est la **même constante** pour toutes les orbites autour d'un même astre — donc pour les deux orbites de ce satellite, $T_1^2/r_1^3 = T_2^2/r_2^3$, avec $r_1=7380\ \text{km}$ et $T_1$ déjà connus (question 1.3). On isole $r_2$, puis on retranche $R_T$ pour obtenir l'altitude $h_2$ demandée.
         steps:
           - math: '\frac{T_1^2}{r_1^3} = \frac{T_2^2}{r_2^3} \implies r_2 = r_1\left(\frac{T_2}{T_1}\right)^{2/3}'
-            note: "Troisieme loi de Kepler (rung 10) : le rapport T^2/r^3 est le meme pour les deux orbites."
+            note: "Troisieme loi de Kepler (chapitre 11) : le rapport T^2/r^3 est le meme pour les deux orbites."
           - math: 'r_2 = 7380\times\left(\frac{24}{1{,}754}\right)^{2/3} \approx 4{,}23\times 10^4\ \text{km}'
             note: "Application numerique, avec T_2 = 24 h et T_1 = 1,754 h dans la meme unite."
           - math: '\boxed{h_2 = r_2 - R_T \approx 4{,}23\times 10^4 - 6{,}38\times 10^3 \approx 3{,}6\times 10^4\ \text{km}}'
-            note: "On retranche le rayon terrestre : c'est l'altitude geostationnaire (rung 10), coherente avec T_2 = 24 h."
+            note: "On retranche le rayon terrestre : c'est l'altitude geostationnaire (chapitre 11), coherente avec T_2 = 24 h."
 
   # ── bk-2023-n-x4 — 2023 N, Exercice 4 (Partie I) : chute d'une balle, frottement linéaire, Euler ──
   - id: bk-2023-n-x4
@@ -1159,24 +1159,24 @@ entries:
         stem: |-
           **(0,75 pt)** En appliquant la deuxième loi de Newton, déterminer les équations horaires numériques donnant la vitesse $v_z(t)$ et la position $z(t)$ du centre d'inertie $G$ de la balle.
         reasoning: |-
-          Exactement la méthode du rung 1 : chute libre en une dimension, avec cette fois un axe $Z$ orienté **vers le haut** — le même choix qu'au rung 1 (contrairement au rung 7, où l'axe est choisi vers le bas). Comme au rung 1, $\vec g$ pointe en sens contraire de l'axe, donc $a_z=-g$. On primitive deux fois, avec la vitesse initiale $V_0=12\ \text{m/s}$ vers le haut (comme la balle lancée vers le haut de l'exemple travaillé du rung 1) et $z_0=0$ au point de lancement $O$.
+          Exactement la méthode du chapitre 2 : chute libre en une dimension, avec cette fois un axe $Z$ orienté **vers le haut** — le même choix qu'au chapitre 2 (contrairement au chapitre 8, où l'axe est choisi vers le bas). Comme au chapitre 2, $\vec g$ pointe en sens contraire de l'axe, donc $a_z=-g$. On primitive deux fois, avec la vitesse initiale $V_0=12\ \text{m/s}$ vers le haut (comme la balle lancée vers le haut de l'exemple travaillé du chapitre 2) et $z_0=0$ au point de lancement $O$.
         steps:
           - math: '\vec P = m\vec a \implies \vec a = \vec g'
-            note: "Chute libre (rung 1) : seul le poids agit."
+            note: "Chute libre (chapitre 2) : seul le poids agit."
           - math: 'a_z = -g'
-            note: "Axe Z oriente vers le haut (figure 1) : g pointe en sens oppose, comme au rung 1."
+            note: "Axe Z oriente vers le haut (figure 1) : g pointe en sens oppose, comme au chapitre 2."
           - math: 'v_z(t) = V_0 - g\,t = 12 - 10\,t'
-            note: "Premiere primitivation, vitesse initiale V0 = 12 m/s vers le haut (rung 1)."
+            note: "Premiere primitivation, vitesse initiale V0 = 12 m/s vers le haut (chapitre 2)."
           - math: '\boxed{z(t) = V_0\,t - \frac{1}{2}g\,t^2 = 12\,t - 5\,t^2}'
             note: "Seconde primitivation, avec z0 = 0 au point de lancement O."
       - id: q2a
         stem: |-
           **(0,5 pt)** En utilisant les équations $v_z(t)$ et $z(t)$ déterminer la hauteur maximale $h$ atteinte par $G$.
         reasoning: |-
-          Même critère qu'au rung 1 : le sommet de la trajectoire est l'instant où la vitesse s'annule. On résout $v_z(t)=0$ pour trouver cet instant, puis on le substitue dans $z(t)$ (question précédente) pour obtenir la hauteur atteinte.
+          Même critère qu'au chapitre 2 : le sommet de la trajectoire est l'instant où la vitesse s'annule. On résout $v_z(t)=0$ pour trouver cet instant, puis on le substitue dans $z(t)$ (question précédente) pour obtenir la hauteur atteinte.
         steps:
           - math: 'v_z(t)=0 \implies 12-10\,t=0 \implies t_{sommet}=1{,}2\ \text{s}'
-            note: "Meme critere qu'au rung 1 : le sommet est l'instant ou la vitesse s'annule."
+            note: "Meme critere qu'au chapitre 2 : le sommet est l'instant ou la vitesse s'annule."
           - math: 'h = z(t_{sommet}) = 12\times 1{,}2 - 5\times 1{,}2^2 = 14{,}4-7{,}2'
             note: "On substitue dans z(t) (question precedente)."
           - math: '\boxed{h \approx 7{,}2\ \text{m}}'
@@ -1185,10 +1185,10 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer la valeur algébrique $v_{OZ}$ de la vitesse de $G$ lors de son passage vers le bas par le point $O$.
         reasoning: |-
-          Comme au rung 1 (l'exemple de la balle lancée vers le haut), l'autre instant, en plus de $t=0$, où $z(t)=0$ correspond exactement au double du temps de montée — la symétrie montée-descente. On calcule cet instant, puis on l'injecte dans $v_z(t)$ pour obtenir la valeur algébrique demandée.
+          Comme au chapitre 2 (l'exemple de la balle lancée vers le haut), l'autre instant, en plus de $t=0$, où $z(t)=0$ correspond exactement au double du temps de montée — la symétrie montée-descente. On calcule cet instant, puis on l'injecte dans $v_z(t)$ pour obtenir la valeur algébrique demandée.
         steps:
           - math: 'z(t)=0 \implies t(12-5t)=0 \implies t=0\ \text{ou}\ t_O=2{,}4\ \text{s}'
-            note: "Autre racine de z(t)=0 (rung 1) : exactement le double de t_sommet = 1,2 s, la symetrie montee-descente."
+            note: "Autre racine de z(t)=0 (chapitre 2) : exactement le double de t_sommet = 1,2 s, la symetrie montee-descente."
           - math: 'v_{OZ} = v_z(t_O) = 12-10\times 2{,}4'
             note: "On substitue dans v_z(t) (question 1)."
           - math: '\boxed{v_{OZ} \approx -12\ \text{m.s}^{-1}}'
@@ -1198,24 +1198,24 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que l'équation différentielle vérifiée par la vitesse $v_z$ du centre d'inertie $G$ de la balle s'écrit : $\dfrac{dv_z}{dt} + \dfrac{1}{\tau}v_z + g = 0$ avec $\tau$ le temps caractéristique du mouvement.
         reasoning: |-
-          Même bilan à deux forces qu'au rung 7 (poids + frottement linéaire), mais avec un choix d'axe différent de l'exemple travaillé du rung 7 : ici l'axe $Z$ reste orienté **vers le haut** (figure 1), et non vers le bas. Exactement la leçon du rung 1 sur l'arbitraire du signe : le poids se projette donc négativement sur cet axe, ce qui fait apparaître un « $+g$ » au lieu du « $=g$ » du rung 7 — la physique est identique, seule la convention de signe change le visage de l'équation.
+          Même bilan à deux forces qu'au chapitre 8 (poids + frottement linéaire), mais avec un choix d'axe différent de l'exemple travaillé du chapitre 8 : ici l'axe $Z$ reste orienté **vers le haut** (figure 1), et non vers le bas. Exactement la leçon du chapitre 2 sur l'arbitraire du signe : le poids se projette donc négativement sur cet axe, ce qui fait apparaître un « $+g$ » au lieu du « $=g$ » du chapitre 8 — la physique est identique, seule la convention de signe change le visage de l'équation.
         steps:
           - math: 'm\vec a = \vec P + \vec f'
-            note: "Deuxieme loi de Newton (rung 7) : poids et frottement lineaire, comme au rung 7."
+            note: "Deuxieme loi de Newton (chapitre 8) : poids et frottement lineaire, comme au chapitre 8."
           - math: 'm\frac{dv_z}{dt} = -mg - \lambda\,v_z'
-            note: "Projection sur l'axe Z, oriente vers le HAUT (figure 1) -- pas vers le bas comme l'exemple du rung 7 : le poids se projette donc negativement."
+            note: "Projection sur l'axe Z, oriente vers le HAUT (figure 1) -- pas vers le bas comme l'exemple du chapitre 8 : le poids se projette donc negativement."
           - math: '\frac{dv_z}{dt} = -g - \frac{\lambda}{m}\,v_z'
             note: "On divise par la masse m."
           - math: '\boxed{\frac{dv_z}{dt} + \frac{1}{\tau}v_z + g = 0} \qquad \text{avec} \qquad \tau=\frac{m}{\lambda}'
-            note: "On range tout a gauche : le +g (au lieu du =g du rung 7) vient uniquement du choix d'axe vers le haut -- exactement la lecon du rung 1 sur l'arbitraire du signe."
+            note: "On range tout a gauche : le +g (au lieu du =g du chapitre 8) vient uniquement du choix d'axe vers le haut -- exactement la lecon du chapitre 2 sur l'arbitraire du signe."
       - id: q3b
         stem: |-
           **(0,25 pt)** Déduire la norme de la vitesse limite du mouvement du centre d'inertie $G$ de la balle.
         reasoning: |-
-          Même geste qu'au rung 7 : on annule l'accélération dans l'équation différentielle pour trouver le régime permanent, sans jamais résoudre l'équation en entier. Ici $v_\ell$ ressort négative (elle pointe vers le bas, dans le sens opposé à l'axe $Z$ choisi vers le haut) — la norme demandée est sa valeur absolue.
+          Même geste qu'au chapitre 8 : on annule l'accélération dans l'équation différentielle pour trouver le régime permanent, sans jamais résoudre l'équation en entier. Ici $v_\ell$ ressort négative (elle pointe vers le bas, dans le sens opposé à l'axe $Z$ choisi vers le haut) — la norme demandée est sa valeur absolue.
         steps:
           - math: '\frac{dv_z}{dt}=0 \implies -g-\frac{v_\ell}{\tau}=0 \implies v_\ell=-g\,\tau'
-            note: "Regime permanent (rung 7) : on annule l'acceleration. v_ell negatif car la bille tombe, dans le sens oppose a l'axe Z."
+            note: "Regime permanent (chapitre 8) : on annule l'acceleration. v_ell negatif car la bille tombe, dans le sens oppose a l'axe Z."
           - math: '\tau = \frac{m}{\lambda} = \frac{0{,}080}{0{,}12} \approx 0{,}667\ \text{s}'
             note: "Application numerique de tau = m/lambda."
           - math: '\boxed{|v_\ell| = g\,\tau \approx 6{,}7\ \text{m.s}^{-1}}'
@@ -1224,14 +1224,14 @@ entries:
         stem: |-
           **(0,75 pt)** Déterminer, en utilisant la méthode d'Euler, la valeur algébrique $v_z(t_i)$ de la vitesse à l'instant $t_i$ sachant que l'accélération du mouvement à l'instant $t_{i-1}$ est $a_{i-1} = 5\ \text{m.s}^{-2}$ et on prend le pas de calcul $\Delta t = 66\ \text{ms}$.
         reasoning: |-
-          Ici l'énoncé donne l'accélération $a_{i-1}$, pas la vitesse $v_{i-1}$ — l'inverse de toutes les autres applications d'Euler de cette banque, qui partent toujours d'une vitesse connue pour en déduire l'accélération. Il faut donc d'abord **inverser** l'équation différentielle de la question 2-1 pour retrouver $v_{i-1}$ à partir de $a_{i-1}$ donné (une manipulation algébrique, pas une nouvelle idée physique), puis appliquer la récurrence d'Euler standard du rung 8, $v_i=v_{i-1}+a_{i-1}\Delta t$, exactement comme d'habitude.
+          Ici l'énoncé donne l'accélération $a_{i-1}$, pas la vitesse $v_{i-1}$ — l'inverse de toutes les autres applications d'Euler de cette banque, qui partent toujours d'une vitesse connue pour en déduire l'accélération. Il faut donc d'abord **inverser** l'équation différentielle de la question 2-1 pour retrouver $v_{i-1}$ à partir de $a_{i-1}$ donné (une manipulation algébrique, pas une nouvelle idée physique), puis appliquer la récurrence d'Euler standard du chapitre 9, $v_i=v_{i-1}+a_{i-1}\Delta t$, exactement comme d'habitude.
         steps:
           - math: 'a_{i-1} = -g-\frac{v_{i-1}}{\tau} = 5 \implies v_{i-1} = -\tau\left(g+5\right)'
-            note: "On repart de l'equation differentielle (question 2-1) pour retrouver v_(i-1) a partir de a_(i-1) donne -- le rung 8 part toujours de v_i connu, jamais l'inverse ; pont fait ici."
+            note: "On repart de l'equation differentielle (question 2-1) pour retrouver v_(i-1) a partir de a_(i-1) donne -- le chapitre 9 part toujours de v_i connu, jamais l'inverse ; pont fait ici."
           - math: 'v_{i-1} = -0{,}667\times(10+5) \approx -10\ \text{m.s}^{-1}'
             note: "Application numerique."
           - math: 'v_z(t_i) = v_{i-1} + a_{i-1}\,\Delta t = -10 + 5\times 0{,}066'
-            note: "Recurrence d'Euler standard (rung 8), a present que v_(i-1) est connu."
+            note: "Recurrence d'Euler standard (chapitre 9), a present que v_(i-1) est connu."
           - math: '\boxed{v_z(t_i) \approx -9{,}67\ \text{m.s}^{-1}}'
             note: "Coherent : la bille continue de ralentir en valeur absolue, s'approchant de v_ell = -6,7 m/s."
 
@@ -1302,7 +1302,7 @@ entries:
         stem: |-
           (1 pt) En appliquant la deuxième loi de Newton, établir les équations horaires $x(t)$ et $y(t)$ du mouvement de G.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** On veut les positions, et la deuxième loi de Newton ne donne jamais directement des positions : elle donne une accélération. Le chemin est donc toujours le même — système, bilan des forces, deuxième loi, projection, puis **deux primitivations successives**, chacune fixée par une condition initiale. C'est exactement la chaîne du rung 2, avec une seule différence, sur laquelle il faut être net dès maintenant.
+          **Ce qu'on cherche et pourquoi ce geste.** On veut les positions, et la deuxième loi de Newton ne donne jamais directement des positions : elle donne une accélération. Le chemin est donc toujours le même — système, bilan des forces, deuxième loi, projection, puis **deux primitivations successives**, chacune fixée par une condition initiale. C'est exactement la chaîne du chapitre 3, avec une seule différence, sur laquelle il faut être net dès maintenant.
 
           **Le système.** Le ballon, de centre d'inertie G, dans le référentiel terrestre supposé galiléen.
 
@@ -1312,17 +1312,17 @@ entries:
 
           $$\sum \vec{F}_{ext} = m\,\vec{a}_G \quad\Longrightarrow\quad m\vec{g} = m\,\vec{a}_G \quad\Longrightarrow\quad \vec{a}_G = \vec{g}$$
 
-          La masse se simplifie et disparaît — c'est pourquoi l'énoncé ne donne jamais la masse du ballon, et n'en a pas besoin (rung 2).
+          La masse se simplifie et disparaît — c'est pourquoi l'énoncé ne donne jamais la masse du ballon, et n'en a pas besoin (chapitre 3).
 
           **La projection.** Sur la figure 1, $\vec{i}$ pointe vers la droite et $\vec{j}$ vers le haut. Le vecteur $\vec{g}$ est purement vertical, dirigé vers le bas :
 
           $$a_x = 0 \qquad\qquad a_y = -g$$
 
-          **Première primitivation — les vitesses.** À $t_0 = 0$ le vecteur vitesse est $\vec{V}_0$, de norme $V_0$, faisant l'angle $\alpha$ avec l'horizontale ; on le décompose comme au rung 2 ($\alpha$ se mesure depuis l'horizontale, donc le cosinus va à l'horizontale) :
+          **Première primitivation — les vitesses.** À $t_0 = 0$ le vecteur vitesse est $\vec{V}_0$, de norme $V_0$, faisant l'angle $\alpha$ avec l'horizontale ; on le décompose comme au chapitre 3 ($\alpha$ se mesure depuis l'horizontale, donc le cosinus va à l'horizontale) :
 
           $$v_x(t) = V_0\cos\alpha \qquad\qquad v_y(t) = -g\,t + V_0\sin\alpha$$
 
-          **Seconde primitivation — les positions, et voici la différence.** Le rung 2 place systématiquement l'origine **au point de lancement**, ce qui annule les deux constantes d'intégration. Ici l'énoncé place O **au sol**, et le point de départ A est sur l'axe $y$ à la hauteur $h$ : les conditions initiales sont donc $x(0) = x_A = 0$ (A est sur l'axe des ordonnées, figure 1) mais $y(0) = y_A = h \neq 0$. On refait la primitivation avec cette constante, sans rien admettre :
+          **Seconde primitivation — les positions, et voici la différence.** Le chapitre 3 place systématiquement l'origine **au point de lancement**, ce qui annule les deux constantes d'intégration. Ici l'énoncé place O **au sol**, et le point de départ A est sur l'axe $y$ à la hauteur $h$ : les conditions initiales sont donc $x(0) = x_A = 0$ (A est sur l'axe des ordonnées, figure 1) mais $y(0) = y_A = h \neq 0$. On refait la primitivation avec cette constante, sans rien admettre :
 
           $$x(t) = (V_0\cos\alpha)\,t + x(0) = (V_0\cos\alpha)\,t$$
 
@@ -1342,9 +1342,9 @@ entries:
         stem: |-
           (0,5 pt) Déduire que l'équation de la trajectoire du mouvement de G s'écrit : $y = -\dfrac{1}{2}\dfrac{g}{(V_0\cos\alpha)^2}\,x^2 + (\tan\alpha).x + h$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Les équations horaires disent **où** est le ballon à un instant donné ; la trajectoire dit quelle **forme** il dessine, sans passer par le temps. On l'obtient en éliminant $t$ entre $x(t)$ et $y(t)$ — la méthode du rung 3. Et ce n'est pas un exercice de style : la question suivante demande la hauteur du ballon à l'abscisse du filet, donc à un $x$ connu et à un $t$ inconnu. C'est exactement l'outil qu'il faut fabriquer ici.
+          **Ce qu'on cherche et pourquoi ce geste.** Les équations horaires disent **où** est le ballon à un instant donné ; la trajectoire dit quelle **forme** il dessine, sans passer par le temps. On l'obtient en éliminant $t$ entre $x(t)$ et $y(t)$ — la méthode du chapitre 4. Et ce n'est pas un exercice de style : la question suivante demande la hauteur du ballon à l'abscisse du filet, donc à un $x$ connu et à un $t$ inconnu. C'est exactement l'outil qu'il faut fabriquer ici.
 
-          **On isole le temps** dans l'équation horizontale, ce qui est licite tant que $V_0\cos\alpha \neq 0$, c'est-à-dire tant que le tir n'est pas vertical (rung 3) :
+          **On isole le temps** dans l'équation horizontale, ce qui est licite tant que $V_0\cos\alpha \neq 0$, c'est-à-dire tant que le tir n'est pas vertical (chapitre 4) :
 
           $$x = (V_0\cos\alpha)\,t \quad\Longrightarrow\quad t = \frac{x}{V_0\cos\alpha}$$
 
@@ -1366,7 +1366,7 @@ entries:
 
           $$y(x) = -0{,}0216\,x^2 + 0{,}3249\,x + 3$$
 
-          **Le contrôle qui rassure.** Le coefficient de $x^2$ est **négatif** : la parabole est tournée vers le bas, la forme en cloche attendue (rung 3). Et à $x = 0$ on retrouve $y = h = 3\ \text{m}$, c'est-à-dire le point A — la trajectoire part bien de là où le joueur frappe.
+          **Le contrôle qui rassure.** Le coefficient de $x^2$ est **négatif** : la parabole est tournée vers le bas, la forme en cloche attendue (chapitre 4). Et à $x = 0$ on retrouve $y = h = 3\ \text{m}$, c'est-à-dire le point A — la trajectoire part bien de là où le joueur frappe.
 
           **Le piège de cette question.** Le carré. En élevant $t = \dfrac{x}{V_0\cos\alpha}$ au carré, c'est **tout** le dénominateur qui est élevé au carré : $(V_0\cos\alpha)^2 = V_0^2\cos^2\alpha$, et non $V_0\cos^2\alpha$ ni $V_0^2\cos\alpha$. Numériquement, $15{,}22^2 = 231{,}6$ — écrire $16^2 \times \cos 18° = 243{,}5$ fausse le coefficient de $x^2$ de près de 5 % et la hauteur au filet d'une dizaine de centimètres ($4{,}09\ \text{m}$ au lieu de $3{,}96\ \text{m}$). Second réflexe à garder : ici le $+h$ traverse la substitution **intact**, parce que c'est une constante — il ne se transforme jamais en terme en $x$.
       - id: q3
@@ -1394,7 +1394,7 @@ entries:
 
           Le ballon passe donc au-dessus du filet, avec une marge d'environ $1{,}6\ \text{m}$.
 
-          **Le contrôle par l'autre chemin.** On peut refaire le calcul par les équations horaires de la question 1, ce qui teste les deux résultats l'un contre l'autre : le ballon atteint $x = 11\ \text{m}$ à la date $t = \dfrac{11}{15{,}22} = 0{,}723\ \text{s}$, et à cet instant $y = -5 \times 0{,}723^2 + 4{,}94 \times 0{,}723 + 3 = -2{,}61 + 3{,}57 + 3 = 3{,}96\ \text{m}$. Même valeur : l'élimination du temps n'a rien perdu. Un second contrôle, physique celui-là : le sommet de la trajectoire est atteint quand $v_y = 0$, soit $t_{sommet} = \dfrac{4{,}94}{10} = 0{,}494\ \text{s}$, pour une flèche $y_{max} = 4{,}22\ \text{m}$ (rung 4). Le ballon passe le filet à $0{,}723\ \text{s} > 0{,}494\ \text{s}$, donc **en descendant**, et à $3{,}96\ \text{m} < 4{,}22\ \text{m}$ : tout est cohérent.
+          **Le contrôle par l'autre chemin.** On peut refaire le calcul par les équations horaires de la question 1, ce qui teste les deux résultats l'un contre l'autre : le ballon atteint $x = 11\ \text{m}$ à la date $t = \dfrac{11}{15{,}22} = 0{,}723\ \text{s}$, et à cet instant $y = -5 \times 0{,}723^2 + 4{,}94 \times 0{,}723 + 3 = -2{,}61 + 3{,}57 + 3 = 3{,}96\ \text{m}$. Même valeur : l'élimination du temps n'a rien perdu. Un second contrôle, physique celui-là : le sommet de la trajectoire est atteint quand $v_y = 0$, soit $t_{sommet} = \dfrac{4{,}94}{10} = 0{,}494\ \text{s}$, pour une flèche $y_{max} = 4{,}22\ \text{m}$ (chapitre 5). Le ballon passe le filet à $0{,}723\ \text{s} > 0{,}494\ \text{s}$, donc **en descendant**, et à $3{,}96\ \text{m} < 4{,}22\ \text{m}$ : tout est cohérent.
 
           **Le piège de cette question.** Prendre le point C comme origine des distances. La figure 1 marque C au sol, juste à droite de O, avec la légende « Ligne de fond » — c'est la ligne de fond du camp du **serveur**, pas un point du mouvement, et la cote $D$ ne part **pas** de lui : elle part de la verticale de O. Croire le contraire décalerait l'abscisse du filet de quelques dizaines de centimètres, sans qu'aucun calcul ne le signale. Deuxième piège, plus classique : comparer $y(11)$ à la **flèche** $y_{max} = 4{,}22\ \text{m}$ au lieu de $H_f$. La question ne demande pas si le ballon monte assez haut quelque part, mais s'il est assez haut **là où se trouve le filet** — la hauteur maximale peut très bien dépasser $H_f$ pendant que le ballon, lui, arrive dans le filet.
       - id: q4
@@ -1484,10 +1484,10 @@ entries:
         stem: |-
           **(0,75 pt)** En appliquant la deuxième loi de Newton, montrer que la vitesse $v_z(t)$ de $G$ obéit à l'équation différentielle : $\dfrac{dv_z}{dt} + \dfrac{1}{\tau}v_z = g\left(1-\dfrac{\rho_L}{\rho_B}\right)$ avec $\tau$ le temps caractéristique du mouvement de $(S)$.
         reasoning: |-
-          Même situation que bk-2022-n-x4 q2 : bilan à trois forces (poids, frottement, Archimède — le rung 7 n'en traite que deux), et même pas supplémentaire, puisque la masse volumique donnée, $\rho_B$, est celle de la bille et non celle du liquide. On revient à la définition $m_B=\rho_B V_B$ pour exprimer $V_B=m_B/\rho_B$, on substitue dans le terme d'Archimède, puis on suit le rung 7 : projeter, diviser par $m_B$, identifier.
+          Même situation que bk-2022-n-x4 q2 : bilan à trois forces (poids, frottement, Archimède — le chapitre 8 n'en traite que deux), et même pas supplémentaire, puisque la masse volumique donnée, $\rho_B$, est celle de la bille et non celle du liquide. On revient à la définition $m_B=\rho_B V_B$ pour exprimer $V_B=m_B/\rho_B$, on substitue dans le terme d'Archimède, puis on suit le chapitre 8 : projeter, diviser par $m_B$, identifier.
         steps:
           - math: 'm_B\vec a = \vec P + \vec f + \vec F'
-            note: "Deuxieme loi : trois forces (poids, frottement, poussee d'Archimede), comme au rung 7 plus Archimede (bk-2018-n-x4, bk-2022-n-x4)."
+            note: "Deuxieme loi : trois forces (poids, frottement, poussee d'Archimede), comme au chapitre 8 plus Archimede (bk-2018-n-x4, bk-2022-n-x4)."
           - math: 'm_B\frac{dv_z}{dt} = m_B g - \mu\,v_z - \rho_L V_B g'
             note: "Projection sur (O,k) oriente vers le bas : poids +m_B g, frottement -mu v_z, Archimede -rho_L V_B g."
           - math: 'm_B = \rho_B V_B \implies V_B = \frac{m_B}{\rho_B}'
@@ -1501,24 +1501,24 @@ entries:
         stem: |-
           **(0,25 pt)** Par exploitation de la courbe de la figure 2, déterminer la valeur de la vitesse limite $v_\ell$ du mouvement de $G$.
         reasoning: |-
-          Comme au rung 7, la vitesse limite se lit directement comme l'ordonnée du palier horizontal, sans aucun calcul. Sur la figure 2, le palier vient se coucher exactement sur le trait bleu de demi-division.
+          Comme au chapitre 8, la vitesse limite se lit directement comme l'ordonnée du palier horizontal, sans aucun calcul. Sur la figure 2, le palier vient se coucher exactement sur le trait bleu de demi-division.
 
           $$v_\ell \approx 0{,}70\ \text{m.s}^{-1}$$
       - id: q2b
         stem: |-
           **(0,25 pt)** Par exploitation de la courbe de la figure 2, déterminer la valeur de $\tau$ le temps caractéristique du mouvement de $G$.
         reasoning: |-
-          Même lecture qu'au rung 7 : $\tau$ se lit à l'abscisse où la tangente à l'origine coupe le palier. Sur la figure 2, cette intersection tombe exactement sur le trait principal $t=0{,}1\ \text{s}$.
+          Même lecture qu'au chapitre 8 : $\tau$ se lit à l'abscisse où la tangente à l'origine coupe le palier. Sur la figure 2, cette intersection tombe exactement sur le trait principal $t=0{,}1\ \text{s}$.
 
           $$\tau \approx 0{,}1000\ \text{s}$$
       - id: q2c
         stem: |-
           **(0,5 pt)** Par exploitation de la courbe de la figure 2, déterminer la valeur de l'accélération $a_0$ du mouvement de $G$ à l'instant $t_0 = 0$.
         reasoning: |-
-          À $t=0$, $v_z=0$ : le frottement (qui dépend de $v_z$) est nul, mais la poussée d'Archimède, elle, ne dépend pas de $v_z$ et ne s'annule jamais — donc $a_0$ vaut exactement le terme constant de l'équation différentielle, $g(1-\rho_L/\rho_B)$, qui est aussi, par le même geste qu'au rung 7 (annuler l'accélération en régime permanent), égal à $v_\ell/\tau$. On peut donc obtenir $a_0$ sans nouvelle lecture graphique, à partir des deux valeurs déjà lues — exactement la méthode déjà utilisée pour $A$ à la question 3 de bk-2018-n-x4.
+          À $t=0$, $v_z=0$ : le frottement (qui dépend de $v_z$) est nul, mais la poussée d'Archimède, elle, ne dépend pas de $v_z$ et ne s'annule jamais — donc $a_0$ vaut exactement le terme constant de l'équation différentielle, $g(1-\rho_L/\rho_B)$, qui est aussi, par le même geste qu'au chapitre 8 (annuler l'accélération en régime permanent), égal à $v_\ell/\tau$. On peut donc obtenir $a_0$ sans nouvelle lecture graphique, à partir des deux valeurs déjà lues — exactement la méthode déjà utilisée pour $A$ à la question 3 de bk-2018-n-x4.
         steps:
           - math: 'a_0 = \left.\frac{dv_z}{dt}\right|_{t=0} = g\left(1-\frac{\rho_L}{\rho_B}\right) = \frac{v_\ell}{\tau}'
-            note: "A t=0, v_z=0 : seul le terme constant subsiste ; regime permanent (rung 7) donne aussi v_ell/tau pour ce meme terme."
+            note: "A t=0, v_z=0 : seul le terme constant subsiste ; regime permanent (chapitre 8) donne aussi v_ell/tau pour ce meme terme."
           - math: 'a_0 = \frac{0{,}70}{0{,}1000}'
             note: "Application numerique avec les deux valeurs lues au graphe (questions 2-1 et 2-2)."
           - math: '\boxed{a_0 \approx 7{,}0\ \text{m.s}^{-2}}'
@@ -1835,7 +1835,7 @@ entries:
         stem: |-
           **(0,5 pt)** Ecrire l'expression vectorielle de la force d'attraction gravitationnelle $\vec{F}$ exercée par la Terre sur $(S)$ dans la base de Freinet $(\vec{u}\,;\,\vec{n})$ (figure 1).
         reasoning: |-
-          D'après le rung 9, la force gravitationnelle qui s'exerce sur un satellite est **toujours dirigée vers le centre** de l'astre attracteur — jamais tangentielle. Or, sur la figure 1, $\vec{n}$ est précisément défini comme dirigé vers le centre $O$ : la force cherchée est donc portée entièrement par $\vec{n}$, sans aucune composante selon $\vec{u}$ (qui est tangentielle, donc perpendiculaire à la direction de la force). Il ne reste qu'à écrire sa norme, donnée par la loi de gravitation universelle du rung 9, avec $r=R_T+h$ la distance entre le centre $O$ de la Terre et le satellite $G_S$.
+          D'après le chapitre 10, la force gravitationnelle qui s'exerce sur un satellite est **toujours dirigée vers le centre** de l'astre attracteur — jamais tangentielle. Or, sur la figure 1, $\vec{n}$ est précisément défini comme dirigé vers le centre $O$ : la force cherchée est donc portée entièrement par $\vec{n}$, sans aucune composante selon $\vec{u}$ (qui est tangentielle, donc perpendiculaire à la direction de la force). Il ne reste qu'à écrire sa norme, donnée par la loi de gravitation universelle du chapitre 10, avec $r=R_T+h$ la distance entre le centre $O$ de la Terre et le satellite $G_S$.
 
           $$\vec{F} = G\,\frac{m_T\,m_S}{(R_T+h)^2}\,\vec{n}$$
       - id: q2a
@@ -1843,22 +1843,22 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que le mouvement circulaire du centre d'inertie $G_S$ autour de la Terre est uniforme.
         reasoning: |-
-          Exactement le raisonnement du rung 9 : on décompose l'accélération dans la base de Freinet fournie, et comme la force (question 1) est purement selon $\vec{n}$, sa projection sur $\vec{u}$ (la tangente) est nulle.
+          Exactement le raisonnement du chapitre 10 : on décompose l'accélération dans la base de Freinet fournie, et comme la force (question 1) est purement selon $\vec{n}$, sa projection sur $\vec{u}$ (la tangente) est nulle.
         steps:
           - math: '\vec a = \frac{dv}{dt}\vec u + \frac{v^2}{R_T+h}\vec n'
-            note: "Decomposition de l'acceleration dans la base de Freinet (rung 9), comme fournie par l'enonce."
+            note: "Decomposition de l'acceleration dans la base de Freinet (chapitre 10), comme fournie par l'enonce."
           - math: 'm_S\frac{dv}{dt} = 0'
             note: "Projection de la deuxieme loi sur u : la force (question 1) est purement selon n, donc sa composante tangentielle est nulle."
           - math: '\boxed{\frac{dv}{dt} = 0}'
-            note: "La norme de la vitesse ne varie pas : mouvement circulaire UNIFORME (rung 9)."
+            note: "La norme de la vitesse ne varie pas : mouvement circulaire UNIFORME (chapitre 10)."
       - id: q2b
         stem: |-
           **(0,75 pt)** Déterminer $v_S$ la norme de la vitesse de $G_S$ en fonction de $G$, $m_T$, $R_T$ et $h$.
         reasoning: |-
-          Toujours le rung 9 : on projette la deuxième loi sur $\vec{n}$ cette fois, ce qui identifie la force (question 1) à $m_S v_S^2/(R_T+h)$, puis on isole $v_S$.
+          Toujours le chapitre 10 : on projette la deuxième loi sur $\vec{n}$ cette fois, ce qui identifie la force (question 1) à $m_S v_S^2/(R_T+h)$, puis on isole $v_S$.
         steps:
           - math: 'm_S\frac{v_S^2}{R_T+h} = G\frac{m_T\,m_S}{(R_T+h)^2}'
-            note: "Projection de la deuxieme loi sur n (rung 9), avec la force de la question 1."
+            note: "Projection de la deuxieme loi sur n (chapitre 10), avec la force de la question 1."
           - math: 'v_S^2 = \frac{G\,m_T}{R_T+h}'
             note: "La masse m_S du satellite se simplifie des deux cotes."
           - math: '\boxed{v_S = \sqrt{\frac{G\,m_T}{R_T+h}}}'
@@ -1867,16 +1867,16 @@ entries:
         stem: |-
           **(0,75 pt)** Déduire la relation : $\dfrac{T^2}{(R_T + h)^3} = k$ ($k$ étant une constante), traduisant la troisième loi de Kepler relative au mouvement du centre d'inertie $G_S$ autour de la Terre.
         reasoning: |-
-          Exactement la dérivation du rung 10 : deux expressions de $v_S$, celle de la question précédente et celle, géométrique, du périmètre du cercle parcouru en une période, $2\pi(R_T+h)/T$. On les égale, on élève au carré, et on réarrange.
+          Exactement la dérivation du chapitre 11 : deux expressions de $v_S$, celle de la question précédente et celle, géométrique, du périmètre du cercle parcouru en une période, $2\pi(R_T+h)/T$. On les égale, on élève au carré, et on réarrange.
         steps:
           - math: 'v_S = \frac{2\pi(R_T+h)}{T}'
             note: "Vitesse = perimetre du cercle / periode (mouvement circulaire uniforme, question 2-1)."
           - math: '\frac{2\pi(R_T+h)}{T} = \sqrt{\frac{G\,m_T}{R_T+h}}'
-            note: "On egale les deux expressions de v_S (question 2-2 et ci-dessus), comme au rung 10."
+            note: "On egale les deux expressions de v_S (question 2-2 et ci-dessus), comme au chapitre 11."
           - math: '\frac{4\pi^2(R_T+h)^2}{T^2} = \frac{G\,m_T}{R_T+h}'
             note: "On eleve les deux membres au carre."
           - math: '\boxed{\frac{T^2}{(R_T+h)^3} = \frac{4\pi^2}{G\,m_T} = k}'
-            note: "On rearrange (rung 10) : k ne depend que de la masse de l'astre central, jamais du satellite."
+            note: "On rearrange (chapitre 11) : k ne depend que de la masse de l'astre central, jamais du satellite."
       - id: q3
         stem: |-
           **(0,5 pt)** Calculer alors la valeur de la masse $m_T$.
@@ -1994,15 +1994,15 @@ entries:
         stem: |-
           **1-** (0,5 pt) En appliquant la deuxième loi de Newton, établir, dans le repère orthonormé $(O, \vec{i}, \vec{j})$ lié au référentiel terrestre, les équations horaires numériques du mouvement $x(t)$ et $y(t)$ du centre d'inertie $G$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** La deuxième loi de Newton elle-même — $\sum \vec F_{ext} = m\vec a_G$ — appartient au chapitre « Les lois de Newton », où elle est établie comme LE mécanisme central de toute la mécanique newtonienne ; c'est elle que l'énoncé demande d'appliquer, en toutes lettres. Ici on l'applique au cas particulier de la chute libre après un lancer horizontal — exactement la méthode du rung 2 de cette leçon-ci (chute-mouvements-plans), avec un angle de lancement particulièrement simple : $\alpha = 0$.
+          **Ce qu'on cherche et pourquoi ce geste.** La deuxième loi de Newton elle-même — $\sum \vec F_{ext} = m\vec a_G$ — appartient au chapitre « Les lois de Newton », où elle est établie comme LE mécanisme central de toute la mécanique newtonienne ; c'est elle que l'énoncé demande d'appliquer, en toutes lettres. Ici on l'applique au cas particulier de la chute libre après un lancer horizontal — exactement la méthode du chapitre 3 de cette leçon-ci (chute-mouvements-plans), avec un angle de lancement particulièrement simple : $\alpha = 0$.
 
-          **Le système, le référentiel, le bilan.** Système : le solide $(S)$, de masse $m$, réduit à son centre d'inertie $G$. Référentiel terrestre, supposé galiléen — l'énoncé le précise. « Chute libre » a un sens précis, déjà rencontré au rung 1 : le skieur n'est soumis qu'à son poids. Une seule force :
+          **Le système, le référentiel, le bilan.** Système : le solide $(S)$, de masse $m$, réduit à son centre d'inertie $G$. Référentiel terrestre, supposé galiléen — l'énoncé le précise. « Chute libre » a un sens précis, déjà rencontré au chapitre 2 : le skieur n'est soumis qu'à son poids. Une seule force :
 
           $$\vec P = m\vec a_G \implies \vec a_G = \vec g$$
 
           La masse disparaît, comme toujours en chute libre.
 
-          **La projection, avec le repère de la figure 1.** L'axe $y$ est vertical **ascendant**, l'axe $x$ horizontal — c'est très exactement le repère du rung 2, pas celui, inversé, d'une autre entrée de cette banque (bk-2024-r-x5b). $\vec g$ pointe vers le bas, donc dans le sens **opposé** à $\vec j$ :
+          **La projection, avec le repère de la figure 1.** L'axe $y$ est vertical **ascendant**, l'axe $x$ horizontal — c'est très exactement le repère du chapitre 3, pas celui, inversé, d'une autre entrée de cette banque (bk-2024-r-x5b). $\vec g$ pointe vers le bas, donc dans le sens **opposé** à $\vec j$ :
 
           $$a_x = 0 \qquad a_y = -g = -10\ \text{m.s}^{-2}$$
 
@@ -2010,7 +2010,7 @@ entries:
 
           $$V_{0x} = V_0 = 30\ \text{m.s}^{-1} \qquad V_{0y} = 0$$
 
-          C'est le cas particulier $\alpha=0$ du rung 2 : $v_{0x}=v_0\cos 0^\circ=v_0$ et $v_{0y}=v_0\sin 0^\circ=0$.
+          C'est le cas particulier $\alpha=0$ du chapitre 3 : $v_{0x}=v_0\cos 0^\circ=v_0$ et $v_{0y}=v_0\sin 0^\circ=0$.
 
           **Deux primitivations.**
 
@@ -2025,16 +2025,16 @@ entries:
           - math: '\vec P = m\vec a_G \implies \vec a_G = \vec g'
             note: "Deuxieme loi de Newton (chapitre Les lois de Newton) : chute libre, une seule force, le poids."
           - math: 'a_x = 0 \qquad a_y = -g = -10\ \text{m.s}^{-2}'
-            note: "Projection sur (O, i, j) : j vertical ascendant (rung 2), g oppose a j."
+            note: "Projection sur (O, i, j) : j vertical ascendant (chapitre 3), g oppose a j."
           - math: 'V_{0x}=V_0=30\ \text{m.s}^{-1} \qquad V_{0y}=0'
-            note: "V0 est horizontale sur la figure 1 : cas particulier alpha=0 du rung 2."
+            note: "V0 est horizontale sur la figure 1 : cas particulier alpha=0 du chapitre 3."
           - math: '\boxed{x(t) = 30\,t} \qquad \boxed{y(t) = -5\,t^2}'
             note: "Deux primitivations, avec les conditions initiales x(0)=y(0)=0 (G confondu avec O a t=0)."
       - id: q2
         stem: |-
           **2-** (0,5 pt) Déduire que l'équation de la trajectoire du centre d'inertie $G$ s'écrit : $y = -5{,}56\cdot10^{-3}\,x^{2}$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Même geste qu'au rung 3 : éliminer le temps entre les deux équations horaires pour obtenir la forme géométrique $y(x)$ de la trajectoire, indépendante de l'instant considéré.
+          **Ce qu'on cherche et pourquoi ce geste.** Même geste qu'au chapitre 4 : éliminer le temps entre les deux équations horaires pour obtenir la forme géométrique $y(x)$ de la trajectoire, indépendante de l'instant considéré.
 
           **On isole $t$ dans la relation la plus simple.**
 
@@ -2050,12 +2050,12 @@ entries:
 
           $$\boxed{y=-5{,}56\times10^{-3}\,x^2}$$
 
-          **Pourquoi il n'y a pas de terme en $x$.** Au rung 3, la formule générale est $y(x)=\tan\alpha\cdot x - \dfrac{g}{2v_0^2\cos^2\alpha}x^2$ ; ici $\alpha=0$, donc $\tan\alpha=0$ et le premier terme disparaît entièrement — ce n'est pas un cas oublié par la leçon, c'est exactement la limite $\alpha\to0°$ déjà vérifiée au rung 2 (« si $\alpha\to0°$, $v_{0y}=0$ »). Ne pas s'étonner de l'absence du terme linéaire : c'est la signature d'un lancer parfaitement horizontal.
+          **Pourquoi il n'y a pas de terme en $x$.** Au chapitre 4, la formule générale est $y(x)=\tan\alpha\cdot x - \dfrac{g}{2v_0^2\cos^2\alpha}x^2$ ; ici $\alpha=0$, donc $\tan\alpha=0$ et le premier terme disparaît entièrement — ce n'est pas un cas oublié par la leçon, c'est exactement la limite $\alpha\to0°$ déjà vérifiée au chapitre 3 (« si $\alpha\to0°$, $v_{0y}=0$ »). Ne pas s'étonner de l'absence du terme linéaire : c'est la signature d'un lancer parfaitement horizontal.
 
           **Le piège nommé de cette question.** Oublier le carré au dénominateur du diviseur $30$ et écrire $-5/30=-0{,}167$ au lieu de $-5/900$. Le contrôle immédiat : $30^2=900$, jamais $30$.
         steps:
           - math: 't=\frac{x}{30}'
-            note: "On isole t dans x(t) (la plus simple des deux equations, rung 3)."
+            note: "On isole t dans x(t) (la plus simple des deux equations, chapitre 4)."
           - math: 'y = -5\left(\frac{x}{30}\right)^2 = -\frac{5}{900}x^2'
             note: "On reporte dans y(t)."
           - math: '\boxed{y = -5{,}56\times10^{-3}\,x^2}'
@@ -2064,7 +2064,7 @@ entries:
         stem: |-
           **3-** (1 pt) Le skieur tombe au point $E$ du plan incliné de l'angle $\alpha = 20°$ par rapport à l'horizontale. Trouver la distance $d = OE$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** La question la plus chère de la partie, et un geste que la leçon (rung 4) ne montre jamais tel quel : le rung 4 calcule la **portée**, c'est-à-dire l'intersection de la trajectoire avec l'axe horizontal $y=0$ — un cas particulier. Ici, le sol d'atterrissage n'est pas horizontal, c'est le plan incliné de la figure 1 : il faut **poser le système** formé par les deux courbes — la trajectoire parabolique et la droite du plan incliné — et le résoudre, sans deviner.
+          **Ce qu'on cherche et pourquoi ce geste.** La question la plus chère de la partie, et un geste que la leçon (chapitre 5) ne montre jamais tel quel : le chapitre 5 calcule la **portée**, c'est-à-dire l'intersection de la trajectoire avec l'axe horizontal $y=0$ — un cas particulier. Ici, le sol d'atterrissage n'est pas horizontal, c'est le plan incliné de la figure 1 : il faut **poser le système** formé par les deux courbes — la trajectoire parabolique et la droite du plan incliné — et le résoudre, sans deviner.
 
           **L'équation de la droite du plan incliné, lue sur la figure 1.** Le plan part de $O$ et descend vers la droite jusqu'à $Q$, à l'angle $\alpha$ sous l'horizontale (l'arc marqué en $Q$, entre le plan et le segment horizontal explicite tracé sous l'axe $x$). Pour tout point du plan, d'abscisse $x\geq0$, l'ordonnée est donc :
 
@@ -2208,14 +2208,14 @@ entries:
           $$\frac{dv_G}{dt} + A.v_G = B$$
           en exprimant $A$ en fonction de $k$ et $m$, et $B$ en fonction de $g$ (intensité de pesanteur), $m$, $\rho$ et $V$ (volume de la bille).
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Exactement la méthode du rung 7 — bilan des forces, deuxième loi, projection sur l'axe choisi — mais avec les TROIS forces que ce rung couvre en toute généralité : le poids, le frottement, et la poussée d'Archimède, qui n'est ici pas négligeable (l'énoncé le précise explicitement, contrairement à d'autres sujets sur ce même dispositif).
+          Ce qu'on cherche et pourquoi ce geste. Exactement la méthode du chapitre 8 — bilan des forces, deuxième loi, projection sur l'axe choisi — mais avec les TROIS forces que ce chapitre couvre en toute généralité : le poids, le frottement, et la poussée d'Archimède, qui n'est ici pas négligeable (l'énoncé le précise explicitement, contrairement à d'autres sujets sur ce même dispositif).
 
           Bilan des forces. Trois forces s'exercent sur la bille : le poids $\vec P = m\vec g$, la poussée d'Archimède $\vec F = \rho V \vec g$ (avec $V$ le volume de la bille — rappelée par l'énoncé comme le poids du liquide déplacé), et le frottement $\vec f = -k\vec{v_G}$.
 
           Projection sur l'axe $(O\vec z)$, vertical **descendant** (figure 1). Le poids, orienté vers le bas, se projette positivement ; la poussée d'Archimède, orientée vers le HAUT (elle s'oppose toujours au poids), se projette négativement ; le frottement, qui s'oppose au mouvement (la bille descend), se projette lui aussi négativement.
         steps:
           - math: 'm\vec a = \vec P + \vec F + \vec f'
-            note: "Deuxieme loi de Newton (chapitre Lois de Newton) ; trois forces, Archimede n'est PAS negligee ici (rung 7)."
+            note: "Deuxieme loi de Newton (chapitre Lois de Newton) ; trois forces, Archimede n'est PAS negligee ici (chapitre 8)."
           - math: 'm\,\frac{dv_G}{dt} = mg - \rho V g - k\,v_G'
             note: "Projection sur (O,z) descendant : poids +mg, Archimede -rho.V.g (opposee au poids), frottement -k.v_G (oppose au mouvement)."
           - math: '\frac{dv_G}{dt} = g - \frac{\rho V g}{m} - \frac{k}{m}\,v_G'
@@ -2228,7 +2228,7 @@ entries:
           $$v_G(t) = \frac{B}{A}\,.\,\left(1 - e^{-\frac{t}{\tau}}\right)$$
           est solution de l'équation différentielle, où $\tau = \dfrac{1}{A}$ est le temps caractéristique du mouvement.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Le rung 7 de cette leçon établit l'équation différentielle et l'exploite pour $v_\ell$ et $\tau$, mais ne vérifie jamais lui-même qu'une solution proposée la satisfait — c'est exactement le geste enseigné en détail au rung 2 de la leçon « Dipôle RL », sur une équation de MÊME STRUCTURE ($\frac{di}{dt}+\frac1\tau i=\frac{I_{max}}{\tau}$, identique en forme à $\frac{dv_G}{dt}+A\,v_G=B$ ici) : on calcule la dérivée de l'expression proposée, on substitue dans l'équation, et on montre que les deux membres s'égalisent pour TOUT $t$, pas seulement à un instant particulier.
+          Ce qu'on cherche et pourquoi ce geste. Le chapitre 8 de cette leçon établit l'équation différentielle et l'exploite pour $v_\ell$ et $\tau$, mais ne vérifie jamais lui-même qu'une solution proposée la satisfait — c'est exactement le geste enseigné en détail au chapitre 3 de la leçon « Dipôle RL », sur une équation de MÊME STRUCTURE ($\frac{di}{dt}+\frac1\tau i=\frac{I_{max}}{\tau}$, identique en forme à $\frac{dv_G}{dt}+A\,v_G=B$ ici) : on calcule la dérivée de l'expression proposée, on substitue dans l'équation, et on montre que les deux membres s'égalisent pour TOUT $t$, pas seulement à un instant particulier.
 
           On dérive $v_G(t)=\dfrac{B}{A}\left(1-e^{-t/\tau}\right)$ par rapport au temps — seul le terme exponentiel dépend de $t$ :
 
@@ -2256,22 +2256,22 @@ entries:
         stem: |-
           **3-** (0,5 pt) Écrire l'expression de la vitesse limite $V_{\ell im}$ du centre d'inertie de la bille en fonction de $A$ et $B$.
         reasoning: |-
-          Exactement la méthode du rung 7 : on annule l'accélération dans l'équation différentielle — un calcul d'une ligne, jamais une résolution complète — et on isole la vitesse limite. On peut aussi la lire directement sur l'expression de $v_G(t)$ de la question 2 : quand $t$ devient grand, le terme $e^{-t/\tau}$ tend vers $0$, et $v_G(t)$ tend vers $\dfrac{B}{A}$ — les deux méthodes donnent le même résultat, ce qui confirme la cohérence de la solution vérifiée à la question 2.
+          Exactement la méthode du chapitre 8 : on annule l'accélération dans l'équation différentielle — un calcul d'une ligne, jamais une résolution complète — et on isole la vitesse limite. On peut aussi la lire directement sur l'expression de $v_G(t)$ de la question 2 : quand $t$ devient grand, le terme $e^{-t/\tau}$ tend vers $0$, et $v_G(t)$ tend vers $\dfrac{B}{A}$ — les deux méthodes donnent le même résultat, ce qui confirme la cohérence de la solution vérifiée à la question 2.
         steps:
           - math: '\frac{dv_G}{dt} = 0 \implies A\,V_{\ell im} = B'
-            note: "En regime permanent, l'acceleration s'annule dans l'equation differentielle (rung 7)."
+            note: "En regime permanent, l'acceleration s'annule dans l'equation differentielle (chapitre 8)."
           - math: '\boxed{V_{\ell im} = \frac{B}{A}}'
             note: "Coherent avec la limite de v_G(t) quand t devient grand (question 2) : e^(-t/tau) tend vers 0."
       - id: q4
         stem: |-
           **4-** (1 pt) On obtient, à l'aide d'un matériel informatique convenable, la courbe de la figure 2, représentant les variations de la vitesse $v_G$ en fonction du temps. Déterminer graphiquement les valeurs de $V_{\ell im}$ et $\tau$.
         reasoning: |-
-          Deux lectures graphiques indépendantes, exactement la méthode du rung 7. La vitesse limite est l'ordonnée du palier horizontal que la courbe atteint en régime permanent — une simple lecture d'échelle, aucun calcul. Le temps caractéristique se lit à la tangente à l'origine (pente $g$ à $t=0$, rung 7) : elle coupe l'asymptote $v_G=V_{\ell im}$ à l'instant $t=\tau$.
+          Deux lectures graphiques indépendantes, exactement la méthode du chapitre 8. La vitesse limite est l'ordonnée du palier horizontal que la courbe atteint en régime permanent — une simple lecture d'échelle, aucun calcul. Le temps caractéristique se lit à la tangente à l'origine (pente $g$ à $t=0$, chapitre 8) : elle coupe l'asymptote $v_G=V_{\ell im}$ à l'instant $t=\tau$.
         steps:
           - math: '\boxed{V_{\ell im} \approx 1{,}50\ \text{m.s}^{-1}}'
             note: "Ordonnee du palier de la figure 2 (regime permanent)."
           - math: '\boxed{\tau \approx 0{,}20\ \text{s}}'
-            note: "Tangente a l'origine : coupe le palier V_lim a cet instant (methode du rung 7)."
+            note: "Tangente a l'origine : coupe le palier V_lim a cet instant (methode du chapitre 8)."
       - id: q5
         stem: |-
           **5-** (1 pt) Déterminer la valeur du coefficient $k$.
@@ -2300,18 +2300,18 @@ entries:
         stem: |-
           **7-** (1 pt) L'équation différentielle du mouvement de $G$ s'écrit sous la forme : $\dfrac{dv_G}{dt} = 7{,}57 - 5.v_G$. Par application de la méthode d'Euler, et les données du tableau, déterminer les valeurs de $a_1$ et $v_2$.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Cette question fournit sa PROPRE équation numérique — un exercice d'Euler autonome, avec un pas $\Delta t=0{,}033\ \text{s}$ imprimé dans le tableau — indépendant des valeurs de $k$, $\eta$ trouvées plus haut. Deux gestes distincts du rung 8, l'un après l'autre.
+          Ce qu'on cherche et pourquoi ce geste. Cette question fournit sa PROPRE équation numérique — un exercice d'Euler autonome, avec un pas $\Delta t=0{,}033\ \text{s}$ imprimé dans le tableau — indépendant des valeurs de $k$, $\eta$ trouvées plus haut. Deux gestes distincts du chapitre 9, l'un après l'autre.
 
-          $a_1$ : l'accélération à un instant NE SE LIT PAS dans le tableau — elle se recalcule à partir de la vitesse de ce même instant, via l'équation différentielle donnée (rung 8) : $a_1=7{,}57-5\,v_1$, avec $v_1=0{,}25\ \text{m/s}$ (deuxième ligne du tableau).
+          $a_1$ : l'accélération à un instant NE SE LIT PAS dans le tableau — elle se recalcule à partir de la vitesse de ce même instant, via l'équation différentielle donnée (chapitre 9) : $a_1=7{,}57-5\,v_1$, avec $v_1=0{,}25\ \text{m/s}$ (deuxième ligne du tableau).
 
-          $v_2$ : on avance ensuite d'un pas d'Euler depuis l'instant précédent (rung 8), $v_2=v_1+a_1\,\Delta t$, avec le $a_1$ qu'on vient de calculer et $\Delta t=0{,}033\ \text{s}$ (pas imprimé dans le tableau).
+          $v_2$ : on avance ensuite d'un pas d'Euler depuis l'instant précédent (chapitre 9), $v_2=v_1+a_1\,\Delta t$, avec le $a_1$ qu'on vient de calculer et $\Delta t=0{,}033\ \text{s}$ (pas imprimé dans le tableau).
         steps:
           - math: 'a_1 = 7{,}57 - 5\,v_1 = 7{,}57 - 5\times0{,}25'
             note: "On evalue l'equation differentielle donnee en v1 = 0,25 m/s (deuxieme ligne du tableau)."
           - math: '\boxed{a_1 = 6{,}32\ \text{m.s}^{-2}}'
             note: "Deja en dessous de 7,57 : le frottement a commence a mordre."
           - math: 'v_2 = v_1 + a_1\,\Delta t = 0{,}25 + 6{,}32\times0{,}033'
-            note: "Recurrence d'Euler (rung 8) entre les instants t1 et t2, avec le pas imprime dans le tableau."
+            note: "Recurrence d'Euler (chapitre 9) entre les instants t1 et t2, avec le pas imprime dans le tableau."
           - math: '\boxed{v_2 \approx 0{,}459\ \text{m.s}^{-1}}'
             note: "Coherent avec la troisieme ligne du tableau : a2 = 7,57 - 5x0,4586 = 5,277, imprime 5,27."
 
@@ -2430,7 +2430,7 @@ entries:
         stem: |-
           **2-1-** (0,5 pt) Trouver, à un instant $t$, l'expression $v_x$ de la composante horizontale du vecteur vitesse en fonction de $m$, $V_C$, $f_1$ et $t$.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Le rung 2 de la leçon décompose un mouvement de projectile en deux axes indépendants, mais toujours SANS force horizontale ($a_x=0$ constant, parce que seul le poids agit). Ici, une force horizontale $\vec{f_1}=-f_1\vec i$ s'ajoute au poids : $a_x$ n'est donc plus nul, mais la MÉTHODE ne change pas — deuxième loi de Newton, projection sur $\vec i$, puis primitivation d'une accélération constante, exactement le geste des rungs 1 et 2.
+          Ce qu'on cherche et pourquoi ce geste. Le chapitre 3 de la leçon décompose un mouvement de projectile en deux axes indépendants, mais toujours SANS force horizontale ($a_x=0$ constant, parce que seul le poids agit). Ici, une force horizontale $\vec{f_1}=-f_1\vec i$ s'ajoute au poids : $a_x$ n'est donc plus nul, mais la MÉTHODE ne change pas — deuxième loi de Newton, projection sur $\vec i$, puis primitivation d'une accélération constante, exactement le geste des chapitre 2 et 2.
 
           **Le bilan.** Deux forces : le poids $\vec P$ (vertical, aucune composante selon $\vec i$) et $\vec{f_1}=-f_1\vec i$ (horizontal, s'oppose au mouvement puisque $(S)$ avance selon $+\vec i$).
 
@@ -2443,7 +2443,7 @@ entries:
           - math: 'm\,a_x = -f_1 \implies a_x = -\frac{f_1}{m}'
             note: "Deuxieme loi de Newton, projection sur i (seule f1 a une composante horizontale)."
           - math: 'v_x(t) = v_x(0) + a_x\,t = V_C - \frac{f_1}{m}\,t'
-            note: "Primitivation d'une acceleration constante, avec v_x(0)=V_C (rung 2)."
+            note: "Primitivation d'une acceleration constante, avec v_x(0)=V_C (chapitre 3)."
           - math: '\boxed{v_x(t) = -\frac{f_1}{m}\,t + V_C}'
             note: "Forme demandee."
       - id: q2
@@ -2466,7 +2466,7 @@ entries:
         stem: |-
           **2-2-b-** (1 pt) Calculer l'altitude $h$ de $C$ par rapport à la surface de l'eau.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. La composante VERTICALE du mouvement est complètement indépendante de la composante horizontale (rung 2) : $\vec{f_1}$ est purement horizontale, donc elle n'intervient pas selon $\vec j$. Selon $\vec j$, seul le poids agit — exactement une chute libre, avec une vitesse verticale initiale NULLE (l'énoncé dit que $\vec{V_C}$ est horizontal en $C$, donc $v_y(0)=0$).
+          Ce qu'on cherche et pourquoi ce geste. La composante VERTICALE du mouvement est complètement indépendante de la composante horizontale (chapitre 3) : $\vec{f_1}$ est purement horizontale, donc elle n'intervient pas selon $\vec j$. Selon $\vec j$, seul le poids agit — exactement une chute libre, avec une vitesse verticale initiale NULLE (l'énoncé dit que $\vec{V_C}$ est horizontal en $C$, donc $v_y(0)=0$).
 
           **Projection sur $\vec j$** (vers le haut) : $m\,a_y = -mg$, donc $a_y=-g$.
 
@@ -2479,7 +2479,7 @@ entries:
           $$y(t_D) = -h \implies -h = -\frac12 g\,t_D^2 \implies h = \frac12 g\,t_D^2$$
         steps:
           - math: 'a_y = -g \qquad v_y(0) = 0\ (\vec{V_C}\ \text{horizontal en } C)'
-            note: "Selon j : seul le poids agit (f1 est purement horizontale, rung 2)."
+            note: "Selon j : seul le poids agit (f1 est purement horizontale, chapitre 3)."
           - math: 'y(t) = -\frac12\,g\,t^2 \quad \text{(chute libre depuis C, sans vitesse verticale initiale)}'
             note: "Deux primitivations d'une acceleration constante -g, origine des positions en C."
           - math: 'h = \frac12\,g\,t_D^2 = \frac12\times9{,}8\times(0{,}86)^2'
@@ -2539,7 +2539,7 @@ entries:
       - une force de frottement fluide modélisée dans le système international d'unités par : $\vec{f} = 140.V^2.\vec{j}$ *(signe lu directement au rendu vectoriel 600 dpi — voir la note éditoriale en tête de ce bloc)* ;
       - la poussée d'Archimède $\vec{F_A}$, d'intensité $F_A = 637\ \text{N}$.
 
-      On considère l'instant d'entrée de $(S)$ dans l'eau comme nouvelle origine des temps. **Données :** $m = 70\ \text{Kg}$, $g = 9{,}8\ \text{m.s}^{-2}$. **Rappel du repère (figure 1) :** en $O$, $\vec j$ pointe vers le HAUT — c'est cette orientation qui fixe tous les signes ci-dessous, exactement comme le rung 7 de la leçon le rappelle : « le signe qu'on trouve dépend toujours de l'axe choisi, jamais d'une règle à mémoriser ».
+      On considère l'instant d'entrée de $(S)$ dans l'eau comme nouvelle origine des temps. **Données :** $m = 70\ \text{Kg}$, $g = 9{,}8\ \text{m.s}^{-2}$. **Rappel du repère (figure 1) :** en $O$, $\vec j$ pointe vers le HAUT — c'est cette orientation qui fixe tous les signes ci-dessous, exactement comme le chapitre 8 de la leçon le rappelle : « le signe qu'on trouve dépend toujours de l'axe choisi, jamais d'une règle à mémoriser ».
 
       **Tableau d'Euler imprimé sur le sujet :**
 
@@ -2556,7 +2556,7 @@ entries:
         stem: |-
           **3-1-** (1 pt) Montrer que la vitesse $V(t)$ de $G$ vérifie l'équation différentielle suivante : $\dfrac{dV(t)}{dt} - 2.V^2 + 0{,}7 = 0$.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Exactement le rung 7 de la leçon — bilan à TROIS forces (poids, frottement, poussée d'Archimède), deuxième loi, projection — mais avec une différence de convention à noter tout de suite : le rung 7 choisit un axe orienté VERS LE BAS pour simplifier l'écriture ; ici, le repère de la figure 1 impose $\vec j$ VERS LE HAUT. Le rung 7 le dit lui-même : « le signe qu'on trouve dépend toujours de l'axe choisi » — on refait donc la projection avec CET axe-ci, sans réutiliser une formule toute faite.
+          Ce qu'on cherche et pourquoi ce geste. Exactement le chapitre 8 de la leçon — bilan à TROIS forces (poids, frottement, poussée d'Archimède), deuxième loi, projection — mais avec une différence de convention à noter tout de suite : le chapitre 8 choisit un axe orienté VERS LE BAS pour simplifier l'écriture ; ici, le repère de la figure 1 impose $\vec j$ VERS LE HAUT. Le chapitre 8 le dit lui-même : « le signe qu'on trouve dépend toujours de l'axe choisi » — on refait donc la projection avec CET axe-ci, sans réutiliser une formule toute faite.
 
           **Le bilan**, avec $\vec j$ vers le haut : le poids $\vec P$ pointe vers le bas, donc sa composante est $-mg$ ; la poussée d'Archimède $\vec F_A$ pointe vers le haut (elle s'oppose toujours au poids), composante $+F_A$ ; le frottement $\vec f = 140V^2\vec j$ est DONNÉ selon $+\vec j$ (signe établi par lecture directe, voir la note éditoriale en tête de ce bloc) — cohérent avec le sens physique, puisque $(S)$ descend ($V<0$) et que le frottement doit s'opposer à cette descente, donc pointer vers le haut.
 
@@ -2581,14 +2581,14 @@ entries:
         stem: |-
           **3-2-** (0,5 pt) Trouver la valeur de la vitesse limite $V_\ell$.
         reasoning: |-
-          Exactement la méthode du rung 7 : on annule l'accélération dans l'équation différentielle — un calcul d'une ligne, jamais une résolution complète.
+          Exactement la méthode du chapitre 8 : on annule l'accélération dans l'équation différentielle — un calcul d'une ligne, jamais une résolution complète.
 
           $$\frac{dV}{dt} = 0 \implies 2\,V_\ell^2 - 0{,}7 = 0 \implies V_\ell^2 = 0{,}35$$
 
           Deux racines mathématiques, $\pm\sqrt{0{,}35}$ — mais une seule est physique. $(S)$ DESCEND dans l'eau, et $\vec j$ pointe vers le haut (question 3-1) : sa vitesse limite doit donc être NÉGATIVE.
         steps:
           - math: '2\,V_\ell^2 - 0{,}7 = 0 \implies V_\ell^2 = 0{,}35'
-            note: "Regime permanent : acceleration nulle dans l'equation differentielle (rung 7)."
+            note: "Regime permanent : acceleration nulle dans l'equation differentielle (chapitre 8)."
           - math: 'V_\ell = -\sqrt{0{,}35}\quad(\text{racine negative retenue : le solide descend, V<0})'
             note: "Le solide descend et j pointe vers le haut (question 3-1) : seule la racine negative est physique."
           - math: '\boxed{V_\ell \approx -0{,}59\ \text{m.s}^{-1}}'
@@ -2598,7 +2598,7 @@ entries:
         stem: |-
           **3-3-** (1 pt) Déterminer, à l'aide du tableau ci-dessus, et par utilisation de la méthode d'Euler, les valeurs $a_{i+1}$ et $V_{i+2}$.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Exactement les deux gestes du rung 8, l'un après l'autre : d'abord recalculer l'accélération à un instant à partir de la vitesse de CE MÊME instant (via l'équation différentielle de la question 3-1), puis avancer d'un pas d'Euler vers l'instant suivant.
+          Ce qu'on cherche et pourquoi ce geste. Exactement les deux gestes du chapitre 9, l'un après l'autre : d'abord recalculer l'accélération à un instant à partir de la vitesse de CE MÊME instant (via l'équation différentielle de la question 3-1), puis avancer d'un pas d'Euler vers l'instant suivant.
 
           $a_{i+1}$ ne se lit pas dans le tableau : elle se calcule à partir de $V_{i+1}=-1{,}80\ \text{m.s}^{-1}$ (déjà connue, ligne du milieu), en réinjectant dans l'équation différentielle établie à la question 3-1 :
 
@@ -2611,9 +2611,9 @@ entries:
           - math: 'a_{i+1} = 2\,(-1{,}80)^2 - 0{,}7 = 2\times3{,}24-0{,}7'
             note: "On reevalue l'equation differentielle de la question 3-1 en V_(i+1) = -1,80 m/s."
           - math: '\boxed{a_{i+1} = 5{,}78\ \text{m.s}^{-2}}'
-            note: "Accroissement, sous 6,52 : le frottement mord de plus en plus (rung 7), la vitesse se rapproche de V_lim."
+            note: "Accroissement, sous 6,52 : le frottement mord de plus en plus (chapitre 8), la vitesse se rapproche de V_lim."
           - math: 'V_{i+2} = V_{i+1} + a_{i+1}\,\Delta t = -1{,}80 + 5{,}78\times1{,}5\times10^{-2}'
-            note: "Recurrence d'Euler (rung 8) : Delta t = 1,5e-2 s, deduit des dates du tableau."
+            note: "Recurrence d'Euler (chapitre 9) : Delta t = 1,5e-2 s, deduit des dates du tableau."
           - math: '\boxed{V_{i+2} \approx -1{,}71\ \text{m.s}^{-1}}'
             note: "Coherent avec la 3e ligne du tableau : 2x1,71^2-0,7 = 5,148, imprime 5,15 -- le tableau se boucle sur lui-meme."
 
@@ -2679,7 +2679,7 @@ entries:
         stem: |-
           **1-** (1 pt) Par application de la deuxième loi de Newton, établir les équations horaires $x(t)$ et $y(t)$ du mouvement de la balle.
         reasoning: |-
-          C'est exactement le rung R2 : un projectile lancé avec une vitesse inclinée, sans frottement, ne subit que son poids $\vec P = m\vec g$. La deuxième loi de Newton — cross-list vers « Les lois de Newton », dont c'est l'énoncé général, $\sum\vec F_{ext} = m\vec a_G$ — donne ici $\vec a_G = \vec g$ : la masse de la balle disparaît complètement de l'équation, elle ne reparaîtra à aucune étape des questions suivantes.
+          C'est exactement le chapitre 3 : un projectile lancé avec une vitesse inclinée, sans frottement, ne subit que son poids $\vec P = m\vec g$. La deuxième loi de Newton — cross-list vers « Les lois de Newton », dont c'est l'énoncé général, $\sum\vec F_{ext} = m\vec a_G$ — donne ici $\vec a_G = \vec g$ : la masse de la balle disparaît complètement de l'équation, elle ne reparaîtra à aucune étape des questions suivantes.
 
           $\vec g$ est purement vertical : en projetant sur les deux axes du repère $(O,\vec i,\vec j)$, on obtient deux équations scalaires INDÉPENDANTES, $a_x=0$ et $a_y=-g$. On primitive deux fois chacune, avec les conditions initiales du lancer : à $t=0$, la balle est en $O$ (donc $x(0)=y(0)=0$) et sa vitesse est $\vec{V_0}$, de composantes $V_{0x}=V_0\cos\theta$ et $V_{0y}=V_0\sin\theta$ (projection de $\vec{V_0}$ sur les deux axes).
 
@@ -2688,41 +2688,41 @@ entries:
           (Les deux composantes sont égales, une conséquence directe de $\theta=45°$ exactement — $\cos45°=\sin45°$ — pas une coïncidence des données.)
         steps:
           - math: '\vec a_G = \vec g \implies a_x = 0 \qquad a_y = -g'
-            note: "2e loi de Newton (cross-list lois-de-newton) : seul le poids agit, projection sur les deux axes independants (rung R2)."
+            note: "2e loi de Newton (cross-list lois-de-newton) : seul le poids agit, projection sur les deux axes independants (chapitre 3)."
           - math: 'V_{0x} = V_0\cos\theta = 10\cos45^\circ \approx 7{,}071\ \text{m.s}^{-1} \qquad V_{0y} = V_0\sin\theta = 10\sin45^\circ \approx 7{,}071\ \text{m.s}^{-1}'
-            note: "Projection de la vitesse initiale sur les deux axes (rung R2)."
+            note: "Projection de la vitesse initiale sur les deux axes (chapitre 3)."
           - math: 'x(t) = V_{0x}\,t \qquad y(t) = V_{0y}\,t - \frac{1}{2}g\,t^2'
-            note: "Deux primitivations successives, origine au point de lancement O (rung R2)."
+            note: "Deux primitivations successives, origine au point de lancement O (chapitre 3)."
           - math: '\boxed{x(t) \approx 7{,}071\,t \qquad y(t) \approx 7{,}071\,t - 5\,t^2}'
             note: "Equations horaires du mouvement, avec g = 10 m/s2 donne dans l'enonce."
       - id: q2
         stem: |-
           **2-** (0,5 pt) En déduire l'équation de la trajectoire de la balle.
         reasoning: |-
-          Le rung R3 élimine le temps entre $x(t)$ et $y(t)$ : on isole $t=x/V_{0x}$ dans la première équation, on substitue dans la seconde. Avec $\theta=45°$, le résultat se simplifie particulièrement, puisque $\tan\theta=1$ et $\cos^2\theta=0{,}5$.
+          le chapitre 4 élimine le temps entre $x(t)$ et $y(t)$ : on isole $t=x/V_{0x}$ dans la première équation, on substitue dans la seconde. Avec $\theta=45°$, le résultat se simplifie particulièrement, puisque $\tan\theta=1$ et $\cos^2\theta=0{,}5$.
 
           $$y(x) = \tan\theta\cdot x - \frac{g}{2V_0^2\cos^2\theta}\,x^2 = 1\times x - \frac{10}{2\times10^2\times0{,}5}\,x^2$$
         steps:
           - math: 'y(x) = \tan\theta\cdot x - \frac{g}{2V_0^2\cos^2\theta}\,x^2'
-            note: "Elimination du temps entre x(t) et y(t) (rung R3)."
+            note: "Elimination du temps entre x(t) et y(t) (chapitre 4)."
           - math: '\tan45^\circ = 1 \qquad \frac{g}{2V_0^2\cos^2 45^\circ} = \frac{10}{2\times100\times0{,}5} = 0{,}1'
             note: "Simplification propre a theta = 45 degres."
           - math: '\boxed{y(x) = x - 0{,}1\,x^2}'
-            note: "Equation de la trajectoire (une parabole tournee vers le bas, rung R3)."
+            note: "Equation de la trajectoire (une parabole tournee vers le bas, chapitre 4)."
       - id: q3
         stem: |-
           **3-** (0,75 pt) Déterminer la valeur de $x_S$, abscisse du sommet de la trajectoire de la balle.
         reasoning: |-
-          Le rung R4 pose le critère du sommet : c'est l'instant où la vitesse verticale s'annule, $V_{0y}-g\,t=0$, avant de redescendre. On en tire $t_{sommet}$, puis $x_S$ en le reportant dans $x(t)$ (question 1) — pas dans $y(x)$, qui donnerait une hauteur, pas une abscisse.
+          le chapitre 5 pose le critère du sommet : c'est l'instant où la vitesse verticale s'annule, $V_{0y}-g\,t=0$, avant de redescendre. On en tire $t_{sommet}$, puis $x_S$ en le reportant dans $x(t)$ (question 1) — pas dans $y(x)$, qui donnerait une hauteur, pas une abscisse.
 
           $$t_{sommet} = \frac{V_{0y}}{g} = \frac{7{,}071}{10} \approx 0{,}7071\ \text{s}$$
 
           $$x_S = V_{0x}\times t_{sommet} = 7{,}071\times0{,}7071$$
 
-          **Le contrôle qui rassure.** Puisque $y(x)=x-0{,}1x^2$ est une parabole $y=Ax-Bx^2$, son sommet — le point où la pente $dy/dx$ s'annule — se trouve, par un pur argument de calcul, à $x=A/(2B)=1/(2\times0{,}1)=5$ : exactement la même valeur, retrouvée par une voie complètement indépendante (la géométrie de la courbe plutôt que la cinématique). Les deux méthodes du rung R4 (temporelle et géométrique) s'accordent.
+          **Le contrôle qui rassure.** Puisque $y(x)=x-0{,}1x^2$ est une parabole $y=Ax-Bx^2$, son sommet — le point où la pente $dy/dx$ s'annule — se trouve, par un pur argument de calcul, à $x=A/(2B)=1/(2\times0{,}1)=5$ : exactement la même valeur, retrouvée par une voie complètement indépendante (la géométrie de la courbe plutôt que la cinématique). Les deux méthodes du chapitre 5 (temporelle et géométrique) s'accordent.
         steps:
           - math: 't_{sommet} = \frac{V_{0y}}{g} = \frac{7{,}071}{10} \approx 0{,}7071\ \text{s}'
-            note: "Instant du sommet : la vitesse verticale s'annule (rung R4)."
+            note: "Instant du sommet : la vitesse verticale s'annule (chapitre 5)."
           - math: 'x_S = V_{0x}\times t_{sommet} = 7{,}071\times0{,}7071'
             note: "On reporte dans x(t), PAS dans y(x) : x_S est une abscisse, pas une hauteur."
           - math: '\boxed{x_S = 5{,}000\ \text{m}}'
@@ -2827,20 +2827,20 @@ entries:
         stem: |-
           **3-1-** (1,25 pt) Trouver les expressions littérales des équations horaires $x(t)$ et $y(t)$ du mouvement de $G$, et déduire l'expression littérale de l'équation de la trajectoire.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Exactement le mécanisme du rung 2 : l'action de l'air est négligée (énoncé), donc la SEULE force est le poids — c'est une chute libre, et la deuxième loi de Newton donne $\vec{a} = \vec{g}$, que le repère $(D, \vec{i}\,', \vec{j}\,')$ décompose en deux axes INDÉPENDANTS : $a_x = 0$ (rien n'agit horizontalement) et $a_y = -g$ ($\vec{j}\,'$ pointe vers le haut).
+          Ce qu'on cherche et pourquoi ce geste. Exactement le mécanisme du chapitre 3 : l'action de l'air est négligée (énoncé), donc la SEULE force est le poids — c'est une chute libre, et la deuxième loi de Newton donne $\vec{a} = \vec{g}$, que le repère $(D, \vec{i}\,', \vec{j}\,')$ décompose en deux axes INDÉPENDANTS : $a_x = 0$ (rien n'agit horizontalement) et $a_y = -g$ ($\vec{j}\,'$ pointe vers le haut).
 
-          **Les conditions initiales**, lues dans l'énoncé : l'origine des positions est en $D$ (l'origine du repère) et l'origine des temps à l'instant du passage en $D$ — exactement la convention des rungs — avec une vitesse initiale $\vec{v}_D$ inclinée de $\theta$ au-dessus de l'horizontale, donc de composantes $v_D\cos\theta$ et $v_D\sin\theta$.
+          **Les conditions initiales**, lues dans l'énoncé : l'origine des positions est en $D$ (l'origine du repère) et l'origine des temps à l'instant du passage en $D$ — exactement la convention des chapitres — avec une vitesse initiale $\vec{v}_D$ inclinée de $\theta$ au-dessus de l'horizontale, donc de composantes $v_D\cos\theta$ et $v_D\sin\theta$.
 
-          **Deux primitivations successives** (rung 2), puis l'élimination du temps (rung 3) : la première équation horaire donne $t = \dfrac{x}{v_D\cos\theta}$, qu'on reporte dans la seconde pour obtenir la trajectoire.
+          **Deux primitivations successives** (chapitre 3), puis l'élimination du temps (chapitre 4) : la première équation horaire donne $t = \dfrac{x}{v_D\cos\theta}$, qu'on reporte dans la seconde pour obtenir la trajectoire.
         steps:
           - math: 'a_x = 0 \qquad a_y = -g'
-            note: "Chute libre : seul le poids agit (air neglige), deuxieme loi projetee dans (D, i prime, j prime) -- rung 2."
+            note: "Chute libre : seul le poids agit (air neglige), deuxieme loi projetee dans (D, i prime, j prime) -- chapitre 3."
           - math: 'v_x(t) = v_D\cos\theta \qquad v_y(t) = -g\,t + v_D\sin\theta'
             note: "Premiere primitivation, avec les composantes de v_D comme conditions initiales."
           - math: '\boxed{x(t) = v_D\cos\theta\cdot t \qquad y(t) = -\frac12\,g\,t^2 + v_D\sin\theta\cdot t}'
             note: "Deuxieme primitivation, origine des positions en D : x(0) = y(0) = 0."
           - math: '\boxed{y = -\frac{g\,x^2}{2\,v_D^2\cos^2\theta} + x\tan\theta}'
-            note: "Elimination du temps t = x/(v_D.cos(theta)) entre les deux equations horaires (rung 3)."
+            note: "Elimination du temps t = x/(v_D.cos(theta)) entre les deux equations horaires (chapitre 4)."
       - id: q2
         part: "3-2 — La vitesse v_D, depuis le point de chute P (scope note en tête de fichier)"
         stem: |-
@@ -2859,7 +2859,7 @@ entries:
           - math: 'y_P = -\frac{g\,x_P^2}{2\,v_D^2\cos^2\theta} + x_P\tan\theta'
             note: "P est un point de la trajectoire : on substitue ses coordonnees dans l equation de la question 3-1."
           - math: 'v_D^2 = \frac{g\,x_P^2}{2\cos^2\theta\left(x_P\tan\theta - y_P\right)}'
-            note: "Isolation algebrique de v_D au carre -- geste hors rungs, ponte ici pas a pas (scope note en tete de fichier)."
+            note: "Isolation algebrique de v_D au carre -- geste hors chapitres, ponte ici pas a pas (scope note en tete de fichier)."
           - math: 'v_D^2 = \frac{10\times15^2}{2\times0{,}5\times\left(15\times1 - (-5)\right)} = \frac{2250}{20} = 112{,}5'
             note: "theta = 45 degres : cos carre vaut 0,5 et tan vaut 1 ; x_P.tan(theta) - y_P = 15 + 5 = 20 (le piege de signe)."
           - math: '\boxed{v_D = \sqrt{112{,}5} \approx 10{,}6\ \text{m.s}^{-1}}'
@@ -3145,7 +3145,7 @@ entries:
 
           **1-1-** (0,5 pt) Ecrire en fonction de $M_J$, $M_S$, $G$, et $r$, *(sic — le sujet imprime un double espace ici)* l'expression de l'intensité de la force de gravitation universelle exercée par le Soleil sur Jupiter.
         reasoning: |-
-          C'est la loi de la gravitation universelle (rung 9), appliquée à deux corps qu'on a le droit de traiter comme ponctuels — et l'énoncé a pris soin de le justifier, en deux endroits :
+          C'est la loi de la gravitation universelle (chapitre 10), appliquée à deux corps qu'on a le droit de traiter comme ponctuels — et l'énoncé a pris soin de le justifier, en deux endroits :
 
           - « le soleil et Jupiter sont à répartitions sphériques de masses » : un corps à symétrie sphérique attire l'extérieur **comme si toute sa masse était concentrée en son centre**. C'est ce qui autorise à parler d'une distance « centre à centre » ;
           - « on néglige les dimensions de la planète Jupiter devant la distance qui la sépare du centre du Soleil » : la distance $r$ est donc bien définie, sans ambiguïté sur le point de Jupiter qu'on mesure.
@@ -3215,7 +3215,7 @@ entries:
         stem: |-
           **b-** (1 pt) Montrer que la troisième loi de Kepler s'écrit : $\dfrac{T_J^{\,2}}{r^3} = \dfrac{4\pi^2}{G\,M_S}$.
         reasoning: |-
-          Une démonstration en deux lignes, à condition de partir du bon endroit : **la relation dynamique de la question précédente**, et **une expression purement géométrique de la vitesse** (rung 10).
+          Une démonstration en deux lignes, à condition de partir du bon endroit : **la relation dynamique de la question précédente**, et **une expression purement géométrique de la vitesse** (chapitre 11).
 
           **Point de départ n° 1 — ce que la dynamique a donné** à la question 1-2-a :
 

@@ -36,7 +36,7 @@ C'est exactement cette tension — la connaissance vient-elle de l'expérience s
 
 ## R1 — Empirisme et rationalisme : deux sources rivales de la connaissance
 
-### Ce que R0 laisse en suspens
+### Ce que le chapitre 1 laisse en suspens
 
 Le cas de la tisane a fait surgir une question qu'il faut maintenant poser directement : d'où vient la connaissance ? De ce que nous percevons par les sens — ce qu'on appelle l'**expérience** — ou de ce que la raison peut établir par elle-même, indépendamment de toute perception ? Deux grandes familles de réponses s'affrontent, depuis des siècles, sur ce point précis.
 
@@ -70,7 +70,7 @@ Ce que ce découpage permet de voir, précisément, dans la situation du chapitr
 
 ## R2 — Hume et la critique de l'induction : confirmer n'est jamais prouver
 
-### Ce que R1 laisse en suspens
+### Ce que le chapitre 2 laisse en suspens
 
 Le chapitre 2 a présenté Hume comme celui pour qui toute connaissance vient de l'expérience. Mais Hume est aussi, et peut-être surtout, celui qui a montré la limite la plus embarrassante de ce projet : comment passe-t-on, légitimement, d'observations particulières et passées à une loi générale, valable pour tous les cas, y compris ceux qu'on n'a jamais observés ?
 
@@ -96,7 +96,7 @@ Ce que la critique de Hume permet de voir, précisément, dans la situation du c
 
 ## R3 — Claude Bernard et la méthode expérimentale : l'observation n'est jamais neutre
 
-### Ce que R2 laisse en suspens
+### Ce que le chapitre 3 laisse en suspens
 
 Si l'accumulation d'observations ne prouve jamais rien de façon définitive, comment la science procède-t-elle malgré tout pour progresser, plutôt que de se contenter, comme grand-mère, d'attendre et de constater ? Claude Bernard (XIXe siècle, médecin et physiologiste, *Introduction à l'étude de la médecine expérimentale*, 1865) répond à cette question en distinguant deux démarches qu'on confond trop souvent sous le même mot d'« observation ».
 
@@ -138,7 +138,7 @@ Ce protocole ne « prouve » toujours rien avec une certitude absolue (chapitre 
 
 ## R4 — Retour à Popper : la théorie propose, l'expérience ne fait que réfuter
 
-### Ce que R3 rend visible, et que R2 avait déjà anticipé
+### Ce que le chapitre 4 rend visible, et que le chapitre 3 avait déjà anticipé
 
 Le protocole du chapitre 4 a une structure précise : une hypothèse permet de prédire un résultat ; si ce résultat n'a pas lieu, l'hypothèse est affaiblie ou réfutée ; s'il a lieu, l'hypothèse est seulement confirmée, jamais prouvée avec une certitude définitive (chapitre 3). Tu as déjà rencontré, dans la leçon sur la vérité, le philosophe qui a donné à cette structure son nom précis : Popper (la-verite, chapitre 8).
 
@@ -160,7 +160,7 @@ Formule maintenant l'hypothèse de grand-mère de façon rigoureusement falsifia
 
 ## R5 — Kant : la sensibilité sans concepts est aveugle, les concepts sans sensibilité sont vides
 
-### Ce que R1 laisse encore ouvert
+### Ce que le chapitre 2 laisse encore ouvert
 
 Le chapitre 2 a opposé empirisme et rationalisme comme deux camps rivaux. Mais chapitres 4 et 5 ont montré quelque chose que ni l'un ni l'autre, pris séparément, n'explique bien : l'expérience scientifique la plus rigoureuse suppose toujours déjà une idée, une hypothèse, une structure conceptuelle — sans quoi elle ne serait qu'un enregistrement sans direction. Faut-il alors, comme le rationalisme, réduire l'expérience à un rôle secondaire ? Kant (XVIIIe siècle, *Critique de la raison pure*, 1781) refuse ce choix, et propose une troisième voie.
 
@@ -211,7 +211,7 @@ Et Bachelard, déjà rencontré dans la leçon sur la vérité (la-verite, chapi
 
 Ce chapitre clôt le module « La connaissance » ouvert par la leçon sur la vérité. Cette dernière avait établi qu'aucune certitude, hors le cogito cartésien, n'échappe jamais totalement au risque de l'erreur — et que la science elle-même n'avance que par théories provisoires, jamais définitivement prouvées (Popper), en rompant activement avec les évidences premières (Bachelard). Cette leçon-ci a montré *comment*, concrètement, la connaissance scientifique tient malgré tout : ni en se fiant à l'expérience seule (Hume), ni en s'en passant totalement (le rationalisme le plus radical), mais en articulant sans cesse une théorie qui propose et une expérience qui, seule, peut la mettre en échec (Bernard, Popper) — le tout reposant sur des formes a priori que ni l'expérience ni la raison seule n'auraient pu produire l'une sans l'autre (Kant).
 
-> **Erreur à éviter :** ne confonds jamais reconnaître qu'aucune preuve n'est jamais définitive (le fallibilisme de Popper, déjà signalé en la-verite chapitre 9) avec l'idée que toute théorie ou toute conviction se vaudrait, faute de certitude absolue (le relativisme). La conviction de grand-mère et l'hypothèse rigoureusement testée par la méthode de Bernard ne sont pas logées à la même enseigne : l'une n'a jamais été exposée au risque d'être réfutée, l'autre l'a été et y a, éventuellement, résisté — et cette différence, précisément, sépare une connaissance qui progresse d'une conviction qui se contente de se répéter.
+> **Erreur à éviter :** ne confonds jamais reconnaître qu'aucune preuve n'est jamais définitive (le fallibilisme de Popper, déjà signalé au chapitre 9 de « La vérité ») avec l'idée que toute théorie ou toute conviction se vaudrait, faute de certitude absolue (le relativisme). La conviction de grand-mère et l'hypothèse rigoureusement testée par la méthode de Bernard ne sont pas logées à la même enseigne : l'une n'a jamais été exposée au risque d'être réfutée, l'autre l'a été et y a, éventuellement, résisté — et cette différence, précisément, sépare une connaissance qui progresse d'une conviction qui se contente de se répéter.
 
 [[checkpoint:cp-r6-fallibilisme]]
 

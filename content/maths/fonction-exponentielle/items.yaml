@@ -202,10 +202,10 @@ items:
       $x\to-\infty$, $e^x\to0$ sans jamais atteindre $0$ — c'est l'asymptote
       horizontale $y=0$ de la courbe de $\exp$.
     solution: |
-      **Fait fondamental (R1) :** $\exp(x)>0$ pour tout réel $x$, car
+      **Fait fondamental (chapitre 2) :** $\exp(x)>0$ pour tout réel $x$, car
       l'image de $\exp$ est $]0,+\infty[$ (c'est le domaine de $\ln$).
 
-      **Comportement en $-\infty$ (R4) :** $\displaystyle\lim_{x\to-\infty} e^x = 0$,
+      **Comportement en $-\infty$ (chapitre 5) :** $\displaystyle\lim_{x\to-\infty} e^x = 0$,
       mais cette limite n'est jamais atteinte : $e^x$ reste strictement
       positif à chaque instant, aussi petit soit-il.
 
@@ -255,7 +255,7 @@ items:
       chapitre — elle transforme une somme d'exposants en produit, exactement
       l'inverse de ce que fait $\ln$ sur un produit.
     solution: |
-      **Propriété (produit), établie au R2 :** pour tous réels $a$ et $b$ :
+      **Propriété (produit), établie au chapitre 3 :** pour tous réels $a$ et $b$ :
       $$e^{a+b} = e^a \times e^b$$
       Elle se démontre en comparant les logarithmes des deux membres et en
       utilisant l'injectivité de $\ln$.
@@ -277,7 +277,7 @@ items:
         feedback: >
           Ce choix change le SIGNE du résultat au lieu de prendre son
           inverse. Mais $e^{-a}$, comme n'importe quelle valeur de $\exp$,
-          reste toujours strictement positif (R1) — ce n'est jamais
+          reste toujours strictement positif (chapitre 2) — ce n'est jamais
           l'opposé (négatif) de $e^a$. La propriété de l'opposé porte sur
           l'exposant, pas sur le signe du résultat.
       - id: B
@@ -290,7 +290,7 @@ items:
         feedback: >
           Ce choix cumule deux erreurs : il prend bien l'inverse, mais y
           ajoute aussi un signe négatif. Le résultat serait négatif — or
-          $e^{-a}>0$ toujours (R1), quelle que soit la valeur de $a$. La
+          $e^{-a}>0$ toujours (chapitre 2), quelle que soit la valeur de $a$. La
           bonne réponse ne comporte aucun signe négatif.
       - id: D
         text: "$e^a$"
@@ -304,7 +304,7 @@ items:
       Exactement : $e^a\times e^{-a}=e^{a+(-a)}=e^0=1$, donc en divisant par
       $e^a$ (jamais nul), $e^{-a}=\dfrac{1}{e^a}$.
     solution: |
-      **Démonstration (R2) :** applique la propriété du produit à $a$ et
+      **Démonstration (chapitre 3) :** applique la propriété du produit à $a$ et
       $-a$ :
       $$e^a \times e^{-a} = e^{a+(-a)} = e^0 = 1$$
       Comme $e^a\neq0$ (toujours strictement positif), on divise les deux
@@ -511,7 +511,7 @@ items:
 
       On sait (chapitre précédent) que $\ln(1)=0$, et que $\ln$ est
       strictement croissante donc injective : $1$ est le SEUL réel dont le
-      logarithme s'annule. Donc $E(0)=1$ — ce que le R1 nommera $\exp(0)=1$.
+      logarithme s'annule. Donc $E(0)=1$ — ce que le chapitre 2 nommera $\exp(0)=1$.
 
   - id: EXP-8
     rung: "R0"
@@ -558,14 +558,14 @@ items:
           qui convient.
     correct_feedback: >
       Exactement la bonne anticipation : $\ln$ transforme un produit en
-      somme, donc sa réciproque doit transformer une somme en produit. Le R2
+      somme, donc sa réciproque doit transformer une somme en produit. Le chapitre 3
       le démontrera proprement : $\exp(a+b) = \exp(a)\times\exp(b)$.
     solution: |
-      **Intuition à valider plus tard (R2) :** puisque $\ln(uv)=\ln(u)+\ln(v)$
+      **Intuition à valider plus tard (chapitre 3) :** puisque $\ln(uv)=\ln(u)+\ln(v)$
       transforme un produit en somme, la fonction $E$ qui défait $\ln$ doit
       transformer une somme en produit :
       $$E(a+b) = E(a) \times E(b)$$
-      Ce sera démontré rigoureusement au R2 via l'injectivité de $\ln$.
+      Ce sera démontré rigoureusement au chapitre 3 via l'injectivité de $\ln$.
 
   - id: EXP-9
     rung: "R0"
@@ -618,7 +618,7 @@ items:
       **Ce que « bijection » garantit :** pour tout réel $k$, l'équation
       $\ln(x)=k$ admet une unique solution $x\in\,]0,+\infty[$ — ni zéro
       solution, ni plusieurs. C'est vrai pour $k=-50$ comme pour n'importe
-      quel autre réel. La fonction $\exp$ (introduite au R1) donnera enfin un
+      quel autre réel. La fonction $\exp$ (introduite au chapitre 2) donnera enfin un
       nom à cette solution : $x=\exp(-50)$.
 
   - id: EXP-10
@@ -714,7 +714,7 @@ items:
       Exactement : $\ln(e^x)=x$ est vraie pour TOUT réel $x$, sans condition,
       car $e^x>0$ toujours. C'est $e^{\ln(x)}=x$ qui, elle, exige $x>0$.
     solution: |
-      Les deux identités fondamentales du R1 :
+      Les deux identités fondamentales du chapitre 2 :
       $$\ln(e^x) = x \ \text{pour TOUT réel } x \qquad\qquad e^{\ln(x)} = x \ \text{pour tout } x>0 \text{ seulement}$$
       La première ne demande aucune condition car $e^x$ est toujours dans le
       domaine de $\ln$ (toujours strictement positif). La seconde exige
@@ -763,7 +763,7 @@ items:
       Exactement : $e^{a}\times e^{b}=e^{a+b}$, donc
       $e^{4}\times e^{-7}=e^{4+(-7)}=e^{-3}$.
     solution: |
-      D'après la propriété du produit (R2) : $e^a\times e^b=e^{a+b}$.
+      D'après la propriété du produit (chapitre 3) : $e^a\times e^b=e^{a+b}$.
       $$e^{4}\times e^{-7} = e^{4+(-7)} = e^{-3}$$
 
   - id: EXP-13
@@ -947,7 +947,7 @@ items:
       Exactement : en remplaçant $x$ par $4$ dans $e^x\geq x+1$, on obtient
       $e^4 \geq 4+1=5$.
     solution: |
-      L'inégalité de référence (R4) est valable pour TOUT réel $x$ :
+      L'inégalité de référence (chapitre 5) est valable pour TOUT réel $x$ :
       $$e^x \geq x+1$$
       En $x=4$ :
       $$e^4 \geq 4+1 = 5$$
@@ -1046,7 +1046,7 @@ items:
       — et on vérifie : $e^1=e$.
     solution: |
       Les courbes de deux fonctions réciproques sont symétriques par rapport
-      à la droite $y=x$ (R5), ce qui échange systématiquement les
+      à la droite $y=x$ (chapitre 6), ce qui échange systématiquement les
       coordonnées de chaque point : $(a,b)$ sur la courbe de $\ln$ devient
       $(b,a)$ sur la courbe de $\exp$.
       $$(e,1) \text{ sur } \ln \quad\Longrightarrow\quad (1,e) \text{ sur } \exp$$
@@ -1099,10 +1099,10 @@ items:
       Exactement : croissance stricte sur tout $\mathbb{R}$ (car $(e^x)'=e^x>0$
       toujours), de $0$ (exclu) en $-\infty$ à $+\infty$ en $+\infty$.
     solution: |
-      Rassemblé au R5 : $\exp$ est définie sur $\mathbb{R}$, $(e^x)'=e^x>0$
+      Rassemblé au chapitre 6 : $\exp$ est définie sur $\mathbb{R}$, $(e^x)'=e^x>0$
       pour tout $x$ donc $\exp$ est strictement croissante sur $\mathbb{R}$
       tout entier, avec $\displaystyle\lim_{x\to-\infty}e^x=0$ et
-      $\displaystyle\lim_{x\to+\infty}e^x=+\infty$ (R4). Une seule ligne
+      $\displaystyle\lim_{x\to+\infty}e^x=+\infty$ (chapitre 5). Une seule ligne
       strictement croissante dans le tableau de variations, sans minimum ni
       maximum.
 
@@ -1248,7 +1248,7 @@ items:
       Exactement : $\exp$ est SA PROPRE primitive (comme elle est sa propre
       dérivée) — unique parmi les fonctions usuelles du programme.
     solution: |
-      Puisque $(e^x)'=e^x$ (R3), $\exp$ est sa propre primitive :
+      Puisque $(e^x)'=e^x$ (chapitre 4), $\exp$ est sa propre primitive :
       $$\text{les primitives de } x\mapsto e^x \text{ sont } x\mapsto e^x+C,\ C\in\mathbb{R}$$
 
   - id: EXP-23
@@ -1346,7 +1346,7 @@ items:
       atteindre une valeur négative comme $-4$. Aucun calcul n'est
       nécessaire.
     solution: |
-      $e^x>0$ pour tout réel $x$ (R1) : $e^x$ ne peut jamais être négatif.
+      $e^x>0$ pour tout réel $x$ (chapitre 2) : $e^x$ ne peut jamais être négatif.
       Comme $-4<0$, l'équation $e^x=-4$ n'a donc aucune solution :
       $$\mathcal{S} = \varnothing$$
 

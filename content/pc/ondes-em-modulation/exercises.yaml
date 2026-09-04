@@ -134,7 +134,7 @@ exercises:
         stem: |-
           Le récepteur utilise une bobine $L = 150\ \mu\text{H}$ dans son circuit d'accord. Calculer la valeur du condensateur $C$ à régler pour recevoir cette station.
         reasoning: |-
-          Accorder le récepteur, c'est régler sa fréquence propre $f_0 = 1/(2\pi\sqrt{LC})$ sur la porteuse de la station voulue : on impose $f_0 = F_p$, puis on isole $C$ dans cette relation — exactement comme en R5, mais avec cette bobine et cette porteuse-ci. C'est le condensateur variable qu'on règle, la bobine $L$ étant fixée.
+          Accorder le récepteur, c'est régler sa fréquence propre $f_0 = 1/(2\pi\sqrt{LC})$ sur la porteuse de la station voulue : on impose $f_0 = F_p$, puis on isole $C$ dans cette relation — exactement comme au chapitre 6, mais avec cette bobine et cette porteuse-ci. C'est le condensateur variable qu'on règle, la bobine $L$ étant fixée.
         steps:
           - math: 'f_0 = \frac{1}{2\pi\sqrt{LC}} = F_p \implies C = \frac{1}{(2\pi F_p)^2\,L}'
             note: "On isole C dans la condition d'accord f0 = Fp."

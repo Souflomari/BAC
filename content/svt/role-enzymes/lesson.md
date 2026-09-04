@@ -83,7 +83,7 @@ $$\text{Amidon} + n\,H_2O \xrightarrow{\ \text{amylase}\ } n\,\text{Maltose}$$
 
 [[figure:cycle-enzyme-substrat]]
 
-### Ce que ce mécanisme explique, que le R1 laissait ouvert
+### Ce que ce mécanisme explique, que le chapitre 2 laissait ouvert
 
 Ce cycle répond exactement à la question posée à la fin du chapitre 2 : pourquoi l'enzyme n'est-elle jamais consommée ? Parce que la réaction modifie le **substrat**, pas l'**enzyme** — celle-ci ressort du cycle avec exactement la même structure, la même forme de site actif, qu'avant d'y entrer. C'est ce recommencement en boucle, sans usure, qui permet à une toute petite quantité d'amylase de transformer, avec le temps, une quantité d'amidon bien plus grande qu'elle-même.
 
@@ -241,7 +241,7 @@ Voici un exemple concret qui relie le chapitre 5 et ce tableau. L'amylase saliva
 
 Ce n'est pas une coïncidence : chaque enzyme digestive est adaptée à l'environnement physico-chimique du segment du tube digestif où elle doit agir. La digestion progresse ainsi comme une chaîne de relais, chaque enzyme prenant le relai exactement là où les conditions lui sont favorables.
 
-### Fermeture de l'arc : retour au pain du R0
+### Fermeture de l'arc : retour au pain du chapitre 1
 
 Reprends l'expérience du pain qui devient sucré. Tu peux maintenant l'expliquer intégralement :
 

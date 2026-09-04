@@ -142,7 +142,7 @@ C'est cette agitation thermique, multipliée par un nombre immense de sauts d'é
 
 Voici une généralisation trompeuse, et elle vient précisément de l'exemple qu'on vient de voir : puisque CETTE réaction spontanée chauffe le tube de façon nette, on peut être tenté de conclure qu'une transformation spontanée dégage TOUJOURS une chaleur perceptible - que « spontané » et « qui chauffe » seraient presque synonymes.
 
-Reviens au critère du chapitre 2 : ce qui définit une évolution spontanée, c'est UNIQUEMENT la comparaison $Q_{r,i}$ face à $K$ - rien, dans cette comparaison, ne parle de température ni de quantité de chaleur. Le critère est purement une affaire de concentrations. La chaleur dégagée, elle, dépend de tout autre chose : la quantité de matière qui réagit réellement, et le trajet que prend l'énergie libérée.
+Reviens au critère du chapitre 3 : ce qui définit une évolution spontanée, c'est UNIQUEMENT la comparaison $Q_{r,i}$ face à $K$ - rien, dans cette comparaison, ne parle de température ni de quantité de chaleur. Le critère est purement une affaire de concentrations. La chaleur dégagée, elle, dépend de tout autre chose : la quantité de matière qui réagit réellement, et le trajet que prend l'énergie libérée.
 
 Deux façons de mettre en défaut l'idée « spontané = ça chauffe forcément » :
 
@@ -200,7 +200,7 @@ Prends la dissolution d'un solide ionique, par exemple le chlorure d'argent :
 
 $$AgCl_{(s)} \rightleftharpoons Ag^+ + Cl^-$$
 
-Le solide $AgCl$, comme tout solide pur, n'entre pas dans l'expression de $Q_r$ (chapitre 2, et déjà vu dans le chapitre état d'équilibre) :
+Le solide $AgCl$, comme tout solide pur, n'entre pas dans l'expression de $Q_r$ (chapitre 3, et déjà vu dans le chapitre état d'équilibre) :
 
 $$Q_r = [Ag^+]\,[Cl^-]$$
 

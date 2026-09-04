@@ -50,16 +50,16 @@ exercises:
         stem: |-
           **(0,5 pt)** Calculer $\displaystyle\lim_{x \to +\infty} f(x)$ et $\displaystyle\lim_{x \to -\infty} f(x)$.
         reasoning: |-
-          Le réflexe R1/R2 : identifier séparément la limite de chaque facteur du produit $x \times (e^{x/2}-1)^2$, puis appliquer la règle du produit — **à condition de vérifier qu'on n'est pas dans un des quatre cas de forme indéterminée**.
+          Le réflexe des chapitres 2 et 3 : identifier séparément la limite de chaque facteur du produit $x \times (e^{x/2}-1)^2$, puis appliquer la règle du produit — **à condition de vérifier qu'on n'est pas dans un des quatre cas de forme indéterminée**.
 
-          Quand $x \to +\infty$, $e^{x/2} \to +\infty$ (limite de référence du R1), donc $(e^{x/2}-1)^2 \to +\infty$ aussi. Les deux facteurs partent vers $+\infty$ : ce n'est **pas** une forme indéterminée (le tableau du produit, R2, donne directement $+\infty \times +\infty = +\infty$).
+          Quand $x \to +\infty$, $e^{x/2} \to +\infty$ (limite de référence du chapitre 2), donc $(e^{x/2}-1)^2 \to +\infty$ aussi. Les deux facteurs partent vers $+\infty$ : ce n'est **pas** une forme indéterminée (le tableau du produit, chapitre 3, donne directement $+\infty \times +\infty = +\infty$).
 
-          Quand $x \to -\infty$, c'est différent : $e^{x/2} \to 0$, donc $(e^{x/2}-1)^2 \to (0-1)^2 = 1$, un nombre **fini non nul**. Le premier facteur $x$ part vers $-\infty$. On multiplie un facteur qui part à l'infini par un facteur qui tend vers une constante non nulle : encore une fois, pas de forme indéterminée — le tableau du produit (R2) donne directement le résultat, avec le signe du facteur fini ($1>0$) qui laisse le signe de $x$ inchangé.
+          Quand $x \to -\infty$, c'est différent : $e^{x/2} \to 0$, donc $(e^{x/2}-1)^2 \to (0-1)^2 = 1$, un nombre **fini non nul**. Le premier facteur $x$ part vers $-\infty$. On multiplie un facteur qui part à l'infini par un facteur qui tend vers une constante non nulle : encore une fois, pas de forme indéterminée — le tableau du produit (chapitre 3) donne directement le résultat, avec le signe du facteur fini ($1>0$) qui laisse le signe de $x$ inchangé.
         steps:
           - math: '\lim_{x\to+\infty} e^{x/2} = +\infty \quad\Longrightarrow\quad \lim_{x\to+\infty}\left(e^{x/2}-1\right)^2 = +\infty'
             note: "Limite de référence de l'exponentielle en +∞, puis carré d'une quantité qui part à l'infini."
           - math: '\lim_{x\to+\infty} f(x) = \lim_{x\to+\infty} x\left(e^{x/2}-1\right)^2 = +\infty'
-            note: "Produit de deux facteurs tendant vers +∞ : le tableau du produit (R2) donne +∞ directement, ce n'est pas une forme indéterminée."
+            note: "Produit de deux facteurs tendant vers +∞ : le tableau du produit (chapitre 3) donne +∞ directement, ce n'est pas une forme indéterminée."
           - math: '\lim_{x\to-\infty} e^{x/2} = 0 \quad\Longrightarrow\quad \lim_{x\to-\infty}\left(e^{x/2}-1\right)^2 = (0-1)^2 = 1'
             note: "En -∞, l'exponentielle tend vers 0 : le second facteur tend vers un nombre FINI non nul, 1."
           - math: '\lim_{x\to-\infty} f(x) = \lim_{x\to-\infty} x\left(e^{x/2}-1\right)^2 = -\infty'
@@ -72,7 +72,7 @@ exercises:
         reasoning: |-
           Le quotient $f(x)/x$ se simplifie immédiatement : $x$ apparaît en facteur au numérateur, il suffit de le simplifier avec le $x$ du dénominateur (licite car $x \neq 0$ au voisinage de $+\infty$). Il reste exactement le second facteur déjà rencontré à la question précédente, qui tend vers $+\infty$.
 
-          **L'interprétation géométrique** est ce qui fait tout l'intérêt de cette question. On a vu au R1 que si $f(x)$ tend vers un nombre fini $L$ à l'infini, la courbe admet une asymptote horizontale $y=L$. Ici $f(x)$ lui-même part à l'infini (question 1), donc pas d'asymptote horizontale — mais le quotient $f(x)/x$ tend *aussi* vers l'infini, ce qui est encore plus fort qu'une simple absence d'asymptote : cela signifie que $f(x)$ grandit **plus vite qu'une droite quelconque**. La courbe s'écarte de toute droite passant par l'origine, de plus en plus vite. Ce comportement porte un nom : une **branche parabolique de direction asymptotique $(Oy)$** (l'axe des ordonnées).
+          **L'interprétation géométrique** est ce qui fait tout l'intérêt de cette question. On a vu au chapitre 2 que si $f(x)$ tend vers un nombre fini $L$ à l'infini, la courbe admet une asymptote horizontale $y=L$. Ici $f(x)$ lui-même part à l'infini (question 1), donc pas d'asymptote horizontale — mais le quotient $f(x)/x$ tend *aussi* vers l'infini, ce qui est encore plus fort qu'une simple absence d'asymptote : cela signifie que $f(x)$ grandit **plus vite qu'une droite quelconque**. La courbe s'écarte de toute droite passant par l'origine, de plus en plus vite. Ce comportement porte un nom : une **branche parabolique de direction asymptotique $(Oy)$** (l'axe des ordonnées).
         steps:
           - math: '\dfrac{f(x)}{x} = \dfrac{x\left(e^{x/2}-1\right)^2}{x} = \left(e^{x/2}-1\right)^2 \quad (x\neq 0)'
             note: "Le facteur x se simplifie : il ne reste que le second facteur de f(x)."
@@ -88,7 +88,7 @@ exercises:
         reasoning: |-
           Montrer qu'une droite $y=x$ est asymptote revient, par définition, à montrer que l'écart entre la courbe et la droite s'annule à la limite : $\lim_{x\to-\infty}\left[f(x)-x\right] = 0$.
 
-          On développe $f(x)-x = x\left[(e^{x/2}-1)^2-1\right]$, puis on développe le carré comme au R3 (l'identité $(u-1)^2-1 = u^2-2u$, avec $u=e^{x/2}$) pour retomber sur des exponentielles pures. Il reste alors deux termes du type "$x$ fois une exponentielle qui décroît", et c'est exactement le résultat de **croissances comparées** vu ailleurs dans le programme : à $-\infty$, une exponentielle $e^{kx}$ (avec $k>0$) l'emporte toujours sur $x$, donc le produit $x\,e^{kx}$ tend vers $0$, quel que soit le signe ou la vitesse de $x$.
+          On développe $f(x)-x = x\left[(e^{x/2}-1)^2-1\right]$, puis on développe le carré comme au chapitre 4 (l'identité $(u-1)^2-1 = u^2-2u$, avec $u=e^{x/2}$) pour retomber sur des exponentielles pures. Il reste alors deux termes du type "$x$ fois une exponentielle qui décroît", et c'est exactement le résultat de **croissances comparées** vu ailleurs dans le programme : à $-\infty$, une exponentielle $e^{kx}$ (avec $k>0$) l'emporte toujours sur $x$, donc le produit $x\,e^{kx}$ tend vers $0$, quel que soit le signe ou la vitesse de $x$.
         steps:
           - math: 'f(x)-x = x\left[\left(e^{x/2}-1\right)^2-1\right]'
             note: "On factorise par x."

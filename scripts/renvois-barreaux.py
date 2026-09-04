@@ -163,6 +163,49 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
     #
     # On remplace donc chaque renvoi externe par une sentinelle le temps du
     # traitement, et on le restitue tel quel à la fin.
+    # ── RENVOI EXTERNE À L'ENVERS : « R7 de « Calcul intégral » » ───────────
+    #
+    # Le détecteur ci-dessous cherche le titre AVANT le code (« … dans « L'État »,
+    # R6 »). L'autre ordre existe aussi, et il est PIRE : le code d'abord, la
+    # notion citée ensuite. Rien ne le signalait, donc la table LOCALE
+    # s'appliquait — et « R7 de « Calcul intégral » » devenait « chapitre 8 »
+    # ou « chapitre 2 » selon la leçon où la phrase se trouvait. Dix-neuf
+    # renvois du corpus ont cette forme ; treize tombaient sur le mauvais
+    # chapitre d'une autre leçon. Mesuré en re-résolvant chacun contre la
+    # table de la leçon CITÉE, jamais à l'œil.
+    protege_inv: list[str] = []
+
+    def externe_inverse(m: re.Match) -> str:
+        n = int(m.group("n") or m.group("n2"))
+        cle = normalise(m.group("titre"))
+        cible = (index or {}).get(cle)
+        if cible is None:
+            # Le titre cité est parfois ABRÉGÉ : « Suivi temporel d'une
+            # transformation » pour la leçon « Suivi temporel d'une
+            # transformation — vitesse de réaction ». On accepte un préfixe,
+            # mais SEULEMENT s'il ne désigne qu'une leçon : deux candidates,
+            # on ne devine pas.
+            cands = [k for k in (index or {}) if k.startswith(cle)]
+            if len(cands) == 1:
+                cible = index[cands[0]]
+        if not cible or n not in cible:
+            # PROTÉGÉ, pas seulement signalé. Sans sentinelle, les règles
+            # suivantes réécrivaient quand même le code — avec la table
+            # LOCALE, donc vers le mauvais chapitre d'une autre leçon. C'est
+            # exactement le défaut que cette fonction existe pour empêcher.
+            protege_inv.append(m.group(0))
+            journal.append(
+                f"  ↷ {fichier}:{no} renvoi « R{n} de « {m.group('titre')} » » NON résolu, "
+                f"laissé intact (leçon citée inconnue ou chapitre absent)")
+            return f"\x02INV{len(protege_inv) - 1}\x02"
+        return f"{m.group('lien') or ''}chapitre {cible[n]}{m.group('milieu')}« {m.group('titre')} »"
+
+    ligne = re.sub(
+        r"(?P<lien>\b(?:du|de|le|la|au|dans le|dans la)\s+)?"
+        r"(?:[Rr]ungs?\s+(?P<n>\d+)|R(?P<n2>\d+))"
+        r"(?P<milieu>\s+(?:de|du|dans)\s+)«\s*(?P<titre>[^»]{3,70}?)\s*»",
+        externe_inverse, ligne)
+
     ligne_source = ligne
     EXTERNE = re.compile(
         # Le SLUG d'une autre leçon (« la-verite R7 », « la-verite, chapitre… »)
@@ -248,13 +291,22 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
         nums = [int(m.group(1))] + [int(x) for x in re.findall(r"\d+", m.group(2))]
         # Le connecteur d'origine décide du mot de liaison : « ou » reste « ou ».
         ou = " ou " in m.group(2)
+        # UN TIRET N'EST PAS UNE VIRGULE. « R0-R4 » désigne un INTERVALLE — du
+        # premier au cinquième chapitre — pas une paire. La première version
+        # écrivait « chapitres 1 et 5 » pour « le corps de la leçon », ce qui
+        # dit littéralement autre chose : deux chapitres au lieu de neuf. Vu
+        # sur la-liberte (« un axe que R0-R4 n'ont pas encore nommé ») et sur
+        # une trentaine d'autres.
+        tiret = bool(re.search(r"[–—-]", m.group(2))) and len(nums) == 2
         chapitres = [chap(n) for n in nums]
         if any(c is None for c in chapitres):
             for n, c in zip(nums, chapitres):
                 if c is None:
                     inconnu(n)
             return m.group(0)
-        if len(chapitres) == 2:
+        if tiret:
+            corps = f"{chapitres[0]} à {chapitres[1]}"
+        elif len(chapitres) == 2:
             corps = f"{chapitres[0]} {'ou' if ou else 'et'} {chapitres[1]}"
         else:
             corps = ", ".join(chapitres[:-1]) + f" {'ou' if ou else 'et'} {chapitres[-1]}"
@@ -286,6 +338,23 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
     ligne = re.sub(r"\b(Au|Du|Le|En|De|À)\s+(chapitres\s)", lambda m: {
         "Au": "Aux ", "Du": "Des ", "Le": "Les ", "En": "Aux ", "De": "Des ", "À": "Aux ",
     }[m.group(1)] + m.group(2), ligne)
+    # Deux séquelles de la réécriture, l'une et l'autre constatées sur la
+    # sortie et corrigées ici plutôt que dans trente fichiers :
+    #   · « chapitres chapitres 5 et 6 » — la source disait déjà « chapitres
+    #     R4-R5 », le mot était donc écrit deux fois ;
+    #   · « le socle chapitres 2 à 8 » — après un nom comme socle ou corps, le
+    #     français demande « des ». Sans article, la phrase trébuche.
+    ligne = re.sub(r"\b(socle|corps|cadre|périmètre|programme|terrain|réflexe|axe)\s+(chapitres\s)",
+                   r"\1 des \2", ligne)
+    # « que chapitres 4 et 5 », « dès chapitres 3 et 5 », « ni chapitres 2 à 10
+    # ne nomment » : après une préposition ou une conjonction, le pluriel
+    # réclame son article. Le code source n'en avait pas besoin — « que R1 et
+    # R3 » se lit — mais « que chapitres 1 et 3 » ne se lit pas.
+    ligne = re.sub(
+        r"\b(que|qu'|dans|sur|dès|entre|avec|ni|ou|et|par|pour|selon|sans|sous|vers|"
+        r"comme|depuis|parmi|chez|reprends|mobilise|contredit|construit|nomme|couvre|"
+        r"portent|Comment|Reprends)\s+(chapitres\s+\d)",
+        r"\1 les \2", ligne)
 
     # ── 2. « rung R<n> » : le mot est du jargon anglais de rédaction, il part
     #       avec le code.
@@ -363,7 +432,7 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
     # `re.I` sans risque : le préfixe est réinjecté TEL QUEL (m.group("avant")),
     # donc « D'après » reste capitalisé et « d'après » reste minuscule.
     ligne = re.sub(
-        r"(?P<avant>\b(?:reprends|mobilise|ajoute|relis|revois|voir|compare|rapproche|que|qu'|dont|depuis|dès|selon|d'après|avec|et|ou|comme|dans|par|via|encore|cf\.|la partie|de la partie|à la fin de la partie)\s+)R(?P<n>\d+)\b",
+        r"(?P<avant>\b(?:reprends|mobilise|ajoute|relis|revois|voir|compare|rapproche|corrige|construit|présente|décrit|distingue|montre|nomme|que|qu'|dont|depuis|dès|selon|d'après|avec|et|ou|comme|dans|par|via|encore|cf\.|la partie|de la partie|à la fin de la partie)\s+)R(?P<n>\d+)\b",
         nominal, ligne, flags=re.I)
     # « Et R6, enfin » / « Or R2 dit » : en tête, avec majuscule.
     ligne = re.sub(
@@ -374,6 +443,58 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
     # elle, introduit une apposition et n'en veut pas — d'où deux règles.
     ligne = re.sub(r"(?P<avant>[—–]\s+)R(?P<n>\d+)\b", nominal, ligne)
 
+    # ── 6 ter. APPOSITION APRÈS UN NOM ───────────────────────────────────────
+    # « la formule R8 », « la limite de référence R4 », « le rappel R1 » : le
+    # code qualifie le nom qui précède. En français, cela s'écrit « du
+    # chapitre N » — « la formule le chapitre 9 » ne se dit pas. C'est la
+    # tournure la plus fréquente du reliquat (banques de maths).
+    def apposition(m: re.Match) -> str:
+        n = int(m.group("n"))
+        c = chap(n)
+        if not c:
+            inconnu(n)
+            return m.group(0)
+        return f"{m.group('nom')}du chapitre {c}"
+
+    ligne = re.sub(
+        r"(?P<nom>\b(?:formule|rappel|critère|méthode|signal|geste|résultat|théorème|"
+        r"propriété|règle|définition|forme|encadré|tableau|calcul|raisonnement|"
+        r"limite de référence|exemple travaillé)\s+)R(?P<n>\d+)\b",
+        apposition, ligne, flags=re.I)
+
+    # ── 6 quater. LE CODE EN POSITION DE SUJET ───────────────────────────────
+    # « R2 présente ce critère », « R6 construit la dépersonnalisation »,
+    # « R1 les distingue » : le code EST le sujet du verbe qui suit. Repéré
+    # par ce qui suit — un mot en minuscules.
+    #
+    # DEUX RÈGLES, ET LA SÉPARATION EST DÉLIBÉRÉE. Après une ponctuation
+    # forte, la phrase recommence : il faut une majuscule. En DÉBUT DE LIGNE,
+    # on ne sait pas — dans un scalaire YAML en bloc, une ligne commence le
+    # plus souvent au MILIEU d'une phrase, coupée par la largeur. On y écrit
+    # donc la minuscule, qui est le cas majoritaire, et on relit la sortie.
+    def sujet_maj(m: re.Match) -> str:
+        n = int(m.group("n"))
+        c = chap(n)
+        if not c:
+            inconnu(n)
+            return m.group(0)
+        return f"{m.group('tete')}Le chapitre {c} "
+
+    def sujet_min(m: re.Match) -> str:
+        n = int(m.group("n"))
+        c = chap(n)
+        if not c:
+            inconnu(n)
+            return m.group(0)
+        return f"{m.group('tete')}le chapitre {c} "
+
+    ligne = re.sub(
+        r"(?P<tete>(?:^|(?<=[.!?]\s))(?:«\s*)?)R(?P<n>\d+)\s+(?=[a-zàâçéèêëîïôûùü])",
+        sujet_maj, ligne)
+    ligne = re.sub(
+        r"(?P<tete>(?<=[,;:(]\s)|(?<=\())R(?P<n>\d+)\s+(?=[a-zàâçéèêëîïôûùü])",
+        sujet_min, ligne)
+
     # ── 6 bis. LE MOT « RUNG » LUI-MÊME ──────────────────────────────────────
     #
     # « rung » est un mot ANGLAIS, et c'est du vocabulaire de rédaction : il
@@ -382,6 +503,46 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
     # 252 fois (« au rung », « du rung », « ce rung », « le prochain rung »).
     # Le mot juste, celui que l'interface emploie déjà partout, est
     # « chapitre ». C'est la même fuite que les codes R<n>, sans le code.
+    # ET LE NUMÉRO QUI LE SUIT EST UN CODE, PAS UN NUMÉRO DE CHAPITRE.
+    #
+    # « rung 7 » s'écrit aussi « R7 » : c'est le même barreau, dit autrement.
+    # La première version remplaçait seulement le MOT et gardait le chiffre —
+    # « rung 1 » devenait « chapitre 1 ». Or R1 est le DEUXIÈME chapitre
+    # (R0 est le premier). Chaque renvoi de cette forme pointait donc un
+    # chapitre trop tôt.
+    #
+    # VÉRIFIÉ SUR LE SENS, PAS SUR LA SYNTAXE : dans chute-mouvements-plans,
+    # « la chute verticale pure du rung 1 » désigne « R1 — Rappel actif : la
+    # chute libre verticale », c'est-à-dire le chapitre 2 ; « chapitre 1 »
+    # renvoyait l'élève à l'accroche. Dans rlc-serie, « le rung 2 donne la
+    # méthode ($T_0 = 2\pi\sqrt{LC}$) » désigne R2, chapitre 3.
+    #
+    # 98 occurrences en prose de leçon (déjà publiées, donc à réparer) et
+    # 1 358 dans les sidecars.
+    def rung_numerote(m: re.Match) -> str:
+        n = int(m.group("n"))
+        c = chap(n)
+        if not c:
+            inconnu(n)
+            return m.group(0)
+        mot = "Chapitre" if m.group("mot")[0].isupper() else "chapitre"
+        return f"{mot} {c}"
+
+    ligne = re.sub(r"(?P<mot>\b[Rr]ungs?)\s+(?P<n>\d+)\b", rung_numerote, ligne)
+
+    # CE QUI N'A PAS PU ÊTRE RÉSOLU RESTE INTACT. Si le barreau n'existe pas
+    # dans CETTE leçon, c'est qu'il désigne une AUTRE notion : traduire quand
+    # même le mot laisserait le numéro faux (« rung 7 » d'une leçon voisine
+    # devenu « chapitre 7 » de celle-ci, qui n'en compte que cinq). On protège
+    # donc la forme complète le temps de la traduction du mot.
+    protege_rung: list[str] = []
+
+    def garder_rung(m: re.Match) -> str:
+        protege_rung.append(m.group(0))
+        return f"\x03RUNG{len(protege_rung) - 1}\x03"
+
+    ligne = re.sub(r"\b[Rr]ungs?\s+\d+\b", garder_rung, ligne)
+
     for faux, juste in (
         (r"\brungs\b", "chapitres"),
         (r"\bRungs\b", "Chapitres"),
@@ -389,6 +550,9 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
         (r"\bRung\b", "Chapitre"),
     ):
         ligne = re.sub(faux, juste, ligne)
+
+    for i, brut in enumerate(protege_rung):
+        ligne = ligne.replace(f"\x03RUNG{i}\x03", brut)
 
     # ── 7. FILET GRAMMATICAL ─────────────────────────────────────────────────
     # Les règles ci-dessus substituent un mot à un autre ; le français, lui,
@@ -432,6 +596,31 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
             dejaVus.discard(m.group(0))
             continue
         journal.append(f"  ? {fichier}:{no} non reconnu : …{ligne[max(0, m.start() - 36):m.end() + 20].strip()}…")
+    # Restitution des renvois inverses protégés.
+    for i, brut in enumerate(protege_inv):
+        ligne = ligne.replace(f"\x02INV{i}\x02", brut)
+
+    # ── 8. DÉDOUBLONNAGE, EN DERNIER ET PAS AVANT ────────────────────────────
+    #
+    # « aux rungs R2 et R4 » : la règle des LISTES écrit « chapitres 3 et 5 »,
+    # puis la règle 6 bis traduit « rungs » en « chapitres ». Résultat :
+    # « aux chapitres chapitres 3 et 5 ». Le dédoublonnage était placé juste
+    # après les listes — donc AVANT la règle qui recrée le doublon, et il ne
+    # servait à rien. Quinze phrases du corpus le disaient ; c'est la
+    # relecture de la SORTIE qui l'a montré, pas celle du script.
+    ligne = re.sub(r"\b[Cc]hapitres\s+(chapitres\s)", r"\1", ligne)
+    ligne = re.sub(r"\b(au|du|le|ce)\s+chapitre\s+(chapitres\s)", lambda m: {
+        "au": "aux ", "du": "des ", "le": "les ", "ce": "ces ",
+    }[m.group(1)] + m.group(2), ligne)
+    # Et le cas sans article devant : « (rung R1/R4) » → « (chapitre chapitres
+    # 2 et 5) ». On enlève le singulier, le pluriel porte déjà le sens.
+    ligne = re.sub(r"\bchapitre\s+(chapitres\s)", r"\1", ligne)
+    # « deja etablie chapitres 2 et 6 » : un participe suivi du pluriel réclame
+    # « aux ». Même famille que la règle des prépositions, mais elle ne peut
+    # s'appliquer qu'ici, après la traduction du mot « rung ».
+    ligne = re.sub(r"\b(étable|établie|etablie|posée[s]?|rappelée[s]?|vue[s]?|construite[s]?)\s+(chapitres\s+\d)",
+                   r"\1 aux \2", ligne)
+
     return ligne
 
 
@@ -446,15 +635,191 @@ def traiter(chemin: Path, ecrire: bool, journal: list[str],
     masquees = masque.split("\n")
     court = str(chemin.relative_to(RACINE))
     avant = sum(len(re.findall(r"\bR\d+\b", l)) for l in masquees)
+    # LES TITRES, corps seulement. Le préfixe « R<n> — » est retiré au rendu
+    # (il porte `data-rung`) et doit rester ; mais « ### Le geste du R8, mis à
+    # l'épreuve » affiche « R8 » EN GRAND à l'élève. La première campagne
+    # sautait la ligne entière dès qu'elle commençait par un `#`, et laissait
+    # donc 52 titres dans 18 leçons. On ne saute plus la ligne : on protège le
+    # préfixe et on réécrit ce qui suit.
+    PREFIXE_TITRE = re.compile(r"^(#{2,6}\s+(?:R\d+\s*[-—–]\s*)?)(.*)$")
+    for i, brute in enumerate(lignes, start=1):
+        if not re.match(r"^#{2,6}\s", brute):
+            continue
+        mt = PREFIXE_TITRE.match(brute)
+        if not mt:
+            continue
+        corps = mt.group(2)
+        if not re.search(r"\bR\d+\b", corps) and not re.search(r"\brungs?\b", corps, flags=re.I):
+            continue
+        lignes[i - 1] = mt.group(1) + reecrire_ligne(corps, table, journal, court, i, index)
+
     for i, (brute, m) in enumerate(zip(lignes, masquees), start=1):
         # « rung » sans code compte aussi : c'est le même jargon, sans le
         # chiffre. Filtrer sur le seul R<n> laissait 221 occurrences derrière.
         if not re.search(r"\bR\d+\b", m) and not re.search(r"\brungs?\b", m, flags=re.I):
             continue
-        lignes[i - 1] = reecrire_ligne(brute, table, journal, court, i, index)
+        lignes[i - 1] = reecrire_ligne(lignes[i - 1], table, journal, court, i, index)
     neuf = "\n".join(lignes)
     apres = sum(len(re.findall(r"\bR\d+\b", l)) for l in masque_zones_ignorees(neuf).split("\n"))
     if ecrire and neuf != md:
+        chemin.write_text(neuf, encoding="utf-8")
+    return (avant, apres)
+
+
+# ── LES SIDECARS ──────────────────────────────────────────────────────────
+#
+# La première campagne n'a touché que `lesson.md`. Mesuré sur le RENDU le
+# 2026-09-04 (et non sur la source, ce qui a tout changé) : il restait
+# **529 codes R et 19 « rung » VISIBLES à l'écran**, sur 38 leçons. Ils
+# viennent des sidecars — l'énoncé d'un item, le raisonnement d'une question
+# de banque, la note d'une étape de dérivation. Un élève qui ouvre « À toi »
+# lisait « un axe que R0-R4 n'ont pas encore nommé ».
+#
+# LE PIÈGE, ET C'EST LUI QUI COMMANDE TOUTE LA MÉCANIQUE : le corpus porte
+# **1 618 champs `rung: "R7"`**. Ce sont des DONNÉES — elles attachent un
+# item à son chapitre. Les réécrire casserait le produit. Une réécriture
+# ligne à ligne naïve les aurait toutes détruites.
+#
+# D'où une LISTE BLANCHE de clés, jamais une liste noire : on ne réécrit que
+# ce dont on sait que c'est de la prose lue par un élève. Une clé inconnue
+# est laissée tranquille par construction — c'est le sens de marche sûr.
+CLES_PROSE = {
+    "stem", "text", "feedback", "correct_feedback", "reasoning",
+    "solution", "intro", "part", "title", "description", "label",
+}
+# `note` EST DE LA PROSE — mais seulement sous `steps` (la note d'une étape de
+# dérivation, que l'élève lit). Ailleurs, `note:` porte des notes d'AUTORAT en
+# anglais, au niveau du fichier : « Every R1-R8 chapitre now has exactly 3
+# items… », « the R5 label now belongs exclusively to the new ressort
+# chapter ». Là, « R5 » est une DONNÉE — le nom du champ `rung:` — et la
+# réécrire détruit le sens. Une première passe les avait touchées ; c'est la
+# relecture de la sortie qui l'a montré, pas la relecture du script.
+CLES_PROSE_SOUS = {"note": "steps"}
+# `sourcing:` porte la provenance d'un sujet (année, session, référence du
+# document). Sa `note` n'est pas de la prose d'élève et cite des identifiants
+# qui ressemblent à des codes — on ne descend pas dedans.
+PARENTS_EXCLUS = {"sourcing"}
+
+CLE_YAML = re.compile(r"^(\s*)(-\s+)?([A-Za-z_][A-Za-z_0-9]*)\s*:(.*)$")
+
+
+def traiter_yaml(chemin: Path, table: dict[int, int], ecrire: bool,
+                 journal: list[str], index: dict[str, dict[int, int]] | None) -> tuple[int, int]:
+    """Réécrit les renvois dans les CHAMPS DE PROSE d'un sidecar YAML.
+
+    Marche par lignes pour préserver le fichier tel qu'il est écrit —
+    commentaires, ordre, scalaires en bloc. Un `yaml.dump` aurait tout
+    reformaté et perdu les commentaires d'auteur, qui sont précisément
+    l'endroit où « ce passage sert le R2 » a le droit de vivre.
+    """
+    src = chemin.read_text(encoding="utf-8")
+    lignes = src.split("\n")
+    court = str(chemin.relative_to(RACINE))
+
+    pile: list[tuple[int, str]] = []   # (indentation, clé)
+    bloc: tuple[int, bool] | None = None  # (indentation du scalaire, prose ?)
+    avant = apres = 0
+    sorties: list[str] = []
+
+    for no, ligne in enumerate(lignes, start=1):
+        nu = ligne.strip()
+        # Commentaire d'auteur : intouchable, c'est sa place.
+        if nu.startswith("#") or not nu:
+            bloc = bloc if (not nu and bloc) else bloc
+            sorties.append(ligne)
+            continue
+
+        m = CLE_YAML.match(ligne)
+        indent = len(ligne) - len(ligne.lstrip())
+
+        if m:
+            base, tiret, cle, valeur = m.group(1), m.group(2) or "", m.group(3), m.group(4)
+            col = len(base) + len(tiret)
+            while pile and pile[-1][0] >= col:
+                pile.pop()
+            pile.append((col, cle))
+            sous_exclu = any(k in PARENTS_EXCLUS for _, k in pile[:-1]) or cle in PARENTS_EXCLUS
+            ancetres = {k for _, k in pile[:-1]}
+            prose = (
+                (cle in CLES_PROSE or
+                 (cle in CLES_PROSE_SOUS and CLES_PROSE_SOUS[cle] in ancetres))
+                and not sous_exclu
+            )
+            marqueur = valeur.strip()
+            bloc = (col, prose) if marqueur in ("|", ">", "|-", ">-", "|+", ">+") else None
+            if prose and valeur.strip() and marqueur not in ("|", ">", "|-", ">-", "|+", ">+"):
+                avant += len(re.findall(r"\bR\d+\b", valeur))
+                # Un scalaire YAML entre guillemets DROITS : on les retire le
+                # temps de la réécriture. Sinon le détecteur de renvoi externe
+                # — qui cherche « un guillemet fermant suivi d'un code » — lit
+                # le guillemet OUVRANT de `stem: "R1 les distingue…"` comme la
+                # fin d'un titre cité, et classe le renvoi « vers une autre
+                # notion ». Quarante faux positifs, tous dans les checkpoints
+                # de philosophie.
+                enveloppe = re.match(r'^(\s*)(["\'])(.*)\2(\s*)$', valeur)
+                if enveloppe:
+                    interieur = reecrire_ligne(enveloppe.group(3), table, journal, court, no, index)
+                    neuf = enveloppe.group(1) + enveloppe.group(2) + interieur + enveloppe.group(2) + enveloppe.group(4)
+                else:
+                    neuf = reecrire_ligne(valeur, table, journal, court, no, index)
+                apres += len(re.findall(r"\bR\d+\b", neuf))
+                sorties.append(base + tiret + cle + ":" + neuf)
+                continue
+            sorties.append(ligne)
+            continue
+
+        # Ligne de continuation d'un scalaire en bloc.
+        if bloc and indent > bloc[0]:
+            if bloc[1]:
+                avant += len(re.findall(r"\bR\d+\b", ligne))
+                neuf = reecrire_ligne(ligne, table, journal, court, no, index)
+                apres += len(re.findall(r"\bR\d+\b", neuf))
+                sorties.append(neuf)
+                continue
+            sorties.append(ligne)
+            continue
+
+        bloc = None
+        sorties.append(ligne)
+
+    neuf = "\n".join(sorties)
+    if ecrire and neuf != src:
+        chemin.write_text(neuf, encoding="utf-8")
+    return (avant, apres)
+
+
+SIDECARS = ("items.yaml", "checkpoints.yaml", "exercises.yaml", "derivations.yaml", "bank.yaml")
+
+# Les légendes de figures vivent dans des JSON à côté du SVG. Elles
+# s'affichent sous la figure, en toutes lettres : « déjà construite au R1 »,
+# « trouvée au R4 ». Trente d'entre elles, dans vingt-sept fichiers.
+CHAMPS_JSON = re.compile(r'("(?:caption|title|note|label|text|alt)"\s*:\s*")([^"\\]*)(")')
+
+
+def traiter_json(chemin: Path, table: dict[int, int], ecrire: bool,
+                 journal: list[str], index: dict[str, dict[int, int]] | None) -> tuple[int, int]:
+    """Réécrit les renvois dans les champs de texte d'un sidecar JSON.
+
+    On ne touche QUE des chaînes sans échappement (`[^"\\]*`) : une chaîne
+    qui contient un guillemet ou une barre oblique inverse est laissée
+    telle quelle plutôt que risquer un JSON cassé pour une tournure.
+    """
+    src = chemin.read_text(encoding="utf-8")
+    avant = apres = 0
+    court = str(chemin.relative_to(RACINE))
+
+    def remplace(m: re.Match) -> str:
+        nonlocal avant, apres
+        val = m.group(2)
+        if not re.search(r"\bR\d+\b", val) and not re.search(r"\brungs?\b", val, flags=re.I):
+            return m.group(0)
+        avant += len(re.findall(r"\bR\d+\b", val))
+        neuf = reecrire_ligne(val, table, journal, court, 0, index)
+        apres += len(re.findall(r"\bR\d+\b", neuf))
+        return m.group(1) + neuf + m.group(3)
+
+    neuf = CHAMPS_JSON.sub(remplace, src)
+    if ecrire and neuf != src:
         chemin.write_text(neuf, encoding="utf-8")
     return (avant, apres)
 
@@ -470,6 +835,26 @@ def main() -> int:
         tot_avant += a
         tot_apres += b
     print(f"renvois de barreau en prose : {tot_avant} → {tot_apres}")
+
+    # Les sidecars, avec la table de LEUR leçon.
+    y_avant = y_apres = 0
+    for lecon in sorted(CONTENU.rglob("lesson.md")):
+        table = correspondance(lecon.read_text(encoding="utf-8"))
+        if not table:
+            continue
+        for nom in SIDECARS:
+            f = lecon.parent / nom
+            if not f.exists():
+                continue
+            a, b = traiter_yaml(f, table, ecrire, journal, index)
+            y_avant += a
+            y_apres += b
+        for j in sorted((lecon.parent / "media").glob("*.json")) if (lecon.parent / "media").exists() else []:
+            a, b = traiter_json(j, table, ecrire, journal, index)
+            y_avant += a
+            y_apres += b
+    print(f"renvois de barreau dans les sidecars : {y_avant} → {y_apres}")
+    tot_apres += y_apres
     if journal:
         print(f"\n{len(journal)} cas signalés (non modifiés) :")
         for l in journal[:200]:

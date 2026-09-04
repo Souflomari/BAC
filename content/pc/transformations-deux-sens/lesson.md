@@ -95,7 +95,7 @@ Regarde à nouveau le mélange acide + alcool : une quantité tout à fait notab
 
 ### Deux expériences miroir
 
-Pour une transformation non totale, les deux sens - direct et inverse - sont toujours chimiquement possibles en même temps, comme tu l'as vu au chapitre 1. Mais lequel des deux domine, à un instant donné, dans un mélange donné ? Ça dépend de ce qu'on a mis dans le ballon au départ - pas d'une propriété fixe de la réaction elle-même.
+Pour une transformation non totale, les deux sens - direct et inverse - sont toujours chimiquement possibles en même temps, comme tu l'as vu au chapitre 2. Mais lequel des deux domine, à un instant donné, dans un mélange donné ? Ça dépend de ce qu'on a mis dans le ballon au départ - pas d'une propriété fixe de la réaction elle-même.
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on va comparer deux expériences sur exactement la même réaction, en ne changeant qu'une chose - la composition du mélange au tout début - pour voir si le sens observé change avec elle.
 

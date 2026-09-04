@@ -111,26 +111,26 @@ entries:
         stem: |-
           **(0,75 pt)** Montrer que $\overrightarrow{AB} \wedge \overrightarrow{AC} = \vec{i} + \vec{j} + \vec{k}$
         reasoning: |-
-          Le produit vectoriel de $\overrightarrow{AB}$ et $\overrightarrow{AC}$ fabrique un troisième vecteur, orthogonal aux deux à la fois (R3) — exactement ce qu'il faut pour obtenir, à la question suivante, une direction normale au plan $(ABC)$.
+          Le produit vectoriel de $\overrightarrow{AB}$ et $\overrightarrow{AC}$ fabrique un troisième vecteur, orthogonal aux deux à la fois (chapitre 4) — exactement ce qu'il faut pour obtenir, à la question suivante, une direction normale au plan $(ABC)$.
 
-          On commence par les coordonnées des deux vecteurs, par la règle « arrivée moins départ » (R1), puis on applique la formule du produit vectoriel : chaque composante s'obtient en cachant la coordonnée de même nom et en croisant les deux autres en diagonale, avec un signe (R3). C'est dans la gestion de ce signe, coordonnée par coordonnée, que se nichent la plupart des erreurs — on vérifie chaque terme séparément plutôt que d'aller vite.
+          On commence par les coordonnées des deux vecteurs, par la règle « arrivée moins départ » (chapitre 2), puis on applique la formule du produit vectoriel : chaque composante s'obtient en cachant la coordonnée de même nom et en croisant les deux autres en diagonale, avec un signe (chapitre 4). C'est dans la gestion de ce signe, coordonnée par coordonnée, que se nichent la plupart des erreurs — on vérifie chaque terme séparément plutôt que d'aller vite.
         steps:
           - math: '\overrightarrow{AB} = B-A = (-1,\,-1,\,2), \qquad \overrightarrow{AC} = C-A = (0,\,-1,\,1)'
-            note: "Coordonnées arrivée moins départ (R1)."
+            note: "Coordonnées arrivée moins départ (chapitre 2)."
           - math: '\overrightarrow{AB}\wedge\overrightarrow{AC} = \big((-1)(1)-(2)(-1),\ \ (2)(0)-(-1)(1),\ \ (-1)(-1)-(-1)(0)\big)'
-            note: "Formule du produit vectoriel (R3) : chaque composante croise les deux autres coordonnées en diagonale, avec un signe."
+            note: "Formule du produit vectoriel (chapitre 4) : chaque composante croise les deux autres coordonnées en diagonale, avec un signe."
           - math: '\overrightarrow{AB}\wedge\overrightarrow{AC} = (1,\,1,\,1) = \vec{i}+\vec{j}+\vec{k}'
             note: "Ce vecteur, orthogonal à AB et à AC, servira de normale au plan (ABC)."
       - id: q2
         stem: |-
           **(0,5 pt)** En déduire que $x + y + z + 1 = 0$ est une équation cartésienne du plan $(ABC)$
         reasoning: |-
-          $\overrightarrow{AB}\wedge\overrightarrow{AC}$ est orthogonal à deux vecteurs du plan $(ABC)$ : c'est donc un vecteur normal à ce plan (R6). Pour un plan de vecteur normal $\vec n(a,b,c)$, l'équation cartésienne s'écrit $ax+by+cz+d=0$ — les coefficients de $x,y,z$ sont exactement les coordonnées de $\vec n$, jamais la constante $d$, qui ne fait que fixer la position du plan.
+          $\overrightarrow{AB}\wedge\overrightarrow{AC}$ est orthogonal à deux vecteurs du plan $(ABC)$ : c'est donc un vecteur normal à ce plan (chapitre 7). Pour un plan de vecteur normal $\vec n(a,b,c)$, l'équation cartésienne s'écrit $ax+by+cz+d=0$ — les coefficients de $x,y,z$ sont exactement les coordonnées de $\vec n$, jamais la constante $d$, qui ne fait que fixer la position du plan.
 
           Ici $\vec n(1,1,1)$ (question précédente), donc l'équation a la forme $x+y+z+d=0$. On détermine $d$ en imposant qu'un point connu du plan — $A$, par exemple — la vérifie.
         steps:
           - math: 'x+y+z+d=0'
-            note: "Coefficients = coordonnées du vecteur normal (1,1,1) (R6) ; d reste à déterminer."
+            note: "Coefficients = coordonnées du vecteur normal (1,1,1) (chapitre 7) ; d reste à déterminer."
           - math: 'A(1,-1,-1)\in(ABC):\quad 1+(-1)+(-1)+d=0 \implies d=1'
             note: "d est fixé en imposant que A appartienne au plan."
           - math: '(ABC):\ \ x+y+z+1=0'
@@ -140,12 +140,12 @@ entries:
         stem: |-
           **(0,75 pt)** Soit $(S)$ la sphère d'équation $x^2 + y^2 + z^2 - 4x + 2y - 2z + 1 = 0$. Montrer que le centre de la sphère $(S)$ est $\Omega(2,-1,1)$ et que son rayon est $R = \sqrt{5}$
         reasoning: |-
-          L'équation de $(S)$ est donnée sous forme développée : le centre et le rayon ne s'y lisent pas directement. On revient à la forme centre-rayon en complétant le carré dans chaque variable séparément (R9) — la même technique que pour un cercle en 2D, appliquée trois fois, une variable à la fois.
+          L'équation de $(S)$ est donnée sous forme développée : le centre et le rayon ne s'y lisent pas directement. On revient à la forme centre-rayon en complétant le carré dans chaque variable séparément (chapitre 10) — la même technique que pour un cercle en 2D, appliquée trois fois, une variable à la fois.
 
           Pour chaque groupe $x^2+px$, on écrit $\left(x+\tfrac p2\right)^2-\left(\tfrac p2\right)^2$ : le carré parfait fait apparaître directement la coordonnée du centre, et le terme soustrait qu'on traîne vient corriger le second membre à la fin.
         steps:
           - math: '(x^2-4x)+(y^2+2y)+(z^2-2z)+1=0'
-            note: "On regroupe par variable avant de compléter chaque carré (R9)."
+            note: "On regroupe par variable avant de compléter chaque carré (chapitre 10)."
           - math: '(x-2)^2-4 \;+\; (y+1)^2-1 \;+\; (z-1)^2-1 \;+\;1 = 0'
             note: "Chaque groupe devient un carré parfait ; on garde trace du terme constant soustrait."
           - math: '(x-2)^2+(y+1)^2+(z-1)^2 = 4+1+1-1 = 5'
@@ -157,26 +157,26 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer $d(\Omega,(ABC))$ la distance du point $\Omega$ au plan $(ABC)$
         reasoning: |-
-          On applique la formule de la distance d'un point à un plan (R8) : au numérateur, l'équation du plan évaluée au point $\Omega$, en valeur absolue ; au dénominateur, la norme du vecteur normal — la racine de la somme des carrés des coefficients, jamais leur simple somme.
+          On applique la formule de la distance d'un point à un plan (chapitre 9) : au numérateur, l'équation du plan évaluée au point $\Omega$, en valeur absolue ; au dénominateur, la norme du vecteur normal — la racine de la somme des carrés des coefficients, jamais leur simple somme.
         steps:
           - math: 'd(\Omega,(ABC)) = \dfrac{\big|\,2+(-1)+1+1\,\big|}{\sqrt{1^2+1^2+1^2}}'
-            note: "Formule R8 : |ax0+by0+cz0+d| au numérateur, norme du vecteur normal au dénominateur."
+            note: "Formule du chapitre 9 : |ax0+by0+cz0+d| au numérateur, norme du vecteur normal au dénominateur."
           - math: 'd(\Omega,(ABC)) = \dfrac{3}{\sqrt{3}} = \sqrt{3}'
             note: "3 sur racine de 3 se simplifie en racine de 3."
       - id: q5
         stem: |-
           **(0,5 pt)** En déduire que le plan $(ABC)$ coupe la sphère $(S)$ selon un cercle $(\Gamma)$ *(la détermination du centre et du rayon de $(\Gamma)$ n'est pas demandée)*
         reasoning: |-
-          Le critère de position d'un plan par rapport à une sphère (R9) compare la distance $d(\Omega,(ABC))$ au rayon $R$ : trois cas selon que $d>R$ (aucun point commun), $d=R$ (tangence, un seul point) ou $d<R$ (un cercle). Le réflexe attendu par un correcteur : on calcule $d$, on la compare à $R$, et c'est cette comparaison — jamais l'inverse — qui décide de la conclusion.
+          Le critère de position d'un plan par rapport à une sphère (chapitre 10) compare la distance $d(\Omega,(ABC))$ au rayon $R$ : trois cas selon que $d>R$ (aucun point commun), $d=R$ (tangence, un seul point) ou $d<R$ (un cercle). Le réflexe attendu par un correcteur : on calcule $d$, on la compare à $R$, et c'est cette comparaison — jamais l'inverse — qui décide de la conclusion.
 
           Ici $d=\sqrt3$ et $R=\sqrt5$ : comme $3<5$, on a $\sqrt3<\sqrt5$, donc $d<R$.
         steps:
           - math: 'd(\Omega,(ABC)) = \sqrt{3}\approx 1{,}73, \qquad R=\sqrt{5}\approx 2{,}24'
-            note: "On compare la distance calculée au rayon de la sphère (R9)."
+            note: "On compare la distance calculée au rayon de la sphère (chapitre 10)."
           - math: '\sqrt{3} < \sqrt{5} \iff d<R'
             note: "d est strictement inférieure à R."
           - math: '(ABC)\cap(S) = (\Gamma)\ \ \text{est un cercle}'
-            note: "Cas d < R du critère R9 : intersection = cercle (centre et rayon non demandés ici)."
+            note: "Cas d < R du critère du chapitre 10 : intersection = cercle (centre et rayon non demandés ici)."
 
   # ── bk-2022-n-x1 — 2022 N, Exercice 1 : plan tangent à une sphère, droite perpendiculaire tangente ──
   - id: bk-2022-n-x1
@@ -211,22 +211,22 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $\overrightarrow{AB} \wedge \overrightarrow{AC} = \vec{i} + \vec{k}$
         reasoning: |-
-          Même geste qu'à chaque fois qu'on cherche une normale à un plan : on fabrique un vecteur orthogonal à deux vecteurs du plan avec le produit vectoriel (R3). On calcule d'abord $\overrightarrow{AB}$ et $\overrightarrow{AC}$ par « arrivée moins départ » (R1), puis on applique la formule composante par composante, en surveillant les signes.
+          Même geste qu'à chaque fois qu'on cherche une normale à un plan : on fabrique un vecteur orthogonal à deux vecteurs du plan avec le produit vectoriel (chapitre 4). On calcule d'abord $\overrightarrow{AB}$ et $\overrightarrow{AC}$ par « arrivée moins départ » (chapitre 2), puis on applique la formule composante par composante, en surveillant les signes.
         steps:
           - math: '\overrightarrow{AB} = B-A = (1,\,1,\,-1), \qquad \overrightarrow{AC} = C-A = (-1,\,0,\,1)'
-            note: "Coordonnées arrivée moins départ (R1)."
+            note: "Coordonnées arrivée moins départ (chapitre 2)."
           - math: '\overrightarrow{AB}\wedge\overrightarrow{AC} = \big((1)(1)-(-1)(0),\ \ (-1)(-1)-(1)(1),\ \ (1)(0)-(1)(-1)\big)'
-            note: "Formule du produit vectoriel (R3)."
+            note: "Formule du produit vectoriel (chapitre 4)."
           - math: '\overrightarrow{AB}\wedge\overrightarrow{AC} = (1,\,0,\,1) = \vec{i}+\vec{k}'
             note: "La composante selon j est nulle : ce vecteur normal n'a pas de composante j."
       - id: q2
         stem: |-
           **(0,25 pt)** En déduire que $x + z - 1 = 0$ est une équation cartésienne du plan $(ABC)$
         reasoning: |-
-          $\overrightarrow{AB}\wedge\overrightarrow{AC}=(1,0,1)$ est un vecteur normal au plan $(ABC)$ (R6) : ses coordonnées sont exactement les coefficients de $x,y,z$ dans l'équation cartésienne — avec un coefficient nul devant $y$, puisque la composante correspondante du vecteur normal est nulle. On fixe la constante $d$ avec un point connu du plan.
+          $\overrightarrow{AB}\wedge\overrightarrow{AC}=(1,0,1)$ est un vecteur normal au plan $(ABC)$ (chapitre 7) : ses coordonnées sont exactement les coefficients de $x,y,z$ dans l'équation cartésienne — avec un coefficient nul devant $y$, puisque la composante correspondante du vecteur normal est nulle. On fixe la constante $d$ avec un point connu du plan.
         steps:
           - math: 'x+0y+z+d=0'
-            note: "Coefficients = coordonnées du vecteur normal (1,0,1) (R6) ; le coefficient de y est nul."
+            note: "Coefficients = coordonnées du vecteur normal (1,0,1) (chapitre 7) ; le coefficient de y est nul."
           - math: 'A(0,1,1)\in(ABC):\quad 0+0+1+d=0 \implies d=-1'
             note: "d est fixé en imposant que A appartienne au plan."
           - math: '(ABC):\ \ x+z-1=0'
@@ -236,10 +236,10 @@ entries:
         stem: |-
           **(0,5 pt)** Soit $(S)$ la sphère de centre $\Omega(1,1,2)$ et de rayon $R = \sqrt{2}$. Déterminer une équation de la sphère $(S)$
         reasoning: |-
-          Cette fois l'énoncé donne directement le centre et le rayon — c'est l'opération inverse de la question B du sujet 2019 : au lieu de compléter le carré pour retrouver centre et rayon depuis une forme développée, on part de la forme centre-rayon $(x-x_\Omega)^2+(y-y_\Omega)^2+(z-z_\Omega)^2=R^2$ (R9) et on y substitue directement les valeurs connues.
+          Cette fois l'énoncé donne directement le centre et le rayon — c'est l'opération inverse de la question B du sujet 2019 : au lieu de compléter le carré pour retrouver centre et rayon depuis une forme développée, on part de la forme centre-rayon $(x-x_\Omega)^2+(y-y_\Omega)^2+(z-z_\Omega)^2=R^2$ (chapitre 10) et on y substitue directement les valeurs connues.
         steps:
           - math: '(x-1)^2+(y-1)^2+(z-2)^2 = \left(\sqrt2\right)^2'
-            note: "Forme centre-rayon (R9), avec le centre et le rayon donnés directement dans l'énoncé."
+            note: "Forme centre-rayon (chapitre 10), avec le centre et le rayon donnés directement dans l'énoncé."
           - math: '(S):\ \ (x-1)^2+(y-1)^2+(z-2)^2 = 2'
             note: "Le rayon au carré vaut 2."
           - math: '(S):\ \ x^2+y^2+z^2-2x-2y-4z+4=0'
@@ -248,14 +248,14 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que le plan $(ABC)$ est tangent à la sphère $(S)$ au point $A$
         reasoning: |-
-          Deux choses à établir : que le plan est bien tangent (la distance du centre au plan égale le rayon, R9), et que le point de contact est précisément $A$.
+          Deux choses à établir : que le plan est bien tangent (la distance du centre au plan égale le rayon, chapitre 10), et que le point de contact est précisément $A$.
 
-          On calcule $d(\Omega,(ABC))$ avec la formule R8 ; elle tombe sur $\sqrt2$, exactement $R$ — le plan est tangent. Reste à identifier le point de contact, qui est par définition le pied de la perpendiculaire abaissée de $\Omega$ sur le plan. On le trouve en remarquant que le vecteur $\overrightarrow{\Omega A}$ est colinéaire au vecteur normal $(1,0,1)$ : $A$ appartient au plan et $\overrightarrow{\Omega A}$ est porté par la normale, donc $A$ *est* ce pied — le point de tangence.
+          On calcule $d(\Omega,(ABC))$ avec la formule du chapitre 9 ; elle tombe sur $\sqrt2$, exactement $R$ — le plan est tangent. Reste à identifier le point de contact, qui est par définition le pied de la perpendiculaire abaissée de $\Omega$ sur le plan. On le trouve en remarquant que le vecteur $\overrightarrow{\Omega A}$ est colinéaire au vecteur normal $(1,0,1)$ : $A$ appartient au plan et $\overrightarrow{\Omega A}$ est porté par la normale, donc $A$ *est* ce pied — le point de tangence.
         steps:
           - math: 'd(\Omega,(ABC)) = \dfrac{|1\times1+0\times1+1\times2-1|}{\sqrt{1^2+0^2+1^2}} = \dfrac{|1+0+2-1|}{\sqrt2} = \dfrac{2}{\sqrt2} = \sqrt2'
-            note: "Formule R8, avec Ω(1,1,2) et le plan x+z-1=0."
+            note: "Formule du chapitre 9, avec Ω(1,1,2) et le plan x+z-1=0."
           - math: '\sqrt2 = R \implies (ABC)\ \text{tangent à}\ (S)'
-            note: "Distance égale au rayon (R9) : le plan touche la sphère en un seul point."
+            note: "Distance égale au rayon (chapitre 10) : le plan touche la sphère en un seul point."
           - math: '\overrightarrow{\Omega A} = A-\Omega = (-1,\,0,\,-1) = -1\times(1,0,1)'
             note: "Le vecteur qui va de Ω à A est colinéaire au vecteur normal (1,0,1) : ce segment est perpendiculaire au plan."
           - math: 'A\in(ABC)\ \text{et}\ \overrightarrow{\Omega A}\parallel \vec{n} \implies A\ \text{est le pied de la perpendiculaire depuis}\ \Omega'
@@ -267,52 +267,52 @@ entries:
 
           **(0,25 pt)** Déterminer une représentation paramétrique de la droite $(\Delta)$
         reasoning: |-
-          La droite $(\Delta)$ est perpendiculaire au plan $(ABC)$ : sa direction est donc exactement la normale du plan, déjà trouvée à la question 1 — $\vec n=(1,0,1)$, sans qu'il y ait besoin de la recalculer. On écrit la représentation paramétrique habituelle (R5) à partir du point $C$ et de cette direction. Remarque : la composante $y$ du vecteur directeur est nulle, exactement le cas particulier signalé au R5 — $y$ reste constant tout le long de la droite.
+          La droite $(\Delta)$ est perpendiculaire au plan $(ABC)$ : sa direction est donc exactement la normale du plan, déjà trouvée à la question 1 — $\vec n=(1,0,1)$, sans qu'il y ait besoin de la recalculer. On écrit la représentation paramétrique habituelle (chapitre 6) à partir du point $C$ et de cette direction. Remarque : la composante $y$ du vecteur directeur est nulle, exactement le cas particulier signalé au chapitre 6 — $y$ reste constant tout le long de la droite.
         steps:
           - math: '\vec{u}_\Delta = \vec{n} = (1,\,0,\,1)'
             note: "Δ est perpendiculaire au plan (ABC) : son vecteur directeur est la normale, déjà trouvée à la question 1."
           - math: '\begin{cases} x = -1+t \\ y = 1 \\ z = 2+t \end{cases}\quad t\in\mathbb{R}'
-            note: "On part du point C(-1,1,2) et on avance selon (1,0,1) (R5)."
+            note: "On part du point C(-1,1,2) et on avance selon (1,0,1) (chapitre 6)."
       - id: q6
         stem: |-
           **(0,5 pt)** Montrer que la droite $(\Delta)$ est tangente à la sphère $(S)$ en un point $D$ dont on déterminera les coordonnées
         reasoning: |-
-          Ici on sort légèrement du terrain balisé par la leçon : le R9 traite la tangence **plan**-sphère (comparer la distance du centre au plan avec le rayon). Le même raisonnement de Pythagore se transpose tel quel à une **droite** : si $H$ est le pied de la perpendiculaire abaissée de $\Omega$ sur $(\Delta)$ et $M$ un point commun à $(\Delta)$ et $(S)$, le triangle $\Omega HM$ est rectangle en $H$, donc $R^2=d(\Omega,(\Delta))^2+HM^2$ — même relation, même conclusion : $d(\Omega,(\Delta))=R$ signale une droite tangente.
+          Ici on sort légèrement du terrain balisé par la leçon : le chapitre 10 traite la tangence **plan**-sphère (comparer la distance du centre au plan avec le rayon). Le même raisonnement de Pythagore se transpose tel quel à une **droite** : si $H$ est le pied de la perpendiculaire abaissée de $\Omega$ sur $(\Delta)$ et $M$ un point commun à $(\Delta)$ et $(S)$, le triangle $\Omega HM$ est rectangle en $H$, donc $R^2=d(\Omega,(\Delta))^2+HM^2$ — même relation, même conclusion : $d(\Omega,(\Delta))=R$ signale une droite tangente.
 
-          On calcule donc $d(\Omega,(\Delta))$ avec la formule du R8 (distance point-droite, via le produit vectoriel), on la compare à $R$, puis, la tangence confirmée, on trouve $D$ en imposant que $\overrightarrow{\Omega D}$ soit orthogonal à la direction de $(\Delta)$ — c'est la caractérisation même du pied de la perpendiculaire, via le produit scalaire (R2).
+          On calcule donc $d(\Omega,(\Delta))$ avec la formule du chapitre 9 (distance point-droite, via le produit vectoriel), on la compare à $R$, puis, la tangence confirmée, on trouve $D$ en imposant que $\overrightarrow{\Omega D}$ soit orthogonal à la direction de $(\Delta)$ — c'est la caractérisation même du pied de la perpendiculaire, via le produit scalaire (chapitre 3).
         steps:
           - math: '\overrightarrow{\Omega C} = C - \Omega = (-2,\,0,\,0)'
             note: "Vecteur d'un point de la droite (C) vers le centre Ω."
           - math: '\overrightarrow{\Omega C}\wedge \vec{u}_\Delta = \big((0)(1)-(0)(0),\ (0)(1)-(-2)(1),\ (-2)(0)-(0)(1)\big) = (0,\,2,\,0)'
-            note: "Produit vectoriel (R3) entre Ω vers C et le vecteur directeur de Δ, (1,0,1)."
+            note: "Produit vectoriel (chapitre 4) entre Ω vers C et le vecteur directeur de Δ, (1,0,1)."
           - math: 'd(\Omega,(\Delta)) = \dfrac{\|(0,2,0)\|}{\|\vec{u}_\Delta\|} = \dfrac{2}{\sqrt2} = \sqrt2'
-            note: "Formule R8 (distance point-droite)."
+            note: "Formule du chapitre 9 (distance point-droite)."
           - math: '\sqrt2 = R \implies (\Delta)\ \text{tangente à}\ (S)'
-            note: "Même critère que pour un plan (R9), transposé à une droite : distance au centre = rayon signale la tangence."
+            note: "Même critère que pour un plan (chapitre 10), transposé à une droite : distance au centre = rayon signale la tangence."
           - math: 'D=C+t\,\vec{u}_\Delta, \quad \overrightarrow{\Omega D} = \overrightarrow{\Omega C}+t\,\vec{u}_\Delta = (-2+t,\,0,\,t)'
             note: "Point générique de Δ ; vecteur de Ω vers ce point, en fonction de t."
           - math: '\overrightarrow{\Omega D}\cdot \vec{u}_\Delta = 0 \iff (-2+t)+t = 0 \iff t=1'
-            note: "Le pied de la perpendiculaire depuis Ω annule ce produit scalaire (R2)."
+            note: "Le pied de la perpendiculaire depuis Ω annule ce produit scalaire (chapitre 3)."
           - math: 'D = (-1+1,\,1,\,2+1) = (0,\,1,\,3)'
             note: "On reporte t=1 dans la représentation paramétrique de Δ."
       - id: q7
         stem: |-
           **(0,5 pt)** Calculer le produit scalaire $\overrightarrow{AC} \cdot (\vec{i} + \vec{k})$, puis en déduire la distance $d(A,(\Delta))$
         reasoning: |-
-          On calcule le produit scalaire coordonnée par coordonnée (R2) entre $\overrightarrow{AC}$ et $\vec i+\vec k$ — qui est précisément le vecteur directeur de $(\Delta)$ (question 5). Le résultat nul signale que $\overrightarrow{AC}$ est orthogonal à cette direction.
+          On calcule le produit scalaire coordonnée par coordonnée (chapitre 3) entre $\overrightarrow{AC}$ et $\vec i+\vec k$ — qui est précisément le vecteur directeur de $(\Delta)$ (question 5). Le résultat nul signale que $\overrightarrow{AC}$ est orthogonal à cette direction.
 
-          Or $C$ est un point de $(\Delta)$, et $\overrightarrow{AC}$ va justement de ce point vers $A$. Un vecteur qui part d'un point de la droite et qui est déjà perpendiculaire à sa direction, c'est exactement le segment qui réalise la distance : pas besoin de repasser par la formule du produit vectoriel du R8, la longueur de $\overrightarrow{AC}$ *est* la distance cherchée.
+          Or $C$ est un point de $(\Delta)$, et $\overrightarrow{AC}$ va justement de ce point vers $A$. Un vecteur qui part d'un point de la droite et qui est déjà perpendiculaire à sa direction, c'est exactement le segment qui réalise la distance : pas besoin de repasser par la formule du produit vectoriel du chapitre 9, la longueur de $\overrightarrow{AC}$ *est* la distance cherchée.
         steps:
           - math: '\overrightarrow{AC} = C-A = (-1,\,0,\,1)'
-            note: "Rappel de la question 1 (R1)."
+            note: "Rappel de la question 1 (chapitre 2)."
           - math: '\overrightarrow{AC}\cdot(\vec i+\vec k) = \overrightarrow{AC}\cdot(1,0,1) = (-1)(1)+0\times0+1\times1 = 0'
-            note: "Produit scalaire coordonnée par coordonnée (R2)."
+            note: "Produit scalaire coordonnée par coordonnée (chapitre 3)."
           - math: '\overrightarrow{AC}\cdot \vec{u}_\Delta = 0 \implies \overrightarrow{AC}\perp \vec{u}_\Delta'
             note: "AC est orthogonal à la direction de Δ (question 5)."
           - math: 'C\in(\Delta)\ \text{et}\ \overrightarrow{AC}\perp \vec{u}_\Delta \implies d(A,(\Delta)) = AC'
             note: "AC part d'un point de la droite et est déjà perpendiculaire à sa direction : c'est le segment qui réalise la distance."
           - math: 'AC = \sqrt{(-1)^2+0^2+1^2} = \sqrt2'
-            note: "Norme du vecteur AC (R1) : c'est la distance cherchée."
+            note: "Norme du vecteur AC (chapitre 2) : c'est la distance cherchée."
 
   # ── bk-2023-n-x1 — 2023 N, Exercice 1 : aire, tangence à une sphère, plans parallèles sécants ──
   - id: bk-2023-n-x1
@@ -347,24 +347,24 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que $\overrightarrow{AB} \wedge \overrightarrow{AC} = 4\left(2\vec{i} + \vec{j} + 2\vec{k}\right)$
         reasoning: |-
-          Même geste que d'habitude : coordonnées de $\overrightarrow{AB}$ et $\overrightarrow{AC}$ par « arrivée moins départ » (R1), puis produit vectoriel composante par composante (R3). Ici le résultat n'est pas déjà réduit — on le factorise par $4$ pour retrouver exactement la forme annoncée par l'énoncé, $4(2\vec i+\vec j+2\vec k)$.
+          Même geste que d'habitude : coordonnées de $\overrightarrow{AB}$ et $\overrightarrow{AC}$ par « arrivée moins départ » (chapitre 2), puis produit vectoriel composante par composante (chapitre 4). Ici le résultat n'est pas déjà réduit — on le factorise par $4$ pour retrouver exactement la forme annoncée par l'énoncé, $4(2\vec i+\vec j+2\vec k)$.
         steps:
           - math: '\overrightarrow{AB} = B-A = (2,\,0,\,-2), \qquad \overrightarrow{AC} = C-A = (2,\,4,\,-4)'
-            note: "Coordonnées arrivée moins départ (R1)."
+            note: "Coordonnées arrivée moins départ (chapitre 2)."
           - math: '\overrightarrow{AB}\wedge\overrightarrow{AC} = \big((0)(-4)-(-2)(4),\ \ (-2)(2)-(2)(-4),\ \ (2)(4)-(0)(2)\big)'
-            note: "Formule du produit vectoriel (R3)."
+            note: "Formule du produit vectoriel (chapitre 4)."
           - math: '\overrightarrow{AB}\wedge\overrightarrow{AC} = (8,\,4,\,8) = 4\,(2,\,1,\,2) = 4\left(2\vec i+\vec j+2\vec k\right)'
             note: "On factorise par 4 pour retrouver exactement la forme demandée."
       - id: q2
         stem: |-
           **(0,5 pt)** En déduire l'aire du triangle $ABC$ et la distance $d(B,(AC))$
         reasoning: |-
-          La norme du produit vectoriel est l'aire du parallélogramme construit sur $\overrightarrow{AB}$ et $\overrightarrow{AC}$ (R3) ; l'aire du triangle $ABC$ en est la moitié.
+          La norme du produit vectoriel est l'aire du parallélogramme construit sur $\overrightarrow{AB}$ et $\overrightarrow{AC}$ (chapitre 4) ; l'aire du triangle $ABC$ en est la moitié.
 
-          Pour la distance $d(B,(AC))$, on réutilise cette même aire autrement : un triangle, c'est aussi un demi produit base $\times$ hauteur, avec $AC$ comme base et $d(B,(AC))$ comme hauteur cherchée. On égale les deux expressions de l'aire et on isole la hauteur — c'est la même idée que la formule de distance point-droite du R8, écrite sans repasser par un second produit vectoriel.
+          Pour la distance $d(B,(AC))$, on réutilise cette même aire autrement : un triangle, c'est aussi un demi produit base $\times$ hauteur, avec $AC$ comme base et $d(B,(AC))$ comme hauteur cherchée. On égale les deux expressions de l'aire et on isole la hauteur — c'est la même idée que la formule de distance point-droite du chapitre 9, écrite sans repasser par un second produit vectoriel.
         steps:
           - math: '\left\|\overrightarrow{AB}\wedge\overrightarrow{AC}\right\| = \|(8,4,8)\| = \sqrt{8^2+4^2+8^2} = \sqrt{144} = 12'
-            note: "Norme du produit vectoriel = aire du parallélogramme construit sur AB et AC (R3)."
+            note: "Norme du produit vectoriel = aire du parallélogramme construit sur AB et AC (chapitre 4)."
           - math: '\text{aire}(ABC) = \dfrac{12}{2} = 6'
             note: "Le triangle occupe la moitié du parallélogramme."
           - math: 'AC = \left\|\overrightarrow{AC}\right\| = \sqrt{2^2+4^2+(-4)^2} = \sqrt{36} = 6'
@@ -380,12 +380,12 @@ entries:
 
           **(0,25 pt)** Vérifier que $\overrightarrow{D\Omega} = \dfrac{1}{4}\left(\overrightarrow{AB} \wedge \overrightarrow{AC}\right)$
         reasoning: |-
-          Vérification directe : on calcule $D$, le milieu de $[AC]$ (moyenne des coordonnées), puis $\overrightarrow{D\Omega}$ par « arrivée moins départ » (R1), et on compare au quart du résultat de la question 1. Pas d'astuce ici — on calcule les deux membres séparément et on constate qu'ils coïncident.
+          Vérification directe : on calcule $D$, le milieu de $[AC]$ (moyenne des coordonnées), puis $\overrightarrow{D\Omega}$ par « arrivée moins départ » (chapitre 2), et on compare au quart du résultat de la question 1. Pas d'astuce ici — on calcule les deux membres séparément et on constate qu'ils coïncident.
         steps:
           - math: 'D = \left(\dfrac{0+2}{2},\,\dfrac{1+5}{2},\,\dfrac{4+0}{2}\right) = (1,\,3,\,2)'
             note: "D est le milieu de [AC] : on moyenne les coordonnées de A et C."
           - math: '\overrightarrow{D\Omega} = \Omega-D = (3-1,\,4-3,\,4-2) = (2,\,1,\,2)'
-            note: "Coordonnées arrivée moins départ (R1)."
+            note: "Coordonnées arrivée moins départ (chapitre 2)."
           - math: '\dfrac14\left(\overrightarrow{AB}\wedge\overrightarrow{AC}\right) = \dfrac14\,(8,\,4,\,8) = (2,\,1,\,2)'
             note: "On reprend le résultat de la question 1."
           - math: '\overrightarrow{D\Omega} = \dfrac14\left(\overrightarrow{AB}\wedge\overrightarrow{AC}\right)'
@@ -394,14 +394,14 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que $d(\Omega,(ABC)) = 3$.
         reasoning: |-
-          $\overrightarrow{AB}\wedge\overrightarrow{AC}$ est un vecteur normal au plan $(ABC)$ (R6). La question précédente dit que $\overrightarrow{D\Omega}$ en est le quart — donc $\overrightarrow{D\Omega}$ est colinéaire à cette normale, c'est-à-dire perpendiculaire au plan.
+          $\overrightarrow{AB}\wedge\overrightarrow{AC}$ est un vecteur normal au plan $(ABC)$ (chapitre 7). La question précédente dit que $\overrightarrow{D\Omega}$ en est le quart — donc $\overrightarrow{D\Omega}$ est colinéaire à cette normale, c'est-à-dire perpendiculaire au plan.
 
-          Or $D$, milieu du segment $[AC]$, appartient au plan $(ABC)$ : $A$ et $C$ y sont, et un segment entre deux points d'un plan reste entièrement dans ce plan. $D$ est donc un point du plan tel que $\overrightarrow{D\Omega}$ est perpendiculaire à ce plan — c'est exactement la définition du pied de la perpendiculaire abaissée de $\Omega$. La distance cherchée est donc simplement la norme de ce vecteur (R1), sans repasser par la formule du R8.
+          Or $D$, milieu du segment $[AC]$, appartient au plan $(ABC)$ : $A$ et $C$ y sont, et un segment entre deux points d'un plan reste entièrement dans ce plan. $D$ est donc un point du plan tel que $\overrightarrow{D\Omega}$ est perpendiculaire à ce plan — c'est exactement la définition du pied de la perpendiculaire abaissée de $\Omega$. La distance cherchée est donc simplement la norme de ce vecteur (chapitre 2), sans repasser par la formule du chapitre 9.
         steps:
           - math: 'D\in(ABC)\ (\text{milieu de}\ [AC]) \ \text{et}\ \overrightarrow{D\Omega}\ \text{colinéaire à la normale}\ \overrightarrow{AB}\wedge\overrightarrow{AC}'
-            note: "D appartient au plan, et D vers Ω suit exactement la direction normale (R6) : D est le pied de la perpendiculaire depuis Ω."
+            note: "D appartient au plan, et D vers Ω suit exactement la direction normale (chapitre 7) : D est le pied de la perpendiculaire depuis Ω."
           - math: 'd(\Omega,(ABC)) = \left\|\overrightarrow{D\Omega}\right\| = \sqrt{2^2+1^2+2^2} = \sqrt{9} = 3'
-            note: "Distance = norme du vecteur qui réalise la perpendiculaire (R1)."
+            note: "Distance = norme du vecteur qui réalise la perpendiculaire (chapitre 2)."
       - id: q5
         part: "Partie C — La sphère $(S)$ et la tangence du plan"
         stem: |-
@@ -409,10 +409,10 @@ entries:
 
           **(0,5 pt)** Déterminer le centre et le rayon de la sphère $(S)$
         reasoning: |-
-          L'équation de $(S)$ est donnée sous forme développée : on complète le carré dans chaque variable (R9), la même technique que pour la sphère du sujet précédent, pour revenir à la forme centre-rayon.
+          L'équation de $(S)$ est donnée sous forme développée : on complète le carré dans chaque variable (chapitre 10), la même technique que pour la sphère du sujet précédent, pour revenir à la forme centre-rayon.
         steps:
           - math: '(x^2-6x)+(y^2-8y)+(z^2-8z)+32=0'
-            note: "On regroupe par variable avant de compléter chaque carré (R9)."
+            note: "On regroupe par variable avant de compléter chaque carré (chapitre 10)."
           - math: '(x-3)^2-9 \;+\; (y-4)^2-16 \;+\; (z-4)^2-16 \;+\;32 = 0'
             note: "Chaque groupe devient un carré parfait ; on garde trace du terme constant soustrait."
           - math: '(x-3)^2+(y-4)^2+(z-4)^2 = 9+16+16-32 = 9'
@@ -423,12 +423,12 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que le plan $(ABC)$ est tangent à la sphère $(S)$ en un point que l'on déterminera.
         reasoning: |-
-          La question précédente (Partie B) a déjà établi $d(\Omega,(ABC))=3$, exactement le rayon trouvé à l'instant : $d=R$, donc le plan est tangent à la sphère (R9).
+          La question précédente (Partie B) a déjà établi $d(\Omega,(ABC))=3$, exactement le rayon trouvé à l'instant : $d=R$, donc le plan est tangent à la sphère (chapitre 10).
 
           Reste à identifier le point de contact. On l'a en réalité déjà sous la main : $D$, le pied de la perpendiculaire depuis $\Omega$ (question 4), est à distance $3=R$ de $\Omega$ et appartient au plan — c'est donc exactement le point où le plan touche la sphère. On peut le confirmer en vérifiant directement que $D$ satisfait l'équation centre-rayon de $(S)$.
         steps:
           - math: 'd(\Omega,(ABC)) = 3 = R \implies (ABC)\ \text{tangent à}\ (S)'
-            note: "Distance égale au rayon (R9, question 4) : un seul point commun."
+            note: "Distance égale au rayon (chapitre 10, question 4) : un seul point commun."
           - math: '\left\|\overrightarrow{D\Omega}\right\| = 3 = R\ \text{et}\ D\in(ABC)\ \text{et}\ \overrightarrow{D\Omega}\ \text{colinéaire à la normale}'
             note: "D, déjà connu comme pied de la perpendiculaire (question 4), est à distance R de Ω : c'est le point de contact."
           - math: '(1-3)^2+(3-4)^2+(2-4)^2 = 4+1+4 = 9 = R^2'
@@ -440,22 +440,22 @@ entries:
         stem: |-
           **(0,5 pt)** Soient $(Q_1)$ et $(Q_2)$ les deux plans parallèles à $(ABC)$ tels que chacun d'eux coupe $(S)$ suivant un cercle de rayon $\sqrt{5}$. Déterminer une équation cartésienne pour chacun des deux plans $(Q_1)$ et $(Q_2)$.
         reasoning: |-
-          On n'a pas encore eu besoin de l'équation cartésienne complète de $(ABC)$ — tout s'est fait jusqu'ici par la géométrie du vecteur $\overrightarrow{D\Omega}$. Pour caractériser des plans parallèles, il en faut une forme explicite : on la construit avec la méthode habituelle (R6), normale $(2,1,2)$ (le quart du vecteur de la question 1) et un point connu, $A$.
+          On n'a pas encore eu besoin de l'équation cartésienne complète de $(ABC)$ — tout s'est fait jusqu'ici par la géométrie du vecteur $\overrightarrow{D\Omega}$. Pour caractériser des plans parallèles, il en faut une forme explicite : on la construit avec la méthode habituelle (chapitre 7), normale $(2,1,2)$ (le quart du vecteur de la question 1) et un point connu, $A$.
 
-          Ensuite, le même Pythagore qu'au R9 relie rayon de la sphère, distance centre-plan et rayon du cercle d'intersection : $R^2=d^2+r^2$. On le retourne pour trouver la distance $d$ qui donne un cercle de rayon $\sqrt5$, imposé par l'énoncé.
+          Ensuite, le même Pythagore qu'au chapitre 10 relie rayon de la sphère, distance centre-plan et rayon du cercle d'intersection : $R^2=d^2+r^2$. On le retourne pour trouver la distance $d$ qui donne un cercle de rayon $\sqrt5$, imposé par l'énoncé.
 
-          Tout plan parallèle à $(ABC)$ partage sa normale (R7) ; il s'écrit donc $2x+y+2z+k=0$ pour un $k$ à déterminer. On calcule sa distance à $\Omega$ en fonction de $k$ (R8) et on l'égale à la valeur trouvée — l'équation en valeur absolue donne deux solutions, une de chaque côté du plan tangent $(ABC)$.
+          Tout plan parallèle à $(ABC)$ partage sa normale (chapitre 8) ; il s'écrit donc $2x+y+2z+k=0$ pour un $k$ à déterminer. On calcule sa distance à $\Omega$ en fonction de $k$ (chapitre 9) et on l'égale à la valeur trouvée — l'équation en valeur absolue donne deux solutions, une de chaque côté du plan tangent $(ABC)$.
         steps:
           - math: '2x+y+2z+d=0,\quad A(0,1,4)\in(ABC): \ 0+1+8+d=0 \implies d=-9'
-            note: "Normale (2,1,2) (R6, le quart de AB∧AC de la question 1) ; d fixé par A."
+            note: "Normale (2,1,2) (chapitre 7, le quart de AB∧AC de la question 1) ; d fixé par A."
           - math: '(ABC):\ \ 2x+y+2z-9=0'
             note: "Vérification : B(2,1,2) donne 4+1+4-9=0 ; C(2,5,0) donne 4+5+0-9=0."
           - math: 'R^2 = d^2+r^2 \implies 9 = d^2+5 \implies d^2=4 \implies d=2'
-            note: "Même relation qu'au R9 : un cercle de rayon r=√5 sur une sphère de rayon R=3 impose une distance centre-plan d=2."
+            note: "Même relation qu'au chapitre 10 : un cercle de rayon r=√5 sur une sphère de rayon R=3 impose une distance centre-plan d=2."
           - math: '(Q):\ \ 2x+y+2z+k=0'
-            note: "Même normale (2,1,2) : tout plan parallèle à (ABC) partage cette direction (R7)."
+            note: "Même normale (2,1,2) : tout plan parallèle à (ABC) partage cette direction (chapitre 8)."
           - math: 'd(\Omega,(Q)) = \dfrac{|2(3)+4+2(4)+k|}{\sqrt{2^2+1^2+2^2}} = \dfrac{|18+k|}{3}'
-            note: "Formule R8 appliquée au plan générique (Q)."
+            note: "Formule du chapitre 9 appliquée au plan générique (Q)."
           - math: '\dfrac{|18+k|}{3}=2 \iff |18+k|=6 \iff k=-12\ \text{ou}\ k=-24'
             note: "Deux valeurs, une de chaque côté du plan tangent (ABC) qui correspond à k=-9."
           - math: '(Q_1):\ \ 2x+y+2z-12=0, \qquad (Q_2):\ \ 2x+y+2z-24=0'
@@ -498,10 +498,10 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que $2x - 2y + z + 3 = 0$ est une équation cartésienne du plan $(P)$
         reasoning: |-
-          Le plan $(P)$ est donné directement par un point $A$ et un vecteur normal $\vec n(2,-2,1)$ — on applique donc telle quelle la formule de l'équation cartésienne (R6) : $a(x-x_A)+b(y-y_A)+c(z-z_A)=0$, sans passer par un produit vectoriel puisque la normale est déjà fournie.
+          Le plan $(P)$ est donné directement par un point $A$ et un vecteur normal $\vec n(2,-2,1)$ — on applique donc telle quelle la formule de l'équation cartésienne (chapitre 7) : $a(x-x_A)+b(y-y_A)+c(z-z_A)=0$, sans passer par un produit vectoriel puisque la normale est déjà fournie.
         steps:
           - math: '2\left(x-(-1)\right) - 2(y-0) + 1\left(z-(-1)\right) = 0'
-            note: "Formule R6, avec le point A(-1,0,-1) et la normale n(2,-2,1) données directement par l'énoncé."
+            note: "Formule du chapitre 7, avec le point A(-1,0,-1) et la normale n(2,-2,1) données directement par l'énoncé."
           - math: '2x+2-2y+z+1=0'
             note: "On distribue chaque terme."
           - math: '(P):\ \ 2x-2y+z+3=0'
@@ -510,10 +510,10 @@ entries:
         stem: |-
           **(0,25 pt)** Déterminer une équation cartésienne de la sphère $(S)$
         reasoning: |-
-          Comme pour la sphère du sujet 2022 (centre et rayon donnés directement), on part de la forme centre-rayon (R9) et on y substitue $\Omega(2,-1,0)$ et $R=5$ — aucun carré à compléter ici, le centre et le rayon sont déjà connus.
+          Comme pour la sphère du sujet 2022 (centre et rayon donnés directement), on part de la forme centre-rayon (chapitre 10) et on y substitue $\Omega(2,-1,0)$ et $R=5$ — aucun carré à compléter ici, le centre et le rayon sont déjà connus.
         steps:
           - math: '(x-2)^2+(y+1)^2+(z-0)^2 = 5^2'
-            note: "Forme centre-rayon (R9), avec le centre et le rayon donnés directement dans l'énoncé."
+            note: "Forme centre-rayon (chapitre 10), avec le centre et le rayon donnés directement dans l'énoncé."
           - math: '(S):\ \ (x-2)^2+(y+1)^2+z^2 = 25'
             note: "Le rayon au carré vaut 25."
       - id: q3
@@ -521,40 +521,40 @@ entries:
         stem: |-
           **(0,5 pt)** Vérifier que la distance du point $\Omega$ au plan $(P)$ est $d(\Omega,(P)) = 3$
         reasoning: |-
-          On applique la formule R8 : au numérateur, l'équation de $(P)$ évaluée en $\Omega$, en valeur absolue ; au dénominateur, la norme du vecteur normal — jamais la somme des coefficients.
+          On applique la formule du chapitre 9 : au numérateur, l'équation de $(P)$ évaluée en $\Omega$, en valeur absolue ; au dénominateur, la norme du vecteur normal — jamais la somme des coefficients.
         steps:
           - math: 'd(\Omega,(P)) = \dfrac{\big|2\times2 - 2\times(-1) + 1\times0 + 3\big|}{\sqrt{2^2+(-2)^2+1^2}}'
-            note: "Formule R8 : |ax0+by0+cz0+d| au numérateur, norme du vecteur normal au dénominateur."
+            note: "Formule du chapitre 9 : |ax0+by0+cz0+d| au numérateur, norme du vecteur normal au dénominateur."
           - math: 'd(\Omega,(P)) = \dfrac{|4+2+0+3|}{\sqrt{4+4+1}} = \dfrac{9}{3} = 3'
             note: "On simplifie : 9 sur 3 égale 3."
       - id: q4
         stem: |-
           **(0,5 pt)** En déduire que le plan $(P)$ coupe la sphère $(S)$ suivant un cercle $(\Gamma)$ de rayon à déterminer.
         reasoning: |-
-          Même réflexe qu'au R9 : on compare la distance $d(\Omega,(P))=3$, tout juste calculée, au rayon $R=5$ de la sphère — c'est cette comparaison, jamais l'inverse, qui tranche. Ici $d=3<R=5$, donc l'intersection est un cercle $(\Gamma)$, de rayon $\sqrt{R^2-d^2}$ par le Pythagore du R9 (le triangle $\Omega HM$, rectangle en $H$, avec $H$ le centre du cercle).
+          Même réflexe qu'au chapitre 10 : on compare la distance $d(\Omega,(P))=3$, tout juste calculée, au rayon $R=5$ de la sphère — c'est cette comparaison, jamais l'inverse, qui tranche. Ici $d=3<R=5$, donc l'intersection est un cercle $(\Gamma)$, de rayon $\sqrt{R^2-d^2}$ par le Pythagore du chapitre 10 (le triangle $\Omega HM$, rectangle en $H$, avec $H$ le centre du cercle).
         steps:
           - math: 'd(\Omega,(P)) = 3 < R = 5'
-            note: "On compare la distance calculée au rayon de la sphère (R9)."
+            note: "On compare la distance calculée au rayon de la sphère (chapitre 10)."
           - math: '(P)\cap(S) = (\Gamma)\ \ \text{est un cercle}'
-            note: "Cas d < R du critère R9 : intersection = cercle."
+            note: "Cas d < R du critère du chapitre 10 : intersection = cercle."
           - math: '\text{rayon}(\Gamma) = \sqrt{R^2-d^2} = \sqrt{5^2-3^2} = \sqrt{25-9} = \sqrt{16} = 4'
-            note: "Pythagore du R9 : R carré = d carré + rayon carré, appliqué au triangle ΩHM rectangle en H."
+            note: "Pythagore du chapitre 10 : R carré = d carré + rayon carré, appliqué au triangle ΩHM rectangle en H."
       - id: q5
         part: "Partie C — La droite $(\\Delta)$ : centre du cercle et médiatrice de $[AB]$"
         stem: |-
           **(0,5 pt)** Déterminer une représentation paramétrique de la droite $(\Delta)$ passant par $\Omega$ et perpendiculaire au plan $(P)$
         reasoning: |-
-          $(\Delta)$ est perpendiculaire à $(P)$ : sa direction est donc exactement le vecteur normal du plan, déjà donné par l'énoncé, $\vec n(2,-2,1)$ — pas besoin de le recalculer. On écrit la représentation paramétrique habituelle (R5) à partir du point $\Omega(2,-1,0)$ et de cette direction.
+          $(\Delta)$ est perpendiculaire à $(P)$ : sa direction est donc exactement le vecteur normal du plan, déjà donné par l'énoncé, $\vec n(2,-2,1)$ — pas besoin de le recalculer. On écrit la représentation paramétrique habituelle (chapitre 6) à partir du point $\Omega(2,-1,0)$ et de cette direction.
         steps:
           - math: '\vec{u}_\Delta = \vec{n} = (2,\,-2,\,1)'
             note: "Δ est perpendiculaire à (P) : son vecteur directeur est la normale du plan, donnée par l'énoncé."
           - math: '(\Delta):\ \begin{cases} x = 2+2t \\ y = -1-2t \\ z = t \end{cases}\quad t\in\mathbb{R}'
-            note: "On part du point Ω(2,-1,0) et on avance selon (2,-2,1), formule R5."
+            note: "On part du point Ω(2,-1,0) et on avance selon (2,-2,1), formule du chapitre 6."
       - id: q6
         stem: |-
           **(0,5 pt)** Montrer que le point $H(0,1,-1)$ est le centre du cercle $(\Gamma)$
         reasoning: |-
-          Le centre du cercle $(\Gamma)$, c'est par définition le point $H$ du R9 : le projeté orthogonal de $\Omega$ sur le plan $(P)$, c'est-à-dire le pied de la perpendiculaire abaissée de $\Omega$ — exactement le point où $(\Delta)$ perce le plan $(P)$, puisque $(\Delta)$ porte cette même perpendiculaire (question précédente). Deux choses à vérifier : que $H$ est bien sur $(\Delta)$, et que $H$ est bien sur $(P)$ — les deux ensemble suffisent, car $(\Delta)\cap(P)$ ne contient qu'un seul point (R7, droite et plan non parallèles, puisque le produit scalaire de leurs directions est non nul).
+          Le centre du cercle $(\Gamma)$, c'est par définition le point $H$ du chapitre 10 : le projeté orthogonal de $\Omega$ sur le plan $(P)$, c'est-à-dire le pied de la perpendiculaire abaissée de $\Omega$ — exactement le point où $(\Delta)$ perce le plan $(P)$, puisque $(\Delta)$ porte cette même perpendiculaire (question précédente). Deux choses à vérifier : que $H$ est bien sur $(\Delta)$, et que $H$ est bien sur $(P)$ — les deux ensemble suffisent, car $(\Delta)\cap(P)$ ne contient qu'un seul point (chapitre 8, droite et plan non parallèles, puisque le produit scalaire de leurs directions est non nul).
         steps:
           - math: '2+2t=0 \iff t=-1;\qquad -1-2(-1) = 1;\qquad z=t=-1'
             note: "On cherche si H(0,1,-1) correspond à une valeur de t sur (Δ) : t=-1 donne exactement (0,1,-1)."
@@ -563,23 +563,23 @@ entries:
           - math: '2(0) - 2(1) + (-1) + 3 = 0-2-1+3 = 0'
             note: "On vérifie que H satisfait aussi l'équation de (P), établie à la question 1."
           - math: 'H\in(P)\ \text{et}\ H\in(\Delta) \implies H\ \text{est le pied de la perpendiculaire depuis}\ \Omega\ \text{sur}\ (P)'
-            note: "H est l'unique point commun à Δ et (P) : c'est exactement le centre du cercle (Γ), défini au R9."
+            note: "H est l'unique point commun à Δ et (P) : c'est exactement le centre du cercle (Γ), défini au chapitre 10."
       - id: q7
         stem: |-
           **(0,5 pt)** Montrer que la droite $(\Delta)$ est une médiatrice du segment $[AB]$
         reasoning: |-
-          On sort ici légèrement du terrain balisé par le corps de la leçon : ni R1 à R9 ne nomment la médiatrice d'un segment dans l'espace. Le mécanisme reste pourtant entièrement construit avec les outils déjà en main. Deux faits suffisent : que $(\Delta)$ passe par le milieu de $[AB]$, et que sa direction est orthogonale à $\overrightarrow{AB}$ (test du R2). Ensemble, ces deux faits garantissent que tout point $M$ de $(\Delta)$ vérifie $MA=MB$ — la définition même d'une médiatrice.
+          On sort ici légèrement du terrain balisé par le corps de la leçon : ni les chapitres 2 à 10 ne nomment la médiatrice d'un segment dans l'espace. Le mécanisme reste pourtant entièrement construit avec les outils déjà en main. Deux faits suffisent : que $(\Delta)$ passe par le milieu de $[AB]$, et que sa direction est orthogonale à $\overrightarrow{AB}$ (test du chapitre 3). Ensemble, ces deux faits garantissent que tout point $M$ de $(\Delta)$ vérifie $MA=MB$ — la définition même d'une médiatrice.
 
-          On calcule d'abord le milieu de $[AB]$ (moyenne des coordonnées, comme au R1) : il tombe exactement sur $H$, déjà identifié comme un point de $(\Delta)$ à la question précédente. Puis on teste l'orthogonalité (R2) entre $\overrightarrow{AB}$ et la direction $\vec n$ de $(\Delta)$ : le produit scalaire s'annule, donc les deux directions sont perpendiculaires. Une droite qui passe par le milieu d'un segment et dont la direction est orthogonale à ce segment reste à égale distance des deux extrémités en tout point — c'est exactement ce que « médiatrice » signifie.
+          On calcule d'abord le milieu de $[AB]$ (moyenne des coordonnées, comme au chapitre 2) : il tombe exactement sur $H$, déjà identifié comme un point de $(\Delta)$ à la question précédente. Puis on teste l'orthogonalité (chapitre 3) entre $\overrightarrow{AB}$ et la direction $\vec n$ de $(\Delta)$ : le produit scalaire s'annule, donc les deux directions sont perpendiculaires. Une droite qui passe par le milieu d'un segment et dont la direction est orthogonale à ce segment reste à égale distance des deux extrémités en tout point — c'est exactement ce que « médiatrice » signifie.
         steps:
           - math: '\text{milieu de}\ [AB] = \left(\dfrac{-1+1}{2},\,\dfrac{0+2}{2},\,\dfrac{-1+(-1)}{2}\right) = (0,\,1,\,-1) = H'
-            note: "Moyenne des coordonnées de A et B (R1) : le milieu de [AB] est exactement le point H, déjà sur Δ (question précédente)."
+            note: "Moyenne des coordonnées de A et B (chapitre 2) : le milieu de [AB] est exactement le point H, déjà sur Δ (question précédente)."
           - math: '\overrightarrow{AB} = B-A = (2,\,2,\,0)'
-            note: "Coordonnées arrivée moins départ (R1)."
+            note: "Coordonnées arrivée moins départ (chapitre 2)."
           - math: '\vec{n}\cdot\overrightarrow{AB} = 2\times2 + (-2)\times2 + 1\times0 = 4-4+0 = 0'
-            note: "Produit scalaire coordonnée par coordonnée (R2) : le résultat est nul."
+            note: "Produit scalaire coordonnée par coordonnée (chapitre 3) : le résultat est nul."
           - math: '\vec n \perp \overrightarrow{AB}'
-            note: "Test d'orthogonalité du R2 : produit scalaire nul, directions perpendiculaires."
+            note: "Test d'orthogonalité du chapitre 3 : produit scalaire nul, directions perpendiculaires."
           - math: 'H\in(\Delta),\ \ H\ \text{milieu de}\ [AB],\ \ \vec{u}_\Delta \perp \overrightarrow{AB} \implies \forall M\in(\Delta),\ MA=MB'
             note: "Δ passe par le milieu de [AB] et sa direction est orthogonale à AB : Δ est une médiatrice de [AB]."
 
@@ -617,18 +617,18 @@ entries:
         stem: |-
           **(1 pt)** Montrer que $\overrightarrow{AB} \wedge \overrightarrow{AC} = 2\vec{i} + 2\vec{j} + \vec{k}$ et en déduire que $2x + 2y + z + 6 = 0$ est une équation cartésienne du plan $(ABC)$
         reasoning: |-
-          Même geste qu'à chaque fois qu'on cherche une normale à un plan : on fabrique un vecteur orthogonal à deux vecteurs du plan avec le produit vectoriel (R3). On calcule d'abord $\overrightarrow{AB}$ et $\overrightarrow{AC}$ par « arrivée moins départ » (R1), puis on applique la formule composante par composante (R3), en surveillant les signes.
+          Même geste qu'à chaque fois qu'on cherche une normale à un plan : on fabrique un vecteur orthogonal à deux vecteurs du plan avec le produit vectoriel (chapitre 4). On calcule d'abord $\overrightarrow{AB}$ et $\overrightarrow{AC}$ par « arrivée moins départ » (chapitre 2), puis on applique la formule composante par composante (chapitre 4), en surveillant les signes.
 
-          Ce vecteur $\overrightarrow{AB}\wedge\overrightarrow{AC}$, orthogonal aux deux vecteurs du plan, en est une normale (R6) : ses coordonnées deviennent directement les coefficients de $x,y,z$ dans l'équation cartésienne. Reste à fixer la constante en imposant qu'un point connu du plan — $A$, par exemple — la vérifie.
+          Ce vecteur $\overrightarrow{AB}\wedge\overrightarrow{AC}$, orthogonal aux deux vecteurs du plan, en est une normale (chapitre 7) : ses coordonnées deviennent directement les coefficients de $x,y,z$ dans l'équation cartésienne. Reste à fixer la constante en imposant qu'un point connu du plan — $A$, par exemple — la vérifie.
         steps:
           - math: '\overrightarrow{AB} = B-A = (1,\,0,\,-2), \qquad \overrightarrow{AC} = C-A = (-3,\,1,\,4)'
-            note: "Coordonnées arrivée moins départ (R1)."
+            note: "Coordonnées arrivée moins départ (chapitre 2)."
           - math: '\overrightarrow{AB}\wedge\overrightarrow{AC} = \big((0)(4)-(-2)(1),\ \ (-2)(-3)-(1)(4),\ \ (1)(1)-(0)(-3)\big)'
-            note: "Formule du produit vectoriel (R3) : chaque composante croise les deux autres coordonnées en diagonale, avec un signe."
+            note: "Formule du produit vectoriel (chapitre 4) : chaque composante croise les deux autres coordonnées en diagonale, avec un signe."
           - math: '\overrightarrow{AB}\wedge\overrightarrow{AC} = (2,\,2,\,1) = 2\vec{i}+2\vec{j}+\vec{k}'
             note: "Ce vecteur, orthogonal à AB et à AC, servira de normale au plan (ABC)."
           - math: '2x+2y+z+d=0,\quad A(0,-2,-2)\in(ABC):\ 0-4-2+d=0 \implies d=6'
-            note: "Coefficients = coordonnées du vecteur normal (2,2,1) (R6) ; d fixé par A."
+            note: "Coefficients = coordonnées du vecteur normal (2,2,1) (chapitre 7) ; d fixé par A."
           - math: '(ABC):\ \ 2x+2y+z+6=0'
             note: "Vérification : B(1,-2,-4) donne 2-4-4+6=0 ; C(-3,-1,2) donne -6-2+2+6=0."
       - id: q2
@@ -636,10 +636,10 @@ entries:
         stem: |-
           **(0,5 pt)** On considère la sphère $(S)$ dont une équation est $x^2 + y^2 + z^2 - 2x - 2z - 23 = 0$. Vérifier que la sphère $(S)$ a pour centre $\Omega(1, 0, 1)$ et pour rayon $R = 5$
         reasoning: |-
-          L'équation de $(S)$ est donnée sous forme développée : on complète le carré dans chaque variable séparément (R9) — le même geste que pour d'autres sphères de cette banque. Ici $y$ n'apparaît que sous $y^2$, sans terme en $y$ seul : son groupe reste tel quel, sans carré à compléter.
+          L'équation de $(S)$ est donnée sous forme développée : on complète le carré dans chaque variable séparément (chapitre 10) — le même geste que pour d'autres sphères de cette banque. Ici $y$ n'apparaît que sous $y^2$, sans terme en $y$ seul : son groupe reste tel quel, sans carré à compléter.
         steps:
           - math: '(x^2-2x) + y^2 + (z^2-2z) - 23 = 0'
-            note: "On regroupe par variable avant de compléter chaque carré (R9) ; y² n'a pas de terme en y à absorber."
+            note: "On regroupe par variable avant de compléter chaque carré (chapitre 10) ; y² n'a pas de terme en y à absorber."
           - math: '(x-1)^2-1 \;+\; y^2 \;+\; (z-1)^2-1 \;-\;23 = 0'
             note: "Chaque groupe en x et en z devient un carré parfait ; on garde trace des termes constants soustraits."
           - math: '(x-1)^2+y^2+(z-1)^2 = 1+1+23 = 25'
@@ -651,10 +651,10 @@ entries:
         stem: |-
           **(0,25 pt)** Vérifier que $\begin{cases} x = 1 + 2t \\ y = 2t \\ z = 1 + t \end{cases}\ ;(t \in \mathbb{R})$ est une représentation paramétrique de la droite $(\Delta)$ passant par le point $\Omega$ et orthogonale au plan $(ABC)$
         reasoning: |-
-          Deux choses à vérifier, pas à redériver : que le point de paramètre $t=0$ est bien $\Omega$, et que le vecteur directeur lu sur les coefficients de $t$ est bien orthogonal au plan $(ABC)$, c'est-à-dire colinéaire à sa normale (R6/R7). Le vecteur directeur ici est $(2,2,1)$ : exactement la normale $\overrightarrow{AB}\wedge\overrightarrow{AC}$ trouvée à la question 1, sans qu'il y ait besoin de la recalculer.
+          Deux choses à vérifier, pas à redériver : que le point de paramètre $t=0$ est bien $\Omega$, et que le vecteur directeur lu sur les coefficients de $t$ est bien orthogonal au plan $(ABC)$, c'est-à-dire colinéaire à sa normale (chapitres 7 et 8). Le vecteur directeur ici est $(2,2,1)$ : exactement la normale $\overrightarrow{AB}\wedge\overrightarrow{AC}$ trouvée à la question 1, sans qu'il y ait besoin de la recalculer.
         steps:
           - math: '\vec{u}_\Delta = (2,\,2,\,1) = \overrightarrow{AB}\wedge\overrightarrow{AC}'
-            note: "Le vecteur directeur lu sur les coefficients de t est exactement la normale au plan (ABC), trouvée à la question 1 : Δ est donc orthogonale au plan (R6/R7)."
+            note: "Le vecteur directeur lu sur les coefficients de t est exactement la normale au plan (ABC), trouvée à la question 1 : Δ est donc orthogonale au plan (chapitres 7 et 8)."
           - math: 't=0 \implies (x,y,z) = (1,\,0,\,1) = \Omega'
             note: "Le point de paramètre t=0 est bien Ω, donné à la question 2."
           - math: '(\Delta):\ \begin{cases} x=1+2t \\ y=2t \\ z=1+t \end{cases}'
@@ -663,7 +663,7 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer les coordonnées de $H$ point d'intersection de la droite $(\Delta)$ et du plan $(ABC)$
         reasoning: |-
-          $(\Delta)$ passe par $\Omega$ et a pour direction $(2,2,1)$ — exactement la normale du plan $(ABC)$ (question 1) : le produit scalaire direction $\cdot$ normale vaut $\|\vec n\|^2=9\neq0$, donc $(\Delta)$ n'est pas parallèle au plan et le coupe en un unique point (R7). On le trouve en reportant les coordonnées paramétriques de $(\Delta)$ dans l'équation du plan $(ABC)$ (question 1), ce qui donne une équation du premier degré en $t$, puis on reporte la valeur trouvée dans la représentation paramétrique.
+          $(\Delta)$ passe par $\Omega$ et a pour direction $(2,2,1)$ — exactement la normale du plan $(ABC)$ (question 1) : le produit scalaire direction $\cdot$ normale vaut $\|\vec n\|^2=9\neq0$, donc $(\Delta)$ n'est pas parallèle au plan et le coupe en un unique point (chapitre 8). On le trouve en reportant les coordonnées paramétriques de $(\Delta)$ dans l'équation du plan $(ABC)$ (question 1), ce qui donne une équation du premier degré en $t$, puis on reporte la valeur trouvée dans la représentation paramétrique.
         steps:
           - math: '2(1+2t) + 2(2t) + (1+t) + 6 = 0'
             note: "On reporte x, y, z de (Δ) dans l'équation du plan (ABC) : 2x+2y+z+6=0."
@@ -676,19 +676,19 @@ entries:
         stem: |-
           **(0,75 pt)** Vérifier que $d(\Omega, (ABC)) = 3$, puis montrer que le plan $(ABC)$ coupe la sphère $(S)$ selon un cercle de rayon $4$, dont on déterminera le centre.
         reasoning: |-
-          On applique d'abord la formule de la distance d'un point à un plan (R8) : au numérateur, l'équation du plan évaluée en $\Omega$, en valeur absolue ; au dénominateur, la norme du vecteur normal.
+          On applique d'abord la formule de la distance d'un point à un plan (chapitre 9) : au numérateur, l'équation du plan évaluée en $\Omega$, en valeur absolue ; au dénominateur, la norme du vecteur normal.
 
-          Vient ensuite le même réflexe qu'au R9 : on compare cette distance au rayon $R=5$ de la sphère (question 2) — jamais l'inverse. Ici $d=3<R=5$, donc l'intersection est un cercle, de rayon $\sqrt{R^2-d^2}$ par le Pythagore du triangle $\Omega HM$ rectangle en $H$ (R9), où $H$ est le projeté orthogonal de $\Omega$ sur le plan.
+          Vient ensuite le même réflexe qu'au chapitre 10 : on compare cette distance au rayon $R=5$ de la sphère (question 2) — jamais l'inverse. Ici $d=3<R=5$, donc l'intersection est un cercle, de rayon $\sqrt{R^2-d^2}$ par le Pythagore du triangle $\Omega HM$ rectangle en $H$ (chapitre 10), où $H$ est le projeté orthogonal de $\Omega$ sur le plan.
 
           Ce point $H$, c'est précisément celui qu'on vient de trouver à la question précédente : $(\Delta)$ passe par $\Omega$ et est orthogonale au plan $(ABC)$, donc son intersection avec ce plan *est*, par définition, le projeté orthogonal de $\Omega$ — le centre du cercle cherché. Pas besoin de le redéterminer.
         steps:
           - math: 'd(\Omega,(ABC)) = \dfrac{|2\times1 + 2\times0 + 1\times1 + 6|}{\sqrt{2^2+2^2+1^2}}'
-            note: "Formule R8 : |ax0+by0+cz0+d| au numérateur, norme du vecteur normal au dénominateur."
+            note: "Formule du chapitre 9 : |ax0+by0+cz0+d| au numérateur, norme du vecteur normal au dénominateur."
           - math: 'd(\Omega,(ABC)) = \dfrac{|2+0+1+6|}{\sqrt{9}} = \dfrac{9}{3} = 3'
             note: "On simplifie : 9 sur 3 égale 3."
           - math: 'd(\Omega,(ABC)) = 3 < R = 5'
-            note: "On compare la distance calculée au rayon de la sphère (R9)."
+            note: "On compare la distance calculée au rayon de la sphère (chapitre 10)."
           - math: '(ABC)\cap(S)\ \text{est un cercle, de rayon}\ \sqrt{R^2-d^2} = \sqrt{25-9} = \sqrt{16} = 4'
-            note: "Cas d < R du critère R9 : intersection = cercle ; Pythagore du triangle ΩHM rectangle en H."
+            note: "Cas d < R du critère du chapitre 10 : intersection = cercle ; Pythagore du triangle ΩHM rectangle en H."
           - math: 'H = (\Delta)\cap(ABC) = (-1,\,-2,\,0)'
-            note: "Δ passe par Ω et est orthogonale au plan : leur point d'intersection, déjà trouvé à la question précédente, est exactement le projeté orthogonal de Ω — le centre du cercle (R9)."
+            note: "Δ passe par Ω et est orthogonale au plan : leur point d'intersection, déjà trouvé à la question précédente, est exactement le projeté orthogonal de Ω — le centre du cercle (chapitre 10)."

@@ -109,22 +109,22 @@ entries:
         stem: |-
           **(0,5 pt)** L'onde qui se propage à la surface de l'eau est-elle transversale ou longitudinale ? Justifier.
         reasoning: |-
-          Le critère est toujours le même : comparer la direction dans laquelle le milieu est perturbé à la direction dans laquelle l'onde avance. *(Cette définition générale de « onde transversale » vient du chapitre précédent, ondes-mecaniques-progressives — elle se déduit ici par contraste avec le rung R4 de cette leçon, qui définit l'onde longitudinale comme celle où la perturbation est parallèle à la propagation ; voir la SCOPE NOTE en tête de ce fichier.)* À la surface de l'eau, chaque point du milieu monte et descend verticalement — la surface se creuse et se bombe — tandis que l'onde progresse horizontalement de $S$ vers $M$. La perturbation est perpendiculaire à la direction de propagation : l'onde est transversale.
+          Le critère est toujours le même : comparer la direction dans laquelle le milieu est perturbé à la direction dans laquelle l'onde avance. *(Cette définition générale de « onde transversale » vient du chapitre précédent, ondes-mecaniques-progressives — elle se déduit ici par contraste avec le chapitre 5 de cette leçon, qui définit l'onde longitudinale comme celle où la perturbation est parallèle à la propagation ; voir la SCOPE NOTE en tête de ce fichier.)* À la surface de l'eau, chaque point du milieu monte et descend verticalement — la surface se creuse et se bombe — tandis que l'onde progresse horizontalement de $S$ vers $M$. La perturbation est perpendiculaire à la direction de propagation : l'onde est transversale.
       - id: q2
         stem: |-
           **(0,25 pt)** Déterminer la longueur d'onde $\lambda$ de l'onde étudiée.
         reasoning: |-
-          D'après R2, $\lambda$ est la plus petite distance séparant deux points qui vibrent exactement de la même façon à chaque instant — sur une coupe figée dans le temps, c'est l'écart entre deux crêtes voisines. C'est précisément ce que mesure la double flèche cotée $1{,}5\ \text{cm}$, tracée au-dessus de deux crêtes voisines du profil : on lit $\lambda$ directement, sans calcul.
+          D'après le chapitre 3, $\lambda$ est la plus petite distance séparant deux points qui vibrent exactement de la même façon à chaque instant — sur une coupe figée dans le temps, c'est l'écart entre deux crêtes voisines. C'est précisément ce que mesure la double flèche cotée $1{,}5\ \text{cm}$, tracée au-dessus de deux crêtes voisines du profil : on lit $\lambda$ directement, sans calcul.
 
           $$\lambda = 1{,}5\ \text{cm} = 1{,}5\times10^{-2}\ \text{m}$$
       - id: q3
         stem: |-
           **(0,5 pt)** Déduire la célérité $V$ de l'onde à la surface de l'eau.
         reasoning: |-
-          La relation dérivée en R2, $\lambda = cT = c/f$, relie exactement les deux grandeurs dont on dispose ici : $\lambda$ vient d'être lue (question 2), et la fréquence $N$ est une donnée de l'énoncé. Il suffit d'isoler la célérité.
+          La relation dérivée au chapitre 3, $\lambda = cT = c/f$, relie exactement les deux grandeurs dont on dispose ici : $\lambda$ vient d'être lue (question 2), et la fréquence $N$ est une donnée de l'énoncé. Il suffit d'isoler la célérité.
         steps:
           - math: 'V = \lambda \, N'
-            note: "On isole V dans la relation lambda = V/N = VT (rung R2), avec N donnee par l'enonce."
+            note: "On isole V dans la relation lambda = V/N = VT (chapitre 3), avec N donnee par l'enonce."
           - math: 'V = 1{,}5\times10^{-2} \times 20'
             note: "Application numerique : lambda = 1,5 cm = 1,5e-2 m, N = 20 Hz."
           - math: '\boxed{V = 0{,}30\ \text{m.s}^{-1}}'
@@ -133,10 +133,10 @@ entries:
         stem: |-
           **(0,5 pt)** Le point $M$, situé à la distance $d = SM$ du point $S$, est le front de l'onde à l'instant de date $t_1$. Exprimer le retard temporel $\tau$ du mouvement de $M$ par rapport au mouvement de $S$, en fonction de la période $T$ de l'onde. Calculer $\tau$.
         reasoning: |-
-          Le mécanisme du retard (R1) donne $\tau = d/c$, avec ici $d = SM$. Pour l'exprimer en fonction de $T$ plutôt qu'en secondes brutes, on compte combien de longueurs d'onde tient la distance $SM$ : la figure montre environ deux arches complètes entre $S$ et $M$, donc $SM = 2\lambda$. Or R2 établit que l'onde avance exactement d'une longueur d'onde $\lambda$ pendant une période $T$ — parcourir $2\lambda$ prend donc $2T$. On retrouve ce résultat par le calcul en remplaçant $c = \lambda/T$ dans $\tau = d/c$ : $\lambda$ se simplifie et il ne reste que le compte de périodes.
+          Le mécanisme du retard (chapitre 2) donne $\tau = d/c$, avec ici $d = SM$. Pour l'exprimer en fonction de $T$ plutôt qu'en secondes brutes, on compte combien de longueurs d'onde tient la distance $SM$ : la figure montre environ deux arches complètes entre $S$ et $M$, donc $SM = 2\lambda$. Or le chapitre 3 établit que l'onde avance exactement d'une longueur d'onde $\lambda$ pendant une période $T$ — parcourir $2\lambda$ prend donc $2T$. On retrouve ce résultat par le calcul en remplaçant $c = \lambda/T$ dans $\tau = d/c$ : $\lambda$ se simplifie et il ne reste que le compte de périodes.
         steps:
           - math: '\tau = \frac{d}{V} = \frac{SM}{\lambda/T} = \frac{SM}{\lambda}\,T'
-            note: "On remplace V = lambda/T (de lambda = VT, rung R2) : le retard vaut le nombre de longueurs d'onde SM/lambda multiplie par T."
+            note: "On remplace V = lambda/T (de lambda = VT, chapitre 3) : le retard vaut le nombre de longueurs d'onde SM/lambda multiplie par T."
           - math: 'SM = 2\lambda \implies \tau = \frac{2\lambda}{\lambda}\,T = 2\,T'
             note: "Lecture de la figure : SM vaut environ deux arches completes, soit 2 lambda. La longueur d'onde se simplifie."
           - math: 'T = \frac{1}{N} = \frac{1}{20} = 0{,}05\ \text{s}'
@@ -218,7 +218,7 @@ entries:
           | A | la perturbation se fait dans la même direction que celle de la propagation | C | la perturbation se fait perpendiculairement à la direction de la propagation |
           | B | elle se propage dans le vide | D | la propagation se fait sans amortissement |
         reasoning: |-
-          Le critère général — perturbation perpendiculaire ou parallèle à la propagation — n'est pas formellement énoncé dans les rungs R0–R7 de cette leçon (seule l'onde longitudinale y est définie, au rung R4, à propos du son) ; il vient du chapitre précédent, ondes-mecaniques-progressives, et se déduit ici par contraste avec R4 (perturbation parallèle ⟹ longitudinale, donc perpendiculaire ⟹ transversale — voir la SCOPE NOTE en tête de ce fichier). L'option A décrit au contraire une onde longitudinale, B et D ne sont pas des critères de transversalité (une onde transversale peut très bien s'amortir, et le vide n'a rien à voir avec la direction de la perturbation). C'est l'option C.
+          Le critère général — perturbation perpendiculaire ou parallèle à la propagation — n'est pas formellement énoncé dans les chapitres 1 à 8 de cette leçon (seule l'onde longitudinale y est définie, au chapitre 5, à propos du son) ; il vient du chapitre précédent, ondes-mecaniques-progressives, et se déduit ici par contraste avec le chapitre 5 (perturbation parallèle ⟹ longitudinale, donc perpendiculaire ⟹ transversale — voir la SCOPE NOTE en tête de ce fichier). L'option A décrit au contraire une onde longitudinale, B et D ne sont pas des critères de transversalité (une onde transversale peut très bien s'amortir, et le vide n'a rien à voir avec la direction de la perturbation). C'est l'option C.
 
           **Réponse : C.**
       - id: q3
@@ -242,7 +242,7 @@ entries:
           | A | il y a modification de la fréquence | C | il y a modification de la célérité |
           | B | il y a modification de la longueur d'onde | D | la fréquence, la longueur d'onde et la célérité ne sont pas modifiées |
         reasoning: |-
-          R5 est explicite sur ce point précis : « L'onde diffractée garde exactement la même fréquence $f$, la même célérité $c$, et — puisque $\lambda = c/f$ — la même longueur d'onde $\lambda$ [...] La diffraction ne change qu'une chose : la géométrie de la propagation ». C'est l'option D — les options A, B et C décrivent chacune un changement que R5 exclut explicitement. Rétrécir l'ouverture change la façon dont l'onde se répand dans l'espace, jamais son rythme ($f$) ni son pas spatial ($\lambda$, $c$), parce que ni la source ni le milieu ne changent au passage de l'ouverture.
+          R5 est explicite sur ce point précis : « L'onde diffractée garde exactement la même fréquence $f$, la même célérité $c$, et — puisque $\lambda = c/f$ — la même longueur d'onde $\lambda$ [...] La diffraction ne change qu'une chose : la géométrie de la propagation ». C'est l'option D — les options A, B et C décrivent chacune un changement que le chapitre 6 exclut explicitement. Rétrécir l'ouverture change la façon dont l'onde se répand dans l'espace, jamais son rythme ($f$) ni son pas spatial ($\lambda$, $c$), parce que ni la source ni le milieu ne changent au passage de l'ouverture.
 
           **Réponse : D.**
       - id: q5
@@ -254,7 +254,7 @@ entries:
           | A | $y_M(t) = y_s(t+\tau)$ | C | $y_M(t) = y_s(t+2\tau)$ |
           | B | $y_M(t) = y_s(t-2\tau)$ | D | $y_M(t) = y_s(t-\tau)$ |
         reasoning: |-
-          C'est exactement la relation établie au rung R1 : le point $M$ rejoue le mouvement de la source avec un retard $\tau$, donc $y_M(t) = y_s(t - \tau)$ — l'élongation de $M$ à l'instant $t$ est celle que $S$ avait $\tau$ secondes plus tôt, pas plus tard (le retard soustrait du temps, il ne l'avance pas : A et C sont donc exclues), et une seule fois $\tau$, pas deux (B est donc exclue aussi). C'est l'option D.
+          C'est exactement la relation établie au chapitre 2 : le point $M$ rejoue le mouvement de la source avec un retard $\tau$, donc $y_M(t) = y_s(t - \tau)$ — l'élongation de $M$ à l'instant $t$ est celle que $S$ avait $\tau$ secondes plus tôt, pas plus tard (le retard soustrait du temps, il ne l'avance pas : A et C sont donc exclues), et une seule fois $\tau$, pas deux (B est donc exclue aussi). C'est l'option D.
 
           **Réponse : D.**
       - id: q6
@@ -262,20 +262,20 @@ entries:
         stem: |-
           **(0,5 pt)** En exploitant la figure ci-contre, déterminer la longueur d'onde $\lambda$.
         reasoning: |-
-          D'après R2, $\lambda$ est la plus petite distance séparant deux points voisins qui vibrent exactement de la même façon — ici, l'écart entre deux crêtes consécutives. La figure ne permet pas de lire cet écart directement sur la cote imprimée : les deux traits pointillés qui portent la cote « 1 cm » ne tombent pas de deux crêtes voisines, mais de la crête 2 et de la crête 4, avec la crête 3 qui passe entre les deux. La cote couvre donc deux intervalles crête-à-crête consécutifs, soit $2\lambda$, et non $\lambda$.
+          D'après le chapitre 3, $\lambda$ est la plus petite distance séparant deux points voisins qui vibrent exactement de la même façon — ici, l'écart entre deux crêtes consécutives. La figure ne permet pas de lire cet écart directement sur la cote imprimée : les deux traits pointillés qui portent la cote « 1 cm » ne tombent pas de deux crêtes voisines, mais de la crête 2 et de la crête 4, avec la crête 3 qui passe entre les deux. La cote couvre donc deux intervalles crête-à-crête consécutifs, soit $2\lambda$, et non $\lambda$.
         steps:
           - math: '1\ \text{cm} = 2\lambda'
-            note: "Les deux traits pointilles tombent des cretes 2 et 4, pas de deux cretes voisines : la crete 3 passe entre les deux, donc la cote imprimee couvre deux intervalles crete-a-crete consecutifs, soit 2 lambda (rung R2 : lambda est l'ecart entre deux points voisins qui vibrent a l'identique)."
+            note: "Les deux traits pointilles tombent des cretes 2 et 4, pas de deux cretes voisines : la crete 3 passe entre les deux, donc la cote imprimee couvre deux intervalles crete-a-crete consecutifs, soit 2 lambda (chapitre 3 : lambda est l'ecart entre deux points voisins qui vibrent a l'identique)."
           - math: '\boxed{\lambda = \frac{1}{2} = 0{,}5\ \text{cm} = 5\times10^{-3}\ \text{m}}'
             note: "On divise par 2, pas une lecture directe de la cote imprimee."
       - id: q7
         stem: |-
           **(0,5 pt)** Trouver la fréquence N de l'onde.
         reasoning: |-
-          La relation de R2, $\lambda = c/f$ (ici $\lambda = v/N$), relie la célérité — donnée par l'énoncé — à la fréquence, à trouver. On isole $N$.
+          La relation du chapitre 3, $\lambda = c/f$ (ici $\lambda = v/N$), relie la célérité — donnée par l'énoncé — à la fréquence, à trouver. On isole $N$.
         steps:
           - math: 'N = \frac{v}{\lambda}'
-            note: "On isole N dans lambda = v/N (rung R2), avec v donnee par l'enonce et lambda de la question precedente."
+            note: "On isole N dans lambda = v/N (chapitre 3), avec v donnee par l'enonce et lambda de la question precedente."
           - math: 'N = \frac{0{,}25}{5\times10^{-3}}'
             note: "Application numerique : v = 0,25 m/s, lambda = 5e-3 m (soit 0,5 cm)."
           - math: '\boxed{N = 50\ \text{Hz}}'
@@ -284,10 +284,10 @@ entries:
         stem: |-
           **(0,75 pt)** On considère un point M de la surface de l'eau situé à une distance $d = 5\ \text{cm}$ de la source S. Calculer le retard temporel $\tau$ du mouvement de M par rapport à celui de la source S.
         reasoning: |-
-          Le mécanisme du retard (R1) donne directement $\tau = d/v$, avec $d = 5\ \text{cm}$ la distance de $M$ à $S$ et $v$ la célérité donnée. On vérifie la cohérence en comptant, comme au rung R2, combien de périodes ce retard représente : $d = 5\ \text{cm}$ et $\lambda = 0{,}5\ \text{cm}$ (question précédente), donc $d = 10\lambda$ — l'onde met $10$ périodes $T$ à parcourir cette distance, donc $\tau = 10T$. Les deux calculs, direct et par comptage de périodes, doivent coïncider.
+          Le mécanisme du retard (chapitre 2) donne directement $\tau = d/v$, avec $d = 5\ \text{cm}$ la distance de $M$ à $S$ et $v$ la célérité donnée. On vérifie la cohérence en comptant, comme au chapitre 3, combien de périodes ce retard représente : $d = 5\ \text{cm}$ et $\lambda = 0{,}5\ \text{cm}$ (question précédente), donc $d = 10\lambda$ — l'onde met $10$ périodes $T$ à parcourir cette distance, donc $\tau = 10T$. Les deux calculs, direct et par comptage de périodes, doivent coïncider.
         steps:
           - math: '\tau = \frac{d}{v}'
-            note: "Mecanisme du retard (rung R1) : M rejoue S avec un retard egal a la distance divisee par la celerite."
+            note: "Mecanisme du retard (chapitre 2) : M rejoue S avec un retard egal a la distance divisee par la celerite."
           - math: 'd = 5\ \text{cm} = 5\times10^{-2}\ \text{m}'
             note: "Conversion de la distance en metres, coherente avec v en m/s."
           - math: '\tau = \frac{5\times10^{-2}}{0{,}25}'
@@ -295,7 +295,7 @@ entries:
           - math: '\boxed{\tau = 0{,}2\ \text{s}}'
             note: "Retard du point M par rapport a S."
           - math: 'T = \frac{1}{N} = \frac{1}{50} = 0{,}02\ \text{s} \implies \tau = 10\,T'
-            note: "Verification en nombre de periodes (rung R2) : d = 5 cm = 10 lambda (lambda = 0,5 cm), donc tau = 10 T. Coherent avec le calcul direct."
+            note: "Verification en nombre de periodes (chapitre 3) : d = 5 cm = 10 lambda (lambda = 0,5 cm), donc tau = 10 T. Coherent avec le calcul direct."
   # ── bk-2022-r-x2 — 2022 R, Exercice 2 (Partie 1) : QCM onde sinusoidale a la
   #    surface de l'eau, tout lu sur une seule courbe y_M(t) ──
   #
@@ -393,7 +393,7 @@ entries:
           | A | $N = 25\ \text{Hz}$ | B | $N = 50\ \text{Hz}$ | C | $N = 100\ \text{Hz}$ | D | $N = 200\ \text{Hz}$ |
           |---|---|---|---|---|---|---|---|
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** La figure donne une élongation en fonction du **temps** : c'est la périodicité **temporelle** qu'on y lit, donc la période $T$, et la fréquence s'en déduit par $N = \dfrac{1}{T}$. C'est le versant temporel de la double périodicité du rung 2.
+          **Ce qu'on cherche et pourquoi ce geste.** La figure donne une élongation en fonction du **temps** : c'est la périodicité **temporelle** qu'on y lit, donc la période $T$, et la fréquence s'en déduit par $N = \dfrac{1}{T}$. C'est le versant temporel de la double périodicité du chapitre 3.
 
           **La lecture, faite sur le plus long intervalle possible.** On repère deux points **de même nature** aussi éloignés que possible, pour que l'erreur de lecture pèse le moins. Les maxima sont les plus faciles à situer : le premier est à $t = 15\ \text{ms}$, le suivant à $t = 35\ \text{ms}$.
 
@@ -425,7 +425,7 @@ entries:
 
           $$\tau = 10\ \text{ms} = 10 \times 10^{-3}\ \text{s} = \boxed{0{,}01\ \text{s}} \qquad\text{— réponse C}$$
 
-          **Ce que cette lecture dit, physiquement.** Aucune information ne voyage instantanément : la perturbation se propage de proche en proche, et chaque point du milieu reproduit le mouvement de la source **avec un décalage** proportionnel à sa distance. C'est le mécanisme du rung 1 — le milieu copie fidèlement la source, mais en retard. Le palier de la figure est la signature visible de ce retard.
+          **Ce que cette lecture dit, physiquement.** Aucune information ne voyage instantanément : la perturbation se propage de proche en proche, et chaque point du milieu reproduit le mouvement de la source **avec un décalage** proportionnel à sa distance. C'est le mécanisme du chapitre 2 — le milieu copie fidèlement la source, mais en retard. Le palier de la figure est la signature visible de ce retard.
 
           **Ce que les trois distracteurs encodent.**
           — **B ($0{,}02\ \text{s}$)** : c'est la **période**, réponse de la question précédente recopiée ici. Le retard et la période sont deux durées différentes, même si elles se lisent sur la même figure.
@@ -469,7 +469,7 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** La longueur d'onde est la **périodicité spatiale** de l'onde : la distance qui sépare deux points vibrant en phase, ou encore la distance parcourue par l'onde pendant une période. Or la figure est un enregistrement **temporel** en un seul point — on n'y lit aucune distance. Il faut donc passer par la relation qui relie les deux périodicités.
 
-          **La relation de la double périodicité (rung 2).**
+          **La relation de la double périodicité (chapitre 3).**
 
           $$\lambda = v\,T = \frac{v}{N}$$
 
@@ -581,7 +581,7 @@ entries:
           | ■ $\lambda = 0{,}2\,\text{cm}$ | ■ $\lambda = 4\,\text{cm}$ | ■ $\lambda = 5\,\text{cm}$ | ■ $\lambda = 6\,\text{cm}$ |
           |---|---|---|---|
         reasoning: |-
-          Comme au rung 2, $\lambda$ est la plus petite distance séparant deux points qui vibrent exactement de la même façon — sur une coupe figée, l'écart entre deux crêtes voisines. La règle graduée donne l'échelle ($1\ \text{cm}$ étalonné), et deux crêtes voisines du profil sont séparées de $4{,}0\ \text{cm}$.
+          Comme au chapitre 3, $\lambda$ est la plus petite distance séparant deux points qui vibrent exactement de la même façon — sur une coupe figée, l'écart entre deux crêtes voisines. La règle graduée donne l'échelle ($1\ \text{cm}$ étalonné), et deux crêtes voisines du profil sont séparées de $4{,}0\ \text{cm}$.
 
           $$\boxed{\lambda = 4\ \text{cm}}$$
 
@@ -593,7 +593,7 @@ entries:
           | ■ $v = 2\,\text{m.s}^{-1}$ | ■ $v = 200\,\text{m.s}^{-1}$ | ■ $v = 3\,\text{m.s}^{-1}$ | ■ $v = 8\times10^{-4}\,\text{m.s}^{-1}$ |
           |---|---|---|---|
         reasoning: |-
-          La relation de la double périodicité (rung 2), $\lambda = v/N$, relie la longueur d'onde qui vient d'être lue à la fréquence $N = 50\ \text{Hz}$ donnée par l'énoncé. On isole $v$.
+          La relation de la double périodicité (chapitre 3), $\lambda = v/N$, relie la longueur d'onde qui vient d'être lue à la fréquence $N = 50\ \text{Hz}$ donnée par l'énoncé. On isole $v$.
 
           $$v = \lambda\,N = 4\times10^{-2}\times50$$
 
@@ -602,7 +602,7 @@ entries:
           **Pourquoi les trois autres échouent.** $200\ \text{m.s}^{-1}$ vient d'un oubli de conversion de $\lambda$ en mètres (garder $4$ au lieu de $0{,}04$). $3\ \text{m.s}^{-1}$ ne se retrouve par aucun des deux chiffres de l'énoncé combinés simplement. $8\times10^{-4}\ \text{m.s}^{-1}$ est l'inverse du produit ($\lambda/N$ au lieu de $\lambda\,N$) — une célérité d'un fraction de millimètre par seconde n'aurait d'ailleurs aucun sens pour une ride à la surface de l'eau.
         steps:
           - math: 'v = \lambda\,N = (4\times10^{-2})\times50'
-            note: "Rung 2 : lambda = v/N, isole pour v ; lambda convertie en metres."
+            note: "Chapitre 3 : lambda = v/N, isole pour v ; lambda convertie en metres."
           - math: '\boxed{v = 2\ \text{m.s}^{-1}}'
             note: "Celerite de propagation."
       - id: q3
@@ -612,7 +612,7 @@ entries:
           | ■ $t = 8\,\text{s}$ | ■ $t = 0{,}03\,\text{s}$ | ■ $t = 0{,}3\,\text{s}$ | ■ $t = 3\,\text{s}$ |
           |---|---|---|---|
         reasoning: |-
-          L'onde a été créée en $S$ à $t=0$ ; l'instant $t$ de la coupe est donc la durée qu'il a fallu à la perturbation pour atteindre le bord du domaine déjà agité, mesuré sur la figure de part et d'autre de $S$ : $d \approx 6{,}0\ \text{cm}$. Le mécanisme du retard (rung 1) donne directement $t = d/v$, avec $v = 2\ \text{m.s}^{-1}$ (question 2).
+          L'onde a été créée en $S$ à $t=0$ ; l'instant $t$ de la coupe est donc la durée qu'il a fallu à la perturbation pour atteindre le bord du domaine déjà agité, mesuré sur la figure de part et d'autre de $S$ : $d \approx 6{,}0\ \text{cm}$. Le mécanisme du retard (chapitre 2) donne directement $t = d/v$, avec $v = 2\ \text{m.s}^{-1}$ (question 2).
 
           $$t = \frac{d}{v} = \frac{6{,}0\times10^{-2}}{2}$$
 
@@ -621,7 +621,7 @@ entries:
           **Pourquoi les trois autres échouent.** $0{,}3\ \text{s}$ et $3\ \text{s}$ viennent d'un facteur $10$ ou $100$ manqué dans la conversion des centimètres. $8\ \text{s}$ ne correspond à aucune combinaison simple des grandeurs de la figure ; à cette vitesse de $2\ \text{m.s}^{-1}$, l'onde aurait parcouru $16\ \text{m}$ en $8\ \text{s}$, bien au-delà de la petite cuve représentée.
         steps:
           - math: 't = \frac{d}{v}'
-            note: "Rung 1 : le retard (ici, le temps ecoule depuis la creation en S) vaut la distance parcourue divisee par la celerite."
+            note: "Chapitre 2 : le retard (ici, le temps ecoule depuis la creation en S) vaut la distance parcourue divisee par la celerite."
           - math: 't = \frac{6{,}0\times10^{-2}}{2}'
             note: "d ~ 6,0 cm mesure sur la figure (etendue perturbee de part et d'autre de S), v = 2 m/s (question 2)."
           - math: '\boxed{t = 0{,}03\ \text{s}}'
@@ -634,7 +634,7 @@ entries:
           |---|---|
           | ■ $y_M(t) = y_S(t - 0{,}03)$ | ■ $y_M(t) = y_S(t + 0{,}3)$ |
         reasoning: |-
-          Comme au rung 1, un point du milieu rejoue le mouvement de la source avec un retard $\tau = SM/v$ — jamais en avance, puisque l'information ne peut se propager que depuis $S$ vers $M$, jamais l'inverse. Avec $SM = 6\ \text{cm}$ (donnée) et $v = 2\ \text{m.s}^{-1}$ (question 2) :
+          Comme au chapitre 2, un point du milieu rejoue le mouvement de la source avec un retard $\tau = SM/v$ — jamais en avance, puisque l'information ne peut se propager que depuis $S$ vers $M$, jamais l'inverse. Avec $SM = 6\ \text{cm}$ (donnée) et $v = 2\ \text{m.s}^{-1}$ (question 2) :
 
           $$\tau = \frac{SM}{v} = \frac{6\times10^{-2}}{2}$$
 
@@ -642,9 +642,9 @@ entries:
 
           $$\boxed{y_M(t) = y_S(t-0{,}03)}$$
 
-          **Pourquoi les trois autres échouent.** Les deux propositions en $t+\tau$ inverseraient le sens de causalité : elles feraient de $M$ un point qui ANTICIPE le mouvement de $S$, ce qu'aucune onde progressive ne permet (rung 1). $y_S(t-0{,}3)$ reprend le bon signe mais une valeur dix fois trop grande de $\tau$ — le même facteur $10$ qui piège la question 3.
+          **Pourquoi les trois autres échouent.** Les deux propositions en $t+\tau$ inverseraient le sens de causalité : elles feraient de $M$ un point qui ANTICIPE le mouvement de $S$, ce qu'aucune onde progressive ne permet (chapitre 2). $y_S(t-0{,}3)$ reprend le bon signe mais une valeur dix fois trop grande de $\tau$ — le même facteur $10$ qui piège la question 3.
         steps:
           - math: '\tau = \frac{SM}{v} = \frac{6\times10^{-2}}{2} = 0{,}03\ \text{s}'
-            note: "Rung 1 : retard = distance / celerite, avec SM = 6 cm (donnee) et v = 2 m/s (question 2)."
+            note: "Chapitre 2 : retard = distance / celerite, avec SM = 6 cm (donnee) et v = 2 m/s (question 2)."
           - math: '\boxed{y_M(t) = y_S(t-0{,}03)}'
             note: "Retard, jamais avance : le signe moins vient du sens de propagation S vers M."

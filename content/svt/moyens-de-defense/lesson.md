@@ -115,7 +115,7 @@ Si un élève range le cliché $\gamma$ (bactérie déjà fragmentée) avant le 
 
 ## R3 — Les limites de l'immunité innée : pourquoi il faut autre chose
 
-### Reprends la question du R0
+### Reprends la question du chapitre 1
 
 Le mécanisme qu'on vient de détailler (inflammation, diapédèse, phagocytose) est déjà capable, à lui seul, de venir à bout de nombreuses infections mineures. Alors pourquoi l'organisme aurait-il besoin d'autre chose ?
 
@@ -203,7 +203,7 @@ Dans le tube témoin, sans anticorps, les bactéries n'ont aucune raison de se r
 
 **Réponse :** l'agglutination visible dans le tube 1 résulte de la double capacité de fixation de chaque anticorps, qui relie physiquement plusieurs bactéries entre elles en réseaux ; en l'absence d'anticorps (tube témoin), rien ne relie les bactéries, qui restent dispersées.
 
-### L'erreur classique à éviter ici — le point le plus important de ce rung
+### L'erreur classique à éviter ici — le point le plus important de ce chapitre
 
 Regarde bien ce que montre l'exemple précédent : dans le tube 1, les bactéries sont regroupées en amas — mais sont-elles POUR AUTANT détruites ? Non. L'agglutination immobilise les bactéries, les empêche de se disperser, les rend plus faciles à repérer et à éliminer ensuite — mais l'anticorps, à lui seul, ne perce pas, ne dissout pas, ne détruit pas physiquement la bactérie ou le virus auquel il se lie.
 
@@ -227,7 +227,7 @@ Si les anticorps détruisaient directement les bactéries au contact, on observe
 
 ## R6 — La réponse à médiation cellulaire : les LT8 détruisent la cellule infectée elle-même
 
-### Le problème laissé en suspens au R5
+### Le problème laissé en suspens au chapitre 6
 
 On vient d'établir un fait important : une fois qu'un virus est entré à l'intérieur d'une cellule de l'organisme, aucun anticorps circulant ne peut plus l'atteindre. Pourtant, une cellule infectée par un virus qui s'y multiplie représente un vrai danger — elle va produire et libérer de nouvelles particules virales, qui iront infecter d'autres cellules. Comment l'organisme s'en débarrasse-t-il, si les anticorps ne peuvent rien contre elle ?
 
@@ -309,7 +309,7 @@ Si les LT4 agissaient uniquement sur la réponse humorale (et pas sur la répons
 
 ## R8 — La mémoire immunitaire : pourquoi la deuxième fois est plus rapide
 
-### Revenir à la seconde question du R0
+### Revenir à la seconde question du chapitre 1
 
 Il est temps de répondre à la question posée dès l'ouverture de cette leçon : pourquoi la seconde rencontre avec un même intrus est-elle traitée plus vite et plus efficacement que la première ?
 

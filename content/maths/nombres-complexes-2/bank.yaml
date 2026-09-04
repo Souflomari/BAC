@@ -227,7 +227,7 @@ entries:
 
       Soit $m$ un nombre complexe **non réel** ($m \in \mathbb{C} - \mathbb{R}$).
 
-      L'exercice se déroule en deux temps. La **partie I** étudie une équation du second degré dont un coefficient dépend de $m$ : on montre que son discriminant ne s'annule pas, on calcule ses deux racines, puis on lit le module et un argument de leur somme. La **partie II** place ces mêmes nombres dans le plan complexe et en fait une configuration géométrique (rotation, milieu, orthogonalité, point d'intersection). Le fil conducteur : un rapport de deux affixes encode à la fois un rapport de longueurs (son module) et un angle (son argument) — l'outil central du chapitre (rung R6).
+      L'exercice se déroule en deux temps. La **partie I** étudie une équation du second degré dont un coefficient dépend de $m$ : on montre que son discriminant ne s'annule pas, on calcule ses deux racines, puis on lit le module et un argument de leur somme. La **partie II** place ces mêmes nombres dans le plan complexe et en fait une configuration géométrique (rotation, milieu, orthogonalité, point d'intersection). Le fil conducteur : un rapport de deux affixes encode à la fois un rapport de longueurs (son module) et un angle (son argument) — l'outil central du chapitre (chapitre 7).
     questions:
       - id: q1a
         part: "Partie I — L'équation $(E)\\ :\\ z^2 - (1+i)(1+m)z + 2im = 0$"
@@ -265,7 +265,7 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer le module et un argument de $z_1 + z_2$.
         reasoning: |-
-          La somme se factorise : $z_1 + z_2 = (1+i)m + (1+i) = (1+i)(m+1)$. Le module d'un produit est le produit des modules, l'argument d'un produit est la somme des arguments (R2) — on traite donc les deux facteurs séparément.
+          La somme se factorise : $z_1 + z_2 = (1+i)m + (1+i) = (1+i)(m+1)$. Le module d'un produit est le produit des modules, l'argument d'un produit est la somme des arguments (chapitre 3) — on traite donc les deux facteurs séparément.
 
           Pour $1+i$ : module $\sqrt2$, argument $\dfrac{\pi}{4}$. Pour $m+1 = e^{i\theta}+1$, on utilise la **factorisation par l'angle moitié** : mettre $e^{i\theta/2}$ en facteur fait apparaître $e^{i\theta/2}+e^{-i\theta/2} = 2\cos\dfrac{\theta}{2}$. Comme $0<\theta<\pi$, on a $0<\dfrac{\theta}{2}<\dfrac{\pi}{2}$, donc $\cos\dfrac{\theta}{2} > 0$ : c'est bien un module (positif), et $\dfrac{\theta}{2}$ est bien l'argument.
         steps:
@@ -274,7 +274,7 @@ entries:
           - math: 'e^{i\theta}+1 = e^{i\theta/2}\big(e^{i\theta/2}+e^{-i\theta/2}\big) = 2\cos\tfrac{\theta}{2}\,e^{i\theta/2}'
             note: "Angle moitié : e^{iθ/2}+e^{−iθ/2} = 2cos(θ/2), positif car 0 < θ/2 < π/2."
           - math: '1+i = \sqrt2\,e^{i\pi/4} \implies z_1+z_2 = 2\sqrt2\,\cos\tfrac{\theta}{2}\; e^{i\left(\frac{\pi}{4}+\frac{\theta}{2}\right)}'
-            note: "Produit : modules × modules, arguments + arguments (R2)."
+            note: "Produit : modules × modules, arguments + arguments (chapitre 3)."
           - math: '|z_1+z_2| = 2\sqrt2\,\cos\tfrac{\theta}{2}, \qquad \arg(z_1+z_2) = \frac{\pi}{4} + \frac{\theta}{2}\ [2\pi]'
             note: "Module positif (cos(θ/2) > 0) ; argument π/4 + θ/2."
       - id: q2b
@@ -300,12 +300,12 @@ entries:
 
           **(0,5 pt)** Montrer que l'affixe du point $\Omega$ est $\omega = \dfrac{(1-i)(1-m)}{2}$.
         reasoning: |-
-          Deux outils, chacun déjà construit. **La rotation de centre $O$ et d'angle $\dfrac{\pi}{2}$** s'écrit $z \mapsto e^{i\pi/2}z = iz$ (R5). Donc l'affixe de $D$ est $d = i\,b$.
+          Deux outils, chacun déjà construit. **La rotation de centre $O$ et d'angle $\dfrac{\pi}{2}$** s'écrit $z \mapsto e^{i\pi/2}z = iz$ (chapitre 6). Donc l'affixe de $D$ est $d = i\,b$.
 
           **Le milieu** de $[CD]$ a pour affixe la moyenne des affixes : $\omega = \dfrac{c+d}{2}$. Il ne reste qu'à simplifier, en repérant que $i(1+i) = i - 1 = -(1-i)$.
         steps:
           - math: 'd = e^{i\pi/2}\,b = i\,b = i(1+i)m'
-            note: "Rotation de centre O et d'angle π/2 : z ↦ iz (R5)."
+            note: "Rotation de centre O et d'angle π/2 : z ↦ iz (chapitre 6)."
           - math: 'i(1+i) = i + i^2 = i - 1 = -(1-i) \implies d = -(1-i)m'
             note: "Simplification de i(1+i)."
           - math: '\omega = \frac{c+d}{2} = \frac{(1-i) - (1-i)m}{2} = \frac{(1-i)(1-m)}{2}'
@@ -328,7 +328,7 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que $(O\Omega) \perp (AB)$ et que $AB = 2\,O\Omega$.
         reasoning: |-
-          Le nombre $\dfrac{b-a}{\omega} = \dfrac{b-a}{\omega - 0}$ est le rapport de l'affixe de $\vec{AB}$ à celle de $\vec{O\Omega}$. Comme tout rapport de deux affixes de vecteurs, il **encode deux informations** (R6) : son **module** est le rapport des longueurs $\dfrac{AB}{O\Omega}$, et son **argument** est l'angle $(\vec{O\Omega}, \vec{AB})$.
+          Le nombre $\dfrac{b-a}{\omega} = \dfrac{b-a}{\omega - 0}$ est le rapport de l'affixe de $\vec{AB}$ à celle de $\vec{O\Omega}$. Comme tout rapport de deux affixes de vecteurs, il **encode deux informations** (chapitre 7) : son **module** est le rapport des longueurs $\dfrac{AB}{O\Omega}$, et son **argument** est l'angle $(\vec{O\Omega}, \vec{AB})$.
 
           On lit donc directement sur $-2i$ : module $2$, argument $-\dfrac{\pi}{2}$. Le module donne $AB = 2\,O\Omega$ ; l'argument, égal à $-\dfrac{\pi}{2}$, dit que les deux directions sont orthogonales, donc $(O\Omega) \perp (AB)$.
         steps:
@@ -343,7 +343,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $\dfrac{h-a}{b-a}$ est un réel et que $\dfrac{h}{b-a}$ est un imaginaire pur.
         reasoning: |-
-          Deux appartenances, deux traductions par un rapport de complexes (R6).
+          Deux appartenances, deux traductions par un rapport de complexes (chapitre 7).
 
           $H \in (AB)$ signifie que $A$, $H$, $B$ sont alignés : le vecteur $\vec{AH}$ (affixe $h-a$) est colinéaire à $\vec{AB}$ (affixe $b-a$), donc $\dfrac{h-a}{b-a}$ est **réel**.
 
@@ -400,7 +400,7 @@ entries:
 
       Soit $m$ un nombre complexe **non nul**.
 
-      La **première partie** résout une équation du troisième degré dont $m$ est, par construction, une solution donnée — il reste à factoriser et résoudre le facteur restant. La **deuxième partie** place les deux autres racines comme affixes des points $A$ et $B$, puis construit trois centres de rotation d'angle $\dfrac{\pi}{2}$ ($P$, $Q$, $R$) et compare deux longueurs et deux directions — encore une fois via un unique rapport de complexes (rung R6).
+      La **première partie** résout une équation du troisième degré dont $m$ est, par construction, une solution donnée — il reste à factoriser et résoudre le facteur restant. La **deuxième partie** place les deux autres racines comme affixes des points $A$ et $B$, puis construit trois centres de rotation d'angle $\dfrac{\pi}{2}$ ($P$, $Q$, $R$) et compare deux longueurs et deux directions — encore une fois via un unique rapport de complexes (chapitre 7).
     questions:
       - id: q1
         part: "Première partie — L'équation $(E)\\ :\\ z^3 - 2mz^2 + 2m^2 z - m^3 = 0$"
@@ -443,7 +443,7 @@ entries:
           - math: 'm = 1+e^{i\pi/3} = 2\cos\!\left(\dfrac{\pi}{6}\right)e^{i\pi/6} = \sqrt3\,e^{i\pi/6}'
             note: "Factorisation par l'angle moitié (même geste qu'au sujet 2019, question 2a) : cos(π/6)=√3/2."
           - math: 'z_1 = \sqrt3\,e^{i\pi/6}\times e^{i\pi/3} = \sqrt3\,e^{i\pi/2} = i\sqrt3'
-            note: "Produit : arguments additionnés (R2). π/6+π/3=π/2."
+            note: "Produit : arguments additionnés (chapitre 3). π/6+π/3=π/2."
           - math: 'z_2 = \sqrt3\,e^{i\pi/6}\times e^{-i\pi/3} = \sqrt3\,e^{-i\pi/6} = \dfrac{3}{2} - i\dfrac{\sqrt3}{2}'
             note: "π/6−π/3=−π/6 ; cos(π/6)=√3/2, sin(π/6)=1/2."
       - id: q3
@@ -451,10 +451,10 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que les points $O$, $A$ et $B$ ne sont pas alignés.
         reasoning: |-
-          Rung R6 : $O$, $A$, $B$ sont alignés si et seulement si le rapport $\dfrac{b}{a}$ (rapport des affixes de $\vec{OB}$ et $\vec{OA}$) est réel. Ici $a$ et $b$ ont même module ($|m|$) mais des arguments opposés : le rapport se simplifie en une exponentielle pure, d'argument non nul et non égal à $\pi$ — donc pas réel.
+          Chapitre R6 : $O$, $A$, $B$ sont alignés si et seulement si le rapport $\dfrac{b}{a}$ (rapport des affixes de $\vec{OB}$ et $\vec{OA}$) est réel. Ici $a$ et $b$ ont même module ($|m|$) mais des arguments opposés : le rapport se simplifie en une exponentielle pure, d'argument non nul et non égal à $\pi$ — donc pas réel.
         steps:
           - math: '\dfrac{b}{a} = \dfrac{m\,e^{-i\pi/3}}{m\,e^{i\pi/3}} = e^{-i2\pi/3}'
-            note: "Rapport des affixes de B et A (rung R6) ; m non nul se simplifie (donné)."
+            note: "Rapport des affixes de B et A (chapitre 7) ; m non nul se simplifie (donné)."
           - math: '\arg\!\left(\dfrac{b}{a}\right) = -\dfrac{2\pi}{3} \not\equiv 0\ [\pi] \implies \dfrac{b}{a}\notin\mathbb{R}'
             note: "L'argument n'est ni 0 ni π (mod 2π) : le rapport n'est pas réel."
           - math: 'O,\ A,\ B \ \text{non alignés}'
@@ -463,14 +463,14 @@ entries:
         stem: |-
           **(1 pt)** Montrer que l'affixe de $P$ est $p = m\,\dfrac{\sqrt{2}}{2}\,e^{i\frac{7\pi}{12}}$ et que l'affixe de $R$ est $r = m\,\dfrac{\sqrt{2}}{2}\,e^{-i\frac{7\pi}{12}}$.
         reasoning: |-
-          $P$ est le centre d'une rotation d'angle $\dfrac{\pi}{2}$ qui envoie $O$ sur $A$ : la formule décentrée du R5, $z'-p = e^{i\pi/2}(z-p)$, se résout en $p$ une fois pour toutes — utile ici et pour $R$. Avec $z=0$, $z'=a$ pour $P$, et $z=b$, $z'=0$ pour $R$.
+          $P$ est le centre d'une rotation d'angle $\dfrac{\pi}{2}$ qui envoie $O$ sur $A$ : la formule décentrée du chapitre 6, $z'-p = e^{i\pi/2}(z-p)$, se résout en $p$ une fois pour toutes — utile ici et pour $R$. Avec $z=0$, $z'=a$ pour $P$, et $z=b$, $z'=0$ pour $R$.
 
-          Le facteur commun $\dfrac{1}{1-i} = \dfrac{\sqrt2}{2}\,e^{i\pi/4}$ (R3, inverse d'un complexe) fait le reste : il ne reste qu'à additionner les arguments.
+          Le facteur commun $\dfrac{1}{1-i} = \dfrac{\sqrt2}{2}\,e^{i\pi/4}$ (chapitre 4, inverse d'un complexe) fait le reste : il ne reste qu'à additionner les arguments.
         steps:
           - math: 'z'' - p = e^{i\pi/2}(z-p) \implies p = \dfrac{z'' - e^{i\pi/2}z}{1-e^{i\pi/2}} = \dfrac{z''-iz}{1-i}'
-            note: "Centre d'une rotation d'angle π/2 envoyant M(z) sur M′(z′) (rung R5, résolu en p)."
+            note: "Centre d'une rotation d'angle π/2 envoyant M(z) sur M′(z′) (chapitre 6, résolu en p)."
           - math: '\dfrac{1}{1-i} = \dfrac{\sqrt2}{2}\,e^{i\pi/4}'
-            note: "1−i = √2 e^{−iπ/4} (R1) ; son inverse a pour module √2/2 et pour argument π/4 (R3)."
+            note: "1−i = √2 e^{−iπ/4} (chapitre 2) ; son inverse a pour module √2/2 et pour argument π/4 (chapitre 4)."
           - math: 'P:\ (z,z'')=(0,a) \implies p = a\times\dfrac{\sqrt2}{2}e^{i\pi/4} = m\,e^{i\pi/3}\times\dfrac{\sqrt2}{2}e^{i\pi/4} = m\,\dfrac{\sqrt2}{2}\,e^{i\frac{7\pi}{12}}'
             note: "P envoie O sur A : z=0, z′=a. π/3+π/4=7π/12."
           - math: 'R:\ (z,z'')=(b,0) \implies r = \dfrac{0-ib}{1-i} = -ib\times\dfrac{\sqrt2}{2}e^{i\pi/4} = m\,e^{-i\pi/3}\times\dfrac{\sqrt2}{2}e^{-i\pi/4} = m\,\dfrac{\sqrt2}{2}\,e^{-i\frac{7\pi}{12}}'
@@ -479,12 +479,12 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que l'affixe de $Q$ est $q = m\sqrt{2}\,\sin\!\left(\dfrac{7\pi}{12}\right)$.
         reasoning: |-
-          Même formule que pour $P$ et $R$ (rung R5), appliquée à $Q$ qui envoie $A$ sur $B$ : $q = \dfrac{b-ia}{1-i}$. Cette fois, la voie exponentielle directe ne se simplifie pas aussi proprement — on repasse en forme algébrique pour développer le numérateur, et le facteur $(1-i)$ **se simplifie exactement**, laissant $q$ comme un pur multiple réel de $m$.
+          Même formule que pour $P$ et $R$ (chapitre 6), appliquée à $Q$ qui envoie $A$ sur $B$ : $q = \dfrac{b-ia}{1-i}$. Cette fois, la voie exponentielle directe ne se simplifie pas aussi proprement — on repasse en forme algébrique pour développer le numérateur, et le facteur $(1-i)$ **se simplifie exactement**, laissant $q$ comme un pur multiple réel de $m$.
 
           Le nombre obtenu, $\dfrac{1+\sqrt3}{2}$, ne ressemble pas de prime abord à $\sqrt2\sin\!\left(\dfrac{7\pi}{12}\right)$ : c'est le signal qu'il faut vérifier l'identité via la formule d'addition du sinus plutôt que de la considérer comme acquise.
         steps:
           - math: 'q = \dfrac{b-ia}{1-i}'
-            note: "Même formule que pour P, R (rung R5), appliquée à Q : A → B, donc (z,z′)=(a,b)."
+            note: "Même formule que pour P, R (chapitre 6), appliquée à Q : A → B, donc (z,z′)=(a,b)."
           - math: 'a = m\left(\tfrac12+i\tfrac{\sqrt3}{2}\right),\ b = m\left(\tfrac12-i\tfrac{\sqrt3}{2}\right) \implies b-ia = m\,\dfrac{1+\sqrt3}{2}\,(1-i)'
             note: "On repasse en forme algébrique (e^{±iπ/3}=½±i√3/2) pour développer b−ia ; le résultat se factorise par (1−i)."
           - math: 'q = \dfrac{m\,\frac{1+\sqrt3}{2}(1-i)}{1-i} = m\,\dfrac{1+\sqrt3}{2}'
@@ -499,14 +499,14 @@ entries:
         reasoning: |-
           On calcule $r-p$, l'affixe du vecteur $\vec{PR}$, en factorisant par $m\dfrac{\sqrt2}{2}$ : la différence de deux exponentielles opposées se réduit à un sinus (comme $e^{i\alpha}-e^{-i\alpha}=2i\sin\alpha$, au signe près). Le nombre $\sqrt2\sin\!\left(\dfrac{7\pi}{12}\right)$ vient d'être calculé à la question précédente — pas besoin de le refaire.
 
-          Le rapport $\dfrac{r-p}{q}$ (rung R6) encode alors, en un seul calcul, les deux faits demandés : son module donne l'égalité des longueurs, son argument donne la perpendicularité.
+          Le rapport $\dfrac{r-p}{q}$ (chapitre 7) encode alors, en un seul calcul, les deux faits demandés : son module donne l'égalité des longueurs, son argument donne la perpendicularité.
         steps:
           - math: 'r-p = m\dfrac{\sqrt2}{2}\left(e^{-i\frac{7\pi}{12}}-e^{i\frac{7\pi}{12}}\right) = -i\,m\sqrt2\,\sin\!\left(\dfrac{7\pi}{12}\right)'
-            note: "e^{−iα}−e^{iα} = −2i sin α (R1, propriétés du conjugué en forme exponentielle)."
+            note: "e^{−iα}−e^{iα} = −2i sin α (chapitre 2, propriétés du conjugué en forme exponentielle)."
           - math: '\sqrt2\,\sin\!\left(\dfrac{7\pi}{12}\right) = \dfrac{1+\sqrt3}{2} = \dfrac{q}{m} \implies r-p = -i\,q'
             note: "On réutilise l'identité et la valeur de q établies à la question précédente."
           - math: '\dfrac{r-p}{q} = -i'
-            note: "Rapport des affixes de PR et OQ (rung R6)."
+            note: "Rapport des affixes de PR et OQ (chapitre 7)."
           - math: '\left|\dfrac{r-p}{q}\right| = 1 \implies PR = OQ, \qquad \arg\!\left(\dfrac{r-p}{q}\right) = -\dfrac{\pi}{2} \implies (PR)\perp(OQ)'
             note: "Un seul rapport encode les deux faits : module 1 (longueurs égales), argument ±π/2 (perpendicularité)."
 
@@ -540,17 +540,17 @@ entries:
 
       Soit $m$ un nombre complexe non nul donné et $j = -\dfrac12 + \dfrac{\sqrt3}{2}\,i = e^{i\frac{2\pi}{3}}$.
 
-      La **partie I** résout une équation du second degré dont les coefficients utilisent $j$, puis étudie une puissance élevée de la somme des racines. La **partie II** construit, à partir d'une transformation $\varphi$ du plan et de trois milieux $P$, $Q$, $R$, une relation caractéristique qui, relue à travers le rung R6, prouve que le triangle $PQR$ est équilatéral.
+      La **partie I** résout une équation du second degré dont les coefficients utilisent $j$, puis étudie une puissance élevée de la somme des racines. La **partie II** construit, à partir d'une transformation $\varphi$ du plan et de trois milieux $P$, $Q$, $R$, une relation caractéristique qui, relue à travers le chapitre 7, prouve que le triangle $PQR$ est équilatéral.
     questions:
       - id: q1
         part: "Partie I — L'équation $(E_m)\\ :\\ z^2 + mj^2 z + m^2 j = 0$"
         stem: |-
           **(0,5 pt)** Vérifier que : $j^3 = 1$ et $1 + j + j^2 = 0$.
         reasoning: |-
-          $j=e^{i2\pi/3}$ est exactement l'une des racines cubiques de l'unité construites au rung R4 ($n=3$, $k=1$) : $j^3$ s'obtient directement par la formule de Moivre (R3). Pour la somme $1+j+j^2$, le plus direct est de repasser $j$ et $j^2$ en forme algébrique et d'additionner : les parties imaginaires s'annulent deux à deux.
+          $j=e^{i2\pi/3}$ est exactement l'une des racines cubiques de l'unité construites au chapitre 5 ($n=3$, $k=1$) : $j^3$ s'obtient directement par la formule de Moivre (chapitre 4). Pour la somme $1+j+j^2$, le plus direct est de repasser $j$ et $j^2$ en forme algébrique et d'additionner : les parties imaginaires s'annulent deux à deux.
         steps:
           - math: 'j^3 = \left(e^{i2\pi/3}\right)^3 = e^{i2\pi} = 1'
-            note: "Formule de Moivre (R3) : (e^{iθ})^n=e^{inθ}."
+            note: "Formule de Moivre (chapitre 4) : (e^{iθ})^n=e^{inθ}."
           - math: 'j^2 = e^{i4\pi/3} = -\tfrac12-\tfrac{\sqrt3}{2}i'
             note: "Carré de j, en forme algébrique."
           - math: '1+j+j^2 = 1+\left(-\tfrac12+\tfrac{\sqrt3}{2}i\right)+\left(-\tfrac12-\tfrac{\sqrt3}{2}i\right) = 0'
@@ -587,16 +587,16 @@ entries:
         stem: |-
           **(0,5 pt)** Dans cette question, on suppose que $m = 1 + i$. Montrer que $(z_1 + z_2)^{2022}$ est un imaginaire pur.
         reasoning: |-
-          On repart de $z_1+z_2=-mj^2$ (Viète, question précédente) et on met chaque facteur sous forme exponentielle pour appliquer la règle du produit (R2), puis Moivre (R3) pour la puissance $2022$-ième. Le seul point délicat est de réduire un angle multiplié par $2022$ : on travaille en unités de $\dfrac{\pi}{12}$ et on réduit l'entier modulo $24$ (un tour complet), plutôt que de manipuler un angle énorme.
+          On repart de $z_1+z_2=-mj^2$ (Viète, question précédente) et on met chaque facteur sous forme exponentielle pour appliquer la règle du produit (chapitre 3), puis Moivre (chapitre 4) pour la puissance $2022$-ième. Le seul point délicat est de réduire un angle multiplié par $2022$ : on travaille en unités de $\dfrac{\pi}{12}$ et on réduit l'entier modulo $24$ (un tour complet), plutôt que de manipuler un angle énorme.
         steps:
           - math: 'z_1+z_2 = m(1+j) = -mj^2'
             note: "Somme des racines (Viète, question 2b) ; on réutilise directement −mj² plutôt que m(1+j)."
           - math: 'm=1+i=\sqrt2\,e^{i\pi/4}, \qquad -j^2 = e^{i\pi}e^{i4\pi/3}=e^{i\frac{7\pi}{3}}=e^{i\pi/3}'
-            note: "Formes exponentielles de m et de −j² (R1–R2) ; 7π/3 − 2π = π/3."
+            note: "Formes exponentielles de m et de −j² (chapitres 2 à 3) ; 7π/3 − 2π = π/3."
           - math: 'z_1+z_2 = \sqrt2\,e^{i\pi/4}\times e^{i\pi/3} = \sqrt2\,e^{i\frac{7\pi}{12}}'
-            note: "Produit : modules × modules, arguments + arguments (R2). π/4+π/3=7π/12."
+            note: "Produit : modules × modules, arguments + arguments (chapitre 3). π/4+π/3=7π/12."
           - math: '(z_1+z_2)^{2022} = \big(\sqrt2\big)^{2022}\,e^{i\times2022\times\frac{7\pi}{12}}'
-            note: "Moivre (R3) : module puissance 2022, argument multiplié par 2022."
+            note: "Moivre (chapitre 4) : module puissance 2022, argument multiplié par 2022."
           - math: '2022\times7 = 14154 \equiv 18\ [24] \implies 2022\times\dfrac{7\pi}{12} \equiv \dfrac{18\pi}{12} = \dfrac{3\pi}{2}\ [2\pi]'
             note: "24 unités de π/12 = un tour complet ; on réduit 14154 modulo 24 plutôt que de garder l'angle brut."
           - math: '(z_1+z_2)^{2022} = \big(\sqrt2\big)^{2022}e^{i\,3\pi/2}, \qquad e^{i3\pi/2}=-i'
@@ -606,14 +606,14 @@ entries:
         stem: |-
           **(0,25 pt)** Déterminer la nature et les éléments caractéristiques de l'application $\varphi$.
         reasoning: |-
-          $\varphi$ a la forme $z\mapsto cz$ étudiée au rung R5, avec $c=1+j$. On calcule $c$ en forme exponentielle : sa partie réelle et sa partie imaginaire sont exactement $\cos\dfrac{\pi}{3}$ et $\sin\dfrac{\pi}{3}$, donc $c=e^{i\pi/3}$, de module $1$. Un module $1$ signifie qu'il n'y a aucune homothétie (R5) : $\varphi$ est une rotation pure.
+          $\varphi$ a la forme $z\mapsto cz$ étudiée au chapitre 6, avec $c=1+j$. On calcule $c$ en forme exponentielle : sa partie réelle et sa partie imaginaire sont exactement $\cos\dfrac{\pi}{3}$ et $\sin\dfrac{\pi}{3}$, donc $c=e^{i\pi/3}$, de module $1$. Un module $1$ signifie qu'il n'y a aucune homothétie (chapitre 6) : $\varphi$ est une rotation pure.
         steps:
           - math: '1+j = 1+\left(-\tfrac12+\tfrac{\sqrt3}{2}i\right) = \tfrac12+\tfrac{\sqrt3}{2}i = e^{i\pi/3}'
             note: "Forme exponentielle de 1+j : module 1, argument π/3."
           - math: '|1+j|=1, \quad \arg(1+j)=\dfrac{\pi}{3}'
-            note: "Module 1 : pas d'homothétie (rung R5)."
+            note: "Module 1 : pas d'homothétie (chapitre 6)."
           - math: '\varphi\ \text{est la rotation de centre}\ O\ \text{et pour angle}\ \dfrac{\pi}{3}'
-            note: "z′=cz avec |c|=1 : rotation pure, de centre O (z=0 fixe) et d'angle arg(c)=π/3 (R5)."
+            note: "z′=cz avec |c|=1 : rotation pure, de centre O (z=0 fixe) et d'angle arg(c)=π/3 (chapitre 6)."
       - id: q5
         stem: |-
           **(0,75 pt)** On considère les points $A$, $B$ et $C$ d'affixes respectives $m$, $mj$ et $mj^2$, et $A'(a')$, $B'(b')$, $C'(c')$ leurs images par $\varphi$. Montrer que : $a' = -mj^2$, $b' = -m$ et $c' = -mj$.
@@ -644,7 +644,7 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que le triangle $PQR$ est équilatéral.
         reasoning: |-
-          On réécrit la relation $p+qj+rj^2=0$ pour faire apparaître un rapport de complexes : en remplaçant $j^2$ par $-1-j$ (identité de la question 1), on isole $\dfrac{p-r}{q-r}$, qui vaut exactement $-j$. Or $-j$ a pour module $1$ et pour argument $-\dfrac{\pi}{3}$ — exactement la condition du rung R6 pour un triangle équilatéral, lue au sommet $R$.
+          On réécrit la relation $p+qj+rj^2=0$ pour faire apparaître un rapport de complexes : en remplaçant $j^2$ par $-1-j$ (identité de la question 1), on isole $\dfrac{p-r}{q-r}$, qui vaut exactement $-j$. Or $-j$ a pour module $1$ et pour argument $-\dfrac{\pi}{3}$ — exactement la condition du chapitre 7 pour un triangle équilatéral, lue au sommet $R$.
         steps:
           - math: 'j^2=-1-j \implies p+qj+r(-1-j)=0 \implies (p-r)+j(q-r)=0'
             note: "On substitue j² (identité 1+j+j²=0)."
@@ -653,7 +653,7 @@ entries:
           - math: '-j = -\left(-\tfrac12+\tfrac{\sqrt3}{2}i\right) = \tfrac12-\tfrac{\sqrt3}{2}i = e^{-i\pi/3}'
             note: "Forme exponentielle de −j : module 1, argument −π/3."
           - math: '\left|\dfrac{p-r}{q-r}\right|=1 \ \text{et}\ \arg\!\left(\dfrac{p-r}{q-r}\right) = -\dfrac{\pi}{3}\ [2\pi] \implies PQR\ \text{équilatéral}'
-            note: "Rung R6, sommet R : module 1 et argument ±π/3 caractérisent un triangle équilatéral."
+            note: "Chapitre R6, sommet R : module 1 et argument ±π/3 caractérisent un triangle équilatéral."
 
   # ── bk-2024-n-x3 — 2024 N, Exercice 3 : équation à paramètre α, orthogonalité, lieu géométrique ──
   - id: bk-2024-n-x3
@@ -701,10 +701,10 @@ entries:
         stem: |-
           **(0,25 pt)** Déterminer l'ensemble des valeurs $\alpha$ pour lesquelles l'équation $(E_\alpha)$ admette dans l'ensemble $\mathbb{C}$ deux solutions distinctes.
         reasoning: |-
-          Dans $\mathbb{C}$, à la différence de $\mathbb{R}$, tout nombre non nul a exactement deux racines carrées distinctes (rung R4, $n=2$) : une équation du second degré a donc deux solutions distinctes **dès que** $\Delta\neq0$ — pas besoin de discuter le signe de $\Delta$ comme dans $\mathbb{R}$. Si $\Delta=0$, en revanche, la racine est double.
+          Dans $\mathbb{C}$, à la différence de $\mathbb{R}$, tout nombre non nul a exactement deux racines carrées distinctes (chapitre 5, $n=2$) : une équation du second degré a donc deux solutions distinctes **dès que** $\Delta\neq0$ — pas besoin de discuter le signe de $\Delta$ comme dans $\mathbb{R}$. Si $\Delta=0$, en revanche, la racine est double.
         steps:
           - math: '(E_\alpha)\ \text{a deux solutions distinctes} \iff \Delta\neq0'
-            note: "Dans ℂ, tout nombre non nul a exactement deux racines carrées distinctes (rung R4, n=2) ; Δ=0 donnerait une racine double."
+            note: "Dans ℂ, tout nombre non nul a exactement deux racines carrées distinctes (chapitre 5, n=2) ; Δ=0 donnerait une racine double."
           - math: '\Delta\neq0 \iff -4(1+\alpha)\neq0 \iff \alpha\neq -1'
             note: "On résout l'inéquation."
           - math: '\alpha \in \mathbb{C}-\{-1\}'
@@ -800,12 +800,12 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer l'ensemble $\Gamma$ des points $\Omega$ pour que le triangle $OM_1 M_2$ soit rectangle en $O$.
         reasoning: |-
-          C'est la synthèse de tout l'exercice. « Rectangle en $O$ » signifie $\vec{OM_1}\perp\vec{OM_2}$, c'est-à-dire $\dfrac{z_1}{z_2}$ imaginaire pur (rung R6) — condition déjà traduite, question après question, en $|z_1-z_2|=2$ (2c), puis en $|\Delta|=4$ (via la question 3a), puis en $|\alpha+1|=1$ : l'équation d'un cercle.
+          C'est la synthèse de tout l'exercice. « Rectangle en $O$ » signifie $\vec{OM_1}\perp\vec{OM_2}$, c'est-à-dire $\dfrac{z_1}{z_2}$ imaginaire pur (chapitre 7) — condition déjà traduite, question après question, en $|z_1-z_2|=2$ (2c), puis en $|\Delta|=4$ (via la question 3a), puis en $|\alpha+1|=1$ : l'équation d'un cercle.
 
           Reste un dernier geste, propre à cette question : un « triangle » suppose trois points distincts. Le produit $z_1z_2=\alpha$ (Partie I) s'annule exactement quand $\alpha=0$ — c'est-à-dire quand l'un des deux points $M_1,M_2$ coïncide avec $O$. Ce point $\alpha=0$ est justement situé sur le cercle trouvé : il faut donc l'exclure explicitement, sans quoi $\Gamma$ contiendrait un cas dégénéré.
         steps:
           - math: '\text{rectangle en } O \iff \overrightarrow{OM_1}\perp\overrightarrow{OM_2} \iff \dfrac{z_1}{z_2}\ \text{imaginaire pur} \iff |z_1-z_2|=2'
-            note: "Perpendicularité via le rapport des affixes (rung R6), puis l'équivalence de la question 2c."
+            note: "Perpendicularité via le rapport des affixes (chapitre 7), puis l'équivalence de la question 2c."
           - math: '|z_1-z_2|=2 \iff |z_1-z_2|^2=4 \iff |\Delta| = 4'
             note: "Question 3a : (z1−z2)²=Δ, donc |z1−z2|²=|Δ|."
           - math: '|\Delta|=4 \iff |{-4(1+\alpha)}|=4 \iff 4\,|1+\alpha|=4 \iff |\alpha+1|=1'
@@ -874,7 +874,7 @@ entries:
 
       **Partie II.** Le plan complexe est rapporté à un repère orthonormé direct $(O, \vec{e_1}, \vec{e_2})$. On pose $z_1 = m$ et $z_2 = m(1+i)$. Soit $M_1$ le point d'affixe $z_1$, $M_2$ le point d'affixe $z_2$, $M_3(z_3)$ l'image du point $O$ par la rotation de centre $M_2$ et d'angle $\left(-\dfrac{\pi}{2}\right)$, et $M_4(z_4)$ l'image du point $M_1$ par l'homothétie de centre $O$ et de rapport $k$ $\left(k \in \mathbb{R}^* - \{1\}\right)$.
 
-      **Ce que fait cet exercice.** Tout est paramétré par un complexe $m$ quelconque — et c'est le sujet lui-même qui organise sa disparition. La partie I résout une équation dont les trois coefficients dépendent de $m$ : le discriminant se factorise par $m^2$ et le reste est un calcul numérique d'une ligne (chapitre 1, « Résoudre une équation du second degré dans $\mathbb{C}$ »). La partie II place les racines dans le plan, leur applique une rotation et une homothétie (rung R5), puis demande un produit de quatre rapports d'affixes où **chaque** différence se factorise par $m$ : $m$ se simplifie entièrement et il ne reste qu'une fonction de $k$. Ce n'est pas un hasard — multiplier par $m$ est une rotation-homothétie de centre $O$ (rung R5), qui ne change ni les rapports de longueurs ni les angles. Le fil conducteur reste celui du chapitre : un rapport de deux affixes encode un rapport de longueurs et un angle (rung R6) ; ici on en prend deux, à deux sommets différents, et leur quotient devient un test de cocyclicité.
+      **Ce que fait cet exercice.** Tout est paramétré par un complexe $m$ quelconque — et c'est le sujet lui-même qui organise sa disparition. La partie I résout une équation dont les trois coefficients dépendent de $m$ : le discriminant se factorise par $m^2$ et le reste est un calcul numérique d'une ligne (chapitre 1, « Résoudre une équation du second degré dans $\mathbb{C}$ »). La partie II place les racines dans le plan, leur applique une rotation et une homothétie (chapitre 6), puis demande un produit de quatre rapports d'affixes où **chaque** différence se factorise par $m$ : $m$ se simplifie entièrement et il ne reste qu'une fonction de $k$. Ce n'est pas un hasard — multiplier par $m$ est une rotation-homothétie de centre $O$ (chapitre 6), qui ne change ni les rapports de longueurs ni les angles. Le fil conducteur reste celui du chapitre : un rapport de deux affixes encode un rapport de longueurs et un angle (chapitre 7) ; ici on en prend deux, à deux sommets différents, et leur quotient devient un test de cocyclicité.
     questions:
       - id: q1a
         part: 'Partie I — L''équation $(E)\ :\ z^2-(2+i)mz+m^2(1+i)=0$, avec $m\in\mathbb{C}^*$'
@@ -944,9 +944,9 @@ entries:
 
           $$z_1 z_2 = \frac{c}{a} = m^2(1+i)$$
 
-          Reste à mettre ce produit sous forme exponentielle. Un produit se traite facteur par facteur — les modules se multiplient, les arguments s'ajoutent (rung R2) :
+          Reste à mettre ce produit sous forme exponentielle. Un produit se traite facteur par facteur — les modules se multiplient, les arguments s'ajoutent (chapitre 3) :
 
-          - $m = re^{i\theta}$ donne $m^2 = r^2 e^{2i\theta}$ (c'est Moivre, rung R3 : le module est élevé au carré, l'argument doublé) ;
+          - $m = re^{i\theta}$ donne $m^2 = r^2 e^{2i\theta}$ (c'est Moivre, chapitre 4 : le module est élevé au carré, l'argument doublé) ;
           - $1+i$ a pour module $\sqrt{1^2+1^2} = \sqrt2$ et pour argument $\dfrac{\pi}{4}$, donc $1+i = \sqrt2\,e^{i\frac{\pi}{4}}$.
 
           D'où
@@ -958,11 +958,11 @@ entries:
           - math: 'z_1z_2 = \dfrac{c}{a} = m^2(1+i)'
             note: "Produit des racines lu sur les coefficients (chapitre 1) : inutile de multiplier les racines."
           - math: 'm = re^{i\theta} \implies m^2 = r^2e^{2i\theta}'
-            note: "Moivre (rung R3) : module au carré, argument doublé."
+            note: "Moivre (chapitre 4) : module au carré, argument doublé."
           - math: '|1+i| = \sqrt2,\quad \arg(1+i) = \dfrac{\pi}{4} \implies 1+i = \sqrt2\,e^{i\frac{\pi}{4}}'
             note: "Forme exponentielle du facteur numérique."
           - math: 'z_1z_2 = r^2e^{2i\theta}\times\sqrt2\,e^{i\frac{\pi}{4}} = \sqrt2\,r^2\,e^{i\left(2\theta+\frac{\pi}{4}\right)}'
-            note: "Produit : les modules se multiplient, les arguments s'ajoutent (rung R2)."
+            note: "Produit : les modules se multiplient, les arguments s'ajoutent (chapitre 3)."
           - math: '|z_1z_2| = \sqrt2\,r^2 > 0, \qquad \arg(z_1z_2) = 2\theta+\dfrac{\pi}{4}\ [2\pi]'
             note: "Le coefficient est bien strictement positif : c'est une vraie forme exponentielle."
       - id: q3
@@ -970,7 +970,7 @@ entries:
         stem: |-
           **(0,75 pt)** Calculer $z_3$ en fonction de $m$ et $z_4$ en fonction de $m$ et $k$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Deux transformations, une même écriture (rung R5) : une rotation de centre $\Omega$ et d'angle $\alpha$, comme une homothétie de centre $\Omega$ et de rapport $k$, s'écrivent
+          **Ce qu'on cherche et pourquoi ce geste.** Deux transformations, une même écriture (chapitre 6) : une rotation de centre $\Omega$ et d'angle $\alpha$, comme une homothétie de centre $\Omega$ et de rapport $k$, s'écrivent
 
           $$z_{\text{image}} - z_\Omega = c\,\big(z_{\text{antécédent}} - z_\Omega\big)$$
 
@@ -993,7 +993,7 @@ entries:
           **Une remarque à garder pour la suite.** $k$ est réel non nul et différent de $1$ : rien n'interdit $k < 0$. Une homothétie de rapport négatif est parfaitement licite — elle envoie le point de l'autre côté du centre. Ne l'écarte pas d'un réflexe : la réponse finale de l'exercice est justement $k = -2$.
         steps:
           - math: 'r\!\left(M_2,-\tfrac{\pi}{2}\right) : \ z_3 - z_2 = e^{-i\frac{\pi}{2}}\,(0-z_2), \qquad e^{-i\frac{\pi}{2}} = -i'
-            note: "Rung R5 : à droite l'antécédent (le point O), à gauche l'image ; le centre est M2."
+            note: "Chapitre R5 : à droite l'antécédent (le point O), à gauche l'image ; le centre est M2."
           - math: 'z_3 - z_2 = -i\times(-z_2) = i\,z_2 \implies z_3 = (1+i)z_2'
             note: "Les deux signes moins se compensent."
           - math: 'z_3 = (1+i)\times m(1+i) = m(1+i)^2 = m\times 2i = 2im'
@@ -1006,7 +1006,7 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** Avant de calculer, regarde les quatre affixes : $z_1 = m$, $z_2 = m(1+i)$, $z_3 = 2im$, $z_4 = km$. **Toutes** sont un multiple de $m$. Donc chacune des quatre différences se factorise par $m$, et le paramètre disparaît du quotient. C'est le vrai contenu de la question : le résultat ne dépendra que de $k$.
 
-          Ce n'est pas une coïncidence de calcul. Multiplier par $m$ est une rotation-homothétie de centre $O$ (rung R5) : elle multiplie toutes les longueurs par $|m|$ et tourne toutes les directions du même angle $\arg m$. Un quotient de rapports d'affixes ne voit ni l'une ni l'autre. La configuration des quatre points est donc **la même à une similitude près**, quel que soit $m$.
+          Ce n'est pas une coïncidence de calcul. Multiplier par $m$ est une rotation-homothétie de centre $O$ (chapitre 6) : elle multiplie toutes les longueurs par $|m|$ et tourne toutes les directions du même angle $\arg m$. Un quotient de rapports d'affixes ne voit ni l'une ni l'autre. La configuration des quatre points est donc **la même à une similitude près**, quel que soit $m$.
 
           Les quatre différences :
 
@@ -1050,7 +1050,7 @@ entries:
 
           $$R = \frac{z_4-z_2}{z_4-z_1}\times\frac{z_3-z_1}{z_3-z_2} = \frac{\;\dfrac{z_4-z_2}{z_4-z_1}\;}{\;\dfrac{z_3-z_2}{z_3-z_1}\;}$$
 
-          Ce sont **deux rapports du rung R6**, pris à deux sommets différents. Le premier, $\dfrac{z_4-z_2}{z_4-z_1}$, a pour argument l'angle $\left(\vec{M_4M_1},\vec{M_4M_2}\right)$ : l'angle sous lequel $M_4$ voit le segment $[M_1M_2]$. Le second a pour argument $\left(\vec{M_3M_1},\vec{M_3M_2}\right)$ : l'angle sous lequel $M_3$ voit **le même** segment.
+          Ce sont **deux rapports du chapitre 7**, pris à deux sommets différents. Le premier, $\dfrac{z_4-z_2}{z_4-z_1}$, a pour argument l'angle $\left(\vec{M_4M_1},\vec{M_4M_2}\right)$ : l'angle sous lequel $M_4$ voit le segment $[M_1M_2]$. Le second a pour argument $\left(\vec{M_3M_1},\vec{M_3M_2}\right)$ : l'angle sous lequel $M_3$ voit **le même** segment.
 
           Dire que leur quotient $R$ est réel (il est non nul, car $z_4 \neq z_2$ pour $k$ réel), c'est dire que $\arg R = 0\ [\pi]$, c'est-à-dire que ces deux angles sont égaux modulo $\pi$ : $M_3$ et $M_4$ voient $[M_1M_2]$ sous le même angle. C'est exactement le **théorème de l'angle inscrit**, en angles orientés modulo $\pi$ : deux points voient un segment sous le même angle si et seulement s'ils sont sur un même cercle passant par les extrémités de ce segment — ou si les quatre points sont alignés.
 
@@ -1058,7 +1058,7 @@ entries:
 
           $$\frac{z_3-z_1}{z_2-z_1} = \frac{m(2i-1)}{m\,i} = \frac{2i-1}{i} = 2 + i \notin \mathbb{R}$$
 
-          (on multiplie haut et bas par $-i$ : $\;(2i-1)(-i) = -2i^2 + i = 2+i$). Donc $M_1$, $M_2$, $M_3$ ne sont **jamais** alignés, quel que soit $m \in \mathbb{C}^*$ (rung R6, première ligne de la table de lecture). Il existe par conséquent un **unique** cercle $(\mathcal{C})$ passant par ces trois points, et « $R$ réel » ne peut signifier qu'une chose : $M_4 \in (\mathcal{C})$.
+          (on multiplie haut et bas par $-i$ : $\;(2i-1)(-i) = -2i^2 + i = 2+i$). Donc $M_1$, $M_2$, $M_3$ ne sont **jamais** alignés, quel que soit $m \in \mathbb{C}^*$ (chapitre 7, première ligne de la table de lecture). Il existe par conséquent un **unique** cercle $(\mathcal{C})$ passant par ces trois points, et « $R$ réel » ne peut signifier qu'une chose : $M_4 \in (\mathcal{C})$.
 
           Les quatre points sont d'ailleurs deux à deux distincts pour tout $k$ admissible : $M_4 = M_1 \iff k=1$ (exclu par l'énoncé), $M_4 = M_2 \iff k = 1+i$ et $M_4 = M_3 \iff k = 2i$, deux valeurs non réelles. Aucun cas dégénéré à retrancher.
 
@@ -1071,15 +1071,15 @@ entries:
           **Le piège à éviter.** Écrire « $R$ réel donc les quatre points sont cocycliques » et s'arrêter là. Le critère de l'angle inscrit ne donne jamais la cocyclicité seule : il donne **cocycliques *ou* alignés**. Le cas d'alignement doit être explicitement tué, sinon le « si et seulement si » demandé n'est pas démontré. Ici il l'est en une ligne — mais c'est une ligne qui vaut des points, et le correcteur la cherche. Second piège, plus discret : ne « simplifie » pas $\dfrac{k+2}{2(k-1)} = 0$ en $k+2=0$ sans avoir dit pourquoi le dénominateur ne s'annule pas ; c'est l'hypothèse $k \neq 1$ de l'énoncé qui sert ici, et elle ne sert qu'ici.
         steps:
           - math: 'R = \dfrac{z_4-z_2}{z_4-z_1}\times\dfrac{z_3-z_1}{z_3-z_2} = \left.\dfrac{z_4-z_2}{z_4-z_1}\middle/\dfrac{z_3-z_2}{z_3-z_1}\right.'
-            note: "Le produit donné est le QUOTIENT de deux rapports du rung R6, pris aux sommets M4 et M3."
+            note: "Le produit donné est le QUOTIENT de deux rapports du chapitre 7, pris aux sommets M4 et M3."
           - math: '\arg\!\left(\dfrac{z_4-z_2}{z_4-z_1}\right) = \left(\vec{M_4M_1},\vec{M_4M_2}\right), \qquad \arg\!\left(\dfrac{z_3-z_2}{z_3-z_1}\right) = \left(\vec{M_3M_1},\vec{M_3M_2}\right)'
-            note: "Rung R6 : chaque rapport porte l'angle sous lequel son sommet voit le segment [M1M2]."
+            note: "Chapitre R6 : chaque rapport porte l'angle sous lequel son sommet voit le segment [M1M2]."
           - math: 'R \in \mathbb{R}^* \iff \arg R = 0\ [\pi] \iff \left(\vec{M_4M_1},\vec{M_4M_2}\right) = \left(\vec{M_3M_1},\vec{M_3M_2}\right)\ [\pi]'
             note: "Un complexe non nul est réel exactement quand son argument vaut 0 modulo pi."
           - math: '\text{Angle inscrit} : \ M_3,\ M_4\ \text{voient}\ [M_1M_2]\ \text{sous le même angle} \iff M_1,M_2,M_3,M_4\ \text{cocycliques ou alignés}'
             note: "Le critère ne donne JAMAIS la cocyclicité seule : le cas aligné doit être écarté à part."
           - math: '\dfrac{z_3-z_1}{z_2-z_1} = \dfrac{m(2i-1)}{m\,i} = 2+i \notin \mathbb{R} \implies M_1,M_2,M_3\ \text{jamais alignés}'
-            note: "Rung R6 : rapport non réel = pas d'alignement. Un unique cercle passe donc par M1, M2, M3."
+            note: "Chapitre R6 : rapport non réel = pas d'alignement. Un unique cercle passe donc par M1, M2, M3."
           - math: 'M_4=M_1 \iff k=1\ (\text{exclu}),\quad M_4=M_2 \iff k=1+i,\quad M_4=M_3 \iff k=2i'
             note: "1+i et 2i ne sont pas réels : les quatre points sont deux à deux distincts pour tout k admissible."
           - math: 'R \in \mathbb{R} \iff \mathrm{Im}(R)=0 \iff \dfrac{k+2}{2(k-1)}=0 \iff k+2=0 \iff k=-2'
@@ -1127,7 +1127,7 @@ entries:
 
       Soient $a$, $b$, $c$ trois nombres complexes **non nuls** tels que $a+b \neq c$.
 
-      L'exercice se déroule en trois temps. La **première question** résout une équation du second degré déjà écrite sous la forme somme/produit de ses racines — pas besoin de discriminant, la factorisation se lit directement (relations coefficients-racines, Viète). La **deuxième** plante deux centres de rotation d'angle $\pm\dfrac{\pi}{2}$ ($P$, $Q$) autour du triangle $ABC$ et en tire la nature du triangle $PDQ$, $D$ étant le milieu de $[BC]$ — via le rapport de complexes du rung R6. La **troisième** construit deux symétriques et leur milieu $K$, pour aboutir à une cocyclicité de quatre points, obtenue ici par un argument de géométrie élémentaire (parallélogramme puis carré) plutôt qu'un nouvel outil.
+      L'exercice se déroule en trois temps. La **première question** résout une équation du second degré déjà écrite sous la forme somme/produit de ses racines — pas besoin de discriminant, la factorisation se lit directement (relations coefficients-racines, Viète). La **deuxième** plante deux centres de rotation d'angle $\pm\dfrac{\pi}{2}$ ($P$, $Q$) autour du triangle $ABC$ et en tire la nature du triangle $PDQ$, $D$ étant le milieu de $[BC]$ — via le rapport de complexes du chapitre 7. La **troisième** construit deux symétriques et leur milieu $K$, pour aboutir à une cocyclicité de quatre points, obtenue ici par un argument de géométrie élémentaire (parallélogramme puis carré) plutôt qu'un nouvel outil.
     questions:
       - id: q1a
         stem: |-
@@ -1150,7 +1150,7 @@ entries:
           Les deux solutions sont $c$ et $a+b$ (question précédente) : $a=i=e^{i\pi/2}$ et $b=e^{i\pi/3}$ sont déjà de module $1$, donc $a+b$ et $c=a-b$ sont une somme et une différence de deux exponentielles de même forme — on factorise chacune par l'angle moyen $\dfrac{\pi/2+\pi/3}{2}=\dfrac{5\pi}{12}$, exactement le même geste que $e^{i\theta}+1=2\cos(\theta/2)e^{i\theta/2}$ (déjà rencontré sur ce chapitre), mais entre deux exponentielles quelconques plutôt qu'avec $1$.
         steps:
           - math: 'a+b = e^{i\pi/2}+e^{i\pi/3} = e^{i\frac{5\pi}{12}}\left(e^{i\frac{\pi}{12}}+e^{-i\frac{\pi}{12}}\right) = 2\cos\tfrac{\pi}{12}\,e^{i\frac{5\pi}{12}}'
-            note: "Angle moyen 5π/12=(π/2+π/3)/2, demi-écart π/12=(π/2−π/3)/2 ; e^{ix}+e^{−ix}=2cos x (R1)."
+            note: "Angle moyen 5π/12=(π/2+π/3)/2, demi-écart π/12=(π/2−π/3)/2 ; e^{ix}+e^{−ix}=2cos x (chapitre 2)."
           - math: 'a-b = e^{i\pi/2}-e^{i\pi/3} = e^{i\frac{5\pi}{12}}\left(e^{i\frac{\pi}{12}}-e^{-i\frac{\pi}{12}}\right) = 2i\sin\tfrac{\pi}{12}\,e^{i\frac{5\pi}{12}} = 2\sin\tfrac{\pi}{12}\,e^{i\left(\frac{5\pi}{12}+\frac{\pi}{2}\right)}'
             note: "e^{ix}−e^{−ix}=2i sin x ; on absorbe le facteur i=e^{iπ/2} dans l'argument."
           - math: '\cos\tfrac{\pi}{12}=\tfrac{\sqrt6+\sqrt2}{4}>0, \qquad \sin\tfrac{\pi}{12}=\tfrac{\sqrt6-\sqrt2}{4}>0'
@@ -1164,18 +1164,18 @@ entries:
         stem: |-
           **(1 pt)** Montrer que : $2p = b+a+(a-b)i$ et $2q = c+a+(c-a)i$.
         reasoning: |-
-          Chaque centre se retrouve avec la formule décentrée du rung R5, résolue en l'inconnue « centre » : si $M'(z')$ est l'image de $M(z)$ par la rotation de centre $\Omega(\omega)$ et d'angle $\theta$, alors $z'-\omega=e^{i\theta}(z-\omega)$, ce qui se résout en $\omega=\dfrac{z'-e^{i\theta}z}{1-e^{i\theta}}$ — déjà utilisé au sujet 2020 de cette notion pour construire trois centres de rotation d'angle $\dfrac{\pi}{2}$ de la même façon.
+          Chaque centre se retrouve avec la formule décentrée du chapitre 6, résolue en l'inconnue « centre » : si $M'(z')$ est l'image de $M(z)$ par la rotation de centre $\Omega(\omega)$ et d'angle $\theta$, alors $z'-\omega=e^{i\theta}(z-\omega)$, ce qui se résout en $\omega=\dfrac{z'-e^{i\theta}z}{1-e^{i\theta}}$ — déjà utilisé au sujet 2020 de cette notion pour construire trois centres de rotation d'angle $\dfrac{\pi}{2}$ de la même façon.
 
           Pour $P$ : la rotation d'angle $\dfrac{\pi}{2}$ ($e^{i\pi/2}=i$) transforme $B$ en $A$, donc $z=b$, $z'=a$. Pour $Q$ : la rotation d'angle $-\dfrac{\pi}{2}$ ($e^{-i\pi/2}=-i$) transforme $C$ en $A$, donc $z=c$, $z'=a$. Il reste à simplifier chaque quotient par la méthode du conjugué (chapitre 1).
         steps:
           - math: 'p = \dfrac{a-ib}{1-i}'
-            note: "Centre de la rotation d'angle π/2 (e^{iπ/2}=i) envoyant B(b) sur A(a) : rung R5, résolu en p."
+            note: "Centre de la rotation d'angle π/2 (e^{iπ/2}=i) envoyant B(b) sur A(a) : chapitre 6, résolu en p."
           - math: 'p = \dfrac{(a-ib)(1+i)}{(1-i)(1+i)} = \dfrac{a+ai-ib+b}{2} = \dfrac{(a+b)+i(a-b)}{2}'
             note: "Méthode du conjugué (chapitre 1) : on multiplie par (1+i)/(1+i), avec (1−i)(1+i)=2."
           - math: '2p = (a+b)+i(a-b) = b+a+(a-b)i'
             note: "Résultat demandé pour p."
           - math: 'q = \dfrac{a-(-i)c}{1-(-i)} = \dfrac{a+ic}{1+i}'
-            note: "Centre de la rotation d'angle −π/2 (e^{−iπ/2}=−i) envoyant C(c) sur A(a) : même formule, rung R5."
+            note: "Centre de la rotation d'angle −π/2 (e^{−iπ/2}=−i) envoyant C(c) sur A(a) : même formule, chapitre 6."
           - math: 'q = \dfrac{(a+ic)(1-i)}{(1+i)(1-i)} = \dfrac{a-ai+ic+c}{2} = \dfrac{(a+c)+i(c-a)}{2}'
             note: "Méthode du conjugué, avec (1+i)(1−i)=2."
           - math: '2q = (a+c)+i(c-a) = c+a+(c-a)i'
@@ -1198,12 +1198,12 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire la nature du triangle $PDQ$.
         reasoning: |-
-          Le rapport qu'on vient de calculer est exactement, au sommet $D$, le rapport du rung R6 : $\dfrac{p-d}{q-d} = \dfrac{z_P-z_D}{z_Q-z_D}$. Il vaut $i$, qui est imaginaire pur et de module $1$ : d'après la table du rung R6, imaginaire pur signale un angle droit en $D$, et module $1$ signale deux côtés égaux issus de $D$.
+          Le rapport qu'on vient de calculer est exactement, au sommet $D$, le rapport du chapitre 7 : $\dfrac{p-d}{q-d} = \dfrac{z_P-z_D}{z_Q-z_D}$. Il vaut $i$, qui est imaginaire pur et de module $1$ : d'après la table du chapitre 7, imaginaire pur signale un angle droit en $D$, et module $1$ signale deux côtés égaux issus de $D$.
         steps:
           - math: '\dfrac{p-d}{q-d}=i\ \text{imaginaire pur (non nul)} \implies \big(\vec{DP},\vec{DQ}\big) = \pm\dfrac{\pi}{2} \implies PDQ\ \text{rectangle en}\ D'
-            note: "Rung R6 : rapport imaginaire pur ⟺ angle droit au sommet."
+            note: "Chapitre R6 : rapport imaginaire pur ⟺ angle droit au sommet."
           - math: '\left|\dfrac{p-d}{q-d}\right| = |i| = 1 \implies DP = DQ \implies PDQ\ \text{isocèle en}\ D'
-            note: "Rung R6 : module 1 ⟺ triangle isocèle au sommet."
+            note: "Chapitre R6 : module 1 ⟺ triangle isocèle au sommet."
           - math: 'PDQ\ \text{est rectangle et isocèle en}\ D'
             note: "Les deux conclusions combinées."
       - id: q3a
@@ -1268,30 +1268,30 @@ entries:
 
       On considère le nombre complexe $u = 1+(2-\sqrt3)i$.
 
-      L'exercice construit d'abord la forme exponentielle de $u$ à partir de deux nombres plus simples ($1-i$ et $1+\sqrt3\,i$), et en tire au passage la valeur de $\tan\dfrac{\pi}{12}$. Il utilise ensuite cette forme pour deux applications bien distinctes : une récurrence sur deux suites couplées $(x_n)$, $(y_n)$ définies terme à terme par $u^{n+1}=u^n\times u$, puis une lecture géométrique — alignement, angle droit — sur les points $A_n$ d'affixe $u^n$, via le rapport de complexes du rung R6.
+      L'exercice construit d'abord la forme exponentielle de $u$ à partir de deux nombres plus simples ($1-i$ et $1+\sqrt3\,i$), et en tire au passage la valeur de $\tan\dfrac{\pi}{12}$. Il utilise ensuite cette forme pour deux applications bien distinctes : une récurrence sur deux suites couplées $(x_n)$, $(y_n)$ définies terme à terme par $u^{n+1}=u^n\times u$, puis une lecture géométrique — alignement, angle droit — sur les points $A_n$ d'affixe $u^n$, via le rapport de complexes du chapitre 7.
     questions:
       - id: q1a
         stem: |-
           **(0,5 pt)** Écrire sous forme exponentielle les nombres complexes : $1 - i$ et $1 + \sqrt{3}\,i$.
         reasoning: |-
-          Méthode du R1 : calculer le module, puis identifier l'argument à partir de $\cos\theta=a/r$ et $\sin\theta=b/r$, en vérifiant les deux signes à la fois (le piège classique du rung).
+          Méthode du chapitre 2 : calculer le module, puis identifier l'argument à partir de $\cos\theta=a/r$ et $\sin\theta=b/r$, en vérifiant les deux signes à la fois (le piège classique du chapitre).
         steps:
           - math: '|1-i| = \sqrt{1^2+(-1)^2} = \sqrt2, \qquad \cos\theta=\dfrac{1}{\sqrt2},\ \sin\theta=-\dfrac{1}{\sqrt2} \implies \theta=-\dfrac{\pi}{4}'
-            note: "Rung R1 : module puis argument, en vérifiant les deux signes (cos et sin)."
+            note: "Chapitre R1 : module puis argument, en vérifiant les deux signes (cos et sin)."
           - math: '1-i = \sqrt2\,e^{-i\pi/4}'
             note: "Forme exponentielle du premier nombre."
           - math: '|1+\sqrt3\,i| = \sqrt{1^2+(\sqrt3)^2} = 2, \qquad \cos\theta=\dfrac12,\ \sin\theta=\dfrac{\sqrt3}{2} \implies \theta=\dfrac{\pi}{3}'
-            note: "Même méthode ; valeurs usuelles du tableau (R1)."
+            note: "Même méthode ; valeurs usuelles du tableau (chapitre 2)."
           - math: '1+\sqrt3\,i = 2\,e^{i\pi/3}'
             note: "Forme exponentielle du second nombre."
       - id: q1b
         stem: |-
           **(0,25 pt)** Montrer que : $\dfrac{(1-i)(1+\sqrt3\,i)}{2\sqrt2} = e^{i\frac{\pi}{12}}$
         reasoning: |-
-          On multiplie les deux formes exponentielles de la question précédente par la règle du produit (R2) : les modules se multiplient, les arguments s'additionnent. Il ne reste plus qu'à diviser par $2\sqrt2$, qui est exactement le produit des deux modules — le facteur module disparaît, ne laissant que l'exponentielle pure.
+          On multiplie les deux formes exponentielles de la question précédente par la règle du produit (chapitre 3) : les modules se multiplient, les arguments s'additionnent. Il ne reste plus qu'à diviser par $2\sqrt2$, qui est exactement le produit des deux modules — le facteur module disparaît, ne laissant que l'exponentielle pure.
         steps:
           - math: '(1-i)(1+\sqrt3\,i) = \sqrt2\,e^{-i\pi/4}\times 2\,e^{i\pi/3} = 2\sqrt2\,e^{i\left(\frac{\pi}{3}-\frac{\pi}{4}\right)}'
-            note: "Règle du produit (R2) : modules × modules, arguments + arguments."
+            note: "Règle du produit (chapitre 3) : modules × modules, arguments + arguments."
           - math: '\dfrac{\pi}{3}-\dfrac{\pi}{4} = \dfrac{4\pi}{12}-\dfrac{3\pi}{12} = \dfrac{\pi}{12} \implies (1-i)(1+\sqrt3\,i) = 2\sqrt2\,e^{i\pi/12}'
             note: "On réduit au même dénominateur pour soustraire les angles."
           - math: '\dfrac{(1-i)(1+\sqrt3\,i)}{2\sqrt2} = \dfrac{2\sqrt2\,e^{i\pi/12}}{2\sqrt2} = e^{i\pi/12}'
@@ -1345,12 +1345,12 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que pour tout $n \in \mathbb{N}$ : $x_n = \dfrac{\cos\!\left(\frac{n\pi}{12}\right)}{\left(\cos\frac{\pi}{12}\right)^n}$ et $y_n = \dfrac{\sin\!\left(\frac{n\pi}{12}\right)}{\left(\cos\frac{\pi}{12}\right)^n}$
         reasoning: |-
-          On reprend la seconde écriture de $u$ trouvée à la question 1d, $u=\dfrac{e^{i\pi/12}}{\cos(\pi/12)}$, bien plus commode ici qu'une puissance de $(\sqrt6-\sqrt2)$ : elle donne $u^n$ par la formule de Moivre (R3) directement en fonction de $\cos\dfrac{n\pi}{12}$ et $\sin\dfrac{n\pi}{12}$, avec $\cos(\pi/12)$ (un réel) au dénominateur. Il suffit ensuite d'identifier avec $x_n+iy_n=u^n$ (question précédente).
+          On reprend la seconde écriture de $u$ trouvée à la question 1d, $u=\dfrac{e^{i\pi/12}}{\cos(\pi/12)}$, bien plus commode ici qu'une puissance de $(\sqrt6-\sqrt2)$ : elle donne $u^n$ par la formule de Moivre (chapitre 4) directement en fonction de $\cos\dfrac{n\pi}{12}$ et $\sin\dfrac{n\pi}{12}$, avec $\cos(\pi/12)$ (un réel) au dénominateur. Il suffit ensuite d'identifier avec $x_n+iy_n=u^n$ (question précédente).
         steps:
           - math: 'u^n = \left(\dfrac{e^{i\pi/12}}{\cos(\pi/12)}\right)^{\!n} = \dfrac{e^{in\pi/12}}{\left(\cos(\pi/12)\right)^n}'
-            note: "Formule de Moivre (R3) appliquée à u = e^{iπ/12}/cos(π/12) (question 1d)."
+            note: "Formule de Moivre (chapitre 4) appliquée à u = e^{iπ/12}/cos(π/12) (question 1d)."
           - math: 'u^n = \dfrac{\cos(n\pi/12)+i\sin(n\pi/12)}{\left(\cos(\pi/12)\right)^n}'
-            note: "e^{inπ/12}=cos(nπ/12)+isin(nπ/12) (définition, R2)."
+            note: "e^{inπ/12}=cos(nπ/12)+isin(nπ/12) (définition, chapitre 3)."
           - math: 'x_n+iy_n = u^n = \dfrac{\cos(n\pi/12)}{\left(\cos(\pi/12)\right)^n} + i\,\dfrac{\sin(n\pi/12)}{\left(\cos(\pi/12)\right)^n}'
             note: "On réutilise x_n+iy_n=u^n (question 2a)."
           - math: 'x_n = \dfrac{\cos(n\pi/12)}{\left(\cos(\pi/12)\right)^n}, \qquad y_n = \dfrac{\sin(n\pi/12)}{\left(\cos(\pi/12)\right)^n}'
@@ -1360,10 +1360,10 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer les entiers $n$ pour lesquels les points $O$, $A_0$ et $A_n$ sont alignés.
         reasoning: |-
-          Rung R6 : $O$, $A_0$, $A_n$ sont alignés si et seulement si le rapport $\dfrac{z_{A_n}-z_O}{z_{A_0}-z_O} = \dfrac{u^n}{u^0} = u^n$ est réel. Or $u=(\sqrt6-\sqrt2)e^{i\pi/12}$ (question 1d) a pour module un réel strictement positif, donc $u^n$ (Moivre, R3) a pour argument $\dfrac{n\pi}{12}$ : il est réel exactement quand cet angle est un multiple de $\pi$.
+          Chapitre R6 : $O$, $A_0$, $A_n$ sont alignés si et seulement si le rapport $\dfrac{z_{A_n}-z_O}{z_{A_0}-z_O} = \dfrac{u^n}{u^0} = u^n$ est réel. Or $u=(\sqrt6-\sqrt2)e^{i\pi/12}$ (question 1d) a pour module un réel strictement positif, donc $u^n$ (Moivre, chapitre 4) a pour argument $\dfrac{n\pi}{12}$ : il est réel exactement quand cet angle est un multiple de $\pi$.
         steps:
           - math: 'O,\,A_0,\,A_n\ \text{alignés} \iff \dfrac{u^n}{u^0}=u^n\in\mathbb{R}'
-            note: "Rung R6 : rapport des affixes de OA_n et OA_0, réel ⟺ alignement."
+            note: "Chapitre R6 : rapport des affixes de OA_n et OA_0, réel ⟺ alignement."
           - math: 'u^n = (\sqrt6-\sqrt2)^n\,e^{in\pi/12}\quad(\text{Moivre, R3})'
             note: "u=(√6−√2)e^{iπ/12} (question 1d) ; module (√6−√2)^n réel positif."
           - math: 'u^n\in\mathbb{R} \iff \dfrac{n\pi}{12} \equiv 0\ [\pi] \iff \dfrac{n}{12}\in\mathbb{Z} \iff n\ \text{multiple de}\ 12'
@@ -1374,16 +1374,16 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que pour tout entier $n$, le triangle $O A_n A_{n+1}$ est rectangle en $A_n$.
         reasoning: |-
-          Rung R6, cette fois au sommet $A_n$ : le rapport $\dfrac{z_O - z_{A_n}}{z_{A_{n+1}}-z_{A_n}} = \dfrac{-u^n}{u^{n+1}-u^n}$ se simplifie en factorisant $u^n$ au dénominateur — $u^n$ disparaît, et il ne reste qu'une constante $\dfrac{-1}{u-1}$, **indépendante de $n$**. Reste à voir si cette constante est imaginaire pure ; ça dépend uniquement de $u-1$, et $u-1=(2-\sqrt3)i$ est déjà, par construction de $u$, un imaginaire pur — donc son inverse (et son opposé) l'est aussi.
+          Chapitre R6, cette fois au sommet $A_n$ : le rapport $\dfrac{z_O - z_{A_n}}{z_{A_{n+1}}-z_{A_n}} = \dfrac{-u^n}{u^{n+1}-u^n}$ se simplifie en factorisant $u^n$ au dénominateur — $u^n$ disparaît, et il ne reste qu'une constante $\dfrac{-1}{u-1}$, **indépendante de $n$**. Reste à voir si cette constante est imaginaire pure ; ça dépend uniquement de $u-1$, et $u-1=(2-\sqrt3)i$ est déjà, par construction de $u$, un imaginaire pur — donc son inverse (et son opposé) l'est aussi.
         steps:
           - math: '\dfrac{z_O-z_{A_n}}{z_{A_{n+1}}-z_{A_n}} = \dfrac{0-u^n}{u^{n+1}-u^n} = \dfrac{-u^n}{u^n(u-1)} = \dfrac{-1}{u-1}'
-            note: "Rung R6, sommet A_n ; on factorise u^n (u≠0, u^n≠0) au dénominateur, il se simplifie."
+            note: "Chapitre R6, sommet A_n ; on factorise u^n (u≠0, u^n≠0) au dénominateur, il se simplifie."
           - math: 'u-1 = \big[1+(2-\sqrt3)i\big]-1 = (2-\sqrt3)i'
             note: "u−1 est déjà un imaginaire pur, par construction de u = 1+(2−√3)i."
           - math: '\dfrac{-1}{u-1} = \dfrac{-1}{(2-\sqrt3)i} = \dfrac{-1}{2-\sqrt3}\times\dfrac{1}{i} = \dfrac{i}{2-\sqrt3}'
             note: "1/i=−i (chapitre 1) ; le facteur réel −1/(2−√3) ne change pas la nature imaginaire pure."
           - math: '\dfrac{i}{2-\sqrt3}\ \text{est imaginaire pur (non nul), indépendant de } n \implies O A_n A_{n+1}\ \text{rectangle en}\ A_n\ \text{pour tout}\ n'
-            note: "Rung R6 : rapport imaginaire pur au sommet A_n ⟺ angle droit en A_n, vrai pour tout n."
+            note: "Chapitre R6 : rapport imaginaire pur au sommet A_n ⟺ angle droit en A_n, vrai pour tout n."
 
 
   # ── bk-2023-r-x2 — 2023 RATTRAPAGE, Exercice 2 : système non linéaire remonté dans ℂ ; cercle unité, cordes, p = bc/a ──
@@ -1445,7 +1445,7 @@ entries:
 
       **Partie II.** Le plan complexe est rapporté à un repère orthonormé direct $\left(O;\vec{u},\vec{v}\right)$. Soit $(U)$ le cercle de centre $O$ et de rayon $1$, et $A(a)$, $B(b)$, $C(c)$ trois points du cercle $(U)$ deux à deux distincts.
 
-      **Ce que fait cet exercice.** La partie I est un détour spectaculaire : un système de deux équations **réelles**, non linéaires, qu'on ne résout pas dans $\mathbb{R}$ — on pose $z = \sqrt{x} + i\sqrt{y}$, et les deux lignes deviennent la partie réelle et la partie imaginaire d'une **seule** égalité complexe, qui se ramène à une équation du second degré (chapitre 1, « Résoudre une équation du second degré dans $\mathbb{C}$ »). La partie II travaille sur le cercle unité, où une seule identité — $|z| = 1 \iff \overline{z} = \dfrac{1}{z}$, démontrée à la première question — transforme toute condition géométrique (parallélisme, perpendicularité) en identité algébrique sur $a$, $b$, $c$. Le fil conducteur reste celui du chapitre : un rapport de deux affixes de vecteurs encode une direction — réel pour des directions parallèles, imaginaire pur pour des directions perpendiculaires (rung R6).
+      **Ce que fait cet exercice.** La partie I est un détour spectaculaire : un système de deux équations **réelles**, non linéaires, qu'on ne résout pas dans $\mathbb{R}$ — on pose $z = \sqrt{x} + i\sqrt{y}$, et les deux lignes deviennent la partie réelle et la partie imaginaire d'une **seule** égalité complexe, qui se ramène à une équation du second degré (chapitre 1, « Résoudre une équation du second degré dans $\mathbb{C}$ »). La partie II travaille sur le cercle unité, où une seule identité — $|z| = 1 \iff \overline{z} = \dfrac{1}{z}$, démontrée à la première question — transforme toute condition géométrique (parallélisme, perpendicularité) en identité algébrique sur $a$, $b$, $c$. Le fil conducteur reste celui du chapitre : un rapport de deux affixes de vecteurs encode une direction — réel pour des directions parallèles, imaginaire pur pour des directions perpendiculaires (chapitre 7).
     questions:
       - id: q1a
         part: 'Partie I — Le système $(S)$, remonté dans $\mathbb{C}$ par $z=\sqrt{x}+i\sqrt{y}$'
@@ -1462,7 +1462,7 @@ entries:
 
           — autrement dit, le dénominateur $x+y$ qui traîne dans les deux lignes du système **est** $|z|^2$. C'est ce qui rend l'idée du sujet possible.
 
-          On calcule alors $\dfrac1z$ par la méthode du conjugué (rung R3 du chapitre 1) :
+          On calcule alors $\dfrac1z$ par la méthode du conjugué (chapitre 4 du chapitre 1) :
 
           $$\frac{1}{z} = \frac{\overline{z}}{z\overline{z}} = \frac{\sqrt{x} - i\sqrt{y}}{x+y}$$
 
@@ -1477,7 +1477,7 @@ entries:
           - math: '(x,y)\ \text{solution de}\ (S) \implies x+y \neq 0 \implies |z|^2 \neq 0 \implies z \neq 0'
             note: "Justification à ne pas sauter : sans elle, 1/z n'a pas de sens (le domaine imprimé (R+)² contient (0,0))."
           - math: '\dfrac{1}{z} = \dfrac{\overline{z}}{z\overline{z}} = \dfrac{\sqrt{x}-i\sqrt{y}}{x+y}'
-            note: "Méthode du conjugué (chapitre 1, rung R3) : on multiplie haut et bas par le conjugué."
+            note: "Méthode du conjugué (chapitre 1, chapitre 4) : on multiplie haut et bas par le conjugué."
           - math: 'z+\dfrac{1}{z} = \sqrt{x}\left(1+\dfrac{1}{x+y}\right) + i\,\sqrt{y}\left(1-\dfrac{1}{x+y}\right)'
             note: "On regroupe partie réelle et partie imaginaire : ce sont mot pour mot les deux lignes de (S)."
           - math: 'z+\dfrac{1}{z} = \dfrac{12}{5} + \dfrac{4}{5}i'
@@ -1538,7 +1538,7 @@ entries:
 
           Elle est donc à rejeter : aucun réel $y \geq 0$ n'a $\sqrt{y} = -\dfrac15$. Il reste $z = z_1 = 2+i$.
 
-          On identifie alors partie réelle et partie imaginaire — ce qui est légitime parce que $\sqrt{x}$ et $\sqrt{y}$ sont **réels** (l'unicité de la forme algébrique, rung R1 du chapitre 1) :
+          On identifie alors partie réelle et partie imaginaire — ce qui est légitime parce que $\sqrt{x}$ et $\sqrt{y}$ sont **réels** (l'unicité de la forme algébrique, chapitre 2 du chapitre 1) :
 
           $$\sqrt{x} = 2 \implies x = 4 \qquad\qquad \sqrt{y} = 1 \implies y = 1$$
 
@@ -1551,7 +1551,7 @@ entries:
           - math: 'z_2 = \dfrac{2-i}{5} = \dfrac25-\dfrac15 i,\quad \operatorname{Im}(z_2) = -\dfrac15 < 0 \implies z_2\ \text{est à rejeter}'
             note: "Aucun y positif n'a une racine carrée négative."
           - math: 'z = 2+i \implies \sqrt{x} = 2\ \text{et}\ \sqrt{y} = 1'
-            note: "Identification des parties réelle et imaginaire, licite car √x et √y sont réels (unicité de la forme algébrique, R1)."
+            note: "Identification des parties réelle et imaginaire, licite car √x et √y sont réels (unicité de la forme algébrique, chapitre 2)."
           - math: '(x,y) = (4,1)\quad\text{(seul couple possible)}'
             note: "Condition NÉCESSAIRE seulement : la vérification reste à faire, c'est la question 2."
       - id: q2
@@ -1619,7 +1619,7 @@ entries:
 
           Montrer que : $p = \dfrac{bc}{a}$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** « $(AP)$ parallèle à $(BC)$ » est une information sur des **directions**, et une direction se lit sur un rapport d'affixes de vecteurs : $\dfrac{p-a}{c-b}$ est le rapport de l'affixe de $\vec{AP}$ à celle de $\vec{BC}$. Deux directions parallèles $\iff$ ce rapport est **réel** — c'est la lecture du rung R6, ici entre deux vecteurs qui ne partent pas du même point.
+          **Ce qu'on cherche et pourquoi ce geste.** « $(AP)$ parallèle à $(BC)$ » est une information sur des **directions**, et une direction se lit sur un rapport d'affixes de vecteurs : $\dfrac{p-a}{c-b}$ est le rapport de l'affixe de $\vec{AP}$ à celle de $\vec{BC}$. Deux directions parallèles $\iff$ ce rapport est **réel** — c'est la lecture du chapitre 7, ici entre deux vecteurs qui ne partent pas du même point.
 
           Reste à rendre ce « réel » calculable. Le chapitre 1 le fait en une ligne : un nombre est réel si et seulement s'il est **égal à son propre conjugué**. Et c'est là que la question 1 sert : $a$, $b$, $c$, $p$ sont tous sur le cercle unité, donc conjuguer, pour eux, c'est **prendre l'inverse**. Conjuguer le rapport revient donc à remplacer chaque lettre par son inverse — un calcul purement algébrique.
 
@@ -1640,7 +1640,7 @@ entries:
           **Le piège à éviter.** Simplifier par $\dfrac{p-a}{c-b}$ sans un mot. C'est une division par une quantité dont il faut dire pourquoi elle n'est pas nulle — et la raison n'est pas dans les hypothèses « $A$, $B$, $C$ deux à deux distincts », elle est dans le mot « **coupe** » de l'énoncé, qui donne $P \neq A$. *(À la marge, pour la curiosité : si $a^2 = bc$, la parallèle à $(BC)$ menée par $A$ est tangente au cercle en $A$ et ne le « coupe » plus qu'en un point — la formule $p = \frac{bc}{a}$ donne alors $p = a$, ce qui reste cohérent, mais on sort du cadre décrit par l'énoncé.)*
         steps:
           - math: '(AP)\ \text{parallèle à}\ (BC) \iff \dfrac{p-a}{c-b} \in \mathbb{R} \iff \dfrac{p-a}{c-b} = \overline{\left(\dfrac{p-a}{c-b}\right)}'
-            note: "Rapport de deux affixes de vecteurs réel ⟺ directions parallèles (comme au rung R6) ; et réel ⟺ égal à son conjugué (chapitre 1, R3)."
+            note: "Rapport de deux affixes de vecteurs réel ⟺ directions parallèles (comme au chapitre 7) ; et réel ⟺ égal à son conjugué (chapitre 1, chapitre 4)."
           - math: 'a,b,c,p \in (U) \implies \overline{a} = \dfrac1a,\ \overline{b} = \dfrac1b,\ \overline{c} = \dfrac1c,\ \overline{p} = \dfrac1p'
             note: "Question 1, appliquée aux quatre affixes : conjuguer, sur le cercle unité, c'est inverser."
           - math: '\overline{\left(\dfrac{p-a}{c-b}\right)} = \dfrac{\dfrac1p-\dfrac1a}{\dfrac1c-\dfrac1b} = \dfrac{(a-p)\,bc}{ap\,(b-c)} = \dfrac{p-a}{c-b}\cdot\dfrac{bc}{ap}'
@@ -1653,7 +1653,7 @@ entries:
         stem: |-
           **(0,5 pt)** La droite passant par $A$ et perpendiculaire à $(BC)$ coupe le cercle $(U)$ au point $Q(q)$. Montrer que : $q = -p$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** C'est exactement la question précédente, avec un seul mot changé — « parallèle » devient « perpendiculaire ». Sur le rapport $\dfrac{q-a}{c-b}$, cela change une seule chose (rung R6) : au lieu d'être **réel**, il est **imaginaire pur**. Et le chapitre 1 traduit « imaginaire pur » aussi simplement que « réel » : $w$ est imaginaire pur $\iff w = -\overline{w}$. Tout le calcul de la question 2-a) se recopie, avec un signe moins.
+          **Ce qu'on cherche et pourquoi ce geste.** C'est exactement la question précédente, avec un seul mot changé — « parallèle » devient « perpendiculaire ». Sur le rapport $\dfrac{q-a}{c-b}$, cela change une seule chose (chapitre 7) : au lieu d'être **réel**, il est **imaginaire pur**. Et le chapitre 1 traduit « imaginaire pur » aussi simplement que « réel » : $w$ est imaginaire pur $\iff w = -\overline{w}$. Tout le calcul de la question 2-a) se recopie, avec un signe moins.
 
           Le conjugué se calcule à l'identique (les quatre affixes sont toujours sur le cercle unité) :
 
@@ -1672,7 +1672,7 @@ entries:
           **Le piège à éviter.** Traduire « perpendiculaire » par $\arg = \dfrac{\pi}{2}$ et se croire obligé de choisir un signe. L'angle vaut $\pm\dfrac{\pi}{2}$ selon l'orientation, et c'est précisément pour cela qu'on écrit la condition sous la forme insensible au signe « le rapport est imaginaire pur », c'est-à-dire $w = -\overline{w}$. Choisir $+\dfrac{\pi}{2}$ arbitrairement, c'est ajouter une hypothèse que l'énoncé ne donne pas.
         steps:
           - math: '(AQ) \perp (BC) \iff \dfrac{q-a}{c-b}\ \text{imaginaire pur} \iff \dfrac{q-a}{c-b} = -\,\overline{\left(\dfrac{q-a}{c-b}\right)}'
-            note: "Rung R6 : rapport imaginaire pur ⟺ directions perpendiculaires ; et imaginaire pur ⟺ opposé de son conjugué (chapitre 1)."
+            note: "Chapitre R6 : rapport imaginaire pur ⟺ directions perpendiculaires ; et imaginaire pur ⟺ opposé de son conjugué (chapitre 1)."
           - math: '\overline{\left(\dfrac{q-a}{c-b}\right)} = \dfrac{q-a}{c-b}\cdot\dfrac{bc}{aq}'
             note: "Même calcul qu'à la question 2-a, avec q à la place de p."
           - math: 'Q \neq A \implies \dfrac{q-a}{c-b} \neq 0 \implies 1 = -\dfrac{bc}{aq} \implies aq = -bc'
@@ -1689,7 +1689,7 @@ entries:
 
           $$r = \frac{a\,b}{c}$$
 
-          Ensuite, la perpendicularité : $(PR) \perp (OB)$ se lit sur le rapport des affixes de $\vec{RP}$ (soit $p-r$) et de $\vec{OB}$ (soit $b-0=b$). Il faut donc montrer que $\dfrac{p-r}{b}$ est un imaginaire pur non nul (rung R6).
+          Ensuite, la perpendicularité : $(PR) \perp (OB)$ se lit sur le rapport des affixes de $\vec{RP}$ (soit $p-r$) et de $\vec{OB}$ (soit $b-0=b$). Il faut donc montrer que $\dfrac{p-r}{b}$ est un imaginaire pur non nul (chapitre 7).
 
           **Le calcul, et il est court.** On factorise $b$ :
 
@@ -1712,11 +1712,11 @@ entries:
           - math: 'p-r = \dfrac{bc}{a}-\dfrac{ab}{c} = b\left(\dfrac{c}{a}-\dfrac{a}{c}\right) \implies \dfrac{p-r}{b} = \dfrac{c}{a}-\dfrac{a}{c}'
             note: "On factorise par b : l'affixe de OB disparaît du problème."
           - math: 'w = \dfrac{c}{a},\ |w| = 1 \implies \dfrac{a}{c} = \dfrac{1}{w} = \overline{w} \implies \dfrac{p-r}{b} = w-\overline{w} = 2i\operatorname{Im}(w)'
-            note: "Question 1 une troisième fois ; z − z̄ est toujours un imaginaire pur (chapitre 1, R3)."
+            note: "Question 1 une troisième fois ; z − z̄ est toujours un imaginaire pur (chapitre 1, chapitre 4)."
           - math: 'w-\overline{w} = 0 \iff w \in \mathbb{R} \iff w = \pm1 \iff c = a\ (\text{exclu})\ \text{ou}\ c = -a'
             note: "Le cas nul doit être écarté : zéro ne code aucune direction."
           - math: 'a \neq -c \implies \dfrac{p-r}{b} = \dfrac{\text{aff}\left(\vec{RP}\right)}{\text{aff}\left(\vec{OB}\right)}\ \text{imaginaire pur non nul} \implies (PR) \perp (OB)'
-            note: "Rung R6 : rapport imaginaire pur non nul ⟹ directions perpendiculaires. Si a = −c alors p = r = −b et la droite (PR) n'existe pas."
+            note: "Chapitre R6 : rapport imaginaire pur non nul ⟹ directions perpendiculaires. Si a = −c alors p = r = −b et la droite (PR) n'existe pas."
 
   # ── bk-2025-n-x2 — 2025 N, Exercice 2 : équation à paramètre α, perpendicularités, cocyclicité ──
   - id: bk-2025-n-x2
@@ -1758,7 +1758,7 @@ entries:
 
       $$(E_\alpha)\ :\ z^2 - 2^\alpha e^{i\alpha}(1+2i)z + i\,2^{2\alpha+1}e^{i2\alpha} = 0$$
 
-      La **partie I** en calcule le discriminant (déjà un carré parfait) puis les deux solutions $a$ et $b$, et vérifie que leur rapport est un imaginaire pur — indépendant de $\alpha$. La **partie II** construit, à partir de $H$ tel que $\dfrac{1}{h}=\dfrac{1}{a}+\dfrac{1}{b}$, puis des milieux $I$ et $J$, une suite de perpendicularités et d'alignements — jusqu'à la cocyclicité de quatre points, obtenue ici par le théorème de Thalès plutôt qu'un nouvel outil. Le fil conducteur reste, comme presque partout dans ce chapitre, le rapport de deux affixes (rung R6).
+      La **partie I** en calcule le discriminant (déjà un carré parfait) puis les deux solutions $a$ et $b$, et vérifie que leur rapport est un imaginaire pur — indépendant de $\alpha$. La **partie II** construit, à partir de $H$ tel que $\dfrac{1}{h}=\dfrac{1}{a}+\dfrac{1}{b}$, puis des milieux $I$ et $J$, une suite de perpendicularités et d'alignements — jusqu'à la cocyclicité de quatre points, obtenue ici par le théorème de Thalès plutôt qu'un nouvel outil. Le fil conducteur reste, comme presque partout dans ce chapitre, le rapport de deux affixes (chapitre 7).
     questions:
       - id: q1a
         stem: |-
@@ -1787,17 +1787,17 @@ entries:
           - math: '\text{signe}+:\ (1+2i)+(1-2i)=2 \implies z=2^\alpha e^{i\alpha}; \qquad \text{signe}-:\ (1+2i)-(1-2i)=4i \implies z = 2^{\alpha+1}\,i\,e^{i\alpha}'
             note: "Les deux racines, avant tri par module."
           - math: '2^{\alpha+1}\,i\,e^{i\alpha} = 2^{\alpha+1}\,e^{i\left(\alpha+\frac{\pi}{2}\right)}'
-            note: "On absorbe i=e^{iπ/2} dans l'argument (règle du produit, R2)."
+            note: "On absorbe i=e^{iπ/2} dans l'argument (règle du produit, chapitre 3)."
           - math: '\left|2^\alpha e^{i\alpha}\right| = 2^\alpha < 2^{\alpha+1} = \left|2^{\alpha+1}e^{i(\alpha+\pi/2)}\right| \implies a = 2^\alpha e^{i\alpha}, \quad b = 2^{\alpha+1}\,e^{i\left(\alpha+\frac{\pi}{2}\right)}'
             note: "2^α < 2^{α+1} pour tout α réel : la plus petite en module est a."
       - id: q2
         stem: |-
           **(0,25 pt)** Vérifier que $\dfrac{b}{a}$ est un imaginaire pur.
         reasoning: |-
-          Le rapport $b/a$ est direct : les deux formes exponentielles de la question précédente se divisent par la règle du quotient (R3), et le module $2^\alpha$ se simplifie exactement.
+          Le rapport $b/a$ est direct : les deux formes exponentielles de la question précédente se divisent par la règle du quotient (chapitre 4), et le module $2^\alpha$ se simplifie exactement.
         steps:
           - math: '\dfrac{b}{a} = \dfrac{2^{\alpha+1}\,e^{i(\alpha+\pi/2)}}{2^\alpha\,e^{i\alpha}} = 2\,e^{i\pi/2}'
-            note: "Règle du quotient (R3) : modules divisés, arguments soustraits."
+            note: "Règle du quotient (chapitre 4) : modules divisés, arguments soustraits."
           - math: '2\,e^{i\pi/2} = 2i'
             note: "e^{iπ/2}=i."
           - math: '\dfrac{b}{a} = 2i\ \text{est un imaginaire pur (non nul), et ne dépend même pas de}\ \alpha'
@@ -1807,7 +1807,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que : $\dfrac{h}{b-a} = -\left(\dfrac{\lambda}{\lambda^2+1}\right)i$ puis en déduire que les droites $(OH)$ et $(AB)$ sont perpendiculaires.
         reasoning: |-
-          On calcule d'abord $h$ : $\dfrac1h=\dfrac1a+\dfrac1b=\dfrac{a+b}{ab}$, donc $h=\dfrac{ab}{a+b}$. Le rapport $\dfrac{h}{b-a}$ se réécrit alors en fonction du seul quotient $\dfrac{b}{a}=\lambda i$, en factorisant $a$ au numérateur et au dénominateur (méthode déjà vue : tout ramener au rapport connu). Une fois ce rapport identifié comme imaginaire pur, la perpendicularité de $(OH)$ et $(AB)$ suit du même principe que le rung R6 : le rapport de deux affixes de vecteurs — ici $\vec{OH}$ (affixe $h-0=h$) et $\vec{AB}$ (affixe $b-a$) — encode l'angle entre elles par son argument.
+          On calcule d'abord $h$ : $\dfrac1h=\dfrac1a+\dfrac1b=\dfrac{a+b}{ab}$, donc $h=\dfrac{ab}{a+b}$. Le rapport $\dfrac{h}{b-a}$ se réécrit alors en fonction du seul quotient $\dfrac{b}{a}=\lambda i$, en factorisant $a$ au numérateur et au dénominateur (méthode déjà vue : tout ramener au rapport connu). Une fois ce rapport identifié comme imaginaire pur, la perpendicularité de $(OH)$ et $(AB)$ suit du même principe que le chapitre 7 : le rapport de deux affixes de vecteurs — ici $\vec{OH}$ (affixe $h-0=h$) et $\vec{AB}$ (affixe $b-a$) — encode l'angle entre elles par son argument.
         steps:
           - math: '\dfrac1h=\dfrac1a+\dfrac1b=\dfrac{a+b}{ab} \implies h=\dfrac{ab}{a+b}'
             note: "On inverse la relation donnée."
@@ -1818,12 +1818,12 @@ entries:
           - math: '\dfrac{h}{b-a} = \dfrac{\lambda i\,a^2}{-a^2(\lambda^2+1)} = -\left(\dfrac{\lambda}{\lambda^2+1}\right)i'
             note: "Le facteur a² se simplifie (a≠0, racine de (E_α))."
           - math: '\dfrac{h}{b-a} = \dfrac{\text{aff}(\vec{OH})}{\text{aff}(\vec{AB})}\ \text{imaginaire pur (}\lambda\neq0\text{)} \implies (OH)\perp(AB)'
-            note: "Comme au rung R6 : un rapport de deux affixes de vecteurs imaginaire pur signale des directions perpendiculaires."
+            note: "Comme au chapitre 7 : un rapport de deux affixes de vecteurs imaginaire pur signale des directions perpendiculaires."
       - id: q3b
         stem: |-
           **(0,5 pt)** Montrer que : $\dfrac{h-a}{b-a} = \dfrac{1}{\lambda^2+1}$ puis en déduire que les points $H$, $A$ et $B$ sont alignés.
         reasoning: |-
-          Même stratégie : on exprime $h-a$ en fonction de $a$ et $b$, puis on divise par $b-a$ en réutilisant $b=\lambda i\,a$ et $b^2-a^2=-a^2(\lambda^2+1)$ déjà calculés à la question précédente. Le résultat est réel : par le rung R6, cela signale l'alignement de $H$, $A$, $B$.
+          Même stratégie : on exprime $h-a$ en fonction de $a$ et $b$, puis on divise par $b-a$ en réutilisant $b=\lambda i\,a$ et $b^2-a^2=-a^2(\lambda^2+1)$ déjà calculés à la question précédente. Le résultat est réel : par le chapitre 7, cela signale l'alignement de $H$, $A$, $B$.
         steps:
           - math: 'h-a = \dfrac{ab}{a+b}-a = \dfrac{ab-a(a+b)}{a+b} = \dfrac{-a^2}{a+b}'
             note: "On réutilise h=ab/(a+b) (question précédente)."
@@ -1832,7 +1832,7 @@ entries:
           - math: '\dfrac{h-a}{b-a} = \dfrac{-a^2}{-a^2(\lambda^2+1)} = \dfrac{1}{\lambda^2+1}'
             note: "On réutilise b²−a²=−a²(λ²+1) (question précédente) ; le facteur a² se simplifie."
           - math: '\dfrac{1}{\lambda^2+1}\in\mathbb{R} \implies \dfrac{h-a}{b-a}\in\mathbb{R} \implies H,\,A,\,B\ \text{alignés}'
-            note: "Rung R6 : rapport (des affixes de AH et AB) réel ⟺ alignement."
+            note: "Chapitre R6 : rapport (des affixes de AH et AB) réel ⟺ alignement."
       - id: q4a
         part: "Soient $I(m)$ le milieu du segment $[OH]$ et $J(n)$ le milieu du segment $[HB]$"
         stem: |-
@@ -1852,19 +1852,19 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que les droites $(OJ)$ et $(AI)$ sont perpendiculaires et que $OJ = |\lambda|\,AI$.
         reasoning: |-
-          Même lecture qu'à la question 3a, cette fois sur le rapport $\dfrac{n}{m-a} = \dfrac{\text{aff}(\vec{OJ})}{\text{aff}(\vec{AI})}$ : imaginaire pur, donc les directions $(OJ)$ et $(AI)$ sont perpendiculaires (rung R6), et son module $|\lambda|$ donne le rapport des longueurs.
+          Même lecture qu'à la question 3a, cette fois sur le rapport $\dfrac{n}{m-a} = \dfrac{\text{aff}(\vec{OJ})}{\text{aff}(\vec{AI})}$ : imaginaire pur, donc les directions $(OJ)$ et $(AI)$ sont perpendiculaires (chapitre 7), et son module $|\lambda|$ donne le rapport des longueurs.
         steps:
           - math: '\dfrac{n}{m-a} = \dfrac{\text{aff}(\vec{OJ})}{\text{aff}(\vec{AI})} = -\lambda i\ \text{imaginaire pur} \implies (OJ)\perp(AI)'
-            note: "Rung R6 : rapport imaginaire pur ⟹ directions perpendiculaires."
+            note: "Chapitre R6 : rapport imaginaire pur ⟹ directions perpendiculaires."
           - math: '\left|\dfrac{n}{m-a}\right| = |-\lambda i| = |\lambda| = \dfrac{OJ}{AI} \implies OJ = |\lambda|\,AI'
-            note: "Rung R6 : le module donne le rapport des longueurs."
+            note: "Chapitre R6 : le module donne le rapport des longueurs."
       - id: q4c
         stem: |-
           **(0,25 pt)** Soit $K$ le point d'intersection des droites $(OJ)$ et $(AI)$. Montrer que les points $K$, $I$, $H$ et $J$ sont cocycliques.
         reasoning: |-
           $K$ est, par construction, le point d'intersection des droites $(AI)$ et $(OJ)$ : donc $K$, $A$, $I$ sont alignés (même droite $(AI)$) et $K$, $O$, $J$ sont alignés (même droite $(OJ)$). Comme ces deux droites sont perpendiculaires (question précédente), l'angle $\widehat{IKJ}$ est droit — $K$ voit donc le segment $[IJ]$ sous un angle droit, ce qui, par le théorème de Thalès (le cercle de diamètre $[IJ]$ est exactement l'ensemble des points d'où l'on voit $[IJ]$ sous un angle droit), place $K$ sur le cercle de diamètre $[IJ]$.
 
-          Il reste à montrer que $H$ y est aussi. Le rapport $\dfrac{m-h}{n-h}$ (rung R6, au sommet $H$) se calcule en réutilisant $m=\dfrac{h}{2}$, $n=\dfrac{h+b}{2}$ et $h=\dfrac{ab}{a+b}$ : tout se simplifie en $\dfrac{i}{\lambda}$, un imaginaire pur. L'angle $\widehat{IHJ}$ est donc, lui aussi, droit — $H$ est, par le même théorème de Thalès, sur le même cercle de diamètre $[IJ]$.
+          Il reste à montrer que $H$ y est aussi. Le rapport $\dfrac{m-h}{n-h}$ (chapitre 7, au sommet $H$) se calcule en réutilisant $m=\dfrac{h}{2}$, $n=\dfrac{h+b}{2}$ et $h=\dfrac{ab}{a+b}$ : tout se simplifie en $\dfrac{i}{\lambda}$, un imaginaire pur. L'angle $\widehat{IHJ}$ est donc, lui aussi, droit — $H$ est, par le même théorème de Thalès, sur le même cercle de diamètre $[IJ]$.
 
           $H$ et $K$ sont donc tous deux sur le cercle de diamètre $[IJ]$ : les quatre points $K$, $I$, $H$, $J$ sont cocycliques (sur ce cercle).
         steps:
@@ -1886,14 +1886,14 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que les droites $(IJ)$ et $(OA)$ sont perpendiculaires.
         reasoning: |-
-          On compare directement les affixes des vecteurs $\vec{IJ}$ (affixe $n-m$) et $\vec{OA}$ (affixe $a$), par le même principe que partout dans cette partie (rung R6, rapport de deux affixes de vecteurs). Le calcul de $n-m$ est immédiat à partir des expressions déjà connues de $m$ et $n$.
+          On compare directement les affixes des vecteurs $\vec{IJ}$ (affixe $n-m$) et $\vec{OA}$ (affixe $a$), par le même principe que partout dans cette partie (chapitre 7, rapport de deux affixes de vecteurs). Le calcul de $n-m$ est immédiat à partir des expressions déjà connues de $m$ et $n$.
         steps:
           - math: 'n-m = \dfrac{h+b}{2}-\dfrac{h}{2} = \dfrac{b}{2}'
             note: "Différence des deux milieux ; h se simplifie entièrement."
           - math: '\dfrac{n-m}{a} = \dfrac{b/2}{a} = \dfrac12\times\dfrac{b}{a} = \dfrac{\lambda}{2}\,i'
             note: "b/a=λi (notation de la partie II)."
           - math: '\dfrac{n-m}{a} = \dfrac{\text{aff}(\vec{IJ})}{\text{aff}(\vec{OA})}\ \text{imaginaire pur (}\lambda\neq0\text{)} \implies (IJ)\perp(OA)'
-            note: "Rung R6 : rapport imaginaire pur ⟹ perpendicularité des directions."
+            note: "Chapitre R6 : rapport imaginaire pur ⟹ perpendicularité des directions."
 
   # ── bk-2017-n-x2 — 2017 N, Exercice 2 : équation à paramètre m non nul, rotation de centre Ω, cercle de diamètre [AB], cocyclicité ──
   - id: bk-2017-n-x2
@@ -1929,7 +1929,7 @@ entries:
 
       Soit $m$ un nombre complexe **non nul**.
 
-      La **partie 1** résout une équation du second degré dont un coefficient dépend de $m$ : le discriminant se révèle être un carré parfait, $(2im)^2$, ce qui donne directement les deux racines. La **partie 2** place ces mêmes racines dans le plan complexe et enchaîne une rotation (rung R5), un rapport de deux affixes qui code à la fois alignement et angle droit (rung R6, l'outil central du chapitre), puis une cocyclicité de quatre points construite à partir de deux cercles de Thalès imbriqués.
+      La **partie 1** résout une équation du second degré dont un coefficient dépend de $m$ : le discriminant se révèle être un carré parfait, $(2im)^2$, ce qui donne directement les deux racines. La **partie 2** place ces mêmes racines dans le plan complexe et enchaîne une rotation (chapitre 6), un rapport de deux affixes qui code à la fois alignement et angle droit (chapitre 7, l'outil central du chapitre), puis une cocyclicité de quatre points construite à partir de deux cercles de Thalès imbriqués.
     questions:
       - id: q1
         part: "Partie 1 — L'équation $(E)\\ :\\ 2z^2 - 2(m+1+i)z + m^2 + (1+i)m + i = 0$"
@@ -1975,16 +1975,16 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $M_1$ est l'image de $M_2$ par la rotation de centre le point $\Omega$ d'affixe $\omega = \dfrac{1+i}{2}$ et d'angle de mesure $\dfrac{\pi}{2}$
         reasoning: |-
-          La relation $z_1=iz_2+1$ (question précédente) est une application affine $z\mapsto iz+1$ envoyant $M_2$ sur $M_1$. Le multiplicateur $i$ a pour module $1$ et pour argument $\dfrac{\pi}{2}$ (rung R5) : c'est le signe d'une rotation d'angle $\dfrac{\pi}{2}$, de centre le point fixe de cette application, solution de $\omega=i\omega+1$.
+          La relation $z_1=iz_2+1$ (question précédente) est une application affine $z\mapsto iz+1$ envoyant $M_2$ sur $M_1$. Le multiplicateur $i$ a pour module $1$ et pour argument $\dfrac{\pi}{2}$ (chapitre 6) : c'est le signe d'une rotation d'angle $\dfrac{\pi}{2}$, de centre le point fixe de cette application, solution de $\omega=i\omega+1$.
         steps:
           - math: '\omega = i\omega+1 \implies \omega(1-i)=1 \implies \omega = \dfrac{1}{1-i} = \dfrac{1+i}{(1-i)(1+i)} = \dfrac{1+i}{2}'
             note: "Point fixe de z ↦ iz+1 : on resout omega = i.omega + 1 (methode du conjugue)."
           - math: 'z_1-\omega = i(z_2-\omega)'
-            note: "Forme decentree de la rotation (rung R5) : z1 − omega = i (z2 − omega), equivalente a z1 = i z2 + (1 − i).omega = i z2 + 1."
+            note: "Forme decentree de la rotation (chapitre 6) : z1 − omega = i (z2 − omega), equivalente a z1 = i z2 + (1 − i).omega = i z2 + 1."
           - math: 'M_1\ \text{est l''image de}\ M_2\ \text{par la rotation de centre}\ \Omega\left(\dfrac{1+i}{2}\right)\ \text{et d''angle}\ \dfrac{\pi}{2}'
-            note: "Multiplicateur i : module 1, argument π/2 (rung R5)."
+            note: "Multiplicateur i : module 1, argument π/2 (chapitre 6)."
       - id: q2a2
-        part: "Un rapport de deux affixes, l'outil du chapitre (rung R6)"
+        part: "Un rapport de deux affixes, l'outil du chapitre (chapitre 7)"
         stem: |-
           **(0,5 pt)** Vérifier que : $\dfrac{z_2-m}{z_1-m} = i\,\dfrac{m-1}{m-i}$
         reasoning: |-
@@ -2002,27 +2002,27 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que si les points $M$, $M_1$ et $M_2$ sont alignés alors $M$ appartient au cercle $(\Gamma)$ de diamètre $[AB]$
         reasoning: |-
-          $M,M_1,M_2$ alignés signifie (rung R6) que $\dfrac{z_2-m}{z_1-m}$ est **réel**. D'après la question précédente, cela équivaut à $i\,\dfrac{m-1}{m-i}\in\mathbb{R}$, c'est-à-dire $\dfrac{m-1}{m-i}\in i\mathbb{R}$ (diviser un réel par $i$ donne un imaginaire pur). En passant à l'inverse — l'inverse d'un imaginaire pur non nul reste un imaginaire pur —, $\dfrac{m-i}{m-1}\in i\mathbb{R}$, soit encore $\dfrac{i-m}{1-m}\in i\mathbb{R}$ (même rapport, numérateur et dénominateur changés de signe ensemble).
+          $M,M_1,M_2$ alignés signifie (chapitre 7) que $\dfrac{z_2-m}{z_1-m}$ est **réel**. D'après la question précédente, cela équivaut à $i\,\dfrac{m-1}{m-i}\in\mathbb{R}$, c'est-à-dire $\dfrac{m-1}{m-i}\in i\mathbb{R}$ (diviser un réel par $i$ donne un imaginaire pur). En passant à l'inverse — l'inverse d'un imaginaire pur non nul reste un imaginaire pur —, $\dfrac{m-i}{m-1}\in i\mathbb{R}$, soit encore $\dfrac{i-m}{1-m}\in i\mathbb{R}$ (même rapport, numérateur et dénominateur changés de signe ensemble).
 
-          Or $\dfrac{i-m}{1-m}=\dfrac{b-m}{a-m}$ est, par le rung R6, le rapport qui code l'angle $\big(\vec{MA},\vec{MB}\big)$ : imaginaire pur signifie que cet angle est droit, c'est-à-dire que $M$ voit le segment $[AB]$ sous un angle droit — exactement la caractérisation (Thalès) du cercle $(\Gamma)$ de diamètre $[AB]$.
+          Or $\dfrac{i-m}{1-m}=\dfrac{b-m}{a-m}$ est, par le chapitre 7, le rapport qui code l'angle $\big(\vec{MA},\vec{MB}\big)$ : imaginaire pur signifie que cet angle est droit, c'est-à-dire que $M$ voit le segment $[AB]$ sous un angle droit — exactement la caractérisation (Thalès) du cercle $(\Gamma)$ de diamètre $[AB]$.
         steps:
           - math: 'M,M_1,M_2\ \text{alignes} \iff \dfrac{z_2-m}{z_1-m}\in\mathbb{R} \iff i\,\dfrac{m-1}{m-i}\in\mathbb{R}\ (\text{q2-a})'
-            note: "Rung R6 : rapport reel = alignement."
+            note: "Chapitre R6 : rapport reel = alignement."
           - math: 'i\,\dfrac{m-1}{m-i}\in\mathbb{R} \iff \dfrac{m-1}{m-i}\in i\mathbb{R} \iff \dfrac{m-i}{m-1}\in i\mathbb{R}'
             note: "Diviser un reel par i donne un imaginaire pur ; l'inverse d'un imaginaire pur non nul reste imaginaire pur."
           - math: '\dfrac{m-i}{m-1} = \dfrac{i-m}{1-m} = \dfrac{b-m}{a-m}\ (\text{affixes de}\ B(i)\ \text{et}\ A(1))'
             note: "Meme rapport, numerateur et denominateur changes de signe ensemble."
           - math: '\dfrac{b-m}{a-m}\in i\mathbb{R} \implies \widehat{\big(\vec{MA},\vec{MB}\big)} = \dfrac{\pi}{2} \implies M\in(\Gamma)\ \text{cercle de diametre}\ [AB]'
-            note: "Rung R6 : rapport imaginaire pur = angle droit ; Thales : M voit [AB] sous un angle droit ⟹ M sur le cercle de diametre [AB]."
+            note: "Chapitre R6 : rapport imaginaire pur = angle droit ; Thales : M voit [AB] sous un angle droit ⟹ M sur le cercle de diametre [AB]."
       - id: q2c2
         stem: |-
           **(0,75 pt)** Déterminer l'ensemble des points $M$ pour que les points $\Omega$, $M$, $M_1$ et $M_2$ soient cocycliques (remarquer que : $\dfrac{z_1-\omega}{z_2-\omega} = i$)
         reasoning: |-
-          L'indication donnée, $\dfrac{z_1-\omega}{z_2-\omega}=i$, n'est autre que la relation de rotation de la question 1-b) recopiée sous forme de rapport (rung R6) : $\Omega$ voit toujours le segment $[M_1M_2]$ sous un angle droit ($\arg=\dfrac{\pi}{2}$), avec $\Omega M_1=\Omega M_2$ (module $1$) — et ceci **pour tout $m$** du domaine, sans aucune condition supplémentaire. Par la réciproque du théorème de Thalès, $\Omega$ est donc toujours sur le cercle de diamètre $[M_1M_2]$.
+          L'indication donnée, $\dfrac{z_1-\omega}{z_2-\omega}=i$, n'est autre que la relation de rotation de la question 1-b) recopiée sous forme de rapport (chapitre 7) : $\Omega$ voit toujours le segment $[M_1M_2]$ sous un angle droit ($\arg=\dfrac{\pi}{2}$), avec $\Omega M_1=\Omega M_2$ (module $1$) — et ceci **pour tout $m$** du domaine, sans aucune condition supplémentaire. Par la réciproque du théorème de Thalès, $\Omega$ est donc toujours sur le cercle de diamètre $[M_1M_2]$.
 
           Comme trois points non alignés déterminent un unique cercle, ce cercle de diamètre $[M_1M_2]$ **est** le cercle passant par $M_1$, $M_2$, $\Omega$. Les quatre points $\Omega,M,M_1,M_2$ sont donc cocycliques exactement quand $M$ appartient, lui aussi, à ce même cercle — c'est-à-dire, toujours par Thalès, quand $M$ voit $[M_1M_2]$ sous un angle droit : $\dfrac{z_1-m}{z_2-m}\in i\mathbb{R}$.
 
-          On calcule ce rapport à partir de l'inverse de celui de la question 2-a) : $\dfrac{z_1-m}{z_2-m} = \dfrac{1}{i}\cdot\dfrac{m-i}{m-1} = -i\,\dfrac{m-i}{m-1}$. Ce produit est imaginaire pur exactement quand $\dfrac{m-i}{m-1}$ est **réel** — et $\dfrac{m-i}{m-1}=\dfrac{i-m}{1-m}$ est, par le rung R6, le rapport qui code l'alignement de $M$, $B$ et $A$. Donc : $\Omega,M,M_1,M_2$ cocycliques $\iff$ $M,A,B$ alignés $\iff$ $M\in(AB)$.
+          On calcule ce rapport à partir de l'inverse de celui de la question 2-a) : $\dfrac{z_1-m}{z_2-m} = \dfrac{1}{i}\cdot\dfrac{m-i}{m-1} = -i\,\dfrac{m-i}{m-1}$. Ce produit est imaginaire pur exactement quand $\dfrac{m-i}{m-1}$ est **réel** — et $\dfrac{m-i}{m-1}=\dfrac{i-m}{1-m}$ est, par le chapitre 7, le rapport qui code l'alignement de $M$, $B$ et $A$. Donc : $\Omega,M,M_1,M_2$ cocycliques $\iff$ $M,A,B$ alignés $\iff$ $M\in(AB)$.
 
           Reste un cas dégénéré à exclure : si $M=\Omega$, il n'y a plus que trois points distincts, pas quatre points cocycliques. Or $\Omega=\dfrac{1+i}{2}$ est justement le milieu de $[AB]$, donc un point de la droite $(AB)$ : il faut l'exclure. L'ensemble cherché est donc la droite $(AB)$ privée du point $\Omega$ (et, comme partout dans cette partie, du domaine déjà restreint $m\notin\{0,1,i\}$, deux points déjà situés sur cette droite).
         steps:

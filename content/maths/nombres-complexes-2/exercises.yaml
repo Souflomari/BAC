@@ -78,7 +78,7 @@ exercises:
         stem: |-
           **(0,5 pt)** Déterminer le module et un argument de $z_1 + z_2$.
         reasoning: |-
-          La somme se factorise : $z_1 + z_2 = (1+i)m + (1+i) = (1+i)(m+1)$. Le module d'un produit est le produit des modules, l'argument d'un produit est la somme des arguments (R2) — on traite donc les deux facteurs séparément.
+          La somme se factorise : $z_1 + z_2 = (1+i)m + (1+i) = (1+i)(m+1)$. Le module d'un produit est le produit des modules, l'argument d'un produit est la somme des arguments (chapitre 3) — on traite donc les deux facteurs séparément.
 
           Pour $1+i$ : module $\sqrt2$, argument $\dfrac{\pi}{4}$. Pour $m+1 = e^{i\theta}+1$, on utilise la **factorisation par l'angle moitié** : mettre $e^{i\theta/2}$ en facteur fait apparaître $e^{i\theta/2}+e^{-i\theta/2} = 2\cos\dfrac{\theta}{2}$. Comme $0<\theta<\pi$, on a $0<\dfrac{\theta}{2}<\dfrac{\pi}{2}$, donc $\cos\dfrac{\theta}{2} > 0$ : c'est bien un module (positif), et $\dfrac{\theta}{2}$ est bien l'argument.
         steps:
@@ -87,7 +87,7 @@ exercises:
           - math: 'e^{i\theta}+1 = e^{i\theta/2}\big(e^{i\theta/2}+e^{-i\theta/2}\big) = 2\cos\tfrac{\theta}{2}\,e^{i\theta/2}'
             note: "Angle moitié : e^{iθ/2}+e^{−iθ/2} = 2cos(θ/2), positif car 0 < θ/2 < π/2."
           - math: '1+i = \sqrt2\,e^{i\pi/4} \implies z_1+z_2 = 2\sqrt2\,\cos\tfrac{\theta}{2}\; e^{i\left(\frac{\pi}{4}+\frac{\theta}{2}\right)}'
-            note: "Produit : modules × modules, arguments + arguments (R2)."
+            note: "Produit : modules × modules, arguments + arguments (chapitre 3)."
           - math: '|z_1+z_2| = 2\sqrt2\,\cos\tfrac{\theta}{2}, \qquad \arg(z_1+z_2) = \frac{\pi}{4} + \frac{\theta}{2}\ [2\pi]'
             note: "Module positif (cos(θ/2) > 0) ; argument π/4 + θ/2."
       - id: q2b
@@ -113,12 +113,12 @@ exercises:
 
           **(0,5 pt)** Montrer que l'affixe du point $\Omega$ est $\omega = \dfrac{(1-i)(1-m)}{2}$.
         reasoning: |-
-          Deux outils, chacun déjà construit. **La rotation de centre $O$ et d'angle $\dfrac{\pi}{2}$** s'écrit $z \mapsto e^{i\pi/2}z = iz$ (R5). Donc l'affixe de $D$ est $d = i\,b$.
+          Deux outils, chacun déjà construit. **La rotation de centre $O$ et d'angle $\dfrac{\pi}{2}$** s'écrit $z \mapsto e^{i\pi/2}z = iz$ (chapitre 6). Donc l'affixe de $D$ est $d = i\,b$.
 
           **Le milieu** de $[CD]$ a pour affixe la moyenne des affixes : $\omega = \dfrac{c+d}{2}$. Il ne reste qu'à simplifier, en repérant que $i(1+i) = i - 1 = -(1-i)$.
         steps:
           - math: 'd = e^{i\pi/2}\,b = i\,b = i(1+i)m'
-            note: "Rotation de centre O et d'angle π/2 : z ↦ iz (R5)."
+            note: "Rotation de centre O et d'angle π/2 : z ↦ iz (chapitre 6)."
           - math: 'i(1+i) = i + i^2 = i - 1 = -(1-i) \implies d = -(1-i)m'
             note: "Simplification de i(1+i)."
           - math: '\omega = \frac{c+d}{2} = \frac{(1-i) - (1-i)m}{2} = \frac{(1-i)(1-m)}{2}'
@@ -141,7 +141,7 @@ exercises:
         stem: |-
           **(0,5 pt)** En déduire que $(O\Omega) \perp (AB)$ et que $AB = 2\,O\Omega$.
         reasoning: |-
-          Le nombre $\dfrac{b-a}{\omega} = \dfrac{b-a}{\omega - 0}$ est le rapport de l'affixe de $\vec{AB}$ à celle de $\vec{O\Omega}$. Comme tout rapport de deux affixes de vecteurs, il **encode deux informations** (R6) : son **module** est le rapport des longueurs $\dfrac{AB}{O\Omega}$, et son **argument** est l'angle $(\vec{O\Omega}, \vec{AB})$.
+          Le nombre $\dfrac{b-a}{\omega} = \dfrac{b-a}{\omega - 0}$ est le rapport de l'affixe de $\vec{AB}$ à celle de $\vec{O\Omega}$. Comme tout rapport de deux affixes de vecteurs, il **encode deux informations** (chapitre 7) : son **module** est le rapport des longueurs $\dfrac{AB}{O\Omega}$, et son **argument** est l'angle $(\vec{O\Omega}, \vec{AB})$.
 
           On lit donc directement sur $-2i$ : module $2$, argument $-\dfrac{\pi}{2}$. Le module donne $AB = 2\,O\Omega$ ; l'argument, égal à $-\dfrac{\pi}{2}$, dit que les deux directions sont orthogonales, donc $(O\Omega) \perp (AB)$.
         steps:
@@ -156,7 +156,7 @@ exercises:
         stem: |-
           **(0,5 pt)** Montrer que $\dfrac{h-a}{b-a}$ est un réel et que $\dfrac{h}{b-a}$ est un imaginaire pur.
         reasoning: |-
-          Deux appartenances, deux traductions par un rapport de complexes (R6).
+          Deux appartenances, deux traductions par un rapport de complexes (chapitre 7).
 
           $H \in (AB)$ signifie que $A$, $H$, $B$ sont alignés : le vecteur $\vec{AH}$ (affixe $h-a$) est colinéaire à $\vec{AB}$ (affixe $b-a$), donc $\dfrac{h-a}{b-a}$ est **réel**.
 

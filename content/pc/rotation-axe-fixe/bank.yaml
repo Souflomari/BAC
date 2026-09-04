@@ -111,9 +111,9 @@ entries:
         reasoning: |-
           On isole d'abord le solide $(S_1)$, en translation verticale : deux forces s'exercent sur lui, son poids $m_1\vec g$ et la tension $\vec T$ du fil. La deuxième loi de Newton, projetée sur l'axe ascendant $(O,\vec k)$, relie $a_{G_1}$ et $T$ dans une première équation.
 
-          On isole ensuite la poulie $(\mathcal{P})$, en rotation autour de $(\Delta)$. Deux moments s'exercent sur elle : le moment moteur $\mathcal{M}$, qui l'entraîne, et le moment de la tension du fil, appliquée tangentiellement sur la gorge à la distance $r$ de l'axe (R2) — cette tension freine la rotation qui soulève $(S_1)$. Le poids de la poulie et la réaction de l'axe s'appliquent sur $(\Delta)$ elle-même : bras de levier nul, donc moment nul (R2), et ils disparaissent du bilan. La relation fondamentale de la dynamique de rotation (R4) relie alors l'accélération angulaire de la poulie à cette même tension $T$ : une deuxième équation.
+          On isole ensuite la poulie $(\mathcal{P})$, en rotation autour de $(\Delta)$. Deux moments s'exercent sur elle : le moment moteur $\mathcal{M}$, qui l'entraîne, et le moment de la tension du fil, appliquée tangentiellement sur la gorge à la distance $r$ de l'axe (chapitre 3) — cette tension freine la rotation qui soulève $(S_1)$. Le poids de la poulie et la réaction de l'axe s'appliquent sur $(\Delta)$ elle-même : bras de levier nul, donc moment nul (chapitre 3), et ils disparaissent du bilan. La relation fondamentale de la dynamique de rotation (chapitre 5) relie alors l'accélération angulaire de la poulie à cette même tension $T$ : une deuxième équation.
 
-          Reste à relier les deux équations. Le fil est inextensible et ne glisse pas sur la gorge : un point du fil se déplace exactement comme le point de la poulie à la distance $r$ de l'axe, avec une vitesse $r$ fois la vitesse angulaire de la poulie (R1, $v = d\omega$) — et c'est aussi la vitesse de $(S_1)$. En dérivant une fois de plus (R4), l'accélération de $(S_1)$ et l'accélération angulaire de la poulie sont liées par ce même facteur $r$ : c'est la condition de non-glissement qui permet de combiner les trois relations pour éliminer $T$ et l'accélération angulaire, et ne garder que $a_{G_1}$.
+          Reste à relier les deux équations. Le fil est inextensible et ne glisse pas sur la gorge : un point du fil se déplace exactement comme le point de la poulie à la distance $r$ de l'axe, avec une vitesse $r$ fois la vitesse angulaire de la poulie (chapitre 2, $v = d\omega$) — et c'est aussi la vitesse de $(S_1)$. En dérivant une fois de plus (chapitre 5), l'accélération de $(S_1)$ et l'accélération angulaire de la poulie sont liées par ce même facteur $r$ : c'est la condition de non-glissement qui permet de combiner les trois relations pour éliminer $T$ et l'accélération angulaire, et ne garder que $a_{G_1}$.
         steps:
           - math: 'm_1\,a_{G_1} = T - m_1\,g'
             note: >-
@@ -235,15 +235,15 @@ entries:
         reasoning: |-
           On dérive deux fois l'équation horaire $\theta(t) = 20\,t^2$ : $\dot\theta = 40\,t$, puis $\ddot\theta = 40\ \text{rad}\cdot\text{s}^{-2}$ — une accélération angulaire constante.
 
-          Le câble est inextensible et ne glisse pas sur le cylindre — exactement comme le fil de l'exemple du manège (R1) : un point de sa surface, à la distance $r$ de l'axe, se déplace comme la charge $(C)$ qu'il tire. Sa vitesse vaut donc $r$ fois la vitesse angulaire du cylindre (R1, $v = d\,\omega$), et son accélération tangentielle vaut $r$ fois l'accélération angulaire (R4, $a_{tan} = d\,\ddot\theta$) — c'est aussi, par le lien rigide du câble, l'accélération $a_G$ de $G$. D'où $a_G = r\,\ddot\theta$.
+          Le câble est inextensible et ne glisse pas sur le cylindre — exactement comme le fil de l'exemple du manège (chapitre 2) : un point de sa surface, à la distance $r$ de l'axe, se déplace comme la charge $(C)$ qu'il tire. Sa vitesse vaut donc $r$ fois la vitesse angulaire du cylindre (chapitre 2, $v = d\,\omega$), et son accélération tangentielle vaut $r$ fois l'accélération angulaire (chapitre 5, $a_{tan} = d\,\ddot\theta$) — c'est aussi, par le lien rigide du câble, l'accélération $a_G$ de $G$. D'où $a_G = r\,\ddot\theta$.
         steps:
           - math: '\theta(t) = 20\,t^2 \implies \dot\theta = 40\,t \implies \ddot\theta = 40\ \text{rad}\cdot\text{s}^{-2}'
             note: "On derive deux fois l'equation horaire : acceleration angulaire constante."
           - math: 'a_G = r\,\ddot\theta'
             note: >-
               Cable inextensible sans glissement sur le cylindre : meme
-              relation qu'au rung 1 (v = d omega), derivee une fois de
-              plus (rung 4).
+              relation qu'au chapitre 2 (v = d omega), derivee une fois de
+              plus (chapitre 5).
           - math: 'a_G = 0{,}10\times 40'
             note: "Application numerique, r = 10 cm = 0,10 m."
           - math: '\boxed{a_G = 4\ \text{m/s}^2}'
@@ -273,9 +273,9 @@ entries:
         reasoning: |-
           On isole la charge $(C)$, en translation le long de la pente. Trois forces s'exercent sur elle : son poids $m\vec g$, la réaction normale du plan (perpendiculaire à la pente, sans effet sur le mouvement le long de la pente), et la tension $\vec T$ du câble qui la tire vers le haut. Comme la pente fait un angle $\alpha$ avec l'horizontale, le poids se projette sur l'axe de la pente en une composante $mg\sin\alpha$ qui s'oppose à la montée — une décomposition du poids sur un plan incliné qui n'est pas un outil de ce chapitre (elle vient du chapitre sur la chute et les mouvements sur plan incliné), reprise ici telle quelle. La deuxième loi de Newton, projetée sur l'axe $(O,\vec i)$ orienté vers le haut de la pente, donne une première équation reliant $a_G$ et $T$.
 
-          On isole ensuite le cylindre $(\mathcal{S})$, en rotation autour de $(\Delta)$. Deux moments agissent : le moment moteur $\mathcal{M}$, qui entraîne la rotation dans le sens positif marqué sur la figure, et le moment de la tension du câble (la même tension, par la troisième loi de Newton), qui s'exerce tangentiellement à la distance $r$ de l'axe et s'oppose à la rotation — exactement le même montage que la poulie de la grue (R2, R4). La relation fondamentale de la dynamique de rotation (R4) donne une deuxième équation, reliant l'accélération angulaire du cylindre à cette même tension.
+          On isole ensuite le cylindre $(\mathcal{S})$, en rotation autour de $(\Delta)$. Deux moments agissent : le moment moteur $\mathcal{M}$, qui entraîne la rotation dans le sens positif marqué sur la figure, et le moment de la tension du câble (la même tension, par la troisième loi de Newton), qui s'exerce tangentiellement à la distance $r$ de l'axe et s'oppose à la rotation — exactement le même montage que la poulie de la grue (chapitres 3 et 5). La relation fondamentale de la dynamique de rotation (chapitre 5) donne une deuxième équation, reliant l'accélération angulaire du cylindre à cette même tension.
 
-          La condition de non-glissement du câble (question 1-1, R1 et R4) relie $a_G$ à l'accélération angulaire par le facteur $r$ : c'est elle qui permet de combiner les deux équations précédentes en une seule. Il ne reste plus qu'à éliminer la tension $T$, inconnue et non demandée, entre les trois relations pour isoler $\mathcal{M}$.
+          La condition de non-glissement du câble (question 1-1, chapitres 2 et 5) relie $a_G$ à l'accélération angulaire par le facteur $r$ : c'est elle qui permet de combiner les deux équations précédentes en une seule. Il ne reste plus qu'à éliminer la tension $T$, inconnue et non demandée, entre les trois relations pour isoler $\mathcal{M}$.
         steps:
           - math: 'm\,a_G = T - m\,g\sin\alpha'
             note: >-
@@ -550,18 +550,18 @@ entries:
         stem: |-
           **1-1-** (1 pt) Par application de la relation fondamentale de la dynamique de rotation, établir l'équation différentielle du mouvement du pendule.
         reasoning: |-
-          C'est le rung R6 dans son intégralité, et il met au travail les rungs R2, R3 et R4 en même temps. Trois gestes, dans l'ordre.
+          C'est le chapitre 7 dans son intégralité, et il met au travail les chapitres 3, 4 et 5 en même temps. Trois gestes, dans l'ordre.
 
           **1. Le bilan des moments, par rapport à l'axe $(\Delta)$ — pas des forces, des MOMENTS.** Deux forces s'exercent sur la barre :
 
-          - la **réaction de l'axe** $\vec R$, appliquée **sur l'axe lui-même** : sa ligne d'action passe par $(\Delta)$, donc son bras de levier est nul, donc son moment est nul (rung R2). Elle disparaît du bilan — et il faut le **dire**, pas l'oublier en silence ;
+          - la **réaction de l'axe** $\vec R$, appliquée **sur l'axe lui-même** : sa ligne d'action passe par $(\Delta)$, donc son bras de levier est nul, donc son moment est nul (chapitre 3). Elle disparaît du bilan — et il faut le **dire**, pas l'oublier en silence ;
           - le **poids** $\vec P = m\vec g$, appliqué au centre d'inertie $G$. La barre étant homogène, $G$ est en son milieu : $\Delta G = \dfrac{\ell}{2}$.
 
           **2. Le moment du poids, et son signe.** Le poids est vertical. Quand la barre fait un angle $\theta$ avec la verticale, le vrai bras de levier — la distance de l'axe à la **ligne d'action** du poids — vaut $\dfrac{\ell}{2}\sin\theta$. Le moment est donc, en norme, $m\,g\,\dfrac{\ell}{2}\sin\theta$, et il est **négatif** parce qu'il tend **toujours** à ramener $\theta$ vers zéro, de quelque côté qu'on ait écarté la barre :
 
           $$\mathcal{M}_\Delta(\vec P) = -\,m\,g\,\frac{\ell}{2}\,\sin\theta$$
 
-          **3. La relation fondamentale de la dynamique de rotation** (rung R4), avec ce seul moment non nul :
+          **3. La relation fondamentale de la dynamique de rotation** (chapitre 5), avec ce seul moment non nul :
 
           $$J_\Delta\,\ddot\theta = \sum \mathcal{M}_\Delta \qquad\Longrightarrow\qquad \frac{1}{3}m\ell^2\,\ddot\theta = -\,m\,g\,\frac{\ell}{2}\,\sin\theta$$
 
@@ -573,14 +573,14 @@ entries:
 
           **Ce que la forme obtenue annonce.** C'est $\ddot\theta + \omega_0^2\,\theta = 0$, avec $\omega_0^2 = \dfrac{3g}{2\ell}$ : l'équation d'un **oscillateur harmonique**. La question 1-2 va en écrire la solution, la 1-3 en tirer la période.
 
-          **Les deux pièges de cette question.** D'abord, oublier de justifier que le moment de la réaction de l'axe est nul : c'est un point de barème, pas une évidence. Ensuite, prendre $\ell$ comme bras de levier au lieu de $\ell/2$ : le poids s'applique en $G$, au milieu de la barre, pas en $B$. *(Et remarque que $J_\Delta = \frac13 m\ell^2$ — la valeur « tige, axe à une extrémité » du rung R3 — est bien celle que l'énoncé donne : elle est cohérente avec la géométrie décrite.)*
+          **Les deux pièges de cette question.** D'abord, oublier de justifier que le moment de la réaction de l'axe est nul : c'est un point de barème, pas une évidence. Ensuite, prendre $\ell$ comme bras de levier au lieu de $\ell/2$ : le poids s'applique en $G$, au milieu de la barre, pas en $B$. *(Et remarque que $J_\Delta = \frac13 m\ell^2$ — la valeur « tige, axe à une extrémité » du chapitre 4 — est bien celle que l'énoncé donne : elle est cohérente avec la géométrie décrite.)*
         steps:
           - math: '\mathcal{M}_\Delta(\vec R) = 0'
-            note: "La reaction de l'axe passe par (Delta) : bras de levier nul, donc moment nul (rung R2). A justifier, pas a omettre."
+            note: "La reaction de l'axe passe par (Delta) : bras de levier nul, donc moment nul (chapitre 3). A justifier, pas a omettre."
           - math: '\mathcal{M}_\Delta(\vec P) = -\,m\,g\,\frac{\ell}{2}\,\sin\theta'
             note: "Moment du poids applique en G, milieu de la barre homogene. Signe negatif : le moment ramene toujours vers l'equilibre."
           - math: 'J_\Delta\,\ddot\theta = \sum\mathcal{M}_\Delta \implies \frac{1}{3}m\ell^2\,\ddot\theta = -\,m\,g\,\frac{\ell}{2}\sin\theta'
-            note: "Relation fondamentale de la dynamique de rotation (rung R4), avec le seul moment non nul."
+            note: "Relation fondamentale de la dynamique de rotation (chapitre 5), avec le seul moment non nul."
           - math: '\sin\theta \approx \theta \implies \frac{1}{3}\ell\,\ddot\theta = -\frac{g}{2}\,\theta'
             note: "Approximation des petites oscillations, autorisee par l'enonce. La masse et une longueur se simplifient."
           - math: '\boxed{\ddot\theta + \frac{3g}{2\ell}\,\theta = 0}'
@@ -685,7 +685,7 @@ entries:
 
           $$L = \frac{2 \times 1{,}5}{3} = \boxed{1{,}0\ \text{m}}$$
 
-          **Ce que ce nombre raconte.** Une barre homogène de $1{,}5\ \text{m}$ suspendue par une extrémité oscille comme une masse ponctuelle au bout d'un fil de $1{,}0\ \text{m}$ — donc **plus vite** qu'un fil de $1{,}5\ \text{m}$. C'est le rung R3 qui l'explique : la masse de la barre est **répartie** sur toute sa longueur, une bonne partie se trouve près de l'axe, et cette masse-là contribue peu au moment d'inertie tout en contribuant pleinement au moment du poids. La longueur $\dfrac{2\ell}{3}$ porte un nom en mécanique : la **longueur équivalente** du pendule pesant.
+          **Ce que ce nombre raconte.** Une barre homogène de $1{,}5\ \text{m}$ suspendue par une extrémité oscille comme une masse ponctuelle au bout d'un fil de $1{,}0\ \text{m}$ — donc **plus vite** qu'un fil de $1{,}5\ \text{m}$. C'est le chapitre 4 qui l'explique : la masse de la barre est **répartie** sur toute sa longueur, une bonne partie se trouve près de l'axe, et cette masse-là contribue peu au moment d'inertie tout en contribuant pleinement au moment du poids. La longueur $\dfrac{2\ell}{3}$ porte un nom en mécanique : la **longueur équivalente** du pendule pesant.
 
           **Le piège de cette question.** Répondre $L = \ell/2 = 0{,}75\ \text{m}$ « puisque le centre d'inertie est au milieu ». Le centre d'inertie fixe le **moment du poids**, mais pas le moment d'inertie : les deux entrent dans la période, et leur combinaison donne $2\ell/3$, pas $\ell/2$. Un pendule pesant n'est jamais équivalent à un pendule simple placé en son centre d'inertie.
         steps:
@@ -746,7 +746,7 @@ entries:
 
           $$E_c = E_m - E_{pp}\!\left(\tfrac{2}{3}\theta_m\right) = 22{,}7 - 10{,}1 = 12{,}6\ \text{mJ} = 12{,}6\times10^{-3}\ \text{J}$$
 
-          **Étape 3 — l'énergie cinétique de ROTATION** (rung R5), et c'est là que le moment d'inertie entre en jeu :
+          **Étape 3 — l'énergie cinétique de ROTATION** (chapitre 6), et c'est là que le moment d'inertie entre en jeu :
 
           $$E_c = \frac{1}{2}\,J_\Delta\,\dot\theta^{\,2}
           \qquad\text{avec}\qquad
@@ -777,7 +777,7 @@ entries:
           - math: 'J_\Delta = \frac{1}{3}m\ell^2 = \frac{1}{3}\times 0{,}203\times 1{,}5^2 = 0{,}15225\ \text{kg}\cdot\text{m}^2'
             note: "Moment d'inertie donne par l'enonce, applique aux valeurs numeriques."
           - math: 'E_c = \frac{1}{2}J_\Delta\,\dot\theta^{\,2} \implies |\dot\theta| = \sqrt{\frac{2E_c}{J_\Delta}} = \sqrt{\frac{6\,E_c}{m\,\ell^2}}'
-            note: "Energie cinetique de ROTATION (rung R5) : le solide tourne, il ne se translate pas."
+            note: "Energie cinetique de ROTATION (chapitre 6) : le solide tourne, il ne se translate pas."
           - math: '|\dot\theta| = \sqrt{\frac{6\times 12{,}6\times10^{-3}}{0{,}203\times 2{,}25}} = \sqrt{\frac{0{,}0756}{0{,}45675}} = \sqrt{0{,}1655}'
             note: "Application numerique."
           - math: '\boxed{|\dot\theta| \approx 0{,}41\ \text{rad.s}^{-1}}'
