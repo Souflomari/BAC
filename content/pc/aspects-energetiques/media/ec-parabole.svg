@@ -124,7 +124,11 @@
     " fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
       stroke-linecap="round" stroke-linejoin="round"/>
 
-    <text x="497" y="128" text-anchor="start" font-size="12.5" fill="var(--figure-ink)"
+    <!-- ANCRÉE À DROITE, À GAUCHE DE LA COURBE (2026-09-04) : ancrée à gauche
+         en x=497, l'étiquette partait vers la droite et la parabole, qui
+         remonte justement là, la rayait sur 24 %. Ancrée à droite au même
+         point, elle occupe la zone vide sous la courbe au lieu de la couper. -->
+    <text x="492" y="128" text-anchor="end" font-size="12.5" fill="var(--figure-ink)"
       >E<tspan dy="3" font-size="9">c</tspan><tspan dy="-3"> = 0,10 </tspan><tspan font-style="italic">v</tspan><tspan dy="-5" font-size="9">2</tspan></text>
   </g><!-- /step-2 -->
 

@@ -289,7 +289,7 @@ Par ordre de préférence, tirés des 30 figures réparées :
   mesure. Cette dernière classe a fait un dégât réel dans
   `travail-force-signe` et n'est gardée par rien.
 - Il ignore les `.motion.svg`.
-- **Ce n'est toujours pas une porte.** 74 cas subsistent : l'armer
+- **Ce n'est toujours pas une porte.** 71 cas subsistent : l'armer
   aujourd'hui obligerait à la désarmer demain.
 
 ---
@@ -497,3 +497,25 @@ au-dessus de l'axe — et il faut encore vérifier que le voisin n'est pas là.
 gendarmes. C'est le seul endroit où aucune étiquette horizontale ne tient :
 les deux suites se rapprochent, donc la bande se referme sur la longueur du
 texte et l'une des deux finit toujours par le traverser.
+
+---
+
+## Vague 8 (2026-09-04) — le seuil des 20 % : chaque cas restant a sa raison
+
+`74 → 71` cas, `41 → 39` figures. **Sept cas au-dessus de 20 %, et les sept
+portent désormais une raison ÉCRITE dans le fichier concerné.** C'est l'état
+qu'on voulait atteindre avant d'arrêter : plus rien qui traîne sans
+explication.
+
+| figure | % | pourquoi ça reste |
+|---|---|---|
+| `anhydride-alcool` | 29 | deux déplacements essayés, tous deux PIRES (recouvre l'atome H à 64 %, puis l'atome C à 63 %) ; remise en place |
+| `energy-exchange` | 26 | figure sous **dette owner** — la retoucher serait décider de la garder |
+| `explication-bk-2019-n-x1` ×2 | 24 | figure GÉNÉRÉE ; le rayon et le segment ΩC sont corrigés dans le script, le bord du plan reste — scène 3-D dense, aucune position libre de tout |
+| `subduction-andes` | 21 | l'étiquette nomme un fait qui se lit SUR le plan plongeant ; l'en sortir la détacherait de ce qu'elle désigne |
+| `lecture-Ve-courbe-dosage` ×2 | 21 | la courbe traverse par la GAUCHE ; deux placements essayés et défaits (le repère vertical en dessous, les deux pointillés de pH au-dessus) |
+
+Et 64 cas sous 20 % — un tracé qui effleure moins d'un cinquième d'une
+étiquette. La campagne s'arrête là : **195 → 71 en huit vagues**, 91 → 39
+figures, et la seule chose qui reste au-dessus de 20 % est ce qui a été
+regardé, essayé, et jugé.

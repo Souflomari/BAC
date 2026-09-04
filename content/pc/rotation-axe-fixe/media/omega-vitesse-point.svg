@@ -177,7 +177,11 @@
 
     <!-- ── Point 1 : d₁ = 0,30 m, proche de l'axe ───────────────────────── -->
     <circle cx="300" cy="312" r="3.2" fill="var(--figure-ink)"/>
-    <text x="270" y="316" text-anchor="end" font-size="10.5"
+    <!-- REMONTÉE de 14 px (2026-09-04) : à y=316 l'étiquette était traversée
+         par la flèche courbe « sens positif » (qui passe par (247;294) puis
+         (277;330)) sur 20 % de sa largeur. Au-dessus, entre elle et le rayon
+         d₁, la place est libre. -->
+    <text x="270" y="302" text-anchor="end" font-size="10.5"
           fill="var(--figure-accent)"><tspan font-style="italic">d</tspan><tspan
           dy="3" font-size="8">1</tspan><tspan dy="-3" font-style="normal"> = 0,30 m</tspan>
     </text>

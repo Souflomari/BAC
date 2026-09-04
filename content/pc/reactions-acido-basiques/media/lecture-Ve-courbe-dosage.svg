@@ -113,6 +113,12 @@
     <!-- Demi-équivalence : V_E/2 = 7,5 mL, pH ≈ pKA ≈ 4,8 -->
     <line x1="240" y1="223.2" x2="240" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
     <circle cx="240" cy="223.2" r="4" fill="var(--figure-ink-soft)"/>
+    <!-- CROISEMENT ASSUMÉ (2026-09-04, 21 % chacune) : la courbe de dosage
+         traverse ces deux lignes par leur GAUCHE, pas par leur droite. Deux
+         placements essayés et défaits : les rentrer de 16 px n'a rien changé
+         (le croisement n'est pas au bout) ; les descendre les met sur le
+         repère vertical de V_E/2 ; les monter, sur les deux pointillés de pH.
+         Elles restent où elles sont, et le chiffre est écrit ici. -->
     <text x="120" y="216" text-anchor="start" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">demi-équivalence : V<tspan dy="3" font-size="8">E</tspan><tspan dy="-3">/2 = 7,5 mL</tspan></text>
     <text x="120" y="229" text-anchor="start" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">pH ≈ pK<tspan dy="3" font-size="7">A</tspan><tspan dy="-3"> ≈ 4,8 — pas non plus V</tspan><tspan dy="3" font-size="7">E</tspan></text>
   </g><!-- /step-3 -->
