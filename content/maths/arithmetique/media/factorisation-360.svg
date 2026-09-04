@@ -30,7 +30,12 @@
     .f-node   { fill: var(--figure-surface); stroke: var(--figure-ink); stroke-width: 1.6; }
     .f-leaf   { fill: var(--figure-accent); fill-opacity: 0.16; stroke: var(--figure-accent); stroke-width: 1.6; }
     .f-nlabel { font: 700 14px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); text-anchor: middle; }
-    .f-llabel { font: 700 14px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); text-anchor: middle; }
+    /* Encre SOMBRE, pas accent : une étiquette accent posée sur une feuille
+       accent à 16 % tombe à 4,50:1 — sous le seuil de SC 1.4.3, mesuré aux
+       pixels le 2026-09-04. Le rôle « facteur premier » reste porté par le
+       disque teinté et son contour ; l'étiquette n'a pas à le redire au prix
+       de sa lisibilité. */
+    .f-llabel { font: 700 14px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); text-anchor: middle; }
   </style>
 
   <rect width="650" height="760" fill="var(--figure-surface)"/>
@@ -122,11 +127,16 @@
     <text x="305" y="646" text-anchor="middle" font-size="15" font-weight="700" fill="var(--figure-accent)">3<tspan dy="-5" font-size="10">2</tspan></text>
     <text x="305" y="678" text-anchor="middle" font-size="15" font-weight="700" fill="var(--figure-accent)">3<tspan dy="-5" font-size="10">2</tspan></text>
 
-    <!-- colonnes du 5 et du 7 : non communes, atténuées -->
-    <text x="405" y="646" text-anchor="middle" font-size="15" fill="var(--figure-ink-soft)" opacity="0.6">5</text>
-    <text x="405" y="678" text-anchor="middle" font-size="15" fill="var(--figure-ink-soft)" opacity="0.35">—</text>
-    <text x="465" y="646" text-anchor="middle" font-size="15" fill="var(--figure-ink-soft)" opacity="0.35">—</text>
-    <text x="465" y="678" text-anchor="middle" font-size="15" fill="var(--figure-ink-soft)" opacity="0.6">7</text>
+    <!-- Colonnes du 5 et du 7 : non communes. ATTÉNUÉES PAR L'ENCRE, PAS PAR
+         L'OPACITÉ — `--figure-ink-soft` à 0,6 tombait à 2,92:1 sur blanc, et
+         un chiffre qui porte une information ne se paie pas en lisibilité.
+         L'encre douce suffit à les mettre en retrait des colonnes communes,
+         que la légende nomme d'ailleurs explicitement. Les tirets, eux,
+         restent un cran en dessous (0,85 → 5,3:1, toujours conforme). -->
+    <text x="405" y="646" text-anchor="middle" font-size="15" fill="var(--figure-ink-soft)">5</text>
+    <text x="405" y="678" text-anchor="middle" font-size="15" fill="var(--figure-ink-soft)" opacity="0.85">—</text>
+    <text x="465" y="646" text-anchor="middle" font-size="15" fill="var(--figure-ink-soft)" opacity="0.85">—</text>
+    <text x="465" y="678" text-anchor="middle" font-size="15" fill="var(--figure-ink-soft)">7</text>
     <text x="435" y="702" text-anchor="middle" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">non communs — n'entrent pas dans le PGCD</text>
   </g>
 

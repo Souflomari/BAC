@@ -1032,3 +1032,78 @@ pas une urgence.
 poussé une entrée d'historique (un changement de chapitre), et le « Retour »
 mesurait ce recul-là. Rejouée isolément, la scène dit l'inverse. **Une scène
 de test qui hérite de l'état de la précédente ne mesure pas ce qu'elle croit.**
+
+### 8.13 Le contraste des figures : trois passes fausses, un instrument honnête, et une classe de défaut qu'on n'avait pas imaginée
+
+Dernier angle mort de la famille « figures », nommé la veille dans
+`INSTRUMENTS.md` et fermé ici. `contrast-gate` juge les 80 paires de la
+palette — toutes conformes — et **rien** du voisinage réel à l'intérieur
+d'une figure. Une étiquette `--figure-accent` posée sur un aplat
+`--figure-accent` à 16 % tombe à 4,36:1 sans qu'aucune porte ne bouge.
+
+**LE COMPTE HONNÊTE : 101 textes** sous le seuil de SC 1.4.3, dans 35
+fichiers. **71 corrigés** ; **30 versés au dossier owner** (les deux figures
+`DETTE OWNER` de `rlc-serie`, servies à aucune leçon — voir plus bas).
+
+**LA CLASSE QUE PERSONNE N'AVAIT IMAGINÉE.** Les étapes d'une figure sont
+CUMULATIVES (`StagedFigure` : `wanted = fullyRevealed || n <= stage`, groupes
+insérés en `beforeend`). Ce qu'un step peint recouvre **pour de bon** ce
+qu'un step antérieur avait peint. Trois figures s'effaçaient elles-mêmes, et
+leur contraste nominal était parfait — jusqu'à 17,35:1 :
+
+- `produit-vectoriel-aire` : le parallélogramme du step-2, rempli en
+  `--figure-surface` (blanc sur blanc, donc invisible au relecteur), effaçait
+  l'étiquette « u » du vecteur — à l'instant précis où la leçon dit « le
+  parallélogramme engendré par u et v » ;
+- `univers-restreint` : le voile de restriction posé DEUX FOIS sur les mêmes
+  cases (le rect du step-4 est strictement contenu dans celui du step-3),
+  0,97 d'opacité cumulée : les effectifs n'étaient plus atténués mais effacés ;
+- `independant-vs-incompatible` : le nom de l'univers, « Ω », posé à
+  l'endroit exact que la bande B recouvre au step-2.
+
+Trois AUTRES recouvrements sont voulus (l'ion Cu²⁺ qui devient un atome de
+cuivre au même site, un titre remplacé, une porteuse redessinée en gras) :
+ils déclarent désormais `RECOUVREMENT ASSUMÉ: « <le texte> » — <la raison>`,
+et la sonde n'exempte **que ce texte-là**.
+
+**TROIS PASSES FAUSSES AVANT LA BONNE**, et c'est le cœur de la leçon :
+`elementsFromPoint` ne répond que dans la fenêtre visible (60 faux
+positifs) ; une boîte englobante n'est pas une forme et une voile à 28 %
+n'est pas un aplat (418 défauts annoncés) ; une capture `fullPage` avec
+`clip` ne peut pas être allouée sur une page de 100 000 px de haut, et rend
+le fond de page — **soixante-dix textes parfaitement lisibles certifiés
+invisibles**. À chaque fois l'instrument était sûr de lui.
+
+**D'OÙ LA RÈGLE, écrite dans `INSTRUMENTS.md` : le modèle propose, les pixels
+disposent.** La sonde raisonne (géométrie exacte via `isPointInFill`, ordre
+du document, `fill-opacity`, opacité des groupes) pour DIRIGER LE REGARD ;
+puis un étage pixel capture la zone, cache le texte, recapture, et prend la
+couleur médiane du fond. Le verdict rendu est celui des pixels. Et
+l'instrument porte son **témoin** : un fond mesuré égal au fond du corps de
+la page est impossible à l'intérieur d'une carte de figure — dans ce cas il
+refuse de trancher au lieu d'inventer un défaut.
+
+**CE QU'IL FAUT SAVOIR POUR NE PAS RÉGRESSER.**
+
+1. Le modèle seul manque **17 %** des cas (84 candidats contre 101 défauts
+   réels) : il ne peut pas voir un texte recouvert par une forme peinte
+   APRÈS lui. **Pour une campagne, c'est `--pixels-tous` qui fait foi** —
+   deux captures par texte, ~25 min sur les 258 figures. La passe rapide
+   sert à surveiller une correction, pas à certifier un corpus.
+2. Les correctifs suivent quatre règles, à appliquer telles quelles :
+   un texte sur un **aplat plein** prend `--figure-surface` ; un texte sur
+   une **teinte** prend `--figure-ink` (l'aplat porte déjà le rôle) ; on
+   **n'atténue jamais par `opacity`** un texte qui porte une information —
+   on l'atténue par l'encre ; et `--figure-grid` **n'est pas une encre**
+   (utilisé comme tel, il écrivait le repère d'une figure à 1,03:1).
+3. **La mesure est celle du thème CLAIR.** Les correctifs sont tous en
+   jetons, donc ils basculent ; le balayage `--dark --pixels-tous` reste à
+   faire et c'est le prochain angle mort de la liste.
+
+**LE DOSSIER OWNER S'ALOURDIT D'UN TROISIÈME DÉFAUT.**
+`loi-mailles-build.svg` et `energy-exchange.svg` (HANDOFF §0, point 7 bis,
+« fix or delete ») : leurs textes tombent entre **2,34:1 et 4,32:1**, avec
+des gris et des bleus **hors palette** (`#8A8A92`, `#7E9CC8`, `#6B6B72`,
+`#B06040`, `#8A6A3A`). Ce ne sont pas des jetons : le contraste n'y est pas
+réparable par une bascule de thème. Si la décision est « on garde », ces
+figures sont à **refaire**, pas à retoucher.

@@ -158,12 +158,19 @@ def fleche(p, q, couleur, ident="", largeur=2.2, tete=9.0):
     )
 
 
-def point(p, nom, dx=10, dy=-8, couleur="var(--figure-ink)", r=4.2):
+def point(p, nom, dx=10, dy=-8, couleur="var(--figure-ink)", r=4.2, couleur_nom=None):
+    """Le POINT porte la couleur de son rôle ; son NOM peut en prendre une autre.
+
+    Séparé le 2026-09-04 : l'étiquette « Ω » héritait du violet de la sphère et
+    se posait sur le plan teinté — 3,47:1, sous SC 1.4.3, mesuré aux pixels. Le
+    disque violet suffit à dire « c'est le centre de la sphère » ; le nom, lui,
+    doit d'abord se lire.
+    """
     x, y = P(p)
     return (
         f'<circle cx="{f(x)}" cy="{f(y)}" r="{r}" fill="{couleur}"/>'
         f'<text x="{f(x + dx)}" y="{f(y + dy)}" font-size="17" font-weight="600" '
-        f'fill="{couleur}">{nom}</text>'
+        f'fill="{couleur_nom or couleur}">{nom}</text>'
     )
 
 
@@ -239,9 +246,13 @@ def _longueur_visible(direction, maxi=3.1):
 for direction, nom in (((1.0, 0, 0), "x"), ((0, 1.0, 0), "y"), ((0, 0, 1.0), "z")):
     L = _longueur_visible(direction)
     vec = mul(direction, L)
-    add_(fleche(O, vec, "var(--figure-grid)", largeur=1.6, tete=7))
+    # PAS `--figure-grid` — mesuré aux pixels le 2026-09-04 : x, y et z
+    # étaient écrits à 1,03:1, 1,19:1 et 1,36:1. Le jeton de grille est fait
+    # pour une trame qu'on devine, pas pour une flèche ni pour une lettre ;
+    # utilisé ici, il effaçait purement et simplement le repère.
+    add_(fleche(O, vec, C_SOFT, largeur=1.6, tete=7))
     ex, ey = P(mul(vec, 1.13))
-    add_(texte(ex - 4, ey + 4, nom, 14, "var(--figure-grid)"))
+    add_(texte(ex - 4, ey + 4, nom, 14, C_INK))
 add_(point(O, "O", -18, 30, C_SOFT, 3.2))
 # Décalages ÉLARGIS (2026-09-04) : à 11 px, les étiquettes A et C tombaient
 # dans le sommet du triangle ABC — l'angle y est aigu, et le raccord mitré du
@@ -257,9 +268,14 @@ add_('<g id="step-2">')
 add_(fleche(A, B, C_AB))
 add_(fleche(A, C, C_AC))
 mx, my = P(mul(add(A, B), 0.5))
-add_(texte(mx - 46, my - 2, "AB", 16, C_AB, "700"))
+# Le NOM du vecteur en encre, la FLÈCHE dans sa couleur — même partage que
+# pour Ω. Posés au milieu des vecteurs, ces deux noms finissent sous le plan
+# teinté que le step suivant peint par-dessus : bleu sur teinte = 3,34:1,
+# ambre = 3,80:1 (mesuré aux pixels le 2026-09-04). La flèche colorée, juste
+# à côté, dit déjà de quel vecteur il s'agit.
+add_(texte(mx - 46, my - 2, "AB", 16, C_INK, "700"))
 mx, my = P(mul(add(A, C), 0.5))
-add_(texte(mx - 30, my + 22, "AC", 16, C_AC, "700"))
+add_(texte(mx - 30, my + 22, "AC", 16, C_INK, "700"))
 add_("</g>")
 
 # ── step-3 : le produit vectoriel ──────────────────────────────────────
@@ -296,7 +312,7 @@ add_(f'<circle cx="{f(ox)}" cy="{f(oy)}" r="{f(rpx)}" fill="{C_SPH}" '
 add_(f'<ellipse cx="{f(ox)}" cy="{f(oy)}" rx="{f(rpx)}" ry="{f(rpx * 0.30)}" '
      f'fill="none" stroke="{C_SPH}" stroke-width="1.1" stroke-opacity="0.5" '
      f'stroke-dasharray="4 4"/>')
-add_(point(OMEGA, "Ω", -6, -16, C_SPH))
+add_(point(OMEGA, "Ω", -6, -16, C_SPH, couleur_nom=C_INK))
 add_(f'<line x1="{f(ox)}" y1="{f(oy)}" x2="{f(ox + rpx)}" y2="{f(oy)}" '
      f'stroke="{C_SPH}" stroke-width="1.6" stroke-dasharray="5 4"/>')
 # −16 et non −8 (2026-09-04) : à 8 px, l'étiquette « R = √5 » était traversée
@@ -329,7 +345,9 @@ nl = math.hypot(ndx, ndy) or 1.0
 # projetée (même règle que l'audit des tracés). Le segment ΩC ne la traverse
 # plus ; le bord du plan (ABC), lui, la croise encore à 24 %. Même remarque
 # que ci-dessus : dans cette scène 3-D, aucune position n'est libre de tout.
-add_(texte(hx + 48 * ndx / nl - 16, hy + 48 * ndy / nl + 5, "d = √3", 16, C_ACC, "700"))
+# Encre : « d = √3 » et « √2 » tombent sur le plan teinté en accent —
+# accent sur accent, 3,50:1. Le plan porte déjà le rôle.
+add_(texte(hx + 48 * ndx / nl - 16, hy + 48 * ndy / nl + 5, "d = √3", 16, C_INK, "700"))
 add_("</g>")
 
 # ── step-7 : d < R ⟹ le cercle d'intersection ──────────────────────────
@@ -343,7 +361,7 @@ add_(f'<line x1="{pt(H).split(",")[0]}" y1="{pt(H).split(",")[1]}" '
      f'x2="{pt(bord).split(",")[0]}" y2="{pt(bord).split(",")[1]}" '
      f'stroke="{C_ACC}" stroke-width="1.6" stroke-dasharray="5 4"/>')
 bx, by = P(dans_plan(H, R_CERCLE * 0.52, 0))
-add_(texte(bx - 4, by - 9, "√2", 15, C_ACC, "700"))
+add_(texte(bx - 4, by - 9, "√2", 15, C_INK, "700"))
 add_("</g>")
 
 add_("</svg>")

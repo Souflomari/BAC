@@ -73,7 +73,15 @@
     <polygon points="190,150 176,144 176,156" fill="var(--figure-ink)"/>
     <line x1="650" y1="150" x2="572" y2="150" stroke="var(--figure-ink)" stroke-width="2.4" stroke-linecap="round"/>
     <polygon points="560,150 574,144 574,156" fill="var(--figure-ink)"/>
-    <text x="350" y="130" text-anchor="middle" font-size="11" fill="var(--figure-ink)">compression horizontale</text>
+    <!-- AU-DESSUS DU PANNEAU (2026-09-04) : à y=130, cette étiquette était
+         posée à l'intérieur de la coupe, dans la bande que les deux blocs de
+         faille du step-2 recouvrent d'un aplat --figure-surface OPAQUE
+         (y 95→205). Les étapes étant cumulatives, elle disparaissait donc à
+         l'étape 2 — et c'est justement l'étape où la figure explique que la
+         compression est la MÊME. Mesuré par retrait du texte : l'image ne
+         changeait plus. Remontée à y=82, elle reste au-dessus du cadre et
+         garde sa paire de flèches en vis-à-vis. -->
+    <text x="375" y="82" text-anchor="middle" font-size="11" fill="var(--figure-ink)">compression horizontale</text>
 
     <!-- Compression horizontale — paire du bas (≈25 km, LA MÊME compression) -->
     <line x1="100" y1="390" x2="178" y2="390" stroke="var(--figure-ink)" stroke-width="2.4" stroke-linecap="round"/>

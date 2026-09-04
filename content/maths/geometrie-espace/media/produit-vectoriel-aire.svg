@@ -51,8 +51,15 @@
 
   <g id="step-2">
     <!-- ── Le parallélogramme engendré par u⃗, v⃗ ──────────────────────────  -->
+    <!-- fill="none", et surtout PAS --figure-surface : les étapes sont
+         CUMULATIVES (StagedFigure : `wanted = fullyRevealed || n <= stage`),
+         donc ce remplissage blanc était peint PAR-DESSUS le step-1 et
+         effaçait l'étiquette « u » du vecteur, à l'instant précis où la
+         leçon dit « le parallélogramme engendré par u et v ». Blanc sur
+         blanc : invisible à la relecture, décisif pour l'élève. Mesuré le
+         2026-09-04 par le retrait du texte (l'image ne changeait pas). -->
     <path d="M 220 360 L 390 360 L 495 255 L 325 255 Z"
-          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1.5"/>
+          fill="none" stroke="var(--figure-grid)" stroke-width="1.5"/>
 
     <!-- ── Hauteur, accent : ‖v⃗‖ sin θ ────────────────────────────────────  -->
     <line x1="325" y1="255" x2="325" y2="360" stroke="var(--figure-accent)" stroke-width="2.2" stroke-dasharray="5 4"/>

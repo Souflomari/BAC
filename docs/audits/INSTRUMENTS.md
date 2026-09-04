@@ -25,7 +25,7 @@
 
 | Instrument | Mesure | Ne dit RIEN de |
 |---|---|---|
-| `web/scripts/figure-preview.mjs` | Une figure hors du site, **cinq classes** : texte hors CADRE, texte hors de SON PANNEAU, chevauchements d'étiquettes, tracés qui barrent du texte, aplats restés clairs en thème sombre. `--porte` arme les deux classes propres (cadre, panneau) et tourne en CI | La GRAVITÉ d'une collision en thème sombre (contraste non rejugé). Les trois classes non armées restent informatives — 7 chevauchements, 85 tracés, 2 aplats, tous documentés |
+| `web/scripts/figure-preview.mjs` | Une figure hors du site, **sept classes** : texte hors CADRE, texte hors de SON PANNEAU, chevauchements d'étiquettes, tracés qui barrent du texte, aplats restés clairs en thème sombre, **contraste d'un texte contre ce qui est vraiment peint derrière lui**, **texte effacé par une étape ultérieure**. Le contraste est jugé en deux temps — le modèle de peinture propose, un ÉTAGE PIXEL dispose (capture, retrait du texte, recapture, couleur médiane du fond). `--pixels-tous` passe TOUS les textes du corpus au crible des pixels (~25 min) ; `--porte` arme les deux classes propres (cadre, panneau) et tourne en CI | La GRAVITÉ d'une collision en thème sombre (contraste non rejugé). Le HALO (`paint-order`) : l'étage pixel le retire avec le texte et juge quand même sur la teinte — aucune figure ne s'en sert aujourd'hui. Un texte sous 0,5 d'opacité, traité comme un ornement. Les trois classes non armées restent informatives — 7 chevauchements, 85 tracés, 2 aplats, tous documentés |
 | `web/scripts/etroit-sweep.mjs` | 70 pages × 3 largeurs de téléphone (320/360/390) : débord horizontal, chapitres dépliés | La lisibilité. Une page peut ne pas déborder ET rester illisible — c'est ce que la sonde de figures a montré |
 | `web/scripts/horsligne-sweep.mjs` | Six scènes de coupure réseau : navigation par chapitre, clic vers une autre leçon, bouton Retour, leçon déjà visitée, réponse à un QCM, retour du réseau. **Ce qui tient tient ; ce qui casse est borné** — voir `docs/audits/hors-ligne.md` | Le réseau qui RAMPE au lieu de mourir (latence + pertes de paquets), et la coupure pendant un enregistrement |
 | `web/scripts/annonce-sweep.mjs` | Ce qu'un lecteur d'écran ANNONCE : les régions live et leur politesse, le premier pas au clavier, les reculs de l'ordre de tabulation, le sort du focus au changement de chapitre. **68 pages** ; a trouvé que le lien d'évitement n'était ni premier ni universel | La VOIX. Ce qu'un vrai lecteur prononce dépend de son mode, de sa verbosité et de sa langue — on ne lit ici que le DOM et l'arbre d'accessibilité |
@@ -63,7 +63,13 @@
    mesuré (`annonce-sweep`) — régions live, ordre, focus au changement de
    chapitre. Ce qui ne l'est pas : ce qu'un lecteur PRONONCE réellement,
    qui dépend de son mode, de sa verbosité et de sa langue.
-3. **La gravité d'une collision d'étiquettes en thème sombre.**
+3. **La gravité d'une collision d'étiquettes en thème sombre** — et, depuis
+   le 2026-09-04, son voisin : **le contraste des figures en thème SOMBRE**.
+   Le contraste des textes de figure est désormais mesuré aux pixels, mais en
+   thème CLAIR (101 défauts trouvés, 71 corrigés, 30 versés à la dette owner
+   — `docs/audits/contraste-figures.md`). Les correctifs sont tous en jetons,
+   donc ils basculent ; la mesure en sombre, elle, reste à faire
+   (`figure-preview --dark --pixels-tous`).
 4. **Le réseau qui RAMPE au lieu de mourir** — 200 ms de latence et 5 % de
    pertes, le pire cas réel. La coupure franche est mesurée
    (`horsligne-sweep`) ; la connexion malade ne l'est pas.
@@ -90,6 +96,13 @@ Une leçon dense se peint en 0,5 s et reste sourde 6,7 s sur un téléphone bon
 marché. Voir `docs/audits/poids-et-reactivite.md`. Ce qui reste sous ce
 numéro, c'est la consommation de données — une autre question.)*
 
+*(La classe « contraste d'un texte de figure contre ce qui est vraiment peint
+derrière lui », nommée dans ce document le 2026-09-03 comme non instrumentée,
+a été mesurée et fermée le lendemain — et elle a rapporté une classe de
+défaut que personne n'avait imaginée : **un texte effacé par une étape
+ultérieure**, dont le contraste nominal est parfait. Trois figures
+s'effaçaient elles-mêmes. Voir `docs/audits/contraste-figures.md`.)*
+
 *(Le point 5 de la première version de cette liste — « le texte qui sort de
 son panneau », nommé le 2026-09-03 et non instrumenté — a été mesuré et
 fermé le lendemain : 9 cas, 4 débordements voulus déclarés
@@ -113,6 +126,24 @@ trouve beaucoup plus que ce qu'un œil trouve sur une page doit être suspecté
 avant d'être cru** — et une porte armée sur un tel compteur serait désarmée
 dans la semaine.
 
+La règle a resservi **trois fois** le lendemain, sur la sonde de contraste
+des figures — 418 défauts, puis 60, puis 70 « textes invisibles » qui sont
+parfaitement lisibles, avant que le compte honnête (101, dont 30 sous dette
+owner) sorte. D'où le corollaire, qui vaut pour tout instrument qui
+RAISONNE sur un rendu au lieu de le regarder :
+
+> **Le modèle propose, les pixels disposent.**
+> Un modèle de peinture — géométrie, ordre du document, `fill-opacity`,
+> opacité des groupes — est fidèle et se trompe en silence. Quand une mesure
+> peut être faite pour de vrai (capturer, retirer l'élément, recapturer,
+> comparer), elle doit l'être, et c'est ELLE qui rend le verdict.
+
+Et un instrument qui mesure doit porter son propre **témoin** : la sonde de
+contraste refuse de trancher quand le fond qu'elle mesure est celui du corps
+de la page, parce que c'est physiquement impossible à l'intérieur d'une
+carte de figure. C'est ce témoin qui aurait dû exister d'emblée — il aurait
+épargné une passe entière de faux positifs.
+
 ## La règle de méthode
 
 **Une porte ne s'arme que sur une classe propre.** Si la classe ne l'est
@@ -121,6 +152,12 @@ en vert. C'est pourquoi `cls-sweep` n'est pas une porte : `/examens/<id>`
 est à 0,320, et c'est un arbitrage de propriétaire.
 
 **Et toute exception vit dans le fichier**, jamais dans la tête de qui l'a
-posée : `COULEURS SÉMANTIQUES:`, `DETTE OWNER:`, `CODES R LÉGITIMES:`,
-`data-rature`, l'exception « Inline » des cibles tactiles, les trois
-exclusions du balayage à 200 %.
+posée : `COULEURS SÉMANTIQUES:`, `DETTE OWNER:`, `RECOUVREMENT ASSUMÉ:`,
+`CODES R LÉGITIMES:`, `data-rature`, l'exception « Inline » des cibles
+tactiles, les trois exclusions du balayage à 200 %.
+
+`RECOUVREMENT ASSUMÉ:` (2026-09-04) est le plus récent, et il pose une
+exigence de plus que ses aînés : **il doit NOMMER le texte concerné entre
+guillemets français**, et la sonde n'exempte que celui-là. Un marqueur qui
+vaut pour tout un fichier fait taire l'instrument pour l'accident qu'on y
+introduira demain.

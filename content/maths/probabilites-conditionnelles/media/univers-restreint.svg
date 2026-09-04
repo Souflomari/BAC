@@ -165,7 +165,14 @@
        ══════════════════════════════════════════════════════ -->
   <g id="step-4">
     <rect class="urs-dim2" x="480" y="130" width="260" height="180"/>
-    <rect class="urs-dim2" x="324" y="310" width="416" height="120"/>
+    <!-- Le voile de la rangée du bas est DÉJÀ posé par le step-3 (rect
+         220,310 → 740,430, qui contient strictement celui-ci). Les étapes
+         étant cumulatives, le reposer ici faisait DEUX voiles à 0,82 sur les
+         mêmes cases : 0,97 d'opacité cumulée, et les effectifs « 32 » et
+         « A̅ ∩ B̅ » n'étaient plus atténués mais EFFACÉS — mesuré le
+         2026-09-04 : retirer ces textes ne changeait plus l'image. Le
+         supprimer ne change RIEN à ce que voit l'élève au step-4, puisque la
+         zone est déjà voilée ; ça lui rend seulement ses chiffres. -->
     <rect class="urs-keep" x="220" y="130" width="260" height="180" rx="8"/>
     <rect class="urs-keep" x="220" y="310" width="104" height="120" rx="8"/>
 

@@ -65,24 +65,31 @@
     <text x="108" y="63" text-anchor="middle"
           font-size="9" font-weight="500" fill="var(--figure-accent)">section S</text>
 
-    <!-- Charges + passées (droite de S — opaques, "déjà passées") -->
-    <circle cx="138" cy="90"  r="7.5" fill="var(--figure-accent)" fill-opacity="0.85"/>
+    <!-- Charges + passées (droite de S — les plus soutenues, "déjà passées").
+         GLYPHE EN ENCRE, ET PALIER HAUT À 0,70 : le « + » était blanc, ce qui
+         le rendait illisible dès que le disque s'atténuait (1,39:1 sur le
+         disque le plus pâle, mesuré aux pixels le 2026-09-04). Un signe blanc
+         ne peut pas survivre à un fond qui pâlit — c'est le fond qui décide.
+         Encre sur disque teinté tient partout, à condition que le palier le
+         plus soutenu ne dépasse pas ~0,70 (à 0,85 l'encre tombait à 4,11:1).
+         Le dégradé, lui, est intact : c'est lui qui dit la distance. -->
+    <circle cx="138" cy="90"  r="7.5" fill="var(--figure-accent)" fill-opacity="0.7"/>
     <text x="138" y="94" text-anchor="middle" font-size="10"
-          fill="var(--figure-surface)" font-weight="700">+</text>
-    <circle cx="164" cy="114" r="7.5" fill="var(--figure-accent)" fill-opacity="0.85"/>
+          fill="var(--figure-ink)" font-weight="700">+</text>
+    <circle cx="164" cy="114" r="7.5" fill="var(--figure-accent)" fill-opacity="0.7"/>
     <text x="164" y="118" text-anchor="middle" font-size="10"
-          fill="var(--figure-surface)" font-weight="700">+</text>
+          fill="var(--figure-ink)" font-weight="700">+</text>
 
     <!-- Charges + approchant (gauche de S — opacité décroissante = distance) -->
     <circle cx="80"  cy="102" r="7.5" fill="var(--figure-accent)" fill-opacity="0.52"/>
     <text x="80" y="106" text-anchor="middle" font-size="10"
-          fill="var(--figure-surface)" font-weight="700">+</text>
+          fill="var(--figure-ink)" font-weight="700">+</text>
     <circle cx="56"  cy="87"  r="7.5" fill="var(--figure-accent)" fill-opacity="0.34"/>
     <text x="56" y="91" text-anchor="middle" font-size="10"
-          fill="var(--figure-surface)" font-weight="700">+</text>
+          fill="var(--figure-ink)" font-weight="700">+</text>
     <circle cx="44"  cy="116" r="7.5" fill="var(--figure-accent)" fill-opacity="0.22"/>
     <text x="44" y="120" text-anchor="middle" font-size="10"
-          fill="var(--figure-surface)" font-weight="700">+</text>
+          fill="var(--figure-ink)" font-weight="700">+</text>
 
     <!-- Petites flèches de mouvement sur les charges approchantes -->
     <line x1="89" y1="102" x2="99" y2="102"

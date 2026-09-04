@@ -52,7 +52,11 @@
           stroke-linecap="round" stroke-linejoin="round"/>
 
     <line x1="360" y1="115" x2="380" y2="115" stroke="var(--figure-ink-soft)" stroke-width="2.5" stroke-linecap="round"/>
-    <circle cx="400" cy="115" r="20" fill="var(--figure-accent)" fill-opacity="0.85"/>
+    <!-- Opacité PLEINE, et pas 0,85 : « COO » est écrit en blanc dessus, et
+         à 0,85 le disque pâlissait juste assez pour faire tomber le mot à
+         4,22:1 (mesuré aux pixels le 2026-09-04). Un aplat qui porte du
+         texte blanc ne se dilue pas. -->
+    <circle cx="400" cy="115" r="20" fill="var(--figure-accent)"/>
     <text x="400" y="119" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-surface)">COO</text>
     <text x="424" y="98" font-size="14" font-weight="700" fill="var(--figure-accent)">−</text>
 

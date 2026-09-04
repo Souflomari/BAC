@@ -39,15 +39,35 @@ const RACINE = path.dirname(WEB);
 const args = process.argv.slice(2);
 const sombre = args.includes("--dark");
 // --porte : sortie non nulle si une classe ARMÉE trouve quoi que ce soit.
-// Seules deux classes sont armées, et seulement parce qu'elles sont PROPRES
-// sur tout le corpus au 2026-09-04 :
+// Cinq classes sont armées, et seulement parce qu'elles sont PROPRES sur
+// tout le corpus VIVANT au 2026-09-04 :
 //   · « déborde »      — un texte qui sort du cadre de la figure (0 cas) ;
-//   · « hors panneau » — un texte qui sort de SON panneau (0 cas).
+//   · « hors panneau » — un texte qui sort de SON panneau (0 cas) ;
+//   · « contraste grave » et « contraste faible » — un texte sous le seuil de
+//     SC 1.4.3 contre ce qui est VRAIMENT peint derrière lui (101 trouvés le
+//     2026-09-04, 71 corrigés, 30 versés à la dette owner, donc hors porte) ;
+//   · « texte invisible » — un texte effacé par une étape ultérieure (3
+//     corrigés ; 3 recouvrements VOULUS, déclarés dans leur fichier).
 // « barre » (85 cas, tous sous 30 %) et « chevauche » (7 cas, tous dans la
 // figure sous dette owner) restent INFORMATIFS : armer une porte sur une
 // classe sale, c'est devoir la désarmer le lendemain.
+//
+// LA PORTE NE VOIT QUE LA PASSE RAPIDE — le modèle de peinture, vérifié aux
+// pixels sur ses seuls candidats. Elle manque donc ~17 % des cas : ceux qu'un
+// modèle ne peut pas voir, un texte recouvert par une forme peinte APRÈS lui.
+// Elle garde contre la régression ordinaire ; pour CERTIFIER un corpus, c'est
+// `--pixels-tous` qui fait foi.
 const porte = args.includes("--porte");
-const CLASSES_ARMEES = new Set(["déborde", "hors panneau"]);
+// --pixels-tous : l'étage pixel ne se contente plus de VÉRIFIER les candidats
+// du modèle, il passe TOUS les textes du corpus. Coûteux (deux captures par
+// texte, ~25 min sur 258 figures) mais c'est le seul balayage qui attrape ce
+// que le modèle ne peut pas voir par construction : un texte RECOUVERT par une
+// forme peinte APRÈS lui. Le modèle s'arrête au texte — il ignore tout ce qui
+// passe par-dessus. Les pixels, eux, ne s'arrêtent nulle part.
+const pixelsTous = args.includes("--pixels-tous");
+const CLASSES_ARMEES = new Set([
+  "déborde", "hors panneau", "contraste grave", "contraste faible", "texte invisible",
+]);
 const fichiers = args.filter((a) => !a.startsWith("--"));
 
 if (fichiers.length === 0) {
@@ -655,8 +675,446 @@ const defauts = await page.evaluate((sombreActif) => {
       });
     }
   });
+
+  // ══════════════════════════════════════════════════════════════════════
+  // SONDE 6 — LE CONTRASTE D'UN TEXTE CONTRE CE QUI EST PEINT DERRIÈRE LUI.
+  //
+  // `contrast-gate` juge les 80 paires de la palette : chaque jeton d'encre
+  // contre chaque jeton de fond, dans les deux thèmes. Il ne dit RIEN du
+  // voisinage réel à l'intérieur d'une figure — une étiquette en
+  // `--figure-ink` posée sur un aplat `--figure-accent` peut tomber à 2:1
+  // sans qu'aucune porte ne bouge, parce que les deux jetons sont
+  // parfaitement conformes chacun de son côté.
+  //
+  // COMMENT ON TROUVE LE FOND, sans lire un seul pixel — et les DEUX pièges
+  // qu'il a fallu payer avant d'y arriver :
+  //
+  //   1. `elementsFromPoint` ne répond QUE pour un point dans la fenêtre
+  //      VISIBLE. La page d'aperçu empile 258 figures ; la fonction rendait
+  //      donc un tableau vide pour presque toutes, la sonde retombait sur
+  //      « surface de la figure », et dix « R » blancs posés sur des billes
+  //      rouges étaient annoncés à 1,00:1 contre du blanc.
+  //   2. La boîte englobante N'EST PAS la forme. Le rectangle d'un `path`
+  //      diagonal contient des points que le tracé ne couvre pas, et les
+  //      quatre coins d'un cercle n'en font pas partie.
+  //
+  // On procède donc par GÉOMÉTRIE EXACTE et par ORDRE DE PEINTURE, ce qui
+  // est le modèle réel de SVG : `isPointInFill` dit si le point tombe dans
+  // l'aire remplie de la forme (converti dans son repère par la CTM), et on
+  // COMPOSITE toutes les formes qui le contiennent dans l'ordre du document,
+  // chacune avec son `fill-opacity` et l'opacité de ses groupes parents.
+  // Une bande d'accent à 28 % ne se lit pas comme un aplat d'accent : elle
+  // se lit comme le mélange de l'accent et de ce qui est dessous. Ignorer
+  // cela, c'était inventer des défauts.
+  //
+  // SEUILS. SC 1.4.3 demande 4,5:1 pour du texte normal, 3:1 pour du grand
+  // texte (≥ 24 px, ou ≥ 18,66 px en gras) — les deux cas sont traités. Les
+  // étiquettes de figure font 9 à 13 px, donc c'est presque toujours 4,5.
+  // On SIGNALE sous le seuil et on nomme « grave » à moins des trois quarts.
+  const lum = (r, g, b) => {
+    const f = (c) => { c /= 255; return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); };
+    return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
+  };
+  // Rend [r, g, b, a] — l'alpha compte : c'est lui qui distingue un aplat
+  // d'une voile. `none`, `url(#…)` (dégradé, motif) et l'absence rendent null.
+  const rgb = (couleur) => {
+    const m = /rgba?\(([^)]+)\)/.exec(couleur || "");
+    if (!m) return null;
+    const p = m[1].split(",").map((x) => parseFloat(x));
+    return [p[0], p[1], p[2], p.length > 3 ? p[3] : 1];
+  };
+  // Peindre `dessus` (avec son alpha) par-dessus `dessous` (opaque).
+  const composer = (dessous, dessus, alpha) => {
+    const a = Math.max(0, Math.min(1, alpha));
+    return [0, 1, 2].map((i) => dessous[i] * (1 - a) + dessus[i] * a);
+  };
+  // Opacité cumulée des groupes parents jusqu'au <svg>.
+  const opaciteHeritee = (e, racine) => {
+    let o = 1;
+    for (let n = e; n && n !== racine; n = n.parentElement) {
+      o *= parseFloat(getComputedStyle(n).opacity || "1");
+    }
+    return o;
+  };
+  const ratio = (a, b) => {
+    const la = lum(...a), lb = lum(...b);
+    return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
+  };
+
+  document.querySelectorAll(".carte").forEach((carte, iFig) => {
+    const svg = carte.querySelector("svg");
+    if (!svg) return;
+    // Le rendu statique d'un .motion.svg superpose des états qui ne coexistent
+    // à aucun instant du film : y juger un contraste, c'est juger une image
+    // que personne ne verra jamais.
+    if (carte.hasAttribute("data-motion")) return;
+    // Un `background-color` transparent ne peint rien : on remonte au corps.
+    const opaque = (c) => (c && c[3] >= 0.5 ? c : null);
+    const fondCarte = opaque(rgb(getComputedStyle(carte).backgroundColor)) ||
+                      opaque(rgb(getComputedStyle(document.body).backgroundColor)) ||
+                      [255, 255, 255, 1];
+    let iTexte = -1;
+    for (const t of svg.querySelectorAll("text")) {
+      iTexte++;                      // rang du <text> dans le document = rang
+                                     // dans le FICHIER : de quoi viser juste
+                                     // quand deux étiquettes portent le même
+                                     // texte et qu'une seule est fautive.
+      const s = (t.textContent || "").trim();
+      if (!s) continue;
+      const cs = getComputedStyle(t);
+      if (cs.visibility === "hidden" || cs.display === "none") continue;
+      // Un texte sous 0,5 d'opacité est traité comme un ornement et n'est pas
+      // jugé — angle mort ASSUMÉ, et il faut le savoir : si un jour une
+      // information passe par une opacité aussi basse, cette sonde la manque.
+      if (parseFloat(cs.opacity || "1") < 0.5) continue;
+      const encre = rgb(cs.fill);
+      if (!encre) continue;
+      const b = t.getBoundingClientRect();
+      if (b.width < 2 || b.height < 2) continue;
+      const cx = b.x + b.width / 2, cy = b.y + b.height / 2;
+      // QUATRIÈME PIÈGE PAYÉ, et le plus vicieux parce qu'il dépendait du
+      // NOMBRE DE FIGURES mesurées. Le test d'appartenance se faisait en
+      // coordonnées de FENÊTRE : sur la page d'aperçu du corpus entier, une
+      // figure en bas est à y ≈ 90 000, et l'inversion de la CTM à ces
+      // grandeurs perd assez de précision pour qu'une pointe de flèche de
+      // 8 px « contienne » un point situé à côté. Résultat : cinq textes
+      // déclarés recouverts en lot, aucun en solo — un instrument qui change
+      // d'avis selon le nombre d'entrées ne vaut rien (la même leçon que le
+      // 2026-08-22 sur les chevauchements, apprise une seconde fois).
+      //
+      // On travaille donc dans le REPÈRE UTILISATEUR du SVG, où tout tient
+      // entre 0 et ~1000 : centre du texte via getBBox() ramené au repère
+      // racine par sa CTM, puis renvoyé dans le repère de chaque forme.
+      const bb = t.getBBox();
+      const ctmT = t.getCTM();
+      const centre = ctmT
+        ? new DOMPoint(bb.x + bb.width / 2, bb.y + bb.height / 2).matrixTransform(ctmT)
+        : null;
+      const dansLaForme = (e) => {
+        try {
+          const c = e.getCTM();
+          if (!c || !centre) throw new Error("pas de CTM");
+          return e.isPointInFill(centre.matrixTransform(c.inverse()));
+        } catch {
+          const r2 = e.getBoundingClientRect();
+          return cx >= r2.x && cx <= r2.x + r2.width && cy >= r2.y && cy <= r2.y + r2.height;
+        }
+      };
+      // PAS `elementsFromPoint`, ET C'EST LE PIÈGE QUI A COÛTÉ DEUX PASSES.
+      // Cette fonction ne répond QUE pour un point dans la fenêtre visible ;
+      // la page d'aperçu empile 258 figures, donc elle rendait un tableau
+      // VIDE pour presque toutes, et la sonde retombait sur « surface de la
+      // figure » — dix « R » blancs posés sur des billes rouges annoncés à
+      // 1,00:1 contre du blanc. On cherche donc géométriquement : parmi les
+      // formes PEINTES du même SVG dont la boîte contient le centre du
+      // texte, la DERNIÈRE dans l'ordre du document est celle du dessus.
+      let fond = fondCarte.slice(0, 3), nomFond = "surface de la figure";
+      for (const e of svg.querySelectorAll("circle, ellipse, rect, path, polygon, line, text")) {
+        if (e === t) break;                       // on ne peint plus après le texte
+        if (e.tagName === "text") continue;       // un chevauchement d'étiquettes
+                                                  // est un AUTRE défaut, jugé ailleurs
+        if (e.contains(t) || t.contains(e)) continue;
+        const ce = getComputedStyle(e);
+        if (ce.visibility === "hidden" || ce.display === "none") continue;
+        const peint = rgb(ce.fill);
+        if (!peint) continue;
+        const alpha = peint[3] *
+                      parseFloat(ce.fillOpacity || "1") *
+                      opaciteHeritee(e, svg);
+        if (alpha <= 0.01) continue;
+        // GÉOMÉTRIE EXACTE (voir `dansLaForme` plus haut) : le point testé
+        // contre l'AIRE REMPLIE de la forme, pas contre sa boîte.
+        if (!dansLaForme(e)) continue;
+        fond = composer(fond, peint, alpha);
+        nomFond = `${e.tagName.toLowerCase()}${e.getAttribute("class") ? "." + e.getAttribute("class").split(/\s+/)[0] : ""}`;
+      }
+      // ── CE QUI PASSE PAR-DESSUS ────────────────────────────────────
+      // Les étapes d'une figure sont CUMULATIVES (StagedFigure :
+      // `wanted = fullyRevealed || n <= stage`, groupes insérés en
+      // `beforeend`). Ce qu'un step peint recouvre POUR DE BON ce qu'un step
+      // antérieur avait peint. Un texte au contraste nominal parfait peut
+      // donc être purement et simplement effacé — trois figures le
+      // faisaient, dont une à 17,35:1.
+      //
+      // Le modèle regarde donc AUSSI ce qui vient après le texte dans
+      // l'ordre du document, et accumule le voile. Au-delà de 0,85, il
+      // propose « texte invisible » ; l'étage pixel tranche en retirant le
+      // texte et en regardant si l'image bouge.
+      let voile = 0;
+      let vu = false;
+      const couvrants = [];
+      for (const e of svg.querySelectorAll("circle, ellipse, rect, path, polygon, line, text")) {
+        if (e === t) { vu = true; continue; }
+        if (!vu) continue;                        // peint AVANT : déjà composé
+        if (e.tagName === "text") continue;       // un texte qui en couvre un
+                                                  // autre est un chevauchement
+        if (e.contains(t) || t.contains(e)) continue;
+        const ce = getComputedStyle(e);
+        if (ce.visibility === "hidden" || ce.display === "none") continue;
+        const peint = rgb(ce.fill);
+        if (!peint) continue;
+        const alpha = peint[3] * parseFloat(ce.fillOpacity || "1") * opaciteHeritee(e, svg);
+        if (alpha <= 0.01) continue;
+        if (!dansLaForme(e)) continue;
+        voile = 1 - (1 - voile) * (1 - alpha);
+        couvrants.push(`${e.tagName.toLowerCase()}@${alpha.toFixed(2)}`);
+      }
+
+      // L'encre elle-même peut être une voile : une étiquette à 40 % ne se
+      // lit pas comme sa couleur nominale.
+      const alphaEncre = encre[3] *
+                         parseFloat(cs.fillOpacity || "1") *
+                         opaciteHeritee(t, svg);
+      const encreVue = alphaEncre >= 0.99 ? encre.slice(0, 3) : composer(fond, encre, alphaEncre);
+      // SC 1.4.3 : 3:1 pour du grand texte (≥ 24 px, ou ≥ 18,66 px en gras).
+      const px = parseFloat(cs.fontSize);
+      const gras = parseInt(cs.fontWeight, 10) >= 700;
+      const seuil = px >= 24 || (gras && px >= 18.66) ? 3 : 4.5;
+      const r = ratio(encreVue, fond);
+      if (r >= seuil && voile < 0.85) continue;
+      // Marqué pour l'ÉTAGE PIXEL, qui ira vérifier ce que le modèle avance.
+      const idc = String(out.length);
+      t.setAttribute("data-contraste-id", idc);
+      out.push({
+        fig: iFig,
+        id: idc,
+        iTexte,
+        encre: encreVue.map(Math.round),
+        encreBrute: encre.slice(0, 3).map(Math.round),
+        couvrants: couvrants.slice(0, 4),
+        voile,
+        alphaEncre,
+        seuil,
+        modele: r,
+        type: voile >= 0.85 ? "texte invisible" : r < seuil * 0.75 ? "contraste grave" : "contraste faible",
+        txt: s.slice(0, 26),
+        detail:
+          `${r.toFixed(2)}:1 — encre rgb(${encreVue.map(Math.round).join(",")}) ` +
+          `sur ${nomFond} rgb(${fond.map(Math.round).join(",")}) · ` +
+          `${Math.round(px)}px${gras ? " gras" : ""} · SC 1.4.3 demande ${seuil === 3 ? "3" : "4,5"}:1`,
+      });
+    }
+  });
+
   return out;
 }, sombre);
+
+/**
+ * ÉTAGE PIXEL — le modèle propose, les pixels disposent.
+ *
+ * La sonde 6 calcule le fond en SIMULANT le modèle de peinture de SVG :
+ * géométrie exacte, ordre du document, `fill-opacity`, opacité des groupes.
+ * C'est fidèle — mais c'est un modèle, et un modèle se trompe en silence.
+ * Deux fois déjà aujourd'hui il s'est trompé, et deux fois il avait l'air
+ * sûr de lui : 418 défauts annoncés avant la prise en compte des voiles,
+ * 60 « blanc sur blanc » avant la correction de `elementsFromPoint`.
+ *
+ * Alors on mesure pour de vrai. Pour chaque candidat : on capture la zone
+ * du texte, on CACHE le texte, on recapture. La seconde image ne contient
+ * plus que le fond — c'est la vérité terrain, sans une ligne de modèle. On
+ * en prend la couleur MÉDIANE (robuste aux bords et aux traits qui passent)
+ * et on recalcule le rapport. Le verdict rendu est celui des pixels.
+ *
+ * Bénéfice secondaire, gratuit : la différence entre les deux images dit si
+ * le texte change quoi que ce soit à l'image. Un texte dont le retrait ne
+ * change RIEN est un texte que l'élève ne voit pas — le défaut le plus
+ * grave de la classe, et le seul qui ne dépende d'aucun seuil.
+ */
+// « texte invisible » DOIT être dans cette liste : c'est une proposition du
+// modèle comme une autre, et elle passe au crible des pixels comme les
+// autres. L'oublier (première version, 2026-09-04) faisait publier telles
+// quelles cinq propositions jamais vérifiées — exactement ce que tout cet
+// étage existe pour empêcher.
+const candidats = defauts.filter(
+  (d) => typeof d.type === "string" && (d.type.startsWith("contraste") || d.type === "texte invisible")
+);
+if (pixelsTous) {
+  const tous = await page.evaluate(() => {
+    const out = [];
+    let n = 1e6;
+    document.querySelectorAll(".carte").forEach((carte, iFig) => {
+      const svg = carte.querySelector("svg");
+      if (!svg || carte.hasAttribute("data-motion")) return;
+      let iTexte = -1;
+      for (const t of svg.querySelectorAll("text")) {
+        iTexte++;
+        if (t.hasAttribute("data-contraste-id")) continue;   // déjà candidat
+        const s = (t.textContent || "").trim();
+        if (!s) continue;
+        const cs = getComputedStyle(t);
+        if (cs.visibility === "hidden" || cs.display === "none") continue;
+        const m = /rgba?\(([^)]+)\)/.exec(cs.fill || "");
+        if (!m) continue;
+        const p = m[1].split(",").map((x) => parseFloat(x));
+        let o = p.length > 3 ? p[3] : 1;
+        o *= parseFloat(cs.fillOpacity || "1");
+        for (let e = t; e && e !== svg; e = e.parentElement) o *= parseFloat(getComputedStyle(e).opacity || "1");
+        const px = parseFloat(cs.fontSize);
+        const gras = parseInt(cs.fontWeight, 10) >= 700;
+        const idc = String(n++);
+        t.setAttribute("data-contraste-id", idc);
+        out.push({
+          fig: iFig, id: idc, iTexte, txt: s.slice(0, 26), exploratoire: true,
+          encreBrute: [p[0], p[1], p[2]].map(Math.round), alphaEncre: o,
+          seuil: px >= 24 || (gras && px >= 18.66) ? 3 : 4.5,
+        });
+      }
+    });
+    return out;
+  });
+  console.log(`Étage pixel intégral : ${tous.length} texte(s) supplémentaire(s) à mesurer un par un.`);
+  candidats.push(...tous);
+}
+if (candidats.length) {
+  const lum = (r, g, b) => {
+    const f = (c) => { c /= 255; return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); };
+    return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
+  };
+  const rapport = (a, b) => {
+    const la = lum(...a), lb = lum(...b);
+    return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
+  };
+  // TROISIÈME PIÈGE PAYÉ, ET LE PLUS SOURNOIS. Première version de cet
+  // étage : capture `fullPage` avec un `clip` en coordonnées du document.
+  // Sur cette page — 258 figures empilées, plus de 100 000 px de haut —
+  // Chromium ne peut pas allouer la surface, et rend une image du FOND DE
+  // PAGE pour tout ce qui est loin en bas. Résultat : « le retrait du texte
+  // ne change rien » sur presque tous les candidats, avec un fond mesuré à
+  // rgb(247,247,244) — la couleur du corps de la page, jamais celle d'une
+  // carte de figure. L'instrument venait de certifier soixante-dix textes
+  // invisibles qui sont parfaitement lisibles.
+  //
+  // On amène donc chaque texte DANS la fenêtre, on remesure sa boîte après
+  // le défilement (`boundingBox` est relatif à la fenêtre), et on capture
+  // sans `fullPage`. Et on garde le témoin : un fond mesuré égal au fond du
+  // CORPS est physiquement impossible à l'intérieur d'une carte — si ça
+  // arrive, c'est la capture qui a manqué sa cible, pas la figure qui est
+  // fautive, et on le dit au lieu d'inventer un défaut.
+  const fondCorps = await page.evaluate(() => {
+    const m = /rgba?\(([^)]+)\)/.exec(getComputedStyle(document.body).backgroundColor);
+    return m ? m[1].split(",").map((x) => Math.round(parseFloat(x))).slice(0, 3) : null;
+  });
+  let capturesRatees = 0;
+  for (const d of candidats) {
+    const el = await page.$(`[data-contraste-id="${d.id}"]`);
+    if (!el) { d.pixels = "élément introuvable"; continue; }
+    await el.scrollIntoViewIfNeeded();
+    const b = await el.boundingBox();
+    if (!b || b.width < 1 || b.height < 1) { d.pixels = "zone vide"; continue; }
+    const clip = { x: Math.max(0, b.x - 1), y: Math.max(0, b.y - 1), width: b.width + 2, height: b.height + 2 };
+    const avant = (await page.screenshot({ clip })).toString("base64");
+    await el.evaluate((e) => { e.style.visibility = "hidden"; });
+    const apres = (await page.screenshot({ clip })).toString("base64");
+    await el.evaluate((e) => { e.style.visibility = ""; });
+    const m = await page.evaluate(async ([a, p]) => {
+      const charge = (s64) =>
+        new Promise((res, rej) => {
+          const i = new Image();
+          i.onload = () => res(i);
+          i.onerror = rej;
+          i.src = "data:image/png;base64," + s64;
+        });
+      const [ia, ib] = await Promise.all([charge(a), charge(p)]);
+      const c = document.createElement("canvas");
+      c.width = ia.width; c.height = ia.height;
+      const x = c.getContext("2d", { willReadFrequently: true });
+      x.drawImage(ia, 0, 0);
+      const da = x.getImageData(0, 0, c.width, c.height).data;
+      x.clearRect(0, 0, c.width, c.height);
+      x.drawImage(ib, 0, 0);
+      const db = x.getImageData(0, 0, c.width, c.height).data;
+      let maxd = 0, changes = 0;
+      const lums = [], cols = [];
+      for (let i = 0; i < da.length; i += 4) {
+        const delta = Math.max(
+          Math.abs(da[i] - db[i]), Math.abs(da[i + 1] - db[i + 1]), Math.abs(da[i + 2] - db[i + 2])
+        );
+        if (delta > maxd) maxd = delta;
+        if (delta > 8) changes++;
+        cols.push([db[i], db[i + 1], db[i + 2]]);
+        lums.push(0.299 * db[i] + 0.587 * db[i + 1] + 0.114 * db[i + 2]);
+      }
+      // MÉDIANE et non moyenne : une moyenne mélangerait un trait d'axe qui
+      // traverse la zone avec l'aplat, et inventerait une couleur qui n'est
+      // peinte nulle part.
+      const ordre = lums.map((l, i) => [l, i]).sort((u, v) => u[0] - v[0]);
+      const fond = cols[ordre[Math.floor(ordre.length / 2)][1]];
+      return { maxd, part: changes / (da.length / 4), fond, n: da.length / 4 };
+    }, [avant, apres]);
+    if (fondCorps && m.fond.every((c, i) => Math.abs(c - fondCorps[i]) <= 1)) {
+      // Le témoin a parlé : cette capture n'est pas tombée dans la carte.
+      capturesRatees++;
+      d.pixels = "capture manquée (fond du corps mesuré) — non jugé";
+      continue;
+    }
+    // L'encre est recomposée sur le fond MESURÉ : une étiquette à 40 %
+    // d'opacité ne se lit pas comme sa couleur nominale, et le fond sur
+    // lequel elle se dilue est celui des pixels, pas celui du modèle.
+    const a = Math.max(0, Math.min(1, d.alphaEncre ?? 1));
+    d.encre = a >= 0.99
+      ? d.encreBrute.slice()
+      : [0, 1, 2].map((i) => Math.round(m.fond[i] * (1 - a) + d.encreBrute[i] * a));
+    const r = rapport(d.encre, m.fond);
+    d.mesure = r;
+    d.fondMesure = m.fond;
+    d.invisible = m.maxd <= 8;
+    d.pixels =
+      `${r.toFixed(2)}:1 mesuré aux pixels — encre rgb(${d.encre.join(",")}) sur fond réel ` +
+      `rgb(${m.fond.join(",")})` +
+      (m.maxd <= 8
+        ? " · LE RETRAIT DU TEXTE NE CHANGE RIEN À L'IMAGE : invisible"
+        : ` · le texte marque ${(m.part * 100).toFixed(0)} % de sa zone (écart max ${m.maxd})`);
+  }
+  // Le modèle avait tort quand les pixels passent le seuil : on le dit, et on
+  // retire le défaut. Un instrument qui garde ses faux positifs par prudence
+  // apprend à ses lecteurs à ignorer ses sorties.
+  const dementis = candidats.filter(
+    (d) => !d.exploratoire && typeof d.mesure === "number" && d.mesure >= d.seuil && !d.invisible
+  );
+  for (const d of dementis) defauts.splice(defauts.indexOf(d), 1);
+  // Les exploratoires n'étaient PAS des défauts : ils le deviennent seulement
+  // si les pixels les condamnent. C'est le sens de la marche — le modèle
+  // dirige le regard, la mesure tranche, et jamais l'inverse.
+  const trouves = candidats.filter(
+    (d) => d.exploratoire && (d.invisible || (typeof d.mesure === "number" && d.mesure < d.seuil))
+  );
+  for (const d of trouves) defauts.push(d);
+  for (const d of candidats) {
+    if (typeof d.mesure !== "number") continue;
+    if (d.invisible) d.type = "texte invisible";
+    else d.type = d.mesure < d.seuil * 0.75 ? "contraste grave" : "contraste faible";
+    d.detail = `${d.pixels} · ${Math.round(d.px ?? 0) || ""}`.replace(/ · $/, "");
+    d.detail = d.pixels + ` · SC 1.4.3 demande ${d.seuil === 3 ? "3" : "4,5"}:1` +
+      (d.couvrants && d.couvrants.length
+        ? ` · recouvert à ${(d.voile * 100).toFixed(0)} % par ${d.couvrants.join(", ")}`
+        : "") +
+      (typeof d.modele === "number" && Math.abs(d.mesure - d.modele) > 0.15
+        ? ` (le modèle disait ${d.modele.toFixed(2)}:1)` : "");
+  }
+  const nonMesures = candidats.filter((d) => typeof d.mesure !== "number");
+  if (nonMesures.length) {
+    console.error(
+      `\n✗ ÉTAGE PIXEL : ${nonMesures.length} candidat(s) NON mesuré(s) — ` +
+        "l'instrument ne peut pas les certifier :"
+    );
+    for (const d of nonMesures.slice(0, 8)) {
+      console.error(`   · [${path.basename(fichiers[d.fig] ?? "?")}] « ${d.txt} » → ${d.pixels ?? "raison inconnue"}`);
+    }
+  }
+  if (capturesRatees) {
+    console.error(
+      `\n✗ ÉTAGE PIXEL CASSÉ : ${capturesRatees} capture(s) sont tombées sur le fond du corps ` +
+        "au lieu de la carte. Les candidats concernés ne sont PAS jugés — l'instrument\n" +
+        "  refuse de trancher sur une image qu'il sait fausse."
+    );
+  }
+  if (dementis.length) {
+    console.log(
+      `\nÉtage pixel : ${dementis.length} candidat(s) démenti(s) par la mesure — ` +
+        "le modèle de peinture les avait mal jugés, les pixels les blanchissent."
+    );
+  }
+}
 
 await navigateur.close();
 const nbMotion = fichiers.filter((f) => /\.motion\.svg$/.test(f)).length;
@@ -667,28 +1125,111 @@ if (nbMotion > 0) {
       " le rendu statique d'un .motion.svg n'est l'état d'aucun instant du film."
   );
 }
-if (defauts.length === 0) {
-  console.log("Mesure : aucun texte hors cadre, aucun chevauchement > 40 %.");
+// Une figure marquée DETTE OWNER est sous arbitrage : la repeindre
+// reviendrait à décider qu'on la garde. Ses défauts sont RÉELS et doivent
+// être comptés — mais séparément, sinon la dette owner pollue à jamais le
+// décompte du corpus vivant et personne ne sait plus ce qui reste à faire.
+const enDette = new Set(
+  fichiers.filter((f) => {
+    try {
+      const abs = path.isAbsolute(f) ? f : path.join(RACINE, f);
+      return /DETTE\s+OWNER\s*:/i.test(readFileSync(abs, "utf8"));
+    } catch { return false; }
+  })
+);
+// RECOUVREMENT ASSUMÉ — l'exception, sur le modèle de COULEURS SÉMANTIQUES.
+//
+// Les étapes d'une figure sont CUMULATIVES : ce qu'un step peint recouvre
+// pour de bon ce qu'un step antérieur avait peint. C'est parfois le PROPOS
+// même de la figure — l'ion Cu²⁺ qui devient un atome de cuivre au même
+// site, le titre d'un schéma remplacé quand la résistance entre en scène,
+// la porteuse choisie redessinée en accent par-dessus elle-même. Dans ces
+// cas, « le retrait du texte ne change rien à l'image » est vrai ET voulu.
+//
+// On ne supprime pas la détection, on exige que l'exception soit DITE, et
+// qu'elle NOMME le texte concerné entre guillemets français — un marqueur
+// global ferait taire la sonde pour tout le fichier, y compris pour
+// l'effacement accidentel qu'on y introduira demain.
+const exempte = new Map();
+for (const f of fichiers) {
+  try {
+    const abs = path.isAbsolute(f) ? f : path.join(RACINE, f);
+    const src = readFileSync(abs, "utf8");
+    const noms = new Set();
+    for (const m of src.matchAll(/RECOUVREMENT\s+ASSUMÉ\s*:([^\n]*(?:\n(?!\s*(?:-->|[A-ZÉ]{4,}\s))[^\n]*)*)/gi)) {
+      for (const g of m[1].matchAll(/«\s*([^»]+?)\s*»/g)) noms.add(g[1]);
+    }
+    if (noms.size) exempte.set(f, noms);
+  } catch { /* fichier illisible : aucune exemption, et c'est le bon défaut */ }
+}
+const assumes = [];
+for (let i = defauts.length - 1; i >= 0; i--) {
+  const d = defauts[i];
+  if (d.type !== "texte invisible") continue;
+  const noms = exempte.get(fichiers[d.fig]);
+  if (!noms) continue;
+  // Le texte du rapport est tronqué à 26 caractères : on compare par préfixe.
+  for (const n of noms) {
+    if (n.startsWith(d.txt) || d.txt.startsWith(n.slice(0, 26))) {
+      assumes.push(d);
+      defauts.splice(i, 1);
+      break;
+    }
+  }
+}
+const dette = defauts.filter((d) => enDette.has(fichiers[d.fig]));
+const vifs = defauts.filter((d) => !enDette.has(fichiers[d.fig]));
+if (vifs.length === 0) {
+  console.log("\nMESURE — aucun défaut sur le corpus vivant.");
 } else {
-  console.log(`\nMESURE — ${defauts.length} défaut(s) :`);
-  for (const d of defauts) {
-    console.log(`  ✗ [${path.basename(fichiers[d.fig] ?? "?")}] ${d.type} : « ${d.txt} »`);
+  console.log(`\nMESURE — ${vifs.length} défaut(s) sur le corpus vivant :`);
+}
+for (const d of vifs) {
+  const rang = typeof d.iTexte === "number" ? ` (texte n°${d.iTexte})` : "";
+  console.log(`  ✗ [${path.basename(fichiers[d.fig] ?? "?")}] ${d.type} : « ${d.txt} »${rang}`);
+  console.log(`      ${d.detail}`);
+}
+if (assumes.length) {
+  console.log(
+    `\n${assumes.length} recouvrement(s) ASSUMÉ(s) — texte effacé par une étape ` +
+      "ultérieure, déclaré et motivé dans le fichier :"
+  );
+  for (const d of assumes) {
+    console.log(`  ○ [${path.basename(fichiers[d.fig] ?? "?")}] « ${d.txt} »`);
+  }
+}
+if (dette.length) {
+  console.log(
+    `\n${dette.length} défaut(s) de plus sur des figures marquées DETTE OWNER — ` +
+      "réels, non corrigés ici, et à porter au dossier d'arbitrage :"
+  );
+  for (const d of dette) {
+    console.log(`  · [${path.basename(fichiers[d.fig] ?? "?")}] ${d.type} : « ${d.txt} »`);
     console.log(`      ${d.detail}`);
   }
 }
 console.log("\nLa mesure ne remplace pas le regard : ouvre les PNG.");
 
 if (porte) {
-  const bloquants = defauts.filter((d) => CLASSES_ARMEES.has(d.type));
+  // Sur `vifs` et non `defauts` : une figure sous DETTE OWNER est un
+  // arbitrage en attente, pas une régression à bloquer. Ses défauts sont
+  // imprimés, comptés à part, et n'arrêtent pas le build.
+  const bloquants = vifs.filter((d) => CLASSES_ARMEES.has(d.type));
   if (bloquants.length) {
     console.error(
       `\n━━ porte figures : ${bloquants.length} défaut(s) de classe armée ━━\n` +
         "   (« déborde » = texte hors du cadre ; « hors panneau » = texte qui\n" +
-        "    sort de son panneau et se fait attribuer au voisin)"
+        "    sort de son panneau ; « contraste … » = texte sous le seuil de\n" +
+        "    SC 1.4.3 CONTRE CE QUI EST VRAIMENT PEINT DERRIÈRE LUI, mesuré\n" +
+        "    aux pixels ; « texte invisible » = texte effacé par une étape\n" +
+        "    ultérieure — si c'est voulu, déclare-le dans le fichier par\n" +
+        "    « RECOUVREMENT ASSUMÉ: « <le texte> » — <la raison> »)"
     );
     process.exit(1);
   }
   console.log(
-    `porte figures : ${fichiers.length} figure(s), aucune sortie de cadre, aucune sortie de panneau ✓`
+    `porte figures : ${fichiers.length} figure(s), aucune sortie de cadre, ` +
+      "aucune sortie de panneau, aucun texte sous le seuil de contraste, " +
+      "aucun texte effacé ✓"
   );
 }

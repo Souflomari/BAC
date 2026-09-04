@@ -170,6 +170,10 @@
          Un rect de masquage efface le titre step-1 avant de poser le nouveau
          titre — les deux <text> sont simultanément dans le DOM quand step-4
          est visible, SVG peint en ordre document (dernier = dessus). -->
+    <!-- RECOUVREMENT ASSUMÉ : « Circuit LC idéal — condensateur + bobine »
+         — le titre du step-1 est masqué par ce rect puis remplacé par celui
+         du circuit RLC. Les deux <text> coexistent dans le DOM ; seul le
+         second se voit, et c'est voulu. -->
     <rect x="120" y="10" width="320" height="20"
           fill="var(--figure-surface)"/>
     <text x="280" y="26" text-anchor="middle"

@@ -80,6 +80,11 @@
   -->
 
   <style>
+    /* ENCRE, PAS ACCENT, pour les étiquettes posées SUR un aplat accent
+       (.ivi-overlaplabel sur .ivi-overlap, .ivi-restrictlabel sur .ivi-restrict) :
+       accent sur accent teinté tombait à 3,5:1 et 3,9:1, mesuré aux pixels le
+       2026-09-04. L'aplat porte déjà le rôle — l'étiquette n'a pas à le redire
+       au prix de sa lisibilité. */
     .ivi-title    { font: 600 15px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
     .ivi-subtitle { font: 500 11.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
     .ivi-square   { fill: var(--figure-surface); stroke: var(--figure-ink-soft); stroke-width: 2; }
@@ -92,14 +97,14 @@
     .ivi-tag      { font: 600 12.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
     .ivi-emptyset { font: 700 16px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
     .ivi-overlap  { fill: var(--figure-accent); fill-opacity: 0.22; stroke: var(--figure-accent); stroke-width: 2.5; }
-    .ivi-overlaplabel { font: 700 11px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
+    .ivi-overlaplabel { font: 700 11px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
     .ivi-guide    { stroke: var(--figure-ink-soft); stroke-width: 1.2; stroke-dasharray: 4 4; }
     .ivi-box      { fill: var(--figure-surface); stroke: var(--figure-accent); stroke-width: 1.75; }
     .ivi-accent   { font: 700 13px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
     .ivi-note     { font: 500 9.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
     .ivi-bridge   { font: 500 10.5px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
     .ivi-restrict { fill: var(--figure-accent); fill-opacity: 0.10; stroke: var(--figure-accent); stroke-width: 2.5; stroke-dasharray: 6 3; }
-    .ivi-restrictlabel { font: 700 10px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
+    .ivi-restrictlabel { font: 700 10px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
     .ivi-measure  { stroke: var(--figure-accent); stroke-width: 1.6; }
     .ivi-hint     { font: italic 500 10px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
   </style>
@@ -114,7 +119,12 @@
        ══════════════════════════════════════════════════════ -->
   <g id="step-1">
     <rect class="ivi-square" x="60" y="90" width="260" height="260" rx="12"/>
-    <text class="ivi-omega" x="305" y="340" text-anchor="end">Ω</text>
+    <!-- DEHORS, sous le coin bas-gauche : à l'intérieur (x=305, y=340) le
+         nom de l'univers tombait pile dans la bande B, peinte en aplat
+         --figure-grid au step-2 — et disparaissait donc au moment même où la
+         figure commence à raconter quelque chose. Les étapes sont
+         cumulatives : ce qu'un step recouvre est recouvert pour de bon. -->
+    <text class="ivi-omega" x="54" y="346" text-anchor="end">Ω</text>
 
     <rect class="ivi-bandA" x="60" y="90" width="104" height="260"/>
     <text class="ivi-bandlabel" x="112" y="115">A</text>
