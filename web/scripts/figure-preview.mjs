@@ -337,6 +337,117 @@ const defauts = await page.evaluate(() => {
         }
       }
     }
+
+    // ── TROISIÈME SONDE : LE TRACÉ QUI BARRE UNE ÉTIQUETTE (2026-09-04) ─────
+    //
+    // Classe découverte EN REGARDANT, pendant le tri des 35 chevauchements,
+    // et que rien ne mesurait : une courbe, un axe ou une flèche qui passe
+    // AU TRAVERS d'un texte. Six cas réels trouvés à l'œil sur les 24
+    // figures ouvertes — la porteuse de 900 kHz barrant « 1 200 kHz », la
+    // droite N = Z barrant sa PROPRE étiquette, l'oscillation traversant
+    // « u_C ≈ U_0 + s_m(t) », les arêtes d'un arbre barrant « Soupe ». Sur
+    // 244 figures jamais ouvertes, il y en a forcément d'autres.
+    //
+    // COMMENT : on échantillonne chaque géométrie tracée le long de son
+    // contour (getPointAtLength, ~1 px de pas), on ramène les points dans le
+    // repère de la racine, et on compte ceux qui tombent dans la boîte d'un
+    // texte, RÉTRÉCIE de 15 % en hauteur pour qu'un trait qui longe un texte
+    // sans le toucher ne compte pas.
+    //
+    // CE QU'ON NE COMPTE PAS, et pourquoi — sans ces trois exclusions la
+    // sonde crierait sur presque toutes les figures et finirait ignorée :
+    //   · les traits FINS (< 1,5 px) et ceux peints en --figure-grid : une
+    //     étiquette d'axe posée sur une grille légère est normale et lisible.
+    //   · les traversées COURTES (< 8 px cumulés) : un trait qui écorne un
+    //     coin de boîte ne barre pas le mot.
+    //   · les textes protégés par un aplat opaque posé entre le tracé et
+    //     eux — la pastille est une technique légitime (detecteur-crete).
+    const hexVersRGB = (h) => {
+      const m = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(h.trim());
+      if (!m) return null;
+      let c = m[1];
+      if (c.length === 3) c = c[0] + c[0] + c[1] + c[1] + c[2] + c[2];
+      return `rgb(${parseInt(c.slice(0, 2), 16)},${parseInt(c.slice(2, 4), 16)},${parseInt(c.slice(4, 6), 16)})`;
+    };
+    const grilleRGB = hexVersRGB(
+      getComputedStyle(svg).getPropertyValue("--figure-grid") || ""
+    );
+    const geoms = [...svg.querySelectorAll("path,line,polyline,polygon,circle,ellipse")];
+    for (const g of geoms) {
+      if (typeof g.getTotalLength !== "function") continue;
+      const st = getComputedStyle(g);
+      if (!st.stroke || st.stroke === "none") continue;
+      const largeur = parseFloat(st.strokeWidth || "1");
+      if (!(largeur >= 1)) continue;
+      if (parseFloat(st.strokeOpacity || "1") < 0.5) continue;
+      if (parseFloat(st.opacity || "1") < 0.5) continue;
+      // La couleur de grille est faite pour passer sous le texte : une
+      // graduation posée sur un quadrillage léger est normale et lisible.
+      // ATTENTION : getComputedStyle rend « rgb(232, 230, 225) » là où le
+      // jeton vaut « #E8E6E1 » — comparer les deux chaînes ne marche PAS
+      // (première version de cette sonde, corrigée dans la foulée). On
+      // convertit le jeton en rgb() avant de comparer.
+      if (grilleRGB && st.stroke.replace(/\s/g, "") === grilleRGB) continue;
+      let L = 0;
+      try { L = g.getTotalLength(); } catch { continue; }
+      if (!(L > 0)) continue;
+      const m = versRacine && g.getScreenCTM ? versRacine.multiply(g.getScreenCTM()) : null;
+      const pas = Math.max(1, L / 4000);
+      const dedans = new Map();
+      for (let d = 0; d <= L; d += pas) {
+        let pt;
+        try { pt = g.getPointAtLength(d); } catch { break; }
+        const x = m ? m.a * pt.x + m.c * pt.y + m.e : pt.x;
+        const y = m ? m.b * pt.x + m.d * pt.y + m.f : pt.y;
+        for (const bt of boites) {
+          if (!bt.s) continue;
+          const marge = bt.b.height * 0.15;
+          if (
+            x > bt.b.x && x < bt.b.x + bt.b.width &&
+            y > bt.b.y + marge && y < bt.b.y + bt.b.height - marge
+          ) {
+            dedans.set(bt, (dedans.get(bt) ?? 0) + pas);
+          }
+        }
+      }
+      // Extrémités du tracé, dans le repère de la racine : une AMORCE qui
+      // vient toucher son étiquette a une extrémité collée à la boîte, et
+      // ce n'est pas un défaut. Une vraie traversée, elle, entre d'un côté
+      // et ressort de l'autre. On ne garde donc les crossings courts que si
+      // les deux bouts du tracé sont loin ; les longs (≥ 20 px dans la
+      // boîte) comptent quoi qu'il arrive — c'est le cas des arêtes qui
+      // partaient du CENTRE d'un nœud et sortaient en barrant son mot.
+      const bouts = [];
+      for (const d of [0, L]) {
+        let pt; try { pt = g.getPointAtLength(d); } catch { continue; }
+        bouts.push(
+          m ? { x: m.a * pt.x + m.c * pt.y + m.e, y: m.b * pt.x + m.d * pt.y + m.f } : pt
+        );
+      }
+      const distBoite = (b0, pt) => {
+        const dx = Math.max(b0.x - pt.x, 0, pt.x - (b0.x + b0.width));
+        const dy = Math.max(b0.y - pt.y, 0, pt.y - (b0.y + b0.height));
+        return Math.hypot(dx, dy);
+      };
+      for (const [bt, longueur] of dedans) {
+        const proche = bouts.some((pt) => distBoite(bt.b, pt) <= 8);
+        if (longueur < (proche ? 20 : 10)) continue;
+        const rT = rang.get(bt.t), rG = rang.get(g);
+        const protege = masques.some((mk) => {
+          const r = rang.get(mk);
+          if (!(r > rG && r < rT)) return false;
+          let bb; try { bb = boiteRacine(mk); } catch { return false; }
+          return couvre(bb, bt.b);
+        });
+        if (protege) continue;
+        out.push({
+          fig: iFig, type: "barre", txt: bt.s.slice(0, 26),
+          detail: `traversé par un <${g.tagName.toLowerCase()}> tracé à ${largeur.toFixed(1)} px ` +
+                  `sur ${Math.round(longueur)} px — soit ${Math.round((longueur / Math.max(bt.b.width, 1)) * 100)} % ` +
+                  `de la largeur de l'étiquette`,
+        });
+      }
+    }
   });
   return out;
 });
