@@ -104,8 +104,13 @@
     <line x1="250" y1="284" x2="250" y2="337" stroke="var(--figure-ink-soft)" stroke-width="1.3" marker-end="url(#tc-arrow)"/>
 
     <!-- Réaction en surface -->
-    <text x="288" y="360" text-anchor="middle" font-size="13" fill="var(--figure-accent)">✱</text>
-    <text x="288" y="330" text-anchor="middle" font-size="8.5" fill="var(--figure-accent)">réaction en surface</text>
+    <!-- L'étoile marque la réaction SUR la surface : elle doit se poser sur
+         l'arête haute du bloc (y = 340), pas en son milieu. À y=360 elle
+         tombait au cœur de « Pt / Pd / Rh (solide) » — un signe accent au
+         milieu d'un mot écrit en couleur de fond sur un aplat sombre
+         (recouvrement mesuré 73 %) : on lisait « P✱d ». -->
+    <text x="288" y="338" text-anchor="middle" font-size="13" fill="var(--figure-accent)">✱</text>
+    <text x="288" y="322" text-anchor="middle" font-size="8.5" fill="var(--figure-accent)">réaction en surface</text>
 
     <!-- Produits qui se désorbent -->
     <line x1="400" y1="337" x2="400" y2="290" stroke="var(--figure-accent)" stroke-width="1.3" marker-end="url(#tc-arrow-accent)"/>

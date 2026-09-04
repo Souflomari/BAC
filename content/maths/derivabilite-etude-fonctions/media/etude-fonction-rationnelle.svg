@@ -180,7 +180,12 @@
     <line x1="240" y1="308" x2="290" y2="308"
           stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
     <circle cx="265" cy="308" r="3.2" fill="var(--figure-accent)"/>
-    <text x="265" y="290" text-anchor="middle" font-size="10.5" font-weight="600"
+    <!-- L'étiquette de A remonte de 13 px : à y=290 elle était posée SUR
+         l'axe des abscisses et recouvrait la graduation « 0 » de l'origine
+         (recouvrement mesuré 64 %) — on lisait « A(0̶ ; −1) ». Elle reste
+         alignée à la verticale de A, la tangente horizontale accent faisant
+         le lien. -->
+    <text x="258" y="277" text-anchor="end" font-size="10.5" font-weight="600"
           fill="var(--figure-ink)">A(0 ; −1)</text>
 
     <!-- Extremum B (minimum local, x=2) -->

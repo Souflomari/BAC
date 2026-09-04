@@ -95,7 +95,9 @@
     <!-- Droite N = Z, rappel -->
     <line x1="80" y1="350" x2="555" y2="103"
           stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="6,4"/>
-    <text x="515" y="118" font-size="10" font-style="italic"
+    <!-- L'étiquette passe AU-DESSUS de sa propre diagonale : à (515;118)
+         elle était traversée par la droite qu'elle nomme. -->
+    <text x="508" y="104" font-size="10" font-style="italic"
           fill="var(--figure-ink-soft)">N = Z</text>
 
     <!-- La vallée — rappel calme, ink-soft ici (le sujet de cette figure, ce sont les flèches) -->
@@ -122,11 +124,15 @@
           stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
     <polygon points="505,90 513.57,80.47 517.73,88.45" fill="var(--figure-accent)"/>
 
-    <text x="400" y="108" font-size="9.5" fill="var(--figure-ink)"><tspan
+    <!-- Les deux lignes de l'exemple α reculent de 65 px : la seconde
+         courait jusqu'à x≈555 et s'imprimait sur l'étiquette « N = Z » de la
+         diagonale (recouvrement mesuré 45 %). La place existe à gauche, la
+         boîte de conservation s'arrêtant à x≈320. -->
+    <text x="335" y="108" font-size="9.5" fill="var(--figure-ink)"><tspan
           dy="-5" font-size="7.5">226</tspan><tspan dy="5">Ra</tspan><tspan> → </tspan><tspan
           dy="-5" font-size="7.5">222</tspan><tspan dy="5">Rn</tspan><tspan> + </tspan><tspan
           dy="-5" font-size="7.5">4</tspan><tspan dy="5">He</tspan></text>
-    <text x="400" y="123" font-size="8.5" font-style="italic" fill="var(--figure-ink-soft)">
+    <text x="335" y="123" font-size="8.5" font-style="italic" fill="var(--figure-ink-soft)">
       désintégration α : ΔZ = −2, ΔN = −2
     </text>
   </g><!-- /step-2 -->
@@ -180,8 +186,15 @@
     <line x1="375.76" y1="159.24" x2="372.22" y2="162.78"
           stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
 
-    <text x="395" y="150" font-size="9.5" fill="var(--figure-ink)">Y* → Y + γ</text>
-    <text x="395" y="164" font-size="8.5" font-style="italic" fill="var(--figure-ink-soft)">
+    <!-- Le bloc γ glisse à DROITE de la diagonale, reliée par une amorce :
+         posé à x=395, « ni A ni Z ne changent » était barré en son milieu
+         par la droite N = Z (qui passe par y≈162 vers x≈441). À partir de
+         x=500 la droite est remontée au-dessus de y=131 : la place y est
+         libre, sous elle. -->
+    <line x1="398" y1="155" x2="492" y2="155" stroke="var(--figure-ink-soft)"
+          stroke-width="0.8" stroke-dasharray="2,2"/>
+    <text x="497" y="152" font-size="9.5" fill="var(--figure-ink)">Y* → Y + γ</text>
+    <text x="497" y="166" font-size="8.5" font-style="italic" fill="var(--figure-ink-soft)">
       ni A ni Z ne changent
     </text>
   </g><!-- /step-5 -->

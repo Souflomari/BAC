@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 500" role="img"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -44 700 544" role="img"
      font-family="'IBM Plex Sans', system-ui, sans-serif"
      aria-label="Un repère (x,y) avec la droite 252x+198y=36, portant la solution particulière (8,-10). Les solutions entières voisines, (-3,4) et (19,-24), sont marquées de part et d'autre, régulièrement espacées d'un pas (11,-14) : le paramètre entier t indique quel point du réseau on regarde.">
   <title>Les solutions entières de 252x + 198y = 36 — un réseau régulier sur une droite</title>
@@ -28,11 +28,17 @@
              et la formule générale x=8+11t, y=-10-14t.
   -->
 
-  <rect width="700" height="500" fill="var(--figure-surface)"/>
+  <!-- Le cadre est ouvert de 44 px VERS LE HAUT (2026-09-04) pour donner au
+       bloc de titre sa propre bande. Auparavant titre et sous-titre
+       occupaient y=15..42, exactement là où la droite sort du cadre : la
+       continuation en pointillé traversait le titre, et le « … » qui la
+       termine était enterré dedans (recouvrement mesuré 75 %). Élargir le
+       cadre plutôt que sacrifier l'un des deux — la règle du skill. -->
+  <rect x="0" y="-44" width="700" height="544" fill="var(--figure-surface)"/>
 
-  <text x="350" y="24" text-anchor="middle" font-size="13.5" font-weight="700"
+  <text x="350" y="-20" text-anchor="middle" font-size="13.5" font-weight="700"
         fill="var(--figure-ink)">Les solutions entières de 252x + 198y = 36</text>
-  <text x="350" y="40" text-anchor="middle" font-size="10" font-style="italic"
+  <text x="350" y="-4" text-anchor="middle" font-size="10" font-style="italic"
         fill="var(--figure-ink-soft)">repère schématique — la régularité du pas compte, pas l'échelle</text>
 
   <!-- ══════════════ Étape 1 : le repère, la grille, l'origine ══════════════ -->
