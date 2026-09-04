@@ -2864,3 +2864,489 @@ entries:
             note: "theta = 45 degres : cos carre vaut 0,5 et tan vaut 1 ; x_P.tan(theta) - y_P = 15 + 5 = 20 (le piege de signe)."
           - math: '\boxed{v_D = \sqrt{112{,}5} \approx 10{,}6\ \text{m.s}^{-1}}'
             note: "Vitesse de G au moment ou il quitte D -- concordante avec le corrige non officiel (10,6 m/s)."
+
+  # ── bk-2012-r-x4 — 2012 R, Mécanique : application des lois de Kepler à Jupiter et à son satellite Io ──
+  #
+  # NOTE ÉDITORIALE — bk-2012-r-x4 (2026-09-04, ajout). Sujet SPC 2012
+  # SESSION DE RATTRAPAGE, code d'examen RS28, converti depuis
+  # docs/sujets/_incoming/pc-2012-r.md — statut « ✅ VÉRIFIÉ », vérifié en
+  # DEUX passes : une passe adversariale du 2026-09-03 (V.1–V.14) puis une
+  # CLÔTURE indépendante du 2026-09-04 qui a re-téléchargé les fichiers et
+  # REJOUÉ elle-même tout ce dont dépend le statut d'un bloc — barème,
+  # défauts, et les six re-dérivations — plutôt que de contresigner sa
+  # devancière. Six blocs sur six signés, 31/31 questions résolubles.
+  #
+  # CHOIX DE L'`id` : le sujet NE NUMÉROTE AUCUN exercice — ni en français
+  # ni en arabe. Sa page 1 imprime « Le sujet se compose de quatre
+  # exercices : Un exercice de chimie et trois exercices de physique »
+  # (phrase intégralement traduite des deux côtés, et lue dans la couche
+  # arabe p. 1 y = 441,0), et son corps nomme les rubriques par discipline
+  # (Chimie, Les ondes, Electricité, Mécanique / الكيمياء, الموجات,
+  # الكهرباء, الميكانيك). Les identifiants encodent donc la POSITION SUR LA
+  # COPIE (K-7 bis) : la Mécanique est le QUATRIÈME bloc du cartouche, d'où
+  # x4, sans suffixe puisque le bloc n'est pas partitionné. Les
+  # `exercise_label` restent FIDÈLES à ce que le sujet imprime, sans numéro
+  # inventé — depuis le correctif du 2026-09-03, `lib/examens.ts` lit la
+  # position sur l'identifiant dès qu'aucun libellé de l'épreuve ne porte
+  # « Exercice N », de sorte que l'épreuve s'ordonne Chimie / ondes /
+  # électricité / mécanique et compte QUATRE exercices. La vérification a
+  # simulé les deux issues (§ V.14) : les deux passent la gate, les deux
+  # ordonnent et comptent correctement.
+  # C'EST LE BLOC LE PLUS LOURD DU SUJET : 5,50 pt, plus du quart de
+  # l'épreuve, et il porte le plus gros barème unitaire (1,25 pt à la
+  # question 1-2-a). Les six entrées du sujet totalisent 3,00 + 4,00 +
+  # 2,50 + 3,00 + 2,00 + 5,50 = 20,00 exactement.
+  #
+  # ROUTAGE VERROUILLÉ, ET IL NE SE ROUVRE PAS ICI. Satellite / gravitation
+  # / lois de Kepler → `chute-mouvements-plans`, PAS
+  # `atome-mecanique-newton` : c'est une décision de maison déjà prise,
+  # documentée dans la « Note de routage » en tête de
+  # docs/sujets/pc/chute-mouvements-plans.md, et `atome-mecanique-newton`
+  # reste `unsourced`. Précédents directs et unanimes dans ce même fichier :
+  # bk-2012-n-x5 (session normale 2012), bk-2022-n-x4b, bk-2025-n-x4,
+  # bk-2021-r-x5. AUCUN CROSS-LIST : les six questions relèvent toutes de
+  # la gravitation et du mouvement circulaire uniforme (rungs R9 et R10).
+  #
+  # AUCUNE FIGURE DANS CE BLOC — ni dans l'édition française, ni dans
+  # l'original arabe. Tout est littéral et numérique. C'est le SEUL bloc du
+  # sujet entièrement hors du périmètre K-8 : rien à lire sur un dessin,
+  # donc aucune valeur exposée à une erreur de lecture.
+  #
+  # DÉFAUT DE L'ÉDITION OFFICIELLE FRANÇAISE, DÉCLARÉ ET CORRIGÉ ICI (F3).
+  # L'édition française de ce sujet est MINISTÉRIELLE — établie par six
+  # preuves (code d'examen RS28 au cartouche, mention d'époque
+  # « (الترجمة الفرنسية) » sans le cadre anachronique « المسالك الدولية »,
+  # filière et coefficient de 2012, pieds de page VIDES sur 6 pages sur 6,
+  # colonne « Barème » miroir valeur par valeur du « سلم التنقيط » arabe,
+  # gabarit de page 1 identique). Un écart français/arabe n'est donc PAS un
+  # artefact de traduction professorale : c'est un défaut du document
+  # OFFICIEL. Ici, la phrase qui pose l'hypothèse de sphéricité imprime
+  # « On considères que le soleil et MARS sont à répartitions sphériques de
+  # masses, et on note la masse de Jupiter M_J » (p. 6 y = 370,7, retrouvé
+  # par OCR aveugle) — UNE PLANÈTE ÉTRANGÈRE AU SUJET, dans un exercice qui
+  # ne parle que de Jupiter et qui la nomme deux mots plus loin. L'original
+  # arabe écrit « نعتبر أن للشمس وللمشتري تماثلا كرويا لتوزيع الكتلة »
+  # (p. 6 y = 292,7) = « le Soleil et JUPITER ». Sans conséquence sur la
+  # résolubilité — l'hypothèse se rétablit d'elle-même —, mais c'est le
+  # défaut le plus visible du sujet. L'entrée écrit « Jupiter » et déclare
+  # la réparation au point d'usage.
+  #
+  # DÉFAUT A1, AJOUTÉ PAR LA VÉRIFICATION, REPRODUIT VERBATIM ET NON
+  # RÉPARÉ : « dans le repère de FREINET » (p. 6 y = 551,4, couche de texte
+  # ET OCR aveugle), dans la consigne notée 1,25 pt — LE PLUS GROS BARÈME
+  # UNITAIRE DU SUJET. Le repère est celui de FRENET (Jean Frédéric
+  # Frenet) ; « Freinet » est un pédagogue, sans rapport. L'original arabe
+  # écrit correctement « أساس فريني », et le corrigé aussi. LA GRAPHIE
+  # IMPRIMÉE EST PRÉSERVÉE DANS LE STEM, conformément au protocole de
+  # transcription fidèle et au précédent bk-2025-n-x4 de ce même fichier,
+  # qui a déjà rencontré et préservé exactement la même coquille sur le
+  # sujet 2025 normale. CE DÉFAUT EST INSTRUCTIF À DEUX TITRES : la
+  # transcription l'avait VU (son § 6 l'imprime en [sic]) mais NE L'AVAIT
+  # PAS COMPTÉ au registre du § 5 — drapeau levé au point d'usage et perdu
+  # au registre, ce que known-issues.md K-8 nomme son TROISIÈME mode
+  # d'échec ; et il ne coûte rien seulement parce que deux passes ont relu.
+  #
+  # DÉFAUT DE NOTATION D13, DÉCLARÉ, ET IL PORTE UNE CLASSE DE DÉFAUT NEUVE
+  # POUR LE PROTOCOLE. L'édition française imprime « T_I = 1,77 jours »
+  # (p. 6 y = 717,6) — l'indice est un « I » seul, alors que le satellite
+  # s'appelle IO et que l'original arabe écrit bien « T_Io » (p. 6
+  # y = 584,1) ; le corrigé écrit « T_Io » lui aussi. Sans conséquence
+  # (l'indice n'entre en collision qu'avec le I d'intensité de l'exercice
+  # de Chimie, indépendant). CE QUE LA CLÔTURE A DÉCOUVERT AU PASSAGE, et
+  # qui vaut pour tout le corpus : dans l'édition ARABE, la période de Io
+  # s'extrait « T = 1,77 jours » — L'INDICE « Io » EST AU RENDU MAIS ABSENT
+  # DE LA COUCHE DE TEXTE. Ce n'est pas le piège d'extraction de 2013 R
+  # (où la couche dit X et le rendu dit Y) mais une CLASSE VOISINE :
+  # l'OMISSION SILENCIEUSE. Règle qui en découle, appliquée ici : quand on
+  # cite une grandeur indicée d'un exercice de mécanique, ON VÉRIFIE SON
+  # INDICE AU RENDU. Fait pour T_Io, r', M_J, M_S et T_J.
+  #
+  # ⚠️ GARDE K-8 SUR LE CORRIGÉ ARABE. Le corrigé (element/39378, forums
+  # svt-assilah, 2014) est un TÉMOIN DE VALEURS, JAMAIS UN ARBITRE. Il
+  # corrobore ici les trois valeurs numériques (r = 7,789·10¹¹ → ≈ 7,8·10¹¹
+  # m ; V = 13 104 m·s⁻¹ ≈ 1,31·10⁴ ; M_J = 1,87·10²⁷ kg), les trois relues
+  # à 600 dpi — mais sa propre consigne porte une répétition (« في أساس في
+  # أساس فريني » = « dans la base dans la base de Frenet », erreur C2), et
+  # la vérification lui a trouvé QUATRE coquilles sur l'ensemble du sujet
+  # (dont C1 : à l'électrolyse il écrit 3600 et calcule 7200, son quotient
+  # valant 0,592 g et non les 1,18 g qu'il publie) plus UNE divergence de
+  # fond où c'est lui qui a tort (la vitesse volumique du bloc de chimie,
+  # divisée par le volume d'ester : facteur 3,33). AUCUNE ÉTAPE
+  # INTERMÉDIAIRE N'EST REPRISE, et aucune valeur de cette entrée n'en
+  # provient : les six re-dérivations ont été faites avant sa lecture, et
+  # refaites à la clôture.
+  - id: bk-2012-r-x4
+    title: "Jupiter et les lois de Kepler : force de gravitation, mouvement circulaire uniforme établi dans la base de Frenet, troisième loi de Kepler, rayon orbital et vitesse de Jupiter, puis masse de Jupiter par le satellite Io"
+    source:
+      year: 2012
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Mécanique — Application des lois de Kepler dans le cas d'une orbite circulaire"
+    bareme_total: 5.5
+    duration_min: 33
+    sourcing:
+      status: sourced
+      note: >-
+        2012 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code d'examen RS28 (coefficient 7, durée 3 h),
+        AlloSchool element/94455 (édition française, cours course-422 ;
+        jumeaux 94454 / 94456, upload-70323) ; original arabe element/39377
+        et son corrigé element/39378 (cours arabophone course-311).
+        Exercice « Mécanique : (05,5 points) », ENTIER ; barème 5,50 pt
+        (0,5 + 1,25 + 1 + 0,75 + 1 + 1), 6 questions, égal au sous-total
+        imprimé du bandeau de la page 6 et du sommaire de la page 1. C'est
+        le bloc le plus lourd du sujet et celui qui porte le plus gros
+        barème unitaire (1,25 pt à la question 1-2-a). Source vérifiée EN
+        DEUX PASSES (docs/sujets/_incoming/pc-2012-r.md, statut « ✅
+        VÉRIFIÉ », 6 blocs sur 6) : passe adversariale du 2026-09-03 puis
+        CLÔTURE INDÉPENDANTE du 2026-09-04, qui a re-téléchargé les
+        fichiers et rejoué elle-même barème, défauts et re-dérivations.
+        Barème recompté sur les DEUX éditions, question par question —
+        colonne française p. 6 appariée à ±5 pt : 0,5 ↔ 1-1- (y 490,7 ↔
+        491,0), 1,25 ↔ a- (541,0 ↔ 536,9), 1 ↔ b- (588,5 ↔ 589,9), 0,75 ↔
+        1-3- (616,4 ↔ 615,3), 1 ↔ 1-4- (636,2 ↔ 633,9), 1 ↔ 2- (668,0 ↔
+        665,4) = 5,50 ; colonne arabe p. 6 : 1.1 → 0,5 · 1.2.1 → 1,25 ·
+        1.2.2 → 1 · 1.3 → 0,75 · 1.4 → 1 · 2 → 1, mêmes six valeurs, même
+        ordre, même appariement. AUCUNE FIGURE DANS CE BLOC — ni dans
+        l'édition française, ni dans l'original arabe : tout est littéral
+        et numérique, et c'est le SEUL bloc du sujet entièrement hors du
+        périmètre K-8 côté mesures. Les six re-dérivations, refaites à la
+        clôture : F = G·M_S·M_J/r² ; base de Frenet, a_tau = 0 et
+        a_n = V²/r donc mouvement circulaire uniforme ;
+        T_J²/r³ = 4π²/(G·M_S) ; r = racine cubique de (G·M_S·T_J²/4π²) =
+        7,78956·10¹¹ m, soit 0,13 % de l'arrondi 7,8·10¹¹ que la question
+        1-3 fait « s'assurer » — c'est aussi l'un des trois recoupements
+        internes qui ont servi de contrôle non visuel à la vérification ;
+        V = 2πr/T_J = 13 104 m·s⁻¹ avec r = 7,8·10¹¹ (13 086 avec la valeur
+        exacte) ; M_J = 4π²r'³/(G·T_Io²) = 1,875·10²⁷ kg avec
+        T_Io = 152 928 s. Contrôles de réalité, non demandés mais faits :
+        la vitesse orbitale réelle de Jupiter est 13,07 km·s⁻¹ et sa masse
+        réelle 1,898·10²⁷ kg — les écarts de 0,3 % et 1,2 % viennent des
+        données arrondies de l'énoncé. L'ÉDITION FRANÇAISE EST
+        MINISTÉRIELLE, établie par six preuves (code RS28 au cartouche,
+        mention d'époque « (الترجمة الفرنسية) » sans le cadre anachronique
+        « المسالك الدولية », filière et coefficient de 2012, pieds de page
+        VIDES sur 6/6, colonne « Barème » miroir valeur par valeur de la
+        colonne arabe, gabarit de page 1 identique) : les écarts
+        français/arabe sont donc des défauts du DOCUMENT OFFICIEL
+        francophone, jamais des artefacts de traduction professorale.
+        DÉFAUT DU SUJET OFFICIEL DÉCLARÉ ET RÉPARÉ (F3) : la phrase qui
+        pose l'hypothèse de sphéricité imprime « On considères que le
+        soleil et MARS sont à répartitions sphériques de masses, et on note
+        la masse de Jupiter M_J » (p. 6 y = 370,7, retrouvé par OCR
+        aveugle) — une planète étrangère au sujet, dans un exercice qui ne
+        parle que de Jupiter et qui la nomme deux mots plus loin ; l'arabe
+        écrit « نعتبر أن للشمس وللمشتري تماثلا كرويا لتوزيع الكتلة » (p. 6
+        y = 292,7) = « le Soleil et JUPITER », et il répète le mot 16 fois
+        sur la page. Sans conséquence sur la résolubilité, l'hypothèse se
+        rétablissant d'elle-même ; c'est néanmoins le défaut le plus
+        visible du sujet. L'entrée écrit « Jupiter » et déclare la
+        correction au point d'usage. DÉFAUT A1, AJOUTÉ PAR LA VÉRIFICATION
+        ET REPRODUIT VERBATIM, NON RÉPARÉ : « dans le repère de FREINET »
+        (p. 6 y = 551,4, couche de texte ET OCR aveugle) dans la consigne
+        notée 1,25 pt — le plus gros barème unitaire du sujet. Le repère
+        est celui de FRENET ; l'original arabe écrit correctement
+        « أساس فريني » et le corrigé aussi. La graphie imprimée est
+        PRÉSERVÉE dans le stem, conformément au protocole de transcription
+        fidèle et au précédent bk-2025-n-x4 de ce même fichier, qui avait
+        déjà rencontré et préservé la même coquille sur le sujet 2025
+        normale. Ce défaut est instructif : la transcription l'avait VU
+        (son § 6 l'imprime en [sic]) mais NE L'AVAIT PAS COMPTÉ au
+        registre — drapeau levé au point d'usage et perdu au registre, le
+        TROISIÈME mode d'échec de known-issues.md K-8, rattrapé seulement
+        parce que deux passes ont relu. DÉFAUT DE NOTATION D13, DÉCLARÉ :
+        l'édition française imprime « T_I = 1,77 jours » (p. 6 y = 717,6),
+        indice « I » seul, là où le satellite s'appelle IO et où l'arabe
+        écrit « T_Io » (p. 6 y = 584,1), le corrigé aussi ; sans
+        conséquence, l'indice n'entrant en collision qu'avec le I
+        d'intensité de l'exercice de Chimie, indépendant. CLASSE DE DÉFAUT
+        NEUVE, DÉCOUVERTE PAR LA CLÔTURE SUR CE BLOC ET UTILE À TOUT LE
+        CORPUS : dans l'édition ARABE, la période de Io s'extrait
+        « T = 1,77 jours » — l'indice « Io » est AU RENDU mais ABSENT DE LA
+        COUCHE DE TEXTE. Ce n'est pas le piège d'extraction de 2013 R (où
+        la couche dit X et le rendu dit Y) mais une classe voisine,
+        l'OMISSION SILENCIEUSE ; règle appliquée ici, l'indice de chaque
+        grandeur citée a été vérifié AU RENDU (T_Io, r', M_J, M_S, T_J).
+        Coquilles de langue reproduites verbatim, non réparées : « elle
+        constitue avec les soixante six satellites » (sans trait d'union),
+        « un univers miniaturusé », « On considères que », « l'un des
+        satellites découvert par Galilée » (accord manqué), « à la tension
+        corréspondante », et les DOUBLES ESPACES réels « et r,
+        l'expression », « s'écrit  : », « S'assurer que  r ≈ », « ce
+        mouvement est  T_I » ; registre complet en
+        docs/sujets/_incoming/pc-2012-r.md § 5 et V.12. Deux divergences de
+        portée sont également déclarées : l'arabe écrit que Jupiter
+        représente « À LUI SEUL » un monde miniature où gravitent
+        « ENVIRON » soixante-six satellites, là où le français écrit
+        « elle constitue AVEC les soixante six satellites » — le sens
+        s'inverse et « environ » disparaît (D8) ; et l'arabe précise « le
+        savant Galilée », que le français supprime (D9). Aucune question
+        n'en dépend. ROUTAGE VERROUILLÉ : satellite / gravitation / Kepler
+        → chute-mouvements-plans, PAS atome-mecanique-newton — décision de
+        maison déjà prise, documentée dans la « Note de routage » en tête
+        de docs/sujets/pc/chute-mouvements-plans.md ; précédents directs et
+        unanimes bk-2012-n-x5, bk-2022-n-x4b, bk-2025-n-x4, bk-2021-r-x5.
+        AUCUN CROSS-LIST : les six questions relèvent toutes de la
+        gravitation et du mouvement circulaire uniforme. ⚠️ LE CORRIGÉ
+        ARABE N'EST QU'UN TÉMOIN DE VALEURS, JAMAIS UN ARBITRE (K-8) : il
+        corrobore ici les trois valeurs numériques, les trois relues à
+        600 dpi — mais sa propre consigne porte une répétition
+        (« في أساس في أساس فريني » = « dans la base dans la base de
+        Frenet », erreur C2 relevée par la vérification), et la
+        vérification lui a trouvé QUATRE coquilles sur l'ensemble du sujet
+        plus une divergence de fond où c'est lui qui a tort. Aucune étape
+        intermédiaire n'est reprise, et aucune valeur de cette entrée n'en
+        provient.
+    intro: |-
+      **Application des lois de Kepler dans le cas d'une orbite circulaire — Jupiter et son satellite Io (examen national, session de rattrapage 2012 — exercice « Mécanique », 5,50 points).**
+
+      La planète Jupiter est la plus grande planète du système solaire, elle constitue avec les soixante six *(sic — sans trait d'union ; et l'original arabe dit tout autre chose : Jupiter représente « à lui seul » un monde miniature où gravitent « environ » soixante-six satellites. Aucune question n'en dépend)* satellites naturels gravitant autour d'elle, un univers miniaturusé *(sic)* dans ce système.
+
+      Le but de cet exercice est d'étudier le mouvement de Jupiter autour du soleil, et de déterminer quelques grandeurs physiques caractérisant cette planète.
+
+      **Données :**
+      - Masse du soleil : $M_S = 2\times10^{30}\ \text{kg}$ ;
+      - Constante d'attraction universelle : $G = 6{,}67\times10^{-11}$ (SI) ;
+      - Période de révolution de Jupiter autour du soleil : $T_J = 3{,}74\times10^{8}\ \text{s}$.
+
+      On considères *(sic)* que le soleil et **Jupiter** <!-- DÉFAUT DU SUJET OFFICIEL, DÉCLARÉ ET RÉPARÉ ICI (F3), 2026-09-04.
+           Le document officiel francophone imprime, mot pour mot : « On
+           considères que le soleil et MARS sont à répartitions sphériques de
+           masses, et on note la masse de Jupiter M_J » (p. 6, y = 370,7,
+           retrouve par OCR aveugle). MARS est une planete etrangere a ce sujet :
+           l'exercice entier porte sur Jupiter, et la meme phrase la nomme deux
+           mots plus loin. L'original arabe RS28 ecrit
+           « نعتبر أن للشمس وللمشتري تماثلا كرويا لتوزيع الكتلة » (p. 6,
+           y = 292,7) = « on considere que le Soleil et JUPITER ont une
+           repartition spherique de masse », et il repete le mot « Jupiter »
+           16 fois sur la page.
+           Aucune consequence sur la resolubilite — l'hypothese se retablit
+           d'elle-meme — mais c'est le defaut le plus VISIBLE du sujet, et le
+           laisser tel quel ferait trebucher un eleve qui lit vite. La reparation
+           ne touche qu'un mot, elle est faite ici et DECLAREE plutot que faite
+           en silence.
+           IMPORTANT POUR LA CLASSIFICATION : l'edition francaise de ce sujet est
+           MINISTERIELLE (code d'examen RS28 au cartouche ; mention d'epoque
+           « (الترجمة الفرنسية) » sans le cadre anachronique « المسالك الدولية » ;
+           pieds de page VIDES sur les six pages ; colonne « Bareme » miroir
+           valeur par valeur de la colonne arabe). Ce n'est donc PAS un artefact
+           de traduction professorale — c'est un defaut de l'edition OFFICIELLE
+           de langue francaise. Voir docs/sujets/_incoming/pc-2012-r.md,
+           F3 / D3 / V.7 / V.15. --> sont à répartitions sphériques de masses, et on note la masse de Jupiter $M_J$.
+
+      On néglige les dimensions de la planète Jupiter devant la distance qui la sépare du centre du Soleil, ainsi que les forces qui lui sont appliquées devant la force d'attraction universelle entre elle et le Soleil.
+
+      *Cet exercice ne comporte AUCUNE figure — ni dans l'édition française, ni dans l'original arabe. Tout y est littéral et numérique.*
+    questions:
+      - id: q1
+        part: "1- Détermination du rayon orbital de Jupiter et sa vitesse"
+        stem: |-
+          On considère que le mouvement de Jupiter dans le repère héliocentrique est circulaire de rayon orbital $r$.
+
+          **1-1-** (0,5 pt) Ecrire en fonction de $M_J$, $M_S$, $G$, et $r$, *(sic — le sujet imprime un double espace ici)* l'expression de l'intensité de la force de gravitation universelle exercée par le Soleil sur Jupiter.
+        reasoning: |-
+          C'est la loi de la gravitation universelle (rung 9), appliquée à deux corps qu'on a le droit de traiter comme ponctuels — et l'énoncé a pris soin de le justifier, en deux endroits :
+
+          - « le soleil et Jupiter sont à répartitions sphériques de masses » : un corps à symétrie sphérique attire l'extérieur **comme si toute sa masse était concentrée en son centre**. C'est ce qui autorise à parler d'une distance « centre à centre » ;
+          - « on néglige les dimensions de la planète Jupiter devant la distance qui la sépare du centre du Soleil » : la distance $r$ est donc bien définie, sans ambiguïté sur le point de Jupiter qu'on mesure.
+
+          L'intensité de la force vaut alors :
+
+          $$\boxed{F_{S/J} = G\,\frac{M_S\,M_J}{r^2}}$$
+
+          **Comment lire cette expression plutôt que de la réciter.** Elle est **proportionnelle au produit des deux masses** — les deux corps jouent des rôles symétriques — et **inversement proportionnelle au carré** de leur distance. Ce carré n'est pas un détail décoratif : c'est lui qui fera apparaître, à la question 1-2-b, l'exposant $3$ sur $r$ dans la troisième loi de Kepler.
+
+          **La symétrie qu'il faut avoir en tête pour la suite.** Cette force est **la même**, en norme, que celle exercée par Jupiter sur le Soleil (troisième loi de Newton) : $F_{S/J} = F_{J/S}$. Ce qui diffère, c'est l'**effet** — l'accélération vaut $F/m$, et la masse du Soleil est plus de $10^{6}$ fois celle de Jupiter, ce qui rend le Soleil quasi immobile. C'est exactement ce qui justifie de prendre le repère **héliocentrique** comme galiléen pour cette étude.
+
+          **Le piège de cette question.** Écrire $r$ au dénominateur sans le carré, ou confondre la force de gravitation avec le poids. Ici il n'y a pas de « poids » — pas de sol, pas d'astre de référence : il n'y a que l'attraction mutuelle entre deux corps, et c'est elle qui joue, à l'échelle du système solaire, le rôle que le poids joue à la surface de la Terre.
+        steps:
+          - math: '\boxed{F_{S/J} = G\,\frac{M_S\,M_J}{r^{2}}}'
+            note: "Loi de la gravitation universelle. Les deux corps sont traites comme ponctuels : l'enonce le justifie par la repartition spherique des masses."
+      - id: q2
+        stem: |-
+          **1-2-** En appliquant la deuxième loi de Newton :
+
+          **a-** (1,25 pt) Ecrire les expressions des composantes du vecteur accélération dans le repère de Freinet *(sic — le sujet imprime « Freinet » ; le repère est celui de **Frenet**, Jean Frédéric Frenet. L'original arabe et le corrigé écrivent tous deux correctement « فريني ». Graphie imprimée préservée, comme le corpus le fait déjà pour le sujet 2025 normale)*, et déduire que le mouvement de Jupiter est circulaire uniforme.
+        reasoning: |-
+          C'est la question la mieux payée du sujet — $1{,}25$ point, le plus gros barème unitaire de toute l'épreuve — et elle se joue entièrement sur la **méthode**, pas sur le calcul. Quatre gestes, dans l'ordre.
+
+          **Geste 1 — poser le système et le référentiel.** Système : la **planète Jupiter**, assimilée à son centre d'inertie. Référentiel : le **repère héliocentrique**, supposé **galiléen** — condition sans laquelle la deuxième loi de Newton ne s'applique pas.
+
+          **Geste 2 — le bilan des forces, et il est d'une simplicité voulue.** L'énoncé dit qu'on néglige toutes les forces devant l'attraction du Soleil : il ne reste donc **qu'une seule force**,
+
+          $$\vec{F}_{S/J} = -G\,\frac{M_S M_J}{r^2}\,\vec{u}$$
+
+          où $\vec{u}$ est le vecteur unitaire radial **sortant** (du Soleil vers Jupiter). Le signe moins dit que la force est **attractive** : elle pointe vers le Soleil, à l'opposé de $\vec u$.
+
+          **Geste 3 — la base de Frenet, et ce qu'elle est.** C'est une base **mobile, liée au point** : elle se déplace avec Jupiter le long de sa trajectoire. Elle a deux vecteurs — $\vec{\tau}$, **tangent** à la trajectoire et dans le sens du mouvement, et $\vec{n}$, **normal**, dirigé vers le **centre** du cercle. Son intérêt tient à ce que, dans cette base, l'accélération d'un point en mouvement circulaire de rayon $r$ s'écrit **toujours** :
+
+          $$\vec{a} = \underbrace{\frac{\mathrm{d}V}{\mathrm{d}t}}_{a_\tau}\,\vec{\tau} \;+\; \underbrace{\frac{V^2}{r}}_{a_n}\,\vec{n}$$
+
+          La composante tangentielle dit **comment la vitesse change en norme** ; la composante normale dit **comment la trajectoire se courbe**. Cette décomposition sépare exactement les deux questions.
+
+          **Geste 4 — la deuxième loi de Newton, et l'identification composante par composante.** Comme $\vec{n} = -\vec{u}$ (la normale pointe vers le centre, $\vec u$ s'en éloigne) :
+
+          $$M_J\,\vec{a} = \vec{F}_{S/J} = G\,\frac{M_S M_J}{r^2}\,\vec{n}$$
+
+          Le second membre n'a **aucune composante selon $\vec\tau$**. On identifie donc, terme à terme :
+
+          $$a_\tau = \frac{\mathrm{d}V}{\mathrm{d}t} = 0 \qquad\text{et}\qquad a_n = \frac{V^2}{r} = G\,\frac{M_S}{r^2}$$
+
+          **La conclusion, en deux temps qu'il faut écrire séparément — c'est là que le barème se gagne.**
+
+          - $a_\tau = 0$ signifie que $\dfrac{\mathrm{d}V}{\mathrm{d}t} = 0$, donc que **$V$ est constante** : le mouvement est **UNIFORME** ;
+          - la trajectoire est **CIRCULAIRE** par hypothèse de l'énoncé.
+
+          Les deux ensemble : **le mouvement est circulaire uniforme**. Remarque au passage que la masse $M_J$ **s'est simplifiée** dans la seconde relation — la vitesse orbitale ne dépend pas de la masse de la planète, exactement comme la trajectoire d'un projectile en chute libre ne dépend pas de sa masse, et pour la même raison de fond : la force est elle-même proportionnelle à $M_J$.
+
+          **Les deux pièges de cette question.** Le premier : conclure « uniforme » **sans avoir montré $a_\tau = 0$**, en se contentant de dire que la force est centripète. C'est le raisonnement attendu, mais il faut l'écrire — l'identification composante par composante *est* la démonstration, et elle vaut à elle seule une bonne part du $1{,}25$ point. Le second : croire qu'il faut **démontrer** que la trajectoire est circulaire. Ce n'est pas démontrable ici — c'est une **hypothèse de l'énoncé** (« on considère que le mouvement … est circulaire »), et la question ne demande que l'uniformité.
+        steps:
+          - math: '\text{Système : Jupiter. Référentiel héliocentrique supposé galiléen. Force unique : } \vec{F}_{S/J}'
+            note: "L'enonce impose de negliger toutes les autres forces : le bilan se reduit a un seul terme."
+          - math: '\vec{F}_{S/J} = -G\,\frac{M_S M_J}{r^{2}}\,\vec{u} = G\,\frac{M_S M_J}{r^{2}}\,\vec{n}'
+            note: "Force attractive : dirigee vers le Soleil, donc selon la normale n (qui pointe vers le centre) et a l'oppose du radial sortant u."
+          - math: '\vec{a} = \frac{\mathrm{d}V}{\mathrm{d}t}\,\vec{\tau} + \frac{V^{2}}{r}\,\vec{n}'
+            note: "Expression generale de l'acceleration dans la base de Frenet pour un mouvement circulaire de rayon r."
+          - math: 'M_J\,\vec{a} = \vec{F}_{S/J} \quad\Longrightarrow\quad a_\tau = \frac{\mathrm{d}V}{\mathrm{d}t} = 0 \qquad a_n = \frac{V^{2}}{r} = G\,\frac{M_S}{r^{2}}'
+            note: "Identification composante par composante : la force n'a aucune composante tangentielle, donc l'acceleration non plus. La masse de Jupiter se simplifie."
+          - math: '\boxed{\frac{\mathrm{d}V}{\mathrm{d}t} = 0 \Rightarrow V = \text{constante} \;;\; \text{trajectoire circulaire (hypothèse)} \Rightarrow \text{mouvement circulaire uniforme}}'
+            note: "Les deux moities de la conclusion, a ecrire separement : l'uniformite se demontre, la circularite est donnee."
+      - id: q3
+        stem: |-
+          **b-** (1 pt) Montrer que la troisième loi de Kepler s'écrit : $\dfrac{T_J^{\,2}}{r^3} = \dfrac{4\pi^2}{G\,M_S}$.
+        reasoning: |-
+          Une démonstration en deux lignes, à condition de partir du bon endroit : **la relation dynamique de la question précédente**, et **une expression purement géométrique de la vitesse** (rung 10).
+
+          **Point de départ n° 1 — ce que la dynamique a donné** à la question 1-2-a :
+
+          $$\frac{V^2}{r} = \frac{G\,M_S}{r^2} \qquad \Longrightarrow \qquad V^2 = \frac{G\,M_S}{r}$$
+
+          **Point de départ n° 2 — ce que la géométrie donne.** Le mouvement étant **uniforme** (on vient de le démontrer, et c'est ce qui autorise ce qui suit), Jupiter parcourt tout le périmètre de son orbite en une période, à vitesse constante :
+
+          $$V = \frac{2\pi r}{T_J} \qquad \Longrightarrow \qquad V^2 = \frac{4\pi^2 r^2}{T_J^{\,2}}$$
+
+          *Cette relation n'aurait aucun sens si le mouvement n'était pas uniforme : c'est précisément pour cela que la question 1-2-a précède celle-ci.*
+
+          **La jonction.** Les deux expressions décrivent le même $V^2$, on les égale :
+
+          $$\frac{4\pi^2 r^2}{T_J^{\,2}} = \frac{G\,M_S}{r} \qquad \Longrightarrow \qquad 4\pi^2 r^3 = G\,M_S\,T_J^{\,2} \qquad \Longrightarrow \qquad \boxed{\frac{T_J^{\,2}}{r^3} = \frac{4\pi^2}{G\,M_S}}$$
+
+          **Ce que cette loi dit vraiment, et pourquoi elle est utile.** Le membre de droite ne contient que $G$ et $M_S$ : il **ne dépend en rien de la planète considérée**. Le rapport $\dfrac{T^2}{r^3}$ est donc **la même constante pour toutes les planètes du système solaire** — c'est l'énoncé de la troisième loi de Kepler. Et cette indépendance a une conséquence pratique immédiate, que la question 2 exploitera : si l'on connaît $T$ et $r$ d'un satellite, on remonte à la masse de l'astre **central**, jamais à celle du satellite.
+
+          **Le contrôle des exposants, à faire si l'on doute.** L'ordre $T^2/r^3$ n'est pas à mémoriser à l'aveugle : il **sort du calcul**. Le $r^2$ du numérateur de $V^2$ (géométrie) rencontre le $r$ du dénominateur de $V^2$ (dynamique), ce qui fait $r^3$ ; et le carré vient du carré de la vitesse. Refaire ces trois lignes coûte trente secondes et évite d'écrire $T^3/r^2$.
+
+          **Le piège de cette question.** Utiliser $V = \dfrac{2\pi r}{T}$ **avant** d'avoir établi que le mouvement est uniforme. C'est un cercle logique : cette formule suppose la vitesse constante. L'ordre des questions du sujet n'est pas arbitraire — 1-2-a fournit l'hypothèse dont 1-2-b a besoin.
+        steps:
+          - math: '\frac{V^{2}}{r} = \frac{G\,M_S}{r^{2}} \quad\Longrightarrow\quad V^{2} = \frac{G\,M_S}{r}'
+            note: "Ce que la dynamique a donne a la question 1-2-a."
+          - math: 'V = \frac{2\pi r}{T_J} \quad\Longrightarrow\quad V^{2} = \frac{4\pi^{2}r^{2}}{T_J^{\,2}}'
+            note: "Expression geometrique : le perimetre parcouru en une periode, valable SEULEMENT parce que le mouvement est uniforme."
+          - math: '\frac{4\pi^{2}r^{2}}{T_J^{\,2}} = \frac{G\,M_S}{r} \quad\Longrightarrow\quad 4\pi^{2}r^{3} = G\,M_S\,T_J^{\,2}'
+            note: "Les deux expressions decrivent le meme V au carre : on les egale et on multiplie en croix."
+          - math: '\boxed{\frac{T_J^{\,2}}{r^{3}} = \frac{4\pi^{2}}{G\,M_S}}'
+            note: "Troisieme loi de Kepler, cas circulaire. Le membre de droite ne depend que de l'astre central, jamais de la planete."
+      - id: q4
+        stem: |-
+          **1-3-** (0,75 pt) S'assurer que $r \approx 7{,}8\times10^{11}\ \text{m}$.
+        reasoning: |-
+          « S'assurer que » : la valeur est **donnée**, et il faut la **retrouver** par le calcul, pas la supposer. On inverse la loi de Kepler établie à la question précédente.
+
+          $$\frac{T_J^{\,2}}{r^3} = \frac{4\pi^2}{G\,M_S} \qquad \Longrightarrow \qquad r^3 = \frac{G\,M_S\,T_J^{\,2}}{4\pi^2} \qquad \Longrightarrow \qquad \boxed{r = \sqrt[3]{\frac{G\,M_S\,T_J^{\,2}}{4\pi^2}}}$$
+
+          **L'application numérique, en travaillant les puissances de dix à part** — c'est ce qui rend le calcul faisable sans calculatrice programmable (que le sujet interdit d'ailleurs en page 1) :
+
+          $$G\,M_S\,T_J^{\,2} = 6{,}67\times10^{-11} \times 2\times10^{30} \times \left(3{,}74\times10^{8}\right)^2 = 6{,}67\times10^{-11} \times 2\times10^{30} \times 1{,}399\times10^{17}$$
+
+          $$= 1{,}866\times10^{37} \qquad \Longrightarrow \qquad r^3 = \frac{1{,}866\times10^{37}}{39{,}48} = 4{,}727\times10^{35}\ \text{m}^3$$
+
+          La racine cubique se prend en **ramenant l'exposant à un multiple de 3** :
+
+          $$r = \sqrt[3]{4{,}727\times10^{35}} = \sqrt[3]{472{,}7\times10^{33}} = \sqrt[3]{472{,}7} \times 10^{11} \approx 7{,}79\times10^{11}\ \text{m}$$
+
+          $$\boxed{r \approx 7{,}8\times10^{11}\ \text{m}} \qquad \text{conforme à la valeur annoncée, à } 0{,}13\ \% \text{ près.}$$
+
+          **Comment conclure une question « s'assurer que », et c'est ce qui la distingue d'un simple calcul.** Il ne suffit pas d'écrire le nombre : il faut **le comparer explicitement** à la valeur donnée et dire qu'ils coïncident. C'est cette comparaison qui répond à la consigne.
+
+          **Le contrôle de vraisemblance, qui vaut d'être fait.** $7{,}8\times10^{11}\ \text{m}$, c'est environ $5{,}2$ fois la distance Terre–Soleil ($1{,}5\times10^{11}\ \text{m}$). Jupiter est effectivement à un peu plus de cinq unités astronomiques du Soleil, et c'est cohérent avec sa période de $3{,}74\times10^{8}\ \text{s}$, soit environ **$11{,}9$ ans** — la durée de révolution de Jupiter, une valeur d'astronomie élémentaire. Deux recoupements indépendants sur la même donnée.
+
+          **Le piège de cette question.** Prendre la racine cubique d'un exposant qui n'est pas multiple de $3$ en divisant naïvement $35$ par $3$. Il faut d'abord **réécrire** $4{,}727\times10^{35}$ en $472{,}7\times10^{33}$, puis extraire : $10^{33}$ devient $10^{11}$, et $\sqrt[3]{472{,}7} \approx 7{,}79$. Sauter cette réécriture est la faute de calcul la plus fréquente sur ce type de question.
+        steps:
+          - math: '\boxed{r = \sqrt[3]{\frac{G\,M_S\,T_J^{\,2}}{4\pi^{2}}}}'
+            note: "Inversion de la troisieme loi de Kepler etablie a la question 1-2-b."
+          - math: 'G\,M_S\,T_J^{\,2} = 6{,}67\times10^{-11} \times 2\times10^{30} \times 1{,}399\times10^{17} = 1{,}866\times10^{37}'
+            note: "Numerateur, puissances de dix traitees a part. T_J au carre vaut 1,399 x 10^17."
+          - math: 'r^{3} = \frac{1{,}866\times10^{37}}{4\pi^{2}} = \frac{1{,}866\times10^{37}}{39{,}48} = 4{,}727\times10^{35}\ \text{m}^{3}'
+            note: "Rayon au cube."
+          - math: 'r = \sqrt[3]{472{,}7\times10^{33}} = \sqrt[3]{472{,}7}\times10^{11}'
+            note: "Reecriture prealable pour ramener l'exposant a un multiple de 3 : c'est la que se fait la faute de calcul la plus frequente."
+          - math: '\boxed{r \approx 7{,}79\times10^{11} \approx 7{,}8\times10^{11}\ \text{m}}'
+            note: "Conforme a la valeur annoncee par l'enonce, a 0,13 pour cent pres. Environ 5,2 fois la distance Terre-Soleil : coherent."
+      - id: q5
+        stem: |-
+          **1-4-** (1 pt) Déterminer la valeur de la vitesse $V$ de révolution de Jupiter autour du soleil.
+        reasoning: |-
+          Le mouvement étant **circulaire uniforme** — démontré à la question 1-2-a —, la vitesse se calcule par le plus court chemin : le périmètre de l'orbite, divisé par la durée d'un tour.
+
+          $$V = \frac{2\pi r}{T_J} = \frac{2\pi \times 7{,}8\times10^{11}}{3{,}74\times10^{8}}$$
+
+          $$V = \frac{4{,}901\times10^{12}}{3{,}74\times10^{8}} \approx 1{,}31\times10^{4}\ \text{m.s}^{-1}$$
+
+          $$\boxed{V \approx 1{,}31\times10^{4}\ \text{m.s}^{-1} = 13{,}1\ \text{km.s}^{-1}}$$
+
+          **La voie alternative, et pourquoi elle est moins bonne ici.** On pourrait aussi passer par la dynamique, $V = \sqrt{\dfrac{G M_S}{r}}$, ce qui donne $1{,}31\times10^{4}\ \text{m.s}^{-1}$ également. Les deux chemins sont justes et concordent — c'est même un excellent contrôle si l'on a le temps. Mais le chemin géométrique est **plus court et moins exposé** : il n'utilise que deux données, dont l'une vient d'être établie, alors que l'autre en mobilise trois et une racine carrée.
+
+          **Le contrôle de vraisemblance, et il est frappant.** La vitesse orbitale réelle de Jupiter est de $13{,}07\ \text{km.s}^{-1}$ : on tombe à $0{,}3\ \%$. Et l'ordre de grandeur se compare utilement à celui de la Terre, $30\ \text{km.s}^{-1}$ — Jupiter, plus loin du Soleil, va **moins vite**. C'est ce que la relation $V = \sqrt{GM_S/r}$ dit : plus l'orbite est grande, plus la vitesse est faible. Une réponse supérieure à $30\ \text{km.s}^{-1}$ devrait alerter immédiatement.
+
+          **Le piège de cette question.** Utiliser $r$ en kilomètres, ou oublier le facteur $2\pi$ en écrivant $V = r/T$. Le premier décale le résultat de $10^{3}$, le second le divise par $6{,}28$ — et aucun des deux ne se voit sans le contrôle d'ordre de grandeur ci-dessus.
+        steps:
+          - math: 'V = \frac{2\pi r}{T_J}'
+            note: "Perimetre de l'orbite divise par la periode : valable parce que le mouvement est uniforme (question 1-2-a)."
+          - math: 'V = \frac{2\pi \times 7{,}8\times10^{11}}{3{,}74\times10^{8}} = \frac{4{,}901\times10^{12}}{3{,}74\times10^{8}}'
+            note: "Application numerique avec le rayon etabli a la question 1-3."
+          - math: '\boxed{V \approx 1{,}31\times10^{4}\ \text{m.s}^{-1} = 13{,}1\ \text{km.s}^{-1}}'
+            note: "Valeur reelle de Jupiter : 13,07 km/s. Ecart 0,3 pour cent, du aux donnees arrondies de l'enonce."
+      - id: q6
+        part: "2- Détermination de la masse de Jupiter"
+        stem: |-
+          On considère que la lune « Io » l'un des satellites découvert *(sic — « découverts » attendu ; et l'original arabe précise « le savant Galilée », que le français supprime)* par Galilée, est en mouvement circulaire uniforme à une distance $r' = 4{,}2\times10^{8}\ \text{m}$ du centre de Jupiter.
+
+          La période de ce mouvement est $T_I = 1{,}77\ \text{jours}$ *(sic — l'indice imprimé est un « I » seul, alors que le satellite s'appelle **Io** ; l'original arabe et le corrigé écrivent tous deux $T_{Io}$)*.
+
+          *(On néglige les dimensions de Io devant les autres dimensions, ainsi que les forces qui lui sont appliquées devant la force d'attraction universelle entre lui et Jupiter).*
+
+          **2-** (1 pt) En étudiant le mouvement de Io dans un repère d'origine confondu avec le centre de Jupiter et supposé galiléen, déterminer la masse $M_J$ de Jupiter.
+        reasoning: |-
+          **La bonne nouvelle, et il faut la voir avant de calculer : il n'y a rien de nouveau à démontrer.** Le système Jupiter–Io est le **même problème** que le système Soleil–Jupiter, avec d'autres noms : un corps central massif, un corps qui tourne autour de lui sur un cercle, une seule force. Toute la démonstration des questions 1-2-a et 1-2-b se transpose **mot pour mot**, en remplaçant le Soleil par Jupiter, Jupiter par Io, $r$ par $r'$ et $T_J$ par $T_{Io}$ :
+
+          $$\frac{T_{Io}^{\,2}}{r'^{3}} = \frac{4\pi^2}{G\,M_J}$$
+
+          **Et c'est ici que se révèle ce que la troisième loi a de vraiment utile.** Sa constante ne dépend que de l'astre **CENTRAL**. En l'appliquant à Io, on obtient donc une relation où figure $M_J$ — la masse de **Jupiter**, l'astre attracteur —, et où la masse de Io **n'apparaît pas du tout**. C'est ainsi qu'on pèse une planète : **en regardant tourner ce qui tourne autour d'elle**. On ne pourrait pas obtenir $M_J$ en étudiant le mouvement de Jupiter autour du Soleil, où c'est $M_S$ qui apparaît — c'est précisément pourquoi l'énoncé change de satellite pour cette question.
+
+          On isole $M_J$ :
+
+          $$\boxed{M_J = \frac{4\pi^2\,r'^{3}}{G\,T_{Io}^{\,2}}}$$
+
+          **⚠️ La conversion préalable, à faire en toute première ligne.** La période est donnée **en jours** et $G$ est en unités SI : il faut passer en **secondes**.
+
+          $$T_{Io} = 1{,}77 \times 24 \times 3600 = 152\,928\ \text{s}$$
+
+          **L'application numérique :**
+
+          $$M_J = \frac{4\pi^2 \times \left(4{,}2\times10^{8}\right)^3}{6{,}67\times10^{-11} \times \left(152\,928\right)^2} = \frac{39{,}48 \times 7{,}409\times10^{25}}{6{,}67\times10^{-11} \times 2{,}339\times10^{10}} = \frac{2{,}925\times10^{27}}{1{,}560}$$
+
+          $$\boxed{M_J \approx 1{,}88\times10^{27}\ \text{kg}}$$
+
+          **Le contrôle de vraisemblance, et il est excellent.** La masse réelle de Jupiter est $1{,}898\times10^{27}\ \text{kg}$ : on tombe à $1{,}2\ \%$, l'écart venant des données arrondies de l'énoncé. Autre recoupement, plus parlant encore : $\dfrac{M_S}{M_J} = \dfrac{2\times10^{30}}{1{,}88\times10^{27}} \approx 1\,064$ — le Soleil est environ mille fois plus massif que Jupiter, ce qui est le rapport astronomique bien connu. Et Jupiter est lui-même environ $318$ fois plus massif que la Terre : c'est ce que l'encadré de l'énoncé appelle « un univers miniaturisé » à l'intérieur du système solaire.
+
+          **Les deux pièges de cette question.** Le premier, et c'est le plus coûteux : **oublier de convertir les jours en secondes**. Avec $T = 1{,}77$, on obtiendrait $M_J \approx 1{,}4\times10^{37}\ \text{kg}$ — sept fois la masse du Soleil, une absurdité que le contrôle d'ordre de grandeur attrape aussitôt. Le second : utiliser $r$ (le rayon de l'orbite de Jupiter autour du Soleil) au lieu de $r'$ (le rayon de l'orbite de Io autour de Jupiter). Les deux rayons diffèrent d'un facteur $2\,000$ ; il faut relire quel astre tourne autour de quel autre avant d'écrire la formule.
+        steps:
+          - math: '\frac{T_{Io}^{\,2}}{r^{\prime\,3}} = \frac{4\pi^{2}}{G\,M_J}'
+            note: "Troisieme loi de Kepler appliquee au systeme Jupiter-Io : meme demonstration qu'aux questions 1-2-a et 1-2-b, avec Jupiter comme astre central."
+          - math: '\boxed{M_J = \frac{4\pi^{2}\,r^{\prime\,3}}{G\,T_{Io}^{\,2}}}'
+            note: "La constante de Kepler ne depend que de l'astre CENTRAL : c'est ainsi qu'on pese une planete, en regardant tourner son satellite. La masse de Io n'y figure pas."
+          - math: 'T_{Io} = 1{,}77 \times 24 \times 3600 = 152\,928\ \text{s}'
+            note: "Conversion prealable et separee : la periode est donnee en jours, G est en unites SI."
+          - math: 'M_J = \frac{39{,}48 \times 7{,}409\times10^{25}}{6{,}67\times10^{-11} \times 2{,}339\times10^{10}} = \frac{2{,}925\times10^{27}}{1{,}560}'
+            note: "Application numerique, puissances de dix traitees a part."
+          - math: '\boxed{M_J \approx 1{,}88\times10^{27}\ \text{kg}}'
+            note: "Valeur exacte 1,875 x 10^27 kg. La masse reelle de Jupiter est 1,898 x 10^27 kg : ecart 1,2 pour cent, du aux donnees arrondies."

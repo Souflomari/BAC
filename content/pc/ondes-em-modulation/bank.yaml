@@ -1264,3 +1264,453 @@ entries:
             note: "Taux de modulation."
           - math: '\boxed{m<1 \text{ et } F/f=20\geq10 \implies \text{bonne modulation}}'
             note: "Les deux conditions du rung 3 sont verifiees ensemble."
+
+  # ── bk-2012-r-x3b — 2012 R, Électricité § II : réception d'une onde AM et démodulation ──
+  #
+  # NOTE ÉDITORIALE — bk-2012-r-x3b (2026-09-04, ajout). Sujet SPC 2012
+  # SESSION DE RATTRAPAGE, code d'examen RS28, converti depuis
+  # docs/sujets/_incoming/pc-2012-r.md — statut « ✅ VÉRIFIÉ », vérifié en
+  # DEUX passes : une passe adversariale du 2026-09-03 (V.1–V.14) puis une
+  # CLÔTURE indépendante du 2026-09-04 qui a re-téléchargé les fichiers et
+  # REJOUÉ elle-même tout ce dont dépend le statut d'un bloc — barème,
+  # figures, appariement des trois écrans, défaut F1 — plutôt que de
+  # contresigner sa devancière. Six blocs sur six signés, 31/31 questions
+  # re-dérivées et résolubles.
+  #
+  # CHOIX DE L'`id` : le sujet NE NUMÉROTE AUCUN exercice — ni en français
+  # ni en arabe. Sa page 1 imprime « Le sujet se compose de quatre
+  # exercices : Un exercice de chimie et trois exercices de physique », et
+  # son corps nomme les rubriques par discipline. Les identifiants encodent
+  # donc la POSITION SUR LA COPIE (K-7 bis) : l'Électricité est le
+  # TROISIÈME bloc du cartouche, d'où x3, et ses deux parties — que le
+  # sujet déclare lui-même indépendantes — portent x3
+  # (content/pc/rlc-serie/bank.yaml, circuit LC) et x3b (cette entrée).
+  # Les `exercise_label` restent FIDÈLES à ce que le sujet imprime, sans
+  # numéro inventé. RÉPARTITION SANS DOUBLE COMPTAGE : 3,00 (bk-2012-r-x3)
+  # + 2,00 (cette entrée) = 5,00, le sous-total imprimé « Electricité
+  # (05 points) ». Les six entrées du sujet totalisent 20,00 exactement.
+  #
+  # AUCUN CROSS-LIST : les quatre questions relèvent toutes de la réception
+  # et de la démodulation d'une onde AM (rungs R3, R4, R5 de cette leçon).
+  # La question 1-2 mobilise la formule d'accord du circuit bouchon, qui
+  # est le retour au RLC du rung R5 — nommée au `reasoning`, pas répartie.
+  #
+  # ══════════════════════════════════════════════════════════════════════
+  # ⚠️⚠️ DÉFAUT F1 DU SUJET OFFICIEL — ARBITRAGE OWNER OUVERT, NON TRANCHÉ.
+  # ══════════════════════════════════════════════════════════════════════
+  # C'est le point le plus lourd du sujet, et c'est la PREMIÈRE des quatre
+  # conditions opposables sous lesquelles le sas autorise la conversion.
+  # LE FAIT N'EST PLUS EN LITIGE ; L'ARBITRAGE ÉDITORIAL, SI — et il n'est
+  # PAS tranché ici.
+  #
+  # CE QUE LE DOCUMENT OFFICIEL FRANÇAIS IMPRIME (couche de texte, p. 5,
+  # verbatim) : « 2- Les deux parties 1 et 2, permettent la démodulation du
+  # signal recu. Quel est le rôle de chacune des deux parties dans la
+  # démodulation ? (0,5) »
+  #
+  # TROIS TÉMOINS INDÉPENDANTS DISENT « 2 ET 3 », et les trois ont été
+  # RELUS AU RENDU par deux passes séparées :
+  #   1. L'ORIGINAL ARABE, DEUX OCCURRENCES SUR LA MÊME LIGNE (p. 5,
+  #      y = 519,7) : span « الجزءان 2 و3 » en x = [416,2 ; 479,0] et
+  #      « الجزئين 2 » + « و3 » en x = [128,9 ; 177,1] et [109,0 ; 129,1].
+  #      Les deux ont été croppées à 300 dpi, AGRANDIES ×10 et lues à
+  #      l'œil : les chiffres 2 et 3 sont nets dans les deux cas. Noter au
+  #      passage que l'édition française SUPPRIME la seconde occurrence
+  #      (l'arabe renomme les deux parties, le français écrit « chacune des
+  #      deux parties »).
+  #   2. LE CORRIGÉ ARABE (element/39378, p. 6, y = 245,1 et 258,1), relu à
+  #      400 dpi : « دور الجزء 2 : إزالة الموجة الحاملة ذات التردد العالي f »
+  #      (rôle de la partie 2 : éliminer l'onde porteuse de haute fréquence)
+  #      et « دور الجزء 3 : إزالة التوتر المستمر U₀ » (rôle de la partie 3 :
+  #      éliminer la tension continue). IL NE DIT PAS UN MOT DE LA PARTIE 1
+  #      dans cette réponse — il en a déjà traité le rôle à la question 1-1.
+  #   3. LA FIGURE 3 ELLE-MÊME, dont les trois étiquettes ont été relues au
+  #      rendu (« الجزء 1 · الجزء 2 · الجزء3 » de gauche à droite) et dont
+  #      le schéma français a été extrait du PDF (782 × 342 à 171 dpi) et
+  #      REGARDÉ : partie 1 = antenne + (L ajustable ∥ C₁), CIRCUIT
+  #      D'ACCORD — elle sélectionne, ELLE NE DÉMODULE RIEN ; partie 2 =
+  #      diode D + (C₂ ∥ R₂), détection d'enveloppe ; partie 3 = C₃ en
+  #      série + R₃, filtre passe-haut.
+  #
+  # PORTÉE EXACTE, DITE SANS L'EXAGÉRER. La question reste RÉSOLUBLE : un
+  # élève qui a compris le montage répond sur 2 et 3, et la question 1-1
+  # vient de lui donner le rôle de la partie 1. Mais un élève qui suit
+  # l'énoncé À LA LETTRE répète la réponse de 1-1 et laisse sans réponse la
+  # partie 3 — la moitié du barème de la question. 0,5 PT EXPOSÉ.
+  #
+  # ET COMME L'ÉDITION FRANÇAISE EST MINISTÉRIELLE — établie par six
+  # preuves (code d'examen RS28 au cartouche, mention d'époque
+  # « (الترجمة الفرنسية) » sans le cadre anachronique « المسالك الدولية »,
+  # filière et coefficient de 2012, pieds de page VIDES sur 6 pages sur 6,
+  # colonne « Barème » miroir valeur par valeur du « سلم التنقيط » arabe,
+  # gabarit de page 1 identique) —, C'EST UN DÉFAUT DU SUJET OFFICIEL, pas
+  # d'un intermédiaire privé. On peut l'écrire ainsi, ce qu'on ne pouvait
+  # pas faire pour PC 2010 R.
+  #
+  # ─── CE QUI EST FAIT ICI, ET CE QUI NE L'EST PAS ─────────────────────
+  # FAIT : l'énoncé de la question 2 est transcrit VERBATIM — « 1 et 2 » —,
+  # le défaut est déclaré au fil du texte de l'élève ET dans le
+  # `sourcing.note` avec sa nature, ses trois témoins et la lecture
+  # attendue, et LA RÉPONSE EST ÉCRITE POUR LES PARTIES 2 ET 3, jamais pour
+  # la partie 1. Les trois autres questions du bloc (1-1, 1-2, 3) sont
+  # libres de tout défaut et partent telles quelles.
+  # NON FAIT, ET DÉLIBÉRÉMENT : L'ARBITRAGE ENTRE LES DEUX ISSUES.
+  #   (a) VERBATIM + NOTE ÉDITORIALE — l'énoncé garde « 1 et 2 » tel
+  #       qu'imprimé, le défaut est déclaré, la réponse porte sur 2 et 3.
+  #       C'est la forme dans laquelle cette entrée est écrite AUJOURD'HUI,
+  #       parce qu'il faut bien qu'elle soit écrite d'une façon ; ce n'est
+  #       PAS une décision.
+  #   (b) CORRECTION DÉCLARÉE — l'énoncé écrit « 2 et 3 », avec la
+  #       réparation déclarée au point d'usage en citant les trois témoins,
+  #       exactement comme F2/F3/F4/F5 sont traités dans les autres entrées
+  #       de ce sujet.
+  # PRÉCÉDENTS MAISON, LES DEUX : PC 2012 N — correction déclarée ;
+  # PC 2015 N — décision owner demandée et laissée ouverte.
+  # POUR PASSER DE (a) À (b), il suffit de remplacer « 1 et 2 » par
+  # « 2 et 3 » dans le `stem` de la question q3 et de convertir
+  # l'avertissement qui suit en déclaration de correction — le `reasoning`,
+  # lui, ne bouge PAS : il répond déjà pour les parties 2 et 3.
+  # L'OWNER TRANCHE. RIEN N'EST DÉCIDÉ ICI.
+  # ══════════════════════════════════════════════════════════════════════
+  #
+  # DÉFAUT F5, DÉCLARÉ. Le sommaire de la page 1 imprime « Réception d'une
+  # MODULÉE en amplitude, et la démodulation d'amplitude » — le mot
+  # « onde » MANQUE. L'original arabe écrit « استقبال موجة مضمنة الوسع »
+  # (« réception d'une ONDE modulée en amplitude »), et le corps de la
+  # page 5 du français est, lui, correct : « Réception d'une onde modulée
+  # en amplitude et démodulation ». L'`exercise_label` de cette entrée
+  # reprend la formulation CORRECTE du corps — celle qui titre réellement
+  # la partie — et le défaut du sommaire est déclaré ici et au
+  # `sourcing.note`. Cosmétique, aucune conséquence.
+  #
+  # ⚠️ GARDE K-8 SUR LE CORRIGÉ ARABE. Le corrigé (element/39378, forums
+  # svt-assilah, 2014) est un TÉMOIN DE VALEURS, JAMAIS UN ARBITRE. Il
+  # corrobore ici L₁ = 2,1·10⁻³ H, le rôle de sélection de la partie 1, les
+  # rôles des parties 2 et 3, et l'association des trois écrans — mais la
+  # vérification lui a trouvé QUATRE coquilles sur l'ensemble du sujet
+  # (dont C1 : à l'électrolyse il écrit 3600 et calcule 7200, son quotient
+  # valant 0,592 g et non les 1,18 g qu'il publie) et UNE divergence de
+  # fond où c'est lui qui a tort (la vitesse volumique du bloc de chimie,
+  # divisée par le volume d'ester au lieu du volume total : facteur 3,33).
+  # AUCUNE ÉTAPE INTERMÉDIAIRE N'EST REPRISE, et aucune valeur de cette
+  # entrée n'en provient. NOTE DE MÉTHODE IMPORTANTE POUR CE BLOC :
+  # l'appariement des étiquettes d'écran entre les deux éditions a dû être
+  # établi AVANT de lire le corrigé, qui répond en (أ)/(ب)/(ج). L'arabe
+  # range ses écrans (ج)(ب)(أ) de gauche à droite (sens RTL) et le français
+  # (a)(b)(c) : les POSITIONS sont miroir, mais LE CONTENU SUIT
+  # L'ÉTIQUETTE. Établi par trois méthodes, dont deux non visuelles —
+  # lecture directe des six écrans posés en deux rangées ; encre totale
+  # ((b)/(ب) à 22,9 / 24,3 % contre ~14 % pour les quatre autres) ; part
+  # d'encre sous l'axe médian (44,8/47,8 · 54,6/57,5 · 52,3/52,5, même
+  # rangement). C'était le point dont l'inversion aurait coûté 0,75 pt ET
+  # fait dire au corrigé le contraire de ce qu'il dit.
+  - id: bk-2012-r-x3b
+    title: "Réception d'une onde modulée en amplitude : rôle du circuit d'accord, inductance d'accord sur 160 kHz, rôles des étages de démodulation et association des trois oscillogrammes"
+    source:
+      year: 2012
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Electricité — Deuxième partie : Réception d'une onde modulée en amplitude et démodulation"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2012 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code d'examen RS28 (coefficient 7, durée 3 h),
+        AlloSchool element/94455 (édition française, cours course-422 ;
+        jumeaux 94454 / 94456, upload-70323) ; original arabe element/39377
+        et son corrigé element/39378 (cours arabophone course-311).
+        Électricité, DEUXIÈME partie uniquement — réception d'une onde
+        modulée en amplitude et démodulation ; barème 2,00 pt (0,25 + 0,5 +
+        0,5 + 0,75), 4 questions. RÉPARTITION SANS DOUBLE COMPTAGE : la
+        première partie du même exercice — étude du circuit idéal LC,
+        3,00 pt — est transcrite à part sous content/pc/rlc-serie/bank.yaml,
+        entrée bk-2012-r-x3 ; 3,00 + 2,00 = 5,00, le sous-total imprimé
+        « Electricité (05 points) », et le sujet précise « Les deux parties
+        sont indépendantes ». Source vérifiée EN DEUX PASSES
+        (docs/sujets/_incoming/pc-2012-r.md, statut « ✅ VÉRIFIÉ », 6 blocs
+        sur 6) : passe adversariale du 2026-09-03 puis CLÔTURE INDÉPENDANTE
+        du 2026-09-04. Barème recompté sur les DEUX éditions, question par
+        question — colonne française p. 5 appariée à ±5 pt : 0,25 ↔ 1-1-
+        (y 685,2 ↔ 687,2), 0,5 ↔ 1-2- (705,0 ↔ 705,6), 0,5 ↔ 2- (739,4 ↔
+        740,0), 0,75 ↔ 3- (779,0 ↔ 779,4) = 2,00 ; colonne arabe p. 5 :
+        mêmes valeurs, même ordre, dont le « 0, 5 » avec espace [sic] à la
+        question 2 que l'édition française normalise. Les quatre
+        re-dérivations, refaites à la clôture : rôle de la partie 1 =
+        sélection / accord ; L₁ = 1/(4π²f²C₁) = 2,105·10⁻³ H = 2,1 mH ;
+        rôles des parties 2 et 3 ; association u_EM → (b), u_GM → (a),
+        u_HM → (c). ⚠️⚠️ DÉFAUT F1 DU SUJET OFFICIEL, GARDE DE CONVERSION
+        OPPOSABLE ET ARBITRAGE OWNER NON TRANCHÉ — c'est la première des
+        quatre conditions du sas. La question 2 imprime « Les deux parties
+        1 ET 2, permettent la démodulation du signal recu » là où TROIS
+        TÉMOINS INDÉPENDANTS disent « 2 ET 3 », les trois relus AU RENDU
+        par deux passes séparées : (1) l'original arabe, DEUX occurrences
+        sur la même ligne (p. 5 y = 519,7 : « الجزءان 2 و3 » puis
+        « الجزئين 2 و3 »), croppées à 300 dpi, agrandies ×10 et lues à
+        l'œil — chiffres nets dans les deux cas, et l'édition française
+        supprime en outre la seconde occurrence ; (2) le corrigé arabe
+        (p. 6 y = 245,1 et 258,1, relu à 400 dpi), qui répond « rôle de la
+        partie 2 : éliminer l'onde porteuse haute fréquence f » et « rôle
+        de la partie 3 : éliminer la tension continue U₀ », et ne dit PAS
+        UN MOT de la partie 1 ; (3) la figure 3 elle-même, étiquettes
+        relues au rendu et schéma français extrait du PDF (782 × 342 à
+        171 dpi) et regardé — la partie 1 est le CIRCUIT D'ACCORD (antenne
+        + L ajustable ∥ C₁), elle SÉLECTIONNE et NE DÉMODULE RIEN, et la
+        question 1-1 vient précisément d'établir ce rôle-là. Telle
+        qu'imprimée, la question est PHYSIQUEMENT FAUSSE ; elle reste
+        résoluble (un élève qui connaît le montage répond sur 2 et 3), mais
+        un élève qui suit l'énoncé à la lettre répète la réponse de 1-1 et
+        laisse sans réponse la partie 3 : 0,5 PT EXPOSÉ. L'ÉDITION
+        FRANÇAISE ÉTANT MINISTÉRIELLE — six preuves : code RS28 au
+        cartouche, mention d'époque « (الترجمة الفرنسية) » sans le cadre
+        anachronique « المسالك الدولية », filière et coefficient de 2012,
+        pieds de page VIDES sur 6/6, colonne « Barème » miroir valeur par
+        valeur de la colonne arabe, gabarit de page 1 identique —, C'EST UN
+        DÉFAUT DU SUJET OFFICIEL, pas d'un intermédiaire privé. CE QUI EST
+        FAIT ICI : l'énoncé est transcrit VERBATIM (« 1 et 2 »), le défaut
+        est déclaré au fil du texte de l'élève et ici, et LA RÉPONSE EST
+        ÉCRITE POUR LES PARTIES 2 ET 3, jamais pour la partie 1. CE QUI
+        N'EST PAS FAIT, ET DÉLIBÉRÉMENT : trancher entre les deux issues —
+        (a) verbatim + note éditoriale, la forme dans laquelle cette entrée
+        est écrite aujourd'hui parce qu'il faut bien qu'elle soit écrite
+        d'une façon, ce qui n'est PAS une décision ; (b) correction
+        déclarée (« 2 et 3 ») citant les trois témoins. Précédents maison,
+        les deux : PC 2012 N (correction déclarée), PC 2015 N (décision
+        owner demandée et laissée ouverte). L'OWNER TRANCHE ; voir la NOTE
+        ÉDITORIALE au-dessus de cette entrée, qui dit aussi comment passer
+        de (a) à (b) en un seul geste. DÉFAUT F5, DÉCLARÉ : le sommaire de
+        la page 1 imprime « Réception d'une MODULÉE en amplitude » — le mot
+        « onde » manque, là où l'arabe écrit « موجة مضمنة الوسع » et où le
+        corps de la page 5 du français est correct ; l'`exercise_label`
+        reprend la formulation correcte du corps. Cosmétique. DÉFAUT DE
+        NOTATION, REPRODUIT VERBATIM : « f = 160 KHz » avec un K majuscule,
+        qui désigne le kelvin ; l'original arabe imprime correctement
+        « 160 kHz ». Sans conséquence sur le calcul. Coquilles de langue
+        reproduites verbatim, non réparées : « la démodulation du signal
+        recu », la virgule parasite entre sujet et verbe (« Les deux
+        parties 1 et 2, permettent »), l'espace avant la virgule dans « les
+        tensions u_EM , u_GM et u_HM », et « à la tension corréspondante » ;
+        registre complet en docs/sujets/_incoming/pc-2012-r.md § 5 et V.12.
+        LES TROIS ÉCRANS D'OSCILLOSCOPE N'ONT NI BASE DE TEMPS NI
+        SENSIBILITÉ VERTICALE — aucune étiquette de calibration dans la
+        couche de texte des deux éditions, et la question 3 est une pure
+        association qualitative : aucune fréquence, aucune tension n'en est
+        tirable, et aucune question ne le demande. Les mesures relevées ne
+        servent qu'à décrire le dessin : (a) sinusoïde entièrement
+        au-dessus de l'axe médian, sommets +2,93 div, creux +1,00,
+        milieu +1,97, amplitude 0,97, période ≈ 5,1 div ; (b) signal haute
+        fréquence à amplitude modulée, enveloppe de demi-amplitude max
+        ≈ 3,3 div et min ≈ 1,5 div, période d'enveloppe ≈ 5,2 div,
+        porteuse ≈ 0,51 div ; (c) sinusoïde centrée sur l'axe, +0,97 /
+        −0,98, milieu −0,01, amplitude 0,97, période ≈ 5,1 div. APPARIEMENT
+        DES ÉTIQUETTES ENTRE LES DEUX ÉDITIONS, ÉTABLI AVANT TOUTE LECTURE
+        DU CORRIGÉ, par TROIS méthodes dont deux non visuelles : l'arabe
+        range ses écrans (ج)(ب)(أ) de gauche à droite (sens RTL) et le
+        français (a)(b)(c) — les POSITIONS sont miroir, mais LE CONTENU
+        SUIT L'ÉTIQUETTE. (i) Les six écrans posés en deux rangées et
+        regardés ; (ii) encre totale : (b)/(ب) à 22,9 / 24,3 % contre
+        ~14 % pour les quatre autres — le signal modulé se désigne tout
+        seul ; (iii) part d'encre sous l'axe médian : 44,8/47,8 ·
+        54,6/57,5 · 52,3/52,5, même rangement. C'était le point dont
+        l'inversion aurait coûté 0,75 pt ET fait dire au corrigé le
+        contraire de ce qu'il dit. ⚠️ LE CORRIGÉ ARABE N'EST QU'UN TÉMOIN
+        DE VALEURS, JAMAIS UN ARBITRE (K-8) : il corrobore ici L₁, le rôle
+        de sélection de la partie 1, les rôles des parties 2 et 3 et
+        l'association des trois écrans — mais la vérification lui a trouvé
+        QUATRE coquilles sur l'ensemble du sujet et UNE divergence de fond
+        où c'est lui qui a tort. Aucune étape intermédiaire n'est reprise,
+        et aucune valeur de cette entrée n'en provient.
+    intro: |-
+      **Réception d'une onde modulée en amplitude et démodulation (examen national, session de rattrapage 2012 — exercice « Electricité », Deuxième partie, 2,00 points sur 05,00).** <!-- DÉFAUT DU SUJET OFFICIEL, DÉCLARÉ (F5), 2026-09-04.
+           Le sommaire de la page 1 du document officiel francophone imprime
+           « Reception d'une MODULEE en amplitude, et la demodulation
+           d'amplitude » — le mot « onde » MANQUE. L'original arabe RS28 ecrit
+           « استقبال موجة مضمنة الوسع وإزالة التضمين » = « reception d'une ONDE
+           modulee en amplitude et demodulation », et le corps de la page 5 du
+           francais est, lui, CORRECT : « Reception d'une onde modulee en
+           amplitude et demodulation ». Le titre retenu ici est donc celui du
+           CORPS, qui est celui qui titre reellement la partie ; le defaut ne
+           porte que sur la ligne du sommaire. Cosmetique, aucune consequence.
+           L'edition francaise de ce sujet etant MINISTERIELLE (code d'examen
+           RS28 au cartouche ; pieds de page vides sur 6/6 ; colonne « Bareme »
+           miroir de la colonne arabe), c'est un defaut de l'edition OFFICIELLE
+           de langue francaise, pas d'un intermediaire prive. Voir
+           docs/sujets/_incoming/pc-2012-r.md, F5 / V.7. -->
+
+      *La première partie du même exercice est indépendante — le sujet l'écrit — et vit ailleurs : l'étude du circuit idéal LC (3,00 pt) sous « Circuit RLC série », entrée bk-2012-r-x3. 3,00 + 2,00 = 5,00, le barème imprimé.*
+
+      Pour recevoir une onde issue d'une station de diffusion, on utilise le dispositif simplifié, qui est constitué de **trois parties** comme l'indique la **figure 3**.
+
+      **Figure 3 — le dispositif de réception, re-décrit depuis l'image.** Schéma en **trois cadres en tirets** juxtaposés, partageant un **rail horizontal de masse en bas** et un **rail de signal en haut**. Les trois cadres sont légendés, sous le schéma, **Partie 1**, **Partie 2**, **Partie 3**, de gauche à droite.
+
+      - **Partie 1** *(cadre gauche)* : une **antenne** en Y au-dessus du cadre, descendant sur le nœud $E$ du rail haut. Entre le rail haut et le rail bas, **en parallèle** : une **bobine** (arches verticales, barrée d'une **flèche oblique** — son inductance est **ajustable**) et un **condensateur $C_1$**.
+      - **Partie 2** *(cadre milieu)* : sur le rail haut, une **diode $D$** (triangle + barre, pointe vers la droite) entre $E$ et le nœud $F$ ; de $F$ au rail bas, un **condensateur $C_2$** ; plus à droite, le nœud $G$, avec un **résistor $R_2$** de $G$ au rail bas. Sur le rail bas, sous $C_2$, le nœud $M$ porte le **symbole de masse**.
+      - **Partie 3** *(cadre droit)* : un **condensateur $C_3$ en SÉRIE** sur le rail haut, entre $G$ et le nœud $H$ ; de $H$ au rail bas, un **résistor $R_3$**. Les deux rails se prolongent en tirets vers la droite — c'est la sortie.
+
+      *Nœuds étiquetés : $E$ (partie 1), $F$ et $G$ (partie 2), $H$ (partie 3), $M$ (la masse). Les trois tensions de la question 3 se lisent toutes par rapport à $M$.*
+
+      ---
+
+      **Les trois écrans d'oscilloscope de la question 3, re-décrits depuis les images.** Trois écrans identiques, cadre gris arrondi, quadrillage **8 divisions en hauteur × 10 en largeur**, avec un **axe horizontal médian** et un **axe vertical médian** en pointillés fins. Étiquetés **(a)**, **(b)**, **(c)** de gauche à droite.
+
+      | Écran | Ce qu'on voit | Position verticale | Amplitude | Période |
+      |---|---|---|---|---|
+      | **(a)** | une sinusoïde **entièrement au-dessus** de l'axe médian | sommets $+2{,}93$ div, creux $+1{,}00$ div, **valeur moyenne $+1{,}97$ div** | $0{,}97$ div | $\approx 5{,}1$ div |
+      | **(b)** | un signal **haute fréquence** dont **l'amplitude est modulée** | centré sur $0$ | enveloppe : demi-amplitude max $\approx 3{,}3$ div, min $\approx 1{,}5$ div | enveloppe $\approx 5{,}2$ div ; porteuse $\approx 0{,}51$ div |
+      | **(c)** | une sinusoïde **centrée** sur l'axe médian | milieu $-0{,}01$ div | $0{,}97$ div | $\approx 5{,}1$ div |
+
+      ⚠️ **Aucun de ces trois écrans ne porte de base de temps ni de sensibilité verticale** — ni dans l'édition française, ni dans l'original arabe. **Aucune fréquence et aucune tension ne peut en être tirée**, et aucune question ne le demande : la question 3 est une association purement qualitative. Les chiffres ci-dessus sont donnés **en divisions**, pour te permettre de comparer les trois courbes entre elles — c'est tout ce dont tu as besoin.
+    questions:
+      - id: q1
+        part: "Electricité, Deuxième partie — Réception d'une onde AM et démodulation"
+        stem: |-
+          **1-** La partie 1 est constituée d'une antenne reliée à un circuit parallèle, constitué d'une bobine d'inductance ajustable et de résistance négligeable et d'un condensateur de capacité $C_1 = 4{,}7\times10^{-10}\ \text{F}$.
+
+          **1-1-** (0,25 pt) Quel est le rôle de la partie 1 ?
+        reasoning: |-
+          La partie 1 est un **circuit bouchon** — une bobine et un condensateur **en parallèle** — relié à l'antenne. Son rôle est la **SÉLECTION** : parmi toutes les ondes que l'antenne capte simultanément, il ne retient que celle dont la fréquence est égale à sa propre **fréquence propre**. C'est l'**accord** sur une station (rung R5).
+
+          **Pourquoi il faut un tel étage, et c'est le point de fond.** Une antenne est un capteur **aveugle** : elle reçoit en même temps toutes les ondes électromagnétiques qui passent — toutes les stations de la bande, plus le bruit. Sans filtre, on entendrait tout à la fois, donc rien. Le circuit bouchon résout ce problème parce que son **impédance est maximale à sa fréquence propre** : à cette fréquence-là, et à elle seule, une tension notable apparaît à ses bornes ; toutes les autres sont court-circuitées vers la masse.
+
+          **Et c'est là qu'intervient la bobine ajustable, dont la flèche oblique sur le schéma n'est pas décorative.** La fréquence propre vaut $f_0 = \dfrac{1}{2\pi\sqrt{L_1C_1}}$ : faire varier $L_1$ fait varier $f_0$, donc **change de station**. C'est physiquement le bouton de recherche d'un poste de radio. La question 1-2 va justement demander de calculer le $L_1$ qui accorde le récepteur sur une station donnée.
+
+          **Le piège de cette question.** Répondre « elle démodule » ou « elle détecte l'enveloppe ». La partie 1 **ne démodule rien** : elle ne fait que choisir la fréquence porteuse à laisser passer. La démodulation, c'est-à-dire l'extraction du signal informatif, est le travail des parties **2** et **3** — et c'est exactement le point que la question 2 va rendre confus (voir l'avertissement qui y est porté). Retenir dès maintenant que **partie 1 = sélection** évite d'y perdre des points.
+      - id: q2
+        stem: |-
+          **1-2-** (0,5 pt) Pour recevoir une onde AM de fréquence $f = 160\ \text{KHz}$ *(sic — le préfixe kilo s'écrit avec un k minuscule ; le K majuscule désigne le kelvin. L'original arabe imprime correctement « 160 kHz ». Sans conséquence sur le calcul)*, on fixe l'inductance de la bobine sur la valeur $L_1$.
+
+          Calculer $L_1$.
+        reasoning: |-
+          **La condition à écrire, et c'est toute la question.** Recevoir une station, c'est **accorder** le circuit bouchon sur sa fréquence : sa fréquence propre doit être égale à la fréquence de l'onde reçue (rung R5).
+
+          $$f = f_0 = \frac{1}{2\pi\sqrt{L_1 C_1}}$$
+
+          On isole $L_1$ en élevant d'abord au carré, exactement comme pour la période propre :
+
+          $$f^2 = \frac{1}{4\pi^2 L_1 C_1} \qquad \Longrightarrow \qquad \boxed{L_1 = \frac{1}{4\pi^2 f^2 C_1}}$$
+
+          **L'application numérique, en convertissant la fréquence d'abord** — $f = 160\ \text{kHz} = 1{,}60\times10^{5}\ \text{Hz}$, et $C_1 = 4{,}7\times10^{-10}\ \text{F}$ :
+
+          $$L_1 = \frac{1}{4\pi^2 \times \left(1{,}60\times10^{5}\right)^2 \times 4{,}7\times10^{-10}} = \frac{1}{4{,}75\times10^{2}} \approx 2{,}1\times10^{-3}\ \text{H} = 2{,}1\ \text{mH}$$
+
+          **Le contrôle de vraisemblance, qui vaut d'être fait.** Quelques millihenrys pour un circuit d'accord de radio grandes ondes : c'est l'ordre de grandeur réel d'une bobine de récepteur AM. Et le recoupement est encore plus parlant si l'on compare à la première partie de cet exercice : là-bas, un condensateur de $4{,}7\ \text{mF}$ et une bobine de $0{,}485\ \text{H}$ oscillaient à $3{,}3\ \text{Hz}$ ; ici, un condensateur **dix millions de fois plus petit** et une bobine **deux cents fois plus petite** oscillent à $160\ \text{kHz}$. Les deux circuits obéissent à la même formule — c'est le même $\frac{1}{2\pi\sqrt{LC}}$ —, ce qui change n'est que l'échelle des composants.
+
+          **Les deux pièges de cette question.** Le premier : **oublier de convertir les kilohertz**, et calculer avec $f = 160$. Le résultat sort alors $10^{6}$ fois trop grand — $2{,}1\times10^{3}\ \text{H}$, une bobine impossible. Le second : **oublier le carré sur $f$** ou le $4\pi^2$ ; on part de $f_0 = \dfrac{1}{2\pi\sqrt{L_1C_1}}$ et l'on élève **les deux membres au carré avant** d'isoler, ce qui fait apparaître $4\pi^2$ et $f^2$ ensemble. Aucune des deux fautes ne se voit sans contrôle d'ordre de grandeur.
+        steps:
+          - math: 'f = f_0 = \frac{1}{2\pi\sqrt{L_1 C_1}}'
+            note: "Condition d'accord : la frequence propre du circuit bouchon egale la frequence de l'onde a recevoir (rung R5)."
+          - math: '\boxed{L_1 = \frac{1}{4\pi^{2} f^{2} C_1}}'
+            note: "On eleve les deux membres au carre AVANT d'isoler : c'est la que naissent le 4 pi carre et le f carre."
+          - math: 'L_1 = \frac{1}{4\pi^{2} \times \left(1{,}60\times10^{5}\right)^{2} \times 4{,}7\times10^{-10}} = \frac{1}{4{,}75\times10^{2}}'
+            note: "Application numerique. La frequence est convertie en hertz AVANT tout : 160 kHz = 1,60 x 10^5 Hz."
+          - math: '\boxed{L_1 \approx 2{,}1\times10^{-3}\ \text{H} = 2{,}1\ \text{mH}}'
+            note: "Valeur exacte 2,105 mH. Quelques millihenrys : l'ordre de grandeur reel d'une bobine d'accord de recepteur AM."
+      - id: q3
+        stem: |-
+          **2-** (0,5 pt) Les deux parties **1 et 2**, permettent la démodulation du signal recu *(sic)*. Quel est le rôle de chacune des deux parties dans la démodulation ?
+
+          ⚠️ **Un avertissement sur cette question, que tu dois lire avant d'y répondre.** L'énoncé ci-dessus est reproduit **exactement tel que le sujet officiel l'imprime**, « 1 et 2 » compris — et **il est fautif**. Les parties qui démodulent sont les parties **2 et 3** : la partie 1 est le circuit d'accord, elle **sélectionne** la station et ne démodule rien, ce que la question 1-1 vient précisément d'établir. Trois témoins indépendants le confirment : l'original arabe du même sujet écrit **deux fois** « les parties 2 et 3 », le corrigé répond pour les parties 2 et 3, et la figure 3 elle-même montre que la partie 1 est un simple circuit bouchon. **C'est un défaut du sujet officiel, déclaré ici et non réparé — et la réponse attendue porte sur les parties 2 et 3.** <!-- DÉFAUT F1 DU SUJET OFFICIEL, DÉCLARÉ ET NON RÉPARÉ — ARBITRAGE OWNER OUVERT, 2026-09-04.
+               VERBATIM DE LA COUCHE DE TEXTE FRANCAISE, p. 5 : « 2- Les deux
+               parties 1 et 2, permettent la demodulation du signal recu. Quel est
+               le role de chacune des deux parties dans la demodulation ? (0,5) ».
+               TROIS TEMOINS INDEPENDANTS DISENT « 2 ET 3 », les trois relus AU
+               RENDU par deux passes separees :
+                 1. L'ORIGINAL ARABE, DEUX OCCURRENCES SUR LA MEME LIGNE (p. 5,
+                    y = 519,7) : « الجزءان 2 و3 » en x = [416,2 ; 479,0] et
+                    « الجزئين 2 » + « و3 » en x = [128,9 ; 177,1] et
+                    [109,0 ; 129,1]. Les deux croppees a 300 dpi, AGRANDIES x10 et
+                    lues a l'oeil : les chiffres 2 et 3 sont nets dans les deux
+                    cas. L'edition francaise supprime en outre la SECONDE
+                    occurrence (l'arabe renomme les deux parties, le francais
+                    ecrit « chacune des deux parties »).
+                 2. LE CORRIGE ARABE (element/39378, p. 6, y = 245,1 et 258,1),
+                    relu a 400 dpi : « role de la partie 2 : elimination de l'onde
+                    porteuse de haute frequence f » et « role de la partie 3 :
+                    elimination de la tension continue U0 ». Il ne dit PAS UN MOT
+                    de la partie 1 dans cette reponse.
+                 3. LA FIGURE 3, etiquettes relues au rendu (« الجزء 1 · الجزء 2 ·
+                    الجزء3 » de gauche a droite) et schema francais extrait du PDF
+                    (782 x 342 a 171 dpi) et REGARDE : partie 1 = antenne +
+                    (L ajustable // C1), CIRCUIT D'ACCORD, elle ne demodule rien ;
+                    partie 2 = diode D + (C2 // R2), detection d'enveloppe ;
+                    partie 3 = C3 en serie + R3, passe-haut.
+               PORTEE EXACTE, SANS L'EXAGERER : la question reste RESOLUBLE — un
+               eleve qui a compris le montage repond sur 2 et 3 —, mais un eleve
+               qui suit l'enonce A LA LETTRE repete la reponse de 1-1 et laisse
+               sans reponse la partie 3, soit la moitie du bareme. 0,5 PT EXPOSE.
+               CLASSIFICATION : l'edition francaise de ce sujet est MINISTERIELLE
+               (code d'examen RS28 au cartouche ; mention d'epoque
+               « (الترجمة الفرنسية) » sans le cadre anachronique
+               « المسالك الدولية » ; pieds de page VIDES sur 6/6 ; colonne
+               « Bareme » miroir valeur par valeur de la colonne arabe). C'est
+               donc un defaut du SUJET OFFICIEL, pas d'un intermediaire prive.
+               CE QUI EST FAIT ICI : enonce VERBATIM (« 1 et 2 »), defaut declare
+               au fil du texte de l'eleve et dans le sourcing.note, REPONSE ECRITE
+               POUR LES PARTIES 2 ET 3 — jamais pour la partie 1.
+               CE QUI N'EST PAS FAIT, ET DELIBEREMENT : l'arbitrage entre les deux
+               issues. (a) VERBATIM + NOTE EDITORIALE — la forme dans laquelle
+               cette entree est ecrite aujourd'hui, parce qu'il faut bien qu'elle
+               soit ecrite d'une facon ; ce n'est PAS une decision. (b) CORRECTION
+               DECLAREE — l'enonce ecrit « 2 et 3 » avec la reparation declaree au
+               point d'usage, comme F2/F3/F4/F5 le sont dans les autres entrees de
+               ce sujet. Precedents maison, les deux : PC 2012 N (correction
+               declaree) ; PC 2015 N (decision owner demandee et laissee ouverte).
+               POUR PASSER DE (a) A (b) : remplacer « 1 et 2 » par « 2 et 3 » dans
+               ce stem et convertir cet avertissement en declaration de
+               correction. Le reasoning ne bouge PAS — il repond deja pour les
+               parties 2 et 3. L'OWNER TRANCHE ; RIEN N'EST DECIDE ICI.
+               Voir docs/sujets/_incoming/pc-2012-r.md, F1 / D1 / V.6 / V.15 /
+               V.16, et la NOTE EDITORIALE en tete de cette entree. -->
+        reasoning: |-
+          **La réponse porte sur les parties 2 et 3** — pas sur les parties 1 et 2 (voir l'avertissement porté à l'énoncé). Démoduler, c'est retrouver le signal informatif à partir de l'onde reçue, et cela se fait en **deux étapes successives**, une par partie (rung R4).
+
+          **Rôle de la partie 2 — la détection d'enveloppe, c'est-à-dire l'élimination de la porteuse haute fréquence.** Elle est faite de deux organes qui travaillent ensemble :
+
+          - la **diode $D$** ne laisse passer le courant que dans un sens : elle **redresse** le signal, supprimant toutes les alternances négatives. Ce qui reste est une suite de bosses positives, toujours à la fréquence de la porteuse, mais dont le sommet dessine l'enveloppe ;
+          - le **condensateur $C_2$ en parallèle avec $R_2$** forme un **filtre passe-bas** : il se charge très vite à chaque bosse et se décharge lentement dans $R_2$ entre deux bosses. Il **lisse** donc les oscillations rapides de la porteuse sans effacer les variations lentes de l'enveloppe.
+
+          À la sortie de la partie 2, au nœud $G$, on a donc **l'enveloppe du signal — mais accompagnée de sa composante continue**, héritée du redressement. C'est exactement la courbe **(a)** : une sinusoïde entièrement au-dessus de l'axe.
+
+          *La condition de réussite de cet étage, admise ici : la constante de temps $R_2C_2$ doit être grande devant la période de la porteuse et petite devant celle du signal modulant. Trop petite, le condensateur suit la porteuse et rien n'est lissé ; trop grande, il ne suit plus l'enveloppe et le signal est écrêté.*
+
+          **Rôle de la partie 3 — l'élimination de la composante continue.** $C_3$ est en **série** et $R_3$ en parallèle : c'est un **filtre passe-haut**, autrement dit un condensateur de liaison. Un condensateur ne laisse pas passer le continu — il bloque la composante constante — mais transmet les variations. À la sortie, au nœud $H$, il ne reste que le **signal modulant seul**, centré sur zéro : c'est exactement la courbe **(c)**.
+
+          **Pourquoi ces deux étages et pas un seul, et c'est ce que la question veut entendre.** La partie 2 supprime **ce qui est trop rapide** (la porteuse) ; la partie 3 supprime **ce qui ne varie pas du tout** (la composante continue). Les deux filtres sont complémentaires — un passe-bas puis un passe-haut —, et il faut les deux pour retrouver le signal d'origine, ni plus rapide ni décalé.
+
+          **Ce que la partie 1 fait, et qu'il ne faut pas répéter ici.** Elle **sélectionne** la station, et c'est tout : c'était la réponse à la question 1-1. Elle n'intervient en rien dans la démodulation — c'est précisément le défaut de l'énoncé imprimé.
+      - id: q4
+        stem: |-
+          **3-** (0,75 pt) On visualise sur l'écran d'un oscilloscope les tensions $u_{EM}$ *(sic — le sujet imprime une espace avant la virgule)*, $u_{GM}$ et $u_{HM}$, on obtient les courbes suivantes :
+
+          *(les trois écrans **(a)**, **(b)** et **(c)**, décrits en tête d'énoncé)*
+
+          Associer chacune des courbes (a), (b) et (c), à la tension corréspondante *(sic)*. Justifier.
+        reasoning: |-
+          Trois tensions, trois écrans, et **le montage impose l'ordre** : $E$ est en entrée de la partie 2, $G$ en sortie de la partie 2, $H$ en sortie de la partie 3. On suit donc le signal de gauche à droite dans la figure 3, et à chaque étage on demande : *qu'est-ce que cet étage vient de retirer ?*
+
+          **$u_{EM}$ — au nœud $E$, entre le circuit d'accord et la masse : c'est l'onde reçue, encore modulée. → courbe (b).**
+          Rien n'a encore été retiré : le signal porte toujours sa porteuse haute fréquence, dont l'amplitude varie au rythme du signal informatif. C'est la seule des trois courbes qui montre des oscillations **très rapides** enveloppées dans une variation lente — la signature même d'un signal modulé en amplitude. Aucune ambiguïté : les deux autres écrans portent des sinusoïdes simples.
+
+          **$u_{GM}$ — au nœud $G$, après la diode et le filtre $C_2/R_2$ : c'est l'enveloppe, AVEC sa composante continue. → courbe (a).**
+          La partie 2 a supprimé la porteuse ; il reste l'enveloppe. Mais le redressement a laissé le signal **entièrement d'un seul côté de zéro** : la courbe (a) est **entièrement au-dessus de l'axe médian**, sa valeur moyenne étant décalée d'environ $+2$ divisions. Une tension qui ne change **jamais** de signe est la marque d'un signal redressé et non encore débarrassé de son continu.
+
+          **$u_{HM}$ — au nœud $H$, après $C_3$ et $R_3$ : c'est le signal modulant seul. → courbe (c).**
+          La partie 3 a supprimé la composante continue ; la courbe est maintenant **centrée sur zéro**.
+
+          **L'argument qui verrouille la réponse, et c'est lui qu'il faut écrire dans la justification.** Les courbes **(a) et (c) portent exactement la même sinusoïde** — même amplitude ($0{,}97$ division toutes les deux) et même période ($\approx 5{,}1$ divisions toutes les deux). La **seule** différence entre elles est un **décalage vertical d'environ deux divisions**. C'est très précisément la signature d'un signal et du **même signal privé de sa composante continue** — donc de l'entrée et de la sortie de la partie 3. Le rapprochement (a) ↔ (c) n'est pas une impression, il se mesure.
+
+          **Et un second recoupement, gratuit :** l'**enveloppe** de la courbe (b) a la **même période** que les sinusoïdes de (a) et (c) — $\approx 5{,}2$ divisions contre $5{,}1$. C'est normal : c'est le même signal informatif, d'abord porté par la modulation, puis extrait. La démodulation n'a rien changé au rythme, elle n'a fait que retirer deux choses.
+
+          **Le piège de cette question.** Intervertir (a) et (c) en raisonnant « le signal démodulé est plus propre, donc c'est le dernier ». Les deux sont également « propres » : ce qui les distingue est **le décalage vertical**, pas la forme. La règle sûre est de suivre le montage : la composante continue est retirée par la **dernière** partie, donc la courbe **centrée** est la **dernière**.
+
+          *Rappel : aucun de ces écrans ne porte de base de temps ni de sensibilité verticale — dans aucune des deux éditions du sujet. Aucune fréquence, aucune tension n'est à en tirer, et la question ne le demande pas : c'est une association purement qualitative.*
+        steps:
+          - math: 'u_{EM} \;\longrightarrow\; \text{courbe (b)}'
+            note: "Noeud E, en entree de la partie 2 : l'onde recue, encore modulee. Seule courbe montrant des oscillations rapides sous une enveloppe lente."
+          - math: 'u_{GM} \;\longrightarrow\; \text{courbe (a)}'
+            note: "Noeud G, apres la diode et le filtre C2/R2 : l'enveloppe AVEC sa composante continue. Courbe entierement au-dessus de l'axe, valeur moyenne environ +2 divisions."
+          - math: 'u_{HM} \;\longrightarrow\; \text{courbe (c)}'
+            note: "Noeud H, apres C3 et R3 : le signal modulant seul, centre sur zero."
+          - math: '\text{(a) et (c) : même amplitude } 0{,}97\ \text{div, même période } \approx 5{,}1\ \text{div, décalage } \approx 2\ \text{div}'
+            note: "L'argument mesure qui verrouille l'association : (a) et (c) portent la MEME sinusoide, la seule difference etant la composante continue retiree par la partie 3."

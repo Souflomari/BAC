@@ -2782,3 +2782,462 @@ entries:
             note: "Ce qui reste : l'oscillateur harmonique ideal, de solution sinusoidale pure."
           - math: '\boxed{r = k - R^{\prime} = 208{,}4 - 200 = 8{,}4\ \Omega}'
             note: "Verification reussie : la premiere experience donnait deja 8,4 ohms par lecture graphique, sur un autre montage."
+
+  # ── bk-2012-r-x3 — 2012 R, Électricité § I : étude du circuit idéal LC ──
+  #
+  # NOTE ÉDITORIALE — bk-2012-r-x3 (2026-09-04, ajout). Sujet SPC 2012
+  # SESSION DE RATTRAPAGE, code d'examen RS28, converti depuis
+  # docs/sujets/_incoming/pc-2012-r.md — statut « ✅ VÉRIFIÉ », vérifié en
+  # DEUX passes : une passe adversariale du 2026-09-03 (V.1–V.14) puis une
+  # CLÔTURE indépendante du 2026-09-04 qui a re-téléchargé les fichiers et
+  # REJOUÉ elle-même tout ce dont dépend le statut d'un bloc — barème,
+  # figures, défauts — plutôt que de contresigner sa devancière. Six blocs
+  # sur six signés, 31/31 questions re-dérivées et résolubles.
+  #
+  # CHOIX DE L'`id` : le sujet NE NUMÉROTE AUCUN exercice — ni en français
+  # ni en arabe. Sa page 1 imprime « Le sujet se compose de quatre
+  # exercices : Un exercice de chimie et trois exercices de physique », et
+  # son corps nomme les rubriques par discipline. Les identifiants encodent
+  # donc la POSITION SUR LA COPIE (K-7 bis) : l'Électricité est le
+  # TROISIÈME bloc du cartouche, d'où x3, et ses deux parties — que le
+  # sujet déclare lui-même indépendantes — portent x3 (cette entrée,
+  # circuit LC) et x3b (content/pc/ondes-em-modulation/bank.yaml, réception
+  # AM et démodulation). Les `exercise_label` restent FIDÈLES à ce que le
+  # sujet imprime, sans numéro inventé — depuis le correctif du
+  # 2026-09-03, `lib/examens.ts` lit la position sur l'identifiant dès
+  # qu'aucun libellé de l'épreuve ne porte « Exercice N », de sorte que
+  # l'épreuve compte QUATRE exercices, pas six.
+  # RÉPARTITION SANS DOUBLE COMPTAGE : 3,00 (cette entrée) + 2,00
+  # (bk-2012-r-x3b) = 5,00, le sous-total imprimé « Electricité
+  # (05 points) ». Les DEUX parties de l'Électricité n'ont pas de
+  # sous-total propre imprimé — seule la colonne de barème dit le partage
+  # 3,00 / 2,00, et l'original arabe fait exactement pareil. Les six
+  # entrées du sujet totalisent 20,00 exactement.
+  #
+  # CROSS-LIST `aspects-energetiques`, HONORÉ SANS SECONDE ENTRÉE. La
+  # question 6 — montrer que l'énergie totale du circuit se conserve, puis
+  # la calculer — relève aussi de la notion « Aspects énergétiques ». Elle
+  # pèse 0,75 pt sur 3,00 : en dessous du seuil d'une entrée autonome, et
+  # le cross-list serait orphelin (une seule question, inséparable de Q_m
+  # établi à la question 4). Règle du sas appliquée : le barème est
+  # RÉPARTI, jamais dupliqué, et un cross-list de ce poids est honoré dans
+  # le `reasoning`, qui nomme la notion sœur et refait la démonstration.
+  #
+  # DÉFAUT DE L'ÉDITION OFFICIELLE FRANÇAISE, DÉCLARÉ ET CORRIGÉ ICI (F2).
+  # L'édition française de ce sujet est MINISTÉRIELLE — établie par six
+  # preuves (code d'examen RS28 au cartouche, mention d'époque
+  # « (الترجمة الفرنسية) » sans le cadre anachronique « المسالك الدولية »,
+  # filière et coefficient de 2012, pieds de page VIDES sur 6 pages sur 6,
+  # colonne « Barème » miroir valeur par valeur du « سلم التنقيط » arabe,
+  # gabarit de page 1 identique). Un écart français/arabe n'est donc PAS un
+  # artefact de traduction professorale : c'est un défaut du document
+  # OFFICIEL servi aux élèves francophones. Ici, LE DOCUMENT SE CONTREDIT
+  # SUR SA PROPRE PAGE : le corps écrit « On réalise le circuit de la
+  # FIGURE 2 » (couche de texte p. 4, y = 645,9) alors que la légende du
+  # schéma, 98 points plus bas sur la même page (y = 743,8), imprime
+  # « FIGURE 1 » — et que « figure 2 » désigne en réalité la courbe E_e(t)
+  # de la page 5. L'original arabe est cohérent : « الشكل1 » dans le corps
+  # ET en légende, « الشكل2 » pour la courbe d'énergie, les trois relus au
+  # rendu par la clôture. Aucune conséquence sur la résolubilité — une
+  # seule figure de circuit existe. L'entrée écrit « figure 1 » et déclare
+  # la réparation au point d'usage.
+  #
+  # ⚠️ GARDE K-8 SUR LE CORRIGÉ ARABE. Le corrigé (element/39378, forums
+  # svt-assilah, 2014) est un TÉMOIN DE VALEURS, JAMAIS UN ARBITRE. Il
+  # corrobore ici les quatre valeurs (Q_m = 5,64·10⁻² C, T = 0,15 s →
+  # T₀ = 0,3 s, L = 0,485 H, E_T = 0,34 J) — et cette corroboration vaut,
+  # parce qu'un lecteur humain de 2014 sur le même dessin est un témoin
+  # réellement distinct des instruments de la vérification. Mais la
+  # vérification lui a trouvé QUATRE coquilles sur l'ensemble du sujet
+  # (dont C1 : à l'électrolyse il écrit 3600 et calcule 7200, son quotient
+  # valant 0,592 g et non les 1,18 g qu'il publie) et UNE divergence de
+  # fond où c'est lui qui a tort (la vitesse volumique du bloc de chimie,
+  # divisée par le volume d'ester). AUCUNE ÉTAPE INTERMÉDIAIRE DE CE
+  # CORRIGÉ N'EST REPRISE, et aucune valeur de cette entrée n'en provient.
+  - id: bk-2012-r-x3
+    title: "Circuit idéal LC : équation différentielle en q, période propre et son homogénéité, charge maximale, puis la période lue sur la courbe d'énergie électrique et la conservation de l'énergie totale"
+    source:
+      year: 2012
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Electricité — Première partie : Etude du circuit LC"
+    bareme_total: 3.0
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2012 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code d'examen RS28 (coefficient 7, durée 3 h),
+        AlloSchool element/94455 (édition française, cours course-422 ;
+        jumeaux 94454 / 94456, upload-70323) ; original arabe element/39377
+        et son corrigé element/39378 (cours arabophone course-311).
+        Électricité, PREMIÈRE partie uniquement — étude du circuit idéal
+        LC ; barème 3,00 pt (0,5 + 0,25 + 0,25 + 0,5 + 0,25 + 0,5 + 0,75),
+        7 questions. RÉPARTITION SANS DOUBLE COMPTAGE : la deuxième partie
+        du même exercice — réception d'une onde modulée en amplitude et
+        démodulation, 2,00 pt — est transcrite à part sous
+        content/pc/ondes-em-modulation/bank.yaml, entrée bk-2012-r-x3b ;
+        3,00 + 2,00 = 5,00, le sous-total imprimé « Electricité
+        (05 points) », et le sujet précise « Les deux parties sont
+        indépendantes ». Les deux parties n'ont PAS de sous-total propre
+        imprimé : seule la colonne de barème dit le partage, et l'original
+        arabe fait pareil. Source vérifiée EN DEUX PASSES
+        (docs/sujets/_incoming/pc-2012-r.md, statut « ✅ VÉRIFIÉ », 6 blocs
+        sur 6) : passe adversariale du 2026-09-03 puis CLÔTURE INDÉPENDANTE
+        du 2026-09-04. Barème recompté sur les DEUX éditions, question par
+        question — colonne française p. 5 appariée à ±5 pt : 0,5 ↔ 1-
+        (y 78,1 ↔ 80,2), 0,25 ↔ 2- (97,9 ↔ 98,6), 0,25 ↔ 3- (165,4 ↔
+        167,0), 0,5 ↔ 4- (183,8 ↔ 185,3), 0,25 ↔ 5-1- (252,6 ↔ 254,2),
+        0,5 ↔ 5-2- (300,3 ↔ 303,7), 0,75 ↔ 6- (337,3 ↔ 338,2) = 3,00 ; le
+        chapeau 5- (y = 203,7) ne porte AUCUNE mention, et l'arabe le
+        montre de même (p. 4 y = 760,9) ; colonne arabe : mêmes sept
+        valeurs, même ordre. LA PÉRIODE DE LA FIGURE 2 A ÉTÉ RE-MESURÉE PAR
+        DEUX CHAÎNES INDÉPENDANTES, refaites à la clôture — c'est la mesure
+        la mieux tenue du fichier. Chaîne vectorielle (original arabe p. 4,
+        106 primitives dans la zone, AUCUNE image) : calibration sur les
+        centres des étiquettes de la couche de texte, x_pt = 284,88·t +
+        57,80 (résidu max 0,096 pt) ; la courbe est une polyligne unique de
+        145 segments de (56,64 ; 709,00) à (192,72 ; 780,28), niveau
+        E_e = 0 à y = 780,28, sommets à y = 709,00, écart-type de la
+        hauteur des sommets 0,31 pt sur 71,28 pt d'amplitude (0,4 %) —
+        toutes les arches montent à la même hauteur ; écarts entre zéros
+        successifs 0,1516 et 0,1495 s, entre sommets 0,1521 · 0,1491 ·
+        0,1500 s. Chaîne pixels (bitmap français 462 × 279 à 197 dpi
+        extrait du PDF) : quadrillage majeur détecté indépendamment à
+        73,5 px = 0,1 s (colonnes 41,5 — 115 — 189 — 262 — 335 — 409),
+        écarts entre zéros 0,1496 et 0,1498 s. LES DEUX CHAÎNES S'ACCORDENT
+        À 0,3 % : T = 0,150 s, donc T₀ = 2T = 0,300 s et
+        L = T₀²/(4π²C) = 0,4850 H — une bobine physiquement banale, ce qui
+        est le troisième contrôle. ET LES DEUX CHAÎNES MONTRENT QUE LA
+        POLYLIGNE DÉMARRE SUR UN SOMMET : E_e est MAXIMALE à t = 0, ce que
+        l'énoncé impose (le condensateur vient d'être chargé complètement).
+        L'axe des ordonnées de cette figure n'est PAS gradué — seuls le
+        symbole E_e et l'origine 0 sont imprimés, dans les deux éditions —
+        et c'est sans conséquence : aucune question ne demande une valeur
+        d'énergie lue sur la courbe, la 5-1 ne lit qu'une PÉRIODE et la 6
+        calcule E_T à partir de Q_m et C. La figure 1 (schéma du circuit) a
+        été re-décrite DEPUIS L'IMAGE (bitmap 410 × 354 à 224 dpi extrait
+        du PDF) sans relire la transcription : conforme — trois branches
+        horizontales sur un rail vertical gauche, haut résistor R puis
+        générateur (cercle) avec la flèche E pointant à gauche, milieu
+        condensateur C et la lame K à son pivot avec les contacts 1
+        au-dessus et 2 au-dessous, bas bobine L en quatre arches ; aucun
+        ampèremètre, aucune flèche de courant. Les sept re-dérivations,
+        refaites à la clôture : T₀ = 2π√(LC), [LC] = [T]², Q_m = C·E =
+        5,64·10⁻² C, T₀ = 0,300 s, L = 0,4850 H, E_T = Q_m²/(2C) =
+        0,3384 J — IDENTIQUE à ½CE², contrôle interne qui ferme.
+        L'ÉDITION FRANÇAISE EST MINISTÉRIELLE, établie par six preuves
+        (code RS28 au cartouche, mention d'époque « (الترجمة الفرنسية) »
+        sans le cadre anachronique « المسالك الدولية », filière et
+        coefficient de 2012, pieds de page VIDES sur 6/6, colonne
+        « Barème » miroir valeur par valeur de la colonne arabe, gabarit de
+        page 1 identique) : les écarts français/arabe sont donc des défauts
+        du DOCUMENT OFFICIEL francophone, jamais des artefacts de
+        traduction professorale. DÉFAUT DU SUJET OFFICIEL DÉCLARÉ ET RÉPARÉ
+        (F2) : le corps de la page 4 écrit « On réalise le circuit de la
+        FIGURE 2 » (couche de texte, y = 645,9) alors que la légende du
+        schéma, 98 points plus bas SUR LA MÊME PAGE (y = 743,8), imprime
+        « Figure 1 » — et que « figure 2 » désigne en réalité la courbe
+        E_e(t) de la page 5 (légende y = 303,6). L'édition française se
+        contredit donc sur sa propre page. L'original arabe est cohérent et
+        a été relu au rendu par la clôture : « الشكل1 » dans le corps
+        (p. 4 y = 466,4) ET en légende (p. 4 y = 608,3), « الشكل2 » pour la
+        courbe d'énergie (p. 4 y = 760,9 et 795,3). Sans conséquence sur la
+        résolubilité — une seule figure de circuit existe. L'entrée écrit
+        « figure 1 » et déclare la correction au point d'usage. Coquilles de
+        langue reproduites verbatim, non réparées : « jouent un role très
+        important », « la reception d'ondes électromagnétiques »,
+        « l'étude du circuit idéal LC et à la réception » (rupture de
+        construction), « d'une ondes modulée en amplitude »,
+        « Interruptur K à double position », « soit chargé complétement »,
+        « Verifier que la période est homogène » ; registre complet en
+        docs/sujets/_incoming/pc-2012-r.md § 5 et V.12, où les 33 points
+        chauds ont été testés littéralement contre un OCR aveugle et
+        retrouvés 33/33. CROSS-LIST `aspects-energetiques` (question 6, la
+        conservation de l'énergie totale, 0,75 pt) honoré dans le
+        `reasoning`, jamais dédoublé — un cross-list orphelin d'une seule
+        question, inséparable du Q_m établi à la question 4, ne devient pas
+        une entrée. ⚠️ LE CORRIGÉ ARABE N'EST QU'UN TÉMOIN DE VALEURS,
+        JAMAIS UN ARBITRE (K-8) : il corrobore ici les quatre valeurs
+        (5,64·10⁻² C, T = 0,15 s → T₀ = 0,3 s, L = 0,485 H, E_T = 0,34 J),
+        et cette corroboration vaut parce qu'un lecteur humain de 2014 sur
+        le même dessin est un témoin réellement distinct des instruments —
+        mais la vérification lui a trouvé QUATRE coquilles sur l'ensemble
+        du sujet et UNE divergence de fond où c'est lui qui a tort. Aucune
+        étape intermédiaire de ce corrigé n'est reprise, et aucune valeur
+        de cette entrée n'en provient.
+    intro: |-
+      **Étude du circuit idéal LC (examen national, session de rattrapage 2012 — exercice « Electricité », Première partie, 3,00 points sur 05,00).**
+
+      *La deuxième partie du même exercice est indépendante — le sujet l'écrit — et vit ailleurs : la réception d'une onde modulée en amplitude et sa démodulation (2,00 pt) sous « Ondes électromagnétiques et modulation », entrée bk-2012-r-x3b. 3,00 + 2,00 = 5,00, le barème imprimé.*
+
+      Les condensateurs et les bobines jouent un role *(sic)* très important dans la transmission et la reception *(sic)* d'ondes électromagnétiques.
+
+      Le but de cet exercice est l'étude du circuit idéal LC et à la réception *(sic — rupture de construction : « et l'étude de la réception » attendu)* et démodulation d'une ondes *(sic)* modulée en amplitude.
+
+      **Les deux parties sont indépendantes**
+
+      **Première partie : Etude du circuit LC**
+
+      On réalise le circuit de la **figure 1** <!-- DÉFAUT DU SUJET OFFICIEL, DÉCLARÉ ET RÉPARÉ ICI (F2), 2026-09-04.
+           Le corps de la page 4 du document officiel francophone imprime « On
+           realise le circuit de la FIGURE 2 » (couche de texte, y = 645,9),
+           alors que la legende du schema, 98 points plus bas SUR LA MEME PAGE
+           (y = 743,8), imprime « Figure 1 » — et que « figure 2 » designe en
+           realite la courbe E_e(t) de la page 5 (legende y = 303,6). L'edition
+           francaise se contredit donc sur sa propre page, et le renvoi imprime
+           pointe vers la mauvaise figure.
+           L'original arabe RS28 est coherent, et les trois occurrences ont ete
+           relues AU RENDU par la cloture du 2026-09-04 : « الشكل1 » dans le
+           corps (p. 4 y = 466,4) ET en legende (p. 4 y = 608,3), « الشكل2 »
+           pour la courbe d'energie (p. 4 y = 760,9 et 795,3).
+           Aucune consequence sur la resolubilite : une seule figure de circuit
+           existe dans tout l'exercice. La reparation ne touche qu'un chiffre de
+           renvoi, elle est faite ici et DECLAREE plutot que faite en silence.
+           IMPORTANT POUR LA CLASSIFICATION : l'edition francaise de ce sujet est
+           MINISTERIELLE (code d'examen RS28 au cartouche ; mention d'epoque
+           « (الترجمة الفرنسية) » sans le cadre anachronique « المسالك الدولية » ;
+           pieds de page VIDES sur les six pages ; colonne « Bareme » miroir
+           valeur par valeur de la colonne arabe). Ce n'est donc PAS un artefact
+           de traduction professorale — c'est un defaut de l'edition OFFICIELLE
+           de langue francaise. Voir docs/sujets/_incoming/pc-2012-r.md,
+           F2 / D2 / V.7 / V.15. -->, qui est constitué de :
+
+      - Générateur de f.é.m. $E = 12\ \text{V}$ et de résistance négligeable ;
+      - Condensateur de capacité $C = 4{,}7\times10^{-3}\ \text{F}$ ;
+      - Résistor de résistance $R = 200\ \Omega$ ;
+      - Bobine d'inductance $L$ et de résistance négligeable ;
+      - Interruptur *(sic)* $K$ à double position.
+
+      **Figure 1 — le circuit, re-décrite depuis l'image.** Trois branches horizontales parallèles partageant un **rail vertical à gauche** :
+
+      - **branche du haut** : un **résistor** (rectangle) étiqueté $R$, puis un **générateur** (grand cercle) ; sous le cercle, une **flèche horizontale pointant vers la gauche** étiquetée $E$ — la f.é.m. La branche se poursuit à droite et descend jusqu'au **contact ① (« 1 »)** ;
+      - **branche du milieu** : un **condensateur** (deux traits verticaux parallèles) étiqueté $C$ ; elle se termine à droite par un **point pivot** d'où part la **lame de l'interrupteur $K$**, qui bascule vers ① au-dessus ou ② au-dessous ;
+      - **branche du bas** : une **bobine** (quatre arches en demi-cercles) étiquetée $L$ ; elle se poursuit à droite et remonte jusqu'au **contact ② (« 2 »)**.
+
+      *Aucun ampèremètre, aucun voltmètre, aucune flèche de courant sur ce schéma. Lecture qui décide de tout l'exercice : la **position 1** met en série générateur + $R$ + condensateur — c'est la **charge** ; la **position 2** met en série condensateur + bobine seuls, $R$ étant alors hors circuit — c'est le **circuit LC idéal**, ce que confirme « bobine de résistance négligeable ».*
+
+      On ferme l'interrupteur sur la position **1** jusqu'à ce que le condensateur soit chargé complétement *(sic)*, puis on le bascule vers la position **2**, à un instant considéré comme origine des temps $t_0 = 0$.
+
+      ---
+
+      **Figure 2 — la courbe de l'énergie électrique, re-décrite depuis le tracé et mesurée sur deux chaînes indépendantes** *(elle sert à la question 5 ; la figure n'est pas reproduite ici, ce qui suit est ce qu'elle porte).*
+
+      - **axe vertical** étiqueté $E_e$, **sans aucune graduation numérique** — seul un $0$ marque l'origine. C'est voulu, dans les deux éditions du sujet : aucune question ne demande une valeur d'énergie lue sur cette courbe ;
+      - **axe horizontal** étiqueté $t\ (\text{s})$, avec les graduations chiffrées $0{,}1 \cdot 0{,}2 \cdot 0{,}3 \cdot 0{,}4$ ; le quadrillage vertical a un pas de $0{,}05\ \text{s}$ (mailles noires, sous-mailles bleues) ;
+      - **la courbe** est une suite d'**arches positives et jointives** (allure en $\cos^2$), **toutes de même hauteur** — mesurées à $0{,}4\ \%$ près l'une de l'autre —, tangentes en haut à une même horizontale et **retombant exactement à zéro** sur l'axe des temps ;
+      - **elle part d'un MAXIMUM à $t = 0$**, ce qui est cohérent avec l'énoncé : le condensateur vient d'être chargé complètement quand on bascule en position 2 ;
+      - **la lecture dont tu auras besoin** : les passages par zéro sont régulièrement espacés, et **deux zéros consécutifs — comme deux sommets consécutifs — sont séparés de trois intervalles de quadrillage**, soit $3 \times 0{,}05 = 0{,}15\ \text{s}$.
+    questions:
+      - id: q1
+        part: "Electricité, Première partie — Étude du circuit LC"
+        stem: |-
+          **1-** (0,5 pt) Etablir l'équation différentielle vérifiée par la charge $q$ du condensateur.
+        reasoning: |-
+          On est en **position 2** : le circuit ne contient plus que le condensateur et la bobine, tous deux idéaux (générateur et résistor hors circuit, bobine de résistance négligeable). C'est le cas idéal du rung 2, et il se construit en trois gestes.
+
+          **Geste 1 — la loi des mailles.** La maille ne contient que deux dipôles, donc la somme de leurs tensions est nulle :
+
+          $$u_C + u_L = 0$$
+
+          **Geste 2 — remplacer chaque tension par ce qu'elle vaut.** Pour le condensateur, $u_C = \dfrac{q}{C}$ — c'est la définition même de la capacité. Pour la bobine idéale, $u_L = L\dfrac{\mathrm{d}i}{\mathrm{d}t}$.
+
+          **Geste 3 — tout ramener à la seule inconnue $q$.** C'est le geste qui fait la question, et il repose sur un fait qu'il faut énoncer : **l'intensité est le débit de charge**, $i = \dfrac{\mathrm{d}q}{\mathrm{d}t}$. Donc $\dfrac{\mathrm{d}i}{\mathrm{d}t} = \dfrac{\mathrm{d}^2q}{\mathrm{d}t^2}$, et la maille devient une équation où ne figure plus que $q$ :
+
+          $$\frac{q}{C} + L\frac{\mathrm{d}^2q}{\mathrm{d}t^2} = 0 \qquad \Longleftrightarrow \qquad \boxed{\frac{\mathrm{d}^2q}{\mathrm{d}t^2} + \frac{1}{LC}\,q = 0}$$
+
+          **Comment lire cette équation, plutôt que de la subir.** C'est l'équation d'un **oscillateur harmonique** : une dérivée seconde, plus une constante positive fois la fonction, égale zéro. Aucun terme en $\dfrac{\mathrm{d}q}{\mathrm{d}t}$ — et c'est **précisément l'absence de ce terme** qui dit que le circuit est idéal. Le terme du premier ordre, quand il existe, porte toute la résistance et donc tout l'amortissement (rung 5) ; ici il n'y a pas de résistance, donc pas d'amortissement, donc des oscillations qui ne s'éteignent jamais.
+
+          **Le piège de cette question.** Garder $R$ dans la maille. Le résistor est bien dans le circuit — mais dans la **branche du haut**, celle qui sert à la charge en position 1. En position 2, la lame de $K$ a basculé : la maille active est condensateur + bobine, et $R$ n'y est plus. Lire la figure avant d'écrire la maille est la moitié du travail.
+        steps:
+          - math: 'u_C + u_L = 0'
+            note: "Loi des mailles en position 2 : la maille ne contient plus que le condensateur et la bobine. R est hors circuit."
+          - math: 'u_C = \frac{q}{C} \qquad u_L = L\frac{\mathrm{d}i}{\mathrm{d}t} \qquad i = \frac{\mathrm{d}q}{\mathrm{d}t}'
+            note: "Les trois relations de definition. La troisieme est celle qui permet de tout ramener a q."
+          - math: 'L\frac{\mathrm{d}^2q}{\mathrm{d}t^2} + \frac{q}{C} = 0'
+            note: "Substitution : di/dt devient la derivee seconde de q."
+          - math: '\boxed{\frac{\mathrm{d}^2q}{\mathrm{d}t^2} + \frac{1}{LC}\,q = 0}'
+            note: "Forme canonique de l'oscillateur harmonique. Aucun terme du premier ordre : c'est la signature du circuit ideal."
+      - id: q2
+        stem: |-
+          **2-** (0,25 pt) Trouver l'expression de la période propre $T_0$ de l'oscillateur en fonction de $L$ et $C$, pour que l'expression $q(t) = Q_m \cos\!\left(\dfrac{2\pi}{T_0}t\right)$ soit solution de cette équation différentielle.
+        reasoning: |-
+          La méthode est celle du rung 2, et le mot « pour que … soit solution » la dicte : **on ne résout pas l'équation, on injecte la solution proposée et on impose qu'elle marche.**
+
+          On dérive deux fois. En posant $\omega_0 = \dfrac{2\pi}{T_0}$ :
+
+          $$q(t) = Q_m\cos(\omega_0 t) \quad\Longrightarrow\quad \frac{\mathrm{d}q}{\mathrm{d}t} = -Q_m\omega_0\sin(\omega_0 t) \quad\Longrightarrow\quad \frac{\mathrm{d}^2q}{\mathrm{d}t^2} = -Q_m\omega_0^2\cos(\omega_0 t) = -\omega_0^2\,q(t)$$
+
+          On reporte dans l'équation de la question 1 :
+
+          $$-\omega_0^2\,q(t) + \frac{1}{LC}\,q(t) = 0 \qquad \Longleftrightarrow \qquad \left[\frac{1}{LC} - \omega_0^2\right] q(t) = 0$$
+
+          **L'argument qui conclut, et qu'il faut écrire.** Cette égalité doit être vraie **à chaque instant**, pas seulement en un point. Or $q(t)$ n'est pas identiquement nulle. Le crochet doit donc être nul :
+
+          $$\omega_0^2 = \frac{1}{LC} \qquad \Longrightarrow \qquad \left(\frac{2\pi}{T_0}\right)^2 = \frac{1}{LC} \qquad \Longrightarrow \qquad \boxed{T_0 = 2\pi\sqrt{LC}}$$
+
+          **Ce que cette formule dit, et qui vaut d'être remarqué.** La période propre ne dépend **que du circuit** — de $L$ et de $C$ —, jamais de la façon dont on l'a excité. Charger le condensateur sous $12\ \text{V}$ ou sous $24\ \text{V}$ change $Q_m$, donc l'amplitude des oscillations, mais **pas leur rythme**. C'est exactement ce qui rendra la question 5-2 possible : on lira une période sur la courbe et on en déduira $L$, sans jamais avoir besoin de connaître l'amplitude — et c'est heureux, puisque l'axe des ordonnées de la figure 2 n'est pas gradué.
+
+          **Le piège de cette question.** Confondre $\omega_0$ et $T_0$, et écrire $T_0 = \dfrac{1}{\sqrt{LC}}$. Le $2\pi$ n'est pas décoratif : il fait la conversion entre la pulsation, qui compte des radians par seconde, et la période, qui compte des secondes par tour. L'oublier fausse $T_0$ d'un facteur $6{,}28$.
+        steps:
+          - math: 'q(t) = Q_m\cos(\omega_0 t) \quad\text{avec}\quad \omega_0 = \frac{2\pi}{T_0}'
+            note: "Solution proposee par l'enonce. On l'injecte, on ne resout pas."
+          - math: '\frac{\mathrm{d}^2q}{\mathrm{d}t^2} = -Q_m\omega_0^{2}\cos(\omega_0 t) = -\omega_0^{2}\,q(t)'
+            note: "Deux derivations : le cosinus se reproduit, affecte du facteur -omega0 au carre."
+          - math: '\left[\frac{1}{LC} - \omega_0^{2}\right]q(t) = 0 \quad \forall t \quad\Longrightarrow\quad \omega_0^{2} = \frac{1}{LC}'
+            note: "L'egalite doit valoir a chaque instant et q(t) n'est pas identiquement nulle : le crochet est donc nul."
+          - math: '\boxed{T_0 = 2\pi\sqrt{LC}}'
+            note: "Periode propre. Elle ne depend que du circuit, jamais de la maniere dont on l'a excite."
+      - id: q3
+        stem: |-
+          **3-** (0,25 pt) Verifier *(sic)* que la période est homogène à un temps.
+        reasoning: |-
+          Une analyse dimensionnelle se fait **à partir des relations de définition**, jamais de mémoire. Il en faut deux, et ce sont exactement celles qu'on a utilisées à la question 1.
+
+          **Dimension de l'inductance**, tirée de $u = L\dfrac{\mathrm{d}i}{\mathrm{d}t}$ :
+
+          $$[U] = [L]\,\frac{[I]}{[T]} \qquad \Longrightarrow \qquad [L] = \frac{[U]\,[T]}{[I]}$$
+
+          **Dimension de la capacité**, tirée de $q = C\,u$ et de $q = i\,t$ :
+
+          $$[C] = \frac{[Q]}{[U]} = \frac{[I]\,[T]}{[U]}$$
+
+          **Le produit**, où tout se simplifie :
+
+          $$[LC] = \frac{[U][T]}{[I]} \times \frac{[I][T]}{[U]} = [T]^2$$
+
+          Les intensités se compensent, les tensions aussi. Donc $\sqrt{[LC]} = [T]$, et comme $2\pi$ est un nombre sans dimension :
+
+          $$\boxed{\left[2\pi\sqrt{LC}\right] = [T]}$$
+
+          $T_0$ est bien **homogène à un temps**.
+
+          **Pourquoi cette question vaut ses 0,25 point, au-delà du formalisme.** Une analyse dimensionnelle est le **contrôle le moins cher qui existe** : elle attrape une formule mal recopiée sans qu'on ait à refaire le calcul. Si l'on avait écrit $T_0 = 2\pi\sqrt{L/C}$ ou $T_0 = 2\pi LC$, ce test le dirait immédiatement — la première donnerait $[U][T]/([I]) \cdot [U]/([I][T])$, qui n'est pas un temps au carré, et la seconde donnerait un $[T]^2$ non racinné. Prendre l'habitude de ce contrôle avant de faire une application numérique fait gagner des points partout ailleurs.
+
+          **Le piège de cette question.** Répondre « $L$ est en henrys, $C$ en farads, donc $\sqrt{LC}$ est en secondes ». Ce n'est pas une vérification, c'est une affirmation : il faut **remonter aux relations de définition** pour établir ce que valent le henry et le farad en grandeurs de base. C'est précisément ce que la question demande.
+        steps:
+          - math: 'u = L\frac{\mathrm{d}i}{\mathrm{d}t} \quad\Longrightarrow\quad [L] = \frac{[U]\,[T]}{[I]}'
+            note: "Dimension de l'inductance, tiree de sa relation de definition."
+          - math: 'q = C\,u \;\text{ et }\; q = i\,t \quad\Longrightarrow\quad [C] = \frac{[I]\,[T]}{[U]}'
+            note: "Dimension de la capacite, tiree de ses deux relations de definition."
+          - math: '[LC] = \frac{[U][T]}{[I]} \times \frac{[I][T]}{[U]} = [T]^{2}'
+            note: "Les intensites et les tensions se compensent : il ne reste qu'un temps au carre."
+          - math: '\boxed{\left[2\pi\sqrt{LC}\right] = \sqrt{[T]^{2}} = [T]}'
+            note: "2 pi est sans dimension : la periode propre est bien homogene a un temps."
+      - id: q4
+        stem: |-
+          **4-** (0,5 pt) Calculer la valeur maximale $Q_m$ de la charge du condensateur.
+        reasoning: |-
+          Tout se joue sur la lecture de l'énoncé, pas sur le calcul — qui tient en une multiplication.
+
+          **Où et quand la charge est-elle maximale ?** L'énoncé dit qu'on ferme $K$ sur la position 1 « jusqu'à ce que le condensateur soit chargé **complètement** », puis qu'on bascule en position 2 à $t_0 = 0$. Deux conséquences :
+
+          1. à la fin de la charge, le **régime permanent** est atteint : plus aucun courant ne circule, donc plus aucune tension aux bornes du résistor $R$. Toute la f.é.m. du générateur se retrouve alors aux bornes du condensateur, $u_C = E = 12\ \text{V}$ — et la résistance interne du générateur étant négligeable, il n'y a rien d'autre à retrancher. **La valeur de $R$ ne sert donc pas ici** : elle n'a fixé que la *durée* de la charge, pas sa *valeur finale* ;
+          2. cette charge-là est la **plus grande** que le condensateur atteindra : à $t = 0$ l'oscillateur démarre au sommet de son amplitude, et le circuit LC idéal ne fait ensuite que redistribuer cette énergie sans jamais en ajouter. D'où $q(0) = Q_m$, ce que la forme $q(t) = Q_m\cos(\omega_0 t)$ dit d'ailleurs déjà : à $t = 0$, le cosinus vaut $1$.
+
+          $$Q_m = C\,E = 4{,}7\times10^{-3} \times 12 = \boxed{5{,}64\times10^{-2}\ \text{C}}$$
+
+          **Le contrôle de cohérence avec la figure 2.** La courbe d'énergie électrique **part d'un maximum** à $t = 0$ — c'est exactement ce que $q(0) = Q_m$ impose, puisque $E_e = \dfrac{q^2}{2C}$ est maximale quand $|q|$ l'est. Le dessin et le raisonnement se confirment mutuellement, et c'est le genre de recoupement qu'il faut chercher systématiquement.
+
+          **Le piège de cette question.** Faire intervenir $R$ dans un pont diviseur, ou retrancher une chute de tension. En régime permanent le courant est nul, donc $u_R = R \times 0 = 0$ : le résistor ne « prend » rien. Il n'aurait servi qu'à ralentir la charge — et l'énoncé, en disant « jusqu'à ce que le condensateur soit chargé complètement », nous dispense justement d'en tenir compte.
+        steps:
+          - math: '\text{Fin de la charge (position 1) : régime permanent} \Rightarrow i = 0 \Rightarrow u_R = 0 \Rightarrow u_C = E'
+            note: "En regime permanent aucun courant ne circule : le resistor ne prend aucune tension. R ne fixe que la duree de la charge."
+          - math: 'q = C\,u_C \quad\text{et}\quad q(0) = Q_m \quad\text{(le basculement se fait condensateur pleinement chargé)}'
+            note: "Definition de la capacite, appliquee a l'instant du basculement. Coherent avec q(t) = Qm cos(omega0 t), qui vaut Qm en t = 0."
+          - math: '\boxed{Q_m = C\,E = 4{,}7\times10^{-3} \times 12 = 5{,}64\times10^{-2}\ \text{C}}'
+            note: "Charge maximale. Controle : la courbe d'energie electrique de la figure 2 part bien d'un maximum en t = 0."
+      - id: q5
+        stem: |-
+          **5-** La **figure 2** donne les variations de l'énergie électrique $E_e$ emmagasinée dans le condensateur en fonction du temps. *(Voir sa description en tête d'énoncé.)*
+
+          **5-1-** (0,25 pt) Sachant que la période $T$ de l'énergie est $T = \dfrac{T_0}{2}$, déterminer la valeur de $T_0$.
+        reasoning: |-
+          Deux gestes, et le second est celui que l'énoncé offre.
+
+          **Geste 1 — lire $T$ sur la courbe.** La période de la courbe d'énergie est l'intervalle qui sépare deux motifs identiques : deux sommets consécutifs, ou deux passages par zéro consécutifs. Sur ce tracé, cet intervalle vaut **trois carreaux de $0{,}05\ \text{s}$** :
+
+          $$T = 3 \times 0{,}05 = 0{,}15\ \text{s}$$
+
+          *(C'est la mesure la mieux tenue de ce sujet : deux chaînes de mesure indépendantes — la géométrie vectorielle de l'original et les pixels du bitmap — s'accordent à $0{,}3\ \%$ près sur $0{,}150\ \text{s}$.)*
+
+          **Geste 2 — remonter à la période propre**, avec la relation que l'énoncé donne :
+
+          $$T = \frac{T_0}{2} \qquad \Longrightarrow \qquad \boxed{T_0 = 2T = 0{,}30\ \text{s}}$$
+
+          **Pourquoi l'énergie oscille DEUX FOIS plus vite que la charge — l'énoncé le donne, mais il faut le comprendre.** L'énergie électrique vaut $E_e = \dfrac{q^2}{2C}$ : elle dépend de $q$ **au carré**. Or $q$ change de signe à chaque demi-période — le condensateur se charge dans un sens, puis dans l'autre — mais $q^2$, lui, **ne voit pas le signe** : il repasse par son maximum à chaque fois que $|q|$ est maximal, c'est-à-dire deux fois par période de $q$. D'où des arches toutes positives, toutes de même hauteur, et deux fois plus serrées que les oscillations de charge. C'est aussi pourquoi la courbe **ne descend jamais sous l'axe** : une énergie ne peut pas être négative.
+
+          **Le piège de cette question, et c'est celui que l'énoncé désamorce à moitié.** Lire $0{,}15\ \text{s}$ et répondre « $T_0 = 0{,}15\ \text{s}$ ». La période lue sur la figure est celle de **l'énergie**, pas celle de la **charge** : il faut la doubler. L'énoncé fournit la relation précisément parce que c'est là que les copies se perdent — encore faut-il l'utiliser dans le bon sens ($T_0 = 2T$, et non $T_0 = T/2$).
+        steps:
+          - math: 'T = 3 \times 0{,}05 = 0{,}15\ \text{s}'
+            note: "Lecture graphique : deux zeros consecutifs (ou deux sommets consecutifs) sont separes de trois carreaux de 0,05 s."
+          - math: 'T = \frac{T_0}{2} \quad \text{(relation donnée par l''énoncé)}'
+            note: "L'energie oscille deux fois plus vite que la charge, parce qu'elle depend de q au carre et ne voit pas le signe."
+          - math: '\boxed{T_0 = 2T = 0{,}30\ \text{s}}'
+            note: "Periode propre du circuit. Deux chaines de mesure independantes donnent T = 0,150 s a 0,3 pour cent pres."
+      - id: q6
+        stem: |-
+          **5-2-** (0,5 pt) En déduire la valeur du coefficient d'inductance de la bobine.
+        reasoning: |-
+          « En déduire » : on ne repart de rien, on **inverse la formule de la question 2** avec la valeur de $T_0$ qu'on vient de lire.
+
+          $$T_0 = 2\pi\sqrt{LC} \quad\Longrightarrow\quad T_0^{\,2} = 4\pi^2 LC \quad\Longrightarrow\quad \boxed{L = \frac{T_0^{\,2}}{4\pi^2 C}}$$
+
+          L'application numérique, avec $T_0 = 0{,}30\ \text{s}$ et $C = 4{,}7\times10^{-3}\ \text{F}$ :
+
+          $$L = \frac{(0{,}30)^2}{4\pi^2 \times 4{,}7\times10^{-3}} = \frac{0{,}090}{0{,}1856} \approx 0{,}485\ \text{H}$$
+
+          **Le contrôle de vraisemblance, et il compte double ici.** $0{,}485\ \text{H}$, soit environ un demi-henry : c'est une **bobine parfaitement banale**, du genre de celles qu'on trouve sur une paillasse de lycée. Ce contrôle-là n'est pas décoratif — c'est lui qui valide, *a posteriori*, toute la chaîne : la lecture de $T$ sur la figure, le doublement en $T_0$, et l'inversion de la formule. Si l'on avait oublié de doubler ($T_0 = 0{,}15\ \text{s}$), on trouverait $L = 0{,}121\ \text{H}$ — encore plausible, donc le contrôle ne l'attraperait pas. Mais si l'on avait oublié le carré ou le $4\pi^2$, on tomberait sur des valeurs absurdes, de l'ordre du henry par milliers ou du microhenry.
+
+          **Le piège de cette question.** Oublier d'élever $T_0$ au carré, ou l'élever après avoir divisé. La formule s'inverse d'un bloc : on part de $T_0 = 2\pi\sqrt{LC}$, on **élève les deux membres au carré d'abord** — ce qui fait apparaître $4\pi^2$, pas $2\pi$ —, et on isole $L$ ensuite. Écrire $L = \dfrac{T_0}{4\pi^2C}$ ou $L = \dfrac{T_0^2}{2\pi C}$ sont les deux fautes les plus fréquentes, et aucune des deux ne se voit sur le résultat sans contrôle d'ordre de grandeur.
+        steps:
+          - math: 'T_0 = 2\pi\sqrt{LC} \quad\Longrightarrow\quad T_0^{\,2} = 4\pi^{2}LC'
+            note: "On eleve les deux membres au carre AVANT d'isoler : c'est la que naissent le carre de T0 et le 4 pi carre."
+          - math: '\boxed{L = \frac{T_0^{\,2}}{4\pi^{2}C}}'
+            note: "Expression litterale, demandee avant l'application numerique (consigne de la page 1 du sujet)."
+          - math: 'L = \frac{(0{,}30)^{2}}{4\pi^{2} \times 4{,}7\times10^{-3}} = \frac{0{,}090}{0{,}1856}'
+            note: "Application numerique avec T0 = 0,30 s lu a la question 5-1 et C donne par l'enonce."
+          - math: '\boxed{L \approx 0{,}485\ \text{H}}'
+            note: "Environ un demi-henry : une bobine banale. Ce controle de vraisemblance valide toute la chaine depuis la lecture de la figure."
+      - id: q7
+        stem: |-
+          **6-** (0,75 pt) On rappelle que l'énergie totale $E_T$ du circuit est, à chaque instant, la somme des énergies électrique et magnétique, emmagasinées respectivement dans le condensateur et la bobine.
+
+          Montrer que l'énergie $E_T$ se conserve. Calculer sa valeur.
+        reasoning: |-
+          Deux demandes distinctes, et la première est une **démonstration** — pas une affirmation. C'est le cœur du rung 1 (le pendule d'énergie), et cette question relève aussi de la notion sœur « **Aspects énergétiques** », honorée ici sans être dupliquée : le barème est réparti, jamais compté deux fois.
+
+          **Ce qu'il faut écrire.** L'énergie totale est la somme des deux termes :
+
+          $$E_T = E_e + E_m = \frac{q^2}{2C} + \frac{1}{2}L\,i^2$$
+
+          On y reporte les expressions de $q$ et de $i$ du régime établi à la question 2 : $q = Q_m\cos(\omega_0 t)$, donc $i = \dfrac{\mathrm{d}q}{\mathrm{d}t} = -Q_m\omega_0\sin(\omega_0 t)$ :
+
+          $$E_T = \frac{Q_m^2}{2C}\cos^2(\omega_0 t) + \frac{1}{2}L\,Q_m^2\,\omega_0^2\sin^2(\omega_0 t)$$
+
+          **Le geste qui décide de tout** : on utilise la relation $\omega_0^2 = \dfrac{1}{LC}$ de la question 2, donc $L\,\omega_0^2 = \dfrac{1}{C}$, et le second coefficient devient **identique au premier** :
+
+          $$E_T = \frac{Q_m^2}{2C}\left[\cos^2(\omega_0 t) + \sin^2(\omega_0 t)\right] = \frac{Q_m^2}{2C}$$
+
+          Le crochet vaut $1$ à chaque instant. **$E_T$ ne dépend plus du temps : elle est constante.** L'énergie n'est ni créée ni perdue — elle **fait l'aller-retour** entre le condensateur et la bobine, deux fois par période, exactement au rythme des arches de la figure 2.
+
+          **Pourquoi ça ne pouvait pas être autrement, et c'est le contrôle de sens.** Le circuit ne contient **aucune résistance** : ni le résistor (hors circuit en position 2), ni la bobine (résistance négligeable, l'énoncé le dit). Or la résistance est le seul dipôle qui **dissipe** de l'énergie, par effet Joule (rung 3). Sans elle, rien ne s'échappe. C'est la traduction énergétique de ce qu'on avait déjà vu sur l'équation différentielle de la question 1 : pas de terme du premier ordre, pas d'amortissement, pas de perte.
+
+          **La valeur.** Le plus simple est de l'évaluer à l'instant $t = 0$, où toute l'énergie est dans le condensateur ($i = 0$, la bobine ne stocke rien) :
+
+          $$E_T = \frac{Q_m^2}{2C} = \frac{\left(5{,}64\times10^{-2}\right)^2}{2 \times 4{,}7\times10^{-3}} = \frac{3{,}181\times10^{-3}}{9{,}4\times10^{-3}} \approx 0{,}34\ \text{J}$$
+
+          **Le contrôle interne qui ferme, et il vaut la peine d'être fait.** Puisque $Q_m = CE$, on peut aussi écrire $E_T = \dfrac{(CE)^2}{2C} = \dfrac{1}{2}CE^2 = \dfrac{1}{2} \times 4{,}7\times10^{-3} \times 12^2 = 0{,}3384\ \text{J}$. **Les deux chemins donnent le même nombre** — l'un passe par la charge, l'autre par la tension —, ce qui vérifie du même coup la question 4.
+
+          **Le piège de cette question.** Écrire l'énergie magnétique avec un signe moins, ou oublier le facteur $\dfrac{1}{2}$. Les deux termes ont exactement la même forme, $\dfrac{1}{2}\times$ (grandeur au carré) $\times$ (coefficient du dipôle) : $\dfrac{1}{2}\dfrac{q^2}{C}$ pour le condensateur, $\dfrac{1}{2}Li^2$ pour la bobine. Une énergie stockée est **toujours positive** — c'est d'ailleurs une des coquilles que la vérification a relevées dans le corrigé non officiel d'un sujet voisin.
+        steps:
+          - math: 'E_T = E_e + E_m = \frac{q^{2}}{2C} + \frac{1}{2}L\,i^{2}'
+            note: "Les deux energies stockees. Les deux termes sont positifs et de meme forme : un demi, fois une grandeur au carre, fois le coefficient du dipole."
+          - math: 'q = Q_m\cos(\omega_0 t) \qquad i = \frac{\mathrm{d}q}{\mathrm{d}t} = -Q_m\omega_0\sin(\omega_0 t)'
+            note: "Regime etabli a la question 2 : l'intensite est la derivee de la charge."
+          - math: 'L\,\omega_0^{2} = \frac{1}{C} \quad\Longrightarrow\quad E_T = \frac{Q_m^{2}}{2C}\left[\cos^{2}(\omega_0 t) + \sin^{2}(\omega_0 t)\right]'
+            note: "Geste decisif : la relation omega0 carre = 1/(LC) rend les deux coefficients identiques et permet de factoriser."
+          - math: '\boxed{E_T = \frac{Q_m^{2}}{2C} = \text{constante}}'
+            note: "Le crochet vaut 1 a chaque instant : E_T ne depend plus du temps. Sans resistance, rien ne se dissipe."
+          - math: '\boxed{E_T = \frac{\left(5{,}64\times10^{-2}\right)^{2}}{2 \times 4{,}7\times10^{-3}} \approx 0{,}34\ \text{J}}'
+            note: "Valeur numerique, 0,3384 J exactement. Controle interne : E_T = CE carre sur 2 = 0,5 x 4,7e-3 x 144 = 0,3384 J, meme nombre par un autre chemin."

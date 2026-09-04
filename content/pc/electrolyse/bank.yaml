@@ -1143,3 +1143,288 @@ entries:
             note: "Deux electrons par atome depose, d'apres la demi-equation de cathode ecrite a la question 2."
           - math: '\boxed{m = \frac{I\,\Delta t}{2\,\mathcal{F}}\,M(\text{Ni}) = \frac{0{,}5\times3600}{2\times9{,}65\times10^{4}}\times 58{,}7 \approx 0{,}547\ \text{g}}'
             note: "Masse de nickel deposee, environ 0,55 g. La valeur re-derivee par la passe de verification est 0,5474 g."
+
+  # ── bk-2012-r-x1 — 2012 R, Chimie, Première partie : électrolyse d'une solution de bromure de cuivre II ──
+  #
+  # NOTE ÉDITORIALE — bk-2012-r-x1 (2026-09-04, ajout). Sujet SPC 2012
+  # SESSION DE RATTRAPAGE, code d'examen RS28, converti depuis
+  # docs/sujets/_incoming/pc-2012-r.md — statut « ✅ VÉRIFIÉ », vérifié en
+  # DEUX passes : une passe adversariale du 2026-09-03 (sections V.1–V.14,
+  # tuée par une limite de session) puis une CLÔTURE indépendante du
+  # 2026-09-04 qui n'a rien contresigné sur parole — elle a re-téléchargé
+  # les fichiers et REJOUÉ elle-même tout ce dont dépend le statut d'un
+  # bloc : le barème du bloc, les valeurs de figure qu'il publie, les
+  # défauts qui le concernent. Six blocs sur six signés, 31/31 questions
+  # re-dérivées et résolubles, barème 20,00 par CINQ chemins (dont deux
+  # refaits à la clôture, sur les deux éditions).
+  #
+  # CHOIX DE L'`id`, ET POURQUOI. Le sujet NE NUMÉROTE AUCUN exercice — ni
+  # en français ni en arabe. Sa page 1 imprime « Le sujet se compose de
+  # quatre exercices : Un exercice de chimie et trois exercices de
+  # physique », et son corps nomme les rubriques par discipline (Chimie,
+  # Les ondes, Electricité, Mécanique / الكيمياء, الموجات, الكهرباء,
+  # الميكانيك). Les identifiants encodent donc la POSITION SUR LA COPIE
+  # (convention K-7 bis) : la Chimie est le PREMIER bloc, d'où x1, et ses
+  # deux parties portent x1 (cette entrée) et x1b. Les `exercise_label`
+  # sont écrits FIDÈLES à ce que le sujet imprime, SANS numéro inventé —
+  # depuis le correctif du 2026-09-03, `lib/examens.ts` lit la position sur
+  # l'identifiant dès qu'aucun libellé de l'épreuve ne porte « Exercice N »
+  # (`numeroDepuisId`), de sorte que l'épreuve s'ordonne Chimie / ondes /
+  # électricité / mécanique et compte QUATRE exercices. La vérification a
+  # simulé les deux issues (§ V.14) : les deux passent, et l'issue
+  # « libellés verbatim » ne coûte plus rien depuis le correctif.
+  #
+  # RÉPARTITION DU BARÈME (aucun double comptage). L'exercice de Chimie
+  # vaut 07,00 pt imprimés = 3,00 (cette entrée, électrolyse) + 4,00
+  # (bk-2012-r-x1b, content/pc/suivi-temporel-vitesse/bank.yaml, cinétique
+  # de l'hydrolyse d'un ester). Le sujet dit lui-même « Les deux parties
+  # sont indépendantes ». Les six entrées du sujet totalisent 3,00 + 4,00 +
+  # 2,50 + 3,00 + 2,00 + 5,50 = 20,00 exactement.
+  #
+  # DÉFAUT DE L'ÉDITION OFFICIELLE FRANÇAISE, DÉCLARÉ ET CORRIGÉ ICI (F4).
+  # L'édition française de ce sujet est MINISTÉRIELLE — établie par six
+  # preuves : code d'examen `RS28` imprimé au cartouche, mention d'époque
+  # « الموضوع (الترجمة الفرنسية) » sans le cadre anachronique « المسالك
+  # الدولية » de 2014+, filière et coefficient de 2012, pieds de page
+  # VIDES sur 6 pages sur 6 (aucun crédit de traducteur — l'inverse exact
+  # de PC 2010 R), colonne « Barème » miroir valeur par valeur du
+  # « سلم التنقيط » arabe, et gabarit de page 1 identique. Un écart
+  # français/arabe n'est donc PAS un artefact de traduction professorale :
+  # c'est un défaut du document OFFICIEL servi aux élèves francophones.
+  # Le bandeau de la page 2 imprime « Première partie (03 points) :
+  # Electrolyse de la solution de cuivre II. » — « bromure de » MANQUE,
+  # alors que le sommaire de la page 1 est correct et que l'original arabe
+  # écrit « برومور النحاس II » à ses TROIS occurrences. « La solution de
+  # cuivre II » ne désigne rien : c'est le contre-ion bromure qui est oxydé
+  # à l'anode. Aucune question n'en devient insoluble (le paragraphe
+  # suivant donne la formule complète). L'entrée écrit « bromure de
+  # cuivre II » et déclare la réparation au point d'usage.
+  #
+  # DÉFAUT AJOUTÉ PAR LA VÉRIFICATION (A2), REPRODUIT VERBATIM. « il se
+  # forme ainsi du dibrome Br₂(ℓ) au voisinage de E₁ ET DÉPÔT DE CUIVRE au
+  # voisinage de E₂ » — l'article manque (« et UN dépôt de cuivre »). Ni
+  # signalé ni compté par la transcription ; retrouvé dans la couche de
+  # texte ET par OCR aveugle à la clôture. Cosmétique, reproduit tel quel.
+  #
+  # ⚠️ GARDE K-8 SUR LE CORRIGÉ ARABE, POUR CE BLOC. Le corrigé arabe
+  # (element/39378, forums svt-assilah, 2014) est un TÉMOIN DE VALEURS,
+  # JAMAIS UN ARBITRE. Il corrobore le résultat (1,18 g) mais SON ÉTAPE EST
+  # FAUSSE : relu au rendu 600 dpi, il imprime
+  #   m(Cu) = (0,5 × 3600 × 63,5) / (2 × 9,65.10⁴) = 1,18 g
+  # — quotient qui vaut 0,592 g, pas 1,18 g. Il a écrit une heure et
+  # calculé deux heures (erreur C1, trouvée par la clôture, que le § 8.2 de
+  # la transcription avait recopiée avec un « ✓ »). Il écrit aussi
+  # Br₂(aq) là où l'énoncé impose Br₂(ℓ). AUCUNE VALEUR DE CETTE ENTRÉE
+  # N'EN PROVIENT : les quatre re-dérivations ont été faites avant sa
+  # lecture, et refaites à la clôture.
+  - id: bk-2012-r-x1
+    title: "Électrolyse d'une solution de bromure de cuivre II : le dispositif et ses deux électrodes, les demi-équations, le bilan, et la masse de cuivre déposée"
+    source:
+      year: 2012
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Chimie — Première partie : Electrolyse de la solution de bromure de cuivre II"
+    bareme_total: 3.0
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2012 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code d'examen RS28 (coefficient 7, durée 3 h),
+        AlloSchool element/94455 (édition française, cours course-422 ;
+        exemplaires jumeaux 94454 / 94456, upload-70323) ; original arabe
+        element/39377 et son corrigé element/39378 (cours arabophone
+        course-311). Chimie, Première partie — électrolyse d'une solution
+        de bromure de cuivre II ; barème 3,00 pt (1 + 1 + 0,25 + 0,75),
+        4 questions, sur les 07,00 pt imprimés de l'exercice de Chimie
+        complet. RÉPARTITION SANS DOUBLE COMPTAGE : 3,00 (cette entrée) +
+        4,00 (bk-2012-r-x1b, content/pc/suivi-temporel-vitesse/bank.yaml,
+        étude cinétique de l'hydrolyse d'un ester) = 7,00, le sous-total
+        imprimé « Chimie : (07 points) » ; le sujet précise lui-même « Les
+        deux parties sont indépendantes ». Source vérifiée EN DEUX PASSES
+        (docs/sujets/_incoming/pc-2012-r.md, statut « ✅ VÉRIFIÉ », 6 blocs
+        sur 6) : passe adversariale du 2026-09-03 (V.1–V.14) puis CLÔTURE
+        INDÉPENDANTE du 2026-09-04, qui a re-téléchargé les fichiers et
+        rejoué elle-même tout ce dont dépend le statut d'un bloc plutôt que
+        de contresigner sa devancière. Acquis pour ce bloc : 4 contrôles
+        anti-CDN PASS (dont un quatrième téléchargement, troisième
+        signature de client, 11/11 MD5 identiques) et 3 instruments PASS
+        (trois exemplaires francophones byte-identiques, MD5 unique
+        231eb57c15a114b5ccdceea413282810 ; matrice de corrélation PDF/JPG à
+        diagonale dominante ; profils PDF au chiffre) ; barème 20,00 par
+        cinq chemins, dont deux refaits à la clôture sur les DEUX éditions
+        — colonne française extraite par coordonnées (spans finissant avant
+        x = 80 pt, numéro de page écarté par sa police Algerian) donnant
+        1 · 1 · 0,25 · 0,75 appariés à ±5 pt aux questions 1- (y = 355,0),
+        2- (389,5), 3- (423,9), 4- (458,3), et colonne arabe « سلم التنقيط »
+        (x ≥ 528 pt) donnant les mêmes quatre valeurs dans le même ordre ;
+        31/31 questions re-dérivées deux fois — ici Q = I·Δt = 3600 C,
+        n(e⁻) = 3,731×10⁻² mol, m = 1,1845 g. AUCUNE LECTURE DE FIGURE dans
+        ce bloc : l'énoncé ne fournit aucun schéma (la question 1 demande
+        précisément à l'élève de le dessiner), et l'original arabe non plus
+        — bloc entièrement hors du périmètre K-8 côté mesures. L'ÉDITION
+        FRANÇAISE EST MINISTÉRIELLE, établie par six preuves (code RS28 au
+        cartouche, mention d'époque « (الترجمة الفرنسية) » sans le cadre
+        anachronique « المسالك الدولية », filière et coefficient de 2012,
+        pieds de page VIDES sur 6/6 rendus à 300 dpi, colonne « Barème »
+        miroir valeur par valeur de la colonne arabe, gabarit de page 1
+        identique) : les écarts français/arabe sont donc des défauts du
+        DOCUMENT OFFICIEL francophone, jamais des artefacts de traduction
+        professorale — l'inverse exact de PC 2010 R, et cela change la
+        méthode. DÉFAUT DU SUJET OFFICIEL DÉCLARÉ ET RÉPARÉ (F4) : le
+        bandeau de la page 2 imprime « Electrolyse de la solution de
+        cuivre II » — « bromure de » manque, alors que le sommaire de la
+        page 1 est correct et que l'arabe écrit « برومور النحاس II » à ses
+        trois occurrences (p. 1 y = 513,5 ; p. 2 y = 163,6 et 373,1,
+        relocalisées à la clôture, F4 retrouvé par OCR aveugle). « La
+        solution de cuivre II » ne désigne rien, le contre-ion bromure
+        étant l'espèce oxydée à l'anode ; aucune question n'en devient
+        insoluble. L'entrée écrit « bromure de cuivre II » et déclare la
+        correction au point d'usage. DÉFAUT AJOUTÉ PAR LA VÉRIFICATION
+        (A2), REPRODUIT VERBATIM ET NON RÉPARÉ : « et dépôt de cuivre »,
+        sans article — présent dans la couche de texte et dans l'OCR
+        aveugle, absent du registre de la transcription. Coquilles de
+        langue reproduites verbatim, non réparées : « téchniques »,
+        « industrièls », « industrièls. elle » (minuscule après un point,
+        restituée par OCR de la ligne isolée, la ligne entière ayant été
+        sautée par l'OCR pleine page), « demie équation », « adoptées aux
+        laboratoires », et le DOUBLE ESPACE réel « ℱ  = 9,65.10⁴ »
+        (contrôlé au caractère : deux glyphes espace distincts de largeur
+        normale) ; registre complet en docs/sujets/_incoming/pc-2012-r.md
+        § 5 et V.12. ⚠️ LE CORRIGÉ ARABE N'EST QU'UN TÉMOIN DE VALEURS,
+        JAMAIS UN ARBITRE (K-8), et ce bloc en donne la démonstration la
+        plus nette du sujet : il corrobore le résultat (1,18 g) mais SON
+        ÉTAPE EST FAUSSE — relu au rendu 600 dpi, il imprime
+        m(Cu) = (0,5 × 3600 × 63,5)/(2 × 9,65.10⁴) = 1,18 g, quotient qui
+        vaut 0,592 g et non 1,18 g : il a écrit une heure (3600 s) et
+        calculé deux heures (7200 s). C'est l'erreur C1, trouvée par la
+        clôture — la transcription avait recopié ce 3600 avec un « ✓ ».
+        Il écrit également Br₂(aq) là où l'énoncé impose Br₂(ℓ). Aucune
+        valeur de cette entrée n'en provient : les quatre re-dérivations
+        ont été faites avant sa lecture, et refaites à la clôture.
+    intro: |-
+      **Électrolyse d'une solution de bromure de cuivre II (examen national, session de rattrapage 2012 — Chimie, Première partie, 3,00 points sur les 07,00 de l'exercice de Chimie).** <!-- DÉFAUT DU SUJET OFFICIEL, DÉCLARÉ ET RÉPARÉ ICI (F4), 2026-09-04.
+           Le bandeau de la page 2 du document officiel francophone imprime, mot
+           pour mot : « Premiere partie (03 points) : Electrolyse de la solution
+           de cuivre II. » — les mots « bromure de » MANQUENT. Le sommaire de la
+           page 1 du meme document est, lui, correct (« Electrolyse de la
+           solution de bromure de cuivre II »), et l'original arabe RS28 ecrit
+           « برومور النحاس II » a ses TROIS occurrences (page 1 y = 513,5 ;
+           page 2 y = 163,6 et y = 373,1). « La solution de cuivre II » ne
+           designe rien : c'est le contre-ion bromure qui est oxyde a l'anode, et
+           c'est lui qui produit le dibrome que l'enonce annonce. Aucune question
+           n'en devient insoluble — le paragraphe suivant donne la formule
+           complete. La reparation ne touche qu'un groupe de mots, elle est faite
+           ici et DECLAREE plutot que faite en silence.
+           IMPORTANT POUR LA CLASSIFICATION : l'edition francaise de ce sujet est
+           MINISTERIELLE (code d'examen RS28 au cartouche ; mention d'epoque
+           « (الترجمة الفرنسية) » sans le cadre anachronique « المسالك الدولية » ;
+           pieds de page VIDES sur les six pages, aucun credit de traducteur ;
+           colonne « Bareme » miroir valeur par valeur de la colonne arabe). Ce
+           n'est donc PAS un artefact de traduction professorale — c'est un
+           defaut de l'edition OFFICIELLE de langue francaise. Voir
+           docs/sujets/_incoming/pc-2012-r.md, F4 / D4 / V.7 / V.15. -->
+
+      *L'autre partie du même exercice de Chimie est indépendante et vit ailleurs : l'étude cinétique de l'hydrolyse d'un ester (4,00 pt) sous « Suivi temporel et vitesse de réaction » (entrée bk-2012-r-x1b). Le sujet l'écrit lui-même — « Les deux parties sont indépendantes ». 3,00 + 4,00 = 7,00, le barème imprimé.*
+
+      **Les deux parties sont indépendantes**
+
+      L'électrolyse est l'une des principales téchniques *(sic, pour « techniques »)* adoptées aux laboratoires ou dans les domaines industrièls *(sic, pour « industriels »)*. elle *(sic — minuscule après le point)* permet la synthèse de quelques métaux, et d'autres composés chimiques utilisés dans la vie quotidienne.
+
+      Le but de cette partie de l'exercice est la synthèse du dibrome $\text{Br}_2$ et du métal cuivre par électrolyse.
+
+      **Données :**
+      - La masse molaire du cuivre : $M(\text{Cu}) = 63{,}5\ \text{g.mol}^{-1}$ ;
+      - La constante de Faraday : $\mathcal{F} = 9{,}65\times10^{4}\ \text{C.mol}^{-1}$. *(Le sujet compose ce symbole en écriture calligraphique — notation d'époque, pas un glyphe cassé ; et il imprime un double espace réel après lui, « ℱ  = », contrôlé au caractère.)*
+
+      On réalise l'électrolyse d'une solution de bromure de cuivre II de formule $\left(\text{Cu}^{2+}_{(aq)} + 2\,\text{Br}^{-}_{(aq)}\right)$ en utilisant deux électrodes $E_1$ et $E_2$ en graphite, il se forme ainsi du dibrome $\text{Br}_{2(\ell)}$ au voisinage de $E_1$ et dépôt de cuivre *(sic — « et un dépôt de cuivre » attendu ; l'article manque dans le document officiel)* au voisinage de $E_2$.
+
+      *Le sujet ne fournit AUCUN schéma pour cette partie — ni l'édition française, ni l'original arabe. C'est voulu : la première question demande précisément de le dessiner.*
+    questions:
+      - id: q1
+        part: "Chimie, Première partie — Électrolyse d'une solution de bromure de cuivre II"
+        stem: |-
+          **1-** (1 pt) Représenter le dispositif expérimental de cette électrolyse, en précisant la cathode et l'anode.
+        reasoning: |-
+          Un point sur quatre pour un dessin : ce n'est pas une question d'illustration, c'est une question de **nommage**, et tout le barème est dans les deux étiquettes.
+
+          **Ce qu'il faut dessiner** (rung R1) : un électrolyseur — un bécher, ou mieux un tube en U — contenant la solution de bromure de cuivre II $\left(\text{Cu}^{2+}_{(aq)} + 2\,\text{Br}^{-}_{(aq)}\right)$ ; deux électrodes de **graphite** $E_1$ et $E_2$ plongées dedans ; et, à l'extérieur, un **générateur de courant continu** qui les relie, avec un ampèremètre en série (l'énoncé impose une intensité constante $I$, c'est lui qui la fixe et la mesure). Un électrolyseur n'est pas une pile : sans le générateur, il ne se passe rien.
+
+          **Ce qui donne les deux noms, et il ne faut rien deviner.** L'énoncé dit ce qu'on **observe** à chaque électrode, et c'est strictement suffisant :
+
+          - **en $E_1$ il se forme du dibrome $\text{Br}_{2(\ell)}$.** L'ion bromure de la solution a **perdu** un électron pour devenir $\text{Br}_2$ : c'est une **oxydation**. Or l'électrode où se produit l'oxydation s'appelle l'**anode** — définition invariable, la même dans une pile et dans un électrolyseur. Donc **$E_1$ est l'ANODE**, et dans un électrolyseur elle est reliée à la borne **+** du générateur (rung R2) ;
+          - **en $E_2$ il se dépose du cuivre métallique.** L'ion $\text{Cu}^{2+}$ a **gagné** des électrons pour redevenir métal : c'est une **réduction**, donc **$E_2$ est la CATHODE**, reliée à la borne **−**.
+
+          **Ce qui bascule entre pile et électrolyse, et ce qui ne bascule jamais.** Ce qui bascule, c'est la **polarité** : dans une pile, l'anode est la borne − ; dans un électrolyseur, elle est reliée à la borne +. Ce qui ne bascule **jamais**, c'est la définition : *anode = oxydation, cathode = réduction*. C'est le seul énoncé qu'il faut retenir, parce que c'est le seul qui ne change pas de camp.
+
+          **Le piège de cette question.** Chercher la polarité pour décider qui est l'anode — elle n'est pas donnée ici. Il ne faut pas d'elle : l'observation chimique suffit et elle est toujours la plus sûre. Un **dégagement de dihalogène à partir de son ion** est une oxydation ; un **dépôt de métal** est une réduction. On lit l'énoncé, on nomme, et la polarité se déduit ensuite — pas l'inverse.
+      - id: q2
+        stem: |-
+          **2-** (1 pt) Ecrire la demie équation *(sic, pour « demi-équation »)* modélisant la réaction ayant lieu au voisinage de chaque électrode.
+        reasoning: |-
+          Chaque demi-équation s'écrit **dans le sens où la réaction a réellement lieu** à son électrode — c'est-à-dire dans le sens que la question 1 vient d'établir, et pas dans le sens conventionnel d'un couple recopié du cours.
+
+          **À l'anode $E_1$ — oxydation des ions bromure.** Deux ions $\text{Br}^{-}$ se rassemblent pour former une molécule de dibrome, en abandonnant chacun un électron. Le couple mis en jeu est $\left(\text{Br}_{2}/\text{Br}^{-}\right)$, et l'énoncé impose l'état **liquide** pour le dibrome ($\text{Br}_{2(\ell)}$ — le dibrome est liquide à température ambiante, c'est l'un des deux seuls corps simples dans ce cas).
+
+          **À la cathode $E_2$ — réduction des ions cuivre II.** Un ion $\text{Cu}^{2+}$ capte deux électrons et se dépose en cuivre métallique. Couple $\left(\text{Cu}^{2+}/\text{Cu}\right)$.
+
+          **Le contrôle qui ne coûte rien, et qu'il faut faire à chaque fois.** Une demi-équation doit s'équilibrer **en éléments ET en charge**. À l'anode : deux brome de chaque côté, et une charge totale de $-2$ à gauche comme à droite ($2\times(-1)$ à gauche, $0 + 2\times(-1)$ à droite). À la cathode : un cuivre de chaque côté, charge $+2 - 2 = 0$ à gauche, $0$ à droite. Une demi-équation qui ne ferme pas en charge est fausse avant même d'être lue.
+
+          **Le piège de cette question.** Écrire $\text{Br}^{-} \rightarrow \text{Br} + e^{-}$, avec un atome de brome isolé. Le brome n'existe pas à l'état atomique dans ces conditions : le produit est la **molécule** $\text{Br}_2$, et c'est elle qui impose le coefficient $2$ devant $\text{Br}^{-}$ — donc **deux** électrons échangés, exactement comme à la cathode. Cette coïncidence n'est pas un hasard heureux : c'est elle qui rend le bilan de la question 3 immédiat.
+        steps:
+          - math: '\text{Anode } E_1 : \quad 2\,\text{Br}^{-}_{(aq)} \rightarrow \text{Br}_{2(\ell)} + 2\,e^{-}'
+            note: "Oxydation : c'est en E1 que se forme le dibrome, donc E1 est l'anode. Couple (Br2 / Br-)."
+          - math: '\text{Cathode } E_2 : \quad \text{Cu}^{2+}_{(aq)} + 2\,e^{-} \rightarrow \text{Cu}_{(s)}'
+            note: "Reduction : c'est en E2 que se depose le cuivre, donc E2 est la cathode. Couple (Cu2+ / Cu)."
+      - id: q3
+        stem: |-
+          **3-** (0,25 pt) En déduire l'équation bilan modélisant la transformation ayant lieu au cours de l'électrolyse.
+        reasoning: |-
+          Le mot « en déduire » dit la méthode : on ne repart de rien, on **additionne membre à membre** les deux demi-équations de la question 2, après avoir **égalisé les électrons**.
+
+          Ici l'égalisation est immédiate — les deux demi-équations mettent en jeu **deux électrons chacune**. On les somme telles quelles, les $2\,e^{-}$ se simplifient, et il reste l'équation bilan. C'est le quart de point le moins cher du sujet, à condition d'avoir écrit les deux demi-équations dans le bon sens.
+
+          **Les deux contrôles gratuits.** *En éléments* : un cuivre et deux bromes de chaque côté. *En charge* : $+2 + 2\times(-1) = 0$ à gauche, et $0$ à droite (deux corps simples, tous deux électriquement neutres). Une équation bilan d'électrolyse qui ne s'équilibre pas en charge est fausse avant d'être lue.
+
+          **Ce que cette équation raconte, et pourquoi il faut la lire.** Elle va dans le sens **inverse** de la réaction spontanée : mis en présence, du cuivre métallique et du dibrome réagiraient d'eux-mêmes pour redonner $\text{Cu}^{2+}$ et $\text{Br}^{-}$. C'est tout l'objet d'une électrolyse (rung R1) — le générateur **force** la transformation dans le sens que la chimie refuse, et c'est pour cela qu'on écrit ici une flèche simple, orientée par le générateur, et non un équilibre.
+        steps:
+          - math: '2\,\text{Br}^{-}_{(aq)} \rightarrow \text{Br}_{2(\ell)} + 2\,e^{-} \quad \text{(anode)}'
+            note: "Demi-equation d'oxydation, telle qu'ecrite a la question 2."
+          - math: '\text{Cu}^{2+}_{(aq)} + 2\,e^{-} \rightarrow \text{Cu}_{(s)} \quad \text{(cathode)}'
+            note: "Demi-equation de reduction, telle qu'ecrite a la question 2."
+          - math: '\boxed{\text{Cu}^{2+}_{(aq)} + 2\,\text{Br}^{-}_{(aq)} \longrightarrow \text{Cu}_{(s)} + \text{Br}_{2(\ell)}}'
+            note: "Somme membre a membre : les deux demi-equations echangent deux electrons chacune, la somme les elimine sans coefficient supplementaire."
+      - id: q4
+        stem: |-
+          **4-** (0,75 pt) Un générateur alimente le circuit électrique par un courant d'intensité constante $I = 0{,}5\ \text{A}$ pendant une durée $\Delta t = 2\ \text{h}$.
+
+          Déterminer la masse $m$ du cuivre produit au cours de la durée de fonctionnement de l'électrolyseur.
+        reasoning: |-
+          C'est la chaîne du rung R4, prise dans le sens direct : ici c'est le générateur qui impose la quantité d'électricité, et la chimie qui suit. Trois maillons, toujours les mêmes, toujours dans cet ordre.
+
+          1. **Le courant et la durée donnent la quantité d'électricité** : $Q = I\,\Delta t$.
+          2. **La constante de Faraday la convertit en quantité de matière d'électrons** : $n(e^-) = \dfrac{Q}{\mathcal{F}}$. C'est la définition même de $\mathcal{F}$ — la charge d'une mole d'électrons.
+          3. **La demi-équation de la cathode dit combien d'électrons il faut par atome déposé.** Elle en demande **deux** ici, pas un : $n(\text{Cu}) = \dfrac{n(e^-)}{2}$.
+
+          Ce facteur $2$ est le seul endroit où l'on peut se tromper sans que le calcul proteste : il ne vient **pas** de la loi de Faraday, il vient de la demi-équation qu'on a écrite à la question 2. C'est pour cela que l'énoncé fait écrire les demi-équations avant de demander la masse.
+
+          Il ne reste qu'à multiplier par la masse molaire, et l'on peut condenser toute la chaîne en une seule formule :
+
+          $$m = n(\text{Cu})\,M(\text{Cu}) = \frac{I\,\Delta t}{2\,\mathcal{F}}\,M(\text{Cu})$$
+
+          **⚠️ Le piège d'unité, et il est ici particulièrement vicieux.** $\Delta t$ est donné en **heures** et $\mathcal{F}$ est en coulombs par mole : il faut convertir avant tout, $\Delta t = 2\ \text{h} = 7\,200\ \text{s}$. Et regarde ce que devient le numérateur une fois converti — $Q = 0{,}5 \times 7\,200 = 3\,600\ \text{C}$. **Les deux nombres, $7\,200$ et $3\,600$, se ressemblent trop** : $3\,600$ est à la fois le nombre de secondes dans une heure ET la charge en coulombs de cette électrolyse-ci. Confondre les deux — écrire $7\,200$ dans $Q$ ou $3\,600$ dans la formule finale — donne un résultat faux d'un facteur $2$ exactement, et le calcul ne proteste pas.
+
+          Ce n'est pas un piège théorique : **le corrigé non officiel de ce sujet y est tombé**. Il imprime $m(\text{Cu}) = (0{,}5 \times 3\,600 \times 63{,}5)/(2 \times 9{,}65\cdot10^{4})$ et annonce $1{,}18\ \text{g}$ — mais ce quotient-là vaut $0{,}592\ \text{g}$. Il a écrit une heure et calculé deux heures. Sa **réponse** est juste, sa **ligne** est fausse : raison de plus pour poser la conversion en toute première ligne, séparément, et de ne jamais recopier une ligne de calcul sans vérifier qu'elle ferme.
+
+          **Contrôle de vraisemblance.** $1{,}18\ \text{g}$ de cuivre pour deux heures à un demi-ampère : environ $1{,}9\cdot10^{-2}$ mole, soit une masse de l'ordre du gramme. C'est l'ordre de grandeur normal d'un dépôt de galvanoplastie de laboratoire (rung R5) — un résultat en kilogrammes ou en microgrammes signalerait une erreur de conversion.
+        steps:
+          - math: '\Delta t = 2\ \text{h} = 7\,200\ \text{s}'
+            note: "Conversion prealable et separee : la constante de Faraday est en coulombs par mole, donc le temps doit etre en secondes."
+          - math: 'Q = I\,\Delta t = 0{,}5 \times 7\,200 = 3\,600\ \text{C}'
+            note: "Quantite d'electricite debitee (rung R4). Attention : 3600 est ici une CHARGE en coulombs, pas une duree en secondes."
+          - math: 'n(e^-) = \frac{Q}{\mathcal{F}} = \frac{3\,600}{9{,}65\times10^{4}} \approx 3{,}731\times10^{-2}\ \text{mol}'
+            note: "Quantite de matiere d'electrons echanges, definition meme de la constante de Faraday."
+          - math: 'n(\text{Cu}) = \frac{n(e^-)}{2} \approx 1{,}865\times10^{-2}\ \text{mol}'
+            note: "Deux electrons par atome depose, d'apres la demi-equation de cathode ecrite a la question 2."
+          - math: '\boxed{m = \frac{I\,\Delta t}{2\,\mathcal{F}}\,M(\text{Cu}) = \frac{0{,}5 \times 7\,200 \times 63{,}5}{2 \times 9{,}65\times10^{4}} \approx 1{,}18\ \text{g}}'
+            note: "Masse de cuivre deposee : 1,1845 g exactement, re-derivee deux fois par la verification. Le corrige non officiel publie ce meme 1,18 g mais imprime 3600 au numerateur, ou son propre quotient vaudrait 0,592 g."

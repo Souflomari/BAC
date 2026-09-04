@@ -1016,3 +1016,268 @@ entries:
             note: "Energie d'un photon (hors rungs de cette lecon), avec lambda converti en metres avant division."
           - math: '\boxed{E \approx 3{,}75\times10^{-19}\ \text{J}}'
             note: "Reponse B."
+
+  # ── bk-2012-r-x2 — 2012 R, Les ondes : étude du phénomène de diffraction de la lumière ──
+  #
+  # NOTE ÉDITORIALE — bk-2012-r-x2 (2026-09-04, ajout). Sujet SPC 2012
+  # SESSION DE RATTRAPAGE, code d'examen RS28, converti depuis
+  # docs/sujets/_incoming/pc-2012-r.md — statut « ✅ VÉRIFIÉ », vérifié en
+  # DEUX passes : une passe adversariale du 2026-09-03 (V.1–V.14) puis une
+  # CLÔTURE indépendante du 2026-09-04 qui a re-téléchargé les fichiers et
+  # REJOUÉ elle-même tout ce dont dépend le statut d'un bloc — barème,
+  # figure, défauts — plutôt que de contresigner sa devancière. Six blocs
+  # sur six signés, 31/31 questions re-dérivées et résolubles, barème 20,00
+  # par cinq chemins.
+  #
+  # CHOIX DE L'`id` : le sujet NE NUMÉROTE AUCUN exercice — ni en français
+  # ni en arabe. Sa page 1 imprime « Le sujet se compose de quatre
+  # exercices : Un exercice de chimie et trois exercices de physique », et
+  # son corps nomme les rubriques par discipline (Chimie, Les ondes,
+  # Electricité, Mécanique). Les identifiants encodent donc la POSITION SUR
+  # LA COPIE (K-7 bis) : « Les ondes » est le DEUXIÈME bloc du cartouche,
+  # d'où x2, sans suffixe puisque le bloc n'est pas partitionné. Les
+  # `exercise_label` restent FIDÈLES à ce que le sujet imprime, sans numéro
+  # inventé — depuis le correctif du 2026-09-03, `lib/examens.ts` lit la
+  # position sur l'identifiant dès qu'aucun libellé de l'épreuve ne porte
+  # « Exercice N », de sorte que l'épreuve s'ordonne Chimie / ondes /
+  # électricité / mécanique et compte QUATRE exercices.
+  # RÉPARTITION : ce bloc vaut 2,50 pt, exactement le sous-total imprimé
+  # « Les ondes (02,5 points) ». Les six entrées du sujet totalisent
+  # 3,00 + 4,00 + 2,50 + 3,00 + 2,00 + 5,50 = 20,00.
+  #
+  # AUCUN CROSS-LIST : les quatre questions relèvent toutes de la
+  # diffraction (rung R3 de cette leçon). Rien à répartir ailleurs.
+  #
+  # LA FIGURE NE PORTE AUCUNE VALEUR, ET C'EST MESURÉ. Le dispositif est
+  # dessiné en perspective cavalière, sans échelle ni graduation : les
+  # quatre données (a, D, L₁, L₂) sont toutes dans le TEXTE, et aucune
+  # question ne lit le dessin. Le bloc est donc entièrement hors du
+  # périmètre K-8 côté mesures. La vérification a tout de même re-examiné
+  # la figure DEPUIS L'IMAGE (bitmap 638 × 465 à 216 dpi extrait du PDF) et
+  # écarté le soupçon d'un motif mal orienté : la fente est verticale
+  # (mesurée à +89,6° sur la géométrie vectorielle de l'original) et les
+  # cinq taches s'alignent à +43,0°, c'est-à-dire le long de l'horizontale
+  # de l'écran vue en perspective — donc PERPENDICULAIREMENT à la fente,
+  # comme la physique l'exige. (La justification que la transcription
+  # donnait — « au même angle que le bord supérieur de l'écran », mesuré à
+  # +49,9° — est inexacte à 7° près ; la CONCLUSION tient, l'argument est
+  # corrigé. Sans conséquence : rien ne se lit sur ce dessin.)
+  #
+  # ⚠️ GARDE K-8 SUR LE CORRIGÉ ARABE, POUR CE BLOC. Le corrigé
+  # (element/39378, forums svt-assilah, 2014) est un TÉMOIN DE VALEURS,
+  # JAMAIS UN ARBITRE. Il corrobore les deux résultats (7·10⁻⁷ m et
+  # 75·10⁻⁶ m) et le critère λ/a > 10⁻³, mais SON APPLICATION NUMÉRIQUE DE
+  # LA QUESTION 4 EST IMPRIMÉE AVEC UN EXPOSANT FAUX — relue au rendu
+  # 600 dpi : d = (2 × 7.10⁻² × 1,5)/(2,8.10⁻²), alors que λ = 7·10⁻⁷ m.
+  # Son résultat publié reste juste. REPRENDRE SES RÉSULTATS, JAMAIS SES
+  # LIGNES : la vérification lui a trouvé quatre coquilles sur l'ensemble
+  # du sujet, plus une divergence de fond où c'est lui qui a tort. Aucune
+  # valeur de cette entrée n'en provient.
+  - id: bk-2012-r-x2
+    title: "Diffraction de la lumière par une fente puis par un fil : condition de diffraction, nature ondulatoire, longueur d'onde du laser et diamètre du fil"
+    source:
+      year: 2012
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Les ondes — Etude du phénomène de diffraction de la lumière"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2012 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code d'examen RS28 (coefficient 7, durée 3 h),
+        AlloSchool element/94455 (édition française, cours course-422 ;
+        jumeaux 94454 / 94456, upload-70323) ; original arabe element/39377
+        et son corrigé element/39378 (cours arabophone course-311). Les
+        ondes — étude du phénomène de diffraction de la lumière ; barème
+        2,50 pt (0,5 + 0,5 + 0,75 + 0,75), 4 questions, égal au sous-total
+        imprimé « Les ondes (02,5 points) » du bandeau de la page 4 et du
+        sommaire de la page 1. Source vérifiée EN DEUX PASSES
+        (docs/sujets/_incoming/pc-2012-r.md, statut « ✅ VÉRIFIÉ », 6 blocs
+        sur 6) : passe adversariale du 2026-09-03 puis CLÔTURE INDÉPENDANTE
+        du 2026-09-04, qui a re-téléchargé les fichiers et rejoué elle-même
+        barème, figure et défauts de ce bloc. Barème recompté sur les DEUX
+        éditions — colonne française p. 4 (0,5 · 0,5 · 0,75 · 0,75)
+        appariée à ±5 pt aux questions 1- (y = 314,7), 2- (381,4),
+        3- (415,9), 4- (466,5) ; colonne arabe « سلم التنقيط » p. 4 : mêmes
+        quatre valeurs, même ordre (y = 152,8 · 191,7 · 208,5 · 247,1). Les
+        deux re-dérivations, refaites à la clôture : λ = a·L₁/(2D) =
+        6·10⁻⁵ × 3,5·10⁻²/3 = 7,0·10⁻⁷ m = 700 nm, et d = 2λD/L₂ =
+        7,5·10⁻⁵ m = 75 µm. LA FIGURE NE PORTE AUCUNE VALEUR, ET C'EST
+        MESURÉ : le dispositif est dessiné en perspective cavalière, sans
+        échelle ni graduation, et les quatre données (a, D, L₁, L₂) sont
+        toutes dans le texte — aucune question ne lit le dessin, le bloc
+        est hors du périmètre K-8 côté mesures. La figure a néanmoins été
+        re-examinée DEPUIS L'IMAGE (bitmap 638 × 465 à 216 dpi extrait du
+        PDF) : boîte « Laser » avec sa sortie grise, faisceau horizontal,
+        parallélogramme « Plaque » portant une fente verticale grise,
+        parallélogramme « Ecran », une grande ellipse noire pleine encadrée
+        de quatre petites alignées sur l'oblique descendante, double flèche
+        L₁ couvrant la tache centrale, pointillé d'axe portant θ, double
+        flèche D entre deux verticales en pointillés. Le soupçon d'un motif
+        mal orienté est ÉCARTÉ, mesure à l'appui : la fente est à +89,6°
+        (verticale) et les cinq taches s'alignent à +43,0°, soit le long de
+        l'horizontale de l'écran vue en perspective, donc
+        perpendiculairement à la fente ; l'argument que la transcription
+        donnait (« au même angle que le bord supérieur de l'écran »,
+        mesuré à +49,9°) est inexact à 7° près, la conclusion tient.
+        L'ÉDITION FRANÇAISE EST MINISTÉRIELLE, établie par six preuves
+        (code RS28 au cartouche, mention d'époque « (الترجمة الفرنسية) »
+        sans le cadre anachronique « المسالك الدولية », filière et
+        coefficient de 2012, pieds de page VIDES sur 6/6, colonne
+        « Barème » miroir valeur par valeur de la colonne arabe, gabarit de
+        page 1 identique) : les écarts français/arabe sont donc des défauts
+        du DOCUMENT OFFICIEL francophone, jamais des artefacts de
+        traduction professorale. TROIS ÉCARTS SUR CE BLOC, DÉCLARÉS ET
+        REPRODUITS VERBATIM. (D5) L'amorce française écrit « la mesure de
+        la LONGUEUR DE LA FRANGE centrale » là où l'arabe écrit
+        « عرض البقعة الضوئية المركزية » = « la LARGEUR DE LA TACHE
+        lumineuse centrale » — et le français SE CONTREDIT LUI-MÊME, sa
+        propre question 4 disant « la largeur de la tâche centrale ».
+        L'arabe emploie la même formule aux deux endroits. Sans conséquence
+        sur la résolubilité : la relation λ = a·L/(2D) est la même. (D6) La
+        question 4 introduit « la plaque (P) » alors que la plaque n'a
+        jamais été nommée (P) auparavant — notation ORPHELINE ; l'arabe
+        n'introduit aucun symbole (« نزيل الصفيحة » = « on enlève la
+        plaque »), et il précise en outre un fil « métallique » « fixé sur
+        un support », deux précisions que le français a supprimées.
+        (D7) « des franges brillantes » là où l'arabe écrit
+        « بقعا ضوئية » = « des taches lumineuses ». Coquilles de langue
+        reproduites verbatim, non réparées : « l'ophtalmologie et
+        opérations chirurgicales » (article manquant), « utilisés pour  la »
+        (DOUBLE ESPACE réel, contrôlé au caractère), « pour les petit
+        angles », « calculer sa valeur » avec une minuscule après le point,
+        « des franges brillantes commes les précédentes », « la largeur de
+        la tâche centrale » (accent circonflexe parasite) ; registre
+        complet en docs/sujets/_incoming/pc-2012-r.md § 5 et V.12, où les
+        33 points chauds ont été testés littéralement contre un OCR aveugle
+        (tesseract -l fra sur les six rendus 300 dpi) et retrouvés 33/33.
+        ⚠️ LE CORRIGÉ ARABE N'EST QU'UN TÉMOIN DE VALEURS, JAMAIS UN
+        ARBITRE (K-8) : il corrobore les deux résultats (7·10⁻⁷ m et
+        75·10⁻⁶ m) et le critère λ/a > 10⁻³, mais son application numérique
+        de la question 4 est imprimée avec un EXPOSANT FAUX — relue au
+        rendu 600 dpi, d = (2 × 7.10⁻² × 1,5)/(2,8.10⁻²) alors que
+        λ = 7·10⁻⁷ m. Le résultat publié reste juste. La vérification lui a
+        trouvé QUATRE coquilles sur l'ensemble du sujet et une divergence
+        de fond où c'est lui qui a tort (la vitesse volumique du bloc de
+        chimie, divisée par le volume d'ester). Aucune étape intermédiaire
+        de ce corrigé n'est reprise, et aucune valeur de cette entrée n'en
+        provient.
+    intro: |-
+      **Étude du phénomène de diffraction de la lumière (examen national, session de rattrapage 2012 — exercice « Les ondes », 2,50 points).**
+
+      Les rayons lasers sont utilisés dans plusieurs domaines tels que la métallurgie, l'ophtalmologie et opérations chirurgicales *(sic — « et les opérations » attendu)* … Ils sont aussi utilisés pour  la *(sic — double espace réel, contrôlé au caractère)* détermination des dimensions microscopiques de quelques corps.
+
+      Cet exercice vise la détermination de la longueur d'onde d'une onde électromagnétique, et la détermination du diamètre d'un fil fin métallique en exploitant le phénomène de diffraction.
+
+      On envoie, à l'aide d'une source laser, un faisceau de lumière monochromatique de longueur d'onde $\lambda$, sur une plaque contenant une **fente verticale** de largeur $a = 0{,}06\ \text{mm}$, on observe un phénomène de diffraction sur un écran vertical situé à une distance $D = 1{,}5\ \text{m}$ de la plaque.
+
+      La mesure de la longueur de la frange centrale *(sic — l'original arabe écrit « la LARGEUR de la TACHE lumineuse centrale », et l'édition française se contredit elle-même : sa propre question 4 dira « la largeur de la tâche centrale ». Sans conséquence — c'est la même grandeur, mesurée de la même façon, et la relation qui en découle est la même)* donne $L_1 = 3{,}5\ \text{cm}$. (Figure ci-contre)
+
+      **La figure du dispositif, re-décrite depuis l'image** *(elle n'a ni échelle ni graduation : les quatre données $a$, $D$, $L_1$, $L_2$ sont toutes dans le texte, et aucune question ne lit ce dessin)* **.** Perspective cavalière, de gauche à droite :
+
+      - à gauche, un **rectangle horizontal étiqueté « Laser »**, terminé à droite par un petit rectangle gris — la sortie du faisceau ;
+      - un **trait gras horizontal** part de cette sortie vers la droite : le faisceau incident ;
+      - au centre, un **parallélogramme** vu en perspective (côtés gauche et droit verticaux, bords haut et bas obliques descendant vers la droite), étiqueté **« Plaque »** ; il porte en son milieu un **trait vertical gris fin** — la fente ;
+      - à droite, un **second parallélogramme plus grand**, même perspective, étiqueté **« Ecran »** ;
+      - sur l'écran, la **figure de diffraction** : une grande **ellipse noire pleine** — la tache centrale — et **quatre ellipses plus petites**, deux au-dessus-gauche et deux au-dessous-droite, toutes alignées avec la grande sur une **oblique descendante vers la droite**. Cette oblique *est* la direction horizontale de l'écran dans cette perspective : le motif est donc bien **perpendiculaire à la fente verticale**, comme la physique l'exige ;
+      - une **double flèche** parallèle à cette oblique, étiquetée $L_1$, couvre exactement la grande ellipse ;
+      - depuis la fente partent **deux traits fins** délimitant l'ouverture du faisceau diffracté jusqu'aux bords de la tache centrale ; un **trait horizontal en pointillés** prolonge l'axe du laser jusqu'à l'écran, et l'angle entre ce pointillé et le trait supérieur porte l'étiquette $\theta$ ;
+      - en bas, entre deux **verticales en pointillés** tombant de la plaque et de l'écran, une **double flèche horizontale étiquetée $D$**.
+    questions:
+      - id: q1
+        part: "Les ondes — Étude du phénomène de diffraction de la lumière"
+        stem: |-
+          **1-** (0,5 pt) Quelle est la condition que doit satisfaire la largeur $a$ de la fente pour que le phénomène de diffraction se produise ?
+        reasoning: |-
+          La diffraction n'est pas un phénomène de seuil brutal — elle existe toujours — mais elle n'est **observable** que si l'obstacle ou l'ouverture a une taille **comparable à la longueur d'onde** (rung R3). La condition attendue est donc :
+
+          $$a \lesssim \lambda \qquad \text{ou, sous la forme usuelle du programme,} \qquad \frac{\lambda}{a} > 10^{-3}$$
+
+          **Pourquoi ce rapport, et pas une taille absolue.** L'écart angulaire du faisceau diffracté vaut $\theta = \dfrac{\lambda}{a}$ : c'est ce **rapport sans dimension** qui décide de tout. Si $a$ est très grande devant $\lambda$, $\theta$ est si petit que le faisceau traverse sans s'ouvrir de façon perceptible — la lumière semble aller tout droit. Si $a$ est de l'ordre de $\lambda$, $\theta$ devient appréciable et la tache s'étale visiblement sur l'écran.
+
+          **Le contrôle sur les valeurs de cet exercice, qui vaut d'être fait.** Ici $a = 0{,}06\ \text{mm} = 6\times10^{-5}\ \text{m}$ et l'on trouvera $\lambda = 7\times10^{-7}\ \text{m}$ : le rapport vaut $\dfrac{7\times10^{-7}}{6\times10^{-5}} \approx 1{,}2\times10^{-2}$, largement au-dessus de $10^{-3}$. La condition est bien remplie — l'expérience de l'énoncé a un sens.
+
+          **⚠️ Le piège de cette question, et il est du bon côté du bon sens.** Croire que « plus la fente est large, plus ça diffracte ». C'est exactement l'inverse : la diffraction est d'autant plus marquée que l'ouverture est **étroite**. Une fente large laisse passer un pinceau qui garde sa forme ; une fente étroite épanouit la lumière. C'est le point d'arrêt explicite du rung R3, et c'est celui qu'on retrouve en tête des erreurs de copie.
+      - id: q2
+        stem: |-
+          **2-** (0,5 pt) Quelle est la nature de la lumière mise en évidence par cette expérience ?
+        reasoning: |-
+          La diffraction met en évidence la **nature ONDULATOIRE** de la lumière.
+
+          **Pourquoi c'est une preuve, et pas une simple illustration.** La diffraction est un comportement que **seule une onde** peut avoir. Un flux de particules classiques traversant une ouverture continuerait tout droit et projetterait sur l'écran l'ombre géométrique de la fente — une bande nette, de la largeur de la fente, sans rien autour. Ce que l'on observe est autre chose : la lumière **s'étale au-delà** de l'ombre géométrique, et elle s'organise en une tache centrale large flanquée de taches secondaires. Cet étalement en franges est la signature d'un phénomène ondulatoire, exactement comme pour une onde à la surface de l'eau franchissant une ouverture.
+
+          **Ce que la question ne demande pas, mais qu'il faut savoir ne pas dire.** Elle ne demande pas la nature de la lumière « en général » — l'aspect corpusculaire (le photon) existe aussi, et se manifeste dans d'autres expériences, comme l'effet photoélectrique. La question porte sur ce que **cette expérience-ci** met en évidence, et cette expérience-ci ne montre que l'onde. Répondre « la lumière est à la fois onde et particule » n'est pas faux dans l'absolu mais rate la question posée.
+
+          **Une remarque qui prolonge, et qui n'est pas demandée.** Ce même dispositif montre une seconde chose : la lumière du laser est **monochromatique**, l'énoncé le dit. C'est ce qui permet à la question 3 de parler d'**une** longueur d'onde $\lambda$ — en lumière blanche, chaque couleur donnerait sa propre tache, de largeur différente, et l'on verrait des irisations au lieu d'une tache nette.
+      - id: q3
+        stem: |-
+          **3-** (0,75 pt) Exprimer $\lambda$ en fonction de $L_1$, $D$ et $a$. calculer sa valeur. *(sic — le sujet imprime « calculer » avec une minuscule après le point)*
+
+          *(On considère $\tan\theta \approx \theta$ pour les petit angles)* *(sic)*
+        reasoning: |-
+          Deux relations, et il faut les tenir séparées avant de les joindre — c'est la seule difficulté de la question.
+
+          **Relation n° 1 — la géométrie du triangle.** Le demi-angle d'ouverture $\theta$ est celui que fait, avec l'axe, le trait qui va de la fente au **bord** de la tache centrale. Dans le triangle rectangle formé par la fente, le centre de la tache et son bord :
+
+          $$\tan\theta = \frac{L_1/2}{D} = \frac{L_1}{2D}$$
+
+          Le facteur $2$ vient de là et de nulle part ailleurs : $L_1$ est la largeur **totale** de la tache centrale, et l'angle $\theta$ n'en couvre que la **moitié**. C'est le point où se perdent le plus de copies.
+
+          L'énoncé autorise ensuite $\tan\theta \approx \theta$ — légitime, puisque $\theta$ vaut ici environ $0{,}012\ \text{rad}$, soit $0{,}7°$.
+
+          **Relation n° 2 — la physique de la diffraction** (rung R3) : l'écart angulaire ne dépend que de la longueur d'onde et de la largeur de la fente,
+
+          $$\theta = \frac{\lambda}{a}$$
+
+          **La jonction.** Les deux expressions décrivent le **même** angle, on les égale :
+
+          $$\frac{\lambda}{a} = \frac{L_1}{2D} \qquad \Longrightarrow \qquad \boxed{\lambda = \frac{a\,L_1}{2D}}$$
+
+          **L'application numérique, en convertissant TOUT en unités SI d'abord** — $a = 0{,}06\ \text{mm} = 6\times10^{-5}\ \text{m}$, $L_1 = 3{,}5\ \text{cm} = 3{,}5\times10^{-2}\ \text{m}$, $D = 1{,}5\ \text{m}$ :
+
+          $$\lambda = \frac{6\times10^{-5} \times 3{,}5\times10^{-2}}{2 \times 1{,}5} = \frac{2{,}1\times10^{-6}}{3} = 7{,}0\times10^{-7}\ \text{m} = 700\ \text{nm}$$
+
+          **Le contrôle de vraisemblance, et il ferme.** $700\ \text{nm}$ tombe dans le visible, tout au bout du **rouge** — la couleur des lasers de démonstration les plus courants (hélium-néon, $633\ \text{nm}$ ; diodes rouges, $650$ à $700\ \text{nm}$). Un résultat en dehors de la fourchette $400$–$800\ \text{nm}$ signalerait une erreur de conversion : la lumière ne serait pas visible, et l'expérience de l'énoncé n'aurait pas pu se faire à l'œil.
+
+          **Les deux pièges de cette question.** Le premier : **oublier le facteur $2$** et écrire $\tan\theta = L_1/D$, ce qui double $\lambda$ et donne $1400\ \text{nm}$ — de l'infrarouge, invisible. Le contrôle de vraisemblance l'attrape immédiatement. Le second : **mélanger les unités**, laisser $a$ en millimètres ou $L_1$ en centimètres ; le résultat sort alors décalé d'un facteur $10$, $100$ ou $1000$ sans que le calcul proteste.
+        steps:
+          - math: '\tan\theta = \frac{L_1/2}{D} = \frac{L_1}{2D} \approx \theta'
+            note: "Geometrie du triangle : L1 est la largeur TOTALE de la tache, l'angle theta n'en couvre que la moitie. D'ou le facteur 2."
+          - math: '\theta = \frac{\lambda}{a}'
+            note: "Ecart angulaire de diffraction (rung R3) : il ne depend que de lambda et de a."
+          - math: '\boxed{\lambda = \frac{a\,L_1}{2D}}'
+            note: "Les deux relations decrivent le meme angle : on les egale et on isole lambda."
+          - math: '\lambda = \frac{6\times10^{-5} \times 3{,}5\times10^{-2}}{2 \times 1{,}5} = \frac{2{,}1\times10^{-6}}{3}'
+            note: "Application numerique, toutes les grandeurs converties en unites SI au prealable."
+          - math: '\boxed{\lambda = 7{,}0\times10^{-7}\ \text{m} = 700\ \text{nm}}'
+            note: "Un rouge de laser : la valeur tombe bien dans le visible, ce qui ferme le controle de vraisemblance."
+      - id: q4
+        stem: |-
+          **4-** (0,75 pt) On remplace la plaque $(P)$ *(sic — la plaque n'a jamais été nommée $(P)$ auparavant : notation orpheline du document officiel ; l'original arabe n'introduit aucun symbole et précise en outre un fil « métallique » « fixé sur un support », deux précisions supprimées côté français)* par un fil fin de diamètre $d$, qu'on fixe à la même place de la plaque. On visualise sur l'écran des franges brillantes commes *(sic)* les précédentes, mais dont la largeur de la tâche *(sic)* centrale est $L_2 = 2{,}8\ \text{cm}$.
+
+          Calculer $d$.
+        reasoning: |-
+          **Le fait qu'il faut connaître, et que l'énoncé suppose acquis.** Un **fil** de diamètre $d$ et une **fente** de largeur $d$ donnent, à la même distance, **la même figure de diffraction** — c'est le principe de Babinet, admis au programme. On peut donc réutiliser telle quelle la relation de la question 3, en remplaçant simplement la largeur de la fente $a$ par le diamètre du fil $d$, et $L_1$ par $L_2$ :
+
+          $$\frac{\lambda}{d} = \frac{L_2}{2D} \qquad \Longrightarrow \qquad \boxed{d = \frac{2\lambda D}{L_2}}$$
+
+          **Ce qui change et ce qui ne change pas entre les deux expériences.** Le laser est le même, donc $\lambda = 7{,}0\times10^{-7}\ \text{m}$ **ne change pas** ; l'écran n'a pas bougé, donc $D = 1{,}5\ \text{m}$ **ne change pas**. La seule grandeur mesurée qui change est la largeur de la tache : $L_2 = 2{,}8\ \text{cm}$ au lieu de $L_1 = 3{,}5\ \text{cm}$. C'est cette différence, et elle seule, qui livre $d$.
+
+          $$d = \frac{2 \times 7{,}0\times10^{-7} \times 1{,}5}{2{,}8\times10^{-2}} = \frac{2{,}1\times10^{-6}}{2{,}8\times10^{-2}} = 7{,}5\times10^{-5}\ \text{m} = 75\ \mu\text{m}$$
+
+          **Lire le résultat au lieu de le poser.** La tache est **plus étroite** qu'avec la fente ($2{,}8$ contre $3{,}5\ \text{cm}$), donc l'obstacle doit être **plus large** : $d = 75\ \mu\text{m}$ contre $a = 60\ \mu\text{m}$. Le rapport des largeurs de tache, $3{,}5/2{,}8 = 1{,}25$, est exactement l'inverse du rapport des obstacles, $75/60 = 1{,}25$ — c'est la relation $\theta = \lambda/a$ qui se lit dans les deux sens, et c'est le contrôle qui ferme sans calcul supplémentaire.
+
+          **Ce que cette question raconte au fond, et pourquoi l'exercice existe.** On vient de **mesurer un diamètre de $75$ micromètres** — l'ordre de grandeur d'un cheveu — avec une règle graduée en centimètres. C'est exactement ce que l'encadré annonçait : le laser sert « à la détermination des dimensions microscopiques de quelques corps ». La diffraction transforme une longueur inaccessible en une longueur mesurable à l'œil, et le facteur d'agrandissement est $2D/L$.
+
+          **Le piège de cette question.** Recalculer $\lambda$ à partir de $L_2$ au lieu de calculer $d$ — c'est-à-dire réutiliser la formule de la question 3 sans changer l'inconnue. La longueur d'onde est **fixée par le laser**, elle est la donnée reprise de la question précédente ; l'inconnue est $d$.
+        steps:
+          - math: '\frac{\lambda}{d} = \frac{L_2}{2D}'
+            note: "Principe de Babinet : un fil de diametre d diffracte comme une fente de largeur d. La relation de la question 3 se reutilise telle quelle."
+          - math: '\boxed{d = \frac{2\lambda D}{L_2}}'
+            note: "Expression litterale, demandee avant l'application numerique (consigne de la page 1 du sujet)."
+          - math: 'd = \frac{2 \times 7{,}0\times10^{-7} \times 1{,}5}{2{,}8\times10^{-2}} = \frac{2{,}1\times10^{-6}}{2{,}8\times10^{-2}}'
+            note: "Lambda et D sont inchanges : meme laser, meme ecran. Seule la largeur de tache a change."
+          - math: '\boxed{d = 7{,}5\times10^{-5}\ \text{m} = 75\ \mu\text{m}}'
+            note: "Controle : la tache est plus etroite (2,8 contre 3,5 cm) donc l'obstacle est plus large (75 contre 60 micrometres). Le rapport 3,5/2,8 = 1,25 est bien l'inverse de 75/60."
