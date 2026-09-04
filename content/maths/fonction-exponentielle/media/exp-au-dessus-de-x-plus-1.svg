@@ -137,7 +137,16 @@
     <line x1="93.0" y1="344.0" x2="597.0" y2="176.0"
           stroke="var(--figure-accent)" stroke-width="1.8" stroke-dasharray="6,4"
           stroke-linecap="round"/>
-    <text x="515" y="190" font-size="12" fill="var(--figure-accent)">
+    <!-- REMONTÉE ET ANCRÉE À DROITE (2026-09-04) : posée à (515;190) elle
+         était couchée sur la droite qu'elle nomme — qui descend de y=203 à
+         y=188 sur sa longueur — et s'en trouvait rayée sur 37 %. La droite
+         étant OBLIQUE, il ne suffit pas de monter : il faut dégager la
+         hauteur du texte PLUS la pente sur sa largeur, et l'ancrage à droite
+         raccourcit d'autant ce trajet. Deuxième passe : à (545;184) c'est la
+         COURBE exp qui la reprenait par la gauche (24 %) — entre deux tracés
+         qui se rapprochent, il n'y a pas de « un peu plus loin », il y a un
+         seul créneau, et il est au bout de la droite. -->
+    <text x="575" y="178" text-anchor="end" font-size="12" fill="var(--figure-accent)">
       <tspan font-style="italic">y</tspan> = <tspan font-style="italic">x</tspan> + 1
     </text>
   </g><!-- /step-3 -->
@@ -166,7 +175,11 @@
           stroke="var(--figure-accent)" stroke-width="1.6"/>
     <line x1="474" y1="215.00" x2="486" y2="215.00" stroke="var(--figure-accent)" stroke-width="1.4"/>
     <line x1="474" y1="193.45" x2="486" y2="193.45" stroke="var(--figure-accent)" stroke-width="1.4"/>
-    <text x="495" y="207" font-size="10" fill="var(--figure-accent)">
+    <!-- DESCENDUE SOUS LA DROITE (2026-09-04) : à y=207 elle était sur la
+         droite (rayée sur 37 %) ET collée à « y = x + 1 ». L'écart qu'elle
+         chiffre se lit entre la droite et la courbe ; elle vit maintenant
+         SOUS la droite, du côté où il n'y a plus rien. -->
+    <text x="495" y="226" font-size="10" fill="var(--figure-accent)">
       <tspan font-style="italic">e</tspan> − 2 &#8776; 0,72
     </text>
 

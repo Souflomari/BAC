@@ -82,7 +82,13 @@
   <text x="470" y="63" text-anchor="middle"
         font-size="14" font-style="italic" font-weight="700"
         fill="var(--figure-accent)">G</text>
-  <text x="470" y="163" text-anchor="middle"
+  <!-- PASSÉE À DROITE DE SON CERCLE (2026-09-04) : sous le cercle du haut,
+       l'étiquette tombait dans le cercle du BAS — les deux se touchent en
+       y=150, il n'y a aucun espace entre eux — et le trait du cercle
+       inférieur la rayait sur 36 % de sa largeur. Le gamète du bas garde la
+       sienne en dessous, où la place existe ; celui du haut prend la
+       droite. -->
+  <text x="533" y="100" text-anchor="start"
         font-size="12" fill="var(--figure-ink)">
     Gamète <tspan font-style="italic" font-weight="700">G</tspan> — <tspan font-style="italic">1/2</tspan>
   </text>

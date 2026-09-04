@@ -74,12 +74,16 @@
     <text x="394.5" y="224" text-anchor="middle" font-size="10.5" fill="var(--figure-accent)">37</text>
     <circle cx="394.5" cy="85" r="3.4" fill="var(--figure-accent)"/>
 
-    <path d="M390,92 C365,110 335,124 305,132" fill="none"
+    <!-- REMONTÉES DE 24 px, filet réaimé (2026-09-04) : la seconde ligne était
+         couchée sur la montée de la courbe (29 % rayés) et la première la
+         frôlait (17 %). Au-dessus de la courbe, entre elle et le haut du
+         panneau, la place est libre sur toute la longueur du texte. -->
+    <path d="M390,92 C365,98 335,104 305,108" fill="none"
           stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,2"/>
-    <text x="298" y="122" text-anchor="end" font-size="10.5" font-weight="600" fill="var(--figure-accent)">
+    <text x="298" y="98" text-anchor="end" font-size="10.5" font-weight="600" fill="var(--figure-accent)">
       optimum thermique
     </text>
-    <text x="298" y="136" text-anchor="end" font-size="10.5" fill="var(--figure-accent)">
+    <text x="298" y="112" text-anchor="end" font-size="10.5" fill="var(--figure-accent)">
       ≈ 37 °C
     </text>
   </g><!-- /step-3 -->

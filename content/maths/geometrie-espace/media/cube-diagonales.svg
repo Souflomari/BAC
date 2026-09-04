@@ -87,7 +87,14 @@
   <g id="step-3">
     <!-- ── La diagonale de la face du bas (BD), accent ──────────────────── -->
     <line x1="380" y1="400" x2="283" y2="347" stroke="var(--figure-accent)" stroke-width="2.5"/>
-    <text x="352" y="388" font-size="14" fill="var(--figure-accent)">(<tspan font-style="italic">BD</tspan>)</text>
+    <!-- REMONTÉE au-dessus de la diagonale (2026-09-04) : posée à y=388 elle
+         était couchée sur (BD) elle-même, qui la rayait sur 35 % de sa
+         largeur. La diagonale DESCEND vers la droite : la placer en dessous
+         l'aurait fait rattraper sur sa propre longueur — au-dessus, entre
+         (BD) et l'arête cachée (DC), la bande est libre. Ancrée à droite
+         aussi : remontée seule, elle butait sur l'arête verticale (BF) en
+         x=380 — un second tracé, révélé par le premier déplacement. -->
+    <text x="372" y="376" text-anchor="end" font-size="14" fill="var(--figure-accent)">(<tspan font-style="italic">BD</tspan>)</text>
 
     <!-- ── Marque « ⊥ ? » près du croisement apparent des deux diagonales
          (sur ce dessin précis, elles se frôlent tout près de D — voir la

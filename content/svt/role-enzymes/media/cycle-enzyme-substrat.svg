@@ -55,7 +55,11 @@
              fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
 
     <!-- Label « enzyme » : identifie le corps entier, à distance du site actif -->
-    <text x="88" y="172" text-anchor="middle"
+    <!-- REMONTÉE AU-DESSUS DU CERCLE (2026-09-04) : centrée en (88;172), elle
+         mordait sur le corps de l'enzyme (cercle 115;200) qui la rayait sur
+         30 % de sa largeur. Le sommet du cercle est à y=155 : au-dessus,
+         rien. -->
+    <text x="88" y="148" text-anchor="middle"
           font-size="11" fill="var(--figure-ink)">enzyme</text>
 
     <!-- Arrivée du substrat (indice discret, non répété dans les autres panneaux) -->

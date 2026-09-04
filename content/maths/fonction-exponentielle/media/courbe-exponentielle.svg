@@ -117,10 +117,16 @@
           fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
           stroke-linecap="round" stroke-linejoin="round"/>
 
-    <!-- Boîte formule -->
-    <rect x="430" y="92" width="140" height="28" rx="5"
+    <!-- Boîte formule.
+         DÉPLACÉE À GAUCHE DE L'AXE (2026-09-04) : posée en x=430, elle était
+         traversée par la tangente y = x+1 (qui passe de x=503 à x=475 sur la
+         hauteur de la boîte) et la formule s'en trouvait rayée sur 38 % de sa
+         largeur. Le quart supérieur gauche du cadre est vide — la courbe y
+         est couchée sur son asymptote — et la boîte s'y arrête juste avant
+         l'axe des ordonnées (x=315). -->
+    <rect x="160" y="92" width="140" height="28" rx="5"
           fill="var(--figure-ink)" fill-opacity="0.06"/>
-    <text x="500" y="111" text-anchor="middle" font-size="12" fill="var(--figure-ink)">
+    <text x="230" y="111" text-anchor="middle" font-size="12" fill="var(--figure-ink)">
       <tspan font-style="italic">y</tspan> = <tspan font-style="italic">e</tspan><tspan
       dy="-4" font-size="9" font-style="italic">x</tspan><tspan dy="4"></tspan>
     </text>
@@ -131,8 +137,12 @@
 
     <!-- Point clé (1, e) -->
     <circle cx="385.0" cy="159.7" r="3.5" fill="var(--figure-ink)"/>
-    <text x="398" y="150" font-size="11" fill="var(--figure-ink)">(1, <tspan font-style="italic">e</tspan>)</text>
-    <text x="398" y="164" font-size="9.5" fill="var(--figure-ink-soft)">
+    <!-- PASSÉES DU CÔTÉ CONCAVE (2026-09-04) : à droite du point (1, e), la
+         tangente passe en x≈431 à la hauteur de la seconde ligne et la rayait
+         sur 21 % de sa largeur. À gauche du point, entre la courbe (x≈385) et
+         l'axe (x=315), la place est libre et rien ne les traverse. -->
+    <text x="372" y="150" text-anchor="end" font-size="11" fill="var(--figure-ink)">(1, <tspan font-style="italic">e</tspan>)</text>
+    <text x="372" y="164" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">
       <tspan font-style="italic">e</tspan> &#x2248; 2,718
     </text>
   </g><!-- /step-1 -->

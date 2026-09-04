@@ -289,7 +289,7 @@ Par ordre de préférence, tirés des 30 figures réparées :
   mesure. Cette dernière classe a fait un dégât réel dans
   `travail-force-signe` et n'est gardée par rien.
 - Il ignore les `.motion.svg`.
-- **Ce n'est toujours pas une porte.** 115 cas subsistent : l'armer
+- **Ce n'est toujours pas une porte.** 94 cas subsistent : l'armer
   aujourd'hui obligerait à la désarmer demain.
 
 ---
@@ -334,3 +334,44 @@ qu'une relecture étape par étape ne peut pas voir.
 dessinée au-dessus du fil, traversait « Détour forcé (pile) ». Mesuré à 18 %
 seulement — la mesure sous-estime ce cas-là, parce qu'un titre rayé se voit
 bien avant qu'un mot le soit à moitié.
+
+
+---
+
+## Vague 5 (2026-09-04, même jour) — la tranche 30 % attaquée
+
+`115 → 94` cas, `62 → 51` figures. Onze figures de plus, toutes prises dans
+la tranche 28–39 %.
+
+| tranche | après vague 4 | après vague 5 |
+|---|---|---|
+| ≥ 40 % | 0 | **0** |
+| 30–39 % | 13 | **7** |
+| 20–29 % | 34 | 20 |
+| < 20 % | 68 | 67 |
+
+**Le geste dominant est désormais nommé et il a une règle chiffrée.** Une
+étiquette horizontale posée près d'une ligne OBLIQUE est rattrapée par la
+pente sur sa propre largeur : pour une ligne à 45° et un texte de 60 px, il
+faut dégager **la hauteur du texte plus ~30 px**, sinon on ne fait que
+déplacer le point de croisement (mesuré : 56 % → 30 % sur `ec-parabole`,
+37 % → 24 % sur `exp-au-dessus-de-x-plus-1`). Trois solutions, dans cet
+ordre de préférence : **ancrer du côté opposé** (`text-anchor` inversé, le
+texte se termine avant la ligne au lieu de l'enjamber), **aller au bout de
+la ligne** là où elle sort du cadre, ou **passer de l'autre côté** quand la
+bande y est plus large.
+
+**Deux pièges de placement, payés une fois chacun :**
+- descendre une étiquette sous une parabole l'a posée sur l'**axe des
+  abscisses** (`aire-entre-courbes` : 28 % → 98 %). Sous une courbe qui
+  épouse l'axe, il n'y a pas de bande — il faut aller là où la courbe s'en
+  est éloignée.
+- remonter une étiquette au-dessus d'une diagonale l'a fait buter sur une
+  **arête verticale** que le premier déplacement avait rendue voisine
+  (`cube-diagonales`). Un déplacement révèle les tracés du nouvel endroit.
+
+**Un cas de figures jumelles** : `aire-entre-courbes` et
+`comparaison-aires-nichees` partagent leurs deux étiquettes au pixel près,
+comme `travail-ressort-triangle` et `travail-torsion-triangle`. Le même
+correctif s'applique deux fois — et si l'une avait été corrigée seule, la
+mesure aurait continué à signaler l'autre sans qu'on comprenne pourquoi.

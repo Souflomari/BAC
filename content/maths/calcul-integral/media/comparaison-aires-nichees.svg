@@ -93,9 +93,19 @@
           fill="none" stroke="var(--figure-ink-soft)" stroke-width="2.2"
           stroke-linecap="round" stroke-linejoin="round"/>
 
-    <text x="248" y="182" font-size="13" font-style="italic"
+    <!-- ANCRÉE À DROITE, DU CÔTÉ LIBRE (2026-09-04) : posée à x=248 elle
+         enjambait la droite y = x (qui passe en x≈285 à cette hauteur) et
+         s'en trouvait rayée sur 30 % de sa largeur. Ancrée à droite juste
+         avant la droite, elle reste dans le coin supérieur gauche, vide. -->
+    <text x="275" y="182" text-anchor="end" font-size="13" font-style="italic"
           fill="var(--figure-ink)">f(x) = x</text>
-    <text x="180" y="300" font-size="13" font-style="italic"
+    <!-- DESCENDUE SOUS SA PARABOLE (2026-09-04) : à y=300 elle était couchée
+         dessus (28 % rayés). En dessous, entre la parabole et l'axe des
+         abscisses, la bande est vide — mais PAS n'importe où : posée d'abord
+         en (200;330) elle atterrissait sur l'axe des abscisses lui-même
+         (98 % rayés). Plus à droite, la parabole s'est éloignée de l'axe et
+         laisse une vraie bande libre. -->
+    <text x="280" y="300" font-size="13" font-style="italic"
           fill="var(--figure-ink-soft)">g(x) = x²</text>
 
     <!-- Bornes 0 et 1 -->
