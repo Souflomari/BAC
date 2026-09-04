@@ -367,3 +367,44 @@ dessous de ce que la norme vise (SC 1.4.10 « Reflow » cible 320 px
 d'équivalent, atteint et vérifié à 100 %), et le débord ne s'isole plus sur
 une classe de composant : il est réparti. Ce n'est donc pas une porte
 manquante, c'est un plancher de mise en page. Noté, pas caché.
+
+---
+
+## Annexe 6 — la structure de titres (2026-09-04, WCAG 1.3.1)
+
+Sixième fenêtre : ce qu'un lecteur d'écran entend. Sur les 68 pages rendues,
+on vérifie l'ossature — un seul `h1`, aucun niveau sauté, chaque figure et
+chaque `svg` nommé ou masqué, chaque `img` avec son `alt`, chaque bouton et
+chaque lien avec un nom accessible, chaque `ul`/`ol` ne contenant que des
+`li`.
+
+**Une seule classe trouvée, et une seule : 79 sauts de niveau `h2 → h4`,
+tous dans les douze leçons de philosophie.** Un lecteur d'écran navigue de
+titre en titre et ANNONCE le niveau : passer de 2 à 4 fait entendre un
+niveau qui n'existe pas, et laisse croire qu'on a manqué une section. Ce
+n'était pas un accident isolé mais une convention d'autorat — la philo
+écrivait `##` puis `####`, sans jamais passer par `###`.
+
+**327 titres renivelés** (la profondeur dans l'arbre devient le niveau, ce
+qui préserve exactement la structure), zéro saut restant, et **les ancres ne
+bougent pas** : rehype-slug calcule l'id à partir du TEXTE, pas du niveau.
+Porte armée à l'autorat, dans `validate-content`.
+
+**Tout le reste est propre** — h1 unique partout, aucune figure anonyme,
+aucun `svg` orphelin, aucun bouton sans nom, aucune liste mal formée. Second
+résultat négatif de la journée, et il vaut d'être écrit : la mesure ne
+trouve pas toujours quelque chose, et c'est une information.
+
+### Un effet de bord qui vaut sa propre note
+
+Le renivelage a réveillé une porte existante — celle qui interdit le titre
+sommet de l'ancien gabarit (« ### À toi de continuer ») — sur **quatre faux
+positifs**. Ces quatre leçons portent bien leurs `[[exercise:…]]`, vingt
+lignes plus bas ; leur titre était simplement en `####`, et le motif de la
+porte exige `### `. Elles passaient donc **par accident**, pas parce
+qu'elles étaient correctes.
+
+On n'a ni desserré la porte, ni renommé le contenu pour lui plaire : on lui
+a donné le critère qu'elle voulait dire depuis le début — *un sommet
+légataire n'a aucun marqueur d'exercice après lui*. Vérifié dans les deux
+sens.

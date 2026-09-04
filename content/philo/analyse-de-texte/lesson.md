@@ -184,7 +184,7 @@ réexpliquer la notion.
 > trouve confirmée par la liberté des autres et ouverte à l'infini, et son
 > champ s'élargira sans fin.
 
-#### Thème ≠ thèse ≠ problème
+### Thème ≠ thèse ≠ problème
 
 Trois mots qu'on confond en permanence, et qu'il faut absolument distinguer :
 
@@ -245,7 +245,7 @@ et se déploie (chapitre 4), la façon dont elle répond à un problème (chapit
 Tu as la thèse. Maintenant, un piège classique : se précipiter pour écrire
 l'introduction en premier, *avant* d'avoir vraiment compris le texte.
 
-#### Trouver ≠ rédiger
+### Trouver ≠ rédiger
 
 **Voix de l'expert :** *« Je TROUVE la thèse d'abord — c'est un travail
 d'analyse, pas de rédaction. Je RÉDIGE l'introduction en dernier, une fois
@@ -256,7 +256,7 @@ toujours avec ce que la suite de la copie démontre. L'ordre de lecture (je
 cherche, je comprends, je trouve la thèse) n'est pas l'ordre de rédaction (je
 rédige l'intro en dernier, mais elle apparaît en premier sur la copie).
 
-#### Ce que fait une introduction : encadrer, puis problématiser
+### Ce que fait une introduction : encadrer, puis problématiser
 
 **Encadrer (تأطير),** c'est d'abord rattacher le texte à sa notion et à son
 module — une phrase, pas un développement. Pour Bakounine : ce texte
@@ -312,7 +312,7 @@ Un texte philosophique n'est pas une liste de phrases de même poids : il
 **avance**. Repérer comment il avance — c'est-à-dire sa structure
 argumentative — est la deuxième grande composante de l'analyse (تحليل).
 
-#### Les procédés qui reviennent
+### Les procédés qui reviennent
 
 Un petit nombre de procédés argumentatifs suffit à décrire l'immense
 majorité des mouvements qu'on rencontre à cette épreuve : l'**exemple** (un
@@ -329,7 +329,7 @@ connecteur est un signal : « car » annonce une justification, « à l'inverse 
 annonce un contre-cas, « autrement dit » annonce une reformulation plus
 précise de ce qui vient d'être dit.
 
-#### Le mouvement de Bakounine, repéré connecteur par connecteur
+### Le mouvement de Bakounine, repéré connecteur par connecteur
 
 Reviens à la carte annotée du texte — cette fois, avance-la jusqu'à l'étape
 qui montre le mouvement complet :
@@ -376,7 +376,7 @@ doit montrer.
 Deux derniers gestes complètent l'analyse (تحليل) : conceptualiser, et
 dégager ce que le texte suppose sans le dire.
 
-#### Définir avec le texte, pas avec le cours
+### Définir avec le texte, pas avec le cours
 
 **Voix de l'expert :** *« Je définis les concepts avec le texte, pas avec mon
 cours. Un concept comme "liberté" a une définition de cours — mais ce n'est
@@ -394,7 +394,7 @@ liberté ; et la **personne**, dont les actes ne sont déterminés « que par
 il les tient reliés : ma liberté et ma dignité *en tant que personne* sont
 garanties *ensemble*, par la même condition.
 
-#### Ce que le texte tient pour acquis, sans le dire
+### Ce que le texte tient pour acquis, sans le dire
 
 **Voix de l'expert, une fois les concepts posés :** *« Je me demande : qu'est-ce
 qu'il faut ADMETTRE pour que cette thèse tienne ? »* C'est chercher les
@@ -426,7 +426,7 @@ La discussion (مناقشة) pèse 5 points sur 20 — autant que l'analyse — 
 c'est, très largement, le moment où les copies perdent le plus. Presque
 toujours pour la même raison.
 
-#### Discuter ≠ donner son avis, et discuter vient APRÈS analyser
+### Discuter ≠ donner son avis, et discuter vient APRÈS analyser
 
 > **Erreur à éviter, la plus fréquente de ce moment :** discuter n'est **pas**
 > dire si tu es d'accord avec l'auteur. Une copie qui ouvre sa discussion sur
@@ -438,7 +438,7 @@ toujours pour la même raison.
 
 La discussion se construit en deux temps, dans cet ordre.
 
-#### Discussion interne : valeur, portée, cohérence — depuis l'intérieur de la thèse
+### Discussion interne : valeur, portée, cohérence — depuis l'intérieur de la thèse
 
 Avant de sortir du texte, reste un instant à l'intérieur de son propre
 raisonnement. Sa cohérence interne est-elle réelle ? Sa portée est-elle
@@ -450,7 +450,7 @@ sans préciser de mécanisme concret — *comment*, exactement, la liberté d'un
 inconnu à l'autre bout du monde augmente-t-elle la mienne ? Le texte
 l'affirme plus qu'il ne le démontre à ce niveau de généralité.
 
-#### Discussion externe : des positions convergentes, PUIS divergentes — pertinentes pour CETTE thèse
+### Discussion externe : des positions convergentes, PUIS divergentes — pertinentes pour CETTE thèse
 
 **Voix de l'expert :** *« Je ne cite jamais un auteur pour montrer que je le
 connais — je le cite parce que sa position éclaire, confirme ou conteste
@@ -501,7 +501,7 @@ la même façon : en le confondant avec un résumé.
 > l'essentiel des points de ce moment — même si tout le reste de la copie est
 > solide.
 
-#### Ce que fait vraiment une synthèse
+### Ce que fait vraiment une synthèse
 
 Trois gestes, dans cet ordre : **faire le bilan** de l'analyse et de la
 discussion (pas les redire, les articuler) ; **répondre à la problématique**

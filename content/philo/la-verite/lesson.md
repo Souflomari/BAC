@@ -40,27 +40,27 @@ C'est exactement ce problème — qu'est-ce qui fait qu'un énoncé est vrai ; e
 
 ## R1 — Vérité, réalité, opinion : trois mots qu'on confond sans cesse
 
-#### Un mot qu'on emploie sans y penser
+### Un mot qu'on emploie sans y penser
 
 Dans une conversation ordinaire, on dit « c'est vrai » ou « c'est faux » comme si la vérité était une évidence qui allait de soi. Mais avant de demander ce qui rend un énoncé vrai, il faut distinguer précisément trois choses qu'on confond sans cesse : le réel, l'opinion, et la vérité elle-même.
 
-#### Le réel : ce qui est, indépendamment de nous
+### Le réel : ce qui est, indépendamment de nous
 
 Le **réel** (ou les faits) désigne ce qui est, ou ce qui s'est produit, indépendamment de ce que quiconque en pense, en sait, ou en dit. Que Karim ait, samedi soir, prononcé cette phrase ou non, est un fait — quelque chose qui s'est passé d'une manière précise, que quelqu'un le sache avec certitude ou non.
 
-#### L'opinion : ce qu'un sujet tient pour vrai
+### L'opinion : ce qu'un sujet tient pour vrai
 
 L'**opinion** (ou la croyance) désigne, elle, ce qu'un sujet particulier pense être vrai, à un degré de conviction qui lui est propre — variable, parfois hésitant, parfois au contraire d'une assurance totale. Sarah et Karim ont chacun une opinion ferme sur ce qui s'est passé — mais avoir une opinion ferme, aussi sincère soit-elle, ne suffit jamais, à elle seule, à la rendre exacte : on peut avoir une opinion fausse tout en la croyant, de la manière la plus sincère qui soit, entièrement vraie.
 
-#### La vérité : une propriété de l'énoncé, pas un sentiment du sujet qui l'énonce
+### La vérité : une propriété de l'énoncé, pas un sentiment du sujet qui l'énonce
 
 La **vérité**, enfin, désigne une propriété qu'on attribue à un énoncé, un jugement, un discours — pas au réel lui-même (le réel n'est ni vrai ni faux, il est, simplement), ni au degré de conviction de celui qui parle (la certitude de Sarah ne rend, à elle seule, ni vrai ni faux son témoignage). Dire qu'un énoncé est vrai, c'est dire quelque chose sur le **rapport** entre cet énoncé et autre chose — le réel, ou, on le verra bientôt (chapitre 4), un système d'autres énoncés. C'est précisément la nature de ce rapport que les théories qui suivent vont chercher à préciser.
 
-#### La problématique de la leçon
+### La problématique de la leçon
 
 Deux questions vont guider tout ce qui suit : **qu'est-ce qui fait qu'un énoncé — et non la simple opinion qu'on en a — est vrai ?** Et, plus exigeante encore : **peut-on jamais atteindre, à son sujet, une vérité certaine et définitive, ou doit-on se résigner à des degrés de conviction toujours révisables, jamais absolument garantis ?**
 
-#### Applique la distinction : reviens à la soirée de samedi
+### Applique la distinction : reviens à la soirée de samedi
 
 Ce que ce découpage permet de voir, précisément, dans la situation du chapitre 1 : il existe un fait — Karim a dit cette phrase, ou il ne l'a pas dite, quelle que soit la difficulté qu'on ait à le savoir. Sarah et Karim ont chacun une opinion, ferme et sincère, sur ce fait — mais deux opinions sincères et contradictoires ne peuvent pas être toutes deux vraies : c'est précisément cette confusion entre opinion (ce qu'on croit) et vérité (ce qui est effectivement le cas) que commet, sans le voir, la réponse « chacun sa vérité ».
 
@@ -72,11 +72,11 @@ Ce que ce découpage permet de voir, précisément, dans la situation du chapitr
 
 ## R2 — La théorie de la correspondance : le vrai comme adéquation (Aristote)
 
-#### Ce que R1 laisse en suspens
+### Ce que R1 laisse en suspens
 
 Le chapitre 2 a distingué opinion et vérité sans dire ce qui, précisément, fait qu'un énoncé est vrai plutôt que faux. Aristote (IVe siècle av. J.-C., *Métaphysique*, livre Gamma) propose ici la réponse la plus intuitive, et la plus ancienne, du programme.
 
-#### Le geste central : la vérité comme adéquation
+### Le geste central : la vérité comme adéquation
 
 Voici la formule dans laquelle Aristote condense sa position :
 
@@ -88,11 +88,11 @@ Voici la formule dans laquelle Aristote condense sa position :
 
 **Pourquoi ce critère semble si naturel :** il fait de la vérité une correspondance à sens unique — le discours doit se plier au réel, et non l'inverse. Un énoncé ne rend jamais le réel vrai ou faux (le réel est, simplement) ; c'est le réel qui rend l'énoncé vrai ou faux, selon qu'il lui correspond ou non.
 
-#### Applique le critère : reviens à la soirée de samedi
+### Applique le critère : reviens à la soirée de samedi
 
 Ce que ce critère permet de voir, dans la situation du chapitre 1 : l'énoncé « Karim a prononcé cette phrase à cet instant » est vrai si, et seulement si, Karim l'a effectivement prononcée — indépendamment de la conviction de Sarah, du nombre de témoins qui la soutiennent, ou de la cohérence de son récit. C'est ce fait, et lui seul, qui déciderait, en toute rigueur, qui a raison.
 
-#### La limite qu'on ne peut pas contourner : sortir de la pensée pour vérifier la pensée ?
+### La limite qu'on ne peut pas contourner : sortir de la pensée pour vérifier la pensée ?
 
 Une difficulté surgit dès qu'on cherche à appliquer ce critère concrètement. Pour établir qu'un énoncé correspond au réel, il faut le comparer à ce réel — or cette comparaison, je ne peux la faire qu'au moyen d'une autre pensée, d'une autre perception, d'un autre témoignage : je n'ai jamais accès à un réel brut, totalement extérieur à toute pensée, contre lequel je pourrais poser mon énoncé et constater, sans aucune médiation, s'il y a adéquation ou non.
 
@@ -106,21 +106,21 @@ Une difficulté surgit dès qu'on cherche à appliquer ce critère concrètement
 
 ## R3 — La théorie de la cohérence : le vrai comme accord interne d'un système
 
-#### Ce que la limite de R2 invite à chercher
+### Ce que la limite de R2 invite à chercher
 
 Si l'on ne peut jamais sortir totalement de la pensée pour vérifier, de l'extérieur, l'adéquation d'un énoncé au réel brut, une autre stratégie s'offre : chercher un critère de vérité qui n'exige pas de sortir de la pensée — un critère purement interne.
 
-#### Le geste central : la vérité comme cohérence
+### Le geste central : la vérité comme cohérence
 
 Voici la position : un énoncé est vrai — ou, plus précisément, tenu pour vrai — s'il s'intègre sans contradiction à l'ensemble des autres énoncés déjà admis dans un système : s'il est logiquement compatible avec eux, s'il en découle, ou s'il vient renforcer leur cohérence d'ensemble. La vérité, dans cette perspective, n'est plus une correspondance avec un extérieur qu'on ne peut jamais totalement atteindre, mais une propriété relationnelle, interne à un système d'énoncés : la **cohérence**.
 
 **Pourquoi ce critère peut sembler plus praticable que celui du chapitre 3 :** il est entièrement accessible depuis l'intérieur de la pensée — pour vérifier qu'un énoncé est cohérent avec un système, il suffit d'examiner ce système lui-même, sans jamais avoir besoin de sortir vers un réel brut, inaccessible en dernier ressort. C'est ainsi, par exemple, qu'on établit la vérité d'un théorème mathématique : on ne le compare à aucun fait extérieur, on montre seulement qu'il découle, sans contradiction, des axiomes déjà posés.
 
-#### Applique le critère : reviens à la soirée de samedi
+### Applique le critère : reviens à la soirée de samedi
 
 Ce que ce critère permet de voir, dans la situation du chapitre 1 : prise séparément, la version de Karim — confirmée dans le moindre détail par deux autres témoins — forme un récit parfaitement cohérent, sans la moindre contradiction interne. Et la version de Sarah, elle aussi, tient parfaitement debout, prise seule. Les deux récits, chacun de son côté, satisfont au critère de cohérence — ce qui révèle déjà une limite sérieuse : la cohérence interne ne suffit jamais à départager deux récits mutuellement exclusifs mais chacun, pris séparément, parfaitement cohérent.
 
-#### La limite : un système peut être cohérent et pourtant faux
+### La limite : un système peut être cohérent et pourtant faux
 
 L'histoire des sciences offre un exemple frappant de cette limite. Pendant plus de mille ans, l'astronomie occidentale a reposé sur le modèle de Ptolémée (IIe siècle apr. J.-C., *l'Almageste*) : la Terre, immobile, au centre de l'univers, autour de laquelle tournent le Soleil, la Lune et les planètes — celles-ci décrivant, pour rendre compte de leurs trajectoires observées, des cercles secondaires appelés épicycles. Ce système était d'une remarquable cohérence mathématique : il permettait de calculer, avec une précision réelle, la position future des astres, et chaque anomalie observée pouvait être absorbée en ajoutant un épicycle supplémentaire, sans jamais briser la cohérence d'ensemble. Et pourtant — la Terre n'est pas immobile au centre de l'univers. Un système peut être parfaitement cohérent, exempt de toute contradiction interne, et rigoureusement faux.
 
@@ -130,11 +130,11 @@ L'histoire des sciences offre un exemple frappant de cette limite. Pendant plus 
 
 ## R4 — Bachelard : la vérité scientifique se construit contre l'évidence première
 
-#### Ce que l'exemple de Ptolémée laisse en suspens
+### Ce que l'exemple de Ptolémée laisse en suspens
 
 Abandonner le modèle géocentrique n'a pas été un simple ajustement technique : cela supposait de renoncer à quelque chose de profondément intuitif — l'évidence, offerte chaque jour par les sens, que c'est bien le Soleil qui se lève et se couche, et non la Terre qui tourne sous nos pieds sans qu'on le sente. Bachelard (XXe siècle, *La formation de l'esprit scientifique*, 1938) fait de ce genre de résistance le cœur de sa réflexion sur la connaissance.
 
-#### Le geste central : la connaissance se construit, et se construit contre
+### Le geste central : la connaissance se construit, et se construit contre
 
 **Voici la thèse centrale de Bachelard, et ce qu'elle change par rapport à tout ce qu'on a vu jusqu'ici :** la vérité scientifique n'est jamais une simple lecture, immédiate et innocente, du réel — comme si le réel se donnait à voir de lui-même, à qui voudrait bien regarder attentivement. Elle se **construit**, activement, par un travail de la raison — et elle se construit, précisément, **contre** des représentations spontanées, premières, que Bachelard appelle des **obstacles épistémologiques**.
 
@@ -148,7 +148,7 @@ Bachelard résume cette méfiance envers l'opinion dans une formule restée cél
 
 **Le mécanisme, expliqué :** connaître scientifiquement, ce n'est donc jamais accumuler passivement des observations qui vont toutes dans le même sens que ce qu'on croyait déjà — c'est **rompre**, activement, avec ce qu'on tenait pour évident. Bachelard va jusqu'à dire qu'on connaît toujours contre une connaissance antérieure, en détruisant des connaissances mal faites, en surmontant ce qui, dans l'esprit lui-même, fait obstacle à la connaissance. C'est ce qu'il nomme la **rupture épistémologique**.
 
-#### Applique le mécanisme : reviens au modèle de Ptolémée, et à la soirée de samedi
+### Applique le mécanisme : reviens au modèle de Ptolémée, et à la soirée de samedi
 
 Renoncer au modèle géocentrique (chapitre 4) n'a pas consisté à accumuler plus d'observations dans le même sens que l'évidence sensible (le Soleil qui « se lève ») — il a fallu rompre avec cette évidence elle-même, la traiter comme un obstacle à dépasser plutôt que comme un point de départ fiable. Et même à l'échelle de la soirée de samedi (chapitre 1) : ta propre certitude immédiate — « je m'en souviens très clairement, donc c'est ainsi que ça s'est passé » — est précisément le genre d'évidence spontanée que Bachelard invite à ne jamais accepter sans l'interroger : la mémoire, elle aussi, reconstruit plus qu'elle n'enregistre fidèlement, et peut constituer, elle-même, un obstacle plutôt qu'un accès direct et sûr au vrai.
 
@@ -160,11 +160,11 @@ Renoncer au modèle géocentrique (chapitre 4) n'a pas consisté à accumuler pl
 
 ## R5 — Descartes : le doute méthodique et le cogito
 
-#### Une autre stratégie : pousser le doute jusqu'au bout, pour voir ce qui résiste
+### Une autre stratégie : pousser le doute jusqu'au bout, pour voir ce qui résiste
 
 Bachelard a montré que l'évidence immédiate peut égarer plutôt que garantir. Reste une question radicale, que Descartes (XVIIe siècle, *Discours de la méthode*, 1637 ; *Méditations métaphysiques*, 1641) va poser avec une rigueur inédite : peut-on trouver, en poussant le doute aussi loin que possible, au moins une certitude qui résiste absolument à tout, sur laquelle reconstruire ensuite une connaissance assurée ?
 
-#### Le doute méthodique : douter pour fonder, pas douter pour douter
+### Le doute méthodique : douter pour fonder, pas douter pour douter
 
 **Un point à ne jamais manquer avant d'aller plus loin :** le doute de Descartes n'est pas un scepticisme qui s'arrêterait au constat qu'on ne peut rien savoir — c'est une **méthode**, un moyen provisoire de faire le tri entre ce qui mérite d'être tenu pour certain et ce qui ne le mérite pas. Il s'agit de douter, une bonne fois, de tout ce qui peut l'être, même de la moindre manière, afin de découvrir, s'il existe, un fondement qu'aucun doute ne pourrait plus jamais ébranler.
 
@@ -176,7 +176,7 @@ Ensuite, même ce qui semble le plus assuré par les sens — que j'ai un corps,
 
 Enfin, même les vérités les plus simples, les plus évidentes en apparence — que deux et trois font cinq —, Descartes les soumet à une dernière hypothèse, extrême : celle d'un **malin génie**, aussi puissant que trompeur, qui pourrait, par hypothèse, me faire me tromper jusque dans les raisonnements qui me semblent les plus élémentaires.
 
-#### Ce qui résiste : le cogito
+### Ce qui résiste : le cogito
 
 **Voici ce que ce doute, poussé à son terme absolu, laisse pourtant subsister — et c'est le geste le plus important de tout ce parcours.** Même si je me trompe sur absolument tout le reste — mon corps, le monde extérieur, les vérités mathématiques elles-mêmes —, le fait même que je sois en train de douter prouve, à lui seul et sans faille possible, qu'il existe une pensée qui doute — et donc un sujet pensant qui existe, puisque douter, c'est déjà penser, et qu'on ne peut pas penser sans exister pour le faire.
 
@@ -188,7 +188,7 @@ Descartes formule cette certitude en une phrase restée, depuis, la plus citée 
 
 **Ce que cette formule établit précisément :** ce n'est pas d'abord une certitude sur le contenu de ma pensée (ce que je pense pourrait toujours être faux, illusoire, trompé par le malin génie) — c'est une certitude sur le simple fait qu'il y ait une pensée, un acte de penser, et donc un être qui pense. C'est la première vérité, selon Descartes, à la fois absolument certaine et indubitable — un point où la certitude subjective et la vérité objective coïncident enfin parfaitement, sans le moindre écart possible entre les deux.
 
-#### Applique la méthode — et sa limite honnête : reviens à la soirée de samedi
+### Applique la méthode — et sa limite honnête : reviens à la soirée de samedi
 
 Appliquer le doute cartésien à la dispute entre Sarah et Karim, ce serait, d'abord, ne prendre pour acquis ni le souvenir de l'un ni celui de l'autre : la mémoire, comme les sens, peut tromper ; la concordance de plusieurs témoins pourrait, elle aussi, résulter d'une reconstruction commune plutôt que d'un fait avéré. Mais remarque bien la limite : le cogito garantit seulement qu'il existe un sujet pensant qui s'interroge sur ce qui s'est passé — il ne dit rien, par lui-même, sur ce qui s'est réellement produit samedi soir. Cette certitude absolue ne s'étend, chez Descartes, qu'à ce point unique ; établir avec la même certitude des vérités sur le monde extérieur exige, pour lui, tout un travail supplémentaire qui dépasse le cadre de cette leçon.
 
@@ -200,11 +200,11 @@ Appliquer le doute cartésien à la dispute entre Sarah et Karim, ce serait, d'a
 
 ## R6 — Certitude et vérité : deux choses qu'il ne faut jamais confondre
 
-#### Ce que le cogito rend visible, par contraste
+### Ce que le cogito rend visible, par contraste
 
 Descartes a trouvé, avec le cogito, un point précis où la certitude subjective et la vérité objective coïncident parfaitement. Mais c'est précisément parce que ce point est unique, presque exceptionnel dans sa perfection, qu'il faut maintenant nommer, avec précision, ce qui les distingue partout ailleurs.
 
-#### Le mécanisme : deux plans qu'on ne doit jamais fondre en un seul
+### Le mécanisme : deux plans qu'on ne doit jamais fondre en un seul
 
 **La certitude** est un état psychologique, subjectif : le degré de conviction, plus ou moins ferme, qu'un sujet éprouve à l'égard d'un énoncé. Elle varie d'une personne à l'autre, elle peut être extrême ou hésitante, et surtout — c'est le point décisif — elle peut être totale sans que l'énoncé auquel elle s'attache soit vrai pour autant.
 
@@ -212,7 +212,7 @@ Descartes a trouvé, avec le cogito, un point précis où la certitude subjectiv
 
 **Pourquoi cette confusion est si fréquente, et si tentante :** parce que, dans la plupart des cas ordinaires, une forte conviction accompagne effectivement un énoncé vrai — on est souvent certain de ce qui est vrai. Mais cette coïncidence fréquente n'est jamais une garantie : rien, dans le simple fait d'être certain, ne peut, à lui seul, produire la vérité de ce dont on est certain.
 
-#### Applique la distinction : reviens à la soirée de samedi
+### Applique la distinction : reviens à la soirée de samedi
 
 Sarah est absolument certaine — elle donne des détails précis, elle est sincère, rien dans son comportement ne trahit le mensonge. Mais cette certitude, aussi totale soit-elle, ne garantit rien quant à la vérité de son souvenir : des témoins parfaitement sincères et sûrs d'eux se sont déjà trompés, ensemble, dans l'histoire (des témoignages oculaires concordants, entièrement de bonne foi, ont conduit à des erreurs judiciaires aujourd'hui bien documentées). C'est exactement l'erreur que commettrait quiconque déciderait « qui a raison » en se fiant seulement au degré d'assurance de chacun, plutôt qu'en cherchant ce qui correspond effectivement à ce qui s'est passé.
 
@@ -224,25 +224,25 @@ Sarah est absolument certaine — elle donne des détails précis, elle est sinc
 
 ## R7 — Popper : la vérité scientifique, provisoire et réfutable
 
-#### Ce que R6 laisse en suspens pour la science
+### Ce que R6 laisse en suspens pour la science
 
 Si la certitude ne garantit jamais la vérité, une question se pose avec une acuité particulière pour les sciences : existe-t-il, au moins là, une manière rigoureuse de s'approcher progressivement du vrai, sans jamais prétendre à une certitude absolue et définitive ? Popper (XXe siècle, *La logique de la découverte scientifique*, 1934 ; *Conjectures et réfutations*, 1963) répond à cette question par un critère précis de ce qui mérite le nom de science.
 
-#### Un problème préalable : pourquoi confirmer ne prouve jamais définitivement
+### Un problème préalable : pourquoi confirmer ne prouve jamais définitivement
 
 **Avant de poser son critère, Popper part d'une remarque logique simple mais décisive.** Aucun nombre, même immense, d'observations qui confirment une loi générale ne peut jamais la prouver définitivement vraie. Que je constate cent, mille, un million de cygnes blancs ne me permet jamais de conclure, avec une certitude absolue, que « tous les cygnes sont blancs » — il suffirait d'un seul cygne noir, découvert demain, pour réfuter d'un coup ce que des millions d'observations semblaient confirmer. La confirmation s'accumule lentement et ne prouve jamais rien de façon définitive ; la réfutation, elle, peut être immédiate et décisive.
 
-#### Le critère de Popper : la falsifiabilité
+### Le critère de Popper : la falsifiabilité
 
 **Voici le critère que Popper en tire, et qui donne son nom à toute sa position.** Une théorie mérite le nom de scientifique si, et seulement si, elle est **falsifiable** — c'est-à-dire si elle interdit certains résultats observables possibles, de telle sorte qu'une observation future pourrait, en principe, la contredire et la réfuter. Une théorie compatible avec absolument n'importe quel résultat observable, qu'on peut toujours ajuster après coup pour absorber n'importe quelle observation gênante sans jamais rien risquer, n'est pas, aux yeux de Popper, une théorie scientifique digne de ce nom — aussi impressionnante et cohérente (chapitre 4) puisse-t-elle sembler par ailleurs.
 
 **Applique ce critère à l'exemple déjà construit aux chapitres 4 et 5.** Le modèle de Ptolémée pouvait absorber presque n'importe quelle observation gênante en ajoutant un épicycle supplémentaire — une stratégie qui le protégeait de toute réfutation, mais au prix d'une complexité croissante et d'une capacité prédictive de moins en moins risquée. Les modèles de Copernic, puis de Kepler (XVIIe siècle, orbites elliptiques), au contraire, faisaient des prédictions précises et risquées, capables d'être prises en défaut par une observation suffisamment fine — et c'est exactement ce genre de prise de risque, plutôt que la simple capacité à absorber toute observation, que Popper valorise comme la marque d'une théorie authentiquement scientifique.
 
-#### Conclusion : une vérité scientifique n'est jamais close
+### Conclusion : une vérité scientifique n'est jamais close
 
 **La formule centrale à retenir :** une théorie scientifique n'est donc jamais « prouvée vraie » une fois pour toutes — elle est, au mieux, **non-encore-réfutée**, corroborée par les tests les plus sérieux qu'on lui a fait subir jusqu'ici, mais toujours, en principe, révisable si une observation future venait la contredire. La mécanique de Newton, confirmée pendant plus de deux siècles par une quantité impressionnante d'observations, a fini par se révéler seulement approximativement valable, restreinte par la relativité à un certain domaine — sans que cela signifie qu'elle ait jamais été une théorie sans valeur : simplement, sa validité n'a jamais été la certitude absolue et définitive qu'offrait, par exception, le cogito cartésien (chapitre 6).
 
-#### Applique le mécanisme : reviens à la soirée de samedi
+### Applique le mécanisme : reviens à la soirée de samedi
 
 Même l'enquête sur la soirée du chapitre 1 pourrait, en un sens, être menée de cette manière : formuler l'hypothèse « Karim a dit cette phrase à cet instant » comme une hypothèse falsifiable, et chercher activement ce qui pourrait la **réfuter** — un enregistrement, un témoin neutre, non impliqué dans le groupe d'amis de l'un ou de l'autre — plutôt que de ne chercher que ce qui la confirme, et accepter de la réviser si un fait vient effectivement la contredire, plutôt que de la maintenir coûte que coûte comme le ferait un système à la Ptolémée.
 
@@ -254,23 +254,23 @@ Même l'enquête sur la soirée du chapitre 1 pourrait, en un sens, être menée
 
 ## R8 — Vérité et pouvoir : mensonge, propagande, et l'exigence de chercher le vrai
 
-#### Une dernière question, plus inquiétante
+### Une dernière question, plus inquiétante
 
 Si même la science la plus rigoureuse ne délivre jamais qu'une vérité provisoire (chapitre 8), et si la conviction la plus sincère ne garantit jamais la vérité (chapitre 7), ne faudrait-il pas conclure que « chacun sa vérité » était, depuis le début, la seule position honnête — et que chercher LE vrai n'a, au fond, plus grand sens ? C'est exactement l'inverse qu'il faut comprendre, et ce dernier chapitre explique pourquoi.
 
-#### Le mensonge : une intention, pas seulement une erreur
+### Le mensonge : une intention, pas seulement une erreur
 
 Il faut d'abord distinguer, avec soin, l'erreur sincère du **mensonge**. Sarah peut se tromper de bonne foi — son souvenir peut être faux sans qu'elle le sache, sans aucune intention de tromper. Mentir, c'est tout autre chose : c'est affirmer, en le sachant, un énoncé qu'on tient soi-même pour faux, avec l'intention de faire croire à autrui quelque chose qu'on ne croit pas soi-même. La différence ne tient donc pas au contenu de l'énoncé (vrai ou faux), mais à l'**intention** de celui qui l'énonce.
 
-#### La propagande : exploiter systématiquement les confusions de la leçon
+### La propagande : exploiter systématiquement les confusions de la leçon
 
 **La propagande** va plus loin encore : elle exploite, méthodiquement, exactement les confusions que cette leçon vient de démêler une à une. Elle substitue un récit intérieurement cohérent et satisfaisant (chapitre 4) à une réelle correspondance avec les faits (chapitre 3) — peu importe qu'il corresponde au réel, pourvu qu'il tienne debout et qu'il rassure. Elle fabrique de la certitude et un consensus apparent (l'assertion répétée, l'unanimité mise en scène) comme un succédané de vérité (chapitre 7) — en misant précisément sur le fait qu'une conviction massive et assurée impressionne, alors qu'elle ne garantit jamais rien. Et elle se protège, par construction, de toute réfutation possible (l'exact contraire de l'idéal popperien du chapitre 8), en s'ajustant sans cesse pour absorber toute objection plutôt que de s'exposer honnêtement à l'épreuve des faits.
 
-#### Pourquoi chercher le vrai reste, malgré tout, une exigence
+### Pourquoi chercher le vrai reste, malgré tout, une exigence
 
 **C'est précisément parce que la vérité est difficile à atteindre — jamais absolument garantie par la seule conviction, toujours révisable en science — que l'effort pour la chercher, plutôt que de se satisfaire d'un récit confortable, cohérent et fermement affirmé, garde toute sa valeur, morale autant qu'intellectuelle.** Renoncer à cet effort, se contenter de la version la plus rassurante ou la plus répétée, c'est ouvrir la porte, précisément, à ce que le mensonge et la propagande exploitent sans scrupule. Reconnaître qu'aucune certitude n'est jamais totalement à l'abri de l'erreur (Descartes, Popper) n'est donc pas une invitation au renoncement — c'est, au contraire, ce qui doit rendre plus vigilant, jamais moins exigeant, face à ce qu'on nous demande de tenir pour vrai.
 
-#### Fermeture de l'arc : retour à la soirée de samedi, une dernière fois
+### Fermeture de l'arc : retour à la soirée de samedi, une dernière fois
 
 Reviens, une dernière fois, à cette dispute entre Sarah et Karim.
 
@@ -302,14 +302,14 @@ Sept regards, une même dispute — mais aucun ne réduit la question « qu'est-
 
 **Sujet :** *Peut-on être certain de détenir la vérité ?*
 
-#### Étape 1 — Analyser les termes du sujet
+### Étape 1 — Analyser les termes du sujet
 
 - **« Être certain »** : rappelle-toi la distinction du chapitre 7 — un état subjectif, un degré de conviction, qui peut être total sans que ce dont on est certain soit vrai pour autant.
 - **« Détenir la vérité »** : le verbe « détenir » suggère une possession assurée, définitive, close — exactement ce que Popper (chapitre 8) refuse d'accorder même aux théories scientifiques les mieux corroborées, et que Descartes (chapitre 6) ne semble accorder qu'à un seul point, le cogito.
 - **« Peut-on »** : une question de possibilité — s'agit-il d'un cas particulier (le cogito), ou d'une possibilité plus générale, étendue à d'autres types d'énoncés ?
 - Le sujet ne précise pas de domaine (vérités mathématiques ? scientifiques ? factuelles, comme dans l'exemple de la soirée ?) — à la copie de le préciser et de nuancer selon les cas.
 
-#### Étape 2 — Formuler la problématique
+### Étape 2 — Formuler la problématique
 
 Une problématique met en évidence une tension entre deux positions également légitimes en apparence, à laquelle le devoir devra répondre — elle ne reformule pas simplement le sujet.
 
@@ -319,7 +319,7 @@ Une formulation possible :
 
 > *Si le cogito cartésien semble montrer qu'un sujet peut, au moins une fois, être certain d'une vérité de façon absolument indubitable, comment expliquer que la connaissance scientifique la plus rigoureuse renonce, elle, à jamais clore définitivement une théorie sur une certitude de ce genre — et faut-il en conclure qu'en dehors de ce point unique, toute prétention à détenir la vérité est illusoire, ou plutôt qu'il existe une façon de progresser vers le vrai qui ne suppose pas de le détenir une fois pour toutes ?*
 
-#### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
+### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
 
 **I. Thèse — Il semble possible d'être certain de détenir une vérité.**
 Développe le cogito cartésien (chapitre 6) : un point où le doute le plus radical laisse subsister une certitude absolument indubitable — l'existence même du sujet pensant. Montre que cette découverte répond à une aspiration profonde : trouver un fondement solide, définitif, sur lequel bâtir le reste de la connaissance.
@@ -330,7 +330,7 @@ Mobilise le chapitre 7 (la distinction certitude/vérité : on peut être totale
 **III. Dépassement — Renoncer à la certitude absolue partout, sauf au cogito, n'oblige pas à renoncer à l'exigence de vérité elle-même.**
 Reprends le chapitre 8 (le fallibilisme popperien : accepter le caractère provisoire d'une théorie est ce qui permet, précisément, de continuer à progresser vers plus de vérité, en s'exposant activement à la réfutation) et le chapitre 5 (Bachelard : la connaissance avance en rompant avec les évidences premières, pas en s'installant dans une fausse certitude confortable). Ajoute le chapitre 9 : cette exigence de chercher le vrai, sans jamais prétendre le détenir absolument, reste une exigence morale autant qu'intellectuelle — c'est précisément ce que le mensonge et la propagande comptent sur notre paresse à abandonner.
 
-#### Étape 4 — Rédiger l'introduction (modèle rédigé)
+### Étape 4 — Rédiger l'introduction (modèle rédigé)
 
 Voici, entièrement rédigée, une introduction possible. Note son mouvement : accroche → définition des termes → tension → problématique → annonce du plan.
 
@@ -338,7 +338,7 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 
 **Ce que fait ce paragraphe, geste par geste :** il ouvre sur la situation concrète de la leçon plutôt que sur une définition abstraite de la vérité ; il énonce la thèse cartésienne avec précision avant de la mettre sous tension ; il fait apparaître la tension par la position popperienne opposée ; il pose la problématique sous forme interrogative précise ; il annonce un plan en trois temps qui correspond exactement à la thèse, à l'antithèse et au dépassement construits à l'étape 3.
 
-#### Étape 5 — Un paragraphe rédigé de la partie I, à titre de modèle
+### Étape 5 — Un paragraphe rédigé de la partie I, à titre de modèle
 
 > Descartes entreprend, dans les *Méditations métaphysiques*, un projet radical : douter délibérément de tout ce qui peut l'être, aussi minime que soit le motif de doute, afin de découvrir, si elle existe, une certitude qu'aucun doute, même le plus extrême, ne pourrait plus jamais ébranler. Les sens, d'abord, sont récusés, puisqu'ils ont déjà trompé par le passé ; puis la distinction même entre veille et rêve, puisque rien, au moment où on la vit, ne permet de la garantir avec certitude ; puis les vérités mathématiques elles-mêmes, soumises à l'hypothèse extrême d'un malin génie capable de tromper jusque dans les raisonnements les plus élémentaires. Et pourtant, au terme de ce doute poussé à son comble, quelque chose résiste : le fait même de douter est déjà un acte de pensée, et cet acte prouve, sans faille possible, qu'il existe un sujet pensant pour l'accomplir. « Je pense, donc je suis » n'est donc pas une certitude sur le contenu de telle ou telle pensée particulière, toujours faillible, mais sur le simple fait qu'il y ait une pensée — une certitude si radicale qu'elle semble enfin faire coïncider, sans le moindre écart, ce que le sujet croit et ce qui est réellement le cas.
 

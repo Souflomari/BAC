@@ -36,11 +36,11 @@ C'est exactement cette tension — la connaissance vient-elle de l'expérience s
 
 ## R1 — Empirisme et rationalisme : deux sources rivales de la connaissance
 
-#### Ce que R0 laisse en suspens
+### Ce que R0 laisse en suspens
 
 Le cas de la tisane a fait surgir une question qu'il faut maintenant poser directement : d'où vient la connaissance ? De ce que nous percevons par les sens — ce qu'on appelle l'**expérience** — ou de ce que la raison peut établir par elle-même, indépendamment de toute perception ? Deux grandes familles de réponses s'affrontent, depuis des siècles, sur ce point précis.
 
-#### L'empirisme : toute connaissance vient de l'expérience sensible
+### L'empirisme : toute connaissance vient de l'expérience sensible
 
 L'**empirisme** soutient que toute connaissance, sans exception, prend sa source dans l'expérience sensible — ce que nous voyons, touchons, entendons — et que rien, dans l'esprit, ne peut être connu indépendamment d'elle. Hume (XVIIIe siècle, *Traité de la nature humaine*, 1739-1740 ; *Enquête sur l'entendement humain*, 1748) en donne la formulation la plus rigoureuse de tout le programme.
 
@@ -48,17 +48,17 @@ L'**empirisme** soutient que toute connaissance, sans exception, prend sa source
 
 <!-- Note pour relecture humaine : présentation fidèle à la doctrine humienne des impressions/idées (Traité, I, i ; Enquête, section II), formulée ici en paraphrase plutôt qu'en citation directe faute de certitude sur un fragment exact à citer mot pour mot -- à vérifier sur l'édition de référence si une citation exacte est requise avant publication. -->
 
-#### Le rationalisme : certaines vérités sont accessibles par la seule raison
+### Le rationalisme : certaines vérités sont accessibles par la seule raison
 
 Le **rationalisme**, à l'inverse, soutient qu'il existe des vérités que la raison peut établir par elle-même, avec certitude, indépendamment de toute expérience sensible — et que les sens, loin d'être la source la plus sûre de la connaissance, sont au contraire une source d'erreur dont il faut se méfier. Tu as déjà rencontré, dans la leçon sur la vérité (la-verite, chapitre 6), la démarche de Descartes : le doute méthodique, qui récuse précisément les sens en premier, comme peu fiables ; et le cogito, cette certitude — « je pense, donc je suis » — que la raison seule établit, sans le secours d'aucune perception sensible.
 
 **Un second exemple cartésien, qui prolonge directement ce point.** Dans la deuxième des *Méditations métaphysiques* (1641), Descartes prend un morceau de cire fraîchement sorti de la ruche : il a le goût du miel, l'odeur des fleurs, une couleur, une forme, une certaine dureté et une certaine froideur. Approche-le du feu : le goût et l'odeur disparaissent, la couleur change, la forme fond, la cire devient molle et chaude. Toutes les qualités que les sens percevaient ont changé, une à une — et pourtant, tu juges sans hésiter qu'il s'agit toujours de la même cire. **Ce que cet exemple établit, précisément :** ce n'est donc pas par les sens, qui ne perçoivent plus rien de commun entre la cire froide et la cire fondue, que tu reconnais qu'il s'agit de la même chose — c'est par un jugement de l'entendement, de la raison, qui seule saisit ce qui, dans la cire, demeure au-delà du changement de toutes ses qualités sensibles.
 
-#### La problématique de la leçon
+### La problématique de la leçon
 
 Deux questions vont guider tout ce qui suit : **la connaissance scientifique vient-elle de l'expérience seule (empirisme), de la raison seule (rationalisme), ou d'une articulation des deux qu'il reste à préciser ?** Et, plus exigeante encore : **l'expérience — la simple observation d'un fait — peut-elle jamais être neutre, ou est-elle toujours déjà orientée, avant même d'avoir lieu, par une théorie, une hypothèse, un concept ?**
 
-#### Applique la distinction : reviens à la tisane de grand-mère
+### Applique la distinction : reviens à la tisane de grand-mère
 
 Ce que ce découpage permet de voir, précisément, dans la situation du chapitre 1 : la position de grand-mère, prise telle quelle, est une position empiriste spontanée — elle fonde sa conviction sur ce qu'elle a vu, encore et encore, de ses propres yeux, sans faire appel à aucun raisonnement indépendant de cette expérience répétée. Un rationaliste conséquent lui objecterait qu'aucune quantité d'observations, même répétées quarante ans durant, ne peut, à elle seule, établir avec certitude un lien de cause à effet — il faudrait un raisonnement rigoureux, capable d'exclure les autres explications possibles (comme la guérison naturelle du rhume), et pas seulement l'accumulation de cas favorables.
 
@@ -70,11 +70,11 @@ Ce que ce découpage permet de voir, précisément, dans la situation du chapitr
 
 ## R2 — Hume et la critique de l'induction : confirmer n'est jamais prouver
 
-#### Ce que R1 laisse en suspens
+### Ce que R1 laisse en suspens
 
 Le chapitre 2 a présenté Hume comme celui pour qui toute connaissance vient de l'expérience. Mais Hume est aussi, et peut-être surtout, celui qui a montré la limite la plus embarrassante de ce projet : comment passe-t-on, légitimement, d'observations particulières et passées à une loi générale, valable pour tous les cas, y compris ceux qu'on n'a jamais observés ?
 
-#### Le raisonnement inductif, et le problème qu'il cache
+### Le raisonnement inductif, et le problème qu'il cache
 
 Raisonner par **induction**, c'est partir d'un ensemble d'observations particulières pour conclure à une loi générale : j'ai vu mille cygnes, tous blancs, donc je conclus que tous les cygnes sont blancs. Tu as déjà croisé cet exemple précis dans la leçon sur la vérité (la-verite, chapitre 8), à propos du critère de Popper ; reprenons-le ici pour en examiner la racine, chez Hume, avant même Popper.
 
@@ -84,7 +84,7 @@ Raisonner par **induction**, c'est partir d'un ensemble d'observations particuli
 
 **Un prolongement du même geste : la cause elle-même n'est jamais observée.** Hume pousse l'exigence plus loin encore, à propos de la causalité. Quand une boule de billard en heurte une seconde qui se met alors en mouvement, ce que les sens perçoivent réellement, c'est une succession — le contact, puis le mouvement — et une répétition de cette succession dans des cas semblables. Mais le lien de nécessité lui-même, ce qui ferait que la seconde boule *devait* nécessairement se mettre en mouvement, n'est perçu par aucun sens : on ne voit jamais la nécessité, seulement une **conjonction constante** entre deux événements. C'est très exactement l'erreur que commet, sans le voir, la conviction de grand-mère (chapitre 1) : elle a observé une conjonction constante — tisane, puis guérison — mais elle n'a jamais observé, et ne pouvait pas observer par les seuls sens, le lien de nécessité qui ferait de la tisane la cause de la guérison plutôt qu'un simple événement antérieur, sans rapport causal réel.
 
-#### Applique le mécanisme : reviens à la tisane de grand-mère
+### Applique le mécanisme : reviens à la tisane de grand-mère
 
 Ce que la critique de Hume permet de voir, précisément, dans la situation du chapitre 1 : quarante années d'observations concordantes — tisane suivie de guérison, sans exception apparente — établissent, au mieux, une conjonction constante entre les deux événements. Elles ne prouvent, ni logiquement ni définitivement, ni que la tisane est la cause de la guérison (le rhume aurait pu guérir seul), ni qu'elle continuera de « fonctionner » la prochaine fois. Ce n'est pas que grand-mère se trompe forcément sur le fond — c'est que son raisonnement, aussi sincère et répété soit-il, ne constitue jamais, à lui seul, une preuve.
 
@@ -96,15 +96,15 @@ Ce que la critique de Hume permet de voir, précisément, dans la situation du c
 
 ## R3 — Claude Bernard et la méthode expérimentale : l'observation n'est jamais neutre
 
-#### Ce que R2 laisse en suspens
+### Ce que R2 laisse en suspens
 
 Si l'accumulation d'observations ne prouve jamais rien de façon définitive, comment la science procède-t-elle malgré tout pour progresser, plutôt que de se contenter, comme grand-mère, d'attendre et de constater ? Claude Bernard (XIXe siècle, médecin et physiologiste, *Introduction à l'étude de la médecine expérimentale*, 1865) répond à cette question en distinguant deux démarches qu'on confond trop souvent sous le même mot d'« observation ».
 
-#### Observer n'est pas expérimenter
+### Observer n'est pas expérimenter
 
 **Observer**, au sens le plus simple, c'est constater un phénomène tel que la nature l'offre, sans intervenir sur lui : regarder le ciel, noter la couleur d'une urine, relever une température. **Expérimenter**, c'est tout autre chose : c'est **provoquer**, délibérément, un phénomène, en faisant varier une condition précise, pour voir si une hypothèse déterminée se vérifie ou non. La différence n'est pas un détail de vocabulaire : elle sépare une science qui attend passivement ce que le réel veut bien montrer, d'une science qui interroge activement le réel à partir d'une question précise.
 
-#### Le geste central : une idée doit précéder l'expérience, pas seulement la suivre
+### Le geste central : une idée doit précéder l'expérience, pas seulement la suivre
 
 **Voici la thèse la plus importante de Bernard, celle qui change directement la façon de comprendre le chapitre 3.** Une expérience scientifique n'est jamais un simple enregistrement neutre de ce qui se passe : elle part toujours d'une **idée préconçue** — une hypothèse, une question précise — qui décide à l'avance ce qu'il faut observer, comment il faut le mesurer, et quel résultat compterait comme un succès ou comme un échec de l'hypothèse. Sans cette idée directrice, un chercheur peut accumuler des observations pendant des années sans jamais rien découvrir, parce qu'il ne sait même pas ce qu'il cherche à voir dans ce qu'il observe.
 
@@ -120,7 +120,7 @@ Bernard résume ce point dans une formule restée célèbre dans l'enseignement 
 
 **Ce que ce mécanisme change pour la question des chapitres 2 et 3 :** l'expérience n'est donc jamais le point de départ neutre et brut que l'empirisme le plus naïf imagine — un simple regard posé sur le réel, qui livrerait ses faits de lui-même à qui voudrait bien observer attentivement. Elle est toujours déjà orientée par une théorie qui décide ce qui compte comme un fait pertinent. Tu retrouves ici, sous une autre forme, exactement le geste que Bachelard défendait à propos de la connaissance scientifique en général (la-verite, chapitre 5) : la connaissance ne lit jamais le réel de façon immédiate et innocente — elle se construit, activement, contre les évidences premières et à partir d'une théorie qui oriente le regard.
 
-#### Applique le mécanisme : comment tester sérieusement la tisane de grand-mère
+### Applique le mécanisme : comment tester sérieusement la tisane de grand-mère
 
 **Ce que cherche un chercheur formé à la méthode de Bernard, ici, et pourquoi ce geste précis.** Face à la conviction de grand-mère, il ne se contente pas d'attendre encore quarante ans en comptant les cas favorables (chapitre 3 a montré que ça ne prouverait toujours rien de plus) : il formule d'abord une hypothèse précise et testable — « la tisane accélère la guérison du rhume, par rapport à l'absence de tout traitement » — puis il conçoit une expérience capable de la mettre à l'épreuve.
 
@@ -138,17 +138,17 @@ Ce protocole ne « prouve » toujours rien avec une certitude absolue (chapitre 
 
 ## R4 — Retour à Popper : la théorie propose, l'expérience ne fait que réfuter
 
-#### Ce que R3 rend visible, et que R2 avait déjà anticipé
+### Ce que R3 rend visible, et que R2 avait déjà anticipé
 
 Le protocole du chapitre 4 a une structure précise : une hypothèse permet de prédire un résultat ; si ce résultat n'a pas lieu, l'hypothèse est affaiblie ou réfutée ; s'il a lieu, l'hypothèse est seulement confirmée, jamais prouvée avec une certitude définitive (chapitre 3). Tu as déjà rencontré, dans la leçon sur la vérité, le philosophe qui a donné à cette structure son nom précis : Popper (la-verite, chapitre 8).
 
-#### Rappel du critère, et ce qu'il ajoute ici
+### Rappel du critère, et ce qu'il ajoute ici
 
 Rappelle-toi le critère central : une théorie mérite le nom de scientifique si, et seulement si, elle est **falsifiable** — si elle interdit certains résultats observables possibles, de telle sorte qu'une observation future pourrait, en principe, la contredire. Aucune accumulation de confirmations ne prouve jamais définitivement une théorie ; une seule observation contraire, en revanche, peut la réfuter d'un coup. C'est exactement, formulé en un principe général, ce que le protocole du chapitre 4 met en pratique dans un cas particulier : l'hypothèse sur la tisane est construite de telle sorte qu'un résultat précis (l'absence de différence entre les deux groupes) pourrait la réfuter.
 
 **Ce que le chapitre 4 ajoute au critère de Popper, et qui n'apparaissait pas encore aussi nettement dans la-verite :** Popper explique *pourquoi* la confirmation ne prouve jamais rien (chapitre 3, le problème de l'induction) ; Bernard montre *comment*, concrètement, on construit une expérience qui expose réellement une hypothèse au risque d'être réfutée, plutôt que de se contenter d'attendre des confirmations qui arrivent de toute façon (comme le rhume qui guérit tout seul). Le critère de Popper est la logique ; la méthode de Bernard en est la mise en pratique dans un laboratoire.
 
-#### Applique le mécanisme : reviens à la tisane, une nouvelle fois
+### Applique le mécanisme : reviens à la tisane, une nouvelle fois
 
 Formule maintenant l'hypothèse de grand-mère de façon rigoureusement falsifiable, au sens de Popper : « la tisane raccourcit la durée du rhume, comparée à l'absence de traitement. » Cette hypothèse interdit un résultat précis — que les deux groupes guérissent au même rythme — et pourrait donc, en principe, être réfutée par l'expérience du chapitre 4. Compare-la à la version de grand-mère, telle qu'elle la formule elle-même : « ça marche, je l'ai vu. » Cette version-là n'interdit, en réalité, aucun résultat observable — elle est compatible avec « ça a marché cette fois », mais aussi, si le rhume avait duré plus longtemps qu'attendu, avec « ça a quand même sûrement aidé, sans la tisane ç'aurait été pire » : une théorie qui absorbe n'importe quel résultat de cette manière n'est jamais mise sérieusement à l'épreuve, exactement comme le modèle de Ptolémée absorbait n'importe quelle anomalie en ajoutant un épicycle (la-verite, chapitre 4 et le chapitre 8).
 
@@ -160,11 +160,11 @@ Formule maintenant l'hypothèse de grand-mère de façon rigoureusement falsifia
 
 ## R5 — Kant : la sensibilité sans concepts est aveugle, les concepts sans sensibilité sont vides
 
-#### Ce que R1 laisse encore ouvert
+### Ce que R1 laisse encore ouvert
 
 Le chapitre 2 a opposé empirisme et rationalisme comme deux camps rivaux. Mais chapitres 4 et 5 ont montré quelque chose que ni l'un ni l'autre, pris séparément, n'explique bien : l'expérience scientifique la plus rigoureuse suppose toujours déjà une idée, une hypothèse, une structure conceptuelle — sans quoi elle ne serait qu'un enregistrement sans direction. Faut-il alors, comme le rationalisme, réduire l'expérience à un rôle secondaire ? Kant (XVIIIe siècle, *Critique de la raison pure*, 1781) refuse ce choix, et propose une troisième voie.
 
-#### Le geste central : deux facultés qui doivent nécessairement collaborer
+### Le geste central : deux facultés qui doivent nécessairement collaborer
 
 **Voici la thèse de Kant, et ce qu'elle change par rapport au chapitre 2.** La connaissance suppose toujours deux éléments, d'origine différente, dont ni l'un ni l'autre ne suffit seul :
 
@@ -179,7 +179,7 @@ Le chapitre 2 a opposé empirisme et rationalisme comme deux camps rivaux. Mais 
 
 **Ce que cette formule règle, précisément, dans la dispute du chapitre 2 :** l'empirisme a raison de dire que toute connaissance commence avec l'expérience (rien n'est connu sans que la sensibilité fournisse une matière) — mais il a tort de croire que toute connaissance ne fait que dériver de l'expérience, comme si l'esprit était une simple table vide qui recevrait passivement des impressions. Le rationalisme a raison de dire que certaines structures (l'espace, le temps, la causalité) ne viennent pas de l'expérience et la rendent au contraire possible — mais il a tort d'en conclure qu'on pourrait, par la raison seule, sans jamais faire appel à aucune expérience, connaître le contenu du monde réel.
 
-#### Applique le mécanisme : reviens à la tisane, et à la cause elle-même
+### Applique le mécanisme : reviens à la tisane, et à la cause elle-même
 
 Reprends le point de Hume (chapitre 3) : la nécessité causale n'est jamais donnée directement par les sens, on ne perçoit qu'une conjonction constante. Kant explique pourquoi grand-mère relie malgré tout, sans effort et sans même y penser, la tisane et la guérison sous l'idée d'une cause : le concept de causalité n'est pas lui-même une impression sensible qu'elle aurait perçue — c'est une forme a priori de son entendement, une structure que son esprit applique spontanément à ce qu'il perçoit, pour organiser une simple succession d'événements (boire, puis guérir) en un lien causal pensable. Ce concept, sans lequel elle ne pourrait même pas formuler sa conviction, ne vient donc ni de la seule expérience (Hume l'a montré : on ne voit jamais la nécessité), ni de la seule raison sans aucun contact avec l'expérience (il faut bien que la sensibilité lui donne la matière — la tisane bue, la guérison observée) : il naît de leur collaboration nécessaire, exactement ce que Kant vient d'établir.
 
@@ -191,7 +191,7 @@ Reprends le point de Hume (chapitre 3) : la nécessité causale n'est jamais don
 
 ## R6 — Fermeture de l'arc : retour à la tisane de grand-mère, et clôture du module « La connaissance »
 
-#### Six regards sur une même tisane
+### Six regards sur une même tisane
 
 Reviens, une dernière fois, à la conviction de grand-mère — quarante ans de tisane et de guérisons, sans exception apparente.
 
@@ -207,7 +207,7 @@ Kant (chapitre 6) rappellerait que même la simple perception de grand-mère —
 
 Et Bachelard, déjà rencontré dans la leçon sur la vérité (la-verite, chapitre 5), ferait remarquer que la certitude la plus immédiate — « je l'ai vu, encore et encore, ça ne peut pas être un hasard » — est précisément le genre d'évidence spontanée qu'il faudrait traiter comme un obstacle à interroger, et non comme un point de départ fiable : la connaissance ne se construit jamais en confirmant simplement ce qu'on croyait déjà, mais en rompant avec cette évidence pour la mettre activement à l'épreuve.
 
-#### Ce que cette clôture referme
+### Ce que cette clôture referme
 
 Ce chapitre clôt le module « La connaissance » ouvert par la leçon sur la vérité. Cette dernière avait établi qu'aucune certitude, hors le cogito cartésien, n'échappe jamais totalement au risque de l'erreur — et que la science elle-même n'avance que par théories provisoires, jamais définitivement prouvées (Popper), en rompant activement avec les évidences premières (Bachelard). Cette leçon-ci a montré *comment*, concrètement, la connaissance scientifique tient malgré tout : ni en se fiant à l'expérience seule (Hume), ni en s'en passant totalement (le rationalisme le plus radical), mais en articulant sans cesse une théorie qui propose et une expérience qui, seule, peut la mettre en échec (Bernard, Popper) — le tout reposant sur des formes a priori que ni l'expérience ni la raison seule n'auraient pu produire l'une sans l'autre (Kant).
 
@@ -223,14 +223,14 @@ Ce chapitre clôt le module « La connaissance » ouvert par la leçon sur la v�
 
 **Sujet :** *Une théorie scientifique peut-elle être prouvée par l'expérience ?*
 
-#### Étape 1 — Analyser les termes du sujet
+### Étape 1 — Analyser les termes du sujet
 
 - **« Une théorie scientifique »** : rappelle-toi la distinction du chapitre 5 — une théorie, pour mériter ce nom aux yeux de Popper, doit être falsifiable ; elle propose un énoncé général qui interdit certains résultats observables.
 - **« Prouvée »** : le mot suggère une démonstration définitive, close, qui ne pourrait plus jamais être remise en cause — exactement ce que le chapitre 3 (l'induction) et le chapitre 5 (Popper) refusent d'accorder à quelque théorie scientifique que ce soit.
 - **« Par l'expérience »** : au sens de Bernard (chapitre 4), l'expérience n'est jamais une simple observation passive — elle est déjà construite, orientée par une hypothèse ; le sujet demande donc si ce type d'expérience construite, actif, peut suffire à établir une preuve définitive.
 - Le sujet ne précise pas de domaine (physique, médecine, biologie) : à la copie de mobiliser des exemples précis (le modèle de Ptolémée, l'exemple des cygnes, la mécanique de Newton — tous déjà rencontrés) sans se contenter d'une réponse abstraite.
 
-#### Étape 2 — Formuler la problématique
+### Étape 2 — Formuler la problématique
 
 Une problématique met en évidence une tension entre deux positions également légitimes en apparence, à laquelle le devoir devra répondre — elle ne reformule pas simplement le sujet.
 
@@ -240,7 +240,7 @@ Une formulation possible :
 
 > *Si l'expérience semble être le seul juge légitime d'une théorie scientifique — c'est elle qui décide si une hypothèse résiste ou s'effondre —, comment expliquer qu'aucune accumulation d'observations confirmantes ne puisse jamais, selon la logique même de l'induction et le critère de Popper, établir une théorie comme définitivement prouvée ? Faut-il en conclure qu'une théorie scientifique ne peut jamais être établie avec certitude, ou existe-t-il une façon, pour la théorie et l'expérience, de s'articuler qui ne suppose pas cette preuve absolue ?*
 
-#### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
+### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
 
 **I. Thèse — L'expérience semble bien avoir le pouvoir de prouver une théorie.**
 Développe l'idée intuitive, celle de grand-mère généralisée à la science : plus une théorie est confirmée par l'expérience, plus elle mérite d'être tenue pour vraie ; une théorie qui prédit correctement, encore et encore, semble avoir fait ses preuves. Mobilise la méthode de Bernard (chapitre 4) comme ce qui rend cette confrontation à l'expérience rigoureuse, et non arbitraire.
@@ -251,7 +251,7 @@ Mobilise le chapitre 3 (le problème de l'induction chez Hume : voir mille cygne
 **III. Dépassement — Renoncer à la preuve absolue n'oblige pas à renoncer à toute exigence de rigueur.**
 Reprends le chapitre 5 (le fallibilisme popperien : une théorie non-encore-réfutée, sérieusement mise à l'épreuve par une méthode comme celle de Bernard, chapitre 4, mérite une confiance réelle même sans preuve définitive) et le chapitre 6 (Kant : la connaissance scientifique articule nécessairement une structure conceptuelle a priori et une matière donnée a posteriori — ni la théorie seule, ni l'expérience seule, ne suffit). Ajoute le chapitre 7 : cette absence de preuve définitive ne rend pas toutes les théories équivalentes — une théorie sérieusement exposée au risque de la réfutation et une conviction qui n'a jamais couru ce risque (comme celle de grand-mère) ne sont pas logées à la même enseigne.
 
-#### Étape 4 — Rédiger l'introduction (modèle rédigé)
+### Étape 4 — Rédiger l'introduction (modèle rédigé)
 
 Voici, entièrement rédigée, une introduction possible. Note son mouvement : accroche → définition des termes → tension → problématique → annonce du plan.
 
@@ -259,13 +259,13 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 
 **Ce que fait ce paragraphe, geste par geste :** il ouvre sur la situation concrète de la leçon plutôt que sur une définition abstraite de la science ; il énonce la thèse intuitive avec précision avant de la mettre sous tension ; il fait apparaître la tension par la position humienne puis popperienne ; il pose la problématique sous forme interrogative précise ; il annonce un plan en trois temps qui correspond exactement à la thèse, à l'antithèse et au dépassement construits à l'étape 3.
 
-#### Étape 5 — Un paragraphe rédigé de la partie I, à titre de modèle
+### Étape 5 — Un paragraphe rédigé de la partie I, à titre de modèle
 
 > Il semble raisonnable de penser qu'une théorie scientifique tire sa valeur de sa confrontation répétée à l'expérience, et que cette confrontation, si elle se répète sans jamais être démentie, finit par constituer une preuve. C'est ce que montre la méthode expérimentale telle que Claude Bernard la décrit : une théorie n'est jamais acceptée sur la seule autorité de celui qui la propose, elle doit être traduite en une hypothèse précise, dont on déduit une conséquence observable, que l'on va chercher à vérifier par une expérience construite pour l'occasion — en isolant la variable en cause, en comparant un groupe qui la reçoit à un groupe qui ne la reçoit pas. Plus une théorie résiste à ce genre d'épreuve rigoureuse, construite précisément pour pouvoir la mettre en défaut si elle est fausse, plus elle semble mériter la confiance qu'on lui accorde. C'est cette logique qui a permis, pendant plus de deux siècles, de tenir la mécanique de Newton pour une théorie solidement établie : elle avait été mise à l'épreuve, encore et encore, par l'expérience, sans jamais être prise en défaut.
 
 **Pourquoi ce paragraphe est construit ainsi :** il ne se contente pas d'affirmer la thèse intuitive — il la fait *fonctionner* sur la méthode précise de Bernard (l'hypothèse, la déduction d'une conséquence observable, l'expérience comparative), comme la leçon l'a construite. Remarque la dernière phrase : elle prépare déjà, sans le dire explicitement, la question qui ouvrira la partie II — que devient cette confiance apparemment bien fondée dans la mécanique de Newton, si l'on se souvient (la-verite, chapitre 8) qu'elle a fini par se révéler seulement approximativement valable ?
 
-#### À toi de continuer
+### À toi de continuer
 
 Rédige maintenant, à ton tour :
 

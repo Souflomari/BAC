@@ -587,6 +587,36 @@ for (const dir of dirs) {
     }
   }
 
+  // ── Aucun niveau de titre sauté (WCAG 1.3.1) ─────────────────────────────
+  //
+  // Un lecteur d'écran navigue de titre en titre et annonce le NIVEAU : passer
+  // de h2 à h4 lui fait entendre un niveau qui n'existe pas, et lui laisse
+  // croire qu'il a manqué une section. Mesuré le 2026-09-04 sur les 68 pages
+  // rendues : 79 sauts, tous des `## ` suivis directement d'un `#### `, tous
+  // dans les douze leçons de philosophie — une convention d'autorat, pas un
+  // accident isolé. 327 titres renivelés (la profondeur dans l'arbre devient
+  // le niveau), zéro saut restant. Les ancres ne bougent pas : rehype-slug
+  // calcule l'id à partir du TEXTE, pas du niveau.
+  {
+    let precedent = 0;
+    let dansCode = false;
+    for (const [i, raw] of md.split("\n").entries()) {
+      if (raw.trim().startsWith("```")) { dansCode = !dansCode; continue; }
+      if (dansCode) continue;
+      const m = raw.match(/^(#{1,6})\s+(.+)$/);
+      if (!m) continue;
+      const n = m[1].length;
+      if (precedent && n > precedent + 1) {
+        console.error(
+          `  ✗ ${dir}: lesson.md:${i + 1} saut de niveau de titre h${precedent} → h${n} — « ${m[2].slice(0, 46)} »\n` +
+          `      un lecteur d'écran annonce le niveau ; sauter h${precedent + 1} lui fait croire qu'il a manqué une section`
+        );
+        dirFail++;
+      }
+      precedent = n;
+    }
+  }
+
   // Walk lines: resolve own-line markers, keep the rest as prose.
   const proseLines = [];
   let sawExerciseMarker = false;
@@ -647,8 +677,25 @@ for (const dir of dirs) {
     // "### À toi" / "### À toi de jouer" — line-start only, so it also
     // catches "### À toi de jouer" (a substring check alone would double-
     // count the same heading against both patterns).
-    for (const line of md.split("\n")) {
-      if (line === "### À toi" || line.startsWith("### À toi ")) legacyHits.add(line.trim());
+    //
+    // CE QUE CETTE PORTE VEUT DIRE, précisé le 2026-09-04 : « cette leçon se
+    // TERMINE encore par la section-sommet de l'ancien gabarit au lieu de
+    // servir des exercices ». Le motif seul ne dit pas ça — il attrape aussi
+    // une consigne de rédaction légitime placée AU MILIEU d'un chapitre de
+    // méthode, ce qui est le cas de quatre leçons de philosophie (elles
+    // portent bien leurs `[[exercise:…]]`, 20 à 30 lignes PLUS BAS).
+    //
+    // Ces quatre-là passaient jusqu'ici par accident : leur titre était en
+    // `####`, et le motif exige `### `. Le renivelage des titres (WCAG 1.3.1,
+    // même jour) les a promus en `###` et la porte s'est réveillée — sur des
+    // faux positifs. On ne l'a pas desserrée, et on n'a pas renommé le
+    // contenu pour lui plaire : on lui a donné le critère qu'elle voulait
+    // dire. Un sommet légataire n'a AUCUN marqueur d'exercice après lui.
+    const lignes = md.split("\n");
+    for (const [i, line] of lignes.entries()) {
+      if (line !== "### À toi" && !line.startsWith("### À toi ")) continue;
+      const suit = lignes.slice(i + 1).some((l) => l.includes("[[exercise:"));
+      if (!suit) legacyHits.add(line.trim());
     }
     for (const hit of legacyHits) {
       console.error(`  ✗ ${dir}: lesson.md still carries the legacy summit heading "${hit}" — converted lessons use [[exercise:…]], not the old template`);

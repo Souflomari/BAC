@@ -36,7 +36,7 @@ Ni « je choisis tout, sans aucune cause » ni « je ne choisis rien, tout est c
 
 ## R1 — Deux idées de la liberté, et le problème du déterminisme
 
-#### Ce qu'on veut dire, spontanément, par « être libre »
+### Ce qu'on veut dire, spontanément, par « être libre »
 
 Avant d'aller plus loin, il faut distinguer deux idées que le mot « liberté » mélange dans le langage courant.
 
@@ -46,7 +46,7 @@ Avant d'aller plus loin, il faut distinguer deux idées que le mot « liberté �
 
 Remarque tout de suite que ces deux idées peuvent se dissocier. Devant ton téléphone à 23h, rien ni personne ne t'empêche d'éteindre l'écran — la liberté « absence de contrainte » est déjà acquise ici — et pourtant tu ne le fais pas, comme si quelque chose d'autre, en toi, gouvernait la suite. C'est la liberté « intérieure » qui semble manquer.
 
-#### Le libre arbitre : une troisième idée, plus exigeante
+### Le libre arbitre : une troisième idée, plus exigeante
 
 Il existe une troisième façon, plus radicale, de comprendre la liberté : le **libre arbitre**. Selon cette idée, être libre, c'est disposer d'un pouvoir de choisir qui ne soit déterminé par absolument rien — ni par mon passé, ni par mon tempérament, ni par mon éducation, ni par quoi que ce soit d'antérieur à ma décision. Être libre, en ce sens fort, ce serait pouvoir dire : « à cet instant précis, toutes choses étant rigoureusement égales par ailleurs, j'aurais pu faire autrement. »
 
@@ -54,7 +54,7 @@ C'est souvent ce que l'on veut dire, sans le formuler ainsi, quand on répond «
 
 C'est une idée puissante — et c'est précisément elle que le déterminisme met en crise.
 
-#### Le déterminisme : le problème qui menace le libre arbitre
+### Le déterminisme : le problème qui menace le libre arbitre
 
 Le **déterminisme** est le principe selon lequel tout événement a une cause, et que cette cause, dans les mêmes conditions, produit nécessairement le même effet. Rien n'arrive « pour rien » ; rien ne surgit sans être l'effet de ce qui précède. Ce principe gouverne sans conteste le monde physique — une pierre tombe parce qu'elle est soumise à la gravité, pas par caprice. La question philosophique est de savoir s'il gouverne aussi nos décisions, nos désirs, nos choix.
 
@@ -62,7 +62,7 @@ Or il y a de bonnes raisons de penser que oui. Ce que tu désires, ce que tu tro
 
 **Voici le mécanisme du problème, posé sans détour.** Si le déterminisme est vrai jusque dans le champ psychologique, alors ta décision de rester devant l'écran à 23h05 est l'effet nécessaire d'un ensemble de causes antérieures — fatigue, habitude, conception de l'application, état d'esprit du moment — que tu n'as pas choisies. Dans ces conditions exactes, tu ne pouvais pas faire autrement — pas parce qu'on t'en empêchait de l'extérieur, mais parce que la suite était déjà, en un sens, déterminée par ce qui la précédait. En quel sens peux-tu alors dire que c'est bien *toi* qui as choisi, et que tu *aurais pu* faire autrement ?
 
-#### Pourquoi on ne peut pas simplement choisir un camp et s'arrêter là
+### Pourquoi on ne peut pas simplement choisir un camp et s'arrêter là
 
 On pourrait être tenté de trancher vite : « le déterminisme est vrai, donc la liberté est une illusion » — ou à l'inverse : « je suis libre, donc le déterminisme est faux, au moins pour mes choix ». Les deux issues, prises telles quelles, posent un problème sérieux.
 
@@ -80,7 +80,7 @@ Affirmer le déterminisme intégral et en conclure que la liberté n'existe pas 
 
 ## R2 — Spinoza : être libre, ce n'est pas échapper à la nécessité, c'est la comprendre
 
-#### Un déterminisme radical, assumé sans détour
+### Un déterminisme radical, assumé sans détour
 
 Spinoza (XVIIe siècle, *Éthique*) ne cherche pas d'échappatoire au déterminisme : il l'assume entièrement. Pour lui, rien dans la nature n'échappe à la nécessité — pas même l'esprit humain, qui fait partie de la nature au même titre que le reste. Nos désirs, nos décisions, nos volitions ont des causes, exactement comme le mouvement d'un corps en a une.
 
@@ -96,7 +96,7 @@ Spinoza va jusqu'à proposer une image frappante, dans une lettre à un correspo
 
 **C'est exactement, selon Spinoza, ce qui nous arrive.** Nous avons conscience de nos décisions (« je veux rester devant l'écran ») sans avoir conscience de tout ce qui les cause (l'architecture de l'application, la fatigue, l'habitude prise les semaines précédentes). Le sentiment d'être libre, pris seul, ne prouve donc rien : il peut très bien être le sentiment de la pierre qui vole.
 
-#### Mais alors, que reste-t-il de la liberté ?
+### Mais alors, que reste-t-il de la liberté ?
 
 Voici le geste le plus important de Spinoza, et celui qu'il faut le mieux comprendre : il ne conclut PAS que la liberté n'existe pas. Il **redéfinit** ce qu'être libre veut dire.
 
@@ -106,7 +106,7 @@ On résume souvent cette idée par une formule devenue classique en cours de phi
 
 **Ce que fait ce déplacement, précisément :** il change la question. Ce n'est plus « ai-je une cause, oui ou non ? » — la réponse est toujours oui — mais « quelle sorte de cause suis-je : une cause que je comprends et qui vient de ma propre raison, ou une cause extérieure que je subis sans la voir ? ». Le degré de liberté devient une question de degré de compréhension, pas une question de tout ou rien.
 
-#### Retour au téléphone, avec les outils de Spinoza
+### Retour au téléphone, avec les outils de Spinoza
 
 Applique ce déplacement à 23h05. Celui qui reste devant l'écran sans jamais s'interroger sur le mécanisme — notifications conçues pour créer un manque, récompense imprévisible qui entretient l'attention — est, au sens de Spinoza, dans la position de la pierre qui vole : il agit sous des causes externes qu'il ne comprend pas, et *ressent* cela comme un vouloir libre.
 
@@ -122,7 +122,7 @@ Celui qui, au contraire, comprend le mécanisme — qui sait *pourquoi* l'applic
 
 Spinoza a déplacé le problème : la vraie liberté n'est pas l'absence de cause, mais un certain rapport à la nécessité. Les deux positions qui suivent prolongent ce déplacement dans deux directions différentes — l'une du côté de la responsabilité individuelle (Sartre), l'autre du côté de la vie en société (Rousseau, Montesquieu). Il faut les garder bien distinctes : elles ne disent pas la même chose, même si elles partagent un même refus de la liberté comme pur arbitraire sans limites.
 
-#### Sartre : condamné à être libre
+### Sartre : condamné à être libre
 
 Sartre (XXe siècle, *L'existentialisme est un humanisme*) part d'un désaccord avec toute philosophie qui poserait, avant même que l'être humain existe et agisse, une « nature humaine » qui déterminerait d'avance ce qu'il doit être. Un objet fabriqué — un couteau, par exemple — a son essence (sa fonction : couper) *avant* d'exister : l'artisan a conçu le couteau pour couper avant de le fabriquer. Pour l'être humain, dit Sartre, c'est l'inverse : **« l'existence précède l'essence »**. Il n'y a pas de modèle préalable qui dise ce qu'un être humain doit devenir ; chacun se définit par ce qu'il fait, sans pouvoir s'abriter derrière une nature donnée d'avance.
 
@@ -134,7 +134,7 @@ Sartre (XXe siècle, *L'existentialisme est un humanisme*) part d'un désaccord 
 
 [[checkpoint:cp-r3-pouvoir]]
 
-#### Rousseau et Montesquieu : la liberté par la loi
+### Rousseau et Montesquieu : la liberté par la loi
 
 Change maintenant de terrain : de l'individu seul à la vie en société. L'intuition la plus répandue ici est simple : la loi est une contrainte, donc moins de lois signifierait plus de liberté ; la liberté totale serait de pouvoir faire absolument tout ce qu'on veut, sans aucune règle commune — ce qu'on appelle la *licence*.
 
@@ -150,7 +150,7 @@ La réponse de Rousseau repose sur l'idée de **volonté générale** : dans une
 
 **Un exemple concret pour sentir le mécanisme :** pense au code de la route. Sans aucune règle commune, chacun conduirait « comme il veut » — ce qui ressemble, à première vue, à un maximum de liberté. Mais en pratique, cette absence de règle produirait un chaos où personne ne pourrait plus circuler en sécurité : le plus imprudent imposerait sa conduite à tous les autres. Une règle commune (rouler à droite, s'arrêter au feu rouge), que chacun accepte parce qu'elle protège la circulation de tous — y compris la tienne — n'est pas un obstacle extérieur à ta liberté de te déplacer : elle en est, concrètement, la condition. C'est exactement ce que Rousseau et Montesquieu formulent au niveau de la loi civile en général.
 
-#### Fermeture de l'arc : ton téléphone, une dernière fois
+### Fermeture de l'arc : ton téléphone, une dernière fois
 
 Reviens à 23h05. Aucune des trois positions ne te dit simplement « tu es libre » ou « tu ne l'es pas ».
 
@@ -172,7 +172,7 @@ Les trois auteurs, malgré leurs désaccords réels, convergent sur un même poi
 
 **Sujet :** *Être libre, est-ce faire tout ce que l'on veut ?*
 
-#### Étape 1 — Analyser les termes du sujet
+### Étape 1 — Analyser les termes du sujet
 
 Avant toute chose, décortique les mots du sujet — c'est souvent là que se joue la moitié du travail.
 
@@ -180,7 +180,7 @@ Avant toute chose, décortique les mots du sujet — c'est souvent là que se jo
 - **« Faire tout ce que l'on veut »** : cette expression désigne la liberté comme absence de toute limite — ce qu'on a appelé la *licence* (chapitre 4). Elle suppose qu'on sache déjà ce qu'on « veut », sans interroger d'où vient ce vouloir.
 - **La question posée** est une question fermée (« est-ce que… ? »), mais une bonne dissertation ne répond jamais simplement « oui » ou « non » : elle montre pourquoi la réponse spontanée pose un problème, puis construit une réponse plus exigeante.
 
-#### Étape 2 — Formuler la problématique
+### Étape 2 — Formuler la problématique
 
 Une problématique n'est pas une reformulation du sujet : c'est la mise en évidence d'une tension entre deux positions également légitimes en apparence, à laquelle le devoir devra répondre.
 
@@ -190,7 +190,7 @@ Une formulation possible :
 
 > *Si être libre ne se réduit pas à faire tout ce que l'on veut, en quoi consiste alors la liberté véritable — et faut-il, pour être réellement libre, accepter certaines nécessités, une responsabilité entière, voire certaines lois ?*
 
-#### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
+### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
 
 **I. Thèse — Être libre, c'est faire ce que l'on veut, sans entrave.**
 Développe l'intuition spontanée : la liberté négative (chapitre 2), le libre arbitre comme pouvoir de choisir sans contrainte extérieure. Utilise des exemples concrets d'obstacles évidents (interdiction, censure) dont l'absence semble bien être une forme de liberté incontestable.
@@ -201,7 +201,7 @@ Mobilise le déterminisme (chapitre 2) : si mes désirs eux-mêmes ont des cause
 **III. Dépassement — La liberté véritable se construit avec la nécessité, la responsabilité et la loi, non contre elles.**
 Reprends les trois déplacements de la leçon : la liberté comme connaissance de la nécessité (Spinoza, chapitre 3) ; la liberté comme responsabilité totale et assumée, sans excuse (Sartre, chapitre 4) ; la liberté civile comme obéissance à la loi qu'on s'est prescrite (Rousseau, chapitre 4). Montre que ces trois positions, malgré leurs différences, refusent la même chose : l'idée que la liberté serait un pur arbitraire sans lien avec soi-même.
 
-#### Étape 4 — Rédiger l'introduction (modèle rédigé)
+### Étape 4 — Rédiger l'introduction (modèle rédigé)
 
 Voici, entièrement rédigée, une introduction possible. Note son mouvement : accroche → définition des termes → tension → problématique → annonce du plan.
 
@@ -209,7 +209,7 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 
 **Ce que fait ce paragraphe, geste par geste :** il ouvre sur un exemple concret et non un principe abstrait (l'enfant sans règle) ; il énonce clairement la thèse spontanée avant de la contester, sans la caricaturer ; il fait apparaître la tension par deux questions successives (le désir non examiné, puis la collision des libertés) plutôt que par une simple affirmation ; il pose la problématique sous forme interrogative précise ; il annonce un plan en trois temps qui correspond exactement à la thèse, à l'antithèse et au dépassement construits à l'étape 3.
 
-#### Étape 5 — Un paragraphe rédigé de la partie I, à titre de modèle
+### Étape 5 — Un paragraphe rédigé de la partie I, à titre de modèle
 
 > Faire ce que l'on veut suppose d'abord l'absence d'obstacle extérieur : je ne suis pas libre d'aller où je le souhaite si une frontière me l'interdit, ni de m'exprimer si la censure me réduit au silence. Dans cette perspective, la liberté se mesure aux entraves qu'on lui ôte : moins il y a d'interdits, plus l'espace du possible s'élargit, et plus je suis, en ce sens, libre. C'est ce que suggère l'idée de libre arbitre : à chaque instant, je pourrais choisir A ou choisir B, et rien d'extérieur à moi ne tranche à ma place. Ainsi comprise, la liberté n'est pas un privilège de circonstance mais un pouvoir : le pouvoir de faire autrement que je ne fais, si je le décide.
 

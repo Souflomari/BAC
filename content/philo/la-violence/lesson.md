@@ -38,25 +38,25 @@ C'est exactement ce problème — qu'est-ce qui distingue, dans un acte de contr
 
 ## R1 — Violence, force, pouvoir : mettre de l'ordre dans trois mots
 
-#### Un mot du langage courant qui recouvre plusieurs réalités distinctes
+### Un mot du langage courant qui recouvre plusieurs réalités distinctes
 
 Dans une conversation ordinaire, on emploie souvent « violence », « force » et « pouvoir » comme des synonymes plus ou moins interchangeables. Avant de demander si tel acte est ou non de la violence, il faut distinguer précisément ces trois mots — car la réponse dépend entièrement de ce qu'on vise exactement.
 
-#### La force : une capacité, neutre en elle-même
+### La force : une capacité, neutre en elle-même
 
 La **force** désigne une simple capacité physique à produire un effet — soulever, frapper, résister, contraindre. Ce mot, à lui seul, ne porte aucun jugement moral : un objet qui tombe exerce une force, un athlète a de la force, un courant marin a de la force. Rien, dans la seule notion de force, n'indique si son usage est légitime ou non.
 
-#### Le pouvoir : la capacité d'obtenir l'obéissance — légitime ou non
+### Le pouvoir : la capacité d'obtenir l'obéissance — légitime ou non
 
 Le **pouvoir** désigne la capacité d'obtenir d'autrui un comportement déterminé, y compris son obéissance. Un pouvoir peut être reconnu comme légitime — on l'appelle alors une **autorité** — ou n'être, au fond, qu'un rapport de force habillé du nom de pouvoir (cf. la leçon « L'État », chapitre 6, sur la formule de Rousseau : la force seule ne fonde jamais, par elle-même, une obligation véritable).
 
-#### La violence : un usage de la force qui ne procède d'aucun droit reconnu
+### La violence : un usage de la force qui ne procède d'aucun droit reconnu
 
 La **violence**, enfin, désigne un usage de la force sur autrui qui ne procède d'aucun droit reconnu par les deux parties, ou qui excède ce que ce droit autorise. Tu as déjà rencontré, dans la leçon « L'État » (chapitre 6), la définition de Max Weber : l'État est cette instance qui revendique avec succès le **monopole de la violence physique légitime**. **Voici ce qu'il faut creuser à présent, plus précisément qu'alors : qu'est-ce qui rend exactement une contrainte « légitime » plutôt que « violente » ?**
 
 Trois conditions, déjà esquissées dans la leçon « L'État », permettent de trancher : la contrainte découle d'une règle à l'élaboration de laquelle celui qui la subit a, en principe, part (une loi, non un caprice) ; elle s'applique selon une procédure connue à l'avance, la même pour tous ; et elle peut être contestée devant un tiers impartial, qui n'est ni la victime, ni l'auteur de l'acte initial. **Voici pourquoi cette troisième condition est décisive.** Locke le remarquait déjà à propos de l'état de nature (cf. « L'État », chapitre 4) : dès que je deviens juge dans ma propre cause, je m'incline presque inévitablement à me montrer partial en ma propre faveur. Un acte de contrainte accompli par quelqu'un qui est à la fois accusateur, juge et exécuteur — sans qu'aucun tiers ne puisse venir vérifier si la réaction était proportionnée, justifiée, nécessaire — reste, quelle que soit la culpabilité réelle de sa cible, un acte de violence au sens précis du terme, et non une force légitime.
 
-#### Applique la distinction : reviens à R0
+### Applique la distinction : reviens à R0
 
 **Ce que cette distinction permet de voir, précisément, dans la scène du chapitre 1 :** les quatre voisins ont exercé une force sur un homme dont la culpabilité, ce soir-là, ne faisait guère de doute. Mais rien ne les habilitait, eux, à décider seuls de la sanction, ni à l'infliger eux-mêmes sans qu'aucun tiers ne puisse en vérifier la proportion — ils étaient, tout à la fois, ceux qui accusaient, ceux qui jugeaient et ceux qui exécutaient. C'est très exactement ce qui distingue leur geste de celui, tout aussi physique, qu'un policier aurait légitimement pu accomplir : non la violence du contact, mais l'absence de toute procédure et de tout tiers impartial encadrant son usage.
 
@@ -68,11 +68,11 @@ Trois conditions, déjà esquissées dans la leçon « L'État », permettent de
 
 ## R2 — La violence comme négation de la personne : ce que la douleur n'épuise pas
 
-#### Ce qui est en jeu, au-delà de la douleur elle-même
+### Ce qui est en jeu, au-delà de la douleur elle-même
 
 Pourquoi juge-t-on la violence condamnable ? Une réponse vient spontanément : parce qu'elle fait mal. Mais cette réponse ne suffit pas : une piqûre médicale, douloureuse et pourtant consentie, n'est jamais qualifiée de violence, alors qu'une gifle, bien moins douloureuse physiquement, l'est sans discussion. **Ce que ce contraste révèle : ce n'est donc pas la douleur infligée, en elle-même, qui définit la violence — c'est autre chose, qu'il faut isoler avec précision.**
 
-#### Kant : traiter l'humanité comme une fin, jamais simplement comme un moyen
+### Kant : traiter l'humanité comme une fin, jamais simplement comme un moyen
 
 Tu as déjà rencontré ce principe kantien dans les leçons « Le devoir » et « La personne » (Kant, XVIIIe siècle, *Fondements de la métaphysique des mœurs*, 1785) :
 
@@ -80,11 +80,11 @@ Tu as déjà rencontré ce principe kantien dans les leçons « Le devoir » et 
 
 **Voici pourquoi ce principe éclaire exactement ce qui distingue la violence des autres formes de rapport à autrui.** Persuader quelqu'un, le convaincre par un raisonnement, une preuve, un argument, c'est s'adresser à sa raison et à sa liberté : je lui présente des motifs, mais il reste libre de les refuser, de ne pas se laisser convaincre. La violence, elle, ne s'adresse à rien de tel : elle CONTOURNE la liberté d'autrui au lieu de s'y adresser, elle lui impose par la contrainte ce que la persuasion devrait obtenir par un assentiment libre. C'est cela, plus que la douleur elle-même, qui fait de la violence le geste par excellence où l'on cesse de traiter l'autre comme une fin capable de dire non, pour le réduire à un pur moyen ou obstacle qu'on déplace, qu'on brise, qu'on soumet.
 
-#### Le mécanisme, éclairé par le conflit des libertés (Sartre)
+### Le mécanisme, éclairé par le conflit des libertés (Sartre)
 
 On peut relire ce mécanisme à la lumière du conflit des libertés décrit par Sartre (cf. la leçon « Autrui », chapitre 5) : chaque conscience cherche à demeurer sujet, jamais purement objet dans le regard ou l'action d'un autre. Le regard, chez Sartre, opère déjà une forme d'objectivation — mais elle reste réversible, puisque je peux, à tout instant, regarder à mon tour et redevenir sujet. **La violence physique pousse ce même mécanisme à son terme le plus radical :** pendant l'instant où elle s'exerce, la victime ne peut plus retourner le regard ni reprendre la position de sujet — elle est réduite, par la contrainte physique elle-même, à un pur objet manipulable, sans plus aucune prise sur la situation, le temps que dure l'acte.
 
-#### Applique le mécanisme : reviens à R0
+### Applique le mécanisme : reviens à R0
 
 **Ce que ce critère permet de voir, précisément, dans la scène du chapitre 1 :** quelle que soit la culpabilité du voleur, l'instant où il a été frappé au sol, incapable de se relever, est l'instant où il a cessé d'être traité comme un sujet capable de répondre, de s'expliquer, d'être entendu — pour devenir un pur objet sur lequel une force se décharge. C'est précisément ce que préserve, à l'inverse, un procès, même sévère : l'accusé y reste, en droit, un sujet qui peut témoigner, contester, être entendu par un tiers — une possibilité que le passage à tabac, lui, supprime entièrement.
 
@@ -96,19 +96,19 @@ On peut relire ce mécanisme à la lumière du conflit des libertés décrit par
 
 ## R3 — Hobbes : la violence, un fait structurel de la nature humaine sans autorité commune
 
-#### Un mécanisme déjà construit, à recharger sur la question précise de la violence
+### Un mécanisme déjà construit, à recharger sur la question précise de la violence
 
 Tu as déjà rencontré, dans la leçon « L'État » (chapitre 3), le raisonnement de Hobbes (XVIIe siècle, *Léviathan*, 1651) : dans l'état de nature, l'égalité de fait entre les hommes engendre trois ressorts de conflit — la compétition, la défiance, la gloire — qui produisent une disposition permanente à la guerre de tous contre tous. **Ce qu'il faut ajouter ici, pour comprendre précisément ce que cela implique pour la violence :** ce n'est pas seulement que les hommes EN VIENNENT à se combattre ; c'est qu'aucune limite ne les empêche, structurellement, d'y recourir.
 
-#### Le droit de nature : pourquoi rien n'interdit a priori la violence
+### Le droit de nature : pourquoi rien n'interdit a priori la violence
 
 **Voici le point précis que Hobbes ajoute à sa description de l'état de nature.** Dans cet état, chaque homme dispose de ce que Hobbes nomme le **droit de nature** : la liberté d'user, comme il l'entend, de sa propre force pour préserver sa propre vie — y compris, si son jugement le lui dicte, contre le corps d'autrui. Ce droit n'est pas une licence morale que Hobbes approuverait ; c'est le simple constat qu'aucune limite EXTÉRIEURE ne s'impose encore à la force de chacun, tant qu'aucun pouvoir commun ne fait respecter une borne reconnue par tous. Combiné aux trois ressorts déjà vus, ce droit de nature illimité fait de la violence, non un accident ou une déviation de la nature humaine, mais ce vers quoi elle est structurellement portée dès que fait défaut une autorité commune suffisamment forte pour « tenir chacun en respect ».
 
-#### Ce que cela implique pour l'État
+### Ce que cela implique pour l'État
 
 **Ce que ce raisonnement change à la façon de comprendre le Léviathan :** l'État, chez Hobbes, n'introduit donc pas la violence dans une humanité par ailleurs pacifique — il est, à l'inverse, ce qui la contient, en retirant à chacun son droit privé de se faire justice lui-même et en le concentrant dans les mains d'un souverain unique, seul habilité à en décider l'usage légitime.
 
-#### Applique le mécanisme : reviens à R0
+### Applique le mécanisme : reviens à R0
 
 **Ce que Hobbes dirait de la scène du chapitre 1 :** ce que les quatre voisins ont fait, cette nuit-là, c'est reprendre, l'espace de vingt minutes, ce droit de nature que le contrat social est censé leur avoir fait déposer entre les mains d'une autorité commune — un retour local et passager à la condition même que l'État existe pour empêcher.
 
@@ -120,11 +120,11 @@ Tu as déjà rencontré, dans la leçon « L'État » (chapitre 3), le raisonnem
 
 ## R4 — Rousseau : la violence, un produit de la société et de la propriété
 
-#### Un désaccord frontal avec Hobbes sur le point de départ
+### Un désaccord frontal avec Hobbes sur le point de départ
 
 Rousseau (XVIIIe siècle, *Discours sur l'origine et les fondements de l'inégalité parmi les hommes*, 1755 — à distinguer de *Du contrat social*, 1762, déjà rencontré dans « L'État », chapitre 5) conteste, dès la racine, le portrait hobbesien de l'état de nature. **Le désaccord n'est pas un détail : c'est la thèse inverse.**
 
-#### L'homme naturel : guidé par l'amour de soi et la pitié, pas par la guerre
+### L'homme naturel : guidé par l'amour de soi et la pitié, pas par la guerre
 
 **Voici comment Rousseau construit son propre portrait de l'état de nature.** L'homme naturel, dit-il, est mû par deux sentiments antérieurs à toute réflexion et à tout calcul : l'**amour de soi**, un simple instinct de conservation, neutre, qui ne vise que sa propre survie sans viser à dominer autrui ; et la **pitié**, une répugnance instinctive à voir souffrir un autre être sensible, qui agit comme un frein naturel contre la cruauté gratuite, avant même toute loi et tout raisonnement moral.
 
@@ -136,7 +136,7 @@ Rousseau (XVIIIe siècle, *Discours sur l'origine et les fondements de l'inégal
 
 **Ce que ce point de départ change, radicalement, par rapport à Hobbes :** là où Hobbes ne voit, dans l'état de nature, que des calculs de compétition, de défiance et de gloire, Rousseau y voit un être encore paisible, peu nombreux et dispersé, sans occasion durable de se comparer à ses semblables ni de les craindre structurellement.
 
-#### Le mécanisme de la corruption : la propriété, l'amour-propre, et la naissance de la violence sociale
+### Le mécanisme de la corruption : la propriété, l'amour-propre, et la naissance de la violence sociale
 
 **Alors d'où vient la violence, si elle n'est pas dans la nature de l'homme ?** Rousseau la fait naître d'un événement précis : l'instauration de la propriété. Il l'exprime dans une formule restée célèbre :
 
@@ -148,11 +148,11 @@ Rousseau (XVIIIe siècle, *Discours sur l'origine et les fondements de l'inégal
 
 **Voici le mécanisme que cette formule condense.** Une fois la propriété instituée, les hommes commencent à se comparer les uns aux autres — à mesurer ce qu'ils possèdent, ce qu'ils paraissent, ce qu'ils valent aux yeux d'autrui. Naît alors l'**amour-propre**, à distinguer soigneusement de l'amour de soi : non plus un simple souci de se conserver, mais un désir de primer sur autrui, d'en être envié plutôt que d'être son égal. C'est cet amour-propre, né avec la propriété et la comparaison sociale, qui engendre la compétition, la domination, et les formes de violence — vol, guerre, oppression — que Rousseau associe au développement de la société civile et de l'inégalité, non à la nature humaine elle-même.
 
-#### Ce que cette thèse retourne, très précisément, contre Hobbes
+### Ce que cette thèse retourne, très précisément, contre Hobbes
 
 **Le point à ne surtout pas manquer :** pour Rousseau, ce n'est donc pas la nature humaine qui rend l'homme violent envers son semblable — c'est, à l'inverse, la société elle-même, et en particulier l'institution de la propriété et la comparaison qu'elle engendre, qui corrompt un être originellement paisible et compatissant.
 
-#### Applique la distinction : reviens à R0
+### Applique la distinction : reviens à R0
 
 **Ce que Rousseau dirait de la scène du chapitre 1 :** la violence de cette nuit-là s'expliquerait moins par une nature agressive — chez le voleur comme chez les quatre voisins — que par des rapports sociaux précis : la misère ou l'exclusion qui a rendu le vol nécessaire pour l'un, l'insécurité et la peur accumulées par les cambriolages répétés qui ont fait déborder la colère des autres. Ni le voleur ni les quatre voisins ne seraient, pour Rousseau, violents « par nature » — la scène tout entière serait le symptôme d'un contexte social qui a manqué à chacun.
 
@@ -164,11 +164,11 @@ Rousseau (XVIIIe siècle, *Discours sur l'origine et les fondements de l'inégal
 
 ## R5 — La violence peut-elle servir une fin juste ? Le débat sur la violence révolutionnaire
 
-#### Une question distincte de celle de R1
+### Une question distincte de celle de R1
 
 Le chapitre 2 demandait ce qui distingue, À L'INTÉRIEUR d'un ordre légal donné, une force légitime d'un acte de violence. Mais une autre question se pose quand c'est l'ordre existant LUI-MÊME qui est jugé profondément injuste : que dire d'une violence qui viserait, non à faire respecter la loi en vigueur, mais à renverser un ordre jugé illégitime dans son ensemble ?
 
-#### L'argument en faveur d'une violence libératrice
+### L'argument en faveur d'une violence libératrice
 
 Reprends Marx (« L'État », chapitre 7) : l'État peut fonctionner comme l'instrument d'une classe dominante, ses lois et ses tribunaux n'étant jamais l'arbitre neutre qu'ils prétendent être. Si le droit lui-même sert à protéger un ordre injuste, alors s'en remettre à ses seules voies légales revient, pour ceux qu'il opprime, à accepter indéfiniment cette domination sous couvert de légalité.
 
@@ -179,11 +179,11 @@ Frantz Fanon (XXe siècle, psychiatre et essayiste, *Les Damnés de la terre*, 1
      les manuels -- reformulation en sens, pas citation mot pour mot ; à vérifier sur l'édition de
      référence avant publication si une citation exacte ou une référence de page précise est requise. -->
 
-#### La critique et ses limites : ce que la violence, même « juste », ne résout pas
+### La critique et ses limites : ce que la violence, même « juste », ne résout pas
 
 **Voici, à présent, ce que cette justification rencontre comme limites.** Reprends le chapitre 3 : même mobilisée au service d'une fin jugée juste, la violence reste, dans son geste même, une négation de la personne d'autrui — fût-il oppresseur — puisqu'elle contourne sa liberté au lieu de s'y adresser. Reprends aussi la critique anarchiste (« L'État », chapitre 7) : toute concentration de pouvoir, y compris conquise par une lutte jugée juste, tend structurellement à se retourner contre ceux-là mêmes qu'elle devait libérer. De fait, l'histoire de nombreux mouvements de libération montre que la violence, une fois mobilisée comme moyen, ne s'arrête pas nécessairement une fois la fin visée atteinte : elle peut se retourner contre d'anciens alliés, ou fonder un nouvel ordre qui reproduit, sous une autre bannière, des logiques de contrainte comparables à celles qu'il combattait.
 
-#### Applique la tension : reviens à R0
+### Applique la tension : reviens à R0
 
 **Ce que cette tension permet de voir, à une tout autre échelle, dans la scène du chapitre 1 :** le geste des quatre voisins pose déjà, en miniature, exactement ce dilemme — une fin jugée juste (protéger le quartier, faire cesser les cambriolages) suffit-elle à légitimer n'importe quel moyen mis à son service, ou la nature du moyen employé reste-t-elle, elle aussi, à juger indépendamment de la fin poursuivie ?
 
@@ -195,11 +195,11 @@ Frantz Fanon (XXe siècle, psychiatre et essayiste, *Les Damnés de la terre*, 1
 
 ## R6 — Gandhi : la non-violence comme résistance active, distincte de la passivité
 
-#### Une troisième voie, ni soumission, ni violence
+### Une troisième voie, ni soumission, ni violence
 
 Gandhi (XXe siècle, figure du mouvement d'indépendance indien) refuse les deux issues envisagées jusqu'ici : ni se soumettre à un ordre jugé injuste, ni le combattre par la force (chapitre 6). Il développe une doctrine qu'il nomme **satyagraha** — littéralement, la « fermeté » (agraha) dans la « vérité » (satya), souvent traduite par « force de la vérité ».
 
-#### Le mécanisme précis : pourquoi la non-violence n'est pas une absence de résistance
+### Le mécanisme précis : pourquoi la non-violence n'est pas une absence de résistance
 
 **Voici ce qu'il faut isoler avec précision, car c'est le point le plus souvent manqué.** La non-violence gandhienne n'est pas un simple retrait ou un refus de s'opposer à l'injustice : c'est une **désobéissance civile** organisée et publique — refuser ouvertement de coopérer avec certaines lois jugées injustes (comme lors de la Marche du sel, en 1930, où des milliers d'Indiens marchèrent jusqu'à la mer pour produire eux-mêmes du sel, en violation délibérée du monopole colonial britannique), tout en acceptant, sans se dérober ni riposter, les conséquences de cette désobéissance — l'arrestation, la répression.
 
@@ -213,11 +213,11 @@ Gandhi (XXe siècle, figure du mouvement d'indépendance indien) refuse les deux
      traduction française précise ; à vérifier sur l'édition de référence avant publication si une
      citation exacte est requise. -->
 
-#### Ce que cela évite, à la fois par rapport à R5 et à la passivité
+### Ce que cela évite, à la fois par rapport à R5 et à la passivité
 
 Comparé à la violence révolutionnaire (chapitre 6), le satyagraha refuse de nier la personne de l'adversaire, même en le combattant activement. Comparé à la pure soumission, il refuse tout autant de renoncer à résister : il agit, avec constance et organisation, contre l'ordre jugé injuste — mais par des moyens qui n'en nient pas, eux, la liberté ni la personne, ni celle de l'adversaire ni celle du résistant lui-même.
 
-#### Applique la distinction : reviens à R0
+### Applique la distinction : reviens à R0
 
 **Ce que Gandhi dirait de la scène du chapitre 1 :** si les quatre voisins avaient répondu à l'insécurité de leur quartier par une résistance active mais non-violente — organiser une présence collective visible et continue, documenter et rendre publiques les défaillances répétées de la police, alerter les autorités avec insistance — ils auraient agi avec autant de détermination, sans reproduire sur le voleur le geste même qu'ils lui reprochaient : une atteinte à l'intégrité et à la sécurité d'autrui.
 
@@ -229,11 +229,11 @@ Comparé à la violence révolutionnaire (chapitre 6), le satyagraha refuse de n
 
 ## R7 — Au-delà du monopole légitime : l'État peut-il être lui-même une forme de violence ?
 
-#### Ce que R1 laisse en suspens
+### Ce que R1 laisse en suspens
 
 Le chapitre 2 a établi les critères — loi, procédure, tiers impartial — qui distinguent, chez Weber, une contrainte légitime d'un acte de violence. Mais cette légitimité, une fois établie sociologiquement (reconnue, obéie), suffit-elle à mettre l'État définitivement à l'abri de toute violence — ou peut-il continuer d'exercer, par d'autres moyens que la contrainte physique directe, une forme de domination qui ne dit pas son nom ?
 
-#### Bourdieu : la violence symbolique
+### Bourdieu : la violence symbolique
 
 Pierre Bourdieu (avec Jean-Claude Passeron, XXe siècle, *La Reproduction*, 1970) introduit le concept de **violence symbolique** : une domination qui s'exerce SANS contrainte physique directe, par le seul fait que les catégories, les normes et les hiérarchies imposées par un groupe dominant (de mérite scolaire, de goût, de langage) en viennent à être perçues par les dominés eux-mêmes comme naturelles, légitimes, allant de soi.
 
@@ -241,13 +241,13 @@ Pierre Bourdieu (avec Jean-Claude Passeron, XXe siècle, *La Reproduction*, 1970
 
 **Ce que cela ajoute à la distinction du chapitre 2 :** Bourdieu ne nie pas ce que Weber décrit — un pouvoir légitime, reconnu, obéi sans recours constant à la contrainte physique. Il ajoute que cette reconnaissance même, ce qui fait qu'un pouvoir est obéi sans avoir besoin de recourir sans cesse à la force, peut être, en partie, l'EFFET d'une violence antérieure et plus discrète, qui a façonné les dispositions à accepter l'ordre établi comme naturel avant même toute délibération consciente sur sa légitimité.
 
-#### Ce que cela n'implique pas
+### Ce que cela n'implique pas
 
 **Un point à ne pas manquer :** cela ne signifie pas que tout pouvoir légitime ne serait, par principe, qu'une violence déguisée — Bourdieu décrit un mécanisme précis, observable dans des institutions particulières (l'école, la culture, le langage), qui vient COMPLÉTER l'analyse de Weber, pas l'annuler. De la même façon que la critique marxiste de l'État (« L'État », chapitre 7) n'efface pas les théories du contrat, mais en révèle un envers, la violence symbolique révèle un envers du monopole légitime décrit par Weber, sans prétendre que ce monopole n'existe pas ou que toute obéissance serait, par nature, illégitime.
 
 [[checkpoint:cp-r7-bourdieu]]
 
-#### Fermeture de l'arc : la nuit du quartier, une dernière fois
+### Fermeture de l'arc : la nuit du quartier, une dernière fois
 
 Reviens, une dernière fois, à ces quatre voisins et à l'homme qu'ils ont frappé jusqu'à ce qu'il ne puisse plus se relever.
 
@@ -275,14 +275,14 @@ Sept regards, une même nuit — mais aucun ne réduit ce qui s'y est joué à u
 
 **Sujet :** *La violence est-elle dans la nature de l'homme, ou est-ce la société qui la produit ?*
 
-#### Étape 1 — Analyser les termes du sujet
+### Étape 1 — Analyser les termes du sujet
 
 - **« La violence »** : rappelle-toi la distinction du chapitre 2 — un usage de la force qui ne procède d'aucun droit reconnu (à distinguer de la force légitime), et le chapitre 3 — un acte qui contourne la liberté d'autrui au lieu de s'y adresser, réduisant un sujet à un pur objet.
 - **« Dans la nature de l'homme »** : mobilise Hobbes (chapitre 4) — l'égalité de fait, les trois ressorts du conflit (compétition, défiance, gloire), et le droit de nature illimité qui rend la violence structurelle en l'absence d'autorité commune.
 - **« La société qui la produit »** : mobilise Rousseau (chapitre 5) — l'homme naturel guidé par l'amour de soi et la pitié, corrompu par l'institution de la propriété et l'amour-propre qu'elle engendre ; ajoute, si tu veux enrichir l'antithèse, Marx et Bourdieu (chapitres 6 et 8) sur les formes de domination produites par les rapports sociaux et les institutions.
 - Le sujet est formulé comme une alternative (« ou »), mais une bonne dissertation ne choisit jamais un terme en écartant simplement l'autre : elle montre en quel sens chacun est partiellement vrai, et ce qu'il faut ajouter pour trancher.
 
-#### Étape 2 — Formuler la problématique
+### Étape 2 — Formuler la problématique
 
 Une problématique met en évidence une tension entre deux positions également légitimes en apparence, à laquelle le devoir devra répondre — elle ne reformule pas simplement le sujet.
 
@@ -292,7 +292,7 @@ Une formulation possible :
 
 > *Si la violence semble tenir, chez Hobbes, à un mécanisme déjà présent dans la seule nature humaine privée d'autorité commune, comment expliquer que Rousseau y voie, à l'inverse, le produit d'institutions précises — la propriété, la comparaison sociale — corrompant un être originellement paisible ? Et quelle que soit l'origine véritable de la violence, peut-on jamais la justifier, ou seulement chercher à la limiter ou à la dépasser ?*
 
-#### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
+### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
 
 **I. Thèse — La violence est un fait structurel de la nature humaine.**
 Développe Hobbes (chapitre 4) : l'égalité de fait entre les hommes, combinée aux trois ressorts du conflit (compétition, défiance, gloire) et au droit de nature illimité, rend la violence quasi inévitable dès que manque une autorité commune suffisamment forte. L'État, chez Hobbes, ne produit pas la violence : il la contient.
@@ -303,7 +303,7 @@ Mobilise Rousseau (chapitre 5) : l'homme naturel est guidé par l'amour de soi e
 **III. Dépassement — Quelle que soit l'origine de la violence, la vraie question est de savoir comment la limiter ou la dépasser.**
 Reprends le chapitre 2 (Weber) : distinguer, quelle qu'en soit l'origine, une force encadrée par le droit d'un acte de violence proprement dit. Reprends le chapitre 6 : même une violence mobilisée pour une fin juste reste une négation de la personne, et risque de se retourner contre ceux qu'elle devait libérer. Reprends le chapitre 7 (Gandhi) : une résistance active mais non-violente montre qu'on peut combattre une injustice, d'origine naturelle ou sociale peu importe, sans reproduire le geste même qu'on lui reproche.
 
-#### Étape 4 — Rédiger l'introduction (modèle rédigé)
+### Étape 4 — Rédiger l'introduction (modèle rédigé)
 
 Voici, entièrement rédigée, une introduction possible. Note son mouvement : accroche → définition des termes → tension → problématique → annonce du plan.
 
@@ -311,13 +311,13 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 
 **Ce que fait ce paragraphe, geste par geste :** il ouvre sur la situation concrète de la leçon plutôt que sur une définition abstraite de la violence ; il énonce la thèse hobbesienne avec précision, avant de la mettre sous tension par l'objection rousseauiste ; il pose la problématique sous forme interrogative précise ; il annonce un plan en trois temps qui correspond exactement à la thèse, à l'antithèse et au dépassement construits à l'étape 3.
 
-#### Étape 5 — Un paragraphe rédigé de la partie I, à titre de modèle
+### Étape 5 — Un paragraphe rédigé de la partie I, à titre de modèle
 
 > Pour Hobbes, les hommes sont, à peu près, égaux en force et en ruse : même le plus faible physiquement peut tuer le plus fort, par la ruse ou par surprise. Cette égalité de fait, loin de produire la paix, engendre trois sources de conflit qui s'alimentent l'une l'autre : la compétition pour des biens rares, la défiance qui pousse chacun à frapper le premier par précaution, et la recherche de gloire qui fait réagir violemment au moindre signe de mépris. Dans un tel état, chacun conserve de surcroît un droit de nature illimité, qui l'autorise, faute de loi commune, à user de sa force comme il l'entend pour se préserver, y compris contre autrui. Ainsi comprise, la violence n'a besoin d'aucune institution corrompue pour apparaître : elle surgit du seul défaut d'une autorité commune suffisamment forte pour contenir des ressorts déjà présents dans la nature humaine la plus ordinaire.
 
 **Pourquoi ce paragraphe est construit ainsi :** il ne se contente pas d'affirmer que l'homme est naturellement violent — il fait *fonctionner* le mécanisme précis de Hobbes (les trois ressorts, le droit de nature) avant d'en tirer la conclusion. Remarque la dernière phrase : elle prépare déjà, sans le dire explicitement, la question qui ouvrira la partie II — cette violence, aussi structurelle semble-t-elle chez Hobbes, résiste-t-elle à un tout autre portrait de l'état de nature ?
 
-#### À toi de continuer
+### À toi de continuer
 
 Rédige maintenant, à ton tour :
 

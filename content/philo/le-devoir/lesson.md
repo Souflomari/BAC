@@ -36,7 +36,7 @@ C'est exactement ce problème — comment penser un devoir qui ne se réduise ni
 
 ## R1 — Devoir, obligation, contrainte : où est la différence ?
 
-#### Deux façons de comprendre pourquoi tu ne triches pas
+### Deux façons de comprendre pourquoi tu ne triches pas
 
 Le mot « devoir » recouvre, dans le langage courant, deux idées qu'il faut absolument distinguer avant d'aller plus loin.
 
@@ -46,13 +46,13 @@ Le mot « devoir » recouvre, dans le langage courant, deux idées qu'il faut ab
 
 Remarque que ces deux devoirs peuvent parfaitement se dissocier. Une règle purement administrative — se garer dans les clous, remplir un formulaire dans les délais — peut m'obliger légalement sans engager la moindre exigence morale : je ne me sens pas *meilleur* parce que j'ai coché la bonne case. À l'inverse, je peux me sentir tenu, moralement, à quelque chose que rigoureusement rien ni personne ne m'impose — rendre visite à un ami malade, dire la vérité à quelqu'un que cela va blesser — sans qu'aucune loi, aucun règlement, ne l'exige de moi.
 
-#### La légalité et la moralité : donner un nom à la distinction
+### La légalité et la moralité : donner un nom à la distinction
 
 Cette distinction porte un nom en philosophie morale : on oppose la **légalité** d'une action — le simple fait qu'elle soit conforme à ce qu'une règle extérieure exige — à sa **moralité** — le fait qu'elle soit accomplie par un motif proprement moral, indépendant de toute contrainte ou de tout intérêt personnel.
 
 Une action peut être légale sans être morale : payer ses impôts uniquement pour éviter un redressement fiscal est parfaitement légal, mais ne révèle, en soi, aucune vertu — la même action, faite par conviction que contribuer à la collectivité est juste, serait légale ET morale. Une action peut aussi être morale sans qu'aucune loi ne l'exige : rien ne t'oblige légalement à consoler un camarade en détresse, et pourtant tu peux sentir, très fortement, que tu le *dois*.
 
-#### Pourquoi on ne peut pas s'arrêter à l'une ou l'autre réponse
+### Pourquoi on ne peut pas s'arrêter à l'une ou l'autre réponse
 
 On pourrait être tenté de trancher vite : « le devoir n'est jamais que la peur de la sanction, le reste n'est que discours » — ou à l'inverse : « le devoir moral existe et il suffit de l'écouter, la loi n'a rien à voir là-dedans ». Les deux réponses, prises seules, posent un problème sérieux.
 
@@ -70,13 +70,13 @@ Mais affirmer un devoir moral pur, détaché de toute contrainte, sans jamais in
 
 ## R2 — Kant : le devoir pour le devoir
 
-#### La bonne volonté : le seul bien sans restriction
+### La bonne volonté : le seul bien sans restriction
 
 Kant (XVIIIe siècle, *Fondements de la métaphysique des mœurs*, 1785) ouvre son enquête morale par une affirmation qui structure toute sa pensée : de tout ce qu'on pourrait juger bon dans le monde — l'intelligence, le courage, la richesse, la santé, même le bonheur — rien n'est bon absolument, sans restriction. Chacune de ces qualités peut devenir mauvaise si elle est mise au service d'une mauvaise intention : l'intelligence d'un escroc le rend plus dangereux, pas meilleur. La seule chose qui reste bonne quelles que soient les circonstances, dit Kant, c'est la **bonne volonté** — vouloir faire ce qui est bien, pour cette seule raison que c'est bien.
 
 **Ce que fait ce geste, précisément :** il déplace le jugement moral. Ce n'est plus le résultat obtenu, ni même les qualités de la personne, qui décident si une action est moralement bonne — c'est l'intention qui l'a produite. Une action peut échouer, produire un mauvais résultat par malchance, et rester pourtant moralement bonne si elle venait d'une bonne volonté ; à l'inverse, une action qui réussit peut n'avoir aucune valeur morale si elle venait d'un mauvais motif.
 
-#### Agir par devoir, agir conformément au devoir : l'exemple du commerçant honnête
+### Agir par devoir, agir conformément au devoir : l'exemple du commerçant honnête
 
 Kant précise alors ce que « bonne volonté » veut dire, à travers un exemple resté célèbre : celui du commerçant qui ne trompe jamais un client inexpérimenté sur le prix, même quand il pourrait le faire sans risque.
 
@@ -91,7 +91,7 @@ Applique cette distinction à la salle d'examen. Ne pas regarder la copie de ta 
 
 [[checkpoint:cp-r2-devoir-par]]
 
-#### L'impératif catégorique : la loi universelle
+### L'impératif catégorique : la loi universelle
 
 Reste une question : comment savoir, concrètement, ce que le devoir exige dans une situation donnée ? Kant propose un test, qu'il appelle l'**impératif catégorique** — « catégorique » parce qu'il commande sans condition, sans « si » (contrairement à un conseil du type « si tu veux réussir, travaille », qui ne vaut que pour qui veut réussir).
 
@@ -103,7 +103,7 @@ Sa première formulation est une règle de cohérence rationnelle :
 
 **Retour à l'examen, avec ce test appliqué pas à pas.** La maxime derrière « je regarde la copie de ma voisine sans être vu » serait quelque chose comme : « je peux tricher chaque fois que je suis certain de ne pas être découvert. » Peux-tu vouloir que cette règle devienne universelle — que tout élève, partout, triche dès qu'il est sûr de ne pas être vu ? Non : si tout le monde faisait cela, la notion même d'examen, de note, de diplôme, perdrait tout son sens — un système de vérification que tout le monde contourne en secret ne vérifie plus rien. La règle se détruit elle-même dès qu'on la généralise. C'est précisément ce test — pas la peur du surveillant — que Kant propose comme fondement du devoir.
 
-#### Traiter l'humanité comme une fin : devoir envers soi, devoir envers autrui
+### Traiter l'humanité comme une fin : devoir envers soi, devoir envers autrui
 
 Kant formule le même principe sous un second angle, complémentaire du premier :
 
@@ -121,7 +121,7 @@ Ce principe éclaire un point souvent oublié : le devoir, chez Kant, ne concern
 
 Kant a proposé un critère puissant : agir par devoir, selon une maxime universalisable, sans égard pour les conséquences ni les inclinations. Les deux positions qui suivent ne rejettent pas l'idée de devoir — mais elles montrent, chacune à sa manière, que ce critère, pris tout seul et de façon rigide (on parle de **formalisme** kantien, parce que Kant juge l'action sur la seule *forme* de sa maxime, jamais sur son contenu ni ses conséquences), laisse quelque chose d'important hors du tableau.
 
-#### La critique utilitariste : et si le résultat comptait aussi ?
+### La critique utilitariste : et si le résultat comptait aussi ?
 
 L'**utilitarisme** (Bentham, puis Mill, XVIIIe-XIXe siècle) renverse la perspective kantienne : une action n'est pas jugée bonne ou mauvaise selon la pureté de son motif, mais selon ses conséquences — selon qu'elle produit, au final, plus de bonheur que de souffrance, pour le plus grand nombre de personnes concernées.
 
@@ -131,7 +131,7 @@ Cette perspective met en lumière une faille réelle du formalisme kantien pouss
 
 [[checkpoint:cp-r3-formalisme]]
 
-#### Bergson : l'obligation sociale et l'élan qui la dépasse
+### Bergson : l'obligation sociale et l'élan qui la dépasse
 
 Bergson (*Les Deux Sources de la morale et de la religion*, 1932) propose une analyse différente, qui ne se place pas du côté des conséquences mais du côté de l'origine psychologique et sociale du devoir.
 
@@ -145,7 +145,7 @@ La **morale ouverte**, à l'inverse, ne procède pas d'une pression mais d'un **
 
 [[checkpoint:cp-r3-bergson]]
 
-#### Fermeture de l'arc : le devoir suppose la liberté
+### Fermeture de l'arc : le devoir suppose la liberté
 
 Un dernier fil relie tout ce qu'on vient de voir, et il faut le rendre explicite : parler de devoir n'a de sens que si celui à qui on l'adresse est **libre** de faire autrement.
 
@@ -163,13 +163,13 @@ Reviens, une dernière fois, à la salle d'examen. Kant dirait que ne pas regard
 
 **Sujet :** *Suffit-il d'agir par devoir pour bien agir ?*
 
-#### Étape 1 — Analyser les termes du sujet
+### Étape 1 — Analyser les termes du sujet
 
 - **« Agir par devoir »** : rappelle-toi la distinction de Kant (chapitre 3) — agir par pur respect de l'exigence morale elle-même, et non par intérêt, inclination, ou peur d'une sanction (agir *conformément* au devoir).
 - **« Bien agir »** : cette expression suppose déjà qu'il existe un critère du bien agir. Le sujet demande si ce critère se limite à « avoir agi par devoir », ou s'il faut y ajouter autre chose.
 - **« Suffit-il »** : c'est une question de suffisance, pas d'existence. Le sujet ne demande pas si agir par devoir est UNE façon de bien agir (Kant l'a établi), mais si c'est LA SEULE condition nécessaire — s'il n'en faudrait pas davantage.
 
-#### Étape 2 — Formuler la problématique
+### Étape 2 — Formuler la problématique
 
 Une problématique met en évidence une tension entre deux positions également légitimes en apparence, à laquelle le devoir devra répondre — elle ne reformule pas simplement le sujet.
 
@@ -179,7 +179,7 @@ Une formulation possible :
 
 > *Si le seul respect du devoir suffisait à garantir qu'on agit bien, comment expliquer les cas où un devoir appliqué sans égard pour ses conséquences ou pour l'élan qui pourrait l'animer produit un résultat manifestement contestable — et faut-il alors autre chose, en plus du devoir, pour bien agir ?*
 
-#### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
+### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
 
 **I. Thèse — Il suffit d'agir par devoir pour bien agir.**
 Développe la position kantienne (chapitre 3) : la bonne volonté comme seul bien sans restriction, l'impératif catégorique comme critère rationnel et universel, indépendant des circonstances et des inclinations. Utilise l'exemple du commerçant honnête et le test de la maxime universalisable.
@@ -190,7 +190,7 @@ Mobilise la critique utilitariste (chapitre 4) : un devoir jugé sur sa seule fo
 **III. Dépassement — Le devoir demeure nécessaire, mais bien agir suppose de l'articuler aux conséquences et à l'élan, sur le fond d'une liberté qu'il présuppose.**
 Reprends la fermeture de la leçon (chapitre 4) : le devoir garantit ce qu'aucune conséquence ni aucun élan ne garantit seul — l'exigence universelle, valable pour tous, indépendante du hasard des résultats et de la générosité inégale des individus. Mais bien agir pleinement suppose d'y ajouter l'attention aux conséquences réelles de l'acte et, quand elle existe, la part d'élan qui dépasse la simple obéissance. Et rappelle que tout ce dispositif — devoir, conséquences pesées, élan personnel — ne prend sens que parce qu'on est libre de choisir : c'est cette liberté qui rend, en dernier lieu, quelqu'un responsable de bien ou mal agir.
 
-#### Étape 4 — Rédiger l'introduction (modèle rédigé)
+### Étape 4 — Rédiger l'introduction (modèle rédigé)
 
 Voici, entièrement rédigée, une introduction possible. Note son mouvement : accroche → définition des termes → tension → problématique → annonce du plan.
 
@@ -198,13 +198,13 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 
 **Ce que fait ce paragraphe, geste par geste :** il ouvre sur un exemple concret (l'élève et la copie qui traîne), directement issu de la leçon, plutôt que sur une définition abstraite ; il énonce la thèse kantienne avec précision avant de la mettre sous tension ; il fait apparaître la tension par deux questions successives (le cas du meurtrier, le cas du dévouement sans devoir) plutôt que par une simple affirmation ; il pose la problématique sous forme interrogative précise ; il annonce un plan en trois temps qui correspond exactement à la thèse, à l'antithèse et au dépassement construits à l'étape 3.
 
-#### Étape 5 — Un paragraphe rédigé de la partie I, à titre de modèle
+### Étape 5 — Un paragraphe rédigé de la partie I, à titre de modèle
 
 > Agir par devoir, au sens où Kant l'entend, c'est agir par pur respect pour une exigence que la raison se donne à elle-même, indépendamment de toute inclination et de tout intérêt personnel. Le commerçant qui ne trompe jamais ses clients, même quand il pourrait le faire sans risque et sans perdre leur confiance, montre par cette seule constance que son honnêteté ne dépend d'aucun calcul : elle continuerait de valoir même si elle cessait d'être rentable. C'est ce critère que l'impératif catégorique rend testable : une action est due si la règle qu'elle suit peut être voulue comme loi valable pour tous, sans se détruire elle-même une fois généralisée. Ainsi comprise, la bonne action ne se juge ni à son résultat, qui peut toujours dépendre du hasard, ni au tempérament plus ou moins généreux de celui qui agit, mais à la seule cohérence rationnelle de son motif — ce qui la rend, en principe, accessible à quiconque est capable de raisonner, et non réservée à quelques natures exceptionnelles.
 
 **Pourquoi ce paragraphe est construit ainsi :** il ne se contente pas d'affirmer la thèse kantienne — il la fait *fonctionner* sur l'exemple du commerçant et sur le test de l'impératif catégorique, comme la leçon l'a fait. Remarque la dernière phrase : elle prépare déjà, sans le dire explicitement, la question qui ouvrira la partie II — un critère aussi indifférent au résultat et au tempérament de chacun ne risque-t-il pas, dans certains cas, d'ignorer ce que le résultat ou l'élan auraient pourtant de moralement décisif ?
 
-#### À toi de continuer
+### À toi de continuer
 
 Rédige maintenant, à ton tour :
 

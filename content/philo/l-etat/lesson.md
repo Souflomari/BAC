@@ -36,27 +36,27 @@ C'est exactement ce problème — l'État est-il ce qui nous protège de nous-m�
 
 ## R1 — L'État, la société, le gouvernement, la nation : quatre mots qu'on confond
 
-#### Un mot du langage courant qui recouvre plusieurs réalités distinctes
+### Un mot du langage courant qui recouvre plusieurs réalités distinctes
 
 Dans une conversation ordinaire, on emploie souvent « l'État », « le gouvernement », « le pays », « la société » et « la nation » comme s'ils étaient interchangeables. Avant de demander si l'État est légitime, protecteur ou oppressif, il faut savoir précisément de quoi on parle — car la réponse change selon lequel de ces quatre mots on vise réellement.
 
-#### La société : le tissu des rapports entre individus
+### La société : le tissu des rapports entre individus
 
 La **société** désigne l'ensemble des individus liés entre eux par des rapports d'interdépendance — économiques, familiaux, culturels. Une société peut exister sans aucune organisation politique centralisée : des communautés villageoises, des groupes humains organisés par la coutume et la parenté, fonctionnent en société bien avant, ou en dehors, de toute structure qu'on appellerait un État au sens plein.
 
-#### Le gouvernement : ceux qui exercent le pouvoir, à un moment donné
+### Le gouvernement : ceux qui exercent le pouvoir, à un moment donné
 
 Le **gouvernement** désigne l'ensemble des personnes et des institutions qui exercent, à un moment précis, le pouvoir exécutif — un chef d'État ou de gouvernement, un cabinet ministériel, une majorité parlementaire. Le trait décisif du gouvernement, c'est qu'il **change** : des élections, une alternance, parfois un coup de force, portent une équipe au pouvoir puis une autre. Rien, dans ce changement, n'implique que le pays lui-même ait changé de nature politique.
 
-#### L'État : l'appareil permanent qui subsiste à travers les changements de gouvernement
+### L'État : l'appareil permanent qui subsiste à travers les changements de gouvernement
 
 L'**État**, lui, désigne quelque chose de plus abstrait et de plus stable : l'appareil impersonnel — lois, administration, justice, armée, un territoire délimité, une souveraineté reconnue — qui continue d'exister À TRAVERS les changements de gouvernement. Quand un gouvernement tombe, à la suite d'élections perdues ou d'une crise politique, l'État, lui, demeure : les tribunaux continuent de juger, l'administration continue de fonctionner, les frontières restent les mêmes, les traités signés restent en vigueur. **C'est précisément ce critère de permanence, au-delà des personnes qui gouvernent, qui distingue l'État du gouvernement.**
 
-#### La nation : une communauté qui se sent liée par une identité partagée
+### La nation : une communauté qui se sent liée par une identité partagée
 
 La **nation**, enfin, désigne une communauté qui se sent liée par une identité commune — une langue, une histoire, une mémoire, parfois une culture ou une religion partagées. Le point important : la nation ne coïncide pas nécessairement avec l'État. Certaines nations existent sans disposer d'un État qui leur soit propre ; certains États rassemblent, en leur sein, plusieurs nations ou plusieurs identités culturelles distinctes. Le tiret qui unit l'expression courante « État-nation » masque une coïncidence historique fréquente, mais jamais nécessaire.
 
-#### Applique la distinction : reviens à la ville dans le noir
+### Applique la distinction : reviens à la ville dans le noir
 
 **Ce que ce découpage permet de voir, précisément, dans la situation du chapitre 1 :** ce qui a authentiquement reculé, cette nuit-là, ce n'est ni la société (les gens continuaient d'appartenir aux mêmes familles, aux mêmes quartiers, aux mêmes réseaux de voisinage), ni la nation (aucun sentiment d'appartenance collective ne s'est brusquement dissous en une nuit), ni même l'État en tant qu'institution (les lois qui sanctionnent le vol demeuraient parfaitement en vigueur, et se seraient appliquées dès le lendemain matin à quiconque aurait été identifié). Ce qui a reculé, très précisément, c'est la présence concrète et immédiate de l'un des BRAS de l'État — ses agents, ses patrouilles, sa capacité à faire respecter la loi en temps réel. L'État, comme institution, n'a pas disparu cette nuit-là ; seule sa capacité d'application immédiate s'est provisoirement absentée. Cette nuance sera décisive plus loin (chapitre 6), quand il s'agira de comprendre ce qui distingue une autorité légitime d'une simple force.
 
@@ -68,11 +68,11 @@ La **nation**, enfin, désigne une communauté qui se sent liée par une identit
 
 ## R2 — Hobbes : l'état de nature, la guerre de tous contre tous, et le Léviathan
 
-#### Une expérience de pensée, pas nécessairement un récit historique
+### Une expérience de pensée, pas nécessairement un récit historique
 
 Hobbes (XVIIe siècle, *Léviathan*, 1651) part d'une question simple : pourquoi les hommes accepteraient-ils de se soumettre à une autorité politique, avec tout ce que cela suppose de contrainte ? Pour y répondre, il imagine ce que serait la condition humaine en l'absence de toute autorité commune — l'**état de nature**. Il faut bien comprendre la nature de cette démarche : Hobbes ne prétend pas nécessairement décrire un moment historique réel qu'auraient traversé des populations primitives ; il construit une expérience de pensée destinée à faire apparaître, par contraste, ce que l'État nous apporte — un peu comme on comprendrait la valeur de l'air respirable en imaginant, par la pensée, ce que serait son absence totale.
 
-#### Le mécanisme qui conduit à la guerre de tous contre tous
+### Le mécanisme qui conduit à la guerre de tous contre tous
 
 **Voici le raisonnement de Hobbes, étape par étape.** Les hommes, dit-il, sont fondamentalement assez égaux en force et en ruse : même le plus faible physiquement peut tuer le plus fort, par la ruse, par surprise, ou en s'alliant à d'autres. Cette égalité de fait, loin de produire la paix, engendre trois sources de conflit qu'il énumère précisément : la **compétition** (deux hommes désirent la même chose rare, et deviennent ennemis pour se l'approprier) ; la **défiance** (chacun, sachant que l'autre pourrait l'attaquer par précaution, en vient à attaquer le premier, par pure précaution lui aussi) ; et la **gloire** (chacun cherche à être craint ou respecté, ce qui le pousse à réagir violemment au moindre signe de mépris).
 
@@ -83,13 +83,13 @@ Hobbes (XVIIe siècle, *Léviathan*, 1651) part d'une question simple : pourquoi
      entre parenthèses est une glose de sens, pas une traduction officielle vérifiée mot à mot --
      à confirmer avant publication si une traduction exacte, référencée à une édition précise, est requise. -->
 
-#### Pourquoi le pouvoir souverain doit être quasi absolu : le coeur de l'argument
+### Pourquoi le pouvoir souverain doit être quasi absolu : le coeur de l'argument
 
 Comment sortir de cet état ? Par la raison, dit Hobbes, qui dicte de rechercher la paix chaque fois qu'elle est possible. Cela suppose que chacun accepte de renoncer à son droit illimité sur toute chose, et transfère ce droit à une autorité unique — une personne ou une assemblée — chargée d'agir au nom de tous et dotée d'une force suffisante pour faire respecter la paix.
 
 **Voici le point le plus souvent manqué, et pourtant décisif :** pourquoi cette autorité doit-elle être quasi absolue et pratiquement irrévocable ? Parce que si chaque individu conservait le droit de juger, par lui-même, quand désobéir légitimement au souverain, on recréerait exactement la situation que le contrat devait permettre d'éviter : autant d'juges de la légitimité qu'il y a d'individus, donc autant de sources de désaccord possibles, donc un retour, à terme, à la guerre de tous contre tous. Une autorité divisée ou révocable au moindre désaccord équivaut, face à quelqu'un décidé à rompre la paix, à une autorité fonctionnellement absente. C'est cette logique — et non un simple goût pour la tyrannie — qui pousse Hobbes à réclamer un pouvoir souverain fort, unifié et durable.
 
-#### Le Léviathan : un « dieu mortel » fait de tous les individus réunis
+### Le Léviathan : un « dieu mortel » fait de tous les individus réunis
 
 Hobbes nomme ce souverain artificiel le **Léviathan**, empruntant le nom d'un monstre marin biblique pour désigner une puissance immense, fabriquée par les hommes eux-mêmes. Le frontispice célèbre de l'ouvrage représente ce Léviathan comme un géant couronné, tenant l'épée et le sceptre, dont le corps entier est composé d'une multitude de petits corps humains : une image exacte de la thèse — le souverain n'est rien d'autre que la personne artificielle que les individus forment en abandonnant, ensemble, leur droit individuel sur toute chose.
 
@@ -101,19 +101,19 @@ Hobbes nomme ce souverain artificiel le **Léviathan**, empruntant le nom d'un m
 
 ## R3 — Locke : un état de nature moins violent, un contrat pour protéger des droits déjà là
 
-#### Un désaccord frontal avec Hobbes sur la nature de l'état de nature
+### Un désaccord frontal avec Hobbes sur la nature de l'état de nature
 
 Locke (XVIIe siècle, *Second traité du gouvernement civil*, 1690) reprend l'idée d'un état de nature antérieur à toute autorité politique — mais il en donne un portrait très différent de celui de Hobbes. Pour Locke, la raison — qui est aussi une loi de nature — gouverne déjà, dans une certaine mesure, cet état : les individus y possèdent déjà, indépendamment de tout État, des **droits naturels** — le droit à la vie, à la liberté, et à la propriété (entendue comme le fruit de son propre travail). L'état de nature lockien est d'abord un état d'égalité et de liberté, pas d'emblée une guerre généralisée.
 
-#### Le problème n'est pas la violence généralisée, mais l'insécurité de ces droits
+### Le problème n'est pas la violence généralisée, mais l'insécurité de ces droits
 
 **Alors pourquoi, malgré tout, quitter cet état ?** Locke identifie ce qu'il appelle des « inconvénients » : il manque, dans l'état de nature, une loi écrite et connue de tous sur laquelle chacun s'accorderait ; il manque un juge impartial pour trancher les litiges ; il manque une force capable de faire exécuter les jugements rendus. Résultat concret : chacun devient juge dans sa propre cause, ce qui l'incline, presque inévitablement, à se montrer partial en sa propre faveur — et les désaccords, même mineurs au départ, dégénèrent faute d'arbitre reconnu par tous. **Le raisonnement de Locke est donc différent de celui de Hobbes sur un point précis :** pour Hobbes, on quitte l'état de nature pour échapper à une guerre déjà installée ; pour Locke, on en sort pour SÉCURISER des droits qui existent déjà mais restent fragiles, faute d'un pouvoir commun pour les faire respecter.
 
-#### Un contrat conditionnel, une autorité révocable
+### Un contrat conditionnel, une autorité révocable
 
 **Ce que cette différence change, très concrètement, à la nature du contrat :** puisque le rôle de l'autorité politique est seulement de protéger des droits préexistants, cette autorité n'est légitime qu'À CONDITION de remplir effectivement ce rôle. Le pouvoir politique, chez Locke, n'est jamais transféré de façon irrévocable et absolue comme chez Hobbes : il est confié, un peu comme on confie un mandat à un représentant de confiance (un *trust*), pour un usage précis. Si le gouvernement trahit cette confiance — s'il se met à confisquer arbitrairement les biens, à emprisonner sans jugement, à gouverner en tyran plutôt qu'en protecteur des droits — le peuple retrouve, selon Locke, un **droit de résistance** : le contrat rompu par le gouvernement libère les gouvernés de leur obligation d'obéissance, et autorise même, dans les cas extrêmes, à instituer une nouvelle autorité.
 
-#### Applique la différence : un souverain qui confisque arbitrairement des terres
+### Applique la différence : un souverain qui confisque arbitrairement des terres
 
 **Prends un même événement et regarde ce que chaque théorie en dirait.** Un souverain confisque, sans jugement ni justification, les terres d'un sujet. Pour Hobbes, aussi choquant cet acte puisse-t-il paraître, aucun individu n'a le droit de se faire justice lui-même ou de se soulever : accorder à chacun ce droit de juger reviendrait à redonner à chacun le pouvoir de désobéir « au nom de la justice », ce qui rouvrirait la porte à la guerre de tous contre tous que le contrat visait justement à fermer — seul le souverain, en dernier ressort, tranche ce qui est juste dans la cité. Pour Locke, au contraire, cet acte constitue une violation manifeste de la finalité même du contrat (protéger la propriété) : il justifie, en droit, la résistance, voire le renversement du pouvoir en place. Le même fait produit deux verdicts opposés, parce que les deux théories ne fondent pas le pouvoir politique sur la même chose.
 
@@ -125,21 +125,21 @@ Locke (XVIIe siècle, *Second traité du gouvernement civil*, 1690) reprend l'id
 
 ## R4 — Rousseau : le contrat social et la volonté générale
 
-#### Un désaccord avec Hobbes : l'aliénation à un tiers pose un problème
+### Un désaccord avec Hobbes : l'aliénation à un tiers pose un problème
 
 Rousseau (XVIIIe siècle, *Du contrat social*, 1762) reproche à Hobbes un point précis : dans sa théorie, chaque individu transfère ses droits à un souverain qui, lui, ne fait partie d'aucun contrat — il reçoit un pouvoir sans rendre de compte à personne. Rousseau juge ce schéma intenable : si je me soumets entièrement à une volonté extérieure à moi, sans réciprocité, ma situation ne se distingue plus vraiment de celle d'un esclave face à son maître — l'obéissance politique devient une pure sujétion, pas un engagement légitime.
 
-#### Le geste central : une aliénation totale, mais égale pour tous
+### Le geste central : une aliénation totale, mais égale pour tous
 
 **Voici la solution de Rousseau, et le raisonnement précis qui la soutient.** Chaque associé, dit-il, doit aliéner TOTALEMENT tous ses droits — mais pas à un tiers séparé : à la communauté tout entière, dont il devient lui-même membre à part égale. **Pourquoi cette totalité, et cette égalité, résolvent-elles le problème posé par Hobbes ?** Parce que, l'aliénation étant totale et strictement identique pour chacun, personne ne cède plus que les autres, et personne ne reçoit un pouvoir que les autres n'auraient pas : chacun, en se donnant tout entier, ne se donne, au fond, à personne en particulier — puisque tous font exactement le même geste, au même moment, dans les mêmes conditions. C'est cette symétrie parfaite qui, selon Rousseau, empêche l'association de dégénérer en rapport de domination.
 
-#### La volonté générale, distincte de la volonté de tous
+### La volonté générale, distincte de la volonté de tous
 
 Cet acte d'association fait naître un corps moral et collectif, dont Rousseau nomme la volonté propre la **volonté générale**. Il faut la distinguer soigneusement de ce qu'il appelle la **volonté de tous** : la volonté de tous n'est que la somme des volontés particulières — l'addition brute de tous les intérêts privés, qui peuvent parfaitement se neutraliser ou s'annuler entre eux sans jamais viser autre chose que des intérêts individuels juxtaposés. La volonté générale, elle, vise spécifiquement l'**intérêt commun** — ce qui est bon pour la communauté EN TANT QUE telle, au-delà de la simple addition des préférences privées.
 
 **Un exemple pour sentir la différence.** Imagine une assemblée où chacun vote uniquement en fonction de son intérêt personnel immédiat (moins d'impôts pour moi, plus d'avantages pour mon groupe) : le résultat du vote, aussi démocratique soit-il dans sa procédure, n'exprime que la volonté de tous — une résultante d'intérêts privés en concurrence. Pour que se dégage la volonté générale, chacun devrait, au moment de voter, se demander non « qu'est-ce qui m'avantage, moi ? » mais « qu'est-ce qui est bon pour la communauté dans son ensemble ? ». C'est cette visée du bien commun, et non le simple décompte des voix, qui définit la volonté générale — même si, en pratique, Rousseau pense que le vote reste le meilleur moyen imparfait de s'en approcher.
 
-#### Une loi qu'on se prescrit à soi-même
+### Une loi qu'on se prescrit à soi-même
 
 Puisque la loi légitime, chez Rousseau, exprime la volonté générale — celle-là même à laquelle chaque citoyen participe comme membre du corps politique — obéir à cette loi n'est pas obéir à un pouvoir étranger : c'est, en un sens profond, obéir à ce que la communauté, dont on fait partie, se prescrit collectivement à elle-même (cf. la leçon « La liberté », où ce mécanisme précis est développé : « l'obéissance à la loi qu'on s'est prescrite est liberté »).
 
@@ -151,11 +151,11 @@ Puisque la loi légitime, chez Rousseau, exprime la volonté générale — cell
 
 ## R5 — La force ne fait pas le droit : qu'est-ce qui rend le pouvoir légitime ?
 
-#### Une question restée en suspens : autorité ou simple force ?
+### Une question restée en suspens : autorité ou simple force ?
 
 Les trois théories précédentes expliquent pourquoi des individus pourraient rationnellement accepter une autorité politique commune. Mais elles ne répondent pas encore à une question plus profonde : qu'est-ce qui distingue un pouvoir légitime — auquel on doit obéir — d'un pouvoir qui n'est, au fond, que le plus fort ? Un cambrioleur armé « t'ordonne » de lui remettre ton portefeuille ; tu obéis, sous la contrainte. Personne, pourtant, ne dirait que tu avais le DEVOIR de lui obéir. Qu'est-ce qui rend l'ordre d'un État différent, dans son principe, de celui du cambrioleur ?
 
-#### Rousseau : la force seule ne peut jamais fonder une obligation véritable
+### Rousseau : la force seule ne peut jamais fonder une obligation véritable
 
 Rousseau, dans *Du contrat social* (Livre I, chapitre III, « Du droit du plus fort »), affronte directement cette question par une formule restée célèbre :
 
@@ -165,7 +165,7 @@ Rousseau, dans *Du contrat social* (Livre I, chapitre III, « Du droit du plus f
 
 **Ce que cela implique, très précisément :** être forcé d'obéir (le cambrioleur) et être dans l'obligation d'obéir (une loi qu'on reconnaît comme légitime) ne sont pas la même chose, même si les deux peuvent, dans l'instant, produire exactement le même comportement extérieur. Seul le second implique un devoir qui persisterait même si la contrainte physique disparaissait momentanément — exactement ce que la ville dans le noir du chapitre 1 permettait déjà de pressentir : si l'ordre ne tenait qu'à la force visible de la police, son absence totale, une nuit durant, aurait dû faire s'effondrer partout l'obéissance à la loi. Ce n'est pourtant pas ce qui s'est produit dans la plupart des quartiers — signe qu'autre chose qu'une pure crainte de la force opérait encore.
 
-#### Weber : le monopole de la violence physique légitime
+### Weber : le monopole de la violence physique légitime
 
 Max Weber (sociologue et philosophe politique, début du XXe siècle, *Le savant et le politique*, 1919) propose une définition sociologique de l'État qui prolonge, sur un autre plan, cette même distinction entre force et droit : l'État, écrit-il en substance, est cette communauté humaine qui revendique avec succès, sur un territoire donné, le **monopole de la violence physique légitime**.
 
@@ -181,7 +181,7 @@ Max Weber (sociologue et philosophe politique, début du XXe siècle, *Le savant
 
 ## R6 — Critiques de l'État : domination de classe, refus radical, dérives totalitaires
 
-#### Marx : l'État comme instrument de domination de classe
+### Marx : l'État comme instrument de domination de classe
 
 Marx (avec Engels, XIXe siècle, *Manifeste du parti communiste*, 1848 ; Engels seul, *L'Origine de la famille, de la propriété privée et de l'État*, 1884) conteste, à la racine, l'image d'un État arbitre neutre au service de tous que les théories du contrat, chacune à sa façon, laissent supposer.
 
@@ -195,11 +195,11 @@ Marx (avec Engels, XIXe siècle, *Manifeste du parti communiste*, 1848 ; Engels 
 
 **Ce que cette thèse ajoute, très précisément, à ce qu'on a vu jusqu'ici :** Marx ne nie pas que l'État se présente, et soit souvent sincèrement vécu par ses agents, comme un arbitre impartial au service de l'intérêt général. Son point est plus retors : cette neutralité proclamée masque, sans que la plupart de ses acteurs en aient pleinement conscience, une fonction réelle de protection des rapports de propriété existants — ses lois, ses tribunaux, sa police présupposent et font respecter un ordre économique dont ils ne sont jamais le juge neutre. Dès lors, l'égalité formelle promise par les théories du contrat (les mêmes droits pour tous devant la loi) peut coexister, sans aucune contradiction logique, avec une domination économique bien réelle qu'elle ne fait qu'habiller.
 
-#### L'anarchisme : un refus plus radical encore
+### L'anarchisme : un refus plus radical encore
 
 Proudhon et Bakounine (XIXe siècle) partagent avec Marx la critique de l'ordre économique existant — mais divergent de lui sur un point capital, qu'il ne faut surtout pas effacer : là où Marx envisage de S'EMPARER de l'État, le temps d'une phase transitoire, pour ensuite viser sa disparition progressive une fois les classes abolies, les anarchistes soutiennent que l'État EN LUI-MÊME — quel que soit celui qui le détient, fût-ce au nom du prolétariat — reproduit nécessairement la hiérarchie et la domination. Une concentration de pouvoir aussi importante que celle que décrit Weber (le monopole de la violence légitime) ne peut, selon eux, être neutre entre les mains de personne : elle finit toujours par se retourner en privilège de ceux qui l'exercent. D'où une conclusion différente de celle de Marx : il ne s'agit pas de conquérir l'État, même provisoirement, mais de l'abolir directement, au profit d'associations libres et horizontales. Ce désaccord, historiquement, a opposé frontalement Bakounine à Marx au sein de la Première Internationale.
 
-#### Les dérives totalitaires et l'État de droit comme garde-fou
+### Les dérives totalitaires et l'État de droit comme garde-fou
 
 L'expérience du XXe siècle a montré, très concrètement, ce que Hobbes n'avait qu'entrevu en théorie : un pouvoir souverain non limité, même s'il se présente d'abord comme un protecteur du peuple, peut basculer en un appareil qui surveille, contrôle et écrase entièrement ceux qu'il devait servir — effaçant, dans les faits, aussi bien les droits que Locke jugeait antérieurs à l'État que la volonté générale que Rousseau voulait voir exprimée par la loi.
 
@@ -207,7 +207,7 @@ L'expérience du XXe siècle a montré, très concrètement, ce que Hobbes n'ava
 
 > **Erreur à éviter :** ne fonds pas ensemble ces trois critiques, qui répondent à des questions différentes et proposent des remèdes différents. Marx veut TRANSFORMER l'appareil d'État à des fins économiques, en vue de sa disparition à terme. Les anarchistes veulent l'ABOLIR d'emblée, sans phase transitoire, quel qu'en soit le titulaire. La tradition de l'État de droit ne veut ni l'un ni l'autre : elle veut LIMITER et contrôler le pouvoir de l'État par le droit, sans remettre en cause son existence. Confondre ces trois positions parce qu'elles critiquent toutes, à des degrés divers, le pouvoir étatique est l'une des erreurs les plus fréquentes sur cette question.
 
-#### Fermeture de l'arc : la ville dans le noir, une dernière fois
+### Fermeture de l'arc : la ville dans le noir, une dernière fois
 
 Reviens, une dernière fois, à ce quartier plongé dans l'obscurité, pendant que d'autres, cette même nuit, restaient calmes.
 
@@ -235,14 +235,14 @@ Six regards, six mécanismes différents — mais aucun ne réduit ce qui s'est 
 
 **Sujet :** *L'État est-il au service de notre liberté, ou en est-il la négation ?*
 
-#### Étape 1 — Analyser les termes du sujet
+### Étape 1 — Analyser les termes du sujet
 
 - **« L'État »** : rappelle-toi la distinction du chapitre 2 — l'État n'est ni le gouvernement (qui change), ni la société, ni la nation. Le sujet porte sur l'institution politique permanente elle-même, pas sur tel gouvernement précis qu'on pourrait juger bon ou mauvais.
 - **« Au service de notre liberté »** : mobilise Locke (la protection de droits naturels préexistants) et Rousseau (obéir à la loi qu'on s'est prescrite comme membre de la volonté générale est une forme de liberté) — l'État comme condition de la liberté, pas comme son obstacle.
 - **« En est-il la négation »** : mobilise Hobbes (une soumission à un pouvoir quasi absolu), et les critiques du chapitre 7 (Marx : domination de classe masquée ; les dérives totalitaires : un pouvoir non limité qui écrase ceux qu'il devait protéger).
 - Le sujet est formulé comme une alternative (« ou »), mais une bonne dissertation ne choisit jamais un terme en écartant simplement l'autre : elle montre en quel sens chacun est partiellement vrai, et ce qu'il faut ajouter pour trancher.
 
-#### Étape 2 — Formuler la problématique
+### Étape 2 — Formuler la problématique
 
 Une problématique met en évidence une tension entre deux positions également légitimes en apparence, à laquelle le devoir devra répondre — elle ne reformule pas simplement le sujet.
 
@@ -252,7 +252,7 @@ Une formulation possible :
 
 > *Si l'État naît pour nous protéger d'une insécurité plus grande et pour rendre notre liberté effective par le droit, comment expliquer qu'il ait pu, dans l'histoire, devenir lui-même un instrument de domination ou de contrainte totale — et faut-il en conclure qu'il faut s'en passer, ou plutôt apprendre à limiter et à contrôler les conditions de sa légitimité ?*
 
-#### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
+### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
 
 **I. Thèse — L'État est au service de notre liberté.**
 Développe Hobbes (chapitre 3) : sans autorité commune, la guerre de tous contre tous rend toute liberté réelle impossible — la sécurité est la condition préalable de toute liberté effective. Mobilise Locke (chapitre 4) : l'État protège des droits naturels (vie, liberté, propriété) qui resteraient fragiles sans un juge et une force communs. Mobilise Rousseau (chapitre 5) : la loi, quand elle exprime la volonté générale, n'est pas une contrainte étrangère mais ce que la communauté se prescrit à elle-même.
@@ -263,7 +263,7 @@ Mobilise Marx (chapitre 7) : sous couvert de neutralité, l'État peut fonctionn
 **III. Dépassement — Ce n'est pas l'existence de l'État qui décide de tout, mais les conditions de sa légitimité et les limites qui l'encadrent.**
 Reprends la distinction force/droit de Rousseau et le monopole légitime de Weber (chapitre 6) : la légitimité d'un pouvoir ne se décrète pas une fois pour toutes, elle se vérifie et peut se perdre. Reprends l'État de droit (chapitre 7) comme garde-fou : séparation des pouvoirs, droits fondamentaux, contrôle et révocabilité des gouvernants — c'est cela, bien plus que la seule existence d'un État, qui distingue un pouvoir au service de la liberté d'un pouvoir qui la nie.
 
-#### Étape 4 — Rédiger l'introduction (modèle rédigé)
+### Étape 4 — Rédiger l'introduction (modèle rédigé)
 
 Voici, entièrement rédigée, une introduction possible. Note son mouvement : accroche → définition des termes → tension → problématique → annonce du plan.
 
@@ -271,7 +271,7 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 
 **Ce que fait ce paragraphe, geste par geste :** il ouvre sur la situation concrète de la leçon plutôt que sur une définition abstraite de l'État ; il énonce la thèse contractualiste avec précision, en s'appuyant sur trois auteurs distincts, avant de la mettre sous tension ; il fait apparaître la tension par deux objections successives (Marx, puis les dérives totalitaires) ; il pose la problématique sous forme interrogative précise ; il annonce un plan en trois temps qui correspond exactement à la thèse, à l'antithèse et au dépassement construits à l'étape 3.
 
-#### Étape 5 — Un paragraphe rédigé de la partie I, à titre de modèle
+### Étape 5 — Un paragraphe rédigé de la partie I, à titre de modèle
 
 > Sans autorité commune, écrit Hobbes, les hommes, à peu près égaux en force et en ruse, sont voués à la compétition, à la défiance mutuelle et à la recherche de gloire — un état où rien ne peut être entrepris avec sécurité, et où la liberté de chacun se heurte sans cesse à la menace que représente la liberté illimitée de tous les autres. En instituant, par un contrat, un pouvoir commun suffisamment fort pour tenir chacun en respect, les hommes n'abandonnent donc pas leur liberté au profit d'une pure contrainte : ils échangent une liberté illusoire, sans cesse menacée, contre une sécurité qui seule rend possible l'exercice réel et durable de la liberté — travailler, échanger, se déplacer sans craindre à chaque instant pour sa vie ou ses biens. Locke ajoute que cette sécurité protège des droits — la vie, la liberté, la propriété — qui appartenaient déjà à chacun avant tout État, mais que nul ne pouvait faire valoir efficacement sans juge commun ni force chargée de faire exécuter le droit. Ainsi comprise, l'existence même de l'État n'est pas la négation de la liberté : elle en est, au contraire, la condition sans laquelle aucune liberté durable ne pourrait s'exercer.
 
