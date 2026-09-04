@@ -665,3 +665,72 @@ lit 10 mJ aux deux tiers de l'amplitude, ce qui impose 22,5, et écrit 25).
 Le contrôle marche dans les deux sens : sur PC 2017, c'est le vérificateur qui
 s'était trompé là où le corrigé avait raison. **Témoin de valeurs, jamais
 arbitre** — K-8 le dit, et la soirée l'a vérifié quatre fois.
+
+---
+
+## 8. Addendum du 2026-09-04 — l'arc « le produit sur un téléphone »
+
+### 8.1 Le fil conducteur
+
+Tout le harnais visuel de ce projet a été construit sur l'écran du
+propriétaire : les portes de débord tirent à 1536 et 1920 px, les trois
+balayages de figures ont tourné à 1280, les captures de référence aussi. Le
+produit, lui, s'adresse à des lycéens marocains — qui lisent sur un
+téléphone. **Personne n'avait jamais mesuré les 62 leçons sous 1280 px.**
+
+Une journée de mesure à 320/360/390 px a sorti **quatre défauts réels**,
+tous invisibles depuis un écran d'ordinateur, tous corrigés et gardés :
+
+| # | Ce que l'élève subissait | Ampleur | État |
+|---|---|---|---|
+| 1 | La page glisse latéralement sous le doigt | 4 leçons à 320 px, 1 à 360 | corrigé, porte armée |
+| 2 | Le texte des figures rendu à 3 px | **260 figures sur 260** | corrigé, porte armée |
+| 3 | Une cible de 7 px, invisible, collée à chaque titre | 1 832 ancres | retirées sous `hover: none` |
+| 4 | Fils d'Ariane sous le minimum tactile de la norme | 65 pages | 21 → 29 px |
+
+**Aucun de ces défauts n'était un défaut d'autorat.** Les figures sont
+impeccables à 1280 px ; les formules sont justes ; les liens sont les bons.
+Ce sont quatre RÈGLES DE RENDU qui manquaient, et qui manquaient parce que
+la mesure s'arrêtait à une largeur.
+
+### 8.2 La règle qui les résume
+
+**Jamais sous la taille naturelle, jamais un contrôle invisible.** Un dessin
+est autoré à une échelle où son texte se lit : en dessous il ne se lit plus,
+donc sous 600 px le cadre défile et le SVG garde sa largeur de viewBox. Une
+formule en ligne est insécable : elle défile dans son conteneur au lieu de
+pousser la page. Une ancre qui n'apparaît qu'au survol n'existe pas sur un
+appareil sans survol : elle est retirée, pas rétrécie.
+
+Dans les trois cas, l'idiome existait déjà dans le produit
+(`.katex-display` défile depuis toujours) — il n'avait simplement jamais été
+appliqué là où il fallait.
+
+### 8.3 Le même jour, deux autres défauts de la même famille
+
+**Le lien d'ancre profonde était mort pour 86 % du corpus.**
+`location.hash` revient percent-encodé dès qu'un caractère sort de l'ASCII ;
+`getElementById` ne trouvait donc rien pour 1 876 des 2 190 titres de leçon —
+c'est-à-dire tout titre portant un accent. Comme la pagination masque tout
+sauf le chapitre courant, le lien partagé n'atterrissait pas « un peu à
+côté » : il atterrissait sur le chapitre 1, la cible dans un `[hidden]`.
+Corrigé (`decodeURIComponent` gardé), porte armée sur une ancre ACCENTUÉE.
+
+**Et le « flash du chapitre 1 » a enfin un chiffre** : 250 à 1 265 ms selon
+la leçon (ledger 11.14). L'arbitrage était écrit depuis Day-11 ; sa durée ne
+l'était pas. Ce qu'on n'a délibérément pas fait pour le supprimer — et
+pourquoi — est en 11.15, et c'est une décision de propriétaire.
+
+### 8.4 La leçon de méthode, pour la prochaine session
+
+Les quatre défauts du §8.1 étaient **mesurables depuis le premier jour**. Ce
+qui manquait n'était ni un outil ni une compétence : c'était **une largeur
+dans la liste des largeurs**. Chaque fois que ce projet a élargi la fenêtre
+de mesure — le rendu plutôt que la source, le thème sombre plutôt que le
+clair, le téléphone plutôt que l'écran large — il a trouvé une classe entière
+de défauts, jamais un cas isolé.
+
+La prochaine fenêtre à ouvrir, dans l'ordre où je la prendrais :
+**le clavier seul** (parcours de focus, ordre de tabulation, pièges) ; **le
+zoom à 200 %** (SC 1.4.4, jamais mesuré) ; **la connexion lente** (ce que la
+page montre avant que tout soit chargé).
