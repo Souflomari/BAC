@@ -27,6 +27,7 @@
 |---|---|---|
 | `web/scripts/figure-preview.mjs` | Une figure hors du site, **cinq classes** : texte hors CADRE, texte hors de SON PANNEAU, chevauchements d'étiquettes, tracés qui barrent du texte, aplats restés clairs en thème sombre. `--porte` arme les deux classes propres (cadre, panneau) et tourne en CI | La GRAVITÉ d'une collision en thème sombre (contraste non rejugé). Les trois classes non armées restent informatives — 7 chevauchements, 85 tracés, 2 aplats, tous documentés |
 | `web/scripts/etroit-sweep.mjs` | 70 pages × 3 largeurs de téléphone (320/360/390) : débord horizontal, chapitres dépliés | La lisibilité. Une page peut ne pas déborder ET rester illisible — c'est ce que la sonde de figures a montré |
+| `web/scripts/horsligne-sweep.mjs` | Six scènes de coupure réseau : navigation par chapitre, clic vers une autre leçon, bouton Retour, leçon déjà visitée, réponse à un QCM, retour du réseau. **Ce qui tient tient ; ce qui casse est borné** — voir `docs/audits/hors-ligne.md` | Le réseau qui RAMPE au lieu de mourir (latence + pertes de paquets), et la coupure pendant un enregistrement |
 | `web/scripts/annonce-sweep.mjs` | Ce qu'un lecteur d'écran ANNONCE : les régions live et leur politesse, le premier pas au clavier, les reculs de l'ordre de tabulation, le sort du focus au changement de chapitre. **68 pages** ; a trouvé que le lien d'évitement n'était ni premier ni universel | La VOIX. Ce qu'un vrai lecteur prononce dépend de son mode, de sa verbosité et de sa langue — on ne lit ici que le DOM et l'arbre d'accessibilité |
 | `web/scripts/zoom400-sweep.mjs` | WCAG 1.4.10 dans sa forme STRICTE : 320 × 256 px, soit 1280 × 1024 vu à 400 %. Débord horizontal, part de hauteur prise par les barres collantes, lignes de prose qui restent, navigation atteignable. **70 pages, 0 défaut** — l'en-tête collant fait 57 px, soit 22 % de l'écran, et il reste 7 à 9 lignes | Le zoom du SYSTÈME (loupe d'OS), qui agrandit les pixels au lieu de reflow |
 | `web/scripts/zoom-sweep.mjs` | Le corpus avec le texte doublé (SC 1.4.4) : débord et texte COUPÉ | Le zoom NAVIGATEUR (qui redimensionne tout, pas seulement le texte) |
@@ -63,7 +64,9 @@
    chapitre. Ce qui ne l'est pas : ce qu'un lecteur PRONONCE réellement,
    qui dépend de son mode, de sa verbosité et de sa langue.
 3. **La gravité d'une collision d'étiquettes en thème sombre.**
-4. **Le comportement hors ligne** et la reprise après coupure.
+4. **Le réseau qui RAMPE au lieu de mourir** — 200 ms de latence et 5 % de
+   pertes, le pire cas réel. La coupure franche est mesurée
+   (`horsligne-sweep`) ; la connexion malade ne l'est pas.
 6. **Le reste du multilingue.** `dom-truth` garde maintenant la DIRECTION
    d'un bloc arabe. Ce qu'il ne garde pas : la césure, la fonte arabe
    réellement choisie par le navigateur (aucune des fontes du site n'a de

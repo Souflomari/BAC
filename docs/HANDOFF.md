@@ -997,3 +997,38 @@ focus survit au changement de chapitre, et le changement est annoncé.
 **LA PORTE NE VÉRIFIE PAS LA PRÉSENCE DU LIEN, ELLE VÉRIFIE QU'IL MARCHE** :
 première tabulation, visibilité au focus, et déplacement réel du focus dans
 `<main>`. Testée dans les deux sens.
+
+### 8.12 Hors ligne : ce qui tient, ce qui casse, et ce que ça révèle d'un autre arbitrage
+
+Cinquième angle mort. Détail dans `docs/audits/hors-ligne.md`.
+
+**CE QUI TIENT, et c'est beaucoup.** Réseau coupé : la navigation par
+chapitre marche (tout est déjà dans la page), le retour d'un QCM s'affiche,
+le bouton Retour ramène la leçon **et sa place** (parti du chapitre 5, on y
+revient), et la page survit au retour du réseau sans rien à recharger.
+
+**CE QUI CASSE.** Tout clic vers une autre page fait sortir l'élève de
+l'application, sur la page d'erreur de Chrome — titre « No internet », **en
+anglais**, avec des conseils sur les câbles et le modem. Pour un élève
+marocain de terminale, c'est un mur.
+
+**ET LE RÉSULTAT QUI TRANCHE UN AUTRE ARBITRAGE.** Une leçon DÉJÀ VISITÉE ne
+s'ouvre pas davantage hors ligne. On pouvait espérer que les ~920 ko de
+préchargement RSC de l'accueil (§8.6 du poids) achètent au moins de la
+résistance à la coupure : **ils n'en achètent aucune**. Le cache du routeur
+expire, la requête RSC échoue, Next retombe sur une navigation dure. Le
+préchargement est donc un coût de données pur — ce qui simplifie la décision
+à prendre dessus.
+
+**L'ARBITRAGE À PRENDRE** (rien dans l'app ne peut intercepter une
+navigation dure qui échoue — il faudrait un service worker) : une page de
+repli en français contre le risque, connu et déjà payé ici, qu'un service
+worker mal invalidé serve une version périmée du site après un déploiement.
+La casse étant bornée — l'élève ne perd ni sa place ni son travail — ce n'est
+pas une urgence.
+
+**ET UNE LEÇON DE MÉTHODE, encore.** Le premier jet du balayage concluait
+« le bouton Retour ne ramène rien ». C'était FAUX : la scène précédente avait
+poussé une entrée d'historique (un changement de chapitre), et le « Retour »
+mesurait ce recul-là. Rejouée isolément, la scène dit l'inverse. **Une scène
+de test qui hérite de l'état de la précédente ne mesure pas ce qu'elle croit.**
