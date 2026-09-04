@@ -81,6 +81,37 @@ const MOTIFS = [
 
 const COMPLETE_MIN = 19.5;
 
+// LA SOURCE A-T-ELLE ÉTÉ ROUVERTE ? (colonne ajoutée le 2026-09-04)
+//
+// K-8 désigne une surface « jamais re-mesurée contre la source la moins
+// dégradée ». Compter les mentions de figure sans regarder si la SOURCE a été
+// rouverte mélange deux situations très différentes : une entrée issue d'un
+// sujet dont une passe adversariale a re-mesuré les figures au tracé
+// vectoriel n'est pas dans la même position qu'une entrée dont personne n'a
+// jamais rouvert le scan.
+//
+// Un fichier du sas marqué « ✅ VÉRIFIÉ » en tête a subi cette passe. On lit
+// donc les en-têtes de `docs/sujets/_incoming/` et on marque les entrées qui
+// en descendent, par (année, session).
+//
+// CE QUE CETTE COLONNE NE PROUVE PAS, et il faut le dire : que la CONVERSION
+// a porté fidèlement ce que la source a mesuré. C'est exactement le mode
+// d'échec du DRAPEAU PERDU (k8-remesure § 8.5) — bk-2018-n-x3 descend d'une
+// source qui portait « lecture d'échelle à confirmer », et la banque publie
+// la valeur sans la réserve. « Source rouverte » veut dire que la mesure
+// existe quelque part, pas que l'entrée la reflète.
+const SAS = path.join(RACINE, "docs/sujets/_incoming");
+const sujetsVerifies = new Set();
+if (fs.existsSync(SAS)) {
+  for (const f of fs.readdirSync(SAS)) {
+    if (!f.endsWith(".md")) continue;
+    const tete = fs.readFileSync(path.join(SAS, f), "utf8").split("\n").slice(0, 6).join("\n");
+    if (!/✅\s*VÉRIFIÉ/.test(tete)) continue;
+    const m = f.match(/^(?:pc|maths)-(?:spc-|sm-|sexp-)?(\d{4})-([nr])/);
+    if (m) sujetsVerifies.add(`${m[1]}-${m[2] === "n" ? "normale" : "rattrapage"}`);
+  }
+}
+
 function texteDeLEntree(e) {
   const bouts = [e.intro, e.title, e.sourcing];
   for (const q of e.questions ?? []) {
@@ -117,6 +148,7 @@ for (const matiere of fs.readdirSync(path.join(RACINE, "content"))) {
           n, id: e.id, notion: `${matiere}/${notion}`,
           sujet: `${s.filiere} ${s.year} ${s.session}`,
           pts: e.bareme_total ?? 0, cle,
+          sourceRouverte: sujetsVerifies.has(`${s.year}-${s.session}`),
         });
       }
     }
@@ -137,10 +169,11 @@ for (const matiere of fs.readdirSync(path.join(RACINE, "content"))) {
 entrees.sort((a, b) => b.n - a.n || a.id.localeCompare(b.id));
 const dansEpreuveComplete = (e) => (totauxEpreuve.get(e.cle) ?? 0) >= COMPLETE_MIN;
 const servies = entrees.filter(dansEpreuveComplete).length;
+const rouvertes = entrees.filter((e) => e.sourceRouverte).length;
 const jour = new Date().toISOString().slice(0, 10);
 
 const lignes = entrees.map(
-  (e) => `| ${e.n} | \`${e.id}\` | \`${e.notion}\` | ${e.sujet} | ${e.pts} | ${dansEpreuveComplete(e) ? "oui" : "—"} |`
+  (e) => `| ${e.n} | \`${e.id}\` | \`${e.notion}\` | ${e.sujet} | ${e.pts} | ${dansEpreuveComplete(e) ? "oui" : "—"} | ${e.sourceRouverte ? "oui" : "**non**"} |`
 );
 
 const doc = `# Lectures graphiques — l'inventaire de l'exposition K-8
@@ -173,10 +206,24 @@ const doc = `# Lectures graphiques — l'inventaire de l'exposition K-8
 **${servies} appartiennent à une épreuve complète** (donc affichée à l'élève en
 mode examen).
 
+**Et parmi ces ${entrees.length}, la SOURCE a été rouverte pour ${rouvertes}** —
+c'est-à-dire que le sujet dont elles descendent porte un fichier
+\`docs/sujets/_incoming/\` marqué **✅ VÉRIFIÉ**, où une passe adversariale a
+re-mesuré les figures contre la source la moins dégradée. **Il en reste donc
+${entrees.length - rouvertes} dont personne n'a jamais rouvert le scan** : c'est
+la vraie surface que K-8 désigne.
+
+> ⚠️ **Ce que la colonne « source rouverte » NE PROUVE PAS.** Elle dit que la
+> mesure existe quelque part, pas que l'entrée la reflète. Le mode d'échec du
+> **drapeau perdu** passe exactement par là : \`bk-2018-n-x3\` descend d'une
+> source qui portait « lecture d'échelle à confirmer », et la banque publie la
+> valeur **sans la réserve**. Une source rouverte réduit le risque ; elle ne
+> l'annule pas.
+
 Trié par nombre de mentions.
 
-| mentions | entrée | notion | sujet | pts | épreuve complète |
-|---:|---|---|---|---:|:---:|
+| mentions | entrée | notion | sujet | pts | épreuve complète | source rouverte |
+|---:|---|---|---|---:|:---:|:---:|
 ${lignes.join("\n")}
 `;
 
