@@ -25,7 +25,7 @@
 
 | Instrument | Mesure | Ne dit RIEN de |
 |---|---|---|
-| `web/scripts/figure-preview.mjs` | Une figure hors du site : chevauchements d'étiquettes, tracés qui barrent du texte, codes de barreau qui fuient, aplats clairs restés clairs en thème sombre | La GRAVITÉ d'une collision en thème sombre (contraste non rejugé) ; le texte hors de son panneau (classe connue, non instrumentée) |
+| `web/scripts/figure-preview.mjs` | Une figure hors du site, **cinq classes** : texte hors CADRE, texte hors de SON PANNEAU, chevauchements d'étiquettes, tracés qui barrent du texte, aplats restés clairs en thème sombre. `--porte` arme les deux classes propres (cadre, panneau) et tourne en CI | La GRAVITÉ d'une collision en thème sombre (contraste non rejugé). Les trois classes non armées restent informatives — 7 chevauchements, 85 tracés, 2 aplats, tous documentés |
 | `web/scripts/etroit-sweep.mjs` | 70 pages × 3 largeurs de téléphone (320/360/390) : débord horizontal, chapitres dépliés | La lisibilité. Une page peut ne pas déborder ET rester illisible — c'est ce que la sonde de figures a montré |
 | `web/scripts/zoom-sweep.mjs` | Le corpus avec le texte doublé (SC 1.4.4) : débord et texte COUPÉ | Le zoom NAVIGATEUR (qui redimensionne tout, pas seulement le texte) |
 | `web/scripts/cls-sweep.mjs` | Le saut de mise en page au chargement, réseau libre puis 3G bridé | Le TEMPS de chargement lui-même (LCP, TTFB) — jamais mesuré sur ce projet |
@@ -57,11 +57,15 @@
    mesuré 320 px à taille normale et 200 % de texte à 1280 — pas la
    combinaison exacte que la norme décrit.
 4. **La gravité d'une collision d'étiquettes en thème sombre.**
-5. **Le texte qui sort de son panneau dans une figure** — classe nommée le
-   2026-09-03, un cas réel corrigé à la main, toujours pas instrumentée.
-6. **Le comportement hors ligne** et la reprise après coupure.
-7. **La production.** Tout ce document parle d'un build local. La synchro
+5. **Le comportement hors ligne** et la reprise après coupure.
+6. **La production.** Tout ce document parle d'un build local. La synchro
    de production reste NON VÉRIFIÉE (CLAUDE.md).
+
+*(Le point 5 de la première version de cette liste — « le texte qui sort de
+son panneau », nommé le 2026-09-03 et non instrumenté — a été mesuré et
+fermé le lendemain : 9 cas, 4 débordements voulus déclarés
+`data-hors-panneau`, 5 défauts corrigés, porte armée en CI. C'est
+exactement l'usage prévu de cette liste.)*
 
 ## La règle de méthode
 
