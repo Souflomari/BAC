@@ -86,6 +86,23 @@ fermé le lendemain : 9 cas, 4 débordements voulus déclarés
 `data-hors-panneau`, 5 défauts corrigés, porte armée en CI. C'est
 exactement l'usage prévu de cette liste.)*
 
+## Une règle de comptage, apprise deux fois le même jour
+
+**Une mesure qu'on ne met pas à l'épreuve n'est pas une mesure.** Deux fois
+le 2026-09-04, un compteur a annoncé un ordre de grandeur de trop :
+
+- **144 « noms de fichier » visibles** — il y en avait **6**. Les 138 autres
+  vivaient dans le `<title>` d'un SVG : le nom ACCESSIBLE de la figure, qui
+  a le droit de nommer son fichier et que personne ne lit.
+- **2 945 « mots anglais » dans la prose française** — il y en avait **2**.
+  L'échappement d'un `lookbehind` avait collapsé (`\\w` au lieu de `\w`),
+  et « the » mordait dans « authentique », « per » dans « personne ».
+
+Dans les deux cas, le chiffre absurde était le signal. **Un compteur qui
+trouve beaucoup plus que ce qu'un œil trouve sur une page doit être suspecté
+avant d'être cru** — et une porte armée sur un tel compteur serait désarmée
+dans la semaine.
+
 ## La règle de méthode
 
 **Une porte ne s'arme que sur une classe propre.** Si la classe ne l'est

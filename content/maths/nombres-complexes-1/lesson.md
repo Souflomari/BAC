@@ -548,7 +548,7 @@ Avant de te lancer, un point de bascule que le sujet exige : relier la forme alg
 
 Ce chapitre-ci enseigne le socle **algébrique** : forme algébrique, conjugué, module, géométrie du plan complexe. Un sujet national mobilise presque toujours, en plus, des outils du chapitre **« Nombres complexes : formes et transformations »** — et il vaut mieux le savoir avant de buter dessus que de croire les avoir oubliés :
 
-- **La forme trigonométrique et la forme exponentielle**, $z = r\,e^{i\theta}$, et le passage dans les deux sens avec la forme algébrique — c'est le point de bascule que le gate ci-dessus te fait franchir ;
+- **La forme trigonométrique et la forme exponentielle**, $z = r\,e^{i\theta}$, et le passage dans les deux sens avec la forme algébrique — c'est le point de bascule que l'encadré ci-dessus te fait franchir ;
 - **Les écritures complexes des transformations** : la **rotation** d'angle $\theta$ et de centre l'origine s'écrit $z' = e^{i\theta}z$, la **translation** $z' = z + b$, l'**homothétie** de rapport $k$ et de centre l'origine $z' = k\,z$. Le vocabulaire lui-même — « homothétie », « rotation d'écriture complexe » — appartient à ce chapitre-là ;
 - **La résolution d'une équation du second degré à coefficients complexes**, traitée plus haut dans cette leçon.
 

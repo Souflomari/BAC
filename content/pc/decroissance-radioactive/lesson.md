@@ -137,7 +137,7 @@ Remarque ce qui ne change PAS ici : ni $A$ ni $Z$. Le rayonnement $\gamma$ ne tr
 
 ### Vérifie ta compréhension avant de continuer
 
-Un rayonnement $\gamma$ change-t-il l'élément chimique du noyau qui l'émet ? Réponds avant de tourner la page mentale : non — $Z$ ne change pas, donc l'élément reste le même. C'est précisément l'erreur qu'on va croiser dans les items de cette leçon : confondre « rayonnement » et « transformation ».
+Un rayonnement $\gamma$ change-t-il l'élément chimique du noyau qui l'émet ? Réponds avant de tourner la page mentale : non — $Z$ ne change pas, donc l'élément reste le même. C'est précisément l'erreur qu'on va croiser dans les questions de cette leçon : confondre « rayonnement » et « transformation ».
 
 [[checkpoint:cp-r2-soddy]]
 

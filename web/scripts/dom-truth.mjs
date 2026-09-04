@@ -3367,7 +3367,18 @@ try {
         ...new Set([
           ...(texte.match(/\b[\w-]+\.(?:yaml|json|mjs|tsx?|py)\b/g) ?? []),
           ...(texte.match(/\b(?:docs|content|web|scripts|src)\/[\w./-]+/g) ?? []),
+          // Les mots d'AUTORAT en anglais, dans une prose française. Deux
+          // seulement dans tout le corpus — « le gate ci-dessus », « les
+          // items de cette leçon » — mais ils se lisent comme une note
+          // interne oubliée, et le mot juste existe (« l'encadré », « les
+          // questions »).
+          //
+          // Le premier comptage en annonçait 2 945 : l'échappement du
+          // lookbehind avait collapsé, et « the » mordait dans
+          // « authentique », « per » dans « personne ». Une mesure qu'on ne
+          // met pas à l'épreuve n'est pas une mesure.
           ...(texte.match(/\b(?:rupture-gate|cross-list|block scalar|sidecar)\b/g) ?? []),
+          ...(texte.match(/(?<![\wÀ-ÿ'’-])(?:gate|items?|ramp|floor|distractors?|misconception|coverage|spanning)(?![\wÀ-ÿ'’-])/gi) ?? []),
         ]),
       ];
       // TROISIÈME CLASSE, ARMÉE LE 2026-09-04 : les codes de barreau et le mot
@@ -3403,8 +3414,10 @@ try {
       }
       if (depot.length) {
         failures += fail(
-          `${route} : vocabulaire de dépôt dans le texte rendu — ${depot.slice(0, 4).join(", ")} ` +
-            `(l'élève ne peut pas ouvrir ce fichier ; la phrase se porte mieux sans)`
+          `${route} : vocabulaire de rédaction dans le texte rendu — ${depot.slice(0, 4).join(", ")} ` +
+            `(nom de fichier, chemin de dépôt ou mot d'autorat anglais : ` +
+            `l'élève ne peut pas ouvrir ce fichier, et le mot français existe — ` +
+            `« l'encadré », « les questions », « la banque »)`
         );
       }
     }
