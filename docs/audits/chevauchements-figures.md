@@ -252,3 +252,41 @@ mesurer le texte seul laisserait passer une figure rendue à 40 % dont les
 - viser `> svg` laissait la scène ANIMÉE à 328 px avec un SVG de 680 dedans,
   donc recadrée verticalement : c'est le conteneur d'aspect-ratio qu'il faut
   élargir. La règle vise l'enfant direct, quel qu'il soit.
+
+---
+
+## Annexe 3 — les cibles tactiles (2026-09-04)
+
+Troisième lentille du même balayage : à quelle taille les contrôles sont-ils
+touchables sur un téléphone ? 68 pages à 360 px, pointeur tactile émulé,
+tous chapitres dépliés. Référence : WCAG 2.2 SC 2.5.8 (AA), 24 px dans la
+plus petite dimension. Le DESIGN-BIBLE §9 vise 48 ; le harnais ne vérifiait
+que le header, sur l'accueil.
+
+**Deux classes trouvées :**
+
+1. **1 832 ancres de titre `§`, 7×17 px.** Elles apparaissent au SURVOL du
+   titre (`opacity: 0` sinon). Sur un téléphone, il n'y a pas de survol :
+   elles étaient donc invisibles en permanence, mais toujours cliquables et
+   toujours dans l'arbre d'accessibilité — une cible de 7 px collée à la fin
+   de chaque titre, qui ne se montre jamais et qui change l'URL quand le
+   pouce dérape. **Retirées sous `@media (hover: none)`.** Un contrôle
+   invisible n'est pas un contrôle. Au-dessus, avec un vrai pointeur, rien ne
+   change.
+
+2. **Les fils d'Ariane, 21 px de haut** (« Accueil », « Mathématiques »…, sur
+   les 65 pages de leçon). Sous le minimum. L'exception « Inline » de la
+   norme ne les couvre pas : un fil d'Ariane est un contrôle de navigation, pas
+   un lien en pleine phrase. **Portés à 29 px** par un `py-1 -my-1` — la zone
+   grandit, la hauteur de ligne ne bouge pas.
+
+**Deux cas laissés tels quels, et c'est la norme qui le dit :** les deux
+liens de l'accueil qui vivent DANS une phrase (« Prêt à te tester en
+conditions réelles ? *Examens blancs…* », « Ensuite dans le parcours :
+*Limites et continuité*. ») relèvent de l'exception *Inline* ; les agrandir
+casserait l'interligne du paragraphe sans rien gagner. Et le lien
+d'évitement `sr-only`, 1×1 au repos, prend sa taille réelle dès qu'il a le
+focus — c'est son fonctionnement, pas un défaut.
+
+**Après : 602 cibles mesurées, toutes ≥ 24 px.** Porte armée dans dom-truth
+(208 contrôles), avec les deux exceptions écrites dans le code.

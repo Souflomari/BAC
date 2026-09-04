@@ -2523,6 +2523,63 @@ try {
     else console.log(`  ✓ ${nFig} figures à 360 px : échelle 1, texte rendu ≥ 7px`);
   }
 
+  // ── Cibles tactiles : le minimum WCAG 2.2 (SC 2.5.8, AA) ─────────────────
+  //
+  // 24 px dans la plus petite dimension. Deux exceptions, et elles sont dans
+  // la norme, pas dans nos habitudes :
+  //
+  //   · un lien EN PLEINE PHRASE (« Prêt à te tester ? [Examens blancs] »)
+  //     est exempté — l'exception « Inline » ; l'agrandir casserait
+  //     l'interligne du paragraphe pour rien ;
+  //   · le lien d'évitement `sr-only`, qui mesure 1×1 tant qu'il n'a pas le
+  //     focus et prend sa vraie taille dès qu'il l'a.
+  //
+  // Trouvé le 2026-09-04 en balayant 68 pages à 360 px : 1 832 ancres de
+  // titre `§` de 7×17 px, invisibles faute de survol mais toujours cliquables
+  // (retirées sous `hover: none`), et les fils d'Ariane à 21 px de haut
+  // (portés à 29 par un padding gratuit). C'est ce que cette porte garde.
+  {
+    console.log(`\n[tactile] SWEEP: 24 px minimum (WCAG 2.2 SC 2.5.8)`);
+    const tp = await browser.newPage({
+      viewport: { width: 360, height: 780 },
+      hasTouch: true,
+      isMobile: true,
+    });
+    const petits = [];
+    let nCibles = 0;
+    for (const r of ["/notions/pc/rlc-serie", "/notions/maths/suites-numeriques", "/", "/examens"]) {
+      await tp.goto(`${BASE}${r}`, { waitUntil: "networkidle" });
+      const m = await tp.evaluate(() => {
+        document.querySelectorAll("[data-chapter-section]").forEach((s) => (s.hidden = false));
+        const out = [];
+        let n = 0;
+        for (const el of document.querySelectorAll("a[href], button, [role='button'], summary")) {
+          const q = el.getBoundingClientRect();
+          if (!q.width || !q.height) continue;
+          const cs = getComputedStyle(el);
+          if (cs.visibility === "hidden" || cs.display === "none") continue;
+          // Exception « Inline » de la norme : un lien dans une phrase.
+          const p = el.parentElement;
+          if (p && p.tagName === "P" && p.textContent.trim().length > el.textContent.trim().length + 4) continue;
+          // Le lien d'évitement : 1×1 au repos, pleine taille au focus.
+          if (el.className && String(el.className).includes("sr-only")) continue;
+          n++;
+          const min = Math.min(q.width, q.height);
+          if (min < 24) {
+            out.push(`${Math.round(q.width)}×${Math.round(q.height)} « ${(el.textContent || el.getAttribute("aria-label") || "").trim().slice(0, 28)} »`);
+          }
+        }
+        return { n, out };
+      });
+      nCibles += m.n;
+      for (const x of m.out) petits.push(`${r} ${x}`);
+    }
+    await tp.close();
+    checks++;
+    if (petits.length) failures += fail(`cibles tactiles sous 24px : ${petits.slice(0, 6).join(", ")}`);
+    else console.log(`  ✓ ${nCibles} cibles à 360 px, toutes ≥ 24px`);
+  }
+
   // (F7) KaTeX accessibility parity: every formula ships MathML.
   {
     console.log(`\n[${NOTION}] SWEEP: KaTeX MathML parity`);

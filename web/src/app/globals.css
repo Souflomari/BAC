@@ -92,6 +92,19 @@ h3:hover .heading-anchor,
 .heading-anchor:hover {
   color: var(--color-accent);
 }
+/* SUR UN APPAREIL SANS SURVOL, l'ancre n'existe pas — elle est retirée.
+   Mesuré le 2026-09-04 à 360 px : 1 832 ancres de titre, 7×17 px chacune,
+   `opacity: 0` en permanence faute de survol. Invisibles, mais toujours
+   cliquables et toujours dans l'arbre d'accessibilité : une cible tactile de
+   7 px collée à la fin de chaque titre, qui ne se montre jamais et qui change
+   l'URL quand le pouce dérape. Un contrôle invisible n'est pas un contrôle ;
+   sur ces appareils il n'a rien à faire là. (Au-dessus, avec un vrai
+   pointeur, rien ne change : le § reparaît au survol du titre.) */
+@media (hover: none) {
+  .heading-anchor {
+    display: none;
+  }
+}
 
 /* ── Print stylesheet (audit U5 — bac students print revision material) ─────── */
 @media print {
