@@ -1,6 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 320" width="560" height="320"
      font-family="'IBM Plex Sans', system-ui, sans-serif"
      aria-label="Schéma du circuit série R-L : générateur de f.é.m. E, interrupteur K, résistor R0, bobine (L, r), courant i.">
+  <!--
+    CODES R LÉGITIMES: « R0 » est le nom du RÉSISTOR du montage, pas un code
+    de barreau. C'est l'étiquette portée sur le composant dans le schéma, et
+    le texte de la leçon l'appelle ainsi. La porte de validate-content
+    interdit les R<n> dans le texte rendu d'une figure — parce qu'un renvoi
+    « (cf. R3) » désigne une section dont l'élève ne voit jamais le code —
+    mais elle ne peut pas distinguer seule un renvoi d'un nom de composant.
+  -->
   <title>Circuit série R-L</title>
 
   <!-- Dégradé partagé pour le corps de R0 — même technique que rlc-schema.svg -->

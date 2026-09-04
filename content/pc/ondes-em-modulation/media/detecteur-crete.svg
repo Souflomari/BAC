@@ -74,12 +74,16 @@
         stroke="var(--figure-grid)" stroke-width="1"/>
 
   <!-- Note de bas de figure : rapport schématique divulgué (chrome, permanent) -->
-  <text x="340" y="351" text-anchor="middle" font-size="9" font-style="italic"
+  <!-- Note CALÉE À GAUCHE : centrée à x=340 elle courait jusqu'à x≈505 et
+       percutait l'étiquette « s(t) » du petit schéma, en bas à droite
+       (recouvrement mesuré 50 %). Le schéma occupe toute la moitié droite de
+       cette bande ; la note prend la moitié gauche. -->
+  <text x="40" y="351" text-anchor="start" font-size="9" font-style="italic"
         fill="var(--figure-ink-soft)">(rapport f<tspan
         dy="2" font-size="6.5">p</tspan><tspan
         dy="-2">/f</tspan><tspan
         dy="2" font-size="6.5">signal</tspan><tspan
-        dy="-2"> réduit ici pour la lisibilité, mêmes valeurs qu'en R2/R3 — cf. modulation-amplitude)</tspan>
+        dy="-2"> réduit ici pour la lisibilité, mêmes valeurs que sur les figures précédentes)</tspan>
   </text>
 
   <!-- ══════════════════════════════════════════════════════
@@ -253,7 +257,16 @@
          du tracé de u_C (le sommet touché en x=496, y=116), pas d'un autre
          élément (éviter toute ambiguïté visuelle) -->
     <line x1="496" y1="116" x2="496" y2="182" stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
-    <text x="496" y="196" text-anchor="middle" font-size="10.5" font-weight="600"
+    <!-- L'étiquette est posée sur une PASTILLE opaque : l'oscillation de s(t)
+         passe exactement là et la traversait de part en part — le mot le plus
+         important de la figure (ce que vaut u_C) était le moins lisible.
+         Aucune zone du tracé n'est libre à cette hauteur ; la pastille est
+         donc la seule sortie, et elle se lit comme une pastille (contour
+         accent discret) plutôt que comme un trou dans la courbe. -->
+    <rect x="434" y="185" width="124" height="17" rx="5"
+          fill="var(--figure-surface)" stroke="var(--figure-accent)"
+          stroke-width="0.9" stroke-opacity="0.45"/>
+    <text x="496" y="197" text-anchor="middle" font-size="10.5" font-weight="600"
           fill="var(--figure-accent)">u<tspan dy="2.5" font-size="7.5">C</tspan><tspan dy="-2.5"> ≈ U</tspan><tspan
           dy="2.5" font-size="7.5">0</tspan><tspan dy="-2.5"> + s</tspan><tspan
           dy="2.5" font-size="7.5">m</tspan><tspan dy="-2.5">(t)</tspan></text>

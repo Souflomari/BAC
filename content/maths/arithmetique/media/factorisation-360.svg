@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 760" role="img"
      font-family="'IBM Plex Sans', system-ui, sans-serif"
-     aria-label="Arbre de décomposition de 360 : on pèle le plus petit facteur premier à chaque étape (2, 2, 2, 3, 3, 5), les feuilles se regroupent en 360 = 2 puissance 3 fois 3 puissance 2 fois 5. En comparant avec 252 = 2 puissance 2 fois 3 puissance 2 fois 7, les puissances minimales communes donnent PGCD(360,252) = 2 puissance 2 fois 3 puissance 2 = 36, confirmant l'algorithme d'Euclide du R3.">
+     aria-label="Arbre de décomposition de 360 : on pèle le plus petit facteur premier à chaque étape (2, 2, 2, 3, 3, 5), les feuilles se regroupent en 360 = 2 puissance 3 fois 3 puissance 2 fois 5. En comparant avec 252 = 2 puissance 2 fois 3 puissance 2 fois 7, les puissances minimales communes donnent PGCD(360,252) = 2 puissance 2 fois 3 puissance 2 = 36, confirmant l'algorithme d'Euclide.">
   <title>Décomposition de 360 en facteurs premiers, puis PGCD(360, 252) par les puissances minimales</title>
   <!--
     factorisation-360.svg — StagedFigure, R6 de arithmetique/lesson.md.
@@ -107,7 +107,7 @@
   <!-- ══════════════ Étape 4 : poser 252 à côté — communs vs non communs ══════════════ -->
   <g id="step-4">
     <line x1="60" y1="592" x2="590" y2="592" stroke="var(--figure-grid)" stroke-width="1"/>
-    <text x="325" y="616" text-anchor="middle" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">252 (déjà décomposé au R3) posé à côté :</text>
+    <text x="325" y="616" text-anchor="middle" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">252 (déjà décomposé plus haut) posé à côté :</text>
 
     <text x="150" y="646" text-anchor="end" font-size="15" fill="var(--figure-ink)">360 =</text>
     <text x="150" y="678" text-anchor="end" font-size="15" fill="var(--figure-ink)">252 =</text>
@@ -138,7 +138,7 @@
 
     <rect x="120" y="718" width="410" height="30" rx="7" fill="none" stroke="var(--figure-accent)" stroke-width="1.6"/>
     <text x="325" y="739" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--figure-ink)">PGCD(360, 252) = 2<tspan
-          dy="-5" font-size="9">2</tspan><tspan dy="5"> × 3</tspan><tspan dy="-5" font-size="9">2</tspan><tspan dy="5"> = 36  (≡ Euclide, R3)</tspan></text>
+          dy="-5" font-size="9">2</tspan><tspan dy="5"> × 3</tspan><tspan dy="-5" font-size="9">2</tspan><tspan dy="5"> = 36  (≡ Euclide)</tspan></text>
   </g>
 
 </svg>

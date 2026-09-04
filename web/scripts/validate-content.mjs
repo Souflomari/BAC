@@ -713,6 +713,54 @@ for (const dir of dirs) {
       }
     }
 
+    // ── LES CODES DE BARREAU NE SORTENT PAS DANS LA FIGURE ─────────────────
+    // Un « R3 » désigne un barreau de la leçon. L'élève n'en voit JAMAIS le
+    // code : LessonRenderer retire le préfixe « R<n> — » des titres h2/h3 (il
+    // ne survit que dans un data-rung invisible) et chapters.ts fait de même
+    // pour le libellé du rail. Écrire « (cf. R3) » dans une figure, c'est
+    // renvoyer à une étiquette qui n'existe nulle part à l'écran.
+    //
+    // Ce n'est pas une règle nouvelle : l'audit externe de juillet (5.1) a
+    // classé ces renvois comme une FUITE DE TEXTE DE RÉDACTION, et le
+    // correctif d'alors a nettoyé les titres h2/h3, les cellules du tableau
+    // de barème, les renvois de la prose RLC et les notes « (§0.4) » des cinq
+    // SVG de mouvement. La couche des SVG STATIQUES n'a jamais été balayée :
+    // 47 occurrences y dormaient encore le 2026-09-04, dont une rangée
+    // entière de pastilles « R2 / R1 · R3 · R4 / R5 / R6 » au milieu de la
+    // carte de méthode de philo. Le correctif de juillet a été déclaré au
+    // niveau de la CLASSE ; il n'a été appliqué qu'aux instances regardées.
+    // Cette porte est ce qui manquait pour que la classe tienne.
+    //
+    // L'EXCEPTION EST RÉELLE ET DOIT ÊTRE DITE : en électricité, R0/R1/R2
+    // sont des noms de COMPOSANTS (rl-schema.svg étiquette son résistor R0).
+    // Une figure dans ce cas déclare `CODES R LÉGITIMES:` suivi de la raison,
+    // comme les blocs COULEURS SÉMANTIQUES ci-dessus.
+    const CODE_BARREAU = /\bR\d+\b/g;
+    for (const file of svgFiles) {
+      const src = fs.readFileSync(path.join(mediaDir, file), "utf8");
+      if (/CODES\s+R\s+LÉGITIMES\s*:/i.test(src)) continue;
+      // Le texte RENDU seulement : commentaires d'auteur exclus (ils ne
+      // sortent pas à l'écran et servent justement à situer la figure dans
+      // la leçon), <text>/<title>/<tspan> et l'aria-label de la racine inclus
+      // — ce dernier est lu à voix haute, donc il compte.
+      const sansCommentaires = src.replace(/<!--[\s\S]*?-->/g, "");
+      const morceaux = [];
+      for (const m of sansCommentaires.matchAll(/<(text|title)\b[^>]*>([\s\S]*?)<\/\1>/g)) {
+        morceaux.push(m[2].replace(/<[^>]+>/g, " "));
+      }
+      const aria = sansCommentaires.match(/aria-label="([^"]*)"/);
+      if (aria) morceaux.push(aria[1]);
+      const codes = [...new Set(morceaux.join(" ").match(CODE_BARREAU) ?? [])];
+      if (!codes.length) continue;
+      console.error(
+        `  ✗ ${dir}: media/${file} → code(s) de barreau dans le texte rendu : ${codes.join(", ")} — ` +
+          `l'élève ne voit jamais ces codes (LessonRenderer retire le préfixe « R<n> — » des titres). ` +
+          `Renvoie à un référent VISIBLE (« vu plus haut », le titre de la section), ou, si R<n> nomme ` +
+          `un composant du circuit, déclare-le par un commentaire « CODES R LÉGITIMES: <la raison> ».`
+      );
+      dirFail++;
+    }
+
     for (const file of stagesFiles) {
       const slug = file.replace(/\.stages\.json$/, "");
       const svgPath = path.join(mediaDir, `${slug}.svg`);
