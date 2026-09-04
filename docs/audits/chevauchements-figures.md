@@ -290,3 +290,34 @@ focus — c'est son fonctionnement, pas un défaut.
 
 **Après : 602 cibles mesurées, toutes ≥ 24 px.** Porte armée dans dom-truth
 (208 contrôles), avec les deux exceptions écrites dans le code.
+
+---
+
+## Annexe 4 — le clavier seul (2026-09-04) : un résultat NÉGATIF, et il compte
+
+Quatrième fenêtre ouverte le même jour, jamais mesurée avant. On tabule
+jusqu'à 200 fois sur quatre surfaces et on regarde **ce qui reçoit le
+focus**, à chaque arrêt : un arrêt dans un chapitre `[hidden]` (le focus part
+dans du contenu que personne ne voit) ; un arrêt de taille ou d'opacité
+nulle ; un arrêt sans indicateur visible ; un `tabindex` positif ; un piège
+où le focus ne bouge plus.
+
+**Résultat : rien.** 46, 79, 49 et 90 arrêts sur les quatre surfaces, aucun
+défaut — et la même chose à 360 px après la mise en cadre défilant des
+figures (qui aurait pu ajouter des arrêts muets : Chrome rend focusables les
+conteneurs défilants).
+
+C'est un résultat négatif et il vaut d'être **gardé** : cette classe régresse
+en silence, et le prochain composant qui pose un `tabindex="1"` ou une ombre
+de focus absente ne se signalera pas tout seul. Porte armée dans dom-truth
+(209 contrôles).
+
+**Deux pièges de mesure, payés une fois chacun**, écrits dans le code :
+- l'opacité du `§` est **animée** au focus : lire le style juste après la
+  touche renvoie une valeur intermédiaire, et la sonde accusait une ancre
+  invisible qui ne l'était pas ;
+- la clé d'identité d'un arrêt doit porter la **position**, pas seulement le
+  libellé : deux liens voisins (« Nombres complexes — forme algébrique » et
+  « … trigonométrique ») partagent leurs 24 premiers caractères, et une clé
+  textuelle les déclarait « focus bloqué ». Deux éléments ne peuvent pas
+  occuper le même point.

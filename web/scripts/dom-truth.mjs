@@ -2580,6 +2580,78 @@ try {
     else console.log(`  ✓ ${nCibles} cibles à 360 px, toutes ≥ 24px`);
   }
 
+  // ── Le clavier seul : parcourir la page sans souris ──────────────────────
+  //
+  // Fenêtre de mesure ouverte le 2026-09-04, jamais mesurée avant. On tabule
+  // jusqu'à 200 fois et on regarde CE QUI REÇOIT LE FOCUS, à chaque arrêt :
+  //
+  //   · un arrêt dans un chapitre `[hidden]` — le focus part dans du contenu
+  //     que personne ne voit, et la page ne défile nulle part ;
+  //   · un arrêt sur un élément de taille nulle ou d'opacité nulle — même
+  //     symptôme, le curseur disparaît ;
+  //   · un arrêt SANS indicateur visible (ni outline, ni ombre) ;
+  //   · un `tabindex` positif, qui casse l'ordre du document ;
+  //   · un piège : le focus qui ne bouge plus.
+  //
+  // PIÈGE DE MESURE, payé une fois : l'opacité du « § » est ANIMÉE au focus.
+  // Lire le style tout de suite après la touche renvoie une valeur
+  // intermédiaire (0), et la sonde accusait à tort une ancre invisible. On
+  // laisse la transition finir.
+  //
+  // Résultat à l'ouverture : RIEN. 46/79/49/90 arrêts sur quatre surfaces,
+  // aucun défaut — et la même chose à 360 px. C'est un résultat négatif, et
+  // il vaut d'être gardé : cette classe régresse en silence.
+  {
+    console.log(`\n[clavier] SWEEP: tabulation propre (focus visible, aucun piège)`);
+    const kp = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    const soucis = [];
+    let arrets = 0;
+    for (const r of ["/notions/pc/rlc-serie", "/", "/examens"]) {
+      await kp.goto(`${BASE}${r}`, { waitUntil: "networkidle" });
+      await kp.evaluate(() => document.body.focus());
+      let dernier = null;
+      for (let i = 0; i < 120; i++) {
+        await kp.keyboard.press("Tab");
+        await kp.waitForTimeout(70);
+        const info = await kp.evaluate(() => {
+          const el = document.activeElement;
+          if (!el || el === document.body) return null;
+          const q = el.getBoundingClientRect();
+          const cs = getComputedStyle(el);
+          let op = 1;
+          for (let n = el; n; n = n.parentElement) op *= parseFloat(getComputedStyle(n).opacity || "1");
+          return {
+            // La CLÉ porte la POSITION, pas seulement le libellé : deux liens
+            // voisins « Nombres complexes — forme algébrique / trigonométrique »
+            // ont les 24 mêmes premiers caractères, et une clé textuelle les
+            // déclarait « focus bloqué ». Deux éléments ne peuvent pas occuper
+            // le même point. (Faux positif payé une fois, sur deux surfaces.)
+            cle: `${el.tagName.toLowerCase()} « ${(el.textContent || el.getAttribute("aria-label") || "").trim().replace(/\s+/g, " ").slice(0, 24)} » @${Math.round(q.x)},${Math.round(q.y)}`,
+            nul: q.width === 0 || q.height === 0,
+            invisible: op < 0.1,
+            sansMarque: (parseFloat(cs.outlineWidth) || 0) < 1 && (!cs.boxShadow || cs.boxShadow === "none"),
+            cache: !!el.closest("[hidden]"),
+            ti: Number(el.getAttribute("tabindex") ?? 0),
+          };
+        });
+        if (!info) break;
+        if (dernier === info.cle) { soucis.push(`${r} piège : le focus ne bouge plus sur ${info.cle}`); break; }
+        dernier = info.cle;
+        arrets++;
+        if (info.cache) soucis.push(`${r} focus dans un [hidden] : ${info.cle}`);
+        if (info.nul) soucis.push(`${r} focus de taille nulle : ${info.cle}`);
+        if (info.invisible) soucis.push(`${r} focus invisible : ${info.cle}`);
+        if (info.sansMarque) soucis.push(`${r} aucun indicateur de focus : ${info.cle}`);
+        if (info.ti > 0) soucis.push(`${r} tabindex positif (${info.ti}) : ${info.cle}`);
+      }
+    }
+    await kp.close();
+    checks++;
+    const uniq = [...new Set(soucis)];
+    if (uniq.length) failures += fail(`clavier : ${uniq.slice(0, 5).join(" | ")}`);
+    else console.log(`  ✓ ${arrets} arrêts de tabulation sur 3 surfaces, aucun défaut`);
+  }
+
   // (F7) KaTeX accessibility parity: every formula ships MathML.
   {
     console.log(`\n[${NOTION}] SWEEP: KaTeX MathML parity`);
