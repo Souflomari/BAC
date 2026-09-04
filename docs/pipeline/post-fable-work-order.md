@@ -88,7 +88,28 @@ rendu avant le fan-out — discipline D10). Mets à jour la table ledger §11
 ses 3 placements doivent retrouver leur progression via initialStage.
 SVT : NE PAS TOUCHER (gate propriétaire).
 
-## Item 4 — Paliers shots 1536/1920
+## Item 4 — Paliers shots 1536/1920 — **FAIT (2026-09-04)**
+
+> `VIEWPORTS` porte trois paliers de bureau (1280 / 1536 / 1920) + mobile ;
+> les deux portes `vpName === "desktop"` sont ouvertes aux trois via
+> `PALIERS_BUREAU` ; et un shot par chapitre est pris par `?chapitre=n` —
+> avec attente de `data-chapter-active`, pas un délai, parce que le HTML
+> statique rend toujours le chapitre 1. Vérifié sur `pc/rlc-serie` : **147
+> captures**, dont 33 de chapitres (11 × 3 paliers) et 94 battements
+> d'animation, toutes de hauteurs différentes — la preuve que les liens
+> profonds ont pris.
+>
+> **AU PASSAGE, LE HARNAIS ÉTAIT CASSÉ.** Depuis la pagination (Day-11),
+> neuf figures sur dix vivent dans un `<section hidden>` :
+> `scrollIntoViewIfNeeded` y attendait un élément qui ne deviendrait jamais
+> visible, et la passe mourait sur un `TimeoutError`. Personne ne l'avait vu
+> — le harnais n'a pas de porte. Les chapitres sont maintenant dépliés avant
+> les captures de figures (des captures d'ÉLÉMENT : la composition autour
+> n'entre pas dans l'image), et la page est rechargée à chaque thème pour que
+> la pleine page suivante ne montre pas la leçon entière.
+>
+> Le hack thème (classList) reste tel quel — dette connue, ledger 11.12.
+
 
 Contrat : spec §5. `web/scripts/shots.mjs` : ajouter wide 1536×960 +
 ultra 1920×1080 ; ouvrir les gates `vpName === "desktop"` (:167,:182) aux

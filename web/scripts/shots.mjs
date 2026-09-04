@@ -48,10 +48,26 @@ let BASE_URL = process.env.BASE_URL || arg("base", "http://localhost:3000");
 const SLUG = arg("slug", "pc/rlc-serie");
 const OUT = arg("out", "shots");
 
+// LESSON-EXPERIENCE-SPEC §5 / item 4 de l'ordre de travail post-Fable.
+// Trois paliers de bureau, parce que trois choses différentes s'y jouent :
+//   · 1280 — la largeur de référence des critiques visuelles ;
+//   · 1536 — le palier où la spec plaçait la zone « à retenir » (elle vit en
+//     fait à bp-xl/1600 : « bp-wide » n'existe pas dans tokens.ts, voir
+//     l'ordre de travail item 1) ; c'est donc le palier JUSTE EN DESSOUS de
+//     la zone, et il vaut d'être vu pour ça ;
+//   · 1920 — l'écran du propriétaire, celui où les zones mortes se voient.
 const VIEWPORTS = {
   desktop: { width: 1280, height: 900 },
+  wide: { width: 1536, height: 960 },
+  ultra: { width: 1920, height: 1080 },
   mobile: { width: 390, height: 844 },
 };
+
+// Les captures lourdes (header, clips image par image, figures statiques)
+// tournaient sur le seul « desktop ». Elles couvrent maintenant les trois
+// paliers de bureau : c'est le même contenu, mais la composition change avec
+// la largeur — et c'est justement la composition qu'on regarde.
+const PALIERS_BUREAU = new Set(["desktop", "wide", "ultra"]);
 
 // ── Locate the pre-installed Chromium (no download) ──────────────────────────
 function findChromium() {
@@ -153,6 +169,11 @@ try {
     await settle(page, 800);
 
     for (const theme of ["light", "dark"]) {
+      // Recharger à chaque thème : les passes « figures » ci-dessous
+      // DÉPLIENT tous les chapitres, et sans rechargement la capture pleine
+      // page du thème suivant montrerait la leçon entière au lieu du
+      // chapitre courant.
+      await page.goto(TARGET, { waitUntil: "networkidle", timeout: 60000 });
       await setTheme(page, theme);
       await settle(page, 300);
 
@@ -164,7 +185,7 @@ try {
       shots.push(full);
 
       // 2. Header at top vs scrolled (desktop only — the elevation-on-scroll)
-      if (vpName === "desktop") {
+      if (PALIERS_BUREAU.has(vpName)) {
         const headTop = `${vpName}-${theme}-header-top`;
         await page.screenshot({ path: shotPath(headTop), clip: { x: 0, y: 0, width: viewport.width, height: 120 } });
         shots.push(headTop);
@@ -179,7 +200,22 @@ try {
 
       // 3. Every beat of every motion clip (desktop light is the canonical pass;
       //    we also do desktop dark to check parity).
-      if (vpName === "desktop") {
+      if (PALIERS_BUREAU.has(vpName)) {
+        // DÉPLIER TOUS LES CHAPITRES avant de photographier les figures.
+        //
+        // Depuis la pagination (Day-11), neuf figures sur dix vivent dans un
+        // `<section hidden>` : `scrollIntoViewIfNeeded` y attend un élément
+        // qui ne deviendra jamais visible, et la passe entière mourait sur
+        // un TimeoutError — le harnais était cassé depuis, sans que rien ne
+        // le dise. Les captures de figures sont des captures d'ÉLÉMENT : la
+        // composition de la page autour n'entre pas dans l'image, donc
+        // déplier ne fausse rien. La page est rechargée au thème suivant.
+        await page.evaluate(() =>
+          document
+            .querySelectorAll("[data-chapter-section]")
+            .forEach((s) => (s.hidden = false))
+        );
+        await settle(page, 200);
         const figures = page.locator('figure:has([role="group"])');
         const count = await figures.count();
         for (let f = 0; f < count; f++) {
@@ -234,6 +270,43 @@ try {
         }
       }
     }
+    // 5. UN SHOT PAR CHAPITRE (item 4). La leçon est paginée : une capture de
+    //    la page ne montre qu'un dixième d'elle-même. On parcourt les
+    //    chapitres par `?chapitre=n` — le lien profond, pas un clic — pour
+    //    que la série soit reproductible et que chaque image porte son
+    //    numéro. Thème clair seulement : doubler la série en sombre
+    //    quadruplerait la sortie sans rien montrer que le plein-page sombre
+    //    ne montre déjà.
+    if (PALIERS_BUREAU.has(vpName)) {
+      await setTheme(page, "light");
+      const total = await page.evaluate(
+        () => document.querySelectorAll("[data-chapter-section]").length
+      );
+      for (let n = 1; n <= total; n++) {
+        await page.goto(`${TARGET}${TARGET.includes("?") ? "&" : "?"}chapitre=${n}`, {
+          waitUntil: "networkidle",
+          timeout: 60000,
+        });
+        // Le bon chapitre n'est actif qu'APRÈS hydratation : le HTML statique
+        // ne connaît pas la query string et rend toujours le chapitre 1
+        // (ChapterShell, note de tête). Attendre l'attribut, pas un délai.
+        try {
+          await page.waitForFunction(
+            (k) =>
+              document
+                .querySelector(`[data-chapter-section][data-chapter-index="${k}"]`)
+                ?.getAttribute("data-chapter-active") === "true",
+            n - 1,
+            { timeout: 15000 }
+          );
+        } catch { /* la capture dira ce qui s'est passé */ }
+        await settle(page, 300);
+        const nom = `${vpName}-light-chapitre-${String(n).padStart(2, "0")}`;
+        await page.screenshot({ path: shotPath(nom), fullPage: true });
+        shots.push(nom);
+      }
+    }
+
     await context.close();
   }
 
