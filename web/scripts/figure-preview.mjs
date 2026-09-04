@@ -381,6 +381,13 @@ const defauts = await page.evaluate(() => {
       if (!(largeur >= 1)) continue;
       if (parseFloat(st.strokeOpacity || "1") < 0.5) continue;
       if (parseFloat(st.opacity || "1") < 0.5) continue;
+      // UNE RATURE EST VOULUE. division-euclidienne-droite barre « q = -13 ? »
+      // exprès : c'est le piège de la figure, et le trait DIT qu'il est faux.
+      // La sonde ne peut pas deviner l'intention — la figure la déclare, par
+      // data-rature sur le trait. C'est le même contrat que
+      // « COULEURS SÉMANTIQUES: » pour la porte de couleur : on ne supprime
+      // pas l'exception, on exige qu'elle soit écrite.
+      if (g.hasAttribute("data-rature")) continue;
       // La couleur de grille est faite pour passer sous le texte : une
       // graduation posée sur un quadrillage léger est normale et lisible.
       // ATTENTION : getComputedStyle rend « rgb(232, 230, 225) » là où le
@@ -401,10 +408,22 @@ const defauts = await page.evaluate(() => {
         const y = m ? m.b * pt.x + m.d * pt.y + m.f : pt.y;
         for (const bt of boites) {
           if (!bt.s) continue;
-          const marge = bt.b.height * 0.15;
+          // getBBox rend la boîte EM, pas la boîte d'encre. Pour la plupart
+          // des mots l'écart est sans conséquence ; pour « … », « . », « , »
+          // ou « _ », l'encre tient dans le bas de la boîte et tout le haut
+          // est vide. Sans ce cas particulier, les quatre « … » posés au bord
+          // d'une droite numérotée (division-euclidienne-droite) sortaient à
+          // 94 % alors que les points sont bien SOUS l'axe, vérifié sur la
+          // capture. On rétrécit donc la boîte de ces textes-là à son tiers
+          // bas — c'est étroit et c'est dit, plutôt que large et faux.
+          const encreBasse = /^[…._,]+$/.test(bt.s);
+          const hautBoite = encreBasse
+            ? bt.b.y + bt.b.height * 0.62
+            : bt.b.y + bt.b.height * 0.15;
+          const basBoite = bt.b.y + bt.b.height * 0.85;
           if (
             x > bt.b.x && x < bt.b.x + bt.b.width &&
-            y > bt.b.y + marge && y < bt.b.y + bt.b.height - marge
+            y > hautBoite && y < basBoite
           ) {
             dedans.set(bt, (dedans.get(bt) ?? 0) + pas);
           }

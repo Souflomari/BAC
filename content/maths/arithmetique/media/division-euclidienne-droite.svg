@@ -112,7 +112,11 @@
     <!-- le piège : q = -13 (tentant, faux) -->
     <text x="410" y="272" text-anchor="middle" font-size="12" fill="var(--figure-ink-soft)"><tspan
           font-style="italic">q</tspan> = -13 ?</text>
-    <line x1="386" y1="266" x2="434" y2="278" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <!-- data-rature : ce trait BARRE « q = -13 ? » exprès — c'est le piège de
+         la figure, et la rature est ce qui dit qu'il est faux. La sonde de
+         figure-preview signale les tracés qui traversent un texte ; cet
+         attribut lui dit que celui-là est voulu. -->
+    <line data-rature="1" x1="386" y1="266" x2="434" y2="278" stroke="var(--figure-ink)" stroke-width="1.6"/>
     <text x="410" y="396" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">12&#215;(-13) = -156 &gt; -157</text>
     <text x="410" y="410" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">&#8594; -157 hors de sa cellule, reste &lt; 0 : interdit</text>
   </g>

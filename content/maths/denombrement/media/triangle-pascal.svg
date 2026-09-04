@@ -137,8 +137,17 @@
     <text class="tp-val" x="432" y="371">10</text>
     <text class="tp-val" x="496" y="371">5</text>
 
-    <!-- axe de symétrie vertical -->
-    <line class="tp-axis" x1="400" y1="50" x2="400" y2="396"/>
+    <!-- Axe de symétrie vertical, EN QUATRE SEGMENTS qui contournent les
+         cases centrales (n pair : y = 56, 172, 288). D'un seul trait, il
+         traversait les chiffres 1, 2 et 6 — rayés de part en part (mesuré
+         125 % de leur largeur). L'axe appartient à une étape postérieure
+         aux cases, donc l'ordre de peinture ne peut pas le sauver : c'est
+         le tracé qui s'interrompt. Aux lignes impaires il passe déjà dans
+         la gouttière entre deux cases (x = 396…404), rien à contourner. -->
+    <line class="tp-axis" x1="400" y1="50"  x2="400" y2="56"/>
+    <line class="tp-axis" x1="400" y1="96"  x2="400" y2="172"/>
+    <line class="tp-axis" x1="400" y1="212" x2="400" y2="288"/>
+    <line class="tp-axis" x1="400" y1="328" x2="400" y2="396"/>
 
     <!-- paire miroir C(5,2) = C(5,3) = 10 -->
     <rect class="tp-symring" x="340" y="346" width="56" height="40" rx="10"/>

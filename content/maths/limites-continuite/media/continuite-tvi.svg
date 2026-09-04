@@ -133,13 +133,19 @@
     <!-- Graduations et étiquettes sur l'axe des y : f(a), f(b) -->
     <line x1="326" y1="74.6" x2="334" y2="74.6"
           stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
-    <text x="318" y="78.6" text-anchor="end" font-size="11"
+    <!-- Les trois étiquettes d'ordonnée passent AU-DESSUS de leur
+         graduation. Centrées dessus, elles étaient traversées par la
+         horizontale de rappel qui va du point à l'axe (mesuré 99 % pour
+         « f(a) = 2 ») et, pour « k = 0,5 », par la droite y = k
+         elle-même, qui court sur toute la largeur du cadre : l'étiquette
+         de la droite était écrite SUR la droite. -->
+    <text x="318" y="69.6" text-anchor="end" font-size="11"
           fill="var(--figure-ink-soft)"><tspan font-style="italic">f</tspan>(<tspan
           font-style="italic">a</tspan>) = 2</text>
 
     <line x1="326" y1="305.4" x2="334" y2="305.4"
           stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
-    <text x="318" y="309.4" text-anchor="end" font-size="11"
+    <text x="318" y="300.4" text-anchor="end" font-size="11"
           fill="var(--figure-ink-soft)"><tspan font-style="italic">f</tspan>(<tspan
           font-style="italic">b</tspan>) = -2</text>
   </g><!-- /step-2 -->
@@ -154,7 +160,12 @@
           stroke-dasharray="6,4" stroke-linecap="round"/>
     <line x1="326" y1="161.2" x2="334" y2="161.2"
           stroke="var(--figure-accent)" stroke-width="1.8"/>
-    <text x="318" y="165.2" text-anchor="end" font-size="11"
+    <!-- « k = 0,5 » nomme la droite y = k : elle se pose donc au BOUT GAUCHE
+         de cette droite, là où rien ne passe. Près de l'axe, elle était
+         d'abord écrite SUR la droite, puis — remontée — traversée par la
+         courbe, qui coupe y = k à deux pas de là. C'est le point même de la
+         figure : cet endroit est occupé. -->
+    <text x="68" y="156.2" text-anchor="start" font-size="11"
           fill="var(--figure-accent)"><tspan font-style="italic">k</tspan> = 0,5</text>
 
     <!-- Point c : intersection courbe / droite y=k (accent, le résultat du théorème) -->
