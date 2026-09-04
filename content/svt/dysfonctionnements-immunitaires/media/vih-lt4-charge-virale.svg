@@ -78,8 +78,13 @@
 
   <!-- ══════════════════════════════ STEP 3 — courbe charge virale ═══════ -->
   <g id="step-3">
-    <line x1="490" y1="244" x2="504" y2="244" stroke="var(--figure-ink-soft)" stroke-width="2.2"/>
-    <text x="508" y="247" text-anchor="start" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">charge virale</text>
+    <!-- LÉGENDE DÉPLACÉE À GAUCHE (2026-09-04) : posée en x=490-600 à hauteur
+         y=244, elle était traversée par la courbe LT4 qui descend justement
+         par là (23 % de sa largeur) — la légende d'une courbe rayée par
+         l'autre. Soixante pixels plus à gauche et vingt plus bas, le palier
+         de la charge virale est plat et la LT4 déjà passée. -->
+    <line x1="412" y1="266" x2="426" y2="266" stroke="var(--figure-ink-soft)" stroke-width="2.2"/>
+    <text x="430" y="269" text-anchor="start" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">charge virale</text>
 
     <path d="
       M86,268 L98,200 L108,140 L118,95 L126,70 L136,90 L148,125 L162,160

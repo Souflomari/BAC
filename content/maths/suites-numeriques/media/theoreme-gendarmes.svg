@@ -151,7 +151,13 @@
     <circle cx="440" cy="223.98" r="3" fill="var(--figure-accent)"/>
     <circle cx="490" cy="242.75" r="3" fill="var(--figure-accent)"/>
     <circle cx="540" cy="255.49" r="3" fill="var(--figure-accent)"/>
-    <text x="220" y="298" text-anchor="middle" font-size="10.5" font-weight="600" font-style="italic"
+    <!-- SORTIE DE L'ENTONNOIR (2026-09-04) : centrée en (220;298), l'étiquette
+         vivait entre les deux gendarmes — et c'est justement là qu'aucune
+         étiquette horizontale ne tient : les deux suites CONVERGENT, donc la
+         bande se referme sur la longueur du texte et l'une des deux finit
+         toujours par le traverser (22 % ici). Sous le gendarme du bas, à
+         droite, le quart inférieur du repère est vide. -->
+    <text x="410" y="368" text-anchor="middle" font-size="10.5" font-weight="600" font-style="italic"
           fill="var(--figure-accent)">w<tspan dy="3" font-size="8">n</tspan><tspan dy="-3"> — coincé, forcé vers L</tspan></text>
   </g><!-- /step-3 -->
 

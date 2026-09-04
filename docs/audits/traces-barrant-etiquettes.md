@@ -289,7 +289,7 @@ Par ordre de préférence, tirés des 30 figures réparées :
   mesure. Cette dernière classe a fait un dégât réel dans
   `travail-force-signe` et n'est gardée par rien.
 - Il ignore les `.motion.svg`.
-- **Ce n'est toujours pas une porte.** 85 cas subsistent : l'armer
+- **Ce n'est toujours pas une porte.** 74 cas subsistent : l'armer
   aujourd'hui obligerait à la désarmer demain.
 
 ---
@@ -465,3 +465,35 @@ tracés qui barrent (85, tous sous 30 %), aplats clairs en thème sombre (2,
 la même dette). **Armer une porte sur une classe sale oblige à la désarmer
 le lendemain** — c'est la règle, et c'est pour ça que trois des cinq sondes
 n'en sont pas une.
+
+
+---
+
+## Vague 7 (2026-09-04) — 85 → 74, et la tranche 20–29 % se vide à son tour
+
+`85 → 74` cas, `46 → 41` figures. `20–29 %` passe de 18 à 11.
+
+**Un cas de figure GÉNÉRÉE, traité à sa source.**
+`explication-bk-2019-n-x1` sort d'un script Python : les deux décalages
+d'étiquette sont corrigés dans `scripts/figure-geometrie-espace-2019.py`,
+jamais dans le SVG. **Et le résultat est dit tel qu'il est** : le rayon
+pointillé et le segment ΩC ne traversent plus leurs étiquettes, mais le bord
+du plan (ABC) les croise encore à 24 %. Dans une scène 3-D dense — sphère,
+grand cercle, plan, triangle, normale — **aucune position n'est libre de
+tout**, et le commentaire du script le dit maintenant au lieu de laisser
+croire que le problème est réglé.
+
+**Un enchaînement de trois essais, sur `cubique-trois-racines`,** qui vaut
+comme méthode : les trois étiquettes de racine étaient centrées SOUS leur
+racine — c'est-à-dire exactement là où la courbe coupe l'axe. Les décaler
+vers la gauche a posé c₁ sur la branche montante de gauche (même 22 %, à un
+autre endroit) ; les décaler vers la droite l'a fait buter contre c₂ (le
+défaut de tracé mué en chevauchement) ; il a fallu **descendre c₁ d'une
+ligne**. Sous une racine, le seul côté libre est celui où la courbe repasse
+au-dessus de l'axe — et il faut encore vérifier que le voisin n'est pas là.
+
+**Et une règle de plus, pour les suites qui convergent.** Dans
+`theoreme-gendarmes`, l'étiquette de la suite encadrée vivait ENTRE les deux
+gendarmes. C'est le seul endroit où aucune étiquette horizontale ne tient :
+les deux suites se rapprochent, donc la bande se referme sur la longueur du
+texte et l'une des deux finit toujours par le traverser.

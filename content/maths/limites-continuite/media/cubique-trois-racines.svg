@@ -126,19 +126,30 @@
     <!-- Les trois racines, sur l'axe des x -->
     <line x1="181.44" y1="226" x2="181.44" y2="240" stroke="var(--figure-accent)" stroke-width="1.6"/>
     <circle cx="181.44" cy="232" r="3.5" fill="var(--figure-accent)"/>
-    <text x="181.44" y="252" text-anchor="middle" font-size="10.5"
+    <!-- LES TROIS ÉTIQUETTES DE RACINE, DÉCALÉES DU CÔTÉ LIBRE (2026-09-04) :
+         centrées sous leur racine, elles étaient traversées par la COURBE
+         elle-même — qui passe exactement là, puisqu'une racine est le point
+         où elle coupe l'axe — et, pour c₂, par l'axe des ordonnées. Chacune
+         s'écarte du côté où la courbe n'est PAS sous l'axe : à droite de c₁
+         (la branche y remonte au-dessus de l'axe), à gauche de c₂, à droite
+         de c₃. Décaler c₁ vers la gauche — premier essai — la posait sur la
+         branche montante de gauche : même 22 %, à un autre endroit. Sous une
+         racine, le seul côté libre est celui où la courbe repasse au-dessus
+         de l'axe. Et c₁ descend d'une ligne : sur la même, elle venait buter
+         contre c₂ — le défaut de tracé se serait mué en chevauchement. -->
+    <text x="191" y="270" text-anchor="start" font-size="10.5"
           fill="var(--figure-accent)"><tspan font-style="italic">c</tspan><tspan dy="3" font-size="8">1</tspan><tspan
           dy="-3"> ∈ ]−3,−1[</tspan></text>
 
     <line x1="320" y1="226" x2="320" y2="240" stroke="var(--figure-accent)" stroke-width="1.6"/>
     <circle cx="320" cy="232" r="3.5" fill="var(--figure-accent)"/>
-    <text x="320" y="252" text-anchor="middle" font-size="10.5"
+    <text x="311" y="252" text-anchor="end" font-size="10.5"
           fill="var(--figure-accent)"><tspan font-style="italic">c</tspan><tspan dy="3" font-size="8">2</tspan><tspan
           dy="-3"> ∈ ]−1,1[</tspan></text>
 
     <line x1="458.56" y1="226" x2="458.56" y2="240" stroke="var(--figure-accent)" stroke-width="1.6"/>
     <circle cx="458.56" cy="232" r="3.5" fill="var(--figure-accent)"/>
-    <text x="458.56" y="252" text-anchor="middle" font-size="10.5"
+    <text x="468" y="252" text-anchor="start" font-size="10.5"
           fill="var(--figure-accent)"><tspan font-style="italic">c</tspan><tspan dy="3" font-size="8">3</tspan><tspan
           dy="-3"> ∈ ]1,3[</tspan></text>
   </g><!-- /step-3 -->

@@ -299,7 +299,13 @@ add_(f'<ellipse cx="{f(ox)}" cy="{f(oy)}" rx="{f(rpx)}" ry="{f(rpx * 0.30)}" '
 add_(point(OMEGA, "Ω", -6, -16, C_SPH))
 add_(f'<line x1="{f(ox)}" y1="{f(oy)}" x2="{f(ox + rpx)}" y2="{f(oy)}" '
      f'stroke="{C_SPH}" stroke-width="1.6" stroke-dasharray="5 4"/>')
-add_(texte(ox + rpx * 0.46, oy - 8, "R = √5", 15, C_SPH, "700"))
+# −16 et non −8 (2026-09-04) : à 8 px, l'étiquette « R = √5 » était traversée
+# par le rayon pointillé qu'elle nomme. Elle ne l'est plus.
+# CE QUI RESTE, ET QU'ON ASSUME : à 16 px elle croise le bord du plan (ABC),
+# à 24 % de sa largeur. Cette figure est une scène 3-D dense — sphère, grand
+# cercle, plan, triangle, normale — et dans cette région il n'existe aucune
+# position qui ne croise rien. Mesuré, pas ignoré.
+add_(texte(ox + rpx * 0.46, oy - 16, "R = √5", 15, C_SPH, "700"))
 add_("</g>")
 
 # ── step-6 : la distance — et le pied tombe sur C ──────────────────────
@@ -317,7 +323,13 @@ cx_, cy_ = P(H)
 # normale 2D au segment ΩC, pour poser l'étiquette à côté et non dessus
 ndx, ndy = -(cy_ - oy_), (cx_ - ox_)
 nl = math.hypot(ndx, ndy) or 1.0
-add_(texte(hx + 34 * ndx / nl - 16, hy + 34 * ndy / nl + 5, "d = √3", 16, C_ACC, "700"))
+# 48 px de normale, et non 34 (2026-09-04) : une étiquette HORIZONTALE posée
+# près d'un segment OBLIQUE est rattrapée par la pente sur sa propre largeur ;
+# le décalage normal doit couvrir la hauteur du texte PLUS sa demi-largeur
+# projetée (même règle que l'audit des tracés). Le segment ΩC ne la traverse
+# plus ; le bord du plan (ABC), lui, la croise encore à 24 %. Même remarque
+# que ci-dessus : dans cette scène 3-D, aucune position n'est libre de tout.
+add_(texte(hx + 48 * ndx / nl - 16, hy + 48 * ndy / nl + 5, "d = √3", 16, C_ACC, "700"))
 add_("</g>")
 
 # ── step-7 : d < R ⟹ le cercle d'intersection ──────────────────────────
