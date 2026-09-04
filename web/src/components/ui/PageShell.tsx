@@ -54,7 +54,14 @@ export function PageShell({
     reading: "max-w-reading",
     content: "max-w-content",
     wide:    "max-w-wide",
-    notion:  "max-w-notion",
+    // À partir de la classe M3 « extra-large » (bp-xl, 1600px) la bande de
+    // notion s'élargit pour accueillir la CINQUIÈME colonne de la grille —
+    // la zone « à retenir » (LESSON-EXPERIENCE-SPEC §3). 1484 = 208 (rail)
+    // + 40 + 690 (la prose à 65ch, INCHANGÉE) + 40 + 264 (la zone). Sans cet
+    // élargissement, les deux colonnes ajoutées prendraient leur place à la
+    // prose, qui tombait de 690 à 496 px — mesuré. La bande ne bouge pas
+    // d'un pixel sous ce palier.
+    notion:  "max-w-notion bp-xl:max-w-[1484px]",
     // Set-W2 candidate (Day-8): the notion band may widen at the wide tier;
     // prose stays 65ch inside — only figures/motion earn the extra width.
     notionWide: "max-w-notion bp-large:max-w-[1400px]",

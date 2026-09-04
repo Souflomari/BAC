@@ -2238,6 +2238,98 @@ try {
     else console.log(`  ✓ 25 largeurs testées, aucun repli, aucun débord`);
   }
 
+  // ── La zone « à retenir » (LESSON-EXPERIENCE-SPEC §3.2/§3.3) ──────────────
+  //
+  // Trois exigences, et la troisième est la seule qui compte vraiment :
+  //
+  //   1. elle n'existe QU'AU PALIER bp-xl. Sous 1600 px, pas de colonne, pas
+  //      de gouttière fantôme ;
+  //   2. la colonne de prose ne bouge pas d'un pixel quand elle apparaît —
+  //      c'est la promesse de la spec, et c'est mesurable au pixel près. La
+  //      première version l'a violée : ajouter deux colonnes dans une bande de
+  //      largeur fixe faisait tomber la prose de 690 à 496 px. La bande
+  //      s'élargit donc à bp-xl ; cette porte est ce qui empêche la
+  //      régression de revenir ;
+  //   3. ÉTAT HONNÊTE : un chapitre sans « à retenir » ne rend AUCUNE carte.
+  //      Pas de cadre vide, pas de tiret, pas de squelette. Le chapitre 1 de
+  //      rlc-serie (l'accroche) n'a pas de formule — la zone doit s'y taire.
+  //      Sans cette porte, la première dérive serait de « remplir » la colonne.
+  {
+    console.log(`\n[${NOTION}] SWEEP: zone « à retenir » — palier, mesure, état honnête`);
+    const lire = async () =>
+      page.evaluate(() => {
+        const grid = document.querySelector(".notion-page-grid");
+        const zone = document.querySelector("[data-retenir-zone]");
+        const carte = document.querySelector("[data-retenir-carte]");
+        const prose = document.querySelector(".chapter-view:not([hidden]) .notion-prose");
+        return {
+          colonnes: grid ? getComputedStyle(grid).gridTemplateColumns.split(" ").length : 0,
+          zoneAffichee: zone ? getComputedStyle(zone).display !== "none" : null,
+          carte: !!carte,
+          source: carte?.getAttribute("data-retenir-source") ?? null,
+          texte: carte ? carte.innerText.replace(/\s+/g, " ") : "",
+          prose: Math.round(prose?.getBoundingClientRect().width ?? 0),
+        };
+      });
+
+    await page.setViewportSize({ width: 1280, height: 1000 });
+    await page.goto(`${BASE}${NOTION}?chapitre=3`, { waitUntil: "networkidle" });
+    const etroit = await lire();
+    checks++;
+    if (etroit.zoneAffichee !== false || etroit.colonnes !== 3) {
+      failures += fail(
+        `zone « à retenir » sous le palier : affichée=${etroit.zoneAffichee}, ${etroit.colonnes} colonne(s) — attendu masquée et 3`
+      );
+    } else console.log(`  ✓ sous bp-xl : 3 colonnes, zone absente de la grille`);
+
+    await page.setViewportSize({ width: 1600, height: 1000 });
+    await page.goto(`${BASE}${NOTION}?chapitre=3`, { waitUntil: "networkidle" });
+    const large = await lire();
+    checks++;
+    if (large.zoneAffichee !== true || large.colonnes !== 5) {
+      failures += fail(
+        `zone « à retenir » au palier : affichée=${large.zoneAffichee}, ${large.colonnes} colonne(s) — attendu visible et 5`
+      );
+    } else console.log(`  ✓ à bp-xl : 5 colonnes, zone visible`);
+
+    checks++;
+    if (large.prose !== etroit.prose || etroit.prose === 0) {
+      failures += fail(
+        `la colonne de prose a bougé en ouvrant la zone : ${etroit.prose}px → ${large.prose}px (la spec §3.1 exige qu'elle ne bouge PAS)`
+      );
+    } else console.log(`  ✓ la prose ne bouge pas : ${etroit.prose}px des deux côtés du palier`);
+
+    checks++;
+    if (!large.carte || large.source !== "sidecar" || !/T_?0|LC|d\s*2\s*q|dt/.test(large.texte)) {
+      failures += fail(
+        `carte du chapitre 3 : carte=${large.carte} source=${large.source} texte=« ${large.texte.slice(0, 60)} »`
+      );
+    } else console.log(`  ✓ chapitre 3 : carte authorée (sidecar), la formule de la leçon`);
+
+    // L'ÉTAT HONNÊTE, la porte qui compte.
+    await page.goto(`${BASE}${NOTION}?chapitre=1`, { waitUntil: "networkidle" });
+    const accroche = await lire();
+    checks++;
+    if (accroche.carte) {
+      failures += fail(
+        `chapitre 1 (accroche, sans formule) : une carte « à retenir » est rendue — état honnête rompu, contenu fabriqué`
+      );
+    } else console.log(`  ✓ chapitre sans formule : zone présente et SILENCIEUSE (aucune carte)`);
+
+    // Le repli : une leçon sans sidecar prend la première formule détachée du
+    // chapitre — une formule DÉJÀ dans la leçon, jamais une invention.
+    await page.goto(`${BASE}/notions/pc/lois-de-newton?chapitre=2`, { waitUntil: "networkidle" });
+    const repli = await lire();
+    checks++;
+    if (!repli.carte || repli.source !== "repli") {
+      failures += fail(
+        `repli (leçon sans retenir.json) : carte=${repli.carte} source=${repli.source} — attendu une carte de source « repli »`
+      );
+    } else console.log(`  ✓ repli : première formule détachée du chapitre, étiquetée par son titre`);
+
+    await page.setViewportSize({ width: 1280, height: 1000 });
+  }
+
   // (F7) KaTeX accessibility parity: every formula ships MathML.
   {
     console.log(`\n[${NOTION}] SWEEP: KaTeX MathML parity`);

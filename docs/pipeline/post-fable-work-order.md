@@ -25,7 +25,20 @@ dom-truth AVANT et APRÈS (121+ verts) ; commit par pièce.
   avant le découpage en chapitres (NotionBody) — ne le scope jamais.
 - Les entrées du rail sont des `<button>` (plus des `<a>`) depuis 626fd8a.
 
-## Item 1 — Zones latérales (spec §3) + M1 au masthead
+## Item 1 — Zones latérales (spec §3) + M1 au masthead — **FAIT (2026-09-04)**
+
+> Livré : `RetenirZone.tsx`, `lib/retenir.ts` (cartes par chapitre : sidecar
+> puis repli sur la première formule `$$` du chapitre, sinon RIEN),
+> chargeur `retenir.json` dans `content.ts`, cinquième colonne de grille,
+> `content/pc/rlc-serie/retenir.json` (6 entrées), M1 par défaut au
+> masthead, 6 contrôles dom-truth (203 verts). **Deux écarts assumés :** le
+> palier est **bp-xl (1600px)** et non 1536 — « bp-wide » n'existe pas dans
+> `tokens.ts`, contrairement à ce que la spec affirmait ; et la bande de
+> notion s'élargit à 1484px à ce palier, faute de quoi la prose tombait de
+> 690 à 496 px. Les deux raisons sont écrites dans le code, à l'endroit
+> exact où elles s'appliquent. Les notes de marge par chapitre passent par
+> le champ `note` du sidecar, comme la spec le prévoit.
+
 
 Contrat : spec §3 intégral (grille ≥1536, RetenirZone adaptée de
 KeyFormulaRail, sidecar `retenir.json` + fallback premier `$$`, notes de

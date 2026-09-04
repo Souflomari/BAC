@@ -43,9 +43,23 @@
 6. **Canonical domain.** `metadataBase` and JSON-LD URLs point at the
    `bac-pink.vercel.app` preview; swap when a real domain is decided.
    `robots` stays noindex until the owner opens indexing.
-7bis. **(07-06) Gates added at the Fable close:** **M1 masthead +
+7bis. **(07-06) Gates added at the Fable close:** ~~**M1 masthead +
    RetenirZone (W3 adapté)** — OWNER-DIRECTED Day 11, §3 not yet built
-   (work order item 3); **maths GeoGebra/Desmos embeds** need the owner in
+   (work order item 3)~~ **CONSTRUIT le 2026-09-04** — item 1 de
+   `docs/pipeline/post-fable-work-order.md` : cinquième colonne de grille,
+   `RetenirZone.tsx`, sidecar `retenir.json` (exemplaire rlc-serie) avec
+   repli sur la première formule détachée du chapitre, et M1 devenu le rendu
+   par défaut du masthead. **Deux écarts assumés avec la spec, tous deux
+   documentés dans le code :** (a) le palier est **bp-xl (1600px)** et non
+   1536 — la spec citait « bp-wide (1536px, existant) », or ce palier
+   n'existe pas dans `tokens.ts` ; plutôt qu'inventer un sixième palier pour
+   une règle, la zone s'ouvre à la classe M3 « extra-large » que le système
+   possède déjà ; (b) la bande de notion **s'élargit à 1484px** à ce palier,
+   ce que la spec ne disait pas — sans quoi les deux colonnes ajoutées
+   prennent leur place à la prose, qui tombait de 690 à 496 px (mesuré). Six
+   contrôles dom-truth gardent l'ensemble, dont l'état honnête (un chapitre
+   sans formule ne rend AUCUNE carte) et la mesure de la prose, cette
+   dernière testée en négatif ; **maths GeoGebra/Desmos embeds** need the owner in
    the loop (applet content unverifiable headlessly — honest-state,
    `docs/audits/d10-media-layer.md`); **the video-slot decision**
    ([[video:]] renderer-stubbed; generative tooling = CLAUDE.md open

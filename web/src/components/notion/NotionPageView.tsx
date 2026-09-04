@@ -24,11 +24,13 @@ import { notFound } from "next/navigation";
 import { loadNotion, listNotions } from "@/lib/content";
 import type { NotionItem } from "@/lib/content";
 import { realChapterCount } from "@/lib/chapters";
+import { cartesParChapitre } from "@/lib/retenir";
 import { PageShell } from "@/components/ui/PageShell";
 import { NotionBody } from "@/components/notion/NotionBody";
 import { buildCheckpointCloneIds } from "@/components/notion/ItemsSection";
 import { MarginRail, ChapterMenuCompact } from "@/components/notion/MarginRail";
 import { ChapterShell, ChapterPosition, ChapterTransport } from "@/components/notion/ChapterShell";
+import { RetenirZone } from "@/components/notion/RetenirZone";
 import { AttemptEventProvider, ChapterVisitRecorder } from "@/components/notion/AttemptEvents";
 import { Icon } from "@/components/ui/Icon";
 import { LessonEnd } from "@/components/notion/LessonEnd";
@@ -121,6 +123,7 @@ export function NotionPageView({
     motionSvgs,
     motionSpecs,
     mediaStages,
+    retenir,
     mediaInteractive,
     mediaEmbeds,
   } = notion;
@@ -168,6 +171,13 @@ export function NotionPageView({
   const hasBank = bank !== null;
   const trailingChapterIndex = realChapterCountClamped; // 0-based: after the last real chapter
   const totalChapters = realChapterCountClamped + (hasBank ? 1 : 0);
+
+  // ── Zone « à retenir » (LESSON-EXPERIENCE-SPEC §3.2) ──────────────────────
+  // Une carte (ou rien) par chapitre, calculée ICI, au build : le composant
+  // client ne fait que choisir l'index courant. Le chapitre synthétique
+  // « S'entraîner » reçoit null — une banque d'exercices n'a pas de formule à
+  // retenir, et la zone se tait plutôt que d'en inventer une.
+  const cartesRetenir = cartesParChapitre(lessonMd, retenir, totalChapters);
 
   // Masthead title classes per variant (Set A). a1 = shipped control.
   const titleClass = {
@@ -236,12 +246,21 @@ export function NotionPageView({
             wideOption === "m3" && "relative overflow-hidden"
           )}
         >
-          {/* Set-M1 candidate: the notion's cover motif composes the band's
-              right region at the wide tier (COVER-SPEC masthead tie-in,
-              promoted from echo to presence — Imprint grammar). Dark mode by
-              construction: the cover's own background var equals the band's,
-              so only the motif reads. Never behind the title (grid cell). */}
-          {wideOption === "m1" ? (
+          {/* M1 — EN PRODUCTION depuis le 2026-09-04 (LESSON-EXPERIENCE-SPEC
+              §3.3, direction owner du jour 11 : OWNER-DECIDED, pas
+              FABLE-DECIDED). Le motif de couverture de la notion compose la
+              région droite de la bande au palier large (COVER-SPEC, ancrage
+              masthead — l'écho devient présence, grammaire Imprint). Sombre
+              par construction : la variable de fond de la couverture est
+              celle de la bande, donc seul le motif se lit. Jamais derrière le
+              titre — c'est une cellule de grille à part.
+
+              Le test porte sur `!wideOption` autant que sur "m1" : la route
+              /options/wide/m1 continue de rendre exactement la même chose (on
+              ne casse pas l'historique des options), et la page de production,
+              qui ne passe aucune option, la rend désormais aussi. C'est la
+              fin du « wideOption mort en prod » que la spec réclamait. */}
+          {(wideOption === "m1" || !wideOption) ? (
             <div className="bp-large:grid bp-large:grid-cols-[1fr_400px] bp-large:items-center bp-large:gap-12">
               <div>{masthead}</div>
               <div className="hidden bp-large:block" aria-hidden="true">
@@ -395,6 +414,15 @@ export function NotionPageView({
               </div>
             )}
           </div>
+
+          {/* ── Zone « à retenir » (spec §3.2) — cinquième colonne de la
+              grille, au palier ≥1536 seulement. Elle est CINQUIÈME ENFANT de
+              .notion-page-grid, donc à côté du contenu et non dedans : c'est
+              ce qui garantit que la colonne de prose ne bouge pas d'un pixel
+              quand elle apparaît. Sous 1536, `display: none` la retire de la
+              grille — sans quoi elle formerait une ligne fantôme sous le
+              contenu, la grille n'ayant que trois colonnes à ce palier. */}
+          <RetenirZone cartes={cartesRetenir} />
         </div>
         </AttemptEventProvider>
       </ChapterShell>

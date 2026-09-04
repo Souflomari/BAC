@@ -111,6 +111,38 @@ export function extractChapterHeadings(markdown: string): ChapterHeadingInfo[] {
 }
 
 /**
+ * Le TEXTE de chaque chapitre, dans l'ordre authoré — même découpe que
+ * `extractChapterHeadings`, mais on garde le corps et pas seulement le titre.
+ *
+ * La règle reproduit exactement celle de `chapterizeSegments` (NotionBody) :
+ * ce qui précède le PREMIER `## ` fusionne dans le chapitre 0 plutôt que de
+ * former un chapitre fantôme, et une leçon sans aucun `## ` rend un seul
+ * chapitre. Les deux découpes DOIVENT rester d'accord — c'est l'index de
+ * chapitre qui les relie (§1.1), pas un identifiant partagé.
+ *
+ * Utilisé par la zone « à retenir » (§3.2) pour son repli : à défaut de
+ * sidecar, la première formule `$$…$$` du chapitre courant.
+ */
+export function splitChapterBodies(markdown: string): string[] {
+  const lignes = markdown.split("\n");
+  const corps: string[] = [];
+  let courant: string[] = [];
+  let vu = false;
+  for (const ligne of lignes) {
+    if (HEADING_LINE_RE.test(ligne)) {
+      if (vu) {
+        corps.push(courant.join("\n"));
+        courant = [];
+      }
+      vu = true;
+    }
+    courant.push(ligne);
+  }
+  corps.push(courant.join("\n"));
+  return corps;
+}
+
+/**
  * The real (lesson-derived) chapter count — min 1 even when lesson.md
  * carries no `## ` heading at all (every segment merges into one chapter;
  * mirrors NotionBody's own `chapterizeSegments` fallback). Returns 0 only

@@ -1,0 +1,32 @@
+[
+  {
+    "rung": "R1",
+    "formula": "E = \\frac{q^2}{2C} + \\frac{1}{2}L i^2",
+    "note": "Sans résistance, cette somme est constante : le condensateur rend à la bobine ce qu'il perd, et réciproquement."
+  },
+  {
+    "rung": "R2",
+    "formula": "L\\frac{d^2q}{dt^2} + \\frac{q}{C} = 0",
+    "note": "D'où T₀ = 2π√(LC) : la période propre ne dépend que de L et de C — ni de la charge initiale, ni de l'amplitude."
+  },
+  {
+    "rung": "R4",
+    "formula": "T \\approx T_0 = 2\\pi\\sqrt{LC}",
+    "note": "En pseudo-périodique, la pseudo-période reste très proche de T₀ tant que l'amortissement est faible."
+  },
+  {
+    "rung": "R5",
+    "formula": "L\\frac{d^2q}{dt^2} + R\\frac{dq}{dt} + \\frac{q}{C} = 0",
+    "note": "R ajoute le terme en dq/dt. Le programme s'arrête à l'équation : sa solution n'est pas exigible."
+  },
+  {
+    "rung": "R6",
+    "formula": "T = t_{n+1} - t_n",
+    "note": "On mesure entre deux passages ÉQUIVALENTS — deux maximums successifs, pas un maximum et le minimum voisin."
+  },
+  {
+    "rung": "R7",
+    "formula": "k = R",
+    "note": "Le terme d'entretien annule exactement (R − k)·dq/dt. L'entretien ne supprime pas la résistance : il compense ce qu'elle dissipe."
+  }
+]

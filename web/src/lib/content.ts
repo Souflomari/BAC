@@ -24,6 +24,7 @@ import fs from "fs";
 import path from "path";
 import yaml from "js-yaml";
 import { parseMotionSpec, type MotionSpec } from "./motion-spec";
+import { parseRetenir, type RetenirEntry } from "./retenir";
 
 // ── Path helpers ──────────────────────────────────────────────────────────────
 
@@ -308,6 +309,14 @@ export interface NotionContent {
    * to StagedFigure instead of MediaDiagramFigure (LESSON-EXPERIENCE-SPEC §2).
    */
   mediaStages: Record<string, MediaStagesSpec>;
+  /**
+   * Sidecar « à retenir » — `retenir.json` à la racine de la notion, une
+   * entrée par barreau (LESSON-EXPERIENCE-SPEC §3.2). ABSENT pour la
+   * quasi-totalité des notions : la zone se replie alors sur la première
+   * formule détachée du chapitre, ou reste vide. Un fichier malformé est
+   * traité comme absent — jamais une page qui casse.
+   */
+  retenir: RetenirEntry[] | null;
   /**
    * Bespoke-interactive declarations — media/*.interactive.json, keyed by
    * base slug (e.g. "tangente-derivee.interactive.json" → "tangente-derivee"),
@@ -689,6 +698,21 @@ export function loadNotion(id: string): NotionContent | null {
     }
   }
 
+  // ── retenir.json (LESSON-EXPERIENCE-SPEC §3.2) ──
+  // Sidecar facultatif, à la racine de la notion. Malformé = absent : la zone
+  // « à retenir » se replie alors sur la première formule détachée du
+  // chapitre, ou reste vide et silencieuse. Une colonne latérale ne vaut pas
+  // qu'on casse une page.
+  let retenir: RetenirEntry[] | null = null;
+  const retenirRaw = safeReadFile(path.join(dir, "retenir.json"));
+  if (retenirRaw) {
+    try {
+      retenir = parseRetenir(JSON.parse(retenirRaw));
+    } catch {
+      retenir = null;
+    }
+  }
+
   // ── media/*.svg (figures), media/*.motion.svg (animations), media/*.json ──
   const mediaSvgs: Record<string, string> = {};
   const motionSvgs: Record<string, string> = {};
@@ -930,5 +954,5 @@ export function loadNotion(id: string): NotionContent | null {
   };
   const renderedLessonMd = stripLeadingTitle(stripAuthoringComments(lessonMd));
 
-  return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, exercises, bank, derivations, mediaSvgs, motionSvgs, motionSpecs, mediaStages, mediaInteractive, mediaEmbeds, embed };
+  return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, exercises, bank, derivations, mediaSvgs, motionSvgs, motionSpecs, mediaStages, retenir, mediaInteractive, mediaEmbeds, embed };
 }

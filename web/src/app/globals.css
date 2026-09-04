@@ -654,6 +654,27 @@ h3:hover .heading-anchor,
   }
 }
 
+/* extra-large (bp-xl, 1600px — LESSON-EXPERIENCE-SPEC §3.1) : une CINQUIÈME
+   colonne s'ouvre à droite pour la zone « à retenir ». La colonne de prose
+   ne bouge pas d'un pixel : .notion-prose garde son max-width de 65ch, et
+   c'est le vide autour d'elle qui se peuple, jamais elle qui s'élargit.
+   Sous ce palier, la colonne n'existe pas — pas de réserve, pas de
+   gouttière fantôme.
+
+   ÉCART ASSUMÉ AVEC LA SPEC : elle demandait 1536px, en citant « bp-wide
+   (1536px, existant — tailwind.config.ts) ». Ce palier N'EXISTE PAS : les
+   classes M3 du système sont bp-medium 600, bp-expanded 840, bp-large 1200,
+   bp-xl 1600 (src/lib/tokens.ts). Plutôt qu'inventer un sixième palier pour
+   une seule règle, la zone s'ouvre à bp-xl — la classe « extra-large » de
+   M3, celle que le système possède déjà. Elle laisse en outre la place
+   qu'il faut : la bande passe à 1484px, et 1484 + les gouttières tient à
+   l'aise dans 1600. */
+@media (min-width: 1600px) {
+  .notion-page-grid {
+    grid-template-columns: 208px 40px minmax(0, 1fr) 40px 264px;
+  }
+}
+
 /*
  * The margin rail — quiet sticky rung list.
  * Hidden on compact; shown from medium up as a sticky left fixture.
@@ -687,6 +708,39 @@ h3:hover .heading-anchor,
 /* The content column — prose and wide-band elements live here */
 .notion-content {
   min-width: 0; /* prevent grid blowout */
+}
+
+/*
+ * La zone « à retenir » — colonne de droite, palier wide seulement.
+ * Même politique collante que le rail de gauche (top: 5rem) : les deux
+ * fixtures encadrent la lecture à la même hauteur.
+ * Sous bp-xl elle n'est pas seulement invisible, elle ne participe PAS à
+ * la grille (display: none) : la grille n'a que trois colonnes à ce palier,
+ * et un cinquième enfant y créerait une ligne fantôme sous le contenu.
+ */
+.notion-retenir {
+  display: none;
+}
+
+@media (min-width: 1600px) {
+  .notion-retenir {
+    display: block;
+    grid-column: 5;
+    position: sticky;
+    top: 5rem;
+    align-self: start;
+    /* Optique : même correction que le rail, pour que la carte s'aligne sur
+       la première ligne de la colonne de contenu et non sur le bord du bloc. */
+    margin-top: -14px;
+  }
+}
+
+/* À l'impression, la colonne latérale disparaît : la formule qu'elle porte
+   est déjà dans le texte imprimé, à sa place. */
+@media print {
+  .notion-retenir {
+    display: none !important;
+  }
 }
 
 @media (min-width: 600px) {
