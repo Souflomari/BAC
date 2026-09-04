@@ -2363,6 +2363,53 @@ try {
     await page.setViewportSize({ width: 1280, height: 1000 });
   }
 
+  // ── L'ancre profonde `#titre` doit OUVRIR son chapitre ────────────────────
+  //
+  // La pagination masque tout sauf le chapitre courant. Une ancre partagée qui
+  // ne change pas de chapitre n'atterrit donc pas « un peu à côté » : elle
+  // atterrit sur le chapitre 1, avec la cible dans un `[hidden]` — invisible,
+  // sans rien qui le dise.
+  //
+  // POURQUOI CETTE PORTE EXISTE. `location.hash` revient PERCENT-ENCODÉ dès
+  // qu'un caractère sort de l'ASCII : `#r8--pour-tentraîner` est reflété
+  // `#r8--pour-tentra%C3%AEner`, et `getElementById` sur cette chaîne ne
+  // trouve rien. Les ids, eux, gardent leurs accents. Le chemin était donc
+  // mort pour 1 876 des 2 190 titres du corpus (86 %) — trouvé le 2026-09-04
+  // par la sonde de pagination, corrigé par un `decodeURIComponent` gardé.
+  // La porte se moque du mécanisme : elle exige qu'une ancre ACCENTUÉE ouvre
+  // son chapitre. Si la décodification disparaît, ce contrôle tombe.
+  {
+    console.log(`\n[${NOTION}] SWEEP: ancre profonde accentuée → son chapitre`);
+    await page.goto(`${BASE}/notions/pc/lois-de-newton`, { waitUntil: "networkidle" });
+    const cible = await page.evaluate(() => {
+      const secs = [...document.querySelectorAll("[data-chapter-section]")];
+      for (let i = secs.length - 1; i > 0; i--) {
+        // Un titre dont l'id porte un caractère non-ASCII : c'est le cas qui
+        // était cassé, et le seul qui vaille d'être gardé.
+        const h = [...secs[i].querySelectorAll("h2[id], h3[id]")].find((n) =>
+          /[^\x00-\x7F]/.test(n.id)
+        );
+        if (h) return { id: h.id, index: i };
+      }
+      return null;
+    });
+    checks++;
+    if (!cible) {
+      failures += fail(`aucun titre à id accentué hors du chapitre 1 — la porte ne peut pas s'armer`);
+    } else {
+      await page.goto(`${BASE}/notions/pc/lois-de-newton#${cible.id}`, { waitUntil: "networkidle" });
+      const actif = await page.evaluate(() => {
+        const a = document.querySelector('[data-chapter-section][data-chapter-active="true"]');
+        return a ? Number(a.getAttribute("data-chapter-index")) : -1;
+      });
+      if (actif !== cible.index) {
+        failures += fail(
+          `ancre #${cible.id} : chapitre ${actif + 1} ouvert, attendu ${cible.index + 1} — la cible reste masquée`
+        );
+      } else console.log(`  ✓ ancre accentuée #${cible.id} → chapitre ${cible.index + 1}`);
+    }
+  }
+
   // (F7) KaTeX accessibility parity: every formula ships MathML.
   {
     console.log(`\n[${NOTION}] SWEEP: KaTeX MathML parity`);

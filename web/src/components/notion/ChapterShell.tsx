@@ -104,7 +104,29 @@ export function readChapterFromLocation(total: number): number {
     if (Number.isFinite(n) && n >= 1 && n <= total) return n - 1;
   }
   // Deep-link `#heading-id` → the chapter section containing that heading.
-  const hash = window.location.hash.replace(/^#/, "");
+  //
+  // `location.hash` comes back PERCENT-ENCODED for any non-ASCII character:
+  // an anchor written `#r8--pour-tentraîner` is reflected as
+  // `#r8--pour-tentra%C3%AEner`, and `getElementById` on that string finds
+  // nothing. The ids themselves are raw (rehype-slug keeps the accents), so
+  // the lookup MUST decode first. Found 2026-09-04 by the pagination probe:
+  // the anchor path was silently dead for 1 876 of the corpus's 2 190 lesson
+  // headings (86 %) — every French heading carrying a single accent, which is
+  // to say nearly all of them. The chapter simply never switched, and the
+  // visitor landed on chapter 1 with the target still hidden.
+  //
+  // `decodeURIComponent` throws on a malformed sequence (a bare `%` in a
+  // hand-typed URL). A broken fragment must not take the page down with it:
+  // fall back to the raw string, which is exactly the old behaviour.
+  const brut = window.location.hash.replace(/^#/, "");
+  let hash = brut;
+  if (brut) {
+    try {
+      hash = decodeURIComponent(brut);
+    } catch {
+      hash = brut;
+    }
+  }
   if (hash) {
     const target = document.getElementById(hash);
     const section = target?.closest("[data-chapter-section]");

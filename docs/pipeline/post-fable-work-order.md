@@ -50,7 +50,19 @@ une entrée par rung, formule KaTeX + note courte, fidèle à la leçon).
 Vérif : build ; dom-truth ; shots 1536/1920 (item 4 d'abord si tu préfères) ;
 la zone est VIDE ET SILENCIEUSE quand ni sidecar ni `$$` (honest-state).
 
-## Item 2 — Vérification du sweep pagination
+## Item 2 — Vérification du sweep pagination — **FAIT (2026-09-04)**
+
+> Fait autrement que demandé, et mieux : une capture prouve qu'une page
+> s'affiche, pas qu'UN SEUL chapitre est visible, ni que la flèche gauche au
+> chapitre 1 ne descend pas à −1, ni que l'impression déplie tout. Sonde
+> `web/scripts/pagination-probe.mjs`, **onze contrôles × cinq leçons = 60
+> promesses**, toutes tenues après correctif. **UN DÉFAUT RÉEL TROUVÉ** :
+> l'ancre profonde `#titre` n'ouvrait pas son chapitre dès que l'id portait
+> un accent — 1 876 des 2 190 titres du corpus (ledger 11.13). Corrigé,
+> gardé par dom-truth (205 contrôles). Le « flash du chapitre 1 » sur lien
+> profond est mesuré pour la première fois : 250 à 1 265 ms (ledger 11.14),
+> et ce qu'on n'a délibérément PAS fait est écrit en 11.15.
+
 
 La pagination est renderer-level : déjà active partout. Vérifie sur :
 `lois-de-newton` (9 ch.), `suites-numeriques` (11 ch. + motion +
