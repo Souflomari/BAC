@@ -3327,7 +3327,7 @@ try {
   //    des mots français ordinaires : la leçon « Autrui » écrit
   //    légitimement « autrui » à chaque paragraphe.
   {
-    console.log("\n[notion] SWEEP: aucun slug de leçon dans le texte rendu");
+    console.log("\n[notion] SWEEP: ni slug de leçon ni vocabulaire de dépôt dans le texte rendu");
     const slugs = [];
     const routesLecons = [];
     for (const subject of readdirSync(CONTENT_ROOT).filter((n) => !n.startsWith("_") && !n.startsWith("."))) {
@@ -3350,16 +3350,44 @@ try {
       const texte = html
         .replace(/<script[\s\S]*?<\/script>/g, " ")
         .replace(/<style[\s\S]*?<\/style>/g, " ")
+        // Le <title> d'un SVG est son NOM ACCESSIBLE, pas du texte lu : il
+        // nomme légitimement le fichier de la figure. Le garder faisait 144
+        // fausses détections contre 6 vraies.
+        .replace(/<svg[\s\S]*?<\/svg>/g, " ")
         .replace(/<[^>]+>/g, " ");
       const trouves = [...new Set(texte.match(motif) ?? [])];
-      if (!trouves.length) continue;
+      // MÊME CLASSE, MÊME PORTE : un nom de fichier ou un chemin de dépôt
+      // dans la prose. « la recherche menée n'a trouvé aucun exercice
+      // national dédié à ce thème (voir docs/sujets/pc/atome-mecanique-
+      // newton.md) » — l'élève ne peut pas ouvrir ce fichier, et la phrase
+      // se porte mieux sans. Six occurrences sur quatre pages, dont un
+      // « rupture-gate » (nom d'un composant) et une « note de sourcing dans
+      // exercises.yaml ».
+      const depot = [
+        ...new Set([
+          ...(texte.match(/\b[\w-]+\.(?:yaml|json|mjs|tsx?|py)\b/g) ?? []),
+          ...(texte.match(/\b(?:docs|content|web|scripts|src)\/[\w./-]+/g) ?? []),
+          ...(texte.match(/\b(?:rupture-gate|cross-list|block scalar|sidecar)\b/g) ?? []),
+        ]),
+      ];
+      if (!trouves.length && !depot.length) continue;
       fautifs++;
-      failures += fail(
-        `${route} : slug(s) de leçon dans le texte rendu — ${trouves.slice(0, 4).join(", ")} ` +
-          `(écris le TITRE entre guillemets : c'est ce que l'élève lit dans le rail)`
-      );
+      if (trouves.length) {
+        failures += fail(
+          `${route} : slug(s) de leçon dans le texte rendu — ${trouves.slice(0, 4).join(", ")} ` +
+            `(écris le TITRE entre guillemets : c'est ce que l'élève lit dans le rail)`
+        );
+      }
+      if (depot.length) {
+        failures += fail(
+          `${route} : vocabulaire de dépôt dans le texte rendu — ${depot.slice(0, 4).join(", ")} ` +
+            `(l'élève ne peut pas ouvrir ce fichier ; la phrase se porte mieux sans)`
+        );
+      }
     }
-    if (!fautifs) console.log(`  ✓ ${routesLecons.length} leçons, ${slugs.length} slugs cherchés, 0 trouvé`);
+    if (!fautifs) {
+      console.log(`  ✓ ${routesLecons.length} leçons · ${slugs.length} slugs cherchés, 0 trouvé · 0 nom de fichier, 0 chemin de dépôt`);
+    }
   }
 
   // ── SWEEP: l'écriture de DROITE À GAUCHE, là où le corpus en contient.

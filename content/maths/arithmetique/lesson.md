@@ -454,7 +454,7 @@ Les termes en $t$ s'annulent exactement — ce n'est pas un hasard : $252 \times
 
 ## R8 — Pour t'entraîner
 
-Le sujet ci-dessous est un **vrai sujet d'examen national** : Sciences Mathématiques, session normale 2019 (code NS 24F, Exercice 3). Il enchaîne, en une seule chaîne serrée, les outils du chapitre — le théorème de Bézout (chapitre 5), les congruences et leurs puissances (chapitre 3), le lemme d'Euclide « un premier qui divise une puissance divise la base » (chapitre 7) — plus un outil supplémentaire du programme, le **petit théorème de Fermat**, que le rupture-gate ci-dessous rappelle avant que tu ne t'y attaques. Ne lis pas la correction d'un trait : engage-toi question par question.
+Le sujet ci-dessous est un **vrai sujet d'examen national** : Sciences Mathématiques, session normale 2019 (code NS 24F, Exercice 3). Il enchaîne, en une seule chaîne serrée, les outils du chapitre — le théorème de Bézout (chapitre 5), les congruences et leurs puissances (chapitre 3), le lemme d'Euclide « un premier qui divise une puissance divise la base » (chapitre 7) — plus un outil supplémentaire du programme, le **petit théorème de Fermat**, que l'encadré ci-dessous rappelle avant que tu ne t'y attaques. Ne lis pas la correction d'un trait : engage-toi question par question.
 
 [[checkpoint:cp-r6-fermat]]
 

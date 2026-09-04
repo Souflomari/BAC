@@ -288,8 +288,7 @@ qu'aucun contenu nouveau ne soit à apprendre.
 ### Une variation pour ne pas mémoriser
 
 Ce second exercice n'est pas un sujet d'examen réel : c'est une variation
-fabriquée pour ce point précis de la leçon (voir la note de sourcing dans
-exercises.yaml), construite pour reconnaître que le même raisonnement
+fabriquée pour ce point précis de la leçon, construite pour reconnaître que le même raisonnement
 s'applique quand l'habillage change — une citation à discuter plutôt
 qu'une question directe.
 

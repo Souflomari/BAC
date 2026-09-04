@@ -216,7 +216,7 @@ Vérifie ta compréhension.
 
 ### Exercice de type bac
 
-Ce qui suit est un exercice de synthèse construit pour ce chapitre — pas un sujet d'examen national transcrit : la recherche menée (18 sessions normales et 3 sessions de rattrapage, 2008–2025) n'a trouvé aucun exercice national dédié à ce thème (voir `docs/sujets/pc/atome-mecanique-newton.md`). Cherche sur papier d'abord, engage une réponse à chaque question, puis seulement ouvre le raisonnement expert et compare-le au tien.
+Ce qui suit est un exercice de synthèse construit pour ce chapitre — pas un sujet d'examen national transcrit : la recherche menée (18 sessions normales et 3 sessions de rattrapage, 2008–2025) n'a trouvé aucun exercice national dédié à ce thème. Cherche sur papier d'abord, engage une réponse à chaque question, puis seulement ouvre le raisonnement expert et compare-le au tien.
 
 [[exercise:r-bac]]
 
