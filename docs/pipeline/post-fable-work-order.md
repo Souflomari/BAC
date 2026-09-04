@@ -71,7 +71,31 @@ StagedFigure à venir), `probabilites-conditionnelles` (la SEULE leçon à
 Vérif : screenshot chapitre 1 + un `?chapitre=n` profond chacun ; flèches ;
 `⌘P`/emulateMedia print = tout déplié. Toute anomalie = fix + ligne ledger.
 
-## Item 3 — Fan-out StagedFigure (la table ledger §11)
+## Item 3 — Fan-out StagedFigure — **DÉJÀ FAIT (mesuré le 2026-09-04)**
+
+> **« 70 figures restantes » était faux d'un ordre de grandeur.** Compté sur
+> le corpus, groupe `step-N` présent ou absent, fichier par fichier :
+>
+> | matière | staged | total | non staged |
+> |---|---|---|---|
+> | maths | 72 | 72 | **0** |
+> | pc | 128 | 135 | 7 |
+> | svt | 37 | 49 | 12 |
+> | philo | 1 | 2 | 1 |
+> | **total** | **238** | **258** | **20** |
+>
+> Et **les vingt non-staged portent chacune un refus ÉCRIT dans leur propre
+> en-tête** — « figure STATIQUE (choix documenté, pas un oubli) », avec le
+> geste qui le motive. Vérifié une par une. C'est exactement l'état que la
+> spec appelle légitime (§2.5 : « refus documenté = état légitime, le
+> critère décisif est le GESTE, pas le compte de couches »).
+>
+> **Deux figures manquaient à la table du ledger** (`montage-diffraction-
+> ultrasons`, `balancoire-resonance`) : créées APRÈS le census Day-11, elles
+> n'y ont jamais été inscrites — mais leurs fichiers déclarent leur refus et
+> citent le ledger 11.6. La table est corrigée ; c'est elle qui était en
+> retard sur le corpus, pas le corpus sur elle.
+
 
 Contrat : spec §2.5 (seuil) + §2.8 (stages AUTORÉS). 70 figures restantes
 (census ledger §11 : 34 graphes → toujours staged ; 23 schémas + 15 autres

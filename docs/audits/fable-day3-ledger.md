@@ -783,8 +783,17 @@ leçon, `dom-truth.mjs` (155 vérifs) sans régression après coup.
 | 71 | avancement-limite | pc/transformations-deux-sens | ✅ staged (3) | graphe |
 | 72 | lente-rapide | pc/transformations-lentes-rapides | ✅ staged (3) | graphe |
 
-**Bilan : 65 staged, 7 declined (raison documentée), 0 pending.** SVT :
+| 73 | montage-diffraction-ultrasons | pc/ondes-mecaniques-periodiques | ⛔ declined | schéma d'appareil, lu d'un coup (comme rl-schema / rc-schema) — refus écrit dans l'en-tête du SVG. AJOUTÉE À LA TABLE le 2026-09-04 : créée après le census Day-11, elle n'y figurait pas |
+| 74 | balancoire-resonance | pc/systemes-oscillants | ⛔ declined | illustration d'ambiance, zéro texte, zéro nombre — refus écrit dans l'en-tête, citant 11.6. AJOUTÉE À LA TABLE le 2026-09-04, même raison |
+
+**Bilan : 65 staged, 9 declined (raison documentée), 0 pending.** SVT :
 non touché, hors census (gate D10 pré-existante, confirmée non levée).
+
+**RE-MESURE DU 2026-09-04, sur le corpus entier (258 SVG statiques, pas les
+72 du census) :** 238 staged, 20 non staged — et **les vingt portent un refus
+ÉCRIT dans leur propre en-tête**, vérifié fichier par fichier (12 SVT, 7 pc,
+1 philo). Le fan-out n'a pas 70 figures de retard comme le disait l'ordre de
+travail : il est terminé, et ce qui restait à faire était de le CONSTATER.
 
 
 ## 12. Extension — la chasse adversariale (2026-07-06, post-ADR-0026)
