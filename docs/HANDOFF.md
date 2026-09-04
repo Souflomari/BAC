@@ -778,3 +778,36 @@ L'essai a été défait — changer le `font-display` de la fonte d'identité
 modifie ce qu'un élève voit en première visite lente, et c'est un arbitrage,
 pas un correctif. Outil : `web/scripts/cls-sweep.mjs`. Pas de porte armée :
 on n'arme pas une porte sur une classe qui n'est pas propre.
+
+### 8.6 Les figures, le même jour : deux instruments de plus et une porte
+
+Trois choses, toutes mesurées, aucune décorative.
+
+**1. Le thème sombre a enfin été regardé.** Quatrième sonde de
+`figure-preview` : la part du cadre couverte, en thème sombre, par une forme
+CLAIRE dont la couleur n'est pas un jeton — c'est-à-dire une couleur qui ne
+bascule pas avec le thème. **Deux figures sur 258, et ce sont les deux
+connues** (`loi-mailles-build` 59 %, `energy-exchange` 51 %, la paire sous
+dette owner). Le contrat de couleur tient donc au RENDU, pas seulement à la
+source.
+
+**2. Une classe nommée la veille a été fermée le lendemain.** « Le texte qui
+sort de SON panneau » — l'étiquette du panneau A qui empiète sur le panneau
+B et semble parler de B. Cinquième sonde. 9 cas : 4 débordements VOULUS
+(déclarés `data-hors-panneau`, avec leur raison dans le fichier), 5 défauts
+corrigés — dont deux chiffres du panneau « cas audio » écrits dans le
+panneau « cas porteuse », et une plaque de synthèse de 416 px sous un texte
+de 567.
+
+**3. Une porte, et seulement là où c'est propre.**
+`figure-preview --porte` tourne en CI sur les 258 SVG statiques et arme
+**deux** classes — « déborde » et « hors panneau » — parce qu'elles sont à
+zéro. Les trois autres restent des outils : leur classe n'est pas vide, et
+armer une porte sur une classe sale oblige à la désarmer le lendemain.
+
+**La campagne des tracés, elle, s'est arrêtée à un état net.** 195 → 71 cas
+en huit vagues, 91 → 39 figures ; les tranches ≥ 60 %, 40–59 % et 30–39 %
+sont VIDES ; et **les sept cas restants au-dessus de 20 % portent chacun une
+raison écrite dans leur fichier** — deux dettes owner, deux dans une scène
+3-D où aucune position n'est libre, trois où les déplacements essayés
+faisaient pire. Ce n'est pas un reliquat, c'est une décision.
