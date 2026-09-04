@@ -57,7 +57,11 @@
   <!-- Axes (socle, toujours visibles) -->
   <line x1="70" y1="290" x2="70" y2="82" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
   <polygon points="70,82 65.5,93 74.5,93" fill="var(--figure-ink-soft)"/>
-  <text x="58" y="86" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">%</text>
+  <!-- Légende d'axe tournée, comme sur diagramme-distribution-vs-predominance :
+       les deux figures se lisent l'une après l'autre dans la même leçon, et
+       l'unité posée en haut de l'axe s'y écrasait sur la graduation « 100 ». -->
+  <text x="35" y="190" text-anchor="middle" transform="rotate(-90 35 190)"
+        font-size="10" font-style="italic" fill="var(--figure-ink-soft)">distribution (%)</text>
   <line x1="67" y1="290" x2="73" y2="290" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
   <text x="62" y="293" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
   <line x1="67" y1="190" x2="73" y2="190" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
@@ -101,9 +105,18 @@
   <g id="step-2">
     <line x1="214.4" y1="290" x2="214.4" y2="108.2" stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3"/>
     <circle cx="214.4" cy="108.2" r="4.2" fill="var(--figure-accent)"/>
-    <line x1="210" y1="103" x2="180" y2="97" stroke="var(--figure-accent)" stroke-width="0.9" stroke-dasharray="2,2"/>
-    <text x="175" y="100" text-anchor="end" font-size="10" font-weight="600"
-          fill="var(--figure-accent)">pH = 3,8 → 91 % AH / 9 % A<tspan dy="-5" font-size="7.5">−</tspan></text>
+    <!-- L'étiquette descend SOUS le palier, à l'intérieur du cadre, et tient
+         sur deux lignes. En une seule ligne partant vers la gauche, elle
+         mesurait 165 px : elle franchissait l'axe des ordonnées et
+         s'imprimait sur la graduation « 100 » et sur l'unité « % »
+         (recouvrement mesuré 64 %, « 100 » barré à l'œil). Ses deux sœurs,
+         à pH = 4,8 et pH = 5,8, partent vers la droite où la place existe ;
+         à gauche du premier point, elle n'existe pas. -->
+    <line x1="211" y1="112" x2="200" y2="136" stroke="var(--figure-accent)" stroke-width="0.9" stroke-dasharray="2,2"/>
+    <text x="196" y="141" text-anchor="end" font-size="10" font-weight="600"
+          fill="var(--figure-accent)">pH = 3,8</text>
+    <text x="196" y="154" text-anchor="end" font-size="10" font-weight="600"
+          fill="var(--figure-accent)">→ 91 % AH / 9 % A<tspan dy="-5" font-size="7.5">−</tspan></text>
   </g><!-- /step-2 -->
 
   <!-- ══════════════════════════════════════════════════════

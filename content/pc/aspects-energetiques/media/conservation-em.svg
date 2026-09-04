@@ -80,7 +80,11 @@
   <circle cx="290" cy="96"  r="5" fill="var(--figure-ink)"/>
   <circle cx="430" cy="116" r="5" fill="var(--figure-ink)"/>
   <circle cx="570" cy="140" r="5" fill="var(--figure-ink)"/>
-  <text x="150" y="66"  text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">1</text>
+  <!-- Le repère « 1 » se pose À GAUCHE de son point, et non au-dessus : le
+       point 1 est le plus haut de la trajectoire, et son étiquette venait
+       buter sous le titre du panneau (recouvrement mesuré 73 %). Les trois
+       autres gardent la position au-dessus, où rien ne les gêne. -->
+  <text x="140" y="82"  text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">1</text>
   <text x="290" y="84"  text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">2</text>
   <text x="430" y="104" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">3</text>
   <text x="570" y="128" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">4</text>
@@ -110,7 +114,7 @@
   <circle cx="290" cy="442" r="5" fill="var(--figure-ink)"/>
   <circle cx="430" cy="462" r="5" fill="var(--figure-ink)"/>
   <circle cx="570" cy="486" r="5" fill="var(--figure-ink)"/>
-  <text x="150" y="412" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">1</text>
+  <text x="140" y="428" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">1</text>
   <text x="290" y="430" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">2</text>
   <text x="430" y="450" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">3</text>
   <text x="570" y="474" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">4</text>
