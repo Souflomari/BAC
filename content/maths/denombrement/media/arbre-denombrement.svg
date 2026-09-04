@@ -65,8 +65,13 @@
     <line class="adn-edge" x1="62" y1="268" x2="330" y2="432"/>
 
     <!-- En-tête de colonne : le 1er choix -->
-    <text class="adn-header" x="330" y="40">1<tspan dy="-4" font-size="70%">er</tspan><tspan dy="4"> choix — l'entrée</tspan></text>
-    <text class="adn-headersub" x="330" y="58"><tspan font-style="italic">n</tspan><tspan dy="4" font-size="65%">1</tspan><tspan dy="-4"> = 3 possibilités</tspan></text>
+    <!-- Les deux blocs d'en-tête remontent de 14 px : à y=40/58 le bloc de
+         droite passait SOUS la première feuille (rect à y=50) et
+         « n₂ = 2 possibilités » s'imprimait dans « Salade + Tajine »
+         (recouvrement mesuré 59 %). Les deux colonnes gardent la même
+         hauteur d'en-tête. -->
+    <text class="adn-header" x="330" y="26">1<tspan dy="-4" font-size="70%">er</tspan><tspan dy="4"> choix — l'entrée</tspan></text>
+    <text class="adn-headersub" x="330" y="44"><tspan font-style="italic">n</tspan><tspan dy="4" font-size="65%">1</tspan><tspan dy="-4"> = 3 possibilités</tspan></text>
 
     <!-- Racine (point de départ, sans nom propre) -->
     <circle class="adn-root" cx="62" cy="268" r="10"/>
@@ -84,17 +89,23 @@
        STEP 2 — le 2e choix (le plat) + les 6 feuilles qui en résultent
        ══════════════════════════════════════════════════════ -->
   <g id="step-2">
-    <!-- Arêtes entrée → plat (feuille), dessinées avant les feuilles -->
-    <line class="adn-edge" x1="330" y1="104" x2="681" y2="73"/>
-    <line class="adn-edge" x1="330" y1="104" x2="681" y2="135"/>
-    <line class="adn-edge" x1="330" y1="268" x2="681" y2="237"/>
-    <line class="adn-edge" x1="330" y1="268" x2="681" y2="299"/>
-    <line class="adn-edge" x1="330" y1="432" x2="681" y2="401"/>
-    <line class="adn-edge" x1="330" y1="432" x2="681" y2="463"/>
+    <!-- Arêtes entrée → plat (feuille), dessinées avant les feuilles — donc
+         masquées par elles à l'arrivée. AU DÉPART, elles partaient du CENTRE
+         du nœud (x=330) alors que les boîtes de nœud appartiennent à
+         l'étape 1, donc DÉJÀ PEINTES : chaque arête traversait sa boîte et
+         barrait le mot (« Soupe » rendu biffé). Elles partent maintenant de
+         l'arête droite de la boîte (x=382), le y recalculé sur la même
+         droite. -->
+    <line class="adn-edge" x1="382" y1="99.4"  x2="681" y2="73"/>
+    <line class="adn-edge" x1="382" y1="108.6" x2="681" y2="135"/>
+    <line class="adn-edge" x1="382" y1="263.4" x2="681" y2="237"/>
+    <line class="adn-edge" x1="382" y1="272.6" x2="681" y2="299"/>
+    <line class="adn-edge" x1="382" y1="427.4" x2="681" y2="401"/>
+    <line class="adn-edge" x1="382" y1="436.6" x2="681" y2="463"/>
 
     <!-- En-tête de colonne : le 2e choix -->
-    <text class="adn-header" x="681" y="40">2<tspan dy="-4" font-size="70%">e</tspan><tspan dy="4"> choix — le plat</tspan></text>
-    <text class="adn-headersub" x="681" y="58"><tspan font-style="italic">n</tspan><tspan dy="4" font-size="65%">2</tspan><tspan dy="-4"> = 2 possibilités</tspan></text>
+    <text class="adn-header" x="681" y="26">2<tspan dy="-4" font-size="70%">e</tspan><tspan dy="4"> choix — le plat</tspan></text>
+    <text class="adn-headersub" x="681" y="44"><tspan font-style="italic">n</tspan><tspan dy="4" font-size="65%">2</tspan><tspan dy="-4"> = 2 possibilités</tspan></text>
 
     <!-- Libellés d'arête (le plat choisi sur ce prolongement) -->
     <text class="adn-elabel" x="505" y="81">Tajine</text>

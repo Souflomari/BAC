@@ -1,107 +1,148 @@
-# Chevauchements d'étiquettes — le reliquat mesuré du premier balayage visuel
+# Chevauchements d'étiquettes — le tri, figure par figure
 
-> **Écrit le 2026-09-03**, à l'issue du premier audit visuel réel du corpus
-> de figures. Ce document ne corrige rien : il **mesure**, et il dit ce que
-> la mesure vaut. Le tri figure par figure est un travail de mise en page
-> qui demande de juger l'intention de l'auteur, pas un correctif mécanique.
+> **Mesuré le 2026-09-03, TRIÉ le 2026-09-04.** La version précédente de ce
+> document mesurait 35 chevauchements et disait honnêtement n'en avoir
+> ouvert qu'un seul : « les 34 autres ne sont donc ni confirmés ni
+> réfutés ». Ils le sont maintenant. Ce document est devenu le journal de
+> ce tri.
 
-## Pourquoi ce balayage n'existait pas avant
+## Le verdict, d'abord
 
-`figure-preview.mjs` rendait des SVG effondrés à zéro pixel. Sa sonde lit
-`getBBox()` : sur un rendu nul, toutes les boîtes sont nulles, donc aucun
-texte ne peut en chevaucher un autre ni sortir d'un cadre nul. L'outil
-annonçait « aucun défaut » sur l'ensemble du corpus. Réparé le même jour,
-il a été passé sur les **258 figures statiques**.
+**Vingt-quatre cas ouverts, VINGT-QUATRE RÉELS. Zéro faux positif.**
 
-Résultat brut : **20 débordements** (tous corrigés, cadres élargis) et
-**38 chevauchements**, dont ce document traite.
+Les deux hypothèses d'indulgence que le relevé formulait sont mortes :
 
-## Ce que la mesure vaut, et ce qu'elle ne vaut pas
+1. « Ce sont des artefacts de l'aperçu, qui montre toutes les étapes à la
+   fois. » **Faux, sans exception.** La mise en étapes est cumulative : à
+   la dernière étape l'élève voit bien tous les groupes ensemble.
+2. « Ce sont des remplacements masqués. » Vrai pour 3 cas — mais ces
+   trois-là avaient déjà été retirés du relevé par la sonde, qui tient
+   compte des masques depuis le 2026-09-03. Il n'en restait aucun.
 
-L'outil le dit de lui-même : la détection de **débordement est fiable**
-(comparaison à un cadre fixe), celle de **chevauchement est indicative**
-— les métriques de texte fluctuent avec le contexte de rendu, et un même
-fichier près du seuil peut changer d'avis. Elle **dirige le regard**.
+Autrement dit : **le reliquat ne contenait que de vrais défauts**, et
+l'hésitation à les ouvrir aura coûté un jour.
 
-Deux hypothèses ont été testées sur ces 38, et la première s'est révélée
-largement fausse :
+## Ce qui a été réparé
 
-1. **« Ce sont des artefacts de l'aperçu, qui montre toutes les étapes à
-   la fois. »** FAUX pour la plupart. La mise en étapes est **cumulative**
-   — à la dernière étape, l'élève voit bien tous les groupes ensemble,
-   donc l'état que l'aperçu rend *est* un état réel.
-2. **« Ce sont des remplacements masqués. »** Vrai pour **3 sur 38**
-   seulement. Une figure stagée qui remplace un texte pose un aplat
-   opaque par-dessus l'ancien avant d'écrire le nouveau (technique
-   documentée en commentaire dans `rlc-schema.svg`) ; les deux `<text>`
-   restent dans le DOM et se recouvrent à 100 % au sens des boîtes, alors
-   que l'élève n'en voit qu'un. **La sonde tient désormais compte des
-   masques** et se tait sur ces cas.
+Vingt-quatre chevauchements, dans dix-neuf figures. Chacune a été ouverte,
+corrigée, re-rendue et **re-regardée** ; chaque correctif laisse dans le
+fichier SVG la raison ET la mesure, pour que le prochain lecteur sache
+pourquoi l'étiquette est là où elle est.
 
-**Il reste donc 35 chevauchements dont rien n'explique qu'ils soient
-faux.** Un cas a été ouvert et regardé — `cube-diagonales` — et il est
-**réel** : l'annotation « croisement apparent (mais aucun point commun) »
-traverse l'étiquette du sommet C.
+| Figure | Ce que l'élève lisait |
+|---|---|
+| `courbe-ph.svg` | « optimum ≈ pH 2 » et « optimum ≈ pH 7 » l'un DANS l'autre — le mot qui porte toute la figure (chaque enzyme a SON optimum) était le seul illisible |
+| `diagramme-distribution-vs-predominance.svg` | « dist100ution » — légende, unité et graduation empilées sur quinze pixels |
+| `equivalence-courbe-derivee.svg` | « rappepH— pH = f(V) » |
+| `trois-catalyses.svg` | « P✱d » — l'étoile de la réaction de surface au cœur de « Pt / Pd / Rh » |
+| `chimiosmose-atp-synthase.svg` | « espac⊕intermembranaire » |
+| `droite-point-direction.svg` | « t = −2,O3 » |
+| `etude-fonction-rationnelle.svg` | « A(0̶ ; −1) » posée sur l'axe, la graduation « 0 » dessous |
+| `croissances-comparees-ln.svg` | « 10y » |
+| `orbite-geostationnaire.svg` | « r » imprimé dans « Terre : T_Terre ≈ 24 h » |
+| `travail-force-signe.svg` | « θ » dans « force résistante » |
+| `arbre-denombrement.svg` | « n₂ = 2 possibilités » dans « Salade + Tajine » |
+| `cube-diagonales.svg` | « (mais aucun point commun) » à travers le sommet C |
+| `desintegrations-nz.svg` | « ΔZ = −2, ΔN = −2 » sur l'étiquette « N = Z » |
+| `distribution-curseur-pH.svg` | la lecture à pH = 3,8 franchissait l'axe et barrait « 100 » |
+| `echelle-acide-neutre-basique.svg` | trois annotations sur une seule ligne de 640 px |
+| `conservation-em.svg` | le repère « 1 » sous le titre du panneau |
+| `vecteur-vitesse-tangente.svg` | les deux légendes d'étape en travers de la construction |
+| `convection-mantellique-moteur.svg` | « redescend (froid, dense) » dans « slab-pull » |
+| `frontieres-plaques-quatre-types.svg` | « inclinée (Benioff) » dans la légende du panneau |
+| `pangee-reconstruction-preuves.svg` | « (pas le littoral actuel) » sur « Afrique » |
+| `profil-age-plancher-oceanique.svg` | deux étiquettes disant la même chose, superposées |
+| `seismicite-volcanisme-gps-carte.svg` | « ~8 cm/an » dans « océan Pacifique » |
+| `circuit-accorde-selection.svg` | « 900 kHz » écrit deux fois au même point, en bavure |
+| `detecteur-crete.svg` | la note de bas de figure sur l'étiquette « s(t) » du schéma |
 
-## Le reliquat, par gravité
+**Restent 7 chevauchements, tous dans `loi-mailles-build.svg`** — figure
+sous **dette owner** (HANDOFF §0.7bis : couleurs codées en dur, orpheline
+mais câblée, sort à trancher). La réparer reviendrait à décider qu'on la
+garde. **Intouchée, délibérément.**
 
-| Figure | Notion | Recouvrement | Texte | chevauche |
-|---|---|---|---|---|
-| `circuit-accorde-selection.svg` | pc/ondes-em-modulation | 100 % | « 900 kHz » | « 900 kHz » |
-| `equivalence-courbe-derivee.svg` | pc/reactions-acido-basiques | 100 % | « rappel — pH = f(V) » | « pH » |
-| `loi-mailles-build.svg` | pc/rlc-serie | 100 % | « T₀ = 2π√(LC) uniquement. » | « pas cette équation. » |
-| `loi-mailles-build.svg` | pc/rlc-serie | 100 % | « R n'apparaît pas. » | « Le terme R·q′ subsiste. » |
-| `loi-mailles-build.svg` | pc/rlc-serie | 100 % | « Donc T₀ ne dépend pas de R » | « Le cosinus idéal ne vérifi » |
-| `loi-mailles-build.svg` | pc/rlc-serie | 80 % | « du condensateur » | « q/C + L·d²q/dt² = 0 » |
-| `loi-mailles-build.svg` | pc/rlc-serie | 45 % | « tension aux bornes » | « ↓ substitution » |
-| `loi-mailles-build.svg` | pc/rlc-serie | 45 % | « boucle série sans source » | « ↓ substitution » |
-| `diagramme-distribution-vs-predominance.svg` | pc/reactions-acido-basiques | 91 % | « distribution » | « 100 » |
-| `diagramme-distribution-vs-predominance.svg` | pc/reactions-acido-basiques | 77 % | « distribution » | « % » |
-| `diagramme-distribution-vs-predominance.svg` | pc/reactions-acido-basiques | 69 % | « % » | « 100 » |
-| `convection-mantellique-moteur.svg` | svt/theorie-tectonique-plaques | 82 % | « redescend (froid, dense) » | « slab-pull — » |
-| `vecteur-vitesse-tangente.svg` | pc/lois-de-newton | 79 % | « vmoy » | « t₂ − t₁ se resserre, la co » |
-| `seismicite-volcanisme-gps-carte.svg` | svt/theorie-tectonique-plaques | 78 % | « océan Pacifique » | « ~8 cm/an » |
-| `courbe-ph.svg` | svt/role-enzymes | 76 % | « optimum ≈ pH 7 » | « optimum ≈ pH 2 » |
-| `solutions-diophantiennes-reseau.svg` | maths/arithmetique | 75 % | « Les solutions entières de  » | « … » |
-| `conservation-em.svg` | pc/aspects-energetiques | 73 % | « Sans frottement — Em const » | « 1 » |
-| `conservation-em.svg` | pc/aspects-energetiques | 73 % | « Avec frottement — Em dimin » | « 1 » |
-| `trois-catalyses.svg` | pc/controle-catalyse | 73 % | « Pt / Pd / Rh (solide) » | « ✱ » |
-| `droite-point-direction.svg` | maths/geometrie-espace | 71 % | « O » | « t = −2,3 » |
-| `travail-force-signe.svg` | pc/aspects-energetiques | 71 % | « θ » | « force résistante » |
-| `chimiosmose-atp-synthase.svg` | svt/liberation-energie-matiere-organique | 67 % | « espace intermembranaire » | « + » |
-| `profil-age-plancher-oceanique.svg` | svt/theorie-tectonique-plaques | 65 % | « axe de la dorsale — âge ≈  » | « (axe de la dorsale) » |
-| `etude-fonction-rationnelle.svg` | maths/derivabilite-etude-fonctions | 64 % | « 0 » | « A(0 ; −1) » |
-| `distribution-curseur-pH.svg` | pc/reactions-acido-basiques | 64 % | « 100 » | « pH = 3,8 → 91 % AH / 9 % A » |
-| `orbite-geostationnaire.svg` | pc/chute-mouvements-plans | 62 % | « r » | « Terre : TTerre ≈ 24 h » |
-| `frontieres-plaques-quatre-types.svg` | svt/theorie-tectonique-plaques | 61 % | « inclinée (Benioff) » | « densité croît avec l'âge → » |
-| `arbre-denombrement.svg` | maths/denombrement | 59 % | « n2 = 2 possibilités » | « Salade + Tajine » |
-| `cube-diagonales.svg` | maths/geometrie-espace | 58 % | « C » | « (mais aucun point commun) » |
-| `detecteur-crete.svg` | pc/ondes-em-modulation | 50 % | « (rapport fp/fsignal réduit » | « s(t) » |
-| `croissances-comparees-ln.svg` | maths/fonction-logarithme | 48 % | « y » | « 10 » |
-| `desintegrations-nz.svg` | pc/decroissance-radioactive | 45 % | « N = Z » | « désintégration α : ΔZ = −2 » |
-| `pangee-reconstruction-preuves.svg` | svt/theorie-tectonique-plaques | 44 % | « Afrique » | « (pas le littoral actuel) » |
-| `echelle-acide-neutre-basique.svg` | pc/reactions-acido-basiques | 42 % | « [H3O+] = [HO-] = √Ke = 10⁻ » | « pH = 9 → [H3O+] = 10⁻⁹ mol » |
+## Ce que le tri a appris, et qui vaut plus que les correctifs
 
-## Comment trier, quand quelqu'un s'y mettra
+### 1. La sonde était aveugle aux transformations
 
-- **Ouvre le PNG**, ne juge pas sur le pourcentage. Le dénominateur est la
-  PLUS PETITE des deux boîtes : une étiquette d'un seul caractère (« 0 »,
-  « y », « C ») recouverte à moitié par une longue annotation affiche un
-  pourcentage élevé pour une collision parfois mineure — et parfois pour
-  une collision qui rend le caractère illisible. Seul le regard tranche.
-- **Vérifie l'étape**. Une figure stagée se lit étape par étape : deux
-  textes qui se percutent à la dernière étape peuvent être parfaitement
-  lisibles à celle où chacun compte. Cela n'excuse pas la collision (la
-  dernière étape est une vue réelle), mais cela en change la gravité.
-- **Déplace l'étiquette, pas le contenu.** Et re-mesure après : l'outil
-  est là pour ça.
+`getBBox()` rend la boîte dans l'espace utilisateur PROPRE de l'élément :
+un `<text transform="rotate(…)">` était mesuré à la place qu'il occuperait
+SANS son transform. La sonde comparait des boîtes exprimées dans des
+repères différents — elle pouvait aussi bien inventer un chevauchement
+qu'en manquer un, et son test de débordement (comparé au viewBox de la
+racine) était faux pour ces éléments.
 
-## Ce que ce document n'a PAS fait
+Corrigé le 2026-09-04 : toutes les boîtes sont ramenées dans le repère du
+SVG racine via `getScreenCTM()`. Le correctif s'est payé immédiatement —
+`kepler3-linearisation.svg` sortait « aucun défaut » depuis toujours, et
+son étiquette de pente, tournée à −28° le long de la droite, percutait
+« satellite 3 » à 100 %.
 
-- Aucun des 35 n'a été corrigé.
-- Aucun n'a été ouvert au-delà de `cube-diagonales`, qui a servi à établir
-  que le reliquat contient de vrais défauts. **Les 34 autres ne sont donc
-  ni confirmés ni réfutés individuellement.**
-- Le balayage a porté sur le thème CLAIR uniquement. Les métriques de
-  texte ne dépendent pas du thème, mais la lisibilité d'une collision,
-  elle, en dépend.
+### 2. La sonde criait sur les figures de mouvement
+
+Un `.motion.svg` est joué par MotionStage : le rendu statique n'est l'état
+d'aucun instant du film. Passées à la sonde, les 10 figures de mouvement
+rendaient **111 « défauts » sur 144** — 77 % du rapport en bruit. Le
+balayage du 2026-09-03 les avait écartées **à la main**, sans que rien
+dans l'outil ne le dise. C'est écrit et appliqué : elles sont capturées,
+plus sondées.
+
+### 3. Deux classes de défaut que la sonde ne peut PAS voir
+
+Elles sont apparues en regardant, jamais en mesurant. Aucune n'est gardée.
+
+- **Collision texte ↔ tracé.** Une courbe qui barre une étiquette. Six cas
+  trouvés et réparés en passant : la porteuse de 900 kHz barrant
+  « 1 200 kHz » ; la courbe barrant « point d'inflexion » ; la droite
+  N = Z barrant sa propre étiquette PUIS « ni A ni Z ne changent » ;
+  l'oscillation traversant « u_C ≈ U_0 + s_m(t) » ; les arêtes de l'arbre
+  de dénombrement barrant « Soupe ».
+- **Texte hors de SON panneau.** `travail-force-signe` servait
+  « (comme un frottement) » à cheval sur deux panneaux : calée en ancrage
+  `end` à x=378 alors que son panneau commence à x=330, elle traversait la
+  gouttière et entrait de 55 px dans le panneau voisin. Le test de
+  débordement compare au viewBox, pas aux panneaux ; la sonde de
+  chevauchement ne compare que des textes. Personne ne regardait.
+
+### 4. Un défaut d'ORDRE de peinture
+
+`frontieres-plaques-quatre-types` peignait sa bande de manteau (opacity
+0.55) APRÈS les étiquettes « zone sismique / inclinée (Benioff) » : elles
+étaient délavées. On pouvait croire à un choix de couleur ; c'était un
+ordre de peinture. Même mécanisme que les arêtes de l'arbre de
+dénombrement, qui partaient du CENTRE d'un nœud déjà peint et barraient
+son mot.
+
+## Les gestes qui marchent, pour la prochaine fois
+
+Par ordre de préférence — c'est la règle du skill `figure-authoring`
+(« élargis le cadre plutôt que de déplacer une étiquette bien placée »)
+étendue par ce tri :
+
+1. **Élargir le cadre** quand la place manque vraiment
+   (`circuit-accorde-selection` : +56 px à gauche pour une colonne
+   d'étiquettes ; `solutions-diophantiennes-reseau` : +44 px en haut pour
+   donner au titre sa propre bande).
+2. **Envoyer chaque étiquette du côté libre de ce qu'elle nomme**
+   (`courbe-ph` : chacune vers l'extérieur de sa cloche).
+3. **Passer en légende d'axe tournée** quand trois textes se disputent le
+   coin d'un panneau (`diagramme-distribution-vs-predominance`, puis sa
+   sœur `distribution-curseur-pH` par cohérence : les deux se lisent l'une
+   après l'autre dans la même leçon).
+4. **Déporter avec une amorce** quand il n'y a de place que loin
+   (`cube-diagonales`, `pangee-reconstruction-preuves`, `desintegrations-nz`).
+5. **Poser sur une pastille opaque** quand aucune zone n'est libre — et la
+   faire lire COMME une pastille (contour accent discret), pas comme un
+   trou dans la courbe (`detecteur-crete`).
+6. **Masquer avant de réécrire** quand une étape remplace un texte
+   (`circuit-accorde-selection`, technique documentée dans `rlc-schema`).
+
+## Ce qui n'a PAS été fait
+
+- Les 7 chevauchements de `loi-mailles-build.svg` (dette owner).
+- **Le balayage n'a porté que sur le thème CLAIR.** Les métriques de texte
+  ne dépendent pas du thème, donc la LISTE serait la même ; la gravité
+  d'une collision, elle, dépend du contraste. Non vérifié en sombre.
+- Les deux classes du §3 ne sont gardées par rien. Les cas trouvés l'ont
+  été à l'œil, sur les 24 figures ouvertes — **il en reste très
+  probablement dans les 244 autres.**

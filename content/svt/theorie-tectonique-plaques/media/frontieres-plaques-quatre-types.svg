@@ -89,6 +89,13 @@
 
     <path d="M40,290 L300,290 L340,350 L40,350 Z" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
     <rect x="340" y="290" width="300" height="60" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <!-- La bande de manteau est peinte AVANT le panneau plongeant et ses
+         étiquettes, et non après : dessinée en dernier avec opacity 0.55,
+         elle passait par-dessus « zone sismique / inclinée (Benioff) » et
+         les délavait — on croyait à un choix de couleur, c'était un ordre
+         de peinture. -->
+    <rect x="40" y="350" width="600" height="30" fill="var(--figure-grid)" opacity="0.55" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+
     <text x="300" y="278" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">fosse</text>
 
     <line x1="335" y1="345" x2="445" y2="393" stroke="var(--figure-accent)" stroke-width="10" stroke-linecap="round" opacity="0.4"/>
@@ -96,13 +103,14 @@
     <circle cx="380" cy="368" r="2.6" fill="var(--figure-accent)"/>
     <circle cx="405" cy="380" r="2.6" fill="var(--figure-accent)"/>
     <circle cx="425" cy="390" r="2.6" fill="var(--figure-accent)"/>
-    <text x="465" y="376" font-size="9" fill="var(--figure-accent)">zone sismique</text>
-    <text x="465" y="388" font-size="9" fill="var(--figure-accent)">inclinée (Benioff)</text>
+    <!-- Remontées de 12 px : la seconde ligne tombait dans la légende du
+         panneau, « densité croît avec l'âge → … » (recouvrement mesuré
+         61 %). -->
+    <text x="468" y="364" font-size="9" fill="var(--figure-accent)">zone sismique</text>
+    <text x="468" y="376" font-size="9" fill="var(--figure-accent)">inclinée (Benioff)</text>
 
     <polygon points="430,270 415,290 445,290" fill="var(--figure-accent)"/>
     <text x="430" y="262" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">arc volcanique</text>
-
-    <rect x="40" y="350" width="600" height="30" fill="var(--figure-grid)" opacity="0.55" stroke="var(--figure-ink-soft)" stroke-width="1"/>
 
     <text x="360" y="392" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-accent)">
       densité croît avec l'âge → la plaque plonge (pas de force extérieure)

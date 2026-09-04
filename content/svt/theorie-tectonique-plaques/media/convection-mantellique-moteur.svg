@@ -74,7 +74,11 @@
 
     <polygon points="370,112 358,106 358,118" fill="var(--figure-accent)"/>
     <polygon points="470,254 464,242 476,242" fill="var(--figure-accent)"/>
-    <text x="490" y="252" font-size="9.5" fill="var(--figure-accent)">redescend (froid, dense)</text>
+    <!-- L'étiquette passe à GAUCHE de sa flèche descendante : calée à x=490
+         en ancrage start, elle courait jusqu'à x≈608 et s'imprimait sur le
+         bloc « slab-pull — le panneau froid tire la plaque » (recouvrement
+         mesuré 82 %). À gauche, l'intérieur de la cellule est vide. -->
+    <text x="470" y="252" text-anchor="end" font-size="9.5" fill="var(--figure-accent)">redescend (froid, dense)</text>
 
     <polygon points="350,370 362,364 362,376" fill="var(--figure-accent)"/>
 

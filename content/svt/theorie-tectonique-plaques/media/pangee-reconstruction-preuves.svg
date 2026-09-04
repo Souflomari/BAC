@@ -66,9 +66,16 @@
     <!-- Jointure — bord du plateau continental, PAS le littoral actuel : accent -->
     <path d="M345,195 L338,230 L352,255 L332,285 L348,315 L335,345 L345,380"
           fill="none" stroke="var(--figure-accent)" stroke-width="2.2"/>
-    <text x="358" y="260" font-size="9.5" font-weight="600" fill="var(--figure-accent)">bord du plateau</text>
-    <text x="358" y="272" font-size="9.5" font-weight="600" fill="var(--figure-accent)">continental</text>
-    <text x="358" y="284" font-size="9" fill="var(--figure-accent)">(pas le littoral actuel)</text>
+    <!-- Le bloc passe du côté AMÉRIQUE de la jointure : à droite, ses deux
+         dernières lignes entraient dans « Afrique » et « (pas le littoral
+         actuel) » recouvrait le mot à 44 %. À gauche la place existe entre
+         les ellipses de Cynognathus (y ≤ 233) et « Amérique du Sud »
+         (y ≥ 281). Une amorce garde le lien avec la ligne dentelée. -->
+    <line x1="330" y1="250" x2="349" y2="256" stroke="var(--figure-accent)"
+          stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="326" y="244" text-anchor="end" font-size="9.5" font-weight="600" fill="var(--figure-accent)">bord du plateau</text>
+    <text x="326" y="256" text-anchor="end" font-size="9.5" font-weight="600" fill="var(--figure-accent)">continental</text>
+    <text x="326" y="268" text-anchor="end" font-size="9" fill="var(--figure-accent)">(pas le littoral actuel)</text>
 
     <!-- Antarctique -->
     <path d="M300,400 C330,385 380,382 420,388 C460,395 490,410 500,435

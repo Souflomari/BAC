@@ -66,6 +66,16 @@
    laisse passer sur ce marqueur seul, donc l'arbitrage reste visible sans
    bloquer la CI. **Ni l'une ni l'autre n'a été repeinte — repeindre
    reviendrait à décider qu'on les garde.**
+   **2026-09-04 — un troisième motif s'ajoute au dossier de
+   `loi-mailles-build.svg` :** le tri des chevauchements d'étiquettes a
+   nettoyé 24 collisions réelles dans 19 figures et laissé le corpus
+   statique propre, **à sept exceptions près, toutes dans ce fichier** —
+   dont trois à 100 % de recouvrement (« R n'apparaît pas. » sur « Le
+   terme R·q′ subsiste. », etc.). Elles restent en place pour la même
+   raison : les réparer serait décider de garder la figure. Le dossier est
+   donc complet — couleurs, contraste sombre, câblage orphelin,
+   lisibilité — et il n'attend qu'une décision.
+   (`docs/audits/chevauchements-figures.md`)
    **ledger §11's twelve Day-11 calls** remain FABLE-DECIDED /
    OWNER-REVIEW-PENDING except where marked OWNER-DIRECTED.
 7. **The maths notion is pre-sprint debt.** It predates template v2 and the
