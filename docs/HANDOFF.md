@@ -734,3 +734,29 @@ La prochaine fenêtre à ouvrir, dans l'ordre où je la prendrais :
 **le clavier seul** (parcours de focus, ordre de tabulation, pièges) ; **le
 zoom à 200 %** (SC 1.4.4, jamais mesuré) ; **la connexion lente** (ce que la
 page montre avant que tout soit chargé).
+
+### 8.5 Les trois fenêtres suivantes, ouvertes le même jour
+
+**Le clavier seul — RIEN.** 264 arrêts de tabulation sur quatre surfaces :
+aucun focus dans un chapitre masqué, aucun arrêt invisible ou de taille
+nulle, aucun `tabindex` positif, aucun piège, un indicateur visible partout.
+Un résultat négatif, armé quand même : cette classe régresse en silence.
+
+**Le texte à 200 % (SC 1.4.4) — 227 signalements, ramenés à 0.** Trois
+causes, toutes structurelles : onze titres de leçon débordaient parce qu'une
+piste de grille sans `min-w-0` ne peut pas descendre sous la largeur
+min-content de son contenu (`overflow-wrap: break-word` autorise la coupure
+du mot mais ne change PAS cette largeur — il faut les deux) ; huit tableaux
+poussaient la page parce que leur confinement défilant était enfermé dans une
+media query de largeur alors qu'il traite un rapport contenu/boîte ; et les
+titres des cartes d'exercice étaient COUPÉS par le `overflow-hidden` qui
+arrondit leurs coins — jusqu'à 55 px de texte perdu, sans ellipse.
+
+**La structure de titres (WCAG 1.3.1) — 79 sauts `h2 → h4`,** tous en philo,
+une convention d'autorat et non un accident. 327 titres renivelés, ancres
+inchangées (rehype-slug lit le texte, pas le niveau). Tout le reste de
+l'ossature était propre : h1 unique, figures nommées, boutons nommés, listes
+bien formées.
+
+**Reste ouverte : la connexion lente** — ce que la page montre avant d'être
+chargée. Le seul chiffre qu'on en ait est le flash du chapitre 1 (§8.3).
