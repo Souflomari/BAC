@@ -903,10 +903,37 @@ chaque endroit par une empreinte prise dans la version d'avant la campagne
 inter-notions sur 19 tombaient sur le mauvais chapitre d'une AUTRE leçon :
 re-résolus contre la table de la leçon citée.
 
-**ÉTAT.** Codes de barreau visibles : 529 → **71**, tous dans des tournures
-que le réécriveur refuse de deviner — pas de porte, la classe n'est pas
-vide. Slugs : 18 → **0**, porte armée. Vocabulaire de dépôt : 6 → **0**,
-porte armée. Mot « rung » : 19 → **0**.
+**ÉTAT FINAL — LES TROIS CLASSES SONT VIDES ET GARDÉES.** Codes de barreau
+visibles : **529 → 1**, et le survivant est le résistor « R0 » du schéma RL,
+qui vit dans un `<svg>` et dont le fichier déclare `CODES R LÉGITIMES:`.
+Slugs de leçon : **18 → 0**. Vocabulaire de dépôt : **6 → 0**. Mot
+« rung » : **19 → 0**. Une porte unique, dans `dom-truth`, tient les trois —
+au niveau du RENDU, sans navigateur (le HTML des 62 leçons, `<script>`,
+`<style>` et `<svg>` retirés), et testée dans les deux sens.
+
+**LA DESCENTE DE 71 À 1 A COÛTÉ TROIS BOGUES DE LECTURE, PAS DE RÈGLES.**
+Ils valent d'être connus :
+
+  1. **`Consigne : …` était lu comme une clé YAML.** Le français met une
+     espace avant le deux-points ; le lecteur de sidecars refermait donc le
+     scalaire au milieu d'un paragraphe, et tout ce qui suivait n'était plus
+     traité. **37 renvois survivaient dans des champs pourtant listés** — la
+     faute n'était pas dans les règles, elle était dans la LECTURE du fichier.
+  2. **Un scalaire YAML est coupé à la largeur, pas à la phrase.** Le
+     déclencheur (« en ») finissait une ligne, le code commençait la
+     suivante : ligne à ligne, aucune règle ne mordait. Les blocs sont
+     désormais réécrits ensemble, sans jamais fusionner par-dessus une
+     ligne vide ou une ligne de structure markdown.
+  3. **Un « R1 » n'est pas toujours un barreau : en physique, c'est une
+     RÉSISTANCE.** « Loi d'Ohm sur R1 » a failli devenir « Loi d'Ohm sur le
+     chapitre 2 ». Garde : dans `content/pc/` seulement, une ligne portant du
+     vocabulaire de circuit protège tous ses codes. (Et « tension » est
+     aussi un mot de philosophie — la garde a dû être limitée à la physique
+     après avoir protégé six renvois parfaitement traduisibles.)
+
+**LA RÈGLE D'ÉCRITURE QUI EN DÉCOULE**, pour l'auteur suivant : une vraie
+résistance s'écrit `$R_1$`. Cela rend « R₁ » — la bonne typographie pour une
+grandeur physique — et cela ne ressemble plus à un code de rédaction.
 
 **LE PIÈGE DE COMPTAGE, POUR LA PROCHAINE FOIS.** En cherchant les noms de
 fichier dans le HTML dépouillé de ses balises, on en trouve 144 ; au

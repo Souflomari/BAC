@@ -3327,7 +3327,7 @@ try {
   //    des mots français ordinaires : la leçon « Autrui » écrit
   //    légitimement « autrui » à chaque paragraphe.
   {
-    console.log("\n[notion] SWEEP: ni slug de leçon ni vocabulaire de dépôt dans le texte rendu");
+    console.log("\n[notion] SWEEP: aucun jargon de rédaction dans le texte rendu (slugs, dépôt, codes de barreau)");
     const slugs = [];
     const routesLecons = [];
     for (const subject of readdirSync(CONTENT_ROOT).filter((n) => !n.startsWith("_") && !n.startsWith("."))) {
@@ -3370,12 +3370,35 @@ try {
           ...(texte.match(/\b(?:rupture-gate|cross-list|block scalar|sidecar)\b/g) ?? []),
         ]),
       ];
-      if (!trouves.length && !depot.length) continue;
+      // TROISIÈME CLASSE, ARMÉE LE 2026-09-04 : les codes de barreau et le mot
+      // « rung ». 529 étaient visibles le matin ; il n'en reste aucun hors
+      // figure. Le seul survivant du corpus est le résistor « R0 » du schéma
+      // RL — il vit dans un <svg>, que ce balayage retire déjà, et son
+      // fichier le déclare (« CODES R LÉGITIMES: »).
+      //
+      // SI UNE VRAIE RÉSISTANCE DOIT APPARAÎTRE EN PROSE, elle s'écrit en
+      // math : `$R_1$` rend « R₁ », ce qui est de toute façon la bonne
+      // typographie pour une grandeur physique — et ne ressemble plus à un
+      // code de rédaction.
+      const barreaux = [
+        ...new Set([
+          ...(texte.match(/\bR\d+\b/g) ?? []),
+          ...(texte.match(/\brungs?\b/gi) ?? []),
+        ]),
+      ];
+      if (!trouves.length && !depot.length && !barreaux.length) continue;
       fautifs++;
       if (trouves.length) {
         failures += fail(
           `${route} : slug(s) de leçon dans le texte rendu — ${trouves.slice(0, 4).join(", ")} ` +
             `(écris le TITRE entre guillemets : c'est ce que l'élève lit dans le rail)`
+        );
+      }
+      if (barreaux.length) {
+        failures += fail(
+          `${route} : code(s) de rédaction dans le texte rendu — ${barreaux.slice(0, 4).join(", ")} ` +
+            `(l'élève ne voit jamais ces codes ; renvoie au NUMÉRO du chapitre. ` +
+            `Une vraie résistance s'écrit \`$R_1$\`.)`
         );
       }
       if (depot.length) {
@@ -3386,7 +3409,7 @@ try {
       }
     }
     if (!fautifs) {
-      console.log(`  ✓ ${routesLecons.length} leçons · ${slugs.length} slugs cherchés, 0 trouvé · 0 nom de fichier, 0 chemin de dépôt`);
+      console.log(`  ✓ ${routesLecons.length} leçons · ${slugs.length} slugs cherchés, 0 trouvé · 0 nom de fichier, 0 chemin de dépôt · 0 code de barreau, 0 « rung »`);
     }
   }
 

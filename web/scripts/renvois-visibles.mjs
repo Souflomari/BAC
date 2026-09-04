@@ -13,10 +13,10 @@
  * DONNE À LIRE, pas ce que la source contient. La charge RSC dans les
  * <script> en est exclue d'office — c'est du texte que personne ne lit.
  *
- * Ce n'est pas une porte : 71 codes subsistent, tous dans des renvois que le
- * réécriveur refuse de deviner (voir `scripts/renvois-barreaux.py`). Armer
- * une porte sur une classe qui n'est pas vide obligerait à la désarmer le
- * lendemain.
+ * ÉTAT : 529 → 1, et le survivant est le résistor « R0 » du schéma RL, qui
+ * vit dans un <svg> et dont le fichier le déclare (« CODES R LÉGITIMES: »).
+ * La classe est donc VIDE hors figure, et gardée dans `dom-truth` — cet
+ * outil reste le compteur détaillé, la porte est là-bas.
  */
 import { chromium } from "playwright-core";
 import { readdirSync, existsSync } from "node:fs";

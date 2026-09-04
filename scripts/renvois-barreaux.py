@@ -257,7 +257,11 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
         r"dip[ôo]les?|circuits?|bornes?|tension|intensit[ée]|maille|inductance|"
         r"capacit[ée])\b", re.I)
     protege_composant: list[str] = []
-    if CIRCUIT.search(ligne):
+    # ET SEULEMENT EN PHYSIQUE. « mettre une réponse sous tension », « les
+    # réponses possibles à cette tension » : la philosophie emploie les mêmes
+    # mots sans le moindre circuit. La garde s'appliquait partout et
+    # protégeait six renvois parfaitement traduisibles.
+    if fichier.startswith("content/pc/") and CIRCUIT.search(ligne):
         def garder_composant(m: re.Match) -> str:
             protege_composant.append(m.group(0))
             journal.append(
@@ -317,7 +321,7 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
         # été apprise à la dure — sans elle, « (la-verite, R6) » passait au
         # travers et se faisait traduire avec la table de la leçon COURANTE,
         # c'est-à-dire vers le mauvais chapitre d'une autre leçon.
-        r"(?:[»”\"]\s*[,)]?\s*|le[çc]on\s+«[^»]{0,60}»\s*,?\s*|\b[a-z]+(?:-[a-z]{2,})+\s*,?\s*)"
+        r"(?:[»”\"]\s*[,)(]?\s*|le[çc]on\s+«[^»]{0,60}»\s*,?\s*|\b[a-z]+(?:-[a-z]{2,})+\s*,?\s*)"
         r"R\d+(?:\s*[;,–—-]\s*R?\d+)*\b"
     )
     externes: list[str] = []
@@ -536,7 +540,7 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
     # `re.I` sans risque : le préfixe est réinjecté TEL QUEL (m.group("avant")),
     # donc « D'après » reste capitalisé et « d'après » reste minuscule.
     ligne = re.sub(
-        r"(?P<avant>\b(?:reprends|mobilise|mobiliser|ajoute|relis|revois|voir|compare|rapproche|corrige|construit|présente|décrit|distingue|montre|nomme|répond|oppose|affirme|établit|constitue|développe|apporte|prépare|que|qu'|dont|depuis|dès|selon|d'après|avec|et|ou|comme|dans|par|via|encore|sur|cf\.|la partie|de la partie|à la fin de la partie)\s+)R(?P<n>\d+)\b",
+        r"(?P<avant>\b(?:reprends|mobilise|mobiliser|ajoute|relis|revois|voir|compare|rapproche|corrige|construit|présente|décrit|distingue|montre|nomme|répond|oppose|affirme|établit|constitue|développe|apporte|prépare|résume|résume ainsi|conclut|ajoute|utilise|pose|restreint|examine|exige|lu|que|qu'|dont|depuis|dès|selon|d'après|avec|et|ou|comme|dans|par|via|encore|sur|cf\.|la partie|de la partie|à la fin de la partie)\s+)R(?P<n>\d+)\b",
         nominal, ligne, flags=re.I)
     # « Et R6, enfin » / « Or R2 dit » : en tête, avec majuscule.
     ligne = re.sub(
@@ -572,6 +576,18 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
 
     ligne = re.sub(r"\(R(?P<n>\d+)\)", parenthese, ligne)
 
+    # « **R3 :** le regard révèle… » — une étiquette en gras qui ouvre un
+    # paragraphe. Elle devient « **Chapitre 4 :** ».
+    def etiquette(m: re.Match) -> str:
+        n = int(m.group("n"))
+        c = chap(n)
+        if not c:
+            inconnu(n)
+            return m.group(0)
+        return f"{m.group('avant')}Chapitre {c}{m.group('apres')}"
+
+    ligne = re.sub(r"(?P<avant>\*\*)R(?P<n>\d+)(?P<apres>\s*(?:,|:| :|\*\*))", etiquette, ligne)
+
     # ── 6 ter. APPOSITION APRÈS UN NOM ───────────────────────────────────────
     # « la formule R8 », « la limite de référence R4 », « le rappel R1 » : le
     # code qualifie le nom qui précède. En français, cela s'écrit « du
@@ -588,7 +604,7 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
     ligne = re.sub(
         r"(?P<nom>\b(?:formule|rappel|critère|méthode|signal|geste|résultat|théorème|"
         r"propriété|règle|définition|forme|encadré|tableau|calcul|raisonnement|"
-        r"limite de référence|exemple travaillé)\s+)R(?P<n>\d+)\b",
+        r"rubrique|partie|section|étape|phase|limite de référence|exemple travaillé)\s+)R(?P<n>\d+)\b",
         apposition, ligne, flags=re.I)
 
     # ── 6 quater. LE CODE EN POSITION DE SUJET ───────────────────────────────
@@ -626,6 +642,28 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
     ligne = re.sub(
         r"(?P<tete>(?<=[,;:(]\s)|(?<=\())R(?P<n>\d+)\s+(?=[a-zàâçéèêëîïôûùü])",
         sujet_min, ligne)
+
+    # ── 6 quinquies. LE SUJET, QUEL QUE SOIT CE QUI PRÉCÈDE ─────────────────
+    # « En quel sens R4 constitue-t-il… », « Quelle différence R1 établit-il… »,
+    # « pourquoi R6 prend soin de… », « Mais R2 présente ce critère… ». Le code
+    # est le SUJET du verbe qui suit ; ce qui le précède varie trop pour être
+    # énuméré. On se fie donc à ce qui SUIT : un mot en minuscules d'au moins
+    # trois lettres, immédiatement après le code.
+    #
+    # C'est la règle la plus large du fichier, et elle n'est acceptable que
+    # parce que la garde « circuit » protège déjà le cas où R1 est une
+    # résistance.
+    def sujet_large(m: re.Match) -> str:
+        n = int(m.group("n"))
+        c = chap(n)
+        if not c:
+            inconnu(n)
+            return m.group(0)
+        return f"le chapitre {c} "
+
+    ligne = re.sub(
+        r"\bR(?P<n>\d+)\s+(?=[a-zàâçéèêëîïôûùü]{3,})",
+        sujet_large, ligne)
 
     # ── 6 bis. LE MOT « RUNG » LUI-MÊME ──────────────────────────────────────
     #
@@ -734,6 +772,21 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
 
     for i, brut in enumerate(protege_composant):
         ligne = ligne.replace(f"\x05COMP{i}\x05", brut)
+
+    # ── 7 bis. LES CONTRACTIONS ──────────────────────────────────────────────
+    # « déjà mobilisé à R3 » devenait « déjà mobilisé à le chapitre 4 ». En
+    # français, « à le » n'existe pas : c'est « au ». Les règles qui posent un
+    # groupe nominal ne savent pas ce qui les précède ; on répare ici, une
+    # fois, plutôt que dans chacune.
+    for faux, juste in (
+        (r"\b[àa]\s+le chapitre\b", "au chapitre"),
+        (r"\bde\s+le chapitre\b", "du chapitre"),
+        (r"\b[àa]\s+les chapitres\b", "aux chapitres"),
+        (r"\bde\s+les chapitres\b", "des chapitres"),
+        (r"\bÀ\s+le chapitre\b", "Au chapitre"),
+        (r"\bDe\s+le chapitre\b", "Du chapitre"),
+    ):
+        ligne = re.sub(faux, juste, ligne)
 
     # ── 8. DÉDOUBLONNAGE, EN DERNIER ET PAS AVANT ────────────────────────────
     #
@@ -913,10 +966,20 @@ def traiter_yaml(chemin: Path, table: dict[int, int], ecrire: bool,
             sorties.append(ligne)
             continue
 
-        m = CLE_YAML.match(ligne)
         indent = len(ligne) - len(ligne.lstrip())
+        # UNE LIGNE PLUS INDENTÉE QUE SON SCALAIRE EST DU TEXTE, PAS UNE CLÉ.
+        #
+        # Le test des clés passait AVANT celui-ci, et « Consigne : à partir de
+        # cette citation… » — du français, avec l'espace insécable avant le
+        # deux-points — se faisait lire comme une clé YAML. Le bloc était
+        # refermé au milieu d'un paragraphe, et tout ce qui suivait n'était
+        # plus traité. C'est ce qui laissait 37 renvois intacts dans des
+        # champs pourtant listés : la faute n'était pas dans les règles, elle
+        # était dans la LECTURE du fichier.
+        dans_bloc = bool(bloc) and indent > bloc[0]
+        m = None if dans_bloc else CLE_YAML.match(ligne)
 
-        if m or not (bloc and indent > bloc[0]):
+        if not dans_bloc:
             vider_bloc()
 
         if m:

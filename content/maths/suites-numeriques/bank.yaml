@@ -670,7 +670,7 @@ entries:
 
           Limites : divise numérateur et dénominateur de $f_0(x)$ par $e^x$, $f_0(x)=\dfrac{-2}{e^{-x}+1}$. Quand $x\to-\infty$, $e^{-x}\to+\infty$, donc $f_0(x)\to0$, et $g(x)=f_0(x)-x\to0-(-\infty)=+\infty$. Quand $x\to+\infty$, $e^{-x}\to0$, donc $f_0(x)\to-2$, et $g(x)\to-2-(+\infty)=-\infty$.
 
-          $g$ continue (dérivable), strictement décroissante, avec une limite $+\infty$ en $-\infty$ et $-\infty$ en $+\infty$ : par le corollaire du théorème des valeurs intermédiaires pour une fonction strictement monotone (`limites-continuite`), $g$ prend la valeur $0$ **exactement une fois**. Ce zéro unique est l'unique réel $\alpha$ tel que $f_0(\alpha)=\alpha$.
+          $g$ continue (dérivable), strictement décroissante, avec une limite $+\infty$ en $-\infty$ et $-\infty$ en $+\infty$ : par le corollaire du théorème des valeurs intermédiaires pour une fonction strictement monotone (« Limites et continuité »), $g$ prend la valeur $0$ **exactement une fois**. Ce zéro unique est l'unique réel $\alpha$ tel que $f_0(\alpha)=\alpha$.
         steps:
           - math: 'f_0(x) = \dfrac{-2e^x}{1+e^x} \ \Rightarrow\ f_0''(x) = \dfrac{-2e^x(1+e^x)-(-2e^x)(e^x)}{(1+e^x)^2} = \dfrac{-2e^x}{(1+e^x)^2}'
             note: "Derivee de f0, quotient de deux fonctions derivables ; les termes en e^2x s'annulent."
