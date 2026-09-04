@@ -289,7 +289,7 @@ Par ordre de préférence, tirés des 30 figures réparées :
   mesure. Cette dernière classe a fait un dégât réel dans
   `travail-force-signe` et n'est gardée par rien.
 - Il ignore les `.motion.svg`.
-- **Ce n'est toujours pas une porte.** 94 cas subsistent : l'armer
+- **Ce n'est toujours pas une porte.** 85 cas subsistent : l'armer
   aujourd'hui obligerait à la désarmer demain.
 
 ---
@@ -375,3 +375,38 @@ bande y est plus large.
 comme `travail-ressort-triangle` et `travail-torsion-triangle`. Le même
 correctif s'applique deux fois — et si l'une avait été corrigée seule, la
 mesure aurait continué à signaler l'autre sans qu'on comprenne pourquoi.
+
+---
+
+## Vague 6 (2026-09-04) — plus rien au-dessus de 30 %
+
+`94 → 85` cas, `51 → 46` figures. **Les trois tranches hautes sont vides.**
+
+| tranche | matin | ce soir |
+|---|---|---|
+| ≥ 60 % | 4 | **0** |
+| 40–59 % | 17 | **0** |
+| 30–39 % | 13 | **0** |
+| 20–29 % | 34 | 18 |
+| < 20 % | 71 | 67 |
+
+Restent 85 cas, tous sous 30 % — c'est-à-dire un tracé qui effleure moins
+d'un tiers d'une étiquette. La campagne s'arrête là pour aujourd'hui, avec
+les deux tranches basses documentées et aucune porte armée.
+
+**Trois choses apprises dans cette dernière vague :**
+
+1. **Une étiquette à DEUX LIGNES se déplace en bloc.** Monter la seconde
+   ligne de `pli-faille-profondeur` l'a posée sur la première (83 % de
+   recouvrement) : le défaut de tracé s'est mué en défaut de chevauchement.
+   Même chose sur `orbite-geostationnaire`, où sortir une ligne du disque a
+   fallu entraîner la parenthèse qui la suivait.
+2. **Certaines figures sont trop denses pour un simple déplacement.** Sur
+   `anhydride-alcool`, la note « (l'hydrogène n'a pas encore bougé) » a été
+   essayée deux fois : plus haut, elle recouvre l'atome H (64 %) ; plus haut
+   encore, l'atome C (63 %). Elle a été **remise où elle était**, à 29 %.
+   Refuser un correctif qui empire est un résultat, pas un échec.
+3. **Le dégagement nécessaire se calcule.** Pour une ligne de pente `p` et un
+   texte de largeur `w`, il faut dégager `hauteur_du_texte + p·w`. Sur
+   `deflexion-magnetique` (pente 0,84, texte ~50 px), 18 px ont fait passer
+   de 28 % à **37 %** — plus mauvais qu'avant. 32 px ont réglé l'affaire.

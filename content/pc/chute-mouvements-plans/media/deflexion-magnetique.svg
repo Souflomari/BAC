@@ -128,7 +128,15 @@
     <line x1="255.70" y1="237.89" x2="290.17" y2="208.95"
           stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
     <polygon points="290.17,208.95 283.87,220.12 278.09,213.22" fill="var(--figure-ink)"/>
-    <text x="296" y="204" font-size="11" font-style="italic" fill="var(--figure-ink)">v (= v<tspan dy="3" font-size="7.5">0</tspan><tspan dy="-3">)</tspan></text>
+    <!-- REMONTÉE AU-DESSUS DU VECTEUR (2026-09-04) : posée à (296;204) elle
+         était couchée sur la flèche de vitesse de sortie, qui la rayait sur
+         28 % de sa largeur — le nom du vecteur barré par le vecteur. Ancrée
+         à droite et 32 px plus haut, elle longe la flèche sans la toucher.
+         (18 px n'ont pas suffi : la flèche monte de 0,84 px par pixel, donc
+         elle rattrapait le texte par son extrémité droite — 28 % → 37 %.
+         Le dégagement doit couvrir la hauteur du texte PLUS la montée sur sa
+         largeur.) -->
+    <text x="330" y="172" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink)">v (= v<tspan dy="3" font-size="7.5">0</tspan><tspan dy="-3">)</tspan></text>
   </g><!-- /step-2 -->
 
   <!-- ══════════════════════════════════════════════════════

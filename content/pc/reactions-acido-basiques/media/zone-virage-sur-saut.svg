@@ -88,7 +88,12 @@
           fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
           stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="390" cy="164" r="3.6" fill="var(--figure-ink)"/>
-    <text x="399" y="150" font-size="10.5" fill="var(--figure-ink)">E (pH<tspan dy="3" font-size="7.5">E</tspan><tspan dy="-3"> ≈ 8,5)</tspan></text>
+    <!-- ANCRÉE À GAUCHE DU POINT (2026-09-04) : posée à x=399, elle partait
+         vers la droite et se superposait à l'étiquette « phénolphtaléine
+         (8,2–10,0) » de l'étape suivante, tout en étant rayée par la courbe
+         (34 %). Deux défauts d'un coup, et tous deux nés de la SUPERPOSITION
+         des étapes : à gauche du point, dans la même bande, il n'y a rien. -->
+    <text x="386" y="164" text-anchor="end" font-size="10.5" fill="var(--figure-ink)">E (pH<tspan dy="3" font-size="7.5">E</tspan><tspan dy="-3"> ≈ 8,5)</tspan></text>
   </g><!-- /step-2 -->
 
   <!-- ══════════════════════════════════════════════════════

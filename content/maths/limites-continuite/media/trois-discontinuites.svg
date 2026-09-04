@@ -115,7 +115,10 @@
     <line x1="337.5" y1="285" x2="337.5" y2="324" stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="4,3"/>
     <!-- Le trou : cercle vide, aucun point plein -->
     <circle cx="337.5" cy="281" r="4" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2"/>
-    <text x="346" y="273" font-size="9.5" font-weight="600" fill="var(--figure-accent)">f(a) n'existe pas</text>
+    <!-- REMONTÉE de 12 px (2026-09-04) : posée à y=273, à hauteur du cercle
+         vide, elle était traversée par la branche droite de la courbe (28 %).
+         Au-dessus, la bande jusqu'au titre du panneau est libre. -->
+    <text x="346" y="261" font-size="9.5" font-weight="600" fill="var(--figure-accent)">f(a) n'existe pas</text>
   </g><!-- /step-2 -->
 
   <!-- ══════════════════════════════════════════════════════

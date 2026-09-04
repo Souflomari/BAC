@@ -91,8 +91,14 @@
     <polygon points="399.3,75.3 390.1,77.3 393.5,67.9" fill="var(--figure-accent)"/>
     <text x="320" y="46" text-anchor="middle" font-size="10.5" fill="var(--figure-accent)">satellite : même sens, T = 24 h</text>
 
-    <text x="320" y="460" text-anchor="middle" font-size="11" fill="var(--figure-accent)">même vitesse angulaire ω → le satellite reste à la verticale de P</text>
-    <text x="320" y="475" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">(mais dans le référentiel géocentrique, il tourne bel et bien, à ~3 km/s)</text>
+    <!-- DESCENDUE SOUS L'ORBITE (2026-09-04) : à y=460, la ligne passait
+         exactement au point le plus bas du cercle d'orbite (centre 320;270,
+         rayon 190 → bas à y=460), qui la rayait sur 32 % de sa largeur.
+         22 px plus bas, elle est entièrement hors du disque. -->
+    <text x="320" y="482" text-anchor="middle" font-size="11" fill="var(--figure-accent)">même vitesse angulaire ω → le satellite reste à la verticale de P</text>
+    <!-- DESCENDUE avec la ligne du dessus (2026-09-04) : celle-ci ayant dû
+         sortir du disque, les deux se recouvraient à 45 %. -->
+    <text x="320" y="498" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">(mais dans le référentiel géocentrique, il tourne bel et bien, à ~3 km/s)</text>
   </g><!-- /step-3 -->
 
 </svg>
