@@ -56,6 +56,32 @@ interface MediaDiagramProps {
   className?: string;
 }
 
+// ── La figure sur un téléphone (2026-09-04) ──────────────────────────────────
+//
+// Le SVG remplit la largeur disponible (`[&>svg]:w-full`). Sur l'écran d'un
+// téléphone, la bande de lecture fait 328 px : une figure dessinée sur un
+// canevas de 900 unités est donc réduite au tiers, et ses étiquettes — 9
+// unités à l'autorat, soit la plus petite du corpus — arrivent à 3 px.
+// Mesuré le 2026-09-04 à 360 px de large : **les 260 figures statiques du
+// corpus rendaient du texte sous 9 px, et 237 sous 6 px.** Illisible. La
+// couche média entière ne fonctionnait pas sur l'appareil que l'élève utilise.
+//
+// RÈGLE : ne jamais rendre une figure SOUS SA TAILLE NATURELLE. Le dessin est
+// autoré à une échelle où son texte se lit ; en dessous, il ne se lit plus.
+// Sous 600 px, le cadre défile donc horizontalement et le SVG garde sa
+// largeur de viewBox. L'élève fait glisser la figure — comme une carte — au
+// lieu de deviner. Rien n'est coupé, rien n'est réécrit.
+//
+// (La règle CSS vit dans globals.css, sous `.figure-cadre.figure-cadre` :
+// deux classes, pour passer devant les utilitaires Tailwind d'une classe.)
+export function largeurNaturelle(svg: string): number | null {
+  const vb = svg.match(/viewBox="([^"]+)"/)?.[1];
+  if (!vb) return null;
+  const p = vb.trim().split(/[\s,]+/).map(Number);
+  if (p.length !== 4 || !Number.isFinite(p[2]) || p[2] <= 0) return null;
+  return Math.round(p[2]);
+}
+
 // ── Structural figure slugs — capped to natural size, centered ───────────────
 // These are circuit/schema diagrams that should NOT stretch to the full band.
 // They are capped at 680px and centered.
@@ -253,6 +279,9 @@ export function MediaDiagram({
       <div
         className={cn(
           "overflow-hidden",
+          // Sous 600px : le cadre défile, le SVG garde sa taille naturelle.
+          // Voir `largeurNaturelle` plus haut pour la mesure qui l'impose.
+          "figure-cadre",
           "rounded-xl",
           "bg-surface-raised",
           // Shadow-first card (ADR 0023): the elevation-1 hairline ring holds the
@@ -262,6 +291,11 @@ export function MediaDiagram({
           // Full width in the band (default)
           "w-full"
         )}
+        style={
+          largeurNaturelle(svgContent)
+            ? ({ "--figure-naturelle": `${largeurNaturelle(svgContent)}px` } as React.CSSProperties)
+            : undefined
+        }
         dangerouslySetInnerHTML={{ __html: svgContent }}
       />
 
@@ -328,6 +362,7 @@ export function MediaDiagramFigure({
       <div
         className={cn(
           "overflow-hidden",
+          "figure-cadre",
           "rounded-xl",
           "bg-surface-raised",
           // Shadow-first card (ADR 0023): the elevation-1 hairline ring holds the
@@ -340,7 +375,17 @@ export function MediaDiagramFigure({
             : // Wide-band: full width
               "w-full"
         )}
-        style={isStructural ? { maxWidth: "680px" } : undefined}
+        style={
+          {
+            // `max-width: 680px` (figures structurelles) et `min-width` se
+            // rencontrent sur un téléphone : min-width gagne, ce qui est
+            // exactement voulu — la figure défile au lieu de rapetisser.
+            ...(isStructural ? { maxWidth: "680px" } : null),
+            ...(largeurNaturelle(svgContent)
+              ? { "--figure-naturelle": `${largeurNaturelle(svgContent)}px` }
+              : null),
+          } as React.CSSProperties
+        }
         dangerouslySetInnerHTML={{ __html: svgContent }}
       />
 

@@ -147,6 +147,54 @@ h3:hover .heading-anchor,
   }
 }
 
+/* ── La figure sur un téléphone (2026-09-04) ────────────────────────────────
+   Le SVG remplit la largeur disponible. Sur un téléphone, la bande de lecture
+   fait 328 px : une figure dessinée sur 900 unités est réduite au tiers, et ses
+   étiquettes — 9 unités à l'autorat — arrivent à 3 px. Mesuré à 360 px de
+   large : les 260 figures statiques du corpus rendaient du texte sous 9 px,
+   237 sous 6 px. La couche média entière était illisible sur l'appareil que
+   l'élève utilise.
+
+   RÈGLE : jamais sous la taille naturelle. Le dessin est autoré à une échelle
+   où son texte se lit ; en dessous, il ne se lit plus. Sous 600 px le cadre
+   défile et le SVG garde sa largeur de viewBox (`--figure-naturelle`, posée
+   par MediaDiagram/StagedFigure). L'élève fait glisser la figure comme une
+   carte, au lieu de deviner. Rien n'est coupé.
+
+   Le sélecteur double (.figure-cadre.figure-cadre) passe devant les
+   utilitaires Tailwind d'une seule classe — `overflow-hidden`, ici — sans
+   dépendre de l'ordre des couches.
+
+   `touch-action: pan-x pan-y` : sans lui, un doigt qui commence son geste sur
+   la figure ne peut plus faire défiler la PAGE verticalement une fois le
+   cadre saisi. */
+@media (max-width: 599.98px) {
+  .figure-cadre.figure-cadre {
+    overflow-x: auto;
+    overflow-y: hidden;
+    touch-action: pan-x pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* L'enfant direct, quel qu'il soit : le SVG pour MediaDiagram/StagedFigure,
+     le conteneur de scène (celui qui porte l'aspect-ratio) pour les figures
+     animées. Viser `> svg` seulement laissait la scène animée à 328 px de
+     large avec un SVG de 680 dedans : recadrée verticalement. */
+  .figure-cadre.figure-cadre > * {
+    min-width: var(--figure-naturelle, 0px);
+  }
+}
+
+/* Impression : le papier n'a pas de barre de défilement. La figure reprend la
+   largeur de la page, quitte à réduire — sur papier, on peut approcher l'œil. */
+@media print {
+  .figure-cadre.figure-cadre {
+    overflow: visible;
+  }
+  .figure-cadre.figure-cadre > * {
+    min-width: 0;
+  }
+}
+
 /* ── Reduced motion (DESIGN-BIBLE §5, §9) ──────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,

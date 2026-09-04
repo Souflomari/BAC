@@ -68,6 +68,7 @@ import type { InteractiveFigureConfigSpec } from "@/lib/content";
 import {
   applyViewBoxCrop,
   cropViewBoxValue,
+  largeurNaturelle,
   STRUCTURAL_SLUGS,
   VERTICALLY_STACKED_PANELS,
 } from "./MediaDiagram";
@@ -588,6 +589,9 @@ export function StagedFigure({
         ref={containerRef}
         className={cn(
           "overflow-hidden",
+          // Même règle que MediaDiagram : sous 600px, le cadre défile et le
+          // SVG garde sa taille naturelle (MediaDiagram.tsx, largeurNaturelle).
+          "figure-cadre",
           "rounded-xl",
           "bg-surface-raised",
           // Shadow-first card (ADR 0023): the elevation-1 hairline ring holds the
@@ -600,7 +604,12 @@ export function StagedFigure({
             : // Wide-band: full width
               "w-full"
         )}
-        style={isStructural ? { maxWidth: "680px" } : undefined}
+        style={
+          {
+            ...(isStructural ? { maxWidth: "680px" } : null),
+            ...(largeurNaturelle(svg) ? { "--figure-naturelle": `${largeurNaturelle(svg)}px` } : null),
+          } as React.CSSProperties
+        }
         dangerouslySetInnerHTML={{ __html: initialSvgContent }}
       />
 

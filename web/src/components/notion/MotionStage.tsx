@@ -125,6 +125,13 @@ function safeEase(ease: string | undefined, fallback: string): string {
   return fallback;
 }
 
+/** Largeur du viewBox d'une scène animée, en unités — voir `.figure-cadre`. */
+function largeurNaturelleMotion(viewBox: string | undefined): number | null {
+  const p = viewBox?.trim().split(/[\s,]+/).map(Number);
+  if (!p || p.length !== 4 || !Number.isFinite(p[2]) || p[2] <= 0) return null;
+  return Math.round(p[2]);
+}
+
 export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
   const stageRef = useRef<HTMLDivElement | null>(null);
   // The GSAP timeline + a tweenTo handle + a "label list" live in refs so the
@@ -458,8 +465,17 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
   return (
     <figure aria-label={figureLabel} className={cn("my-10 notion-wide-band", className)}>
       <div
+        // `--figure-naturelle` : même règle que les figures statiques — sous
+        // 600px, jamais réduite, le cadre défile (globals.css, .figure-cadre).
+        // Une animation lue à 3 px de texte n'apprend rien à personne.
+        style={
+          largeurNaturelleMotion(spec.viewBox)
+            ? ({ "--figure-naturelle": `${largeurNaturelleMotion(spec.viewBox)}px` } as React.CSSProperties)
+            : undefined
+        }
         className={cn(
           "relative w-full overflow-hidden rounded-xl",
+          "figure-cadre",
           "bg-surface-raised",
           // Shadow-first card (ADR 0023): elevation-1 hairline ring holds the
           // edge; the drawn border is dropped.

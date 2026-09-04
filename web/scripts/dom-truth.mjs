@@ -2441,7 +2441,9 @@ try {
       "/",
       "/examens",
     ]) {
-      await ep.goto(`${BASE}${r}`, { waitUntil: "domcontentloaded" });
+      // networkidle, pas domcontentloaded : la feuille de style n'est pas
+      // encore appliquée au domcontentloaded, et on mesurerait une page nue.
+      await ep.goto(`${BASE}${r}`, { waitUntil: "networkidle" });
       const d = await ep.evaluate(() => {
         // Tous les chapitres dépliés : un chapitre masqué qui déborde
         // débordera le jour où l'élève y arrive.
@@ -2454,6 +2456,71 @@ try {
     checks++;
     if (fautifs.length) failures += fail(`débord horizontal à 320px : ${fautifs.join(", ")}`);
     else console.log(`  ✓ 7 pages à 320 px, aucun débord (dont les 4 qui cassaient)`);
+  }
+
+  // ── La figure ne descend jamais sous sa taille naturelle ─────────────────
+  //
+  // Un dessin est autoré à une échelle où son texte se lit. Le SVG remplit la
+  // largeur disponible ; sur un téléphone, cette largeur est 328 px, et une
+  // figure de 900 unités se retrouvait au tiers — étiquettes à 3 px. Le
+  // 2026-09-04, à 360 px : LES 260 figures du corpus rendaient du texte sous
+  // 9 px, 237 sous 6 px. La couche média entière était illisible sur
+  // l'appareil que l'élève utilise.
+  //
+  // Depuis, sous 600 px, le cadre défile et le SVG garde sa largeur de
+  // viewBox. La porte mesure les deux faces de cette règle : l'échelle (≥
+  // 0,98, c'est-à-dire jamais réduit) et le texte RENDU (≥ 7 px, le plus
+  // petit qu'on tolère). Mesurer l'échelle seule laisserait passer une figure
+  // autorée trop petite ; mesurer le texte seul laisserait passer une figure
+  // rendue à 40 % dont les étiquettes seraient énormes.
+  {
+    console.log(`\n[figure] SWEEP: taille naturelle tenue à 360 px`);
+    const fp = await browser.newPage({ viewport: { width: 360, height: 780 } });
+    const fautifs = [];
+    let nFig = 0;
+    for (const r of [
+      "/notions/svt/genetique-populations",
+      "/notions/pc/ondes-em-modulation",
+      "/notions/maths/arithmetique",
+      "/notions/svt/moyens-de-defense",
+      "/notions/pc/rlc-serie",
+    ]) {
+      // networkidle : au domcontentloaded la feuille de style n'est pas
+      // appliquée et toutes les figures paraissent réduites à 0,58 — piège
+      // payé une fois, en armant cette porte.
+      await fp.goto(`${BASE}${r}`, { waitUntil: "networkidle" });
+      const m = await fp.evaluate(() => {
+        document.querySelectorAll("[data-chapter-section]").forEach((s) => (s.hidden = false));
+        const out = [];
+        // `figure svg` attrape aussi les ICÔNES des contrôles (viewBox 24,
+        // rendues à 14 px) : elles n'ont rien à voir avec la règle et
+        // faisaient échouer la porte à 0,58. On ne regarde que les dessins,
+        // c'est-à-dire ce qui vit dans un `.figure-cadre`.
+        for (const svg of document.querySelectorAll(".figure-cadre svg")) {
+          const box = svg.getBoundingClientRect();
+          const vb = svg.viewBox?.baseVal;
+          if (!vb || !vb.width || !box.width) continue;
+          const k = box.width / vb.width;
+          let min = Infinity;
+          for (const t of svg.querySelectorAll("text")) {
+            if (!(t.textContent || "").trim()) continue;
+            const rendu = (parseFloat(getComputedStyle(t).fontSize) || 0) * k;
+            if (rendu > 0 && rendu < min) min = rendu;
+          }
+          out.push({ k: +k.toFixed(2), min: min === Infinity ? null : +min.toFixed(1) });
+        }
+        return out;
+      });
+      nFig += m.length;
+      for (const f of m) {
+        if (f.k < 0.98) fautifs.push(`${r} échelle ${f.k}`);
+        else if (f.min !== null && f.min < 7) fautifs.push(`${r} texte ${f.min}px`);
+      }
+    }
+    await fp.close();
+    checks++;
+    if (fautifs.length) failures += fail(`figures réduites sur téléphone : ${fautifs.slice(0, 6).join(", ")}`);
+    else console.log(`  ✓ ${nFig} figures à 360 px : échelle 1, texte rendu ≥ 7px`);
   }
 
   // (F7) KaTeX accessibility parity: every formula ships MathML.

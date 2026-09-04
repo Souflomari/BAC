@@ -47,6 +47,7 @@
 
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { largeurNaturelle } from "./MediaDiagram";
 import { Icon } from "@/components/ui/Icon";
 import { TransportButton } from "./TransportButton";
 
@@ -156,8 +157,15 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
     >
       {/* SVG display area */}
       <div
+        style={
+          largeurNaturelle(svg)
+            ? ({ "--figure-naturelle": `${largeurNaturelle(svg)}px` } as React.CSSProperties)
+            : undefined
+        }
         className={cn(
           "relative w-full overflow-hidden",
+          // Même règle que les figures statiques (globals.css, .figure-cadre).
+          "figure-cadre",
           "rounded-xl",
           "bg-surface-raised",
           "border border-subtle",

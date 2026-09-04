@@ -206,3 +206,49 @@ symptômes du jour et laissé la seizième casser la page demain.
 **Après : 70 pages × 3 largeurs = 210 mesures, zéro débord.** Porte armée
 dans dom-truth (206 contrôles) sur les quatre leçons fautives à la largeur
 où elles cassaient.
+
+---
+
+## Annexe 2 — la figure sur un téléphone : 260 sur 260 illisibles (2026-09-04)
+
+Le balayage étroit ci-dessus ne mesurait que le DÉBORD. En regardant les
+mêmes pages, une seconde question s'est posée : à quelle taille le texte des
+figures arrive-t-il réellement sur un téléphone ?
+
+Le SVG remplit la largeur disponible (`[&>svg]:w-full`). Sur un écran de
+360 px, la bande de lecture fait 328 px. Une figure dessinée sur un canevas
+de 900 unités est donc rendue à **0,36×**, et ses étiquettes — 9 unités à
+l'autorat, la plus petite valeur du corpus — arrivent à **3 px**.
+
+**Mesure, 62 leçons, 360 px de large : les 260 figures statiques rendaient
+du texte sous 9 px. 237 sous 6 px. La plus petite : 2,95 px**
+(`svt/liberation-energie-matiere-organique`, « NADH,H+ »). La couche média
+entière — schémas, graphes, arbres, circuits — était décorative sur
+l'appareil que l'élève utilise réellement.
+
+Ce n'est pas un défaut de dessin : les mêmes figures sont impeccables à
+1280 px. C'est la RÈGLE DE TAILLE qui manquait.
+
+**Règle posée : jamais sous la taille naturelle.** Un dessin est autoré à
+une échelle où son texte se lit ; en dessous, il ne se lit plus. Sous 600 px
+le cadre défile horizontalement et le SVG garde sa largeur de viewBox.
+L'élève fait glisser la figure — comme une carte — au lieu de deviner. Rien
+n'est coupé, aucune figure n'est réécrite, et au-dessus de 600 px rien ne
+change.
+
+**Après : 272 figures (statiques + animées), échelle 1 partout, plus petit
+texte rendu 7,5 px, aucune sous 7.** Porte armée dans dom-truth (207
+contrôles) sur les deux faces de la règle — l'échelle ET le texte rendu :
+mesurer l'échelle seule laisserait passer une figure autorée trop petite ;
+mesurer le texte seul laisserait passer une figure rendue à 40 % dont les
+étiquettes seraient énormes.
+
+**Trois pièges payés en chemin**, écrits dans le code :
+- `figure svg` attrape les ICÔNES des contrôles de transport (viewBox 24,
+  rendues à 14 px) : la porte échouait à « 0,58 » sans rien avoir à voir avec
+  une figure. La bonne cible est `.figure-cadre svg`.
+- au `domcontentloaded`, la feuille de style n'est pas appliquée : toutes les
+  figures paraissent réduites. `networkidle`.
+- viser `> svg` laissait la scène ANIMÉE à 328 px avec un SVG de 680 dedans,
+  donc recadrée verticalement : c'est le conteneur d'aspect-ratio qu'il faut
+  élargir. La règle vise l'enfant direct, quel qu'il soit.
