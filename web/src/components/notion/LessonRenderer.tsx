@@ -23,6 +23,7 @@ import remarkFrenchTypography from "@/lib/remarkFrenchTypography";
 import rehypeKatexHtml from "@/lib/rehypeKatexHtml";
 import { KatexSpan } from "./KatexSpan";
 import rehypeSlug from "rehype-slug";
+import rehypeDirectionRtl from "@/lib/rehypeDirectionRtl";
 import { cn } from "@/lib/utils";
 
 interface LessonRendererProps {
@@ -135,6 +136,7 @@ export function LessonRenderer({ markdown, className }: LessonRendererProps) {
         rehypePlugins={[
           rehypeSlug,
           [rehypeKatexHtml, { strict: false, trust: false }],
+          rehypeDirectionRtl,
         ]}
         components={{ h2: RungHeading, h3: SubHeading, span: KatexSpan }}
       >

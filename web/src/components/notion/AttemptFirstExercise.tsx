@@ -29,7 +29,9 @@ import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
 import remarkFrenchTypography from "@/lib/remarkFrenchTypography";
-import rehypeKatex from "rehype-katex";
+import rehypeKatexHtml from "@/lib/rehypeKatexHtml";
+import rehypeDirectionRtl from "@/lib/rehypeDirectionRtl";
+import { KatexSpan } from "./KatexSpan";
 import type { NotionExercise, ExerciseQuestion, DerivationStep } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
@@ -43,7 +45,11 @@ export function MdBlock({ children, className }: { children: string; className?:
     <div className={cn("prose-lesson max-w-none [&_.katex-display]:my-3", className)}>
       <ReactMarkdown
         remarkPlugins={[remarkMath, remarkGfm, remarkFrenchTypography]}
-        rehypePlugins={[[rehypeKatex, { strict: false, trust: false }]]}
+        rehypePlugins={[
+          [rehypeKatexHtml, { strict: false, trust: false }],
+          rehypeDirectionRtl,
+        ]}
+        components={{ span: KatexSpan }}
       >
         {children}
       </ReactMarkdown>

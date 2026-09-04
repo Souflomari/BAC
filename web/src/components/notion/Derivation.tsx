@@ -22,7 +22,8 @@ import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import remarkFrenchTypography from "@/lib/remarkFrenchTypography";
-import rehypeKatex from "rehype-katex";
+import rehypeKatexHtml from "@/lib/rehypeKatexHtml";
+import { KatexSpan } from "./KatexSpan";
 import type { DerivationStep } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
@@ -34,8 +35,8 @@ function Note({ children }: { children: string }) {
     <span className="[&_p]:inline">
       <ReactMarkdown
         remarkPlugins={[remarkMath, remarkFrenchTypography]}
-        rehypePlugins={[[rehypeKatex, { strict: false, trust: false }]]}
-        components={{ p: ({ children }) => <span>{children}</span> }}
+        rehypePlugins={[[rehypeKatexHtml, { strict: false, trust: false }]]}
+        components={{ p: ({ children }) => <span>{children}</span>, span: KatexSpan }}
       >
         {children}
       </ReactMarkdown>
@@ -48,7 +49,8 @@ function StepMath({ math }: { math: string }) {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkMath]}
-      rehypePlugins={[[rehypeKatex, { strict: false, trust: false }]]}
+      rehypePlugins={[[rehypeKatexHtml, { strict: false, trust: false }]]}
+      components={{ span: KatexSpan }}
     >
       {`$$${math}$$`}
     </ReactMarkdown>

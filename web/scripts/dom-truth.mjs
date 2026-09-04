@@ -3308,6 +3308,100 @@ try {
     await rpage.close();
   }
 
+  // ── SWEEP: l'écriture de DROITE À GAUCHE, là où le corpus en contient.
+  //
+  //    L'épreuve de philosophie du bac marocain est EN ARABE : la leçon de
+  //    méthode cite le libellé officiel et deux textes sources entiers dans
+  //    leur version arabe. Ils étaient rendus dans des blocs `dir=ltr` — le
+  //    bidi d'Unicode pose bien chaque LIGNE de droite à gauche, ce qui fait
+  //    croire que c'est bon, mais la dernière ligne se colle à gauche, la
+  //    ponctuation terminale passe du mauvais côté, et un lecteur d'écran
+  //    lit l'arabe avec une voix française.
+  //
+  //    La porte ne teste pas UNE page : elle relit le corpus, trouve toute
+  //    leçon dont la source contient de l'écriture RTL, et vérifie le rendu
+  //    de chacune. Une leçon arabophone ajoutée demain est gardée d'office.
+  {
+    console.log("\n[notion] SWEEP: un bloc majoritairement arabe est rendu de droite à gauche");
+    const nomVisible = (n) => !n.startsWith("_") && !n.startsWith(".");
+    const RTL_SRC = /[\u0590-\u05FF\u0600-\u06FF\u0700-\u074F\u0750-\u077F\u08A0-\u08FF\uFB1D-\uFDFF\uFE70-\uFEFF]/;
+    const routesRtl = [];
+    for (const subject of readdirSync(CONTENT_ROOT).filter(nomVisible)) {
+      const sdir = path.join(CONTENT_ROOT, subject);
+      if (!statSync(sdir).isDirectory()) continue;
+      for (const slug of readdirSync(sdir).filter(nomVisible)) {
+        const ndir = path.join(sdir, slug);
+        let fichiers;
+        try { fichiers = readdirSync(ndir).filter((f) => /\.(md|yaml)$/.test(f)); }
+        catch { continue; }
+        // On regarde lesson.md ET les sidecars : les sujets de philo — libellé
+        // officiel et texte source, en arabe — vivent dans exercises.yaml, pas
+        // dans la leçon. Une première version ne lisait que lesson.md et ne
+        // trouvait donc qu'UNE page sur onze.
+        const aDuRtl = fichiers.some((f) => {
+          try { return RTL_SRC.test(readFileSync(path.join(ndir, f), "utf8")); }
+          catch { return false; }
+        });
+        if (aDuRtl) routesRtl.push(`/notions/${subject}/${slug}`);
+      }
+    }
+    checks++;
+    let muettes = 0;
+    if (!routesRtl.length) {
+      console.log("  ✓ aucune leçon ne contient d'écriture RTL — rien à garder");
+    } else {
+      for (const route of routesRtl) {
+        const rp = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+        await rp.goto(`${BASE}${route}`, { waitUntil: "networkidle" });
+        await rp.evaluate(() => document.querySelectorAll("[data-chapter-section]").forEach((s) => (s.hidden = false)));
+        checks++;
+        const bilan = await rp.evaluate(() => {
+          const RTL = /[\u0590-\u05FF\u0600-\u06FF\u0700-\u074F\u0750-\u077F\u08A0-\u08FF\uFB1D-\uFDFF\uFE70-\uFEFF]/g;
+          const LAT = /[A-Za-z\u00C0-\u024F]/g;
+          const mauvais = [];
+          let bons = 0;
+          const blocs = "p, li, blockquote, h1, h2, h3, h4, h5, h6, td, th, dd, dt, figcaption";
+          for (const el of document.querySelectorAll(`.prose-lesson ${blocs}`)) {
+            const t = el.textContent || "";
+            const r = (t.match(RTL) || []).length;
+            if (!r || r <= (t.match(LAT) || []).length) continue;
+            const cs = getComputedStyle(el);
+            const italique = cs.fontStyle !== "normal";
+            if (cs.direction !== "rtl" || el.closest("[lang='ar']") === null || italique) {
+              mauvais.push({
+                tag: el.tagName.toLowerCase(),
+                dir: cs.direction,
+                lang: el.closest("[lang]")?.getAttribute("lang") ?? "(aucun)",
+                italique,
+                texte: t.trim().slice(0, 40),
+              });
+            } else bons++;
+          }
+          return { bons, mauvais };
+        });
+        if (bilan.mauvais.length) {
+          for (const m of bilan.mauvais) {
+            failures += fail(
+              `${route} : <${m.tag}> majoritairement arabe rendu dir=${m.dir}, lang=${m.lang}` +
+                `${m.italique ? ", en ITALIQUE (l'arabe n'en a pas — le navigateur penche la fonte)" : ""} — « ${m.texte} »`
+            );
+          }
+        } else if (bilan.bons) {
+          console.log(`  ✓ ${route} : ${bilan.bons} bloc(s) arabe(s), tous dir=rtl lang=ar et sans italique`);
+        } else {
+          // La source contient de l'arabe mais rien n'en arrive au rendu : ce
+          // sont des COMMENTAIRES YAML (les notes de vérification des sujets
+          // marocains en citent l'original). Rien à garder, rien à afficher.
+          muettes++;
+        }
+        await rp.close();
+      }
+      if (muettes) {
+        console.log(`  · ${muettes} leçon(s) dont l'arabe ne vit que dans des commentaires YAML — rien au rendu`);
+      }
+    }
+  }
+
   // ── SWEEP: navigation par chapitre en compact (audit R6, ergonomie P1-7) —
   //    sous 600 px le rail est display:none ; la capacité de navigation ne
   //    doit PAS disparaître avec lui. Le menu compact (details) doit exister

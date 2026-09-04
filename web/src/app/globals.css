@@ -584,6 +584,37 @@ body {
   margin-bottom: 1.25em;
 }
 
+/* ── L'ARABE, QUAND IL Y EN A ───────────────────────────────────────────
+   L'épreuve de philosophie du bac marocain est en arabe : la leçon de
+   méthode cite le libellé officiel et deux textes sources entiers dans
+   leur version arabe. `rehypeDirectionRtl` pose `dir="rtl" lang="ar"` sur
+   les blocs majoritairement arabes ; voici ce que la typographie leur doit.
+
+   1. PAS D'ITALIQUE. L'écriture arabe n'a pas d'italique — un navigateur à
+      qui on en demande une PENCHE la fonte mécaniquement, et le résultat
+      n'est pas une variante de style, c'est une déformation. La citation
+      arabe héritait de l'italique du blockquote français.
+   2. LE FILET CHANGE DE CÔTÉ. Une barre de citation à gauche d'un texte
+      qui commence à droite ne marque plus rien : elle borde la fin des
+      lignes. On la met à droite, avec sa marge.
+   3. UN PEU PLUS D'INTERLIGNE. L'arabe empile des signes au-dessus et
+      au-dessous de la ligne de base ; à 1,65, les diacritiques d'une ligne
+      touchent la suivante. 1,9 les sépare. */
+.prose-lesson [lang="ar"],
+.prose-lesson [lang="ar"] em,
+.prose-lesson [lang="ar"] i {
+  font-style: normal;
+  line-height: 1.9;
+}
+
+.prose-lesson blockquote:has([lang="ar"]),
+.prose-lesson blockquote[lang="ar"] {
+  border-left: none;
+  border-right: 2px solid var(--color-accent);
+  padding-left: 0;
+  padding-right: 1.25rem;
+}
+
 .prose-lesson table {
   width: 100%;
   border-collapse: collapse;

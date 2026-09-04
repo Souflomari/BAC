@@ -40,7 +40,8 @@
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import remarkFrenchTypography from "@/lib/remarkFrenchTypography";
-import rehypeKatex from "rehype-katex";
+import rehypeKatexHtml from "@/lib/rehypeKatexHtml";
+import { KatexSpan } from "./KatexSpan";
 import type { NotionChoice } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { ResultIcon } from "@/components/ui/Icon";
@@ -57,9 +58,10 @@ export function MathText({
     <span className={cn("math-text", className)}>
       <ReactMarkdown
         remarkPlugins={[remarkMath, remarkFrenchTypography]}
-        rehypePlugins={[[rehypeKatex, { strict: false, trust: false }]]}
+        rehypePlugins={[[rehypeKatexHtml, { strict: false, trust: false }]]}
         components={{
           p: ({ children }) => <span>{children}</span>,
+          span: KatexSpan,
         }}
       >
         {children}

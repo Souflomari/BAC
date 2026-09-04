@@ -17,7 +17,7 @@
 | Instrument | Mesure | Ne dit RIEN de |
 |---|---|---|
 | `web/scripts/validate-content.mjs` | La SOURCE : math équilibrée, YAML valide, marqueurs qui résolvent, jargon d'autorat (codes R, « rung ») hors du texte visible, niveaux de titres sans saut, sommet légataire, **fermeture d'un bloc `$$` sur sa propre ligne** | Le RENDU. Une figure structurellement valide peut être illisible ; c'est `figure-preview` qui le dit |
-| `web/scripts/dom-truth.mjs` | Le RENDU, 210 contrôles : styles calculés contre les jetons, anatomie de page, pagination, ancres accentuées, débord à 320 px, taille naturelle des figures, cibles tactiles, tabulation, texte à 200 % | Le corpus ENTIER — il échantillonne quelques leçons témoins. Les balayages ci-dessous font le tour complet |
+| `web/scripts/dom-truth.mjs` | Le RENDU, 210 contrôles : styles calculés contre les jetons, anatomie de page, pagination, ancres accentuées, débord à 320 px, taille naturelle des figures, cibles tactiles, tabulation, texte à 200 %, **direction d'écriture (RTL)** | Le corpus ENTIER — il échantillonne quelques leçons témoins. Les balayages ci-dessous font le tour complet |
 | `web/scripts/token-gate.mjs` | Une seule syntaxe de consommation des jetons (pas de `-[var(--…)]`, pas de hex, pas de rupture Tailwind morte) | Si le jeton lui-même est juste — c'est `contrast-gate` |
 | `web/scripts/contrast-gate.mjs` | Les 80 paires de la palette, ratio par ratio, clair ET sombre | Le contraste d'une figure : les couleurs y sont peintes en jetons, mais leur VOISINAGE n'est pas jugé |
 
@@ -62,7 +62,13 @@
    combinaison exacte que la norme décrit.
 4. **La gravité d'une collision d'étiquettes en thème sombre.**
 5. **Le comportement hors ligne** et la reprise après coupure.
-6. **La production.** Tout ce document parle d'un build local. La synchro
+6. **Le reste du multilingue.** `dom-truth` garde maintenant la DIRECTION
+   d'un bloc arabe. Ce qu'il ne garde pas : la césure, la fonte arabe
+   réellement choisie par le navigateur (aucune des fontes du site n'a de
+   glyphes arabes — c'est un repli système), et les 48 caractères du corpus
+   hors du sous-ensemble `latin` (→, ≠, ✓, α, β, ᵉ) qui tombent eux aussi
+   sur un repli.
+7. **La production.** Tout ce document parle d'un build local. La synchro
    de production reste NON VÉRIFIÉE (CLAUDE.md).
 
 *(Le point 1 de la version du matin — « le temps de chargement : LCP, TTFB,

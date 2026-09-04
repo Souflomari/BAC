@@ -851,3 +851,29 @@ ferme que sur une ligne `$$` seule, avalait le paragraphe suivant et le
 donnait à KaTeX. Corrigé dans les cinq leçons, et la règle est désormais une
 porte, testée dans les deux sens. **Troisième défaut de la semaine dont la
 cause est l'écart entre ce qu'une porte MODÉLISE et ce que le moteur FAIT.**
+
+### 8.8 L'arabe des sujets de philo était rendu à l'envers
+
+Trouvé par accident — en inspectant les fontes — puis mesuré proprement.
+Détail dans `docs/audits/arabe-direction.md`.
+
+**LE FAIT.** L'épreuve de philosophie du bac marocain est EN ARABE. Le
+corpus transcrit donc les sujets réels en arabe, à côté de leur traduction
+française : c'est la bonne décision de contenu. **49 blocs, dans 10 leçons,
+étaient rendus `dir="ltr"`, sans `lang`, et en italique.** La dernière ligne
+se collait à gauche, la ponctuation terminale passait du mauvais côté, un
+lecteur d'écran lisait l'arabe avec une voix française, et le navigateur
+PENCHAIT mécaniquement une écriture qui n'a pas d'italique.
+
+**LE CORRECTIF EST AU RENDU** (`web/src/lib/rehypeDirectionRtl.ts`), jamais
+dans le contenu : un bloc dont les lettres RTL sont plus nombreuses que les
+latines reçoit `dir="rtl" lang="ar"`. Plus strict que `dir="auto"`, qui
+décide sur le premier caractère fort et ferait basculer une phrase
+française citant un terme arabe.
+
+**ET C'EST LA PORTE QUI A TROUVÉ LES TROIS QUARTS DU DÉFAUT.** Écrite sur ce
+qu'un œil avait vu, elle ne lisait que `lesson.md` — donc une leçon sur
+onze. Élargie aux sidecars (les sujets vivent dans `exercises.yaml`), elle a
+révélé une seconde famille de composants, `MdBlock`, partagée par toutes les
+cartes d'exercice et de banque. **Écrire la porte AVANT de croire le
+correctif fini : c'est la leçon réutilisable.**
