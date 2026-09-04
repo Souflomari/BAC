@@ -55,6 +55,17 @@ jobs:
           test -n "$dirs"
           node scripts/validate-content.mjs --strict $dirs
 
+      # L'INVENTAIRE K-8 NE DOIT PLUS POUVOIR VIEILLIR EN SILENCE.
+      # docs/audits/lectures-graphiques.md recense la surface que K-8 désigne
+      # comme jamais re-mesurée. Sa version À LA MAIN avait dérivé de 47
+      # entrées en six jours sans que rien ne le signale : le chiffre que la
+      # fiche K-8 et le HANDOFF citaient était faux par défaut. Le document est
+      # désormais généré, et cette porte échoue s'il est périmé — c'est-à-dire
+      # dès qu'une conversion ajoute des entrées sans régénérer l'inventaire.
+      # Remède : node scripts/lectures-graphiques.mjs, puis committer le .md.
+      - name: Inventaire K-8 à jour
+        run: node scripts/lectures-graphiques.mjs --check
+
       # One retry: the next/font Google fetch is the known transient here.
       - name: Build
         run: npm run build || { echo "::warning::build retry (next/font fetch flake)"; npm run build; }
