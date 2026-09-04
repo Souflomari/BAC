@@ -877,3 +877,40 @@ onze. Élargie aux sidecars (les sujets vivent dans `exercises.yaml`), elle a
 révélé une seconde famille de composants, `MdBlock`, partagée par toutes les
 cartes d'exercice et de banque. **Écrire la porte AVANT de croire le
 correctif fini : c'est la leçon réutilisable.**
+
+### 8.9 Le jargon de rédaction : la campagne de juillet n'avait vu qu'un tiers
+
+Un même geste, répété trois fois dans la journée, sur trois vocabulaires
+différents. Le détail est dans les commits ; voici ce qui compte.
+
+**LA MÉTHODE QUI A TOUT CHANGÉ : compter sur le RENDU, pas sur la source.**
+La campagne de juillet avait nettoyé `lesson.md`, armé une porte, déclaré le
+sujet clos. Mesuré sur ce que le navigateur donne à lire :
+**529 codes de barreau et 19 « rung » encore sous les yeux d'un élève**, sur
+38 leçons — dans les sidecars, les légendes de figures et les TITRES, que la
+porte ne regardait pas. Puis, dans la foulée, **18 slugs de leçon**
+(`la-verite`) et **6 références de dépôt** (`docs/sujets/…`, `exercises.yaml`,
+`rupture-gate`). Trois classes, une seule cause : *une porte qui parle de la
+SOURCE ne dit rien du RENDU.*
+
+**ET UN DÉFAUT PLUS GRAVE QUE LA FUITE, TROUVÉ EN CHEMIN.** « rung 7 » est
+une autre écriture de « R7 » ; la campagne de juillet traduisait le mot et
+gardait le chiffre. Or R1 est le DEUXIÈME chapitre. **98 renvois publiés
+pointaient un chapitre trop tôt** — « la chute verticale pure du rung 1 »
+envoyait l'élève à l'accroche au lieu du rappel actif. Réparés en retrouvant
+chaque endroit par une empreinte prise dans la version d'avant la campagne
+(`scripts/reparer-renvois-rung.py`), jamais en devinant. Et 13 renvois
+inter-notions sur 19 tombaient sur le mauvais chapitre d'une AUTRE leçon :
+re-résolus contre la table de la leçon citée.
+
+**ÉTAT.** Codes de barreau visibles : 529 → **71**, tous dans des tournures
+que le réécriveur refuse de deviner — pas de porte, la classe n'est pas
+vide. Slugs : 18 → **0**, porte armée. Vocabulaire de dépôt : 6 → **0**,
+porte armée. Mot « rung » : 19 → **0**.
+
+**LE PIÈGE DE COMPTAGE, POUR LA PROCHAINE FOIS.** En cherchant les noms de
+fichier dans le HTML dépouillé de ses balises, on en trouve 144 ; au
+navigateur, sur `innerText`, on en trouve 6. Les 138 autres vivent dans le
+`<title>` d'un SVG — le nom ACCESSIBLE de la figure, qui a le droit de nommer
+son fichier et que personne ne lit. Une porte qui crie 144 fois pour six
+vrais défauts est désarmée dans la semaine.
