@@ -237,6 +237,36 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
     # traitement, et on le restitue tel quel à la fin.
     ligne = reecrire_slugs(ligne)
 
+    # ── UN « R1 » N'EST PAS TOUJOURS UN BARREAU ──────────────────────────────
+    #
+    # En physique, R1 est une RÉSISTANCE. « Loi d'Ohm sur R1, avec
+    # i(0+) = 0,1 A » parle d'un composant du circuit, pas d'un chapitre de la
+    # leçon — et la réécrire en « sur le chapitre 2 » produit une phrase qui
+    # ne veut plus rien dire. Attrapé en relisant la sortie, une règle trop
+    # tard : ajouter « sur » à la liste des prépositions avait suffi.
+    #
+    # LA GARDE EST GROSSIÈRE ET C'EST VOULU : dès que la LIGNE porte du
+    # vocabulaire de circuit, on protège tous les codes qu'elle contient,
+    # SAUF ceux qu'un « rung » précède explicitement — là, l'auteur a levé
+    # l'ambiguïté lui-même. Vingt et une lignes du corpus sont concernées ;
+    # trois portent une vraie résistance. Protéger les dix-huit autres coûte
+    # dix-huit renvois non traduits ; en abîmer trois coûterait la confiance
+    # dans le reste.
+    CIRCUIT = re.compile(
+        r"\b(?:Ohm|ohm|résistances?|resistances?|résistor|bobine|condensateur|"
+        r"dip[ôo]les?|circuits?|bornes?|tension|intensit[ée]|maille|inductance|"
+        r"capacit[ée])\b", re.I)
+    protege_composant: list[str] = []
+    if CIRCUIT.search(ligne):
+        def garder_composant(m: re.Match) -> str:
+            protege_composant.append(m.group(0))
+            journal.append(
+                f"  ⚡ {fichier}:{no} « {m.group(0)} » dans une ligne de circuit — "
+                f"laissé intact (résistance ou barreau ? on ne devine pas)")
+            return f"\x05COMP{len(protege_composant) - 1}\x05"
+
+        ligne = re.sub(r"(?<![Rr]ung )(?<![Rr]ungs )\bR\d+\b", garder_composant, ligne)
+
     # ── RENVOI EXTERNE À L'ENVERS : « R7 de « Calcul intégral » » ───────────
     #
     # Le détecteur ci-dessous cherche le titre AVANT le code (« … dans « L'État »,
@@ -506,7 +536,7 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
     # `re.I` sans risque : le préfixe est réinjecté TEL QUEL (m.group("avant")),
     # donc « D'après » reste capitalisé et « d'après » reste minuscule.
     ligne = re.sub(
-        r"(?P<avant>\b(?:reprends|mobilise|ajoute|relis|revois|voir|compare|rapproche|corrige|construit|présente|décrit|distingue|montre|nomme|que|qu'|dont|depuis|dès|selon|d'après|avec|et|ou|comme|dans|par|via|encore|cf\.|la partie|de la partie|à la fin de la partie)\s+)R(?P<n>\d+)\b",
+        r"(?P<avant>\b(?:reprends|mobilise|mobiliser|ajoute|relis|revois|voir|compare|rapproche|corrige|construit|présente|décrit|distingue|montre|nomme|répond|oppose|affirme|établit|constitue|développe|apporte|prépare|que|qu'|dont|depuis|dès|selon|d'après|avec|et|ou|comme|dans|par|via|encore|sur|cf\.|la partie|de la partie|à la fin de la partie)\s+)R(?P<n>\d+)\b",
         nominal, ligne, flags=re.I)
     # « Et R6, enfin » / « Or R2 dit » : en tête, avec majuscule.
     ligne = re.sub(
@@ -516,6 +546,31 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
     # article, sinon la phrase boite (« — chapitre 4 va montrer »). La virgule,
     # elle, introduit une apposition et n'en veut pas — d'où deux règles.
     ligne = re.sub(r"(?P<avant>[—–]\s+)R(?P<n>\d+)\b", nominal, ligne)
+
+    # ── 6 bis bis. « en R<n> » et le code SEUL entre parenthèses ─────────────
+    # « mal appliquée en R2 », « évoqué en R4 », « construit en R3 » : la
+    # préposition « en » demande « au chapitre ». Et « (R2) », « (R6) » —
+    # une apposition nue entre parenthèses — devient « (chapitre 3) », sans
+    # article : c'est une étiquette, pas un groupe dans la phrase.
+    def en_chapitre(m: re.Match) -> str:
+        n = int(m.group("n"))
+        c = chap(n)
+        if not c:
+            inconnu(n)
+            return m.group(0)
+        return f"{m.group('avant')}au chapitre {c}"
+
+    ligne = re.sub(r"(?P<avant>\ben\s+)R(?P<n>\d+)\b", en_chapitre, ligne)
+
+    def parenthese(m: re.Match) -> str:
+        n = int(m.group("n"))
+        c = chap(n)
+        if not c:
+            inconnu(n)
+            return m.group(0)
+        return f"(chapitre {c})"
+
+    ligne = re.sub(r"\(R(?P<n>\d+)\)", parenthese, ligne)
 
     # ── 6 ter. APPOSITION APRÈS UN NOM ───────────────────────────────────────
     # « la formule R8 », « la limite de référence R4 », « le rappel R1 » : le
@@ -563,7 +618,10 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
         return f"{m.group('tete')}le chapitre {c} "
 
     ligne = re.sub(
-        r"(?P<tete>(?:^|(?<=[.!?]\s))(?:«\s*)?)R(?P<n>\d+)\s+(?=[a-zàâçéèêëîïôûùü])",
+        # `^\s*` et non `^` : dans un scalaire YAML en bloc, la ligne
+        # commence par son indentation, et l'ancre nue ne mordait jamais.
+        # Idem après un numéro de question (« 2 R0 présente… »).
+        r"(?P<tete>(?:^\s*|(?<=[.!?]\s)|(?<=\d\s))(?:«\s*)?)R(?P<n>\d+)\s+(?=[a-zàâçéèêëîïôûùü])",
         sujet_maj, ligne)
     ligne = re.sub(
         r"(?P<tete>(?<=[,;:(]\s)|(?<=\())R(?P<n>\d+)\s+(?=[a-zàâçéèêëîïôûùü])",
@@ -673,6 +731,9 @@ def reecrire_ligne(ligne: str, table: dict[int, int], journal: list[str], fichie
     # Restitution des renvois inverses protégés.
     for i, brut in enumerate(protege_inv):
         ligne = ligne.replace(f"\x02INV{i}\x02", brut)
+
+    for i, brut in enumerate(protege_composant):
+        ligne = ligne.replace(f"\x05COMP{i}\x05", brut)
 
     # ── 8. DÉDOUBLONNAGE, EN DERNIER ET PAS AVANT ────────────────────────────
     #
@@ -793,20 +854,70 @@ def traiter_yaml(chemin: Path, table: dict[int, int], ecrire: bool,
     court = str(chemin.relative_to(RACINE))
 
     pile: list[tuple[int, str]] = []   # (indentation, clé)
+    # Tampon des lignes d'un MÊME scalaire en bloc : on les réécrit ENSEMBLE.
+    #
+    # Pourquoi : un scalaire YAML est coupé à la largeur, pas à la phrase.
+    # « … a été mal appliquée en\n          R2, ce qui invalide » place le
+    # déclencheur (« en ») sur une ligne et le code sur la suivante ; ligne à
+    # ligne, aucune règle ne mord. Cinquante-six renvois restaient là.
+    #
+    # GARDE : on ne fusionne jamais deux lignes dont la SECONDE ouvre une
+    # structure markdown (liste, titre, citation, tableau, math détachée) —
+    # là, le retour à la ligne porte du sens.
+    courant: list[tuple[int, str]] = []
+    STRUCTURE = re.compile(r"^\s*(?:[-*+]\s|#{1,6}\s|>\s|\||\d+[.)]\s|\$\$)")
+
+    def vider_bloc() -> None:
+        nonlocal avant, apres
+        if not courant:
+            return
+        texte = "\n".join(l for _, l in courant)
+        avant += len(re.findall(r"\bR\d+\b", texte))
+        # On protège les sauts de ligne qui précèdent une ligne STRUCTURÉE.
+        morceaux: list[str] = []
+        tampon: list[str] = []
+        for k, (_, l) in enumerate(courant):
+            if tampon and (STRUCTURE.match(l) or not l.strip()):
+                morceaux.append("\n".join(tampon))
+                tampon = []
+            tampon.append(l)
+        if tampon:
+            morceaux.append("\n".join(tampon))
+        neufs = [reecrire_ligne(m, table, journal, court, courant[0][0] + 1, index) for m in morceaux]
+        neuf = "\n".join(neufs)
+        apres += len(re.findall(r"\bR\d+\b", neuf))
+        lignes_neuves = neuf.split("\n")
+        debut = courant[0][0]
+        # On remplace la plage d'origine par le nouveau texte (le nombre de
+        # lignes peut diminuer si une règle a mangé un saut de ligne).
+        sorties[debut: debut + len(courant)] = lignes_neuves
+        courant.clear()
     bloc: tuple[int, bool] | None = None  # (indentation du scalaire, prose ?)
     avant = apres = 0
     sorties: list[str] = []
 
     for no, ligne in enumerate(lignes, start=1):
         nu = ligne.strip()
+        # Une ligne VIDE à l'intérieur d'un scalaire en bloc appartient au
+        # bloc : c'est une séparation de paragraphe. La sauter faisait
+        # diverger les indices du tampon, et le remplacement en bloc écrasait
+        # les mauvaises lignes — dupliquant l'une, effaçant l'autre. Vu sur
+        # transmission-caracteres avant d'être commis.
+        if not nu and bloc and bloc[1] and courant:
+            courant.append((len(sorties), ligne))
+            sorties.append(ligne)
+            continue
         # Commentaire d'auteur : intouchable, c'est sa place.
         if nu.startswith("#") or not nu:
-            bloc = bloc if (not nu and bloc) else bloc
+            vider_bloc()
             sorties.append(ligne)
             continue
 
         m = CLE_YAML.match(ligne)
         indent = len(ligne) - len(ligne.lstrip())
+
+        if m or not (bloc and indent > bloc[0]):
+            vider_bloc()
 
         if m:
             base, tiret, cle, valeur = m.group(1), m.group(2) or "", m.group(3), m.group(4)
@@ -847,10 +958,8 @@ def traiter_yaml(chemin: Path, table: dict[int, int], ecrire: bool,
         # Ligne de continuation d'un scalaire en bloc.
         if bloc and indent > bloc[0]:
             if bloc[1]:
-                avant += len(re.findall(r"\bR\d+\b", ligne))
-                neuf = reecrire_ligne(ligne, table, journal, court, no, index)
-                apres += len(re.findall(r"\bR\d+\b", neuf))
-                sorties.append(neuf)
+                courant.append((len(sorties), ligne))
+                sorties.append(ligne)   # remplacé plus bas, en bloc
                 continue
             sorties.append(ligne)
             continue
@@ -858,6 +967,7 @@ def traiter_yaml(chemin: Path, table: dict[int, int], ecrire: bool,
         bloc = None
         sorties.append(ligne)
 
+    vider_bloc()
     neuf = "\n".join(sorties)
     if ecrire and neuf != src:
         chemin.write_text(neuf, encoding="utf-8")
