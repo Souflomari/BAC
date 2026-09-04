@@ -2410,6 +2410,52 @@ try {
     }
   }
 
+  // ── Le téléphone étroit : aucune page ne doit glisser sous le doigt ───────
+  //
+  // L'élève marocain de terminale lit sur un téléphone. Le reste de ce
+  // harnais mesure le débord horizontal à 1536 et 1920 px (l'écran du
+  // propriétaire), et balaie le header de 320 à 1280 px — sur l'ACCUEIL
+  // seulement. Les 62 leçons n'avaient jamais été mesurées sous 1280.
+  //
+  // Elles l'ont été le 2026-09-04, par `web/scripts/etroit-sweep.mjs` : à
+  // 320 px, QUATRE leçons débordaient (jusqu'à 51 px), une encore à 360.
+  // Cause unique : une formule EN LIGNE est insécable, et quinze d'entre
+  // elles, dans des cartes d'item, dépassaient la carte et poussaient la page
+  // entière. Correctif : les conteneurs de texte des items défilent
+  // (McqItem, CheckpointItem, ChoiceButton) — comme `.katex-display` le fait
+  // déjà dans la prose. Rien n'est coupé.
+  //
+  // La porte garde les quatre leçons fautives à la largeur où elles
+  // cassaient. Le balayage complet (70 pages × 3 largeurs) reste l'outil ;
+  // ceci en est le témoin permanent.
+  {
+    console.log(`\n[étroit] SWEEP: aucun débord horizontal à 320 px`);
+    const ep = await browser.newPage({ viewport: { width: 320, height: 780 } });
+    const fautifs = [];
+    for (const r of [
+      "/notions/pc/etat-equilibre",
+      "/notions/pc/rlc-serie",
+      "/notions/maths/nombres-complexes-2",
+      "/notions/maths/suites-numeriques",
+      "/notions/pc/reactions-acido-basiques",
+      "/",
+      "/examens",
+    ]) {
+      await ep.goto(`${BASE}${r}`, { waitUntil: "domcontentloaded" });
+      const d = await ep.evaluate(() => {
+        // Tous les chapitres dépliés : un chapitre masqué qui déborde
+        // débordera le jour où l'élève y arrive.
+        document.querySelectorAll("[data-chapter-section]").forEach((s) => (s.hidden = false));
+        return document.documentElement.scrollWidth - window.innerWidth;
+      });
+      if (d > 1) fautifs.push(`${r} (+${d}px)`);
+    }
+    await ep.close();
+    checks++;
+    if (fautifs.length) failures += fail(`débord horizontal à 320px : ${fautifs.join(", ")}`);
+    else console.log(`  ✓ 7 pages à 320 px, aucun débord (dont les 4 qui cassaient)`);
+  }
+
   // (F7) KaTeX accessibility parity: every formula ships MathML.
   {
     console.log(`\n[${NOTION}] SWEEP: KaTeX MathML parity`);

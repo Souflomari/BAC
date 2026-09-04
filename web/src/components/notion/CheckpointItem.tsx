@@ -110,7 +110,10 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
           "mb-5",
           "text-body-lg text-primary",
           "leading-[1.6]",
-          "[&_.katex-display]:my-3"
+          "[&_.katex-display]:my-3",
+          // Même défaut, même correctif que McqItem : une formule en ligne
+          // insécable ne doit pas pousser la page sur un téléphone étroit.
+          "overflow-x-auto"
         )}
       >
         <MathText>{item.stem}</MathText>

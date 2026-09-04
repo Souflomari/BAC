@@ -228,7 +228,12 @@ export function ChoiceButton({
         </span>
 
         {/* Choice content — may contain KaTeX */}
-        <span className="flex-1 min-w-0">
+        {/* `overflow-x-auto` : une réponse peut être une formule seule et
+            insécable ($CH_3COOH/CH_3COO^-$ mesure 222 px). Sur un écran de
+            320 px elle débordait du bouton et emportait la page ; elle défile
+            désormais dans sa propre ligne. Le témoin « correct/incorrect »
+            reste DANS ce conteneur, donc toujours à la suite du texte. */}
+        <span className="flex-1 min-w-0 overflow-x-auto">
           <MathText>{choice.text}</MathText>
 
           {/* Animated correctness indicator — color + icon + text (never color alone §9) */}
@@ -272,6 +277,8 @@ export function ChoiceButton({
             "px-4 py-3 rounded-lg",
             "border-l-2",
             "text-body-sm",
+            // Le retour porte souvent la formule corrigée en entier.
+            "overflow-x-auto",
             state === "selected-correct" && [
               "bg-success-subtle",
               "border-success",

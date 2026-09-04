@@ -124,7 +124,15 @@ export function McqItem({ item, index }: McqItemProps) {
             "flex-1 min-w-0",
             "text-body-lg text-primary",
             "leading-[1.6]",
-            "[&_.katex-display]:my-3"
+            "[&_.katex-display]:my-3",
+          // TÉLÉPHONE ÉTROIT (2026-09-04). Une formule EN LIGNE est
+          // insécable : KaTeX ne coupe pas au milieu d'un $Q_r = [Cr_2O_7^{2-}]
+          // \ldots$. À 320 px, quinze formules du corpus dépassaient la carte
+          // d'item et poussaient la PAGE ENTIÈRE — quatre leçons glissaient
+          // sous le doigt (mesuré : jusqu'à 51 px de débord). Le conteneur
+          // défile donc ici, exactement comme `.katex-display` le fait déjà
+          // dans la prose : rien n'est coupé, rien ne ment, et la page tient.
+            "overflow-x-auto"
           )}
         >
           <MathText>{item.stem}</MathText>
@@ -190,7 +198,10 @@ export function McqItem({ item, index }: McqItemProps) {
               "text-body-sm text-primary",
               "prose-lesson",
               "max-w-none",
-              "[&_.katex-display]:my-2"
+              "[&_.katex-display]:my-2",
+              // Même raison que l'énoncé ci-dessus : une solution complète
+              // porte les formules les plus longues de la carte.
+              "overflow-x-auto"
             )}
           >
             <MathText>{item.solution}</MathText>

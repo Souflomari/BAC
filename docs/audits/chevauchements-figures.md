@@ -166,3 +166,43 @@ Par ordre de préférence — c'est la règle du skill `figure-authoring`
 - Les deux classes du §3 ne sont gardées par rien. Les cas trouvés l'ont
   été à l'œil, sur les 24 figures ouvertes — **il en reste très
   probablement dans les 244 autres.**
+
+---
+
+## Annexe — le téléphone étroit (2026-09-04)
+
+Cet audit, comme les deux autres balayages visuels, avait tout mesuré à
+1280 px et au-dessus. Le produit s'adresse à des lycéens marocains, qui
+lisent sur un téléphone. Le harnais mesurait le débord horizontal à 1536 et
+1920 px — l'écran du propriétaire — et balayait le header de 320 à 1280 px,
+sur l'accueil seulement. **Les 62 leçons n'avaient jamais été mesurées sous
+1280 px.**
+
+`web/scripts/etroit-sweep.mjs` : 70 pages (62 leçons + 8 pages hors leçon)
+× 3 largeurs (320, 360, 390), tous les chapitres dépliés — un chapitre
+masqué qui déborde débordera le jour où l'élève y arrive.
+
+**Trouvé : quatre leçons débordaient à 320 px** (`pc/etat-equilibre` +51,
+`pc/rlc-serie` +31, `maths/nombres-complexes-2` +24,
+`maths/suites-numeriques` +14), **et une encore à 360 px**
+(`pc/etat-equilibre` +11). La page glissait sous le doigt.
+
+**Cause unique, trouvée par bissection du DOM** (masquer un enfant, regarder
+si le débord disparaît, descendre) : les cartes d'items. Puis, en isolant
+les classes : masquer `[data-item-id]` OU masquer les formules en ligne
+résolvait, les deux à chaque fois. Une formule en ligne est **insécable** —
+KaTeX ne coupe pas au milieu de $Q_r = [Cr_2O_7^{2-}]\ldots$ — et quinze
+d'entre elles, mesurées une à une, dépassaient le bord utile de leur carte :
+jusqu'à 91 px pour `EE-24`, 71 px pour `RLC-R8-1`, 22 px pour la réponse
+$CH_3COOH/CH_3COO^-$ de `RAB-18`.
+
+**Correctif de mise en page, pas de contenu.** Les conteneurs de texte des
+items défilent désormais (`McqItem` énoncé + solution, `CheckpointItem`
+énoncé, `ChoiceButton` réponse + retour) — exactement ce que
+`.katex-display` fait déjà dans la prose. Rien n'est coupé, rien n'est
+réécrit, et la page tient. Réécrire les quinze formules aurait traité les
+symptômes du jour et laissé la seizième casser la page demain.
+
+**Après : 70 pages × 3 largeurs = 210 mesures, zéro débord.** Porte armée
+dans dom-truth (206 contrôles) sur les quatre leçons fautives à la largeur
+où elles cassaient.
