@@ -941,3 +941,28 @@ navigateur, sur `innerText`, on en trouve 6. Les 138 autres vivent dans le
 `<title>` d'un SVG — le nom ACCESSIBLE de la figure, qui a le droit de nommer
 son fichier et que personne ne lit. Une porte qui crie 144 fois pour six
 vrais défauts est désarmée dans la semaine.
+
+### 8.10 Le zoom à 400 % : le premier balayage de la journée qui ne trouve rien
+
+WCAG SC 1.4.10 (Reflow) ne parle pas seulement d'une largeur. Il parle de
+**320 × 256 px CSS** — une fenêtre 1280 × 1024 vue à 400 % de zoom, ce que
+fait une personne malvoyante. Les deux balayages existants passaient à côté :
+l'un mesure 320 px de large à hauteur normale, l'autre double le texte à
+1280 de large. **Aucun ne mettait la HAUTEUR sous pression**, et c'est elle
+qui fait mal : un en-tête collant de 57 px prend 22 % d'un écran de 256.
+
+**Résultat : 70 pages, 0 défaut.** Pas de défilement à deux dimensions, et
+il reste 7 à 9 lignes de prose sous les barres. La colonne de lecture bornée
+et le seul en-tête collant du site tiennent la contrainte.
+
+**C'est le premier balayage de la journée à ne rien trouver, et il fallait le
+vérifier avant de le croire** : la sonde voit bien le `header.entete-site`
+(57 px, `position: sticky`) sur chaque page — elle ne passe donc pas à vide.
+Une porte qui ne trouve rien parce qu'elle ne regarde rien est pire qu'une
+absence de porte.
+
+Deux de ses quatre contrôles — aucun débord horizontal, au moins trois
+lignes de prose lisibles — sont armés dans `dom-truth` sur sept pages
+témoins, et **testés dans les deux sens** : un `min-width: 420px` posé sur la
+colonne de prose fait échouer dix contrôles en nommant les 176 px de débord ;
+retiré, tout repasse.

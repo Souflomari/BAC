@@ -3426,6 +3426,61 @@ try {
     }
   }
 
+  // ── SWEEP: WCAG 1.4.10 (Reflow) DANS SA FORME STRICTE — 320 × 256 px.
+  //
+  //    La norme parle d'une largeur de 320 px CSS **et d'une hauteur de
+  //    256 px** : c'est une fenêtre 1280 × 1024 vue à 400 % de zoom, ce que
+  //    fait une personne malvoyante. Les deux balayages existants passaient
+  //    à côté : `etroit-sweep` mesure 320 px de large à hauteur normale,
+  //    `zoom-sweep` double le texte à 1280 de large. Ni l'un ni l'autre ne
+  //    met la HAUTEUR sous pression — et c'est elle qui fait mal : l'en-tête
+  //    collant fait 57 px, soit 22 % de l'écran.
+  //
+  //    Deux faits gardés ici, tous deux défendables comme exigences :
+  //    aucun défilement à deux dimensions (ce que la norme demande), et au
+  //    moins trois lignes de prose lisibles sous les barres collantes (ce
+  //    qu'un être humain demande). Le balayage complet des 70 pages vit
+  //    dans `scripts/zoom400-sweep.mjs` ; ici on garde un échantillon, pour
+  //    que la CI reste rapide.
+  {
+    console.log("\n[400 %] SWEEP: reflow à 320 × 256 px (1280 × 1024 zoomé à 400 %)");
+    const zpage = await browser.newPage({ viewport: { width: 320, height: 256 } });
+    const temoins = ["/", "/examens", "/examens/spc-2023-normale", "/matieres/pc", NOTION,
+                     "/notions/philo/analyse-de-texte", "/commencer"];
+    for (const route of temoins) {
+      await zpage.goto(`${BASE}${route}`, { waitUntil: "networkidle" });
+      await zpage.evaluate(() => document.querySelectorAll("[data-chapter-section]").forEach((s) => (s.hidden = false)));
+      checks++;
+      const m = await zpage.evaluate(() => {
+        const H = window.innerHeight;
+        const bandes = [...document.querySelectorAll("body *")]
+          .map((e) => ({ e, cs: getComputedStyle(e), r: e.getBoundingClientRect() }))
+          .filter(({ cs, r }) => (cs.position === "sticky" || cs.position === "fixed") &&
+            r.height > 4 && r.width > 40 && cs.visibility !== "hidden" && cs.display !== "none" &&
+            (r.top <= 2 || r.bottom >= H - 2));
+        let hauteur = 0, fin = -1;
+        for (const [a, b] of bandes.map(({ r }) => [Math.max(0, r.top), Math.min(H, r.bottom)]).sort((x, y) => x[0] - y[0])) {
+          if (a > fin) { hauteur += b - a; fin = b; } else if (b > fin) { hauteur += b - fin; fin = b; }
+        }
+        const p = document.querySelector(".prose-lesson p, main p, p");
+        const interligne = p ? parseFloat(getComputedStyle(p).lineHeight) || 24 : 24;
+        return {
+          debord: document.documentElement.scrollWidth - window.innerWidth,
+          barres: Math.round(hauteur),
+          lignes: Math.floor((H - hauteur) / interligne),
+        };
+      });
+      if (m.debord > 0) {
+        failures += fail(`${route} @320×256 : débord horizontal de ${m.debord}px — WCAG 1.4.10 interdit le défilement à deux dimensions`);
+      } else if (m.lignes < 3) {
+        failures += fail(`${route} @320×256 : ${m.lignes} ligne(s) de prose sous ${m.barres}px de barres collantes — on lit par une fente`);
+      } else {
+        console.log(`  ✓ ${route} : 0 débord · ${m.barres}px de barres · ${m.lignes} lignes lisibles`);
+      }
+    }
+    await zpage.close();
+  }
+
   // ── SWEEP: l'écriture de DROITE À GAUCHE, là où le corpus en contient.
   //
   //    L'épreuve de philosophie du bac marocain est EN ARABE : la leçon de
