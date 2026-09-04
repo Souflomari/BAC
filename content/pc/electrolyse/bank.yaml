@@ -955,3 +955,191 @@ entries:
             note: "(S2) contient plus d'ions Ag+ que necessaire : le depot complet m(Ag) est atteignable, avec des ions restants."
           - math: '\boxed{(S_2)\ \text{permet d obtenir la masse } m(Ag) \approx 1{,}51\ \text{g}}'
             note: "Reponse : (S2), seule des deux a fournir assez d'ions Ag+."
+
+  # ── bk-2013-r-x1 — 2013 R, Chimie, Première partie : électrolyse d'une solution de chlorure de nickel II ──
+  #
+  # NOTE ÉDITORIALE — bk-2013-r-x1 (2026-09-04, ajout). Sujet SPC 2013
+  # SESSION DE RATTRAPAGE, code d'examen RS28, converti depuis
+  # docs/sujets/_incoming/pc-2013-r.md — statut « ✅ VÉRIFIÉ », passe
+  # adversariale indépendante close le 2026-09-03 : sept blocs sur sept,
+  # 33/33 questions re-dérivées et résolubles, barème 20,00 recompté par
+  # QUATRE chemins (marge française par coordonnées, compte des questions,
+  # sous-totaux imprimés, marge arabe relue au rendu) plus un cinquième
+  # instrument (OCR de la seule colonne de marge, jeu de caractères
+  # restreint aux chiffres) — 33 mentions, 20,00, valeur par valeur.
+  #
+  # CHOIX DE L'`id`, ET POURQUOI. Le sujet NE NUMÉROTE AUCUN exercice : sa
+  # page 1 écrit « Le sujet se compose de quatre exercices : Un exercice de
+  # chimie et trois exercices de physique », et le corps les introduit par
+  # leur domaine (Chimie, Physique nucléaire, Electricité, Mécanique),
+  # jamais par « Exercice N ». Les identifiants encodent donc la POSITION
+  # SUR LA COPIE (convention K-7 bis) — Chimie = x1, et ses trois parties
+  # portent x1 / x1b / x1c. Les `exercise_label` sont écrits FIDÈLES à ce
+  # que le sujet imprime, sans numéro inventé : depuis le correctif du
+  # 2026-09-03, `lib/examens.ts` lit la position sur l'identifiant dès
+  # qu'aucun libellé de l'épreuve ne porte « Exercice N » (`numeroDepuisId`),
+  # de sorte que l'épreuve s'ordonne et se compte correctement — quatre
+  # exercices, dans l'ordre Chimie / nucléaire / électricité / mécanique.
+  #
+  # RÉPARTITION DU BARÈME (aucun double comptage). L'exercice de Chimie
+  # vaut 07,00 pt imprimés = 2,00 (cette entrée, électrolyse) + 2,25
+  # (bk-2013-r-x1b, content/pc/reactions-acido-basiques/bank.yaml) + 2,75
+  # (bk-2013-r-x1c, content/pc/esterification-hydrolyse/bank.yaml). Les
+  # sept entrées du sujet totalisent 2,00 + 2,25 + 2,75 + 2,50 + 2,25 +
+  # 2,75 + 5,50 = 20,00 exactement.
+  #
+  # DÉFAUT DE L'ÉDITION OFFICIELLE FRANÇAISE, DÉCLARÉ ET CORRIGÉ ICI (D1).
+  # L'édition française de ce sujet est MINISTÉRIELLE — établie par trois
+  # preuves refaites : pied de page vide sur 6 pages sur 6 (aucun crédit de
+  # traducteur), libellé d'époque « (الترجمة الفرنسية) » sans le cadre
+  # anachronique « المسالك الدولية », et surtout le code d'examen RS28
+  # encadré, imprimé À L'IDENTIQUE dans les DEUX cartouches. Un écart
+  # français/arabe n'est donc PAS un artefact de traduction professorale :
+  # c'est un défaut du document OFFICIEL servi aux élèves francophones. Le
+  # document officiel imprime, dans ses données, « La masse molaire du
+  # cuivre : M(Ni) = 58,7 g.mol⁻¹ » — le mot est faux (58,7 g/mol est la
+  # masse molaire du NICKEL ; celle du cuivre vaut 63,5), le symbole et la
+  # valeur sont justes, et l'original arabe écrit bien « الكتلة المولية
+  # للنيكل » = « la masse molaire du nickel ». Aucune question n'en devient
+  # insoluble. L'entrée écrit « nickel » et le déclare au point d'usage.
+  - id: bk-2013-r-x1
+    title: "Électrolyse d'une solution de chlorure de nickel II : les deux couples mis en jeu, les équations aux électrodes et la masse de nickel déposée"
+    source:
+      year: 2013
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Chimie — Première partie : Electrolyse d'une solution de chlorure de Nickel II"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2013 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code d'examen RS28 (durée 3 h, coefficient 7),
+        AlloSchool element/94461 (édition française, cours course-422 ;
+        exemplaires jumeaux 94460 / 94462, upload-70329) ; original arabe
+        element/39382 et son corrigé element/39383 (cours arabophone
+        course-311). Chimie, Première partie — électrolyse d'une solution
+        de chlorure de nickel II ; barème 2,00 pt (0,5 + 0,75 + 0,75),
+        3 questions, sur les 07,00 pt imprimés de l'exercice de Chimie
+        complet. RÉPARTITION SANS DOUBLE COMPTAGE : 2,00 (cette entrée) +
+        2,25 (bk-2013-r-x1b, content/pc/reactions-acido-basiques/bank.yaml,
+        réaction de l'acide méthanoïque avec l'eau) + 2,75 (bk-2013-r-x1c,
+        content/pc/esterification-hydrolyse/bank.yaml, synthèse du
+        méthanoate d'éthyle) = 7,00, le sous-total imprimé « Chimie :
+        (07 points) ». Source vérifiée par une passe adversariale
+        indépendante du 2026-09-03 (docs/sujets/_incoming/pc-2013-r.md,
+        statut « ✅ VÉRIFIÉ », 7 blocs sur 7) : re-fetch complet des neuf
+        fichiers avec double téléchargement et comparaison octet à octet,
+        barème recompté par quatre chemins (20,00 chaque fois, 33 mentions
+        pour 33 questions), 33/33 questions re-dérivées — ici m = 0,5474 g.
+        L'ÉDITION FRANÇAISE EST MINISTÉRIELLE (code RS28 encadré, imprimé à
+        l'identique dans les deux cartouches ; pieds de page vides sur 6/6 ;
+        aucun crédit de traducteur) : les écarts français/arabe sont donc
+        des défauts du DOCUMENT OFFICIEL francophone, jamais des artefacts
+        de traduction professorale. DÉFAUT DÉCLARÉ ET RÉPARÉ (D1) : le
+        document officiel imprime « La masse molaire du cuivre :
+        M(Ni) = 58,7 g.mol⁻¹ » — terme faux, l'arabe écrit « du nickel » et
+        58,7 g/mol EST la masse molaire du nickel (celle du cuivre vaut
+        63,5) ; le symbole et la valeur imprimés sont justes, et aucune
+        question n'en devient insoluble. L'entrée écrit « nickel » et
+        déclare la correction dans les données. TRAIT SYSTÉMATIQUE DE
+        L'ÉDITION (T7) : « Nickel » porte la majuscule à ses 7 occurrences
+        et « nickel » minuscule n'apparaît jamais — l'entrée applique
+        l'orthographe française (nom commun) sans prétendre « corriger » le
+        sujet ; l'`exercise_label` conserve la graphie imprimée. Coquilles
+        de langue reproduites verbatim, non réparées : « industrièl »,
+        « immérgées », « les couples (Oxydant/Réducteur), intervenants »
+        (participe présent accordé + virgule parasite), « et dégagement du
+        dichlore » (article manquant) — registre complet en
+        docs/sujets/_incoming/pc-2013-r.md §5.1 et V.9. LE CORRIGÉ ARABE
+        N'EST QU'UN TÉMOIN DE VALEURS, JAMAIS UN ARBITRE (K-8) : la passe
+        lui a trouvé quatre défauts de raisonnement documentés, et sa
+        partie électrolyse n'a été lue qu'en survol — aucune valeur de
+        cette entrée n'en provient.
+    intro: |-
+      **Électrolyse d'une solution de chlorure de nickel II (examen national, session de rattrapage 2013 — Chimie, Première partie, 2,00 points sur les 07,00 de l'exercice de Chimie).**
+
+      *Les deux autres parties du même exercice de Chimie sont indépendantes et vivent ailleurs : la réaction de l'acide méthanoïque avec l'eau (2,25 pt) sous « Réactions acido-basiques » (entrée bk-2013-r-x1b), et la synthèse du méthanoate d'éthyle (2,75 pt) sous « Estérification et hydrolyse » (entrée bk-2013-r-x1c). Rien de ce qui suit n'en dépend ; 2,00 + 2,25 + 2,75 = 7,00, le barème imprimé.*
+
+      L'électrolyse a plusieurs applications dans le domaine industrièl *(« industrièl » tel qu'imprimé, pour « industriel »)*, en particulier la synthèse de quelques métaux et gaz. Le but de cet exercice est la synthèse du métal nickel par la technique d'électrolyse.
+
+      **Données :**
+      - La masse molaire du **nickel** <!-- DÉFAUT DE L'ÉDITION OFFICIELLE, DÉCLARÉ ET RÉPARÉ ICI (D1), 2026-09-04.
+           Le document officiel francophone imprime, mot pour mot : « La masse
+           molaire du cuivre : M(Ni) = 58,7 g.mol-1 ». Le MOT est faux : 58,7
+           g/mol est la masse molaire du NICKEL (celle du cuivre vaut 63,5), et
+           l'original arabe RS28 écrit bien « الكتلة المولية للنيكل », « la masse
+           molaire du nickel ». Le symbole M(Ni) et la valeur 58,7 imprimés sont,
+           eux, corrects, et c'est le nickel que la question 3 demande de peser :
+           aucune question ne devient insoluble, et la réparation ne touche qu'un
+           mot. Elle est faite ici, et déclarée, plutôt que faite en silence.
+           IMPORTANT POUR LA CLASSIFICATION : l'édition française de ce sujet est
+           MINISTÉRIELLE (code d'examen RS28 encadré, imprimé à l'identique dans
+           les deux cartouches ; pieds de page vides sur les six pages ; aucun
+           crédit de traducteur). Ce n'est donc PAS un artefact de traduction
+           professorale — c'est un défaut de l'édition OFFICIELLE de langue
+           française. Voir docs/sujets/_incoming/pc-2013-r.md, D1 et V.7/V.8. --> : $M(\text{Ni}) = 58{,}7\ \text{g.mol}^{-1}$ ;
+      - La constante de Faraday : $\mathcal{F} = 9{,}65\times10^{4}\ \text{C.mol}^{-1}$. *(Le sujet compose ce symbole en écriture calligraphique — notation d'époque, pas un glyphe cassé.)*
+
+      Pour produire le métal nickel, on réalise l'électrolyse d'une solution de chlorure de nickel II de formule $\left(\text{Ni}^{2+}_{(aq)} + 2\,\text{C}\ell^{-}_{(aq)}\right)$. *(Le chlore est noté $\text{C}\ell$ dans les deux éditions du sujet : c'est la convention marocaine, à reproduire et non à « corriger ».)*
+
+      On verse cette solution dans un électrolyseur en forme de U, et on y fait circuler, entre deux électrodes immérgées *(sic, pour « immergées »)* dans la solution, un courant électrique continu, d'intensité constante $I = 0{,}5\ \text{A}$, pendant une durée d'une heure ($\Delta t = 1\ \text{h}$).
+
+      La cathode est en platine, et l'anode en graphite. On constate, au cours de l'électrolyse, un dépôt de nickel sur la cathode et dégagement du dichlore au voisinage de l'anode.
+    questions:
+      - id: q1
+        part: "Chimie, Première partie — Électrolyse d'une solution de chlorure de nickel II"
+        stem: |-
+          **1-** (0,5 pt) Préciser les couples (Oxydant/Réducteur), intervenants dans cette électrolyse. *(« intervenants » et la virgule qui le précède sont tels qu'imprimés — le participe présent est invariable, et la virgule est parasite.)*
+        reasoning: |-
+          C'est le geste du rung R1, et il se fait **sans regarder la polarité du générateur** : l'énoncé n'en donne aucune, mais il donne mieux — il dit ce qu'on **observe** à chaque électrode.
+
+          - Sur la **cathode** (en platine), il se forme un **dépôt de nickel métallique**. Un ion métallique qui redevient métal a **gagné** des électrons : c'est une **réduction**, et le couple qui la porte est $\left(\text{Ni}^{2+}_{(aq)}/\text{Ni}_{(s)}\right)$.
+          - Au voisinage de l'**anode** (en graphite), il se **dégage du dichlore**. L'ion chlorure de la solution a **perdu** un électron pour devenir $\text{C}\ell_2$ : c'est une **oxydation**, et le couple est $\left(\text{C}\ell_{2(g)}/\text{C}\ell^{-}_{(aq)}\right)$.
+
+          Le nom des deux électrodes suit alors le rung R2, et il est le même dans une pile et dans un électrolyseur : **la cathode est le siège de la réduction, l'anode celui de l'oxydation**. Ce qui s'inverse entre pile et électrolyse, c'est la **polarité** — dans un électrolyseur, l'anode est reliée à la borne **+** du générateur et la cathode à la borne **−** —, jamais la définition.
+
+          **Le piège de cette question.** Chercher la polarité pour décider qui est la cathode : elle n'est pas donnée ici, et il n'en faut pas. L'observation chimique suffit, et c'est toujours elle qui est la plus sûre — un dépôt de métal est une réduction, un dégagement de dihalogène à partir de son ion est une oxydation.
+      - id: q2
+        stem: |-
+          **2-** (0,75 pt) Ecrire l'équation modélisant la réaction ayant lieu au voisinage de chaque électrode, et l'équation bilan modélisant cette transformation. *(« Ecrire », E majuscule non accentué, tel qu'imprimé.)*
+        reasoning: |-
+          On écrit chaque demi-équation dans le sens où elle a réellement lieu (rung R1), puis on les additionne en **égalisant les électrons** : c'est cette égalisation qui donne le bilan, et elle est ici immédiate parce que les deux demi-équations mettent en jeu **deux** électrons chacune.
+
+          À la cathode, la réduction du cation nickel consomme deux électrons par atome déposé. À l'anode, l'oxydation de deux ions chlorure en libère deux et forme une molécule de dichlore. Les deux nombres coïncident : on somme membre à membre, les électrons disparaissent, et il reste le bilan.
+
+          **Contrôle gratuit sur le bilan.** À gauche comme à droite, on compte un nickel, deux chlores, et une charge totale nulle ($+2 - 2 = 0$ à gauche, $0$ à droite). Une équation bilan d'électrolyse qui ne s'équilibre pas en charge est fausse avant même d'être lue.
+        steps:
+          - math: '\text{Ni}^{2+}_{(aq)} + 2\,e^{-} \rightarrow \text{Ni}_{(s)}'
+            note: "Cathode (en platine) : reduction des ions nickel II, deux electrons par atome depose."
+          - math: '2\,\text{C}\ell^{-}_{(aq)} \rightarrow \text{C}\ell_{2(g)} + 2\,e^{-}'
+            note: "Anode (en graphite) : oxydation des ions chlorure, degagement de dichlore."
+          - math: '\boxed{\text{Ni}^{2+}_{(aq)} + 2\,\text{C}\ell^{-}_{(aq)} \rightarrow \text{Ni}_{(s)} + \text{C}\ell_{2(g)}}'
+            note: "Equation bilan : les deux demi-equations mettent en jeu deux electrons chacune, la somme les elimine."
+      - id: q3
+        stem: |-
+          **3-** (0,75 pt) Trouver la masse $m$ du dépôt du métal nickel ainsi produit.
+        reasoning: |-
+          C'est la chaîne du rung R4, prise dans le sens direct — et c'est exactement la même loi de Faraday que dans une pile, appliquée à l'envers : ici c'est le générateur qui impose la quantité d'électricité, et la chimie qui suit.
+
+          Trois maillons, dans cet ordre :
+
+          1. le courant et la durée donnent la **quantité d'électricité** $Q = I\,\Delta t$ ;
+          2. la constante de Faraday la convertit en **quantité de matière d'électrons**, $n(e^-) = Q/\mathcal{F}$ ;
+          3. la **demi-équation de la cathode** (question 2) dit combien d'électrons il faut par atome déposé — **deux** ici, pas un : $n(\text{Ni}) = n(e^-)/2$.
+
+          Ce facteur $2$ est le seul endroit où l'on peut se tromper sans que le calcul proteste : il ne vient pas de la loi de Faraday, mais de la demi-équation qu'on vient d'écrire.
+
+          **Le piège d'unité.** $\Delta t$ est donné en heures et $\mathcal{F}$ est en coulombs par mole : il faut passer en **secondes** avant tout, sans quoi la masse sort 3 600 fois trop petite.
+        steps:
+          - math: '\Delta t = 1\ \text{h} = 3600\ \text{s}'
+            note: "Conversion prealable : la constante de Faraday est en C par mole, donc le temps doit etre en secondes."
+          - math: 'Q = I\,\Delta t = 0{,}5\times 3600 = 1800\ \text{C}'
+            note: "Quantite d'electricite debitee pendant l'electrolyse (rung R4)."
+          - math: 'n(e^-) = \frac{Q}{\mathcal{F}} = \frac{1800}{9{,}65\times10^{4}} \approx 1{,}865\times10^{-2}\ \text{mol}'
+            note: "Quantite de matiere d'electrons echanges, loi de Faraday."
+          - math: 'n(\text{Ni}) = \frac{n(e^-)}{2} \approx 9{,}33\times10^{-3}\ \text{mol}'
+            note: "Deux electrons par atome depose, d'apres la demi-equation de cathode ecrite a la question 2."
+          - math: '\boxed{m = \frac{I\,\Delta t}{2\,\mathcal{F}}\,M(\text{Ni}) = \frac{0{,}5\times3600}{2\times9{,}65\times10^{4}}\times 58{,}7 \approx 0{,}547\ \text{g}}'
+            note: "Masse de nickel deposee, environ 0,55 g. La valeur re-derivee par la passe de verification est 0,5474 g."

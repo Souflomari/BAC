@@ -2912,3 +2912,257 @@ entries:
             note: "Les deux formes a parts egales : pH = pKA."
           - math: '\boxed{v_b = 5\ \text{mL} = \frac{v_{bE}}{2}}'
             note: "Lecture sur la courbe du dosage : pH = 4,8 atteint a vb = 5 mL, la demi-equivalence (rung 10)."
+
+  # ── bk-2013-r-x1b — 2013 R, Chimie, deuxième partie §1 : réaction de l'acide méthanoïque avec l'eau ──
+  #
+  # NOTE ÉDITORIALE — bk-2013-r-x1b (2026-09-04, ajout). Sujet SPC 2013
+  # SESSION DE RATTRAPAGE, code d'examen RS28, converti depuis
+  # docs/sujets/_incoming/pc-2013-r.md — statut « ✅ VÉRIFIÉ », passe
+  # adversariale indépendante close le 2026-09-03 (7 blocs sur 7, 33/33
+  # questions re-dérivées, barème 20,00 recompté par quatre chemins).
+  # CHOIX DE L'`id` : le sujet NE NUMÉROTE AUCUN exercice (page 1 : « Le
+  # sujet se compose de quatre exercices », corps nommé par domaine —
+  # Chimie, Physique nucléaire, Electricité, Mécanique). Les identifiants
+  # encodent donc la POSITION SUR LA COPIE (K-7 bis) : Chimie = x1, et ses
+  # trois parties portent x1 / x1b / x1c. Les `exercise_label` restent
+  # FIDÈLES à ce que le sujet imprime, sans numéro inventé — depuis le
+  # correctif du 2026-09-03, `lib/examens.ts` lit la position sur
+  # l'identifiant dès qu'aucun libellé de l'épreuve ne porte « Exercice N ».
+  # RÉPARTITION DU BARÈME (aucun double comptage) : Chimie = 07,00 pt
+  # imprimés = 2,00 (bk-2013-r-x1, content/pc/electrolyse/bank.yaml) + 2,25
+  # (cette entrée) + 2,75 (bk-2013-r-x1c,
+  # content/pc/esterification-hydrolyse/bank.yaml).
+  #
+  # CROSS-LIST `evolution-spontanee`, HONORÉ SANS SECONDE ENTRÉE. Le taux
+  # d'avancement final τ, que la question 1-2 fait établir puis calculer,
+  # est aussi l'outil central de la notion « Évolution spontanée d'un
+  # système chimique ». Il pèse ici UNE DEMI-QUESTION sur 2,25 pt — très en
+  # dessous du seuil d'une entrée autonome. Règle du sas appliquée sans
+  # exception : le barème est RÉPARTI, jamais dupliqué, et un cross-list
+  # d'une demi-question ne devient pas une entrée orpheline. Il est honoré
+  # dans le `reasoning` de la question 1-2, qui nomme la notion sœur et
+  # refait la démonstration en entier.
+  #
+  # ⚠️ LACUNE PÉDAGOGIQUE DU CORPUS, NOMMÉE PAR LA VÉRIFICATION (V.13) ET
+  # PONTÉE ICI. La conductivité molaire ionique n'est enseignée dans AUCUN
+  # `lesson.md` du corpus : `grep -ril "conductivité molaire" content/pc/`
+  # ne rend que des `exercises.yaml`/`bank.yaml` de
+  # `transformations-lentes-rapides`, jamais une leçon. Or la question 1-2
+  # (0,75 pt, le second barème le plus lourd de la chimie de ce sujet)
+  # demande d'établir τ à partir de σ = Σ λi[Xi]. Ce n'est ni un défaut du
+  # sujet ni un obstacle à la conversion — la relation est DONNÉE par
+  # l'énoncé lui-même, et elle est reportée telle quelle dans l'intro de
+  # cette entrée —, mais le raisonnement de la question 1-2 porte une SCOPE
+  # NOTE explicite qui dit d'où vient l'outil. L'alternative — faire gagner
+  # un rung à reactions-acido-basiques/lesson.md — reste À L'ARBITRAGE DE
+  # L'OWNER ; elle n'est pas prise ici.
+  - id: bk-2013-r-x1b
+    title: "Acide méthanoïque en solution : tableau d'avancement, taux d'avancement final tiré d'une mesure de conductivité, pH et pKa du couple"
+    source:
+      year: 2013
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Chimie — deuxième partie, §1 : Etude de la réaction de l'acide méthanoïque avec l'eau"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2013 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code d'examen RS28 (durée 3 h, coefficient 7),
+        AlloSchool element/94461 (édition française, cours course-422 ;
+        jumeaux 94460 / 94462, upload-70329) ; original arabe element/39382
+        et son corrigé element/39383 (cours arabophone course-311). Chimie,
+        deuxième partie §1 — réaction de l'acide méthanoïque avec l'eau ;
+        barème 2,25 pt (0,5 + 0,75 + 0,5 + 0,5), 4 questions. RÉPARTITION
+        SANS DOUBLE COMPTAGE : 2,25 (cette entrée) + 2,75 (bk-2013-r-x1c,
+        content/pc/esterification-hydrolyse/bank.yaml) = 5,00, le
+        sous-total imprimé « deuxième partie (05 points) » ; et 2,00
+        (bk-2013-r-x1, content/pc/electrolyse/bank.yaml) + 5,00 = 7,00, le
+        sous-total « Chimie : (07 points) ». Source vérifiée par une passe
+        adversariale indépendante du 2026-09-03
+        (docs/sujets/_incoming/pc-2013-r.md, statut « ✅ VÉRIFIÉ », 7 blocs
+        sur 7) : re-fetch complet, double téléchargement comparé octet à
+        octet, barème recompté par quatre chemins (20,00 chaque fois),
+        33/33 questions re-dérivées — ici τ = 0,1977, pH = 3,005,
+        pKA = 3,613. Les 7 données numériques de ce bloc sont lues D'ABORD
+        dans la couche de texte FRANÇAISE, saine et confirmée par un OCR
+        indépendant : la couche de texte ARABE de ce PDF est piégée (deux
+        copies de Times New Roman que l'extracteur nomme identiquement, si
+        bien qu'un chiffre juste et un chiffre faux y sont indiscernables —
+        V.6) et n'a servi que de témoin, relu au rendu. L'ÉDITION FRANÇAISE
+        EST MINISTÉRIELLE (code RS28 encadré, imprimé à l'identique dans
+        les deux cartouches ; pieds de page vides sur 6/6 ; aucun crédit de
+        traducteur) : les écarts français/arabe sont donc des défauts du
+        DOCUMENT OFFICIEL francophone, jamais des artefacts de traduction
+        professorale. Deux écarts sur ce bloc, tous deux cosmétiques et
+        déclarés dans l'intro : D3, le document officiel écrit « pour
+        donner de la saveur » là où l'arabe précise « le goût de MÛRE » (le
+        fruit est supprimé) ; D11, il écrit « aliments synthétisés » là où
+        l'arabe dit « aliments transformés » (المصنّعة) — contresens de
+        vocabulaire agroalimentaire. Aucune question n'en dépend. Coquilles
+        de langue reproduites verbatim, non réparées : « la concentrations
+        molaires effectives », « sa conductivité molaire ioniques »,
+        « Trover » (pour « Trouver »), « par réaction l'acide méthanoïque »
+        (« de » manquant), et la notation pKa (a minuscule) là où l'arabe
+        écrit pK_A — registre complet en
+        docs/sujets/_incoming/pc-2013-r.md §5.1, §5.2 et V.9. RÉSERVE
+        PÉDAGOGIQUE NOMMÉE (V.13) : la relation σ = Σ λi[Xi] et la notion
+        de conductivité molaire ionique ne sont enseignées dans aucun
+        lesson.md du corpus ; elles sont DONNÉES par l'énoncé, reportées
+        telles quelles dans l'intro, et une SCOPE NOTE au point d'usage
+        (question 1-2) le dit — l'alternative, faire gagner un rung à la
+        leçon, reste à l'arbitrage de l'owner. CROSS-LIST
+        `evolution-spontanee` (le taux d'avancement final τ, une
+        demi-question) honoré dans le `reasoning`, jamais dédoublé en
+        entrée. LE CORRIGÉ ARABE N'EST QU'UN TÉMOIN DE VALEURS, JAMAIS UN
+        ARBITRE (K-8) : la passe lui a trouvé quatre défauts de
+        raisonnement documentés — aucune valeur de cette entrée n'en
+        provient.
+    intro: |-
+      **Réaction de l'acide méthanoïque avec l'eau (examen national, session de rattrapage 2013 — Chimie, deuxième partie §1, 2,25 points sur les 05,00 de la deuxième partie).**
+
+      *Le §2 de cette même deuxième partie — la synthèse du méthanoate d'éthyle (2,75 pt) — est indépendant et vit sous « Estérification et hydrolyse », entrée bk-2013-r-x1c. La Première partie du même exercice de Chimie (électrolyse, 2,00 pt) vit sous « Électrolyse », entrée bk-2013-r-x1. 2,00 + 2,25 + 2,75 = 7,00, le barème imprimé.*
+
+      Le méthanoate d'éthyle $\text{HCOOC}_2\text{H}_5$ est utilisé comme solvant pour dissoudre les graisses et les dérivés de cellulose ; il est aussi utilisé dans l'industrie alimentaire pour donner de la saveur aux aliments synthétisés. <!-- DIVERGENCES DÉCLARÉES (D3 et D11), 2026-09-04. L'édition
+           française de ce sujet est MINISTÉRIELLE (code d'examen RS28 encadré,
+           imprimé à l'identique dans les deux cartouches ; pieds de page vides
+           sur les six pages ; aucun crédit de traducteur) : ce qui suit est donc
+           un défaut du DOCUMENT OFFICIEL francophone, pas un artefact de
+           traduction professorale.
+           D3 — l'original arabe écrit « كمادة تضفي نكهة التوت على الأطعمة
+           المصنّعة », « une substance qui donne le goût DE MÛRE aux aliments
+           transformés » : le document officiel français a supprimé le fruit et
+           écrit seulement « de la saveur ».
+           D11 — « الأطعمة المصنّعة » signifie « aliments TRANSFORMÉS /
+           manufacturés » ; le document officiel écrit « aliments synthétisés »,
+           qui ne veut rien dire en français agroalimentaire.
+           Les deux sont cosmétiques : aucune question n'en dépend, et le texte
+           est reproduit ici tel qu'imprimé. Voir
+           docs/sujets/_incoming/pc-2013-r.md, D3 / D11 et V.7/V.8. --> Il est préparé au laboratoire par réaction l'acide méthanoïque *(sic — « par réaction **de** l'acide »)* $\text{HCOOH}$ avec l'éthanol.
+
+      **Le but de cette partie de l'exercice** est l'étude de la réaction de l'acide méthanoïque avec l'eau et la synthèse du méthanoate d'éthyle.
+
+      **1- Etude de la réaction de l'acide méthanoïque avec l'eau :**
+
+      On considère une solution aqueuse d'acide méthanoïque, de volume $V$, et de concentration molaire $C = 5{,}0\ \text{mol.m}^{-3}$. La mesure de la conductivité de cette solution donne à $25\ ^\circ\text{C}$ : $\sigma = 4{,}0\times10^{-2}\ \text{S.m}^{-1}$.
+
+      **Données :**
+      - L'expression de la conductivité $\sigma$ d'une solution aqueuse est $\sigma = \sum_i \lambda_i\,[X_i]$, où $[X_i]$ est la concentrations molaires effectives *(sic)* de l'espèce ionique $X_i$ se trouvant dans la solution et $\lambda_i$ sa conductivité molaire ioniques *(sic)*.
+      - $\lambda_{\text{H}_3\text{O}^+} = 35{,}0\times10^{-3}\ \text{S.m}^{2}.\text{mol}^{-1}$ ;
+      - $\lambda_{\text{HCOO}^-} = 5{,}46\times10^{-3}\ \text{S.m}^{2}.\text{mol}^{-1}$ ;
+      - On néglige l'action des ions $\text{HO}^-$ sur la conductivité de la solution.
+
+      *Attention à l'unité de $C$ : elle est en $\text{mol.m}^{-3}$, pas en $\text{mol.L}^{-1}$ — c'est un choix délibéré du sujet, qui rend l'expression de la question 1-2 directement homogène.*
+    questions:
+      - id: q1
+        part: "Chimie, deuxième partie §1 — Réaction de l'acide méthanoïque avec l'eau"
+        stem: |-
+          **1-1-** (0,5 pt) Dresser le tableau descriptif de l'avancement de la réaction de l'acide méthanoïque avec l'eau.
+        reasoning: |-
+          Avant le tableau, l'équation — et elle s'écrit avec le geste du rung R1 : l'acide méthanoïque $\text{HCOOH}$ **cède** un proton, l'eau le **capte**. Deux couples sont donc en jeu, jamais un seul : $\left(\text{HCOOH}/\text{HCOO}^-\right)$ et $\left(\text{H}_3\text{O}^+/\text{H}_2\text{O}\right)$. La double flèche dit que la transformation est **limitée** — c'est précisément ce que le $\tau$ de la question suivante va chiffrer.
+
+          $$\text{HCOOH}_{(aq)} + \text{H}_2\text{O}_{(\ell)} \rightleftharpoons \text{HCOO}^-_{(aq)} + \text{H}_3\text{O}^+_{(aq)}$$
+
+          Le tableau se dresse alors en quantités de matière, sur le volume $V$ de solution :
+
+          | État | Avancement | $\text{HCOOH}$ | $\text{H}_2\text{O}$ | $\text{HCOO}^-$ | $\text{H}_3\text{O}^+$ |
+          |---|---|---|---|---|---|
+          | initial | $0$ | $C\,V$ | excès | $0$ | $0$ |
+          | intermédiaire | $x$ | $C\,V - x$ | excès | $x$ | $x$ |
+          | final | $x_f$ | $C\,V - x_f$ | excès | $x_f$ | $x_f$ |
+
+          **Deux points qui décident la suite.** D'abord, l'eau est le **solvant** : sa quantité est notée « excès » et ne descend jamais, ce qui interdit de la traiter comme un réactif limitant. Ensuite, l'acide est donc le seul réactif limitant possible, ce qui fixe $x_{max} = C\,V$ — la valeur dont la question 1-2 a besoin.
+
+          **Le piège de cette question.** Écrire une demi-équation seule ($\text{HCOOH} \rightleftharpoons \text{HCOO}^- + \text{H}^+$) : un proton ne voyage jamais libre en solution, et le rung R1 le dit — une réaction acido-basique met **toujours** deux couples face à face.
+      - id: q2
+        stem: |-
+          **1-2-** (0,75 pt) Trouver l'expression du taux d'avancement final $\tau$ en fonction de $\sigma$, $\lambda_{\text{HCOO}^-}$, $\lambda_{\text{H}_3\text{O}^+}$ et $C$. Calculer sa valeur.
+        reasoning: |-
+          **SCOPE NOTE (technique donnée par l'énoncé, non enseignée par cette leçon).** La relation $\sigma = \sum_i \lambda_i\,[X_i]$ — la conductivité d'une solution est la somme, sur chaque ion présent, du produit de sa conductivité molaire ionique par sa concentration effective — n'est pas construite dans les rungs R1 à R12 de cette leçon. Elle est **donnée dans l'énoncé**, et c'est ainsi qu'il faut la traiter : un outil de mesure fourni, pas un résultat à retrouver. Ce qui relève bien de la leçon, c'est tout le reste : passer d'une concentration d'ions à un avancement, et d'un avancement à un taux.
+
+          **CROSS-LIST honoré ici (« Évolution spontanée d'un système chimique »).** Le taux d'avancement final $\tau = x_f/x_{max}$ est aussi l'outil central de cette autre notion, où il sert à mesurer à quel point une transformation est limitée. Il pèse une demi-question sur les 2,25 pt de cette entrée : la règle de la maison veut qu'un cross-list de ce poids soit honoré dans le raisonnement plutôt que dédoublé en une entrée orpheline. La démonstration est donc refaite ici en entier.
+
+          **La chaîne, en trois maillons.**
+
+          1. **Ce que le tableau donne.** L'acide est le seul réactif limitant (question 1-1), donc $x_{max} = C\,V$, et $\tau = \dfrac{x_f}{x_{max}} = \dfrac{x_f/V}{C} = \dfrac{[\text{H}_3\text{O}^+]_f}{C}$ — le taux est simplement le rapport de l'ion oxonium formé à l'acide introduit.
+          2. **Ce que la mesure donne.** Deux ions seulement contribuent à $\sigma$ (l'énoncé fait négliger $\text{HO}^-$), et le tableau les produit **en quantités égales** : $[\text{HCOO}^-]_f = [\text{H}_3\text{O}^+]_f = x_f/V$. La somme $\sigma = \sum_i \lambda_i[X_i]$ se factorise donc par cette concentration commune.
+          3. **On égalise.** La concentration commune s'exprime depuis $\sigma$, et on la reporte dans $\tau$.
+
+          $$\boxed{\tau = \frac{\sigma}{\left(\lambda_{\text{H}_3\text{O}^+} + \lambda_{\text{HCOO}^-}\right)\,C}}$$
+
+          **Le piège d'unité, et il est délibéré.** $C$ est donné en $\text{mol.m}^{-3}$ et les $\lambda_i$ en $\text{S.m}^{2}.\text{mol}^{-1}$ : le produit $\lambda\,C$ est alors en $\text{S.m}^{-1}$, exactement l'unité de $\sigma$, et le rapport sort **sans dimension**, comme doit l'être un taux. Convertir $C$ en $\text{mol.L}^{-1}$ ici, par réflexe, fait sortir $\tau$ d'un facteur $1000$ — et un taux d'avancement supérieur à $1$ est un résultat qui doit alerter, jamais être accepté.
+
+          $\tau \approx 0{,}20$, soit environ $20\ \%$ : la transformation est **limitée**, un cinquième seulement de l'acide a réagi. C'est la signature d'un **acide faible**, et la question 1-4 va lui donner son $pK_a$.
+        steps:
+          - math: 'x_{max} = C\,V \quad\text{(l acide est le seul reactif limitant : l eau est le solvant)}'
+            note: "Lecture du tableau d'avancement de la question 1-1."
+          - math: '\tau = \frac{x_f}{x_{max}} = \frac{x_f/V}{C} = \frac{[\text{H}_3\text{O}^+]_f}{C}'
+            note: "Definition du taux d'avancement final, ramenee a des concentrations."
+          - math: '[\text{HCOO}^-]_f = [\text{H}_3\text{O}^+]_f = \frac{x_f}{V}'
+            note: "Le tableau produit les deux ions en quantites egales, a partir de rien."
+          - math: '\sigma = \left(\lambda_{\text{H}_3\text{O}^+} + \lambda_{\text{HCOO}^-}\right)\frac{x_f}{V}'
+            note: "Relation donnee par l'enonce, avec les ions HO- negliges : deux termes seulement."
+          - math: '\boxed{\tau = \frac{\sigma}{\left(\lambda_{\text{H}_3\text{O}^+} + \lambda_{\text{HCOO}^-}\right)C}}'
+            note: "Expression litterale demandee, en fonction des quatre grandeurs de la consigne."
+          - math: '\lambda_{\text{H}_3\text{O}^+} + \lambda_{\text{HCOO}^-} = 35{,}0\times10^{-3} + 5{,}46\times10^{-3} = 40{,}46\times10^{-3}\ \text{S.m}^{2}.\text{mol}^{-1}'
+            note: "Somme des deux conductivites molaires ioniques."
+          - math: '\tau = \frac{4{,}0\times10^{-2}}{40{,}46\times10^{-3}\times 5{,}0} = \frac{4{,}0\times10^{-2}}{0{,}2023}'
+            note: "Application numerique en unites SI : C en mol par metre cube, sans conversion."
+          - math: '\boxed{\tau \approx 0{,}198 \approx 19{,}8\ \%}'
+            note: "Transformation limitee : environ un cinquieme de l'acide a reagi. Valeur re-derivee par la verification : 0,1977."
+      - id: q3
+        stem: |-
+          **1-3-** (0,5 pt) Calculer la valeur du pH de cette solution aqueuse.
+        reasoning: |-
+          Le rung R2 donne la définition, dans le seul sens utile ici : $\text{pH} = -\log\left([\text{H}_3\text{O}^+]\right)$, **avec la concentration exprimée en $\text{mol.L}^{-1}$** — c'est la convention, et elle n'est pas négociable.
+
+          La question 1-2 vient de fournir tout ce qu'il faut : $[\text{H}_3\text{O}^+]_f = \tau\,C$. Il ne reste donc qu'un calcul et **une conversion**, et c'est la conversion qui porte toute la difficulté de la question : $C$ est en $\text{mol.m}^{-3}$, et $1\ \text{mol.m}^{-3} = 10^{-3}\ \text{mol.L}^{-1}$ (un mètre cube vaut mille litres).
+
+          **Contrôle de vraisemblance, à faire avant d'écrire la réponse.** Un acide faible à $5\times10^{-3}\ \text{mol.L}^{-1}$ ionisé à $20\ \%$ donne une concentration en $\text{H}_3\text{O}^+$ de l'ordre de $10^{-3}\ \text{mol.L}^{-1}$, donc un pH voisin de $3$. Un pH de $6$ (oubli de la conversion, dans un sens) ou de $0$ (dans l'autre) se repère à l'œil.
+
+          **Le piège de cette question.** Passer directement de $\tau\,C = 0{,}989$ au logarithme : $-\log(0{,}989)$ vaut environ $0{,}005$, un pH absurde pour une solution d'acide faible aussi diluée. La conversion en $\text{mol.L}^{-1}$ est le geste, pas un détail.
+        steps:
+          - math: '[\text{H}_3\text{O}^+]_f = \tau\,C = 0{,}198\times 5{,}0 = 0{,}989\ \text{mol.m}^{-3}'
+            note: "Concentration en ions oxonium, dans l'unite de l'enonce."
+          - math: '0{,}989\ \text{mol.m}^{-3} = 0{,}989\times10^{-3} = 9{,}89\times10^{-4}\ \text{mol.L}^{-1}'
+            note: "Conversion obligatoire : un metre cube vaut mille litres. C'est le geste de la question."
+          - math: '\text{pH} = -\log\left(9{,}89\times10^{-4}\right)'
+            note: "Definition du pH (rung R2), avec la concentration en mol par litre."
+          - math: '\boxed{\text{pH} \approx 3{,}00}'
+            note: "Valeur re-derivee par la verification : 3,005. Coherent avec un acide faible dilue."
+      - id: q4
+        stem: |-
+          **1-4-** (0,5 pt) Trover *(sic, pour « Trouver »)* la valeur du $pKa$ du couple $\left(\text{HCOOH}_{(aq)}/\text{HCOO}^-_{(aq)}\right)$. *(Le document officiel écrit « pKa » avec un a minuscule ; l'original arabe et le corrigé écrivent $pK_A$.)*
+        reasoning: |-
+          Le rung R4 donne la constante d'acidité du couple, écrite à l'équilibre :
+
+          $$K_A = \frac{[\text{H}_3\text{O}^+]_{éq}\,[\text{HCOO}^-]_{éq}}{[\text{HCOOH}]_{éq}} \qquad\text{et}\qquad pK_A = -\log K_A$$
+
+          Les trois concentrations se lisent sur le tableau de la question 1-1, exprimées avec $\tau$ — c'est le chemin le plus court, et il évite de repasser par $\sigma$ :
+
+          - $[\text{H}_3\text{O}^+]_{éq} = [\text{HCOO}^-]_{éq} = \tau\,C$ ;
+          - $[\text{HCOOH}]_{éq} = C - \tau\,C = C\,(1-\tau)$ — l'acide qui **reste**, c'est l'acide introduit moins celui qui a réagi.
+
+          En reportant, le $C$ se simplifie une fois et il vient une formule qui mérite d'être retenue :
+
+          $$K_A = \frac{(\tau C)^2}{C\,(1-\tau)} = \frac{C\,\tau^2}{1-\tau}$$
+
+          **Ici encore, l'unité décide.** $K_A$ est défini avec des concentrations en $\text{mol.L}^{-1}$ : il faut donc entrer $C = 5{,}0\times10^{-3}\ \text{mol.L}^{-1}$, pas $5{,}0$.
+
+          **Ce que le résultat raconte.** $pK_A \approx 3{,}6$ : c'est bien un acide **faible**, mais parmi les moins faibles des acides carboxyliques usuels — d'où le $\tau$ de $20\ \%$, nettement au-dessus de ce que donnerait l'acide éthanoïque ($pK_A = 4{,}8$) à la même concentration. Le rung R4 le dit dans ce sens-là : $pK_A$ **petit** veut dire acide **plus fort**.
+
+          *(La valeur tabulée de l'acide méthanoïque est $3{,}75$. L'écart vient des données choisies par le sujet, pas d'une erreur de calcul : c'est la conductivité imprimée qui fixe $\tau$, et $\tau$ qui fixe $pK_A$.)*
+        steps:
+          - math: 'K_A = \frac{[\text{H}_3\text{O}^+]_{eq}\,[\text{HCOO}^-]_{eq}}{[\text{HCOOH}]_{eq}}'
+            note: "Definition de la constante d'acidite du couple (rung R4)."
+          - math: '[\text{H}_3\text{O}^+]_{eq} = [\text{HCOO}^-]_{eq} = \tau\,C \qquad [\text{HCOOH}]_{eq} = C\,(1-\tau)'
+            note: "Les trois concentrations a l'equilibre, lues sur le tableau de la question 1-1."
+          - math: 'K_A = \frac{(\tau C)^2}{C\,(1-\tau)} = \frac{C\,\tau^2}{1-\tau}'
+            note: "Le volume et un facteur C se simplifient : formule generale a retenir."
+          - math: 'C = 5{,}0\ \text{mol.m}^{-3} = 5{,}0\times10^{-3}\ \text{mol.L}^{-1}'
+            note: "Conversion obligatoire : KA se calcule avec des concentrations en mol par litre."
+          - math: 'K_A = \frac{5{,}0\times10^{-3}\times(0{,}198)^2}{1-0{,}198} = \frac{1{,}961\times10^{-4}}{0{,}802} \approx 2{,}44\times10^{-4}'
+            note: "Application numerique."
+          - math: '\boxed{pK_A = -\log\left(2{,}44\times10^{-4}\right) \approx 3{,}61}'
+            note: "Valeur re-derivee par la verification : 3,613. Acide faible, mais peu : pKA petit veut dire acide plus fort (rung R4)."

@@ -2370,3 +2370,268 @@ entries:
             note: "lambda = ln2/t_1/2, avec la demi-vie DONNEE par l enonce (5570 ans)."
           - math: '\boxed{t \approx 1612{,}5\ \text{ans} \approx 1613\ \text{ans}}'
             note: "Age approximatif de la statue -- concordant avec le corrige non officiel (1 612,5 ans)."
+
+  # ── bk-2013-r-x2 — 2013 R, Physique nucléaire : contamination des épinards à l'iode 131 ──
+  #
+  # NOTE ÉDITORIALE — bk-2013-r-x2 (2026-09-04, ajout). Sujet SPC 2013
+  # SESSION DE RATTRAPAGE, code d'examen RS28, converti depuis
+  # docs/sujets/_incoming/pc-2013-r.md — statut « ✅ VÉRIFIÉ », passe
+  # adversariale indépendante close le 2026-09-03 (7 blocs sur 7, 33/33
+  # questions re-dérivées, barème 20,00 par quatre chemins).
+  # CHOIX DE L'`id` : le sujet NE NUMÉROTE AUCUN exercice — sa page 1
+  # annonce « quatre exercices » et son corps les nomme par domaine
+  # (Chimie, Physique nucléaire, Electricité, Mécanique). Les identifiants
+  # encodent donc la POSITION SUR LA COPIE (K-7 bis) : la Physique
+  # nucléaire est le DEUXIÈME bloc du cartouche, d'où x2, sans suffixe
+  # puisque le routage retenu ne partitionne pas ce bloc. Les
+  # `exercise_label` restent FIDÈLES à ce que le sujet imprime, sans numéro
+  # inventé — depuis le correctif du 2026-09-03, `lib/examens.ts` lit la
+  # position sur l'identifiant dès qu'aucun libellé de l'épreuve ne porte
+  # « Exercice N ». Même disposition que bk-2011-n-x2 et bk-2012-n-x3
+  # ci-dessus, pour des sujets qui ne numérotent pas non plus.
+  #
+  # ══════════════════════════════════════════════════════════════════════
+  # NOTE ÉDITORIALE — ROUTAGE : UNE ALTERNATIVE OWNER EST OUVERTE ICI.
+  # ══════════════════════════════════════════════════════════════════════
+  # ROUTAGE APPLIQUÉ : le bloc reste ENTIER dans `decroissance-radioactive`
+  # (2,50 pt, 4 questions), et son cross-list `noyaux-masse-energie` — la
+  # question 1-2, l'énergie libérée par la désintégration d'un noyau,
+  # 0,75 pt — est honoré dans le `reasoning`, jamais dédoublé en entrée.
+  #
+  # ALTERNATIVE DÉFENDABLE, NOMMÉE PAR LE SAS ET NON RETENUE : partitionner
+  # quand même — 1,75 pt (questions 1-1, 2-1, 2-2 : équation de
+  # désintégration, N₀, durée minimale de décontamination) restant ici, et
+  # 0,75 pt (question 1-2, défaut de masse et énergie libérée) partant vers
+  # `content/pc/noyaux-masse-energie/bank.yaml` sous l'identifiant
+  # bk-2013-r-x2b. 1,75 + 0,75 = 2,50 : la somme retomberait juste, et le
+  # corpus a un PRÉCÉDENT DIRECT de partition exactement de cette forme —
+  # bk-2012-n-x3 / bk-2012-n-x3b, dont la note éditoriale est quelques
+  # centaines de lignes plus haut dans ce même fichier.
+  #
+  # L'ARGUMENT DU SAS POUR NE PAS L'AVOIR RETENUE, mot pour mot : « Le
+  # volet masse-énergie ne pèse qu'UNE question (0,75 pt) ; le précédent
+  # bk-2012-n-x3/x3b a partitionné, mais il portait un volet masse-énergie
+  # de plusieurs questions. Ici, une entrée `noyaux-masse-energie` d'une
+  # seule question serait l'orphelin que le README interdit. » La règle du
+  # sas est explicite sur ce point : « un cross-list qui ne pèserait qu'une
+  # demi-question ne devient pas une entrée — ce serait un orphelin
+  # illisible ». L'OWNER RESTE JUGE : l'alternative est chiffrée et
+  # nommée ici, sans qu'il ait à rouvrir le sujet.
+  # ══════════════════════════════════════════════════════════════════════
+  #
+  # RÉPARTITION DU BARÈME SUR L'ÉPREUVE ENTIÈRE (aucun double comptage) :
+  # 2,00 (bk-2013-r-x1, electrolyse) + 2,25 (bk-2013-r-x1b,
+  # reactions-acido-basiques) + 2,75 (bk-2013-r-x1c,
+  # esterification-hydrolyse) + 2,50 (cette entrée) + 2,25 (bk-2013-r-x3,
+  # dipole-rl) + 2,75 (bk-2013-r-x3b, rlc-serie) + 5,50 (bk-2013-r-x4,
+  # rotation-axe-fixe) = 20,00 exactement.
+  - id: bk-2013-r-x2
+    title: "Iode 131 après Fukushima : équation de désintégration, énergie libérée par un noyau, nombre de noyaux initial et durée minimale de décontamination des épinards"
+    source:
+      year: 2013
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Physique nucléaire — Etude du nucléide iode 131 et d'un échantillon d'épinard contaminé"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2013 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code d'examen RS28 (durée 3 h, coefficient 7),
+        AlloSchool element/94461 (édition française, cours course-422 ;
+        jumeaux 94460 / 94462, upload-70329) ; original arabe element/39382
+        et son corrigé element/39383 (cours arabophone course-311).
+        Exercice « Physique nucléaire (02,5 points) », entier ; barème
+        2,50 pt (0,5 + 0,75 + 0,5 + 0,75), 4 questions, égal au sous-total
+        imprimé. Source vérifiée par une passe adversariale indépendante du
+        2026-09-03 (docs/sujets/_incoming/pc-2013-r.md, statut « ✅
+        VÉRIFIÉ », 7 blocs sur 7) : re-fetch complet des neuf fichiers,
+        double téléchargement comparé octet à octet, barème recompté par
+        quatre chemins (20,00 chaque fois, 33 mentions pour 33 questions),
+        33/33 questions re-dérivées — ici E = 0,8849 MeV,
+        N₀ = 7,978×10⁹ noyaux, t = 16 jours. LES CINQ DONNÉES ET LES QUATRE
+        VALEURS DE PRESSE SONT LUES D'ABORD DANS LA COUCHE DE TEXTE
+        FRANÇAISE, saine et confirmée par un OCR `tesseract -l fra`
+        indépendant : c'est sur ce bloc que le piège d'extraction du PDF
+        arabe est le plus vicieux (V.6) — la couche de texte arabe rend
+        l'année 2011 en « 2511 » et le nucléide 131 en « 333 », tout en
+        rendant justes 6100, 15020, 2000, 8000, 931,5, 130,8755, 130,8770
+        et 0,00055, sans qu'aucun filtre ne puisse trier les uns des
+        autres (le PDF embarque deux copies de Times New Roman que
+        l'extracteur nomme identiquement). Aucun chiffre de cette entrée ne
+        vient de la couche arabe. L'ÉDITION FRANÇAISE EST MINISTÉRIELLE
+        (code RS28 encadré, imprimé à l'identique dans les deux cartouches ;
+        pieds de page vides sur 6/6 ; aucun crédit de traducteur) : les
+        écarts français/arabe sont donc des défauts du DOCUMENT OFFICIEL
+        francophone, jamais des artefacts de traduction professorale. Trois
+        écarts sur ce bloc, tous cosmétiques et déclarés dans l'intro ou
+        l'énoncé : la mention « ( بتصرف) » = « (adapté) », que l'arabe
+        ajoute après www.ciirad.org et que le français a supprimée ;
+        « مزرعة » = « exploitation agricole » rendu par « prairie » ; et
+        surtout la reformulation maladroite de la question 2-2 — le
+        document officiel écrit « la plus petite durée nécessaires pour la
+        décontamination des épinards PAR l'iode 131 », où « par l'iode
+        131 » se rattache grammaticalement à « décontamination » et se lit
+        comme si l'iode décontaminait, là où l'arabe dit « la plus petite
+        durée nécessaire pour que l'échantillon d'épinards étudié DEVIENNE
+        NON CONTAMINÉ par l'iode 131 ». La consigne est reproduite verbatim
+        et le sens visé est explicité juste après, en italique. Coquilles de
+        langue reproduites verbatim, non réparées : « fukushima » sans
+        majuscule (alors que le sommaire de la page 1 écrit « Fukushima » —
+        incohérence interne du sujet), « les taux […] a parfois dépassé »,
+        « Au japon », la virgule entre sujet et verbe (« le 11 mars 2011,
+        ont déclaré »), « Ecrire la l'équation » (mot dupliqué),
+        « désintergation », « la plus petite durée nécessaires » — registre
+        complet en docs/sujets/_incoming/pc-2013-r.md §5.1 et V.9. NON
+        COMPTÉ COMME DÉFAUT, mais signalé : le chapeau de presse écrit
+        « dépassé de 10 fois les taux autorisés » alors que l'activité
+        citée culmine à 15 020 Bq pour un seuil de 2 000 Bq (soit ×7,5) —
+        la phrase est reprise de la source de presse citée, et l'original
+        arabe l'écrit pareil ; aucune question n'en dépend. CROSS-LIST
+        `noyaux-masse-energie` (question 1-2, l'énergie libérée, 0,75 pt)
+        honoré dans le `reasoning`, jamais dédoublé — voir la NOTE
+        ÉDITORIALE de routage ci-dessus, qui pose l'alternative owner et
+        l'argument du sas. LE CORRIGÉ ARABE N'EST QU'UN TÉMOIN DE VALEURS,
+        JAMAIS UN ARBITRE (K-8) : sur ce bloc précisément, sa question 1-1
+        écrit « 53 = 54 + Z donc Z = 1 » — la ligne d'arithmétique est
+        fausse (Z = −1), même si sa conclusion est juste. Aucune valeur de
+        cette entrée n'en provient.
+    intro: |-
+      **Contamination des épinards par l'iode 131 après l'accident de Fukushima (examen national, session de rattrapage 2013 — exercice « Physique nucléaire », 2,50 points).**
+
+      Les médias ayant couvert la catastrophe nucléaire japonaise de fukushima *(sic, sans majuscule — le sommaire du sujet écrit pourtant « Fukushima »)* le 11 mars 2011, ont déclaré que les taux de contamination radioactive des aliments a *(sic, pour « ont »)* parfois dépassé de 10 fois les taux autorisés. Par exemple l'activité de l'iode 131 dans les épinards a varié entre $6\,100\ \text{Bq}$ et $15\,020\ \text{Bq}$ par kilogramme. Au japon *(sic)*, les épinards sont considérés non contaminés, lorsque leur activité ne dépasse pas $2\,000\ \text{Bq}$ par kilogramme, comme niveau maximal admissible de contamination radioactive.
+
+      *D'après le site : www.ciirad.org* <!-- DIVERGENCE DÉCLARÉE, 2026-09-04 : l'original arabe RS28 ajoute
+           ici « ( بتصرف) » = « (adapté) », mention que l'édition française a
+           supprimée. L'édition française de ce sujet étant MINISTÉRIELLE (code
+           d'examen RS28 encadré, imprimé à l'identique dans les deux cartouches),
+           c'est un défaut du DOCUMENT OFFICIEL francophone, pas un artefact de
+           traduction professorale. Cosmétique : aucune question n'en dépend.
+           Voir docs/sujets/_incoming/pc-2013-r.md, V.7 / V.8. -->
+
+      Le but de cet exercice est l'étude de la décroissance radioactive d'un échantillon d'épinard contaminé par l'iode 131 radioactif.
+
+      **Données :**
+      - La demi-vie de l'iode 131 : $t_{1/2} = 8\ \text{jours}$ ;
+      - $1\ \text{u} = 931{,}5\ \text{MeV.c}^{-2}$ ;
+      - $m\left({}^{131}_{54}\text{Xe}\right) = 130{,}8755\ \text{u}$ ;
+      - $m\left({}^{131}_{53}\text{I}\right) = 130{,}8770\ \text{u}$ ;
+      - $m(e^-) = 0{,}00055\ \text{u}$.
+    questions:
+      - id: q1
+        part: "1- Etude du nucléide iode 131"
+        stem: |-
+          **1-1-** (0,5 pt) La désintégration d'un noyau d'iode ${}^{131}_{53}\text{I}$ donne naissance à un noyau ${}^{131}_{54}\text{Xe}$. Ecrire la l'équation *(sic — mot dupliqué dans le sujet)* modélisant cette désintégration, et préciser son type.
+        reasoning: |-
+          Les deux **lois de conservation de Soddy** (rung R2) suffisent, et elles se posent avant de nommer quoi que ce soit :
+
+          - conservation du **nombre de masse** $A$ : $131 = 131 + A_P$, donc la particule émise a $A_P = 0$ ;
+          - conservation du **nombre de charge** $Z$ : $53 = 54 + Z_P$, donc $Z_P = 53 - 54 = -1$.
+
+          Une particule de nombre de masse nul et de charge $-1$, c'est l'**électron** ${}^{\ 0}_{-1}e$. La désintégration est donc de type $\beta^-$ :
+
+          $$\boxed{{}^{131}_{53}\text{I} \;\longrightarrow\; {}^{131}_{54}\text{Xe} + {}^{\ 0}_{-1}e}$$
+
+          **Le contrôle de vraisemblance, à faire dans l'autre sens** (rung R1). Le noyau père a $Z = 53$ protons et $131 - 53 = 78$ neutrons : un rapport $N/Z \approx 1{,}47$, trop riche en neutrons pour un noyau de cette taille. C'est exactement la situation qui déclenche une désintégration $\beta^-$ : à l'intérieur du noyau, un **neutron se transforme en proton** avec émission d'un électron. Le $Z$ augmente d'une unité ($53 \to 54$), le $A$ ne bouge pas — ce que l'énoncé annonçait, et que les deux lois viennent de confirmer.
+
+          **Le piège de cette question.** Écrire $Z_P = +1$ en soustrayant dans le mauvais sens et conclure « $\beta^+$ ». Le signe se lit sur la loi de conservation, pas sur l'intuition : le fils a **plus** de charge que le père, donc la particule emportée est **négative**. *(C'est précisément l'erreur d'arithmétique que commet le corrigé arabe de ce sujet — il écrit « donc $Z = 1$ » avant de conclure correctement $\beta^-$ : la conclusion est juste, la déduction écrite ne l'est pas.)*
+      - id: q2
+        stem: |-
+          **1-2-** (0,75 pt) Calculer en MeV, l'énergie libérée par la désintergation *(sic, pour « désintégration »)* d'un noyau d'iode 131.
+        reasoning: |-
+          **CROSS-LIST honoré ici (« Noyaux, masse et énergie »).** Le défaut de masse et son équivalent énergétique sont l'outil central de cette autre notion. Il pèse cette seule question, $0{,}75\ \text{pt}$ sur les $2{,}50$ du bloc : la règle de la maison veut qu'un cross-list de ce poids soit honoré dans le raisonnement plutôt que dédoublé en une entrée orpheline — voir la note éditoriale de routage en tête d'entrée, qui pose l'alternative et laisse l'owner juge. La démonstration est donc refaite ici en entier.
+
+          **Le principe.** Toute désintégration spontanée libère de l'énergie parce que la masse **diminue** : la masse totale des produits est inférieure à celle du noyau père, et la différence est convertie en énergie selon $E = |\Delta m|\,c^2$. La donnée $1\ \text{u} = 931{,}5\ \text{MeV.c}^{-2}$ est là pour éviter tout passage par les kilogrammes et les joules : elle convertit directement une masse en énergie.
+
+          **Le bilan de masse, terme par terme.** Attention à ce que sont les masses fournies : ce sont des masses **nucléaires**, et la désintégration produit **deux** objets, le noyau de xénon **et** l'électron. Il faut donc retrancher les deux :
+
+          $$|\Delta m| = m\left({}^{131}_{53}\text{I}\right) - m\left({}^{131}_{54}\text{Xe}\right) - m(e^-)$$
+
+          $$|\Delta m| = 130{,}8770 - 130{,}8755 - 0{,}00055 = 0{,}00095\ \text{u} = 9{,}5\times10^{-4}\ \text{u}$$
+
+          $$E = |\Delta m|\times 931{,}5 \approx 0{,}885\ \text{MeV}$$
+
+          **Ordre de grandeur, pour se rassurer.** Une désintégration $\beta$ libère typiquement quelques dixièmes de MeV à quelques MeV ; une réaction chimique, quelques eV. Le facteur $10^6$ entre les deux est la raison même pour laquelle on parle d'énergie **nucléaire**.
+
+          **Le piège de cette question, et il coûte cher.** Oublier $m(e^-)$ et calculer seulement $130{,}8770 - 130{,}8755 = 1{,}5\times10^{-3}\ \text{u}$, ce qui donnerait $1{,}40\ \text{MeV}$ — soit $58\ \%$ de trop. La masse de l'électron est petite, mais elle est du même ordre que le défaut de masse lui-même : ici elle en représente plus du tiers. On ne la néglige jamais dans un bilan $\beta$.
+        steps:
+          - math: '{}^{131}_{53}\text{I} \longrightarrow {}^{131}_{54}\text{Xe} + {}^{\ 0}_{-1}e'
+            note: "Equation etablie a la question 1-1 : le bilan de masse porte sur trois termes, pas deux."
+          - math: '|\Delta m| = m\left({}^{131}_{53}\text{I}\right) - m\left({}^{131}_{54}\text{Xe}\right) - m(e^-)'
+            note: "Masses nucleaires : l'electron emis compte, il ne doit jamais etre oublie."
+          - math: '|\Delta m| = 130{,}8770 - 130{,}8755 - 0{,}00055 = 9{,}5\times10^{-4}\ \text{u}'
+            note: "Defaut de masse, en unites de masse atomique."
+          - math: 'E = |\Delta m|\,c^2 = 9{,}5\times10^{-4}\times 931{,}5'
+            note: "Conversion directe par la donnee 1 u = 931,5 MeV par c au carre."
+          - math: '\boxed{E \approx 0{,}885\ \text{MeV}}'
+            note: "Valeur re-derivee par la verification : 0,8849 MeV."
+      - id: q3
+        part: "2- Etude d'un échantillon d'épinard contaminé par de l'iode 131"
+        stem: |-
+          **2-1-** (0,5 pt) La mesure de l'activité d'un échantillon d'épinard, pris d'une prairie proche du lieu de l'accident nucléaire, a donné la valeur $8\,000\ \text{Bq}$ par kilogramme, à un instant considéré comme origine des temps. *(L'arabe écrit « une exploitation agricole », le document officiel français « une prairie » — écart cosmétique, déclaré.)*
+
+          Calculer le nombre $N_0$ de noyaux d'iode 131 radioactifs se trouvant dans l'échantillon d'épinard étudié à l'origine des temps.
+        reasoning: |-
+          **La relation qui fait tout le travail** (rung R4) : l'activité d'un échantillon est proportionnelle au nombre de noyaux encore présents,
+
+          $$a = \lambda\,N \qquad\text{avec}\qquad \lambda = \frac{\ln 2}{t_{1/2}}$$
+
+          À l'origine des temps, $a_0 = \lambda\,N_0$, donc $N_0 = a_0/\lambda$. En remplaçant $\lambda$ :
+
+          $$N_0 = \frac{a_0\,t_{1/2}}{\ln 2}$$
+
+          **Le piège d'unité, et c'est LE geste de la question.** Le becquerel est une **désintégration par seconde**. La constante radioactive $\lambda$ doit donc être en $\text{s}^{-1}$, ce qui oblige à convertir la demi-vie de jours en secondes **avant** tout calcul :
+
+          $$t_{1/2} = 8\ \text{jours} = 8 \times 24 \times 3600 = 691\,200\ \text{s}$$
+
+          Laisser $t_{1/2}$ en jours donnerait $N_0 \approx 9{,}2\times10^{4}$ — un nombre de noyaux dérisoire, incompatible avec une activité de $8\,000$ désintégrations par seconde. L'ordre de grandeur attendu est celui d'un très grand nombre de noyaux : $\approx 8\times10^{9}$, soit huit milliards, ce qui reste en réalité une masse infime d'iode (moins d'un milliardième de gramme).
+
+          **Pourquoi $\lambda$ est si petite ici, et ce que ça veut dire.** $\lambda = \ln 2 / 691\,200 \approx 1{,}00\times10^{-6}\ \text{s}^{-1}$ : chaque seconde, environ un noyau sur un million se désintègre. Il en faut donc beaucoup pour produire $8\,000$ désintégrations par seconde — c'est exactement ce que le calcul dit.
+        steps:
+          - math: 't_{1/2} = 8\ \text{jours} = 8\times 24\times 3600 = 691200\ \text{s}'
+            note: "Conversion obligatoire : le becquerel est une desintegration par seconde."
+          - math: '\lambda = \frac{\ln 2}{t_{1/2}} = \frac{0{,}693}{691200} \approx 1{,}00\times10^{-6}\ \text{s}^{-1}'
+            note: "Constante radioactive de l'iode 131, en inverse de seconde."
+          - math: 'a_0 = \lambda\,N_0 \implies N_0 = \frac{a_0}{\lambda} = \frac{a_0\,t_{1/2}}{\ln 2}'
+            note: "Relation activite-nombre de noyaux (rung R4), inversee."
+          - math: 'N_0 = \frac{8000\times 691200}{0{,}693}'
+            note: "Application numerique, toutes grandeurs en unites SI."
+          - math: '\boxed{N_0 \approx 7{,}98\times10^{9}\ \text{noyaux} \approx 8\times10^{9}}'
+            note: "Valeur re-derivee par la verification : 7,978 x 10^9 noyaux."
+      - id: q4
+        stem: |-
+          **2-2-** (0,75 pt) Déterminer, en jours, la plus petite durée nécessaires *(sic, pour « nécessaire »)* pour la décontamination des épinards par l'iode 131.
+
+          *La consigne est reproduite telle qu'imprimée. Elle est maladroite : « par l'iode 131 » se rattache grammaticalement à « décontamination » et se lirait comme si l'iode décontaminait. L'original arabe dit le sens visé sans ambiguïté — « la plus petite durée nécessaire pour que l'échantillon d'épinards étudié **devienne non contaminé** par l'iode 131 », c'est-à-dire pour que son activité redescende au niveau maximal admissible.*
+        reasoning: |-
+          **Traduire la question en inégalité, d'abord.** L'énoncé a donné le seuil dans son chapeau : les épinards sont considérés non contaminés lorsque leur activité **ne dépasse pas** $2\,000\ \text{Bq}$ par kilogramme. On cherche donc le plus petit $t$ tel que
+
+          $$a(t) \le 2\,000\ \text{Bq} \qquad\text{avec}\qquad a(t) = a_0\,e^{-\lambda t} \quad\text{et}\quad a_0 = 8\,000\ \text{Bq}$$
+
+          **La loi de décroissance s'applique à l'activité comme au nombre de noyaux** (rung R4) : puisque $a = \lambda N$ et que $\lambda$ est une constante, $a(t)$ décroît exactement comme $N(t)$, avec la même demi-vie.
+
+          **Le raccourci que le sujet a préparé, et il faut le voir.** Le rapport $\dfrac{a_0}{a} = \dfrac{8\,000}{2\,000} = 4$ est une **puissance de 2**. Or la demi-vie est précisément la durée au bout de laquelle l'activité est divisée par $2$. Diviser par $4 = 2^2$, c'est donc attendre **deux demi-vies** — sans logarithme, sans calculatrice :
+
+          $$8\,000 \xrightarrow{\ t_{1/2}\ } 4\,000 \xrightarrow{\ t_{1/2}\ } 2\,000$$
+
+          $$\boxed{t_{min} = 2\,t_{1/2} = 2\times 8 = 16\ \text{jours}}$$
+
+          **La voie générale, quand le rapport n'est pas une puissance de 2** (rung R5, celui de la datation, lu à l'envers) : on inverse la loi,
+
+          $$t = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a}\right) = \frac{8}{\ln 2}\times\ln 4 = \frac{8 \times 2\ln 2}{\ln 2} = 16\ \text{jours}$$
+
+          Les $\ln 2$ se simplifient : la même réponse, par le chemin long.
+
+          **Ici, l'unité ne pose aucun problème** — contrairement à la question 2-1. Comme on ne manipule qu'un **rapport** d'activités, $\lambda$ et $t$ peuvent rester en jours : la réponse sort directement dans l'unité demandée.
+
+          **Le piège de cette question.** Répondre « $8$ jours » en confondant demi-vie et durée de décontamination : une demi-vie ramènerait l'activité à $4\,000\ \text{Bq}$, encore le double du seuil admissible. Le seuil est fixé par l'énoncé, pas par la demi-vie.
+        steps:
+          - math: 'a(t) = a_0\,e^{-\lambda t} \le 2000\ \text{Bq} \qquad a_0 = 8000\ \text{Bq}'
+            note: "Mise en inequation : le seuil de non-contamination est donne par le chapeau de l'enonce."
+          - math: '\frac{a_0}{a} = \frac{8000}{2000} = 4 = 2^2'
+            note: "Le rapport est une puissance de 2 : le sujet a prepare le raccourci."
+          - math: 'e^{-\lambda t} \le \frac{1}{4} \implies \lambda t \ge \ln 4 = 2\ln 2 \implies t \ge 2\,t_{1/2}'
+            note: "Chaque demi-vie divise l'activite par deux ; il en faut donc exactement deux."
+          - math: '\boxed{t_{min} = 2\times 8 = 16\ \text{jours}}'
+            note: "Duree minimale pour que l'activite redescende a 2000 Bq par kilogramme."

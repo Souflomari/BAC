@@ -1697,3 +1697,261 @@ entries:
             note: "tau = 2 ms (question 1-2b), R + r = 90 + 10 ohms (question 1-2c)."
           - math: '\boxed{L = 0{,}2\ \text{H}}'
             note: "La valeur a verifier retombe exactement : chaine de lectures coherente."
+
+  # ── bk-2013-r-x3 — 2013 R, Electricité, première expérience : réponse d'un dipôle RL à un échelon de tension ──
+  #
+  # NOTE ÉDITORIALE — bk-2013-r-x3 (2026-09-04, ajout). Sujet SPC 2013
+  # SESSION DE RATTRAPAGE, code d'examen RS28, converti depuis
+  # docs/sujets/_incoming/pc-2013-r.md — statut « ✅ VÉRIFIÉ », passe
+  # adversariale indépendante close le 2026-09-03 (7 blocs sur 7, 33/33
+  # questions re-dérivées, barème 20,00 par quatre chemins).
+  # CHOIX DE L'`id` : le sujet NE NUMÉROTE AUCUN exercice — sa page 1
+  # annonce « quatre exercices » et son corps les nomme par domaine
+  # (Chimie, Physique nucléaire, Electricité, Mécanique). Les identifiants
+  # encodent donc la POSITION SUR LA COPIE (K-7 bis) : l'Electricité est le
+  # TROISIÈME bloc du cartouche, d'où x3 ; ses deux expériences, qui sont
+  # UN SEUL exercice imprimé, portent x3 et x3b et se partagent le barème
+  # (2,25 + 2,75 = 5,00, le sous-total imprimé « Electricité :
+  # (05 points) »). Les `exercise_label` restent FIDÈLES à ce que le sujet
+  # imprime, sans numéro inventé — depuis le correctif du 2026-09-03,
+  # `lib/examens.ts` lit la position sur l'identifiant dès qu'aucun libellé
+  # de l'épreuve ne porte « Exercice N », de sorte que l'épreuve compte bien
+  # QUATRE exercices et non six.
+  # AUCUN CROSS-LIST sur ce bloc : les quatre questions (équation
+  # différentielle du dipôle RL, homogénéité de τ, lecture de l'asymptote
+  # et de la constante de temps) sont entièrement dans les rungs R1 à R3 de
+  # cette leçon.
+  # LE BOUCLAGE DU SUJET SUR LUI-MÊME, à ne pas manquer : la valeur
+  # r = 8,4 Ω trouvée ici par lecture graphique (question 3-1) est
+  # RETROUVÉE par une voie purement algébrique dans la seconde expérience
+  # (bk-2013-r-x3b, content/pc/rlc-serie/bank.yaml, question 5-2 :
+  # r = k − R' = 208,4 − 200). Deux chaînes totalement indépendantes, même
+  # nombre — c'est ce qui rend ce sujet remarquablement solide.
+  - id: bk-2013-r-x3
+    title: "Bobine d'un haut-parleur soumise à un échelon de tension : équation différentielle en u_R, homogénéité de la constante de temps, résistance interne et inductance lues sur l'oscillogramme"
+    source:
+      year: 2013
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Electricité — Première expérience : détermination des deux caractéristiques d'une bobine de haut-parleur"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2013 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code d'examen RS28 (durée 3 h, coefficient 7),
+        AlloSchool element/94461 (édition française, cours course-422 ;
+        jumeaux 94460 / 94462, upload-70329) ; original arabe element/39382
+        et son corrigé element/39383 (cours arabophone course-311).
+        Electricité, PREMIÈRE expérience uniquement ; barème 2,25 pt
+        (0,75 + 0,5 + 0,5 + 0,5), 4 questions. RÉPARTITION SANS DOUBLE
+        COMPTAGE : la seconde expérience du même exercice — oscillations
+        amorties dans un circuit RLC série, 2,75 pt — est transcrite à part
+        sous content/pc/rlc-serie/bank.yaml, entrée bk-2013-r-x3b ;
+        2,25 + 2,75 = 5,00, le sous-total imprimé « Electricité :
+        (05 points) ». Source vérifiée par une passe adversariale
+        indépendante du 2026-09-03 (docs/sujets/_incoming/pc-2013-r.md,
+        statut « ✅ VÉRIFIÉ », 7 blocs sur 7) : re-fetch complet, double
+        téléchargement comparé octet à octet, barème par quatre chemins,
+        33/33 questions re-dérivées — ici r = 8,3991 Ω et L = 0,20169 H.
+        LES DEUX FIGURES SONT RE-MESURÉES SUR DEUX CHAÎNES INDÉPENDANTES :
+        géométrie vectorielle de l'original arabe (figure 2, polyligne de
+        108 sommets, calibration reconstruite sur la grille) puis pixels du
+        bitmap français (797 × 622 px à 218 dpi). Lectures retenues :
+        asymptote u_R(∞) = 10,0002 V (min 9,9927, max 10,0030 sur t > 28 ms
+        — la valeur est posée exactement sur une ligne forte du
+        quadrillage) ; constante de temps τ = 4,0019 ms (abscisse de
+        0,632 × u∞ = 6,3201 V) ; points de contrôle 2 V à 0,8966 ms et 6 V
+        à 3,6685 ms. Concordance des deux chaînes : 0,2 % sur l'asymptote,
+        0,8 % sur τ. La figure 1 (schéma du montage) a été re-décrite depuis
+        le bitmap sans relire la transcription, et se confirme au mot près,
+        y compris le détail le plus facile à inverser : la flèche de i est
+        sur le fil, sous le cercle du générateur, et pointe vers le HAUT ;
+        (L,r) est à gauche de la bobine, R à gauche du rectangle, u_R à
+        droite. RECOUPEMENT INTERNE AU SUJET, remarquable et vérifié : le
+        r = 8,4 Ω obtenu ici par lecture graphique est retrouvé par une voie
+        purement algébrique dans la seconde expérience (r = k − R' =
+        208,4 − 200, question 5-2 de bk-2013-r-x3b), et le L = 0,2016 H
+        obtenu ici est retrouvé à 0,7 % par la figure 4 de cette même
+        seconde expérience (0,2004 H). L'ÉDITION FRANÇAISE EST
+        MINISTÉRIELLE (code RS28 encadré, imprimé à l'identique dans les
+        deux cartouches ; pieds de page vides sur 6/6 ; aucun crédit de
+        traducteur) : les écarts français/arabe sont donc des défauts du
+        DOCUMENT OFFICIEL francophone, jamais des artefacts de traduction
+        professorale. Deux écarts cosmétiques sur ce bloc : l'arabe
+        condense deux phrases en une dans l'amorce et ne quantifie pas
+        (« la plupart » est une addition du français), et la question 3-1
+        perd le complément « de la bobine » (l'arabe écrit « la résistance
+        électrique r DE LA BOBINE ») — sans ambiguïté, r n'étant défini que
+        là. Coquilles de langue reproduites verbatim, non réparées :
+        « l'une des principales constituants », « la pluspart »,
+        « verifie », « en fonctions des paramètres », et le sommaire de la
+        page 1 imprime « Déterminations des deux caractéristiques d'une
+        bobine » au pluriel fautif — registre complet en
+        docs/sujets/_incoming/pc-2013-r.md §5.1 et V.9. LE CORRIGÉ ARABE
+        N'EST QU'UN TÉMOIN DE VALEURS, JAMAIS UN ARBITRE (K-8) : la passe
+        lui a trouvé quatre défauts de raisonnement documentés — aucune
+        valeur de cette entrée n'en provient.
+    intro: |-
+      **Détermination des deux caractéristiques d'une bobine de haut-parleur — première expérience (examen national, session de rattrapage 2013 — exercice « Electricité », 2,25 points sur 05,00).**
+
+      *La seconde expérience du même exercice — oscillations amorties dans un circuit RLC série, 2,75 pt — est indépendante et vit sous « Circuit RLC série », entrée bk-2013-r-x3b. Elle réutilise la bobine étudiée ici. 2,25 + 2,75 = 5,00, le barème imprimé.*
+
+      La bobine est l'une des principales constituants *(sic)* des hauts-parleurs qui se trouvent dans la pluspart *(sic, pour « plupart »)* des appareils audio. Le but de cet exercice est de déterminer les deux caractéristiques d'une bobine d'un haut-parleur, en réalisant deux expériences différentes.
+
+      **Première expérience :**
+
+      Un haut-parleur contient une bobine de coefficient d'inductance $L$ et de résistance interne $r$. Pour déterminer ces deux grandeurs, on a réalisé le montage électrique représenté sur la **figure 1**, où : $E = 12\ \text{V}$ et $R = 42\ \Omega$.
+
+      Juste après la fermeture du circuit, on visualise à l'aide d'un dispositif informatique convenable, l'évolution de la tension $u_R$ en fonction du temps (**figure 2**).
+
+      **Figure 1 — le montage.** Une boucle rectangulaire. **Branche haute** : depuis le coin haut-gauche, un interrupteur $K$ (ouvert, étiqueté au-dessus), puis un point noir $A$ au coin haut-droit. **Branche droite**, de haut en bas : un rectangle vertical (le résistor) étiqueté $R$ à sa gauche, avec à sa droite une flèche verticale vers le haut étiquetée $u_R$ ; sous le rectangle, un point noir $B$ ; puis la bobine (quatre arches) étiquetée $(L,\,r)$ à sa gauche ; en bas, un point noir $C$. **Branche gauche** : le générateur, figuré par un grand cercle traversé par le fil vertical, avec à sa droite une flèche verticale vers le haut étiquetée $E$ ; **sous** le cercle, sur le fil, une flèche verticale vers le haut étiquetée $i$. *(Le courant sort du générateur par le haut, passe par $K$, traverse $R$ de $A$ vers $B$, puis la bobine de $B$ vers $C$.)*
+
+      **Figure 2 — l'oscillogramme $u_R(t)$, décrit pour être exploité.** Tracé sur papier millimétré.
+
+      - **axe vertical** $u_R\ (\text{V})$, graduations chiffrées $2$, $6$, $10$ ; **axe horizontal** $t\ (\text{ms})$, graduations chiffrées $0$, $5$, $15$, $25$ *(le $10$, le $20$, le $30$ et le $35$ ne sont pas chiffrés)* ;
+      - **quadrillage** : maille fine bleue, lignes fortes tous les $2\ \text{V}$ et toutes les $5\ \text{ms}$ ; cadre $t \in [0\,;\,40]\ \text{ms}$, $u_R \in [0\,;\,13]\ \text{V}$ ;
+      - **la courbe** part de l'origine, croît de façon exponentielle et s'aplatit sur un **plateau horizontal atteint vers $t \approx 25\ \text{ms}$**, posé exactement sur la ligne forte $u_R = 10\ \text{V}$ ;
+      - points de repère utiles, mesurés sur le tracé : $u_R = 2\ \text{V}$ à $t \approx 0{,}90\ \text{ms}$ et $u_R = 6\ \text{V}$ à $t \approx 3{,}67\ \text{ms}$.
+    questions:
+      - id: q1
+        part: "Electricité — Première expérience (dipôle RL soumis à un échelon de tension)"
+        stem: |-
+          **1-** (0,75 pt) Montrer que la tension $u_R$ aux bornes du résistor verifie *(sic, pour « vérifie »)* l'équation différentielle :
+
+          $$\tau\,\frac{du_R}{dt} + u_R = A$$
+
+          en exprimant les constantes $A$ et $\tau$ en fonctions *(sic, pour « fonction »)* des paramètres du circuit.
+        reasoning: |-
+          **La méthode, en trois gestes, et c'est toujours la même** (rung R2) : loi des mailles, remplacement de chaque tension par sa loi caractéristique, puis remplacement de l'inconnue intermédiaire par celle que la question demande.
+
+          **1. Loi des mailles.** Le circuit est une boucle unique : générateur, résistor, bobine. La tension du générateur se répartit sur les deux dipôles :
+
+          $$E = u_R + u_b$$
+
+          **2. Les deux lois caractéristiques.** Pour le résistor, la loi d'Ohm : $u_R = R\,i$. Pour la bobine **réelle** — et c'est ici que se joue tout l'exercice —, le rung R1 donne la relation complète, avec ses **deux** termes :
+
+          $$u_b = r\,i + L\,\frac{di}{dt}$$
+
+          Le terme $r\,i$ est celui d'un résistor caché dans la bobine (c'est le fil de cuivre) ; le terme $L\,di/dt$ est l'inertie électrique proprement dite. Négliger $r$ ici rendrait toute la suite fausse : c'est précisément $r$ que la question 3-1 va mesurer.
+
+          **3. Tout exprimer avec $u_R$.** L'équation demandée porte sur $u_R$, pas sur $i$. On remplace donc $i = \dfrac{u_R}{R}$ et $\dfrac{di}{dt} = \dfrac{1}{R}\dfrac{du_R}{dt}$ :
+
+          $$E = u_R + \frac{r}{R}u_R + \frac{L}{R}\frac{du_R}{dt}
+          \qquad\Longrightarrow\qquad
+          \frac{L}{R}\frac{du_R}{dt} + u_R\left(\frac{R+r}{R}\right) = E$$
+
+          **Le dernier geste, celui qu'on oublie.** L'équation demandée a le coefficient $1$ devant $u_R$ : il faut donc **diviser toute la ligne** par $\dfrac{R+r}{R}$, et c'est cette division qui fait apparaître $\tau$ et $A$ :
+
+          $$\boxed{\frac{L}{R+r}\,\frac{du_R}{dt} + u_R = \frac{E\,R}{R+r}}
+          \qquad\text{d'où}\qquad
+          \boxed{\tau = \frac{L}{R+r} \qquad A = \frac{E\,R}{R+r}}$$
+
+          **Deux contrôles gratuits, à faire tout de suite.**
+
+          - $A$ est une **tension** : c'est $E$ multiplié par un rapport de résistances, donc en volts. C'est d'ailleurs la valeur du plateau — quand $du_R/dt = 0$, l'équation dit $u_R = A$ —, et c'est ce que la question 3-1 va exploiter.
+          - $\tau$ est le $L/R$ du rung R3, mais avec la résistance **totale** de la maille, $R + r$. C'est le piège classique du dipôle RL à bobine réelle : la constante de temps ne connaît pas les résistances séparément, seulement leur somme.
+        steps:
+          - math: 'E = u_R + u_b'
+            note: "Loi des mailles sur la boucle unique du montage de la figure 1."
+          - math: 'u_R = R\,i \qquad u_b = r\,i + L\,\frac{di}{dt}'
+            note: "Loi d'Ohm pour le resistor ; relation caracteristique de la bobine reelle (rung R1), avec ses deux termes."
+          - math: 'i = \frac{u_R}{R} \qquad \frac{di}{dt} = \frac{1}{R}\frac{du_R}{dt}'
+            note: "On exprime l'intensite avec la variable demandee par la question."
+          - math: 'E = u_R + \frac{r}{R}u_R + \frac{L}{R}\frac{du_R}{dt}'
+            note: "Substitution : il ne reste plus que u_R et sa derivee."
+          - math: '\frac{L}{R}\frac{du_R}{dt} + \frac{R+r}{R}\,u_R = E'
+            note: "On regroupe les termes en u_R."
+          - math: '\boxed{\frac{L}{R+r}\frac{du_R}{dt} + u_R = \frac{E\,R}{R+r}}'
+            note: "Division par (R+r)/R pour ramener le coefficient de u_R a 1 : la forme demandee apparait."
+          - math: '\boxed{\tau = \frac{L}{R+r} \qquad A = \frac{E\,R}{R+r}}'
+            note: "Identification. Attention : la constante de temps porte sur la resistance TOTALE de la maille."
+      - id: q2
+        stem: |-
+          **2-** (0,5 pt) S'assurer que la constante $\tau$ est homogène à un temps.
+        reasoning: |-
+          On ne « voit » pas qu'un quotient est un temps : on le **démontre**, en remontant à la définition de chaque grandeur. La méthode est celle du rung R3, et elle vaut pour toute vérification d'homogénéité — on part des lois physiques, jamais des unités apprises par cœur.
+
+          **La dimension de $L$**, lue sur la relation caractéristique de la bobine (rung R1). Dans $u_L = L\,\dfrac{di}{dt}$, le terme $\dfrac{di}{dt}$ est une intensité divisée par un temps. Donc :
+
+          $$[L] = \frac{[U]}{[I]/[T]} = \frac{[U]\,[T]}{[I]}$$
+
+          **La dimension de $R + r$**, lue sur la loi d'Ohm : $[R] = \dfrac{[U]}{[I]}$ — et $r$, qui est une résistance, a la même dimension. Une somme n'est d'ailleurs possible **que** parce que les deux ont la même dimension : c'est un contrôle en soi.
+
+          **Le quotient**, où tout se simplifie :
+
+          $$[\tau] = \frac{[L]}{[R+r]} = \frac{[U][T]/[I]}{[U]/[I]} = \frac{[U]\,[T]}{[I]}\times\frac{[I]}{[U]} = [T]$$
+
+          $\tau$ est bien **homogène à un temps** : elle se mesure en secondes, et c'est ce qui autorise à la lire comme une abscisse sur la figure 2.
+
+          **La même chose en unités**, si l'on préfère : $L$ en henrys ($\text{H} = \text{V.s.A}^{-1}$), $R$ en ohms ($\Omega = \text{V.A}^{-1}$), donc $\text{H}/\Omega = \text{s}$.
+
+          **Pourquoi la question est posée, et ce n'est pas une formalité.** Une équation différentielle du type $\tau\,\dfrac{dy}{dt} + y = A$ n'a de sens que si $\tau$ est un temps : sinon les deux termes de gauche ne s'additionnent pas. La vérification valide donc rétrospectivement la question 1 — et elle prépare la question 3-2, où $\tau$ sera **lue en millisecondes** sur un axe des temps.
+      - id: q3
+        part: "3- Trouver :"
+        stem: |-
+          **3-1-** (0,5 pt) Trouver la valeur de la résistance $r$. *(L'original arabe précise « la résistance électrique $r$ **de la bobine** » ; le complément est tombé dans l'édition française — sans ambiguïté, $r$ n'étant défini que là.)*
+        reasoning: |-
+          **Ce que le régime permanent dit.** Longtemps après la fermeture, le courant ne varie plus : $\dfrac{du_R}{dt} = 0$, et l'équation de la question 1 se réduit d'un coup à
+
+          $$u_R(\infty) = A = \frac{E\,R}{R+r}$$
+
+          **La bobine se comporte alors comme un simple résistor $r$** — son terme $L\,di/dt$ s'est éteint. Le circuit n'est plus qu'un pont diviseur de tension entre $R$ et $r$, et c'est cette répartition que le plateau mesure.
+
+          **La lecture graphique.** Sur la figure 2, le plateau est atteint vers $t \approx 25\ \text{ms}$ et posé exactement sur une ligne forte :
+
+          $$u_R(\infty) = 10{,}00\ \text{V}$$
+
+          **Ce que ce nombre raconte avant même le calcul.** Le générateur impose $12\ \text{V}$ ; le résistor n'en prend que $10$. Les $2\ \text{V}$ manquants sont **aux bornes de la résistance interne de la bobine** — la bobine n'est pas parfaite, et le déficit se voit à l'œil sur le graphe. On s'attend donc à $r$ petit devant $R = 42\ \Omega$, dans le rapport $2/10$.
+
+          **L'inversion.** De $u_R(\infty) = \dfrac{E\,R}{R+r}$ on tire $R + r = \dfrac{E\,R}{u_R(\infty)}$, puis :
+
+          $$r = R\left(\frac{E}{u_R(\infty)} - 1\right) = 42\left(\frac{12}{10} - 1\right) = 42 \times 0{,}2 = 8{,}4\ \Omega$$
+
+          Conforme à la prédiction : $r/R = 0{,}2 = 2/10$, exactement le rapport des tensions.
+
+          **Le contrôle que le sujet a caché ailleurs.** La seconde expérience de ce même exercice (entrée bk-2013-r-x3b) retrouve $r = k - R' = 208{,}4 - 200 = 8{,}4\ \Omega$ par une identité **purement algébrique**, sans lire aucune courbe. Deux chemins totalement indépendants, le même nombre : la lecture graphique est confirmée.
+
+          **Le piège de cette question.** Écrire $r = E/u_R(\infty)$ ou oublier le « $-1$ » : le calcul doit passer par la résistance **totale** $R + r$, dont on retranche ensuite $R$. Second piège : lire le plateau à $12\ \text{V}$ « puisque c'est la f.é.m. » — le plateau est à $10$, et l'écart est justement l'information cherchée.
+        steps:
+          - math: '\frac{du_R}{dt} = 0 \implies u_R(\infty) = A = \frac{E\,R}{R+r}'
+            note: "Regime permanent : la derivee s'annule dans l'equation differentielle de la question 1."
+          - math: 'u_R(\infty) = 10{,}00\ \text{V}'
+            note: "Lecture du plateau sur la figure 2, pose exactement sur une ligne forte du quadrillage."
+          - math: 'R + r = \frac{E\,R}{u_R(\infty)} = \frac{12\times 42}{10} = 50{,}4\ \Omega'
+            note: "Resistance totale de la maille, tiree de la lecture du plateau."
+          - math: '\boxed{r = R\left(\frac{E}{u_R(\infty)} - 1\right) = 42\left(\frac{12}{10}-1\right) = 8{,}4\ \Omega}'
+            note: "Resistance interne de la bobine. Retrouvee par voie algebrique dans la seconde experience : r = k - R prime = 208,4 - 200."
+      - id: q4
+        stem: |-
+          **3-2-** (0,5 pt) Trouver la valeur du coefficient d'inductance $L$ de la bobine.
+        reasoning: |-
+          La question 1 a donné $\tau = \dfrac{L}{R+r}$ ; il suffit de la lire à l'envers, $L = \tau\,(R+r)$. Tout est disponible : $R + r = 50{,}4\ \Omega$ vient d'être établi (question 3-1), il ne manque que $\tau$ — et $\tau$ se **lit** sur la figure 2.
+
+          **Lire $\tau$ sur un graphe expérimental, c'est le rung R3, et il y a trois méthodes équivalentes.**
+
+          1. **La méthode des $63\ \%$** : $\tau$ est l'abscisse du point où la grandeur atteint $63\ \%$ de sa valeur finale. Ici $0{,}632 \times 10{,}00 = 6{,}32\ \text{V}$, atteint à $t = 4{,}00\ \text{ms}$.
+          2. **La tangente à l'origine** : elle coupe l'asymptote horizontale à l'abscisse $\tau$ — même valeur.
+          3. **La méthode des $95\ \%$**, pour vérifier : le régime permanent est établi à $\approx 3\tau$ à $5\tau$, ce qui place l'aplatissement vers $12$ à $20\ \text{ms}$ — cohérent avec le plateau atteint vers $25\ \text{ms}$.
+
+          $$\tau = 4{,}00\ \text{ms} = 4{,}00\times10^{-3}\ \text{s}$$
+
+          *(La valeur est commode à lire : elle tombe aux quatre cinquièmes de la première cellule forte de $5\ \text{ms}$. Mesure fine sur le tracé : $4{,}0019\ \text{ms}$.)*
+
+          **Le calcul, avec la conversion faite d'abord :**
+
+          $$L = \tau\,(R+r) = 4{,}00\times10^{-3} \times 50{,}4 \approx 0{,}2016\ \text{H} \approx 0{,}20\ \text{H}$$
+
+          **Le contrôle croisé, encore une fois offert par le sujet.** La seconde expérience (entrée bk-2013-r-x3b) redonne $L$ par la pseudo-période du circuit RLC : $L = T^2/4\pi^2C \approx 0{,}200\ \text{H}$. Écart $0{,}7\ \%$ entre deux montages différents et deux lectures de courbes différentes — c'est la meilleure validation possible d'une mesure expérimentale.
+
+          **Le piège de cette question.** Utiliser $R$ seul ($42\ \Omega$) au lieu de $R + r$ : on trouverait $0{,}168\ \text{H}$, soit $17\ \%$ d'erreur. La constante de temps du dipôle RL porte toujours sur la résistance **totale** de la maille — c'est le point que la question 1 avait établi, et qui est réutilisé ici.
+        steps:
+          - math: '\tau = \frac{L}{R+r} \implies L = \tau\,(R+r)'
+            note: "Expression de tau etablie a la question 1, lue a l'envers."
+          - math: '0{,}632\times u_R(\infty) = 0{,}632\times 10{,}00 = 6{,}32\ \text{V} \implies \tau = 4{,}00\ \text{ms}'
+            note: "Lecture de la constante de temps sur la figure 2 par la methode des 63 pourcent (rung R3)."
+          - math: '\tau = 4{,}00\ \text{ms} = 4{,}00\times10^{-3}\ \text{s} \qquad R + r = 42 + 8{,}4 = 50{,}4\ \Omega'
+            note: "Conversion en secondes, et resistance totale etablie a la question 3-1."
+          - math: '\boxed{L = 4{,}00\times10^{-3}\times 50{,}4 \approx 0{,}20\ \text{H}}'
+            note: "Inductance de la bobine, 0,2016 H. Retrouvee a 0,7 pourcent par la seconde experience (0,200 H)."

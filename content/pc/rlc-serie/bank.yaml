@@ -2352,3 +2352,433 @@ entries:
           $$\boxed{\text{Dissipation par effet Joule dans } R + r \implies \text{amplitude décroissante : régime pseudo-périodique}}$$
 
           Le piège nommé de cette question. Répondre « l'énergie se conserve en passant du condensateur à la bobine » : c'est le circuit IDÉAL du rung 2. Ici la conservation est précisément ce qui est PERDU — et c'est la décroissance de l'enveloppe, pas l'oscillation elle-même, que la question demande de justifier.
+
+  # ── bk-2013-r-x3b — 2013 R, Electricité, deuxième expérience : oscillations amorties dans un circuit RLC série ──
+  #
+  # NOTE ÉDITORIALE — bk-2013-r-x3b (2026-09-04, ajout). Sujet SPC 2013
+  # SESSION DE RATTRAPAGE, code d'examen RS28, converti depuis
+  # docs/sujets/_incoming/pc-2013-r.md — statut « ✅ VÉRIFIÉ », passe
+  # adversariale indépendante close le 2026-09-03 (7 blocs sur 7, 33/33
+  # questions re-dérivées, barème 20,00 par quatre chemins).
+  # CHOIX DE L'`id` : le sujet NE NUMÉROTE AUCUN exercice — sa page 1
+  # annonce « quatre exercices » et son corps les nomme par domaine
+  # (Chimie, Physique nucléaire, Electricité, Mécanique). Les identifiants
+  # encodent donc la POSITION SUR LA COPIE (K-7 bis) : l'Electricité est le
+  # TROISIÈME bloc du cartouche, d'où x3 ; ses deux expériences forment UN
+  # SEUL exercice imprimé et portent x3 (première expérience,
+  # content/pc/dipole-rl/bank.yaml) et x3b (cette entrée), pour 2,25 + 2,75
+  # = 5,00, le sous-total imprimé « Electricité : (05 points) ». Les
+  # `exercise_label` restent FIDÈLES à ce que le sujet imprime, sans numéro
+  # inventé — depuis le correctif du 2026-09-03, `lib/examens.ts` lit la
+  # position sur l'identifiant dès qu'aucun libellé de l'épreuve ne porte
+  # « Exercice N », de sorte que l'épreuve compte QUATRE exercices, pas six.
+  #
+  # CROSS-LIST `aspects-energetiques`, HONORÉ SANS SECONDE ENTRÉE. La
+  # question 4 — l'énergie dissipée par effet Joule entre deux instants,
+  # obtenue par différence des énergies électrostatiques — relève aussi de
+  # la notion « Aspects énergétiques ». Elle pèse 0,5 pt sur 2,75 : très en
+  # dessous du seuil d'une entrée autonome, et le cross-list est d'ailleurs
+  # orphelin (une seule question). Règle du sas appliquée : le barème est
+  # RÉPARTI, jamais dupliqué, et un cross-list de ce poids est honoré dans
+  # le `reasoning`, qui nomme la notion sœur et refait la démonstration.
+  #
+  # ══════════════════════════════════════════════════════════════════════
+  # ⚠️ GARDE DE CONVERSION OBLIGATOIRE — DÉFAUT DU SUJET F1.
+  # ══════════════════════════════════════════════════════════════════════
+  # LA FIGURE 4 EST FIDÈLE EN PÉRIODE ET EN AMPLITUDES LUES, PAS EN
+  # AMORTISSEMENT. Mesuré sur les deux éditions (c'est le même dessin), par
+  # deux chaînes indépendantes : les extrema successifs valent 4,471 /
+  # −4,053 / +3,828 / −3,458 / +3,278 V, soit un rapport d'amplitude d'une
+  # pseudo-période à la suivante de 0,8553 (0,8561 / 0,8533 / 0,8564 ;
+  # l'ajustement log-linéaire de l'enveloppe donne 0,8557). Or, pour un RLC
+  # série, ce rapport vaut exp(−R_tot·T/2L), ce qui impose
+  #   R_tot(dessin) = −2L·ln(0,8553)/T = 49,7 Ω
+  # contre les 208,4 Ω qu'imposent R' + r dans ce circuit-ci — un FACTEUR
+  # 4,19. (Le rapport que 208,4 Ω prédirait est 0,519, contre 0,855
+  # dessinés.) Le mécanisme est identifié, sans être un fait établi : le
+  # SEUL nombre du sujet qui reproduise l'amortissement dessiné à 0,2 % près
+  # est R + r = 42 + 8,4 = 50,4 Ω, la résistance totale de la PREMIÈRE
+  # expérience — tout se passe comme si la courbe avait été calculée en
+  # gardant la résistance du montage précédent.
+  #
+  # CE QUE LA GARDE INTERDIT : AUCUNE VALEUR DE RÉSISTANCE NE DOIT ÊTRE
+  # TIRÉE DE L'ALLURE DE LA FIGURE 4, et aucune valeur de l'exercice ne doit
+  # être obtenue en recalculant l'amortissement à partir de R' et r. La
+  # question 4 se répond par LECTURE des deux amplitudes sur la courbe,
+  # comme la consigne le demande. Le calcul par R' + r donnerait
+  # u_C(3T/2) = 1,67 V et W_J = 1,72 µJ, au lieu des 3,5 V et 0,80 µJ du
+  # dessin.
+  #
+  # CE QUE LA GARDE NE COÛTE PAS : les quatre questions qui touchent la
+  # figure restent toutes résolubles — q1 (nature du régime) répond
+  # « pseudo-périodique » dans les deux cas ; q3 lit la pseudo-période, pas
+  # l'amortissement ; q4 lit deux amplitudes ; q5-2 est algébrique. Le
+  # défaut est présent dans les DEUX éditions et n'a pas été réparé : il est
+  # déclaré, ici et dans le texte de l'élève.
+  # ══════════════════════════════════════════════════════════════════════
+  - id: bk-2013-r-x3b
+    title: "Oscillations amorties dans un circuit RLC série : identification du régime, équation différentielle en u_C, inductance vérifiée par la pseudo-période, énergie dissipée par effet Joule et condition d'entretien des oscillations"
+    source:
+      year: 2013
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Electricité — Deuxième expérience : oscillations dans un circuit RLC série"
+    bareme_total: 2.75
+    duration_min: 17
+    sourcing:
+      status: sourced
+      note: >-
+        2013 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code d'examen RS28 (durée 3 h, coefficient 7),
+        AlloSchool element/94461 (édition française, cours course-422 ;
+        jumeaux 94460 / 94462, upload-70329) ; original arabe element/39382
+        et son corrigé element/39383 (cours arabophone course-311).
+        Electricité, DEUXIÈME expérience uniquement ; barème 2,75 pt
+        (0,25 + 0,5 + 0,5 + 0,5 + 0,5 + 0,5), 6 questions. RÉPARTITION SANS
+        DOUBLE COMPTAGE : la première expérience du même exercice —
+        détermination des deux caractéristiques de la bobine par la réponse
+        d'un dipôle RL à un échelon, 2,25 pt — est transcrite à part sous
+        content/pc/dipole-rl/bank.yaml, entrée bk-2013-r-x3 ; 2,25 + 2,75 =
+        5,00, le sous-total imprimé « Electricité : (05 points) ». Source
+        vérifiée par une passe adversariale indépendante du 2026-09-03
+        (docs/sujets/_incoming/pc-2013-r.md, statut « ✅ VÉRIFIÉ », 7 blocs
+        sur 7) : re-fetch complet, double téléchargement comparé octet à
+        octet, barème par quatre chemins, 33/33 questions re-dérivées — ici
+        L = 0,200 H, W_J = 8,0×10⁻⁷ J, r = 8,4 Ω. FIGURE 4 RE-MESURÉE SUR
+        DEUX CHAÎNES INDÉPENDANTES : géométrie vectorielle de l'original
+        arabe (path108, 316 sommets ; calibration reconstruite de zéro —
+        l'axe u_C = 0 retrouvé comme le TROU de la grille horizontale à
+        y = 241,125, le repère π/5 comme tracé isolé à x = 106,80) puis
+        pixels du bitmap français (775 × 456 px à 243 dpi). Lectures
+        retenues : u_C(0) = 4,471 V ; extrema successifs −4,053 / +3,828 /
+        −3,458 (à t = 1,8811 ms, soit 3T/2 = 1,8867 ms à 0,3 % près) /
+        +3,278 V ; cinq passages par zéro à 0,3165 / 0,9407 / 1,5742 /
+        2,1982 / 2,8321 ms, d'où T = 1,2578 ms, à comparer à 2π/5 =
+        1,25664 ms — écart 0,09 % ; W_J mesuré 0,807 µJ. Tout est reproduit
+        à 0,1 % entre les deux chaînes. La figure 3 (schéma du montage) a
+        été re-décrite depuis le bitmap sans relire la transcription :
+        conforme, R' et (L,r) à droite, condensateur C à gauche avec u_C à
+        sa droite, et la flèche de i vers le BAS — l'inversion de sens par
+        rapport à la figure 1 de la première expérience est réelle et
+        voulue. ⚠️ DÉFAUT DU SUJET F1, GARDE DE CONVERSION OPPOSABLE : la
+        figure 4 est fidèle en PÉRIODE et en AMPLITUDES LUES, pas en
+        AMORTISSEMENT. Sa décroissance (rapport 0,8553 par pseudo-période)
+        correspond à R_tot ≈ 49,7 Ω, alors que le circuit impose
+        R' + r = 208,4 Ω — un facteur 4,19 ; le rapport que 208,4 Ω
+        prédirait est 0,519. Le mécanisme est identifié (hypothèse étayée à
+        0,2 %, pas un fait établi) : le seul nombre du sujet qui reproduise
+        l'amortissement dessiné est R + r = 50,4 Ω, la résistance totale de
+        la PREMIÈRE expérience. AUCUNE VALEUR DE RÉSISTANCE NE DOIT ÊTRE
+        TIRÉE DE L'ALLURE DE LA FIGURE 4, et aucune valeur de l'exercice ne
+        doit être obtenue en recalculant l'amortissement depuis R' et r : la
+        question 4 se répond par lecture des deux amplitudes, comme la
+        consigne le demande. Le calcul par R' + r donnerait u_C(3T/2) =
+        1,67 V et W_J = 1,72 µJ au lieu des 3,5 V et 0,80 µJ du dessin. Le
+        défaut est présent dans les DEUX éditions, déclaré et non réparé, et
+        aucune des quatre questions qui touchent la figure n'en devient
+        insoluble. L'ÉDITION FRANÇAISE EST MINISTÉRIELLE (code RS28 encadré,
+        imprimé à l'identique dans les deux cartouches ; pieds de page vides
+        sur 6/6 ; aucun crédit de traducteur) : les écarts français/arabe
+        sont donc des défauts du DOCUMENT OFFICIEL francophone, jamais des
+        artefacts de traduction professorale. Trois écarts sur ce bloc,
+        déclarés dans l'énoncé : le renvoi « (الشكل 3) » = « (figure 3) »
+        est présent dans l'arabe et SUPPRIMÉ en français, si bien que la
+        figure 3 n'est appelée nulle part avant la question 5 (perte de
+        renvoi, la légende reste là) ; la question 3 perd le symbole L
+        (l'arabe écrit « la valeur du coefficient d'induction L de la
+        bobine étudiée ») ; la question 4 perd « dans le circuit ». Aucune
+        question n'en devient ambiguë. Coquilles de langue reproduites
+        verbatim, non réparées : « initialement chargé complétement »,
+        « la pseudopériode T est égale la période propre » (« à » manquant),
+        « on monte en sérié », « une tension u_G proportinnelle », « effet
+        joule » (éponyme sans majuscule), et surtout « A quel des trois
+        régimes d'oscillations, correspond la courbe » — la seule faute de
+        syntaxe du sujet qui tombe DANS UNE CONSIGNE NOTÉE (0,25 pt),
+        « Auquel » étant attendu, avec en prime une virgule parasite entre
+        sujet et verbe ; registre complet en
+        docs/sujets/_incoming/pc-2013-r.md §5.1 et V.9. CROSS-LIST
+        `aspects-energetiques` (question 4, l'énergie dissipée, 0,5 pt)
+        honoré dans le `reasoning`, jamais dédoublé — un cross-list
+        orphelin d'une seule question ne devient pas une entrée. LE CORRIGÉ
+        ARABE N'EST QU'UN TÉMOIN DE VALEURS, JAMAIS UN ARBITRE (K-8), et ce
+        bloc en donne deux illustrations : il écrit l'énergie totale avec un
+        SIGNE MOINS devant le terme magnétique (l'énergie magnétique est
+        +½Li², la formule imprimée est fausse même si les termes s'annulent
+        ici), et sa réponse ENCADRÉE à la question 5-1 a perdu le q du
+        dernier terme — l'équation encadrée est dimensionnellement
+        incohérente, alors que c'est exactement ce que la question demande.
+        Aucune valeur de cette entrée n'en provient.
+    intro: |-
+      **Oscillations dans un circuit RLC série — deuxième expérience (examen national, session de rattrapage 2013 — exercice « Electricité », 2,75 points sur 05,00).**
+
+      *La première expérience du même exercice — la réponse d'un dipôle RL à un échelon de tension, 2,25 pt — est indépendante et vit sous « Dipôle RL », entrée bk-2013-r-x3. Elle y établit les deux caractéristiques de la bobine réutilisée ici : $r = 8{,}4\ \Omega$ et $L \approx 0{,}20\ \text{H}$. 2,25 + 2,75 = 5,00, le barème imprimé.*
+
+      **Deuxième expérience :**
+
+      On monte la bobine précédente, en série, avec un condensateur (initialement chargé complétement *(sic)*) de capacité $C = 0{,}2\ \mu\text{F}$ et un résistor de résistance $R' = 200\ \Omega$ (**figure 3**). <!-- DIVERGENCE DÉCLARÉE, 2026-09-04 : l'original arabe RS28 écrit ici
+           « (الشكل 3) » = « (figure 3) », renvoi que l'édition française a
+           SUPPRIMÉ. Conséquence dans le document officiel français : la figure 3
+           n'est appelée nulle part avant la question 5, alors que le schéma est
+           bien légendé « Figure 3 ». Perte de renvoi, sans conséquence sur la
+           résolubilité (la légende est là) ; le renvoi est rétabli ici pour que
+           le texte se suive. L'édition française de ce sujet étant
+           MINISTÉRIELLE (code d'examen RS28 encadré, imprimé à l'identique dans
+           les deux cartouches), c'est un défaut du DOCUMENT OFFICIEL
+           francophone, pas un artefact de traduction professorale. Voir
+           docs/sujets/_incoming/pc-2013-r.md, V.6 / V.7 / V.8. -->
+
+      On obtient, à l'aide du même dispositif informatique, la courbe de la **figure 4** qui représente les variations de la tension $u_C$ aux bornes du condensateur en fonction du temps.
+
+      **Figure 3 — le montage.** Même boucle rectangulaire que la figure 1 de la première expérience, le générateur remplacé par le condensateur. **Branche haute** : depuis le coin haut-gauche, un interrupteur $K$, puis un point noir $A$. **Branche droite**, de haut en bas : un rectangle vertical (le résistor) étiqueté $R'$ à sa droite ; un point noir $B$ ; la bobine (quatre arches) étiquetée $(L,\,r)$ à sa droite ; un point noir $C$ en bas. **Branche gauche** : le condensateur (deux traits horizontaux parallèles courts interrompant le fil vertical) étiqueté $C$ à sa gauche, avec à sa droite une flèche verticale vers le haut étiquetée $u_C$ ; sur le fil vertical gauche, juste sous le coin haut, une flèche verticale vers le **bas** étiquetée $i$. *(Piège de lecture : la lettre $C$ sert deux fois sur ce schéma — le condensateur à gauche et le point $C$ en bas à droite. Et le sens de $i$ est inversé par rapport à la figure 1 : c'est voulu.)*
+
+      **Figure 4 — l'oscillogramme $u_C(t)$, décrit pour être exploité.** Tracé sur papier millimétré.
+
+      - **axe vertical** $u_C\ (\text{V})$ : **deux graduations chiffrées seulement**, $1$ et $0$, chacune suivie d'un petit tiret de repère ;
+      - **axe horizontal** $t\ (\text{ms})$ : **un seul repère chiffré**, sous un petit tiret vertical, et c'est une fraction — $\dfrac{\pi}{5}$ ;
+      - **quadrillage** : maille fine bleue, lignes fortes tous les $1\ \text{V}$ et toutes les $\pi/10\ \text{ms}$ ; cadre $t \in [0\,;\,19\pi/20]\ \text{ms}$ (soit $\approx 2{,}98\ \text{ms}$), $u_C \in [-5\,;\,+5]\ \text{V}$ ;
+      - **la courbe** part de $u_C \approx +4{,}5\ \text{V}$ à $t = 0$, descend, coupe l'axe, atteint un minimum, et oscille en s'amortissant lentement : on voit **deux minima et deux maxima** complets, puis la courbe redescend au bord droit ;
+      - amplitudes successives lisibles : $+4{,}5$ puis $\approx -4{,}0$, $+3{,}8$, $\approx -3{,}5$, $+3{,}3\ \text{V}$ ; les passages par zéro sont régulièrement espacés, et **le repère $\pi/5$ marque exactement la demi-pseudo-période**.
+
+      **⚠️ Un avertissement sur cette figure, que tu dois lire avant de t'en servir.** Le tracé est fidèle en **période** et en **amplitudes lues**, mais **pas en amortissement** : la décroissance dessinée correspondrait à une résistance totale d'environ $50\ \Omega$, alors que ce circuit-ci en impose $R' + r = 208{,}4\ \Omega$ — un facteur $4{,}2$. C'est un **défaut du sujet officiel**, présent dans les deux éditions, déclaré ici et non réparé. <!-- DÉFAUT DU SUJET F1, DÉCLARÉ ET NON RÉPARÉ, 2026-09-04.
+           Mesure refaite sur les deux editions par deux chaines independantes :
+           extrema successifs 4,471 / -4,053 / +3,828 / -3,458 / +3,278 V, soit
+           un rapport d'amplitude par pseudo-periode de 0,8553 (0,8561 / 0,8533 /
+           0,8564 ; l'ajustement log-lineaire de l'enveloppe donne 0,8557). Pour
+           un RLC serie ce rapport vaut exp(-R_tot T / 2L), d'ou
+           R_tot(dessin) = -2 L ln(0,8553) / T = 49,7 ohms, contre les 208,4 ohms
+           imposes par R' + r : facteur 4,19. Le rapport que 208,4 ohms
+           predirait est 0,519.
+           MECANISME IDENTIFIE (hypothese etayee a 0,2 %, pas un fait etabli) :
+           le seul nombre du sujet qui reproduise l'amortissement dessine est
+           R + r = 42 + 8,4 = 50,4 ohms, la resistance totale de la PREMIERE
+           experience — tout se passe comme si la courbe avait ete calculee en
+           gardant la resistance du montage precedent.
+           CE QUE LA GARDE INTERDIT : aucune valeur de resistance ne doit etre
+           tiree de l'allure de la figure 4, et aucune valeur de l'exercice ne
+           doit etre obtenue en recalculant l'amortissement depuis R' et r. La
+           question 4 se repond par LECTURE des deux amplitudes, comme la
+           consigne le demande. Le calcul par R' + r donnerait
+           u_C(3T/2) = 1,67 V et W_J = 1,72 microjoules, au lieu des 3,5 V et
+           0,80 microjoule du dessin.
+           CE QUE LA GARDE NE COUTE PAS : les quatre questions qui touchent la
+           figure restent resolubles — q1 repond « pseudo-periodique » dans les
+           deux cas, q3 lit la pseudo-periode, q4 lit deux amplitudes, q5-2 est
+           algebrique.
+           Voir docs/sujets/_incoming/pc-2013-r.md, F1 / V.5. --> **Ce que cela change pour toi : ne tire jamais une valeur de résistance de la forme de cette courbe, et ne cherche pas à retrouver les amplitudes par le calcul à partir de $R'$ et $r$ — lis-les.**
+    questions:
+      - id: q1
+        part: "Electricité — Deuxième expérience (circuit RLC série en régime libre)"
+        stem: |-
+          **1-** (0,25 pt) A quel des trois régimes d'oscillations, correspond la courbe de la figure 4 ? *(La consigne est reproduite telle qu'imprimée : « Auquel des trois régimes […] correspond » serait attendu, et la virgule entre sujet et verbe est parasite. C'est la seule faute de syntaxe du sujet qui tombe dans une consigne notée.)*
+        reasoning: |-
+          Le rung R4 pose les trois régimes, et le critère de tri est visuel avant d'être calculatoire — **combien de fois la tension change-t-elle de signe ?**
+
+          - **Régime périodique** : amplitude constante, oscillation qui ne s'éteint jamais. C'est le cas idéal $R = 0$, jamais observé sur un vrai circuit.
+          - **Régime pseudo-périodique** : la tension **oscille encore** — elle change de signe à intervalles réguliers — mais l'amplitude **décroît** d'une alternance à l'autre.
+          - **Régime apériodique** : plus d'oscillation du tout ; la tension revient vers zéro sans jamais changer de signe (ou une seule fois, dans le cas critique).
+
+          Sur la figure 4, la courbe coupe l'axe **cinq fois** et présente deux maxima et deux minima nets, tandis que les amplitudes successives diminuent ($4{,}5$, puis $4{,}0$, puis $3{,}8$, puis $3{,}5$, puis $3{,}3\ \text{V}$). Les deux critères sont réunis :
+
+          $$\boxed{\text{régime pseudo-périodique}}$$
+
+          **Le contrôle par le calcul** (rung R4) : le régime est pseudo-périodique tant que la résistance totale reste inférieure à la résistance critique,
+
+          $$R_{tot} < 2\sqrt{\frac{L}{C}} = 2\sqrt{\frac{0{,}2}{0{,}2\times10^{-6}}} = 2\sqrt{10^{6}} = 2\,000\ \Omega$$
+
+          Ici $R_{tot} = R' + r = 208{,}4\ \Omega$, très en dessous : le circuit **doit** osciller, et il oscille. *(Le calcul et le dessin sont d'accord sur la NATURE du régime — c'est la seule chose que ce contrôle établit. Sur la vitesse d'amortissement, ils divergent : voir l'avertissement en tête d'énoncé.)*
+
+          **Le piège de cette question.** Répondre « apériodique » parce que « l'amplitude diminue » : la décroissance de l'amplitude est justement la signature du pseudo-périodique. Ce qui distingue l'apériodique, c'est l'**absence d'oscillation**, pas l'amortissement.
+      - id: q2
+        stem: |-
+          **2-** (0,5 pt) Etablir l'équation différentielle vérifiée par la tension $u_C$.
+        reasoning: |-
+          **La méthode du rung R5, en trois gestes** — c'est la même que dans le cas idéal (rung R2), avec un terme de plus.
+
+          **1. Loi des mailles sur le circuit fermé.** Il n'y a pas de générateur : la somme des tensions sur la boucle est nulle. En orientant comme la figure 3 :
+
+          $$u_C + u_{R'} + u_b = 0$$
+
+          **2. Chaque tension par sa loi caractéristique**, en gardant les deux termes de la bobine réelle :
+
+          $$u_{R'} = R'\,i \qquad u_b = r\,i + L\,\frac{di}{dt}$$
+
+          **3. Tout ramener à $u_C$.** L'intensité est le débit de charge du condensateur, et la charge est reliée à la tension par $q = C\,u_C$ :
+
+          $$i = \frac{dq}{dt} = C\,\frac{du_C}{dt} \qquad\text{donc}\qquad \frac{di}{dt} = C\,\frac{d^2u_C}{dt^2}$$
+
+          En substituant puis en divisant toute la ligne par $L\,C$ pour normaliser le coefficient de la dérivée seconde :
+
+          $$u_C + (R'+r)\,C\,\frac{du_C}{dt} + L\,C\,\frac{d^2u_C}{dt^2} = 0$$
+
+          $$\boxed{\frac{d^2u_C}{dt^2} + \frac{R'+r}{L}\,\frac{du_C}{dt} + \frac{1}{L\,C}\,u_C = 0}$$
+
+          **Ce que chaque terme raconte** (rung R3). Le terme en dérivée seconde et le terme en $u_C$ sont ceux de l'oscillateur idéal : ce sont eux qui produisent le balancement d'énergie entre condensateur et bobine. Le terme du **milieu**, celui en $\dfrac{du_C}{dt}$, est le **frein** : il porte la résistance totale, il n'existe que parce que le circuit dissipe, et c'est lui qui fera décroître l'enveloppe. Le supprimer — c'est exactement ce que la question 5 va chercher à faire — rend les oscillations sinusoïdales.
+
+          **Le piège de cette question.** Oublier $r$ et écrire $R'/L$ : la bobine est réelle, sa résistance interne est en série avec $R'$, et c'est la **somme** $R' + r = 208{,}4\ \Omega$ qui amortit. Second piège : écrire $i = -C\,du_C/dt$ sans que le schéma le justifie — le signe se lit sur l'orientation de la figure 3, pas sur l'habitude.
+        steps:
+          - math: 'u_C + u_{R^{\prime}} + u_b = 0'
+            note: "Loi des mailles : aucun generateur dans le circuit, la somme des tensions est nulle."
+          - math: 'u_{R^{\prime}} = R^{\prime}\,i \qquad u_b = r\,i + L\,\frac{di}{dt}'
+            note: "Loi d'Ohm pour le resistor ; relation de la bobine reelle, avec ses deux termes."
+          - math: 'i = C\,\frac{du_C}{dt} \qquad \frac{di}{dt} = C\,\frac{d^2u_C}{dt^2}'
+            note: "L'intensite est le debit de charge du condensateur, avec q = C u_C."
+          - math: 'L\,C\,\frac{d^2u_C}{dt^2} + (R^{\prime}+r)\,C\,\frac{du_C}{dt} + u_C = 0'
+            note: "Substitution dans la loi des mailles."
+          - math: '\boxed{\frac{d^2u_C}{dt^2} + \frac{R^{\prime}+r}{L}\frac{du_C}{dt} + \frac{1}{LC}\,u_C = 0}'
+            note: "Division par LC : forme normalisee. Le terme du milieu est le frein, il porte la resistance TOTALE."
+      - id: q3
+        stem: |-
+          **3-** (0,5 pt) En considérant que la pseudopériode $T$ est égale la *(sic, pour « égale **à** la »)* période propre $T_0$ de l'oscillateur LC, vérifier la valeur de l'inductance de la bobine étudiée. *(L'original arabe précise « la valeur du coefficient d'induction **$L$** de la bobine étudiée » ; le symbole est tombé dans l'édition française — sans conséquence, $L$ étant défini dans la première expérience.)*
+        reasoning: |-
+          **L'approximation que la consigne autorise.** En toute rigueur, la pseudo-période d'un circuit amorti est légèrement supérieure à la période propre. Mais tant que l'amortissement reste faible devant la résistance critique — ici $208{,}4\ \Omega$ contre $2\,000\ \Omega$ —, l'écart est négligeable, et la consigne dit explicitement de poser $T = T_0$. On utilise donc la formule de Thomson du rung R2 :
+
+          $$T_0 = 2\pi\sqrt{L\,C} \qquad\Longrightarrow\qquad L = \frac{T^2}{4\pi^2\,C}$$
+
+          **La lecture de $T$, et c'est là tout le travail.** L'axe des temps ne porte **qu'un seul** repère chiffré, $\dfrac{\pi}{5}$, et il tombe sur la **deuxième** ligne forte du quadrillage. Deux façons de conclure, qui donnent la même chose :
+
+          - le repère $\pi/5\ \text{ms}$ marque la **demi**-pseudo-période (c'est l'intervalle entre deux passages par zéro consécutifs de même sens de traversée), donc $T = 2 \times \dfrac{\pi}{5} = \dfrac{2\pi}{5}\ \text{ms}$ ;
+          - ou bien : une cellule forte vaut $\pi/10\ \text{ms}$, et une pseudo-période en couvre quatre.
+
+          $$T = \frac{2\pi}{5}\times10^{-3}\ \text{s} \approx 1{,}26\ \text{ms}$$
+
+          **Le calcul, et pourquoi il tombe rond.**
+
+          $$L = \frac{T^2}{4\pi^2 C} = \frac{\left(\dfrac{2\pi}{5}\right)^2\times10^{-6}}{4\pi^2 \times 0{,}2\times10^{-6}} = \frac{\dfrac{4\pi^2}{25}}{4\pi^2 \times 0{,}2} = \frac{1}{25 \times 0{,}2} = \frac{1}{5}$$
+
+          $$\boxed{L = 0{,}200\ \text{H}}$$
+
+          **Les $\pi^2$ se simplifient exactement** : le repère $\pi/5$ n'a pas été choisi au hasard, il est là pour que $L$ tombe sur $1/5$ sans arrondi. Ce n'est pas une approximation, c'est exact.
+
+          **Ce que « vérifier » veut dire ici.** La première expérience (entrée bk-2013-r-x3) avait trouvé $L = \tau\,(R+r) = 0{,}2016\ \text{H}$ par une lecture de constante de temps sur un tout autre montage. Les deux valeurs concordent à $0{,}8\ \%$ : **la vérification réussit**, et c'est bien ce que la consigne demandait — pas de recalculer $L$ à neuf, mais de confirmer la valeur déjà obtenue par une seconde voie indépendante.
+
+          **Le piège de cette question.** Prendre $T = \pi/5\ \text{ms}$ en croyant que le repère marque la période entière : $L$ sortirait quatre fois trop petit ($0{,}05\ \text{H}$), et la « vérification » échouerait sans qu'on sache pourquoi. Compte les passages par zéro avant de conclure.
+        steps:
+          - math: 'T = T_0 = 2\pi\sqrt{LC} \implies L = \frac{T^2}{4\pi^2 C}'
+            note: "Formule de Thomson (rung R2), inversee. L'approximation T = T0 est autorisee par la consigne."
+          - math: 'T = 2\times\frac{\pi}{5} = \frac{2\pi}{5}\ \text{ms} \approx 1{,}26\ \text{ms}'
+            note: "Lecture sur la figure 4 : le repere pi/5 marque la demi-pseudo-periode."
+          - math: 'L = \frac{\left(\frac{2\pi}{5}\right)^2\times10^{-6}}{4\pi^2\times 0{,}2\times10^{-6}} = \frac{4\pi^2/25}{4\pi^2\times 0{,}2}'
+            note: "Application numerique : les pi carre se simplifient exactement, le repere pi/5 est choisi pour cela."
+          - math: '\boxed{L = \frac{1}{5} = 0{,}200\ \text{H}}'
+            note: "Verification reussie : la premiere experience donnait 0,2016 H, soit 0,8 pourcent d'ecart."
+      - id: q4
+        stem: |-
+          **4-** (0,5 pt) Calculer l'énergie dissipée par effet joule *(sic — « effet **Joule** », éponyme, prend une majuscule)* entre les instants $t_0 = 0$ et $t_1 = \dfrac{3}{2}T$.
+        reasoning: |-
+          **CROSS-LIST honoré ici (« Aspects énergétiques »).** Le bilan d'énergie d'un oscillateur amorti relève aussi de cette autre notion. Il pèse cette seule question, $0{,}5\ \text{pt}$ sur les $2{,}75$ du bloc : la règle de la maison veut qu'un cross-list de ce poids — et orphelin, une seule question — soit honoré dans le raisonnement plutôt que dédoublé en entrée. La démonstration est donc refaite ici en entier.
+
+          **Le principe, et il tient en une phrase** (rung R1, puis R3). L'énergie totale du circuit se partage à chaque instant entre le condensateur et la bobine :
+
+          $$\mathcal{E}(t) = \underbrace{\frac{1}{2}C\,u_C^2}_{\text{électrostatique}} + \underbrace{\frac{1}{2}L\,i^2}_{\text{magnétique}}$$
+
+          Cette énergie **diminue**, et tout ce qu'elle perd est dissipé par effet Joule dans $R' + r$. L'énergie dissipée entre deux instants est donc simplement la **différence** des énergies totales :
+
+          $$W_J = \mathcal{E}(t_0) - \mathcal{E}(t_1)$$
+
+          **L'astuce que le sujet a préparée, et c'est elle qui rend la question faisable.** Aux **deux** instants demandés, le courant est **nul** :
+
+          - à $t_0 = 0$, le condensateur est initialement chargé complètement et on vient de fermer le circuit : rien ne circule encore ;
+          - à $t_1 = \dfrac{3}{2}T$, la courbe $u_C(t)$ passe par un **extremum** — or $i = C\,\dfrac{du_C}{dt}$, et la dérivée d'une fonction est nulle en son extremum.
+
+          Le terme magnétique $\frac12 L i^2$ s'annule donc aux deux bornes, et il ne reste que l'électrostatique :
+
+          $$\boxed{W_J = \frac{1}{2}C\left[u_C^2(0) - u_C^2\!\left(\tfrac{3}{2}T\right)\right]}$$
+
+          **Les deux lectures sur la figure 4** — et c'est bien ce que la consigne demande, **lire**, pas calculer :
+
+          $$u_C(0) = 4{,}5\ \text{V} \qquad u_C\!\left(\tfrac{3}{2}T\right) = -3{,}5\ \text{V}$$
+
+          *(La seconde valeur est le deuxième minimum de la courbe. Il tombe bien à $3T/2$ : mesuré sur le tracé, l'extremum est à $1{,}881\ \text{ms}$ contre $3T/2 = 1{,}887\ \text{ms}$.)*
+
+          $$W_J = \frac{1}{2}\times 0{,}2\times10^{-6}\times\left(4{,}5^2 - 3{,}5^2\right) = 0{,}1\times10^{-6}\times(20{,}25 - 12{,}25)$$
+
+          $$\boxed{W_J = 8{,}0\times10^{-7}\ \text{J} = 0{,}80\ \mu\text{J}}$$
+
+          **⚠️ La garde de cette question, et elle est la raison pour laquelle l'avertissement figure en tête d'énoncé.** Cette valeur est cohérente avec le **dessin**, pas avec la résistance imprimée du circuit. Un calcul de $u_C(3T/2)$ à partir de $R' + r = 208{,}4\ \Omega$ donnerait $1{,}67\ \text{V}$ et une énergie dissipée de $1{,}72\ \mu\text{J}$ — plus du double. **La consigne demande de lire, et il faut lire** : c'est la seule voie cohérente avec la figure, et c'est celle que le sujet attend.
+
+          **Le piège de cette question.** Prendre le signe de $u_C(3T/2)$ au sérieux dans le calcul : l'énergie dépend du **carré** de la tension, donc $(-3{,}5)^2 = 12{,}25$, et le signe disparaît. Second piège : oublier que le courant est nul aux deux bornes et tenter de calculer $\frac12 L i^2$ — inutile, et impossible sans dériver la courbe à la main.
+        steps:
+          - math: '\mathcal{E} = \frac{1}{2}C\,u_C^2 + \frac{1}{2}L\,i^2'
+            note: "Energie totale du circuit : electrostatique dans le condensateur, magnetique dans la bobine (rung R1)."
+          - math: 'i(t_0) = 0 \quad\text{et}\quad i(t_1) = 0 \qquad \left(i = C\frac{du_C}{dt},\ \text{nul aux extremums de } u_C\right)'
+            note: "A t = 0 le circuit vient d'etre ferme ; a t = 3T/2 la courbe passe par un extremum. Le terme magnetique s'annule aux deux bornes."
+          - math: '\boxed{W_J = \frac{1}{2}C\left[u_C^2(0) - u_C^2\!\left(\tfrac{3}{2}T\right)\right]}'
+            note: "L'energie dissipee par effet Joule est la difference des energies totales, ici purement electrostatiques."
+          - math: 'u_C(0) = 4{,}5\ \text{V} \qquad u_C\!\left(\tfrac{3}{2}T\right) = -3{,}5\ \text{V}'
+            note: "Deux LECTURES sur la figure 4, comme la consigne le demande. Ne jamais recalculer ces amplitudes depuis R prime et r : voir l'avertissement en tete d'enonce."
+          - math: 'W_J = \frac{1}{2}\times 0{,}2\times10^{-6}\times\left(4{,}5^2 - 3{,}5^2\right) = 0{,}1\times10^{-6}\times 8{,}0'
+            note: "Application numerique : le signe de la seconde amplitude disparait, l'energie depend du carre."
+          - math: '\boxed{W_J = 8{,}0\times10^{-7}\ \text{J} = 0{,}80\ \mu\text{J}}'
+            note: "Valeur mesuree sur le trace avec les amplitudes fines (4,471 et 3,458) : 0,807 microjoule."
+      - id: q5
+        part: "5- Entretien des oscillations"
+        stem: |-
+          **5-1-** (0,5 pt) Pour compenser l'énergie dissipée, on monte en sérié *(sic)* dans le circuit précédent (figure 3), un générateur maintenant entre ses bornes une tension $u_G$ proportinnelle *(sic)* à l'intensité du courant, tel que $u_G(t) = k\cdot i(t)$.
+
+          Etablir, dans ce cas, l'équation différentielle vérifiée par la charge $q(t)$ du condensateur.
+        reasoning: |-
+          C'est exactement le dispositif du rung R7 — le générateur d'entretien —, et la démarche est celle de la question 2, avec **une** modification : la somme des tensions n'est plus nulle, elle vaut $u_G$.
+
+          **1. La loi des mailles, avec le générateur.**
+
+          $$u_C + u_{R'} + u_b = u_G = k\,i$$
+
+          **2. Tout exprimer avec $q$**, puisque c'est la variable demandée. Ici la relation à connaître est $i = \dfrac{dq}{dt}$, et la charge se relie à la tension du condensateur par $u_C = \dfrac{q}{C}$ :
+
+          $$\frac{q}{C} + R'\,\frac{dq}{dt} + r\,\frac{dq}{dt} + L\,\frac{d^2q}{dt^2} = k\,\frac{dq}{dt}$$
+
+          **3. Tout passer à gauche et regrouper les termes en $\dfrac{dq}{dt}$** — c'est ce regroupement qui est le cœur de la question :
+
+          $$L\,\frac{d^2q}{dt^2} + \left(R' + r - k\right)\frac{dq}{dt} + \frac{q}{C} = 0$$
+
+          En divisant par $L$ :
+
+          $$\boxed{\frac{d^2q}{dt^2} + \frac{R' + r - k}{L}\,\frac{dq}{dt} + \frac{1}{L\,C}\,q = 0}$$
+
+          **Ce que cette équation dit, et pourquoi elle prépare la question suivante.** Elle a exactement la forme de celle de la question 2 — même dérivée seconde, même terme de rappel —, mais le coefficient d'amortissement n'est plus $R' + r$ : c'est $R' + r - k$. Le générateur **retranche** de la résistance : il injecte à chaque instant une énergie proportionnelle au courant, c'est-à-dire exactement là où l'effet Joule en prélève. Régler $k$, c'est régler le frein.
+
+          **Le piège de cette question, et le corrigé officiel arabe y est tombé.** Le dernier terme est $\dfrac{q}{LC}$, avec le $q$ : une équation qui s'arrêterait à $\dfrac{1}{LC}$ serait **dimensionnellement incohérente** (on additionnerait une charge par seconde carrée et un inverse de temps carré). Vérifie toujours qu'aucune variable n'a disparu en recopiant. Second piège : oublier $r$ et écrire $R' - k$ — la résistance interne de la bobine reste dans la maille.
+        steps:
+          - math: 'u_C + u_{R^{\prime}} + u_b = u_G = k\,i'
+            note: "Loi des mailles avec le generateur d'entretien : la somme des tensions n'est plus nulle."
+          - math: 'u_C = \frac{q}{C} \qquad i = \frac{dq}{dt} \qquad u_b = r\,\frac{dq}{dt} + L\,\frac{d^2q}{dt^2}'
+            note: "Toutes les tensions exprimees avec la charge q, la variable demandee."
+          - math: '\frac{q}{C} + (R^{\prime}+r)\frac{dq}{dt} + L\frac{d^2q}{dt^2} = k\,\frac{dq}{dt}'
+            note: "Substitution dans la loi des mailles."
+          - math: 'L\,\frac{d^2q}{dt^2} + \left(R^{\prime}+r-k\right)\frac{dq}{dt} + \frac{q}{C} = 0'
+            note: "Regroupement des termes du premier ordre : le generateur retranche k de la resistance."
+          - math: '\boxed{\frac{d^2q}{dt^2} + \frac{R^{\prime}+r-k}{L}\frac{dq}{dt} + \frac{1}{LC}\,q = 0}'
+            note: "Division par L. Attention : le dernier terme porte bien q, sans quoi l'equation serait dimensionnellement incoherente."
+      - id: q6
+        stem: |-
+          **5-2-** (0,5 pt) On fixe le paramètre $k$ sur la valeur $208{,}4$ pour obtenir des oscillations électriques sinusoïdales. Vérifier la valeur de la résistance $r$ de la bobine étudiée.
+        reasoning: |-
+          **La condition d'entretien, c'est le rung R7.** Des oscillations **sinusoïdales** sont des oscillations d'amplitude **constante** : l'enveloppe ne décroît plus. Or, dans l'équation de la question 5-1, tout l'amortissement est porté par le terme du premier ordre. Il faut donc, et il suffit, que son coefficient s'annule :
+
+          $$R' + r - k = 0$$
+
+          L'équation se réduit alors à $\dfrac{d^2q}{dt^2} + \dfrac{1}{LC}\,q = 0$ — l'oscillateur harmonique idéal du rung R2, dont la solution est une sinusoïde pure de période $T_0 = 2\pi\sqrt{LC}$.
+
+          **L'inversion, immédiate :**
+
+          $$\boxed{r = k - R' = 208{,}4 - 200 = 8{,}4\ \Omega}$$
+
+          **Ce que « vérifier » veut dire ici, et pourquoi c'est le plus beau bouclage du sujet.** Cette valeur n'est pas nouvelle : la **première expérience** (entrée bk-2013-r-x3, question 3-1) l'avait obtenue en lisant l'asymptote de la courbe $u_R(t)$ sur un tout autre montage — $r = R\left(\dfrac{E}{u_R(\infty)} - 1\right) = 42\left(\dfrac{12}{10}-1\right) = 8{,}4\ \Omega$. Deux chaînes **totalement indépendantes** :
+
+          - l'une **graphique**, sur un dipôle RL en régime transitoire ;
+          - l'autre **purement algébrique**, sur un circuit RLC entretenu, sans lire aucune courbe.
+
+          Elles donnent le même nombre. C'est la meilleure validation possible d'une mesure expérimentale, et c'est manifestement ce que le sujet cherchait en construisant l'exercice en deux expériences sur **la même** bobine.
+
+          **Et c'est aussi la seule question de ce bloc que le défaut de la figure 4 ne touche pas** : elle ne lit rien sur la courbe. Elle est donc entièrement à l'abri de l'avertissement porté en tête d'énoncé.
+
+          **Le piège de cette question.** Écrire $k = R'$ en oubliant $r$, par analogie mécanique avec la « condition d'entretien $k = R$ » du cours : dans ce circuit-ci, la résistance à compenser est la résistance **totale** de la maille, $R' + r$, résistance interne de la bobine comprise. Le cours dit $k = R_{tot}$ ; ici $R_{tot} = R' + r$.
+        steps:
+          - math: '\frac{d^2q}{dt^2} + \frac{R^{\prime}+r-k}{L}\frac{dq}{dt} + \frac{1}{LC}\,q = 0'
+            note: "Equation etablie a la question 5-1 : tout l'amortissement est dans le terme du premier ordre."
+          - math: '\text{oscillations sinusoidales} \iff R^{\prime}+r-k = 0'
+            note: "Condition d'entretien (rung R7) : le coefficient d'amortissement doit s'annuler."
+          - math: '\frac{d^2q}{dt^2} + \frac{1}{LC}\,q = 0'
+            note: "Ce qui reste : l'oscillateur harmonique ideal, de solution sinusoidale pure."
+          - math: '\boxed{r = k - R^{\prime} = 208{,}4 - 200 = 8{,}4\ \Omega}'
+            note: "Verification reussie : la premiere experience donnait deja 8,4 ohms par lecture graphique, sur un autre montage."

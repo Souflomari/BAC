@@ -311,3 +311,474 @@ entries:
             note: "Second terme de M, avec sin 45 degres environ 0,707."
           - math: '\boxed{\mathcal{M} = 40{,}8+70{,}7 \approx 111{,}5\ \text{N}\cdot\text{m}}'
             note: "Moment moteur necessaire, coherent avec la physique re-derivee en sourcing."
+
+  # ── bk-2013-r-x4 — 2013 R, Mécanique : mouvement d'un pendule pesant (balancier d'horloge) ──
+  #
+  # NOTE ÉDITORIALE — bk-2013-r-x4 (2026-09-04, ajout). Sujet SPC 2013
+  # SESSION DE RATTRAPAGE, code d'examen RS28, converti depuis
+  # docs/sujets/_incoming/pc-2013-r.md — statut « ✅ VÉRIFIÉ », passe
+  # adversariale indépendante close le 2026-09-03 (7 blocs sur 7, 33/33
+  # questions re-dérivées, barème 20,00 par quatre chemins).
+  # CHOIX DE L'`id` : le sujet NE NUMÉROTE AUCUN exercice — sa page 1
+  # annonce « Le sujet se compose de quatre exercices : Un exercice de
+  # chimie et trois exercices de physique », et son corps les nomme par
+  # domaine (Chimie, Physique nucléaire, Electricité, Mécanique). Les
+  # identifiants encodent donc la POSITION SUR LA COPIE (K-7 bis) : la
+  # Mécanique est le QUATRIÈME bloc du cartouche, d'où x4, sans suffixe
+  # puisque le routage retenu ne partitionne pas ce bloc. Les
+  # `exercise_label` restent FIDÈLES à ce que le sujet imprime, sans numéro
+  # inventé — depuis le correctif du 2026-09-03, `lib/examens.ts` lit la
+  # position sur l'identifiant dès qu'aucun libellé de l'épreuve ne porte
+  # « Exercice N », de sorte que l'épreuve s'ordonne Chimie / nucléaire /
+  # électricité / mécanique et compte QUATRE exercices.
+  # C'EST LE BLOC LE PLUS LOURD DU SUJET : 5,50 pt, et le seul dont les
+  # questions valent 1 point pièce. L'épreuve concentre son barème sur la
+  # mécanique.
+  #
+  # ══════════════════════════════════════════════════════════════════════
+  # NOTE ÉDITORIALE — ROUTAGE : UNE ALTERNATIVE OWNER EST OUVERTE ICI.
+  # ══════════════════════════════════════════════════════════════════════
+  # ROUTAGE APPLIQUÉ : le bloc reste ENTIER dans `rotation-axe-fixe`
+  # (5,50 pt, 6 questions), et son cross-list `systemes-oscillants` — toute
+  # la partie 2, « Etude énergétique du pendule pesant », questions 2-1 et
+  # 2-2, 1,75 pt — est honoré dans le `reasoning`, jamais dédoublé.
+  #
+  # ALTERNATIVE DÉFENDABLE, NOMMÉE PAR LE SAS ET NON RETENUE : partitionner
+  # selon le découpage que le sujet fait lui-même — « 1- Etude dynamique »
+  # (questions 1-1 à 1-4, 3,75 pt) restant ici, « 2- Etude énergétique »
+  # (questions 2-1 et 2-2, 1,75 pt) partant vers
+  # content/pc/systemes-oscillants/bank.yaml sous l'identifiant
+  # bk-2013-r-x4b. 3,75 + 1,75 = 5,50 : la somme retomberait juste, et LE
+  # CORPUS A UN PRÉCÉDENT DE PARTITION EXACTEMENT DE CETTE FORME —
+  # bk-2011-r-x1 (première entrée de ce fichier, `rotation-axe-fixe`) et
+  # bk-2011-r-x4b (`systemes-oscillants`), deux morceaux du même exercice
+  # de mécanique 2011 R. L'alternative est donc sérieuse, et elle a pour
+  # elle le découpage imprimé.
+  #
+  # L'ARGUMENT DU SAS POUR NE PAS L'AVOIR RETENUE, mot pour mot : « en
+  # 2011 R les deux volets étaient DEUX SITUATIONS PHYSIQUES DISTINCTES ;
+  # ici c'est LE MÊME pendule, la MÊME figure 1, le MÊME θₘ, le MÊME J_Δ —
+  # la partie 2 est illisible sans la partie 1. […] Elle est défendable ;
+  # je ne la retiens pas parce qu'elle sépare une lecture de diagramme de
+  # l'objet qu'elle décrit. » La vérification a durci l'argument : « le
+  # bloc 7 est encore plus soudé que le § 7 ne le dit — la partie 2 lit la
+  # figure 2, qui est le diagramme d'énergie DU PENDULE DE LA FIGURE 1,
+  # avec le même θₘ, et le tracé est calculé à partir de m et ℓ de la
+  # partie 1. Les séparer casserait la chaîne numérique, pas seulement la
+  # narration. » L'OWNER RESTE JUGE : l'alternative est chiffrée et nommée
+  # ici, sans qu'il ait à rouvrir le sujet.
+  # ══════════════════════════════════════════════════════════════════════
+  #
+  # ══════════════════════════════════════════════════════════════════════
+  # ⚠️ GARDE DE LECTURE OPPOSABLE — E_m = 22,7 mJ, JAMAIS 25 mJ.
+  # ══════════════════════════════════════════════════════════════════════
+  # Le corrigé arabe de ce sujet lit E_m = 25 mJ sur la figure 2 et en tire
+  # une vitesse angulaire de 0,44 rad/s à la question 2-2. LES DEUX VALEURS
+  # SONT FAUSSES, et c'est tranché à 68 sigma — par la mesure ET par la
+  # physique :
+  #   • CHAÎNE A, géométrie vectorielle de l'original arabe : ajustement
+  #     parabolique sur les 99 sommets du tracé, rms 0,005 mJ, extrémités
+  #     symétriques à 0,003 mJ près → E_pp(±θm) = 22,728 mJ. Calibration
+  #     SURDÉTERMINÉE : les lignes de base des étiquettes 10 et 20 donnent
+  #     5,700 pt/mJ, et le zéro extrapolé depuis elles tombe EXACTEMENT sur
+  #     l'axe dessiné (y = 610,00 pt).
+  #   • CHAÎNE B, pixels du bitmap français : courbe suivie sur 381
+  #     colonnes, rms 0,033 mJ → 22,75 mJ. Les deux chaînes tombent à 0,1 %
+  #     l'une de l'autre.
+  #   • CHAÎNE C, purement physique, et c'est la plus forte : l'énoncé
+  #     IMPOSE sin θ ≈ θ, donc le potentiel HARMONIQUE
+  #     E_pp = ½·m·g·(ℓ/2)·θ². Avec les données imprimées m = 0,203 kg,
+  #     ℓ = 1,5 m et g = 9,8 N/kg, pour θm = 10,00° rond :
+  #       ½ × 0,203 × 9,8 × 0,75 × (10°)² = 22,725 mJ
+  #     contre 22,728 mJ MESURÉS sur le tracé vectoriel — 0,013 % d'écart,
+  #     soit 3 microjoules. Le dessinateur a porté la formule ; ce n'est pas
+  #     une coïncidence, c'est une signature.
+  # CE QUE 25 mJ EXIGERAIT : les extrémités de la parabole sont mesurées à
+  # y = 480,45 pt, quand 25 mJ tomberait à y = 467,50 — un écart de
+  # 12,95 pt, soit 8,6 largeurs de trait, et 68 sigma sur la chaîne B.
+  # ET LE CORRIGÉ SE RÉFUTE LUI-MÊME, de deux façons : (a) il lit
+  # correctement E_pp(2θm/3) = 10 mJ, et sur une courbe dont la
+  # parabolicité est établie à 4·10⁻⁵ près, 10 mJ IMPOSE E_m = 22,5 mJ ;
+  # (b) sur sa propre figure annotée, la ligne horizontale bleue qu'il
+  # légende « E_m = E_pp max » au niveau 25 passe VISIBLEMENT AU-DESSUS des
+  # extrémités de la parabole, pendant que ses traits de construction en
+  # 2θm/3 touchent bien la courbe à 10 mJ.
+  # VALEURS D'AFFICHAGE RETENUES, ET OPPOSABLES : E_m = 22,7 mJ et
+  # |θ̇| = 0,41 rad/s. Une conversion qui reprendrait 25 mJ / 0,44 rad/s
+  # publierait une valeur que le dessin réfute à 68 sigma. Le contenu élève
+  # de cette entrée n'écrit JAMAIS 25. Tolérance d'élève déclarée dans le
+  # raisonnement : une lecture « 22,5 mJ » à la demi-cellule est
+  # parfaitement recevable et redonne 0,41 rad/s.
+  # ══════════════════════════════════════════════════════════════════════
+  - id: bk-2013-r-x4
+    title: "Balancier d'horloge modélisé par un pendule pesant : équation différentielle par la RFD de rotation, équation horaire, période propre, pendule simple synchrone, puis lecture du diagramme d'énergie potentielle"
+    source:
+      year: 2013
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Mécanique — Etude dynamique et énergétique d'un pendule pesant"
+    bareme_total: 5.5
+    duration_min: 33
+    sourcing:
+      status: sourced
+      note: >-
+        2013 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code d'examen RS28 (durée 3 h, coefficient 7),
+        AlloSchool element/94461 (édition française, cours course-422 ;
+        jumeaux 94460 / 94462, upload-70329) ; original arabe element/39382
+        et son corrigé element/39383 (cours arabophone course-311).
+        Exercice « Mécanique (05,5 points) », entier ; barème 5,50 pt
+        (1 + 1 + 1 + 0,75 + 0,75 + 1), 6 questions, égal au sous-total
+        imprimé — c'est le seul bloc du sujet dont les questions valent
+        1 point, l'épreuve concentrant son barème lourd sur la mécanique.
+        Source vérifiée par une passe adversariale indépendante du
+        2026-09-03 (docs/sujets/_incoming/pc-2013-r.md, statut « ✅
+        VÉRIFIÉ », 7 blocs sur 7) : re-fetch complet, double téléchargement
+        comparé octet à octet, barème par quatre chemins, 33/33 questions
+        re-dérivées — ici L = 1,0 m, E_m = 22,73 mJ, |θ̇| = 0,4073 rad/s.
+        ⚠️ GARDE DE LECTURE OPPOSABLE, LA PLUS CHARGÉE DU SUJET (1,75 pt en
+        jeu) : E_m = 22,7 mJ et |θ̇| = 0,41 rad/s — JAMAIS les 25 mJ /
+        0,44 rad/s que publie le corrigé arabe. Tranché à 68 sigma par
+        TROIS chaînes indépendantes. (A) Géométrie vectorielle de
+        l'original : ajustement parabolique sur les 99 sommets du tracé,
+        rms 0,005 mJ, extrémités symétriques à 0,003 mJ →
+        E_pp(±θm) = 22,728 mJ ; calibration surdéterminée, le zéro
+        extrapolé depuis les lignes de base des étiquettes 10 et 20 tombe
+        exactement sur l'axe dessiné. (B) Pixels du bitmap français, courbe
+        suivie sur 381 colonnes, rms 0,033 → 22,75 mJ ; les deux chaînes
+        concordent à 0,1 %. (C) Preuve physique : l'énoncé IMPOSE
+        sin θ ≈ θ, donc le potentiel harmonique ½·m·g·(ℓ/2)·θ² ; avec les
+        données imprimées m = 0,203 kg, ℓ = 1,5 m et g = 9,8 N/kg, pour
+        θm = 10,00° rond, cela donne 22,725 mJ contre 22,728 mesurés —
+        0,013 % d'écart, soit 3 microjoules. Le tracé N'EST PAS
+        approximativement compatible avec θm = 10° : il EST la courbe
+        calculée. 25 mJ tomberait à 12,95 pt des extrémités mesurées, soit
+        8,6 largeurs de trait, et exigerait de lire 11,11 mJ en 2θm/3 là où
+        le corrigé lit correctement 10. LE CORRIGÉ SE RÉFUTE LUI-MÊME : sa
+        lecture E_pp(2θm/3) = 10 mJ impose E_m = 22,5 mJ sur une courbe
+        dont la parabolicité est établie à 4·10⁻⁵ près, et sur sa propre
+        figure annotée la ligne « E_m = E_pp max » tracée au niveau 25
+        passe VISIBLEMENT au-dessus des extrémités de la parabole, pendant
+        que ses traits en 2θm/3 touchent bien la courbe. Le contenu élève
+        de cette entrée n'écrit jamais 25 ; la tolérance déclarée est une
+        lecture « 22,5 mJ » à la demi-cellule, qui redonne 0,41 rad/s.
+        DESCRIPTION DE FIGURE RECTIFIÉE PAR LA VÉRIFICATION : le
+        quadrillage de la figure 2 a TROIS niveaux — fin 0,2 pt bleu
+        (0,5 mJ ; θm/30), INTERMÉDIAIRE 0,5 pt bleu (2,5 mJ ; θm/6), fort
+        1,0 pt noir (5 mJ ; θm/3) — et non deux ; le cadre déborde de
+        0,200·θm exactement de part et d'autre de ±θm. La figure 1 a été
+        re-décrite depuis le bitmap sans relire la transcription :
+        conforme, avec un ajout — le point O de l'axe Z est à la MÊME
+        hauteur que G₀, ce qui matérialise le plan de référence E_pp = 0
+        que l'énoncé définit. Le POINT sur θ̇ de la question 2-2 est
+        confirmé IMPRIMÉ dans l'édition française (rendu 600 dpi ; la
+        couche de texte le perd et rend un θ nu — ne pas s'y fier).
+        MARQUEUR DE FABRICATION, utile à qui relira : le sujet a été
+        construit avec g = 9,8 N/kg, valeur qu'il ne donne NULLE PART —
+        aucune des six questions n'en a besoin (1-4 donne L = 2ℓ/3 sans g,
+        et 2-2 passe par E_c et J_Δ), mais la figure 2 en dépend. L'ÉDITION
+        FRANÇAISE EST MINISTÉRIELLE (code RS28 encadré, imprimé à
+        l'identique dans les deux cartouches ; pieds de page vides sur
+        6/6 ; aucun crédit de traducteur) : les écarts français/arabe sont
+        donc des défauts du DOCUMENT OFFICIEL francophone, jamais des
+        artefacts de traduction professorale. Écarts sur ce bloc, déclarés
+        dans l'énoncé : « centre de gravité » là où l'arabe écrit « centre
+        d'INERTIE » (مركز القصور) ; « (E_PP = 0) » là où l'arabe écrit
+        « E_PP(0) = 0 » (l'argument est tombé) ; la consigne 2-1 affaiblie
+        de « détermine » (حدد) à « Donner » — la seule consigne affaiblie
+        des 33 ; et deux pertes légères dans l'amorce historique (« pour
+        mesurer le temps » supprimé ; « LA PREMIÈRE horloge murale »
+        devenue « l'horloge murale »). Aucune question n'en devient
+        ambiguë. Coquilles de langue reproduites verbatim, non réparées :
+        « les hologes », « plusieurs types tel que », « jusqu'à ce que le
+        savant Huygens inventa » (le subjonctif est attendu), « On admet
+        que dans le cas des petites oscillations que » (« que » redoublé),
+        « la periode propre », « l'énrgie mécanique », « le pendule simple
+        synchrone au pendule pesant » — registre complet en
+        docs/sujets/_incoming/pc-2013-r.md §5.1 et V.9. TRAIT DU SUJET, PAS
+        DÉFAUT : la numérotation des figures repart à 1 dans l'exercice de
+        mécanique (le sujet porte donc deux « Figure 1 » et deux
+        « Figure 2 »), à l'identique dans l'original arabe — piège de
+        lecture signalé, non corrigé. CROSS-LIST `systemes-oscillants`
+        (toute la partie 2, étude énergétique, 1,75 pt) honoré dans le
+        `reasoning`, jamais dédoublé — voir la NOTE ÉDITORIALE de routage
+        ci-dessus, qui pose l'alternative owner et l'argument du sas. LE
+        CORRIGÉ ARABE N'EST QU'UN TÉMOIN DE VALEURS, JAMAIS UN ARBITRE
+        (K-8) : sa méthode est irréprochable sur ce bloc (E_m = E_c + E_pp,
+        E_c nulle en θm), mais sa lecture de figure est fausse, et le
+        dessin — y compris son propre dessin annoté — lui donne tort.
+        Aucune valeur de cette entrée n'en provient.
+    intro: |-
+      **Mouvement d'un pendule pesant — le balancier d'une horloge murale (examen national, session de rattrapage 2013 — exercice « Mécanique », 5,50 points).**
+
+      L'homme a utilisé les hologes *(sic, pour « horloges »)* depuis longtemps, il a inventé plusieurs types tel que *(sic, pour « tels que »)* : l'horloge solaire, l'horloge hydraulique, l'horloge à sable… jusqu'à ce que le savant Huygens inventa *(sic — « jusqu'à ce que » régit le subjonctif)* l'horloge murale en 1657.
+
+      Le fonctionnement de cette horloge dépend de son balancier, qu'on modélise par un **pendule pesant**, effectuant des petites oscillations libres sans frottements.
+
+      Le pendule étudié est constitué d'une barre homogène $AB$, de masse $m = 0{,}203\ \text{kg}$, et de longueur $AB = \ell = 1{,}5\ \text{m}$, susceptible de tourner dans un plan vertical autour d'un axe horizontal $(\Delta)$, fixe et passant par son extrémité $A$ (**figure 1**).
+
+      On étudie le mouvement du pendule dans un repère lié à la terre et supposé galiléen. On repère à chaque instant le pendule par son abscisse angulaire $\theta$.
+
+      Le moment d'inertie de la barre par rapport à l'axe $(\Delta)$ est : $J_\Delta = \dfrac{1}{3}\,m\,\ell^2$.
+
+      On admet que dans le cas des petites oscillations que *(sic — « que » redoublé)* : $\sin\theta \approx \theta$ avec $\theta$ en radian.
+
+      On désigne l'intensité de pesanteur par la lettre $g$. *(Le sujet ne donne aucune valeur numérique de $g$ — et aucune des six questions n'en a besoin.)*
+
+      On écarte le pendule de sa position d'équilibre stable d'un petit angle $\theta_m$ dans le sens positif, et on le lâche sans vitesse initiale à un instant choisi comme origine des temps.
+
+      **Figure 1 — le pendule.** Schéma en élévation. À gauche, un axe vertical $Z$ fléché vers le haut, avec un point $O$ matérialisé par un tiret sur l'axe, à mi-hauteur — **$O$ est à la même hauteur que $G_0$**, ce qui matérialise le plan de référence défini plus bas. En haut, un point $A$ ; juste à sa gauche, l'étiquette $(\Delta)$ — l'axe de rotation vu en bout. De $A$ part une barre épaisse, oblique vers le bas-droite, qui se termine en $B$. De $A$ part aussi une verticale en tirets (la position d'équilibre de la barre) ; l'angle entre cette verticale et la barre est coté $\theta$, avec un petit arc. Sur la verticale en tirets, à mi-longueur, un point $G_0$ ; sur la barre, à la même distance de $A$, un point $G$ ; un arc en tirets relie $G_0$ à $G$. En bas à droite, sous $B$, une flèche courbe et un signe $+$ fixent le sens positif — celui de l'écartement dessiné.
+
+      ---
+
+      **2- Etude énergétique du pendule pesant** *(données communes aux questions 2-1 et 2-2)* **:**
+
+      On choisit le plan horizontal contenant le point $G_0$, position du centre de gravité *(l'original arabe écrit « centre d'**inertie** » ; pour une barre homogène les deux points coïncident, la lecture n'est pas ambiguë)* $G$ de la barre à la position d'équilibre stable, comme état de référence de l'énergie potentielle de pesanteur ($E_{PP} = 0$).
+
+      La **figure 2** représente les variations de l'énergie potentielle de pesanteur $E_{PP}(\theta)$ du pendule étudié dans l'intervalle $\left[-\theta_m\,,\,\theta_m\right]$.
+
+      **Figure 2 — le diagramme d'énergie, décrit pour être exploité.** Tracé sur papier millimétré. *(Attention : le sujet remet ses numéros de figure à 1 dans l'exercice de mécanique — cette « figure 2 » n'a rien à voir avec celle de l'exercice d'électricité. C'est un trait du sujet, présent dans les deux éditions.)*
+
+      - **axe vertical** $E_{pp}\ (\text{mJ})$, flèche vers le haut, graduations chiffrées **10** et **20** seulement ; **axe horizontal** $\theta\ (\text{rad})$, avec **trois repères portés sous l'axe** : $-\theta_m$, $0$, $\theta_m$ ;
+      - **quadrillage à trois niveaux** : maille fine de $0{,}5\ \text{mJ}$ (et $\theta_m/30$ en abscisse), lignes intermédiaires tous les $2{,}5\ \text{mJ}$ (et $\theta_m/6$), lignes fortes tous les $5\ \text{mJ}$ (et $\theta_m/3$) ;
+      - **cadre** : $E_{pp} \in [0\,;\,30]\ \text{mJ}$ ; en abscisse, le cadre déborde de $0{,}2\,\theta_m$ de part et d'autre de $\pm\theta_m$ ;
+      - **la courbe** est une **parabole** de sommet exactement à l'origine $(0\,;\,0)$, tracée d'un bord à l'autre entre les verticales $-\theta_m$ et $+\theta_m$, parfaitement symétrique ;
+      - **les deux lectures dont tu auras besoin**, mesurées sur le tracé : les extrémités de la parabole sont à $E_{pp}(\pm\theta_m) \approx 22{,}7\ \text{mJ}$ *(un peu au-dessus de la ligne intermédiaire $22{,}5$)*, et $E_{pp}\!\left(\pm\tfrac{2}{3}\theta_m\right) \approx 10{,}1\ \text{mJ}$ *(pratiquement sur la ligne fine $10$)*.
+    questions:
+      - id: q1
+        part: "1- Etude dynamique du pendule pesant"
+        stem: |-
+          **1-1-** (1 pt) Par application de la relation fondamentale de la dynamique de rotation, établir l'équation différentielle du mouvement du pendule.
+        reasoning: |-
+          C'est le rung R6 dans son intégralité, et il met au travail les rungs R2, R3 et R4 en même temps. Trois gestes, dans l'ordre.
+
+          **1. Le bilan des moments, par rapport à l'axe $(\Delta)$ — pas des forces, des MOMENTS.** Deux forces s'exercent sur la barre :
+
+          - la **réaction de l'axe** $\vec R$, appliquée **sur l'axe lui-même** : sa ligne d'action passe par $(\Delta)$, donc son bras de levier est nul, donc son moment est nul (rung R2). Elle disparaît du bilan — et il faut le **dire**, pas l'oublier en silence ;
+          - le **poids** $\vec P = m\vec g$, appliqué au centre d'inertie $G$. La barre étant homogène, $G$ est en son milieu : $\Delta G = \dfrac{\ell}{2}$.
+
+          **2. Le moment du poids, et son signe.** Le poids est vertical. Quand la barre fait un angle $\theta$ avec la verticale, le vrai bras de levier — la distance de l'axe à la **ligne d'action** du poids — vaut $\dfrac{\ell}{2}\sin\theta$. Le moment est donc, en norme, $m\,g\,\dfrac{\ell}{2}\sin\theta$, et il est **négatif** parce qu'il tend **toujours** à ramener $\theta$ vers zéro, de quelque côté qu'on ait écarté la barre :
+
+          $$\mathcal{M}_\Delta(\vec P) = -\,m\,g\,\frac{\ell}{2}\,\sin\theta$$
+
+          **3. La relation fondamentale de la dynamique de rotation** (rung R4), avec ce seul moment non nul :
+
+          $$J_\Delta\,\ddot\theta = \sum \mathcal{M}_\Delta \qquad\Longrightarrow\qquad \frac{1}{3}m\ell^2\,\ddot\theta = -\,m\,g\,\frac{\ell}{2}\,\sin\theta$$
+
+          **L'approximation, et seulement maintenant.** L'équation ci-dessus est exacte mais n'est pas celle d'un oscillateur harmonique, à cause du $\sin\theta$. L'énoncé autorise $\sin\theta \approx \theta$ (petites oscillations). On remplace, puis on simplifie par $m$ et par $\ell$ — les deux disparaissent, ce qui est déjà un résultat :
+
+          $$\frac{1}{3}\ell\,\ddot\theta = -\,\frac{g}{2}\,\theta
+          \qquad\Longrightarrow\qquad
+          \boxed{\ddot\theta + \frac{3g}{2\ell}\,\theta = 0}$$
+
+          **Ce que la forme obtenue annonce.** C'est $\ddot\theta + \omega_0^2\,\theta = 0$, avec $\omega_0^2 = \dfrac{3g}{2\ell}$ : l'équation d'un **oscillateur harmonique**. La question 1-2 va en écrire la solution, la 1-3 en tirer la période.
+
+          **Les deux pièges de cette question.** D'abord, oublier de justifier que le moment de la réaction de l'axe est nul : c'est un point de barème, pas une évidence. Ensuite, prendre $\ell$ comme bras de levier au lieu de $\ell/2$ : le poids s'applique en $G$, au milieu de la barre, pas en $B$. *(Et remarque que $J_\Delta = \frac13 m\ell^2$ — la valeur « tige, axe à une extrémité » du rung R3 — est bien celle que l'énoncé donne : elle est cohérente avec la géométrie décrite.)*
+        steps:
+          - math: '\mathcal{M}_\Delta(\vec R) = 0'
+            note: "La reaction de l'axe passe par (Delta) : bras de levier nul, donc moment nul (rung R2). A justifier, pas a omettre."
+          - math: '\mathcal{M}_\Delta(\vec P) = -\,m\,g\,\frac{\ell}{2}\,\sin\theta'
+            note: "Moment du poids applique en G, milieu de la barre homogene. Signe negatif : le moment ramene toujours vers l'equilibre."
+          - math: 'J_\Delta\,\ddot\theta = \sum\mathcal{M}_\Delta \implies \frac{1}{3}m\ell^2\,\ddot\theta = -\,m\,g\,\frac{\ell}{2}\sin\theta'
+            note: "Relation fondamentale de la dynamique de rotation (rung R4), avec le seul moment non nul."
+          - math: '\sin\theta \approx \theta \implies \frac{1}{3}\ell\,\ddot\theta = -\frac{g}{2}\,\theta'
+            note: "Approximation des petites oscillations, autorisee par l'enonce. La masse et une longueur se simplifient."
+          - math: '\boxed{\ddot\theta + \frac{3g}{2\ell}\,\theta = 0}'
+            note: "Equation differentielle du mouvement : celle d'un oscillateur harmonique, de pulsation propre au carre 3g/2l."
+      - id: q2
+        stem: |-
+          **1-2-** (1 pt) Préciser la nature du mouvement du pendule pesant, et écrire son équation horaire $\theta(t)$ en fonction de $t$, $\theta_m$ et la periode *(sic)* propre $T_0$.
+        reasoning: |-
+          **La nature du mouvement se lit sur la forme de l'équation, pas sur le dessin.** L'équation de la question 1-1 est $\ddot\theta + \omega_0^2\theta = 0$ avec $\omega_0^2 = \dfrac{3g}{2\ell}$ : c'est la signature d'un **oscillateur harmonique**. Le mouvement est donc un **mouvement de rotation oscillatoire sinusoïdal**, de pulsation propre $\omega_0 = \sqrt{\dfrac{3g}{2\ell}}$ — et il est *isochrone*, c'est-à-dire que sa période ne dépend pas de l'amplitude $\theta_m$ (tant que celle-ci reste petite). C'est précisément la propriété qui a permis à Huygens d'en faire une horloge.
+
+          **La solution générale** de cette équation s'écrit
+
+          $$\theta(t) = \theta_{max}\cos\!\left(\frac{2\pi}{T_0}\,t + \varphi\right)$$
+
+          et il reste à déterminer les **deux** constantes $\theta_{max}$ et $\varphi$ avec les **deux** conditions initiales que l'énoncé fournit.
+
+          **Condition 1 — la position.** On lâche le pendule écarté de $\theta_m$ : $\theta(0) = \theta_m$, donc $\theta_{max}\cos\varphi = \theta_m$.
+
+          **Condition 2 — la vitesse.** On le lâche **sans vitesse initiale** : $\dot\theta(0) = 0$. Or $\dot\theta(t) = -\theta_{max}\dfrac{2\pi}{T_0}\sin\!\left(\dfrac{2\pi}{T_0}t + \varphi\right)$, donc $\sin\varphi = 0$, soit $\varphi = 0$ ou $\varphi = \pi$.
+
+          En reportant dans la condition 1 : $\varphi = 0$ donne $\theta_{max} = \theta_m > 0$, ce qui convient ; $\varphi = \pi$ donnerait $\theta_{max} = -\theta_m$, la même courbe écrite autrement. On retient la forme la plus simple :
+
+          $$\boxed{\theta(t) = \theta_m\cos\!\left(\frac{2\pi}{T_0}\,t\right)}$$
+
+          **La vérification, en trois secondes.** À $t = 0$ : $\cos 0 = 1$, donc $\theta(0) = \theta_m$ ✓. Et la dérivée en $0$ contient $\sin 0 = 0$, donc $\dot\theta(0) = 0$ ✓. Les deux conditions initiales sont satisfaites.
+
+          **Le piège de cette question.** Écrire un **sinus**. Un sinus vaut $0$ à $t = 0$ : cela décrirait un pendule lâché **depuis la verticale avec une vitesse**, ce qui n'est pas l'expérience décrite. Le choix cosinus/sinus n'est jamais une question de goût : il est imposé par les conditions initiales. Second piège : laisser $\varphi$ dans la réponse alors que la consigne demande $\theta(t)$ **en fonction de $t$, $\theta_m$ et $T_0$** — trois symboles, et pas un de plus.
+        steps:
+          - math: '\ddot\theta + \omega_0^2\,\theta = 0 \qquad \omega_0 = \sqrt{\frac{3g}{2\ell}}'
+            note: "Forme de l'equation etablie a la question 1-1 : oscillateur harmonique."
+          - math: '\theta(t) = \theta_{max}\cos\!\left(\frac{2\pi}{T_0}t + \varphi\right)'
+            note: "Solution generale ; deux constantes a fixer avec les deux conditions initiales."
+          - math: '\dot\theta(0) = 0 \implies \sin\varphi = 0 \implies \varphi = 0'
+            note: "Lache sans vitesse initiale : la phase est nulle."
+          - math: '\theta(0) = \theta_m \implies \theta_{max} = \theta_m'
+            note: "Lache depuis l'ecart maximal : l'amplitude est theta_m."
+          - math: '\boxed{\theta(t) = \theta_m\cos\!\left(\frac{2\pi}{T_0}\,t\right)}'
+            note: "Equation horaire, en fonction de t, theta_m et T0 seulement, comme la consigne le demande."
+      - id: q3
+        stem: |-
+          **1-3-** (1 pt) Montrer que l'expression de la période propre $T_0$ est : $T_0 = 2\pi\sqrt{\dfrac{2\,\ell}{3g}}$.
+        reasoning: |-
+          La consigne dit « **montrer** » : il faut une démonstration, pas une identification de tête. Deux voies mènent au résultat ; la seconde est celle que le barème attend, parce qu'elle **utilise** l'équation horaire de la question précédente.
+
+          **Voie 1 — par identification directe.** L'équation $\ddot\theta + \omega_0^2\theta = 0$ de la question 1-1 donne $\omega_0^2 = \dfrac{3g}{2\ell}$, et la période d'un oscillateur harmonique est $T_0 = \dfrac{2\pi}{\omega_0}$ :
+
+          $$T_0 = \frac{2\pi}{\sqrt{\dfrac{3g}{2\ell}}} = 2\pi\sqrt{\frac{2\ell}{3g}} \qquad\checkmark$$
+
+          **Voie 2 — par report de la solution dans l'équation**, la démonstration complète. On repart de $\theta(t) = \theta_m\cos\!\left(\dfrac{2\pi}{T_0}t\right)$ et on dérive deux fois :
+
+          $$\dot\theta = -\theta_m\frac{2\pi}{T_0}\sin\!\left(\frac{2\pi}{T_0}t\right)
+          \qquad
+          \ddot\theta = -\theta_m\left(\frac{2\pi}{T_0}\right)^{2}\cos\!\left(\frac{2\pi}{T_0}t\right)$$
+
+          On reporte $\theta$ et $\ddot\theta$ dans l'équation différentielle :
+
+          $$-\theta_m\left(\frac{2\pi}{T_0}\right)^{2}\cos\!\left(\frac{2\pi}{T_0}t\right) + \frac{3g}{2\ell}\,\theta_m\cos\!\left(\frac{2\pi}{T_0}t\right) = 0$$
+
+          $$\theta_m\cos\!\left(\frac{2\pi}{T_0}t\right)\left[\frac{3g}{2\ell} - \left(\frac{2\pi}{T_0}\right)^{2}\right] = 0$$
+
+          **L'argument qui conclut, et c'est lui qui vaut le point.** Cette égalité doit être vraie **à tout instant** $t$. Or le facteur $\theta_m\cos\!\left(\frac{2\pi}{T_0}t\right)$ n'est pas identiquement nul (il ne s'annule qu'à des instants isolés). C'est donc le **crochet** qui doit s'annuler :
+
+          $$\left(\frac{2\pi}{T_0}\right)^{2} = \frac{3g}{2\ell}
+          \qquad\Longrightarrow\qquad
+          \frac{2\pi}{T_0} = \sqrt{\frac{3g}{2\ell}}
+          \qquad\Longrightarrow\qquad
+          \boxed{T_0 = 2\pi\sqrt{\frac{2\ell}{3g}}}$$
+
+          **Le contrôle d'homogénéité, à faire systématiquement.** $\dfrac{\ell}{g}$ est une longueur divisée par une accélération, soit $\dfrac{\text{m}}{\text{m.s}^{-2}} = \text{s}^2$ ; sa racine est bien un temps. Et le facteur $\dfrac{2}{3}$, sans dimension, ne change rien.
+
+          **Ce que la formule raconte, et le lien avec la question suivante.** Comparée à la période d'un pendule simple, $T = 2\pi\sqrt{L/g}$, l'expression obtenue est **la même**, à condition de remplacer $L$ par $\dfrac{2\ell}{3}$. Une barre de $1{,}5\ \text{m}$ pivotant par son extrémité bat donc comme un fil de $1{,}0\ \text{m}$ — et c'est exactement ce que la question 1-4 va faire dire.
+
+          **Le piège de cette question.** Écrire $T_0 = 2\pi\sqrt{\dfrac{3g}{2\ell}}$ en oubliant que la période est l'**inverse** de la pulsation à $2\pi$ près. Le contrôle d'homogénéité l'attrape immédiatement.
+        steps:
+          - math: '\theta(t) = \theta_m\cos\!\left(\frac{2\pi}{T_0}t\right) \implies \ddot\theta = -\theta_m\left(\frac{2\pi}{T_0}\right)^{2}\cos\!\left(\frac{2\pi}{T_0}t\right)'
+            note: "Derivee seconde de l'equation horaire etablie a la question 1-2."
+          - math: '\theta_m\cos\!\left(\frac{2\pi}{T_0}t\right)\left[\frac{3g}{2\ell} - \left(\frac{2\pi}{T_0}\right)^{2}\right] = 0'
+            note: "Report de theta et theta point point dans l'equation differentielle, puis factorisation."
+          - math: '\theta_m\cos\!\left(\frac{2\pi}{T_0}t\right) \neq 0 \implies \left(\frac{2\pi}{T_0}\right)^{2} = \frac{3g}{2\ell}'
+            note: "L'egalite vaut a tout instant et le facteur n'est pas identiquement nul : c'est le crochet qui s'annule. C'est l'argument qui vaut le point."
+          - math: '\boxed{T_0 = 2\pi\sqrt{\frac{2\ell}{3g}}}'
+            note: "Expression demandee. Controle : racine de (longueur / acceleration) est bien un temps."
+      - id: q4
+        stem: |-
+          **1-4-** (0,75 pt) Calculer la valeur de la longueur $L$ du pendule simple synchrone au *(sic, pour « synchrone **du** » ou « synchrone **avec le** »)* pendule pesant étudié.
+        reasoning: |-
+          **Ce que « synchrone » veut dire, et c'est toute la question.** Deux pendules sont synchrones lorsqu'ils battent à la **même période**. On cherche donc la longueur $L$ du fil d'un pendule simple qui aurait exactement la période propre du pendule pesant étudié.
+
+          **La période du pendule simple** — un point matériel au bout d'un fil de longueur $L$ — est celle du chapitre « Systèmes oscillants » :
+
+          $$T = 2\pi\sqrt{\frac{L}{g}}$$
+
+          **La condition de synchronisme**, et la simplification qui suit :
+
+          $$2\pi\sqrt{\frac{L}{g}} = 2\pi\sqrt{\frac{2\ell}{3g}}
+          \qquad\Longrightarrow\qquad
+          \frac{L}{g} = \frac{2\ell}{3g}
+          \qquad\Longrightarrow\qquad
+          \boxed{L = \frac{2\ell}{3}}$$
+
+          **Le $g$ disparaît des deux côtés** — ce qui est heureux, puisque le sujet n'en donne aucune valeur numérique. Le résultat est **exact**, pas approché :
+
+          $$L = \frac{2 \times 1{,}5}{3} = \boxed{1{,}0\ \text{m}}$$
+
+          **Ce que ce nombre raconte.** Une barre homogène de $1{,}5\ \text{m}$ suspendue par une extrémité oscille comme une masse ponctuelle au bout d'un fil de $1{,}0\ \text{m}$ — donc **plus vite** qu'un fil de $1{,}5\ \text{m}$. C'est le rung R3 qui l'explique : la masse de la barre est **répartie** sur toute sa longueur, une bonne partie se trouve près de l'axe, et cette masse-là contribue peu au moment d'inertie tout en contribuant pleinement au moment du poids. La longueur $\dfrac{2\ell}{3}$ porte un nom en mécanique : la **longueur équivalente** du pendule pesant.
+
+          **Le piège de cette question.** Répondre $L = \ell/2 = 0{,}75\ \text{m}$ « puisque le centre d'inertie est au milieu ». Le centre d'inertie fixe le **moment du poids**, mais pas le moment d'inertie : les deux entrent dans la période, et leur combinaison donne $2\ell/3$, pas $\ell/2$. Un pendule pesant n'est jamais équivalent à un pendule simple placé en son centre d'inertie.
+        steps:
+          - math: 'T = 2\pi\sqrt{\frac{L}{g}} \qquad\text{(pendule simple de longueur } L)'
+            note: "Periode du pendule simple, du chapitre Systemes oscillants."
+          - math: '2\pi\sqrt{\frac{L}{g}} = 2\pi\sqrt{\frac{2\ell}{3g}}'
+            note: "Condition de synchronisme : memes periodes."
+          - math: '\frac{L}{g} = \frac{2\ell}{3g} \implies L = \frac{2\ell}{3}'
+            note: "L'intensite de pesanteur se simplifie : le resultat ne depend pas de g, que le sujet ne donne pas."
+          - math: '\boxed{L = \frac{2\times 1{,}5}{3} = 1{,}0\ \text{m}}'
+            note: "Longueur equivalente du pendule pesant. Resultat exact, sans arrondi."
+      - id: q5
+        part: "2- Etude énergétique du pendule pesant (par exploitation du diagramme d'énergie)"
+        stem: |-
+          **2-1-** (0,75 pt) Par exploitation du diagramme d'énergie (figure 2), donner la valeur de l'énrgie *(sic, pour « énergie »)* mécanique $E_m$ du pendule. *(L'original arabe écrit « **détermine** la valeur » ; la consigne française est affaiblie en « Donner » — c'est la seule consigne affaiblie des 33 du sujet.)*
+        reasoning: |-
+          **CROSS-LIST honoré ici (« Systèmes oscillants »).** Toute cette partie 2 — la lecture d'un diagramme d'énergie potentielle et la conservation de l'énergie mécanique — relève aussi de cette autre notion, et pèse $1{,}75\ \text{pt}$ sur les $5{,}50$ du bloc. Le routage retenu garde l'exercice entier ici, parce que la figure 2 est le diagramme du pendule **de la figure 1**, avec le **même** $\theta_m$ et le **même** $J_\Delta$ : la séparer casserait la chaîne numérique. Voir la note éditoriale de routage en tête d'entrée, qui pose l'alternative et laisse l'owner juge. La démonstration est refaite ici en entier.
+
+          **L'argument, et il tient en deux lignes.** Le mouvement est **sans frottements** (l'énoncé le dit) : l'énergie mécanique se **conserve**, elle a donc la même valeur à tout instant, et il suffit de la calculer là où elle est le plus facile à lire.
+
+          $$E_m = E_c + E_{pp} = \text{constante}$$
+
+          Le meilleur endroit est l'**extrémité du mouvement**, $\theta = \pm\theta_m$ : c'est là que le pendule **s'arrête** avant de repartir, donc $\dot\theta = 0$, donc $E_c = 0$. Toute l'énergie mécanique y est purement potentielle :
+
+          $$E_m = E_{pp}(\theta_m) + \underbrace{E_c(\theta_m)}_{=\,0} = E_{pp}(\theta_m)$$
+
+          **La lecture sur la figure 2.** Il faut lire l'ordonnée des **extrémités** de la parabole, aux abscisses $\pm\theta_m$ — et la courbe est symétrique, les deux extrémités donnent la même valeur. Elles se situent **un peu au-dessus** de la ligne intermédiaire $22{,}5\ \text{mJ}$ :
+
+          $$\boxed{E_m = E_{pp}(\theta_m) \approx 22{,}7\ \text{mJ}}$$
+
+          **Sur la précision de cette lecture, honnêtement.** Le quadrillage a trois niveaux (fin $0{,}5\ \text{mJ}$, intermédiaire $2{,}5$, fort $5$), ce qui permet une lecture fine. Une réponse **$22{,}5\ \text{mJ}$** — la ligne intermédiaire juste en dessous — est parfaitement recevable, et elle redonne la même vitesse angulaire à la question suivante. Ce qui n'est **pas** recevable, c'est de lire $25\ \text{mJ}$ : ce niveau est une ligne **forte** du quadrillage, et la parabole passe nettement en dessous — de plus de huit largeurs de trait.
+
+          **Le contrôle interne, gratuit, et il vaut la peine.** La courbe est une parabole exacte : $E_{pp} \propto \theta^2$. Si tu lis $E_{pp}\!\left(\tfrac{2}{3}\theta_m\right) \approx 10\ \text{mJ}$ — et c'est facile, le point tombe pratiquement sur une ligne —, alors la valeur en $\theta_m$ **doit** valoir $10 \times \left(\dfrac{3}{2}\right)^2 = 10 \times 2{,}25 = 22{,}5\ \text{mJ}$. Les deux lectures se contrôlent l'une l'autre, et elles concordent. Une lecture à $25\ \text{mJ}$ exigerait de lire $11{,}1\ \text{mJ}$ en $\tfrac{2}{3}\theta_m$ : les deux ne peuvent pas être vraies ensemble.
+
+          **Le piège de cette question.** Chercher $E_m$ ailleurs qu'aux extrémités, par exemple en $\theta = 0$ — là où $E_{pp} = 0$ mais où $E_c$ est maximale et **illisible sur ce diagramme**, qui ne trace que l'énergie potentielle. Le diagramme ne donne accès à $E_m$ qu'aux points où la vitesse s'annule.
+        steps:
+          - math: 'E_m = E_c + E_{pp} = \text{constante}'
+            note: "Mouvement sans frottements : l'energie mecanique se conserve."
+          - math: '\theta = \theta_m \implies \dot\theta = 0 \implies E_c = 0'
+            note: "A l'ecart maximal le pendule s'arrete avant de repartir : toute l'energie y est potentielle."
+          - math: 'E_m = E_{pp}(\theta_m)'
+            note: "L'energie mecanique se lit donc directement a l'extremite de la parabole."
+          - math: '\boxed{E_m \approx 22{,}7\ \text{mJ}}'
+            note: "Lecture des extremites de la parabole sur la figure 2. Une lecture a 22,5 mJ (ligne intermediaire) est recevable et donne le meme resultat en 2-2."
+          - math: 'E_{pp}\!\left(\tfrac{2}{3}\theta_m\right) \times \left(\tfrac{3}{2}\right)^{2} = 10{,}1\times 2{,}25 \approx 22{,}7\ \text{mJ}'
+            note: "Controle interne : la courbe est une parabole exacte, les deux lectures se confirment l'une l'autre."
+      - id: q6
+        stem: |-
+          **2-2-** (1 pt) Par exploitation du diagramme d'énergie, trouver la valeur absolue de la vitesse angulaire $\dot\theta$ du pendule au passage par la position repérée par l'abscisse angulaire : $\theta = \dfrac{2}{3}\theta_m$.
+        reasoning: |-
+          **La stratégie, en une phrase :** l'énergie mécanique est connue (question 2-1) et constante ; on lit l'énergie potentielle à la position demandée ; la différence est l'énergie cinétique ; et l'énergie cinétique **de rotation** donne la vitesse angulaire.
+
+          **Étape 1 — lire $E_{pp}$ à la position demandée.** Sur la figure 2, à l'abscisse $\dfrac{2}{3}\theta_m$ — soit deux cellules fortes sur les trois qui séparent $0$ de $\theta_m$ —, la parabole passe pratiquement sur la ligne $10$ :
+
+          $$E_{pp}\!\left(\tfrac{2}{3}\theta_m\right) \approx 10{,}1\ \text{mJ}$$
+
+          **Étape 2 — la conservation de l'énergie mécanique** (le mouvement est sans frottements) :
+
+          $$E_c = E_m - E_{pp}\!\left(\tfrac{2}{3}\theta_m\right) = 22{,}7 - 10{,}1 = 12{,}6\ \text{mJ} = 12{,}6\times10^{-3}\ \text{J}$$
+
+          **Étape 3 — l'énergie cinétique de ROTATION** (rung R5), et c'est là que le moment d'inertie entre en jeu :
+
+          $$E_c = \frac{1}{2}\,J_\Delta\,\dot\theta^{\,2}
+          \qquad\text{avec}\qquad
+          J_\Delta = \frac{1}{3}m\ell^2 = \frac{1}{3}\times 0{,}203 \times 1{,}5^2 = 0{,}15225\ \text{kg}\cdot\text{m}^2$$
+
+          **Étape 4 — isoler $\dot\theta$**, en remplaçant $J_\Delta$ par son expression pour obtenir une formule compacte :
+
+          $$|\dot\theta| = \sqrt{\frac{2E_c}{J_\Delta}} = \sqrt{\frac{2E_c}{\frac13 m\ell^2}} = \sqrt{\frac{6\,E_c}{m\,\ell^2}}
+          = \sqrt{\frac{6 \times 12{,}6\times10^{-3}}{0{,}203 \times 2{,}25}}
+          = \sqrt{\frac{0{,}0756}{0{,}45675}}$$
+
+          $$\boxed{|\dot\theta| \approx 0{,}41\ \text{rad.s}^{-1}}$$
+
+          **Sur la robustesse du résultat, parce que la question vaut 1 point et repose sur une lecture graphique.** Si tu avais lu $E_m = 22{,}5\ \text{mJ}$ au lieu de $22{,}7$ — la ligne intermédiaire juste en dessous —, tu aurais $E_c = 12{,}4\ \text{mJ}$ et $|\dot\theta| = 0{,}404\ \text{rad.s}^{-1}$ : **la même réponse à deux chiffres**. La lecture n'a donc pas besoin d'être parfaite, elle a besoin d'être **honnête**. En revanche, une lecture **fausse** $E_m = 25\ \text{mJ}$ — celle que publient plusieurs corrigés en circulation pour ce sujet — conduirait à $0{,}44\ \text{rad.s}^{-1}$, soit $7\ \%$ d'écart, au-delà de toute tolérance. **Ces deux valeurs, $25\ \text{mJ}$ et $0{,}44\ \text{rad.s}^{-1}$, sont à écarter :** la parabole est mesurée à $22{,}7\ \text{mJ}$ en $\theta_m$, et un corrigé qui lit correctement $10\ \text{mJ}$ en $\tfrac{2}{3}\theta_m$ se contredit lui-même s'il écrit ensuite $25$. C'est pourquoi le contrôle de parabolicité de la question 2-1 vaut d'être fait : il te protège de cette erreur-là.
+
+          **Un troisième chemin, pour qui veut vérifier sans la figure.** Avec $\theta(t) = \theta_m\cos(\omega_0 t)$, on a $\dot\theta = -\theta_m\omega_0\sin(\omega_0 t)$, et à $\theta = \tfrac{2}{3}\theta_m$ le cosinus vaut $2/3$, donc $|\sin| = \sqrt{1 - 4/9} = \dfrac{\sqrt5}{3}$ :
+
+          $$|\dot\theta| = \theta_m\,\omega_0\,\frac{\sqrt5}{3}$$
+
+          Avec $\omega_0 = \sqrt{\dfrac{3g}{2\ell}} = \sqrt{\dfrac{3 \times 9{,}8}{3}} = 3{,}13\ \text{rad.s}^{-1}$ et $\theta_m = 10^\circ = 0{,}1745\ \text{rad}$, cela donne $0{,}407\ \text{rad.s}^{-1}$ — la même valeur, par un chemin qui n'utilise ni le diagramme ni l'énergie. *(Ce contrôle demande $g$ et $\theta_m$, que le sujet ne donne pas : il n'est pas exigible en épreuve, mais il confirme la lecture.)*
+
+          **Les deux pièges de cette question.** D'abord, écrire $E_c = \frac12 m v^2$ : le solide **tourne**, il ne se translate pas, et ses points n'ont pas tous la même vitesse — c'est $\frac12 J_\Delta\dot\theta^2$ qu'il faut, avec le moment d'inertie que l'énoncé donne. Ensuite, oublier de convertir les millijoules en joules : $12{,}6$ au lieu de $12{,}6\times10^{-3}$ ferait sortir une vitesse angulaire trente fois trop grande.
+        steps:
+          - math: 'E_{pp}\!\left(\tfrac{2}{3}\theta_m\right) \approx 10{,}1\ \text{mJ}'
+            note: "Lecture sur la figure 2 a l'abscisse deux tiers de theta_m : la parabole passe pratiquement sur la ligne 10."
+          - math: 'E_c = E_m - E_{pp} = 22{,}7 - 10{,}1 = 12{,}6\ \text{mJ} = 12{,}6\times10^{-3}\ \text{J}'
+            note: "Conservation de l'energie mecanique (mouvement sans frottements). Conversion en joules faite tout de suite."
+          - math: 'J_\Delta = \frac{1}{3}m\ell^2 = \frac{1}{3}\times 0{,}203\times 1{,}5^2 = 0{,}15225\ \text{kg}\cdot\text{m}^2'
+            note: "Moment d'inertie donne par l'enonce, applique aux valeurs numeriques."
+          - math: 'E_c = \frac{1}{2}J_\Delta\,\dot\theta^{\,2} \implies |\dot\theta| = \sqrt{\frac{2E_c}{J_\Delta}} = \sqrt{\frac{6\,E_c}{m\,\ell^2}}'
+            note: "Energie cinetique de ROTATION (rung R5) : le solide tourne, il ne se translate pas."
+          - math: '|\dot\theta| = \sqrt{\frac{6\times 12{,}6\times10^{-3}}{0{,}203\times 2{,}25}} = \sqrt{\frac{0{,}0756}{0{,}45675}} = \sqrt{0{,}1655}'
+            note: "Application numerique."
+          - math: '\boxed{|\dot\theta| \approx 0{,}41\ \text{rad.s}^{-1}}'
+            note: "Valeur re-derivee par la verification : 0,4073 rad par seconde. Une lecture E_m = 22,5 mJ donnerait 0,404 : meme reponse a deux chiffres."
