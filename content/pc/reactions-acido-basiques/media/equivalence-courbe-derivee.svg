@@ -57,7 +57,11 @@
        STEP 1 — rappel : la courbe pH = f(V), panneau du haut
        ══════════════════════════════════════════════════════ -->
   <g id="step-1">
-    <text x="48" y="42" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">rappel — pH = f(V)</text>
+    <!-- Légende du panneau DANS le panneau, à droite de l'axe : posée à
+         x=48 elle enjambait l'axe des ordonnées et imprimait « rappel » sur
+         l'étiquette « pH » (recouvrement mesuré 100 %, le mot rendu
+         illisible : « rappepH— pH = f(V) »). -->
+    <text x="100" y="52" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">rappel — pH = f(V)</text>
 
     <line x1="78" y1="155" x2="612" y2="155" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
     <polygon points="612,155 602,151.5 602,158.5" fill="var(--figure-ink-soft)"/>
@@ -73,7 +77,11 @@
           fill="none" stroke="var(--figure-ink-soft)" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="390" cy="87" r="3.2" fill="var(--figure-ink-soft)"/>
-    <text x="398" y="82" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">point d&#8217;inflexion</text>
+    <!-- Étiquette SOUS la courbe : à y=82 elle était barrée par la courbe
+         elle-même, qui remonte de (390;87) vers (420;69) et traversait le
+         mot « point ». Collision texte↔tracé — invisible pour la sonde, qui
+         ne compare que les textes entre eux. -->
+    <text x="398" y="102" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">point d&#8217;inflexion</text>
   </g><!-- /step-1 -->
 
   <!-- ══════════════════════════════════════════════════════

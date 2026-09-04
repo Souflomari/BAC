@@ -58,7 +58,14 @@
   <g id="step-2">
     <line x1="90" y1="340" x2="560" y2="90"
           stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
-    <text x="470" y="140" font-size="11" font-style="italic" fill="var(--figure-accent)" transform="rotate(-28 470 140)">
+    <!-- L'étiquette de pente vit sur le SEGMENT LIBRE de la droite, entre
+         l'origine et le satellite 1. Posée à (470;140), près du haut, elle
+         percutait « satellite 3 » (recouvrement 100 %) : les deux se
+         lisaient l'un dans l'autre. Ce défaut était INVISIBLE pour la sonde
+         jusqu'au 2026-09-04 — getBBox() ignore le transform, donc la boîte
+         mesurée était celle du texte NON tourné, ailleurs. La sonde ramène
+         désormais toutes les boîtes dans le repère du SVG racine. -->
+    <text x="125" y="313" font-size="11" font-style="italic" fill="var(--figure-accent)" transform="rotate(-28 125 313)">
       pente = 4π² / (GM)
     </text>
   </g><!-- /step-2 -->

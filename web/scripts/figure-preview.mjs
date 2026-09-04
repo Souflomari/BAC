@@ -102,7 +102,10 @@ const cartes = fichiers
       ? svg.replace(/(<svg\b[^>]*\sstyle=")/, `$1${dims};`)
       : svg.replace(/<svg\b/, `<svg style="${dims}"`);
     largeurMax = Math.max(largeurMax, Number(w));
-    return `<h2>${path.basename(f)}</h2><div class="carte">${dimensionne}</div>`;
+    // Les figures de MOUVEMENT sont rendues mais NON sondées — voir la note
+    // « ce que la sonde refuse de mesurer » plus bas.
+    const attrMotion = /\.motion\.svg$/.test(f) ? ' data-motion="1"' : "";
+    return `<h2>${path.basename(f)}</h2><div class="carte"${attrMotion}>${dimensionne}</div>`;
   })
   .join("\n");
 
@@ -204,11 +207,59 @@ if (harnaisCasse) {
  */
 const defauts = await page.evaluate(() => {
   const out = [];
-  document.querySelectorAll("svg").forEach((svg, iFig) => {
+  // On indexe les CARTES, pas les <svg> : une figure qui en imbriquerait un
+  // second décalerait tous les indices et le rapport nommerait le mauvais
+  // fichier. Aucune ne le fait aujourd'hui — l'index reste juste par accident.
+  document.querySelectorAll(".carte").forEach((carte, iFig) => {
+    const svg = carte.querySelector("svg");
+    if (!svg) return;
+    // CE QUE LA SONDE REFUSE DE MESURER (2026-09-04) — les `.motion.svg`.
+    //
+    // Une figure de mouvement est jouée par MotionStage : le moteur pose les
+    // états initiaux (opacités à zéro, translations) puis déroule la partition
+    // `.motion.json`. Le rendu STATIQUE n'est donc l'état d'AUCUN instant du
+    // film — c'est la superposition de toutes les positions authorées. Rien à
+    // voir avec une figure stagée, dont la dernière étape est bel et bien une
+    // vue que l'élève voit.
+    //
+    // Passées à la sonde, les 10 figures de mouvement du corpus rendaient 111
+    // « défauts » sur 144 — soit 77 % du rapport en pur bruit. Un instrument
+    // dont les trois quarts des cris sont faux finit ignoré, et c'est ce qui
+    // était arrivé de fait : le premier balayage du corpus (2026-09-03) les a
+    // écartées À LA MAIN, sans que rien dans l'outil ne le dise. On l'écrit.
+    //
+    // La capture PNG, elle, reste produite : elle sert à vérifier qu'aucun
+    // élément ne manque et que les couleurs tiennent.
+    if (carte.hasAttribute("data-motion")) return;
     const vb = (svg.getAttribute("viewBox") || "0 0 0 0").split(/\s+/).map(Number);
     const [vx, vy, vw, vh] = vb;
+    // PIÈGE PAYÉ N°4 (2026-09-04) — getBBox() rend la boîte dans l'espace
+    // utilisateur PROPRE à l'élément, transformations non appliquées. Un
+    // <text> dans un <g transform="translate(...) rotate(...)"> était donc
+    // mesuré à la place qu'il occuperait SANS son transform : la sonde
+    // comparait des boîtes exprimées dans des repères différents, ce qui
+    // peut aussi bien inventer un chevauchement qu'en manquer un, et fausse
+    // le test de débordement (comparé, lui, au viewBox du SVG racine).
+    // 7 figures du corpus portent un transform et du texte — la surface est
+    // petite, l'erreur ne l'était pas. On ramène tout dans le repère du
+    // SVG racine (= les coordonnées du viewBox) via getScreenCTM().
+    const versRacine = svg.getScreenCTM()?.inverse() ?? null;
+    const boiteRacine = (el) => {
+      const b = el.getBBox();
+      if (!versRacine || !el.getScreenCTM) return b;
+      const m = versRacine.multiply(el.getScreenCTM());
+      if (m.b === 0 && m.c === 0 && m.a === 1 && m.d === 1 && m.e === 0 && m.f === 0) return b;
+      const coins = [
+        [b.x, b.y], [b.x + b.width, b.y],
+        [b.x, b.y + b.height], [b.x + b.width, b.y + b.height],
+      ].map(([x, y]) => [m.a * x + m.c * y + m.e, m.b * x + m.d * y + m.f]);
+      const xs = coins.map((c) => c[0]);
+      const ys = coins.map((c) => c[1]);
+      const x0 = Math.min(...xs), y0 = Math.min(...ys);
+      return { x: x0, y: y0, width: Math.max(...xs) - x0, height: Math.max(...ys) - y0 };
+    };
     const textes = [...svg.querySelectorAll("text")];
-    const boites = textes.map((t) => ({ t, b: t.getBBox(), s: t.textContent.trim() }));
+    const boites = textes.map((t) => ({ t, b: boiteRacine(t), s: t.textContent.trim() }));
     for (const { t, b, s } of boites) {
       if (!s) continue;
       if (b.x < vx - 1 || b.x + b.width > vx + vw + 1 || b.y + b.height > vy + vh + 1) {
@@ -275,7 +326,7 @@ const defauts = await page.evaluate(() => {
           const masque = masques.some((m) => {
             const r = rang.get(m);
             if (!(r > rA && r < rB)) return false;
-            let bb; try { bb = m.getBBox(); } catch { return false; }
+            let bb; try { bb = boiteRacine(m); } catch { return false; }
             return couvre(bb, a);
           });
           if (masque) continue; // remplacement voulu, pas une collision
@@ -291,7 +342,14 @@ const defauts = await page.evaluate(() => {
 });
 
 await navigateur.close();
+const nbMotion = fichiers.filter((f) => /\.motion\.svg$/.test(f)).length;
 console.log(`\n${cartesDom.length} figure(s) → ${sortie}  (thème ${sombre ? "sombre" : "clair"})`);
+if (nbMotion > 0) {
+  console.log(
+    `${nbMotion} figure(s) de mouvement capturée(s) mais NON sondée(s) :` +
+      " le rendu statique d'un .motion.svg n'est l'état d'aucun instant du film."
+  );
+}
 if (defauts.length === 0) {
   console.log("Mesure : aucun texte hors cadre, aucun chevauchement > 40 %.");
 } else {
