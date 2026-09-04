@@ -224,8 +224,8 @@ brief standard, cold-executable by Sonnet.
 
 ### 6.1 Ce qui a changé pour l'élève
 
-**Le corpus d'épreuves est passé de 22 à 36 épreuves complètes** (≥ 19,5/20),
-234 entrées de banque, **38 notions dotées**. **Quatorze gagnées** sur cet arc :
+**Le corpus d'épreuves est passé de 22 à 38 épreuves complètes** (≥ 19,5/20),
+247 entrées de banque, **38 notions dotées**. **Seize gagnées** sur cet arc :
 
 - **vague maths** (2026-08-27) : SM 2017, 2021, 2022, 2023, 2024, 2025 normale
   et SExp 2018 — chacune par la conversion de son problème d'analyse ;
@@ -245,12 +245,34 @@ brief standard, cold-executable by Sonnet.
   absolue n'en est tirée, t½ par lecture relative) ; 2015 R déclare ses
   quatre défauts F1–F4 (dont le « Po » imprimé pour le plomb, corrigé en
   Pb par CORRECTION ASSUMÉE). Le troisième sujet à zéro, **2010 R, est
-  TRANSCRIT** (20,00 points en six blocs, `_incoming/pc-2010-r.md`) et **en
-  cours de vérification** ; sa conversion est en outre **bloquée par un
-  arbitrage owner** (voir §6.5, question d'anatomie).
+  TRANSCRIT ET VÉRIFIÉ** (20,00 points en six blocs,
+  `_incoming/pc-2010-r.md`, 30/30 questions résolubles) ; sa
+  conversion reste **bloquée par un arbitrage owner** (voir §6.5, question
+  d'anatomie).
+- **vague SPC 4 — les rattrapages localisés** (2026-09-04) : **SPC 2013
+  rattrapage** (7 entrées, 37ᵉ épreuve) et **SPC 2012 rattrapage**
+  (6 entrées, 38ᵉ). Ces deux sujets étaient encore marqués `non recherché`
+  au recensement la veille — des lignes vides depuis le début de la
+  campagne. La prospection du gisement arabophone les a localisés avec
+  leur corrigé, et ils ont été transcrits en disposant de **l'original
+  arabe dès la transcription**, un avantage qu'aucune passe précédente
+  n'avait eu.
+
+  **Leur résultat de provenance renverse celui de 2010 R** : leurs deux
+  éditions françaises sont **MINISTÉRIELLES** (code d'examen imprimé,
+  identique à celui de l'arabe pour 2013 R), là où celle de 2010 R est une
+  traduction professorale. Trois cas, deux statuts : **la question de
+  provenance se pose sujet par sujet et ne se règle pas par la série.**
+
+  2012 R sert une **question fausse du sujet officiel** de façon honnête :
+  l'énoncé désigne les mauvaises parties du montage (trois témoins le
+  confirment), le texte est transcrit verbatim, l'avertissement est porté
+  au fil du texte que l'élève lit, et la réponse est écrite pour les
+  parties que le montage autorise. L'arbitrage entre garder et réparer
+  reste owner — et la note dit comment basculer en deux mots.
 
 > **Un seuil franchi, à ne pas perdre de vue :** le corpus ne compte plus
-> **aucune épreuve invisible**. Mesuré le 2026-09-03 sur le dépôt : 36
+> **aucune épreuve invisible**. Mesuré le 2026-09-04 sur le dépôt : 38
 > épreuves complètes (≥ 19,5), **zéro sous le seuil d'affichage de 9,75**,
 > et une seule épreuve listée-non-complète — SM 2020 normale (10,50), le
 > cas K-0 suspendu. Autrement dit : tout ce qui est en banque est
