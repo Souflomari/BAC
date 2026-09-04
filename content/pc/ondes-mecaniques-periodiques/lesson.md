@@ -68,7 +68,7 @@ On appelle **fréquence** $f$ de l'onde le nombre de répétitions du mouvement 
 
 $$f = \frac{1}{T}$$
 
-$f$ se mesure en hertz ($\text{Hz}$). Puisque tous les points du milieu partagent la même période $T$ que la source, ils partagent tous, aussi, exactement la même fréquence $f$. Et cette fréquence ne vient que d'un seul endroit : le mouvement imposé à la source. **Ni la distance à la source, ni la nature du milieu traversé, ne peuvent la modifier** — le milieu ne fait que relayer, point après point, le rythme déjà fixé par la source. On y reviendra avec le son en R4, car c'est exactement là que cette idée est la plus utile.
+$f$ se mesure en hertz ($\text{Hz}$). Puisque tous les points du milieu partagent la même période $T$ que la source, ils partagent tous, aussi, exactement la même fréquence $f$. Et cette fréquence ne vient que d'un seul endroit : le mouvement imposé à la source. **Ni la distance à la source, ni la nature du milieu traversé, ne peuvent la modifier** — le milieu ne fait que relayer, point après point, le rythme déjà fixé par la source. On y reviendra avec le son au chapitre 5, car c'est exactement là que cette idée est la plus utile.
 
 [[figure:heritage-periode-retard]]
 
@@ -114,7 +114,7 @@ D'après ce qu'on vient d'établir, $M_2$ rejoue $M_1$ avec un retard $d/c$. Si 
 
 $$y_{M_2}(t) = y_{M_1}(t - T)$$
 
-Et on sait, depuis R1, que $y_{M_1}$ est périodique de période $T$ — donc $y_{M_1}(t - T) = y_{M_1}(t)$ :
+Et on sait, depuis le chapitre 2, que $y_{M_1}$ est périodique de période $T$ — donc $y_{M_1}(t - T) = y_{M_1}(t)$ :
 
 $$y_{M_2}(t) = y_{M_1}(t)$$
 
@@ -171,7 +171,7 @@ $$y_S(t) = Y_m \cos\!\left(\frac{2\pi t}{T} + \varphi\right)$$
 
 où $Y_m$ est l'amplitude (l'élongation maximale) et $\varphi$ la phase à l'origine.
 
-D'après R1, tout point $M$ du milieu vibre avec la même fréquence que $S$, en rejouant son mouvement avec un retard $\tau = d/c$ :
+D'après le chapitre 2, tout point $M$ du milieu vibre avec la même fréquence que $S$, en rejouant son mouvement avec un retard $\tau = d/c$ :
 
 $$y_M(t) = y_S(t - \tau) = Y_m \cos\!\left(\frac{2\pi (t - \tau)}{T} + \varphi\right)$$
 
@@ -189,7 +189,7 @@ On peut réécrire ce déphasage en fonction de la distance $d$, en remplaçant 
 
 $$\Delta\varphi = \frac{2\pi}{T}\cdot\frac{d}{c} = \frac{2\pi d}{cT}$$
 
-Et puisque $cT = \lambda$ (R2) :
+Et puisque $cT = \lambda$ (chapitre 3) :
 
 $$\Delta\varphi = \frac{2\pi d}{\lambda}$$
 
@@ -197,7 +197,7 @@ C'est la formule à retenir : le déphasage entre deux points séparés d'une di
 
 ### Les deux cas particuliers à repérer
 
-- Si $d$ est un multiple entier de $\lambda$ ($d = k\lambda$, $k$ entier), alors $\Delta\varphi = 2k\pi$ : les deux points vibrent en **concordance de phase** — ils affichent, à chaque instant, exactement la même élongation (c'est le cas qu'on a dérivé en R2 avec $d = \lambda$).
+- Si $d$ est un multiple entier de $\lambda$ ($d = k\lambda$, $k$ entier), alors $\Delta\varphi = 2k\pi$ : les deux points vibrent en **concordance de phase** — ils affichent, à chaque instant, exactement la même élongation (c'est le cas qu'on a dérivé au chapitre 3 avec $d = \lambda$).
 - Si $d$ est un multiple impair d'une demi-longueur d'onde ($d = (2k+1)\lambda/2$), alors $\Delta\varphi = (2k+1)\pi$ : les deux points vibrent en **opposition de phase** — l'un est à son élongation maximale exactement quand l'autre est à son élongation minimale.
 
 [[figure:dephasage]]
@@ -222,9 +222,9 @@ Comparons avec deux autres distances, sur cette même corde. À $d = 1{,}5\ \tex
 
 Le son est une **onde mécanique** : comme toute onde mécanique (chapitre précédent), il a besoin d'un milieu de propagation matériel — il ne se propage pas dans le vide. C'est aussi une onde **longitudinale** : il se propage par des compressions et des dilatations successives de l'air, dans la même direction que celle où le son avance.
 
-*Rappel du critère, parce qu'un sujet d'examen le demande dans les deux sens.* « Longitudinale » et « transversale » ne se retiennent pas comme deux étiquettes : elles se **décident** en comparant deux directions — celle selon laquelle la perturbation déplace les points du milieu, et celle selon laquelle l'onde avance. Parallèles, l'onde est longitudinale ; perpendiculaires, elle est **transversale**. Le critère complet, avec ses deux exemples fondateurs — le ressort qu'on comprime (longitudinale) et la corde qu'on pince (transversale) —, est posé au rung 2 du chapitre précédent, « Ondes mécaniques progressives ». Le son est le cas longitudinal ; les vagues à la surface de l'eau et l'onde le long d'une corde sont les cas transversaux, et une question de bac peut demander l'un comme l'autre.
+*Rappel du critère, parce qu'un sujet d'examen le demande dans les deux sens.* « Longitudinale » et « transversale » ne se retiennent pas comme deux étiquettes : elles se **décident** en comparant deux directions — celle selon laquelle la perturbation déplace les points du milieu, et celle selon laquelle l'onde avance. Parallèles, l'onde est longitudinale ; perpendiculaires, elle est **transversale**. Le critère complet, avec ses deux exemples fondateurs — le ressort qu'on comprime (longitudinale) et la corde qu'on pince (transversale) —, est posé au chapitre 2 du chapitre précédent, « Ondes mécaniques progressives ». Le son est le cas longitudinal ; les vagues à la surface de l'eau et l'onde le long d'une corde sont les cas transversaux, et une question de bac peut demander l'un comme l'autre.
 
-Quand la source du son vibre périodiquement — une corde de guitare pincée, un diapason frappé, des cordes vocales qui vibrent pour tenir une note — le son qu'elle produit est une onde progressive périodique, exactement comme la corde des rungs précédents : tout ce qui a été établi en R1, R2 et R3 s'applique, avec la même mécanique de proche en proche.
+Quand la source du son vibre périodiquement — une corde de guitare pincée, un diapason frappé, des cordes vocales qui vibrent pour tenir une note — le son qu'elle produit est une onde progressive périodique, exactement comme la corde des chapitres précédents : tout ce qui a été établi aux chapitres 2, 3 et 4 s'applique, avec la même mécanique de proche en proche.
 
 Dans l'air, dans les conditions ordinaires, la célérité du son vaut environ $340\ \text{m/s}$.
 
@@ -232,7 +232,7 @@ Dans l'air, dans les conditions ordinaires, la célérité du son vaut environ $
 
 La **hauteur** d'un son — le fait qu'on le perçoive comme aigu ou comme grave — est directement liée à sa fréquence $f$ : plus $f$ est élevée, plus le son est perçu aigu ; plus $f$ est basse, plus il est perçu grave.
 
-Et cette fréquence, on l'a établi en R1, est fixée **uniquement par la source qui vibre** — jamais par le milieu de propagation. Le milieu ne fait que relayer le rythme déjà imposé par la source ; il ne peut ni l'accélérer, ni le ralentir. Ce que le milieu fixe, en revanche, c'est la célérité $c$ — et donc, par $\lambda = c/f$, la longueur d'onde : à fréquence fixée par la source, un milieu où le son va plus vite donne une longueur d'onde plus grande, pas une fréquence différente.
+Et cette fréquence, on l'a établi au chapitre 2, est fixée **uniquement par la source qui vibre** — jamais par le milieu de propagation. Le milieu ne fait que relayer le rythme déjà imposé par la source ; il ne peut ni l'accélérer, ni le ralentir. Ce que le milieu fixe, en revanche, c'est la célérité $c$ — et donc, par $\lambda = c/f$, la longueur d'onde : à fréquence fixée par la source, un milieu où le son va plus vite donne une longueur d'onde plus grande, pas une fréquence différente.
 
 [[figure:son-longitudinal-compressions]]
 
@@ -256,7 +256,7 @@ Le son garderait exactement la même hauteur perçue (même $f$) dans les deux m
 
 ### Le phénomène, avant qu'il ait un nom
 
-Reprends le son ou les ultrasons installés au chapitre précédent : une onde progressive périodique, de fréquence $f$ et de longueur d'onde $\lambda = c/f$ (R2, R4), qui se propage dans l'air. On la fait maintenant arriver sur un obstacle percé d'une ouverture — une fente, de largeur réglable $a$ — placée sur son trajet.
+Reprends le son ou les ultrasons installés au chapitre précédent : une onde progressive périodique, de fréquence $f$ et de longueur d'onde $\lambda = c/f$ (chapitres 3 et 5), qui se propage dans l'air. On la fait maintenant arriver sur un obstacle percé d'une ouverture — une fente, de largeur réglable $a$ — placée sur son trajet.
 
 Prends position avant de lire la suite. Imagine une fente très large, qu'on rétrécit ensuite peu à peu, presque jusqu'à la fermer complètement. Derrière la fente, la zone où l'onde se fait sentir devient-elle, à ton avis, de plus en plus fine et concentrée — comme un jet d'eau qu'on force à travers un trou de plus en plus petit — ou au contraire de plus en plus large et étalée ?
 
@@ -280,9 +280,9 @@ Tant que $a$ reste très grand devant $\lambda$, l'onde passe pratiquement en li
 
 ### Ce que la diffraction change, et ce qu'elle ne change jamais
 
-On pourrait se dire que rétrécir le passage change quelque chose à l'onde elle-même — comme un goulot d'étranglement qui accélérerait un fluide qui le traverse. Teste cette idée sur ce qu'on sait déjà : qu'est-ce qui, dans le mécanisme, pourrait faire changer la fréquence $f$ ? $f$ est fixée par la source, uniquement par elle (R1) — et la fente n'est pas une source, c'est un obstacle passif sur le trajet. Qu'est-ce qui pourrait faire changer la célérité $c$ ? $c$ est fixée par le milieu (R1, R4) — et le milieu, de part et d'autre de la fente, est le même air. Rien, dans ce simple passage par une ouverture, ne touche ni à la source ni à la nature du milieu.
+On pourrait se dire que rétrécir le passage change quelque chose à l'onde elle-même — comme un goulot d'étranglement qui accélérerait un fluide qui le traverse. Teste cette idée sur ce qu'on sait déjà : qu'est-ce qui, dans le mécanisme, pourrait faire changer la fréquence $f$ ? $f$ est fixée par la source, uniquement par elle (chapitre 2) — et la fente n'est pas une source, c'est un obstacle passif sur le trajet. Qu'est-ce qui pourrait faire changer la célérité $c$ ? $c$ est fixée par le milieu (chapitres 2 et 5) — et le milieu, de part et d'autre de la fente, est le même air. Rien, dans ce simple passage par une ouverture, ne touche ni à la source ni à la nature du milieu.
 
-L'onde diffractée garde donc exactement la même fréquence $f$, la même célérité $c$, et — puisque $\lambda = c/f$ (R2) — la même longueur d'onde $\lambda$ que l'onde incidente, ainsi que la même nature. La diffraction ne change qu'une chose : la géométrie de la propagation, la direction dans laquelle l'onde se répand, l'étendue angulaire qu'elle couvre derrière l'ouverture. Elle ne touche jamais $f$, $\lambda$ ni $c$.
+L'onde diffractée garde donc exactement la même fréquence $f$, la même célérité $c$, et — puisque $\lambda = c/f$ (chapitre 3) — la même longueur d'onde $\lambda$ que l'onde incidente, ainsi que la même nature. La diffraction ne change qu'une chose : la géométrie de la propagation, la direction dans laquelle l'onde se répand, l'étendue angulaire qu'elle couvre derrière l'ouverture. Elle ne touche jamais $f$, $\lambda$ ni $c$.
 
 ### Le montage : mesurer l'étalement, pas seulement l'observer
 
@@ -292,7 +292,7 @@ Pour mettre en évidence la diffraction avec des ultrasons, on place, dans l'ord
 
 ### Exemple
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on calcule d'abord $\lambda$ à partir de $f$ et $c$ (relation de R2/R4), puis on compare cette longueur d'onde à deux dimensions d'ouverture différentes, pour décider dans quel cas la diffraction est notable — c'est cette comparaison, pas une lecture de valeur isolée, qui tranche.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on calcule d'abord $\lambda$ à partir de $f$ et $c$ (relation des chapitres 3 et 5), puis on compare cette longueur d'onde à deux dimensions d'ouverture différentes, pour décider dans quel cas la diffraction est notable — c'est cette comparaison, pas une lecture de valeur isolée, qui tranche.
 
 On envoie des ultrasons de fréquence $f = 40\ \text{kHz}$ dans l'air, où $c \approx 340\ \text{m/s}$.
 
@@ -314,9 +314,9 @@ La diffraction de la **lumière**, et la relation quantitative qui en donne la d
 
 ### La nuance qu'on n'avait pas encore posée
 
-On avait affirmé, aux rungs R1 et R4 : c'est le milieu qui fixe la célérité $c$, la source qui fixe la fréquence $f$. Prends position avant de lire la suite : dans un même milieu, deux ondes de fréquences différentes voyagent-elles nécessairement à la même vitesse $c$, puisque « c'est le milieu qui fixe $c$ » ? Ou peut-on imaginer un milieu où la vitesse dépend aussi de la fréquence de l'onde qui le traverse ?
+On avait affirmé, aux chapitres chapitres 2 et 5 : c'est le milieu qui fixe la célérité $c$, la source qui fixe la fréquence $f$. Prends position avant de lire la suite : dans un même milieu, deux ondes de fréquences différentes voyagent-elles nécessairement à la même vitesse $c$, puisque « c'est le milieu qui fixe $c$ » ? Ou peut-on imaginer un milieu où la vitesse dépend aussi de la fréquence de l'onde qui le traverse ?
 
-Ce qu'on avait dit reste vrai — c'est bien le milieu, jamais la source, qui fixe $c$ — mais il manquait une précision : *pour une fréquence donnée*. Dans certains milieux, la célérité n'est pas la même pour toutes les fréquences. Un tel milieu s'appelle **dispersif**. C'est un raffinement de l'affirmation de R1/R4, pas une contradiction : le milieu fixe toujours $c$ ; seulement, dans un milieu dispersif, il fixe une valeur de $c$ différente pour chaque fréquence.
+Ce qu'on avait dit reste vrai — c'est bien le milieu, jamais la source, qui fixe $c$ — mais il manquait une précision : *pour une fréquence donnée*. Dans certains milieux, la célérité n'est pas la même pour toutes les fréquences. Un tel milieu s'appelle **dispersif**. C'est un raffinement de l'affirmation des chapitres 2 et 5, pas une contradiction : le milieu fixe toujours $c$ ; seulement, dans un milieu dispersif, il fixe une valeur de $c$ différente pour chaque fréquence.
 
 ### La définition, testable
 
@@ -338,7 +338,7 @@ L'air, pour le son audible, est quasi non dispersif : c'est pour cela qu'une mé
 
 ### Ce qui ne change jamais
 
-Dans un milieu dispersif comme dans un milieu non dispersif, la fréquence $f$ reste, à chaque instant, celle que la source a imposée (R1) : la dispersion ne modifie jamais $f$. On pourrait être tenté de penser que, puisque « quelque chose varie avec la fréquence » dans un milieu dispersif, c'est la fréquence elle-même qui change en cours de route — ce n'est pas ça. Ce qui dépend de $f$, dans un milieu dispersif, c'est $c$ : chaque fréquence a sa propre célérité, mais chacune garde, du début à la fin de son trajet, la fréquence que la source lui a donnée. Et puisque $\lambda = c/f$ (R2), c'est $\lambda$, pas $f$, qui varie elle aussi d'une fréquence à l'autre dans un milieu dispersif.
+Dans un milieu dispersif comme dans un milieu non dispersif, la fréquence $f$ reste, à chaque instant, celle que la source a imposée (chapitre 2) : la dispersion ne modifie jamais $f$. On pourrait être tenté de penser que, puisque « quelque chose varie avec la fréquence » dans un milieu dispersif, c'est la fréquence elle-même qui change en cours de route — ce n'est pas ça. Ce qui dépend de $f$, dans un milieu dispersif, c'est $c$ : chaque fréquence a sa propre célérité, mais chacune garde, du début à la fin de son trajet, la fréquence que la source lui a donnée. Et puisque $\lambda = c/f$ (chapitre 3), c'est $\lambda$, pas $f$, qui varie elle aussi d'une fréquence à l'autre dans un milieu dispersif.
 
 ### Exemple
 

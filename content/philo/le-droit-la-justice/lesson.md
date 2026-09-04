@@ -40,11 +40,11 @@ C'est exactement ce problème — le droit garantit-il la justice, ou peut-il, a
 
 #### Un raccourci du langage courant qu'il faut d'abord défaire
 
-Dans une conversation ordinaire, « c'est légal » et « c'est juste » glissent facilement l'un vers l'autre, comme si dire qu'une chose est permise par la loi revenait à dire qu'elle est bonne, ou moralement acceptable. La situation de R0 montre pourtant que ces deux jugements peuvent se séparer nettement : il faut donc, avant d'aller plus loin, définir chacun des deux termes avec précision.
+Dans une conversation ordinaire, « c'est légal » et « c'est juste » glissent facilement l'un vers l'autre, comme si dire qu'une chose est permise par la loi revenait à dire qu'elle est bonne, ou moralement acceptable. La situation du chapitre 1 montre pourtant que ces deux jugements peuvent se séparer nettement : il faut donc, avant d'aller plus loin, définir chacun des deux termes avec précision.
 
 #### Le droit (positif) : ce qui est effectivement en vigueur
 
-Le **droit** — on précisera en R2 pourquoi on l'appelle plus exactement le droit **positif** — désigne l'ensemble des règles effectivement posées par une autorité reconnue (un législateur, un parlement, un pouvoir réglementaire) et en vigueur, à un moment et dans un lieu donnés, pour organiser la vie en société et trancher les conflits. Le trait décisif du droit ainsi entendu, c'est qu'il est POSÉ : quelqu'un l'a écrit, voté, promulgué, à une date identifiable — et il peut, pour cette raison même, changer, être abrogé, ou varier d'un pays à l'autre. Ce qui est interdit ici peut être permis ailleurs ; ce qui était permis hier peut être interdit demain.
+Le **droit** — on précisera au chapitre 3 pourquoi on l'appelle plus exactement le droit **positif** — désigne l'ensemble des règles effectivement posées par une autorité reconnue (un législateur, un parlement, un pouvoir réglementaire) et en vigueur, à un moment et dans un lieu donnés, pour organiser la vie en société et trancher les conflits. Le trait décisif du droit ainsi entendu, c'est qu'il est POSÉ : quelqu'un l'a écrit, voté, promulgué, à une date identifiable — et il peut, pour cette raison même, changer, être abrogé, ou varier d'un pays à l'autre. Ce qui est interdit ici peut être permis ailleurs ; ce qui était permis hier peut être interdit demain.
 
 #### La justice : un idéal auquel on mesure le droit lui-même
 
@@ -52,9 +52,9 @@ La **justice**, en revanche, désigne un idéal — un principe d'après lequel 
 
 #### Le mécanisme précis de la situation de R0
 
-**Voici pourquoi la situation de R0 est philosophiquement intéressante, et pas seulement triste.** Le tribunal n'a commis aucune erreur de droit : il a correctement établi qu'aucune règle en vigueur n'avait été violée — sur ce point purement juridique, sa décision est irréprochable. Mais le sentiment d'injustice que la plupart des élèves éprouvent malgré tout ne porte pas sur l'application de la règle : il porte sur le CONTENU de la règle elle-même, ou plus précisément sur son silence — le fait qu'aucune règle n'ait, à ce moment-là, protégé la rivière et le village. Ce sentiment révèle qu'on juge la loi (et son silence) à l'aune d'un critère qui n'est pas lui-même une loi : c'est précisément ce critère-là que la suite de la leçon va chercher à identifier.
+**Voici pourquoi la situation du chapitre 1 est philosophiquement intéressante, et pas seulement triste.** Le tribunal n'a commis aucune erreur de droit : il a correctement établi qu'aucune règle en vigueur n'avait été violée — sur ce point purement juridique, sa décision est irréprochable. Mais le sentiment d'injustice que la plupart des élèves éprouvent malgré tout ne porte pas sur l'application de la règle : il porte sur le CONTENU de la règle elle-même, ou plus précisément sur son silence — le fait qu'aucune règle n'ait, à ce moment-là, protégé la rivière et le village. Ce sentiment révèle qu'on juge la loi (et son silence) à l'aune d'un critère qui n'est pas lui-même une loi : c'est précisément ce critère-là que la suite de la leçon va chercher à identifier.
 
-> **Erreur à éviter :** ne conclus jamais de cet exemple que « le droit ne sert à rien » ou qu'« il vaudrait mieux n'avoir aucune loi écrite ». Le droit reste, dans l'immense majorité des cas, l'instrument par lequel une société cherche à réaliser la justice — il protège contre l'arbitraire, fixe des règles connues de tous, permet de trancher les conflits sans recourir à la force privée (cf. la leçon « L'État », R5, sur ce que l'absence de droit rend possible). Le point de R0 n'est pas que le droit est inutile, mais qu'il n'est pas AUTOMATIQUEMENT identique à la justice — un droit positif peut, dans certains de ses contenus, rester injuste, et c'est cet écart possible qu'il faut savoir repérer.
+> **Erreur à éviter :** ne conclus jamais de cet exemple que « le droit ne sert à rien » ou qu'« il vaudrait mieux n'avoir aucune loi écrite ». Le droit reste, dans l'immense majorité des cas, l'instrument par lequel une société cherche à réaliser la justice — il protège contre l'arbitraire, fixe des règles connues de tous, permet de trancher les conflits sans recourir à la force privée (cf. la leçon « L'État », chapitre 6, sur ce que l'absence de droit rend possible). Le point du chapitre 1 n'est pas que le droit est inutile, mais qu'il n'est pas AUTOMATIQUEMENT identique à la justice — un droit positif peut, dans certains de ses contenus, rester injuste, et c'est cet écart possible qu'il faut savoir repérer.
 
 [[checkpoint:cp-r1-rupture]]
 
@@ -64,21 +64,21 @@ La **justice**, en revanche, désigne un idéal — un principe d'après lequel 
 
 #### Reprendre la question laissée ouverte par R1
 
-R1 a établi qu'on peut juger une loi injuste sans pour autant nier qu'elle soit du droit valide. Mais au nom de quoi, précisément ? Il existe, sur ce point, une réponse ancienne et influente : la tradition du droit naturel, ou **jusnaturalisme**.
+Le chapitre 2 a établi qu'on peut juger une loi injuste sans pour autant nier qu'elle soit du droit valide. Mais au nom de quoi, précisément ? Il existe, sur ce point, une réponse ancienne et influente : la tradition du droit naturel, ou **jusnaturalisme**.
 
 #### Le droit positif : posé par une autorité, variable
 
-Le **droit positif** — on reprend ici le terme introduit en R1 — désigne les lois telles qu'elles sont effectivement écrites, votées, en vigueur dans tel pays à telle époque. Une caractéristique du droit positif mérite d'être soulignée : il est contingent — il aurait pu être autrement, il peut être modifié par une nouvelle loi, et il varie effectivement d'un pays à l'autre, d'une époque à l'autre. L'esclavage, par exemple, a été, à certaines époques et dans certains pays, parfaitement conforme au droit positif alors en vigueur.
+Le **droit positif** — on reprend ici le terme introduit au chapitre 2 — désigne les lois telles qu'elles sont effectivement écrites, votées, en vigueur dans tel pays à telle époque. Une caractéristique du droit positif mérite d'être soulignée : il est contingent — il aurait pu être autrement, il peut être modifié par une nouvelle loi, et il varie effectivement d'un pays à l'autre, d'une époque à l'autre. L'esclavage, par exemple, a été, à certaines époques et dans certains pays, parfaitement conforme au droit positif alors en vigueur.
 
 #### Le droit naturel : des principes valables indépendamment de toute loi écrite
 
 Le **droit naturel**, à l'inverse, désigne — selon la tradition jusnaturaliste (des Stoïciens à Locke, en passant par des juristes et philosophes de toutes les époques) — un ensemble de principes de justice universels, que l'on considère valables par nature, INDÉPENDAMMENT de ce que telle ou telle loi écrite dit effectivement. Selon cette tradition, certains droits — ne pas être réduit en esclavage, ne pas être torturé, disposer d'un minimum de dignité — ne DÉPENDENT pas d'avoir été inscrits dans un texte pour être réels : ils vaudraient même si aucune loi positive ne les protégeait, et une loi positive qui les violerait resterait, selon cette tradition, injuste, quelle que soit sa validité procédurale.
 
-**Tu as déjà croisé une version de cette idée.** Locke (cf. la leçon « L'État », R3) soutient que des droits naturels — la vie, la liberté, la propriété — existent déjà dans l'état de nature, avant tout contrat et avant toute loi positive : l'État, pour Locke, ne les CRÉE pas, il les protège. C'est très exactement la logique jusnaturaliste : le droit naturel précède et mesure le droit positif, il ne dépend pas de lui.
+**Tu as déjà croisé une version de cette idée.** Locke (cf. la leçon « L'État », chapitre 4) soutient que des droits naturels — la vie, la liberté, la propriété — existent déjà dans l'état de nature, avant tout contrat et avant toute loi positive : l'État, pour Locke, ne les CRÉE pas, il les protège. C'est très exactement la logique jusnaturaliste : le droit naturel précède et mesure le droit positif, il ne dépend pas de lui.
 
 #### Ce que le droit naturel permet, mécaniquement, que le droit positif seul ne permet pas
 
-**Voici pourquoi cette distinction est décisive.** Si l'on ne disposait d'aucun critère extérieur au droit positif lui-même, on ne pourrait jamais dire d'une loi qu'elle est injuste — on pourrait seulement dire qu'elle existe, ou qu'elle n'existe pas. Le droit naturel fournit précisément ce point d'appui extérieur : un étalon indépendant des lois écrites, à l'aune duquel celles-ci peuvent être évaluées, critiquées, et parfois jugées illégitimes dans leur contenu même — exactement le geste que la plupart des élèves faisaient, sans le nommer, face à la situation de R0.
+**Voici pourquoi cette distinction est décisive.** Si l'on ne disposait d'aucun critère extérieur au droit positif lui-même, on ne pourrait jamais dire d'une loi qu'elle est injuste — on pourrait seulement dire qu'elle existe, ou qu'elle n'existe pas. Le droit naturel fournit précisément ce point d'appui extérieur : un étalon indépendant des lois écrites, à l'aune duquel celles-ci peuvent être évaluées, critiquées, et parfois jugées illégitimes dans leur contenu même — exactement le geste que la plupart des élèves faisaient, sans le nommer, face à la situation du chapitre 1.
 
 > **Erreur à éviter :** ne confonds pas le droit naturel, au sens où on l'entend ici (des principes de justice universels), avec les « lois de la nature » au sens des sciences physiques (la gravitation, par exemple). Une loi physique DÉCRIT ce qui se passe nécessairement ; le droit naturel, lui, PRESCRIT ce qui devrait être respecté — deux emplois du mot « loi » (et du mot « nature ») qu'il ne faut jamais superposer.
 
@@ -120,7 +120,7 @@ C'est précisément ce genre de situation qui a relancé, après-guerre, la trad
 
 #### Une autre question : à supposer qu'on veuille une loi juste, que faudrait-il qu'elle réalise ?
 
-R2 et R3 ont opposé deux manières de FONDER le droit (par la nature, ou par la procédure). Mais il reste une question distincte, et tout aussi centrale au programme : à supposer qu'on veuille qu'une règle, une décision, une répartition soit juste, en quoi consiste concrètement la justice elle-même ? Aristote (*Éthique à Nicomaque*, Livre V, IVe siècle av. J.-C.) propose une réponse qui a marqué durablement la réflexion sur la justice : la justice, dans son sens le plus précis, est une forme d'**égalité**. Mais — et c'est le point le plus souvent manqué — il en distingue deux formes bien différentes, applicables à des situations différentes.
+chapitres 3 et 4 ont opposé deux manières de FONDER le droit (par la nature, ou par la procédure). Mais il reste une question distincte, et tout aussi centrale au programme : à supposer qu'on veuille qu'une règle, une décision, une répartition soit juste, en quoi consiste concrètement la justice elle-même ? Aristote (*Éthique à Nicomaque*, Livre V, IVe siècle av. J.-C.) propose une réponse qui a marqué durablement la réflexion sur la justice : la justice, dans son sens le plus précis, est une forme d'**égalité**. Mais — et c'est le point le plus souvent manqué — il en distingue deux formes bien différentes, applicables à des situations différentes.
 
 #### La justice commutative : l'égalité arithmétique, stricte, dans l'échange
 
@@ -148,7 +148,7 @@ La **justice distributive**, elle, régit la répartition des biens, des honneur
 
 #### Une question laissée ouverte par Aristote : selon quel critère répartir, concrètement ?
 
-R4 a établi que la justice distributive répartit selon le mérite ou le besoin — mais elle ne dit pas, en elle-même, COMMENT déterminer, de façon impartiale, les règles précises de cette répartition dans une société réelle, où les intérêts des uns et des autres divergent. John Rawls (philosophe américain, *Théorie de la justice*, 1971) propose une méthode originale pour répondre à cette question : la **justice comme équité**.
+Le chapitre 5 a établi que la justice distributive répartit selon le mérite ou le besoin — mais elle ne dit pas, en elle-même, COMMENT déterminer, de façon impartiale, les règles précises de cette répartition dans une société réelle, où les intérêts des uns et des autres divergent. John Rawls (philosophe américain, *Théorie de la justice*, 1971) propose une méthode originale pour répondre à cette question : la **justice comme équité**.
 
 #### L'expérience de pensée : la position originelle
 
@@ -169,7 +169,7 @@ Rawls soutient que des participants raisonnant ainsi, derrière le voile d'ignor
 
 #### Ce que Rawls ajoute à ce qu'on a vu jusqu'ici
 
-**Relie ce point aux rungs précédents.** Rawls ne fonde pas la justice sur des droits déjà donnés par la nature, indépendamment de toute procédure (ce serait la position jusnaturaliste de R2) ; il ne la réduit pas non plus à la simple conformité procédurale d'une loi existante, sans aucun critère de contenu (ce serait la position positiviste de R3). Il propose une troisième voie : une PROCÉDURE hypothétique (la position originelle, le voile d'ignorance) construite précisément pour produire des principes dont le CONTENU peut ensuite servir à évaluer et à réformer le droit positif réel — un peu comme Aristote (R4) cherchait un principe d'égalité applicable à la répartition, mais en proposant, ici, une méthode pour déterminer ce principe de façon impartiale plutôt qu'en le posant directement.
+**Relie ce point aux chapitres précédents.** Rawls ne fonde pas la justice sur des droits déjà donnés par la nature, indépendamment de toute procédure (ce serait la position jusnaturaliste du chapitre 3) ; il ne la réduit pas non plus à la simple conformité procédurale d'une loi existante, sans aucun critère de contenu (ce serait la position positiviste du chapitre 4). Il propose une troisième voie : une PROCÉDURE hypothétique (la position originelle, le voile d'ignorance) construite précisément pour produire des principes dont le CONTENU peut ensuite servir à évaluer et à réformer le droit positif réel — un peu comme Aristote (chapitre 5) cherchait un principe d'égalité applicable à la répartition, mais en proposant, ici, une méthode pour déterminer ce principe de façon impartiale plutôt qu'en le posant directement.
 
 > **Erreur à éviter :** ne confonds pas le voile d'ignorance avec un état réel dans lequel vivraient les citoyens d'une société — c'est une expérience de pensée, purement hypothétique, qui sert à choisir des principes, pas une description de la vie en société une fois ces principes adoptés (une fois le voile levé, chacun retrouve parfaitement conscience de sa situation réelle). Ne confonds pas non plus le principe de différence avec une exigence d'égalité stricte des richesses : Rawls accepte des inégalités, à condition qu'elles bénéficient aux plus désavantagés — ce n'est pas un égalitarisme absolu.
 
@@ -181,13 +181,13 @@ Rawls soutient que des participants raisonnant ainsi, derrière le voile d'ignor
 
 #### Reprendre, une dernière fois, la question de R0
 
-Les rungs précédents ont donné plusieurs manières de juger le CONTENU d'une loi (droit naturel, positivisme, justice commutative/distributive, justice comme équité). Il reste une dernière distinction, décisive pour clore la leçon : celle entre **légalité** et **légitimité**.
+Les chapitres précédents ont donné plusieurs manières de juger le CONTENU d'une loi (droit naturel, positivisme, justice commutative/distributive, justice comme équité). Il reste une dernière distinction, décisive pour clore la leçon : celle entre **légalité** et **légitimité**.
 
 #### Deux notions qu'il faut nettement séparer
 
-La **légalité** d'une loi ou d'une décision désigne sa conformité aux règles de production du droit en vigueur — exactement le critère que Kelsen (R3) retient pour la validité juridique : une loi votée dans les formes prévues par la Constitution est légale, quel que soit son contenu. La **légitimité**, elle, désigne autre chose : le fait qu'un pouvoir, une loi, une décision soit RECONNUE comme fondée, comme méritant l'obéissance — pas seulement redoutée ou subie, mais acceptée comme ayant droit de s'exercer.
+La **légalité** d'une loi ou d'une décision désigne sa conformité aux règles de production du droit en vigueur — exactement le critère que Kelsen (chapitre 4) retient pour la validité juridique : une loi votée dans les formes prévues par la Constitution est légale, quel que soit son contenu. La **légitimité**, elle, désigne autre chose : le fait qu'un pouvoir, une loi, une décision soit RECONNUE comme fondée, comme méritant l'obéissance — pas seulement redoutée ou subie, mais acceptée comme ayant droit de s'exercer.
 
-**Tu as déjà rencontré cette distinction, sous un autre nom.** Rousseau (cf. la leçon « L'État », R5) montre que la force seule ne fonde jamais une véritable obligation — « le plus fort n'est jamais assez fort pour être toujours le maître, s'il ne transforme sa force en droit, et l'obéissance en devoir » ; Weber, dans la même leçon, définit l'État par son monopole de la violence physique LÉGITIME, en précisant bien que « légitime » ne signifie pas « moralement juste en toute circonstance ». La distinction légalité/légitimité qu'on introduit ici en est le prolongement exact, appliqué cette fois précisément à la loi : une loi peut être légale (conforme à la procédure) sans être légitime (reconnue comme méritant l'obéissance), si son contenu viole des principes de justice qu'on juge supérieurs — qu'ils soient d'inspiration jusnaturaliste (R2) ou rawlsienne (R5).
+**Tu as déjà rencontré cette distinction, sous un autre nom.** Rousseau (cf. la leçon « L'État », chapitre 6) montre que la force seule ne fonde jamais une véritable obligation — « le plus fort n'est jamais assez fort pour être toujours le maître, s'il ne transforme sa force en droit, et l'obéissance en devoir » ; Weber, dans la même leçon, définit l'État par son monopole de la violence physique LÉGITIME, en précisant bien que « légitime » ne signifie pas « moralement juste en toute circonstance ». La distinction légalité/légitimité qu'on introduit ici en est le prolongement exact, appliqué cette fois précisément à la loi : une loi peut être légale (conforme à la procédure) sans être légitime (reconnue comme méritant l'obéissance), si son contenu viole des principes de justice qu'on juge supérieurs — qu'ils soient d'inspiration jusnaturaliste (chapitre 3) ou rawlsienne (chapitre 6).
 
 #### Le mécanisme précis : pourquoi cette dissociation est possible
 
@@ -195,7 +195,7 @@ La **légalité** d'une loi ou d'une décision désigne sa conformité aux règl
 
 #### Referme la boucle : la rivière, une dernière fois
 
-Reviens, une dernière fois, à l'usine et à la rivière de R0.
+Reviens, une dernière fois, à l'usine et à la rivière du chapitre 1.
 
 Le jusnaturaliste dirait que le silence de la loi sur ce produit chimique précis ne change rien à l'existence d'un droit — à un environnement vivable, à la santé — que cette loi aurait dû reconnaître et protéger, qu'elle l'ait fait ou non : le tribunal a correctement appliqué un droit positif resté, sur ce point, en deçà de ce que le droit naturel aurait exigé.
 
@@ -221,10 +221,10 @@ Et la distinction légalité/légitimité, enfin, permet de nommer précisément
 
 #### Étape 1 — Analyser les termes du sujet
 
-- **« Légale »** : rappelle-toi R1 et R3 — une loi est légale si elle est effectivement en vigueur, posée par une autorité reconnue, et conforme, comme le précise Kelsen, à la norme supérieure qui l'autorise (conformité procédurale).
-- **« Juste »** : rappelle-toi R1, R4 et R5 — la justice est un idéal qui sert de mesure au droit ; elle peut se comprendre comme égalité (Aristote : commutative ou distributive) ou comme équité issue d'une procédure impartiale (Rawls : position originelle, voile d'ignorance).
-- **« Suffit-il »** : le sujet demande si la légalité est une condition SUFFISANTE de la justice — pas si elle est nécessaire, ni si les deux notions n'ont rien à voir. Une bonne dissertation ne doit pas répondre « non, jamais », ce qui reviendrait à dire que le droit ne sert à rien pour la justice (contredit par R1) ; ni « oui, toujours », ce qui nierait l'écart possible établi dès R0.
-- Mobilise le jusnaturalisme (R2) et le débat de Nuremberg (R3) pour l'écart possible entre légalité et justice ; mobilise le positivisme (R3) pour la thèse inverse ; mobilise Rawls (R5) et la distinction légalité/légitimité (R6) pour le dépassement.
+- **« Légale »** : rappelle-toi les chapitres 2 et 4 — une loi est légale si elle est effectivement en vigueur, posée par une autorité reconnue, et conforme, comme le précise Kelsen, à la norme supérieure qui l'autorise (conformité procédurale).
+- **« Juste »** : rappelle-toi les chapitres 2, 5 et 6 — la justice est un idéal qui sert de mesure au droit ; elle peut se comprendre comme égalité (Aristote : commutative ou distributive) ou comme équité issue d'une procédure impartiale (Rawls : position originelle, voile d'ignorance).
+- **« Suffit-il »** : le sujet demande si la légalité est une condition SUFFISANTE de la justice — pas si elle est nécessaire, ni si les deux notions n'ont rien à voir. Une bonne dissertation ne doit pas répondre « non, jamais », ce qui reviendrait à dire que le droit ne sert à rien pour la justice (contredit par le chapitre 2) ; ni « oui, toujours », ce qui nierait l'écart possible établi dès le chapitre 1.
+- Mobilise le jusnaturalisme (chapitre 3) et le débat de Nuremberg (chapitre 4) pour l'écart possible entre légalité et justice ; mobilise le positivisme (chapitre 4) pour la thèse inverse ; mobilise Rawls (chapitre 6) et la distinction légalité/légitimité (chapitre 7) pour le dépassement.
 
 #### Étape 2 — Formuler la problématique
 
@@ -239,13 +239,13 @@ Une formulation possible :
 #### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
 
 **I. Thèse — Une loi légale est, en règle générale, une loi juste.**
-Développe le positivisme de Kelsen (R3) : la conformité procédurale garantit la sécurité juridique, la prévisibilité, l'égalité de tous devant une règle connue à l'avance — autant de conditions elles-mêmes nécessaires à la justice. Mobilise aussi le rôle protecteur du droit rappelé en R1 : sans droit posé, aucune règle stable ne pourrait organiser la vie commune ni protéger contre l'arbitraire (cf. la leçon « L'État », R2-R3, sur ce que l'absence d'autorité commune rend possible).
+Développe le positivisme de Kelsen (chapitre 4) : la conformité procédurale garantit la sécurité juridique, la prévisibilité, l'égalité de tous devant une règle connue à l'avance — autant de conditions elles-mêmes nécessaires à la justice. Mobilise aussi le rôle protecteur du droit rappelé au chapitre 2 : sans droit posé, aucune règle stable ne pourrait organiser la vie commune ni protéger contre l'arbitraire (cf. la leçon « L'État », chapitres 3 et 4, sur ce que l'absence d'autorité commune rend possible).
 
 **II. Antithèse — Une loi légale peut être profondément injuste.**
-Mobilise le jusnaturalisme (R2) : des principes de justice universels existent indépendamment des lois écrites, et permettent de juger celles-ci insuffisantes ou injustes. Mobilise le débat né des procès de Nuremberg (R3) : des lois parfaitement valides au sens procédural ont pu couvrir des crimes que le seul critère de légalité ne permettait pas de nommer comme tels. Mobilise la justice distributive d'Aristote (R4) : une loi peut respecter la procédure tout en organisant une répartition profondément disproportionnée, donc injuste en ce sens précis.
+Mobilise le jusnaturalisme (chapitre 3) : des principes de justice universels existent indépendamment des lois écrites, et permettent de juger celles-ci insuffisantes ou injustes. Mobilise le débat né des procès de Nuremberg (chapitre 4) : des lois parfaitement valides au sens procédural ont pu couvrir des crimes que le seul critère de légalité ne permettait pas de nommer comme tels. Mobilise la justice distributive d'Aristote (chapitre 5) : une loi peut respecter la procédure tout en organisant une répartition profondément disproportionnée, donc injuste en ce sens précis.
 
 **III. Dépassement — La justice excède la légalité, mais elle ne s'y oppose pas nécessairement : elle en est la mesure et l'horizon de réforme.**
-Reprends la distinction légalité/légitimité (R6) : juger une loi légale illégitime ne revient pas à nier sa légalité, mais à mesurer son contenu à un critère distinct. Reprends Rawls (R5) : le voile d'ignorance offre une procédure pour déterminer, de façon impartiale, ce que devrait contenir une loi juste — sans reposer sur un donné naturel figé (jusnaturalisme) ni sur la seule conformité formelle (positivisme). C'est cette mesure qui permet de réformer le droit positif, précisément parce qu'il n'est jamais automatiquement identique à la justice.
+Reprends la distinction légalité/légitimité (chapitre 7) : juger une loi légale illégitime ne revient pas à nier sa légalité, mais à mesurer son contenu à un critère distinct. Reprends Rawls (chapitre 6) : le voile d'ignorance offre une procédure pour déterminer, de façon impartiale, ce que devrait contenir une loi juste — sans reposer sur un donné naturel figé (jusnaturalisme) ni sur la seule conformité formelle (positivisme). C'est cette mesure qui permet de réformer le droit positif, précisément parce qu'il n'est jamais automatiquement identique à la justice.
 
 #### Étape 4 — Rédiger l'introduction (modèle rédigé)
 
@@ -257,7 +257,7 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 
 #### Étape 5 — Un paragraphe rédigé de la partie I, à titre de modèle
 
-> Selon Kelsen, la validité d'une norme juridique tient exclusivement à sa conformité procédurale à la norme supérieure qui l'autorise — une loi doit se conformer à la Constitution, un règlement à la loi qui l'habilite — sans qu'il soit besoin d'évaluer, en plus, son contenu moral. Cette séparation du droit et de la morale n'est pas un simple parti pris théorique : elle protège une exigence pratique essentielle, celle de la sécurité juridique. Si la validité d'une loi dépendait de sa conformité à « la morale », encore faudrait-il s'accorder sur ce qu'est la morale — un accord bien plus incertain que celui, purement procédural, sur le fait qu'une loi a ou non été votée dans les formes prévues. En ce sens, une loi légale tend, en règle générale, à être une loi juste : elle offre à tous une règle connue à l'avance, applicable de façon égale, indépendamment des convictions morales particulières de tel ou tel juge — exactement ce que R1 identifiait comme la fonction protectrice du droit contre l'arbitraire.
+> Selon Kelsen, la validité d'une norme juridique tient exclusivement à sa conformité procédurale à la norme supérieure qui l'autorise — une loi doit se conformer à la Constitution, un règlement à la loi qui l'habilite — sans qu'il soit besoin d'évaluer, en plus, son contenu moral. Cette séparation du droit et de la morale n'est pas un simple parti pris théorique : elle protège une exigence pratique essentielle, celle de la sécurité juridique. Si la validité d'une loi dépendait de sa conformité à « la morale », encore faudrait-il s'accorder sur ce qu'est la morale — un accord bien plus incertain que celui, purement procédural, sur le fait qu'une loi a ou non été votée dans les formes prévues. En ce sens, une loi légale tend, en règle générale, à être une loi juste : elle offre à tous une règle connue à l'avance, applicable de façon égale, indépendamment des convictions morales particulières de tel ou tel juge — exactement ce que le chapitre 2 identifiait comme la fonction protectrice du droit contre l'arbitraire.
 
 **Pourquoi ce paragraphe est construit ainsi :** il ne se contente pas d'affirmer que la légalité produit de la justice — il fait *fonctionner* le mécanisme précis de Kelsen (la hiérarchie des normes, la séparation droit/morale) avant d'en tirer la conséquence pratique (sécurité juridique, égalité devant une règle connue). Remarque la dernière phrase : elle prépare déjà, sans le dire explicitement, la question qui ouvrira la partie II — cette sécurité procédurale peut-elle, à elle seule, empêcher qu'une loi légale ne devienne profondément injuste ?
 
@@ -265,8 +265,8 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 
 Rédige maintenant, à ton tour :
 
-1. Un paragraphe de la partie II (l'antithèse), en choisissant SOIT l'angle jusnaturaliste et le débat de Nuremberg (R2-R3), SOIT l'angle de la justice distributive d'Aristote (R4) — pas les deux à la fois dans un seul paragraphe.
-2. Un paragraphe de la partie III (le dépassement), en t'appuyant sur la distinction entre légalité et légitimité (R6) et sur la position originelle de Rawls (R5).
+1. Un paragraphe de la partie II (l'antithèse), en choisissant SOIT l'angle jusnaturaliste et le débat de Nuremberg (chapitres 3 et 4), SOIT l'angle de la justice distributive d'Aristote (chapitre 5) — pas les deux à la fois dans un seul paragraphe.
+2. Un paragraphe de la partie III (le dépassement), en t'appuyant sur la distinction entre légalité et légitimité (chapitre 7) et sur la position originelle de Rawls (chapitre 6).
 
 Puis entraîne-toi sur l'un de ces deux sujets, avec la même méthode (analyse des termes → problématique → plan → introduction rédigée) :
 
@@ -276,8 +276,8 @@ Puis entraîne-toi sur l'un de ces deux sujets, avec la même méthode (analyse 
 ### Exercice de type bac
 
 Le sujet ci-dessous est réel — tiré des annales nationales, pas construit
-pour cette leçon. Il porte exactement sur le terrain déjà construit en R2
-(droit positif contre droit naturel) et R3 (le positivisme juridique de
+pour cette leçon. Il porte exactement sur le terrain déjà construit au chapitre 3
+(droit positif contre droit naturel) et le chapitre 4 (le positivisme juridique de
 Kelsen) : à toi de mobiliser ce que tu sais déjà pour l'affronter, sans
 qu'aucun contenu nouveau ne soit à apprendre.
 

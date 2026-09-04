@@ -80,7 +80,7 @@ $$\underbrace{n \times n \times \cdots \times n}_{p \text{ fois}} = n^p$$
 
 ### Résolvons enfin le cadenas du départ
 
-Reviens à la question du R0 : un cadenas à 4 roues, chacune avec les chiffres 0 à 9, répétitions autorisées.
+Reviens à la question du chapitre 1 : un cadenas à 4 roues, chacune avec les chiffres 0 à 9, répétitions autorisées.
 
 **Ce qu'on cherche et pourquoi ce geste :** chaque roue se règle indépendamment des autres (choisir 7 sur la première roue ne retire pas le 7 des roues suivantes) — c'est exactement une p-liste, avec $n=10$ (les chiffres 0 à 9) et $p=4$ (les 4 roues).
 
@@ -214,7 +214,7 @@ Donc chaque groupe de $p$ éléments est compté **$p!$ fois** dans $A_n^p$ — 
 
 $$\binom{n}{p} = \frac{A_n^p}{p!}$$
 
-Et puisqu'on connaît déjà $A_n^p = \dfrac{n!}{(n-p)!}$ depuis le R3, on substitue pour obtenir la formule explicite :
+Et puisqu'on connaît déjà $A_n^p = \dfrac{n!}{(n-p)!}$ depuis le chapitre 4, on substitue pour obtenir la formule explicite :
 
 $$\binom{n}{p} = \frac{n!}{p! \, (n-p)!}$$
 
@@ -292,7 +292,7 @@ Les deux valent 21 : choisir 2 délégués parmi 7, c'est exactement la même d�
 
 Il existe une deuxième propriété, qui permet de calculer $\binom{n}{p}$ de proche en proche, sans repasser par les factorielles à chaque fois.
 
-**Pourquoi c'est vrai — le raisonnement par cas :** fixe UN élément particulier de l'ensemble à $n$ éléments — appelons-le $x$. Un groupe de $p$ éléments, soit CONTIENT $x$, soit ne le CONTIENT PAS — ces deux cas sont mutuellement exclusifs (c'est le principe additif du R1) et couvrent tous les groupes possibles.
+**Pourquoi c'est vrai — le raisonnement par cas :** fixe UN élément particulier de l'ensemble à $n$ éléments — appelons-le $x$. Un groupe de $p$ éléments, soit CONTIENT $x$, soit ne le CONTIENT PAS — ces deux cas sont mutuellement exclusifs (c'est le principe additif du chapitre 2) et couvrent tous les groupes possibles.
 
 - **Si le groupe contient $x$ :** il reste à choisir les $p-1$ autres membres parmi les $n-1$ éléments restants (tous sauf $x$) : $\binom{n-1}{p-1}$ façons.
 - **Si le groupe ne contient pas $x$ :** il faut choisir les $p$ membres entièrement parmi les $n-1$ éléments restants : $\binom{n-1}{p}$ façons.
@@ -352,7 +352,7 @@ $$\text{card}(E) = \binom{5}{2} \times \binom{4}{1} = 10 \times 4 = 40$$
 
 $$P(E) = \frac{40}{84} = \frac{10}{21} \approx 0{,}476$$
 
-**Le piège à éviter ici :** ne PAS confondre "choisir 2 rouges ET 1 verte" (un ET entre deux groupes différents, donc une multiplication de deux combinaisons) avec "choisir 3 boules parmi 9" (un seul groupe, une seule combinaison). C'est le "ET" entre rouges et vertes qui déclenche la multiplication — exactement le principe multiplicatif du R1, appliqué ici à des combinaisons plutôt qu'à des choix simples.
+**Le piège à éviter ici :** ne PAS confondre "choisir 2 rouges ET 1 verte" (un ET entre deux groupes différents, donc une multiplication de deux combinaisons) avec "choisir 3 boules parmi 9" (un seul groupe, une seule combinaison). C'est le "ET" entre rouges et vertes qui déclenche la multiplication — exactement le principe multiplicatif du chapitre 2, appliqué ici à des combinaisons plutôt qu'à des choix simples.
 
 [[figure:urne-deux-couleurs]]
 
@@ -362,11 +362,11 @@ $$P(E) = \frac{40}{84} = \frac{10}{21} \approx 0{,}476$$
 
 ## R8 — Pour t'entraîner : un vrai sujet de bac
 
-Place maintenant au chapitre un exercice tel qu'il tombe à l'examen national. Contrairement aux exemples travaillés des rungs précédents, ici tu ne lis pas la solution d'abord : tu prends position, tu tentes, et le raisonnement expert ne se dévoile qu'ensuite. C'est en te confrontant à la question **avant** d'avoir la réponse que la méthode se fixe durablement.
+Place maintenant au chapitre un exercice tel qu'il tombe à l'examen national. Contrairement aux exemples travaillés des chapitres précédents, ici tu ne lis pas la solution d'abord : tu prends position, tu tentes, et le raisonnement expert ne se dévoile qu'ensuite. C'est en te confrontant à la question **avant** d'avoir la réponse que la méthode se fixe durablement.
 
 ### Ce que ces exercices empruntent à d'autres chapitres
 
-Le rung 7 a fait le pont du dénombrement vers les probabilités par l'équiprobabilité — compter les cas favorables, compter les cas possibles, diviser. Un sujet va souvent un cran plus loin et mobilise des outils que **cette leçon n'enseigne pas** :
+Le chapitre 7 a fait le pont du dénombrement vers les probabilités par l'équiprobabilité — compter les cas favorables, compter les cas possibles, diviser. Un sujet va souvent un cran plus loin et mobilise des outils que **cette leçon n'enseigne pas** :
 
 - **L'indépendance de deux événements**, $p(A\cap B) = p(A)\times p(B)$, et sa distinction d'avec l'**incompatibilité** ($A\cap B = \varnothing$) — deux notions que le vocabulaire courant confond et que le cours sépare nettement. Elles sont dans « **Probabilités conditionnelles** ».
 - **La variable aléatoire, sa loi et son espérance**, dès qu'un sujet demande « le nombre moyen de… » plutôt que « la probabilité que… ». Même chapitre.

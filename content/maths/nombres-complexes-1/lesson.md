@@ -166,7 +166,7 @@ Et $i^2=-1$, donc $-b^2i^2 = b^2$ :
 
 $$z \times \overline{z} = a^2+b^2$$
 
-**C'est le résultat clé :** $z \times \overline{z}$ est **toujours un nombre réel, positif ou nul** — les deux $i$ ont complètement disparu. Multiplier par le conjugué transforme un complexe en réel. C'est ce mécanisme qui rend le conjugué utile dans toute la suite de ce rung.
+**C'est le résultat clé :** $z \times \overline{z}$ est **toujours un nombre réel, positif ou nul** — les deux $i$ ont complètement disparu. Multiplier par le conjugué transforme un complexe en réel. C'est ce mécanisme qui rend le conjugué utile dans toute la suite de ce chapitre.
 
 ### Propriétés du conjugué
 
@@ -182,7 +182,7 @@ Deux caractérisations très utiles découlent de ces deux dernières lignes :
 
 $$z \text{ est réel} \iff z = \overline{z} \qquad \qquad z \text{ est imaginaire pur} \iff z = -\overline{z}$$
 
-**Pourquoi c'est vrai :** si $z=\overline{z}$, alors $a+bi = a-bi$. D'après la règle d'égalité du R1, ça impose $b=-b$, donc $b=0$ — et $z=a$ est bien réel. Réciproquement, si $z$ est réel ($b=0$), alors $\overline{z}=a-0i=a=z$. Le même type de raisonnement, avec les rôles inversés, donne la caractérisation de l'imaginaire pur.
+**Pourquoi c'est vrai :** si $z=\overline{z}$, alors $a+bi = a-bi$. D'après la règle d'égalité du chapitre 2, ça impose $b=-b$, donc $b=0$ — et $z=a$ est bien réel. Réciproquement, si $z$ est réel ($b=0$), alors $\overline{z}=a-0i=a=z$. Le même type de raisonnement, avec les rôles inversés, donne la caractérisation de l'imaginaire pur.
 
 ### Exemple travaillé
 
@@ -271,7 +271,7 @@ Les deux membres valent $\sqrt{10}$ : la propriété est vérifiée sur cet exem
 
 ### Le dividende de tout ce qu'on vient de construire
 
-Au R0, on a inventé $\mathbb{C}$ pour une raison très précise : donner une solution à $x^2=-1$. Depuis, on a appris à calculer dans ce nouvel ensemble — additionner, multiplier, conjuguer, diviser, mesurer. Le moment est venu de toucher le dividende, et il tombe exactement là où on l'attendait : sur les équations du second degré.
+Au chapitre 1, on a inventé $\mathbb{C}$ pour une raison très précise : donner une solution à $x^2=-1$. Depuis, on a appris à calculer dans ce nouvel ensemble — additionner, multiplier, conjuguer, diviser, mesurer. Le moment est venu de toucher le dividende, et il tombe exactement là où on l'attendait : sur les équations du second degré.
 
 Rappelle-toi la classification que tu connais depuis la première, pour $az^2+bz+c=0$ à coefficients réels, avec $\Delta = b^2-4ac$ :
 
@@ -287,7 +287,7 @@ Et les sujets d'examen national vont plus loin encore : ils posent des équation
 
 Regarde la formule habituelle, $z = \dfrac{-b \pm \sqrt{\Delta}}{2a}$, et demande-toi quel morceau exactement pose problème dans $\mathbb{C}$.
 
-Ni $-b$, ni $2a$, ni la division : tout ça, on sait le faire depuis le R2 et le R3. Le seul morceau douteux, c'est $\sqrt{\Delta}$. Dans $\mathbb{R}$, cette écriture a un sens parfaitement clair tant que $\Delta \geq 0$ : c'est **le** réel **positif** dont le carré vaut $\Delta$ — deux mots qui font tout le travail, « le » et « positif ».
+Ni $-b$, ni $2a$, ni la division : tout ça, on sait le faire depuis le chapitre 3 et le chapitre 4. Le seul morceau douteux, c'est $\sqrt{\Delta}$. Dans $\mathbb{R}$, cette écriture a un sens parfaitement clair tant que $\Delta \geq 0$ : c'est **le** réel **positif** dont le carré vaut $\Delta$ — deux mots qui font tout le travail, « le » et « positif ».
 
 Dans $\mathbb{C}$, ces deux mots s'effondrent ensemble. Il n'y a pas d'ordre sur $\mathbb{C}$ : « le complexe positif dont le carré vaut $\Delta$ » ne désigne rien. Et si un complexe $\delta$ vérifie $\delta^2=\Delta$, alors $(-\delta)^2 = \delta^2 = \Delta$ aussi — deux candidats, rigoureusement interchangeables, que rien ne permet de départager.
 
@@ -311,13 +311,13 @@ Voici la réponse à la question posée plus haut, et elle est plus intéressant
 
 $$az^2+bz+c = a\left[z^2 + \frac{b}{a}z + \frac{c}{a}\right] = a\left[\left(z+\frac{b}{2a}\right)^2 - \frac{b^2}{4a^2} + \frac{c}{a}\right] = a\left[\left(z+\frac{b}{2a}\right)^2 - \frac{\Delta}{4a^2}\right]$$
 
-**Regarde ce que ce calcul a utilisé :** uniquement les règles de calcul de $\mathbb{C}$ (développer, regrouper, diviser par un nombre non nul — R2 et R3). Pas une seule fois le fait que $a$, $b$, $c$ soient réels. Pas une seule fois le signe de quoi que ce soit. La forme canonique n'a jamais rien eu à voir avec $\mathbb{R}$ ; c'est nous qui l'y avions cantonnée.
+**Regarde ce que ce calcul a utilisé :** uniquement les règles de calcul de $\mathbb{C}$ (développer, regrouper, diviser par un nombre non nul — chapitres 3 et 4). Pas une seule fois le fait que $a$, $b$, $c$ soient réels. Pas une seule fois le signe de quoi que ce soit. La forme canonique n'a jamais rien eu à voir avec $\mathbb{R}$ ; c'est nous qui l'y avions cantonnée.
 
-Prends maintenant $\delta$ tel que $\delta^2=\Delta$. Alors $\dfrac{\Delta}{4a^2} = \left(\dfrac{\delta}{2a}\right)^2$, et le crochet devient une différence de deux carrés — la même identité $X^2-Y^2=(X-Y)(X+Y)$ qui nous avait servi au R3 :
+Prends maintenant $\delta$ tel que $\delta^2=\Delta$. Alors $\dfrac{\Delta}{4a^2} = \left(\dfrac{\delta}{2a}\right)^2$, et le crochet devient une différence de deux carrés — la même identité $X^2-Y^2=(X-Y)(X+Y)$ qui nous avait servi au chapitre 4 :
 
 $$az^2+bz+c = a\left(z + \frac{b}{2a} - \frac{\delta}{2a}\right)\left(z + \frac{b}{2a} + \frac{\delta}{2a}\right)$$
 
-Un produit de nombres complexes est nul si et seulement si l'un des facteurs est nul (si le premier facteur n'est pas nul, on peut diviser par lui — le R3 nous a appris à diviser par n'importe quel complexe non nul — et le second facteur est alors forcément nul). L'équation se résout donc en annulant chaque facteur, et il reste :
+Un produit de nombres complexes est nul si et seulement si l'un des facteurs est nul (si le premier facteur n'est pas nul, on peut diviser par lui — le chapitre 4 nous a appris à diviser par n'importe quel complexe non nul — et le second facteur est alors forcément nul). L'équation se résout donc en annulant chaque facteur, et il reste :
 
 $$z_1 = \frac{-b+\delta}{2a} \qquad \qquad z_2 = \frac{-b-\delta}{2a}$$
 
@@ -326,7 +326,7 @@ $$z_1 = \frac{-b+\delta}{2a} \qquad \qquad z_2 = \frac{-b-\delta}{2a}$$
 - si $\Delta \neq 0$, alors $\delta \neq 0$ et l'équation a **deux solutions distinctes** ;
 - si $\Delta = 0$, alors $\delta = 0$ et les deux se confondent : une **solution double**, $z = -\dfrac{b}{2a}$.
 
-Il n'y a plus de troisième cas. Dans $\mathbb{C}$, une équation du second degré a toujours des solutions — c'est exactement le mur du R0 qui vient de tomber.
+Il n'y a plus de troisième cas. Dans $\mathbb{C}$, une équation du second degré a toujours des solutions — c'est exactement le mur du chapitre 1 qui vient de tomber.
 
 **Un piège très fréquent à l'examen :** ne discute jamais le **signe** de $\Delta$ quand $\Delta$ n'est pas réel. Écrire « $\Delta = 2i(m-1)^2 < 0$ » n'est pas une erreur de calcul, c'est une phrase qui n'a aucun sens : il n'y a pas d'ordre sur $\mathbb{C}$. Avec des coefficients complexes, la seule question qui subsiste est : $\Delta$ est-il nul, ou non ?
 
@@ -342,7 +342,7 @@ $\Delta$ est un réel négatif : $\delta = i\sqrt{12} = 2i\sqrt{3}$ convient. On
 
 $$z = \frac{2 \pm 2i\sqrt3}{2} = 1 \pm i\sqrt3 \qquad \qquad S = \left\{\, 1-i\sqrt3\ ;\ 1+i\sqrt3 \,\right\}$$
 
-**Ce qu'on remarque, et pourquoi ce n'est pas un hasard :** les deux solutions sont **conjuguées** l'une de l'autre. La raison mérite d'être vue, parce qu'elle dit aussi où la propriété s'arrête. Si $z_0$ est solution de $az_0^2+bz_0+c=0$, conjugue l'égalité tout entière : le conjugué d'une somme est la somme des conjugués, celui d'un produit le produit des conjugués (R3), donc $\overline{a}\,\overline{z_0}^{\,2} + \overline{b}\,\overline{z_0} + \overline{c} = 0$. Si — et seulement si — $a$, $b$, $c$ sont **réels**, on a $\overline a = a$, $\overline b = b$, $\overline c = c$, et cette égalité dit exactement que $\overline{z_0}$ est solution à son tour.
+**Ce qu'on remarque, et pourquoi ce n'est pas un hasard :** les deux solutions sont **conjuguées** l'une de l'autre. La raison mérite d'être vue, parce qu'elle dit aussi où la propriété s'arrête. Si $z_0$ est solution de $az_0^2+bz_0+c=0$, conjugue l'égalité tout entière : le conjugué d'une somme est la somme des conjugués, celui d'un produit le produit des conjugués (chapitre 4), donc $\overline{a}\,\overline{z_0}^{\,2} + \overline{b}\,\overline{z_0} + \overline{c} = 0$. Si — et seulement si — $a$, $b$, $c$ sont **réels**, on a $\overline a = a$, $\overline b = b$, $\overline c = c$, et cette égalité dit exactement que $\overline{z_0}$ est solution à son tour.
 
 Retiens la portée exacte de ce résultat : il repose entièrement sur des coefficients réels. L'exemple suivant montre ce qui se passe quand ils ne le sont plus.
 
@@ -350,7 +350,7 @@ Retiens la portée exacte de ce résultat : il repose entièrement sur des coeff
 
 Résoudre dans $\mathbb{C}$ l'équation $z^2 - (3+i)z + 2 + 2i = 0$.
 
-**Ce qu'on cherche et pourquoi ce geste :** rien ne change dans la méthode — on identifie $a=1$, $b=-(3+i)$, $c=2+2i$, et on calcule $\Delta = b^2-4ac$ en développant avec les règles du R2. Ce qui change, c'est l'**arrivée** : $\Delta$ ne sera pas un réel, donc le raccourci « $\delta = i\sqrt{|\Delta|}$ » ne s'appliquera pas. Il faudra reconnaître $\Delta$ comme un carré.
+**Ce qu'on cherche et pourquoi ce geste :** rien ne change dans la méthode — on identifie $a=1$, $b=-(3+i)$, $c=2+2i$, et on calcule $\Delta = b^2-4ac$ en développant avec les règles du chapitre 3. Ce qui change, c'est l'**arrivée** : $\Delta$ ne sera pas un réel, donc le raccourci « $\delta = i\sqrt{|\Delta|}$ » ne s'appliquera pas. Il faudra reconnaître $\Delta$ comme un carré.
 
 $$(3+i)^2 = 9+6i+i^2 = 8+6i$$
 
@@ -376,7 +376,7 @@ $$S = \left\{\, 2\ ;\ 1+i \,\right\}$$
 
 Trois situations, dans l'ordre de fréquence où tu les rencontreras.
 
-**1. L'énoncé te donne le résultat.** « Montrer que le discriminant de $(E)$ est $\Delta = \big(2i(m-1)\big)^2$ » : c'est de loin le cas le plus courant. Le sens du travail est alors **inversé** — tu n'as rien à découvrir, tu as à vérifier. Développe les deux côtés séparément, chacun avec les règles du R2, et compare les deux expressions obtenues. C'est plus court, c'est plus sûr, et c'est exactement ce que le barème attend. Deviner, ici, c'est perdre du temps et des points.
+**1. L'énoncé te donne le résultat.** « Montrer que le discriminant de $(E)$ est $\Delta = \big(2i(m-1)\big)^2$ » : c'est de loin le cas le plus courant. Le sens du travail est alors **inversé** — tu n'as rien à découvrir, tu as à vérifier. Développe les deux côtés séparément, chacun avec les règles du chapitre 3, et compare les deux expressions obtenues. C'est plus court, c'est plus sûr, et c'est exactement ce que le barème attend. Deviner, ici, c'est perdre du temps et des points.
 
 **2. Le carré est là, caché sous un facteur.** Les discriminants des sujets se factorisent presque toujours en un facteur reconnaissable multiplié par un carré d'expression. Le réflexe : factorise $\Delta$ au maximum, puis traite chaque facteur séparément. La table courte qui débloque l'immense majorité des cas :
 
@@ -386,8 +386,8 @@ Et un produit de carrés est un carré : si $\Delta = A^2B^2$, alors $\delta = A
 
 **3. Rien ne se reconnaît.** Il reste une méthode qui ne rate jamais. On pose $\delta = x+iy$ avec $x$ et $y$ réels, et on traduit $\delta^2 = \Delta$ en trois égalités **réelles** :
 
-- $x^2-y^2 = \text{Re}(\Delta)$ et $2xy = \text{Im}(\Delta)$ — c'est l'égalité de deux complexes, lue partie par partie (R1) ;
-- $x^2+y^2 = |\Delta|$ — c'est l'égalité des modules, puisque $|\delta|^2 = |\Delta|$ (R4).
+- $x^2-y^2 = \text{Re}(\Delta)$ et $2xy = \text{Im}(\Delta)$ — c'est l'égalité de deux complexes, lue partie par partie (chapitre 2) ;
+- $x^2+y^2 = |\Delta|$ — c'est l'égalité des modules, puisque $|\delta|^2 = |\Delta|$ (chapitre 5).
 
 La troisième est celle qui débloque tout : additionnée à la première, elle donne $x^2$ ; soustraite, elle donne $y^2$. La deuxième ne sert plus qu'à fixer le **signe** du produit $xy$.
 
@@ -498,7 +498,7 @@ $$z_{\vec{AB}} = z_B - z_A$$
 
 ### L'interprétation géométrique du module : une distance
 
-Voici l'idée la plus importante de ce rung. Reprends l'affixe du vecteur $\vec{AB}$, où $A(x_A,y_A)$ et $B(x_B,y_B)$ :
+Voici l'idée la plus importante de ce chapitre. Reprends l'affixe du vecteur $\vec{AB}$, où $A(x_A,y_A)$ et $B(x_B,y_B)$ :
 
 $$z_B - z_A = (x_B-x_A) + (y_B-y_A)i$$
 

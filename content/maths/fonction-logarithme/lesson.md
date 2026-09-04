@@ -66,7 +66,7 @@ L'ensemble des solutions est $[1,+\infty[$.
 
 ### Le résultat central, et pourquoi il est vrai
 
-Reprenons la question du R0 : pourquoi $\ln(a\times b) = \ln(a)+\ln(b)$ ?
+Reprenons la question du chapitre 1 : pourquoi $\ln(a\times b) = \ln(a)+\ln(b)$ ?
 
 Fixe un réel $a>0$, et considère la fonction $\varphi$ définie sur $]0,+\infty[$ par $\varphi(x) = \ln(ax)$.
 
@@ -174,7 +174,7 @@ Tu as déjà utilisé, sans le nommer, un outil du chapitre "Dérivation" : pour
 
 $$(\ln u)'(x) = \frac{u'(x)}{u(x)}$$
 
-C'est exactement le calcul que tu as fait au R2 pour prouver $\ln(ax)=\ln(x)+\ln(a)$ — seulement, cette fois, on le nomme et on le garde comme outil à part entière : chaque fois qu'un logarithme apparaît dans une fonction à dériver, la dérivée est "dérivée de l'intérieur, divisée par l'intérieur".
+C'est exactement le calcul que tu as fait au chapitre 3 pour prouver $\ln(ax)=\ln(x)+\ln(a)$ — seulement, cette fois, on le nomme et on le garde comme outil à part entière : chaque fois qu'un logarithme apparaît dans une fonction à dériver, la dérivée est "dérivée de l'intérieur, divisée par l'intérieur".
 
 **Rappel de vigilance :** cette formule n'a de sens que là où $u(x)>0$ — donc avant de dériver, vérifie toujours le domaine.
 
@@ -204,15 +204,15 @@ Comme $3x-2>0$ sur tout le domaine de $g$, $g'(x)>0$ partout : $g$ est stricteme
 
 ### Aux bornes du domaine : +∞ et 0⁺
 
-**En $+\infty$.** Comme $2>1$ et que $\ln$ est strictement croissante avec $\ln(1)=0$ (R1), $\ln(2)>0$. Utilise la propriété de la puissance (R2) : pour tout entier naturel $n$, $\ln(2^n) = n\ln(2)$. Comme $\ln(2)>0$, ce produit grossit indéfiniment quand $n$ grossit :
+**En $+\infty$.** Comme $2>1$ et que $\ln$ est strictement croissante avec $\ln(1)=0$ (chapitre 2), $\ln(2)>0$. Utilise la propriété de la puissance (chapitre 3) : pour tout entier naturel $n$, $\ln(2^n) = n\ln(2)$. Comme $\ln(2)>0$, ce produit grossit indéfiniment quand $n$ grossit :
 
 $$\lim_{n \to +\infty} n\ln(2) = +\infty$$
 
-Or $\ln$ est strictement croissante (R1) : pour tout $x \geq 2^n$, $\ln(x) \geq \ln(2^n) = n\ln(2)$. Donc, quel que soit le seuil qu'on se fixe, il suffit de prendre $n$ assez grand (donc $x=2^n$ assez grand) pour que $\ln(x)$ dépasse ce seuil. C'est exactement la définition de :
+Or $\ln$ est strictement croissante (chapitre 2) : pour tout $x \geq 2^n$, $\ln(x) \geq \ln(2^n) = n\ln(2)$. Donc, quel que soit le seuil qu'on se fixe, il suffit de prendre $n$ assez grand (donc $x=2^n$ assez grand) pour que $\ln(x)$ dépasse ce seuil. C'est exactement la définition de :
 
 $$\lim_{x \to +\infty} \ln(x) = +\infty$$
 
-**En $0^+$.** Pose $X=\dfrac1x$ : quand $x \to 0^+$, $X \to +\infty$. Par la propriété de l'inverse (R2), $\ln(x) = \ln\left(\dfrac1X\right) = -\ln(X)$. Comme $\ln(X) \to +\infty$ (ce qu'on vient de montrer), $-\ln(X) \to -\infty$ :
+**En $0^+$.** Pose $X=\dfrac1x$ : quand $x \to 0^+$, $X \to +\infty$. Par la propriété de l'inverse (chapitre 3), $\ln(x) = \ln\left(\dfrac1X\right) = -\ln(X)$. Comme $\ln(X) \to +\infty$ (ce qu'on vient de montrer), $-\ln(X) \to -\infty$ :
 
 $$\lim_{x \to 0^{+}} \ln(x) = -\infty$$
 
@@ -240,7 +240,7 @@ $$\ln(t) \leq t-1 \quad \text{pour tout } t>0$$
 
 $$\ln(\sqrt{x}) \leq \sqrt{x} - 1$$
 
-Or $\ln(\sqrt x) = \dfrac12\ln(x)$ (propriété racine carrée, R2), donc :
+Or $\ln(\sqrt x) = \dfrac12\ln(x)$ (propriété racine carrée, chapitre 3), donc :
 
 $$\frac12\ln(x) \leq \sqrt{x} - 1$$
 
@@ -302,7 +302,7 @@ $$\lim_{x \to +\infty} \big(\ln(x)-x\big) = -\infty$$
 
 ### Tableau de variations
 
-Rassemble ce qu'on sait : $\ln$ est définie sur $]0,+\infty[$ (R1), $\ln'(x)=\dfrac1x>0$ pour tout $x>0$ donc $\ln$ est strictement croissante sur tout son domaine (R1), $\displaystyle\lim_{x \to 0^{+}} \ln(x) = -\infty$ et $\displaystyle\lim_{x \to +\infty} \ln(x) = +\infty$ (R4). Le tableau de variations tient donc en une seule ligne strictement croissante, de $-\infty$ à $+\infty$, avec le passage remarquable $\ln(1)=0$.
+Rassemble ce qu'on sait : $\ln$ est définie sur $]0,+\infty[$ (chapitre 2), $\ln'(x)=\dfrac1x>0$ pour tout $x>0$ donc $\ln$ est strictement croissante sur tout son domaine (chapitre 2), $\displaystyle\lim_{x \to 0^{+}} \ln(x) = -\infty$ et $\displaystyle\lim_{x \to +\infty} \ln(x) = +\infty$ (chapitre 5). Le tableau de variations tient donc en une seule ligne strictement croissante, de $-\infty$ à $+\infty$, avec le passage remarquable $\ln(1)=0$.
 
 ### ln réalise une bijection de ]0,+∞[ sur ℝ
 
@@ -314,11 +314,11 @@ Applique ce résultat au cas particulier $k=1$ : il existe un unique réel stric
 
 **Définition.** $e$ est l'unique réel tel que $\ln(e)=1$. On a $e \approx 2{,}718$.
 
-Grâce à la propriété de la puissance (R2), $\ln(e^n) = n\ln(e)$ pour tout entier $n$. Comme $\ln(e)=1$ par définition :
+Grâce à la propriété de la puissance (chapitre 3), $\ln(e^n) = n\ln(e)$ pour tout entier $n$. Comme $\ln(e)=1$ par définition :
 
 $$\ln(e^n) = n$$
 
-Ce fait servira dès le prochain rung pour résoudre des équations numériques.
+Ce fait servira dès le prochain chapitre pour résoudre des équations numériques.
 
 **Exemple travaillé.** Résous dans $]0,+\infty[$ l'équation $\ln(x) = 1$.
 
@@ -334,11 +334,11 @@ $$y = \ln(1) + \ln'(1)(x-1)$$
 
 $$y = x - 1$$
 
-Regarde ce que ça donne : l'équation de cette tangente est exactement l'inégalité $\ln(x) \leq x-1$ démontrée au R4 ! Ce n'est pas une coïncidence : $\ln''(x)$ (la dérivée de $\ln'(x)=\dfrac1x$) vaut $-\dfrac{1}{x^2}$, strictement négative pour tout $x>0$ — donc $\ln$ est **concave** sur tout son domaine, ce qui signifie précisément que sa courbe reste **en dessous de chacune de ses tangentes**. L'inégalité du R4 n'était donc pas un calcul isolé : c'est la traduction algébrique de la concavité de $\ln$, vue à travers sa tangente la plus commode, celle en $x=1$.
+Regarde ce que ça donne : l'équation de cette tangente est exactement l'inégalité $\ln(x) \leq x-1$ démontrée au chapitre 5 ! Ce n'est pas une coïncidence : $\ln''(x)$ (la dérivée de $\ln'(x)=\dfrac1x$) vaut $-\dfrac{1}{x^2}$, strictement négative pour tout $x>0$ — donc $\ln$ est **concave** sur tout son domaine, ce qui signifie précisément que sa courbe reste **en dessous de chacune de ses tangentes**. L'inégalité du chapitre 5 n'était donc pas un calcul isolé : c'est la traduction algébrique de la concavité de $\ln$, vue à travers sa tangente la plus commode, celle en $x=1$.
 
 ### L'allure de la courbe
 
-En rassemblant tout : la courbe de $\ln$ part de $-\infty$ près de l'asymptote verticale $x=0$, traverse l'axe des abscisses en $(1,0)$, passe par $(e,1)$, et continue de monter indéfiniment vers la droite — mais de plus en plus lentement, puisque $\dfrac{\ln(x)}{x} \to 0$ (R4) : la courbe s'aplatit progressivement, sans jamais redescendre ni se stabiliser sur une horizontale.
+En rassemblant tout : la courbe de $\ln$ part de $-\infty$ près de l'asymptote verticale $x=0$, traverse l'axe des abscisses en $(1,0)$, passe par $(e,1)$, et continue de monter indéfiniment vers la droite — mais de plus en plus lentement, puisque $\dfrac{\ln(x)}{x} \to 0$ (chapitre 5) : la courbe s'aplatit progressivement, sans jamais redescendre ni se stabiliser sur une horizontale.
 
 [[figure:courbe-logarithme]]
 
@@ -350,7 +350,7 @@ En rassemblant tout : la courbe de $\ln$ part de $-\infty$ près de l'asymptote 
 
 ### La méthode : domaine d'abord, injectivité ensuite
 
-$\ln$ étant strictement croissante, donc injective, sur $]0,+\infty[$ (R1, R5), pour tous réels $A>0$ et $B>0$ :
+$\ln$ étant strictement croissante, donc injective, sur $]0,+\infty[$ (chapitres 2 et 6), pour tous réels $A>0$ et $B>0$ :
 
 $$\ln(A) = \ln(B) \iff A=B \qquad\qquad \ln(A) \leq \ln(B) \iff A \leq B$$
 
@@ -362,7 +362,7 @@ Mais ces équivalences ne sont valables **qu'à l'intérieur du domaine** — c'
 
 Domaine : il faut $x+1>0$ (soit $x>-1$), $x-2>0$ (soit $x>2$), et $2x>0$ (soit $x>0$). Les trois conditions à la fois donnent $x>2$.
 
-Sur ce domaine, regroupe le membre de gauche avec la propriété du produit (R2) :
+Sur ce domaine, regroupe le membre de gauche avec la propriété du produit (chapitre 3) :
 
 $$\ln(x+1) + \ln(x-2) = \ln\big((x+1)(x-2)\big)$$
 
@@ -414,7 +414,7 @@ Pour des grandeurs qui varient sur plusieurs ordres de grandeur, il est pratique
 
 **Définition.** Pour tout $x>0$, le **logarithme décimal** de $x$ est $\log(x) = \dfrac{\ln(x)}{\ln(10)}$.
 
-**Pourquoi il garde toutes les propriétés de ln :** $\log$ n'est rien d'autre que $\ln$ multipliée par la constante $\dfrac{1}{\ln(10)}$. Diviser une égalité par une même constante non nulle préserve l'égalité — donc toutes les propriétés du R2 se retrouvent telles quelles : $\log(ab) = \log(a)+\log(b)$, $\log(a^n) = n\log(a)$, etc.
+**Pourquoi il garde toutes les propriétés de ln :** $\log$ n'est rien d'autre que $\ln$ multipliée par la constante $\dfrac{1}{\ln(10)}$. Diviser une égalité par une même constante non nulle préserve l'égalité — donc toutes les propriétés du chapitre 3 se retrouvent telles quelles : $\log(ab) = \log(a)+\log(b)$, $\log(a^n) = n\log(a)$, etc.
 
 Par construction, $\log(10) = \dfrac{\ln(10)}{\ln(10)} = 1$, et plus généralement, pour tout entier $n$ :
 

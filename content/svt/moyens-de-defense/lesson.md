@@ -30,7 +30,7 @@ Tu sais déjà, depuis la leçon précédente, que l'organisme distingue le soi 
 
 Avant de parler de bactéries, regarde ce cas : ton camarade se foule la cheville en jouant au foot. Aucun microbe n'est en cause — juste un traumatisme mécanique, une entorse. Quelques heures plus tard : la cheville est gonflée, chaude, rouge, et douloureuse au moindre appui.
 
-Ce sont exactement les quatre mêmes signes que pour ta griffure du R0, alors qu'il n'y a ici aucun agent infectieux. Retiens bien ce point, on y revient dans un instant : **la réaction inflammatoire ne demande pas la reconnaissance d'un intrus précis. Elle se déclenche dès qu'il y a une lésion tissulaire — que cette lésion vienne d'un microbe, d'un choc, d'une brûlure, ou de tout autre agresseur.**
+Ce sont exactement les quatre mêmes signes que pour ta griffure du chapitre 1, alors qu'il n'y a ici aucun agent infectieux. Retiens bien ce point, on y revient dans un instant : **la réaction inflammatoire ne demande pas la reconnaissance d'un intrus précis. Elle se déclenche dès qu'il y a une lésion tissulaire — que cette lésion vienne d'un microbe, d'un choc, d'une brûlure, ou de tout autre agresseur.**
 
 ### Le mécanisme, étape par étape
 
@@ -54,7 +54,7 @@ Grâce à elle, les phagocytes se retrouvent exactement là où ils sont utiles 
 
 ### L'erreur classique à éviter ici
 
-Une confusion fréquente à ce stade : penser que la réaction inflammatoire, parce qu'elle survient « en réponse à une infection », est déjà une reconnaissance SPÉCIFIQUE de l'agent infectieux en cause — comme si l'organisme avait déjà identifié précisément quelle bactérie ou quel virus est présent. L'exemple de l'entorse (sans aucun microbe) devrait te convaincre du contraire : la réaction inflammatoire se déclenche de la même façon, avec les mêmes quatre signes, que la lésion soit due à un microbe, à un choc, ou à une brûlure. C'est une réaction **non spécifique** : elle ne fait aucune différence entre les différentes causes possibles de la lésion tissulaire. On appelle ce type de défense l'**immunité innée**, par opposition à une défense qui, elle, reconnaîtrait précisément l'intrus — et qu'on découvre à partir du R4.
+Une confusion fréquente à ce stade : penser que la réaction inflammatoire, parce qu'elle survient « en réponse à une infection », est déjà une reconnaissance SPÉCIFIQUE de l'agent infectieux en cause — comme si l'organisme avait déjà identifié précisément quelle bactérie ou quel virus est présent. L'exemple de l'entorse (sans aucun microbe) devrait te convaincre du contraire : la réaction inflammatoire se déclenche de la même façon, avec les mêmes quatre signes, que la lésion soit due à un microbe, à un choc, ou à une brûlure. C'est une réaction **non spécifique** : elle ne fait aucune différence entre les différentes causes possibles de la lésion tissulaire. On appelle ce type de défense l'**immunité innée**, par opposition à une défense qui, elle, reconnaîtrait précisément l'intrus — et qu'on découvre à partir du chapitre 5.
 
 [[figure:cascade-inflammatoire]]
 
@@ -66,13 +66,13 @@ Si la réaction inflammatoire exigeait la reconnaissance précise d'un microbe d
 
 ## R2 — La phagocytose : comment un phagocyte élimine l'intrus
 
-Les phagocytes sont arrivés sur place par diapédèse (R1). Que font-ils, concrètement, une fois au contact de la bactérie ?
+Les phagocytes sont arrivés sur place par diapédèse (chapitre 2). Que font-ils, concrètement, une fois au contact de la bactérie ?
 
 ### Les étapes du mécanisme
 
 **1. Le chimiotactisme.** Avant même le contact, le phagocyte est attiré vers l'agent infectieux par des substances chimiques que celui-ci libère (ou que les cellules lésées libèrent en réaction à sa présence). Le phagocyte se déplace activement, en suivant ce gradient chimique, comme on remonterait une odeur jusqu'à sa source.
 
-**2. L'adhérence.** Arrivé à proximité, le phagocyte se fixe physiquement sur la surface de l'agent infectieux. Cette étape est facilitée si l'agent infectieux est déjà recouvert de molécules qui le rendent plus « accrochable » — on reviendra sur ce point précis au R5, avec les anticorps.
+**2. L'adhérence.** Arrivé à proximité, le phagocyte se fixe physiquement sur la surface de l'agent infectieux. Cette étape est facilitée si l'agent infectieux est déjà recouvert de molécules qui le rendent plus « accrochable » — on reviendra sur ce point précis au chapitre 6, avec les anticorps.
 
 **3. L'ingestion.** Le phagocyte émet des prolongements de sa membrane qui entourent progressivement l'agent infectieux, jusqu'à l'envelopper complètement et l'internaliser dans une vésicule close, à l'intérieur de son propre cytoplasme. Cette vésicule s'appelle un phagosome. À ce stade, l'agent infectieux est physiquement à l'intérieur du phagocyte, mais pas encore détruit — seulement enfermé.
 
@@ -119,13 +119,13 @@ Si un élève range le cliché $\gamma$ (bactérie déjà fragmentée) avant le 
 
 Le mécanisme qu'on vient de détailler (inflammation, diapédèse, phagocytose) est déjà capable, à lui seul, de venir à bout de nombreuses infections mineures. Alors pourquoi l'organisme aurait-il besoin d'autre chose ?
 
-Reviens sur ce qu'on a établi au R1 : la réaction inflammatoire et la phagocytose se déclenchent de la MÊME façon, que l'intrus soit une bactérie A, une bactérie B, ou un virus totalement différent. C'est une force (une réponse immédiate, disponible dès la naissance, pour n'importe quel intrus) mais c'est aussi une limite : cette défense ne s'ajuste pas à l'identité précise de l'intrus, et elle ne s'améliore pas après une première rencontre — elle réagirait exactement de la même intensité la centième fois que la première.
+Reviens sur ce qu'on a établi au chapitre 2 : la réaction inflammatoire et la phagocytose se déclenchent de la MÊME façon, que l'intrus soit une bactérie A, une bactérie B, ou un virus totalement différent. C'est une force (une réponse immédiate, disponible dès la naissance, pour n'importe quel intrus) mais c'est aussi une limite : cette défense ne s'ajuste pas à l'identité précise de l'intrus, et elle ne s'améliore pas après une première rencontre — elle réagirait exactement de la même intensité la centième fois que la première.
 
-Or, au R0, la seconde griffure était traitée plus vite et plus efficacement que la première. Ce gain ne peut PAS venir de l'immunité innée seule, puisque celle-ci, par construction, ne conserve aucune trace d'une rencontre passée.
+Or, au chapitre 1, la seconde griffure était traitée plus vite et plus efficacement que la première. Ce gain ne peut PAS venir de l'immunité innée seule, puisque celle-ci, par construction, ne conserve aucune trace d'une rencontre passée.
 
 ### Les deux systèmes de défense, mis côte à côte
 
-Ce qu'on vient de décrire aux R1-R2 s'appelle l'**immunité innée** (ou non spécifique). Ce qu'on va découvrir à partir du R4 s'appelle l'**immunité adaptative** (ou spécifique). Ce sont deux systèmes réels, aux propriétés OPPOSÉES sur trois points essentiels — fige bien ce tableau avant d'avancer, car la confusion entre les deux est l'erreur la plus fréquente de tout ce chapitre :
+Ce qu'on vient de décrire aux chapitres 2 et 3 s'appelle l'**immunité innée** (ou non spécifique). Ce qu'on va découvrir à partir du chapitre 5 s'appelle l'**immunité adaptative** (ou spécifique). Ce sont deux systèmes réels, aux propriétés OPPOSÉES sur trois points essentiels — fige bien ce tableau avant d'avancer, car la confusion entre les deux est l'erreur la plus fréquente de tout ce chapitre :
 
 | Propriété | Immunité innée | Immunité adaptative |
 |---|---|---|
@@ -138,7 +138,7 @@ Ce qu'on vient de décrire aux R1-R2 s'appelle l'**immunité innée** (ou non sp
 
 Une confusion fréquente : penser que l'immunité innée est simplement une version « plus faible » ou « moins aboutie » de l'immunité adaptative — comme si les deux systèmes faisaient la même chose, à des degrés différents. Ce n'est pas le cas : ce sont deux LOGIQUES différentes. L'immunité innée sacrifie la précision pour la vitesse (elle réagit tout de suite, mais de la même façon à tout). L'immunité adaptative sacrifie la vitesse (la première fois) pour la précision et la mémoire. Les deux ne sont pas substituables l'une à l'autre : une infection sérieuse mobilise en général les deux, l'une après l'autre, l'innée donnant le temps à l'adaptative de se mettre en place.
 
-C'est cette seconde forme de défense — lente à démarrer, mais précise et capable de mémoire — qu'on construit à partir de maintenant, rung par rung.
+C'est cette seconde forme de défense — lente à démarrer, mais précise et capable de mémoire — qu'on construit à partir de maintenant, chapitre par le chapitre.
 
 ---
 
@@ -154,18 +154,18 @@ Le problème est donc : parmi ces millions de clones différents, comment l'orga
 
 Quand un antigène pénètre dans l'organisme, il rencontre, au hasard, un très grand nombre de lymphocytes B différents. Parmi eux, seuls les quelques clones dont le récepteur correspond exactement (par sa forme) à cet antigène se lient à lui — c'est une question de complémentarité de forme, pas de choix actif de l'organisme. Tous les autres clones, dont le récepteur ne correspond pas, restent inactifs face à cet antigène précis.
 
-Cette liaison agit comme un signal d'activation pour le ou les clones concernés (avec, comme tu le verras au R7, l'aide d'un second signal apporté par les lymphocytes T4). Le clone sélectionné se met alors à se multiplier rapidement — c'est l'expansion clonale — produisant une grande population de cellules toutes identiques entre elles, toutes issues du même clone initial, toutes capables de reconnaître le même antigène.
+Cette liaison agit comme un signal d'activation pour le ou les clones concernés (avec, comme tu le verras au chapitre 8, l'aide d'un second signal apporté par les lymphocytes T4). Le clone sélectionné se met alors à se multiplier rapidement — c'est l'expansion clonale — produisant une grande population de cellules toutes identiques entre elles, toutes issues du même clone initial, toutes capables de reconnaître le même antigène.
 
 Ces cellules issues de l'expansion se différencient ensuite en deux types :
 
-- des **plasmocytes**, des cellules qui sécrètent en grande quantité des anticorps spécifiques de cet antigène (on détaille les anticorps eux-mêmes au R5) ;
-- des **lymphocytes B mémoire**, qui ne produisent rien dans l'immédiat, mais qui persistent longtemps dans l'organisme, prêts à réagir beaucoup plus vite en cas de nouvelle rencontre avec le même antigène (on y revient au R8 — c'est la réponse à la seconde question du R0).
+- des **plasmocytes**, des cellules qui sécrètent en grande quantité des anticorps spécifiques de cet antigène (on détaille les anticorps eux-mêmes au chapitre 6) ;
+- des **lymphocytes B mémoire**, qui ne produisent rien dans l'immédiat, mais qui persistent longtemps dans l'organisme, prêts à réagir beaucoup plus vite en cas de nouvelle rencontre avec le même antigène (on y revient au chapitre 9 — c'est la réponse à la seconde question du chapitre 1).
 
 [[figure:selection-clonale]]
 
 ### Exemple travaillé : pourquoi ça prend des jours
 
-**Énoncé.** Explique, à partir du mécanisme de sélection clonale, pourquoi la production d'anticorps efficaces contre un intrus totalement nouveau prend plusieurs jours, alors que la réaction inflammatoire (R1) se met en place en quelques heures.
+**Énoncé.** Explique, à partir du mécanisme de sélection clonale, pourquoi la production d'anticorps efficaces contre un intrus totalement nouveau prend plusieurs jours, alors que la réaction inflammatoire (chapitre 2) se met en place en quelques heures.
 
 **Raisonnement.** Ce qu'on cherche ici : identifier, dans le mécanisme lui-même, l'étape qui prend du temps — pas se contenter de dire « c'est plus lent », mais montrer PRÉCISÉMENT où le délai se loge.
 
@@ -175,7 +175,7 @@ Face à un antigène nouveau, un seul clone de LB (ou un tout petit nombre) port
 
 ### L'erreur classique à éviter ici
 
-Une confusion fréquente à ce stade : penser que ce sont les lymphocytes B EUX-MÊMES qui détruisent l'intrus, comme si la reconnaissance suffisait à l'élimination. Ce n'est pas le cas : le lymphocyte B sélectionné ne fait, à ce stade, que se multiplier et se différencier. Ce sont les PLASMOCYTES qui en résultent qui sécrètent les anticorps — et ce sont les anticorps (R5), pas les lymphocytes B, qui interviennent ensuite contre l'antigène. Le lymphocyte B est à l'origine de la réponse, il n'en est pas l'arme finale.
+Une confusion fréquente à ce stade : penser que ce sont les lymphocytes B EUX-MÊMES qui détruisent l'intrus, comme si la reconnaissance suffisait à l'élimination. Ce n'est pas le cas : le lymphocyte B sélectionné ne fait, à ce stade, que se multiplier et se différencier. Ce sont les PLASMOCYTES qui en résultent qui sécrètent les anticorps — et ce sont les anticorps (chapitre 6), pas les lymphocytes B, qui interviennent ensuite contre l'antigène. Le lymphocyte B est à l'origine de la réponse, il n'en est pas l'arme finale.
 
 ---
 
@@ -211,13 +211,13 @@ C'est l'erreur la plus fréquente sur les anticorps : croire qu'un anticorps agi
 
 - il peut **neutraliser** l'agent infectieux (l'empêcher de se fixer sur une cellule et de l'infecter, simplement en bloquant, par sa liaison, la région de l'agent qui lui aurait permis d'adhérer) ;
 - il peut **agglutiner** plusieurs agents infectieux entre eux (comme dans l'exemple ci-dessus), les immobilisant ;
-- il **marque** l'agent infectieux, le rendant plus facilement reconnaissable et capturable par les phagocytes (rappelle-toi l'étape d'adhérence du R2 : un agent infectieux recouvert d'anticorps est plus facile à accrocher pour un phagocyte).
+- il **marque** l'agent infectieux, le rendant plus facilement reconnaissable et capturable par les phagocytes (rappelle-toi l'étape d'adhérence du chapitre 3 : un agent infectieux recouvert d'anticorps est plus facile à accrocher pour un phagocyte).
 
 Dans les trois cas, l'anticorps prépare le terrain ou bloque l'action de l'intrus — il ne le détruit pas lui-même. La destruction effective vient d'un autre acteur (le plus souvent, un phagocyte qui élimine ensuite l'agent neutralisé ou marqué).
 
 [[figure:anticorps-agglutination]]
 
-Retiens bien un second point, qui prépare directement le rung suivant : les anticorps circulent dans le sang et la lymphe, et n'agissent que sur des antigènes LIBRES ou portés par des agents infectieux encore EXTÉRIEURS aux cellules de l'organisme. Une fois qu'un virus est entré à l'intérieur d'une cellule, il est hors de portée des anticorps — aucun anticorps circulant ne peut atteindre un virus déjà installé dans le cytoplasme d'une cellule infectée. Ce cas-là exige un mécanisme complètement différent, qu'on découvre au R6.
+Retiens bien un second point, qui prépare directement le chapitre suivant : les anticorps circulent dans le sang et la lymphe, et n'agissent que sur des antigènes LIBRES ou portés par des agents infectieux encore EXTÉRIEURS aux cellules de l'organisme. Une fois qu'un virus est entré à l'intérieur d'une cellule, il est hors de portée des anticorps — aucun anticorps circulant ne peut atteindre un virus déjà installé dans le cytoplasme d'une cellule infectée. Ce cas-là exige un mécanisme complètement différent, qu'on découvre au chapitre 7.
 
 ### Vérification rapide
 
@@ -235,15 +235,15 @@ On vient d'établir un fait important : une fois qu'un virus est entré à l'int
 
 Rappelle-toi la notion de « soi modifié » de la leçon précédente : une cellule infectée continue d'exposer, à sa membrane, des fragments issus du virus qui la parasite — sa signature de surface n'est plus tout à fait celle d'une cellule saine du même individu.
 
-Un second type de lymphocytes, les **lymphocytes T8** (LT8), porte à sa surface des récepteurs capables de reconnaître spécifiquement ces fragments anormaux affichés par une cellule infectée — exactement sur le même principe de sélection clonale que pour les LB (R4) : parmi des millions de clones de LT8 différents, seuls ceux dont le récepteur correspond à ce fragment précis sont sélectionnés, puis se multiplient.
+Un second type de lymphocytes, les **lymphocytes T8** (LT8), porte à sa surface des récepteurs capables de reconnaître spécifiquement ces fragments anormaux affichés par une cellule infectée — exactement sur le même principe de sélection clonale que pour les LB (chapitre 5) : parmi des millions de clones de LT8 différents, seuls ceux dont le récepteur correspond à ce fragment précis sont sélectionnés, puis se multiplient.
 
-Une fois sélectionnés et multipliés (avec, là aussi, l'aide des lymphocytes T4 — R7), ces LT8 se différencient en **lymphocytes T cytotoxiques** (LTc). Un LTc entre en contact DIRECT avec la cellule infectée qu'il a reconnue, et déclenche sa destruction : la cellule infectée est amenée à s'autodétruire. En éliminant la cellule elle-même, on élimine du même coup le virus qui s'y multipliait à l'intérieur — avant qu'il n'ait eu le temps de produire de nouvelles particules infectieuses.
+Une fois sélectionnés et multipliés (avec, là aussi, l'aide des lymphocytes T4 — le chapitre 8), ces LT8 se différencient en **lymphocytes T cytotoxiques** (LTc). Un LTc entre en contact DIRECT avec la cellule infectée qu'il a reconnue, et déclenche sa destruction : la cellule infectée est amenée à s'autodétruire. En éliminant la cellule elle-même, on élimine du même coup le virus qui s'y multipliait à l'intérieur — avant qu'il n'ait eu le temps de produire de nouvelles particules infectieuses.
 
 [[figure:lt8-cytotoxicite]]
 
 ### Deux réponses, deux terrains d'action
 
-Ce mécanisme s'appelle la **réponse à médiation cellulaire**, par opposition à la **réponse à médiation humorale** du R4-R5 (« humorale » parce qu'elle agit via une substance sécrétée et diffusée dans les liquides de l'organisme — les anticorps). Les deux réponses ne se font pas concurrence : elles se partagent le travail selon où se trouve l'intrus.
+Ce mécanisme s'appelle la **réponse à médiation cellulaire**, par opposition à la **réponse à médiation humorale** des chapitres 5 et 6 (« humorale » parce qu'elle agit via une substance sécrétée et diffusée dans les liquides de l'organisme — les anticorps). Les deux réponses ne se font pas concurrence : elles se partagent le travail selon où se trouve l'intrus.
 
 | | Réponse humorale | Réponse cellulaire |
 |---|---|---|
@@ -256,7 +256,7 @@ Ce mécanisme s'appelle la **réponse à médiation cellulaire**, par opposition
 
 **Énoncé.** Un virus donné ne circule jamais librement dans le sang : dès qu'il pénètre dans l'organisme, il infecte immédiatement une cellule et s'y multiplie exclusivement à l'intérieur, sans jamais rester longtemps à l'état libre entre deux cellules. Un élève affirme : « dans ce cas, la production d'anticorps spécifiques de ce virus suffit à elle seule à éliminer l'infection. » Cette affirmation est-elle correcte ? Justifie.
 
-**Raisonnement.** Ce qu'on cherche ici : appliquer la limite établie au R5 (les anticorps n'agissent que sur ce qui est extracellulaire) à un cas où cette limite devient centrale, puisque le virus décrit est presque toujours intracellulaire.
+**Raisonnement.** Ce qu'on cherche ici : appliquer la limite établie au chapitre 6 (les anticorps n'agissent que sur ce qui est extracellulaire) à un cas où cette limite devient centrale, puisque le virus décrit est presque toujours intracellulaire.
 
 Les anticorps, quels qu'ils soient, ne peuvent reconnaître et neutraliser que des antigènes accessibles depuis le sang ou la lymphe — donc des particules virales encore libres, à l'extérieur des cellules. Si ce virus précis ne reste jamais longtemps sous cette forme libre (il infecte une cellule presque immédiatement), les anticorps n'ont, la plupart du temps, aucune cible atteignable : le virus est déjà à l'abri, à l'intérieur d'une cellule, hors de leur portée. La production d'anticorps seule laisserait donc intactes toutes les cellules déjà infectées, qui continueraient de produire de nouvelles particules virales. C'est ici que la réponse cellulaire devient indispensable : les LT8, différenciés en LTc, reconnaissent les cellules infectées elles-mêmes (grâce aux fragments viraux qu'elles affichent en surface) et les détruisent directement — éliminant le virus caché à l'intérieur, ce que les anticorps ne peuvent pas faire.
 
@@ -272,11 +272,11 @@ Une confusion très fréquente à ce stade : attribuer aux lymphocytes B (ou aux
 
 ### Un rôle laissé de côté jusqu'ici
 
-Aux R4 et R6, on a décrit la sélection clonale des LB et des LT8 comme si elle suffisait, à elle seule, à déclencher pleinement chaque réponse. En réalité, il manque une pièce essentielle du mécanisme : un troisième acteur, sans lequel ni la réponse humorale ni la réponse cellulaire ne se met en place efficacement.
+Aux chapitres 5 et 7, on a décrit la sélection clonale des LB et des LT8 comme si elle suffisait, à elle seule, à déclencher pleinement chaque réponse. En réalité, il manque une pièce essentielle du mécanisme : un troisième acteur, sans lequel ni la réponse humorale ni la réponse cellulaire ne se met en place efficacement.
 
 ### Les cellules présentatrices d'antigène (CPA)
 
-Certaines cellules de l'organisme, appelées **cellules présentatrices d'antigène** (CPA — par exemple certains phagocytes), ont une fonction supplémentaire au-delà de la simple phagocytose (R2) : après avoir capturé et partiellement digéré un agent infectieux, elles affichent, à leur propre surface, des fragments de cet agent — un peu comme si elles « montraient » à quoi ressemble l'intrus qu'elles viennent de traiter, plutôt que de simplement l'éliminer en silence.
+Certaines cellules de l'organisme, appelées **cellules présentatrices d'antigène** (CPA — par exemple certains phagocytes), ont une fonction supplémentaire au-delà de la simple phagocytose (chapitre 3) : après avoir capturé et partiellement digéré un agent infectieux, elles affichent, à leur propre surface, des fragments de cet agent — un peu comme si elles « montraient » à quoi ressemble l'intrus qu'elles viennent de traiter, plutôt que de simplement l'éliminer en silence.
 
 ### Les lymphocytes T4 : reconnaître, puis coordonner
 
@@ -284,8 +284,8 @@ Un troisième type de lymphocytes, les **lymphocytes T4** (LT4, dits auxiliaires
 
 Une fois activés, les LT4 sécrètent des substances de signalisation (des messagers chimiques) qui stimulent, en parallèle, DEUX cibles :
 
-- les lymphocytes B déjà sélectionnés par leur antigène (R4), qui ont besoin de ce second signal pour compléter pleinement leur expansion clonale et leur différenciation en plasmocytes ;
-- les lymphocytes T8 déjà sélectionnés par leur antigène (R6), qui ont besoin, de la même façon, de ce signal pour se différencier pleinement en LTc.
+- les lymphocytes B déjà sélectionnés par leur antigène (chapitre 5), qui ont besoin de ce second signal pour compléter pleinement leur expansion clonale et leur différenciation en plasmocytes ;
+- les lymphocytes T8 déjà sélectionnés par leur antigène (chapitre 7), qui ont besoin, de la même façon, de ce signal pour se différencier pleinement en LTc.
 
 Le lymphocyte T4 ne détruit rien lui-même et ne produit aucun anticorps — son rôle est de coordonner, en donnant le signal qui permet aux deux autres réponses (humorale et cellulaire) d'atteindre leur pleine efficacité.
 
@@ -315,9 +315,9 @@ Il est temps de répondre à la question posée dès l'ouverture de cette leçon
 
 ### Le mécanisme
 
-Rappelle-toi le R4 : lors de l'expansion clonale, le clone de LB sélectionné ne se différencie pas EN TOTALITÉ en plasmocytes. Une partie de sa descendance se différencie plutôt en **lymphocytes B mémoire** — des cellules qui ne sécrètent rien dans l'immédiat, mais qui persistent longtemps dans l'organisme (des mois, des années, parfois toute une vie), en nombre bien supérieur à celui du clone naïf initial, avant toute rencontre avec l'antigène. Le même phénomène se produit du côté des LT8 : une partie de leur descendance devient des **lymphocytes T mémoire**.
+Rappelle-toi le chapitre 5 : lors de l'expansion clonale, le clone de LB sélectionné ne se différencie pas EN TOTALITÉ en plasmocytes. Une partie de sa descendance se différencie plutôt en **lymphocytes B mémoire** — des cellules qui ne sécrètent rien dans l'immédiat, mais qui persistent longtemps dans l'organisme (des mois, des années, parfois toute une vie), en nombre bien supérieur à celui du clone naïf initial, avant toute rencontre avec l'antigène. Le même phénomène se produit du côté des LT8 : une partie de leur descendance devient des **lymphocytes T mémoire**.
 
-Lors d'une PREMIÈRE rencontre avec un antigène donné, tout part d'un clone rare, isolé au milieu de millions d'autres — d'où le délai de plusieurs jours nécessaire à sa sélection puis à son expansion (R4). Lors d'une SECONDE rencontre avec le MÊME antigène, en revanche, ce ne sont plus des clones rares et isolés qui doivent être trouvés puis multipliés depuis zéro : ce sont des cellules mémoire, déjà sélectionnées, déjà nombreuses, immédiatement disponibles. Elles se différencient directement, sans avoir à repartir du hasard d'une rencontre initiale entre un clone rare et l'antigène. La réponse qui en résulte — la **réponse secondaire** — est donc à la fois plus rapide à démarrer et plus intense (davantage de plasmocytes et de LTc produits en un temps donné) que la toute première réponse, dite **réponse primaire**.
+Lors d'une PREMIÈRE rencontre avec un antigène donné, tout part d'un clone rare, isolé au milieu de millions d'autres — d'où le délai de plusieurs jours nécessaire à sa sélection puis à son expansion (chapitre 5). Lors d'une SECONDE rencontre avec le MÊME antigène, en revanche, ce ne sont plus des clones rares et isolés qui doivent être trouvés puis multipliés depuis zéro : ce sont des cellules mémoire, déjà sélectionnées, déjà nombreuses, immédiatement disponibles. Elles se différencient directement, sans avoir à repartir du hasard d'une rencontre initiale entre un clone rare et l'antigène. La réponse qui en résulte — la **réponse secondaire** — est donc à la fois plus rapide à démarrer et plus intense (davantage de plasmocytes et de LTc produits en un temps donné) que la toute première réponse, dite **réponse primaire**.
 
 [[figure:reponse-primaire-secondaire]]
 
@@ -333,9 +333,9 @@ La toute première vaccination a mis en jeu, pour la première fois, un clone de
 
 ### Fermeture de l'arc
 
-On peut maintenant répondre entièrement aux deux questions du R0.
+On peut maintenant répondre entièrement aux deux questions du chapitre 1.
 
-**Ce que l'organisme met en œuvre face à un intrus nouveau :** d'abord une réaction immédiate et non spécifique (l'immunité innée — inflammation, phagocytose, R1-R2), qui contient l'infection le temps qu'une réponse plus lente mais précise se construise (l'immunité adaptative — sélection clonale des LB et des LT8, coordonnée par les LT4, R4-R7), laquelle élimine spécifiquement l'intrus via deux voies complémentaires : les anticorps contre ce qui est extracellulaire, les LTc contre les cellules déjà infectées.
+**Ce que l'organisme met en œuvre face à un intrus nouveau :** d'abord une réaction immédiate et non spécifique (l'immunité innée — inflammation, phagocytose, chapitres 2 et 3), qui contient l'infection le temps qu'une réponse plus lente mais précise se construise (l'immunité adaptative — sélection clonale des LB et des LT8, coordonnée par les LT4, chapitres 5 et 8), laquelle élimine spécifiquement l'intrus via deux voies complémentaires : les anticorps contre ce qui est extracellulaire, les LTc contre les cellules déjà infectées.
 
 **Pourquoi la seconde rencontre est plus rapide :** parce que la première rencontre a laissé derrière elle des lymphocytes B et T mémoire, déjà sélectionnés et nombreux, qui n'ont plus besoin de repartir du hasard d'une sélection initiale — la réponse secondaire qui en résulte est plus rapide et plus intense que la réponse primaire.
 
@@ -360,9 +360,9 @@ On peut maintenant répondre entièrement aux deux questions du R0.
 
 Ce qu'on cherche ici, question par question : ne jamais se contenter de décrire la courbe (« ça monte plus vite », « le pic est plus haut ») sans relier chaque observation au mécanisme cellulaire qui la produit — c'est la relation observation-mécanisme qui fait tout l'intérêt de l'exercice.
 
-**Question 1.** La première courbe (délai long, pic modeste) correspond à la **réponse primaire** : la toute première rencontre avec l'antigène du virus X, qui part d'un clone de LB rare et doit être intégralement construite (sélection puis expansion clonale, R4). La seconde courbe (délai court, pic bien plus élevé) correspond à la **réponse secondaire** : une rencontre ultérieure avec le même antigène, appuyée sur des cellules mémoire déjà présentes (R8).
+**Question 1.** La première courbe (délai long, pic modeste) correspond à la **réponse primaire** : la toute première rencontre avec l'antigène du virus X, qui part d'un clone de LB rare et doit être intégralement construite (sélection puis expansion clonale, chapitre 5). La seconde courbe (délai court, pic bien plus élevé) correspond à la **réponse secondaire** : une rencontre ultérieure avec le même antigène, appuyée sur des cellules mémoire déjà présentes (chapitre 9).
 
-**Question 2.** Lors de la première exposition, le titre d'anticorps ne devient mesurable qu'après plusieurs jours, parce que tout part d'un clone de LB rare, qui doit d'abord être sélectionné par l'antigène, puis se multiplier (expansion clonale) jusqu'à constituer une population de plasmocytes assez nombreuse pour produire un titre détectable — ce processus prend plusieurs jours (R4). Lors de la seconde exposition, le titre grimpe dès le jour 2 : ce ne sont plus des clones rares qu'il faut sélectionner puis multiplier depuis zéro, mais des lymphocytes B MÉMOIRE, déjà issus de la première exposition, déjà nombreux et déjà spécifiques de l'antigène du virus X (R8). Ils n'ont plus qu'à se différencier directement en plasmocytes, ce qui prend beaucoup moins de temps que la sélection initiale d'un clone rare.
+**Question 2.** Lors de la première exposition, le titre d'anticorps ne devient mesurable qu'après plusieurs jours, parce que tout part d'un clone de LB rare, qui doit d'abord être sélectionné par l'antigène, puis se multiplier (expansion clonale) jusqu'à constituer une population de plasmocytes assez nombreuse pour produire un titre détectable — ce processus prend plusieurs jours (chapitre 5). Lors de la seconde exposition, le titre grimpe dès le jour 2 : ce ne sont plus des clones rares qu'il faut sélectionner puis multiplier depuis zéro, mais des lymphocytes B MÉMOIRE, déjà issus de la première exposition, déjà nombreux et déjà spécifiques de l'antigène du virus X (chapitre 9). Ils n'ont plus qu'à se différencier directement en plasmocytes, ce qui prend beaucoup moins de temps que la sélection initiale d'un clone rare.
 
 **Question 3.** Le pic de la réponse secondaire est environ cent fois plus élevé que celui de la réponse primaire parce que la POPULATION DE DÉPART n'est pas la même dans les deux cas. Lors de la première exposition, l'expansion clonale part d'un unique clone rare de LB naïfs. Lors de la seconde exposition, elle part directement de la population de lymphocytes B mémoire laissée par la première exposition — une population déjà bien plus nombreuse que ne l'était le clone naïf initial. Une expansion clonale qui part d'une population de départ plus nombreuse aboutit, pour un même temps de multiplication, à une population finale de plasmocytes elle aussi plus nombreuse — d'où un titre d'anticorps final bien plus élevé.
 

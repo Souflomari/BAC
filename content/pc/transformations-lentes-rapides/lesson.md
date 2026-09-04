@@ -43,7 +43,7 @@ Remarque bien ceci : la frontière « rapide / lente » ne décrit pas une propr
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* pour classer une transformation, on compare sa durée réelle à ce qu'un chronomètre ou un oeil humain peuvent distinguer — pas à une impression vague de « ça va vite » ou « ça prend du temps ». Une transformation qui s'étale sur plusieurs dizaines de minutes, comme celle entre $S_2O_8^{2-}$ et $I^-$ à froid, est largement mesurable par ces moyens usuels : elle est donc **lente**, même si à l'échelle d'une vie humaine, quelques dizaines de minutes paraissent courtes.
 
-Mais cette même réaction — on va le voir — ne reste pas toujours aussi lente : selon les conditions dans lesquelles on la réalise, sa durée peut considérablement changer, sans qu'elle change de nature. C'est tout l'enjeu des rungs qui suivent.
+Mais cette même réaction — on va le voir — ne reste pas toujours aussi lente : selon les conditions dans lesquelles on la réalise, sa durée peut considérablement changer, sans qu'elle change de nature. C'est tout l'enjeu des chapitres qui suivent.
 
 ---
 
@@ -93,7 +93,7 @@ Voilà l'équation qui va nous servir de fil rouge dans le reste de la leçon. E
 
 ### Une expérience, deux béchers, une seule variable qui change
 
-Reprenons la réaction établie en R2 : $S_2O_8^{2-} + 2I^- \rightarrow 2SO_4^{2-} + I_2$. Mets-toi à la place d'un chimiste au laboratoire, qui veut savoir ce qui contrôle la durée de cette transformation.
+Reprenons la réaction établie au chapitre 3 : $S_2O_8^{2-} + 2I^- \rightarrow 2SO_4^{2-} + I_2$. Mets-toi à la place d'un chimiste au laboratoire, qui veut savoir ce qui contrôle la durée de cette transformation.
 
 **Expérience A.** Il mélange des solutions de peroxodisulfate et d'iodure à température ambiante, avec des concentrations initiales usuelles. Il chronomètre l'apparition de la teinte jaune-brune : elle devient nettement visible après plusieurs dizaines de minutes.
 
@@ -111,7 +111,7 @@ Même logique de comparaison, même conclusion établie expérimentalement pour 
 
 Ces deux faits ne sont pas de simples curiosités de laboratoire : ils expliquent des choix très concrets. On chauffe un mélange réactionnel pour accélérer une synthèse en chimie industrielle. On met les aliments au réfrigérateur — donc au froid — précisément pour ralentir les transformations chimiques qui les dégradent.
 
-Pourquoi ces deux leviers, concentration et température, fonctionnent-ils ? Établir le fait expérimental est une chose ; comprendre le mécanisme en est une autre. Il faut descendre à l'échelle des molécules elles-mêmes pour répondre — c'est l'objet du rung suivant.
+Pourquoi ces deux leviers, concentration et température, fonctionnent-ils ? Établir le fait expérimental est une chose ; comprendre le mécanisme en est une autre. Il faut descendre à l'échelle des molécules elles-mêmes pour répondre — c'est l'objet du chapitre suivant.
 
 [[checkpoint:cp-r3-lente-rapide]]
 
@@ -134,13 +134,13 @@ Un choc « mou », ou mal orienté, ne mène à rien : les entités se croisent 
 
 Avant d'aller plus loin, imagine une hypothèse plus simple que celle qu'on vient de poser : et si tout choc entre une entité $I^-$ et une entité $S_2O_8^{2-}$ déclenchait systématiquement la réaction, sans aucune condition d'orientation ni d'énergie ?
 
-Si c'était le cas, seule la fréquence des rencontres compterait pour la vitesse de la transformation — donc uniquement la concentration, puisque augmenter la concentration, c'est augmenter le nombre d'entités par unité de volume, donc la fréquence à laquelle elles se croisent. Or on vient d'observer, en R3, que la température accélère elle aussi très nettement la réaction — alors qu'elle change assez peu le nombre total de rencontres par seconde (les entités bougent plus vite, mais restent en moyenne aussi diluées dans le même volume). Un effet aussi marqué que celui de la température ne peut donc pas s'expliquer par la seule fréquence des chocs.
+Si c'était le cas, seule la fréquence des rencontres compterait pour la vitesse de la transformation — donc uniquement la concentration, puisque augmenter la concentration, c'est augmenter le nombre d'entités par unité de volume, donc la fréquence à laquelle elles se croisent. Or on vient d'observer, au chapitre 4, que la température accélère elle aussi très nettement la réaction — alors qu'elle change assez peu le nombre total de rencontres par seconde (les entités bougent plus vite, mais restent en moyenne aussi diluées dans le même volume). Un effet aussi marqué que celui de la température ne peut donc pas s'expliquer par la seule fréquence des chocs.
 
 L'hypothèse « tout choc suffit » est donc incompatible avec ce qu'on observe : quelque chose d'autre que la simple rencontre doit compter. C'est précisément l'énergie du choc — la deuxième condition posée plus haut.
 
 ### Pourquoi augmenter la concentration augmente le nombre de chocs efficaces
 
-Augmenter la concentration d'un réactif, c'est augmenter le nombre de ses entités par unité de volume, sans changer leur agitation individuelle. Plus il y a d'entités dans le même volume, plus elles se croisent souvent par unité de temps — donc plus de chocs au total, et parmi eux, une fraction reste efficace. Plus de chocs efficaces par seconde : la transformation avance plus vite. C'est le mécanisme derrière le fait établi en R3.
+Augmenter la concentration d'un réactif, c'est augmenter le nombre de ses entités par unité de volume, sans changer leur agitation individuelle. Plus il y a d'entités dans le même volume, plus elles se croisent souvent par unité de temps — donc plus de chocs au total, et parmi eux, une fraction reste efficace. Plus de chocs efficaces par seconde : la transformation avance plus vite. C'est le mécanisme derrière le fait établi au chapitre 4.
 
 ### Pourquoi augmenter la température augmente le nombre de chocs efficaces
 

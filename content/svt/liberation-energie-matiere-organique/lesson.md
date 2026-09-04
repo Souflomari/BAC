@@ -40,7 +40,7 @@ $ADP$ (adénosine **di**phosphate, deux groupements phosphate seulement) et le p
 
 $$ADP + P_i + \text{énergie} \rightarrow ATP + H_2O$$
 
-utilise l'énergie extraite du glucose (par la respiration ou la fermentation, objets des rungs suivants) pour reformer de l'ATP à partir de l'ADP produit l'instant d'avant. L'ATP circule donc en permanence entre sa forme « chargée » (ATP) et sa forme « déchargée » ($ADP + P_i$), un peu comme une pièce de monnaie qu'on dépense puis qu'on regagne aussitôt — jamais accumulée en grande quantité, toujours en circulation. C'est exactement pour cette raison qu'on l'appelle la **monnaie énergétique** de la cellule : elle sert d'intermédiaire universel entre les réactions qui libèrent de l'énergie (respiration, fermentation) et celles qui en consomment (contraction musculaire, synthèses, transports actifs...), mais elle n'est jamais elle-même la réserve.
+utilise l'énergie extraite du glucose (par la respiration ou la fermentation, objets des chapitres suivants) pour reformer de l'ATP à partir de l'ADP produit l'instant d'avant. L'ATP circule donc en permanence entre sa forme « chargée » (ATP) et sa forme « déchargée » ($ADP + P_i$), un peu comme une pièce de monnaie qu'on dépense puis qu'on regagne aussitôt — jamais accumulée en grande quantité, toujours en circulation. C'est exactement pour cette raison qu'on l'appelle la **monnaie énergétique** de la cellule : elle sert d'intermédiaire universel entre les réactions qui libèrent de l'énergie (respiration, fermentation) et celles qui en consomment (contraction musculaire, synthèses, transports actifs...), mais elle n'est jamais elle-même la réserve.
 
 [[figure:atp-hydrolyse-cycle]]
 
@@ -56,7 +56,7 @@ Ne confonds pas l'ATP avec une réserve d'énergie de la cellule. La vraie rése
 
 ### Le point de départ commun à toute cellule
 
-Que la cellule dispose ou non de dioxygène, la dégradation du glucose commence toujours de la même façon : par la **glycolyse**, une suite de réactions qui se déroule dans le cytoplasme, en dehors de toute mitochondrie. C'est la seule étape commune à la respiration et à la fermentation — ce qui se passe APRÈS la glycolyse dépendra, lui, de la présence ou non de dioxygène (R6).
+Que la cellule dispose ou non de dioxygène, la dégradation du glucose commence toujours de la même façon : par la **glycolyse**, une suite de réactions qui se déroule dans le cytoplasme, en dehors de toute mitochondrie. C'est la seule étape commune à la respiration et à la fermentation — ce qui se passe APRÈS la glycolyse dépendra, lui, de la présence ou non de dioxygène (chapitre 7).
 
 ### Ce que fait la glycolyse
 
@@ -78,11 +78,11 @@ et c'est ce chiffre, pas 4, qu'il faut retenir comme bilan de la glycolyse. Ce m
 
 ### L'erreur classique à éviter ici
 
-Ne confonds pas les 2 $NADH,H^+$ produits ici avec de l'ATP : un $NADH,H^+$ est un transporteur d'électrons et d'hydrogène, pas une unité d'énergie directement utilisable par la cellule. Il faudra la chaîne respiratoire (R4) pour convertir son potentiel en ATP — et cela n'est possible qu'en présence de dioxygène.
+Ne confonds pas les 2 $NADH,H^+$ produits ici avec de l'ATP : un $NADH,H^+$ est un transporteur d'électrons et d'hydrogène, pas une unité d'énergie directement utilisable par la cellule. Il faudra la chaîne respiratoire (chapitre 5) pour convertir son potentiel en ATP — et cela n'est possible qu'en présence de dioxygène.
 
 ### Vérification rapide
 
-Une molécule de glucose (6 C) donne exactement deux molécules de pyruvate (3 C chacune) : $6 = 3 + 3$. Aucun carbone n'est perdu à cette étape — la glycolyse ne libère aucun $CO_2$. On y reviendra en R3 : c'est là que la libération de carbone commence vraiment.
+Une molécule de glucose (6 C) donne exactement deux molécules de pyruvate (3 C chacune) : $6 = 3 + 3$. Aucun carbone n'est perdu à cette étape — la glycolyse ne libère aucun $CO_2$. On y reviendra au chapitre 4 : c'est là que la libération de carbone commence vraiment.
 
 ---
 
@@ -98,7 +98,7 @@ Avant d'entrer dans le cycle proprement dit, chaque pyruvate (3 C) est oxydé : 
 
 ### Le cycle de Krebs
 
-Le groupement acétyle à 2 carbones s'associe alors à une molécule accepteuse à 4 carbones pour former, temporairement, une molécule à 6 carbones. Une suite de réactions en boucle — le **cycle de Krebs** — libère ensuite progressivement 2 $CO_2$, régénère la molécule accepteuse à 4 carbones (prête pour un nouveau tour), et produit au passage des coenzymes réduits ($NADH,H^+$ et $FADH_2$) ainsi qu'un peu d'ATP par phosphorylation au niveau du substrat — le même mécanisme direct qu'en R2.
+Le groupement acétyle à 2 carbones s'associe alors à une molécule accepteuse à 4 carbones pour former, temporairement, une molécule à 6 carbones. Une suite de réactions en boucle — le **cycle de Krebs** — libère ensuite progressivement 2 $CO_2$, régénère la molécule accepteuse à 4 carbones (prête pour un nouveau tour), et produit au passage des coenzymes réduits ($NADH,H^+$ et $FADH_2$) ainsi qu'un peu d'ATP par phosphorylation au niveau du substrat — le même mécanisme direct qu'au chapitre 3.
 
 Puisqu'une molécule de glucose a donné deux pyruvates, ce cycle tourne **deux fois** par glucose dégradé :
 
@@ -110,21 +110,21 @@ Puisqu'une molécule de glucose a donné deux pyruvates, ce cycle tourne **deux 
 
 ### Ce que révèle ce comptage : une oxydation complète
 
-**Reprends le compte des carbones depuis le R2 :** le glucose de départ portait 6 carbones. La glycolyse n'en a perdu aucun. L'oxydation des deux pyruvates en a libéré 2 (sous forme de $CO_2$). Les deux tours du cycle de Krebs en libèrent 4 de plus. Au total :
+**Reprends le compte des carbones depuis le chapitre 3 :** le glucose de départ portait 6 carbones. La glycolyse n'en a perdu aucun. L'oxydation des deux pyruvates en a libéré 2 (sous forme de $CO_2$). Les deux tours du cycle de Krebs en libèrent 4 de plus. Au total :
 
 $$2 + 4 = 6$$
 
-exactement les 6 carbones du glucose de départ, désormais tous sous forme de $CO_2$. C'est précisément ce qu'on entend par **oxydation complète** du glucose : en présence de dioxygène, la cellule extrait la totalité du potentiel énergétique de la molécule de glucose, jusqu'au dernier carbone. Tu verras en R6 que ce n'est PAS le cas de la fermentation, qui s'arrête bien avant.
+exactement les 6 carbones du glucose de départ, désormais tous sous forme de $CO_2$. C'est précisément ce qu'on entend par **oxydation complète** du glucose : en présence de dioxygène, la cellule extrait la totalité du potentiel énergétique de la molécule de glucose, jusqu'au dernier carbone. Tu verras au chapitre 7 que ce n'est PAS le cas de la fermentation, qui s'arrête bien avant.
 
 [[figure:krebs-bilan-carbone]]
 
 ### Ce que la matrice ne fait pas encore
 
-Remarque bien : la matrice produit très peu d'ATP directement (seulement 2, par phosphorylation au niveau du substrat). L'essentiel de ce qu'elle produit, ce sont des coenzymes réduits — 8 $NADH,H^+$ et 2 $FADH_2$ au total (à ajouter aux 2 $NADH,H^+$ de la glycolyse). Ces coenzymes ne sont pas de l'ATP : ce sont des porteurs d'électrons, chargés d'énergie, en attente d'être « encaissés » — c'est l'objet du rung suivant.
+Remarque bien : la matrice produit très peu d'ATP directement (seulement 2, par phosphorylation au niveau du substrat). L'essentiel de ce qu'elle produit, ce sont des coenzymes réduits — 8 $NADH,H^+$ et 2 $FADH_2$ au total (à ajouter aux 2 $NADH,H^+$ de la glycolyse). Ces coenzymes ne sont pas de l'ATP : ce sont des porteurs d'électrons, chargés d'énergie, en attente d'être « encaissés » — c'est l'objet du chapitre suivant.
 
 ### L'erreur classique à éviter ici
 
-Ne conclus pas que le cycle de Krebs « ne sert à rien » parce qu'il ne produit que 2 ATP directs : c'est l'inverse. Son rôle principal n'est pas de produire de l'ATP directement, mais de charger un grand nombre de coenzymes ($NADH,H^+$ et $FADH_2$) qui alimenteront la chaîne respiratoire — la véritable source de la majorité de l'ATP produit par la respiration (R4-R5).
+Ne conclus pas que le cycle de Krebs « ne sert à rien » parce qu'il ne produit que 2 ATP directs : c'est l'inverse. Son rôle principal n'est pas de produire de l'ATP directement, mais de charger un grand nombre de coenzymes ($NADH,H^+$ et $FADH_2$) qui alimenteront la chaîne respiratoire — la véritable source de la majorité de l'ATP produit par la respiration (chapitres 5 et 6).
 
 ---
 
@@ -146,7 +146,7 @@ Au bout de la chaîne, les électrons doivent bien finir quelque part : c'est le
 
 $$O_2 + 4e^- + 4H^+ \rightarrow 2H_2O$$
 
-**Pourquoi ce rôle est indispensable :** sans accepteur final, les électrons s'accumuleraient en bout de chaîne, qui se bloquerait — plus aucun transfert d'électrons ne serait possible, donc plus aucun pompage de $H^+$, donc plus aucune synthèse d'ATP par cette voie. Le dioxygène ne fabrique pas l'ATP lui-même : il ne fait que débloquer la chaîne en évacuant les électrons sous forme d'eau, ce qui permet à tout le processus de continuer à tourner. C'est cette dépendance stricte au dioxygène qui distingue la respiration cellulaire de la fermentation (R6).
+**Pourquoi ce rôle est indispensable :** sans accepteur final, les électrons s'accumuleraient en bout de chaîne, qui se bloquerait — plus aucun transfert d'électrons ne serait possible, donc plus aucun pompage de $H^+$, donc plus aucune synthèse d'ATP par cette voie. Le dioxygène ne fabrique pas l'ATP lui-même : il ne fait que débloquer la chaîne en évacuant les électrons sous forme d'eau, ce qui permet à tout le processus de continuer à tourner. C'est cette dépendance stricte au dioxygène qui distingue la respiration cellulaire de la fermentation (chapitre 7).
 
 [[figure:chimiosmose-atp-synthase]]
 
@@ -164,7 +164,7 @@ Ne dis pas que « le dioxygène est utilisé pour fabriquer l'ATP » : ce n'est 
 
 ### Assembler les trois étapes
 
-Reprenons les trois étapes vues en R2, R3 et R4, et assemblons leur contribution en ATP pour une seule molécule de glucose entièrement respirée :
+Reprenons les trois étapes vues aux chapitres 3, 4 et 5, et assemblons leur contribution en ATP pour une seule molécule de glucose entièrement respirée :
 
 | Étape | Lieu | ATP net (phosphorylation directe) | Coenzymes réduits produits |
 |---|---|---|---|
@@ -191,7 +191,7 @@ $$2 \ (\text{glycolyse}) + 2 \ (\text{Krebs}) + 30 \ (NADH,H^+) + 4 \ (FADH_2) =
 
 ### Vérification rapide
 
-$2 + 2 + 30 + 4 = 38$. Et la part venant directement de la phosphorylation au niveau du substrat (glycolyse + Krebs) n'est que de 4 ATP sur 38 — une confirmation chiffrée de ce qu'annonçait R3 : le cycle de Krebs « charge des coenzymes », il ne produit pas l'essentiel de l'ATP lui-même.
+$2 + 2 + 30 + 4 = 38$. Et la part venant directement de la phosphorylation au niveau du substrat (glycolyse + Krebs) n'est que de 4 ATP sur 38 — une confirmation chiffrée de ce qu'annonçait le chapitre 4 : le cycle de Krebs « charge des coenzymes », il ne produit pas l'essentiel de l'ATP lui-même.
 
 ---
 
@@ -199,11 +199,11 @@ $2 + 2 + 30 + 4 = 38$. Et la part venant directement de la phosphorylation au ni
 
 ### Quand le dioxygène manque
 
-Certaines cellules (des micro-organismes comme les levures ou certaines bactéries) vivent en permanence sans dioxygène. D'autres — comme les cellules musculaires du sprinter du R0 — en manquent seulement de façon ponctuelle, quand la demande d'ATP dépasse ce que l'apport en dioxygène peut soutenir. Dans les deux cas, la chaîne respiratoire s'arrête (R4) : sans dioxygène pour accepter les électrons en bout de chaîne, elle se bloque, et avec elle tout le mécanisme de phosphorylation oxydative.
+Certaines cellules (des micro-organismes comme les levures ou certaines bactéries) vivent en permanence sans dioxygène. D'autres — comme les cellules musculaires du sprinter du chapitre 1 — en manquent seulement de façon ponctuelle, quand la demande d'ATP dépasse ce que l'apport en dioxygène peut soutenir. Dans les deux cas, la chaîne respiratoire s'arrête (chapitre 5) : sans dioxygène pour accepter les électrons en bout de chaîne, elle se bloque, et avec elle tout le mécanisme de phosphorylation oxydative.
 
 ### Le problème que la fermentation résout
 
-Si la chaîne respiratoire s'arrête, la glycolyse elle-même est menacée : rappelle-toi (R2) qu'elle produit du $NADH,H^+$ en réduisant du $NAD^+$. Sans un moyen de régénérer ce $NAD^+$, la cellule finirait par en manquer, et la glycolyse — la seule source d'ATP qui reste — s'arrêterait à son tour, faute de $NAD^+$ disponible pour continuer à oxyder le glucose.
+Si la chaîne respiratoire s'arrête, la glycolyse elle-même est menacée : rappelle-toi (chapitre 3) qu'elle produit du $NADH,H^+$ en réduisant du $NAD^+$. Sans un moyen de régénérer ce $NAD^+$, la cellule finirait par en manquer, et la glycolyse — la seule source d'ATP qui reste — s'arrêterait à son tour, faute de $NAD^+$ disponible pour continuer à oxyder le glucose.
 
 **Ce que fait la fermentation :** elle régénère ce $NAD^+$ directement, dans le cytoplasme, sans dioxygène, en utilisant le $NADH,H^+$ pour réduire le pyruvate produit par la glycolyse. Ce n'est pas une source d'ATP supplémentaire : c'est une voie qui permet à la glycolyse — et donc à sa production de 2 ATP nets par glucose — de continuer à tourner.
 
@@ -222,13 +222,13 @@ $$\text{Fermentation alcoolique : } C_6H_{12}O_6 \rightarrow 2\,C_2H_5OH + 2\,CO
 
 ### Pourquoi le bilan énergétique est si faible
 
-**Ce qu'il faut comprendre ici :** la fermentation s'arrête après la glycolyse. Ni le cycle de Krebs ni la chaîne respiratoire n'interviennent — donc aucun des ~34 ATP obtenus en R5 par phosphorylation oxydative n'est produit. Le bilan net de la fermentation se limite aux 2 ATP de la glycolyse elle-même, contre 36 à 38 pour la respiration.
+**Ce qu'il faut comprendre ici :** la fermentation s'arrête après la glycolyse. Ni le cycle de Krebs ni la chaîne respiratoire n'interviennent — donc aucun des ~34 ATP obtenus au chapitre 6 par phosphorylation oxydative n'est produit. Le bilan net de la fermentation se limite aux 2 ATP de la glycolyse elle-même, contre 36 à 38 pour la respiration.
 
-L'essentiel de l'énergie chimique initialement contenue dans le glucose n'a pas disparu : elle reste **emmagasinée** dans les liaisons chimiques de l'acide lactique ou de l'éthanol produit, faute d'avoir pu être extraite plus loin par l'oxydation complète (R3) et la chaîne respiratoire (R4-R5).
+L'essentiel de l'énergie chimique initialement contenue dans le glucose n'a pas disparu : elle reste **emmagasinée** dans les liaisons chimiques de l'acide lactique ou de l'éthanol produit, faute d'avoir pu être extraite plus loin par l'oxydation complète (chapitre 4) et la chaîne respiratoire (chapitres 5 et 6).
 
 ### L'erreur classique à éviter ici
 
-Une erreur fréquente : croire que la fermentation est réservée aux micro-organismes. C'est faux — les cellules musculaires humaines la pratiquent aussi, ponctuellement, dès que l'apport en dioxygène ne suit plus la demande, exactement la situation du sprinter en R0. Une deuxième erreur : croire qu'en l'absence de dioxygène, la cellule ne produit plus du tout d'ATP. C'est faux également : elle en produit encore, seulement beaucoup moins (2 ATP au lieu d'environ 36 à 38), via la glycolyse seule, maintenue active par la fermentation.
+Une erreur fréquente : croire que la fermentation est réservée aux micro-organismes. C'est faux — les cellules musculaires humaines la pratiquent aussi, ponctuellement, dès que l'apport en dioxygène ne suit plus la demande, exactement la situation du sprinter au chapitre 1. Une deuxième erreur : croire qu'en l'absence de dioxygène, la cellule ne produit plus du tout d'ATP. C'est faux également : elle en produit encore, seulement beaucoup moins (2 ATP au lieu d'environ 36 à 38), via la glycolyse seule, maintenue active par la fermentation.
 
 ---
 
@@ -249,7 +249,7 @@ Une erreur fréquente : croire que la fermentation est réservée aux micro-orga
 
 ### Le lien entre la structure de la mitochondrie et sa fonction
 
-La mitochondrie n'est pas un compartiment uniforme : chacune de ses parties correspond précisément à une étape de la respiration vue en R3-R4.
+La mitochondrie n'est pas un compartiment uniforme : chacune de ses parties correspond précisément à une étape de la respiration vue aux chapitres 4 et 5.
 
 | Compartiment mitochondrial | Ce qui s'y passe | Lien avec la fonction |
 |---|---|---|
@@ -258,11 +258,11 @@ La mitochondrie n'est pas un compartiment uniforme : chacune de ses parties corr
 | Membrane interne, repliée en crêtes | Complexes de la chaîne respiratoire + ATP synthase | Les crêtes multiplient la surface disponible : plus de complexes installés, plus d'ATP produit par unité de temps |
 | Matrice | Enzymes solubles du cycle de Krebs | Lieu de l'oxydation complète du pyruvate en $CO_2$, et de la production des coenzymes réduits |
 
-**Ce que cette organisation révèle :** sans dioxygène, seule la première ligne du tableau du R5 (la glycolyse, dans le cytoplasme) reste utilisable — la mitochondrie tout entière, matrice et membrane interne comprises, se retrouve fonctionnellement à l'arrêt. C'est exactement pour cela que la fermentation se déroule uniquement dans le cytoplasme (R6) : elle contourne un organite qui, sans dioxygène, ne peut plus rien produire.
+**Ce que cette organisation révèle :** sans dioxygène, seule la première ligne du tableau du chapitre 6 (la glycolyse, dans le cytoplasme) reste utilisable — la mitochondrie tout entière, matrice et membrane interne comprises, se retrouve fonctionnellement à l'arrêt. C'est exactement pour cela que la fermentation se déroule uniquement dans le cytoplasme (chapitre 7) : elle contourne un organite qui, sans dioxygène, ne peut plus rien produire.
 
 ### Fermeture de l'arc : le sprinter et le marathonien, résolus
 
-Reviens au R0. Le marathonien maintient un effort dont l'intensité reste compatible avec l'apport en dioxygène de ses fibres musculaires : ses mitochondries tournent en continu, produisant environ 36 à 38 ATP par glucose consommé — une source d'énergie durable, capable de tenir des heures.
+Reviens au chapitre 1. Le marathonien maintient un effort dont l'intensité reste compatible avec l'apport en dioxygène de ses fibres musculaires : ses mitochondries tournent en continu, produisant environ 36 à 38 ATP par glucose consommé — une source d'énergie durable, capable de tenir des heures.
 
 Le sprinter, lui, exige de ses muscles une demande d'ATP qui explose en quelques secondes — bien plus vite que ce que l'apport en dioxygène peut suivre. Ses fibres musculaires basculent alors vers la fermentation lactique : la glycolyse continue de tourner (2 ATP par glucose), mais l'acide lactique produit s'accumule localement, et c'est précisément lui qui est responsable de la sensation de brûlure et de la fatigue musculaire rapide. Deux ATP par glucose, contre environ 36 à 38 pour la respiration : ce n'est pas une petite différence, c'est un facteur d'environ 18 — voilà pourquoi cette voie de secours, si rapide à mobiliser, s'épuise si vite.
 
@@ -279,13 +279,13 @@ Le sprinter, lui, exige de ses muscles une demande d'ATP qui explose en quelques
 
 **Raisonnement à voix haute.**
 
-**Ce qu'on reconnaît ici :** deux flacons, une seule variable qui change (la présence ou l'absence de dioxygène), et des observations à interpréter — un cas typique de comparaison respiration/fermentation (R7).
+**Ce qu'on reconnaît ici :** deux flacons, une seule variable qui change (la présence ou l'absence de dioxygène), et des observations à interpréter — un cas typique de comparaison respiration/fermentation (chapitre 8).
 
-Flacon A : le dioxygène est apporté en continu, et on observe un dégagement de $CO_2$ sans aucune odeur d'alcool. Le $CO_2$ seul, sans éthanol, correspond à une oxydation complète du glucose — pas à une fermentation alcoolique, qui laisserait justement une odeur d'éthanol (R6). C'est donc la **respiration cellulaire** qui a lieu dans le flacon A : le glucose est intégralement oxydé, jusqu'au cycle de Krebs et la chaîne respiratoire, avec le dioxygène comme accepteur final des électrons.
+Flacon A : le dioxygène est apporté en continu, et on observe un dégagement de $CO_2$ sans aucune odeur d'alcool. Le $CO_2$ seul, sans éthanol, correspond à une oxydation complète du glucose — pas à une fermentation alcoolique, qui laisserait justement une odeur d'éthanol (chapitre 7). C'est donc la **respiration cellulaire** qui a lieu dans le flacon A : le glucose est intégralement oxydé, jusqu'au cycle de Krebs et la chaîne respiratoire, avec le dioxygène comme accepteur final des électrons.
 
-Flacon B : pas de dioxygène disponible — la chaîne respiratoire ne peut donc pas fonctionner (R4, R6). Et pourtant, du $CO_2$ ET de l'éthanol sont dégagés : c'est exactement la signature de la **fermentation alcoolique** (R6), la seule des deux voies étudiées qui libère du $CO_2$ tout en produisant de l'éthanol.
+Flacon B : pas de dioxygène disponible — la chaîne respiratoire ne peut donc pas fonctionner (chapitres 5 et 7). Et pourtant, du $CO_2$ ET de l'éthanol sont dégagés : c'est exactement la signature de la **fermentation alcoolique** (chapitre 7), la seule des deux voies étudiées qui libère du $CO_2$ tout en produisant de l'éthanol.
 
-**Comparaison de l'ATP net produit :** pour une même masse de glucose consommée, le flacon A (respiration) produit environ 36 à 38 ATP par molécule de glucose, contre seulement 2 ATP par molécule de glucose dans le flacon B (fermentation alcoolique, limitée à la glycolyse). Le flacon A produit donc environ 18 fois plus d'ATP net que le flacon B, pour la même quantité de glucose consommée — une conséquence directe de ce qui a été établi en R5 et R6 : l'essentiel du potentiel énergétique du glucose n'est extrait que si la chaîne respiratoire peut fonctionner, ce qui exige la présence de dioxygène.
+**Comparaison de l'ATP net produit :** pour une même masse de glucose consommée, le flacon A (respiration) produit environ 36 à 38 ATP par molécule de glucose, contre seulement 2 ATP par molécule de glucose dans le flacon B (fermentation alcoolique, limitée à la glycolyse). Le flacon A produit donc environ 18 fois plus d'ATP net que le flacon B, pour la même quantité de glucose consommée — une conséquence directe de ce qui a été établi aux chapitres 6 et 7 : l'essentiel du potentiel énergétique du glucose n'est extrait que si la chaîne respiratoire peut fonctionner, ce qui exige la présence de dioxygène.
 
 ### À toi de jouer
 

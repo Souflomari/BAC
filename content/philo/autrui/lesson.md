@@ -113,9 +113,9 @@ Sartre (XXe siècle, *L'Être et le Néant*, 1943) prolonge, à sa manière, l'i
 
 #### Applique le mécanisme : reviens à la chambre de R0
 
-**Ce que ce mécanisme permet de voir, précisément, dans la scène de R0 :** ce qui a basculé, dans l'instant où ta sœur est entrée, ce n'est pas seulement une peur ordinaire de son jugement — c'est la découverte brutale que tu existes aussi comme un objet regardé, en train de te donner en spectacle à toi-même sans public — une dimension de ton être qu'aucune répétition solitaire, aussi longue soit-elle, n'aurait jamais pu te révéler par elle-même. Le rougissement, la voix qui se casse : les signes mêmes de cette découverte, imposée de l'extérieur.
+**Ce que ce mécanisme permet de voir, précisément, dans la scène du chapitre 1 :** ce qui a basculé, dans l'instant où ta sœur est entrée, ce n'est pas seulement une peur ordinaire de son jugement — c'est la découverte brutale que tu existes aussi comme un objet regardé, en train de te donner en spectacle à toi-même sans public — une dimension de ton être qu'aucune répétition solitaire, aussi longue soit-elle, n'aurait jamais pu te révéler par elle-même. Le rougissement, la voix qui se casse : les signes mêmes de cette découverte, imposée de l'extérieur.
 
-> **Erreur à éviter :** ne confonds pas la honte sartrienne avec une simple émotion sociale, comparable à la peur d'un enfant pris en faute par un adulte qui pourrait le punir. Chez Sartre, la honte est structurelle, pas psychologique au sens ordinaire : elle révèle un mode d'être (exister-pour-autrui) que je ne produis jamais moi-même et qu'aucune absence de sanction ne peut annuler. Ne dis pas non plus que Sartre reprend simplement Hegel à l'identique : Hegel construit un mouvement de reconnaissance mutuelle possible (R2) ; Sartre, on va le voir en R4, insiste au contraire sur le conflit presque inévitable entre ma liberté de regarder et celle d'autrui qui me regarde.
+> **Erreur à éviter :** ne confonds pas la honte sartrienne avec une simple émotion sociale, comparable à la peur d'un enfant pris en faute par un adulte qui pourrait le punir. Chez Sartre, la honte est structurelle, pas psychologique au sens ordinaire : elle révèle un mode d'être (exister-pour-autrui) que je ne produis jamais moi-même et qu'aucune absence de sanction ne peut annuler. Ne dis pas non plus que Sartre reprend simplement Hegel à l'identique : Hegel construit un mouvement de reconnaissance mutuelle possible (chapitre 3) ; Sartre, on va le voir au chapitre 5, insiste au contraire sur le conflit presque inévitable entre ma liberté de regarder et celle d'autrui qui me regarde.
 
 [[checkpoint:cp-r3-rupture]]
 
@@ -125,7 +125,7 @@ Sartre (XXe siècle, *L'Être et le Néant*, 1943) prolonge, à sa manière, l'i
 
 #### Le revers du regard : être vu, c'est aussi être figé
 
-R3 a montré ce que le regard d'autrui m'apporte : une part de moi-même que je ne pourrais jamais atteindre seul. Mais ce même regard a, selon Sartre, un revers beaucoup plus inquiétant. **Voici le mécanisme, dans le prolongement exact de R3.** Être regardé, ce n'est pas seulement être révélé à moi-même : c'est aussi être transformé, dans l'instant, en un objet dans le monde de l'autre — fixé, catégorisé, réduit à une nature (« ce voyeur », « ce jaloux », « ce timide ») que je n'ai pas choisie et que je ne maîtrise plus. Le regard d'autrui fait de moi une chose parmi les choses de son monde à lui, exactement comme, un instant plus tôt, je faisais de la scène épiée par le trou de serrure un simple objet de mon regard à moi.
+Le chapitre 4 a montré ce que le regard d'autrui m'apporte : une part de moi-même que je ne pourrais jamais atteindre seul. Mais ce même regard a, selon Sartre, un revers beaucoup plus inquiétant. **Voici le mécanisme, dans le prolongement exact du chapitre 4.** Être regardé, ce n'est pas seulement être révélé à moi-même : c'est aussi être transformé, dans l'instant, en un objet dans le monde de l'autre — fixé, catégorisé, réduit à une nature (« ce voyeur », « ce jaloux », « ce timide ») que je n'ai pas choisie et que je ne maîtrise plus. Le regard d'autrui fait de moi une chose parmi les choses de son monde à lui, exactement comme, un instant plus tôt, je faisais de la scène épiée par le trou de serrure un simple objet de mon regard à moi.
 
 #### Un conflit structurel entre deux libertés qui ne peuvent coexister comme sujets
 
@@ -146,9 +146,9 @@ Cette thèse éclaire la réplique la plus célèbre de Sartre, tirée de la pi�
 
 #### Applique la distinction : le regard qui objective, dans la chambre de R0
 
-Reviens, une nouvelle fois, à la scène de R0. Le regard de ta sœur ne t'a pas seulement révélé une part de toi-même (R3) : il t'a aussi, dans le même mouvement, figé dans un rôle que tu n'as pas choisi — celui qu'on a surpris en train de jouer, tout seul, à l'orateur. Tu ne contrôles plus, à cet instant, l'image que ce regard s'est faite de toi ; tenter de « rattraper » la situation par une blague ou une explication, c'est précisément chercher à redevenir sujet, à reprendre la main sur un regard qui, pour un instant, t'avait réduit à un objet dans le monde de quelqu'un d'autre.
+Reviens, une nouvelle fois, à la scène du chapitre 1. Le regard de ta sœur ne t'a pas seulement révélé une part de toi-même (chapitre 4) : il t'a aussi, dans le même mouvement, figé dans un rôle que tu n'as pas choisi — celui qu'on a surpris en train de jouer, tout seul, à l'orateur. Tu ne contrôles plus, à cet instant, l'image que ce regard s'est faite de toi ; tenter de « rattraper » la situation par une blague ou une explication, c'est précisément chercher à redevenir sujet, à reprendre la main sur un regard qui, pour un instant, t'avait réduit à un objet dans le monde de quelqu'un d'autre.
 
-> **Erreur à éviter :** ne traduis jamais « l'enfer, c'est les autres » par « les autres sont un enfer, il vaudrait mieux vivre seul » — Sartre ne prône nulle part la solitude comme solution : rester seul ne supprimerait pas le besoin, vu en R3, du regard d'autrui pour accéder à certaines dimensions de mon propre être ; cela supprimerait simplement toute vie avec autrui, prix bien plus lourd que le conflit qu'elle engendre. La phrase décrit une structure difficile du rapport à autrui, elle ne recommande pas de le fuir.
+> **Erreur à éviter :** ne traduis jamais « l'enfer, c'est les autres » par « les autres sont un enfer, il vaudrait mieux vivre seul » — Sartre ne prône nulle part la solitude comme solution : rester seul ne supprimerait pas le besoin, vu au chapitre 4, du regard d'autrui pour accéder à certaines dimensions de mon propre être ; cela supprimerait simplement toute vie avec autrui, prix bien plus lourd que le conflit qu'elle engendre. La phrase décrit une structure difficile du rapport à autrui, elle ne recommande pas de le fuir.
 
 [[checkpoint:cp-r4-rupture]]
 
@@ -180,7 +180,7 @@ Husserl cherchait à connaître autrui (par analogie) ; Hegel et Sartre décriva
 
 #### Applique la distinction : le visage, pas le regard, dans la chambre de R0
 
-**Ce que Levinas changerait à la lecture de la scène de R0 :** là où Sartre voyait, dans le regard de ta sœur, une menace pour ta liberté (elle te fige, elle t'objective), Levinas verrait, dans son seul fait d'être là, présente, vulnérable elle-même dans cet instant, un appel muet à être reconnue, respectée — un appel qui ne dépend pas de ce qu'elle pense de toi, ni de ce que tu ressens face à elle, mais qui s'impose dès qu'un visage humain se trouve devant toi.
+**Ce que Levinas changerait à la lecture de la scène du chapitre 1 :** là où Sartre voyait, dans le regard de ta sœur, une menace pour ta liberté (elle te fige, elle t'objective), Levinas verrait, dans son seul fait d'être là, présente, vulnérable elle-même dans cet instant, un appel muet à être reconnue, respectée — un appel qui ne dépend pas de ce qu'elle pense de toi, ni de ce que tu ressens face à elle, mais qui s'impose dès qu'un visage humain se trouve devant toi.
 
 > **Erreur à éviter — la confusion la plus fréquente sur ce point du programme :** ne confonds jamais le **visage** de Levinas avec le **regard** de Sartre. Le regard sartrien objective, menace ma liberté, m'enferme dans une image que je n'ai pas choisie — il installe un rapport de force. Le visage lévinassien, au contraire, n'objective rien : il résiste à toute réduction, il commande sans contraindre par la force, et il fonde ma responsabilité au lieu de menacer ma liberté. Les deux auteurs partent d'une même intuition — autrui n'est pas un simple objet — mais en tirent des conséquences opposées : conflit chez Sartre, responsabilité chez Levinas.
 
@@ -192,7 +192,7 @@ Husserl cherchait à connaître autrui (par analogie) ; Hegel et Sartre décriva
 
 #### Ce que les positions précédentes laissent en suspens
 
-Husserl, Hegel, Sartre et Levinas décrivent chacun un aspect différent du rapport à autrui — connaissance par analogie, médiation de la reconnaissance, conflit des regards, appel éthique du visage. Mais une question pratique reste posée : quelle que soit la vérité métaphysique sur autrui, comment dois-je le traiter ? Kant (cf. la leçon « Le devoir », R2) fournit ici un principe qui ne tranche pas entre ces positions, mais leur donne, à toutes, un même horizon moral.
+Husserl, Hegel, Sartre et Levinas décrivent chacun un aspect différent du rapport à autrui — connaissance par analogie, médiation de la reconnaissance, conflit des regards, appel éthique du visage. Mais une question pratique reste posée : quelle que soit la vérité métaphysique sur autrui, comment dois-je le traiter ? Kant (cf. la leçon « Le devoir », chapitre 3) fournit ici un principe qui ne tranche pas entre ces positions, mais leur donne, à toutes, un même horizon moral.
 
 #### Traiter l'humanité comme une fin, jamais simplement comme un moyen
 
@@ -204,7 +204,7 @@ Kant formule ce principe dans les *Fondements de la métaphysique des mœurs* (1
 
 #### Ce que ce principe apporte aux positions précédentes
 
-**Applique ce principe à ce que la leçon a construit.** Face à Sartre (R4) : le principe kantien donne un horizon pour sortir du pur conflit des regards — traiter autrui comme une fin, c'est refuser de le réduire à un simple objet de mon regard ou de mes besoins, même si le conflit décrit par Sartre demeure une tentation structurelle contre laquelle il faut lutter. Face à Levinas (R5) : le principe kantien rejoint, sur un terrain différent (la raison plutôt que le visage), la même exigence — ne jamais réduire autrui à une pure utilité. Face à Hegel (R2) : une reconnaissance authentiquement mutuelle suppose déjà, implicitement, que je traite l'autre comme une fin et non comme un simple instrument de ma propre certitude de moi-même. Le principe kantien ne remplace donc aucune de ces analyses : il fournit la règle pratique qui permet de juger, dans chaque cas concret, si le rapport à autrui reste moral ou bascule dans la pure instrumentalisation.
+**Applique ce principe à ce que la leçon a construit.** Face à Sartre (chapitre 5) : le principe kantien donne un horizon pour sortir du pur conflit des regards — traiter autrui comme une fin, c'est refuser de le réduire à un simple objet de mon regard ou de mes besoins, même si le conflit décrit par Sartre demeure une tentation structurelle contre laquelle il faut lutter. Face à Levinas (chapitre 6) : le principe kantien rejoint, sur un terrain différent (la raison plutôt que le visage), la même exigence — ne jamais réduire autrui à une pure utilité. Face à Hegel (chapitre 3) : une reconnaissance authentiquement mutuelle suppose déjà, implicitement, que je traite l'autre comme une fin et non comme un simple instrument de ma propre certitude de moi-même. Le principe kantien ne remplace donc aucune de ces analyses : il fournit la règle pratique qui permet de juger, dans chaque cas concret, si le rapport à autrui reste moral ou bascule dans la pure instrumentalisation.
 
 > **Point de vigilance :** ne dis pas que Kant « résout » le problème d'autrui posé par Husserl, Hegel, Sartre ou Levinas — ce sont des questions différentes. Husserl se demande comment je connais qu'autrui existe comme conscience ; Hegel et Sartre décrivent ce qui se joue, structurellement, dans la rencontre des consciences ; Levinas fonde une responsabilité qui précède tout choix ; Kant, lui, prescrit une règle d'action qui vaut quelle que soit la réponse donnée aux questions précédentes. Ne fonds pas ces quatre niveaux de questions en un seul.
 
@@ -234,9 +234,9 @@ Cinq regards, un même point de départ — mais aucun ne réduit ce qui s'est j
 
 #### Étape 1 — Analyser les termes du sujet
 
-- **« Autrui »** : rappelle-toi les statuts distingués dans la leçon — un alter ego connu par analogie (Husserl, R1), un médiateur nécessaire à ma conscience de moi-même (Hegel R2, Sartre R3), un rival dans un conflit de regards (Sartre R4), un visage qui m'oblige avant tout choix (Levinas R5). Le sujet ne précise pas lequel retenir : c'est à la copie de le faire apparaître.
-- **« Une menace pour ma liberté »** : mobilise Sartre (R4) — le regard qui objective, fige, m'enferme dans une image que je n'ai pas choisie ; « l'enfer, c'est les autres » pris dans son sens exact, pas dans son sens de bon sens.
-- **« La condition de mon humanité »** : mobilise Hegel (R2, la reconnaissance mutuelle nécessaire à la conscience de soi), Sartre (R3, le médiateur indispensable entre moi et moi-même), Levinas (R5, la responsabilité qui me constitue comme sujet moral) et Kant (R6, le respect dû à la personne).
+- **« Autrui »** : rappelle-toi les statuts distingués dans la leçon — un alter ego connu par analogie (Husserl, chapitre 2), un médiateur nécessaire à ma conscience de moi-même (Hegel, chapitre 3 ; Sartre, chapitre 4), un rival dans un conflit de regards (Sartre, chapitre 5), un visage qui m'oblige avant tout choix (Levinas, chapitre 6). Le sujet ne précise pas lequel retenir : c'est à la copie de le faire apparaître.
+- **« Une menace pour ma liberté »** : mobilise Sartre (chapitre 5) — le regard qui objective, fige, m'enferme dans une image que je n'ai pas choisie ; « l'enfer, c'est les autres » pris dans son sens exact, pas dans son sens de bon sens.
+- **« La condition de mon humanité »** : mobilise Hegel (chapitre 3, la reconnaissance mutuelle nécessaire à la conscience de soi), Sartre (chapitre 4, le médiateur indispensable entre moi et moi-même), Levinas (chapitre 6, la responsabilité qui me constitue comme sujet moral) et Kant (chapitre 7, le respect dû à la personne).
 - Le sujet est formulé comme une alternative (« ou »), mais une bonne dissertation ne choisit jamais un terme en écartant simplement l'autre : elle montre en quel sens chacun est partiellement vrai, et ce qu'il faut ajouter pour trancher.
 
 #### Étape 2 — Formuler la problématique
@@ -252,13 +252,13 @@ Une formulation possible :
 #### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
 
 **I. Thèse — Autrui est la condition nécessaire de ma conscience de moi-même et de mon humanité.**
-Développe Hegel (R2) : je ne peux atteindre une certitude confirmée de moi-même que dans un rapport de reconnaissance avec une autre conscience. Mobilise Sartre (R3) : autrui est le médiateur indispensable entre moi et moi-même — je découvre, par son seul regard, une dimension de mon être que je ne pourrais jamais atteindre seul. Mentionne Husserl (R1) : autrui m'apparaît d'emblée comme un alter ego, un semblable, non comme un simple objet.
+Développe Hegel (chapitre 3) : je ne peux atteindre une certitude confirmée de moi-même que dans un rapport de reconnaissance avec une autre conscience. Mobilise Sartre (chapitre 4) : autrui est le médiateur indispensable entre moi et moi-même — je découvre, par son seul regard, une dimension de mon être que je ne pourrais jamais atteindre seul. Mentionne Husserl (chapitre 2) : autrui m'apparaît d'emblée comme un alter ego, un semblable, non comme un simple objet.
 
 **II. Antithèse — Autrui est aussi, structurellement, une menace pour ma liberté.**
-Mobilise Sartre (R4) : le regard qui me révèle à moi-même est le même regard qui m'objective et me fige dans une image que je n'ai pas choisie ; le conflit des libertés est, chez Sartre, une structure quasi inévitable de toute rencontre entre deux consciences — d'où le sens exact de « l'enfer, c'est les autres ». Ajoute le problème des autres consciences (R1) : je ne connais jamais directement ce qu'autrui pense de moi, ce qui rend ce rapport d'autant plus incertain et potentiellement menaçant.
+Mobilise Sartre (chapitre 5) : le regard qui me révèle à moi-même est le même regard qui m'objective et me fige dans une image que je n'ai pas choisie ; le conflit des libertés est, chez Sartre, une structure quasi inévitable de toute rencontre entre deux consciences — d'où le sens exact de « l'enfer, c'est les autres ». Ajoute le problème des autres consciences (chapitre 2) : je ne connais jamais directement ce qu'autrui pense de moi, ce qui rend ce rapport d'autant plus incertain et potentiellement menaçant.
 
 **III. Dépassement — Ce n'est pas la présence d'autrui qui décide de tout, mais la façon dont je le considère.**
-Reprends Levinas (R5) : traiter autrui non comme un objet de mon regard ou de mes besoins, mais comme un visage qui m'oblige, transforme la relation de conflit en relation de responsabilité. Reprends Kant (R6) : traiter l'humanité, dans la personne d'autrui, toujours comme une fin et jamais simplement comme un moyen, donne une règle concrète pour sortir du pur rapport de force décrit par Sartre. Montre que ces deux positions ne nient pas le risque de conflit (R4) : elles indiquent, chacune à sa manière, ce qui permettrait de le dépasser.
+Reprends Levinas (chapitre 6) : traiter autrui non comme un objet de mon regard ou de mes besoins, mais comme un visage qui m'oblige, transforme la relation de conflit en relation de responsabilité. Reprends Kant (chapitre 7) : traiter l'humanité, dans la personne d'autrui, toujours comme une fin et jamais simplement comme un moyen, donne une règle concrète pour sortir du pur rapport de force décrit par Sartre. Montre que ces deux positions ne nient pas le risque de conflit (chapitre 5) : elles indiquent, chacune à sa manière, ce qui permettrait de le dépasser.
 
 #### Étape 4 — Rédiger l'introduction (modèle rédigé)
 
@@ -279,14 +279,14 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 Le sujet ci-dessous est réel — tiré des annales nationales, pas construit
 pour cette leçon. Il porte sur la connaissance certaine d'autrui : à toi de
 mobiliser ce que tu sais déjà sur le problème des autres consciences et sur
-l'aprésentation (R1) pour l'affronter.
+l'aprésentation (chapitre 2) pour l'affronter.
 
 [[exercise:r-bac]]
 
 ### Une variation pour ne pas mémoriser
 
 Ce second exercice, construit pour cette leçon, revient sur le terrain déjà
-connu de R2 (Hegel) — sous un habillage différent (une citation construite
+connu du chapitre 3 (Hegel) — sous un habillage différent (une citation construite
 pour l'entraînement, sans le récit narratif du maître et de l'esclave). Le
 but n'est pas d'apprendre autre chose : c'est de reconnaître que la même
 argumentation s'applique quand l'habillage change.

@@ -92,12 +92,12 @@ long de cette leçon, *le réflexe de paraphrase*.
 « texte » comprend quatre moments, chacun noté sur 20 — les mêmes quatre
 moments que tu retrouveras, non simulés, à l'examen :
 
-| Capacité | /20 | Ce qu'elle vérifie | Rung(s) qui la construit |
+| Capacité | /20 | Ce qu'elle vérifie | Chapitre(s) qui la construit |
 |---|---|---|---|
-| **Compréhension (فهم)** | 4 | Encadrer le texte, poser la problématique | R2 |
-| **Analyse (تحليل)** | 5 | Dégager la thèse, les concepts, l'argumentation | R1, R3, R4 |
-| **Discussion (مناقشة)** | 5 | Positions convergentes puis divergentes | R5 |
-| **Synthèse (تركيب)** | 3 | Bilan et position personnelle argumentée | R6 |
+| **Compréhension (فهم)** | 4 | Encadrer le texte, poser la problématique | chapitre 3 |
+| **Analyse (تحليل)** | 5 | Dégager la thèse, les concepts, l'argumentation | chapitres 2, 4 et 5 |
+| **Discussion (مناقشة)** | 5 | Positions convergentes puis divergentes | chapitre 6 |
+| **Synthèse (تركيب)** | 3 | Bilan et position personnelle argumentée | chapitre 7 |
 | **Aspects formels** | 3 | Cohérence, langue, lisibilité | transversal |
 | **Total** | **20** | | |
 
@@ -115,7 +115,7 @@ que tu vas apprendre ici n'est pas seulement ce qui te fait gagner les points
 d'analyse, de discussion et de synthèse — c'est aussi, mécaniquement, ce qui
 te fait gagner les points de forme.
 
-Voici la carte d'ensemble que tu vas remplir, rung après rung :
+Voici la carte d'ensemble que tu vas remplir, chapitre après chapitre :
 
 [[figure:carte-methode]]
 
@@ -195,7 +195,7 @@ Trois mots qu'on confond en permanence, et qu'il faut absolument distinguer :
 - La **thèse** (أطروحة النص), c'est *ce que l'auteur AFFIRME* — une phrase
   assertive, précise, que quelqu'un pourrait en principe contester. C'est
   elle qu'il faut trouver.
-- Le **problème**, tu le construis seulement après (R2) : c'est la tension à
+- Le **problème**, tu le construis seulement après (chapitre 3) : c'est la tension à
   laquelle la thèse répond.
 
 **Voix de l'expert, au moment de chercher la thèse :** *« Je ne cherche ni le
@@ -225,8 +225,8 @@ Regarde ce que cette phrase permet d'éviter comme confusions :
 [[figure:anatomie-du-texte]]
 
 Une fois la thèse repérée, tout le reste de l'analyse s'organise autour
-d'elle : les concepts qu'elle mobilise (R4), la façon dont elle se construit
-et se déploie (R3), la façon dont elle répond à un problème (R2).
+d'elle : les concepts qu'elle mobilise (chapitre 5), la façon dont elle se construit
+et se déploie (chapitre 4), la façon dont elle répond à un problème (chapitre 3).
 
 [[checkpoint:cp-r1-these]]
 
@@ -528,7 +528,7 @@ certitude.
 
 **Ce que fait ce paragraphe :** il articule l'analyse et la discussion (il
 ne les redit pas côte à côte, il les relie) ; il répond explicitement à la
-problématique du R2 ; sa dernière phrase ouvre une question réelle plutôt que
+problématique du chapitre 3 ; sa dernière phrase ouvre une question réelle plutôt que
 de clore le sujet sur un jugement définitif.
 
 Reviens, une dernière fois, à la carte d'ensemble :
@@ -536,8 +536,8 @@ Reviens, une dernière fois, à la carte d'ensemble :
 [[figure:carte-methode]]
 
 Tu as maintenant fait, sur un texte entier, les quatre moments notés sur 20 :
-encadrer et problématiser (R2), analyser la thèse, la structure et les
-concepts (R1, R3, R4), discuter (R5), synthétiser (R6). C'est exactement ce
+encadrer et problématiser (chapitre 3), analyser la thèse, la structure et les
+concepts (chapitres 2, 4 et 5), discuter (chapitre 6), synthétiser (chapitre 7). C'est exactement ce
 geste, refait sur un texte que tu n'as jamais vu, que l'épreuve te demandera.
 
 [[checkpoint:cp-r6-synthese]]
@@ -560,7 +560,7 @@ devoir plutôt que *conformément* au devoir) ; ici, c'est uniquement la
 méthode qui t'intéresse, pas le contenu à réapprendre.
 
 **Le second texte** revient au texte sur la vérité entrevu au tout début de
-cette leçon (R0) — cette fois en entier. Sa structure est différente de
+cette leçon (chapitre 1) — cette fois en entier. Sa structure est différente de
 celle de Bakounine : une thèse relativiste, qui articule les sens et la
 raison. C'est volontaire — reconnaître la méthode sur une structure
 différente, plutôt que sur un texte à la forme déjà mémorisée, est le

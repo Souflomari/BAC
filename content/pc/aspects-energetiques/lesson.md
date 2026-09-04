@@ -42,7 +42,7 @@ $1{,}6$ vaut quatre fois $0{,}40$ — pas deux fois. Retiens ce réflexe : $E_c$
 
 [[figure:ec-parabole]]
 
-Cette grandeur va être au centre de toute la leçon : le rung suivant construit l'outil qui relie ses variations aux forces qui s'exercent sur le solide.
+Cette grandeur va être au centre de toute la leçon : le chapitre suivant construit l'outil qui relie ses variations aux forces qui s'exercent sur le solide.
 
 ---
 
@@ -50,7 +50,7 @@ Cette grandeur va être au centre de toute la leçon : le rung suivant construit
 
 ### La question que ce rung résout
 
-On sait, depuis les lois de Newton, que la somme des forces détermine l'accélération : $\sum \vec{F}_{ext} = m\vec{a}_G$. Mais retrouver une vitesse à partir de là demande, en général, tout un détour : bilan des forces, projection, primitivation une fois pour la vitesse, une deuxième fois pour la position. Ce rung construit un raccourci qui relie directement les forces à la variation de $E_c$, sans repasser par tout ce détour.
+On sait, depuis les lois de Newton, que la somme des forces détermine l'accélération : $\sum \vec{F}_{ext} = m\vec{a}_G$. Mais retrouver une vitesse à partir de là demande, en général, tout un détour : bilan des forces, projection, primitivation une fois pour la vitesse, une deuxième fois pour la position. Ce chapitre construit un raccourci qui relie directement les forces à la variation de $E_c$, sans repasser par tout ce détour.
 
 ### D'abord : le travail d'une force constante
 
@@ -96,7 +96,7 @@ $$\frac{1}{2} m v_B^2 - \frac{1}{2} m v_A^2 = \sum W(\vec{F}_{ext})$$
 
 Le membre de gauche, c'est $\Delta E_c$. Le théorème est établi, dans ce cas simple — et on admet qu'il reste vrai, sous la même forme, pour un mouvement quelconque (pas seulement rectiligne) et des forces qui peuvent varier en direction (le poids, lui, reste constant, mais ce n'est pas une exigence du théorème lui-même).
 
-Remarque ce que ce théorème fait de nouveau : il relie directement les forces à $E_c$, sans jamais passer par l'accélération, la vitesse instantanée $v(t)$, ou la position $x(t)$. C'est exactement le raccourci annoncé en R0.
+Remarque ce que ce théorème fait de nouveau : il relie directement les forces à $E_c$, sans jamais passer par l'accélération, la vitesse instantanée $v(t)$, ou la position $x(t)$. C'est exactement le raccourci annoncé au chapitre 1.
 
 ### Exemple travaillé : retrouver la vitesse de la chute libre, par le TEC
 
@@ -152,7 +152,7 @@ $$W(\vec{P})_{A \to B} = mg\,(z_A - z_B)$$
 
 où $z_A$ et $z_B$ sont les altitudes de $A$ et de $B$ (axe vertical orienté vers le haut). **Le travail du poids ne dépend que de la différence d'altitude entre le départ et l'arrivée — jamais de la forme, de la longueur, ou du nombre de détours du chemin suivi.**
 
-Regarde ce que dit cette formule dans les deux cas extrêmes : si $A$ et $B$ sont à la même altitude ($z_A = z_B$, un déplacement purement horizontal), $W(\vec{P}) = 0$ — c'est cohérent, puisque le poids est alors perpendiculaire au déplacement à chaque instant. Si le déplacement est une chute verticale pure de hauteur $h$ ($z_A - z_B = h$), on retrouve $W(\vec{P}) = mgh$, exactement le résultat utilisé au rung précédent.
+Regarde ce que dit cette formule dans les deux cas extrêmes : si $A$ et $B$ sont à la même altitude ($z_A = z_B$, un déplacement purement horizontal), $W(\vec{P}) = 0$ — c'est cohérent, puisque le poids est alors perpendiculaire au déplacement à chaque instant. Si le déplacement est une chute verticale pure de hauteur $h$ ($z_A - z_B = h$), on retrouve $W(\vec{P}) = mgh$, exactement le résultat utilisé au chapitre précédent.
 
 ### L'erreur à repérer
 
@@ -164,7 +164,7 @@ Voici le réflexe fautif à éliminer : penser qu'un chemin plus long "fatigue" 
 
 La bille en chute libre et la bille sur le toboggan partent toutes deux de la même altitude et arrivent toutes deux à la même altitude, sans frottement dans les deux cas. Donc $W(\vec{P})$ est **strictement le même** dans les deux cas, malgré la longueur très différente des deux chemins. Par le TEC, $\Delta E_c$ ne dépend, ici, que de $W(\vec{P})$ (aucune autre force ne travaille : les frottements sont négligés, et la réaction de la piste, si elle en exerce une, est perpendiculaire au déplacement à chaque instant, donc de travail nul) — donc $\Delta E_c$ est le même dans les deux cas, et les deux billes arrivent avec **exactement la même vitesse**.
 
-Si ta prédiction de R0 penchait pour la chute libre plus rapide, voilà l'écart à corriger : ce n'est pas la longueur du chemin qui compte, c'est la dénivelée. La bille sur le toboggan met plus de temps à arriver (elle a plus de chemin à parcourir), mais elle arrive avec la même vitesse.
+Si ta prédiction du chapitre 1 penchait pour la chute libre plus rapide, voilà l'écart à corriger : ce n'est pas la longueur du chemin qui compte, c'est la dénivelée. La bille sur le toboggan met plus de temps à arriver (elle a plus de chemin à parcourir), mais elle arrive avec la même vitesse.
 
 ### L'énergie potentielle de pesanteur
 
@@ -204,7 +204,7 @@ $$\Delta E_c = W(\vec{P}) + W(\vec{N})$$
 
 $$\Delta E_c = W(\vec{P})$$
 
-On vient d'établir, au rung précédent, que $W(\vec{P}) = -\Delta E_{pp}$. Donc :
+On vient d'établir, au chapitre précédent, que $W(\vec{P}) = -\Delta E_{pp}$. Donc :
 
 $$\Delta E_c = -\Delta E_{pp}$$
 
@@ -212,7 +212,7 @@ $$\Delta E_c + \Delta E_{pp} = 0$$
 
 $$\Delta E_m = 0$$
 
-**En l'absence de frottement, l'énergie mécanique se conserve : elle est constante tout au long du mouvement.** C'est exactement la conséquence du TEC de R2 et du travail du poids de R3, combinés : $E_c$ et $E_{pp}$ varient chacune séparément (l'une monte quand l'autre descend), mais leur somme, elle, ne bouge pas.
+**En l'absence de frottement, l'énergie mécanique se conserve : elle est constante tout au long du mouvement.** C'est exactement la conséquence du TEC du chapitre 3 et du travail du poids du chapitre 4, combinés : $E_c$ et $E_{pp}$ varient chacune séparément (l'une monte quand l'autre descend), mais leur somme, elle, ne bouge pas.
 
 ### Arrête-toi ici : $E_c$ n'est pas $E_m$
 
@@ -246,7 +246,7 @@ Ne raisonne jamais "l'énergie mécanique est toujours conservée" par réflexe 
 
 Un solide de masse $m = 0{,}50\ \text{kg}$ glisse sur une piste avec frottement, du point $A$ (départ, $v_A = 0$) au point $B$. Entre $A$ et $B$, son altitude diminue de $\Delta z = 1{,}2\ \text{m}$, et le travail des frottements vaut $W(\vec{f}) = -1{,}0\ \text{J}$. Quelle est la vitesse en $B$ ?
 
-**Travail du poids** (indépendant du chemin, R3) :
+**Travail du poids** (indépendant du chemin, chapitre 4) :
 
 $$W(\vec{P}) = mg\,\Delta z = 0{,}50 \times 9{,}8 \times 1{,}2 \approx 5{,}88\ \text{J}$$
 
@@ -286,13 +286,13 @@ Avant de lire la suite, engage-toi vraiment. Le réflexe le plus naturel : la fo
 
 ### Le piège : $F$ n'est pas la même du début à la fin
 
-Ce réflexe traite $kx$ comme si c'était la force de **tout** le trajet — comme si le ressort résistait déjà avec cette intensité dès le premier millimètre. Ce n'est pas le cas. Au tout début de l'étirement, $x$ est proche de $0$ : le ressort résiste à peine. Ce n'est qu'à l'extrémité du trajet, quand l'allongement atteint sa valeur finale $x$, que la force de rappel atteint $kx$. Entre les deux, $F$ grandit continûment, de $0$ à $kx$ : c'est exactement une force **variable**, le cas traité en R2.
+Ce réflexe traite $kx$ comme si c'était la force de **tout** le trajet — comme si le ressort résistait déjà avec cette intensité dès le premier millimètre. Ce n'est pas le cas. Au tout début de l'étirement, $x$ est proche de $0$ : le ressort résiste à peine. Ce n'est qu'à l'extrémité du trajet, quand l'allongement atteint sa valeur finale $x$, que la force de rappel atteint $kx$. Entre les deux, $F$ grandit continûment, de $0$ à $kx$ : c'est exactement une force **variable**, le cas traité au chapitre 3.
 
 ### L'aire du triangle, et le sens du $\frac{1}{2}$
 
 [[figure:travail-ressort-triangle]]
 
-Reprends l'outil du rung précédent : le travail d'une force qui varie avec la position est l'aire sous la courbe $F(x)$. Ici, $F(x) = kx$ est une droite qui part de $(0, 0)$ et arrive à $(x, kx)$ — l'aire sous cette droite est un **triangle**, pas un rectangle.
+Reprends l'outil du chapitre précédent : le travail d'une force qui varie avec la position est l'aire sous la courbe $F(x)$. Ici, $F(x) = kx$ est une droite qui part de $(0, 0)$ et arrive à $(x, kx)$ — l'aire sous cette droite est un **triangle**, pas un rectangle.
 
 $$W = \frac{1}{2} \times \text{base} \times \text{hauteur}$$
 
@@ -314,7 +314,7 @@ On définit l'**énergie potentielle élastique**, l'énergie emmagasinée dans 
 
 $$E_{pe} = \frac{1}{2}kx^2$$
 
-Exactement comme le travail du poids s'écrivait $W(\vec{P}) = -\Delta E_{pp}$ (R3), le travail de la force de rappel s'écrit :
+Exactement comme le travail du poids s'écrivait $W(\vec{P}) = -\Delta E_{pp}$ (chapitre 4), le travail de la force de rappel s'écrit :
 
 $$W(\vec{F}_{rappel})_{A \to B} = \frac{1}{2}kx_A^2 - \frac{1}{2}kx_B^2 = -\Delta E_{pe}$$
 
@@ -328,7 +328,7 @@ Pour un solide de masse $m$ accroché à un ressort horizontal, sans frottement,
 
 $$E_m = E_c + E_{pe} = \frac{1}{2}mv^2 + \frac{1}{2}kx^2$$
 
-Applique le TEC : sur ce montage horizontal, le poids $\vec{P}$ et la réaction $\vec{N}$ sont tous deux perpendiculaires au déplacement (R2, R3) — ils ne travaillent jamais. Seule $\vec{F}_{rappel}$ travaille.
+Applique le TEC : sur ce montage horizontal, le poids $\vec{P}$ et la réaction $\vec{N}$ sont tous deux perpendiculaires au déplacement (chapitres 3 et 4) — ils ne travaillent jamais. Seule $\vec{F}_{rappel}$ travaille.
 
 $$\Delta E_c = W(\vec{F}_{rappel}) + W(\vec{P}) + W(\vec{N})$$
 
@@ -340,7 +340,7 @@ $$\Delta E_c + \Delta E_{pe} = 0$$
 
 $$\Delta E_m = 0$$
 
-**Sans frottement, l'énergie mécanique du pendule élastique se conserve** — exactement le même raisonnement qu'en R4, avec $E_{pe}$ à la place de $E_{pp}$ et $\vec{F}_{rappel}$ à la place du poids.
+**Sans frottement, l'énergie mécanique du pendule élastique se conserve** — exactement le même raisonnement qu'au chapitre 5, avec $E_{pe}$ à la place de $E_{pp}$ et $\vec{F}_{rappel}$ à la place du poids.
 
 ### Arrête-toi — étirement ou compression, même énergie ?
 
@@ -380,7 +380,7 @@ $0{,}5\ \text{m/s}$ — exactement la vitesse de lancer qu'on avait choisie, au 
 
 ## R6 — Le fil qui se tord emmagasine de l'énergie : $\frac{1}{2}C\theta^2$, et l'énergie du pendule de torsion
 
-Le pendule de torsion obéit au même mécanisme que le ressort, habillé en rotation. Tu l'as rencontré au chapitre Systèmes oscillants (R4) : un disque suspendu par un fil vertical, qu'on tord d'un angle $\theta$, subit un **moment de rappel** proportionnel à cet angle :
+Le pendule de torsion obéit au même mécanisme que le ressort, habillé en rotation. Tu l'as rencontré au chapitre Systèmes oscillants (chapitre 5) : un disque suspendu par un fil vertical, qu'on tord d'un angle $\theta$, subit un **moment de rappel** proportionnel à cet angle :
 
 $$M_{rappel} = -C\,\theta$$
 
@@ -394,7 +394,7 @@ Le pendule de torsion fait intervenir deux grandeurs bien distinctes : le moment
 
 [[figure:travail-torsion-triangle]]
 
-Le réflexe du rung précédent reviendrait ici : traiter $M = C\theta$ comme le moment de tout le trajet, et écrire $W = C\theta \times \theta = C\theta^2$. C'est la même erreur, juste habillée en rotation — elle ignore que $M$ part de $0$ et ne vaut $C\theta$ qu'à l'instant final. Comme pour le ressort, le moment moyen sur tout le trajet est $\frac{1}{2}C\theta$, et le travail du couple de rappel, pour tordre le fil de $0$ à $\theta$, est l'aire du triangle sous la droite $M(\theta) = C\theta$ :
+Le réflexe du chapitre précédent reviendrait ici : traiter $M = C\theta$ comme le moment de tout le trajet, et écrire $W = C\theta \times \theta = C\theta^2$. C'est la même erreur, juste habillée en rotation — elle ignore que $M$ part de $0$ et ne vaut $C\theta$ qu'à l'instant final. Comme pour le ressort, le moment moyen sur tout le trajet est $\frac{1}{2}C\theta$, et le travail du couple de rappel, pour tordre le fil de $0$ à $\theta$, est l'aire du triangle sous la droite $M(\theta) = C\theta$ :
 
 $$W = \frac{1}{2}\times\theta\times(C\theta) = \frac{1}{2}C\theta^2$$
 
@@ -430,7 +430,7 @@ Change $k \leftrightarrow C$, $x \leftrightarrow \theta$, $m \leftrightarrow J$,
 
 $$E_m = E_c + E_{p,torsion} = \frac{1}{2}J\dot\theta^2 + \frac{1}{2}C\theta^2$$
 
-Sans frottement, ni le poids ni la réaction de l'axe ne produisent de moment par rapport à l'axe du fil (ils passent par cet axe) — seul le couple de rappel travaille. Le même TEC qu'en R5 donne, terme à terme :
+Sans frottement, ni le poids ni la réaction de l'axe ne produisent de moment par rapport à l'axe du fil (ils passent par cet axe) — seul le couple de rappel travaille. Le même TEC qu'au chapitre 6 donne, terme à terme :
 
 $$\Delta E_c = W(M_{rappel})$$
 
@@ -454,13 +454,13 @@ Au passage par $\theta = 0$, toute cette énergie devient cinétique :
 
 $$\frac{1}{2}J\dot\theta_{max}^2 = E_m \quad \Longrightarrow \quad \dot\theta_{max} = \sqrt{\frac{2E_m}{J}} = \sqrt{\frac{2\times 3{,}2\times10^{-3}}{4{,}0\times10^{-3}}} = \sqrt{1{,}6} \approx 1{,}26\ \text{rad/s}$$
 
-Vérifie avec l'autre chemin, celui de l'équation horaire (chapitre Systèmes oscillants, R4) : $\omega_0 = \sqrt{C/J} = \sqrt{0{,}16/4{,}0\times10^{-3}} = \sqrt{40} \approx 6{,}32\ \text{rad/s}$, et $\dot\theta_{max} = \omega_0\,\theta_0 \approx 6{,}32 \times 0{,}20 \approx 1{,}26\ \text{rad/s}$. Les deux méthodes s'accordent — l'énergie et l'équation horaire décrivent le même mouvement, vu sous deux angles différents.
+Vérifie avec l'autre chemin, celui de l'équation horaire (chapitre Systèmes oscillants, chapitre 5) : $\omega_0 = \sqrt{C/J} = \sqrt{0{,}16/4{,}0\times10^{-3}} = \sqrt{40} \approx 6{,}32\ \text{rad/s}$, et $\dot\theta_{max} = \omega_0\,\theta_0 \approx 6{,}32 \times 0{,}20 \approx 1{,}26\ \text{rad/s}$. Les deux méthodes s'accordent — l'énergie et l'équation horaire décrivent le même mouvement, vu sous deux angles différents.
 
 ---
 
 ## R7 — L'énergie du pendule pesant : quand le « ressort » est la pesanteur
 
-Dernier système du programme : le pendule pesant. Ici, ni ressort ni fil de torsion — c'est la pesanteur elle-même qui joue le rôle du rappel, exactement comme au chapitre Systèmes oscillants (R3), où c'était déjà $g/L$ qui fixait le rythme.
+Dernier système du programme : le pendule pesant. Ici, ni ressort ni fil de torsion — c'est la pesanteur elle-même qui joue le rôle du rappel, exactement comme au chapitre Systèmes oscillants (chapitre 4), où c'était déjà $g/L$ qui fixait le rythme.
 
 ### Prédis, avant de calculer
 
@@ -470,7 +470,7 @@ Beaucoup répondent : « $E_m$ diminue, puisque le pendule ralentit — il a per
 
 ### Ce que dit vraiment le ralentissement
 
-Ce raisonnement confond deux choses : $E_c$ ralentit (chute vers $0$), et $E_m$ « diminuerait » avec elle. Mais $E_m$ n'est **pas** $E_c$ — c'est exactement la confusion identifiée en R4. Reprends le bilan : sans frottement, la seule force qui travaille est le poids (la tension du fil est radiale, perpendiculaire au déplacement, donc $W(\vec{T}) = 0$).
+Ce raisonnement confond deux choses : $E_c$ ralentit (chute vers $0$), et $E_m$ « diminuerait » avec elle. Mais $E_m$ n'est **pas** $E_c$ — c'est exactement la confusion identifiée au chapitre 5. Reprends le bilan : sans frottement, la seule force qui travaille est le poids (la tension du fil est radiale, perpendiculaire au déplacement, donc $W(\vec{T}) = 0$).
 
 $$\Delta E_c = W(\vec{P}) + W(\vec{T})$$
 
@@ -482,13 +482,13 @@ $$\Delta E_c + \Delta E_{pp} = 0$$
 
 $$\Delta E_m = 0$$
 
-— exactement la même démonstration qu'en R4, avec la tension du fil à la place de la réaction $\vec{N}$. **$E_m$ ne bouge pas.** Ce qui ralentit, c'est $E_c$ — et ce qu'elle perd, $E_{pp}$ le gagne intégralement : le pendule monte, il ne perd rien, il **convertit**.
+— exactement la même démonstration qu'au chapitre 5, avec la tension du fil à la place de la réaction $\vec{N}$. **$E_m$ ne bouge pas.** Ce qui ralentit, c'est $E_c$ — et ce qu'elle perd, $E_{pp}$ le gagne intégralement : le pendule monte, il ne perd rien, il **convertit**.
 
 ### La hauteur, exactement
 
 [[figure:pendule-pesant-energie]]
 
-Pour appliquer $E_{pp} = mgz$ (R3) à un pendule, il faut la vraie hauteur $z$ — pas la longueur du fil, pas la longueur de l'arc parcouru. Place le pendule à l'angle $\theta$ par rapport à la verticale : le point matériel est alors à une distance verticale $L\cos\theta$ **sous** le point de suspension (projection du fil sur la verticale). Au point le plus bas ($\theta=0$), cette distance vaut $L$. La hauteur gagnée par rapport au point le plus bas est donc la différence :
+Pour appliquer $E_{pp} = mgz$ (chapitre 4) à un pendule, il faut la vraie hauteur $z$ — pas la longueur du fil, pas la longueur de l'arc parcouru. Place le pendule à l'angle $\theta$ par rapport à la verticale : le point matériel est alors à une distance verticale $L\cos\theta$ **sous** le point de suspension (projection du fil sur la verticale). Au point le plus bas ($\theta=0$), cette distance vaut $L$. La hauteur gagnée par rapport au point le plus bas est donc la différence :
 
 $$z = L - L\cos\theta = L(1-\cos\theta)$$
 
@@ -500,7 +500,7 @@ Ni $L$ seul (ça, c'est la longueur du fil, pas une hauteur), ni $L\theta$ (ça,
 
 $$E_m = E_c + E_{pp} = \frac{1}{2}mv^2 + mgz, \qquad z = L(1-\cos\theta)$$
 
-Sans frottement, $\Delta E_m = 0$ (établi ci-dessus). Au point le plus bas ($\theta=0$, $z=0$) : $E_{pp}=0$, toute l'énergie est cinétique, la vitesse y est maximale. Aux écarts extrêmes ($\theta=\pm\theta_m$) : $v=0$, $E_c=0$, toute l'énergie est potentielle. Entre les deux, $E_c$ et $E_{pp}$ s'échangent en permanence — le même va-et-vient qu'entre $E_c$ et $E_{pe}$ pour le ressort (R5), ou entre $E_c$ et $E_{p,torsion}$ pour la torsion (R6) — mais cette fois le réservoir de rappel est **gravitationnel**, pas élastique.
+Sans frottement, $\Delta E_m = 0$ (établi ci-dessus). Au point le plus bas ($\theta=0$, $z=0$) : $E_{pp}=0$, toute l'énergie est cinétique, la vitesse y est maximale. Aux écarts extrêmes ($\theta=\pm\theta_m$) : $v=0$, $E_c=0$, toute l'énergie est potentielle. Entre les deux, $E_c$ et $E_{pp}$ s'échangent en permanence — le même va-et-vient qu'entre $E_c$ et $E_{pe}$ pour le ressort (chapitre 6), ou entre $E_c$ et $E_{p,torsion}$ pour la torsion (chapitre 7) — mais cette fois le réservoir de rappel est **gravitationnel**, pas élastique.
 
 Une remarque, pour ne pas la laisser filer : pour de petites oscillations, $1-\cos\theta \approx \frac{1}{2}\theta^2$ (approximation déjà rencontrée au chapitre Systèmes oscillants), donc $E_{pp} \approx \frac{1}{2}(mgL)\theta^2$ — la même forme que $\frac{1}{2}kx^2$, avec $mgL$ qui joue le rôle d'une « raideur » effective. Ce n'est qu'un éclairage : l'expression à retenir reste $E_{pp}=mgz$, exacte à tout angle, pas seulement aux petites oscillations.
 
@@ -510,7 +510,7 @@ Deux pièges à séparer clairement. D'abord : $E_m$ est **constante** — elle 
 
 ### Exemple travaillé — vitesse au point bas
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* la vitesse en bas se lit directement sur le bilan d'énergie, sans jamais résoudre l'équation horaire — le même raccourci qu'en R2 pour la chute libre.
+*Ce qu'on cherche ici, et pourquoi ce geste :* la vitesse en bas se lit directement sur le bilan d'énergie, sans jamais résoudre l'équation horaire — le même raccourci qu'au chapitre 3 pour la chute libre.
 
 Un pendule simple, $L = 1{,}0\ \text{m}$, $m = 0{,}20\ \text{kg}$, est lâché sans vitesse depuis $\theta_m = 0{,}30\ \text{rad}$ ($g\approx9{,}8\ \text{m/s}^2$). Au lâcher, toute l'énergie est potentielle :
 

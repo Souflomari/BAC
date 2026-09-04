@@ -134,7 +134,7 @@ $$|zz'| = |z| \times |z'| \qquad \qquad \arg(zz') = \arg(z)+\arg(z')\ [2\pi]$$
 
 Calculer le module et un argument de $zz'$, avec $z=1+i$ et $z'=1+i\sqrt3$.
 
-**Ce qu'on cherche et pourquoi ce geste :** plutôt que de développer directement le produit algébrique et de repartir de zéro pour en lire le module et l'argument, on convertit d'abord chaque facteur en forme trigonométrique — on a déjà la méthode du R1 — puis on applique la règle qu'on vient d'établir : multiplier les modules, additionner les arguments.
+**Ce qu'on cherche et pourquoi ce geste :** plutôt que de développer directement le produit algébrique et de repartir de zéro pour en lire le module et l'argument, on convertit d'abord chaque facteur en forme trigonométrique — on a déjà la méthode du chapitre 2 — puis on applique la règle qu'on vient d'établir : multiplier les modules, additionner les arguments.
 
 $$|z| = \sqrt{1^2+1^2} = \sqrt2, \qquad \cos\theta=\sin\theta=\frac{\sqrt2}{2} \implies \theta=\frac{\pi}{4}$$
 
@@ -160,7 +160,7 @@ Plutôt que de refaire un calcul de développement pour le quotient, on va réut
 
 $$\frac{1}{z} = \frac{\overline z}{z\overline z} = \frac{\overline z}{r^2}$$
 
-Or $\overline z = r(\cos\theta - i\sin\theta) = r(\cos(-\theta)+i\sin(-\theta)) = re^{-i\theta}$ (même calcul qu'au R1). On substitue :
+Or $\overline z = r(\cos\theta - i\sin\theta) = r(\cos(-\theta)+i\sin(-\theta)) = re^{-i\theta}$ (même calcul qu'au chapitre 2). On substitue :
 
 $$\frac{1}{z} = \frac{re^{-i\theta}}{r^2} = \frac{1}{r}\,e^{-i\theta}$$
 
@@ -176,7 +176,7 @@ $$\left|\frac{z}{z'}\right| = \frac{|z|}{|z'|} \qquad \qquad \arg\!\left(\frac{z
 
 **Exemple travaillé.** Calculer le module de $\dfrac{1+i\sqrt3}{1+i}$.
 
-**Ce qu'on cherche et pourquoi ce geste :** on a déjà, du R2, $|1+i\sqrt3|=2$ et $|1+i|=\sqrt2$. La règle du quotient donne directement le module cherché sans repasser par la division algébrique.
+**Ce qu'on cherche et pourquoi ce geste :** on a déjà, du chapitre 3, $|1+i\sqrt3|=2$ et $|1+i|=\sqrt2$. La règle du quotient donne directement le module cherché sans repasser par la division algébrique.
 
 $$\left|\frac{1+i\sqrt3}{1+i}\right| = \frac{2}{\sqrt2} = \sqrt2$$
 
@@ -200,7 +200,7 @@ C'est la **formule de Moivre**. Elle dit que pour élever $z=re^{i\theta}$ à la
 
 **Exemple travaillé.** Calculer $z^4$ pour $z=1+i$, par la formule de Moivre, puis vérifier par calcul direct.
 
-**Ce qu'on cherche et pourquoi ce geste :** on a déjà $z=\sqrt2\, e^{i\pi/4}$ (R1). La formule de Moivre donne le module et l'argument de $z^4$ en une ligne ; on vérifie ensuite par élévations au carré successives, une méthode purement algébrique, pour confirmer que les deux chemins mènent au même résultat.
+**Ce qu'on cherche et pourquoi ce geste :** on a déjà $z=\sqrt2\, e^{i\pi/4}$ (chapitre 2). La formule de Moivre donne le module et l'argument de $z^4$ en une ligne ; on vérifie ensuite par élévations au carré successives, une méthode purement algébrique, pour confirmer que les deux chemins mènent au même résultat.
 
 $$|z^4| = (\sqrt2)^4 = 4 \qquad \qquad \arg(z^4) = 4\times\frac{\pi}{4} = \pi$$
 
@@ -248,7 +248,7 @@ $$z_k = R^{1/n}\, e^{i\frac{\Phi+2k\pi}{n}}, \qquad k=0,1,\ldots,n-1$$
 
 **Exemple travaillé.** Trouver les racines cubiques de $Z=8i$.
 
-**Ce qu'on cherche et pourquoi ce geste :** avant d'appliquer la formule, il faut d'abord écrire $Z$ sous forme exponentielle — exactement la méthode du R1, appliquée à $Z=8i$ (partie réelle $0$, partie imaginaire $8$).
+**Ce qu'on cherche et pourquoi ce geste :** avant d'appliquer la formule, il faut d'abord écrire $Z$ sous forme exponentielle — exactement la méthode du chapitre 2, appliquée à $Z=8i$ (partie réelle $0$, partie imaginaire $8$).
 
 $$R = |8i| = 8, \qquad \Phi = \arg(8i) = \frac{\pi}{2}$$
 
@@ -270,15 +270,15 @@ Les trois racines cubiques de $8i$ sont donc $2e^{i\pi/6}$, $2e^{i5\pi/6}$ et $2
 
 ### Ce que fait, en général, la multiplication par un complexe fixe
 
-Reviens à la question du R0. Fixe un complexe non nul $c=re^{i\theta}$, et regarde ce qui se passe quand on associe, à un point $M$ d'affixe $z$, le point $M'$ d'affixe $z' = c\,z$.
+Reviens à la question du chapitre 1. Fixe un complexe non nul $c=re^{i\theta}$, et regarde ce qui se passe quand on associe, à un point $M$ d'affixe $z$, le point $M'$ d'affixe $z' = c\,z$.
 
-Par la règle du produit du R2, appliquée à $c$ et $z$ :
+Par la règle du produit du chapitre 3, appliquée à $c$ et $z$ :
 
 $$|z'| = |c|\,|z| = r\,|z| \qquad \qquad \arg(z') = \arg(c)+\arg(z) = \theta+\arg(z)\ [2\pi]$$
 
 **Ce que ça veut dire géométriquement :** la distance de $M'$ à $O$ est celle de $M$ à $O$, multipliée par $r$ — c'est une **homothétie de centre $O$ et de rapport $r$**. Et la direction de $M'$ vu de $O$ est celle de $M$, tournée d'un angle $\theta$ — c'est une **rotation de centre $O$ et d'angle $\theta$**. La transformation $z\mapsto cz$ est donc la composée de ces deux-là, toutes deux centrées en $O$.
 
-C'est exactement la réponse à la question du R0 : $i=e^{i\pi/2}$ a pour module $r=1$ (pas d'agrandissement) et pour argument $\theta=\pi/2$ (un quart de tour) — c'est pour ça, précisément, que multiplier par $i$ fait tourner le plan d'un quart de tour sans rien agrandir. Ce n'était pas une coïncidence propre à $i$ : c'est le comportement général de toute multiplication.
+C'est exactement la réponse à la question du chapitre 1 : $i=e^{i\pi/2}$ a pour module $r=1$ (pas d'agrandissement) et pour argument $\theta=\pi/2$ (un quart de tour) — c'est pour ça, précisément, que multiplier par $i$ fait tourner le plan d'un quart de tour sans rien agrandir. Ce n'était pas une coïncidence propre à $i$ : c'est le comportement général de toute multiplication.
 
 ### Centrer la transformation ailleurs qu'en $O$
 
@@ -322,7 +322,7 @@ Soient $A$, $B$, $C$ trois points d'affixes $z_A$, $z_B$, $z_C$, avec $B\neq A$.
 
 $$w = \frac{z_C - z_A}{z_B - z_A}$$
 
-**Pourquoi ce rapport porte exactement l'information qu'on veut.** Le numérateur $z_C-z_A$ est l'affixe du vecteur $\vec{AC}$, le dénominateur $z_B-z_A$ est l'affixe de $\vec{AB}$. Par les règles du quotient (R3) :
+**Pourquoi ce rapport porte exactement l'information qu'on veut.** Le numérateur $z_C-z_A$ est l'affixe du vecteur $\vec{AC}$, le dénominateur $z_B-z_A$ est l'affixe de $\vec{AB}$. Par les règles du quotient (chapitre 4) :
 
 $$|w| = \frac{|z_C-z_A|}{|z_B-z_A|} = \frac{AC}{AB} \qquad \qquad \arg(w) = \arg(z_C-z_A) - \arg(z_B-z_A)\ [2\pi]$$
 
@@ -349,7 +349,7 @@ $$z_B - z_A = (1+i)-1 = i \qquad \qquad z_C - z_A = 2-1 = 1$$
 
 $$w = \frac{1}{i}$$
 
-**Pour calculer $\dfrac1i$, on utilise l'outil du R3 :** $\dfrac1i = \dfrac{\overline i}{i\overline i} = \dfrac{-i}{1} = -i$ (puisque $i\overline i = |i|^2=1$).
+**Pour calculer $\dfrac1i$, on utilise l'outil du chapitre 4 :** $\dfrac1i = \dfrac{\overline i}{i\overline i} = \dfrac{-i}{1} = -i$ (puisque $i\overline i = |i|^2=1$).
 
 $$w = -i$$
 

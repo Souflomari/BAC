@@ -76,7 +76,7 @@ $$x \star y = y \star x$$
 
 **Le mécanisme pour la vérifier sur une table finie :** échanger $x$ et $y$, c'est échanger la ligne et la colonne — donc échanger la case $(x,y)$ avec la case $(y,x)$, qui est sa réflexion par rapport à la **diagonale principale** du tableau. La loi est commutative si et seulement si la table entière est symétrique par rapport à cette diagonale.
 
-Regarde la table de $(\mathbb{Z}/4\mathbb{Z},+)$ construite au R1 : la case $(1,3)$ contient $0$, et sa réflexion, la case $(3,1)$, contient aussi $0$. Teste une autre paire : $(2,3)$ donne $1$, et $(3,2)$ donne aussi $1$. La table entière est symétrique — $+$ est commutative sur $\mathbb{Z}/4\mathbb{Z}$. Ce n'est pas surprenant : l'addition sur $\mathbb{Z}$ est déjà commutative, et cette propriété se transmet telle quelle à l'addition modulo $n$.
+Regarde la table de $(\mathbb{Z}/4\mathbb{Z},+)$ construite au chapitre 2 : la case $(1,3)$ contient $0$, et sa réflexion, la case $(3,1)$, contient aussi $0$. Teste une autre paire : $(2,3)$ donne $1$, et $(3,2)$ donne aussi $1$. La table entière est symétrique — $+$ est commutative sur $\mathbb{Z}/4\mathbb{Z}$. Ce n'est pas surprenant : l'addition sur $\mathbb{Z}$ est déjà commutative, et cette propriété se transmet telle quelle à l'addition modulo $n$.
 
 ### Associativité — ne se lit pas sur la table, elle se teste
 
@@ -178,20 +178,20 @@ Les quatre conditions comptent également. Il ne suffit pas d'en vérifier trois
 
 ### Exemple travaillé : vérifier que $(\mathbb{Z}/4\mathbb{Z}, +)$ est un groupe
 
-**Ce qu'on cherche et pourquoi ce geste :** passer les quatre axiomes en revue, un par un, en s'appuyant sur ce qu'on a déjà établi aux R1 et R2 — vérifier un groupe n'est jamais un acte de foi, c'est une liste de contrôle qu'on parcourt entièrement.
+**Ce qu'on cherche et pourquoi ce geste :** passer les quatre axiomes en revue, un par un, en s'appuyant sur ce qu'on a déjà établi aux chapitres 2 et 3 — vérifier un groupe n'est jamais un acte de foi, c'est une liste de contrôle qu'on parcourt entièrement.
 
-1. **Loi interne :** montré au R1 — toutes les cases de la table sont dans $\{0,1,2,3\}$. ✓
-2. **Associative :** montrée au R2 — héritée de l'associativité de $+$ sur $\mathbb{Z}$. ✓
-3. **Élément neutre :** montré au R2 — c'est $0$. ✓
-4. **Symétrique pour chaque élément :** montré au R2, et il faut vérifier les **quatre** éléments, pas seulement un ou deux : $0$ a pour symétrique $0$, $1$ a pour symétrique $3$, $2$ a pour symétrique $2$, $3$ a pour symétrique $1$. Chacun des quatre éléments a bien un symétrique. ✓
+1. **Loi interne :** montré au chapitre 2 — toutes les cases de la table sont dans $\{0,1,2,3\}$. ✓
+2. **Associative :** montrée au chapitre 3 — héritée de l'associativité de $+$ sur $\mathbb{Z}$. ✓
+3. **Élément neutre :** montré au chapitre 3 — c'est $0$. ✓
+4. **Symétrique pour chaque élément :** montré au chapitre 3, et il faut vérifier les **quatre** éléments, pas seulement un ou deux : $0$ a pour symétrique $0$, $1$ a pour symétrique $3$, $2$ a pour symétrique $2$, $3$ a pour symétrique $1$. Chacun des quatre éléments a bien un symétrique. ✓
 
 Les quatre conditions sont vérifiées : $(\mathbb{Z}/4\mathbb{Z}, +)$ **est un groupe**.
 
-**Retour à l'horloge.** Les heures d'une montre à $12$ graduations, munies de l'addition modulo $12$, forment exactement ce qu'on vient de vérifier ici pour $\mathbb{Z}/4\mathbb{Z}$, mais avec $n=12$ à la place de $n=4$ : un groupe. Voilà pourquoi, dès le R0, l'addition d'heures avait toutes les bonnes propriétés — ce n'était pas un hasard, c'était un groupe, comme n'importe quel $(\mathbb{Z}/n\mathbb{Z}, +)$.
+**Retour à l'horloge.** Les heures d'une montre à $12$ graduations, munies de l'addition modulo $12$, forment exactement ce qu'on vient de vérifier ici pour $\mathbb{Z}/4\mathbb{Z}$, mais avec $n=12$ à la place de $n=4$ : un groupe. Voilà pourquoi, dès le chapitre 1, l'addition d'heures avait toutes les bonnes propriétés — ce n'était pas un hasard, c'était un groupe, comme n'importe quel $(\mathbb{Z}/n\mathbb{Z}, +)$.
 
 ### Un second exemple : un groupe de symétries
 
-Le mot "symétrique", au sens algébrique du R2, n'a rien à voir a priori avec les symétries géométriques — mais un ensemble de transformations géométriques peut, lui aussi, former un groupe. Regardons.
+Le mot "symétrique", au sens algébrique du chapitre 3, n'a rien à voir a priori avec les symétries géométriques — mais un ensemble de transformations géométriques peut, lui aussi, former un groupe. Regardons.
 
 Prends un rectangle non carré, de sommets $A$, $B$, $C$, $D$ dans cet ordre (par exemple $A=(0,0)$, $B=(6,0)$, $C=(6,4)$, $D=(0,4)$ : $AB$ le côté long, $BC$ le côté court). Quelles transformations du plan laissent ce rectangle **globalement invariant** (elles peuvent permuter les sommets, mais le rectangle occupe à la fin exactement la même région du plan) ?
 
@@ -232,7 +232,7 @@ Tu viens de vérifier, deux fois, qu'un ensemble muni d'une loi est un groupe : 
 
 ### Un premier cas, sur une table déjà construite
 
-Reprends $(\mathbb{Z}/4\mathbb{Z},+)$ et sa table du R1, mais ne regarde que les deux éléments $H = \{0,2\}$. Combine-les entre eux, en lisant les cases correspondantes :
+Reprends $(\mathbb{Z}/4\mathbb{Z},+)$ et sa table du chapitre 2, mais ne regarde que les deux éléments $H = \{0,2\}$. Combine-les entre eux, en lisant les cases correspondantes :
 
 $$0+0=0, \qquad 0+2=2, \qquad 2+0=2, \qquad 2+2=0$$
 
@@ -249,7 +249,7 @@ Sur cette petite table, tout est là : la loi est interne (aucune case ne s'éch
 
 **Définition.** Soit $(E,\star)$ un groupe et $H$ une partie de $E$. On dit que $H$ est un **sous-groupe** de $(E,\star)$ lorsque $(H,\star)$ est **lui-même un groupe**, pour la même loi $\star$ restreinte à $H$.
 
-Rien de plus : "sous-groupe" ne désigne pas une structure nouvelle, c'est le mot qui dit "groupe, un cran plus bas". C'est pour ça que le geste te sera familier — c'est la liste de contrôle du R3, appliquée à $H$ au lieu de $E$.
+Rien de plus : "sous-groupe" ne désigne pas une structure nouvelle, c'est le mot qui dit "groupe, un cran plus bas". C'est pour ça que le geste te sera familier — c'est la liste de contrôle du chapitre 4, appliquée à $H$ au lieu de $E$.
 
 Mais cette liste, tu n'as pas à la repasser en entier, et c'est tout l'intérêt du chapitre. Regarde ce que $H$ reçoit **gratuitement** de $E$, et ce qu'il doit gagner lui-même :
 
@@ -313,9 +313,9 @@ Prends $(\mathbb{Z},+)$, qui est un groupe, et $H = \mathbb{N}$. Vérifie :
 - La stabilité : la somme de deux entiers naturels est un entier naturel. ✓
 - Les symétriques : le symétrique de $3$ pour $+$ est $-3$, et $-3 \notin \mathbb{N}$. ✗
 
-Deux conditions sur trois, et pourtant $\mathbb{N}$ n'est **pas** un sous-groupe de $(\mathbb{Z},+)$ — il suffit d'un seul élément dont le symétrique s'échappe. C'est exactement l'exigence du quatrième axiome du R3 : "**tout** élément possède un symétrique", jamais "certains éléments". Et c'est la condition qu'on oublie le plus, parce que la stabilité, elle, saute aux yeux.
+Deux conditions sur trois, et pourtant $\mathbb{N}$ n'est **pas** un sous-groupe de $(\mathbb{Z},+)$ — il suffit d'un seul élément dont le symétrique s'échappe. C'est exactement l'exigence du quatrième axiome du chapitre 4 : "**tout** élément possède un symétrique", jamais "certains éléments". Et c'est la condition qu'on oublie le plus, parce que la stabilité, elle, saute aux yeux.
 
-L'erreur inverse coûte moins cher mais se voit tout autant : repartir de zéro et rédiger une démonstration de l'associativité sur $H$ — le plus souvent en la testant sur un seul triplet, ce qui ne prouve rien (R2). L'associativité s'hérite ; le reste se vérifie.
+L'erreur inverse coûte moins cher mais se voit tout autant : repartir de zéro et rédiger une démonstration de l'associativité sur $H$ — le plus souvent en la testant sur un seul triplet, ce qui ne prouve rien (chapitre 3). L'associativité s'hérite ; le reste se vérifie.
 
 ### Ce que tu gagnes une fois le sous-groupe établi
 
@@ -331,9 +331,9 @@ Le mot n'est pas qu'une étiquette. Dès que $H$ est reconnu comme sous-groupe d
 
 $$\text{pour tous } x,y \in E, \qquad x \star y = y \star x$$
 
-**Le mécanisme pour le vérifier :** exactement celui du R2 — la table est symétrique par rapport à sa diagonale principale.
+**Le mécanisme pour le vérifier :** exactement celui du chapitre 3 — la table est symétrique par rapport à sa diagonale principale.
 
-Regarde les deux tables construites au R3. Celle de $(\mathbb{Z}/4\mathbb{Z}, +)$ est symétrique (déjà vérifié au R2). Celle du groupe des symétries du rectangle l'est aussi : compare, par exemple, la case $(s_h, r)$, qui contient $s_v$, et sa réflexion $(r, s_h)$, qui contient également $s_v$. Les deux groupes rencontrés jusqu'ici sont donc **abéliens**.
+Regarde les deux tables construites au chapitre 4. Celle de $(\mathbb{Z}/4\mathbb{Z}, +)$ est symétrique (déjà vérifié au chapitre 3). Celle du groupe des symétries du rectangle l'est aussi : compare, par exemple, la case $(s_h, r)$, qui contient $s_v$, et sa réflexion $(r, s_h)$, qui contient également $s_v$. Les deux groupes rencontrés jusqu'ici sont donc **abéliens**.
 
 ### Un contre-exemple : la composition n'est pas commutative en général
 
@@ -343,7 +343,7 @@ $$(f \circ g)(x) = f(g(x)) = f(2x) = 2x+1$$
 
 $$(g \circ f)(x) = g(f(x)) = g(x+1) = 2(x+1) = 2x+2$$
 
-Pour $x=0$ par exemple, $(f\circ g)(0) = 1$ alors que $(g \circ f)(0) = 2$ : les deux fonctions composées sont différentes. La composition de fonctions **n'est pas commutative** en général — même si elle reste toujours associative (fait admis au R3). Associativité et commutativité sont deux propriétés indépendantes : une loi peut avoir l'une sans l'autre. C'est précisément pour ça que "groupe commutatif" mérite son propre nom : ce n'est pas automatique dès qu'on a un groupe.
+Pour $x=0$ par exemple, $(f\circ g)(0) = 1$ alors que $(g \circ f)(0) = 2$ : les deux fonctions composées sont différentes. La composition de fonctions **n'est pas commutative** en général — même si elle reste toujours associative (fait admis au chapitre 4). Associativité et commutativité sont deux propriétés indépendantes : une loi peut avoir l'une sans l'autre. C'est précisément pour ça que "groupe commutatif" mérite son propre nom : ce n'est pas automatique dès qu'on a un groupe.
 
 ---
 
@@ -361,7 +361,7 @@ Un anneau met en jeu **deux** lois sur le même ensemble, notées en général $
 
 $$x \times (y+z) = x \times y + x \times z \qquad \text{et} \qquad (y+z) \times x = y \times x + z \times x$$
 
-Remarque la dissymétrie voulue entre les deux lois : $+$ doit satisfaire les quatre axiomes complets du groupe (et être commutative), alors que $\times$ n'a besoin que d'être associative et de bien s'articuler avec $+$ par la distributivité. Rien n'exige, à ce stade, que $\times$ ait un neutre pour tout le monde, ni que chaque élément ait un symétrique pour $\times$ — ce sont des exigences plus fortes, réservées à la structure suivante (R6).
+Remarque la dissymétrie voulue entre les deux lois : $+$ doit satisfaire les quatre axiomes complets du groupe (et être commutative), alors que $\times$ n'a besoin que d'être associative et de bien s'articuler avec $+$ par la distributivité. Rien n'exige, à ce stade, que $\times$ ait un neutre pour tout le monde, ni que chaque élément ait un symétrique pour $\times$ — ce sont des exigences plus fortes, réservées à la structure suivante (chapitre 9).
 
 ### Exemple travaillé : $(\mathbb{Z}, +, \times)$
 
@@ -386,8 +386,8 @@ Par exemple, $2 \times 3 = 6$, et $6$ laisse un reste de $2$ modulo $4$ : d'où 
 
 **Vérifier que c'est un anneau, axiome par axiome :**
 
-1. $(\mathbb{Z}/4\mathbb{Z}, +)$ est un groupe commutatif : déjà établi au R3. ✓
-2. $\times$ est associative sur $\mathbb{Z}/4\mathbb{Z}$ : héritée de l'associativité de $\times$ sur $\mathbb{Z}$, exactement comme pour $+$ au R2. ✓
+1. $(\mathbb{Z}/4\mathbb{Z}, +)$ est un groupe commutatif : déjà établi au chapitre 4. ✓
+2. $\times$ est associative sur $\mathbb{Z}/4\mathbb{Z}$ : héritée de l'associativité de $\times$ sur $\mathbb{Z}$, exactement comme pour $+$ au chapitre 3. ✓
 3. Distributivité, vérifiée sur un triplet : $2 \times (1+3) = 2 \times 0 = 0$ (car $1+3=4\equiv 0 \pmod 4$), et $2\times 1 + 2 \times 3 = 2+6=8 \equiv 0 \pmod 4$. Les deux membres valent $0$ : cohérent, pour la même raison d'héritage. ✓
 
 $(\mathbb{Z}/4\mathbb{Z}, +, \times)$ **est un anneau**.
@@ -404,11 +404,11 @@ $(\mathbb{Z}/4\mathbb{Z}, +, \times)$ **est un anneau**.
 
 Pour résoudre $(x-2)(x+3)=0$, tu utilises depuis des années une règle si familière qu'elle ne se dit même plus : un produit est nul seulement si l'un de ses facteurs l'est. Question : est-ce une conséquence des **axiomes de l'anneau**, ou une propriété particulière de $\mathbb{R}$ ?
 
-Regarde la table de $\times$ construite au R5 pour $(\mathbb{Z}/4\mathbb{Z},+,\times)$, à la case ligne $2$, colonne $2$ :
+Regarde la table de $\times$ construite au chapitre 7 pour $(\mathbb{Z}/4\mathbb{Z},+,\times)$, à la case ligne $2$, colonne $2$ :
 
 $$2 \times 2 = 4 \equiv 0 \pmod 4$$
 
-Deux facteurs valant $2$, donc non nuls, et un produit nul. La règle du collège est **fausse** dans cet anneau. Elle ne découle donc pas des trois axiomes du R5 : c'est une propriété supplémentaire, que certains anneaux possèdent et d'autres non. Elle a un nom.
+Deux facteurs valant $2$, donc non nuls, et un produit nul. La règle du collège est **fausse** dans cet anneau. Elle ne découle donc pas des trois axiomes du chapitre 7 : c'est une propriété supplémentaire, que certains anneaux possèdent et d'autres non. Elle a un nom.
 
 ### Les définitions
 
@@ -418,7 +418,7 @@ Deux facteurs valant $2$, donc non nuls, et un produit nul. La règle du collèg
 
 $$\text{pour tous } x,y \in E, \qquad x \times y = 0 \ \Longrightarrow\ x = 0 \ \text{ ou } \ y = 0$$
 
-Dans les énoncés d'examen, "intègre" arrive presque toujours accompagné de deux autres adjectifs. Un anneau est dit **unitaire** quand $\times$ possède un élément neutre, noté $1$, et **commutatif** quand $\times$ est commutative — ni l'un ni l'autre n'est exigé par la définition de base du R5, et c'est pour ça que l'énoncé prend la peine de les annoncer. "Anneau commutatif unitaire et intègre" est la formule complète que tu liras en tête de sujet à propos de $(\mathbb{Z},+,\times)$. Mais c'est bien le troisième mot qui fait tout le travail dans les questions.
+Dans les énoncés d'examen, "intègre" arrive presque toujours accompagné de deux autres adjectifs. Un anneau est dit **unitaire** quand $\times$ possède un élément neutre, noté $1$, et **commutatif** quand $\times$ est commutative — ni l'un ni l'autre n'est exigé par la définition de base du chapitre 7, et c'est pour ça que l'énoncé prend la peine de les annoncer. "Anneau commutatif unitaire et intègre" est la formule complète que tu liras en tête de sujet à propos de $(\mathbb{Z},+,\times)$. Mais c'est bien le troisième mot qui fait tout le travail dans les questions.
 
 Avec cette définition, deux exemples déjà rencontrés se rangent d'un coup :
 
@@ -429,7 +429,7 @@ Un anneau intègre n'est donc pas un anneau "meilleur" au sens vague : c'est un 
 
 ### Le geste : montrer qu'un anneau n'est pas intègre
 
-**Ce qu'on cherche et pourquoi ce geste :** l'intégrité est une propriété universelle ("pour tous $x,y$…"). Pour la **réfuter**, un seul couple suffit — exactement comme un seul contre-exemple a suffi, au R2, à casser l'associativité de la division. Il n'y a rien à démontrer en général : il faut **exhiber** deux éléments non nuls dont le produit est nul, et dire explicitement pourquoi chacun des deux est non nul.
+**Ce qu'on cherche et pourquoi ce geste :** l'intégrité est une propriété universelle ("pour tous $x,y$…"). Pour la **réfuter**, un seul couple suffit — exactement comme un seul contre-exemple a suffi, au chapitre 3, à casser l'associativité de la division. Il n'y a rien à démontrer en général : il faut **exhiber** deux éléments non nuls dont le produit est nul, et dire explicitement pourquoi chacun des deux est non nul.
 
 Dans $(M_2(\mathbb{R}),+,\times)$ :
 
@@ -443,13 +443,13 @@ Un mot sur la rédaction : "$M \neq O$" ne se dit pas "on le voit", ça se justi
 
 Ici, un exemple ne suffit plus : la propriété doit tenir pour **tous** les couples. Deux voies, et la première est presque toujours la bonne quand elle est disponible.
 
-**Voie 1 — l'héritage.** Si $E$ est contenu dans un anneau déjà connu comme intègre, muni des mêmes lois, alors $E$ est intègre sans rien de plus à faire : l'implication "$x \times y = 0 \Rightarrow x=0$ ou $y=0$" est vraie pour tous les éléments du grand ensemble, donc en particulier pour ceux de $E$. C'est le même argument d'héritage qu'au R2 pour l'associativité. Exemple : $A = \{a+b\sqrt2 \ /\ (a,b) \in \mathbb{Z}^2\}$ est contenu dans $\mathbb{R}$, où un produit de deux nombres non nuls n'est jamais nul — $A$ est intègre, en une ligne.
+**Voie 1 — l'héritage.** Si $E$ est contenu dans un anneau déjà connu comme intègre, muni des mêmes lois, alors $E$ est intègre sans rien de plus à faire : l'implication "$x \times y = 0 \Rightarrow x=0$ ou $y=0$" est vraie pour tous les éléments du grand ensemble, donc en particulier pour ceux de $E$. C'est le même argument d'héritage qu'au chapitre 3 pour l'associativité. Exemple : $A = \{a+b\sqrt2 \ /\ (a,b) \in \mathbb{Z}^2\}$ est contenu dans $\mathbb{R}$, où un produit de deux nombres non nuls n'est jamais nul — $A$ est intègre, en une ligne.
 
 **Voie 2 — quand l'héritage ne joue pas.** C'est le cas d'un ensemble de matrices : $M_2(\mathbb{R})$ n'étant pas lui-même intègre, il n'y a rien à hériter, et la démonstration doit être menée sur $E$. On part alors de l'hypothèse $M \times N = O$, avec $M$ et $N$ dans $E$, et on cherche à en tirer $M = O$ ou $N = O$ — le plus souvent en traduisant "être la matrice nulle" par une condition **numérique** sur les paramètres qui décrivent $E$, puis en raisonnant sur ces nombres, où le réflexe du collège, lui, est parfaitement légitime.
 
 ### L'erreur fréquente : garder les réflexes de $\mathbb{R}$ sans vérifier qu'on y a droit
 
-Résous $x^2 = 0$ dans $\mathbb{Z}/4\mathbb{Z}$. Le réflexe répond "$x = 0$, et c'est tout". La table du R5 dit autre chose : $2 \times 2 = 0$, donc $x=2$ est une seconde solution. Dans un anneau non intègre, une factorisation ne donne plus la liste complète des solutions — elle n'en donne que certaines.
+Résous $x^2 = 0$ dans $\mathbb{Z}/4\mathbb{Z}$. Le réflexe répond "$x = 0$, et c'est tout". La table du chapitre 7 dit autre chose : $2 \times 2 = 0$, donc $x=2$ est une seconde solution. Dans un anneau non intègre, une factorisation ne donne plus la liste complète des solutions — elle n'en donne que certaines.
 
 Deuxième réflexe à surveiller, le même en miroir : **simplifier par un facteur**. Toujours dans $\mathbb{Z}/4\mathbb{Z}$, lis la ligne du $2$ : $2 \times 1 = 2$ et $2 \times 3 = 2$. Les deux membres sont égaux, le facteur $2$ est non nul, et pourtant $1 \neq 3$ — on ne peut pas simplifier. Dans un anneau **intègre**, en revanche, on le peut, et la raison est exactement l'intégrité : de $a \times x = a \times y$ on tire $a \times (x - y) = 0$ par distributivité, donc, si $a \neq 0$, $x - y = 0$, c'est-à-dire $x = y$.
 
@@ -469,9 +469,9 @@ Maintenant, $(E,+)$ est un groupe : l'élément $x \times 0$ y possède un symé
 
 $$x' \times (x \times y) = x' \times 0 = 0$$
 
-L'associativité de $\times$ (axiome 2 du R5) permet de redéplacer les parenthèses : $x' \times (x \times y) = (x' \times x) \times y = 1 \times y = y$. Les deux calculs portent sur la même quantité, donc $y = 0$ — l'autre facteur était forcément nul.
+L'associativité de $\times$ (axiome 2 du chapitre 7) permet de redéplacer les parenthèses : $x' \times (x \times y) = (x' \times x) \times y = 1 \times y = y$. Les deux calculs portent sur la même quantité, donc $y = 0$ — l'autre facteur était forcément nul.
 
-La conséquence tombe toute seule, et c'est elle que les sujets exploitent. Le chapitre suivant (R6) demande, pour un **corps**, que *tout* élément non nul possède un symétrique pour $\times$. Si un seul couple d'éléments non nuls de $E$ a un produit nul, alors aucun des deux n'est inversible, et l'exigence échoue : **exhiber un diviseur de zéro, c'est réfuter le corps d'un seul coup**, sans avoir à examiner les autres éléments un par un.
+La conséquence tombe toute seule, et c'est elle que les sujets exploitent. Le chapitre suivant (chapitre 9) demande, pour un **corps**, que *tout* élément non nul possède un symétrique pour $\times$. Si un seul couple d'éléments non nuls de $E$ a un produit nul, alors aucun des deux n'est inversible, et l'exigence échoue : **exhiber un diviseur de zéro, c'est réfuter le corps d'un seul coup**, sans avoir à examiner les autres éléments un par un.
 
 Attention à ne pas retourner l'implication. Tout corps est intègre — c'est ce qu'on vient de démontrer — mais un anneau intègre n'est pas pour autant un corps : $(\mathbb{Z},+,\times)$ est intègre et n'est pas un corps. Entre l'anneau et le corps, l'intégrité est un barreau intermédiaire : plus exigeante que l'anneau, moins exigeante que le corps.
 
@@ -490,7 +490,7 @@ Un corps est donc un anneau où la seconde loi, $\times$, se rapproche presque d
 
 ### Exemple travaillé : $(\mathbb{Q}, +, \times)$ est un corps
 
-$(\mathbb{Q}, +, \times)$ est déjà un anneau (mêmes vérifications que pour $\mathbb{Z}$ au R5, héritées des propriétés connues de $+$ et $\times$ sur $\mathbb{Q}$), et $\times$ y est commutative. Reste à vérifier l'exigence supplémentaire : **tout** rationnel non nul a-t-il un symétrique pour $\times$ ?
+$(\mathbb{Q}, +, \times)$ est déjà un anneau (mêmes vérifications que pour $\mathbb{Z}$ au chapitre 7, héritées des propriétés connues de $+$ et $\times$ sur $\mathbb{Q}$), et $\times$ y est commutative. Reste à vérifier l'exigence supplémentaire : **tout** rationnel non nul a-t-il un symétrique pour $\times$ ?
 
 Prends un rationnel non nul quelconque $\frac{a}{b}$ (avec $a \neq 0$). Son symétrique candidat est $\frac{b}{a}$ — qui est bien un rationnel, puisque $a \neq 0$. Vérifie :
 
@@ -500,9 +500,9 @@ Cette construction marche pour **n'importe quel** rationnel non nul, pas seuleme
 
 ### Le contre-exemple qui sépare anneau et corps : $(\mathbb{Z}, +, \times)$ n'est pas un corps
 
-$(\mathbb{Z}, +, \times)$ est un anneau (R5) et $\times$ y est commutative. Mais prends $2 \in \mathbb{Z}$, non nul. Existe-t-il un entier $x$ tel que $2x=1$ ? Le seul candidat serait $x=\frac{1}{2}$, qui n'est **pas** un entier — le symétrique devrait appartenir à $\mathbb{Z}$ lui-même, pas à un ensemble plus grand. Donc $2$ n'a pas de symétrique pour $\times$ **dans $\mathbb{Z}$** : $(\mathbb{Z}, +, \times)$ **est un anneau, mais n'est pas un corps**.
+$(\mathbb{Z}, +, \times)$ est un anneau (chapitre 7) et $\times$ y est commutative. Mais prends $2 \in \mathbb{Z}$, non nul. Existe-t-il un entier $x$ tel que $2x=1$ ? Le seul candidat serait $x=\frac{1}{2}$, qui n'est **pas** un entier — le symétrique devrait appartenir à $\mathbb{Z}$ lui-même, pas à un ensemble plus grand. Donc $2$ n'a pas de symétrique pour $\times$ **dans $\mathbb{Z}$** : $(\mathbb{Z}, +, \times)$ **est un anneau, mais n'est pas un corps**.
 
-C'est exactement la même observation que celle faite à la fin du R5 pour $(\mathbb{Z}/4\mathbb{Z}, +, \times)$ : l'élément $2$ y était déjà sans symétrique pour $\times$. Un anneau devient un corps seulement quand **tous** les éléments non nuls, sans exception, ont un symétrique pour la seconde loi — pas seulement certains d'entre eux.
+C'est exactement la même observation que celle faite à la fin du chapitre 7 pour $(\mathbb{Z}/4\mathbb{Z}, +, \times)$ : l'élément $2$ y était déjà sans symétrique pour $\times$. Un anneau devient un corps seulement quand **tous** les éléments non nuls, sans exception, ont un symétrique pour la seconde loi — pas seulement certains d'entre eux.
 
 ### Synthèse
 
@@ -523,7 +523,7 @@ La ligne qui sépare l'anneau du corps tient en une seule exigence supplémentai
 
 ## R7 — Isomorphisme et exercices de type bac
 
-Tu as maintenant tout l'outillage du chapitre : reconnaître une loi de composition interne (R1), tester ses propriétés (R2), et cocher les axiomes qui font d'un ensemble un groupe, un anneau ou un corps (R3 à R6). Il reste un dernier geste, celui qui revient presque chaque année à l'examen national des Sciences Mathématiques : montrer que deux structures d'apparence différente — l'une habillée en nombres complexes, l'autre en matrices — sont en réalité la même.
+Tu as maintenant tout l'outillage du chapitre : reconnaître une loi de composition interne (chapitre 2), tester ses propriétés (chapitre 3), et cocher les axiomes qui font d'un ensemble un groupe, un anneau ou un corps (chapitres 4 à 9). Il reste un dernier geste, celui qui revient presque chaque année à l'examen national des Sciences Mathématiques : montrer que deux structures d'apparence différente — l'une habillée en nombres complexes, l'autre en matrices — sont en réalité la même.
 
 ### Un pont entre deux structures : l'isomorphisme
 

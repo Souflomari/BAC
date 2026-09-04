@@ -75,7 +75,7 @@ Comment savoir, concrètement, si une transformation est totale ou limitée ? Le
 
 ### Exemple travaillé : appliquer le test aux deux mélanges déjà rencontrés
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on veut vérifier, avec un test concret et non avec une impression, laquelle des deux réactions du rung précédent est totale et laquelle est limitée.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on veut vérifier, avec un test concret et non avec une impression, laquelle des deux réactions du chapitre précédent est totale et laquelle est limitée.
 
 **Le mélange acide éthanoïque + éthanol.** Une fois que l'odeur ne change plus, on peut tester la présence d'acide restant (par exemple avec un indicateur coloré, ou en dosant précisément la quantité d'acide encore présente) : le test révèle systématiquement une quantité détectable d'acide éthanoïque, et une quantité détectable d'éthanol - même après un temps très long. Les deux réactifs coexistent avec les deux produits. Conclusion : cette transformation est **limitée**.
 
@@ -95,7 +95,7 @@ Regarde à nouveau le mélange acide + alcool : une quantité tout à fait notab
 
 ### Deux expériences miroir
 
-Pour une transformation non totale, les deux sens - direct et inverse - sont toujours chimiquement possibles en même temps, comme tu l'as vu au rung 1. Mais lequel des deux domine, à un instant donné, dans un mélange donné ? Ça dépend de ce qu'on a mis dans le ballon au départ - pas d'une propriété fixe de la réaction elle-même.
+Pour une transformation non totale, les deux sens - direct et inverse - sont toujours chimiquement possibles en même temps, comme tu l'as vu au chapitre 1. Mais lequel des deux domine, à un instant donné, dans un mélange donné ? Ça dépend de ce qu'on a mis dans le ballon au départ - pas d'une propriété fixe de la réaction elle-même.
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on va comparer deux expériences sur exactement la même réaction, en ne changeant qu'une chose - la composition du mélange au tout début - pour voir si le sens observé change avec elle.
 

@@ -81,7 +81,7 @@ La loi des mailles donne, à chaque instant :
 
 $$E = R_0 i + u_{bobine}$$
 
-On remplace $u_{bobine}$ par son expression établie en R1 :
+On remplace $u_{bobine}$ par son expression établie au chapitre 2 :
 
 $$E = R_0 i + ri + L\frac{di}{dt}$$
 
@@ -131,7 +131,7 @@ Les deux termes en $e^{-t/\tau}$ s'annulent exactement, et il reste $RI_{max} = 
 
 $$i(t) = I_{max}\left(1 - e^{-t/\tau}\right), \qquad I_{max} = \frac{E}{R}, \qquad \tau = \frac{L}{R}$$
 
-À $t = 0$ : $i(0) = I_{max}(1-1) = 0$. Le courant part bien de zéro — continu, comme R1 l'imposait.
+À $t = 0$ : $i(0) = I_{max}(1-1) = 0$. Le courant part bien de zéro — continu, comme le chapitre 2 l'imposait.
 
 Quand $t$ devient grand ($t \gg \tau$) : $e^{-t/\tau} \to 0$, donc $i(t) \to I_{max}$. Le courant tend vers sa valeur de régime permanent $I_{max} = E/R$, sans jamais la dépasser ni sauter jusqu'à elle.
 
@@ -159,7 +159,7 @@ $$\tau = \frac{L}{R} = \frac{0{,}3}{60} = 5\times10^{-3}\ \text{s} = 5\ \text{ms
 
 $$i(\tau) = I_{max}\left(1 - e^{-1}\right) \approx 0{,}1 \times 0{,}632 \approx 0{,}0632\ \text{A} \approx 63\ \text{mA}$$
 
-On garde ces valeurs — $R = 60\ \Omega$, $L = 0{,}3\ \text{H}$, $I_{max} = 100\ \text{mA}$, $\tau = 5\ \text{ms}$ — elles reviendront dans les rungs suivants.
+On garde ces valeurs — $R = 60\ \Omega$, $L = 0{,}3\ \text{H}$, $I_{max} = 100\ \text{mA}$, $\tau = 5\ \text{ms}$ — elles reviendront dans les chapitres suivants.
 
 Vérifie d'abord que tu distingues bien l'instant de la fermeture du régime permanent.
 
@@ -181,7 +181,7 @@ Comme pour toute constante de temps, on retient une règle pratique : au bout d'
 
 ### D'où vient la formule, et pourquoi cette dimension
 
-$\tau = L/R$ n'est pas un choix arbitraire : c'est exactement la combinaison qui a permis, dans la vérification de R2, aux deux termes exponentiels de s'annuler. Un autre choix de $\tau$ aurait laissé un reste non nul dans l'équation différentielle.
+$\tau = L/R$ n'est pas un choix arbitraire : c'est exactement la combinaison qui a permis, dans la vérification du chapitre 3, aux deux termes exponentiels de s'annuler. Un autre choix de $\tau$ aurait laissé un reste non nul dans l'équation différentielle.
 
 Vérifions que cette combinaison a bien la dimension d'un temps. On isole le terme purement inductif de la relation caractéristique de la bobine, $u_L = L\dfrac{di}{dt}$, d'où $L = \dfrac{u_L}{di/dt}$ : l'inductance s'exprime donc en volt (unité de $u_L$) divisé par un courant divisé par un temps, c'est-à-dire en volt-seconde par ampère.
 
@@ -202,11 +202,11 @@ Deux méthodes pratiques, aux résultats équivalents, pour mesurer $\tau$ sur u
 
 ### Exemple numérique
 
-On reprend le circuit de R2 : $R = 60\ \Omega$, $L = 0{,}3\ \text{H}$, donc $\tau = 5\ \text{ms}$ et $I_{max} = 100\ \text{mA}$.
+On reprend le circuit du chapitre 3 : $R = 60\ \Omega$, $L = 0{,}3\ \text{H}$, donc $\tau = 5\ \text{ms}$ et $I_{max} = 100\ \text{mA}$.
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique la méthode des 63 % pour retrouver, sur un oscillogramme, une valeur qu'on a déjà calculée exactement en R2 — c'est ce recoupement qui valide la méthode graphique.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on applique la méthode des 63 % pour retrouver, sur un oscillogramme, une valeur qu'on a déjà calculée exactement au chapitre 3 — c'est ce recoupement qui valide la méthode graphique.
 
-Par la méthode des 63 % : à $t = 5\ \text{ms}$, on doit lire $i \approx 0{,}63 \times 100 = 63\ \text{mA}$ sur l'oscillogramme — cohérent avec le calcul exact fait en R2 ($\approx 63\ \text{mA}$).
+Par la méthode des 63 % : à $t = 5\ \text{ms}$, on doit lire $i \approx 0{,}63 \times 100 = 63\ \text{mA}$ sur l'oscillogramme — cohérent avec le calcul exact fait au chapitre 3 ($\approx 63\ \text{mA}$).
 
 Le régime permanent est pratiquement atteint à $t \approx 5\tau = 25\ \text{ms}$.
 
@@ -214,7 +214,7 @@ Vérifie ta compréhension de la constante de temps.
 
 ### Une troisième lecture : la droite $\dfrac{di}{dt} = f(i)$
 
-Les deux méthodes précédentes lisent le temps en abscisse. Un sujet peut te donner une courbe d'un autre genre : la **dérivée** $\dfrac{di}{dt}$ portée en fonction de $i$, sans aucun axe de temps. La bonne réaction n'est pas de chercher $\tau$ à l'œil, c'est de relire l'équation différentielle de R2, qui donne la réponse d'avance.
+Les deux méthodes précédentes lisent le temps en abscisse. Un sujet peut te donner une courbe d'un autre genre : la **dérivée** $\dfrac{di}{dt}$ portée en fonction de $i$, sans aucun axe de temps. La bonne réaction n'est pas de chercher $\tau$ à l'œil, c'est de relire l'équation différentielle du chapitre 3, qui donne la réponse d'avance.
 
 Reprends-la et isole la dérivée :
 
@@ -230,13 +230,13 @@ C'est une **fonction affine** de $i$. Si l'on porte $\dfrac{di}{dt}$ en ordonné
 
 Deux lectures suffisent donc à identifier complètement le circuit. Et note ce que cette méthode a de mieux que les deux autres : elle donne $L$ et $R+r$ **séparément**, là où les 63 % et la tangente ne donnent que leur quotient $\tau = L/(R+r)$.
 
-*Le piège nommé de cette lecture :* prendre la pente pour $\tau$ au lieu de $-\dfrac{1}{\tau}$, ou en perdre le signe. Le contrôle qui tranche : une pente **positive** décrirait un courant qui s'établit de plus en plus vite à mesure qu'il monte — l'inverse exact du mécanisme d'inertie électrique de R1.
+*Le piège nommé de cette lecture :* prendre la pente pour $\tau$ au lieu de $-\dfrac{1}{\tau}$, ou en perdre le signe. Le contrôle qui tranche : une pente **positive** décrirait un courant qui s'établit de plus en plus vite à mesure qu'il monte — l'inverse exact du mécanisme d'inertie électrique du chapitre 2.
 
 ### La rupture du courant : ce qui se passe quand on OUVRE l'interrupteur
 
 Tout ce qui précède décrit l'**établissement** : on ferme l'interrupteur, le courant monte. Un sujet demande aussi, très souvent, ce qui se passe à la **rupture** — quand on rouvre. C'est le même mécanisme, pris par l'autre bout, et il produit un phénomène spectaculaire qu'il faut savoir expliquer.
 
-**Le fait de départ, c'est celui de R1.** Une bobine s'oppose aux **variations** du courant qui la traverse. À la fermeture, elle freinait la montée ; à l'ouverture, elle s'oppose à la chute — et cette fois elle a de quoi le faire, puisqu'elle a stocké de l'énergie $E_L = \frac{1}{2}Li^2$ (rung 4 ci-après).
+**Le fait de départ, c'est celui du chapitre 2.** Une bobine s'oppose aux **variations** du courant qui la traverse. À la fermeture, elle freinait la montée ; à l'ouverture, elle s'oppose à la chute — et cette fois elle a de quoi le faire, puisqu'elle a stocké de l'énergie $E_L = \frac{1}{2}Li^2$ (chapitre 4 ci-après).
 
 **Le problème que cela pose.** Si l'on ouvrait brutalement le circuit, le courant devrait passer de $I_{max}$ à $0$ en un temps quasi nul. La tension aux bornes de la bobine, $u = L\dfrac{di}{dt}$, deviendrait alors **énorme** en valeur absolue — c'est l'étincelle qu'on voit jaillir à l'interrupteur, et c'est ce qui détruit les composants d'un montage réel.
 
@@ -250,7 +250,7 @@ où $R'$ est la résistance totale de la maille de secours (la résistance $r$ d
 
 $$i(t) = I_{max}\,e^{-t/\tau'} \qquad\text{avec}\qquad \tau' = \frac{L}{R'}$$
 
-partant de $I_{max}$ — car **le courant dans la bobine est continu** : sa valeur juste après l'ouverture est exactement celle qu'il avait juste avant. C'est le point qui décide de tout, et c'est encore R1.
+partant de $I_{max}$ — car **le courant dans la bobine est continu** : sa valeur juste après l'ouverture est exactement celle qu'il avait juste avant. C'est le point qui décide de tout, et c'est encore le chapitre 2.
 
 *Le piège nommé :* écrire $i(0^+) = 0$ « puisqu'on a ouvert l'interrupteur ». Non — c'est le courant dans la **branche du générateur** qui s'annule ; celui de la bobine, lui, ne peut pas sauter, et il vaut encore $I_{max}$ à cet instant. Second piège : réutiliser $\tau = L/(R+r)$ de l'établissement. La maille de rupture n'a pas la même résistance totale que celle de l'établissement, donc pas la même constante de temps.
 
@@ -287,7 +287,7 @@ Cette énergie est stockée sous forme **magnétique** — dans le champ créé 
 
 ### Exemple numérique
 
-Toujours avec $L = 0{,}3\ \text{H}$ et $I_{max} = 100\ \text{mA} = 0{,}1\ \text{A}$ (le circuit de R2-R3), une fois le régime permanent atteint :
+Toujours avec $L = 0{,}3\ \text{H}$ et $I_{max} = 100\ \text{mA} = 0{,}1\ \text{A}$ (le circuit des chapitres 3 et 4), une fois le régime permanent atteint :
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on applique directement $E_L = \frac{1}{2}Li^2$ avec la valeur finale du courant, puisque c'est l'énergie stockée en régime permanent qu'on veut — pas une valeur instantanée pendant la phase transitoire.
 

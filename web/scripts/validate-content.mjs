@@ -211,6 +211,51 @@ for (const dir of dirs) {
     }
   }
 
+  // ── LES CODES DE BARREAU NE SORTENT PAS DANS LA PROSE NON PLUS ───────────
+  //
+  // Même porte que celle des figures (plus bas), appliquée au texte que
+  // l'élève lit. Un « R3 » désigne une section dont il ne voit JAMAIS le
+  // code : LessonRenderer retire le préfixe « R<n> — » des titres, et
+  // chapters.ts fait de même pour le rail. Ce qu'il VOIT, c'est le NUMÉRO du
+  // chapitre — dans le rail (« 3 · Établir l'équation »), dans la position
+  // (« Chapitre 3 / 11 ») et dans l'URL (?chapitre=3).
+  //
+  // Le mot anglais « rung » tombe sous la même règle : c'est du vocabulaire
+  // de rédaction, il ne dit rien à un élève qui lit en français, et le mot
+  // juste — celui de l'interface — est « chapitre ».
+  //
+  // Mesuré le 2026-09-04 avant la campagne : 1 122 codes et 252 « rung » dans
+  // la prose visible de 56 leçons. La réécriture (scripts/renvois-barreaux.py)
+  // les a tous portés vers un numéro de chapitre CALCULÉ à partir de la leçon
+  // elle-même — jamais deviné. Cette porte est ce qui empêche le retour.
+  //
+  // HORS CHAMP, et c'est voulu : les TITRES `## R<n> — …` (le préfixe porte
+  // data-rung et attache les items du chapitre ; il est retiré au rendu), les
+  // COMMENTAIRES d'auteur et les blocs de code. C'est là que l'information
+  // « ce passage sert le R2 » doit vivre.
+  {
+    const visible = md
+      .replace(/<!--[\s\S]*?-->/g, "")
+      .replace(/```[\s\S]*?```/g, "")
+      .split("\n")
+      .filter((l) => !/^#{2,6}\s/.test(l))
+      .join("\n");
+    const codes = [...new Set(visible.match(/\bR\d+\b/g) ?? [])];
+    const rungs = visible.match(/\brungs?\b/gi) ?? [];
+    if (codes.length || rungs.length) {
+      const quoi = [
+        codes.length ? `code(s) de barreau ${codes.slice(0, 5).join(", ")}` : null,
+        rungs.length ? `${rungs.length} fois le mot « rung »` : null,
+      ].filter(Boolean).join(" et ");
+      console.error(
+        `  ✗ ${dir}: lesson.md → ${quoi} dans la prose visible — ` +
+          `l'élève ne voit jamais ces codes ni ce mot. Renvoie au NUMÉRO du chapitre ` +
+          `(« au chapitre 4 »), qu'il lit dans le rail et dans « Chapitre n / N ».`
+      );
+      dirFail++;
+    }
+  }
+
   // Parse the YAML sidecars once (also used for marker id-resolution).
   const yamlIds = {}; // filename → Set of ids
   const yamlDocs = {}; // filename → parsed doc (absent if missing/parse-failed)

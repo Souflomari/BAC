@@ -93,7 +93,7 @@ $\tau = RC$ est donc le temps caractéristique de ce ralentissement progressif �
 
 ## R2 — Résoudre l'équation : poser la solution, la vérifier, en déduire $i(t)$
 
-On a établi en R1 l'équation qui gouverne la charge :
+On a établi au chapitre 2 l'équation qui gouverne la charge :
 
 $$RC\frac{du_C}{dt} + u_C = E$$
 
@@ -137,7 +137,7 @@ Pour que ce membre de gauche soit égal à $E$ **à chaque instant**, il faut qu
 
 $$\frac{RC}{\tau}\,E\,e^{-t/\tau} - E\,e^{-t/\tau} = 0 \implies \frac{RC}{\tau} = 1 \implies \tau = RC$$
 
-Et alors il reste tout juste $E = E$. L'équation est vérifiée, **quel que soit $t$** — mais seulement si $\tau = RC$. Si on avait choisi un autre $\tau$, le résidu exponentiel ne se serait pas annulé et l'exponentielle n'aurait pas été solution. L'hypothèse est confirmée, et la vérification vient de nous livrer gratuitement la valeur de la constante de temps : c'est exactement le groupement $RC$ qu'on avait deviné en R1.
+Et alors il reste tout juste $E = E$. L'équation est vérifiée, **quel que soit $t$** — mais seulement si $\tau = RC$. Si on avait choisi un autre $\tau$, le résidu exponentiel ne se serait pas annulé et l'exponentielle n'aurait pas été solution. L'hypothèse est confirmée, et la vérification vient de nous livrer gratuitement la valeur de la constante de temps : c'est exactement le groupement $RC$ qu'on avait deviné au chapitre 2.
 
 $$\boxed{u_C(t) = E\left(1 - e^{-t/\tau}\right), \qquad \tau = RC}$$
 
@@ -151,7 +151,7 @@ Lisons cette solution, valeur par valeur :
 - Quand $t$ devient grand ($t \gg \tau$) : $e^{-t/\tau} \to 0$, donc $u_C(t) \to E$. La tension tend vers $E$ sans jamais la dépasser : c'est le **régime permanent**, condensateur chargé.
 - Entre les deux, la montée est **rapide au début, puis de plus en plus lente** — l'approche qui décélère, jamais un saut, jamais une droite.
 
-Maintenant on peut donner à $\tau$ le sens quantitatif promis en R1. À l'instant $t = \tau$ :
+Maintenant on peut donner à $\tau$ le sens quantitatif promis au chapitre 2. À l'instant $t = \tau$ :
 
 $$u_C(\tau) = E\left(1 - e^{-1}\right) \approx E \times 0{,}63$$
 
@@ -159,7 +159,7 @@ Au bout d'une constante de temps, le condensateur a franchi **63 %** du chemin v
 
 $$u_C(5\tau) = E\left(1 - e^{-5}\right) \approx E \times 0{,}993$$
 
-soit plus de **99 %** : en pratique, on considère la charge terminée et le régime permanent atteint au bout de $\approx 5\tau$. Voilà la réponse exacte à la question laissée ouverte en R1 : $\tau$ n'est pas l'instant où « ça s'arrête » (ça ne s'arrête jamais tout à fait), c'est l'échelle qui règle toute la montée.
+soit plus de **99 %** : en pratique, on considère la charge terminée et le régime permanent atteint au bout de $\approx 5\tau$. Voilà la réponse exacte à la question laissée ouverte au chapitre 2 : $\tau$ n'est pas l'instant où « ça s'arrête » (ça ne s'arrête jamais tout à fait), c'est l'échelle qui règle toute la montée.
 
 [[figure:uc-charge]]
 
@@ -208,7 +208,7 @@ Et le courant au même instant :
 
 $$i(\tau) = \frac{E}{R}\,e^{-1} \approx 10 \times 0{,}37 = 3{,}7\ \text{mA}$$
 
-La charge est pratiquement terminée à $t \approx 5\tau = 5{,}0\ \text{ms}$ : à cet instant $u_C \approx 10\ \text{V}$ et $i \approx 0$. On garde ces valeurs — $\tau = 1{,}0\ \text{ms}$, $i(0^+) = 10\ \text{mA}$ — elles reviennent dans les rungs suivants.
+La charge est pratiquement terminée à $t \approx 5\tau = 5{,}0\ \text{ms}$ : à cet instant $u_C \approx 10\ \text{V}$ et $i \approx 0$. On garde ces valeurs — $\tau = 1{,}0\ \text{ms}$, $i(0^+) = 10\ \text{mA}$ — elles reviennent dans les chapitres suivants.
 
 ---
 
@@ -218,13 +218,13 @@ On sait maintenant que $\tau = RC$ règle toute la charge. Mais dans un TP, on n
 
 ### La méthode des 63 %
 
-On relève d'abord $E$ : c'est la valeur de l'asymptote horizontale, la tension vers laquelle la courbe se stabilise en régime permanent. On calcule $0{,}63 \times E$, on cherche l'instant où $u_C(t)$ atteint cette valeur — et cet instant **est** $\tau$. C'est la traduction directe de $u_C(\tau) = E(1 - e^{-1}) \approx 0{,}63\,E$ qu'on a établie en R2.
+On relève d'abord $E$ : c'est la valeur de l'asymptote horizontale, la tension vers laquelle la courbe se stabilise en régime permanent. On calcule $0{,}63 \times E$, on cherche l'instant où $u_C(t)$ atteint cette valeur — et cet instant **est** $\tau$. C'est la traduction directe de $u_C(\tau) = E(1 - e^{-1}) \approx 0{,}63\,E$ qu'on a établie au chapitre 3.
 
 ### La méthode de la tangente à l'origine
 
 On trace la tangente à la courbe $u_C(t)$ au point $t = 0$. Cette tangente coupe l'asymptote horizontale $u_C = E$ en un point dont l'abscisse est exactement $t = \tau$.
 
-D'où vient cette propriété ? La pente de $u_C$ à l'origine se lit sur la dérivée calculée en R2 :
+D'où vient cette propriété ? La pente de $u_C$ à l'origine se lit sur la dérivée calculée au chapitre 3 :
 
 $$\frac{du_C}{dt}(0) = \frac{E}{\tau}\,e^{0} = \frac{E}{\tau}$$
 
@@ -234,17 +234,17 @@ Une droite qui part de $0$ avec cette pente atteint la hauteur $E$ après une du
 
 ### Exemple de lecture
 
-Reprenons le circuit de R2 : $R = 1{,}0\ \text{k}\Omega$, $C = 1{,}0\ \mu\text{F}$, donc on attend $\tau = 1{,}0\ \text{ms}$ et une asymptote à $E = 10\ \text{V}$.
+Reprenons le circuit du chapitre 3 : $R = 1{,}0\ \text{k}\Omega$, $C = 1{,}0\ \mu\text{F}$, donc on attend $\tau = 1{,}0\ \text{ms}$ et une asymptote à $E = 10\ \text{V}$.
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on retrouve, sur la courbe, une valeur qu'on a déjà calculée exactement — ce recoupement valide la lecture graphique.
 
-Par la méthode des 63 % : à $t = 1{,}0\ \text{ms}$, on doit lire $u_C \approx 0{,}63 \times 10 = 6{,}3\ \text{V}$ sur l'oscillogramme — cohérent avec le calcul de R2. Par la tangente : la droite tracée en $t=0$ coupe l'asymptote $u_C = 10\ \text{V}$ à l'abscisse $t = 1{,}0\ \text{ms}$. Les deux méthodes donnent le même $\tau$, et de $\tau = RC$ on remonterait à $C$ (ou à $R$) si l'une des deux était inconnue.
+Par la méthode des 63 % : à $t = 1{,}0\ \text{ms}$, on doit lire $u_C \approx 0{,}63 \times 10 = 6{,}3\ \text{V}$ sur l'oscillogramme — cohérent avec le calcul du chapitre 3. Par la tangente : la droite tracée en $t=0$ coupe l'asymptote $u_C = 10\ \text{V}$ à l'abscisse $t = 1{,}0\ \text{ms}$. Les deux méthodes donnent le même $\tau$, et de $\tau = RC$ on remonterait à $C$ (ou à $R$) si l'une des deux était inconnue.
 
 Et si on refait l'expérience en **augmentant $R$** (ou $C$), même générateur : l'asymptote reste à $E = 10\ \text{V}$ — la valeur finale ne dépend que de $E$ — mais la montée est plus lente, $\tau$ plus grand. C'est $\tau = RC$ qui règle la vitesse, pas la hauteur.
 
 ### Une troisième lecture : la droite $\dfrac{du_C}{dt} = f(u_C)$
 
-Les deux méthodes précédentes lisent le temps en abscisse. Un sujet peut te donner une courbe d'un tout autre genre : la **dérivée** $\dfrac{du_C}{dt}$ portée en fonction de $u_C$ — sans aucun axe de temps. La bonne réaction n'est pas de chercher $\tau$ à l'œil, c'est de relire l'équation différentielle de R1, qui donne la réponse d'avance.
+Les deux méthodes précédentes lisent le temps en abscisse. Un sujet peut te donner une courbe d'un tout autre genre : la **dérivée** $\dfrac{du_C}{dt}$ portée en fonction de $u_C$ — sans aucun axe de temps. La bonne réaction n'est pas de chercher $\tau$ à l'œil, c'est de relire l'équation différentielle du chapitre 2, qui donne la réponse d'avance.
 
 Reprends-la et isole la dérivée :
 
@@ -260,7 +260,7 @@ Lis cette écriture pour ce qu'elle est : une **fonction affine** de $u_C$. Si l
 
 De n'importe lequel des trois on remonte à $\tau$, puis à $C$ par $\tau = RC$. La pente est la lecture la plus sûre, parce qu'elle s'appuie sur toute la longueur de la droite au lieu d'un seul point.
 
-*Le piège nommé de cette lecture :* prendre la pente pour $\tau$ au lieu de $-\dfrac{1}{\tau}$, ou en oublier le signe. Le contrôle qui tranche : une pente **positive** décrirait un condensateur qui se charge de plus en plus vite à mesure qu'il se remplit — l'inverse exact du mécanisme établi en R1.
+*Le piège nommé de cette lecture :* prendre la pente pour $\tau$ au lieu de $-\dfrac{1}{\tau}$, ou en oublier le signe. Le contrôle qui tranche : une pente **positive** décrirait un condensateur qui se charge de plus en plus vite à mesure qu'il se remplit — l'inverse exact du mécanisme établi au chapitre 2.
 
 ### Deux condensateurs en parallèle : une seule capacité équivalente
 
@@ -298,7 +298,7 @@ Cette énergie est stockée sous forme **électrique**, dans le champ entre les 
 
 $$E_C = \frac{1}{2}CE^2 = \frac{1}{2}\times 1{,}0\times10^{-6}\times 10^2 = 5{,}0\times10^{-5}\ \text{J} = 50\ \mu\text{J}$$
 
-(avec le circuit de R2, $C = 1{,}0\ \mu\text{F}$, $E = 10\ \text{V}$).
+(avec le circuit du chapitre 3, $C = 1{,}0\ \mu\text{F}$, $E = 10\ \text{V}$).
 
 ### Et si on décharge ?
 

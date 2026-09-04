@@ -53,7 +53,7 @@ Quand la réaction s'y prête, on préfère des méthodes physiques : elles mesu
 
 La réaction $S_2O_8^{2-} + 2I^- \rightarrow 2SO_4^{2-} + I_2$ produit du diiode $I_2$, une espèce colorée — c'est exactement la teinte jaune-brune que tu as déjà rencontrée. C'est donc un candidat naturel pour la spectrophotométrie : au lieu de se contenter d'observer la couleur à l'oeil pour chronométrer une fin de réaction, on mesure précisément l'absorbance de la solution minute après minute, et on en déduit la concentration de diiode formé à chaque instant. (La conductimétrie fonctionnerait aussi, dans son principe, puisque des ions sont consommés et formés dans cette réaction — mais on garde ici la spectrophotométrie, qui exploite directement la teinte déjà observée.)
 
-C'est cette mesure — l'absorbance, convertie en concentration de diiode, convertie en avancement — qui va nous servir de matière première dans le rung suivant.
+C'est cette mesure — l'absorbance, convertie en concentration de diiode, convertie en avancement — qui va nous servir de matière première dans le chapitre suivant.
 
 ---
 
@@ -84,7 +84,7 @@ Le lien avec la mesure spectrophotométrique est direct : le diiode a un coeffic
 
 ### Définir la vitesse volumique de réaction
 
-L'avancement $x(t)$ grimpe puis ralentit, comme tu l'as anticipé en R0 — mais « ça ralentit » n'est pas un nombre. Pour quantifier à quel rythme la réaction avance à un instant donné, on définit la **vitesse volumique de réaction** :
+L'avancement $x(t)$ grimpe puis ralentit, comme tu l'as anticipé au chapitre 1 — mais « ça ralentit » n'est pas un nombre. Pour quantifier à quel rythme la réaction avance à un instant donné, on définit la **vitesse volumique de réaction** :
 
 $$v = \frac{1}{V}\frac{dx}{dt}$$
 
@@ -120,7 +120,7 @@ $$v(8\ \text{min}) = \frac{1}{V}\times\text{pente} = \frac{0{,}25\times10^{-3}}{
 
 $$v(8\ \text{min}) \approx 4{,}2\times10^{-5}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$$
 
-Garde cette valeur et ce tableau : ils reviennent dans les rungs suivants.
+Garde cette valeur et ce tableau : ils reviennent dans les chapitres suivants.
 
 [[checkpoint:cp-r2-vitesse-tangente]]
 
@@ -134,7 +134,7 @@ Garde cette valeur et ce tableau : ils reviennent dans les rungs suivants.
 
 Une intuition trompeuse consiste à imaginer une transformation chimique comme une voiture qui roulerait à vitesse constante : l'avancement progresserait alors régulièrement, au même rythme du début à la fin, et $x(t)$ serait une droite.
 
-Regarde le tableau de R2 : entre $t=0$ et $t=4\ \text{min}$, $x$ gagne $1{,}4\ \text{mmol}$, soit un rythme de $0{,}35\ \text{mmol/min}$. Entre $t=40$ et $t=60\ \text{min}$, $x$ ne gagne plus que $0{,}12\ \text{mmol}$ en $20$ minutes, soit $0{,}006\ \text{mmol/min}$ — près de $60$ fois moins vite. Une droite unique ne peut pas passer par des points aussi inégalement espacés : l'hypothèse « vitesse constante » est directement contredite par les mesures elles-mêmes.
+Regarde le tableau du chapitre 3 : entre $t=0$ et $t=4\ \text{min}$, $x$ gagne $1{,}4\ \text{mmol}$, soit un rythme de $0{,}35\ \text{mmol/min}$. Entre $t=40$ et $t=60\ \text{min}$, $x$ ne gagne plus que $0{,}12\ \text{mmol}$ en $20$ minutes, soit $0{,}006\ \text{mmol/min}$ — près de $60$ fois moins vite. Une droite unique ne peut pas passer par des points aussi inégalement espacés : l'hypothèse « vitesse constante » est directement contredite par les mesures elles-mêmes.
 
 ### Ce que dit vraiment la vitesse volumique
 
@@ -142,7 +142,7 @@ $v(t)$ est **maximale tout au début** de la réaction (au tout premier instant,
 
 [[figure:tangentes-decroissantes]]
 
-Reprends le calcul de R2 : $v(8\ \text{min}) \approx 4{,}2\times10^{-5}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$. Calculons maintenant $v(30\ \text{min})$, avec la même méthode de sécante symétrique, en utilisant les points $t=20\ \text{min}$ et $t=40\ \text{min}$ du tableau :
+Reprends le calcul du chapitre 3 : $v(8\ \text{min}) \approx 4{,}2\times10^{-5}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$. Calculons maintenant $v(30\ \text{min})$, avec la même méthode de sécante symétrique, en utilisant les points $t=20\ \text{min}$ et $t=40\ \text{min}$ du tableau :
 
 $$\text{pente} \approx \frac{x(40) - x(20)}{40 - 20} = \frac{4{,}85 - 4{,}3}{20} = 0{,}0275\ \text{mmol/min}$$
 
@@ -154,13 +154,13 @@ La vitesse a été divisée par environ $9$ entre $t=8\ \text{min}$ et $t=30\ \t
 
 Pourquoi cette chute ? Reviens au modèle du chapitre précédent : seuls les chocs efficaces entre entités réactives font avancer une transformation, et leur fréquence dépend directement de la concentration des réactifs — plus il y a d'entités par unité de volume, plus elles se croisent souvent.
 
-Or regarde le tableau d'avancement de R2 : les quantités de réactifs restants, $5{,}0 - x$ pour $S_2O_8^{2-}$ et $40 - 2x$ pour $I^-$, DIMINUENT continûment à mesure que $x$ augmente. Moins de réactifs restants, c'est moins d'entités par unité de volume, donc moins de chocs par seconde, donc moins de chocs efficaces par seconde — donc une vitesse plus faible. C'est exactement le même mécanisme qu'en R3-R4 du chapitre précédent, appliqué non plus à une comparaison entre deux expériences différentes, mais à l'évolution d'UNE SEULE expérience au cours du temps : au fur et à mesure qu'elle avance, une transformation consomme ses propres réactifs, donc ralentit elle-même sa propre progression.
+Or regarde le tableau d'avancement du chapitre 3 : les quantités de réactifs restants, $5{,}0 - x$ pour $S_2O_8^{2-}$ et $40 - 2x$ pour $I^-$, DIMINUENT continûment à mesure que $x$ augmente. Moins de réactifs restants, c'est moins d'entités par unité de volume, donc moins de chocs par seconde, donc moins de chocs efficaces par seconde — donc une vitesse plus faible. C'est exactement le même mécanisme qu'aux chapitres 4 et 5 du chapitre précédent, appliqué non plus à une comparaison entre deux expériences différentes, mais à l'évolution d'UNE SEULE expérience au cours du temps : au fur et à mesure qu'elle avance, une transformation consomme ses propres réactifs, donc ralentit elle-même sa propre progression.
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* c'est une idée à bien distinguer de celles du chapitre précédent. Là-bas, on comparait deux expériences DIFFÉRENTES (concentrations initiales différentes, ou températures différentes) pour isoler l'effet d'un facteur. Ici, on regarde comment UNE SEULE expérience évolue dans le temps : les concentrations chutent au fil de la réaction elle-même, pas parce qu'on a changé les conditions de départ.
 
 ### Conséquence pratique
 
-Puisque $v$ n'est pas constante, tu ne peux jamais obtenir une vitesse instantanée valable en divisant simplement « la quantité totale produite » par « le temps total écoulé » — ce calcul donnerait une vitesse MOYENNE sur tout l'intervalle, pas la vitesse à un instant précis. Pour connaître $v$ à un instant donné, il faut toujours revenir à la pente locale de la courbe $x(t)$ en ce point — la tangente, ou son estimation par sécante symétrique vue en R2.
+Puisque $v$ n'est pas constante, tu ne peux jamais obtenir une vitesse instantanée valable en divisant simplement « la quantité totale produite » par « le temps total écoulé » — ce calcul donnerait une vitesse MOYENNE sur tout l'intervalle, pas la vitesse à un instant précis. Pour connaître $v$ à un instant donné, il faut toujours revenir à la pente locale de la courbe $x(t)$ en ce point — la tangente, ou son estimation par sécante symétrique vue au chapitre 3.
 
 [[checkpoint:cp-r3-vitesse-decroit]]
 
@@ -182,11 +182,11 @@ $x(t)$ ne fait qu'augmenter au cours du temps — un avancement ne peut jamais r
 
 Concrètement : on repère (ou on calcule à partir du tableau d'avancement) la valeur $x_{max}$ — le plateau vers lequel la courbe tend. On calcule $x_{max}/2$. On trace une droite horizontale à cette hauteur sur le graphe $x(t)$ ; le point où elle coupe la courbe donne, en abscisse, $t_{1/2}$.
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* reprends le tableau de R2. $x_{max} = 5{,}0\ \text{mmol}$, donc $x_{max}/2 = 2{,}5\ \text{mmol}$. Le tableau donne directement $x(8\ \text{min}) = 2{,}5\ \text{mmol}$ :
+*Ce qu'on cherche ici, et pourquoi ce geste :* reprends le tableau du chapitre 3. $x_{max} = 5{,}0\ \text{mmol}$, donc $x_{max}/2 = 2{,}5\ \text{mmol}$. Le tableau donne directement $x(8\ \text{min}) = 2{,}5\ \text{mmol}$ :
 
 $$t_{1/2} = 8\ \text{min}$$
 
-Remarque : c'est exactement l'instant qu'on a utilisé en R2 pour calculer $v(8\ \text{min})$ — pas un hasard de la nature, mais un choix pour que tu repères tout de suite où $t_{1/2}$ se situe sur la courbe qu'on vient d'étudier en détail.
+Remarque : c'est exactement l'instant qu'on a utilisé au chapitre 3 pour calculer $v(8\ \text{min})$ — pas un hasard de la nature, mais un choix pour que tu repères tout de suite où $t_{1/2}$ se situe sur la courbe qu'on vient d'étudier en détail.
 
 [[figure:temps-demi-reaction]]
 

@@ -18,7 +18,7 @@ C'est difficile, non ? Et c'est bien le problème. À l'oeil, sur un dessin en p
 
 Ce dont on a besoin, c'est d'un moyen de trancher ce genre de question **avec des nombres**, sans dépendre d'un dessin ni d'une intuition. C'est exactement ce que cette leçon construit : une façon de décrire un point, une droite, un plan de l'espace par des coordonnées, puis de calculer à partir de ces coordonnées des distances, des angles, des aires, des volumes — et de répondre à des questions comme celle du cube avec une certitude totale.
 
-On y revient précisément à la fin de la partie R2. Ne cherche pas encore la réponse — on construit l'outil, pièce par pièce, et on revient trancher.
+On y revient précisément à la fin de la partie le chapitre 3. Ne cherche pas encore la réponse — on construit l'outil, pièce par pièce, et on revient trancher.
 
 ---
 
@@ -103,7 +103,7 @@ $$\vec{u}\cdot\vec{v} = xx'(\vec{i}\cdot\vec{i}) + yy'(\vec{j}\cdot\vec{j}) + zz
 
 $$\vec{u}\cdot\vec{v} = xx' + yy' + zz'$$
 
-C'est l'**expression analytique du produit scalaire dans l'espace**. Une conséquence immédiate, en prenant $\vec{v}=\vec{u}$ : $\vec{u}\cdot\vec{u} = x^2+y^2+z^2 = \|\vec{u}\|^2$, ce qui redonne exactement la formule de la norme du R1.
+C'est l'**expression analytique du produit scalaire dans l'espace**. Une conséquence immédiate, en prenant $\vec{v}=\vec{u}$ : $\vec{u}\cdot\vec{u} = x^2+y^2+z^2 = \|\vec{u}\|^2$, ce qui redonne exactement la formule de la norme du chapitre 2.
 
 ### Ce que ça donne : orthogonalité et angle
 
@@ -125,7 +125,7 @@ Le résultat n'est pas nul : $\vec{u}$ et $\vec{v}$ ne sont pas orthogonaux.
 
 ### Fermeture de l'arc : la diagonale du cube, tranchée
 
-Reprends le cube du R0, avec les coordonnées établies au R1. La grande diagonale a pour vecteur directeur $\overrightarrow{AG}(1,1,1)$. La diagonale de la face du bas a pour vecteur directeur $\overrightarrow{BD} = D - B = (0-1,\ 1-0,\ 0-0) = (-1,1,0)$.
+Reprends le cube du chapitre 1, avec les coordonnées établies au chapitre 2. La grande diagonale a pour vecteur directeur $\overrightarrow{AG}(1,1,1)$. La diagonale de la face du bas a pour vecteur directeur $\overrightarrow{BD} = D - B = (0-1,\ 1-0,\ 0-0) = (-1,1,0)$.
 
 **Ce qu'on cherche ici, et pourquoi ce geste :** on applique le test d'orthogonalité — calculer le produit scalaire des deux vecteurs directeurs, et regarder s'il s'annule.
 
@@ -133,7 +133,7 @@ $$\overrightarrow{AG}\cdot\overrightarrow{BD} = 1\times(-1) + 1\times1 + 1\times
 
 Le produit scalaire est nul : les vecteurs $\overrightarrow{AG}$ et $\overrightarrow{BD}$ sont **orthogonaux**. À l'oeil, sur un dessin, ce n'était pas évident — mais avec les coordonnées, c'est tranché sans ambiguïté.
 
-**Une nuance de vocabulaire, importante pour la suite.** $(AG)$ et $(BD)$ ne se coupent pas (ce sont deux droites de l'espace qui ne passent par aucun point commun — on le vérifierait en cherchant une solution commune à leurs deux représentations paramétriques, et on n'en trouverait pas). On dit qu'elles sont **orthogonales** — leurs directions sont perpendiculaires — mais **pas perpendiculaires**, terme réservé aux droites qui, en plus d'avoir des directions orthogonales, se coupent réellement. Deux droites de l'espace peuvent tout à fait avoir des directions orthogonales sans jamais se croiser. On retrouve cette distinction, avec un exemple similaire, au R7.
+**Une nuance de vocabulaire, importante pour la suite.** $(AG)$ et $(BD)$ ne se coupent pas (ce sont deux droites de l'espace qui ne passent par aucun point commun — on le vérifierait en cherchant une solution commune à leurs deux représentations paramétriques, et on n'en trouverait pas). On dit qu'elles sont **orthogonales** — leurs directions sont perpendiculaires — mais **pas perpendiculaires**, terme réservé aux droites qui, en plus d'avoir des directions orthogonales, se coupent réellement. Deux droites de l'espace peuvent tout à fait avoir des directions orthogonales sans jamais se croiser. On retrouve cette distinction, avec un exemple similaire, au chapitre 8.
 
 ---
 
@@ -153,7 +153,7 @@ Chaque composante s'obtient en « cachant » une des trois coordonnées (celle d
 
 ### Pourquoi ce vecteur est orthogonal à $\vec{u}$ et à $\vec{v}$
 
-On peut le vérifier directement avec le produit scalaire du R2 : calcule $\vec{u}\cdot(\vec{u}\wedge\vec{v})$.
+On peut le vérifier directement avec le produit scalaire du chapitre 3 : calcule $\vec{u}\cdot(\vec{u}\wedge\vec{v})$.
 
 $$\vec{u}\cdot(\vec{u}\wedge\vec{v}) = x(yz'-zy') + y(zx'-xz') + z(xy'-yx')$$
 
@@ -167,7 +167,7 @@ Une identité algébrique (elle se vérifie en développant les deux membres ter
 
 $$\|\vec{u}\wedge\vec{v}\|^2 = \|\vec{u}\|^2\|\vec{v}\|^2 - (\vec{u}\cdot\vec{v})^2$$
 
-On remplace $\vec{u}\cdot\vec{v}$ par $\|\vec{u}\|\|\vec{v}\|\cos\theta$ (la définition géométrique du R2), où $\theta=(\vec{u},\vec{v})$ :
+On remplace $\vec{u}\cdot\vec{v}$ par $\|\vec{u}\|\|\vec{v}\|\cos\theta$ (la définition géométrique du chapitre 3), où $\theta=(\vec{u},\vec{v})$ :
 
 $$\|\vec{u}\wedge\vec{v}\|^2 = \|\vec{u}\|^2\|\vec{v}\|^2 - \|\vec{u}\|^2\|\vec{v}\|^2\cos^2\theta$$
 
@@ -183,7 +183,7 @@ Or $\|\vec{u}\|\|\vec{v}\|\sin\theta$, c'est exactement « base fois hauteur » 
 
 ### Exemple travaillé
 
-On introduit un tétraèdre qui va servir de fil conducteur pour plusieurs rungs à venir : $A(0,0,0)$, $B(2,0,0)$, $C(0,2,0)$, $S(0,0,2)$ — un tétraèdre **trirectangle en $A$** (les trois arêtes $AB$, $AC$, $AS$ sont deux à deux perpendiculaires, portées par les axes du repère).
+On introduit un tétraèdre qui va servir de fil conducteur pour plusieurs chapitres à venir : $A(0,0,0)$, $B(2,0,0)$, $C(0,2,0)$, $S(0,0,2)$ — un tétraèdre **trirectangle en $A$** (les trois arêtes $AB$, $AC$, $AS$ sont deux à deux perpendiculaires, portées par les axes du repère).
 
 **Ce qu'on cherche ici, et pourquoi ce geste :** calculer l'aire du triangle $ABC$. Plutôt que de chercher une hauteur à la main, on calcule $\overrightarrow{AB}\wedge\overrightarrow{AC}$, dont la norme donne directement l'aire du parallélogramme — il suffira de diviser par deux.
 
@@ -201,11 +201,11 @@ L'aire du parallélogramme construit sur $\overrightarrow{AB}$ et $\overrightarr
 
 ### Combiner les deux outils
 
-On dispose maintenant de deux opérations sur les vecteurs : le produit scalaire (R2), qui renvoie un nombre, et le produit vectoriel (R3), qui renvoie un vecteur. En les enchaînant sur trois vecteurs $\vec{u}$, $\vec{v}$, $\vec{w}$, on obtient un nouveau nombre, appelé le **produit mixte** :
+On dispose maintenant de deux opérations sur les vecteurs : le produit scalaire (chapitre 3), qui renvoie un nombre, et le produit vectoriel (chapitre 4), qui renvoie un vecteur. En les enchaînant sur trois vecteurs $\vec{u}$, $\vec{v}$, $\vec{w}$, on obtient un nouveau nombre, appelé le **produit mixte** :
 
 $$\left[\vec{u},\vec{v},\vec{w}\right] = \left(\vec{u}\wedge\vec{v}\right)\cdot\vec{w}$$
 
-En substituant la formule du produit vectoriel (R3) dans celle du produit scalaire (R2), on obtient une expression directement calculable à partir des neuf coordonnées :
+En substituant la formule du produit vectoriel (chapitre 4) dans celle du produit scalaire (chapitre 3), on obtient une expression directement calculable à partir des neuf coordonnées :
 
 $$\left[\vec{u},\vec{v},\vec{w}\right] = (yz'-zy')x'' + (zx'-xz')y'' + (xy'-yx')z''$$
 
@@ -213,7 +213,7 @@ où $\vec{u}(x,y,z)$, $\vec{v}(x',y',z')$, $\vec{w}(x'',y'',z'')$. Ce même nomb
 
 ### Pourquoi sa valeur absolue est un volume
 
-Le parallélépipède construit sur $\vec{u}$, $\vec{v}$, $\vec{w}$ a pour volume : (aire de la base, le parallélogramme construit sur $\vec{u}$ et $\vec{v}$) $\times$ (hauteur). Or l'aire de la base vaut $\|\vec{u}\wedge\vec{v}\|$ (R3), et la hauteur est la longueur de la projection de $\vec{w}$ sur la direction perpendiculaire à la base — c'est-à-dire sur la direction de $\vec{u}\wedge\vec{v}$ lui-même, puisque ce vecteur est justement perpendiculaire à $\vec{u}$ et $\vec{v}$ (R3). Cette hauteur vaut $\dfrac{|(\vec{u}\wedge\vec{v})\cdot\vec{w}|}{\|\vec{u}\wedge\vec{v}\|}$ (la définition même d'une projection sur un vecteur). En multipliant :
+Le parallélépipède construit sur $\vec{u}$, $\vec{v}$, $\vec{w}$ a pour volume : (aire de la base, le parallélogramme construit sur $\vec{u}$ et $\vec{v}$) $\times$ (hauteur). Or l'aire de la base vaut $\|\vec{u}\wedge\vec{v}\|$ (chapitre 4), et la hauteur est la longueur de la projection de $\vec{w}$ sur la direction perpendiculaire à la base — c'est-à-dire sur la direction de $\vec{u}\wedge\vec{v}$ lui-même, puisque ce vecteur est justement perpendiculaire à $\vec{u}$ et $\vec{v}$ (chapitre 4). Cette hauteur vaut $\dfrac{|(\vec{u}\wedge\vec{v})\cdot\vec{w}|}{\|\vec{u}\wedge\vec{v}\|}$ (la définition même d'une projection sur un vecteur). En multipliant :
 
 $$V_{\text{parallélépipède}} = \|\vec{u}\wedge\vec{v}\| \times \frac{|(\vec{u}\wedge\vec{v})\cdot\vec{w}|}{\|\vec{u}\wedge\vec{v}\|} = \left|\left(\vec{u}\wedge\vec{v}\right)\cdot\vec{w}\right| = \left|\left[\vec{u},\vec{v},\vec{w}\right]\right|$$
 
@@ -227,13 +227,13 @@ Une conséquence immédiate : si $\left[\vec{u},\vec{v},\vec{w}\right]=0$, le vo
 
 ### Exemple travaillé
 
-**Ce qu'on cherche ici, et pourquoi ce geste :** calculer le volume du tétraèdre $SABC$ introduit au R3. On a déjà $\overrightarrow{AB}\wedge\overrightarrow{AC}=(0,0,4)$ ; il ne reste qu'à faire le produit scalaire avec $\overrightarrow{AS}=(0,0,2)$.
+**Ce qu'on cherche ici, et pourquoi ce geste :** calculer le volume du tétraèdre $SABC$ introduit au chapitre 4. On a déjà $\overrightarrow{AB}\wedge\overrightarrow{AC}=(0,0,4)$ ; il ne reste qu'à faire le produit scalaire avec $\overrightarrow{AS}=(0,0,2)$.
 
 $$\left[\overrightarrow{AB},\overrightarrow{AC},\overrightarrow{AS}\right] = (0,0,4)\cdot(0,0,2) = 0\times0+0\times0+4\times2 = 8$$
 
 $$V_{SABC} = \frac{1}{6}\times|8| = \frac{8}{6} = \frac{4}{3}$$
 
-**Vérification par la formule « aire de base $\times$ hauteur » :** le triangle $ABC$ a pour aire $2$ (R3) et vit dans le plan $z=0$ ; le sommet $S(0,0,2)$ est à une hauteur $2$ au-dessus de ce plan. $V_{SABC} = \frac13\times2\times2=\frac43$. Les deux méthodes coïncident.
+**Vérification par la formule « aire de base $\times$ hauteur » :** le triangle $ABC$ a pour aire $2$ (chapitre 4) et vit dans le plan $z=0$ ; le sommet $S(0,0,2)$ est à une hauteur $2$ au-dessus de ce plan. $V_{SABC} = \frac13\times2\times2=\frac43$. Les deux méthodes coïncident.
 
 ---
 
@@ -271,7 +271,7 @@ $$\frac{x-2}{1} = \frac{y+1}{-2} = \frac{z}{3}$$
 
 ### Exemple travaillé — cas particulier ($b=0$)
 
-La droite $(SA)$ du tétraèdre du R3-R4, avec $S(0,0,2)$ et $A(0,0,0)$, a pour vecteur directeur $\overrightarrow{AS}(0,0,2)$, colinéaire à $(0,0,1)$. Deux des trois coordonnées sont nulles.
+La droite $(SA)$ du tétraèdre des chapitres 4 et 5, avec $S(0,0,2)$ et $A(0,0,0)$, a pour vecteur directeur $\overrightarrow{AS}(0,0,2)$, colinéaire à $(0,0,1)$. Deux des trois coordonnées sont nulles.
 
 $$\begin{cases} x=0 \\ y=0 \\ z=t \end{cases} \qquad t\in\mathbb{R}$$
 
@@ -283,13 +283,13 @@ Pas de forme symétrique possible ici (division par $0$ interdite deux fois) ; l
 
 ### Un plan, défini par un point et une perpendiculaire
 
-Un plan $\mathcal P$ est entièrement déterminé par un point $A_0(x_0,y_0,z_0)$ qui lui appartient et un **vecteur normal** $\vec{n}(a,b,c)$ non nul, perpendiculaire à $\mathcal P$ (donc orthogonal à tout vecteur du plan). Un point $M(x,y,z)$ appartient à $\mathcal P$ si et seulement si $\overrightarrow{A_0M}$ est orthogonal à $\vec{n}$ — exactement le test d'orthogonalité du R2 :
+Un plan $\mathcal P$ est entièrement déterminé par un point $A_0(x_0,y_0,z_0)$ qui lui appartient et un **vecteur normal** $\vec{n}(a,b,c)$ non nul, perpendiculaire à $\mathcal P$ (donc orthogonal à tout vecteur du plan). Un point $M(x,y,z)$ appartient à $\mathcal P$ si et seulement si $\overrightarrow{A_0M}$ est orthogonal à $\vec{n}$ — exactement le test d'orthogonalité du chapitre 3 :
 
 $$\vec{n}\cdot\overrightarrow{A_0M} = 0$$
 
 [[figure:plan-normal]]
 
-On développe ce produit scalaire avec la formule analytique du R2 :
+On développe ce produit scalaire avec la formule analytique du chapitre 3 :
 
 $$a(x-x_0) + b(y-y_0) + c(z-z_0) = 0$$
 
@@ -311,7 +311,7 @@ $$\mathcal{E} = \left\{\,M \ ;\ MA = MB\,\right\}$$
 
 **Ce n'est pas une droite.** Dans le plan, le lieu des points équidistants de $A$ et $B$ est la médiatrice du segment $[AB]$ — une droite. Dans l'espace, la même condition définit un **plan**, appelé **plan médiateur** de $[AB]$. C'est la première chose à se dire : on monte d'une dimension, le lieu aussi.
 
-**La démonstration tient en trois lignes**, et elle n'utilise que le R1 et le R2. Note $I$ le milieu de $[AB]$. On élève la condition au carré pour éliminer les racines :
+**La démonstration tient en trois lignes**, et elle n'utilise que le chapitre 2 et le chapitre 3. Note $I$ le milieu de $[AB]$. On élève la condition au carré pour éliminer les racines :
 
 $$MA = MB \iff MA^2 = MB^2 \iff \overrightarrow{MA}^2 - \overrightarrow{MB}^2 = 0$$
 
@@ -325,7 +325,7 @@ $$2\,\overrightarrow{BA}\cdot\overrightarrow{MI} = 0
 \qquad\Longleftrightarrow\qquad
 \overrightarrow{AB}\cdot\overrightarrow{IM} = 0$$
 
-**Lis le résultat.** C'est exactement la forme $\vec{n}\cdot\overrightarrow{A_0M}=0$ posée en tête de ce rung, avec $\vec{n} = \overrightarrow{AB}$ et $A_0 = I$ :
+**Lis le résultat.** C'est exactement la forme $\vec{n}\cdot\overrightarrow{A_0M}=0$ posée en tête de ce chapitre, avec $\vec{n} = \overrightarrow{AB}$ et $A_0 = I$ :
 
 $$\boxed{\ \mathcal{E} \text{ est le plan passant par le milieu } I \text{ de } [AB]\text{, de vecteur normal } \overrightarrow{AB}\ }$$
 
@@ -335,7 +335,7 @@ Son équation cartésienne s'écrit donc immédiatement, sans aucun calcul suppl
 
 ### Trouver un plan à partir de trois points
 
-Si on connaît trois points non alignés $A_0$, $B_0$, $C_0$ d'un plan plutôt qu'un vecteur normal directement, on fabrique ce vecteur normal avec l'outil du R3 : $\overrightarrow{A_0B_0}$ et $\overrightarrow{A_0C_0}$ sont deux vecteurs du plan, donc $\vec{n} = \overrightarrow{A_0B_0}\wedge\overrightarrow{A_0C_0}$ est orthogonal aux deux à la fois — c'est un vecteur normal au plan.
+Si on connaît trois points non alignés $A_0$, $B_0$, $C_0$ d'un plan plutôt qu'un vecteur normal directement, on fabrique ce vecteur normal avec l'outil du chapitre 4 : $\overrightarrow{A_0B_0}$ et $\overrightarrow{A_0C_0}$ sont deux vecteurs du plan, donc $\vec{n} = \overrightarrow{A_0B_0}\wedge\overrightarrow{A_0C_0}$ est orthogonal aux deux à la fois — c'est un vecteur normal au plan.
 
 ### Exemple travaillé
 
@@ -363,7 +363,7 @@ $$\left(SBC\right):\ x+y+z-2=0$$
 
 ### Le principe commun
 
-Deux objets (droites, plans) qui ne sont pas parallèles se coupent **toujours** dans le plan — mais **pas nécessairement dans l'espace**, où il y a une troisième dimension pour « se rater ». C'est la question centrale de ce rung : à chaque fois, on commence par regarder les directions ; si elles ne suffisent pas à conclure, on résout un système pour chercher un point commun.
+Deux objets (droites, plans) qui ne sont pas parallèles se coupent **toujours** dans le plan — mais **pas nécessairement dans l'espace**, où il y a une troisième dimension pour « se rater ». C'est la question centrale de ce chapitre : à chaque fois, on commence par regarder les directions ; si elles ne suffisent pas à conclure, on résout un système pour chercher un point commun.
 
 ### Droite et droite
 
@@ -384,7 +384,7 @@ $$\begin{cases} 0 = 2-2s \\ 0 = 2s \\ t = 0 \end{cases}$$
 
 La première équation donne $s=1$ ; la deuxième donne $s=0$. **Contradiction** : aucune valeur de $s$ ne peut vérifier les deux à la fois. Le système n'a pas de solution : $(SA)$ et $(BC)$ sont **non coplanaires**.
 
-Remarque : $\overrightarrow{AS}\cdot\overrightarrow{BC} = 0\times(-2)+0\times2+2\times0=0$ — leurs directions sont pourtant orthogonales ! C'est exactement la nuance du R2 : $(SA)$ et $(BC)$ sont **orthogonales** (directions perpendiculaires) mais **pas perpendiculaires** (elles ne se coupent pas). Une droite peut très bien croiser « orthogonalement » une autre droite sans jamais la toucher.
+Remarque : $\overrightarrow{AS}\cdot\overrightarrow{BC} = 0\times(-2)+0\times2+2\times0=0$ — leurs directions sont pourtant orthogonales ! C'est exactement la nuance du chapitre 3 : $(SA)$ et $(BC)$ sont **orthogonales** (directions perpendiculaires) mais **pas perpendiculaires** (elles ne se coupent pas). Une droite peut très bien croiser « orthogonalement » une autre droite sans jamais la toucher.
 
 ### Droite et plan
 
@@ -424,19 +424,19 @@ $$d(M_0,\mathcal P) = \frac{\left|\vec{n}\cdot\overrightarrow{A_0M_0}\right|}{\|
 
 [[figure:distance-point-plan]]
 
-En développant $\vec{n}\cdot\overrightarrow{A_0M_0}$ avec la même formule qu'au R6 (et puisque $d=-(ax_A+by_A+cz_A)$ pour un point $A_0$ du plan), le numérateur se réécrit directement à partir des coordonnées de $M_0$ :
+En développant $\vec{n}\cdot\overrightarrow{A_0M_0}$ avec la même formule qu'au chapitre 7 (et puisque $d=-(ax_A+by_A+cz_A)$ pour un point $A_0$ du plan), le numérateur se réécrit directement à partir des coordonnées de $M_0$ :
 
 $$d(M_0,\mathcal P) = \frac{\left|ax_0+by_0+cz_0+d\right|}{\sqrt{a^2+b^2+c^2}}$$
 
-**Exemple travaillé.** Distance du point $A(0,0,0)$ au plan $(SBC)$, d'équation $x+y+z-2=0$ (établie au R6).
+**Exemple travaillé.** Distance du point $A(0,0,0)$ au plan $(SBC)$, d'équation $x+y+z-2=0$ (établie au chapitre 7).
 
 $$d\left(A,(SBC)\right) = \frac{|0+0+0-2|}{\sqrt{1^2+1^2+1^2}} = \frac{2}{\sqrt3} = \frac{2\sqrt3}{3}$$
 
-**Vérification croisée, via le volume (R4) :** $V_{SABC}=\frac13\times\text{aire}(SBC)\times d(A,(SBC))$. Le triangle $SBC$ est équilatéral de côté $SB=SC=BC=2\sqrt2$ (à vérifier avec la formule de distance du R1), d'aire $\frac{\sqrt3}{4}(2\sqrt2)^2 = 2\sqrt3$. Donc $d(A,(SBC)) = \dfrac{3V_{SABC}}{\text{aire}(SBC)} = \dfrac{3\times\frac43}{2\sqrt3} = \dfrac{4}{2\sqrt3}=\dfrac{2}{\sqrt3}=\dfrac{2\sqrt3}{3}$. Les deux méthodes donnent exactement le même résultat.
+**Vérification croisée, via le volume (chapitre 5) :** $V_{SABC}=\frac13\times\text{aire}(SBC)\times d(A,(SBC))$. Le triangle $SBC$ est équilatéral de côté $SB=SC=BC=2\sqrt2$ (à vérifier avec la formule de distance du chapitre 2), d'aire $\frac{\sqrt3}{4}(2\sqrt2)^2 = 2\sqrt3$. Donc $d(A,(SBC)) = \dfrac{3V_{SABC}}{\text{aire}(SBC)} = \dfrac{3\times\frac43}{2\sqrt3} = \dfrac{4}{2\sqrt3}=\dfrac{2}{\sqrt3}=\dfrac{2\sqrt3}{3}$. Les deux méthodes donnent exactement le même résultat.
 
 ### Distance d'un point à une droite
 
-Pour une droite $\mathcal D$ passant par $A$, de vecteur directeur $\vec{u}$, et un point $M_0$ : $\overrightarrow{AM_0}$ et $\vec{u}$ construisent un parallélogramme dont l'aire vaut $\|\overrightarrow{AM_0}\wedge\vec{u}\|$ (R3). Cette même aire vaut aussi (base $\times$ hauteur) $= \|\vec{u}\|\times d(M_0,\mathcal D)$, où $d(M_0,\mathcal D)$ est justement la hauteur cherchée — la distance de $M_0$ à la droite qui porte la base. En égalant les deux expressions de l'aire et en isolant la hauteur :
+Pour une droite $\mathcal D$ passant par $A$, de vecteur directeur $\vec{u}$, et un point $M_0$ : $\overrightarrow{AM_0}$ et $\vec{u}$ construisent un parallélogramme dont l'aire vaut $\|\overrightarrow{AM_0}\wedge\vec{u}\|$ (chapitre 4). Cette même aire vaut aussi (base $\times$ hauteur) $= \|\vec{u}\|\times d(M_0,\mathcal D)$, où $d(M_0,\mathcal D)$ est justement la hauteur cherchée — la distance de $M_0$ à la droite qui porte la base. En égalant les deux expressions de l'aire et en isolant la hauteur :
 
 $$d(M_0,\mathcal D) = \frac{\left\|\overrightarrow{AM_0}\wedge\vec{u}\right\|}{\|\vec{u}\|}$$
 
@@ -448,7 +448,7 @@ $$\overrightarrow{BA}\wedge\overrightarrow{BC} = \left(0\times0-0\times2,\ 0\tim
 
 $$d\left(A,(BC)\right) = \frac{\|(0,0,-4)\|}{\|\overrightarrow{BC}\|} = \frac{4}{\sqrt{4+4+0}} = \frac{4}{2\sqrt2} = \sqrt2$$
 
-**Vérification croisée, via l'aire du triangle (R3) :** $\text{aire}(ABC) = \frac12\times BC\times d(A,(BC))$. On a $\text{aire}(ABC)=2$ (R3) et $BC=2\sqrt2$, donc $d(A,(BC)) = \dfrac{2\times2}{2\sqrt2}=\dfrac{4}{2\sqrt2}=\sqrt2$. Même résultat par les deux méthodes.
+**Vérification croisée, via l'aire du triangle (chapitre 4) :** $\text{aire}(ABC) = \frac12\times BC\times d(A,(BC))$. On a $\text{aire}(ABC)=2$ (chapitre 4) et $BC=2\sqrt2$, donc $d(A,(BC)) = \dfrac{2\times2}{2\sqrt2}=\dfrac{4}{2\sqrt2}=\sqrt2$. Même résultat par les deux méthodes.
 
 [[checkpoint:cp-r8-distance]]
 
@@ -458,7 +458,7 @@ $$d\left(A,(BC)\right) = \frac{\|(0,0,-4)\|}{\|\overrightarrow{BC}\|} = \frac{4}
 
 ### L'équation d'une sphère
 
-Une sphère de centre $\Omega(x_\Omega,y_\Omega,z_\Omega)$ et de rayon $R$ est l'ensemble des points $M(x,y,z)$ tels que $\Omega M = R$. En élevant au carré la formule de distance du R1 (pour éviter la racine carrée) :
+Une sphère de centre $\Omega(x_\Omega,y_\Omega,z_\Omega)$ et de rayon $R$ est l'ensemble des points $M(x,y,z)$ tels que $\Omega M = R$. En élevant au carré la formule de distance du chapitre 2 (pour éviter la racine carrée) :
 
 $$(x-x_\Omega)^2+(y-y_\Omega)^2+(z-z_\Omega)^2 = R^2$$
 
@@ -480,7 +480,7 @@ C'est une sphère de centre $\Omega(1,-2,3)$ et de rayon $R=\sqrt9=3$.
 
 ### Intersection d'une sphère et d'un plan
 
-Soit une sphère de centre $\Omega$ et de rayon $R$, et un plan $\mathcal P$. Note $H$ le projeté orthogonal de $\Omega$ sur $\mathcal P$, et $d=\Omega H = d(\Omega,\mathcal P)$ (la formule du R8). Pour tout point $M$ commun à la sphère et au plan, le triangle $\Omega H M$ est rectangle en $H$ (car $\Omega H$ est perpendiculaire à $\mathcal P$, donc à tout segment de $\mathcal P$, en particulier à $HM$), avec $\Omega M = R$. Le théorème de Pythagore donne :
+Soit une sphère de centre $\Omega$ et de rayon $R$, et un plan $\mathcal P$. Note $H$ le projeté orthogonal de $\Omega$ sur $\mathcal P$, et $d=\Omega H = d(\Omega,\mathcal P)$ (la formule du chapitre 9). Pour tout point $M$ commun à la sphère et au plan, le triangle $\Omega H M$ est rectangle en $H$ (car $\Omega H$ est perpendiculaire à $\mathcal P$, donc à tout segment de $\mathcal P$, en particulier à $HM$), avec $\Omega M = R$. Le théorème de Pythagore donne :
 
 $$R^2 = d^2 + HM^2$$
 
@@ -504,7 +504,7 @@ Puisque $d=2<R=3$, l'intersection est un cercle, de rayon $\sqrt{R^2-d^2}=\sqrt{
 
 Un sujet remplace parfois le plan par une **droite**. N'apprends pas un second résultat : c'est rigoureusement le même raisonnement, avec un seul mot changé.
 
-Soit une sphère de centre $\Omega$ et de rayon $R$, et une droite $\mathcal D$. Note $H$ le projeté orthogonal de $\Omega$ sur $\mathcal D$, et $d = \Omega H = d(\Omega,\mathcal D)$ — la distance d'un point à une **droite**, celle du R8, calculée avec le produit vectoriel et non avec l'équation cartésienne. Pour tout point $M$ commun à la sphère et à la droite, le triangle $\Omega H M$ est rectangle en $H$, avec $\Omega M = R$, et Pythagore donne exactement la même relation :
+Soit une sphère de centre $\Omega$ et de rayon $R$, et une droite $\mathcal D$. Note $H$ le projeté orthogonal de $\Omega$ sur $\mathcal D$, et $d = \Omega H = d(\Omega,\mathcal D)$ — la distance d'un point à une **droite**, celle du chapitre 9, calculée avec le produit vectoriel et non avec l'équation cartésienne. Pour tout point $M$ commun à la sphère et à la droite, le triangle $\Omega H M$ est rectangle en $H$, avec $\Omega M = R$, et Pythagore donne exactement la même relation :
 
 $$R^2 = d^2 + HM^2$$
 
@@ -521,7 +521,7 @@ Les deux premiers cas sont identiques mot pour mot. **C'est le troisième qui di
 - avec un **plan**, l'ensemble des points communs est un **cercle** de rayon $\sqrt{R^2-d^2}$ — parce que $M$ peut s'éloigner de $H$ dans toutes les directions du plan ;
 - avec une **droite**, il n'y a que **deux points** — parce que $M$ ne peut s'éloigner de $H$ que dans deux sens, en avant ou en arrière sur la droite.
 
-La relation de Pythagore est la même ; c'est la dimension de l'objet qui coupe qui décide de la forme du résultat. Une seule autre vigilance : $d(\Omega,\mathcal D)$ et $d(\Omega,\mathcal P)$ ne se calculent **pas** avec la même formule — reviens au R8 et prends la bonne.
+La relation de Pythagore est la même ; c'est la dimension de l'objet qui coupe qui décide de la forme du résultat. Une seule autre vigilance : $d(\Omega,\mathcal D)$ et $d(\Omega,\mathcal P)$ ne se calculent **pas** avec la même formule — reviens au chapitre 9 et prends la bonne.
 
 ---
 

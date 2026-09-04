@@ -58,7 +58,7 @@ La **nation**, enfin, désigne une communauté qui se sent liée par une identit
 
 #### Applique la distinction : reviens à la ville dans le noir
 
-**Ce que ce découpage permet de voir, précisément, dans la situation de R0 :** ce qui a authentiquement reculé, cette nuit-là, ce n'est ni la société (les gens continuaient d'appartenir aux mêmes familles, aux mêmes quartiers, aux mêmes réseaux de voisinage), ni la nation (aucun sentiment d'appartenance collective ne s'est brusquement dissous en une nuit), ni même l'État en tant qu'institution (les lois qui sanctionnent le vol demeuraient parfaitement en vigueur, et se seraient appliquées dès le lendemain matin à quiconque aurait été identifié). Ce qui a reculé, très précisément, c'est la présence concrète et immédiate de l'un des BRAS de l'État — ses agents, ses patrouilles, sa capacité à faire respecter la loi en temps réel. L'État, comme institution, n'a pas disparu cette nuit-là ; seule sa capacité d'application immédiate s'est provisoirement absentée. Cette nuance sera décisive plus loin (R5), quand il s'agira de comprendre ce qui distingue une autorité légitime d'une simple force.
+**Ce que ce découpage permet de voir, précisément, dans la situation du chapitre 1 :** ce qui a authentiquement reculé, cette nuit-là, ce n'est ni la société (les gens continuaient d'appartenir aux mêmes familles, aux mêmes quartiers, aux mêmes réseaux de voisinage), ni la nation (aucun sentiment d'appartenance collective ne s'est brusquement dissous en une nuit), ni même l'État en tant qu'institution (les lois qui sanctionnent le vol demeuraient parfaitement en vigueur, et se seraient appliquées dès le lendemain matin à quiconque aurait été identifié). Ce qui a reculé, très précisément, c'est la présence concrète et immédiate de l'un des BRAS de l'État — ses agents, ses patrouilles, sa capacité à faire respecter la loi en temps réel. L'État, comme institution, n'a pas disparu cette nuit-là ; seule sa capacité d'application immédiate s'est provisoirement absentée. Cette nuance sera décisive plus loin (chapitre 6), quand il s'agira de comprendre ce qui distingue une autorité légitime d'une simple force.
 
 > **Erreur à éviter :** l'expression « coup d'État » elle-même prête à confusion — elle désigne, historiquement, la prise par la force du pouvoir EXÉCUTIF (le gouvernement), pas la destruction de l'appareil d'État lui-même, qui, le plus souvent, survit intact à l'événement et se retrouve simplement capturé par de nouvelles mains. Ne confonds pas non plus « nation » et « État » : parler de la « nation » d'un pays renvoie à un sentiment d'appartenance partagé, parler de son « État » renvoie à un appareil institutionnel — les deux peuvent, historiquement, se dissocier.
 
@@ -93,7 +93,7 @@ Comment sortir de cet état ? Par la raison, dit Hobbes, qui dicte de rechercher
 
 Hobbes nomme ce souverain artificiel le **Léviathan**, empruntant le nom d'un monstre marin biblique pour désigner une puissance immense, fabriquée par les hommes eux-mêmes. Le frontispice célèbre de l'ouvrage représente ce Léviathan comme un géant couronné, tenant l'épée et le sceptre, dont le corps entier est composé d'une multitude de petits corps humains : une image exacte de la thèse — le souverain n'est rien d'autre que la personne artificielle que les individus forment en abandonnant, ensemble, leur droit individuel sur toute chose.
 
-> **Erreur à éviter :** ne va jamais écrire que c'est **Rousseau** qui a écrit le *Léviathan* ou qui décrit l'état de nature comme une guerre de tous contre tous — c'est l'une des confusions les plus fréquentes sur ce point du programme. Le *Léviathan* (1651) est un ouvrage de **Hobbes**. Rousseau, on le verra en R4, écrit *Du contrat social* (1762) et défend une image de l'état de nature radicalement différente — bien plus paisible, presque innocente — précisément pour contester la vision hobbesienne. Ne confonds pas non plus « état de nature violent » avec « récit historique vérifié » : c'est, chez Hobbes, avant tout un outil de raisonnement.
+> **Erreur à éviter :** ne va jamais écrire que c'est **Rousseau** qui a écrit le *Léviathan* ou qui décrit l'état de nature comme une guerre de tous contre tous — c'est l'une des confusions les plus fréquentes sur ce point du programme. Le *Léviathan* (1651) est un ouvrage de **Hobbes**. Rousseau, on le verra au chapitre 5, écrit *Du contrat social* (1762) et défend une image de l'état de nature radicalement différente — bien plus paisible, presque innocente — précisément pour contester la vision hobbesienne. Ne confonds pas non plus « état de nature violent » avec « récit historique vérifié » : c'est, chez Hobbes, avant tout un outil de raisonnement.
 
 [[checkpoint:cp-r2-hobbes]]
 
@@ -163,7 +163,7 @@ Rousseau, dans *Du contrat social* (Livre I, chapitre III, « Du droit du plus f
 
 **Voici le raisonnement qu'il faut dérouler pour comprendre pourquoi cette phrase est vraie.** La force, prise seule, ne produit qu'une soumission qui dure exactement aussi longtemps que la force elle-même s'exerce : dès que le rapport de force s'inverse, dès que le plus fort faiblit ou se relâche un instant, l'obéissance qu'il obtenait cesse aussitôt — parce que ce n'était jamais qu'une contrainte, pas un devoir reconnu comme tel par celui qui obéissait. Un pouvoir qui ne repose QUE sur la force est donc structurellement instable : il doit sans cesse regagner, par la contrainte, ce qu'il n'a jamais obtenu autrement. Pour qu'un pouvoir dure, il doit se convertir en autre chose — en DROIT reconnu comme légitime — de sorte que l'obéissance devienne un DEVOIR ressenti comme tel, qui continuerait de valoir même quand la force qui l'imposait viendrait, un instant, à manquer.
 
-**Ce que cela implique, très précisément :** être forcé d'obéir (le cambrioleur) et être dans l'obligation d'obéir (une loi qu'on reconnaît comme légitime) ne sont pas la même chose, même si les deux peuvent, dans l'instant, produire exactement le même comportement extérieur. Seul le second implique un devoir qui persisterait même si la contrainte physique disparaissait momentanément — exactement ce que la ville dans le noir de R0 permettait déjà de pressentir : si l'ordre ne tenait qu'à la force visible de la police, son absence totale, une nuit durant, aurait dû faire s'effondrer partout l'obéissance à la loi. Ce n'est pourtant pas ce qui s'est produit dans la plupart des quartiers — signe qu'autre chose qu'une pure crainte de la force opérait encore.
+**Ce que cela implique, très précisément :** être forcé d'obéir (le cambrioleur) et être dans l'obligation d'obéir (une loi qu'on reconnaît comme légitime) ne sont pas la même chose, même si les deux peuvent, dans l'instant, produire exactement le même comportement extérieur. Seul le second implique un devoir qui persisterait même si la contrainte physique disparaissait momentanément — exactement ce que la ville dans le noir du chapitre 1 permettait déjà de pressentir : si l'ordre ne tenait qu'à la force visible de la police, son absence totale, une nuit durant, aurait dû faire s'effondrer partout l'obéissance à la loi. Ce n'est pourtant pas ce qui s'est produit dans la plupart des quartiers — signe qu'autre chose qu'une pure crainte de la force opérait encore.
 
 #### Weber : le monopole de la violence physique légitime
 
@@ -171,7 +171,7 @@ Max Weber (sociologue et philosophe politique, début du XXe siècle, *Le savant
 
 **Le point le plus important à saisir dans cette formule :** il ne s'agit pas de dire que l'État est le seul à pouvoir, matériellement, exercer une force physique — un individu peut toujours, dans certaines limites, se défendre lui-même. Il s'agit de dire que l'État est la seule instance reconnue comme AUTORISÉE à décider quels usages de la force sont légitimes et lesquels ne le sont pas. Toute autre organisation qui prétendrait exercer la contrainte physique de façon indépendante — une milice privée, un groupe qui « rend justice » lui-même, un racket qui impose sa propre loi dans un quartier — est, par définition, jugée illégitime, précisément parce qu'elle échappe à ce monopole reconnu.
 
-**Applique cette distinction à un exemple concret.** Un policier qui te verbalise pour un feu rouge grillé, et un individu armé qui te dépouille de ta voiture, exercent tous deux, dans l'instant, une forme de contrainte physique ou de menace. Pourtant, seul le premier acte est reconnu comme légitime — non parce qu'il serait, en lui-même, plus agréable à subir, mais parce qu'il découle d'une loi à l'élaboration de laquelle, en principe, tu as part comme citoyen (cf. R4, la volonté générale), qu'il s'applique selon une procédure connue à l'avance, et qu'il peut être contesté devant un tribunal impartial — trois conditions qu'aucun voleur armé ne remplit jamais.
+**Applique cette distinction à un exemple concret.** Un policier qui te verbalise pour un feu rouge grillé, et un individu armé qui te dépouille de ta voiture, exercent tous deux, dans l'instant, une forme de contrainte physique ou de menace. Pourtant, seul le premier acte est reconnu comme légitime — non parce qu'il serait, en lui-même, plus agréable à subir, mais parce qu'il découle d'une loi à l'élaboration de laquelle, en principe, tu as part comme citoyen (cf. le chapitre 5, la volonté générale), qu'il s'applique selon une procédure connue à l'avance, et qu'il peut être contesté devant un tribunal impartial — trois conditions qu'aucun voleur armé ne remplit jamais.
 
 > **Point de vigilance :** ne confonds pas « légitime », au sens de Weber, avec « moralement juste en toutes circonstances ». Un pouvoir peut être sociologiquement légitime — reconnu, obéi, considéré comme en droit d'exercer la force — tout en étant, par ailleurs, profondément injuste ou oppressif d'un point de vue moral. Cette nuance n'est pas un détail : c'est elle qui rend possibles les critiques de l'État qu'on va voir maintenant.
 
@@ -237,9 +237,9 @@ Six regards, six mécanismes différents — mais aucun ne réduit ce qui s'est 
 
 #### Étape 1 — Analyser les termes du sujet
 
-- **« L'État »** : rappelle-toi la distinction de R1 — l'État n'est ni le gouvernement (qui change), ni la société, ni la nation. Le sujet porte sur l'institution politique permanente elle-même, pas sur tel gouvernement précis qu'on pourrait juger bon ou mauvais.
+- **« L'État »** : rappelle-toi la distinction du chapitre 2 — l'État n'est ni le gouvernement (qui change), ni la société, ni la nation. Le sujet porte sur l'institution politique permanente elle-même, pas sur tel gouvernement précis qu'on pourrait juger bon ou mauvais.
 - **« Au service de notre liberté »** : mobilise Locke (la protection de droits naturels préexistants) et Rousseau (obéir à la loi qu'on s'est prescrite comme membre de la volonté générale est une forme de liberté) — l'État comme condition de la liberté, pas comme son obstacle.
-- **« En est-il la négation »** : mobilise Hobbes (une soumission à un pouvoir quasi absolu), et les critiques de R6 (Marx : domination de classe masquée ; les dérives totalitaires : un pouvoir non limité qui écrase ceux qu'il devait protéger).
+- **« En est-il la négation »** : mobilise Hobbes (une soumission à un pouvoir quasi absolu), et les critiques du chapitre 7 (Marx : domination de classe masquée ; les dérives totalitaires : un pouvoir non limité qui écrase ceux qu'il devait protéger).
 - Le sujet est formulé comme une alternative (« ou »), mais une bonne dissertation ne choisit jamais un terme en écartant simplement l'autre : elle montre en quel sens chacun est partiellement vrai, et ce qu'il faut ajouter pour trancher.
 
 #### Étape 2 — Formuler la problématique
@@ -255,13 +255,13 @@ Une formulation possible :
 #### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
 
 **I. Thèse — L'État est au service de notre liberté.**
-Développe Hobbes (R2) : sans autorité commune, la guerre de tous contre tous rend toute liberté réelle impossible — la sécurité est la condition préalable de toute liberté effective. Mobilise Locke (R3) : l'État protège des droits naturels (vie, liberté, propriété) qui resteraient fragiles sans un juge et une force communs. Mobilise Rousseau (R4) : la loi, quand elle exprime la volonté générale, n'est pas une contrainte étrangère mais ce que la communauté se prescrit à elle-même.
+Développe Hobbes (chapitre 3) : sans autorité commune, la guerre de tous contre tous rend toute liberté réelle impossible — la sécurité est la condition préalable de toute liberté effective. Mobilise Locke (chapitre 4) : l'État protège des droits naturels (vie, liberté, propriété) qui resteraient fragiles sans un juge et une force communs. Mobilise Rousseau (chapitre 5) : la loi, quand elle exprime la volonté générale, n'est pas une contrainte étrangère mais ce que la communauté se prescrit à elle-même.
 
 **II. Antithèse — L'État peut devenir lui-même une force de domination, contraire à la liberté.**
-Mobilise Marx (R6) : sous couvert de neutralité, l'État peut fonctionner comme l'instrument d'une classe dominante. Mobilise les anarchistes (R6) : toute concentration de pouvoir aussi importante que celle de l'État tend, structurellement, à se retourner contre la liberté de ceux qu'elle devait servir. Mobilise les dérives totalitaires (R6) : un pouvoir souverain non limité, même issu d'un contrat protecteur à l'origine (Hobbes, R2), peut écraser entièrement les droits et la volonté générale qu'il était censé garantir.
+Mobilise Marx (chapitre 7) : sous couvert de neutralité, l'État peut fonctionner comme l'instrument d'une classe dominante. Mobilise les anarchistes (chapitre 7) : toute concentration de pouvoir aussi importante que celle de l'État tend, structurellement, à se retourner contre la liberté de ceux qu'elle devait servir. Mobilise les dérives totalitaires (chapitre 7) : un pouvoir souverain non limité, même issu d'un contrat protecteur à l'origine (Hobbes, chapitre 3), peut écraser entièrement les droits et la volonté générale qu'il était censé garantir.
 
 **III. Dépassement — Ce n'est pas l'existence de l'État qui décide de tout, mais les conditions de sa légitimité et les limites qui l'encadrent.**
-Reprends la distinction force/droit de Rousseau et le monopole légitime de Weber (R5) : la légitimité d'un pouvoir ne se décrète pas une fois pour toutes, elle se vérifie et peut se perdre. Reprends l'État de droit (R6) comme garde-fou : séparation des pouvoirs, droits fondamentaux, contrôle et révocabilité des gouvernants — c'est cela, bien plus que la seule existence d'un État, qui distingue un pouvoir au service de la liberté d'un pouvoir qui la nie.
+Reprends la distinction force/droit de Rousseau et le monopole légitime de Weber (chapitre 6) : la légitimité d'un pouvoir ne se décrète pas une fois pour toutes, elle se vérifie et peut se perdre. Reprends l'État de droit (chapitre 7) comme garde-fou : séparation des pouvoirs, droits fondamentaux, contrôle et révocabilité des gouvernants — c'est cela, bien plus que la seule existence d'un État, qui distingue un pouvoir au service de la liberté d'un pouvoir qui la nie.
 
 #### Étape 4 — Rédiger l'introduction (modèle rédigé)
 
@@ -280,8 +280,8 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 ### Exercice de type bac
 
 Le sujet ci-dessous est réel — tiré des annales nationales, pas construit
-pour cette leçon. Sa citation te demande de mobiliser trois rungs à la fois
-(Hobbes en R2, Rousseau et Weber en R5, Marx en R6) pour tester une
+pour cette leçon. Sa citation te demande de mobiliser trois chapitres à la fois
+(Hobbes au chapitre 3, Rousseau et Weber au chapitre 6, Marx au chapitre 7) pour tester une
 affirmation qui va plus loin qu'aucun d'entre eux pris isolément : la
 violence explique-t-elle, à elle seule, à la fois la naissance ET la durée
 de tout pouvoir étatique ?
@@ -293,9 +293,9 @@ de tout pouvoir étatique ?
 ### Une variation pour ne pas mémoriser
 
 Ce second sujet, également réel, revient sur un terrain déjà connu — les
-théories du contrat (R2-R4) face à Marx (R6) — sous un habillage différent
+théories du contrat (chapitres 3 et 5) face à Marx (chapitre 7) — sous un habillage différent
 (la question des « fins » de l'État plutôt que de son « service »). Le but
 n'est pas d'apprendre autre chose : c'est de reconnaître que la même
-argumentation, déjà entraînée en R7, s'applique à un sujet reformulé.
+argumentation, déjà entraînée au chapitre 8, s'applique à un sujet reformulé.
 
 [[exercise:r-variation]]

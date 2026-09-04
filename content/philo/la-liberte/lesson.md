@@ -176,8 +176,8 @@ Les trois auteurs, malgré leurs désaccords réels, convergent sur un même poi
 
 Avant toute chose, décortique les mots du sujet — c'est souvent là que se joue la moitié du travail.
 
-- **« Être libre »** : rappelle-toi qu'on a distingué plusieurs sens (R1) — absence de contrainte extérieure, liberté intérieure, libre arbitre. Le sujet ne précise pas lequel : c'est à toi de le faire apparaître.
-- **« Faire tout ce que l'on veut »** : cette expression désigne la liberté comme absence de toute limite — ce qu'on a appelé la *licence* (R3). Elle suppose qu'on sache déjà ce qu'on « veut », sans interroger d'où vient ce vouloir.
+- **« Être libre »** : rappelle-toi qu'on a distingué plusieurs sens (chapitre 2) — absence de contrainte extérieure, liberté intérieure, libre arbitre. Le sujet ne précise pas lequel : c'est à toi de le faire apparaître.
+- **« Faire tout ce que l'on veut »** : cette expression désigne la liberté comme absence de toute limite — ce qu'on a appelé la *licence* (chapitre 4). Elle suppose qu'on sache déjà ce qu'on « veut », sans interroger d'où vient ce vouloir.
 - **La question posée** est une question fermée (« est-ce que… ? »), mais une bonne dissertation ne répond jamais simplement « oui » ou « non » : elle montre pourquoi la réponse spontanée pose un problème, puis construit une réponse plus exigeante.
 
 #### Étape 2 — Formuler la problématique
@@ -193,13 +193,13 @@ Une formulation possible :
 #### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
 
 **I. Thèse — Être libre, c'est faire ce que l'on veut, sans entrave.**
-Développe l'intuition spontanée : la liberté négative (R1), le libre arbitre comme pouvoir de choisir sans contrainte extérieure. Utilise des exemples concrets d'obstacles évidents (interdiction, censure) dont l'absence semble bien être une forme de liberté incontestable.
+Développe l'intuition spontanée : la liberté négative (chapitre 2), le libre arbitre comme pouvoir de choisir sans contrainte extérieure. Utilise des exemples concrets d'obstacles évidents (interdiction, censure) dont l'absence semble bien être une forme de liberté incontestable.
 
 **II. Antithèse — Cette conception se heurte à ses propres limites.**
-Mobilise le déterminisme (R1) : si mes désirs eux-mêmes ont des causes que j'ignore, « faire ce que je veux » peut signifier suivre aveuglément ce qui me détermine — la servitude des passions selon Spinoza (R2). Mobilise aussi la dimension politique (R3) : si chacun fait « tout ce qu'il veut » sans aucune limite commune, la liberté des uns détruit celle des autres (Montesquieu) ; la licence n'est pas la liberté civile.
+Mobilise le déterminisme (chapitre 2) : si mes désirs eux-mêmes ont des causes que j'ignore, « faire ce que je veux » peut signifier suivre aveuglément ce qui me détermine — la servitude des passions selon Spinoza (chapitre 3). Mobilise aussi la dimension politique (chapitre 4) : si chacun fait « tout ce qu'il veut » sans aucune limite commune, la liberté des uns détruit celle des autres (Montesquieu) ; la licence n'est pas la liberté civile.
 
 **III. Dépassement — La liberté véritable se construit avec la nécessité, la responsabilité et la loi, non contre elles.**
-Reprends les trois déplacements de la leçon : la liberté comme connaissance de la nécessité (Spinoza, R2) ; la liberté comme responsabilité totale et assumée, sans excuse (Sartre, R3) ; la liberté civile comme obéissance à la loi qu'on s'est prescrite (Rousseau, R3). Montre que ces trois positions, malgré leurs différences, refusent la même chose : l'idée que la liberté serait un pur arbitraire sans lien avec soi-même.
+Reprends les trois déplacements de la leçon : la liberté comme connaissance de la nécessité (Spinoza, chapitre 3) ; la liberté comme responsabilité totale et assumée, sans excuse (Sartre, chapitre 4) ; la liberté civile comme obéissance à la loi qu'on s'est prescrite (Rousseau, chapitre 4). Montre que ces trois positions, malgré leurs différences, refusent la même chose : l'idée que la liberté serait un pur arbitraire sans lien avec soi-même.
 
 #### Étape 4 — Rédiger l'introduction (modèle rédigé)
 
@@ -218,9 +218,9 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 ### Exercice de type bac
 
 Le sujet ci-dessous est réel — tiré des annales nationales, pas construit
-pour cette leçon. Il porte sur un axe (liberté et autrui) que les rungs
+pour cette leçon. Il porte sur un axe (liberté et autrui) que les chapitres
 précédents n'ont pas encore nommé frontalement : à toi de mobiliser ce que
-tu sais déjà sur la liberté négative (R1) et sur la liberté par la loi (R3)
+tu sais déjà sur la liberté négative (chapitre 2) et sur la liberté par la loi (chapitre 4)
 pour l'affronter.
 
 [[checkpoint:cp-bac-autrui]]
@@ -229,7 +229,7 @@ pour l'affronter.
 
 ### Une variation pour ne pas mémoriser
 
-Ce second sujet, également réel, revient sur le terrain déjà connu de R3 —
+Ce second sujet, également réel, revient sur le terrain déjà connu du chapitre 4 —
 sous un habillage différent (une citation brute, sans le contexte narratif
 du code de la route). Le but n'est pas d'apprendre autre chose : c'est de
 reconnaître que la même argumentation s'applique quand l'habillage change.

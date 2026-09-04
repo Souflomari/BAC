@@ -53,7 +53,8 @@ SVG de mouvement. Trois couches ne l'ont jamais été.
 |---|---:|---|
 | Texte rendu des SVG statiques | **47** | **CORRIGÉ ce jour** |
 | Slugs de fichier cités dans le texte rendu | **3** | **CORRIGÉ ce jour** |
-| Prose des leçons (hors titres, hors commentaires) | **1 122** | **OUVERT** |
+| Prose des leçons (hors titres, hors commentaires) | **1 122** | **CORRIGÉ le même jour** |
+| Le mot anglais « rung » en prose visible | **252** | **CORRIGÉ le même jour** |
 
 La mesure de la prose exclut les titres `##`/`###`/`####` (le rendu y
 retire le code), les commentaires d'auteur `<!-- … -->` et les blocs de
@@ -121,7 +122,53 @@ que le balayage à la main avait manquées** — un `R1` dans un second `<title>
 du pedigree, et le `R0` légitime du schéma RL. C'est la démonstration
 ordinaire qu'un grep d'humain n'est pas une porte.
 
-## 6. Ce qui reste ouvert — et pourquoi il n'a pas été fait aujourd'hui
+## 6. La prose : faite le jour même, et par une voie qui n'était pas prévue
+
+La section qui suit était écrite pour dire pourquoi 1 122 réécritures ne se
+faisaient PAS. Elle est conservée telle quelle — c'est le raisonnement qui a
+été corrigé, et il vaut d'être lu — mais elle est **périmée** : la campagne a
+eu lieu, le même jour, quand la bonne question a enfin été posée.
+
+**La question qui a tout changé : par quoi remplacer ?** L'hypothèse de
+départ était « par une formule vague » (« vu plus haut »), ce qui rendait
+chaque cas manuel et coûteux — d'où le renoncement. Mais l'élève VOIT une
+chose que le raisonnement avait oubliée : **le numéro du chapitre.** Le rail
+affiche « 3 · Établir l'équation différentielle », la position affiche
+« Chapitre 3 / 11 », l'URL porte `?chapitre=3`. Un renvoi vers un numéro de
+chapitre est donc résoluble — et cliquable.
+
+**Et la correspondance se lit dans la leçon, elle ne se devine pas.** Le
+k-ième titre `## ` est le chapitre k+1, et son code est ce que le titre
+déclare. Mesuré : dans 56 leçons sur 62, R<n> tombe exactement sur le
+chapitre n+1 ; dans les 6 autres, des titres non-barreau s'intercalent et
+décalent la suite — la correspondance reste juste, elle n'est simplement plus
+n+1. `scripts/renvois-barreaux.py` la calcule leçon par leçon.
+
+**Résultat : 1 122 → 0, plus 252 « rung » → 0.** Le script a traité 1 101
+cas ; 21 ont été faits à la main, et chacun pour une raison nommée :
+
+- `probabilites-conditionnelles` est l'exception du corpus (ses titres ne
+  portent pas de code après R0 — ledger 11.11) : ses six renvois désignent
+  des moments À L'INTÉRIEUR d'un chapitre, pas des chapitres. Écrire un
+  numéro aurait été FAUX ; ils renvoient à « plus haut ».
+- le tableau de barème de `analyse-de-texte` a une colonne « Chapitre(s) qui
+  la construit » qui contenait… des codes R.
+- `(Hegel R2, Sartre R3)` demandait une ponctuation, pas une substitution.
+
+**Les renvois vers une AUTRE leçon sont résolus, pas abandonnés.** Vingt
+cas — « (cf. la leçon « L'État », R6) » — visent le chapitre d'une autre
+notion. Le script construit un index de TOUTES les leçons (par titre H1 et
+par slug), identifie la leçon citée dans la ligne, et applique SA table. Ce
+sont les pires renvois du corpus : une autre leçon ET un code invisible.
+
+**La porte est armée.** `validate-content` refuse désormais tout `R<n>` et
+tout « rung » dans la prose visible d'un `lesson.md` — titres, commentaires
+et blocs de code exclus, puisque c'est là que l'information de rédaction doit
+vivre. Testée dans les deux sens.
+
+---
+
+## 6 bis. Ce qui avait été écrit quand la campagne semblait hors de portée
 
 **1 122 renvois dans la prose de 56 leçons.** Répartition (extrait) :
 

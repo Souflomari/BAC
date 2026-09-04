@@ -128,7 +128,7 @@ Ici $Q_{r,i} \approx 1{,}0\times10^{39} > K \approx 1{,}8\times10^{37}$ : le cri
 
 ## R3 — Le transfert direct d'électrons : pourquoi ça part en chaleur
 
-Le critère du rung précédent dit SI la réaction va se produire, et dans quel sens. Il ne dit rien sur COMMENT, physiquement, les électrons passent du zinc aux ions $Cu^{2+}$ - ni sur ce que devient l'énergie libérée.
+Le critère du chapitre précédent dit SI la réaction va se produire, et dans quel sens. Il ne dit rien sur COMMENT, physiquement, les électrons passent du zinc aux ions $Cu^{2+}$ - ni sur ce que devient l'énergie libérée.
 
 ### Ce qui se passe, réellement, au contact
 
@@ -142,7 +142,7 @@ C'est cette agitation thermique, multipliée par un nombre immense de sauts d'é
 
 Voici une généralisation trompeuse, et elle vient précisément de l'exemple qu'on vient de voir : puisque CETTE réaction spontanée chauffe le tube de façon nette, on peut être tenté de conclure qu'une transformation spontanée dégage TOUJOURS une chaleur perceptible - que « spontané » et « qui chauffe » seraient presque synonymes.
 
-Reviens au critère du rung 2 : ce qui définit une évolution spontanée, c'est UNIQUEMENT la comparaison $Q_{r,i}$ face à $K$ - rien, dans cette comparaison, ne parle de température ni de quantité de chaleur. Le critère est purement une affaire de concentrations. La chaleur dégagée, elle, dépend de tout autre chose : la quantité de matière qui réagit réellement, et le trajet que prend l'énergie libérée.
+Reviens au critère du chapitre 2 : ce qui définit une évolution spontanée, c'est UNIQUEMENT la comparaison $Q_{r,i}$ face à $K$ - rien, dans cette comparaison, ne parle de température ni de quantité de chaleur. Le critère est purement une affaire de concentrations. La chaleur dégagée, elle, dépend de tout autre chose : la quantité de matière qui réagit réellement, et le trajet que prend l'énergie libérée.
 
 Deux façons de mettre en défaut l'idée « spontané = ça chauffe forcément » :
 
@@ -155,7 +155,7 @@ La conclusion à retenir : la chaleur perçue est une conséquence du chemin emp
 
 ## R4 — Transfert direct ou pile : le test qui tranche
 
-Le rung précédent a laissé entrevoir qu'on peut forcer ces mêmes électrons à emprunter un détour extérieur plutôt qu'un contact direct. Il faut maintenant savoir reconnaître, face à un montage donné, lequel des deux se produit réellement - parce que « il y a une oxydoréduction » ne suffit pas, à lui seul, à dire « c'est une pile ».
+Le chapitre précédent a laissé entrevoir qu'on peut forcer ces mêmes électrons à emprunter un détour extérieur plutôt qu'un contact direct. Il faut maintenant savoir reconnaître, face à un montage donné, lequel des deux se produit réellement - parce que « il y a une oxydoréduction » ne suffit pas, à lui seul, à dire « c'est une pile ».
 
 ### Le critère qui distingue les deux montages
 
@@ -200,7 +200,7 @@ Prends la dissolution d'un solide ionique, par exemple le chlorure d'argent :
 
 $$AgCl_{(s)} \rightleftharpoons Ag^+ + Cl^-$$
 
-Le solide $AgCl$, comme tout solide pur, n'entre pas dans l'expression de $Q_r$ (rung 2, et déjà vu dans le chapitre état d'équilibre) :
+Le solide $AgCl$, comme tout solide pur, n'entre pas dans l'expression de $Q_r$ (chapitre 2, et déjà vu dans le chapitre état d'équilibre) :
 
 $$Q_r = [Ag^+]\,[Cl^-]$$
 

@@ -70,7 +70,7 @@ Les deux métaux, $Zn$ et $Cu$, sont des solides purs : ils n'apparaissent pas d
 
 ### Le critère, appliqué à la pile
 
-Comme établi au chapitre sur l'évolution spontanée d'un système, on compare $Q_{r,i}$ à $K$ : $Q_{r,i} < K$ donne le sens direct, $Q_{r,i} > K$ le sens inverse, $Q_{r,i} = K$ un système déjà à l'équilibre. On applique ce verdict tel quel à la pile. Tant que $Q_{r,i} < K$, la réaction évolue dans le sens direct : le zinc est oxydé, les ions $Cu^{2+}$ sont réduits, et c'est précisément cette évolution qui débite le courant. Le jour où $Q_{r,i}$ rejoint $K$, l'évolution nette cesse et la pile ne débite plus de courant utile - on y reviendra au rung sur l'usure.
+Comme établi au chapitre sur l'évolution spontanée d'un système, on compare $Q_{r,i}$ à $K$ : $Q_{r,i} < K$ donne le sens direct, $Q_{r,i} > K$ le sens inverse, $Q_{r,i} = K$ un système déjà à l'équilibre. On applique ce verdict tel quel à la pile. Tant que $Q_{r,i} < K$, la réaction évolue dans le sens direct : le zinc est oxydé, les ions $Cu^{2+}$ sont réduits, et c'est précisément cette évolution qui débite le courant. Le jour où $Q_{r,i}$ rejoint $K$, l'évolution nette cesse et la pile ne débite plus de courant utile - on y reviendra au chapitre sur l'usure.
 
 C'est ce critère, et rien d'autre, qui décide laquelle des deux électrodes cède ses électrons et laquelle les reçoit : une conséquence du calcul, pas une règle à mémoriser électrode par électrode.
 
@@ -92,14 +92,14 @@ Remarque ce que ce calcul révèle : avec un $K$ aussi écrasant, à peu près n
 
 ## R3 — La polarité : cathode (borne +), anode (borne -)
 
-Maintenant qu'on sait, par le calcul du rung précédent, quelle électrode s'oxyde et laquelle se réduit, il faut leur donner un nom - et surtout, associer chacune à la bonne borne (+ ou -) de la pile.
+Maintenant qu'on sait, par le calcul du chapitre précédent, quelle électrode s'oxyde et laquelle se réduit, il faut leur donner un nom - et surtout, associer chacune à la bonne borne (+ ou -) de la pile.
 
 ### Les deux noms, et pourquoi les bornes leur correspondent
 
 - L'électrode où se produit l'**oxydation** s'appelle l'**anode**.
 - L'électrode où se produit la **réduction** s'appelle la **cathode**.
 
-Pour la pile Daniell, avec le sens spontané établi au rung 2 : le zinc, qui s'oxyde, est l'anode ; le cuivre, qui se réduit, est la cathode.
+Pour la pile Daniell, avec le sens spontané établi au chapitre 2 : le zinc, qui s'oxyde, est l'anode ; le cuivre, qui se réduit, est la cathode.
 
 *Pourquoi c'est vrai, et pas l'inverse :* à l'anode, l'oxydation libère des électrons dans le métal - ils s'y accumulent, avant de partir dans le fil. Une électrode où les électrons s'accumulent est, par rapport au reste du circuit, chargée plus négativement : c'est la borne $-$. À la cathode, c'est l'inverse : la réduction consomme des électrons, les tirant hors du métal - cette électrode s'appauvrit en électrons, elle est donc, relativement, chargée plus positivement : c'est la borne $+$.
 
@@ -113,7 +113,7 @@ Reviens au mécanisme, pas au mot. Ce qui compte, ce n'est pas ce que le nom « 
 
 ### Exemple travaillé
 
-Reprends la pile Daniell du rung 2. On a établi que $Q_{r,i} < K$, donc le zinc s'oxyde et les ions $Cu^{2+}$ se réduisent. Nomme complètement les deux électrodes :
+Reprends la pile Daniell du chapitre 2. On a établi que $Q_{r,i} < K$, donc le zinc s'oxyde et les ions $Cu^{2+}$ se réduisent. Nomme complètement les deux électrodes :
 
 - Le zinc est le siège de l'oxydation : c'est l'**anode**, la **borne** $-$.
 - Le cuivre est le siège de la réduction : c'est la **cathode**, la **borne** $+$.
@@ -128,7 +128,7 @@ Décrire une pile en trois phrases, comme on vient de le faire, est long et se p
 
 1. On écrit les deux électrodes **aux extrémités**, en portant leur polarité : la **borne $-$ à gauche**, la **borne $+$ à droite**. C'est l'ordre conventionnel, et il n'est pas négociable — c'est lui qui rend le schéma lisible sans commentaire.
 2. Une **barre simple** $|$ marque une **frontière entre deux phases différentes** : le métal solide d'un côté, la solution qui le baigne de l'autre. C'est là que se produit la demi-réaction.
-3. Une **double barre** $\|$ marque la **jonction entre les deux solutions** — c'est le pont salin (ou la paroi poreuse) du rung 1. Elle sépare les deux demi-piles, qui ne doivent jamais se mélanger.
+3. Une **double barre** $\|$ marque la **jonction entre les deux solutions** — c'est le pont salin (ou la paroi poreuse) du chapitre 1. Elle sépare les deux demi-piles, qui ne doivent jamais se mélanger.
 
 **Sur la pile Daniell**, avec le zinc en anode (borne $-$) et le cuivre en cathode (borne $+$) :
 
@@ -136,7 +136,7 @@ $$\ominus\ \text{Zn}_{(s)}\ \big|\ \text{Zn}^{2+}_{(aq)}\ \big\|\ \text{Cu}^{2+}
 
 **Lis la ligne de gauche à droite et retrouve toute la pile.** À gauche, le zinc métallique en contact avec sa solution d'ions $Zn^{2+}$ : c'est la demi-pile où le zinc s'oxyde et libère des électrons, donc la borne $-$. Au centre, la double barre : le pont salin, qui maintient l'électroneutralité sans laisser les solutions se mélanger. À droite, les ions $Cu^{2+}$ en contact avec le cuivre métallique : la demi-pile où la réduction consomme les électrons, donc la borne $+$. Rien n'a été perdu par rapport aux trois phrases — et dans le sens de lecture, de gauche à droite, on suit **le trajet des électrons dans le circuit extérieur**, de l'anode vers la cathode.
 
-*Le piège de cette écriture, et il coûte un point entier :* écrire la pile **à l'envers**, borne $+$ à gauche. Le schéma n'est pas symétrique, il porte l'information de polarité dans son ordre même. Le contrôle à faire systématiquement : l'espèce écrite à l'extrême gauche doit être celle **qui s'oxyde**, celle qui disparaît en donnant ses électrons. Sur la Daniell, c'est le zinc — et c'est cohérent avec ce que le rung 2 a établi ($Q_{r,i} < K$).
+*Le piège de cette écriture, et il coûte un point entier :* écrire la pile **à l'envers**, borne $+$ à gauche. Le schéma n'est pas symétrique, il porte l'information de polarité dans son ordre même. Le contrôle à faire systématiquement : l'espèce écrite à l'extrême gauche doit être celle **qui s'oxyde**, celle qui disparaît en donnant ses électrons. Sur la Daniell, c'est le zinc — et c'est cohérent avec ce que le chapitre 2 a établi ($Q_{r,i} < K$).
 
 [[checkpoint:cp-r3-anode-cathode]]
 
@@ -150,7 +150,7 @@ Le sens conventionnel du courant électrique a été fixé - par convention, arb
 
 ### Application au circuit extérieur d'une pile
 
-Reprends la pile Daniell du rung 3 : le zinc (anode, borne $-$) libère des électrons par oxydation ; le cuivre (cathode, borne $+$) les consomme par réduction. Dans le circuit extérieur (le fil, l'ampèremètre, la lampe éventuelle), ces électrons n'ont qu'un chemin : de l'électrode où ils sont produits vers celle où ils sont consommés.
+Reprends la pile Daniell du chapitre 3 : le zinc (anode, borne $-$) libère des électrons par oxydation ; le cuivre (cathode, borne $+$) les consomme par réduction. Dans le circuit extérieur (le fil, l'ampèremètre, la lampe éventuelle), ces électrons n'ont qu'un chemin : de l'électrode où ils sont produits vers celle où ils sont consommés.
 
 Dans le circuit extérieur, les électrons circulent donc de la borne $-$ vers la borne $+$. Et puisque le courant conventionnel circule en sens inverse des électrons, dans ce même circuit extérieur, le courant conventionnel circule de la borne $+$ vers la borne $-$.
 
@@ -166,7 +166,7 @@ Vérifie-le sur la pile Daniell : les électrons vont de l'anode (zinc, $-$) ver
 
 Sur le schéma de la pile Daniell : la lame de zinc est plongée dans le bécher de gauche, la lame de cuivre dans le bécher de droite, les deux reliées par un fil passant par un ampèremètre au-dessus des béchers, et les deux solutions reliées par un pont salin.
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on identifie d'abord l'anode et la cathode (rung 3), puis on en déduit les deux sens de circulation dans le circuit extérieur - électrons, puis courant, dans cet ordre, parce que le sens des électrons est le sens physique réel, et le sens du courant s'en déduit par inversion.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on identifie d'abord l'anode et la cathode (chapitre 3), puis on en déduit les deux sens de circulation dans le circuit extérieur - électrons, puis courant, dans cet ordre, parce que le sens des électrons est le sens physique réel, et le sens du courant s'en déduit par inversion.
 
 Le zinc (à gauche) est l'anode, borne $-$. Le cuivre (à droite) est la cathode, borne $+$. Dans le fil au-dessus des béchers : les électrons partent de la lame de zinc, traversent l'ampèremètre, et arrivent à la lame de cuivre - de gauche à droite. Le courant conventionnel, affiché par l'ampèremètre, circule en sens inverse : de la lame de cuivre vers la lame de zinc - de droite à gauche.
 
@@ -184,13 +184,13 @@ Branche un voltmètre (un appareil à très forte résistance interne, qui ne la
 
 $$E = V_{+} - V_{-} = V_{\text{cathode}} - V_{\text{anode}}$$
 
-*Pourquoi cette grandeur est positive pour une pile qui fonctionne réellement :* la cathode, on l'a vu au rung 3, est la borne $+$ - relativement plus riche en charges positives que l'anode, la borne $-$. La différence $V_{\text{cathode}} - V_{\text{anode}}$ est donc positive dès lors que la réaction est bien spontanée dans le sens qu'on a déterminé au rung 2 (c'est-à-dire $Q_{r,i} < K$). Une f.é.m. positive, c'est exactement la trace électrique de la comparaison chimique $Q_{r,i} < K$ : c'est la même conclusion, vue par le voltmètre plutôt que par le calcul de $Q_r$.
+*Pourquoi cette grandeur est positive pour une pile qui fonctionne réellement :* la cathode, on l'a vu au chapitre 3, est la borne $+$ - relativement plus riche en charges positives que l'anode, la borne $-$. La différence $V_{\text{cathode}} - V_{\text{anode}}$ est donc positive dès lors que la réaction est bien spontanée dans le sens qu'on a déterminé au chapitre 2 (c'est-à-dire $Q_{r,i} < K$). Une f.é.m. positive, c'est exactement la trace électrique de la comparaison chimique $Q_{r,i} < K$ : c'est la même conclusion, vue par le voltmètre plutôt que par le calcul de $Q_r$.
 
 ### Ordre de grandeur
 
-Pour une pile Daniell dans des conditions usuelles de concentration, on mesure typiquement une f.é.m. de l'ordre de $E \approx 1{,}1\ \text{V}$. C'est cette tension qui, une fois le circuit refermé sur un récepteur, va pousser le courant dans le sens établi au rung 4 : du $+$ vers le $-$ à travers le circuit extérieur.
+Pour une pile Daniell dans des conditions usuelles de concentration, on mesure typiquement une f.é.m. de l'ordre de $E \approx 1{,}1\ \text{V}$. C'est cette tension qui, une fois le circuit refermé sur un récepteur, va pousser le courant dans le sens établi au chapitre 4 : du $+$ vers le $-$ à travers le circuit extérieur.
 
-Retiens ce que représente $E$ : c'est la grandeur électrique qui traduit, en volts, la « force » avec laquelle le système chimique veut évoluer vers l'équilibre. Plus $Q_{r,i}$ est loin en dessous de $K$, plus cette force est grande ; à mesure que la pile fonctionne et que $Q_{r,i}$ se rapproche de $K$ (rung suivant), cette f.é.m. s'affaiblit.
+Retiens ce que représente $E$ : c'est la grandeur électrique qui traduit, en volts, la « force » avec laquelle le système chimique veut évoluer vers l'équilibre. Plus $Q_{r,i}$ est loin en dessous de $K$, plus cette force est grande ; à mesure que la pile fonctionne et que $Q_{r,i}$ se rapproche de $K$ (chapitre suivant), cette f.é.m. s'affaiblit.
 
 ---
 
@@ -198,7 +198,7 @@ Retiens ce que représente $E$ : c'est la grandeur électrique qui traduit, en v
 
 ### Attention à un piège de notation
 
-Une précision avant d'aller plus loin : la lettre $Q$ qu'on va utiliser dans ce rung - la **quantité d'électricité** - n'a rien à voir avec le quotient de réaction $Q_r$ des rungs précédents. Ce sont deux grandeurs complètement différentes, qui portent malheureusement la même lettre par convention historique. Garde-les bien séparées : $Q_r$ compare des concentrations, sans unité ; $Q$, ici, mesure une charge électrique, en coulombs.
+Une précision avant d'aller plus loin : la lettre $Q$ qu'on va utiliser dans ce chapitre - la **quantité d'électricité** - n'a rien à voir avec le quotient de réaction $Q_r$ des chapitres précédents. Ce sont deux grandeurs complètement différentes, qui portent malheureusement la même lettre par convention historique. Garde-les bien séparées : $Q_r$ compare des concentrations, sans unité ; $Q$, ici, mesure une charge électrique, en coulombs.
 
 ### Construire $Q = I\,\Delta t$
 
@@ -248,7 +248,7 @@ Voici une idée fausse et pourtant répandue : puisque la pile semble « fabriqu
 
 Le calcul qu'on vient de faire dit le contraire, très concrètement : chaque coulomb débité correspond à une quantité précise et irréversible de zinc métallique qui a disparu de l'anode. La lame de zinc contient une masse finie de métal au départ - elle ne se régénère pas. Une pile n'est pas une source d'énergie illimitée : c'est un réservoir fini d'énergie chimique, qui se convertit en énergie électrique jusqu'à épuisement du réactif limitant.
 
-On retrouve d'ailleurs cette usure dans le langage du rung 2 : à mesure que la pile fonctionne, $[Zn^{2+}]$ augmente et $[Cu^{2+}]$ diminue dans les deux demi-piles, donc $Q_{r,i} = [Zn^{2+}]/[Cu^{2+}]$ ne cesse d'augmenter - exactement comme pour n'importe quel système qui évolue dans le sens direct, comme tu l'as vu dans le chapitre sur l'état d'équilibre. Et à mesure que $Q_{r,i}$ se rapproche de $K$, l'écart qui alimentait la f.é.m. (rung 5) se réduit : la tension aux bornes de la pile faiblit, jusqu'à devenir trop petite pour débiter un courant utile. La pile est alors « usée » - non pas cassée, mais chimiquement épuisée, son système ayant rejoint (ou presque) l'équilibre $Q_{r,i} = K$.
+On retrouve d'ailleurs cette usure dans le langage du chapitre 2 : à mesure que la pile fonctionne, $[Zn^{2+}]$ augmente et $[Cu^{2+}]$ diminue dans les deux demi-piles, donc $Q_{r,i} = [Zn^{2+}]/[Cu^{2+}]$ ne cesse d'augmenter - exactement comme pour n'importe quel système qui évolue dans le sens direct, comme tu l'as vu dans le chapitre sur l'état d'équilibre. Et à mesure que $Q_{r,i}$ se rapproche de $K$, l'écart qui alimentait la f.é.m. (chapitre 5) se réduit : la tension aux bornes de la pile faiblit, jusqu'à devenir trop petite pour débiter un courant utile. La pile est alors « usée » - non pas cassée, mais chimiquement épuisée, son système ayant rejoint (ou presque) l'équilibre $Q_{r,i} = K$.
 
 [[checkpoint:cp-r6-quantite-electricite]]
 

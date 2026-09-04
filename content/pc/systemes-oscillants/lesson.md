@@ -90,7 +90,7 @@ L'hypothèse est confirmée, à condition que $\omega_0$ prenne exactement cette
 
 $$T_0 = \frac{2\pi}{\omega_0} = 2\pi\sqrt{\frac{m}{k}}$$
 
-$T_0$ ne dépend que de $m$ et de $k$ — les deux seules grandeurs qui figurent dans l'équation différentielle. Rien d'autre n'y apparaît, donc rien d'autre ne peut apparaître dans $T_0$ : ni l'amplitude $X_m$, ni la phase $\varphi$. On y reviendra précisément dans le prochain rung.
+$T_0$ ne dépend que de $m$ et de $k$ — les deux seules grandeurs qui figurent dans l'équation différentielle. Rien d'autre n'y apparaît, donc rien d'autre ne peut apparaître dans $T_0$ : ni l'amplitude $X_m$, ni la phase $\varphi$. On y reviendra précisément dans le prochain chapitre.
 
 [[figure:pendule-elastique]]
 
@@ -129,7 +129,7 @@ Voici le piège précis à éviter. La pulsation $\omega_0$ (en rad/s) N'EST PAS
 
 $$f_0 = \frac{1}{T_0} \qquad \text{et} \qquad \omega_0 = \frac{2\pi}{T_0} = 2\pi f_0$$
 
-Teste-toi avant de continuer : reprends l'exemple du rung précédent, $\omega_0 = 10\ \text{rad/s}$. Est-ce que le système effectue dix oscillations par seconde ?
+Teste-toi avant de continuer : reprends l'exemple du chapitre précédent, $\omega_0 = 10\ \text{rad/s}$. Est-ce que le système effectue dix oscillations par seconde ?
 
 Non. $f_0 = \dfrac{\omega_0}{2\pi} = \dfrac{10}{2\pi} \approx 1{,}59\ \text{Hz}$ : un peu plus d'une oscillation et demie par seconde, pas dix. L'erreur classique consiste à lire directement la valeur numérique de $\omega_0$ comme si c'était une fréquence en Hz — alors que $\omega_0$ compte des radians par seconde, une unité d'angle, pas un nombre de cycles. Le facteur $2\pi$ (les radians parcourus en un cycle complet) sépare toujours les deux grandeurs. Pour convertir une pulsation en fréquence, ou une fréquence en pulsation, il faut TOUJOURS passer par ce facteur $2\pi$ — jamais les identifier terme à terme.
 
@@ -137,7 +137,7 @@ Non. $f_0 = \dfrac{\omega_0}{2\pi} = \dfrac{10}{2\pi} \approx 1{,}59\ \text{Hz}$
 
 $\omega_0$ (donc $T_0$) est fixée par $k$ et $m$ seuls — on vient de l'établir. $X_m$ et $\varphi$, en revanche, ne dépendent pas du ressort : ils dépendent de la façon dont on a LANCÉ le mouvement, c'est-à-dire des conditions initiales $x(0)$ et $v(0) = \dot{x}(0)$.
 
-Il faut d'abord la vitesse $\dot{x}(t)$, déjà calculée en vérifiant l'hypothèse au rung précédent :
+Il faut d'abord la vitesse $\dot{x}(t)$, déjà calculée en vérifiant l'hypothèse au chapitre précédent :
 
 $$v(t) = \dot{x}(t) = -X_m\,\omega_0\,\sin(\omega_0 t + \varphi)$$
 
@@ -149,7 +149,7 @@ Deux équations, deux inconnues ($X_m$ et $\varphi$) : on peut les résoudre pou
 
 ### Exemple travaillé — deux lancers différents, même oscillateur
 
-On reprend l'oscillateur du rung précédent : $k = 40\ \text{N/m}$, $m = 0{,}40\ \text{kg}$, $\omega_0 = 10\ \text{rad/s}$.
+On reprend l'oscillateur du chapitre précédent : $k = 40\ \text{N/m}$, $m = 0{,}40\ \text{kg}$, $\omega_0 = 10\ \text{rad/s}$.
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on va lancer le même système de deux façons différentes, pour bien voir que $X_m$ et $\varphi$ changent avec le lancer, alors que $\omega_0$ et $T_0$, eux, ne bougent pas.
 
@@ -219,7 +219,7 @@ Pour des angles petits (en pratique, en dessous d'une vingtaine de degrés), $\s
 
 $$\boxed{\ddot{\theta} + \frac{g}{L}\,\theta = 0}$$
 
-C'est exactement la même forme que l'équation du pendule élastique, $\ddot{x} + \dfrac{k}{m}x = 0$ — seuls les noms changent : $\theta$ au lieu de $x$, et $g/L$ au lieu de $k/m$. La solution est donc, par le même raisonnement de vérification qu'au rung précédent :
+C'est exactement la même forme que l'équation du pendule élastique, $\ddot{x} + \dfrac{k}{m}x = 0$ — seuls les noms changent : $\theta$ au lieu de $x$, et $g/L$ au lieu de $k/m$. La solution est donc, par le même raisonnement de vérification qu'au chapitre précédent :
 
 $$\theta(t) = \theta_m \cos(\omega_0 t + \varphi), \qquad \omega_0 = \sqrt{\frac{g}{L}}, \qquad T_0 = 2\pi\sqrt{\frac{L}{g}}$$
 
@@ -281,13 +281,13 @@ $$M_{rappel} = -C\,\theta$$
 
 où $C$ (en $\text{N}\cdot\text{m}/\text{rad}$) est la **constante de torsion** du fil — l'analogue exact de la raideur $k$ du ressort, mais pour un moment plutôt que pour une force.
 
-On applique la même relation rotationnelle qu'au rung précédent, avec cette fois aucune autre force ne produisant de moment (le poids du solide et la réaction du fil passent par l'axe de rotation) :
+On applique la même relation rotationnelle qu'au chapitre précédent, avec cette fois aucune autre force ne produisant de moment (le poids du solide et la réaction du fil passent par l'axe de rotation) :
 
 $$J\,\ddot{\theta} = M_{rappel} = -C\,\theta$$
 
 $$\boxed{\ddot{\theta} + \frac{C}{J}\,\theta = 0}$$
 
-où $J$ est le moment d'inertie du solide par rapport à l'axe du fil. Encore une fois, la même forme d'équation — et donc, sans repasser par la vérification (elle est identique à celle du rung R1), la même famille de solution et de grandeurs :
+où $J$ est le moment d'inertie du solide par rapport à l'axe du fil. Encore une fois, la même forme d'équation — et donc, sans repasser par la vérification (elle est identique à celle du chapitre 2), la même famille de solution et de grandeurs :
 
 $$\theta(t) = \theta_m\cos(\omega_0 t + \varphi), \qquad \omega_0 = \sqrt{\frac{C}{J}}, \qquad T_0 = 2\pi\sqrt{\frac{J}{C}}$$
 
@@ -309,7 +309,7 @@ Ce n'est pas un hasard si la même équation revient à chaque fois : chaque sys
 
 ## R5 — Les aspects énergétiques : deux réservoirs d'énergie, en aperçu
 
-Revenons au pendule élastique horizontal (sans frottement), et regardons où va l'énergie au cours du mouvement — exactement la question qu'on s'était posée pour le circuit RLC oscillant, dans le chapitre sur les oscillations électriques. Ce rung reste volontairement un aperçu : la démonstration complète, avec les diagrammes d'énergie détaillés, est le sujet du chapitre **Aspects énergétiques**, qui vient juste après celui-ci. Ici, l'objectif est plus modeste — mais indispensable pour comprendre ce qui suit : savoir OÙ se trouve l'énergie, à chaque instant, sans encore la démontrer en détail.
+Revenons au pendule élastique horizontal (sans frottement), et regardons où va l'énergie au cours du mouvement — exactement la question qu'on s'était posée pour le circuit RLC oscillant, dans le chapitre sur les oscillations électriques. Ce chapitre reste volontairement un aperçu : la démonstration complète, avec les diagrammes d'énergie détaillés, est le sujet du chapitre **Aspects énergétiques**, qui vient juste après celui-ci. Ici, l'objectif est plus modeste — mais indispensable pour comprendre ce qui suit : savoir OÙ se trouve l'énergie, à chaque instant, sans encore la démontrer en détail.
 
 ### Les deux réservoirs d'énergie
 
@@ -336,7 +336,7 @@ Entre ces deux instants, l'énergie ne disparaît pas et ne surgit pas de nulle 
 
 Pour un pendule simple ou pesant, sans frottement, le même principe s'applique : $E_m = E_c + E_p$ voyage entre les deux réservoirs sans se perdre, où $E_p$ est cette fois l'énergie potentielle de PESANTEUR (et non élastique) — le mécanisme est identique, seule la nature de l'énergie potentielle change.
 
-Cette image à deux réservoirs — une énergie qui voyage sans disparaître — est la clé pour comprendre ce qui suit : ce qui se passe quand une partie de cette énergie se met à FUIR (l'amortissement, au prochain rung), et ce qui se passe quand quelqu'un, de l'extérieur, vient au contraire en RÉINJECTER (la résonance, juste après).
+Cette image à deux réservoirs — une énergie qui voyage sans disparaître — est la clé pour comprendre ce qui suit : ce qui se passe quand une partie de cette énergie se met à FUIR (l'amortissement, au prochain chapitre), et ce qui se passe quand quelqu'un, de l'extérieur, vient au contraire en RÉINJECTER (la résonance, juste après).
 
 ---
 
@@ -368,7 +368,7 @@ Résultat, pour un frottement faible : la durée entre deux passages successifs 
 
 ### Les régimes d'amortissement
 
-On distingue le cas idéal, déjà étudié — le **régime périodique** ($h \approx 0$), oscillations à amplitude constante, période $T_0$, exactement les rungs précédents — des régimes propres à l'amortissement :
+On distingue le cas idéal, déjà étudié — le **régime périodique** ($h \approx 0$), oscillations à amplitude constante, période $T_0$, exactement les chapitres précédents — des régimes propres à l'amortissement :
 
 - **Pseudo-périodique** (amortissement faible) : le solide oscille encore, l'amplitude décroît à chaque aller-retour, et la pseudo-période $T \approx T_0$ — c'est le résultat qu'on vient de discuter.
 - **Critique** : le cas-limite, à la frontière entre les deux comportements suivants — le solide revient à l'équilibre **le plus rapidement possible, sans jamais le dépasser** (aucune oscillation).
@@ -414,22 +414,22 @@ En résumé, dans l'ordre où on le lit sur une trace réelle : *amplitude qui d
 
 ## R7 — La résonance mécanique : quand on pousse au bon rythme
 
-Le rung précédent s'est arrêté sur un constat sans appel : un oscillateur livré à lui-même, avec du frottement, ne peut que PERDRE de l'énergie — jamais en regagner tout seul. Mais que se passe-t-il si quelqu'un, de l'extérieur, vient repousser le système à intervalles réguliers ? C'est exactement ce que tu fais quand tu pousses une balançoire : tu ne donnes pas un seul grand coup, tu donnes de petites poussées répétées — et si tu les donnes AU BON MOMENT, l'amplitude grandit énormément, pour un effort qui, poussée par poussée, ne pèse pourtant pas grand-chose.
+Le chapitre précédent s'est arrêté sur un constat sans appel : un oscillateur livré à lui-même, avec du frottement, ne peut que PERDRE de l'énergie — jamais en regagner tout seul. Mais que se passe-t-il si quelqu'un, de l'extérieur, vient repousser le système à intervalles réguliers ? C'est exactement ce que tu fais quand tu pousses une balançoire : tu ne donnes pas un seul grand coup, tu donnes de petites poussées répétées — et si tu les donnes AU BON MOMENT, l'amplitude grandit énormément, pour un effort qui, poussée par poussée, ne pèse pourtant pas grand-chose.
 
 <!-- Média optionnelle (C-RES-3, gemini) : illustration d'ambiance, poussées rythmées (balançoire) — non structurante, aucune dépendance du texte à cette image. -->
 [[figure:balancoire-resonance]]
 
-C'est ce phénomène — l'excitation d'un oscillateur, et son cas le plus spectaculaire, la **résonance** — que ce dernier rung explore. Attention : contrairement à ce qui précède, ce qui suit reste volontairement **qualitatif et expérimental**. Il n'y a pas d'équation à résoudre ici — seulement des rôles à distinguer, une condition à reconnaître, et des courbes mesurées à lire.
+C'est ce phénomène — l'excitation d'un oscillateur, et son cas le plus spectaculaire, la **résonance** — que ce dernier chapitre explore. Attention : contrairement à ce qui précède, ce qui suit reste volontairement **qualitatif et expérimental**. Il n'y a pas d'équation à résoudre ici — seulement des rôles à distinguer, une condition à reconnaître, et des courbes mesurées à lire.
 
 ### Excitateur et résonateur : deux rôles à ne pas confondre
 
-On appelle **résonateur** le système oscillant lui-même — un pendule élastique, un pendule pesant, n'importe lequel des systèmes des rungs précédents. Il a une fréquence propre $f_0$ (ou une période propre $T_0$), FIXÉE par ses propres caractéristiques ($m$, $k$, ou $J$, $C$...) — une propriété du système, qui ne change pas.
+On appelle **résonateur** le système oscillant lui-même — un pendule élastique, un pendule pesant, n'importe lequel des systèmes des chapitres précédents. Il a une fréquence propre $f_0$ (ou une période propre $T_0$), FIXÉE par ses propres caractéristiques ($m$, $k$, ou $J$, $C$...) — une propriété du système, qui ne change pas.
 
 On appelle **excitateur** le dispositif qui vient forcer le résonateur — typiquement un moteur muni d'un excentrique (un « vibreur »), relié au résonateur, qui lui impose une fréquence $f_{exc}$ que l'expérimentateur choisit et fait varier librement, comme on tourne un bouton.
 
 Prends position avant de continuer. Une fois le résonateur mis en mouvement forcé par l'excitateur, à quelle fréquence oscille-t-il, en régime établi — à SA fréquence propre $f_0$, ou à la fréquence $f_{exc}$ que lui impose l'excitateur ? Et si tu penses que c'est $f_0$ : cette fréquence propre finit-elle par se déplacer, pour rejoindre $f_{exc}$ ?
 
-Beaucoup répondent que le résonateur « retourne » à sa fréquence propre, ou encore que $f_0$ « s'ajuste » pour se rapprocher de celle de l'excitateur — comme si le résonateur reprenait le contrôle du rythme. Ce n'est pas ce qui se passe. En régime établi, le résonateur oscille À LA FRÉQUENCE $f_{exc}$ — celle que l'excitateur lui impose — pas à sa propre $f_0$. Et $f_0$, elle, ne bouge JAMAIS : elle reste fixée par $m$ et $k$ (ou $J$ et $C$) du résonateur, exactement comme au rung R1. Ce que $f_{exc}$ fait varier, ce n'est pas $f_0$ — c'est l'AMPLITUDE de la réponse du résonateur. C'est précisément le sujet de ce qui suit.
+Beaucoup répondent que le résonateur « retourne » à sa fréquence propre, ou encore que $f_0$ « s'ajuste » pour se rapprocher de celle de l'excitateur — comme si le résonateur reprenait le contrôle du rythme. Ce n'est pas ce qui se passe. En régime établi, le résonateur oscille À LA FRÉQUENCE $f_{exc}$ — celle que l'excitateur lui impose — pas à sa propre $f_0$. Et $f_0$, elle, ne bouge JAMAIS : elle reste fixée par $m$ et $k$ (ou $J$ et $C$) du résonateur, exactement comme au chapitre 2. Ce que $f_{exc}$ fait varier, ce n'est pas $f_0$ — c'est l'AMPLITUDE de la réponse du résonateur. C'est précisément le sujet de ce qui suit.
 
 ### La condition de résonance : pourquoi l'amplitude explose près de $f_0$
 
@@ -447,7 +447,7 @@ Fais varier $f_{exc}$ sur le montage, de très bas vers très haut : regarde l'a
 
 Une dernière question, elle aussi contre-intuitive. Un frottement plus fort rend-il la résonance plus intense, plus « pointue » — comme s'il concentrait l'énergie sur $f_0$ ?
 
-C'est tentant à imaginer, mais c'est l'inverse qui se produit. L'amplitude du résonateur grandit tant que l'énergie injectée par l'excitateur, à chaque cycle, dépasse l'énergie dissipée par le frottement ; elle se stabilise dès que les deux s'équilibrent. Avec un **amortissement faible**, cet équilibre n'est atteint qu'à très grande amplitude, et seulement dans une bande étroite de fréquences autour de $f_0$ : la résonance est **aiguë** (un pic haut et étroit). Avec un **amortissement fort**, l'équilibre est atteint bien plus tôt, à amplitude modeste, sur une large bande de fréquences : la résonance est **floue** (un pic bas et large). Le frottement, ici comme au rung précédent, ne fait jamais que freiner — il n'aiguise jamais la résonance, il l'émousse.
+C'est tentant à imaginer, mais c'est l'inverse qui se produit. L'amplitude du résonateur grandit tant que l'énergie injectée par l'excitateur, à chaque cycle, dépasse l'énergie dissipée par le frottement ; elle se stabilise dès que les deux s'équilibrent. Avec un **amortissement faible**, cet équilibre n'est atteint qu'à très grande amplitude, et seulement dans une bande étroite de fréquences autour de $f_0$ : la résonance est **aiguë** (un pic haut et étroit). Avec un **amortissement fort**, l'équilibre est atteint bien plus tôt, à amplitude modeste, sur une large bande de fréquences : la résonance est **floue** (un pic bas et large). Le frottement, ici comme au chapitre précédent, ne fait jamais que freiner — il n'aiguise jamais la résonance, il l'émousse.
 
 [[checkpoint:cp-r7-acuite]]
 
@@ -488,7 +488,7 @@ On ne cherche pas une formule d'amplitude — on lit le tableau : l'amplitude cu
 
 ### Ce que ces exercices empruntent à d'autres chapitres
 
-Le rung 5 n'a donné les deux réservoirs d'énergie qu'**en aperçu**. Dès qu'un sujet demande un bilan chiffré, il mobilise deux outils que cette leçon ne construit pas :
+Le chapitre 5 n'a donné les deux réservoirs d'énergie qu'**en aperçu**. Dès qu'un sujet demande un bilan chiffré, il mobilise deux outils que cette leçon ne construit pas :
 
 - **Le travail d'une force conservative et sa relation à l'énergie potentielle**, $W = -\Delta E_p$ — c'est elle qui permet de chiffrer le travail d'une force de rappel ou d'un couple de torsion entre deux positions, sans intégrer quoi que ce soit. Elle vit dans « **Aspects énergétiques** », avec les expressions $\frac{1}{2}kx^2$ pour le ressort et $\frac{1}{2}C\theta^2$ pour le fil de torsion.
 - **L'énergie cinétique de rotation**, $E_c = \frac{1}{2}J_\Delta\,\dot\theta^{\,2}$, dès qu'il s'agit d'un pendule pesant ou de torsion — l'analogue de $\frac{1}{2}mv^2$ avec le moment d'inertie à la place de la masse. Elle est établie dans « **Rotation d'un solide autour d'un axe fixe** », qui construit aussi $J_\Delta$ lui-même et la relation fondamentale de la dynamique en rotation que ces pendules utilisent pour poser leur équation.

@@ -28,7 +28,7 @@ $$m\,\vec{g} = m\,\vec{a}_G$$
 
 $$\vec{a}_G = \vec{g}$$
 
-Cette fois, on choisit un repère avec l'axe $Oy$ **vertical, orienté vers le haut** — c'est le choix qu'on va garder pour tout le reste de cette leçon, parce qu'il va falloir, dans quelques rungs, ajouter un axe horizontal à côté de lui, et il est plus simple de fixer une bonne fois les conventions de signe. Avec cette orientation, $\vec{g}$ pointe vers le bas, donc **à l'opposé** du sens choisi pour $Oy$ : sa composante selon $Oy$ est donc **négative**, $g_y = -g$, avec $g \approx 9{,}8\ \text{m/s}^2$.
+Cette fois, on choisit un repère avec l'axe $Oy$ **vertical, orienté vers le haut** — c'est le choix qu'on va garder pour tout le reste de cette leçon, parce qu'il va falloir, dans quelques chapitres, ajouter un axe horizontal à côté de lui, et il est plus simple de fixer une bonne fois les conventions de signe. Avec cette orientation, $\vec{g}$ pointe vers le bas, donc **à l'opposé** du sens choisi pour $Oy$ : sa composante selon $Oy$ est donc **négative**, $g_y = -g$, avec $g \approx 9{,}8\ \text{m/s}^2$.
 
 Retiens bien ce point de méthode : ce signe négatif n'a rien de mystérieux ni d'universel — il est la conséquence directe du choix « $Oy$ vers le haut ». Si tu avais choisi $Oy$ vers le bas (comme au chapitre précédent), tu aurais trouvé $a_y = +g$. Les deux sont corrects ; ce qui compte, c'est de projeter honnêtement TA propre convention, pas de mémoriser un signe tout fait.
 
@@ -68,7 +68,7 @@ $$y(t_{sommet}) = 9{,}8 \times 1{,}0 - 4{,}9 \times 1{,}0^2 = 9{,}8 - 4{,}9 = 4{
 
 $$9{,}8\,t - 4{,}9\,t^2 = 0 \implies t\,(9{,}8 - 4{,}9\,t) = 0 \implies t = 0 \ \text{ou}\ t_{sol} = 2{,}0\ \text{s}$$
 
-Remarque ce qui vient de se produire : $t_{sol} = 2{,}0\ \text{s}$ est exactement **le double** de $t_{sommet} = 1{,}0\ \text{s}$. La montée et la descente prennent rigoureusement le même temps. Ce n'est pas une coïncidence de cet exemple précis — c'est une conséquence directe de la forme parabolique de $y(t)$, et on va retrouver exactement cette même symétrie, avec les mêmes noms, dans le mouvement à deux dimensions du rung suivant.
+Remarque ce qui vient de se produire : $t_{sol} = 2{,}0\ \text{s}$ est exactement **le double** de $t_{sommet} = 1{,}0\ \text{s}$. La montée et la descente prennent rigoureusement le même temps. Ce n'est pas une coïncidence de cet exemple précis — c'est une conséquence directe de la forme parabolique de $y(t)$, et on va retrouver exactement cette même symétrie, avec les mêmes noms, dans le mouvement à deux dimensions du chapitre suivant.
 
 [[figure:symetrie-montee-descente]]
 
@@ -80,7 +80,7 @@ Remarque ce qui vient de se produire : $t_{sol} = 2{,}0\ \text{s}$ est exactemen
 
 On lance maintenant un projectile — une balle, un ballon, une pierre — non plus à la verticale, mais avec une vitesse initiale $\vec{v}_0$ **inclinée** d'un angle $\alpha$ au-dessus de l'horizontale. On travaille dans le référentiel terrestre, supposé galiléen, et on néglige les frottements de l'air : la seule force qui s'exerce sur le projectile est son poids $\vec{P} = m\vec{g}$.
 
-La deuxième loi de Newton s'écrit exactement comme au rung précédent :
+La deuxième loi de Newton s'écrit exactement comme au chapitre précédent :
 
 $$\vec{P} = m\,\vec{a}_G \implies \vec{a}_G = \vec{g}$$
 
@@ -88,7 +88,7 @@ Rien de nouveau jusqu'ici : la masse du projectile disparaît complètement de l
 
 ### Choisir le repère et projeter
 
-On choisit un repère à deux axes : $Ox$ horizontal, dans le sens du lancer ; $Oy$ vertical, vers le haut — le même $Oy$ qu'au rung précédent. L'origine est prise au point de lancement, à l'instant $t=0$.
+On choisit un repère à deux axes : $Ox$ horizontal, dans le sens du lancer ; $Oy$ vertical, vers le haut — le même $Oy$ qu'au chapitre précédent. L'origine est prise au point de lancement, à l'instant $t=0$.
 
 Le vecteur $\vec{g}$ est purement vertical : il n'a **aucune** composante horizontale. En projetant $\vec{a}_G = \vec{g}$ sur les deux axes, on obtient donc deux équations scalaires **indépendantes** :
 
@@ -102,7 +102,7 @@ Une accélération horizontale nulle, constante, se primitive en une vitesse hor
 
 $$v_x(t) = v_{0x}$$
 
-Ce résultat mérite qu'on s'y arrête, parce qu'il tranche directement la question posée en R0. Beaucoup d'élèves imaginent que la vitesse horizontale ralentit en même temps que la vitesse verticale ralentit (en montée), pour ensuite « reprendre » en redescente — comme si les deux composantes étaient liées. Ce n'est pas le cas : ce sont deux mouvements **complètement indépendants**, gouvernés par deux équations séparées. La composante verticale $v_y(t)$ change bel et bien avec le temps (elle diminue, s'annule au sommet, puis devient négative) — c'est elle qu'on voit ralentir puis s'inverser. Mais $v_x(t)$, elle, ne bouge pas d'un iota : elle vaut $v_{0x}$ au lancer, $v_{0x}$ au sommet, $v_{0x}$ à l'impact. Rien dans le bilan des forces ne pourrait la faire changer, puisque $a_x = 0$ à chaque instant.
+Ce résultat mérite qu'on s'y arrête, parce qu'il tranche directement la question posée au chapitre 1. Beaucoup d'élèves imaginent que la vitesse horizontale ralentit en même temps que la vitesse verticale ralentit (en montée), pour ensuite « reprendre » en redescente — comme si les deux composantes étaient liées. Ce n'est pas le cas : ce sont deux mouvements **complètement indépendants**, gouvernés par deux équations séparées. La composante verticale $v_y(t)$ change bel et bien avec le temps (elle diminue, s'annule au sommet, puis devient négative) — c'est elle qu'on voit ralentir puis s'inverser. Mais $v_x(t)$, elle, ne bouge pas d'un iota : elle vaut $v_{0x}$ au lancer, $v_{0x}$ au sommet, $v_{0x}$ à l'impact. Rien dans le bilan des forces ne pourrait la faire changer, puisque $a_x = 0$ à chaque instant.
 
 [[motion:vecteurs-le-long-parabole]]
 
@@ -116,11 +116,11 @@ où $v_{0x}$ et $v_{0y}$ sont les composantes du vecteur vitesse initial $\vec{v
 
 $$v_{0x} = v_0\cos\alpha \qquad \text{et} \qquad v_{0y} = v_0\sin\alpha$$
 
-**Vérification aux deux cas extrêmes** (la même méthode qu'au chapitre précédent, pour être sûr du bon rôle de $\sin$ et $\cos$) : si $\alpha \to 0^\circ$ (lancer parfaitement horizontal), toute la vitesse doit être horizontale — $\cos 0^\circ = 1$ et $\sin 0^\circ = 0$ confirment $v_{0x} = v_0$, $v_{0y} = 0$. Si $\alpha \to 90^\circ$ (lancer parfaitement vertical), toute la vitesse doit être verticale — $\cos 90^\circ = 0$ et $\sin 90^\circ = 1$ confirment $v_{0x} = 0$, $v_{0y} = v_0$. Ce dernier cas est exactement la chute verticale du rung précédent : elle n'est pas un cas séparé, c'est le cas particulier $\alpha = 90^\circ$ du mouvement qu'on étudie maintenant, où le mouvement horizontal disparaît simplement parce que $v_{0x} = 0$.
+**Vérification aux deux cas extrêmes** (la même méthode qu'au chapitre précédent, pour être sûr du bon rôle de $\sin$ et $\cos$) : si $\alpha \to 0^\circ$ (lancer parfaitement horizontal), toute la vitesse doit être horizontale — $\cos 0^\circ = 1$ et $\sin 0^\circ = 0$ confirment $v_{0x} = v_0$, $v_{0y} = 0$. Si $\alpha \to 90^\circ$ (lancer parfaitement vertical), toute la vitesse doit être verticale — $\cos 90^\circ = 0$ et $\sin 90^\circ = 1$ confirment $v_{0x} = 0$, $v_{0y} = v_0$. Ce dernier cas est exactement la chute verticale du chapitre précédent : elle n'est pas un cas séparé, c'est le cas particulier $\alpha = 90^\circ$ du mouvement qu'on étudie maintenant, où le mouvement horizontal disparaît simplement parce que $v_{0x} = 0$.
 
 ### Exemple travaillé : construire les quatre équations
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* avant de pouvoir parler de trajectoire, de flèche ou de portée dans les rungs suivants, il faut ces quatre équations, une bonne fois, proprement établies. On va les réutiliser telles quelles.
+*Ce qu'on cherche ici, et pourquoi ce geste :* avant de pouvoir parler de trajectoire, de flèche ou de portée dans les chapitres suivants, il faut ces quatre équations, une bonne fois, proprement établies. On va les réutiliser telles quelles.
 
 On lance un projectile avec une vitesse initiale de norme $v_0 = 25\ \text{m/s}$, faisant un angle $\alpha$ avec l'horizontale tel que $\sin\alpha = 0{,}60$ et $\cos\alpha = 0{,}80$. On prend $g \approx 9{,}8\ \text{m/s}^2$, origine au point de lancement.
 
@@ -140,7 +140,7 @@ $$x(t) = 20\,t$$
 
 $$y(t) = 15\,t - 4{,}9\,t^2$$
 
-On va garder cet exemple — ce même $v_0$, ce même $\alpha$ — pour les rungs suivants.
+On va garder cet exemple — ce même $v_0$, ce même $\alpha$ — pour les chapitres suivants.
 
 ---
 
@@ -148,13 +148,13 @@ On va garder cet exemple — ce même $v_0$, ce même $\alpha$ — pour les rung
 
 ### Ce que $x(t)$ et $y(t)$ ne disent pas directement
 
-Les équations horaires $x(t)$ et $y(t)$ du rung précédent disent où se trouve le projectile à un instant $t$ donné. Mais elles ne disent pas directement, sans passer par $t$, quelle **forme géométrique** dessine sa trajectoire — la courbe que suivrait un pinceau attaché au projectile. Pour ça, il faut une relation entre $y$ et $x$ seuls, sans $t$ dedans. On l'obtient en **éliminant le temps** entre les deux équations horaires.
+Les équations horaires $x(t)$ et $y(t)$ du chapitre précédent disent où se trouve le projectile à un instant $t$ donné. Mais elles ne disent pas directement, sans passer par $t$, quelle **forme géométrique** dessine sa trajectoire — la courbe que suivrait un pinceau attaché au projectile. Pour ça, il faut une relation entre $y$ et $x$ seuls, sans $t$ dedans. On l'obtient en **éliminant le temps** entre les deux équations horaires.
 
 ### La méthode
 
 $$x(t) = v_{0x}\,t$$
 
-Cette relation est réversible tant que $v_{0x} \neq 0$ (c'est-à-dire tant que $\alpha \neq 90^\circ$ — le seul cas où elle ne le serait pas est la chute verticale pure du rung 1, qui n'a pas de trajectoire à proprement parler puisque $x$ reste nul). On peut donc isoler $t$ :
+Cette relation est réversible tant que $v_{0x} \neq 0$ (c'est-à-dire tant que $\alpha \neq 90^\circ$ — le seul cas où elle ne le serait pas est la chute verticale pure du chapitre 1, qui n'a pas de trajectoire à proprement parler puisque $x$ reste nul). On peut donc isoler $t$ :
 
 $$t = \frac{x}{v_{0x}}$$
 
@@ -176,7 +176,7 @@ Remarque aussi ce qui **n'apparaît pas** dans cette équation : la masse $m$ du
 
 ### Exemple travaillé : l'équation de la trajectoire, avec vérification
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique la formule à l'exemple du rung précédent, puis on vérifie le résultat à un point qu'on connaît déjà par un autre calcul — c'est la meilleure garantie qu'on n'a pas fait d'erreur de substitution.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on applique la formule à l'exemple du chapitre précédent, puis on vérifie le résultat à un point qu'on connaît déjà par un autre calcul — c'est la meilleure garantie qu'on n'a pas fait d'erreur de substitution.
 
 Avec $v_0 = 25\ \text{m/s}$, $\sin\alpha = 0{,}60$, $\cos\alpha = 0{,}80$, $g \approx 9{,}8\ \text{m/s}^2$ :
 
@@ -186,7 +186,7 @@ $$\frac{g}{2v_0^2\cos^2\alpha} = \frac{9{,}8}{2 \times 25^2 \times 0{,}80^2} = \
 
 $$y(x) = 0{,}75\,x - 0{,}01225\,x^2$$
 
-**Vérification à $x = 20\ \text{m}$ :** d'après les équations horaires du rung précédent, $x(t) = 20t = 20\ \text{m}$ à l'instant $t = 1{,}0\ \text{s}$, et à cet instant $y(1{,}0) = 15\times 1{,}0 - 4{,}9\times 1{,}0^2 = 15 - 4{,}9 = 10{,}1\ \text{m}$. Avec l'équation de la trajectoire : $y(20) = 0{,}75\times 20 - 0{,}01225\times 20^2 = 15 - 4{,}9 = 10{,}1\ \text{m}$. Les deux méthodes donnent exactement le même résultat — l'élimination du temps n'a rien perdu, elle a seulement changé de variable.
+**Vérification à $x = 20\ \text{m}$ :** d'après les équations horaires du chapitre précédent, $x(t) = 20t = 20\ \text{m}$ à l'instant $t = 1{,}0\ \text{s}$, et à cet instant $y(1{,}0) = 15\times 1{,}0 - 4{,}9\times 1{,}0^2 = 15 - 4{,}9 = 10{,}1\ \text{m}$. Avec l'équation de la trajectoire : $y(20) = 0{,}75\times 20 - 0{,}01225\times 20^2 = 15 - 4{,}9 = 10{,}1\ \text{m}$. Les deux méthodes donnent exactement le même résultat — l'élimination du temps n'a rien perdu, elle a seulement changé de variable.
 
 ---
 
@@ -194,7 +194,7 @@ $$y(x) = 0{,}75\,x - 0{,}01225\,x^2$$
 
 ### Arrête-toi avant de lire la suite
 
-Voici deux mots qu'on va employer tout le temps dans ce rung, et qu'il ne faut jamais confondre : la **flèche** et la **portée** d'un tir. Avant de lire leurs définitions précises, prends position : d'après toi, laquelle des deux mesure une hauteur, et laquelle mesure une distance horizontale au sol ?
+Voici deux mots qu'on va employer tout le temps dans ce chapitre, et qu'il ne faut jamais confondre : la **flèche** et la **portée** d'un tir. Avant de lire leurs définitions précises, prends position : d'après toi, laquelle des deux mesure une hauteur, et laquelle mesure une distance horizontale au sol ?
 
 Ce n'est pas un hasard si on te pose la question maintenant : c'est exactement le genre de vocabulaire qu'on peut apprendre « à l'envers » si on ne s'arrête pas dessus une bonne fois. Voici les définitions, sans ambiguïté :
 
@@ -207,7 +207,7 @@ Retiens l'image : la flèche, c'est « jusqu'où ça monte » ; la portée, c'es
 
 ### Calculer la flèche : le sommet, c'est $v_y = 0$
 
-Le sommet de la trajectoire est l'instant où le projectile cesse un instant de monter avant de redescendre — exactement le même critère qu'au rung 1 pour la balle lancée à la verticale : la vitesse verticale s'y annule.
+Le sommet de la trajectoire est l'instant où le projectile cesse un instant de monter avant de redescendre — exactement le même critère qu'au chapitre 1 pour la balle lancée à la verticale : la vitesse verticale s'y annule.
 
 $$v_y(t) = v_{0y} - g\,t = 0$$
 
@@ -233,7 +233,7 @@ $$y(t) = t\left(v_{0y} - \frac{1}{2}g\,t\right) = 0$$
 
 $$t = 0 \quad \text{ou} \quad t_{portee} = \frac{2v_{0y}}{g}$$
 
-Remarque immédiatement : $t_{portee} = 2\,t_{sommet}$ — exactement la même symétrie « montée = descente » observée au rung 1. Ce n'est toujours pas un hasard : la trajectoire $y(x)$ est une parabole (R3), et une parabole est symétrique par rapport à son sommet.
+Remarque immédiatement : $t_{portee} = 2\,t_{sommet}$ — exactement la même symétrie « montée = descente » observée au chapitre 1. Ce n'est toujours pas un hasard : la trajectoire $y(x)$ est une parabole (chapitre 4), et une parabole est symétrique par rapport à son sommet.
 
 La **portée** est la position horizontale à cet instant :
 
@@ -241,13 +241,13 @@ $$D = x(t_{portee}) = v_{0x}\cdot\frac{2v_{0y}}{g} = \frac{2\,v_0\cos\alpha \cdo
 
 $$D = \frac{2v_0^2\sin\alpha\cos\alpha}{g}$$
 
-Un rappel de trigonométrie ($2\sin\alpha\cos\alpha = \sin(2\alpha)$) permet de récrire ce résultat sous une forme plus compacte, qu'on utilisera au rung suivant :
+Un rappel de trigonométrie ($2\sin\alpha\cos\alpha = \sin(2\alpha)$) permet de récrire ce résultat sous une forme plus compacte, qu'on utilisera au chapitre suivant :
 
 $$D = \frac{v_0^2\sin(2\alpha)}{g}$$
 
 ### Exemple travaillé : flèche et portée du tir de référence
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique les deux formules au même exemple numérique qu'aux rungs précédents, pour voir concrètement que flèche et portée sont deux nombres différents, de nature différente.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on applique les deux formules au même exemple numérique qu'aux chapitres précédents, pour voir concrètement que flèche et portée sont deux nombres différents, de nature différente.
 
 Toujours avec $v_0 = 25\ \text{m/s}$, $\sin\alpha = 0{,}60$, $\cos\alpha = 0{,}80$, $g \approx 9{,}8\ \text{m/s}^2$ (donc $v_{0x} = 20\ \text{m/s}$, $v_{0y} = 15\ \text{m/s}$) :
 
@@ -406,7 +406,7 @@ Et la vitesse à la sortie ? Elle vaut toujours $v_0 = 1{,}0\times 10^{7}\ \text
 
 ### Ce qui change par rapport au rung 1
 
-Au rung 1, on avait négligé l'air ; ici, on ne le néglige plus. Un solide qui tombe dans un fluide réel — l'air, l'eau, l'huile — subit une seconde force, la **force de frottement fluide**, qui s'oppose au mouvement. Puisque l'objet descend, cette force est dirigée vers le haut.
+Au chapitre 1, on avait négligé l'air ; ici, on ne le néglige plus. Un solide qui tombe dans un fluide réel — l'air, l'eau, l'huile — subit une seconde force, la **force de frottement fluide**, qui s'oppose au mouvement. Puisque l'objet descend, cette force est dirigée vers le haut.
 
 Le programme retient deux modèles pour cette force, selon la vitesse :
 
@@ -417,7 +417,7 @@ Dans les deux cas, retiens l'essentiel : **la force de frottement croît avec la
 
 ### Établir l'équation différentielle
 
-On garde la méthode du rung 1 — bilan, repère, projection — mais on choisit ici un axe $Oy$ **vertical, orienté vers le bas** (le sens de la chute), pour simplifier l'écriture. Ce n'est pas le même choix qu'aux rungs 1 à 6 : c'est volontaire, et ça ne change rien au fond — comme au rung 1, le signe qu'on trouve dépend toujours de l'axe choisi, jamais d'une règle à mémoriser.
+On garde la méthode du chapitre 1 — bilan, repère, projection — mais on choisit ici un axe $Oy$ **vertical, orienté vers le bas** (le sens de la chute), pour simplifier l'écriture. Ce n'est pas le même choix qu'aux chapitres 1 à 6 : c'est volontaire, et ça ne change rien au fond — comme au chapitre 1, le signe qu'on trouve dépend toujours de l'axe choisi, jamais d'une règle à mémoriser.
 
 Dans le cas du frottement linéaire, deux forces : le poids $mg$ (positif, dans le sens de $Oy$) et le frottement $-kv$ (négatif, il s'oppose au mouvement). La deuxième loi de Newton, projetée :
 
@@ -437,7 +437,7 @@ $$\tau\,\frac{dv}{dt} = v_\ell - v \qquad \text{avec} \qquad \tau = \frac{m}{k} 
 
 $$\frac{dv}{dt}\bigg|_{t=0} = g - \frac{k}{m}\times 0 = g$$
 
-Au tout début, l'objet accélère donc **exactement comme en chute libre** (rung 1) : le frottement ne « mord » que lorsque la vitesse s'est installée.
+Au tout début, l'objet accélère donc **exactement comme en chute libre** (chapitre 1) : le frottement ne « mord » que lorsque la vitesse s'est installée.
 
 ### Prends position avant de voir la courbe
 
@@ -465,7 +465,7 @@ Ce qui est nul à $v_\ell$, ce n'est pas le frottement : c'est la **somme** des 
 
 ### La masse revient
 
-Regarde de nouveau $v_\ell = mg/k$ : elle contient $m$. Contraste frontal avec les rungs 1 à 3, où la masse avait **disparu** ($\vec a_G = \vec g$, indépendant de $m$) — au point qu'on avait pu dire que tous les objets tombent pareil, quelle que soit leur masse. Cette règle ne vaut que **sans frottement**. Dès qu'un frottement fluide entre en jeu, deux objets de même forme (même $k$) mais de masses différentes n'ont **pas** la même vitesse limite : le plus lourd va plus vite — il lui faut une vitesse plus grande pour que $kv$ compense son poids plus important.
+Regarde de nouveau $v_\ell = mg/k$ : elle contient $m$. Contraste frontal avec les chapitres 1 à 3, où la masse avait **disparu** ($\vec a_G = \vec g$, indépendant de $m$) — au point qu'on avait pu dire que tous les objets tombent pareil, quelle que soit leur masse. Cette règle ne vaut que **sans frottement**. Dès qu'un frottement fluide entre en jeu, deux objets de même forme (même $k$) mais de masses différentes n'ont **pas** la même vitesse limite : le plus lourd va plus vite — il lui faut une vitesse plus grande pour que $kv$ compense son poids plus important.
 
 [[figure:sandbox-chute-frottement]]
 
@@ -515,7 +515,7 @@ La poussée d'Archimède **abaisse** la vitesse limite — le solide tombe moins
 
 ### La limite du cadre
 
-On établit l'équation différentielle, on l'exploite pour trouver $v_\ell$ et $\tau$, on lit la courbe $v=f(t)$ — mais on ne la **résout** jamais analytiquement. Pas de séparation des variables, pas de formule $v(t) = v_\ell\left(1-e^{-t/\tau}\right)$ dérivée à la main : cette frontière est exactement celle que tu retrouveras pour un circuit RLC amorti — établir l'équation différentielle est un objectif du programme, la résoudre à la main n'en est pas un. La suite, pour aller plus loin sans intégrer analytiquement : la résolution **pas à pas**, rung suivant.
+On établit l'équation différentielle, on l'exploite pour trouver $v_\ell$ et $\tau$, on lit la courbe $v=f(t)$ — mais on ne la **résout** jamais analytiquement. Pas de séparation des variables, pas de formule $v(t) = v_\ell\left(1-e^{-t/\tau}\right)$ dérivée à la main : cette frontière est exactement celle que tu retrouveras pour un circuit RLC amorti — établir l'équation différentielle est un objectif du programme, la résoudre à la main n'en est pas un. La suite, pour aller plus loin sans intégrer analytiquement : la résolution **pas à pas**, chapitre suivant.
 
 ---
 
@@ -523,7 +523,7 @@ On établit l'équation différentielle, on l'exploite pour trouver $v_\ell$ et 
 
 ### Le problème : on connaît la pente, pas la courbe
 
-L'équation différentielle du rung 7, $\dfrac{dv}{dt} = g - \dfrac{k}{m}v$, donne à chaque instant la **pente** de la courbe $v(t)$ — pas $v(t)$ elle-même, et on ne va pas la résoudre analytiquement (rung 7). L'idée d'Euler : avancer par **petits pas** de durée $\Delta t$, en supposant que, sur un pas assez court, la pente reste à peu près constante — égale à sa valeur au début du pas.
+L'équation différentielle du chapitre 7, $\dfrac{dv}{dt} = g - \dfrac{k}{m}v$, donne à chaque instant la **pente** de la courbe $v(t)$ — pas $v(t)$ elle-même, et on ne va pas la résoudre analytiquement (chapitre 7). L'idée d'Euler : avancer par **petits pas** de durée $\Delta t$, en supposant que, sur un pas assez court, la pente reste à peu près constante — égale à sa valeur au début du pas.
 
 ### La formule centrale
 
@@ -547,9 +547,9 @@ C'est une valeur **approchée**. Pendant tout le pas $\Delta t$, on a supposé l
 
 ### Exemple travaillé : le tableau d'Euler de la bille du rung 7
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* appliquer la récurrence d'Euler, pas après pas, à la bille du rung 7, et vérifier que la suite de valeurs obtenue se dirige bien vers la vitesse limite calculée là-bas — une cohérence croisée entre les deux méthodes, pas un hasard.
+*Ce qu'on cherche ici, et pourquoi ce geste :* appliquer la récurrence d'Euler, pas après pas, à la bille du chapitre 7, et vérifier que la suite de valeurs obtenue se dirige bien vers la vitesse limite calculée là-bas — une cohérence croisée entre les deux méthodes, pas un hasard.
 
-Même bille qu'au rung 7 : $m = 0{,}20\ \text{kg}$, $k = 2{,}0\ \text{kg/s}$, $g \approx 9{,}8\ \text{m/s}^2$, $v_0 = 0$. On choisit un pas $\Delta t = 0{,}020\ \text{s}$, et on applique $a_i = 9{,}8 - 10{,}0\,v_i$ puis $v_{i+1}=v_i+a_i\Delta t$ à chaque ligne :
+Même bille qu'au chapitre 7 : $m = 0{,}20\ \text{kg}$, $k = 2{,}0\ \text{kg/s}$, $g \approx 9{,}8\ \text{m/s}^2$, $v_0 = 0$. On choisit un pas $\Delta t = 0{,}020\ \text{s}$, et on applique $a_i = 9{,}8 - 10{,}0\,v_i$ puis $v_{i+1}=v_i+a_i\Delta t$ à chaque ligne :
 
 | $t_i\ (\text{s})$ | $v_i\ (\text{m/s})$ | $a_i = 9{,}8 - 10{,}0\,v_i\ (\text{m/s}^2)$ | $v_{i+1}=v_i+a_i\Delta t\ (\text{m/s})$ |
 |---|---|---|---|
@@ -560,7 +560,7 @@ Même bille qu'au rung 7 : $m = 0{,}20\ \text{kg}$, $k = 2{,}0\ \text{kg/s}$, $g
 
 [[figure:tableau-euler-pas-a-pas]]
 
-Deux choses à remarquer, et qui ne sont pas des coïncidences. D'abord, $a_i$ **décroît** à chaque ligne ($9{,}80 \to 7{,}84 \to 6{,}27 \to 5{,}02\ \text{m/s}^2$) : le frottement mord de plus en plus, exactement le mécanisme du rung 7. Recalculer $a_i$ à chaque pas — plutôt que garder $a=g$ fixe comme en chute libre — est ce qui capture cet effet ; garder $a=g$ tout du long reviendrait à ignorer le frottement, et donnerait une droite au lieu d'une courbe qui s'aplatit. Ensuite, la suite $v_i$ ($0 \to 0{,}196 \to 0{,}353 \to 0{,}478 \to 0{,}579\ \text{m/s}$) se dirige vers $v_\ell = 0{,}98\ \text{m/s}$ établi au rung 7 : à $t=0{,}060\ \text{s}$, on n'y est pas encore — normal, $\tau = 0{,}10\ \text{s}$ n'est pas atteint — mais la tendance est la bonne, et c'est cette cohérence entre l'équation différentielle (rung 7) et le calcul pas à pas (ici) qui valide la méthode.
+Deux choses à remarquer, et qui ne sont pas des coïncidences. D'abord, $a_i$ **décroît** à chaque ligne ($9{,}80 \to 7{,}84 \to 6{,}27 \to 5{,}02\ \text{m/s}^2$) : le frottement mord de plus en plus, exactement le mécanisme du chapitre 7. Recalculer $a_i$ à chaque pas — plutôt que garder $a=g$ fixe comme en chute libre — est ce qui capture cet effet ; garder $a=g$ tout du long reviendrait à ignorer le frottement, et donnerait une droite au lieu d'une courbe qui s'aplatit. Ensuite, la suite $v_i$ ($0 \to 0{,}196 \to 0{,}353 \to 0{,}478 \to 0{,}579\ \text{m/s}$) se dirige vers $v_\ell = 0{,}98\ \text{m/s}$ établi au chapitre 7 : à $t=0{,}060\ \text{s}$, on n'y est pas encore — normal, $\tau = 0{,}10\ \text{s}$ n'est pas atteint — mais la tendance est la bonne, et c'est cette cohérence entre l'équation différentielle (chapitre 7) et le calcul pas à pas (ici) qui valide la méthode.
 
 ### La limite du cadre
 
@@ -576,7 +576,7 @@ Deux corps quelconques, de masses $m_A$ et $m_B$, séparés d'une distance $r$, 
 
 $$\vec F_{B\to A} = -G\,\frac{m_A\,m_B}{r^2}\,\vec u_{A\to B}$$
 
-où $G$ est la **constante de gravitation universelle** (la même pour tous les corps de l'Univers) et $\vec u_{A\to B}$ le vecteur unitaire dirigé de $A$ vers $B$. Le signe « $-$ » dit que la force est **attractive** : elle pointe en sens contraire de $\vec u_{A\to B}$, donc de $A$ vers $B$ — chaque corps est tiré vers l'autre, jamais repoussé. Retiens la structure, comme pour la force de Lorentz au rung 6 : une direction (ici, toujours selon la droite qui joint les deux corps) et une norme, $F = G\,m_Am_B/r^2$, qui décroît quand $r$ augmente.
+où $G$ est la **constante de gravitation universelle** (la même pour tous les corps de l'Univers) et $\vec u_{A\to B}$ le vecteur unitaire dirigé de $A$ vers $B$. Le signe « $-$ » dit que la force est **attractive** : elle pointe en sens contraire de $\vec u_{A\to B}$, donc de $A$ vers $B$ — chaque corps est tiré vers l'autre, jamais repoussé. Retiens la structure, comme pour la force de Lorentz au chapitre 6 : une direction (ici, toujours selon la droite qui joint les deux corps) et une norme, $F = G\,m_Am_B/r^2$, qui décroît quand $r$ augmente.
 
 ### Le cas du satellite : une force toujours dirigée vers le centre
 
@@ -584,7 +584,7 @@ Considère un satellite de masse $m$, en orbite **circulaire** de rayon $r$ auto
 
 ### Même raisonnement qu'au rung 6, une autre force
 
-Une force perpendiculaire à la vitesse à chaque instant : exactement la situation de la force de Lorentz au rung 6. Le même raisonnement s'applique mot pour mot. Décompose l'accélération dans la base de Freinet, comme au rung 6 :
+Une force perpendiculaire à la vitesse à chaque instant : exactement la situation de la force de Lorentz au chapitre 6. Le même raisonnement s'applique mot pour mot. Décompose l'accélération dans la base de Freinet, comme au chapitre 6 :
 
 $$\vec a = \frac{dv}{dt}\vec u_T + \frac{v^2}{r}\vec u_N$$
 
@@ -592,7 +592,7 @@ La force gravitationnelle étant purement normale, la projection de $\vec F = m\
 
 $$m\,\frac{dv}{dt} = 0 \quad\Longrightarrow\quad \frac{dv}{dt}=0$$
 
-La **norme** de la vitesse ne change donc pas : le satellite se déplace à vitesse constante sur son cercle — un **mouvement circulaire uniforme**. Comme la force de Lorentz au rung 6, la force gravitationnelle ne **travaille** pas : elle dévie en permanence, sans jamais accélérer ni ralentir.
+La **norme** de la vitesse ne change donc pas : le satellite se déplace à vitesse constante sur son cercle — un **mouvement circulaire uniforme**. Comme la force de Lorentz au chapitre 6, la force gravitationnelle ne **travaille** pas : elle dévie en permanence, sans jamais accélérer ni ralentir.
 
 C'est aussi la réponse à une objection naturelle : si aucune force ne pousse le satellite vers l'avant, comment garde-t-il sa vitesse ? Il n'a besoin d'aucune force tangentielle pour ça — un objet soumis à une force purement perpendiculaire à son mouvement garde la norme de sa vitesse par inertie (première loi de Newton). Le rôle de la force centripète n'est jamais de maintenir la vitesse, seulement de courber la trajectoire.
 
@@ -606,7 +606,7 @@ $$v^2 = \frac{GM}{r}$$
 
 $$v = \sqrt{\frac{GM}{r}}$$
 
-Regarde ce qui vient de se passer : la masse $m$ du satellite, présente des deux côtés de la première ligne, s'est **simplifiée**. La vitesse orbitale ne dépend **pas** de la masse du satellite : un satellite lourd et un satellite léger, sur la même orbite, ont exactement la même vitesse. Nouvel écho de ce que tu as vu aux rungs 2 et 3 : la masse disparaissait déjà de la trajectoire d'un projectile en chute libre, pour la même raison de fond — la deuxième loi divise par $m$ des deux côtés dès que la force elle-même est proportionnelle à $m$.
+Regarde ce qui vient de se passer : la masse $m$ du satellite, présente des deux côtés de la première ligne, s'est **simplifiée**. La vitesse orbitale ne dépend **pas** de la masse du satellite : un satellite lourd et un satellite léger, sur la même orbite, ont exactement la même vitesse. Nouvel écho de ce que tu as vu aux chapitres 2 et 3 : la masse disparaissait déjà de la trajectoire d'un projectile en chute libre, pour la même raison de fond — la deuxième loi divise par $m$ des deux côtés dès que la force elle-même est proportionnelle à $m$.
 
 Remarque enfin le sens de la dépendance en $r$ : plus l'orbite est **haute** (grand $r$), plus la vitesse orbitale est **faible**.
 
@@ -628,7 +628,7 @@ Un satellite décrit une orbite circulaire de rayon $r = 6{,}80\times 10^6\ \tex
 
 **Bilan :** la seule force sur le satellite est la force gravitationnelle exercée par la Terre — c'est elle qui joue, à cette altitude, le rôle du poids du satellite.
 
-**Force centripète $\Rightarrow$ mouvement circulaire uniforme :** même raisonnement qu'au rung 6 (voir plus haut).
+**Force centripète $\Rightarrow$ mouvement circulaire uniforme :** même raisonnement qu'au chapitre 6 (voir plus haut).
 
 **Vitesse orbitale** (deuxième loi projetée sur la normale) :
 
@@ -636,7 +636,7 @@ $$v = \sqrt{\frac{GM_T}{r}} = \sqrt{\frac{6{,}67\times 10^{-11}\times 5{,}97\tim
 
 $$v \approx \sqrt{5{,}85\times 10^7} \approx 7{,}65\times 10^3\ \text{m/s} \approx 7{,}65\ \text{km/s}$$
 
-Cette valeur, obtenue sans connaître la masse du satellite (elle a disparu de la formule, comme aux rungs 2 et 3), est cohérente avec la vitesse orbitale réelle de la Station spatiale internationale, en orbite à peu près à cette altitude. Compare enfin cette force avec celle du rung 6 : les deux sont centripètes, les deux ne travaillent pas, les deux courbent une trajectoire sans jamais changer la norme de la vitesse — mais l'une est électromagnétique (Lorentz), l'autre gravitationnelle. Même méthode, deux natures de force différentes.
+Cette valeur, obtenue sans connaître la masse du satellite (elle a disparu de la formule, comme aux chapitres 2 et 3), est cohérente avec la vitesse orbitale réelle de la Station spatiale internationale, en orbite à peu près à cette altitude. Compare enfin cette force avec celle du chapitre 6 : les deux sont centripètes, les deux ne travaillent pas, les deux courbent une trajectoire sans jamais changer la norme de la vitesse — mais l'une est électromagnétique (Lorentz), l'autre gravitationnelle. Même méthode, deux natures de force différentes.
 
 ### La limite du cadre
 
@@ -658,9 +658,9 @@ Précision importante avant d'aller plus loin : le programme ne demande de **cal
 
 ### Établir la 3e loi, cas circulaire
 
-Deux expressions de la vitesse orbitale $v$, pour un satellite en orbite circulaire de rayon $r$ et de période $T$ : celle établie au rung 9 à partir de la deuxième loi, et celle, purement géométrique, du périmètre du cercle parcouru en une période :
+Deux expressions de la vitesse orbitale $v$, pour un satellite en orbite circulaire de rayon $r$ et de période $T$ : celle établie au chapitre 9 à partir de la deuxième loi, et celle, purement géométrique, du périmètre du cercle parcouru en une période :
 
-$$v = \sqrt{\frac{GM}{r}} \qquad \text{(rung 9)} \qquad \qquad v = \frac{2\pi r}{T} \qquad \text{(MCU : périmètre / période)}$$
+$$v = \sqrt{\frac{GM}{r}} \qquad \text{(chapitre 9)} \qquad \qquad v = \frac{2\pi r}{T} \qquad \text{(MCU : périmètre / période)}$$
 
 Ces deux expressions désignent la même vitesse : on peut les égaler.
 
@@ -702,9 +702,9 @@ Une dernière précision, qui trompe souvent : dire qu'un satellite géostationn
 
 ### Exemple travaillé : le rayon de l'orbite géostationnaire
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* appliquer la 3e loi établie plus haut à la Terre du rung 9 (mêmes $G$, $M_T$), pour retrouver le rayon — et donc l'altitude — de l'unique orbite géostationnaire terrestre.
+*Ce qu'on cherche ici, et pourquoi ce geste :* appliquer la 3e loi établie plus haut à la Terre du chapitre 9 (mêmes $G$, $M_T$), pour retrouver le rayon — et donc l'altitude — de l'unique orbite géostationnaire terrestre.
 
-On reprend la Terre du rung précédent : $G = 6{,}67\times 10^{-11}\ \text{N}\cdot\text{m}^2/\text{kg}^2$, $M_T = 5{,}97\times 10^{24}\ \text{kg}$, rayon terrestre $R_T \approx 6{,}37\times 10^6\ \text{m}$. On prend $T = 24\ \text{h} = 8{,}64\times 10^4\ \text{s}$.
+On reprend la Terre du chapitre précédent : $G = 6{,}67\times 10^{-11}\ \text{N}\cdot\text{m}^2/\text{kg}^2$, $M_T = 5{,}97\times 10^{24}\ \text{kg}$, rayon terrestre $R_T \approx 6{,}37\times 10^6\ \text{m}$. On prend $T = 24\ \text{h} = 8{,}64\times 10^4\ \text{s}$.
 
 **Rayon de l'orbite** (3e loi, isolée en $r$) :
 
@@ -728,7 +728,7 @@ Les orbites **elliptiques quantitatives restent hors cadre** : les trois lois de
 
 ### Récapitulatif express
 
-- En chute libre (frottements négligés), $\vec{a}_G = \vec{g}$, **indépendant de la masse** — vrai en une dimension (R1) comme dans le mouvement plan d'un projectile (R2, R3).
+- En chute libre (frottements négligés), $\vec{a}_G = \vec{g}$, **indépendant de la masse** — vrai en une dimension (chapitre 2) comme dans le mouvement plan d'un projectile (chapitres 3 et 4).
 - Pour un projectile lancé avec un angle $\alpha$ et une vitesse $v_0$, le mouvement se décompose en deux axes **indépendants** : $a_x = 0$ (donc $v_x(t) = v_{0x} = v_0\cos\alpha$, **constante pendant tout le vol**) et $a_y = -g$ (donc $v_y(t) = v_{0y} - gt$, qui change continûment).
 - En éliminant le temps entre $x(t)$ et $y(t)$, on obtient l'équation de la trajectoire, une **parabole** : $y(x) = \tan\alpha \cdot x - \dfrac{g}{2v_0^2\cos^2\alpha}x^2$.
 - La **flèche** $f = \dfrac{v_0^2\sin^2\alpha}{2g}$ est une hauteur (au sommet, où $v_y=0$) ; la **portée** $D = \dfrac{v_0^2\sin(2\alpha)}{g}$ est une distance horizontale (au sol, à l'arrivée). Ce ne sont jamais le même nombre.
@@ -751,7 +751,7 @@ Avant l'exercice de type bac, teste cinq réflexes-clés du chapitre — un par 
 
 ### Exercice de type bac
 
-À toi de traiter un vrai sujet d'examen national — la chute verticale d'une bille dans un liquide visqueux (session normale 2020). Il mobilise les deux chapitres neufs au cœur de ce cours : l'équation différentielle de la chute **avec** frottement et sa vitesse limite (R7), puis la résolution numérique pas à pas par la **méthode d'Euler** (R8). Cherche chaque question par toi-même avant de déplier le raisonnement.
+À toi de traiter un vrai sujet d'examen national — la chute verticale d'une bille dans un liquide visqueux (session normale 2020). Il mobilise les deux chapitres neufs au cœur de ce cours : l'équation différentielle de la chute **avec** frottement et sa vitesse limite (chapitre 8), puis la résolution numérique pas à pas par la **méthode d'Euler** (chapitre 9). Cherche chaque question par toi-même avant de déplier le raisonnement.
 
 [[exercise:r-bac]]
 

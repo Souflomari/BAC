@@ -60,7 +60,7 @@ Le quart de cette longueur d'onde vaut environ $83\ \text{m}$ — une taille d'a
 
 ### La conclusion : il faut une porteuse
 
-Voilà pourquoi on ne peut pas rayonner directement la musique ou la voix : leurs fréquences sont bien trop basses pour qu'une antenne raisonnable les rayonne efficacement. La solution consiste à confier l'information à une onde de fréquence bien plus élevée — quelques centaines de kHz à quelques MHz —, une onde qu'on appelle la **porteuse**, et qui, elle, se rayonne très bien avec une antenne de taille humaine. La question devient alors : comment fait-on « porter » un signal basse fréquence par une porteuse haute fréquence, sans perdre l'information ? C'est l'objet du prochain rung.
+Voilà pourquoi on ne peut pas rayonner directement la musique ou la voix : leurs fréquences sont bien trop basses pour qu'une antenne raisonnable les rayonne efficacement. La solution consiste à confier l'information à une onde de fréquence bien plus élevée — quelques centaines de kHz à quelques MHz —, une onde qu'on appelle la **porteuse**, et qui, elle, se rayonne très bien avec une antenne de taille humaine. La question devient alors : comment fait-on « porter » un signal basse fréquence par une porteuse haute fréquence, sans perdre l'information ? C'est l'objet du prochain chapitre.
 
 ---
 
@@ -82,7 +82,7 @@ L'idée de la **modulation d'amplitude (AM)** : au lieu de garder l'amplitude de
 
 $$s(t) = \big(U_0 + s_m(t)\big)\cos(2\pi f_p t)$$
 
-Regarde bien cette expression. Le terme $\cos(2\pi f_p t)$ oscille très vite, toujours à la même fréquence $f_p$ — c'est lui qui permet à l'antenne de rayonner efficacement, comme on vient de le voir en R1. Le terme $\big(U_0 + s_m(t)\big)$, lui, varie lentement, au rythme du signal informatif : c'est l'**amplitude instantanée** de l'oscillation rapide. Cette amplitude est une fonction affine de $s_m(t)$ : elle suit fidèlement ses hauts et ses bas, simplement décalée de $U_0$.
+Regarde bien cette expression. Le terme $\cos(2\pi f_p t)$ oscille très vite, toujours à la même fréquence $f_p$ — c'est lui qui permet à l'antenne de rayonner efficacement, comme on vient de le voir au chapitre 2. Le terme $\big(U_0 + s_m(t)\big)$, lui, varie lentement, au rythme du signal informatif : c'est l'**amplitude instantanée** de l'oscillation rapide. Cette amplitude est une fonction affine de $s_m(t)$ : elle suit fidèlement ses hauts et ses bas, simplement décalée de $U_0$.
 
 Le résultat : une oscillation rapide (à $f_p$) dont l'enveloppe — la courbe qui relie les sommets successifs — dessine exactement la forme de $s_m(t)$, décalée vers le haut de $U_0$. L'information ne voyage pas dans la fréquence de l'oscillation (elle reste $f_p$, immuable) : elle voyage entièrement dans l'amplitude.
 
@@ -90,9 +90,9 @@ Le résultat : une oscillation rapide (à $f_p$) dont l'enveloppe — la courbe 
 
 ### Exemple numérique
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on écrit explicitement $s(t)$ pour une porteuse et un signal donnés, pour voir concrètement à quoi ressemble le résultat de la formule — avant de s'en servir pour vérifier des conditions dans le rung suivant.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on écrit explicitement $s(t)$ pour une porteuse et un signal donnés, pour voir concrètement à quoi ressemble le résultat de la formule — avant de s'en servir pour vérifier des conditions dans le chapitre suivant.
 
-Prenons une porteuse d'amplitude $U_0 = 6\ \text{V}$ et de fréquence $f_p = 900\ \text{kHz}$ (les valeurs de R1). Le signal informatif est, pour simplifier, une note pure : $s_m(t) = S_m\cos(2\pi f_{signal} t)$, avec une amplitude $S_m = 3\ \text{V}$ et une fréquence $f_{signal} = 3\ \text{kHz}$ (une fréquence bien audible).
+Prenons une porteuse d'amplitude $U_0 = 6\ \text{V}$ et de fréquence $f_p = 900\ \text{kHz}$ (les valeurs du chapitre 2). Le signal informatif est, pour simplifier, une note pure : $s_m(t) = S_m\cos(2\pi f_{signal} t)$, avec une amplitude $S_m = 3\ \text{V}$ et une fréquence $f_{signal} = 3\ \text{kHz}$ (une fréquence bien audible).
 
 La tension modulée s'écrit alors :
 
@@ -102,7 +102,7 @@ L'amplitude instantanée, $6 + 3\cos(2\pi \times 3\,000\,t)$, oscille entre $6-3
 
 [[figure:modulation-amplitude]]
 
-Garde ces valeurs — $U_0=6\ \text{V}$, $f_p=900\ \text{kHz}$, $S_m=3\ \text{V}$, $f_{signal}=3\ \text{kHz}$ — elles reviennent dans les rungs suivants.
+Garde ces valeurs — $U_0=6\ \text{V}$, $f_p=900\ \text{kHz}$, $S_m=3\ \text{V}$, $f_{signal}=3\ \text{kHz}$ — elles reviennent dans les chapitres suivants.
 
 [[checkpoint:cp-r2-porteuse-signal]]
 
@@ -114,7 +114,7 @@ Pour que la modulation fonctionne vraiment — pour que l'enveloppe reproduise f
 
 ### Condition 1 : $f_p \gg f_{signal}$
 
-Reprends l'exemple de R2 : la porteuse oscille $300$ fois plus vite que le signal. Imagine maintenant que $f_p$ ne soit que deux ou trois fois plus grande que $f_{signal}$ — presque du même ordre de grandeur. L'enveloppe (qui varie à $f_{signal}$) et l'oscillation rapide (qui varie à $f_p$) deviendraient alors difficiles à distinguer : il n'y aurait plus assez d'oscillations rapides par cycle du signal pour dessiner une enveloppe lisse. C'est un peu comme dessiner une courbe douce avec seulement deux ou trois points : la forme devient méconnaissable.
+Reprends l'exemple du chapitre 3 : la porteuse oscille $300$ fois plus vite que le signal. Imagine maintenant que $f_p$ ne soit que deux ou trois fois plus grande que $f_{signal}$ — presque du même ordre de grandeur. L'enveloppe (qui varie à $f_{signal}$) et l'oscillation rapide (qui varie à $f_p$) deviendraient alors difficiles à distinguer : il n'y aurait plus assez d'oscillations rapides par cycle du signal pour dessiner une enveloppe lisse. C'est un peu comme dessiner une courbe douce avec seulement deux ou trois points : la forme devient méconnaissable.
 
 Il faut donc que la porteuse oscille beaucoup plus vite que le signal qu'elle transporte :
 
@@ -142,7 +142,7 @@ Quand $m < 1$, l'enveloppe reste toujours positive et reproduit fidèlement $s_m
 
 ### Exemple numérique : vérifier la condition, puis casser volontairement la condition
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on vérifie d'abord les deux conditions sur l'exemple de R2, pour confirmer que c'est bien une « bonne modulation » ; puis on change une seule valeur pour observer, par le calcul, ce que ça change — c'est ce contraste qui rend visible la frontière entre bonne modulation et surmodulation.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on vérifie d'abord les deux conditions sur l'exemple du chapitre 3, pour confirmer que c'est bien une « bonne modulation » ; puis on change une seule valeur pour observer, par le calcul, ce que ça change — c'est ce contraste qui rend visible la frontière entre bonne modulation et surmodulation.
 
 Avec $U_0=6\ \text{V}$, $f_p=900\ \text{kHz}$, $S_m=3\ \text{V}$, $f_{signal}=3\ \text{kHz}$ :
 
@@ -174,7 +174,7 @@ $m > 1$ : c'est une surmodulation. À l'instant où $s_m(t)$ atteint son minimum
 
 ### Le principe : ne garder que l'enveloppe
 
-On l'a vu en R2 : l'information est entièrement portée par l'enveloppe de $s(t)$, la courbe qui relie les sommets de l'oscillation rapide. Démoduler, c'est donc simplement **retracer cette enveloppe**, en effaçant l'oscillation rapide qui ne sert qu'à permettre le rayonnement — et qui, une fois le signal reçu, n'a plus d'utilité.
+On l'a vu au chapitre 3 : l'information est entièrement portée par l'enveloppe de $s(t)$, la courbe qui relie les sommets de l'oscillation rapide. Démoduler, c'est donc simplement **retracer cette enveloppe**, en effaçant l'oscillation rapide qui ne sert qu'à permettre le rayonnement — et qui, une fois le signal reçu, n'a plus d'utilité.
 
 Le dispositif qui fait ça s'appelle un **détecteur de crête** (ou détecteur d'enveloppe). Son mécanisme, décrit qualitativement :
 
@@ -186,11 +186,11 @@ Il ne reste plus qu'à retirer la composante continue $U_0$ (un simple filtrage 
 
 ### Pourquoi la condition $m<1$ compte ici aussi
 
-Cette méthode ne fonctionne que si l'enveloppe représente fidèlement $s_m(t)$ : exactement la condition de bonne modulation vue en R3. En cas de surmodulation ($m \geq 1$), l'enveloppe elle-même est déjà déformée à l'émission : aucune démodulation, même parfaite, ne peut alors récupérer le signal d'origine. La qualité de la démodulation à la réception dépend donc entièrement de la qualité de la modulation à l'émission.
+Cette méthode ne fonctionne que si l'enveloppe représente fidèlement $s_m(t)$ : exactement la condition de bonne modulation vue au chapitre 4. En cas de surmodulation ($m \geq 1$), l'enveloppe elle-même est déjà déformée à l'émission : aucune démodulation, même parfaite, ne peut alors récupérer le signal d'origine. La qualité de la démodulation à la réception dépend donc entièrement de la qualité de la modulation à l'émission.
 
 ### Lecture d'un exemple
 
-Reprends l'exemple de R2-R3 : l'enveloppe oscille entre $3\ \text{V}$ et $9\ \text{V}$, avec une période de $0{,}33\ \text{ms}$. Un détecteur de crête, branché sur ce signal, délivrerait une tension qui suit cette même enveloppe : elle démarre vers $9\ \text{V}$, redescend doucement vers $3\ \text{V}$ en environ une demi-période ($0{,}17\ \text{ms}$), remonte vers $9\ \text{V}$, et ainsi de suite — reconstituant, une fois l'offset $U_0=6\ \text{V}$ retiré, une tension oscillant entre $-3\ \text{V}$ et $+3\ \text{V}$ à $3\ \text{kHz}$ : exactement $s_m(t)$.
+Reprends l'exemple des chapitres 3 et 4 : l'enveloppe oscille entre $3\ \text{V}$ et $9\ \text{V}$, avec une période de $0{,}33\ \text{ms}$. Un détecteur de crête, branché sur ce signal, délivrerait une tension qui suit cette même enveloppe : elle démarre vers $9\ \text{V}$, redescend doucement vers $3\ \text{V}$ en environ une demi-période ($0{,}17\ \text{ms}$), remonte vers $9\ \text{V}$, et ainsi de suite — reconstituant, une fois l'offset $U_0=6\ \text{V}$ retiré, une tension oscillant entre $-3\ \text{V}$ et $+3\ \text{V}$ à $3\ \text{kHz}$ : exactement $s_m(t)$.
 
 [[figure:detecteur-crete]]
 
@@ -224,7 +224,7 @@ Concrètement, dans un poste de radio, $C$ est un **condensateur variable** : to
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on connaît déjà $f_0=1/(2\pi\sqrt{LC})$ depuis le chapitre RLC ; ici, on l'utilise à l'envers — on fixe la fréquence qu'on veut atteindre ($f_p$, la station voulue) et on en déduit la valeur de $C$ à régler, pour une bobine $L$ donnée.
 
-On veut accorder un récepteur, équipé d'une bobine $L = 300\ \mu\text{H} = 3{,}00\times10^{-4}\ \text{H}$, sur la station de R1-R2, qui émet à $f_p = 900\ \text{kHz} = 9{,}00\times10^{5}\ \text{Hz}$.
+On veut accorder un récepteur, équipé d'une bobine $L = 300\ \mu\text{H} = 3{,}00\times10^{-4}\ \text{H}$, sur la station des chapitres 2 et 3, qui émet à $f_p = 900\ \text{kHz} = 9{,}00\times10^{5}\ \text{Hz}$.
 
 On part de $f_0 = \dfrac{1}{2\pi\sqrt{LC}}$ et on isole $C$ :
 

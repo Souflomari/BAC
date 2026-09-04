@@ -14,7 +14,7 @@ Mais ici, $v(t)=t^2$ trace une parabole, pas une droite. Aucun découpage en rec
 
 [[checkpoint:cp-r0-predict]]
 
-Le problème est là depuis toujours : on sait calculer une aire quand le contour est fait de droites. On ne sait pas encore quoi faire quand le contour est une courbe. C'est exactement l'outil que cette leçon construit — et on va résoudre cette voiture, avec la valeur exacte, dès le prochain rung.
+Le problème est là depuis toujours : on sait calculer une aire quand le contour est fait de droites. On ne sait pas encore quoi faire quand le contour est une courbe. C'est exactement l'outil que cette leçon construit — et on va résoudre cette voiture, avec la valeur exacte, dès le prochain chapitre.
 
 ---
 
@@ -48,17 +48,17 @@ La constante $C$ s'annule exactement dans la soustraction. Peu importe la primit
 
 ### L'interprétation en aire
 
-On admet, comme pour toute fonction continue positive, le fait suivant : si $f$ est continue et $f \geq 0$ sur $[a,b]$, alors $\int_a^b f(x)\,\mathrm{d}x$ est exactement l'**aire** de la région délimitée par la courbe de $f$, l'axe des abscisses, et les droites d'équations $x=a$ et $x=b$. Cette aire est exprimée dans une unité appelée **unité d'aire**, notée u.a. — l'aire du carré de côté $1$ dans le repère choisi. (On revient sur la conversion en cm² au rung R8, quand ça compte vraiment.)
+On admet, comme pour toute fonction continue positive, le fait suivant : si $f$ est continue et $f \geq 0$ sur $[a,b]$, alors $\int_a^b f(x)\,\mathrm{d}x$ est exactement l'**aire** de la région délimitée par la courbe de $f$, l'axe des abscisses, et les droites d'équations $x=a$ et $x=b$. Cette aire est exprimée dans une unité appelée **unité d'aire**, notée u.a. — l'aire du carré de côté $1$ dans le repère choisi. (On revient sur la conversion en cm² au chapitre 9, quand ça compte vraiment.)
 
 ### Résoudre l'accroche
 
-Reviens à la voiture du R0 : $v(t)=t^2$ sur $[0,2]$. La distance parcourue est $\int_0^2 t^2\,\mathrm{d}t$. Une primitive de $t \mapsto t^2$ est $F(t) = \dfrac{t^3}{3}$ (tu la connais depuis le chapitre "Primitives").
+Reviens à la voiture du chapitre 1 : $v(t)=t^2$ sur $[0,2]$. La distance parcourue est $\int_0^2 t^2\,\mathrm{d}t$. Une primitive de $t \mapsto t^2$ est $F(t) = \dfrac{t^3}{3}$ (tu la connais depuis le chapitre "Primitives").
 
 $$\int_0^2 t^2\,\mathrm{d}t = F(2) - F(0) = \frac{2^3}{3} - \frac{0^3}{3}$$
 
 $$\int_0^2 t^2\,\mathrm{d}t = \frac{8}{3}$$
 
-La distance exacte est $\dfrac{8}{3} \approx 2{,}67\ \text{m}$. Si ta prédiction du R0 se situait entre $2$ et $3\ \text{m}$, tu avais vu juste : la courbe $t^2$ démarre lentement, donc l'aire sous elle est plus proche de $0$ que ne le serait un triangle de même hauteur finale (qui donnerait $\frac12 \times 2 \times 4 = 4$).
+La distance exacte est $\dfrac{8}{3} \approx 2{,}67\ \text{m}$. Si ta prédiction du chapitre 1 se situait entre $2$ et $3\ \text{m}$, tu avais vu juste : la courbe $t^2$ démarre lentement, donc l'aire sous elle est plus proche de $0$ que ne le serait un triangle de même hauteur finale (qui donnerait $\frac12 \times 2 \times 4 = 4$).
 
 [[figure:aire-sous-courbe]]
 
@@ -72,7 +72,7 @@ Et $\ln(1)=0$ par définition, donc :
 
 $$\int_1^x \frac{1}{t}\,\mathrm{d}t = \ln(x)$$
 
-Ce n'est pas une coïncidence ni un nouveau calcul à apprendre : c'est exactement ce que dit la définition de ce rung, appliquée à une primitive que tu connais déjà depuis un autre chapitre. L'intégrale et la primitive, ce sont deux regards sur le même objet.
+Ce n'est pas une coïncidence ni un nouveau calcul à apprendre : c'est exactement ce que dit la définition de ce chapitre, appliquée à une primitive que tu connais déjà depuis un autre chapitre. L'intégrale et la primitive, ce sont deux regards sur le même objet.
 
 ### L'erreur à repérer ici
 
@@ -88,7 +88,7 @@ Une confusion fréquente à ce stade : penser qu'il faut « la bonne » primitiv
 
 Tu calcules déjà des primitives terme par terme — une primitive de $3x^2-4x+5$, tu la trouves en primitivant chaque morceau séparément. Voici pourquoi ce geste, que tu fais sans y penser, est légitime.
 
-Soient $f$ et $g$ deux fonctions continues sur $[a,b]$, de primitives respectives $F$ et $G$. Alors $F+G$ est une primitive de $f+g$, puisque $(F+G)'=F'+G'=f+g$. Applique la définition du R1 à cette primitive :
+Soient $f$ et $g$ deux fonctions continues sur $[a,b]$, de primitives respectives $F$ et $G$. Alors $F+G$ est une primitive de $f+g$, puisque $(F+G)'=F'+G'=f+g$. Applique la définition du chapitre 2 à cette primitive :
 
 $$\int_a^b \big(f(x)+g(x)\big)\,\mathrm{d}x = \big(F(b)+G(b)\big) - \big(F(a)+G(a)\big)$$
 
@@ -148,7 +148,7 @@ Soit $f$ continue sur un intervalle contenant $a$, $b$ et $c$ (trois réels quel
 
 $$F(b) - F(a) = \big(F(b) - F(c)\big) + \big(F(c) - F(a)\big)$$
 
-Traduis chaque parenthèse en intégrale, grâce à la définition du R1 :
+Traduis chaque parenthèse en intégrale, grâce à la définition du chapitre 2 :
 
 $$\boxed{\int_a^b f(x)\,\mathrm{d}x = \int_a^c f(x)\,\mathrm{d}x + \int_c^b f(x)\,\mathrm{d}x}$$
 
@@ -166,7 +166,7 @@ $$12 = 5 + \int_2^5 f(x)\,\mathrm{d}x$$
 
 $$\int_2^5 f(x)\,\mathrm{d}x = 7$$
 
-C'est tout l'intérêt de Chasles dans les exercices : elle relie des intégrales entre elles par une simple relation additive, même quand $f$ reste une fonction abstraite — c'est aussi l'outil qu'on utilisera au R8 pour découper une aire à l'endroit où une courbe change de signe.
+C'est tout l'intérêt de Chasles dans les exercices : elle relie des intégrales entre elles par une simple relation additive, même quand $f$ reste une fonction abstraite — c'est aussi l'outil qu'on utilisera au chapitre 9 pour découper une aire à l'endroit où une courbe change de signe.
 
 [[figure:chasles-decoupage-aire]]
 
@@ -194,7 +194,7 @@ Ce n'est pas qu'une histoire d'aire (« une aire ne peut pas être négative »)
 
 $$\int_a^b \big(g(x)-f(x)\big)\,\mathrm{d}x \geq 0$$
 
-Par linéarité (R2), le membre de gauche se sépare :
+Par linéarité (chapitre 3), le membre de gauche se sépare :
 
 $$\int_a^b g(x)\,\mathrm{d}x - \int_a^b f(x)\,\mathrm{d}x \geq 0$$
 
@@ -228,7 +228,7 @@ Calcule la borne de droite : $\displaystyle\int_0^1 x\,\mathrm{d}x = \left[\frac
 
 $$m(b-a) \leq \int_a^b f(x)\,\mathrm{d}x \leq M(b-a)$$
 
-**Pourquoi c'est vrai :** applique deux fois la comparaison du R4, une fois à $m \leq f(x)$, une fois à $f(x) \leq M$ — en traitant $m$ et $M$ comme des fonctions constantes. Une primitive de la fonction constante $x \mapsto m$ est $x \mapsto mx$, donc :
+**Pourquoi c'est vrai :** applique deux fois la comparaison du chapitre 5, une fois à $m \leq f(x)$, une fois à $f(x) \leq M$ — en traitant $m$ et $M$ comme des fonctions constantes. Une primitive de la fonction constante $x \mapsto m$ est $x \mapsto mx$, donc :
 
 $$\int_a^b m\,\mathrm{d}x = m(b-a) \qquad \text{et} \qquad \int_a^b M\,\mathrm{d}x = M(b-a)$$
 
@@ -262,7 +262,7 @@ $$1 \leq \int_0^1 e^x\,\mathrm{d}x \leq e$$
 
 ### Le mécanisme
 
-Reprends l'inégalité de la moyenne du R5 : $m(b-a) \leq \displaystyle\int_a^b f(x)\,\mathrm{d}x \leq M(b-a)$. Divise les trois membres par $b-a>0$ :
+Reprends l'inégalité de la moyenne du chapitre 6 : $m(b-a) \leq \displaystyle\int_a^b f(x)\,\mathrm{d}x \leq M(b-a)$. Divise les trois membres par $b-a>0$ :
 
 $$m \leq \frac{1}{b-a}\int_a^b f(x)\,\mathrm{d}x \leq M$$
 
@@ -360,7 +360,7 @@ Les deux exemples tombent sur $1$ — pas par miracle, juste parce que les nombr
 
 ### Le piège : l'intégrale signée n'est pas toujours l'aire
 
-Tout ce qu'on a vu au R1 suppose $f \geq 0$. Dès que $f$ change de signe sur l'intervalle, $\displaystyle\int_a^b f(x)\,\mathrm{d}x$ n'est **plus** l'aire — les parties où $f<0$ soustraient de la valeur au lieu d'ajouter, alors qu'une aire est toujours positive. La méthode : repérer les intervalles où $f \geq 0$ et ceux où $f \leq 0$ (typiquement en cherchant les racines de $f$), utiliser Chasles (R3) pour découper, et prendre la valeur absolue de chaque morceau négatif.
+Tout ce qu'on a vu au chapitre 2 suppose $f \geq 0$. Dès que $f$ change de signe sur l'intervalle, $\displaystyle\int_a^b f(x)\,\mathrm{d}x$ n'est **plus** l'aire — les parties où $f<0$ soustraient de la valeur au lieu d'ajouter, alors qu'une aire est toujours positive. La méthode : repérer les intervalles où $f \geq 0$ et ceux où $f \leq 0$ (typiquement en cherchant les racines de $f$), utiliser Chasles (chapitre 4) pour découper, et prendre la valeur absolue de chaque morceau négatif.
 
 ### Exemple travaillé : une courbe qui change de signe
 
@@ -396,7 +396,7 @@ Pour l'aire entre les courbes de $f$ et de $g$ sur $[a,b]$, le même principe s'
 
 $$f(x)=g(x) \iff x=x^2 \iff x(1-x)=0 \iff x=0 \text{ ou } x=1$$
 
-Sur $[0,1]$, teste un point, par exemple $x=0{,}5$ : $f(0{,}5)=0{,}5$ et $g(0{,}5)=0{,}25$, donc $f \geq g$ sur $[0,1]$ (vérifie-le en général : $x-x^2=x(1-x) \geq 0$ pour $x \in [0,1]$, comme au R4). Comme le signe de $f-g$ ne change pas sur $[0,1]$, l'aire s'obtient directement, sans découpage :
+Sur $[0,1]$, teste un point, par exemple $x=0{,}5$ : $f(0{,}5)=0{,}5$ et $g(0{,}5)=0{,}25$, donc $f \geq g$ sur $[0,1]$ (vérifie-le en général : $x-x^2=x(1-x) \geq 0$ pour $x \in [0,1]$, comme au chapitre 5). Comme le signe de $f-g$ ne change pas sur $[0,1]$, l'aire s'obtient directement, sans découpage :
 
 $$\text{aire} = \int_0^1 \big(x-x^2\big)\,\mathrm{d}x = \left[\frac{x^2}{2}-\frac{x^3}{3}\right]_0^1 = \frac12-\frac13$$
 

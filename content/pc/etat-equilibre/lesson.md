@@ -28,7 +28,7 @@ Reprends le mélange $Fe^{3+}/SCN^-$ de l'accroche, à l'instant précis où sa 
 
 ### Deux réactions, pas une
 
-La réaction que tu as observée en R0 n'est pas à sens unique. Écris-la avec la double flèche $\rightleftharpoons$ :
+La réaction que tu as observée au chapitre 1 n'est pas à sens unique. Écris-la avec la double flèche $\rightleftharpoons$ :
 
 $$Fe^{3+} + SCN^- \rightleftharpoons FeSCN^{2+}$$
 
@@ -69,7 +69,7 @@ Le fait qu'un équilibre soit dynamique explique pourquoi la couleur se fige. Ma
 
 Reprends le tableau d'avancement, comme tu l'as construit dans les chapitres précédents. On note $x_{max}$ l'avancement qu'atteindrait la réaction si elle allait jusqu'au bout - c'est-à-dire si l'un des réactifs était totalement consommé. Et on note $x_f$ l'avancement réellement atteint, une fois que les concentrations cessent de changer - c'est-à-dire une fois l'équilibre installé.
 
-Puisque la réaction directe et la réaction inverse peuvent coexister indéfiniment (R1), rien ne garantit que $x_f$ atteigne $x_{max}$. En général, $x_f \leq x_{max}$.
+Puisque la réaction directe et la réaction inverse peuvent coexister indéfiniment (chapitre 2), rien ne garantit que $x_f$ atteigne $x_{max}$. En général, $x_f \leq x_{max}$.
 
 ### Le taux d'avancement final $\tau$
 
@@ -105,7 +105,7 @@ $\tau = 0{,}60$ : seulement $60\,\%$ de ce qui aurait pu réagir a effectivement
 
 $$[Fe^{3+}]_{eq} = [SCN^-]_{eq} = c_0 - [FeSCN^{2+}]_{eq} = 2{,}0 \times 10^{-3} - 1{,}2 \times 10^{-3} = 0{,}8 \times 10^{-3}\ \text{mol/L}$$
 
-La transformation est nettement **limitée** : réactifs et produit coexistent à l'équilibre, dans des proportions comparables. Garde ces trois concentrations - elles reviennent dans les rungs suivants.
+La transformation est nettement **limitée** : réactifs et produit coexistent à l'équilibre, dans des proportions comparables. Garde ces trois concentrations - elles reviennent dans les chapitres suivants.
 
 [[figure:jauge-avancement-tau]]
 
@@ -143,11 +143,11 @@ $$Q_r = \frac{[FeSCN^{2+}]}{[Fe^{3+}][SCN^-]}$$
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on veut comprendre, avant de calculer quoi que ce soit, pourquoi $Q_r$ ne peut qu'augmenter au cours de notre transformation - et pas se comporter n'importe comment.
 
-Reprends le mécanisme du rung précédent : tant que la réaction directe l'emporte sur la réaction inverse, $[FeSCN^{2+}]$ (le numérateur de $Q_r$) augmente, tandis que $[Fe^{3+}]$ et $[SCN^-]$ (le dénominateur) diminuent tous les deux. Un numérateur qui grandit divisé par un dénominateur qui rétrécit : $Q_r$ ne peut qu'augmenter. C'est la même mécanique de fond que la diminution de la vitesse $v(t)$ vue dans le chapitre sur le suivi temporel - ici appliquée non pas à une vitesse, mais au rapport produits/réactifs lui-même.
+Reprends le mécanisme du chapitre précédent : tant que la réaction directe l'emporte sur la réaction inverse, $[FeSCN^{2+}]$ (le numérateur de $Q_r$) augmente, tandis que $[Fe^{3+}]$ et $[SCN^-]$ (le dénominateur) diminuent tous les deux. Un numérateur qui grandit divisé par un dénominateur qui rétrécit : $Q_r$ ne peut qu'augmenter. C'est la même mécanique de fond que la diminution de la vitesse $v(t)$ vue dans le chapitre sur le suivi temporel - ici appliquée non pas à une vitesse, mais au rapport produits/réactifs lui-même.
 
 ### Exemple travaillé : $Q_r$ minute après minute
 
-Reprends le mélange du rung 2 ($c_0 = 2{,}0 \times 10^{-3}\ \text{mol/L}$ pour chacun des deux réactifs). Un suivi spectrophotométrique donne, à quelques instants choisis :
+Reprends le mélange du chapitre 2 ($c_0 = 2{,}0 \times 10^{-3}\ \text{mol/L}$ pour chacun des deux réactifs). Un suivi spectrophotométrique donne, à quelques instants choisis :
 
 | $t$ (min) | $0$ | $2$ | $5$ | $10$ | équilibre |
 |---|---|---|---|---|---|
@@ -165,7 +165,7 @@ $$t = 10\ \text{min} : \quad [Fe^{3+}]=[SCN^-]=0{,}9\times10^{-3}, \quad Q_r = \
 
 $$t = \text{équilibre} : \quad [Fe^{3+}]=[SCN^-]=0{,}8\times10^{-3}, \quad Q_r = \frac{1{,}2\times10^{-3}}{(0{,}8\times10^{-3})^2} = 1875 \approx 1{,}9\times10^3$$
 
-$Q_r$ grimpe sans relâche : $0 \to 3{,}1\times10^2 \to 7{,}4\times10^2 \to 1{,}4\times10^3 \to 1{,}9\times10^3$, et il cesse de grimper exactement à l'instant où la couleur cesse de changer. Ce n'est pas une coïncidence - c'est l'objet du rung suivant.
+$Q_r$ grimpe sans relâche : $0 \to 3{,}1\times10^2 \to 7{,}4\times10^2 \to 1{,}4\times10^3 \to 1{,}9\times10^3$, et il cesse de grimper exactement à l'instant où la couleur cesse de changer. Ce n'est pas une coïncidence - c'est l'objet du chapitre suivant.
 
 [[checkpoint:cp-r3-qr-evolue]]
 
@@ -175,7 +175,7 @@ $Q_r$ grimpe sans relâche : $0 \to 3{,}1\times10^2 \to 7{,}4\times10^2 \to 1{,}
 
 ### $Q_r$ se fige, lui aussi
 
-Regarde la dernière ligne du tableau du rung 3 : une fois l'équilibre atteint, $Q_r$ cesse d'augmenter et se fige à une valeur précise - ici, $1875$. C'est logique : à l'équilibre, la réaction directe et la réaction inverse se compensent exactement (R1), donc les concentrations ne bougent plus, donc $Q_r$, qui n'est construit qu'à partir de ces concentrations, ne bouge plus non plus.
+Regarde la dernière ligne du tableau du chapitre 3 : une fois l'équilibre atteint, $Q_r$ cesse d'augmenter et se fige à une valeur précise - ici, $1875$. C'est logique : à l'équilibre, la réaction directe et la réaction inverse se compensent exactement (chapitre 2), donc les concentrations ne bougent plus, donc $Q_r$, qui n'est construit qu'à partir de ces concentrations, ne bouge plus non plus.
 
 On appelle cette valeur figée la **constante d'équilibre** associée à l'équation de la réaction, notée $K$. Elle est définie comme le quotient de réaction à l'équilibre :
 
@@ -195,9 +195,9 @@ Fait central, et c'est lui qui fait de $K$ un outil puissant : $K$ ne dépend qu
 
 ### Teste l'idée avant de la croire : « K dépend de ce qu'on a mis au départ »
 
-C'est une confusion facile à commettre, parce que $\tau$, lui, dépend bel et bien de l'état initial (tu le verras clairement au rung 6). On pourrait croire que $K$, calculé à partir des mêmes concentrations, en dépend aussi. Vérifie-le sur deux expériences distinctes, menées sur la même réaction $Fe^{3+}+SCN^- \rightleftharpoons FeSCN^{2+}$, à la même température.
+C'est une confusion facile à commettre, parce que $\tau$, lui, dépend bel et bien de l'état initial (tu le verras clairement au chapitre 6). On pourrait croire que $K$, calculé à partir des mêmes concentrations, en dépend aussi. Vérifie-le sur deux expériences distinctes, menées sur la même réaction $Fe^{3+}+SCN^- \rightleftharpoons FeSCN^{2+}$, à la même température.
 
-**Expérience 1** (celle du rung 2) : concentrations initiales égales, $c_0 = 2{,}0\times10^{-3}\ \text{mol/L}$ pour chaque réactif. À l'équilibre : $[FeSCN^{2+}]_{eq}=1{,}2\times10^{-3}$, $[Fe^{3+}]_{eq}=[SCN^-]_{eq}=0{,}8\times10^{-3}\ \text{mol/L}$.
+**Expérience 1** (celle du chapitre 2) : concentrations initiales égales, $c_0 = 2{,}0\times10^{-3}\ \text{mol/L}$ pour chaque réactif. À l'équilibre : $[FeSCN^{2+}]_{eq}=1{,}2\times10^{-3}$, $[Fe^{3+}]_{eq}=[SCN^-]_{eq}=0{,}8\times10^{-3}\ \text{mol/L}$.
 
 $$K_1 = \frac{1{,}2\times10^{-3}}{(0{,}8\times10^{-3})^2} = \frac{1{,}2\times10^{-3}}{6{,}4\times10^{-7}} = 1875$$
 
@@ -227,17 +227,17 @@ Prends n'importe quel mélange contenant les espèces d'une réaction dont tu co
 - Si $Q_{r,i} > K$ : le système évolue dans le **sens inverse** - $Q_r$ va diminuer, jusqu'à rejoindre $K$.
 - Si $Q_{r,i} = K$ : le système est déjà à l'équilibre, il n'évolue plus (macroscopiquement).
 
-*Pourquoi ce critère fonctionne :* reprends le mécanisme du rung 1. Si $Q_{r,i}$ est plus petit que $K$, c'est qu'il y a, à cet instant, proportionnellement plus de réactifs et moins de produits que ce que l'équilibre exige - la réaction directe (qui consomme les réactifs abondants et forme le produit encore rare) l'emporte alors sur la réaction inverse, et $Q_r$ grimpe. C'est très exactement ce que tu as observé au rung 3, où l'on partait sans aucun produit ($Q_{r,i}=0 < K$) et où $Q_r$ n'a fait que croître vers $K$.
+*Pourquoi ce critère fonctionne :* reprends le mécanisme du chapitre 1. Si $Q_{r,i}$ est plus petit que $K$, c'est qu'il y a, à cet instant, proportionnellement plus de réactifs et moins de produits que ce que l'équilibre exige - la réaction directe (qui consomme les réactifs abondants et forme le produit encore rare) l'emporte alors sur la réaction inverse, et $Q_r$ grimpe. C'est très exactement ce que tu as observé au chapitre 3, où l'on partait sans aucun produit ($Q_{r,i}=0 < K$) et où $Q_r$ n'a fait que croître vers $K$.
 
 ### Exemple travaillé : refermer la question de l'accroche
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on veut enfin comprendre, avec les nombres en main, pourquoi la couleur s'est intensifiée de nouveau dans l'expérience de l'accroche, quand on a ajouté du $SCN^-$ au mélange à l'équilibre.
 
-Reprends l'équilibre de l'expérience 1 (rungs 2 et 4) : $[Fe^{3+}]_{eq}=[SCN^-]_{eq}=0{,}8\times10^{-3}\ \text{mol/L}$, $[FeSCN^{2+}]_{eq}=1{,}2\times10^{-3}\ \text{mol/L}$, $K = 1875$. On ajoute, sans changer le volume, assez de thiocyanate de potassium solide pour élever instantanément $[SCN^-]$ jusqu'à $2{,}8\times10^{-3}\ \text{mol/L}$ - les deux autres concentrations restant, à l'instant de l'ajout, inchangées.
+Reprends l'équilibre de l'expérience 1 (chapitres 2 et 4) : $[Fe^{3+}]_{eq}=[SCN^-]_{eq}=0{,}8\times10^{-3}\ \text{mol/L}$, $[FeSCN^{2+}]_{eq}=1{,}2\times10^{-3}\ \text{mol/L}$, $K = 1875$. On ajoute, sans changer le volume, assez de thiocyanate de potassium solide pour élever instantanément $[SCN^-]$ jusqu'à $2{,}8\times10^{-3}\ \text{mol/L}$ - les deux autres concentrations restant, à l'instant de l'ajout, inchangées.
 
 $$Q_{r,i} = \frac{1{,}2\times10^{-3}}{0{,}8\times10^{-3}\times2{,}8\times10^{-3}} \approx 5{,}4\times10^2$$
 
-$Q_{r,i} \approx 5{,}4\times10^2$, très inférieur à $K = 1875$ : le critère prédit une évolution dans le sens direct - davantage de complexe $FeSCN^{2+}$ va se former, jusqu'à ce que $Q_r$ rejoigne $K$. C'est exactement l'intensification de couleur observée en R0 : pas une coïncidence, mais la conséquence directe de la comparaison entre $Q_{r,i}$ et $K$.
+$Q_{r,i} \approx 5{,}4\times10^2$, très inférieur à $K = 1875$ : le critère prédit une évolution dans le sens direct - davantage de complexe $FeSCN^{2+}$ va se former, jusqu'à ce que $Q_r$ rejoigne $K$. C'est exactement l'intensification de couleur observée au chapitre 1 : pas une coïncidence, mais la conséquence directe de la comparaison entre $Q_{r,i}$ et $K$.
 
 [[figure:critere-evolution-qr-k]]
 
@@ -245,7 +245,7 @@ $Q_{r,i} \approx 5{,}4\times10^2$, très inférieur à $K = 1875$ : le critère 
 
 ## R6 — Diluer, changer l'état initial : l'effet sur $\tau$ (à $K$ constante)
 
-$K$ ne bouge jamais, à température fixée - tu viens de le vérifier au rung 4. Mais $\tau$, lui, peut changer si l'on change l'état initial du système. La dilution en est l'exemple le plus direct : que se passe-t-il si l'on ajoute de l'eau à un mélange, sans rien changer d'autre ?
+$K$ ne bouge jamais, à température fixée - tu viens de le vérifier au chapitre 4. Mais $\tau$, lui, peut changer si l'on change l'état initial du système. La dilution en est l'exemple le plus direct : que se passe-t-il si l'on ajoute de l'eau à un mélange, sans rien changer d'autre ?
 
 ### Ce qui se passe, immédiatement, en diluant
 
@@ -271,7 +271,7 @@ $$[Fe^{3+}] = [SCN^-] = \frac{0{,}8\times10^{-3}}{10} = 8{,}0\times10^{-5}\ \tex
 
 $$Q_{r,i} = \frac{1{,}2\times10^{-4}}{(8{,}0\times10^{-5})^2} = \frac{1{,}2\times10^{-4}}{6{,}4\times10^{-9}} = 18750$$
 
-On retrouve bien $Q_{r,i} = f \times K = 10 \times 1875 = 18750$. Puisque $Q_{r,i} \gg K$, le critère du rung 5 impose une évolution dans le sens inverse : une partie du complexe $FeSCN^{2+}$ va se dissocier, jusqu'à ce que $Q_r$ redescende à $K$.
+On retrouve bien $Q_{r,i} = f \times K = 10 \times 1875 = 18750$. Puisque $Q_{r,i} \gg K$, le critère du chapitre 5 impose une évolution dans le sens inverse : une partie du complexe $FeSCN^{2+}$ va se dissocier, jusqu'à ce que $Q_r$ redescende à $K$.
 
 Des mesures sur ce système, une fois le nouvel équilibre atteint, donnent $[FeSCN^{2+}]_{eq} \approx 4{,}5\times10^{-5}\ \text{mol/L}$ (on peut vérifier que ceci redonne bien $Q_r \approx 1875 = K$). Le nouveau taux d'avancement final, par rapport à la concentration initiale diluée $c_0'' = 2{,}0\times10^{-4}\ \text{mol/L}$, vaut :
 

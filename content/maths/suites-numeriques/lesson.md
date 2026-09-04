@@ -117,7 +117,7 @@ $$u_{n+1} = q \times u_n$$
 
 $$u_n = u_0 + n\,r$$
 
-Prouvons-le proprement par récurrence — exactement le mécanisme du R1, appliqué ici.
+Prouvons-le proprement par récurrence — exactement le mécanisme du chapitre 2, appliqué ici.
 
 Initialisation : pour $n=0$, $u_0 + 0 \times r = u_0$. Vrai.
 
@@ -147,7 +147,7 @@ Ce qu'il faut retenir de la formule arithmétique : c'est **(nombre de termes) �
 
 ### Pourquoi c'est utile pour la suite du chapitre
 
-Voici l'idée qu'on va exploiter plus loin (R8) : une suite qui n'est **ni** arithmétique **ni** géométrique peut parfois être **transformée**, via une suite auxiliaire bien choisie, en une suite géométrique — une famille qu'on sait déjà traiter complètement. C'est exactement ce qui va arriver avec la suite du réservoir. Garde cette idée de côté pour l'instant.
+Voici l'idée qu'on va exploiter plus loin (chapitre 9) : une suite qui n'est **ni** arithmétique **ni** géométrique peut parfois être **transformée**, via une suite auxiliaire bien choisie, en une suite géométrique — une famille qu'on sait déjà traiter complètement. C'est exactement ce qui va arriver avec la suite du réservoir. Garde cette idée de côté pour l'instant.
 
 ---
 
@@ -163,13 +163,13 @@ Voici l'idée qu'on va exploiter plus loin (R8) : une suite qui n'est **ni** ari
 
 ### Pourquoi c'est plus dur à prouver qu'à calculer
 
-On ne peut pas prouver « $u_n \leq M$ pour tout $n$ » en calculant $u_0, u_1, u_2, \ldots$ un par un — il y en a une infinité. Comme pour toute propriété portant sur « tous les rangs », l'outil naturel est la récurrence (R1).
+On ne peut pas prouver « $u_n \leq M$ pour tout $n$ » en calculant $u_0, u_1, u_2, \ldots$ un par un — il y en a une infinité. Comme pour toute propriété portant sur « tous les rangs », l'outil naturel est la récurrence (chapitre 2).
 
 ### Exemple travaillé : borner le réservoir
 
-Reprenons $u_0=100$, $u_{n+1} = 0{,}5\,u_n+10$. On a déjà montré (R1) que $u_n > 20$ pour tout $n$ — la suite est **minorée** par 20. Montrons maintenant qu'elle est aussi **majorée** par 100, c'est-à-dire que le réservoir ne dépasse jamais son volume initial.
+Reprenons $u_0=100$, $u_{n+1} = 0{,}5\,u_n+10$. On a déjà montré (chapitre 2) que $u_n > 20$ pour tout $n$ — la suite est **minorée** par 20. Montrons maintenant qu'elle est aussi **majorée** par 100, c'est-à-dire que le réservoir ne dépasse jamais son volume initial.
 
-**Ce qu'on cherche ici, et pourquoi ce geste :** même stratégie qu'en R1 — initialisation puis hérédité, en utilisant la relation de récurrence pour faire passer l'inégalité d'un rang au suivant.
+**Ce qu'on cherche ici, et pourquoi ce geste :** même stratégie qu'au chapitre 2 — initialisation puis hérédité, en utilisant la relation de récurrence pour faire passer l'inégalité d'un rang au suivant.
 
 **Initialisation.** $u_0 = 100 \leq 100$. Vrai (au sens large).
 
@@ -183,13 +183,13 @@ $$0{,}5\,u_n + 10 \leq 60 \leq 100$$
 
 Donc $u_{n+1} \leq 100$.
 
-**Conclusion.** Par récurrence, $u_n \leq 100$ pour tout $n$. Combiné au R1, on a $20 < u_n \leq 100$ pour tout $n$ : la suite est **bornée**.
+**Conclusion.** Par récurrence, $u_n \leq 100$ pour tout $n$. Combiné au chapitre 2, on a $20 < u_n \leq 100$ pour tout $n$ : la suite est **bornée**.
 
-**Remarque utile pour la suite du chapitre :** l'hérédité vient en fait de montrer un résultat plus précis que « $u_n \leq 100$ » — elle donne $u_{n+1} \leq 60$, un majorant qui se resserre à chaque étape. On y revient au R4, et ce resserrement est justement ce qui va permettre de démontrer que la suite est décroissante.
+**Remarque utile pour la suite du chapitre :** l'hérédité vient en fait de montrer un résultat plus précis que « $u_n \leq 100$ » — elle donne $u_{n+1} \leq 60$, un majorant qui se resserre à chaque étape. On y revient au chapitre 5, et ce resserrement est justement ce qui va permettre de démontrer que la suite est décroissante.
 
 ### L'erreur à repérer
 
-Confondre « majorée » avec « qui augmente vers une valeur qu'elle ne dépasse jamais ». Être bornée ne dit **rien** sur le sens de variation. Une suite peut très bien osciller — monter, descendre, remonter — tout en restant bornée. La monotonie est une propriété séparée, qu'on étudie au rung suivant.
+Confondre « majorée » avec « qui augmente vers une valeur qu'elle ne dépasse jamais ». Être bornée ne dit **rien** sur le sens de variation. Une suite peut très bien osciller — monter, descendre, remonter — tout en restant bornée. La monotonie est une propriété séparée, qu'on étudie au chapitre suivant.
 
 [[figure:suite-bornee-non-monotone]]
 
@@ -209,7 +209,7 @@ $$(u_n) \text{ est décroissante} \iff u_{n+1} - u_n \leq 0 \text{ pour tout } n
 
 (Avec inégalité stricte, on parle de croissance ou décroissance **strictes**.)
 
-**Pourquoi la différence, et pas juste « regarder si ça monte » :** parce que regarder ne prouve rien pour une infinité de termes — exactement le même problème qu'en R1 et R3. Calculer le signe d'une expression algébrique, une bonne fois pour toutes, en fonction de $n$ (ou d'une hypothèse sur $u_n$), couvre tous les rangs d'un coup.
+**Pourquoi la différence, et pas juste « regarder si ça monte » :** parce que regarder ne prouve rien pour une infinité de termes — exactement le même problème qu'aux chapitres 2 et 4. Calculer le signe d'une expression algébrique, une bonne fois pour toutes, en fonction de $n$ (ou d'une hypothèse sur $u_n$), couvre tous les rangs d'un coup.
 
 **Variante utile quand $u_n > 0$ pour tout $n$ :** comparer le quotient à 1 plutôt que la différence à 0 :
 
@@ -225,13 +225,13 @@ $$u_{n+1} - u_n = (0{,}5\,u_n + 10) - u_n = 10 - 0{,}5\,u_n$$
 
 $$u_{n+1} - u_n = 0{,}5\,(20 - u_n)$$
 
-**Ce qu'on cherche ici, et pourquoi ce geste :** on a factorisé pour faire apparaître $(20-u_n)$ précisément parce qu'on connaît déjà (R1) le signe de cette quantité : on a montré $u_n > 20$ pour tout $n$, donc $20 - u_n < 0$.
+**Ce qu'on cherche ici, et pourquoi ce geste :** on a factorisé pour faire apparaître $(20-u_n)$ précisément parce qu'on connaît déjà (chapitre 2) le signe de cette quantité : on a montré $u_n > 20$ pour tout $n$, donc $20 - u_n < 0$.
 
 $$u_{n+1} - u_n = 0{,}5 \times (\text{un nombre strictement négatif}) < 0$$
 
 Donc $u_{n+1} - u_n < 0$ pour tout $n$ : **la suite est strictement décroissante**.
 
-**Ce que ce résultat confirme :** le réservoir perd du volume à chaque étape mais, d'après le R3, il reste toujours au-dessus de 20. Une suite décroissante et minorée — exactement la situation qu'il faut pour le théorème du R7.
+**Ce que ce résultat confirme :** le réservoir perd du volume à chaque étape mais, d'après le chapitre 4, il reste toujours au-dessus de 20. Une suite décroissante et minorée — exactement la situation qu'il faut pour le théorème du chapitre 8.
 
 ### Le cas d'une suite $u_{n+1} = f(u_n)$ : comparer $f(x)$ à $x$
 
@@ -239,7 +239,7 @@ Quand une suite est définie par $u_{n+1} = f(u_n)$, il existe un raccourci pour
 
 En effet, $u_{n+1} - u_n = f(u_n) - u_n$. Si $f(x) - x \geq 0$ pour tout $x$ dans l'intervalle où vivent les $u_n$, alors $u_{n+1}-u_n \geq 0$ pour tout $n$ : la suite est croissante. Et inversement pour décroissante.
 
-Vérifions sur notre exemple : $f(x) = 0{,}5x+10$, donc $f(x)-x = 10-0{,}5x = 0{,}5(20-x)$. Pour $x>20$ (l'intervalle où vivent nos $u_n$, d'après R1), $f(x)-x < 0$ : on retrouve exactement le calcul précédent, mais formulé une bonne fois pour toutes en fonction de $x$, sans repartir de $u_n$ à chaque étape.
+Vérifions sur notre exemple : $f(x) = 0{,}5x+10$, donc $f(x)-x = 10-0{,}5x = 0{,}5(20-x)$. Pour $x>20$ (l'intervalle où vivent nos $u_n$, d'après le chapitre 2), $f(x)-x < 0$ : on retrouve exactement le calcul précédent, mais formulé une bonne fois pour toutes en fonction de $x$, sans repartir de $u_n$ à chaque étape.
 
 ### L'erreur à repérer
 
@@ -290,7 +290,7 @@ Un résultat qu'on utilise tout le temps sans le redémontrer, mais qui mérite 
 - si $q>1$ : $\lim\limits_{n\to+\infty} q^n = +\infty$ (et $u_0\,q^n$ tend vers $+\infty$ si $u_0>0$, vers $-\infty$ si $u_0<0$)
 - si $q \leq -1$ : $(q^n)$ n'a pas de limite (elle oscille de signe, et si $q<-1$, elle oscille avec une amplitude qui explose)
 
-Ces résultats sont admis ici — les démontrer proprement demande des outils qu'on introduit justement dans les rungs suivants (comparaison, monotonie bornée).
+Ces résultats sont admis ici — les démontrer proprement demande des outils qu'on introduit justement dans les chapitres suivants (comparaison, monotonie bornée).
 
 ### Opérations sur les limites
 
@@ -361,7 +361,7 @@ Utiliser le théorème des gendarmes avec un encadrement dont les deux bornes ne
 
 ### Le problème que ce théorème résout
 
-Les rungs précédents supposaient qu'on connaissait déjà (ou pouvait deviner) une limite pour comparer. Mais souvent, on veut d'abord savoir **si une suite converge du tout**, avant même de calculer combien vaut sa limite. C'est exactement le rôle de ce théorème.
+Les chapitres précédents supposaient qu'on connaissait déjà (ou pouvait deviner) une limite pour comparer. Mais souvent, on veut d'abord savoir **si une suite converge du tout**, avant même de calculer combien vaut sa limite. C'est exactement le rôle de ce théorème.
 
 ### L'énoncé
 
@@ -382,14 +382,14 @@ Prends une suite décroissante et minorée par $m$ : $u_0 \geq u_1 \geq u_2 \geq
 
 Reprenons $u_0=100$, $u_{n+1}=0{,}5\,u_n+10$. On a déjà établi :
 
-- (R4) $(u_n)$ est décroissante ;
-- (R3) $(u_n)$ est minorée par 20.
+- (chapitre 5) $(u_n)$ est décroissante ;
+- (chapitre 4) $(u_n)$ est minorée par 20.
 
 **Ce qu'on cherche ici, et pourquoi ce geste :** on a rassemblé exactement les deux hypothèses du théorème — décroissante et minorée. On peut donc conclure sans calcul supplémentaire.
 
 Par le théorème de la limite monotone, $(u_n)$ converge vers une limite $L$, avec $L \geq 20$ (la limite ne peut pas descendre sous le minorant).
 
-**Attention à l'erreur classique ici :** on sait que $(u_n)$ converge et que $L \geq 20$ — mais on ne sait **pas encore** que $L=20$. Rien dans ce théorème ne dit que la limite est exactement le minorant qu'on a utilisé. Trouver la valeur exacte de $L$ est une étape séparée : c'est l'objet du rung suivant.
+**Attention à l'erreur classique ici :** on sait que $(u_n)$ converge et que $L \geq 20$ — mais on ne sait **pas encore** que $L=20$. Rien dans ce théorème ne dit que la limite est exactement le minorant qu'on a utilisé. Trouver la valeur exacte de $L$ est une étape séparée : c'est l'objet du chapitre suivant.
 
 ---
 
@@ -397,7 +397,7 @@ Par le théorème de la limite monotone, $(u_n)$ converge vers une limite $L$, a
 
 ### Le geste manquant : passer à la limite dans la relation de récurrence
 
-Le R7 nous dit que $(u_n)$ converge vers un certain $L$, mais ne dit pas combien vaut $L$. Comment trouver cette valeur ?
+Le chapitre 8 nous dit que $(u_n)$ converge vers un certain $L$, mais ne dit pas combien vaut $L$. Comment trouver cette valeur ?
 
 L'idée : la relation $u_{n+1} = f(u_n)$ reste vraie **pour tout $n$** — elle doit donc rester vraie « à la limite » aussi. Si $(u_n)$ converge vers $L$, alors $(u_{n+1})$ converge vers $L$ aussi (c'est la même suite, juste décalée d'un rang — décaler d'un rang ne change pas la limite). Et si $f$ est **continue**, alors $f(u_n)$ converge vers $f(L)$ quand $u_n$ converge vers $L$ (la continuité, c'est exactement la garantie que $f$ transporte la convergence : des entrées proches donnent des sorties proches).
 
@@ -419,7 +419,7 @@ $$0{,}5\,L = 10$$
 
 $$L = 20$$
 
-Le réservoir se stabilise **exactement** à 20 — soit 20 000 litres — pas approximativement, exactement. C'est la réponse au mystère posé en R0 : ni vidange complète, ni débordement infini — une stabilisation précise, et on sait maintenant pourquoi cette valeur précise et pas une autre : c'est l'unique point fixe de la règle de mise à jour $f(x) = 0{,}5x+10$.
+Le réservoir se stabilise **exactement** à 20 — soit 20 000 litres — pas approximativement, exactement. C'est la réponse au mystère posé au chapitre 1 : ni vidange complète, ni débordement infini — une stabilisation précise, et on sait maintenant pourquoi cette valeur précise et pas une autre : c'est l'unique point fixe de la règle de mise à jour $f(x) = 0{,}5x+10$.
 
 [[motion:escalier-pas-a-pas]]
 
@@ -427,9 +427,9 @@ Le réservoir se stabilise **exactement** à 20 — soit 20 000 litres — pas a
 
 ### Vérifier avec la formule explicite (la technique de la suite auxiliaire)
 
-On peut confirmer ce résultat par un calcul direct, sans passer par le théorème de convergence — en réutilisant l'idée du R2 (transformer en suite géométrique).
+On peut confirmer ce résultat par un calcul direct, sans passer par le théorème de convergence — en réutilisant l'idée du chapitre 3 (transformer en suite géométrique).
 
-**Ce qu'on cherche ici, et pourquoi ce geste :** on pose une suite auxiliaire $v_n = u_n - L = u_n - 20$, précisément pour « recentrer » la suite sur son point fixe. L'espoir : que $(v_n)$ devienne géométrique, une famille qu'on sait déjà traiter complètement (R2, R5).
+**Ce qu'on cherche ici, et pourquoi ce geste :** on pose une suite auxiliaire $v_n = u_n - L = u_n - 20$, précisément pour « recentrer » la suite sur son point fixe. L'espoir : que $(v_n)$ devienne géométrique, une famille qu'on sait déjà traiter complètement (chapitres 3 et 6).
 
 $$v_{n+1} = u_{n+1} - 20$$
 
@@ -443,7 +443,7 @@ $$v_n = 80 \times 0{,}5^n$$
 
 $$u_n = v_n + 20 = 20 + 80 \times 0{,}5^n$$
 
-C'est la **formule explicite** de notre suite — on peut calculer $u_{100}$ directement, sans passer par les 100 étapes intermédiaires. Et sa limite se lit immédiatement avec les résultats du R5 : comme $-1 < 0{,}5 < 1$, $\lim\limits_{n\to+\infty} 0{,}5^n = 0$, donc :
+C'est la **formule explicite** de notre suite — on peut calculer $u_{100}$ directement, sans passer par les 100 étapes intermédiaires. Et sa limite se lit immédiatement avec les résultats du chapitre 6 : comme $-1 < 0{,}5 < 1$, $\lim\limits_{n\to+\infty} 0{,}5^n = 0$, donc :
 
 $$\lim_{n\to+\infty} u_n = 20 + 80 \times 0 = 20$$
 
@@ -453,14 +453,14 @@ Les deux méthodes — théorème de convergence monotone + point fixe, et formu
 
 Pour une suite $u_{n+1} = f(u_n)$ :
 
-1. Chercher un intervalle $I$ tel que $f(I) \subset I$ et $u_0 \in I$ — ça garantit, par récurrence (R1), que tous les $u_n \in I$, donc que la suite est bornée dans $I$.
-2. Étudier le signe de $f(x)-x$ sur $I$ pour déterminer la monotonie (R4).
-3. Conclure la convergence par le théorème de la limite monotone (R7) — bornée + monotone.
-4. Résoudre $L = f(L)$ pour trouver la valeur de la limite (ce rung), à condition que $f$ soit continue.
+1. Chercher un intervalle $I$ tel que $f(I) \subset I$ et $u_0 \in I$ — ça garantit, par récurrence (chapitre 2), que tous les $u_n \in I$, donc que la suite est bornée dans $I$.
+2. Étudier le signe de $f(x)-x$ sur $I$ pour déterminer la monotonie (chapitre 5).
+3. Conclure la convergence par le théorème de la limite monotone (chapitre 8) — bornée + monotone.
+4. Résoudre $L = f(L)$ pour trouver la valeur de la limite (ce chapitre), à condition que $f$ soit continue.
 
 ### L'erreur à repérer
 
-Résoudre $L=f(L)$ **sans avoir d'abord établi que la suite converge**. L'équation $L=f(L)$ peut avoir une solution parfaitement valide même si la suite ne converge pas du tout (elle pourrait osciller, diverger vers l'infini…). Le point fixe donne la valeur *si* la limite existe — il ne prouve jamais, à lui seul, qu'elle existe. Il faut toujours établir la convergence en premier (via R7, ou tout autre argument), et seulement ensuite chercher la valeur via le point fixe.
+Résoudre $L=f(L)$ **sans avoir d'abord établi que la suite converge**. L'équation $L=f(L)$ peut avoir une solution parfaitement valide même si la suite ne converge pas du tout (elle pourrait osciller, diverger vers l'infini…). Le point fixe donne la valeur *si* la limite existe — il ne prouve jamais, à lui seul, qu'elle existe. Il faut toujours établir la convergence en premier (via le chapitre 8, ou tout autre argument), et seulement ensuite chercher la valeur via le point fixe.
 
 ---
 
@@ -468,13 +468,13 @@ Résoudre $L=f(L)$ **sans avoir d'abord établi que la suite converge**. L'équa
 
 ### La deuxième famille, celle qui tombe le plus souvent
 
-La suite auxiliaire du R8 a parfaitement marché sur le réservoir. Il faut maintenant savoir **où** elle marche, parce que son domaine de validité est plus étroit qu’il n’en a l’air : $v_n = u_n - L$ linéarise une suite $u_{n+1} = f(u_n)$ quand $f$ est **affine**, $f(x) = ax+b$ — c’est-à-dire quand $u_n$ n’apparaît qu’en haut.
+La suite auxiliaire du chapitre 9 a parfaitement marché sur le réservoir. Il faut maintenant savoir **où** elle marche, parce que son domaine de validité est plus étroit qu’il n’en a l’air : $v_n = u_n - L$ linéarise une suite $u_{n+1} = f(u_n)$ quand $f$ est **affine**, $f(x) = ax+b$ — c’est-à-dire quand $u_n$ n’apparaît qu’en haut.
 
 Or il existe une deuxième famille, au moins aussi fréquente aux examens nationaux, où $u_n$ apparaît aussi **en bas** :
 
 $$u_{n+1} = \frac{a\,u_n + b}{c\,u_n + d} \qquad \text{avec } c \neq 0$$
 
-On dit alors que la suite est **homographique** : le terme suivant est un quotient de deux expressions affines du terme précédent. Par exemple $u_{n+1} = \dfrac{2u_n}{u_n+4}$, ou $u_{n+1} = \dfrac{u_n}{5-2u_n}$, ou $u_{n+1} = \dfrac{3u_n-1}{u_n+2}$. Le $c \neq 0$ est tout ce qui change : si $c = 0$, on divise par une constante et on retombe sur une relation affine, donc sur le R8.
+On dit alors que la suite est **homographique** : le terme suivant est un quotient de deux expressions affines du terme précédent. Par exemple $u_{n+1} = \dfrac{2u_n}{u_n+4}$, ou $u_{n+1} = \dfrac{u_n}{5-2u_n}$, ou $u_{n+1} = \dfrac{3u_n-1}{u_n+2}$. Le $c \neq 0$ est tout ce qui change : si $c = 0$, on divise par une constante et on retombe sur une relation affine, donc sur le chapitre 9.
 
 ### Le geste du R8, mis à l’épreuve
 
@@ -482,13 +482,13 @@ Travaillons sur un exemple concret d’un bout à l’autre : $u_0 = 3$ et
 
 $$u_{n+1} = \frac{3u_n+1}{u_n+3}$$
 
-**Commençons comme au R8 : cherchons les points fixes**, les valeurs que la règle laisse inchangées.
+**Commençons comme au chapitre 9 : cherchons les points fixes**, les valeurs que la règle laisse inchangées.
 
 $$L = \frac{3L+1}{L+3} \iff L(L+3) = 3L+1 \iff L^2 + 3L = 3L+1 \iff L^2 = 1$$
 
 $$L = 1 \quad \text{ou} \quad L = -1$$
 
-Premier signal : il y en a **deux**. Le R8 recentrait la suite sur *le* point fixe — ici, lequel choisir ? Essayons le premier, et regardons ce qui se passe vraiment. On pose $v_n = u_n - 1$ :
+Premier signal : il y en a **deux**. Le chapitre 9 recentrait la suite sur *le* point fixe — ici, lequel choisir ? Essayons le premier, et regardons ce qui se passe vraiment. On pose $v_n = u_n - 1$ :
 
 $$u_{n+1} - 1 = \frac{3u_n+1}{u_n+3} - 1 = \frac{3u_n+1-(u_n+3)}{u_n+3} = \frac{2u_n-2}{u_n+3} = \frac{2(u_n-1)}{u_n+3}$$
 
@@ -496,7 +496,7 @@ Autrement dit :
 
 $$v_{n+1} = \frac{2}{u_n+3} \times v_n$$
 
-Regarde bien ce qu’on a obtenu. La forme est *presque* celle d’une suite géométrique — un facteur multiplié par $v_n$ — sauf que ce facteur, $\dfrac{2}{u_n+3}$, **change à chaque rang**, puisqu’il dépend de $u_n$. Or une raison, par définition, est un nombre fixe, le même à tous les rangs. $(v_n)$ n’est pas géométrique, et la méthode du R8 s’arrête là.
+Regarde bien ce qu’on a obtenu. La forme est *presque* celle d’une suite géométrique — un facteur multiplié par $v_n$ — sauf que ce facteur, $\dfrac{2}{u_n+3}$, **change à chaque rang**, puisqu’il dépend de $u_n$. Or une raison, par définition, est un nombre fixe, le même à tous les rangs. $(v_n)$ n’est pas géométrique, et la méthode du chapitre 9 s’arrête là.
 
 Le coupable est identifié, et c’est lui qui va nous donner la solution : c’est le dénominateur $u_n+3$, que la récurrence traîne avec elle à chaque étape. Une différence ne sait pas s’en débarrasser.
 
@@ -545,7 +545,7 @@ Une précaution que le correcteur attend : $v_n$ est un quotient, donc son déno
 
 L’auxiliaire n’est jamais le but. Le but, c’est $u_n$ en fonction de $n$. Deux gestes, dans cet ordre.
 
-**D’abord la formule explicite de $(v_n)$**, par le R2 : $v_n = v_0\,k^n$. Sur notre exemple, $v_0 = \dfrac{3-1}{3+1} = \dfrac{1}{2}$, donc :
+**D’abord la formule explicite de $(v_n)$**, par le chapitre 3 : $v_n = v_0\,k^n$. Sur notre exemple, $v_0 = \dfrac{3-1}{3+1} = \dfrac{1}{2}$, donc :
 
 $$v_n = \frac{1}{2}\times\left(\frac{1}{2}\right)^{n} = \left(\frac{1}{2}\right)^{n+1}$$
 
@@ -561,7 +561,7 @@ $$u_n = \frac{1+v_n}{1-v_n} = \frac{1+\left(\frac{1}{2}\right)^{n+1}}{1-\left(\f
 
 **Vérifions à un rang**, comme toujours : la formule donne $u_1 = \dfrac{1+\frac14}{1-\frac14} = \dfrac{5/4}{3/4} = \dfrac{5}{3}$, et la relation de récurrence donne $u_1 = \dfrac{3\times 3+1}{3+3} = \dfrac{10}{6} = \dfrac{5}{3}$. Les deux concordent.
 
-Et la limite se lit immédiatement (R5) : comme $\left|\frac12\right| < 1$, $v_n \to 0$, donc $u_n \to \dfrac{1+0}{1-0} = 1$.
+Et la limite se lit immédiatement (chapitre 6) : comme $\left|\frac12\right| < 1$, $v_n \to 0$, donc $u_n \to \dfrac{1+0}{1-0} = 1$.
 
 **Un fait à retenir, qui te dit d’avance vers quel point fixe la suite se dirige :** $v_n \to 0$ signifie exactement que $u_n$ se rapproche de $\alpha$ — le point fixe placé **au numérateur** de l’auxiliaire. C’est le cas dès que la raison vérifie $|k|<1$.
 
@@ -579,7 +579,7 @@ Et dans ce cas précis il existe une route plus courte, qui vaut la peine d’ê
 
 $$\frac{1}{u_{n+1}} = \frac{c u_n + d}{a u_n} = \frac{c}{a} + \frac{d}{a}\times\frac{1}{u_n}$$
 
-Autrement dit, la suite $t_n = \dfrac{1}{u_n}$ vérifie une relation **affine** : $t_{n+1} = \dfrac{d}{a}t_n + \dfrac{c}{a}$. On est retombé exactement dans le cas du R8, et il suffit de recentrer $t_n$ sur le point fixe de cette relation affine.
+Autrement dit, la suite $t_n = \dfrac{1}{u_n}$ vérifie une relation **affine** : $t_{n+1} = \dfrac{d}{a}t_n + \dfrac{c}{a}$. On est retombé exactement dans le cas du chapitre 9, et il suffit de recentrer $t_n$ sur le point fixe de cette relation affine.
 
 Un exemple minute. Pour $u_{n+1} = \dfrac{u_n}{2-u_n}$ (avec $u_n > 0$ pour tout $n$, démontré en amont) :
 
@@ -601,7 +601,7 @@ $(t_n)$ est bien arithmétique, de raison $\dfrac12$. Le signe qui trahit ce cas
 
 ### L’erreur à repérer
 
-L’erreur qui coûte le plus cher ici est de forcer le geste du R8 sur une suite homographique, et de conclure trop vite. Le calcul $u_{n+1}-1 = \dfrac{2}{u_n+3}(u_n-1)$ *ressemble* tellement à une relation géométrique qu’on est tenté d’écrire « donc $(u_n-1)$ est géométrique de raison $\dfrac{2}{u_n+3}$ ». C’est une phrase qui ne veut rien dire : une raison est un **nombre**, fixé une fois pour toutes, pas une expression qui change à chaque rang.
+L’erreur qui coûte le plus cher ici est de forcer le geste du chapitre 9 sur une suite homographique, et de conclure trop vite. Le calcul $u_{n+1}-1 = \dfrac{2}{u_n+3}(u_n-1)$ *ressemble* tellement à une relation géométrique qu’on est tenté d’écrire « donc $(u_n-1)$ est géométrique de raison $\dfrac{2}{u_n+3}$ ». C’est une phrase qui ne veut rien dire : une raison est un **nombre**, fixé une fois pour toutes, pas une expression qui change à chaque rang.
 
 Le test infaillible, à faire systématiquement avant d’écrire le mot « géométrique » : **regarde ce que tu as devant $v_n$. S’il reste un $u_n$ ou un $n$ dedans, ce n’est pas une raison.** Et quand ce test échoue sur une suite homographique, ce n’est pas que la piste est mauvaise — c’est le signal qu’il faut passer de la différence au rapport, en faisant intervenir le second point fixe.
 
@@ -630,7 +630,7 @@ Si $(u_n)$ et $(v_n)$ sont adjacentes, alors :
 - elles convergent toutes les deux, **vers la même limite** $L$ ;
 - pour tout $n$ : $u_n \leq L \leq v_n$ (la limite reste toujours encadrée entre les deux suites).
 
-**Pourquoi ça marche :** on montre d'abord que, pour tout $n$, $u_n \leq v_n$ (l'étau ne se referme jamais en se croisant) : comme $(u_n)$ croît et $(v_n)$ décroît, si on avait $u_n > v_n$ à un rang $n$, l'écart $v_n - u_n$ serait négatif à ce rang, et resterait négatif ensuite — ce qui empêcherait l'écart de tendre vers 0. Donc $u_n \leq v_n$ pour tout $n$, ce qui donne : $(u_n)$ est majorée par $v_0$ (donc converge, par R7), et $(v_n)$ est minorée par $u_0$ (donc converge aussi, par R7). Notons $L_u$ et $L_v$ leurs limites respectives. Comme $v_n-u_n \to 0$, et par les opérations sur les limites (R5), $L_v - L_u = 0$ : les deux limites sont égales.
+**Pourquoi ça marche :** on montre d'abord que, pour tout $n$, $u_n \leq v_n$ (l'étau ne se referme jamais en se croisant) : comme $(u_n)$ croît et $(v_n)$ décroît, si on avait $u_n > v_n$ à un rang $n$, l'écart $v_n - u_n$ serait négatif à ce rang, et resterait négatif ensuite — ce qui empêcherait l'écart de tendre vers 0. Donc $u_n \leq v_n$ pour tout $n$, ce qui donne : $(u_n)$ est majorée par $v_0$ (donc converge, par le chapitre 8), et $(v_n)$ est minorée par $u_0$ (donc converge aussi, par le chapitre 8). Notons $L_u$ et $L_v$ leurs limites respectives. Comme $v_n-u_n \to 0$, et par les opérations sur les limites (chapitre 6), $L_v - L_u = 0$ : les deux limites sont égales.
 
 ### Exemple travaillé
 

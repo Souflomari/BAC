@@ -404,7 +404,7 @@ Tout ce qu'on a mesuré jusqu'ici était un **événement** — quelque chose qu
 
 ### Un premier cas, sur un arbre déjà rempli
 
-Reprends l'arbre du R2, celui dont tu as déjà calculé les quatre feuilles : $P(A) = 0{,}6$ (sport collectif), $P(B|A) = 0{,}5$ et $P(B|\bar{A}) = 0{,}2$ (football).
+Reprends l'arbre construit plus haut, celui dont tu as déjà calculé les quatre feuilles : $P(A) = 0{,}6$ (sport collectif), $P(B|A) = 0{,}5$ et $P(B|\bar{A}) = 0{,}2$ (football).
 
 Pose maintenant une question qui n'est pas un événement : **à combien de « oui » un élève répond-il ?** Deux questions lui sont posées (sport collectif ? football ?), donc le résultat est $0$, $1$ ou $2$. Note $X$ ce nombre. Chaque feuille de l'arbre porte alors une valeur :
 
@@ -415,7 +415,7 @@ Pose maintenant une question qui n'est pas un événement : **à combien de « o
 | $\bar{A} \cap B$ | $0{,}08$ | $1$ |
 | $\bar{A} \cap \bar{B}$ | $0{,}32$ | $0$ |
 
-Deux feuilles différentes donnent la même valeur $1$. Elles sont incompatibles — une même personne ne peut pas être sur deux feuilles à la fois — donc on les **additionne**, exactement comme au R4 :
+Deux feuilles différentes donnent la même valeur $1$. Elles sont incompatibles — une même personne ne peut pas être sur deux feuilles à la fois — donc on les **additionne**, exactement comme plus haut :
 
 $$P(X = 0) = 0{,}32 \qquad P(X = 1) = 0{,}30 + 0{,}08 = 0{,}38 \qquad P(X = 2) = 0{,}30$$
 
@@ -435,7 +435,7 @@ Et le contrôle qui doit devenir un réflexe : $0{,}32 + 0{,}38 + 0{,}30 = 1$. L
 
 $$\sum_i P(X = x_i) = P(X = x_1) + \cdots + P(X = x_n) = 1$$
 
-**Pourquoi cette somme vaut 1 :** les événements $(X = x_1), \ldots, (X = x_n)$ forment une **partition** de l'univers — au sens exact du R4. Ils ne se chevauchent pas ($X$ ne peut pas valoir $1$ et $2$ sur la même issue) et ils couvrent tout ($X$ prend forcément une valeur). Ce n'est donc pas une astuce de vérification ajoutée après coup : c'est la même condition de partition qui faisait déjà marcher les probabilités totales.
+**Pourquoi cette somme vaut 1 :** les événements $(X = x_1), \ldots, (X = x_n)$ forment une **partition** de l'univers — au sens exact vu plus haut. Ils ne se chevauchent pas ($X$ ne peut pas valoir $1$ et $2$ sur la même issue) et ils couvrent tout ($X$ prend forcément une valeur). Ce n'est donc pas une astuce de vérification ajoutée après coup : c'est la même condition de partition qui faisait déjà marcher les probabilités totales.
 
 C'est aussi, en pratique, ton unique filet de sécurité. Si la somme ne tombe pas sur $1$, tu as oublié une valeur, oublié un chemin de l'arbre, ou multiplié une branche avec la mauvaise probabilité conditionnelle. Fais ce contrôle avant de passer à la question suivante — pas à la fin de l'épreuve.
 
@@ -444,7 +444,7 @@ C'est aussi, en pratique, ton unique filet de sécurité. Si la somme ne tombe p
 Elle est toujours la même, quel que soit l'habillage :
 
 1. **Lister les valeurs possibles** de $X$. Souvent l'énoncé te les donne (« remarquer que les valeurs prises par $X$ sont $0\,;\,1\,;\,2$ et $4$ ») — quand il ne le fait pas, tu les obtiens en parcourant toutes les issues.
-2. **Pour chaque valeur $x_i$, rassembler les feuilles** de l'arbre où $X$ vaut $x_i$, et additionner leurs probabilités. Chaque feuille se calcule comme au R2 : on multiplie le long de la branche, avec la probabilité **conditionnelle** sur la deuxième arête dès que la deuxième étape dépend de la première.
+2. **Pour chaque valeur $x_i$, rassembler les feuilles** de l'arbre où $X$ vaut $x_i$, et additionner leurs probabilités. Chaque feuille se calcule comme plus haut : on multiplie le long de la branche, avec la probabilité **conditionnelle** sur la deuxième arête dès que la deuxième étape dépend de la première.
 3. **Vérifier que la somme vaut $1$**, puis dresser le tableau.
 
 ### Traduire une phrase en valeurs de $X$
@@ -473,7 +473,7 @@ Sur notre exemple :
 
 $$E(X) = 0 \times 0{,}32 + 1 \times 0{,}38 + 2 \times 0{,}30 = 0{,}98$$
 
-**Ce que ce nombre veut dire :** c'est la valeur moyenne de $X$ si on répétait l'expérience un très grand nombre de fois. Et regarde la forme de la formule — chaque valeur est multipliée par le poids de son cas. C'est exactement la moyenne pondérée du R4 : là-bas on pondérait des taux conditionnels par la taille de leur sous-population, ici on pondère des valeurs par la probabilité de leur cas. Même mécanisme, autre matière.
+**Ce que ce nombre veut dire :** c'est la valeur moyenne de $X$ si on répétait l'expérience un très grand nombre de fois. Et regarde la forme de la formule — chaque valeur est multipliée par le poids de son cas. C'est exactement la moyenne pondérée vue plus haut : là-bas on pondérait des taux conditionnels par la taille de leur sous-population, ici on pondère des valeurs par la probabilité de leur cas. Même mécanisme, autre matière.
 
 **Le piège de l'espérance :** $E(X)$ n'est presque jamais une valeur que $X$ peut prendre. Un dé équilibré donne $E(X) = \dfrac{1+2+3+4+5+6}{6} = 3{,}5$, et pourtant aucune face ne porte $3{,}5$. Une espérance n'est pas un résultat, c'est un centre de gravité — obtenir un nombre « impossible » n'est donc jamais le signe d'une erreur.
 
@@ -495,7 +495,7 @@ Il existe une situation où la loi de $X$ ne se calcule pas feuille par feuille 
 
 Une urne contient cinq boules indiscernables au toucher, dont deux gagnantes. On tire une boule, on note si elle est gagnante, **on la remet dans l'urne**, et on recommence — trois tirages en tout. Soit $X$ le nombre de boules gagnantes obtenues.
 
-À chaque tirage, l'urne est identique aux cinq boules du départ. Donc la probabilité de gagner vaut $p = \dfrac{2}{5} = 0{,}4$ à chaque fois, et le résultat d'un tirage ne change rien aux suivants : les trois tirages sont **indépendants** au sens du R3. La probabilité de perdre est $1 - p = 0{,}6$.
+À chaque tirage, l'urne est identique aux cinq boules du départ. Donc la probabilité de gagner vaut $p = \dfrac{2}{5} = 0{,}4$ à chaque fois, et le résultat d'un tirage ne change rien aux suivants : les trois tirages sont **indépendants** au sens vu plus haut. La probabilité de perdre est $1 - p = 0{,}6$.
 
 Un chemin de l'arbre, c'est une suite de trois résultats. Comme les tirages sont indépendants, la probabilité d'un chemin est le produit des trois probabilités — et elle ne dépend que du **nombre** de succès qu'il contient, pas de leur ordre :
 

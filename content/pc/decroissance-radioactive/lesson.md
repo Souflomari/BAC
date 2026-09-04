@@ -52,7 +52,7 @@ Il existe donc, pour chaque valeur de $Z$, une plage étroite de valeurs de $N$ 
 
 ### Arrête-toi : est-ce la taille du noyau qui décide, ou le rapport N/Z ?
 
-Avant de continuer, teste l'idée qu'on vient de poser. Beaucoup d'élèves retiennent « les gros noyaux sont instables, les petits sont stables » — une règle qui ne parle que de taille. Regarde cet exemple avant de la croire : le **tritium**, $^{3}_{1}\text{H}$, un noyau d'hydrogène avec 1 proton et 2 neutrons — seulement 3 nucléons en tout, l'un des noyaux les plus légers qui existent — est pourtant **instable** (il se désintègre par radioactivité $\beta^-$, qu'on détaille au rung suivant).
+Avant de continuer, teste l'idée qu'on vient de poser. Beaucoup d'élèves retiennent « les gros noyaux sont instables, les petits sont stables » — une règle qui ne parle que de taille. Regarde cet exemple avant de la croire : le **tritium**, $^{3}_{1}\text{H}$, un noyau d'hydrogène avec 1 proton et 2 neutrons — seulement 3 nucléons en tout, l'un des noyaux les plus légers qui existent — est pourtant **instable** (il se désintègre par radioactivité $\beta^-$, qu'on détaille au chapitre suivant).
 
 Compare-le à ses cousins stables : $^{1}_{1}\text{H}$ (1 proton, 0 neutron) et $^{2}_{1}\text{H}$, le deutérium (1 proton, 1 neutron), tous deux stables. Le tritium a deux fois plus de neutrons que de protons — un rapport $N/Z = 2$, alors que ses cousins stables ont $N/Z = 0$ et $N/Z = 1$. Pour un noyau aussi léger, ce rapport est déjà trop déséquilibré : la règle « gros = instable » est fausse, prise seule — un noyau de seulement 3 nucléons peut très bien être instable si son rapport $N/Z$ s'écarte trop de la vallée de stabilité. Ce qui compte, ce n'est pas la taille seule : c'est la position par rapport à la vallée de stabilité, et cette position dépend du rapport $N/Z$, pas du nombre brut de nucléons.
 
@@ -105,7 +105,7 @@ Le nombre de nucléons $A$ ne change pas — le neutron devient un proton, il ne
 
 $$^{A}_{Z}\text{X} \longrightarrow \ ^{A}_{Z+1}\text{Y} + \ ^{0}_{-1}\text{e}$$
 
-**Exemple — le carbone 14.** C'est justement le noyau instable qu'on a repéré au rung précédent, avec ses deux neutrons excédentaires. Il est émetteur $\beta^-$ :
+**Exemple — le carbone 14.** C'est justement le noyau instable qu'on a repéré au chapitre précédent, avec ses deux neutrons excédentaires. Il est émetteur $\beta^-$ :
 
 $$^{14}_{6}\text{C} \longrightarrow \ ^{14}_{7}\text{N} + \ ^{0}_{-1}\text{e}$$
 
@@ -203,7 +203,7 @@ Si tu as déjà étudié la décharge d'un condensateur, tu reconnais la forme :
 
 ### Exemple numérique — le carbone 14
 
-La demi-vie du carbone 14 (on définit précisément ce terme au rung suivant) est $t_{1/2} = 5730$ ans, ce qui donne — par la relation qu'on établit juste après — une constante radioactive $\lambda \approx 1{,}21 \times 10^{-4}\ \text{an}^{-1}$.
+La demi-vie du carbone 14 (on définit précisément ce terme au chapitre suivant) est $t_{1/2} = 5730$ ans, ce qui donne — par la relation qu'on établit juste après — une constante radioactive $\lambda \approx 1{,}21 \times 10^{-4}\ \text{an}^{-1}$.
 
 *Ce qu'on cherche ici : quelle fraction d'un échantillon de carbone 14 reste-t-il après 1000 ans ? On applique directement la loi — pas besoin de compter les noyaux un par un, la loi statistique s'applique dès qu'on a assez de noyaux pour que les fluctuations individuelles s'effacent.*
 
@@ -257,7 +257,7 @@ $$-\ln 2 = -\lambda t_{1/2}$$
 
 $$\boxed{t_{1/2} = \frac{\ln 2}{\lambda}}$$
 
-**Une propriété qu'il faut retenir précisément : après $n$ demi-vies, quel que soit l'instant de départ choisi, il reste $N_0/2^n$.** Et ce n'est pas propre à l'instant $t=0$ — c'est une conséquence directe du caractère sans mémoire établi au rung précédent : le noyau ne « sait » pas depuis quand il existe, donc la même loi s'applique à partir de *n'importe quel* instant pris comme nouvelle origine. Deux demi-vies après le début, il reste $N_0/4$ — pas $N_0/2$ retiré deux fois de façon linéaire (ce qui donnerait zéro), mais bien une division par 2 répétée : $N_0 \to N_0/2 \to N_0/4$.
+**Une propriété qu'il faut retenir précisément : après $n$ demi-vies, quel que soit l'instant de départ choisi, il reste $N_0/2^n$.** Et ce n'est pas propre à l'instant $t=0$ — c'est une conséquence directe du caractère sans mémoire établi au chapitre précédent : le noyau ne « sait » pas depuis quand il existe, donc la même loi s'applique à partir de *n'importe quel* instant pris comme nouvelle origine. Deux demi-vies après le début, il reste $N_0/4$ — pas $N_0/2$ retiré deux fois de façon linéaire (ce qui donnerait zéro), mais bien une division par 2 répétée : $N_0 \to N_0/2 \to N_0/4$.
 
 [[figure:decroissance-courbe]]
 
@@ -313,13 +313,13 @@ $$\boxed{t = -\frac{1}{\lambda}\ln\!\left(\frac{N(t)}{N_0}\right) = \frac{1}{\la
 
 Cette formule est la clé de toute datation radioactive : mesure la proportion restante $N(t)/N_0$ (ou l'activité restante $A(t)/A_0$, qui suit exactement la même loi), connais $\lambda$, et tu obtiens l'âge $t$.
 
-**Vérification de cohérence** — avant de l'utiliser sur un cas réel, vérifie que cette formule redonne bien ce qu'on sait déjà : si la fraction restante est $N(t)/N_0 = 1/2$, la formule doit redonner $t_{1/2}$. $\ln(N_0/N(t)) = \ln 2$, donc $t = \dfrac{\ln 2}{\lambda} = t_{1/2}$ — exactement la définition du rung précédent. La formule est cohérente avec tout ce qu'on a construit jusqu'ici.
+**Vérification de cohérence** — avant de l'utiliser sur un cas réel, vérifie que cette formule redonne bien ce qu'on sait déjà : si la fraction restante est $N(t)/N_0 = 1/2$, la formule doit redonner $t_{1/2}$. $\ln(N_0/N(t)) = \ln 2$, donc $t = \dfrac{\ln 2}{\lambda} = t_{1/2}$ — exactement la définition du chapitre précédent. La formule est cohérente avec tout ce qu'on a construit jusqu'ici.
 
 ### Le cas du carbone 14 : dater la matière organique
 
 Tant qu'un organisme est vivant (une plante, un arbre, un animal), il renouvelle en permanence son carbone en échangeant avec son environnement, ce qui maintient la proportion de carbone 14 dans ses tissus à une valeur d'équilibre à peu près constante — appelons-la la référence $N_0$ (ou l'activité de référence $A_0$).
 
-À la mort de l'organisme, les échanges s'arrêtent. Le carbone 14 déjà présent continue de désintégrer, comme on l'a vu au R2 ($^{14}_{6}\text{C} \to \ ^{14}_{7}\text{N} + \ ^{0}_{-1}\text{e}$), mais il n'est plus renouvelé : sa quantité (et donc son activité) décroît désormais selon $N(t) = N_0 e^{-\lambda t}$, où $t$ est compté depuis la mort. En mesurant aujourd'hui l'activité restante $A(t)$ d'un échantillon (un morceau de bois, un os) et en la comparant à l'activité de référence $A_0$ d'un organisme vivant, on remonte au temps écoulé depuis la mort — c'est-à-dire l'âge de l'échantillon.
+À la mort de l'organisme, les échanges s'arrêtent. Le carbone 14 déjà présent continue de désintégrer, comme on l'a vu au chapitre 3 ($^{14}_{6}\text{C} \to \ ^{14}_{7}\text{N} + \ ^{0}_{-1}\text{e}$), mais il n'est plus renouvelé : sa quantité (et donc son activité) décroît désormais selon $N(t) = N_0 e^{-\lambda t}$, où $t$ est compté depuis la mort. En mesurant aujourd'hui l'activité restante $A(t)$ d'un échantillon (un morceau de bois, un os) et en la comparant à l'activité de référence $A_0$ d'un organisme vivant, on remonte au temps écoulé depuis la mort — c'est-à-dire l'âge de l'échantillon.
 
 [[figure:datation-c14]]
 

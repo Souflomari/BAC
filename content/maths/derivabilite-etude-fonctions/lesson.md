@@ -34,7 +34,7 @@ Pour une fonction $f$ et deux réels $a$ et $a+h$ (avec $h \neq 0$) de son domai
 
 $$\tau(h) = \frac{f(a+h)-f(a)}{h}$$
 
-C'est exactement le calcul du R0 : la variation de $f$ ($f(a+h)-f(a)$), divisée par la variation de la variable ($h$). Géométriquement, c'est la **pente de la droite qui passe par les points $(a, f(a))$ et $(a+h, f(a+h))$** de la courbe de $f$ — une droite **sécante** à la courbe.
+C'est exactement le calcul du chapitre 1 : la variation de $f$ ($f(a+h)-f(a)$), divisée par la variation de la variable ($h$). Géométriquement, c'est la **pente de la droite qui passe par les points $(a, f(a))$ et $(a+h, f(a+h))$** de la courbe de $f$ — une droite **sécante** à la courbe.
 
 ### Le nombre dérivé, comme limite
 
@@ -48,7 +48,7 @@ $$f'(a) = \lim_{x \to a} \frac{f(x)-f(a)}{x-a}$$
 
 Quand cette limite existe (et est finie), on dit que $f$ est **dérivable en $a$**.
 
-**Résolvons le R0 avec cette définition**, pour $d(t) = t^2$ en $a=2$ :
+**Résolvons le chapitre 1 avec cette définition**, pour $d(t) = t^2$ en $a=2$ :
 
 $$\tau(h) = \frac{d(2+h)-d(2)}{h} = \frac{(2+h)^2 - 4}{h}$$
 
@@ -60,7 +60,7 @@ Puisque $h \neq 0$ dans tout le calcul de la limite, on a bien pu simplifier par
 
 $$d'(2) = \lim_{h \to 0} (4+h) = 4$$
 
-**Le tableau du R0 avait raison** : la vitesse instantanée en $t=2$ est bien $4$ m/s, et maintenant tu peux le prouver sans tableau. Le même calcul, mené pour un point $a$ quelconque au lieu de $2$, donne $\tau(h) = \dfrac{(a+h)^2-a^2}{h} = \dfrac{2ah+h^2}{h} = 2a+h \to 2a$. Donc $d'(a) = 2a$ pour tout $a$ — une formule générale qu'on retrouvera au R2.
+**Le tableau du chapitre 1 avait raison** : la vitesse instantanée en $t=2$ est bien $4$ m/s, et maintenant tu peux le prouver sans tableau. Le même calcul, mené pour un point $a$ quelconque au lieu de $2$, donne $\tau(h) = \dfrac{(a+h)^2-a^2}{h} = \dfrac{2ah+h^2}{h} = 2a+h \to 2a$. Donc $d'(a) = 2a$ pour tout $a$ — une formule générale qu'on retrouvera au chapitre 3.
 
 ### De la sécante à la tangente : l'équation de la tangente
 
@@ -111,13 +111,13 @@ $1 \neq -1$ : les deux nombres dérivés latéraux sont différents, donc **$f$ 
 
 ### Les fonctions usuelles, et pourquoi leurs dérivées sont ce qu'elles sont
 
-Le calcul du R1 pour $d(t)=t^2$ n'était pas un cas isolé : la même méthode (former $\tau(h)$, simplifier en sachant que $h \neq 0$, puis faire tendre $h$ vers $0$) fonctionne pour toutes les fonctions usuelles.
+Le calcul du chapitre 2 pour $d(t)=t^2$ n'était pas un cas isolé : la même méthode (former $\tau(h)$, simplifier en sachant que $h \neq 0$, puis faire tendre $h$ vers $0$) fonctionne pour toutes les fonctions usuelles.
 
 **Une fonction constante**, $f(x)=c$ : $\tau(h) = \dfrac{c-c}{h} = 0$ pour tout $h \neq 0$, donc $f'(x)=0$. Une constante ne varie jamais, sa pente est toujours nulle — cohérent.
 
 **La fonction identité**, $f(x)=x$ : $\tau(h) = \dfrac{(a+h)-a}{h} = \dfrac{h}{h} = 1$, donc $f'(x)=1$. La droite $y=x$ a partout la pente $1$ — encore cohérent, la dérivée d'une droite est sa propre pente, constante.
 
-**La fonction carré**, $f(x)=x^2$ : on a montré au R1 que $f'(a) = 2a$, donc $f'(x) = 2x$.
+**La fonction carré**, $f(x)=x^2$ : on a montré au chapitre 2 que $f'(a) = 2a$, donc $f'(x) = 2x$.
 
 **La fonction cube**, $f(x)=x^3$ : le même principe, avec un développement en plus.
 
@@ -187,7 +187,7 @@ En divisant par $h$ :
 
 $$\frac{u(a+h)v(a+h)-u(a)v(a)}{h} = \frac{u(a+h)-u(a)}{h} \cdot v(a+h) + u(a) \cdot \frac{v(a+h)-v(a)}{h}$$
 
-Quand $h \to 0$ : le premier facteur tend vers $u'(a)$, et $v(a+h) \to v(a)$ (car $v$ dérivable en $a$ entraîne $v$ continue en $a$, résultat du R1) ; le second taux d'accroissement tend vers $v'(a)$. D'où :
+Quand $h \to 0$ : le premier facteur tend vers $u'(a)$, et $v(a+h) \to v(a)$ (car $v$ dérivable en $a$ entraîne $v$ continue en $a$, résultat du chapitre 2) ; le second taux d'accroissement tend vers $v'(a)$. D'où :
 
 $$(uv)'(a) = u'(a)v(a) + u(a)v'(a)$$
 
@@ -323,7 +323,7 @@ Si $f'$ est elle-même dérivable, sa dérivée se note $f''$ et s'appelle la **
 
 **Point d'inflexion.** Un point $a$ où $f''$ **change de signe** (concavité qui bascule) est un **point d'inflexion** : la courbe traverse sa propre tangente en ce point exact, passant d'un côté à l'autre.
 
-**Exemple travaillé — on continue $f(x)=x^3-3x$ du R4.** On a $f'(x)=3x^2-3$, donc :
+**Exemple travaillé — on continue $f(x)=x^3-3x$ du chapitre 5.** On a $f'(x)=3x^2-3$, donc :
 
 $$f''(x) = 6x$$
 
@@ -335,7 +335,7 @@ Voici, rassemblé, tout ce qu'une étude complète de fonction demande — dans 
 
 1. **Domaine de définition** de $f$ (valeurs interdites : dénominateur nul, racine d'un nombre négatif...).
 2. **Limites** aux bornes du domaine (aux infinis, et aux valeurs interdites) — ce qui révèle les **asymptotes** éventuelles (verticale, horizontale, oblique).
-3. **Dérivée** $f'$, calculée avec les règles des R2-R3.
+3. **Dérivée** $f'$, calculée avec les règles des chapitres 3 et 4.
 4. **Signe de $f'$**, généralement en factorisant, pour en déduire le **tableau de variations**.
 5. **Extremums locaux** : valeurs de $f$ aux points où $f'$ change de signe.
 6. **Concavité et point(s) d'inflexion** (si demandés), via $f''$.
@@ -356,7 +356,7 @@ Cette écriture révèle une **asymptote oblique** : quand $x \to \pm\infty$, $\
 
 Près de $x=1$ : quand $x \to 1^{-}$, $x-1 \to 0^{-}$ donc $\dfrac{1}{x-1} \to -\infty$, et $f(x) \to -\infty$. Quand $x \to 1^{+}$, $\dfrac{1}{x-1} \to +\infty$ donc $f(x) \to +\infty$. La droite $x=1$ est **asymptote verticale**.
 
-**3. Dérivée.** À partir de $f(x) = x + \dfrac{1}{x-1}$, avec $\left(\dfrac{1}{x-1}\right)' = -\dfrac{1}{(x-1)^2}$ (même principe que $\left(\frac{1}{x}\right)'$, R2) :
+**3. Dérivée.** À partir de $f(x) = x + \dfrac{1}{x-1}$, avec $\left(\dfrac{1}{x-1}\right)' = -\dfrac{1}{(x-1)^2}$ (même principe que $\left(\frac{1}{x}\right)'$, chapitre 3) :
 
 $$f'(x) = 1 - \frac{1}{(x-1)^2} = \frac{(x-1)^2-1}{(x-1)^2}$$
 
@@ -394,7 +394,7 @@ L'examen national retourne la question, presque chaque année, à la fin du prob
 
 ### Un premier cas, sur une étude déjà faite
 
-Reprends $f(x) = x^3-3x$ du R4, mais ne la regarde que sur $[1,+\infty[$. Tu as établi là-bas que $f'(x) = 3(x-1)(x+1)$, donc $f'(x)>0$ dès que $x>1$ : $f$ est **strictement croissante** sur $[1,+\infty[$. Aux bornes de cet intervalle : $f(1)=-2$, et $f(x) \to +\infty$ quand $x \to +\infty$.
+Reprends $f(x) = x^3-3x$ du chapitre 5, mais ne la regarde que sur $[1,+\infty[$. Tu as établi là-bas que $f'(x) = 3(x-1)(x+1)$, donc $f'(x)>0$ dès que $x>1$ : $f$ est **strictement croissante** sur $[1,+\infty[$. Aux bornes de cet intervalle : $f(1)=-2$, et $f(x) \to +\infty$ quand $x \to +\infty$.
 
 Maintenant pose la question inverse. Choisis une hauteur $y$, disons $y=2$ : existe-t-il un $x \geq 1$ tel que $f(x)=2$, et un seul ?
 
@@ -410,8 +410,8 @@ $$\text{pour } x \in I \text{ et } y \in J : \qquad y = f(x) \iff x = f^{-1}(y)$
 
 Remarque ce que tu n'as, en pratique, presque jamais à démontrer :
 
-- **La continuité est offerte par la dérivabilité.** Si tu as calculé $f'$ pour faire le tableau de variations, $f$ est dérivable sur $I$, donc continue sur $I$ (R1). Une ligne, pas une démonstration.
-- **La stricte monotonie est déjà dans le tableau de variations.** Elle vient du signe de $f'$ (R4) — c'est-à-dire d'une question que le sujet t'a fait traiter plusieurs questions plus tôt.
+- **La continuité est offerte par la dérivabilité.** Si tu as calculé $f'$ pour faire le tableau de variations, $f$ est dérivable sur $I$, donc continue sur $I$ (chapitre 2). Une ligne, pas une démonstration.
+- **La stricte monotonie est déjà dans le tableau de variations.** Elle vient du signe de $f'$ (chapitre 5) — c'est-à-dire d'une question que le sujet t'a fait traiter plusieurs questions plus tôt.
 
 Ce qui reste à ta charge, et qui porte tous les points : **déterminer $J$**. C'est la seule vraie question de la démonstration d'existence.
 
@@ -476,11 +476,11 @@ Note enfin que $f^{-1}$ ne désigne **pas** $\dfrac{1}{f}$. C'est une notation, 
 
 ### Dans l'habillage de l'examen : la rédaction complète, en trois temps
 
-**Exemple travaillé.** Soit $f(x) = \dfrac{x^2-x+1}{x-1}$, étudiée au R5. On note $g$ sa restriction à l'intervalle $I=\,]1,2]$. Montrer que $g$ admet une fonction réciproque $g^{-1}$ définie sur un intervalle $J$ à déterminer, puis calculer $\left(g^{-1}\right)'\!\left(\dfrac{7}{2}\right)$.
+**Exemple travaillé.** Soit $f(x) = \dfrac{x^2-x+1}{x-1}$, étudiée au chapitre 6. On note $g$ sa restriction à l'intervalle $I=\,]1,2]$. Montrer que $g$ admet une fonction réciproque $g^{-1}$ définie sur un intervalle $J$ à déterminer, puis calculer $\left(g^{-1}\right)'\!\left(\dfrac{7}{2}\right)$.
 
-**Ce qu'on cherche et pourquoi ce geste :** tout est déjà fait dans l'étude du R5 — il ne s'agit pas de recommencer, mais d'aller y **prélever** les trois ingrédients : la dérivabilité (pour la continuité), le signe de $f'$ sur $I$ (pour la monotonie), et les valeurs aux bornes de $I$ (pour $J$).
+**Ce qu'on cherche et pourquoi ce geste :** tout est déjà fait dans l'étude du chapitre 6 — il ne s'agit pas de recommencer, mais d'aller y **prélever** les trois ingrédients : la dérivabilité (pour la continuité), le signe de $f'$ sur $I$ (pour la monotonie), et les valeurs aux bornes de $I$ (pour $J$).
 
-**1. Existence.** $g$ est dérivable sur $I$ comme restriction d'une fonction rationnelle définie sur $I$, donc **continue** sur $I$. Le R5 a établi $f'(x)=\dfrac{x(x-2)}{(x-1)^2}$, strictement négative sur $]1,2[$ : $g$ est donc **strictement décroissante** sur $I=\,]1,2]$. Continue et strictement monotone sur un intervalle, $g$ réalise une bijection de $I$ sur $J=g(I)$.
+**1. Existence.** $g$ est dérivable sur $I$ comme restriction d'une fonction rationnelle définie sur $I$, donc **continue** sur $I$. Le chapitre 6 a établi $f'(x)=\dfrac{x(x-2)}{(x-1)^2}$, strictement négative sur $]1,2[$ : $g$ est donc **strictement décroissante** sur $I=\,]1,2]$. Continue et strictement monotone sur un intervalle, $g$ réalise une bijection de $I$ sur $J=g(I)$.
 
 **2. Détermination de $J$.** On lit les deux bornes, puis on les range — $g$ décroît, donc elles s'échangent :
 

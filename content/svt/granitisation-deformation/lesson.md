@@ -63,7 +63,7 @@ Retiens ce principe : ce n'est jamais la roche, seule, qui « est » ductile ou 
 
 ## R2 — Le métamorphisme régional : une série de faciès qui mesure la profondeur
 
-Tu sais déjà, depuis le chapitre précédent, qu'une roche enfouie profondément recristallise à l'état solide, sans fondre : c'est le métamorphisme. Mais on peut aller plus loin, et c'est l'objet de ce rung : la nature précise de cette recristallisation dépend, de façon continue et prévisible, de la profondeur atteinte.
+Tu sais déjà, depuis le chapitre précédent, qu'une roche enfouie profondément recristallise à l'état solide, sans fondre : c'est le métamorphisme. Mais on peut aller plus loin, et c'est l'objet de ce chapitre : la nature précise de cette recristallisation dépend, de façon continue et prévisible, de la profondeur atteinte.
 
 ### Une même roche de départ, plusieurs destins selon la profondeur
 
@@ -72,7 +72,7 @@ Imagine une pélite — une roche sédimentaire argileuse, déposée à l'origin
 - À quelques kilomètres de profondeur, à peine transformée, elle garde un aspect encore proche de la roche argileuse d'origine.
 - Vers une dizaine de kilomètres, elle devient un **schiste** : les minéraux se sont recristallisés en petits grains de mica orientés tous dans la même direction, ce qui donne à la roche un aspect feuilleté, qui se débite en fines plaques.
 - Vers une vingtaine de kilomètres, elle devient un **gneiss** : les grains sont plus gros, et les minéraux clairs (quartz, feldspath) se séparent des minéraux sombres (mica, amphibole) en bandes alternées bien visibles — un aspect rubané, très différent du feuilletage fin du schiste.
-- Au-delà d'une vingtaine de kilomètres, en s'approchant des conditions extrêmes qu'on va détailler au rung suivant, elle devient une **migmatite** : une roche mixte, où des zones encore parfaitement solides voisinent avec des zones qui, elles, ont commencé à fondre.
+- Au-delà d'une vingtaine de kilomètres, en s'approchant des conditions extrêmes qu'on va détailler au chapitre suivant, elle devient une **migmatite** : une roche mixte, où des zones encore parfaitement solides voisinent avec des zones qui, elles, ont commencé à fondre.
 
 ### Pourquoi cette succession n'est pas un hasard
 
@@ -101,13 +101,13 @@ Cette table est un thermomètre et un baromètre déguisés : lire le faciès, c
 
 ## R3 — L'anatexie : quand la roche franchit son seuil de fusion
 
-On a laissé la migmatite en suspens à la fin du rung précédent — une roche « mixte », avec des zones solides et des zones qui ont fondu. Ce rung explique précisément ce basculement.
+On a laissé la migmatite en suspens à la fin du chapitre précédent — une roche « mixte », avec des zones solides et des zones qui ont fondu. Ce chapitre explique précisément ce basculement.
 
 **Prends position avant de continuer.** Une roche enfouie de plus en plus profondément devient de plus en plus chaude. À ton avis, est-ce que cette roche finit, à une profondeur suffisante, par fondre entièrement d'un seul coup — comme un glaçon posé sur une plaque chaude ? Ou bien la fusion se produit-elle autrement ?
 
 ### Le solidus : un seuil, pas une pente continue
 
-Toute roche possède un **solidus** : une température (qui dépend aussi de la pression) en dessous de laquelle elle reste entièrement solide, quelle que soit la profondeur. Tant que la température locale reste sous ce seuil, la roche continue simplement à se métamorphiser, comme au rung précédent — elle change de minéraux, mais reste solide de bout en bout.
+Toute roche possède un **solidus** : une température (qui dépend aussi de la pression) en dessous de laquelle elle reste entièrement solide, quelle que soit la profondeur. Tant que la température locale reste sous ce seuil, la roche continue simplement à se métamorphiser, comme au chapitre précédent — elle change de minéraux, mais reste solide de bout en bout.
 
 Le problème, c'est que ce seuil est élevé. Pour une roche « sèche », sans eau piégée dans ses minéraux, le solidus se situe à une température que la croûte continentale, même très épaissie par une collision, atteint rarement, même à sa base. C'est là qu'intervient un facteur déjà rencontré au chapitre précédent, à propos de la subduction : la présence d'eau.
 
@@ -117,19 +117,19 @@ De nombreux minéraux qui composent les gneiss (certains micas, en particulier) 
 
 ### Une fusion partielle, pas totale
 
-Franchir le solidus ne fait pas fondre toute la roche d'un coup. Une roche est un mélange de plusieurs minéraux, et chacun a son propre point de fusion. Juste au-dessus du solidus, seuls les minéraux dont le point de fusion est le plus bas commencent à fondre ; les autres restent parfaitement solides. Le résultat est un mélange de poches de magma, encore emprisonnées, et de cristaux solides qui n'ont pas fondu : c'est exactement l'aspect « mixte » de la migmatite qu'on a rencontré au rung précédent. On appelle ce phénomène l'**anatexie** : la fusion partielle, en profondeur, d'une roche déjà métamorphisée, sous l'effet conjugué d'un enfouissement suffisant et d'une présence d'eau qui abaisse son seuil de fusion.
+Franchir le solidus ne fait pas fondre toute la roche d'un coup. Une roche est un mélange de plusieurs minéraux, et chacun a son propre point de fusion. Juste au-dessus du solidus, seuls les minéraux dont le point de fusion est le plus bas commencent à fondre ; les autres restent parfaitement solides. Le résultat est un mélange de poches de magma, encore emprisonnées, et de cristaux solides qui n'ont pas fondu : c'est exactement l'aspect « mixte » de la migmatite qu'on a rencontré au chapitre précédent. On appelle ce phénomène l'**anatexie** : la fusion partielle, en profondeur, d'une roche déjà métamorphisée, sous l'effet conjugué d'un enfouissement suffisant et d'une présence d'eau qui abaisse son seuil de fusion.
 
 Si l'enfouissement continue et que la proportion de matière fondue augmente, ces poches de magma finissent par se rassembler et par former une masse liquide plus continue : un véritable magma, de composition proche de celle du granite, prêt à évoluer indépendamment de la roche solide qui l'a produit.
 
 ### Ce que ça établit
 
-L'anatexie n'est donc pas un simple prolongement du métamorphisme : c'est sa rupture. Tant que la température reste sous le solidus, la roche se transforme en restant solide — c'est le métamorphisme du rung précédent. Dès que la température locale franchit le solidus — grâce à un enfouissement suffisant et, le plus souvent, à la présence d'eau — une partie de la roche cesse d'être solide et devient magma. C'est ce basculement précis, et rien d'autre, qui sépare un gneiss d'une migmatite, et une migmatite d'un magma granitique.
+L'anatexie n'est donc pas un simple prolongement du métamorphisme : c'est sa rupture. Tant que la température reste sous le solidus, la roche se transforme en restant solide — c'est le métamorphisme du chapitre précédent. Dès que la température locale franchit le solidus — grâce à un enfouissement suffisant et, le plus souvent, à la présence d'eau — une partie de la roche cesse d'être solide et devient magma. C'est ce basculement précis, et rien d'autre, qui sépare un gneiss d'une migmatite, et une migmatite d'un magma granitique.
 
 ---
 
 ## R4 — Du magma au granite : une cristallisation trop lente pour être volcanique
 
-Reprenons le fil du magma produit par anatexie, au rung précédent. Ce magma existe maintenant, en profondeur. Il reste à comprendre comment il devient le granite qu'on trouve, aujourd'hui, à la surface.
+Reprenons le fil du magma produit par anatexie, au chapitre précédent. Ce magma existe maintenant, en profondeur. Il reste à comprendre comment il devient le granite qu'on trouve, aujourd'hui, à la surface.
 
 **Prends position avant de continuer.** Ce magma, riche en silice comme la croûte continentale qui l'a produit, est-il aussi fluide qu'une lave de volcan — capable de remonter facilement jusqu'à la surface et de s'épancher en coulée ? Ou se comporte-t-il autrement ?
 
@@ -157,11 +157,11 @@ Retiens la règle générale qui se dégage : la texture d'une roche magmatique 
 
 ## R5 — Le granite, racine des chaînes de collision : une roche qu'il faut déterrer
 
-Il reste une question, posée dès le R0 : si le granite cristallise à vingt-cinq, trente kilomètres de profondeur ou plus, comment se retrouve-t-il aujourd'hui exposé à l'air libre, comme celui sur lequel tu marchais au tout début de cette leçon ?
+Il reste une question, posée dès le chapitre 1 : si le granite cristallise à vingt-cinq, trente kilomètres de profondeur ou plus, comment se retrouve-t-il aujourd'hui exposé à l'air libre, comme celui sur lequel tu marchais au tout début de cette leçon ?
 
 ### Le granite, une roche du cœur de la chaîne
 
-Rassemblons ce qu'on sait. Une collision épaissit la croûte continentale (chapitre précédent), ce qui enfouit certaines de ses roches à de grandes profondeurs. Assez profond, ces roches se métamorphisent en schiste, puis en gneiss (R2). Encore plus profond, sous l'effet conjugué de l'enfouissement et de la présence d'eau, elles franchissent leur solidus et fondent partiellement par anatexie (R3), produisant un magma qui cristallise lentement sur place en un granite à texture grenue (R4). Le granite occupe ainsi, typiquement, les niveaux les plus profonds d'une chaîne de collision — sa véritable racine, la partie la plus enfouie de tout l'édifice.
+Rassemblons ce qu'on sait. Une collision épaissit la croûte continentale (chapitre précédent), ce qui enfouit certaines de ses roches à de grandes profondeurs. Assez profond, ces roches se métamorphisent en schiste, puis en gneiss (chapitre 3). Encore plus profond, sous l'effet conjugué de l'enfouissement et de la présence d'eau, elles franchissent leur solidus et fondent partiellement par anatexie (chapitre 4), produisant un magma qui cristallise lentement sur place en un granite à texture grenue (chapitre 5). Le granite occupe ainsi, typiquement, les niveaux les plus profonds d'une chaîne de collision — sa véritable racine, la partie la plus enfouie de tout l'édifice.
 
 ### Le même mécanisme qu'au chapitre précédent, mais poussé plus loin
 
@@ -175,9 +175,9 @@ Cela ne veut pas dire qu'une jeune chaîne de collision ne produit pas de granit
 
 ### Fermeture de l'arc
 
-Reviens au granite du R0. Il ne s'est pas formé là où tu marches, à l'air libre — il ne pouvait pas, puisque sa texture grenue exige des dizaines de milliers d'années de refroidissement lent, un temps qui n'existe qu'en profondeur. Ce granite s'est formé bien plus bas, à vingt-cinq ou trente kilomètres sous la surface, par fusion partielle de gneiss profondément enfouis lors d'une collision continentale ancienne — puis il a fallu des dizaines de millions d'années de soulèvement et d'érosion pour décaper toute la roche qui le recouvrait, et le mettre à nu là où tu peux aujourd'hui poser la main dessus.
+Reviens au granite du chapitre 1. Il ne s'est pas formé là où tu marches, à l'air libre — il ne pouvait pas, puisque sa texture grenue exige des dizaines de milliers d'années de refroidissement lent, un temps qui n'existe qu'en profondeur. Ce granite s'est formé bien plus bas, à vingt-cinq ou trente kilomètres sous la surface, par fusion partielle de gneiss profondément enfouis lors d'une collision continentale ancienne — puis il a fallu des dizaines de millions d'années de soulèvement et d'érosion pour décaper toute la roche qui le recouvrait, et le mettre à nu là où tu peux aujourd'hui poser la main dessus.
 
-Reviens aussi aux deux questions du R0. La même compression plie la roche en profondeur, où la température et la pression de confinement la rendent ductile, et la casse net près de la surface, où elle reste froide et rigide (R1). Et une roche solide, enfouie assez profondément et suffisamment riche en eau, franchit son seuil de fusion — le solidus — pour donner naissance, par anatexie, au magma qui cristallise lentement en granite (R3, R4). Le granite qu'on trouve aujourd'hui à l'air libre est la trace, remontée à la surface après une très longue histoire, de tout ce qui s'est joué à ces profondeurs.
+Reviens aussi aux deux questions du chapitre 1. La même compression plie la roche en profondeur, où la température et la pression de confinement la rendent ductile, et la casse net près de la surface, où elle reste froide et rigide (chapitre 2). Et une roche solide, enfouie assez profondément et suffisamment riche en eau, franchit son seuil de fusion — le solidus — pour donner naissance, par anatexie, au magma qui cristallise lentement en granite (chapitres 4 et 5). Le granite qu'on trouve aujourd'hui à l'air libre est la trace, remontée à la surface après une très longue histoire, de tout ce qui s'est joué à ces profondeurs.
 
 ---
 
@@ -201,7 +201,7 @@ Reviens aussi aux deux questions du R0. La même compression plie la roche en pr
 
 **Raisonnement.**
 
-Ce qu'on cherche ici : ne pas traiter chaque observation isolément, mais montrer que toutes s'organisent selon un seul principe, la profondeur, exactement la logique du R2 poussée jusqu'au granite.
+Ce qu'on cherche ici : ne pas traiter chaque observation isolément, mais montrer que toutes s'organisent selon un seul principe, la profondeur, exactement la logique du chapitre 3 poussée jusqu'au granite.
 
 **1. Plis et failles près de la surface.** Près de la surface, la roche est froide et peu confinée : elle se comporte de façon cassante, d'où les fractures et les blocs décalés. Mais dans les tout premiers niveaux, la profondeur d'origine variait déjà d'un point à l'autre de la coupe (certaines couches ont été plus enfouies que d'autres avant d'être ramenées près de la surface) : là où la roche a transitoirement connu des conditions plus profondes, une déformation ductile a pu s'amorcer avant que la roche ne casse aussi, ce qui explique la coexistence locale de plis et de failles à ces niveaux peu profonds. Plus bas dans la pile, la température et la pression de confinement sont partout suffisantes pour que la roche se plie sans jamais casser : on n'y trouve donc que des plis.
 

@@ -4,7 +4,7 @@
 
 ## R0 — Accroche : défaire ce que ln a fait
 
-Rappelle-toi ce qu'on a établi à la toute fin du chapitre précédent (R5) : $\ln$ réalise une bijection de $]0,+\infty[$ vers $\mathbb{R}$ tout entier. Concrètement, ça veut dire : pour **tout** réel $k$, l'équation $\ln(x) = k$ admet une unique solution $x \in\, ]0,+\infty[$.
+Rappelle-toi ce qu'on a établi à la toute fin du chapitre précédent (chapitre 6) : $\ln$ réalise une bijection de $]0,+\infty[$ vers $\mathbb{R}$ tout entier. Concrètement, ça veut dire : pour **tout** réel $k$, l'équation $\ln(x) = k$ admet une unique solution $x \in\, ]0,+\infty[$.
 
 C'est un résultat puissant — existence et unicité, jamais deux solutions, jamais aucune. Mais regarde bien ce qu'il ne te donne pas : il ne te dit pas **qui** est ce $x$. Pour $k=1$, tu as déjà résolu le problème en donnant un nom à la solution : $x=e$. Mais pour $k=2$ ? Pour $k=-3$ ? Pour $k=100$ ? Tu sais que la solution existe, et qu'elle est unique — mais tu n'as, pour l'instant, aucun moyen de l'écrire autrement que « le nombre dont le logarithme vaut $k$ ».
 
@@ -28,7 +28,7 @@ Cette fonction $E$ existe réellement. Elle porte un nom que tu as probablement 
 
 ### Ce que « réciproque » veut dire ici, précisément
 
-On a vu (chapitre précédent, R5) que $\ln$ réalise une bijection de $]0,+\infty[$ vers $\mathbb{R}$. Une bijection, par définition, a une réciproque : une fonction qui **inverse** l'action de $\ln$, en repartant de $\mathbb{R}$ pour revenir à $]0,+\infty[$.
+On a vu (chapitre précédent, chapitre 6) que $\ln$ réalise une bijection de $]0,+\infty[$ vers $\mathbb{R}$. Une bijection, par définition, a une réciproque : une fonction qui **inverse** l'action de $\ln$, en repartant de $\mathbb{R}$ pour revenir à $]0,+\infty[$.
 
 **Définition.** La fonction **exponentielle**, notée $\exp$, est la réciproque de la bijection $\ln : \,]0,+\infty[\, \to \mathbb{R}$. Elle est donc définie sur $\mathbb{R}$ tout entier, à valeurs dans $]0,+\infty[$, et caractérisée par l'équivalence fondamentale :
 
@@ -42,11 +42,11 @@ Applique $\ln$ après $\exp$, ou $\exp$ après $\ln$ : tu reviens à ton point d
 
 ### Répondre aux deux questions du R0
 
-**Que vaut $\exp(0)$ ?** Par définition, $\exp(0)$ est l'unique réel positif dont le logarithme vaut $0$. Or on sait (chapitre précédent, R1) que $\ln(1) = 0$, et que $1$ est le SEUL réel dont le log s'annule ($\ln$ strictement croissante, donc injective). Donc :
+**Que vaut $\exp(0)$ ?** Par définition, $\exp(0)$ est l'unique réel positif dont le logarithme vaut $0$. Or on sait (chapitre précédent, chapitre 2) que $\ln(1) = 0$, et que $1$ est le SEUL réel dont le log s'annule ($\ln$ strictement croissante, donc injective). Donc :
 
 $$\exp(0) = 1$$
 
-**Que vaut $\exp(1)$ ?** Par définition, $\exp(1)$ est l'unique réel positif dont le logarithme vaut $1$ — c'est précisément la définition du nombre $e$ posée au chapitre précédent (R5) ! Donc :
+**Que vaut $\exp(1)$ ?** Par définition, $\exp(1)$ est l'unique réel positif dont le logarithme vaut $1$ — c'est précisément la définition du nombre $e$ posée au chapitre précédent (chapitre 6) ! Donc :
 
 $$\exp(1) = e \qquad (e \approx 2{,}718)$$
 
@@ -56,7 +56,7 @@ Ces deux valeurs ne sont pas à mémoriser par cœur comme des faits isolés —
 
 $\exp$ est à valeurs dans $]0,+\infty[$ par définition (c'est le domaine de $\ln$, l'espace d'arrivée de la réciproque) : **$\exp(x) > 0$ pour tout réel $x$, sans aucune exception.** Il n'y a pas de condition à vérifier ici, contrairement à $\ln(x)$ qui exigeait $x>0$ : $\exp$ est définie partout sur $\mathbb{R}$, et son résultat est toujours strictement positif.
 
-$\ln$ est strictement croissante sur $]0,+\infty[$ (chapitre précédent, R1). Un fait général sur les réciproques, qu'on admet ici : **la réciproque d'une bijection strictement croissante est elle-même strictement croissante.** (L'idée intuitive : si $\ln$ préserve l'ordre en allant de $]0,+\infty[$ vers $\mathbb{R}$, sa réciproque doit préserver l'ordre en revenant en arrière — inverser l'ordre à l'aller puis encore au retour reviendrait à ne rien inverser du tout.) Donc :
+$\ln$ est strictement croissante sur $]0,+\infty[$ (chapitre précédent, chapitre 2). Un fait général sur les réciproques, qu'on admet ici : **la réciproque d'une bijection strictement croissante est elle-même strictement croissante.** (L'idée intuitive : si $\ln$ préserve l'ordre en allant de $]0,+\infty[$ vers $\mathbb{R}$, sa réciproque doit préserver l'ordre en revenant en arrière — inverser l'ordre à l'aller puis encore au retour reviendrait à ne rien inverser du tout.) Donc :
 
 $$\exp \text{ est strictement croissante sur } \mathbb{R}$$
 
@@ -70,7 +70,7 @@ Pas besoin de connaître les valeurs numériques : l'ordre des arguments suffit 
 
 ### Une confusion à écarter tout de suite
 
-Une erreur fréquente à ce stade : croire que $\exp(x)$ peut être négatif ou nul pour un $x$ très négatif. Ce n'est jamais le cas. Aussi négatif que soit $x$, $\exp(x)$ reste strictement positif — simplement, il devient très **petit**, très proche de $0$, sans jamais l'atteindre (on y reviendra précisément au R4, avec la limite en $-\infty$). $0$ n'est tout simplement **pas dans l'image** de $\exp$ : il n'existe aucun réel $x$ tel que $\exp(x) = 0$, exactement parce que $\ln(0)$ n'existe pas — il n'y a rien à « défaire » pour $y=0$.
+Une erreur fréquente à ce stade : croire que $\exp(x)$ peut être négatif ou nul pour un $x$ très négatif. Ce n'est jamais le cas. Aussi négatif que soit $x$, $\exp(x)$ reste strictement positif — simplement, il devient très **petit**, très proche de $0$, sans jamais l'atteindre (on y reviendra précisément au chapitre 5, avec la limite en $-\infty$). $0$ n'est tout simplement **pas dans l'image** de $\exp$ : il n'existe aucun réel $x$ tel que $\exp(x) = 0$, exactement parce que $\ln(0)$ n'existe pas — il n'y a rien à « défaire » pour $y=0$.
 
 Attention aussi à l'erreur symétrique : ce n'est pas $\exp$ qui a un domaine restreint, c'est $\ln$. $\exp(x)$ est parfaitement défini pour n'importe quel réel $x$, aussi grand ou aussi négatif soit-il.
 
@@ -82,31 +82,31 @@ Attention aussi à l'erreur symétrique : ce n'est pas $\exp$ qui a un domaine r
 
 ### Retour à la deuxième question du R0
 
-On a demandé au R0 : comment $E(a+b)$ devrait-il s'exprimer à partir de $E(a)$ et $E(b)$ ? Puisque $\ln$ transforme un produit en somme ($\ln(uv) = \ln(u)+\ln(v)$), sa réciproque doit faire le trajet inverse : transformer une somme en produit. Vérifions-le proprement, sans se contenter de l'intuition.
+On a demandé au chapitre 1 : comment $E(a+b)$ devrait-il s'exprimer à partir de $E(a)$ et $E(b)$ ? Puisque $\ln$ transforme un produit en somme ($\ln(uv) = \ln(u)+\ln(v)$), sa réciproque doit faire le trajet inverse : transformer une somme en produit. Vérifions-le proprement, sans se contenter de l'intuition.
 
 **Propriété (produit).** Pour tous réels $a$ et $b$ :
 
 $$\exp(a+b) = \exp(a) \times \exp(b)$$
 
-**Pourquoi c'est vrai.** L'outil disponible ici, c'est l'injectivité de $\ln$ (chapitre précédent, R1 et R5) : deux réels strictement positifs qui ont le même logarithme sont égaux.
+**Pourquoi c'est vrai.** L'outil disponible ici, c'est l'injectivité de $\ln$ (chapitre précédent, chapitres 2 et 6) : deux réels strictement positifs qui ont le même logarithme sont égaux.
 
 **Ce qu'on cherche et pourquoi ce geste :** on ne peut pas manipuler $\exp$ directement pour l'instant — on ne connaît en détail que $\ln$. Le geste : calculer $\ln$ des deux candidats $\exp(a+b)$ et $\exp(a)\times\exp(b)$, vérifier qu'ils coïncident, puis conclure par injectivité.
 
-D'un côté, en utilisant l'identité fondamentale $\ln(\exp(t))=t$ (R1) :
+D'un côté, en utilisant l'identité fondamentale $\ln(\exp(t))=t$ (chapitre 2) :
 
 $$\ln\big(\exp(a+b)\big) = a+b$$
 
-De l'autre côté, en utilisant la propriété du produit de $\ln$ (chapitre précédent, R2), puis l'identité fondamentale sur chaque facteur :
+De l'autre côté, en utilisant la propriété du produit de $\ln$ (chapitre précédent, chapitre 3), puis l'identité fondamentale sur chaque facteur :
 
 $$\ln\big(\exp(a) \times \exp(b)\big) = \ln(\exp(a)) + \ln(\exp(b))$$
 
 $$\ln\big(\exp(a) \times \exp(b)\big) = a + b$$
 
-Les deux nombres $\exp(a+b)$ et $\exp(a)\times\exp(b)$ sont tous les deux strictement positifs (image de $\exp$, R1), et on vient de montrer qu'ils ont le **même logarithme**, $a+b$. Par injectivité de $\ln$ sur $]0,+\infty[$ :
+Les deux nombres $\exp(a+b)$ et $\exp(a)\times\exp(b)$ sont tous les deux strictement positifs (image de $\exp$, chapitre 2), et on vient de montrer qu'ils ont le **même logarithme**, $a+b$. Par injectivité de $\ln$ sur $]0,+\infty[$ :
 
 $$\exp(a+b) = \exp(a) \times \exp(b)$$
 
-C'est exactement la réponse prédite au R0 : la somme à l'intérieur devient un produit à l'extérieur.
+C'est exactement la réponse prédite au chapitre 1 : la somme à l'intérieur devient un produit à l'extérieur.
 
 ### Ce que ça entraîne : opposé et puissance
 
@@ -116,7 +116,7 @@ C'est exactement la réponse prédite au R0 : la somme à l'intérieur devient u
 
 $$\exp(a) \times \exp(-a) = \exp\big(a + (-a)\big) = \exp(0) = 1$$
 
-Le produit $\exp(a) \times \exp(-a)$ vaut $1$, et $\exp(a) \neq 0$ (toujours strictement positif, R1), donc on peut diviser les deux membres par $\exp(a)$ :
+Le produit $\exp(a) \times \exp(-a)$ vaut $1$, et $\exp(a) \neq 0$ (toujours strictement positif, chapitre 2), donc on peut diviser les deux membres par $\exp(a)$ :
 
 $$\exp(-a) = \frac{1}{\exp(a)}$$
 
@@ -136,7 +136,7 @@ La formule passe donc du rang $n$ au rang $n+1$ ; elle est vraie pour $n=0$ (les
 
 Tu sais déjà donner un sens à $e^n$ pour $n$ entier : c'est de l'arithmétique ordinaire sur le nombre réel $e \approx 2{,}718$ (multiplier $e$ par lui-même $n$ fois, ou son inverse pour $n$ négatif) — rien de nouveau ici.
 
-Applique la propriété de la puissance qu'on vient d'établir, avec $a=1$ : pour tout entier $n$, $\exp(n \times 1) = (\exp(1))^n$, c'est-à-dire, puisque $\exp(1) = e$ (R1) :
+Applique la propriété de la puissance qu'on vient d'établir, avec $a=1$ : pour tout entier $n$, $\exp(n \times 1) = (\exp(1))^n$, c'est-à-dire, puisque $\exp(1) = e$ (chapitre 2) :
 
 $$\exp(n) = e^n \quad \text{pour tout entier } n$$
 
@@ -172,11 +172,11 @@ Une confusion très fréquente, symétrique de celle vue avec $\ln$ : croire que
 
 On admet ici que $\exp$ est dérivable sur $\mathbb{R}$ — c'est une conséquence du théorème général de la dérivée d'une fonction réciproque (la réciproque d'une fonction dérivable dont la dérivée ne s'annule jamais est elle-même dérivable), qu'on ne démontre pas dans ce chapitre.
 
-Ce qu'on peut établir directement, en revanche, c'est la **valeur** de cette dérivée — et pour ça, on repart de l'identité fondamentale du R1, valable pour tout réel $x$ :
+Ce qu'on peut établir directement, en revanche, c'est la **valeur** de cette dérivée — et pour ça, on repart de l'identité fondamentale du chapitre 2, valable pour tout réel $x$ :
 
 $$\ln(e^x) = x$$
 
-**Ce qu'on cherche et pourquoi ce geste :** les deux membres de cette égalité sont des fonctions de $x$ égales pour tout $x$ — donc leurs dérivées sont égales aussi. On dérive les deux côtés, en utilisant à gauche la règle $(\ln u)' = \dfrac{u'}{u}$ du chapitre précédent (R3), avec $u(x) = e^x$.
+**Ce qu'on cherche et pourquoi ce geste :** les deux membres de cette égalité sont des fonctions de $x$ égales pour tout $x$ — donc leurs dérivées sont égales aussi. On dérive les deux côtés, en utilisant à gauche la règle $(\ln u)' = \dfrac{u'}{u}$ du chapitre précédent (chapitre 4), avec $u(x) = e^x$.
 
 $$\big(\ln(e^x)\big)' = \frac{(e^x)'}{e^x} \qquad \text{et} \qquad (x)' = 1$$
 
@@ -184,7 +184,7 @@ Comme les deux membres de départ sont égaux pour tout $x$, leurs dérivées le
 
 $$\frac{(e^x)'}{e^x} = 1$$
 
-En multipliant les deux côtés par $e^x$ (toujours non nul, R1) :
+En multipliant les deux côtés par $e^x$ (toujours non nul, chapitre 2) :
 
 $$(e^x)' = e^x$$
 
@@ -222,7 +222,7 @@ Comme $e^{-x^2}>0$ toujours, le signe de $g'(x)$ est celui de $-2x$ : $g'(x)>0$ 
 
 ### Une inégalité qui va tout porter : $e^x \geq x+1$
 
-On réutilise directement l'inégalité de référence établie au chapitre précédent (R4) : $\ln(t) \leq t-1$ pour tout $t>0$.
+On réutilise directement l'inégalité de référence établie au chapitre précédent (chapitre 5) : $\ln(t) \leq t-1$ pour tout $t>0$.
 
 **Ce qu'on cherche et pourquoi ce geste :** cette inégalité porte sur $\ln$ ; on veut la même chose pour $\exp$. Le geste : substituer $t = e^x$ (toujours strictement positif, donc l'inégalité s'applique bien), puis simplifier grâce à $\ln(e^x)=x$.
 
@@ -232,7 +232,7 @@ $$x \leq e^x - 1$$
 
 $$e^x \geq x+1 \qquad \text{pour tout réel } x$$
 
-C'est l'inégalité fondamentale sur laquelle repose tout ce rung.
+C'est l'inégalité fondamentale sur laquelle repose tout ce chapitre.
 
 ### Limite en $+\infty$
 
@@ -242,7 +242,7 @@ $$\lim_{x \to +\infty} e^x = +\infty$$
 
 ### Limite en $-\infty$
 
-Utilise la propriété de l'opposé (R2) : $e^x = \dfrac{1}{e^{-x}}$. Pose $X = -x$ : quand $x \to -\infty$, $X \to +\infty$, donc $e^X = e^{-x} \to +\infty$ (ce qu'on vient de montrer). Un rapport dont le dénominateur explose vers $+\infty$ tend vers $0$ :
+Utilise la propriété de l'opposé (chapitre 3) : $e^x = \dfrac{1}{e^{-x}}$. Pose $X = -x$ : quand $x \to -\infty$, $X \to +\infty$, donc $e^X = e^{-x} \to +\infty$ (ce qu'on vient de montrer). Un rapport dont le dénominateur explose vers $+\infty$ tend vers $0$ :
 
 $$\lim_{x \to -\infty} e^x = \lim_{X \to +\infty} \frac{1}{e^X} = 0$$
 
@@ -270,7 +270,7 @@ Quand $x \to +\infty$, $\dfrac{x}{4} \to +\infty$ ; comme $\dfrac{e^x}{x}$ est t
 
 $$\lim_{x \to +\infty} \frac{e^x}{x} = +\infty$$
 
-Ce résultat porte, comme pour $\ln$, le nom de **croissances comparées** — mais dans le sens opposé : $\ln(x)$ grossissait infiniment plus lentement que $x$ (chapitre précédent, R4) ; ici, $e^x$ grossit infiniment plus vite que $x$.
+Ce résultat porte, comme pour $\ln$, le nom de **croissances comparées** — mais dans le sens opposé : $\ln(x)$ grossissait infiniment plus lentement que $x$ (chapitre précédent, chapitre 5) ; ici, $e^x$ grossit infiniment plus vite que $x$.
 
 **Corollaire utile.**
 
@@ -310,7 +310,7 @@ $$\lim_{x \to +\infty} \big(e^x - x\big) = +\infty$$
 
 ### Tableau de variations
 
-Rassemble ce qu'on sait : $\exp$ est définie sur $\mathbb{R}$ (R1), $(e^x)' = e^x > 0$ pour tout $x$ (R3) donc $\exp$ est strictement croissante sur $\mathbb{R}$ tout entier, avec $\displaystyle\lim_{x\to-\infty} e^x = 0$ et $\displaystyle\lim_{x\to+\infty} e^x = +\infty$ (R4). Le tableau de variations tient donc en une seule ligne strictement croissante, de $0$ (exclu) à $+\infty$, avec le passage remarquable $e^0=1$.
+Rassemble ce qu'on sait : $\exp$ est définie sur $\mathbb{R}$ (chapitre 2), $(e^x)' = e^x > 0$ pour tout $x$ (chapitre 4) donc $\exp$ est strictement croissante sur $\mathbb{R}$ tout entier, avec $\displaystyle\lim_{x\to-\infty} e^x = 0$ et $\displaystyle\lim_{x\to+\infty} e^x = +\infty$ (chapitre 5). Le tableau de variations tient donc en une seule ligne strictement croissante, de $0$ (exclu) à $+\infty$, avec le passage remarquable $e^0=1$.
 
 ### Tangente en 0, et convexité
 
@@ -320,15 +320,15 @@ $$y = e^0 + (e^0)(x-0)$$
 
 $$y = 1+x$$
 
-Reconnais cette droite : c'est exactement l'inégalité $e^x \geq x+1$ établie au R4 ! Ce n'est pas une coïncidence. La dérivée seconde $(e^x)'' = (e^x)' = e^x$ est strictement positive pour tout $x$ — donc $\exp$ est **convexe** sur tout son domaine, ce qui signifie précisément que sa courbe reste **au-dessus de chacune de ses tangentes**. L'inégalité du R4 est la traduction algébrique de cette convexité, lue à travers la tangente la plus commode, celle en $x=0$ — exactement comme la concavité de $\ln$ donnait l'inégalité $\ln(x)\leq x-1$ à travers sa tangente en $x=1$.
+Reconnais cette droite : c'est exactement l'inégalité $e^x \geq x+1$ établie au chapitre 5 ! Ce n'est pas une coïncidence. La dérivée seconde $(e^x)'' = (e^x)' = e^x$ est strictement positive pour tout $x$ — donc $\exp$ est **convexe** sur tout son domaine, ce qui signifie précisément que sa courbe reste **au-dessus de chacune de ses tangentes**. L'inégalité du chapitre 5 est la traduction algébrique de cette convexité, lue à travers la tangente la plus commode, celle en $x=0$ — exactement comme la concavité de $\ln$ donnait l'inégalité $\ln(x)\leq x-1$ à travers sa tangente en $x=1$.
 
 ### Symétrie avec la courbe de ln
 
-$\exp$ et $\ln$ sont réciproques l'une de l'autre (R1). Un fait général sur les fonctions réciproques, qu'on admet ici : leurs courbes sont **symétriques par rapport à la droite d'équation $y=x$**. Concrètement : le point $(1,0)$ de la courbe de $\ln$ (puisque $\ln(1)=0$) a pour symétrique le point $(0,1)$ sur la courbe de $\exp$ (puisque $e^0=1$) ; le point $(e,1)$ de $\ln$ a pour symétrique $(1,e)$ sur $\exp$ (puisque $e^1=e$). Chaque propriété de $\ln$ se lit donc « en miroir » chez $\exp$ : là où $\ln$ a une asymptote verticale ($x=0$), $\exp$ a une asymptote horizontale ($y=0$) ; là où $\ln$ grossit infiniment lentement, $\exp$ grossit infiniment vite.
+$\exp$ et $\ln$ sont réciproques l'une de l'autre (chapitre 2). Un fait général sur les fonctions réciproques, qu'on admet ici : leurs courbes sont **symétriques par rapport à la droite d'équation $y=x$**. Concrètement : le point $(1,0)$ de la courbe de $\ln$ (puisque $\ln(1)=0$) a pour symétrique le point $(0,1)$ sur la courbe de $\exp$ (puisque $e^0=1$) ; le point $(e,1)$ de $\ln$ a pour symétrique $(1,e)$ sur $\exp$ (puisque $e^1=e$). Chaque propriété de $\ln$ se lit donc « en miroir » chez $\exp$ : là où $\ln$ a une asymptote verticale ($x=0$), $\exp$ a une asymptote horizontale ($y=0$) ; là où $\ln$ grossit infiniment lentement, $\exp$ grossit infiniment vite.
 
 ### L'allure de la courbe
 
-En rassemblant tout : la courbe de $\exp$ part de très près de $0$ (asymptote horizontale $y=0$) quand $x\to-\infty$, sans jamais toucher l'axe, traverse l'axe des ordonnées en $(0,1)$, passe par $(1,e)$, et monte ensuite de plus en plus vite vers la droite, sans jamais s'aplatir — au contraire de $\ln$, elle **accélère** indéfiniment, puisque $\dfrac{e^x}{x}\to+\infty$ (R4).
+En rassemblant tout : la courbe de $\exp$ part de très près de $0$ (asymptote horizontale $y=0$) quand $x\to-\infty$, sans jamais toucher l'axe, traverse l'axe des ordonnées en $(0,1)$, passe par $(1,e)$, et monte ensuite de plus en plus vite vers la droite, sans jamais s'aplatir — au contraire de $\ln$, elle **accélère** indéfiniment, puisque $\dfrac{e^x}{x}\to+\infty$ (chapitre 5).
 
 [[figure:courbe-exponentielle]]
 
@@ -340,7 +340,7 @@ En rassemblant tout : la courbe de $\exp$ part de très près de $0$ (asymptote 
 
 ### La primitive la plus simple qui soit
 
-Puisque $(e^x)' = e^x$ (R3), la fonction $\exp$ est **sa propre primitive** — à une constante additive près, comme toujours :
+Puisque $(e^x)' = e^x$ (chapitre 4), la fonction $\exp$ est **sa propre primitive** — à une constante additive près, comme toujours :
 
 **Propriété.** Les primitives de $x \mapsto e^x$ sur $\mathbb{R}$ sont les fonctions $x \mapsto e^x + C$, où $C$ est une constante réelle.
 
@@ -348,7 +348,7 @@ Aucune autre fonction usuelle du programme n'a cette propriété : d'habitude, p
 
 ### La primitive de $u'e^u$
 
-De la règle de dérivation $(e^u)' = u'e^u$ (R3), lue à l'envers, découle directement :
+De la règle de dérivation $(e^u)' = u'e^u$ (chapitre 4), lue à l'envers, découle directement :
 
 **Propriété.** Si $u$ est dérivable sur un intervalle $I$, alors les primitives de $x \mapsto u'(x)e^{u(x)}$ sur $I$ sont les fonctions $x \mapsto e^{u(x)} + C$.
 
@@ -372,7 +372,7 @@ $$F(x) = e^{x^2} + C$$
 
 ### La méthode : l'injectivité, sans condition de domaine à poser
 
-$\exp$ étant strictement croissante, donc injective, sur $\mathbb{R}$ tout entier (R1, R5) — et surtout, définie sur $\mathbb{R}$ **sans aucune restriction de domaine** — pour tous réels $A$ et $B$ :
+$\exp$ étant strictement croissante, donc injective, sur $\mathbb{R}$ tout entier (chapitres 2 et 6) — et surtout, définie sur $\mathbb{R}$ **sans aucune restriction de domaine** — pour tous réels $A$ et $B$ :
 
 $$e^{A} = e^{B} \iff A = B \qquad\qquad e^{A} \leq e^{B} \iff A \leq B$$
 
@@ -390,7 +390,7 @@ $$\mathcal{S} = \{4\}$$
 
 **Exemple travaillé 2 (équation qui demande de passer par ln).** Résous dans $\mathbb{R}$ : $e^{x} = 5$.
 
-**Ce qu'on cherche et pourquoi ce geste :** cette fois, le membre de droite n'est pas écrit sous la forme $e^{\cdot}$ — il faut d'abord le réécrire ainsi. Puisque $5>0$, $5$ est bien dans l'image de $\exp$ (donc une solution existe), et l'outil pour l'écrire $e^{\cdot}$, c'est $\ln$ : par l'identité fondamentale de réciprocité (R1), $5 = e^{\ln(5)}$.
+**Ce qu'on cherche et pourquoi ce geste :** cette fois, le membre de droite n'est pas écrit sous la forme $e^{\cdot}$ — il faut d'abord le réécrire ainsi. Puisque $5>0$, $5$ est bien dans l'image de $\exp$ (donc une solution existe), et l'outil pour l'écrire $e^{\cdot}$, c'est $\ln$ : par l'identité fondamentale de réciprocité (chapitre 2), $5 = e^{\ln(5)}$.
 
 $$e^x = 5 \iff e^x = e^{\ln(5)}$$
 
@@ -398,7 +398,7 @@ $$\iff x = \ln(5) \qquad (\text{injectivité de } \exp)$$
 
 $$\mathcal{S} = \{\ln(5)\}$$
 
-**Remarque de méthode :** de façon générale, $e^x = k$ (avec $k>0$) équivaut directement à $x=\ln(k)$ — c'est une autre façon de lire l'identité fondamentale du R1. Si $k \leq 0$, l'équation $e^x=k$ n'a **aucune** solution, puisque $e^x>0$ toujours : ce cas ne demande aucun calcul, juste la remarque que $e^x$ ne peut jamais atteindre une valeur négative ou nulle.
+**Remarque de méthode :** de façon générale, $e^x = k$ (avec $k>0$) équivaut directement à $x=\ln(k)$ — c'est une autre façon de lire l'identité fondamentale du chapitre 2. Si $k \leq 0$, l'équation $e^x=k$ n'a **aucune** solution, puisque $e^x>0$ toujours : ce cas ne demande aucun calcul, juste la remarque que $e^x$ ne peut jamais atteindre une valeur négative ou nulle.
 
 **Exemple travaillé 3 (inéquation).** Résous dans $\mathbb{R}$ : $e^{3x-2} < e^{-x+6}$.
 
@@ -412,7 +412,7 @@ $$\iff x < 2$$
 
 $$\mathcal{S} = \,]-\infty, 2[$$
 
-Il n'y a ici aucune intersection avec un domaine à effectuer — contrairement à $\ln$ (chapitre précédent, R6), $\exp$ ne restreint jamais l'ensemble des solutions par une condition de signe : la réponse ci-dessus est finale, telle quelle.
+Il n'y a ici aucune intersection avec un domaine à effectuer — contrairement à $\ln$ (chapitre précédent, chapitre 7), $\exp$ ne restreint jamais l'ensemble des solutions par une condition de signe : la réponse ci-dessus est finale, telle quelle.
 
 ---
 
@@ -426,8 +426,8 @@ Dans les deux cas, la consigne est la même : **cherche d'abord, seul, avant de 
 
 Un sujet de bac ne s'arrête pas aux frontières d'une leçon. Les problèmes ci-dessous, comme la plupart des annales de ce chapitre, mobilisent trois outils que **cette leçon n'enseigne pas** — ils sont établis ailleurs, et c'est là qu'il faut aller les chercher si l'un d'eux te manque. Les voici nommés, pour que tu ne croies pas les avoir oubliés :
 
-- **Le point d'inflexion** (l'endroit où la courbe change de concavité, repéré par un changement de signe de $f''$). Il est construit dans « **Dérivabilité et étude de fonctions** », qui lui consacre un rung entier et un checkpoint. Cette leçon-ci n'établit la convexité de $\exp$ qu'au R5, comme un fait, sans donner le critère général.
-- **L'intégration par parties**, dès qu'un sujet demande une primitive ou une aire du type $\int x\,e^{-x}\,dx$. Elle vit dans « **Calcul intégral** ». Le R6 d'ici ne donne que les deux primitives immédiates, $e^x$ et $u'e^u$ — utiles, mais insuffisantes dès qu'un facteur polynomial s'invite.
+- **Le point d'inflexion** (l'endroit où la courbe change de concavité, repéré par un changement de signe de $f''$). Il est construit dans « **Dérivabilité et étude de fonctions** », qui lui consacre un chapitre entier et un checkpoint. Cette leçon-ci n'établit la convexité de $\exp$ qu'au chapitre 6, comme un fait, sans donner le critère général.
+- **L'intégration par parties**, dès qu'un sujet demande une primitive ou une aire du type $\int x\,e^{-x}\,dx$. Elle vit dans « **Calcul intégral** ». Le chapitre 7 d'ici ne donne que les deux primitives immédiates, $e^x$ et $u'e^u$ — utiles, mais insuffisantes dès qu'un facteur polynomial s'invite.
 - **Le théorème de la limite monotone** (une suite décroissante et minorée converge), quand le volet « suites » d'un problème arrive. Il est dans « **Suites numériques** ».
 
 Aucun de ces trois n'est un manque de ce chapitre : ce sont des outils transversaux, et un problème d'analyse en assemble toujours plusieurs. Savoir **d'où vient** chaque geste est la moitié du travail de révision.

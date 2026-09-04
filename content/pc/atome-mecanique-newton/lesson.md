@@ -14,7 +14,7 @@ Avant de lire la suite, prends position, vraiment : d'après toi, ce modèle pla
 
 Garde ta réponse en tête. Voici ce qu'on va découvrir, pas à pas, dans ce chapitre : la mécanique de Newton, appliquée correctement à ce modèle, donne effectivement une orbite parfaitement stable — on va même la calculer précisément, vitesse et période, avec exactement la même méthode que pour n'importe quel mouvement circulaire. Mais un ingrédient qui n'appartient pas à la mécanique va s'inviter dans l'histoire, et il va tout changer : une charge électrique qui accélère — et un électron en orbite accélère en permanence, même à vitesse constante — rayonne de l'énergie. Cette énergie doit venir de quelque part. Et la matière qui t'entoure, elle, ne s'effondre pas : tu es fait d'atomes stables depuis des milliards d'années.
 
-C'est ce paradoxe — un calcul mécanique parfaitement correct, et pourtant contredit par ce qu'on observe — qu'on va construire et refermer dans ce chapitre : d'abord la force qui tient ce modèle (R1), puis le calcul complet de l'orbite (R2), puis pourquoi ce calcul, aussi juste soit-il, ne suffit pas (R3), et enfin, très brièvement, ce que la physique moderne met à la place (R4).
+C'est ce paradoxe — un calcul mécanique parfaitement correct, et pourtant contredit par ce qu'on observe — qu'on va construire et refermer dans ce chapitre : d'abord la force qui tient ce modèle (chapitre 2), puis le calcul complet de l'orbite (chapitre 3), puis pourquoi ce calcul, aussi juste soit-il, ne suffit pas (chapitre 4), et enfin, très brièvement, ce que la physique moderne met à la place (chapitre 5).
 
 ---
 
@@ -81,7 +81,7 @@ C'est cette accélération centripète, non nulle, qui courbe la trajectoire de 
 
 ### Appliquer la deuxième loi de Newton
 
-Dans le référentiel du noyau (supposé galiléen ici, le noyau étant très largement plus massif que l'électron et donc quasiment immobile), la seule force qui s'exerce sur l'électron, on vient de l'établir en R1, est la force de Coulomb $\vec{F}_C$, dirigée vers le noyau. La deuxième loi de Newton s'écrit :
+Dans le référentiel du noyau (supposé galiléen ici, le noyau étant très largement plus massif que l'électron et donc quasiment immobile), la seule force qui s'exerce sur l'électron, on vient de l'établir au chapitre 2, est la force de Coulomb $\vec{F}_C$, dirigée vers le noyau. La deuxième loi de Newton s'écrit :
 
 $$\vec{F}_C = m_e\,\vec{a}_G$$
 
@@ -131,13 +131,13 @@ Ce résultat a exactement la même forme que la troisième loi de Kepler pour un
 
 ### Exemple numérique : l'atome d'hydrogène
 
-Prenons, comme en R1, $r \approx 5{,}3 \times 10^{-11}\ \text{m}$, avec $k \approx 9{,}0 \times 10^{9}\ \text{N}\cdot\text{m}^2\cdot\text{C}^{-2}$, $e \approx 1{,}6 \times 10^{-19}\ \text{C}$, $m_e \approx 9{,}1 \times 10^{-31}\ \text{kg}$.
+Prenons, comme au chapitre 2, $r \approx 5{,}3 \times 10^{-11}\ \text{m}$, avec $k \approx 9{,}0 \times 10^{9}\ \text{N}\cdot\text{m}^2\cdot\text{C}^{-2}$, $e \approx 1{,}6 \times 10^{-19}\ \text{C}$, $m_e \approx 9{,}1 \times 10^{-31}\ \text{kg}$.
 
 $$v = \sqrt{\frac{9{,}0 \times 10^{9} \times (1{,}6 \times 10^{-19})^2}{9{,}1 \times 10^{-31} \times 5{,}3 \times 10^{-11}}} \approx 2{,}2 \times 10^{6}\ \text{m/s}$$
 
 $$T = \frac{2\pi r}{v} = \frac{2\pi \times 5{,}3 \times 10^{-11}}{2{,}2 \times 10^{6}} \approx 1{,}5 \times 10^{-16}\ \text{s}$$
 
-L'électron, dans ce modèle, tournerait à plus de deux millions de mètres par seconde, en faisant un tour complet en un dixième de milliardième de milliardième de seconde. Une vitesse et une période parfaitement définies, parfaitement stables dans le temps — rien, dans ce calcul, ne dit que $r$ devrait un jour changer. Retiens bien ce point : on y revient au rung suivant.
+L'électron, dans ce modèle, tournerait à plus de deux millions de mètres par seconde, en faisant un tour complet en un dixième de milliardième de milliardième de seconde. Une vitesse et une période parfaitement définies, parfaitement stables dans le temps — rien, dans ce calcul, ne dit que $r$ devrait un jour changer. Retiens bien ce point : on y revient au chapitre suivant.
 
 Vérifie ta compréhension.
 
@@ -149,7 +149,7 @@ Vérifie ta compréhension.
 
 ### Arrête-toi : ce calcul est-il faux ?
 
-Non. Le calcul de R2 est parfaitement correct : la deuxième loi de Newton et la force de Coulomb, appliquées à un mouvement circulaire uniforme, donnent bien une vitesse et une période précises, et rien dans ces deux lois ne force le rayon $r$ à changer avec le temps. Tant qu'on reste strictement à l'intérieur de la mécanique, cette orbite est parfaitement stable, indéfiniment — exactement comme un satellite autour de la Terre.
+Non. Le calcul du chapitre 3 est parfaitement correct : la deuxième loi de Newton et la force de Coulomb, appliquées à un mouvement circulaire uniforme, donnent bien une vitesse et une période précises, et rien dans ces deux lois ne force le rayon $r$ à changer avec le temps. Tant qu'on reste strictement à l'intérieur de la mécanique, cette orbite est parfaitement stable, indéfiniment — exactement comme un satellite autour de la Terre.
 
 Voici l'erreur à éviter, précisément celle que beaucoup d'élèves commettent : conclure que, puisque le calcul mécanique est juste, il **explique tout** — que la mécanique de Newton, à elle seule, rend compte de la stabilité de l'atome. Ce n'est pas le cas, et voici pourquoi.
 
@@ -157,9 +157,9 @@ Voici l'erreur à éviter, précisément celle que beaucoup d'élèves commetten
 
 Il existe un résultat de l'électromagnétisme (qu'on peut énoncer ici sans le démontrer, car sa démonstration dépasse largement ce chapitre) : **toute charge électrique accélérée rayonne de l'énergie sous forme d'onde électromagnétique.** Une antenne émettrice fonctionne exactement sur ce principe : des charges qu'on fait accélérer dans un fil émettent des ondes radio, en perdant de l'énergie à chaque instant.
 
-Or on vient d'établir en R2 que l'électron, même en mouvement circulaire **uniforme**, possède une accélération non nulle — l'accélération centripète $a_N = v^2/r$, dirigée vers le noyau. L'électron est donc une charge en accélération permanente. D'après ce résultat de l'électromagnétisme, il devrait rayonner de l'énergie électromagnétique en continu.
+Or on vient d'établir au chapitre 3 que l'électron, même en mouvement circulaire **uniforme**, possède une accélération non nulle — l'accélération centripète $a_N = v^2/r$, dirigée vers le noyau. L'électron est donc une charge en accélération permanente. D'après ce résultat de l'électromagnétisme, il devrait rayonner de l'énergie électromagnétique en continu.
 
-Cette énergie rayonnée doit venir de quelque part : elle est prélevée sur l'énergie même de l'orbite (l'énergie cinétique et l'énergie potentielle électrique de l'électron). À mesure que l'électron perd de l'énergie, il ne peut plus rester sur une orbite de rayon $r$ constant — il doit se rapprocher du noyau, sur une trajectoire en spirale, de plus en plus vite à mesure qu'il se rapproche (car $v$ augmente quand $r$ diminue, d'après la formule de R2). Les physiciens qui ont fait ce calcul au début du vingtième siècle ont trouvé un résultat saisissant : un tel effondrement, pour un atome d'hydrogène, prendrait, classiquement, une fraction de seconde extrêmement courte — un temps largement inférieur au milliardième de seconde.
+Cette énergie rayonnée doit venir de quelque part : elle est prélevée sur l'énergie même de l'orbite (l'énergie cinétique et l'énergie potentielle électrique de l'électron). À mesure que l'électron perd de l'énergie, il ne peut plus rester sur une orbite de rayon $r$ constant — il doit se rapprocher du noyau, sur une trajectoire en spirale, de plus en plus vite à mesure qu'il se rapproche (car $v$ augmente quand $r$ diminue, d'après la formule du chapitre 3). Les physiciens qui ont fait ce calcul au début du vingtième siècle ont trouvé un résultat saisissant : un tel effondrement, pour un atome d'hydrogène, prendrait, classiquement, une fraction de seconde extrêmement courte — un temps largement inférieur au milliardième de seconde.
 
 [[figure:spirale-rayonnement]]
 
@@ -172,7 +172,7 @@ Voici la contradiction, mise côte à côte :
 
 Ce n'est pas un détail, ni une approximation qu'on pourrait améliorer en calculant plus finement : c'est une contradiction frontale entre une prédiction de la physique classique (mécanique et électromagnétisme réunis) et l'expérience la plus élémentaire qui soit — le fait même que la matière existe durablement. La physique classique ne résout pas ce paradoxe : elle le pose, sans pouvoir y répondre depuis l'intérieur de son propre cadre.
 
-C'est exactement la limite qu'il faut retenir de ce chapitre : la mécanique de Newton n'est pas fausse dans ce qu'elle calcule (R2 tient toujours, comme description instantanée d'une orbite à rayon fixe) — elle est **incomplète** face à ce que l'atome fait réellement dans le temps.
+C'est exactement la limite qu'il faut retenir de ce chapitre : la mécanique de Newton n'est pas fausse dans ce qu'elle calcule (chapitre 3 tient toujours, comme description instantanée d'une orbite à rayon fixe) — elle est **incomplète** face à ce que l'atome fait réellement dans le temps.
 
 Vérifie ta compréhension.
 
@@ -184,7 +184,7 @@ Vérifie ta compréhension.
 
 Si la mécanique classique ne peut pas expliquer pourquoi l'atome ne s'effondre pas, il faut un ingrédient différent — pas seulement une correction, un changement de cadre. C'est ce qu'on appelle la physique quantique, et ce chapitre s'arrête au seuil, sans y entrer : voici seulement le constat, tel qu'il est établi expérimentalement.
 
-L'énergie d'un atome n'est pas libre de prendre n'importe quelle valeur, contrairement à ce que la mécanique classique autoriserait (dans le modèle de R2, rien n'empêche $r$, et donc l'énergie de l'électron, de varier de façon continue). En réalité, l'énergie d'un atome est **quantifiée** : elle ne peut prendre qu'un ensemble de valeurs bien précises et discrètes, comme des marches d'escalier plutôt qu'une rampe continue. Un électron ne peut pas se trouver n'importe où entre deux de ces niveaux d'énergie autorisés.
+L'énergie d'un atome n'est pas libre de prendre n'importe quelle valeur, contrairement à ce que la mécanique classique autoriserait (dans le modèle du chapitre 3, rien n'empêche $r$, et donc l'énergie de l'électron, de varier de façon continue). En réalité, l'énergie d'un atome est **quantifiée** : elle ne peut prendre qu'un ensemble de valeurs bien précises et discrètes, comme des marches d'escalier plutôt qu'une rampe continue. Un électron ne peut pas se trouver n'importe où entre deux de ces niveaux d'énergie autorisés.
 
 Quand un atome passe d'un niveau d'énergie à un autre, il échange de l'énergie avec l'extérieur sous forme d'un photon (un grain de lumière), et cet échange obéit à une relation simple :
 
@@ -196,7 +196,7 @@ où $\Delta E$ est la différence d'énergie entre les deux niveaux, $\nu$ la fr
 
 [[figure:spectre-raies]]
 
-Rien, dans la deuxième loi de Newton ni dans la force de Coulomb, ne prédit cette quantification : ces lois, à elles seules, autoriseraient un continuum d'orbites et d'énergies, exactement le modèle de R2. C'est précisément pour rendre compte de cette quantification — et, du même coup, de la stabilité de l'atome, puisqu'il existe un niveau d'énergie le plus bas en dessous duquel l'électron ne peut pas descendre — qu'un cadre entièrement nouveau a été nécessaire. Ce cadre, la mécanique quantique, sort du programme de ce chapitre ; retiens seulement, de ce rung, le constat qui referme la boucle ouverte en R0 : la mécanique de Newton permet de calculer une orbite (R2), mais elle ne permet pas d'expliquer pourquoi l'énergie de l'atome est quantifiée, ni pourquoi l'atome, en définitive, ne s'effondre pas.
+Rien, dans la deuxième loi de Newton ni dans la force de Coulomb, ne prédit cette quantification : ces lois, à elles seules, autoriseraient un continuum d'orbites et d'énergies, exactement le modèle du chapitre 3. C'est précisément pour rendre compte de cette quantification — et, du même coup, de la stabilité de l'atome, puisqu'il existe un niveau d'énergie le plus bas en dessous duquel l'électron ne peut pas descendre — qu'un cadre entièrement nouveau a été nécessaire. Ce cadre, la mécanique quantique, sort du programme de ce chapitre ; retiens seulement, de ce chapitre, le constat qui referme la boucle ouverte au chapitre 1 : la mécanique de Newton permet de calculer une orbite (chapitre 3), mais elle ne permet pas d'expliquer pourquoi l'énergie de l'atome est quantifiée, ni pourquoi l'atome, en définitive, ne s'effondre pas.
 
 Vérifie ta compréhension.
 

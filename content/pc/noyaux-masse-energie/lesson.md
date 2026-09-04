@@ -30,7 +30,7 @@ $$E = mc^2$$
 
 où $c \approx 3{,}00\times10^8\ \text{m/s}$ est la vitesse de la lumière dans le vide. Réciproquement — et c'est ce sens-là qu'on va utiliser tout au long de cette leçon — toute variation d'énergie $\Delta E$ d'un système s'accompagne d'une variation de masse $\Delta m = \dfrac{\Delta E}{c^2}$. Masse et énergie ne sont plus deux choses séparément conservées : ce sont deux façons de mesurer la même chose, reliées par un facteur de conversion fixe, $c^2$.
 
-Ça ne veut pas dire qu'une réaction chimique fait « perdre de la masse » de façon détectable : $c^2$ est un nombre énorme (environ $9\times10^{16}\ \text{m}^2/\text{s}^2$), donc convertir une énergie, même conséquente à notre échelle, en variation de masse donne un $\Delta m$ ridiculement petit — indétectable par la meilleure balance. C'est seulement à l'échelle nucléaire, où les énergies mises en jeu par réaction sont des millions de fois plus grandes qu'en chimie (on le chiffre précisément au R4), que cette variation de masse devient mesurable et significative.
+Ça ne veut pas dire qu'une réaction chimique fait « perdre de la masse » de façon détectable : $c^2$ est un nombre énorme (environ $9\times10^{16}\ \text{m}^2/\text{s}^2$), donc convertir une énergie, même conséquente à notre échelle, en variation de masse donne un $\Delta m$ ridiculement petit — indétectable par la meilleure balance. C'est seulement à l'échelle nucléaire, où les énergies mises en jeu par réaction sont des millions de fois plus grandes qu'en chimie (on le chiffre précisément au chapitre 5), que cette variation de masse devient mesurable et significative.
 
 ### Les unités adaptées à l'échelle du noyau
 
@@ -82,7 +82,7 @@ où $m_p$ et $m_n$ sont les masses du proton et du neutron isolés. $\Delta m$ e
 
 ### D'où vient cette masse manquante — le mécanisme
 
-Voici pourquoi cette masse manque, et pourquoi ce n'est pas magique. Assembler des nucléons libres en un noyau, sous l'effet de l'interaction forte (rencontrée au chapitre sur la radioactivité), c'est passer d'un état où les nucléons sont séparés, immobiles, sans interaction, à un état lié où l'interaction forte les maintient ensemble. Ce passage **libère de l'énergie** — exactement comme laisser tomber un objet libère de l'énergie potentielle en la convertissant en énergie cinétique. Par l'équivalence masse-énergie du R1, cette énergie libérée doit provenir de quelque part : elle provient d'une diminution de la masse du système. Le défaut de masse $\Delta m$ n'est rien d'autre que la trace, en kilogrammes (ou en $\text{u}$), de cette énergie qui s'est échappée au moment de la formation du noyau.
+Voici pourquoi cette masse manque, et pourquoi ce n'est pas magique. Assembler des nucléons libres en un noyau, sous l'effet de l'interaction forte (rencontrée au chapitre sur la radioactivité), c'est passer d'un état où les nucléons sont séparés, immobiles, sans interaction, à un état lié où l'interaction forte les maintient ensemble. Ce passage **libère de l'énergie** — exactement comme laisser tomber un objet libère de l'énergie potentielle en la convertissant en énergie cinétique. Par l'équivalence masse-énergie du chapitre 2, cette énergie libérée doit provenir de quelque part : elle provient d'une diminution de la masse du système. Le défaut de masse $\Delta m$ n'est rien d'autre que la trace, en kilogrammes (ou en $\text{u}$), de cette énergie qui s'est échappée au moment de la formation du noyau.
 
 Autrement dit : pour séparer de nouveau un noyau en ses nucléons individuels, il faudrait lui **fournir** exactement cette énergie en retour — le noyau ne la « rendra » jamais spontanément. C'est cette énergie qu'on appelle l'énergie de liaison.
 
@@ -108,11 +108,11 @@ $$\Delta m = 2\times1{,}00728 + 2\times1{,}00867 - 4{,}00151$$
 
 $$\Delta m = 4{,}03190 - 4{,}00151 = 0{,}03039\ \text{u}$$
 
-On convertit en énergie avec le facteur établi au R1 :
+On convertit en énergie avec le facteur établi au chapitre 2 :
 
 $$E_l = 0{,}03039 \times 931{,}5 \approx 28{,}31\ \text{MeV}$$
 
-28 MeV pour dissocier un noyau de seulement 4 nucléons : c'est énorme, comparé à ce qu'on rencontre en chimie (on quantifie précisément cet écart au R4). Voilà, chiffré, ce que veut dire « l'hélium est exceptionnellement bien lié ».
+28 MeV pour dissocier un noyau de seulement 4 nucléons : c'est énorme, comparé à ce qu'on rencontre en chimie (on quantifie précisément cet écart au chapitre 5). Voilà, chiffré, ce que veut dire « l'hélium est exceptionnellement bien lié ».
 
 [[figure:defaut-masse]]
 
@@ -161,7 +161,7 @@ Voici la conséquence directe de cette forme de courbe, et c'est elle qui expliq
 
 - **Fission.** Un noyau **lourd**, situé sur la partie **descendante** de la courbe (à droite du maximum), se casse en deux noyaux de masse intermédiaire, plus proches du maximum : les noyaux fils ont, ensemble, un $E_l/A$ moyen plus grand que le noyau de départ. Là encore, ce gain se traduit par une énergie libérée — c'est le principe d'un réacteur nucléaire.
 
-Dans les deux cas — fusion à gauche, fission à droite — la réaction se dirige vers le sommet de la courbe, vers le fer et le nickel, les noyaux les plus stables qui existent. On chiffre précisément cette énergie libérée au rung suivant.
+Dans les deux cas — fusion à gauche, fission à droite — la réaction se dirige vers le sommet de la courbe, vers le fer et le nickel, les noyaux les plus stables qui existent. On chiffre précisément cette énergie libérée au chapitre suivant.
 
 [[figure:courbe-aston]]
 
@@ -175,7 +175,7 @@ Vérifie ta compréhension.
 
 ### La méthode générale
 
-Pour une réaction nucléaire (fission ou fusion), on procède exactement comme pour un seul noyau au R2, mais en comparant la masse totale des réactifs à la masse totale des produits :
+Pour une réaction nucléaire (fission ou fusion), on procède exactement comme pour un seul noyau au chapitre 3, mais en comparant la masse totale des réactifs à la masse totale des produits :
 
 $$\Delta m = m_{\text{produits}} - m_{\text{réactifs}}$$
 
@@ -205,7 +205,7 @@ $$\Delta m = 235{,}81607 - 236{,}00209 = -0{,}18602\ \text{u}$$
 
 $$E = 0{,}18602 \times 931{,}5 \approx 173{,}3\ \text{MeV}$$
 
-Cette fission unique libère environ 173 MeV — déjà 6 fois l'énergie de liaison entière de l'hélium 4 (R2), obtenue en une seule cassure d'un seul noyau. Multiplié par le nombre gigantesque de noyaux d'uranium présents dans un réacteur (de l'ordre de $10^{23}$ à $10^{25}$), cette énergie par réaction devient la puissance électrique d'une centrale entière.
+Cette fission unique libère environ 173 MeV — déjà 6 fois l'énergie de liaison entière de l'hélium 4 (chapitre 3), obtenue en une seule cassure d'un seul noyau. Multiplié par le nombre gigantesque de noyaux d'uranium présents dans un réacteur (de l'ordre de $10^{23}$ à $10^{25}$), cette énergie par réaction devient la puissance électrique d'une centrale entière.
 
 ### Exemple — la fusion deutérium-tritium
 
@@ -213,7 +213,7 @@ C'est la réaction de fusion la plus étudiée pour les futurs réacteurs à fus
 
 $$^{2}_{1}\text{H} + \ ^{3}_{1}\text{H} \longrightarrow \ ^{4}_{2}\text{He} + \ ^{1}_{0}\text{n}$$
 
-Données (masses des noyaux) : $m(^{2}_{1}\text{H}) = 2{,}01355\ \text{u}$, $m(^{3}_{1}\text{H}) = 3{,}01550\ \text{u}$, $m(^{4}_{2}\text{He}) = 4{,}00151\ \text{u}$ (déjà rencontrée au R2), $m(\text{n}) = 1{,}00867\ \text{u}$.
+Données (masses des noyaux) : $m(^{2}_{1}\text{H}) = 2{,}01355\ \text{u}$, $m(^{3}_{1}\text{H}) = 3{,}01550\ \text{u}$, $m(^{4}_{2}\text{He}) = 4{,}00151\ \text{u}$ (déjà rencontrée au chapitre 3), $m(\text{n}) = 1{,}00867\ \text{u}$.
 
 $$m_{\text{réactifs}} = 2{,}01355 + 3{,}01550 = 5{,}02905\ \text{u}$$
 

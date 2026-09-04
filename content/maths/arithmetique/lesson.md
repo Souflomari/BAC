@@ -90,7 +90,7 @@ $$a \equiv b \pmod{n}$$
 
 si $n \mid (a - b)$, c'est-à-dire si $a - b$ est un multiple de $n$.
 
-**Pourquoi c'est équivalent à "même reste" :** si $n \mid (a-b)$, écris $a - b = nk$. Note $r$ le reste de la division euclidienne de $a$ par $n$, donc $a = nq + r$ avec $0 \leq r < n$. Alors $b = a - nk = nq + r - nk = n(q-k) + r$. C'est une division euclidienne valide de $b$ par $n$ (le reste $r$ vérifie toujours $0 \leq r < n$), donc par l'unicité vue en R1, le reste de $b$ dans sa division par $n$ est ce même $r$. Conclusion : $a \equiv b \pmod{n}$ dit exactement que $a$ et $b$ laissent le même reste dans la division par $n$ — les deux définitions sont une seule et même idée vue sous deux angles.
+**Pourquoi c'est équivalent à "même reste" :** si $n \mid (a-b)$, écris $a - b = nk$. Note $r$ le reste de la division euclidienne de $a$ par $n$, donc $a = nq + r$ avec $0 \leq r < n$. Alors $b = a - nk = nq + r - nk = n(q-k) + r$. C'est une division euclidienne valide de $b$ par $n$ (le reste $r$ vérifie toujours $0 \leq r < n$), donc par l'unicité vue au chapitre 2, le reste de $b$ dans sa division par $n$ est ce même $r$. Conclusion : $a \equiv b \pmod{n}$ dit exactement que $a$ et $b$ laissent le même reste dans la division par $n$ — les deux définitions sont une seule et même idée vue sous deux angles.
 
 ### Compatibilité avec $+$ et $\times$ — et pourquoi c'est vrai
 
@@ -122,7 +122,7 @@ C'est cet outil, précisément, qui rend les congruences utiles : elles permette
 
 Quel est le reste de la division de $2^{41}$ par 7 ?
 
-**Ce qu'on cherche et pourquoi ce geste :** calculer $2^{41}$ directement est absurde (34 chiffres). On cherche plutôt une périodicité dans les puissances de 2 modulo 7, puis on ramène l'exposant 41 dans cette période grâce à la division euclidienne — exactement l'outil du R1, réutilisé ici.
+**Ce qu'on cherche et pourquoi ce geste :** calculer $2^{41}$ directement est absurde (34 chiffres). On cherche plutôt une périodicité dans les puissances de 2 modulo 7, puis on ramène l'exposant 41 dans cette période grâce à la division euclidienne — exactement l'outil du chapitre 2, réutilisé ici.
 
 $$2^1 \equiv 2 \pmod{7}, \qquad 2^2 \equiv 4 \pmod{7}, \qquad 2^3 \equiv 1 \pmod{7}$$
 
@@ -236,7 +236,7 @@ Le sens direct (si $\mathrm{PGCD}(a,b)=1$, alors une telle égalité existe) est
 
 ### Pourquoi le théorème est vrai : on le construit, on ne l'admet pas
 
-La preuve est constructive : elle remonte l'algorithme d'Euclide à l'envers, en substituant chaque ligne dans la précédente. Reprends l'exemple du R3, $\mathrm{PGCD}(252,198) = 18$ :
+La preuve est constructive : elle remonte l'algorithme d'Euclide à l'envers, en substituant chaque ligne dans la précédente. Reprends l'exemple du chapitre 4, $\mathrm{PGCD}(252,198) = 18$ :
 
 $$252 = 198 \times 1 + 54 \qquad (\text{ligne 1})$$
 
@@ -270,7 +270,7 @@ Ce mécanisme — remonter l'algorithme d'Euclide ligne par ligne, en substituan
 
 ### Retour aux bidons
 
-La paire $(3,5)$ du R0 admet, par ce même mécanisme, l'écriture $3 \times 2 + 5 \times (-1) = 1$ (vérifie-le : $6 - 5 = 1$). Et c'est précisément la manœuvre effectuée avec les bidons : remplir le bidon de 3 L **deux fois** ($u=2$), et transvaser de façon à retirer l'équivalent d'**un** bidon de 5 L ($v=-1$). Le théorème de Bézout n'est pas qu'une formule abstraite — il décrit exactement, en une seule égalité, la manipulation physique qui marche.
+La paire $(3,5)$ du chapitre 1 admet, par ce même mécanisme, l'écriture $3 \times 2 + 5 \times (-1) = 1$ (vérifie-le : $6 - 5 = 1$). Et c'est précisément la manœuvre effectuée avec les bidons : remplir le bidon de 3 L **deux fois** ($u=2$), et transvaser de façon à retirer l'équivalent d'**un** bidon de 5 L ($v=-1$). Le théorème de Bézout n'est pas qu'une formule abstraite — il décrit exactement, en une seule égalité, la manipulation physique qui marche.
 
 ---
 
@@ -284,7 +284,7 @@ La paire $(3,5)$ du R0 admet, par ce même mécanisme, l'écriture $3 \times 2 +
 
 **Ce qu'on cherche et pourquoi ce geste :** on veut fabriquer $c$ comme un multiple de $a$. Le théorème de Bézout donne une égalité qui vaut $1$ ; il suffit de la multiplier par $c$ pour faire apparaître $c$ tout court.
 
-Comme $\mathrm{PGCD}(a,b) = 1$, le théorème de Bézout (R4) donne des entiers $u, v$ tels que :
+Comme $\mathrm{PGCD}(a,b) = 1$, le théorème de Bézout (chapitre 5) donne des entiers $u, v$ tels que :
 
 $$au + bv = 1$$
 
@@ -352,7 +352,7 @@ et cette écriture est unique, à l'ordre des facteurs près.
 
 **Lemme d'Euclide (cas particulier de Gauss).** Si $p$ est premier et $p \mid ab$, alors $p \mid a$ ou $p \mid b$.
 
-**Preuve.** Si $p \mid a$, c'est terminé. Sinon, $p \nmid a$. Comme $p$ est premier, ses seuls diviseurs positifs sont $1$ et $p$ ; donc $\mathrm{PGCD}(p,a)$ vaut $1$ ou $p$. Puisque $p \nmid a$, ce n'est pas $p$ : c'est donc $1$. Le théorème de Gauss (R5), appliqué avec $p \mid ab$ et $\mathrm{PGCD}(p,a) = 1$, donne directement $p \mid b$.
+**Preuve.** Si $p \mid a$, c'est terminé. Sinon, $p \nmid a$. Comme $p$ est premier, ses seuls diviseurs positifs sont $1$ et $p$ ; donc $\mathrm{PGCD}(p,a)$ vaut $1$ ou $p$. Puisque $p \nmid a$, ce n'est pas $p$ : c'est donc $1$. Le théorème de Gauss (chapitre 6), appliqué avec $p \mid ab$ et $\mathrm{PGCD}(p,a) = 1$, donne directement $p \mid b$.
 
 ### Exemple travaillé : décomposer 360, puis retrouver un $\mathrm{PGCD}$ déjà connu
 
@@ -368,11 +368,11 @@ Donc :
 
 $$360 = 2^3 \times 3^2 \times 5$$
 
-Reprenons $252$ (déjà rencontré au R3), qui se décompose en $252 = 2^2 \times 3^2 \times 7$. La décomposition en facteurs premiers donne une **seconde méthode** pour calculer un $\mathrm{PGCD}$ : garder chaque facteur premier commun, à la puissance la **plus petite** des deux :
+Reprenons $252$ (déjà rencontré au chapitre 4), qui se décompose en $252 = 2^2 \times 3^2 \times 7$. La décomposition en facteurs premiers donne une **seconde méthode** pour calculer un $\mathrm{PGCD}$ : garder chaque facteur premier commun, à la puissance la **plus petite** des deux :
 
 $$\mathrm{PGCD}(360, 252) = 2^{\min(3,2)} \times 3^{\min(2,2)} = 2^2 \times 3^2 = 36$$
 
-**Vérification par l'algorithme d'Euclide** (R3), sur ces deux mêmes nombres : $360 = 252 \times 1 + 108$ ; $252 = 108 \times 2 + 36$ ; $108 = 36 \times 3 + 0$. Dernier reste non nul : $36$. Les deux méthodes, complètement différentes dans leur mécanisme, donnent exactement le même résultat — ce qui n'est pas un hasard, mais une confirmation croisée utile chaque fois que tu as un doute sur un calcul.
+**Vérification par l'algorithme d'Euclide** (chapitre 4), sur ces deux mêmes nombres : $360 = 252 \times 1 + 108$ ; $252 = 108 \times 2 + 36$ ; $108 = 36 \times 3 + 0$. Dernier reste non nul : $36$. Les deux méthodes, complètement différentes dans leur mécanisme, donnent exactement le même résultat — ce qui n'est pas un hasard, mais une confirmation croisée utile chaque fois que tu as un doute sur un calcul.
 
 [[figure:factorisation-360]]
 
@@ -392,7 +392,7 @@ $$ax + by = c \qquad (a, b, c \text{ entiers donnés}, \ a, b \text{ non tous de
 
 **Preuve du sens direct (nécessité).** Si $(x_0,y_0)$ est une solution entière, alors $d = \mathrm{PGCD}(a,b)$ divise $a$ et divise $b$, donc $d$ divise toute combinaison $ax_0+by_0$ — en particulier $d \mid c$.
 
-**Preuve du sens réciproque (suffisance) — et c'est ici que Bézout construit la solution.** Si $d \mid c$, écris $c = dk$ pour un entier $k$. Le théorème de Bézout (R4) donne des entiers $u,v$ tels que $au+bv=d$. En multipliant cette égalité par $k$ :
+**Preuve du sens réciproque (suffisance) — et c'est ici que Bézout construit la solution.** Si $d \mid c$, écris $c = dk$ pour un entier $k$. Le théorème de Bézout (chapitre 5) donne des entiers $u,v$ tels que $au+bv=d$. En multipliant cette égalité par $k$ :
 
 $$a(uk) + b(vk) = dk = c$$
 
@@ -428,9 +428,9 @@ $$x = x_0 + b't, \qquad y = y_0 - a't, \qquad t \in \mathbb{Z}$$
 
 **Ce qu'on cherche et pourquoi ce geste :** vérifier d'abord que l'équation est soluble ($\mathrm{PGCD}(252,198) \mid 36$), puis construire une solution particulière à partir de Bézout, puis balayer toutes les solutions via Gauss.
 
-On sait déjà (R3) que $\mathrm{PGCD}(252,198) = 18$, et $18 \mid 36$ (car $36 = 18 \times 2$) : l'équation est soluble.
+On sait déjà (chapitre 4) que $\mathrm{PGCD}(252,198) = 18$, et $18 \mid 36$ (car $36 = 18 \times 2$) : l'équation est soluble.
 
-On sait aussi (R4) que $252 \times 4 + 198 \times (-5) = 18$. En multipliant par $k=2$ :
+On sait aussi (chapitre 5) que $252 \times 4 + 198 \times (-5) = 18$. En multipliant par $k=2$ :
 
 $$252 \times 8 + 198 \times (-10) = 36$$
 
@@ -454,7 +454,7 @@ Les termes en $t$ s'annulent exactement — ce n'est pas un hasard : $252 \times
 
 ## R8 — Pour t'entraîner
 
-Le sujet ci-dessous est un **vrai sujet d'examen national** : Sciences Mathématiques, session normale 2019 (code NS 24F, Exercice 3). Il enchaîne, en une seule chaîne serrée, les outils du chapitre — le théorème de Bézout (R4), les congruences et leurs puissances (R2), le lemme d'Euclide « un premier qui divise une puissance divise la base » (R6) — plus un outil supplémentaire du programme, le **petit théorème de Fermat**, que le rupture-gate ci-dessous rappelle avant que tu ne t'y attaques. Ne lis pas la correction d'un trait : engage-toi question par question.
+Le sujet ci-dessous est un **vrai sujet d'examen national** : Sciences Mathématiques, session normale 2019 (code NS 24F, Exercice 3). Il enchaîne, en une seule chaîne serrée, les outils du chapitre — le théorème de Bézout (chapitre 5), les congruences et leurs puissances (chapitre 3), le lemme d'Euclide « un premier qui divise une puissance divise la base » (chapitre 7) — plus un outil supplémentaire du programme, le **petit théorème de Fermat**, que le rupture-gate ci-dessous rappelle avant que tu ne t'y attaques. Ne lis pas la correction d'un trait : engage-toi question par question.
 
 [[checkpoint:cp-r6-fermat]]
 

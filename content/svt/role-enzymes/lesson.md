@@ -40,7 +40,7 @@ C'est exactement là qu'intervient l'enzyme. Elle capture la ou les molécules q
 
 Voici une idée fausse extrêmement répandue, et qui semble pourtant raisonnable au premier abord : si l'enzyme participe activement à la réaction — si elle attrape la molécule, la transforme — alors elle devrait, comme n'importe quel réactif, finir par être « consommée » ou « usée » à force de servir.
 
-Teste cette idée avec l'expérience du R0. Si l'amylase salivaire était consommée à chaque molécule d'amidon coupée, une petite quantité de salive ne devrait pouvoir transformer qu'une petite quantité fixe d'amidon, puis s'arrêter, épuisée — quel que soit l'amidon restant. Or ce n'est pas ce qu'on observe : tant que tu continues de mâcher, en amenant sans cesse de nouvelles portions d'amidon au contact de la salive déjà présente dans ta bouche, la production de maltose continue — sans qu'aucune goutte de salive supplémentaire n'ait besoin d'être ajoutée.
+Teste cette idée avec l'expérience du chapitre 1. Si l'amylase salivaire était consommée à chaque molécule d'amidon coupée, une petite quantité de salive ne devrait pouvoir transformer qu'une petite quantité fixe d'amidon, puis s'arrêter, épuisée — quel que soit l'amidon restant. Or ce n'est pas ce qu'on observe : tant que tu continues de mâcher, en amenant sans cesse de nouvelles portions d'amidon au contact de la salive déjà présente dans ta bouche, la production de maltose continue — sans qu'aucune goutte de salive supplémentaire n'ait besoin d'être ajoutée.
 
 Cela n'est possible que si une seule molécule d'amylase peut couper une molécule d'amidon, puis en couper une autre juste après, puis une autre encore — ressortant à chaque fois inchangée, prête pour le fragment suivant. C'est précisément le sens du mot **biocatalyseur** : l'enzyme accélère la réaction sans jamais y être elle-même transformée ni consommée. Une même molécule d'enzyme peut ainsi traiter un très grand nombre de molécules de substrat, l'une après l'autre.
 
@@ -48,7 +48,7 @@ Cela n'est possible que si une seule molécule d'amylase peut couper une molécu
 
 Ne dis jamais qu'une enzyme est « utilisée » ou « détruite » par la réaction qu'elle catalyse, comme le serait un réactif ordinaire. Ce qui est transformé, ce sont les molécules sur lesquelles elle agit (l'amidon devient maltose) — pas l'enzyme elle-même, qui ressort structurellement identique, cycle après cycle. C'est exactement ce qui distingue un catalyseur d'un réactif : le réactif disparaît en produit, le catalyseur ne fait que rendre la transformation possible, plus vite, sans y laisser de traces.
 
-Retiens aussi que l'enzyme est une **protéine** : cette nature protéique, avec sa forme repliée précise, est ce qui va tout expliquer dans les rungs suivants — comment elle reconnaît son substrat, et pourquoi son activité dépend autant des conditions du milieu.
+Retiens aussi que l'enzyme est une **protéine** : cette nature protéique, avec sa forme repliée précise, est ce qui va tout expliquer dans les chapitres suivants — comment elle reconnaît son substrat, et pourquoi son activité dépend autant des conditions du milieu.
 
 ---
 
@@ -69,7 +69,7 @@ Ce que dit ce modèle, très concrètement : ce n'est pas un hasard chimique si 
 Ce qu'on cherche ici : comprendre, geste par geste, ce qui se passe entre le moment où le substrat rencontre l'enzyme et le moment où l'enzyme est de nouveau libre.
 
 1. **La rencontre.** Une molécule de substrat, dont la forme est complémentaire du site actif, entre en contact avec l'enzyme et s'y loge. On appelle cet assemblage temporaire le **complexe enzyme-substrat** (complexe ES).
-2. **La transformation.** Une fois le substrat maintenu dans le site actif, dans la position exacte requise, la réaction se produit — c'est précisément ce contact précis, dans cette orientation précise, qui rend la réaction rapide (le mécanisme du R1). Pour l'amylase agissant sur l'amidon, la réaction est une **hydrolyse** : une molécule d'eau, elle aussi positionnée par le site actif, vient rompre une liaison chimique bien précise entre deux portions de la chaîne d'amidon.
+2. **La transformation.** Une fois le substrat maintenu dans le site actif, dans la position exacte requise, la réaction se produit — c'est précisément ce contact précis, dans cette orientation précise, qui rend la réaction rapide (le mécanisme du chapitre 2). Pour l'amylase agissant sur l'amidon, la réaction est une **hydrolyse** : une molécule d'eau, elle aussi positionnée par le site actif, vient rompre une liaison chimique bien précise entre deux portions de la chaîne d'amidon.
 3. **La libération.** Une fois la liaison rompue, les produits obtenus — ici des fragments de maltose — n'ont plus exactement la même forme que le substrat de départ : ils ne correspondent plus au site actif. Ils sont donc relâchés.
 4. **Le recommencement.** L'enzyme, dont la structure n'a pas été altérée par cette réaction, retrouve un site actif libre et identique à ce qu'il était avant — prêt à accueillir une nouvelle molécule de substrat.
 
@@ -85,7 +85,7 @@ $$\text{Amidon} + n\,H_2O \xrightarrow{\ \text{amylase}\ } n\,\text{Maltose}$$
 
 ### Ce que ce mécanisme explique, que le R1 laissait ouvert
 
-Ce cycle répond exactement à la question posée à la fin du R1 : pourquoi l'enzyme n'est-elle jamais consommée ? Parce que la réaction modifie le **substrat**, pas l'**enzyme** — celle-ci ressort du cycle avec exactement la même structure, la même forme de site actif, qu'avant d'y entrer. C'est ce recommencement en boucle, sans usure, qui permet à une toute petite quantité d'amylase de transformer, avec le temps, une quantité d'amidon bien plus grande qu'elle-même.
+Ce cycle répond exactement à la question posée à la fin du chapitre 2 : pourquoi l'enzyme n'est-elle jamais consommée ? Parce que la réaction modifie le **substrat**, pas l'**enzyme** — celle-ci ressort du cycle avec exactement la même structure, la même forme de site actif, qu'avant d'y entrer. C'est ce recommencement en boucle, sans usure, qui permet à une toute petite quantité d'amylase de transformer, avec le temps, une quantité d'amidon bien plus grande qu'elle-même.
 
 ### L'erreur classique à éviter ici
 
@@ -97,7 +97,7 @@ Ne confonds pas le site actif avec l'enzyme tout entière : le site actif n'est 
 
 ### Deux questions différentes, souvent confondues
 
-Le modèle clé-serrure du R2 dit qu'une enzyme n'accepte, dans son site actif, qu'un substrat de forme complémentaire. Mais cette idée de « forme complémentaire » répond en réalité à **deux questions distinctes**, qu'il faut apprendre à séparer clairement :
+Le modèle clé-serrure du chapitre 3 dit qu'une enzyme n'accepte, dans son site actif, qu'un substrat de forme complémentaire. Mais cette idée de « forme complémentaire » répond en réalité à **deux questions distinctes**, qu'il faut apprendre à séparer clairement :
 
 - **La spécificité de substrat** répond à la question : *sur quelle(s) molécule(s), parmi toutes celles présentes dans le milieu, cette enzyme agit-elle ?* Une enzyme donnée n'agit que sur un substrat précis, ou sur une famille très restreinte de substrats de forme très proche — jamais sur n'importe quelle molécule rencontrée.
 - **La spécificité d'action** répond à une question différente : *une fois que l'enzyme a reconnu son substrat, quelle transformation chimique précise lui fait-elle subir ?* Une enzyme ne réalise jamais « une transformation quelconque » sur son substrat : elle catalyse toujours exactement le même type de réaction, sur la même liaison chimique.
@@ -145,7 +145,7 @@ Jusqu'ici, on a supposé une enzyme qui fonctionne dans des conditions favorable
 
 ### Pourquoi ces facteurs devraient-ils avoir un effet, d'après ce qu'on sait déjà ?
 
-Rappelle-toi le R2 : l'activité de l'enzyme dépend entièrement de la forme précise de son site actif, qui doit rester complémentaire du substrat pour que le modèle clé-serrure fonctionne. Cette forme précise n'est pas figée dans le marbre : elle est maintenue par de nombreuses liaisons faibles à l'intérieur de la protéine repliée. Or la température et le pH influencent directement la stabilité de ces liaisons faibles. Il est donc logique, avant même de regarder une seule expérience, que ces deux facteurs modifient l'activité enzymatique — la vraie question est : **comment**, précisément ?
+Rappelle-toi le chapitre 3 : l'activité de l'enzyme dépend entièrement de la forme précise de son site actif, qui doit rester complémentaire du substrat pour que le modèle clé-serrure fonctionne. Cette forme précise n'est pas figée dans le marbre : elle est maintenue par de nombreuses liaisons faibles à l'intérieur de la protéine repliée. Or la température et le pH influencent directement la stabilité de ces liaisons faibles. Il est donc logique, avant même de regarder une seule expérience, que ces deux facteurs modifient l'activité enzymatique — la vraie question est : **comment**, précisément ?
 
 ### Une prédiction à tester : plus chaud, toujours plus actif ?
 
@@ -178,9 +178,9 @@ Le pH agit selon le même principe : les charges électriques qui participent au
 Deux exemples, tirés de la digestion, illustrent bien à quel point cet optimum est propre à chaque enzyme :
 
 - L'**amylase salivaire** a un optimum de pH proche de la neutralité (environ 7), ce qui correspond au pH de la salive dans la bouche.
-- La **pepsine**, une enzyme digestive qu'on retrouve au R6, a un optimum de pH très acide (environ 2), ce qui correspond au pH du suc gastrique dans l'estomac.
+- La **pepsine**, une enzyme digestive qu'on retrouve au chapitre 7, a un optimum de pH très acide (environ 2), ce qui correspond au pH du suc gastrique dans l'estomac.
 
-Si on place la pepsine dans un milieu proche de la neutralité, ou l'amylase salivaire dans un milieu très acide, l'activité de chacune s'effondre — non pas parce que le substrat a disparu, mais parce que l'écart au pH optimum déforme le site actif, exactement comme un excès de température. On retrouve, au R6, pourquoi cette différence d'optimum entre enzymes digestives n'est pas un détail anecdotique, mais une organisation cohérente le long du tube digestif.
+Si on place la pepsine dans un milieu proche de la neutralité, ou l'amylase salivaire dans un milieu très acide, l'activité de chacune s'effondre — non pas parce que le substrat a disparu, mais parce que l'écart au pH optimum déforme le site actif, exactement comme un excès de température. On retrouve, au chapitre 7, pourquoi cette différence d'optimum entre enzymes digestives n'est pas un détail anecdotique, mais une organisation cohérente le long du tube digestif.
 
 [[figure:courbe-ph]]
 
@@ -194,13 +194,13 @@ Ne retiens jamais « plus il fait chaud, plus une enzyme est active » comme une
 
 ### Deux facteurs supplémentaires, de nature différente
 
-Température et pH (R4) agissent en modifiant la **forme** de l'enzyme. Les deux facteurs suivants — la concentration en substrat et la concentration en enzyme — agissent différemment : ils ne déforment rien, ils changent simplement le nombre de rencontres possibles entre enzyme et substrat par unité de temps.
+Température et pH (chapitre 5) agissent en modifiant la **forme** de l'enzyme. Les deux facteurs suivants — la concentration en substrat et la concentration en enzyme — agissent différemment : ils ne déforment rien, ils changent simplement le nombre de rencontres possibles entre enzyme et substrat par unité de temps.
 
 ### L'effet de la concentration en substrat, à quantité d'enzyme fixée
 
 Imagine une quantité fixe d'amylase salivaire, à laquelle on ajoute des quantités croissantes d'amidon, toutes choses égales par ailleurs (même température, même pH, même durée). Voici ce qu'on observe : la vitesse de production de maltose augmente d'abord à peu près proportionnellement à la quantité d'amidon ajoutée — puis, au-delà d'une certaine concentration, elle cesse d'augmenter et atteint un **palier** (une vitesse maximale), même si on continue d'ajouter de l'amidon.
 
-**Pourquoi cette forme de courbe ?** Ce qu'on cherche ici : comprendre pourquoi la vitesse plafonne au lieu de continuer à monter indéfiniment. À faible concentration en substrat, les sites actifs de l'amylase passent une bonne partie de leur temps vides, faute de molécules d'amidon à proximité immédiate : ajouter de l'amidon augmente alors directement les chances de rencontre, donc la vitesse de réaction. Mais une fois la concentration en substrat suffisamment élevée pour que **tous** les sites actifs disponibles soient occupés en permanence — on dit que l'enzyme est **saturée** —, ajouter encore plus d'amidon n'accélère plus rien : chaque site actif travaille déjà à son rythme maximal, et le facteur limitant n'est plus la disponibilité du substrat, mais la vitesse propre du cycle enzyme-substrat-produit décrit au R2.
+**Pourquoi cette forme de courbe ?** Ce qu'on cherche ici : comprendre pourquoi la vitesse plafonne au lieu de continuer à monter indéfiniment. À faible concentration en substrat, les sites actifs de l'amylase passent une bonne partie de leur temps vides, faute de molécules d'amidon à proximité immédiate : ajouter de l'amidon augmente alors directement les chances de rencontre, donc la vitesse de réaction. Mais une fois la concentration en substrat suffisamment élevée pour que **tous** les sites actifs disponibles soient occupés en permanence — on dit que l'enzyme est **saturée** —, ajouter encore plus d'amidon n'accélère plus rien : chaque site actif travaille déjà à son rythme maximal, et le facteur limitant n'est plus la disponibilité du substrat, mais la vitesse propre du cycle enzyme-substrat-produit décrit au chapitre 3.
 
 ### L'effet de la concentration en enzyme, à substrat non limitant
 
@@ -222,7 +222,7 @@ Si la concentration en substrat n'avait aucune limite d'effet, ajouter de l'amid
 
 ### Pourquoi la digestion a besoin d'enzymes
 
-Les aliments que tu manges contiennent des macromolécules — amidon, protéines, lipides — bien trop grosses et trop complexes pour traverser telles quelles la paroi de l'intestin et passer dans le sang. Avant d'être absorbées, elles doivent être découpées en unités simples et suffisamment petites. La mastication et le brassage mécanique de l'estomac augmentent la surface de contact des aliments, mais ne peuvent, à eux seuls, rompre les liaisons chimiques qui tiennent ces macromolécules assemblées : cela demande une **digestion chimique**, c'est-à-dire l'action d'enzymes digestives spécifiques, chacune réalisant exactement l'hydrolyse pour laquelle elle est construite (R2), sur le substrat précis qu'elle reconnaît (R3), dans les conditions de température et de pH où elle est optimale (R4).
+Les aliments que tu manges contiennent des macromolécules — amidon, protéines, lipides — bien trop grosses et trop complexes pour traverser telles quelles la paroi de l'intestin et passer dans le sang. Avant d'être absorbées, elles doivent être découpées en unités simples et suffisamment petites. La mastication et le brassage mécanique de l'estomac augmentent la surface de contact des aliments, mais ne peuvent, à eux seuls, rompre les liaisons chimiques qui tiennent ces macromolécules assemblées : cela demande une **digestion chimique**, c'est-à-dire l'action d'enzymes digestives spécifiques, chacune réalisant exactement l'hydrolyse pour laquelle elle est construite (chapitre 3), sur le substrat précis qu'elle reconnaît (chapitre 4), dans les conditions de température et de pH où elle est optimale (chapitre 5).
 
 ### Les grandes familles d'enzymes digestives
 
@@ -233,11 +233,11 @@ Les aliments que tu manges contiennent des macromolécules — amidon, protéine
 | Protéases intestinales (ex. trypsine) | Pancréas ; intestin grêle | Protéines et peptides | Peptides plus courts, acides aminés | pH proche de la neutralité, intestin grêle |
 | Lipases | Pancréas ; intestin grêle | Lipides | Acides gras et glycérol | intestin grêle |
 
-Chaque ligne de ce tableau applique directement ce que les rungs précédents ont établi : un substrat précis (spécificité de substrat, R3), une seule transformation toujours identique (spécificité d'action, R3), réalisée via le mécanisme clé-serrure et le complexe enzyme-substrat (R2), à condition que la température et le pH du lieu d'action restent proches de l'optimum de l'enzyme (R4).
+Chaque ligne de ce tableau applique directement ce que les chapitres précédents ont établi : un substrat précis (spécificité de substrat, chapitre 4), une seule transformation toujours identique (spécificité d'action, chapitre 4), réalisée via le mécanisme clé-serrure et le complexe enzyme-substrat (chapitre 3), à condition que la température et le pH du lieu d'action restent proches de l'optimum de l'enzyme (chapitre 5).
 
 ### Pourquoi l'amylase s'arrête de fonctionner dans l'estomac
 
-Voici un exemple concret qui relie R4 et ce tableau. L'amylase salivaire, très efficace dans la bouche, cesse presque totalement d'agir une fois le bol alimentaire avalé et mélangé au suc gastrique, très acide. Ce n'est pas qu'elle « disparaît » : c'est que le pH très acide de l'estomac s'éloigne fortement de son optimum (proche de la neutralité), déformant progressivement son site actif — exactement le mécanisme du R4. À l'inverse, la pepsine, dont l'optimum de pH est justement très acide, s'active précisément dans cet environnement, et serait elle-même peu efficace si elle se retrouvait dans la bouche, à pH proche de la neutralité.
+Voici un exemple concret qui relie le chapitre 5 et ce tableau. L'amylase salivaire, très efficace dans la bouche, cesse presque totalement d'agir une fois le bol alimentaire avalé et mélangé au suc gastrique, très acide. Ce n'est pas qu'elle « disparaît » : c'est que le pH très acide de l'estomac s'éloigne fortement de son optimum (proche de la neutralité), déformant progressivement son site actif — exactement le mécanisme du chapitre 5. À l'inverse, la pepsine, dont l'optimum de pH est justement très acide, s'active précisément dans cet environnement, et serait elle-même peu efficace si elle se retrouvait dans la bouche, à pH proche de la neutralité.
 
 Ce n'est pas une coïncidence : chaque enzyme digestive est adaptée à l'environnement physico-chimique du segment du tube digestif où elle doit agir. La digestion progresse ainsi comme une chaîne de relais, chaque enzyme prenant le relai exactement là où les conditions lui sont favorables.
 
@@ -245,12 +245,12 @@ Ce n'est pas une coïncidence : chaque enzyme digestive est adaptée à l'enviro
 
 Reprends l'expérience du pain qui devient sucré. Tu peux maintenant l'expliquer intégralement :
 
-- L'amidon du pain n'a pas de goût sucré ; le **maltose**, produit de son hydrolyse par l'**amylase salivaire**, en a un (R0).
-- L'amylase est une **enzyme** : une protéine qui accélère cette hydrolyse sans jamais être elle-même consommée, ce qui explique pourquoi une petite quantité de salive peut continuer à produire du maltose tant que tu mâches, sans jamais « s'épuiser » de façon notable (R1).
-- Elle agit via un **site actif** complémentaire d'une portion de la chaîne d'amidon, formant un **complexe enzyme-substrat** transitoire avant de libérer le maltose et de redevenir disponible (R2).
-- Elle n'agit **que** sur l'amidon (spécificité de substrat), et ne réalise **toujours** que la même coupure (spécificité d'action) — jamais sur les protéines de ta joue, jamais une autre transformation (R3).
-- Son activité dépend de la température et du pH de ta bouche, tous deux proches de son optimum (R4), et de la quantité d'amidon disponible à chaque instant par rapport à la quantité de salive présente (R5).
-- Une fois avalé, ce même amidon quitte le territoire de l'amylase pour rencontrer, plus loin dans le tube digestif, d'autres enzymes spécifiques d'autres macromolécules, chacune adaptée à son propre segment du tube digestif (R6).
+- L'amidon du pain n'a pas de goût sucré ; le **maltose**, produit de son hydrolyse par l'**amylase salivaire**, en a un (chapitre 1).
+- L'amylase est une **enzyme** : une protéine qui accélère cette hydrolyse sans jamais être elle-même consommée, ce qui explique pourquoi une petite quantité de salive peut continuer à produire du maltose tant que tu mâches, sans jamais « s'épuiser » de façon notable (chapitre 2).
+- Elle agit via un **site actif** complémentaire d'une portion de la chaîne d'amidon, formant un **complexe enzyme-substrat** transitoire avant de libérer le maltose et de redevenir disponible (chapitre 3).
+- Elle n'agit **que** sur l'amidon (spécificité de substrat), et ne réalise **toujours** que la même coupure (spécificité d'action) — jamais sur les protéines de ta joue, jamais une autre transformation (chapitre 4).
+- Son activité dépend de la température et du pH de ta bouche, tous deux proches de son optimum (chapitre 5), et de la quantité d'amidon disponible à chaque instant par rapport à la quantité de salive présente (chapitre 6).
+- Une fois avalé, ce même amidon quitte le territoire de l'amylase pour rencontrer, plus loin dans le tube digestif, d'autres enzymes spécifiques d'autres macromolécules, chacune adaptée à son propre segment du tube digestif (chapitre 7).
 
 ---
 
@@ -272,13 +272,13 @@ Reprends l'expérience du pain qui devient sucré. Tu peux maintenant l'explique
 
 **Raisonnement à voix haute.**
 
-Ce qu'on reconnaît ici : une expérience à variables contrôlées, où un seul paramètre change à la fois entre A et B (le pH), et où le tube C introduit un traitement supplémentaire (la chaleur) avant de revenir aux conditions de A — un cas typique d'interprétation du rôle du pH et de la température sur l'activité enzymatique (R4).
+Ce qu'on reconnaît ici : une expérience à variables contrôlées, où un seul paramètre change à la fois entre A et B (le pH), et où le tube C introduit un traitement supplémentaire (la chaleur) avant de revenir aux conditions de A — un cas typique d'interprétation du rôle du pH et de la température sur l'activité enzymatique (chapitre 5).
 
 **Question 1 — comparaison A/B.** Le seul paramètre qui change entre le tube A (pH 2) et le tube B (pH 7) est le pH ; la pepsine, la protéine, la température et la durée sont identiques. Puisque l'hydrolyse a lieu à pH 2 mais pas à pH 7, ce résultat démontre que la pepsine possède un **optimum de pH acide** : à pH 7, trop éloigné de cet optimum, son site actif ne conserve pas la forme nécessaire à la reconnaissance du blanc d'œuf, et aucune hydrolyse ne se produit.
 
 **Question 2 — le tube C.** Le tube C est incubé au pH optimal de la pepsine (pH 2, comme le tube A) — et pourtant, aucune hydrolyse n'a lieu. Ce qui distingue C de A, c'est le passage préalable à 100°C. Cette température est très largement au-delà de l'optimum thermique de la pepsine : elle a rompu les liaisons faibles qui maintenaient le repliement de la protéine, et donc la forme de son site actif — la pepsine a **dénaturé**. Le refroidissement à 37°C qui suit ne répare pas cette déformation : la dénaturation thermique est irréversible dans ce cas. Remettre ensuite la pepsine dénaturée au pH optimal ne sert donc à rien, puisque son site actif n'a plus la forme requise pour reconnaître le blanc d'œuf. Ce résultat confirme que la température et le pH agissent à des niveaux différents : un pH défavorable inhibe l'activité tant qu'il est présent (potentiellement réversible si on le corrige à temps), tandis qu'une température excessive détruit durablement la structure de l'enzyme.
 
-**Question 3 — remplacement par de l'amidon.** Ce qu'on cherche ici : ce n'est plus une question de pH ou de température, mais de nature du substrat. La pepsine est une protéase : son site actif est complémentaire des protéines, pas de l'amidon (spécificité de substrat, R3). Même à son pH optimal (pH 2) et à température favorable, la pepsine ne reconnaîtra pas l'amidon comme substrat : aucune hydrolyse de l'amidon n'aura lieu, aucun maltose ne sera produit. C'est l'amylase, avec un site actif de forme différente, qu'il faudrait pour cette réaction — pas la pepsine.
+**Question 3 — remplacement par de l'amidon.** Ce qu'on cherche ici : ce n'est plus une question de pH ou de température, mais de nature du substrat. La pepsine est une protéase : son site actif est complémentaire des protéines, pas de l'amidon (spécificité de substrat, chapitre 4). Même à son pH optimal (pH 2) et à température favorable, la pepsine ne reconnaîtra pas l'amidon comme substrat : aucune hydrolyse de l'amidon n'aura lieu, aucun maltose ne sera produit. C'est l'amylase, avec un site actif de forme différente, qu'il faudrait pour cette réaction — pas la pepsine.
 
 **Réponses attendues :** (1) la pepsine a un optimum de pH acide, absent à pH 7 ; (2) la dénaturation thermique (irréversible) a déformé le site actif, indépendamment du pH ensuite proposé ; (3) aucune hydrolyse de l'amidon par la pepsine, quelle que soit la condition de pH ou de température, car son substrat spécifique est la protéine, non l'amidon.
 

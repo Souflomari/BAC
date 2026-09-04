@@ -46,7 +46,7 @@ Un **individu** désigne une unité numérique — cet être-ci, et non un autre
 
 #### La personne : un statut, pas un simple fait biologique
 
-La **personne** désigne quelque chose de plus exigeant : un statut, reconnu à un être capable de se représenter lui-même dans le temps, jugé digne de droits, et tenu pour responsable de ses actes. Tout être humain vivant est, sans discussion possible, un individu ; mais lui reconnaître le statut de personne — un sujet à traiter avec un respect particulier, jamais comme un simple objet — suppose un critère supplémentaire, que la suite de la leçon va préciser (Kant, R2). Le droit lui-même distingue, dans son vocabulaire, la **personne physique** (un individu humain concret) et la **personne morale** (une entreprise, une association, un État — une fiction juridique à qui l'on reconnaît, elle aussi, des droits et des obligations, sans qu'elle soit un individu biologique) : la notion de personne, dans les deux cas, désigne un STATUT accordé, pas une simple donnée de fait.
+La **personne** désigne quelque chose de plus exigeant : un statut, reconnu à un être capable de se représenter lui-même dans le temps, jugé digne de droits, et tenu pour responsable de ses actes. Tout être humain vivant est, sans discussion possible, un individu ; mais lui reconnaître le statut de personne — un sujet à traiter avec un respect particulier, jamais comme un simple objet — suppose un critère supplémentaire, que la suite de la leçon va préciser (Kant, chapitre 3). Le droit lui-même distingue, dans son vocabulaire, la **personne physique** (un individu humain concret) et la **personne morale** (une entreprise, une association, un État — une fiction juridique à qui l'on reconnaît, elle aussi, des droits et des obligations, sans qu'elle soit un individu biologique) : la notion de personne, dans les deux cas, désigne un STATUT accordé, pas une simple donnée de fait.
 
 #### L'identité personnelle : ce qui reste le même à travers le changement
 
@@ -54,9 +54,9 @@ L'**identité personnelle**, enfin, désigne ce qui fait qu'un individu-personne
 
 #### Applique la distinction : reviens à la boîte à chaussures
 
-**Ce que ce découpage permet de voir, précisément, dans la situation de R0 :** en tant qu'individu, il existe une continuité simple, spatio-temporelle, entre le corps qui a écrit ces pages il y a dix ans et le tien aujourd'hui — un même organisme qu'on pourrait, en principe, suivre sans interruption. Mais cette seule continuité biologique ne dit encore rien du problème qui te trouble en lisant ce journal : es-tu, au sens plein du terme personne, le MÊME sujet que celui qui a fait cette promesse, engagé par elle aujourd'hui comme il l'était alors ? C'est précisément cette question — pas celle, plus simple, de la continuité de l'individu — que les rungs suivants vont attaquer.
+**Ce que ce découpage permet de voir, précisément, dans la situation du chapitre 1 :** en tant qu'individu, il existe une continuité simple, spatio-temporelle, entre le corps qui a écrit ces pages il y a dix ans et le tien aujourd'hui — un même organisme qu'on pourrait, en principe, suivre sans interruption. Mais cette seule continuité biologique ne dit encore rien du problème qui te trouble en lisant ce journal : es-tu, au sens plein du terme personne, le MÊME sujet que celui qui a fait cette promesse, engagé par elle aujourd'hui comme il l'était alors ? C'est précisément cette question — pas celle, plus simple, de la continuité de l'individu — que les chapitres suivants vont attaquer.
 
-> **Erreur à éviter :** ne confonds jamais « individu » et « personne » comme s'ils étaient de purs synonymes — tout être humain vivant est un individu, mais son statut de personne engage un critère philosophique distinct (R2). Ne confonds pas non plus « identité personnelle » avec une simple identité numérique ou administrative (le même nom, le même numéro sur une carte d'identité) : c'est précisément ce qu'interroge cette leçon, pas ce qu'elle présuppose déjà réglé.
+> **Erreur à éviter :** ne confonds jamais « individu » et « personne » comme s'ils étaient de purs synonymes — tout être humain vivant est un individu, mais son statut de personne engage un critère philosophique distinct (chapitre 3). Ne confonds pas non plus « identité personnelle » avec une simple identité numérique ou administrative (le même nom, le même numéro sur une carte d'identité) : c'est précisément ce qu'interroge cette leçon, pas ce qu'elle présuppose déjà réglé.
 
 [[checkpoint:cp-r1-rupture]]
 
@@ -66,7 +66,7 @@ L'**identité personnelle**, enfin, désigne ce qui fait qu'un individu-personne
 
 #### Ce que R1 laisse en suspens
 
-R1 a distingué individu et personne sans dire ce qui, précisément, fait qu'un individu mérite d'être traité comme une personne plutôt que comme une simple chose. Kant (déjà rencontré dans la leçon « Le devoir », R2 ; XVIIIe siècle, *Fondements de la métaphysique des mœurs*, 1785) fournit ici le critère le plus rigoureux du programme.
+Le chapitre 2 a distingué individu et personne sans dire ce qui, précisément, fait qu'un individu mérite d'être traité comme une personne plutôt que comme une simple chose. Kant (déjà rencontré dans la leçon « Le devoir », chapitre 3 ; XVIIIe siècle, *Fondements de la métaphysique des mœurs*, 1785) fournit ici le critère le plus rigoureux du programme.
 
 #### Deux sortes de valeur : le prix et la dignité
 
@@ -84,9 +84,9 @@ Kant formule ce principe dans une phrase restée célèbre :
 
 #### Applique le critère : reviens à la boîte à chaussures
 
-**Ce que ce critère permet de voir, précisément, dans la situation de R0 :** quel que soit le fossé psychologique entre l'enfant qui a écrit ce journal et toi aujourd'hui, ce fossé ne change rien à un fait : les deux, à dix ans comme aujourd'hui, possèdent la même nature raisonnable, la même capacité à se donner à eux-mêmes une loi — la même dignité, donc, indépendamment du contenu précis, embarrassant ou oublié, de ce cahier. Mais remarque bien ce que ce critère NE dit PAS : il ne dit rien sur la question de savoir si TU es le même sujet que celui qui a fait cette promesse — cette question-là, distincte, appelle un autre critère (R3).
+**Ce que ce critère permet de voir, précisément, dans la situation du chapitre 1 :** quel que soit le fossé psychologique entre l'enfant qui a écrit ce journal et toi aujourd'hui, ce fossé ne change rien à un fait : les deux, à dix ans comme aujourd'hui, possèdent la même nature raisonnable, la même capacité à se donner à eux-mêmes une loi — la même dignité, donc, indépendamment du contenu précis, embarrassant ou oublié, de ce cahier. Mais remarque bien ce que ce critère NE dit PAS : il ne dit rien sur la question de savoir si TU es le même sujet que celui qui a fait cette promesse — cette question-là, distincte, appelle un autre critère (chapitre 4).
 
-> **Erreur à éviter :** ne confonds jamais le critère kantien de la personne (être un être raisonnable, une fin en soi, doté d'une dignité sans équivalent) avec le critère lockéen que tu vas voir en R3 (la continuité de conscience et de mémoire). Ce sont deux réponses à deux questions différentes : Kant répond à « qu'est-ce qui fait qu'un être MÉRITE le respect dû à une personne, ici et maintenant ? » ; Locke répond à « qu'est-ce qui fait que CE MÊME être, à deux moments différents, compte comme une seule et même personne ? ». Ne fonds pas ces deux questions en une seule.
+> **Erreur à éviter :** ne confonds jamais le critère kantien de la personne (être un être raisonnable, une fin en soi, doté d'une dignité sans équivalent) avec le critère lockéen que tu vas voir au chapitre 4 (la continuité de conscience et de mémoire). Ce sont deux réponses à deux questions différentes : Kant répond à « qu'est-ce qui fait qu'un être MÉRITE le respect dû à une personne, ici et maintenant ? » ; Locke répond à « qu'est-ce qui fait que CE MÊME être, à deux moments différents, compte comme une seule et même personne ? ». Ne fonds pas ces deux questions en une seule.
 
 [[checkpoint:cp-r2-rupture]]
 
@@ -96,7 +96,7 @@ Kant formule ce principe dans une phrase restée célèbre :
 
 #### Une question différente : pas ce qui mérite le respect, mais ce qui reste le même
 
-Kant a répondu à ce qui fait qu'un être mérite d'être traité comme une personne. Reste une question distincte, que R2 laisse volontairement de côté : qu'est-ce qui fait que TOI, aujourd'hui, es la MÊME personne que celui qui a écrit ce journal il y a dix ans ? Locke (XVIIe siècle, *Essai philosophique concernant l'entendement humain*, 1690, chapitre « De l'identité et de la diversité ») est le premier à poser ce problème avec cette précision.
+Kant a répondu à ce qui fait qu'un être mérite d'être traité comme une personne. Reste une question distincte, que le chapitre 3 laisse volontairement de côté : qu'est-ce qui fait que TOI, aujourd'hui, es la MÊME personne que celui qui a écrit ce journal il y a dix ans ? Locke (XVIIe siècle, *Essai philosophique concernant l'entendement humain*, 1690, chapitre « De l'identité et de la diversité ») est le premier à poser ce problème avec cette précision.
 
 #### « Même homme » et « même personne » : une distinction décisive
 
@@ -121,9 +121,9 @@ Pour rendre ce point tranchant, Locke imagine une expérience de pensée restée
 
 #### Applique le mécanisme : reviens à la boîte à chaussures
 
-**Ce que ce mécanisme permet de voir, précisément, dans la situation de R0 :** même si le détail exact de cette promesse t'échappe aujourd'hui, il existe très probablement une chaîne de souvenirs qui te relie à ce moment — tu te souviens sans doute d'avoir eu quinze ans et de te rappeler, alors, avoir eu dix ans et cet ami-là. Locke dirait que c'est cette continuité de conscience, non celle de ton corps, qui fait de toi, au sens forensique précis qu'il donne à ce mot, l'auteur de cette promesse — et donc, en un sens, encore engagé par elle aujourd'hui, quel que soit le malaise que son contenu t'inspire.
+**Ce que ce mécanisme permet de voir, précisément, dans la situation du chapitre 1 :** même si le détail exact de cette promesse t'échappe aujourd'hui, il existe très probablement une chaîne de souvenirs qui te relie à ce moment — tu te souviens sans doute d'avoir eu quinze ans et de te rappeler, alors, avoir eu dix ans et cet ami-là. Locke dirait que c'est cette continuité de conscience, non celle de ton corps, qui fait de toi, au sens forensique précis qu'il donne à ce mot, l'auteur de cette promesse — et donc, en un sens, encore engagé par elle aujourd'hui, quel que soit le malaise que son contenu t'inspire.
 
-> **Erreur à éviter :** ne dis jamais que, pour Locke, c'est la continuité du CORPS qui fonde l'identité personnelle — c'est exactement l'inverse de sa thèse : le corps peut changer entièrement (l'exemple du prince et du savetier le montre) sans que l'identité personnelle en soit affectée. Ne dis pas non plus que Locke fait reposer cette identité sur une âme substantielle immatérielle : il évite précisément de s'appuyer sur une substance qu'on ne peut jamais observer. Et ne confonds pas la position de Locke avec celle de Hume, qu'on va voir en R4 : Locke suppose encore une conscience capable de se ressaisir elle-même par la mémoire ; c'est Hume qui va remettre en question jusqu'à l'existence de cette continuité-là.
+> **Erreur à éviter :** ne dis jamais que, pour Locke, c'est la continuité du CORPS qui fonde l'identité personnelle — c'est exactement l'inverse de sa thèse : le corps peut changer entièrement (l'exemple du prince et du savetier le montre) sans que l'identité personnelle en soit affectée. Ne dis pas non plus que Locke fait reposer cette identité sur une âme substantielle immatérielle : il évite précisément de s'appuyer sur une substance qu'on ne peut jamais observer. Et ne confonds pas la position de Locke avec celle de Hume, qu'on va voir au chapitre 5 : Locke suppose encore une conscience capable de se ressaisir elle-même par la mémoire ; c'est Hume qui va remettre en question jusqu'à l'existence de cette continuité-là.
 
 [[checkpoint:cp-r3-rupture]]
 
@@ -155,9 +155,9 @@ Locke fonde l'identité personnelle sur la continuité de la conscience. Mais ce
 
 #### Applique le mécanisme : reviens à la boîte à chaussures
 
-**Ce que Hume changerait à la lecture de la scène de R0 :** même la chaîne de souvenirs sur laquelle Locke s'appuyait — ce fil qui te relie, de proche en proche, à l'enfant de dix ans — n'est, pour Hume, qu'une perception de plus parmi d'autres (le souvenir de se souvenir), que l'imagination relie après coup en un récit rassurant : « c'était moi ». Le malaise que tu ressens en lisant ce journal, l'impression qu'un étranger l'a écrit, serait peut-être, pour Hume, plus fidèle à la vérité que le sentiment ordinaire de continuité : il n'y a peut-être jamais eu qu'une succession d'états mentaux distincts, que le récit de « ta vie » relie a posteriori, sans qu'aucun moi stable n'ait réellement traversé les dix années qui séparent ce cahier de toi aujourd'hui.
+**Ce que Hume changerait à la lecture de la scène du chapitre 1 :** même la chaîne de souvenirs sur laquelle Locke s'appuyait — ce fil qui te relie, de proche en proche, à l'enfant de dix ans — n'est, pour Hume, qu'une perception de plus parmi d'autres (le souvenir de se souvenir), que l'imagination relie après coup en un récit rassurant : « c'était moi ». Le malaise que tu ressens en lisant ce journal, l'impression qu'un étranger l'a écrit, serait peut-être, pour Hume, plus fidèle à la vérité que le sentiment ordinaire de continuité : il n'y a peut-être jamais eu qu'une succession d'états mentaux distincts, que le récit de « ta vie » relie a posteriori, sans qu'aucun moi stable n'ait réellement traversé les dix années qui séparent ce cahier de toi aujourd'hui.
 
-> **Erreur à éviter — la confusion la plus fréquente sur ce point du programme :** ne dis jamais que c'est **Locke** qui réduit le moi à un « faisceau de perceptions » sans unité réelle — c'est l'inverse : Locke, en R3, suppose encore une conscience continue, capable de s'approprier ses états passés par la mémoire. C'est **Hume** qui va plus loin et remet en question l'existence même de cette unité, y compris celle que Locke prenait pour acquise. Confondre les deux, c'est manquer précisément ce qui fait la radicalité de Hume par rapport à Locke.
+> **Erreur à éviter — la confusion la plus fréquente sur ce point du programme :** ne dis jamais que c'est **Locke** qui réduit le moi à un « faisceau de perceptions » sans unité réelle — c'est l'inverse : Locke, au chapitre 4, suppose encore une conscience continue, capable de s'approprier ses états passés par la mémoire. C'est **Hume** qui va plus loin et remet en question l'existence même de cette unité, y compris celle que Locke prenait pour acquise. Confondre les deux, c'est manquer précisément ce qui fait la radicalité de Hume par rapport à Locke.
 
 [[checkpoint:cp-r4-rupture]]
 
@@ -171,19 +171,19 @@ Hume semble avoir dissous jusqu'au fil le plus ténu qui reliait le moi d'hier �
 
 #### L'imputabilité : pouvoir répondre de ses actes
 
-**Le concept central de ce rung : l'imputabilité.** On ne peut juger moralement ou juridiquement responsable qu'un être à qui l'on peut **imputer** — attribuer — un acte : un être capable d'en comprendre la portée, d'avoir été en mesure d'agir autrement, et de pouvoir en assumer les conséquences (louange, blâme, sanction, réparation). C'est précisément pour cette raison que le droit ne tient pas un très jeune enfant, ou un individu jugé irresponsable au sens pénal (atteint, au moment des faits, d'un trouble ayant aboli son discernement), pour responsable au même titre qu'un adulte en pleine possession de ses facultés — non par indulgence, mais parce que la condition même de l'imputabilité (comprendre ce qu'on fait, avoir pu choisir autrement) lui fait, à ce moment précis, défaut.
+**Le concept central de ce chapitre : l'imputabilité.** On ne peut juger moralement ou juridiquement responsable qu'un être à qui l'on peut **imputer** — attribuer — un acte : un être capable d'en comprendre la portée, d'avoir été en mesure d'agir autrement, et de pouvoir en assumer les conséquences (louange, blâme, sanction, réparation). C'est précisément pour cette raison que le droit ne tient pas un très jeune enfant, ou un individu jugé irresponsable au sens pénal (atteint, au moment des faits, d'un trouble ayant aboli son discernement), pour responsable au même titre qu'un adulte en pleine possession de ses facultés — non par indulgence, mais parce que la condition même de l'imputabilité (comprendre ce qu'on fait, avoir pu choisir autrement) lui fait, à ce moment précis, défaut.
 
 #### Comment R2 et R3 s'articulent ici
 
-**Voici comment les deux critères précédents se rejoignent, dans ce rung, pour fonder l'imputabilité.** Le critère kantien (R2 — être un être raisonnable, capable d'autonomie) explique POURQUOI seuls des êtres de ce genre peuvent être tenus pour responsables : seul un être capable de comprendre une règle et de choisir librement de la suivre ou de l'enfreindre peut être dit avoir « manqué » à son devoir. Le critère lockéen (R3 — la continuité de conscience) explique ensuite CE QUI fait que celui qu'on juge aujourd'hui est bien le MÊME sujet que celui qui a agi hier : on ne peut justement punir ou récompenser quelqu'un pour un acte que s'il est, au sens forensique que Locke donne lui-même à ce terme, la même personne que celle qui l'a commis.
+**Voici comment les deux critères précédents se rejoignent, dans ce chapitre, pour fonder l'imputabilité.** Le critère kantien (chapitre 3 — être un être raisonnable, capable d'autonomie) explique POURQUOI seuls des êtres de ce genre peuvent être tenus pour responsables : seul un être capable de comprendre une règle et de choisir librement de la suivre ou de l'enfreindre peut être dit avoir « manqué » à son devoir. Le critère lockéen (chapitre 4 — la continuité de conscience) explique ensuite CE QUI fait que celui qu'on juge aujourd'hui est bien le MÊME sujet que celui qui a agi hier : on ne peut justement punir ou récompenser quelqu'un pour un acte que s'il est, au sens forensique que Locke donne lui-même à ce terme, la même personne que celle qui l'a commis.
 
 **Une tension que la leçon ne referme pas, mais qu'il faut nommer honnêtement :** même si Hume a raison de dire qu'aucune substance métaphysique unique ne persiste réellement, la morale et le droit ont, en pratique, BESOIN de traiter les individus comme suffisamment continus pour que la responsabilité ait le moindre sens — sans cette présupposition pratique, aucune promesse, aucune dette, aucune peine, de personne envers personne, ne vaudrait jamais rien.
 
 #### Applique le principe : reviens à la boîte à chaussures
 
-**Ce que ce principe permet de voir, précisément, dans la situation de R0 :** que l'enfant qui a écrit cette promesse soit, métaphysiquement, « le même » que toi ou non, la morale — comme le droit — a besoin, pour fonctionner, de te traiter comme suffisamment continu avec lui pour que cette promesse conserve un sens aujourd'hui. C'est exactement ce qui fait la différence entre ignorer une promesse d'inconnu et ressentir un malaise à l'idée d'ignorer la tienne : une continuité, au moins pratique, est reconnue dans le second cas, refusée dans le premier.
+**Ce que ce principe permet de voir, précisément, dans la situation du chapitre 1 :** que l'enfant qui a écrit cette promesse soit, métaphysiquement, « le même » que toi ou non, la morale — comme le droit — a besoin, pour fonctionner, de te traiter comme suffisamment continu avec lui pour que cette promesse conserve un sens aujourd'hui. C'est exactement ce qui fait la différence entre ignorer une promesse d'inconnu et ressentir un malaise à l'idée d'ignorer la tienne : une continuité, au moins pratique, est reconnue dans le second cas, refusée dans le premier.
 
-> **Erreur à éviter :** ne confonds pas « personne physique » (un individu humain concret, seul en jeu dans les critères de Kant, Locke et Hume vus jusqu'ici) et « personne morale » (une entreprise, une association, un État — une fiction juridique qui peut, elle aussi, être titulaire de droits et d'obligations, sans posséder ni conscience ni mémoire). Ne confonds pas non plus l'imputabilité avec une simple responsabilité causale : un rocher qui tombe et brise un objet n'a rien « fait » d'imputable, car il n'était capable ni de comprendre, ni de choisir autrement — c'est précisément ce que le statut de personne (R2) ajoute au pur enchaînement des causes.
+> **Erreur à éviter :** ne confonds pas « personne physique » (un individu humain concret, seul en jeu dans les critères de Kant, Locke et Hume vus jusqu'ici) et « personne morale » (une entreprise, une association, un État — une fiction juridique qui peut, elle aussi, être titulaire de droits et d'obligations, sans posséder ni conscience ni mémoire). Ne confonds pas non plus l'imputabilité avec une simple responsabilité causale : un rocher qui tombe et brise un objet n'a rien « fait » d'imputable, car il n'était capable ni de comprendre, ni de choisir autrement — c'est précisément ce que le statut de personne (chapitre 3) ajoute au pur enchaînement des causes.
 
 [[checkpoint:cp-r5-rupture]]
 
@@ -193,15 +193,15 @@ Hume semble avoir dissous jusqu'au fil le plus ténu qui reliait le moi d'hier �
 
 #### Une dernière question, plus inquiétante
 
-Les rungs précédents ont cherché ce qui fait qu'un individu est une personne (R1-R2), ce qui la rend identique à travers le temps (R3-R4), et ce que ce statut engage moralement et juridiquement (R5). Reste une question plus inquiétante : ce statut de personne, une fois reconnu, est-il garanti pour toujours — ou peut-il être RETIRÉ, refusé, à quelqu'un qui pourtant continue d'exister, sans que rien, en lui, n'ait objectivement changé ?
+Les chapitres précédents ont cherché ce qui fait qu'un individu est une personne (chapitres 2 et 3), ce qui la rend identique à travers le temps (chapitres 4 et 5), et ce que ce statut engage moralement et juridiquement (chapitre 6). Reste une question plus inquiétante : ce statut de personne, une fois reconnu, est-il garanti pour toujours — ou peut-il être RETIRÉ, refusé, à quelqu'un qui pourtant continue d'exister, sans que rien, en lui, n'ait objectivement changé ?
 
 #### Le mécanisme de la dépersonnalisation
 
-**Voici ce que ce mot désigne précisément, dans le cadre construit par cette leçon.** Il ne s'agit pas d'abord d'un trouble psychologique individuel — même si le mot existe aussi en ce sens en psychiatrie — mais d'un acte, le plus souvent commis par d'AUTRES : cesser de traiter un individu comme une fin en soi, digne de respect et capable de répondre de ses actes (les deux critères vus en R2 et R5), pour le réduire à un pur moyen, un instrument, un objet interchangeable — bref, à un simple individu (R1), privé du statut de personne.
+**Voici ce que ce mot désigne précisément, dans le cadre construit par cette leçon.** Il ne s'agit pas d'abord d'un trouble psychologique individuel — même si le mot existe aussi en ce sens en psychiatrie — mais d'un acte, le plus souvent commis par d'AUTRES : cesser de traiter un individu comme une fin en soi, digne de respect et capable de répondre de ses actes (les deux critères vus aux chapitres 3 et 6), pour le réduire à un pur moyen, un instrument, un objet interchangeable — bref, à un simple individu (chapitre 2), privé du statut de personne.
 
-**L'exemple le plus radical, historiquement : l'esclavage.** Un être humain, en tout point semblable aux autres du point de vue biologique et rationnel, s'est vu juridiquement traité comme un bien, un objet de propriété — privé à la fois de dignité (au sens kantien : réduit à un pur moyen de production) et de la reconnaissance comme sujet de droit et de responsabilité (au sens de R5 : il ne pouvait ni témoigner en justice à égalité, ni voir ses propres engagements reconnus comme ceux d'une personne à part entière). Ce que ce cas montre avec une clarté brutale : le statut de personne, loin d'être une évidence biologique automatiquement garantie, est aussi une reconnaissance SOCIALE, qu'une société peut refuser à certains de ses membres.
+**L'exemple le plus radical, historiquement : l'esclavage.** Un être humain, en tout point semblable aux autres du point de vue biologique et rationnel, s'est vu juridiquement traité comme un bien, un objet de propriété — privé à la fois de dignité (au sens kantien : réduit à un pur moyen de production) et de la reconnaissance comme sujet de droit et de responsabilité (au sens du chapitre 6 : il ne pouvait ni témoigner en justice à égalité, ni voir ses propres engagements reconnus comme ceux d'une personne à part entière). Ce que ce cas montre avec une clarté brutale : le statut de personne, loin d'être une évidence biologique automatiquement garantie, est aussi une reconnaissance SOCIALE, qu'une société peut refuser à certains de ses membres.
 
-**Un second exemple, plus institutionnel : les dérives totalitaires** (cf. la leçon « L'État », R6) ont poussé cette logique plus loin encore, en réduisant des individus à des numéros, des dossiers, des catégories administratives interchangeables — niant, par cette seule réduction bureaucratique, jusqu'à leur statut de sujet singulier, capable de se représenter lui-même dans le temps.
+**Un second exemple, plus institutionnel : les dérives totalitaires** (cf. la leçon « L'État », chapitre 7) ont poussé cette logique plus loin encore, en réduisant des individus à des numéros, des dossiers, des catégories administratives interchangeables — niant, par cette seule réduction bureaucratique, jusqu'à leur statut de sujet singulier, capable de se représenter lui-même dans le temps.
 
 #### Le mouvement inverse : personnaliser n'est jamais un acquis définitif
 
@@ -211,17 +211,17 @@ Les rungs précédents ont cherché ce qui fait qu'un individu est une personne 
 
 Reviens, une dernière fois, à ce vieux cahier retrouvé au fond d'un placard.
 
-En tant qu'individu (R1), il existe une continuité simple, spatio-temporelle, entre le corps qui a écrit ces pages et le tien aujourd'hui — mais cette seule continuité biologique ne suffit pas à trancher si tu restes, au sens plein, la même PERSONNE, engagée par les mêmes promesses.
+En tant qu'individu (chapitre 2), il existe une continuité simple, spatio-temporelle, entre le corps qui a écrit ces pages et le tien aujourd'hui — mais cette seule continuité biologique ne suffit pas à trancher si tu restes, au sens plein, la même PERSONNE, engagée par les mêmes promesses.
 
-Kant (R2) dirait que la question n'est peut-être pas tout à fait la bonne : que tu te reconnaisses ou non dans ce texte, ta dignité de personne — le respect que tu mérites, aujourd'hui comme à dix ans — ne dépend d'aucun contenu particulier de mémoire, mais de ta seule nature d'être raisonnable, capable de se donner à lui-même une loi.
+Kant (chapitre 3) dirait que la question n'est peut-être pas tout à fait la bonne : que tu te reconnaisses ou non dans ce texte, ta dignité de personne — le respect que tu mérites, aujourd'hui comme à dix ans — ne dépend d'aucun contenu particulier de mémoire, mais de ta seule nature d'être raisonnable, capable de se donner à lui-même une loi.
 
-Locke (R3) ferait remarquer que, même si le détail exact de cette promesse t'échappe aujourd'hui, il existe probablement une chaîne ininterrompue de souvenirs qui te relie à ce moment — et que c'est cette continuité de conscience, non celle de ton corps, qui fait de toi, en un sens précis, l'auteur de cette promesse, encore aujourd'hui.
+Locke (chapitre 4) ferait remarquer que, même si le détail exact de cette promesse t'échappe aujourd'hui, il existe probablement une chaîne ininterrompue de souvenirs qui te relie à ce moment — et que c'est cette continuité de conscience, non celle de ton corps, qui fait de toi, en un sens précis, l'auteur de cette promesse, encore aujourd'hui.
 
-Hume (R4), lui, verrait dans le malaise que tu ressens en lisant ces pages — cette impression de lire le journal d'un étranger — un indice peut-être plus fidèle à la vérité que le sentiment ordinaire de continuité : il n'y a peut-être jamais eu qu'une succession d'états mentaux distincts, que le récit de « ta vie » relie après coup, sans qu'aucun moi stable n'ait réellement traversé les dix années qui séparent ce cahier de toi aujourd'hui.
+Hume (chapitre 5), lui, verrait dans le malaise que tu ressens en lisant ces pages — cette impression de lire le journal d'un étranger — un indice peut-être plus fidèle à la vérité que le sentiment ordinaire de continuité : il n'y a peut-être jamais eu qu'une succession d'états mentaux distincts, que le récit de « ta vie » relie après coup, sans qu'aucun moi stable n'ait réellement traversé les dix années qui séparent ce cahier de toi aujourd'hui.
 
-R5 ajouterait que, quelle que soit la vérité métaphysique, la morale et le droit ont de toute façon besoin de te traiter comme suffisamment continu avec cet enfant pour que la promesse, l'engagement, conservent le moindre sens — sans cette présupposition pratique, aucune promesse, de personne envers personne, ne vaudrait jamais rien.
+Le chapitre 6 ajouterait que, quelle que soit la vérité métaphysique, la morale et le droit ont de toute façon besoin de te traiter comme suffisamment continu avec cet enfant pour que la promesse, l'engagement, conservent le moindre sens — sans cette présupposition pratique, aucune promesse, de personne envers personne, ne vaudrait jamais rien.
 
-Et R6, enfin, ferait remarquer que la vraie question posée par ce vieux cahier n'est peut-être pas seulement « suis-je toujours la même personne ? », mais « vais-je continuer à traiter cet enfant que j'ai été — et la promesse qu'il a faite — comme quelque chose qui mérite d'être respecté, ou vais-je le réduire, par commodité, à un étranger dont plus rien ne me concerne ? »
+Et le chapitre 7, enfin, ferait remarquer que la vraie question posée par ce vieux cahier n'est peut-être pas seulement « suis-je toujours la même personne ? », mais « vais-je continuer à traiter cet enfant que j'ai été — et la promesse qu'il a faite — comme quelque chose qui mérite d'être respecté, ou vais-je le réduire, par commodité, à un étranger dont plus rien ne me concerne ? »
 
 Six regards, un même cahier — mais aucun ne réduit ce qui se joue, dans cette boîte à chaussures, à une réponse simple.
 
@@ -239,16 +239,16 @@ Six regards, un même cahier — mais aucun ne réduit ce qui se joue, dans cett
 
 #### Étape 1 — Analyser les termes du sujet
 
-- **« Identité personnelle »** : rappelle-toi la distinction de R1 — ce n'est ni la simple identité numérique de l'individu, ni le statut de personne au sens de Kant (R2), mais ce qui fait qu'un individu-personne, à deux moments distincts, compte comme un seul et même sujet.
-- **« Une donnée »** : quelque chose de déjà là, qu'il suffirait de constater — soit la continuité corporelle biologique (R1, « même homme » chez Locke), soit une substance qui persisterait sous les changements (une âme, que Locke lui-même évite déjà de présupposer, R3).
-- **« Une construction »** : quelque chose que la conscience — ou la société — doit activement produire, tisser, entretenir : la continuité de conscience selon Locke (R3), ou, radicalisée par Hume, une pure fiction que l'imagination fabrique sur un flux qui, en lui-même, n'a aucune unité réelle (R4).
+- **« Identité personnelle »** : rappelle-toi la distinction du chapitre 2 — ce n'est ni la simple identité numérique de l'individu, ni le statut de personne au sens de Kant (chapitre 3), mais ce qui fait qu'un individu-personne, à deux moments distincts, compte comme un seul et même sujet.
+- **« Une donnée »** : quelque chose de déjà là, qu'il suffirait de constater — soit la continuité corporelle biologique (chapitre 2, « même homme » chez Locke), soit une substance qui persisterait sous les changements (une âme, que Locke lui-même évite déjà de présupposer, chapitre 4).
+- **« Une construction »** : quelque chose que la conscience — ou la société — doit activement produire, tisser, entretenir : la continuité de conscience selon Locke (chapitre 4), ou, radicalisée par Hume, une pure fiction que l'imagination fabrique sur un flux qui, en lui-même, n'a aucune unité réelle (chapitre 5).
 - Le sujet ne précise pas lequel des deux retenir : c'est à la copie de montrer en quel sens chacun est partiellement vrai, et ce qu'il faut ajouter pour trancher.
 
 #### Étape 2 — Formuler la problématique
 
 Une problématique met en évidence une tension entre deux positions également légitimes en apparence, à laquelle le devoir devra répondre — elle ne reformule pas simplement le sujet.
 
-Ici, la tension est celle construite tout au long de la leçon : si l'identité personnelle était un simple fait biologique donné — le même corps qui persiste dans le temps —, pourquoi l'examen le plus attentif de la conscience (Hume) n'y trouve-t-il jamais qu'une continuité fragile, voire une pure fiction reconstruite après coup ? Mais si elle n'était qu'une construction sans aucun fondement réel, comment expliquer que la morale et le droit continuent, tous les jours, à juger et à punir des individus comme s'ils étaient authentiquement les mêmes que ceux qui ont agi (R5) ? Faut-il alors chercher, envers et contre Hume, un fait qui fonderait une fois pour toutes cette identité — ou accepter qu'elle soit une construction nécessaire, sans que cette nécessité pratique exige d'être un donné métaphysique ?
+Ici, la tension est celle construite tout au long de la leçon : si l'identité personnelle était un simple fait biologique donné — le même corps qui persiste dans le temps —, pourquoi l'examen le plus attentif de la conscience (Hume) n'y trouve-t-il jamais qu'une continuité fragile, voire une pure fiction reconstruite après coup ? Mais si elle n'était qu'une construction sans aucun fondement réel, comment expliquer que la morale et le droit continuent, tous les jours, à juger et à punir des individus comme s'ils étaient authentiquement les mêmes que ceux qui ont agi (chapitre 6) ? Faut-il alors chercher, envers et contre Hume, un fait qui fonderait une fois pour toutes cette identité — ou accepter qu'elle soit une construction nécessaire, sans que cette nécessité pratique exige d'être un donné métaphysique ?
 
 Une formulation possible :
 
@@ -257,13 +257,13 @@ Une formulation possible :
 #### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
 
 **I. Thèse — L'identité personnelle semble d'abord un fait donné.**
-Développe l'intuition commune (R1) : le même corps, reconnaissable et traçable dans l'espace et le temps, garantit intuitivement que je reste « moi-même » — un fil biologique continu, indépendant de toute construction mentale. Mentionne la tentation, plus ancienne, de faire reposer cette continuité sur une âme substantielle, immatérielle, identique à travers le temps (la position que Locke, en R3, va justement écarter).
+Développe l'intuition commune (chapitre 2) : le même corps, reconnaissable et traçable dans l'espace et le temps, garantit intuitivement que je reste « moi-même » — un fil biologique continu, indépendant de toute construction mentale. Mentionne la tentation, plus ancienne, de faire reposer cette continuité sur une âme substantielle, immatérielle, identique à travers le temps (la position que Locke, au chapitre 4, va justement écarter).
 
 **II. Antithèse — Locke, puis Hume, montrent que cette continuité est en réalité construite, voire fictive.**
-Mobilise Locke (R3) : ce n'est pas le corps, mais la continuité de conscience — une chaîne de souvenirs qui se chevauchent — qui fonde l'identité personnelle ; c'est déjà une construction active de la conscience, pas un donné brut. Mobilise Hume (R4) : par introspection, on ne trouve même pas cette conscience unifiée que Locke présupposait, seulement un « faisceau de perceptions » discontinues, dont l'unité n'est qu'une fiction fabriquée par l'imagination.
+Mobilise Locke (chapitre 4) : ce n'est pas le corps, mais la continuité de conscience — une chaîne de souvenirs qui se chevauchent — qui fonde l'identité personnelle ; c'est déjà une construction active de la conscience, pas un donné brut. Mobilise Hume (chapitre 5) : par introspection, on ne trouve même pas cette conscience unifiée que Locke présupposait, seulement un « faisceau de perceptions » discontinues, dont l'unité n'est qu'une fiction fabriquée par l'imagination.
 
 **III. Dépassement — Que l'identité soit donnée ou construite importe moins que la fonction qu'elle remplit.**
-Reprends R5 (l'imputabilité) : quelle que soit la vérité métaphysique, la morale et le droit ont besoin de traiter les individus comme suffisamment continus pour que la responsabilité, la promesse, la dette aient un sens — une construction nécessaire, pas arbitraire pour autant. Reprends R2 (Kant) et R6 (dépersonnalisation) : ce qui fonde le respect dû à une personne ne dépend d'ailleurs pas de la continuité exacte de sa mémoire, mais de sa nature raisonnable — et refuser de reconnaître cette construction à quelqu'un, historiquement, a toujours été le premier geste de sa dépersonnalisation.
+Reprends le chapitre 6 (l'imputabilité) : quelle que soit la vérité métaphysique, la morale et le droit ont besoin de traiter les individus comme suffisamment continus pour que la responsabilité, la promesse, la dette aient un sens — une construction nécessaire, pas arbitraire pour autant. Reprends le chapitre 3 (Kant) et le chapitre 7 (dépersonnalisation) : ce qui fonde le respect dû à une personne ne dépend d'ailleurs pas de la continuité exacte de sa mémoire, mais de sa nature raisonnable — et refuser de reconnaître cette construction à quelqu'un, historiquement, a toujours été le premier geste de sa dépersonnalisation.
 
 #### Étape 4 — Rédiger l'introduction (modèle rédigé)
 
@@ -284,7 +284,7 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 Le sujet ci-dessous est réel — tiré des annales nationales, pas construit
 pour cette leçon. Il te demande de trouver la SOURCE de la valeur de la
 personne : à toi de mobiliser ce que tu sais déjà sur le critère kantien
-(R2) et sur la dépersonnalisation (R6) pour l'affronter.
+(chapitre 3) et sur la dépersonnalisation (chapitre 7) pour l'affronter.
 
 [[checkpoint:cp-bac-affirmation]]
 
@@ -292,7 +292,7 @@ personne : à toi de mobiliser ce que tu sais déjà sur le critère kantien
 
 ### Une variation pour ne pas mémoriser
 
-Ce second sujet, également réel, revient sur le terrain déjà connu de R2
+Ce second sujet, également réel, revient sur le terrain déjà connu du chapitre 3
 (Kant, prix et dignité) — sous un habillage différent (une affirmation
 cynique plutôt qu'une question ouverte). Le but n'est pas d'apprendre autre
 chose : c'est de reconnaître que la même argumentation s'applique quand

@@ -72,7 +72,7 @@ Mais attention à ne pas t'arrêter à ce premier énoncé : ce que le mot « pl
 
 #### Le plaisir en repos, plutôt que le plaisir en mouvement
 
-**Le geste central d'Épicure :** il distingue le plaisir « en mouvement » — une sensation forte et momentanée, comme celle d'un bon repas ou d'une ivresse — du plaisir « en repos » — l'état stable qui s'installe quand aucun manque, aucune douleur, aucun trouble ne vient perturber le corps et l'âme. Épicure appelle ce second état l'**ataraxie** (l'absence de trouble de l'âme) et l'**aponie** (l'absence de douleur du corps). C'est CE plaisir-là, stable et durable, qu'Épicure vise comme fin véritable — pas l'accumulation de sensations fortes, qui, à peine obtenues, appellent déjà la sensation suivante (exactement ce qui se passe avec la note excellente de R0 : le plaisir « en mouvement » de l'euphorie s'épuise en une nuit).
+**Le geste central d'Épicure :** il distingue le plaisir « en mouvement » — une sensation forte et momentanée, comme celle d'un bon repas ou d'une ivresse — du plaisir « en repos » — l'état stable qui s'installe quand aucun manque, aucune douleur, aucun trouble ne vient perturber le corps et l'âme. Épicure appelle ce second état l'**ataraxie** (l'absence de trouble de l'âme) et l'**aponie** (l'absence de douleur du corps). C'est CE plaisir-là, stable et durable, qu'Épicure vise comme fin véritable — pas l'accumulation de sensations fortes, qui, à peine obtenues, appellent déjà la sensation suivante (exactement ce qui se passe avec la note excellente du chapitre 1 : le plaisir « en mouvement » de l'euphorie s'épuise en une nuit).
 
 #### La distinction des désirs : un tri nécessaire avant tout choix
 
@@ -82,7 +82,7 @@ Comment atteindre ce plaisir stable ? Épicure propose un outil concret : avant 
 - **Les désirs naturels mais non nécessaires** (un repas raffiné plutôt qu'un repas simple) : agréables, mais dont l'absence de satisfaction ne cause aucune souffrance réelle — on peut s'en passer sans dommage.
 - **Les désirs ni naturels ni nécessaires** — Épicure les dit « vains » (richesse illimitée, gloire, luxe sans fin, réputation) : nés non d'un besoin réel mais d'une simple opinion — l'idée qu'on se fait de ce qui rendrait heureux, souvent inspirée par la comparaison aux autres. **Le problème de ces désirs vains, précisément :** n'ayant aucune limite naturelle (contrairement à la faim, qui s'arrête une fois rassasiée), ils sont par nature insatiables — chaque satisfaction en appelle une autre, sans jamais atteindre de repos.
 
-Reviens à la note excellente de R0. Vouloir, dès le lendemain, une note encore meilleure au prochain contrôle, puis une autre encore après — sans qu'aucun seuil ne vienne jamais satisfaire ce désir de reconnaissance — porte, chez Épicure, la marque exacte d'un désir vain : né d'une opinion (l'idée que la valeur d'un élève se mesure à ses notes), sans limite naturelle, et donc structurellement incapable de produire l'ataraxie.
+Reviens à la note excellente du chapitre 1. Vouloir, dès le lendemain, une note encore meilleure au prochain contrôle, puis une autre encore après — sans qu'aucun seuil ne vienne jamais satisfaire ce désir de reconnaissance — porte, chez Épicure, la marque exacte d'un désir vain : né d'une opinion (l'idée que la valeur d'un élève se mesure à ses notes), sans limite naturelle, et donc structurellement incapable de produire l'ataraxie.
 
 #### Le calcul des plaisirs : une méthode, pas un festin sans limites
 
@@ -96,7 +96,7 @@ Reviens à la note excellente de R0. Vouloir, dès le lendemain, une note encore
 
 #### Eudémonisme et hédonisme : deux familles, à ne pas confondre
 
-Avant d'aller plus loin, fixons un point de vocabulaire que R1 et R2 ont construit sans le nommer explicitement. On appelle **hédonisme** toute doctrine qui fait du plaisir le critère et la fin du bonheur (Épicure, R2). On appelle **eudémonisme** toute doctrine qui fait du bonheur (*eudaimonia*) la fin ultime de l'existence humaine SANS l'identifier au plaisir — en la faisant reposer plutôt sur la raison et la vertu. Aristote (R1) en est le premier grand représentant ; les stoïciens, qu'on va voir maintenant, en proposent une version plus radicale encore.
+Avant d'aller plus loin, fixons un point de vocabulaire que chapitres 2 et 3 ont construit sans le nommer explicitement. On appelle **hédonisme** toute doctrine qui fait du plaisir le critère et la fin du bonheur (Épicure, chapitre 3). On appelle **eudémonisme** toute doctrine qui fait du bonheur (*eudaimonia*) la fin ultime de l'existence humaine SANS l'identifier au plaisir — en la faisant reposer plutôt sur la raison et la vertu. Aristote (chapitre 2) en est le premier grand représentant ; les stoïciens, qu'on va voir maintenant, en proposent une version plus radicale encore.
 
 **Ne confonds pas les deux :** l'eudémonisme n'est pas « l'hédonisme version raison » — pour un eudémoniste, la vertu n'est pas un simple moyen de calculer le plaisir (comme chez Épicure), elle CONSTITUE directement le bonheur, indépendamment du plaisir qu'elle procure ou non.
 
@@ -116,7 +116,7 @@ Le stoïcien te dirait : concentre toute ton énergie sur la seconde part — c'
 
 #### La vertu comme seul bien véritable
 
-Les stoïciens vont plus loin qu'Aristote sur un point précis : pour eux, la vertu est le SEUL bien véritable, et tout le reste (santé, richesse, réputation, et même leurs contraires : maladie, pauvreté) est « indifférent » — ni bien ni mal en soi, même si certaines de ces choses indifférentes restent raisonnablement préférables à d'autres. Aristote, lui, exigeait un minimum de biens extérieurs pour que le bonheur soit complet (R1) ; les stoïciens radicalisent l'exigence : rien d'extérieur à la vertu n'est requis pour être heureux, parce que rien d'extérieur ne dépend jamais entièrement de nous.
+Les stoïciens vont plus loin qu'Aristote sur un point précis : pour eux, la vertu est le SEUL bien véritable, et tout le reste (santé, richesse, réputation, et même leurs contraires : maladie, pauvreté) est « indifférent » — ni bien ni mal en soi, même si certaines de ces choses indifférentes restent raisonnablement préférables à d'autres. Aristote, lui, exigeait un minimum de biens extérieurs pour que le bonheur soit complet (chapitre 2) ; les stoïciens radicalisent l'exigence : rien d'extérieur à la vertu n'est requis pour être heureux, parce que rien d'extérieur ne dépend jamais entièrement de nous.
 
 > **Point de vigilance :** ne confonds pas la maîtrise stoïcienne de soi avec une passivité résignée ou un renoncement à agir sur le monde. Le stoïcien continue d'agir de toutes ses forces sur ce qui dépend de lui (réviser, travailler, soigner ses relations) — il ne renonce qu'à faire dépendre son bonheur du résultat, qui, lui, échappe en partie à sa maîtrise. Confondre « ne pas désirer ce qui ne dépend pas de nous » avec « ne rien faire » revient à manquer le cœur de la doctrine stoïcienne, qui est une discipline de l'action autant que du désir.
 
@@ -141,7 +141,7 @@ Aristote, Épicure et les stoïciens, malgré leurs désaccords, partagent une s
 
 #### Le second argument : confondre devoir et intérêt
 
-**Un second problème, tout aussi grave :** faire du bonheur le critère du bien agir revient à ramener toute action morale à un calcul d'intérêt personnel — agir bien parce que cela me rend, ou me rendra, heureux. Or Kant a montré (cf. la leçon « Le devoir », R2) qu'une action motivée par l'intérêt, même légitime, n'a aucune valeur morale au sens fort : elle s'effondrerait le jour où elle cesserait de servir cet intérêt. Si la morale se réduisait à « fais ce qui te rend heureux », elle perdrait justement ce qui la rend contraignante — indépendante de tout bénéfice personnel attendu.
+**Un second problème, tout aussi grave :** faire du bonheur le critère du bien agir revient à ramener toute action morale à un calcul d'intérêt personnel — agir bien parce que cela me rend, ou me rendra, heureux. Or Kant a montré (cf. la leçon « Le devoir », chapitre 3) qu'une action motivée par l'intérêt, même légitime, n'a aucune valeur morale au sens fort : elle s'effondrerait le jour où elle cesserait de servir cet intérêt. Si la morale se réduisait à « fais ce qui te rend heureux », elle perdrait justement ce qui la rend contraignante — indépendante de tout bénéfice personnel attendu.
 
 #### Digne d'être heureux : ce que Kant ne nie pas
 
@@ -155,7 +155,7 @@ Aristote, Épicure et les stoïciens, malgré leurs désaccords, partagent une s
 
 #### Le bonheur, affaire strictement individuelle ou affaire de la cité ?
 
-Une question reste en suspens depuis R1 : le bonheur se joue-t-il entre l'individu et lui-même, ou suppose-t-il des conditions collectives ?
+Une question reste en suspens depuis le chapitre 2 : le bonheur se joue-t-il entre l'individu et lui-même, ou suppose-t-il des conditions collectives ?
 
 Aristote lui-même tranche sur ce point : il définit l'homme comme un « animal politique » (*zoon politikon*) — un être dont la nature s'accomplit pleinement seulement dans la vie de la cité, avec d'autres. L'amitié (*philia*) occupe, dans l'*Éthique à Nicomaque*, une place considérable parmi les conditions du bonheur : on ne peut pas, selon Aristote, être pleinement heureux seul, coupé de toute relation. Épicure, à l'inverse, valorise lui aussi l'amitié comme un des plus grands biens de la vie — mais il recommande, en matière politique, un retrait plutôt qu'un engagement : mieux vaut se tenir à l'écart des affaires publiques, sources d'agitation et de troubles, et cultiver une vie simple entourée d'amis proches, dans un cercle restreint plutôt que dans la cité tout entière.
 
@@ -163,7 +163,7 @@ Aristote lui-même tranche sur ce point : il définit l'homme comme un « animal
 
 #### Schopenhauer : le désir comme manque perpétuel
 
-Schopenhauer (XIXe siècle, *Le Monde comme volonté et comme représentation*) pousse plus loin une inquiétude déjà présente dans R0 et R2 : et si le bonheur, entendu comme satisfaction stable et durable, était structurellement inaccessible — non par malchance, mais par la nature même du désir humain ?
+Schopenhauer (XIXe siècle, *Le Monde comme volonté et comme représentation*) pousse plus loin une inquiétude déjà présente dans chapitres 1 et 3 : et si le bonheur, entendu comme satisfaction stable et durable, était structurellement inaccessible — non par malchance, mais par la nature même du désir humain ?
 
 **Le mécanisme qu'il décrit :** tout désir naît d'un manque, et tout manque est une forme de souffrance. Quand le désir est enfin satisfait, la souffrance du manque cesse — mais ce qui suit n'est pas un plaisir positif et durable : c'est, très vite, l'ennui, puis un nouveau manque, donc un nouveau désir, puis une nouvelle souffrance. Schopenhauer décrit l'existence humaine comme oscillant, sans repos durable possible, entre la douleur du manque et l'ennui de la satisfaction — un mouvement de pendule qui ne s'arrête jamais sur un point d'équilibre stable.
 
@@ -172,7 +172,7 @@ Schopenhauer (XIXe siècle, *Le Monde comme volonté et comme représentation*) 
      représentation, livre IV), couramment citée sous cette forme dans les manuels français --
      formulation à vérifier mot pour mot si une citation exacte est requise avant publication. -->
 
-Reviens à la note excellente de R0 sous cet éclairage : l'euphorie du premier jour n'est pas un accident isolé, ni un défaut personnel de gratitude — c'est, pour Schopenhauer, la structure même de tout désir humain qui s'y donne à voir en miniature.
+Reviens à la note excellente du chapitre 1 sous cet éclairage : l'euphorie du premier jour n'est pas un accident isolé, ni un défaut personnel de gratitude — c'est, pour Schopenhauer, la structure même de tout désir humain qui s'y donne à voir en miniature.
 
 #### Freud : le prix de la vie en société
 
@@ -206,8 +206,8 @@ Schopenhauer et Freud, enfin, diraient que ce cycle — désir, satisfaction br�
 
 #### Étape 1 — Analyser les termes du sujet
 
-- **« Le bonheur »** : rappelle-toi qu'on ne peut pas supposer une seule définition acquise — Aristote (l'activité vertueuse d'une vie entière), Épicure (le plaisir stable, l'ataraxie), les stoïciens (la maîtrise du désir) en proposent des versions distinctes (R1-R3). Le sujet ne précise pas laquelle retenir : c'est à la copie de le faire apparaître.
-- **« Dépend de nous »** : reprends précisément la distinction stoïcienne (R3) — ce qui dépend de nous (nos jugements, nos désirs, nos actions propres) et ce qui ne dépend pas de nous (les circonstances extérieures, le jugement d'autrui, le hasard). Le sujet demande si le bonheur, entendu dans ses différentes versions, appartient à la première catégorie ou à la seconde.
+- **« Le bonheur »** : rappelle-toi qu'on ne peut pas supposer une seule définition acquise — Aristote (l'activité vertueuse d'une vie entière), Épicure (le plaisir stable, l'ataraxie), les stoïciens (la maîtrise du désir) en proposent des versions distinctes (chapitres 2 et 4). Le sujet ne précise pas laquelle retenir : c'est à la copie de le faire apparaître.
+- **« Dépend de nous »** : reprends précisément la distinction stoïcienne (chapitre 4) — ce qui dépend de nous (nos jugements, nos désirs, nos actions propres) et ce qui ne dépend pas de nous (les circonstances extérieures, le jugement d'autrui, le hasard). Le sujet demande si le bonheur, entendu dans ses différentes versions, appartient à la première catégorie ou à la seconde.
 - **« Dépend-il »** est une question fermée, mais une bonne dissertation ne répond jamais simplement « oui » ou « non » : elle montre en quel sens précis la réponse spontanée est vraie, où elle rencontre ses limites, et ce qu'il faut ajouter pour répondre pleinement.
 
 #### Étape 2 — Formuler la problématique
@@ -223,13 +223,13 @@ Une formulation possible :
 #### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
 
 **I. Thèse — Le bonheur dépend de nous.**
-Développe la position stoïcienne (R3) : en réglant son désir exclusivement sur ce qui dépend de soi, on atteint une tranquillité indépendante des circonstances extérieures. Mobilise aussi Épicure (R2) : le calcul rationnel des plaisirs et le tri des désirs (naturels, vains) sont, en principe, à la portée de chacun, quelle que soit sa situation matérielle.
+Développe la position stoïcienne (chapitre 4) : en réglant son désir exclusivement sur ce qui dépend de soi, on atteint une tranquillité indépendante des circonstances extérieures. Mobilise aussi Épicure (chapitre 3) : le calcul rationnel des plaisirs et le tri des désirs (naturels, vains) sont, en principe, à la portée de chacun, quelle que soit sa situation matérielle.
 
 **II. Antithèse — Cette maîtrise se heurte à des limites réelles.**
-Mobilise Aristote (R1) : le bonheur véritable exige aussi des biens extérieurs — santé, ressources suffisantes, amitié, une cité bien gouvernée — qui ne dépendent pas entièrement de nous ; une vie de vertu privée de tout cela n'est pas, pour Aristote lui-même, pleinement heureuse. Mobilise aussi Schopenhauer et Freud (R5) : la structure même du désir, ou le prix de la vie collective, limitent le bonheur indépendamment de notre seule volonté.
+Mobilise Aristote (chapitre 2) : le bonheur véritable exige aussi des biens extérieurs — santé, ressources suffisantes, amitié, une cité bien gouvernée — qui ne dépendent pas entièrement de nous ; une vie de vertu privée de tout cela n'est pas, pour Aristote lui-même, pleinement heureuse. Mobilise aussi Schopenhauer et Freud (chapitre 6) : la structure même du désir, ou le prix de la vie collective, limitent le bonheur indépendamment de notre seule volonté.
 
 **III. Dépassement — Ce qui dépend entièrement de nous n'est peut-être pas le bonheur lui-même, mais notre dignité à son égard.**
-Reprends Kant (R4) : la vertu, elle, dépend entièrement de nous — indépendamment de ce que la vie nous accorde ou nous refuse par ailleurs — et c'est elle qui nous rend dignes d'être heureux, même si le bonheur complet, lui, ne dépend jamais de nous seul. Montre que cette distinction permet de tenir ensemble ce que la thèse et l'antithèse affirmaient chacune à moitié : une part de maîtrise réelle (la vertu, le tri des désirs, l'attention à ce qui dépend de nous), et une part qui échappe structurellement à notre volonté (les circonstances, la nature même du désir, le prix de la vie collective).
+Reprends Kant (chapitre 5) : la vertu, elle, dépend entièrement de nous — indépendamment de ce que la vie nous accorde ou nous refuse par ailleurs — et c'est elle qui nous rend dignes d'être heureux, même si le bonheur complet, lui, ne dépend jamais de nous seul. Montre que cette distinction permet de tenir ensemble ce que la thèse et l'antithèse affirmaient chacune à moitié : une part de maîtrise réelle (la vertu, le tri des désirs, l'attention à ce qui dépend de nous), et une part qui échappe structurellement à notre volonté (les circonstances, la nature même du désir, le prix de la vie collective).
 
 #### Étape 4 — Rédiger l'introduction (modèle rédigé)
 
@@ -250,7 +250,7 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 Rédige maintenant, à ton tour :
 
 1. Un paragraphe de la partie II (l'antithèse), en choisissant SOIT l'angle aristotélicien (les biens extérieurs nécessaires au bonheur complet), SOIT l'angle de Schopenhauer ou Freud (la structure du désir, ou le prix de la vie collective) — pas les deux à la fois dans un seul paragraphe.
-2. Un paragraphe de la partie III (le dépassement), en t'appuyant sur la distinction kantienne entre bonheur et dignité d'être heureux établie en R4.
+2. Un paragraphe de la partie III (le dépassement), en t'appuyant sur la distinction kantienne entre bonheur et dignité d'être heureux établie au chapitre 5.
 
 Puis entraîne-toi sur l'un de ces deux sujets, avec la même méthode (analyse des termes → problématique → plan → introduction rédigée) :
 

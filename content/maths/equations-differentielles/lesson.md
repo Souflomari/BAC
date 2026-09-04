@@ -36,7 +36,7 @@ où $k>0$ est une constante qui dépend du café, de la tasse, de l'air ambiant.
 
 Tu as déjà croisé une fonction dont la dérivée s'exprime à partir d'elle-même : $\exp$, avec $(e^x)'=e^x$ (chapitre précédent). Ce chapitre généralise cette idée : quelles fonctions vérifient $y'=ay$, ou des variantes un peu plus riches comme $y'=ay+b$, ou même une équation sur la dérivée **seconde** ? Et surtout : comment être sûr d'avoir trouvé **toutes** les solutions, pas seulement une qui a l'air de marcher ?
 
-À la fin de cette leçon, tu sauras écrire l'expression exacte de $T(t)$ pour la tasse de café — et vérifier qu'elle redonne bien les valeurs du tableau ci-dessus. Garde cette question en tête ; on la referme au R3.
+À la fin de cette leçon, tu sauras écrire l'expression exacte de $T(t)$ pour la tasse de café — et vérifier qu'elle redonne bien les valeurs du tableau ci-dessus. Garde cette question en tête ; on la referme au chapitre 4.
 
 ---
 
@@ -88,7 +88,7 @@ Retiens la méthode, pas seulement le résultat : multiplier par $e^{-ax}$ pour 
 
 Beaucoup d'élèves, après avoir vu que $\exp$ vérifie $y'=y$, s'imaginent que $\exp$ EST « la » solution de cette équation — comme s'il n'y en avait qu'une seule. Teste cette idée avant de la croire : $y(x) = 5e^{x}$ vérifie-t-elle $y'=y$ ? Dérive : $y'(x) = 5e^x = y(x)$. Oui, ça marche — et $5e^x \neq e^x$. Il y a bien une infinité de solutions, une par valeur de $C$, toutes différentes les unes des autres (elles ne passent pas par les mêmes points), et toutes vérifient exactement la même équation différentielle.
 
-Une équation différentielle, seule, ne détermine donc jamais UNE fonction — elle détermine une **famille**. Pour épingler une solution précise dans cette famille, il faut une information supplémentaire : une valeur de $y$ en un point donné. On y revient au R3.
+Une équation différentielle, seule, ne détermine donc jamais UNE fonction — elle détermine une **famille**. Pour épingler une solution précise dans cette famille, il faut une information supplémentaire : une valeur de $y$ en un point donné. On y revient au chapitre 4.
 
 ### Le sens du signe de $a$
 
@@ -117,11 +117,11 @@ Comme $a=-0{,}5<0$, chaque solution (non nulle) tend vers $0$ quand $x \to +\inf
 
 ### Pourquoi $y'=ay$ ne suffit pas toujours
 
-Reviens à la tasse de café du R0 : $T'(t) = -k\big(T(t)-20\big)$. Développe le membre de droite :
+Reviens à la tasse de café du chapitre 1 : $T'(t) = -k\big(T(t)-20\big)$. Développe le membre de droite :
 
 $$T'(t) = -kT(t) + 20k$$
 
-Ce n'est **pas** de la forme $y'=ay$ : il traîne un terme constant, $20k$, qui ne dépend pas de $T$. C'est le signe que le café ne se refroidit pas vers $0\ °\text{C}$, mais vers la température de la pièce, $20\ °\text{C}$ — un **palier** non nul. Le modèle du R1 doit être élargi.
+Ce n'est **pas** de la forme $y'=ay$ : il traîne un terme constant, $20k$, qui ne dépend pas de $T$. C'est le signe que le café ne se refroidit pas vers $0\ °\text{C}$, mais vers la température de la pièce, $20\ °\text{C}$ — un **palier** non nul. Le modèle du chapitre 2 doit être élargi.
 
 ### Poser l'équation générale
 
@@ -143,7 +143,7 @@ $$k = -\frac{b}{a}$$
 
 ### Étape 2 : ramener le cas général au R1
 
-**Ce qu'on cherche ici, et pourquoi ce geste :** on connaît déjà toutes les solutions de $z'=az$ (R1). L'idée : montrer que l'écart entre n'importe quelle solution $y$ de notre équation et le palier $y_p$ vérifie exactement cette équation plus simple.
+**Ce qu'on cherche ici, et pourquoi ce geste :** on connaît déjà toutes les solutions de $z'=az$ (chapitre 2). L'idée : montrer que l'écart entre n'importe quelle solution $y$ de notre équation et le palier $y_p$ vérifie exactement cette équation plus simple.
 
 Soit $y$ une solution quelconque de $y'=ay+b$. Pose $z(x) = y(x) - y_p$ (rappel : $y_p=-b/a$ est une constante, donc $z'=y'$). On calcule :
 
@@ -157,11 +157,11 @@ Or $a\,y_p+b = a\times\left(-\dfrac{b}{a}\right)+b = -b+b = 0$ — exactement la
 
 $$z'(x) = a\,z(x)$$
 
-C'est exactement l'équation du R1 ! D'après ce qu'on y a établi, il existe donc $C \in \mathbb{R}$ tel que $z(x) = Ce^{ax}$. En revenant à $y = z+y_p$ :
+C'est exactement l'équation du chapitre 2 ! D'après ce qu'on y a établi, il existe donc $C \in \mathbb{R}$ tel que $z(x) = Ce^{ax}$. En revenant à $y = z+y_p$ :
 
 $$\boxed{y(x) = Ce^{ax} - \frac{b}{a}, \qquad C \in \mathbb{R} \text{ quelconque}}$$
 
-C'est l'ensemble complet des solutions de $y'=ay+b$ sur $\mathbb{R}$ — complet pour la même raison qu'au R1 : chaque étape ci-dessus est une équivalence, pas seulement une vérification a posteriori.
+C'est l'ensemble complet des solutions de $y'=ay+b$ sur $\mathbb{R}$ — complet pour la même raison qu'au chapitre 2 : chaque étape ci-dessus est une équivalence, pas seulement une vérification a posteriori.
 
 ### Exemple travaillé
 
@@ -191,17 +191,17 @@ En toute généralité : si $y(x)=Ce^{ax}+b$ était solution, l'identification d
 
 ### Pourquoi il faut une information de plus
 
-On l'a vu au R1 : l'équation différentielle seule ne détermine qu'une **famille** de courbes — une par valeur de $C$ — qui vérifient toutes la même relation entre $y$ et $y'$. Pour isoler UNE solution précise, il faut donner un point par lequel la courbe doit passer : une valeur $y(x_0)=y_0$, appelée **condition initiale** (souvent $x_0=0$, quand $x$ représente un temps qui démarre à l'origine de l'expérience).
+On l'a vu au chapitre 2 : l'équation différentielle seule ne détermine qu'une **famille** de courbes — une par valeur de $C$ — qui vérifient toutes la même relation entre $y$ et $y'$. Pour isoler UNE solution précise, il faut donner un point par lequel la courbe doit passer : une valeur $y(x_0)=y_0$, appelée **condition initiale** (souvent $x_0=0$, quand $x$ représente un temps qui démarre à l'origine de l'expérience).
 
 ### La méthode
 
-On part de la solution générale (R1 ou R2 selon le cas), et on remplace $x$ par $x_0$ et $y(x_0)$ par $y_0$ : ça donne une équation à une seule inconnue, $C$, qu'on résout.
+On part de la solution générale (chapitres 2 ou 3 selon le cas), et on remplace $x$ par $x_0$ et $y(x_0)$ par $y_0$ : ça donne une équation à une seule inconnue, $C$, qu'on résout.
 
 ### Exemple travaillé 1 — condition initiale en $x_0=0$
 
 Détermine la solution $g$ de $y'=4y$ qui vérifie $g(0)=7$.
 
-**Ce qu'on cherche ici, et pourquoi ce geste :** la solution générale est $y(x)=Ce^{4x}$ (R1, $a=4$) ; il reste à utiliser $g(0)=7$ pour fixer $C$.
+**Ce qu'on cherche ici, et pourquoi ce geste :** la solution générale est $y(x)=Ce^{4x}$ (chapitre 2, $a=4$) ; il reste à utiliser $g(0)=7$ pour fixer $C$.
 
 $$g(0) = Ce^{4\times 0} = Ce^0 = C$$
 
@@ -213,7 +213,7 @@ $$g(x) = 7e^{4x}$$
 
 Détermine la solution $h$ de $y'=3y$ qui vérifie $h(2)=18$. Calcule ensuite $h(0)$.
 
-**Ce qu'on cherche ici, et pourquoi ce geste :** rien n'oblige la condition initiale à être donnée en $x_0=0$ — la méthode est identique, on substitue simplement $x=2$ au lieu de $x=0$. La solution générale est $y(x)=Ce^{3x}$ (R1, $a=3$).
+**Ce qu'on cherche ici, et pourquoi ce geste :** rien n'oblige la condition initiale à être donnée en $x_0=0$ — la méthode est identique, on substitue simplement $x=2$ au lieu de $x=0$. La solution générale est $y(x)=Ce^{3x}$ (chapitre 2, $a=3$).
 
 $$h(2) = Ce^{3\times 2} = Ce^{6} = 18$$
 
@@ -227,17 +227,17 @@ Pour $h(0)$ :
 
 $$h(0) = 18e^{-6} \approx 18 \times 0{,}00248 \approx 0{,}045$$
 
-Remarque : $h(0)$ est très petit — cohérent avec $a=3>0$ (croissance exponentielle) : en remontant de $x=2$ vers $x=0$, on redescend fortement, exactement comme prédit par le sens de variation étudié au R1.
+Remarque : $h(0)$ est très petit — cohérent avec $a=3>0$ (croissance exponentielle) : en remontant de $x=2$ vers $x=0$, on redescend fortement, exactement comme prédit par le sens de variation étudié au chapitre 2.
 
 ### Fermeture de l'arc : la tasse de café du R0
 
 Reprenons le modèle posé en ouverture : $T'(t) = -k\big(T(t)-20\big)$, avec $k=0{,}1\ \text{min}^{-1}$ (une constante propre à cette tasse, dans cette pièce), et $T(0)=90$.
 
-**Ce qu'on cherche ici, et pourquoi ce geste :** développer d'abord l'équation pour la ramener à la forme $y'=ay+b$ du R2, identifier $a$ et $b$, appliquer la formule, puis utiliser $T(0)=90$ pour fixer $C$.
+**Ce qu'on cherche ici, et pourquoi ce geste :** développer d'abord l'équation pour la ramener à la forme $y'=ay+b$ du chapitre 3, identifier $a$ et $b$, appliquer la formule, puis utiliser $T(0)=90$ pour fixer $C$.
 
 $$T'(t) = -0{,}1\,T(t) + 0{,}1 \times 20 = -0{,}1\,T(t) + 2$$
 
-Ici $a=-0{,}1$ et $b=2$, donc le palier vaut $-b/a = -2/(-0{,}1) = 20$ — exactement la température de la pièce, ce qui est cohérent avec l'intuition du R0 (le café se rapproche de $20\ °\text{C}$, jamais en dessous). La solution générale (R2) :
+Ici $a=-0{,}1$ et $b=2$, donc le palier vaut $-b/a = -2/(-0{,}1) = 20$ — exactement la température de la pièce, ce qui est cohérent avec l'intuition du chapitre 1 (le café se rapproche de $20\ °\text{C}$, jamais en dessous). La solution générale (chapitre 3) :
 
 $$T(t) = Ce^{-0{,}1t} + 20$$
 
@@ -247,13 +247,13 @@ $$C + 20 = 90 \implies C = 70$$
 
 $$\boxed{T(t) = 70\,e^{-0{,}1t} + 20}$$
 
-**Vérifions que ça redonne bien le tableau du R0.** À $t=5$ : $T(5) = 70e^{-0{,}5}+20 \approx 70\times 0{,}6065+20 \approx 42{,}5+20=62{,}5$ — ça correspond. À $t=10$ : $T(10)=70e^{-1}+20 \approx 70\times 0{,}3679+20 \approx 25{,}8+20=45{,}8$ — ça correspond aussi. À $t=20$ : $T(20)=70e^{-2}+20 \approx 70\times 0{,}1353+20\approx 9{,}5+20=29{,}5$ — encore cohérent.
+**Vérifions que ça redonne bien le tableau du chapitre 1.** À $t=5$ : $T(5) = 70e^{-0{,}5}+20 \approx 70\times 0{,}6065+20 \approx 42{,}5+20=62{,}5$ — ça correspond. À $t=10$ : $T(10)=70e^{-1}+20 \approx 70\times 0{,}3679+20 \approx 25{,}8+20=45{,}8$ — ça correspond aussi. À $t=20$ : $T(20)=70e^{-2}+20 \approx 70\times 0{,}1353+20\approx 9{,}5+20=29{,}5$ — encore cohérent.
 
-La formule qu'on vient d'établir n'est pas juste une courbe qui « ressemble » aux données du R0 — elle les reproduit exactement, parce qu'elle a été construite à partir du mécanisme (l'écart pilote la vitesse) et fixée par la seule vraie condition initiale disponible, $T(0)=90$.
+La formule qu'on vient d'établir n'est pas juste une courbe qui « ressemble » aux données du chapitre 1 — elle les reproduit exactement, parce qu'elle a été construite à partir du mécanisme (l'écart pilote la vitesse) et fixée par la seule vraie condition initiale disponible, $T(0)=90$.
 
 [[figure:famille-solutions]]
 
-La figure ci-dessus rend visible ce que le R1 avait déjà annoncé : l'équation $T'=-0{,}1T+2$, à elle seule, ne dessine pas une courbe mais toute une **famille** — une par valeur de $T_0=T(0)$ — qui partagent toutes le même palier $T_p=-b/a=20$ sans jamais le franchir. La courbe en accent, celle avec $T(0)=90$, est la seule que le calcul ci-dessus a isolée dans cette famille.
+La figure ci-dessus rend visible ce que le chapitre 2 avait déjà annoncé : l'équation $T'=-0{,}1T+2$, à elle seule, ne dessine pas une courbe mais toute une **famille** — une par valeur de $T_0=T(0)$ — qui partagent toutes le même palier $T_p=-b/a=20$ sans jamais le franchir. La courbe en accent, celle avec $T(0)=90$, est la seule que le calcul ci-dessus a isolée dans cette famille.
 
 [[checkpoint:cp-r3-condition-initiale]]
 
@@ -289,7 +289,7 @@ $$y''(x) = A\big(\cos(\omega x)\big)'' + B\big(\sin(\omega x)\big)'' = -\omega^2
 
 ### On admet la réciproque
 
-Comme au R1, il faudrait montrer que ce sont bien LÀ toutes les solutions — pas seulement des solutions qui marchent. La preuve complète pour une équation du second ordre demande des outils (l'espace des solutions a une structure de plan vectoriel, avec un argument d'unicité qui s'appuie sur un théorème plus général) qui dépassent le programme de 2ᵉ Bac SM. On **admet** ici, comme on a admis au chapitre précédent que « la réciproque d'une bijection dérivable de dérivée jamais nulle est dérivable » : l'ensemble des solutions de $y''+\omega^2y=0$ sur $\mathbb{R}$ est exactement
+Comme au chapitre 2, il faudrait montrer que ce sont bien LÀ toutes les solutions — pas seulement des solutions qui marchent. La preuve complète pour une équation du second ordre demande des outils (l'espace des solutions a une structure de plan vectoriel, avec un argument d'unicité qui s'appuie sur un théorème plus général) qui dépassent le programme de 2ᵉ Bac SM. On **admet** ici, comme on a admis au chapitre précédent que « la réciproque d'une bijection dérivable de dérivée jamais nulle est dérivable » : l'ensemble des solutions de $y''+\omega^2y=0$ sur $\mathbb{R}$ est exactement
 
 $$\boxed{y(x) = A\cos(\omega x) + B\sin(\omega x), \qquad A,B \in \mathbb{R} \text{ quelconques}}$$
 
@@ -425,13 +425,13 @@ C'est exactement $y'=ay+b$, avec $a=-\dfrac{1}{RC_0}$ et $b=\dfrac{E}{RC_0}$. Le
 
 $$u_{C,p} = -\frac{b}{a} = -\dfrac{E/(RC_0)}{-1/(RC_0)} = E$$
 
-La solution générale (R2) : $u_C(t) = Ke^{-t/(RC_0)}+E$ (on note la constante d'intégration $K$ ici, pour la même raison). Condensateur initialement déchargé : $u_C(0)=0$, donc $K+E=0$, soit $K=-E$ :
+La solution générale (chapitre 3) : $u_C(t) = Ke^{-t/(RC_0)}+E$ (on note la constante d'intégration $K$ ici, pour la même raison). Condensateur initialement déchargé : $u_C(0)=0$, donc $K+E=0$, soit $K=-E$ :
 
 $$u_C(t) = E\left(1-e^{-t/(RC_0)}\right)$$
 
 C'est la courbe de charge classique : $u_C$ démarre à $0$ et tend vers $E$ sans jamais le dépasser.
 
-**Et la décharge ?** Sans générateur ($E=0$, condensateur déjà chargé à $U_0$ qui se vide dans $R$ seule), l'équation devient $RC_0u_C'+u_C=0$, soit $u_C'=-\dfrac{1}{RC_0}u_C$ — un cas $b=0$, donc exactement le R1 pur (le palier est $0$, puisqu'il n'y a plus de source pour maintenir une tension non nulle) :
+**Et la décharge ?** Sans générateur ($E=0$, condensateur déjà chargé à $U_0$ qui se vide dans $R$ seule), l'équation devient $RC_0u_C'+u_C=0$, soit $u_C'=-\dfrac{1}{RC_0}u_C$ — un cas $b=0$, donc exactement le chapitre 2 pur (le palier est $0$, puisqu'il n'y a plus de source pour maintenir une tension non nulle) :
 
 $$u_C(t) = U_0\,e^{-t/(RC_0)}$$
 

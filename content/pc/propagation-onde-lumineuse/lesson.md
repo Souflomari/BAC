@@ -92,7 +92,7 @@ Quand une onde rencontre une ouverture ou un obstacle, l'optique géométrique n
 
 Mais quand l'ouverture (une fente fine) ou l'obstacle (un fil très fin) a une dimension $a$ suffisamment petite — **du même ordre de grandeur que la longueur d'onde** $\lambda$ de la lumière utilisée — le comportement change radicalement. La lumière ne continue plus tout droit : elle s'étale, elle atteint des directions qu'elle n'aurait jamais dû atteindre selon l'optique géométrique. C'est le phénomène de **diffraction**.
 
-Pour la lumière visible, $\lambda$ vaut seulement quelques centaines de nanomètres (on y revient en R4). C'est pourquoi la diffraction de la lumière n'est perceptible qu'à travers des ouvertures extrêmement fines — de l'ordre du dixième de millimètre ou moins — et totalement invisible à travers une porte ou une fenêtre, des milliers de fois trop larges pour que $a$ et $\lambda$ soient comparables.
+Pour la lumière visible, $\lambda$ vaut seulement quelques centaines de nanomètres (on y revient au chapitre 5). C'est pourquoi la diffraction de la lumière n'est perceptible qu'à travers des ouvertures extrêmement fines — de l'ordre du dixième de millimètre ou moins — et totalement invisible à travers une porte ou une fenêtre, des milliers de fois trop larges pour que $a$ et $\lambda$ soient comparables.
 
 ### La formule de l'écart angulaire
 
@@ -153,7 +153,7 @@ Ces valeurs sont approximatives, et les frontières entre couleurs sont progress
 
 ### Monochromatique et polychromatique
 
-Une lumière **monochromatique** est constituée d'une seule longueur d'onde $\lambda_0$ — c'est le cas d'un faisceau laser, par exemple. Une lumière **polychromatique** est un mélange de plusieurs longueurs d'onde différentes : c'est le cas de la lumière blanche (celle du Soleil, ou d'une ampoule), qui contient simultanément toutes les couleurs du spectre visible, superposées. C'est précisément parce que la lumière blanche est polychromatique qu'un prisme peut la décomposer en un spectre de couleurs — on y revient en R5.
+Une lumière **monochromatique** est constituée d'une seule longueur d'onde $\lambda_0$ — c'est le cas d'un faisceau laser, par exemple. Une lumière **polychromatique** est un mélange de plusieurs longueurs d'onde différentes : c'est le cas de la lumière blanche (celle du Soleil, ou d'une ampoule), qui contient simultanément toutes les couleurs du spectre visible, superposées. C'est précisément parce que la lumière blanche est polychromatique qu'un prisme peut la décomposer en un spectre de couleurs — on y revient au chapitre 6.
 
 ### Ce qui reste fixe, et ce qui change, quand la lumière change de milieu
 
@@ -161,7 +161,7 @@ Une lumière **monochromatique** est constituée d'une seule longueur d'onde $\l
 
 La fréquence $\nu$ d'une radiation lumineuse — c'est la même grandeur que la fréquence notée $f$ dans les chapitres sur les ondes mécaniques ; pour la lumière, on la note traditionnellement $\nu$ (lettre grecque « nu ») — est imposée par la source qui l'émet : c'est le rythme auquel les champs électrique et magnétique oscillent. Ce rythme ne change pas quand la lumière franchit une interface et passe d'un milieu à un autre : la fréquence $\nu$ est **invariante**, la même dans le vide et dans n'importe quel milieu traversé.
 
-La longueur d'onde, elle, est liée à la vitesse de propagation par la relation $\lambda = v/\nu$. Or $v$ change d'un milieu à l'autre (R2), donc $\lambda$ change aussi. Dans un milieu d'indice $n$, où $v = c/n$, la longueur d'onde devient :
+La longueur d'onde, elle, est liée à la vitesse de propagation par la relation $\lambda = v/\nu$. Or $v$ change d'un milieu à l'autre (chapitre 3), donc $\lambda$ change aussi. Dans un milieu d'indice $n$, où $v = c/n$, la longueur d'onde devient :
 
 $$\lambda = \frac{v}{\nu} = \frac{c/n}{\nu} = \frac{\lambda_0}{n}$$
 
@@ -189,7 +189,7 @@ Numériquement, $440\ \text{nm}$ correspond, dans le tableau ci-dessus, à une l
 
 ### Pourquoi l'indice dépend, très légèrement, de la couleur
 
-On a vu (R2) que l'indice de réfraction $n$ d'un milieu transparent caractérise à quel point ce milieu ralentit la lumière. Ce qu'on a passé sous silence jusqu'ici : $n$ dépend, très légèrement, de la longueur d'onde $\lambda_0$ de la lumière qui traverse le milieu. Pour la plupart des verres, l'indice est un peu plus grand pour le violet (petite $\lambda_0$) que pour le rouge (grande $\lambda_0$) :
+On a vu (chapitre 3) que l'indice de réfraction $n$ d'un milieu transparent caractérise à quel point ce milieu ralentit la lumière. Ce qu'on a passé sous silence jusqu'ici : $n$ dépend, très légèrement, de la longueur d'onde $\lambda_0$ de la lumière qui traverse le milieu. Pour la plupart des verres, l'indice est un peu plus grand pour le violet (petite $\lambda_0$) que pour le rouge (grande $\lambda_0$) :
 
 $$n_{violet} > n_{rouge}$$
 
@@ -223,7 +223,7 @@ $$\sin r_{violet} = \frac{\sin 40^\circ}{1{,}530} = \frac{0{,}643}{1{,}530} \app
 
 $$r_{violet} \approx 24{,}8^\circ$$
 
-L'écart entre les deux angles de réfraction n'est que d'environ $0{,}4^\circ$ — minuscule. Mais ce petit écart angulaire, comme dans le cas de la diffraction (R3), s'amplifie avec la distance : sur un écran placé loin du prisme, les rayons rouge et violet, réfractés selon deux angles légèrement différents, ont eu le temps de s'écarter suffisamment pour former deux taches nettement séparées — et entre elles, tout le reste du spectre visible. C'est ainsi qu'un prisme transforme un unique faisceau de lumière blanche en un arc-en-ciel de couleurs.
+L'écart entre les deux angles de réfraction n'est que d'environ $0{,}4^\circ$ — minuscule. Mais ce petit écart angulaire, comme dans le cas de la diffraction (chapitre 4), s'amplifie avec la distance : sur un écran placé loin du prisme, les rayons rouge et violet, réfractés selon deux angles légèrement différents, ont eu le temps de s'écarter suffisamment pour former deux taches nettement séparées — et entre elles, tout le reste du spectre visible. C'est ainsi qu'un prisme transforme un unique faisceau de lumière blanche en un arc-en-ciel de couleurs.
 
 ### Arrête-toi — la dispersion ne fonctionne que sur de la lumière polychromatique
 

@@ -56,7 +56,7 @@ Si $\omega$ est constante, $\ddot\theta = 0$ : le solide tourne à vitesse angul
 
 ### Ne pas confondre $\omega$ et la vitesse d'un point du solide
 
-Voici le piège précis à éviter, et c'est le cœur de ce rung. $\omega$ est une vitesse **angulaire** — elle se mesure en radians par seconde, pas en mètres par seconde — et elle vaut la même chose pour n'importe quel point du solide. Mais la vitesse **linéaire** d'un point $M$ du solide, elle, dépend d'où se trouve $M$ par rapport à l'axe.
+Voici le piège précis à éviter, et c'est le cœur de ce chapitre. $\omega$ est une vitesse **angulaire** — elle se mesure en radians par seconde, pas en mètres par seconde — et elle vaut la même chose pour n'importe quel point du solide. Mais la vitesse **linéaire** d'un point $M$ du solide, elle, dépend d'où se trouve $M$ par rapport à l'axe.
 
 Pourquoi c'est vrai : si $M$ est à une distance $d$ de l'axe $\Delta$, et que le solide tourne d'un petit angle $\Delta\theta$ (en radians) pendant un temps $\Delta t$, alors $M$ parcourt, le long de son cercle de rayon $d$, un arc de longueur $\Delta s = d\,\Delta\theta$ — c'est la définition même du radian : un arc de longueur égale au rayon correspond à un angle d'un radian. En divisant par $\Delta t$ et en resserrant l'intervalle, on obtient la vitesse instantanée du point $M$ :
 
@@ -149,7 +149,7 @@ On peut maintenant expliquer précisément ce qui s'est passé dans l'accroche. 
 
 ### Construire cette grandeur, à partir d'un point matériel
 
-Prends un point matériel de masse $m$, situé à une distance $d$ de l'axe $\Delta$, entraîné en rotation avec le solide. On sait, depuis R1, que sa vitesse linéaire vaut $v = d\,\omega$. Son énergie cinétique, avec la formule habituelle de la translation, vaut donc :
+Prends un point matériel de masse $m$, situé à une distance $d$ de l'axe $\Delta$, entraîné en rotation avec le solide. On sait, depuis le chapitre 2, que sa vitesse linéaire vaut $v = d\,\omega$. Son énergie cinétique, avec la formule habituelle de la translation, vaut donc :
 
 $$E_c = \frac{1}{2}m v^2 = \frac{1}{2}m\,(d\,\omega)^2 = \frac{1}{2}\big(m\,d^2\big)\,\omega^2$$
 
@@ -205,7 +205,7 @@ Même masse totale ($2{,}0\ \text{kg}$), même longueur totale ($1{,}0\ \text{m}
 
 ### Exemple travaillé : chiffrer l'énigme du manège
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on reprend exactement le manège de l'accroche, on lui donne des valeurs précises, et on calcule $J_\Delta$ dans les deux configurations — pour vérifier, avec des chiffres, que l'intuition qualitative du R0 est bien confirmée par la définition qu'on vient de construire.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on reprend exactement le manège de l'accroche, on lui donne des valeurs précises, et on calcule $J_\Delta$ dans les deux configurations — pour vérifier, avec des chiffres, que l'intuition qualitative du chapitre 1 est bien confirmée par la définition qu'on vient de construire.
 
 Le manège est un disque homogène de masse $M = 60\ \text{kg}$ et de rayon $R = 1{,}5\ \text{m}$ :
 
@@ -225,7 +225,7 @@ $$J_{enfants,B} = 2 \times 25 \times 1{,}5^2 = 2 \times 25 \times 2{,}25 = 112{,
 
 $$J_{total,B} = J_{disque} + J_{enfants,B} = 67{,}5 + 112{,}5 = 180{,}0\ \text{kg}\cdot\text{m}^2$$
 
-La configuration B a un moment d'inertie **deux fois et demi plus grand** que la configuration A ($180$ contre $72\ \text{kg}\cdot\text{m}^2$), pour exactement la même masse totale embarquée ($60 + 25 + 25 = 110\ \text{kg}$ dans les deux cas). C'est ce nombre-là, $J_\Delta$, qui va gouverner combien le manège accélère pour une poussée donnée — c'est l'objet du rung suivant.
+La configuration B a un moment d'inertie **deux fois et demi plus grand** que la configuration A ($180$ contre $72\ \text{kg}\cdot\text{m}^2$), pour exactement la même masse totale embarquée ($60 + 25 + 25 = 110\ \text{kg}$ dans les deux cas). C'est ce nombre-là, $J_\Delta$, qui va gouverner combien le manège accélère pour une poussée donnée — c'est l'objet du chapitre suivant.
 
 ---
 
@@ -233,7 +233,7 @@ La configuration B a un moment d'inertie **deux fois et demi plus grand** que la
 
 ### Reconstruire la deuxième loi, pour la rotation
 
-On a maintenant les trois ingrédients : une accélération angulaire $\ddot\theta$ (R1), un moment de force $\mathcal{M}_\Delta(\vec F)$ (R2), et un moment d'inertie $J_\Delta$ (R3). Il reste à les relier entre eux, exactement comme la deuxième loi de Newton relie $\vec a_G$, $\vec F$ et $m$ en translation. On ne va pas se contenter de remplacer les lettres : on va vérifier que la substitution est justifiée, à partir d'un point matériel.
+On a maintenant les trois ingrédients : une accélération angulaire $\ddot\theta$ (chapitre 2), un moment de force $\mathcal{M}_\Delta(\vec F)$ (chapitre 3), et un moment d'inertie $J_\Delta$ (chapitre 4). Il reste à les relier entre eux, exactement comme la deuxième loi de Newton relie $\vec a_G$, $\vec F$ et $m$ en translation. On ne va pas se contenter de remplacer les lettres : on va vérifier que la substitution est justifiée, à partir d'un point matériel.
 
 ### Justifier la relation, à partir d'un point matériel
 
@@ -241,7 +241,7 @@ Prends un point matériel de masse $m$, à une distance $d$ de l'axe $\Delta$, s
 
 $$F = m\,a_{tan}$$
 
-où $a_{tan}$ est la composante tangentielle de l'accélération de ce point. Or, de la même façon qu'on a obtenu $v = d\,\omega$ en R1 (en dérivant l'arc $s = d\,\theta$ une fois), on obtient l'accélération tangentielle en dérivant $v = d\,\omega$ une deuxième fois, $d$ restant constant :
+où $a_{tan}$ est la composante tangentielle de l'accélération de ce point. Or, de la même façon qu'on a obtenu $v = d\,\omega$ au chapitre 2 (en dérivant l'arc $s = d\,\theta$ une fois), on obtient l'accélération tangentielle en dérivant $v = d\,\omega$ une deuxième fois, $d$ restant constant :
 
 $$a_{tan} = \frac{dv}{dt} = d\,\frac{d\omega}{dt} = d\,\ddot\theta$$
 
@@ -253,7 +253,7 @@ Multiplions les deux membres par $d$ :
 
 $$F \cdot d = m\,d^2\,\ddot\theta$$
 
-Le membre de gauche, $F \cdot d$, est exactement le moment de cette force tangentielle par rapport à $\Delta$ (R2 : $\mathcal{M}_\Delta(\vec F) = d \cdot F$, puisque $F$ est déjà tangentielle). Le facteur $m\,d^2$, au membre de droite, est exactement le moment d'inertie de ce point matériel (R3). Pour ce point isolé :
+Le membre de gauche, $F \cdot d$, est exactement le moment de cette force tangentielle par rapport à $\Delta$ (chapitre 3 : $\mathcal{M}_\Delta(\vec F) = d \cdot F$, puisque $F$ est déjà tangentielle). Le facteur $m\,d^2$, au membre de droite, est exactement le moment d'inertie de ce point matériel (chapitre 4). Pour ce point isolé :
 
 $$\mathcal{M}_\Delta(\vec F) = (m\,d^2)\,\ddot\theta$$
 
@@ -269,7 +269,7 @@ $$\boxed{\sum \mathcal{M}_\Delta(\vec F_{ext}) = J_\Delta\,\ddot\theta}$$
 
 C'est l'analogue exact, pour la rotation autour d'un axe fixe, de la deuxième loi de Newton $\sum \vec F_{ext} = m\,\vec a_G$ pour la translation — et on vient de voir précisément **pourquoi** la substitution est légitime : $m \to J_\Delta$ et $\vec F \to \mathcal{M}_\Delta(\vec F)$ ne sont pas des analogies vagues, ce sont les deux mêmes grandeurs qui ressortent, terme à terme, du même calcul appliqué point par point puis sommé.
 
-Rappel utile (R2) : la réaction de l'axe sur le solide a toujours un moment nul par rapport à $\Delta$ (elle s'applique sur l'axe lui-même, $d=0$). Elle n'apparaît donc jamais dans $\sum \mathcal{M}_\Delta(\vec F_{ext})$ : seules les forces dont la ligne d'action ne passe pas par $\Delta$ contribuent.
+Rappel utile (chapitre 3) : la réaction de l'axe sur le solide a toujours un moment nul par rapport à $\Delta$ (elle s'applique sur l'axe lui-même, $d=0$). Elle n'apparaît donc jamais dans $\sum \mathcal{M}_\Delta(\vec F_{ext})$ : seules les forces dont la ligne d'action ne passe pas par $\Delta$ contribuent.
 
 ### Le dictionnaire translation ↔ rotation
 
@@ -284,7 +284,7 @@ Rappel utile (R2) : la réaction de l'axe sur le solide a toujours un moment nul
 
 ### Exemple travaillé : le manège, dans les deux configurations
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on reprend la poussée de R2 (sur le bord, $F=30\ \text{N}$, à $d=1{,}5\ \text{m}$, donc $\mathcal{M}_\Delta(\vec F) = 45\ \text{N}\cdot\text{m}$) et les deux valeurs de $J_\Delta$ trouvées en R3, pour voir, chiffres à l'appui, si le manège de la configuration A (masses près du centre) réagit vraiment plus vite que celui de la configuration B.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on reprend la poussée du chapitre 3 (sur le bord, $F=30\ \text{N}$, à $d=1{,}5\ \text{m}$, donc $\mathcal{M}_\Delta(\vec F) = 45\ \text{N}\cdot\text{m}$) et les deux valeurs de $J_\Delta$ trouvées au chapitre 4, pour voir, chiffres à l'appui, si le manège de la configuration A (masses près du centre) réagit vraiment plus vite que celui de la configuration B.
 
 On applique la relation fondamentale à chaque configuration, la seule force ayant un moment non nul étant la poussée (la réaction de l'axe a un moment nul, le poids et la réaction verticale du sol n'ont pas de moment tangentiel utile ici) :
 
@@ -300,7 +300,7 @@ La configuration A accélère deux fois et demie plus vite que la configuration 
 
 $$\omega_A(4{,}0) = 0{,}625 \times 4{,}0 = 2{,}5\ \text{rad/s} \qquad \omega_B(4{,}0) = 0{,}25 \times 4{,}0 = 1{,}0\ \text{rad/s}$$
 
-En reconvertissant en vitesse linéaire du bord du manège ($R = 1{,}5\ \text{m}$, relation $v = R\,\omega$ établie en R1) :
+En reconvertissant en vitesse linéaire du bord du manège ($R = 1{,}5\ \text{m}$, relation $v = R\,\omega$ établie au chapitre 2) :
 
 $$v_{bord,A} = 1{,}5 \times 2{,}5 = 3{,}75\ \text{m/s} \qquad v_{bord,B} = 1{,}5 \times 1{,}0 = 1{,}5\ \text{m/s}$$
 
@@ -314,7 +314,7 @@ Le bord du manège de la configuration A file deux fois et demie plus vite que c
 
 ### La formule, déjà rencontrée
 
-On a déjà construit cette formule, morceau par morceau, en R3 : pour un point matériel, $E_c = \frac12 (m d^2)\omega^2$ ; en sommant sur tous les points d'un solide :
+On a déjà construit cette formule, morceau par morceau, au chapitre 4 : pour un point matériel, $E_c = \frac12 (m d^2)\omega^2$ ; en sommant sur tous les points d'un solide :
 
 $$E_c = \sum_i \frac{1}{2}m_i\,d_i^2\,\omega^2 = \frac{1}{2}\left(\sum_i m_i\,d_i^2\right)\omega^2 = \frac{1}{2}\,J_\Delta\,\omega^2$$
 
@@ -322,11 +322,11 @@ D'où l'**énergie cinétique de rotation** d'un solide tournant à la vitesse a
 
 $$\boxed{E_c = \frac{1}{2}\,J_\Delta\,\omega^2}$$
 
-C'est très exactement le même moule que $E_c = \frac12 m v^2$ en translation, avec la même substitution déjà justifiée deux fois ($m \to J_\Delta$, ici $v \to \omega$) : ce n'est donc pas une nouvelle formule à mémoriser à part, c'est la conséquence directe de tout ce qu'on a établi depuis R3.
+C'est très exactement le même moule que $E_c = \frac12 m v^2$ en translation, avec la même substitution déjà justifiée deux fois ($m \to J_\Delta$, ici $v \to \omega$) : ce n'est donc pas une nouvelle formule à mémoriser à part, c'est la conséquence directe de tout ce qu'on a établi depuis le chapitre 4.
 
 ### Exemple travaillé : l'énergie du manège, et une vérification par l'additivité
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on calcule l'énergie cinétique de la configuration A du manège à l'instant $t=4{,}0\ \text{s}$ (R4 : $\omega_A = 2{,}5\ \text{rad/s}$), puis on vérifie que ce résultat est cohérent avec l'additivité de $J_\Delta$ établie en R3 — la preuve est dans le calcul, pas dans une affirmation.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on calcule l'énergie cinétique de la configuration A du manège à l'instant $t=4{,}0\ \text{s}$ (chapitre 5 : $\omega_A = 2{,}5\ \text{rad/s}$), puis on vérifie que ce résultat est cohérent avec l'additivité de $J_\Delta$ établie au chapitre 4 — la preuve est dans le calcul, pas dans une affirmation.
 
 **Calcul direct**, avec $J_{total,A} = 72{,}0\ \text{kg}\cdot\text{m}^2$ :
 
@@ -340,7 +340,7 @@ $$E_{c,enfants} = \frac{1}{2}\times 4{,}5 \times 2{,}5^2 = \frac{1}{2}\times 4{,
 
 $$E_{c,disque} + E_{c,enfants} = 210{,}9 + 14{,}1 = 225{,}0\ \text{J}$$
 
-Les deux méthodes donnent exactement le même résultat, $225\ \text{J}$ — ce qui confirme que l'additivité de $J_\Delta$ (R3) se transmet directement à l'additivité de l'énergie cinétique de rotation : l'énergie totale d'un système composite, en rotation à une $\omega$ commune, est la somme des énergies de chacune de ses parties.
+Les deux méthodes donnent exactement le même résultat, $225\ \text{J}$ — ce qui confirme que l'additivité de $J_\Delta$ (chapitre 4) se transmet directement à l'additivité de l'énergie cinétique de rotation : l'énergie totale d'un système composite, en rotation à une $\omega$ commune, est la somme des énergies de chacune de ses parties.
 
 ---
 
@@ -350,11 +350,11 @@ Les deux méthodes donnent exactement le même résultat, $225\ \text{J}$ — ce
 
 Un **pendule pesant** est un solide quelconque — pas nécessairement une masse ponctuelle — pouvant pivoter sans frottement autour d'un axe fixe horizontal $\Delta$ qui ne passe généralement pas par son centre d'inertie $G$. C'est le cas d'une porte, d'un balancier d'horloge, ou d'une simple tige suspendue par une extrémité. On note $d = \Delta G$ la distance entre l'axe et le centre d'inertie, et $\theta$ l'angle entre la droite $\Delta G$ et la verticale (l'équilibre stable correspond à $\theta = 0$, quand $G$ est à la verticale sous $\Delta$).
 
-Ce système va nous permettre de mettre tout ce chapitre au travail en même temps : la cinématique angulaire (R1), le moment d'une force (R2), le moment d'inertie (R3), et la relation fondamentale (R4).
+Ce système va nous permettre de mettre tout ce chapitre au travail en même temps : la cinématique angulaire (chapitre 2), le moment d'une force (chapitre 3), le moment d'inertie (chapitre 4), et la relation fondamentale (chapitre 5).
 
 ### Établir l'équation du mouvement
 
-**Bilan des moments par rapport à $\Delta$.** Deux forces s'exercent sur le solide : son poids $\vec P = m\vec g$, appliqué en $G$, et la réaction de l'axe, appliquée sur l'axe lui-même. Par R2, la réaction de l'axe a un bras de levier nul : son moment par rapport à $\Delta$ est **toujours nul**. Seul le poids contribue.
+**Bilan des moments par rapport à $\Delta$.** Deux forces s'exercent sur le solide : son poids $\vec P = m\vec g$, appliqué en $G$, et la réaction de l'axe, appliquée sur l'axe lui-même. Par le chapitre 3, la réaction de l'axe a un bras de levier nul : son moment par rapport à $\Delta$ est **toujours nul**. Seul le poids contribue.
 
 **Le moment du poids.** Le poids est vertical. Quand la droite $\Delta G$ fait un angle $\theta$ avec la verticale, la distance entre l'axe $\Delta$ et la ligne d'action verticale du poids — le vrai bras de levier — est le côté du triangle rectangle $\Delta G$ (hypoténuse, longueur $d$) opposé à l'angle $\theta$, c'est-à-dire $d\sin\theta$. Le moment du poids vaut donc, en norme, $mg\,d\sin\theta$ ; le signe est négatif parce que ce moment tend **toujours** à ramener $\theta$ vers $0$, quel que soit le sens de l'écart (à droite de la verticale, il pousse vers la gauche ; à gauche, vers la droite) :
 
@@ -382,11 +382,11 @@ La résolution complète de cette équation (vérification du cosinus, isochroni
 
 ### Exemple travaillé : une tige suspendue par une extrémité
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on prend une tige homogène, on la suspend par un bout (exactement la configuration « tige, axe à une extrémité » de la table de R3), et on calcule sa période propre — pour voir tout le chapitre converger sur un seul résultat numérique.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on prend une tige homogène, on la suspend par un bout (exactement la configuration « tige, axe à une extrémité » de la table du chapitre 4), et on calcule sa période propre — pour voir tout le chapitre converger sur un seul résultat numérique.
 
 Une tige homogène de masse $m = 0{,}80\ \text{kg}$ et de longueur $L = 1{,}5\ \text{m}$ pivote sans frottement autour d'un axe horizontal $\Delta$ passant par l'une de ses extrémités. On prend $g \approx 9{,}8\ \text{m/s}^2$.
 
-**Moment d'inertie**, avec la valeur usuelle « tige, axe à une extrémité » (R3) :
+**Moment d'inertie**, avec la valeur usuelle « tige, axe à une extrémité » (chapitre 4) :
 
 $$J_\Delta = \frac{1}{3}\,m L^2 = \frac{1}{3}\times 0{,}80\times 1{,}5^2 = \frac{1}{3}\times 0{,}80\times 2{,}25 = 0{,}60\ \text{kg}\cdot\text{m}^2$$
 
@@ -418,8 +418,8 @@ Le signe négatif confirme que le moment du poids ramène toujours la tige vers 
 
 Un sujet de rotation fait rarement tourner un solide dans le vide. Il l'accroche à un fil qui passe sur une poulie, le pose sur un plan incliné, ou lui demande un bilan d'énergie. Deux outils reviennent alors, que **cette leçon n'enseigne pas** :
 
-- **La décomposition du poids sur un plan incliné** — la composante $mg\sin\alpha$ le long de la pente, $mg\cos\alpha$ perpendiculairement. Elle est établie dans « **Les lois de Newton** », au rung consacré au solide sur un plan incliné, et reprise dans « **Chute libre et mouvements dans un plan** ». Un exercice de rotation la mobilise dès qu'un objet en translation tire le solide tournant.
-- **Le travail d'une force et le théorème de l'énergie cinétique**, dans « **Aspects énergétiques** ». Ce chapitre-ci donne l'énergie cinétique de rotation $E_c = \frac{1}{2}J_\Delta\,\dot\theta^{\,2}$ (rung 5), mais pas la machinerie du travail qui la fait varier.
+- **La décomposition du poids sur un plan incliné** — la composante $mg\sin\alpha$ le long de la pente, $mg\cos\alpha$ perpendiculairement. Elle est établie dans « **Les lois de Newton** », au chapitre consacré au solide sur un plan incliné, et reprise dans « **Chute libre et mouvements dans un plan** ». Un exercice de rotation la mobilise dès qu'un objet en translation tire le solide tournant.
+- **Le travail d'une force et le théorème de l'énergie cinétique**, dans « **Aspects énergétiques** ». Ce chapitre-ci donne l'énergie cinétique de rotation $E_c = \frac{1}{2}J_\Delta\,\dot\theta^{\,2}$ (chapitre 5), mais pas la machinerie du travail qui la fait varier.
 
 Ce ne sont pas des manques : un exercice de mécanique assemble presque toujours translation et rotation, cinématique et énergie. Savoir **d'où vient** chaque geste évite de croire qu'on a oublié une formule de ce chapitre.
 

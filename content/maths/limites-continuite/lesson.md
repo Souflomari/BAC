@@ -48,7 +48,7 @@ Ici, rien de spécial : $f$ n'a pas de trou en $3$, donc la limite est simplemen
 
 ### Limite à gauche, limite à droite — et la condition d'existence
 
-Le tableau du R0 montrait deux directions d'approche : par valeurs inférieures à $1$ (par la gauche) et par valeurs supérieures à $1$ (par la droite). C'est un point important : pour qu'une limite existe **en un point**, il faut que ces deux approches donnent le **même** nombre.
+Le tableau du chapitre 1 montrait deux directions d'approche : par valeurs inférieures à $1$ (par la gauche) et par valeurs supérieures à $1$ (par la droite). C'est un point important : pour qu'une limite existe **en un point**, il faut que ces deux approches donnent le **même** nombre.
 
 - La **limite à gauche** de $f$ en $a$, notée $\lim_{x \to a^{-}} f(x)$, regarde ce qui se passe quand $x$ approche $a$ par valeurs inférieures.
 - La **limite à droite**, notée $\lim_{x \to a^{+}} f(x)$, regarde l'approche par valeurs supérieures.
@@ -150,7 +150,7 @@ Les choses se compliquent quand $L$ ou $L'$ vaut $+\infty$ ou $-\infty$. Voici l
 | $0$ | $0$ | **forme indéterminée** |
 | $\pm\infty$ | $\pm\infty$ | **forme indéterminée** |
 
-Quatre cases sont marquées **forme indéterminée (FI)** : $+\infty - \infty$, $0 \times \infty$, $\frac{0}{0}$, $\frac{\infty}{\infty}$. Dans ces quatre cas précis, les règles générales ne suffisent pas — il faut retravailler l'expression avant de conclure. C'est l'objet du prochain rung.
+Quatre cases sont marquées **forme indéterminée (FI)** : $+\infty - \infty$, $0 \times \infty$, $\frac{0}{0}$, $\frac{\infty}{\infty}$. Dans ces quatre cas précis, les règles générales ne suffisent pas — il faut retravailler l'expression avant de conclure. C'est l'objet du prochain chapitre.
 
 [[checkpoint:cp-r2-forme-indeterminee]]
 
@@ -172,7 +172,7 @@ Trois expressions, une seule forme apparente ("$\infty - \infty$"), et trois ré
 
 Toutes les divisions par $0$ ne sont pas des formes indéterminées $\frac{0}{0}$. Regarde $f(x) = \dfrac{1}{x-2}$ (sans le carré, cette fois) quand $x \to 2$.
 
-**Ce qu'on cherche et pourquoi ce geste :** le numérateur tend vers $1$ (pas vers $0$), donc ce n'est pas la forme $\frac{0}{0}$ du tableau — c'est le cas "$L \neq 0$ divisé par $0$", qui donne un résultat infini, **mais dont le signe dépend du signe du dénominateur**. Il faut donc revenir à l'étude par la gauche et par la droite du R1, exactement comme pour une limite en un point qui explose.
+**Ce qu'on cherche et pourquoi ce geste :** le numérateur tend vers $1$ (pas vers $0$), donc ce n'est pas la forme $\frac{0}{0}$ du tableau — c'est le cas "$L \neq 0$ divisé par $0$", qui donne un résultat infini, **mais dont le signe dépend du signe du dénominateur**. Il faut donc revenir à l'étude par la gauche et par la droite du chapitre 2, exactement comme pour une limite en un point qui explose.
 
 - Par la gauche ($x \to 2^{-}$) : $x-2$ tend vers $0$ en restant **négatif** (par exemple $x=1{,}9 \Rightarrow x-2 = -0{,}1$). Donc $\frac{1}{x-2} \to -\infty$.
 - Par la droite ($x \to 2^{+}$) : $x-2$ tend vers $0$ en restant **positif**. Donc $\frac{1}{x-2} \to +\infty$.
@@ -205,7 +205,7 @@ Il ne reste plus qu'à faire tendre $x$ vers $1$ dans cette expression simplifi�
 
 $$\lim_{x \to 1} (x+1) = 2$$
 
-**Le tableau du R0 avait raison** : les valeurs se resserraient bien vers $2$. Maintenant tu sais pourquoi, et tu peux le prouver sans calculatrice.
+**Le tableau du chapitre 1 avait raison** : les valeurs se resserraient bien vers $2$. Maintenant tu sais pourquoi, et tu peux le prouver sans calculatrice.
 
 [[checkpoint:cp-r3-factorisation]]
 
@@ -245,7 +245,7 @@ Puisque $x \neq 0$ quand $x \to +\infty$, on simplifie par $x^2$ :
 
 $$\frac{x^2\left(3 - \dfrac{5}{x}+\dfrac{1}{x^2}\right)}{x^2\left(2+\dfrac{7}{x^2}\right)} = \frac{3 - \dfrac{5}{x}+\dfrac{1}{x^2}}{2+\dfrac{7}{x^2}}$$
 
-Or $\dfrac{5}{x}$, $\dfrac{1}{x^2}$ et $\dfrac{7}{x^2}$ tendent tous vers $0$ quand $x \to +\infty$ (limites de référence du R1). Il ne reste que les constantes :
+Or $\dfrac{5}{x}$, $\dfrac{1}{x^2}$ et $\dfrac{7}{x^2}$ tendent tous vers $0$ quand $x \to +\infty$ (limites de référence du chapitre 2). Il ne reste que les constantes :
 
 $$\lim_{x \to +\infty} \frac{3 - \dfrac{5}{x}+\dfrac{1}{x^2}}{2+\dfrac{7}{x^2}} = \frac{3}{2}$$
 
@@ -269,7 +269,7 @@ Pourquoi trois conditions et pas une seule ? Parce que chacune peut échouer ind
 
 [[figure:trois-discontinuites]]
 
-**Reprenons l'exemple du R1** pour voir la définition en action côté "échec" : $f(x) = x+1$ si $x<1$, $f(x)=x^2$ si $x \geq 1$. On avait trouvé $\lim_{x \to 1^{-}} f(x) = 2$ et $\lim_{x \to 1^{+}} f(x) = 1$ : ces deux limites latérales diffèrent, donc $\lim_{x \to 1} f(x)$ **n'existe pas** — la condition 2 échoue. Résultat : $f$ n'est pas continue en $1$, même si $f(1)=1$ est parfaitement défini (condition 1 vérifiée). Une seule des trois conditions suffit à faire échouer la continuité.
+**Reprenons l'exemple du chapitre 2** pour voir la définition en action côté "échec" : $f(x) = x+1$ si $x<1$, $f(x)=x^2$ si $x \geq 1$. On avait trouvé $\lim_{x \to 1^{-}} f(x) = 2$ et $\lim_{x \to 1^{+}} f(x) = 1$ : ces deux limites latérales diffèrent, donc $\lim_{x \to 1} f(x)$ **n'existe pas** — la condition 2 échoue. Résultat : $f$ n'est pas continue en $1$, même si $f(1)=1$ est parfaitement défini (condition 1 vérifiée). Une seule des trois conditions suffit à faire échouer la continuité.
 
 **Exemple travaillé, côté "ça marche" cette fois.** Soit
 
@@ -305,7 +305,7 @@ Ces résultats permettent d'affirmer la continuité d'une fonction "d'un coup d'
 
 **Théorème des valeurs intermédiaires (TVI).** Si $f$ est continue sur un intervalle $[a,b]$, alors pour tout réel $k$ compris entre $f(a)$ et $f(b)$, il existe **au moins** un réel $c \in [a,b]$ tel que $f(c) = k$.
 
-**Pourquoi c'est vrai, avec les mots du R4 :** une fonction continue sur $[a,b]$, c'est une courbe qu'on peut tracer d'un seul trait, sans lever le crayon, du point $(a, f(a))$ jusqu'au point $(b, f(b))$. Pour aller d'une hauteur $f(a)$ à une hauteur $f(b)$ sans jamais lever le crayon, le trait est bien obligé de traverser **toutes** les hauteurs intermédiaires au moins une fois — il ne peut pas "sauter" par-dessus une hauteur $k$ sans y passer, puisqu'il n'y a aucune coupure dans le tracé. C'est tout le théorème : il traduit en langage précis ce que "continu" veut dire graphiquement.
+**Pourquoi c'est vrai, avec les mots du chapitre 5 :** une fonction continue sur $[a,b]$, c'est une courbe qu'on peut tracer d'un seul trait, sans lever le crayon, du point $(a, f(a))$ jusqu'au point $(b, f(b))$. Pour aller d'une hauteur $f(a)$ à une hauteur $f(b)$ sans jamais lever le crayon, le trait est bien obligé de traverser **toutes** les hauteurs intermédiaires au moins une fois — il ne peut pas "sauter" par-dessus une hauteur $k$ sans y passer, puisqu'il n'y a aucune coupure dans le tracé. C'est tout le théorème : il traduit en langage précis ce que "continu" veut dire graphiquement.
 
 [[figure:continuite-tvi]]
 
@@ -337,7 +337,7 @@ Les trois conditions sont réunies : par le corollaire d'existence et d'unicité
 
 Face à une question du type "montrer que l'équation $f(x)=k$ admet une solution (unique) dans $[a,b]$", la procédure est toujours la même :
 
-1. Vérifier que $f$ est continue sur $[a,b]$ (le plus souvent immédiat : polynôme, rationnelle, etc. — boîte à outils du R4).
+1. Vérifier que $f$ est continue sur $[a,b]$ (le plus souvent immédiat : polynôme, rationnelle, etc. — boîte à outils du chapitre 5).
 2. Calculer ou comparer $f(a)$ et $f(b)$ à $k$, et vérifier que $k$ est bien compris entre les deux (pour $k=0$ : vérifier que $f(a)$ et $f(b)$ sont de signes contraires).
 3. Si on demande l'**unicité**, établir la stricte monotonie de $f$ sur $[a,b]$ (fonctions de référence, ou un tableau de variations donné dans l'énoncé).
 4. Conclure en citant le théorème (ou son corollaire) explicitement.
@@ -348,7 +348,7 @@ Face à une question du type "montrer que l'équation $f(x)=k$ admet une solutio
 
 ### Un $\frac{0}{0}$ qui résiste à tout ce qu'on connaît déjà
 
-Essaie de calculer $\lim_{x \to 0} \dfrac{\sin x}{x}$ avec les outils du R3. Substitution directe : $\dfrac{\sin 0}{0} = \dfrac{0}{0}$ — une forme indéterminée, comme prévu. Réflexe du R3 : factoriser le numérateur et le dénominateur par leur facteur commun. Mais essaie : quel facteur commun peux-tu sortir de $\sin x$ et de $x$ ? Il n'y en a aucun — $\sin x$ n'est pas un polynôme, et il n'existe pas de factorisation algébrique de $\sin x$ qui fasse apparaître $x$ en facteur. La factorisation, le conjugué, le terme dominant : aucune des trois techniques du R3 ne s'applique ici. Il va falloir un outil différent.
+Essaie de calculer $\lim_{x \to 0} \dfrac{\sin x}{x}$ avec les outils du chapitre 4. Substitution directe : $\dfrac{\sin 0}{0} = \dfrac{0}{0}$ — une forme indéterminée, comme prévu. Réflexe du chapitre 4 : factoriser le numérateur et le dénominateur par leur facteur commun. Mais essaie : quel facteur commun peux-tu sortir de $\sin x$ et de $x$ ? Il n'y en a aucun — $\sin x$ n'est pas un polynôme, et il n'existe pas de factorisation algébrique de $\sin x$ qui fasse apparaître $x$ en facteur. La factorisation, le conjugué, le terme dominant : aucune des trois techniques du chapitre 4 ne s'applique ici. Il va falloir un outil différent.
 
 Avant de le construire, regarde ce qui se passe numériquement :
 
@@ -356,9 +356,9 @@ Avant de le construire, regarde ce qui se passe numériquement :
 |---|---|---|---|---|---|---|---|
 | $\frac{\sin x}{x}$ | $0{,}9983$ | $0{,}999983$ | $0{,}99999983$ | $?$ | $0{,}99999983$ | $0{,}999983$ | $0{,}9983$ |
 
-Le resserrement est net, des deux côtés, vers $1$ — pas vers $0$, et la limite existe bel et bien. **C'est le premier piège de ce rung** : face à $\frac{\sin x}{x}$ en $x=0$, deux réflexes faux sont extrêmement fréquents — soit lire "$\frac{0}{0}$" comme "$0$" (en oubliant que $\frac{0}{0}$ n'est justement pas une valeur numérique, comme déjà vu au R0), soit conclure "la limite n'existe pas" parce que la factorisation du R3 échoue. Le tableau dément les deux : la limite existe, et elle vaut $1$.
+Le resserrement est net, des deux côtés, vers $1$ — pas vers $0$, et la limite existe bel et bien. **C'est le premier piège de ce chapitre** : face à $\frac{\sin x}{x}$ en $x=0$, deux réflexes faux sont extrêmement fréquents — soit lire "$\frac{0}{0}$" comme "$0$" (en oubliant que $\frac{0}{0}$ n'est justement pas une valeur numérique, comme déjà vu au chapitre 1), soit conclure "la limite n'existe pas" parce que la factorisation du chapitre 4 échoue. Le tableau dément les deux : la limite existe, et elle vaut $1$.
 
-Ce résultat se démontre rigoureusement par un argument géométrique (comparaison d'aires sur le cercle trigonométrique), qu'on n'a pas besoin de détailler ici — mais, exactement comme les limites de référence à l'infini du R1 ($\lim x^n$, etc.), c'est un résultat qu'on **admet et qu'on utilise directement**, sans avoir à le redémontrer à chaque fois.
+Ce résultat se démontre rigoureusement par un argument géométrique (comparaison d'aires sur le cercle trigonométrique), qu'on n'a pas besoin de détailler ici — mais, exactement comme les limites de référence à l'infini du chapitre 2 ($\lim x^n$, etc.), c'est un résultat qu'on **admet et qu'on utilise directement**, sans avoir à le redémontrer à chaque fois.
 
 ### Le formulaire à connaître
 
@@ -370,11 +370,11 @@ De ces trois résultats, un seul est vraiment "nouveau" et admis : $\lim_{x\to 0
 
 $$\frac{\tan x}{x} = \frac{\sin x}{x} \times \frac{1}{\cos x}$$
 
-Quand $x \to 0$ : $\dfrac{\sin x}{x} \to 1$ (le résultat admis), et $\cos x \to \cos 0 = 1$ par substitution directe ($\cos$ est continue en $0$, R4), donc $\dfrac{1}{\cos x} \to 1$. Par la règle du produit des limites (R2, deux limites finies) :
+Quand $x \to 0$ : $\dfrac{\sin x}{x} \to 1$ (le résultat admis), et $\cos x \to \cos 0 = 1$ par substitution directe ($\cos$ est continue en $0$, chapitre 5), donc $\dfrac{1}{\cos x} \to 1$. Par la règle du produit des limites (chapitre 3, deux limites finies) :
 
 $$\lim_{x \to 0} \frac{\tan x}{x} = 1 \times 1 = 1$$
 
-**Pourquoi $\lim_{x\to 0}\frac{1-\cos x}{x^2}=\frac{1}{2}$ découle, elle aussi, du même résultat.** Le geste est exactement celui du quotient conjugué du R3 : multiplier haut et bas par la quantité conjuguée $1+\cos x$, pour faire apparaître l'identité $1-\cos^2 x = \sin^2 x$.
+**Pourquoi $\lim_{x\to 0}\frac{1-\cos x}{x^2}=\frac{1}{2}$ découle, elle aussi, du même résultat.** Le geste est exactement celui du quotient conjugué du chapitre 4 : multiplier haut et bas par la quantité conjuguée $1+\cos x$, pour faire apparaître l'identité $1-\cos^2 x = \sin^2 x$.
 
 $$\frac{1-\cos x}{x^2} = \frac{(1-\cos x)(1+\cos x)}{x^2(1+\cos x)} = \frac{1-\cos^2 x}{x^2(1+\cos x)} = \frac{\sin^2 x}{x^2(1+\cos x)} = \left(\frac{\sin x}{x}\right)^2 \times \frac{1}{1+\cos x}$$
 
@@ -390,7 +390,7 @@ Le formulaire ne s'applique que dans une situation très précise : une expressi
 
 **Exemple travaillé 1 — un coefficient à absorber.** Calculer $\displaystyle\lim_{x \to 0} \frac{\sin(3x)}{x}$.
 
-**Ce qu'on cherche et pourquoi ce geste :** le numérateur est $\sin(3x)$, mais le dénominateur est $x$, pas $3x$ — ce n'est **pas encore** la forme du formulaire, où le même terme doit apparaître aux deux étages. Le réflexe : faire apparaître $3x$ au dénominateur aussi, en multipliant et divisant par $3$ (une opération qui ne change pas la valeur de l'expression, exactement comme au R3).
+**Ce qu'on cherche et pourquoi ce geste :** le numérateur est $\sin(3x)$, mais le dénominateur est $x$, pas $3x$ — ce n'est **pas encore** la forme du formulaire, où le même terme doit apparaître aux deux étages. Le réflexe : faire apparaître $3x$ au dénominateur aussi, en multipliant et divisant par $3$ (une opération qui ne change pas la valeur de l'expression, exactement comme au chapitre 4).
 
 $$\frac{\sin(3x)}{x} = 3 \times \frac{\sin(3x)}{3x}$$
 
@@ -410,13 +410,13 @@ Ce résultat ne dépend pas de la valeur de $a$ — il disparaît complètement 
 
 **Exemple travaillé 3 — quand le formulaire NE s'applique PAS.** Calculer $\displaystyle\lim_{x \to 0} \frac{\sin(x+2)}{x}$.
 
-**Ce qu'on cherche et pourquoi ce geste :** au premier coup d'œil, ça ressemble au formulaire — un sinus divisé par quelque chose. Mais regarde l'argument du sinus : c'est $x+2$, et $x+2 \to 2$ quand $x \to 0$ — **pas $0$**. La condition d'application du formulaire échoue : ce n'est pas une forme $\frac{\sin(u)}{u}$ avec $u\to 0$, donc le formulaire ne donne rien ici. Il faut revenir aux outils du R2.
+**Ce qu'on cherche et pourquoi ce geste :** au premier coup d'œil, ça ressemble au formulaire — un sinus divisé par quelque chose. Mais regarde l'argument du sinus : c'est $x+2$, et $x+2 \to 2$ quand $x \to 0$ — **pas $0$**. La condition d'application du formulaire échoue : ce n'est pas une forme $\frac{\sin(u)}{u}$ avec $u\to 0$, donc le formulaire ne donne rien ici. Il faut revenir aux outils du chapitre 3.
 
-Le numérateur $\sin(x+2)$ tend vers $\sin(2)$, un nombre **non nul** (ce n'est pas un des angles remarquables qui annulent le sinus). Le dénominateur $x$ tend vers $0$. C'est exactement le cas "nombre non nul divisé par $0$" du tableau des quotients (R2) — un résultat infini, dont le signe dépend du côté :
+Le numérateur $\sin(x+2)$ tend vers $\sin(2)$, un nombre **non nul** (ce n'est pas un des angles remarquables qui annulent le sinus). Le dénominateur $x$ tend vers $0$. C'est exactement le cas "nombre non nul divisé par $0$" du tableau des quotients (chapitre 3) — un résultat infini, dont le signe dépend du côté :
 
 $$\lim_{x \to 0^{+}} \frac{\sin(x+2)}{x} = +\infty \qquad \qquad \lim_{x \to 0^{-}} \frac{\sin(x+2)}{x} = -\infty$$
 
-(en admettant $\sin(2) > 0$, ce qu'une calculatrice confirme). Les deux limites latérales diffèrent : la limite globale n'existe pas. **Le réflexe à garder** : avant d'appliquer une limite de référence trigonométrique, vérifie toujours que l'argument à l'intérieur de $\sin$, $\tan$ ou $\cos$ tend réellement vers $0$ — sinon, ce n'est pas ce cas de figure, et il faut retourner aux outils généraux (substitution directe si tout est continu, ou tableaux du R2 en cas de division par $0$).
+(en admettant $\sin(2) > 0$, ce qu'une calculatrice confirme). Les deux limites latérales diffèrent : la limite globale n'existe pas. **Le réflexe à garder** : avant d'appliquer une limite de référence trigonométrique, vérifie toujours que l'argument à l'intérieur de $\sin$, $\tan$ ou $\cos$ tend réellement vers $0$ — sinon, ce n'est pas ce cas de figure, et il faut retourner aux outils généraux (substitution directe si tout est continu, ou tableaux du chapitre 3 en cas de division par $0$).
 
 ### Le réflexe à retenir
 
@@ -425,7 +425,7 @@ Face à une limite trigonométrique de la forme $\frac{0}{0}$ :
 1. Identifier si l'expression est bien du type $\frac{\sin(u)}{u}$, $\frac{\tan(u)}{u}$ ou $\frac{1-\cos(u)}{u^2}$ — avec le **même** $u$ en haut et en bas.
 2. Vérifier que $u \to 0$ (peu importe ce que fait $x$ : c'est $u$ qui doit tendre vers $0$).
 3. Si la forme ne correspond pas exactement (coefficient manquant, argument différent en haut et en bas), transformer l'expression par multiplication/division pour la faire apparaître — sans jamais changer la valeur de l'expression.
-4. Si l'argument ne tend pas vers $0$, le formulaire ne s'applique pas : revenir à la substitution directe ou aux tableaux d'opérations du R2.
+4. Si l'argument ne tend pas vers $0$, le formulaire ne s'applique pas : revenir à la substitution directe ou aux tableaux d'opérations du chapitre 3.
 
 [[checkpoint:cp-r6-trig]]
 
@@ -437,7 +437,7 @@ Un dernier palier de la rampe, maintenant : d'abord une **question authentique d
 
 ### Exercice de type bac
 
-Extrait du problème d'analyse de l'examen national 2022 (session normale, filière SExp) : trois réflexes du chapitre s'enchaînent ici — un produit de limites à l'infini (R2, à distinguer d'une forme indéterminée), une asymptote oblique obtenue en montrant que $f(x)-x \to 0$ (le même geste de « retravailler l'expression » qu'au R3, appliqué à une différence plutôt qu'à un quotient), et une étude de signe pour situer la courbe par rapport à cette asymptote.
+Extrait du problème d'analyse de l'examen national 2022 (session normale, filière SExp) : trois réflexes du chapitre s'enchaînent ici — un produit de limites à l'infini (chapitre 3, à distinguer d'une forme indéterminée), une asymptote oblique obtenue en montrant que $f(x)-x \to 0$ (le même geste de « retravailler l'expression » qu'au chapitre 4, appliqué à une différence plutôt qu'à un quotient), et une étude de signe pour situer la courbe par rapport à cette asymptote.
 
 [[checkpoint:cp-bac-produit-infini]]
 

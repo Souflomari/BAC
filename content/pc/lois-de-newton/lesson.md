@@ -12,7 +12,7 @@ Avant de lire la suite, prends position, en une phrase : qu'est-ce qui fait avan
 
 Beaucoup de raisonnements naturels penchent vers la première réponse : « il continue d'avancer, donc il doit y avoir encore une force vers l'avant qui l'entretient — sinon il s'arrêterait tout de suite ». C'est une intuition ancienne (elle remonte à Aristote), et elle semble collée à l'expérience de tous les jours : un objet qu'on cesse de pousser finit toujours par s'arrêter.
 
-Garde ta réponse en tête. On va la mettre à l'épreuve, mais il nous faut d'abord le bon vocabulaire pour en parler précisément : dans quel cadre décrit-on un mouvement, et qu'est-ce qu'on entend exactement par « la vitesse » d'un solide qui, contrairement à un point, a une taille et une forme ? C'est l'objet du rung suivant. On y revient ensuite directement.
+Garde ta réponse en tête. On va la mettre à l'épreuve, mais il nous faut d'abord le bon vocabulaire pour en parler précisément : dans quel cadre décrit-on un mouvement, et qu'est-ce qu'on entend exactement par « la vitesse » d'un solide qui, contrairement à un point, a une taille et une forme ? C'est l'objet du chapitre suivant. On y revient ensuite directement.
 
 ---
 
@@ -28,7 +28,7 @@ Voici le test à se poser : imagine que tu es debout, immobile, à l'intérieur 
 
 Est-ce que ça veut dire qu'une force mystérieuse agit sur la balle ? Non — ça veut dire que le référentiel du bus qui freine n'est pas un bon référentiel pour appliquer les lois qu'on va énoncer dans ce chapitre : dans ce référentiel-là, un objet peut se mettre en mouvement sans qu'aucune force réelle ne s'exerce sur lui. Vu depuis le sol (le trottoir, immobile), il n'y a pas de mystère : la balle, elle, continue tout simplement sur sa trajectoire à vitesse constante pendant que c'est le bus qui ralentit autour d'elle.
 
-On appelle **référentiel galiléen** un référentiel dans lequel les lois de Newton — à commencer par le principe d'inertie qu'on va énoncer au rung suivant — sont vérifiées. Ce n'est pas une propriété qu'on peut déduire à l'avance : c'est un fait qu'on constate, référentiel par référentiel. Le sol (référentiel terrestre) en est un, en bonne approximation, pour les mouvements de durée et d'échelle raisonnables étudiés dans ce chapitre ; un bus qui freine n'en est pas un.
+On appelle **référentiel galiléen** un référentiel dans lequel les lois de Newton — à commencer par le principe d'inertie qu'on va énoncer au chapitre suivant — sont vérifiées. Ce n'est pas une propriété qu'on peut déduire à l'avance : c'est un fait qu'on constate, référentiel par référentiel. Le sol (référentiel terrestre) en est un, en bonne approximation, pour les mouvements de durée et d'échelle raisonnables étudiés dans ce chapitre ; un bus qui freine n'en est pas un.
 
 Trois référentiels galiléens usuels, du plus local au plus large :
 
@@ -60,7 +60,7 @@ où $O$ est un point fixe du référentiel. Concrètement, $\vec{v}_G$ est **tan
 
 [[figure:vecteur-vitesse-tangente]]
 
-Retiens bien ceci, parce que ça va compter dans les rungs suivants : $\vec{v}_G$ peut être grand ou petit, constant ou changeant — **ce n'est pas la vitesse elle-même qui va nous renseigner sur les forces**. Ce qui va compter, c'est de savoir si, et comment, $\vec{v}_G$ **change** au cours du temps.
+Retiens bien ceci, parce que ça va compter dans les chapitres suivants : $\vec{v}_G$ peut être grand ou petit, constant ou changeant — **ce n'est pas la vitesse elle-même qui va nous renseigner sur les forces**. Ce qui va compter, c'est de savoir si, et comment, $\vec{v}_G$ **change** au cours du temps.
 
 [[checkpoint:cp-r1-referentiel]]
 
@@ -96,7 +96,7 @@ Le principe couvre aussi le repos, qui est juste le cas particulier $\vec{v}_G =
 
 $$\vec{P} + \vec{N} = \vec{0} \qquad \text{soit} \qquad N = P = mg$$
 
-Les deux forces ont même norme, même direction, et des sens opposés — mais attention, on reviendra en R4 sur une confusion très fréquente à leur sujet : ce n'est PAS pour cette raison qu'elles forment une paire d'action-réciproque au sens de la troisième loi.
+Les deux forces ont même norme, même direction, et des sens opposés — mais attention, on reviendra au chapitre 5 sur une confusion très fréquente à leur sujet : ce n'est PAS pour cette raison qu'elles forment une paire d'action-réciproque au sens de la troisième loi.
 
 [[checkpoint:cp-r2-inertie]]
 
@@ -169,11 +169,11 @@ Cette loi est **toujours vraie**, pour n'importe quelle interaction (contact, gr
 
 ### Le piège classique : distinguer une paire « action-réaction » d'un simple équilibre
 
-Reprends le livre posé sur la table (R2). Deux forces s'exerçaient sur le livre : son poids $\vec{P}$ et la réaction normale $\vec{N}$ de la table. On avait $\vec{P} + \vec{N} = \vec{0}$, car le livre est immobile.
+Reprends le livre posé sur la table (chapitre 3). Deux forces s'exerçaient sur le livre : son poids $\vec{P}$ et la réaction normale $\vec{N}$ de la table. On avait $\vec{P} + \vec{N} = \vec{0}$, car le livre est immobile.
 
 Voici la question piège : est-ce que $\vec{P}$ et $\vec{N}$ forment une paire d'action-réaction au sens de la troisième loi ?
 
-**Non.** Et voici pourquoi, précisément : une paire d'action-réaction relie **deux forces qui s'exercent sur deux corps DIFFÉRENTS**, issues d'une seule et même interaction entre ces deux corps. Or $\vec{P}$ et $\vec{N}$ s'exercent toutes les deux **sur le même corps**, le livre — ce n'est pas une paire action-réaction, c'est un équilibre (conséquence du principe d'inertie, vu en R2).
+**Non.** Et voici pourquoi, précisément : une paire d'action-réaction relie **deux forces qui s'exercent sur deux corps DIFFÉRENTS**, issues d'une seule et même interaction entre ces deux corps. Or $\vec{P}$ et $\vec{N}$ s'exercent toutes les deux **sur le même corps**, le livre — ce n'est pas une paire action-réaction, c'est un équilibre (conséquence du principe d'inertie, vu au chapitre 3).
 
 Pour trouver la vraie réciproque de $\vec{N}$ (la force exercée par la table sur le livre), il faut chercher l'AUTRE force de la même interaction : celle que le livre exerce, en retour, sur la table.
 
@@ -267,7 +267,7 @@ La masse $m$ se simplifie **complètement** des deux côtés de l'équation. L'a
 
 C'est le moment de fixer clairement une distinction sur laquelle on glisse souvent :
 
-- la **masse** $m$ (en kilogrammes) est une grandeur **scalaire** qui caractérise la quantité de matière d'un objet, et donc son inertie — sa résistance à changer de vitesse (vu en R3). Elle ne dépend pas du lieu où se trouve l'objet.
+- la **masse** $m$ (en kilogrammes) est une grandeur **scalaire** qui caractérise la quantité de matière d'un objet, et donc son inertie — sa résistance à changer de vitesse (vu au chapitre 4). Elle ne dépend pas du lieu où se trouve l'objet.
 - le **poids** $\vec{P} = m\vec{g}$ (en newtons) est une **force**, donc un vecteur, verticale, dirigée vers le bas. Sa valeur dépend de $m$ ET de $g$, l'intensité de la pesanteur au lieu considéré. Or $g$ n'est PAS une constante universelle : $g \approx 9{,}8\ \text{N/kg}$ sur Terre, contre $g \approx 1{,}6\ \text{N/kg}$ sur la Lune. Le même objet, avec la même masse $m$, aurait donc un poids environ six fois plus faible sur la Lune que sur Terre — alors que sa masse, elle, n'aurait pas changé d'un gramme.
 
 C'est exactement pour cette raison que l'accélération de chute libre, $\vec{a}_G = \vec{g}$, dépend du LIEU (elle diffère entre la Terre et la Lune) mais jamais de la masse de l'objet qui tombe : masse et poids sont deux grandeurs de nature différente, et seule la seconde varie avec le lieu.
@@ -298,7 +298,7 @@ Remarque : ni $t_{sol}$ ni $v_G(t_{sol})$ ne dépendent de la masse de l'objet l
 
 ## R7 — Application : solide sur un plan incliné, avec frottement
 
-On reprend la méthode de R5, sur un cas plus riche : un solide de masse $m = 1{,}0\ \text{kg}$ glisse, sans vitesse initiale, sur un plan incliné faisant un angle $\alpha = 30^\circ$ avec l'horizontale. Les frottements exercent une force $\vec{f}$, de norme $f = 2{,}0\ \text{N}$, opposée au sens de la descente. On prend $g \approx 9{,}8\ \text{m}\cdot\text{s}^{-2}$.
+On reprend la méthode du chapitre 6, sur un cas plus riche : un solide de masse $m = 1{,}0\ \text{kg}$ glisse, sans vitesse initiale, sur un plan incliné faisant un angle $\alpha = 30^\circ$ avec l'horizontale. Les frottements exercent une force $\vec{f}$, de norme $f = 2{,}0\ \text{N}$, opposée au sens de la descente. On prend $g \approx 9{,}8\ \text{m}\cdot\text{s}^{-2}$.
 
 ### Bilan des forces et repère
 
@@ -350,7 +350,7 @@ Le solide accélère bien dans le sens de la descente ($a_{G,x} > 0$), parce que
 
 - Un mouvement se décrit toujours par rapport à un **référentiel** ; les lois de Newton n'y sont valables que si ce référentiel est **galiléen** (référentiel terrestre, géocentrique, héliocentrique selon l'échelle du problème).
 - Le **centre d'inertie $G$** représente tout le solide en translation ; son vecteur vitesse $\vec{v}_G$ et son vecteur accélération $\vec{a}_G = \dfrac{d\vec{v}_G}{dt}$ sont des VECTEURS, pas de simples nombres.
-- **1ʳᵉ loi (principe d'inertie) :** $\sum \vec{F}_{ext} = \vec{0} \iff \vec{v}_G$ constant. Ce n'est pas le mouvement qui a besoin d'une force, c'est sa VARIATION — c'est exactement ce que le palet de R0 démontrait.
+- **1ʳᵉ loi (principe d'inertie) :** $\sum \vec{F}_{ext} = \vec{0} \iff \vec{v}_G$ constant. Ce n'est pas le mouvement qui a besoin d'une force, c'est sa VARIATION — c'est exactement ce que le palet du chapitre 1 démontrait.
 - **2ᵉ loi :** $\sum \vec{F}_{ext} = m\,\vec{a}_G$. La masse mesure l'inertie : à force égale, un solide plus massif accélère moins.
 - **3ᵉ loi (actions réciproques) :** $\vec{F}_{B \to A} = -\vec{F}_{A \to B}$, toujours vraie, sur deux corps DIFFÉRENTS — à ne jamais confondre avec deux forces en équilibre sur un même corps.
 - **Méthode :** système + référentiel → bilan des forces → $\sum \vec{F}_{ext} = m\,\vec{a}_G$ → repère et projection → équations scalaires.

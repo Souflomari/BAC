@@ -34,7 +34,7 @@ Un arbre généalogique suit des règles fixes, qu'on va utiliser sous forme de 
 - les enfants d'une union sont reliés à leurs parents et forment une **fratrie** ;
 - les générations sont numérotées en chiffres romains (I, II, III...) de la plus ancienne à la plus récente, et chaque individu d'une génération reçoit un numéro (I-1, I-2, II-1, II-2...).
 
-Voici la famille qu'on va suivre tout au long des rungs R1 à R5 :
+Voici la famille qu'on va suivre tout au long des chapitres 2 à 6 :
 
 | Génération | Individu | Sexe | Phénotype |
 |---|---|---|---|
@@ -83,7 +83,7 @@ Reprends le tableau : I-1 et I-2 sont tous les deux sains, et pourtant leur fill
 - I-2 est hétérozygote : $A//a$, pour la même raison ;
 - II-1 est homozygote récessive : $a//a$ (c'est la seule façon d'être atteinte).
 
-Et II-2 (sain) ? Son génotype n'est pas encore déterminé avec certitude à ce stade — il peut être $A//A$ ou $A//a$, puisque les deux génotypes donnent un phénotype sain. On garde cette question ouverte : le R5 te donnera l'outil pour y répondre précisément, avec un chiffre.
+Et II-2 (sain) ? Son génotype n'est pas encore déterminé avec certitude à ce stade — il peut être $A//A$ ou $A//a$, puisque les deux génotypes donnent un phénotype sain. On garde cette question ouverte : le chapitre 6 te donnera l'outil pour y répondre précisément, avec un chiffre.
 
 [[figure:pedigree-drepanocytose]]
 
@@ -91,7 +91,7 @@ Et II-2 (sain) ? Son génotype n'est pas encore déterminé avec certitude à ce
 
 Une erreur fréquente : penser qu'une maladie rare est forcément récessive, ou qu'une maladie fréquente est forcément dominante. La fréquence dans la population n'a rien à voir avec la dominance — ce sont deux informations indépendantes. Le seul test valable est celui du dessus : regarder si un enfant atteint peut avoir deux parents phénotypiquement sains.
 
-Une deuxième erreur, plus subtile : conclure quoi que ce soit sur l'autosome ou le gonosome à partir de ce seul test. Le test de ce rung répond à UNE question (récessif ou dominant), pas à l'autre (autosomal ou lié au sexe) — ce sont deux axes de décision séparés, et il en faut un deuxième, complètement différent, pour trancher le second axe. C'est l'objet du R3.
+Une deuxième erreur, plus subtile : conclure quoi que ce soit sur l'autosome ou le gonosome à partir de ce seul test. Le test de ce chapitre répond à UNE question (récessif ou dominant), pas à l'autre (autosomal ou lié au sexe) — ce sont deux axes de décision séparés, et il en faut un deuxième, complètement différent, pour trancher le second axe. C'est l'objet du chapitre 4.
 
 ---
 
@@ -103,7 +103,7 @@ Tout repose sur un seul fait, qu'il faut avoir parfaitement en tête : **un fils
 
 ### Test A : une fille atteinte d'une maladie récessive liée à l'X impose un père atteint
 
-Si une maladie récessive est liée à l'X, une fille atteinte doit être homozygote : $X^{a}X^{a}$. Elle a donc reçu un $X^{a}$ de sa mère, ET un $X^{a}$ de son père. Mais son père n'a qu'un seul chromosome X à transmettre — s'il transmet $X^{a}$, c'est que son propre génotype est $X^{a}Y$, c'est-à-dire qu'il est **lui-même atteint** (il n'a pas de second X pour masquer l'allèle, on y revient au R4).
+Si une maladie récessive est liée à l'X, une fille atteinte doit être homozygote : $X^{a}X^{a}$. Elle a donc reçu un $X^{a}$ de sa mère, ET un $X^{a}$ de son père. Mais son père n'a qu'un seul chromosome X à transmettre — s'il transmet $X^{a}$, c'est que son propre génotype est $X^{a}Y$, c'est-à-dire qu'il est **lui-même atteint** (il n'a pas de second X pour masquer l'allèle, on y revient au chapitre 5).
 
 **Conséquence directe, à retenir comme un réflexe de lecture d'arbre :** si tu observes une fille atteinte d'une maladie récessive dont le père est phénotypiquement sain, la transmission liée à l'X récessive est **impossible** pour ce caractère — il te reste l'hypothèse autosomale récessive.
 
@@ -115,13 +115,13 @@ Toujours à partir de la même règle d'origine : un père atteint transmet forc
 
 ### Une famille de contraste : le daltonisme
 
-Prends une famille différente de celle du R1, pour bien voir la signature propre au chromosome X. Génération I : I-1, un homme daltonien (atteint), marié à I-2, une femme à la vision normale, non apparentée à la famille de I-1 (on suppose donc, en l'absence d'indication contraire, qu'elle n'est pas porteuse). Génération II : leurs deux enfants, II-1 (fille) et II-2 (fils), tous deux à la vision normale.
+Prends une famille différente de celle du chapitre 2, pour bien voir la signature propre au chromosome X. Génération I : I-1, un homme daltonien (atteint), marié à I-2, une femme à la vision normale, non apparentée à la famille de I-1 (on suppose donc, en l'absence d'indication contraire, qu'elle n'est pas porteuse). Génération II : leurs deux enfants, II-1 (fille) et II-2 (fils), tous deux à la vision normale.
 
-I-1, atteint, est hémizygote $X^{d}Y$ (on détaille ce terme au R4). Il ne peut transmettre que $X^{d}$ à ses filles — c'est son seul X. II-1 reçoit donc, avec certitude, un $X^{d}$ de son père ; comme sa mère I-2 n'est pas porteuse ($X^{D}X^{D}$), elle reçoit un $X^{D}$ d'elle. II-1 est donc $X^{D}X^{d}$ : phénotypiquement saine, mais **certainement porteuse** — pas « probablement », vraiment certainement, puisque son père hémizygote n'avait qu'un seul type de gamète possible pour ce gène.
+I-1, atteint, est hémizygote $X^{d}Y$ (on détaille ce terme au chapitre 5). Il ne peut transmettre que $X^{d}$ à ses filles — c'est son seul X. II-1 reçoit donc, avec certitude, un $X^{d}$ de son père ; comme sa mère I-2 n'est pas porteuse ($X^{D}X^{D}$), elle reçoit un $X^{D}$ d'elle. II-1 est donc $X^{D}X^{d}$ : phénotypiquement saine, mais **certainement porteuse** — pas « probablement », vraiment certainement, puisque son père hémizygote n'avait qu'un seul type de gamète possible pour ce gène.
 
 II-2, le fils, reçoit le chromosome Y de son père (donc rien de la maladie par cette voie) et un X de sa mère — forcément $X^{D}$, puisque sa mère n'en a pas d'autre à donner. II-2 est $X^{D}Y$, sain, et n'a strictement aucune chance d'avoir hérité de l'allèle daltonien de son père : c'est le Test B en action, avec des chiffres.
 
-**Et si on inversait l'observation ?** Imagine à présent que ce soit II-1 (la fille) qui soit atteinte, avec un père I-1 phénotypiquement sain. D'après le Test A, cette situation est **impossible** pour une transmission récessive liée à l'X — il faudrait alors chercher du côté d'une maladie autosomale récessive (les deux parents seraient hétérozygotes, exactement comme au R2).
+**Et si on inversait l'observation ?** Imagine à présent que ce soit II-1 (la fille) qui soit atteinte, avec un père I-1 phénotypiquement sain. D'après le Test A, cette situation est **impossible** pour une transmission récessive liée à l'X — il faudrait alors chercher du côté d'une maladie autosomale récessive (les deux parents seraient hétérozygotes, exactement comme au chapitre 3).
 
 ### Et le chromosome Y ?
 
@@ -154,7 +154,7 @@ Reviens à la question du tout début. Pour qu'une **femme** soit atteinte d'une
 
 ### Un échiquier adapté aux chromosomes sexuels
 
-L'échiquier de croisement du chapitre précédent s'utilise exactement de la même façon ici, à condition de traiter le chromosome sexuel comme n'importe quel autre gamète. Reprends la mère porteuse $X^{A}X^{a}$ et le père sain $X^{A}Y$ du R3 (la famille du daltonisme) :
+L'échiquier de croisement du chapitre précédent s'utilise exactement de la même façon ici, à condition de traiter le chromosome sexuel comme n'importe quel autre gamète. Reprends la mère porteuse $X^{A}X^{a}$ et le père sain $X^{A}Y$ du chapitre 4 (la famille du daltonisme) :
 
 | | Gamète $X^{A}$ ($\frac12$, père) | Gamète $Y$ ($\frac12$, père) |
 |--|--|--|
@@ -175,18 +175,18 @@ Une erreur fréquente : oublier que le père transmet SOIT son X SOIT son Y (jam
 
 ### Ce que tu as appris à distinguer : déduction certaine ou seulement probable
 
-Regarde en arrière : certaines déductions de cette leçon sont **certaines** (I-1 et I-2 forcément hétérozygotes au R2 ; II-1 forcément porteuse au R3, parce que son père hémizygote n'avait qu'un seul gamète possible). D'autres restent **seulement probables** (le génotype de II-2, sain, encore incertain depuis le R2). Avant de calculer quoi que ce soit, il faut toujours commencer par identifier dans laquelle des deux situations on se trouve — une probabilité ne se calcule que là où une vraie incertitude subsiste.
+Regarde en arrière : certaines déductions de cette leçon sont **certaines** (I-1 et I-2 forcément hétérozygotes au chapitre 3 ; II-1 forcément porteuse au chapitre 4, parce que son père hémizygote n'avait qu'un seul gamète possible). D'autres restent **seulement probables** (le génotype de II-2, sain, encore incertain depuis le chapitre 3). Avant de calculer quoi que ce soit, il faut toujours commencer par identifier dans laquelle des deux situations on se trouve — une probabilité ne se calcule que là où une vraie incertitude subsiste.
 
 ### La méthode, en quatre étapes
 
-1. **Récessif ou dominant ?** (R2) Un enfant atteint de deux parents sains impose récessif ; sinon, vérifier si le caractère saute des générations.
-2. **Autosomal ou lié à l'X ?** (R3) Chercher une fille atteinte dont le père est sain (exclut le lié à l'X récessif) ou une transmission observée d'un père atteint vers un fils (exclut le lié à l'X, quel que soit le mode de dominance).
+1. **Récessif ou dominant ?** (chapitre 3) Un enfant atteint de deux parents sains impose récessif ; sinon, vérifier si le caractère saute des générations.
+2. **Autosomal ou lié à l'X ?** (chapitre 4) Chercher une fille atteinte dont le père est sain (exclut le lié à l'X récessif) ou une transmission observée d'un père atteint vers un fils (exclut le lié à l'X, quel que soit le mode de dominance).
 3. **Attribuer les génotypes certains**, individu par individu, à partir du mode déduit.
 4. **Pour un individu dont le génotype reste incertain** (phénotype sain, mais parents connus hétérozygotes) : ne garder, parmi les cas de l'échiquier, que ceux compatibles avec le phénotype observé, puis **renormaliser** les proportions à l'intérieur de ce sous-ensemble.
 
 ### Cas d'étude : reprendre la famille du R1-R2, et calculer enfin le génotype de II-2
 
-Rappel du R2 : I-1 et I-2 sont $A//a$ ; II-1 (atteinte) est $a//a$ ; II-2 (sain) reste incertain. L'échiquier $A//a \times A//a$ donne, parmi TOUS les enfants possibles (atteints ou non) : $\frac14$ de $A//A$, $\frac24$ de $A//a$, $\frac14$ de $a//a$.
+Rappel du chapitre 3 : I-1 et I-2 sont $A//a$ ; II-1 (atteinte) est $a//a$ ; II-2 (sain) reste incertain. L'échiquier $A//a \times A//a$ donne, parmi TOUS les enfants possibles (atteints ou non) : $\frac14$ de $A//A$, $\frac24$ de $A//a$, $\frac14$ de $a//a$.
 
 Mais on sait déjà que II-2 est **sain** — cette information élimine d'emblée la possibilité $a//a$. Il ne reste que les deux cas compatibles avec « sain » : $A//A$ (proportion $\frac14$ dans l'échiquier complet) et $A//a$ (proportion $\frac24$). Ensemble, ces deux cas représentent $\frac14 + \frac24 = \frac34$ de tous les enfants possibles — c'est ce $\frac34$ qui devient le nouveau total de référence, puisqu'on sait que II-2 appartient à ce groupe-là et à aucun autre.
 
@@ -200,7 +200,7 @@ II-2 se marie à II-3, une femme saine non apparentée à la famille, dont on sa
 
 **Ce qu'on cherche ici, et pourquoi ce geste :** on ne connaît pas le génotype de II-2 avec certitude — il faut donc envisager les deux cas possibles pour lui (établis ci-dessus), calculer la probabilité que III-1 soit atteint DANS CHAQUE CAS, puis pondérer chaque résultat par la probabilité de ce cas. C'est la même logique de combinaison de probabilités indépendantes qu'au chapitre précédent, appliquée ici à une incertitude de départ plutôt qu'à un simple croisement.
 
-- **Si II-2 est $A//a$** (probabilité $\frac23$) : le croisement est $A//a \times A//a$, qui donne $\frac14$ d'enfants $a//a$ (atteints) — exactement l'échiquier du R2.
+- **Si II-2 est $A//a$** (probabilité $\frac23$) : le croisement est $A//a \times A//a$, qui donne $\frac14$ d'enfants $a//a$ (atteints) — exactement l'échiquier du chapitre 3.
 - **Si II-2 est $A//A$** (probabilité $\frac13$) : le croisement est $A//A \times A//a$ ; ce parent ne transmet que $A$, donc **aucun** enfant ne peut être $a//a$ — probabilité $0$.
 
 $$P(\text{III-1 atteint}) = P(\text{II-2}=A//a) \times P(a//a \mid Aa \times Aa) \;+\; P(\text{II-2}=A//A) \times P(a//a \mid AA \times Aa)$$
@@ -225,9 +225,9 @@ Détermine, avec justification, si II-1 peut être porteuse de l'allèle $h$, pu
 
 **Raisonnement à voix haute.**
 
-D'abord, le génotype de I-1 : atteint, hémophile, hémizygote — $X^{h}Y$. C'est un père hémizygote : il n'a qu'un seul type de gamète possible pour ce gène, $X^{h}$, et il le transmet à **toutes** ses filles, sans exception (c'est le Test A/B du R3, version certaine). II-1 reçoit donc, à coup sûr, un $X^{h}$ de son père.
+D'abord, le génotype de I-1 : atteint, hémophile, hémizygote — $X^{h}Y$. C'est un père hémizygote : il n'a qu'un seul type de gamète possible pour ce gène, $X^{h}$, et il le transmet à **toutes** ses filles, sans exception (c'est le Test A/B du chapitre 4, version certaine). II-1 reçoit donc, à coup sûr, un $X^{h}$ de son père.
 
-**Ce qu'on reconnaît ici :** l'autre X de II-1 vient de sa mère I-2, qu'on suppose non porteuse en l'absence d'indication contraire ($X^{H}X^{H}$) — une hypothèse standard quand rien dans l'énoncé ne suggère le contraire. II-1 reçoit donc $X^{H}$ de sa mère. Son génotype est donc $X^{H}X^{h}$ : phénotypiquement saine, mais **certainement porteuse** — pas une probabilité à calculer ici, une certitude, exactement comme au R3.
+**Ce qu'on reconnaît ici :** l'autre X de II-1 vient de sa mère I-2, qu'on suppose non porteuse en l'absence d'indication contraire ($X^{H}X^{H}$) — une hypothèse standard quand rien dans l'énoncé ne suggère le contraire. II-1 reçoit donc $X^{H}$ de sa mère. Son génotype est donc $X^{H}X^{h}$ : phénotypiquement saine, mais **certainement porteuse** — pas une probabilité à calculer ici, une certitude, exactement comme au chapitre 4.
 
 Pour la suite : II-2 (le mari), phénotypiquement sain et hémizygote, est nécessairement $X^{H}Y$ — pour un homme, contrairement à une femme, le phénotype révèle directement et sans ambiguïté le génotype pour ce gène (il n'y a que deux génotypes masculins possibles, et « sain » n'en désigne qu'un seul).
 
@@ -246,6 +246,6 @@ $$P(\text{III-1 atteint} \mid \text{c'est un fils}) = \frac{1/4}{1/4 + 1/4} = \f
 
 ### À toi de jouer
 
-**Prompt 1.** Un caractère héréditaire $M$ est porté par le chromosome Y. Un homme atteint de $M$ a deux fils et une fille. D'après la règle de transmission du chromosome Y (R3), quel phénotype attends-tu chez chacun de ces trois enfants pour le caractère $M$ ? Justifie chaque cas séparément.
+**Prompt 1.** Un caractère héréditaire $M$ est porté par le chromosome Y. Un homme atteint de $M$ a deux fils et une fille. D'après la règle de transmission du chromosome Y (chapitre 4), quel phénotype attends-tu chez chacun de ces trois enfants pour le caractère $M$ ? Justifie chaque cas séparément.
 
 **Prompt 2.** Chez l'être humain, la brachydactylie (des doigts anormalement courts) est due à un allèle $B$, autosomal et dominant sur l'allèle normal $b$. Un homme brachydactyle, hétérozygote ($B//b$), a des enfants avec une femme saine et non apparentée ($b//b$). Construis l'échiquier de croisement correspondant, et donne la probabilité qu'un enfant du couple soit brachydactyle.

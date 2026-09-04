@@ -24,13 +24,13 @@ Une hypothèse audacieuse ne suffit pas : Wegener l'appuie sur quatre familles d
 
 ### Argument 1 : la concordance des côtes
 
-Le puzzle du R0 n'est pas seulement une impression visuelle. Wegener — et plus tard les géologues qui ont raffiné son travail — ne se contentent pas de comparer le tracé des côtes actuelles (qui dépend de choses récentes comme le niveau de la mer) : ils comparent le bord du plateau continental, la vraie limite géologique entre un continent et le plancher océanique, située sous quelques centaines de mètres d'eau. Cette comparaison, plus rigoureuse, donne un ajustement encore meilleur entre l'Afrique et l'Amérique du Sud.
+Le puzzle du chapitre 1 n'est pas seulement une impression visuelle. Wegener — et plus tard les géologues qui ont raffiné son travail — ne se contentent pas de comparer le tracé des côtes actuelles (qui dépend de choses récentes comme le niveau de la mer) : ils comparent le bord du plateau continental, la vraie limite géologique entre un continent et le plancher océanique, située sous quelques centaines de mètres d'eau. Cette comparaison, plus rigoureuse, donne un ajustement encore meilleur entre l'Afrique et l'Amérique du Sud.
 
 Le raisonnement : un ajustement aussi précis, sur une frontière aussi longue et aussi irrégulière (des milliers de kilomètres de caps et de baies qui s'emboîtent), a une probabilité extrêmement faible d'être un pur hasard géométrique. Un tel ajustement s'explique beaucoup plus naturellement si les deux bords ont un jour été un seul et même bord, plus tard déchiré en deux.
 
 ### Argument 2 : l'argument paléontologique
 
-C'est l'argument du R0 : des fossiles identiques, d'espèces qui ne pouvaient matériellement pas franchir un océan, se retrouvent sur des continents aujourd'hui séparés par des milliers de kilomètres d'eau. *Mesosaurus*, le reptile d'eau douce, en est l'exemple le plus cité — trouvé uniquement au Brésil et en Afrique du Sud, nulle part ailleurs. On peut y ajouter *Glossopteris*, une fougère fossile dont les graines, trop lourdes, ne se dispersent pas par le vent sur de longues distances, et qu'on retrouve pourtant en Amérique du Sud, en Afrique, en Inde, en Australie ET en Antarctique. Et *Cynognathus*, un reptile terrestre incapable de nager, retrouvé à la fois en Amérique du Sud et en Afrique.
+C'est l'argument du chapitre 1 : des fossiles identiques, d'espèces qui ne pouvaient matériellement pas franchir un océan, se retrouvent sur des continents aujourd'hui séparés par des milliers de kilomètres d'eau. *Mesosaurus*, le reptile d'eau douce, en est l'exemple le plus cité — trouvé uniquement au Brésil et en Afrique du Sud, nulle part ailleurs. On peut y ajouter *Glossopteris*, une fougère fossile dont les graines, trop lourdes, ne se dispersent pas par le vent sur de longues distances, et qu'on retrouve pourtant en Amérique du Sud, en Afrique, en Inde, en Australie ET en Antarctique. Et *Cynognathus*, un reptile terrestre incapable de nager, retrouvé à la fois en Amérique du Sud et en Afrique.
 
 Le raisonnement est le même à chaque fois : si l'animal ou la plante ne pouvait pas franchir l'océan qui sépare aujourd'hui les deux continents, alors l'explication la plus simple n'est pas que l'espèce a traversé — c'est que l'océan n'existait pas encore, ou pas à cette largeur, au moment où l'espèce vivait sur ce territoire continu.
 
@@ -56,7 +56,7 @@ Ce qui fait la force du raisonnement de Wegener, ce n'est pas un seul de ces qua
 
 ## R2 — Pourquoi cette idée a d'abord été rejetée : l'absence de moteur
 
-Voici la question à te poser honnêtement avant de continuer : si les quatre arguments du R1 sont aussi solides, pourquoi l'hypothèse de Wegener a-t-elle été rejetée par la grande majorité des géologues de son époque, et pendant près de cinquante ans ?
+Voici la question à te poser honnêtement avant de continuer : si les quatre arguments du chapitre 2 sont aussi solides, pourquoi l'hypothèse de Wegener a-t-elle été rejetée par la grande majorité des géologues de son époque, et pendant près de cinquante ans ?
 
 Prends position : à ton avis, est-ce parce que les preuves de Wegener se sont révélées fausses, ou pour une autre raison ?
 
@@ -64,7 +64,7 @@ Beaucoup répondent spontanément que les preuves ont dû être invalidées — 
 
 ### Ce qui a réellement posé problème
 
-Les quatre arguments du R1 n'ont jamais été sérieusement contestés sur le fond : la concordance des côtes, les fossiles partagés, les structures géologiques alignées, les traces climatiques regroupées restent, aujourd'hui encore, citées comme des preuves valides de l'ancienne existence de la Pangée. Le problème n'était pas la qualité des preuves. Le problème, c'est qu'une observation — même solide — ne suffit pas en sciences : il faut aussi un **mécanisme physique plausible** qui explique comment le phénomène observé peut réellement se produire.
+Les quatre arguments du chapitre 2 n'ont jamais été sérieusement contestés sur le fond : la concordance des côtes, les fossiles partagés, les structures géologiques alignées, les traces climatiques regroupées restent, aujourd'hui encore, citées comme des preuves valides de l'ancienne existence de la Pangée. Le problème n'était pas la qualité des preuves. Le problème, c'est qu'une observation — même solide — ne suffit pas en sciences : il faut aussi un **mécanisme physique plausible** qui explique comment le phénomène observé peut réellement se produire.
 
 Or Wegener, qui n'était ni géophysicien ni spécialiste des forces internes de la Terre, a proposé que les continents « labouraient » littéralement le plancher océanique — comme des navires qui fendent l'eau — poussés par deux forces : la force centrifuge liée à la rotation de la Terre, et l'attraction gravitationnelle du Soleil et de la Lune (les mêmes forces qui créent les marées).
 
@@ -161,7 +161,7 @@ Il existe trois grandes familles de frontières de plaques, selon la façon dont
 
 ### Divergence : les dorsales, où le plancher s'accroît
 
-C'est le mécanisme du R3. Deux plaques s'écartent l'une de l'autre ; la matière chaude du manteau remonte pour combler l'espace ainsi ouvert, se solidifie, et crée de la nouvelle lithosphère océanique. On dit que la frontière est **divergente**, ou qu'il y a **accrétion** de plancher océanique. C'est le cas, par exemple, de la dorsale médio-atlantique, qui sépare la plaque sud-américaine de la plaque africaine — et qui explique, très concrètement, pourquoi l'Atlantique continue de s'élargir année après année.
+C'est le mécanisme du chapitre 4. Deux plaques s'écartent l'une de l'autre ; la matière chaude du manteau remonte pour combler l'espace ainsi ouvert, se solidifie, et crée de la nouvelle lithosphère océanique. On dit que la frontière est **divergente**, ou qu'il y a **accrétion** de plancher océanique. C'est le cas, par exemple, de la dorsale médio-atlantique, qui sépare la plaque sud-américaine de la plaque africaine — et qui explique, très concrètement, pourquoi l'Atlantique continue de s'élargir année après année.
 
 ### Convergence en subduction : quand une plaque plonge sous une autre
 
@@ -194,17 +194,17 @@ Enfin, deux plaques peuvent simplement glisser latéralement, l'une contre l'aut
 
 ## R6 — Les preuves modernes : séismes, volcans et mesures GPS
 
-Les arguments de Wegener (R1) et l'expansion océanique (R3) reconstituent l'histoire passée du globe. Mais la tectonique des plaques ne décrit pas seulement le passé : c'est un phénomène qui se produit **aujourd'hui, en ce moment même** — et deux types d'observations modernes le montrent directement, sans avoir besoin de remonter dans le temps.
+Les arguments de Wegener (chapitre 2) et l'expansion océanique (chapitre 4) reconstituent l'histoire passée du globe. Mais la tectonique des plaques ne décrit pas seulement le passé : c'est un phénomène qui se produit **aujourd'hui, en ce moment même** — et deux types d'observations modernes le montrent directement, sans avoir besoin de remonter dans le temps.
 
 ### La répartition des séismes et des volcans n'est pas aléatoire
 
-Si l'on place sur une carte du monde tous les épicentres des séismes enregistrés, et tous les volcans actifs de la planète, on n'obtient pas un nuage de points dispersé au hasard sur toute la surface du globe. On obtient des lignes fines, continues, qui dessinent précisément les frontières entre les plaques décrites au R5 — la fameuse « ceinture de feu » qui encercle l'océan Pacifique en est l'exemple le plus frappant, suivant exactement les zones de subduction du pourtour pacifique.
+Si l'on place sur une carte du monde tous les épicentres des séismes enregistrés, et tous les volcans actifs de la planète, on n'obtient pas un nuage de points dispersé au hasard sur toute la surface du globe. On obtient des lignes fines, continues, qui dessinent précisément les frontières entre les plaques décrites au chapitre 6 — la fameuse « ceinture de feu » qui encercle l'océan Pacifique en est l'exemple le plus frappant, suivant exactement les zones de subduction du pourtour pacifique.
 
 Le raisonnement : si les plaques n'étaient pas de vrais blocs rigides distincts, en mouvement relatif les uns par rapport aux autres, il n'y aurait aucune raison pour que l'activité sismique et volcanique se concentre ainsi le long de lignes aussi précises plutôt que de se répartir uniformément. Cette concentration exacte, sur des frontières identifiées à l'avance par d'autres méthodes (magnétisme, âge des roches), est une preuve directe que ces frontières sont des zones de déformation active, aujourd'hui.
 
 ### Les mesures GPS : le mouvement, mesuré en direct
 
-Depuis les années 1990, des réseaux de stations au sol équipées de récepteurs GPS de haute précision mesurent directement, année après année, la position de points fixes à la surface de différentes plaques. Ces mesures confirment, en temps réel, que les plaques se déplacent effectivement les unes par rapport aux autres, à des vitesses de l'ordre de quelques centimètres par an — un ordre de grandeur cohérent avec les vitesses d'expansion océanique déduites, au R3, de l'âge des roches et des sédiments.
+Depuis les années 1990, des réseaux de stations au sol équipées de récepteurs GPS de haute précision mesurent directement, année après année, la position de points fixes à la surface de différentes plaques. Ces mesures confirment, en temps réel, que les plaques se déplacent effectivement les unes par rapport aux autres, à des vitesses de l'ordre de quelques centimètres par an — un ordre de grandeur cohérent avec les vitesses d'expansion océanique déduites, au chapitre 4, de l'âge des roches et des sédiments.
 
 Le raisonnement ferme la boucle : les inférences indirectes du passé (âges radiométriques du plancher océanique, largeur des bandes magnétiques) et la mesure directe du présent (déplacement GPS mesuré cette année, comparé à l'an dernier) donnent des vitesses du même ordre de grandeur. Ce n'est pas seulement une théorie qui explique bien le passé géologique — c'est un phénomène qu'on peut mesurer, littéralement, en train de se produire.
 
@@ -214,25 +214,25 @@ Le raisonnement ferme la boucle : les inférences indirectes du passé (âges ra
 
 ## R7 — Le moteur : la convection mantellique
 
-Il reste une question ouverte depuis le R2 : Wegener n'avait pas de mécanisme crédible pour expliquer ce qui pousse les continents à se déplacer, et cette absence de moteur a coûté cinquante ans à son hypothèse. Maintenant qu'on sait que ce ne sont pas les continents seuls qui bougent, mais des plaques entières de lithosphère portées par le renouvellement du plancher océanique — quelle force fait bouger ces plaques ?
+Il reste une question ouverte depuis le chapitre 3 : Wegener n'avait pas de mécanisme crédible pour expliquer ce qui pousse les continents à se déplacer, et cette absence de moteur a coûté cinquante ans à son hypothèse. Maintenant qu'on sait que ce ne sont pas les continents seuls qui bougent, mais des plaques entières de lithosphère portées par le renouvellement du plancher océanique — quelle force fait bouger ces plaques ?
 
 ### Le manteau, chaud en profondeur, capable de flux lents
 
 La Terre garde, en profondeur, une chaleur considérable — héritée de sa formation, et entretenue par la désintégration d'éléments radioactifs contenus dans les roches. Cette chaleur ne reste pas immobile : dans le manteau, la matière la plus chaude et la plus profonde, moins dense, remonte lentement vers la surface, tandis que la matière plus froide et plus dense, près de la surface, redescend. Ce mouvement s'appelle la **convection**.
 
-C'est exactement le même principe physique qu'une casserole d'eau chauffée par en dessous, où des mouvements de convection se mettent en place spontanément — à ceci près que dans le manteau terrestre, la matière reste solide (une roche ductile, comme vu au R4, pas un liquide), et le mouvement est extraordinairement lent : quelques centimètres par an, à peu près la vitesse à laquelle poussent tes ongles.
+C'est exactement le même principe physique qu'une casserole d'eau chauffée par en dessous, où des mouvements de convection se mettent en place spontanément — à ceci près que dans le manteau terrestre, la matière reste solide (une roche ductile, comme vu au chapitre 5, pas un liquide), et le mouvement est extraordinairement lent : quelques centimètres par an, à peu près la vitesse à laquelle poussent tes ongles.
 
 ### Comment ce mouvement entraîne les plaques
 
-Cette circulation lente de matière ductile dans le manteau, sous la lithosphère rigide, est ce qui entraîne les plaques : là où la matière chaude remonte, elle pousse la lithosphère à s'écarter — c'est ce qui se produit au niveau des dorsales (R5). Là où la lithosphère océanique refroidie et alourdie plonge dans le manteau lors d'une subduction, son propre poids l'entraîne vers le bas et participe à tirer le reste de la plaque avec elle. Les plaques rigides sont ainsi transportées passivement, comme des blocs qui reposent sur un tapis roulant extraordinairement lent et puissant, mû par la chaleur interne du globe.
+Cette circulation lente de matière ductile dans le manteau, sous la lithosphère rigide, est ce qui entraîne les plaques : là où la matière chaude remonte, elle pousse la lithosphère à s'écarter — c'est ce qui se produit au niveau des dorsales (chapitre 6). Là où la lithosphère océanique refroidie et alourdie plonge dans le manteau lors d'une subduction, son propre poids l'entraîne vers le bas et participe à tirer le reste de la plaque avec elle. Les plaques rigides sont ainsi transportées passivement, comme des blocs qui reposent sur un tapis roulant extraordinairement lent et puissant, mû par la chaleur interne du globe.
 
 [[figure:convection-mantellique-moteur]]
 
-Voilà la réponse à la question laissée ouverte depuis le R2 : ce n'est ni la force centrifuge de la rotation terrestre, ni l'attraction des marées — les forces, bien trop faibles, que Wegener avait invoquées. C'est la convection du manteau, une force interne, continue, largement suffisante pour déplacer des masses rocheuses de plusieurs milliers de kilomètres sur des dizaines de millions d'années. La pièce manquante à l'époque de Wegener n'était donc pas une preuve supplémentaire de mouvement : c'était un moteur physiquement plausible — et ce moteur a fini par être identifié, des décennies plus tard, à l'intérieur même du manteau.
+Voilà la réponse à la question laissée ouverte depuis le chapitre 3 : ce n'est ni la force centrifuge de la rotation terrestre, ni l'attraction des marées — les forces, bien trop faibles, que Wegener avait invoquées. C'est la convection du manteau, une force interne, continue, largement suffisante pour déplacer des masses rocheuses de plusieurs milliers de kilomètres sur des dizaines de millions d'années. La pièce manquante à l'époque de Wegener n'était donc pas une preuve supplémentaire de mouvement : c'était un moteur physiquement plausible — et ce moteur a fini par être identifié, des décennies plus tard, à l'intérieur même du manteau.
 
 ### Fermeture de l'arc
 
-Repense au puzzle du R0 : le renflement du Brésil qui s'emboîte dans le golfe de Guinée, et *Mesosaurus* trouvé des deux côtés de l'Atlantique. Ce n'est ni un hasard, ni la preuve d'un pont de terre englouti. C'est la trace d'un seul continent, la Pangée, découpé il y a environ 200 millions d'années par le même moteur qui continue de fonctionner aujourd'hui : la convection mantellique, qui écarte la plaque sud-américaine de la plaque africaine à la dorsale médio-atlantique, centimètre par centimètre, chaque année — et que les mesures GPS actuelles peuvent désormais confirmer, en direct.
+Repense au puzzle du chapitre 1 : le renflement du Brésil qui s'emboîte dans le golfe de Guinée, et *Mesosaurus* trouvé des deux côtés de l'Atlantique. Ce n'est ni un hasard, ni la preuve d'un pont de terre englouti. C'est la trace d'un seul continent, la Pangée, découpé il y a environ 200 millions d'années par le même moteur qui continue de fonctionner aujourd'hui : la convection mantellique, qui écarte la plaque sud-américaine de la plaque africaine à la dorsale médio-atlantique, centimètre par centimètre, chaque année — et que les mesures GPS actuelles peuvent désormais confirmer, en direct.
 
 L'histoire complète, de la première idée à la théorie moderne, tient donc en une phrase : la dérive des continents de Wegener était une observation juste, mais incomplète, faute de moteur ; l'expansion océanique a révélé COMMENT le plancher se renouvelle ; la distinction lithosphère/asthénosphère a révélé CE QUI bouge réellement (des plaques rigides, pas seulement des continents) ; et la convection mantellique a enfin fourni le moteur qui manquait. C'est l'assemblage de ces quatre pièces qui constitue la théorie de la tectonique des plaques.
 
@@ -264,7 +264,7 @@ Ce qu'on cherche ici : reconnaître, dans un jeu de données concret, la signatu
 
 **2. La vitesse.** Sur le flanc ouest, on parcourt 300 km en 30 millions d'années. La vitesse est donc de 300 km divisée par 30 millions d'années, soit 10 km par million d'années. En convertissant : 10 km, c'est 1 000 000 cm ; un million d'années, c'est 1 000 000 d'années. La vitesse est donc de 1 000 000 cm / 1 000 000 ans = 1 cm par an, sur ce seul flanc.
 
-**3. Cohérence.** Cette valeur (1 cm/an sur un seul flanc, soit 2 cm/an d'écartement total entre les deux plaques) correspond à une dorsale lente, du type de la dorsale médio-atlantique. Elle se situe dans la fourchette des vitesses d'expansion océanique mesurées ailleurs dans le monde (de 1 à plus de 15 cm par an selon les dorsales) — c'est plausible. Ce qui compte surtout pour reconnaître la cohérence de l'ensemble, c'est que cette vitesse est du même ordre de grandeur que les vitesses mesurées directement par GPS sur des dorsales actives (R6) : deux méthodes indépendantes — l'une basée sur l'âge des roches, l'autre sur une mesure satellite en temps réel — s'accordent.
+**3. Cohérence.** Cette valeur (1 cm/an sur un seul flanc, soit 2 cm/an d'écartement total entre les deux plaques) correspond à une dorsale lente, du type de la dorsale médio-atlantique. Elle se situe dans la fourchette des vitesses d'expansion océanique mesurées ailleurs dans le monde (de 1 à plus de 15 cm par an selon les dorsales) — c'est plausible. Ce qui compte surtout pour reconnaître la cohérence de l'ensemble, c'est que cette vitesse est du même ordre de grandeur que les vitesses mesurées directement par GPS sur des dorsales actives (chapitre 7) : deux méthodes indépendantes — l'une basée sur l'âge des roches, l'autre sur une mesure satellite en temps réel — s'accordent.
 
 **4. Pourquoi c'est une preuve d'expansion, et pas seulement de sédimentation différentielle.** Ici, on ne parle pas de l'épaisseur de sédiments accumulés au-dessus du basalte, mais de l'âge du basalte lui-même, daté par radiométrie — une méthode qui donne l'âge de solidification de la roche volcanique, indépendamment de tout ce qui s'est déposé par-dessus ensuite. Si le plancher océanique était une surface fixe et ancienne, tout le basalte échantillonné aurait sensiblement le même âge, quel que soit l'endroit où on le prélève. Ce n'est pas ce qu'on observe : l'âge croît régulièrement et symétriquement avec la distance à l'axe. La seule explication cohérente est que la roche elle-même s'est formée à des moments différents — plus récemment près de l'axe, plus anciennement loin de l'axe — ce qui est exactement la définition de l'expansion océanique continue.
 

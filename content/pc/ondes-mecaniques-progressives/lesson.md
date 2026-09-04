@@ -160,7 +160,7 @@ C'est exactement la même relation que $v = d/\Delta t$, lue dans l'autre sens :
 
 Voici le résultat central de cette leçon. Note $y_S(t)$ l'élongation (le déplacement par rapport à la position de repos) de la source $S$ à l'instant $t$, et $y_M(t)$ celle d'un point $M$ situé à la distance $d$ de $S$.
 
-D'après le mécanisme de propagation de proche en proche (R1), chaque point du milieu ne fait que **relayer**, sans le déformer, ce que son voisin vient de faire, un court instant plus tard. Sur toute la distance $d$ qui sépare $S$ de $M$, cette relève se répète, point après point, et le délai total accumulé est précisément le retard $\tau = d/v$. Autrement dit : $M$ reproduit fidèlement, à chaque instant, ce que $S$ a fait $\tau$ plus tôt — ni plus tôt, ni déformé, seulement plus tard.
+D'après le mécanisme de propagation de proche en proche (chapitre 2), chaque point du milieu ne fait que **relayer**, sans le déformer, ce que son voisin vient de faire, un court instant plus tard. Sur toute la distance $d$ qui sépare $S$ de $M$, cette relève se répète, point après point, et le délai total accumulé est précisément le retard $\tau = d/v$. Autrement dit : $M$ reproduit fidèlement, à chaque instant, ce que $S$ a fait $\tau$ plus tôt — ni plus tôt, ni déformé, seulement plus tard.
 
 Formalisons. Si $S$ a effectué un mouvement particulier à un instant $t'$, ce même mouvement apparaît en $M$ à l'instant $t = t' + \tau$. On veut l'élongation de $M$ en fonction de $t$ : on isole $t'$.
 
@@ -212,21 +212,21 @@ L'ensemble des points atteints par la perturbation au même instant s'appelle le
 
 [[figure:front-onde-dimensions]]
 
-Rien de nouveau dans le mécanisme : c'est toujours la même propagation de proche en proche (R1) — seule la géométrie du milieu change le nombre de directions disponibles autour de la source.
+Rien de nouveau dans le mécanisme : c'est toujours la même propagation de proche en proche (chapitre 2) — seule la géométrie du milieu change le nombre de directions disponibles autour de la source.
 
 ### L'onde sonore
 
 Le son est une onde mécanique — elle a donc besoin d'un milieu matériel, et ne se propage pas dans le vide. Elle se propage dans l'air, mais tout aussi bien dans l'eau ou dans un solide, avec une célérité qui dépend du milieu traversé (elle est par exemple plus grande dans l'eau ou dans un solide que dans l'air, ces milieux étant plus « rigides » vis-à-vis de la compression).
 
-Le son est une onde **longitudinale** : sa propagation se fait par des compressions et des dilatations successives de l'air, dans la même direction que celle où le son avance — exactement le mécanisme du ressort étudié en R2, mais appliqué aux couches d'air plutôt qu'aux spires.
+Le son est une onde **longitudinale** : sa propagation se fait par des compressions et des dilatations successives de l'air, dans la même direction que celle où le son avance — exactement le mécanisme du ressort étudié au chapitre 3, mais appliqué aux couches d'air plutôt qu'aux spires.
 
 Dans l'air, dans les conditions ordinaires, la célérité du son vaut environ $340\ \text{m/s}$ — une valeur qu'on mesure expérimentalement, avec exactement la même méthode que celle utilisée pour une onde sur une corde.
 
 ### Mesurer une célérité avec deux microphones
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on applique la méthode de R3 (mesurer un retard entre deux points séparés d'une distance connue, en déduire $v = d/\tau$), transposée ici du fil d'une corde à l'air ambiant.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on applique la méthode du chapitre 4 (mesurer un retard entre deux points séparés d'une distance connue, en déduire $v = d/\tau$), transposée ici du fil d'une corde à l'air ambiant.
 
-On place deux microphones $M_1$ et $M_2$, alignés avec une source sonore, séparés d'une distance $d = 1{,}02\ \text{m}$. Chaque microphone est relié à une voie d'un oscilloscope à deux voies. La source émet un bref signal (un clic). Sur l'écran, les deux signaux apparaissent décalés d'une durée $\Delta t = 3{,}0\ \text{ms}$ : c'est le retard entre les deux microphones, exactement comme le retard $\tau$ entre $S$ et $M$ en R3.
+On place deux microphones $M_1$ et $M_2$, alignés avec une source sonore, séparés d'une distance $d = 1{,}02\ \text{m}$. Chaque microphone est relié à une voie d'un oscilloscope à deux voies. La source émet un bref signal (un clic). Sur l'écran, les deux signaux apparaissent décalés d'une durée $\Delta t = 3{,}0\ \text{ms}$ : c'est le retard entre les deux microphones, exactement comme le retard $\tau$ entre $S$ et $M$ au chapitre 4.
 
 $$v = \frac{d}{\Delta t} = \frac{1{,}02}{3{,}0\times10^{-3}} = 340\ \text{m/s}$$
 

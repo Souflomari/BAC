@@ -92,7 +92,7 @@ Un **catalyseur** est une espèce chimique qui **accélère** une réaction sans
 Le programme lui reconnaît deux rôles, qu'il faut savoir nommer :
 
 - un rôle **accélérateur** : il augmente la vitesse de la réaction ;
-- un rôle **sélectif** : lorsque plusieurs réactions concurrentes sont possibles à partir des mêmes réactifs, un catalyseur donné peut n'en accélérer qu'une seule, et orienter ainsi le système vers le produit voulu plutôt qu'un autre. (Les enzymes, qu'on verra au rung suivant, poussent cette sélectivité à l'extrême.)
+- un rôle **sélectif** : lorsque plusieurs réactions concurrentes sont possibles à partir des mêmes réactifs, un catalyseur donné peut n'en accélérer qu'une seule, et orienter ainsi le système vers le produit voulu plutôt qu'un autre. (Les enzymes, qu'on verra au chapitre suivant, poussent cette sélectivité à l'extrême.)
 
 Le catalyseur rejoint ainsi les autres **facteurs cinétiques** déjà rencontrés — la température et la concentration des réactifs : tous des leviers qui agissent sur la **vitesse** d'une transformation, jamais sur son état final.
 
@@ -130,7 +130,7 @@ Retiens la formule qui résume tout : un catalyseur qui n'accélérerait qu'un s
 
 ### Teste l'idée avant de la croire : « un catalyseur améliore le rendement »
 
-Reprends le parfumeur du R0, resté sur la voie de l'acide (lente, limitée à $\tau \approx 2/3$). Il se dit : « je vais ajouter plus de catalyseur acide, ça poussera la réaction plus loin. » Faux — et tu sais maintenant l'argumenter. Le catalyseur accélère l'estérification et l'hydrolyse dans les mêmes proportions ; le rapport de leurs vitesses ne bouge pas, donc l'équilibre se rétablit au même $\tau \approx 2/3$, simplement atteint plus vite. Pour dépasser les deux tiers, il lui faut un autre type de levier : soit déplacer l'équilibre (excès d'un réactif, élimination d'un produit — chapitre précédent), soit changer de réactif (l'anhydride — rung R1). Le catalyseur, lui, ne fait gagner que du temps.
+Reprends le parfumeur du chapitre 1, resté sur la voie de l'acide (lente, limitée à $\tau \approx 2/3$). Il se dit : « je vais ajouter plus de catalyseur acide, ça poussera la réaction plus loin. » Faux — et tu sais maintenant l'argumenter. Le catalyseur accélère l'estérification et l'hydrolyse dans les mêmes proportions ; le rapport de leurs vitesses ne bouge pas, donc l'équilibre se rétablit au même $\tau \approx 2/3$, simplement atteint plus vite. Pour dépasser les deux tiers, il lui faut un autre type de levier : soit déplacer l'équilibre (excès d'un réactif, élimination d'un produit — chapitre précédent), soit changer de réactif (l'anhydride — chapitre 2). Le catalyseur, lui, ne fait gagner que du temps.
 
 [[checkpoint:cp-r2-catalyseur-equilibre]]
 
@@ -162,7 +162,7 @@ Une confusion à éviter : un catalyseur n'est pas hétérogène simplement parc
 
 Une **enzyme** est un catalyseur biologique, une protéine produite par les cellules vivantes. Elle agit comme tout catalyseur : elle accélère une réaction chimique précise sans jamais en changer l'état final, et elle en ressort intacte. Ce qui la distingue des catalyseurs chimiques usuels, c'est son extrême **spécificité** : une enzyme donnée ne catalyse en général qu'une seule réaction, sur un seul type de molécule (son substrat), grâce à une forme géométrique qui s'ajuste précisément à cette molécule — une clé qui n'ouvre qu'une seule serrure. C'est la sélectivité poussée à son comble. Elle permet à des milliers de réactions différentes de se dérouler côte à côte, sans se gêner, dans une seule cellule vivante, chacune pilotée par son enzyme propre, à une température de l'ordre de $37\,^\circ\text{C}$ — là où un catalyseur chimique industriel exige souvent des conditions bien plus dures (haute température, haute pression) pour un résultat comparable.
 
-Exemple concret : l'amylase salivaire catalyse l'hydrolyse de l'amidon, une grosse molécule, en molécules de sucre bien plus petites — une réaction d'hydrolyse, de la même famille que celle qu'on va rencontrer pour les esters au rung suivant, mais ici accélérée par une enzyme plutôt que par un acide ou une base.
+Exemple concret : l'amylase salivaire catalyse l'hydrolyse de l'amidon, une grosse molécule, en molécules de sucre bien plus petites — une réaction d'hydrolyse, de la même famille que celle qu'on va rencontrer pour les esters au chapitre suivant, mais ici accélérée par une enzyme plutôt que par un acide ou une base.
 
 [[figure:trois-catalyses]]
 

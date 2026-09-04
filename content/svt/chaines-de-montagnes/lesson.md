@@ -57,11 +57,11 @@ Retiens ces deux signatures : une chaîne de subduction porte un **volcanisme ac
 
 ## R2 — La chaîne de collision : quand aucune des deux plaques ne peut plonger (l'Himalaya)
 
-Si tu as répondu « oui » à la question posée à la fin du R1 — que l'Himalaya devrait ressembler aux Andes, puisque les deux naissent d'une convergence de plaques — c'est une prédiction logique. Elle est fausse. Et comprendre pourquoi elle est fausse est la clé de toute cette leçon.
+Si tu as répondu « oui » à la question posée à la fin du chapitre 2 — que l'Himalaya devrait ressembler aux Andes, puisque les deux naissent d'une convergence de plaques — c'est une prédiction logique. Elle est fausse. Et comprendre pourquoi elle est fausse est la clé de toute cette leçon.
 
 ### L'histoire, avant la collision
 
-Il y a plus de 100 millions d'années, l'Inde et l'Asie n'étaient pas voisines : un océan les séparait, la Téthys. Sur la bordure sud de l'Asie, exactement le mécanisme du R1 était à l'œuvre : la lithosphère océanique de la Téthys plongeait sous la plaque asiatique, produisant une marge active de type andin, avec sa fosse et sa chaîne de volcans.
+Il y a plus de 100 millions d'années, l'Inde et l'Asie n'étaient pas voisines : un océan les séparait, la Téthys. Sur la bordure sud de l'Asie, exactement le mécanisme du chapitre 2 était à l'œuvre : la lithosphère océanique de la Téthys plongeait sous la plaque asiatique, produisant une marge active de type andin, avec sa fosse et sa chaîne de volcans.
 
 Mais une plaque océanique qui plonge est aussi une plaque océanique qui se **détruit** : à chaque kilomètre englouti dans le manteau, l'océan qui sépare l'Inde de l'Asie devient un peu plus étroit. Le mécanisme même qui construit une chaîne de type andin est, en même temps, en train de refermer l'océan qui l'alimente.
 
@@ -79,7 +79,7 @@ C'est cet épaississement, et non un simple soulèvement local, qui explique l'a
 
 ### Confronter la prédiction
 
-Revenons à la question posée à la fin du R1. Une fois que la subduction s'est arrêtée — parce qu'aucune des deux plaques continentales ne peut plonger — deux conséquences directes s'ensuivent, et elles vont exactement à l'inverse de ce qu'on observe dans une chaîne de subduction :
+Revenons à la question posée à la fin du chapitre 2. Une fois que la subduction s'est arrêtée — parce qu'aucune des deux plaques continentales ne peut plonger — deux conséquences directes s'ensuivent, et elles vont exactement à l'inverse de ce qu'on observe dans une chaîne de subduction :
 
 - **Pas de plaque plongeante en profondeur, donc pas de foyers sismiques profonds.** Les séismes de l'Himalaya restent concentrés dans les premières dizaines de kilomètres, liés aux failles actives qui continuent d'empiler la croûte — mais aucun plan de séismes profonds comme dans les Andes, puisqu'il n'y a plus de plaque rigide en train de s'enfoncer sur des centaines de kilomètres.
 - **Pas de plaque plongeante libérant de l'eau, donc pas de fusion partielle du manteau, donc pas de volcanisme actif.** Le mécanisme qui produisait l'andésite dans les Andes reposait entièrement sur l'eau relâchée par une plaque océanique en train de plonger ; une fois cette plaque disparue, plus rien ne déclenche la fusion, et l'Himalaya, malgré son altitude spectaculaire, ne porte aucun volcan actif.
@@ -144,7 +144,7 @@ Voici pourquoi cette structure est une preuve à elle seule, indépendamment des
 
 Un piège fréquent consiste à regarder des couches plissées ou un chevauchement spectaculaire dans une paroi rocheuse et à n'y voir qu'une curiosité de paysage, sans lien avec un mécanisme précis. C'est passer à côté de l'essentiel.
 
-Teste ça sur un exemple simple. Imagine une couche de roche qui, avant d'être plissée, mesurait 100 kilomètres de long, posée bien à plat. Une fois plissée en une série de vagues successives, cette même couche — toujours longue de 100 kilomètres si on la « dépliait » — n'occupe plus, mesurée à l'horizontale d'un bout à l'autre de la chaîne, que 60 ou 70 kilomètres. La matière n'a pas disparu : le même volume de roche occupe désormais moins d'espace horizontal, et donc davantage d'espace vertical. C'est très exactement ce raccourcissement horizontal, compensé par un épaississement vertical, qu'on a rencontré au R2 en expliquant pourquoi la croûte continentale double d'épaisseur lors d'une collision.
+Teste ça sur un exemple simple. Imagine une couche de roche qui, avant d'être plissée, mesurait 100 kilomètres de long, posée bien à plat. Une fois plissée en une série de vagues successives, cette même couche — toujours longue de 100 kilomètres si on la « dépliait » — n'occupe plus, mesurée à l'horizontale d'un bout à l'autre de la chaîne, que 60 ou 70 kilomètres. La matière n'a pas disparu : le même volume de roche occupe désormais moins d'espace horizontal, et donc davantage d'espace vertical. C'est très exactement ce raccourcissement horizontal, compensé par un épaississement vertical, qu'on a rencontré au chapitre 3 en expliquant pourquoi la croûte continentale double d'épaisseur lors d'une collision.
 
 Un chevauchement fait exactement la même chose, mais en empilant des blocs entiers plutôt qu'en courbant des couches continues : chaque chevauchement réduit la distance horizontale occupée par la croûte, et ajoute d'autant à son épaisseur, puisqu'un bloc entier vient désormais se superposer à un autre au même endroit.
 
@@ -160,7 +160,7 @@ Troisième indice, indépendant des deux premiers. Certaines roches qu'on trouve
 
 ### Ce qu'est le métamorphisme
 
-Quand une roche — sédimentaire, ou même un fragment d'ancienne croûte océanique — se retrouve enfouie profondément, à plusieurs dizaines de kilomètres sous la surface, conséquence directe de l'empilement décrit au R4, elle subit des pressions et des températures considérables, sans pour autant fondre. Sous ces conditions, les minéraux qui la composent se réorganisent : ils se recristallisent en de nouvelles structures minérales, stables uniquement à ces pressions et températures élevées, produisant souvent une roche à l'aspect feuilleté ou finement rubané (le schiste, le gneiss). Cette transformation à l'état solide, sans fusion, s'appelle le **métamorphisme** ; la roche qui en résulte est une **roche métamorphique**.
+Quand une roche — sédimentaire, ou même un fragment d'ancienne croûte océanique — se retrouve enfouie profondément, à plusieurs dizaines de kilomètres sous la surface, conséquence directe de l'empilement décrit au chapitre 5, elle subit des pressions et des températures considérables, sans pour autant fondre. Sous ces conditions, les minéraux qui la composent se réorganisent : ils se recristallisent en de nouvelles structures minérales, stables uniquement à ces pressions et températures élevées, produisant souvent une roche à l'aspect feuilleté ou finement rubané (le schiste, le gneiss). Cette transformation à l'état solide, sans fusion, s'appelle le **métamorphisme** ; la roche qui en résulte est une **roche métamorphique**.
 
 Le raisonnement clé, c'est que la nature précise des minéraux formés dépend directement des conditions de pression et de température subies : en identifiant l'assemblage minéral d'un échantillon de roche métamorphique, on peut remonter, avec une bonne précision, à la profondeur approximative à laquelle cette roche a été enfouie.
 
@@ -172,7 +172,7 @@ Si le métamorphisme exige un enfouissement à plusieurs dizaines de kilomètres
 
 ### Ce que ça établit
 
-Trouver une roche métamorphique exposée au sommet d'une chaîne de collision n'est donc pas anodin : c'est la preuve directe que cette portion de croûte a connu un enfouissement profond — la conséquence physique de l'épaississement décrit au R2 et au R4 — suivi d'une remontée vers la surface, portée par le soulèvement tectonique et révélée par l'érosion. Une roche qui n'aurait jamais été enfouie profondément ne pourrait tout simplement pas porter cette signature minérale : elle resterait de la roche sédimentaire ordinaire, non transformée.
+Trouver une roche métamorphique exposée au sommet d'une chaîne de collision n'est donc pas anodin : c'est la preuve directe que cette portion de croûte a connu un enfouissement profond — la conséquence physique de l'épaississement décrit au chapitre 3 et au chapitre 5 — suivi d'une remontée vers la surface, portée par le soulèvement tectonique et révélée par l'érosion. Une roche qui n'aurait jamais été enfouie profondément ne pourrait tout simplement pas porter cette signature minérale : elle resterait de la roche sédimentaire ordinaire, non transformée.
 
 ---
 
@@ -180,26 +180,26 @@ Trouver une roche métamorphique exposée au sommet d'une chaîne de collision n
 
 ### La suture : un mot qui dit exactement ce qu'il désigne
 
-Dans une chaîne de collision, tous les indices qu'on vient de rassembler — les ophiolites (R3), les zones de plis et de chevauchements les plus intenses (R4), les roches métamorphiques ayant subi l'enfouissement le plus profond (R5) — ne sont pas dispersés au hasard sur toute la largeur de la chaîne. Ils se concentrent le long d'une bande étroite et précise : la ligne exacte où les deux marges continentales sont entrées en contact final, une fois l'océan totalement refermé. On appelle cette ligne la **suture**.
+Dans une chaîne de collision, tous les indices qu'on vient de rassembler — les ophiolites (chapitre 4), les zones de plis et de chevauchements les plus intenses (chapitre 5), les roches métamorphiques ayant subi l'enfouissement le plus profond (chapitre 6) — ne sont pas dispersés au hasard sur toute la largeur de la chaîne. Ils se concentrent le long d'une bande étroite et précise : la ligne exacte où les deux marges continentales sont entrées en contact final, une fois l'océan totalement refermé. On appelle cette ligne la **suture**.
 
 Le mot n'est pas choisi au hasard : une suture, au sens médical, est le point de couture qui referme et cicatrise une plaie en joignant deux bords qui étaient séparés. Une suture géologique fait exactement la même chose, à l'échelle d'un continent : c'est la cicatrice qui marque, dans la roche, l'endroit précis où deux blocs autrefois séparés par un océan se sont définitivement rejoints. Dans l'Himalaya, cette suture porte un nom, la suture de l'Indus-Tsangpo, et elle sépare, de part et d'autre, des roches d'affinité indienne des roches d'affinité asiatique.
 
 ### Reconstituer le passé à partir du présent
 
-Il reste une dernière question, qui traverse toute cette leçon depuis le R0 : comment un géologue, face à une chaîne de montagnes aujourd'hui, reconstitue-t-il toute cette histoire — océan, subduction, fermeture, collision — alors qu'il ne peut observer que ce qui existe maintenant ?
+Il reste une dernière question, qui traverse toute cette leçon depuis le chapitre 1 : comment un géologue, face à une chaîne de montagnes aujourd'hui, reconstitue-t-il toute cette histoire — océan, subduction, fermeture, collision — alors qu'il ne peut observer que ce qui existe maintenant ?
 
 Le raisonnement suit exactement la même logique que celui de Wegener face à ses continents et ses fossiles : on part des indices présents, et on remonte, étape par étape, vers la seule histoire passée capable de produire, aujourd'hui, cet ensemble précis d'indices.
 
-- **Trouver des ophiolites** (R3) permet de conclure qu'un domaine océanique a existé à cet endroit, avant de disparaître.
-- **Mesurer le sens et l'ampleur des plis et des chevauchements** (R4) permet de quantifier le raccourcissement subi par la croûte, et donc l'intensité de la convergence qui a suivi la fermeture de cet océan.
-- **Analyser l'assemblage minéral des roches métamorphiques** (R5) permet d'estimer la profondeur d'enfouissement atteinte, et donc l'ampleur de l'épaississement crustal.
+- **Trouver des ophiolites** (chapitre 4) permet de conclure qu'un domaine océanique a existé à cet endroit, avant de disparaître.
+- **Mesurer le sens et l'ampleur des plis et des chevauchements** (chapitre 5) permet de quantifier le raccourcissement subi par la croûte, et donc l'intensité de la convergence qui a suivi la fermeture de cet océan.
+- **Analyser l'assemblage minéral des roches métamorphiques** (chapitre 6) permet d'estimer la profondeur d'enfouissement atteinte, et donc l'ampleur de l'épaississement crustal.
 - **Localiser la suture** — la bande où ces trois indices se concentrent le plus — permet d'identifier précisément où les deux marges continentales se sont rejointes.
 
-Assemblés, ces quatre indices racontent une seule histoire cohérente, dans l'ordre où elle s'est vraiment déroulée : un océan s'ouvre entre deux continents ; sa lithosphère se détruit progressivement par subduction le long d'une marge active (R1), ce qui referme l'océan ; l'océan finit par disparaître entièrement, et les deux marges continentales entrent en collision (R2) ; la croûte, ne pouvant plus plonger, se raccourcit et s'épaissit par plis et chevauchements (R4), enfouissant profondément certaines de ses roches (R5) ; enfin, le soulèvement et l'érosion exhument ces roches et les ramènent à la surface, où on les observe aujourd'hui.
+Assemblés, ces quatre indices racontent une seule histoire cohérente, dans l'ordre où elle s'est vraiment déroulée : un océan s'ouvre entre deux continents ; sa lithosphère se détruit progressivement par subduction le long d'une marge active (chapitre 2), ce qui referme l'océan ; l'océan finit par disparaître entièrement, et les deux marges continentales entrent en collision (chapitre 3) ; la croûte, ne pouvant plus plonger, se raccourcit et s'épaissit par plis et chevauchements (chapitre 5), enfouissant profondément certaines de ses roches (chapitre 6) ; enfin, le soulèvement et l'érosion exhument ces roches et les ramènent à la surface, où on les observe aujourd'hui.
 
 ### Fermeture de l'arc
 
-Reviens à l'Everest du R0. Le calcaire à fossiles marins qui forme son sommet ne s'explique ni par une mer autrefois plus haute, ni par un miracle isolé : c'est un fragment de l'ancienne marge continentale indienne, formé près du niveau de la mer il y a des dizaines de millions d'années, qui s'est retrouvé pris dans la collision entre l'Inde et l'Asie, épaissi, empilé, parfois enfoui, puis progressivement soulevé et mis à nu par l'érosion — porté, centimètre par centimètre, jusqu'à 8 849 mètres d'altitude, par le même mécanisme de collision qui a fabriqué toute la chaîne himalayenne. Ce n'est pas la mer qui est montée jusqu'au sommet du monde. C'est un morceau de marge continentale, ancien fond marin compris, qui a été soulevé jusque-là par la tectonique.
+Reviens à l'Everest du chapitre 1. Le calcaire à fossiles marins qui forme son sommet ne s'explique ni par une mer autrefois plus haute, ni par un miracle isolé : c'est un fragment de l'ancienne marge continentale indienne, formé près du niveau de la mer il y a des dizaines de millions d'années, qui s'est retrouvé pris dans la collision entre l'Inde et l'Asie, épaissi, empilé, parfois enfoui, puis progressivement soulevé et mis à nu par l'érosion — porté, centimètre par centimètre, jusqu'à 8 849 mètres d'altitude, par le même mécanisme de collision qui a fabriqué toute la chaîne himalayenne. Ce n'est pas la mer qui est montée jusqu'au sommet du monde. C'est un morceau de marge continentale, ancien fond marin compris, qui a été soulevé jusque-là par la tectonique.
 
 ---
 
@@ -222,9 +222,9 @@ Reviens à l'Everest du R0. Le calcaire à fossiles marins qui forme son sommet 
 
 **Raisonnement.**
 
-Ce qu'on cherche ici : ne pas se contenter de reconnaître une observation isolée, mais montrer que les quatre indices, indépendamment les uns des autres, pointent tous vers la même conclusion — exactement la démarche du R6.
+Ce qu'on cherche ici : ne pas se contenter de reconnaître une observation isolée, mais montrer que les quatre indices, indépendamment les uns des autres, pointent tous vers la même conclusion — exactement la démarche du chapitre 7.
 
-**1. Type de chaîne.** Il s'agit d'une chaîne de collision. Chacune des quatre observations, prise séparément, écarte l'hypothèse d'une chaîne de subduction encore active : un fragment de lithosphère océanique préservé (et non une plaque océanique en train de plonger), un raccourcissement de la croûte marqué par des plis et un chevauchement, un enfouissement profond suivi d'une exhumation, et l'absence totale de volcanisme et de sismicité profonde — qui seraient au contraire les signatures attendues d'une subduction active (R1).
+**1. Type de chaîne.** Il s'agit d'une chaîne de collision. Chacune des quatre observations, prise séparément, écarte l'hypothèse d'une chaîne de subduction encore active : un fragment de lithosphère océanique préservé (et non une plaque océanique en train de plonger), un raccourcissement de la croûte marqué par des plis et un chevauchement, un enfouissement profond suivi d'une exhumation, et l'absence totale de volcanisme et de sismicité profonde — qui seraient au contraire les signatures attendues d'une subduction active (chapitre 2).
 
 **2. La structure du premier point.** C'est une ophiolite — un fragment de lithosphère océanique (croûte + manteau supérieur) préservé lors de la fermeture d'un océan, plutôt qu'englouti par subduction. Elle ne peut pas être une variété de croûte continentale parce que sa composition (basalte en coussins, gabbro, péridotite) correspond exactement à la structure verticale connue de la lithosphère océanique, chimiquement et minéralogiquement distincte du granite continental qui l'entoure ; et parce que les basaltes en coussins, en particulier, ne se forment que par refroidissement rapide d'une lave au contact de l'eau, ce qui exclut une origine continentale.
 
@@ -232,7 +232,7 @@ Ce qu'on cherche ici : ne pas se contenter de reconnaître une observation isol�
 
 **4. Le gneiss remonté en altitude.** Sa formation à 30 kilomètres de profondeur montre que la croûte à cet endroit a été fortement épaissie et enfouie, conséquence de l'empilement décrit à la question précédente. Sa présence aujourd'hui à 4 000 mètres d'altitude montre qu'elle a ensuite été exhumée : ramenée vers la surface par la poursuite du soulèvement tectonique, combinée à l'érosion qui a progressivement décapé les roches qui la recouvraient.
 
-**5. Absence de volcanisme et de séismes profonds.** Ces deux absences sont, à elles seules, des arguments contre une chaîne de subduction active : le volcanisme andésitique et les séismes de plus en plus profonds vers l'intérieur du continent exigent tous les deux qu'une plaque océanique rigide soit encore en train de plonger dans le manteau (R1). Aucune de ces deux signatures n'apparaît ici — ce qui est exactement ce qu'on attend une fois que la subduction s'est arrêtée, faute de plaque océanique restante à engloutir, comme au R2.
+**5. Absence de volcanisme et de séismes profonds.** Ces deux absences sont, à elles seules, des arguments contre une chaîne de subduction active : le volcanisme andésitique et les séismes de plus en plus profonds vers l'intérieur du continent exigent tous les deux qu'une plaque océanique rigide soit encore en train de plonger dans le manteau (chapitre 2). Aucune de ces deux signatures n'apparaît ici — ce qui est exactement ce qu'on attend une fois que la subduction s'est arrêtée, faute de plaque océanique restante à engloutir, comme au chapitre 3.
 
 ### À toi de jouer
 

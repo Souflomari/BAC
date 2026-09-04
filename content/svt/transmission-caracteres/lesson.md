@@ -56,7 +56,7 @@ Un individu qui porte deux allèles **identiques** pour un gène ($G//G$ ou $g//
 
 ### L'erreur classique à éviter ici
 
-Regarde bien la souris 1 et la souris 2 dans le tableau : **même phénotype, génotypes différents**. Une souris grise n'est donc pas forcément « pure » pour le gris — elle peut très bien porter, sans le montrer, un allèle blanc caché. C'est exactement le mécanisme qui explique le mystère du R0 : un parent gris peut être hétérozygote ($G//g$) et transmettre, sans le savoir, l'allèle $g$ à sa descendance. On ne peut jamais déduire le génotype d'un individu à partir de son seul phénotype, dès que l'un des deux allèles est récessif — on y reviendra précisément en R5.
+Regarde bien la souris 1 et la souris 2 dans le tableau : **même phénotype, génotypes différents**. Une souris grise n'est donc pas forcément « pure » pour le gris — elle peut très bien porter, sans le montrer, un allèle blanc caché. C'est exactement le mécanisme qui explique le mystère du chapitre 1 : un parent gris peut être hétérozygote ($G//g$) et transmettre, sans le savoir, l'allèle $g$ à sa descendance. On ne peut jamais déduire le génotype d'un individu à partir de son seul phénotype, dès que l'un des deux allèles est récessif — on y reviendra précisément au chapitre 6.
 
 ---
 
@@ -84,7 +84,7 @@ Une seule case : tous les œufs fécondés reçoivent un $G$ du parent gris et u
 
 **Ce que fait ce résultat :** en croisant deux lignées pures qui diffèrent par un seul caractère, tous les individus de la F1 sont génétiquement identiques (ici, tous hétérozygotes $G//g$) et donc phénotypiquement identiques (ici, tous gris). C'est la **loi de l'uniformité des hybrides de première génération** : quel que soit le nombre de croisements P × P réalisés, la F1 obtenue est toujours homogène.
 
-On appelle ces individus F1 des **hybrides**, précisément parce qu'ils portent deux allèles différents — même si, à l'œil, rien ne les distingue d'une lignée pure grise. C'est le retour du piège du R1 : la F1 est phénotypiquement uniforme, mais génétiquement, elle cache déjà l'allèle $g$.
+On appelle ces individus F1 des **hybrides**, précisément parce qu'ils portent deux allèles différents — même si, à l'œil, rien ne les distingue d'une lignée pure grise. C'est le retour du piège du chapitre 2 : la F1 est phénotypiquement uniforme, mais génétiquement, elle cache déjà l'allèle $g$.
 
 ### Pourquoi c'est nécessairement vrai
 
@@ -102,7 +102,7 @@ Si on avait croisé deux lignées pures grises ($G//G \times G//G$), on obtiendr
 
 La F1 ($G//g$, phénotype gris) est hétérozygote — elle porte l'allèle $g$ sans le montrer. Que se passe-t-il si on croise deux individus F1 entre eux (ou, ce qui revient exactement au même du point de vue génétique, deux souris grises hétérozygotes) ? C'est la génération **F2**.
 
-C'est exactement la situation du R0 : deux parents phénotypiquement gris, dont on ignore a priori qu'ils sont hétérozygotes.
+C'est exactement la situation du chapitre 1 : deux parents phénotypiquement gris, dont on ignore a priori qu'ils sont hétérozygotes.
 
 ### Ce que produit un hétérozygote : la disjonction des allèles
 
@@ -131,7 +131,7 @@ Regarde la case $g//g$ dans le tableau : elle exige que **les deux parents** tra
 
 $$P(g//g) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4}$$
 
-Voilà l'origine précise du $\frac{1}{4}$ du R0 : ce n'est pas une fraction approximative, c'est le produit exact de deux événements indépendants de probabilité $\frac{1}{2}$ chacun.
+Voilà l'origine précise du $\frac{1}{4}$ du chapitre 1 : ce n'est pas une fraction approximative, c'est le produit exact de deux événements indépendants de probabilité $\frac{1}{2}$ chacun.
 
 ### Fermeture de l'arc : les souris du début, résolues
 
@@ -141,7 +141,7 @@ Ce n'est ni un accident ni une anomalie : c'est la conséquence directe et prév
 
 ### L'erreur classique à éviter ici
 
-L'erreur la plus fréquente à ce stade : penser qu'un parent au phénotype dominant ne peut transmettre que l'allèle dominant. C'est faux dès que ce parent est hétérozygote — et rien dans son phénotype ne permet de l'exclure. C'est exactement le piège signalé en R1 : phénotype gris ne veut pas dire génotype homozygote gris.
+L'erreur la plus fréquente à ce stade : penser qu'un parent au phénotype dominant ne peut transmettre que l'allèle dominant. C'est faux dès que ce parent est hétérozygote — et rien dans son phénotype ne permet de l'exclure. C'est exactement le piège signalé au chapitre 2 : phénotype gris ne veut pas dire génotype homozygote gris.
 
 Une deuxième erreur fréquente : oublier que $\frac{1}{4}$ vient d'une **multiplication** de deux probabilités indépendantes ($\frac{1}{2} \times \frac{1}{2}$), et non d'une simple lecture directe sur une seule branche. Si un jour tu obtiens $\frac{1}{2}$ pour la case $g//g$, vérifie : as-tu bien multiplié la probabilité du gamète maternel PAR celle du gamète paternel, ou as-tu seulement regardé un des deux parents ?
 
@@ -163,7 +163,7 @@ Changeons d'organisme pour cette étude, en suivant l'exemple classique utilisé
 
 ### Croisement de lignées pures : la première loi, revisitée
 
-On croise une lignée pure corps gris/ailes longues ($C//C \, ; \, L//L$) avec une lignée pure corps noir/ailes vestigiales ($c//c \, ; \, l//l$). Chaque parent, étant homozygote pour les deux gènes, ne produit qu'un seul type de gamète : $CL$ pour le premier, $cl$ pour le second. Toute la F1 est donc $C//c \, ; \, L//l$ — un **double hétérozygote**, phénotypiquement gris à ailes longues. On retrouve exactement le mécanisme de la première loi (R2), appliqué ici à deux gènes en même temps.
+On croise une lignée pure corps gris/ailes longues ($C//C \, ; \, L//L$) avec une lignée pure corps noir/ailes vestigiales ($c//c \, ; \, l//l$). Chaque parent, étant homozygote pour les deux gènes, ne produit qu'un seul type de gamète : $CL$ pour le premier, $cl$ pour le second. Toute la F1 est donc $C//c \, ; \, L//l$ — un **double hétérozygote**, phénotypiquement gris à ailes longues. On retrouve exactement le mécanisme de la première loi (chapitre 3), appliqué ici à deux gènes en même temps.
 
 ### Les gamètes d'un double hétérozygote
 
@@ -175,7 +175,7 @@ Concrètement : la moitié des gamètes reçoit $C$, l'autre moitié $c$ (indép
 
 $$P(CL) = P(Cl) = P(cL) = P(cl) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4}$$
 
-C'est le même geste de multiplication qu'en R3 (deux événements indépendants, chacun de probabilité $\frac{1}{2}$), simplement appliqué ici pour construire un gamète à la place d'un génotype.
+C'est le même geste de multiplication qu'au chapitre 4 (deux événements indépendants, chacun de probabilité $\frac{1}{2}$), simplement appliqué ici pour construire un gamète à la place d'un génotype.
 
 ### Construire l'échiquier F1 × F1 (16 cases)
 
@@ -201,7 +201,7 @@ C'est le rapport phénotypique caractéristique du dihybridisme : $9:3:3:1$.
 
 ### Pourquoi $9:3:3:1$, précisément
 
-Ce rapport n'a rien d'arbitraire : c'est le **produit** des deux rapports monohybrides, obtenus indépendamment l'un de l'autre (comme en R3, chaque caractère seul donnerait $\frac{3}{4}:\frac{1}{4}$) :
+Ce rapport n'a rien d'arbitraire : c'est le **produit** des deux rapports monohybrides, obtenus indépendamment l'un de l'autre (comme au chapitre 4, chaque caractère seul donnerait $\frac{3}{4}:\frac{1}{4}$) :
 
 - gris ET longues : $\frac{3}{4} \times \frac{3}{4} = \frac{9}{16}$
 - gris ET vestigiales : $\frac{3}{4} \times \frac{1}{4} = \frac{3}{16}$
@@ -212,7 +212,7 @@ Ce rapport n'a rien d'arbitraire : c'est le **produit** des deux rapports monohy
 
 ### L'erreur classique à éviter ici
 
-L'erreur la plus fréquente : **additionner** au lieu de **multiplier** les deux probabilités indépendantes. Un élève qui écrit $\frac{1}{4} + \frac{1}{4} = \frac{1}{2}$ pour la classe « noir, ailes vestigiales » a commis exactement l'erreur inverse de celle du R3 — combiner deux caractères indépendants demande une multiplication, jamais une addition, parce qu'on cherche la probabilité que les DEUX événements se réalisent ensemble.
+L'erreur la plus fréquente : **additionner** au lieu de **multiplier** les deux probabilités indépendantes. Un élève qui écrit $\frac{1}{4} + \frac{1}{4} = \frac{1}{2}$ pour la classe « noir, ailes vestigiales » a commis exactement l'erreur inverse de celle du chapitre 4 — combiner deux caractères indépendants demande une multiplication, jamais une addition, parce qu'on cherche la probabilité que les DEUX événements se réalisent ensemble.
 
 Une deuxième précision, importante pour rester dans le cadre de cette leçon : le raisonnement entier repose sur la condition « gènes indépendants » (portés par des paires de chromosomes différentes). Si les deux gènes étaient portés par la **même** paire de chromosomes, leur transmission serait liée et le rapport $9:3:3:1$ ne se vérifierait plus — ce cas de figure (les gènes liés) sort du programme de cette leçon.
 
@@ -222,7 +222,7 @@ Une deuxième précision, importante pour rester dans le cadre de cette leçon :
 
 ### Le problème que le test-cross résout
 
-Le R1 a posé un piège qu'on a rencontré plusieurs fois depuis : un individu au phénotype dominant peut être homozygote ($G//G$) ou hétérozygote ($G//g$) — son apparence seule ne permet pas de trancher. Comment savoir, expérimentalement, lequel des deux génotypes il porte réellement ?
+Le chapitre 2 a posé un piège qu'on a rencontré plusieurs fois depuis : un individu au phénotype dominant peut être homozygote ($G//G$) ou hétérozygote ($G//g$) — son apparence seule ne permet pas de trancher. Comment savoir, expérimentalement, lequel des deux génotypes il porte réellement ?
 
 ### Le principe : croiser avec un testeur homozygote récessif
 
@@ -245,7 +245,7 @@ Reprenons une souris grise de génotype inconnu ($G//G$ ou $G//g$ ?), croisée a
 
 Le même principe s'étend à deux gènes. Une drosophile au phénotype gris/ailes longues, de génotype inconnu, est croisée avec un testeur double homozygote récessif ($c//c \, ; \, l//l$).
 
-Si l'individu testé est un **double hétérozygote** ($C//c \, ; \, L//l$), il produit ses quatre gamètes $CL$, $Cl$, $cL$, $cl$ à raison de $\frac{1}{4}$ chacun (R4). Le testeur, homozygote pour les deux gènes, ne transmet que $cl$. La descendance se répartit donc en **quatre classes phénotypiques égales**, à $\frac{1}{4}$ chacune : gris-longues, gris-vestigiales, noir-longues, noir-vestigiales.
+Si l'individu testé est un **double hétérozygote** ($C//c \, ; \, L//l$), il produit ses quatre gamètes $CL$, $Cl$, $cL$, $cl$ à raison de $\frac{1}{4}$ chacun (chapitre 5). Le testeur, homozygote pour les deux gènes, ne transmet que $cl$. La descendance se répartit donc en **quatre classes phénotypiques égales**, à $\frac{1}{4}$ chacune : gris-longues, gris-vestigiales, noir-longues, noir-vestigiales.
 
 Observer ces quatre classes en proportions égales confirme **deux choses à la fois** : que l'individu testé est bien double hétérozygote, et que les deux gènes ségrégent bien indépendamment l'un de l'autre.
 
@@ -267,7 +267,7 @@ Détermine le génotype de la poule pour ces deux caractères, et indique si les
 
 D'abord, nommons les allèles : $N$ (plumage noir, dominant) et $n$ (plumage blanc, récessif) ; $S$ (crête simple, dominante) et $s$ (crête frisée, récessive). Le coq, récessif pour les deux caractères, est donc $n//n \, ; \, s//s$.
 
-**Ce qu'on reconnaît ici :** un partenaire homozygote récessif pour les deux gènes — c'est un test-cross dihybride. On sait, d'après le R5, que le rapport observé chez les poussins est directement la signature des gamètes produits par la poule.
+**Ce qu'on reconnaît ici :** un partenaire homozygote récessif pour les deux gènes — c'est un test-cross dihybride. On sait, d'après le chapitre 6, que le rapport observé chez les poussins est directement la signature des gamètes produits par la poule.
 
 Regardons les proportions observées sur les 186 poussins :
 

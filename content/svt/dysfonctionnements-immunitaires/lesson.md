@@ -10,7 +10,7 @@ Des années plus tard, une seconde piqûre de guêpe, dans des circonstances pre
 
 **Avant de lire la suite, prends position.** Tu as appris, dans la leçon sur les moyens de défense, qu'une seconde rencontre avec le même antigène déclenche une réponse plus rapide et plus intense que la première, grâce à la mémoire immunitaire (lymphocytes B et T mémoire). Ici aussi, c'est la seconde rencontre qui produit la réaction la plus forte. Alors : est-ce que ce qui arrive à Karim est, au fond, la même chose que ce qui protège quelqu'un lors d'un rappel vaccinal — une réponse secondaire, normale, simplement plus intense ? Ou est-ce que quelque chose de fondamentalement différent est en train de se produire ? Engage-toi avant de continuer.
 
-Ce que Karim vit n'est pas une réponse secondaire qui le protège. C'est une réaction allergique — une des façons dont le système immunitaire, cet appareil de défense si précis qu'on a construit rung par rung dans les deux leçons précédentes, peut aussi se dérégler. Et ce n'est qu'une des formes que peut prendre ce dérèglement. Un système immunitaire peut :
+Ce que Karim vit n'est pas une réponse secondaire qui le protège. C'est une réaction allergique — une des façons dont le système immunitaire, cet appareil de défense si précis qu'on a construit chapitre par le chapitre dans les deux leçons précédentes, peut aussi se dérégler. Et ce n'est qu'une des formes que peut prendre ce dérèglement. Un système immunitaire peut :
 
 - réagir de façon exagérée contre un intrus pourtant inoffensif (l'**allergie**, ce qui arrive à Karim) ;
 - se retourner contre les propres cellules de l'organisme qu'il est censé protéger (les **maladies auto-immunes**) ;
@@ -42,7 +42,7 @@ Tu connais déjà l'histamine, et ce qu'elle fait : dilatation des petits vaisse
 
 ### Pourquoi c'est la seconde rencontre, jamais la première, qui déclenche la réaction
 
-Reviens sur la question posée au R0. La réaction de Karim n'est pas une simple réponse secondaire « qui protège plus fort » : c'est le signe que son organisme, lors de la première piqûre, a fabriqué des IgE contre une protéine du venin qui n'est, en elle-même, pas dangereuse pour la majorité des gens. Le mécanisme est le bon (mémoire, rapidité de la seconde rencontre) mais appliqué à une cible qui ne le méritait pas. Sans IgE déjà fixées sur les mastocytes lors du premier contact, aucun pontage n'est possible — c'est pour ça que la sensibilisation, la première fois, ne produit jamais la réaction : les mastocytes ne sont pas encore armés.
+Reviens sur la question posée au chapitre 1. La réaction de Karim n'est pas une simple réponse secondaire « qui protège plus fort » : c'est le signe que son organisme, lors de la première piqûre, a fabriqué des IgE contre une protéine du venin qui n'est, en elle-même, pas dangereuse pour la majorité des gens. Le mécanisme est le bon (mémoire, rapidité de la seconde rencontre) mais appliqué à une cible qui ne le méritait pas. Sans IgE déjà fixées sur les mastocytes lors du premier contact, aucun pontage n'est possible — c'est pour ça que la sensibilisation, la première fois, ne produit jamais la réaction : les mastocytes ne sont pas encore armés.
 
 ### Exemple travaillé : lire un dosage sanguin d'histamine
 
@@ -92,7 +92,7 @@ Un individu sain ne produit, en principe, aucun anticorps contre ses propres cel
 
 Une confusion très fréquente à ce stade : regrouper l'allergie et la maladie auto-immune sous une même étiquette vague, « le système immunitaire réagit trop » — comme si les deux n'étaient qu'une question de degré, une réaction simplement plus ou moins excessive.
 
-Teste ce modèle avant de le croire. Si l'allergie et la maladie auto-immune n'étaient qu'une question d'intensité, on devrait pouvoir décrire les deux avec la même réponse à une seule question : contre QUOI, précisément, la réaction se dirige-t-elle ? Or les réponses sont radicalement différentes. Dans l'allergie (R1), la cible reste, du début à la fin, un antigène étranger à l'organisme — une protéine de venin, de pollen, d'aliment : un non-soi réel, la tolérance au soi n'a jamais été mise en cause. Dans une maladie auto-immune, la cible est une molécule ou une cellule qui appartient génétiquement au patient lui-même : c'est la tolérance au soi, spécifiquement, qui a échoué.
+Teste ce modèle avant de le croire. Si l'allergie et la maladie auto-immune n'étaient qu'une question d'intensité, on devrait pouvoir décrire les deux avec la même réponse à une seule question : contre QUOI, précisément, la réaction se dirige-t-elle ? Or les réponses sont radicalement différentes. Dans l'allergie (chapitre 2), la cible reste, du début à la fin, un antigène étranger à l'organisme — une protéine de venin, de pollen, d'aliment : un non-soi réel, la tolérance au soi n'a jamais été mise en cause. Dans une maladie auto-immune, la cible est une molécule ou une cellule qui appartient génétiquement au patient lui-même : c'est la tolérance au soi, spécifiquement, qui a échoué.
 
 Ce ne sont donc pas deux intensités d'un même phénomène, mais deux échecs de nature différente : l'allergie est un excès de réaction contre un non-soi bien réel mais inoffensif ; la maladie auto-immune est une perte de la capacité à reconnaître le soi comme soi. On peut d'ailleurs être allergique sans être atteint d'aucune maladie auto-immune, et inversement — les deux mécanismes n'ont, structurellement, rien en commun, si ce n'est qu'ils impliquent tous deux la même machinerie de sélection clonale, appliquée à une cible différente.
 
@@ -249,12 +249,12 @@ Ces deux courbes sont presque des miroirs inversés l'une de l'autre : là où l
 
 ### Fermeture de l'arc
 
-Reviens à la question posée au R0 : une réaction rapide et intense est-elle toujours une bonne nouvelle ? La réponse construite tout au long de cette leçon est non, mais pas de façon uniforme — chaque situation a sa propre logique.
+Reviens à la question posée au chapitre 1 : une réaction rapide et intense est-elle toujours une bonne nouvelle ? La réponse construite tout au long de cette leçon est non, mais pas de façon uniforme — chaque situation a sa propre logique.
 
-- Dans l'**allergie** (R1), une réaction rapide et intense se retourne contre une cible inoffensive : la rapidité, ici, est le problème, pas la solution.
-- Dans les **maladies auto-immunes** (R2), ce n'est pas la vitesse qui est en cause, mais la CIBLE : le système immunitaire, parfaitement fonctionnel par ailleurs, a perdu la capacité de reconnaître le soi comme soi.
-- Dans les **déficits immunitaires** comme le SIDA (R3), c'est l'inverse : plus de réaction du tout, faute de coordination — et c'est cette absence qui tue, indirectement, via les infections opportunistes.
-- Face à ces dérèglements, ou simplement pour anticiper une exposition future, la **vaccination** (R4) construit une mémoire active et durable AVANT le danger, tandis que la **sérothérapie** (R5) emprunte, dans l'urgence, une protection immédiate mais passagère.
+- Dans l'**allergie** (chapitre 2), une réaction rapide et intense se retourne contre une cible inoffensive : la rapidité, ici, est le problème, pas la solution.
+- Dans les **maladies auto-immunes** (chapitre 3), ce n'est pas la vitesse qui est en cause, mais la CIBLE : le système immunitaire, parfaitement fonctionnel par ailleurs, a perdu la capacité de reconnaître le soi comme soi.
+- Dans les **déficits immunitaires** comme le SIDA (chapitre 4), c'est l'inverse : plus de réaction du tout, faute de coordination — et c'est cette absence qui tue, indirectement, via les infections opportunistes.
+- Face à ces dérèglements, ou simplement pour anticiper une exposition future, la **vaccination** (chapitre 5) construit une mémoire active et durable AVANT le danger, tandis que la **sérothérapie** (chapitre 6) emprunte, dans l'urgence, une protection immédiate mais passagère.
 
 Ces quatre situations bouclent le module d'immunologie ouvert avec la distinction entre le soi et le non-soi, puis développé avec les mécanismes de défense (immunité innée, puis adaptative). Ce qu'on vient de voir n'est pas un mécanisme de plus à mémoriser à côté des autres : c'est la même machinerie — sélection clonale, anticorps, LT4, LT8, mémoire immunitaire — vue sous l'angle de ce qui peut mal se passer, ou de comment on peut l'aider depuis l'extérieur.
 

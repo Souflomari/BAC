@@ -111,7 +111,7 @@ Kant formule le même principe sous un second angle, complémentaire du premier 
 
 Ce principe éclaire un point souvent oublié : le devoir, chez Kant, ne concerne pas seulement ce que je dois aux autres. Il vaut tout autant envers moi-même. Négliger totalement mes propres capacités, me traiter moi-même comme un simple instrument de plaisir immédiat sans jamais rien construire, revient à ne pas respecter, en ma propre personne, cette même humanité que je dois par ailleurs respecter chez autrui. Le devoir envers soi (ne pas se dégrader, cultiver ses capacités) et le devoir envers autrui (ne pas se servir de lui comme d'un simple outil pour ses propres fins) découlent l'un et l'autre du même principe : partout où il y a de l'humanité — la mienne ou celle d'un autre —, elle mérite d'être traitée comme une fin, jamais comme un pur moyen.
 
-> **Erreur à éviter :** ne confonds pas l'impératif catégorique avec une obéissance aveugle à des règles imposées de l'extérieur. C'est même l'inverse : pour Kant, la loi morale n'est pas dictée par une autorité étrangère à moi — c'est ma propre raison qui se la donne, en testant elle-même la cohérence de ses maximes. Il appelle cela l'**autonomie** (littéralement : se donner à soi-même sa propre loi), par opposition à l'**hétéronomie** (obéir à une loi reçue du dehors — une autorité, la peur, ses propres désirs). Le devoir kantien n'est pas la négation de ta liberté : il en est, à ses yeux, la plus haute expression — on y reviendra en R3.
+> **Erreur à éviter :** ne confonds pas l'impératif catégorique avec une obéissance aveugle à des règles imposées de l'extérieur. C'est même l'inverse : pour Kant, la loi morale n'est pas dictée par une autorité étrangère à moi — c'est ma propre raison qui se la donne, en testant elle-même la cohérence de ses maximes. Il appelle cela l'**autonomie** (littéralement : se donner à soi-même sa propre loi), par opposition à l'**hétéronomie** (obéir à une loi reçue du dehors — une autorité, la peur, ses propres désirs). Le devoir kantien n'est pas la négation de ta liberté : il en est, à ses yeux, la plus haute expression — on y reviendra au chapitre 4.
 
 [[checkpoint:cp-r2-autonomie]]
 
@@ -165,7 +165,7 @@ Reviens, une dernière fois, à la salle d'examen. Kant dirait que ne pas regard
 
 #### Étape 1 — Analyser les termes du sujet
 
-- **« Agir par devoir »** : rappelle-toi la distinction de Kant (R2) — agir par pur respect de l'exigence morale elle-même, et non par intérêt, inclination, ou peur d'une sanction (agir *conformément* au devoir).
+- **« Agir par devoir »** : rappelle-toi la distinction de Kant (chapitre 3) — agir par pur respect de l'exigence morale elle-même, et non par intérêt, inclination, ou peur d'une sanction (agir *conformément* au devoir).
 - **« Bien agir »** : cette expression suppose déjà qu'il existe un critère du bien agir. Le sujet demande si ce critère se limite à « avoir agi par devoir », ou s'il faut y ajouter autre chose.
 - **« Suffit-il »** : c'est une question de suffisance, pas d'existence. Le sujet ne demande pas si agir par devoir est UNE façon de bien agir (Kant l'a établi), mais si c'est LA SEULE condition nécessaire — s'il n'en faudrait pas davantage.
 
@@ -182,13 +182,13 @@ Une formulation possible :
 #### Étape 3 — Construire un plan dialectique (thèse / antithèse / dépassement)
 
 **I. Thèse — Il suffit d'agir par devoir pour bien agir.**
-Développe la position kantienne (R2) : la bonne volonté comme seul bien sans restriction, l'impératif catégorique comme critère rationnel et universel, indépendant des circonstances et des inclinations. Utilise l'exemple du commerçant honnête et le test de la maxime universalisable.
+Développe la position kantienne (chapitre 3) : la bonne volonté comme seul bien sans restriction, l'impératif catégorique comme critère rationnel et universel, indépendant des circonstances et des inclinations. Utilise l'exemple du commerçant honnête et le test de la maxime universalisable.
 
 **II. Antithèse — Ce critère, pris seul, se heurte à des cas où il ne suffit manifestement pas.**
-Mobilise la critique utilitariste (R3) : un devoir jugé sur sa seule forme, sans égard pour ses conséquences, peut produire des résultats que presque personne n'accepterait (l'exemple du mensonge refusé même au meurtrier). Mobilise aussi Bergson (R3) : certains des actes moraux les plus admirables ne viennent d'aucun devoir respecté, mais d'un élan qui dépasse l'obligation — réduire le bien agir au seul respect d'un devoir laisse cette part-là hors du tableau.
+Mobilise la critique utilitariste (chapitre 4) : un devoir jugé sur sa seule forme, sans égard pour ses conséquences, peut produire des résultats que presque personne n'accepterait (l'exemple du mensonge refusé même au meurtrier). Mobilise aussi Bergson (chapitre 4) : certains des actes moraux les plus admirables ne viennent d'aucun devoir respecté, mais d'un élan qui dépasse l'obligation — réduire le bien agir au seul respect d'un devoir laisse cette part-là hors du tableau.
 
 **III. Dépassement — Le devoir demeure nécessaire, mais bien agir suppose de l'articuler aux conséquences et à l'élan, sur le fond d'une liberté qu'il présuppose.**
-Reprends la fermeture de la leçon (R3) : le devoir garantit ce qu'aucune conséquence ni aucun élan ne garantit seul — l'exigence universelle, valable pour tous, indépendante du hasard des résultats et de la générosité inégale des individus. Mais bien agir pleinement suppose d'y ajouter l'attention aux conséquences réelles de l'acte et, quand elle existe, la part d'élan qui dépasse la simple obéissance. Et rappelle que tout ce dispositif — devoir, conséquences pesées, élan personnel — ne prend sens que parce qu'on est libre de choisir : c'est cette liberté qui rend, en dernier lieu, quelqu'un responsable de bien ou mal agir.
+Reprends la fermeture de la leçon (chapitre 4) : le devoir garantit ce qu'aucune conséquence ni aucun élan ne garantit seul — l'exigence universelle, valable pour tous, indépendante du hasard des résultats et de la générosité inégale des individus. Mais bien agir pleinement suppose d'y ajouter l'attention aux conséquences réelles de l'acte et, quand elle existe, la part d'élan qui dépasse la simple obéissance. Et rappelle que tout ce dispositif — devoir, conséquences pesées, élan personnel — ne prend sens que parce qu'on est libre de choisir : c'est cette liberté qui rend, en dernier lieu, quelqu'un responsable de bien ou mal agir.
 
 #### Étape 4 — Rédiger l'introduction (modèle rédigé)
 
@@ -209,7 +209,7 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 Rédige maintenant, à ton tour :
 
 1. Un paragraphe de la partie II (l'antithèse), en choisissant SOIT l'angle utilitariste (les conséquences du devoir absolu), SOIT l'angle bergsonien (l'élan qui dépasse l'obligation) — pas les deux à la fois dans un seul paragraphe.
-2. Un paragraphe de la partie III (le dépassement), en t'appuyant sur le lien entre devoir et liberté établi en fin de R3.
+2. Un paragraphe de la partie III (le dépassement), en t'appuyant sur le lien entre devoir et liberté établi en fin du chapitre 4.
 
 Puis entraîne-toi sur l'un de ces deux sujets, avec la même méthode (analyse des termes → problématique → plan → introduction rédigée) :
 
@@ -219,11 +219,11 @@ Puis entraîne-toi sur l'un de ces deux sujets, avec la même méthode (analyse 
 ### Exercice de type bac
 
 Le sujet ci-dessous est réel — tiré des annales nationales, pas construit
-pour cette leçon. Son premier exemple (le marchand honnête) est celui que R2
+pour cette leçon. Son premier exemple (le marchand honnête) est celui que le chapitre 3
 a déjà travaillé ; son second (la conservation de la vie) ne l'est pas : à
-toi de mobiliser ce que tu sais déjà — légalité/moralité (R1), agir
-conformément au devoir vs agir par devoir (R2), la critique utilitariste et
-le lien devoir/liberté (R3) — pour l'étendre à ce cas neuf.
+toi de mobiliser ce que tu sais déjà — légalité/moralité (chapitre 2), agir
+conformément au devoir vs agir par devoir (chapitre 3), la critique utilitariste et
+le lien devoir/liberté (chapitre 4) — pour l'étendre à ce cas neuf.
 
 [[checkpoint:cp-bac-devoir]]
 

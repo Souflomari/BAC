@@ -14,7 +14,7 @@ Avant de lire la suite, prends position sur une question concrète : imagine que
 
 [[checkpoint:cp-r0-predict]]
 
-Ne cherche pas encore la réponse définitive - on va la construire pièce par pièce. Mais retiens ta prédiction : elle va être mise à l'épreuve directement, au rung R4.
+Ne cherche pas encore la réponse définitive - on va la construire pièce par pièce. Mais retiens ta prédiction : elle va être mise à l'épreuve directement, au chapitre 5.
 
 Ce chapitre répond à quatre questions, dans l'ordre : comment écrire et nommer proprement cette famille de réactions ? Jusqu'où va-t-elle, exactement, et pourquoi toujours jusqu'à ce même point précis dans le cas le plus simple ? Qu'est-ce qui accélère la réaction sans rien changer au résultat final ? Et qu'est-ce qui, à l'inverse, change vraiment ce résultat final ?
 
@@ -34,7 +34,7 @@ Quand un acide carboxylique et un alcool réagissent ensemble, le groupe $-COOH$
 
 $$R-COOH + R'-OH \rightleftharpoons R-COO-R' + H_2O$$
 
-Le produit organique formé, $R-COO-R'$, est un **ester**. Remarque déjà la double flèche : ce n'est pas un détail cosmétique, on y revient au rung suivant.
+Le produit organique formé, $R-COO-R'$, est un **ester**. Remarque déjà la double flèche : ce n'est pas un détail cosmétique, on y revient au chapitre suivant.
 
 [[figure:condensation-ester]]
 
@@ -47,7 +47,7 @@ Le nom d'un ester se construit en deux morceaux :
 - Le radical de l'acide (son nom se terminant en « -oïque »), dont on remplace la terminaison par « **-oate** ».
 - « de » suivi du radical de l'alcool (le nom de la chaîne, terminé par « **-yle** »).
 
-**Exemple : l'ester du rung R0.** L'acide éthanoïque donne le radical « éthanoate » ; l'éthanol donne le radical « éthyle ». L'ester $CH_3COOC_2H_5$ s'appelle donc **éthanoate d'éthyle**.
+**Exemple : l'ester du chapitre 1.** L'acide éthanoïque donne le radical « éthanoate » ; l'éthanol donne le radical « éthyle ». L'ester $CH_3COOC_2H_5$ s'appelle donc **éthanoate d'éthyle**.
 
 **Un deuxième exemple, pour vérifier la règle sur un autre couple.** Reprends l'acide propanoïque $CH_3CH_2COOH$ et le méthanol $CH_3OH$, déjà rencontrés dans le chapitre précédent. L'acide propanoïque donne le radical « propanoate » ; le méthanol donne le radical « méthyle ». L'ester formé,
 
@@ -59,7 +59,7 @@ s'appelle donc **propanoate de méthyle**. Vérifie que tu retrouves bien cette 
 
 Une confusion fréquente, en regardant l'équation $R-COOH + R'-OH \rightleftharpoons R-COO-R' + H_2O$ pour la première fois : ne plus savoir dire, sous pression, laquelle des quatre espèces est « l'ester ».
 
-Le repère est simple et ne varie jamais : l'ester est la seule espèce, parmi les quatre, qui porte le groupe $-COO-$ **entre deux chaînes carbonées** ($R$ d'un côté, $R'$ de l'autre). L'acide et l'alcool sont les deux réactifs de départ (sens direct) ; l'eau est le sous-produit, toujours $H_2O$, jamais autre chose. Dans $CH_3COOH + C_2H_5OH \rightleftharpoons CH_3COOC_2H_5 + H_2O$ : $CH_3COOH$ est l'acide, $C_2H_5OH$ est l'alcool, $CH_3COOC_2H_5$ est l'ester, $H_2O$ est l'eau - et ça reste vrai quel que soit le sens dans lequel tu lis ou utilises cette équation, comme tu vas le voir au rung suivant.
+Le repère est simple et ne varie jamais : l'ester est la seule espèce, parmi les quatre, qui porte le groupe $-COO-$ **entre deux chaînes carbonées** ($R$ d'un côté, $R'$ de l'autre). L'acide et l'alcool sont les deux réactifs de départ (sens direct) ; l'eau est le sous-produit, toujours $H_2O$, jamais autre chose. Dans $CH_3COOH + C_2H_5OH \rightleftharpoons CH_3COOC_2H_5 + H_2O$ : $CH_3COOH$ est l'acide, $C_2H_5OH$ est l'alcool, $CH_3COOC_2H_5$ est l'ester, $H_2O$ est l'eau - et ça reste vrai quel que soit le sens dans lequel tu lis ou utilises cette équation, comme tu vas le voir au chapitre suivant.
 
 ---
 
@@ -71,7 +71,7 @@ Tu as vu, dans le chapitre sur les transformations dans les deux sens, pourquoi 
 
 $$R-COO-R' + H_2O \rightleftharpoons R-COOH + R'-OH$$
 
-Ce n'est pas une nouvelle équation à apprendre par coeur : c'est exactement la même équation que celle du rung R1, lue de droite à gauche. Estérification et hydrolyse sont les deux noms des deux sens d'une seule et même transformation.
+Ce n'est pas une nouvelle équation à apprendre par coeur : c'est exactement la même équation que celle du chapitre 2, lue de droite à gauche. Estérification et hydrolyse sont les deux noms des deux sens d'une seule et même transformation.
 
 ### Pourquoi les deux réactions coexistent, toujours
 
@@ -89,7 +89,7 @@ Puisque acide, alcool, ester et eau sont mélangés en une seule phase liquide h
 
 $$Q_r = \frac{[ester][eau]}{[acide][alcool]}$$
 
-À l'équilibre, $Q_r$ se fige à la constante d'équilibre $K$ de cette réaction, à cette température : $Q_{r,eq} = K$. Comme dans le chapitre sur l'état d'équilibre, $K$ ne dépend que de la réaction et de la température - jamais des quantités initiales choisies. C'est cette propriété de $K$ qui va nous permettre, au rung suivant, de chiffrer précisément jusqu'où va une estérification.
+À l'équilibre, $Q_r$ se fige à la constante d'équilibre $K$ de cette réaction, à cette température : $Q_{r,eq} = K$. Comme dans le chapitre sur l'état d'équilibre, $K$ ne dépend que de la réaction et de la température - jamais des quantités initiales choisies. C'est cette propriété de $K$ qui va nous permettre, au chapitre suivant, de chiffrer précisément jusqu'où va une estérification.
 
 [[checkpoint:cp-r2-limitee]]
 
@@ -127,7 +127,7 @@ Le facteur $n_0^2$ apparaît lui aussi au numérateur et au dénominateur : il s
 
 $$K = \frac{\tau^2}{(1-\tau)^2}$$
 
-Voilà le résultat central de ce rung : $n_0$ a complètement disparu du calcul. **Dans ce cas précis - quantités initiales égales, sans empêchement stérique - $\tau$ ne dépend que de $K$, donc uniquement de la réaction et de la température, jamais de la quantité de matière engagée.** Que tu partes de $0{,}1$ mol ou de $10$ mol de chaque réactif, tu obtiendras exactement le même $\tau$.
+Voilà le résultat central de ce chapitre : $n_0$ a complètement disparu du calcul. **Dans ce cas précis - quantités initiales égales, sans empêchement stérique - $\tau$ ne dépend que de $K$, donc uniquement de la réaction et de la température, jamais de la quantité de matière engagée.** Que tu partes de $0{,}1$ mol ou de $10$ mol de chaque réactif, tu obtiendras exactement le même $\tau$.
 
 ### Résoudre pour $K = 4$
 
@@ -147,7 +147,7 @@ $$3\tau = 2$$
 
 $$\tau = \frac{2}{3} \approx 0{,}667$$
 
-$\tau \approx 66{,}7\,\%$ : c'est le résultat annoncé au rung R0. Dans ce cas particulier de l'estérification simple, environ deux tiers de l'acide (et de l'alcool) se convertissent en ester et en eau - ni plus, ni moins - et ce résultat ne bouge pas si tu changes les quantités initiales, tant que acide et alcool restent en proportions égales.
+$\tau \approx 66{,}7\,\%$ : c'est le résultat annoncé au chapitre 1. Dans ce cas particulier de l'estérification simple, environ deux tiers de l'acide (et de l'alcool) se convertissent en ester et en eau - ni plus, ni moins - et ce résultat ne bouge pas si tu changes les quantités initiales, tant que acide et alcool restent en proportions égales.
 
 [[figure:rendement-esterification]]
 
@@ -176,7 +176,7 @@ Voici le test qui tranche. Deux flacons contiennent chacun le même mélange éq
 - **Flacon A**, laissé à température ambiante, sans catalyseur : l'équilibre s'installe après plusieurs jours. Une fois stabilisé, on mesure $\tau_A \approx 0{,}667$.
 - **Flacon B**, chauffé à reflux avec quelques gouttes d'acide sulfurique : l'équilibre s'installe en une heure environ. Une fois stabilisé, on mesure $\tau_B \approx 0{,}667$.
 
-Les deux flacons atteignent **la même composition finale**, au bout de durées radicalement différentes. Reviens à ta prédiction du rung R0 : si tu avais parié que le catalyseur ou le chauffage donneraient *plus* d'ester, ce résultat la contredit directement. Si tu avais parié qu'ils ne feraient qu'accélérer la mise en place du même équilibre, ce résultat te donne raison.
+Les deux flacons atteignent **la même composition finale**, au bout de durées radicalement différentes. Reviens à ta prédiction du chapitre 1 : si tu avais parié que le catalyseur ou le chauffage donneraient *plus* d'ester, ce résultat la contredit directement. Si tu avais parié qu'ils ne feraient qu'accélérer la mise en place du même équilibre, ce résultat te donne raison.
 
 [[figure:catalyse-meme-palier]]
 
@@ -188,7 +188,7 @@ Les deux flacons atteignent **la même composition finale**, au bout de durées 
 
 ### La règle, formulée clairement
 
-**Accélérer une réaction** (catalyseur, chauffage, concentration) et **déplacer un équilibre** (changer sa position finale, donc $\tau$) sont deux choses complètement différentes. Le premier groupe de leviers change *quand* on atteint l'équilibre. Il faut un tout autre type de levier pour changer *où* se situe cet équilibre - c'est l'objet du rung suivant.
+**Accélérer une réaction** (catalyseur, chauffage, concentration) et **déplacer un équilibre** (changer sa position finale, donc $\tau$) sont deux choses complètement différentes. Le premier groupe de leviers change *quand* on atteint l'équilibre. Il faut un tout autre type de levier pour changer *où* se situe cet équilibre - c'est l'objet du chapitre suivant.
 
 [[checkpoint:cp-r4-catalyseur]]
 
@@ -208,7 +208,7 @@ Trois gestes, dans ce mélange, font précisément ça.
 
 Verser un excès d'un réactif (par exemple, plus d'alcool que d'acide) augmente le dénominateur de $Q_r$ dès le mélange initial : $Q_{r,i}$ part d'une valeur plus basse, et le système doit avancer davantage dans le sens direct pour rejoindre $K$ - ce qui consomme une plus grande **proportion** du réactif limitant.
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on va vérifier ce raisonnement par le calcul, sur le même couple qu'au rung R3 ($K=4$), en partant cette fois d'un excès d'alcool.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on va vérifier ce raisonnement par le calcul, sur le même couple qu'au chapitre 4 ($K=4$), en partant cette fois d'un excès d'alcool.
 
 On part de $n_0(acide) = 1{,}0\ \text{mol}$ et $n_0(alcool) = 2{,}0\ \text{mol}$ (l'acide est le réactif limitant). Soit $x$ l'avancement (en mol) à l'équilibre :
 
