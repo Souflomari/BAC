@@ -205,7 +205,7 @@ if (harnaisCasse) {
  * qui tranche. Le débordement, lui, est fiable (comparaison à un cadre
  * fixe, sans dépendance aux métriques fines).
  */
-const defauts = await page.evaluate(() => {
+const defauts = await page.evaluate((sombreActif) => {
   const out = [];
   // On indexe les CARTES, pas les <svg> : une figure qui en imbriquerait un
   // second décalerait tous les indices et le rapport nommerait le mauvais
@@ -388,6 +388,74 @@ const defauts = await page.evaluate(() => {
     const grilleRGB = hexVersRGB(
       getComputedStyle(svg).getPropertyValue("--figure-grid") || ""
     );
+    // ── QUATRIÈME SONDE, THÈME SOMBRE SEULEMENT : les grands aplats CLAIRS ──
+    //
+    // La porte de couleur (validate-content) garantit que les figures parlent
+    // en JETONS. Elle ne garantit pas le RENDU : un aplat peint avec un jeton
+    // clair — ou une exception « COULEURS SÉMANTIQUES » un peu large — reste
+    // un rectangle blanc sur une page sombre. C'est le défaut connu de
+    // loi-mailles-build (49 % de sa surface reste claire en sombre), et rien
+    // ne le mesurait ailleurs : les trois balayages visuels du corpus n'ont
+    // porté que sur le thème clair.
+    //
+    // On mesure donc, en sombre, la part du cadre couverte par une forme dont
+    // la LUMINANCE dépasse 0,6. Le seuil de signalement est 8 % : en dessous,
+    // c'est une pastille ou une étiquette, pas une gêne.
+    if (sombreActif) {
+      // CE QU'ON CHERCHE : une couleur qui NE SUIT PAS LE THÈME. Un aplat
+      // peint avec un jeton est par construction juste en sombre — c'est tout
+      // l'objet des jetons. Le défaut, c'est la couleur qui reste claire parce
+      // qu'elle est codée en dur (loi-mailles-build, energy-exchange) ou parce
+      // qu'une exception « COULEURS SÉMANTIQUES » est plus large qu'il ne faut.
+      // On exclut donc les valeurs qui SONT celles des jetons du thème sombre.
+      const jetonsSombres = new Set();
+      {
+        const st = getComputedStyle(document.documentElement);
+        for (const nom of Array.from(st).filter((n) => n.startsWith("--figure-") || n.startsWith("--color-"))) {
+          const brut = st.getPropertyValue(nom).trim();
+          const m = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(brut);
+          if (!m) continue;
+          let c = m[1];
+          if (c.length === 3) c = c[0] + c[0] + c[1] + c[1] + c[2] + c[2];
+          jetonsSombres.add(
+            `rgb(${parseInt(c.slice(0, 2), 16)},${parseInt(c.slice(2, 4), 16)},${parseInt(c.slice(4, 6), 16)})`
+          );
+        }
+      }
+      const lum = (couleur) => {
+        const m = couleur.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        if (!m) return null;
+        const [r, v, b] = [1, 2, 3].map((i) => Number(m[i]) / 255);
+        return 0.2126 * r + 0.7152 * v + 0.0722 * b;
+      };
+      const aire = Math.abs(vw * vh) || 1;
+      let claire = 0;
+      const coupables = [];
+      for (const el of svg.querySelectorAll("rect,circle,ellipse,polygon,path")) {
+        const st = getComputedStyle(el);
+        if (!st.fill || st.fill === "none" || st.fill.startsWith("url(")) continue;
+        if (parseFloat(st.fillOpacity || "1") < 0.5) continue;
+        if (parseFloat(st.opacity || "1") < 0.5) continue;
+        if (jetonsSombres.has(st.fill.replace(/\s/g, ""))) continue;
+        const l = lum(st.fill);
+        if (l === null || l < 0.6) continue;
+        let bb;
+        try { bb = boiteRacine(el); } catch { continue; }
+        const a = Math.max(0, bb.width) * Math.max(0, bb.height);
+        if (a / aire < 0.01) continue;
+        claire += a;
+        coupables.push(`${el.tagName.toLowerCase()} ${Math.round((a / aire) * 100)}%`);
+      }
+      const part = claire / aire;
+      if (part > 0.08) {
+        out.push({
+          fig: iFig, type: "clair-en-sombre", txt: `${Math.round(part * 100)} % du cadre`,
+          detail: `reste CLAIR en thème sombre — ${coupables.slice(0, 4).join(", ")}` +
+                  (coupables.length > 4 ? `, +${coupables.length - 4}` : ""),
+        });
+      }
+    }
+
     const geoms = [...svg.querySelectorAll("path,line,polyline,polygon,circle,ellipse")];
     for (const g of geoms) {
       if (typeof g.getTotalLength !== "function") continue;
@@ -492,7 +560,7 @@ const defauts = await page.evaluate(() => {
     }
   });
   return out;
-});
+}, sombre);
 
 await navigateur.close();
 const nbMotion = fichiers.filter((f) => /\.motion\.svg$/.test(f)).length;

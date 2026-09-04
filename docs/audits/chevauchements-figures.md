@@ -140,9 +140,29 @@ Par ordre de préférence — c'est la règle du skill `figure-authoring`
 ## Ce qui n'a PAS été fait
 
 - Les 7 chevauchements de `loi-mailles-build.svg` (dette owner).
-- **Le balayage n'a porté que sur le thème CLAIR.** Les métriques de texte
-  ne dépendent pas du thème, donc la LISTE serait la même ; la gravité
-  d'une collision, elle, dépend du contraste. Non vérifié en sombre.
+- **Le balayage des COLLISIONS n'a porté que sur le thème CLAIR.** Les
+  métriques de texte ne dépendent pas du thème, donc la LISTE serait la
+  même ; la gravité d'une collision, elle, dépend du contraste.
+
+  **Le thème sombre a en revanche été vérifié sur un autre point, le
+  2026-09-04 :** les grands aplats restés CLAIRS sur page sombre. La porte
+  de couleur garantit que les figures parlent en jetons ; elle ne garantit
+  pas le rendu. Une quatrième sonde mesure donc, en sombre, la part du
+  cadre couverte par une forme claire dont la couleur N'EST PAS un jeton du
+  thème — c'est-à-dire une couleur qui ne suit pas le thème, par définition.
+
+  **Résultat sur les 258 figures statiques : DEUX, et ce sont les deux
+  connues.** `loi-mailles-build` (59 % du cadre) et `energy-exchange`
+  (51 %) — la paire sous dette owner, dont les couleurs sont codées en dur.
+  Aucune autre. Le contrat de couleur tient donc au RENDU, et pas seulement
+  à la source.
+
+  *Deux faux positifs écartés en route, tous deux instructifs : une
+  étiquette d'accent est légitimement claire en sombre (c'est son rôle), et
+  la boîte englobante d'un `<path>` fait de plusieurs sous-tracés éloignés
+  mesure tout l'espace entre eux — trois petits disques de 5 px de rayon
+  donnaient « 20 % du cadre ». D'où l'exclusion des jetons du thème, qui
+  vise exactement ce qu'on cherche : la couleur qui ne bascule pas.*
 - Les deux classes du §3 ne sont gardées par rien. Les cas trouvés l'ont
   été à l'œil, sur les 24 figures ouvertes — **il en reste très
   probablement dans les 244 autres.**
