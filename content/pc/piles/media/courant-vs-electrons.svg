@@ -104,7 +104,10 @@
     <path d="M270,150 Q320,35 370,150" fill="none" stroke="var(--figure-ink)" stroke-width="1.5" stroke-linecap="round"/>
     <circle cx="270" cy="150" r="2.5" fill="var(--figure-ink)"/>
     <circle cx="370" cy="150" r="2.5" fill="var(--figure-ink)"/>
-    <text x="320" y="108" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">pont salin</text>
+    <!-- « pont salin » descend SOUS la flèche de courant (y=105), qui la
+         traversait de part en part (mesuré 99 %). À y=124 elle tient entre
+         les deux jambages de l'arche (x 283 et 357) avec 9 px de jeu. -->
+    <text x="362" y="120" text-anchor="start" font-size="10.5" fill="var(--figure-ink-soft)">pont salin</text>
 
     <!-- ── Fil extérieur + ampèremètre — aucune flèche encore ──────── -->
     <line x1="190" y1="95" x2="190" y2="45" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
@@ -136,7 +139,10 @@
     <line x1="205" y1="75" x2="430" y2="75"
           stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
     <polygon points="430,75 417,69.5 417,80.5" fill="var(--figure-accent)"/>
-    <text x="317" y="63" text-anchor="middle" font-size="13" fill="var(--figure-accent)"
+    <!-- « e⁻ » se décale à gauche du cadran de l'ampèremètre (cercle centré
+         en 320, rayon 14) qui la traversait (mesuré 116 %). Elle reste
+         au-dessus de SA flèche. -->
+    <text x="270" y="63" text-anchor="middle" font-size="13" fill="var(--figure-accent)"
           ><tspan font-style="italic">e</tspan><tspan dy="-6" font-size="9" font-style="normal">−</tspan></text>
 
   </g><!-- /step-2 -->

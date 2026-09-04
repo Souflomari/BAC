@@ -111,7 +111,10 @@
     <path d="M270,150 Q320,35 370,150" fill="none" stroke="var(--figure-ink)" stroke-width="1.5" stroke-linecap="round"/>
     <circle cx="270" cy="150" r="2.5" fill="var(--figure-ink)"/>
     <circle cx="370" cy="150" r="2.5" fill="var(--figure-ink)"/>
-    <text x="320" y="108" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">pont salin</text>
+    <!-- Au-dessus du sommet de l'arche (y ≈ 92,5) et non dedans : l'étiquette
+         est plus large que l'arche à cette hauteur, et les deux jambages la
+         traversaient. -->
+    <text x="362" y="120" text-anchor="start" font-size="10.5" fill="var(--figure-ink-soft)">pont salin</text>
 
     <!-- Migration ionique dans le pont salin (anions vers l'anode, cations vers la cathode) -->
     <line x1="260" y1="150" x2="240" y2="170" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
@@ -121,7 +124,9 @@
 
     <line x1="380" y1="150" x2="400" y2="170" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
     <polygon points="0,0 -8,-4.5 -8,4.5" fill="var(--figure-ink-soft)" transform="translate(400,170) rotate(45)"/>
-    <text x="402" y="184" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)"
+    <!-- « K⁺ » descend sous la ligne de solution (y=175), qui la traversait
+         (mesuré 106 %). -->
+    <text x="402" y="195" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)"
           ><tspan font-style="italic">K</tspan><tspan dy="-5" font-size="7" font-style="normal">+</tspan></text>
 
   </g><!-- /step-2 -->

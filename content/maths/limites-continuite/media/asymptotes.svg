@@ -70,9 +70,14 @@
        STEP 1 — la fonction : boîte formule + les deux branches
        ══════════════════════════════════════════════════════ -->
   <g id="step-1">
-    <rect x="50" y="45" width="270" height="34" rx="5"
+    <!-- La boîte formule tient ENTIÈREMENT à gauche de l'axe des ordonnées.
+         Large de 270 px, elle l'enjambait — et son fond n'est qu'à 8 %
+         d'opacité, donc l'axe se voyait au travers, en plein milieu de
+         « 1/(x − 2) ». Rétrécie à 160 px (et le texte à 11 px), elle
+         s'arrête avant x=225. -->
+    <rect x="55" y="45" width="160" height="30" rx="5"
           fill="var(--figure-ink)" fill-opacity="0.08"/>
-    <text x="185" y="67" text-anchor="middle" font-size="13"
+    <text x="135" y="64" text-anchor="middle" font-size="11"
           fill="var(--figure-ink)"><tspan font-style="italic">f</tspan>(<tspan
           font-style="italic">x</tspan>) = 2 + 1/(<tspan
           font-style="italic">x</tspan> - 2)</text>
@@ -103,7 +108,9 @@
           stroke-dasharray="6,4" stroke-linecap="round"/>
     <line x1="360" y1="236" x2="360" y2="244"
           stroke="var(--figure-accent)" stroke-width="1.8"/>
-    <text x="360" y="258" text-anchor="middle" font-size="11"
+    <!-- « x = 2 » nomme l'asymptote verticale : centrée sur x=360, elle
+         était coupée en deux par cette droite. Elle passe à sa droite. -->
+    <text x="368" y="258" text-anchor="start" font-size="11"
           fill="var(--figure-accent)"><tspan font-style="italic">x</tspan> = 2</text>
   </g><!-- /step-2 -->
 
@@ -117,7 +124,10 @@
           stroke-dasharray="6,4" stroke-linecap="round"/>
     <line x1="221" y1="190" x2="229" y2="190"
           stroke="var(--figure-accent)" stroke-width="1.8"/>
-    <text x="211" y="194" text-anchor="end" font-size="11"
+    <!-- « y = 2 » nomme l'asymptote horizontale et était écrite DESSUS :
+         la droite y=190 court sur toute la largeur du cadre et la traversait
+         (mesuré 98 %). Elle passe au-dessus. -->
+    <text x="211" y="185" text-anchor="end" font-size="11"
           fill="var(--figure-accent)"><tspan font-style="italic">y</tspan> = 2</text>
 
     <!-- Guide vertical de #point-x — traverse y=2, la portion au-dessus

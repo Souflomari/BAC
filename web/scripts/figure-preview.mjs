@@ -463,7 +463,9 @@ const defauts = await page.evaluate(() => {
           fig: iFig, type: "barre", txt: bt.s.slice(0, 26),
           detail: `traversé par un <${g.tagName.toLowerCase()}> tracé à ${largeur.toFixed(1)} px ` +
                   `sur ${Math.round(longueur)} px — soit ${Math.round((longueur / Math.max(bt.b.width, 1)) * 100)} % ` +
-                  `de la largeur de l'étiquette`,
+                  `de la largeur de l'étiquette` +
+                  ` · texte en (${Math.round(bt.b.x)};${Math.round(bt.b.y + bt.b.height)})` +
+                  ` · tracé ${g.getAttribute("d") ? "d=" + g.getAttribute("d").slice(0, 28).replace(/\s+/g, " ") : [...g.attributes].filter((at) => /^(x1|y1|x2|y2|cx|cy|r|points)$/.test(at.name)).map((at) => at.name + "=" + at.value.slice(0, 12)).join(" ")}`,
         });
       }
     }

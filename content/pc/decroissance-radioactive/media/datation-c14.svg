@@ -83,7 +83,10 @@
     <!-- Repère A0 (valeur de référence, organisme vivant) -->
     <line x1="176" y1="70" x2="184" y2="70"
           stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
-    <text x="170" y="74" text-anchor="end" font-size="10.5"
+    <!-- « A₀ » passe au-dessus de sa graduation : à hauteur de tick, elle
+         était traversée par l'horizontale de rappel qui va de l'axe à la
+         courbe (mesuré 98 %). -->
+    <text x="170" y="66" text-anchor="end" font-size="10.5"
           fill="var(--figure-ink-soft)">A<tspan dy="3" font-size="7.5">0</tspan></text>
   </g><!-- /step-1 -->
 
