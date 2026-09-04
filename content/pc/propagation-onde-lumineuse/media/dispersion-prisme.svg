@@ -130,8 +130,21 @@
     <rect x="560" y="200" width="12" height="65" rx="2" fill="url(#spectrum-grad)"/>
 
     <!-- Étiquettes des deux couleurs extrêmes -->
-    <text x="574" y="209" font-size="10.5" fill="#C0392B">Rouge</text>
-    <text x="574" y="264" font-size="10.5" fill="#6E4E96">Violet</text>
+<!-- PASTILLE + ENCRE, et non le mot peint dans sa teinte (2026-09-04).
+         La teinte reste — elle est l'information — mais elle passe dans un
+         carré, où la norme demande 3:1 (SC 1.4.11) et non 4,5:1. Le MOT, lui,
+         est du texte : mesuré aux pixels, « Rouge » tombait à 3,23:1 et
+         « Violet » à 2,67:1 sur la surface sombre. Et il n'y a pas d'échappée
+         par la couleur : pour tenir 4,5:1 à la fois sur blanc et sur
+         #1A1917, il faudrait une luminance à la fois ≤ 0,18 et ≥ 0,22.
+         L'intervalle est VIDE — aucune teinte fixe ne peut y arriver, quelle
+         qu'elle soit. La note de la veille (« vérifié au rendu dans les deux
+         thèmes ») disait vrai du prisme et des rayons, et faux de ces deux
+         mots : l'œil les voyait, la mesure les refuse. -->
+    <rect x="574" y="201.5" width="9" height="9" rx="1.5" fill="#C0392B"/>
+    <text x="588" y="209" font-size="10.5" fill="var(--figure-ink)">Rouge</text>
+    <rect x="574" y="256.5" width="9" height="9" rx="1.5" fill="#6E4E96"/>
+    <text x="588" y="264" font-size="10.5" fill="var(--figure-ink)">Violet</text>
   </g><!-- /step-3 -->
 
 </svg>

@@ -24,7 +24,8 @@ le balayage en thème sombre.
 
 ## Ce que la mesure a trouvé
 
-**101 textes** sous le seuil de SC 1.4.3, dans **35 fichiers** — dont
+**101 textes** en thème clair (plus **3 en sombre**, voir plus bas) sous le
+seuil de SC 1.4.3, dans **35 fichiers** — dont
 **30 sur les deux figures marquées DETTE OWNER** (`loi-mailles-build`,
 `energy-exchange`), qui ne sont servies à aucune leçon et dont le sort est un
 arbitrage ouvert : elles ne sont pas repeintes ici, elles sont **portées au
@@ -125,11 +126,40 @@ trouve sur une page doit être suspecté avant d'être cru.*
 
 ---
 
-## Ce que l'instrument ne mesure toujours PAS
+## Le thème sombre : trois défauts de plus, et une règle qui en sort
 
-- **Le thème sombre.** Les correctifs sont tous en jetons, donc ils basculent ;
-  mais la mesure présentée ici est celle du thème clair. `--dark` existe et
-  reste à passer sur le corpus entier.
+Le corpus a ensuite été passé **en thème sombre**, exhaustivement. Trois
+défauts vivants s'y cachaient — et deux d'entre eux venaient d'être
+**introduits par les correctifs du thème clair**, ce qui est précisément la
+raison d'être d'une seconde passe.
+
+**LA RÈGLE, et elle est contre-intuitive :** *un texte se pose sur un aplat
+PLEIN (et prend `--figure-surface`) ou sur une teinte FRANCHE (≤ ~0,4, et
+prend `--figure-ink`). **Jamais sur un mi-ton.***
+
+Pourquoi : en thème clair l'accent (#00746A) est plus SOMBRE que la surface ;
+en thème sombre (#6DC3B8) il est plus CLAIR. Une teinte à 0,5-0,7 se mélange
+donc vers **la même couleur** dans les deux thèmes — un vert d'eau moyen —
+tandis que l'encre, elle, bascule. Un glyphe posé là **échoue forcément d'un
+côté** : le « + » de `origin-i` valait 5,5:1 en clair et **2,99:1 en sombre**.
+Corrigé en rendant les disques « déjà passées » pleins (glyphe en surface) et
+en descendant la rampe des « approchantes » à 0,38 / 0,26 / 0,16 (glyphe en
+encre). Même correctif sur la bande de reste d'`euclide-cascade` (0,55 →
+0,38).
+
+**Et un cas où AUCUNE couleur ne marche.** `dispersion-prisme` peignait ses
+étiquettes « Rouge » et « Violet » dans la teinte du rayon qu'elles nomment —
+`COULEURS SÉMANTIQUES` dûment déclarées, et une note de la veille affirmant
+« vérifié au rendu dans les deux thèmes ». La note disait vrai du prisme et
+des rayons ; elle disait faux de ces deux mots : **3,23:1 et 2,67:1** sur la
+surface sombre. Et il n'y a pas d'échappée par la couleur : pour tenir 4,5:1
+à la fois sur blanc et sur #1A1917, une teinte devrait avoir une luminance à
+la fois ≤ 0,18 et ≥ 0,22. **L'intervalle est vide.** Le correctif est la
+solution classique des légendes : une **pastille** de la vraie teinte (un
+graphique, donc 3:1 suffit) et le **mot en encre**. La couleur reste
+l'information ; le mot redevient lisible.
+
+## Ce que l'instrument ne mesure toujours PAS
 - **Le halo.** Un texte cerné d'un liseré blanc (`paint-order`) est lisible
   sur n'importe quel fond, mais l'étage pixel retire le halo avec le texte et
   le juge quand même sur la teinte. Aucune figure n'utilise cette technique

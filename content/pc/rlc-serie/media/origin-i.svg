@@ -11,8 +11,19 @@
     Palette : var(--figure-*) CSS vars. Fond transparent.
     Largeur 420px, hauteur 200px.
 
-    Charges "passées" : --figure-accent fill-opacity 0.85 (bien distinctes)
-    Charges "approchantes" : --figure-accent fill-opacity 0.52 / 0.34 / 0.22
+    Charges "passées" : --figure-accent PLEIN, glyphe en --figure-surface
+    Charges "approchantes" : --figure-accent fill-opacity 0.38 / 0.26 / 0.16,
+      glyphe en --figure-ink
+
+    POURQUOI CE PARTAGE (2026-09-04, mesuré aux pixels dans les deux thèmes) :
+    un aplat d'accent à mi-opacité tombe sur la MÊME couleur dans les deux
+    thèmes — l'accent clair est sombre, l'accent sombre est clair, et les deux
+    se mélangent vers le même vert d'eau. L'encre, elle, bascule. Un glyphe
+    posé là échoue donc forcément d'un côté : à 0,70 le « + » en encre valait
+    5,5:1 en clair et 2,99:1 en sombre. La règle qui en sort, et qui vaut pour
+    toutes les figures : un texte se pose sur un aplat PLEIN (et prend alors
+    --figure-surface) ou sur une teinte FRANCHE (≤ ~0,4, et prend --figure-ink).
+    Jamais sur un mi-ton, qui n'appartient à aucun thème.
     (gradient d'opacité = logique de palette claire, pas de tons ad-hoc)
     Séparateur inter-panneaux : arrowhead SVG dessiné, pas de glyphe ASCII →
     Panneaux : --figure-surface fond + --figure-grid bordure (surface conçue)
@@ -73,21 +84,21 @@
          Encre sur disque teinté tient partout, à condition que le palier le
          plus soutenu ne dépasse pas ~0,70 (à 0,85 l'encre tombait à 4,11:1).
          Le dégradé, lui, est intact : c'est lui qui dit la distance. -->
-    <circle cx="138" cy="90"  r="7.5" fill="var(--figure-accent)" fill-opacity="0.7"/>
+    <circle cx="138" cy="90"  r="7.5" fill="var(--figure-accent)"/>
     <text x="138" y="94" text-anchor="middle" font-size="10"
-          fill="var(--figure-ink)" font-weight="700">+</text>
-    <circle cx="164" cy="114" r="7.5" fill="var(--figure-accent)" fill-opacity="0.7"/>
+          fill="var(--figure-surface)" font-weight="700">+</text>
+    <circle cx="164" cy="114" r="7.5" fill="var(--figure-accent)"/>
     <text x="164" y="118" text-anchor="middle" font-size="10"
-          fill="var(--figure-ink)" font-weight="700">+</text>
+          fill="var(--figure-surface)" font-weight="700">+</text>
 
     <!-- Charges + approchant (gauche de S — opacité décroissante = distance) -->
-    <circle cx="80"  cy="102" r="7.5" fill="var(--figure-accent)" fill-opacity="0.52"/>
+    <circle cx="80"  cy="102" r="7.5" fill="var(--figure-accent)" fill-opacity="0.38"/>
     <text x="80" y="106" text-anchor="middle" font-size="10"
           fill="var(--figure-ink)" font-weight="700">+</text>
-    <circle cx="56"  cy="87"  r="7.5" fill="var(--figure-accent)" fill-opacity="0.34"/>
+    <circle cx="56"  cy="87"  r="7.5" fill="var(--figure-accent)" fill-opacity="0.26"/>
     <text x="56" y="91" text-anchor="middle" font-size="10"
           fill="var(--figure-ink)" font-weight="700">+</text>
-    <circle cx="44"  cy="116" r="7.5" fill="var(--figure-accent)" fill-opacity="0.22"/>
+    <circle cx="44"  cy="116" r="7.5" fill="var(--figure-accent)" fill-opacity="0.16"/>
     <text x="44" y="120" text-anchor="middle" font-size="10"
           fill="var(--figure-ink)" font-weight="700">+</text>
 

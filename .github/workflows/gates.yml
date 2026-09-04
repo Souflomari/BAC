@@ -86,18 +86,32 @@ jobs:
             || { echo "::warning::dom-truth cold-boot retry 1"; npm run dom-truth; } \
             || { echo "::warning::dom-truth cold-boot retry 2"; npm run dom-truth; }
 
-      # PORTE FIGURES (2026-09-04). figure-preview mesure cinq classes de
-      # défaut sur les 258 SVG statiques ; DEUX seulement sont armées, et
-      # seulement parce qu'elles sont propres :
+      # PORTE FIGURES (2026-09-04). figure-preview mesure sept classes de
+      # défaut sur les 258 SVG statiques ; CINQ sont armées, et seulement
+      # parce qu'elles sont propres dans les DEUX thèmes :
       #   · « déborde »      — un texte qui sort du cadre de la figure ;
       #   · « hors panneau » — un texte qui sort de SON panneau et se fait
-      #     donc attribuer au panneau voisin.
-      # Les trois autres (chevauchements, tracés qui barrent, aplats clairs en
-      # thème sombre) restent des OUTILS : leur classe n'est pas vide, et
-      # armer une porte sur une classe sale oblige à la désarmer le lendemain.
+      #     donc attribuer au panneau voisin ;
+      #   · « contraste grave » / « contraste faible » — un texte sous le
+      #     seuil de SC 1.4.3 contre ce qui est VRAIMENT peint derrière lui
+      #     (modèle de peinture proposé, puis VÉRIFIÉ aux pixels) ;
+      #   · « texte invisible » / « texte recouvert » — un texte effacé par
+      #     une étape ultérieure, les étapes étant cumulatives.
+      # Les deux autres (chevauchements, tracés qui barrent) restent des
+      # OUTILS : leur classe n'est pas vide, et armer une porte sur une
+      # classe sale oblige à la désarmer le lendemain.
       # Les exceptions légitimes sont déclarées DANS les fichiers
-      # (data-hors-panneau, data-rature), jamais dans une liste ici.
-      - name: Porte figures (cadre + panneau)
+      # (data-hors-panneau, data-rature, RECOUVREMENT ASSUMÉ:), jamais ici.
+      #
+      # DEUX PASSES, CLAIR ET SOMBRE, et ce n'est pas du zèle : un aplat
+      # d'accent à mi-opacité tombe sur la MÊME couleur dans les deux thèmes
+      # alors que l'encre bascule — un texte posé là passe d'un côté et échoue
+      # de l'autre. Trois défauts n'existaient qu'en sombre (2026-09-04).
+      #
+      # La porte ne voit que la passe RAPIDE (le modèle, vérifié aux pixels
+      # sur ses seuls candidats) : elle manque ~17 % des cas. Pour certifier
+      # un corpus, c'est `--pixels-tous` qu'il faut, et il prend ~25 min.
+      - name: Porte figures (cadre, panneau, contraste — thème clair)
         run: |
           # Chemins relatifs à la RACINE du dépôt : figure-preview les résout
           # contre elle, pas contre le cwd (même convention que
@@ -106,6 +120,13 @@ jobs:
           test -n "$svgs"
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           node scripts/figure-preview.mjs --porte $svgs
+
+      - name: Porte figures (contraste — thème sombre)
+        run: |
+          svgs=$(find ../content -path '*/media/*.svg' -not -name '*.motion.svg' | sed 's|^\.\./||' | sort)
+          test -n "$svgs"
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/figure-preview.mjs --dark --porte $svgs
 
       - name: Model-id hygiene gate
         working-directory: .

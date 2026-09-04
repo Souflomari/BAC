@@ -73,7 +73,13 @@
     <rect x="48"  y="142" width="360" height="30" rx="3" fill="var(--figure-ink-soft)"/>
     <line x1="168" y1="142" x2="168" y2="172" stroke="var(--figure-grid)" stroke-width="1"/>
     <line x1="288" y1="142" x2="288" y2="172" stroke="var(--figure-grid)" stroke-width="1"/>
-    <rect x="408" y="142" width="80" height="30" rx="3" fill="var(--figure-accent)" fill-opacity="0.55"/>
+    <!-- 0,38 et non 0,55 : à 0,55 cette bande est un MI-TON dans les DEUX
+         thèmes (l'accent clair est sombre, l'accent sombre est clair, et les
+         deux se mélangent vers le même gris-vert). L'encre, elle, bascule —
+         donc en sombre le « 36 » tombait à 4,19:1. Un aplat qui porte du
+         texte doit rester franchement clair ou franchement sombre PAR
+         RAPPORT À SA SURFACE ; le mi-ton n'appartient à personne. -->
+    <rect x="408" y="142" width="80" height="30" rx="3" fill="var(--figure-accent)" fill-opacity="0.38"/>
     <rect x="48"  y="142" width="440" height="30" rx="3" fill="none" stroke="var(--figure-ink)" stroke-width="1.25"/>
     <text x="48" y="136" font-size="10.5" fill="var(--figure-ink-soft)"><tspan font-style="italic">a</tspan> = 198</text>
     <text x="108" y="162" text-anchor="middle" font-size="13" font-weight="700" fill="var(--figure-surface)">54</text>

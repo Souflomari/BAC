@@ -66,7 +66,8 @@ const porte = args.includes("--porte");
 // passe par-dessus. Les pixels, eux, ne s'arrêtent nulle part.
 const pixelsTous = args.includes("--pixels-tous");
 const CLASSES_ARMEES = new Set([
-  "déborde", "hors panneau", "contraste grave", "contraste faible", "texte invisible",
+  "déborde", "hors panneau", "contraste grave", "contraste faible",
+  "texte invisible", "texte recouvert",
 ]);
 const fichiers = args.filter((a) => !a.startsWith("--"));
 
@@ -740,6 +741,7 @@ const defauts = await page.evaluate((sombreActif) => {
     const la = lum(...a), lb = lum(...b);
     return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
   };
+  let replis = 0;
 
   document.querySelectorAll(".carte").forEach((carte, iFig) => {
     const svg = carte.querySelector("svg");
@@ -759,9 +761,21 @@ const defauts = await page.evaluate((sombreActif) => {
                                      // dans le FICHIER : de quoi viser juste
                                      // quand deux étiquettes portent le même
                                      // texte et qu'une seule est fautive.
-      const s = (t.textContent || "").trim();
+      // JUGER LES FEUILLES, PAS LE BLOC. Une étiquette comme
+      // `<text><tspan fill="…">L</tspan><tspan fill="…">, r</tspan></text>`
+      // n'a PAS de couleur propre : `getComputedStyle(text).fill` y rend le
+      // noir par défaut, alors qu'aucun glyphe n'est peint en noir. Jugé au
+      // niveau du <text>, le balayage en thème sombre annonçait trois
+      // « 1,20:1, encre noire » parfaitement faux. On descend donc aux
+      // porteurs de texte : les tspans quand il y en a, le <text> sinon.
+      const tspans = [...t.querySelectorAll("tspan")].filter(
+        (x) => (x.textContent || "").trim() && !x.querySelector("tspan")
+      );
+      const porteurs = tspans.length ? tspans : [t];
+      for (const porteur of porteurs) {
+      const s = (porteur.textContent || "").trim();
       if (!s) continue;
-      const cs = getComputedStyle(t);
+      const cs = getComputedStyle(porteur);
       if (cs.visibility === "hidden" || cs.display === "none") continue;
       // Un texte sous 0,5 d'opacité est traité comme un ornement et n'est pas
       // jugé — angle mort ASSUMÉ, et il faut le savoir : si un jour une
@@ -769,7 +783,7 @@ const defauts = await page.evaluate((sombreActif) => {
       if (parseFloat(cs.opacity || "1") < 0.5) continue;
       const encre = rgb(cs.fill);
       if (!encre) continue;
-      const b = t.getBoundingClientRect();
+      const b = porteur.getBoundingClientRect();
       if (b.width < 2 || b.height < 2) continue;
       const cx = b.x + b.width / 2, cy = b.y + b.height / 2;
       // QUATRIÈME PIÈGE PAYÉ, et le plus vicieux parce qu'il dépendait du
@@ -785,21 +799,41 @@ const defauts = await page.evaluate((sombreActif) => {
       // On travaille donc dans le REPÈRE UTILISATEUR du SVG, où tout tient
       // entre 0 et ~1000 : centre du texte via getBBox() ramené au repère
       // racine par sa CTM, puis renvoyé dans le repère de chaque forme.
-      const bb = t.getBBox();
-      const ctmT = t.getCTM();
+      const bb = porteur.getBBox();
+      const ctmT = porteur.getCTM();
       const centre = ctmT
         ? new DOMPoint(bb.x + bb.width / 2, bb.y + bb.height / 2).matrixTransform(ctmT)
         : null;
-      const dansLaForme = (e) => {
+      // Le repli sur la boîte englobante est GROSSIER : il déclare « dedans »
+      // des points qu'une forme diagonale ne couvre pas. Il doit rester un
+      // filet de sécurité, jamais le chemin ordinaire — un oubli d'argument
+      // l'a rendu ordinaire pendant une passe, et le modèle s'est mis à
+      // proposer 176 faux contrastes au lieu de 10. On le COMPTE donc, et le
+      // rapport le dit : un repli silencieux transforme un instrument exact
+      // en compteur de bruit sans que rien ne prévienne.
+      const dansLaForme = (e, p) => {
         try {
           const c = e.getCTM();
-          if (!c || !centre) throw new Error("pas de CTM");
-          return e.isPointInFill(centre.matrixTransform(c.inverse()));
+          if (!c || !p) throw new Error("pas de CTM");
+          return e.isPointInFill(p.matrixTransform(c.inverse()));
         } catch {
+          replis++;
           const r2 = e.getBoundingClientRect();
           return cx >= r2.x && cx <= r2.x + r2.width && cy >= r2.y && cy <= r2.y + r2.height;
         }
       };
+      // Une GRILLE, pas un point. Un texte à moitié recouvert reste illisible,
+      // et son centre peut très bien être dégagé : c'est le cas de « la même
+      // couche, » dans pli-faille-profondeur, dont il ne dépassait qu'une
+      // virgule et un « s ». Quinze points suffisent à le dire.
+      const grille = [];
+      if (ctmT) {
+        for (const fx of [0.1, 0.3, 0.5, 0.7, 0.9]) {
+          for (const fy of [0.3, 0.5, 0.7]) {
+            grille.push(new DOMPoint(bb.x + bb.width * fx, bb.y + bb.height * fy).matrixTransform(ctmT));
+          }
+        }
+      }
       // PAS `elementsFromPoint`, ET C'EST LE PIÈGE QUI A COÛTÉ DEUX PASSES.
       // Cette fonction ne répond QUE pour un point dans la fenêtre visible ;
       // la page d'aperçu empile 258 figures, donc elle rendait un tableau
@@ -824,7 +858,7 @@ const defauts = await page.evaluate((sombreActif) => {
         if (alpha <= 0.01) continue;
         // GÉOMÉTRIE EXACTE (voir `dansLaForme` plus haut) : le point testé
         // contre l'AIRE REMPLIE de la forme, pas contre sa boîte.
-        if (!dansLaForme(e)) continue;
+        if (!dansLaForme(e, centre)) continue;
         fond = composer(fond, peint, alpha);
         nomFond = `${e.tagName.toLowerCase()}${e.getAttribute("class") ? "." + e.getAttribute("class").split(/\s+/)[0] : ""}`;
       }
@@ -840,11 +874,12 @@ const defauts = await page.evaluate((sombreActif) => {
       // l'ordre du document, et accumule le voile. Au-delà de 0,85, il
       // propose « texte invisible » ; l'étage pixel tranche en retirant le
       // texte et en regardant si l'image bouge.
-      let voile = 0;
+      const voiles = (grille.length ? grille : [centre]).map(() => 0);
       let vu = false;
       const couvrants = [];
+      const elemsCouvrants = [];
       for (const e of svg.querySelectorAll("circle, ellipse, rect, path, polygon, line, text")) {
-        if (e === t) { vu = true; continue; }
+        if (e === t) { vu = true; continue; }   // le <text> parent marque le rang
         if (!vu) continue;                        // peint AVANT : déjà composé
         if (e.tagName === "text") continue;       // un texte qui en couvre un
                                                   // autre est un chevauchement
@@ -855,26 +890,43 @@ const defauts = await page.evaluate((sombreActif) => {
         if (!peint) continue;
         const alpha = peint[3] * parseFloat(ce.fillOpacity || "1") * opaciteHeritee(e, svg);
         if (alpha <= 0.01) continue;
-        if (!dansLaForme(e)) continue;
-        voile = 1 - (1 - voile) * (1 - alpha);
+        const pts = grille.length ? grille : [centre];
+        let touche = false;
+        for (let k = 0; k < pts.length; k++) {
+          if (!dansLaForme(e, pts[k])) continue;
+          voiles[k] = 1 - (1 - voiles[k]) * (1 - alpha);
+          touche = true;
+        }
+        if (!touche) continue;
         couvrants.push(`${e.tagName.toLowerCase()}@${alpha.toFixed(2)}`);
+        elemsCouvrants.push(e);
       }
+      // Couverture = part MOYENNE du texte qui disparaît sous ce qui vient
+      // après lui. `voile` (le centre seul) reste pour la composition du fond.
+      const couverture = voiles.reduce((a, b) => a + b, 0) / voiles.length;
+      const voile = voiles[Math.floor(voiles.length / 2)];
 
       // L'encre elle-même peut être une voile : une étiquette à 40 % ne se
       // lit pas comme sa couleur nominale.
       const alphaEncre = encre[3] *
                          parseFloat(cs.fillOpacity || "1") *
-                         opaciteHeritee(t, svg);
+                         opaciteHeritee(porteur, svg);
       const encreVue = alphaEncre >= 0.99 ? encre.slice(0, 3) : composer(fond, encre, alphaEncre);
       // SC 1.4.3 : 3:1 pour du grand texte (≥ 24 px, ou ≥ 18,66 px en gras).
       const px = parseFloat(cs.fontSize);
       const gras = parseInt(cs.fontWeight, 10) >= 700;
       const seuil = px >= 24 || (gras && px >= 18.66) ? 3 : 4.5;
       const r = ratio(encreVue, fond);
-      if (r >= seuil && voile < 0.85) continue;
+      // Un texte à moitié effacé est un défaut même quand son contraste est
+      // parfait — c'est la classe que rien ne voyait avant le 2026-09-04.
+      if (r >= seuil && couverture < 0.5) continue;
       // Marqué pour l'ÉTAGE PIXEL, qui ira vérifier ce que le modèle avance.
       const idc = String(out.length);
-      t.setAttribute("data-contraste-id", idc);
+      porteur.setAttribute("data-contraste-id", idc);
+      for (const e of elemsCouvrants) {
+        e.setAttribute("data-couvre",
+          `${e.getAttribute("data-couvre") ?? ""} ${idc}`.trim());
+      }
       out.push({
         fig: iFig,
         id: idc,
@@ -882,20 +934,37 @@ const defauts = await page.evaluate((sombreActif) => {
         encre: encreVue.map(Math.round),
         encreBrute: encre.slice(0, 3).map(Math.round),
         couvrants: couvrants.slice(0, 4),
-        voile,
+        couverture,
         alphaEncre,
         seuil,
         modele: r,
-        type: voile >= 0.85 ? "texte invisible" : r < seuil * 0.75 ? "contraste grave" : "contraste faible",
+        type: couverture >= 0.9 ? "texte invisible"
+            : couverture >= 0.5 ? "texte recouvert"
+            : r < seuil * 0.75 ? "contraste grave" : "contraste faible",
         txt: s.slice(0, 26),
+        // Le texte du PARENT aussi : quand on juge un tspan (« 2+ »), une
+        // exemption écrite sur l'étiquette entière (« Cu2+ ») doit encore
+        // mordre. Sans ça, descendre aux feuilles casse les déclarations.
+        txtParent: (t.textContent || "").trim().slice(0, 40),
         detail:
           `${r.toFixed(2)}:1 — encre rgb(${encreVue.map(Math.round).join(",")}) ` +
           `sur ${nomFond} rgb(${fond.map(Math.round).join(",")}) · ` +
           `${Math.round(px)}px${gras ? " gras" : ""} · SC 1.4.3 demande ${seuil === 3 ? "3" : "4,5"}:1`,
       });
+      }   // fin des porteurs de ce <text>
     }
   });
 
+  if (replis > 0) {
+    out.push({
+      fig: -1,
+      type: "instrument",
+      txt: "repli sur la boîte englobante",
+      detail:
+        `${replis} test(s) d'appartenance ont dû se replier sur la boîte ` +
+        "englobante faute de CTM — la géométrie n'était donc PAS exacte pour eux.",
+    });
+  }
   return out;
 }, sombre);
 
@@ -926,7 +995,8 @@ const defauts = await page.evaluate((sombreActif) => {
 // quelles cinq propositions jamais vérifiées — exactement ce que tout cet
 // étage existe pour empêcher.
 const candidats = defauts.filter(
-  (d) => typeof d.type === "string" && (d.type.startsWith("contraste") || d.type === "texte invisible")
+  (d) => typeof d.type === "string" &&
+    (d.type.startsWith("contraste") || d.type === "texte invisible" || d.type === "texte recouvert")
 );
 if (pixelsTous) {
   const tous = await page.evaluate(() => {
@@ -1001,12 +1071,37 @@ if (candidats.length) {
     await el.scrollIntoViewIfNeeded();
     const b = await el.boundingBox();
     if (!b || b.width < 1 || b.height < 1) { d.pixels = "zone vide"; continue; }
-    const clip = { x: Math.max(0, b.x - 1), y: Math.max(0, b.y - 1), width: b.width + 2, height: b.height + 2 };
-    const avant = (await page.screenshot({ clip })).toString("base64");
+    // BORNÉ À LA FENÊTRE. Un tspan d'exposant ramené en haut de page peut
+    // déborder du cadre visible, et Playwright refuse alors la capture
+    // (« Clipped area is either empty or outside the resulting image ») —
+    // ce qui faisait tomber tout le balayage sur UNE figure. On rogne, et
+    // si après rognage il ne reste rien, on le DIT au lieu de planter.
+    const vp = page.viewportSize() ?? { width: 1280, height: 1200 };
+    const x0 = Math.max(0, Math.min(b.x - 1, vp.width - 1));
+    const y0 = Math.max(0, Math.min(b.y - 1, vp.height - 1));
+    const clip = {
+      x: x0,
+      y: y0,
+      width: Math.max(1, Math.min(b.width + 2, vp.width - x0)),
+      height: Math.max(1, Math.min(b.height + 2, vp.height - y0)),
+    };
+    if (clip.width < 2 || clip.height < 2) { d.pixels = "zone hors fenêtre"; continue; }
+    let echecCapture = null;
+    const capturer = async () => {
+      try {
+        return (await page.screenshot({ clip })).toString("base64");
+      } catch (e) {
+        echecCapture = e.message.split("\n")[0];
+        return null;
+      }
+    };
+    const avant = await capturer();
+    if (avant === null) { d.pixels = `capture impossible : ${echecCapture}`; continue; }
     await el.evaluate((e) => { e.style.visibility = "hidden"; });
-    const apres = (await page.screenshot({ clip })).toString("base64");
+    const apres = await capturer();
     await el.evaluate((e) => { e.style.visibility = ""; });
-    const m = await page.evaluate(async ([a, p]) => {
+    if (apres === null) { d.pixels = `capture impossible : ${echecCapture}`; continue; }
+    const comparer = async ([a, p]) => {
       const charge = (s64) =>
         new Promise((res, rej) => {
           const i = new Image();
@@ -1040,7 +1135,36 @@ if (candidats.length) {
       const ordre = lums.map((l, i) => [l, i]).sort((u, v) => u[0] - v[0]);
       const fond = cols[ordre[Math.floor(ordre.length / 2)][1]];
       return { maxd, part: changes / (da.length / 4), fond, n: da.length / 4 };
-    }, [avant, apres]);
+    };
+    const m = await page.evaluate(comparer, [avant, apres]);
+
+    // COMBIEN DU TEXTE EST ENCORE VISIBLE ? La question ne se pose pas en
+    // couleurs mais en SURFACE, et elle se mesure sans un gramme de modèle :
+    //   · A/B  — avec et sans le texte : ce qu'il MARQUE réellement ;
+    //   · D/E  — mêmes deux images, mais les formes qui le recouvrent
+    //            elles-mêmes cachées : ce qu'il MARQUERAIT sans elles.
+    // Le rapport des deux est la part effacée. Une étiquette dont il ne
+    // dépasse qu'une virgule (« la même couche, » dans pli-faille-profondeur)
+    // se voit ici, et NULLE PART ailleurs : son centre est dégagé ou non
+    // selon le hasard du dessin, et son contraste est parfait.
+    if (d.couverture > 0.05) {
+      const cacherCouvrants = (cacher) =>
+        page.evaluate(([idc, c]) => {
+          for (const e of document.querySelectorAll(`[data-couvre~="${idc}"]`)) {
+            e.style.visibility = c ? "hidden" : "";
+          }
+        }, [d.id, cacher]);
+      await cacherCouvrants(true);
+      const d1 = await capturer();
+      await el.evaluate((e) => { e.style.visibility = "hidden"; });
+      const e1 = await capturer();
+      await el.evaluate((e) => { e.style.visibility = ""; });
+      await cacherCouvrants(false);
+      const mTotal = d1 && e1 ? await page.evaluate(comparer, [d1, e1]) : { part: 0 };
+      d.couvertureMesuree = mTotal.part > 0.001
+        ? Math.max(0, Math.min(1, 1 - m.part / mTotal.part))
+        : null;
+    }
     if (fondCorps && m.fond.every((c, i) => Math.abs(c - fondCorps[i]) <= 1)) {
       // Le témoin a parlé : cette capture n'est pas tombée dans la carte.
       capturesRatees++;
@@ -1068,25 +1192,31 @@ if (candidats.length) {
   // Le modèle avait tort quand les pixels passent le seuil : on le dit, et on
   // retire le défaut. Un instrument qui garde ses faux positifs par prudence
   // apprend à ses lecteurs à ignorer ses sorties.
+  const recouvert = (d) =>
+    d.invisible ||
+    (typeof d.couvertureMesuree === "number" && d.couvertureMesuree >= 0.5);
   const dementis = candidats.filter(
-    (d) => !d.exploratoire && typeof d.mesure === "number" && d.mesure >= d.seuil && !d.invisible
+    (d) => !d.exploratoire && typeof d.mesure === "number" && d.mesure >= d.seuil && !recouvert(d)
   );
   for (const d of dementis) defauts.splice(defauts.indexOf(d), 1);
   // Les exploratoires n'étaient PAS des défauts : ils le deviennent seulement
   // si les pixels les condamnent. C'est le sens de la marche — le modèle
   // dirige le regard, la mesure tranche, et jamais l'inverse.
   const trouves = candidats.filter(
-    (d) => d.exploratoire && (d.invisible || (typeof d.mesure === "number" && d.mesure < d.seuil))
+    (d) => d.exploratoire && (recouvert(d) || (typeof d.mesure === "number" && d.mesure < d.seuil))
   );
   for (const d of trouves) defauts.push(d);
   for (const d of candidats) {
     if (typeof d.mesure !== "number") continue;
-    if (d.invisible) d.type = "texte invisible";
+    const cm = d.couvertureMesuree;
+    if (d.invisible || (typeof cm === "number" && cm >= 0.9)) d.type = "texte invisible";
+    else if (typeof cm === "number" && cm >= 0.5) d.type = "texte recouvert";
     else d.type = d.mesure < d.seuil * 0.75 ? "contraste grave" : "contraste faible";
     d.detail = `${d.pixels} · ${Math.round(d.px ?? 0) || ""}`.replace(/ · $/, "");
     d.detail = d.pixels + ` · SC 1.4.3 demande ${d.seuil === 3 ? "3" : "4,5"}:1` +
-      (d.couvrants && d.couvrants.length
-        ? ` · recouvert à ${(d.voile * 100).toFixed(0)} % par ${d.couvrants.join(", ")}`
+      (typeof d.couvertureMesuree === "number" && d.couvertureMesuree > 0.05
+        ? ` · ${(d.couvertureMesuree * 100).toFixed(0)} % du texte effacé (mesuré) par ` +
+          `${d.couvrants.join(", ")} — le modèle disait ${(d.couverture * 100).toFixed(0)} %`
         : "") +
       (typeof d.modele === "number" && Math.abs(d.mesure - d.modele) > 0.15
         ? ` (le modèle disait ${d.modele.toFixed(2)}:1)` : "");
@@ -1113,6 +1243,15 @@ if (candidats.length) {
       `\nÉtage pixel : ${dementis.length} candidat(s) démenti(s) par la mesure — ` +
         "le modèle de peinture les avait mal jugés, les pixels les blanchissent."
     );
+    if (process.env.DEMENTIS) {
+      for (const d of dementis.slice(0, 40)) {
+        console.log(
+          `    ~ [${path.basename(fichiers[d.fig] ?? "?")}] « ${d.txt} » — modèle : ` +
+            `${(d.couverture * 100).toFixed(0)} % couvert par ${(d.couvrants ?? []).join(", ")} ; ` +
+            `pixels : ${typeof d.couvertureMesuree === "number" ? (d.couvertureMesuree * 100).toFixed(0) + " %" : "—"}`
+        );
+      }
+    }
   }
 }
 
@@ -1165,12 +1304,17 @@ for (const f of fichiers) {
 const assumes = [];
 for (let i = defauts.length - 1; i >= 0; i--) {
   const d = defauts[i];
-  if (d.type !== "texte invisible") continue;
+  if (d.type !== "texte invisible" && d.type !== "texte recouvert") continue;
   const noms = exempte.get(fichiers[d.fig]);
   if (!noms) continue;
   // Le texte du rapport est tronqué à 26 caractères : on compare par préfixe.
+  // ET on compare aussi au texte du PARENT : depuis qu'on juge les tspans un
+  // par un, « Cu2+ » se présente en deux morceaux, « Cu » et « 2+ », et une
+  // exemption écrite sur l'étiquette entière doit encore mordre sur les deux.
   for (const n of noms) {
-    if (n.startsWith(d.txt) || d.txt.startsWith(n.slice(0, 26))) {
+    const parent = d.txtParent ?? "";
+    if (n.startsWith(d.txt) || d.txt.startsWith(n.slice(0, 26)) ||
+        (parent && (n.startsWith(parent) || parent.startsWith(n.slice(0, 40))))) {
       assumes.push(d);
       defauts.splice(i, 1);
       break;
