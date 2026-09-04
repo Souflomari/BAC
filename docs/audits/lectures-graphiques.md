@@ -24,8 +24,8 @@
 > toutes étaient servies. Le chiffre cité par K-8 et le HANDOFF était faux par
 > défaut, sans que rien ne le signale.
 
-**Chiffres au 2026-09-03 : 143 entrées sur 234**, dont
-**143 appartiennent à une épreuve complète** (donc affichée à l'élève en
+**Chiffres au 2026-09-04 : 152 entrées sur 247**, dont
+**152 appartiennent à une épreuve complète** (donc affichée à l'élève en
 mode examen).
 
 Trié par nombre de mentions.
@@ -36,12 +36,15 @@ Trié par nombre de mentions.
 | 29 | `bk-2022-r-x3` | `pc/dipole-rl` | SPC 2022 rattrapage | 2.25 | oui |
 | 29 | `bk-2025-r-x3` | `pc/dipole-rl` | SPC 2025 rattrapage | 3.75 | oui |
 | 26 | `bk-2015-n-x3` | `pc/rc-charge` | SPC 2015 normale | 2.5 | oui |
+| 24 | `bk-2013-r-x3b` | `pc/rlc-serie` | SPC 2013 rattrapage | 2.75 | oui |
 | 23 | `bk-2023-r-x3` | `pc/rc-charge` | SPC 2023 rattrapage | 1.5 | oui |
 | 23 | `bk-2024-r-x4` | `pc/rc-charge` | SPC 2024 rattrapage | 1.5 | oui |
+| 21 | `bk-2012-r-x1b` | `pc/suivi-temporel-vitesse` | SPC 2012 rattrapage | 4 | oui |
 | 21 | `bk-2021-r-x1` | `pc/reactions-acido-basiques` | SPC 2021 rattrapage | 5 | oui |
 | 21 | `bk-2021-r-x4b` | `pc/dipole-rl` | SPC 2021 rattrapage | 2 | oui |
 | 19 | `bk-2020-n-x4` | `pc/rlc-serie` | SPC 2020 normale | 3.5 | oui |
 | 19 | `bk-2021-r-x4c` | `pc/rlc-serie` | SPC 2021 rattrapage | 1.5 | oui |
+| 17 | `bk-2013-r-x3` | `pc/dipole-rl` | SPC 2013 rattrapage | 2.25 | oui |
 | 17 | `bk-2021-n-x1` | `pc/suivi-temporel-vitesse` | SPC 2021 normale | 2.5 | oui |
 | 17 | `bk-2021-r-x4` | `pc/rc-charge` | SPC 2021 rattrapage | 2 | oui |
 | 17 | `bk-2022-n-x1` | `pc/rc-charge` | SPC 2022 normale | 1.5 | oui |
@@ -49,6 +52,7 @@ Trié par nombre de mentions.
 | 17 | `bk-2025-r-x4b` | `pc/systemes-oscillants` | SPC 2025 rattrapage | 3.5 | oui |
 | 16 | `bk-2011-r-x3` | `pc/rc-charge` | SPC 2011 rattrapage | 2.5 | oui |
 | 16 | `bk-2012-n-x4` | `pc/dipole-rl` | SPC 2012 normale | 2.5 | oui |
+| 16 | `bk-2013-r-x4` | `pc/rotation-axe-fixe` | SPC 2013 rattrapage | 5.5 | oui |
 | 16 | `bk-2017-n-x3b` | `pc/dipole-rl` | SPC 2017 normale | 3.25 | oui |
 | 16 | `bk-2024-n-x4` | `pc/dipole-rl` | SPC 2024 normale | 1.5 | oui |
 | 16 | `bk-2024-n-x5` | `pc/chute-mouvements-plans` | SPC 2024 normale | 2.75 | oui |
@@ -56,11 +60,13 @@ Trié par nombre de mentions.
 | 15 | `bk-2024-n-x1` | `pc/suivi-temporel-vitesse` | SPC 2024 normale | 2.25 | oui |
 | 14 | `bk-2011-n-x3` | `pc/rc-charge` | SPC 2011 normale | 4.5 | oui |
 | 14 | `bk-2011-r-x2` | `pc/ondes-mecaniques-progressives` | SPC 2011 rattrapage | 2.5 | oui |
+| 14 | `bk-2012-r-x3` | `pc/rlc-serie` | SPC 2012 rattrapage | 3 | oui |
 | 14 | `bk-2023-n-x3` | `pc/dipole-rl` | SPC 2023 normale | 1.75 | oui |
 | 14 | `bk-2024-r-x5` | `pc/lois-de-newton` | SPC 2024 rattrapage | 2.25 | oui |
 | 13 | `bk-2010-n-x1` | `pc/transformations-lentes-rapides` | SPC 2010 normale | 4.25 | oui |
 | 13 | `bk-2011-r-x3b` | `pc/rlc-serie` | SPC 2011 rattrapage | 2.5 | oui |
 | 13 | `bk-2012-n-x4b` | `pc/rlc-serie` | SPC 2012 normale | 2 | oui |
+| 13 | `bk-2013-r-x1c` | `pc/esterification-hydrolyse` | SPC 2013 rattrapage | 2.75 | oui |
 | 13 | `bk-2015-n-x4b` | `pc/systemes-oscillants` | SPC 2015 normale | 2.5 | oui |
 | 13 | `bk-2015-r-x3b` | `pc/rlc-serie` | SPC 2015 rattrapage | 2.5 | oui |
 | 13 | `bk-2021-n-x4` | `pc/rc-charge` | SPC 2021 normale | 1 | oui |
@@ -119,6 +125,7 @@ Trié par nombre de mentions.
 | 4 | `bk-2024-n-x1` | `pc/reactions-acido-basiques` | SPC 2024 normale | 4.75 | oui |
 | 4 | `bk-2024-n-x4` | `pc/rlc-serie` | SPC 2024 normale | 2 | oui |
 | 3 | `bk-2010-n-x4c` | `pc/chute-mouvements-plans` | SPC 2010 normale | 2.5 | oui |
+| 3 | `bk-2012-r-x3b` | `pc/ondes-em-modulation` | SPC 2012 rattrapage | 2 | oui |
 | 3 | `bk-2017-n-x1c` | `pc/esterification-hydrolyse` | SPC 2017 normale | 2.75 | oui |
 | 3 | `bk-2017-n-x2` | `pc/ondes-mecaniques-periodiques` | SPC 2017 normale | 2.5 | oui |
 | 3 | `bk-2023-r-x1` | `pc/electrolyse` | SPC 2023 rattrapage | 2.75 | oui |
@@ -146,6 +153,8 @@ Trié par nombre de mentions.
 | 1 | `bk-2010-n-x4b` | `pc/chute-mouvements-plans` | SPC 2010 normale | 2 | oui |
 | 1 | `bk-2011-r-x1` | `pc/rotation-axe-fixe` | SPC 2011 rattrapage | 2.25 | oui |
 | 1 | `bk-2012-n-x3` | `pc/decroissance-radioactive` | SPC 2012 normale | 2 | oui |
+| 1 | `bk-2012-r-x1` | `pc/electrolyse` | SPC 2012 rattrapage | 3 | oui |
+| 1 | `bk-2012-r-x4` | `pc/chute-mouvements-plans` | SPC 2012 rattrapage | 5.5 | oui |
 | 1 | `bk-2015-n-x1b` | `pc/electrolyse` | SPC 2015 normale | 2.25 | oui |
 | 1 | `bk-2015-n-x4` | `pc/chute-mouvements-plans` | SPC 2015 normale | 3 | oui |
 | 1 | `bk-2017-n-x4b` | `pc/aspects-energetiques` | SPC 2017 normale | 2 | oui |
