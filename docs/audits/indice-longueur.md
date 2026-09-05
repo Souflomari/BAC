@@ -67,11 +67,17 @@ deuxième choix. Sur `TTP-1`, la bonne réponse faisait 270 caractères face à
 
 | | éligibles | indice | exploitable | écart médian |
 |---|---:|---:|---:|---:|
-| **Corpus entier** | 1 460 | 36 % | **10 %** | 19 car. |
+| **Corpus entier** | 1 456 | 34 % | **0 %** | 14 car. |
 
-**Vingt-deux notions closes à 0 % d'indice exploitable**, dont la totalité de
-la SVT et les six pires notions de physique-chimie, de philosophie et de
-mathématiques. Environ **700 choix réécrits sur 210 items**.
+**Les 62 notions sont à zéro.** Plus un seul item du corpus ne porte une
+avance de longueur visible pour la bonne réponse. Environ **1 100 choix
+réécrits sur 340 items**, en une trentaine de passes.
+
+La colonne « indice » reste à 34 % — la clé est encore souvent la plus
+longue — mais son avance ne dépasse plus, nulle part, les 20 caractères ET
+les 20 % qui la rendraient visible. C'est précisément la distinction que
+les deux nombres servent à faire : on n'a pas égalisé des longueurs au
+caractère près, on a supprimé ce qui se voit.
 
 ## Les trois remèdes, et comment choisir
 
@@ -139,25 +145,24 @@ qu'**après** avoir fait baisser l'indice, jamais pour faire taire une hausse.
 **Négatif prouvé :** en rallongeant de 137 caractères une clé déjà réparée, la
 porte passe de « tenu » à « ROMPU », code de sortie 1, et nomme la notion.
 
-## Ce qui reste — la dette, chiffrée
+## Ce qui reste
 
-139 items portent encore un indice exploitable, répartis sur une trentaine de
-notions entre 10 % et 33 %. Aucune n'est au-dessus du seuil de marquage. Le
-travail restant est de l'**écriture d'items**, pas de la mécanique : il
-appartient à la voie pédagogie, avec un spec, et le cliquet garantit qu'il ne
-peut que descendre.
+**Rien, sur cette classe.** Le cliquet est scellé à **0/1 456**, ce qui en
+fait désormais une porte franche : la moindre réapparition d'un indice
+exploitable, dans n'importe quelle notion, casse le build.
 
-Les notions les plus chargées, à reprendre en priorité :
+Deux choses restent ouvertes, et elles sont d'une autre nature :
 
-| Notion | éligibles | exploitable |
-|---|---:|---:|
-| `pc/ondes-em-modulation` | 27 | 33 % |
-| `pc/controle-catalyse` | 24 | 33 % |
-| `pc/chute-mouvements-plans` | 34 | 32 % |
-| `pc/etat-equilibre` | 28 | 32 % |
-| `pc/transformations-lentes-rapides` | 22 | 32 % |
-| `pc/rotation-axe-fixe` | 30 | 30 % |
-| `pc/systemes-oscillants` | 42 | 26 % |
+1. **L'indice INVERSE**, la clé strictement la plus courte — 15 % sur le
+   corpus, jusqu'à 52 % sur `pc/aspects-energetiques` et 44 % sur
+   `pc/reactions-acido-basiques`. Il s'exploite tout aussi bien et n'est
+   pas gardé. C'est la prochaine campagne de cette famille.
+2. **La QUALITÉ pédagogique des distracteurs allongés.** Un distracteur
+   peut être long, parallèle à la clé, et ne correspondre à aucune erreur
+   réelle d'élève. Rien ici ne le mesure ; seule une relecture par la voie
+   pédagogie le dira, et c'est la limite honnête de cette campagne : elle a
+   supprimé un indice de forme, elle n'a pas vérifié la valeur diagnostique
+   de ce qu'elle a écrit à la place.
 
 ## Lancer l'instrument
 

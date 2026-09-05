@@ -1515,7 +1515,7 @@ items:
           qu'elles soient égales — et ici, elles sont très différentes.
           Modèle erroné : « $P(A|B)$ et $P(B|A)$ sont la même chose. »
       - id: B
-        text: "Ce raisonnement est faux uniquement parce qu'il faudrait répondre par $P(M \\cap T^+)$, la probabilité d'être à la fois malade et positif, plutôt que par $0{,}95$."
+        text: "Ce raisonnement est faux uniquement parce qu'il faudrait répondre par $P(M \\cap T^+)$, la probabilité d'être à la fois malade et positif au test, plutôt que par la valeur $0{,}95$ donnée par l'énoncé."
         correct: false
         misconception: mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection
         also_reveals: []
@@ -1526,7 +1526,7 @@ items:
           parmi les personnes testées positives. Modèle erroné :
           « $P(A|B) = P(A \cap B)$. »
       - id: C
-        text: "$P(T^+|M)=0{,}95$ et $P(M|T^+)$ sont deux probabilités conditionnelles différentes : la première mesure la proportion de positifs parmi les malades, la seconde mesure la proportion de malades parmi les positifs — rien ne garantit qu'elles soient égales."
+        text: "$P(T^+|M)=0{,}95$ et $P(M|T^+)$ sont deux probabilités conditionnelles différentes : la première mesure la proportion de positifs parmi les malades, la seconde celle des malades parmi les positifs."
         correct: true
       - id: D
         text: "Ce raisonnement est faux car on ne peut pas relier $P(T^+|M)$ à $P(M|T^+)$ sans savoir si $M$ et $T^+$ sont des événements indépendants."
@@ -1590,7 +1590,7 @@ items:
           quand même donner une valeur prédictive positive bien plus faible.
           Modèle erroné : « $P(A|B)$ et $P(B|A)$ sont la même chose. »
       - id: B
-        text: "$\\approx 0{,}20$ — la population saine, bien plus nombreuse, continue de produire beaucoup de faux positifs malgré son faible taux, ce qui dilue fortement la proportion de vrais malades parmi les positifs."
+        text: "$\\approx 0{,}20$ — la population saine, bien plus nombreuse, produit malgré son faible taux beaucoup de faux positifs, ce qui dilue la proportion de vrais malades."
         correct: true
       - id: C
         text: "$\\approx 0{,}018$ (soit $P(M) \\times P(T^+|M) = 0{,}02 \\times 0{,}90$), la probabilité d'être à la fois malade et positif."
@@ -1604,7 +1604,7 @@ items:
           l'univers aux seules personnes positives. Modèle erroné :
           « $P(A|B) = P(A \cap B)$. »
       - id: D
-        text: "$\\approx 0{,}02$ — le test ne fait que confirmer la fréquence de base de la maladie, un résultat positif n'apporte pas d'information supplémentaire."
+        text: "$\\approx 0{,}02$ — le test ne fait que confirmer la fréquence de base de la maladie dans la population, et un résultat positif n'apporte aucune information supplémentaire."
         correct: false
         misconception: null
         feedback: >

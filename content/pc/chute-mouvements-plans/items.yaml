@@ -1437,10 +1437,10 @@ items:
           elle suppose la pente constante sur chaque pas, ce qui reste une
           approximation qui s'ameliore seulement quand $\Delta t$ diminue.
       - id: C
-        text: "Ce raccourci revient à ignorer le frottement, et l'on retrouve la droite de la chute libre ; par ailleurs la méthode d'Euler ne donne jamais qu'une valeur approchée"
+        text: "Ce raccourci revient à ignorer le frottement, et l'on retrouve la droite de la chute libre ; la méthode d'Euler, elle, ne donne jamais qu'une valeur approchée"
         correct: true
       - id: D
-        text: "Le vrai problème de ce tableau, c'est d'avoir oublié de multiplier $a_i$ par le pas $\\Delta t$ à chaque ligne — et non d'avoir gardé $a_i$ fixe"
+        text: "Le vrai problème de ce tableau, c'est d'avoir oublié de multiplier $a_i$ par le pas $\\Delta t$ à chaque ligne — et non pas d'avoir gardé $a_i$ fixe"
         correct: false
         misconception: mc.physics.pc_chute_plans.euler-oubli-dt
         also_reveals: []

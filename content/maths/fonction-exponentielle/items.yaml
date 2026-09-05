@@ -172,7 +172,7 @@ items:
         text: "$e^x$ reste strictement positif, mais devient extrêmement proche de $0$."
         correct: true
       - id: B
-        text: "$e^x$ devient négatif."
+        text: "$e^x$ finit par devenir négatif pour des valeurs assez négatives de $x$."
         correct: false
         misconception: mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine
         feedback: >
@@ -181,7 +181,7 @@ items:
           image est $]0,+\infty[$, jamais un nombre négatif). Aussi négatif
           que soit $x$, $e^x$ se rapproche de $0$ sans jamais le franchir.
       - id: C
-        text: "$e^x$ devient nul (égal à $0$)."
+        text: "$e^x$ devient exactement nul, c'est-à-dire égal à $0$, pour $x$ très négatif."
         correct: false
         misconception: mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine
         feedback: >
@@ -190,7 +190,7 @@ items:
           n'y a rien à « défaire » pour $y=0$. $e^x$ s'approche de $0$ sans
           jamais l'atteindre.
       - id: D
-        text: "$e^x$ n'est pas défini pour $x$ très négatif."
+        text: "$e^x$ n'est tout simplement pas défini lorsque $x$ est très négatif."
         correct: false
         misconception: mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine
         feedback: >
@@ -1073,7 +1073,7 @@ items:
           $-\infty$, elle reste toujours strictement positive. La limite en
           $-\infty$ est $0$ (asymptote horizontale $y=0$), pas $-\infty$.
       - id: B
-        text: "$\\exp$ est strictement croissante sur $\\mathbb{R}$ tout entier, de limite $0$ en $-\\infty$ à $+\\infty$ en $+\\infty$, sans jamais s'annuler ni changer de sens de variation."
+        text: "$\\exp$ est strictement croissante sur $\\mathbb{R}$, de limite $0$ en $-\\infty$ à $+\\infty$ en $+\\infty$, sans jamais s'annuler ni changer de sens."
         correct: true
       - id: C
         text: "$\\exp$ est strictement décroissante sur $]-\\infty,0]$ puis strictement croissante sur $[0,+\\infty[$."
@@ -1086,7 +1086,7 @@ items:
           sens de variation — sa dérivée $e^x$ est toujours strictement
           positive, jamais nulle.
       - id: D
-        text: "$\\exp$ est strictement croissante sur $\\mathbb{R}$, mais atteint un minimum en $x=0$ où $\\exp(0)=1$, à cause de sa convexité."
+        text: "$\\exp$ est strictement croissante sur $\\mathbb{R}$, mais atteint un minimum en $x=0$ où $\\exp(0)=1$, en raison de sa convexité."
         correct: false
         misconception: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
         feedback: >

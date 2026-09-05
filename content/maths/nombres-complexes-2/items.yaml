@@ -586,7 +586,7 @@ items:
         text: "Une rotation de centre $O$ et d'angle $\\pi/2$ (un quart de tour direct), sans changement de taille."
         correct: true
       - id: B
-        text: "Un agrandissement (une homothétie), sans rotation."
+        text: "Un agrandissement, c'est-à-dire une homothétie de centre $O$, sans la moindre rotation."
         correct: false
         misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
         feedback: >
@@ -597,7 +597,7 @@ items:
           multiplication par $i$ n'agrandit rien, elle fait seulement
           tourner.
       - id: C
-        text: "Une translation."
+        text: "Une translation du plan, de vecteur d'affixe $i$, sans rotation ni changement de taille."
         correct: false
         misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
         feedback: >
@@ -606,7 +606,7 @@ items:
           multiplie $z$ par $i$, on ne lui ajoute rien : il ne peut donc
           pas s'agir d'une translation.
       - id: D
-        text: "Une symétrie par rapport à l'axe réel."
+        text: "Une symétrie par rapport à l'axe réel, qui laisse les points de cet axe inchangés."
         correct: false
         misconception: mc.math.maths_complexes_trigo.mult-par-i-non-rotation
         feedback: >
@@ -1572,7 +1572,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "La médiatrice du segment $[AB]$."
+        text: "La médiatrice du segment $[AB]$, c'est-à-dire la droite d'équation $x = 1$ dans le plan."
         correct: false
         misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
         feedback: >
@@ -1585,7 +1585,7 @@ items:
         text: "Le cercle de diamètre $[AB]$ (centre le point d'affixe $1$, rayon $2$), privé des points $A$ et $B$."
         correct: true
       - id: C
-        text: "Le cercle de centre $A$ et de rayon $AB=4$."
+        text: "Le cercle de centre le point $A$ et de rayon la distance $AB=4$, tout entier."
         correct: false
         misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
         feedback: >
@@ -1597,7 +1597,7 @@ items:
           fixe à $A$ : le cercle obtenu est centré au MILIEU de
           $[AB]$, pas en $A$.
       - id: D
-        text: "La droite $(AB)$ privée du point $B$."
+        text: "La droite $(AB)$ tout entière, privée du seul point $B$ où le quotient n'est pas défini."
         correct: false
         misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
         feedback: >

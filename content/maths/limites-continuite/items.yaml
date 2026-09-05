@@ -1646,8 +1646,7 @@ items:
       - id: A
         text: >-
           Elle n'existe pas comme limite finie : l'argument $x+1$ tend vers $1$ et non
-          vers $0$, donc le formulaire ne s'applique pas. Le numérateur tend vers
-          $\sin(1)\neq 0$ et le dénominateur vers $0$.
+          vers $0$. Le numérateur tend vers $\sin(1)\neq 0$ et le dénominateur vers $0$.
         correct: true
       - id: B
         text: "$1$, car l'expression est de la forme $\\sin(\\text{quelque chose})$ divisé par ce même quelque chose."
@@ -1672,7 +1671,7 @@ items:
       - id: D
         text: >-
           $+\infty$ des deux côtés, car $\sin(1)\approx 0{,}84$ est un nombre positif,
-          et un nombre positif divisé par une quantité qui tend vers $0$ donne toujours
+          et un nombre positif divisé par une quantité tendant vers $0$ donne toujours
           $+\infty$.
         correct: false
         misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0

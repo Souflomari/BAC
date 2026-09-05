@@ -1050,15 +1050,15 @@ items:
         correct: true
       - id: B
         text: >-
-          $\tau$ dépend fortement de $c$ : plus $c$ est petite, plus $\tau$
-          est petit
+          $\tau$ dépend fortement de la concentration $c$ : plus $c$ est petite, plus le
+          taux $\tau$ est petit
         correct: false
         feedback: >
           Cette dépendance de $\tau$ à $c$ caractérise un acide faible, pas un
           acide fort : par définition, l'acide fort réagit quasi totalement
           quelle que soit sa concentration.
       - id: C
-        text: "$\\tau \\approx 0$, car une faible concentration signifie une faible réaction"
+        text: "$\\tau \\approx 0$, car une faible concentration apportée signifie nécessairement une faible réaction"
         correct: false
         feedback: >
           Une faible concentration donne peu de $H_3O^+$ en valeur absolue,
@@ -1745,7 +1745,7 @@ items:
     choices:
       - id: A
         text: >-
-          À l'abscisse où $\text{pH} = 7$
+          À l'abscisse du point où le pH de la solution titrée vaut exactement $7$
         correct: false
         misconception: AB-EQU-1
         feedback: >
@@ -1755,7 +1755,7 @@ items:
           un volume trop petit.
       - id: B
         text: >-
-          Là où la dérivée $d\text{pH}/dV$ s'annule
+          Là où la dérivée $d\text{pH}/dV$ de la courbe s'annule au cours du titrage
         correct: false
         misconception: AB-EQU-2
         feedback: >
@@ -1765,12 +1765,13 @@ items:
           rien.
       - id: C
         text: >-
-          Au point d'inflexion de la courbe (milieu du saut), par la
-          méthode des tangentes ou celle de la dérivée
+          Au point d'inflexion de la courbe, au milieu du saut de pH, par la méthode des
+          tangentes
         correct: true
       - id: D
         text: >-
-          À l'abscisse où $\text{pH} = pK_A$, relevée à la demi-équivalence
+          À l'abscisse où $\text{pH} = pK_A$, valeur que l'on relève au point de
+          demi-équivalence du titrage
         correct: false
         misconception: AB-EQU-3
         feedback: >
@@ -2044,8 +2045,8 @@ items:
           approximation, pas une valeur exacte garantie.
       - id: B
         text: >-
-          Cela n'a pas d'importance : n'importe quel indicateur donnerait
-          une lecture équivalente
+          Cela n'a pas la moindre importance : n'importe quel indicateur coloré
+          donnerait ici une lecture parfaitement équivalente
         correct: false
         misconception: AB-IND-1
         feedback: >
