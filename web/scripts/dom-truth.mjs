@@ -878,6 +878,56 @@ try {
     else console.log(`  ✓ ${prog.nb} matières, couvertures ${prog.couvertures.join(" · ")} — factuelles, sans %, sans Cover`);
   }
 
+  // (2026-09-05) « CHANGER DE MATIÈRE » NE SE DIT QUE SI ON CHANGE DE MATIÈRE.
+  //
+  // Le surtitre de la fin de leçon était « Changer de matière — <matière> »
+  // en dur. Il tenait par accident tant que la suggestion venait de la DATE
+  // DE FICHIER (elle sautait d'une matière à l'autre au hasard). Le correctif
+  // du matin — suivre l'ordre du programme — l'a rendu FAUX sur 58 leçons sur
+  // 62 : l'élève qui finit « Autrui » lisait « CHANGER DE MATIÈRE —
+  // PHILOSOPHIE » au-dessus de « L'histoire ».
+  //
+  // Réparer une chose en avait cassé une autre, et seul le fait de REGARDER
+  // la page l'a montré. Cette porte est ce qui remplace le regard, la
+  // prochaine fois.
+  {
+    console.log(`\n[fin de leçon] SWEEP: le surtitre dit la vérité sur la matière`);
+    const { CURRICULUM, listNotions } = loadCurriculum();
+    const notions = listNotions();
+    const construits = new Set(notions.map((n) => `${n.subject}/${n.slug}`));
+    // Deux témoins : une leçon dont la suite est dans la MÊME matière, et une
+    // dont la suite CHANGE de matière. Une porte qui ne verrait qu'un des deux
+    // cas se satisferait d'une étiquette figée dans l'autre sens.
+    let memeMatiere = null;
+    let autreMatiere = null;
+    for (const n of notions) {
+      const id = `${n.subject}/${n.slug}`;
+      const suite = CURRICULUM.nextInParcours(id, construits);
+      if (!suite) continue;
+      const change = suite.split("/")[0] !== n.subject;
+      if (!change && !memeMatiere) memeMatiere = id;
+      if (change && !autreMatiere) autreMatiere = id;
+      if (memeMatiere && autreMatiere) break;
+    }
+    const epage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    for (const [id, doitChanger] of [[memeMatiere, false], [autreMatiere, true]]) {
+      if (!id) continue;
+      await epage.goto(`${BASE}/notions/${id}?chapitre=99`, { waitUntil: "networkidle" });
+      const surtitre = await epage.evaluate(
+        () => document.querySelector("[data-lesson-end] a span span")?.textContent?.trim() ?? ""
+      );
+      checks++;
+      const ditChanger = /Changer de matière/i.test(surtitre);
+      if (ditChanger !== doitChanger)
+        failures += fail(
+          `fin de leçon /${id} : surtitre « ${surtitre} » — la suite est dans ` +
+            `${doitChanger ? "une AUTRE" : "la MÊME"} matière, l'étiquette dit le contraire`
+        );
+      else console.log(`  ✓ /${id} — « ${surtitre} » (${doitChanger ? "change" : "même"} de matière)`);
+    }
+    await epage.close();
+  }
+
   // (2026-09-05) UN TITRE D'EXERCICE EST DU TEXTE, PAS DU TeX.
   //
   // Le `title` d'une entrée de banque est rendu en TEXTE BRUT — dans la liste

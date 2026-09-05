@@ -29,7 +29,31 @@ import { cn } from "@/lib/utils";
 import { subjectLabel, notionHref } from "@/lib/subjects";
 
 // ── Subject display labels (mirrors NotionPageView's notion-surface map) ──────
-export function LessonEnd({ next }: { next: NotionMeta | null }) {
+export function LessonEnd({
+  next,
+  currentSubject,
+}: {
+  next: NotionMeta | null;
+  /**
+   * La matière de la leçon qu'on VIENT de finir. Sert à une seule chose :
+   * savoir si la suggestion change de matière ou non.
+   *
+   * POURQUOI CE PARAMÈTRE EXISTE (2026-09-05). Le surtitre était
+   * « Changer de matière — <matière> », en dur, quelle que soit la
+   * suggestion. Ça tenait tant que la suggestion était tirée de la DATE DE
+   * FICHIER : elle sautait d'une matière à l'autre au hasard, et l'étiquette
+   * tombait juste assez souvent pour ne pas se faire remarquer.
+   *
+   * Le correctif du matin — la fin de leçon suit désormais l'ordre du
+   * programme — a rendu l'étiquette FAUSSE sur **58 leçons sur 62** : le
+   * chapitre suivant est presque toujours dans la même matière, et l'élève
+   * qui finit « Autrui » lisait « CHANGER DE MATIÈRE — PHILOSOPHIE » suivi de
+   * « L'histoire ». Réparer une chose en avait cassé une autre, et seul le
+   * fait de REGARDER la page l'a montré.
+   */
+  currentSubject?: string;
+}) {
+  const changeDeMatiere = next != null && currentSubject != null && next.subject !== currentSubject;
   return (
     <aside
       data-lesson-end
@@ -57,7 +81,8 @@ export function LessonEnd({ next }: { next: NotionMeta | null }) {
         >
           <span className="min-w-0">
             <span className="block text-caption font-medium uppercase tracking-eyebrow text-secondary">
-              Changer de matière — {subjectLabel(next.subject)}
+              {changeDeMatiere ? "Changer de matière" : "La suite du parcours"} —{" "}
+              {subjectLabel(next.subject)}
             </span>
             <span className="mt-2 block font-display text-h3 font-semibold text-primary group-hover:text-accent transition-colors duration-micro">
               {next.title}

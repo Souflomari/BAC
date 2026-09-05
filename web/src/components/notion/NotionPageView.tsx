@@ -387,7 +387,7 @@ export function NotionPageView({
                 checkpoints={checkpoints}
                 itemsByRung={itemsByRung}
                 hasTrailingChapter={hasBank}
-                lessonEnd={hasAnyContent ? <LessonEnd next={nextNotion} /> : undefined}
+                lessonEnd={hasAnyContent ? <LessonEnd next={nextNotion} currentSubject={meta.subject} /> : undefined}
               />
             ) : (
               <div
@@ -425,7 +425,7 @@ export function NotionPageView({
                 className="chapter-view"
               >
                 <ExerciseBank bank={bank!} />
-                {hasAnyContent && <LessonEnd next={nextNotion} />}
+                {hasAnyContent && <LessonEnd next={nextNotion} currentSubject={meta.subject} />}
                 <ChapterTransport index={trailingChapterIndex} />
               </section>
             )}

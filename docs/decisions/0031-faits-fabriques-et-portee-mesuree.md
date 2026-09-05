@@ -168,6 +168,19 @@ notions sur 62, les dérivations dépliables sur **une**.
   mesure une habitude de rédaction, pas ce que l'élève reçoit** — c'est la
   neuvième décision de cet arc, et elle est née d'une erreur, pas d'un défaut
   du produit.
+- **Un correctif juste qui a rendu FAUSSE l'étiquette d'à côté.** La décision
+  2 (deux surfaces qui répondent à la même question partagent leur source) a
+  fait suivre à la fin de leçon l'ordre du programme. Juste — et le surtitre
+  posé au-dessus, « Changer de matière — <matière> », écrit en dur, est
+  devenu faux sur **58 leçons sur 62** : la suite est désormais presque
+  toujours dans la MÊME matière. Tant que la suggestion venait de la date de
+  fichier, elle sautait d'une matière à l'autre au hasard et l'étiquette
+  tombait juste assez souvent. Les cinq portes armées le matin n'ont rien vu
+  et ne POUVAIENT rien voir : elles gardent l'ordre rendu, pas l'étiquette
+  posée dessus. **Une correction juste peut invalider une hypothèse
+  voisine ; après une correction qui change ce que le produit CHOISIT,
+  rouvrir les pages où ce choix s'AFFICHE.** Corrigé, et gardé par une porte
+  à DEUX témoins (une suite qui reste dans la matière, une qui en change).
 - **Une cause diagnostiquée à l'envers, corrigée dans l'heure.** Devant un
   run de CI tronqué et une pastille « cancelled », j'ai conclu « le budget de
   30 min est trop court », relevé la limite à 50 et écrit le découpage mesuré

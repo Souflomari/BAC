@@ -2391,6 +2391,21 @@ parce qu'une méthode qui n'enregistre que ses succès n'est pas une méthode.
 
 ## 11. Addendum du 2026-09-05 (suite) — « dans quel ordre va le programme »
 
+*Huit sections, et un fil unique qui les traverse : **une chose qui affirme
+quelque chose de faux**. Une carte qui prétend donner l'ordre du cadre et
+donne l'alphabet (§11.1) ; une leçon qui annonce ses notes d'atelier comme du
+contenu (§11.3) ; une carte d'exercice qui n'annonce que son numéro (§11.4) ;
+un compteur qui mesure la case au lieu de la chose (§11.5) ; une pastille de
+CI verte sur des portes qui ne tournaient pas (§11.7) ; et — le plus utile —
+une étiquette rendue fausse par un correctif juste de la veille au matin
+(§11.8). Trois de ces découvertes sont venues d'une porte qui en savait plus
+que son auteur ; deux d'un simple coup d'œil à une page.*
+
+*Trois choses ont aussi été VÉRIFIÉES ET ÉCARTÉES, et elles comptent autant :
+les 212 renvois à une figure absente (tous servis), les 24 labels de
+misconception truffés de TeX (rendus nulle part), et l'ordre de rendu des
+morceaux d'épreuve (correct partout).*
+
 ### 11.1 Quatre surfaces, quatre réponses
 
 Le matin avait corrigé DEUX surfaces qui répondaient chacune de leur côté à
@@ -2585,3 +2600,38 @@ le titre d'exercice — passent en CI, avec le chargement jiti de
 `curriculum.ts` / `examens.ts` / `content.ts` depuis `dom-truth`. Ainsi que
 la nouvelle suite `test-typographie` et la porte typographie avec l'espace
 insécable nombre-unité.
+
+### 11.8 Réparer l'ordre a rendu FAUSSE l'étiquette d'à côté
+
+Le surtitre de la fin de leçon disait, en dur :
+
+> **CHANGER DE MATIÈRE — PHILOSOPHIE**
+> **L'histoire**
+
+…au bas de la leçon « Autrui ». Qui est en philosophie.
+
+**C'est le correctif du matin qui l'a cassé, et il faut le dire dans ce
+sens-là.** Tant que la suggestion venait de la DATE DE FICHIER, elle sautait
+d'une matière à l'autre au hasard, et « Changer de matière » tombait juste
+assez souvent pour ne jamais se faire remarquer. En faisant suivre à la fin
+de leçon l'ordre du programme — ce qui était juste — la suite est devenue
+presque toujours le chapitre suivant de la MÊME matière. Mesuré :
+**58 leçons sur 62** affichaient désormais « Changer de matière » sans
+changer de matière. Seules quatre — les dernières de chaque matière — en
+changent réellement.
+
+Les cinq portes armées le matin n'ont rien vu, et ne pouvaient rien voir :
+elles vérifient l'ORDRE rendu, pas l'ÉTIQUETTE posée dessus. **C'est en
+ouvrant une leçon de philosophie à son dernier chapitre, pour regarder autre
+chose, que c'est apparu.**
+
+Le surtitre dit maintenant « La suite du parcours — <matière> » quand on
+reste, « Changer de matière — <matière> » quand on change. La porte qui le
+garde emploie **DEUX témoins** — une leçon dont la suite reste dans la
+matière, une dont la suite en change — parce qu'un seul témoin se satisfait
+d'une étiquette figée dans le bon sens pour ce cas-là.
+
+> **Une correction juste peut invalider une hypothèse voisine.** Le harnais
+> ne prévient pas : il garde ce qu'on lui a demandé de garder. Après une
+> correction qui change ce que le produit CHOISIT, il faut rouvrir les pages
+> où ce choix s'AFFICHE.
