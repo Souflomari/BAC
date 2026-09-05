@@ -44,8 +44,11 @@ Read the right document for the task at hand:
   part dans le dépôt ». Elle est archivée sous `docs/archive/`. Le blocage
   invoqué par la proposition de 2026-06 (« ne pas toucher au cadrage
   frontend tant que la décision de pile n'est pas actée ») était levé depuis
-  l'ADR 0016. `schema-reconciliation.md` et `known-issues.md` restent
-  STALES, avec leurs propositions dans `docs/reestablish-state/`.]**
+  l'ADR 0016. `known-issues.md` porte désormais une ÉTIQUETTE DE STATUT
+  vérifiée : six entrées re-mesurées contre le dépôt (une résolue, une
+  toujours vraie mais morte, une à moitié, une devenue sans objet), le reste
+  laissé au jugement du propriétaire. `schema-reconciliation.md` reste
+  STALE, avec sa proposition dans `docs/reestablish-state/`.]**
 - **`docs/decisions/*.md`** — *what we decided and why.* The ADR trail.
   Numbered, append-only history. Referenced for context on past
   decisions. **ADR 0025 consolidates the July-2026 sprint's first arc**
