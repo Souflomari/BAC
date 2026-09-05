@@ -3299,7 +3299,7 @@ longue restait de 1,6 à 4,8 s (médiane 2,1 s) sur les sujets denses : un exerc
 est un seul rendu, et React ne découpe pas À L'INTÉRIEUR d'un composant qui
 parse et rend d'un bloc. L'unité est donc devenue la QUESTION : chaque bloc
 de raisonnement est un rendu, la tâche la plus longue est bornée par le plus
-gros bloc du sujet. Les chiffres définitifs, par question, sont dans le
+gros bloc du sujet. Les chiffres définitifs sont ceux de la cinquième version, dans le
 tableau ci-dessous.
 
 **LA DEUXIÈME VERSION, ET CE QU'ELLE A COÛTÉ.** Par question, la tâche la
@@ -3322,8 +3322,25 @@ s'inverse : moins de commits, plus gros, et bornés.
 questions qu'en tient un budget d'environ 80 formules (le `$` compte les
 formules, à peu près), et au moins une : une dizaine de commits par sujet,
 chacun borné — sauf quand une seule question dépasse le budget à elle seule,
-un bloc étant atomique. L'article mémoïsé reste (il ne coûte rien). Les
-chiffres définitifs sont ceux de cette version, dans le tableau.
+un bloc étant atomique. L'article mémoïsé reste (il ne coûte rien). Mesurée sur les 39 sujets
+(processeur ×6) : au « Commencer », le premier exercice apparaît en 2,1 à
+3,5 s (médiane 2,7 s) et le sujet complet en 3,0 à 6,5 s (médiane 5,0 s,
+contre 10 s avant) ; au « Terminer », le premier corrigé en 0,4 à 0,8 s
+(médiane 0,6 s, contre 17 s) et le corrigé complet en 2,7 à 31,6 s (médiane
+7,8 s, contre 17 s — quatre rattrapages denses dépassent 20 s, SM 2024 R en
+tête à 31,6 s pour 1 668 formules) ; la tâche la plus longue tombe de 6,4 s à
+0,7 s de médiane, 1,6 s au pire (quatre sujets au-dessus de 1,3 s, tous des
+rattrapages). Que le TOTAL soit lui aussi deux fois plus court tient sans
+doute surtout à la mémoïsation de `MdBlock` — avant elle, chaque seconde du
+chrono refaisait passer par le pipeline tous les blocs déjà affichés ; la
+part de chaque cause n'a pas été mesurée séparément.
+
+**LA CINQUIÈME VERSION, le premier lot est UNE question.** Le premier
+exercice mettait 2,7 s à apparaître parce que le premier lot était plein —
+80 formules, l'intro comprise — alors qu'une question seule en demande une
+fraction. Le premier lot de chaque phase est donc une seule question ; les
+suivants gardent le budget. Elle est bâtie et se mesure à la suite de la
+quatrième, sur les mêmes 39 sujets ; le tableau ci-dessous sera le sien.
 
 Et dom-truth a trouvé un défaut de la première version avant qu'elle ne soit
 mesurée : il appuie sur « Terminer » une centaine de millisecondes après
@@ -3337,8 +3354,9 @@ ne commence, quelle que soit la phase, et le marqueur du corrigé exige celui
 du sujet. Re-mesuré par dom-truth sur le build corrigé, avec le même
 « Terminer » à 100 ms : « 10 exercices sans correction pendant l'épreuve ;
 10/10 corrigés + auto-notation après ». (Le seul rouge de ce run était le
-garde-fou de fraîcheur du build — deux commits faits pendant qu'il tournait ;
-la CI le refait sur HEAD.)
+garde-fou de fraîcheur du build — deux commits faits pendant qu'il tournait.)
+Refait sur la cinquième version : 262 vérifications, zéro rouge, en local
+(empreinte = HEAD) comme dans la CI (run 469, 4 min 32 s).
 
 **CE QUE ÇA CHANGE POUR LES INSTRUMENTS.** Dix instruments ouvrent les 39
 sujets ; ils attendaient `[data-exam-exo]` puis un délai de 250 à 500 ms. Avec
