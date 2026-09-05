@@ -2388,3 +2388,135 @@ Et les deux corrections que l'arc s'est appliquées à lui-même — la fausse
 alerte « 4 exercice s » et le premier correctif de figure défait par la
 mesure — sont dans la section *Retractions and Corrections* du même ADR,
 parce qu'une méthode qui n'enregistre que ses succès n'est pas une méthode.
+
+## 11. Addendum du 2026-09-05 (suite) — « dans quel ordre va le programme »
+
+### 11.1 Quatre surfaces, quatre réponses
+
+Le matin avait corrigé DEUX surfaces qui répondaient chacune de leur côté à
+« par où commencer » (la carte de session et la fin de leçon). L'après-midi,
+en regardant simplement la page d'accueil, en a trouvé deux autres.
+
+La carte « **Le programme** » — le plus grand bloc de l'accueil, sous-titré
+« couverture du cadre officiel, matière par matière » — triait ses 62
+chapitres par `title.localeCompare`. Trois blocs plus haut, sur la MÊME page,
+la carte de session proposait « Limites et continuité » et la ligne du
+dessous annonçait « ensuite : Dérivabilité ». La carte du programme, elle,
+ouvrait maths sur « **Arithmétique** », rang 13 sur 14 — le dernier bloc de
+l'année. Et `/matieres/maths`, à un clic de là, donnait le bon ordre, groupé
+par unité.
+
+**59 chapitres sur 62 changeaient de rang entre les deux ordres.** Trois
+seulement coïncidaient (Dipôle RC, Dipôle RL, L'histoire).
+
+Le tri alphabétique n'était pas un autre ordre défendable : il n'en était pas
+un. « La… » passe avant « Le… » avant « Les… », donc l'ordre suivait
+l'**article**. En SVT il plaçait « Dysfonctionnements et aides du système
+immunitaire » (rang 8) avant « Le soi et le non-soi » (6) et « Les moyens de
+défense de l'organisme » (7) : la conclusion de l'immunologie avant ses
+prémisses. En philo, « La méthode de l'analyse de texte » — la leçon qui
+apprend à écrire l'épreuve — remontait au rang 5 par l'accident de la lettre
+M, quand le cadre la place en clôture.
+
+La quatrième surface : les **quatre raccourcis du menu « Notions »** du
+header prenaient les quatre premiers DOSSIERS (`readdirSync`, l'alphabet des
+slugs). Un menu qui offre quatre entrées dans l'année les prenait donc dans
+l'ordre du système de fichiers. La palette ⌘K, à vide, faisait de même.
+
+`chapterRank` et `sortByProgramme` (lib/curriculum.ts) sont la seule façon
+d'appliquer l'ordre du cadre à une liste. **Porte armée, rouge vérifié** : tri
+alphabétique rétabli, build complet, les cinq contrôles tombent en nommant le
+rang fautif ; restauré, 258/258.
+
+### 11.2 Deux dérives d'épreuve trouvées au même endroit
+
+- L'index listait **SPC 2015 rattrapage AVANT la normale** — seule année sur
+  vingt-deux à le faire. Le tri n'avait pas de départage par session : deux
+  épreuves de la même année restaient dans l'ordre où la `Map` les avait
+  rencontrées. Un ordre instable ne se voit que le jour où il se trompe.
+- Le masthead de l'unique épreuve partielle affichait « **10,5 pts** » nu —
+  qui se lit « épreuve sur 10,5 ». L'index le qualifiait déjà, le panneau
+  « Avant de commencer » aussi ; le titre de la page, non.
+
+### 11.3 Quatorze leçons ouvraient sur les notes de l'atelier
+
+En REGARDANT le haut d'une leçon de philosophie — pas en cherchant une liste
+connue — un bloc apparaît sous le titre, que les 48 autres leçons n'ont pas :
+
+> **Notion :** Autrui — Philosophie · 2ème Bac (axe : la condition humaine)
+> **Repère :** analyse de notion, problématisation, méthode de la dissertation
+
+Rien là-dedans n'est pour l'élève. La première ligne répète le titre (le
+`h1`), la matière (le fil d'Ariane) et le niveau (le masthead, trois lignes
+plus haut — qui l'écrit « 2ᵉ Bac », l'orthographe correcte). La seconde est
+une étiquette de cadre, identique mot pour mot sur dix des douze leçons de
+philo. En maths, le même bloc portait pire :
+
+> **Skill :** `sma_suites_numeriques` (code proposé — à confirmer par
+> supabase-architect)
+
+**Un code de base de données et le nom d'un AGENT interne, rendus à
+l'élève** ; et en philo, « texte-spine : Bakounine ; summit : Kant ». Les
+quatorze blocs sont retirés : aucun ne disait quelque chose que la page ne
+montrait pas déjà.
+
+La porte qui gardait les slugs, les chemins de dépôt et les codes de barreau
+apprend trois classes de plus — noms d'agents, cinq mots d'atelier anglais,
+et l'ordinal « Nème ». Elle juge 67 pages au lieu de 62.
+
+**Elle a fait son propre test rouge** : à son premier tour armé elle a trouvé
+un « 2ème » que mon balayage n'avait pas vu, dans la banque de
+`systemes-oscillants`. La raison vaut d'être retenue — **`innerText` ne rend
+pas le texte des chapitres masqués**, et sur ce site tous les chapitres sont
+présents-mais-masqués. La règle de septembre (« le texte que l'élève lit est
+`innerText` ») vaut pour JUGER une page à l'écran ; pour BALAYER un corpus
+paginé, il faut dépouiller le HTML.
+
+### 11.4 Neuf cartes d'exercice n'annonçaient que leur numéro
+
+Une épreuve se sert en morceaux, et le seul texte qui distingue deux cartes
+empilées est le libellé de position. Neuf ne disaient rien —
+« Exercice 1 — Partie 2 (Chimie) », point — à côté d'un frère qui annonçait
+« Partie 1 : chromage d'une plaque d'acier par électrolyse ». Sept des neuf
+venaient de la même notion : une case laissée vide, pas une décision.
+
+Titrées depuis leur propre énoncé, dans la forme exacte du frère. Quatre
+dérives de ponctuation de plus alignées. **Porte armée** — et elle a trouvé
+un neuvième cas sous une forme que je n'avais pas prévue
+(« Partie 2, sous-partie 1 (Chimie) »). Deuxième armement de la journée où
+la porte en sait plus que celui qui l'écrit.
+
+### 11.5 La portée hors leçon, et un résultat négatif qui valait la mesure
+
+`portee-hors-lecon.mjs` ferme la seconde moitié de l'angle mort n° 7 : 39
+épreuves, 247 morceaux, 1 472 questions — **100 % avec un raisonnement
+expert, 77 % avec une dérivation dépliable**, l'atelier à **1 notion sur 62**.
+Les 23 % manquants ne sont pas répartis au hasard : SPC 2021 rattrapage en
+compte **zéro sur 41**. Arbitrage propriétaire posé.
+
+Et le résultat qui valait la mesure est négatif. Les énoncés portent **212
+renvois distincts à une figure** que le produit ne rend jamais en image. La
+conclusion évidente — « un sujet de physique sans ses figures est
+insoluble » — est **fausse** : les 212 sont servis par une description
+textuelle. Le compteur brut est passé de 554 « orphelins » à 25, puis 16, à
+mesure que le motif s'élargissait ; les seize derniers, ouverts un par un,
+sont tous corrects.
+
+**Une porte est volontairement NON armée sur cette classe**, et c'est la
+première fois qu'on l'écrit : le corpus emploie cinq conventions pour
+introduire une description, et distinguer « décrit en ligne » de « orphelin »
+demande de juger le sens. Les uniformiser coûterait seize modifications de
+passages déjà corrects pour l'élève — de la turbulence au service du
+vérificateur. Une porte ne s'arme que sur une classe propre ; celle-ci est
+propre pour l'élève sans l'être pour la machine, et **c'est un cas où l'on
+s'abstient**.
+
+### 11.6 Deux façons de ne rien mesurer sans s'en apercevoir
+
+Commises toutes deux aujourd'hui, consignées dans `INSTRUMENTS.md` :
+
+1. **`lib/content.ts` résout la racine du contenu depuis le répertoire
+   COURANT** et rend une liste VIDE ailleurs, sans erreur. Un compteur a
+   annoncé « 0 épreuve » avec le même aplomb que « 39 », deux fois. **Un
+   total de zéro se suspecte comme un total absurdement grand.**
+2. **`innerText` ne voit pas les chapitres masqués** (§11.3).
