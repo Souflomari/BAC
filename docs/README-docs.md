@@ -38,7 +38,10 @@ Current-state documents, reconciled against the actual repo:
   Flutter et vit désormais dans `docs/archive/`.
 - `schema-reconciliation.md` — the database state and migration path.
   **STALE.**
-- `known-issues.md` — the catalogued, severity-scored issue list. **STALE.**
+- `known-issues.md` — the catalogued, severity-scored issue list.
+  **Backlog de l'ère Flutter, conservé pour ce qu'il DIT ; six entrées
+  re-vérifiées contre le dépôt le 2026-09-05 (l'étiquette en tête du
+  document les donne), le reste laissé au jugement du propriétaire.**
 
 These are **not write-once.** They are reconciled whenever they drift, and
 always after a dormancy or a major change. When stale, proposed

@@ -1,5 +1,32 @@
 # known-issues.md — reconciled backlog
 
+> **ÉTIQUETTE DE STATUT, posée le 2026-09-05.** Ce document est le backlog
+> réconcilié de l'audit de juin 2026 — celui de l'application **Flutter**,
+> retirée depuis (ADR 0016). Il est conservé pour ce qu'il DIT : la liste
+> des griefs et leurs causes, dont beaucoup ont survécu au changement de
+> pile. Il n'a **pas** été re-scoré ; ses libellés d'agents
+> (`nextjs-frontend`, `pedagogy-auditor`) désignent un roster remplacé
+> (`docs/agents/ROSTER.md` v2).
+>
+> **Ce qui a été RE-VÉRIFIÉ ce jour, entrée par entrée** (le reste est
+> laissé tel quel — re-juger un grief pédagogique est un travail de
+> propriétaire, pas de balayage) :
+>
+> | entrée | ce que dit le dépôt aujourd'hui |
+> |---|---|
+> | **J-2** RLS non activée sur les tables de curriculum | **RÉSOLU.** La migration 040 porte dix `ENABLE ROW LEVEL SECURITY` ; la RLS est déclarée sur les 25 tables du schéma, plus `storage.objects`. |
+> | **K-1** `get_user_weak_areas` référence des colonnes absentes | **TOUJOURS VRAI, ET TOUJOURS MORT.** Zéro référence dans `web/src/` et dans `backend/supabase/functions/`. La fonction n'est appelée par rien : le défaut est réel, son impact nul tant qu'elle le reste. |
+> | **K-2** ni migrations descendantes, ni déploiement testé sur branche | **À MOITIÉ RÉSOLU.** `scripts/branch-test.ps1` existe et `CONTRIBUTING.md` en fait une porte dure avant tout push production. Les migrations descendantes, elles, n'existent toujours pas. |
+> | **K-3** les encodeurs réécrivent les migrations sur place | **INTERDIT DEPUIS, PAS MESURÉ.** `.claude/CLAUDE.md` pose la non-négociable « ne jamais éditer une migration déjà passée en production ». Rien n'automatise cette garde. |
+> | **K-4** PostHog / Sentry non provisionnés | **TOUJOURS VRAI, ET PLUS ASSUMÉ QUE SUBI.** Aucune trace de l'un ni de l'autre dans `web/`. Le produit est instrumenté autrement : par les balayages du dépôt (`docs/audits/INSTRUMENTS.md`), pas par de la télémétrie d'élève. |
+> | **K-6** pas de bucket pour les PDF d'annales | **DEVENU SANS OBJET.** Les annales ne passent plus par `bac_exams.pdf_url` : elles vivent en fichiers sous `docs/sujets/` et `content/*/*/bank.yaml`. Les deux buckets déclarés sont `avatars` (mig 016) et `explications` (mig 051). |
+>
+> **Les entrées A à F** (les griefs produit du dislike-list) ne sont PAS
+> triées ici. Beaucoup décrivent des manques que la reconstruction adresse —
+> l'anatomie d'une notion, le parcours, le diagnostic — mais dire lesquels
+> sont clos est un jugement pédagogique, pas une mesure. `docs/HANDOFF.md`
+> tient l'état réel du produit.
+
 The dislike list's bullets, each reconciled against what the audit
 actually found. Every entry carries: the symptom as stated, the cause
 the audit identifies (or "unconfirmed" where it needs a runtime check),
