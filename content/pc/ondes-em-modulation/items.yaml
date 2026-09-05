@@ -55,13 +55,11 @@ items:
     choices:
       - id: A
         text: >-
-          Parce que l'antenne devrait mesurer plusieurs dizaines à
-          centaines de kilomètres pour rayonner efficacement une onde de
-          cette fréquence, alors qu'une porteuse à quelques centaines de
-          kHz permet une antenne de quelques dizaines de mètres.
+          Parce que l'antenne devrait mesurer plusieurs dizaines à centaines de
+          kilomètres pour rayonner efficacement une onde de cette fréquence.
         correct: true
       - id: B
-        text: "Parce qu'un signal basse fréquence ne contient pas assez d'énergie électrique pour être rayonné."
+        text: "Parce qu'un signal de basse fréquence ne contient pas assez d'énergie électrique pour être rayonné par une antenne, quelle que soit sa longueur."
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.antenne-taille-vs-longueur-onde
         feedback: >
@@ -72,7 +70,7 @@ items:
           quelle antenne raisonnable, quelle que soit l'énergie électrique
           disponible.
       - id: C
-        text: "Parce que les ondes sonores ne peuvent physiquement pas se transformer en ondes électromagnétiques."
+        text: "Parce que les ondes sonores ne peuvent physiquement pas se transformer en ondes électromagnétiques, quel que soit le dispositif utilisé pour les émettre."
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.antenne-taille-vs-longueur-onde
         feedback: >
@@ -82,7 +80,7 @@ items:
           l'antenne serait beaucoup trop petite comparée à la longueur
           d'onde de ce signal basse fréquence pour le rayonner efficacement.
       - id: D
-        text: "Parce qu'une porteuse haute fréquence transporte plus d'information par seconde qu'un signal basse fréquence."
+        text: "Parce qu'une porteuse de haute fréquence transporte davantage d'information par seconde qu'un signal de basse fréquence, ce qui la rend seule utilisable pour une émission."
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant
         feedback: >
@@ -195,8 +193,8 @@ items:
         correct: true
       - id: B
         text: >-
-          $2\ \text{kHz}$ : c'est elle qui doit être très supérieure à
-          l'autre, puisque c'est elle qui porte l'information.
+          $2\ \text{kHz}$ : c'est elle qui doit être très supérieure à l'autre, puisque
+          c'est elle qui porte l'information que l'on veut transmettre.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant
         feedback: >
@@ -206,7 +204,7 @@ items:
           très supérieure à elle — pas le contraire. « Porter
           l'information » ne veut pas dire « être la plus grande fréquence ».
       - id: C
-        text: "Les deux jouent le même rôle : il n'y a pas de porteuse à proprement parler ici."
+        text: "Les deux fréquences jouent exactement le même rôle : il n'y a pas de porteuse à proprement parler dans ce montage."
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant
         feedback: >
@@ -217,8 +215,8 @@ items:
           du signal.
       - id: D
         text: >-
-          $1\ \text{MHz}$, mais elle doit rester proche de $2\ \text{kHz}$
-          pour que la modulation fonctionne.
+          $1\ \text{MHz}$, mais elle doit rester proche de $2\ \text{kHz}$ pour que la
+          modulation puisse fonctionner correctement.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant
         feedback: >
@@ -384,15 +382,13 @@ items:
     choices:
       - id: A
         text: >-
-          À ajuster la fréquence propre $f_0 = 1/(2\pi\sqrt{LC})$ du
-          circuit pour qu'elle coïncide avec la fréquence porteuse $f_p$ de
-          la station voulue, ce qui privilégie cette station parmi toutes
-          celles captées par l'antenne.
+          À ajuster la fréquence propre $f_0 = 1/(2\pi\sqrt{LC})$ du circuit pour
+          qu'elle coïncide avec la porteuse $f_p$ de la station voulue.
         correct: true
       - id: B
         text: >-
-          À modifier directement la fréquence porteuse $f_p$ émise par la
-          station, pour l'accorder à celle du récepteur.
+          À modifier directement la fréquence porteuse $f_p$ émise par la station de
+          radio, de façon à l'accorder sur celle du récepteur qui la capte.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.circuit-accorde-selection
         feedback: >
@@ -401,7 +397,7 @@ items:
           elle-même et reste ce qu'elle est. C'est la fréquence propre
           $f_0$ du RÉCEPTEUR qu'on ajuste en réglant $C$, jamais $f_p$.
       - id: C
-        text: "À amplifier également toutes les porteuses reçues par l'antenne, sans en privilégier aucune."
+        text: "À amplifier également toutes les porteuses reçues par l'antenne, sans en privilégier aucune, avant de les envoyer au démodulateur."
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.circuit-accorde-selection
         feedback: >
@@ -411,8 +407,8 @@ items:
           toutes également.
       - id: D
         text: >-
-          À filtrer directement le signal informatif $s_m(t)$ pour le
-          séparer de la porteuse, avant toute démodulation.
+          À filtrer directement le signal informatif $s_m(t)$ pour le séparer de la
+          porteuse, avant même que la démodulation ne commence.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
         feedback: >
@@ -514,8 +510,8 @@ items:
     choices:
       - id: A
         text: >-
-          Elles utilisent des antennes en matériaux plus conducteurs, qui
-          rayonnent efficacement même les basses fréquences.
+          Elles utilisent des antennes faites de matériaux bien plus conducteurs, qui
+          rayonnent efficacement même les basses fréquences du signal audio.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.antenne-taille-vs-longueur-onde
         feedback: >
@@ -524,8 +520,8 @@ items:
           soit le matériau.
       - id: B
         text: >-
-          Elles amplifient énormément la puissance électrique du signal
-          audio avant de l'envoyer dans l'antenne.
+          Elles amplifient énormément la puissance électrique du signal audio avant de
+          l'envoyer dans l'antenne, ce qui compense sa fréquence trop basse.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.antenne-taille-vs-longueur-onde
         feedback: >
@@ -540,8 +536,8 @@ items:
         correct: true
       - id: D
         text: >-
-          Elles placent leurs antennes en hauteur, ce qui compense la
-          fréquence trop basse du signal audio.
+          Elles placent leurs antennes en hauteur, ce qui compense la fréquence trop
+          basse du signal audio et lui permet de porter loin.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.antenne-taille-vs-longueur-onde
         feedback: >
@@ -757,8 +753,8 @@ items:
     choices:
       - id: A
         text: >-
-          Parce que sa fréquence $f_p$ est trop élevée pour être perçue
-          par l'oreille humaine.
+          Parce que sa fréquence $f_p$ est bien trop élevée pour être perçue par
+          l'oreille humaine, qui ne peut donc y lire aucun message.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant
         feedback: >
@@ -767,8 +763,8 @@ items:
           qu'elle soit inaudible.
       - id: B
         text: >-
-          Parce que son amplitude $U_0$ est trop faible pour transporter
-          quoi que ce soit.
+          Parce que son amplitude $U_0$ est bien trop faible pour transporter quoi que
+          ce soit jusqu'au récepteur, si loin soit-il.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant
         feedback: >
@@ -777,8 +773,8 @@ items:
           aucune information.
       - id: C
         text: >-
-          Parce qu'elle n'est associée à aucun signal informatif $s_m(t)$
-          tant qu'elle n'a pas été démodulée.
+          Parce qu'elle n'est associée à aucun signal informatif $s_m(t)$ tant qu'elle
+          n'a pas été démodulée à la réception par un détecteur.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
         feedback: >
@@ -787,10 +783,9 @@ items:
           contient simplement aucun.
       - id: D
         text: >-
-          Parce que rien ne change, à aucun instant, dans cette
-          expression : pour transmettre un message il faut que quelque
-          chose varie au rythme de ce message, ce que ne fait pas une
-          oscillation parfaitement répétitive.
+          Parce que rien ne change, à aucun instant, dans cette expression : pour
+          transmettre un message il faut que quelque chose varie au rythme de ce
+          message.
         correct: true
     correct_feedback: >
       Une porteuse seule oscille toujours de la même façon : rien n'y
@@ -877,8 +872,8 @@ items:
     choices:
       - id: A
         text: >-
-          Elle amplifie l'amplitude du signal reçu avant que le
-          condensateur ne se charge.
+          Elle amplifie l'amplitude du signal reçu avant que le condensateur ne commence
+          à se charger, ce qui rend l'enveloppe exploitable.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
         feedback: >
@@ -886,8 +881,9 @@ items:
           courant dans un seul sens.
       - id: B
         text: >-
-          Elle élimine complètement la porteuse, ne laissant subsister que
-          le signal informatif $s_m(t)$ directement en sortie.
+          Elle élimine complètement la porteuse, ne laissant subsister que le signal
+          informatif $s_m(t)$, directement disponible en sortie du montage démodulateur
+          du récepteur.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
         feedback: >
@@ -902,8 +898,8 @@ items:
         correct: true
       - id: D
         text: >-
-          Elle sert à sélectionner la station voulue parmi toutes celles
-          reçues par l'antenne.
+          Elle sert à sélectionner la station voulue parmi toutes celles que reçoit
+          l'antenne, avant que le signal n'atteigne le condensateur.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
         feedback: >
@@ -935,8 +931,8 @@ items:
     choices:
       - id: A
         text: >-
-          Pour amplifier l'enveloppe et la rendre plus facilement audible
-          dans le haut-parleur.
+          Pour amplifier l'enveloppe du signal et la rendre plus facilement audible une
+          fois envoyée dans le haut-parleur du récepteur.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
         feedback: >
@@ -944,8 +940,8 @@ items:
           un simple suivi de tension, pas une amplification.
       - id: B
         text: >-
-          Pour filtrer et éliminer complètement le signal informatif
-          $s_m(t)$, ne conservant que la composante continue $U_0$.
+          Pour filtrer et éliminer complètement le signal informatif $s_m(t)$, ne
+          conservant que la composante continue $U_0$ de la porteuse.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
         feedback: >
@@ -954,8 +950,9 @@ items:
           l'éliminer.
       - id: C
         text: >-
-          Pour que le condensateur se comporte comme dans le chapitre RLC,
-          en oscillant librement à sa fréquence propre $f_0$.
+          Pour que le condensateur se comporte comme dans le chapitre RLC, en oscillant
+          librement à sa propre fréquence $f_0$ entre deux sommets successifs de la
+          porteuse captée.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
         feedback: >
@@ -964,10 +961,9 @@ items:
           n'oscille pas librement comme dans un RLC.
       - id: D
         text: >-
-          Pour que la tension à ses bornes suive de près la courbe des
-          sommets successifs (l'enveloppe) : une charge quasi instantanée
-          capture chaque nouveau sommet, une décharge lente évite de
-          redescendre trop vite avant le sommet suivant.
+          Pour que la tension à ses bornes suive de près la courbe des sommets
+          successifs : une charge quasi instantanée capture chaque nouveau sommet, une
+          décharge lente évite de redescendre trop vite.
         correct: true
     correct_feedback: >
       Charge rapide à chaque sommet, décharge lente entre deux sommets :
@@ -993,8 +989,8 @@ items:
     choices:
       - id: A
         text: >-
-          Le signal démodulé sera parfait, car le détecteur de crête est
-          capable de corriger toute surmodulation survenue à l'émission.
+          Le signal démodulé sera parfait, car le détecteur de crête est capable de
+          corriger de lui-même toute surmodulation survenue à l'émission du signal.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.surmodulation-nature
         feedback: >
@@ -1003,15 +999,15 @@ items:
           l'émission.
       - id: B
         text: >-
-          Le signal démodulé sera déformé : l'enveloppe à l'émission était
-          déjà faussée (changements brutaux de phase), et aucune
-          démodulation, même parfaite, ne peut récupérer une information
-          qui n'a jamais été fidèlement portée par l'enveloppe.
+          Le signal démodulé sera déformé : l'enveloppe à l'émission était déjà faussée
+          par les changements brutaux de phase, et aucune démodulation ne peut récupérer
+          une information qu'elle n'a jamais portée.
         correct: true
       - id: C
         text: >-
-          Le signal démodulé sera simplement un peu moins fort en
-          amplitude, mais sa forme restera fidèle au signal d'origine.
+          Le signal démodulé sera simplement un peu moins fort en amplitude, mais sa
+          forme restera parfaitement fidèle à celle du signal d'origine émis par la
+          station de radio.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.surmodulation-nature
         feedback: >
@@ -1020,8 +1016,8 @@ items:
           forme du signal démodulé est aussi déformée.
       - id: D
         text: >-
-          Le signal démodulé sera identique au signal d'origine, à
-          condition d'augmenter la fréquence de la porteuse $f_p$.
+          Le signal démodulé sera identique au signal d'origine, à la seule condition
+          d'augmenter suffisamment la fréquence de la porteuse $f_p$.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.surmodulation-nature
         feedback: >
@@ -1480,8 +1476,8 @@ items:
         correct: true
       - id: B
         text: >-
-          Directement le signal informatif $s_m(t)$ : la diode suffit à
-          elle seule à démoduler proprement.
+          Directement le signal informatif $s_m(t)$ : la diode suffit à elle seule à
+          démoduler proprement le signal capté par l'antenne du récepteur radio.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
         feedback: >
@@ -1490,8 +1486,8 @@ items:
           lissée. C'est le condensateur qui suit les sommets.
       - id: C
         text: >-
-          L'enveloppe parfaitement lissée quand même : le condensateur ne
-          servait qu'à amplifier le résultat.
+          L'enveloppe parfaitement lissée malgré tout : le condensateur ne servait qu'à
+          amplifier le résultat obtenu par la diode seule.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
         feedback: >
@@ -1500,8 +1496,8 @@ items:
           mais à retenir la valeur d'un sommet jusqu'au suivant.
       - id: D
         text: >-
-          La sélection de la station voulue, comme le fait le circuit
-          accordé placé avant.
+          La sélection de la station voulue, exactement comme le fait le circuit accordé
+          placé juste avant dans la chaîne de réception.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
         feedback: >
