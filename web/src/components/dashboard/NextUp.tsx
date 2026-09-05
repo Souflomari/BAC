@@ -41,8 +41,13 @@
 "use client";
 
 import { Link } from "@/components/ui/Lien";
-import { getFiliere, SUBJECTS, chapterInFiliere, type SubjectId, type FiliereId,
+import {
+  getFiliere,
   DEFAULT_SUBJECT_ORDER,
+  premiereDuParcours,
+  nextInParcours,
+  type SubjectId,
+  type FiliereId,
 } from "@/lib/curriculum";
 import { useFiliere } from "@/lib/useFiliere";
 import { useStudentState } from "@/lib/student-state";
@@ -97,33 +102,14 @@ function subjectOrder(filiereId: string | null): SubjectId[] {
   return f ? (f.subjects.map((s) => s.id) as SubjectId[]) : DEFAULT_ORDER;
 }
 
-/** The first chapter, in curriculum order, that is BOTH in the chosen
- *  filière (ADR 0025 §2.11: narrows, never gates — `filiereId === null`
- *  skips nothing) AND a real built notion — the only honest "next in the
- *  parcours" pick while nothing is opened. */
-function firstOfParcours(
-  order: SubjectId[],
-  builtIds: Set<string>,
-  filiereId: FiliereId | null
-): { subject: SubjectId; slug: string } | null {
-  for (const subjectId of order) {
-    const subject = SUBJECTS[subjectId];
-    if (!subject) continue;
-    for (const unit of subject.units) {
-      for (const chapter of unit.chapters) {
-        if (!chapterInFiliere(chapter, filiereId)) continue;
-        if (builtIds.has(`${subjectId}/${chapter.slug}`)) {
-          return { subject: subjectId, slug: chapter.slug };
-        }
-      }
-    }
-  }
-  return null;
-}
+// `firstOfParcours` vivait ici ; c'est désormais `premiereDuParcours`
+// (lib/curriculum.ts), partagé avec `session.ts`. Deux surfaces de la même
+// page répondaient chacune de leur côté à « par où commencer » — et se
+// contredisaient à l'écran (2026-09-05). Une seule définition, maintenant.
 
 export function NextUp({ notions }: { notions: NotionMeta[] }) {
   const { filiere, mounted } = useFiliere();
-  const { nextUp } = useStudentState();
+  const { state, nextUp } = useStudentState();
   const activeFiliere = mounted ? filiere : null;
   const builtIds = new Set(notions.map((n) => n.id));
 
@@ -157,12 +143,21 @@ export function NextUp({ notions }: { notions: NotionMeta[] }) {
     }
   }
 
-  const order = subjectOrder(activeFiliere);
-  const pick = firstOfParcours(order, builtIds, activeFiliere);
-  if (!pick) return null;
+  // ANCRE : la notion que la carte de session propose au même instant —
+  // celle que l'élève reprend, ou, à défaut d'état, la première du parcours.
+  // Cette ligne annonce ce qui vient APRÈS elle. Sans cette ancre, les deux
+  // surfaces nommaient la même notion (« commence ici X » / « ensuite X »)
+  // ou, pire, deux notions différentes.
+  const ancre =
+    state?.lastSession?.notionId ??
+    premiereDuParcours(builtIds, activeFiliere, subjectOrder(activeFiliere));
+  const suivanteId = ancre ? nextInParcours(ancre, builtIds) : null;
+  if (!suivanteId) return null;
 
-  const meta = notions.find((n) => n.id === `${pick.subject}/${pick.slug}`);
+  const meta = notions.find((n) => n.id === suivanteId);
   if (!meta) return null;
+  const [pickSubject, pickSlug] = suivanteId.split("/");
+  const pick = { subject: pickSubject as SubjectId, slug: pickSlug };
 
   return (
     <section aria-label="Quoi étudier ensuite" className="max-w-list">

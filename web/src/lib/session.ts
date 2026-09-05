@@ -7,8 +7,12 @@
  * mock history — the truthful first-visit state IS the design until real
  * per-student state exists.
  *
- *   start  — nothing in progress; suggest where to begin (deterministic:
- *            the most recently updated notion — a real, checkable fact).
+ *   start  — nothing in progress; suggest where to begin (deterministic :
+ *            la PREMIÈRE notion du programme, `premiereDuParcours`. Ce point
+ *            disait « la notion la plus récemment mise à jour — un fait réel
+ *            et vérifiable » : la date de fichier n'en est pas un après un
+ *            clone frais, et la ligne d'à côté disait autre chose. Corrigé
+ *            le 2026-09-05, voir `startSession`).
  *   resume — REQUIRES persisted student state (LEARNER-MODEL-SPEC). Real
  *            now (`sessionFromState`, below) once a live `StudentState`
  *            carries a `lastSession`.
@@ -27,6 +31,7 @@
  */
 
 import type { NotionMeta } from "@/lib/content";
+import { premiereDuParcours } from "./curriculum";
 import type { StudentState } from "@/lib/student-state";
 
 export type SessionState =
@@ -46,15 +51,35 @@ export type SessionState =
     };
 
 /** Deterministic, honest suggestion: the most recently updated notion. */
+/**
+ * La session d'un élève sans état : la PREMIÈRE notion du programme.
+ *
+ * Ce bloc triait les notions par `updatedAtMs` — la date de fichier — et
+ * proposait « la plus récente ». Deux problèmes, corrigés le 2026-09-05 :
+ *
+ *   · c'était FAUX. Après un clone frais, donc à chaque déploiement, toutes
+ *     les dates de fichier valent l'instant du checkout : « la plus
+ *     récente » retombait sur l'ordre du système de fichiers. Le lien le
+ *     plus important du site pointait où le hasard le mettait.
+ *   · et ça CONTREDISAIT la ligne du dessous. `NextUp`, rendu trois lignes
+ *     plus bas, répond à la même question par l'ordre du PROGRAMME. Sur une
+ *     page d'accueil neuve, la carte proposait une notion de philosophie et
+ *     la ligne suivante une de maths.
+ *
+ * `premiereDuParcours` (lib/curriculum.ts) est désormais la seule réponse, et
+ * les deux surfaces la partagent. Sans filière — `session.ts` est pur et n'en
+ * reçoit pas — la règle d'or s'applique d'elle-même : ne rien filtrer.
+ */
 function startSession(notions: NotionMeta[]): SessionState | null {
   if (notions.length === 0) return null;
-  const [latest] = [...notions].sort(
-    (a, b) => (b.updatedAtMs ?? 0) - (a.updatedAtMs ?? 0)
-  );
+  const construites = new Set(notions.map((n) => n.id));
+  const premiereId = premiereDuParcours(construites);
+  const premiere =
+    (premiereId ? notions.find((n) => n.id === premiereId) : undefined) ?? notions[0];
   return {
     kind: "start",
-    notion: latest,
-    reason: "La notion la plus récente — on la prend depuis le début.",
+    notion: premiere,
+    reason: "La première notion du parcours — on la prend depuis le début.",
   };
 }
 

@@ -2280,3 +2280,51 @@ transformé en espace. Vérifié dans un navigateur avant d'être rapporté :
 > `renvois-visibles` lisent tous le DOM rendu. Une sonde bricolée en deux
 > minutes pour « juste vérifier » est exactement l'endroit où l'on
 > réintroduit le défaut que ces instruments existent pour éviter.
+
+### 10.21 Le lien le plus important du site pointait où le hasard le mettait
+
+Le tableau de bord ouvre sur **une** action principale : « Ta session · MAT
+… · Commencer la session ». C'est le seul `[data-primary-action]` de la page
+(DASHBOARD-SPEC §5), et c'est par là qu'un élève entre dans le produit.
+
+**Ce qu'il désignait.** `startSession` (`lib/session.ts`) triait les notions
+par `updatedAtMs` — la DATE DE FICHIER — et proposait « la plus récente ».
+Après un clone frais, donc **à chaque déploiement Vercel**, toutes les dates
+de fichier valent l'instant du checkout : le tri s'effondre et le pick
+retombe sur l'ordre du système de fichiers. C'est **exactement le défaut du
+§10.12**, corrigé le même jour dans la fin de leçon — et il vivait aussi
+ici, sur un lien bien plus important.
+
+**Et la ligne du dessous disait autre chose.** `NextUp` est rendu trois
+lignes plus bas et répond à la même question par l'ordre du PROGRAMME.
+Mesuré sur la page d'accueil, avant correction :
+
+> Ta session · **PHILO — L'histoire** · Commencer la session
+> Ensuite dans le parcours : **Limites et continuité**.
+
+Deux surfaces de la même page, à trois lignes d'écart, proposant deux
+matières différentes à un élève qui n'a encore rien fait. Le commentaire de
+`NextUp` réclamait pourtant, depuis le début, que « les deux surfaces ne
+soient jamais en désaccord sur l'ordre du programme » — il parlait de
+`DEFAULT_ORDER`, et personne n'avait vu que la carte, elle, ne consultait pas
+le programme du tout.
+
+**Après.**
+
+> Ta session · **MATHS — Limites et continuité** · Commencer la session
+> Ensuite dans le parcours : **Dérivabilité et étude des fonctions**.
+
+Une seule définition, `premiereDuParcours` (`lib/curriculum.ts`), partagée
+par les deux surfaces — la troisième à rejoindre `DEFAULT_SUBJECT_ORDER` et
+`nextInParcours` après la fin de leçon. Et `NextUp` s'ANCRE désormais sur ce
+que la carte propose au même instant (la notion reprise, ou à défaut la
+première du parcours) pour annoncer ce qui vient APRÈS elle : sans cette
+ancre, les deux lignes nommaient la même notion — « commence ici X » puis
+« ensuite X ».
+
+> **La règle, et c'est la troisième fois de la journée qu'elle se paie.**
+> Une DATE DE FICHIER n'est pas un fait sur le contenu. Elle survit mal au
+> clone, elle ne survit pas au déploiement, et elle donne au code l'air de
+> savoir quelque chose qu'il ignore. **Quand un produit doit ordonner son
+> contenu, l'ordre doit venir du contenu** — ici, le programme officiel, qui
+> ne dépend d'aucune horloge.

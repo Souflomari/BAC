@@ -425,6 +425,44 @@ export const DEFAULT_SUBJECT_ORDER: SubjectId[] = ["maths", "pc", "svt", "philo"
  * préférence de l'appareil n'est pas lisible. Proposer un chapitre hors
  * filière est le comportement déjà admis pour une URL directe.
  */
+/**
+ * La PREMIÈRE notion construite du parcours — celle par où l'on commence.
+ *
+ * Pourquoi elle est ici (2026-09-05). Deux surfaces du tableau de bord
+ * répondaient chacune de leur côté à « par où commencer » : `SessionCard`
+ * triait les notions par DATE DE FICHIER (`updatedAtMs`) et proposait « la
+ * plus récente », `NextUp` parcourait le programme. Résultat visible sur la
+ * page d'accueil d'un élève neuf : la carte principale proposait une notion
+ * de philosophie et la ligne juste en dessous en annonçait une de maths.
+ *
+ * Et le tri par date n'était pas seulement incohérent, il était FAUX : après
+ * un clone frais — donc à chaque déploiement — toutes les dates de fichier
+ * sont celles du checkout, et « la plus récente » devient l'ordre du système
+ * de fichiers. C'est le même défaut que celui corrigé le même jour dans la
+ * fin de leçon, sur le lien le plus important du site.
+ *
+ * `filiereId === null` ne filtre rien (règle d'or ADR 0025 §2.11 : la
+ * filière NARROWS, jamais GATE).
+ */
+export function premiereDuParcours(
+  builtIds: Set<string>,
+  filiereId: FiliereId | null = null,
+  ordre: SubjectId[] = DEFAULT_SUBJECT_ORDER
+): string | null {
+  for (const s of ordre) {
+    const sujet = SUBJECTS[s];
+    if (!sujet) continue;
+    for (const unite of sujet.units) {
+      for (const chapitre of unite.chapters) {
+        if (!chapterInFiliere(chapitre, filiereId)) continue;
+        const id = `${s}/${chapitre.slug}`;
+        if (builtIds.has(id)) return id;
+      }
+    }
+  }
+  return null;
+}
+
 export function nextInParcours(currentId: string, builtIds: Set<string>): string | null {
   const subjectId = currentId.split("/")[0] as SubjectId;
   const courante = SUBJECTS[subjectId];
