@@ -480,7 +480,7 @@ entries:
           On réutilise la relation rappelée au chapitre 2 — la charge posée sur les armatures fixe la tension, $q = Cu_C$ — généralisée ici au condensateur équivalent : $q = C_{eq}\,u_{AB}$ à chaque instant, quelle que soit la façon dont le courant $I_0$ les a chargés. Cette relation dit que $q$ est proportionnelle à $u_{AB}$, une droite passant par l'origine, et que son coefficient de proportionnalité **est** $C_{eq}$. Il suffit donc de lire la pente sur le graphe fourni : la droite rejoint exactement le coin $(6\ \text{V}\,;\,60\ \mu\text{C})$ du quadrillage en partant de l'origine.
         steps:
           - math: 'q = C_{eq}\,u_{AB}'
-            note: "Définition de la capacité (chapitre 2), generalisee au condensateur equivalent : q proportionnelle a u, droite par l'origine."
+            note: "Définition de la capacité (chapitre 2), généralisée au condensateur équivalent : q proportionnelle a u, droite par l'origine."
           - math: 'C_{eq} = \frac{q}{u_{AB}} = \frac{60\times10^{-6}}{6}'
             note: "Pente de la droite, lue sur le quadrillage : elle passe exactement par (6 V ; 60 microC)."
           - math: '\boxed{C_{eq} = 10\times10^{-6}\ \text{F} = 10\ \mu\text{F}}'
@@ -496,7 +496,7 @@ entries:
           - math: 'C_2 = C_{eq} - C_1 = 10 - 7{,}5'
             note: "On isole C2, avec Ceq lu a la question 2 et C1 = 7,5 microF donne par l'énoncé."
           - math: '\boxed{C_2 = 2{,}5\ \mu\text{F}}'
-            note: "Coherent avec la sous-partie I-2 déjà banquee (bk-2018-n-x3) : tau = R C2 = 4,0 ms retrouve la même valeur par une autre méthode."
+            note: "Cohérent avec la sous-partie I-2 déjà banquee (bk-2018-n-x3) : tau = R C2 = 4,0 ms retrouve la même valeur par une autre méthode."
 
   # ── bk-2021-n-x4 — 2021 N, Exercice IV (Partie I) : échelon RC, lecture du_C/dt = f(u_C) ──
   - id: bk-2021-n-x4
@@ -1379,7 +1379,7 @@ entries:
           Le $C_0$ se simplifie, et il reste $i(t) = \dfrac{E}{R}\,e^{-t/(RC_0)}$ — la forme demandée, avec $\tau = RC_0$.
         steps:
           - math: 'i(t) = \frac{dq}{dt} = A\,\alpha\,e^{-\alpha t}'
-            note: "Dérivée de la forme identifiee a la question 1-4."
+            note: "Dérivée de la forme identifiée a la question 1-4."
           - math: 'i(t) = (E\,C_0)\times\frac{1}{R\,C_0}\,e^{-t/(RC_0)}'
             note: "On substitue A = E.C0 et alpha = 1/(R.C0)."
           - math: '\boxed{i(t) = \frac{E}{R}\,e^{-t/\tau} \qquad \tau = R\,C_0}'
@@ -1419,7 +1419,7 @@ entries:
           - math: '\boxed{R = \frac{9}{2\times10^{-3}} = 4500\ \Omega = 4{,}5\ \text{k}\Omega}'
             note: "Lecture directe : i(0+) = E/R, avec i(0+) = 2 mA lu sur le départ de la courbe (question 1-5)."
           - math: '\tau = 13\ \text{ms} = 13\times10^{-3}\ \text{s}'
-            note: "Lecture graphique de tau par la méthode de la tangente (T) à l'origine (chapitre 4), celle que l'énoncé designe explicitement. La méthode concurrente i0/e donnerait 12,4 ms sur cette même figure -- défaut du sujet officiel (la tangente dessinee n'est pas celle de la courbe), non retenu ici."
+            note: "Lecture graphique de tau par la méthode de la tangente (T) à l'origine (chapitre 4), celle que l'énoncé designe explicitement. La méthode concurrente i0/e donnerait 12,4 ms sur cette même figure -- défaut du sujet officiel (la tangente dessinée n'est pas celle de la courbe), non retenu ici."
           - math: 'C_0 = \frac{\tau}{R} = \frac{13\times10^{-3}}{4500}'
             note: "On inverse tau = R.C0 (question 1-5), avec R trouve ci-dessus."
           - math: '\boxed{C_0 \approx 2{,}89\times10^{-6}\ \text{F} = 2{,}89\ \mu\text{F}}'
@@ -1550,7 +1550,7 @@ entries:
           - math: '\text{condition initiale\,: } u_C(0) = A + B = 0 \implies B = -A = -E'
             note: "Le condensateur est decharge a la fermeture de K (chapitre 2)."
           - math: '\boxed{A = E = 6\ \text{V} \qquad B = -E = -6\ \text{V}}'
-            note: "Même forme que u_C(t) = E(1-e^{-t/tau}) du chapitre 3, ecrite ici A + B.e^{-t/tau}."
+            note: "Même forme que u_C(t) = E(1-e^{-t/tau}) du chapitre 3, écrite ici A + B.e^{-t/tau}."
       - id: q4
         part: "1-4 et 1-5 — Lire τ, puis remonter à la température"
         stem: |-
@@ -1569,10 +1569,10 @@ entries:
           **Le piège de cette question.** Répondre « τ augmente avec la température », par l'intuition qu'un système chauffé est plus « agité » donc plus lent à se stabiliser. C'est confondre deux mécanismes : ici, $\tau$ ne dépend que de $R$ et de $C$ (chapitre 2), jamais directement de l'agitation thermique — et c'est précisément parce que $R$, la résistance PARTICULIÈRE de cette sonde, décroît avec $\theta$ (une propriété du composant, lue sur les trois courbes) que $\tau$ décroît à son tour.
         steps:
           - math: '\tau_1 \approx 0{,}50\ \text{ms}'
-            note: "Lecture graphique sur la courbe etiquetee 205 degrés C de la figure 2 (chapitre 4 : tangente à l'origine ou méthode des 63 pourcent)."
+            note: "Lecture graphique sur la courbe étiquetée 205 degrés C de la figure 2 (chapitre 4 : tangente à l'origine ou méthode des 63 pourcent)."
           - math: '\tau(205\,^\circ\text{C}) < \tau(185\,^\circ\text{C}) < \tau(175\,^\circ\text{C}) \implies R(205\,^\circ\text{C}) < R(185\,^\circ\text{C}) < R(175\,^\circ\text{C})'
             note: "tau = RC (chapitre 2), C fixe pour les trois courbes : l'ordre des tau donne directement l'ordre des R."
-          - math: '\boxed{\text{une elevation de température RACCOURCIT la charge}}'
+          - math: '\boxed{\text{une élévation de température RACCOURCIT la charge}}'
             note: "Thermistance a coefficient de température négatif : R diminue quand theta augmente."
       - id: q5
         stem: |-
@@ -1693,11 +1693,11 @@ entries:
           Le membre de gauche s'annule identiquement, quel que soit $t$ : l'équation est vérifiée, pour n'importe quelle constante $U_0$ — c'est bien la condition initiale, $u_C(0) = U_0$, qui fixera sa valeur (ici $U_0 = 12\ \text{V}$, lu sur la figure 1).
         steps:
           - math: '\frac{du_C}{dt} = -\frac{U_0}{RC}\,e^{-t/RC}'
-            note: "Dérivée de la forme proposee."
+            note: "Dérivée de la forme proposée."
           - math: 'RC\left(-\frac{U_0}{RC}\,e^{-t/RC}\right) + U_0\,e^{-t/RC} = 0'
             note: "Substitution dans l'équation de la question 1-2 : le RC se simplifie."
           - math: '\boxed{u_C(t) = U_0\,e^{-t/RC} \ \text{verifie bien l équation, pour tout } U_0}'
-            note: "U0 est fixee par la condition initiale : U0 = uC(0) = 12 V, lu sur la figure 1."
+            note: "U0 est fixée par la condition initiale : U0 = uC(0) = 12 V, lu sur la figure 1."
       - id: q1-3
         stem: |-
           **(0,5 pt)** **1-3-** Par analyse dimensionnelle, montrer que le produit $RC$ est homogène à un temps.
@@ -1828,7 +1828,7 @@ entries:
           - math: 'E = u_R + u_C \qquad u_R = R\,i'
             note: "Loi des mailles sur la boucle E-R-C (K ferme), loi d Ohm pour R."
           - math: 'i = C\,\frac{du_C}{dt} \quad \text{(P relache et entrée du composant sans courant\,: tout le courant de R charge C)}'
-            note: "Définition de la capacité (chapitre 2) : aucune derivation de courant vers P ni vers le composant."
+            note: "Définition de la capacité (chapitre 2) : aucune dérivation de courant vers P ni vers le composant."
           - math: '\boxed{u_C + RC\,\frac{du_C}{dt} = E}'
             note: "Substitution dans la loi des mailles : l équation demandee."
       - id: q2
@@ -1894,7 +1894,7 @@ entries:
           En prenant le logarithme népérien des deux membres, et en utilisant $\ln(a/b) = -\ln(b/a)$ pour rendre le résultat positif :
         steps:
           - math: 'e^{-t_S/\tau} = \frac{E-U_S}{E} \implies -\frac{t_S}{\tau} = \ln\!\left(\frac{E-U_S}{E}\right)'
-            note: "L exponentielle est isolee, puis ln extrait l exposant (ln est la réciproque de exp -- pont hors chapitres, voir la scope note en tête de fichier)."
+            note: "L exponentielle est isolée, puis ln extrait l exposant (ln est la réciproque de exp -- pont hors chapitres, voir la scope note en tête de fichier)."
           - math: '\boxed{t_S = \tau\,\ln\!\left(\frac{E}{E-U_S}\right)}'
             note: "Le signe moins retourne le rapport dans le logarithme : E > E - U_S, donc t_S est bien positif."
       - id: q6

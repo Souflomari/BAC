@@ -194,7 +194,7 @@ entries:
           Même geste qu'au chapitre 5 pour la mesure au double microphone : le décalage horizontal entre les débuts des deux salves, compté en divisions sur l'écran, se convertit en temps grâce à la sensibilité horizontale (base de temps) de l'oscilloscope. Sur la figure 2, ce décalage vaut $2$ divisions.
         steps:
           - math: '\tau = 2\ \text{div}\times 2\ \text{ms/div}'
-            note: "Comptage du decalage horizontal entre les deux salves sur la figure 2, converti via la base de temps 2 ms/division."
+            note: "Comptage du décalage horizontal entre les deux salves sur la figure 2, converti via la base de temps 2 ms/division."
           - math: '\boxed{\tau = 4{,}0\ \text{ms} = 4{,}0\times10^{-3}\ \text{s}}'
             note: "Retard entre l'onde reçue dans l'air (plus lente) et celle reçue dans le pétrole."
       - id: q3
@@ -398,9 +398,9 @@ entries:
           Même lecture que celle décrite au chapitre 5 pour la mesure au double microphone : le décalage horizontal entre les deux signaux, compté en divisions de la grille, se convertit en temps grâce à l'étalonnage donné par la double flèche « $0{,}5\ \text{ms}$ », qui couvre exactement une division. Sur la figure 2, le bord du signal (b) est exactement 5 divisions plus loin que celui du signal (a) : ce décalage, c'est $\Delta t$, le retard du chapitre 4 appliqué ici entre l'émission et la réception.
         steps:
           - math: '\Delta t = 5\ \text{divisions} \times 0{,}5\ \text{ms/division}'
-            note: "Comptage direct sur la grille (figure 2) : le bord du signal (b) est exactement 5 divisions après celui du signal (a), etalonnage 0,5 ms par division."
+            note: "Comptage direct sur la grille (figure 2) : le bord du signal (b) est exactement 5 divisions après celui du signal (a), étalonnage 0,5 ms par division."
           - math: '\boxed{\Delta t = 2{,}5\ \text{ms}}'
-            note: "Retard entre l'émission (signal a) et la reception (signal b)."
+            note: "Retard entre l'émission (signal a) et la réception (signal b)."
       - id: q3
         stem: |-
           **(0,5 pt)** Calculer la célérité $v$ des ondes sonores dans l'air.
@@ -408,7 +408,7 @@ entries:
           On applique directement la définition du chapitre 4, $v=d/\Delta t$, avec ici $d=L$ (la distance émetteur-récepteur, donnée) et $\Delta t$ le retard trouvé à la question précédente — exactement la méthode déjà illustrée au chapitre 5 avec les deux microphones, qui donnait la même valeur numérique.
         steps:
           - math: 'v = \frac{L}{\Delta t} = \frac{0{,}85}{2{,}5\times10^{-3}}'
-            note: "Définition de la célérité (chapitre 4) : distance parcourue divisee par la durée mise pour la parcourir."
+            note: "Définition de la célérité (chapitre 4) : distance parcourue divisée par la durée mise pour la parcourir."
           - math: '\boxed{v \approx 340\ \text{m.s}^{-1}}'
             note: "Valeur canonique de la célérité du son dans l'air (coherente avec le chapitre 5)."
 
@@ -478,7 +478,7 @@ entries:
           Exactement la méthode des chapitres 4 à 5 : la célérité, c'est une distance parcourue par le front d'onde divisée par la durée mise pour la parcourir. Entre les instants $t_1$ et $t_2$, le front avance du rayon $r_1$ au rayon $r_2$ — la distance parcourue par le front pendant cet intervalle est donc $r_2-r_1$, et la durée est $t_2-t_1=1{,}5\ \text{s}$ (donnée directement dans la définition de $t_2$ du tableau). Le chapitre 4 établit que la célérité ne dépend que du milieu (ici, l'eau) : elle est donc la même entre $0$ et $t_1$ qu'entre $t_1$ et $t_2$, ce qui justifie de la calculer sur l'intervalle où l'on connaît une durée exploitable.
         steps:
           - math: 'v = \frac{r_2 - r_1}{t_2 - t_1} = \frac{56 - 14}{1{,}5}\ \text{cm.s}^{-1}'
-            note: "Définition de la célérité (chapitre 4) appliquee entre les instants t1 et t2 : distance parcourue par le front divisee par la durée."
+            note: "Définition de la célérité (chapitre 4) appliquee entre les instants t1 et t2 : distance parcourue par le front divisée par la durée."
           - math: 'v = \frac{42}{1{,}5} = 28\ \text{cm.s}^{-1}'
             note: "Application numérique."
           - math: '\boxed{v = 0{,}28\ \text{m.s}^{-1}}'
@@ -507,7 +507,7 @@ entries:
           - math: '[g.h] = \text{L.T}^{-2}\times\text{L} = \text{L}^2.\text{T}^{-2}'
             note: "Dimension du produit g fois h : g est une accélération (L.T^-2), h une longueur (L)."
           - math: '\left[\sqrt{g.h}\right] = \text{L.T}^{-1} = [v]'
-            note: "La racine carree donne la dimension d'une vitesse, coherente avec [v] = [d]/[Delta t] (chapitre 4)."
+            note: "La racine carrée donne la dimension d'une vitesse, coherente avec [v] = [d]/[Delta t] (chapitre 4)."
       - id: q3b
         stem: |-
           **3-2.** (0,5 pt) Calculer $h$.
@@ -515,7 +515,7 @@ entries:
           On isole $h$ dans la relation $v=\sqrt{g.h}$ donnée dans l'énoncé, en réutilisant la valeur de $v$ trouvée à la question 2-1 — une célérité fixée par le milieu (chapitre 4), donc la même tout au long de la propagation observée dans le tableau.
         steps:
           - math: 'v = \sqrt{g.h} \implies h = \frac{v^2}{g}'
-            note: "On isole h par elevation au carré des deux membres."
+            note: "On isole h par élévation au carré des deux membres."
           - math: 'h = \frac{0{,}28^2}{9{,}8}'
             note: "Application numérique, avec v = 0,28 m/s trouve a la question 2-1."
           - math: '\boxed{h \approx 8{,}0\times10^{-3}\ \text{m}}'
@@ -762,7 +762,7 @@ entries:
           Application directe de la définition du chapitre 4, $v = d/\tau$, avec $d$ la distance entre les deux récepteurs (donnée, figure 1) et $\tau$ le retard trouvé à la question précédente.
         steps:
           - math: 'v_{air} = \frac{d}{\tau} = \frac{0{,}5}{1{,}5\times10^{-3}}'
-            note: "Définition de la célérité (chapitre 4) : distance parcourue divisee par la durée mise pour la parcourir."
+            note: "Définition de la célérité (chapitre 4) : distance parcourue divisée par la durée mise pour la parcourir."
           - math: '\boxed{v_{air} \approx 333\ \text{m.s}^{-1}}'
             note: "Valeur canonique de la célérité du son dans l'air : le résultat se recoupe avec la physique connue."
       - id: q1-3
@@ -801,7 +801,7 @@ entries:
           - math: 'L = \frac{1\,300\times1{,}2}{2}'
             note: "Application numérique, v=1,3 km/s = 1300 m/s."
           - math: '\boxed{L = 780\ \text{m}}'
-            note: "Valeur qui decoule fidelement des données imprimees ; ordre de grandeur surprenant pour une nappe, non requalifie -- le scan fait foi."
+            note: "Valeur qui découle fidèlement des données imprimées ; ordre de grandeur surprenant pour une nappe, non requalifie -- le scan fait foi."
 
   # ── bk-2015-r-x2 — 2015 R, Exercice 2 (❖ Ondes) : célérité d'un ébranlement le long d'une corde (QCM) ──
   #
@@ -921,7 +921,7 @@ entries:
           - math: '1\ \text{m (règle)} = 2\ \text{carreaux majeurs}'
             note: "L'échelle est donnée par la règle (R), pas par le papier."
           - math: 'd = 2\ \text{carreaux} = 1{,}00\ \text{m}'
-            note: "Déplacement identique du bord avant et du bord arriere : la forme se conserve (chapitre 2)."
+            note: "Déplacement identique du bord avant et du bord arrière : la forme se conserve (chapitre 2)."
           - math: '\boxed{\text{C\,: } d = 1{,}00\ \text{m}}'
             note: "B (0,50 m) comparerait des points non homologues ; A ignorerait l'échelle."
       - id: q3

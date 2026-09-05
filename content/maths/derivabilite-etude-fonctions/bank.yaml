@@ -281,9 +281,9 @@ entries:
           - math: 'f(x) = (x^{2}-x)e^{-x}+x = x^{2}e^{-x} - x\,e^{-x} + x = \dfrac{x^{2}}{e^{x}} - \dfrac{x}{e^{x}} + x'
             note: "On distribue e a la puissance moins x sur les deux termes de x carré moins x, puis on écrit e a la puissance moins x comme 1 sur e a la puissance x."
           - math: '\dfrac{x}{e^{x}} = \dfrac{1}{e^{x}/x} \longrightarrow 0 \quad \left(\text{inverse de } \dfrac{e^{x}}{x}\to+\infty,\ R4\right)'
-            note: "x sur e puissance x est l'inverse direct de la croissance comparee de référence du chapitre 5 de « Fonction exponentielle »."
+            note: "x sur e puissance x est l'inverse direct de la croissance comparée de référence du chapitre 5 de « Fonction exponentielle »."
           - math: 't=\dfrac{x}{2}\ (\to+\infty \text{ quand } x\to+\infty), \qquad \dfrac{x^{2}}{e^{x}} = \dfrac{(2t)^{2}}{e^{2t}} = 4\left(\dfrac{t}{e^{t}}\right)^{2} \longrightarrow 0'
-            note: "Même changement de variable que celui du cours pour établir e^x/x -> plus l'infini : on ramene x carré sur e puissance x a la forme exacte du chapitre 5, elevee au carré."
+            note: "Même changement de variable que celui du cours pour établir e^x/x -> plus l'infini : on ramene x carré sur e puissance x a la forme exacte du chapitre 5, élevée au carré."
           - math: '\lim_{x\to+\infty} f(x) = 0 - 0 + \lim_{x\to+\infty} x = +\infty'
             note: "Les deux fractions s'effacent ; il ne reste que le terme plus x, qui part vers plus l'infini : pas d'indetermination."
       - id: qII1b
@@ -317,7 +317,7 @@ entries:
           - math: '\lim_{x\to-\infty}\left(x^{2}-x+x\,e^{x}\right) = +\infty \qquad \lim_{x\to-\infty} e^{x} = 0^{+}'
             note: "Le numérateur part vers plus l'infini ; le dénominateur s'efface en restant strictement positif."
           - math: '\lim_{x\to-\infty} f(x) = +\infty'
-            note: "Une quantité qui part vers plus l'infini, divisee par une quantité positive qui s'efface, part elle aussi vers plus l'infini."
+            note: "Une quantité qui part vers plus l'infini, divisée par une quantité positive qui s'efface, part elle aussi vers plus l'infini."
       - id: qII1d
         part: "Partie II, 1) — Branche parabolique en −∞"
         stem: |-
@@ -405,7 +405,7 @@ entries:
           Dresser un tableau, ce n'est jamais recalculer : c'est rassembler ce qui est déjà établi. Tu as les deux limites aux bornes ($+\infty$ en $-\infty$, question 1c ; $+\infty$ en $+\infty$, question 1a) et le sens de variation (décroissante puis croissante, question 3b, avec le pivot en $x=0$). Il manque une seule pièce que le sujet ne redemande pas explicitement mais que le tableau exige : la valeur au pivot, $f(0)$ — un calcul immédiat à partir de la définition de $f$.
         steps:
           - math: 'f(0) = (0^{2}-0)e^{0} + 0 = 0'
-            note: "Valeur du minimum, au point pivot x=0 : nécessaire pour completer le tableau."
+            note: "Valeur du minimum, au point pivot x=0 : nécessaire pour compléter le tableau."
           - math: '\lim_{x\to-\infty} f(x) = +\infty \ (\text{question 1c}) \qquad \lim_{x\to+\infty} f(x) = +\infty \ (\text{question 1a})'
             note: "Les deux limites aux bornes, déjà calculees, se reportent telles quelles dans le tableau."
           - math: 'f \text{ décroît de } +\infty \text{ a } 0 \text{ sur } \left]-\infty,0\right], \text{ puis croit de } 0 \text{ a } +\infty \text{ sur } \left[0,+\infty\right['
@@ -429,7 +429,7 @@ entries:
           Un point d'inflexion, ce n'est pas « $f''$ s'annule » — c'est « $f''$ s'annule EN CHANGEANT DE SIGNE » (chapitre 6). Factorise $x^2-5x+4=(x-1)(x-4)$ : deux racines simples et distinctes. Comme $e^{-x}$ est toujours strictement positif, le signe de $f''$ est exactement celui de $(x-1)(x-4)$, qui bascule réellement à chacune de ces deux racines (positif à l'extérieur de $[1,4]$, négatif à l'intérieur) — ce n'est pas un simple contact avec zéro, c'est un vrai changement de signe, aux DEUX endroits.
         steps:
           - math: 'x^{2}-5x+4 = (x-1)(x-4) \qquad e^{-x}>0 \ (\forall x) \ \Longrightarrow\ \text{signe de } f^{(2)}(x) = \text{signe de } (x-1)(x-4)'
-            note: "On factorise le trinome ; le facteur exponentiel, toujours positif, ne pèse jamais sur le signe."
+            note: "On factorise le trinôme ; le facteur exponentiel, toujours positif, ne pèse jamais sur le signe."
           - math: '(x-1)(x-4) < 0 \text{ sur } \left]1,4\right[ \qquad (x-1)(x-4) > 0 \text{ ailleurs, avec changement strict en } x=1 \text{ et } x=4'
             note: "Deux racines simples et distinctes : le signe bascule réellement à chaque racine, pas un simple contact avec zéro."
           - math: 'f^{(2)} \text{ s''annule en changeant de signe en } x=1 \text{ et en } x=4 \ \Longrightarrow\ (C) \text{ admet deux points d''inflexion, d''abscisses } 1 \text{ et } 4'
@@ -494,7 +494,7 @@ entries:
           - math: '\text{sur } [0,1],\ (C) \text{ est en dessous de } (D) \quad (\text{question } 2b) \ \Longrightarrow\ \text{Aire} = \int_{0}^{1} \bigl(x-f(x)\bigr)\,dx \times 1\,\text{cm}^{2}'
             note: "On integre le dessus (D) moins le dessous (C), positif sur [0,1] ; unité d'aire = 1 cm carré car le repère est orthonormé d'unité 1 cm."
           - math: 'x - f(x) = -\bigl(f(x)-x\bigr) = -(x^{2}-x)e^{-x} = x\,e^{-x} - x^{2}e^{-x}'
-            note: "On reprend l'expression de f(x) moins x déjà etablie en 2a, et on en change le signe."
+            note: "On reprend l'expression de f(x) moins x déjà établie en 2a, et on en change le signe."
           - math: '\int_{0}^{1}\bigl(x-f(x)\bigr)\,dx = \int_{0}^{1} x\,e^{-x}\,dx - \int_{0}^{1} x^{2}e^{-x}\,dx = \dfrac{e-2}{e} - \dfrac{2e-5}{e}'
             note: "La différence se scinde en exactement les deux intégrales des questions 6b et 6a, déjà calculees : rien a recalculer."
           - math: '\dfrac{e-2}{e} - \dfrac{2e-5}{e} = \dfrac{(e-2)-(2e-5)}{e} = \dfrac{3-e}{e} = \dfrac{3}{e}-1'
@@ -515,13 +515,13 @@ entries:
           - math: 'u_{0} = \dfrac12 \ \Longrightarrow\ 0 \le u_{0} \le 1'
             note: "Initialisation : le premier terme est bien dans l'intervalle."
           - math: '\text{Hérédité\,: on suppose } 0 \le u_{n} \le 1. \ f \text{ croissante sur } [0,+\infty[ \supseteq [0,1] \quad (\text{question II-3b})'
-            note: "On reutilise la monotonie de f, déjà etablie, sur l'intervalle qui contient u_n : c'est le renvoi imprime par le sujet."
+            note: "On reutilise la monotonie de f, déjà établie, sur l'intervalle qui contient u_n : c'est le renvoi imprime par le sujet."
           - math: 'f \text{ croissante} \ \Longrightarrow\ f(0) \le f(u_{n}) \le f(1)'
             note: "Une fonction croissante conserve l'ordre : encadrer u_n encadre f(u_n) de la même façon."
           - math: 'f(0) = 0 \quad (\text{déjà calcule en 3c}) \qquad f(1) = (1-1)e^{-1}+1 = 1'
             note: "Valeurs de f aux deux bords 0 et 1 de l'intervalle."
           - math: '0 \le f(u_{n}) \le 1 \Longleftrightarrow 0 \le u_{n+1} \le 1 \ \Longrightarrow\ \text{la propriété est vraie pour tout } n \in \mathbb{N}'
-            note: "u_n+1 est par définition f(u_n) : l'hérédité est etablie, la recurrence conclut pour tout n."
+            note: "u_n+1 est par définition f(u_n) : l'hérédité est établie, la récurrence conclut pour tout n."
       - id: qIII2
         part: "Partie III — Décroissance de la suite"
         stem: |-
@@ -550,10 +550,10 @@ entries:
 
           Pour trancher entre les deux, réutilise la monotonie : la suite décroît à partir de $u_0=\frac12$, donc **tous** ses termes — et leur limite — restent $\le\frac12$. Comme $\frac12<1$, la valeur $L=1$ est impossible : il reste $L=0$.
         steps:
-          - math: '(u_{n}) \text{ décroissante (III-2), minoree par } 0 \text{ (III-1)} \ \Longrightarrow\ (u_{n}) \text{ converge vers une limite } L\in[0,1] \quad (\text{théorème de la limite monotone, R7})'
-            note: "Décroissante et minoree : la convergence est garantie sans connaître encore la valeur de la limite."
+          - math: '(u_{n}) \text{ décroissante (III-2), minorée par } 0 \text{ (III-1)} \ \Longrightarrow\ (u_{n}) \text{ converge vers une limite } L\in[0,1] \quad (\text{théorème de la limite monotone, R7})'
+            note: "Décroissante et minorée : la convergence est garantie sans connaître encore la valeur de la limite."
           - math: 'f \text{ continue sur } \mathbb{R} \ (\text{somme et produit de fonctions continues}),\ u_{n+1}=f(u_{n}) \ \Longrightarrow\ L = f(L) \quad (R8)'
-            note: "On passe a la limite dans la relation de recurrence : la continuite de f permet d'echanger limite et f."
+            note: "On passe a la limite dans la relation de récurrence : la continuité de f permet d'échanger limite et f."
           - math: 'f(L)=L \iff (L^{2}-L)e^{-L}=0 \iff L^{2}-L=0 \iff L(L-1)=0 \iff L=0 \text{ ou } L=1'
             note: "e puissance moins L n'est jamais nul : seul le facteur L(L moins 1) peut s'annuler."
           - math: '(u_{n}) \text{ décroissante et } u_{0}=\dfrac12 \ \Longrightarrow\ L \le \dfrac12 < 1 \ \Longrightarrow\ L \ne 1 \ \Longrightarrow\ L = 0'

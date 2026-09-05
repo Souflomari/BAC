@@ -24,7 +24,7 @@ C'est tout l'objet de cette leçon : comprendre ce que veut vraiment dire un ét
 
 ## R1 — Le mécanisme : un équilibre qui n'est pas un arrêt
 
-Reprends le mélange $Fe^{3+}/SCN^-$ de l'accroche, à l'instant précis où sa couleur cesse de changer. Deux explications sont a priori possibles : soit la réaction s'est réellement arrêtée (plus aucune transformation ne se produit), soit quelque chose d'autre se joue. L'ajout de $SCN^-$ supplémentaire vient de trancher : la couleur est repartie, donc la réaction n'était pas terminée. Il faut un modèle qui explique à la fois pourquoi la couleur peut rester rigoureusement stable pendant des heures, ET pourquoi le système reste capable de réagir davantage dès qu'on le perturbe.
+Reprends le mélange $Fe^{3+}/SCN^-$ de l'accroche, à l'instant précis où sa couleur cesse de changer. Deux explications sont a priori possibles : soit la réaction s'est réellement arrêtée (plus aucune transformation ne se produit), soit quelque chose d'autre se joue. L'ajout de $SCN^-$ supplémentaire vient de trancher : la couleur est répartie, donc la réaction n'était pas terminée. Il faut un modèle qui explique à la fois pourquoi la couleur peut rester rigoureusement stable pendant des heures, ET pourquoi le système reste capable de réagir davantage dès qu'on le perturbe.
 
 ### Deux réactions, pas une
 

@@ -98,6 +98,12 @@ const nav = await chromium.launch({
 const page = await (await nav.newContext({ viewport: { width: 1280, height: 900 } })).newPage();
 
 let total = 0;
+// PAGES RÉELLEMENT MESURÉES (2026-09-05). Le compte affiché disait
+// `routes.length` : sur une liste dont TOUTES les routes rendaient un 404,
+// la porte annonçait « aucun mot désaccentué sur 62 pages » — une phrase
+// fausse, juste au-dessus de « porte ROMPUE ». Le refus 404 arrête bien la
+// porte ; c'est le CHIFFRE qui mentait. On compte ce qu'on a ouvert.
+let mesurees = 0;
 const parSite = {};
 const parMot = {};
 const exemples = [];
@@ -115,6 +121,7 @@ for (const route of routes) {
     process.exitCode = 1;
     continue;
   }
+  mesurees++;
   await page.waitForTimeout(200);
   const r = await page.evaluate((motif) => {
     const racine = document.querySelector("main");
@@ -159,8 +166,8 @@ for (const route of routes) {
 
 console.log(
   total === 0
-    ? `\nAucun mot français désaccentué sur ${routes.length} page(s).`
-    : `\n${total} occurrence(s) de mots français écrits sans leurs accents, sur ${routes.length} page(s).`
+    ? `\nAucun mot français désaccentué sur ${mesurees} page(s) mesurée(s) sur ${routes.length}.`
+    : `\n${total} occurrence(s) de mots français écrits sans leurs accents, sur ${mesurees} page(s) mesurée(s) sur ${routes.length}.`
 );
 if (total > 0) {
   console.log("\n  Par mot :");

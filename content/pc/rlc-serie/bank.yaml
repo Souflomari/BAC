@@ -193,7 +193,7 @@ entries:
           Même mécanisme qu'au chapitre 3, mais l'énoncé demande la relation directement en $u_c$ plutôt qu'en $q$ — les deux variables sont liées par $q = C u_c$. Circuit LC idéal (rien n'indique de résistance sur cette branche : c'est le cas $R \approx 0$ du chapitre 4) : la loi des mailles donne $u_C + u_L = 0$. On exprime le courant à partir de $u_c$ plutôt que l'inverse ($i = C\frac{du_c}{dt}$, la même relation $i = \frac{dq}{dt}$ du chapitre 2 réécrite avec $q = Cu_c$), puis $u_L$ suit — le même geste qu'au chapitre 3, juste réarrangé pour éliminer $q$ au profit de $u_c$.
         steps:
           - math: 'u_C + u_L = 0'
-            note: "Loi des mailles, cas ideal (R négligeable), comme au chapitre 3."
+            note: "Loi des mailles, cas idéal (R négligeable), comme au chapitre 3."
           - math: 'i = \frac{dq}{dt} = C\frac{du_c}{dt}'
             note: "On exprime le courant directement en u_c (q = C u_c), plutôt qu'en q comme au chapitre 3."
           - math: 'u_L = L\frac{di}{dt} = LC\frac{d^2u_c}{dt^2}'
@@ -246,7 +246,7 @@ entries:
           - math: 'u_c(t_1) = U_0\cos\!\left(\frac{2\pi t_1}{T_0}\right) = 10\cos\!\left(\frac{2\pi\times12}{20}\right)'
             note: "Forme cosinus identifiee (chapitre 3), evaluee a t1 = 12 ms avec T0 = 20 ms."
           - math: 'u_c(t_1) = 10\cos(216^\circ) \approx 10\times(-0{,}809) \approx -8{,}09\ \text{V}'
-            note: "L'angle 216 degrés depasse 180 : le cosinus est négatif, coherent avec la courbe qui redescend a cet instant."
+            note: "L'angle 216 degrés depasse 180 : le cosinus est négatif, cohérent avec la courbe qui redescend a cet instant."
           - math: 'E_{c1} = \frac{1}{2}C\,u_c(t_1)^2 = \frac{1}{2}\times10\times10^{-6}\times8{,}09^2 \approx 3{,}27\times10^{-4}\ \text{J}'
             note: "Énergie électrique restant dans le condensateur a t1."
           - math: '\boxed{E_{m1} = E_t - E_{c1} \approx 5\times10^{-4} - 3{,}27\times10^{-4} \approx 1{,}7\times10^{-4}\ \text{J}}'
@@ -312,7 +312,7 @@ entries:
           - math: 'u_C + u_{bobine} = u_G \qquad \text{avec} \qquad u_{bobine} = L\frac{d^2q}{dt^2} + r\frac{dq}{dt}'
             note: "Loi des mailles avec générateur (chapitre 8) ; ici la bobine porte elle-même la seule résistance du circuit, r, il n'y a pas de R separe."
           - math: '\frac{q}{C} + L\frac{d^2q}{dt^2} + r\frac{dq}{dt} = k\frac{dq}{dt}'
-            note: "Chaque tension remplacee par son expression en q, comme au chapitre 8."
+            note: "Chaque tension remplacée par son expression en q, comme au chapitre 8."
           - math: '\boxed{L\frac{d^2q}{dt^2} + (r-k)\frac{dq}{dt} + \frac{q}{C} = 0}'
             note: "Même structure qu'au chapitre 8, avec r a la place de R (seule résistance ici)."
       - id: q2b
@@ -322,7 +322,7 @@ entries:
           Chapitre 8 : l'entretien (oscillations sinusoïdales à amplitude constante) annule le coefficient d'amortissement de l'équation qu'on vient d'établir. Ici ce coefficient est $(r-k)$ — pas $(R-k)$, puisqu'il n'y a pas de $R$ séparé dans ce montage. La condition est donc $r = k$, directement.
         steps:
           - math: 'r - k = 0 \implies r = k'
-            note: "Condition d'entretien (chapitre 8), generalisee : ici r joue le rôle que R joue au chapitre 8."
+            note: "Condition d'entretien (chapitre 8), généralisée : ici r joue le rôle que R joue au chapitre 8."
           - math: '\boxed{r = 5\ \Omega}'
             note: "Application numérique directe, k = 5 SI étant donne par l'énoncé."
       - id: q2c
@@ -471,7 +471,7 @@ entries:
           - math: 'T_0 = 10\ \text{ms}'
             note: "Écart entre deux extrema consecutifs (chapitre 7) ; identique a la pseudo-periode mesurée sur la figure 4, comme l'énoncé le suggere."
           - math: 'i(0) = I_m\cos\varphi = 0 \quad \text{et} \quad \left.\frac{di}{dt}\right|_{t=0} < 0'
-            note: "La courbe part de zéro en decroissant a t=0 (figure 6)."
+            note: "La courbe part de zéro en décroissant a t=0 (figure 6)."
           - math: '\boxed{\varphi = \frac{\pi}{2}}'
             note: "Seul phi = pi/2 donne à la fois cos(phi)=0 et une pente négative à l'origine (phi = -pi/2 donnerait une pente positive)."
       - id: q2c
@@ -579,19 +579,19 @@ entries:
           Même mécanisme qu'au chapitre 3 (et qu'à la question 1 du sujet 2019 ci-dessus, écrite en $u_c$ plutôt qu'en $q$) : circuit LC idéal — la figure 3 confirme l'absence de tout conducteur ohmique dans la boucle, donc $R \approx 0$ comme au chapitre 2. La loi des mailles donne $u_L + u_C = 0$, puis chaque tension s'exprime avec son origine physique établie au chapitre 2 et au chapitre 3 : $u_C = \frac{q}{C}$, et $u_L = L\frac{di}{dt}$ où $i = \frac{dq}{dt}$.
         steps:
           - math: 'u_L + u_C = 0'
-            note: "Loi des mailles, cas ideal comme au chapitre 3 ; figure 3 confirme l'absence de tout conducteur ohmique dans la boucle."
+            note: "Loi des mailles, cas idéal comme au chapitre 3 ; figure 3 confirme l'absence de tout conducteur ohmique dans la boucle."
           - math: 'u_C = \frac{q}{C} \qquad u_L = L\frac{di}{dt} = L\frac{d^2q}{dt^2}'
             note: "Définitions du chapitre 2 et du chapitre 3, avec i = dq/dt substitue dans u_L."
           - math: '\boxed{L\frac{d^2q}{dt^2} + \frac{q}{C} = 0}'
-            note: "Substitution dans la loi des mailles et regroupement : forme standard du cas ideal (chapitre 3)."
+            note: "Substitution dans la loi des mailles et regroupement : forme standard du cas idéal (chapitre 3)."
       - id: q3
         stem: |-
           **(0,5 pt)** Trouver l'expression de la période propre $T_0$ de l'oscillateur en fonction de $L$ et de $C$ pour que l'expression $q(t) = Q_m \cos\!\left(\dfrac{2\pi}{T_0}\,t\right)$ soit solution de cette équation différentielle.
         reasoning: |-
-          Même démarche que la vérification du chapitre 3 (derivation:verification-cosinus) : on injecte la forme cosinus proposée par l'énoncé — ici sans déphasage, cohérent avec la courbe de la figure 4 qui part bien de son maximum à $t=0$ — dans l'équation établie à la question précédente, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
+          Même démarche que la vérification du chapitre 3 (dérivation:verification-cosinus) : on injecte la forme cosinus proposée par l'énoncé — ici sans déphasage, cohérent avec la courbe de la figure 4 qui part bien de son maximum à $t=0$ — dans l'équation établie à la question précédente, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
         steps:
           - math: 'q(t) = Q_m\cos\!\left(\frac{2\pi}{T_0}\,t\right) \implies \frac{d^2q}{dt^2} = -\frac{4\pi^2}{T_0^2}\,q'
-            note: "Dérivée seconde du cosinus propose par l'énoncé (même geste qu'au chapitre 3, derivation verification-cosinus)."
+            note: "Dérivée seconde du cosinus propose par l'énoncé (même geste qu'au chapitre 3, dérivation verification-cosinus)."
           - math: '-\frac{4\pi^2 L}{T_0^2}\,q + \frac{q}{C} = 0 \implies \frac{4\pi^2 L}{T_0^2} = \frac{1}{C}'
             note: "Substitution dans l'équation de la question précédente ; q se simplifie, il n'est jamais nul en permanence."
           - math: '\boxed{T_0 = 2\pi\sqrt{LC}}'
@@ -844,7 +844,7 @@ entries:
           Même mécanisme qu'au chapitre 3, écrit directement en $u_C$ comme à la question 1 du sujet 2019 ci-dessus. Ici la résistance négligée n'est pas un conducteur ohmique séparé — ce montage n'en a pas — c'est la résistance propre $r$ de la bobine elle-même, que l'énoncé demande explicitement de négliger dans ce premier cas : $R \approx 0$ au sens du chapitre 2. La loi des mailles donne $u_C + u_L = 0$, puis on exprime le courant à partir de $u_C$ ($i = C\frac{du_C}{dt}$, la relation $i = \frac{dq}{dt}$ du chapitre 2 réécrite avec $q = Cu_C$), et $u_L$ suit.
         steps:
           - math: 'u_C + u_L = 0'
-            note: "Loi des mailles, cas ideal (chapitre 2) : ici c'est la résistance propre de la bobine qu'on néglige, il n'y a pas de conducteur ohmique séparé dans ce montage."
+            note: "Loi des mailles, cas idéal (chapitre 2) : ici c'est la résistance propre de la bobine qu'on néglige, il n'y a pas de conducteur ohmique séparé dans ce montage."
           - math: 'i = \frac{dq}{dt} = C\frac{du_C}{dt}'
             note: "Courant exprime directement en u_C (q = C u_C), même geste qu'a la question 1 du sujet 2019 ci-dessus."
           - math: 'u_L = L\frac{di}{dt} = LC\frac{d^2u_C}{dt^2}'
@@ -862,7 +862,7 @@ entries:
         stem: |-
           **(0,5 pt)** La solution de l'équation différentielle précédente est $u_C(t) = U_0\cos\!\left(\dfrac{2\pi}{T_0}t\right)$, où $U_0$ est la valeur maximale de la tension et $T_0$ la période propre des oscillations. Trouver l'expression de $T_0$ en fonction de $L$ et $C$.
         reasoning: |-
-          Même démarche que la vérification du chapitre 3 (derivation:verification-cosinus), et que la question 3 du sujet 2021 ci-dessus : on injecte la forme cosinus proposée par l'énoncé dans l'équation établie à la question 1, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
+          Même démarche que la vérification du chapitre 3 (dérivation:verification-cosinus), et que la question 3 du sujet 2021 ci-dessus : on injecte la forme cosinus proposée par l'énoncé dans l'équation établie à la question 1, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
         steps:
           - math: 'u_C(t) = U_0\cos\!\left(\frac{2\pi}{T_0}t\right) \implies \frac{d^2u_C}{dt^2} = -\frac{4\pi^2}{T_0^2}\,u_C'
             note: "Dérivée seconde du cosinus propose par l'énoncé (même geste qu'au chapitre 3)."
@@ -892,7 +892,7 @@ entries:
           C'est directement la formule du chapitre 2 : l'énergie totale, à un instant donné, est la somme de ce qui est stocké dans le condensateur et de ce qui est stocké dans la bobine — quel que soit le régime. Ce qui change dans ce deuxième cas, ce n'est pas la formule (toujours vraie instant par instant), c'est que cette somme n'est **plus constante** au fil du temps : la résistance $r$, non négligeable ici, la fait décroître (chapitre 4/4).
         steps:
           - math: '\boxed{E_t = \frac{1}{2}C\,u_C(t)^2 + \frac{1}{2}L\,i(t)^2}'
-            note: "Somme des deux énergies stockees à l'instant t (chapitre 2), valable dans les deux cas ; seule la constance de cette somme diffère entre le cas ideal et le cas amorti."
+            note: "Somme des deux énergies stockees à l'instant t (chapitre 2), valable dans les deux cas ; seule la constance de cette somme diffère entre le cas idéal et le cas amorti."
       - id: q6
         stem: |-
           **(0,75 pt)** En exploitant les courbes de la figure 4, trouver l'énergie $\Delta E$ dissipée dans le circuit entre les instants $t_0 = 0$ et $t_1 = 9\ \text{ms}$.
@@ -1150,7 +1150,7 @@ entries:
           Même mécanisme qu'à la question 1 du sujet 2022 ci-dessus, et qu'au chapitre 3 : circuit LC pur (la figure 3 ne montre aucun conducteur ohmique dans la boucle, et la bobine $(b)$ n'est pas dite résistive ici). Loi des mailles $u_C + u_L = 0$, puis $u_C = \frac{q}{C}$ et $i = \frac{dq}{dt} = C\frac{du_C}{dt}$ (chapitre 2) pour aboutir à $u_L = LC\frac{d^2u_C}{dt^2}$.
         steps:
           - math: 'u_C + u_L = 0'
-            note: "Loi des mailles, cas ideal (chapitre 2) : aucun conducteur ohmique dans la boucle (figure 3)."
+            note: "Loi des mailles, cas idéal (chapitre 2) : aucun conducteur ohmique dans la boucle (figure 3)."
           - math: 'i = C\frac{du_C}{dt} \qquad u_L = L\frac{di}{dt} = LC\frac{d^2u_C}{dt^2}'
             note: "Même substitution qu'a la question 1 du sujet 2022 ci-dessus."
           - math: '\boxed{\frac{d^2u_C}{dt^2} + \frac{1}{LC}\,u_C = 0}'
@@ -1177,7 +1177,7 @@ entries:
           Même geste qu'à la question 4b du sujet 2019 ci-dessus : circuit idéal (chapitre 2), énergie totale conservée, $E_m = E_t - E_C(t)$. On évalue d'abord $u_C(1{,}8\ \text{ms})$ avec la forme cosinus identifiée par la courbe ($u_C(0) = +U_0$, donc phase nulle), en utilisant $T_0 = 2{,}0\ \text{ms}$ et $U_0 = 10\ \text{V}$ (amplitude lue à la question précédente).
         steps:
           - math: 'E_t = \frac{1}{2}C\,U_0^2 = \frac{1}{2}\times0{,}1\times10^{-6}\times10^2'
-            note: "Énergie totale, conservee dans le cas ideal (chapitre 2) ; calculée au maximum de u_C, ou tout est électrique."
+            note: "Énergie totale, conservée dans le cas idéal (chapitre 2) ; calculée au maximum de u_C, ou tout est électrique."
           - math: '\boxed{E_t = 5\times10^{-6}\ \text{J}}'
             note: "Application numérique."
           - math: 'u_C(1{,}8) = U_0\cos\!\left(\frac{2\pi\times1{,}8}{2{,}0}\right) = 10\cos(1{,}8\pi)'
@@ -1488,7 +1488,7 @@ entries:
           - math: 'E_j = \frac{1}{2}\times0{,}22\times10^{-9}\times\left(6{,}0^2 - 4{,}3^2\right) = \frac{1}{2}\times0{,}22\times10^{-9}\times(36-18{,}49)'
             note: "Application numérique : u_C(0)=6,0 V (au trait), u_C(t2)=-4,3 V (hors trait, lecture graphique)."
           - math: '\boxed{E_j \approx 1{,}9\times10^{-9}\ \text{J}}'
-            note: "Coherent avec le cross-check indépendant de la note de sourcing."
+            note: "Cohérent avec le cross-check indépendant de la note de sourcing."
 
   # ── bk-2024-r-x4b — 2024 R, Exercice 4 (partie 2) : oscillations libres RLC,
   #    bilan d'energie entre deux instants dont AUCUN n'est un extremum ──
@@ -1740,15 +1740,15 @@ entries:
           **Le piège nommé de cette question.** Traiter $t_1$ comme un extremum et ne garder que le terme électrique. Le raccourci donne ici un résultat presque juste — $1{,}14\ \mu\text{J}$ au lieu de $1{,}137$ — précisément parce que le terme magnétique est minuscule ; mais c'est un coup de chance, pas une méthode, et sur une figure où le courant est important au même instant il coûterait toute la question. Le second piège, plus cher : oublier que la figure 4 est graduée en **millivolts**. Prendre $5{,}1\ \text{V}$ au lieu de $5{,}1\ \text{mV}$ multiplie le terme magnétique par $10^6$ et rend $E_t(t_1)$ plus grand que $E_t(0)$ — un circuit libre qui gagne de l'énergie, ce qui devrait déclencher l'alarme immédiatement.
         steps:
           - math: 'E_t = \frac{1}{2}C\,u_C^2(t) + \frac{1}{2}L\left(\frac{u_R(t)}{R}\right)^2'
-            note: "Expression etablie en 2-2 : les deux reserves, ecrites avec les deux tensions que les figures donnent."
+            note: "Expression établie en 2-2 : les deux reserves, écrites avec les deux tensions que les figures donnent."
           - math: 'E_t(0) = \frac{1}{2}\times1{,}0\times10^{-7}\times(5{,}0)^2 = 1{,}25\times10^{-6}\ \text{J}'
-            note: "A t=0 le courant est nul (question 2-1-1), donc terme magnetique nul : énergie purement électrique."
+            note: "A t=0 le courant est nul (question 2-1-1), donc terme magnétique nul : énergie purement électrique."
           - math: 'i(t_1) = \frac{u_R(t_1)}{R} = \frac{5{,}1\times10^{-3}}{50} = 1{,}02\times10^{-4}\ \text{A}'
             note: "Figure 4 graduee en MILLIVOLTS : 5,1 mV, pas 5,1 V. Conversion obligatoire avant tout calcul."
           - math: 'E_t(t_1) = \frac{1}{2}\times1{,}0\times10^{-7}\times(1{,}5)^2 + \frac{1}{2}\times2{,}0\times10^{-2}\times(1{,}02\times10^{-4})^2'
             note: "t1 tombe sur le flanc montant de u_C (3,30 div), pas sur un extremum : les DEUX termes sont a poser."
           - math: 'E_t(t_1) = 1{,}125\times10^{-7} + 1{,}04\times10^{-10} = 1{,}126\times10^{-7}\ \text{J}'
-            note: "Le terme magnetique pèse 0,09 % du total : négligeable, mais on ne le sait qu'après l'avoir calcule."
+            note: "Le terme magnétique pèse 0,09 % du total : négligeable, mais on ne le sait qu'après l'avoir calcule."
           - math: 'E_j = |\Delta E_t| = 1{,}250\times10^{-6} - 0{,}1126\times10^{-6} = 1{,}137\times10^{-6}\ \text{J}'
             note: "Régime libre : rien n'entre, donc tout ce qui quitte les reserves est parti en chaleur dans R et r."
           - math: '\boxed{E_j \approx 1{,}1\ \mu\text{J}}'
@@ -1858,7 +1858,7 @@ entries:
           On part de la formule du chapitre 2, $E_T = \frac{1}{2}C_0 u_C^2 + \frac{1}{2}Li^2$, et on la dérive par rapport au temps — le geste que le chapitre 2 ne fait jamais explicitement (il énonce la conservation dans le cas idéal ; ici on va plus loin en dérivant dans le cas amorti). On réinjecte ensuite l'équation de la question 1 pour remplacer $\frac{di}{dt}$, ce qui fait apparaître exactement le terme demandé.
         steps:
           - math: '\frac{dE_T}{dt} = C_0\,u_C\frac{du_C}{dt} + L\,i\frac{di}{dt}'
-            note: "Dérivée de E_T = (1/2)C0 uC^2 + (1/2)L i^2 par rapport au temps (règle de derivation d'un carré)."
+            note: "Dérivée de E_T = (1/2)C0 uC^2 + (1/2)L i^2 par rapport au temps (règle de dérivation d'un carré)."
           - math: 'i = C_0\frac{du_C}{dt} \implies C_0\,u_C\frac{du_C}{dt} = u_C\,i'
             note: "On remplace du_C/dt par i/C0 (définition du courant, chapitre 2)."
           - math: 'L\frac{di}{dt} = -u_C - r\,i \quad \text{(loi des mailles, question 1)} \implies L\,i\frac{di}{dt} = -u_C\,i - r\,i^2'
@@ -2009,7 +2009,7 @@ entries:
           Exactement la définition du chapitre 2, transposée à ce montage : l'énergie totale est la somme de ce que stocke le condensateur et de ce que stocke la bobine, à un instant $t$ quelconque — pas seulement à $t=0$. On écrit $E_C$ en fonction de $q$ (chapitre 2) et $E_L$ en fonction du courant, réexprimé en $\dfrac{dq}{dt}$ (chapitre 2, $i=dq/dt$), puisque l'énoncé impose ces deux variables précisément.
         steps:
           - math: 'E_T = E_C + E_L = \frac{q^2}{2C} + \frac12Li^2'
-            note: "Définition du chapitre 2 : somme de l'énergie électrique et de l'énergie magnetique."
+            note: "Définition du chapitre 2 : somme de l'énergie électrique et de l'énergie magnétique."
           - math: '\boxed{E_T = \frac{q^2}{2C} + \frac12L\left(\frac{dq}{dt}\right)^2}'
             note: "i = dq/dt (chapitre 2) : on remplace le courant par la charge, comme l'exige l'énoncé."
       - id: q4
@@ -2031,9 +2031,9 @@ entries:
           La cause, en une phrase (chapitre 4). Le carré $i^2$ est décisif : la puissance $r\,i^2$ est toujours **positive**, que le courant circule dans un sens ou dans l'autre — la bobine, par sa résistance interne $r$, dissipe de l'énergie par effet Joule à chaque passage du courant, et ne la restitue jamais. C'est cette fuite continue, jamais compensée puisqu'aucun générateur n'entretient les oscillations dans ce montage (figure 3), qui explique la décroissance de l'énergie totale — et, par le chapitre 2, la décroissance des amplitudes successives des deux courbes de la figure 4.
         steps:
           - math: '\frac{dE_T}{dt} = \frac{q}{C}\frac{dq}{dt} + L\,\frac{dq}{dt}\,\frac{d^2q}{dt^2} = \frac{dq}{dt}\left(\frac{q}{C} + L\,\frac{d^2q}{dt^2}\right)'
-            note: "Dérivée de E_T (question 3-1) par rapport au temps, règle de derivation d'un carré."
+            note: "Dérivée de E_T (question 3-1) par rapport au temps, règle de dérivation d'un carré."
           - math: '\frac{q}{C} + L\,\frac{d^2q}{dt^2} = -r\,\frac{dq}{dt} \quad \text{(équation de la question 1)}'
-            note: "On isole la parenthèse dans l'équation différentielle etablie a la question 1."
+            note: "On isole la parenthèse dans l'équation différentielle établie a la question 1."
           - math: '\boxed{\frac{dE_T}{dt} = -r\left(\frac{dq}{dt}\right)^2 = -r\,i^2 \implies dE_T = -r\,i^2\,dt}'
             note: "r i^2 est toujours positif (effet Joule, chapitre 4) : l'énergie totale ne remonte jamais."
       - id: q5
@@ -2053,9 +2053,9 @@ entries:
           L'énergie totale a diminué entre les deux instants (cohérent avec la question 3-2) : toute la différence est partie en chaleur dans la résistance $r$ de la bobine.
         steps:
           - math: 'E_T(2) = E_C(2) + E_L(2) \approx 9{,}8 + 0 = 9{,}8\ \text{mJ}'
-            note: "Lecture sur la figure 4 : E_L (pointille) s'annule a t=2ms, E_C (trait plein) y est a un maximum."
+            note: "Lecture sur la figure 4 : E_L (pointillé) s'annule a t=2ms, E_C (trait plein) y est a un maximum."
           - math: 'E_T(3) = E_C(3) + E_L(3) \approx 0 + 7{,}4 = 7{,}4\ \text{mJ}'
-            note: "E_C (trait plein) s'annule a t=3ms, E_L (pointille) y est a un maximum."
+            note: "E_C (trait plein) s'annule a t=3ms, E_L (pointillé) y est a un maximum."
           - math: '\boxed{E_{dissipée} = E_T(2) - E_T(3) \approx 9{,}8 - 7{,}4 = 2{,}4\ \text{mJ}}'
             note: "Toute la baisse d'énergie totale est dissipée par effet Joule (question 3-2) : rien d'autre ne peut l'absorber."
 
@@ -2131,7 +2131,7 @@ entries:
           - math: 'u_R = R\,C''\frac{du_{C''}}{dt} \qquad u_L = L\,C''\frac{d^2u_{C''}}{dt^2}'
             note: "Chaque tension ramenee a u_C' via i = C'.duC'/dt (chapitre 2)."
           - math: '\boxed{L\,C''\,\frac{d^2u_{C''}}{dt^2} + R\,C''\,\frac{du_{C''}}{dt} + u_{C''} = 0}'
-            note: "Équation différentielle du circuit RLC amorti (chapitre 6), ecrite en u_C' plutôt qu'en q."
+            note: "Équation différentielle du circuit RLC amorti (chapitre 6), écrite en u_C' plutôt qu'en q."
       - id: q2-2
         stem: |-
           **(0,25 pt)** **2-2-** Déterminer graphiquement la valeur de la pseudopériode $T$.
@@ -2153,7 +2153,7 @@ entries:
           L'énoncé autorise l'approximation $T \approx T_0$ — légitime quand l'amortissement reste modéré (chapitre 5 : la pseudo-période d'un régime amorti est proche, mais pas rigoureusement égale, à la période propre du cas idéal sans $R$). Avec $T_0 = 2\pi\sqrt{LC'}$ (chapitre 3, cas idéal), on isole $L$.
         steps:
           - math: 'T_0 = 2\pi\sqrt{L\,C''} \implies L = \frac{T_0^2}{4\pi^2\,C''}'
-            note: "On retourne la relation du cas ideal (chapitre 3), avec T0 approxime par T (question 2-2)."
+            note: "On retourne la relation du cas idéal (chapitre 3), avec T0 approxime par T (question 2-2)."
           - math: 'L = \frac{(3{,}4\times10^{-3})^2}{4\pi^2\times0{,}5\times10^{-6}}'
             note: "Application numérique : T=3,4 ms, C'=0,5 microF donne dans l'énoncé."
           - math: '\boxed{L \approx 0{,}59\ \text{H}}'
@@ -2189,7 +2189,7 @@ entries:
           - math: 'N_0 = \frac{1}{T_0} = \frac{1}{3{,}4\times10^{-3}}'
             note: "Fréquence propre, T0 approxime par la pseudo-periode T (question 2-2)."
           - math: '\boxed{N_0 \approx 294\ \text{Hz}}'
-            note: "Comparee au tableau des fréquences."
+            note: "Comparée au tableau des fréquences."
           - math: '\boxed{N_0 = 294\ \text{Hz} = \text{la note Re}}'
             note: "Coincide au hertz près avec la valeur du tableau : confirme aussi l'arrondi T=3,4 ms de la question 2-2."
 
@@ -2311,9 +2311,9 @@ entries:
           Le piège nommé de cette question. Se tromper d'un facteur $10^3$ en oubliant de convertir les millisecondes : $T$ entre dans la formule AU CARRÉ, donc l'erreur d'unité y est élevée au carré aussi — un $T$ laissé en « 18 » donnerait un $C$ un million de fois trop grand. Toujours $T = 18\times10^{-3}\ \text{s}$ avant d'élever au carré.
         steps:
           - math: 'T = 36 - 18 = 18\ \text{ms}'
-            note: "Pseudo-periode lue entre les deux maxima etiquetes de la figure 3 (vérifiée sur 6 intervalles : 17,9 +/- 0,1 ms)."
+            note: "Pseudo-periode lue entre les deux maxima étiquetés de la figure 3 (vérifiée sur 6 intervalles : 17,9 +/- 0,1 ms)."
           - math: 'T = T_0 = 2\pi\sqrt{LC} \implies C = \frac{T^2}{4\pi^2 L}'
-            note: "Période propre (chapitre 3), inversee ; L = 0,2 H etablie au paragraphe 1."
+            note: "Période propre (chapitre 3), inversée ; L = 0,2 H établie au paragraphe 1."
           - math: 'C = \frac{(18\times10^{-3})^2}{4\pi^2\times0{,}2}'
             note: "Conversion en secondes AVANT le carré : erreur d'unité au carré sinon."
           - math: '\boxed{C \approx 4{,}1\times10^{-5}\ \text{F} \approx 41\ \mu\text{F}}'
@@ -2335,9 +2335,9 @@ entries:
           - math: 'u_C(36\ \text{ms}) = +4{,}5\ \text{V},\quad \text{maximum local} \implies i = 0'
             note: "A un extremum de u_C, du_C/dt = 0 donc i = 0 : toute l'énergie est dans le condensateur (chapitre 2)."
           - math: '\mathcal{E}_1 = \frac{1}{2}C\,u_C^2 = \frac{1}{2}\times4{,}1\times10^{-5}\times(4{,}5)^2'
-            note: "Énergie du circuit reduite a l'énergie electrostatique, avec C de la question 2-3."
+            note: "Énergie du circuit réduite a l'énergie électrostatique, avec C de la question 2-3."
           - math: '\boxed{\mathcal{E}_1 \approx 4{,}2\times10^{-4}\ \text{J}}'
-            note: "Bien moins que l'énergie initiale (~1,7e-3 J a 9 V) : la dissipation est déjà passee par la."
+            note: "Bien moins que l'énergie initiale (~1,7e-3 J a 9 V) : la dissipation est déjà passée par la."
       - id: q2-5
         stem: |-
           **2-5-** (0,5 pt) Justifier, du point de vue énergétique, le régime oscillatoire représenté sur la figure 3.
@@ -2540,7 +2540,7 @@ entries:
       - amplitudes successives lisibles : $+4{,}5$ puis $\approx -4{,}0$, $+3{,}8$, $\approx -3{,}5$, $+3{,}3\ \text{V}$ ; les passages par zéro sont régulièrement espacés, et **le repère $\pi/5$ marque exactement la demi-pseudo-période**.
 
       **⚠️ Un avertissement sur cette figure, que tu dois lire avant de t'en servir.** Le tracé est fidèle en **période** et en **amplitudes lues**, mais **pas en amortissement** : la décroissance dessinée correspondrait à une résistance totale d'environ $50\ \Omega$, alors que ce circuit-ci en impose $R' + r = 208{,}4\ \Omega$ — un facteur $4{,}2$. C'est un **défaut du sujet officiel**, présent dans les deux éditions, déclaré ici et non réparé. <!-- DÉFAUT DU SUJET F1, DÉCLARÉ ET NON RÉPARÉ, 2026-09-04.
-           Mesure refaite sur les deux editions par deux chaînes indépendantes :
+           Mesure refaite sur les deux éditions par deux chaînes indépendantes :
            extrema successifs 4,471 / -4,053 / +3,828 / -3,458 / +3,278 V, soit
            un rapport d'amplitude par pseudo-periode de 0,8553 (0,8561 / 0,8533 /
            0,8564 ; l'ajustement log-lineaire de l'enveloppe donne 0,8557). Pour
@@ -2554,7 +2554,7 @@ entries:
            expérience — tout se passe comme si la courbe avait été calculée en
            gardant la résistance du montage précédent.
            CE QUE LA GARDE INTERDIT : aucune valeur de résistance ne doit être
-           tiree de l'allure de la figure 4, et aucune valeur de l'exercice ne
+           tirée de l'allure de la figure 4, et aucune valeur de l'exercice ne
            doit être obtenue en recalculant l'amortissement depuis R' et r. La
            question 4 se répond par LECTURE des deux amplitudes, comme la
            consigne le demande. Le calcul par R' + r donnerait
@@ -2654,7 +2654,7 @@ entries:
           **Le piège de cette question.** Prendre $T = \pi/5\ \text{ms}$ en croyant que le repère marque la période entière : $L$ sortirait quatre fois trop petit ($0{,}05\ \text{H}$), et la « vérification » échouerait sans qu'on sache pourquoi. Compte les passages par zéro avant de conclure.
         steps:
           - math: 'T = T_0 = 2\pi\sqrt{LC} \implies L = \frac{T^2}{4\pi^2 C}'
-            note: "Formule de Thomson (chapitre 3), inversee. L'approximation T = T0 est autorisee par la consigne."
+            note: "Formule de Thomson (chapitre 3), inversée. L'approximation T = T0 est autorisee par la consigne."
           - math: 'T = 2\times\frac{\pi}{5} = \frac{2\pi}{5}\ \text{ms} \approx 1{,}26\ \text{ms}'
             note: "Lecture sur la figure 4 : le repère pi/5 marque la demi-pseudo-periode."
           - math: 'L = \frac{\left(\frac{2\pi}{5}\right)^2\times10^{-6}}{4\pi^2\times 0{,}2\times10^{-6}} = \frac{4\pi^2/25}{4\pi^2\times 0{,}2}'
@@ -2699,9 +2699,9 @@ entries:
           **Le piège de cette question.** Prendre le signe de $u_C(3T/2)$ au sérieux dans le calcul : l'énergie dépend du **carré** de la tension, donc $(-3{,}5)^2 = 12{,}25$, et le signe disparaît. Second piège : oublier que le courant est nul aux deux bornes et tenter de calculer $\frac12 L i^2$ — inutile, et impossible sans dériver la courbe à la main.
         steps:
           - math: '\mathcal{E} = \frac{1}{2}C\,u_C^2 + \frac{1}{2}L\,i^2'
-            note: "Énergie totale du circuit : electrostatique dans le condensateur, magnetique dans la bobine (chapitre 2)."
+            note: "Énergie totale du circuit : électrostatique dans le condensateur, magnétique dans la bobine (chapitre 2)."
           - math: 'i(t_0) = 0 \quad\text{et}\quad i(t_1) = 0 \qquad \left(i = C\frac{du_C}{dt},\ \text{nul aux extremums de } u_C\right)'
-            note: "A t = 0 le circuit vient d'être ferme ; a t = 3T/2 la courbe passe par un extremum. Le terme magnetique s'annule aux deux bornes."
+            note: "A t = 0 le circuit vient d'être ferme ; a t = 3T/2 la courbe passe par un extremum. Le terme magnétique s'annule aux deux bornes."
           - math: '\boxed{W_J = \frac{1}{2}C\left[u_C^2(0) - u_C^2\!\left(\tfrac{3}{2}T\right)\right]}'
             note: "L'énergie dissipée par effet Joule est la différence des énergies totales, ici purement electrostatiques."
           - math: 'u_C(0) = 4{,}5\ \text{V} \qquad u_C\!\left(\tfrac{3}{2}T\right) = -3{,}5\ \text{V}'
@@ -2748,7 +2748,7 @@ entries:
           - math: 'L\,\frac{d^2q}{dt^2} + \left(R^{\prime}+r-k\right)\frac{dq}{dt} + \frac{q}{C} = 0'
             note: "Regroupement des termes du premier ordre : le générateur retranche k de la résistance."
           - math: '\boxed{\frac{d^2q}{dt^2} + \frac{R^{\prime}+r-k}{L}\frac{dq}{dt} + \frac{1}{LC}\,q = 0}'
-            note: "Division par L. Attention : le dernier terme porte bien q, sans quoi l'équation serait dimensionnellement incoherente."
+            note: "Division par L. Attention : le dernier terme porte bien q, sans quoi l'équation serait dimensionnellement incohérente."
       - id: q6
         stem: |-
           **5-2-** (0,5 pt) On fixe le paramètre $k$ sur la valeur $208{,}4$ pour obtenir des oscillations électriques sinusoïdales. Vérifier la valeur de la résistance $r$ de la bobine étudiée.
@@ -2775,11 +2775,11 @@ entries:
           **Le piège de cette question.** Écrire $k = R'$ en oubliant $r$, par analogie mécanique avec la « condition d'entretien $k = R$ » du cours : dans ce circuit-ci, la résistance à compenser est la résistance **totale** de la maille, $R' + r$, résistance interne de la bobine comprise. Le cours dit $k = R_{tot}$ ; ici $R_{tot} = R' + r$.
         steps:
           - math: '\frac{d^2q}{dt^2} + \frac{R^{\prime}+r-k}{L}\frac{dq}{dt} + \frac{1}{LC}\,q = 0'
-            note: "Équation etablie a la question 5-1 : tout l'amortissement est dans le terme du premier ordre."
+            note: "Équation établie a la question 5-1 : tout l'amortissement est dans le terme du premier ordre."
           - math: '\text{oscillations sinusoidales} \iff R^{\prime}+r-k = 0'
             note: "Condition d'entretien (chapitre 8) : le coefficient d'amortissement doit s'annuler."
           - math: '\frac{d^2q}{dt^2} + \frac{1}{LC}\,q = 0'
-            note: "Ce qui reste : l'oscillateur harmonique ideal, de solution sinusoidale pure."
+            note: "Ce qui reste : l'oscillateur harmonique idéal, de solution sinusoïdale pure."
           - math: '\boxed{r = k - R^{\prime} = 208{,}4 - 200 = 8{,}4\ \Omega}'
             note: "Vérification reussie : la première expérience donnait déjà 8,4 ohms par lecture graphique, sur un autre montage."
 
@@ -2946,7 +2946,7 @@ entries:
         résolubilité — une seule figure de circuit existe. L'entrée écrit
         « figure 1 » et déclare la correction au point d'usage. Coquilles de
         langue reproduites verbatim, non réparées : « jouent un rôle très
-        important », « la reception d'ondes électromagnétiques »,
+        important », « la réception d'ondes électromagnétiques »,
         « l'étude du circuit idéal LC et à la réception » (rupture de
         construction), « d'une ondes modulée en amplitude »,
         « Interruptur K à double position », « soit chargé complétement »,
@@ -2971,7 +2971,7 @@ entries:
 
       *La deuxième partie du même exercice est indépendante — le sujet l'écrit — et vit ailleurs : la réception d'une onde modulée en amplitude et sa démodulation (2,00 pt) sous « Ondes électromagnétiques et modulation », entrée bk-2012-r-x3b. 3,00 + 2,00 = 5,00, le barème imprimé.*
 
-      Les condensateurs et les bobines jouent un rôle *(sic)* très important dans la transmission et la reception *(sic)* d'ondes électromagnétiques.
+      Les condensateurs et les bobines jouent un rôle *(sic)* très important dans la transmission et la réception *(sic)* d'ondes électromagnétiques.
 
       Le but de cet exercice est l'étude du circuit idéal LC et à la réception *(sic — rupture de construction : « et l'étude de la réception » attendu)* et démodulation d'une ondes *(sic)* modulée en amplitude.
 
@@ -2987,7 +2987,7 @@ entries:
            réalité la courbe E_e(t) de la page 5 (legende y = 303,6). L'edition
            française se contredit donc sur sa propre page, et le renvoi imprime
            pointe vers la mauvaise figure.
-           L'original arabe RS28 est coherent, et les trois occurrences ont été
+           L'original arabe RS28 est cohérent, et les trois occurrences ont été
            relues AU RENDU par la cloture du 2026-09-04 : « الشكل1 » dans le
            corps (p. 4 y = 466,4) ET en legende (p. 4 y = 608,3), « الشكل2 »
            pour la courbe d'énergie (p. 4 y = 760,9 et 795,3).
@@ -2997,7 +2997,7 @@ entries:
            IMPORTANT POUR LA CLASSIFICATION : l'edition française de ce sujet est
            MINISTERIELLE (code d'examen RS28 au cartouche ; mention d'époque
            « (الترجمة الفرنسية) » sans le cadre anachronique « المسالك الدولية » ;
-           pieds de page VIDES sur les six pages ; colonne « Bareme » miroir
+           pieds de page VIDES sur les six pages ; colonne « Barème » miroir
            valeur par valeur de la colonne arabe). Ce n'est donc PAS un artefact
            de traduction professorale — c'est un défaut de l'edition OFFICIELLE
            de langue française. Voir docs/sujets/_incoming/pc-2012-r.md,
@@ -3057,7 +3057,7 @@ entries:
           - math: 'L\frac{\mathrm{d}^2q}{\mathrm{d}t^2} + \frac{q}{C} = 0'
             note: "Substitution : di/dt devient la dérivée seconde de q."
           - math: '\boxed{\frac{\mathrm{d}^2q}{\mathrm{d}t^2} + \frac{1}{LC}\,q = 0}'
-            note: "Forme canonique de l'oscillateur harmonique. Aucun terme du premier ordre : c'est la signature du circuit ideal."
+            note: "Forme canonique de l'oscillateur harmonique. Aucun terme du premier ordre : c'est la signature du circuit idéal."
       - id: q2
         stem: |-
           **2-** (0,25 pt) Trouver l'expression de la période propre $T_0$ de l'oscillateur en fonction de $L$ et $C$, pour que l'expression $q(t) = Q_m \cos\!\left(\dfrac{2\pi}{T_0}t\right)$ soit solution de cette équation différentielle.
@@ -3081,7 +3081,7 @@ entries:
           **Le piège de cette question.** Confondre $\omega_0$ et $T_0$, et écrire $T_0 = \dfrac{1}{\sqrt{LC}}$. Le $2\pi$ n'est pas décoratif : il fait la conversion entre la pulsation, qui compte des radians par seconde, et la période, qui compte des secondes par tour. L'oublier fausse $T_0$ d'un facteur $6{,}28$.
         steps:
           - math: 'q(t) = Q_m\cos(\omega_0 t) \quad\text{avec}\quad \omega_0 = \frac{2\pi}{T_0}'
-            note: "Solution proposee par l'énoncé. On l'injecte, on ne résout pas."
+            note: "Solution proposée par l'énoncé. On l'injecte, on ne résout pas."
           - math: '\frac{\mathrm{d}^2q}{\mathrm{d}t^2} = -Q_m\omega_0^{2}\cos(\omega_0 t) = -\omega_0^{2}\,q(t)'
             note: "Deux derivations : le cosinus se reproduit, affecte du facteur -omega0 au carré."
           - math: '\left[\frac{1}{LC} - \omega_0^{2}\right]q(t) = 0 \quad \forall t \quad\Longrightarrow\quad \omega_0^{2} = \frac{1}{LC}'
@@ -3117,9 +3117,9 @@ entries:
           **Le piège de cette question.** Répondre « $L$ est en henrys, $C$ en farads, donc $\sqrt{LC}$ est en secondes ». Ce n'est pas une vérification, c'est une affirmation : il faut **remonter aux relations de définition** pour établir ce que valent le henry et le farad en grandeurs de base. C'est précisément ce que la question demande.
         steps:
           - math: 'u = L\frac{\mathrm{d}i}{\mathrm{d}t} \quad\Longrightarrow\quad [L] = \frac{[U]\,[T]}{[I]}'
-            note: "Dimension de l'inductance, tiree de sa relation de définition."
+            note: "Dimension de l'inductance, tirée de sa relation de définition."
           - math: 'q = C\,u \;\text{ et }\; q = i\,t \quad\Longrightarrow\quad [C] = \frac{[I]\,[T]}{[U]}'
-            note: "Dimension de la capacité, tiree de ses deux relations de définition."
+            note: "Dimension de la capacité, tirée de ses deux relations de définition."
           - math: '[LC] = \frac{[U][T]}{[I]} \times \frac{[I][T]}{[U]} = [T]^{2}'
             note: "Les intensités et les tensions se compensent : il ne reste qu'un temps au carré."
           - math: '\boxed{\left[2\pi\sqrt{LC}\right] = \sqrt{[T]^{2}} = [T]}'
@@ -3144,7 +3144,7 @@ entries:
           - math: '\text{Fin de la charge (position 1)\,: régime permanent} \Rightarrow i = 0 \Rightarrow u_R = 0 \Rightarrow u_C = E'
             note: "En régime permanent aucun courant ne circule : le resistor ne prend aucune tension. R ne fixe que la durée de la charge."
           - math: 'q = C\,u_C \quad\text{et}\quad q(0) = Q_m \quad\text{(le basculement se fait condensateur pleinement chargé)}'
-            note: "Définition de la capacité, appliquee à l'instant du basculement. Coherent avec q(t) = Qm cos(omega0 t), qui vaut Qm en t = 0."
+            note: "Définition de la capacité, appliquee à l'instant du basculement. Cohérent avec q(t) = Qm cos(omega0 t), qui vaut Qm en t = 0."
           - math: '\boxed{Q_m = C\,E = 4{,}7\times10^{-3} \times 12 = 5{,}64\times10^{-2}\ \text{C}}'
             note: "Charge maximale. Controle : la courbe d'énergie électrique de la figure 2 part bien d'un maximum en t = 0."
       - id: q5
@@ -3232,11 +3232,11 @@ entries:
           **Le piège de cette question.** Écrire l'énergie magnétique avec un signe moins, ou oublier le facteur $\dfrac{1}{2}$. Les deux termes ont exactement la même forme, $\dfrac{1}{2}\times$ (grandeur au carré) $\times$ (coefficient du dipôle) : $\dfrac{1}{2}\dfrac{q^2}{C}$ pour le condensateur, $\dfrac{1}{2}Li^2$ pour la bobine. Une énergie stockée est **toujours positive** — c'est d'ailleurs une des coquilles que la vérification a relevées dans le corrigé non officiel d'un sujet voisin.
         steps:
           - math: 'E_T = E_e + E_m = \frac{q^{2}}{2C} + \frac{1}{2}L\,i^{2}'
-            note: "Les deux énergies stockees. Les deux termes sont positifs et de même forme : un demi, fois une grandeur au carré, fois le coefficient du dipole."
+            note: "Les deux énergies stockees. Les deux termes sont positifs et de même forme : un demi, fois une grandeur au carré, fois le coefficient du dipôle."
           - math: 'q = Q_m\cos(\omega_0 t) \qquad i = \frac{\mathrm{d}q}{\mathrm{d}t} = -Q_m\omega_0\sin(\omega_0 t)'
             note: "Régime établi a la question 2 : l'intensité est la dérivée de la charge."
           - math: 'L\,\omega_0^{2} = \frac{1}{C} \quad\Longrightarrow\quad E_T = \frac{Q_m^{2}}{2C}\left[\cos^{2}(\omega_0 t) + \sin^{2}(\omega_0 t)\right]'
-            note: "Geste decisif : la relation omega0 carré = 1/(LC) rend les deux coefficients identiques et permet de factoriser."
+            note: "Geste décisif : la relation omega0 carré = 1/(LC) rend les deux coefficients identiques et permet de factoriser."
           - math: '\boxed{E_T = \frac{Q_m^{2}}{2C} = \text{constante}}'
             note: "Le crochet vaut 1 à chaque instant : E_T ne dépend plus du temps. Sans résistance, rien ne se dissipe."
           - math: '\boxed{E_T = \frac{\left(5{,}64\times10^{-2}\right)^{2}}{2 \times 4{,}7\times10^{-3}} \approx 0{,}34\ \text{J}}'

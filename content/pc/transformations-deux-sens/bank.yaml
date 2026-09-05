@@ -203,7 +203,7 @@ entries:
           **Le piège nommé de cette question.** Inverser l'ordre de la soustraction et écrire $10^{pK_{A1}-pK_{A2}} = 10^{-4,4}$ — un nombre minuscule, qui prédirait à tort une réaction quasi nulle, alors que l'acide éthanoïque, nettement plus fort que l'ion ammonium, doit au contraire imposer son proton presque totalement. Un $K \ll 1$ ici serait le signal immédiat d'une erreur de signe, pas d'un résultat à accepter tel quel.
         steps:
           - math: 'Q_{r,\text{éq}} = \dfrac{[\text{CH}_3\text{COO}^-]_{eq}\,[\text{NH}_4^+]_{eq}}{[\text{CH}_3\text{COOH}]_{eq}\,[\text{NH}_3]_{eq}}'
-            note: "Quotient associe a l'équation ecrite (chapitre 4-4, état d'équilibre) ; l'eau, solvant, n'apparaît pas dans cette équation."
+            note: "Quotient associe a l'équation écrite (chapitre 4-4, état d'équilibre) ; l'eau, solvant, n'apparaît pas dans cette équation."
           - math: '\text{CH}_3\text{COOH} + \text{H}_2\text{O} \rightleftharpoons \text{CH}_3\text{COO}^- + \text{H}_3\text{O}^+ \quad (K_{A1}) \qquad \text{NH}_3 + \text{H}_3\text{O}^+ \rightleftharpoons \text{NH}_4^+ + \text{H}_2\text{O} \quad \left(\dfrac{1}{K_{A2}}\right)'
             note: "On combine les deux couples (chapitre 8 de la leçon Réactions acido-basiques) : le second couple est écrit a l'envers, d'ou l'inverse de KA2."
           - math: 'Q_{r,\text{éq}} = K = K_{A1}\times\dfrac{1}{K_{A2}} = \dfrac{K_{A1}}{K_{A2}} = 10^{-pK_{A1}}\times10^{pK_{A2}} = 10^{pK_{A2}-pK_{A1}}'
@@ -223,15 +223,15 @@ entries:
           **Le piège nommé de cette question.** Conclure « $K$ est grand, donc la transformation est totale » sans jamais calculer $\tau$ — un raccourci qualitatif correct dans son verdict (chapitre 8 de « État d'équilibre d'un système chimique » : « $K \gg 1$ : quasi totale »), mais qui ne répond pas à ce que demande la question. Elle demande le nombre : $\tau \approx 0{,}994$, pas $\tau = 1$ exactement — aucune transformation gouvernée par une double flèche n'atteint jamais rigoureusement $1$ (chapitre 2, cette leçon).
         steps:
           - math: '\tau = \dfrac{x_f}{x_{max}}, \qquad x_{max} = n_1 = n_2 = 10^{-3}\ \text{mol}'
-            note: "Définition du taux d'avancement final (chapitre 3, état d'équilibre) ; les deux réactifs, introduits a égalité et consommes 1 pour 1, s'epuiseraient ensemble."
+            note: "Définition du taux d'avancement final (chapitre 3, état d'équilibre) ; les deux réactifs, introduits a égalité et consommes 1 pour 1, s'épuiseraient ensemble."
           - math: 'Q_{r,\text{éq}} = \dfrac{x_f^{2}}{(n_1-x_f)^{2}} = K \implies \dfrac{x_f}{n_1-x_f} = \sqrt{K}'
-            note: "Même construction algebrique que l'exemple travaille 2 du chapitre 8 de la leçon Réactions acido-basiques : quantités initiales égales, le rapport se résout par une racine carree."
+            note: "Même construction algébrique que l'exemple travaille 2 du chapitre 8 de la leçon Réactions acido-basiques : quantités initiales égales, le rapport se résout par une racine carrée."
           - math: '\sqrt{K} = \sqrt{10^{4{,}4}} = 10^{2{,}2} \approx 158{,}5'
-            note: "Racine carree d'une puissance de 10 : on divise l'exposant par 2."
+            note: "Racine carrée d'une puissance de 10 : on divise l'exposant par 2."
           - math: 'x_f = \dfrac{\sqrt{K}}{1+\sqrt{K}}\,n_1 \implies \tau = \dfrac{x_f}{n_1} = \dfrac{\sqrt{K}}{1+\sqrt{K}} = \dfrac{158{,}5}{159{,}5}'
             note: "On isole xf puis on divise par n1 pour obtenir tau directement."
           - math: '\boxed{\tau \approx 0{,}994 = 99{,}4\ \%}'
-            note: "Très proche de 1 : transformation quasi totale (chapitre 3, état d'équilibre) - coherent avec le K énorme trouve a la question 1-2."
+            note: "Très proche de 1 : transformation quasi totale (chapitre 3, état d'équilibre) - cohérent avec le K énorme trouve a la question 1-2."
       - id: q4
         part: "2 — Étude de la réaction de l'acide éthanoïque avec l'alcool ROH"
         stem: |-
@@ -276,7 +276,7 @@ entries:
           - math: 'r = \dfrac{n(E)_{obtenu}}{n(E)_{max}} = \dfrac{1{,}02\times10^{-2}}{0{,}250}'
             note: "Rendement = quantité réellement obtenue / quantité maximale théorique (1:1, equimolaire)."
           - math: '\boxed{r \approx 4{,}08\times10^{-2} \approx 4{,}1\ \%}'
-            note: "Très loin des 66,7 pourcent de l'estérification simple (chapitre 4, « Estérification et hydrolyse ») - coherent avec un alcool tertiaire très encombre (linalol)."
+            note: "Très loin des 66,7 pourcent de l'estérification simple (chapitre 4, « Estérification et hydrolyse ») - cohérent avec un alcool tertiaire très encombre (linalol)."
       - id: q7
         stem: |-
           **2-3. b.** (0,5 pt) Proposer deux méthodes différentes permettant l'augmentation du rendement de cette réaction.

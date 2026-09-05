@@ -1980,7 +1980,7 @@ entries:
           - math: '\omega = i\omega+1 \implies \omega(1-i)=1 \implies \omega = \dfrac{1}{1-i} = \dfrac{1+i}{(1-i)(1+i)} = \dfrac{1+i}{2}'
             note: "Point fixe de z ↦ iz+1 : on résout omega = i.omega + 1 (méthode du conjugue)."
           - math: 'z_1-\omega = i(z_2-\omega)'
-            note: "Forme decentree de la rotation (chapitre 6) : z1 − omega = i (z2 − omega), equivalente a z1 = i z2 + (1 − i).omega = i z2 + 1."
+            note: "Forme décentrée de la rotation (chapitre 6) : z1 − omega = i (z2 − omega), équivalente a z1 = i z2 + (1 − i).omega = i z2 + 1."
           - math: 'M_1\ \text{est l''image de}\ M_2\ \text{par la rotation de centre}\ \Omega\left(\dfrac{1+i}{2}\right)\ \text{et d''angle}\ \dfrac{\pi}{2}'
             note: "Multiplicateur i : module 1, argument π/2 (chapitre 6)."
       - id: q2a2
@@ -1993,7 +1993,7 @@ entries:
           - math: 'z_1-m = \dfrac{(1+i)(m+1)}{2}-m = \dfrac{m(i-1)+(1+i)}{2} = \dfrac{(i-1)(m-i)}{2}'
             note: "On regroupe les termes en m, puis on factorise ; (1+i) = (i−1)(−i), verifie par développement."
           - math: 'z_2-m = \dfrac{(1-i)(m+i)}{2}-m = \dfrac{m(-1-i)+(1+i)}{2} = -\dfrac{(1+i)(m-1)}{2}'
-            note: "Même demarche ; le facteur (1+i) se met en evidence des deux cotes."
+            note: "Même démarche ; le facteur (1+i) se met en evidence des deux cotes."
           - math: '\dfrac{z_2-m}{z_1-m} = \dfrac{-(1+i)(m-1)}{(i-1)(m-i)} = \dfrac{(1+i)(m-1)}{(1-i)(m-i)} = \dfrac{1+i}{1-i}\cdot\dfrac{m-1}{m-i}'
             note: "i−1 = −(1−i) : les deux signes moins se simplifient."
           - math: '\dfrac{1+i}{1-i} = \dfrac{(1+i)^2}{(1-i)(1+i)} = \dfrac{2i}{2} = i \implies \dfrac{z_2-m}{z_1-m} = i\,\dfrac{m-1}{m-i}'
@@ -2013,7 +2013,7 @@ entries:
           - math: '\dfrac{m-i}{m-1} = \dfrac{i-m}{1-m} = \dfrac{b-m}{a-m}\ (\text{affixes de}\ B(i)\ \text{et}\ A(1))'
             note: "Même rapport, numérateur et dénominateur changes de signe ensemble."
           - math: '\dfrac{b-m}{a-m}\in i\mathbb{R} \implies \widehat{\big(\vec{MA},\vec{MB}\big)} = \dfrac{\pi}{2} \implies M\in(\Gamma)\ \text{cercle de diamètre}\ [AB]'
-            note: "Chapitre R6 : rapport imaginaire pur = angle droit ; Thales : M voit [AB] sous un angle droit ⟹ M sur le cercle de diamètre [AB]."
+            note: "Chapitre R6 : rapport imaginaire pur = angle droit ; Thalès : M voit [AB] sous un angle droit ⟹ M sur le cercle de diamètre [AB]."
       - id: q2c2
         stem: |-
           **(0,75 pt)** Déterminer l'ensemble des points $M$ pour que les points $\Omega$, $M$, $M_1$ et $M_2$ soient cocycliques (remarquer que : $\dfrac{z_1-\omega}{z_2-\omega} = i$)
@@ -2027,7 +2027,7 @@ entries:
           Reste un cas dégénéré à exclure : si $M=\Omega$, il n'y a plus que trois points distincts, pas quatre points cocycliques. Or $\Omega=\dfrac{1+i}{2}$ est justement le milieu de $[AB]$, donc un point de la droite $(AB)$ : il faut l'exclure. L'ensemble cherché est donc la droite $(AB)$ privée du point $\Omega$ (et, comme partout dans cette partie, du domaine déjà restreint $m\notin\{0,1,i\}$, deux points déjà situés sur cette droite).
         steps:
           - math: '\dfrac{z_1-\omega}{z_2-\omega} = i\quad(\text{rotation de la question 1-b, rung R6}) \implies \Omega M_1=\Omega M_2\ \text{et}\ \widehat{M_1\Omega M_2}=\dfrac{\pi}{2}\ \text{pour tout}\ m'
-            note: "Ceci vaut pour tout m du domaine : Omega est toujours sur le cercle de diamètre [M1M2] (Thales)."
+            note: "Ceci vaut pour tout m du domaine : Omega est toujours sur le cercle de diamètre [M1M2] (Thalès)."
           - math: '\dfrac{z_1-m}{z_2-m} = \dfrac{1}{i}\cdot\dfrac{m-i}{m-1} = -i\,\dfrac{m-i}{m-1}'
             note: "Inverse du rapport de la question 2-a."
           - math: '\dfrac{z_1-m}{z_2-m}\in i\mathbb{R} \iff \dfrac{m-i}{m-1}\in\mathbb{R} \iff M,\,A,\,B\ \text{alignés (rung R6)}'

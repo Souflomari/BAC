@@ -450,7 +450,7 @@ items:
           Le fait qu'ils ne soient pas premiers entre eux n'interdit pas a lui
           seul les solutions. Le critère exact est : il y a des solutions
           si et seulement si $\mathrm{PGCD}(6,4) = 2$ DIVISE le second membre
-          $5$. Ici $2 \nmid 5$, d'ou l'impossibilite.
+          $5$. Ici $2 \nmid 5$, d'ou l'impossibilité.
     correct_feedback: >
       Exact. L'équation $ax + by = c$ a des solutions entières si et seulement
       si $\mathrm{PGCD}(a,b) \mid c$. Ici $\mathrm{PGCD}(6,4) = 2$ et
@@ -692,7 +692,7 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.diviser-relation-inversee
         feedback: >
-          C'est la relation inversee : cette égalité dit "$a$ divise $b$",
+          C'est la relation inversée : cette égalité dit "$a$ divise $b$",
           pas "$b$ divise $a$". Dans $b \mid a$, c'est $a$ qui s'écrit
           comme un multiple de $b$, pas l'inverse.
       - id: C
@@ -720,7 +720,7 @@ items:
       Par définition, $b$ divise $a$ (note $b \mid a$) lorsqu'il existe un
       entier $k$ tel que
       $$a = bk$$
-      Autrement dit, $a$ est un multiple de $b$ ; de façon equivalente, le
+      Autrement dit, $a$ est un multiple de $b$ ; de façon équivalente, le
       reste de la division euclidienne de $a$ par $b$ (si $b \neq 0$) est
       $0$.
 
@@ -791,7 +791,7 @@ items:
         misconception: mc.math.maths_arithmetique.reste-non-normalise
         feedback: >
           $17$ est la somme des chiffres ($3+7+2+5$), une étape
-          intermédiaire. Comme $17 \ge 9$, il faut encore reduire :
+          intermédiaire. Comme $17 \ge 9$, il faut encore réduire :
           $17 = 9\times1+8$, donc le reste final est $8$, pas $17$.
       - id: B
         text: "$0$, car $3725$ est divisible par $9$ comme tout nombre à quatre chiffres"
@@ -858,7 +858,7 @@ items:
         feedback: >
           $630$ est le PPCM (plus petit multiple commun) de $210$ et
           $45$, pas leur PGCD. Le PGCD est un DIVISEUR commun, donc il ne
-          peut pas depasser $45$, le plus petit des deux nombres.
+          peut pas dépasser $45$, le plus petit des deux nombres.
       - id: D
         text: "$15$, obtenu par $210 = 45\\times4+30$, $45 = 30\\times1+15$, $30 = 15\\times2+0$"
         correct: true
@@ -892,7 +892,7 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
         feedback: >
-          $0$ est le signal d'ARRET de l'algorithme (on s'arrete quand le
+          $0$ est le signal d'ARRÊT de l'algorithme (on s'arrete quand le
           reste devient nul), mais ce n'est pas le résultat. Le PGCD est
           le reste non nul juste AVANT, a l'étape précédente.
       - id: C
@@ -909,8 +909,8 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
         feedback: >
-          S'arreter des la première division est premature : il faut
-          repeter la division (diviseur précédent par reste précédent)
+          S'arrêter des la première division est premature : il faut
+          répéter la division (diviseur précédent par reste précédent)
           jusqu'a obtenir un reste nul. C'est le DERNIER reste non nul,
           pas le premier, qui est le PGCD.
     correct_feedback: >
@@ -1123,7 +1123,7 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
         feedback: >
-          La conclusion (Non) est correcte, mais la raison invoquee ne
+          La conclusion (Non) est correcte, mais la raison invoquée ne
           l'est pas : ce n'est pas parce que $4$ et $6$ ne sont pas
           premiers, mais parce qu'ils ne sont pas premiers ENTRE EUX
           ($\mathrm{PGCD}(4,6)=2$). Deux nombres non premiers mais
@@ -1272,7 +1272,7 @@ items:
         feedback: >
           C'est plus fort que ce que garantit le théorème : il assure que
           $7$ divise AU MOINS UN des deux facteurs (un "ou"), pas
-          forcement les deux. Par exemple $7 \mid 7\times2$ mais
+          forcément les deux. Par exemple $7 \mid 7\times2$ mais
           $7\nmid2$.
       - id: B
         text: "On ne peut rien conclure"
@@ -1305,7 +1305,7 @@ items:
       sont $1$ et $7$ ; si $7\nmid a$, alors $\mathrm{PGCD}(7,a)=1$. Le
       théorème de Gauss s'applique alors a $7 \mid ab$ avec
       $\mathrm{PGCD}(7,a)=1$, donc $7 \mid b$. On a donc toujours $7\mid
-      a$ ou $7 \mid b$ (au moins l'un des deux, pas forcement les deux).
+      a$ ou $7 \mid b$ (au moins l'un des deux, pas forcément les deux).
 
   - id: AR-23
     rung: "R7"
@@ -1346,7 +1346,7 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
-          Le signe ou la positivite de $9$ n'a rien a voir avec
+          Le signe ou la positivité de $9$ n'a rien a voir avec
           l'existence de solutions entières. Le critère est
           arithmetique : $\mathrm{PGCD}(15,6)=3$ doit diviser $9$, ce qui
           est vrai ici, mais pas parce que $9$ est positif.
@@ -1472,7 +1472,7 @@ items:
       $$\mathrm{PGCD}(112,76) = 4$$
       et $4 \mid 8$ (car $8 = 4\times2$), donc l'équation admet des
       solutions. Comme pour toute équation linéaire diophantienne
-      resoluble, l'ensemble des solutions n'est jamais reduit a un
+      resoluble, l'ensemble des solutions n'est jamais réduit a un
       point : il y en a une infinite, parametrees par $t \in \mathbb{Z}$.
 
   - id: AR-26
@@ -1514,7 +1514,7 @@ items:
         text: "$(-4, 6)$, obtenue en multipliant l'identité par $k = 8/4 = 2$"
         correct: true
     correct_feedback: >
-      Exact. L'identité $112\times(-2)+76\times3=4$ multipliee par
+      Exact. L'identité $112\times(-2)+76\times3=4$ multipliée par
       $k=8/4=2$ donne $112\times(-4)+76\times6=8$ : la solution
       particulière est $(-4,6)$.
     solution: |
@@ -1564,7 +1564,7 @@ items:
           D'abord, $18$ est PAIR, pas impair. Ensuite, même deux nombres
           impairs ne sont pas automatiquement premiers entre eux (par
           exemple $9$ et $15$, tous deux impairs, ont
-          $\mathrm{PGCD}=3$). La parite n'est pas le bon critère.
+          $\mathrm{PGCD}=3$). La parité n'est pas le bon critère.
     correct_feedback: >
       Exact. $35=5\times7$ et $18=2\times3^2$ : ni l'un ni l'autre n'est
       premier, mais ils n'ont aucun facteur premier commun, donc

@@ -16,7 +16,7 @@ misconceptions:
     description: >-
       L'élève croit que e^x peut devenir négatif ou nul (0 dans l'image), ou
       qu'il faudrait restreindre le domaine de exp comme pour ln ; il peut aussi
-      generaliser « e^x > 0 » a une fonction entière (ex. e^x + 2x - 3) pour
+      généraliser « e^x > 0 » a une fonction entière (ex. e^x + 2x - 3) pour
       conclure a tort qu'elle ne s'annule jamais.
     contradicts_principle: >-
       exp est définie sur R tout entier, a valeurs dans ]0,+inf[ : e^x > 0 pour
@@ -26,7 +26,7 @@ misconceptions:
     label: "e^0, e^1, E(0) mal evalues ; ln(e^x) et e^{ln x} confondues"
     description: >-
       L'élève se trompe sur les valeurs remarquables (e^0=0, e^1=1, E(0)=e…) ou
-      confond les deux identités de reciprocite : ln(e^x)=x (vraie pour tout x)
+      confond les deux identités de réciprocité : ln(e^x)=x (vraie pour tout x)
       et e^{ln x}=x (seulement pour x>0), ou croit « E(0) indefini car ln(0)
       n'existe pas ».
     contradicts_principle: >-
@@ -42,7 +42,7 @@ misconceptions:
       reunir continuite + stricte monotonie + changement de signe.
     contradicts_principle: >-
       ln realise une bijection de ]0,+inf[ sur R : pour tout réel k (même
-      négatif), ln(x)=k a une unique solution. Le corollaire du TVI (continuite +
+      négatif), ln(x)=k a une unique solution. Le corollaire du TVI (continuité +
       stricte monotonie + changement de signe) donne existence ET unicite.
   - id: mc.math.maths_fonction_exponentielle.somme-produit-confondus
     label: "e^{a+b} = e^a + e^b, ou e^a x e^b = e^{a x b}"
@@ -72,7 +72,7 @@ misconceptions:
   - id: mc.math.maths_fonction_exponentielle.derivee-exp-composee
     label: "(e^u)' = e^u, = u', ou = u e^u (au lieu de u' e^u)"
     description: >-
-      En derivant e^{u(x)}, l'élève oublie un morceau : e^u seul (u' oublie), u'
+      En dérivant e^{u(x)}, l'élève oublie un morceau : e^u seul (u' oublie), u'
       seul (l'exponentielle perdue), u e^u (u au lieu de u'), ou derive mal
       l'intérieur u. Inclut la règle du produit tronquee ou l'erreur de signe
       quand exp apparaît dans un produit.
@@ -81,14 +81,14 @@ misconceptions:
       l'intérieur, fois l'exponentielle de l'intérieur ». Les deux facteurs sont
       indispensables. Pour un produit, on applique (uv)' = u'v + uv' en entier.
   - id: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
-    label: "e^x/x lu comme 0, 1, ou « pas de limite » (FI non levee)"
+    label: "e^x/x lu comme 0, 1, ou « pas de limite » (FI non levée)"
     description: >-
       L'élève conclut a l'envers ou pas du tout : e^x/x -> 0 (sens de ln), ou
       inf/inf lu comme 1, ou « forme indeterminee = limite inexistante ». Il
       croit que e^x croit comme x.
     contradicts_principle: >-
       Croissances comparees : lim_{x->+inf} e^x/x = +inf — e^x ecrase x (le sens
-      oppose de ln x / x -> 0). Une forme indeterminee n'est pas une absence de
+      oppose de ln x / x -> 0). Une forme indéterminée n'est pas une absence de
       limite : elle exige un calcul pour trancher.
   - id: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini
     label: "lim_{-inf} e^x = -inf / oscille / mauvaise branche"
@@ -108,18 +108,18 @@ misconceptions:
       x+1 avec l'exponentielle e^{x+1}.
     contradicts_principle: >-
       Pour tout réel x, e^x >= x+1 (la courbe de exp reste au-dessus de sa
-      tangente en 0, par convexite). En x=a, cela donne e^a >= a+1 (le nombre),
+      tangente en 0, par convexité). En x=a, cela donne e^a >= a+1 (le nombre),
       pas e^a >= a ni e^a >= e^{a+1}.
   - id: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
     label: "exp aurait un minimum / decroitrait ; tangente ou symétrie erronees"
     description: >-
       L'élève prete a exp un profil « en creux » (décroissante puis croissante,
-      minimum en 0), confond convexite et existence d'un minimum, se trompe sur
+      minimum en 0), confond convexité et existence d'un minimum, se trompe sur
       la tangente en 0 (oubli du +1, pente e, tangente horizontale), ou applique
       mal la symétrie par rapport a y=x avec la courbe de ln.
     contradicts_principle: >-
       (e^x)'=e^x>0 partout : exp est strictement croissante sur R, sans minimum
-      ni maximum. Sa tangente en 0 est y=x+1 (pente e^0=1). Convexite = courbe
+      ni maximum. Sa tangente en 0 est y=x+1 (pente e^0=1). Convexité = courbe
       au-dessus de ses tangentes, pas un minimum. La symétrie par rapport a y=x
       echange les coordonnées d'un point.
   - id: mc.math.maths_fonction_exponentielle.primitive-exp-erreur
@@ -138,7 +138,7 @@ misconceptions:
     description: >-
       En resolvant equations/inequations : l'élève « efface » e sans passer par
       ln (e^{x+1}=3 => x+1=3), applique mal l'injectivite (e^A=e^B => A=-B),
-      inverse le sens d'une inequation (comme si exp decroissait), ajoute une
+      inverse le sens d'une inéquation (comme si exp decroissait), ajoute une
       condition de domaine inutile, se trompe en isolant x, ou confond ln(3)-1
       avec ln(3-1).
     contradicts_principle: >-
@@ -146,7 +146,7 @@ misconceptions:
       condition de domaine) : e^A=e^B <=> A=B, e^A<=e^B <=> A<=B (sens conserve).
       e^x=k (k>0) <=> x=ln k, et ln(k)-1 n'est pas ln(k-1).
   - id: mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible
-    label: "e^x = k<=0 « resolu » ; différence d'exponentielles toujours positive"
+    label: "e^x = k<=0 « résolu » ; différence d'exponentielles toujours positive"
     description: >-
       L'élève résout e^x = -4 comme e^x = 4 ou écrit ln(-4) / -ln(4), au lieu de
       conclure a l'absence de solution ; ou il croit qu'une différence de deux

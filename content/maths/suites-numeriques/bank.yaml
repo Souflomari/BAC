@@ -673,7 +673,7 @@ entries:
           $g$ continue (dérivable), strictement décroissante, avec une limite $+\infty$ en $-\infty$ et $-\infty$ en $+\infty$ : par le corollaire du théorème des valeurs intermédiaires pour une fonction strictement monotone (« Limites et continuité »), $g$ prend la valeur $0$ **exactement une fois**. Ce zéro unique est l'unique réel $\alpha$ tel que $f_0(\alpha)=\alpha$.
         steps:
           - math: 'f_0(x) = \dfrac{-2e^x}{1+e^x} \ \Rightarrow\ f_0''(x) = \dfrac{-2e^x(1+e^x)-(-2e^x)(e^x)}{(1+e^x)^2} = \dfrac{-2e^x}{(1+e^x)^2}'
-            note: "Dérivée de f0, quotient de deux fonctions derivables ; les termes en e^2x s'annulent."
+            note: "Dérivée de f0, quotient de deux fonctions dérivables ; les termes en e^2x s'annulent."
           - math: '-2e^x<0,\ (1+e^x)^2>0 \ \Rightarrow\ f_0''(x)<0 \quad (g(x)=f_0(x)-x \ \Rightarrow\ g''(x)=f_0''(x)-1<0)'
             note: "f0 prime est négative pour tout x : g prime aussi, strictement négative."
           - math: '\lim_{x\to-\infty} f_0(x) = 0 \ \Rightarrow\ \lim_{x\to-\infty} g(x) = +\infty \qquad \lim_{x\to+\infty} f_0(x) = -2 \ \Rightarrow\ \lim_{x\to+\infty} g(x) = -\infty'
@@ -738,7 +738,7 @@ entries:
           - math: 'n=0\ :\ |u_0-\alpha| = |0-\alpha| = |\alpha| = \left(\dfrac12\right)^0|\alpha|'
             note: "Initialisation : égalité au rang 0, car u0 = 0."
           - math: '|u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha| \ \Rightarrow\ |u_{n+1}-\alpha|\le\dfrac12|u_n-\alpha|\le\dfrac12\left(\dfrac12\right)^n|\alpha| = \left(\dfrac12\right)^{n+1}|\alpha|'
-            note: "Hérédité : on reinjecte la question 2-a dans l'hypothèse de recurrence."
+            note: "Hérédité : on reinjecte la question 2-a dans l'hypothèse de récurrence."
           - math: '\Rightarrow\ (\forall n\in\mathbb{N})\ ;\ |u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha| \quad (\text{par recurrence})'
             note: "Conclusion par recurrence."
       - id: q2-2c
@@ -838,7 +838,7 @@ entries:
           $(x_n)_{n\ge2}$ est strictement décroissante (question précédente) et minorée par $0$ (question 1-b, $x_n>0$ pour tout $n\ge2$) : les deux hypothèses exactes du théorème de la limite monotone (chapitre 8) sont réunies — décroissante et minorée. La suite converge.
         steps:
           - math: '(x_n)_{n\ge2} \text{ décroissante} \quad (\text{q2-b}), \qquad x_n>0 \quad (\text{q1-b, minoration}) \ \Rightarrow\ (x_n)_{n\ge2} \text{ converge} \quad (\text{théorème de la limite monotone, R7})'
-            note: "Décroissante et minoree : les deux hypothèses du théorème de la limite monotone."
+            note: "Décroissante et minorée : les deux hypothèses du théorème de la limite monotone."
       - id: q3-3a
         part: "Partie III, 3 — Limites de x_n et de n fois x_n"
         stem: |-
@@ -857,7 +857,7 @@ entries:
           $$\frac{1}{n} < x_n < \frac{1}{n}\left(\frac{2e}{1+e}\right)$$
         steps:
           - math: 'f_n(x_n)=0 \iff \dfrac{-2e^{x_n}}{1+e^{x_n}}+nx_n=0 \iff nx_n = \dfrac{2e^{x_n}}{1+e^{x_n}}'
-            note: "On reecrit la définition de x_n pour isoler n fois x_n."
+            note: "On réécrit la définition de x_n pour isoler n fois x_n."
           - math: 'h(x)=\dfrac{2e^x}{1+e^x} = 2-\dfrac{2}{1+e^x} \ \Rightarrow\ h \text{ strictement croissante}'
             note: "h est 2 moins une fonction décroissante (2 sur 1+e^x) : h croit strictement."
           - math: '0<x_n<1,\ h \text{ croissante} \ \Rightarrow\ h(0)<h(x_n)<h(1),\quad h(0)=1,\ h(1)=\dfrac{2e}{1+e}'
@@ -877,7 +877,7 @@ entries:
           - math: '\dfrac1n\to0,\quad \dfrac1n\left(\dfrac{2e}{1+e}\right)\to0 \ \Rightarrow\ x_n\to0 \quad (\text{théorème des gendarmes, R6, question 3-a})'
             note: "Les deux bornes de l'encadrement tendent vers 0 : x_n aussi."
           - math: 'nx_n = \dfrac{2e^{x_n}}{1+e^{x_n}} \quad (\text{question 3-a}),\quad x_n\to0 \ \Rightarrow\ e^{x_n}\to e^0=1'
-            note: "On reutilise l'égalité de la question 3-a ; continuite de exp en 0."
+            note: "On reutilise l'égalité de la question 3-a ; continuité de exp en 0."
           - math: '\lim_{n\to+\infty} nx_n = \dfrac{2\times1}{1+1} = 1'
             note: "On passe a la limite dans le quotient : numérateur et dénominateur ont une limite finie, dénominateur non nul."
       - id: q3-4a

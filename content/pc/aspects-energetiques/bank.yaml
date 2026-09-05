@@ -138,7 +138,7 @@ entries:
           Le piège nommé de cette question. Mettre $J_\Delta$ dans le terme de rappel, ou $C$ dans le terme cinétique — les deux réservoirs suivent une règle stricte (chapitre 7) : l'inertie ($J_\Delta$) ne vit jamais dans $E_p$, le rappel ($C$) ne vit jamais dans $E_c$. C'est exactement le même partage que pour le ressort ($m$ dans $E_c$, $k$ dans $E_{pe}$), habillé en rotation.
         steps:
           - math: 'E_c = \frac{1}{2}J_\Delta\,\dot\theta^2 \qquad E_{p,torsion} = \frac{1}{2}C\,\theta^2'
-            note: "Les deux reservoirs (chapitre 7) : inertie de rotation dans E_c, raideur du fil dans E_p."
+            note: "Les deux réservoirs (chapitre 7) : inertie de rotation dans E_c, raideur du fil dans E_p."
           - math: '\boxed{E_m = \frac{1}{2}J_\Delta\,\dot\theta^2 + \frac{1}{2}C\,\theta^2}'
             note: "Énergie mécanique du pendule de torsion."
       - id: q2
@@ -158,7 +158,7 @@ entries:
           Le piège nommé de cette question. Lire $E_m$ directement sur l'axe des ordonnées comme si le point $14$ (le dernier trait CHIFFRÉ) était le sommet : le sommet touche en réalité la ligne de grille suivante, non étiquetée, à $16\ \text{mJ}$ — c'est le seul comptage de maille non trivial de la figure, et la source du sujet le signale explicitement comme le point fragile de cette lecture.
         steps:
           - math: 'E_m = E_C(\theta=0) = 16\ \text{mJ} = 1{,}6\times10^{-2}\ \text{J}'
-            note: "Sommet de la parabole, une maille au-dessus du 14 imprime (chapitre 6, lecture d'un diagramme d'énergie transposee a theta)."
+            note: "Sommet de la parabole, une maille au-dessus du 14 imprime (chapitre 6, lecture d'un diagramme d'énergie transposée a theta)."
           - math: 'E_m = \frac{1}{2}C\,\theta_m^2 \implies C = \frac{2\,E_m}{\theta_m^2}'
             note: "Aux zéros de E_C (theta = +/- theta_m), toute l'énergie est potentielle de torsion (chapitre 7)."
           - math: 'C = \frac{2\times1{,}6\times10^{-2}}{0{,}8^2} = \frac{3{,}2\times10^{-2}}{0{,}64}'
@@ -390,4 +390,4 @@ entries:
           - math: 'W_C = -\frac{1}{2}\times0{,}02\times(0{,}2)^2'
             note: "C = 0,02 N.m/rad (question 2), theta_1 = 0,2 rad, départ a theta = 0 (E_p nulle)."
           - math: '\boxed{W_C = -4\times10^{-4}\ \text{J}}'
-            note: "Travail resistant (la barre s'ecarte de l'équilibre) = l'énergie perdue par le réservoir cinétique entre les questions 2 et 3."
+            note: "Travail résistant (la barre s'ecarte de l'équilibre) = l'énergie perdue par le réservoir cinétique entre les questions 2 et 3."

@@ -455,7 +455,7 @@ entries:
         vers le HAUT de la pente (sens de la montée, vers A puis B) —
         orientation opposée à celle du rung 7 de la leçon et de l'entrée
         voisine bk-2024-r-x5 (axe orienté dans le sens de la descente), d'où
-        un signe différent devant g.sin(alpha) dans l'équation demontree en
+        un signe différent devant g.sin(alpha) dans l'équation démontrée en
         question 1.1 (voir le flag de jumelage en tête de fichier). CORRECTION
         DE FIGURE RETENUE (figure 2) : le quadrillage n'est pas de pas 1 unité
         par trait comme une première lecture le supposerait, mais compte 6
@@ -469,10 +469,10 @@ entries:
         x(t) = (a_1x/2).t², affine en t² et non en t — le piege le plus cher
         de cette question) ; F = m.(a_1x + g.sin(17,5 degrés)) + f =
         2 x (2 + 10 x 0,3007) + 2 = 2 x 5,007 + 2 = 12,014 N, arrondi 12 N —
-        exactement la valeur annoncee par l'énoncé ; t_A =
+        exactement la valeur annoncée par l'énoncé ; t_A =
         racine(2.OA/a_1x) = racine(4) = 2 s, ce qui tombe pile sur l'abscisse
         du dernier point du trace (4 s²) — un controle gratuit — puis
-        V_A = a_1x x t_A = 4 m.s-1, exactement la valeur annoncee ; sur la
+        V_A = a_1x x t_A = 4 m.s-1, exactement la valeur annoncée ; sur la
         portion AB, force F retiree, a_2x = -(g.sin(17,5 degrés) + f/m) =
         -(3,007+1) = -4,007 m.s-2, arrondi -4,0 m.s-2 (valeur non donnée par
         l'énoncé, calculée ici) ; AB = -V_A^2/(2.a_2x) = 16/8,014 = 1,997 m,
@@ -482,7 +482,7 @@ entries:
         V_A = 4 m.s-1 »). Aucune divergence relevee entre ce contre-calcul et
         les valeurs annoncees par l'énoncé ; a_2x et AB sont des valeurs
         propres a cette conversion, non fournies par le sujet, et donc a
-        vérifier en priorite en cas de revision.
+        vérifier en priorité en cas de revision.
     intro: |-
       **Mouvement d'un solide sur un plan incliné, avec frottement (examen national, session de rattrapage 2022 — Exercice 4, Partie 1, 3,25 points).**
 
@@ -671,7 +671,7 @@ entries:
           **Le piège nommé de cette question.** **Oublier le signe négatif de $a_{2x}$** en écrivant $AB = V_A^2/(2\,a_{2x})$ sans le signe moins global, ce qui donnerait une distance négative — un résultat physiquement absurde qui aurait dû arrêter le calcul avant même d'écrire le résultat final.
         steps:
           - math: 'a_{1x} = \frac{F-f}{m} - g\sin\alpha'
-            note: "Question 1.1 : deuxième loi de Newton projetée, axe oriente vers le HAUT de la pente (sens de la montee)."
+            note: "Question 1.1 : deuxième loi de Newton projetée, axe oriente vers le HAUT de la pente (sens de la montée)."
           - math: 'x(t) = \frac{1}{2}a_{1x}\,t^2 \qquad \text{pente lue sur } x=f(t^2) \text{ vaut } a_{1x}/2'
             note: "Le graphe trace x en fonction de t^2 : la pente lue vaut a/2, pas a (piege du facteur 2, question 1.2.1)."
           - math: 'a_{1x} = 2\times1 = 2\ \text{m.s}^{-2} \qquad V_A = a_{1x}\,t_A = 2\times2 = 4\ \text{m.s}^{-1}'
@@ -892,7 +892,7 @@ entries:
           - math: 'a_{x1} = \frac{0{,}42 - 0{,}10}{0{,}5 - 0} = 0{,}64\ \text{m.s}^{-2}'
             note: "Pente lue entre deux points de grille de la figure 2 (question 1-2-1)."
           - math: 'V_A = 0{,}10\ \text{m.s}^{-1}'
-            note: "Ordonnée à l'origine de la droite : le solide est ENVOYE depuis A, pas lache."
+            note: "Ordonnée à l'origine de la droite : le solide est ENVOYÉ depuis A, pas lache."
           - math: 'V_B = 0{,}10 + 0{,}64 \times 1{,}1 = 0{,}10 + 0{,}704 = 0{,}804\ \text{m.s}^{-1}'
             note: "t_AB = 1,1 s est HORS du cadre de la figure : on prolonge le modèle, on ne lit plus."
           - math: '\boxed{V_B \approx 0{,}80\ \text{m.s}^{-1}}'
@@ -1018,7 +1018,7 @@ entries:
           - math: 'V_B^2 \approx 16{,}08\ \text{m}^2.\text{s}^{-2}'
             note: "Calcul intermédiaire."
           - math: '\boxed{V_B = \sqrt{16{,}08} \approx 4{,}01\ \text{m.s}^{-1}}'
-            note: "Racine carree du résultat précédent. Cette valeur ne sert pas a la suite : la partie 2 utilise V_C, une donnée indépendante."
+            note: "Racine carrée du résultat précédent. Cette valeur ne sert pas a la suite : la partie 2 utilise V_C, une donnée indépendante."
       - id: q3
         part: "1-3 — La réaction du plan"
         stem: |-
@@ -1196,7 +1196,7 @@ entries:
           - math: 'R = \sqrt{N^2+f^2} = \sqrt{586{,}4^2+15^2}'
             note: "N et f sont perpendiculaires (l'un normal, l'autre tangentiel au plan) : Pythagore pour la résultante de contact."
           - math: '\boxed{R \approx 586{,}6\ \text{N}}'
-            note: "Force totale exercee par le plan incline sur (S)."
+            note: "Force totale exercée par le plan incline sur (S)."
       - id: q5
         part: "2.1 — La force de frottement sur le plan horizontal"
         stem: |-
@@ -1230,9 +1230,9 @@ entries:
           - math: 'v(t) = v_0 + a_x\,t'
             note: "Loi horaire, accélération constante (chapitre 7)."
           - math: 't_c = -\frac{v_0}{a_x} = -\frac{25}{-3}'
-            note: "Instant d'arret : v(t_c) = 0. v_0 = 25 m/s (donnée, 90 km/h)."
+            note: "Instant d'arrêt : v(t_c) = 0. v_0 = 25 m/s (donnée, 90 km/h)."
           - math: '\boxed{t_c \approx 8{,}33\ \text{s}}'
-            note: "Instant d'arret du système."
+            note: "Instant d'arrêt du système."
       - id: q7
         part: "2.3 — La distance parcourue"
         stem: |-
@@ -1245,7 +1245,7 @@ entries:
           Le contrôle qui rassure. On peut aussi retrouver $BC$ par $BC = v_0\,t_c + \frac{1}{2}a_x\,t_c^2$ avec $t_c \approx 8{,}33\ \text{s}$ (question 2.2) : $25\times8{,}33 - \frac{1}{2}\times3\times8{,}33^2 \approx 208{,}3-104{,}2 \approx 104{,}2\ \text{m}$ — les deux méthodes se recoupent.
         steps:
           - math: 'BC = -\frac{v_0^2}{2\,a_x} = -\frac{25^2}{2\times(-3)}'
-            note: "Relation vitesse-distance du MRUV (chapitre 7) : v^2 = v0^2+2.a_x.d, avec v=0 a l'arret."
+            note: "Relation vitesse-distance du MRUV (chapitre 7) : v^2 = v0^2+2.a_x.d, avec v=0 a l'arrêt."
           - math: '\boxed{BC \approx 104{,}17\ \text{m}}'
             note: "Distance parcourue de B a C, vérifiée indépendamment par BC = v0.t_c + 0,5.a_x.t_c^2."
 
@@ -1420,7 +1420,7 @@ entries:
           - math: '\boxed{f = \frac{m\left(v_B^2 - v_C^2\right)}{2L}}'
             note: "Expression demandee : f positive car v_B > v_C."
           - math: 'f = \frac{65\times\left(20^2 - 12^2\right)}{2\times100} = \frac{65\times256}{200}'
-            note: "Application numérique avec v_B = 20,0 m/s (question 1-3, conservee au passage en B) et v_C = 12 m/s."
+            note: "Application numérique avec v_B = 20,0 m/s (question 1-3, conservée au passage en B) et v_C = 12 m/s."
           - math: '\boxed{f \approx 83{,}2\ \text{N}}'
             note: "Intensité du frottement -- concordante avec le corrige non officiel (83,2 N, par deux méthodes)."
 
@@ -1591,7 +1591,7 @@ entries:
           - math: 'v_B = \sqrt{2\times3{,}03\times80}'
             note: "a_G de la question 1-1, AB = A'B' = 80 m (donnée)."
           - math: '\boxed{v_B \approx 22{,}0\ \text{m.s}^{-1}}'
-            note: "Coherent avec le tableau d'Euler de la partie 2 (v = 21,77 m/s a t = 0,4 s)."
+            note: "Cohérent avec le tableau d'Euler de la partie 2 (v = 21,77 m/s a t = 0,4 s)."
       - id: q2-1
         part: "2 — Sur la partie horizontale, avec frottements"
         stem: |-
@@ -1656,4 +1656,4 @@ entries:
           - math: 'v_{i+2} = v_{i+1} + a_{i+1}\,\Delta t = 21{,}54 - 0{,}564\times0{,}4'
             note: "Pas d'Euler, Delta t = 0,4 s lu sur la colonne des temps -- méthode construite dans la leçon Chute et mouvements plans."
           - math: '\boxed{v_{i+2} \approx 21{,}3\ \text{m.s}^{-1}}'
-            note: "Le skieur ralentit : coherent avec le tableau."
+            note: "Le skieur ralentit : cohérent avec le tableau."

@@ -104,12 +104,12 @@ misconceptions:
 
   - id: mc.physics.pc_chute_plans.euler-donne-valeur-exacte
     label: "« La méthode d'Euler donne la valeur exacte de $v(t)$ »"
-    description: "L'élève croit que la recurrence d'Euler résout exactement l'équation différentielle, quel que soit le pas $\\Delta t$."
+    description: "L'élève croit que la récurrence d'Euler résout exactement l'équation différentielle, quel que soit le pas $\\Delta t$."
     contradicts_principle: "Euler suppose la pente constante sur chaque pas, ce qui n'est vrai qu'approximativement ; l'erreur diminue quand $\\Delta t$ diminue, mais ne s'annule jamais pour un pas fini."
 
   - id: mc.physics.pc_chute_plans.euler-oubli-dt
     label: "« $v_{i+1}=v_i+a_i$ » (oubli du facteur $\\Delta t$)"
-    description: "L'élève additionne directement l'accélération a la vitesse, sans la multiplier par la durée du pas — incoherence dimensionnelle non detectee."
+    description: "L'élève additionne directement l'accélération a la vitesse, sans la multiplier par la durée du pas — incohérence dimensionnelle non detectee."
     contradicts_principle: "$a_i\\,\\Delta t$ est homogène a une vitesse (accélération x temps) ; $v_i+a_i$ additionnerait une vitesse et une accélération, ce qui n'a pas de sens physique."
 
   - id: mc.physics.pc_chute_plans.euler-pente-non-recalculee
@@ -134,8 +134,8 @@ misconceptions:
 
   - id: mc.physics.pc_chute_plans.kepler3-exposants-inverses
     label: "« La 3e loi de Kepler s'écrit $T/r$, $T^3/r^2$ ou $T^2/r^2$ = constante » (exposants mal memorises)"
-    description: "L'élève retient mal la position des exposants dans la 3e loi, faute de repartir de son etablissement."
-    contradicts_principle: "L'etablissement (egaler $v=\\sqrt{GM/r}$ et $v=2\\pi r/T$) donne directement $T^2/r^3=4\\pi^2/GM$ : le carré est sur la période, le cube sur le rayon."
+    description: "L'élève retient mal la position des exposants dans la 3e loi, faute de repartir de son établissement."
+    contradicts_principle: "L'établissement (egaler $v=\\sqrt{GM/r}$ et $v=2\\pi r/T$) donne directement $T^2/r^3=4\\pi^2/GM$ : le carré est sur la période, le cube sur le rayon."
 
   - id: mc.physics.pc_chute_plans.geostationnaire-immobile-absolu
     label: "« Le satellite géostationnaire est immobile dans l'espace / n'a pas de vitesse »"
@@ -144,7 +144,7 @@ misconceptions:
 
   - id: mc.physics.pc_chute_plans.geostationnaire-toute-altitude
     label: "« N'importe quelle altitude peut être géostationnaire »"
-    description: "L'élève ne voit pas que la condition $T=T_{Terre}$ combinee a la 3e loi impose un rayon unique."
+    description: "L'élève ne voit pas que la condition $T=T_{Terre}$ combinée a la 3e loi impose un rayon unique."
     contradicts_principle: "$T^2/r^3=4\\pi^2/GM_T$ relie $T$ et $r$ de façon biunivoque pour un astre donne : se donner $T=24\\ \\text{h}$ determine une seule valeur de $r$, pas une plage de rayons possibles."
 items:
   - id: CMP-1
@@ -234,7 +234,7 @@ items:
       Oui : au sommet $v_y = 0$ mais $v_x = v_{0x} \neq 0$. La vitesse y est
       horizontale et minimale, jamais nulle.
     solution: |
-      Le sommet est défini par $v_y = 0$ (la montee s'arrete, la descente
+      Le sommet est défini par $v_y = 0$ (la montée s'arrete, la descente
       commence). Mais l'axe horizontal reste uniforme :
       $$v_x = v_{0x} = v_0\cos\alpha \neq 0$$
       La vitesse au sommet vaut donc $v_{0x}$, horizontale.
@@ -641,9 +641,9 @@ items:
         feedback: >
           Aller plus vite a l'arrivée ne veut pas dire mettre moins de temps :
           $y(t)$ est une parabole symétrique par rapport a son sommet, ce qui
-          impose une durée de descente égale a celle de la montee.
+          impose une durée de descente égale a celle de la montée.
       - id: B
-        text: "Exactement 1,0 s : la montee et la descente prennent le même temps, par symétrie de $y(t)$"
+        text: "Exactement 1,0 s : la montée et la descente prennent le même temps, par symétrie de $y(t)$"
         correct: true
       - id: C
         text: "Plus de 1,0 s, car il faut d'abord que la vitesse s'annule avant de pouvoir redescendre"
@@ -651,8 +651,8 @@ items:
         misconception: mc.physics.pc_chute_plans.descente-plus-courte-que-montee
         feedback: >
           La vitesse s'annule justement AU sommet, a $t=1{,}0\ \text{s}$ : ce
-          n'est pas un delai supplémentaire, c'est l'instant même ou la
-          montee se termine et la descente commence.
+          n'est pas un délai supplémentaire, c'est l'instant même ou la
+          montée se termine et la descente commence.
       - id: D
         text: "Impossible à savoir sans connaître la hauteur exacte atteinte au sommet"
         correct: false
@@ -663,7 +663,7 @@ items:
           du sommet.
     correct_feedback: >
       $t_{sol} = 2\,t_{sommet}$ : la parabole $y(t)$ est symétrique par
-      rapport a son sommet, donc montee et descente prennent exactement le
+      rapport a son sommet, donc montée et descente prennent exactement le
       même temps, ici $1{,}0\ \text{s}$ chacune.
     solution: |
       $y(t) = v_{0y}t - \frac{1}{2}gt^2$ est une parabole en $t$, symétrique
@@ -882,7 +882,7 @@ items:
         correct: false
         misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
         feedback: >
-          Ce calcul oublie d'elever $x$ au carré dans le second terme
+          Ce calcul oublie d'élever $x$ au carré dans le second terme
           ($0{,}01225\times x$ au lieu de $0{,}01225\times x^2$).
       - id: C
         text: "$y \\approx 6{,}3\\ \\text{m}$"
@@ -1046,7 +1046,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elles suivent exactement la même trajectoire, car le champ magnetique ne dépend pas du signe de la charge"
+        text: "Elles suivent exactement la même trajectoire, car le champ magnétique ne dépend pas du signe de la charge"
         correct: false
         misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
         feedback: >
@@ -1089,13 +1089,13 @@ items:
     tags: []
     stem: >
       Le rayon de la trajectoire circulaire d'une particule chargée dans un
-      champ magnetique uniforme vaut $R = \dfrac{m\,v_0}{|q|\,B}$. Laquelle
+      champ magnétique uniforme vaut $R = \dfrac{m\,v_0}{|q|\,B}$. Laquelle
       de ces modifications, prise seule (toutes les autres grandeurs restant
       fixees), AUGMENTE ce rayon ?
     type: mcq
     choices:
       - id: A
-        text: "Augmenter le champ magnetique $B$"
+        text: "Augmenter le champ magnétique $B$"
         correct: false
         misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
         feedback: >
@@ -1113,15 +1113,15 @@ items:
         correct: false
         misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
         feedback: >
-          $m$ est au numérateur : la DIMINUER reduit le rayon ; c'est
+          $m$ est au numérateur : la DIMINUER réduit le rayon ; c'est
           l'AUGMENTER qui l'agrandirait.
       - id: D
         text: "Augmenter la vitesse initiale $v_0$"
         correct: true
     correct_feedback: >
       $v_0$ est au numérateur de $R=mv_0/(|q|B)$ : l'augmenter augmente $R$.
-      $B$ et $|q|$ sont au dénominateur (les augmenter reduit $R$) ; $m$ est
-      au numérateur (la diminuer reduit $R$).
+      $B$ et $|q|$ sont au dénominateur (les augmenter réduit $R$) ; $m$ est
+      au numérateur (la diminuer réduit $R$).
     solution: |
       $$R = \frac{m\,v_0}{|q|\,B}$$
       Seule une augmentation du numérateur ($m$ ou $v_0$) augmente $R$.
@@ -1160,7 +1160,7 @@ items:
         correct: false
         misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
         feedback: >
-          Les composantes ont été inversees : c'est $v_{0x}$ (horizontale)
+          Les composantes ont été inversées : c'est $v_{0x}$ (horizontale)
           qui multiplie $t_{portee}$ pour donner une distance, pas $v_{0y}$.
     correct_feedback: >
       $D = v_0^2\sin(2\alpha)/g = 15^2\times2\times0{,}60\times0{,}80/9{,}8
@@ -1181,7 +1181,7 @@ items:
       vitesse initiale $v_0 = 8{,}0\ \text{m/s}$ (donc $\alpha=0^\circ$,
       $v_{0y}=0$), frottements négligés. Elle heurte le sol en contrebas
       après une trajectoire courbe. Que vaut sa vitesse horizontale juste
-      avant l'impact, comparee a $v_0$ ?
+      avant l'impact, comparée a $v_0$ ?
     type: mcq
     choices:
       - id: A
@@ -1481,8 +1481,8 @@ items:
         also_reveals: []
         feedback: >
           Garder $a=g$ fixe revient a ignorer tout frottement (ou toute
-          autre force dependant de $v$) : ca redonne la chute libre, pas la
-          solution de l'équation différentielle etudiee.
+          autre force dépendant de $v$) : ca redonne la chute libre, pas la
+          solution de l'équation différentielle étudiée.
       - id: C
         text: "$v_{i+1}$ est la valeur exacte de $v$ à l'instant $t_{i+1}$, quel que soit le pas $\\Delta t$ choisi"
         correct: false
@@ -1490,22 +1490,22 @@ items:
         also_reveals: []
         feedback: >
           C'est une approximation, pas une valeur exacte : la pente est
-          supposee constante sur tout le pas, ce qui n'est vrai
-          qu'approximativement. L'écart avec la vraie courbe se reduit
+          supposée constante sur tout le pas, ce qui n'est vrai
+          qu'approximativement. L'écart avec la vraie courbe se réduit
           quand $\Delta t$ diminue, sans jamais s'annuler pour un pas fini.
       - id: D
         text: "$v_{i+1}=v_i+a_i\\,\\Delta t$, avec $a_i$ recalcule à chaque pas à partir de l'équation différentielle en $v_i$"
         correct: true
     correct_feedback: >
       Exact : c'est la formule d'Euler. Le facteur $\Delta t$ est
-      indispensable (homogeneite), et $a_i$ doit être recalcule à chaque
+      indispensable (homogénéité), et $a_i$ doit être recalcule à chaque
       pas à partir de $v_i$ courant, sinon on perd l'effet de la force qui
       dépend de $v$.
     solution: |
       $$v_{i+1} = v_i + \left(\frac{dv}{dt}\right)_i \Delta t = v_i +
       a_i\,\Delta t, \qquad a_i = g - \frac{k}{m}v_i$$
       Deux points a vérifier à chaque application : le facteur $\Delta t$
-      (homogeneite) et le recalcul de $a_i$ à partir de $v_i$ courant, pas
+      (homogénéité) et le recalcul de $a_i$ à partir de $v_i$ courant, pas
       d'une valeur figee.
 
   - id: CMP-29
@@ -1603,7 +1603,7 @@ items:
         misconception: mc.physics.pc_chute_plans.euler-oubli-dt
         also_reveals: []
         feedback: >
-          Le facteur $\Delta t$ est bien present dans la recurrence
+          Le facteur $\Delta t$ est bien present dans la récurrence
           ($v_{i+1}=v_i+a_i\Delta t$) ; le problème décrit ici porte sur
           $a_i$ garde fixe, pas sur un $\Delta t$ manquant.
     correct_feedback: >
@@ -1642,7 +1642,7 @@ items:
         feedback: >
           Si la gravite disparaissait vraiment, aucune force ne courberait
           la trajectoire : par inertie, le satellite partirait en ligne
-          droite. Or il reste sur une orbite fermee : une force agit bel et
+          droite. Or il reste sur une orbite fermée : une force agit bel et
           bien, et c'est la gravite.
       - id: B
         text: "La force gravitationnelle, centripete (dirigée vers le centre de la Terre), perpendiculaire a la vitesse à chaque instant"
@@ -1740,7 +1740,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Il est en chute libre permanente : la gravite continue d'agir sur lui et sur la station, a la même accélération, et courbe leur trajectoire commune en une orbite fermee"
+        text: "Il est en chute libre permanente : la gravite continue d'agir sur lui et sur la station, a la même accélération, et courbe leur trajectoire commune en une orbite fermée"
         correct: true
       - id: B
         text: "Il n'y a plus de gravite a cette altitude, donc plus rien ne le retient"
@@ -1749,7 +1749,7 @@ items:
         also_reveals: []
         feedback: >
           Si la gravite disparaissait, la station partirait en ligne droite
-          (inertie) au lieu de suivre une orbite fermee. La gravite agit
+          (inertie) au lieu de suivre une orbite fermée. La gravite agit
           toujours, a peine plus faible qu'au sol.
       - id: C
         text: "La station est munie d'un système de propulsion qui compense en permanence la gravite, ce qui annule son poids"
@@ -1803,7 +1803,7 @@ items:
         misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
         also_reveals: []
         feedback: >
-          C'est l'inverse : l'etablissement (egaler $v=\sqrt{GM/r}$ et
+          C'est l'inverse : l'établissement (egaler $v=\sqrt{GM/r}$ et
           $v=2\pi r/T$) donne le carré sur la période et le cube sur le
           rayon, pas l'inverse.
       - id: B
@@ -1917,7 +1917,7 @@ items:
         feedback: >
           Une vitesse nulle par rapport au sol au lancement ne garantit
           rien pour la suite : c'est la condition sur la PÉRIODE
-          ($T=T_{Terre}$), combinee au plan équatorial et au sens de
+          ($T=T_{Terre}$), combinée au plan équatorial et au sens de
           rotation, qui maintient le satellite au-dessus du même point.
       - id: B
         text: "N'importe quelle altitude convient, du moment que le satellite décrit une orbite circulaire autour de la Terre et dans le bon sens"
@@ -1936,14 +1936,14 @@ items:
         also_reveals: []
         feedback: >
           Cette formule inverse les exposants de la 3e loi (qui est
-          $T^2/r^3=4\pi^2/GM_T$, pas $T^3/r^2=\ldots$) ; et même corrigee,
+          $T^2/r^3=4\pi^2/GM_T$, pas $T^3/r^2=\ldots$) ; et même corrigée,
           elle donnerait un seul $r$ pour un $T$ donne, pas plusieurs.
       - id: D
         text: "$T=T_{\\text{Terre}}\\approx24\\ \\text{h}$, orbite dans le plan équatorial, même sens que la rotation terrestre ; la 3e loi fixe alors un rayon unique"
         correct: true
     correct_feedback: >
       Exact : les trois conditions (période terrestre, plan équatorial,
-      même sens de rotation) sont simultanement nécessaires ; combinees a
+      même sens de rotation) sont simultanément nécessaires ; combinees a
       la 3e loi, elles fixent une unique valeur de $r$ (environ
       $4{,}2\times10^7\ \text{m}$ pour la Terre), donc une seule altitude
       géostationnaire possible.

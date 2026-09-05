@@ -572,7 +572,7 @@ entries:
           - math: '\int_1^e \ln x\,dx = \big[x\ln x-x\big]_1^e = (e-e)-(0-1) = 1'
             note: "Avec la primitive H."
           - math: '\mathcal{A} = \tfrac12(e-2)-1+\tfrac12(e-1) = e-\tfrac52'
-            note: "En reutilisant les deux intégrales de référence."
+            note: "En réutilisant les deux intégrales de référence."
           - math: '\mathcal{A} = \left(e-\tfrac52\right)\text{cm}^2 \approx 0{,}22\ \text{cm}^2'
             note: "Unité orthonormee 1 cm : aire positive, comme attendu."
       - id: q16
@@ -587,7 +587,7 @@ entries:
           - math: '\text{Initialisation\,: } u_0=1, \quad 1\le1\le e \ \checkmark'
             note: "Rang 0."
           - math: 'f \text{ croissante sur } [1,e] \implies f(1)\le f(u_n)\le f(e)'
-            note: "Monotonie de f appliquee a l'hypothèse de recurrence."
+            note: "Monotonie de f appliquee a l'hypothèse de récurrence."
           - math: 'f(1)=\tfrac32, \quad f(e)=e \implies 1\le\tfrac32\le u_{n+1}\le e'
             note: "f(e)=e car ln e=1. L'encadrement passe au rang n+1."
       - id: q17
@@ -732,7 +732,7 @@ entries:
           - math: '(C_f) \text{ concave sur } ]0,1[, \text{ convexe sur } ]1,\beta[, \text{ concave sur } ]\beta,+\infty['
             note: "Lecture directe du tableau de signe de f'' (question précédente)."
           - math: '\text{Points d''inflexion en } x=1 \text{ et } x=\beta'
-            note: "La concavite change exactement la ou f'' s'annule en changeant de signe."
+            note: "La concavité change exactement la ou f'' s'annule en changeant de signe."
       - id: q9
         part: "Partie 3 — Position de (Δ) par rapport à (C_f), à partir de (C_g)"
         stem: |-
@@ -815,7 +815,7 @@ entries:
           - math: 'f(\alpha)=\alpha, \quad f(1)=1 \quad (\alpha \text{ et } 1 \text{ sont des zéros de } g=f(x)-x)'
             note: "Points fixes de f, donnes par l'énoncé de la question 9."
           - math: '\alpha<u_n<1, \ f \text{ strict. croissante} \implies f(\alpha)<f(u_n)<f(1) \implies \alpha<u_{n+1}<1'
-            note: "On applique la stricte croissance de f (question 6) a l'hypothèse de recurrence."
+            note: "On applique la stricte croissance de f (question 6) a l'hypothèse de récurrence."
       - id: q16
         stem: |-
           **(0,5 pt)** Montrer que la suite $(u_n)$ est croissante. *(on peut utiliser la question 4) b))*
@@ -891,9 +891,9 @@ entries:
           Continue à droite en $0$ signifie $\displaystyle\lim_{x\to0^+} f(x) = f(0)$. On calcule cette limite avec le corollaire de croissances comparées de la leçon (chapitre 5) : $x\ln x \to 0$ quand $x\to0^+$. Comme $f(x)=2x\ln x-2x$ pour $x>0$, chaque terme tend vers $0$, et la limite vaut $f(0)=0$.
         steps:
           - math: '\lim_{x \to 0^+} x\ln x = 0'
-            note: "Corollaire de croissances comparees, chapitre 5 (limite de référence en 0+)."
+            note: "Corollaire de croissances comparées, chapitre 5 (limite de référence en 0+)."
           - math: '\lim_{x\to0^+} f(x) = \lim_{x\to0^+}\left(2x\ln x - 2x\right) = 2\times 0 - 0 = 0 = f(0)'
-            note: "Les deux termes tendent vers 0 : continuite à droite en 0 vérifiée."
+            note: "Les deux termes tendent vers 0 : continuité à droite en 0 vérifiée."
       - id: q2
         part: "Limites en +infini et direction asymptotique"
         stem: |-
@@ -992,7 +992,7 @@ entries:
           $f(x)=2x\ln x-2x$, donc par linéarité $\displaystyle\int_1^e f(x)\,dx = 2\int_1^e x\ln x\,dx - 2\int_1^e x\,dx$. On réutilise le résultat de la question précédente pour le premier terme, et une primitive élémentaire de $x$ pour le second.
         steps:
           - math: '\int_1^e f(x)\,dx = 2\int_1^e x\ln x\,dx - 2\int_1^e x\,dx'
-            note: "Linearite de l'intégrale."
+            note: "Linéarité de l'intégrale."
           - math: '\int_1^e x\,dx = \left[\dfrac{x^2}{2}\right]_1^e = \dfrac{e^2-1}{2}'
             note: "Primitive elementaire."
           - math: '\int_1^e f(x)\,dx = 2\cdot\dfrac{1+e^2}{4} - 2\cdot\dfrac{e^2-1}{2} = \dfrac{1+e^2}{2} - (e^2-1)'
@@ -1036,7 +1036,7 @@ entries:
           - math: 'g(1) = f(1) = -2 \quad (\text{question 11}), \qquad \lim_{x\to+\infty} g(x) = \lim_{x\to+\infty} f(x) = +\infty \quad (\text{question 2})'
             note: "Images des bornes de l'intervalle de départ."
           - math: 'g \text{ realise une bijection de } [1,+\infty[ \text{ sur } J = [-2,+\infty['
-            note: "Corollaire du théorème des valeurs intermediaires (continuite + stricte monotonie), hors socle de cette leçon."
+            note: "Corollaire du théorème des valeurs intermédiaires (continuité + stricte monotonie), hors socle de cette leçon."
       - id: q14
         stem: |-
           **(0,75 pt)** Construire dans le même repère $(O, \vec{i}, \vec{j})$ la courbe représentative de la fonction $g^{-1}$.
@@ -1068,7 +1068,7 @@ entries:
           - math: '\lim_{x\to0^-} (x^2+3) = 3'
             note: "Limite finie : h dérivable à gauche en 0."
           - math: '\text{Interpretation\,: } (C_h) \text{ admet en } (0,0) \text{ une demi-tangente à gauche de coefficient directeur } 3'
-            note: "Interpretation géométrique de la derivabilite à gauche."
+            note: "Interprétation géométrique de la dérivabilité à gauche."
       - id: q17
         stem: |-
           **(0,25 pt)** La fonction $h$ est-elle dérivable au point $0$ ? justifier.
@@ -1080,7 +1080,7 @@ entries:
           - math: '\lim_{x\to0^-} \dfrac{h(x)-h(0)}{x-0} = 3 \ne \lim_{x\to0^+} \dfrac{h(x)-h(0)}{x-0} = -\infty'
             note: "Les deux demi-derivees ne coïncident pas : l'une finie, l'autre infinie."
           - math: 'h \text{ n''est pas dérivable en } 0'
-            note: "Conclusion : pas de derivabilite en 0 (mais deux demi-tangentes distinctes)."
+            note: "Conclusion : pas de dérivabilité en 0 (mais deux demi-tangentes distinctes)."
 
   # ── bk-2024-n-x4 — 2024 N, Problème : comparaison e^x/x, f(x)=x+1-ln(e^x-x), points fixes, reciproque ──
   - id: bk-2024-n-x4
@@ -1193,7 +1193,7 @@ entries:
           - math: '\lim_{x\to+\infty} xe^{-x} = 0 \quad (\text{limite de référence de l''exponentielle, hors socle})'
             note: "Analogue, pour l'exponentielle, du corollaire x ln x tend vers 0 du chapitre 5."
           - math: '\lim_{x\to+\infty}\big(1-xe^{-x}\big) = 1 \implies \lim_{x\to+\infty}\ln\big(1-xe^{-x}\big) = \ln(1) = 0'
-            note: "Continuite de ln en 1, déjà etablie aux chapitres 2 et 6."
+            note: "Continuité de ln en 1, déjà établie aux chapitres 2 et 6."
           - math: '\lim_{x\to+\infty} f(x) = 1-0 = 1'
             note: "Asymptote horizontale y=1 en plus l'infini."
       - id: q7
@@ -1232,7 +1232,7 @@ entries:
           - math: 'X=-x\to+\infty,\quad \dfrac{\ln(-x)}{x} = \dfrac{\ln X}{-X} = -\dfrac{\ln X}{X} \to 0 \quad (\text{croissances comparees, R4})'
             note: "Même limite de référence que le chapitre 5, avec le changement de variable X=-x."
           - math: 'xe^{-x} = -Xe^{X} \to -\infty \implies \dfrac{1}{xe^{-x}} \to 0 \implies \ln\left(1-\dfrac{1}{xe^{-x}}\right) \to \ln(1) = 0'
-            note: "L'exponentielle ecrase X (hors socle) ; continuite de ln en 1 (chapitres 2 et 6)."
+            note: "L'exponentielle ecrase X (hors socle) ; continuité de ln en 1 (chapitres 2 et 6)."
           - math: '\lim_{x\to-\infty} \dfrac{f(x)}{x} = 1+0-0-0 = 1'
             note: "La pente tend vers 1 : direction de (Delta):y=x."
           - math: 'f(x)-x = 1-\ln(e^x-x) \xrightarrow[x\to-\infty]{} -\infty \quad (\text{question 7})'
@@ -1273,9 +1273,9 @@ entries:
           - math: 'f(0) = 0+1-\ln(e^0-0) = 1-\ln(1) = 1 > 0'
             note: "Valeur en 0, positive."
           - math: 'f \text{ continue et strictement croissante sur } [-1,0] \ (\subset\, ]-\infty,1], \text{ question 11}), \quad f(-1)<0<f(0)'
-            note: "Corollaire du théorème des valeurs intermediaires, hors socle de cette leçon."
+            note: "Corollaire du théorème des valeurs intermédiaires, hors socle de cette leçon."
           - math: '\implies \exists!\, x_0 \in\, ]-1,0[,\ f(x_0)=0'
-            note: "Unicite garantie par la stricte monotonie (injectivite) de f sur cet intervalle."
+            note: "Unicité garantie par la stricte monotonie (injectivite) de f sur cet intervalle."
       - id: q13
         part: "Partie II — Deux points fixes alpha et beta"
         stem: |-
@@ -1290,7 +1290,7 @@ entries:
           - math: 'f \text{ strictement croissante sur } ]-\infty,1] \text{ puis strictement décroissante sur } [1,+\infty[ \implies \text{au plus une solution de } f(x)=x \text{ par branche}'
             note: "Stricte monotonie = injectivite sur chaque branche (question 11)."
           - math: '\implies \text{exactement deux solutions } \alpha \text{ (branche croissante) et } \beta \text{ (branche décroissante)}'
-            note: "Une intersection observee sur chaque branche : deux solutions au total."
+            note: "Une intersection observée sur chaque branche : deux solutions au total."
       - id: q14
         stem: |-
           **(0,5 pt)** Montrer que : $e^{\alpha} - e^{\beta} = \alpha - \beta$.
@@ -1319,7 +1319,7 @@ entries:
           - math: '\lim_{x\to-\infty} g(x) = -\infty \ (\text{question 7}), \qquad g(1) = f(1) = 2-\ln(e-1) \ (\text{question 11})'
             note: "Images des bornes de l'intervalle I."
           - math: 'g \text{ realise une bijection de } I \text{ sur } J = \left]-\infty,\, 2-\ln(e-1)\right]'
-            note: "Corollaire du théorème des valeurs intermediaires (continuite + stricte monotonie), hors socle de cette leçon."
+            note: "Corollaire du théorème des valeurs intermédiaires (continuité + stricte monotonie), hors socle de cette leçon."
       - id: q16
         stem: |-
           **(0,75 pt)** Vérifier que $g^{-1}$ est dérivable en $1$ et calculer $\left(g^{-1}\right)'(1)$.
@@ -1331,7 +1331,7 @@ entries:
           - math: 'g''(0) = f''(0) = \dfrac{1-0}{e^0-0} = 1 \ne 0'
             note: "Dérivée de f en 0 (formule de la question 10), non nulle."
           - math: 'g \text{ dérivable en } 0,\ g''(0)\ne0 \implies g^{-1} \text{ dérivable en } g(0)=1, \quad \left(g^{-1}\right)''(1) = \dfrac{1}{g''(0)} = 1'
-            note: "Théorème de la dérivée d'une réciproque (chapitre Derivabilite et étude de fonctions, hors socle de cette leçon)."
+            note: "Théorème de la dérivée d'une réciproque (chapitre Dérivabilité et étude de fonctions, hors socle de cette leçon)."
   # ── bk-2023-r-x1 — 2023 R, Exercice 1 : le probleme d'analyse (10 pts),
   #    f_n(x) = sqrt(x).(ln x)^n — trois parties, quatre domaines ──
   #
@@ -1424,7 +1424,7 @@ entries:
         transcrites et qu'aucun point ne reste indécidable. AJOUT DE CETTE
         ENTRÉE AU CORPUS : elle complète l'épreuve SM 2023 rattrapage, dont les
         exercices 2, 3 et 4 étaient déjà convertis (nombres-complexes-2,
-        structures-algebriques, arithmetique) — l'épreuve passe de 10,00 à
+        structures-algebriques, arithmétique) — l'épreuve passe de 10,00 à
         20,00 points et devient assemblable en entier dans Examens blancs.
     intro: |-
       **Problème d'analyse (examen national, Sciences Mathématiques, session de rattrapage 2023 — Exercice 1, 10 points).**
@@ -2385,7 +2385,7 @@ entries:
           - math: 'n \geq 2 \Longrightarrow 2^n \geq 4 \Longrightarrow 0{,}7 \times 2^n \geq 2{,}8 \Longrightarrow f_n(2) \leq -0{,}8 < 0'
             note: "Majoration valable pour TOUS les rangs d'un seul coup, pas rang par rang."
           - math: 'f_n \text{ continue et strictement décroissante sur } [1,2],\quad f_n(1) > 0 > f_n(2)'
-            note: "TVI pour l'existence, stricte monotonie pour l'unicite : les deux sont nécessaires."
+            note: "TVI pour l'existence, stricte monotonie pour l'unicité : les deux sont nécessaires."
           - math: '\boxed{\exists !\,\alpha_n \in\, ]1;2[\ ;\ f_n(\alpha_n) = 0}'
             note: "Bijection de [1,2] sur un intervalle contenant 0."
       - id: q3b
@@ -2769,7 +2769,7 @@ entries:
           - math: '\forall x \in [0,+\infty[\ ;\quad \frac{2x}{2+x} \le \ln(1+x) \le \frac12\cdot\frac{x^2+2x}{1+x}'
             note: "Intégration de l'encadrement de 1-a entre 0 et x, bornes dans l'ordre 0 <= x."
       - id: q2
-        part: "Partie I — 2. Une première limite, tiree de l'encadrement"
+        part: "Partie I — 2. Une première limite, tirée de l'encadrement"
         stem: |-
           **2)** (0,5 pt) Soit $g$ la fonction numérique de la variable réelle $x$ définie sur $]0, +\infty[$ par $g(x) = \dfrac{\ln(1+x)}{x}$. Montrer que : $\displaystyle\lim_{\substack{x \to 0 \\ x > 0}} \frac{g(x) - 1}{x} = \frac{-1}{2}$
         reasoning: |-
@@ -2847,7 +2847,7 @@ entries:
           - math: '(C) \text{ admet la droite } y=0 \text{ pour asymptote horizontale en } +\infty'
             note: "Limite finie (0) en plus l'infini : lecture graphique directe."
       - id: q4a
-        part: "Partie II — 2. Continuite et derivabilite à droite en 0"
+        part: "Partie II — 2. Continuité et dérivabilité à droite en 0"
         stem: |-
           **2- a)** (0,25 pt) Montrer que $f$ est continue à droite en $0$.
         reasoning: |-
@@ -2904,7 +2904,7 @@ entries:
           - math: '\left(\frac{e^{-x}-1}{x}\right)g(x) + \frac{g(x)-1}{x} = \frac{(e^{-x}-1)g(x) + g(x) - 1}{x}'
             note: "Même dénominateur x pour les deux termes."
           - math: '(e^{-x}-1)g(x) + g(x) - 1 = e^{-x}g(x) - g(x) + g(x) - 1 = e^{-x}g(x) - 1'
-            note: "Telescopage : le moins g(x) et le plus g(x) s'annulent."
+            note: "Télescopage : le moins g(x) et le plus g(x) s'annulent."
           - math: '\frac{e^{-x}g(x)-1}{x} = \frac{f(x)-1}{x} \quad (\text{car } f(x)=g(x)e^{-x} \text{ pour } x>0)'
             note: "On reconnait f(x) dans e puissance moins x fois g(x), par définition de f."
       - id: q4c
@@ -2942,9 +2942,9 @@ entries:
           - math: '\lim_{x\to 0^+}\frac{f(x)-1}{x} = (-1)\times 1 + \left(-\frac12\right) = -\frac32'
             note: "Identité de la question 2-b : produit des deux premières limites, plus la troisième."
           - math: '\boxed{f \text{ dérivable à droite en } 0, \quad f''_d(0) = -\frac32}'
-            note: "Limite finie du taux d'accroissement : la derivabilite à droite est acquise, avec ce nombre derive."
+            note: "Limite finie du taux d'accroissement : la dérivabilité à droite est acquise, avec ce nombre derive."
       - id: q5
-        part: "Partie III — 3. Derivabilite sur ]0, plus infini[ et formule de f'"
+        part: "Partie III — 3. Dérivabilité sur ]0, plus infini[ et formule de f'"
         stem: |-
           **3)** (0,75 pt) Montrer que $f$ est dérivable sur $]0, +\infty[$ puis que : $\forall x \in\, ]0, +\infty[\ ;\quad f'(x) = \dfrac{x - (1+x)^2\ln(1+x)}{x^2(1+x)}\,e^{-x}$
         reasoning: |-
@@ -2987,7 +2987,7 @@ entries:
           - math: 'g''(x)-g(x) = \frac{\frac{x}{1+x}-\ln(1+x)}{x^2} - \frac{\ln(1+x)}{x} = \frac{\frac{x}{1+x}-(1+x)\ln(1+x)}{x^2}'
             note: "Même dénominateur x au carré ; les deux termes en ln(1+x) se regroupent."
           - math: 'g''(x)-g(x) = \frac{x-(1+x)^2\ln(1+x)}{x^2(1+x)}'
-            note: "On multiplie numérateur et dénominateur par (1+x) pour eliminer la fraction imbriquee."
+            note: "On multiplie numérateur et dénominateur par (1+x) pour éliminer la fraction imbriquee."
           - math: '\boxed{f''(x) = \frac{x-(1+x)^2\ln(1+x)}{x^2(1+x)}\,e^{-x}}'
             note: "Forme exactement imprimée par l'énoncé, prete pour l'étude de signe de la question 4."
       - id: q6a
@@ -3026,11 +3026,11 @@ entries:
           - math: '\frac{2x}{2+x} - \frac{x}{(1+x)^2} = \frac{x^2(2x+3)}{(2+x)(1+x)^2} > 0 \ (x>0) \ \Longrightarrow\ \ln(1+x) > \frac{x}{(1+x)^2} \ \Longrightarrow\ \varphi(x) < 0'
             note: "Borne GAUCHE de I-1-b : produit la majoration de phi."
           - math: '(1+x)^2\ln(1+x) \le \frac{x(x+2)(1+x)}{2} \quad (\text{borne DROITE de I-1-b})'
-            note: "On applique la borne droite de I-1-b, multipliee par (1+x) au carré."
+            note: "On applique la borne droite de I-1-b, multipliée par (1+x) au carré."
           - math: 'x+\frac32 x^2(1+x) - \frac{x(x+2)(1+x)}{2} = x^3 > 0 \ (x>0) \ \Longrightarrow\ (1+x)^2\ln(1+x) < x+\frac32 x^2(1+x)'
             note: "Écart calcule exactement : x au cube, strictement positif pour x > 0."
           - math: '\boxed{-\frac32 < \varphi(x) < 0} \qquad \varphi(x) = \frac{x-(1+x)^2\ln(1+x)}{x^2(1+x)}'
-            note: "Les deux inégalités reunies, chacune tiree d'une borne différente de I-1-b."
+            note: "Les deux inégalités réunies, chacune tirée d'une borne différente de I-1-b."
       - id: q6b
         stem: |-
           **4- b)** (0,25 pt) En déduire que : $\forall x \in\, ]0, +\infty[\ ;\quad -\dfrac{3}{2} < f'(x) < 0$
@@ -3060,7 +3060,7 @@ entries:
           - math: '0 < e^{-x} < 1 \quad (x>0)'
             note: "e puissance moins x est toujours strictement positif, et strictement inférieur a 1 pour x positif."
           - math: '\varphi(x) < 0 \ \text{et}\ 0<e^{-x}<1 \ \Longrightarrow\ \varphi(x) < \varphi(x)e^{-x} < 0'
-            note: "Multiplier un négatif par un facteur entre 0 et 1 le rapproche de 0 : l'inégalité s'inverse par rapport a l'intuition naive."
+            note: "Multiplier un négatif par un facteur entre 0 et 1 le rapproche de 0 : l'inégalité s'inverse par rapport a l'intuition naïve."
           - math: '-\frac32 < \varphi(x) < \varphi(x)e^{-x} < 0 \ \Longrightarrow\ \boxed{-\frac32 < f''(x) < 0}'
             note: "On combine avec la borne -3/2 de la question 4-a, et phi(x) fois e puissance moins x vaut f'(x) par la question 3."
       - id: q7a
@@ -3088,7 +3088,7 @@ entries:
           **Le piège nommé de cette question.** Chercher un extremum local ou un point où $f'$ s'annulerait : la question 4-b a établi $f'(x)<0$ **strictement partout** sur $]0,+\infty[$, sans exception — il n'y a ni palier ni changement de sens à chercher, et en inventer un serait contredire ce qui vient d'être démontré.
         steps:
           - math: 'f \text{ continue sur } [0,+\infty[, \quad f''(x) < 0 \ \forall x>0 \ (\text{question 4-b})'
-            note: "Continuite (question 2-a et 3) plus signe de la dérivée (question 4-b)."
+            note: "Continuité (question 2-a et 3) plus signe de la dérivée (question 4-b)."
           - math: 'f(0) = 1 \quad (\text{donne}), \qquad \lim_{x\to+\infty} f(x) = 0 \quad (\text{question 1})'
             note: "Les deux valeurs aux bornes du tableau."
           - math: 'f \text{ strictement décroissante sur } [0,+\infty[, \text{ de } 1 \text{ (atteint) a } 0 \text{ (limite, jamais atteinte)}'
@@ -3112,15 +3112,15 @@ entries:
           **Le piège nommé de cette question.** Tracer une tangente **horizontale** en $0$, par réflexe (beaucoup de courbes de ce type démarrent avec une tangente horizontale) : ici $f'_d(0)=-\dfrac32 \ne 0$, la demi-tangente est clairement inclinée, et l'omettre ou la dessiner plate fait perdre l'essentiel des $0{,}75$ point de cette question. Second piège : faire toucher la courbe à l'axe des abscisses en un point fini — la question 1 a établi une limite, jamais une valeur atteinte.
         steps:
           - math: '(0\,;\,1) \quad (\text{point de départ, } f(0)=1)'
-            note: "Premier ingredient : la valeur en 0, déjà etablie."
+            note: "Premier ingredient : la valeur en 0, déjà établie."
           - math: 'f''_d(0) = -\frac32 \quad (\text{question 2-c, pente de la demi-tangente à droite en 0})'
             note: "Deuxième ingredient : la pente de départ, oblique et raide."
           - math: 'f \text{ strictement décroissante sur } [0,+\infty[ \quad (\text{question 5-a})'
-            note: "Troisième ingredient : un seul sens de variation, sans palier ni remontee."
+            note: "Troisième ingredient : un seul sens de variation, sans palier ni remontée."
           - math: 'f(x) \to 0^{+} \text{ quand } x\to+\infty \quad (\text{question 1, asymptote } y=0)'
             note: "Quatrième ingredient : la courbe s'approche de l'axe des abscisses sans jamais le toucher."
       - id: q8
-        part: "Partie III — 1. Existence et unicite de alpha, solution de f(x) = 3x"
+        part: "Partie III — 1. Existence et unicité de alpha, solution de f(x) = 3x"
         stem: |-
           **1)** (0,5 pt) Montrer que l'équation d'inconnue $x$ : $f(x) = 3x$, admet une unique solution $\alpha$ dans $]0, +\infty[$.
         reasoning: |-
@@ -3143,13 +3143,13 @@ entries:
           **Le piège nommé de cette question.** Invoquer le TVI et s'arrêter là. Le TVI donne l'**existence**, jamais l'unicité — une fonction continue peut valoir $0$ en plusieurs points. C'est la stricte décroissance qui interdit un second passage par $0$. Les deux arguments sont complémentaires, et la rédaction doit les faire apparaître **séparément**, comme ci-dessus.
         steps:
           - math: '\psi(x) = f(x) - 3x \quad \text{sur } [0,+\infty[, \qquad \psi \text{ continue (f continue + } 3x \text{ continue)}'
-            note: "Fonction auxiliaire. Hypothèse 1 vérifiée : continuite."
+            note: "Fonction auxiliaire. Hypothèse 1 vérifiée : continuité."
           - math: '\psi''(x) = f''(x) - 3 < 0 - 3 = -3 < 0 \quad (x>0) \ \Longrightarrow\ \psi \text{ strictement décroissante sur } [0,+\infty['
             note: "Hypothèse 2 vérifiée : stricte monotonie, via le signe de f' établi a la question 4-b."
           - math: '\psi(0) = 1 > 0, \qquad \lim_{x\to+\infty}\psi(x) = 0-\infty = -\infty'
             note: "Valeurs aux bornes : borne finie moins la droite qui explose, pas d'indetermination."
           - math: '\psi \text{ bijection de } [0,+\infty[ \text{ sur } \,]-\infty,1] \ni 0 \ \Longrightarrow\ \exists!\, \alpha \in\,]0,+\infty[,\ \psi(\alpha)=0'
-            note: "Corollaire du TVI (continuite + stricte monotonie), hors socle de cette leçon. Alpha différent de 0 car psi(0) = 1."
+            note: "Corollaire du TVI (continuité + stricte monotonie), hors socle de cette leçon. Alpha différent de 0 car psi(0) = 1."
       - id: q9a
         part: "Partie III — 2. La suite (u_n), point fixe itere de F = f sur 3"
         stem: |-
@@ -3182,7 +3182,7 @@ entries:
           - math: '\text{Hérédité\,: } u_n \ge 0 \ \Longrightarrow\ f(u_n) > 0 \ \Longrightarrow\ u_{n+1} = \frac13 f(u_n) > 0 \ge 0'
             note: "u_n dans le domaine de f (positif), donc f(u_n) strictement positif par le fait préalable."
           - math: '\boxed{\forall n \in \mathbb{N}\ ;\ u_n \ge 0} \quad (\text{recurrence, initialisation + hérédité})'
-            note: "Principe de recurrence : les deux étapes etablies séparément suffisent pour tout rang n."
+            note: "Principe de récurrence : les deux étapes etablies séparément suffisent pour tout rang n."
       - id: q9b
         stem: |-
           **2- b)** (0,5 pt) Montrer que : $\forall n \in \mathbb{N}\ ;\ |u_{n+1} - \alpha| \le \dfrac{1}{2}|u_n - \alpha|$
@@ -3216,9 +3216,9 @@ entries:
           - math: 'F(x) = \frac13 f(x), \qquad F(\alpha) = \frac13 f(\alpha) = \frac13(3\alpha) = \alpha \quad (\text{question 1\,: } f(\alpha)=3\alpha)'
             note: "Alpha est le point fixe de F : c'est ce qui relie la question 1 a celle-ci."
           - math: '\exists\, c \text{ entre } u_n \text{ et } \alpha \ (c>0), \quad F(u_n)-F(\alpha) = F''(c)(u_n-\alpha) \quad (\text{TAF, F continue sur le ferme, dérivable sur l ouvert})'
-            note: "Théorème des accroissements finis, hors socle de cette leçon (domaine derivabilite), énoncé et applique ici."
+            note: "Théorème des accroissements finis, hors socle de cette leçon (domaine dérivabilité), énoncé et applique ici."
           - math: '-\frac32 < f''(c) < 0 \ (\text{question 4-b, car } c>0) \ \Longrightarrow\ |F''(c)| = \frac13|f''(c)| < \frac12'
-            note: "Borne sur f' reutilisee de la question 4-b, divisee par 3."
+            note: "Borne sur f' reutilisee de la question 4-b, divisée par 3."
           - math: '|u_{n+1}-\alpha| = |F(u_n)-F(\alpha)| = |F''(c)|\,|u_n-\alpha| < \frac12|u_n-\alpha| \le \boxed{\frac12|u_n-\alpha|}'
             note: "Valeur absolue de l'égalité du TAF, puis la borne sur F' de c."
       - id: q9c
@@ -3256,9 +3256,9 @@ entries:
           - math: '\text{HR\,: } |u_n-\alpha| \le \frac{1}{2^n}|\beta-\alpha| \quad \text{(hypothèse, rang } n\text{)}'
             note: "Ce qu'on suppose connu, a un rang n fixe quelconque."
           - math: '|u_{n+1}-\alpha| \le \frac12|u_n-\alpha| \ (\text{question 2-b}) \ \le\ \frac12\cdot\frac{1}{2^n}|\beta-\alpha| \ (\text{HR}) \ =\ \frac{1}{2^{n+1}}|\beta-\alpha|'
-            note: "Hérédité : question 2-b d'abord, puis HR appliquee au terme qui en resulte."
+            note: "Hérédité : question 2-b d'abord, puis HR appliquee au terme qui en résulte."
           - math: '\boxed{\forall n \in \mathbb{N}\ ;\ |u_n-\alpha| \le \frac{1}{2^n}|\beta-\alpha|} \quad (\text{recurrence complete})'
-            note: "Initialisation (avec égalité) et hérédité etablies séparément : la recurrence est complete."
+            note: "Initialisation (avec égalité) et hérédité etablies séparément : la récurrence est complete."
       - id: q9d
         stem: |-
           **2- d)** (0,25 pt) En déduire que la suite $(u_n)_{n \in \mathbb{N}}$ converge vers $\alpha$.
@@ -3286,7 +3286,7 @@ entries:
           **Le piège nommé de cette question.** Conclure « la suite est décroissante et minorée, donc elle converge » : rien dans ce problème n'établit que $(u_n)$ est monotone — elle pourrait très bien osciller autour de $\alpha$ en s'en rapprochant. C'est l'encadrement de $|u_n-\alpha|$ par le théorème des gendarmes, et lui seul, qui donne à la fois la convergence et l'identité de la limite en une seule étape.
         steps:
           - math: '0 \le |u_n-\alpha| \le \frac{1}{2^n}|\beta-\alpha| \quad (\text{question 2-c, valeur absolue toujours} \ge 0)'
-            note: "Encadrement de départ : la valeur absolue est bornee des deux cotes."
+            note: "Encadrement de départ : la valeur absolue est bornée des deux cotes."
           - math: '\lim_{n\to+\infty} \frac{1}{2^n} = 0 \ (|q|<1) \ \Longrightarrow\ \lim_{n\to+\infty} \frac{1}{2^n}|\beta-\alpha| = 0'
             note: "Suite géométrique de raison 1/2 : limite de référence du chapitre Suites numériques."
           - math: '\lim_{n\to+\infty} |u_n-\alpha| = 0 \quad (\text{théorème des gendarmes})'
@@ -3385,7 +3385,7 @@ entries:
       *Aucune figure n'est imprimée : la question 6-b demande au candidat de construire la courbe lui-même. La carte des domaines : cette leçon (« Fonction logarithme ») porte l'ossature — le taux d'accroissement de $\ln$ en $1$ (chapitre 4), la limite de référence $\ln x/x\to0$ (chapitre 5) — mais les questions 1, 2 et 3-c empruntent aux limites et à la continuité, la question 3-b au théorème des accroissements finis (dérivabilité et étude de fonctions, spécifique SM, énoncé et appliqué au point d'usage, jamais supposé acquis), les questions 4, 5-c/5-d, 6 et 7 à la dérivabilité et à l'étude de fonctions, la question 5 dans son entier au calcul intégral, et la question 8 aux suites numériques — avec, pour la question 8-a, un second usage du même théorème des accroissements finis qu'à la question 3-b.*
     questions:
       - id: q1
-        part: "1. Continuite à droite en 1"
+        part: "1. Continuité à droite en 1"
         stem: |-
           **(0,5 pt)** Montrer que $f$ est continue à droite en $1$.
         reasoning: |-
@@ -3546,9 +3546,9 @@ entries:
           - math: '\lim_{t\to0^+} \dfrac{-\sqrt{t}+\ln(1+\sqrt{t})}{t} = -\dfrac12 \quad (\text{gendarmes})'
             note: "Théorème des gendarmes : le milieu converge vers la même valeur que les deux bornes."
           - math: '\boxed{\lim_{x\to1^+} \dfrac{1-x+\ln x}{(x-1)^2} = -\dfrac12} \quad (\text{via l''identité de la question 3-a})'
-            note: "Retour a x, par l'identité etablie a la question 3-a."
+            note: "Retour a x, par l'identité établie a la question 3-a."
       - id: q4a
-        part: "4. Derivabilite à droite en 1"
+        part: "4. Dérivabilité à droite en 1"
         stem: |-
           **4- a)** (0,5 pt) Montrer que : $\forall x \in\, ]1, +\infty[\ ,\quad \dfrac{f(x) - \dfrac{1}{2}}{x - 1} = -\dfrac{\ln(x)}{x-1} \times \dfrac{1}{2(x+1)} + \dfrac{\ln(x) - x + 1}{2(x-1)^2}$
         reasoning: |-
@@ -3589,7 +3589,7 @@ entries:
           - math: '-\ln x\,(x-1) + (\ln x-x+1)(x+1) = (-x\ln x+\ln x) + (x\ln x+\ln x-x^2+1) = 2\ln x - x^2+1'
             note: "Développement du numérateur : le terme en x ln x se télescope."
           - math: '\dfrac{f(x)-\frac12}{x-1} = \dfrac{2\ln x-(x^2-1)}{2(x-1)(x+1)(x-1)} = \dfrac{2\ln x-x^2+1}{2(x-1)^2(x+1)}'
-            note: "Membre de gauche reduit au même dénominateur : les deux membres coïncident."
+            note: "Membre de gauche réduit au même dénominateur : les deux membres coïncident."
       - id: q4b
         stem: |-
           **4- b)** (0,5 pt) En déduire que $f$ est dérivable à droite en $1$ puis interpréter graphiquement le résultat obtenu.
@@ -3617,7 +3617,7 @@ entries:
           - math: '\lim_{x\to1^+} \dfrac{f(x)-\frac12}{x-1} = -\dfrac14-\dfrac14 = -\dfrac12 \implies f''_d(1) = -\dfrac12'
             note: "Somme des deux limites : f dérivable à droite en 1."
           - math: '(C) \text{ admet en } A\!\left(1,\dfrac12\right) \text{ une demi-tangente à droite de coefficient directeur } -\dfrac12'
-            note: "Interpretation graphique de la dérivée à droite."
+            note: "Interprétation graphique de la dérivée à droite."
       - id: q5a
         part: "5. Deux intégrales pour retrouver le signe de f'"
         stem: |-
@@ -3682,7 +3682,7 @@ entries:
           **Le piège nommé de cette question.** Se tromper de signe dans la primitive de $t^{-3}$ : $\displaystyle\int t^{-3}\,dt = \dfrac{t^{-2}}{-2}=-\dfrac{1}{2t^2}$, et non $+\dfrac{1}{2t^2}$ — un oubli fréquent sur les puissances négatives.
         steps:
           - math: '\dfrac{t^2-1}{t^3} = \dfrac1t - \dfrac{1}{t^3} \implies I(x) = \left[\ln t + \dfrac{1}{2t^2}\right]_1^x = \ln x + \dfrac{1}{2x^2} - \dfrac12'
-            note: "Decomposition, primitives ln(t) et -1/(2t au carré), evaluees entre 1 et x."
+            note: "Décomposition, primitives ln(t) et -1/(2t au carré), evaluees entre 1 et x."
           - math: 'I(x) = \ln x + \dfrac{1-x^2}{2x^2} = \boxed{\ln x - \dfrac{x^2-1}{2x^2}}'
             note: "Mise au même dénominateur du terme constant."
           - math: '\dfrac{t^2-1}{t^2} = 1-\dfrac{1}{t^2} \implies J(x) = \left[t+\dfrac1t\right]_1^x = x+\dfrac1x-2 = \boxed{\dfrac{(x-1)^2}{x}}'
@@ -3823,13 +3823,13 @@ entries:
           **Le piège nommé de cette question.** Invoquer seulement le changement de signe entre $h(1)$ et $h(2)$ (un simple TVI) sans mentionner la stricte monotonie — cela donnerait l'existence, jamais l'unicité, et la question demande explicitement les deux.
         steps:
           - math: 'h(x) = f(x)-x+1 \quad \text{sur } [1,+\infty[, \qquad h \text{ continue (f continue + x-1 continue)}'
-            note: "Fonction auxiliaire. Continuite obtenue de f (question 1) et de la fonction affine."
+            note: "Fonction auxiliaire. Continuité obtenue de f (question 1) et de la fonction affine."
           - math: 'h''(x) = f''(x)-1 \le 0-1 = -1 < 0 \ (x>1, \text{question 5-d}) \implies h \text{ strictement décroissante sur } [1,+\infty['
             note: "Stricte monotonie, via le signe de f' établi a la question 5-d."
           - math: 'h(1) = \dfrac12 > 0, \qquad h(2) = \dfrac{\ln 2}{3}-1 \approx -0{,}769 < 0'
             note: "Valeurs aux bornes de [1,2], de signes opposés."
           - math: 'h \text{ bijection de } [1,2] \text{ sur } [h(2),h(1)] \ni 0 \implies \exists!\, a\in\,]1,2[,\ h(a)=0'
-            note: "Corollaire du TVI (continuite + stricte monotonie), hors socle de cette leçon."
+            note: "Corollaire du TVI (continuité + stricte monotonie), hors socle de cette leçon."
       - id: q8a
         part: "8. La suite (a_n), point fixe de x -> 1+f(x)"
         stem: |-
@@ -3900,9 +3900,9 @@ entries:
           - math: '\text{HR\,: } |a_n-a| \le \left(\dfrac12\right)^n|a_0-a| \quad \text{(hypothèse, rang } n\text{)}'
             note: "Ce qu'on suppose connu, a un rang n fixe quelconque."
           - math: '|a_{n+1}-a| \le \dfrac12|a_n-a| \ (\text{question 8-a}) \ \le\ \dfrac12\times\left(\dfrac12\right)^n|a_0-a| \ (\text{HR}) \ = \left(\dfrac12\right)^{n+1}|a_0-a|'
-            note: "Hérédité : question 8-a d'abord, puis HR appliquee au terme qui en resulte."
+            note: "Hérédité : question 8-a d'abord, puis HR appliquee au terme qui en résulte."
           - math: '\boxed{\forall n\in\mathbb{N}\ ,\ |a_n-a| \le \left(\dfrac12\right)^n|a_0-a|} \quad (\text{recurrence complete})'
-            note: "Initialisation et hérédité etablies séparément : la recurrence est complete."
+            note: "Initialisation et hérédité etablies séparément : la récurrence est complete."
       - id: q8c
         stem: |-
           **8- c)** (0,25 pt) En déduire que la suite $(a_n)_{n \in \mathbb{N}}$ est convergente.
@@ -3926,7 +3926,7 @@ entries:
           **Le piège nommé de cette question.** Conclure « la suite est décroissante et minorée, donc convergente » : rien n'établit que $(a_n)$ est monotone — elle pourrait très bien osciller autour de $a$ en s'en rapprochant. Seul l'encadrement de $|a_n-a|$ par le théorème des gendarmes donne, en une seule étape, à la fois la convergence et l'identité de sa limite.
         steps:
           - math: '0 \le |a_n-a| \le \left(\dfrac12\right)^n|a_0-a| \quad (\text{question 8-b, valeur absolue toujours} \ge 0)'
-            note: "Encadrement de départ : la valeur absolue est bornee des deux cotes."
+            note: "Encadrement de départ : la valeur absolue est bornée des deux cotes."
           - math: '\lim_{n\to+\infty} \left(\dfrac12\right)^n = 0 \ (|q|<1) \implies \lim_{n\to+\infty} \left(\dfrac12\right)^n|a_0-a| = 0'
             note: "Suite géométrique de raison 1/2 : limite de référence du chapitre suites numériques."
           - math: '\lim_{n\to+\infty} |a_n-a| = 0 \quad (\text{théorème des gendarmes})'
@@ -4038,7 +4038,7 @@ entries:
       *Aucune figure n'accompagne ce sujet : la question B-3-b demande au candidat de construire la courbe lui-même, avec $\|\vec i\|=\|\vec j\|=2\,\text{cm}$. La carte des domaines, pour savoir quoi réviser avant : cette leçon (« Fonction logarithme ») porte l'ossature — l'encadrement de $\ln(1+x)$ (Partie A) et la construction de $f$ à partir de lui (Partie B) — mais la Partie B-1 emprunte aux limites et à la continuité, la Partie B-1b à B-3 (et la notion même de sens de variation, tangente, tableau) à la dérivabilité et à l'étude de fonctions — y compris l'existence-unicité du point fixe $\alpha$ en Partie C-1, par le théorème des valeurs intermédiaires —, la Partie C-2 et la Partie E tout entière aux suites numériques, et la Partie D tout entière — plus la Partie E, qui réutilise l'intégrale de $f$ comme une moyenne — au calcul intégral. Le fil qui traverse tout le problème : chaque limite délicate se résout en encadrant d'abord, jamais en devinant — exactement la méthode ouverte par la Partie A.*
     questions:
       - id: q1
-        part: "Partie A — 1. Un encadrement algebrique, brique de départ"
+        part: "Partie A — 1. Un encadrement algébrique, brique de départ"
         stem: |-
           **1)** (0,25 pt) Vérifier que : $\left(\forall x \in \mathbb{R}^{+}\right)\ ;\quad 0 \le 1 - x + x^2 - \dfrac{1}{x+1} \le x^3$
         reasoning: |-
@@ -4096,7 +4096,7 @@ entries:
           - math: '\forall x \ge 0\ ;\quad 0 \le x-\dfrac{x^2}{2}+\dfrac{x^3}{3}-\ln(1+x) \le \dfrac{x^4}{4}'
             note: "Intégration de l'encadrement de la question 1 entre 0 et x."
       - id: q3a
-        part: "Partie B — 1. Continuite et derivabilite à droite en 0, limite en +infini"
+        part: "Partie B — 1. Continuité et dérivabilité à droite en 0, limite en +infini"
         stem: |-
           **1- a)** (0,5 pt) Montrer que $f$ est continue à droite en $0$.
         reasoning: |-
@@ -4276,7 +4276,7 @@ entries:
           **Le piège nommé de cette question.** Oublier de calculer $g(0)$ avant d'intégrer : sans $g(0)=0$, l'intégrale de $g'$ donne $g(x)-g(0)$, pas $g(x)$ tout seul — un détail qui change la conclusion si $g(0)$ n'est pas nul, ce qui est heureusement le cas ici mais doit être vérifié, pas supposé.
         steps:
           - math: 'g(0) = 0+\dfrac{0}{1}-2\ln(1) = 0'
-            note: "Valeur de g en 0, nécessaire avant d'integrer."
+            note: "Valeur de g en 0, nécessaire avant d'intégrer."
           - math: '\int_0^x g''(t)\,dt = g(x)-g(0) = g(x), \qquad \int_0^x t^2\,dt = \dfrac{x^3}{3}'
             note: "Intégration de chaque membre de l'encadrement de la question 2-b, entre 0 et x."
           - math: '\forall x \in I\ ;\quad 0 \le g(x) \le \dfrac{x^3}{3}'
@@ -4303,8 +4303,8 @@ entries:
             note: "g strictement croissante à partir de 0 : elle est strictement positive au-dela."
           - math: 'x>0 \implies f''(x) = -\dfrac{g(x)}{x^3} < 0 \quad (g(x)>0, \ x^3>0)'
             note: "Report du signe de g dans l'expression de f' de la question 2-a."
-          - math: 'f \text{ strictement décroissante sur } ]0,+\infty[, \text{ donc sur } I \text{ (continuite à droite en 0, question 1-a)}'
-            note: "Extension a I tout entier grâce a la continuite déjà etablie."
+          - math: 'f \text{ strictement décroissante sur } ]0,+\infty[, \text{ donc sur } I \text{ (continuité à droite en 0, question 1-a)}'
+            note: "Extension a I tout entier grâce a la continuité déjà établie."
       - id: q5a
         part: "Partie B — 3. Tableau de variations et courbe (C)"
         stem: |-
@@ -4326,7 +4326,7 @@ entries:
           **Le piège nommé de cette question.** Chercher un extremum local ou un changement de sens : la question 2-d a établi $f'(x)<0$ strictement partout sur $]0,+\infty[$, sans exception — un seul sens de variation, pas de palier.
         steps:
           - math: 'f \text{ continue sur } I, \quad f''(x)<0 \ \forall x>0 \ (\text{question 2-d})'
-            note: "Continuite (questions 1-a et 2-a) plus signe strict de la dérivée (question 2-d)."
+            note: "Continuité (questions 1-a et 2-a) plus signe strict de la dérivée (question 2-d)."
           - math: 'f(0) = \dfrac12 \ (\text{donne}), \qquad \lim_{x\to+\infty} f(x) = 0 \ (\text{question 1-c})'
             note: "Les deux valeurs aux bornes du tableau."
           - math: 'f \text{ strictement décroissante sur } I, \text{ de } \dfrac12 \text{ (atteint) a } 0 \text{ (limite, jamais atteinte)}'
@@ -4351,13 +4351,13 @@ entries:
           - math: '\left(0\,;\,\dfrac12\right) \quad (\text{point de départ, } f(0)=\tfrac12)'
             note: "Premier ingredient : la valeur en 0."
           - math: 'f''_d(0) = -\dfrac13 \quad (\text{question 1-b, pente de la demi-tangente à droite en 0})'
-            note: "Deuxième ingredient : la pente de départ, oblique et moderee."
+            note: "Deuxième ingredient : la pente de départ, oblique et modérée."
           - math: 'f \text{ strictement décroissante sur } I \quad (\text{question 3-a})'
             note: "Troisième ingredient : un seul sens de variation."
           - math: 'f(x) \to 0^{+} \text{ quand } x\to+\infty \quad (\text{question 1-c, asymptote } y=0)'
             note: "Quatrième ingredient : la courbe s'approche de l'axe des abscisses sans le toucher."
       - id: q6
-        part: "Partie C — 1. Existence et unicite d'un point fixe alpha"
+        part: "Partie C — 1. Existence et unicité d'un point fixe alpha"
         stem: |-
           **1)** (0,5 pt) Montrer qu'il existe un unique réel $\alpha \in\, ]0\,;1[$ tel que $f(\alpha) = \alpha$.
         reasoning: |-
@@ -4380,13 +4380,13 @@ entries:
           **Le piège nommé de cette question.** N'invoquer que le TVI (donne l'existence, pas l'unicité) ou que la monotonie (donne l'unicité seulement si l'existence est déjà acquise) : les deux arguments sont nécessaires et doivent apparaître explicitement, chacun avec ses propres hypothèses vérifiées.
         steps:
           - math: 'h(x) = f(x)-x, \qquad h \text{ continue sur } [0,1] \quad (\text{f continue, Partie B})'
-            note: "Fonction auxiliaire et continuite, première hypothèse du TVI."
+            note: "Fonction auxiliaire et continuité, première hypothèse du TVI."
           - math: 'h(0) = \dfrac12 > 0, \qquad h(1) = (1-\ln2)-1 = -\ln2 < 0'
             note: "Changement de signe entre les deux bornes."
           - math: '\exists\, \alpha\in\,]0,1[\ ;\quad h(\alpha)=0 \quad (\text{TVI})'
-            note: "Existence par le théorème des valeurs intermediaires."
+            note: "Existence par le théorème des valeurs intermédiaires."
           - math: 'h \text{ strictement décroissante sur } [0,1] \implies \alpha \text{ unique}'
-            note: "Unicite par stricte monotonie (f décroissante, Partie B question 2-d)."
+            note: "Unicité par stricte monotonie (f décroissante, Partie B question 2-d)."
       - id: q7a
         part: "Partie C — 2. La suite u0=1/3, u(n+1)=f(un), convergence vers alpha"
         stem: |-
@@ -4413,7 +4413,7 @@ entries:
           - math: 'u_0 = \dfrac13 \in [0,1] \quad (\text{initialisation})'
             note: "Premier terme de la suite, dans l'intervalle."
           - math: 'u_n \in [0,1] \implies u_{n+1} = f(u_n) \in [0,1] \quad (\text{hérédité, par stabilité})'
-            note: "Recurrence : l'image par f reste dans l'intervalle stable."
+            note: "Récurrence : l'image par f reste dans l'intervalle stable."
       - id: q7b
         stem: |-
           **2- b)** (0,5 pt) Montrer que : $\left(\forall n \in \mathbb{N}\right)\ ;\quad |u_{n+1} - \alpha| \le \dfrac{1}{3}|u_n - \alpha|$
@@ -4439,7 +4439,7 @@ entries:
           **Le piège nommé de cette question.** Oublier de vérifier que $c$ appartient bien à $[0,1]$ (pas seulement « quelque part ») avant d'appliquer la borne $\dfrac13$ trouvée sur cet intervalle précis — la borne sur $|f'|$ n'a été établie que sur $[0,1]$, pas sur $I$ tout entier.
         steps:
           - math: 'x\in\,]0,1]\ ;\quad |f''(x)| = \dfrac{g(x)}{x^3} \le \dfrac{x^3/3}{x^3} = \dfrac13 \quad (\text{Partie B, question 2-c}), \qquad |f''_d(0)| = \dfrac13'
-            note: "Borne sur f prime en valeur absolue, tiree de l'encadrement de g établi en Partie B."
+            note: "Borne sur f prime en valeur absolue, tirée de l'encadrement de g établi en Partie B."
           - math: '\exists\, c \text{ entre } u_n \text{ et } \alpha, \text{ tous deux dans } [0,1]\ ;\quad f(u_n)-f(\alpha) = f''(c)(u_n-\alpha) \quad (\text{TAF})'
             note: "Théorème des accroissements finis entre u_n et alpha."
           - math: '|u_{n+1}-\alpha| = |f''(c)|\cdot|u_n-\alpha| \le \dfrac13|u_n-\alpha|'
@@ -4469,7 +4469,7 @@ entries:
           - math: '\left(\dfrac13\right)^0 = 1, \quad u_0=\dfrac13 \in [0,1], \ \alpha\in\,]0,1[ \implies |u_0-\alpha|\le 1 \quad (\text{initialisation})'
             note: "Les deux termes sont dans [0,1], leur écart est au plus 1."
           - math: '|u_n-\alpha|\le\left(\dfrac13\right)^n \implies |u_{n+1}-\alpha| \le \dfrac13|u_n-\alpha| \le \dfrac13\left(\dfrac13\right)^n = \left(\dfrac13\right)^{n+1}'
-            note: "Hérédité : on reporte l'hypothèse de recurrence dans l'inégalité de la question 2-b."
+            note: "Hérédité : on reporte l'hypothèse de récurrence dans l'inégalité de la question 2-b."
           - math: '\forall n\in\mathbb{N}\ ;\quad |u_n-\alpha| \le \left(\dfrac13\right)^{n}'
             note: "Conclusion par recurrence."
       - id: q7d
@@ -4526,7 +4526,7 @@ entries:
           - math: 'F(x) = \int_x^1 f(t)\,dt = -\int_1^x f(t)\,dt'
             note: "Echange des bornes pour se ramener a la forme usuelle du théorème fondamental."
           - math: 'f \text{ continue sur } I \ (\text{Partie B}) \implies x\mapsto\int_1^x f(t)\,dt \text{ dérivable sur } I, \text{ de dérivée } f(x)'
-            note: "Théorème fondamental du calcul integral."
+            note: "Théorème fondamental du calcul intégral."
           - math: '\boxed{F''(x) = -f(x) \quad \forall x \in I}'
             note: "Report du signe issu de l'echange des bornes."
       - id: q9a
@@ -4575,7 +4575,7 @@ entries:
           - math: 'u=\ln(1+t), \ v''=\dfrac1{t^2} \implies u''=\dfrac{1}{1+t}, \ v=-\dfrac1t, \qquad \int_x^1 \dfrac{\ln(1+t)}{t^2}dt = \left[-\dfrac{\ln(1+t)}{t}\right]_x^1+\int_x^1\dfrac{dt}{t(1+t)}'
             note: "Intégration par parties du second morceau."
           - math: '\dfrac{1}{t(1+t)} = \dfrac1t-\dfrac{1}{1+t} \implies \int_x^1\dfrac{dt}{t(1+t)} = -\ln2-\ln x+\ln(1+x)'
-            note: "Decomposition en éléments simples, puis intégration directe."
+            note: "Décomposition en éléments simples, puis intégration directe."
           - math: '\boxed{F(x) = 2\ln2-\left(1+\dfrac1x\right)\ln(1+x)}'
             note: "Rassemblement des deux morceaux et factorisation de ln(1+x)."
       - id: q9b
@@ -4607,11 +4607,11 @@ entries:
           - math: '\left(1+\dfrac1x\right)\ln(1+x) = \ln(1+x)+\dfrac{\ln(1+x)}{x}'
             note: "Développement du produit avant de passer a la limite."
           - math: '\lim_{x\to0^+}\ln(1+x) = 0, \qquad \lim_{x\to0^+}\dfrac{\ln(1+x)}{x} = 1 \quad (\text{dérivée de ln en 1})'
-            note: "Deux limites de référence : l'une par continuite de ln, l'autre par derivabilite de ln en 1."
+            note: "Deux limites de référence : l'une par continuité de ln, l'autre par dérivabilité de ln en 1."
           - math: '\lim_{x\to0^+} F(x) = 2\ln2-1'
             note: "Report des deux limites dans l'expression de F trouvée en 2-a."
           - math: 'F \text{ continue en } 0 \ (\text{question 1}) \implies F(0) = \lim_{x\to0^+}F(x), \quad F(0)=\int_0^1 f(t)\,dt \implies \boxed{\int_0^1 f(t)\,dt = 2\ln2-1}'
-            note: "Continuite de F en 0, puis identification de F(0) a l'intégrale demandee."
+            note: "Continuité de F en 0, puis identification de F(0) a l'intégrale demandee."
       - id: q9c
         stem: |-
           **2- c)** (0,5 pt) Calculer, en $cm^2$, l'aire du domaine plan limité par la courbe $(C)$, l'axe des abscisses, l'axe des ordonnées et la droite d'équation $x = 1$.
@@ -4704,7 +4704,7 @@ entries:
           - math: 'S_n = \sum_{k=0}^{n-1} \Delta_k \ge 0 \quad (\text{somme de termes positifs ou nuls, question 1-a})'
             note: "Borne inférieure : chaque terme de la somme est positif ou nul."
           - math: 'S_n \le \sum_{k=0}^{n-1}\bigl(f(k)-f(k+1)\bigr) = f(0)-f(n) \quad (\text{telescopage})'
-            note: "Somme de l'encadrement, les termes intermediaires s'annulent deux a deux."
+            note: "Somme de l'encadrement, les termes intermédiaires s'annulent deux a deux."
           - math: 'f(n) \ge 0 \implies f(0)-f(n) \le f(0) = \dfrac12 \implies \boxed{0 \le S_n \le \dfrac12}'
             note: "f reste positive, donc l'écart télescope est majore par f(0)."
       - id: q11a
@@ -4753,9 +4753,9 @@ entries:
           - math: '(S_n) \text{ croissante} \quad (\text{question 2-a})'
             note: "Première hypothèse du théorème de la limite monotone."
           - math: '\forall n\ ;\quad S_n \le \dfrac12 \quad (\text{question 1-b})'
-            note: "Deuxième hypothèse : suite majoree."
+            note: "Deuxième hypothèse : suite majorée."
           - math: '\boxed{(S_n)_{n\in\mathbb{N}^{*}} \text{ converge, vers une limite } \ell \le \dfrac12} \quad (\text{limite monotone})'
-            note: "Croissante et majoree : convergence garantie par le théorème de la limite monotone."
+            note: "Croissante et majorée : convergence garantie par le théorème de la limite monotone."
       - id: q11c
         stem: |-
           **2- c)** (0,25 pt) Montrer que la limite $\ell$ de la suite $(S_n)_{n \in \mathbb{N}^{*}}$ vérifie : $\dfrac{3}{2} - 2\ln 2 \le \ell \le \dfrac{1}{2}$
@@ -4781,7 +4781,7 @@ entries:
           - math: 'S_n \le \dfrac12 \ \forall n \implies \ell \le \dfrac12 \quad (\text{passage a la limite, question 1-b})'
             note: "Borne supérieure, par passage a la limite dans l'encadrement déjà établi."
           - math: '(S_n) \text{ croissante} \implies \ell \ge S_n \ \forall n, \text{ en particulier } \ell \ge S_1 \quad (\text{question 2-a})'
-            note: "Une suite croissante est majoree par sa limite en chaque terme."
+            note: "Une suite croissante est majorée par sa limite en chaque terme."
           - math: 'S_1 = \Delta_0 = f(0)-\int_0^1 f(t)\,dt = \dfrac12-(2\ln2-1) = \dfrac32-2\ln2 \quad (\text{Partie D, question 2-b})'
             note: "Calcul explicite du premier terme, seul terme calculable a ce stade."
           - math: '\boxed{\dfrac32-2\ln2 \le \ell \le \dfrac12}'

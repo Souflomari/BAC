@@ -292,7 +292,7 @@ entries:
           - math: '\frac{dv_G}{dt} = \left(g - \frac{\rho V g}{m}\right) - \frac{k}{m}\,v_G'
             note: "On divise par m et on regroupe les termes constants d'un cote."
           - math: '\boxed{\frac{dv_G}{dt} + \frac{1}{\tau}\,v_G = A} \qquad \text{avec} \qquad \tau = \frac{m}{k} \qquad \text{et} \qquad A = g - \frac{\rho V g}{m}'
-            note: "On identifie terme a terme : le coefficient de v_G donne 1/tau (inchangé par rapport au chapitre 8), le terme constant donne A (qui, lui, contient desormais Archimede)."
+            note: "On identifie terme a terme : le coefficient de v_G donne 1/tau (inchangé par rapport au chapitre 8), le terme constant donne A (qui, lui, contient désormais Archimede)."
       - id: q2
         stem: |-
           **(0,5 pt)** Déterminer graphiquement la valeur de la vitesse limite $v_{Glim}$ et la valeur de $\tau$.
@@ -313,7 +313,7 @@ entries:
           - math: 'A = \frac{v_{Glim}}{\tau} = \frac{0{,}50}{0{,}054}'
             note: "En régime permanent (chapitre 8), v_Glim = A tau ; on isole A avec les deux valeurs lues au graphe."
           - math: '\boxed{A \approx 9{,}26\ \text{m.s}^{-2}}'
-            note: "Coherent avec l'équation numérique donnée a la question suivante : le pont se referme."
+            note: "Cohérent avec l'équation numérique donnée a la question suivante : le pont se referme."
       - id: q4
         part: "Résolution numérique par la méthode d'Euler"
         stem: |-
@@ -328,9 +328,9 @@ entries:
           - math: '\boxed{a_3 \approx 6{,}93\ \text{m.s}^{-2}}'
             note: "Déjà bien en dessous de A = 9,26 : le frottement mord de plus en plus, exactement le mécanisme du chapitre 8."
           - math: 'v_4 = v_3 + a_3\,\Delta t = 0{,}126 + 6{,}93\times 0{,}005'
-            note: "Recurrence d'Euler entre t = 0,015 s et t = 0,020 s, avec le pas Delta t = 0,005 s lu dans le tableau."
+            note: "Récurrence d'Euler entre t = 0,015 s et t = 0,020 s, avec le pas Delta t = 0,005 s lu dans le tableau."
           - math: '\boxed{v_4 \approx 0{,}161\ \text{m.s}^{-1}}'
-            note: "Coherent avec la suite du tableau (v = 0,192 m/s a t = 0,025 s), qui se reconstitue a l'identique par le même geste."
+            note: "Cohérent avec la suite du tableau (v = 0,192 m/s a t = 0,025 s), qui se reconstitue a l'identique par le même geste."
 
   # ── bk-2019-n-x4 — 2019 N, Exercice IV (Partie II) : saut, mouvement de projectile ──
   - id: bk-2019-n-x4
@@ -418,7 +418,7 @@ entries:
           - math: 'CP = x_G(t_P) = 19{,}02\times 1{,}236'
             note: "La portée est la position horizontale a cet instant, comme au chapitre 5."
           - math: '\boxed{CP \approx 23{,}5\ \text{m} < 30\ \text{m}}'
-            note: "La condition CP >= 30 m n'est pas vérifiée : le saut n'est pas reussi."
+            note: "La condition CP >= 30 m n'est pas vérifiée : le saut n'est pas réussi."
       - id: q3b
         stem: |-
           **(0,5 pt)** Déterminer la vitesse minimale $V_{min}$ avec laquelle doit passer G par le point C pour que le saut soit réussi.
@@ -428,11 +428,11 @@ entries:
           - math: 'D(\alpha, V_0) = \frac{V_0^2\sin(2\alpha)}{g}'
             note: "Formule de la portée du chapitre 5, avec alpha = 18 degrés fixe (seule la vitesse au tremplin change ici)."
           - math: '30 = \frac{V_{min}^2\sin(2\times 18^\circ)}{g} \implies V_{min}^2 = \frac{30\,g}{\sin 36^\circ}'
-            note: "On impose CP = 30 m exactement (le seuil de reussite) et on isole V_min."
+            note: "On impose CP = 30 m exactement (le seuil de réussite) et on isole V_min."
           - math: 'V_{min}^2 = \frac{30\times 10}{0{,}588} \approx 510'
             note: "Application numérique avec g = 10 et sin(36 degrés) = 0,588."
           - math: '\boxed{V_{min} \approx 22{,}6\ \text{m.s}^{-1}}'
-            note: "Racine carree ; c'est la vitesse minimale au tremplin pour reussir le saut."
+            note: "Racine carrée ; c'est la vitesse minimale au tremplin pour reussir le saut."
 
   # ── bk-2020-n-x5 — 2020 N, Exercice V : bille dans un liquide visqueux ──
   # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir la note
@@ -528,7 +528,7 @@ entries:
           - math: '\frac{k}{m} = \frac{g}{v_\ell} = \frac{10}{1{,}5} \approx 6{,}67\ \text{s}^{-1}'
             note: "De v_lim = mg/k on tire k/m = g/v_lim, avec v_lim lu sur la figure."
           - math: '\boxed{\frac{dv}{dt} = g - \frac{k}{m}\,v = 10 - 6{,}67\,v}'
-            note: "On substitue g = 10 et k/m = 6,67 : la forme annoncee est bien vérifiée."
+            note: "On substitue g = 10 et k/m = 6,67 : la forme annoncée est bien vérifiée."
       - id: q5a
         part: "Résolution numérique par la méthode d'Euler"
         stem: |-
@@ -547,7 +547,7 @@ entries:
           On avance d'un pas d'Euler depuis $t_2$ (chapitre 9) : $v_3=v_2+a_2\Delta t$. Le tableau fournit directement $v_2=0{,}285\ \text{m.s}^{-1}$ et $a_2=8{,}10\ \text{m.s}^{-2}$ — inutile de recalculer $a_2$. Réflexe d'homogénéité : $a_2\Delta t$ multiplie une accélération par un temps, donc c'est bien une vitesse.
         steps:
           - math: 'v_3 = v_2 + a_2\,\Delta t = 0{,}285 + 8{,}10\times 0{,}015'
-            note: "Recurrence d'Euler entre t2 et t3, avec les valeurs du tableau."
+            note: "Récurrence d'Euler entre t2 et t3, avec les valeurs du tableau."
           - math: '\boxed{v_3 \approx 0{,}41\ \text{m.s}^{-1}}'
             note: "La suite des vitesses continue de croitre vers le palier v_ell = 1,5 m/s."
 
@@ -642,7 +642,7 @@ entries:
           - math: '\frac{dv}{dt}=0 \implies g - \frac{\alpha}{m}V_\ell^2 = 0'
             note: "Régime permanent : on annule l'accélération, comme au chapitre 8."
           - math: '\boxed{V_\ell = \sqrt{\frac{mg}{\alpha}}}'
-            note: "Racine carree car le frottement dépend de v^2 (chapitre 8, cas quadratique) et non de v directement."
+            note: "Racine carrée car le frottement dépend de v^2 (chapitre 8, cas quadratique) et non de v directement."
       - id: q2c
         stem: |-
           **(0,25 pt)** Déterminer graphiquement $V_\ell$.
@@ -659,7 +659,7 @@ entries:
           - math: '\alpha = \frac{mg}{V_\ell^2} = \frac{100\times 10}{5{,}0^2}'
             note: "On inverse V_ell = racine(mg/alpha), avec V_ell lu au graphe."
           - math: '\boxed{\alpha \approx 40\ \text{(unités SI)}}'
-            note: "Ordre de grandeur coherent pour un frottement quadratique dans l'air."
+            note: "Ordre de grandeur cohérent pour un frottement quadratique dans l'air."
       - id: q3
         part: "3) Distance parcourue durant le régime initial de la phase 2"
         stem: |-
@@ -959,7 +959,7 @@ entries:
           - math: 'm\frac{dv}{dt} = mg - k\,v - \rho_r V g'
             note: "Projection sur (O,k) oriente vers le bas : poids +mg, frottement -kv, Archimede -rho_r V g (elle pointe vers le haut)."
           - math: 'm = \rho_a V \implies V = \frac{m}{\rho_a}'
-            note: "La bille est homogène : sa propre masse volumique rho_a relie sa masse et son volume -- pas une relation du chapitre 8, mais une définition de base (masse volumique) mobilisée ici pour eliminer V."
+            note: "La bille est homogène : sa propre masse volumique rho_a relie sa masse et son volume -- pas une relation du chapitre 8, mais une définition de base (masse volumique) mobilisée ici pour éliminer V."
           - math: 'm\frac{dv}{dt} = mg\left(1-\frac{\rho_r}{\rho_a}\right) - k\,v'
             note: "On substitue V = m/rho_a dans le terme d'Archimede, puis on regroupe les deux termes constants (poids et Archimede) ensemble."
           - math: '\boxed{\frac{dv}{dt} + \frac{1}{\tau}v = g\left(1-\frac{\rho_r}{\rho_a}\right)} \qquad \text{avec} \qquad \tau = \frac{m}{k}'
@@ -993,7 +993,7 @@ entries:
           L'équation de la question 2 donne, en régime permanent ($dv/dt=0$), $V_\ell/\tau = g\left(1-\rho_r/\rho_a\right)$ — exactement le même geste qu'au chapitre 8 (annuler l'accélération dans l'équation différentielle), mais appliqué ici à une équation qui contient $\rho_r/\rho_a$ au lieu de $v$ seul. On isole $\rho_r$ algébriquement, puis on convertit $\rho_a$ en unités SI ($7{,}8\ \text{g.cm}^{-3} = 7{,}8\times 10^3\ \text{kg.m}^{-3}$) avant l'application numérique.
         steps:
           - math: '\frac{V_\ell}{\tau} = g\left(1-\frac{\rho_r}{\rho_a}\right) \implies \rho_r = \rho_a\left(1-\frac{V_\ell}{g\,\tau}\right)'
-            note: "Régime permanent (question 2, accélération nulle) resolu pour rho_r."
+            note: "Régime permanent (question 2, accélération nulle) résolu pour rho_r."
           - math: '\rho_r = 7{,}8\times 10^3\times\left(1-\frac{0{,}880}{10\times 0{,}100}\right)'
             note: "Application numérique, avec rho_a converti en kg/m3 (7,8 g/cm3 = 7,8e3 kg/m3)."
           - math: '\boxed{\rho_r \approx 936\ \text{kg.m}^{-3}}'
@@ -1072,7 +1072,7 @@ entries:
           - math: 'v^2 = \frac{G\,M_T}{R_T+h_1}'
             note: "La masse m_s du satellite se simplifie des deux cotes -- même mécanisme qu'au chapitre 10."
           - math: '\boxed{v = \sqrt{\frac{G\,M_T}{R_T+h_1}}}'
-            note: "On prend la racine carree : c'est l'expression demandee."
+            note: "On prend la racine carrée : c'est l'expression demandee."
       - id: q1c
         stem: |-
           **(0,5 pt)** Vérifier que la période de révolution du mouvement de $S$ autour de la Terre est : $T_1 \approx 1{,}75\ \text{h}$.
@@ -1082,11 +1082,11 @@ entries:
           - math: 'r = R_T + h_1 = 6380 + 1000 = 7380\ \text{km} = 7{,}38\times 10^6\ \text{m}'
             note: "Distance Terre-satellite en unités SI."
           - math: 'v = \sqrt{\frac{G\,M_T}{r}} = \sqrt{\frac{6{,}67\times 10^{-11}\times 5{,}97\times 10^{24}}{7{,}38\times 10^6}} \approx 7{,}35\times 10^3\ \text{m.s}^{-1}'
-            note: "Application numérique de la formule etablie en 1.2."
+            note: "Application numérique de la formule établie en 1.2."
           - math: 'T_1 = \frac{2\pi r}{v} \approx \frac{2\pi\times 7{,}38\times 10^6}{7{,}35\times 10^3} \approx 6{,}31\times 10^3\ \text{s}'
             note: "Périmètre du cercle divise par la vitesse (chapitre 11) : c'est la période."
           - math: '\boxed{T_1 \approx 1{,}754\ \text{h} \approx 1{,}75\ \text{h}}'
-            note: "Conversion en heures (3600 s = 1 h) : la valeur annoncee par l'énoncé est vérifiée."
+            note: "Conversion en heures (3600 s = 1 h) : la valeur annoncée par l'énoncé est vérifiée."
       - id: q2
         part: "2) Autre orbite circulaire, T_2 = 24 h"
         stem: |-
@@ -1203,7 +1203,7 @@ entries:
           - math: 'm\vec a = \vec P + \vec f'
             note: "Deuxième loi de Newton (chapitre 8) : poids et frottement linéaire, comme au chapitre 8."
           - math: 'm\frac{dv_z}{dt} = -mg - \lambda\,v_z'
-            note: "Projection sur l'axe Z, oriente vers le HAUT (figure 1) -- pas vers le bas comme l'exemple du chapitre 8 : le poids se projette donc negativement."
+            note: "Projection sur l'axe Z, oriente vers le HAUT (figure 1) -- pas vers le bas comme l'exemple du chapitre 8 : le poids se projette donc négativement."
           - math: '\frac{dv_z}{dt} = -g - \frac{\lambda}{m}\,v_z'
             note: "On divise par la masse m."
           - math: '\boxed{\frac{dv_z}{dt} + \frac{1}{\tau}v_z + g = 0} \qquad \text{avec} \qquad \tau=\frac{m}{\lambda}'
@@ -1231,9 +1231,9 @@ entries:
           - math: 'v_{i-1} = -0{,}667\times(10+5) \approx -10\ \text{m.s}^{-1}'
             note: "Application numérique."
           - math: 'v_z(t_i) = v_{i-1} + a_{i-1}\,\Delta t = -10 + 5\times 0{,}066'
-            note: "Recurrence d'Euler standard (chapitre 9), a present que v_(i-1) est connu."
+            note: "Récurrence d'Euler standard (chapitre 9), a present que v_(i-1) est connu."
           - math: '\boxed{v_z(t_i) \approx -9{,}67\ \text{m.s}^{-1}}'
-            note: "Coherent : la bille continue de ralentir en valeur absolue, s'approchant de v_ell = -6,7 m/s."
+            note: "Cohérent : la bille continue de ralentir en valeur absolue, s'approchant de v_ell = -6,7 m/s."
 
   # ── bk-2023-r-x4 — 2023 R, Exercice 4 (Partie I) : service au volley-ball ──
   - id: bk-2023-r-x4
@@ -1522,7 +1522,7 @@ entries:
           - math: 'a_0 = \frac{0{,}70}{0{,}1000}'
             note: "Application numérique avec les deux valeurs lues au graphe (questions 2-1 et 2-2)."
           - math: '\boxed{a_0 \approx 7{,}0\ \text{m.s}^{-2}}'
-            note: "Coherent avec la pente mesurée de la tangente (T) sur la figure 2."
+            note: "Cohérent avec la pente mesurée de la tangente (T) sur la figure 2."
       - id: q3
         stem: |-
           **(1 pt)** Déduire la valeur de $\mu$ et celle de $\rho_L$.
@@ -1846,7 +1846,7 @@ entries:
           Exactement le raisonnement du chapitre 10 : on décompose l'accélération dans la base de Freinet fournie, et comme la force (question 1) est purement selon $\vec{n}$, sa projection sur $\vec{u}$ (la tangente) est nulle.
         steps:
           - math: '\vec a = \frac{dv}{dt}\vec u + \frac{v^2}{R_T+h}\vec n'
-            note: "Decomposition de l'accélération dans la base de Freinet (chapitre 10), comme fournie par l'énoncé."
+            note: "Décomposition de l'accélération dans la base de Freinet (chapitre 10), comme fournie par l'énoncé."
           - math: 'm_S\frac{dv}{dt} = 0'
             note: "Projection de la deuxième loi sur u : la force (question 1) est purement selon n, donc sa composante tangentielle est nulle."
           - math: '\boxed{\frac{dv}{dt} = 0}'
@@ -1862,7 +1862,7 @@ entries:
           - math: 'v_S^2 = \frac{G\,m_T}{R_T+h}'
             note: "La masse m_S du satellite se simplifie des deux cotes."
           - math: '\boxed{v_S = \sqrt{\frac{G\,m_T}{R_T+h}}}'
-            note: "Racine carree : c'est l'expression demandee."
+            note: "Racine carrée : c'est l'expression demandee."
       - id: q2c
         stem: |-
           **(0,75 pt)** Déduire la relation : $\dfrac{T^2}{(R_T + h)^3} = k$ ($k$ étant une constante), traduisant la troisième loi de Kepler relative au mouvement du centre d'inertie $G_S$ autour de la Terre.
@@ -1890,7 +1890,7 @@ entries:
           - math: 'm_T = \frac{4\pi^2\times(7{,}716\times 10^6)^3}{6{,}67\times 10^{-11}\times 6720^2}'
             note: "Application numérique."
           - math: '\boxed{m_T \approx 6{,}0\times 10^{24}\ \text{kg}}'
-            note: "Coherent avec la masse réelle de la Terre (environ 5,97e24 kg en table)."
+            note: "Cohérent avec la masse réelle de la Terre (environ 5,97e24 kg en table)."
 
   # ── bk-2025-r-x4 — 2025 R, Exercice 4 (§1) : chute libre d'un skieur,
   #    impact sur un plan incline trouve par intersection de deux courbes ──
@@ -2217,7 +2217,7 @@ entries:
           - math: 'm\vec a = \vec P + \vec F + \vec f'
             note: "Deuxième loi de Newton (chapitre Lois de Newton) ; trois forces, Archimede n'est PAS negligee ici (chapitre 8)."
           - math: 'm\,\frac{dv_G}{dt} = mg - \rho V g - k\,v_G'
-            note: "Projection sur (O,z) descendant : poids +mg, Archimede -rho.V.g (opposee au poids), frottement -k.v_G (oppose au mouvement)."
+            note: "Projection sur (O,z) descendant : poids +mg, Archimede -rho.V.g (opposée au poids), frottement -k.v_G (oppose au mouvement)."
           - math: '\frac{dv_G}{dt} = g - \frac{\rho V g}{m} - \frac{k}{m}\,v_G'
             note: "On divise par la masse m."
           - math: '\boxed{\frac{dv_G}{dt} + \frac{k}{m}\,v_G = g - \frac{\rho V g}{m}}'
@@ -2251,7 +2251,7 @@ entries:
           - math: '\text{Avec } \tau=\frac1A: \quad \frac{1}{A\tau}=1 \implies \frac{dv_G}{dt}+A\,v_G = B\,e^{-t/\tau} + B - B\,e^{-t/\tau}'
             note: "C'est la condition tau = 1/A, imposée par l'énoncé, qui fait tomber le coefficient du terme exponentiel a 1."
           - math: '\boxed{\frac{dv_G}{dt}+A\,v_G = B}'
-            note: "Les deux termes exponentiels s'annulent exactement : l'expression proposee verifie bien l'équation, pour tout t."
+            note: "Les deux termes exponentiels s'annulent exactement : l'expression proposée verifie bien l'équation, pour tout t."
       - id: q3
         stem: |-
           **3-** (0,5 pt) Écrire l'expression de la vitesse limite $V_{\ell im}$ du centre d'inertie de la bille en fonction de $A$ et $B$.
@@ -2261,7 +2261,7 @@ entries:
           - math: '\frac{dv_G}{dt} = 0 \implies A\,V_{\ell im} = B'
             note: "En régime permanent, l'accélération s'annule dans l'équation différentielle (chapitre 8)."
           - math: '\boxed{V_{\ell im} = \frac{B}{A}}'
-            note: "Coherent avec la limite de v_G(t) quand t devient grand (question 2) : e^(-t/tau) tend vers 0."
+            note: "Cohérent avec la limite de v_G(t) quand t devient grand (question 2) : e^(-t/tau) tend vers 0."
       - id: q4
         stem: |-
           **4-** (1 pt) On obtient, à l'aide d'un matériel informatique convenable, la courbe de la figure 2, représentant les variations de la vitesse $v_G$ en fonction du temps. Déterminer graphiquement les valeurs de $V_{\ell im}$ et $\tau$.
@@ -2311,9 +2311,9 @@ entries:
           - math: '\boxed{a_1 = 6{,}32\ \text{m.s}^{-2}}'
             note: "Déjà en dessous de 7,57 : le frottement a commence a mordre."
           - math: 'v_2 = v_1 + a_1\,\Delta t = 0{,}25 + 6{,}32\times0{,}033'
-            note: "Recurrence d'Euler (chapitre 9) entre les instants t1 et t2, avec le pas imprime dans le tableau."
+            note: "Récurrence d'Euler (chapitre 9) entre les instants t1 et t2, avec le pas imprime dans le tableau."
           - math: '\boxed{v_2 \approx 0{,}459\ \text{m.s}^{-1}}'
-            note: "Coherent avec la troisième ligne du tableau : a2 = 7,57 - 5x0,4586 = 5,277, imprime 5,27."
+            note: "Cohérent avec la troisième ligne du tableau : a2 = 7,57 - 5x0,4586 = 5,277, imprime 5,27."
 
   # ── bk-2010-n-x4b et bk-2010-n-x4c — 2010 N, Mécanique (position 4 du
   #    cartouche), 2ᵉ et 3ᵉ parties du même exercice : mouvement de G dans
@@ -2613,9 +2613,9 @@ entries:
           - math: '\boxed{a_{i+1} = 5{,}78\ \text{m.s}^{-2}}'
             note: "Accroissement, sous 6,52 : le frottement mord de plus en plus (chapitre 8), la vitesse se rapproche de V_lim."
           - math: 'V_{i+2} = V_{i+1} + a_{i+1}\,\Delta t = -1{,}80 + 5{,}78\times1{,}5\times10^{-2}'
-            note: "Recurrence d'Euler (chapitre 9) : Delta t = 1,5e-2 s, déduit des dates du tableau."
+            note: "Récurrence d'Euler (chapitre 9) : Delta t = 1,5e-2 s, déduit des dates du tableau."
           - math: '\boxed{V_{i+2} \approx -1{,}71\ \text{m.s}^{-1}}'
-            note: "Coherent avec la 3e ligne du tableau : 2x1,71^2-0,7 = 5,148, imprime 5,15 -- le tableau se boucle sur lui-même."
+            note: "Cohérent avec la 3e ligne du tableau : 2x1,71^2-0,7 = 5,148, imprime 5,15 -- le tableau se boucle sur lui-même."
 
   # ── bk-2015-n-x4 — 2015 N, Exercice 4 (Première partie) : la balle de golf ──
   # Sœur de bk-2015-n-x4b (systemes-oscillants, Deuxième partie du même
@@ -2708,7 +2708,7 @@ entries:
           - math: '\tan45^\circ = 1 \qquad \frac{g}{2V_0^2\cos^2 45^\circ} = \frac{10}{2\times100\times0{,}5} = 0{,}1'
             note: "Simplification propre a theta = 45 degrés."
           - math: '\boxed{y(x) = x - 0{,}1\,x^2}'
-            note: "Équation de la trajectoire (une parabole tournee vers le bas, chapitre 4)."
+            note: "Équation de la trajectoire (une parabole tournée vers le bas, chapitre 4)."
       - id: q3
         stem: |-
           **3-** (0,75 pt) Déterminer la valeur de $x_S$, abscisse du sommet de la trajectoire de la balle.
@@ -2726,7 +2726,7 @@ entries:
           - math: 'x_S = V_{0x}\times t_{sommet} = 7{,}071\times0{,}7071'
             note: "On reporte dans x(t), PAS dans y(x) : x_S est une abscisse, pas une hauteur."
           - math: '\boxed{x_S = 5{,}000\ \text{m}}'
-            note: "Coherent avec le sommet de la parabole y = x - 0,1x^2, x = 1/(2x0,1) = 5 (controle indépendant)."
+            note: "Cohérent avec le sommet de la parabole y = x - 0,1x^2, x = 1/(2x0,1) = 5 (controle indépendant)."
       - id: q4
         stem: |-
           **4-** (0,75 pt) S'assurer que la balle passe au centre $T$ du trou.
@@ -2859,7 +2859,7 @@ entries:
           - math: 'y_P = -\frac{g\,x_P^2}{2\,v_D^2\cos^2\theta} + x_P\tan\theta'
             note: "P est un point de la trajectoire : on substitue ses coordonnées dans l équation de la question 3-1."
           - math: 'v_D^2 = \frac{g\,x_P^2}{2\cos^2\theta\left(x_P\tan\theta - y_P\right)}'
-            note: "Isolation algebrique de v_D au carré -- geste hors chapitres, ponte ici pas a pas (scope note en tête de fichier)."
+            note: "Isolation algébrique de v_D au carré -- geste hors chapitres, ponte ici pas a pas (scope note en tête de fichier)."
           - math: 'v_D^2 = \frac{10\times15^2}{2\times0{,}5\times\left(15\times1 - (-5)\right)} = \frac{2250}{20} = 112{,}5'
             note: "theta = 45 degrés : cos carré vaut 0,5 et tan vaut 1 ; x_P.tan(theta) - y_P = 15 + 5 = 20 (le piege de signe)."
           - math: '\boxed{v_D = \sqrt{112{,}5} \approx 10{,}6\ \text{m.s}^{-1}}'
@@ -3113,14 +3113,14 @@ entries:
            Le document officiel francophone imprime, mot pour mot : « On
            considères que le soleil et MARS sont à répartitions sphériques de
            masses, et on note la masse de Jupiter M_J » (p. 6, y = 370,7,
-           retrouve par OCR aveugle). MARS est une planète etrangere a ce sujet :
+           retrouve par OCR aveugle). MARS est une planète étrangère a ce sujet :
            l'exercice entier porte sur Jupiter, et la même phrase la nomme deux
            mots plus loin. L'original arabe RS28 écrit
            « نعتبر أن للشمس وللمشتري تماثلا كرويا لتوزيع الكتلة » (p. 6,
            y = 292,7) = « on considere que le Soleil et JUPITER ont une
            répartition spherique de masse », et il repete le mot « Jupiter »
            16 fois sur la page.
-           Aucune conséquence sur la resolubilite — l'hypothèse se retablit
+           Aucune conséquence sur la resolubilite — l'hypothèse se rétablit
            d'elle-même — mais c'est le défaut le plus VISIBLE du sujet, et le
            laisser tel quel ferait trebucher un élève qui lit vite. La reparation
            ne touche qu'un mot, elle est faite ici et DECLAREE plutôt que faite
@@ -3128,7 +3128,7 @@ entries:
            IMPORTANT POUR LA CLASSIFICATION : l'edition française de ce sujet est
            MINISTERIELLE (code d'examen RS28 au cartouche ; mention d'époque
            « (الترجمة الفرنسية) » sans le cadre anachronique « المسالك الدولية » ;
-           pieds de page VIDES sur les six pages ; colonne « Bareme » miroir
+           pieds de page VIDES sur les six pages ; colonne « Barème » miroir
            valeur par valeur de la colonne arabe). Ce n'est donc PAS un artefact
            de traduction professorale — c'est un défaut de l'edition OFFICIELLE
            de langue française. Voir docs/sujets/_incoming/pc-2012-r.md,
@@ -3202,7 +3202,7 @@ entries:
           **Les deux pièges de cette question.** Le premier : conclure « uniforme » **sans avoir montré $a_\tau = 0$**, en se contentant de dire que la force est centripète. C'est le raisonnement attendu, mais il faut l'écrire — l'identification composante par composante *est* la démonstration, et elle vaut à elle seule une bonne part du $1{,}25$ point. Le second : croire qu'il faut **démontrer** que la trajectoire est circulaire. Ce n'est pas démontrable ici — c'est une **hypothèse de l'énoncé** (« on considère que le mouvement … est circulaire »), et la question ne demande que l'uniformité.
         steps:
           - math: '\text{Système\,: Jupiter. Référentiel héliocentrique supposé galiléen. Force unique\,: } \vec{F}_{S/J}'
-            note: "L'énoncé impose de negliger toutes les autres forces : le bilan se reduit a un seul terme."
+            note: "L'énoncé impose de négliger toutes les autres forces : le bilan se réduit a un seul terme."
           - math: '\vec{F}_{S/J} = -G\,\frac{M_S M_J}{r^{2}}\,\vec{u} = G\,\frac{M_S M_J}{r^{2}}\,\vec{n}'
             note: "Force attractive : dirigée vers le Soleil, donc selon la normale n (qui pointe vers le centre) et a l'oppose du radial sortant u."
           - math: '\vec{a} = \frac{\mathrm{d}V}{\mathrm{d}t}\,\vec{\tau} + \frac{V^{2}}{r}\,\vec{n}'
@@ -3210,7 +3210,7 @@ entries:
           - math: 'M_J\,\vec{a} = \vec{F}_{S/J} \quad\Longrightarrow\quad a_\tau = \frac{\mathrm{d}V}{\mathrm{d}t} = 0 \qquad a_n = \frac{V^{2}}{r} = G\,\frac{M_S}{r^{2}}'
             note: "Identification composante par composante : la force n'a aucune composante tangentielle, donc l'accélération non plus. La masse de Jupiter se simplifie."
           - math: '\boxed{\frac{\mathrm{d}V}{\mathrm{d}t} = 0 \Rightarrow V = \text{constante} \;;\; \text{trajectoire circulaire (hypothèse)} \Rightarrow \text{mouvement circulaire uniforme}}'
-            note: "Les deux moities de la conclusion, a écrire séparément : l'uniformite se demontre, la circularite est donnée."
+            note: "Les deux moities de la conclusion, a écrire séparément : l'uniformité se demontre, la circularite est donnée."
       - id: q3
         stem: |-
           **b-** (1 pt) Montrer que la troisième loi de Kepler s'écrit : $\dfrac{T_J^{\,2}}{r^3} = \dfrac{4\pi^2}{G\,M_S}$.
@@ -3272,15 +3272,15 @@ entries:
           **Le piège de cette question.** Prendre la racine cubique d'un exposant qui n'est pas multiple de $3$ en divisant naïvement $35$ par $3$. Il faut d'abord **réécrire** $4{,}727\times10^{35}$ en $472{,}7\times10^{33}$, puis extraire : $10^{33}$ devient $10^{11}$, et $\sqrt[3]{472{,}7} \approx 7{,}79$. Sauter cette réécriture est la faute de calcul la plus fréquente sur ce type de question.
         steps:
           - math: '\boxed{r = \sqrt[3]{\frac{G\,M_S\,T_J^{\,2}}{4\pi^{2}}}}'
-            note: "Inversion de la troisième loi de Kepler etablie a la question 1-2-b."
+            note: "Inversion de la troisième loi de Kepler établie a la question 1-2-b."
           - math: 'G\,M_S\,T_J^{\,2} = 6{,}67\times10^{-11} \times 2\times10^{30} \times 1{,}399\times10^{17} = 1{,}866\times10^{37}'
             note: "Numérateur, puissances de dix traitees a part. T_J au carré vaut 1,399 x 10^17."
           - math: 'r^{3} = \frac{1{,}866\times10^{37}}{4\pi^{2}} = \frac{1{,}866\times10^{37}}{39{,}48} = 4{,}727\times10^{35}\ \text{m}^{3}'
             note: "Rayon au cube."
           - math: 'r = \sqrt[3]{472{,}7\times10^{33}} = \sqrt[3]{472{,}7}\times10^{11}'
-            note: "Reecriture préalable pour ramener l'exposant a un multiple de 3 : c'est la que se fait la faute de calcul la plus frequente."
+            note: "Reecriture préalable pour ramener l'exposant a un multiple de 3 : c'est la que se fait la faute de calcul la plus fréquente."
           - math: '\boxed{r \approx 7{,}79\times10^{11} \approx 7{,}8\times10^{11}\ \text{m}}'
-            note: "Conforme a la valeur annoncee par l'énoncé, a 0,13 pour cent près. Environ 5,2 fois la distance Terre-Soleil : coherent."
+            note: "Conforme a la valeur annoncée par l'énoncé, a 0,13 pour cent près. Environ 5,2 fois la distance Terre-Soleil : cohérent."
       - id: q5
         stem: |-
           **1-4-** (1 pt) Déterminer la valeur de la vitesse $V$ de révolution de Jupiter autour du soleil.
@@ -3345,7 +3345,7 @@ entries:
           - math: '\boxed{M_J = \frac{4\pi^{2}\,r^{\prime\,3}}{G\,T_{Io}^{\,2}}}'
             note: "La constante de Kepler ne dépend que de l'astre CENTRAL : c'est ainsi qu'on pèse une planète, en regardant tourner son satellite. La masse de Io n'y figure pas."
           - math: 'T_{Io} = 1{,}77 \times 24 \times 3600 = 152\,928\ \text{s}'
-            note: "Conversion préalable et separee : la période est donnée en jours, G est en unités SI."
+            note: "Conversion préalable et séparée : la période est donnée en jours, G est en unités SI."
           - math: 'M_J = \frac{39{,}48 \times 7{,}409\times10^{25}}{6{,}67\times10^{-11} \times 2{,}339\times10^{10}} = \frac{2{,}925\times10^{27}}{1{,}560}'
             note: "Application numérique, puissances de dix traitees a part."
           - math: '\boxed{M_J \approx 1{,}88\times10^{27}\ \text{kg}}'

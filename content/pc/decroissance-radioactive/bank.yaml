@@ -435,7 +435,7 @@ entries:
           - math: '-\lambda\,t_{1/2} = -\ln 2 \quad\Longrightarrow\quad \lambda = \frac{\ln 2}{t_{1/2}}'
             note: "Le logarithme fait descendre l'exposant. Relation à savoir reconstruire, pas seulement retenir."
           - math: 't_{1/2} = 138 \times 24 \times 3600 = 1{,}19232 \times 10^{7}\ \text{s}'
-            note: "L'unité demandee est la s-1 : la conversion est annoncee par l'énoncé lui-même."
+            note: "L'unité demandee est la s-1 : la conversion est annoncée par l'énoncé lui-même."
           - math: '\boxed{\lambda = \frac{0{,}693}{1{,}19232\times10^{7}} = 5{,}8\times10^{-8}\ \text{s}^{-1}}'
             note: "Six chances sur cent millions par seconde et par noyau."
       - id: q4
@@ -1567,7 +1567,7 @@ entries:
           - math: 'E_\ell = 0{,}11301 \times 931{,}5 = \boxed{105{,}3\ \text{MeV}}'
             note: "1 u vaut 931,5 MeV.c-2 : la conversion est une simple multiplication."
           - math: '\frac{E_\ell}{A} = \frac{105{,}3}{14} = 7{,}52\ \text{MeV/nucléon}'
-            note: "Controle : tous les noyaux stables sont entre 7 et 8,8 MeV par nucleon. Plausible."
+            note: "Controle : tous les noyaux stables sont entre 7 et 8,8 MeV par nucléon. Plausible."
       - id: q3
         part: "3 — L'âge du bois"
         stem: |-
@@ -1628,7 +1628,7 @@ entries:
           **Le piège nommé de cette question.** Confondre $\lambda$ et $t_{1/2}$, et écrire $t_1 = t_{1/2} \times \ln\frac{a_0}{a_1}$ sans diviser par $\ln 2$. On trouverait $1567$ ans au lieu de $2260$ — une erreur de $30\ \%$ que le contrôle en demi-vies débusque immédiatement. Le second piège : **inverser le rapport** et calculer $\ln\frac{a_1}{a_0} = -0{,}273$, ce qui donne un âge **négatif**. Un bois qui aurait un âge négatif devrait mourir dans le futur : le signe est un contrôle, pas une contrariété.
         steps:
           - math: 'a_1 = a_0\,e^{-\lambda t_1}'
-            note: "Le bois recent donne a_0 : c'est l'activité qu'avait le bois ancien au moment de sa mort."
+            note: "Le bois récent donne a_0 : c'est l'activité qu'avait le bois ancien au moment de sa mort."
           - math: 't_1 = \frac{1}{\lambda}\,\ln\!\left(\frac{a_0}{a_1}\right)'
             note: "Rapport retourne pour absorber le signe moins : le résultat est manifestement positif."
           - math: '\lambda = \frac{\ln 2}{t_{1/2}} \quad\Longrightarrow\quad t_1 = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a_1}\right)'
@@ -1774,7 +1774,7 @@ entries:
           - math: 'N_0 = N_U(t) + N_{Pb}(t) \qquad N_U(t) = N_0\,e^{-\lambda t}'
             note: "Tout le plomb vient de l'Uranium disparu (hypothèse de l'énoncé) ; loi de décroissance du chapitre précédent."
           - math: 'e^{\lambda t} = 1 + \frac{N_{Pb}(t)}{N_U(t)} \implies t = \frac{1}{\lambda}\ln\!\left(1+\frac{N_{Pb}(t)}{N_U(t)}\right)'
-            note: "On isole t par le logarithme neperien, après avoir divise le bilan par N_U(t)."
+            note: "On isole t par le logarithme népérien, après avoir divise le bilan par N_U(t)."
           - math: 't = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(1+\frac{N_{Pb}(t)}{N_U(t)}\right)'
             note: "On remplace lambda par ln2/t1/2 (relation demi-vie/constante radioactive du chapitre précédent)."
           - math: '\frac{N_{Pb}(t)}{N_U(t)} = \frac{m_{Pb}(t)/M(^{206}Pb)}{m_U(t)/M(^{238}U)} = \frac{m_{Pb}(t).M(^{238}U)}{m_U(t).M(^{206}Pb)}'
@@ -1796,7 +1796,7 @@ entries:
           - math: '\frac{t_{1/2}}{\ln 2} = \frac{4{,}5\times10^{9}}{0{,}6931} \approx 6{,}4924\times10^{9}\ \text{ans}'
             note: "Prefacteur de la formule."
           - math: '\boxed{t \approx 6{,}4924\times10^{9} \times 1{,}1546\times10^{-3} \approx 7{,}50\times10^{6}\ \text{ans}}'
-            note: "Age d'environ 7,5 millions d'années : petit devant la demi-vie 4,5e9 ans, coherent avec le controle de vraisemblance."
+            note: "Age d'environ 7,5 millions d'années : petit devant la demi-vie 4,5e9 ans, cohérent avec le controle de vraisemblance."
 
   # ── bk-2010-n-x2 — 2010 N, Physique nucléaire (position 2 du cartouche) :
   #    le Radon 222 ──
@@ -1973,7 +1973,7 @@ entries:
           $$m_0 = \frac{N_0}{\mathcal{N}_A}\times M(\text{Rn}) = \frac{2{,}431\times10^{9}}{6{,}02\times10^{23}}\times222$$
         steps:
           - math: 't_{1/2} = 3{,}9\times86400 = 336960\ \text{s}'
-            note: "Conversion de la demi-vie en secondes, pour rester coherent avec a0 en Bq (desintegrations/s)."
+            note: "Conversion de la demi-vie en secondes, pour rester cohérent avec a0 en Bq (desintegrations/s)."
           - math: 'N_0 = \frac{a_0\,t_{1/2}}{\ln 2} = \frac{5\times10^{3}\times336960}{0{,}6931} \approx 2{,}431\times10^{9}'
             note: "N0 = a0/lambda, avec lambda = ln2/t1/2 (chapitre 5)."
           - math: '\boxed{m_0 = \frac{N_0}{\mathcal{N}_A}\times M(\text{Rn}) \approx 8{,}96\times10^{-13}\ \text{g}}'
@@ -2318,11 +2318,11 @@ entries:
           Le père est $^{14}_{6}\text{C}$, le fils est $^{14}_{7}\text{N}$ (donné par l'énoncé). Pour la particule émise $^{A}_{Z}X$ : conservation de $A$ : $14 = 14 + A$, donc $A = 0$ ; conservation de $Z$ : $6 = 7 + Z$, donc $Z = -1$. La particule $^{0}_{-1}e$ est un électron : c'est une désintégration $\beta^-$ — cohérent avec le chapitre 2, qui repère l'excès de neutrons du carbone 14 comme la cause de son instabilité (un neutron se transforme en proton, d'où $Z$ qui augmente d'une unité à $A$ constant).
         steps:
           - math: '14 = 14 + A \implies A = 0 \qquad 6 = 7 + Z \implies Z = -1'
-            note: "Lois de Soddy (chapitre 3) : conservation du nombre de nucléons et de la charge, appliquees a la particule emise."
+            note: "Lois de Soddy (chapitre 3) : conservation du nombre de nucléons et de la charge, appliquées a la particule émise."
           - math: '\boxed{^{14}_{6}\text{C} \longrightarrow\ ^{14}_{7}\text{N} +\ ^{0}_{-1}e}'
             note: "Équation de la désintégration."
           - math: '\boxed{\text{radioactivité } \beta^-}'
-            note: "La particule emise est un électron : désintégration beta moins."
+            note: "La particule émise est un électron : désintégration beta moins."
       - id: q2
         part: "1-2 — La composition du noyau fils"
         stem: |-
@@ -2365,7 +2365,7 @@ entries:
           **Le piège nommé de cette question.** Ne pas inverser le rapport : c'est $a_0/a = 165/135 > 1$ qui va dans le logarithme (l'activité a DIMINUÉ depuis la mort, donc le rapport référence-sur-mesure est plus grand que $1$ et le temps sort positif). Écrire $135/165$ donnerait un âge négatif — un signal d'alarme, pas une convention.
         steps:
           - math: 't = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a}\right) \qquad \frac{a_0}{a} = \frac{165}{135} \approx 1{,}222'
-            note: "Inversion de la loi de décroissance appliquee a l activité (chapitre 5 et 5) ; a0 est l activité du bois RECENT."
+            note: "Inversion de la loi de décroissance appliquee a l activité (chapitre 5 et 5) ; a0 est l activité du bois RÉCENT."
           - math: 't = \frac{5570}{0{,}6931}\times\ln(1{,}222) = \frac{5570}{0{,}6931}\times0{,}2007'
             note: "lambda = ln2/t_1/2, avec la demi-vie DONNÉE par l énoncé (5570 ans)."
           - math: '\boxed{t \approx 1612{,}5\ \text{ans} \approx 1613\ \text{ans}}'
@@ -2557,9 +2557,9 @@ entries:
           **Le piège de cette question, et il coûte cher.** Oublier $m(e^-)$ et calculer seulement $130{,}8770 - 130{,}8755 = 1{,}5\times10^{-3}\ \text{u}$, ce qui donnerait $1{,}40\ \text{MeV}$ — soit $58\ \%$ de trop. La masse de l'électron est petite, mais elle est du même ordre que le défaut de masse lui-même : ici elle en représente plus du tiers. On ne la néglige jamais dans un bilan $\beta$.
         steps:
           - math: '{}^{131}_{53}\text{I} \longrightarrow {}^{131}_{54}\text{Xe} + {}^{\ 0}_{-1}e'
-            note: "Équation etablie a la question 1-1 : le bilan de masse porte sur trois termes, pas deux."
+            note: "Équation établie a la question 1-1 : le bilan de masse porte sur trois termes, pas deux."
           - math: '|\Delta m| = m\left({}^{131}_{53}\text{I}\right) - m\left({}^{131}_{54}\text{Xe}\right) - m(e^-)'
-            note: "Masses nucleaires : l'électron emis compte, il ne doit jamais être oublie."
+            note: "Masses nucléaires : l'électron emis compte, il ne doit jamais être oublie."
           - math: '|\Delta m| = 130{,}8770 - 130{,}8755 - 0{,}00055 = 9{,}5\times10^{-4}\ \text{u}'
             note: "Défaut de masse, en unités de masse atomique."
           - math: 'E = |\Delta m|\,c^2 = 9{,}5\times10^{-4}\times 931{,}5'
@@ -2628,7 +2628,7 @@ entries:
           **Le piège de cette question.** Répondre « $8$ jours » en confondant demi-vie et durée de décontamination : une demi-vie ramènerait l'activité à $4\,000\ \text{Bq}$, encore le double du seuil admissible. Le seuil est fixé par l'énoncé, pas par la demi-vie.
         steps:
           - math: 'a(t) = a_0\,e^{-\lambda t} \le 2000\ \text{Bq} \qquad a_0 = 8000\ \text{Bq}'
-            note: "Mise en inequation : le seuil de non-contamination est donne par le chapeau de l'énoncé."
+            note: "Mise en inéquation : le seuil de non-contamination est donne par le chapeau de l'énoncé."
           - math: '\frac{a_0}{a} = \frac{8000}{2000} = 4 = 2^2'
             note: "Le rapport est une puissance de 2 : le sujet a prepare le raccourci."
           - math: 'e^{-\lambda t} \le \frac{1}{4} \implies \lambda t \ge \ln 4 = 2\ln 2 \implies t \ge 2\,t_{1/2}'

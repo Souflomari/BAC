@@ -333,7 +333,7 @@ $$y(x) = 3\cos(4x) + 2\sin(4x)$$
 
 ### Arrête-toi : ne pas oublier de diviser par $\omega$
 
-Une erreur fréquente : poser $B=y'(0)$ directement, sans diviser par $\omega$. Teste ce reflexe sur l'exemple ci-dessus : si $B=8$ (au lieu de $2$), la fonction $y(x)=3\cos(4x)+8\sin(4x)$ donnerait $y'(x) = -12\sin(4x)+32\cos(4x)$, donc $y'(0)=32 \neq 8$ — ça contredit la condition posée au départ. Le facteur $\omega$ n'est pas optionnel : il vient directement de la dérivée $(\sin(\omega x))'=\omega\cos(\omega x)$, et l'oublier fausse systématiquement la vitesse initiale.
+Une erreur fréquente : poser $B=y'(0)$ directement, sans diviser par $\omega$. Teste ce réflexe sur l'exemple ci-dessus : si $B=8$ (au lieu de $2$), la fonction $y(x)=3\cos(4x)+8\sin(4x)$ donnerait $y'(x) = -12\sin(4x)+32\cos(4x)$, donc $y'(0)=32 \neq 8$ — ça contredit la condition posée au départ. Le facteur $\omega$ n'est pas optionnel : il vient directement de la dérivée $(\sin(\omega x))'=\omega\cos(\omega x)$, et l'oublier fausse systématiquement la vitesse initiale.
 
 ### Le cas général : $ay''+by'+cy=0$ et son équation caractéristique
 

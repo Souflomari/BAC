@@ -211,7 +211,7 @@ entries:
           - math: 'x(0) = X_m\cos\varphi = -X_m \implies \cos\varphi = -1 \implies \varphi = \pi\ \text{rad}'
             note: "Départ au minimum (chapitre 3, même geste que le Premier lancer mais cote négatif) : x(0) = -Xm."
           - math: 'v(0) = -X_m\,\omega_0\sin\varphi = -X_m\,\omega_0\sin\pi = 0'
-            note: "Controle : la vitesse initiale est bien nulle (sin pi = 0), conforme au lacher sans vitesse."
+            note: "Controle : la vitesse initiale est bien nulle (sin pi = 0), conforme au lâcher sans vitesse."
       - id: q2
         stem: |-
           **(0,5 pt)** Trouver la valeur de l'énergie potentielle élastique $E_{pe1}$ du système mécanique à la date $t_1 = 0{,}5\ \text{s}$.
@@ -237,7 +237,7 @@ entries:
           - math: 'W_{AB}(\vec F) = E_{pe}(A) - E_{pe}(B)'
             note: "Travail d'une force conservative entre A et B = la perte d'énergie potentielle correspondante."
           - math: '\boxed{W_{AB}(\vec F) = 0\ \text{J}}'
-            note: "La différence est nulle : coherent avec le théorème de l'énergie cinétique, qui donne aussi Delta Ec = 0 entre A et B (vA = vB = 0)."
+            note: "La différence est nulle : cohérent avec le théorème de l'énergie cinétique, qui donne aussi Delta Ec = 0 entre A et B (vA = vB = 0)."
 
   # ── bk-2022-r-x4b — 2022 R, Exercice 4 (Partie 2) : pendule elastique horizontal,
   #    la lecture la plus directe des quatre - periode lue sans ambiguite,
@@ -501,7 +501,7 @@ entries:
           - math: '\dot\theta_{max} = \left(9\times\frac{\pi}{180}\right)\sqrt{\frac{10}{2{,}4}} = 0{,}157\times2{,}04'
             note: "Application numérique : theta0 = 9 degrés converti en radians."
           - math: '\boxed{\dot\theta_{max} \approx 0{,}32\ \text{rad.s}^{-1}}'
-            note: "Coherent avec l'ordre de grandeur d'une vraie balancoire."
+            note: "Cohérent avec l'ordre de grandeur d'une vraie balançoire."
       - id: q2b
         stem: |-
           **2-2.** (0,75 pt) Établir l'équation différentielle du mouvement vérifiée par l'abscisse angulaire $\theta(t)$.
@@ -513,7 +513,7 @@ entries:
           - math: 'm\ell^2\ddot\theta = -mg\ell\sin\theta \approx -mg\ell\theta'
             note: "On substitue J_Delta = m.ell^2 (donnée), puis l'approximation des petites oscillations sin(theta) ~ theta (chapitre 4)."
           - math: '\boxed{\ddot\theta + \frac{g}{\ell}\theta = 0}'
-            note: "On simplifie par m.ell (chapitre 4) : même forme que pour le pendule simple, coherent avec la question suivante."
+            note: "On simplifie par m.ell (chapitre 4) : même forme que pour le pendule simple, cohérent avec la question suivante."
       - id: q3
         stem: |-
           **(0,5 pt)** Calculer la période propre de ce pendule sachant qu'il est analogue à un pendule simple de longueur $\ell$ et de masse $m$.
@@ -521,9 +521,9 @@ entries:
           L'énoncé confirme ce que le chapitre 4 démontre dans sa « Vérification de cohérence » : avec $J_\Delta=m\ell^2$ et $d=\ell$, ce pendule pesant se comporte exactement comme un pendule simple de longueur $\ell$. On applique donc directement la formule $T_0=2\pi\sqrt{\ell/g}$ du chapitre 4.
         steps:
           - math: 'T_0 = 2\pi\sqrt{\frac{\ell}{g}} = 2\pi\sqrt{\frac{2{,}4}{10}}'
-            note: "Formule du pendule simple (chapitre 4), applicable ici car J_Delta = m.ell^2 et d = ell (vérification de cohérence déjà etablie au chapitre 4)."
+            note: "Formule du pendule simple (chapitre 4), applicable ici car J_Delta = m.ell^2 et d = ell (vérification de cohérence déjà établie au chapitre 4)."
           - math: '\boxed{T_0 \approx 3{,}1\ \text{s}}'
-            note: "Ordre de grandeur d'une vraie balancoire."
+            note: "Ordre de grandeur d'une vraie balançoire."
 
   # ── bk-2023-r-x4b — 2023 R, Exercice 4 (Partie II) : pendule elastique, phase
   #    a l'origine lue depuis DEUX informations, et variation d'energie elastique ──
@@ -886,7 +886,7 @@ entries:
           - math: 'X_m = \frac{v_{x,max}}{\omega_0} = \frac{0{,}125}{\pi} \approx 3{,}98\times10^{-2}\ \text{m}'
             note: "v(t) = -Xm.omega0.sin(...) (chapitres 2 et 3) : l'amplitude de v_x vaut Xm.omega0, donc Xm = v_max / omega0."
           - math: '\boxed{T_0 = 2\ \text{s} \qquad X_m \approx 4{,}0\times10^{-2}\ \text{m} \qquad \varphi = 0}'
-            note: "Phi = 0 : lacher sans vitesse depuis l'écart positif (énoncé), le cas Premier lancer du chapitre 3 - confirme par v_x(0) = 0 décroissante sur la courbe."
+            note: "Phi = 0 : lâcher sans vitesse depuis l'écart positif (énoncé), le cas Premier lancer du chapitre 3 - confirme par v_x(0) = 0 décroissante sur la courbe."
       - id: q2b
         stem: |-
           **2-2.** (0,5 pt) Déduire la valeur de la raideur $K$ (On prend $\pi^2 = 10$).
@@ -912,7 +912,7 @@ entries:
           - math: '\Delta E_{pe} = E_{pe}(2{,}5) - E_{pe}(1) = -\frac12KX_m^2 = -\frac12\times2{,}5\times(4{,}0\times10^{-2})^2'
             note: "Variation entre les deux instants : on retranche l'état initial (t=1s) de l'état final (t=2,5s)."
           - math: '\boxed{\Delta E_{pe} \approx -2{,}0\times10^{-3}\ \text{J}}'
-            note: "L'énergie potentielle élastique diminue : coherent, le solide passe de l'extrémité opposee (toute l'énergie dans le ressort) à l'équilibre (aucune énergie dans le ressort)."
+            note: "L'énergie potentielle élastique diminue : cohérent, le solide passe de l'extrémité opposée (toute l'énergie dans le ressort) à l'équilibre (aucune énergie dans le ressort)."
 
   # ── bk-2025-r-x4b — 2025 R, Exercice 4 (§2) : pendule de torsion, RFD de
   #    rotation, T0 et theta_m lus sur une courbe de VITESSE ANGULAIRE, C,
@@ -1189,7 +1189,7 @@ entries:
 
           $$\boxed{W_C \approx 1{,}3\times10^{-4}\ \text{J}}$$
 
-          **Lire le signe.** $W_C>0$ : entre $t_1$ et $t_2$, le couple de rappel a **accéléré** la barre, en valeur absolue de $\dot\theta$ — cohérent, puisque $\dot\theta$ est repartie de $0$ (au lâcher) pour atteindre $0{,}20\ \text{rad.s}^{-1}$ à $t_2$, en passant par son maximum $0{,}25\ \text{rad.s}^{-1}$ à $t=3\ \text{s}$ en cours de route.
+          **Lire le signe.** $W_C>0$ : entre $t_1$ et $t_2$, le couple de rappel a **accéléré** la barre, en valeur absolue de $\dot\theta$ — cohérent, puisque $\dot\theta$ est répartie de $0$ (au lâcher) pour atteindre $0{,}20\ \text{rad.s}^{-1}$ à $t_2$, en passant par son maximum $0{,}25\ \text{rad.s}^{-1}$ à $t=3\ \text{s}$ en cours de route.
 
           **Le piège nommé de cette question.** Utiliser $\dot\theta_{max}=0{,}25\ \text{rad.s}^{-1}$ (la valeur de la question 2-2) au lieu de relire la courbe exactement à $t_2=3{,}4\ \text{s}$, qui n'est PAS l'instant du maximum ($t=3\ \text{s}$, question 2-2) mais un instant légèrement postérieur, où $\dot\theta$ est redescendue à $0{,}20\ \text{rad.s}^{-1}$. Confondre les deux fait déborder l'erreur d'environ $50\ \%$ sur $W_C$ (le carré amplifie l'écart).
         steps:
@@ -1299,7 +1299,7 @@ entries:
           - math: '\boxed{\Delta E_{pe} \approx -5{,}25\times10^{-3}\ \text{J} = -5{,}25\ \text{mJ}}'
             note: "L'énergie potentielle élastique diminue : x1 est plus proche de l'équilibre que x0."
           - math: 'W(\vec F) = -\Delta E_{pe}'
-            note: "Travail de la force de rappel = oppose de la variation d'énergie potentielle associee (chapitre Aspects énergétiques, chapitre 6 de cette lecon-ci le signale sans le démontrer)."
+            note: "Travail de la force de rappel = oppose de la variation d'énergie potentielle associée (chapitre Aspects énergétiques, chapitre 6 de cette lecon-ci le signale sans le démontrer)."
           - math: '\boxed{W(\vec F) \approx +5{,}25\times10^{-3}\ \text{J} = +5{,}25\ \text{mJ}}'
             note: "Travail positif : le ressort, en se detendant de x0 vers x1, fournit du travail moteur."
       - id: q3
@@ -1323,7 +1323,7 @@ entries:
           - math: '\Delta E_m = \Delta E_c + \Delta E_{pe} = 0 + \Delta E_{pe}'
             note: "Pendule d'énergie (chapitre 6) : Em = Ec + Epe, pas de terme de pesanteur (mouvement horizontal)."
           - math: '\boxed{\Delta E_m \approx -5{,}25\times10^{-3}\ \text{J}}'
-            note: "Identique a Delta Epe de la question 2 : coherent, puisque Delta Ec = 0."
+            note: "Identique a Delta Epe de la question 2 : cohérent, puisque Delta Ec = 0."
           - math: '\boxed{\Delta E_m < 0 \implies \text{dissipation par frottement fluide (rung R4, aspects énergétiques\,; rung R6, régime pseudo-periodique)}}'
             note: "Explication physique du signe négatif."
 
@@ -1450,7 +1450,7 @@ entries:
           $E_m$ étant constante à tout instant $t$ (conservation), on l'égale à sa forme générale $E_C(t) + \frac{K}{2}x^2(t)$ et on isole $E_C$.
         steps:
           - math: 'E_m = E_C + E_{pe} = E_C + \frac{K}{2}x^2 \qquad \text{(constante, sans frottement)}'
-            note: "Pendule d'énergie (Aspects énergétiques, chapitre 6) : Em = Ec + Epe, conservee."
+            note: "Pendule d'énergie (Aspects énergétiques, chapitre 6) : Em = Ec + Epe, conservée."
           - math: 'E_m = \frac{K}{2}X_m^2 \qquad \text{(evaluee a un extremum, ou } E_C=0\text{)}'
             note: "Aux positions extrêmes x=+-Xm, la vitesse s'annule : toute l'énergie y est élastique."
           - math: '\boxed{E_C = E_m - \frac{K}{2}x^2 = \frac{K}{2}X_m^2 - \frac{K}{2}x^2 = \frac{K}{2}\left(X_m^2 - x^2\right)}'

@@ -162,7 +162,7 @@ entries:
           On dresse le tableau d'avancement comme au chapitre 3 : une ligne pour chaque espèce, chacune évoluant selon son coefficient stoechiométrique (ici tous égaux à $1$). Pour $x_f$, on cherche le réactif limitant — celui qui s'annule en premier. L'énoncé précise que l'éthanoate d'éthyle est introduit **en excès** : c'est donc $\text{HO}^-$ qui limite la réaction. La réaction étant totale, $\text{HO}^-$ est intégralement consommé quand l'avancement atteint sa valeur finale, qui vaut alors exactement la quantité initiale d'hydroxyde — pas besoin de comparer deux quotients, l'excès de l'un des réactifs est donné directement par l'énoncé.
         steps:
           - math: 'n(\text{HO}^-) = n_0(\text{HO}^-) - x = 10^{-3} - x \quad (\text{mol})'
-            note: "Ion hydroxyde consomme, coefficient 1 ; l'ethanoate d'ethyle, en excès, n'est pas limitant."
+            note: "Ion hydroxyde consomme, coefficient 1 ; l'éthanoate d'éthyle, en excès, n'est pas limitant."
           - math: 'n(\text{HO}^-) = 0 \ \text{pour}\ x = x_f \implies x_f = n_0(\text{HO}^-)'
             note: "Réaction totale : le réactif limitant (HO-) est entièrement consomme a l'avancement final."
           - math: '\boxed{x_f = 10^{-3}\ \text{mol} = 1{,}0\ \text{mmol}}'
@@ -619,7 +619,7 @@ entries:
           Le réactif limitant est celui dont le rapport quantité/coefficient stœchiométrique est le plus petit — c'est lui qui s'annule en premier dans le tableau du chapitre 3. On compare donc $n_i(Zn)/1$ à $n_i(H_3O^+)/2$, pas les deux quantités brutes entre elles (comparer $9{,}17\times10^{-3}$ à $0{,}03$ directement ignorerait que $H_3O^+$ est consommé DEUX FOIS plus vite que $Zn$, à cause du coefficient $2$).
         steps:
           - math: '\frac{n_i(Zn)}{1} = 9{,}17\times10^{-3}\ \text{mol} \qquad \frac{n_i(H_3O^+)}{2} = \frac{0{,}03}{2} = 0{,}015\ \text{mol}'
-            note: "On compare les quantités DIVISEES par leur coefficient stoechiometrique, pas les quantités brutes."
+            note: "On compare les quantités DIVISEES par leur coefficient stoechiométrique, pas les quantités brutes."
           - math: '9{,}17\times10^{-3} < 0{,}015 \implies Zn\ \text{est le réactif limitant}'
             note: "Le plus petit rapport designe le réactif limitant : c'est Zn, pas H3O+."
           - math: '\boxed{x_{max} = n_i(Zn) \approx 9{,}17\times10^{-3}\ \text{mol}}'
@@ -948,7 +948,7 @@ entries:
           **Le piège de cette question.** Couper du mauvais côté de l'oxygène du pont, et produire un acide en $\text{C}_5$ avec un alcool en $\text{C}_2$ (« acide 3-méthylbutanoïque + éthanol »). Le nom de l'ester dit dans quel sens lire : **éthanoate** de 3-méthylbutyle — la partie **acide** est l'éthanoate, en deux carbones. Un ester porte toujours le nom de son acide en premier.
         steps:
           - math: '\text{CH}_3-\text{CO}-\text{O}-\text{CH}_2-\text{CH}_2-\text{CH}(\text{CH}_3)-\text{CH}_3 \;+\; \text{H}_2\text{O} \;\rightleftharpoons\; \text{CH}_3-\text{CO}-\text{OH} \;+\; \text{HO}-\text{CH}_2-\text{CH}_2-\text{CH}(\text{CH}_3)-\text{CH}_3'
-            note: "Hydrolyse de l'ester : acide ethanoique + 3-methylbutan-1-ol. Double fleche, car la transformation est limitée -- c'est ce qui rend la question 3-4 possible."
+            note: "Hydrolyse de l'ester : acide éthanoïque + 3-methylbutan-1-ol. Double fleche, car la transformation est limitée -- c'est ce qui rend la question 3-4 possible."
       - id: q3
         part: "3- Exploitation de la courbe x(t)"
         stem: |-
@@ -975,11 +975,11 @@ entries:
           **Contrôle d'unité, à faire systématiquement.** $\left[\dfrac{\mathrm{d}x}{\mathrm{d}t}\right] = \text{mol.min}^{-1}$, divisé par des litres : on obtient bien des $\text{mol.L}^{-1}.\text{min}^{-1}$, l'unité que la question exige explicitement. Et l'ordre de grandeur — quelques centièmes de mole par litre et par minute pour une hydrolyse d'ester, lente, qui met plus de trois heures à s'achever — est cohérent.
         steps:
           - math: '\left.\frac{\mathrm{d}x}{\mathrm{d}t}\right|_{t=20} = \frac{0{,}057 - 0{,}008}{38{,}68 - (-0{,}74)} = \frac{0{,}049}{39{,}42} \approx 1{,}27\times10^{-3}\ \text{mol.min}^{-1}'
-            note: "Pente de la tangente (T), relevee sur ses DEUX EXTRÉMITÉS -- les deux points les plus eloignes, donc les moins sensibles a une erreur de lecture."
+            note: "Pente de la tangente (T), relevée sur ses DEUX EXTRÉMITÉS -- les deux points les plus éloignés, donc les moins sensibles a une erreur de lecture."
           - math: 'V = V(\text{H}_2\text{O}) + V(E) = 35 + 15 = 50\ \text{mL} = 50\times10^{-3}\ \text{L}'
             note: "Le volume TOTAL du mélange, impose deux fois par l'énoncé. Ni 15 mL (l'ester seul), ni 35 mL (l'eau seule)."
           - math: 'v(20\ \text{min}) = \frac{1}{V}\left.\frac{\mathrm{d}x}{\mathrm{d}t}\right|_{t=20} = \frac{1{,}27\times10^{-3}}{50\times10^{-3}}'
-            note: "Définition donnée par l'énoncé : la pente divisee par le volume total."
+            note: "Définition donnée par l'énoncé : la pente divisée par le volume total."
           - math: '\boxed{v(20\ \text{min}) \approx 2{,}5\times10^{-2}\ \text{mol.L}^{-1}.\text{min}^{-1}}'
             note: "Toute lecture entre 2,4 et 2,6 x 10^-2 est recevable. Diviser par 15 mL au lieu de 50 donnerait 8,2 x 10^-2 : faux d'un facteur 3,33."
       - id: q4
@@ -1054,9 +1054,9 @@ entries:
           - math: 'n_f(E) = 0{,}100 - 0{,}085 = 0{,}015\ \text{mol} \qquad n_f(\text{H}_2\text{O}) = 1{,}94 - 0{,}085 = 1{,}855\ \text{mol}'
             note: "Les deux réactifs à l'équilibre. L'ester n'a pas disparu : la transformation est limitée."
           - math: '\boxed{n_f(\text{acide}) = n_f(\text{alcool}) = x_{\text{éq}} = 0{,}085\ \text{mol}}'
-            note: "Les deux produits, formes en quantités égales (coefficients stoechiometriques tous égaux a 1)."
+            note: "Les deux produits, formes en quantités égales (coefficients stoechiométriques tous égaux a 1)."
           - math: '\tau = \frac{x_f}{x_{\text{max}}} = \frac{0{,}085}{0{,}100} = 85\ \%'
-            note: "Controle de vraisemblance, non demande : 85 pour cent, coherent avec un large excès d'eau, et strictement inférieur a 100."
+            note: "Controle de vraisemblance, non demande : 85 pour cent, cohérent avec un large excès d'eau, et strictement inférieur a 100."
       - id: q6
         stem: |-
           **3-4-** (0,5 pt) Déterminer la constante d'équilibre $K$ associée à la réaction d'hydrolyse du composé $(E)$.

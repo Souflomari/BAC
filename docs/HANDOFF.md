@@ -2756,3 +2756,89 @@ le plafond, pour qu'une collision de MASSE ne s'installe pas en silence.
 
 Six suites unitaires en CI : apprenant (26) · écriture (20) · typographie
 (10) · session (10) · épreuves (13) · mélange (7).
+
+### 11.12 « Aucun mot désaccentué sur 65 pages » — et 938 dans le corpus
+
+La porte `accents-manquants.mjs` existe depuis des mois, tourne en CI, et
+répondait, verte : **« Aucun mot français désaccentué sur 65 page(s). »**
+
+Le corpus contenait au même moment **938 occurrences** de formes nues dans le
+texte que l'élève lit : « coherent » (42), « etablie » (26), « continuite »
+(25), « recurrence » (22), « champ magnetique », « L'aveuglement des
+sociologues ». Rien que dans les `note:` des banques d'exercices — le
+raisonnement expert, c'est-à-dire la partie du produit qui prétend enseigner.
+
+**La porte ne mentait pas. Elle mesurait sa LISTE**, qui comptait 654 formes,
+et « empeche », « echappe », « coherent » n'y étaient pas. C'est le défaut de
+l'ADR 0031 décision 9 pris dans son autre sens : une pastille verte ne dit pas
+que tout a été mesuré — ici, elle disait la vérité sur un périmètre que
+personne n'avait re-mesuré depuis l'écriture de la liste.
+
+**Comment trouver les candidats sans dictionnaire français hors ligne.** Ni
+`aspell` ni `hunspell` n'existent dans cet environnement. Par PREUVE INTERNE :
+une forme nue est suspecte quand sa variante accentuée existe déjà dans le
+corpus et y est au moins cinq fois plus fréquente — « empeche » (2) contre
+« empêche » (132). Le corpus est son propre dictionnaire, et il ne peut pas
+être indisponible.
+
+**578 corrections, 41 fichiers.** Reste 389 occurrences délibérément non
+touchées : les formes à plusieurs lectures (`piege` → piège ou piégé ;
+`arrete` → arrête ou arrêté), qu'aucune règle ne tranche sans lire la phrase.
+Elles sont pour une relecture humaine, et la porte ne les garde pas.
+
+**LA RELECTURE DU DIFF EST LE SEUL GARDE-FOU QUI A TROUVÉ QUELQUE CHOSE.** Les
+deux garde-fous automatiques — une seule variante accentuée possible, contexte
+français obligatoire — ont laissé passer six erreurs, toutes attrapées en
+lisant `git diff --word-diff` mot par mot :
+
+- « conjugue l'égalité tout entière » et « on conjugue d, pas b ni c » — des
+  IMPÉRATIFS, devenus des participes accentués ;
+- « L'aveuglement des sociologues » — le NOM, devenu l'adverbe « aveuglément » ;
+- « le ressort ni serre ni » et « colore » — des conjugaisons valides ;
+- et surtout **`[[video:balancement]]` devenu `[[vidéo:balancement]]`** : une
+  DIRECTIVE de contenu, lue par le rendu. L'intégration vidéo de la leçon RLC
+  se serait éteinte en silence. Un slug de figure y avait échappé par accident
+  — il porte un trait d'union, que la frontière de mot exclut déjà. Le script
+  masque maintenant la directive entière : ne jamais dépendre d'un accident.
+
+Les six sont dans la liste d'exclusion du script, avec la raison. Cette liste
+est faite pour grandir, pas pour être juste du premier coup.
+
+**Et un chiffre qui mentait dans la porte elle-même.** Sur une première liste
+de routes fautive (les leçons vivent sous `/notions/<matière>/<slug>`, pas
+`/<matière>/<slug>`), les 62 routes ont rendu un 404. La porte a refusé —
+c'est le correctif du matin, et il a tenu. Mais elle a imprimé, juste
+au-dessus de « porte ROMPUE » : « Aucun mot français désaccentué sur **62
+page(s)** ». Elle comptait `routes.length`, pas ce qu'elle avait ouvert. Elle
+compte maintenant les pages RÉELLEMENT mesurées, et l'affiche sur le total :
+« 65 page(s) mesurée(s) sur 65 ».
+
+Liste de la porte : **654 → 846 formes**. Vérifié sur le rendu, 65 pages,
+zéro occurrence — et zéro faux positif, ce qui était le risque réel d'un
+élargissement de 192 formes.
+
+### 11.13 Deux soupçons re-mesurés, et déjà traités
+
+Deux mesures lancées ce jour-là ont retrouvé un terrain déjà couvert, et il
+faut le dire pour que personne ne le refasse une troisième fois.
+
+**L'indice de longueur.** Mesuré : la bonne réponse est strictement la plus
+longue dans 38,8 % des 1 612 items, contre 25 % au hasard. C'est exactement
+le chiffre du cliquet `indice-longueur.mjs` armé plus tôt dans la journée
+(« 38 % où la clé est la plus longue »). Rien de neuf.
+
+Mais la première formulation de la mesure, elle, était fausse, et c'est ce qui
+mérite d'être gardé : par matière, elle donnait « SVT 61,8 % », le pire du
+corpus. En SVT les quatre choix sont des paragraphes de 200 caractères ; l'un
+d'eux est forcément le plus long, et 8 caractères d'écart ne se voient pas.
+Re-mesuré au RAPPORT (longueur de la clé ÷ moyenne des distracteurs), la SVT
+est la matière la plus PROPRE du corpus : moyenne 1,09, et **zéro** item
+au-dessus de 1,5×. « Strictement le plus long » comptait un classement ; il ne
+mesurait pas ce qu'un élève peut voir.
+
+**L'indice absolu.** Mesuré : 295 items (18,3 %) portent un « toujours /
+jamais » dans un distracteur et pas dans la bonne réponse. Le cliquet
+`indice-absolu.mjs`, armé le même jour, mesure la chose opérante — « éliminer
+tout ce qui sur-affirme ne laisse qu'UNE réponse debout, et c'est la bonne » —
+et il est à zéro. Les deux chiffres ne se contredisent pas : le mien compte
+une asymétrie, le sien compte une asymétrie EXPLOITABLE.

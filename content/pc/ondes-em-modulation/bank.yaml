@@ -252,7 +252,7 @@ entries:
           - math: 'm = \frac{U_{s,\max} - U_{s,\min}}{U_{s,\max} + U_{s,\min}} = \frac{3-1}{3+1} = 0{,}5'
             note: "Le rapport des extrema elimine A (chapitre 4) ; il ne reste que m."
           - math: '\boxed{m = 0{,}5 < 1 \implies \text{bonne modulation}}'
-            note: "Critère du chapitre 4 : m < 1, l'enveloppe reste positive et fidele au signal modulant."
+            note: "Critère du chapitre 4 : m < 1, l'enveloppe reste positive et fidèle au signal modulant."
 
   # ── bk-2021-n-x4 — 2021 N, Exercice IV (Partie III) : lecture d'un oscillogramme a deux voies ──
   - id: bk-2021-n-x4
@@ -473,9 +473,9 @@ entries:
           **Le piège de cette question.** Poser $\pi=10$ au lieu de $\pi^2=10$ : ça multiplie $4\pi^2$ par un facteur $10/4\approx2{,}5$ supplémentaire et fausse tout le résultat. Deuxième piège, sur les préfixes : $C_1$ est en PICOfarads ($10^{-12}$), pas en microfarads ; convertir $85{,}4\ \text{pF}$ en $85{,}4\times10^{-6}\ \text{F}$ par réflexe multiplierait $L$ par un facteur $10^6$ et donnerait une valeur absurde, à des kilomètres de l'ordre de grandeur attendu pour une bobine d'accord.
         steps:
           - math: 'f_0 = \frac{1}{2\pi\sqrt{LC_1}} \implies \boxed{L = \frac{1}{4\pi^2 f_0^2 C_1}}'
-            note: "Condition d'accord (chapitre 6), isolee pour L au lieu de C."
+            note: "Condition d'accord (chapitre 6), isolée pour L au lieu de C."
           - math: 'f_0^2 = (1{,}71\times10^5)^2 = 2{,}9241\times10^{10}\ \text{Hz}^2'
-            note: "f0 = 171 kHz convertie en Hz avant d'être elevee au carré."
+            note: "f0 = 171 kHz convertie en Hz avant d'être élevée au carré."
           - math: '4\pi^2 f_0^2 C_1 = 40\times2{,}9241\times10^{10}\times8{,}54\times10^{-11} \approx 99{,}89'
             note: "Application numérique : pi^2 = 10 (impose par l'énoncé), C1 = 85,4 pF = 8,54e-11 F."
           - math: '\boxed{L = \frac{1}{99{,}89} \approx 1{,}00\times10^{-2}\ \text{H} = 10\ \text{mH}}'
@@ -570,7 +570,7 @@ entries:
           - math: 'f_p = \frac{1}{T_p} = \frac{1}{0{,}25\times10^{-3}} = 4000\ \text{Hz} = 4\ \text{kHz}'
             note: "Fréquence de la porteuse."
           - math: '\boxed{\text{proposition B}: f_p = 4\ \text{kHz}}'
-            note: "Seule B est juste : A et D échangent porteuse et signal modulant (4 kHz revient a la porteuse, 200 Hz reviendrait au signal, pas l'inverse) ; C avance une valeur erronee (100 Hz) pour le signal modulant."
+            note: "Seule B est juste : A et D échangent porteuse et signal modulant (4 kHz revient a la porteuse, 200 Hz reviendrait au signal, pas l'inverse) ; C avance une valeur erronée (100 Hz) pour le signal modulant."
       - id: q2a
         part: "Répondre par vrai ou faux en justifiant"
         stem: |-
@@ -583,7 +583,7 @@ entries:
           - math: 'm = \frac{U_{\max}-U_{\min}}{U_{\max}+U_{\min}} = \frac{6-2}{6+2} = 0{,}5'
             note: "Le rapport des extrema elimine A ; il ne reste que m (chapitre 4)."
           - math: '\boxed{m = 0{,}5 \neq 0{,}4 \implies \text{affirmation fausse}}'
-            note: "La valeur proposee (0,4) ne correspond pas a la valeur lue (0,5) ; l'affirmation est fausse."
+            note: "La valeur proposée (0,4) ne correspond pas a la valeur lue (0,5) ; l'affirmation est fausse."
       - id: q2b
         stem: |-
           **(0,25 pt)** **b.** La valeur de la composante continue de la tension est $U_0 = 2\ \text{V}$.
@@ -593,7 +593,7 @@ entries:
           - math: 'U_0 = \frac{U_{\max}+U_{\min}}{2} = \frac{6+2}{2} = 4\ \text{V}'
             note: "Composante continue = valeur moyenne de l'enveloppe (chapitre 3)."
           - math: '\boxed{U_0 = 4\ \text{V} \neq 2\ \text{V} \implies \text{affirmation fausse}}'
-            note: "La valeur proposee (2 V) ne correspond pas a la valeur lue (4 V) ; l'affirmation est fausse."
+            note: "La valeur proposée (2 V) ne correspond pas a la valeur lue (4 V) ; l'affirmation est fausse."
       - id: q3
         stem: |-
           **(0,5 pt)** Représenter l'allure du spectre de fréquences du signal modulé $u(t)$ sans respect d'échelle très précise.
@@ -607,7 +607,7 @@ entries:
           - math: 'u(t) = A\cos(2\pi f_p t) + \frac{Am}{2}\cos(2\pi (f_p-f_s) t) + \frac{Am}{2}\cos(2\pi (f_p+f_s) t)'
             note: "Trois composantes pures : le spectre est fait de trois raies."
           - math: 'f_p - f_s = 4000 - 200 = 3800\ \text{Hz} \qquad f_p + f_s = 4000 + 200 = 4200\ \text{Hz}'
-            note: "Position numérique des deux raies laterales, avec fp et fs de la question 1."
+            note: "Position numérique des deux raies latérales, avec fp et fs de la question 1."
           - math: '\boxed{\text{raies a } 3{,}8\ \text{kHz}\ (Am/2),\ 4{,}0\ \text{kHz}\ (A),\ 4{,}2\ \text{kHz}\ (Am/2)}'
             note: "Trois raies symétriques autour de fp ; la raie centrale deux fois plus haute que chaque raie laterale (m=0,5)."
 
@@ -834,7 +834,7 @@ entries:
           - math: 'C_1 = \frac{1}{4\times10\times2{,}6244\times10^{10}\times2\times10^{-3}} \approx 4{,}76\times10^{-10}\ \text{F}'
             note: "Application numérique."
           - math: '\boxed{C_1 \approx 4{,}76\times10^{-10}\ \text{F} \approx 476\ \text{pF}}'
-            note: "Ordre de grandeur realiste d'un condensateur d'accord (chapitre 6)."
+            note: "Ordre de grandeur réaliste d'un condensateur d'accord (chapitre 6)."
       - id: q3
         stem: |-
           **(0,5 pt)** La fréquence du signal modulant est $f_s = 5\ \text{kHz}$. Si on ajuste $R$ à la valeur $R_0 = 1{,}5\ \text{k}\Omega$, aura-t-on une démodulation de bonne qualité ? Justifier.
@@ -842,14 +842,14 @@ entries:
           Au chapitre 5, le détecteur de crête ne retrace fidèlement l'enveloppe que si sa décharge, entre deux sommets de la porteuse, respecte un compromis : assez lente pour ne pas redescendre avant le sommet suivant de la porteuse (donc la constante de temps $R_0C_0$ doit être grande devant la période de la porteuse, $1/f_p$), mais assez rapide pour ne pas rater les variations de l'enveloppe elle-même (donc $R_0C_0$ doit rester petit devant la période du signal modulant, $1/f_s$). Le chapitre 5 décrit ce compromis en mots (« charge rapide, décharge lente [qui] rattrape le sommet suivant ») ; ici on le teste numériquement, avec $C_0 = 1\ \mu\text{F}$ — la valeur fixée dans la Partie 1 du même sujet (« Dipôle RC — réponse à un échelon de tension ».md, sujet 2025 session normale, vérifié), puisque l'énoncé de cette Partie 3 renvoie explicitement au condensateur « précédemment utilisé » sans en redonner la valeur ici.
         steps:
           - math: 'R_0 C_0 = 1{,}5\times10^{3} \times 1\times10^{-6} = 1{,}5\times10^{-3}\ \text{s}'
-            note: "Constante de temps du detecteur de crete, avec C0 = 1 microF (Partie 1 du même sujet, « Dipôle RC — réponse à un échelon de tension ».md, verifie)."
+            note: "Constante de temps du detecteur de crête, avec C0 = 1 microF (Partie 1 du même sujet, « Dipôle RC — réponse à un échelon de tension ».md, verifie)."
           - math: '\frac{1}{f_p} = \frac{1}{162\times10^{3}} \approx 6{,}2\times10^{-6}\ \text{s} \qquad \frac{1}{f_s} = \frac{1}{5\times10^{3}} = 2{,}0\times10^{-4}\ \text{s}'
             note: "Les deux bornes du critère : période de la porteuse et période du signal modulant."
           - math: 'R_0C_0 = 1{,}5\times10^{-3}\ \text{s} \gg \frac{1}{f_p} = 6{,}2\times10^{-6}\ \text{s}'
-            note: "Première borne respectee : la decharge est bien lente devant la porteuse."
+            note: "Première borne respectée : la decharge est bien lente devant la porteuse."
           - math: 'R_0C_0 = 1{,}5\times10^{-3}\ \text{s} \not\ll \frac{1}{f_s} = 2{,}0\times10^{-4}\ \text{s} \qquad (R_0C_0 > 1/f_s)'
-            note: "Seconde borne violee : la decharge est trop lente pour suivre l'enveloppe."
-          - math: '\boxed{R_0C_0 > \frac{1}{f_s} \implies \text{demodulation de mauvaise qualite} \implies \text{réponse\,: non}}'
+            note: "Seconde borne violée : la decharge est trop lente pour suivre l'enveloppe."
+          - math: '\boxed{R_0C_0 > \frac{1}{f_s} \implies \text{démodulation de mauvaise qualité} \implies \text{réponse\,: non}}'
             note: "La double inégalité du chapitre 5 n'est pas vérifiée sur sa borne haute ; la réponse est non."
 
   # ── bk-2025-r-x3b — 2025 R, Exercice 3 (§2) : modulation d'amplitude,
@@ -961,7 +961,7 @@ entries:
           - math: '2\ \text{carreaux} = 0{,}10\ \text{ms} \implies 1\ \text{carreau} = 0{,}05\ \text{ms}'
             note: "Etalon de calibration de la figure 4 (double fleche horizontale, PAS une période)."
           - math: 'T = 1\ \text{carreau} = 0{,}05\ \text{ms} \implies F = \frac{1}{0{,}05\times10^{-3}}'
-            note: "Porteuse : une oscillation complete par carreau (13 cretes sur 12 carreaux)."
+            note: "Porteuse : une oscillation complete par carreau (13 crêtes sur 12 carreaux)."
           - math: '\boxed{F = 2{,}0\times10^{4}\ \text{Hz} = 20\ \text{kHz}}'
             note: "Fréquence de la porteuse."
           - math: 'T_{env} = 12\times0{,}05\ \text{ms} = 0{,}60\ \text{ms} \implies f = \frac{1}{0{,}60\times10^{-3}}'
@@ -1001,7 +1001,7 @@ entries:
           **Le piège de cette question.** Lire les extrema sur les lignes chiffrées de la figure 4 ($0{,}33\ \text{V}$ et $-0{,}33\ \text{V}$, soit $2$ carreaux) plutôt qu'à l'endroit RÉEL où les crêtes culminent ($9{,}7$ et $2{,}4$ carreaux) — les lignes chiffrées ne marquent que des repères d'axe, pas les crêtes de la porteuse elle-même ; s'y arrêter donnerait $U_{max}=0{,}33\ \text{V}$, une valeur bien trop petite qui ne correspond à aucune crête réelle du tracé. Deuxième piège : oublier la seconde condition ($f_p\gg f_{signal}$) et conclure uniquement sur $m<1$ — les deux conditions du chapitre 4 sont nécessaires ensemble, ni l'une ni l'autre ne suffit seule.
         steps:
           - math: 'U_{max} \approx 9{,}7\times0{,}165 \approx 1{,}6\ \text{V} \qquad U_{min} \approx 2{,}4\times0{,}165 \approx 0{,}4\ \text{V}'
-            note: "Lecture des cretes de porteuse aux extrema d'enveloppe (1 carreau = 0,165 V)."
+            note: "Lecture des crêtes de porteuse aux extrema d'enveloppe (1 carreau = 0,165 V)."
           - math: 'A = \frac{U_{max}+U_{min}}{2} = \frac{1{,}6+0{,}4}{2}'
             note: "Somme des extrema : elimine m (chapitre 4)."
           - math: '\boxed{A = 1{,}0\ \text{V}}'
@@ -1146,7 +1146,7 @@ entries:
           - math: '\boxed{f_2 \approx 302{,}0\times10^{3}\ \text{Hz} = 302{,}0\ \text{kHz}}'
             note: "Borne basse de la plage de sélection."
           - math: '\boxed{540\ \text{kHz} \in [302{,}0\,;\,604{,}0]\ \text{kHz} \implies \text{l etage X permet bien la sélection de l émission a 540 kHz}}'
-            note: "540 kHz tombe strictement entre les deux bornes : la station voulue est atteignable en reglant C entre C1 et C2."
+            note: "540 kHz tombe strictement entre les deux bornes : la station voulue est atteignable en réglant C entre C1 et C2."
 
   # ── bk-2015-n-x3b — 2015 N, Exercice 3 (Deuxième partie) : modulation d'amplitude ──
   # Sœur de bk-2015-n-x3 (rc-charge, Première partie du même Exercice 3) :
@@ -1524,16 +1524,16 @@ entries:
     intro: |-
       **Réception d'une onde modulée en amplitude et démodulation (examen national, session de rattrapage 2012 — exercice « Electricité », Deuxième partie, 2,00 points sur 05,00).** <!-- DÉFAUT DU SUJET OFFICIEL, DÉCLARÉ (F5), 2026-09-04.
            Le sommaire de la page 1 du document officiel francophone imprime
-           « Reception d'une MODULÉE en amplitude, et la demodulation
+           « Réception d'une MODULÉE en amplitude, et la démodulation
            d'amplitude » — le mot « onde » MANQUE. L'original arabe RS28 écrit
            « استقبال موجة مضمنة الوسع وإزالة التضمين » = « reception d'une ONDE
-           modulée en amplitude et demodulation », et le corps de la page 5 du
-           français est, lui, CORRECT : « Reception d'une onde modulée en
-           amplitude et demodulation ». Le titre retenu ici est donc celui du
+           modulée en amplitude et démodulation », et le corps de la page 5 du
+           français est, lui, CORRECT : « Réception d'une onde modulée en
+           amplitude et démodulation ». Le titre retenu ici est donc celui du
            CORPS, qui est celui qui titre réellement la partie ; le défaut ne
-           porte que sur la ligne du sommaire. Cosmetique, aucune conséquence.
+           porte que sur la ligne du sommaire. Cosmétique, aucune conséquence.
            L'edition française de ce sujet étant MINISTERIELLE (code d'examen
-           RS28 au cartouche ; pieds de page vides sur 6/6 ; colonne « Bareme »
+           RS28 au cartouche ; pieds de page vides sur 6/6 ; colonne « Barème »
            miroir de la colonne arabe), c'est un défaut de l'edition OFFICIELLE
            de langue française, pas d'un intermédiaire prive. Voir
            docs/sujets/_incoming/pc-2012-r.md, F5 / V.7. -->
@@ -1612,9 +1612,9 @@ entries:
 
           ⚠️ **Un avertissement sur cette question, que tu dois lire avant d'y répondre.** L'énoncé ci-dessus est reproduit **exactement tel que le sujet officiel l'imprime**, « 1 et 2 » compris — et **il est fautif**. Les parties qui démodulent sont les parties **2 et 3** : la partie 1 est le circuit d'accord, elle **sélectionne** la station et ne démodule rien, ce que la question 1-1 vient précisément d'établir. Trois témoins indépendants le confirment : l'original arabe du même sujet écrit **deux fois** « les parties 2 et 3 », le corrigé répond pour les parties 2 et 3, et la figure 3 elle-même montre que la partie 1 est un simple circuit bouchon. **C'est un défaut du sujet officiel, déclaré ici et non réparé — et la réponse attendue porte sur les parties 2 et 3.** <!-- DÉFAUT F1 DU SUJET OFFICIEL, DÉCLARÉ ET NON RÉPARÉ — ARBITRAGE OWNER OUVERT, 2026-09-04.
                VERBATIM DE LA COUCHE DE TEXTE FRANÇAISE, p. 5 : « 2- Les deux
-               parties 1 et 2, permettent la demodulation du signal recu. Quel est
-               le rôle de chacune des deux parties dans la demodulation ? (0,5) ».
-               TROIS TEMOINS INDÉPENDANTS DISENT « 2 ET 3 », les trois relus AU
+               parties 1 et 2, permettent la démodulation du signal recu. Quel est
+               le rôle de chacune des deux parties dans la démodulation ? (0,5) ».
+               TROIS TÉMOINS INDÉPENDANTS DISENT « 2 ET 3 », les trois relus AU
                RENDU par deux passes séparées :
                  1. L'ORIGINAL ARABE, DEUX OCCURRENCES SUR LA MÊME LIGNE (p. 5,
                     y = 519,7) : « الجزءان 2 و3 » en x = [416,2 ; 479,0] et
@@ -1638,20 +1638,20 @@ entries:
                PORTÉE EXACTE, SANS L'EXAGERER : la question reste RESOLUBLE — un
                eleve qui a compris le montage répond sur 2 et 3 —, mais un élève
                qui suit l'énoncé A LA LETTRE repete la réponse de 1-1 et laisse
-               sans réponse la partie 3, soit la moitié du bareme. 0,5 PT EXPOSE.
+               sans réponse la partie 3, soit la moitié du barème. 0,5 PT EXPOSE.
                CLASSIFICATION : l'edition française de ce sujet est MINISTERIELLE
                (code d'examen RS28 au cartouche ; mention d'époque
                « (الترجمة الفرنسية) » sans le cadre anachronique
                « المسالك الدولية » ; pieds de page VIDES sur 6/6 ; colonne
-               « Bareme » miroir valeur par valeur de la colonne arabe). C'est
+               « Barème » miroir valeur par valeur de la colonne arabe). C'est
                donc un défaut du SUJET OFFICIEL, pas d'un intermédiaire prive.
                CE QUI EST FAIT ICI : énoncé VERBATIM (« 1 et 2 »), défaut declare
-               au fil du texte de l'élève et dans le sourcing.note, RÉPONSE ECRITE
+               au fil du texte de l'élève et dans le sourcing.note, RÉPONSE ÉCRITE
                POUR LES PARTIES 2 ET 3 — jamais pour la partie 1.
-               CE QUI N'EST PAS FAIT, ET DELIBEREMENT : l'arbitrage entre les deux
+               CE QUI N'EST PAS FAIT, ET DÉLIBÉRÉMENT : l'arbitrage entre les deux
                issues. (a) VERBATIM + NOTE ÉDITORIALE — la forme dans laquelle
-               cette entrée est ecrite aujourd'hui, parce qu'il faut bien qu'elle
-               soit ecrite d'une façon ; ce n'est PAS une decision. (b) CORRECTION
+               cette entrée est écrite aujourd'hui, parce qu'il faut bien qu'elle
+               soit écrite d'une façon ; ce n'est PAS une decision. (b) CORRECTION
                DECLAREE — l'énoncé écrit « 2 et 3 » avec la reparation declaree au
                point d'usage, comme F2/F3/F4/F5 le sont dans les autres entrées de
                ce sujet. Précédents maison, les deux : PC 2012 N (correction
@@ -1713,4 +1713,4 @@ entries:
           - math: 'u_{HM} \;\longrightarrow\; \text{courbe (c)}'
             note: "Noeud H, après C3 et le chapitre 4 : le signal modulant seul, centre sur zéro."
           - math: '\text{(a) et (c)\,: même amplitude } 0{,}97\ \text{div, même période } \approx 5{,}1\ \text{div, décalage } \approx 2\ \text{div}'
-            note: "L'argument mesure qui verrouille l'association : (a) et (c) portent la MÊME sinusoide, la seule différence étant la composante continue retiree par la partie 3."
+            note: "L'argument mesure qui verrouille l'association : (a) et (c) portent la MÊME sinusoïde, la seule différence étant la composante continue retirée par la partie 3."
