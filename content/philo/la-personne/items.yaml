@@ -1499,83 +1499,372 @@ items:
       **Le dépassement attendu :** chapitres 6, 3 ou 7 -- jamais Hume, qui
       appartient à l'antithèse.
 
+  # Ajoutés le 2026-09-05 : huit familles sous le plancher de 3 items du banc,
+  # dont `affirmation-de-soi-non-pertinente` sans AUCUN item — sondée en leçon
+  # seulement, ce qui ne compte pas dans le modèle apprenant. Quatre items,
+  # douze places, l'ajustement est exact.
+  - id: PERS-25
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: philo_la_personne
+    tags: [kant, dignite, critere-de-la-personne]
+    stem: >
+      « Je ne suis pas un numéro », dit un salarié à qui l'on refuse tout
+      entretien. Quel intérêt philosophique cette phrase a-t-elle pour la
+      question du statut de personne ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle revendique en acte ce que Kant fonde en droit : refuser d'être traité comme un simple moyen, c'est se poser comme une fin en soi."
+        correct: true
+      - id: B
+        text: "Aucun : c'est un mouvement d'humeur, un fait psychologique dont la philosophie n'a rien à tirer pour établir un critère de la personne."
+        correct: false
+        misconception: mc.philo.la_personne.affirmation-de-soi-non-pertinente
+        feedback: >
+          Le refus d'être réduit à une chose n'est pas seulement un sentiment :
+          c'est un acte qui présuppose ce que le critère kantien affirme — que
+          celui qui parle est une fin en soi, et non un moyen à disposition.
+          L'expérience vécue et le principe se répondent ; la philosophie ne les
+          sépare pas comme le fait cette réponse.
+      - id: C
+        text: "Elle rappelle que le statut de personne tient à l'appartenance biologique à l'espèce humaine, laquelle ne peut être retirée par aucune organisation."
+        correct: false
+        misconception: mc.philo.la_personne.personne-reduite-a-espece
+        feedback: >
+          Le chapitre ne fonde pas le statut de personne sur l'espèce, mais sur
+          un critère : la nature raisonnable, la capacité de se donner à
+          soi-même ses fins. Confondre les deux rendrait le mot « personne »
+          inutile — il ferait double emploi avec « être humain » — et interdirait
+          de comprendre pourquoi l'esclavage est une négation, et pas seulement
+          une erreur de classement.
+      - id: D
+        text: "Elle montre que la dignité vient de la reconnaissance que l'organisation accorde : sans entretien ni égards, ce salarié cesse effectivement d'être une personne."
+        correct: false
+        misconception: mc.philo.la_personne.dignite-confondue-avec-reconnaissance-sociale
+        feedback: >
+          Si la dignité venait de la reconnaissance, on ne pourrait pas dire
+          qu'elle est BAFOUÉE — il n'y aurait rien à bafouer. C'est précisément
+          parce qu'elle est intrinsèque, indépendante de tout regard extérieur,
+          que le déni de reconnaissance constitue une injustice et non un simple
+          changement de statut.
+    correct_feedback: >
+      La phrase est l'exact envers subjectif du critère kantien. Kant énonce en
+      droit que la personne est une fin en soi, jamais un simple moyen ; le
+      salarié le revendique en acte. L'expérience et le principe se répondent —
+      c'est pourquoi une accroche vécue peut ouvrir un chapitre de philosophie.
+    solution: |
+      **Ce que Kant établit.** La personne est un être raisonnable, capable de
+      se donner ses propres fins. À ce titre elle a une DIGNITÉ, non un prix :
+      elle ne s'échange pas, elle ne s'utilise pas comme un moyen seulement.
+
+      **Ce que le refus ajoute.** Rien au contenu du principe — mais il en donne
+      l'expérience. Celui qui dit « je ne suis pas un numéro » affirme, sans le
+      formuler, exactement ce que le critère fonde : que le traiter comme
+      interchangeable, c'est manquer ce qu'il est.
+
+      **Pourquoi la dignité ne peut pas venir de la reconnaissance.** Sinon la
+      priver de reconnaissance ne serait pas une injustice, mais une simple
+      redéfinition. C'est parce que la dignité tient à la nature raisonnable, et
+      non au regard d'autrui, qu'elle peut être MÉCONNUE — et donc réclamée.
+
+  - id: PERS-26
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: philo_la_personne
+    tags: [depersonnalisation, dignite, universalite]
+    stem: >
+      Un système juridique refuse la qualité de sujet de droit à toute une
+      catégorie d'êtres humains. Que peut-on en dire ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que ce refus est une négation de la dignité, non sa suppression : la dignité tient à la nature raisonnable, et c'est justement pourquoi le droit peut la méconnaître sans l'abolir."
+        correct: true
+      - id: B
+        text: "Que ce refus est sans portée philosophique : ceux qui le subissent peuvent le contester, mais leur protestation n'est qu'un fait psychologique sans valeur d'argument."
+        correct: false
+        misconception: mc.philo.la_personne.affirmation-de-soi-non-pertinente
+        feedback: >
+          La protestation de celui qu'on chosifie n'est pas un simple fait à
+          constater : elle EXHIBE ce que le droit nie, à savoir un être capable
+          de se rapporter à soi, de juger, d'exiger. C'est un argument en acte,
+          et c'est pourquoi il porte contre le système qui le suscite.
+      - id: C
+        text: "Que ce refus est purement formel : la qualité de personne étant l'appartenance à l'espèce humaine, elle demeure entière quoi que le droit décide."
+        correct: false
+        misconception: mc.philo.la_personne.personne-reduite-a-espece
+        feedback: >
+          La conclusion est juste, la raison ne l'est pas. Ce qui demeure malgré
+          le droit, ce n'est pas l'appartenance à une espèce — un fait
+          biologique, qui n'oblige personne — mais la nature raisonnable, qui
+          fonde une exigence morale. Sans ce déplacement, on ne peut pas dire
+          pourquoi le refus est INJUSTE.
+      - id: D
+        text: "Que la dignité se mérite : elle revient à ceux dont la naissance ou le rang la justifie, et un système peut légitimement en réserver le bénéfice."
+        correct: false
+        misconception: mc.philo.la_personne.dignite-fondee-sur-privilege
+        feedback: >
+          C'est exactement ce que le critère kantien exclut. La dignité ne
+          dépend ni de la naissance, ni du rang, ni d'aucun mérite : elle tient à
+          la nature raisonnable, que tout être raisonnable possède également.
+          Un « privilège de dignité » est une contradiction dans les termes —
+          ce serait un prix, non une dignité.
+    correct_feedback: >
+      Le droit peut refuser la RECONNAISSANCE d'un statut ; il ne peut pas
+      supprimer ce qui la fonde. C'est cette distinction qui permet de dire
+      qu'un système est injuste plutôt que simplement différent — et sans elle,
+      la critique de l'esclavage n'aurait aucun point d'appui.
+    solution: |
+      **Deux niveaux à ne pas confondre.**
+      - *La reconnaissance juridique* : un fait institutionnel, révocable, qui
+        varie d'un pays et d'une époque à l'autre.
+      - *La dignité* : une propriété de l'être raisonnable, que le droit
+        constate ou méconnaît, mais ne crée pas.
+
+      **La conséquence critique.** Si le droit fondait la dignité, un système
+      esclavagiste ne pourrait pas être dit injuste : il aurait simplement
+      d'autres règles. C'est parce que la dignité lui préexiste qu'on peut le
+      juger.
+
+      **Et l'universalité.** Le critère kantien ne connaît ni degrés ni
+      privilèges : tout être raisonnable est une fin en soi. Faire dépendre la
+      dignité de la naissance reviendrait à lui donner un prix — c'est-à-dire à
+      la supprimer.
+
+  - id: PERS-27
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: philo_la_personne
+    tags: [locke, hume, identite-personnelle]
+    stem: >
+      Locke et Hume traitent tous deux de l'identité personnelle. Quelle
+      formulation rend correctement leurs positions ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Locke fonde l'identité personnelle sur la continuité de conscience, distincte de celle de l'organisme ; Hume n'y trouve qu'un faisceau de perceptions."
+        correct: true
+      - id: B
+        text: "Locke exige une chaîne ininterrompue de souvenirs, si bien qu'un seul oubli suffirait à faire de quelqu'un une autre personne ; c'est ce que Hume lui reproche."
+        correct: false
+        misconception: mc.philo.la_personne.locke-mecanisme-details-mal-compris
+        feedback: >
+          Locke ne demande pas une mémoire sans lacune : il distingue le « même
+          homme » — la continuité de l'organisme — et la « même personne » —
+          terme forensique, lié à l'imputabilité — que la continuité de
+          conscience relie de proche en proche. Un oubli ponctuel ne rompt pas
+          cette chaîne, et l'objection que la réponse prête à Hume vise une
+          version durcie de Locke.
+      - id: C
+        text: "Hume soutient qu'aucune perception n'existe réellement et que l'esprit est vide ; il conclut de là à l'existence d'une âme substantielle qui les unifierait."
+        correct: false
+        misconception: mc.philo.la_personne.hume-these-mal-comprise
+        feedback: >
+          Les deux moitiés se contredisent, et aucune n'est de Hume. Il ne nie
+          pas les perceptions — il n'en trouve QUE, précisément, par
+          introspection : jamais de « moi » séparé qui les posséderait. Et il en
+          conclut l'inverse de ce que dit la réponse : pas d'âme-substance, mais
+          un faisceau de perceptions liées par l'habitude.
+      - id: D
+        text: "Les deux s'accordent : la question de l'identité personnelle se règle par la continuité du corps, seule donnée observable dont on dispose."
+        correct: false
+        misconception: mc.philo.la_personne.individu-identite-personnelle-confondus
+        feedback: >
+          C'est justement ce que Locke sépare : le « même homme » (l'organisme
+          continu) et la « même personne » ne coïncident pas nécessairement. Et
+          Hume ne cherche pas non plus du côté du corps : son enquête est
+          introspective. Rabattre l'identité personnelle sur la continuité
+          corporelle, c'est effacer le problème plutôt que le traiter.
+    correct_feedback: >
+      Locke déplace la question du corps vers la conscience, en distinguant
+      « même homme » et « même personne ». Hume pousse l'enquête plus loin :
+      cherchant le moi par introspection, il ne trouve qu'un faisceau de
+      perceptions, et refuse d'y ajouter une substance qu'on n'observe jamais.
+    solution: |
+      **Locke.** L'identité de la personne n'est pas celle de l'organisme. Un
+      même homme peut ne plus être la même personne, et réciproquement. Le lien
+      est la continuité de CONSCIENCE — ce à quoi le sujet peut se rapporter
+      comme sien —, ce qui donne son sens au terme « forensique » : on n'impute
+      un acte qu'à qui peut s'y reconnaître.
+
+      **Hume.** Il applique son principe empiriste : à quelle impression
+      correspond l'idée de « moi » ? Il n'en trouve aucune. Il ne rencontre
+      jamais qu'une perception particulière — chaleur, couleur, douleur — jamais
+      un moi qui les aurait. D'où la thèse du faisceau : ce qu'on appelle moi est
+      une collection liée par la ressemblance et la causalité, non une substance.
+
+      **Ce qu'ils partagent.** Le refus de régler la question par le corps —
+      c'est-à-dire le refus de confondre l'individu et la personne.
+
+  - id: PERS-28
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_la_personne
+    tags: [imputabilite, sujet-de-droit, identite-personnelle]
+    stem: >
+      Pourquoi le droit n'impute-t-il pas un acte de la même manière à un adulte
+      lucide et à une personne dont le discernement est aboli ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que l'imputabilité suppose de comprendre son acte et de pouvoir agir autrement : elle exige un sujet capable de se rapporter à ce qu'il fait, pas seulement d'en être la cause."
+        correct: true
+      - id: B
+        text: "Parce que l'imputabilité est un pur enchaînement causal : on impute à qui a matériellement produit l'effet, et l'expertise sert seulement à établir cette causalité."
+        correct: false
+        misconception: mc.philo.la_personne.imputabilite-mal-fondee
+        feedback: >
+          Si l'imputabilité était une pure causalité, une tuile qui tombe serait
+          responsable du dommage. Le droit demande davantage : la compréhension
+          de l'acte et la possibilité d'agir autrement. C'est exactement ce que
+          la notion de personne apporte — un sujet, non un maillon.
+      - id: C
+        text: "Parce que l'imputabilité est un statut administratif que l'État accorde ou retire, indépendamment de tout état mental."
+        correct: false
+        misconception: mc.philo.la_personne.imputabilite-mal-fondee
+        feedback: >
+          Le statut administratif enregistre une condition, il ne la crée pas.
+          C'est parce qu'un sujet peut ou non comprendre et choisir que le droit
+          l'estime imputable — et l'expertise psychiatrique existe précisément
+          pour établir cette condition, ce qui n'aurait aucun sens si le statut
+          était librement attribué.
+      - id: D
+        text: "Parce qu'il s'agit de deux individus différents au sens strict : la continuité du corps ne suffit pas, or elle est seule vérifiable."
+        correct: false
+        misconception: mc.philo.la_personne.individu-identite-personnelle-confondus
+        feedback: >
+          La question n'est pas de savoir s'il s'agit du même individu — c'est
+          bien le même corps, la même histoire. Elle porte sur la capacité, au
+          moment de l'acte, de comprendre et de choisir. Confondre l'identité de
+          l'individu avec les conditions de l'imputation mélange deux problèmes
+          distincts.
+    correct_feedback: >
+      L'imputabilité ne demande pas seulement d'avoir causé l'acte, mais d'avoir
+      pu le comprendre et faire autrement. C'est la raison pour laquelle le
+      droit a besoin du concept de personne : il impute à un sujet, pas à un
+      maillon d'une chaîne causale.
+    solution: |
+      **Ce que « imputer » ajoute à « causer ».** Une avalanche cause des
+      dommages ; on ne les lui impute pas. L'imputation suppose un être capable
+      de se représenter son acte, d'en peser les raisons, et d'agir autrement.
+
+      **D'où le besoin du concept de personne.** Le droit ne s'adresse pas à des
+      corps, mais à des sujets. C'est le sens du terme « forensique » chez
+      Locke : la personne est ce à quoi l'on impute.
+
+      **Ce que cela n'implique pas.** Que le discernement aboli supprime la
+      dignité : la personne dont le discernement est aboli reste une fin en soi,
+      et c'est même à ce titre qu'on la protège au lieu de la punir. Capacité
+      d'imputation et dignité sont deux questions distinctes.
+
+  - id: PERS-29
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: philo_la_personne
+    tags: [depersonnalisation, dignite, reconnaissance]
+    stem: >
+      Dans un guichet administratif, on n'appelle les usagers que par leur
+      numéro de dossier, et aucune demande ne peut être expliquée de vive voix.
+      Un usager proteste. Que faut-il en dire ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qu'une procédure devient chosification quand plus rien ne s'adresse à un sujet capable de comprendre et de répondre."
+        correct: true
+      - id: B
+        text: "Que cette protestation n'a aucune portée philosophique : la gêne ressentie est un fait subjectif, sans rapport avec la question du statut de personne."
+        correct: false
+        misconception: mc.philo.la_personne.affirmation-de-soi-non-pertinente
+        feedback: >
+          Protester, c'est exhiber en acte ce que la procédure a laissé de côté :
+          un être capable de se rapporter à son propre traitement et de le juger.
+          Le geste ne prouve pas seulement qu'on est mal à l'aise — il manifeste
+          précisément la capacité sur laquelle repose le statut de personne.
+      - id: C
+        text: "Que sa dignité a été effectivement supprimée par l'administration, puisque la dignité consiste dans les égards qu'on reçoit d'autrui."
+        correct: false
+        misconception: mc.philo.la_personne.dignite-confondue-avec-reconnaissance-sociale
+        feedback: >
+          Si la dignité consistait dans les égards reçus, un traitement
+          méprisant ne serait pas un manquement mais une simple redéfinition, et
+          il n'y aurait rien à réclamer. C'est parce qu'elle tient à la nature
+          raisonnable, indépendamment de tout regard, qu'un déni d'égards
+          constitue une faute.
+      - id: D
+        text: "Que la dépersonnalisation se réduit à un sentiment désagréable, sans lien avec le statut juridique de personne, qui demeure entier."
+        correct: false
+        misconception: mc.philo.la_personne.depersonnalisation-reduite-a-sentiment
+        feedback: >
+          Le statut juridique demeure, c'est exact — mais la dépersonnalisation
+          n'est pas pour autant un simple ressenti. Elle décrit un traitement qui
+          cesse de s'adresser à un sujet : ce n'est pas la sensibilité de
+          l'usager qui est en cause, c'est la forme de la relation qu'on lui
+          impose.
+    correct_feedback: >
+      Une procédure n'est pas en elle-même une chosification : elle le devient
+      quand elle ne laisse plus aucune place à un sujet qui comprend et répond.
+      La protestation n'est pas un simple malaise — elle manifeste la capacité
+      même que le traitement avait cessé de reconnaître.
+    solution: |
+      **Ce que la procédure a de légitime.** Traiter des dossiers selon des
+      règles impersonnelles est une condition de l'égalité : c'est ce qui empêche
+      l'arbitraire et la faveur.
+
+      **Où passe la limite.** Elle est franchie quand le dispositif ne prévoit
+      plus aucun moment où quelqu'un puisse expliquer, comprendre, contester.
+      L'usager n'est alors plus un interlocuteur : il est une entrée.
+
+      **Ce que la protestation établit.** Elle n'est pas un argument d'humeur :
+      en réclamant d'être entendu, celui qui parle exerce exactement la capacité
+      — comprendre, juger, répondre — sur laquelle le statut de personne est
+      fondé. Le fait et le principe se rejoignent.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après PERS-25 à PERS-29. Huit familles siégeaient sous
+# le plancher, dont `affirmation-de-soi-non-pertinente` sans AUCUN item de banc
+# — sondée en leçon seulement, ce qui ne compte pas dans le modèle apprenant.
+# Tableau GÉNÉRÉ contre web/scripts/lib/couverture-compte.mjs, gardé par
+# scripts/resume-couverture.mjs.
 coverage_summary:
-  # Computed by loading this file with js-yaml and tallying every
-  # choices[].misconception value per item — an item counts once per
-  # misconception if ANY of its distractors carries that id (house
-  # convention, matching content/philo/la-liberte and autrui's items.yaml).
-  # This is a LEGACY end-bank (PERS-1..PERS-24 predate per-distractor
-  # tagging — same Gap-4-shaped state as la-liberte/autrui before their own
-  # retrofits) tagged in this pass: every one of the 72 distractors across
-  # the 24 items now carries a real misconception id (no null tags), which
-  # is stricter than the house default. Per the recipe's "Honest coverage"
-  # judgment call, floor gaps below are reported truthfully rather than
-  # padded.
-  total_items: 24
-  floor: 3
-  floor_met: false
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.philo.la_personne.individu-personne-synonymes: 3
-    mc.philo.la_personne.personne-reduite-a-espece: 1
-    mc.philo.la_personne.individu-identite-personnelle-confondus: 3
-    mc.philo.la_personne.identite-numerique-confondue-personnelle: 3
-    mc.philo.la_personne.criteres-des-auteurs-confondus: 8
-    mc.philo.la_personne.kant-prix-dignite-mal-compris: 5
-    mc.philo.la_personne.dignite-fondee-sur-privilege: 2
-    mc.philo.la_personne.locke-critere-mal-identifie: 3
-    mc.philo.la_personne.locke-hume-confondus: 4
-    mc.philo.la_personne.hume-these-mal-comprise: 2
-    mc.philo.la_personne.locke-mecanisme-details-mal-compris: 3
-    mc.philo.la_personne.personne-physique-morale-confondues: 8
-    mc.philo.la_personne.imputabilite-mal-fondee: 5
-    mc.philo.la_personne.depersonnalisation-reduite-a-sentiment: 6
-    mc.philo.la_personne.dignite-confondue-avec-reconnaissance-sociale: 1
-    mc.philo.la_personne.r0-tension-non-tenue: 8
-    mc.philo.la_personne.methode-dissertation-mal-appliquee: 7
-    mc.philo.la_personne.affirmation-de-soi-non-pertinente: 0
-  notes: >-
-    Every distractor across the 24 legacy items now carries a real
-    misconception id (no null tags) — the Gap-4-shaped fix this pass exists
-    to make (this file was found with `misconceptions: []` and zéro tags,
-    same starting state as la-liberte's and autrui's items.yaml before their
-    own retrofits). 13 of 18 models clear the ≥3 floor. FIVE do not, and
-    floor_met is reported honestly rather than padded:
-    personne-reduite-a-espece (1, PERS-1), dignite-fondee-sur-privilege (2,
-    PERS-2/PERS-13), hume-these-mal-comprise (2, PERS-4/PERS-16), and
-    dignite-confondue-avec-reconnaissance-sociale (1, PERS-21) are real but
-    thin in the legacy bank — a follow-up item pass should add 1-2 items
-    each. affirmation-de-soi-non-pertinente (0) is a genuinely NEW axis this
-    pass surfaces: it comes from the r-bac 2015 قولة text (« lorsque je
-    refuse d'être traité comme une chose, j'affirme mon moi en tant que
-    personne »), whose active self-affirmation-through-refusal framing the
-    lesson's own R0-R7 body never poses directly (R2's Kant and R6's
-    dépersonnalisation are both more STATIC — a fact possessed or a status
-    retired by others — never a status the subject actively claims by
-    refusing objectification) — see exercises.yaml's header for the full
-    routing rationale. It is covered by checkpoints.yaml's cp-bac-affirmation
-    instead (checkpoints do not count toward this floor, per house
-    convention), and is flagged here as the clearest item-authoring gap for
-    a follow-up pass. All four thin-but-nonzero models above also each get a
-    reinforcing checkpoint distractor (see checkpoints.yaml's coverage note)
-    so no under-floor model is left without at least some in-lesson
-    exposure, even though checkpoints never count toward this tally.
-    Length rebalance (recipe's philo addendum, mandatory — cited ~97% tell):
-    the legacy bank's correct answer was the LONGEST option in 18/24 items
-    (75%) before this pass — a clear instance of the campaign's cited
-    "longest = correct" tell, confirmed with a scratch js-yaml length-check
-    script (not eyeballed) before any edit was made. Distractors were
-    enriched with additional philosophical substance (an extra justifying
-    clause, a named premise, a conséquence spelled out — never by trimming
-    the correct answer's content), in two passes: a first pass fixed 14 of
-    the 18 rank-1 items down to rank 2, then a second pass (re-running the
-    same script, which showed the first pass had only relocated the tell to
-    "correct is always 2nd-of-4" — 19/24 at rank 2, 0/24 at rank 3 or 4, a
-    monotonic pattern just as real as the original one) enriched a further
-    distractor on 8 of those items (pushing correct to rank 3) and on 3
-    items (PERS-2, PERS-4, PERS-9 — pushing correct to rank 4, the
-    shortest). Final distribution, re-verified with the same script:
-    longest in 5/24 (20.8% — kept deliberately on PERS-10, PERS-14, PERS-20,
-    PERS-21 and PERS-23, each of which legitimately has to state a two-part
-    distinction or définition in full), 2nd-longest in 8/24, 3rd in 8/24,
-    shortest in 3/24 — genuinely varied across all four ranks, not a
-    monotonic pattern relocated to a différent rank.
+    mc.philo.la_personne.individu-personne-synonymes:                   { count: 3, items: [PERS-1, PERS-10, PERS-11] }
+    mc.philo.la_personne.personne-reduite-a-espece:                     { count: 3, items: [PERS-1, PERS-25, PERS-26] }
+    mc.philo.la_personne.individu-identite-personnelle-confondus:       { count: 4, items: [PERS-1, PERS-11, PERS-27, PERS-28] }
+    mc.philo.la_personne.identite-numerique-confondue-personnelle:      { count: 3, items: [PERS-8, PERS-10, PERS-15] }
+    mc.philo.la_personne.criteres-des-auteurs-confondus:                { count: 7, items: [PERS-2, PERS-3, PERS-4, PERS-6, PERS-17, PERS-23, PERS-24] }
+    mc.philo.la_personne.kant-prix-dignite-mal-compris:                 { count: 3, items: [PERS-2, PERS-12, PERS-13] }
+    mc.philo.la_personne.dignite-fondee-sur-privilege:                  { count: 3, items: [PERS-2, PERS-13, PERS-26] }
+    mc.philo.la_personne.locke-critere-mal-identifie:                   { count: 3, items: [PERS-3, PERS-14, PERS-15] }
+    mc.philo.la_personne.locke-hume-confondus:                          { count: 4, items: [PERS-3, PERS-4, PERS-16, PERS-17] }
+    mc.philo.la_personne.hume-these-mal-comprise:                       { count: 3, items: [PERS-4, PERS-16, PERS-27] }
+    mc.philo.la_personne.locke-mecanisme-details-mal-compris:           { count: 3, items: [PERS-14, PERS-15, PERS-27] }
+    mc.philo.la_personne.personne-physique-morale-confondues:           { count: 6, items: [PERS-5, PERS-10, PERS-12, PERS-16, PERS-18, PERS-21] }
+    mc.philo.la_personne.imputabilite-mal-fondee:                       { count: 3, items: [PERS-5, PERS-19, PERS-28] }
+    mc.philo.la_personne.depersonnalisation-reduite-a-sentiment:        { count: 4, items: [PERS-6, PERS-20, PERS-21, PERS-29] }
+    mc.philo.la_personne.dignite-confondue-avec-reconnaissance-sociale: { count: 3, items: [PERS-21, PERS-25, PERS-29] }
+    mc.philo.la_personne.r0-tension-non-tenue:                          { count: 3, items: [PERS-7, PERS-8, PERS-9] }
+    mc.philo.la_personne.methode-dissertation-mal-appliquee:            { count: 3, items: [PERS-22, PERS-23, PERS-24] }
+    mc.philo.la_personne.affirmation-de-soi-non-pertinente:             { count: 3, items: [PERS-25, PERS-26, PERS-29] }
+  total_items: 29
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 3
+    R2: 4
+    R3: 3
+    R4: 4
+    R5: 4
+    R6: 5
+    R7: 3
+  honest_state: >-
+    Les dix-huit misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Treize y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

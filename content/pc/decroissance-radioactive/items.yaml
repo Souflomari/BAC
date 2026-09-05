@@ -1467,33 +1467,385 @@ items:
 # item fan-out. floor_met (whole-inventory, these 8 non-gated models): false.
 # ══════════════════════════════════════════════════════════════
 
+  # Ajoutés le 2026-09-05 : huit familles sous le plancher de 3 items du banc,
+  # cinq à un item et trois à deux — le vocabulaire du noyau (isotopes,
+  # isobares, élément, stabilité) et les trois façons de prêter au rayonnement
+  # $\gamma$ un effet qu'il n'a pas. Cinq items, treize places.
+  - id: DECRO-27
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_decroissance_radioactive
+    tags: []
+    primary_misconception: mc.physics.decroissance_radioactive.isotope-confond-isobare
+    stem: >
+      Les noyaux $^{14}_{6}C$ et $^{12}_{6}C$ sont-ils des isotopes, et
+      s'agit-il du même élément chimique ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Oui aux deux : ils ont le même $Z = 6$, donc le même élément, et des
+          $A$ différents, donc des isotopes
+        correct: true
+      - id: B
+        text: >-
+          Non : des isotopes ont le même nombre de nucléons $A$, réparti
+          autrement entre protons et neutrons — ce qui n'est pas le cas ici
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.isotope-confond-isobare
+        feedback: >
+          La définition décrite est celle des ISOBARES : même $A$, $Z$
+          différents. Les isotopes, eux, partagent le nombre de PROTONS $Z$ et
+          diffèrent par $A$. Le repère qui les sépare : c'est $Z$ qui fait
+          l'élément, donc seuls les isotopes sont « le même élément ».
+      - id: C
+        text: >-
+          Non : ce sont deux éléments chimiques différents, puisque leurs masses
+          diffèrent
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.element-defini-par-masse
+        feedback: >
+          L'identité chimique est fixée par $Z$, le nombre de protons — donc par
+          le nombre d'électrons de l'atome neutre, donc par ses propriétés
+          chimiques. Le carbone 14 et le carbone 12 réagissent exactement de la
+          même façon ; c'est ce qui rend la datation possible, l'organisme
+          n'ayant aucun moyen de les distinguer.
+      - id: D
+        text: >-
+          Oui pour l'élément, mais ce ne sont pas des isotopes : des isotopes
+          partagent le nombre de neutrons, pas celui de protons
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.isotope-confond-neutrons-protons
+        feedback: >
+          Les rôles de $Z$ et $N$ sont inversés. Des isotopes partagent le
+          nombre de PROTONS ($Z$) et diffèrent par le nombre de neutrons. Ici
+          $^{14}_{6}C$ a $8$ neutrons et $^{12}_{6}C$ en a $6$ : ils diffèrent
+          bien par $N$, et se ressemblent par $Z$ — la définition même.
+    correct_feedback: >
+      Même $Z = 6$ : c'est le même élément, le carbone. Des $A$ différents,
+      donc des nombres de neutrons différents ($8$ et $6$) : ce sont des
+      isotopes. C'est $Z$ qui fait l'élément, $A$ qui fait l'isotope.
+    solution: |
+      **Les deux grandeurs.**
+      $$Z = \text{nombre de protons} \qquad A = \text{nombre de nucléons}
+      \qquad N = A - Z$$
+
+      **Les définitions.**
+      - *Isotopes* : même $Z$, $A$ différents. Même élément, masses différentes.
+      - *Isobares* : même $A$, $Z$ différents. Éléments différents, même masse.
+
+      **Ici.** $^{14}_{6}C$ : $Z = 6$, $N = 8$. $^{12}_{6}C$ : $Z = 6$,
+      $N = 6$. Même $Z$ : isotopes du carbone.
+
+      **Pourquoi $Z$ fait l'élément.** Le nombre de protons fixe le nombre
+      d'électrons de l'atome neutre, donc son comportement chimique. Un
+      organisme vivant absorbe indifféremment le carbone 12 et le carbone 14 —
+      d'où la datation.
+
+  - id: DECRO-28
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_decroissance_radioactive
+    tags: []
+    primary_misconception: mc.physics.decroissance_radioactive.instabilite-necessite-grand-noyau
+    stem: >
+      Le noyau de tritium $^{3}_{1}H$ ne compte que trois nucléons, et il est
+      pourtant radioactif. Comment l'expliquer ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La stabilité dépend du rapport $N/Z$, pas de la taille : avec un
+          proton pour deux neutrons, le tritium est trop riche en neutrons
+        correct: true
+      - id: B
+        text: >-
+          C'est impossible : un noyau aussi petit est forcément stable, seuls
+          les noyaux lourds sont radioactifs
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.instabilite-necessite-grand-noyau
+        feedback: >
+          La taille joue au-delà de $Z = 83$, où plus aucun noyau n'est stable —
+          mais elle ne suffit pas à décider en deçà. Ce qui compte est le
+          rapport $N/Z$ : le tritium ($N/Z = 2$) est bien trop riche en
+          neutrons, alors que l'hélium 3, de même $A$, est parfaitement stable.
+      - id: C
+        text: >-
+          C'est le nombre de protons qui décide de la stabilité : avec un seul
+          proton, le noyau est trop peu lié pour tenir
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.stabilite-ne-depend-que-de-Z
+        feedback: >
+          $Z$ seul ne décide de rien : $^{1}_{1}H$ et $^{2}_{1}H$ ont aussi un
+          seul proton et sont parfaitement stables. Ce qui distingue le tritium
+          de ses deux isotopes, c'est son nombre de NEUTRONS — donc le rapport
+          $N/Z$, et non $Z$ pris isolément.
+      - id: D
+        text: >-
+          Parce que sa masse diffère de celle de l'hydrogène ordinaire, ce qui
+          en fait un élément chimique différent, aux propriétés instables
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.element-defini-par-masse
+        feedback: >
+          Le tritium EST de l'hydrogène : même $Z = 1$, donc mêmes propriétés
+          chimiques. Sa masse plus grande ne change pas l'élément — elle change
+          l'isotope. Et l'instabilité est une propriété du NOYAU, sans rapport
+          avec la chimie de l'atome.
+    correct_feedback: >
+      La stabilité se lit dans le rapport $N/Z$. Le tritium a $1$ proton pour
+      $2$ neutrons : très au-dessus de la ligne de stabilité, qui vaut environ
+      $N/Z = 1$ pour les noyaux légers. Il se désintègre en $\beta^{-}$ pour
+      convertir un neutron en proton.
+    solution: |
+      **Ce que la taille explique.** Au-delà de $Z = 83$, la répulsion
+      électrostatique entre protons l'emporte : aucun noyau n'est stable. C'est
+      un critère de borne supérieure, pas un critère général.
+
+      **Ce que le rapport $N/Z$ explique.** Pour les noyaux légers, la stabilité
+      demande $N \approx Z$. Le tritium a $N/Z = 2$ : trop de neutrons.
+
+      **La comparaison qui tranche.**
+      $$^{1}_{1}H \ (N/Z = 0) \ \text{stable} \qquad
+      ^{2}_{1}H \ (N/Z = 1) \ \text{stable} \qquad
+      ^{3}_{1}H \ (N/Z = 2) \ \text{radioactif}$$
+      Même $Z$, même petitesse, comportements opposés : ni $Z$ ni $A$ ne
+      suffisent.
+
+      **La désintégration.** $^{3}_{1}H \rightarrow \, ^{3}_{2}He + \,
+      ^{0}_{-1}e$ : un neutron devient proton, le rapport $N/Z$ redescend.
+
+  - id: DECRO-29
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_decroissance_radioactive
+    tags: []
+    primary_misconception: mc.physics.decroissance_radioactive.instabilite-necessite-grand-noyau
+    stem: >
+      Parmi ces quatre affirmations sur la stabilité des noyaux, laquelle est
+      correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Au-delà de $Z = 83$, aucun noyau n'est stable ; en deçà, c'est le
+          rapport $N/Z$ qui décide
+        correct: true
+      - id: B
+        text: >-
+          Plus un noyau contient de nucléons, plus il est instable : la
+          radioactivité est une affaire de taille
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.instabilite-necessite-grand-noyau
+        feedback: >
+          La règle échoue dans les deux sens. Le tritium ($A = 3$) est
+          radioactif, le plomb $^{208}_{82}Pb$ ($A = 208$) est stable. La taille
+          fixe une borne au-delà de laquelle plus rien ne tient, elle ne classe
+          pas les noyaux en deçà.
+      - id: C
+        text: >-
+          Seul $Z$ décide : à nombre de protons égal, tous les noyaux ont la même
+          stabilité
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.stabilite-ne-depend-que-de-Z
+        feedback: >
+          Les isotopes d'un même élément ont tous le même $Z$ et des stabilités
+          très différentes : le carbone 12 est stable, le carbone 14 non. C'est
+          bien le nombre de NEUTRONS qui les sépare, donc le rapport $N/Z$.
+      - id: D
+        text: >-
+          Deux noyaux de même nombre de nucléons $A$ sont des isotopes, et ont
+          donc la même stabilité
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.isotope-confond-isobare
+        feedback: >
+          Deux noyaux de même $A$ sont des ISOBARES, pas des isotopes — les
+          isotopes partagent $Z$. Et les isobares n'ont aucune raison d'avoir la
+          même stabilité : $^{3}_{1}H$ est radioactif tandis que $^{3}_{2}He$,
+          de même $A$, est stable.
+    correct_feedback: >
+      Deux régimes. Au-delà de $Z = 83$, la répulsion entre protons l'emporte :
+      plus aucun noyau n'est stable. En deçà, c'est le rapport $N/Z$ qui décide,
+      et il doit rester proche de la vallée de stabilité.
+    solution: |
+      **La vallée de stabilité.** En portant $N$ en fonction de $Z$, les noyaux
+      stables forment une bande étroite : $N \approx Z$ pour les légers,
+      $N/Z \approx 1{,}5$ pour les lourds. S'en écarter, c'est être radioactif.
+
+      **Les deux façons de s'en écarter.**
+      - Trop de neutrons ($N/Z$ trop grand) → désintégration $\beta^{-}$.
+      - Trop de protons ($N/Z$ trop petit) → désintégration $\beta^{+}$.
+      - Noyau trop lourd ($Z > 83$) → désintégration $\alpha$.
+
+      **Les deux contre-exemples à retenir.** $^{3}_{1}H$ : minuscule et
+      radioactif. $^{208}_{82}Pb$ : très lourd et stable. Ni $A$ ni $Z$ pris
+      seuls ne prédisent quoi que ce soit.
+
+  - id: DECRO-30
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_decroissance_radioactive
+    tags: []
+    primary_misconception: mc.physics.decroissance_radioactive.gamma-change-Z-comme-beta
+    stem: >
+      Un noyau de cobalt 60 se désintègre en nickel 60, puis le noyau de nickel
+      formé, resté excité, émet un rayonnement $\gamma$. Que devient-il après
+      cette émission ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il reste du nickel 60 : ni $Z$ ni $A$ ne changent, seule l'énergie du
+          noyau diminue
+        correct: true
+      - id: B
+        text: >-
+          Il devient du cuivre 60 : l'émission $\gamma$ augmente $Z$ d'une unité,
+          comme une désintégration $\beta^{-}$
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.gamma-change-Z-comme-beta
+        feedback: >
+          Le rayonnement $\gamma$ est un photon : il ne porte ni charge ni
+          nucléon, donc $Z$ ne peut pas changer. Ce qui modifie $Z$, c'est
+          l'émission d'une particule chargée — un électron ($\beta^{-}$) ou un
+          positon ($\beta^{+}$). Le $\gamma$ n'est pas une désintégration, c'est
+          une désexcitation.
+      - id: C
+        text: >-
+          Il devient du nickel 56 : l'émission $\gamma$ fait perdre quatre
+          nucléons, comme une désintégration $\alpha$
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.gamma-change-A-comme-alpha
+        feedback: >
+          Perdre quatre nucléons, c'est émettre un noyau d'hélium — une
+          désintégration $\alpha$, qui est une particule de matière. Le $\gamma$
+          est un photon, sans masse ni nucléon : $A$ reste rigoureusement
+          inchangé.
+      - id: D
+        text: >-
+          Il devient un autre isotope du nickel : le $\gamma$ emporte un neutron,
+          donc $A$ diminue tandis que $Z$ reste le même
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.gamma-change-isotope
+        feedback: >
+          Le $\gamma$ n'emporte aucune particule de matière : ni proton, ni
+          neutron. La composition du noyau — $Z$ ET $N$ — est exactement la même
+          avant et après. Ce qui a changé est son niveau d'ÉNERGIE : il passe
+          d'un état excité à son état fondamental.
+    correct_feedback: >
+      Le noyau reste $^{60}_{28}Ni$. Le rayonnement $\gamma$ est un photon très
+      énergétique, sans charge ni masse : il emporte de l'énergie, jamais des
+      nucléons. Ce n'est pas une désintégration mais une DÉSEXCITATION.
+    solution: |
+      **L'écriture.**
+      $$^{60}_{28}Ni^{*} \rightarrow \, ^{60}_{28}Ni + \gamma$$
+      L'astérisque marque l'état excité. $Z$ et $A$ sont identiques des deux
+      côtés — les lois de conservation de Soddy sont trivialement satisfaites.
+
+      **Le contraste avec les trois désintégrations.**
+
+      | émission | ce qui part | effet sur $Z$ | effet sur $A$ |
+      |---|---|---|---|
+      | $\alpha$ | noyau d'hélium | $-2$ | $-4$ |
+      | $\beta^{-}$ | électron | $+1$ | $0$ |
+      | $\beta^{+}$ | positon | $-1$ | $0$ |
+      | $\gamma$ | photon | $0$ | $0$ |
+
+      **La règle en une phrase.** Le $\gamma$ accompagne une désintégration ; il
+      n'en est jamais une. Le noyau qui l'émet est déjà celui qu'il restera.
+
+  - id: DECRO-31
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: pc_decroissance_radioactive
+    tags: []
+    primary_misconception: mc.physics.decroissance_radioactive.gamma-change-isotope
+    stem: >
+      Un élève écrit la désexcitation d'un noyau excité de radium :
+      $^{226}_{88}Ra^{*} \rightarrow \, ^{225}_{87}Fr + \gamma$. Combien
+      d'erreurs cette écriture contient-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Deux : ni $Z$ ni $A$ ne doivent changer lors d'une émission $\gamma$ —
+          le noyau reste $^{226}_{88}Ra$
+        correct: true
+      - id: B
+        text: >-
+          Une seule : $A$ ne devrait pas changer, mais la baisse de $Z$ est
+          normale, le $\gamma$ agissant comme une désintégration $\beta$
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.gamma-change-Z-comme-beta
+        feedback: >
+          Un photon n'emporte aucune charge : $Z$ ne peut pas bouger. Et une
+          $\beta$ ferait d'ailleurs MONTER $Z$ d'une unité ($\beta^{-}$), pas
+          descendre. Deux façons de se tromper dans la même réponse.
+      - id: C
+        text: >-
+          Une seule : $Z$ ne devrait pas changer, mais la perte d'un nucléon est
+          normale, le $\gamma$ emportant un neutron
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.gamma-change-isotope
+        feedback: >
+          Le $\gamma$ n'emporte pas de neutron — il n'emporte aucune matière. Le
+          noyau conserve exactement les mêmes $88$ protons et $138$ neutrons ; il
+          perd seulement de l'énergie. L'isotope obtenu est le MÊME que celui de
+          départ.
+      - id: D
+        text: >-
+          Aucune, à condition d'écrire $^{222}_{86}Rn$ à droite : le $\gamma$ se
+          comporte comme une désintégration $\alpha$
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.gamma-change-A-comme-alpha
+        feedback: >
+          $^{226}_{88}Ra \rightarrow \, ^{222}_{86}Rn$ est bien une
+          désintégration $\alpha$ — mais elle émet une particule $\alpha$, pas un
+          $\gamma$. Confondre les deux revient à faire perdre quatre nucléons à
+          un noyau par l'émission d'un photon sans masse.
+    correct_feedback: >
+      Deux erreurs : $A$ passe de $226$ à $225$ et $Z$ de $88$ à $87$, alors
+      qu'une émission $\gamma$ ne change ni l'un ni l'autre. L'écriture correcte
+      est $^{226}_{88}Ra^{*} \rightarrow \, ^{226}_{88}Ra + \gamma$.
+    solution: |
+      **Le contrôle par les lois de Soddy.** Conservation du nombre de charge et
+      du nombre de nucléons :
+      $$88 = 87 + 0 \ ? \quad \text{non} \qquad
+      226 = 225 + 0 \ ? \quad \text{non}$$
+      Le photon $\gamma$ apporte $0$ dans les deux colonnes, donc les deux
+      égalités imposent $Z$ et $A$ inchangés.
+
+      **L'écriture correcte.**
+      $$^{226}_{88}Ra^{*} \rightarrow \, ^{226}_{88}Ra + \gamma$$
+
+      **Le réflexe transférable.** Toute équation nucléaire se vérifie en une
+      ligne : la somme des $Z$ et celle des $A$ doivent se conserver. Ce contrôle
+      attrape à lui seul les trois erreurs classiques sur le $\gamma$.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
-# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
-# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
-# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
-# (web/scripts/lib/couverture-compte.mjs) et gardé par
-# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
-# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
-# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+# RÉÉCRIT le 2026-09-05, après DECRO-27 à DECRO-31. Huit familles sous le
+# plancher : le vocabulaire du noyau (isotopes contre isobares, élément défini
+# par Z et non par la masse, stabilité gouvernée par N/Z et non par la taille
+# ni par Z seul) et les trois façons de prêter au rayonnement gamma un effet
+# qu'il n'a pas. Tableau GÉNÉRÉ, gardé par scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
-    apprenant est bâti sur le banc de fin seul.
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.physics.decroissance_radioactive.isotope-confond-neutrons-protons:   { count: 2, items: [DECRO-1, DECRO-10] }
-    mc.physics.decroissance_radioactive.isotope-confond-isobare:            { count: 1, items: [DECRO-1] }
-    mc.physics.decroissance_radioactive.element-defini-par-masse:           { count: 2, items: [DECRO-1, DECRO-10] }
-    mc.physics.decroissance_radioactive.instabilite-necessite-grand-noyau:  { count: 1, items: [DECRO-2] }
-    mc.physics.decroissance_radioactive.stabilite-ne-depend-que-de-Z:       { count: 2, items: [DECRO-2, DECRO-10] }
+    mc.physics.decroissance_radioactive.isotope-confond-neutrons-protons:   { count: 3, items: [DECRO-1, DECRO-10, DECRO-27] }
+    mc.physics.decroissance_radioactive.isotope-confond-isobare:            { count: 3, items: [DECRO-1, DECRO-27, DECRO-29] }
+    mc.physics.decroissance_radioactive.element-defini-par-masse:           { count: 4, items: [DECRO-1, DECRO-10, DECRO-27, DECRO-28] }
+    mc.physics.decroissance_radioactive.instabilite-necessite-grand-noyau:  { count: 3, items: [DECRO-2, DECRO-28, DECRO-29] }
+    mc.physics.decroissance_radioactive.stabilite-ne-depend-que-de-Z:       { count: 4, items: [DECRO-2, DECRO-10, DECRO-28, DECRO-29] }
     mc.physics.decroissance_radioactive.conservation-Z-oubliee:             { count: 3, items: [DECRO-3, DECRO-11, DECRO-22] }
     mc.physics.decroissance_radioactive.alpha-se-comporte-comme-beta:       { count: 3, items: [DECRO-3, DECRO-11, DECRO-22] }
     mc.physics.decroissance_radioactive.sens-conservation-inverse:          { count: 3, items: [DECRO-3, DECRO-11, DECRO-22] }
-    mc.physics.decroissance_radioactive.gamma-change-Z-comme-beta:          { count: 1, items: [DECRO-4] }
-    mc.physics.decroissance_radioactive.gamma-change-A-comme-alpha:         { count: 1, items: [DECRO-4] }
-    mc.physics.decroissance_radioactive.gamma-change-isotope:               { count: 1, items: [DECRO-4] }
+    mc.physics.decroissance_radioactive.gamma-change-Z-comme-beta:          { count: 3, items: [DECRO-4, DECRO-30, DECRO-31] }
+    mc.physics.decroissance_radioactive.gamma-change-A-comme-alpha:         { count: 3, items: [DECRO-4, DECRO-30, DECRO-31] }
+    mc.physics.decroissance_radioactive.gamma-change-isotope:               { count: 3, items: [DECRO-4, DECRO-30, DECRO-31] }
     mc.physics.decroissance_radioactive.noyau-vieillit:                     { count: 8, items: [DECRO-7, DECRO-8, DECRO-9, DECRO-5, DECRO-12, DECRO-17, DECRO-18, DECRO-21] }
     mc.physics.decroissance_radioactive.noyau-fraicheur-instable:           { count: 7, items: [DECRO-7, DECRO-8, DECRO-9, DECRO-5, DECRO-17, DECRO-19, DECRO-20] }
     mc.physics.decroissance_radioactive.lambda-depend-conditions-externes:  { count: 12, items: [DECRO-7, DECRO-8, DECRO-9, DECRO-5, DECRO-12, DECRO-13, DECRO-23, DECRO-24, DECRO-26, DECRO-17, DECRO-18, DECRO-21] }
@@ -1502,33 +1854,18 @@ coverage_summary:
     mc.physics.decroissance_radioactive.oubli-lambda-dans-exponentielle:    { count: 8, items: [DECRO-12, DECRO-13, DECRO-6, DECRO-14, DECRO-15, DECRO-16, DECRO-18, DECRO-20] }
     mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda:  { count: 4, items: [DECRO-23, DECRO-24, DECRO-25, DECRO-26] }
     mc.physics.decroissance_radioactive.confond-activite-nombre-noyaux:     { count: 3, items: [DECRO-23, DECRO-25, DECRO-26] }
-  total_items: 26
+  total_items: 31
   floor: 3
-  floor_met: false
+  floor_met: true
   ramp_coverage:
     R0: 3
-    R1: 3
-    R2: 4
+    R1: 6
+    R2: 6
     R3: 3
     R4: 7
     R5: 3
     R6: 3
-  under_floor:
-    # Déclarées, et INÉVALUABLES : sous 3 items du banc, le modèle apprenant
-    # les laisse « unassessed » à jamais — ni détectées, ni écartées.
-    # `manquants` = nombre d'items à écrire pour franchir le plancher.
-    # « sondée en leçon » = un checkpoint la vise, ce qui NE COMPTE PAS : le
-    # modèle est bâti sur le banc de fin seul (pas de double comptage).
-    mc.physics.decroissance_radioactive.gamma-change-A-comme-alpha:         { items: 1, manquants: 2 }
-    mc.physics.decroissance_radioactive.gamma-change-isotope:               { items: 1, manquants: 2 }
-    mc.physics.decroissance_radioactive.gamma-change-Z-comme-beta:          { items: 1, manquants: 2 }
-    mc.physics.decroissance_radioactive.instabilite-necessite-grand-noyau:  { items: 1, manquants: 2 }
-    mc.physics.decroissance_radioactive.isotope-confond-isobare:            { items: 1, manquants: 2 }
-    mc.physics.decroissance_radioactive.element-defini-par-masse:           { items: 2, manquants: 1 }
-    mc.physics.decroissance_radioactive.isotope-confond-neutrons-protons:   { items: 2, manquants: 1 }
-    mc.physics.decroissance_radioactive.stabilite-ne-depend-que-de-Z:       { items: 2, manquants: 1 }
   honest_state: >-
-    Huit des dix-neuf misconceptions déclarées siègent SOUS le
-    plancher : le modèle apprenant ne peut pas les évaluer.
-    Il manque treize items au total pour les y amener — dette NOMMÉE,
-    pas dette masquée.
+    Les dix-neuf misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Dix y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

@@ -2382,7 +2382,36 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final",
       "mc.physics.pc_controle_catalyse.selectivite-du-catalyseur-ignoree"
     ],
+    "CTC-19": [
+      "mc.physics.pc_controle_catalyse.catalyseur-dans-bilan",
+      "mc.physics.pc_controle_catalyse.double-fleche-mal-comprise",
+      "mc.physics.pc_controle_catalyse.equation-de-lanhydride-erronee"
+    ],
     "CTC-2": [
+      "mc.physics.pc_controle_catalyse.equation-de-lanhydride-erronee"
+    ],
+    "CTC-20": [
+      "mc.physics.pc_controle_catalyse.catalyseur-dans-bilan",
+      "mc.physics.pc_controle_catalyse.double-fleche-mal-comprise",
+      "mc.physics.pc_controle_catalyse.reactif-limitant-ou-pertes-invoques"
+    ],
+    "CTC-21": [
+      "mc.physics.pc_controle_catalyse.hydrophile-hydrophobe-inverses",
+      "mc.physics.pc_controle_catalyse.saponification-confondue-avec-lesterification",
+      "mc.physics.pc_controle_catalyse.stoechiometrie-du-triglyceride-ignoree"
+    ],
+    "CTC-22": [
+      "mc.physics.pc_controle_catalyse.saponification-confondue-avec-lesterification",
+      "mc.physics.pc_controle_catalyse.selectivite-du-catalyseur-ignoree",
+      "mc.physics.pc_controle_catalyse.stoechiometrie-du-triglyceride-ignoree"
+    ],
+    "CTC-23": [
+      "mc.physics.pc_controle_catalyse.catalyseur-dans-bilan",
+      "mc.physics.pc_controle_catalyse.selectivite-du-catalyseur-ignoree"
+    ],
+    "CTC-24": [
+      "mc.physics.pc_controle_catalyse.catalyseur-dans-bilan",
+      "mc.physics.pc_controle_catalyse.double-fleche-mal-comprise",
       "mc.physics.pc_controle_catalyse.equation-de-lanhydride-erronee"
     ],
     "CTC-3": [
@@ -2521,10 +2550,35 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda",
       "mc.physics.decroissance_radioactive.lambda-depend-conditions-externes"
     ],
+    "DECRO-27": [
+      "mc.physics.decroissance_radioactive.element-defini-par-masse",
+      "mc.physics.decroissance_radioactive.isotope-confond-isobare",
+      "mc.physics.decroissance_radioactive.isotope-confond-neutrons-protons"
+    ],
+    "DECRO-28": [
+      "mc.physics.decroissance_radioactive.element-defini-par-masse",
+      "mc.physics.decroissance_radioactive.instabilite-necessite-grand-noyau",
+      "mc.physics.decroissance_radioactive.stabilite-ne-depend-que-de-Z"
+    ],
+    "DECRO-29": [
+      "mc.physics.decroissance_radioactive.instabilite-necessite-grand-noyau",
+      "mc.physics.decroissance_radioactive.isotope-confond-isobare",
+      "mc.physics.decroissance_radioactive.stabilite-ne-depend-que-de-Z"
+    ],
     "DECRO-3": [
       "mc.physics.decroissance_radioactive.alpha-se-comporte-comme-beta",
       "mc.physics.decroissance_radioactive.conservation-Z-oubliee",
       "mc.physics.decroissance_radioactive.sens-conservation-inverse"
+    ],
+    "DECRO-30": [
+      "mc.physics.decroissance_radioactive.gamma-change-A-comme-alpha",
+      "mc.physics.decroissance_radioactive.gamma-change-Z-comme-beta",
+      "mc.physics.decroissance_radioactive.gamma-change-isotope"
+    ],
+    "DECRO-31": [
+      "mc.physics.decroissance_radioactive.gamma-change-A-comme-alpha",
+      "mc.physics.decroissance_radioactive.gamma-change-Z-comme-beta",
+      "mc.physics.decroissance_radioactive.gamma-change-isotope"
     ],
     "DECRO-4": [
       "mc.physics.decroissance_radioactive.gamma-change-A-comme-alpha",
@@ -5594,6 +5648,30 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.philo.la_personne.criteres-des-auteurs-confondus",
       "mc.philo.la_personne.methode-dissertation-mal-appliquee"
     ],
+    "PERS-25": [
+      "mc.philo.la_personne.affirmation-de-soi-non-pertinente",
+      "mc.philo.la_personne.dignite-confondue-avec-reconnaissance-sociale",
+      "mc.philo.la_personne.personne-reduite-a-espece"
+    ],
+    "PERS-26": [
+      "mc.philo.la_personne.affirmation-de-soi-non-pertinente",
+      "mc.philo.la_personne.dignite-fondee-sur-privilege",
+      "mc.philo.la_personne.personne-reduite-a-espece"
+    ],
+    "PERS-27": [
+      "mc.philo.la_personne.hume-these-mal-comprise",
+      "mc.philo.la_personne.individu-identite-personnelle-confondus",
+      "mc.philo.la_personne.locke-mecanisme-details-mal-compris"
+    ],
+    "PERS-28": [
+      "mc.philo.la_personne.imputabilite-mal-fondee",
+      "mc.philo.la_personne.individu-identite-personnelle-confondus"
+    ],
+    "PERS-29": [
+      "mc.philo.la_personne.affirmation-de-soi-non-pertinente",
+      "mc.philo.la_personne.depersonnalisation-reduite-a-sentiment",
+      "mc.philo.la_personne.dignite-confondue-avec-reconnaissance-sociale"
+    ],
     "PERS-3": [
       "mc.philo.la_personne.criteres-des-auteurs-confondus",
       "mc.philo.la_personne.locke-critere-mal-identifie",
@@ -6486,6 +6564,31 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "THEXP-24": [
       "mc.philo.theorie_experience.methode-dissertation-appliquee-mecaniquement"
+    ],
+    "THEXP-25": [
+      "mc.philo.theorie_experience.critere-scientifique-reduit-a-falsifiabilite",
+      "mc.philo.theorie_experience.fallibilisme-confondu-relativisme",
+      "mc.philo.theorie_experience.rationalisme-rejette-observation"
+    ],
+    "THEXP-26": [
+      "mc.philo.theorie_experience.evidence-spontanee-fiable",
+      "mc.philo.theorie_experience.probleme-philosophique-reduit",
+      "mc.philo.theorie_experience.rationalisme-rejette-observation"
+    ],
+    "THEXP-27": [
+      "mc.philo.theorie_experience.critere-scientifique-reduit-a-falsifiabilite",
+      "mc.philo.theorie_experience.evidence-spontanee-fiable",
+      "mc.philo.theorie_experience.fallibilisme-confondu-relativisme"
+    ],
+    "THEXP-28": [
+      "mc.philo.theorie_experience.evidence-spontanee-fiable",
+      "mc.philo.theorie_experience.necessite-causale-percue",
+      "mc.philo.theorie_experience.probleme-philosophique-reduit"
+    ],
+    "THEXP-29": [
+      "mc.philo.theorie_experience.critere-scientifique-reduit-a-falsifiabilite",
+      "mc.philo.theorie_experience.fallibilisme-confondu-relativisme",
+      "mc.philo.theorie_experience.rationalisme-rejette-observation"
     ],
     "THEXP-3": [
       "mc.philo.theorie_experience.critere-methodologique-mal-identifie",

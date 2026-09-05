@@ -1463,77 +1463,362 @@ items:
       **Ce qu'il fait :** intègre ce que thèse et antithèse ont chacune
       établi, sans effacer leur tension par un relativisme facile.
 
+  # Ajoutés le 2026-09-05 : six familles sous le plancher de 3 items du banc,
+  # dont `critere-scientifique-reduit-a-falsifiabilite` sans AUCUN item —
+  # sondée en leçon seulement. Quatre items, douze places.
+  - id: THEXP-25
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: philo_theorie_experience
+    tags: [popper, falsifiabilite, criteres]
+    stem: >
+      Un texte affirme qu'une théorie est scientifique lorsqu'elle est produite
+      selon une méthode publique, reproductible et contrôlée par une
+      communauté. Que penser de ce critère ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qu'il est recevable : la falsifiabilité n'est pas le seul critère possible, et celui-ci décrit un autre aspect du travail scientifique."
+        correct: true
+      - id: B
+        text: "Qu'il est nécessairement faux : le seul critère du caractère scientifique d'une théorie est la falsifiabilité, tout autre critère manquant le partage."
+        correct: false
+        misconception: mc.philo.theorie_experience.critere-scientifique-reduit-a-falsifiabilite
+        feedback: >
+          Le critère de Popper est un critère de DÉMARCATION : il sépare ce qui
+          est scientifique de ce qui ne l'est pas, par le risque pris. Il ne
+          prétend pas décrire tout ce qui fait la scientificité d'une pratique —
+          la publicité de la méthode, le contrôle par les pairs, la
+          reproductibilité en sont d'autres aspects, compatibles avec lui.
+      - id: C
+        text: "Qu'il est faux parce qu'il fait appel à l'observation : le rationalisme a montré qu'une méthode véritablement scientifique n'observe pas, elle déduit."
+        correct: false
+        misconception: mc.philo.theorie_experience.rationalisme-rejette-observation
+        feedback: >
+          Le rationalisme ne dit pas qu'il ne faut jamais observer : il soutient
+          que l'observation seule ne suffit pas à fonder la connaissance, parce
+          qu'elle est toujours conduite par des idées. Descartes ne renonce pas à
+          l'expérience ; il refuse de lui donner le premier rôle. L'opposition
+          n'est pas « observer » contre « ne pas observer ».
+      - id: D
+        text: "Qu'aucun critère ne vaut mieux qu'un autre : puisqu'aucune preuve n'est absolue, toute proposition de critère se vaut."
+        correct: false
+        misconception: mc.philo.theorie_experience.fallibilisme-confondu-relativisme
+        feedback: >
+          Le faillibilisme reconnaît qu'aucune connaissance n'est définitivement
+          certaine ; il ne dit pas que toutes les propositions se valent. On peut
+          parfaitement comparer deux critères — par leur portée, leur cohérence,
+          les cas qu'ils tranchent — sans disposer d'une certitude absolue.
+    correct_feedback: >
+      Le critère est recevable. La falsifiabilité est un critère de DÉMARCATION,
+      pas la totalité de ce qui fait la science : la publicité de la méthode et
+      le contrôle par les pairs en décrivent un autre aspect, sans contredire
+      Popper.
+    solution: |
+      **Ce que fait le critère de Popper.** Il trace une frontière : une théorie
+      est scientifique si elle interdit quelque chose, donc si une observation
+      pourrait la démentir. Il répond à la question « où passe la limite ? ».
+
+      **Ce que fait un critère méthodologique.** Il décrit comment une
+      connaissance s'établit : par une procédure publique, reproductible,
+      soumise au contrôle d'autrui. Il répond à « comment travaille-t-on ? ».
+
+      **Pourquoi les deux coexistent.** Ils ne répondent pas à la même question.
+      Supposer qu'un texte doive nécessairement reconduire Popper, c'est
+      confondre un critère célèbre avec le seul possible — et se rendre incapable
+      de lire un texte qui en propose un autre.
+
+  - id: THEXP-26
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: philo_theorie_experience
+    tags: [empirisme, rationalisme, probleme-philosophique]
+    stem: >
+      Une grand-mère affirme que sa tisane guérit le rhume : « je l'ai vu, cent
+      fois ». Quelles questions philosophiques cette anecdote ouvre-t-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Deux questions générales : d'où vient la connaissance, de l'expérience ou de la raison ? Et une observation peut-elle être neutre ?"
+        correct: true
+      - id: B
+        text: "Aucune question générale : le problème est celui de cette tisane, et il se règle par une étude clinique sur ce remède précis."
+        correct: false
+        misconception: mc.philo.theorie_experience.probleme-philosophique-reduit
+        feedback: >
+          L'anecdote n'est pas le problème : elle en est l'entrée. Ce qui est en
+          jeu dépasse cette tisane — c'est la valeur de la répétition comme
+          preuve, et la place de l'observation dans la connaissance. Une étude
+          clinique règlerait le cas particulier sans toucher à la question.
+      - id: C
+        text: "Une seule : celle de savoir s'il faut observer ou non, le rationalisme soutenant qu'il ne faut jamais se fier à l'expérience."
+        correct: false
+        misconception: mc.philo.theorie_experience.rationalisme-rejette-observation
+        feedback: >
+          Ce n'est pas la position rationaliste. Le rationalisme accorde une
+          place à l'expérience ; il conteste seulement qu'elle suffise à fonder
+          la connaissance, parce qu'elle est toujours conduite par des idées
+          préalables. Réduire le débat à « observer ou pas » le rend
+          incompréhensible.
+      - id: D
+        text: "Une seule : la certitude spontanée de la grand-mère étant immédiate et répétée, elle constitue le meilleur point de départ pour établir la connaissance."
+        correct: false
+        misconception: mc.philo.theorie_experience.evidence-spontanee-fiable
+        feedback: >
+          C'est justement ce que le chapitre met en doute. Une certitude
+          immédiate et jamais interrogée est le point de départ le plus SUSPECT :
+          elle mélange coïncidence et causalité, oublie les cas où le rhume est
+          passé sans tisane, et prend l'habitude pour une preuve.
+    correct_feedback: >
+      L'anecdote ouvre deux questions générales : la source de la connaissance
+      (expérience ou raison) et la neutralité de l'observation. Une accroche sert
+      à faire apparaître un problème, jamais à le remplacer par un cas
+      particulier.
+    solution: |
+      **Ce que l'anecdote met en scène.** Une inférence ordinaire : « cela a
+      marché souvent, donc cela marche ». Elle est irréprochable dans la vie
+      courante et fragile dès qu'on la regarde.
+
+      **Les deux questions qu'elle ouvre.**
+      1. *La source.* La connaissance vient-elle de ce qu'on observe
+         (empirisme) ou de ce que la raison établit (rationalisme) ?
+      2. *La neutralité.* L'observation est-elle un enregistrement, ou est-elle
+         déjà orientée par ce qu'on s'attend à trouver ?
+
+      **Le rôle d'une accroche.** Elle donne au problème un point d'appui
+      concret. Le confondre avec le problème lui-même, c'est croire qu'une
+      étude clinique clôt un chapitre de philosophie.
+
+  - id: THEXP-27
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: philo_theorie_experience
+    tags: [hume, induction, evidence]
+    stem: >
+      « Le soleil s'est levé chaque matin depuis toujours, donc il se lèvera
+      demain. » Comment Hume analyse-t-il cette inférence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Comme une attente fondée sur l'habitude, non sur une preuve : aucune répétition, si longue soit-elle, ne contient la nécessité que la conclusion suppose."
+        correct: true
+      - id: B
+        text: "Comme une certitude légitime : une évidence répétée sans exception est le point de départ le plus sûr dont la connaissance dispose."
+        correct: false
+        misconception: mc.philo.theorie_experience.evidence-spontanee-fiable
+        feedback: >
+          La répétition produit une conviction très forte — Hume ne le nie pas —
+          mais la force d'une conviction n'est pas sa justification. C'est
+          précisément ce qui rend le problème intéressant : nous ne pouvons pas
+          nous empêcher de conclure ainsi, et nous ne pouvons pas justifier que
+          nous le fassions.
+      - id: C
+        text: "Comme une preuve, à condition d'accepter qu'aucune preuve ne soit absolue : dès lors, toutes les inférences se valent, y compris les plus fantaisistes."
+        correct: false
+        misconception: mc.philo.theorie_experience.fallibilisme-confondu-relativisme
+        feedback: >
+          Reconnaître qu'aucune inférence inductive n'est démonstrative ne
+          revient pas à les égaliser toutes. Hume distingue parfaitement les
+          attentes bien réglées par l'expérience des divagations : ce qu'il
+          refuse, c'est de les appeler des preuves, pas de les hiérarchiser.
+      - id: D
+        text: "Comme une déduction rationnelle : la falsifiabilité étant le seul critère de scientificité, et cette prévision étant falsifiable, elle est démontrée."
+        correct: false
+        misconception: mc.philo.theorie_experience.critere-scientifique-reduit-a-falsifiabilite
+        feedback: >
+          Deux confusions. Être falsifiable ne rend pas une prévision DÉMONTRÉE
+          — c'est même l'inverse : elle est falsifiable parce qu'elle pourrait
+          échouer. Et la falsifiabilité est un critère de démarcation, postérieur
+          à Hume de deux siècles, qui ne répond pas à sa question sur la
+          justification de l'induction.
+    correct_feedback: >
+      Hume ne conteste pas que nous fassions cette inférence, ni qu'elle nous
+      serve : il conteste qu'elle soit fondée. Aucune répétition observée ne
+      contient la nécessité qu'exigerait la conclusion — c'est l'habitude, non
+      la raison, qui nous fait passer du passé à l'avenir.
+    solution: |
+      **La structure de l'inférence.** De « cela s'est produit à chaque fois
+      observée », on passe à « cela se produira ». Ce passage suppose que
+      l'avenir ressemble au passé — proposition qu'on ne peut établir ni par la
+      raison seule (elle n'a rien de contradictoire à nier) ni par l'expérience
+      (ce serait la supposer pour la prouver).
+
+      **La conclusion de Hume.** Ce qui nous fait conclure n'est pas un
+      raisonnement mais une HABITUDE : la répétition produit en nous une
+      attente, que nous prenons ensuite pour une nécessité perçue dans les
+      choses.
+
+      **Ce que Hume ne dit pas.** Que l'inférence soit sans valeur : elle est
+      indispensable, et il l'emploie comme tout le monde. Il refuse seulement de
+      l'appeler une preuve.
+
+  - id: THEXP-28
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_theorie_experience
+    tags: [claude-bernard, observation, causalite]
+    stem: >
+      Claude Bernard soutient que l'observation n'est jamais neutre. Quel
+      exemple illustre le mieux cette thèse ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Un chercheur qui ne consigne que les mesures pertinentes pour son hypothèse : il ne peut pas tout noter, et c'est l'idée qu'il poursuit qui décide de ce qui compte comme un fait."
+        correct: true
+      - id: B
+        text: "Une grand-mère qui constate cent fois l'efficacité de sa tisane : son observation est neutre, seule sa conclusion est hâtive."
+        correct: false
+        misconception: mc.philo.theorie_experience.probleme-philosophique-reduit
+        feedback: >
+          L'observation elle-même n'est pas neutre ici : elle retient les
+          guérisons et ne compte pas les fois où le rhume est passé sans tisane,
+          ni celles où la tisane n'a rien fait. Ce qui est vu dépend déjà de ce
+          qu'on s'attend à voir — c'est exactement la thèse, et l'anecdote en est
+          l'illustration plutôt que le contre-exemple.
+      - id: C
+        text: "Un observateur qui perçoit directement, dans le choc de deux billes, la nécessité qui fait que la seconde DOIT partir."
+        correct: false
+        misconception: mc.philo.theorie_experience.necessite-causale-percue
+        feedback: >
+          C'est précisément ce que Hume nie qu'on puisse percevoir : on observe
+          une succession — la première bille arrive, la seconde part — jamais le
+          lien de nécessité lui-même. L'exemple illustre bien que l'esprit ajoute
+          quelque chose à ce qu'il voit, mais pas de la manière décrite : il
+          ajoute une habitude, pas une perception.
+      - id: D
+        text: "Un savant qui part d'une certitude immédiate, jamais mise en doute, et l'utilise comme base : c'est là le point de départ le plus solide de toute recherche."
+        correct: false
+        misconception: mc.philo.theorie_experience.evidence-spontanee-fiable
+        feedback: >
+          Claude Bernard demande l'inverse : que l'observateur se défie de ses
+          certitudes premières, parce que ce sont elles qui orientent son regard
+          à son insu. L'idée directrice doit être formulée pour pouvoir être
+          contrôlée, non subie comme une évidence.
+    correct_feedback: >
+      Observer, c'est sélectionner : personne ne peut tout noter. Ce qui décide
+      de ce qui compte comme un fait, c'est l'idée que l'on poursuit — d'où
+      l'exigence de Claude Bernard : formuler l'hypothèse, pour que ce filtre
+      devienne contrôlable au lieu de rester invisible.
+    solution: |
+      **La thèse.** Il n'y a pas d'observation sans idée directrice. Le regard
+      qui se croit neutre est celui dont l'hypothèse est restée implicite.
+
+      **L'argument.** Un fait n'existe comme fait que rapporté à une question :
+      la température du bécher, la couleur du précipité, l'heure du prélèvement
+      — on retient ce qui a un rapport avec ce qu'on cherche, et le reste passe
+      inaperçu.
+
+      **La conséquence de méthode.** Ce n'est pas un aveu d'impuissance mais une
+      règle : il faut ÉNONCER l'hypothèse, précisément pour que le tri qu'elle
+      opère devienne visible, discutable, et corrigible par autrui.
+
+  - id: THEXP-29
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_theorie_experience
+    tags: [popper, demarcation, astrologie]
+    stem: >
+      Un élève écrit : « l'astrologie n'est pas une science parce qu'elle est
+      fausse ». Que faut-il corriger ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le critère invoqué : ce n'est pas la fausseté qui exclut, mais l'absence de risque — une théorie fausse mais réfutable reste scientifique."
+        correct: true
+      - id: B
+        text: "Seulement le mot : il faut dire « non falsifiable ». La falsifiabilité est le seul critère qu'on puisse invoquer pour juger d'une théorie, tous les autres s'y ramènent."
+        correct: false
+        misconception: mc.philo.theorie_experience.critere-scientifique-reduit-a-falsifiabilite
+        feedback: >
+          Le mot est bien celui-là, mais l'exclusivité ne se justifie pas. La
+          falsifiabilité répond à une question précise — où passe la frontière du
+          scientifique ? Elle ne remplace ni les critères méthodologiques
+          (publicité, reproductibilité, contrôle par les pairs) ni les questions
+          de fécondité ou de cohérence d'une théorie.
+      - id: C
+        text: "Le point de départ : il faudrait dire que l'astrologie n'observe pas assez, toute science commençant par l'observation — ce que le rationalisme a tort de nier."
+        correct: false
+        misconception: mc.philo.theorie_experience.rationalisme-rejette-observation
+        feedback: >
+          L'astrologie observe beaucoup : positions des astres, dates, traits de
+          caractère. Ce qui lui manque n'est pas la quantité d'observations, mais
+          l'exposition au démenti. Et le rationalisme ne nie pas l'observation :
+          il conteste qu'elle suffise, ce qui n'est pas la même chose.
+      - id: D
+        text: "Rien du tout : puisque aucune théorie n'est jamais certaine, dire de l'astrologie qu'elle est fausse ou qu'elle est vraie revient exactement au même."
+        correct: false
+        misconception: mc.philo.theorie_experience.fallibilisme-confondu-relativisme
+        feedback: >
+          L'incertitude générale ne nivelle pas les différences. On peut
+          parfaitement distinguer une théorie qui prend des risques et les
+          assume d'une théorie qui n'en prend aucun — c'est même tout l'intérêt
+          du critère. Le faillibilisme rend la comparaison nécessaire, il ne la
+          supprime pas.
+    correct_feedback: >
+      Le critère de démarcation ne porte pas sur la vérité mais sur le RISQUE.
+      Une théorie fausse mais réfutable est scientifique — la physique en est
+      pleine. L'astrologie échoue pour une autre raison : quel que soit
+      l'événement, elle trouve toujours à l'expliquer après coup.
+    solution: |
+      **L'erreur du raisonnement.** Il fait de la vérité le critère. Or on ne
+      peut pas savoir d'avance si une théorie est vraie : c'est justement pour
+      cela qu'on la teste. Un critère qui exigerait la vérité serait
+      inapplicable.
+
+      **Le critère de Popper.** Une théorie est scientifique si elle INTERDIT
+      quelque chose : si l'on peut dire quelle observation, en se produisant, la
+      mettrait en défaut. Elle prend alors un risque, et c'est ce risque qui la
+      rend informative.
+
+      **Pourquoi l'astrologie échoue.** Non parce que ses prédictions se
+      révèlent fausses, mais parce qu'elles sont formulées de façon qu'aucun
+      événement ne puisse les démentir : tout ce qui arrive les confirme.
+
+      **Le corollaire souvent oublié.** La mécanique newtonienne, dépassée
+      depuis, était et reste parfaitement scientifique — elle a été réfutée,
+      donc elle était réfutable.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après THEXP-25 à THEXP-29. Six familles sous le
+# plancher, dont `critere-scientifique-reduit-a-falsifiabilite` sans AUCUN item
+# de banc. Tableau GÉNÉRÉ, gardé par scripts/resume-couverture.mjs.
 coverage_summary:
-  # Computed by loading this file with js-yaml and tallying every
-  # choices[].misconception (+ also_reveals[]) value per item — an item
-  # counts once per misconception if ANY of its distractors carries that id
-  # (house convention, matching content/philo/la-liberte/items.yaml and
-  # content/philo/analyse-de-texte/items.yaml).
-  # This is a LEGACY end-bank (THEXP-1..THEXP-24 predate per-distractor
-  # tagging — Gap-4 finding, task instruction) retrofitted in this pass:
-  # every one of the 72 distractors across the 24 items now carries a real
-  # misconception id (no null tags). Per the recipe's "Honest coverage"
-  # judgment call, floor gaps below are reported truthfully rather than
-  # padded.
-  total_items: 24
-  floor: 3
-  floor_met: false
-  # Counted PER ITEM (an item counts once per misconception id if ANY of its
-  # distractors carries that id), matching the house convention stated
-  # above and in la-liberte/analyse-de-texte's own items.yaml — NOT a raw
-  # count of tagged distractors. A first draft of this block miscounted
-  # distractor-occurrences instead of item-occurrences (e.g. counted 8 for
-  # empirisme-rationalisme-non-distingues instead of the correct 4); caught
-  # and fixed by loading this file with js-yaml and tallying programmatically
-  # rather than trusting the hand count — the same "verify programmatically"
-  # discipline the recipe's philo addendum mandates for length, applied here
-  # to coverage arithmetic too.
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.philo.theorie_experience.faux-dilemme-confirmation-rejet: 3
-    mc.philo.theorie_experience.empirisme-rationalisme-non-distingues: 4
-    mc.philo.theorie_experience.rationalisme-rejette-observation: 1
-    mc.philo.theorie_experience.confirmation-egale-preuve: 6
-    mc.philo.theorie_experience.absence-preuve-egale-preuve-contraire: 3
-    mc.philo.theorie_experience.observation-passive-suffit: 4
-    mc.philo.theorie_experience.corroboration-egale-preuve-definitive: 3
-    mc.philo.theorie_experience.a-priori-confondu-avec-inne: 3
-    mc.philo.theorie_experience.kant-reduit-a-compromis: 4
-    mc.philo.theorie_experience.fallibilisme-confondu-relativisme: 1
-    mc.philo.theorie_experience.critere-scientifique-reduit-a-falsifiabilite: 0
-    mc.philo.theorie_experience.methode-dissertation-appliquee-mecaniquement: 3
-    mc.philo.theorie_experience.critere-methodologique-mal-identifie: 9
-    mc.philo.theorie_experience.probleme-philosophique-reduit: 1
-    mc.philo.theorie_experience.necessite-causale-percue: 2
-    mc.philo.theorie_experience.evidence-spontanee-fiable: 1
-  notes: >-
-    Every distractor across the 24 legacy items now carries a real
-    misconception id (no null tags) — the Gap-4 fix this pass exists to
-    make. 10 of 16 models clear the ≥3 floor. SIX do not, and floor_met is
-    reported honestly rather than padded: rationalisme-rejette-observation
-    (1, THEXP-11), fallibilisme-confondu-relativisme (1, THEXP-6),
-    probleme-philosophique-reduit (1, THEXP-9), necessite-causale-percue
-    (2, THEXP-13 and THEXP-18), evidence-spontanee-fiable (1, THEXP-21) are
-    real but thin in the legacy bank — a follow-up item pass should add
-    1-2 items each. critere-scientifique-reduit-a-falsifiabilite (0) is a
-    genuinely NEW axis this pass surfaces: it comes from the r-bac
-    conventionalist/coherentist نص (2024 session normale —
-    docs/sujets/philo/theorie-experience.md), which argues a criterion for
-    scientific character (cohérence between a system's components) that is
-    NOT falsifiability and that this lesson's R0-R7 body never teaches
-    directly, so no legacy item exercises it — it is covered by
-    checkpoints.yaml's cp-bac-coherentisme instead (checkpoints do not
-    count toward this floor, per house convention), and is flagged here as
-    the clearest item-authoring gap for a follow-up pass. All six
-    under-floor models additionally receive checkpoint exposure in
-    checkpoints.yaml (cp-r0-predict, cp-r1-empirisme-rationalisme,
-    cp-r2-induction, cp-r6-fallibilisme, cp-bac-coherentisme) so every
-    student meets each model at least once in-lesson regardless of the
-    item-bank gap.
-    Length rebalance (recipe's philo addendum): the legacy bank's correct
-    answer was the LONGEST option in 18 of the 24 items (75%) before this
-    pass — close to the campaign's cited ~97% historical tell. Distractors
-    were enriched with additional philosophical substance (never by
-    trimming the correct answer's content) so the correct choice is now
-    longest in 6/24, shortest in 3/24, and a middle length in 15/24 —
-    verified programmatically (a js-yaml length-comparison script), not
-    eyeballed; net correct=longest rate down to 25%.
+    mc.philo.theorie_experience.faux-dilemme-confirmation-rejet:              { count: 3, items: [THEXP-2, THEXP-7, THEXP-8] }
+    mc.philo.theorie_experience.empirisme-rationalisme-non-distingues:        { count: 4, items: [THEXP-1, THEXP-9, THEXP-10, THEXP-11] }
+    mc.philo.theorie_experience.rationalisme-rejette-observation:             { count: 4, items: [THEXP-11, THEXP-25, THEXP-26, THEXP-29] }
+    mc.philo.theorie_experience.confirmation-egale-preuve:                    { count: 6, items: [THEXP-2, THEXP-4, THEXP-7, THEXP-12, THEXP-16, THEXP-22] }
+    mc.philo.theorie_experience.absence-preuve-egale-preuve-contraire:        { count: 3, items: [THEXP-2, THEXP-8, THEXP-12] }
+    mc.philo.theorie_experience.observation-passive-suffit:                   { count: 4, items: [THEXP-3, THEXP-6, THEXP-14, THEXP-15] }
+    mc.philo.theorie_experience.corroboration-egale-preuve-definitive:        { count: 3, items: [THEXP-6, THEXP-14, THEXP-17] }
+    mc.philo.theorie_experience.a-priori-confondu-avec-inne:                  { count: 3, items: [THEXP-5, THEXP-18, THEXP-20] }
+    mc.philo.theorie_experience.kant-reduit-a-compromis:                      { count: 4, items: [THEXP-5, THEXP-18, THEXP-19, THEXP-20] }
+    mc.philo.theorie_experience.fallibilisme-confondu-relativisme:            { count: 4, items: [THEXP-6, THEXP-25, THEXP-27, THEXP-29] }
+    mc.philo.theorie_experience.critere-scientifique-reduit-a-falsifiabilite: { count: 3, items: [THEXP-25, THEXP-27, THEXP-29] }
+    mc.philo.theorie_experience.methode-dissertation-appliquee-mecaniquement: { count: 3, items: [THEXP-22, THEXP-23, THEXP-24] }
+    mc.philo.theorie_experience.critere-methodologique-mal-identifie:         { count: 9, items: [THEXP-3, THEXP-8, THEXP-11, THEXP-12, THEXP-14, THEXP-15, THEXP-16, THEXP-21, THEXP-22] }
+    mc.philo.theorie_experience.probleme-philosophique-reduit:                { count: 3, items: [THEXP-9, THEXP-26, THEXP-28] }
+    mc.philo.theorie_experience.necessite-causale-percue:                     { count: 3, items: [THEXP-13, THEXP-18, THEXP-28] }
+    mc.philo.theorie_experience.evidence-spontanee-fiable:                    { count: 4, items: [THEXP-21, THEXP-26, THEXP-27, THEXP-28] }
+  total_items: 29
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 4
+    R2: 4
+    R3: 4
+    R4: 5
+    R5: 3
+    R6: 3
+    R7: 3
+  honest_state: >-
+    Les seize misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Huit y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.
