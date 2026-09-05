@@ -150,10 +150,20 @@ recouvrent pas et qu'aucun des deux ne suffit seul.
 - **La valeur diagnostique des choix réécrits.** Comme pour l'indice de
   longueur : rien ici ne mesure si un distracteur correspond à une erreur
   réelle d'élève. C'est une relecture par la voie pédagogie, pas une porte.
-- **Les autres indices de forme.** L'absolu et la longueur sont les deux que
-  les manuels de stratégie enseignent en premier. Restent, non mesurés : la
-  reprise d'un mot de l'énoncé dans la clé (*clang association*), et le choix
-  grammaticalement seul à s'accorder avec l'énoncé.
+- **Les autres indices de forme : mesurés, et NULS.** L'absolu et la longueur
+  sont les deux que les manuels de stratégie enseignent en premier ; les deux
+  suivants ont été mesurés dans la foulée, et ne disent rien sur ce corpus.
+  C'est un résultat, pas une case non cochée — il ferme la famille.
+
+  | indice | items où la stratégie tranche | …et c'est la clé | |
+  |---|---:|---:|---:|
+  | **écho de l'énoncé** (la clé reprend le plus de mots du stem) | 749 | 184 | **25 %** |
+  | **intrus par la forme** (les autres choix partagent leurs deux premiers mots) | 320 | 86 | **27 %** |
+
+  Exactement le hasard dans les deux cas. Aucune campagne n'est justifiée, et
+  aucune porte n'est armée : garder à zéro un défaut qui n'existe pas
+  coûterait des réécritures pour rien. Si le corpus grossit beaucoup, les deux
+  sondes tiennent en trente lignes et se rejouent.
 
 ## Lancer l'instrument
 
