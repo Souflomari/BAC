@@ -167,6 +167,9 @@ l'information ; le mot redevient lisible.
 - **Un texte à moins de 0,5 d'opacité** est traité comme un ornement et n'est
   pas jugé. Angle mort **assumé** : si une information passe un jour par une
   opacité aussi basse, la sonde la manquera.
+- (Plus rien sur le thème sombre : le corpus y a été passé exhaustivement le
+  2026-09-05, **zéro défaut vivant**, et la porte CI tourne dans les deux
+  thèmes.)
 - **Le modèle seul manque 17 % des cas.** Sur ce corpus : 84 candidats
   trouvés par le modèle, 101 défauts réels trouvés par le balayage intégral
   (`--pixels-tous`, deux captures par texte, ~25 min sur 258 figures). Le

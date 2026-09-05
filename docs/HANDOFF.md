@@ -1107,3 +1107,62 @@ des gris et des bleus **hors palette** (`#8A8A92`, `#7E9CC8`, `#6B6B72`,
 `#B06040`, `#8A6A3A`). Ce ne sont pas des jetons : le contraste n'y est pas
 réparable par une bascule de thème. Si la décision est « on garde », ces
 figures sont à **refaire**, pas à retoucher.
+
+### 8.14 Le 2026-09-05 : quatre rendus du produit que personne n'avait regardés
+
+Le fil du 2026-09-04 était « le produit sur un téléphone ». Celui-ci est plus
+simple encore : **une page n'est pas le seul rendu d'un produit.** Un élève
+qui révise COPIE, IMPRIME, et lit sur un réseau qui rampe ; et ce qu'il
+obtient dans ces trois cas n'avait jamais été mesuré. Le quatrième rendu est
+la langue elle-même.
+
+**1. LE PRESSE-PAPIER — chaque formule sortait EN DOUBLE.** KaTeX rend chaque
+formule deux fois (MathML pour les lecteurs d'écran, HTML pour l'œil) ; le
+premier est masqué VISUELLEMENT mais reste dans la SÉLECTION. ⌘A ⌘C donnait
+« la tension u C ( t ) u C ​ (t) aux bornes ». **138 773 caractères parasites
+sur 62 leçons.** Deux lignes de CSS (`user-select: none` sur `.katex-mathml`)
+et il n'en reste zéro, sur 22 947 formules. La lecture d'écran n'est pas
+touchée : c'est `aria-hidden` qui la gouverne.
+
+**2. L'IMPRESSION — le papier n'a pas de thème.** Cinq contrôles sur six
+passaient déjà (chrome masqué, TOUS les chapitres dépliés, rien hors colonne,
+figures dans la page, noir sur blanc). Le sixième : un élève qui LIT EN THÈME
+SOMBRE imprimait ses figures sur fond `#1A1917` — des aplats noirs pleine
+page. Le bloc `@media print` remettait le corps en blanc mais pas les jetons
+de figure, et `.dark` gardait la main. Corrigé À LA SOURCE DES JETONS :
+`generate-tokens.mjs` émet désormais la palette claire sous `@media print`.
+
+**3. LE RÉSEAU QUI RAMPE — le cours est lisible, la page est morte, personne
+ne le dit.** Sous 20 % de pertes, la perte d'UN SEUL morceau de JavaScript
+laisse 5 100 caractères de cours parfaitement lisibles et la page entièrement
+sourde. Aucun composant React ne peut prévenir : dans ce cas, il n'est jamais
+monté. D'où la **veille d'hydratation** — un bandeau rendu par le SERVEUR, un
+script EN LIGNE qui le révèle si le signal de vie manque à 12 s, et
+`SignalVivant` qui le referme si l'hydratation finit par arriver.
+
+**4. LA TYPOGRAPHIE — deux apostrophes pour le même mot, à trois centimètres.**
+Le corps d'une leçon écrivait « le pendule d’énergie » ; le rail des
+chapitres, juste à côté, « le pendule d'énergie ». ~1 100 écarts hors prose,
+tous corrigés à leur source (figures, `\text{}` des formules, titres, libellés
+du programme). 69 pages, zéro écart.
+
+**CINQ PORTES DE PLUS EN CI** : contraste des figures en clair ET en sombre,
+presse-papier, impression, typographie. Toutes avec leur test négatif joué.
+
+**ET LA LEÇON DE MÉTHODE DU JOUR — elle vaut pour tout ce qui suit.**
+
+- *Une scène de test qui échoue doit prouver qu'elle a EU LIEU.* Le balayage
+  réseau a produit deux conclusions spectaculaires — « un clic vers une autre
+  leçon échoue en silence », « la route reste morte après le retour du
+  réseau » — et un diagnostic élaboré par-dessus. Les deux étaient FAUSSES :
+  le lien cliqué était dans le panneau replié du header, boîte 0×0,
+  `page.click` expirait, et un `.catch()` vide avalait l'erreur. **Un
+  `.catch()` vide est l'endroit exact où un instrument commence à mentir.**
+  Un composant d'interface avait déjà été écrit pour ce défaut imaginaire ; il
+  a été supprimé.
+- *Une passe automatique se relit sur le DIFF, pas sur son décompte.* La
+  réparation d'une insertion malheureuse a vidé la constante `NNBSP` de
+  `frenchTypography.ts` — désactivant en silence le normalisateur de tout le
+  produit. Rattrapé au `git diff`, avant tout commit.
+- *Vérifier l'outil AVANT d'éditer le corpus.* KaTeX refuse U+202F ; on l'a su
+  en le lui demandant, pas en cassant 35 fichiers.
