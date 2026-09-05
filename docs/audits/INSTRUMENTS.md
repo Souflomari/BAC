@@ -82,12 +82,17 @@
    mesuré (`annonce-sweep`) — régions live, ordre, focus au changement de
    chapitre. Ce qui ne l'est pas : ce qu'un lecteur PRONONCE réellement,
    qui dépend de son mode, de sa verbosité et de sa langue.
-3. **La gravité d'une collision d'étiquettes en thème sombre.** Le CONTRASTE
-   en thème sombre, lui, n'est plus un angle mort : mesuré aux pixels le
-   2026-09-04, dans les deux thèmes, et armé en CI dans les deux
-   (`docs/audits/contraste-figures.md`). Ce qui reste ici, c'est la gravité
-   d'un CHEVAUCHEMENT — deux étiquettes qui se marchent dessus se lisent
-   différemment selon le thème, et rien ne le juge.
+3. **La gravité d'une collision d'étiquettes en thème sombre — SANS OBJET
+   sur le corpus vivant, mesuré le 2026-09-05.** Le CONTRASTE en thème sombre
+   n'était déjà plus un angle mort (mesuré aux pixels le 2026-09-04, armé en
+   CI dans les deux thèmes). Restait la gravité d'un CHEVAUCHEMENT, qu'un
+   changement de thème peut effectivement rendre pire. La mesure tranche :
+   **zéro chevauchement sur le corpus vivant, en clair comme en sombre.** Les
+   sept qui subsistent sont tous sur `loi-mailles-build.svg`, en dette owner,
+   et identiques dans les deux thèmes. Il n'y a donc rien à juger tant que
+   cette figure n'est pas arbitrée — et le jour où un chevauchement
+   réapparaîtra, c'est la question de sa gravité par thème qu'il faudra
+   rouvrir, pas celle de son existence.
 4. **La reprise d'un enregistrement coupé en vol — SÉMANTIQUE ÉTABLIE le
    2026-09-05, fréquence toujours inconnue.** Le chemin de PERTE de
    `src/lib/events/emitter.ts` n'avait aucun test : les 14 tests existants
@@ -123,7 +128,18 @@
    repli mesurée est celle de ce conteneur Linux : sur Android ou iOS, ce
    sera une autre. Ce qui est stable, c'est QU'IL Y A repli ; ce qui ne
    l'est pas, c'est de quoi il a l'air.
-7. **La production.** Tout ce document parle d'un build local. La synchro
+7. **Ce qu'une fonctionnalité livrée montre VRAIMENT, corpus en main.**
+   Ouvert le 2026-09-05 par une mesure : la zone « à retenir » (colonne de
+   droite ≥1536 px), livrée et vérifiée par `dom-truth` sur des leçons
+   témoins, ne remplit que **47 % des chapitres** — 0 % de la philosophie,
+   18 % de la SVT. Le mécanisme marche ; il n'a simplement rien à montrer sur
+   un quart du corpus, parce que son repli n'attrape qu'une formule `$$…$$`.
+   Le harnais prouve qu'un mécanisme fonctionne ; **seule une mesure sur le
+   corpus dit sur combien de pages il a quelque chose à montrer.** Aucune
+   autre fonctionnalité n'a été mesurée sous cet angle : ni les points
+   d'arrêt, ni les figures étagées, ni les dérivations dépliables.
+
+8. **La production.** Tout ce document parle d'un build local. La synchro
    de production reste NON VÉRIFIÉE (CLAUDE.md).
 
 *(Le point 3 de la version du matin — « le zoom navigateur à 400 %, dans la

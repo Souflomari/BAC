@@ -2162,3 +2162,44 @@ est le seuil que la chaîne exige pour CONCLURE ; au-delà, chaque item ajoute
 de la preuve, pas une capacité. Où mettre le prochain item — approfondir une
 famille déjà évaluable, ou écrire ce qui manque ailleurs — est un arbitrage
 pédagogique, pas une conséquence du tableau.
+
+### 10.18 La colonne « à retenir » est vide sur toute la philosophie
+
+La zone « à retenir » — la colonne de droite au palier ≥1536 px, item 1 de
+l'ordre de travail post-Fable, livrée et vérifiée — n'avait jamais été
+mesurée SUR LE CORPUS. Elle l'a été :
+
+| matière | chapitres portant une carte | notions entièrement vides |
+|---|---:|---|
+| maths | 96 / 123 (78 %) | 0 |
+| pc | 117 / 189 (62 %) | 0 |
+| svt | 16 / 87 (18 %) | 6 sur 11 |
+| philo | **0 / 92 (0 %)** | **12 sur 12** |
+| **total** | **229 / 491 (47 %)** | **18 sur 62** |
+
+**La cause n'est pas un oubli d'autorat, c'est la source.** Le repli
+automatique n'attrape qu'un bloc `$$…$$` détaché ; une leçon de philosophie
+n'en contient aucun, et la plupart des leçons de SVT non plus. **La zone est,
+par construction, une fonctionnalité de maths et de physique** — et rien ne
+le disait nulle part.
+
+**Ce n'est pas un défaut pour l'élève.** Le composant ne rend la carte que si
+elle existe : la colonne vide ne peint rien, il reste un peu de blanc à
+droite. Le calme est préservé et la règle d'état honnête tenue — c'est
+d'ailleurs écrit dans `retenir.ts` : « une leçon sans formule encadrée n'a
+rien à mettre là, et le dire par le vide est plus juste que de remplir ».
+
+**C'est un arbitrage, et il est posé, pas tranché.** Une leçon de philosophie
+a évidemment quelque chose à retenir : une thèse, une distinction, un auteur.
+Ce qu'elle n'a pas, c'est une FORMULE — et le schéma du sidecar (`formula`,
+rendue en KaTeX) ne sait représenter que ça. Ouvrir la zone à la philo
+demande une **carte textuelle**, donc une décision de design avant toute
+campagne d'autorat. Un seul sidecar existe aujourd'hui (`pc/rlc-serie`,
+l'exemplaire prévu par la spec).
+
+> **La règle que ça ajoute.** Une fonctionnalité livrée et vérifiée peut
+> n'être vraie que pour une partie du corpus, et la vérification ne le dit
+> pas : `dom-truth` teste la zone sur des leçons TÉMOINS, toutes
+> scientifiques. **Le harnais prouve que le mécanisme marche ; seule une
+> mesure sur le corpus dit sur combien de pages il a quelque chose à
+> montrer.**

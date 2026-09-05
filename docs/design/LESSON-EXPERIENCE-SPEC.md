@@ -308,6 +308,34 @@ des routes `/options/wide/*`) :
   zone accepte sous la formule des notes de marge par chapitre — même
   sidecar, champ `note`. Pas de génération automatique de notes.
 
+**CE QUE ÇA DONNE SUR LE CORPUS RÉEL — mesuré le 2026-09-05, jamais mesuré
+avant.** La zone remplit **229 chapitres sur 491, soit 47 %** :
+
+| matière | chapitres avec carte | notions entièrement vides |
+|---|---:|---|
+| maths | 96 / 123 (78 %) | 0 |
+| pc | 117 / 189 (62 %) | 0 |
+| svt | 16 / 87 (18 %) | 6 sur 11 |
+| philo | **0 / 92 (0 %)** | **12 sur 12** |
+
+La cause n'est pas un oubli d'autorat, c'est la SOURCE : le repli n'attrape
+qu'un bloc `$$…$$`, et une leçon de philosophie n'en contient aucun. **La
+zone « à retenir » est, par construction, une fonctionnalité de maths et de
+physique** — et rien, jusqu'ici, ne le disait.
+
+Ce n'est pas un défaut pour l'élève : le conteneur vide ne peint rien, il ne
+reste qu'un peu de blanc à droite (vérifié dans le composant : la carte n'est
+rendue que si elle existe). Le calme est préservé, la règle d'état honnête
+aussi.
+
+**Mais c'est un arbitrage ouvert, et il vaut d'être posé :** une leçon de
+philosophie a évidemment quelque chose à retenir — une thèse, une
+distinction, un auteur. Ce qu'elle n'a pas, c'est une FORMULE, et le schéma
+du sidecar (`formula`, rendu en KaTeX) ne sait représenter que ça. Ouvrir la
+zone à la philo demanderait une carte textuelle — donc une décision de
+design, pas une campagne d'autorat. Un seul sidecar existe aujourd'hui
+(`pc/rlc-serie`, l'exemplaire prévu par ce document).
+
 ### 3.3 Masthead — M1
 
 Le motif de couverture entre en production dans le band du masthead : le
