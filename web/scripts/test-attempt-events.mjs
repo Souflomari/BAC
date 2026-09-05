@@ -410,3 +410,230 @@ test("emitter — live mode but no session token: zero network traffic", async (
     globalThis.fetch = prevFetch;
   }
 });
+
+// ── Le chemin de PERTE — ce qui arrive quand l'envoi échoue ───────────────
+//
+// POURQUOI CES TESTS EXISTENT. Le point 4 de « ce que RIEN ne mesure encore »
+// (docs/audits/INSTRUMENTS.md) nomme « la reprise d'un enregistrement coupé
+// en vol ». Les tests ci-dessus couvraient tous le chemin HEUREUX : un envoi
+// qui réussit. Or l'élève visé lit en 3G encombrée, et c'est le chemin
+// MALHEUREUX qui décide de ce que le modèle apprenant saura de lui.
+//
+// Le contrat de `emitter.ts` — un réessai unique à 4 s, une file bornée à 20,
+// jamais persistée — est une DÉCISION, écrite dans son en-tête et dérivée de
+// la règle d'état honnête (rien ne se fabrique ni ne se persiste dans le
+// navigateur). Ces tests ne la contestent pas : ils la RENDENT VÉRIFIABLE,
+// pour qu'elle ne dérive pas en silence, et pour que ce qu'elle coûte à
+// l'élève soit écrit noir sur blanc plutôt que découvert en production.
+//
+// Les minuteries sont simulées (`mock.timers`) : attendre 4 s pour de vrai
+// dans une suite unitaire est le meilleur moyen qu'elle finisse désarmée.
+
+/**
+ * Vide les MICROTÂCHES seulement. `flushAsync` s'appuie sur `setTimeout(…, 0)`,
+ * que `mock.timers` gèle : l'utiliser sous minuteries simulées suspend la
+ * suite entière (payé une fois, en six tests « cancelledByParent »). Toute la
+ * chaîne d'envoi de l'emitter est faite de promesses, donc des microtâches
+ * suffisent.
+ */
+async function flushMicro() {
+  for (let i = 0; i < 20; i++) await Promise.resolve();
+}
+
+/** Prépare l'environnement live + un fetch scripté, et rend de quoi ranger. */
+function bancDEssai(reponses) {
+  const prev = {
+    mode: process.env.NEXT_PUBLIC_AUTH_MODE,
+    url: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    fetch: globalThis.fetch,
+  };
+  process.env.NEXT_PUBLIC_AUTH_MODE = "live";
+  process.env.NEXT_PUBLIC_SUPABASE_URL = "https://example-project.supabase.co";
+  const calls = [];
+  globalThis.fetch = async (url, init) => {
+    calls.push({ url, init });
+    return reponses(calls.length);
+  };
+  return {
+    calls,
+    ranger() {
+      process.env.NEXT_PUBLIC_AUTH_MODE = prev.mode;
+      process.env.NEXT_PUBLIC_SUPABASE_URL = prev.url;
+      globalThis.fetch = prev.fetch;
+    },
+  };
+}
+
+function unePayload(itemId = "RC-3") {
+  return answerPayload({
+    notionId: "pc/rc-charge",
+    itemId,
+    kind: "item",
+    authoredChoices: AUTHORED,
+    chosenChoiceId: "A",
+    chapterIndex: 1,
+  });
+}
+
+test("emitter — envoi échoué : UN seul réessai, et pas avant 4 s", async (t) => {
+  const banc = bancDEssai(() => ({ ok: false, status: 503 }));
+  t.mock.timers.enable({ apis: ["setTimeout"] });
+  try {
+    const emitter = loadFreshEmitter();
+    emitter.configureEmitter({ getAccessToken: () => "jwt-token-123" });
+    emitter.recordAnswerEvent(unePayload());
+    await flushMicro();
+
+    assert.equal(banc.calls.length, 1, "le premier envoi a eu lieu");
+    t.mock.timers.tick(3999);
+    await flushMicro();
+    assert.equal(banc.calls.length, 1, "rien n'est réessayé avant le délai");
+
+    t.mock.timers.tick(1);
+    await flushMicro();
+    assert.equal(banc.calls.length, 2, "le réessai part à 4 s");
+
+    // Et le réessai porte le MÊME événement, pas une version appauvrie.
+    assert.deepEqual(
+      JSON.parse(banc.calls[1].init.body),
+      JSON.parse(banc.calls[0].init.body),
+      "le réessai renvoie l'événement à l'identique"
+    );
+  } finally {
+    t.mock.timers.reset();
+    banc.ranger();
+  }
+});
+
+test("emitter — le réessai échoue aussi : l'événement est PERDU, en silence", async (t) => {
+  const banc = bancDEssai(() => ({ ok: false, status: 503 }));
+  t.mock.timers.enable({ apis: ["setTimeout"] });
+  try {
+    const emitter = loadFreshEmitter();
+    emitter.configureEmitter({ getAccessToken: () => "jwt-token-123" });
+    emitter.recordAnswerEvent(unePayload());
+    await flushMicro();
+    t.mock.timers.tick(4000);
+    await flushMicro();
+    assert.equal(banc.calls.length, 2, "un envoi + un réessai");
+
+    // La minuterie ne se rearme pas : quoi qu'il arrive au réessai, il n'y
+    // en a pas de troisième. C'est le contrat, et c'est aussi la perte.
+    t.mock.timers.tick(60_000);
+    await flushMicro();
+    assert.equal(banc.calls.length, 2, "aucun troisième envoi, jamais");
+  } finally {
+    t.mock.timers.reset();
+    banc.ranger();
+  }
+});
+
+test("emitter — le réseau qui LÈVE compte comme un échec (pas comme un succès)", async (t) => {
+  const prev = {
+    mode: process.env.NEXT_PUBLIC_AUTH_MODE,
+    url: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    fetch: globalThis.fetch,
+  };
+  t.mock.timers.enable({ apis: ["setTimeout"] });
+  try {
+    process.env.NEXT_PUBLIC_AUTH_MODE = "live";
+    process.env.NEXT_PUBLIC_SUPABASE_URL = "https://example-project.supabase.co";
+    let n = 0;
+    globalThis.fetch = async () => {
+      n++;
+      throw new TypeError("Failed to fetch"); // ce que jette un navigateur hors ligne
+    };
+
+    const emitter = loadFreshEmitter();
+    emitter.configureEmitter({ getAccessToken: () => "jwt-token-123" });
+    // Ne doit RIEN jeter dans le code appelant : la leçon ne s'arrête pas
+    // parce qu'un enregistrement de diagnostic a échoué.
+    assert.doesNotThrow(() => emitter.recordAnswerEvent(unePayload()));
+    await flushMicro();
+    assert.equal(n, 1, "premier envoi tenté");
+    t.mock.timers.tick(4000);
+    await flushMicro();
+    assert.equal(n, 2, "une coupure réseau déclenche le réessai comme un 5xx");
+  } finally {
+    t.mock.timers.reset();
+    process.env.NEXT_PUBLIC_AUTH_MODE = prev.mode;
+    process.env.NEXT_PUBLIC_SUPABASE_URL = prev.url;
+    globalThis.fetch = prev.fetch;
+  }
+});
+
+test("emitter — jeton expiré (401) : réessayé une fois, puis perdu comme le reste", async (t) => {
+  const banc = bancDEssai(() => ({ ok: false, status: 401 }));
+  t.mock.timers.enable({ apis: ["setTimeout"] });
+  try {
+    const emitter = loadFreshEmitter();
+    emitter.configureEmitter({ getAccessToken: () => "jwt-expire" });
+    emitter.recordAnswerEvent(unePayload());
+    await flushMicro();
+    t.mock.timers.tick(4000);
+    await flushMicro();
+    // Le réessai porte le MÊME jeton : rien ne le rafraîchit entre-temps.
+    // Un 401 est donc structurellement une perte, pas un délai.
+    assert.equal(banc.calls.length, 2);
+    assert.equal(banc.calls[1].init.headers.Authorization, "Bearer jwt-expire");
+    t.mock.timers.tick(60_000);
+    await flushMicro();
+    assert.equal(banc.calls.length, 2, "pas de troisième tentative");
+  } finally {
+    t.mock.timers.reset();
+    banc.ranger();
+  }
+});
+
+test("emitter — la file est bornée à 20 : le 21ᵉ échec est abandonné sur place", async (t) => {
+  const banc = bancDEssai(() => ({ ok: false, status: 503 }));
+  t.mock.timers.enable({ apis: ["setTimeout"] });
+  try {
+    const emitter = loadFreshEmitter();
+    emitter.configureEmitter({ getAccessToken: () => "jwt-token-123" });
+
+    for (let i = 0; i < 25; i++) emitter.recordAnswerEvent(unePayload(`RC-${i}`));
+    await flushMicro();
+    assert.equal(banc.calls.length, 25, "les 25 premiers envois ont eu lieu");
+
+    t.mock.timers.tick(4000);
+    await flushMicro();
+    assert.equal(
+      banc.calls.length - 25,
+      20,
+      "exactement 20 réessais : la file ne grandit pas sans borne"
+    );
+
+    // Les cinq abandonnés sont les DERNIERS arrivés — la file garde les
+    // premiers échecs. C'est un fait du code, pas une préférence : il vaut
+    // d'être écrit, parce qu'un élève qui enchaîne les réponses perd alors
+    // les plus RÉCENTES, celles qui portent son état courant.
+    const reessayes = banc.calls.slice(25).map((c) => JSON.parse(c.init.body).item_id);
+    assert.deepEqual(
+      reessayes,
+      Array.from({ length: 20 }, (_, i) => `RC-${i}`),
+      "les 20 réessayés sont les 20 premiers"
+    );
+  } finally {
+    t.mock.timers.reset();
+    banc.ranger();
+  }
+});
+
+test("emitter — une visite de chapitre suit le même chemin de perte", async (t) => {
+  const banc = bancDEssai(() => ({ ok: false, status: 503 }));
+  t.mock.timers.enable({ apis: ["setTimeout"] });
+  try {
+    const emitter = loadFreshEmitter();
+    emitter.configureEmitter({ getAccessToken: () => "jwt-token-123" });
+    emitter.recordChapterVisit({ notion_id: "pc/rc-charge", chapter_index: 2, chapters_total: 7 });
+    await flushMicro();
+    t.mock.timers.tick(4000);
+    await flushMicro();
+    assert.equal(banc.calls.length, 2);
+    assert.equal(JSON.parse(banc.calls[1].init.body).action, "visit");
+  } finally {
+    t.mock.timers.reset();
+    banc.ranger();
+  }
+});

@@ -1797,3 +1797,59 @@ leurs octets. Une porte qui n'a jamais été rouge ne certifie rien.
 
 Détail complet : `docs/audits/donnees-et-forfait.md`. Instrument :
 `web/scripts/donnees-sweep.mjs` (quatre passes + `--porte`).
+
+### 10.11 Le chemin d'écriture n'était testé que quand il réussit
+
+**Le fait.** `src/lib/events/emitter.ts` est le premier maillon de la boucle
+qui fait tout le produit : l'élève répond, l'événement part vers
+`record-notion-event`, le modèle apprenant s'ajuste. Il avait 14 tests
+unitaires. **Les 14 portaient sur le chemin heureux** — un envoi qui réussit.
+Le chemin de PERTE — échec, réessai, borne de file, jeton expiré, coupure
+réseau — n'avait rien.
+
+C'est le point 4 de « ce que RIEN ne mesure encore », et c'est l'autre sens
+du réseau : `reseau-malade` avait mesuré ce qui S'AFFICHE quand la connexion
+rampe ; personne n'avait regardé ce qui S'ENVOIE. **Un affichage raté se voit
+et se recharge. Un envoi raté ne se voit pas** — la leçon continue, l'élève ne
+saura jamais que sa réponse n'a pas compté, et le modèle sera simplement un
+peu plus faux.
+
+**Six tests ajoutés (20 au total), et ce qu'ils établissent.** Un réessai,
+un seul, à 4 s, à l'identique — donc une coupure brève est absorbée et une
+coupure de plus de quatre secondes perd la réponse. Un `fetch` qui lève est
+traité comme un 5xx. Un **401 est réessayé avec le MÊME jeton** : un jeton
+expiré est une perte structurelle, pas un délai. La file bornée à 20 garde
+les échecs **les plus anciens** et abandonne les suivants — un élève qui
+enchaîne perd donc ses réponses **les plus récentes**, celles qui décrivent
+le mieux son état courant.
+
+**Et un fait qui tient à la forme du code, pas à un test :** rien ne peut
+prévenir l'élève. `recordAnswerEvent` rend `void`, `AttemptEvents.tsx` ne
+regarde pas. C'est le bon choix pour la séance — on n'interrompt pas un élève
+au milieu d'un raisonnement pour une écriture de diagnostic — mais il faut
+voir ce qu'il coûte : **le produit ne peut pas savoir qu'il oublie.**
+
+**Un défaut de composition trouvé en écrivant les tests.**
+`ChapterVisitRecorder` marque un chapitre « envoyé » AVANT de savoir si
+l'envoi a réussi. Un élève qui revient sur un chapitre dont la visite s'est
+perdue ne la réémettra pas. Ce n'est pas grave à l'échelle d'une visite,
+c'est grave comme motif :
+
+> **Dès qu'un envoi est feu-et-oubli, toute déduplication posée en amont
+> transforme un échec transitoire en oubli définitif.**
+
+**Deux arbitrages posés, non tranchés** (`docs/audits/envoi-des-reponses.md`) :
+quel bout de la file abandonner — la borne de 20 garde aujourd'hui les plus
+anciens, garder les plus récents coûterait la même mémoire ; et si la règle
+d'état honnête interdit vraiment une file persistée, sachant qu'une réponse
+déjà donnée mise de côté le temps que le réseau revienne n'est pas de l'état
+fabriqué mais un envoi différé. La distinction est aujourd'hui implicite, et
+c'est elle qui décide de ce que le modèle apprenant sait d'un élève qui
+révise en 3G.
+
+**Et une correction de dispositif au passage : les tests unitaires ne
+tournaient pas en CI.** Ni `test-learner-model`, ni `test-attempt-events` —
+ils existaient et ne s'exécutaient que localement, donc en pratique quand
+quelqu'un y pensait. Les deux sont désormais des étapes de `gates.yml`,
+placées en tête parce qu'elles sont rapides et sans navigateur. Une suite de
+tests qui ne tourne pas dans la CI est une suite qui ne tourne pas.

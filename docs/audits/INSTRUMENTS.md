@@ -26,6 +26,7 @@
 | `web/scripts/couverture-diagnostique.mjs` | LA COUVERTURE DIAGNOSTIQUE : chaque distracteur porte-t-il le tag `misconception` qui relie « l'élève se trompe » à « le produit sait quoi lui proposer ensuite » ? Compte les distracteurs muets (en isolant les `null` EXPLICITES, qui sont des décisions), les tags pointant un id non déclaré, et les misconceptions atteignant le plancher de 3 items du BANC — seules celles-là sont évaluables par le modèle. Nomme les notions AVEUGLES : celles où le modèle ne dira jamais rien. Porte FRANCHE sur les omissions et les fantômes (0 et 0) ; cliquet sur le reste, avec le plancher en cliquet INVERSE (il ne peut que monter) | Si le tag est le BON. Un distracteur peut porter un id parfaitement déclaré sans rapport avec l'erreur qu'il incarne — l'instrument garde la plomberie, pas le sens. Et combien d'items manquent réellement à une misconception sous le plancher : c'est un arbitrage d'auteur, pas un défaut de code |
 | `web/scripts/resume-couverture.mjs` | CE QUE LE CORPUS DIT DE LUI-MÊME : chaque `items.yaml` se termine par un `coverage_summary` écrit à la main, lu par les humains qui reprennent la notion et réexécuté par personne. L'instrument confronte ses DEUX affirmations à sens unique — `floor_met` et `total_items` — à ce que le fichier contient réellement, avec la convention de comptage de la chaîne (`scripts/lib/couverture-compte.mjs`, partagée avec `couverture-diagnostique`). Trois portes FRANCHES : un `floor_met: true` avec une misconception sous le plancher, un `floor_met: false` alors qu'aucune ne l'est (la dette payée mais non déclarée), un `total_items` faux. Un CLIQUET sur les notions sans résumé, scellé à ZÉRO — les 62 en portent un, aucun ne peut plus disparaître. Le périmètre du plancher est l'UNION du déclaré et du tagué : une misconception déclarée qu'aucun item du banc ne vise compte zéro, pas rien (16 dans le corpus, plusieurs sondées par un checkpoint — ce qui ne compte pas). Mesuré à l'armement : 4 notions se surestimaient, 15 misconceptions sous plancher ; 18 notions sans résumé, générés. Depuis la campagne du plancher (165 items, 32 notions closes), les 62 notions déclarent `floor_met: true` — la porte A vaut donc de fait sur tout le corpus : déclarer une misconception sans lui écrire ses trois items casse l'intégration | Les tableaux PAR MISCONCEPTION. Le corpus les tient selon six conventions différentes — par item, par distracteur, par attribution primaire — toutes légitimes et toutes déclarées ; les comparer entre elles accuserait de mensonge une notion honnête. Ils restent de la prose, relue par des humains. Et `gated_floor_met`, affirmation de portée réduite qu'on ne peut mécaniser sans deviner la portée |
 | `web/scripts/donnees-sweep.mjs` | CE QUE LE PRODUIT COÛTE AU FORFAIT : les octets de FIL (`encodedDataLength` — corps compressé + en-têtes, ce que l'opérateur compte), séparés en AVANT le `load` (le prix d'entrée), APRÈS (ce que la page tire seule) et EN DÉFILANT (le préchargement au champ de vision). Quatre passes : pages de liste, leçon, séance type à cache actif, économiseur de données. Mesuré à l'armement : l'accueil tirait **6,5 Mo** de préchargement RSC en défilant, 91 % du transfert, pour 62 leçons dont l'élève en ouvre une ; une séance de révision coûtait 8,72 Mo. Après la politique de préchargement à l'INTENTION (`src/components/ui/Lien.tsx`) : 1,38 Mo, soit 743 séances dans un forfait de 1 Go au lieu de 117. PORTE FRANCHE à DEUX SENS — aucune page de liste ne tire d'octets sans un geste de l'élève, ET le survol doit encore précharger, ET l'économiseur de données doit être honoré (couper tout préchargement passerait le premier contrôle en rendant la navigation plus lente) | Le CDN et le cache de Vercel — tout est mesuré sur un `next start` local ; l'ordre de grandeur est transposable, pas le chiffre à l'octet près. Et ce que l'élève fait VRAIMENT : la séance mesurée est un parcours plausible, pas une statistique d'usage |
+| `web/scripts/test-attempt-events.mjs` | LE CHEMIN D'ÉCRITURE, côté client : les constructeurs de charge utile, la forme du fil telle que le validateur de l'edge function l'accepte, et — depuis le 2026-09-05 — le chemin de PERTE (échec, réessai unique à 4 s, borne de 20, 401, coupure réseau, visite de chapitre). 20 tests, minuteries simulées. `npm run test-attempt-events` | Le SERVEUR : idempotence de `record-notion-event`, double envoi, écritures concurrentes. Et le TAUX de perte réel, qui dépend du réseau de l'élève — les tests établissent la sémantique, pas la fréquence |
 
 ## Les balayages de corpus (outils, pas portes)
 
@@ -85,12 +86,25 @@
    (`docs/audits/contraste-figures.md`). Ce qui reste ici, c'est la gravité
    d'un CHEVAUCHEMENT — deux étiquettes qui se marchent dessus se lisent
    différemment selon le thème, et rien ne le juge.
-4. **La reprise d'un enregistrement coupé en vol** (progression, tentative).
+4. **La reprise d'un enregistrement coupé en vol — SÉMANTIQUE ÉTABLIE le
+   2026-09-05, fréquence toujours inconnue.** Le chemin de PERTE de
+   `src/lib/events/emitter.ts` n'avait aucun test : les 14 tests existants
+   couvraient tous le chemin heureux. Six tests l'ont fermé
+   (`scripts/test-attempt-events.mjs`, 20 au total). Ce qui en ressort :
+   **un** réessai à 4 s, puis la réponse est perdue ; un 401 est réessayé
+   avec le MÊME jeton, donc un jeton expiré est une perte structurelle ; la
+   file bornée à 20 garde les échecs les plus ANCIENS et abandonne les plus
+   récents ; et rien ne peut prévenir l'élève, parce que `recordAnswerEvent`
+   rend `void` et qu'aucun appelant n'a de quoi afficher un état d'envoi.
+   Voir `docs/audits/envoi-des-reponses.md` — deux arbitrages y sont posés
+   pour l'owner. Ce qui reste sous ce numéro : le TAUX réel de perte, qui
+   dépend du réseau de l'élève, et le comportement côté serveur
+   (idempotence, double envoi).
    Le réseau qui rampe, lui, est mesuré depuis le 2026-09-04
    (`reseau-malade`, `docs/audits/reseau-malade.md`) : c'est lui qui a montré
    qu'un seul morceau de JavaScript perdu laisse le cours lisible et la page
-   MORTE, sans un mot pour l'élève. Ce que ce balayage ne touche pas : ce qui
-   est ENVOYÉ après une réponse — la sauvegarde, pas l'affichage.
+   MORTE, sans un mot pour l'élève.
+
 5 bis. **La recherche du navigateur (⌘F) sur d'AUTRES moteurs.** Sur Chromium
    elle est mesurée depuis le 2026-09-05 (`recherche-navigateur`) : elle ne
    voit PAS les chapitres repliés — 10 sur 11 hors d'atteinte — et ne voit pas

@@ -49,6 +49,18 @@ jobs:
       - name: Install Chromium for dom-truth
         run: npx playwright@1.61.1 install --with-deps chromium
 
+      # TESTS UNITAIRES (ajoutés en CI le 2026-09-05). Ils existaient et ne
+      # tournaient QUE localement — donc, en pratique, quand quelqu'un y
+      # pensait. Ils gardent les deux moitiés du modèle apprenant : le calcul
+      # (test-learner-model) et le chemin d'écriture client, chemin de PERTE
+      # compris (test-attempt-events : réessai unique à 4 s, borne de 20, 401,
+      # coupure réseau). Ils sont rapides et sans navigateur ; ils passent
+      # avant tout le reste pour échouer vite.
+      - name: Tests unitaires (modèle apprenant + chemin d'écriture)
+        run: |
+          npm run test-learner-model
+          npm run test-attempt-events
+
       - name: validate-content (strict, every notion)
         run: |
           dirs=$(find ../content -mindepth 2 -maxdepth 2 -type d -not -path '*_media-test*' | sed 's|^\.\./||' | sort)
