@@ -10,7 +10,9 @@
  *     the learner-model-data.json key format).
  *   - `useAttemptRecorder()` — consumed by McqItem / CheckpointItem /
  *     AttemptFirstExercise. Combines the notion id with the active chapter
- *     (useChapter) and returns fire-and-forget recorders built on the ONE
+ *     — read at EVENT time through the stable context (useChapterStable),
+ *     so a chapter switch does not re-render every item (HANDOFF §11.22) —
+ *     and returns fire-and-forget recorders built on the ONE
  *     shared payload builder (lib/events/payload.ts). FAIL-SAFE: outside
  *     the provider (options galleries, previews) every recorder is an
  *     inert no-op — same philosophy as useChapter()'s fallback: never
@@ -44,7 +46,7 @@ import {
   useRef,
   type ReactNode,
 } from "react";
-import { useChapter, readChapterFromLocation } from "./ChapterShell";
+import { useChapter, useChapterStable, readChapterFromLocation } from "./ChapterShell";
 import { recordAnswerEvent, recordChapterVisit } from "@/lib/events";
 import {
   answerPayload,
@@ -94,7 +96,11 @@ const NOOP_RECORDER: AttemptRecorder = {
 
 export function useAttemptRecorder(): AttemptRecorder {
   const notionId = useContext(NotionIdContext);
-  const { current } = useChapter();
+  // STABLE context, on purpose: the chapter index is read when an event
+  // fires (`getCurrent()`), not at render time. Subscribing to `useChapter()`
+  // here made every item of the whole lesson re-render on each chapter
+  // switch — a 1,2 s single-task freeze in median at ×6 (HANDOFF §11.22).
+  const { getCurrent } = useChapterStable();
 
   return useMemo(() => {
     if (!notionId) return NOOP_RECORDER;
@@ -111,7 +117,7 @@ export function useAttemptRecorder(): AttemptRecorder {
         kind,
         authoredChoices,
         chosenChoiceId,
-        chapterIndex: current,
+        chapterIndex: getCurrent(),
       });
       if (payload) recordAnswerEvent(payload);
     };
@@ -127,11 +133,11 @@ export function useAttemptRecorder(): AttemptRecorder {
             notionId,
             exerciseId,
             questionId,
-            chapterIndex: current,
+            chapterIndex: getCurrent(),
           })
         ),
     };
-  }, [notionId, current]);
+  }, [notionId, getCurrent]);
 }
 
 /**

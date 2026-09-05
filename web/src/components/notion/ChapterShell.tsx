@@ -53,6 +53,8 @@ import {
   useEffect,
   useLayoutEffect,
   useRef,
+  useCallback,
+  useMemo,
   useState,
   type ReactNode,
 } from "react";
@@ -78,6 +80,38 @@ interface ChapterContextValue {
 }
 
 const ChapterContext = createContext<ChapterContextValue | null>(null);
+
+/**
+ * The STABLE half of the chapter context — everything that does NOT change
+ * on a chapter switch, plus `getCurrent()`, which reads the index AT CALL
+ * TIME through a ref rather than at render time.
+ *
+ * Why two contexts (2026-09-05, HANDOFF §11.22): every QCM, checkpoint and
+ * exercise calls `useAttemptRecorder()` to stamp its events with the current
+ * chapter. While that hook read `useChapter()`, ONE ArrowRight re-rendered
+ * every item of the whole lesson — hidden chapters included — and MathText
+ * re-parsed its formulas: a single 1,2 s task in median at ×6, 2,8 s at
+ * worst, on the most frequent gesture of a lesson. Consumers that only need
+ * the index when an EVENT fires subscribe here and are left alone by a
+ * chapter switch. Consumers that must re-render on it (the rail, the
+ * « Chapitre n / N », the « à retenir » card) keep `useChapter()`.
+ */
+interface ChapterStableContextValue {
+  /** Total chapter count — same value as `useChapter().total`. */
+  total: number;
+  /** Activate a chapter by 0-based index (clamped). Stable identity. */
+  goTo: (index: number) => void;
+  /** Current 0-based index, read when called — never stale, never a re-render. */
+  getCurrent: () => number;
+}
+
+const ChapterStableContext = createContext<ChapterStableContextValue | null>(null);
+
+/** Read the stable chapter context. Same fail-safe fallback as `useChapter()`. */
+export function useChapterStable(): ChapterStableContextValue {
+  const ctx = useContext(ChapterStableContext);
+  return ctx ?? { total: 1, goTo: () => {}, getCurrent: () => 0 };
+}
 
 /**
  * Read chapter context. Descendants rendered OUTSIDE a ChapterShell (should
@@ -155,6 +189,10 @@ export function ChapterShell({
   // URL/hash-derived chapter is applied by the sync effect below, once,
   // strictly after hydration.
   const [current, setCurrent] = useState(0);
+  // Mirror of `current` for the stable context's `getCurrent()` and for
+  // `goTo`'s no-op check — written on every render, read at event time.
+  const currentRef = useRef(0);
+  currentRef.current = current;
   const prevRef = useRef(0);
   // False until the FIRST chapter-sync pass has run — gates the enter
   // transition and the focus-transfer so neither fires on initial load
@@ -167,17 +205,26 @@ export function ChapterShell({
   // `popstate` updates don't re-read the URL from scratch.
   const initialSyncRef = useRef(false);
 
-  function goTo(index: number) {
-    const clamped = Math.min(Math.max(index, 0), total - 1);
-    if (clamped === current) return;
-    setCurrent(clamped);
-    if (typeof window !== "undefined") {
-      const url = new URL(window.location.href);
-      url.searchParams.set("chapitre", String(clamped + 1));
-      url.hash = "";
-      window.history.pushState({}, "", url);
-    }
-  }
+  // Stable identity (reads `currentRef`, not `current`) so the stable context
+  // below never changes on a chapter switch.
+  const goTo = useCallback(
+    (index: number) => {
+      const clamped = Math.min(Math.max(index, 0), total - 1);
+      if (clamped === currentRef.current) return;
+      setCurrent(clamped);
+      if (typeof window !== "undefined") {
+        const url = new URL(window.location.href);
+        url.searchParams.set("chapitre", String(clamped + 1));
+        url.hash = "";
+        window.history.pushState({}, "", url);
+      }
+    },
+    [total]
+  );
+  const stable = useMemo<ChapterStableContextValue>(
+    () => ({ total, goTo, getCurrent: () => currentRef.current }),
+    [total, goTo]
+  );
 
   // ── DOM sync: toggle hidden/data-chapter-active + the direction-aware
   //    enter transition on the newly active section. Server-rendered nodes
@@ -246,9 +293,11 @@ export function ChapterShell({
   }, [current, total]);
 
   return (
-    <ChapterContext.Provider value={{ current, total, goTo }}>
-      {children}
-    </ChapterContext.Provider>
+    <ChapterStableContext.Provider value={stable}>
+      <ChapterContext.Provider value={{ current, total, goTo }}>
+        {children}
+      </ChapterContext.Provider>
+    </ChapterStableContext.Provider>
   );
 }
 
