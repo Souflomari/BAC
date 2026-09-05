@@ -126,9 +126,9 @@ exercises:
           - math: 'x > x_0 \ \Longrightarrow\ x - x_0 > 0 \ \Longrightarrow\ f''''(x) > 0'
             note: "Même raisonnement de l'autre côté de x0."
           - math: 'f'''' \text{ change de signe en } x_0, \quad x_0 \in\ ]0,1[\ \subset\ \mathbb{R} = \text{dom}(f)'
-            note: "f est definie sur R tout entier, donc en particulier en x0 : aucune restriction de domaine ne fait obstacle ici, contrairement a l'exemple de l'asymptote verticale vu au chapitre 6."
+            note: "f est définie sur R tout entier, donc en particulier en x0 : aucune restriction de domaine ne fait obstacle ici, contrairement a l'exemple de l'asymptote verticale vu au chapitre 6."
           - math: '\Longrightarrow\ I\left(x_0, f(x_0)\right) \text{ est un point d''inflexion de } (C)'
-            note: "Changement de signe de f seconde + domaine verifie = point d'inflexion, exactement le critere pose au chapitre 6."
+            note: "Changement de signe de f seconde + domaine verifie = point d'inflexion, exactement le critère pose au chapitre 6."
 
   # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ─────────
   - id: r-variation
@@ -155,11 +155,11 @@ exercises:
           Pour le calcul, on dérive le produit $2(x-1)e^{-x}$ avec $u(x)=2(x-1)$ ($u'(x)=2$) et $v(x)=e^{-x}$ ($v'(x)=-e^{-x}$), on ajoute la dérivée du polynôme, puis on factorise — le facteur commun est cette fois $(2-x)$, pas $(1-x)$ : c'est exactement là qu'un élève qui aurait mémorisé le sujet précédent trébucherait s'il recopiait le mauvais facteur.
         steps:
           - math: 'g(x) = 2(x-1)e^{-x} + x^2 - 4x'
-            note: "Fonction donnee par l'enonce."
+            note: "Fonction donnée par l'énoncé."
           - math: '\left(2(x-1)e^{-x}\right)'' = 2e^{-x} + 2(x-1)\times(-e^{-x}) = e^{-x}\left[2-2(x-1)\right] = 2e^{-x}(2-x)'
-            note: "Regle du produit : u=2(x-1) (u'=2), v=e^(-x) (v'=-e^(-x)), puis on factorise par e^(-x)."
+            note: "Règle du produit : u=2(x-1) (u'=2), v=e^(-x) (v'=-e^(-x)), puis on factorise par e^(-x)."
           - math: 'g''(x) = 2e^{-x}(2-x) + 2x - 4'
-            note: "On ajoute la derivee de x carre moins 4x, qui vaut 2x-4."
+            note: "On ajoute la dérivée de x carré moins 4x, qui vaut 2x-4."
           - math: 'g''(x) = 2e^{-x}(2-x) - 2(2-x) = 2(2-x)\left(e^{-x}-1\right)'
             note: "On factorise par (2-x) : 2x-4 = -2(2-x)."
           - math: 'g''(x) = 2\left(e^{-x}-1\right)(2-x)'
@@ -179,9 +179,9 @@ exercises:
           - math: 'g''(2) = 2\left(e^{-2}-1\right)(2-2) = 2\left(e^{-2}-1\right)\times 0 = 0'
             note: "En x=2, c'est le facteur (2-x) qui s'annule."
           - math: 'g''(0) = g''(2) = 0'
-            note: "Hypothese de Rolle verifiee sur [0,2] (et non [0,1] : les racines de g' sont 0 et 2)."
+            note: "Hypothèse de Rolle vérifiée sur [0,2] (et non [0,1] : les racines de g' sont 0 et 2)."
           - math: '\exists\ x_0 \in\ ]0,2[,\quad g''''(x_0) = 0'
-            note: "Conclusion de Rolle applique a g' : sa derivee, g seconde, s'annule en un point interieur de ]0,2[."
+            note: "Conclusion de Rolle applique a g' : sa dérivée, g seconde, s'annule en un point intérieur de ]0,2[."
 
       - id: q-g3
         stem: |-
@@ -192,19 +192,19 @@ exercises:
           Il faut donc calculer $g'''$ et vérifier son signe — cette fois sur $[0,2]$, pas $[0,1]$. On dérive $g''$ à son tour, on factorise, et on vérifie que le facteur variable reste strictement positif sur ce nouvel intervalle, plus large que celui du sujet précédent.
         steps:
           - math: 'g''''(x) = 2\left[1+(x-3)e^{-x}\right]'
-            note: "On derive g' par la regle du produit : c'est le calcul de g seconde."
+            note: "On derive g' par la règle du produit : c'est le calcul de g seconde."
           - math: 'g''''''(x) = 2\left[e^{-x} + (x-3)\times(-e^{-x})\right] = 2e^{-x}\left[1-(x-3)\right] = 2e^{-x}(4-x)'
             note: "On derive g seconde a son tour pour obtenir g tierce."
           - math: '\forall x\in[0,2],\quad 4-x \geq 2 > 0 \quad\text{et}\quad e^{-x}>0'
-            note: "Sur [0,2] (plus large que [0,1] du sujet precedent), le facteur (4-x) reste au moins egal a 2."
+            note: "Sur [0,2] (plus large que [0,1] du sujet précédent), le facteur (4-x) reste au moins egal a 2."
           - math: '\Longrightarrow\ g''''''(x) > 0 \quad\text{pour tout } x\in[0,2]'
             note: "g tierce est strictement positive sur tout l'intervalle [0,2]."
           - math: '\exists\ c \text{ strictement entre } x \text{ et } x_0,\quad g''''(x) - g''''(x_0) = g''''''(c)\,(x-x_0)'
-            note: "Theoreme des accroissements finis applique a g seconde entre x et x0, les deux dans [0,2]."
+            note: "Théorème des accroissements finis applique a g seconde entre x et x0, les deux dans [0,2]."
           - math: 'g''''(x_0) = 0 \ \Longrightarrow\ \dfrac{g''''(x)}{x-x_0} = g''''''(c)'
-            note: "On simplifie grace a g seconde de x0 = 0, puis on divise par x-x0, non nul."
+            note: "On simplifie grâce a g seconde de x0 = 0, puis on divise par x-x0, non nul."
           - math: 'c \in [0,2] \ \Longrightarrow\ g''''''(c) > 0 \ \Longrightarrow\ \dfrac{g''''(x)}{x-x_0} > 0'
-            note: "c est strictement entre x et x0, deux reels de [0,2], donc c y est aussi."
+            note: "c est strictement entre x et x0, deux réels de [0,2], donc c y est aussi."
 
       - id: q-g4
         stem: |-
@@ -215,10 +215,10 @@ exercises:
           Et comme pour $f$, la condition de domaine ne pose aucun problème ici : $g$ est définie sur $\mathbb{R}$ tout entier, et $x_0 \in\ ]0,2[ \subset \mathbb{R}$. Le point $J(x_0, g(x_0))$ est donc un point d'inflexion de $(\Gamma)$.
         steps:
           - math: 'x < x_0 \ \Longrightarrow\ x - x_0 < 0 \ \Longrightarrow\ g''''(x) < 0'
-            note: "Meme raisonnement que pour f : un quotient positif impose le meme signe au numerateur et au denominateur."
+            note: "Même raisonnement que pour f : un quotient positif impose le même signe au numérateur et au dénominateur."
           - math: 'x > x_0 \ \Longrightarrow\ x - x_0 > 0 \ \Longrightarrow\ g''''(x) > 0'
-            note: "Meme raisonnement de l'autre cote de x0."
+            note: "Même raisonnement de l'autre cote de x0."
           - math: 'g'''' \text{ change de signe en } x_0, \quad x_0 \in\ ]0,2[\ \subset\ \mathbb{R} = \text{dom}(g)'
-            note: "g est definie sur R tout entier : aucune restriction de domaine ici non plus."
+            note: "g est définie sur R tout entier : aucune restriction de domaine ici non plus."
           - math: '\Longrightarrow\ J\left(x_0, g(x_0)\right) \text{ est un point d''inflexion de } (\Gamma)'
             note: "Changement de signe de g seconde + domaine verifie = point d'inflexion."

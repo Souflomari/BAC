@@ -173,9 +173,9 @@ entries:
           On applique la méthode du chapitre 3 : loi des mailles sur la maille série, puis on remplace chaque tension par l'expression de son dipôle — la loi d'Ohm pour $R$, et la relation caractéristique de la bobine $u_L = r\,i + L\dfrac{di}{dt}$ établie au chapitre 2, qui porte à la fois sa résistance interne $r$ et son inductance $L$. On regroupe ensuite les deux termes résistifs $R$ et $r$, qui jouent le même rôle du point de vue de la loi d'Ohm, avant de diviser par $L$ pour isoler $\dfrac{di}{dt}$.
         steps:
           - math: 'E = u_R + u_L'
-            note: "Loi des mailles sur la maille serie, convention recepteur (chapitre 3)."
+            note: "Loi des mailles sur la maille série, convention récepteur (chapitre 3)."
           - math: 'u_R = R\,i \qquad u_L = r\,i + L\dfrac{di}{dt}'
-            note: "Loi d'Ohm pour R ; relation caracteristique de la bobine avec sa resistance interne r et son inductance L (chapitre 2)."
+            note: "Loi d'Ohm pour R ; relation caractéristique de la bobine avec sa résistance interne r et son inductance L (chapitre 2)."
           - math: 'E = R\,i + r\,i + L\dfrac{di}{dt} = (R+r)\,i + L\dfrac{di}{dt}'
             note: "On regroupe les deux termes resistifs R et r (chapitre 3)."
           - math: '\boxed{\dfrac{di}{dt} + \dfrac{R+r}{L}\,i = \dfrac{E}{L}}'
@@ -187,11 +187,11 @@ entries:
           En régime permanent, $\dfrac{di}{dt}=0$ (chapitre 2) : le terme inductif de la bobine s'annule, et il ne reste que $u_L = r\,i$ — la bobine se comporte comme un simple résistor $r$. On lit alors deux valeurs au même instant, sur les paliers des deux courbes : $I_{max}$ sur $(C_1)$, $u_L$ sur $(C_2)$. Leur rapport donne $r$ directement, sans passer par $E$ ni $L$.
         steps:
           - math: '\dfrac{di}{dt} = 0 \implies u_L = r\,i'
-            note: "Regime permanent (chapitre 2) : le terme inductif s'annule, la bobine se reduit a sa resistance interne r."
+            note: "Régime permanent (chapitre 2) : le terme inductif s'annule, la bobine se reduit a sa résistance interne r."
           - math: 'I_{max} = 100\ \text{mA} = 0{,}1\ \text{A}'
-            note: "Palier de (C1) : intensite en regime permanent."
+            note: "Palier de (C1) : intensité en régime permanent."
           - math: 'r = \dfrac{u_L(\text{perm})}{I_{max}} = \dfrac{1}{0{,}1}'
-            note: "On isole r, avec le palier de (C2) pour u_L en regime permanent."
+            note: "On isole r, avec le palier de (C2) pour u_L en régime permanent."
           - math: '\boxed{r = 10\ \Omega}'
             note: "Palier de (C2) au voisinage de 1 V."
       - id: q3
@@ -201,13 +201,13 @@ entries:
           L'équation de la question 1 a la forme $\dfrac{di}{dt} + \dfrac{1}{\tau}\,i = \dfrac{E}{L}$, avec $\tau = \dfrac{L}{R+r}$ — c'est le coefficient de $i$ qui la porte (chapitre 3). La tangente $(T)$ à l'origine coupe l'asymptote $i=I_{max}$ exactement à l'abscisse $t=\tau$ (propriété rappelée au chapitre 4) : sur la figure 2, cette lecture donne $\tau=0{,}01\ \text{s}$. On remonte alors à $L=\tau(R+r)$, avec $R=90\ \Omega$ (donnée) et $r=10\ \Omega$ (question 2).
         steps:
           - math: '\tau = \dfrac{L}{R+r}'
-            note: "La constante de temps est le coefficient de i dans l'equation differentielle (chapitre 3)."
+            note: "La constante de temps est le coefficient de i dans l'équation différentielle (chapitre 3)."
           - math: '\tau = 0{,}01\ \text{s}'
-            note: "Tangente (T) a l'origine : coupe l'asymptote i = I_max a t = 0,01 s (methode du chapitre 4)."
+            note: "Tangente (T) a l'origine : coupe l'asymptote i = I_max a t = 0,01 s (méthode du chapitre 4)."
           - math: 'L = \tau\,(R+r) = 0{,}01\times(90+10)'
-            note: "On isole L ; R = 90 Ohm donnee, r = 10 Ohm question 2."
+            note: "On isole L ; R = 90 Ohm donnée, r = 10 Ohm question 2."
           - math: '\boxed{L = 1\ \text{H}}'
-            note: "La valeur L = 1 H est bien verifiee."
+            note: "La valeur L = 1 H est bien vérifiée."
 
   # ── bk-2021-r-x4b — 2021 R, Exercice 4 (Partie II) : r de la bobine, L par la tangente ──
   - id: bk-2021-r-x4b
@@ -510,11 +510,11 @@ entries:
           **Le piège de cette question.** Multiplier par $R$ SEULEMENT certains termes de l'équation, ce qui laisse des fractions incohérentes et empêche de retrouver exactement la forme imposée. Deuxième piège, plus profond : écrire $i = \dfrac{E}{R}$ (la valeur de RÉGIME PERMANENT) au lieu de $i=\dfrac{u_R}{R}$ (la loi d'Ohm, valable à CHAQUE instant) — la première est une valeur particulière, la seconde est la relation instantanée dont on a besoin ici.
         steps:
           - math: 'E = u_R + u_{bobine} \qquad \text{avec} \qquad u_{bobine} = r\,i + L_0\,\frac{di}{dt}, \quad i = \frac{u_R}{R}'
-            note: "Loi des mailles (chapitre 3) ; relation caracteristique de la bobine (chapitre 2) ; conversion i = u_R/R (loi d'Ohm)."
+            note: "Loi des mailles (chapitre 3) ; relation caractéristique de la bobine (chapitre 2) ; conversion i = u_R/R (loi d'Ohm)."
           - math: 'E = u_R + r\,\frac{u_R}{R} + \frac{L_0}{R}\,\frac{du_R}{dt}'
-            note: "On reporte i = u_R/R partout, y compris dans la derivee."
+            note: "On reporte i = u_R/R partout, y compris dans la dérivée."
           - math: 'ER = (R+r)\,u_R + L_0\,\frac{du_R}{dt}'
-            note: "On multiplie toute l'equation par R pour effacer les fractions."
+            note: "On multiplie toute l'équation par R pour effacer les fractions."
           - math: '\boxed{\frac{du_R}{dt} + \frac{R+r}{L_0}\,u_R = \frac{ER}{L_0}}'
             note: "On divise par L0 : exactement la forme demandee."
       - id: q3
@@ -549,13 +549,13 @@ entries:
           **Le piège de cette question.** $r$ est ici la DIFFÉRENCE de deux nombres proches, $500$ et $490$ : une petite erreur de lecture sur $U_0$ se transforme en grosse erreur relative sur $r$. Lire $U_0=10\ \text{V}$ au lieu de $9{,}8\ \text{V}$ (le piège de la question précédente) donne $R+r=\frac{4900}{10}=490=R$, donc $r=0$ — la bobine deviendrait, à tort, parfaite.
         steps:
           - math: '\frac{du_R}{dt} = 0 \implies R+r = \frac{ER}{U_0}'
-            note: "Regime permanent (chapitre 3, traduit en u_R) : le terme derive de l'equation de la question 1.2 s'annule."
+            note: "Régime permanent (chapitre 3, traduit en u_R) : le terme derive de l'équation de la question 1.2 s'annule."
           - math: 'R+r = \frac{10\times490}{9{,}8} = \frac{4900}{9{,}8}'
-            note: "Application numerique : E = 10 V, R = 490 Ohm, U0 = 9,8 V (question 1.3)."
+            note: "Application numérique : E = 10 V, R = 490 Ohm, U0 = 9,8 V (question 1.3)."
           - math: 'R+r = 500\ \Omega \implies r = 500 - 490'
             note: "On isole r."
           - math: '\boxed{r = 10\ \Omega}'
-            note: "Resistance propre de la bobine."
+            note: "Résistance propre de la bobine."
       - id: q5
         stem: |-
           **1.5.** (0,25 pt) Vérifier que $L_0 = 0{,}5\ \text{H}$.
@@ -579,11 +579,11 @@ entries:
           **Le piège de cette question.** Confondre $\tau$ avec l'instant où la courbe $C_1$ rejoint VISUELLEMENT son palier — la droite $(T)$ sort d'ailleurs du cadre par le haut vers $t\approx1{,}25\ \text{ms}$, bien avant que la courbe elle-même n'ait l'air stabilisée. $\tau$ se lit uniquement sur l'intersection de la tangente avec le palier, jamais sur l'allure visuelle de la courbe.
         steps:
           - math: '\tau \approx 1{,}0\ \text{ms} = 1{,}0\times10^{-3}\ \text{s}'
-            note: "Tangente (T) a l'origine : coupe le niveau du palier a t = 1,0 ms (methode du chapitre 4)."
+            note: "Tangente (T) a l'origine : coupe le niveau du palier a t = 1,0 ms (méthode du chapitre 4)."
           - math: 'L_0 = \tau\,(R+r) = 1{,}0\times10^{-3}\times500'
             note: "tau = L0/(R+r) (chapitre 4), avec R+r = 500 Ohm (question 1.4)."
           - math: '\boxed{L_0 = 0{,}5\ \text{H}}'
-            note: "Valeur verifiee, conforme a l'enonce."
+            note: "Valeur vérifiée, conforme a l'énoncé."
       - id: q6
         stem: |-
           **1.6.** (0,5 pt) On refait la même expérience en ajustant l'inductance de la bobine sur la valeur $L = L_1 = 2L_0$. Choisir parmi les courbes $C_2$, $C_3$ et $C_4$ représentées sur la figure 3, celle qui représente l'évolution de la tension $u_R(t)$ dans le cas où $L = L_1$. Justifier votre réponse.
@@ -660,13 +660,13 @@ entries:
           Même méthode qu'au chapitre 3 — loi des mailles sur le circuit série, puis substitution de la relation caractéristique de la bobine (chapitre 2) — mais ici la bobine a une résistance négligeable (l'énoncé le précise), donc le terme $r\,i$ du chapitre 2 disparaît : $u_{bobine} = L\dfrac{di}{dt}$ seul. La seule résistance du circuit est $R$. On applique $E = u_R + u_{bobine}$, on remplace, on isole $\dfrac{di}{dt}$ — exactement la démarche du chapitre 3, réduite au cas particulier $r=0$.
         steps:
           - math: 'E = u_R + u_{bobine}'
-            note: "Loi des mailles sur la maille serie (chapitre 3)."
+            note: "Loi des mailles sur la maille série (chapitre 3)."
           - math: 'u_R = R\,i \qquad u_{bobine} = L\dfrac{di}{dt}'
-            note: "Loi d'Ohm pour R ; bobine de resistance negligeable (r=0 dans la relation du chapitre 2)."
+            note: "Loi d'Ohm pour R ; bobine de résistance négligeable (r=0 dans la relation du chapitre 2)."
           - math: 'E = R\,i + L\dfrac{di}{dt}'
             note: "On reporte les deux tensions."
           - math: '\boxed{\dfrac{di}{dt} + \dfrac{R}{L}\,i = \dfrac{E}{L}}'
-            note: "On divise par L : equation differentielle de i(t)."
+            note: "On divise par L : équation différentielle de i(t)."
       - id: q2a
         stem: |-
           **(0,5 pt)** **1-2-1.** Déterminer les expressions de $A$ et $B$ en fonction de $E$ et $R$.
@@ -674,9 +674,9 @@ entries:
           Au chapitre 3, la solution générale de cette équation est $i(t) = I_{max}\left(1-e^{-t/\tau}\right) = I_{max} - I_{max}e^{-t/\tau}$, avec $I_{max}=E/R$ (ici $R$ est la seule résistance, la bobine étant de résistance négligeable). Il suffit d'identifier terme à terme avec la forme donnée par l'énoncé, $A+Be^{-t/\tau}$ : le terme constant donne $A$, le coefficient de l'exponentielle donne $B$.
         steps:
           - math: 'i(t) = I_{max}\left(1-e^{-t/\tau}\right) = I_{max} - I_{max}\,e^{-t/\tau}'
-            note: "Forme generale etablie au chapitre 3, avec R total = R (bobine de resistance negligeable ici)."
+            note: "Forme générale etablie au chapitre 3, avec R total = R (bobine de résistance négligeable ici)."
           - math: 'A + B\,e^{-t/\tau} = I_{max} - I_{max}\,e^{-t/\tau} \implies A = I_{max},\ B = -I_{max}'
-            note: "Identification terme a terme avec la forme donnee par l'enonce."
+            note: "Identification terme a terme avec la forme donnée par l'énoncé."
           - math: '\boxed{A = \dfrac{E}{R} \qquad B = -\dfrac{E}{R}}'
             note: "Avec I_max = E/R (chapitre 3)."
       - id: q2b
@@ -688,11 +688,11 @@ entries:
           - math: 'I_0 = 5\times 9{,}6 = 48\ \text{mA} = 0{,}048\ \text{A}'
             note: "Lecture du palier sur la figure 2 : 5 divisions, 1 division = 9,6 mA."
           - math: 'R = \dfrac{E}{I_0} = \dfrac{24}{0{,}048}'
-            note: "Regime permanent (chapitre 2) : E = R I_0, la bobine etant de resistance negligeable."
+            note: "Régime permanent (chapitre 2) : E = R I_0, la bobine étant de résistance négligeable."
           - math: '\boxed{R = 500\ \Omega}'
-            note: "Application numerique."
+            note: "Application numérique."
           - math: '\tau \approx 2{,}0\ \text{ms}'
-            note: "Tangente (T) a l'origine : coupe le palier au premier trait chiffre de la figure 2 (methode du chapitre 4)."
+            note: "Tangente (T) a l'origine : coupe le palier au premier trait chiffre de la figure 2 (méthode du chapitre 4)."
           - math: 'L = R\,\tau = 500\times 2\times10^{-3}'
             note: "On isole L a partir de tau = L/R (chapitre 4)."
           - math: '\boxed{L = 1\ \text{H}}'
@@ -704,11 +704,11 @@ entries:
           La bobine ayant une résistance négligeable (question 1), $u_L(t) = L\dfrac{di}{dt}$ seul. On dérive $i(t)=I_{max}(1-e^{-t/\tau})$ comme au chapitre 3 : $\dfrac{di}{dt}=\dfrac{I_{max}}{\tau}e^{-t/\tau}$. Comme $\tau=L/R$ (chapitre 4), $L/\tau=R$, et $R\,I_{max}=E$ (régime permanent) : le préfacteur se simplifie exactement en $E$.
         steps:
           - math: 'u_L(t) = L\dfrac{di}{dt}'
-            note: "Bobine de resistance negligeable (question 1)."
+            note: "Bobine de résistance négligeable (question 1)."
           - math: '\dfrac{di}{dt} = \dfrac{I_{max}}{\tau}\,e^{-t/\tau}'
-            note: "Derivee de i(t), calculee au chapitre 3."
+            note: "Dérivée de i(t), calculée au chapitre 3."
           - math: 'u_L(t) = \dfrac{L}{\tau}\,I_{max}\,e^{-t/\tau} = R\,I_{max}\,e^{-t/\tau} = E\,e^{-t/\tau}'
-            note: "L/tau = R (chapitre 4) et R I_max = E (regime permanent)."
+            note: "L/tau = R (chapitre 4) et R I_max = E (régime permanent)."
           - math: '\boxed{u_L(t) = 24\,e^{-500\,t}\ \text{V} \qquad (t\ \text{en s})}'
             note: "Avec E = 24 V et 1/tau = 1/0,002 = 500 par seconde."
 
@@ -769,13 +769,13 @@ entries:
           Même méthode qu'au chapitre 3 — loi des mailles (ici appelée « loi d'additivité des tensions »), puis substitution de la relation caractéristique de la bobine établie au chapitre 2, $u_{bobine}=r\,i+L\dfrac{di}{dt}$ : la bobine $(b)$ garde ici sa résistance interne $r$, non négligeable (contrairement au sujet 2023). On regroupe les deux termes résistifs $R_1$ et $r$, comme au chapitre 3, puis on réarrange pour isoler $\dfrac{di}{dt}$ directement — la même équation que celle du chapitre 3, présentée sous sa forme résolue plutôt que sous la forme $L\dfrac{di}{dt}+Ri=E$.
         steps:
           - math: 'E = u_{R_1} + u_{bobine}'
-            note: "Loi d'additivite des tensions = loi des mailles sur la maille serie (chapitre 3)."
+            note: "Loi d'additivite des tensions = loi des mailles sur la maille série (chapitre 3)."
           - math: 'u_{R_1} = R_1\,i \qquad u_{bobine} = r\,i + L\dfrac{di}{dt}'
-            note: "Loi d'Ohm pour R1 ; relation caracteristique de la bobine, avec sa resistance interne r (chapitre 2)."
+            note: "Loi d'Ohm pour R1 ; relation caractéristique de la bobine, avec sa résistance interne r (chapitre 2)."
           - math: 'E = R_1\,i + r\,i + L\dfrac{di}{dt} = (R_1+r)\,i + L\dfrac{di}{dt}'
             note: "On regroupe les deux termes resistifs (chapitre 3)."
           - math: '\boxed{\dfrac{di}{dt} = -\dfrac{R_1+r}{L}\,i + \dfrac{E}{L}}'
-            note: "On isole di/dt : meme equation que celle du chapitre 3, presentee sous forme resolue."
+            note: "On isole di/dt : même équation que celle du chapitre 3, presentee sous forme resolue."
       - id: q2a
         stem: |-
           **(0,5 pt)** **2-2-1.** Vérifier que la valeur de $L$ est : $L = 2\ \text{mH}$.
@@ -783,9 +783,9 @@ entries:
           L'équation de la question 2-1 réarrangée est $\dfrac{di}{dt}=-\dfrac{R_1+r}{L}i+\dfrac{E}{L}$ — c'est exactement la relation linéaire entre $\dfrac{di}{dt}$ et $i$ déjà présente au chapitre 3 sous la forme $\dfrac{di}{dt}=-\dfrac{R}{L}\left(i-\dfrac{E}{R}\right)$, mais ici on l'exploite en la lisant directement sur un graphe de $\dfrac{di}{dt}$ en fonction de $i$ plutôt que sur la courbe usuelle $i(t)$ — une lecture graphique que le chapitre 4 ne couvre pas explicitement (voir la scope note de sourcing). En $i=0$, l'ordonnée à l'origine de cette droite vaut $E/L$ : on la lit sur la figure 4, puis on isole $L$.
         steps:
           - math: '\left.\dfrac{di}{dt}\right|_{i=0} = \dfrac{E}{L}'
-            note: "On evalue l'equation de la question 2-1 en i=0 : c'est l'ordonnee a l'origine de la figure 4."
+            note: "On evalue l'équation de la question 2-1 en i=0 : c'est l'ordonnée a l'origine de la figure 4."
           - math: '\left.\dfrac{di}{dt}\right|_{i=0} = 3\times10^{3}\ \text{A.s}^{-1}'
-            note: "Lecture directe sur la figure 4 (coin superieur gauche du segment)."
+            note: "Lecture directe sur la figure 4 (coin supérieur gauche du segment)."
           - math: 'L = \dfrac{E}{3\times10^{3}} = \dfrac{6}{3\times10^{3}}'
             note: "On isole L."
           - math: '\boxed{L = 2\times10^{-3}\ \text{H} = 2\ \text{mH}}'
@@ -797,13 +797,13 @@ entries:
           Toujours sur la même droite de la figure 4 (même scope note qu'à la question précédente) : au point où elle coupe l'axe des abscisses, $\dfrac{di}{dt}=0$, donc l'équation de la question 2-1 donne $0=-\dfrac{R_1+r}{L}I_{max}+\dfrac{E}{L}$, d'où $R_1+r=E/I_{max}$ — la même identification qu'au chapitre 3 pour le régime permanent ($I_{max}=E/R$), appliquée ici à ce graphe plutôt qu'à un palier de $i(t)$. On lit $I_{max}=6\ \text{mA}$ à l'abscisse où la droite coupe l'axe, puis on calcule $\tau=L/(R_1+r)$ comme au chapitre 4, avec le $L$ trouvé à la question précédente.
         steps:
           - math: '0 = -\dfrac{R_1+r}{L}\,I_{max} + \dfrac{E}{L} \implies R_1+r = \dfrac{E}{I_{max}}'
-            note: "Point ou la droite de la figure 4 coupe l'axe des i (di/dt = 0) : regime permanent (chapitre 3)."
+            note: "Point ou la droite de la figure 4 coupe l'axe des i (di/dt = 0) : régime permanent (chapitre 3)."
           - math: 'I_{max} = 6\ \text{mA} = 6\times10^{-3}\ \text{A}'
-            note: "Lecture directe sur la figure 4 (coin inferieur droit du segment)."
+            note: "Lecture directe sur la figure 4 (coin inférieur droit du segment)."
           - math: 'R_1+r = \dfrac{6}{6\times10^{-3}}'
-            note: "Application numerique."
+            note: "Application numérique."
           - math: '\boxed{R_1+r = 1000\ \Omega}'
-            note: "Resistance totale du circuit."
+            note: "Résistance totale du circuit."
           - math: '\tau = \dfrac{L}{R_1+r} = \dfrac{2\times10^{-3}}{1000}'
             note: "tau = L/R du chapitre 4, avec L de la question 2-2-1."
           - math: '\boxed{\tau = 2\times10^{-6}\ \text{s} = 2\ \mu\text{s}}'
@@ -984,11 +984,11 @@ entries:
           **Le piège de cette question.** Garder, par réflexe, un terme $r\,i$ pour la bobine — la relation générale du chapitre 2 porte $ri+L\,di/dt$ ; ici l'énoncé précise que la bobine a une résistance négligeable, donc $r=0$ et ce terme disparaît. L'introduire quand même changerait la forme de l'équation et empêcherait de retrouver exactement celle imposée par l'énoncé.
         steps:
           - math: 'E = u_R + u_{bobine} \qquad \text{avec} \qquad u_{bobine} = L\,\frac{di}{dt}, \quad i = \frac{u_R}{R}'
-            note: "Loi des mailles (chapitre 3) ; bobine de resistance negligeable, pas de terme r i (chapitre 2) ; conversion i = u_R/R (loi d'Ohm)."
+            note: "Loi des mailles (chapitre 3) ; bobine de résistance négligeable, pas de terme r i (chapitre 2) ; conversion i = u_R/R (loi d'Ohm)."
           - math: 'E = u_R + \frac{L}{R}\frac{du_R}{dt}'
-            note: "On reporte i = u_R/R dans la derivee."
+            note: "On reporte i = u_R/R dans la dérivée."
           - math: 'ER = R\,u_R + L\,\frac{du_R}{dt}'
-            note: "On multiplie toute l'equation par R pour effacer la fraction."
+            note: "On multiplie toute l'équation par R pour effacer la fraction."
           - math: '\boxed{\frac{du_R}{dt} + \frac{R}{L}\,u_R = \frac{RE}{L}}'
             note: "On divise par L : exactement la forme demandee."
       - id: q2
@@ -1010,13 +1010,13 @@ entries:
           **Le piège de cette question.** Lire le pas de l'ordonnée comme $2{,}5\ \text{V}$ par division au lieu de $1{,}25\ \text{V}$ — les traits chiffrés « $2{,}5$ » et « $5$ » de la figure 2 sont séparés par DEUX divisions, pas une seule : une lecture au pas double donnerait un palier à $20\ \text{V}$, un $I_0$ deux fois trop grand, et une valeur de $L$ (question suivante) hors de portée de celle à vérifier. Deuxième piège : confondre le palier de $u_R$ (ce qu'on lit) avec $I_0$ (ce qu'on demande) — il faut repasser par $R$.
         steps:
           - math: '\tau \approx 1{,}0\ \text{ms} = 1{,}0\times10^{-3}\ \text{s}'
-            note: "Tangente (T) a l'origine : coupe le palier au premier trait vertical (methode du chapitre 4)."
+            note: "Tangente (T) a l'origine : coupe le palier au premier trait vertical (méthode du chapitre 4)."
           - math: '0{,}63\times10 = 6{,}3\ \text{V} \quad \text{a } t=1{,}00\ \text{ms}'
-            note: "Controle croise par la methode des 63% (chapitre 4) : meme tau."
+            note: "Controle croise par la méthode des 63% (chapitre 4) : même tau."
           - math: 'I_0 = \frac{u_{R,max}}{R} = \frac{10}{100}'
             note: "Loi d'Ohm sur le palier de la figure 2 (pas de 1,25 V/division, pas 2,5)."
           - math: '\boxed{I_0 = 0{,}1\ \text{A} = 100\ \text{mA}}'
-            note: "Intensite en regime permanent."
+            note: "Intensité en régime permanent."
       - id: q3
         stem: |-
           **1-3.** (0,5 pt) Vérifier que $L = 0{,}10\ \text{H}$.
@@ -1032,11 +1032,11 @@ entries:
           **Le piège de cette question.** Reprendre par réflexe $\tau=L/(R+r)$ (la forme générale du chapitre 4 avec une bobine résistive) au lieu de $\tau=L/R$ : ici $r$ est négligeable, l'introduire ferait dépendre $L$ d'une résistance interne qui n'existe pas dans cet énoncé et fausserait le résultat.
         steps:
           - math: '\tau = \frac{L}{R} \implies L = \tau R'
-            note: "tau = L/R (chapitre 4), sans terme r puisque la bobine a une resistance negligeable ici."
+            note: "tau = L/R (chapitre 4), sans terme r puisque la bobine a une résistance négligeable ici."
           - math: 'L = 1{,}0\times10^{-3}\times100'
-            note: "Application numerique : tau = 1,0 ms (question 1-2), R = 100 Ohm (donnee)."
+            note: "Application numérique : tau = 1,0 ms (question 1-2), R = 100 Ohm (donnée)."
           - math: '\boxed{L = 0{,}10\ \text{H}}'
-            note: "Valeur verifiee, conforme a l'enonce."
+            note: "Valeur vérifiée, conforme a l'énoncé."
       - id: q4
         stem: |-
           **1-4.** (0,75 pt) Quand le régime permanent est atteint, calculer la tension $u_{bf}$ aux bornes de la bobine et $E_m$ l'énergie qui y est emmagasinée.
@@ -1057,14 +1057,14 @@ entries:
 
           **Le piège de cette question.** Calculer $u_{bf}$ en oubliant que la question porte sur le régime PERMANENT, et reprendre par réflexe une valeur instantanée de $L\,di/dt$ prise ailleurs sur la courbe (par exemple à la pente à l'origine) — seule la valeur en régime permanent, où $di/dt=0$, est demandée ici, et elle est nulle. Deuxième piège, sur $E_m$ : utiliser $u_{R,max}=10\ \text{V}$ à la place de $I_0=0{,}1\ \text{A}$ dans $\frac12Li^2$ — l'énergie se calcule avec le COURANT, jamais directement avec une tension.
         steps:
-          - math: '\frac{di}{dt}=0 \implies u_{bobine} = r\,i = 0 \quad (r \text{ negligeable})'
-            note: "Regime permanent (chapitre 3) : le terme inductif s'annule ; ici r = 0 donc u_bobine = 0."
+          - math: '\frac{di}{dt}=0 \implies u_{bobine} = r\,i = 0 \quad (r \text{ négligeable})'
+            note: "Régime permanent (chapitre 3) : le terme inductif s'annule ; ici r = 0 donc u_bobine = 0."
           - math: '\boxed{u_{bf} = 0\ \text{V}}'
-            note: "La bobine se comporte comme un simple fil en regime permanent."
+            note: "La bobine se comporte comme un simple fil en régime permanent."
           - math: 'E_m = \frac12 L I_0^2 = \frac12\times0{,}10\times(0{,}1)^2'
-            note: "Formule du chapitre 5 (notee E_L dans la lecon, E_m ici) ; I0 = 0,1 A de la question 1-2."
+            note: "Formule du chapitre 5 (notée E_L dans la leçon, E_m ici) ; I0 = 0,1 A de la question 1-2."
           - math: '\boxed{E_m = 5\times10^{-4}\ \text{J} = 0{,}5\ \text{mJ}}'
-            note: "Energie emmagasinee dans la bobine en regime permanent."
+            note: "Énergie emmagasinée dans la bobine en régime permanent."
       - id: q5
         part: "2- Rupture du courant électrique dans le circuit RL"
         stem: |-
@@ -1080,12 +1080,12 @@ entries:
 
           **Le piège de cette question.** Penser que couper l'interrupteur annule instantanément le courant partout dans le circuit, comme le ferait un interrupteur sur un circuit purement résistif. C'est vrai pour la TENSION que le générateur applique — plus rien ne l'impose — mais c'est faux pour le courant DANS LA BOBINE : c'est précisément cette inertie électrique (chapitre 2) qui va le forcer à continuer de circuler, quitte à emprunter un tout autre chemin (la diode et $R_1$, questions suivantes).
         steps:
-          - math: 'i(0^-) = I_0 = 0{,}1\ \text{A} \quad \text{(regime permanent, question 1-2)}'
+          - math: 'i(0^-) = I_0 = 0{,}1\ \text{A} \quad \text{(régime permanent, question 1-2)}'
             note: "Valeur du courant juste avant l'ouverture de K."
           - math: 'i(0^+) = i(0^-) \quad \text{(continuite du courant dans une bobine, rung 1)}'
-            note: "Le courant dans une bobine ne peut pas sauter : meme valeur juste apres l'ouverture."
+            note: "Le courant dans une bobine ne peut pas sauter : même valeur juste après l'ouverture."
           - math: '\boxed{i(0^+) = 0{,}1\ \text{A} = 100\ \text{mA}}'
-            note: "Intensite dans la bobine a l'instant t = 0+."
+            note: "Intensité dans la bobine a l'instant t = 0+."
       - id: q6
         stem: |-
           **2-2.** (0,25 pt) vérifier que la tension aux bornes du conducteur ohmique de résistance $R_1$ est $u_{R_1} = 100\ \text{V}$.
@@ -1101,18 +1101,18 @@ entries:
           **Le piège de cette question.** Utiliser $R$ au lieu de $R_1$, par réflexe (c'est $R$ qui portait le courant pendant l'établissement) — mais $R$ n'appartient plus à la maille active après l'ouverture de $K$, seul $R_1$ y est. Deuxième piège : douter du résultat parce que $100\ \text{V}$ dépasse largement les $10\ \text{V}$ du générateur — ce n'est pas une erreur, c'est précisément le phénomène de surtension à l'ouverture d'un circuit inductif, ici limité (et non infini) grâce au chemin de repli offert par la diode et $R_1$.
         steps:
           - math: '\text{maille active a } t=0^+ : \text{ bobine} + \text{diode} + R_1 \quad (R \text{ hors circuit})'
-            note: "Topologie de la figure 1 : K ouvert coupe la branche du generateur ET celle de R."
+            note: "Topologie de la figure 1 : K ouvert coupe la branche du générateur ET celle de R."
           - math: 'u_{R_1} = R_1\,i(0^+) = 1000\times0{,}1'
             note: "Loi d'Ohm sur R1, avec i(0+) = 0,1 A (question 2-1)."
           - math: '\boxed{u_{R_1} = 100\ \text{V}}'
-            note: "Valeur verifiee, conforme a l'enonce."
+            note: "Valeur vérifiée, conforme a l'énoncé."
       - id: q7
         stem: |-
           **2-3.** (0,25 pt) déduire la valeur de $u_{bo}$ la tension aux bornes de la bobine.
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** La maille qui subsiste (question 2-2) ne contient aucun générateur : bobine, diode, $R_1$, rien d'autre. On y applique la loi des mailles (chapitre 3) comme sur n'importe quelle boucle, avec la diode idéale, de seuil nul, qui se comporte comme un simple fil ($u_{diode}=0$) puisqu'elle conduit.
 
-          $$u_{bo} + u_{diode} + u_{R_1} = 0 \qquad \text{(loi des mailles, meme convention qu’a l’etablissement)}$$
+          $$u_{bo} + u_{diode} + u_{R_1} = 0 \qquad \text{(loi des mailles, même convention qu’a l’etablissement)}$$
 
           avec $u_{diode}=0$ (diode idéale passante) et $u_{R_1}=100\ \text{V}$ (question précédente) :
 
@@ -1123,13 +1123,13 @@ entries:
           **Le piège de cette question.** Répondre $u_{bo}=+100\ \text{V}$ en gardant le réflexe de l'établissement, où $u_{bobine}$ s'opposait à une tension $E$ elle-même positive. Ici il n'y a plus de générateur : c'est la bobine elle-même qui impose la tension, et seule la loi des mailles, appliquée à la maille réellement active, donne son signe de façon fiable — pas l'intuition.
         steps:
           - math: 'u_{bo} + u_{diode} + u_{R_1} = 0'
-            note: "Loi des mailles sur la maille bobine-diode-R1 (chapitre 3), sans generateur."
+            note: "Loi des mailles sur la maille bobine-diode-R1 (chapitre 3), sans générateur."
           - math: 'u_{diode} = 0 \quad (\text{diode ideale, seuil nul, passante})'
-            note: "Donnee de l'enonce : diode ideale de tension seuil us = 0."
+            note: "Donnée de l'énoncé : diode ideale de tension seuil us = 0."
           - math: 'u_{bo} = -u_{R_1} = -100'
             note: "u_R1 = 100 V (question 2-2)."
           - math: '\boxed{u_{bo} = -100\ \text{V}}'
-            note: "Tension negative : la bobine restitue l'energie stockee, elle ne la recoit plus."
+            note: "Tension négative : la bobine restitue l'énergie stockee, elle ne la recoit plus."
       - id: q8
         part: "3- Circuit oscillant LC idéal"
         stem: |-
@@ -1155,14 +1155,14 @@ entries:
 
           **Le piège de cette question.** Réutiliser par erreur $R=100\ \Omega$ ou $R_1=1\ \text{k}\Omega$ de la Partie I dans le calcul : le circuit LC de cette question ne contient AUCUN résistor — l'énoncé le dit, « considéré idéal » — la fréquence propre ne dépend que de $L$ et $C$, jamais d'une résistance.
         steps:
-          - math: 'N_0 = \frac{1}{2\pi\sqrt{LC}} \quad \text{(resultat de la lecon Circuit RLC serie, reenonce ici)}'
-            note: "Frequence propre d'un circuit LC ideal, admise comme connue (hors chapitres de cette lecon)."
+          - math: 'N_0 = \frac{1}{2\pi\sqrt{LC}} \quad \text{(résultat de la leçon Circuit RLC série, reenonce ici)}'
+            note: "Fréquence propre d'un circuit LC ideal, admise comme connue (hors chapitres de cette leçon)."
           - math: 'LC = 0{,}10\times1\times10^{-6} = 1\times10^{-7}\ \text{s}^2'
-            note: "L = 0,10 H (question 1-3), C = 1 microF (donnee)."
+            note: "L = 0,10 H (question 1-3), C = 1 microF (donnée)."
           - math: '\sqrt{LC} \approx 3{,}162\times10^{-4}\ \text{s}'
             note: "Racine carree du produit LC."
           - math: '\boxed{N_0 = \frac{1}{2\pi\times3{,}162\times10^{-4}} \approx 503\ \text{Hz}}'
-            note: "Frequence propre de l'oscillateur LC."
+            note: "Fréquence propre de l'oscillateur LC."
       - id: q9
         stem: |-
           **3-2.** (0,25 pt) Déterminer $I_m$ l'intensité maximale du courant électrique circulant dans ce circuit.
@@ -1186,13 +1186,13 @@ entries:
           **Le piège de cette question.** Utiliser $E$ comme s'il restait présent dans le circuit $LC$ — une fois le condensateur chargé et le circuit $LC$ formé, le générateur n'y figure plus : $E$ n'intervient plus que par la condition INITIALE qu'il a imposée au condensateur ($u_C(0)=E$), pas comme source active de ce nouveau circuit.
         steps:
           - math: '\frac12 C E^2 = \frac12 L I_m^2 \implies I_m = E\sqrt{\frac{C}{L}}'
-            note: "Conservation de l'energie dans un circuit LC ideal (lecon Circuit RLC serie, reenoncee ici)."
+            note: "Conservation de l'énergie dans un circuit LC ideal (leçon Circuit RLC série, reenoncee ici)."
           - math: '\frac{C}{L} = \frac{1\times10^{-6}}{0{,}10} = 1\times10^{-5}'
-            note: "C = 1 microF (donnee), L = 0,10 H (question 1-3)."
+            note: "C = 1 microF (donnée), L = 0,10 H (question 1-3)."
           - math: 'I_m = 10\times\sqrt{1\times10^{-5}} = 10\times3{,}162\times10^{-3}'
-            note: "Application numerique, E = 10 V."
+            note: "Application numérique, E = 10 V."
           - math: '\boxed{I_m \approx 3{,}16\times10^{-2}\ \text{A} = 31{,}6\ \text{mA}}'
-            note: "Intensite maximale du courant dans l'oscillateur LC."
+            note: "Intensité maximale du courant dans l'oscillateur LC."
 
   # ── bk-2012-n-x4 — 2012 N, Electricite, Premiere partie : dipole RL, echelon de tension ascendant ──
   #
@@ -1275,13 +1275,13 @@ entries:
           Ce qu'on cherche et pourquoi ce geste. Exactement la méthode du chapitre 3 : loi des mailles sur la maille série, puis on remplace chaque tension par l'expression de son dipôle — la loi d'Ohm pour $R$ (question 1), et la relation caractéristique de la bobine $u_b = r\,i + L\dfrac{di}{dt}$ (chapitre 2), qui porte à la fois sa résistance interne $r$ et son inductance $L$. On regroupe ensuite les deux termes résistifs, qui jouent le même rôle du point de vue de la loi d'Ohm, avant de diviser par $L$.
         steps:
           - math: 'E = u_R + u_b'
-            note: "Loi des mailles, convention recepteur (question 1)."
+            note: "Loi des mailles, convention récepteur (question 1)."
           - math: 'u_R = R\,i \qquad u_b = r\,i + L\,\frac{di}{dt}'
-            note: "Loi d'Ohm pour R ; relation caracteristique de la bobine avec sa resistance interne r et son inductance L (chapitre 2)."
+            note: "Loi d'Ohm pour R ; relation caractéristique de la bobine avec sa résistance interne r et son inductance L (chapitre 2)."
           - math: 'E = (R+r)\,i + L\,\frac{di}{dt}'
             note: "On regroupe les deux termes resistifs R et r (chapitre 3)."
           - math: '\boxed{\frac{di}{dt} + \frac{R+r}{L}\,i = \frac{E}{L}}'
-            note: "On divise par L : equation differentielle verifiee par i(t)."
+            note: "On divise par L : équation différentielle vérifiée par i(t)."
       - id: q3
         stem: |-
           **2-2-** (0,5 pt) La solution de l'équation différentielle est : $i(t) = A\left(1 - e^{-\frac{t}{\tau}}\right)$. Trouver les expressions de $A$ et $\tau$ en fonction des paramètres du circuit.
@@ -1296,10 +1296,10 @@ entries:
 
           Si — et seulement si — $\dfrac{1}{\tau}=\dfrac{R+r}{L}$, le terme en $e^{-t/\tau}$ s'annule exactement entre les deux occurrences, et il reste $\dfrac{R+r}{L}A=\dfrac{E}{L}$, d'où $A=\dfrac{E}{R+r}$.
         steps:
-          - math: '\tau = \frac{L}{R+r} \qquad \text{(coefficient de } i \text{ dans l equation, rung 2)}'
+          - math: '\tau = \frac{L}{R+r} \qquad \text{(coefficient de } i \text{ dans l équation, rung 2)}'
             note: "Identification par substitution : c'est la seule valeur de tau qui annule le terme exponentiel."
           - math: '\boxed{A = \frac{E}{R+r} \qquad \tau = \frac{L}{R+r}}'
-            note: "A est la valeur du palier (regime permanent, di/dt=0) ; tau est le temps caracteristique."
+            note: "A est la valeur du palier (régime permanent, di/dt=0) ; tau est le temps caractéristique."
       - id: q4
         stem: |-
           **2-3-** (1 pt) Déterminer les valeurs de $r$ et $L$.
@@ -1321,11 +1321,11 @@ entries:
           Le contrôle qui rassure. $r=8\ \Omega$ et $L=0{,}10\ \text{H}$ sont des valeurs rondes — le signe qu'on a bien lu la bonne courbe, pas un artefact de mesure.
         steps:
           - math: 'I_{max} = A \approx 120\ \text{mA} \qquad \tau \approx 1{,}0\ \text{ms}'
-            note: "Deux lectures graphiques independantes sur la figure 2 : palier et tangente a l'origine (chapitre 4)."
+            note: "Deux lectures graphiques indépendantes sur la figure 2 : palier et tangente a l'origine (chapitre 4)."
           - math: 'R+r = \frac{E}{A} = \frac{12}{0{,}120} = 100\ \Omega'
-            note: "On inverse A = E/(R+r) ; E = 12 V, R = 92 Ohm donnes par l'enonce."
+            note: "On inverse A = E/(R+r) ; E = 12 V, R = 92 Ohm donnes par l'énoncé."
           - math: '\boxed{r = 100 - 92 = 8\ \Omega}'
-            note: "Resistance interne de la bobine."
+            note: "Résistance interne de la bobine."
           - math: 'L = \tau(R+r) = 1{,}0\times10^{-3}\times100'
             note: "On inverse tau = L/(R+r)."
           - math: '\boxed{L = 0{,}10\ \text{H}}'
@@ -1375,26 +1375,26 @@ entries:
         indépendamment. FIGURE D (page 5, u_R(t) et la tangente (T)) mesurée
         sur les objets vectoriels du PDF natif : origine calibree sur les
         lignes de grille noires, une maille = 2 ms horizontalement et 1 V
-        verticalement. Courbe (98 points) : decroissance exponentielle
+        verticalement. Courbe (98 points) : décroissance exponentielle
         partant de (0 ; 6,00 V). Tangente (T), regression sur 8 tirets :
-        ordonnee a l'origine 5,96-5,98 V (part bien du depart de la courbe),
+        ordonnée a l'origine 5,96-5,98 V (part bien du départ de la courbe),
         coupe l'axe des temps a t = 2,77-2,78 ms. Contre-calcul refait ici,
         chiffre par chiffre : I_p = E/(R+r) = 6,5/65 = 0,100 A ; u_R(0) =
-        R.I_p = 60x0,1 = 6,00 V (coherent avec le depart mesure de la
+        R.I_p = 60x0,1 = 6,00 V (coherent avec le départ mesure de la
         courbe) ; r = E/I_p - R = 65-60 = 5 Ohm ; tau = L/(R+r), avec tau lu
         a 2,8 ms (tangente) donne L = 2,8e-3x65 = 0,182 H = 182 mH -- la
-        valeur meme que la question 2.3-b demande de VERIFIER ; energie a
+        valeur même que la question 2.3-b demande de VÉRIFIER ; énergie a
         t1=tau : i(tau) = I_p.exp(-1) = 0,03679 A, E_m(tau) =
-        0,5xLxi(tau)^2 ~ 1,23e-4 J. Ces valeurs coincident avec le recompte
-        independant de la verification adversariale (§ 13.11 et § 13.13 du
-        fichier source, ecarts au dernier chiffre pres). L'energie
-        magnetique est notee $\mathscr{E}_m$ dans le sujet officiel (police
+        0,5xLxi(tau)^2 ~ 1,23e-4 J. Ces valeurs coïncident avec le recompte
+        indépendant de la vérification adversariale (§ 13.11 et § 13.13 du
+        fichier source, écarts au dernier chiffre près). L'énergie
+        magnetique est notée $\mathscr{E}_m$ dans le sujet officiel (police
         calligraphique KunstlerScript, occurrence unique de cette police dans
-        tout le document) ; notee $E_m$ ici pour uniformite avec le reste du
-        corpus, meme grandeur (rung R4 : energie emmagasinee dans la bobine).
-        DEFAUT DU SUJET OFFICIEL PORTE, PAS REPARE : "sur la position(1)"
-        (sans espace avant la parenthese, page 5) et "sur la position ( 2)"
-        (avec un espace parasite apres la parenthese ouvrante), reconduits
+        tout le document) ; notée $E_m$ ici pour uniformite avec le reste du
+        corpus, même grandeur (rung R4 : énergie emmagasinée dans la bobine).
+        DÉFAUT DU SUJET OFFICIEL PORTE, PAS REPARE : "sur la position(1)"
+        (sans espace avant la parenthèse, page 5) et "sur la position ( 2)"
+        (avec un espace parasite après la parenthèse ouvrante), reconduits
         verbatim dans l'intro ci-dessous.
     intro: |-
       **Réponse d'un dipôle RL à un échelon de tension (examen national, session normale 2017, Exercice III — Partie I, 3,25 points sur les 5,00 de l'exercice).**
@@ -1452,11 +1452,11 @@ entries:
           $$\boxed{\frac{du_R}{dt} + \frac{R+r}{L}\,u_R = 0}$$
         steps:
           - math: 'L\,\frac{di}{dt} + (R+r)\,i = 0'
-            note: "Maille de rupture (chapitre 4) : plus de generateur, resistance totale R+r."
+            note: "Maille de rupture (chapitre 4) : plus de générateur, résistance totale R+r."
           - math: 'u_R = R\,i \implies \frac{di}{dt} = \frac{1}{R}\frac{du_R}{dt}'
             note: "Loi d'Ohm pour changer de variable, i vers u_R."
           - math: '\boxed{\frac{du_R}{dt} + \frac{R+r}{L}\,u_R = 0}'
-            note: "Equation differentielle demandee, apres multiplication par R."
+            note: "Équation différentielle demandee, après multiplication par R."
       - id: q4
         part: "2.2 — Identifier tau par substitution"
         stem: |-
@@ -1475,11 +1475,11 @@ entries:
           C'est exactement le facteur qui apparaissait déjà au dénominateur de $I_p$ (question 1.2) : le régime permanent de l'établissement et la constante de temps de la rupture partagent la même résistance totale $R+r$, parce que c'est la même boucle qui referme les deux phases.
         steps:
           - math: '\frac{du_R}{dt} = -\frac{1}{\tau}\,u_R(t)'
-            note: "Derivee de la solution proposee."
+            note: "Dérivée de la solution proposee."
           - math: '-\frac{1}{\tau} + \frac{R+r}{L} = 0'
-            note: "Identification par substitution dans l'equation de la question 2.1 (chapitre 4)."
+            note: "Identification par substitution dans l'équation de la question 2.1 (chapitre 4)."
           - math: '\boxed{\tau = \frac{L}{R+r}}'
-            note: "Meme resistance totale R+r qu'au regime permanent (question 1.2)."
+            note: "Même résistance totale R+r qu'au régime permanent (question 1.2)."
       - id: q5
         part: "2.3-a — Lire r sur la courbe"
         stem: |-
@@ -1494,11 +1494,11 @@ entries:
           $$I_p = \frac{E}{R+r} \implies r = \frac{E}{I_p} - R$$
         steps:
           - math: 'I_p = \frac{u_R(0)}{R} = \frac{6{,}00}{60} = 0{,}100\ \text{A}'
-            note: "u_R(0) lu sur la figure 2 : tension aux bornes de R juste apres la bascule, quand i vaut encore I_p (continuite du courant, chapitre 2)."
+            note: "u_R(0) lu sur la figure 2 : tension aux bornes de R juste après la bascule, quand i vaut encore I_p (continuite du courant, chapitre 2)."
           - math: 'r = \frac{E}{I_p} - R = \frac{6{,}5}{0{,}100} - 60 = 65-60'
             note: "On inverse l'expression de I_p (question 1.2)."
           - math: '\boxed{r = 5\ \Omega}'
-            note: "Resistance interne de la bobine."
+            note: "Résistance interne de la bobine."
       - id: q6
         part: "2.3-b — Vérifier L par la tangente"
         stem: |-
@@ -1509,11 +1509,11 @@ entries:
           $$L = \tau\,(R+r) = 2{,}8\times10^{-3}\times65$$
         steps:
           - math: '\tau \approx 2{,}8\ \text{ms}'
-            note: "Tangente a l'origine de la figure 2 (methode du chapitre 4) : coupe l'axe des temps a t = tau."
+            note: "Tangente a l'origine de la figure 2 (méthode du chapitre 4) : coupe l'axe des temps a t = tau."
           - math: 'L = \tau\,(R+r) = 2{,}8\times10^{-3}\times65'
             note: "On inverse tau = L/(R+r) (question 2.2), R+r = 65 Ohm (question 2.3-a)."
           - math: '\boxed{L \approx 0{,}182\ \text{H} = 182\ \text{mH}}'
-            note: "Valeur verifiee, conforme a celle imposee par l'enonce."
+            note: "Valeur vérifiée, conforme a celle imposée par l'énoncé."
       - id: q7
         part: "2.4 — L'énergie magnétique à l'instant t1 = tau"
         stem: |-
@@ -1530,11 +1530,11 @@ entries:
           Le piège nommé de cette question. Utiliser $I_p = 0{,}100\ \text{A}$ directement dans $\frac{1}{2}Li^2$, en oubliant que l'instant demandé, $t_1=\tau$, se situe APRÈS la bascule, en pleine décroissance — le courant y vaut $I_p\,e^{-1} \approx 0{,}368\,I_p$, pas $I_p$ lui-même. Utiliser $I_p$ sans décroissance donnerait une énergie près de $7{,}4$ fois trop grande ($e^2 \approx 7{,}39$).
         steps:
           - math: 'i(\tau) = I_p\,e^{-1} = 0{,}100\times e^{-1} \approx 3{,}68\times10^{-2}\ \text{A}'
-            note: "Decroissance exponentielle du courant apres la bascule (chapitre 4), evaluee a t = tau."
+            note: "Décroissance exponentielle du courant après la bascule (chapitre 4), evaluee a t = tau."
           - math: 'E_m = \frac{1}{2}\,L\,i(\tau)^2 = \frac{1}{2}\times0{,}182\times(3{,}68\times10^{-2})^2'
-            note: "Chapitre 5 : energie emmagasinee, avec le courant INSTANTANE i(tau), pas I_p."
+            note: "Chapitre 5 : énergie emmagasinée, avec le courant INSTANTANE i(tau), pas I_p."
           - math: '\boxed{E_m \approx 1{,}23\times10^{-4}\ \text{J}}'
-            note: "Energie magnetique emmagasinee a l'instant t1 = tau."
+            note: "Énergie magnetique emmagasinée a l'instant t1 = tau."
 
   # ── bk-2015-r-x3 — 2015 R, Exercice 3 (§ 1) : réponse d'un dipôle RL à un échelon de tension ascendant ──
   #
@@ -1634,7 +1634,7 @@ entries:
           Le piège nommé de cette question. Lire $E$ sur l'ASYMPTOTE de $u_R$ ($9{,}0\ \text{V}$) : en régime permanent, $u_R$ ne vaut pas $E$ mais $E - r\,I_p$ — l'écart d'un volt entre les deux courbes est précisément ce que la bobine « confisque » par sa résistance interne, et c'est lui qui portera la question 1-2c.
         steps:
           - math: 'U_{PN} = E\ \text{(générateur idéal)}'
-            note: "Un generateur ideal impose sa f.e.m. a ses bornes, quel que soit le courant."
+            note: "Un générateur ideal impose sa f.e.m. a ses bornes, quel que soit le courant."
           - math: '\boxed{E = 10\ \text{V}}'
             note: "Lecture de la droite horizontale de la figure 2 (10 carreaux de 1 V)."
       - id: q1-2b
@@ -1652,7 +1652,7 @@ entries:
           - math: 'u_R(\tau) = 0{,}63\times u_R^{\infty} = 0{,}63\times9{,}0 \approx 5{,}7\ \text{V}'
             note: "63 pourcent de l'ASYMPTOTE de u_R (9,0 V), pas de E (10 V) -- chapitre 4."
           - math: '\boxed{\tau = 2\ \text{ms}}'
-            note: "La courbe u_R passe par 5,7 V a t = 2 ms (etiquette imprimee sur l'axe)."
+            note: "La courbe u_R passe par 5,7 V a t = 2 ms (étiquette imprimée sur l'axe)."
       - id: q1-2c
         stem: |-
           **c-** (0,75 pt) La résistance $r$ de la bobine.
@@ -1674,7 +1674,7 @@ entries:
           - math: 'I_p = \frac{u_R^{\infty}}{R} = \frac{9{,}0}{90} = 0{,}10\ \text{A}'
             note: "Courant permanent, lu sur l'asymptote de u_R (loi d'Ohm dans le resistor)."
           - math: 'E = (R+r)\,I_p \implies r = \frac{E - u_R^{\infty}}{I_p} = \frac{10-9{,}0}{0{,}10}'
-            note: "Loi des mailles en regime permanent (chapitre 3) : di/dt = 0, la bobine se reduit a r."
+            note: "Loi des mailles en régime permanent (chapitre 3) : di/dt = 0, la bobine se reduit a r."
           - math: '\boxed{r = 10\ \Omega}'
             note: "Le volt manquant entre U_PN et u_R infini, converti en ohms."
       - id: q1-3
@@ -1692,11 +1692,11 @@ entries:
           Le piège nommé de cette question. Écrire $\tau = L/R$ en oubliant $r$ : la constante de temps se construit avec la résistance de TOUTE la maille traversée par $i$ (chapitre 4). Ici l'oubli donnerait $L = 0{,}18\ \text{H}$ — et la « vérification » demandée échouerait, ce qui est précisément le garde-fou que l'énoncé offre.
         steps:
           - math: '\tau = \frac{L}{R+r}'
-            note: "Constante de temps du dipole RL (chapitre 4), avec la resistance TOTALE de la maille."
+            note: "Constante de temps du dipole RL (chapitre 4), avec la résistance TOTALE de la maille."
           - math: 'L = \tau\,(R+r) = 2\times10^{-3}\times100'
             note: "tau = 2 ms (question 1-2b), R + r = 90 + 10 ohms (question 1-2c)."
           - math: '\boxed{L = 0{,}2\ \text{H}}'
-            note: "La valeur a verifier retombe exactement : chaine de lectures coherente."
+            note: "La valeur a vérifier retombe exactement : chaîne de lectures coherente."
 
   # ── bk-2013-r-x3 — 2013 R, Electricité, première expérience : réponse d'un dipôle RL à un échelon de tension ──
   #
@@ -1856,17 +1856,17 @@ entries:
           - math: 'E = u_R + u_b'
             note: "Loi des mailles sur la boucle unique du montage de la figure 1."
           - math: 'u_R = R\,i \qquad u_b = r\,i + L\,\frac{di}{dt}'
-            note: "Loi d'Ohm pour le resistor ; relation caracteristique de la bobine reelle (chapitre 2), avec ses deux termes."
+            note: "Loi d'Ohm pour le resistor ; relation caractéristique de la bobine réelle (chapitre 2), avec ses deux termes."
           - math: 'i = \frac{u_R}{R} \qquad \frac{di}{dt} = \frac{1}{R}\frac{du_R}{dt}'
-            note: "On exprime l'intensite avec la variable demandee par la question."
+            note: "On exprime l'intensité avec la variable demandee par la question."
           - math: 'E = u_R + \frac{r}{R}u_R + \frac{L}{R}\frac{du_R}{dt}'
-            note: "Substitution : il ne reste plus que u_R et sa derivee."
+            note: "Substitution : il ne reste plus que u_R et sa dérivée."
           - math: '\frac{L}{R}\frac{du_R}{dt} + \frac{R+r}{R}\,u_R = E'
             note: "On regroupe les termes en u_R."
           - math: '\boxed{\frac{L}{R+r}\frac{du_R}{dt} + u_R = \frac{E\,R}{R+r}}'
-            note: "Division par (R+r)/R pour ramener le coefficient de u_R a 1 : la forme demandee apparait."
+            note: "Division par (R+r)/R pour ramener le coefficient de u_R a 1 : la forme demandee apparaît."
           - math: '\boxed{\tau = \frac{L}{R+r} \qquad A = \frac{E\,R}{R+r}}'
-            note: "Identification. Attention : la constante de temps porte sur la resistance TOTALE de la maille."
+            note: "Identification. Attention : la constante de temps porte sur la résistance TOTALE de la maille."
       - id: q2
         stem: |-
           **2-** (0,5 pt) S'assurer que la constante $\tau$ est homogène à un temps.
@@ -1916,13 +1916,13 @@ entries:
           **Le piège de cette question.** Écrire $r = E/u_R(\infty)$ ou oublier le « $-1$ » : le calcul doit passer par la résistance **totale** $R + r$, dont on retranche ensuite $R$. Second piège : lire le plateau à $12\ \text{V}$ « puisque c'est la f.é.m. » — le plateau est à $10$, et l'écart est justement l'information cherchée.
         steps:
           - math: '\frac{du_R}{dt} = 0 \implies u_R(\infty) = A = \frac{E\,R}{R+r}'
-            note: "Regime permanent : la derivee s'annule dans l'equation differentielle de la question 1."
+            note: "Régime permanent : la dérivée s'annule dans l'équation différentielle de la question 1."
           - math: 'u_R(\infty) = 10{,}00\ \text{V}'
             note: "Lecture du plateau sur la figure 2, pose exactement sur une ligne forte du quadrillage."
           - math: 'R + r = \frac{E\,R}{u_R(\infty)} = \frac{12\times 42}{10} = 50{,}4\ \Omega'
-            note: "Resistance totale de la maille, tiree de la lecture du plateau."
+            note: "Résistance totale de la maille, tiree de la lecture du plateau."
           - math: '\boxed{r = R\left(\frac{E}{u_R(\infty)} - 1\right) = 42\left(\frac{12}{10}-1\right) = 8{,}4\ \Omega}'
-            note: "Resistance interne de la bobine. Retrouvee par voie algebrique dans la seconde experience : r = k - R prime = 208,4 - 200."
+            note: "Résistance interne de la bobine. Retrouvee par voie algebrique dans la seconde expérience : r = k - R prime = 208,4 - 200."
       - id: q4
         stem: |-
           **3-2-** (0,5 pt) Trouver la valeur du coefficient d'inductance $L$ de la bobine.
@@ -1950,8 +1950,8 @@ entries:
           - math: '\tau = \frac{L}{R+r} \implies L = \tau\,(R+r)'
             note: "Expression de tau etablie a la question 1, lue a l'envers."
           - math: '0{,}632\times u_R(\infty) = 0{,}632\times 10{,}00 = 6{,}32\ \text{V} \implies \tau = 4{,}00\ \text{ms}'
-            note: "Lecture de la constante de temps sur la figure 2 par la methode des 63 pourcent (chapitre 4)."
+            note: "Lecture de la constante de temps sur la figure 2 par la méthode des 63 pourcent (chapitre 4)."
           - math: '\tau = 4{,}00\ \text{ms} = 4{,}00\times10^{-3}\ \text{s} \qquad R + r = 42 + 8{,}4 = 50{,}4\ \Omega'
-            note: "Conversion en secondes, et resistance totale etablie a la question 3-1."
+            note: "Conversion en secondes, et résistance totale etablie a la question 3-1."
           - math: '\boxed{L = 4{,}00\times10^{-3}\times 50{,}4 \approx 0{,}20\ \text{H}}'
-            note: "Inductance de la bobine, 0,2016 H. Retrouvee a 0,7 pourcent par la seconde experience (0,200 H)."
+            note: "Inductance de la bobine, 0,2016 H. Retrouvee a 0,7 pourcent par la seconde expérience (0,200 H)."

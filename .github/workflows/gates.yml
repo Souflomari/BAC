@@ -179,6 +179,25 @@ jobs:
             /matieres/pc /matieres/maths /matieres/svt /matieres/philo /commencer \
             /atelier /connexion /options /examens/spc-2023-normale
 
+      # PORTE ACCENTS (2026-09-05). Le corpus contenait, à côté d'une prose
+      # soignée, des passages entiers écrits sans le moindre accent —
+      # « egalite verifiee », « L'eleve croit que la recurrence d'Euler resout
+      # exactement l'equation differentielle ». Mesuré sur le texte RENDU :
+      # 128 occurrences sur 65 pages, dans des libellés d'items et des titres
+      # d'exercices que l'élève lit. Un support de révision qui écrit
+      # « theoreme » enseigne une orthographe fausse à un élève qui composera
+      # en français ; et un produit qui n'accentue pas son français se lit
+      # comme un brouillon. 4 060 accents rendus à la source, corpus à zéro.
+      # La sonde et le script de réparation lisent la MÊME liste de mots
+      # (web/scripts/accents.mots.json), pour qu'une sonde plus étroite que la
+      # réparation ne puisse pas déclarer propre ce qu'elle ne sait pas voir.
+      - name: Porte accents (le français du produit s'écrit accentué)
+        run: |
+          routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
+          test -n "$routes"
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/accents-manquants.mjs --porte $routes / /atelier /examens
+
       # CLIQUET INDICE-LONGUEUR (2026-09-05). `item-stats` disait déjà, en
       # toutes lettres, que la bonne réponse est la plus longue bien plus
       # souvent que le hasard ne l'explique — et que le mélange des choix n'y

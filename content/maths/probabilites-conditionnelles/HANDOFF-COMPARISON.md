@@ -60,5 +60,5 @@ wired into the rig.
 ## Conclusion for the pipeline
 RULES §5 handoff test **passes**: spec format is good enough that Opus→Sonnet
 authoring reaches the quality ceiling. The provisional 4-agent pipeline (ADR 0017,
-recorded provisional) has its first piece of validating evidence — still pending the
+recorded provisional) has its first pièce of validating evidence — still pending the
 human's editorial gate and domain validation of the (autonomously authored) spec.

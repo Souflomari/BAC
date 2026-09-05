@@ -9,7 +9,7 @@
 > Provenance: distilled from `mobile/bac_app/lib/widgets/physics/rlc_simulator_widget.dart`
 > and `circuit_simulator_widget.dart`, and `backend/supabase/migrations/033_long_lessons_pc.sql`
 > (archive anchor commit `6ba4c78`, local tag `archive/pre-rebuild`). Flutter is
-> retired (ADR 0016) — the widgets are a **behaviour reference, not reusable code**.
+> retired (ADR 0016) — the widgets are a **behaviour référence, not reusable code**.
 
 ---
 
@@ -17,9 +17,9 @@
 
 The retired `rlc_simulator_widget.dart` is the proof of the right interaction. Reproduce its *behaviour* in the new embed (Falstad/GeoGebra), not its code:
 
-- **Three sliders:** inductance `L` (≈ 0.5 H), capacitance `C` (≈ 100 µF), resistance `R` (≈ 10 Ω).
-- **Live output:** the `u_C(t)` (and optionally `i(t)`) trace, updating as the sliders move; a regime label (**sous-amorti / critique / sur-amorti**); an energy view (C ↔ L exchange, R dissipating).
-- **The teaching move it enables:** drag `R` from ~0 upward → watch the trace go from (near-)undamped oscillation → pseudo-periodic decay → critical → apériodique; drag `L`/`C` → watch the period change. This *is* the "influence of R/L/C on the regime and the period" the cadre asks for, experimentally.
+- **Three sliders:** inductance `L` (≈ 0.5 H), capacitance `C` (≈ 100 µF), résistance `R` (≈ 10 Ω).
+- **Live output:** the `u_C(t)` (and optionally `i(t)`) trace, updating as the sliders move; a régime label (**sous-amorti / critique / sur-amorti**); an energy view (C ↔ L exchange, R dissipating).
+- **The teaching move it enables:** drag `R` from ~0 upward → watch the trace go from (near-)undamped oscillation → pseudo-periodic decay → critical → apériodique; drag `L`/`C` → watch the period change. This *is* the "influence of R/L/C on the régime and the period" the cadre asks for, experimentally.
 
 > **⚠ BOUNDARY CAVEAT — read before reusing.** The old widget computes the damped
 > response in **closed form** (`exp(-αt)·cos(ω_D t)` with `ω_D=√(ω₀²−α²)`, the
@@ -29,7 +29,7 @@ The retired `rlc_simulator_widget.dart` is the proof of the right interaction. R
 > envelope). The manipulable may **display** the damped trace (that is the
 > qualitative/experimental view the cadre allows), but the **lesson must not
 > derive or formularize** it. The only analytic solution taught is the **undamped**
-> one. Keep the embed free-oscillation + entretien; **never** forced resonance.
+> one. Keep the embed free-oscillation + entretien; **never** forced résonance.
 
 ## 2. Worked-number seeds (→ content-author / pedagogy-architect)
 
@@ -46,7 +46,7 @@ Screened to stay inside the boundary. Reuse the *numbers*, author the prose fres
 - Energy in the undamped LC: `E_tot = E_C + E_L` is **conserved** and sloshes C↔L; with R present, `E_tot` decreases — R dissipates by **effet Joule** (this is the energetic interpretation of the damping, which IS in scope).
 
 ## 3. Circuit schematic reference (→ diagram-author)
-A series RLC: a charged capacitor `C`, an inductor `L` (with its internal resistance), a resistor `R`, and a switch — drawn as a clean coded SVG (structural-diagram, never Gemini). The old `circuit_simulator_widget.dart` is the topology reference only.
+A séries RLC: a charged capacitor `C`, an inductor `L` (with its internal résistance), a resistor `R`, and a switch — drawn as a clean coded SVG (structural-diagram, never Gemini). The old `circuit_simulator_widget.dart` is the topology référence only.
 
 ## 4. NOT recovered (per the mining report)
 Old lesson **prose** (wrong format, not DESIGN-BIBLE décortiquer), old **items** (not misconception-built), and **any closed-form damped math or forced-resonance content** from the widgets/lessons — all off-boundary or off-standard. Author fresh from the spec.

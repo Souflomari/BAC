@@ -203,7 +203,7 @@ entries:
         2018 session normale — examen national Sciences Expérimentales (SVT
         et Sciences Physiques, BIOF, option française), Mathématiques
         (3 h, coef 7), code NS 22F, AlloSchool element/94699 (le Problème,
-        « Etude d'une fonction numérique, calcul intégral et suites
+        « Étude d'une fonction numérique, calcul intégral et suites
         numériques », 11 points — dernière pièce du sujet, après les
         Exercices 1, 2 et 3 déjà en banque, voir la NOTE en tête de fichier
         pour la confirmation de position). Transcription VÉRIFIÉE par une
@@ -264,7 +264,7 @@ entries:
           Le tableau donné par le sujet dit que $g$ est **strictement croissante sur $\mathbb{R}$** — rien de plus, aucune valeur n'y est marquée. Combine cette monotonie avec l'unique valeur concrète que tu possèdes, $g(0)=0$ (question précédente) : une fonction strictement croissante range ses valeurs dans le **même ordre** que les $x$ qu'elle range. Donc comparer $x$ à $0$ revient à comparer $g(x)$ à $g(0)=0$ — dans le même sens.
         steps:
           - math: 'g \text{ strictement croissante sur } \mathbb{R} \quad (\text{tableau donné par l''énoncé})'
-            note: "Donnee du tableau imprime : un seul signe plus pour g prime, sur toute la droite reelle."
+            note: "Donnée du tableau imprime : un seul signe plus pour g prime, sur toute la droite réelle."
           - math: 'x \le 0 \ \Longrightarrow\ g(x) \le g(0) = 0 \qquad\text{et}\qquad x \ge 0 \ \Longrightarrow\ g(x) \ge g(0) = 0'
             note: "Une fonction strictement croissante conserve l'ordre : on compare chaque x a 0, et g(x) suit."
       - id: qII1a
@@ -279,11 +279,11 @@ entries:
           Les deux fractions s'effacent ; il ne reste que le $+x$, qui part vers $+\infty$. Une somme d'un terme qui s'annule et d'un terme qui diverge : pas d'indétermination, la limite suit le terme qui explose.
         steps:
           - math: 'f(x) = (x^{2}-x)e^{-x}+x = x^{2}e^{-x} - x\,e^{-x} + x = \dfrac{x^{2}}{e^{x}} - \dfrac{x}{e^{x}} + x'
-            note: "On distribue e a la puissance moins x sur les deux termes de x carre moins x, puis on ecrit e a la puissance moins x comme 1 sur e a la puissance x."
+            note: "On distribue e a la puissance moins x sur les deux termes de x carré moins x, puis on écrit e a la puissance moins x comme 1 sur e a la puissance x."
           - math: '\dfrac{x}{e^{x}} = \dfrac{1}{e^{x}/x} \longrightarrow 0 \quad \left(\text{inverse de } \dfrac{e^{x}}{x}\to+\infty,\ R4\right)'
-            note: "x sur e puissance x est l'inverse direct de la croissance comparee de reference du chapitre 5 de « Fonction exponentielle »."
+            note: "x sur e puissance x est l'inverse direct de la croissance comparee de référence du chapitre 5 de « Fonction exponentielle »."
           - math: 't=\dfrac{x}{2}\ (\to+\infty \text{ quand } x\to+\infty), \qquad \dfrac{x^{2}}{e^{x}} = \dfrac{(2t)^{2}}{e^{2t}} = 4\left(\dfrac{t}{e^{t}}\right)^{2} \longrightarrow 0'
-            note: "Meme changement de variable que celui du cours pour etablir e^x/x -> plus l'infini : on ramene x carre sur e puissance x a la forme exacte du chapitre 5, elevee au carre."
+            note: "Même changement de variable que celui du cours pour établir e^x/x -> plus l'infini : on ramene x carré sur e puissance x a la forme exacte du chapitre 5, elevee au carré."
           - math: '\lim_{x\to+\infty} f(x) = 0 - 0 + \lim_{x\to+\infty} x = +\infty'
             note: "Les deux fractions s'effacent ; il ne reste que le terme plus x, qui part vers plus l'infini : pas d'indetermination."
       - id: qII1b
@@ -296,11 +296,11 @@ entries:
           La déduction, elle, n'est pas un théorème séparé à invoquer : un écart qui tend vers $0$ à l'infini, c'est LA définition même d'une asymptote oblique — la distance verticale entre $(C)$ et $(D)$ devient négligeable.
         steps:
           - math: 'f(x) - x = (x^{2}-x)e^{-x} = \dfrac{x^{2}}{e^{x}} - \dfrac{x}{e^{x}}'
-            note: "Le plus x de f s'annule avec le moins x qu'on soustrait ; il reste la meme forme qu'a la question precedente."
-          - math: '\lim_{x\to+\infty}\left(f(x)-x\right) = 0 - 0 = 0 \quad (\text{memes deux limites qu''en question 1a})'
-            note: "Les deux fractions s'effacent, exactement comme dans la question precedente : rien a recalculer."
+            note: "Le plus x de f s'annule avec le moins x qu'on soustrait ; il reste la même forme qu'a la question précédente."
+          - math: '\lim_{x\to+\infty}\left(f(x)-x\right) = 0 - 0 = 0 \quad (\text{mêmes deux limites qu''en question 1a})'
+            note: "Les deux fractions s'effacent, exactement comme dans la question précédente : rien a recalculer."
           - math: '\lim_{x\to+\infty}\left(f(x)-x\right)=0 \ \Longrightarrow\ (C) \text{ admet pour asymptote } (D): y=x \text{ au voisinage de } +\infty'
-            note: "Ecart nul a l'infini entre la courbe et la droite : c'est la definition meme d'une asymptote oblique, pas un theoreme a part."
+            note: "Écart nul a l'infini entre la courbe et la droite : c'est la définition même d'une asymptote oblique, pas un théorème a part."
       - id: qII1c
         part: "Partie II, 1) — Limite de f en −∞"
         stem: |-
@@ -311,13 +311,13 @@ entries:
           Numérateur : $x^2-x\to+\infty$ (terme dominant $x^2$), et $x\,e^x\to0$ — c'est le corollaire de croissance comparée du chapitre 5, tel quel, sans extension à justifier. Le numérateur part donc vers $+\infty$. Dénominateur : $e^x\to0^+$, toujours strictement positif. Une quantité qui explose divisée par une quantité positive qui s'efface part elle aussi vers $+\infty$.
         steps:
           - math: 'f(x) = \dfrac{x^{2}}{e^{x}} - \dfrac{x}{e^{x}} + x = \dfrac{x^{2}}{e^{x}} - \dfrac{x}{e^{x}} + \dfrac{x\,e^{x}}{e^{x}} = \dfrac{x^{2}-x+x\,e^{x}}{e^{x}}'
-            note: "On met x au meme denominateur e a la puissance x que les deux autres termes de la question 1a."
+            note: "On met x au même dénominateur e a la puissance x que les deux autres termes de la question 1a."
           - math: '\lim_{x\to-\infty}\left(x^{2}-x\right) = +\infty \qquad \lim_{x\to-\infty} x\,e^{x} = 0 \quad (\text{corollaire du R4, fonction-exponentielle})'
-            note: "x carre moins x part vers plus l'infini (terme dominant x carre) ; x fois e puissance x s'efface en moins l'infini, corollaire direct du chapitre 5."
+            note: "x carré moins x part vers plus l'infini (terme dominant x carré) ; x fois e puissance x s'efface en moins l'infini, corollaire direct du chapitre 5."
           - math: '\lim_{x\to-\infty}\left(x^{2}-x+x\,e^{x}\right) = +\infty \qquad \lim_{x\to-\infty} e^{x} = 0^{+}'
-            note: "Le numerateur part vers plus l'infini ; le denominateur s'efface en restant strictement positif."
+            note: "Le numérateur part vers plus l'infini ; le dénominateur s'efface en restant strictement positif."
           - math: '\lim_{x\to-\infty} f(x) = +\infty'
-            note: "Une quantite qui part vers plus l'infini, divisee par une quantite positive qui s'efface, part elle aussi vers plus l'infini."
+            note: "Une quantité qui part vers plus l'infini, divisee par une quantité positive qui s'efface, part elle aussi vers plus l'infini."
       - id: qII1d
         part: "Partie II, 1) — Branche parabolique en −∞"
         stem: |-
@@ -330,11 +330,11 @@ entries:
           Interprétation : un rapport $f(x)/x$ qui part à l'infini (et non vers une valeur finie) signifie que $(C)$ ne rejoint AUCUNE droite oblique en $-\infty$ — elle s'écrase contre la direction verticale. C'est la définition même d'une branche parabolique de direction $(Oy)$.
         steps:
           - math: '\dfrac{f(x)}{x} = \dfrac{(x^{2}-x)e^{-x}+x}{x} = \dfrac{x^{2}-x}{x}\,e^{-x} + 1 = (x-1)e^{-x}+1'
-            note: "On divise chaque terme de f(x) par x ; x carre moins x sur x se simplifie en x moins 1."
+            note: "On divise chaque terme de f(x) par x ; x carré moins x sur x se simplifie en x moins 1."
           - math: '\lim_{x\to-\infty}(x-1) = -\infty \qquad \lim_{x\to-\infty} e^{-x} = \lim_{X\to+\infty} e^{X} = +\infty \quad (X=-x,\ R4)'
-            note: "x moins 1 part vers moins l'infini ; e puissance moins x, avec X = moins x, redonne directement la premiere limite du chapitre 5."
+            note: "x moins 1 part vers moins l'infini ; e puissance moins x, avec X = moins x, redonne directement la première limite du chapitre 5."
           - math: '\lim_{x\to-\infty} (x-1)e^{-x} = -\infty \quad (\text{produit de deux limites infinies, jamais indetermine}) \ \Longrightarrow\ \lim_{x\to-\infty}\dfrac{f(x)}{x} = -\infty'
-            note: "Un produit de deux quantites infinies se lit par la regle des signes : negatif fois positif donne moins l'infini, sans indetermination."
+            note: "Un produit de deux quantités infinies se lit par la règle des signes : négatif fois positif donne moins l'infini, sans indetermination."
           - math: '\lim_{x\to-\infty}\dfrac{f(x)}{x} = -\infty \ (\text{limite infinie}) \ \Longrightarrow\ (C) \text{ admet une branche parabolique de direction } (Oy) \text{ en } -\infty'
             note: "Rapport infini, pas une valeur finie : la courbe ne rejoint aucune droite oblique, elle s'ecrase contre la direction verticale."
       - id: qII2a
@@ -344,11 +344,11 @@ entries:
         reasoning: |-
           Tu as déjà l'expression : $f(x)-x=(x^2-x)e^{-x}$ (établie en 1b). Le facteur $e^{-x}$ est **strictement positif pour tout réel $x$** — l'exponentielle ne s'annule jamais et ne change jamais de signe (chapitre 2 de « Fonction exponentielle »). Multiplier $x^2-x$ par un facteur toujours strictement positif change sa grandeur mais jamais son signe : les deux quantités sont donc toujours du même signe, sans qu'aucun cas particulier ne soit à distinguer.
         steps:
-          - math: 'f(x)-x = (x^{2}-x)e^{-x} \quad (\text{deja etabli en question } 1b)'
-            note: "Meme calcul que la question 1b, reutilise directement."
+          - math: 'f(x)-x = (x^{2}-x)e^{-x} \quad (\text{déjà établi en question } 1b)'
+            note: "Même calcul que la question 1b, reutilise directement."
           - math: 'e^{-x} > 0 \quad (\forall x \in \mathbb{R}) \quad (R1, \text{ l''exponentielle ne s''annule jamais})'
-            note: "Le facteur e puissance moins x est toujours strictement positif, quel que soit x reel."
-          - math: '\text{multiplier par un facteur strictement positif conserve le signe} \ \Longrightarrow\ f(x)-x \text{ et } x^{2}-x \text{ ont le meme signe}'
+            note: "Le facteur e puissance moins x est toujours strictement positif, quel que soit x réel."
+          - math: '\text{multiplier par un facteur strictement positif conserve le signe} \ \Longrightarrow\ f(x)-x \text{ et } x^{2}-x \text{ ont le même signe}'
             note: "Un produit par un nombre strictement positif ne renverse jamais le signe du facteur restant."
       - id: qII2b
         part: "Partie II, 2) — Position relative de (C) et (D)"
@@ -362,11 +362,11 @@ entries:
           Remarque utile pour la construction de la courbe (question 5) : aux deux racines elles-mêmes, $f(0)-0=0$ et $f(1)-1=0$ — $(C)$ ne se contente pas de changer de côté, elle **touche exactement** $(D)$ en ces deux points.
         steps:
           - math: 'x^{2}-x = x(x-1)'
-            note: "Facteur commun x, pour lire le signe sur les trois zones separees par les racines 0 et 1."
+            note: "Facteur commun x, pour lire le signe sur les trois zones séparées par les racines 0 et 1."
           - math: 'x(x-1) \ge 0 \text{ sur } \left]-\infty,0\right] \cup \left[1,+\infty\right[ \qquad x(x-1) \le 0 \text{ sur } \left[0,1\right]'
-            note: "Deux facteurs du meme signe hors de [0,1] (produit positif) ; de signes opposes a l'interieur (produit negatif)."
+            note: "Deux facteurs du même signe hors de [0,1] (produit positif) ; de signes opposés a l'intérieur (produit négatif)."
           - math: 'f(x)-x \ge 0 \Longleftrightarrow (C) \text{ au-dessus de } (D) \qquad f(x)-x \le 0 \Longleftrightarrow (C) \text{ en dessous de } (D)'
-            note: "Meme signe que x(x-1), par la question 2a : le signe de f(x) moins x se lit directement sur les trois zones."
+            note: "Même signe que x(x-1), par la question 2a : le signe de f(x) moins x se lit directement sur les trois zones."
       - id: qII3a
         part: "Partie II, 3) — Dérivée de f et lien avec g"
         stem: |-
@@ -377,13 +377,13 @@ entries:
           La dernière étape n'est pas un calcul, c'est une VÉRIFICATION d'égalité : développe $g(x)e^{-x}$ de ton côté et compare terme à terme avec ce que tu viens d'obtenir pour $f'$. Le terme $e^x\cdot e^{-x}$ de $g(x)e^{-x}$ se simplifie en $1$ — c'est précisément ce $1$ qui vient rejoindre le « $+1$ » de $f'$, et le reste coïncide exactement.
         steps:
           - math: '\bigl[(x^{2}-x)e^{-x}\bigr]^{\prime} = (2x-1)e^{-x} + (x^{2}-x)(-e^{-x}) = \bigl[(2x-1)-(x^{2}-x)\bigr]e^{-x}'
-            note: "Regle du produit : derivee de x carre moins x, fois e puissance moins x, plus x carre moins x fois la derivee de e puissance moins x."
+            note: "Règle du produit : dérivée de x carré moins x, fois e puissance moins x, plus x carré moins x fois la dérivée de e puissance moins x."
           - math: '(2x-1)-(x^{2}-x) = -x^{2}+3x-1 \ \Longrightarrow\ f''(x) = \left(-x^{2}+3x-1\right)e^{-x} + 1'
-            note: "On simplifie l'expression entre crochets, puis on ajoute la derivee du terme plus x, qui vaut 1."
+            note: "On simplifie l'expression entre crochets, puis on ajoute la dérivée du terme plus x, qui vaut 1."
           - math: 'g(x)e^{-x} = \left(e^{x}-x^{2}+3x-1\right)e^{-x} = e^{x}e^{-x} + \left(-x^{2}+3x-1\right)e^{-x} = 1 + \left(-x^{2}+3x-1\right)e^{-x}'
             note: "On developpe g(x) fois e puissance moins x : le terme e puissance x fois e puissance moins x vaut exactement 1."
           - math: 'f''(x) = 1 + \left(-x^{2}+3x-1\right)e^{-x} = g(x)e^{-x}'
-            note: "Les deux expressions coincident terme a terme : l'egalite demandee est verifiee."
+            note: "Les deux expressions coïncident terme a terme : l'égalité demandee est vérifiée."
       - id: qII3b
         part: "Partie II, 3) — Sens de variation de f"
         stem: |-
@@ -392,11 +392,11 @@ entries:
           Le signe de $f'(x)=g(x)e^{-x}$ est celui de $g(x)$ SEUL : $e^{-x}$ étant toujours strictement positif, il ne pèse jamais sur le signe (même argument qu'en question 2a). Il ne reste donc qu'à relire le signe de $g$, déjà établi en Partie I question 2 : négatif sur $]-\infty,0]$, positif sur $[0,+\infty[$. Le lien entre le signe de $f'$ et le sens de variation de $f$ est le résultat central du chapitre 5 de cette leçon : $f'\le0$ signifie $f$ décroissante, $f'\ge0$ signifie $f$ croissante.
         steps:
           - math: 'e^{-x} > 0 \ (\forall x) \ \Longrightarrow\ \text{le signe de } f''(x) \text{ est celui de } g(x)'
-            note: "Le facteur e puissance moins x etant toujours positif, il ne change jamais le signe : seul g(x) decide."
-          - math: 'g(x) \le 0 \text{ sur } \left]-\infty,0\right] \ (\text{Partie I, question 2}) \ \Longrightarrow\ f''(x) \le 0 \ \Longrightarrow\ f \text{ decroissante sur cet intervalle}'
-            note: "Resultat de la Partie I question 2, reutilise ici : g negatif entraine f prime negatif."
+            note: "Le facteur e puissance moins x étant toujours positif, il ne change jamais le signe : seul g(x) decide."
+          - math: 'g(x) \le 0 \text{ sur } \left]-\infty,0\right] \ (\text{Partie I, question 2}) \ \Longrightarrow\ f''(x) \le 0 \ \Longrightarrow\ f \text{ décroissante sur cet intervalle}'
+            note: "Résultat de la Partie I question 2, reutilise ici : g négatif entraine f prime négatif."
           - math: 'g(x) \ge 0 \text{ sur } \left[0,+\infty\right[ \ (\text{Partie I, question 2}) \ \Longrightarrow\ f''(x) \ge 0 \ \Longrightarrow\ f \text{ croissante sur cet intervalle}'
-            note: "Meme raisonnement sur l'autre intervalle : g positif entraine f prime positif (chapitre 5, signe de f prime donne le sens de variation)."
+            note: "Même raisonnement sur l'autre intervalle : g positif entraine f prime positif (chapitre 5, signe de f prime donne le sens de variation)."
       - id: qII3c
         part: "Partie II, 3) — Tableau de variations de f"
         stem: |-
@@ -405,10 +405,10 @@ entries:
           Dresser un tableau, ce n'est jamais recalculer : c'est rassembler ce qui est déjà établi. Tu as les deux limites aux bornes ($+\infty$ en $-\infty$, question 1c ; $+\infty$ en $+\infty$, question 1a) et le sens de variation (décroissante puis croissante, question 3b, avec le pivot en $x=0$). Il manque une seule pièce que le sujet ne redemande pas explicitement mais que le tableau exige : la valeur au pivot, $f(0)$ — un calcul immédiat à partir de la définition de $f$.
         steps:
           - math: 'f(0) = (0^{2}-0)e^{0} + 0 = 0'
-            note: "Valeur du minimum, au point pivot x=0 : necessaire pour completer le tableau."
+            note: "Valeur du minimum, au point pivot x=0 : nécessaire pour completer le tableau."
           - math: '\lim_{x\to-\infty} f(x) = +\infty \ (\text{question 1c}) \qquad \lim_{x\to+\infty} f(x) = +\infty \ (\text{question 1a})'
-            note: "Les deux limites aux bornes, deja calculees, se reportent telles quelles dans le tableau."
-          - math: 'f \text{ decroit de } +\infty \text{ a } 0 \text{ sur } \left]-\infty,0\right], \text{ puis croit de } 0 \text{ a } +\infty \text{ sur } \left[0,+\infty\right['
+            note: "Les deux limites aux bornes, déjà calculees, se reportent telles quelles dans le tableau."
+          - math: 'f \text{ décroît de } +\infty \text{ a } 0 \text{ sur } \left]-\infty,0\right], \text{ puis croit de } 0 \text{ a } +\infty \text{ sur } \left[0,+\infty\right['
             note: "Assemblage du sens de variation (question 3b) avec les deux limites et la valeur au minimum : le tableau complet."
       - id: qII4a
         part: "Partie II, 4) — Dérivée seconde de f"
@@ -418,9 +418,9 @@ entries:
           $f''$ est la dérivée de $f'$. Repars de la forme $f'(x)=1+(-x^2+3x-1)e^{-x}$ établie en 3a : la dérivée de la constante $1$ est nulle, il ne reste qu'à dériver le produit $(-x^2+3x-1)e^{-x}$ par la même règle du produit qu'en 3a, avec cette fois $u=-x^2+3x-1$ ($u'=-2x+3$) et $v=e^{-x}$ ($v'=-e^{-x}$).
         steps:
           - math: '\bigl[(-x^{2}+3x-1)e^{-x}\bigr]^{\prime} = (-2x+3)e^{-x} + (-x^{2}+3x-1)(-e^{-x})'
-            note: "Regle du produit, appliquee au second terme de f prime ; la derivee de la constante 1, premier terme de f prime, est nulle."
+            note: "Règle du produit, appliquee au second terme de f prime ; la dérivée de la constante 1, premier terme de f prime, est nulle."
           - math: '(-2x+3)+(x^{2}-3x+1) = x^{2}-5x+4 \ \Longrightarrow\ f^{(2)}(x) = \left(x^{2}-5x+4\right)e^{-x}'
-            note: "On regroupe les deux morceaux entre parentheses : le resultat coincide avec l'expression demandee."
+            note: "On regroupe les deux morceaux entre parenthèses : le résultat coincide avec l'expression demandee."
       - id: qII4b
         part: "Partie II, 4) — Deux points d'inflexion"
         stem: |-
@@ -429,11 +429,11 @@ entries:
           Un point d'inflexion, ce n'est pas « $f''$ s'annule » — c'est « $f''$ s'annule EN CHANGEANT DE SIGNE » (chapitre 6). Factorise $x^2-5x+4=(x-1)(x-4)$ : deux racines simples et distinctes. Comme $e^{-x}$ est toujours strictement positif, le signe de $f''$ est exactement celui de $(x-1)(x-4)$, qui bascule réellement à chacune de ces deux racines (positif à l'extérieur de $[1,4]$, négatif à l'intérieur) — ce n'est pas un simple contact avec zéro, c'est un vrai changement de signe, aux DEUX endroits.
         steps:
           - math: 'x^{2}-5x+4 = (x-1)(x-4) \qquad e^{-x}>0 \ (\forall x) \ \Longrightarrow\ \text{signe de } f^{(2)}(x) = \text{signe de } (x-1)(x-4)'
-            note: "On factorise le trinome ; le facteur exponentiel, toujours positif, ne pese jamais sur le signe."
+            note: "On factorise le trinome ; le facteur exponentiel, toujours positif, ne pèse jamais sur le signe."
           - math: '(x-1)(x-4) < 0 \text{ sur } \left]1,4\right[ \qquad (x-1)(x-4) > 0 \text{ ailleurs, avec changement strict en } x=1 \text{ et } x=4'
-            note: "Deux racines simples et distinctes : le signe bascule reellement a chaque racine, pas un simple contact avec zero."
+            note: "Deux racines simples et distinctes : le signe bascule réellement a chaque racine, pas un simple contact avec zéro."
           - math: 'f^{(2)} \text{ s''annule en changeant de signe en } x=1 \text{ et en } x=4 \ \Longrightarrow\ (C) \text{ admet deux points d''inflexion, d''abscisses } 1 \text{ et } 4'
-            note: "Definition du point d'inflexion (chapitre 6) : changement STRICT de signe de la derivee seconde, verifie ici aux deux racines."
+            note: "Définition du point d'inflexion (chapitre 6) : changement STRICT de signe de la dérivée seconde, verifie ici aux deux racines."
       - id: qII5
         part: "Partie II, 5) — Construction de (D) et (C)"
         stem: |-
@@ -458,13 +458,13 @@ entries:
           Une fois $H'=h$ confirmé, la déduction se fait via la définition du chapitre 2 de « Calcul intégral » ($\int_a^b = F(b)-F(a)$) — mais applique-la à $h$, pas directement à ce qu'on te demande : $x^2e^{-x}=-h(x)$ (l'opposé de $h$), donc l'intégrale cherchée est l'OPPOSÉE de $\int_0^1 h(x)\,dx$, que $H$ calcule.
         steps:
           - math: 'H''(x) = (2x+2)e^{-x} + (x^{2}+2x+2)(-e^{-x}) = \bigl[(2x+2)-(x^{2}+2x+2)\bigr]e^{-x} = -x^{2}e^{-x} = h(x)'
-            note: "Regle du produit sur H, puis simplification : on retrouve exactement h(x)."
+            note: "Règle du produit sur H, puis simplification : on retrouve exactement h(x)."
           - math: '\int_{0}^{1} x^{2}e^{-x}\,dx = -\int_{0}^{1} h(x)\,dx = -\bigl[H(1)-H(0)\bigr] = H(0)-H(1)'
-            note: "x carre e puissance moins x est l'oppose de h(x) : on change le signe de l'integrale de h, definie par H (chapitre 2)."
+            note: "x carré e puissance moins x est l'oppose de h(x) : on change le signe de l'intégrale de h, définie par H (chapitre 2)."
           - math: 'H(0) = (0+0+2)e^{0} = 2 \qquad H(1) = (1+2+2)e^{-1} = \dfrac{5}{e}'
             note: "Valeurs de H aux deux bornes."
           - math: '\int_{0}^{1} x^{2}e^{-x}\,dx = 2 - \dfrac{5}{e} = \dfrac{2e-5}{e}'
-            note: "Difference des deux valeurs, mise au meme denominateur e."
+            note: "Différence des deux valeurs, mise au même dénominateur e."
       - id: qII6b
         part: "Partie II, 6) — Intégration par parties"
         stem: |-
@@ -475,13 +475,13 @@ entries:
           - math: 'u = x,\quad u^{\prime}=1,\qquad v^{\prime}=e^{-x},\quad v=-e^{-x}'
             note: "On derive x (ca devient 1) et on primitive e puissance moins x (ca devient moins e puissance moins x)."
           - math: '\int_{0}^{1} x\,e^{-x}\,dx = \bigl[-x\,e^{-x}\bigr]_{0}^{1} - \int_{0}^{1} \bigl(-e^{-x}\bigr)\,dx = \bigl[-x\,e^{-x}\bigr]_{0}^{1} + \int_{0}^{1} e^{-x}\,dx'
-            note: "Formule de l'integration par parties (chapitre R7) : terme de bord moins l'integrale de u prime fois v."
+            note: "Formule de l'intégration par parties (chapitre R7) : terme de bord moins l'intégrale de u prime fois v."
           - math: '\bigl[-x\,e^{-x}\bigr]_{0}^{1} = -1\times e^{-1} - 0 = -\dfrac{1}{e}'
             note: "En 1 : moins e puissance moins 1. En 0 : le terme s'annule (le facteur x est nul)."
           - math: '\int_{0}^{1} e^{-x}\,dx = \bigl[-e^{-x}\bigr]_{0}^{1} = -e^{-1} - (-1) = 1 - \dfrac{1}{e}'
-            note: "Primitive immediate de e puissance moins x."
+            note: "Primitive immédiate de e puissance moins x."
           - math: '\int_{0}^{1} x\,e^{-x}\,dx = -\dfrac{1}{e} + 1 - \dfrac{1}{e} = 1 - \dfrac{2}{e} = \dfrac{e-2}{e}'
-            note: "On additionne le terme de bord et l'integrale restante, puis on met au meme denominateur e."
+            note: "On additionne le terme de bord et l'intégrale restante, puis on met au même dénominateur e."
       - id: qII6c
         part: "Partie II, 6) — Aire entre (C) et (D)"
         stem: |-
@@ -492,15 +492,15 @@ entries:
           Le repère est orthonormé, unité $1$ cm, donc $1$ unité d'aire vaut exactement $1\,\text{cm}^2$ : le résultat de l'intégrale se lit directement en $\text{cm}^2$, sans conversion. Et $x-f(x)$, une fois développé, n'est rien d'autre que la différence des deux intégrales déjà calculées aux questions 6a et 6b — aucun nouveau calcul d'intégrale à faire.
         steps:
           - math: '\text{sur } [0,1],\ (C) \text{ est en dessous de } (D) \quad (\text{question } 2b) \ \Longrightarrow\ \text{Aire} = \int_{0}^{1} \bigl(x-f(x)\bigr)\,dx \times 1\,\text{cm}^{2}'
-            note: "On integre le dessus (D) moins le dessous (C), positif sur [0,1] ; unite d'aire = 1 cm carre car le repere est orthonorme d'unite 1 cm."
+            note: "On integre le dessus (D) moins le dessous (C), positif sur [0,1] ; unité d'aire = 1 cm carré car le repère est orthonormé d'unité 1 cm."
           - math: 'x - f(x) = -\bigl(f(x)-x\bigr) = -(x^{2}-x)e^{-x} = x\,e^{-x} - x^{2}e^{-x}'
-            note: "On reprend l'expression de f(x) moins x deja etablie en 2a, et on en change le signe."
+            note: "On reprend l'expression de f(x) moins x déjà etablie en 2a, et on en change le signe."
           - math: '\int_{0}^{1}\bigl(x-f(x)\bigr)\,dx = \int_{0}^{1} x\,e^{-x}\,dx - \int_{0}^{1} x^{2}e^{-x}\,dx = \dfrac{e-2}{e} - \dfrac{2e-5}{e}'
-            note: "La difference se scinde en exactement les deux integrales des questions 6b et 6a, deja calculees : rien a recalculer."
+            note: "La différence se scinde en exactement les deux intégrales des questions 6b et 6a, déjà calculees : rien a recalculer."
           - math: '\dfrac{e-2}{e} - \dfrac{2e-5}{e} = \dfrac{(e-2)-(2e-5)}{e} = \dfrac{3-e}{e} = \dfrac{3}{e}-1'
-            note: "On regroupe au meme denominateur e."
+            note: "On regroupe au même dénominateur e."
           - math: '\text{Aire} = \left(\dfrac{3}{e}-1\right)\text{cm}^{2} \approx 0{,}10\ \text{cm}^{2} \quad (\text{positif car } e<3)'
-            note: "Resultat positif : e vaut environ 2,72, donc 3 sur e depasse 1."
+            note: "Résultat positif : e vaut environ 2,72, donc 3 sur e depasse 1."
       - id: qIII1
         part: "Partie III — Encadrer la suite entre 0 et 1"
         stem: |-
@@ -514,14 +514,14 @@ entries:
         steps:
           - math: 'u_{0} = \dfrac12 \ \Longrightarrow\ 0 \le u_{0} \le 1'
             note: "Initialisation : le premier terme est bien dans l'intervalle."
-          - math: '\text{Heredite\,: on suppose } 0 \le u_{n} \le 1. \ f \text{ croissante sur } [0,+\infty[ \supseteq [0,1] \quad (\text{question II-3b})'
-            note: "On reutilise la monotonie de f, deja etablie, sur l'intervalle qui contient u_n : c'est le renvoi imprime par le sujet."
+          - math: '\text{Hérédité\,: on suppose } 0 \le u_{n} \le 1. \ f \text{ croissante sur } [0,+\infty[ \supseteq [0,1] \quad (\text{question II-3b})'
+            note: "On reutilise la monotonie de f, déjà etablie, sur l'intervalle qui contient u_n : c'est le renvoi imprime par le sujet."
           - math: 'f \text{ croissante} \ \Longrightarrow\ f(0) \le f(u_{n}) \le f(1)'
-            note: "Une fonction croissante conserve l'ordre : encadrer u_n encadre f(u_n) de la meme facon."
-          - math: 'f(0) = 0 \quad (\text{deja calcule en 3c}) \qquad f(1) = (1-1)e^{-1}+1 = 1'
+            note: "Une fonction croissante conserve l'ordre : encadrer u_n encadre f(u_n) de la même façon."
+          - math: 'f(0) = 0 \quad (\text{déjà calcule en 3c}) \qquad f(1) = (1-1)e^{-1}+1 = 1'
             note: "Valeurs de f aux deux bords 0 et 1 de l'intervalle."
-          - math: '0 \le f(u_{n}) \le 1 \Longleftrightarrow 0 \le u_{n+1} \le 1 \ \Longrightarrow\ \text{la propriete est vraie pour tout } n \in \mathbb{N}'
-            note: "u_n+1 est par definition f(u_n) : l'heredite est etablie, la recurrence conclut pour tout n."
+          - math: '0 \le f(u_{n}) \le 1 \Longleftrightarrow 0 \le u_{n+1} \le 1 \ \Longrightarrow\ \text{la propriété est vraie pour tout } n \in \mathbb{N}'
+            note: "u_n+1 est par définition f(u_n) : l'hérédité est etablie, la recurrence conclut pour tout n."
       - id: qIII2
         part: "Partie III — Décroissance de la suite"
         stem: |-
@@ -532,13 +532,13 @@ entries:
           Or la question précédente vient d'enfermer $u_n$ dans $[0,1]$ pour tout $n$. Sur cet intervalle, $u_n(u_n-1)\le0$ : $u_n$ y est positif ou nul, $u_n-1$ y est négatif ou nul, leur produit est donc négatif ou nul. D'où $f(u_n)-u_n\le0$, c'est-à-dire $u_{n+1}\le u_n$, pour tout $n$.
         steps:
           - math: 'u_{n+1}-u_{n} = f(u_{n})-u_{n}'
-            note: "Par definition de la suite, u_n+1 vaut f(u_n)."
-          - math: 'f(u_{n})-u_{n} \text{ a le meme signe que } u_{n}^{2}-u_{n} = u_{n}(u_{n}-1) \quad (\text{question II-2a, appliquee en } x=u_n)'
-            note: "Resultat general de la question 2a, reutilise ici en remplacant x par u_n."
+            note: "Par définition de la suite, u_n+1 vaut f(u_n)."
+          - math: 'f(u_{n})-u_{n} \text{ a le même signe que } u_{n}^{2}-u_{n} = u_{n}(u_{n}-1) \quad (\text{question II-2a, appliquee en } x=u_n)'
+            note: "Résultat général de la question 2a, reutilise ici en remplaçant x par u_n."
           - math: '0 \le u_{n} \le 1 \quad (\text{question III-1}) \ \Longrightarrow\ u_{n} \ge 0 \text{ et } u_{n}-1 \le 0 \ \Longrightarrow\ u_{n}(u_{n}-1) \le 0'
-            note: "Sur [0,1], un facteur positif ou nul fois un facteur negatif ou nul donne un produit negatif ou nul."
-          - math: 'u_{n+1}-u_{n} \le 0 \ \Longrightarrow\ (u_{n}) \text{ est decroissante}'
-            note: "Le signe du terme suivant moins le terme courant est negatif ou nul, pour tout n : la suite decroit."
+            note: "Sur [0,1], un facteur positif ou nul fois un facteur négatif ou nul donne un produit négatif ou nul."
+          - math: 'u_{n+1}-u_{n} \le 0 \ \Longrightarrow\ (u_{n}) \text{ est décroissante}'
+            note: "Le signe du terme suivant moins le terme courant est négatif ou nul, pour tout n : la suite décroît."
       - id: qIII3
         part: "Partie III — Convergence et limite"
         stem: |-
@@ -550,11 +550,11 @@ entries:
 
           Pour trancher entre les deux, réutilise la monotonie : la suite décroît à partir de $u_0=\frac12$, donc **tous** ses termes — et leur limite — restent $\le\frac12$. Comme $\frac12<1$, la valeur $L=1$ est impossible : il reste $L=0$.
         steps:
-          - math: '(u_{n}) \text{ decroissante (III-2), minoree par } 0 \text{ (III-1)} \ \Longrightarrow\ (u_{n}) \text{ converge vers une limite } L\in[0,1] \quad (\text{theoreme de la limite monotone, R7})'
-            note: "Decroissante et minoree : la convergence est garantie sans connaitre encore la valeur de la limite."
+          - math: '(u_{n}) \text{ décroissante (III-2), minoree par } 0 \text{ (III-1)} \ \Longrightarrow\ (u_{n}) \text{ converge vers une limite } L\in[0,1] \quad (\text{théorème de la limite monotone, R7})'
+            note: "Décroissante et minoree : la convergence est garantie sans connaître encore la valeur de la limite."
           - math: 'f \text{ continue sur } \mathbb{R} \ (\text{somme et produit de fonctions continues}),\ u_{n+1}=f(u_{n}) \ \Longrightarrow\ L = f(L) \quad (R8)'
             note: "On passe a la limite dans la relation de recurrence : la continuite de f permet d'echanger limite et f."
           - math: 'f(L)=L \iff (L^{2}-L)e^{-L}=0 \iff L^{2}-L=0 \iff L(L-1)=0 \iff L=0 \text{ ou } L=1'
             note: "e puissance moins L n'est jamais nul : seul le facteur L(L moins 1) peut s'annuler."
-          - math: '(u_{n}) \text{ decroissante et } u_{0}=\dfrac12 \ \Longrightarrow\ L \le \dfrac12 < 1 \ \Longrightarrow\ L \ne 1 \ \Longrightarrow\ L = 0'
-            note: "La suite decroit a partir d'un demi : la limite ne peut pas etre 1, donc elle vaut 0."
+          - math: '(u_{n}) \text{ décroissante et } u_{0}=\dfrac12 \ \Longrightarrow\ L \le \dfrac12 < 1 \ \Longrightarrow\ L \ne 1 \ \Longrightarrow\ L = 0'
+            note: "La suite décroît a partir d'un demi : la limite ne peut pas être 1, donc elle vaut 0."

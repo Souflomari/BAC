@@ -1549,19 +1549,19 @@ coverage_summary:
     mc.math.maths_denombrement.ordre-arrangement-vs-combinaison: 7  # DENOMB-3, DENOMB-5, DENOMB-14, DENOMB-15, DENOMB-18, DENOMB-19, DENOMB-24
     mc.math.maths_denombrement.remise-avec-vs-sans: 6               # DENOMB-2, DENOMB-4, DENOMB-13, DENOMB-16, DENOMB-17, DENOMB-27
     mc.math.maths_denombrement.proba-quotient-denombrement: 3       # DENOMB-6, DENOMB-23, DENOMB-26
-  floor_met: true   # les 5 modeles de l'inventaire ont chacun >= 3 items dont un distracteur porte le tag primaire
+  floor_met: true   # les 5 modèles de l'inventaire ont chacun >= 3 items dont un distracteur porte le tag primaire
   notes: >-
-    Backfill du bank legacy (27 items ecrits avant le tagging par distracteur) :
+    Backfill du bank legacy (27 items écrits avant le tagging par distracteur) :
     chaque item recoit un primary_misconception et chaque distracteur un tag
     (id de l'inventaire, ou null quand il correspond a une erreur hors-modele
-    comme un comptage partiel ou une valeur particuliere). Le plancher >= 3 est
-    atteint pour les 5 modeles. Honnetete (recette summit, etape 6) : trois
-    items (DENOMB-20 symetrie, DENOMB-21 relation de Pascal, DENOMB-22 valeurs
-    particulieres binom(n,0)) portent sur des PROPRIETES des combinaisons et
+    comme un comptage partiel ou une valeur particulière). Le plancher >= 3 est
+    atteint pour les 5 modèles. Honnetete (recette summit, étape 6) : trois
+    items (DENOMB-20 symétrie, DENOMB-21 relation de Pascal, DENOMB-22 valeurs
+    particulières binom(n,0)) portent sur des PROPRIÉTÉS des combinaisons et
     n'ont pas de misconception primaire de l'inventaire ; leur primary est
     null (hors-inventaire), et ils ne comptent pas dans le plancher. Ces
-    proprietes meriteraient leur propre modele de misconception dans une passe
-    d'items ulterieure. Par ailleurs les items de probabilite DENOMB-24 et
+    propriétés meriteraient leur propre modèle de misconception dans une passe
+    d'items ulterieure. Par ailleurs les items de probabilité DENOMB-24 et
     DENOMB-27 gatent en priorite les ruptures ordre / remise (choix du bon
     univers), pas proba-quotient-denombrement : ce dernier est gate par
     DENOMB-6, DENOMB-23 et DENOMB-26 (exactement au plancher de 3).

@@ -140,7 +140,7 @@ entries:
           - math: 'E_c = \frac{1}{2}J_\Delta\,\dot\theta^2 \qquad E_{p,torsion} = \frac{1}{2}C\,\theta^2'
             note: "Les deux reservoirs (chapitre 7) : inertie de rotation dans E_c, raideur du fil dans E_p."
           - math: '\boxed{E_m = \frac{1}{2}J_\Delta\,\dot\theta^2 + \frac{1}{2}C\,\theta^2}'
-            note: "Energie mecanique du pendule de torsion."
+            note: "Énergie mécanique du pendule de torsion."
       - id: q2
         stem: |-
           **(0,75 pt)** Déterminer la valeur de la constante de torsion $C$ du fil en acier.
@@ -158,11 +158,11 @@ entries:
           Le piège nommé de cette question. Lire $E_m$ directement sur l'axe des ordonnées comme si le point $14$ (le dernier trait CHIFFRÉ) était le sommet : le sommet touche en réalité la ligne de grille suivante, non étiquetée, à $16\ \text{mJ}$ — c'est le seul comptage de maille non trivial de la figure, et la source du sujet le signale explicitement comme le point fragile de cette lecture.
         steps:
           - math: 'E_m = E_C(\theta=0) = 16\ \text{mJ} = 1{,}6\times10^{-2}\ \text{J}'
-            note: "Sommet de la parabole, une maille au-dessus du 14 imprime (chapitre 6, lecture d'un diagramme d'energie transposee a theta)."
+            note: "Sommet de la parabole, une maille au-dessus du 14 imprime (chapitre 6, lecture d'un diagramme d'énergie transposee a theta)."
           - math: 'E_m = \frac{1}{2}C\,\theta_m^2 \implies C = \frac{2\,E_m}{\theta_m^2}'
-            note: "Aux zeros de E_C (theta = +/- theta_m), toute l'energie est potentielle de torsion (chapitre 7)."
+            note: "Aux zéros de E_C (theta = +/- theta_m), toute l'énergie est potentielle de torsion (chapitre 7)."
           - math: 'C = \frac{2\times1{,}6\times10^{-2}}{0{,}8^2} = \frac{3{,}2\times10^{-2}}{0{,}64}'
-            note: "theta_m = 0,8 rad (enonce)."
+            note: "theta_m = 0,8 rad (énoncé)."
           - math: '\boxed{C \approx 0{,}05\ \text{N.m.rad}^{-1}}'
             note: "Constante de torsion du fil en acier."
       - id: q3
@@ -180,9 +180,9 @@ entries:
           Le piège nommé de cette question. Réutiliser $\theta_m$ au lieu de $\dot\theta_{max}$ dans la formule de $E_c$, ou l'inverse à la question 2 : les deux questions sont symétriques (l'une exploite le sommet en $E_C$, l'autre les zéros), mais chacune n'utilise qu'UNE seule des deux grandeurs extrêmes — jamais les deux à la fois dans la même expression.
         steps:
           - math: 'E_m = \frac{1}{2}J_\Delta\,\dot\theta_{max}^2 \implies J_\Delta = \frac{2\,E_m}{\dot\theta_{max}^2}'
-            note: "A theta=0, E_p,torsion=0 : toute l'energie mecanique est cinetique (chapitre 7), meme E_m qu'a la question 2."
+            note: "A theta=0, E_p,torsion=0 : toute l'énergie mécanique est cinétique (chapitre 7), même E_m qu'a la question 2."
           - math: 'J_\Delta = \frac{2\times1{,}6\times10^{-2}}{2{,}31^2} = \frac{3{,}2\times10^{-2}}{5{,}336}'
-            note: "theta_dot_max = 2,31 rad/s (enonce)."
+            note: "theta_dot_max = 2,31 rad/s (énoncé)."
           - math: '\boxed{J_\Delta \approx 6{,}0\times10^{-3}\ \text{kg.m}^2}'
             note: "Moment d'inertie de la tige."
 
@@ -338,9 +338,9 @@ entries:
           - math: 'E_m = E_C(\theta=0) = 1{,}6\ \text{mJ}'
             note: "Sommet de (a), huit carreaux de 0,2 mJ -- verrouille par le croisement des courbes a E_m/2 = 0,8 mJ."
           - math: 'E_m = \frac{1}{2}C\,\theta_m^2 \implies C = \frac{2\,E_m}{\theta_m^2}'
-            note: "Aux elongations extremes, toute l'energie est potentielle de torsion (chapitre 7)."
+            note: "Aux elongations extrêmes, toute l'énergie est potentielle de torsion (chapitre 7)."
           - math: 'C = \frac{2\times1{,}6\times10^{-3}}{0{,}16}'
-            note: "theta_m = 0,4 rad (enonce)."
+            note: "theta_m = 0,4 rad (énoncé)."
           - math: '\boxed{C = 0{,}02\ \text{N.m.rad}^{-1}}'
             note: "Constante de torsion du fil."
       - id: q3
@@ -366,9 +366,9 @@ entries:
           - math: 'E_C(\theta_1) = E_m - \frac{1}{2}C\,\theta_1^2 = 1{,}6\times10^{-3} - 4\times10^{-4} = 1{,}2\times10^{-3}\ \text{J}'
             note: "Conservation de E_m (chapitre 7) ; lisible aussi directement sur la courbe (a) a theta = 0,2 rad."
           - math: 'E_C = \frac{1}{2}J_\Delta\,\dot\theta^2 \implies |\dot\theta| = \sqrt{\frac{2\,E_C}{J_\Delta}}'
-            note: "Energie cinetique de rotation (notion Rotation autour d'un axe fixe) : J_Delta joue le role de la masse."
+            note: "Énergie cinétique de rotation (notion Rotation autour d'un axe fixe) : J_Delta joue le rôle de la masse."
           - math: '|\dot\theta| = \sqrt{\frac{2\times1{,}2\times10^{-3}}{2{,}4\times10^{-3}}} = \sqrt{1{,}0}'
-            note: "J_Delta = 2,4e-3 kg.m2 (enonce)."
+            note: "J_Delta = 2,4e-3 kg.m2 (énoncé)."
           - math: '\boxed{|\dot\theta| = 1{,}0\ \text{rad.s}^{-1}}'
             note: "Valeur exactement ronde : la lecture E_m = 1,6 mJ se confirme encore."
       - id: q4
@@ -386,8 +386,8 @@ entries:
           Le piège nommé de cette question. Écrire $W_C = +\frac{1}{2}C\theta_1^2$ (oublier le signe moins de $W = -\Delta E_p$), ou calculer $\frac{1}{2}C(\theta_m^2 - \theta_1^2)$ en partant de l'élongation maximale : l'énoncé fait partir le trajet de $\theta = 0$, pas de $\theta_m$ — lire les bornes du trajet AVANT de poser le calcul.
         steps:
           - math: 'W_C(0 \to \theta_1) = -\Delta E_{p,torsion} = -\left(\frac{1}{2}C\,\theta_1^2 - 0\right)'
-            note: "Travail d'une force conservative = moins la variation de son energie potentielle (meme geste que le poids, chapitre 4)."
+            note: "Travail d'une force conservative = moins la variation de son énergie potentielle (même geste que le poids, chapitre 4)."
           - math: 'W_C = -\frac{1}{2}\times0{,}02\times(0{,}2)^2'
-            note: "C = 0,02 N.m/rad (question 2), theta_1 = 0,2 rad, depart a theta = 0 (E_p nulle)."
+            note: "C = 0,02 N.m/rad (question 2), theta_1 = 0,2 rad, départ a theta = 0 (E_p nulle)."
           - math: '\boxed{W_C = -4\times10^{-4}\ \text{J}}'
-            note: "Travail resistant (la barre s'ecarte de l'equilibre) = l'energie perdue par le reservoir cinetique entre les questions 2 et 3."
+            note: "Travail resistant (la barre s'ecarte de l'équilibre) = l'énergie perdue par le réservoir cinétique entre les questions 2 et 3."

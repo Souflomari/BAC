@@ -836,7 +836,7 @@ entries:
       *Aucune figure n'accompagne ce sujet. La carte des domaines : question 1-a mobilise le théorème des accroissements finis (domaine « dérivabilité et étude de fonctions », hors socle) ; le reste — distance entre deux points, encadrement, somme, sommes de Riemann, passage à la limite — relève de ce chapitre et du chapitre « suites numériques ».*
     questions:
       - id: q1a
-        part: "Question 1 — Le theoreme des accroissements finis, applique a e^x"
+        part: "Question 1 — Le théorème des accroissements finis, applique a e^x"
         stem: |-
           **1- a)** (0,5 pt) Montrer que : $\forall k \in \{0\,;1\,;\ldots\,;(n-1)\}\ \ \exists\, c_k \in\, \left]\dfrac{k}{n}\,;\dfrac{k+1}{n}\right[$ tel que : $e^{\frac{k+1}{n}} - e^{\frac{k}{n}} = \dfrac{1}{n}\,e^{c_k}$
         reasoning: |-
@@ -858,12 +858,12 @@ entries:
 
           **Le piège nommé de cette question.** Oublier de vérifier — ou même de mentionner — les deux hypothèses du TAF (continuité sur le fermé, dérivabilité sur l'ouvert) avant de l'appliquer : elles sont vraies ici parce que $\exp$ est dérivable sur $\mathbb{R}$ tout entier, un fait qu'il faut citer, pas supposer. Second piège : écrire l'accroissement des abscisses à l'envers, $\dfrac{k}{n}-\dfrac{k+1}{n}$ au lieu de $\dfrac{k+1}{n}-\dfrac{k}{n}$ — cela changerait le signe du résultat.
         steps:
-          - math: 'h(x) = e^x \text{ continue sur } \mathbb{R}, \text{ derivable sur } \mathbb{R}, \quad h^{\prime}(x) = e^x'
-            note: "Exponentielle continue et derivable partout : les deux hypotheses du TAF sont acquises sur tout intervalle."
+          - math: 'h(x) = e^x \text{ continue sur } \mathbb{R}, \text{ dérivable sur } \mathbb{R}, \quad h^{\prime}(x) = e^x'
+            note: "Exponentielle continue et dérivable partout : les deux hypothèses du TAF sont acquises sur tout intervalle."
           - math: '\exists\, c_k \in\, \left]\dfrac{k}{n},\dfrac{k+1}{n}\right[\ ;\quad h\!\left(\dfrac{k+1}{n}\right) - h\!\left(\dfrac{k}{n}\right) = h^{\prime}(c_k)\left(\dfrac{k+1}{n}-\dfrac{k}{n}\right) \quad (\text{TAF})'
-            note: "Theoreme des accroissements finis, hors socle de cette lecon, enonce et applique ici a h = exp."
+            note: "Théorème des accroissements finis, hors socle de cette leçon, énoncé et applique ici a h = exp."
           - math: '\dfrac{k+1}{n}-\dfrac{k}{n} = \dfrac1n \quad\Longrightarrow\quad \boxed{e^{\frac{k+1}{n}} - e^{\frac{k}{n}} = \dfrac1n\,e^{c_k}}'
-            note: "L'ecart des abscisses vaut 1/n ; h'(c_k) = e puissance c_k puisque h = exp."
+            note: "L'écart des abscisses vaut 1/n ; h'(c_k) = e puissance c_k puisque h = exp."
       - id: q1b
         stem: |-
           **1- b)** (0,25 pt) Montrer que : $\forall k \in \{0\,;1\,;\ldots\,;(n-1)\}\ ;\quad M_kM_{k+1} = \dfrac{1}{n}\sqrt{1 + e^{2c_k}}$
@@ -889,13 +889,13 @@ entries:
           **Le piège nommé de cette question.** Recalculer $e^{\frac{k+1}{n}}-e^{\frac{k}{n}}$ depuis le début au lieu de réutiliser directement le résultat de 1-a — c'est possible, mais ça ignore que l'énoncé a construit la question précédente précisément pour cet usage. Second piège, plus discret : oublier de sortir $\dfrac1n$ du radical, et laisser une réponse du type $\sqrt{\frac{1+e^{2c_k}}{n^2}}$ non simplifiée — juste mathématiquement, mais pas la forme demandée par l'énoncé.
         steps:
           - math: 'M_k = \left(\dfrac{k}{n}\,;\,e^{\frac{k}{n}}\right), \qquad M_{k+1} = \left(\dfrac{k+1}{n}\,;\,e^{\frac{k+1}{n}}\right)'
-            note: "Coordonnees donnees par l'enonce de tete de l'exercice."
+            note: "Coordonnées données par l'énoncé de tête de l'exercice."
           - math: '\Delta x = \dfrac{k+1}{n}-\dfrac{k}{n} = \dfrac1n, \qquad \Delta y = e^{\frac{k+1}{n}}-e^{\frac{k}{n}} = \dfrac1n e^{c_k} \quad (\text{question 1-a})'
-            note: "Ecart des abscisses constant ; ecart des ordonnees repris tel quel de la question 1-a."
+            note: "Écart des abscisses constant ; écart des ordonnees repris tel quel de la question 1-a."
           - math: 'M_kM_{k+1} = \sqrt{(\Delta x)^2+(\Delta y)^2} = \sqrt{\dfrac{1}{n^2}+\dfrac{1}{n^2}e^{2c_k}} = \sqrt{\dfrac{1}{n^2}\left(1+e^{2c_k}\right)}'
-            note: "Formule de la distance entre deux points (Pythagore), appliquee aux deux ecarts."
+            note: "Formule de la distance entre deux points (Pythagore), appliquee aux deux écarts."
           - math: '\boxed{M_kM_{k+1} = \dfrac1n\sqrt{1+e^{2c_k}}}'
-            note: "On sort la racine de 1 sur n au carre, egale a 1/n car n > 0."
+            note: "On sort la racine de 1 sur n au carré, egale a 1/n car n > 0."
       - id: q1c
         stem: |-
           **1- c)** (0,5 pt) En déduire que : $\forall k \in \{0\,;1\,;\ldots\,;(n-1)\}\ ;\quad \dfrac{1}{n}\sqrt{1 + e^{\frac{2k}{n}}} \le M_kM_{k+1} \le \dfrac{1}{n}\sqrt{1 + e^{\frac{2(k+1)}{n}}}$
@@ -929,7 +929,7 @@ entries:
           - math: '\dfrac1n\sqrt{1+e^{\frac{2k}{n}}} < M_kM_{k+1} < \dfrac1n\sqrt{1+e^{\frac{2(k+1)}{n}}} \quad (\text{multiplication par } \dfrac1n>0)'
             note: "M_kM_(k+1) = (1/n) phi(c_k) par la question 1-b ; on multiplie l'encadrement de phi(c_k) par 1/n."
           - math: '\boxed{\dfrac1n\sqrt{1+e^{\frac{2k}{n}}} \le M_kM_{k+1} \le \dfrac1n\sqrt{1+e^{\frac{2(k+1)}{n}}}}'
-            note: "Le resultat strict implique la version large demandee par l'enonce."
+            note: "Le résultat strict implique la version large demandee par l'énoncé."
       - id: q2a
         part: "Question 2 — La suite (S_n) des longueurs, et sa limite"
         stem: |-
@@ -972,13 +972,13 @@ entries:
           **Le piège nommé de cette question.** Laisser l'exposant $e^{\frac{2(k+1)}{n}}$ dans la somme de droite sans faire le changement d'indice — c'est une erreur de transcription qui ne « saute pas aux yeux » parce que la formule reste vraie mathématiquement (c'est la même somme), mais ce n'est **pas** la forme que l'énoncé demande de vérifier. Le changement d'indice n'est pas cosmétique : c'est lui qui prépare la reconnaissance des sommes de Riemann en 2-b.
         steps:
           - math: '\sum_{k=0}^{n-1}\dfrac1n\sqrt{1+e^{\frac{2k}{n}}} = \dfrac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}}'
-            note: "Somme des bornes de gauche de la question 1-c : deja la forme demandee."
+            note: "Somme des bornes de gauche de la question 1-c : déjà la forme demandee."
           - math: '\sum_{k=0}^{n-1}\dfrac1n\sqrt{1+e^{\frac{2(k+1)}{n}}} \ \underset{j=k+1}{=}\ \dfrac1n\sum_{j=1}^{n}\sqrt{1+e^{\frac{2j}{n}}} = \dfrac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}}'
             note: "Changement d'indice j = k+1 : le +1 de l'exposant est absorbe par le decalage des bornes de sommation."
           - math: '\sum_{k=0}^{n-1}\dfrac1n\sqrt{1+e^{\frac{2k}{n}}} \le \sum_{k=0}^{n-1} M_kM_{k+1} \le \sum_{k=0}^{n-1}\dfrac1n\sqrt{1+e^{\frac{2(k+1)}{n}}}'
             note: "On additionne les n encadrements de la question 1-c, pour k de 0 a n-1."
           - math: '\boxed{\dfrac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}} \le S_n \le \dfrac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}}}'
-            note: "S_n est le terme du milieu par definition ; les deux bornes viennent d'etre reecrites ci-dessus."
+            note: "S_n est le terme du milieu par définition ; les deux bornes viennent d'être reecrites ci-dessus."
       - id: q2b
         stem: |-
           **b)** (0,5 pt) En déduire que : $\displaystyle\lim_{n \to +\infty} S_n = \int_0^1 \sqrt{1 + e^{2x}}\ dx$
@@ -1016,13 +1016,13 @@ entries:
           **Le piège nommé de cette question.** Appliquer le théorème des sommes de Riemann à une seule des deux sommes et en conclure directement la limite de $S_n$, sans passer par l'encadrement puis les gendarmes — $S_n$ lui-même n'est **ni** l'une **ni** l'autre des deux sommes, seulement coincé entre elles ; c'est cette position d'otage entre deux suites de même limite, et rien d'autre, qui donne la limite de $S_n$.
         steps:
           - math: 'h(x) = \sqrt{1+e^{2x}} \quad\text{continue sur } [0,1] \quad (\text{composee de fonctions continues, } 1+e^{2x}>0)'
-            note: "Verification de l'hypothese de continuite, seule exigee par le theoreme des sommes de Riemann."
+            note: "Vérification de l'hypothèse de continuite, seule exigee par le théorème des sommes de Riemann."
           - math: '\dfrac1n\sum_{k=0}^{n-1} h\!\left(\dfrac{k}{n}\right) \to \int_0^1 h(x)\,dx \quad\text{et}\quad \dfrac1n\sum_{k=1}^{n} h\!\left(\dfrac{k}{n}\right) \to \int_0^1 h(x)\,dx \quad (\text{sommes de Riemann, hors socle, programme SM})'
-            note: "Theoreme des sommes de Riemann : points gauches ET points droits convergent vers la meme integrale."
+            note: "Théorème des sommes de Riemann : points gauches ET points droits convergent vers la même intégrale."
           - math: '\dfrac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}} \le S_n \le \dfrac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}} \quad (\text{question 2-a}), \quad \text{les deux bornes} \to \int_0^1 \sqrt{1+e^{2x}}\,dx'
             note: "Les deux bornes de l'encadrement de 2-a sont exactement les deux sommes de Riemann ci-dessus."
-          - math: '\boxed{\lim_{n\to+\infty} S_n = \int_0^1 \sqrt{1+e^{2x}}\,dx} \quad (\text{theoreme des gendarmes})'
-            note: "S_n coince entre deux suites de meme limite : la limite lui est imposee."
+          - math: '\boxed{\lim_{n\to+\infty} S_n = \int_0^1 \sqrt{1+e^{2x}}\,dx} \quad (\text{théorème des gendarmes})'
+            note: "S_n coince entre deux suites de même limite : la limite lui est imposée."
   # ── bk-2024-n-x2 — 2024 N, Exercice 2 : F(x) = integrale de e^(t^2), sa
   #    bijection reciproque F^-1, somme de Riemann et changement de variable ──
   - id: bk-2024-n-x2
@@ -1115,10 +1115,10 @@ entries:
         steps:
           - math: 't \mapsto e^{t^2} \text{ continue sur } [0,1] \quad (\text{composee, admet des primitives})'
             note: "Fonction continue sur un intervalle : elle y admet des primitives (fait admis)."
-          - math: 'F \text{ est une primitive de } t\mapsto e^{t^2} \text{ sur } [0,1] \implies F \text{ derivable}, \quad F^{\prime}(x) = e^{x^2}'
-            note: "Definition de l'integrale comme primitive (chapitre 2), appliquee a F elle-meme."
-          - math: 'F^{\prime}(x) = e^{x^2} > 0 \ \forall x \implies F \text{ strictement croissante sur } [0,1]; \quad F \text{ derivable} \implies F \text{ continue}'
-            note: "Exponentielle toujours strictement positive : le signe de F prime est immediat."
+          - math: 'F \text{ est une primitive de } t\mapsto e^{t^2} \text{ sur } [0,1] \implies F \text{ dérivable}, \quad F^{\prime}(x) = e^{x^2}'
+            note: "Définition de l'intégrale comme primitive (chapitre 2), appliquee a F elle-même."
+          - math: 'F^{\prime}(x) = e^{x^2} > 0 \ \forall x \implies F \text{ strictement croissante sur } [0,1]; \quad F \text{ dérivable} \implies F \text{ continue}'
+            note: "Exponentielle toujours strictement positive : le signe de F prime est immédiat."
       - id: q1b
         stem: |-
           **1- b)** (0,5 pt) En déduire que $F$ est une bijection de $[0\,;1]$ vers $[0\,;\beta]$ avec $\beta = \displaystyle\int_0^1 e^{t^2}\,dt$
@@ -1138,11 +1138,11 @@ entries:
           **Le piège nommé de cette question.** Écrire l'intervalle image dans le mauvais ordre par réflexe — ici $F$ croît, donc l'ordre de $[0,1]$ se conserve, mais ce ne serait pas vrai si $F$ décroissait (le pont complet entre sens de variation et ordre des bornes est démontré au chapitre « dérivabilité et étude de fonctions »). Deuxième piège : oublier de justifier séparément la continuité **et** la stricte monotonie — le TVI seul donnerait l'existence d'un antécédent, jamais son unicité.
         steps:
           - math: 'F \text{ continue et strictement croissante sur } [0,1] \quad (\text{question 1-a})'
-            note: "Les deux hypotheses du corollaire du TVI, deja etablies."
-          - math: 'F(0) = \int_0^0 e^{t^2}\,dt = 0, \qquad F(1) = \int_0^1 e^{t^2}\,dt = \beta \quad (\text{definition de beta})'
-            note: "Images des bornes : F croissante donc l'intervalle image suit le meme ordre."
+            note: "Les deux hypothèses du corollaire du TVI, déjà etablies."
+          - math: 'F(0) = \int_0^0 e^{t^2}\,dt = 0, \qquad F(1) = \int_0^1 e^{t^2}\,dt = \beta \quad (\text{définition de beta})'
+            note: "Images des bornes : F croissante donc l'intervalle image suit le même ordre."
           - math: 'F \text{ bijection de } [0,1] \text{ sur } J = [F(0), F(1)] = [0,\beta] \quad (\text{corollaire du TVI, hors socle de ce chapitre})'
-            note: "Corollaire du theoreme des valeurs intermediaires : continuite + stricte monotonie."
+            note: "Corollaire du théorème des valeurs intermediaires : continuite + stricte monotonie."
       - id: q2a
         part: "Question 2 — La suite (S_n), somme de Riemann via F inverse"
         stem: |-
@@ -1170,12 +1170,12 @@ entries:
         steps:
           - math: '\varphi(u) = F^{-1}(u\beta), \qquad S_n = \dfrac1n\sum_{k=1}^{n} \varphi\!\left(\dfrac{k}{n}\right)'
             note: "S_n reconnue comme somme de Riemann aux points droits, de pas 1/n."
-          - math: 'F^{-1} \text{ continue sur } [0,\beta] \ (\text{reciproque de bijection continue}), \quad u \mapsto u\beta \text{ continue} \implies \varphi \text{ continue sur } [0,1]'
-            note: "Hypothese de continuite du theoreme des sommes de Riemann, verifiee par composition."
+          - math: 'F^{-1} \text{ continue sur } [0,\beta] \ (\text{réciproque de bijection continue}), \quad u \mapsto u\beta \text{ continue} \implies \varphi \text{ continue sur } [0,1]'
+            note: "Hypothèse de continuite du théorème des sommes de Riemann, vérifiée par composition."
           - math: 'S_n \xrightarrow[n\to+\infty]{} \int_0^1 \varphi(u)\,du = \int_0^1 F^{-1}(u\beta)\,du \quad (\text{sommes de Riemann, hors socle, programme SM})'
-            note: "Application du theoreme des sommes de Riemann a phi, continue sur [0,1]."
+            note: "Application du théorème des sommes de Riemann a phi, continue sur [0,1]."
           - math: 't = u\beta,\ dt = \beta\,du \implies \int_0^1 F^{-1}(u\beta)\,du = \dfrac1\beta\int_0^\beta F^{-1}(t)\,dt = \ell'
-            note: "Changement de variable lineaire t = u fois beta pour retomber sur la forme demandee."
+            note: "Changement de variable linéaire t = u fois beta pour retomber sur la forme demandee."
       - id: q2b
         stem: |-
           **2- b)** (0,5 pt) Montrer que $\ell = \dfrac{1}{\beta}\displaystyle\int_0^1 u\,e^{u^2}\,du$
@@ -1204,14 +1204,14 @@ entries:
 
           **Le piège nommé de cette question.** Effectuer le changement de variable comme un pur geste mécanique — remplacer $F^{-1}(t)$ par $u$ et $dt$ par $F^{\prime}(u)du$ sans jamais justifier que $F^{-1}$ est dérivable. Le résultat numérique serait identique, mais la démonstration perdrait son fondement : c'est précisément parce que $F^{\prime}$ ne s'annule jamais sur $[0,1]$ que $F^{-1}$ est dérivable **partout** sur $[0,\beta]$, et donc que le changement de variable est licite sur l'intégrale entière, pas seulement suggéré par l'énoncé comme un raccourci de calcul.
         steps:
-          - math: 'F \text{ bijection derivable sur } [0,1], \quad F^{\prime}(x) = e^{x^2} \ne 0 \ \forall x \implies F^{-1} \text{ derivable sur } [0,\beta]'
-            note: "Theoreme de la derivee d'une fonction reciproque, hors socle de ce chapitre : F prime ne s'annule jamais."
+          - math: 'F \text{ bijection dérivable sur } [0,1], \quad F^{\prime}(x) = e^{x^2} \ne 0 \ \forall x \implies F^{-1} \text{ dérivable sur } [0,\beta]'
+            note: "Théorème de la dérivée d'une fonction réciproque, hors socle de ce chapitre : F prime ne s'annule jamais."
           - math: 'u = F^{-1}(t) \iff t = F(u) \implies dt = F^{\prime}(u)\,du = e^{u^2}\,du'
-            note: "Differentiation de t = F(u), licite car F derivable de derivee connue."
+            note: "Differentiation de t = F(u), licite car F dérivable de dérivée connue."
           - math: 't=0 \implies u = F^{-1}(0) = 0 \ (\text{car } F(0)=0), \qquad t=\beta \implies u = F^{-1}(\beta) = 1 \ (\text{car } F(1)=\beta)'
             note: "Bornes transportees via F(0)=0 et F(1)=beta, etablies a la question 1-b."
           - math: '\int_0^\beta F^{-1}(t)\,dt = \int_0^1 u\,e^{u^2}\,du \implies \boxed{\ell = \dfrac1\beta\int_0^1 u\,e^{u^2}\,du}'
-            note: "Substitution complete : integrande, differentielle et bornes tous transportes."
+            note: "Substitution complete : integrande, différentielle et bornes tous transportes."
       - id: q2c
         stem: |-
           **2- c)** (0,5 pt) En déduire que : $\ell = \dfrac{e-1}{2\beta}$
@@ -1233,7 +1233,7 @@ entries:
           **Le piège nommé de cette question.** Refaire un changement de variable ($w=u^2$, par exemple) alors que la primitive $\frac12 e^{u^2}$ se lit directement, en reconnaissant la forme $u^{\prime}e^u$ composée — un détour inutile sur une question à $0{,}5$ point qui se termine en une ligne.
         steps:
           - math: '\left(\dfrac12 e^{u^2}\right)^{\prime} = u\,e^{u^2} \quad (\text{primitive directe, forme } u^{\prime}e^{u})'
-            note: "Reconnaissance de la forme derivee d'une composee, sans changement de variable supplementaire."
+            note: "Reconnaissance de la forme dérivée d'une composee, sans changement de variable supplémentaire."
           - math: '\int_0^1 u\,e^{u^2}\,du = \left[\dfrac12 e^{u^2}\right]_0^1 = \dfrac12 e - \dfrac12 = \dfrac{e-1}{2}'
             note: "Evaluation de la primitive entre 0 et 1."
           - math: '\ell = \dfrac1\beta \times \dfrac{e-1}{2} = \boxed{\dfrac{e-1}{2\beta}}'

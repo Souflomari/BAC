@@ -2248,13 +2248,13 @@ entries:
           La stabilité se lit directement sur les coefficients : $M(a,b)+M(c,d)$ garde exactement la forme $M(\cdot,\cdot)$. L'associativité et la commutativité de $+$ sont héritées de $M_3(\mathbb{R})$ tout entier. Le neutre $O = M(0,0)$ appartient à $E$, et l'opposé $-M(a,b)$ vaut $M(-a,-b)$ — encore de la forme $M(\cdot,\cdot)$, donc dans $E$. Les quatre axiomes tiennent : $E$ est un sous-groupe de $(M_3(\mathbb{R}),+)$.
         steps:
           - math: 'M(a,b)+M(c,d) = \begin{pmatrix}a&b&-b\\0&0&0\\b&-a&a\end{pmatrix} + \begin{pmatrix}c&d&-d\\0&0&0\\d&-c&c\end{pmatrix} = \begin{pmatrix}a+c&b+d&-(b+d)\\0&0&0\\b+d&-(a+c)&a+c\end{pmatrix} = M(a+c,\ b+d)'
-            note: "Addition coefficient par coefficient : le resultat garde la forme M(.,.), E est stable pour +."
-          - math: '+ \ \text{associative et commutative sur}\ M_3(\mathbb{R})\ (\text{fait general}) \implies \text{heritee sur}\ E'
+            note: "Addition coefficient par coefficient : le résultat garde la forme M(.,.), E est stable pour +."
+          - math: '+ \ \text{associative et commutative sur}\ M_3(\mathbb{R})\ (\text{fait général}) \implies \text{heritee sur}\ E'
             note: "Deux axiomes herites de M3(R) tout entier."
           - math: 'O = \begin{pmatrix}0&0&0\\0&0&0\\0&0&0\end{pmatrix} = M(0,0) \in E, \qquad -M(a,b) = M(-a,\ -b) \in E'
-            note: "Le neutre O et l'oppose de chaque element restent de la forme M(.,.), donc dans E."
+            note: "Le neutre O et l'oppose de chaque élément restent de la forme M(.,.), donc dans E."
           - math: 'E\ \text{est un sous-groupe de}\ (M_3(\mathbb{R}),+)'
-            note: "Les quatre axiomes sont verifies dans E."
+            note: "Les quatre axiomes sont vérifiés dans E."
       - id: q2
         stem: |-
           On définit dans $M_3(\mathbb{R})$ la loi de composition interne $T$ par : $\forall(a,b,c,d)\in\mathbb{R}^4$ ; $M(a,b)\,T\,M(c,d) = M(a,b)\times A\times M(c,d)$. **(0,5 pt)** Vérifier que $E$ est stable dans $(M_3(\mathbb{R}),T)$
@@ -2264,7 +2264,7 @@ entries:
           - math: 'M(a,b)\times A = \begin{pmatrix}a&b&-b\\0&0&0\\b&-a&a\end{pmatrix}\begin{pmatrix}1&0&0\\1&1&0\\1&1&1\end{pmatrix} = \begin{pmatrix}a&0&-b\\0&0&0\\b&0&a\end{pmatrix}'
             note: "Premier produit matriciel, ligne par colonne."
           - math: '\big(M(a,b)\times A\big)\times M(c,d) = \begin{pmatrix}a&0&-b\\0&0&0\\b&0&a\end{pmatrix}\begin{pmatrix}c&d&-d\\0&0&0\\d&-c&c\end{pmatrix} = \begin{pmatrix}ac-bd&ad+bc&-(ad+bc)\\0&0&0\\ad+bc&-(ac-bd)&ac-bd\end{pmatrix}'
-            note: "Second produit ; le resultat prend exactement la forme M(.,.)."
+            note: "Second produit ; le résultat prend exactement la forme M(.,.)."
           - math: 'M(a,b)\,T\,M(c,d) = M(ac-bd,\ ad+bc) \in E'
             note: "Les coefficients sont ceux du produit complexe (a+ib)(c+id) : E est stable pour T."
       - id: q3
@@ -2279,11 +2279,11 @@ entries:
           - math: 'z_1=a+ib,\ z_2=c+id \implies z_1z_2 = (ac-bd)+i(ad+bc)'
             note: "Produit complexe usuel."
           - math: '\varphi(z_1z_2) = M(ac-bd,\ ad+bc) = M(a,b)\,T\,M(c,d) = \varphi(z_1)\,T\,\varphi(z_2)'
-            note: "Exactement le resultat de la question 2 : phi est un homomorphisme de (C*,x) vers (E,T)."
+            note: "Exactement le résultat de la question 2 : phi est un homomorphisme de (C*,x) vers (E,T)."
           - math: '(a,b)\mapsto M(a,b)\ \text{injective} \implies \varphi\ \text{injective sur}\ \mathbb{C}^*'
             note: "Les coefficients de M(a,b) redonnent a et b : deux complexes distincts ont des images distinctes."
           - math: 'a+ib\neq0 \iff (a,b)\neq(0,0) \iff M(a,b)\neq M(0,0) \implies \varphi(\mathbb{C}^*) = E\setminus\{M(0,0)\} = E^*'
-            note: "L'image de phi tombe exactement dans E prive de M(0,0), et tout element de E* a un antecedent."
+            note: "L'image de phi tombe exactement dans E prive de M(0,0), et tout élément de E* a un antecedent."
       - id: q4
         stem: |-
           **(0,75 pt)** En déduire que $(E^*,T)$ est un groupe commutatif dont on déterminera l'élément neutre $J$
@@ -2295,7 +2295,7 @@ entries:
           - math: '(\mathbb{C}^*,\times)\ \text{groupe commutatif (rappel)}, \qquad \varphi\ \text{isomorphisme de}\ (\mathbb{C}^*,\times)\ \text{vers}\ (E^*,T)\ (\text{q3})'
             note: "Les deux ingredients du transport de structure."
           - math: '\varphi(z_1)\,T\,\varphi(z_2) = \varphi(z_1z_2) = \varphi(z_2z_1) = \varphi(z_2)\,T\,\varphi(z_1)'
-            note: "Commutativite de T sur E*, heritee de la commutativite du produit complexe."
+            note: "Commutativité de T sur E*, heritee de la commutativité du produit complexe."
           - math: '(E^*,T)\ \text{est un groupe commutatif}, \qquad J = \varphi(1) = M(1,0)'
             note: "Le neutre J est l'image du neutre 1 de C* par phi."
       - id: q5
@@ -2306,15 +2306,15 @@ entries:
           On réutilise la formule générale de la question 2 — valable pour tous réels $a,b,c,d$, pas seulement pour des complexes non nuls : $M(a,b)\,T\,M(c,d)=M(ac-bd,\ ad+bc)$. On développe les deux membres de l'égalité à établir, $M(a,b)\,T\big(M(c,d)+M(e,f)\big)$ et $\big(M(a,b)\,T\,M(c,d)\big)+\big(M(a,b)\,T\,M(e,f)\big)$, et on compare terme à terme : chacun se ramène à la distributivité de $\times$ sur $+$ dans $\mathbb{R}$, déjà acquise.
         steps:
           - math: 'M(c,d)+M(e,f) = M(c+e,\ d+f)'
-            note: "Stabilite de + dans E (question 1)."
+            note: "Stabilité de + dans E (question 1)."
           - math: 'M(a,b)\,T\big(M(c,d)+M(e,f)\big) = M(a,b)\,T\,M(c+e,\ d+f) = M\big(a(c+e)-b(d+f),\ \ a(d+f)+b(c+e)\big)'
-            note: "Formule generale de T (question 2), appliquee au couple (c+e, d+f)."
+            note: "Formule générale de T (question 2), appliquee au couple (c+e, d+f)."
           - math: '\big(M(a,b)\,T\,M(c,d)\big) + \big(M(a,b)\,T\,M(e,f)\big) = M(ac-bd,\ ad+bc) + M(ae-bf,\ af+be) = M\big((ac-bd)+(ae-bf),\ \ (ad+bc)+(af+be)\big)'
-            note: "Meme formule appliquee separement a (c,d) et (e,f), puis somme dans E (question 1)."
+            note: "Même formule appliquee séparément a (c,d) et (e,f), puis somme dans E (question 1)."
           - math: 'a(c+e)-b(d+f) = (ac-bd)+(ae-bf), \qquad a(d+f)+b(c+e) = (ad+bc)+(af+be)'
-            note: "Les deux membres coincident, coefficient par coefficient : simple distributivite de x sur + dans R."
+            note: "Les deux membres coïncident, coefficient par coefficient : simple distributivite de x sur + dans R."
           - math: 'M(a,b)\,T\big(M(c,d)+M(e,f)\big) = \big(M(a,b)\,T\,M(c,d)\big) + \big(M(a,b)\,T\,M(e,f)\big)'
-            note: "T est distributive par rapport a + dans E (et, T etant commutative, la distributivite de l'autre cote suit automatiquement)."
+            note: "T est distributive par rapport a + dans E (et, T étant commutative, la distributivite de l'autre cote suit automatiquement)."
       - id: q6
         stem: |-
           **(0,5 pt)** En déduire que $(E,+,T)$ est un corps commutatif.
@@ -2326,12 +2326,12 @@ entries:
           - math: '(E,+)\ \text{groupe commutatif}\ (\text{q1}), \qquad T\ \text{interne}\ (\text{q2})'
             note: "Deux premiers ingredients."
           - math: '\big(M_1\,T\,M_2\big)\,T\,M_3 = M_1\times A\times M_2\times A\times M_3 = M_1\,T\big(M_2\,T\,M_3\big)'
-            note: "Associativite de T : simple consequence de l'associativite du produit matriciel ordinaire (fait general)."
+            note: "Associativite de T : simple conséquence de l'associativite du produit matriciel ordinaire (fait général)."
           - math: 'M(a,b)\,T\,M(c,d) = M(ac-bd,ad+bc) = M(ca-db,cb+da) = M(c,d)\,T\,M(a,b)'
-            note: "Commutativite de T sur tout E, directement sur la formule generale (question 2)."
-          - math: 'T\ \text{distributive par rapport a}\ +\ (\text{q5}), \qquad J=M(1,0)\ \text{unite}\ (\text{q4})'
+            note: "Commutativité de T sur tout E, directement sur la formule générale (question 2)."
+          - math: 'T\ \text{distributive par rapport a}\ +\ (\text{q5}), \qquad J=M(1,0)\ \text{unité}\ (\text{q4})'
             note: "Anneau commutatif et unitaire."
-          - math: '(E^*,T) = (E\setminus\{M(0,0)\},T)\ \text{groupe}\ (\text{q4}) \implies \text{tout element non nul de}\ E\ \text{a un symetrique pour}\ T'
-            note: "Exigence propre au corps (chapitre 9), deja etablie."
+          - math: '(E^*,T) = (E\setminus\{M(0,0)\},T)\ \text{groupe}\ (\text{q4}) \implies \text{tout élément non nul de}\ E\ \text{a un symétrique pour}\ T'
+            note: "Exigence propre au corps (chapitre 9), déjà etablie."
           - math: '(E,+,T)\ \text{est un corps commutatif}'
             note: "Toutes les conditions du chapitre 9 sont reunies."

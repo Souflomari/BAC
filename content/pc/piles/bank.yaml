@@ -171,13 +171,13 @@ entries:
           Chaque électrode est le siège d'une demi-réaction : oxydation à l'anode (le chrome, question 1), réduction à la cathode (l'argent). On écrit chaque demi-équation, puis on ne peut les sommer que si le nombre d'électrons échangés est le même de part et d'autre. Le chrome libère 3 électrons, l'argent n'en capte qu'un : on multiplie donc la demi-équation de l'argent par 3 avant d'additionner, et les électrons — qui ne sont ni réactif ni produit de la réaction globale — disparaissent de l'équation bilan.
         steps:
           - math: 'Cr \rightarrow Cr^{3+} + 3\,e^-'
-            note: "A l'anode : oxydation du chrome (l'electrode dont la masse diminue), 3 electrons liberes."
+            note: "A l'anode : oxydation du chrome (l'électrode dont la masse diminue), 3 électrons liberes."
           - math: 'Ag^{+} + e^- \rightarrow Ag'
-            note: "A la cathode : reduction des ions argent (le depot observe sur l'electrode d'argent), 1 electron capte."
+            note: "A la cathode : réduction des ions argent (le dépôt observe sur l'électrode d'argent), 1 électron capte."
           - math: '3\,Ag^{+} + 3\,e^- \rightarrow 3\,Ag'
-            note: "On multiplie la reduction par 3 pour que les 3 electrons liberes par le chrome soient tous captes, condition pour pouvoir sommer."
+            note: "On multiplie la réduction par 3 pour que les 3 électrons liberes par le chrome soient tous captes, condition pour pouvoir sommer."
           - math: 'Cr + 3\,Ag^{+} \rightarrow Cr^{3+} + 3\,Ag'
-            note: "Equation bilan : somme des deux demi-equations equilibrees ; les electrons s'annulent."
+            note: "Équation bilan : somme des deux demi-equations equilibrees ; les électrons s'annulent."
       - id: q4
         part: "Partie 2 — Quantifier l'usure de l'électrode de chrome"
         stem: |-
@@ -186,11 +186,11 @@ entries:
           La charge débitée porte l'information sur le nombre d'électrons échangés, via $Q = n(e^-)\,F$ (chapitre 7). Ici $Q$ est donné directement — pas besoin de $Q = I\,\Delta t$ — donc on convertit d'abord en moles d'électrons en divisant par $F$. On passe ensuite des électrons au chrome par la stœchiométrie de la demi-équation de la question 3 : chaque atome de chrome oxydé libère 3 électrons, donc $n(Cr) = n(e^-)/3$. On termine par $m = n\,M$. La variation $\Delta m$ est négative : c'est le même constat qu'au « teste l'idée avant de la croire » du chapitre 7 — une pile qui débite s'use réellement, la lame de chrome perd de la masse de façon irréversible.
         steps:
           - math: 'n(e^-) = \frac{Q}{F} = \frac{5{,}79}{96500} = 6{,}0\times10^{-5}\ \text{mol}'
-            note: "Conversion de la charge debitee en quantite de matiere d'electrons, via la constante de Faraday (chapitre 7)."
+            note: "Conversion de la charge debitee en quantité de matière d'électrons, via la constante de Faraday (chapitre 7)."
           - math: 'n(Cr) = \frac{n(e^-)}{3} = \frac{6{,}0\times10^{-5}}{3} = 2{,}0\times10^{-5}\ \text{mol}'
-            note: "Stoechiometrie de l'oxydation Cr -> Cr3+ + 3 e- (question 3) : 3 electrons par atome de chrome consomme."
+            note: "Stoechiometrie de l'oxydation Cr -> Cr3+ + 3 e- (question 3) : 3 électrons par atome de chrome consomme."
           - math: '\Delta m = -\,n(Cr)\times M(Cr) = -\,2{,}0\times10^{-5}\times 52 \approx -1{,}0\times10^{-3}\ \text{g}'
-            note: "Signe negatif : la masse de l'electrode de chrome diminue. Environ 1,0 mg de chrome a quitte la lame."
+            note: "Signe négatif : la masse de l'électrode de chrome diminue. Environ 1,0 mg de chrome a quitte la lame."
   - id: bk-2021-r-x1b
     title: "Pile nickel-argent : sens de l'oxydation, bilan, durée de fonctionnement et concentration finale"
     source:
@@ -552,10 +552,10 @@ entries:
         avec la Première partie, 4,25+2,75=7,00, conforme au cartouche
         « Chimie : (07 points) »), 27 questions du sujet re-dérivées.
         DÉFAUT DU SUJET OFFICIEL, documenté et non réparé : le titre imprimé
-        de cette partie est « Deuxième partie : Etude de l'hydrolyse d'un
+        de cette partie est « Deuxième partie : Étude de l'hydrolyse d'un
         ester en milieu basique » — c'est le titre de la PREMIÈRE partie,
         recopié par erreur ; son contenu réel est bien l'étude d'une pile,
-        conforme au cartouche p.1 (« Chimie ... Etude d'une pile »). AUTRE
+        conforme au cartouche p.1 (« Chimie ... Étude d'une pile »). AUTRE
         DÉFAUT : la Figure 2 (la pile) ne porte AUCUNE étiquette « A » ni
         « B » sur ses deux électrodes (barres verticales grises), contrôlé
         sur le bitmap d'origine 767×411 à ×2 et au rendu 400 dpi — pas un
@@ -574,7 +574,7 @@ entries:
 
       *La Première partie de cet exercice — le suivi conductimétrique de l'hydrolyse basique du méthanoate de méthyle — est traitée à part, sous la notion « Transformations lentes et rapides » (entrée bk-2010-n-x1). Rien de ce qui suit n'en dépend.*
 
-      **Deuxième partie : Etude de l'hydrolyse d'un ester en milieu basique** *(titre tel qu'imprimé sur le sujet — défaut du sujet officiel : le contenu réel est l'étude d'une pile, conforme à l'annonce du cartouche « Chimie ... Etude d'une pile »)*
+      **Deuxième partie : Étude de l'hydrolyse d'un ester en milieu basique** *(titre tel qu'imprimé sur le sujet — défaut du sujet officiel : le contenu réel est l'étude d'une pile, conforme à l'annonce du cartouche « Chimie ... Étude d'une pile »)*
 
       Cette pile est constituée de deux compartiments séparés par un électrolyte acide, jouant le rôle d'un pont ionique, et de deux électrodes A et B. La pile est alimentée, au cours du fonctionnement, par du méthanol liquide et du dioxygène gazeux (figure 2).
 
@@ -598,7 +598,7 @@ entries:
           Puis on équilibre la charge : le membre de gauche est neutre (deux molécules non chargées), donc le membre de droite doit l'être aussi. À droite, $a$ ions $\text{H}^+$ apportent une charge $+a$ et $b$ électrons une charge $-b$ ; leur somme doit être nulle, ce qui donne $b = a = 6$.
         steps:
           - math: '4 + 2 = a \implies a = 6'
-            note: "Conservation de l'hydrogene : 4 dans CH3OH + 2 dans H2O a gauche, tout dans H+ a droite."
+            note: "Conservation de l'hydrogène : 4 dans CH3OH + 2 dans H2O a gauche, tout dans H+ a droite."
           - math: 'a - b = 0 \implies b = 6'
             note: "Electroneutralite : le membre de gauche est neutre, donc a.(+1) + b.(-1) = 0."
       - id: q2
@@ -627,7 +627,7 @@ entries:
           **Nommer A et B.** Il faut être aussi honnête qu'à la question précédente : la Figure 2 du sujet officiel ne fournit AUCUNE étiquette « A » ni « B ». La physique et le sens de $I$ fixent sans ambiguïté que l'électrode de gauche (méthanol, oxydation) est la borne − et l'électrode de droite (dioxygène, réduction) la borne +, mais rien dans le sujet ne dit laquelle de ces deux barres s'appelle « A » et laquelle « B ». C'est un défaut du sujet officiel, pas de la transcription : la question demande de « nommer les deux électrodes A et B » alors que sa propre figure ne donne pas la correspondance lettre → position.
         steps:
           - math: '\text{O}_2 + 4\,\text{H}^{+} + 4\,e^{-} \longrightarrow 2\,\text{H}_2\text{O}'
-            note: "Reduction du dioxygene a l'electrode de droite (celle ou O2 entre, Eau sort) : atomes puis charge."
+            note: "Réduction du dioxygène a l'électrode de droite (celle ou O2 entre, Eau sort) : atomes puis charge."
       - id: q4
         part: "2-4 — Le volume de méthanol consommé"
         stem: |-
@@ -660,13 +660,13 @@ entries:
           - math: 'Q = I\,\Delta t = 45\times10^{-3}\times5400 = 243\ \text{C}'
             note: "Charge debitee, Delta t converti en secondes (1h30 = 5400 s)."
           - math: 'n(e^-) = \frac{Q}{\mathcal{F}} = \frac{243}{96500} \approx 2{,}518\times10^{-3}\ \text{mol}'
-            note: "Conversion charge -> quantite d'electrons (chapitre 7)."
+            note: "Conversion charge -> quantité d'électrons (chapitre 7)."
           - math: 'n(\text{CH}_3\text{OH}) = \frac{n(e^-)}{6} \approx 4{,}197\times10^{-4}\ \text{mol}'
-            note: "Stoechiometrie de la demi-equation d'oxydation (question 2-1) : 6 electrons par methanol consomme."
+            note: "Stoechiometrie de la demi-equation d'oxydation (question 2-1) : 6 électrons par methanol consomme."
           - math: 'm = n\times M \approx 1{,}343\times10^{-2}\ \text{g}'
             note: "Masse de methanol consommee, M = 32 g/mol."
           - math: '\boxed{V = \frac{m}{\rho} \approx 1{,}72\times10^{-2}\ \text{cm}^3}'
-            note: "Volume via la masse volumique de l'enonce, rho = 0,78 g/cm3."
+            note: "Volume via la masse volumique de l'énoncé, rho = 0,78 g/cm3."
 
   # ── bk-2017-n-x1 — 2017 N, Exercice I (Partie I) : la pile aluminium-cuivre ──
   #
@@ -766,18 +766,18 @@ entries:
           Le piège nommé de cette question. Ne pas confondre l'exposant $2$ (celui de $\text{Al}^{3+}$) avec l'exposant $3$ (celui de $\text{Cu}^{2+}$) : ce sont les coefficients de l'équation telle qu'écrite dans l'énoncé, jamais interchangeables — inverser les deux donnerait une valeur fausse d'un facteur $(6{,}5\times10^{-1})^{-1}$.
         steps:
           - math: 'Q_{r,i} = \frac{[\text{Al}^{3+}]_i^2}{[\text{Cu}^{2+}]_i^3}'
-            note: "Solides Cu et Al exclus (chapitre 3) ; exposants = coefficients de l'equation telle qu'ecrite."
+            note: "Solides Cu et Al exclus (chapitre 3) ; exposants = coefficients de l'équation telle qu'ecrite."
           - math: 'Q_{r,i} = \frac{(6{,}5\times10^{-1})^2}{(6{,}5\times10^{-1})^3} = \frac{1}{6{,}5\times10^{-1}}'
-            note: "Les deux concentrations initiales valent 0,65 mol/L (donnees)."
+            note: "Les deux concentrations initiales valent 0,65 mol/L (données)."
           - math: '\boxed{Q_{r,i} \approx 1{,}538}'
-            note: "Application numerique."
+            note: "Application numérique."
       - id: q2
         stem: |-
           **(0,5 pt)** Préciser le sens d'évolution spontanée du système chimique lors du fonctionnement de la pile. Justifier.
         reasoning: |-
           Le chapitre 3 tranche par comparaison de $Q_{r,i}$ à $K$, sans qu'il soit besoin de mémoriser quelle électrode « est plus réactive » : $Q_{r,i} < K$ donne le sens direct, $Q_{r,i} > K$ le sens inverse. Ici $Q_{r,i} \approx 1{,}538$ (question 1) et $K = 10^{200}$ : $Q_{r,i}$ est plus petit que $K$ de $200$ ordres de grandeur — un écart écrasant, qui ne laisse aucune ambiguïté.
 
-          $$\boxed{Q_{r,i} \ll K \implies \text{le systeme evolue dans le sens direct (1)}}$$
+          $$\boxed{Q_{r,i} \ll K \implies \text{le système evolue dans le sens direct (1)}}$$
 
           Concrètement (chapitre 4) : les ions $\text{Cu}^{2+}$ sont réduits au voisinage de l'électrode de cuivre (qui devient la cathode, borne $+$), et l'aluminium métallique est oxydé (l'électrode d'aluminium devient l'anode, borne $-$) — c'est ce sens qui débite le courant observé à la fermeture du circuit.
 
@@ -811,13 +811,13 @@ entries:
           $$q = n(e^-)\times\mathcal{F}$$
         steps:
           - math: '\Delta n(\text{Cu}^{2+}) = (0{,}65-0{,}16)\times0{,}065 \approx 3{,}185\times10^{-2}\ \text{mol}'
-            note: "Quantite de Cu2+ consommee, V = 65 mL constant."
+            note: "Quantité de Cu2+ consommee, V = 65 mL constant."
           - math: 'n(e^-) = 2\times\Delta n(\text{Cu}^{2+}) \approx 6{,}37\times10^{-2}\ \text{mol}'
-            note: "Demi-equation de l'electrode de cuivre, Cu2+ + 2e- -> Cu : 2 electrons par ion, PAS le coefficient 3 de l'equation bilan globale."
+            note: "Demi-equation de l'électrode de cuivre, Cu2+ + 2e- -> Cu : 2 électrons par ion, PAS le coefficient 3 de l'équation bilan globale."
           - math: 'q = n(e^-)\times\mathcal{F} = 6{,}37\times10^{-2}\times9{,}65\times10^{4}'
-            note: "Constante de Faraday donnee dans l'enonce."
+            note: "Constante de Faraday donnée dans l'énoncé."
           - math: '\boxed{q \approx 6\,147\ \text{C}}'
-            note: "Quantite d'electricite debitee."
+            note: "Quantité d'electricite debitee."
 
   # ── bk-2011-r-x1b — 2011 R, Exercice de Chimie (Partie II) : la pile Nickel-Zinc ──
   # Sœur de bk-2011-r-x1 (content/pc/reactions-acido-basiques/bank.yaml,
@@ -924,9 +924,9 @@ entries:
           Concrètement (chapitre 4) : le zinc est oxydé (il devient l'anode, borne $-$) et les ions $\text{Ni}^{2+}$ sont réduits au voisinage de l'électrode de nickel (qui devient la cathode, borne $+$) — c'est ce sens qui débite le courant $I$ observé lors du fonctionnement de la pile, et c'est le point que la question 3 va exploiter.
         steps:
           - math: 'Q_{r,i} = \frac{[\text{Zn}^{2+}]_i}{[\text{Ni}^{2+}]_i}'
-            note: "Solides Zn et Ni exclus du quotient de reaction (especes dissoutes seulement)."
+            note: "Solides Zn et Ni exclus du quotient de réaction (espèces dissoutes seulement)."
           - math: 'Q_{r,i} = \frac{10^{-2}}{10^{-2}} = 1'
-            note: "Les deux concentrations initiales sont egales (donnees de l'enonce)."
+            note: "Les deux concentrations initiales sont egales (données de l'énoncé)."
           - math: '\boxed{Q_{r,i} = 1 \ll K = 10^{18} \implies \text{sens direct}}'
             note: "Le zinc s'oxyde (anode), Ni2+ se reduit (cathode)."
       - id: q2
@@ -962,14 +962,14 @@ entries:
           Le piège nommé de cette question, et c'est le plus dangereux du lot officiel : une réponse numérique juste peut cacher un raisonnement faux. Écrire « $\Delta t_{max}$ en fonction de $[\text{Zn}^{2+}]_i$ » sans jamais se demander laquelle des deux espèces est réellement consommée conduit ici au bon chiffre par coïncidence — mais ce n'est pas parce que le nombre tombe juste que la phrase qui l'accompagne (« $\text{Zn}^{2+}$ limite la pile ») devient vraie.
         steps:
           - math: 'n(\text{Ni}^{2+})_i = [\text{Ni}^{2+}]_i\,V'
-            note: "Ni2+ est l'espece CONSOMMEE (reduite a la cathode) : c'est elle qui limite, pas Zn2+ qui est produite."
+            note: "Ni2+ est l'espèce CONSOMMEE (reduite a la cathode) : c'est elle qui limite, pas Zn2+ qui est produite."
           - math: 'n(e^-) = 2\,n(\text{Ni}^{2+})_i = 2\,[\text{Ni}^{2+}]_i\,V'
-            note: "Demi-equation Ni2+ + 2e- -> Ni : deux electrons par ion Ni2+ consomme."
+            note: "Demi-equation Ni2+ + 2e- -> Ni : deux électrons par ion Ni2+ consomme."
           - math: 'Q_{max} = n(e^-)\,\mathcal{F} = I\,\Delta t_{max}'
-            note: "Meme relation charge-courant-duree que dans toute cette lecon (chapitre 7)."
+            note: "Même relation charge-courant-duree que dans toute cette leçon (chapitre 7)."
           - math: '\boxed{\Delta t_{max} = \frac{2\,\mathcal{F}\,[\text{Ni}^{2+}]_i\,V}{I}}'
-            note: "Expression physiquement correcte, sur l'espece reellement limitante."
+            note: "Expression physiquement correcte, sur l'espèce réellement limitante."
           - math: '\Delta t_{max} = \frac{2\times9{,}65\times10^4\times10^{-2}\times0{,}150}{0{,}1}'
-            note: "Application numerique, F=9,65e4 C/mol (unite completee, S3), V=150 mL=0,150 L."
+            note: "Application numérique, F=9,65e4 C/mol (unité completee, S3), V=150 mL=0,150 L."
           - math: '\boxed{\Delta t_{max} \approx 2\,895\ \text{s} \approx 48\ \text{min}}'
-            note: "Meme valeur numerique qu'avec [Zn2+]i imprime par l'enonce, car les deux concentrations initiales sont egales dans ce sujet (coincidence, pas une regle generale)."
+            note: "Même valeur numérique qu'avec [Zn2+]i imprime par l'énoncé, car les deux concentrations initiales sont egales dans ce sujet (coïncidence, pas une règle générale)."

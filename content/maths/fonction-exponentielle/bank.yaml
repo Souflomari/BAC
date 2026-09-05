@@ -1196,7 +1196,7 @@ entries:
       note: >-
         2020 session normale — examen national Sciences Expérimentales (SVT
         et Sciences Physiques, BIOF), Mathématiques (3 h, coef 7), code NS
-        22F, AlloSchool element/109797 (Problème, « Etude d'une fonction
+        22F, AlloSchool element/109797 (Problème, « Étude d'une fonction
         numérique », 7 points). Même sujet source que bk-2020-n-x1 de
         content/maths/suites-numeriques/bank.yaml, bk-2020-n-x2 de
         content/maths/nombres-complexes-1/bank.yaml et bk-2020-n-x3 de
@@ -1247,7 +1247,7 @@ entries:
           En $+\infty$ : $e^{x-2}\to+\infty$, donc $e^{x-2}-4\to+\infty$ aussi, et leur produit $e^{x-2}(e^{x-2}-4)\to+\infty$ (produit de deux facteurs qui explosent). Ici, pas besoin de factoriser pour lever une indétermination : $-x\to-\infty$ ET $-\dfrac12\,e^{x-2}(e^{x-2}-4)\to-\infty$ — les deux termes de $f$ partent déjà dans la même direction. Une somme de deux quantités qui tendent toutes deux vers $-\infty$ (plus une constante) tend vers $-\infty$, sans qu'il y ait à trancher un $+\infty-\infty$.
         steps:
           - math: '\lim_{x\to-\infty} e^{x-2} = 0 \quad (R4)'
-            note: "En moins l'infini, e puissance x moins 2 tend vers 0, meme limite que e puissance x (chapitre 5), appliquee a l'exposant x moins 2."
+            note: "En moins l'infini, e puissance x moins 2 tend vers 0, même limite que e puissance x (chapitre 5), appliquee a l'exposant x moins 2."
           - math: 'e^{x-2}\left(e^{x-2}-4\right) \xrightarrow[x\to-\infty]{} 0\times(-4) = 0'
             note: "Le produit tend vers 0 : un facteur qui s'efface multiplie par un facteur qui tend vers moins 4."
           - math: 'f(x) = -x+\tfrac52-\tfrac12\,e^{x-2}(e^{x-2}-4) \ \Rightarrow\ \lim_{x\to-\infty} f(x) = +\infty'
@@ -1255,7 +1255,7 @@ entries:
           - math: '\lim_{x\to+\infty} e^{x-2} = +\infty \ \Rightarrow\ \lim_{x\to+\infty} e^{x-2}\left(e^{x-2}-4\right) = +\infty'
             note: "En plus l'infini, e puissance x moins 2 tend vers plus l'infini ; le produit de deux facteurs qui explosent aussi."
           - math: '-x \to -\infty,\quad -\tfrac12\,e^{x-2}(e^{x-2}-4) \to -\infty \ \Rightarrow\ \lim_{x\to+\infty} f(x) = -\infty'
-            note: "Les deux morceaux de f partent deja vers moins l'infini : la somme suit, sans forme indeterminee a lever."
+            note: "Les deux morceaux de f partent déjà vers moins l'infini : la somme suit, sans forme indeterminee a lever."
       - id: q2a
         part: "Asymptote oblique et position relative"
         stem: |-
@@ -1268,11 +1268,11 @@ entries:
           En $-\infty$, $e^{x-2}\to0$ (chapitre 5), donc ce produit tend vers $-\frac12\times0\times(-4)=0$. L'écart s'annule à la limite : $(\Delta)$ est bien asymptote à $(C)$ au voisinage de $-\infty$.
         steps:
           - math: 'f(x) - \left(-x+\tfrac52\right) = -\tfrac12 e^{x-2}\left(e^{x-2}-4\right)'
-            note: "L'ecart entre f et la droite (Delta) se reduit au troisieme terme de f : les deux premiers coincident exactement avec (Delta)."
+            note: "L'écart entre f et la droite (Delta) se reduit au troisième terme de f : les deux premiers coïncident exactement avec (Delta)."
           - math: '\lim_{x\to-\infty} e^{x-2} = 0 \quad (R4)'
             note: "En moins l'infini, e puissance x moins 2 tend vers 0."
           - math: '\lim_{x\to-\infty}\left[-\tfrac12 e^{x-2}\left(e^{x-2}-4\right)\right] = -\tfrac12\times0\times(-4) = 0'
-            note: "L'ecart tend vers 0 : (Delta) est bien asymptote a (C) en moins l'infini."
+            note: "L'écart tend vers 0 : (Delta) est bien asymptote a (C) en moins l'infini."
       - id: q2b
         stem: |-
           **(0,75 pt)** Résoudre l'équation $e^{x-2} - 4 = 0$ puis montrer que la courbe $(C)$ est au dessus de $(\Delta)$ sur l'intervalle $]-\infty, 2 + \ln 4]$ et en dessous de $(\Delta)$ sur l'intervalle $[2 + \ln 4, +\infty[$
@@ -1284,15 +1284,15 @@ entries:
           $\exp$ étant strictement croissante (chapitre 2), $e^{x-2}<4 \iff x-2<\ln4 \iff x<2+\ln4$. Donc pour $x\le2+\ln4$ : $4-e^{x-2}\ge0$, l'écart est $\ge0$, $(C)$ est au-dessus de $(\Delta)$. Pour $x\ge2+\ln4$ : $4-e^{x-2}\le0$, l'écart est $\le0$, $(C)$ est en dessous de $(\Delta)$. Les deux courbes se touchent exactement en $x=2+\ln4$.
         steps:
           - math: 'e^{x-2}=4 \iff x-2=\ln4 \iff x=2+\ln4 \quad (R7)'
-            note: "Injectivite de exp (chapitre 8) : on passe au logarithme des deux cotes de l'equation."
+            note: "Injectivite de exp (chapitre 8) : on passe au logarithme des deux cotes de l'équation."
           - math: 'f(x)-\left(-x+\tfrac52\right) = -\tfrac12 e^{x-2}\left(e^{x-2}-4\right), \qquad e^{x-2}>0 \quad (R1)'
-            note: "Le facteur e puissance x moins 2 est toujours strictement positif : il ne change jamais le signe de l'ecart."
+            note: "Le facteur e puissance x moins 2 est toujours strictement positif : il ne change jamais le signe de l'écart."
           - math: 'f(x)-\left(-x+\tfrac52\right) \text{ a le signe de } \left(4-e^{x-2}\right)'
             note: "On isole le seul facteur qui varie en signe."
           - math: 'x\le2+\ln4 \iff e^{x-2}\le4 \ \Rightarrow\ f(x)-\left(-x+\tfrac52\right)\ge0'
-            note: "Sur cette moitie, la courbe est au-dessus de la droite (Delta)."
+            note: "Sur cette moitié, la courbe est au-dessus de la droite (Delta)."
           - math: 'x\ge2+\ln4 \iff e^{x-2}\ge4 \ \Rightarrow\ f(x)-\left(-x+\tfrac52\right)\le0'
-            note: "Sur l'autre moitie, la courbe passe en dessous de (Delta)."
+            note: "Sur l'autre moitié, la courbe passe en dessous de (Delta)."
       - id: q3
         stem: |-
           **(0,5 pt)** Montrer que $\displaystyle\lim_{x \to +\infty} \dfrac{f(x)}{x} = -\infty$ puis interpréter géométriquement le résultat
@@ -1314,13 +1314,13 @@ entries:
           - math: '\dfrac{f(x)}{x} = -1+\dfrac{5}{2x} - \dfrac{1}{2x}e^{x-2}\left(e^{x-2}-4\right) \quad (x\neq0)'
             note: "On divise f(x) par x, terme a terme."
           - math: 'e^{x-2}\ge8 \ \Rightarrow\ e^{x-2}-4\ge\tfrac12e^{x-2} \ \Rightarrow\ e^{x-2}\left(e^{x-2}-4\right)\ge\tfrac12e^{2x-4}'
-            note: "Pour x assez grand, on minore le produit par la moitie du carre du terme exponentiel."
+            note: "Pour x assez grand, on minore le produit par la moitié du carré du terme exponentiel."
           - math: '\dfrac{e^{2x-4}}{x} = 2\times\dfrac{e^{X}}{X}\times\dfrac{X}{X+4} \xrightarrow[X=2x-4\to+\infty]{} +\infty \quad (R4)'
             note: "Changement de variable X egal 2x moins 4 : on retrouve directement la croissance comparee du chapitre 5."
           - math: '\dfrac{e^{x-2}(e^{x-2}-4)}{x} \ge \dfrac12\dfrac{e^{2x-4}}{x} \ \Rightarrow\ \dfrac{e^{x-2}(e^{x-2}-4)}{x} \to +\infty'
-            note: "Minoree par une quantite qui explose : forcee de suivre."
+            note: "Minoree par une quantité qui explose : forcee de suivre."
           - math: '\dfrac{f(x)}{x} \to -1+0-\tfrac12\times(+\infty) = -\infty'
-            note: "Les deux premiers termes restent finis ou s'effacent ; le troisieme explose avec un signe moins devant."
+            note: "Les deux premiers termes restent finis ou s'effacent ; le troisième explose avec un signe moins devant."
           - math: '(C) \text{ admet une branche parabolique de direction } (Oy) \text{ au voisinage de } +\infty'
             note: "f(x)/x tend vers l'infini : branche parabolique de direction l'axe (Oy)."
       - id: q4a
@@ -1339,13 +1339,13 @@ entries:
           $$f'(x) = -\left(e^{x-2}-1\right)^2$$
         steps:
           - math: 'u = e^{x-2}, \qquad f(x) = -x + \tfrac52 - \tfrac12u^2 + 2u \quad (\text{substitution})'
-            note: "On pose u egal e puissance x moins 2 : f se reecrit comme un polynome du second degre en u."
-          - math: 'f''(x) = -1 + 2u - u^2 \quad (\text{derivation terme a terme, u est sa propre derivee, R3})'
-            note: "On derive terme a terme ; u etant sa propre derivee (chapitre 4), le facteur u apparait directement."
+            note: "On pose u egal e puissance x moins 2 : f se reecrit comme un polynôme du second degré en u."
+          - math: 'f''(x) = -1 + 2u - u^2 \quad (\text{derivation terme a terme, u est sa propre dérivée, R3})'
+            note: "On derive terme a terme ; u étant sa propre dérivée (chapitre 4), le facteur u apparaît directement."
           - math: 'f''(x) = -\left(u^2 - 2u + 1\right) = -(u-1)^2'
-            note: "On reconnait le carre parfait u au carre moins 2u plus 1."
+            note: "On reconnait le carré parfait u au carré moins 2u plus 1."
           - math: 'f''(x) = -\left(e^{x-2}-1\right)^2 \quad (\text{retour a } u = e^{x-2})'
-            note: "On revient a la variable x en remplacant u par e puissance x moins 2 : c'est la formule demandee."
+            note: "On revient a la variable x en remplaçant u par e puissance x moins 2 : c'est la formule demandee."
       - id: q4b
         stem: |-
           **(0,25 pt)** Dresser le tableau de variations de la fonction $f$
@@ -1355,11 +1355,11 @@ entries:
           On complète avec les limites de la question 1 et la valeur remarquable en $x=2$ : $f(2) = -2+\frac52-\frac12\times1\times(1-4) = \frac12+\frac32 = 2$.
         steps:
           - math: 'f''(x) = -\left(e^{x-2}-1\right)^2 \le 0,\ \text{nul seulement en } x=2 \quad (R1)'
-            note: "f prime est l'oppose d'un carre : toujours negative ou nulle, nulle seulement en un point isole."
+            note: "f prime est l'oppose d'un carré : toujours négative ou nulle, nulle seulement en un point isole."
           - math: 'f(2) = -2+\tfrac52-\tfrac12\times1\times(1-4) = 2'
             note: "Valeur remarquable au point ou f prime s'annule."
           - math: '\lim_{x\to-\infty}f(x)=+\infty,\quad \lim_{x\to+\infty}f(x)=-\infty \quad (\text{question 1})'
-            note: "On complete avec les limites deja etablies : f decroit de plus l'infini a moins l'infini, en passant par le point (2, 2)."
+            note: "On complete avec les limites déjà etablies : f décroît de plus l'infini a moins l'infini, en passant par le point (2, 2)."
       - id: q5
         part: "Concavité et point d'inflexion"
         stem: |-
@@ -1378,15 +1378,15 @@ entries:
           Reste à vérifier que le point correspondant est bien $A(2,2)$ : on a déjà calculé $f(2)=2$ (question 4-b). Donc le point d'inflexion est $I(2,f(2))=A(2,2)$.
         steps:
           - math: 'v(x) = e^{x-2}-1, \quad v''(x) = e^{x-2}'
-            note: "v est la parenthese au carre dans f prime ; sa derivee est e puissance x moins 2 (chapitre 4)."
+            note: "v est la parenthèse au carré dans f prime ; sa dérivée est e puissance x moins 2 (chapitre 4)."
           - math: 'f^{(2)}(x) = -2\,v(x)\,v''(x) = -2\left(e^{x-2}-1\right)e^{x-2} = -2e^{x-2}\left(e^{x-2}-1\right)'
-            note: "Derivee de moins v au carre : moins 2 fois v fois v prime."
+            note: "Dérivée de moins v au carré : moins 2 fois v fois v prime."
           - math: 'e^{x-2}>0 \ \Rightarrow\ \text{signe de } f^{(2)}(x) = \text{signe de } \left(1-e^{x-2}\right)'
             note: "Le facteur e puissance x moins 2 est toujours positif : il ne compte pas dans le signe."
           - math: 'e^{x-2}<1 \iff x<2 \ \Rightarrow\ f^{(2)}>0 \text{ sur } \,]-\infty,2[\, ;\quad f^{(2)}<0 \text{ sur } \,]2,+\infty[\, ;\quad f^{(2)}(2)=0'
-            note: "f seconde change de signe exactement en x egal 2 : convexe avant, concave apres."
+            note: "f seconde change de signe exactement en x egal 2 : convexe avant, concave après."
           - math: 'f(2)=2 \quad (\text{question 4-b}) \ \Rightarrow\ I(2,f(2)) = A(2,2) \text{ est un point d''inflexion de } (C)'
-            note: "f(2) vaut 2 (deja etabli) : le point ou f seconde change de signe est bien A(2,2)."
+            note: "f(2) vaut 2 (déjà établi) : le point ou f seconde change de signe est bien A(2,2)."
       - id: q6
         part: "Existence et encadrement de la solution"
         stem: |-
@@ -1400,14 +1400,14 @@ entries:
 
           $f(2+\ln3)>0>f(2+\ln4)$, et $f$ est strictement décroissante entre ces deux points : par le même corollaire du théorème des valeurs intermédiaires, il existe un unique $\alpha \in\,]2+\ln3,\,2+\ln4[$ tel que $f(\alpha)=0$ — et c'est nécessairement le même $\alpha$ que celui trouvé sur $\mathbb{R}$ tout entier, puisque la solution y est unique.
         steps:
-          - math: 'f \text{ continue et strictement decroissante sur } \mathbb{R},\ \text{de } +\infty \text{ a } -\infty \ \Rightarrow\ \exists!\,\alpha\in\mathbb{R},\ f(\alpha)=0'
-            note: "f est continue, strictement decroissante, et parcourt tout R : l'equation f(x)=0 a une unique solution sur R (corollaire du theoreme des valeurs intermediaires)."
+          - math: 'f \text{ continue et strictement décroissante sur } \mathbb{R},\ \text{de } +\infty \text{ a } -\infty \ \Rightarrow\ \exists!\,\alpha\in\mathbb{R},\ f(\alpha)=0'
+            note: "f est continue, strictement décroissante, et parcourt tout R : l'équation f(x)=0 a une unique solution sur R (corollaire du théorème des valeurs intermediaires)."
           - math: 'f(2+\ln3) = -(2+\ln3)+\tfrac52-\tfrac12\times3\times(-1) = 2-\ln3 > 0 \quad (\ln3\approx1{,}1)'
-            note: "On evalue f en 2 plus ln3, avec e puissance x moins 2 egal 3 : le resultat est positif."
+            note: "On evalue f en 2 plus ln3, avec e puissance x moins 2 egal 3 : le résultat est positif."
           - math: 'f(2+\ln4) = -(2+\ln4)+\tfrac52-\tfrac12\times4\times0 = \tfrac12-\ln4 < 0 \quad (\ln4\approx1{,}4)'
-            note: "On evalue f en 2 plus ln4, ou le second terme s'annule entierement : le resultat est negatif."
+            note: "On evalue f en 2 plus ln4, ou le second terme s'annule entièrement : le résultat est négatif."
           - math: 'f(2+\ln3)>0>f(2+\ln4) \ \Rightarrow\ \exists!\,\alpha\in\,]2+\ln3,\,2+\ln4[,\ f(\alpha)=0'
-            note: "Changement de signe entre les deux bornes, sur un intervalle ou f est continue et strictement decroissante : existence et unicite de alpha."
+            note: "Changement de signe entre les deux bornes, sur un intervalle ou f est continue et strictement décroissante : existence et unicite de alpha."
       - id: q7
         part: "Construction de la courbe"
         stem: |-
@@ -1454,11 +1454,11 @@ entries:
           $$\left(f^{-1}\right)'(2-\ln3) = \frac{1}{f'(2+\ln3)} = \frac{1}{-4} = -\frac14$$
         steps:
           - math: 'f^{-1}(2-\ln3) = 2+\ln3 \quad (\text{question 6})'
-            note: "La remarque de l'enonce reprend directement le resultat de la question 6, lu a l'envers."
+            note: "La remarque de l'énoncé reprend directement le résultat de la question 6, lu a l'envers."
           - math: 'e^{(2+\ln3)-2} = e^{\ln3} = 3 \ \Rightarrow\ f''(2+\ln3) = -(3-1)^2 = -4'
             note: "On evalue f prime en 2 plus ln3, avec e puissance x moins 2 egal 3 a ce point."
           - math: '\left(f^{-1}\right)''(2-\ln3) = \dfrac{1}{f''(2+\ln3)} = \dfrac{1}{-4} = -\dfrac14'
-            note: "Derivee de la reciproque : 1 sur f prime evaluee au point correspondant."
+            note: "Dérivée de la réciproque : 1 sur f prime evaluee au point correspondant."
 
   # ── bk-2025-n-x1 — 2025 N (SM), Exercice 1 : fonction exponentielle
   # symétrique, primitive en arctan, suite point fixe et sommes de Riemann ──
@@ -1532,11 +1532,11 @@ entries:
           Donc $(\forall x\in\mathbb{R})\ ; f(1-x)=f(x)$. C'est cette symétrie qui porte toute la suite du problème : la partie I-4 et la partie III-1b s'y adossent directement.
         steps:
           - math: 'f(1-x) = \dfrac{e^{1-x}}{e^{2-2x}+e} = \dfrac{e^{-x}}{e^{1-2x}+1}'
-            note: "On divise numerateur et denominateur par e."
+            note: "On divise numérateur et dénominateur par e."
           - math: 'f(1-x) = \dfrac{e^{-x}\cdot e^{2x}}{\left(e^{1-2x}+1\right)e^{2x}} = \dfrac{e^{x}}{e+e^{2x}}'
-            note: "On multiplie numerateur et denominateur par e puissance 2x, un facteur strictement positif."
+            note: "On multiplie numérateur et dénominateur par e puissance 2x, un facteur strictement positif."
           - math: 'f(1-x) = \dfrac{e^{x}}{e^{2x}+e} = f(x)'
-            note: "C'est exactement la definition de f(x)."
+            note: "C'est exactement la définition de f(x)."
       - id: qI-1b
         stem: |-
           **(0,25 pt)** Interpréter graphiquement le résultat obtenu.
@@ -1559,11 +1559,11 @@ entries:
           (le changement de nom $u=1-x$ ne fait que suivre où va la limite déjà calculée). Les deux limites valent $0$.
         steps:
           - math: '\lim_{x\to-\infty} e^{x} = 0,\quad \lim_{x\to-\infty} e^{2x} = 0 \ \Rightarrow\ \lim_{x\to-\infty} f(x) = \dfrac{0}{e} = 0'
-            note: "e puissance x et e puissance 2x tendent tous deux vers 0 en moins l'infini (chapitre 2) : le denominateur tend vers e, non nul."
+            note: "e puissance x et e puissance 2x tendent tous deux vers 0 en moins l'infini (chapitre 2) : le dénominateur tend vers e, non nul."
           - math: 'x\to+\infty \ \Rightarrow\ 1-x\to-\infty,\quad f(x)=f(1-x) \quad (\text{I-1a})'
-            note: "On reutilise la symetrie plutot que refaire le calcul : quand x tend vers plus l'infini, 1-x tend vers moins l'infini."
+            note: "On reutilise la symétrie plutôt que refaire le calcul : quand x tend vers plus l'infini, 1-x tend vers moins l'infini."
           - math: '\lim_{x\to+\infty} f(x) = \lim_{u\to-\infty} f(u) = 0'
-            note: "Meme limite que celle deja calculee en moins l'infini."
+            note: "Même limite que celle déjà calculée en moins l'infini."
       - id: qI-1d
         stem: |-
           **(0,5 pt)** Interpréter graphiquement les deux résultats obtenus.
@@ -1589,11 +1589,11 @@ entries:
           — exactement la forme brute obtenue au départ. Les deux expressions coïncident.
         steps:
           - math: 'f^{\prime}(x) = \dfrac{e^{x}(e^{2x}+e) - e^{x}\cdot 2e^{2x}}{(e^{2x}+e)^{2}} = \dfrac{e^{x}(e-e^{2x})}{(e^{2x}+e)^{2}}'
-            note: "Regle du quotient, applicable partout car le denominateur ne s'annule jamais."
+            note: "Règle du quotient, applicable partout car le dénominateur ne s'annule jamais."
           - math: 'e^{2x-1} = \dfrac{e^{2x}}{e} \ \Rightarrow\ \dfrac{1-e^{2x-1}}{1+e^{2x-1}} = \dfrac{e-e^{2x}}{e+e^{2x}}'
             note: "On multiplie haut et bas par e pour faire disparaitre la fraction interne."
           - math: 'f(x)\,\dfrac{1-e^{2x-1}}{1+e^{2x-1}} = \dfrac{e^{x}}{e^{2x}+e}\times\dfrac{e-e^{2x}}{e+e^{2x}} = \dfrac{e^{x}(e-e^{2x})}{(e^{2x}+e)^{2}} = f^{\prime}(x)'
-            note: "Les deux expressions coincident : c'est bien la meme derivee."
+            note: "Les deux expressions coïncident : c'est bien la même dérivée."
       - id: qI-2b
         stem: |-
           **(1 pt)** Donner les variations de $f$ puis en déduire que :
@@ -1610,16 +1610,16 @@ entries:
 
           $$(\forall x\in\mathbb{R})\ ;\quad 0<f(x)<\dfrac12$$
         steps:
-          - math: 'f(x) = \dfrac{e^{x}}{e^{2x}+e} > 0 \quad (\text{quotient de deux quantites strictement positives})'
-            note: "f est toujours strictement positive : numerateur et denominateur le sont tous les deux."
+          - math: 'f(x) = \dfrac{e^{x}}{e^{2x}+e} > 0 \quad (\text{quotient de deux quantités strictement positives})'
+            note: "f est toujours strictement positive : numérateur et dénominateur le sont tous les deux."
           - math: 'e^{2x-1}<1 \iff x<\dfrac12 \quad (\exp \text{ strictement croissante})'
             note: "Le facteur 1 moins e puissance (2x-1) change de signe exactement en x = un demi."
-          - math: 'f \text{ croissante sur } \left]-\infty,\tfrac12\right],\ \text{decroissante sur } \left[\tfrac12,+\infty\right[ \ \Rightarrow\ \max_{\mathbb{R}} f = f\left(\tfrac12\right)'
+          - math: 'f \text{ croissante sur } \left]-\infty,\tfrac12\right],\ \text{décroissante sur } \left[\tfrac12,+\infty\right[ \ \Rightarrow\ \max_{\mathbb{R}} f = f\left(\tfrac12\right)'
             note: "Tableau de variations : maximum global atteint en x = un demi."
           - math: 'f\left(\dfrac12\right) = \dfrac{e^{1/2}}{e+e} = \dfrac{\sqrt e}{2e} = \dfrac{1}{2\sqrt e} \approx 0{,}3033'
             note: "On evalue f en un demi et on simplifie racine de e sur e en 1 sur racine de e."
           - math: '\dfrac{1}{2\sqrt e} < \dfrac12 \ \Rightarrow\ (\forall x\in\mathbb{R})\ ;\ 0<f(x)<\dfrac12'
-            note: "Le maximum global est deja strictement inferieur a un demi : f ne l'atteint jamais."
+            note: "Le maximum global est déjà strictement inférieur a un demi : f ne l'atteint jamais."
       - id: qI-3
         part: "Partie I, 3 — Tracé de la courbe"
         stem: |-
@@ -1658,7 +1658,7 @@ entries:
           - math: '\int_{1/2}^{1} f(x)\,dx = \int_0^{1/2} f(1-t)\,dt'
             note: "L'inversion des bornes (de 1/2 a 0 puis de 0 a 1/2) compense le signe moins du dx."
           - math: 'f(1-t)=f(t) \quad (\text{I-1a}) \ \Rightarrow\ \int_{1/2}^{1} f(x)\,dx = \int_0^{1/2} f(t)\,dt = \int_0^{1/2} f(x)\,dx'
-            note: "La symetrie de la question I-1a transforme f(1-t) en f(t) : les deux integrales coincident."
+            note: "La symétrie de la question I-1a transforme f(1-t) en f(t) : les deux intégrales coïncident."
       - id: qI-4b
         stem: |-
           **(0,25 pt)** En déduire que $\displaystyle\int_0^{1} f(x)\,dx = 2\int_0^{\frac{1}{2}} f(x)\,dx$
@@ -1673,10 +1673,10 @@ entries:
         steps:
           - math: '\int_0^1 f(x)\,dx = \int_0^{1/2} f(x)\,dx + \int_{1/2}^1 f(x)\,dx \quad (\text{relation de Chasles})'
             note: "On decoupe [0,1] en deux morceaux adjacents."
-          - math: '\int_{1/2}^1 f(x)\,dx = \int_0^{1/2} f(x)\,dx \quad (\text{question precedente})'
-            note: "Les deux morceaux valent la meme chose."
+          - math: '\int_{1/2}^1 f(x)\,dx = \int_0^{1/2} f(x)\,dx \quad (\text{question précédente})'
+            note: "Les deux morceaux valent la même chose."
           - math: '\int_0^1 f(x)\,dx = 2\int_0^{1/2} f(x)\,dx'
-            note: "On additionne deux quantites egales : c'est le double de l'une d'elles."
+            note: "On additionne deux quantités egales : c'est le double de l'une d'elles."
       - id: qI-5a
         part: "Partie I, 5 — Changement de variable et primitive en arctan"
         stem: |-
@@ -1695,7 +1695,7 @@ entries:
           $$\int_0^{1/2} f(x)\,dx = \int_1^{\sqrt e} \dfrac{dt}{t^2+e}$$
         steps:
           - math: 't=e^{x} \ \Rightarrow\ dt=e^{x}\,dx=t\,dx \ \Rightarrow\ dx=\dfrac{dt}{t}'
-            note: "Derivee de e puissance x : dt egale t fois dx."
+            note: "Dérivée de e puissance x : dt egale t fois dx."
           - math: 'x=0\to t=1,\qquad x=\tfrac12\to t=\sqrt e'
             note: "On transforme les deux bornes avec t = e puissance x."
           - math: 'f(x) = \dfrac{e^{x}}{e^{2x}+e} = \dfrac{t}{t^{2}+e} \ \Rightarrow\ f(x)\,dx = \dfrac{t}{t^{2}+e}\times\dfrac{dt}{t} = \dfrac{dt}{t^{2}+e}'
@@ -1734,16 +1734,16 @@ entries:
 
           $$\int_0^{1/2} f(x)\,dx = \dfrac{1}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac\pi4\right)$$
         steps:
-          - math: '\left(\arctan x\right)^{\prime} = \dfrac{1}{1+x^{2}} \qquad (\text{fait de reference, meme que bk-2024-r-x2})'
-            note: "Primitive de reference du programme SM, reutilisee ici sans redemonstration."
+          - math: '\left(\arctan x\right)^{\prime} = \dfrac{1}{1+x^{2}} \qquad (\text{fait de référence, même que bk-2024-r-x2})'
+            note: "Primitive de référence du programme SM, reutilisee ici sans redemonstration."
           - math: '\dfrac{d}{dt}\left[\dfrac1{\sqrt e}\arctan\left(\dfrac{t}{\sqrt e}\right)\right] = \dfrac{1}{t^{2}+e}'
-            note: "Generalisation par changement d'echelle : on verifie la derivee directement (regle de la fonction composee)."
+            note: "Generalisation par changement d'échelle : on vérifie la dérivée directement (règle de la fonction composee)."
           - math: '\int_1^{\sqrt e}\dfrac{dt}{t^{2}+e} = \dfrac{1}{\sqrt e}\left[\arctan\left(\dfrac{t}{\sqrt e}\right)\right]_1^{\sqrt e} = \dfrac{1}{\sqrt e}\left(\dfrac{\pi}{4}-\arctan\left(\dfrac{1}{\sqrt e}\right)\right)'
             note: "On evalue la primitive entre 1 et racine de e, avec arctan(1) = pi/4."
           - math: '\arctan\left(\dfrac1u\right) = \dfrac{\pi}{2}-\arctan(u) \quad (u>0) \ \Rightarrow\ \arctan\left(\dfrac{1}{\sqrt e}\right) = \dfrac{\pi}{2}-\arctan(\sqrt e)'
-            note: "Identite de complementarite de arctan, appliquee avec u = racine de e."
+            note: "Identité de complementarite de arctan, appliquee avec u = racine de e."
           - math: '\int_1^{\sqrt e}\dfrac{dt}{t^{2}+e} = \dfrac{1}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac{\pi}{4}\right) \ \Rightarrow\ \int_0^{1/2} f(x)\,dx = \dfrac{1}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac{\pi}{4}\right)'
-            note: "On reporte l'identite de complementarite, puis on relie a I-5a."
+            note: "On reporte l'identité de complementarite, puis on relie a I-5a."
       - id: qI-5c
         stem: |-
           **(0,25 pt)** En déduire l'aire, en $cm^2$, du domaine plan délimité par $(\Gamma)$, les droites d'équations respectives : $x = 0$, $x = 1$ et $y = 0$
@@ -1758,10 +1758,10 @@ entries:
         steps:
           - math: 'f>0 \text{ sur } \mathbb{R} \ \Rightarrow\ \text{Aire (u.a.)} = \int_0^1 f(x)\,dx = 2\int_0^{1/2} f(x)\,dx = \dfrac{2}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac{\pi}{4}\right)'
             note: "f reste au-dessus de l'axe des abscisses : pas de valeur absolue. On reutilise I-4b puis I-5b."
-          - math: '1\,\text{u.a.} = \|\vec i\|\times\|\vec j\| = 1\,cm\times2\,cm = 2\,\text{cm}^{2} \quad (\text{repere orthogonal, pas orthonorme})'
-            note: "Le repere est orthogonal non norme : l'unite d'aire vaut 2 centimetres carres, pas 1."
+          - math: '1\,\text{u.a.} = \|\vec i\|\times\|\vec j\| = 1\,cm\times2\,cm = 2\,\text{cm}^{2} \quad (\text{repère orthogonal, pas orthonormé})'
+            note: "Le repère est orthogonal non norme : l'unité d'aire vaut 2 centimetres carrés, pas 1."
           - math: '\text{Aire} = \dfrac{4}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac{\pi}{4}\right)\ \text{cm}^{2} \approx 0{,}583\ \text{cm}^{2}'
-            note: "On multiplie par 2 pour convertir en centimetres carres."
+            note: "On multiplie par 2 pour convertir en centimetres carrés."
       - id: qII-1
         part: "Partie II, 1 — Une inégalité sur la dérivée"
         stem: |-
@@ -1782,7 +1782,7 @@ entries:
           - math: 'u = e^{2x-1} > 0 \quad (\forall x\in\mathbb{R})'
             note: "u est toujours strictement positif : exponentielle."
           - math: '1-u < 1+u \quad (\text{car } u>0) \ \Rightarrow\ \dfrac{1-u}{1+u} < 1'
-            note: "On compare 1-u a 1+u : la difference est 2u, positive."
+            note: "On compare 1-u a 1+u : la différence est 2u, positive."
           - math: '-(1+u) < 1-u \quad (\text{car } -1<1) \ \Rightarrow\ -1 < \dfrac{1-u}{1+u}'
             note: "L'autre sens de l'encadrement, toujours vrai."
           - math: '\left|\dfrac{1-u}{1+u}\right|\le1 \ \Rightarrow\ |f^{\prime}(x)| = f(x)\left|\dfrac{1-u}{1+u}\right| \le f(x)'
@@ -1799,9 +1799,9 @@ entries:
           $$(\forall x\in\left[0,\tfrac12\right])\ ;\quad 0\le f'(x)<\dfrac12$$
         steps:
           - math: 'f \text{ croissante sur } \left]-\infty,\tfrac12\right] \quad (\text{I-2b}) \ \Rightarrow\ (\forall x\in\left[0,\tfrac12\right])\ ;\ f^{\prime}(x)\ge0'
-            note: "Une fonction croissante a une derivee positive ou nulle."
+            note: "Une fonction croissante a une dérivée positive ou nulle."
           - math: '|f^{\prime}(x)|\le f(x)<\dfrac12 \quad (\text{II-1 et I-2b})'
-            note: "On combine la majoration de la question precedente avec l'encadrement de f."
+            note: "On combine la majoration de la question précédente avec l'encadrement de f."
           - math: 'f^{\prime}(x)\ge0 \ \Rightarrow\ f^{\prime}(x) = |f^{\prime}(x)| < \dfrac12'
             note: "Comme f prime est positive ici, sa valeur absolue ne change rien : on obtient la majoration stricte."
       - id: qII-2b
@@ -1819,9 +1819,9 @@ entries:
           - math: 'g(x) = f(x)-x \ \Rightarrow\ g^{\prime}(x) = f^{\prime}(x)-1'
             note: "g est la somme de f et de moins x, toutes deux derivables sur R."
           - math: 'f^{\prime}(x) \le |f^{\prime}(x)| \le f(x) < \dfrac12 \quad (\forall x\in\mathbb{R})'
-            note: "Meme majoration que la question precedente, mais valable ici sur R tout entier."
-          - math: 'g^{\prime}(x) = f^{\prime}(x)-1 < \dfrac12-1 = -\dfrac12 < 0 \ \Rightarrow\ g \text{ strictement decroissante sur } \mathbb{R}'
-            note: "g prime est strictement negative partout : g decroit strictement sur R tout entier."
+            note: "Même majoration que la question précédente, mais valable ici sur R tout entier."
+          - math: 'g^{\prime}(x) = f^{\prime}(x)-1 < \dfrac12-1 = -\dfrac12 < 0 \ \Rightarrow\ g \text{ strictement décroissante sur } \mathbb{R}'
+            note: "g prime est strictement négative partout : g décroît strictement sur R tout entier."
       - id: qII-2c
         stem: |-
           **(0,5 pt)** En déduire qu'il existe un unique réel $\alpha \in\, \left]0\,;\dfrac{1}{2}\right[$ tel que : $f(\alpha) = \alpha$
@@ -1835,12 +1835,12 @@ entries:
           $g(0)>0>g\left(\frac12\right)$, $g$ continue et strictement décroissante entre les deux : il existe un unique $\alpha\in\left]0,\frac12\right[$ tel que $g(\alpha)=0$, c'est-à-dire $f(\alpha)=\alpha$.
         steps:
           - math: 'f(\alpha)=\alpha \iff g(\alpha)=0'
-            note: "Chercher un point fixe de f revient a chercher un zero de g."
+            note: "Chercher un point fixe de f revient a chercher un zéro de g."
           - math: 'g(0) = f(0) = \dfrac{1}{1+e} \approx 0{,}27 > 0'
             note: "On evalue g en 0 : f(0) moins 0, soit f(0) directement."
           - math: 'g\left(\dfrac12\right) = f\left(\dfrac12\right)-\dfrac12 = \dfrac{1}{2\sqrt e}-\dfrac12 \approx -0{,}20 < 0'
-            note: "On evalue g en un demi, avec le maximum de f deja calcule en I-2b."
-          - math: 'g(0)>0>g\left(\dfrac12\right),\ g \text{ continue et strictement decroissante} \ \Rightarrow\ \exists!\,\alpha\in\left]0,\tfrac12\right[,\ f(\alpha)=\alpha'
+            note: "On evalue g en un demi, avec le maximum de f déjà calcule en I-2b."
+          - math: 'g(0)>0>g\left(\dfrac12\right),\ g \text{ continue et strictement décroissante} \ \Rightarrow\ \exists!\,\alpha\in\left]0,\tfrac12\right[,\ f(\alpha)=\alpha'
             note: "Changement de signe sur un intervalle ou g est continue et strictement monotone : existence et unicite."
       - id: qII-3a
         part: "Partie II, 3 — La suite (u_n) : encadrement, contraction, convergence"
@@ -1855,12 +1855,12 @@ entries:
 
           La propriété se transmet à tous les rangs : $(\forall n\in\mathbb{N})\ ; 0<u_n<\frac12$.
         steps:
-          - math: 'u_0 \in\, \left]0,\tfrac12\right[ \quad (\text{hypothese initiale})'
-            note: "Rang 0 : c'est la definition de la suite donnee dans l'enonce."
+          - math: 'u_0 \in\, \left]0,\tfrac12\right[ \quad (\text{hypothèse initiale})'
+            note: "Rang 0 : c'est la définition de la suite donnée dans l'énoncé."
           - math: 'u_{n+1} = f(u_n),\qquad 0<f(x)<\dfrac12 \quad (\forall x\in\mathbb{R},\ \text{I-2b})'
-            note: "Le resultat de I-2b vaut pour tout reel x, sans condition sur x : il s'applique donc a u_n quel qu'il soit."
+            note: "Le résultat de I-2b vaut pour tout réel x, sans condition sur x : il s'applique donc a u_n quel qu'il soit."
           - math: '\Rightarrow\ 0 < u_{n+1} < \dfrac12 \ \Rightarrow\ (\forall n\in\mathbb{N})\ ;\ 0<u_n<\dfrac12'
-            note: "La propriete se transmet a tous les rangs par recurrence."
+            note: "La propriété se transmet a tous les rangs par recurrence."
       - id: qII-3b
         stem: |-
           **(0,5 pt)** Montrer que : $(\forall n \in \mathbb{N})\ ;\quad |u_{n+1} - \alpha| \le \dfrac{1}{2}|u_n - \alpha|$
@@ -1876,11 +1876,11 @@ entries:
           - math: 'u_n,\alpha \in\, \left]0,\tfrac12\right[ \ \Rightarrow\ [u_n,\alpha] \subset \left[0,\tfrac12\right] \quad (\text{ou } [\alpha,u_n])'
             note: "Les deux points vivent dans [0, un demi] : tout le segment entre eux aussi."
           - math: '|f^{\prime}| < \dfrac12 \text{ sur } \left[0,\tfrac12\right] \quad (\text{II-2a})'
-            note: "Majoration de la derivee sur l'intervalle qui contient u_n et alpha."
-          - math: '|f(u_n)-f(\alpha)| \le \dfrac12|u_n-\alpha| \quad (\text{inegalite des accroissements finis})'
-            note: "Corollaire du theoreme des accroissements finis (TAF) : la derivee majoree par un demi majore l'ecart des images."
+            note: "Majoration de la dérivée sur l'intervalle qui contient u_n et alpha."
+          - math: '|f(u_n)-f(\alpha)| \le \dfrac12|u_n-\alpha| \quad (\text{inégalité des accroissements finis})'
+            note: "Corollaire du théorème des accroissements finis (TAF) : la dérivée majoree par un demi majore l'écart des images."
           - math: 'f(u_n)=u_{n+1},\ f(\alpha)=\alpha \ \Rightarrow\ |u_{n+1}-\alpha| \le \dfrac12|u_n-\alpha|'
-            note: "u_{n+1} est f(u_n) par definition, et f(alpha) vaut alpha (II-2c)."
+            note: "u_{n+1} est f(u_n) par définition, et f(alpha) vaut alpha (II-2c)."
       - id: qII-3c
         stem: |-
           **(0,5 pt)** Montrer par récurrence que : $(\forall n \in \mathbb{N})\ ;\quad |u_n - \alpha| \le \left(\dfrac{1}{2}\right)^{n+1}$
@@ -1896,21 +1896,21 @@ entries:
           *(Remarque : contrairement à d'autres sujets qui portent un facteur $|u_0-\alpha|$ dans cette majoration, celui-ci n'apparaît pas ici — c'est licite précisément parce que $u_0$ et $\alpha$ vivent tous deux dans $\left]0,\frac12\right[$, ce qui fournit déjà $|u_0-\alpha|<\frac12$ au rang 0.)*
         steps:
           - math: 'u_0,\alpha \in\, \left]0,\tfrac12\right[ \ \Rightarrow\ |u_0-\alpha| < \dfrac12 = \left(\dfrac12\right)^{0+1}'
-            note: "Rang 0 : les deux valeurs sont dans un intervalle de longueur un demi, donc leur ecart est inferieur a un demi."
+            note: "Rang 0 : les deux valeurs sont dans un intervalle de longueur un demi, donc leur écart est inférieur a un demi."
           - math: '|u_n-\alpha|\le\left(\dfrac12\right)^{n+1} \ \Rightarrow\ |u_{n+1}-\alpha| \le \dfrac12\left(\dfrac12\right)^{n+1} = \left(\dfrac12\right)^{n+2}'
-            note: "On applique la question precedente a l'hypothese de recurrence."
+            note: "On applique la question précédente a l'hypothèse de recurrence."
           - math: '\Rightarrow\ (\forall n\in\mathbb{N})\ ;\ |u_n-\alpha| \le \left(\dfrac12\right)^{n+1}'
-            note: "La propriete se transmet a tous les rangs : recurrence close."
+            note: "La propriété se transmet a tous les rangs : recurrence close."
       - id: qII-3d
         stem: |-
           **(0,25 pt)** En déduire que la suite $(u_n)_{n \in \mathbb{N}}$ converge vers $\alpha$
         reasoning: |-
           $\left(\frac12\right)^{n+1}\to0$ quand $n\to+\infty$ (suite géométrique de raison $\frac12\in\,]0,1[$). L'encadrement $0\le|u_n-\alpha|\le\left(\frac12\right)^{n+1}$ (question précédente) coince $|u_n-\alpha|$ entre deux suites qui tendent toutes les deux vers $0$ : par le théorème des gendarmes, $|u_n-\alpha|\to0$, c'est-à-dire $u_n\to\alpha$.
         steps:
-          - math: '\left(\dfrac12\right)^{n+1} \xrightarrow[n\to+\infty]{} 0 \quad (\text{suite geometrique de raison } \tfrac12\in\,]0,1[)'
-            note: "Raison entre 0 et 1 : la suite geometrique tend vers 0."
+          - math: '\left(\dfrac12\right)^{n+1} \xrightarrow[n\to+\infty]{} 0 \quad (\text{suite géométrique de raison } \tfrac12\in\,]0,1[)'
+            note: "Raison entre 0 et 1 : la suite géométrique tend vers 0."
           - math: '0\le|u_n-\alpha|\le\left(\dfrac12\right)^{n+1} \ \Rightarrow\ |u_n-\alpha|\to0 \quad (\text{gendarmes}) \ \Rightarrow\ u_n\to\alpha'
-            note: "Theoreme des gendarmes : encadre par deux suites qui tendent vers 0, u_n moins alpha tend vers 0."
+            note: "Théorème des gendarmes : encadre par deux suites qui tendent vers 0, u_n moins alpha tend vers 0."
       - id: qIII-1a
         part: "Partie III, 1 — Réécriture de S_n et un pont vers la Partie I"
         stem: |-
@@ -1934,14 +1934,14 @@ entries:
 
           (le facteur $n$ sort de la somme car il ne dépend pas de $k$, puis se simplifie avec le $n$ du dénominateur).
         steps:
-          - math: 'f(x) = \dfrac{e^{x}}{e^{2x}+e} = \dfrac{1}{e^{x}+e^{1-x}} \quad (\text{on divise numerateur et denominateur par } e^{x})'
+          - math: 'f(x) = \dfrac{e^{x}}{e^{2x}+e} = \dfrac{1}{e^{x}+e^{1-x}} \quad (\text{on divise numérateur et dénominateur par } e^{x})'
             note: "Forme equivalente de f, obtenue en divisant par e puissance x."
           - math: '\dfrac{n-k}{n} = 1-\dfrac kn \ \Rightarrow\ f\!\left(\dfrac kn\right) = \dfrac{1}{e^{k/n}+e^{(n-k)/n}}'
             note: "On applique la forme equivalente de f au point k sur n."
           - math: '\dfrac{k}{e^{k/n}+e^{(n-k)/n}} = k\,f\!\left(\dfrac kn\right) = n\times\dfrac kn\,f\!\left(\dfrac kn\right)'
-            note: "Le terme general de la somme est exactement k fois f(k/n), reecrit en faisant apparaitre k sur n."
+            note: "Le terme général de la somme est exactement k fois f(k/n), reecrit en faisant apparaître k sur n."
           - math: 'S_n = \dfrac{1}{n(n+1)}\times n\sum_{k=1}^n \dfrac kn\,f\!\left(\dfrac kn\right) = \dfrac{1}{n+1}\sum_{k=1}^n \dfrac kn\,f\!\left(\dfrac kn\right)'
-            note: "Le facteur n sort de la somme et se simplifie avec le n du denominateur n(n+1)."
+            note: "Le facteur n sort de la somme et se simplifie avec le n du dénominateur n(n+1)."
       - id: qIII-1b
         stem: |-
           **(0,5 pt)** Montrer que : $\displaystyle\int_0^{1} x\,f(x)\,dx = \int_0^{\frac{1}{2}} f(x)\,dx$
@@ -1963,13 +1963,13 @@ entries:
           Et $\dfrac12\displaystyle\int_0^1 f(x)\,dx = \displaystyle\int_0^{1/2} f(x)\,dx$ est exactement le résultat de I-4b, lu à l'envers. Donc $I=\displaystyle\int_0^{1/2} f(x)\,dx$ — l'exercice se recoupe avec lui-même, comme prévu par sa construction.
         steps:
           - math: 't=1-x,\quad dx=-dt,\qquad x=0\to t=1,\quad x=1\to t=0'
-            note: "Changement de variable suggere par l'enonce."
+            note: "Changement de variable suggere par l'énoncé."
           - math: 'I = \int_0^1 (1-t)f(1-t)\,dt = \int_0^1 (1-t)f(t)\,dt \quad (f(1-t)=f(t),\ \text{I-1a})'
-            note: "Meme symetrie qu'en I-4a et I-4b, reutilisee ici."
+            note: "Même symétrie qu'en I-4a et I-4b, reutilisee ici."
           - math: 'I = \int_0^1 f(t)\,dt - \int_0^1 t\,f(t)\,dt = \int_0^1 f(x)\,dx - I'
-            note: "On distribue le produit (1-t) f(t) : la seconde integrale est I elle-meme, renommee."
+            note: "On distribue le produit (1-t) f(t) : la seconde intégrale est I elle-même, renommee."
           - math: '2I = \int_0^1 f(x)\,dx \ \Rightarrow\ I = \dfrac12\int_0^1 f(x)\,dx = \int_0^{1/2} f(x)\,dx \quad (\text{I-4b})'
-            note: "Equation en I : on la resout, puis on relie a I-4b pour retomber sur l'integrale deja connue."
+            note: "Équation en I : on la résout, puis on relie a I-4b pour retomber sur l'intégrale déjà connue."
       - id: qIII-2
         part: "Partie III, 2 — Convergence de S_n par somme de Riemann"
         stem: |-
@@ -1996,15 +1996,15 @@ entries:
           $$\boxed{\lim_{n\to+\infty} S_n = \dfrac{1}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac\pi4\right) \approx 0{,}1457}$$
         steps:
           - math: 'S_n = \dfrac{n}{n+1}\times\dfrac1n\sum_{k=1}^n g\!\left(\dfrac kn\right) \quad (g(x)=x\,f(x))'
-            note: "On multiplie et divise par n pour faire apparaitre la forme exacte d'une somme de Riemann."
+            note: "On multiplie et divise par n pour faire apparaître la forme exacte d'une somme de Riemann."
           - math: '\dfrac1n\sum_{k=1}^n h\!\left(\dfrac kn\right) \xrightarrow[n\to+\infty]{} \int_0^1 h(x)\,dx \quad (h \text{ continue sur } [0,1])'
-            note: "Theoreme des sommes de Riemann (programme SM), meme forme que bk-2024-r-x2 question q1-b."
+            note: "Théorème des sommes de Riemann (programme SM), même forme que bk-2024-r-x2 question q1-b."
           - math: 'g(x)=x\,f(x) \text{ continue sur } [0,1] \ \Rightarrow\ \dfrac1n\sum_{k=1}^n \dfrac kn\,f\!\left(\dfrac kn\right) \xrightarrow[n\to+\infty]{} \int_0^1 x\,f(x)\,dx'
-            note: "g est continue comme produit de deux fonctions continues : le theoreme s'applique."
+            note: "g est continue comme produit de deux fonctions continues : le théorème s'applique."
           - math: '\dfrac{n}{n+1}\to1 \ \Rightarrow\ S_n \xrightarrow[n\to+\infty]{} \int_0^1 x\,f(x)\,dx'
             note: "Produit de deux suites convergentes : la limite est le produit des limites."
           - math: '\int_0^1 x\,f(x)\,dx = \int_0^{1/2} f(x)\,dx \quad (\text{III-1b}) = \dfrac{1}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac{\pi}{4}\right) \quad (\text{I-5b})'
-            note: "On relie a III-1b puis a I-5b : l'exercice boucle sur lui-meme."
+            note: "On relie a III-1b puis a I-5b : l'exercice boucle sur lui-même."
 
   # ── bk-2017-n-x4 — 2017 N, Exercice 4 (SM) : e^(-1/x), primitive fermee, TAF, suite implicite (a_n) ──
   - id: bk-2017-n-x4
@@ -2085,11 +2085,11 @@ entries:
           - math: '\frac{f(x)}{x} = \frac{e^{-1/x}}{x} + \frac{e^{-1/x}}{x^2} = u\,e^{-u} + u^2e^{-u} \quad (u=\tfrac1x)'
             note: "On developpe le taux d'accroissement en fonction de u = 1 sur x."
           - math: 'u^2e^{-u} = \left(u\,e^{-u/2}\right)^2,\qquad u\,e^{-u/2} = \frac{2t}{e^{t}} \ (t=\tfrac u2\to+\infty) \to 0 \quad (R4)'
-            note: "On ecrit u carre e puissance moins u comme un carre pour reutiliser la meme croissance comparee."
+            note: "On écrit u carré e puissance moins u comme un carré pour reutiliser la même croissance comparee."
           - math: '\Rightarrow\ u^2e^{-u} \to 0^2 = 0'
-            note: "Le carre d'une quantite qui tend vers 0 tend vers 0."
-          - math: '\lim_{x\to0^+} \frac{f(x)}{x} = 0+0=0 \ \Rightarrow\ f \text{ derivable a droite en } 0,\ f''_d(0)=0'
-            note: "Limite finie du taux d'accroissement : f est derivable a droite en 0, de nombre derive 0."
+            note: "Le carré d'une quantité qui tend vers 0 tend vers 0."
+          - math: '\lim_{x\to0^+} \frac{f(x)}{x} = 0+0=0 \ \Rightarrow\ f \text{ dérivable a droite en } 0,\ f''_d(0)=0'
+            note: "Limite finie du taux d'accroissement : f est dérivable a droite en 0, de nombre derive 0."
       - id: q1-1c
         stem: |-
           **(0,5 pt)** Montrer que la fonction $f$ est dérivable sur $]0, +\infty[$ puis calculer $f'(x)$ pour tout $x$ dans l'intervalle $]0, +\infty[$.
@@ -2105,13 +2105,13 @@ entries:
           $$f'(x) = \frac{e^{-1/x}}{x^3}$$
         steps:
           - math: 'u(x)=1+\dfrac1x,\ u''(x)=-\dfrac1{x^2}\qquad v(x)=e^{-1/x},\ v''(x)=\dfrac1{x^2}e^{-1/x}'
-            note: "Derivees des deux facteurs : u par quotient, v par composition avec e puissance (chapitre 4)."
+            note: "Dérivées des deux facteurs : u par quotient, v par composition avec e puissance (chapitre 4)."
           - math: 'f''(x) = u''(x)v(x)+u(x)v''(x) = -\dfrac1{x^2}e^{-1/x} + \left(1+\dfrac1x\right)\dfrac1{x^2}e^{-1/x}'
-            note: "Regle du produit appliquee aux deux facteurs u et v."
+            note: "Règle du produit appliquee aux deux facteurs u et v."
           - math: 'f''(x) = \dfrac{e^{-1/x}}{x^2}\left[-1+1+\dfrac1x\right] = \dfrac{e^{-1/x}}{x^2}\times\dfrac1x'
-            note: "On factorise par e puissance moins 1 sur x sur x carre ; le crochet se simplifie a 1 sur x."
+            note: "On factorise par e puissance moins 1 sur x sur x carré ; le crochet se simplifie a 1 sur x."
           - math: 'f''(x) = \dfrac{e^{-1/x}}{x^3}'
-            note: "Expression finale de la derivee sur ]0, plus l'infini[."
+            note: "Expression finale de la dérivée sur ]0, plus l'infini[."
       - id: q1-2a
         part: "Partie 1, 2 — Limite en +infini et tableau de variation"
         stem: |-
@@ -2159,13 +2159,13 @@ entries:
           $$I\left(\frac13,\ 4e^{-3}\right)$$
         steps:
           - math: 'f^{(2)}(x) = \dfrac1{x^2}e^{-1/x}\times x^{-3} + e^{-1/x}\times(-3x^{-4}) = e^{-1/x}\left[x^{-5}-3x^{-4}\right]'
-            note: "On derive f prime comme un produit ; f seconde notee f exposant 2 pour eviter d'empiler les apostrophes."
+            note: "On derive f prime comme un produit ; f seconde notée f exposant 2 pour éviter d'empiler les apostrophes."
           - math: 'f^{(2)}(x) = \dfrac{e^{-1/x}(1-3x)}{x^5}'
             note: "Forme factorisee de f seconde."
           - math: 'e^{-1/x}>0,\ x^5>0 \ \Rightarrow\ \text{signe de } f^{(2)}(x) = \text{signe de } (1-3x),\ \text{nul en } x=\tfrac13'
             note: "Le signe de f seconde suit exactement le signe de 1 moins 3x, qui change en x = 1/3."
           - math: 'f\!\left(\tfrac13\right) = (1+3)e^{-3} = 4e^{-3} \ \Rightarrow\ I\left(\tfrac13,\,4e^{-3}\right)'
-            note: "Coordonnees du point d'inflexion, obtenues en evaluant f en 1/3."
+            note: "Coordonnées du point d'inflexion, obtenues en evaluant f en 1/3."
       - id: q1-3b
         stem: |-
           **(0,5 pt)** Tracer la courbe $(C)$. *(On prend : $f(1)\,;\ 0{,}7$ et $4e^{-3}\,;\ 0{,}2$)*
@@ -2198,12 +2198,12 @@ entries:
 
           $F$ est la différence d'une constante ($G(1)$) et d'une fonction continue ($G$, puisque dérivable) : $F$ est continue sur $[0,+\infty[$.
         steps:
-          - math: 'f \text{ continue sur } [0,+\infty[ \ \Rightarrow\ f \text{ admet une primitive } G \text{ sur } [0,+\infty[ \quad (\text{theoreme admis})'
+          - math: 'f \text{ continue sur } [0,+\infty[ \ \Rightarrow\ f \text{ admet une primitive } G \text{ sur } [0,+\infty[ \quad (\text{théorème admis})'
             note: "Toute fonction continue sur un intervalle y admet une primitive."
           - math: 'F(x) = \int_x^1 f(t)\,dt = G(1)-G(x)'
-            note: "F s'exprime comme la difference d'une constante G(1) et de G(x), definition de l'integrale."
-          - math: '\Rightarrow\ F \text{ continue sur } [0,+\infty[ \quad (\text{difference d''une constante et d''une fonction continue})'
-            note: "G est continue (car derivable), donc F, difference avec une constante, l'est aussi."
+            note: "F s'exprime comme la différence d'une constante G(1) et de G(x), définition de l'intégrale."
+          - math: '\Rightarrow\ F \text{ continue sur } [0,+\infty[ \quad (\text{différence d''une constante et d''une fonction continue})'
+            note: "G est continue (car dérivable), donc F, différence avec une constante, l'est aussi."
       - id: q2-2a
         part: "Partie 2, 2 — Intégration par parties et primitive de f"
         stem: |-
@@ -2224,13 +2224,13 @@ entries:
           $$\int_x^1 e^{-1/t}\,dt = e^{-1} - x\,e^{-1/x} - \int_x^1 \frac1t\,e^{-1/t}\,dt$$
         steps:
           - math: 'u(t)=e^{-1/t},\ u''(t)=\dfrac1{t^2}e^{-1/t} \qquad v''(t)=1,\ v(t)=t'
-            note: "Choix de l'IPP : u derive vers une forme plus simple, v prime se primitive immediatement."
+            note: "Choix de l'IPP : u derive vers une forme plus simple, v prime se primitive immédiatement."
           - math: '\int_x^1 e^{-1/t}\,dt = \big[t\,e^{-1/t}\big]_x^1 - \int_x^1 t\times\dfrac1{t^2}e^{-1/t}\,dt'
-            note: "Formule de l'integration par parties appliquee aux bornes x et 1."
+            note: "Formule de l'intégration par parties appliquee aux bornes x et 1."
           - math: '\big[t\,e^{-1/t}\big]_x^1 = e^{-1} - x\,e^{-1/x}'
             note: "Evaluation du terme de bord entre x et 1."
           - math: '\Rightarrow\ \int_x^1 e^{-1/t}\,dt = e^{-1} - x\,e^{-1/x} - \int_x^1 \dfrac1t\,e^{-1/t}\,dt'
-            note: "Le facteur t se simplifie avec le t carre du denominateur : 1 sur t reste dans l'integrale restante."
+            note: "Le facteur t se simplifie avec le t carré du dénominateur : 1 sur t reste dans l'intégrale restante."
       - id: q2-2b
         stem: |-
           **(0,25 pt)** Déterminer $\displaystyle\int_x^{1}\left(1 + \frac{1}{t}\right)e^{-\frac{1}{t}}\,dt$ pour tout $x$ de $]0, +\infty[$.
@@ -2248,11 +2248,11 @@ entries:
           $$\int_x^1\left(1+\frac1t\right)e^{-1/t}\,dt = e^{-1}-x\,e^{-1/x}$$
         steps:
           - math: '\left(1+\dfrac1t\right)e^{-1/t} = e^{-1/t}+\dfrac1te^{-1/t} \ \Rightarrow\ \int_x^1\left(1+\dfrac1t\right)e^{-1/t}\,dt = \int_x^1 e^{-1/t}\,dt + \int_x^1\dfrac1te^{-1/t}\,dt'
-            note: "On separe l'integrande en deux morceaux."
-          - math: '= \left[e^{-1}-xe^{-1/x}-\int_x^1\dfrac1te^{-1/t}\,dt\right] + \int_x^1\dfrac1te^{-1/t}\,dt \quad (\text{question precedente})'
-            note: "On remplace le premier morceau par le resultat de l'IPP."
+            note: "On sépare l'integrande en deux morceaux."
+          - math: '= \left[e^{-1}-xe^{-1/x}-\int_x^1\dfrac1te^{-1/t}\,dt\right] + \int_x^1\dfrac1te^{-1/t}\,dt \quad (\text{question précédente})'
+            note: "On remplace le premier morceau par le résultat de l'IPP."
           - math: '\Rightarrow\ \int_x^1\left(1+\dfrac1t\right)e^{-1/t}\,dt = e^{-1}-x\,e^{-1/x}'
-            note: "Les deux integrales en 1 sur t fois e restent s'annulent : c'etait le but de l'IPP precedente."
+            note: "Les deux intégrales en 1 sur t fois e restent s'annulent : c'était le but de l'IPP précédente."
       - id: q2-2c
         stem: |-
           **(0,5 pt)** Montrer que : $\displaystyle\int_0^{1} f(t)\,dt = e^{-1}$
@@ -2266,15 +2266,15 @@ entries:
           $$\int_0^1 f(t)\,dt = F(0) = e^{-1}-0 = e^{-1}$$
         steps:
           - math: 'F(x) = e^{-1}-xe^{-1/x} \quad (\forall x>0,\ \text{question 2-b})\, ;\qquad \int_0^1 f(t)\,dt = F(0)'
-            note: "F(0) est exactement l'integrale cherchee, par definition de F."
+            note: "F(0) est exactement l'intégrale cherchee, par définition de F."
           - math: 'F \text{ continue en } 0 \ \Rightarrow\ F(0) = \lim_{x\to0^+}\left(e^{-1}-xe^{-1/x}\right)'
             note: "F est continue en 0 (question 1) : on prolonge la formule par une limite."
-          - math: 'x\,e^{-1/x} = \dfrac{e^{-u}}{u} \ (u=\tfrac1x\to+\infty) \ \to\ 0 \quad (\text{numerateur vers } 0,\ \text{denominateur vers } +\infty)'
-            note: "Pas d'indetermination : numerateur qui tend vers 0 sur denominateur qui tend vers l'infini."
+          - math: 'x\,e^{-1/x} = \dfrac{e^{-u}}{u} \ (u=\tfrac1x\to+\infty) \ \to\ 0 \quad (\text{numérateur vers } 0,\ \text{dénominateur vers } +\infty)'
+            note: "Pas d'indetermination : numérateur qui tend vers 0 sur dénominateur qui tend vers l'infini."
           - math: '\Rightarrow\ \int_0^1 f(t)\,dt = e^{-1}-0 = e^{-1}'
-            note: "On conclut en substituant la limite trouvee."
+            note: "On conclut en substituant la limite trouvée."
       - id: q2-3
-        part: "Partie 2, 3 — Aire du domaine (en cm carre)"
+        part: "Partie 2, 3 — Aire du domaine (en cm carré)"
         stem: |-
           **(0,5 pt)** Calculer en $cm^2$, l'aire du domaine plan limité par la courbe $(C)$ et les droites d'équations : $x = 0$, $x = 2$ et $y = 0$.
         reasoning: |-
@@ -2293,15 +2293,15 @@ entries:
           $$\text{aire} = \frac{2}{\sqrt e}\times4 = \frac{8}{\sqrt e} = 8e^{-1/2}\ \text{cm}^2 \approx 4{,}85\ \text{cm}^2$$
         steps:
           - math: 'f\ge0 \text{ sur } [0,+\infty[ \ \Rightarrow\ \text{aire} = \int_0^2 f(x)\,dx \quad (\text{u.a.})'
-            note: "f positive ou nulle partout : l'integrale est directement l'aire, sans decoupage de signe."
+            note: "f positive ou nulle partout : l'intégrale est directement l'aire, sans decoupage de signe."
           - math: '\int_0^2 f = \int_0^1 f + \int_1^2 f = e^{-1} + \int_1^2 f \quad (\text{Chasles},\ \int_0^1 f = e^{-1}\ \text{question 2-c})'
-            note: "On decoupe par Chasles pour reutiliser le resultat deja etabli sur [0,1]."
+            note: "On decoupe par Chasles pour reutiliser le résultat déjà établi sur [0,1]."
           - math: '\int_1^2 f(t)\,dt = -F(2) = -\left(e^{-1}-2e^{-1/2}\right) = 2e^{-1/2}-e^{-1} \quad (F(x)=e^{-1}-xe^{-1/x},\ \text{question 2-b})'
-            note: "On evalue F en 2 grace a la formule fermee de la question 2-b."
+            note: "On evalue F en 2 grâce a la formule fermee de la question 2-b."
           - math: '\int_0^2 f(x)\,dx = e^{-1}+2e^{-1/2}-e^{-1} = 2e^{-1/2} = \dfrac{2}{\sqrt e} \ \text{u.a.}'
             note: "Le terme en e puissance moins 1 s'annule : il reste 2 sur racine de e."
           - math: '1\ \text{u.a.} = 2\,cm\times2\,cm = 4\,cm^2 \ \Rightarrow\ \text{aire} = \dfrac{2}{\sqrt e}\times4 = \dfrac{8}{\sqrt e}\ cm^2 \approx 4{,}85\ cm^2'
-            note: "Conversion : repere orthonorme d'unite 2 cm, donc 1 u.a. vaut 4 cm carres."
+            note: "Conversion : repère orthonormé d'unité 2 cm, donc 1 u.a. vaut 4 cm carrés."
       - id: q2-4a
         part: "Partie 2, 4 — La suite (u_n) : accroissements finis et encadrement"
         stem: |-
@@ -2322,9 +2322,9 @@ entries:
           $$u_n = 2\left(1+\frac1{v_n}\right)e^{-1/v_n}$$
         steps:
           - math: 'F''(x) = -f(x) \quad (\text{car } F(x)=G(1)-G(x),\ G \text{ primitive de } f,\ \text{question 1})'
-            note: "F est derivable sur [0, plus l'infini[, de derivee moins f."
+            note: "F est dérivable sur [0, plus l'infini[, de dérivée moins f."
           - math: '\exists\,v_n\in\,]n,n+2[,\quad F(n+2)-F(n) = F''(v_n)\times2 = -2f(v_n) \quad (\text{TAF applique a } F \text{ sur } [n,n+2])'
-            note: "Theoreme des accroissements finis applique a F entre n et n+2."
+            note: "Théorème des accroissements finis applique a F entre n et n+2."
           - math: 'u_n = F(n)-F(n+2) = -\big(F(n+2)-F(n)\big) = 2f(v_n) = 2\left(1+\dfrac1{v_n}\right)e^{-1/v_n}'
             note: "u_n est l'oppose de l'accroissement de F : on obtient exactement la formule demandee."
       - id: q2-4b
@@ -2348,7 +2348,7 @@ entries:
           - math: 'n<v_n<n+2 \ \Rightarrow\ f(n)<f(v_n)<f(n+2) \quad (f \text{ strictement croissante sur } [0,+\infty[)'
             note: "La monotonie stricte de f transporte l'encadrement de v_n a f(v_n)."
           - math: 'u_n = 2f(v_n) \ \Rightarrow\ 2f(n) < u_n < 2f(n+2)'
-            note: "On multiplie l'encadrement par 2, qui est positif : le sens des inegalites est conserve."
+            note: "On multiplie l'encadrement par 2, qui est positif : le sens des inégalités est conserve."
           - math: '\Rightarrow\ 2\left(1+\dfrac1n\right)e^{-1/n} \le u_n \le 2\left(1+\dfrac1{n+2}\right)e^{-1/(n+2)}'
             note: "On explicite f(n) et f(n+2) : c'est exactement l'encadrement demande."
       - id: q2-4c
@@ -2362,13 +2362,13 @@ entries:
           $$\lim_{n\to+\infty} u_n = 2$$
         steps:
           - math: '\lim_{n\to+\infty} f(n) = 1 = \lim_{n\to+\infty} f(n+2) \quad (\text{Partie 1, question 2-a})'
-            note: "Les deux bornes de l'encadrement tendent vers la meme valeur f = 1."
+            note: "Les deux bornes de l'encadrement tendent vers la même valeur f = 1."
           - math: '\Rightarrow\ \lim_{n\to+\infty} 2f(n) = \lim_{n\to+\infty} 2f(n+2) = 2'
             note: "Les deux bornes de l'encadrement de u_n tendent vers 2."
           - math: '2\left(1+\dfrac1n\right)e^{-1/n} \le u_n \le 2\left(1+\dfrac1{n+2}\right)e^{-1/(n+2)} \ \Rightarrow\ \lim_{n\to+\infty} u_n = 2 \quad (\text{gendarmes})'
-            note: "Theoreme des gendarmes : les deux bornes convergent vers 2, donc u_n aussi."
+            note: "Théorème des gendarmes : les deux bornes convergent vers 2, donc u_n aussi."
       - id: q3-1a
-        part: "Partie 3, 1 — Existence, unicite de a_n et une identite logarithmique"
+        part: "Partie 3, 1 — Existence, unicite de a_n et une identité logarithmique"
         stem: |-
           **Partie 3.**
 
@@ -2385,7 +2385,7 @@ entries:
           - math: 'n\in\mathbb{N}^{*} \ \Rightarrow\ e^{-1/n}\in\,]0,1[\,\subset[0,1['
             note: "e puissance moins 1 sur n est bien dans l'image de f, entre 0 exclu et 1 exclu."
           - math: '\Rightarrow\ \exists!\,a_n\in[0,+\infty[,\ f(a_n)=e^{-1/n}\, ;\quad e^{-1/n}>0=f(0) \ \Rightarrow\ a_n\neq0'
-            note: "Existence et unicite par la bijection ; a_n est different de 0, donc strictement positif."
+            note: "Existence et unicite par la bijection ; a_n est différent de 0, donc strictement positif."
       - id: q3-1b
         stem: |-
           **(0,25 pt)** Montrer que la suite numérique $(a_n)_{n \ge 1}$ est croissante.
@@ -2403,7 +2403,7 @@ entries:
           - math: 'n\ge1 \ \Rightarrow\ -\dfrac1{n+1}>-\dfrac1n \ \Rightarrow\ e^{-1/(n+1)}>e^{-1/n} \quad (\exp \text{ strictement croissante})'
             note: "L'exposant croit strictement avec n ; exp conserve l'ordre."
           - math: 'f(a_{n+1}) = e^{-1/(n+1)} > e^{-1/n} = f(a_n)'
-            note: "Traduction directe via la definition de a_n et a_(n+1)."
+            note: "Traduction directe via la définition de a_n et a_(n+1)."
           - math: 'f \text{ strictement croissante} \ \Rightarrow\ a_{n+1} > a_n'
             note: "f strictement croissante : une plus grande image vient d'un plus grand argument."
       - id: q3-1c
@@ -2426,14 +2426,14 @@ entries:
 
           $$-\frac1{a_n} + \ln\left(1+\frac1{a_n}\right) = -\frac1n$$
         steps:
-          - math: '\left(1+\dfrac1{a_n}\right)e^{-1/a_n} = e^{-1/n} \quad (\text{definition de } a_n,\ \text{les deux membres} > 0)'
-            note: "Definition de a_n, reecrite ; les deux membres sont strictement positifs."
+          - math: '\left(1+\dfrac1{a_n}\right)e^{-1/a_n} = e^{-1/n} \quad (\text{définition de } a_n,\ \text{les deux membres} > 0)'
+            note: "Définition de a_n, reecrite ; les deux membres sont strictement positifs."
           - math: '\ln\left[\left(1+\dfrac1{a_n}\right)e^{-1/a_n}\right] = \ln\left(e^{-1/n}\right)'
             note: "On applique ln aux deux membres, valide car tous deux positifs."
           - math: '\ln\left(1+\dfrac1{a_n}\right) + \ln\left(e^{-1/a_n}\right) = \ln\left(e^{-1/n}\right) \quad (\ln(uv)=\ln u+\ln v)'
-            note: "Le logarithme du produit se separe en somme de logarithmes."
+            note: "Le logarithme du produit se sépare en somme de logarithmes."
           - math: '\ln(e^{k})=k \ \Rightarrow\ \ln\left(1+\dfrac1{a_n}\right) - \dfrac1{a_n} = -\dfrac1n \ \Rightarrow\ -\dfrac1{a_n}+\ln\left(1+\dfrac1{a_n}\right) = -\dfrac1n'
-            note: "ln(e puissance k) vaut k des deux cotes ; on reordonne pour retomber sur l'identite demandee."
+            note: "ln(e puissance k) vaut k des deux cotes ; on reordonne pour retomber sur l'identité demandee."
       - id: q3-2a
         part: "Partie 3, 2 — Un encadrement classique de ln(1+x)"
         stem: |-
@@ -2450,9 +2450,9 @@ entries:
           - math: '1-t\le\dfrac1{1+t} \iff (1-t)(1+t)\le1 \iff 1-t^2\le1 \iff t^2\ge0 \quad (\text{toujours vrai})'
             note: "Borne de gauche : on multiplie par 1+t, positif, puis on developpe."
           - math: '\dfrac1{1+t}\le1-t+t^2 \iff 1\le(1-t+t^2)(1+t) = 1+t^3'
-            note: "Borne de droite : meme technique, le developpement se simplifie en 1 plus t cube."
+            note: "Borne de droite : même technique, le développement se simplifie en 1 plus t cube."
           - math: '1\le1+t^3 \iff t^3\ge0 \quad (\text{vrai car } t\ge0)'
-            note: "t au cube est positif ou nul des que t l'est : l'inegalite tient."
+            note: "t au cube est positif ou nul des que t l'est : l'inégalité tient."
       - id: q3-2b
         stem: |-
           **(0,5 pt)** Montrer que : $\left(\forall x \in [0, +\infty[\right)\quad -\dfrac{x^2}{2} \le -x + \ln(1+x) \le -\dfrac{x^2}{2} + \dfrac{x^3}{3}$
@@ -2473,12 +2473,12 @@ entries:
 
           $$-\frac{x^2}2 \ \le\ -x+\ln(1+x) \ \le\ -\frac{x^2}2+\frac{x^3}3$$
         steps:
-          - math: '\int_0^x(1-t)\,dt \le \int_0^x\dfrac1{1+t}\,dt \le \int_0^x(1-t+t^2)\,dt \quad (\text{comparaison, integration de la question precedente sur } [0,x])'
-            note: "On integre l'encadrement de la question precedente sur [0, x]."
+          - math: '\int_0^x(1-t)\,dt \le \int_0^x\dfrac1{1+t}\,dt \le \int_0^x(1-t+t^2)\,dt \quad (\text{comparaison, intégration de la question précédente sur } [0,x])'
+            note: "On integre l'encadrement de la question précédente sur [0, x]."
           - math: '\int_0^x(1-t)\,dt = x-\dfrac{x^2}2 \, ;\qquad \int_0^x\dfrac1{1+t}\,dt = \ln(1+x) \quad (\text{primitive } u''/u)'
-            note: "Primitive du polynome a gauche ; primitive de 1 sur (1+t) au milieu, qui vaut ln(1+t)."
+            note: "Primitive du polynôme a gauche ; primitive de 1 sur (1+t) au milieu, qui vaut ln(1+t)."
           - math: '\int_0^x(1-t+t^2)\,dt = x-\dfrac{x^2}2+\dfrac{x^3}3'
-            note: "Primitive du polynome a droite."
+            note: "Primitive du polynôme a droite."
           - math: 'x-\dfrac{x^2}2 \le \ln(1+x) \le x-\dfrac{x^2}2+\dfrac{x^3}3'
             note: "On rassemble les trois calculs dans l'encadrement."
           - math: '\Rightarrow\ -\dfrac{x^2}2 \le -x+\ln(1+x) \le -\dfrac{x^2}2+\dfrac{x^3}3 \quad (\text{on soustrait } x \text{ aux trois membres})'
@@ -2507,7 +2507,7 @@ entries:
           - math: '\Rightarrow\ f(a_4)=e^{-1/4}\ge f(1) \ \Rightarrow\ a_4\ge1 \quad (f \text{ strictement croissante})'
             note: "f strictement croissante : une image plus grande donne un argument plus grand."
           - math: '(a_n) \text{ croissante},\ n\ge4 \ \Rightarrow\ a_n\ge a_4\ge1'
-            note: "La croissance de la suite (question 1-b) propage la minoration a tous les rangs n superieurs ou egaux a 4."
+            note: "La croissance de la suite (question 1-b) propage la minoration a tous les rangs n supérieurs ou égaux a 4."
       - id: q3-3b
         stem: |-
           **(0,5 pt)** Montrer que : $1 - \dfrac{2}{3a_n} \le \dfrac{2a_n^2}{n} \le 1$
@@ -2533,11 +2533,11 @@ entries:
           - math: 'a_n\ge1>0 \ \Rightarrow\ x=\dfrac1{a_n}\in\,]0,1] \ \Rightarrow\ -\dfrac1{2a_n^2} \le -\dfrac1{a_n}+\ln\left(1+\dfrac1{a_n}\right) \le -\dfrac1{2a_n^2}+\dfrac1{3a_n^3} \quad (\text{question 2-b})'
             note: "On applique l'encadrement de la question 2-b avec x = 1 sur a_n."
           - math: '-\dfrac1{a_n}+\ln\left(1+\dfrac1{a_n}\right) = -\dfrac1n \quad (\text{question 1-c}) \ \Rightarrow\ -\dfrac1{2a_n^2} \le -\dfrac1n \le -\dfrac1{2a_n^2}+\dfrac1{3a_n^3}'
-            note: "Le terme du milieu se remplace par moins 1 sur n grace a l'identite de la question 1-c."
-          - math: '\times(-2a_n^2) \ (\text{negatif, les inegalites se retournent}) \ \Rightarrow\ 1 \ge \dfrac{2a_n^2}n \ge 1-\dfrac2{3a_n}'
-            note: "On multiplie par moins 2 a_n carre, un nombre negatif : les deux inegalites changent de sens."
+            note: "Le terme du milieu se remplace par moins 1 sur n grâce a l'identité de la question 1-c."
+          - math: '\times(-2a_n^2) \ (\text{négatif, les inégalités se retournent}) \ \Rightarrow\ 1 \ge \dfrac{2a_n^2}n \ge 1-\dfrac2{3a_n}'
+            note: "On multiplie par moins 2 a_n carré, un nombre négatif : les deux inégalités changent de sens."
           - math: '\Rightarrow\ 1-\dfrac2{3a_n} \le \dfrac{2a_n^2}n \le 1'
-            note: "Meme encadrement, reecrit dans l'ordre croissant : c'est exactement le resultat demande."
+            note: "Même encadrement, reecrit dans l'ordre croissant : c'est exactement le résultat demande."
       - id: q3-3c
         stem: |-
           **(0,5 pt)** Montrer que : $\sqrt{\dfrac{n}{6}} \le a_n$ *(On pourra utiliser les questions 3-a) et 3-b))*, en déduire $\displaystyle\lim_{n \to +\infty} a_n$
@@ -2555,10 +2555,10 @@ entries:
           $$\lim_{n\to+\infty} a_n = +\infty$$
         steps:
           - math: 'a_n\ge1 \ \Rightarrow\ \dfrac1{a_n}\le1 \ \Rightarrow\ \dfrac2{3a_n}\le\dfrac23 \ \Rightarrow\ 1-\dfrac2{3a_n}\ge\dfrac13'
-            note: "On minore le membre de gauche de l'encadrement precedent, grace a a_n superieur ou egal a 1."
+            note: "On minore le membre de gauche de l'encadrement précédent, grâce a a_n supérieur ou egal a 1."
           - math: '\dfrac{2a_n^2}n \ge 1-\dfrac2{3a_n} \ge \dfrac13 \ \Rightarrow\ a_n^2\ge\dfrac n6 \ \Rightarrow\ a_n\ge\sqrt{\dfrac n6} \quad (a_n>0)'
             note: "On combine avec la question 3-b, puis on isole a_n par racine carree."
-          - math: '\sqrt{\dfrac n6}\xrightarrow[n\to+\infty]{}+\infty \ \Rightarrow\ \lim_{n\to+\infty} a_n = +\infty \quad (\text{theoreme de comparaison})'
+          - math: '\sqrt{\dfrac n6}\xrightarrow[n\to+\infty]{}+\infty \ \Rightarrow\ \lim_{n\to+\infty} a_n = +\infty \quad (\text{théorème de comparaison})'
             note: "a_n est minoree par une suite qui diverge vers plus l'infini : a_n diverge aussi."
       - id: q3-3d
         stem: |-
@@ -2577,13 +2577,13 @@ entries:
           $$\lim_{n\to+\infty} a_n\sqrt{\frac2n} = 1$$
         steps:
           - math: '\left(a_n\sqrt{\dfrac2n}\right)^2 = a_n^2\times\dfrac2n = \dfrac{2a_n^2}n'
-            note: "Le carre de la quantite cherchee est exactement celle deja encadree a la question 3-b."
+            note: "Le carré de la quantité cherchee est exactement celle déjà encadree a la question 3-b."
           - math: '1-\dfrac2{3a_n} \le \left(a_n\sqrt{\dfrac2n}\right)^2 \le 1 \, ;\quad a_n\to+\infty \ \Rightarrow\ \dfrac2{3a_n}\to0'
             note: "On reutilise l'encadrement de la question 3-b ; a_n diverge, donc le terme en 1 sur a_n tend vers 0."
           - math: '\Rightarrow\ \left(a_n\sqrt{\dfrac2n}\right)^2 \xrightarrow[n\to+\infty]{} 1 \quad (\text{gendarmes})'
-            note: "Les deux bornes de l'encadrement tendent vers 1 : le carre tend vers 1 par le theoreme des gendarmes."
+            note: "Les deux bornes de l'encadrement tendent vers 1 : le carré tend vers 1 par le théorème des gendarmes."
           - math: 'a_n\sqrt{\dfrac2n} > 0 \ \Rightarrow\ \lim_{n\to+\infty} a_n\sqrt{\dfrac2n} = \sqrt1 = 1'
-            note: "Une suite positive dont le carre tend vers 1 tend elle-meme vers 1."
+            note: "Une suite positive dont le carré tend vers 1 tend elle-même vers 1."
 
   # ── bk-2021-n-x1 — 2021 N, Exercice 1, PARTIE I SEULE (SM) : asymptotes, variations, point d'inflexion, aire ──
   - id: bk-2021-n-x1
@@ -2639,11 +2639,11 @@ entries:
           Graphiquement : l'écart entre $(C_n)$ et la droite d'équation $y=nx-2$ tend vers $0$ quand $x\to+\infty$ — $(C_n)$ admet donc cette droite comme **asymptote** (oblique si $n\ge1$, horizontale si $n=0$) en $+\infty$.
         steps:
           - math: 'f_n(x)-nx+2 = \dfrac{-2e^x}{1+e^x}+2 = \dfrac{-2e^x+2(1+e^x)}{1+e^x} = \dfrac{2}{1+e^x}'
-            note: "On reduit au meme denominateur : le terme en nx disparait, il ne reste que le morceau exponentiel."
+            note: "On reduit au même dénominateur : le terme en nx disparaît, il ne reste que le morceau exponentiel."
           - math: '\lim_{x\to+\infty} e^x = +\infty \ \Rightarrow\ \lim_{x\to+\infty}(1+e^x) = +\infty \ \Rightarrow\ \lim_{x\to+\infty}\dfrac{2}{1+e^x} = 0'
-            note: "Un numerateur constant divise par une quantite qui tend vers plus l'infini : le quotient tend vers 0."
+            note: "Un numérateur constant divise par une quantité qui tend vers plus l'infini : le quotient tend vers 0."
           - math: '\Rightarrow\ (C_n) \text{ admet la droite } y=nx-2 \text{ comme asymptote en } +\infty'
-            note: "Ecart nul a la limite : c'est la definition d'une asymptote."
+            note: "Écart nul a la limite : c'est la définition d'une asymptote."
       - id: q1b
         stem: |-
           **(0,5 pt)** Montrer que la courbe $(C_n)$ admet, en $-\infty$, une asymptote $(\Delta_n)$ dont on déterminera une équation cartésienne.
@@ -2657,11 +2657,11 @@ entries:
           L'écart entre $(C_n)$ et la droite $y=nx$ tend vers $0$ en $-\infty$ : $(C_n)$ admet la droite $(\Delta_n): y=nx$ comme asymptote en $-\infty$.
         steps:
           - math: 'f_n(x)-nx = \dfrac{-2e^x}{1+e^x}'
-            note: "On isole l'ecart entre f_n et la droite y = nx : le terme nx se simplifie directement."
+            note: "On isole l'écart entre f_n et la droite y = nx : le terme nx se simplifie directement."
           - math: '\lim_{x\to-\infty} e^x = 0 \ \Rightarrow\ \lim_{x\to-\infty}\dfrac{-2e^x}{1+e^x} = \dfrac{0}{1} = 0'
             note: "e puissance x tend vers 0 en moins l'infini ; le quotient tend donc vers 0 aussi."
           - math: '\Rightarrow\ (\Delta_n) : y = nx \text{ est asymptote a } (C_n) \text{ en } -\infty'
-            note: "Ecart nul a la limite : equation de l'asymptote."
+            note: "Écart nul a la limite : équation de l'asymptote."
       - id: q2a
         part: "2 — Dérivabilité et expression de la dérivée"
         stem: |-
@@ -2676,13 +2676,13 @@ entries:
           Développe le numérateur : $-2e^x-2e^{2x}+2e^{2x} = -2e^x$ — les deux termes en $e^{2x}$ s'annulent exactement, signe qu'on a bien mené le calcul. Il reste $\dfrac{-2e^x}{(1+e^x)^2}$, et la dérivée du terme $nx$ ajoute simplement $n$.
         steps:
           - math: 'u(x)=-2e^x,\ u''(x)=-2e^x \qquad v(x)=1+e^x,\ v''(x)=e^x'
-            note: "On identifie numerateur et denominateur du quotient et leurs derivees."
+            note: "On identifie numérateur et dénominateur du quotient et leurs dérivées."
           - math: '\left(\dfrac{u}{v}\right)''(x) = \dfrac{u''v-uv''}{v^2} = \dfrac{-2e^x(1+e^x)-(-2e^x)(e^x)}{(1+e^x)^2}'
-            note: "Formule de la derivee d'un quotient."
+            note: "Formule de la dérivée d'un quotient."
           - math: '-2e^x(1+e^x)-(-2e^x)(e^x) = -2e^x-2e^{2x}+2e^{2x} = -2e^x'
             note: "Les deux termes en e puissance 2x s'annulent : il reste seulement -2e^x."
           - math: 'f_n''(x) = \dfrac{-2e^x}{(1+e^x)^2}+n'
-            note: "On ajoute la derivee de nx, qui vaut n : expression finale de f_n prime."
+            note: "On ajoute la dérivée de nx, qui vaut n : expression finale de f_n prime."
       - id: q2b
         stem: |-
           **(0,5 pt)** Montrer que : $(\forall x \in \mathbb{R})\ ;\quad \dfrac{4e^x}{(1+e^x)^2} \le 1$
@@ -2702,11 +2702,11 @@ entries:
           avec égalité exactement quand $e^x=1$, c'est-à-dire en $x=0$ — un point à retenir, il resservira.
         steps:
           - math: '(1+e^x)^2-4e^x = 1+2e^x+e^{2x}-4e^x = 1-2e^x+e^{2x}'
-            note: "On developpe le carre et on regroupe avec le terme -4e^x."
+            note: "On developpe le carré et on regroupe avec le terme -4e^x."
           - math: '1-2e^x+e^{2x} = (1-e^x)^2 \ge 0 \quad (\forall x\in\mathbb{R})'
-            note: "Identite remarquable : c'est un carre, donc toujours positif ou nul."
+            note: "Identité remarquable : c'est un carré, donc toujours positif ou nul."
           - math: '(1+e^x)^2 \ge 4e^x \ \Rightarrow\ \dfrac{4e^x}{(1+e^x)^2}\le1 \quad (\text{car } (1+e^x)^2>0)'
-            note: "On divise par le carre du denominateur, strictement positif : l'inegalite se conserve."
+            note: "On divise par le carré du dénominateur, strictement positif : l'inégalité se conserve."
       - id: q2c
         stem: |-
           **(0,5 pt)** En déduire le sens de variation de la fonction $f_n$ sur $\mathbb{R}$
@@ -2720,11 +2720,11 @@ entries:
           **Cas $n\ge1$.** $f_n'(x) = n-\dfrac{2e^x}{(1+e^x)^2} \ge n-\dfrac12 \ge 1-\dfrac12 = \dfrac12 > 0$ : le morceau qu'on soustrait ne dépasse jamais $\dfrac12$, et $n$ vaut au moins $1$, donc $f_n'$ reste strictement positive — $f_n$ est **strictement croissante** sur $\mathbb{R}$.
         steps:
           - math: '\dfrac{4e^x}{(1+e^x)^2}\le1 \ \Rightarrow\ \dfrac{2e^x}{(1+e^x)^2}\le\dfrac12 \quad (\text{question 2-b, divisee par } 2)'
-            note: "On divise l'inegalite precedente par 2 pour faire apparaitre le morceau exact de f_n prime."
+            note: "On divise l'inégalité précédente par 2 pour faire apparaître le morceau exact de f_n prime."
           - math: 'n=0\ :\ f_0''(x) = -\dfrac{2e^x}{(1+e^x)^2} < 0 \quad (\forall x\in\mathbb{R})'
-            note: "Pour n=0, f_n prime est l'oppose d'une quantite strictement positive : toujours negative."
+            note: "Pour n=0, f_n prime est l'oppose d'une quantité strictement positive : toujours négative."
           - math: 'n\ge1\ :\ f_n''(x) = n-\dfrac{2e^x}{(1+e^x)^2} \ge n-\dfrac12 \ge \dfrac12 > 0 \quad (\forall x\in\mathbb{R})'
-            note: "Pour n superieur ou egal a 1, le terme soustrait ne depasse jamais 1/2 : f_n prime reste strictement positive."
+            note: "Pour n supérieur ou egal a 1, le terme soustrait ne depasse jamais 1/2 : f_n prime reste strictement positive."
       - id: q3a
         part: "3 — Tangente et point d'inflexion"
         stem: |-
@@ -2745,7 +2745,7 @@ entries:
           - math: 'f_n''(0) = \dfrac{-2e^0}{(1+e^0)^2}+n = \dfrac{-2}{4}+n = n-\dfrac12'
             note: "On evalue f_n prime en 0, avec l'expression de la question 2-a."
           - math: 'y = f_n''(0)(x-0)+f_n(0) = \left(n-\dfrac12\right)x-1'
-            note: "Equation de la tangente : coefficient directeur f_n prime de 0, point de passage (0, f_n(0))."
+            note: "Équation de la tangente : coefficient directeur f_n prime de 0, point de passage (0, f_n(0))."
       - id: q3b
         stem: |-
           **(0,5 pt)** Montrer que le point $I$ est le seul point d'inflexion de la courbe $(C_n)$
@@ -2763,7 +2763,7 @@ entries:
           Le facteur $\dfrac{2e^x}{(1+e^x)^3}$ est toujours strictement positif : le signe de $f_n^{(2)}(x)$ est donc exactement celui de $(e^x-1)$, négatif pour $x<0$, nul en $x=0$, positif pour $x>0$ (car $\exp$ est strictement croissante, chapitre 2). $f_n''$ s'annule **et change de signe** en $x=0$, et nulle part ailleurs. C'est exactement — et uniquement — l'endroit où la concavité bascule : $I$, d'abscisse $0$, est le seul point d'inflexion de $(C_n)$, quel que soit $n$ (le paramètre $n$ ne pèse pas dans $f_n''$, puisque sa dérivée est nulle — c'est pour ça que c'est le même point $I$ pour toute la famille de courbes).
         steps:
           - math: 'f_n^{(2)}(x) = \dfrac{-2e^x(1+e^x)^2-(-2e^x)\times2e^x(1+e^x)}{(1+e^x)^4}'
-            note: "Derivee du quotient donnant f_n prime, seconde fois ; f seconde notee f exposant 2 pour eviter d'empiler les apostrophes."
+            note: "Dérivée du quotient donnant f_n prime, seconde fois ; f seconde notée f exposant 2 pour éviter d'empiler les apostrophes."
           - math: 'f_n^{(2)}(x) = \dfrac{-2e^x(1+e^x)\left[(1+e^x)-2e^x\right]}{(1+e^x)^4} = \dfrac{-2e^x(1-e^x)}{(1+e^x)^3}'
             note: "On factorise et on simplifie par (1+e^x), qui n'est jamais nul."
           - math: 'f_n^{(2)}(x) = \dfrac{2e^x(e^x-1)}{(1+e^x)^3}'
@@ -2804,9 +2804,9 @@ entries:
           $$A(t) = 2t-2\ln(1+e^t)+2\ln2 \quad (cm^2)$$
         steps:
           - math: 'f_n(x)-(nx-2) = \dfrac{2}{1+e^x} > 0 \quad (\text{question 1-a}) \ \Rightarrow\ A(t) = \int_0^t \dfrac{2}{1+e^x}\,dx'
-            note: "L'ecart est toujours strictement positif : l'aire s'ecrit comme une integrale sans valeur absolue."
+            note: "L'écart est toujours strictement positif : l'aire s'écrit comme une intégrale sans valeur absolue."
           - math: '\dfrac{2}{1+e^x} = \dfrac{2(1+e^x)-2e^x}{1+e^x} = 2-\dfrac{2e^x}{1+e^x}'
-            note: "On fait apparaitre e^x au numerateur pour reconnaitre la forme u prime sur u."
+            note: "On fait apparaître e^x au numérateur pour reconnaitre la forme u prime sur u."
           - math: '\text{primitive de } 2-\dfrac{2e^x}{1+e^x} \text{ sur } \mathbb{R}\ :\ x\mapsto 2x-2\ln(1+e^x)'
             note: "Primitive d'une constante (2x) moins primitive de u prime sur u (2 fois ln de u)."
           - math: 'A(t) = \Big[2x-2\ln(1+e^x)\Big]_0^t = 2t-2\ln(1+e^t)+2\ln2 \quad (cm^2)'
@@ -2830,7 +2830,7 @@ entries:
           Une limite **finie** : l'aire entre $(C_n)$ et son asymptote, prolongée à l'infini, reste bornée — cohérent avec le fait que l'écart $\dfrac{2}{1+e^x}$ s'écrase très vite vers $0$.
         steps:
           - math: '\ln(1+e^t) = \ln\big(e^t(e^{-t}+1)\big) = t+\ln(1+e^{-t})'
-            note: "On factorise e^t a l'interieur du log pour faire apparaitre le terme en t explicitement."
+            note: "On factorise e^t a l'intérieur du log pour faire apparaître le terme en t explicitement."
           - math: 'A(t) = 2t-2\big[t+\ln(1+e^{-t})\big]+2\ln2 = -2\ln(1+e^{-t})+2\ln2'
             note: "Les termes en 2t s'annulent : l'indetermination infini moins infini a disparu."
           - math: '\lim_{t\to+\infty} e^{-t} = 0 \ \Rightarrow\ \lim_{t\to+\infty}\ln(1+e^{-t}) = \ln1 = 0'

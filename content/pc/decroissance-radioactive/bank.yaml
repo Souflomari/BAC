@@ -431,11 +431,11 @@ entries:
           **Le piège nommé de cette question.** Répondre $\lambda = \dfrac{\ln 2}{138} = 5{,}0\times10^{-3}$ sans convertir. Le résultat serait en $\text{jour}^{-1}$, pas en $\text{s}^{-1}$ — et l'écart est d'un facteur $86\,400$. L'unité demandée par l'énoncé n'est jamais décorative : quand elle ne correspond pas à celle de la donnée, c'est **l'annonce d'une conversion**.
         steps:
           - math: 'N\!\left(t_{1/2}\right) = \frac{N_0}{2} \quad\Longrightarrow\quad e^{-\lambda t_{1/2}} = \frac{1}{2}'
-            note: "Definition de la demi-vie, reportee dans la loi de decroissance."
+            note: "Définition de la demi-vie, reportee dans la loi de décroissance."
           - math: '-\lambda\,t_{1/2} = -\ln 2 \quad\Longrightarrow\quad \lambda = \frac{\ln 2}{t_{1/2}}'
             note: "Le logarithme fait descendre l'exposant. Relation a savoir reconstruire, pas seulement retenir."
           - math: 't_{1/2} = 138 \times 24 \times 3600 = 1{,}19232 \times 10^{7}\ \text{s}'
-            note: "L'unite demandee est la s-1 : la conversion est annoncee par l'enonce lui-meme."
+            note: "L'unité demandee est la s-1 : la conversion est annoncee par l'énoncé lui-même."
           - math: '\boxed{\lambda = \frac{0{,}693}{1{,}19232\times10^{7}} = 5{,}8\times10^{-8}\ \text{s}^{-1}}'
             note: "Six chances sur cent millions par seconde et par noyau."
       - id: q4
@@ -496,17 +496,17 @@ entries:
           **Les deux pièges nommés de cette question.** Le premier : **inverser le rapport** et calculer $\ln\frac{a_1}{a_0} = -16{,}06$, ce qui donne un instant **négatif**. Un instant négatif voudrait dire que l'échantillon était moins actif avant qu'après — le signe est un contrôle, pas une contrariété. Le second : reprendre le $\lambda$ de la question précédente, exprimé en $\text{s}^{-1}$, et oublier de reconvertir le résultat de secondes en jours ; on annoncerait $2{,}76\times10^{8}$, un nombre juste en secondes mais faux dans l'unité demandée.
         steps:
           - math: 'a_1 = a_0\,e^{-\lambda t_1} \quad\Longrightarrow\quad t_1 = \frac{1}{\lambda}\,\ln\!\left(\frac{a_0}{a_1}\right)'
-            note: "Rapport retourne pour absorber le signe moins : le resultat est manifestement positif."
+            note: "Rapport retourne pour absorber le signe moins : le résultat est manifestement positif."
           - math: '\frac{1}{\lambda} = \frac{t_{1/2}}{\ln 2} \quad\Longrightarrow\quad t_1 = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a_1}\right)'
-            note: "Avec t_demi en JOURS : le resultat sort en jours, deux conversions evitees."
+            note: "Avec t_demi en JOURS : le résultat sort en jours, deux conversions evitees."
           - math: '\frac{a_0}{a_1} = \frac{3{,}5\times10^{11}}{3{,}7\times10^{4}} = 9{,}46\times10^{6} \quad;\quad \ln\!\left(9{,}46\times10^{6}\right) = 16{,}06'
-            note: "Le rapport est gigantesque : pres de dix millions."
+            note: "Le rapport est gigantesque : près de dix millions."
           - math: 't_1 = \frac{138}{0{,}693} \times 16{,}06 = 199{,}1 \times 16{,}06'
             note: "Prefacteur en jours, logarithme sans dimension."
           - math: '\boxed{t_1 \approx 3{,}2\times10^{3}\ \text{jours}}'
-            note: "Environ 3200 jours, pres de neuf ans."
+            note: "Environ 3200 jours, près de neuf ans."
           - math: 'n = \log_2\!\left(9{,}46\times10^{6}\right) = \frac{16{,}06}{0{,}693} = 23{,}2 \quad\text{et}\quad \frac{3200}{138} = 23{,}2'
-            note: "Controle independant en demi-vies : les deux chemins coincident exactement."
+            note: "Controle indépendant en demi-vies : les deux chemins coïncident exactement."
 
   # ── bk-2021-n-x3 — 2021 N, Exercice III : désintégration du plutonium 238 ──
   - id: bk-2021-n-x3
@@ -1071,7 +1071,7 @@ entries:
       year: 2024
       session: rattrapage
       filiere: "SPC"
-      exercise_label: "Exercice 3 — Désintégration en chaine"
+      exercise_label: "Exercice 3 — Désintégration en chaîne"
     bareme_total: 2.0
     duration_min: 12
     sourcing:
@@ -1080,7 +1080,7 @@ entries:
         2024 session de rattrapage — examen national PC BIOF (Sciences
         Physiques, SPC), code sujet RS 28F, AlloSchool element/145769,
         scan course-422/upload-87471, page 4/6 (Exercice 3 —
-        « Désintégration en chaine » ; barème de l'exercice complet 2,0 pt,
+        « Désintégration en chaîne » ; barème de l'exercice complet 2,0 pt,
         recompté question par question : 0,25 + 0,25 + 0,25 + 0,5 + 0,75).
         Transcription vérifiée par une passe adversariale indépendante
         (2026-08-23, docs/sujets/_incoming/pc-spc-2024-r.md, statut
@@ -1105,9 +1105,9 @@ entries:
         Non signalé à l'élève : le sujet ne l'ouvre pas, et la valeur
         obtenue reste la demi-vie totale correcte du nucléide.
     intro: |-
-      **Désintégration en chaine (examen national, session de rattrapage 2024 — Exercice 3, 2 points).**
+      **Désintégration en chaîne (examen national, session de rattrapage 2024 — Exercice 3, 2 points).**
 
-      Suite à des désintégrations en chaine, un nucléide peut se transformer en d'autres jusqu'à obtention d'un nucléide stable, formant ainsi une famille radioactive.
+      Suite à des désintégrations en chaîne, un nucléide peut se transformer en d'autres jusqu'à obtention d'un nucléide stable, formant ainsi une famille radioactive.
 
       Le diagramme ci-dessous donne quelques nucléides appartenant à une famille radioactive.
 
@@ -1181,7 +1181,7 @@ entries:
         stem: |-
           (0,25 pt) On considère la désintégration d'un noyau de bismuth $^{212}_{83}\text{Bi}$ en noyau de thallium $^{208}_{81}\text{Tl}$ (désintégration (2)).
 
-          Ecrire l'équation de cette désintégration.
+          Écrire l'équation de cette désintégration.
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** Ici le père ET le fils sont donnés : c'est la particule émise qui est l'inconnue. Le geste ne change pas d'un iota — on pose l'équation avec l'inconnue et on applique les deux lois de Soddy (chapitre 3). Le diagramme annonce d'ailleurs la réponse : la flèche (2) descend de quatre crans en $A$ et recule de deux crans en $Z$, la signature exacte de l'émission d'un noyau d'hélium.
 
@@ -1561,9 +1561,9 @@ entries:
           - math: '\Delta m = \left[6\,m_p + 8\,m_n\right] - m\!\left({}^{14}_{6}\text{C}\right)'
             note: "Z = 6 protons et A - Z = 8 neutrons, comptes a la question 1.1."
           - math: '6 \times 1{,}00728 + 8 \times 1{,}00866 = 6{,}04368 + 8{,}06928 = 14{,}11296\ \text{u}'
-            note: "Masse des nucleons SEPARES."
+            note: "Masse des nucléons SEPARES."
           - math: '\Delta m = 14{,}11296 - 13{,}99995 = 0{,}11301\ \text{u}'
-            note: "Toujours positif : le noyau assemble est plus leger que ses morceaux."
+            note: "Toujours positif : le noyau assemble est plus léger que ses morceaux."
           - math: 'E_\ell = 0{,}11301 \times 931{,}5 = \boxed{105{,}3\ \text{MeV}}'
             note: "1 u vaut 931,5 MeV.c-2 : la conversion est une simple multiplication."
           - math: '\frac{E_\ell}{A} = \frac{105{,}3}{14} = 7{,}52\ \text{MeV/nucléon}'
@@ -1628,11 +1628,11 @@ entries:
           **Le piège nommé de cette question.** Confondre $\lambda$ et $t_{1/2}$, et écrire $t_1 = t_{1/2} \times \ln\frac{a_0}{a_1}$ sans diviser par $\ln 2$. On trouverait $1567$ ans au lieu de $2260$ — une erreur de $30\ \%$ que le contrôle en demi-vies débusque immédiatement. Le second piège : **inverser le rapport** et calculer $\ln\frac{a_1}{a_0} = -0{,}273$, ce qui donne un âge **négatif**. Un bois qui aurait un âge négatif devrait mourir dans le futur : le signe est un contrôle, pas une contrariété.
         steps:
           - math: 'a_1 = a_0\,e^{-\lambda t_1}'
-            note: "Le bois recent donne a_0 : c'est l'activite qu'avait le bois ancien au moment de sa mort."
+            note: "Le bois recent donne a_0 : c'est l'activité qu'avait le bois ancien au moment de sa mort."
           - math: 't_1 = \frac{1}{\lambda}\,\ln\!\left(\frac{a_0}{a_1}\right)'
-            note: "Rapport retourne pour absorber le signe moins : le resultat est manifestement positif."
+            note: "Rapport retourne pour absorber le signe moins : le résultat est manifestement positif."
           - math: '\lambda = \frac{\ln 2}{t_{1/2}} \quad\Longrightarrow\quad t_1 = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a_1}\right)'
-            note: "L'enonce donne la demi-vie, pas lambda : le pont se fait par la relation du chapitre 5."
+            note: "L'énoncé donne la demi-vie, pas lambda : le pont se fait par la relation du chapitre 5."
           - math: 't_1 = \frac{5730}{0{,}6931} \times \ln\!\left(\frac{418}{318}\right) = 8267 \times 0{,}2734'
             note: "Rapport 418/318 = 1,3145 ; son logarithme vaut 0,2734."
           - math: '\boxed{t_1 \approx 2{,}26 \times 10^{3}\ \text{ans}}'
@@ -1730,11 +1730,11 @@ entries:
           Le sens physique, pour ne pas retenir des chiffres nus : la chaîne compte 8 désintégrations $\alpha$ (qui font tomber $A$ de 238 à 206, par paquets de 4) et 6 désintégrations $\beta^-$ (qui corrigent l'excès de charge que les 8 $\alpha$ ont laissé : 8 émissions $\alpha$ font baisser $Z$ de $92$ à $92-16=76$, et il faut remonter de $76$ à $82$, soit $6$ émissions $\beta^-$).
         steps:
           - math: '238 = 206 + 4y \implies y = 8'
-            note: "Conservation de A : chaque particule alpha (4/2 He) emporte 4 nucleons, l'electron beta n'en emporte aucun."
+            note: "Conservation de A : chaque particule alpha (4/2 He) emporte 4 nucléons, l'électron beta n'en emporte aucun."
           - math: '92 = 82 - x + 2y \implies x = 2y - 10 = 6'
-            note: "Conservation de Z : chaque electron beta emporte une charge -1, chaque alpha une charge +2."
+            note: "Conservation de Z : chaque électron beta emporte une charge -1, chaque alpha une charge +2."
           - math: '\boxed{x = 6 \qquad y = 8}'
-            note: "6 emissions beta-moins et 8 emissions alpha dans la chaine complete."
+            note: "6 émissions beta-moins et 8 émissions alpha dans la chaîne complete."
       - id: q2
         stem: |-
           **1-2-** (0,5 pt) Donner la composition du noyau d'Uranium 238.
@@ -1742,7 +1742,7 @@ entries:
           La notation $^{238}_{92}\text{U}$ verrouille tout : le nombre du bas, $Z=92$, est le nombre de protons ; le nombre du haut, $A=238$, est le nombre total de nucléons. Le nombre de neutrons s'obtient par différence, $N = A - Z$ — jamais lu directement, toujours calculé.
         steps:
           - math: 'Z = 92 \qquad N = A - Z = 238 - 92'
-            note: "Z se lit directement en indice ; N s'obtient par difference, jamais lu directement."
+            note: "Z se lit directement en indice ; N s'obtient par différence, jamais lu directement."
           - math: '\boxed{92\ \text{protons et}\ 146\ \text{neutrons}}'
             note: "Composition du noyau d'Uranium 238."
       - id: q3
@@ -1772,13 +1772,13 @@ entries:
           En reportant dans l'expression de $t$, on retrouve exactement la formule demandée.
         steps:
           - math: 'N_0 = N_U(t) + N_{Pb}(t) \qquad N_U(t) = N_0\,e^{-\lambda t}'
-            note: "Tout le plomb vient de l'Uranium disparu (hypothese de l'enonce) ; loi de decroissance du chapitre precedent."
+            note: "Tout le plomb vient de l'Uranium disparu (hypothèse de l'énoncé) ; loi de décroissance du chapitre précédent."
           - math: 'e^{\lambda t} = 1 + \frac{N_{Pb}(t)}{N_U(t)} \implies t = \frac{1}{\lambda}\ln\!\left(1+\frac{N_{Pb}(t)}{N_U(t)}\right)'
-            note: "On isole t par le logarithme neperien, apres avoir divise le bilan par N_U(t)."
+            note: "On isole t par le logarithme neperien, après avoir divise le bilan par N_U(t)."
           - math: 't = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(1+\frac{N_{Pb}(t)}{N_U(t)}\right)'
-            note: "On remplace lambda par ln2/t1/2 (relation demi-vie/constante radioactive du chapitre precedent)."
+            note: "On remplace lambda par ln2/t1/2 (relation demi-vie/constante radioactive du chapitre précédent)."
           - math: '\frac{N_{Pb}(t)}{N_U(t)} = \frac{m_{Pb}(t)/M(^{206}Pb)}{m_U(t)/M(^{238}U)} = \frac{m_{Pb}(t).M(^{238}U)}{m_U(t).M(^{206}Pb)}'
-            note: "Pont mole-masse n=m/M puis N=n.NA (chimie generale) ; NA se simplifie exactement dans le rapport."
+            note: "Pont mole-masse n=m/M puis N=n.NA (chimie générale) ; NA se simplifie exactement dans le rapport."
           - math: '\boxed{t = \frac{t_{1/2}}{\ln 2}\,.\,\ln\!\left(1 + \frac{m_{Pb}(t).M(^{238}U)}{m_{U}(t).M(^{206}Pb)}\right)}'
             note: "Expression demandee, obtenue par substitution du rapport de masses dans l'expression de t."
       - id: q4
@@ -1790,13 +1790,13 @@ entries:
           Réflexe de vraisemblance avant même de conclure : la masse de plomb formée est mille fois plus petite que la masse d'Uranium restante — la roche a donc consommé une fraction infime de son Uranium initial, et son âge doit être petit devant la demi-vie de $4{,}5\times10^{9}$ ans. Un résultat de l'ordre du milliard d'années serait suspect avant même de vérifier le calcul.
         steps:
           - math: '\frac{m_{Pb}(t).M(^{238}U)}{m_{U}(t).M(^{206}Pb)} = \frac{0{,}01\times238}{10\times206} = 1{,}1553\times10^{-3}'
-            note: "Rapport de masses, avec les donnees de l'enonce."
+            note: "Rapport de masses, avec les données de l'énoncé."
           - math: '\ln\!\left(1+1{,}1553\times10^{-3}\right) \approx 1{,}1546\times10^{-3}'
-            note: "Pour x petit, ln(1+x) est tres proche de x."
+            note: "Pour x petit, ln(1+x) est très proche de x."
           - math: '\frac{t_{1/2}}{\ln 2} = \frac{4{,}5\times10^{9}}{0{,}6931} \approx 6{,}4924\times10^{9}\ \text{ans}'
             note: "Prefacteur de la formule."
           - math: '\boxed{t \approx 6{,}4924\times10^{9} \times 1{,}1546\times10^{-3} \approx 7{,}50\times10^{6}\ \text{ans}}'
-            note: "Age d'environ 7,5 millions d'annees : petit devant la demi-vie 4,5e9 ans, coherent avec le controle de vraisemblance."
+            note: "Age d'environ 7,5 millions d'années : petit devant la demi-vie 4,5e9 ans, coherent avec le controle de vraisemblance."
 
   # ── bk-2010-n-x2 — 2010 N, Physique nucléaire (position 2 du cartouche) :
   #    le Radon 222 ──
@@ -1910,9 +1910,9 @@ entries:
           Ce qu'on cherche et pourquoi ce geste. C'est une lecture directe de la notation $^{A}_{Z}\text{X}$ posée au chapitre 2 de la leçon : $Z$ (en indice bas) donne directement le nombre de protons, et $N = A - Z$ donne le nombre de neutrons. Rien à calculer avant d'avoir identifié $A$ et $Z$ sur le symbole lui-même.
         steps:
           - math: 'Z = 86 \implies 86\ \text{protons}'
-            note: "Numero atomique lu directement sur le symbole (chapitre 2)."
+            note: "Numéro atomique lu directement sur le symbole (chapitre 2)."
           - math: 'N = A - Z = 222 - 86 = 136 \implies 136\ \text{neutrons}'
-            note: "Nombre de nucleons total moins le nombre de protons."
+            note: "Nombre de nucléons total moins le nombre de protons."
       - id: q2
         part: "1-2 — L'énergie de liaison (hors des chapitres de cette leçon)"
         stem: |-
@@ -1929,11 +1929,11 @@ entries:
           $$E_\ell = \Delta m \times 931{,}5$$
         steps:
           - math: '86\times1{,}0073 = 86{,}6278 \qquad 136\times1{,}0087 = 137{,}1832'
-            note: "Masse totale des 86 protons et des 136 neutrons separes."
+            note: "Masse totale des 86 protons et des 136 neutrons séparés."
           - math: '\Delta m = (86{,}6278 + 137{,}1832) - 221{,}9703 = 223{,}8110 - 221{,}9703 = 1{,}8407\ u'
-            note: "Defaut de masse : masse des nucleons separes moins masse du noyau assemble (toujours positif pour un noyau lie)."
+            note: "Défaut de masse : masse des nucléons séparés moins masse du noyau assemble (toujours positif pour un noyau lie)."
           - math: '\boxed{E_\ell = 1{,}8407 \times 931{,}5 \approx 1714{,}6\ \text{MeV}}'
-            note: "Energie de liaison, par la conversion 1u = 931,5 MeV/c2 donnee dans l'enonce."
+            note: "Énergie de liaison, par la conversion 1u = 931,5 MeV/c2 donnée dans l'énoncé."
       - id: q3
         part: "1-3 — Les lois de Soddy"
         stem: |-
@@ -1950,9 +1950,9 @@ entries:
           Conservation de la charge ($Z$) : $92 = 86 + 2x - y$ ; avec $x=4$, $92 = 86 + 8 - y = 94 - y$, donc $y = 2$.
         steps:
           - math: '238 = 222 + 4x \implies x = 4'
-            note: "Conservation du nombre de nucleons A : 4 emissions alpha."
+            note: "Conservation du nombre de nucléons A : 4 émissions alpha."
           - math: '92 = 86 + 2(4) - y \implies y = 2'
-            note: "Conservation de la charge Z, avec x=4 substitue : 2 emissions beta-."
+            note: "Conservation de la charge Z, avec x=4 substitue : 2 émissions beta-."
       - id: q4
         part: "2-1 — La masse de Radon dans l'air, à partir de l'activité"
         stem: |-
@@ -1977,7 +1977,7 @@ entries:
           - math: 'N_0 = \frac{a_0\,t_{1/2}}{\ln 2} = \frac{5\times10^{3}\times336960}{0{,}6931} \approx 2{,}431\times10^{9}'
             note: "N0 = a0/lambda, avec lambda = ln2/t1/2 (chapitre 5)."
           - math: '\boxed{m_0 = \frac{N_0}{\mathcal{N}_A}\times M(\text{Rn}) \approx 8{,}96\times10^{-13}\ \text{g}}'
-            note: "Pont mole-masse (chimie generale) : n0 = N0/NA, puis m0 = n0.M."
+            note: "Pont mole-masse (chimie générale) : n0 = N0/NA, puis m0 = n0.M."
       - id: q5
         part: "2-2 — Le temps avant d'atteindre le seuil OMS"
         stem: |-
@@ -1988,13 +1988,13 @@ entries:
           $$a(t) = a_0\,e^{-\lambda t} \implies t = \frac{1}{\lambda}\ln\!\left(\frac{a_0}{a_1}\right) = \frac{t_{1/2}}{\ln 2}\ln\!\left(\frac{a_0}{a_1}\right)$$
         steps:
           - math: '\frac{a_0}{a_1} = \frac{5000}{300} \approx 16{,}67'
-            note: "Rapport activite initiale sur activite limite recommandee par l'OMS."
+            note: "Rapport activité initiale sur activité limite recommandee par l'OMS."
           - math: '\ln(16{,}67) \approx 2{,}8134'
             note: "Logarithme neperien du rapport."
           - math: 't = \frac{t_{1/2}}{\ln 2}\times\ln\!\left(\frac{a_0}{a_1}\right) = \frac{3{,}9}{0{,}6931}\times2{,}8134'
-            note: "Inversion de la loi de decroissance (chapitre 6), appliquee a l'activite (chapitre 5)."
+            note: "Inversion de la loi de décroissance (chapitre 6), appliquee a l'activité (chapitre 5)."
           - math: '\boxed{t \approx 15{,}83\ \text{jours}}'
-            note: "Duree pour que l'activite decroisse de a0 = 5000 Bq jusqu'au seuil OMS a1 = 300 Bq, soit environ 15 jours et 20 heures."
+            note: "Durée pour que l'activité decroisse de a0 = 5000 Bq jusqu'au seuil OMS a1 = 300 Bq, soit environ 15 jours et 20 heures."
 
   # ── bk-2015-n-x2b — 2015 N, Exercice 2 (Physique nucléaire) : Astate 211, QCM ──
   # Sœur de bk-2015-n-x2 (propagation-onde-lumineuse, bloc « Ondes » du même
@@ -2076,11 +2076,11 @@ entries:
           $$\boxed{\text{C}}$$
         steps:
           - math: '211 = A + 4 \implies A = 207'
-            note: "Conservation du nombre de nucleons (chapitre 3, lois de Soddy)."
+            note: "Conservation du nombre de nucléons (chapitre 3, lois de Soddy)."
           - math: '85 = Z + 2 \implies Z = 83'
             note: "Conservation de la charge (chapitre 3, lois de Soddy)."
           - math: '\boxed{^{207}_{83}\text{Bi}}'
-            note: "Reponse C."
+            note: "Réponse C."
       - id: q2
         stem: |-
           **5-** (1 pt) La demi-vie $t_{1/2}$ de l'Astate 211 est :
@@ -2109,7 +2109,7 @@ entries:
           - math: 't_{1/2} = \frac{\ln 2}{\lambda} = \frac{3\ln 2}{0{,}29}'
             note: "Chapitre R4 : demi-vie a partir de lambda."
           - math: '\boxed{t_{1/2} \approx 7{,}17\ \text{h}}'
-            note: "Reponse C."
+            note: "Réponse C."
 
   # ── bk-2015-r-x2b — 2015 R, Exercice 2 (❖ Physique nucléaire) : désintégration du Polonium 210, QCM ──
   #
@@ -2193,7 +2193,7 @@ entries:
           |---|---|
           | **A** | Particule $\alpha$ |
           | **B** | Neutron |
-          | **C** | Electron |
+          | **C** | Électron |
           | **D** | Positron |
         reasoning: |-
           On pose l'équation de désintégration avec la particule émise en inconnue, et on applique les lois de conservation de Soddy (chapitre 3) — ce sont les nombres A et Z imprimés qui tranchent, pas le nom des noyaux :
@@ -2207,11 +2207,11 @@ entries:
           **Pourquoi les trois autres échouent — chacune contre les deux conservations.** B (neutron, $^{1}_{0}n$) donnerait un fils $^{209}_{84}$ : ni le bon $A$ ni le bon $Z$. C (électron, $\beta^-$ : $^{\;\;0}_{-1}e$) conserverait $A = 210$ et donnerait $Z = 85$ — une désintégration $\beta^-$ ne change jamais le nombre de nucléons, or il en manque $4$ ici. D (positron, $\beta^+$ : $^{0}_{1}e$) conserverait aussi $A = 210$ avec $Z = 83$. Seule l'émission $\alpha$ retire à la fois $4$ nucléons et $2$ charges — exactement l'écart entre père et fils.
         steps:
           - math: 'A = 210 - 206 = 4'
-            note: "Conservation du nombre de nucleons (chapitre 3, lois de Soddy)."
+            note: "Conservation du nombre de nucléons (chapitre 3, lois de Soddy)."
           - math: 'Z = 84 - 82 = 2'
             note: "Conservation de la charge (chapitre 3, lois de Soddy)."
           - math: '\boxed{^{4}_{2}\text{He} : \text{particule } \alpha\ \text{(réponse A)}}'
-            note: "Seule l'emission alpha retire 4 nucleons ET 2 charges a la fois."
+            note: "Seule l'émission alpha retire 4 nucléons ET 2 charges a la fois."
       - id: q2
         stem: |-
           **5-** (0,75 pt) On considère un échantillon radioactif de Polonium 210, de demi-vie $t_{1/2}$. Son activité initiale est $a_0$, et son activité à un instant $t$ est $a(t)$ :
@@ -2236,7 +2236,7 @@ entries:
           **Pourquoi les trois autres échouent — toutes traitent l'exponentielle comme une arithmétique.** A ($1/3$) suppose une décroissance LINÉAIRE — « trois demi-vies, donc divisé par trois » — c'est LE contresens que le chapitre 4 démonte : la moitié de ce qui RESTE disparaît à chaque demi-vie, pas la moitié du stock initial. B ($1/6$) combine les deux nombres de l'énoncé ($2\times3$) sans loi derrière. D ($1/9$) élève le mauvais nombre au carré ($3^2$), comme si la demi-vie divisait par $3$. La seule opération légitime est $2^n$ pour $n$ demi-vies : $2^3 = 8$.
         steps:
           - math: '\frac{a(3\,t_{1/2})}{a_0} = \left(\frac{1}{2}\right)^{3} = \frac{1}{8}'
-            note: "Chaque demi-vie divise l'activite par 2 (chapitre 5) ; trois demi-vies divisent par 2^3."
+            note: "Chaque demi-vie divise l'activité par 2 (chapitre 5) ; trois demi-vies divisent par 2^3."
           - math: '\boxed{\text{C\,: } \frac{1}{8}}'
             note: "Controle par la loi : a0.exp(-3.ln2) = a0/8 (chapitre 4)."
 
@@ -2302,7 +2302,7 @@ entries:
       - $1u = 931{,}5\ \text{Mev/c}^2$ *(« Mev » tel qu'imprimé — défaut du sujet officiel, sans incidence ; c'est aussi le seul item de la liste sans point-virgule final)*
       - Masses des particules en unité de masse atomique (u)
 
-      | Particule | $^{14}_{6}\text{C}$ | $^{14}_{7}\text{N}$ | Electron |
+      | Particule | $^{14}_{6}\text{C}$ | $^{14}_{7}\text{N}$ | Électron |
       |---|---|---|---|
       | Masse (u) | $13{,}9999$ | $13{,}9992$ | $0{,}0005$ |
 
@@ -2318,11 +2318,11 @@ entries:
           Le père est $^{14}_{6}\text{C}$, le fils est $^{14}_{7}\text{N}$ (donné par l'énoncé). Pour la particule émise $^{A}_{Z}X$ : conservation de $A$ : $14 = 14 + A$, donc $A = 0$ ; conservation de $Z$ : $6 = 7 + Z$, donc $Z = -1$. La particule $^{0}_{-1}e$ est un électron : c'est une désintégration $\beta^-$ — cohérent avec le chapitre 2, qui repère l'excès de neutrons du carbone 14 comme la cause de son instabilité (un neutron se transforme en proton, d'où $Z$ qui augmente d'une unité à $A$ constant).
         steps:
           - math: '14 = 14 + A \implies A = 0 \qquad 6 = 7 + Z \implies Z = -1'
-            note: "Lois de Soddy (chapitre 3) : conservation du nombre de nucleons et de la charge, appliquees a la particule emise."
+            note: "Lois de Soddy (chapitre 3) : conservation du nombre de nucléons et de la charge, appliquees a la particule emise."
           - math: '\boxed{^{14}_{6}\text{C} \longrightarrow\ ^{14}_{7}\text{N} +\ ^{0}_{-1}e}'
-            note: "Equation de la desintegration."
-          - math: '\boxed{\text{radioactivite } \beta^-}'
-            note: "La particule emise est un electron : desintegration beta moins."
+            note: "Équation de la désintégration."
+          - math: '\boxed{\text{radioactivité } \beta^-}'
+            note: "La particule emise est un électron : désintégration beta moins."
       - id: q2
         part: "1-2 — La composition du noyau fils"
         stem: |-
@@ -2331,9 +2331,9 @@ entries:
           Lecture directe de la notation $^{A}_{Z}\text{X}$ posée au chapitre 2 de la leçon, appliquée au fils $^{14}_{7}\text{N}$ : $Z$ donne le nombre de protons, $N = A - Z$ le nombre de neutrons.
         steps:
           - math: 'Z = 7 \implies 7\ \text{protons}'
-            note: "Numero atomique lu directement sur le symbole du noyau fils (chapitre 2)."
+            note: "Numéro atomique lu directement sur le symbole du noyau fils (chapitre 2)."
           - math: '\boxed{N = A - Z = 14 - 7 = 7 \implies 7\ \text{neutrons}}'
-            note: "Nombre de nucleons total moins le nombre de protons : 7 protons et 7 neutrons."
+            note: "Nombre de nucléons total moins le nombre de protons : 7 protons et 7 neutrons."
       - id: q3
         part: "1-3 — L'énergie libérée (cross-list « Noyaux, masse et énergie »)"
         stem: |-
@@ -2348,11 +2348,11 @@ entries:
           **La conversion en énergie**, par le facteur donné dans les données ($1u = 931{,}5\ \text{MeV/c}^2$) : $\Delta m < 0$ signifie que le système PERD de la masse — cette masse manquante est précisément l'énergie libérée, $\Delta E = |\Delta m| \times 931{,}5$ MeV.
         steps:
           - math: 'm(^{14}_{7}\text{N}) + m(e) = 13{,}9992 + 0{,}0005 = 13{,}9997\ u'
-            note: "Masse totale APRES desintegration : noyau fils PLUS electron emis (l oublier est le piege de la question)."
+            note: "Masse totale APRÈS désintégration : noyau fils PLUS électron emis (l oublier est le piege de la question)."
           - math: '\Delta m = 13{,}9997 - 13{,}9999 = -0{,}0002\ u'
-            note: "Bilan de masse : negatif, le systeme perd de la masse -- la reaction libere de l energie."
+            note: "Bilan de masse : négatif, le système perd de la masse -- la réaction libere de l énergie."
           - math: '\boxed{\Delta E = |\Delta m|\times931{,}5 = 0{,}0002\times931{,}5 \approx 0{,}186\ \text{MeV}}'
-            note: "Equivalence masse-energie (notion Noyaux, masse et energie), conversion par 1u = 931,5 MeV/c2."
+            note: "Équivalence masse-energie (notion Noyaux, masse et énergie), conversion par 1u = 931,5 MeV/c2."
       - id: q4
         part: "2 — Datation par le carbone 14"
         stem: |-
@@ -2365,9 +2365,9 @@ entries:
           **Le piège nommé de cette question.** Ne pas inverser le rapport : c'est $a_0/a = 165/135 > 1$ qui va dans le logarithme (l'activité a DIMINUÉ depuis la mort, donc le rapport référence-sur-mesure est plus grand que $1$ et le temps sort positif). Écrire $135/165$ donnerait un âge négatif — un signal d'alarme, pas une convention.
         steps:
           - math: 't = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a}\right) \qquad \frac{a_0}{a} = \frac{165}{135} \approx 1{,}222'
-            note: "Inversion de la loi de decroissance appliquee a l activite (chapitre 5 et 5) ; a0 est l activite du bois RECENT."
+            note: "Inversion de la loi de décroissance appliquee a l activité (chapitre 5 et 5) ; a0 est l activité du bois RECENT."
           - math: 't = \frac{5570}{0{,}6931}\times\ln(1{,}222) = \frac{5570}{0{,}6931}\times0{,}2007'
-            note: "lambda = ln2/t_1/2, avec la demi-vie DONNEE par l enonce (5570 ans)."
+            note: "lambda = ln2/t_1/2, avec la demi-vie DONNÉE par l énoncé (5570 ans)."
           - math: '\boxed{t \approx 1612{,}5\ \text{ans} \approx 1613\ \text{ans}}'
             note: "Age approximatif de la statue -- concordant avec le corrige non officiel (1 612,5 ans)."
 
@@ -2431,7 +2431,7 @@ entries:
       year: 2013
       session: rattrapage
       filiere: "SPC"
-      exercise_label: "Physique nucléaire — Etude du nucléide iode 131 et d'un échantillon d'épinard contaminé"
+      exercise_label: "Physique nucléaire — Étude du nucléide iode 131 et d'un échantillon d'épinard contaminé"
     bareme_total: 2.5
     duration_min: 15
     sourcing:
@@ -2481,7 +2481,7 @@ entries:
         majuscule (alors que le sommaire de la page 1 écrit « Fukushima » —
         incohérence interne du sujet), « les taux […] a parfois dépassé »,
         « Au japon », la virgule entre sujet et verbe (« le 11 mars 2011,
-        ont déclaré »), « Ecrire la l'équation » (mot dupliqué),
+        ont déclaré »), « Écrire la l'équation » (mot dupliqué),
         « désintergation », « la plus petite durée nécessaires » — registre
         complet en docs/sujets/_incoming/pc-2013-r.md §5.1 et V.9. NON
         COMPTÉ COMME DÉFAUT, mais signalé : le chapeau de presse écrit
@@ -2520,9 +2520,9 @@ entries:
       - $m(e^-) = 0{,}00055\ \text{u}$.
     questions:
       - id: q1
-        part: "1- Etude du nucléide iode 131"
+        part: "1- Étude du nucléide iode 131"
         stem: |-
-          **1-1-** (0,5 pt) La désintégration d'un noyau d'iode ${}^{131}_{53}\text{I}$ donne naissance à un noyau ${}^{131}_{54}\text{Xe}$. Ecrire la l'équation *(sic — mot dupliqué dans le sujet)* modélisant cette désintégration, et préciser son type.
+          **1-1-** (0,5 pt) La désintégration d'un noyau d'iode ${}^{131}_{53}\text{I}$ donne naissance à un noyau ${}^{131}_{54}\text{Xe}$. Écrire la l'équation *(sic — mot dupliqué dans le sujet)* modélisant cette désintégration, et préciser son type.
         reasoning: |-
           Les deux **lois de conservation de Soddy** (chapitre 3) suffisent, et elles se posent avant de nommer quoi que ce soit :
 
@@ -2557,17 +2557,17 @@ entries:
           **Le piège de cette question, et il coûte cher.** Oublier $m(e^-)$ et calculer seulement $130{,}8770 - 130{,}8755 = 1{,}5\times10^{-3}\ \text{u}$, ce qui donnerait $1{,}40\ \text{MeV}$ — soit $58\ \%$ de trop. La masse de l'électron est petite, mais elle est du même ordre que le défaut de masse lui-même : ici elle en représente plus du tiers. On ne la néglige jamais dans un bilan $\beta$.
         steps:
           - math: '{}^{131}_{53}\text{I} \longrightarrow {}^{131}_{54}\text{Xe} + {}^{\ 0}_{-1}e'
-            note: "Equation etablie a la question 1-1 : le bilan de masse porte sur trois termes, pas deux."
+            note: "Équation etablie a la question 1-1 : le bilan de masse porte sur trois termes, pas deux."
           - math: '|\Delta m| = m\left({}^{131}_{53}\text{I}\right) - m\left({}^{131}_{54}\text{Xe}\right) - m(e^-)'
-            note: "Masses nucleaires : l'electron emis compte, il ne doit jamais etre oublie."
+            note: "Masses nucleaires : l'électron emis compte, il ne doit jamais être oublie."
           - math: '|\Delta m| = 130{,}8770 - 130{,}8755 - 0{,}00055 = 9{,}5\times10^{-4}\ \text{u}'
-            note: "Defaut de masse, en unites de masse atomique."
+            note: "Défaut de masse, en unités de masse atomique."
           - math: 'E = |\Delta m|\,c^2 = 9{,}5\times10^{-4}\times 931{,}5'
-            note: "Conversion directe par la donnee 1 u = 931,5 MeV par c au carre."
+            note: "Conversion directe par la donnée 1 u = 931,5 MeV par c au carré."
           - math: '\boxed{E \approx 0{,}885\ \text{MeV}}'
-            note: "Valeur re-derivee par la verification : 0,8849 MeV."
+            note: "Valeur re-derivee par la vérification : 0,8849 MeV."
       - id: q3
-        part: "2- Etude d'un échantillon d'épinard contaminé par de l'iode 131"
+        part: "2- Étude d'un échantillon d'épinard contaminé par de l'iode 131"
         stem: |-
           **2-1-** (0,5 pt) La mesure de l'activité d'un échantillon d'épinard, pris d'une prairie proche du lieu de l'accident nucléaire, a donné la valeur $8\,000\ \text{Bq}$ par kilogramme, à un instant considéré comme origine des temps. *(L'arabe écrit « une exploitation agricole », le document officiel français « une prairie » — écart cosmétique, déclaré.)*
 
@@ -2590,15 +2590,15 @@ entries:
           **Pourquoi $\lambda$ est si petite ici, et ce que ça veut dire.** $\lambda = \ln 2 / 691\,200 \approx 1{,}00\times10^{-6}\ \text{s}^{-1}$ : chaque seconde, environ un noyau sur un million se désintègre. Il en faut donc beaucoup pour produire $8\,000$ désintégrations par seconde — c'est exactement ce que le calcul dit.
         steps:
           - math: 't_{1/2} = 8\ \text{jours} = 8\times 24\times 3600 = 691200\ \text{s}'
-            note: "Conversion obligatoire : le becquerel est une desintegration par seconde."
+            note: "Conversion obligatoire : le becquerel est une désintégration par seconde."
           - math: '\lambda = \frac{\ln 2}{t_{1/2}} = \frac{0{,}693}{691200} \approx 1{,}00\times10^{-6}\ \text{s}^{-1}'
             note: "Constante radioactive de l'iode 131, en inverse de seconde."
           - math: 'a_0 = \lambda\,N_0 \implies N_0 = \frac{a_0}{\lambda} = \frac{a_0\,t_{1/2}}{\ln 2}'
             note: "Relation activite-nombre de noyaux (chapitre 5), inversee."
           - math: 'N_0 = \frac{8000\times 691200}{0{,}693}'
-            note: "Application numerique, toutes grandeurs en unites SI."
+            note: "Application numérique, toutes grandeurs en unités SI."
           - math: '\boxed{N_0 \approx 7{,}98\times10^{9}\ \text{noyaux} \approx 8\times10^{9}}'
-            note: "Valeur re-derivee par la verification : 7,978 x 10^9 noyaux."
+            note: "Valeur re-derivee par la vérification : 7,978 x 10^9 noyaux."
       - id: q4
         stem: |-
           **2-2-** (0,75 pt) Déterminer, en jours, la plus petite durée nécessaires *(sic, pour « nécessaire »)* pour la décontamination des épinards par l'iode 131.
@@ -2628,10 +2628,10 @@ entries:
           **Le piège de cette question.** Répondre « $8$ jours » en confondant demi-vie et durée de décontamination : une demi-vie ramènerait l'activité à $4\,000\ \text{Bq}$, encore le double du seuil admissible. Le seuil est fixé par l'énoncé, pas par la demi-vie.
         steps:
           - math: 'a(t) = a_0\,e^{-\lambda t} \le 2000\ \text{Bq} \qquad a_0 = 8000\ \text{Bq}'
-            note: "Mise en inequation : le seuil de non-contamination est donne par le chapeau de l'enonce."
+            note: "Mise en inequation : le seuil de non-contamination est donne par le chapeau de l'énoncé."
           - math: '\frac{a_0}{a} = \frac{8000}{2000} = 4 = 2^2'
             note: "Le rapport est une puissance de 2 : le sujet a prepare le raccourci."
           - math: 'e^{-\lambda t} \le \frac{1}{4} \implies \lambda t \ge \ln 4 = 2\ln 2 \implies t \ge 2\,t_{1/2}'
-            note: "Chaque demi-vie divise l'activite par deux ; il en faut donc exactement deux."
+            note: "Chaque demi-vie divise l'activité par deux ; il en faut donc exactement deux."
           - math: '\boxed{t_{min} = 2\times 8 = 16\ \text{jours}}'
-            note: "Duree minimale pour que l'activite redescende a 2000 Bq par kilogramme."
+            note: "Durée minimale pour que l'activité redescende a 2000 Bq par kilogramme."

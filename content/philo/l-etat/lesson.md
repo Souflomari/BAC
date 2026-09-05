@@ -143,7 +143,7 @@ Cet acte d'association fait naître un corps moral et collectif, dont Rousseau n
 
 Puisque la loi légitime, chez Rousseau, exprime la volonté générale — celle-là même à laquelle chaque citoyen participe comme membre du corps politique — obéir à cette loi n'est pas obéir à un pouvoir étranger : c'est, en un sens profond, obéir à ce que la communauté, dont on fait partie, se prescrit collectivement à elle-même (cf. la leçon « La liberté », où ce mécanisme précis est développé : « l'obéissance à la loi qu'on s'est prescrite est liberté »).
 
-> **Erreur à éviter :** ne confonds pas la volonté générale avec la simple « volonté de la majorité » ou avec l'addition des intérêts privés (la volonté de tous) — ce sont, chez Rousseau, deux choses different. Et ne confonds surtout pas, encore une fois, Rousseau et Hobbes : c'est Hobbes, non Rousseau, qui imagine un état de nature violent et un souverain séparé des sujets ; Rousseau construit, à l'inverse, un contrat où l'autorité n'est jamais qu'une émanation directe et égalitaire de la communauté elle-même.
+> **Erreur à éviter :** ne confonds pas la volonté générale avec la simple « volonté de la majorité » ou avec l'addition des intérêts privés (la volonté de tous) — ce sont, chez Rousseau, deux choses différentes. Et ne confonds surtout pas, encore une fois, Rousseau et Hobbes : c'est Hobbes, non Rousseau, qui imagine un état de nature violent et un souverain séparé des sujets ; Rousseau construit, à l'inverse, un contrat où l'autorité n'est jamais qu'une émanation directe et égalitaire de la communauté elle-même.
 
 [[checkpoint:cp-r4-rousseau]]
 

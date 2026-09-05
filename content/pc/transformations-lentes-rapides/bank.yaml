@@ -277,9 +277,9 @@ entries:
           **Le piège nommé de cette question.** Ne cherche pas lequel des deux réactifs est « en excès » ici : il n'y en a pas. C'est le cas particulier le plus simple pour trouver $x_{max}$ — mais aussi celui où l'automatisme « je compare deux quantités » tourne à vide, puisque les deux quantités sont égales dès le départ.
         steps:
           - math: 'n_B = C_B \times V = 10 \times 2\cdot10^{-4} = 2\cdot10^{-3}\ \text{mol}'
-            note: "Quantite initiale d'hydroxyde de sodium, a partir de la concentration et du volume donnes."
+            note: "Quantité initiale d'hydroxyde de sodium, a partir de la concentration et du volume donnes."
           - math: '\boxed{x_{max} = n_E = n_B = 2\cdot10^{-3}\ \text{mol}}'
-            note: "Melange stoechiometrique (n_E = n_B) et reaction totale (fleche simple) : les deux reactifs s'epuisent ensemble."
+            note: "Mélange stoechiometrique (n_E = n_B) et réaction totale (fleche simple) : les deux réactifs s'epuisent ensemble."
       - id: q3
         part: "3 — Établir la relation G = f(x)"
         stem: |-
@@ -327,13 +327,13 @@ entries:
           - math: '[\text{Na}^+] = \frac{n_B}{V}, \quad [\text{OH}^-] = \frac{n_B-x}{V}, \quad [\text{HCO}_2^-] = \frac{x}{V}'
             note: "Concentrations tirees du tableau d'avancement de la question 2."
           - math: 'G = \frac{k}{V}\Big[n_B(\lambda_{\text{Na}^+}+\lambda_{\text{OH}^-}) + x(\lambda_{\text{HCO}_2^-}-\lambda_{\text{OH}^-})\Big]'
-            note: "On substitue les concentrations dans la loi d'additivite donnee, puis on met k/V en facteur."
+            note: "On substitue les concentrations dans la loi d'additivite donnée, puis on met k/V en facteur."
           - math: '\frac{k}{V} = \frac{0{,}01}{2\cdot10^{-4}} = 50\ \text{m}^{-2}'
             note: "Prefacteur, reutilise dans les deux termes qui suivent."
           - math: '50\times2\cdot10^{-3}\times(5{,}01+19{,}9)\cdot10^{-3} = 2{,}491\cdot10^{-3}\ \text{S} \approx 2{,}5\cdot10^{-3}\ \text{S}'
             note: "Terme constant : coincide avec G(0) lu sur la figure 1, controle gratuit."
           - math: '50\times(5{,}46-19{,}9)\cdot10^{-3} = -0{,}722\ \text{S.mol}^{-1} \approx -0{,}72\ \text{S.mol}^{-1}'
-            note: "Pente : difference lambda(HCO2-) moins lambda(OH-), negative."
+            note: "Pente : différence lambda(HCO2-) moins lambda(OH-), négative."
           - math: '\boxed{G = -0{,}72\,x + 2{,}5\cdot10^{-3}\ \ (\text{S})}'
             note: "Relation demontree ; contre-calcul complet sans arrondi : -0,722x + 2,491e-3, coherent."
       - id: q4
@@ -380,10 +380,10 @@ entries:
           **Le piège nommé de cette question.** Lire $t_{1/2}$ à $t\approx45\ \text{min}$ « parce que c'est la moitié du cadre de $0$ à $90\ \text{min}$ » : rien dans la définition de $t_{1/2}$ ne fait intervenir la durée totale d'observation, seulement l'avancement. La courbe décroît d'abord vite puis de plus en plus lentement (elle tend vers un palier) : $t_{1/2}$ se trouve nécessairement AVANT la moitié du cadre, pas à mi-chemin de celui-ci.
         steps:
           - math: '\frac{x_{max}}{2} = \frac{2\cdot10^{-3}}{2} = 1\cdot10^{-3}\ \text{mol}'
-            note: "Moitie de l'avancement final (question 2)."
+            note: "Moitié de l'avancement final (question 2)."
           - math: 'G(t_{1/2}) = -0{,}72\times1\cdot10^{-3}+2{,}5\cdot10^{-3} = 1{,}78\cdot10^{-3}\ \text{S}'
             note: "Conductance a la demi-reaction, via la relation de la question 3 (principe du substitut monotone)."
           - math: 'G(x_{max}) = -0{,}72\times2\cdot10^{-3}+2{,}5\cdot10^{-3} = 1{,}06\cdot10^{-3}\ \text{S}'
-            note: "Controle : palier predit, coherent avec le palier voisin de 1 mS decrit sur la figure 1."
+            note: "Controle : palier predit, coherent avec le palier voisin de 1 mS décrit sur la figure 1."
           - math: '\boxed{t_{1/2} \approx 20\ \text{min}}'
-            note: "Lecture graphique, reprise du sommet r-bac par coherence : la figure verifiee ne porte pas de point intermediaire independant (voir sourcing)."
+            note: "Lecture graphique, reprise du sommet r-bac par cohérence : la figure vérifiée ne porte pas de point intermédiaire indépendant (voir sourcing)."

@@ -162,11 +162,11 @@ entries:
           On dresse le tableau d'avancement comme au chapitre 3 : une ligne pour chaque espèce, chacune évoluant selon son coefficient stoechiométrique (ici tous égaux à $1$). Pour $x_f$, on cherche le réactif limitant — celui qui s'annule en premier. L'énoncé précise que l'éthanoate d'éthyle est introduit **en excès** : c'est donc $\text{HO}^-$ qui limite la réaction. La réaction étant totale, $\text{HO}^-$ est intégralement consommé quand l'avancement atteint sa valeur finale, qui vaut alors exactement la quantité initiale d'hydroxyde — pas besoin de comparer deux quotients, l'excès de l'un des réactifs est donné directement par l'énoncé.
         steps:
           - math: 'n(\text{HO}^-) = n_0(\text{HO}^-) - x = 10^{-3} - x \quad (\text{mol})'
-            note: "Ion hydroxyde consomme, coefficient 1 ; l'ethanoate d'ethyle, en exces, n'est pas limitant."
+            note: "Ion hydroxyde consomme, coefficient 1 ; l'ethanoate d'ethyle, en excès, n'est pas limitant."
           - math: 'n(\text{HO}^-) = 0 \ \text{pour}\ x = x_f \implies x_f = n_0(\text{HO}^-)'
-            note: "Reaction totale : le reactif limitant (HO-) est entierement consomme a l'avancement final."
+            note: "Réaction totale : le réactif limitant (HO-) est entièrement consomme a l'avancement final."
           - math: '\boxed{x_f = 10^{-3}\ \text{mol} = 1{,}0\ \text{mmol}}'
-            note: "Avancement final, fixe par la quantite initiale d'hydroxyde."
+            note: "Avancement final, fixe par la quantité initiale d'hydroxyde."
       - id: q2
         part: "Partie 1 — Temps de demi-réaction et vitesse volumique"
         stem: |-
@@ -180,9 +180,9 @@ entries:
           Piège à éviter : on ne lit pas $t_{1/2}$ directement sur l'axe des temps, parce que la courbe fournie donne $\sigma(t)$, pas $x(t)$. Il faut donc traduire la condition du chapitre 5, $x = x_f/2$, en une condition sur $\sigma$ — la seule grandeur portée en ordonnée sur cette figure — grâce à la relation $\sigma = f(x)$ donnée dans l'énoncé. Une fois cette valeur de $\sigma$ calculée, on lit sur la courbe l'abscisse du point où elle est atteinte.
         steps:
           - math: 'x = \dfrac{x_f}{2} = \dfrac{10^{-3}}{2} = 0{,}5\times10^{-3}\ \text{mol}'
-            note: "Moitie de l'avancement final trouve en q1 (definition du chapitre 5)."
+            note: "Moitié de l'avancement final trouve en q1 (définition du chapitre 5)."
           - math: '\sigma\!\left(\tfrac{x_f}{2}\right) = 0{,}25 - 160\times 0{,}5\times10^{-3} = 0{,}25 - 0{,}08'
-            note: "On convertit la condition sur x en condition sur sigma via la relation donnee."
+            note: "On convertit la condition sur x en condition sur sigma via la relation donnée."
           - math: '\sigma\!\left(\tfrac{x_f}{2}\right) = 0{,}17\ \text{S.m}^{-1}'
             note: "Valeur de conductivite correspondant a x = x_f/2."
           - math: '\boxed{t_{1/2} \approx 8\ \text{min}}'
@@ -194,11 +194,11 @@ entries:
           On part de la définition générale du chapitre 3, $v = \dfrac{1}{V_0}\dfrac{dx}{dt}$ — mais ici ce n'est pas $x$ qu'on mesure en continu, c'est $\sigma$. Le principe reste celui du chapitre 2 (une grandeur substitut, liée de façon connue à $x$) : il suffit d'exprimer $x$ en fonction de $\sigma$ en inversant la relation donnée, puis de dériver par rapport au temps. L'inversion fait apparaître un signe moins, qui n'a rien d'anormal : $\sigma$ décroît précisément parce que $x$ croît.
         steps:
           - math: 'v = \dfrac{1}{V_0}\dfrac{dx}{dt}'
-            note: "Definition de la vitesse volumique de reaction (chapitre 3)."
+            note: "Définition de la vitesse volumique de réaction (chapitre 3)."
           - math: '\sigma = 0{,}25 - 160\,x \implies x = \dfrac{0{,}25-\sigma}{160}'
-            note: "On inverse la relation sigma = f(x) donnee dans l'enonce (0,25 est une constante)."
+            note: "On inverse la relation sigma = f(x) donnée dans l'énoncé (0,25 est une constante)."
           - math: '\dfrac{dx}{dt} = -\dfrac{1}{160}\dfrac{d\sigma}{dt}'
-            note: "On derive par rapport au temps : le signe moins vient de la derivee de -sigma/160."
+            note: "On derive par rapport au temps : le signe moins vient de la dérivée de -sigma/160."
           - math: '\boxed{v = \dfrac{1}{V_0}\left(-\dfrac{1}{160}\dfrac{d\sigma}{dt}\right) = -\dfrac{1}{160\,V_0}\dfrac{d\sigma}{dt}}'
             note: "On reporte dans v = (1/V0)(dx/dt) : forme demandee."
       - id: q5
@@ -208,13 +208,13 @@ entries:
           $\dfrac{d\sigma}{dt}$ en $t_1$, c'est la pente de la tangente $(T)$ tracée en ce point (méthode du chapitre 4) : on lit ses coordonnées pour l'estimer. Cette pente est négative, puisque $\sigma$ décroît ; reportée dans la formule de la question précédente, le signe moins devant la compense, et $v_1$ ressort positif, comme il se doit pour une vitesse. Un seul piège reste à surveiller : l'énoncé demande $v_1$ en $\text{mol.m}^{-3}.\text{min}^{-1}$, donc $V_0$ doit être converti en $\text{m}^3$ — pas laissé en litres.
         steps:
           - math: '\left.\dfrac{d\sigma}{dt}\right|_{t_1} \approx -0{,}01\ \text{S.m}^{-1}.\text{min}^{-1}'
-            note: "Pente de la tangente (T) lue au point t1 = 4 min sur la figure 1 (chapitre 4), pente negative."
+            note: "Pente de la tangente (T) lue au point t1 = 4 min sur la figure 1 (chapitre 4), pente négative."
           - math: 'V_0 = 100\ \text{mL} = 100\times10^{-6}\ \text{m}^3 = 10^{-4}\ \text{m}^3'
-            note: "Conversion en m3, imposee par l'unite demandee (mol.m-3.min-1)."
+            note: "Conversion en m3, imposée par l'unité demandee (mol.m-3.min-1)."
           - math: 'v_1 = -\dfrac{1}{160\,V_0}\left.\dfrac{d\sigma}{dt}\right|_{t_1} = -\dfrac{1}{160\times10^{-4}}\times(-0{,}01)'
-            note: "On applique la formule de q4 avec les valeurs numeriques."
+            note: "On applique la formule de q4 avec les valeurs numériques."
           - math: '\boxed{v_1 \approx 0{,}63\ \text{mol.m}^{-3}.\text{min}^{-1}}'
-            note: "Resultat positif : les deux signes moins se compensent."
+            note: "Résultat positif : les deux signes moins se compensent."
 
   # ── bk-2024-n-x1 — 2024 N, Exercice 1 (Chimie), Partie 1 : dégradation de la vitamine C ──
   - id: bk-2024-n-x1
@@ -288,9 +288,9 @@ entries:
           On applique la méthode du chapitre 5 : on repère d'abord $x_{max}$, le palier vers lequel tend la courbe, on calcule sa moitié, puis on lit sur la courbe l'abscisse du point où cette moitié est atteinte.
         steps:
           - math: 'x_{max} \approx 0{,}5\ \text{mmol}'
-            note: "Palier de la courbe, lu sur la figure 1 (methode du chapitre 5)."
+            note: "Palier de la courbe, lu sur la figure 1 (méthode du chapitre 5)."
           - math: '\dfrac{x_{max}}{2} \approx 0{,}25\ \text{mmol}'
-            note: "Moitie de l'avancement maximal."
+            note: "Moitié de l'avancement maximal."
           - math: '\boxed{t_{1/2} \approx 24\ \text{h}}'
             note: "Lecture graphique : abscisse du point de la figure 1 ou x = 0,25 mmol."
       - id: q3
@@ -301,13 +301,13 @@ entries:
           Comme au chapitre 3, $v(t_1) = \dfrac{1}{V}\left.\dfrac{dx}{dt}\right|_{t_1}$, et $\left.\dfrac{dx}{dt}\right|_{t_1}$ est la pente de la tangente $(T)$ tracée en ce point (chapitre 4). On lit deux points sur cette droite plutôt que d'estimer la pente à l'oeil : son ordonnée à l'origine ($t=0$) et le point de tangence marqué par la croix ($t_1=60\ \text{h}$), tous deux transcrits dans l'énoncé. Ici, contrairement au sujet de conductimétrie, $x$ est déjà en mmol et $V$ déjà en litres — l'unité demandée ne réclame aucune conversion supplémentaire.
         steps:
           - math: '\text{pente}(T) \approx \dfrac{0{,}41 - 0{,}26}{60 - 0} = \dfrac{0{,}15}{60}'
-            note: "Deux points de (T) : ordonnee a l'origine (t=0, x=0,26 mmol) et point de tangence (t1=60 h, x=0,41 mmol)."
+            note: "Deux points de (T) : ordonnée a l'origine (t=0, x=0,26 mmol) et point de tangence (t1=60 h, x=0,41 mmol)."
           - math: '\text{pente}(T) \approx 2{,}5\times10^{-3}\ \text{mmol.h}^{-1}'
             note: "Pente de la tangente, estimee par lecture graphique (chapitre 4)."
           - math: 'v(t_1) = \dfrac{1}{V}\times\text{pente}(T) = \dfrac{2{,}5\times10^{-3}}{0{,}200}'
-            note: "Definition de la vitesse volumique (chapitre 3) ; V = 0,200 L, deja dans l'unite demandee."
+            note: "Définition de la vitesse volumique (chapitre 3) ; V = 0,200 L, déjà dans l'unité demandee."
           - math: '\boxed{v(t_1) \approx 1{,}3\times10^{-2}\ \text{mmol.L}^{-1}.\text{h}^{-1}}'
-            note: "Vitesse volumique de la reaction a t1 = 60 h."
+            note: "Vitesse volumique de la réaction a t1 = 60 h."
 
   # ── bk-2025-r-x1c — 2025 R, Exercice 1 (§3) : cinetique de l'hydrolyse basique (saponification) de l'ethanoate d'ethyle ──
   # Ses deux autres sous-parties, independantes, vivent ailleurs : le §1
@@ -554,7 +554,7 @@ entries:
 
         Coquilles de langue et de typographie du registre du sujet (G1
         « peut-être » pour « peut être » ; G2 « Soitent » pour « Soient » ;
-        G3 « interieur » ; G4 « presssion » ; G5 « Zinc » avec majuscule
+        G3 « intérieur » ; G4 « presssion » ; G5 « Zinc » avec majuscule
         médiane ; G6 « traçer » ; T6 les deux tirets demi-cadratins de
         « P – P₀ » ; T7 le barème « 0 ,5 » de la question 1) sont
         reproduites verbatim dans le chapeau et les énoncés ci-dessous, non
@@ -580,7 +580,7 @@ entries:
 
       $$Zn_{(S)} + 2\,H_3O^+_{(aq)} \rightleftharpoons Zn^{2+}_{(aq)} + H_{2(g)} + 2\,H_2O_{(\ell)}$$
 
-      Pour étudier la cinétique de cette réaction, on introduit dans un ballon de volume constant $V = 1\ \text{L}$, une quantité de masse $m = 0{,}6\ \text{g}$ de poudre de Zinc *(« de Zinc », avec majuscule, tel qu'imprimé)* $Zn_{(S)}$, et on y verse à l'instant $t_0 = 0$, un volume $V_a = 75\ \text{mL}$ de la solution aqueuse d'acide sulfurique de concentration en ions oxonium $[H_3O^+] = 0{,}4\ \text{mol.L}^{-1}$. On mesure la pression $P$ à l'interieur du ballon, à chaque instant, à l'aide d'un capteur de presssion. *(« interieur » et « presssion » tels qu'imprimés sur le sujet officiel.)*
+      Pour étudier la cinétique de cette réaction, on introduit dans un ballon de volume constant $V = 1\ \text{L}$, une quantité de masse $m = 0{,}6\ \text{g}$ de poudre de Zinc *(« de Zinc », avec majuscule, tel qu'imprimé)* $Zn_{(S)}$, et on y verse à l'instant $t_0 = 0$, un volume $V_a = 75\ \text{mL}$ de la solution aqueuse d'acide sulfurique de concentration en ions oxonium $[H_3O^+] = 0{,}4\ \text{mol.L}^{-1}$. On mesure la pression $P$ à l'intérieur du ballon, à chaque instant, à l'aide d'un capteur de presssion. *(« intérieur » et « presssion » tels qu'imprimés sur le sujet officiel.)*
 
       **Figure 1 — la courbe $\Delta P(t)$, telle qu'imprimée sur le sujet officiel.** Repère orthogonal. Axe vertical $\Delta P\ (\text{hPa})$, gradué $0,\ 200,\ 400,\ 600$ ; axe horizontal $t\ (\text{min})$, gradué $50,\ 100,\ 150,\ 200,\ 250$. Quadrillage fin de pas $5\ \text{min} \times 20\ \text{hPa}$. La courbe part de l'origine, croît en décélérant, et plafonne à droite, à une hauteur voisine de la ligne $600$ (soit $\approx 740\ \text{hPa}$ à lire naïvement sur cette échelle imprimée).
 
@@ -605,13 +605,13 @@ entries:
           Deux calculs indépendants, chacun une application directe d'une définition : la concentration donne la quantité d'ions oxonium apportée par le volume $V_a$ versé ; la masse molaire donne la quantité de zinc à partir de la masse pesée $m$.
         steps:
           - math: 'n_i(H_3O^+) = [H_3O^+]\times V_a = 0{,}4\times0{,}075'
-            note: "Definition de la concentration molaire, avec Va converti en litres."
+            note: "Définition de la concentration molaire, avec Va converti en litres."
           - math: '\boxed{n_i(H_3O^+) = 0{,}03\ \text{mol}}'
-            note: "Quantite initiale d'ions oxonium."
+            note: "Quantité initiale d'ions oxonium."
           - math: 'n_i(Zn) = \frac{m}{M(Zn)} = \frac{0{,}6}{65{,}4}'
-            note: "Quantite de matiere a partir de la masse pesee et de la masse molaire du zinc."
+            note: "Quantité de matière a partir de la masse pesee et de la masse molaire du zinc."
           - math: '\boxed{n_i(Zn) \approx 9{,}17\times10^{-3}\ \text{mol}}'
-            note: "Quantite initiale de zinc."
+            note: "Quantité initiale de zinc."
       - id: q3
         stem: |-
           **(0,5 pt)** Déterminer le réactif limitant et déduire l'avancement maximal $x_{max}$ de la réaction.
@@ -619,11 +619,11 @@ entries:
           Le réactif limitant est celui dont le rapport quantité/coefficient stœchiométrique est le plus petit — c'est lui qui s'annule en premier dans le tableau du chapitre 3. On compare donc $n_i(Zn)/1$ à $n_i(H_3O^+)/2$, pas les deux quantités brutes entre elles (comparer $9{,}17\times10^{-3}$ à $0{,}03$ directement ignorerait que $H_3O^+$ est consommé DEUX FOIS plus vite que $Zn$, à cause du coefficient $2$).
         steps:
           - math: '\frac{n_i(Zn)}{1} = 9{,}17\times10^{-3}\ \text{mol} \qquad \frac{n_i(H_3O^+)}{2} = \frac{0{,}03}{2} = 0{,}015\ \text{mol}'
-            note: "On compare les quantites DIVISEES par leur coefficient stoechiometrique, pas les quantites brutes."
-          - math: '9{,}17\times10^{-3} < 0{,}015 \implies Zn\ \text{est le reactif limitant}'
-            note: "Le plus petit rapport designe le reactif limitant : c'est Zn, pas H3O+."
+            note: "On compare les quantités DIVISEES par leur coefficient stoechiometrique, pas les quantités brutes."
+          - math: '9{,}17\times10^{-3} < 0{,}015 \implies Zn\ \text{est le réactif limitant}'
+            note: "Le plus petit rapport designe le réactif limitant : c'est Zn, pas H3O+."
           - math: '\boxed{x_{max} = n_i(Zn) \approx 9{,}17\times10^{-3}\ \text{mol}}'
-            note: "Zn a un coefficient 1 : x_max vaut directement sa quantite initiale."
+            note: "Zn a un coefficient 1 : x_max vaut directement sa quantité initiale."
       - id: q4
         part: "Établir x(t) à partir d'une mesure de pression"
         stem: |-
@@ -632,7 +632,7 @@ entries:
           Exactement le principe du chapitre 2 : on ne mesure jamais $x$ directement, on mesure une grandeur SUBSTITUT qui lui est reliée par une loi connue — ici, ce n'est pas une absorbance ou une conductivité, c'est une pression. Le tableau de la question 1 dit que le seul gaz produit est $H_2$, en quantité $x(t)$ à l'instant $t$ : c'est donc l'apparition de ce gaz, seule, qui fait monter la pression au-delà de sa valeur initiale $P_0$. En appliquant la loi des gaz parfaits à ce $H_2$ formé, dans le volume constant $V$ du ballon :
         steps:
           - math: 'n(H_2) = x(t) \quad \text{(coefficient 1 dans le tableau, question 1)}'
-            note: "Le seul gaz produit est H2, en quantite egale a l'avancement x(t)."
+            note: "Le seul gaz produit est H2, en quantité egale a l'avancement x(t)."
           - math: '\Delta P \cdot V = x(t)\cdot R\cdot T'
             note: "Loi des gaz parfaits P.V=n.R.T appliquee au H2 forme : DeltaP est la pression due a ce gaz, dans le volume V constant."
           - math: '\boxed{x(t) = \frac{\Delta P \cdot V}{R\cdot T}}'
@@ -643,8 +643,8 @@ entries:
         reasoning: |-
           On applique la MÊME relation qu'à la question précédente, mais cette fois à l'état final, où l'avancement vaut $x_{max}$ et la variation de pression $\Delta P_{max}$. Diviser les deux relations terme à terme fait disparaître le facteur $V/(RT)$ — commun aux deux et jamais donné numériquement dans cet énoncé — et ne laisse plus qu'un rapport entre grandeurs mesurables.
         steps:
-          - math: '\Delta P_{max}\cdot V = x_{max}\cdot R\cdot T \quad \text{(meme relation qu a la question 4, a l etat final)}'
-            note: "Loi des gaz parfaits appliquee a l'etat final, ou l'avancement vaut x_max."
+          - math: '\Delta P_{max}\cdot V = x_{max}\cdot R\cdot T \quad \text{(même relation qu a la question 4, a l état final)}'
+            note: "Loi des gaz parfaits appliquee a l'état final, ou l'avancement vaut x_max."
           - math: '\frac{x(t)}{x_{max}} = \frac{\Delta P\cdot V/(R\cdot T)}{\Delta P_{max}\cdot V/(R\cdot T)} = \frac{\Delta P}{\Delta P_{max}}'
             note: "Division terme a terme des deux relations (question 4 et ci-dessus) : V/(RT) se simplifie."
           - math: '\boxed{x(t) = x_{max}\,\frac{\Delta P}{\Delta P_{max}}}'
@@ -662,10 +662,10 @@ entries:
 
           C'est la MI-HAUTEUR DU PALIER — un point que l'on repère visuellement sans jamais lire le nombre d'hPa qu'il représente : on prend le milieu, en hauteur, entre l'origine et le plateau, et on lit l'abscisse du point de la courbe qui l'atteint. Cette lecture ne dépend que de la FORME de la courbe et de l'axe des temps — le seul des deux axes que le défaut S1 ne touche pas.
         steps:
-          - math: 'x(t_{1/2}) = \frac{x_{max}}{2} \iff \Delta P(t_{1/2}) = \frac{\Delta P_{max}}{2} \quad \text{(question 5, rapport insensible a l echelle verticale)}'
-            note: "Condition de definition du chapitre 5, traduite en une lecture RELATIVE (mi-hauteur du palier), pas en une valeur absolue de DeltaP."
+          - math: 'x(t_{1/2}) = \frac{x_{max}}{2} \iff \Delta P(t_{1/2}) = \frac{\Delta P_{max}}{2} \quad \text{(question 5, rapport insensible a l échelle verticale)}'
+            note: "Condition de définition du chapitre 5, traduite en une lecture RELATIVE (mi-hauteur du palier), pas en une valeur absolue de DeltaP."
           - math: '\boxed{t_{1/2} \approx 42\ \text{min}}'
-            note: "Lecture graphique : abscisse du point de la figure 1 a mi-hauteur du plateau -- aucune valeur absolue de DeltaP utilisee (garde S1)."
+            note: "Lecture graphique : abscisse du point de la figure 1 a mi-hauteur du plateau -- aucune valeur absolue de DeltaP utilisée (garde S1)."
 
   # ── bk-2012-r-x1b — 2012 R, Chimie, Deuxième partie : étude cinétique de l'hydrolyse d'un ester ──
   #
@@ -772,7 +772,7 @@ entries:
       year: 2012
       session: rattrapage
       filiere: "SPC"
-      exercise_label: "Chimie — Deuxième partie : Etude cinétique de l'hydrolyse d'un ester"
+      exercise_label: "Chimie — Deuxième partie : Étude cinétique de l'hydrolyse d'un ester"
     bareme_total: 4.0
     duration_min: 24
     sourcing:
@@ -932,7 +932,7 @@ entries:
           **Le contrôle qui ferme.** Le nom donné par l'énoncé — « éthanoate de 3-méthylbutyle » — est déjà un nom d'ester : le suffixe **-oate** nomme la partie acide, le mot en **-yle** la partie alcool. Et la formule brute se compte : $\text{C}_7\text{H}_{14}\text{O}_2$, de masse molaire $7\times12 + 14\times1 + 2\times16 = 130\ \text{g.mol}^{-1}$, exactement le $M(E)$ donné. Formule, nom et masse molaire concordent.
       - id: q2
         stem: |-
-          **2-** (0,75 pt) Ecrire, en utilisant les formules semi-développées, l'équation modélisant la réaction d'hydrolyse du composé $(E)$.
+          **2-** (0,75 pt) Écrire, en utilisant les formules semi-développées, l'équation modélisant la réaction d'hydrolyse du composé $(E)$.
         reasoning: |-
           L'hydrolyse d'un ester est la réaction **inverse** de l'estérification : l'ester réagit avec l'eau pour redonner l'**acide carboxylique** et l'**alcool** dont il est issu. C'est une transformation **limitée**, donc l'équation s'écrit avec une **double flèche** $\rightleftharpoons$ — et ce détail-là n'est pas cosmétique : c'est lui qui rend la question 3-4 possible, puisqu'une transformation totale n'aurait pas de constante d'équilibre à déterminer.
 
@@ -948,7 +948,7 @@ entries:
           **Le piège de cette question.** Couper du mauvais côté de l'oxygène du pont, et produire un acide en $\text{C}_5$ avec un alcool en $\text{C}_2$ (« acide 3-méthylbutanoïque + éthanol »). Le nom de l'ester dit dans quel sens lire : **éthanoate** de 3-méthylbutyle — la partie **acide** est l'éthanoate, en deux carbones. Un ester porte toujours le nom de son acide en premier.
         steps:
           - math: '\text{CH}_3-\text{CO}-\text{O}-\text{CH}_2-\text{CH}_2-\text{CH}(\text{CH}_3)-\text{CH}_3 \;+\; \text{H}_2\text{O} \;\rightleftharpoons\; \text{CH}_3-\text{CO}-\text{OH} \;+\; \text{HO}-\text{CH}_2-\text{CH}_2-\text{CH}(\text{CH}_3)-\text{CH}_3'
-            note: "Hydrolyse de l'ester : acide ethanoique + 3-methylbutan-1-ol. Double fleche, car la transformation est limitee -- c'est ce qui rend la question 3-4 possible."
+            note: "Hydrolyse de l'ester : acide ethanoique + 3-methylbutan-1-ol. Double fleche, car la transformation est limitée -- c'est ce qui rend la question 3-4 possible."
       - id: q3
         part: "3- Exploitation de la courbe x(t)"
         stem: |-
@@ -975,11 +975,11 @@ entries:
           **Contrôle d'unité, à faire systématiquement.** $\left[\dfrac{\mathrm{d}x}{\mathrm{d}t}\right] = \text{mol.min}^{-1}$, divisé par des litres : on obtient bien des $\text{mol.L}^{-1}.\text{min}^{-1}$, l'unité que la question exige explicitement. Et l'ordre de grandeur — quelques centièmes de mole par litre et par minute pour une hydrolyse d'ester, lente, qui met plus de trois heures à s'achever — est cohérent.
         steps:
           - math: '\left.\frac{\mathrm{d}x}{\mathrm{d}t}\right|_{t=20} = \frac{0{,}057 - 0{,}008}{38{,}68 - (-0{,}74)} = \frac{0{,}049}{39{,}42} \approx 1{,}27\times10^{-3}\ \text{mol.min}^{-1}'
-            note: "Pente de la tangente (T), relevee sur ses DEUX EXTREMITES -- les deux points les plus eloignes, donc les moins sensibles a une erreur de lecture."
+            note: "Pente de la tangente (T), relevee sur ses DEUX EXTRÉMITÉS -- les deux points les plus eloignes, donc les moins sensibles a une erreur de lecture."
           - math: 'V = V(\text{H}_2\text{O}) + V(E) = 35 + 15 = 50\ \text{mL} = 50\times10^{-3}\ \text{L}'
-            note: "Le volume TOTAL du melange, impose deux fois par l'enonce. Ni 15 mL (l'ester seul), ni 35 mL (l'eau seule)."
+            note: "Le volume TOTAL du mélange, impose deux fois par l'énoncé. Ni 15 mL (l'ester seul), ni 35 mL (l'eau seule)."
           - math: 'v(20\ \text{min}) = \frac{1}{V}\left.\frac{\mathrm{d}x}{\mathrm{d}t}\right|_{t=20} = \frac{1{,}27\times10^{-3}}{50\times10^{-3}}'
-            note: "Definition donnee par l'enonce : la pente divisee par le volume total."
+            note: "Définition donnée par l'énoncé : la pente divisee par le volume total."
           - math: '\boxed{v(20\ \text{min}) \approx 2{,}5\times10^{-2}\ \text{mol.L}^{-1}.\text{min}^{-1}}'
             note: "Toute lecture entre 2,4 et 2,6 x 10^-2 est recevable. Diviser par 15 mL au lieu de 50 donnerait 8,2 x 10^-2 : faux d'un facteur 3,33."
       - id: q4
@@ -1009,11 +1009,11 @@ entries:
           **Le contrôle de vraisemblance.** $x_f = 0{,}085\ \text{mol}$ pour une quantité initiale d'ester de $0{,}100\ \text{mol}$ (calculée à la question suivante) : un taux d'avancement final de $85\ \%$. C'est cohérent avec une hydrolyse en grand excès d'eau — l'eau est ici en quantité vingt fois supérieure, ce qui déplace fortement l'équilibre dans le sens de l'hydrolyse.
         steps:
           - math: '\boxed{x_f \approx 0{,}085\ \text{mol}}'
-            note: "Ordonnee du palier : au-dela, l'avancement ne bouge plus. Mesure 0,0849 au vectoriel et 0,0852 au pixel."
+            note: "Ordonnée du palier : au-dela, l'avancement ne bouge plus. Mesure 0,0849 au vectoriel et 0,0852 au pixel."
           - math: 'x(t_{1/2}) = \frac{x_f}{2} = \frac{0{,}085}{2} = 0{,}0425\ \text{mol}'
-            note: "Definition du chapitre 5 : la MOITIE DE L'AVANCEMENT FINAL, pas la moitie de la duree d'observation."
+            note: "Définition du chapitre 5 : la MOITIÉ DE L'AVANCEMENT FINAL, pas la moitié de la durée d'observation."
           - math: '\boxed{t_{1/2} \approx 28\ \text{min}}'
-            note: "Abscisse du point de la courbe d'ordonnee 0,0425 mol. Toute lecture entre 28 et 29 min est recevable : deux chaines de mesure independantes donnent 28,1 et 29,1 min."
+            note: "Abscisse du point de la courbe d'ordonnée 0,0425 mol. Toute lecture entre 28 et 29 min est recevable : deux chaînes de mesure indépendantes donnent 28,1 et 29,1 min."
       - id: q5
         stem: |-
           **3-3-** (1,5 pt) Construire le tableau descriptif de l'évolution du système, puis trouver la composition molaire du mélange à l'équilibre.
@@ -1046,17 +1046,17 @@ entries:
           *Ce tableau relève aussi des notions sœurs « **Transformations dans les deux sens** » et « **État d'équilibre** » — elles sont nommées ici et honorées dans ce raisonnement, jamais dupliquées en entrée : le barème est réparti, pas compté deux fois.*
         steps:
           - math: 'n_i(E) = \frac{\rho(E)\,V(E)}{M(E)} = \frac{0{,}87 \times 15}{130} \approx 0{,}100\ \text{mol}'
-            note: "Quantite initiale d'ester : les volumes se convertissent en moles par la masse volumique puis la masse molaire."
+            note: "Quantité initiale d'ester : les volumes se convertissent en moles par la masse volumique puis la masse molaire."
           - math: 'n_i(\text{H}_2\text{O}) = \frac{\rho(\text{H}_2\text{O})\,V(\text{H}_2\text{O})}{M(\text{H}_2\text{O})} = \frac{1 \times 35}{18} \approx 1{,}94\ \text{mol}'
-            note: "Quantite initiale d'eau : environ 19 fois celle de l'ester. C'est ce large exces qui pousse l'hydrolyse a 85 pour cent."
+            note: "Quantité initiale d'eau : environ 19 fois celle de l'ester. C'est ce large excès qui pousse l'hydrolyse a 85 pour cent."
           - math: 'x_{\text{max}} = 0{,}100\ \text{mol} \quad\text{(ester limitant)} \qquad x_{\text{éq}} = x_f = 0{,}085\ \text{mol} \quad\text{(lu sur la courbe)}'
-            note: "Ne pas confondre : x_max est calcule (reactif limitant), x_f est LU sur la courbe. C'est x_f qui remplit le tableau."
+            note: "Ne pas confondre : x_max est calcule (réactif limitant), x_f est LU sur la courbe. C'est x_f qui remplit le tableau."
           - math: 'n_f(E) = 0{,}100 - 0{,}085 = 0{,}015\ \text{mol} \qquad n_f(\text{H}_2\text{O}) = 1{,}94 - 0{,}085 = 1{,}855\ \text{mol}'
-            note: "Les deux reactifs a l'equilibre. L'ester n'a pas disparu : la transformation est limitee."
+            note: "Les deux réactifs a l'équilibre. L'ester n'a pas disparu : la transformation est limitée."
           - math: '\boxed{n_f(\text{acide}) = n_f(\text{alcool}) = x_{\text{éq}} = 0{,}085\ \text{mol}}'
-            note: "Les deux produits, formes en quantites egales (coefficients stoechiometriques tous egaux a 1)."
+            note: "Les deux produits, formes en quantités egales (coefficients stoechiometriques tous égaux a 1)."
           - math: '\tau = \frac{x_f}{x_{\text{max}}} = \frac{0{,}085}{0{,}100} = 85\ \%'
-            note: "Controle de vraisemblance, non demande : 85 pour cent, coherent avec un large exces d'eau, et strictement inferieur a 100."
+            note: "Controle de vraisemblance, non demande : 85 pour cent, coherent avec un large excès d'eau, et strictement inférieur a 100."
       - id: q6
         stem: |-
           **3-4-** (0,5 pt) Déterminer la constante d'équilibre $K$ associée à la réaction d'hydrolyse du composé $(E)$.
@@ -1082,10 +1082,10 @@ entries:
           *Cette question relève aussi des notions sœurs « **Estérification et hydrolyse** », « **Transformations dans les deux sens** » et « **État d'équilibre** » — nommées ici, honorées dans ce raisonnement, et jamais dupliquées en entrée.*
         steps:
           - math: 'K = \frac{[\text{acide}]_{\text{éq}}\,[\text{alcool}]_{\text{éq}}}{[E]_{\text{éq}}\,[\text{H}_2\text{O}]_{\text{éq}}}'
-            note: "Quotient de reaction dans l'etat d'equilibre. L'eau est un REACTIF ici : elle reste au denominateur."
+            note: "Quotient de réaction dans l'état d'équilibre. L'eau est un RÉACTIF ici : elle reste au dénominateur."
           - math: 'K = \frac{n_f(\text{acide})\,n_f(\text{alcool})}{n_f(E)\,n_f(\text{H}_2\text{O})}'
-            note: "Les quatre especes sont dans le meme volume et les coefficients sont tous egaux a 1 : les deux facteurs 1/V du haut et du bas se simplifient exactement."
+            note: "Les quatre espèces sont dans le même volume et les coefficients sont tous égaux a 1 : les deux facteurs 1/V du haut et du bas se simplifient exactement."
           - math: 'K = \frac{(0{,}085)^2}{0{,}015 \times 1{,}855} = \frac{7{,}225\times10^{-3}}{2{,}783\times10^{-2}}'
-            note: "Les quatre quantites viennent du tableau de la question 3-3."
+            note: "Les quatre quantités viennent du tableau de la question 3-3."
           - math: '\boxed{K \approx 0{,}26}'
-            note: "Valeur exacte 0,2597. Controle : 1/K = 3,9, l'ordre de grandeur attendu pour la constante d'esterification inverse."
+            note: "Valeur exacte 0,2597. Controle : 1/K = 3,9, l'ordre de grandeur attendu pour la constante d'estérification inverse."

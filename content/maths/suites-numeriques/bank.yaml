@@ -673,13 +673,13 @@ entries:
           $g$ continue (dérivable), strictement décroissante, avec une limite $+\infty$ en $-\infty$ et $-\infty$ en $+\infty$ : par le corollaire du théorème des valeurs intermédiaires pour une fonction strictement monotone (« Limites et continuité »), $g$ prend la valeur $0$ **exactement une fois**. Ce zéro unique est l'unique réel $\alpha$ tel que $f_0(\alpha)=\alpha$.
         steps:
           - math: 'f_0(x) = \dfrac{-2e^x}{1+e^x} \ \Rightarrow\ f_0''(x) = \dfrac{-2e^x(1+e^x)-(-2e^x)(e^x)}{(1+e^x)^2} = \dfrac{-2e^x}{(1+e^x)^2}'
-            note: "Derivee de f0, quotient de deux fonctions derivables ; les termes en e^2x s'annulent."
+            note: "Dérivée de f0, quotient de deux fonctions derivables ; les termes en e^2x s'annulent."
           - math: '-2e^x<0,\ (1+e^x)^2>0 \ \Rightarrow\ f_0''(x)<0 \quad (g(x)=f_0(x)-x \ \Rightarrow\ g''(x)=f_0''(x)-1<0)'
-            note: "f0 prime est negative pour tout x : g prime aussi, strictement negative."
+            note: "f0 prime est négative pour tout x : g prime aussi, strictement négative."
           - math: '\lim_{x\to-\infty} f_0(x) = 0 \ \Rightarrow\ \lim_{x\to-\infty} g(x) = +\infty \qquad \lim_{x\to+\infty} f_0(x) = -2 \ \Rightarrow\ \lim_{x\to+\infty} g(x) = -\infty'
-            note: "Limites de f0 aux deux bornes (numerateur et denominateur divises par e^x), puis de g."
+            note: "Limites de f0 aux deux bornes (numérateur et dénominateur divises par e^x), puis de g."
           - math: '\Rightarrow\ \exists!\ \alpha\in\mathbb{R} \text{ tel que } g(\alpha)=0,\ \text{soit } f_0(\alpha)=\alpha \quad (\text{corollaire du TVI})'
-            note: "g continue, strictement decroissante, change de signe une seule fois : un unique zero."
+            note: "g continue, strictement décroissante, change de signe une seule fois : un unique zéro."
       - id: q2-1b
         stem: |-
           **(0,5 pt)** Montrer que : $(\forall x \in \mathbb{R})\ ;\quad \big|f_0'(x)\big| \le \dfrac{1}{2}$
@@ -697,11 +697,11 @@ entries:
           *(Ce calcul — l'identité $(1+e^x)^2-4e^x=(1-e^x)^2$ — est le même que celui qui sert de point de départ dans la Partie I, carte `bk-2021-n-x1` de `content/maths/fonction-exponentielle/bank.yaml`, où il est établi pour $f_n'$ en général. Il est refait ici en entier, pour le cas particulier $n=0$, pour que cette carte reste autonome.)*
         steps:
           - math: '(1+e^x)^2-4e^x = 1-2e^x+e^{2x} = (1-e^x)^2 \ge 0 \quad (\forall x\in\mathbb{R})'
-            note: "Un carre est toujours positif ou nul."
+            note: "Un carré est toujours positif ou nul."
           - math: '\Rightarrow\ (1+e^x)^2\ge4e^x \ \Rightarrow\ \dfrac{4e^x}{(1+e^x)^2}\le1 \quad (\text{on divise par } (1+e^x)^2>0)'
-            note: "On divise par le carre du denominateur, strictement positif."
+            note: "On divise par le carré du dénominateur, strictement positif."
           - math: '\big|f_0''(x)\big| = \dfrac{2e^x}{(1+e^x)^2} \le \dfrac12'
-            note: "On divise l'inegalite precedente par 2 ; la valeur absolue efface le signe moins de f0 prime."
+            note: "On divise l'inégalité précédente par 2 ; la valeur absolue efface le signe moins de f0 prime."
       - id: q2-2a
         part: "Partie II, 2 — Contraction et convergence vers alpha"
         stem: |-
@@ -715,12 +715,12 @@ entries:
 
           Or $f_0(u_n)=u_{n+1}$ (définition de la suite) et $f_0(\alpha)=\alpha$ (définition de $\alpha$, question 1-a) : le membre de gauche est exactement $|u_{n+1}-\alpha|$.
         steps:
-          - math: 'f_0 \text{ derivable sur } \mathbb{R},\ |f_0''|\le\dfrac12 \ \Rightarrow\ \big|f_0(b)-f_0(a)\big|\le\dfrac12|b-a| \quad (\forall a,b\in\mathbb{R})'
-            note: "Inegalite des accroissements finis, appliquee a f0 sur R tout entier."
+          - math: 'f_0 \text{ dérivable sur } \mathbb{R},\ |f_0''|\le\dfrac12 \ \Rightarrow\ \big|f_0(b)-f_0(a)\big|\le\dfrac12|b-a| \quad (\forall a,b\in\mathbb{R})'
+            note: "Inégalité des accroissements finis, appliquee a f0 sur R tout entier."
           - math: '\text{avec } a=\alpha,\ b=u_n\ :\ \big|f_0(u_n)-f_0(\alpha)\big|\le\dfrac12|u_n-\alpha|'
-            note: "On applique l'inegalite entre alpha et u_n."
+            note: "On applique l'inégalité entre alpha et u_n."
           - math: 'f_0(u_n)=u_{n+1},\quad f_0(\alpha)=\alpha \ \Rightarrow\ |u_{n+1}-\alpha|\le\dfrac12|u_n-\alpha|'
-            note: "u_{n+1} est f0 de u_n par definition ; alpha est point fixe de f0 par definition."
+            note: "u_{n+1} est f0 de u_n par définition ; alpha est point fixe de f0 par définition."
       - id: q2-2b
         stem: |-
           **(0,5 pt)** En déduire que : $(\forall n \in \mathbb{N})\ ;\quad |u_n - \alpha| \le \left(\dfrac{1}{2}\right)^{n}|\alpha|$
@@ -736,9 +736,9 @@ entries:
           C'est exactement l'inégalité au rang $n+1$ : par récurrence, elle est vraie pour tout $n$.
         steps:
           - math: 'n=0\ :\ |u_0-\alpha| = |0-\alpha| = |\alpha| = \left(\dfrac12\right)^0|\alpha|'
-            note: "Initialisation : egalite au rang 0, car u0 = 0."
+            note: "Initialisation : égalité au rang 0, car u0 = 0."
           - math: '|u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha| \ \Rightarrow\ |u_{n+1}-\alpha|\le\dfrac12|u_n-\alpha|\le\dfrac12\left(\dfrac12\right)^n|\alpha| = \left(\dfrac12\right)^{n+1}|\alpha|'
-            note: "Heredite : on reinjecte la question 2-a dans l'hypothese de recurrence."
+            note: "Hérédité : on reinjecte la question 2-a dans l'hypothèse de recurrence."
           - math: '\Rightarrow\ (\forall n\in\mathbb{N})\ ;\ |u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha| \quad (\text{par recurrence})'
             note: "Conclusion par recurrence."
       - id: q2-2c
@@ -748,11 +748,11 @@ entries:
           On tient un encadrement de $|u_n-\alpha|$ entre $0$ et une suite explicite qui tend vers $0$ : $\left(\dfrac12\right)^n$ est géométrique de raison $\dfrac12\in\,]{-1};1[$, donc $\left(\dfrac12\right)^n\to0$ (chapitre 6), et $|\alpha|$ est une constante, donc $\left(\dfrac12\right)^n|\alpha|\to0$ aussi. Le théorème des gendarmes (chapitre 7), appliqué à $0\le|u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha|$, donne $|u_n-\alpha|\to0$ — c'est-à-dire, par définition, $u_n\to\alpha$.
         steps:
           - math: '\left|\dfrac12\right|<1 \ \Rightarrow\ \lim_{n\to+\infty}\left(\dfrac12\right)^n = 0 \ \Rightarrow\ \lim_{n\to+\infty}\left(\dfrac12\right)^n|\alpha| = 0'
-            note: "Suite geometrique de raison entre -1 et 1 (chapitre 6) : elle tend vers 0."
-          - math: '0\le|u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha|,\quad \left(\dfrac12\right)^n|\alpha|\to0 \ \Rightarrow\ |u_n-\alpha|\to0 \quad (\text{theoreme des gendarmes, R6})'
+            note: "Suite géométrique de raison entre -1 et 1 (chapitre 6) : elle tend vers 0."
+          - math: '0\le|u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha|,\quad \left(\dfrac12\right)^n|\alpha|\to0 \ \Rightarrow\ |u_n-\alpha|\to0 \quad (\text{théorème des gendarmes, R6})'
             note: "u_n moins alpha est encadre par 0 et une suite qui tend vers 0."
           - math: '\Rightarrow\ \lim_{n\to+\infty} u_n = \alpha'
-            note: "Par definition de la limite : (u_n) converge vers alpha."
+            note: "Par définition de la limite : (u_n) converge vers alpha."
       - id: q3-1a
         part: "Partie III, 1 — Existence et encadrement de x_n (n supérieur ou égal à 2)"
         stem: |-
@@ -775,13 +775,13 @@ entries:
           $f_n$ continue (dérivable), strictement croissante, d'une limite $-\infty$ à une limite $+\infty$ : par le corollaire du théorème des valeurs intermédiaires pour une fonction strictement monotone, l'équation $f_n(x)=0$ admet une unique solution $x_n$.
         steps:
           - math: 'f_n''(x) = \dfrac{-2e^x}{(1+e^x)^2}+n \quad (\text{calcul de quotient identique a la question 1-a})'
-            note: "Derivee de f_n pour n quelconque : meme calcul que pour f0, le terme n s'ajoute."
+            note: "Dérivée de f_n pour n quelconque : même calcul que pour f0, le terme n s'ajoute."
           - math: 'n\ge2,\ \dfrac{2e^x}{(1+e^x)^2}\le\dfrac12 \quad(\text{q1-b}) \ \Rightarrow\ f_n''(x) \ge n-\dfrac12 \ge \dfrac32 > 0'
-            note: "On reutilise l'inegalite de la question 1-b : f_n prime reste strictement positive pour n superieur ou egal a 2."
+            note: "On reutilise l'inégalité de la question 1-b : f_n prime reste strictement positive pour n supérieur ou egal a 2."
           - math: '\dfrac{-2e^x}{1+e^x}\in\,]-2,0[ \quad (\text{terme borne}) \ \Rightarrow\ \lim_{x\to-\infty} f_n(x) = -\infty,\quad \lim_{x\to+\infty} f_n(x) = +\infty \quad (n>0)'
             note: "Le terme exponentiel reste borne ; c'est le terme n fois x qui pilote le comportement a l'infini."
           - math: '\Rightarrow\ \exists!\ x_n\in\mathbb{R} \text{ tel que } f_n(x_n)=0 \quad (\text{corollaire du TVI})'
-            note: "Continue, strictement croissante, de moins l'infini a plus l'infini : un unique zero."
+            note: "Continue, strictement croissante, de moins l'infini a plus l'infini : un unique zéro."
       - id: q3-1b
         stem: |-
           **(0,5 pt)** Montrer que pour tout entier $n \ge 2$, $0 < x_n < 1$ *(On prendra $\dfrac{2e}{1+e} < 1{,}47$)*
@@ -799,9 +799,9 @@ entries:
           - math: 'f_n(0) = \dfrac{-2}{1+1}+0 = -1 < 0'
             note: "On evalue f_n en 0."
           - math: 'f_n(1) = \dfrac{-2e}{1+e}+n \ge n-1{,}47 \ge 2-1{,}47 = 0{,}53 > 0 \quad (\text{indication}\ \tfrac{2e}{1+e}<1{,}47,\ n\ge2)'
-            note: "On evalue f_n en 1 et on utilise l'indication de l'enonce avec n superieur ou egal a 2."
+            note: "On evalue f_n en 1 et on utilise l'indication de l'énoncé avec n supérieur ou egal a 2."
           - math: 'f_n(0)<0<f_n(1),\ f_n \text{ strictement croissante} \ \Rightarrow\ 0<x_n<1'
-            note: "Le zero unique de f_n est encadre par 0 et 1."
+            note: "Le zéro unique de f_n est encadre par 0 et 1."
       - id: q3-2a
         part: "Partie III, 2 — Décroissance et convergence de (x_n)"
         stem: |-
@@ -812,9 +812,9 @@ entries:
           En $x=x_n$ : $f_{n+1}(x_n) = f_n(x_n)+x_n = 0+x_n = x_n$, puisque $f_n(x_n)=0$ par définition de $x_n$ (question 1-a). Et $x_n>0$ (question 1-b) : donc $f_{n+1}(x_n)=x_n>0$.
         steps:
           - math: 'f_{n+1}(x)-f_n(x) = (n+1)x-nx = x \ \Rightarrow\ f_{n+1}(x) = f_n(x)+x \quad (\forall x\in\mathbb{R})'
-            note: "Le morceau exponentiel de f_n ne depend pas de n : seul le terme en x change entre f_n et f_{n+1}."
+            note: "Le morceau exponentiel de f_n ne dépend pas de n : seul le terme en x change entre f_n et f_{n+1}."
           - math: 'f_{n+1}(x_n) = f_n(x_n)+x_n = 0+x_n = x_n \quad (\text{car } f_n(x_n)=0)'
-            note: "On evalue en x_n, ou f_n s'annule par definition."
+            note: "On evalue en x_n, ou f_n s'annule par définition."
           - math: 'x_n>0 \quad (\text{question 1-b}) \ \Rightarrow\ f_{n+1}(x_n) = x_n > 0'
             note: "x_n est strictement positif : conclusion."
       - id: q3-2b
@@ -825,20 +825,20 @@ entries:
 
           C'est vrai pour tout $n\ge2$ : la suite $(x_n)_{n\ge2}$ est donc strictement décroissante.
         steps:
-          - math: 'f_{n+1}(x_{n+1}) = 0 \quad (\text{definition de } x_{n+1}), \qquad f_{n+1}(x_n) > 0 \quad (\text{question 2-a})'
+          - math: 'f_{n+1}(x_{n+1}) = 0 \quad (\text{définition de } x_{n+1}), \qquad f_{n+1}(x_n) > 0 \quad (\text{question 2-a})'
             note: "Deux valeurs de f_{n+1} : en x_{n+1} elle vaut 0, en x_n elle est strictement positive."
           - math: 'f_{n+1}(x_n) > f_{n+1}(x_{n+1}),\ f_{n+1} \text{ strictement croissante} \ \Rightarrow\ x_n > x_{n+1}'
-            note: "Une fonction strictement croissante compare les entrees dans le meme sens que les sorties."
-          - math: '\Rightarrow\ (x_n)_{n\ge2} \text{ strictement decroissante}'
-            note: "Vrai pour tout n superieur ou egal a 2 : conclusion."
+            note: "Une fonction strictement croissante compare les entrées dans le même sens que les sorties."
+          - math: '\Rightarrow\ (x_n)_{n\ge2} \text{ strictement décroissante}'
+            note: "Vrai pour tout n supérieur ou egal a 2 : conclusion."
       - id: q3-2c
         stem: |-
           **(0,5 pt)** Montrer que la suite $(x_n)_{n \ge 2}$ est convergente.
         reasoning: |-
           $(x_n)_{n\ge2}$ est strictement décroissante (question précédente) et minorée par $0$ (question 1-b, $x_n>0$ pour tout $n\ge2$) : les deux hypothèses exactes du théorème de la limite monotone (chapitre 8) sont réunies — décroissante et minorée. La suite converge.
         steps:
-          - math: '(x_n)_{n\ge2} \text{ decroissante} \quad (\text{q2-b}), \qquad x_n>0 \quad (\text{q1-b, minoration}) \ \Rightarrow\ (x_n)_{n\ge2} \text{ converge} \quad (\text{theoreme de la limite monotone, R7})'
-            note: "Decroissante et minoree : les deux hypotheses du theoreme de la limite monotone."
+          - math: '(x_n)_{n\ge2} \text{ décroissante} \quad (\text{q2-b}), \qquad x_n>0 \quad (\text{q1-b, minoration}) \ \Rightarrow\ (x_n)_{n\ge2} \text{ converge} \quad (\text{théorème de la limite monotone, R7})'
+            note: "Décroissante et minoree : les deux hypothèses du théorème de la limite monotone."
       - id: q3-3a
         part: "Partie III, 3 — Limites de x_n et de n fois x_n"
         stem: |-
@@ -857,13 +857,13 @@ entries:
           $$\frac{1}{n} < x_n < \frac{1}{n}\left(\frac{2e}{1+e}\right)$$
         steps:
           - math: 'f_n(x_n)=0 \iff \dfrac{-2e^{x_n}}{1+e^{x_n}}+nx_n=0 \iff nx_n = \dfrac{2e^{x_n}}{1+e^{x_n}}'
-            note: "On reecrit la definition de x_n pour isoler n fois x_n."
+            note: "On reecrit la définition de x_n pour isoler n fois x_n."
           - math: 'h(x)=\dfrac{2e^x}{1+e^x} = 2-\dfrac{2}{1+e^x} \ \Rightarrow\ h \text{ strictement croissante}'
-            note: "h est 2 moins une fonction decroissante (2 sur 1+e^x) : h croit strictement."
+            note: "h est 2 moins une fonction décroissante (2 sur 1+e^x) : h croit strictement."
           - math: '0<x_n<1,\ h \text{ croissante} \ \Rightarrow\ h(0)<h(x_n)<h(1),\quad h(0)=1,\ h(1)=\dfrac{2e}{1+e}'
-            note: "On encadre h(x_n) grace a l'encadrement de x_n de la question 1-b."
+            note: "On encadre h(x_n) grâce a l'encadrement de x_n de la question 1-b."
           - math: '1 < nx_n < \dfrac{2e}{1+e} \ \Rightarrow\ \dfrac1n < x_n < \dfrac1n\left(\dfrac{2e}{1+e}\right) \quad (n>0)'
-            note: "On divise par n, strictement positif : le sens des inegalites ne change pas."
+            note: "On divise par n, strictement positif : le sens des inégalités ne change pas."
       - id: q3-3b
         stem: |-
           **(0,5 pt)** En déduire $\displaystyle\lim_{n \to +\infty} x_n$, puis montrer que $\displaystyle\lim_{n \to +\infty} n x_n = 1$
@@ -874,12 +874,12 @@ entries:
 
           $$\lim_{n\to+\infty} nx_n = \frac{2e^0}{1+e^0} = \frac{2}{2} = 1$$
         steps:
-          - math: '\dfrac1n\to0,\quad \dfrac1n\left(\dfrac{2e}{1+e}\right)\to0 \ \Rightarrow\ x_n\to0 \quad (\text{theoreme des gendarmes, R6, question 3-a})'
+          - math: '\dfrac1n\to0,\quad \dfrac1n\left(\dfrac{2e}{1+e}\right)\to0 \ \Rightarrow\ x_n\to0 \quad (\text{théorème des gendarmes, R6, question 3-a})'
             note: "Les deux bornes de l'encadrement tendent vers 0 : x_n aussi."
           - math: 'nx_n = \dfrac{2e^{x_n}}{1+e^{x_n}} \quad (\text{question 3-a}),\quad x_n\to0 \ \Rightarrow\ e^{x_n}\to e^0=1'
-            note: "On reutilise l'egalite de la question 3-a ; continuite de exp en 0."
+            note: "On reutilise l'égalité de la question 3-a ; continuite de exp en 0."
           - math: '\lim_{n\to+\infty} nx_n = \dfrac{2\times1}{1+1} = 1'
-            note: "On passe a la limite dans le quotient : numerateur et denominateur ont une limite finie, denominateur non nul."
+            note: "On passe a la limite dans le quotient : numérateur et dénominateur ont une limite finie, dénominateur non nul."
       - id: q3-4a
         part: "Partie III, 4 — Comparaison à x_2 et limite de (x_n) puissance n"
         stem: |-
@@ -887,8 +887,8 @@ entries:
         reasoning: |-
           La suite $(x_n)_{n\ge2}$ est strictement décroissante à partir du rang $2$ (question 2-b) : $x_2$ est donc son premier terme, le plus grand de tous. Pour tout $n\ge2$, $x_n$ est soit égal à $x_2$ (le cas $n=2$ lui-même), soit strictement plus petit (tous les rangs suivants, par décroissance stricte) — dans les deux cas, $x_n\le x_2$.
         steps:
-          - math: '(x_n)_{n\ge2} \text{ strictement decroissante} \quad (\text{q2-b}) \ \Rightarrow\ (\forall n\ge2)\ ;\ x_n\le x_2'
-            note: "x_2 est le premier terme d'une suite decroissante : tous les termes suivants lui sont inferieurs ou egaux (egalite au rang n=2)."
+          - math: '(x_n)_{n\ge2} \text{ strictement décroissante} \quad (\text{q2-b}) \ \Rightarrow\ (\forall n\ge2)\ ;\ x_n\le x_2'
+            note: "x_2 est le premier terme d'une suite décroissante : tous les termes suivants lui sont inférieurs ou égaux (égalité au rang n=2)."
       - id: q3-4b
         stem: |-
           **(0,5 pt)** En déduire $\displaystyle\lim_{n \to +\infty} (x_n)^{n}$
@@ -902,8 +902,8 @@ entries:
           $$\lim_{n\to+\infty} (x_n)^n = 0$$
         steps:
           - math: '0<x_n\le x_2<1 \ \Rightarrow\ 0<(x_n)^n\le(x_2)^n \quad (t\mapsto t^n \text{ croissante sur les positifs})'
-            note: "On eleve a la puissance n, qui conserve l'ordre entre deux quantites positives."
+            note: "On élève a la puissance n, qui conserve l'ordre entre deux quantités positives."
           - math: '0<x_2<1 \ \Rightarrow\ \lim_{n\to+\infty} (x_2)^n = 0 \quad (R5)'
             note: "x_2 est une constante entre 0 et 1 : sa puissance n-ieme tend vers 0."
-          - math: '0<(x_n)^n\le(x_2)^n\to0 \ \Rightarrow\ \lim_{n\to+\infty} (x_n)^n = 0 \quad (\text{theoreme des gendarmes, R6})'
-            note: "Encadrement final : conclusion par le theoreme des gendarmes."
+          - math: '0<(x_n)^n\le(x_2)^n\to0 \ \Rightarrow\ \lim_{n\to+\infty} (x_n)^n = 0 \quad (\text{théorème des gendarmes, R6})'
+            note: "Encadrement final : conclusion par le théorème des gendarmes."

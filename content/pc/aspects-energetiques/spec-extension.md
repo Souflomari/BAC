@@ -55,7 +55,7 @@ Keep the generic energy tools as a **compressed foundation** (they are genuine p
 
 ### 0.6 HARD scope boundaries — NON-NEGOTIABLE (from `aspects_energetiques` + `mecanique.limites`/`exclusions`)
 - **Pendule pesant: PETITES oscillations only** (`sinθ ≈ θ`; height change `≈ ½·d·θ²`). No large-amplitude / non-linear energy.
-- **No forced-regime energy analysis** (mecanique exclusion "régime sinusoïdal forcé analytique") — energy of **free** oscillators only. Résonance energy is qualitative and lives in `systemes_oscillants` R7, not here.
+- **No forced-regime energy analysis** (mécanique exclusion "régime sinusoïdal forcé analytique") — energy of **free** oscillators only. Résonance energy is qualitative and lives in `systemes_oscillants` R7, not here.
 - **Diagrams:** qualitative AND quantitative energy diagrams are **in scope** (savoir_faire 2 & 3 name "diagrammes d'énergie" explicitly). Ec, Ep, Em vs **t** and vs **position** are all fair game.
 - **Derivation depth:** `½kx²` / `½Cθ²` are derived via the **area under the linear F(x) / M(θ) graph** (triangle) — geometric, hand-checkable. An integral `∫kx dx` may be shown as a second view, but the **triangle/average-force argument is the primary mechanism** (it makes the factor ½ *obvious*, matching the cadre's avoidance of heavy math). **No Lagrangian / Hamiltonian energy methods.**
 
@@ -69,9 +69,9 @@ Keep the generic energy tools as a **compressed foundation** (they are genuine p
 
 The mechanism in R1–R4 is already sound; **compress** the prose (1ère-Bac recalls) and make **one substantive addition** in R2:
 
-**R2 EXTENSION — the work of a VARIABLE force (the hinge for `½kx²`).** Current R2 defines `W(F⃗) = F⃗·AB⃗` for a **constant** force only. The spring force `F = kx` is **not** constant — it grows with the stretch. Add the general idea, kept geometric: *the work of a force that varies along the displacement is the **area under the F-vs-position graph**.* For a constant force this area is a rectangle (`F·d`, the current case); for a force that grows linearly from 0, it is a **triangle**. Flag forward: *"c'est exactement ce qu'il nous faudra pour le ressort, dont la force n'est pas constante."* This single addition is what lets R5 **derive** `½kx²` instead of asserting it.
+**R2 EXTENSION — the work of a VARIABLE force (the hinge for `½kx²`).** Current R2 defines `W(F⃗) = F⃗·AB⃗` for a **constant** force only. The spring force `F = kx` is **not** constant — it grows with the stretch. Add the général idea, kept geometric: *the work of a force that varies along the displacement is the **area under the F-vs-position graph**.* For a constant force this area is a rectangle (`F·d`, the current case); for a force that grows linearly from 0, it is a **triangle**. Flag forward: *"c'est exactement ce qu'il nous faudra pour le ressort, dont la force n'est pas constante."* This single addition is what lets R5 **derive** `½kx²` instead of asserting it.
 
-**R4 — absorb the ex-R5 insight in two lines:** after the conservation/non-conservation result, add the tool-choice note (TEC goes straight to a speed when neither the time nor the acceleration is wanted) — no need for the full inclined-plane worked comparison. This preserves the one durable idea from the dropped R5 without keeping an off-cadre chapter.
+**R4 — absorb the ex-R5 insight in two lines:** after the conservation/non-conservation result, add the tool-choice note (TEC goes straight to a speed when neither the time nor the accélération is wanted) — no need for the full inclined-plane worked comparison. This preserves the one durable idea from the dropped R5 without keeping an off-cadre chapter.
 
 No misconception/item changes are required for R1–R4 beyond what already exists; the new items attach to R5/R6/R7.
 
@@ -88,11 +88,11 @@ This is the derivation that `systemes-oscillants` R5 currently only **asserts**;
 - **The restoring force is variable:** `F = kx` (intensity grows linearly with the stretch `x`). To store energy in the spring, an operator stretches it from 0 to `x` against this growing force.
 - **Work = area under `F(x) = kx`** (from R2's extension): the graph is a straight line from `(0,0)` to `(x, kx)`; the area under it is a **triangle**, `½ · base · hauteur = ½ · x · (kx) = ½kx²`.
 - **Why the ½ — make it *obvious*:** the force is **0** at the start and `kx` at the end; its **average** over the stretch is `½kx`. Work = average force × distance = `½kx · x = ½kx²`. *The ½ is the average of a force that grows from nothing — not a constant force.* Naming this kills the `kx²` error (M-EPE-1) at the source.
-- **Definition:** `E_pe = ½kx²` (énergie potentielle élastique ; s'annule à l'équilibre `x=0` ; toujours ≥ 0). Relation: `W(F_rappel)_{A→B} = ½kx_A² − ½kx_B² = −ΔE_pe` (the restoring force is conservative; its work depends only on the endpoints' `x`, exactly parallel to the weight's `W(P⃗)=−ΔEpp` from R3).
+- **Définition:** `E_pe = ½kx²` (énergie potentielle élastique ; s'annule à l'équilibre `x=0` ; toujours ≥ 0). Relation: `W(F_rappel)_{A→B} = ½kx_A² − ½kx_B² = −ΔE_pe` (the restoring force is conservative; its work depends only on the endpoints' `x`, exactly parallel to the weight's `W(P⃗)=−ΔEpp` from R3).
 - **Em of the horizontal solid-spring:** `E_m = E_c + E_pe = ½mv² + ½kx²`. **Conservation (no friction):** by the TEC, only the restoring force works (`P⃗` and `N⃗` do no work — they are perpendicular to the horizontal motion, R3's `W(N)=0`), so `ΔE_c = W(F_rappel) = −ΔE_pe` → `ΔE_m = 0`. **`E_m` constant.** (This replaces the `sin²+cos²` proof migrated out of `systemes-oscillants` R5 — a cleaner derivation grounded in the TEC the student now owns.)
 - **Energy diagrams (savoir_faire 2 — build both):**
   - **vs position `x`:** `E_pe = ½kx²` is a **parabola** (minimum at `x=0`); `E_c = E_m − ½kx²` is the **inverted** parabola; they **cross** where `E_c = E_pe`; `E_m` is a **horizontal line** (the "energy ceiling"). At the turning points `x=±X_m`: `E_c=0`, all energy in the spring. At `x=0`: `E_pe=0`, all energy kinetic (max speed).
-  - **vs time `t`:** `E_m` flat; `E_c` and `E_pe` oscillate **in antiphase**. **Subtlety to name (diagram-reading):** because they depend on `x²` and `v²`, `E_c` and `E_pe` oscillate at **DOUBLE** the frequency of `x(t)` — period `T₀/2`, not `T₀`. (Flag M-EPE candidate #4, §2.3.)
+  - **vs time `t`:** `E_m` flat; `E_c` and `E_pe` oscillate **in antiphase**. **Subtlety to name (diagram-reading):** because they dépend on `x²` and `v²`, `E_c` and `E_pe` oscillate at **DOUBLE** the frequency of `x(t)` — period `T₀/2`, not `T₀`. (Flag M-EPE candidate #4, §2.3.)
 
 ### 2.3 Misconceptions confronted at R5
 
@@ -104,7 +104,7 @@ This is the derivation that `systemes-oscillants` R5 currently only **asserts**;
 
 **M-EPE-2 — « `E_pe` dépend de la masse / de la vitesse / peut être négative en compression. »**
 - *Wrong model:* imports Ec/Epp habits — thinks the spring's stored energy involves `m` or `v`, or that `x<0` (compression) makes `E_pe<0`.
-- *Manifests:* writes `E_pe = ½kx² + …m…`; says the spring stores less energy for a lighter mass; assigns a negative `E_pe` when compressed.
+- *Manifests:* writes `E_pe = ½kx² + …m…`; says the spring stores less energy for a lighter mass; assigns a négative `E_pe` when compressed.
 - *Correct model:* `E_pe = ½kx²` ne dépend **que de `k` et `x`** ; `x² ≥ 0` donc `E_pe ≥ 0`, **identique** en étirement (`+x`) et compression (`−x`) de même `|x|` ; la masse n'y figure pas (elle est dans `E_c`).
 - *Confrontation:* compute `E_pe` at `x=+X_m` and `x=−X_m` → same value; strip `m` from the expression explicitly.
 
@@ -156,8 +156,8 @@ Objective: the student **derives** `E_p,torsion = ½Cθ²` from the work of the 
 ### 3.2 Mechanism to make obvious — DERIVE, parallel to R5
 - **The restoring couple is variable:** `M = Cθ` (moment grows linearly with the torsion angle `θ`; `C` = constante de torsion, N·m/rad).
 - **Work = area under `M(θ) = Cθ`** — a **triangle**, `½ · θ · (Cθ) = ½Cθ²`. **Same ½-mechanism:** the moment averages `½Cθ` over the twist. `E_p,torsion = ½Cθ²`; `W(M_rappel) = −ΔE_p,torsion`.
-- **Rotational kinetic energy:** for a solid rotating about a fixed axis, `E_c = ½Jθ̇²` — the rotational analogue of `½mv²` (`J` plays the role of mass `m`; `θ̇` the role of `v`). Name this explicitly; the student met `J` in the RFD chapter (`ΣM_Δ = J·θ̈`) but not yet its energy.
-- **Em + conservation:** `E_m = ½Jθ̇² + ½Cθ² = const` (no friction; the weight and the axis reaction produce no moment about the wire axis). Antiphase exchange `E_c ↔ E_p,torsion`, exactly as the spring. Diagrams vs `θ` (parabola `½Cθ²` + inverted parabola) and vs `t` (flat `E_m`, antiphase energies at double frequency).
+- **Rotational kinetic energy:** for a solid rotating about a fixed axis, `E_c = ½Jθ̇²` — the rotational analogue of `½mv²` (`J` plays the rôle of mass `m`; `θ̇` the rôle of `v`). Name this explicitly; the student met `J` in the RFD chapter (`ΣM_Δ = J·θ̈`) but not yet its energy.
+- **Em + conservation:** `E_m = ½Jθ̇² + ½Cθ² = const` (no friction; the weight and the axis réaction produce no moment about the wire axis). Antiphase exchange `E_c ↔ E_p,torsion`, exactly as the spring. Diagrams vs `θ` (parabola `½Cθ²` + inverted parabola) and vs `t` (flat `E_m`, antiphase énergies at double frequency).
 
 ### 3.3 Misconceptions confronted at R6
 
@@ -174,7 +174,7 @@ Objective: the student **derives** `E_p,torsion = ½Cθ²` from the work of the 
 **M-TOR-3 — « L'énergie cinétique du disque en rotation vaut `½mv²`. »**
 - *Wrong model:* applies the translational KE to a rotating solid; no rotational-KE concept.
 - *Correct model:* pour un solide en **rotation** autour d'un axe fixe, `E_c = ½Jθ̇²` (analogue rotationnel : `J`↔`m`, `θ̇`↔`v`). Le disque de torsion **tourne**, il ne translate pas.
-- *Confrontation:* the analogy table (translation `½mv²` ↔ rotation `½Jθ̇²`); note that a rigid disk's points all have different `v` but one common `θ̇`, so `v` is ill-defined — only `½Jθ̇²` works.
+- *Confrontation:* the analogy table (translation `½mv²` ↔ rotation `½Jθ̇²`); note that a rigid disk's points all have différent `v` but one common `θ̇`, so `v` is ill-defined — only `½Jθ̇²` works.
 
 ### 3.4 Worked-example arc (R6)
 Reuse the `systemes-oscillants` torsion seeds (`J = 4,0·10⁻³ kg·m²`, `C = 0,16 N·m/rad`, launched from `θ_0 = 0,20 rad` at rest) so the mechanics are familiar and only the **energy** is new. Compute `E_m = ½Cθ_0² = ½·0,16·0,04 = 3,2·10⁻³ J` (all potential at release); at `θ=0`, all kinetic → `θ̇_max = √(C/J)·θ_0` cross-checked against `E_m = ½Jθ̇_max²`. Expert voice on the perfect parallel with the spring — *"changez `k↔C`, `x↔θ`, `m↔J`, `v↔θ̇` : c'est la même énergie, habillée en rotation."*
@@ -208,24 +208,24 @@ Stem: « Dans l'énergie mécanique d'un pendule de torsion, quelle grandeur jou
 
 ### 4.1 R-heading + objective
 **R7 — L'énergie du pendule pesant : quand le « ressort » est la pesanteur.**
-Objective: the student writes `E_m = E_c + E_pp` for a pendulum, understands the height change drives `E_pp` (not the wire length), proves conservation without friction (small oscillations), and reads the `E_c ↔ E_pp` exchange. **The restoring role is played by gravity, not a spring/wire — `E_pp = mgz` (from R3), no `½k`-style term.**
+Objective: the student writes `E_m = E_c + E_pp` for a pendulum, understands the height change drives `E_pp` (not the wire length), proves conservation without friction (small oscillations), and reads the `E_c ↔ E_pp` exchange. **The restoring rôle is played by gravity, not a spring/wire — `E_pp = mgz` (from R3), no `½k`-style term.**
 
 ### 4.2 Mechanism to make obvious
 - **The pendulum has no elastic store** — its potential energy is **gravitational**, `E_pp = mgz` (R3), where `z` is the height of the mass/centre of inertia above the lowest point. The restoring "spring" is the weight's tangential component.
 - **Height change (small oscillations):** for a simple pendulum, `z = L(1−cosθ)`; for small `θ`, `1−cosθ ≈ ½θ²`, so `E_pp ≈ ½mgLθ²` — note it grows as `θ²`, mirroring the spring's `½kx²` (the effective "stiffness" is `mgL`). This parallel is worth showing but the **primary expression stays `E_pp = mgz`** (savoir_faire 4 keeps it gravitational).
-- **Em + conservation:** `E_m = ½mv² + mgz = const` (no friction; tension does no work — radial). At the lowest point: `E_pp` minimal, `E_c` maximal (max speed). At the extremes `±θ_m`: `v=0`, `E_c=0`, all potential. Antiphase exchange, `E_m` flat. Diagrams vs `t` and vs `θ` (or vs `z`).
+- **Em + conservation:** `E_m = ½mv² + mgz = const` (no friction; tension does no work — radial). At the lowest point: `E_pp` minimal, `E_c` maximal (max speed). At the extrêmes `±θ_m`: `v=0`, `E_c=0`, all potential. Antiphase exchange, `E_m` flat. Diagrams vs `t` and vs `θ` (or vs `z`).
 
 ### 4.3 Misconceptions confronted at R7
 
 **M-PES-1 — « L'énergie mécanique n'est pas conservée : au point haut le pendule ralentit, donc il perd de l'énergie. »**
 - *Wrong model:* the R4 "`E_c` isn't `E_m`" gap, now on the pendulum — reads the slowing (falling `E_c`) as a falling `E_m`.
-- *Manifests:* claims `E_m` drops toward the extremes; can't say where the "lost" kinetic energy went.
+- *Manifests:* claims `E_m` drops toward the extrêmes; can't say where the "lost" kinetic energy went.
 - *Correct model:* sans frottement, `E_m = E_c + E_pp = const` ; au point haut `E_c` chute **mais `E_pp` monte d'autant** — l'énergie n'a pas disparu, elle est devenue potentielle.
 - *Confrontation:* the `E_c ↔ E_pp` exchange diagram; add `E_c + E_pp` and show it is flat while each varies.
 
 **M-PES-2 — « `E_pp = mgL` (on prend la longueur du fil comme hauteur) / référence non fixée. »**
-- *Wrong model:* uses the wire length `L` as the height, or never sets a reference level.
-- *Manifests:* writes `E_pp = mgL` at the extreme; gets inconsistent energies because the zero of `z` floats.
+- *Wrong model:* uses the wire length `L` as the height, or never sets a référence level.
+- *Manifests:* writes `E_pp = mgL` at the extreme; gets inconsistent énergies because the zéro of `z` floats.
 - *Correct model:* `E_pp = mg·z`, `z` = **altitude par rapport à une référence choisie** ; pour un pendule la variation de hauteur entre le bas et l'angle `θ` est `L(1−cosθ)` (**pas** `L`).
 - *Confrontation:* the pendulum diagram with `z = L(1−cosθ)` marked (C-PES-1); compute `E_pp` at `θ_m` with the correct height, contrast with the `mgL` error (way too big).
 
@@ -236,7 +236,7 @@ Objective: the student writes `E_m = E_c + E_pp` for a pendulum, understands the
 - *Confrontation:* the vs-`θ` diagram — `E_m` a flat ceiling; the `E_c=E_pp` crossing marked as a *point*, not a rule.
 
 ### 4.4 Worked-example arc (R7)
-A simple pendulum (`L`, `m`) released from `θ_m` at rest: `E_m = mgL(1−cosθ_m)` (all potential at release, reference at the lowest point); at the bottom, all kinetic → `v_max = √(2gL(1−cosθ_m))`. Expert voice: *"on ne dérive pas l'équation horaire — l'énergie donne la vitesse en bas directement, comme le TEC donnait la vitesse au sol en chute libre (R2)."* Ground it in the conservation frame the student already owns.
+A simple pendulum (`L`, `m`) released from `θ_m` at rest: `E_m = mgL(1−cosθ_m)` (all potential at release, référence at the lowest point); at the bottom, all kinetic → `v_max = √(2gL(1−cosθ_m))`. Expert voice: *"on ne dérive pas l'équation horaire — l'énergie donne la vitesse en bas directement, comme le TEC donnait la vitesse au sol en chute libre (R2)."* Ground it in the conservation frame the student already owns.
 
 ### 4.5 Three diagnostic items for R7
 
@@ -281,7 +281,7 @@ Only what the new derivations need. **The two triangle-area figures are the load
 
 ### C-PES-1 — Pendulum height `L(1−cosθ)` + `E_c↔E_pp` exchange — REQUIRED (R7)
 - **Type:** `structural-diagram` · **Tool:** `svg+katex`.
-- The pendulum with the height rise `z = L(1−cosθ)` marked geometrically (kills M-PES-2), plus the `E_c`/`E_pp`/`E_m` exchange diagram vs `θ` (`E_m` flat ceiling; crossing point marked). KaTeX for `z`, `L(1−cosθ)`, energies. (The existing `conservation-em.svg` can be adapted rather than built fresh.)
+- The pendulum with the height rise `z = L(1−cosθ)` marked geometrically (kills M-PES-2), plus the `E_c`/`E_pp`/`E_m` exchange diagram vs `θ` (`E_m` flat ceiling; crossing point marked). KaTeX for `z`, `L(1−cosθ)`, énergies. (The existing `conservation-em.svg` can be adapted rather than built fresh.)
 
 ### C-ENERGY-SANDBOX — energy-bar manipulable — OPTIONAL (R5/R7)
 - **Type:** `manipulable` · **Tool:** `geogebra/desmos/falstad/phet` (embed; do not rebuild) — e.g. PhET *Masses & Springs* (energy view) or *Pendulum Lab* (energy view), which show live `E_c`/`E_p`/`E_m` bars trading as the oscillator moves.
@@ -291,7 +291,7 @@ Only what the new derivations need. **The two triangle-area figures are the load
 
 ## 6. Build spec — for content-author (edits `lesson.md`)
 
-**Profile:** PC — three modes. Here the heart is **procedural** (derive `½kx²`, `½Cθ²` from the area/average-force argument) + **conceptual** (the two-reservoir picture, conservation) + **experimental** (read energy diagrams / confirm conservation off a trace). **Predict-then-reveal** the ½: ask "combien vaut le travail pour étirer de `x` ?" — the M-EPE-1 student answers `kx²`; reveal the triangle.
+**Profile:** PC — three modes. Here the heart is **procedural** (derive `½kx²`, `½Cθ²` from the area/average-force argument) + **conceptual** (the two-reservoir picture, conservation) + **expérimental** (read energy diagrams / confirm conservation off a trace). **Predict-then-reveal** the ½: ask "combien vaut le travail pour étirer de `x` ?" — the M-EPE-1 student answers `kx²`; reveal the triangle.
 
 **Do, in order:**
 1. **R0–R4 — keep, compress; extend R2** to the work of a variable force = area under `F(x)` (§1); fold the ex-R5 tool-choice note into R4; **drop old R5**.
@@ -302,14 +302,14 @@ Only what the new derivations need. **The two triangle-area figures are the load
 
 **Hard rules:**
 - **French, voice-ready; KaTeX for all math.**
-- **DERIVE `½kx²` and `½Cθ²`** — do not assert them (the old corpus asserted `½kx²`; here it must be built from the area/average-force argument). The **½ must be explained** (average of a force growing from zero), not dropped in.
+- **DERIVE `½kx²` and `½Cθ²`** — do not assert them (the old corpus asserted `½kx²`; here it must be built from the area/average-force argument). The **½ must be explained** (average of a force growing from zéro), not dropped in.
 - **RESPECT THE BOUNDARY (§0.6):** pendule pesant **small oscillations** only; **no forced-regime energy**; diagrams (vs t and vs position) are in scope; derivation via **area/triangle** (integral optional as a second view); **no** Lagrangian methods.
 - **Structural media → svg+katex, never gemini** (C-EPE-1/2, C-TOR-1, C-PES-1). Manipulable is an embed with the boundary guard (C-ENERGY-SANDBOX).
 - **Do not duplicate `systemes-oscillants`:** this lesson **owns** the `½kx²`/`½Cθ²` derivation and the quantitative energy diagrams; `systemes-oscillants` R5 only previews them qualitatively (§8).
 
 ## 7. Build spec — for item-author (edits `items.yaml`)
 
-- **Coverage floor:** **≥3 items per misconception** (VISION; ADR 0011), ceiling 6. New misconceptions: **M-EPE-1/2/3, M-TOR-1/2/3, M-PES-1/2/3** (+ candidate M-EPE-4 if the human confirms) → **≥27 items** to floor. The §2.5/§3.5/§4.5 items are canonical firsts; add ≥2 structural variants each (different oscillator dress, graph vs formula vs numeric).
+- **Coverage floor:** **≥3 items per misconception** (VISION; ADR 0011), ceiling 6. New misconceptions: **M-EPE-1/2/3, M-TOR-1/2/3, M-PES-1/2/3** (+ candidate M-EPE-4 if the human confirms) → **≥27 items** to floor. The §2.5/§3.5/§4.5 items are canonical firsts; add ≥2 structural variants each (différent oscillator dress, graph vs formula vs numeric).
 - Add the nine (or ten) misconception records with French `{label, description, contradicts_principle}`; encode per ADR 0008/0009.
 - **Habileté mix (§0.7):** derivations and diagram-reading skew **Utilisation**; energy bilans (find `v_max`, `θ̇_max`, a height) skew **Résolution**; confirming conservation off an `x(t)`/energy trace is **Application expérimentale**. Aim ≈ 50 / 15 / 35; tag `document_experimental` on the trace items.
 - **Stem-defect discipline:** *correct-answer contamination* = defect → revise; *cross-misconception co-attribution* = **dual-tag** (flagged: AE-R6-2/B = TOR-2+TOR-3; AE-R7-3/C = PES-3+PES-1). The `½`-vs-`kx²` trap (M-EPE-1, M-TOR-1) is the highest-value distractor family — ensure it appears across multiple surfaces.
@@ -325,7 +325,7 @@ Only what the new derivations need. **The two triangle-area figures are the load
 3. **`systemes-oscillants` R5 is trimmed** (per its own spec-extension §1.2): it may **STATE** `½kx²` as a **result with an explicit forward-reference** to this chapter, and use it **only qualitatively** (the Ec↔Epe exchange / RLC-analogue picture that motivates amortissement & résonance). It **NEVER derives** `½kx²`, and its `sin²+cos²` conservation proof + numeric `E_m` + quantitative energy diagrams **migrate HERE** (R5 §2.4).
 4. **Quantitative energy DIAGRAMS (Ec, Ep, Em vs t and vs position) live HERE only** (C-EPE-2, C-TOR-1, C-PES-1). `systemes-oscillants` keeps only its **qualitative** exchange figure (`energie-oscillateur.svg`).
 5. **Consistency contract — identical across both lessons, no contradiction:** notation `k`/`x`/`E_pe=½kx²`, `C`/`θ`/`E_p,torsion=½Cθ²`, `J`/`θ̇`/`E_c=½Jθ̇²`; sign convention `W(F_rappel) = −ΔE_pe`, `W(M_rappel) = −ΔE_p,torsion`; the same worked-number seeds (`k=40 N/m`, `X_m=0,05 m`; torsion `J=4,0·10⁻³`, `C=0,16`) so the two lessons reinforce rather than diverge.
-6. **Ordering note:** the cadre lists `systemes_oscillants` **before** `aspects_energetiques`. So `systemes-oscillants` R5's mention is a **forward** reference (as the existing lesson already does: "…une grandeur que tu retrouveras établie…"). If the app's teaching order ever puts `aspects_energetiques` first, it becomes a **back** reference; the **derivation home is this lesson either way**. content-author must keep the cross-reference direction consistent with the shipped order.
+6. **Ordering note:** the cadre lists `systemes_oscillants` **before** `aspects_energetiques`. So `systemes-oscillants` R5's mention is a **forward** référence (as the existing lesson already does: "…une grandeur que tu retrouveras établie…"). If the app's teaching order ever puts `aspects_energetiques` first, it becomes a **back** référence; the **derivation home is this lesson either way**. content-author must keep the cross-reference direction consistent with the shipped order.
 
 **One-line summary:** *Derivation + quantitative diagrams of `½kx²` and `½Cθ²` → **aspects-energetiques** (here). Qualitative preview + forward-reference → **systemes-oscillants** R5. Same notation, same signs, same numbers. No duplication, no contradiction.*
 
@@ -337,8 +337,8 @@ Only what the new derivations need. **The two triangle-area figures are the load
 5. ⚠ **Misconception completeness** — are these nine the places PC students actually fail on oscillator energy? (Human's teaching authority.)
 
 ### Sources consulted
-- **Curriculum boundary (authoritative):** `docs/cadre/curriculum/pc-physique-chimie.yaml` → `physique/mecanique/aspects_energetiques` (programme, savoir_faire) + `mecanique` (limites, exclusions, poids, habiletes).
+- **Curriculum boundary (authoritative):** `docs/cadre/curriculum/pc-physique-chimie.yaml` → `physique/mecanique/aspects_energetiques` (programme, savoir_faire) + `mécanique` (limites, exclusions, poids, habiletes).
 - **Existing lesson:** `content/pc/aspects-energetiques/lesson.md` (R0–R6), `items.yaml`.
 - **Coupled source of the misplaced `½kx²`:** `content/pc/systemes-oscillants/lesson.md` R5 + `content/pc/systemes-oscillants/spec-extension.md` §1/§8.
-- **Format reference:** `content/pc/rlc-serie/spec.md`.
-- **Standard:** VISION (notion anatomy; PC three-mode profile), DESIGN-BIBLE §3/§6/§7, ADR 0017 (media taxonomy), ADR 0008/0009/0011 (misconception schema, coverage floor, dual-tagging).
+- **Format référence:** `content/pc/rlc-serie/spec.md`.
+- **Standard:** VISION (notion anatomy; PC three-mode profile), DESIGN-BIBLE §3/§6/§7, ADR 0017 (media taxonomy), ADR 0008/0009/0011 (misconception schéma, coverage floor, dual-tagging).

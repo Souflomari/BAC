@@ -12,78 +12,78 @@ misconceptions:
   # n'est gonflé ; le plancher (>=3 par modèle) n'est PAS atteint et c'est
   # disclosé tel quel.
   - id: mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine
-    label: "e^x pourrait etre negatif ou nul, ou ne pas etre defini partout"
+    label: "e^x pourrait être négatif ou nul, ou ne pas être défini partout"
     description: >-
-      L'eleve croit que e^x peut devenir negatif ou nul (0 dans l'image), ou
+      L'élève croit que e^x peut devenir négatif ou nul (0 dans l'image), ou
       qu'il faudrait restreindre le domaine de exp comme pour ln ; il peut aussi
-      generaliser « e^x > 0 » a une fonction entiere (ex. e^x + 2x - 3) pour
+      generaliser « e^x > 0 » a une fonction entière (ex. e^x + 2x - 3) pour
       conclure a tort qu'elle ne s'annule jamais.
     contradicts_principle: >-
-      exp est definie sur R tout entier, a valeurs dans ]0,+inf[ : e^x > 0 pour
-      tout reel x, et 0 n'est jamais atteint (asymptote y=0 en -inf). C'est ln,
+      exp est définie sur R tout entier, a valeurs dans ]0,+inf[ : e^x > 0 pour
+      tout réel x, et 0 n'est jamais atteint (asymptote y=0 en -inf). C'est ln,
       pas exp, qui a un domaine restreint.
   - id: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
     label: "e^0, e^1, E(0) mal evalues ; ln(e^x) et e^{ln x} confondues"
     description: >-
-      L'eleve se trompe sur les valeurs remarquables (e^0=0, e^1=1, E(0)=e…) ou
-      confond les deux identites de reciprocite : ln(e^x)=x (vraie pour tout x)
+      L'élève se trompe sur les valeurs remarquables (e^0=0, e^1=1, E(0)=e…) ou
+      confond les deux identités de reciprocite : ln(e^x)=x (vraie pour tout x)
       et e^{ln x}=x (seulement pour x>0), ou croit « E(0) indefini car ln(0)
       n'existe pas ».
     contradicts_principle: >-
-      e^0=1 (car ln 1=0) et e^1=e (car ln e=1). ln(e^x)=x tient pour TOUT reel x
-      (e^x>0 toujours), tandis que e^{ln x}=x exige x>0. E(0) cherche le reel dont
-      le ln vaut 0 : c'est 1, parfaitement defini.
+      e^0=1 (car ln 1=0) et e^1=e (car ln e=1). ln(e^x)=x tient pour TOUT réel x
+      (e^x>0 toujours), tandis que e^{ln x}=x exige x>0. E(0) cherche le réel dont
+      le ln vaut 0 : c'est 1, parfaitement défini.
   - id: mc.math.maths_fonction_exponentielle.bijection-existence-unicite
     label: "bijection de ln / corollaire du TVI mal appliques"
     description: >-
-      L'eleve confond le domaine ]0,+inf[ de ln (entrees) avec son image R
-      (valeurs, negatives comprises), croit a 0 ou plusieurs solutions la ou la
+      L'élève confond le domaine ]0,+inf[ de ln (entrées) avec son image R
+      (valeurs, négatives comprises), croit a 0 ou plusieurs solutions la ou la
       stricte monotonie en garantit exactement une, ou applique le TVI sans
       reunir continuite + stricte monotonie + changement de signe.
     contradicts_principle: >-
-      ln realise une bijection de ]0,+inf[ sur R : pour tout reel k (meme
-      negatif), ln(x)=k a une unique solution. Le corollaire du TVI (continuite +
+      ln realise une bijection de ]0,+inf[ sur R : pour tout réel k (même
+      négatif), ln(x)=k a une unique solution. Le corollaire du TVI (continuite +
       stricte monotonie + changement de signe) donne existence ET unicite.
   - id: mc.math.maths_fonction_exponentielle.somme-produit-confondus
     label: "e^{a+b} = e^a + e^b, ou e^a x e^b = e^{a x b}"
     description: >-
-      L'eleve garde l'addition au lieu de la transformer (e^{a+b}=e^a+e^b), ou
+      L'élève garde l'addition au lieu de la transformer (e^{a+b}=e^a+e^b), ou
       croit que multiplier deux exponentielles multiplie leurs exposants
-      (e^a x e^b = e^{a x b}). La regle « somme d'exposants -> produit » est mal
+      (e^a x e^b = e^{a x b}). La règle « somme d'exposants -> produit » est mal
       encodee.
     contradicts_principle: >-
-      Propriete fondatrice : e^{a+b} = e^a x e^b — une SOMME d'exposants devient
+      Propriété fondatrice : e^{a+b} = e^a x e^b — une SOMME d'exposants devient
       un PRODUIT d'exponentielles. exp ne se distribue pas sur une somme
       (e^{a+b} != e^a+e^b), et un produit d'exponentielles ADDITIONNE les
       exposants (e^a x e^b = e^{a+b}, pas e^{a x b}).
   - id: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur
-    label: "e^{-a} mal gere ; difference lue comme quotient ; signe d'exposant"
+    label: "e^{-a} mal gere ; différence lue comme quotient ; signe d'exposant"
     description: >-
-      L'eleve applique mal les regles derivees du produit : e^{-a} devient -e^a
+      L'élève applique mal les règles dérivées du produit : e^{-a} devient -e^a
       (change le signe) ou e^a (ignore le signe) au lieu de 1/e^a ; une
-      difference e^a - e^b est lue comme e^{a-b} (regle du quotient plaquee sur
+      différence e^a - e^b est lue comme e^{a-b} (règle du quotient plaquee sur
       une soustraction) ; ou le signe/la combinaison des exposants dans un
-      produit est errone.
+      produit est erroné.
     contradicts_principle: >-
       e^{-a} = 1/e^a (toujours strictement positif). Le QUOTIENT donne la
-      difference d'exposants : e^a / e^b = e^{a-b}, pas la soustraction
+      différence d'exposants : e^a / e^b = e^{a-b}, pas la soustraction
       e^a - e^b. Dans un produit, les exposants s'additionnent en conservant
       leur signe.
   - id: mc.math.maths_fonction_exponentielle.derivee-exp-composee
     label: "(e^u)' = e^u, = u', ou = u e^u (au lieu de u' e^u)"
     description: >-
-      En derivant e^{u(x)}, l'eleve oublie un morceau : e^u seul (u' oublie), u'
+      En derivant e^{u(x)}, l'élève oublie un morceau : e^u seul (u' oublie), u'
       seul (l'exponentielle perdue), u e^u (u au lieu de u'), ou derive mal
-      l'interieur u. Inclut la regle du produit tronquee ou l'erreur de signe
-      quand exp apparait dans un produit.
+      l'intérieur u. Inclut la règle du produit tronquee ou l'erreur de signe
+      quand exp apparaît dans un produit.
     contradicts_principle: >-
-      (e^u)' = u' e^u, sans aucune condition de signe sur u : « derivee de
-      l'interieur, fois l'exponentielle de l'interieur ». Les deux facteurs sont
+      (e^u)' = u' e^u, sans aucune condition de signe sur u : « dérivée de
+      l'intérieur, fois l'exponentielle de l'intérieur ». Les deux facteurs sont
       indispensables. Pour un produit, on applique (uv)' = u'v + uv' en entier.
   - id: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
     label: "e^x/x lu comme 0, 1, ou « pas de limite » (FI non levee)"
     description: >-
-      L'eleve conclut a l'envers ou pas du tout : e^x/x -> 0 (sens de ln), ou
+      L'élève conclut a l'envers ou pas du tout : e^x/x -> 0 (sens de ln), ou
       inf/inf lu comme 1, ou « forme indeterminee = limite inexistante ». Il
       croit que e^x croit comme x.
     contradicts_principle: >-
@@ -93,7 +93,7 @@ misconceptions:
   - id: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini
     label: "lim_{-inf} e^x = -inf / oscille / mauvaise branche"
     description: >-
-      L'eleve traite e^x comme x en -inf (limite -inf), croit qu'il oscille, ou
+      L'élève traite e^x comme x en -inf (limite -inf), croit qu'il oscille, ou
       place l'asymptote y=0 du mauvais cote (en +inf). Il confond aussi la
       limite en -inf avec le comportement en +inf.
     contradicts_principle: >-
@@ -103,29 +103,29 @@ misconceptions:
   - id: mc.math.maths_fonction_exponentielle.inegalite-reference-erreur
     label: "e^x >= x+1 mal appliquee (oubli du +1, sens inverse, e^{x+1})"
     description: >-
-      En exploitant l'inegalite de reference e^x >= x+1, l'eleve oublie le « +1 »
+      En exploitant l'inégalité de référence e^x >= x+1, l'élève oublie le « +1 »
       (compare e^a a a), inverse le sens (<= au lieu de >=), ou confond le nombre
       x+1 avec l'exponentielle e^{x+1}.
     contradicts_principle: >-
-      Pour tout reel x, e^x >= x+1 (la courbe de exp reste au-dessus de sa
+      Pour tout réel x, e^x >= x+1 (la courbe de exp reste au-dessus de sa
       tangente en 0, par convexite). En x=a, cela donne e^a >= a+1 (le nombre),
       pas e^a >= a ni e^a >= e^{a+1}.
   - id: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
-    label: "exp aurait un minimum / decroitrait ; tangente ou symetrie erronees"
+    label: "exp aurait un minimum / decroitrait ; tangente ou symétrie erronees"
     description: >-
-      L'eleve prete a exp un profil « en creux » (decroissante puis croissante,
+      L'élève prete a exp un profil « en creux » (décroissante puis croissante,
       minimum en 0), confond convexite et existence d'un minimum, se trompe sur
       la tangente en 0 (oubli du +1, pente e, tangente horizontale), ou applique
-      mal la symetrie par rapport a y=x avec la courbe de ln.
+      mal la symétrie par rapport a y=x avec la courbe de ln.
     contradicts_principle: >-
       (e^x)'=e^x>0 partout : exp est strictement croissante sur R, sans minimum
       ni maximum. Sa tangente en 0 est y=x+1 (pente e^0=1). Convexite = courbe
-      au-dessus de ses tangentes, pas un minimum. La symetrie par rapport a y=x
-      echange les coordonnees d'un point.
+      au-dessus de ses tangentes, pas un minimum. La symétrie par rapport a y=x
+      echange les coordonnées d'un point.
   - id: mc.math.maths_fonction_exponentielle.primitive-exp-erreur
     label: "primitive de e^x / u'e^u traitee comme une puissance ou tronquee"
     description: >-
-      L'eleve primitive e^x « comme une puissance » (e^{x+1}/(x+1)), place la
+      L'élève primitive e^x « comme une puissance » (e^{x+1}/(x+1)), place la
       constante dans l'exposant (e^{x+C}), ou, pour u'e^u, garde/oublie un
       facteur, met u' dans l'exposant, ou multiplie e^u par u.
     contradicts_principle: >-
@@ -136,26 +136,26 @@ misconceptions:
   - id: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
     label: "e^{x+1}=3 => x+1=3 ; injectivite mal appliquee ; sens/domaine errones"
     description: >-
-      En resolvant equations/inequations : l'eleve « efface » e sans passer par
+      En resolvant equations/inequations : l'élève « efface » e sans passer par
       ln (e^{x+1}=3 => x+1=3), applique mal l'injectivite (e^A=e^B => A=-B),
       inverse le sens d'une inequation (comme si exp decroissait), ajoute une
       condition de domaine inutile, se trompe en isolant x, ou confond ln(3)-1
       avec ln(3-1).
     contradicts_principle: >-
-      exp est strictement croissante et injective sur R, definie partout (aucune
+      exp est strictement croissante et injective sur R, définie partout (aucune
       condition de domaine) : e^A=e^B <=> A=B, e^A<=e^B <=> A<=B (sens conserve).
       e^x=k (k>0) <=> x=ln k, et ln(k)-1 n'est pas ln(k-1).
   - id: mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible
-    label: "e^x = k<=0 « resolu » ; difference d'exponentielles toujours positive"
+    label: "e^x = k<=0 « resolu » ; différence d'exponentielles toujours positive"
     description: >-
-      L'eleve resout e^x = -4 comme e^x = 4 ou ecrit ln(-4) / -ln(4), au lieu de
-      conclure a l'absence de solution ; ou il croit qu'une difference de deux
+      L'élève résout e^x = -4 comme e^x = 4 ou écrit ln(-4) / -ln(4), au lieu de
+      conclure a l'absence de solution ; ou il croit qu'une différence de deux
       exponentielles est toujours positive.
     contradicts_principle: >-
-      e^x > 0 pour tout reel x : e^x = k n'a de solution que si k>0 (alors
+      e^x > 0 pour tout réel x : e^x = k n'a de solution que si k>0 (alors
       x=ln k) ; pour k<=0, aucune solution. « e^x>0 » porte sur chaque
-      exponentielle prise SEULE, pas sur une difference e^A - e^B, qui peut etre
-      negative.
+      exponentielle prise SEULE, pas sur une différence e^A - e^B, qui peut être
+      négative.
 items:
   - id: EXP-1
     rung: "R1"
@@ -1537,14 +1537,14 @@ coverage_summary:
     mc.math.maths_fonction_exponentielle.croissances-comparees-inversees: 1   # EXP-5                  (BELOW floor)
     mc.math.maths_fonction_exponentielle.limite-exp-moins-infini: 1           # EXP-15                 (BELOW floor)
     mc.math.maths_fonction_exponentielle.inegalite-reference-erreur: 1        # EXP-16                 (BELOW floor)
-  floor_met: false          # 5 modeles sur 13 atteignent >=3 par primaire ; 8 restent en dessous.
+  floor_met: false          # 5 modèles sur 13 atteignent >=3 par primaire ; 8 restent en dessous.
   models_defined: 13
   models_meeting_floor: 5   # valeurs-et-reciprocite, derivee-exp-composee, allure-courbe, primitive-exp, resolution-exp
-  models_below_floor: 8     # les 8 modeles marques BELOW floor ci-dessus
+  models_below_floor: 8     # les 8 modèles marques BELOW floor ci-dessus
   # Distracteurs dont le modele differe du primaire de leur item — couverture
   # SECONDAIRE, NON comptee ci-dessus (un item est compte une seule fois).
   secondary_coverage:
-    - { item: EXP-2,  choice: D, misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur, note: "e^a - e^b = e^{a-b} : difference lue comme quotient (item primaire : somme-produit)." }
+    - { item: EXP-2,  choice: D, misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur, note: "e^a - e^b = e^{a-b} : différence lue comme quotient (item primaire : somme-produit)." }
     - { item: EXP-8,  choice: B, misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur, note: "E(a+b)=E(a)-E(b) : somme lue comme soustraction (item primaire : somme-produit)." }
     - { item: EXP-8,  choice: D, misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur, note: "E(a+b)=E(a)/E(b) : somme lue comme quotient (item primaire : somme-produit)." }
     - { item: EXP-19, choice: A, misconception: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini,        note: "lim -inf = -inf (item primaire : allure-courbe)." }
@@ -1552,12 +1552,12 @@ coverage_summary:
     - { item: EXP-27, choice: C, misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur,          note: "« besoin de calculer k(1) a part » : injectivite mal exploitee (item primaire : exp-valeur-negative-impossible)." }
     - { item: EXP-27, choice: D, misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur,          note: "sens de comparaison des exposants inverse (item primaire : exp-valeur-negative-impossible)." }
   notes: >-
-    Backfill uniquement : aucun nouvel item ecrit, aucun compte gonfle. Le bank
-    herite (27 items) precede le plancher >=3-par-modele : sur 13 modeles alignes
+    Backfill uniquement : aucun nouvel item écrit, aucun compte gonfle. Le bank
+    herite (27 items) precede le plancher >=3-par-modele : sur 13 modèles alignés
     sur les rupture-gates, 5 l'atteignent par primaire et 8 restent EN DESSOUS
     (dont les gates R4 croissances-comparees-inversees, limite-exp-moins-infini
     et inegalite-reference-erreur, chacun a 1 item primaire seulement). Les
     clones de checkpoints (checkpoints.yaml) sont surfaces en ligne et NE sont
-    PAS comptes ici. Un futur passage d'items devra epaissir les 8 modeles sous
-    le plancher pour declarer la notion DONE ; ce manque est lui-meme le livrable
+    PAS comptes ici. Un futur passage d'items devra epaissir les 8 modèles sous
+    le plancher pour declarer la notion DONE ; ce manque est lui-même le livrable
     de ce backfill (honnete, non maquille).

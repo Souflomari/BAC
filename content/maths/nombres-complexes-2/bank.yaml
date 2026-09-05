@@ -1941,9 +1941,9 @@ entries:
           - math: '\Delta = \big[2(m+1+i)\big]^2 - 4\times2\times\big(m^2+(1+i)m+i\big) = 4(m+1+i)^2 - 8\big(m^2+(1+i)m+i\big)'
             note: "Δ = b² − 4ac, avec b = −2(m+1+i), a = 2, c = m²+(1+i)m+i."
           - math: '(m+1+i)^2 = m^2 + 2(1+i)m + (1+i)^2 = m^2+2(1+i)m+2i'
-            note: "Developpement ; (1+i)² = 2i, deja vu au chapitre precedent."
+            note: "Développement ; (1+i)² = 2i, déjà vu au chapitre précédent."
           - math: '4(m+1+i)^2 = 4m^2+8(1+i)m+8i, \qquad 8\big(m^2+(1+i)m+i\big) = 8m^2+8(1+i)m+8i'
-            note: "Les deux termes en (1+i)m et en i coincident exactement entre les deux developpements."
+            note: "Les deux termes en (1+i)m et en i coïncident exactement entre les deux développements."
           - math: '\Delta = \big[4m^2+8(1+i)m+8i\big] - \big[8m^2+8(1+i)m+8i\big] = -4m^2 = (2im)^2'
             note: "Tout s'annule sauf les termes en m² : il reste −4m², soit (2im)² puisque (2im)² = 4i²m² = −4m²."
       - id: q2
@@ -1957,7 +1957,7 @@ entries:
           - math: 'z_1 = \dfrac{(m+1+i)+im}{2} = \dfrac{m(1+i)+(1+i)}{2} = \dfrac{(1+i)(m+1)}{2}'
             note: "Signe + : on regroupe m+im = m(1+i), puis on factorise par (1+i)."
           - math: 'z_2 = \dfrac{(m+1+i)-im}{2} = \dfrac{m(1-i)+(1+i)}{2} = \dfrac{(1-i)(m+i)}{2}'
-            note: "Signe − : m−im = m(1−i) ; on verifie que (1−i)(m+i) redonne bien (1−i)m + (1+i) — meme numerateur."
+            note: "Signe − : m−im = m(1−i) ; on vérifie que (1−i)(m+i) redonne bien (1−i)m + (1+i) — même numérateur."
       - id: q1a2
         part: "Partie 2 — Plan complexe $(O,\\vec{e_1},\\vec{e_2})$ : $m\\in\\mathbb{C}\\setminus\\{0,1,i\\}$, $z_1=\\frac{1+i}{2}(m+1)$, $z_2=\\frac{1-i}{2}(m+i)$ ; $A(1)$, $B(i)$, $M(m)$, $M_1(z_1)$, $M_2(z_2)$"
         stem: |-
@@ -1978,7 +1978,7 @@ entries:
           La relation $z_1=iz_2+1$ (question précédente) est une application affine $z\mapsto iz+1$ envoyant $M_2$ sur $M_1$. Le multiplicateur $i$ a pour module $1$ et pour argument $\dfrac{\pi}{2}$ (chapitre 6) : c'est le signe d'une rotation d'angle $\dfrac{\pi}{2}$, de centre le point fixe de cette application, solution de $\omega=i\omega+1$.
         steps:
           - math: '\omega = i\omega+1 \implies \omega(1-i)=1 \implies \omega = \dfrac{1}{1-i} = \dfrac{1+i}{(1-i)(1+i)} = \dfrac{1+i}{2}'
-            note: "Point fixe de z ↦ iz+1 : on resout omega = i.omega + 1 (methode du conjugue)."
+            note: "Point fixe de z ↦ iz+1 : on résout omega = i.omega + 1 (méthode du conjugue)."
           - math: 'z_1-\omega = i(z_2-\omega)'
             note: "Forme decentree de la rotation (chapitre 6) : z1 − omega = i (z2 − omega), equivalente a z1 = i z2 + (1 − i).omega = i z2 + 1."
           - math: 'M_1\ \text{est l''image de}\ M_2\ \text{par la rotation de centre}\ \Omega\left(\dfrac{1+i}{2}\right)\ \text{et d''angle}\ \dfrac{\pi}{2}'
@@ -1991,13 +1991,13 @@ entries:
           On calcule séparément $z_1-m$ et $z_2-m$, en cherchant à chaque fois un facteur commun qui simplifiera dans le rapport. Le point de vigilance : les deux différences se factorisent chacune par un binôme du type $(m-1)$ ou $(m-i)$, pas par $m$ lui-même — c'est ce facteur qu'il faut repérer.
         steps:
           - math: 'z_1-m = \dfrac{(1+i)(m+1)}{2}-m = \dfrac{m(i-1)+(1+i)}{2} = \dfrac{(i-1)(m-i)}{2}'
-            note: "On regroupe les termes en m, puis on factorise ; (1+i) = (i−1)(−i), verifie par developpement."
+            note: "On regroupe les termes en m, puis on factorise ; (1+i) = (i−1)(−i), verifie par développement."
           - math: 'z_2-m = \dfrac{(1-i)(m+i)}{2}-m = \dfrac{m(-1-i)+(1+i)}{2} = -\dfrac{(1+i)(m-1)}{2}'
-            note: "Meme demarche ; le facteur (1+i) se met en evidence des deux cotes."
+            note: "Même demarche ; le facteur (1+i) se met en evidence des deux cotes."
           - math: '\dfrac{z_2-m}{z_1-m} = \dfrac{-(1+i)(m-1)}{(i-1)(m-i)} = \dfrac{(1+i)(m-1)}{(1-i)(m-i)} = \dfrac{1+i}{1-i}\cdot\dfrac{m-1}{m-i}'
             note: "i−1 = −(1−i) : les deux signes moins se simplifient."
           - math: '\dfrac{1+i}{1-i} = \dfrac{(1+i)^2}{(1-i)(1+i)} = \dfrac{2i}{2} = i \implies \dfrac{z_2-m}{z_1-m} = i\,\dfrac{m-1}{m-i}'
-            note: "Methode du conjugue (chapitre 1) : (1+i)/(1−i) = i."
+            note: "Méthode du conjugue (chapitre 1) : (1+i)/(1−i) = i."
       - id: q2b2
         stem: |-
           **(0,5 pt)** Montrer que si les points $M$, $M_1$ et $M_2$ sont alignés alors $M$ appartient au cercle $(\Gamma)$ de diamètre $[AB]$
@@ -2006,14 +2006,14 @@ entries:
 
           Or $\dfrac{i-m}{1-m}=\dfrac{b-m}{a-m}$ est, par le chapitre 7, le rapport qui code l'angle $\big(\vec{MA},\vec{MB}\big)$ : imaginaire pur signifie que cet angle est droit, c'est-à-dire que $M$ voit le segment $[AB]$ sous un angle droit — exactement la caractérisation (Thalès) du cercle $(\Gamma)$ de diamètre $[AB]$.
         steps:
-          - math: 'M,M_1,M_2\ \text{alignes} \iff \dfrac{z_2-m}{z_1-m}\in\mathbb{R} \iff i\,\dfrac{m-1}{m-i}\in\mathbb{R}\ (\text{q2-a})'
-            note: "Chapitre R6 : rapport reel = alignement."
+          - math: 'M,M_1,M_2\ \text{alignés} \iff \dfrac{z_2-m}{z_1-m}\in\mathbb{R} \iff i\,\dfrac{m-1}{m-i}\in\mathbb{R}\ (\text{q2-a})'
+            note: "Chapitre R6 : rapport réel = alignement."
           - math: 'i\,\dfrac{m-1}{m-i}\in\mathbb{R} \iff \dfrac{m-1}{m-i}\in i\mathbb{R} \iff \dfrac{m-i}{m-1}\in i\mathbb{R}'
-            note: "Diviser un reel par i donne un imaginaire pur ; l'inverse d'un imaginaire pur non nul reste imaginaire pur."
+            note: "Diviser un réel par i donne un imaginaire pur ; l'inverse d'un imaginaire pur non nul reste imaginaire pur."
           - math: '\dfrac{m-i}{m-1} = \dfrac{i-m}{1-m} = \dfrac{b-m}{a-m}\ (\text{affixes de}\ B(i)\ \text{et}\ A(1))'
-            note: "Meme rapport, numerateur et denominateur changes de signe ensemble."
-          - math: '\dfrac{b-m}{a-m}\in i\mathbb{R} \implies \widehat{\big(\vec{MA},\vec{MB}\big)} = \dfrac{\pi}{2} \implies M\in(\Gamma)\ \text{cercle de diametre}\ [AB]'
-            note: "Chapitre R6 : rapport imaginaire pur = angle droit ; Thales : M voit [AB] sous un angle droit ⟹ M sur le cercle de diametre [AB]."
+            note: "Même rapport, numérateur et dénominateur changes de signe ensemble."
+          - math: '\dfrac{b-m}{a-m}\in i\mathbb{R} \implies \widehat{\big(\vec{MA},\vec{MB}\big)} = \dfrac{\pi}{2} \implies M\in(\Gamma)\ \text{cercle de diamètre}\ [AB]'
+            note: "Chapitre R6 : rapport imaginaire pur = angle droit ; Thales : M voit [AB] sous un angle droit ⟹ M sur le cercle de diamètre [AB]."
       - id: q2c2
         stem: |-
           **(0,75 pt)** Déterminer l'ensemble des points $M$ pour que les points $\Omega$, $M$, $M_1$ et $M_2$ soient cocycliques (remarquer que : $\dfrac{z_1-\omega}{z_2-\omega} = i$)
@@ -2027,11 +2027,11 @@ entries:
           Reste un cas dégénéré à exclure : si $M=\Omega$, il n'y a plus que trois points distincts, pas quatre points cocycliques. Or $\Omega=\dfrac{1+i}{2}$ est justement le milieu de $[AB]$, donc un point de la droite $(AB)$ : il faut l'exclure. L'ensemble cherché est donc la droite $(AB)$ privée du point $\Omega$ (et, comme partout dans cette partie, du domaine déjà restreint $m\notin\{0,1,i\}$, deux points déjà situés sur cette droite).
         steps:
           - math: '\dfrac{z_1-\omega}{z_2-\omega} = i\quad(\text{rotation de la question 1-b, rung R6}) \implies \Omega M_1=\Omega M_2\ \text{et}\ \widehat{M_1\Omega M_2}=\dfrac{\pi}{2}\ \text{pour tout}\ m'
-            note: "Ceci vaut pour tout m du domaine : Omega est toujours sur le cercle de diametre [M1M2] (Thales)."
+            note: "Ceci vaut pour tout m du domaine : Omega est toujours sur le cercle de diamètre [M1M2] (Thales)."
           - math: '\dfrac{z_1-m}{z_2-m} = \dfrac{1}{i}\cdot\dfrac{m-i}{m-1} = -i\,\dfrac{m-i}{m-1}'
             note: "Inverse du rapport de la question 2-a."
-          - math: '\dfrac{z_1-m}{z_2-m}\in i\mathbb{R} \iff \dfrac{m-i}{m-1}\in\mathbb{R} \iff M,\,A,\,B\ \text{alignes (rung R6)}'
-            note: "M voit [M1M2] sous un angle droit exactement quand M, A, B sont alignes."
+          - math: '\dfrac{z_1-m}{z_2-m}\in i\mathbb{R} \iff \dfrac{m-i}{m-1}\in\mathbb{R} \iff M,\,A,\,B\ \text{alignés (rung R6)}'
+            note: "M voit [M1M2] sous un angle droit exactement quand M, A, B sont alignés."
           - math: 'M=\Omega \implies m=\dfrac{1+i}{2}\ (\text{milieu de}\ [AB],\ \text{sur}\ (AB)) \implies \text{a exclure (seulement 3 points distincts)}'
             note: "Cas degenere a retirer de la droite."
           - math: '\text{Ensemble cherche\,: la droite}\ (AB)\ \text{privee du point}\ \Omega'

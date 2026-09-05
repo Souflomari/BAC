@@ -208,7 +208,7 @@ items:
         feedback: >
           $35$ est le quotient, pas le reste. Tu as trouve le bon nombre de
           fois que $7$ tient dans $250$, mais la question demande ce qui
-          reste apres : $250 = 7 \times 35 + 5$.
+          reste après : $250 = 7 \times 35 + 5$.
       - id: C
         text: "$6$"
         correct: false
@@ -224,12 +224,12 @@ items:
           $250 = 7 \times 35 + 5$ : il reste $5$, donc $7 \nmid 250$.
     correct_feedback: >
       Exact : $250 = 7 \times 35 + 5$ avec $0 \le 5 < 7$. Le reste est bien
-      l'unique entier de $\{0,\dots,6\}$ qui rend l'egalite vraie.
+      l'unique entier de $\{0,\dots,6\}$ qui rend l'égalité vraie.
     solution: |
-      On cherche le plus grand multiple de $7$ inferieur ou egal a $250$.
+      On cherche le plus grand multiple de $7$ inférieur ou egal a $250$.
       $$7 \times 35 = 245$$
       $$250 - 245 = 5$$
-      Comme $0 \le 5 < 7$, la division euclidienne s'ecrit $250 = 7 \times 35 + 5$ :
+      Comme $0 \le 5 < 7$, la division euclidienne s'écrit $250 = 7 \times 35 + 5$ :
       quotient $35$, reste $5$.
 
   - id: AR-2
@@ -258,7 +258,7 @@ items:
         misconception: mc.math.maths_arithmetique.prime-divise-produit
         feedback: >
           $3$ ne divise jamais une puissance de $2$ (ils n'ont aucun facteur
-          premier commun), donc le reste ne peut pas etre $0$.
+          premier commun), donc le reste ne peut pas être $0$.
       - id: D
         text: "$3$"
         correct: false
@@ -269,7 +269,7 @@ items:
     correct_feedback: >
       Bien vu : $2 \equiv -1 \pmod 3$, donc $2^{2023} \equiv (-1)^{2023} = -1
       \equiv 2 \pmod 3$. La congruence transforme une grosse puissance en un
-      calcul immediat.
+      calcul immédiat.
     solution: |
       On remplace $2$ par un representant plus commode modulo $3$ :
       $$2 \equiv -1 \pmod 3$$
@@ -296,7 +296,7 @@ items:
         misconception: mc.math.maths_arithmetique.pgcd-vs-ppcm
         feedback: >
           $144$ est le PPCM (plus petit multiple commun), pas le PGCD. Le PGCD
-          est un DIVISEUR commun : il ne peut pas etre plus grand que $36$.
+          est un DIVISEUR commun : il ne peut pas être plus grand que $36$.
       - id: C
         text: "$6$"
         correct: false
@@ -338,8 +338,8 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
         feedback: >
-          Ni $8$ ni $15$ n'est premier : $8 = 2^3$ et $15 = 3 \times 5$. Etre
-          premier (un seul entier, deux diviseurs) n'a rien a voir avec etre
+          Ni $8$ ni $15$ n'est premier : $8 = 2^3$ et $15 = 3 \times 5$. Être
+          premier (un seul entier, deux diviseurs) n'a rien a voir avec être
           premiers ENTRE EUX (une paire, PGCD $= 1$).
       - id: C
         text: "Ni premiers, ni premiers entre eux"
@@ -357,7 +357,7 @@ items:
           Ils sont premiers entre eux, mais $8 = 2^3$ n'est pas un nombre
           premier (il a plus de deux diviseurs).
     correct_feedback: >
-      Exactement le piege a eviter : "premier" qualifie UN entier (deux
+      Exactement le piege a éviter : "premier" qualifie UN entier (deux
       diviseurs), "premiers entre eux" qualifie une PAIRE (PGCD $= 1$). Ici
       $8 = 2^3$ et $15 = 3\times5$ n'ont aucun facteur commun.
     solution: |
@@ -365,8 +365,8 @@ items:
       - $8 = 2^3$ n'est pas premier ; $15 = 3 \times 5$ non plus.
       - Leurs decompositions n'ont aucun facteur premier commun, donc
       $$\mathrm{PGCD}(8, 15) = 1$$
-      ce qui signifie qu'ils sont premiers ENTRE EUX. Les deux proprietes
-      sont independantes.
+      ce qui signifie qu'ils sont premiers ENTRE EUX. Les deux propriétés
+      sont indépendantes.
 
   - id: AR-5
     rung: "R5"
@@ -375,12 +375,12 @@ items:
     tags: [gauss, divisibilite]
     primary_misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
     stem: >
-      On sait que $7 \mid 5n$ (l'entier $7$ divise $5n$). Quel theoreme permet
+      On sait que $7 \mid 5n$ (l'entier $7$ divise $5n$). Quel théorème permet
       de conclure directement que $7 \mid n$ ?
     type: mcq
     choices:
       - id: A
-        text: "Le theoreme de Gauss, car $\\mathrm{PGCD}(7, 5) = 1$"
+        text: "Le théorème de Gauss, car $\\mathrm{PGCD}(7, 5) = 1$"
         correct: true
       - id: B
         text: "Rien : on ne peut pas conclure"
@@ -388,14 +388,14 @@ items:
         misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
         feedback: >
           On peut conclure. Comme $7 \mid 5n$ et que $7$ est premier avec $5$,
-          le theoreme de Gauss donne exactement $7 \mid n$.
+          le théorème de Gauss donne exactement $7 \mid n$.
       - id: C
-        text: "Le theoreme de Bezout, car il existe $u, v$ tels que $7u + 5v = 1$"
+        text: "Le théorème de Bezout, car il existe $u, v$ tels que $7u + 5v = 1$"
         correct: false
         misconception: mc.math.maths_arithmetique.bezout-portee
         feedback: >
           Bezout garantit l'existence de $u, v$ avec $7u + 5v = 1$ (c'est
-          l'ingredient), mais c'est le theoreme de GAUSS qui enonce la
+          l'ingredient), mais c'est le théorème de GAUSS qui énoncé la
           conclusion "$a \mid bc$ et $a \wedge b = 1 \Rightarrow a \mid c$".
       - id: D
         text: "Parce que $5$ est un nombre premier"
@@ -404,15 +404,15 @@ items:
         feedback: >
           Ce qui compte n'est pas que $5$ soit premier, mais que $7$ et $5$
           soient premiers ENTRE EUX. Gauss s'applique des que
-          $\mathrm{PGCD}(7,5) = 1$, meme si les nombres n'etaient pas premiers.
+          $\mathrm{PGCD}(7,5) = 1$, même si les nombres n'étaient pas premiers.
     correct_feedback: >
-      C'est precisement le theoreme de Gauss : si $a \mid bc$ et
+      C'est précisément le théorème de Gauss : si $a \mid bc$ et
       $\mathrm{PGCD}(a,b) = 1$, alors $a \mid c$. Ici $a = 7$, $b = 5$,
       $c = n$, et $7 \wedge 5 = 1$.
     solution: |
-      Theoreme de Gauss : si $a \mid bc$ et $\mathrm{PGCD}(a, b) = 1$, alors
+      Théorème de Gauss : si $a \mid bc$ et $\mathrm{PGCD}(a, b) = 1$, alors
       $a \mid c$. Ici $a = 7$, $b = 5$, $c = n$. Comme $\mathrm{PGCD}(7, 5) = 1$,
-      de $7 \mid 5n$ on deduit $7 \mid n$.
+      de $7 \mid 5n$ on déduit $7 \mid n$.
 
   - id: AR-6
     rung: "R7"
@@ -421,7 +421,7 @@ items:
     tags: [diophantienne, existence]
     primary_misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
     stem: >
-      L'equation $6x + 4y = 5$ admet-elle des solutions dans $\mathbb{Z}^2$ ?
+      L'équation $6x + 4y = 5$ admet-elle des solutions dans $\mathbb{Z}^2$ ?
     type: mcq
     choices:
       - id: A
@@ -433,7 +433,7 @@ items:
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
           Justement : $6x + 4y$ est toujours PAIR (multiple de $2$), alors que
-          $5$ est impair. L'egalite est donc impossible dans $\mathbb{Z}$.
+          $5$ est impair. L'égalité est donc impossible dans $\mathbb{Z}$.
       - id: C
         text: "Oui, il suffit de prendre $x$ et $y$ assez grands"
         correct: false
@@ -448,19 +448,19 @@ items:
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
           Le fait qu'ils ne soient pas premiers entre eux n'interdit pas a lui
-          seul les solutions. Le critere exact est : il y a des solutions
+          seul les solutions. Le critère exact est : il y a des solutions
           si et seulement si $\mathrm{PGCD}(6,4) = 2$ DIVISE le second membre
           $5$. Ici $2 \nmid 5$, d'ou l'impossibilite.
     correct_feedback: >
-      Exact. L'equation $ax + by = c$ a des solutions entieres si et seulement
+      Exact. L'équation $ax + by = c$ a des solutions entières si et seulement
       si $\mathrm{PGCD}(a,b) \mid c$. Ici $\mathrm{PGCD}(6,4) = 2$ et
       $2 \nmid 5$, donc aucune solution.
     solution: |
-      Critere d'existence : $ax + by = c$ a des solutions dans $\mathbb{Z}^2$
+      Critère d'existence : $ax + by = c$ a des solutions dans $\mathbb{Z}^2$
       si et seulement si $\mathrm{PGCD}(a, b) \mid c$.
       $$\mathrm{PGCD}(6, 4) = 2$$
-      Or $2$ ne divise pas $5$ (qui est impair). Donc l'equation n'a aucune
-      solution entiere : tout $6x + 4y$ est pair, jamais egal a $5$.
+      Or $2$ ne divise pas $5$ (qui est impair). Donc l'équation n'a aucune
+      solution entière : tout $6x + 4y$ est pair, jamais egal a $5$.
 
   - id: AR-7
     rung: "R0"
@@ -469,31 +469,31 @@ items:
     tags: [accroche, bidons, pgcd]
     primary_misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
     stem: >
-      Avec un bidon de $4$ L et un bidon de $6$ L (memes regles que dans
+      Avec un bidon de $4$ L et un bidon de $6$ L (mêmes règles que dans
       l'histoire), peux-tu mesurer exactement $1$ L ?
     type: mcq
     choices:
       - id: A
-        text: "Non : toute quantite obtenue est un multiple de $2$, jamais $1$ L"
+        text: "Non : toute quantité obtenue est un multiple de $2$, jamais $1$ L"
         correct: true
       - id: B
-        text: "Oui, il suffit de trouver la bonne suite d'operations"
+        text: "Oui, il suffit de trouver la bonne suite d'opérations"
         correct: false
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
-          Il ne suffit pas d'essayer plus fort : toute quantite mesurable
+          Il ne suffit pas d'essayer plus fort : toute quantité mesurable
           avec ces deux bidons est de la forme $4u + 6v$ (avec $u, v$
           entiers relatifs), donc un multiple du PGCD de $4$ et $6$, qui
           vaut $2$. Comme $1$ n'est pas un multiple de $2$, aucune suite
-          d'operations ne donnera $1$ L.
+          d'opérations ne donnera $1$ L.
       - id: C
         text: "Non, parce que les bidons sont trop grands pour $1$ L"
         correct: false
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
           La taille des bidons n'est pas en cause : avec des bidons de
-          $400$ L et $600$ L, le probleme serait identique. Ce qui bloque,
-          c'est que $4$ et $6$ partagent le facteur $2$ : toute quantite
+          $400$ L et $600$ L, le problème serait identique. Ce qui bloque,
+          c'est que $4$ et $6$ partagent le facteur $2$ : toute quantité
           obtenue est un multiple de $2$.
       - id: D
         text: "Non, parce que $4$ et $6$ ne sont pas des nombres premiers"
@@ -501,16 +501,16 @@ items:
         misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
         feedback: >
           $4$ et $6$ ne sont en effet pas premiers, mais ce n'est pas la
-          vraie raison : deux nombres non premiers peuvent tres bien etre
-          premiers ENTRE EUX (par exemple $4$ et $9$). Le blocage reel ici,
+          vraie raison : deux nombres non premiers peuvent très bien être
+          premiers ENTRE EUX (par exemple $4$ et $9$). Le blocage réel ici,
           c'est que $\mathrm{PGCD}(4,6) = 2 \neq 1$.
     correct_feedback: >
-      Exact. Toute quantite atteignable avec des bidons de $4$ L et $6$ L
+      Exact. Toute quantité atteignable avec des bidons de $4$ L et $6$ L
       est un multiple de $\mathrm{PGCD}(4,6) = 2$. Comme $1$ n'est pas un
       multiple de $2$, mesurer $1$ L est impossible, quelle que soit la
       strategie suivie.
     solution: |
-      Les quantites atteignables avec deux bidons de capacites $4$ et $6$
+      Les quantités atteignables avec deux bidons de capacités $4$ et $6$
       sont exactement les entiers de la forme $4u + 6v$, avec $u, v \in
       \mathbb{Z}$. Par l'algorithme d'Euclide :
       $$6 = 4 \times 1 + 2$$
@@ -535,7 +535,7 @@ items:
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
           $2$ et $4$ sont tous les deux pairs : $\mathrm{PGCD}(2,4) = 2$.
-          Toute quantite obtenue avec cette paire est donc un multiple de
+          Toute quantité obtenue avec cette paire est donc un multiple de
           $2$, jamais $1$ L.
       - id: B
         text: "$(4, 9)$, car $\\mathrm{PGCD}(4,9) = 1$ : on peut donc atteindre $1$ L"
@@ -553,14 +553,14 @@ items:
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
           $6$ et $8$ sont tous les deux pairs : $\mathrm{PGCD}(6,8) = 2$.
-          Deux capacites paires ne donneront jamais une quantite impaire
+          Deux capacités paires ne donneront jamais une quantité impaire
           comme $1$ L.
     correct_feedback: >
       Exact. $4$ et $9$ n'ont aucun facteur premier commun :
       $\mathrm{PGCD}(4,9) = 1$. C'est la condition exacte pour pouvoir
-      mesurer $1$ L (et, par Bezout, toute quantite entiere).
+      mesurer $1$ L (et, par Bezout, toute quantité entière).
     solution: |
-      On mesure exactement $1$ L avec deux bidons de capacites $a$ et $b$
+      On mesure exactement $1$ L avec deux bidons de capacités $a$ et $b$
       si et seulement si $\mathrm{PGCD}(a,b) = 1$ (Bezout garantit alors
       l'existence d'entiers $u,v$ avec $au+bv=1$).
       - $\mathrm{PGCD}(2,4) = 2$, $\mathrm{PGCD}(3,9) = 3$,
@@ -576,7 +576,7 @@ items:
     primary_misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
     stem: >
       Avec un bidon de $6$ L et un bidon de $8$ L, quelle est la plus
-      petite quantite (en litres entiers strictement positifs) que tu
+      petite quantité (en litres entiers strictement positifs) que tu
       peux mesurer ?
     type: mcq
     choices:
@@ -586,7 +586,7 @@ items:
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
           $1$ L n'est pas atteignable ici : $6$ et $8$ ne sont pas premiers
-          entre eux, $\mathrm{PGCD}(6,8) = 2$. Toute quantite mesurable est
+          entre eux, $\mathrm{PGCD}(6,8) = 2$. Toute quantité mesurable est
           un multiple de $2$, jamais $1$.
       - id: B
         text: "$6$ L, car c'est la contenance du plus petit des deux bidons disponibles"
@@ -594,7 +594,7 @@ items:
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
           $6$ L est bien mesurable (le bidon plein), mais ce n'est pas la
-          plus petite quantite possible : en versant $6$ L dans le bidon de
+          plus petite quantité possible : en versant $6$ L dans le bidon de
           $8$ L puis en le remplissant, on isole $8 - 6 = 2$ L, plus petit
           que $6$.
       - id: C
@@ -605,19 +605,19 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
-          $14 = 6 + 8$ est bien une quantite atteignable (les deux bidons
+          $14 = 6 + 8$ est bien une quantité atteignable (les deux bidons
           pleins reunis), mais la question demande la plus PETITE
-          quantite, pas la plus grande.
+          quantité, pas la plus grande.
     correct_feedback: >
-      Exact. La plus petite quantite entiere strictement positive qu'on
-      peut isoler avec deux bidons de capacites $a$ et $b$ est
+      Exact. La plus petite quantité entière strictement positive qu'on
+      peut isoler avec deux bidons de capacités $a$ et $b$ est
       $\mathrm{PGCD}(a,b)$. Ici $\mathrm{PGCD}(6,8) = 2$, obtenu directement
       par $8 - 6$.
     solution: |
       Par l'algorithme d'Euclide :
       $$8 = 6 \times 1 + 2$$
       $$6 = 2 \times 3 + 0$$
-      donc $\mathrm{PGCD}(6,8) = 2$. La plus petite quantite strictement
+      donc $\mathrm{PGCD}(6,8) = 2$. La plus petite quantité strictement
       positive qu'on peut isoler avec des bidons de $6$ L et $8$ L est
       exactement ce PGCD, soit $2$ L (obtenu en versant le contenu du
       bidon de $6$ L dans celui de $8$ L, puis en completant : il reste
@@ -638,7 +638,7 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.reste-non-normalise
         feedback: >
-          Le reste d'une division euclidienne doit etre POSITIF ou nul
+          Le reste d'une division euclidienne doit être POSITIF ou nul
           (entre $0$ et $6$ ici). Tu as garde le quotient $-7$ (car
           $-50 = 7\times(-7) - 1$), mais $-1$ n'est pas un reste valide.
       - id: B
@@ -656,7 +656,7 @@ items:
         misconception: mc.math.maths_arithmetique.reste-non-normalise
         feedback: >
           $-8$ est le QUOTIENT de la division ($-50 = 7\times(-8)+6$), pas
-          le reste. Le reste est ce qui reste apres avoir retire
+          le reste. Le reste est ce qui reste après avoir retire
           $7\times(-8)$, soit $6$.
       - id: D
         text: "$6$, car $-50 = 7\\times(-8) + 6$ avec $0 \\le 6 < 7$"
@@ -672,7 +672,7 @@ items:
       $$-50 = 7 \times (-8) + 6$$
       Comme $0 \le 6 < 7$, le quotient est $-8$ et le reste est $6$.
       Attention : ce n'est ni l'oppose du reste de $50$ par $7$ (qui vaut
-      $1$), ni un nombre negatif.
+      $1$), ni un nombre négatif.
 
   - id: AR-11
     rung: "R1"
@@ -692,8 +692,8 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.diviser-relation-inversee
         feedback: >
-          C'est la relation inversee : cette egalite dit "$a$ divise $b$",
-          pas "$b$ divise $a$". Dans $b \mid a$, c'est $a$ qui s'ecrit
+          C'est la relation inversee : cette égalité dit "$a$ divise $b$",
+          pas "$b$ divise $a$". Dans $b \mid a$, c'est $a$ qui s'écrit
           comme un multiple de $b$, pas l'inverse.
       - id: C
         text: "$b < a$"
@@ -702,14 +702,14 @@ items:
         feedback: >
           La divisibilite n'est pas une comparaison de taille. Par exemple
           $5 \mid 5$ (avec $b=a$), et le fait que $-3 \mid 6$ n'a rien a
-          voir avec une inegalite entre $-3$ et $6$.
+          voir avec une inégalité entre $-3$ et $6$.
       - id: D
-        text: "$a$ et $b$ ont le meme reste dans une division"
+        text: "$a$ et $b$ ont le même reste dans une division"
         correct: false
         misconception: mc.math.maths_arithmetique.diviser-relation-inversee
         feedback: >
-          Tu confonds "diviser" et "etre congrus". $a \equiv c \pmod{n}$
-          signifie que $a$ et $c$ ont le meme reste modulo $n$ ; "$b$
+          Tu confonds "diviser" et "être congrus". $a \equiv c \pmod{n}$
+          signifie que $a$ et $c$ ont le même reste modulo $n$ ; "$b$
           divise $a$" est une tout autre relation, ou $a$ est un multiple
           exact de $b$ (reste $0$ dans la division de $a$ par $b$).
     correct_feedback: >
@@ -717,10 +717,10 @@ items:
       $a = bk$ : $a$ est un multiple de $b$, ou encore la division de $a$
       par $b$ a un reste nul.
     solution: |
-      Par definition, $b$ divise $a$ (note $b \mid a$) lorsqu'il existe un
+      Par définition, $b$ divise $a$ (note $b \mid a$) lorsqu'il existe un
       entier $k$ tel que
       $$a = bk$$
-      Autrement dit, $a$ est un multiple de $b$ ; de facon equivalente, le
+      Autrement dit, $a$ est un multiple de $b$ ; de façon equivalente, le
       reste de la division euclidienne de $a$ par $b$ (si $b \neq 0$) est
       $0$.
 
@@ -760,17 +760,17 @@ items:
         misconception: mc.math.maths_arithmetique.prime-divise-produit
         feedback: >
           $7$ est premier et ne divise aucune puissance de $2$ (ils n'ont
-          pas de facteur premier commun) : le reste ne peut jamais etre
+          pas de facteur premier commun) : le reste ne peut jamais être
           $0$.
     correct_feedback: >
       Exact. Comme $2^3 = 8 \equiv 1 \pmod 7$, les puissances de $2$
-      modulo $7$ sont periodiques de periode $3$. Puisque
+      modulo $7$ sont périodiques de période $3$. Puisque
       $100 = 3\times 33 + 1$, $2^{100} \equiv (2^3)^{33} \times 2^1 \equiv
       1^{33}\times 2 \equiv 2 \pmod 7$.
     solution: |
-      On cherche une periodicite : $2^3 = 8 = 7\times1+1$, donc
+      On cherche une périodicité : $2^3 = 8 = 7\times1+1$, donc
       $$2^3 \equiv 1 \pmod 7$$
-      On ecrit $100$ sous la forme $3q+r$ :
+      On écrit $100$ sous la forme $3q+r$ :
       $$100 = 3 \times 33 + 1$$
       Alors $2^{100} = (2^3)^{33} \times 2^1 \equiv 1^{33} \times 2 \equiv
       2 \pmod 7$. Le reste est $2$.
@@ -790,15 +790,15 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.reste-non-normalise
         feedback: >
-          $17$ est la somme des chiffres ($3+7+2+5$), une etape
-          intermediaire. Comme $17 \ge 9$, il faut encore reduire :
+          $17$ est la somme des chiffres ($3+7+2+5$), une étape
+          intermédiaire. Comme $17 \ge 9$, il faut encore reduire :
           $17 = 9\times1+8$, donc le reste final est $8$, pas $17$.
       - id: B
         text: "$0$, car $3725$ est divisible par $9$ comme tout nombre à quatre chiffres"
         correct: false
         misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
         feedback: >
-          Le critere "somme des chiffres" sert a tester la DIVISIBILITE
+          Le critère "somme des chiffres" sert a tester la DIVISIBILITE
           par $9$ (reste $0$ si la somme des chiffres est un multiple de
           $9$), mais ici $17$ n'est pas un multiple de $9$ : $3725$ n'est
           pas divisible par $9$.
@@ -810,15 +810,15 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
         feedback: >
-          $5$ est le chiffre des unites de $3725$, ce qui donnerait le
+          $5$ est le chiffre des unités de $3725$, ce qui donnerait le
           reste modulo $10$, pas modulo $9$. Les deux tests (chiffre des
-          unites, somme des chiffres) ne servent pas au meme modulo.
+          unités, somme des chiffres) ne servent pas au même modulo.
     correct_feedback: >
       Exact. Comme $10 \equiv 1 \pmod 9$, tout nombre est congru a la
       somme de ses chiffres modulo $9$. Ici $3+7+2+5=17$, et
       $17 = 9\times1+8$, donc $3725 \equiv 8 \pmod 9$.
     solution: |
-      Propriete : un entier est congru, modulo $9$, a la somme de ses
+      Propriété : un entier est congru, modulo $9$, a la somme de ses
       chiffres (car $10 \equiv 1 \pmod 9$). Ici :
       $$3+7+2+5 = 17$$
       Comme $17 \ge 9$, on reduit encore :
@@ -881,7 +881,7 @@ items:
     primary_misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
     stem: >
       Dans le calcul de $\mathrm{PGCD}(a,b)$ par l'algorithme d'Euclide,
-      le resultat final est :
+      le résultat final est :
     type: mcq
     choices:
       - id: A
@@ -893,8 +893,8 @@ items:
         misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
         feedback: >
           $0$ est le signal d'ARRET de l'algorithme (on s'arrete quand le
-          reste devient nul), mais ce n'est pas le resultat. Le PGCD est
-          le reste non nul juste AVANT, a l'etape precedente.
+          reste devient nul), mais ce n'est pas le résultat. Le PGCD est
+          le reste non nul juste AVANT, a l'étape précédente.
       - id: C
         text: "le dernier quotient obtenu"
         correct: false
@@ -909,8 +909,8 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
         feedback: >
-          S'arreter des la premiere division est premature : il faut
-          repeter la division (diviseur precedent par reste precedent)
+          S'arreter des la première division est premature : il faut
+          repeter la division (diviseur précédent par reste précédent)
           jusqu'a obtenir un reste nul. C'est le DERNIER reste non nul,
           pas le premier, qui est le PGCD.
     correct_feedback: >
@@ -918,11 +918,11 @@ items:
       (diviseur, reste), et on repete jusqu'a un reste nul : le PGCD est
       le dernier reste non nul rencontre.
     solution: |
-      L'algorithme d'Euclide repose sur la propriete $\mathrm{PGCD}(a,b)
+      L'algorithme d'Euclide repose sur la propriété $\mathrm{PGCD}(a,b)
       = \mathrm{PGCD}(b, r)$ ou $r$ est le reste de $a$ par $b$. On
       repete : diviser, garder (diviseur, reste), jusqu'a tomber sur un
       reste nul. Le PGCD cherche est alors le dernier reste NON NUL
-      obtenu, pas $0$ lui-meme et pas un quotient.
+      obtenu, pas $0$ lui-même et pas un quotient.
 
   - id: AR-16
     rung: "R4"
@@ -932,7 +932,7 @@ items:
     primary_misconception: mc.math.maths_arithmetique.bezout-portee
     stem: >
       On constate que $8\times(-1) + 9\times 1 = 1$. Que peut-on en
-      deduire ?
+      déduire ?
     type: mcq
     choices:
       - id: A
@@ -941,9 +941,9 @@ items:
         misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
         feedback: >
           $8 = 2^3$ n'est pas premier (il a plus de deux diviseurs).
-          L'identite $8u+9v=1$ ne dit rien sur le fait que $8$ ou $9$
+          L'identité $8u+9v=1$ ne dit rien sur le fait que $8$ ou $9$
           soient premiers : elle parle de la paire $(8,9)$, pas de chaque
-          nombre separement.
+          nombre séparément.
       - id: B
         text: "$8$ et $9$ sont premiers entre eux ($\\mathrm{PGCD}(8,9)=1$)"
         correct: true
@@ -952,7 +952,7 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.bezout-portee
         feedback: >
-          L'egalite $8\times(-1)+9\times1=1$ est une combinaison lineaire,
+          L'égalité $8\times(-1)+9\times1=1$ est une combinaison linéaire,
           pas une relation de divisibilite directe. Ni $8$ ne divise $9$
           (car $9=8\times1+1$), ni $9$ ne divise $8$.
       - id: D
@@ -960,16 +960,16 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.bezout-portee
         feedback: >
-          C'est justement la reciproque de Bezout qui permet de conclure
+          C'est justement la réciproque de Bezout qui permet de conclure
           directement : des qu'on exhibe des entiers $u,v$ avec
           $au+bv=1$, on sait que $\mathrm{PGCD}(a,b)=1$, sans avoir
           besoin de refaire l'algorithme d'Euclide.
     correct_feedback: >
       Exact. Des qu'on trouve des entiers $u,v$ avec $au+bv=1$, le
-      theoreme de Bezout (sa reciproque) garantit que
+      théorème de Bezout (sa réciproque) garantit que
       $\mathrm{PGCD}(a,b)=1$ : ici $8$ et $9$ sont premiers entre eux.
     solution: |
-      L'egalite donnee, $8\times(-1)+9\times1=1$, est une relation de
+      L'égalité donnée, $8\times(-1)+9\times1=1$, est une relation de
       Bezout pour $(8,9)$ : elle exhibe des entiers $u=-1$, $v=1$ tels
       que $8u+9v=1$. Or tout diviseur commun de $8$ et $9$ divise aussi
       $8u+9v=1$, donc ce diviseur commun vaut $1$. Ainsi
@@ -991,8 +991,8 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.bezout-portee
         feedback: >
-          Le theoreme de Bezout garantit l'existence de $u,v$ avec
-          $au+bv=\mathrm{PGCD}(a,b)$, pas avec $au+bv=1$ en general. Ici
+          Le théorème de Bezout garantit l'existence de $u,v$ avec
+          $au+bv=\mathrm{PGCD}(a,b)$, pas avec $au+bv=1$ en général. Ici
           $\mathrm{PGCD}(6,4)=2 \neq 1$, donc $6u+4v=1$ n'a pas de
           solution.
       - id: B
@@ -1014,12 +1014,12 @@ items:
           Ce n'est pas parce que $6$ et $4$ ne sont pas premiers que
           $6u+4v=1$ est impossible : c'est parce qu'ils ne sont pas
           premiers ENTRE EUX ($\mathrm{PGCD}(6,4)=2$). Deux nombres non
-          premiers peuvent tres bien verifier $au+bv=1$ (par exemple $4$
+          premiers peuvent très bien vérifier $au+bv=1$ (par exemple $4$
           et $9$).
     correct_feedback: >
       Exact. Toute combinaison $6u+4v$ (avec $u,v \in \mathbb{Z}$) est un
       multiple de $\mathrm{PGCD}(6,4)=2$. Comme $1$ n'est pas un multiple
-      de $2$, l'equation $6u+4v=1$ n'a aucune solution entiere.
+      de $2$, l'équation $6u+4v=1$ n'a aucune solution entière.
     solution: |
       Toute combinaison $6u+4v$ est un multiple de $\mathrm{PGCD}(6,4)$.
       Par l'algorithme d'Euclide :
@@ -1044,10 +1044,10 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
         feedback: >
-          Le theoreme de Gauss ("$a\mid bc$ et $\mathrm{PGCD}(a,b)=1$
-          entrainent $a\mid c$") a une HYPOTHESE : $a$ premier avec $b$.
+          Le théorème de Gauss ("$a\mid bc$ et $\mathrm{PGCD}(a,b)=1$
+          entrainent $a\mid c$") a une HYPOTHÈSE : $a$ premier avec $b$.
           Ici $\mathrm{PGCD}(6,4)=2$ et $\mathrm{PGCD}(6,9)=3$, aucune des
-          deux hypotheses n'est verifiee : Gauss ne s'applique pas, et de
+          deux hypothèses n'est vérifiée : Gauss ne s'applique pas, et de
           fait ni $6\mid4$ ni $6\mid9$.
       - id: B
         text: "Oui, car $6 = 2\\times3$, avec $2\\mid 4$ et $3\\mid 9$, ce qui suffit à conclure"
@@ -1064,24 +1064,24 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
         feedback: >
-          Le produit $4\times9=36$ est deja donne dans l'enonce, et on
-          sait meme que $6\mid36$. La question n'est pas de calculer le
+          Le produit $4\times9=36$ est déjà donne dans l'énoncé, et on
+          sait même que $6\mid36$. La question n'est pas de calculer le
           produit mais de savoir si un diviseur du produit doit diviser
-          l'un des facteurs : la reponse depend des PGCD, pas d'un calcul
-          supplementaire.
+          l'un des facteurs : la réponse dépend des PGCD, pas d'un calcul
+          supplémentaire.
       - id: D
         text: "Non : $\\mathrm{PGCD}(6,4) \\neq 1$ et $\\mathrm{PGCD}(6,9) \\neq 1$, donc le théorème de Gauss ne s'applique pas"
         correct: true
     correct_feedback: >
-      Exact. Le theoreme de Gauss exige $\mathrm{PGCD}(a,b)=1$. Ici
+      Exact. Le théorème de Gauss exige $\mathrm{PGCD}(a,b)=1$. Ici
       $\mathrm{PGCD}(6,4)=2$ et $\mathrm{PGCD}(6,9)=3$ : aucune des deux
-      hypotheses n'est satisfaite, donc on ne peut rien deduire par Gauss
+      hypothèses n'est satisfaite, donc on ne peut rien déduire par Gauss
       - et en effet $6$ ne divise ni $4$ ni $9$.
     solution: |
-      Le theoreme de Gauss dit : si $a\mid bc$ ET $\mathrm{PGCD}(a,b)=1$,
+      Le théorème de Gauss dit : si $a\mid bc$ ET $\mathrm{PGCD}(a,b)=1$,
       alors $a\mid c$. Ici $a=6$, et on veut tester $b=4$ ou $b=9$ :
       $$\mathrm{PGCD}(6,4) = 2 \neq 1 \qquad \mathrm{PGCD}(6,9) = 3 \neq 1$$
-      L'hypothese de Gauss echoue dans les deux cas : le theoreme ne
+      L'hypothèse de Gauss echoue dans les deux cas : le théorème ne
       s'applique pas. Et de fait, $6\nmid4$ (car $4<6$) et $6\nmid9$ (car
       $9=6\times1+3$) : le produit $4\times9=36$ est divisible par $6$
       sans qu'aucun des facteurs ne le soit.
@@ -1094,7 +1094,7 @@ items:
     primary_misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
     stem: >
       Un entier $c$ est divisible par $4$ et par $6$. Est-il
-      necessairement divisible par $24$ ?
+      nécessairement divisible par $24$ ?
     type: mcq
     choices:
       - id: A
@@ -1115,7 +1115,7 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
         feedback: >
-          Cette regle est fausse en general : elle n'est valable que si
+          Cette règle est fausse en général : elle n'est valable que si
           les deux nombres sont premiers entre eux. Contre-exemple : $12$
           est divisible par $4$ et par $6$, mais pas par $4\times6=24$.
       - id: D
@@ -1130,17 +1130,17 @@ items:
           premiers entre eux (comme $4$ et $9$) donneraient, eux, une
           conclusion valide.
     correct_feedback: >
-      Exact. La regle "divisible par $a$ et par $b$ implique divisible
+      Exact. La règle "divisible par $a$ et par $b$ implique divisible
       par $ab$" exige $\mathrm{PGCD}(a,b)=1$. Ici $\mathrm{PGCD}(4,6)=2$,
       donc on ne peut rien conclure : $12$ est un contre-exemple
       (divisible par $4$ et $6$, pas par $24$).
     solution: |
       Si $\mathrm{PGCD}(a,b)=1$, alors "divisible par $a$ et par $b$"
-      entraine "divisible par $ab$" (consequence de Gauss). Mais ici :
+      entraine "divisible par $ab$" (conséquence de Gauss). Mais ici :
       $$\mathrm{PGCD}(4,6) = 2 \neq 1$$
-      l'hypothese manque, et la conclusion peut etre fausse.
+      l'hypothèse manque, et la conclusion peut être fausse.
       Contre-exemple : $c=12$ est divisible par $4$ ($12=4\times3$) et
-      par $6$ ($12=6\times2$), mais pas par $24$. En realite, "divisible
+      par $6$ ($12=6\times2$), mais pas par $24$. En réalité, "divisible
       par $4$ et $6$" entraine seulement "divisible par
       $\mathrm{PPCM}(4,6)=12$", pas par $24$.
 
@@ -1167,14 +1167,14 @@ items:
         text: "Non : $143 = 11 \\times 13$"
         correct: true
       - id: C
-        text: "Non, car tout nombre impair superieur a $100$ est compose"
+        text: "Non, car tout nombre impair supérieur a $100$ est compose"
         correct: false
         misconception: mc.math.maths_arithmetique.primalite-test-incomplet
         feedback: >
-          Cette regle est fausse : il existe des nombres premiers
-          impairs superieurs a $100$ (par exemple $101$, $103$...). La
+          Cette règle est fausse : il existe des nombres premiers
+          impairs supérieurs a $100$ (par exemple $101$, $103$...). La
           bonne conclusion "$143$ n'est pas premier" vient de la
-          factorisation $143=11\times13$, pas d'une regle generale sur
+          factorisation $143=11\times13$, pas d'une règle générale sur
           la taille.
       - id: D
         text: "On ne peut pas savoir sans tester tous les entiers jusqu'a $142$"
@@ -1184,10 +1184,10 @@ items:
           Il suffit de tester les diviseurs jusqu'a
           $\sqrt{143}\approx12$ : si aucun entier de $2$ a $12$ ne divise
           $143$, alors $143$ est premier. Ici $11$ divise $143$, donc il
-          n'est pas necessaire (ni utile) d'aller jusqu'a $142$.
+          n'est pas nécessaire (ni utile) d'aller jusqu'a $142$.
     correct_feedback: >
       Exact. $143 = 11\times13$ : $143$ admet un diviseur autre que $1$
-      et lui-meme, il n'est donc pas premier.
+      et lui-même, il n'est donc pas premier.
     solution: |
       Pour tester si $143$ est premier, il suffit d'essayer les
       diviseurs premiers jusqu'a $\sqrt{143} \approx 11{,}96$, donc
@@ -1214,7 +1214,7 @@ items:
         feedback: >
           C'est le PPCM, pas le PGCD : tu as pris pour chaque facteur
           premier l'exposant le plus GRAND (et garde tous les facteurs,
-          meme ceux qui n'apparaissent que dans un seul nombre). Le PGCD,
+          même ceux qui n'apparaissent que dans un seul nombre). Le PGCD,
           lui, ne garde que les facteurs COMMUNS, avec l'exposant le plus
           PETIT.
       - id: B
@@ -1270,7 +1270,7 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.prime-divise-produit
         feedback: >
-          C'est plus fort que ce que garantit le theoreme : il assure que
+          C'est plus fort que ce que garantit le théorème : il assure que
           $7$ divise AU MOINS UN des deux facteurs (un "ou"), pas
           forcement les deux. Par exemple $7 \mid 7\times2$ mais
           $7\nmid2$.
@@ -1280,9 +1280,9 @@ items:
         misconception: mc.math.maths_arithmetique.prime-divise-produit
         feedback: >
           C'est justement le cas particulier ou $a$ est PREMIER qui
-          permet de conclure sans hypothese supplementaire : si $7$ est
-          premier et $7\mid ab$, alors necessairement $7\mid a$ ou
-          $7\mid b$ (consequence du theoreme de Gauss, car un nombre
+          permet de conclure sans hypothèse supplémentaire : si $7$ est
+          premier et $7\mid ab$, alors nécessairement $7\mid a$ ou
+          $7\mid b$ (conséquence du théorème de Gauss, car un nombre
           premier est automatiquement premier avec tout nombre qu'il ne
           divise pas).
       - id: C
@@ -1290,20 +1290,20 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.diviser-relation-inversee
         feedback: >
-          "Diviser" n'est pas "etre egal a". Par exemple $7 \mid
+          "Diviser" n'est pas "être egal a". Par exemple $7 \mid
           14\times3$ (car $14\times3=42=7\times6$) et $7\mid14$, sans que
           $7$ soit egal a $14$ ni a $3$.
       - id: D
         text: "$7 \\mid a$ ou $7 \\mid b$"
         correct: true
     correct_feedback: >
-      Exact. C'est le lemme d'Euclide (cas particulier du theoreme de
+      Exact. C'est le lemme d'Euclide (cas particulier du théorème de
       Gauss quand $a$ est premier) : si un nombre premier $p$ divise un
       produit $ab$, alors $p$ divise $a$ ou $p$ divise $b$.
     solution: |
       Supposons $7 \nmid a$. Comme $7$ est premier, ses seuls diviseurs
       sont $1$ et $7$ ; si $7\nmid a$, alors $\mathrm{PGCD}(7,a)=1$. Le
-      theoreme de Gauss s'applique alors a $7 \mid ab$ avec
+      théorème de Gauss s'applique alors a $7 \mid ab$ avec
       $\mathrm{PGCD}(7,a)=1$, donc $7 \mid b$. On a donc toujours $7\mid
       a$ ou $7 \mid b$ (au moins l'un des deux, pas forcement les deux).
 
@@ -1314,7 +1314,7 @@ items:
     tags: [diophantienne, existence]
     primary_misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
     stem: >
-      L'equation $15x + 6y = 9$ admet-elle des solutions dans
+      L'équation $15x + 6y = 9$ admet-elle des solutions dans
       $\mathbb{Z}^2$ ?
     type: mcq
     choices:
@@ -1328,7 +1328,7 @@ items:
         feedback: >
           $15$ et $6$ ne sont en effet pas premiers entre eux
           ($\mathrm{PGCD}(15,6)=3$), mais cela n'empeche pas les
-          solutions d'exister. Le critere exact est : $ax+by=c$ a des
+          solutions d'exister. Le critère exact est : $ax+by=c$ a des
           solutions si et seulement si $\mathrm{PGCD}(a,b)$ DIVISE $c$.
           Ici $3\mid9$, donc il y a bien des solutions.
       - id: C
@@ -1339,7 +1339,7 @@ items:
           Ce n'est pas le bon test : il ne faut pas que $9$ soit un
           multiple de $15$ ou de $6$ individuellement, mais que $9$ soit
           un multiple de leur PGCD. Ici $\mathrm{PGCD}(15,6)=3$, et
-          $9=3\times3$ est bien un multiple de $3$ : l'equation a des
+          $9=3\times3$ est bien un multiple de $3$ : l'équation a des
           solutions.
       - id: D
         text: "Oui, car $9 > 0$"
@@ -1347,21 +1347,21 @@ items:
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
           Le signe ou la positivite de $9$ n'a rien a voir avec
-          l'existence de solutions entieres. Le critere est
+          l'existence de solutions entières. Le critère est
           arithmetique : $\mathrm{PGCD}(15,6)=3$ doit diviser $9$, ce qui
           est vrai ici, mais pas parce que $9$ est positif.
     correct_feedback: >
-      Exact. $ax+by=c$ a des solutions entieres si et seulement si
+      Exact. $ax+by=c$ a des solutions entières si et seulement si
       $\mathrm{PGCD}(a,b) \mid c$. Ici $\mathrm{PGCD}(15,6)=3$ et
-      $3\mid9$ (puisque $9=3\times3$), donc l'equation a une infinite de
+      $3\mid9$ (puisque $9=3\times3$), donc l'équation a une infinite de
       solutions.
     solution: |
-      Critere d'existence : $ax+by=c$ a des solutions dans
+      Critère d'existence : $ax+by=c$ a des solutions dans
       $\mathbb{Z}^2$ si et seulement si $\mathrm{PGCD}(a,b) \mid c$.
       $$\mathrm{PGCD}(15,6) = 3$$
-      Or $3 \mid 9$ (car $9 = 3\times3$), donc l'equation $15x+6y=9$
-      admet bien des solutions entieres (une infinite, obtenues a partir
-      d'une solution particuliere).
+      Or $3 \mid 9$ (car $9 = 3\times3$), donc l'équation $15x+6y=9$
+      admet bien des solutions entières (une infinite, obtenues a partir
+      d'une solution particulière).
 
   - id: AR-24
     rung: "R7"
@@ -1370,8 +1370,8 @@ items:
     tags: [diophantienne, solution_generale]
     primary_misconception: mc.math.maths_arithmetique.solution-unique-vs-infinie
     stem: >
-      L'equation $5x + 3y = 1$ a pour solution particuliere $(2, -3)$.
-      Quelle est la forme generale de ses solutions dans $\mathbb{Z}^2$ ?
+      L'équation $5x + 3y = 1$ a pour solution particulière $(2, -3)$.
+      Quelle est la forme générale de ses solutions dans $\mathbb{Z}^2$ ?
     type: mcq
     choices:
       - id: A
@@ -1379,7 +1379,7 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.solution-generale-mal-parametree
         feedback: >
-          Tu as interverti les coefficients : dans la formule generale
+          Tu as interverti les coefficients : dans la formule générale
           $x=x_0+bt$, $y=y_0-at$, c'est le coefficient de $y$ (soit $3$)
           qui accompagne $x$, et celui de $x$ (soit $5$) qui accompagne
           $y$. Ici $x=2+3t$, $y=-3-5t$.
@@ -1394,29 +1394,29 @@ items:
           Le coefficient de $x$ est correct, mais il y a une erreur de
           signe sur $y$ : pour que $5x+3y$ reste constant quand $x$
           augmente de $3t$, $y$ doit DIMINUER de $5t$ (pas augmenter),
-          car $5\times3t = 3\times5t$ doit etre compense par un signe
+          car $5\times3t = 3\times5t$ doit être compense par un signe
           oppose.
       - id: D
         text: "$x = 2,\\quad y = -3$ (solution unique)"
         correct: false
         misconception: mc.math.maths_arithmetique.solution-unique-vs-infinie
         feedback: >
-          Une equation $ax+by=c$ avec $\mathrm{PGCD}(a,b)=1$ (ici $=1$) a
-          une INFINITE de solutions entieres, pas une seule : $(2,-3)$
-          n'est qu'UNE solution particuliere parmi toute une famille
+          Une équation $ax+by=c$ avec $\mathrm{PGCD}(a,b)=1$ (ici $=1$) a
+          une INFINITE de solutions entières, pas une seule : $(2,-3)$
+          n'est qu'UNE solution particulière parmi toute une famille
           parametree par $t\in\mathbb{Z}$.
     correct_feedback: >
       Exact. Si $(x_0,y_0)=(2,-3)$ est une solution de $5x+3y=1$, la
-      solution generale s'obtient en ajoutant a $x_0$ un multiple de $3$
-      (le coefficient de $y$) et en retranchant a $y_0$ le meme multiple
+      solution générale s'obtient en ajoutant a $x_0$ un multiple de $3$
+      (le coefficient de $y$) et en retranchant a $y_0$ le même multiple
       de $5$ (le coefficient de $x$) : $x=2+3t$, $y=-3-5t$.
     solution: |
-      On soustrait la solution particuliere a l'equation generale :
+      On soustrait la solution particulière a l'équation générale :
       $$5x+3y = 1 = 5\times2+3\times(-3)$$
       $$5(x-2) + 3(y+3) = 0 \quad\Longrightarrow\quad 5(x-2) = -3(y+3)$$
-      Comme $\mathrm{PGCD}(5,3)=1$, le theoreme de Gauss donne
+      Comme $\mathrm{PGCD}(5,3)=1$, le théorème de Gauss donne
       $5 \mid (y+3)$, donc $y+3 = -5t$ pour un entier $t$, d'ou
-      $y=-3-5t$, puis $x-2 = 3t$, soit $x=2+3t$. La solution generale
+      $y=-3-5t$, puis $x-2 = 3t$, soit $x=2+3t$. La solution générale
       est
       $$x = 2+3t, \quad y = -3-5t, \quad t \in \mathbb{Z}$$
 
@@ -1427,7 +1427,7 @@ items:
     tags: [diophantienne, solution_generale]
     primary_misconception: mc.math.maths_arithmetique.solution-unique-vs-infinie
     stem: >
-      On a etabli $\mathrm{PGCD}(112, 76) = 4$. Que peut-on dire des
+      On a établi $\mathrm{PGCD}(112, 76) = 4$. Que peut-on dire des
       solutions de $112x + 76y = 8$ dans $\mathbb{Z}^2$ ?
     type: mcq
     choices:
@@ -1436,9 +1436,9 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.solution-unique-vs-infinie
         feedback: >
-          Des qu'une equation $ax+by=c$ a UNE solution (avec
+          Des qu'une équation $ax+by=c$ a UNE solution (avec
           $\mathrm{PGCD}(a,b) \mid c$), elle en a une INFINITE : a partir
-          d'une solution particuliere $(x_0,y_0)$, on obtient toutes les
+          d'une solution particulière $(x_0,y_0)$, on obtient toutes les
           autres par $x=x_0+\frac{b}{d}t$, $y=y_0-\frac{a}{d}t$,
           $t\in\mathbb{Z}$.
       - id: B
@@ -1446,9 +1446,9 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
-          Le critere d'existence est $\mathrm{PGCD}(a,b)\mid c$. Ici
+          Le critère d'existence est $\mathrm{PGCD}(a,b)\mid c$. Ici
           $\mathrm{PGCD}(112,76)=4$ et $4\mid8$ (car $8=4\times2$) :
-          l'equation a bien des solutions.
+          l'équation a bien des solutions.
       - id: C
         text: "Il y en a une infinite, car $4 \\mid 8$"
         correct: true
@@ -1457,21 +1457,21 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.solution-unique-vs-infinie
         feedback: >
-          Le nombre $8$ qui apparait ici est le second membre de
-          l'equation, pas un compte de solutions. Des que
+          Le nombre $8$ qui apparaît ici est le second membre de
+          l'équation, pas un compte de solutions. Des que
           $\mathrm{PGCD}(a,b)$ divise $c$, l'ensemble des solutions
-          entieres est infini, pas un nombre fini egal a $c$.
+          entières est infini, pas un nombre fini egal a $c$.
     correct_feedback: >
-      Exact. Comme $\mathrm{PGCD}(112,76)=4$ et $4\mid8$, l'equation
-      $112x+76y=8$ admet des solutions, et comme pour toute equation de
+      Exact. Comme $\mathrm{PGCD}(112,76)=4$ et $4\mid8$, l'équation
+      $112x+76y=8$ admet des solutions, et comme pour toute équation de
       ce type, elle en admet une infinite (parametrees par $t\in
       \mathbb{Z}$).
     solution: |
-      Critere d'existence : $ax+by=c$ a des solutions dans
+      Critère d'existence : $ax+by=c$ a des solutions dans
       $\mathbb{Z}^2$ si et seulement si $\mathrm{PGCD}(a,b)\mid c$. Ici
       $$\mathrm{PGCD}(112,76) = 4$$
-      et $4 \mid 8$ (car $8 = 4\times2$), donc l'equation admet des
-      solutions. Comme pour toute equation lineaire diophantienne
+      et $4 \mid 8$ (car $8 = 4\times2$), donc l'équation admet des
+      solutions. Comme pour toute équation linéaire diophantienne
       resoluble, l'ensemble des solutions n'est jamais reduit a un
       point : il y en a une infinite, parametrees par $t \in \mathbb{Z}$.
 
@@ -1483,7 +1483,7 @@ items:
     primary_misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
     stem: >
       Sachant que $112\times(-2) + 76\times 3 = 4$, quelle est une
-      solution particuliere de $112x + 76y = 8$ ?
+      solution particulière de $112x + 76y = 8$ ?
     type: mcq
     choices:
       - id: A
@@ -1492,8 +1492,8 @@ items:
         misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
         feedback: >
           $(-2,3)$ verifie $112x+76y=4$, pas $8$ : c'est la relation de
-          depart, non mise a l'echelle. Il faut multiplier toute
-          l'identite par $8/4=2$ pour atteindre le second membre voulu.
+          départ, non mise a l'échelle. Il faut multiplier toute
+          l'identité par $8/4=2$ pour atteindre le second membre voulu.
       - id: B
         text: "$(-2, 6)$, obtenue en doublant seulement la seconde coordonnée de l'identité"
         correct: false
@@ -1501,29 +1501,29 @@ items:
         feedback: >
           Tu as multiplie seulement $y$ par $2$, en oubliant $x$. Pour
           passer de $112x+76y=4$ a $112x+76y=8$, il faut multiplier LES
-          DEUX coordonnees par le meme facteur $2$.
+          DEUX coordonnées par le même facteur $2$.
       - id: C
         text: "$(-8, 12)$, obtenue en multipliant l'identité de départ par $k = 4$"
         correct: false
         misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
         feedback: >
           Tu as multiplie par $c=8$ au lieu de $c/d = 8/4 = 2$.
-          L'identite de depart vaut deja $4$ ; il suffit de la
+          L'identité de départ vaut déjà $4$ ; il suffit de la
           multiplier par $2$ (pas par $8$) pour obtenir $8$.
       - id: D
         text: "$(-4, 6)$, obtenue en multipliant l'identité par $k = 8/4 = 2$"
         correct: true
     correct_feedback: >
-      Exact. L'identite $112\times(-2)+76\times3=4$ multipliee par
+      Exact. L'identité $112\times(-2)+76\times3=4$ multipliee par
       $k=8/4=2$ donne $112\times(-4)+76\times6=8$ : la solution
-      particuliere est $(-4,6)$.
+      particulière est $(-4,6)$.
     solution: |
-      On part de l'identite connue :
+      On part de l'identité connue :
       $$112\times(-2) + 76\times3 = 4$$
       Comme le second membre voulu est $8 = 4\times2$, on multiplie
-      toute l'identite par $2$ :
+      toute l'identité par $2$ :
       $$112\times(-4) + 76\times6 = 8$$
-      La solution particuliere est donc $(x_0,y_0) = (-4,6)$.
+      La solution particulière est donc $(x_0,y_0) = (-4,6)$.
 
   - id: AR-27
     rung: "R8"
@@ -1543,9 +1543,9 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
         feedback: >
-          "Etre premier" (une propriete d'UN nombre) et "etre premiers
-          entre eux" (une propriete d'une PAIRE, $\mathrm{PGCD}=1$) sont
-          deux notions independantes. Ici $35=5\times7$ et $18=2\times3^2$
+          "Être premier" (une propriété d'UN nombre) et "être premiers
+          entre eux" (une propriété d'une PAIRE, $\mathrm{PGCD}=1$) sont
+          deux notions indépendantes. Ici $35=5\times7$ et $18=2\times3^2$
           n'ont aucun facteur premier commun : $\mathrm{PGCD}(35,18)=1$,
           ils SONT premiers entre eux, bien que ni $35$ ni $18$ ne soit
           premier.
@@ -1561,10 +1561,10 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
         feedback: >
-          D'abord, $18$ est PAIR, pas impair. Ensuite, meme deux nombres
+          D'abord, $18$ est PAIR, pas impair. Ensuite, même deux nombres
           impairs ne sont pas automatiquement premiers entre eux (par
           exemple $9$ et $15$, tous deux impairs, ont
-          $\mathrm{PGCD}=3$). La parite n'est pas le bon critere.
+          $\mathrm{PGCD}=3$). La parite n'est pas le bon critère.
     correct_feedback: >
       Exact. $35=5\times7$ et $18=2\times3^2$ : ni l'un ni l'autre n'est
       premier, mais ils n'ont aucun facteur premier commun, donc
@@ -1577,7 +1577,7 @@ items:
       facteur premier commun, donc
       $$\mathrm{PGCD}(35, 18) = 1$$
       $35$ et $18$ sont premiers entre eux, bien qu'aucun des deux ne
-      soit premier : les deux notions sont independantes.
+      soit premier : les deux notions sont indépendantes.
 
 coverage_summary:
   total_items: 27

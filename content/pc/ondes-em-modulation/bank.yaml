@@ -221,13 +221,13 @@ entries:
           Comme au chapitre 3 (la forme générale $s(t)=(U_0+s_m(t))\cos(2\pi f_p t)$), l'enjeu n'est pas de résoudre une équation mais de reconnaître la même structure dans le produit du multiplieur. On part de la définition $u_s = k\,u_1\,u_2$, on remplace $u_1$ et $u_2$ par leurs expressions, puis on met en facteur la composante continue $U_0$ à l'intérieur de $u_2$ — exactement le geste du chapitre 3. C'est cette mise en facteur qui fait apparaître d'un bloc l'amplitude globale $A$ (tout ce qui multiplie l'oscillation rapide $\cos(2\pi F_p t)$) et le taux de modulation $m$ (le rapport $S_m/U_0$, défini au chapitre 4). Il ne reste plus qu'à identifier terme à terme avec la forme canonique demandée.
         steps:
           - math: 'u_s(t) = k\,u_1(t)\,u_2(t) = k\,P_m\cos(2\pi F_p\,t)\left[U_0 + S_m\cos(2\pi f_s\,t)\right]'
-            note: "Definition du multiplieur (enonce) : on remplace u1 et u2 par leurs expressions."
+            note: "Définition du multiplieur (énoncé) : on remplace u1 et u2 par leurs expressions."
           - math: 'U_0 + S_m\cos(2\pi f_s\,t) = U_0\left[1 + \frac{S_m}{U_0}\cos(2\pi f_s\,t)\right]'
-            note: "Mise en facteur de U0 (chapitre 3) : c'est ce geste qui fait apparaitre A et m."
+            note: "Mise en facteur de U0 (chapitre 3) : c'est ce geste qui fait apparaître A et m."
           - math: 'u_s(t) = \underbrace{k\,P_m\,U_0}_{A}\left[1 + \underbrace{\frac{S_m}{U_0}}_{m}\cos(2\pi f_s\,t)\right]\cos(2\pi F_p\,t)'
-            note: "On reporte : la forme canonique demandee apparait, avec A et m identifies."
+            note: "On reporte : la forme canonique demandee apparaît, avec A et m identifies."
           - math: '\boxed{A = k\,P_m\,U_0 \qquad m = \frac{S_m}{U_0}}'
-            note: "Reponse aux deux expressions demandees."
+            note: "Réponse aux deux expressions demandees."
       - id: q2
         part: "En exploitant la courbe de la figure 4"
         stem: |-
@@ -236,11 +236,11 @@ entries:
           Deux échelles de temps distinctes coexistent sur l'oscillogramme — précisément la distinction faite au chapitre 4 entre l'oscillation rapide (la porteuse, $F_p$) et l'enveloppe lente (la modulante, $f_s$). L'enveloppe accomplit une période complète entre les deux repères donnés sur l'axe des abscisses ; cette durée donne $T_s$, d'où $f_s = 1/T_s$. La porteuse, elle, est l'oscillation la plus rapide sous l'enveloppe ; sa période $T_p$ se lit séparément, sur un intervalle bien plus court, et donne $F_p = 1/T_p$.
         steps:
           - math: 'T_s = t_2 - t_1 = 15\ \text{ms} - 5\ \text{ms} = 10\ \text{ms} = 10\times10^{-3}\ \text{s}'
-            note: "Periode de l'enveloppe (chapitre 4), lue entre les deux reperes de l'axe des abscisses."
+            note: "Période de l'enveloppe (chapitre 4), lue entre les deux repères de l'axe des abscisses."
           - math: 'f_s = \frac{1}{T_s} = \frac{1}{10\times10^{-3}} = 100\ \text{Hz}'
-            note: "Frequence de la tension modulante."
+            note: "Fréquence de la tension modulante."
           - math: 'F_p = \frac{1}{T_p} = \frac{1}{0{,}5\times10^{-3}} = 2000\ \text{Hz} = 2\ \text{kHz}'
-            note: "Frequence de la porteuse, a partir de Tp = 0,5 ms (valeur reprise de r-bac ; la figure verifiee ne detaille pas ce comptage fin)."
+            note: "Fréquence de la porteuse, a partir de Tp = 0,5 ms (valeur reprise de r-bac ; la figure vérifiée ne detaille pas ce comptage fin)."
       - id: q3
         stem: |-
           **(0,5 pt)** Déterminer le taux de modulation et en déduire la qualité de modulation.
@@ -248,11 +248,11 @@ entries:
           L'enveloppe supérieure de la figure 4 vaut $A(1+m)$ à son maximum et $A(1-m)$ à son minimum — c'est directement la lecture de la forme établie à la question 1, prise à $\cos(2\pi f_s t) = +1$ puis $-1$. Le rapport de ces deux extrema élimine $A$ et ne laisse que $m$, sans qu'il soit nécessaire de connaître $A$ séparément. La qualité se tranche ensuite au seul critère du chapitre 4 : $m < 1$ signe une bonne modulation, $m \geq 1$ une surmodulation.
         steps:
           - math: 'U_{s,\max} = A(1+m) = 3\ \text{V} \qquad U_{s,\min} = A(1-m) = 1\ \text{V}'
-            note: "Lecture des extrema de l'enveloppe sur la figure 4 (drapeau d'echelle a confirmer, conserve)."
+            note: "Lecture des extrema de l'enveloppe sur la figure 4 (drapeau d'échelle a confirmer, conserve)."
           - math: 'm = \frac{U_{s,\max} - U_{s,\min}}{U_{s,\max} + U_{s,\min}} = \frac{3-1}{3+1} = 0{,}5'
             note: "Le rapport des extrema elimine A (chapitre 4) ; il ne reste que m."
           - math: '\boxed{m = 0{,}5 < 1 \implies \text{bonne modulation}}'
-            note: "Critere du chapitre 4 : m < 1, l'enveloppe reste positive et fidele au signal modulant."
+            note: "Critère du chapitre 4 : m < 1, l'enveloppe reste positive et fidele au signal modulant."
 
   # ── bk-2021-n-x4 — 2021 N, Exercice IV (Partie III) : lecture d'un oscillogramme a deux voies ──
   - id: bk-2021-n-x4
@@ -338,11 +338,11 @@ entries:
           Deux voies distinctes coexistent sur la figure 6 — exactement la distinction du chapitre 4 entre oscillation rapide (porteuse $u_1$) et oscillation lente (modulante $u_2$), mais ici lues chacune directement sur son propre tracé plutôt que sur l'enveloppe d'un signal unique (le sujet 2017 N ci-dessus, lui, procédait par enveloppe). Pour $f_s$, on lit la période de $u_2$ en divisions, convertie avec la sensibilité horizontale donnée ($2\ \text{ms/div}$). Pour $F_p$, on compte le nombre d'oscillations de $u_1$ sur une division puis on convertit en fréquence — un comptage fin, la source elle-même le signale comme une lecture délicate sur un tracé aussi resserré.
         steps:
           - math: 'T_s \approx 4\ \text{div} \times 2\ \text{ms/div} = 8\ \text{ms}'
-            note: "Periode de u2 (modulante) lue sur la figure 6, convertie avec la sensibilite horizontale (2 ms/div)."
+            note: "Période de u2 (modulante) lue sur la figure 6, convertie avec la sensibilité horizontale (2 ms/div)."
           - math: 'f_s = \frac{1}{T_s} = \frac{1}{8\times10^{-3}} \approx 125\ \text{Hz}'
-            note: "Frequence de la tension modulante."
+            note: "Fréquence de la tension modulante."
           - math: 'F_p \approx 3\ \text{oscillations/div} \times \frac{10\ \text{div}}{20\ \text{ms}} = \frac{30}{20\times10^{-3}} = 1500\ \text{Hz}'
-            note: "Comptage des oscillations de u1 (porteuse) sur l'ecran entier (10 div = 20 ms) ; lecture fine, drapeau maintenu dans la source."
+            note: "Comptage des oscillations de u1 (porteuse) sur l'écran entier (10 div = 20 ms) ; lecture fine, drapeau maintenu dans la source."
       - id: q2b
         stem: |-
           **(0,5 pt)** Déterminer graphiquement la valeur de $S_m$ et celle de $U_0$.
@@ -350,9 +350,9 @@ entries:
           Sur la figure 6, l'oscillation $u_2$ (la modulante décalée) oscille entre les traits $+1$ et $+2$ division — sa valeur moyenne donne directement la composante continue $U_0$ (chapitre 3 : $u_2(t)=U_0+s(t)$), et l'écart entre son maximum et cette moyenne donne l'amplitude $S_m$ de la partie variable $s(t)$. La sensibilité verticale ($1\ \text{V/div}$) convertit ces divisions en volts.
         steps:
           - math: 'U_0 = \frac{2{,}00 + 1{,}00}{2}\ \text{div} \times 1\ \text{V/div} = 1{,}5\ \text{V}'
-            note: "Valeur moyenne de u2 (chapitre 3 : U0 est la composante continue) ; sensibilite verticale 1 V/div."
+            note: "Valeur moyenne de u2 (chapitre 3 : U0 est la composante continue) ; sensibilité verticale 1 V/div."
           - math: 'S_m = (2{,}00 - 1{,}5)\ \text{div} \times 1\ \text{V/div} = 0{,}5\ \text{V}'
-            note: "Ecart entre le maximum de u2 et sa valeur moyenne U0."
+            note: "Écart entre le maximum de u2 et sa valeur moyenne U0."
       - id: q3
         stem: |-
           **(0,5 pt)** La modulation réalisée dans ce cas sera-t-elle de bonne qualité ? Justifier votre réponse.
@@ -360,10 +360,10 @@ entries:
           Les deux conditions de bonne modulation du chapitre 4 se re-testent ici avec les valeurs lues aux questions précédentes. D'abord $F_p \gg f_s$ : la porteuse doit osciller beaucoup plus vite que la modulante pour que l'enveloppe se dessine nettement — sans cette condition, il n'y aurait pas assez d'oscillations de porteuse par cycle de modulante pour tracer une enveloppe lisible. Ensuite $m = S_m/U_0 < 1$ : l'amplitude instantanée $U_0+s(t)$ doit rester positive à tout instant, sans quoi l'oscillation rapide change brutalement de phase et l'enveloppe ne reproduit plus fidèlement le signal — c'est la surmodulation. On vérifie les deux avec $F_p \approx 1500\ \text{Hz}$, $f_s \approx 125\ \text{Hz}$, $S_m = 0{,}5\ \text{V}$ et $U_0 = 1{,}5\ \text{V}$.
         steps:
           - math: '\frac{F_p}{f_s} = \frac{1500}{125} = 12 \gg 1'
-            note: "Premiere condition du chapitre 4 : la porteuse oscille bien plus vite que la modulante."
+            note: "Première condition du chapitre 4 : la porteuse oscille bien plus vite que la modulante."
           - math: 'm = \frac{S_m}{U_0} = \frac{0{,}5}{1{,}5} = \frac{1}{3} \approx 0{,}33 < 1'
-            note: "Seconde condition du chapitre 4 : taux de modulation inferieur a 1, pas de surmodulation."
-          - math: '\boxed{\text{les deux conditions sont verifiees} \implies \text{bonne modulation}}'
+            note: "Seconde condition du chapitre 4 : taux de modulation inférieur a 1, pas de surmodulation."
+          - math: '\boxed{\text{les deux conditions sont vérifiées} \implies \text{bonne modulation}}'
             note: "Conclusion : Fp >> fs et m < 1 sont toutes deux respectees."
 
   # ── bk-2022-r-x3c — 2022 R, Exercice 3 (section 3) : role des parties 1 et 3,
@@ -475,9 +475,9 @@ entries:
           - math: 'f_0 = \frac{1}{2\pi\sqrt{LC_1}} \implies \boxed{L = \frac{1}{4\pi^2 f_0^2 C_1}}'
             note: "Condition d'accord (chapitre 6), isolee pour L au lieu de C."
           - math: 'f_0^2 = (1{,}71\times10^5)^2 = 2{,}9241\times10^{10}\ \text{Hz}^2'
-            note: "f0 = 171 kHz convertie en Hz avant d'etre elevee au carre."
+            note: "f0 = 171 kHz convertie en Hz avant d'être elevee au carré."
           - math: '4\pi^2 f_0^2 C_1 = 40\times2{,}9241\times10^{10}\times8{,}54\times10^{-11} \approx 99{,}89'
-            note: "Application numerique : pi^2 = 10 (impose par l'enonce), C1 = 85,4 pF = 8,54e-11 F."
+            note: "Application numérique : pi^2 = 10 (impose par l'énoncé), C1 = 85,4 pF = 8,54e-11 F."
           - math: '\boxed{L = \frac{1}{99{,}89} \approx 1{,}00\times10^{-2}\ \text{H} = 10\ \text{mH}}'
             note: "Valeur ronde, coherente avec l'ordre de grandeur d'un circuit d'accord grandes ondes."
 
@@ -562,15 +562,15 @@ entries:
           Deux échelles de temps cohabitent sur la figure 5 — exactement la distinction du chapitre 4 entre l'oscillation rapide (la porteuse) et l'enveloppe lente (le signal modulant). Le repère en L donne l'échelle (1 division = 1 ms, 1 division = 2 V) ; on lit la période de l'enveloppe entre deux renflements successifs pour $f_s$, et la période de l'oscillation rapide, comptée sur l'ensemble du tracé, pour $f_p$. Il ne reste plus qu'à confronter ces deux valeurs aux quatre propositions.
         steps:
           - math: 'T_s \approx 5\ \text{ms}'
-            note: "Periode de l'enveloppe (chapitre 4), lue entre deux renflements successifs (t=0 et t=5,0 ms)."
+            note: "Période de l'enveloppe (chapitre 4), lue entre deux renflements successifs (t=0 et t=5,0 ms)."
           - math: 'f_s = \frac{1}{T_s} = \frac{1}{5\times10^{-3}} = 200\ \text{Hz}'
-            note: "Frequence du signal modulant."
+            note: "Fréquence du signal modulant."
           - math: 'T_p \approx 0{,}25\ \text{ms}'
-            note: "Periode de la porteuse (oscillation rapide), comptage des sommets sur l'ensemble du trace ; lecture fine, drapeau maintenu dans la source."
+            note: "Période de la porteuse (oscillation rapide), comptage des sommets sur l'ensemble du trace ; lecture fine, drapeau maintenu dans la source."
           - math: 'f_p = \frac{1}{T_p} = \frac{1}{0{,}25\times10^{-3}} = 4000\ \text{Hz} = 4\ \text{kHz}'
-            note: "Frequence de la porteuse."
+            note: "Fréquence de la porteuse."
           - math: '\boxed{\text{proposition B}: f_p = 4\ \text{kHz}}'
-            note: "Seule B est juste : A et D echangent porteuse et signal modulant (4 kHz revient a la porteuse, 200 Hz reviendrait au signal, pas l'inverse) ; C avance une valeur erronee (100 Hz) pour le signal modulant."
+            note: "Seule B est juste : A et D échangent porteuse et signal modulant (4 kHz revient a la porteuse, 200 Hz reviendrait au signal, pas l'inverse) ; C avance une valeur erronee (100 Hz) pour le signal modulant."
       - id: q2a
         part: "Répondre par vrai ou faux en justifiant"
         stem: |-
@@ -579,7 +579,7 @@ entries:
           L'enveloppe supérieure de la figure 5 vaut $A(1+m)$ à son maximum et $A(1-m)$ à son minimum — la lecture directe de la forme donnée dans l'intro, prise à $\cos(2\pi f_s t)=+1$ puis $-1$ (chapitre 4). Le rapport de ces deux extrema, lus au repère en L, élimine $A$ et ne laisse que $m$.
         steps:
           - math: 'U_{\max} = 3\ \text{div} \times 2\ \text{V/div} = 6\ \text{V} \qquad U_{\min} = 1\ \text{div} \times 2\ \text{V/div} = 2\ \text{V}'
-            note: "Extrema de l'enveloppe, lus via le repere en L (chapitre 4)."
+            note: "Extrema de l'enveloppe, lus via le repère en L (chapitre 4)."
           - math: 'm = \frac{U_{\max}-U_{\min}}{U_{\max}+U_{\min}} = \frac{6-2}{6+2} = 0{,}5'
             note: "Le rapport des extrema elimine A ; il ne reste que m (chapitre 4)."
           - math: '\boxed{m = 0{,}5 \neq 0{,}4 \implies \text{affirmation fausse}}'
@@ -601,15 +601,15 @@ entries:
           Cette question mobilise une technique que la leçon ne couvre pas : chapitres 3 à 4 décrivent le signal modulé dans le domaine temporel (l'enveloppe), jamais dans le domaine fréquentiel — aucun chapitre à citer ici. On applique directement la relation trigonométrique de produit-somme, $\cos p \cos q = \frac{1}{2}[\cos(p-q)+\cos(p+q)]$, à la forme canonique donnée dans l'intro : le terme en $\cos(2\pi f_s t)\cos(2\pi f_p t)$ se scinde en deux oscillations pures, à $f_p-f_s$ et $f_p+f_s$. Le spectre attendu porte donc trois raies : une raie centrale à $f_p$, encadrée de deux raies latérales symétriques à $f_p \pm f_s$, chacune de hauteur moitié de la raie centrale (puisque $m=0{,}5$).
         steps:
           - math: 'u(t) = A\cos(2\pi f_p t) + A m \cos(2\pi f_s t)\cos(2\pi f_p t)'
-            note: "On developpe la forme canonique donnee par l'enonce."
+            note: "On developpe la forme canonique donnée par l'énoncé."
           - math: 'Am\cos(2\pi f_s t)\cos(2\pi f_p t) = \frac{Am}{2}\cos(2\pi (f_p-f_s) t) + \frac{Am}{2}\cos(2\pi (f_p+f_s) t)'
-            note: "Relation trigonometrique produit-somme (hors chapitres de la lecon), appliquee directement."
+            note: "Relation trigonométrique produit-somme (hors chapitres de la leçon), appliquee directement."
           - math: 'u(t) = A\cos(2\pi f_p t) + \frac{Am}{2}\cos(2\pi (f_p-f_s) t) + \frac{Am}{2}\cos(2\pi (f_p+f_s) t)'
             note: "Trois composantes pures : le spectre est fait de trois raies."
           - math: 'f_p - f_s = 4000 - 200 = 3800\ \text{Hz} \qquad f_p + f_s = 4000 + 200 = 4200\ \text{Hz}'
-            note: "Position numerique des deux raies laterales, avec fp et fs de la question 1."
+            note: "Position numérique des deux raies laterales, avec fp et fs de la question 1."
           - math: '\boxed{\text{raies a } 3{,}8\ \text{kHz}\ (Am/2),\ 4{,}0\ \text{kHz}\ (A),\ 4{,}2\ \text{kHz}\ (Am/2)}'
-            note: "Trois raies symetriques autour de fp ; la raie centrale deux fois plus haute que chaque raie laterale (m=0,5)."
+            note: "Trois raies symétriques autour de fp ; la raie centrale deux fois plus haute que chaque raie laterale (m=0,5)."
 
 
   # ── bk-2023-r-x3c — 2023 R, Exercice 3 (section 3) : circuit bouchon LC, detection AM ──
@@ -826,13 +826,13 @@ entries:
           On connaît déjà, du chapitre 6, la condition d'accord $f_0 = 1/(2\pi\sqrt{LC})$ et le geste qui en découle : on isole $C$ pour obtenir la capacité qui place $f_0$ exactement sur la porteuse qu'on veut capter — exactement l'exemple numérique du chapitre 6, mais ici avec une bobine et une porteuse différentes, et $\pi^2 = 10$ imposé par l'énoncé (au lieu de la valeur usuelle $\pi^2 \approx 9{,}87$) pour simplifier le calcul à la main.
         steps:
           - math: 'f_0 = \frac{1}{2\pi\sqrt{LC}} \quad\Longrightarrow\quad C = \frac{1}{(2\pi f_0)^2\,L} = \frac{1}{4\pi^2 f_0^2 L}'
-            note: "On isole C dans la condition d'accord (chapitre 6), comme dans l'exemple numerique du chapitre."
+            note: "On isole C dans la condition d'accord (chapitre 6), comme dans l'exemple numérique du chapitre."
           - math: 'C_1 = \frac{1}{4\pi^2\,f_p^2\,L}, \qquad f_p = 162\times10^{3}\ \text{Hz}, \quad L = 2\times10^{-3}\ \text{H}, \quad \pi^2 = 10'
-            note: "On accorde le circuit sur la porteuse a capter (f0 = fp) ; valeurs de l'enonce, pi^2 = 10 impose."
+            note: "On accorde le circuit sur la porteuse a capter (f0 = fp) ; valeurs de l'énoncé, pi^2 = 10 impose."
           - math: '(162\times10^{3})^2 = 2{,}6244\times10^{10}\ \text{Hz}^2'
-            note: "Calcul intermediaire du carre de la frequence."
+            note: "Calcul intermédiaire du carré de la fréquence."
           - math: 'C_1 = \frac{1}{4\times10\times2{,}6244\times10^{10}\times2\times10^{-3}} \approx 4{,}76\times10^{-10}\ \text{F}'
-            note: "Application numerique."
+            note: "Application numérique."
           - math: '\boxed{C_1 \approx 4{,}76\times10^{-10}\ \text{F} \approx 476\ \text{pF}}'
             note: "Ordre de grandeur realiste d'un condensateur d'accord (chapitre 6)."
       - id: q3
@@ -842,15 +842,15 @@ entries:
           Au chapitre 5, le détecteur de crête ne retrace fidèlement l'enveloppe que si sa décharge, entre deux sommets de la porteuse, respecte un compromis : assez lente pour ne pas redescendre avant le sommet suivant de la porteuse (donc la constante de temps $R_0C_0$ doit être grande devant la période de la porteuse, $1/f_p$), mais assez rapide pour ne pas rater les variations de l'enveloppe elle-même (donc $R_0C_0$ doit rester petit devant la période du signal modulant, $1/f_s$). Le chapitre 5 décrit ce compromis en mots (« charge rapide, décharge lente [qui] rattrape le sommet suivant ») ; ici on le teste numériquement, avec $C_0 = 1\ \mu\text{F}$ — la valeur fixée dans la Partie 1 du même sujet (« Dipôle RC — réponse à un échelon de tension ».md, sujet 2025 session normale, vérifié), puisque l'énoncé de cette Partie 3 renvoie explicitement au condensateur « précédemment utilisé » sans en redonner la valeur ici.
         steps:
           - math: 'R_0 C_0 = 1{,}5\times10^{3} \times 1\times10^{-6} = 1{,}5\times10^{-3}\ \text{s}'
-            note: "Constante de temps du detecteur de crete, avec C0 = 1 microF (Partie 1 du meme sujet, « Dipôle RC — réponse à un échelon de tension ».md, verifie)."
+            note: "Constante de temps du detecteur de crete, avec C0 = 1 microF (Partie 1 du même sujet, « Dipôle RC — réponse à un échelon de tension ».md, verifie)."
           - math: '\frac{1}{f_p} = \frac{1}{162\times10^{3}} \approx 6{,}2\times10^{-6}\ \text{s} \qquad \frac{1}{f_s} = \frac{1}{5\times10^{3}} = 2{,}0\times10^{-4}\ \text{s}'
-            note: "Les deux bornes du critere : periode de la porteuse et periode du signal modulant."
+            note: "Les deux bornes du critère : période de la porteuse et période du signal modulant."
           - math: 'R_0C_0 = 1{,}5\times10^{-3}\ \text{s} \gg \frac{1}{f_p} = 6{,}2\times10^{-6}\ \text{s}'
-            note: "Premiere borne respectee : la decharge est bien lente devant la porteuse."
+            note: "Première borne respectee : la decharge est bien lente devant la porteuse."
           - math: 'R_0C_0 = 1{,}5\times10^{-3}\ \text{s} \not\ll \frac{1}{f_s} = 2{,}0\times10^{-4}\ \text{s} \qquad (R_0C_0 > 1/f_s)'
             note: "Seconde borne violee : la decharge est trop lente pour suivre l'enveloppe."
-          - math: '\boxed{R_0C_0 > \frac{1}{f_s} \implies \text{demodulation de mauvaise qualite} \implies \text{reponse\,: non}}'
-            note: "La double inegalite du chapitre 5 n'est pas verifiee sur sa borne haute ; la reponse est non."
+          - math: '\boxed{R_0C_0 > \frac{1}{f_s} \implies \text{demodulation de mauvaise qualite} \implies \text{réponse\,: non}}'
+            note: "La double inégalité du chapitre 5 n'est pas vérifiée sur sa borne haute ; la réponse est non."
 
   # ── bk-2025-r-x3b — 2025 R, Exercice 3 (§2) : modulation d'amplitude,
   #    lecture par calibration graphique ──
@@ -959,15 +959,15 @@ entries:
           **Le piège de cette question.** Compter une distance entre un extremum de bord et l'extremum voisin sans vérifier qu'il s'agit bien de deux extrema de MÊME type consécutifs (ici deux minima) — l'énoncé précise lui-même que l'enveloppe fait deux périodes et un quart dans le cadre, donc un comptage naïf sur un intervalle mal choisi ne donne pas une période entière. Deuxième piège : confondre la double flèche de calibration (« $0{,}10$ » sur $2$ carreaux) avec une flèche de période — l'énoncé le précise explicitement, ce n'en est pas une, c'est un simple étalon de longueur.
         steps:
           - math: '2\ \text{carreaux} = 0{,}10\ \text{ms} \implies 1\ \text{carreau} = 0{,}05\ \text{ms}'
-            note: "Etalon de calibration de la figure 4 (double fleche horizontale, PAS une periode)."
+            note: "Etalon de calibration de la figure 4 (double fleche horizontale, PAS une période)."
           - math: 'T = 1\ \text{carreau} = 0{,}05\ \text{ms} \implies F = \frac{1}{0{,}05\times10^{-3}}'
             note: "Porteuse : une oscillation complete par carreau (13 cretes sur 12 carreaux)."
           - math: '\boxed{F = 2{,}0\times10^{4}\ \text{Hz} = 20\ \text{kHz}}'
-            note: "Frequence de la porteuse."
+            note: "Fréquence de la porteuse."
           - math: 'T_{env} = 12\times0{,}05\ \text{ms} = 0{,}60\ \text{ms} \implies f = \frac{1}{0{,}60\times10^{-3}}'
             note: "Enveloppe : minima consecutifs distants de 12 carreaux (chapitre 4)."
           - math: '\boxed{f \approx 1{,}7\times10^{3}\ \text{Hz} = 1{,}7\ \text{kHz}}'
-            note: "Frequence de l'onde sonore, bien dans le domaine audible."
+            note: "Fréquence de l'onde sonore, bien dans le domaine audible."
       - id: q2
         stem: |-
           **2-** (0,75 pt) Déterminer la valeur de $A$ et celle de $m$. Conclure à propos de la qualité de la modulation.
@@ -1011,7 +1011,7 @@ entries:
           - math: '\boxed{m = 0{,}60 < 1}'
             note: "Taux de modulation."
           - math: '\boxed{m<1 \text{ et } F/f \approx 12 \gg 1 \implies \text{bonne modulation}}'
-            note: "Les deux conditions du chapitre 4 sont verifiees."
+            note: "Les deux conditions du chapitre 4 sont vérifiées."
 
   # ── bk-2010-n-x3b — 2010 N, Électricité (position 3 du cartouche), Deuxième
   #    partie : réalisation d'une radio AM simple ──
@@ -1087,9 +1087,9 @@ entries:
         incidence ici : « 1 microF = 10^-12 F » imprimé p.5 (c'est le picofarad
         qui vaut 10^-12 F), sans conséquence car les capacités C1, C2 sont
         données directement en pF ; et une collision de notation, $C_0$
-        désignant a la fois le condensateur du circuit RC de la Premiere
-        partie ET celui de l'etage Y ici, deux composants differents (voir la
-        note editoriale en tete de ce fichier). Recalcul independant :
+        désignant a la fois le condensateur du circuit RC de la Première
+        partie ET celui de l'etage Y ici, deux composants différents (voir la
+        note éditoriale en tête de ce fichier). Recalcul indépendant :
         f1 = 1/(2.pi.racine(L.C1)) = 604,0 kHz ; f2 = 1/(2.pi.racine(L.C2)) =
         302,0 kHz ; 540 kHz appartient bien a [302 ; 604] kHz.
     intro: |-
@@ -1138,14 +1138,14 @@ entries:
           $$f_2 = \frac{1}{2\pi\sqrt{L\,C_2}}$$
         steps:
           - math: 'f_1 = \frac{1}{2\pi\sqrt{5{,}3\times10^{-3}\times13{,}1\times10^{-12}}}'
-            note: "Frequence propre avec la plus petite capacite C1 (chapitre 6)."
+            note: "Fréquence propre avec la plus petite capacité C1 (chapitre 6)."
           - math: '\boxed{f_1 \approx 604{,}0\times10^{3}\ \text{Hz} = 604{,}0\ \text{kHz}}'
-            note: "Borne haute de la plage de selection."
+            note: "Borne haute de la plage de sélection."
           - math: 'f_2 = \frac{1}{2\pi\sqrt{5{,}3\times10^{-3}\times52{,}4\times10^{-12}}}'
-            note: "Frequence propre avec la plus grande capacite C2 (chapitre 6)."
+            note: "Fréquence propre avec la plus grande capacité C2 (chapitre 6)."
           - math: '\boxed{f_2 \approx 302{,}0\times10^{3}\ \text{Hz} = 302{,}0\ \text{kHz}}'
-            note: "Borne basse de la plage de selection."
-          - math: '\boxed{540\ \text{kHz} \in [302{,}0\,;\,604{,}0]\ \text{kHz} \implies \text{l etage X permet bien la selection de l emission a 540 kHz}}'
+            note: "Borne basse de la plage de sélection."
+          - math: '\boxed{540\ \text{kHz} \in [302{,}0\,;\,604{,}0]\ \text{kHz} \implies \text{l etage X permet bien la sélection de l émission a 540 kHz}}'
             note: "540 kHz tombe strictement entre les deux bornes : la station voulue est atteignable en reglant C entre C1 et C2."
 
   # ── bk-2015-n-x3b — 2015 N, Exercice 3 (Deuxième partie) : modulation d'amplitude ──
@@ -1215,13 +1215,13 @@ entries:
           Comme au chapitre 3 (la forme générale $s(t)=(U_0+s_m(t))\cos(2\pi f_p t)$), l'enjeu n'est pas de résoudre une équation mais de reconnaître la même structure dans le produit du multiplieur — ici avec les entrées inversées par rapport à l'exercice le plus proche de cette banque (bk-2017-n-x3) : c'est $u_1$, sur $E_1$, qui porte la composante continue $U_0$, et $u_2$, sur $E_2$, qui est la porteuse pure. On part de la définition, on remplace $u_1$ et $u_2$, puis on met $U_0$ en facteur à l'intérieur de $u_1$ — exactement le geste du chapitre 3 — pour faire apparaître d'un bloc l'amplitude globale $A$ (tout ce qui multiplie l'oscillation rapide $\cos(2\pi F t)$) et le taux de modulation $m$ (chapitre 4, $S_m/U_0$ ici renommé $U_{1m}/U_0$).
         steps:
           - math: 'u_S(t) = k\,u_1(t)\,u_2(t) = k\left[U_0+U_{1m}\cos(2\pi f t)\right]U_{2m}\cos(2\pi F t)'
-            note: "Definition du multiplieur (enonce) : on remplace u1 et u2 par leurs expressions."
+            note: "Définition du multiplieur (énoncé) : on remplace u1 et u2 par leurs expressions."
           - math: 'U_0+U_{1m}\cos(2\pi f t) = U_0\left[1+\frac{U_{1m}}{U_0}\cos(2\pi f t)\right]'
-            note: "Mise en facteur de U0 (chapitre 3) : c'est ce geste qui fait apparaitre A et m."
+            note: "Mise en facteur de U0 (chapitre 3) : c'est ce geste qui fait apparaître A et m."
           - math: 'u_S(t) = \underbrace{k\,U_0\,U_{2m}}_{A}\left[1+\underbrace{\frac{U_{1m}}{U_0}}_{m}\cos(2\pi f t)\right]\cos(2\pi F t)'
-            note: "On reporte : la forme canonique demandee apparait, avec A et m identifies."
+            note: "On reporte : la forme canonique demandee apparaît, avec A et m identifies."
           - math: '\boxed{A = k\,U_0\,U_{2m} \qquad m = \frac{U_{1m}}{U_0}}'
-            note: "Reponse aux deux expressions demandees."
+            note: "Réponse aux deux expressions demandees."
       - id: q2
         stem: |-
           **2-2-** (0,5 pt) Après réglage des sensibilités de l'oscilloscope sur : 1 V/div et 0,5 ms/div, les élèves ont visualisé la tension de sortie $u_S(t)$ obtenue. La figure 5 représente les variations de cette tension. Déterminer la fréquence $f$ du signal modulant, et la fréquence $F$ de l'onde porteuse.
@@ -1237,13 +1237,13 @@ entries:
           **Le piège de cette question.** Lire une division comme DEUX intervalles du quadrillage au lieu d'UN — une erreur facile puisque le quadrillage alterne des lignes noires et bleues, et qu'on pourrait croire que seul un changement de couleur marque une vraie division. L'annotation `1div` tranche explicitement : elle va d'une ligne noire à la ligne bleue suivante, donc un seul intervalle. Se tromper sur ce point double ou divise par deux les deux fréquences trouvées, sans qu'aucun signal n'alerte automatiquement — $f=500$ Hz et $F=10$ kHz resteraient, eux aussi, des valeurs plausibles pour un signal modulant audible et une porteuse radio.
         steps:
           - math: 'T_m = 8{,}0\ \text{div}\times0{,}5\ \text{ms/div} = 4{,}0\ \text{ms}'
-            note: "Periode du signal modulant (l'enveloppe), lue en divisions selon l'annotation 1div puis convertie."
+            note: "Période du signal modulant (l'enveloppe), lue en divisions selon l'annotation 1div puis convertie."
           - math: '\boxed{f = \frac{1}{4{,}0\times10^{-3}} = 250\ \text{Hz}}'
-            note: "Frequence du signal modulant."
+            note: "Fréquence du signal modulant."
           - math: 'T_p = 0{,}4\ \text{div}\times0{,}5\ \text{ms/div} = 0{,}2\ \text{ms}'
-            note: "Periode de la porteuse (oscillation rapide), meme conversion."
+            note: "Période de la porteuse (oscillation rapide), même conversion."
           - math: '\boxed{F = \frac{1}{0{,}2\times10^{-3}} = 5{,}0\times10^{3}\ \text{Hz} = 5{,}0\ \text{kHz}}'
-            note: "Frequence de l'onde porteuse."
+            note: "Fréquence de l'onde porteuse."
       - id: q3
         stem: |-
           **2-3-** (0,75 pt) Montrer, en calculant la valeur du taux de modulation $m$, que la modulation est bonne.
@@ -1259,11 +1259,11 @@ entries:
           **Le piège de cette question.** Croire qu'il faut connaître les volts par division pour calculer $m$ : ce n'est pas le cas, puisque $m$ est un rapport de deux longueurs mesurées dans la MÊME unité — travailler directement en divisions, sans jamais les convertir en volts, donne exactement le même résultat. Convertir inutilement en volts n'est pas faux, mais fait perdre du temps sans rien gagner en précision.
         steps:
           - math: 'm = \frac{U_{max}-U_{min}}{U_{max}+U_{min}} = \frac{5{,}0-1{,}0}{5{,}0+1{,}0}'
-            note: "Rapport des extrema de l'enveloppe (chapitre 4) : elimine A, pas besoin de connaitre les volts par division."
+            note: "Rapport des extrema de l'enveloppe (chapitre 4) : elimine A, pas besoin de connaître les volts par division."
           - math: '\boxed{m \approx 0{,}67 < 1}'
             note: "Taux de modulation."
           - math: '\boxed{m<1 \text{ et } F/f=20\geq10 \implies \text{bonne modulation}}'
-            note: "Les deux conditions du chapitre 4 sont verifiees ensemble."
+            note: "Les deux conditions du chapitre 4 sont vérifiées ensemble."
 
   # ── bk-2012-r-x3b — 2012 R, Électricité § II : réception d'une onde AM et démodulation ──
   #
@@ -1524,18 +1524,18 @@ entries:
     intro: |-
       **Réception d'une onde modulée en amplitude et démodulation (examen national, session de rattrapage 2012 — exercice « Electricité », Deuxième partie, 2,00 points sur 05,00).** <!-- DÉFAUT DU SUJET OFFICIEL, DÉCLARÉ (F5), 2026-09-04.
            Le sommaire de la page 1 du document officiel francophone imprime
-           « Reception d'une MODULEE en amplitude, et la demodulation
-           d'amplitude » — le mot « onde » MANQUE. L'original arabe RS28 ecrit
+           « Reception d'une MODULÉE en amplitude, et la demodulation
+           d'amplitude » — le mot « onde » MANQUE. L'original arabe RS28 écrit
            « استقبال موجة مضمنة الوسع وإزالة التضمين » = « reception d'une ONDE
-           modulee en amplitude et demodulation », et le corps de la page 5 du
-           francais est, lui, CORRECT : « Reception d'une onde modulee en
+           modulée en amplitude et demodulation », et le corps de la page 5 du
+           français est, lui, CORRECT : « Reception d'une onde modulée en
            amplitude et demodulation ». Le titre retenu ici est donc celui du
-           CORPS, qui est celui qui titre reellement la partie ; le defaut ne
-           porte que sur la ligne du sommaire. Cosmetique, aucune consequence.
-           L'edition francaise de ce sujet etant MINISTERIELLE (code d'examen
+           CORPS, qui est celui qui titre réellement la partie ; le défaut ne
+           porte que sur la ligne du sommaire. Cosmetique, aucune conséquence.
+           L'edition française de ce sujet étant MINISTERIELLE (code d'examen
            RS28 au cartouche ; pieds de page vides sur 6/6 ; colonne « Bareme »
-           miroir de la colonne arabe), c'est un defaut de l'edition OFFICIELLE
-           de langue francaise, pas d'un intermediaire prive. Voir
+           miroir de la colonne arabe), c'est un défaut de l'edition OFFICIELLE
+           de langue française, pas d'un intermédiaire prive. Voir
            docs/sujets/_incoming/pc-2012-r.md, F5 / V.7. -->
 
       *La première partie du même exercice est indépendante — le sujet l'écrit — et vit ailleurs : l'étude du circuit idéal LC (3,00 pt) sous « Circuit RLC série », entrée bk-2012-r-x3. 3,00 + 2,00 = 5,00, le barème imprimé.*
@@ -1599,69 +1599,69 @@ entries:
           **Les deux pièges de cette question.** Le premier : **oublier de convertir les kilohertz**, et calculer avec $f = 160$. Le résultat sort alors $10^{6}$ fois trop grand — $2{,}1\times10^{3}\ \text{H}$, une bobine impossible. Le second : **oublier le carré sur $f$** ou le $4\pi^2$ ; on part de $f_0 = \dfrac{1}{2\pi\sqrt{L_1C_1}}$ et l'on élève **les deux membres au carré avant** d'isoler, ce qui fait apparaître $4\pi^2$ et $f^2$ ensemble. Aucune des deux fautes ne se voit sans contrôle d'ordre de grandeur.
         steps:
           - math: 'f = f_0 = \frac{1}{2\pi\sqrt{L_1 C_1}}'
-            note: "Condition d'accord : la frequence propre du circuit bouchon egale la frequence de l'onde a recevoir (chapitre 6)."
+            note: "Condition d'accord : la fréquence propre du circuit bouchon egale la fréquence de l'onde a recevoir (chapitre 6)."
           - math: '\boxed{L_1 = \frac{1}{4\pi^{2} f^{2} C_1}}'
-            note: "On eleve les deux membres au carre AVANT d'isoler : c'est la que naissent le 4 pi carre et le f carre."
+            note: "On élève les deux membres au carré AVANT d'isoler : c'est la que naissent le 4 pi carré et le f carré."
           - math: 'L_1 = \frac{1}{4\pi^{2} \times \left(1{,}60\times10^{5}\right)^{2} \times 4{,}7\times10^{-10}} = \frac{1}{4{,}75\times10^{2}}'
-            note: "Application numerique. La frequence est convertie en hertz AVANT tout : 160 kHz = 1,60 x 10^5 Hz."
+            note: "Application numérique. La fréquence est convertie en hertz AVANT tout : 160 kHz = 1,60 x 10^5 Hz."
           - math: '\boxed{L_1 \approx 2{,}1\times10^{-3}\ \text{H} = 2{,}1\ \text{mH}}'
-            note: "Valeur exacte 2,105 mH. Quelques millihenrys : l'ordre de grandeur reel d'une bobine d'accord de recepteur AM."
+            note: "Valeur exacte 2,105 mH. Quelques millihenrys : l'ordre de grandeur réel d'une bobine d'accord de récepteur AM."
       - id: q3
         stem: |-
           **2-** (0,5 pt) Les deux parties **1 et 2**, permettent la démodulation du signal recu *(sic)*. Quel est le rôle de chacune des deux parties dans la démodulation ?
 
           ⚠️ **Un avertissement sur cette question, que tu dois lire avant d'y répondre.** L'énoncé ci-dessus est reproduit **exactement tel que le sujet officiel l'imprime**, « 1 et 2 » compris — et **il est fautif**. Les parties qui démodulent sont les parties **2 et 3** : la partie 1 est le circuit d'accord, elle **sélectionne** la station et ne démodule rien, ce que la question 1-1 vient précisément d'établir. Trois témoins indépendants le confirment : l'original arabe du même sujet écrit **deux fois** « les parties 2 et 3 », le corrigé répond pour les parties 2 et 3, et la figure 3 elle-même montre que la partie 1 est un simple circuit bouchon. **C'est un défaut du sujet officiel, déclaré ici et non réparé — et la réponse attendue porte sur les parties 2 et 3.** <!-- DÉFAUT F1 DU SUJET OFFICIEL, DÉCLARÉ ET NON RÉPARÉ — ARBITRAGE OWNER OUVERT, 2026-09-04.
-               VERBATIM DE LA COUCHE DE TEXTE FRANCAISE, p. 5 : « 2- Les deux
+               VERBATIM DE LA COUCHE DE TEXTE FRANÇAISE, p. 5 : « 2- Les deux
                parties 1 et 2, permettent la demodulation du signal recu. Quel est
-               le role de chacune des deux parties dans la demodulation ? (0,5) ».
-               TROIS TEMOINS INDEPENDANTS DISENT « 2 ET 3 », les trois relus AU
-               RENDU par deux passes separees :
-                 1. L'ORIGINAL ARABE, DEUX OCCURRENCES SUR LA MEME LIGNE (p. 5,
+               le rôle de chacune des deux parties dans la demodulation ? (0,5) ».
+               TROIS TEMOINS INDÉPENDANTS DISENT « 2 ET 3 », les trois relus AU
+               RENDU par deux passes séparées :
+                 1. L'ORIGINAL ARABE, DEUX OCCURRENCES SUR LA MÊME LIGNE (p. 5,
                     y = 519,7) : « الجزءان 2 و3 » en x = [416,2 ; 479,0] et
                     « الجزئين 2 » + « و3 » en x = [128,9 ; 177,1] et
                     [109,0 ; 129,1]. Les deux croppees a 300 dpi, AGRANDIES x10 et
                     lues a l'oeil : les chiffres 2 et 3 sont nets dans les deux
-                    cas. L'edition francaise supprime en outre la SECONDE
-                    occurrence (l'arabe renomme les deux parties, le francais
-                    ecrit « chacune des deux parties »).
+                    cas. L'edition française supprime en outre la SECONDE
+                    occurrence (l'arabe renomme les deux parties, le français
+                    écrit « chacune des deux parties »).
                  2. LE CORRIGE ARABE (element/39378, p. 6, y = 245,1 et 258,1),
-                    relu a 400 dpi : « role de la partie 2 : elimination de l'onde
-                    porteuse de haute frequence f » et « role de la partie 3 :
+                    relu a 400 dpi : « rôle de la partie 2 : elimination de l'onde
+                    porteuse de haute fréquence f » et « rôle de la partie 3 :
                     elimination de la tension continue U0 ». Il ne dit PAS UN MOT
-                    de la partie 1 dans cette reponse.
+                    de la partie 1 dans cette réponse.
                  3. LA FIGURE 3, etiquettes relues au rendu (« الجزء 1 · الجزء 2 ·
-                    الجزء3 » de gauche a droite) et schema francais extrait du PDF
+                    الجزء3 » de gauche a droite) et schéma français extrait du PDF
                     (782 x 342 a 171 dpi) et REGARDE : partie 1 = antenne +
                     (L ajustable // C1), CIRCUIT D'ACCORD, elle ne demodule rien ;
                     partie 2 = diode D + (C2 // R2), detection d'enveloppe ;
-                    partie 3 = C3 en serie + R3, passe-haut.
-               PORTEE EXACTE, SANS L'EXAGERER : la question reste RESOLUBLE — un
-               eleve qui a compris le montage repond sur 2 et 3 —, mais un eleve
-               qui suit l'enonce A LA LETTRE repete la reponse de 1-1 et laisse
-               sans reponse la partie 3, soit la moitie du bareme. 0,5 PT EXPOSE.
-               CLASSIFICATION : l'edition francaise de ce sujet est MINISTERIELLE
-               (code d'examen RS28 au cartouche ; mention d'epoque
+                    partie 3 = C3 en série + R3, passe-haut.
+               PORTÉE EXACTE, SANS L'EXAGERER : la question reste RESOLUBLE — un
+               eleve qui a compris le montage répond sur 2 et 3 —, mais un élève
+               qui suit l'énoncé A LA LETTRE repete la réponse de 1-1 et laisse
+               sans réponse la partie 3, soit la moitié du bareme. 0,5 PT EXPOSE.
+               CLASSIFICATION : l'edition française de ce sujet est MINISTERIELLE
+               (code d'examen RS28 au cartouche ; mention d'époque
                « (الترجمة الفرنسية) » sans le cadre anachronique
                « المسالك الدولية » ; pieds de page VIDES sur 6/6 ; colonne
                « Bareme » miroir valeur par valeur de la colonne arabe). C'est
-               donc un defaut du SUJET OFFICIEL, pas d'un intermediaire prive.
-               CE QUI EST FAIT ICI : enonce VERBATIM (« 1 et 2 »), defaut declare
-               au fil du texte de l'eleve et dans le sourcing.note, REPONSE ECRITE
+               donc un défaut du SUJET OFFICIEL, pas d'un intermédiaire prive.
+               CE QUI EST FAIT ICI : énoncé VERBATIM (« 1 et 2 »), défaut declare
+               au fil du texte de l'élève et dans le sourcing.note, RÉPONSE ECRITE
                POUR LES PARTIES 2 ET 3 — jamais pour la partie 1.
                CE QUI N'EST PAS FAIT, ET DELIBEREMENT : l'arbitrage entre les deux
-               issues. (a) VERBATIM + NOTE EDITORIALE — la forme dans laquelle
-               cette entree est ecrite aujourd'hui, parce qu'il faut bien qu'elle
-               soit ecrite d'une facon ; ce n'est PAS une decision. (b) CORRECTION
-               DECLAREE — l'enonce ecrit « 2 et 3 » avec la reparation declaree au
-               point d'usage, comme F2/F3/F4/F5 le sont dans les autres entrees de
-               ce sujet. Precedents maison, les deux : PC 2012 N (correction
+               issues. (a) VERBATIM + NOTE ÉDITORIALE — la forme dans laquelle
+               cette entrée est ecrite aujourd'hui, parce qu'il faut bien qu'elle
+               soit ecrite d'une façon ; ce n'est PAS une decision. (b) CORRECTION
+               DECLAREE — l'énoncé écrit « 2 et 3 » avec la reparation declaree au
+               point d'usage, comme F2/F3/F4/F5 le sont dans les autres entrées de
+               ce sujet. Précédents maison, les deux : PC 2012 N (correction
                declaree) ; PC 2015 N (decision owner demandee et laissee ouverte).
                POUR PASSER DE (a) A (b) : remplacer « 1 et 2 » par « 2 et 3 » dans
                ce stem et convertir cet avertissement en declaration de
-               correction. Le reasoning ne bouge PAS — il repond deja pour les
+               correction. Le reasoning ne bouge PAS — il répond déjà pour les
                parties 2 et 3. L'OWNER TRANCHE ; RIEN N'EST DECIDE ICI.
                Voir docs/sujets/_incoming/pc-2012-r.md, F1 / D1 / V.6 / V.15 /
-               V.16, et la NOTE EDITORIALE en tete de cette entree. -->
+               V.16, et la NOTE ÉDITORIALE en tête de cette entrée. -->
         reasoning: |-
           **La réponse porte sur les parties 2 et 3** — pas sur les parties 1 et 2 (voir l'avertissement porté à l'énoncé). Démoduler, c'est retrouver le signal informatif à partir de l'onde reçue, et cela se fait en **deux étapes successives**, une par partie (chapitre 5).
 
@@ -1707,10 +1707,10 @@ entries:
           *Rappel : aucun de ces écrans ne porte de base de temps ni de sensibilité verticale — dans aucune des deux éditions du sujet. Aucune fréquence, aucune tension n'est à en tirer, et la question ne le demande pas : c'est une association purement qualitative.*
         steps:
           - math: 'u_{EM} \;\longrightarrow\; \text{courbe (b)}'
-            note: "Noeud E, en entree de la partie 2 : l'onde recue, encore modulee. Seule courbe montrant des oscillations rapides sous une enveloppe lente."
+            note: "Noeud E, en entrée de la partie 2 : l'onde reçue, encore modulée. Seule courbe montrant des oscillations rapides sous une enveloppe lente."
           - math: 'u_{GM} \;\longrightarrow\; \text{courbe (a)}'
-            note: "Noeud G, apres la diode et le filtre C2/R2 : l'enveloppe AVEC sa composante continue. Courbe entierement au-dessus de l'axe, valeur moyenne environ +2 divisions."
+            note: "Noeud G, après la diode et le filtre C2/R2 : l'enveloppe AVEC sa composante continue. Courbe entièrement au-dessus de l'axe, valeur moyenne environ +2 divisions."
           - math: 'u_{HM} \;\longrightarrow\; \text{courbe (c)}'
-            note: "Noeud H, apres C3 et le chapitre 4 : le signal modulant seul, centre sur zero."
+            note: "Noeud H, après C3 et le chapitre 4 : le signal modulant seul, centre sur zéro."
           - math: '\text{(a) et (c)\,: même amplitude } 0{,}97\ \text{div, même période } \approx 5{,}1\ \text{div, décalage } \approx 2\ \text{div}'
-            note: "L'argument mesure qui verrouille l'association : (a) et (c) portent la MEME sinusoide, la seule difference etant la composante continue retiree par la partie 3."
+            note: "L'argument mesure qui verrouille l'association : (a) et (c) portent la MÊME sinusoide, la seule différence étant la composante continue retiree par la partie 3."

@@ -207,9 +207,9 @@ entries:
           Comme au chapitre 3 (« Déterminer $X_m$ et $\varphi$ à partir des conditions initiales »), on lit d'abord $X_m$ et $T_0$ directement sur le graphe : $X_m$ est l'écart maximal atteint (l'amplitude), $T_0$ la durée d'un cycle complet — ici entre deux minima consécutifs ($t=0$ et $t=1\ \text{s}$), cohérente avec un passage par le maximum exactement à mi-chemin ($t=0{,}5\ \text{s}=T_0/2$). Pour $\varphi$, on utilise les conditions initiales lues sur la courbe : $x(0)=-X_m$ et $v(0)=0$ (la courbe part d'un extremum, tangente horizontale) — c'est le « Premier lancer » du chapitre 3, mais avec un départ côté négatif plutôt que positif, donc $\cos\varphi=-1$ plutôt que $\cos\varphi=+1$.
         steps:
           - math: 'X_m = 6{,}0\ \text{cm} = 6{,}0\times10^{-2}\ \text{m} \qquad T_0 = 1\ \text{s}'
-            note: "Lecture directe sur la figure 4 : Xm est l'ecart maximal (chapitre 3), T0 la duree entre deux minima consecutifs (t=0 et t=1s)."
+            note: "Lecture directe sur la figure 4 : Xm est l'écart maximal (chapitre 3), T0 la durée entre deux minima consecutifs (t=0 et t=1s)."
           - math: 'x(0) = X_m\cos\varphi = -X_m \implies \cos\varphi = -1 \implies \varphi = \pi\ \text{rad}'
-            note: "Depart au minimum (chapitre 3, meme geste que le Premier lancer mais cote negatif) : x(0) = -Xm."
+            note: "Départ au minimum (chapitre 3, même geste que le Premier lancer mais cote négatif) : x(0) = -Xm."
           - math: 'v(0) = -X_m\,\omega_0\sin\varphi = -X_m\,\omega_0\sin\pi = 0'
             note: "Controle : la vitesse initiale est bien nulle (sin pi = 0), conforme au lacher sans vitesse."
       - id: q2
@@ -219,13 +219,13 @@ entries:
           le chapitre 6 donne l'expression de l'énergie potentielle élastique comme un résultat, $E_{pe}=\frac12Kx^2$ — pas encore démontrée à ce stade du cours (la démonstration est au chapitre Aspects énergétiques), mais utilisable directement ici. Il faut d'abord la position $x(t_1)$, obtenue en réinjectant $t_1$ dans l'équation horaire trouvée à la question précédente.
         steps:
           - math: 'x(t_1) = X_m\cos\left(\frac{2\pi}{T_0}t_1+\varphi\right) = 6{,}0\times10^{-2}\cos\left(2\pi\times0{,}5+\pi\right)'
-            note: "On reinjecte t1 = 0,5 s dans l'equation horaire (question 1) : T0 = 1 s, phi = pi."
+            note: "On reinjecte t1 = 0,5 s dans l'équation horaire (question 1) : T0 = 1 s, phi = pi."
           - math: 'x(t_1) = 6{,}0\times10^{-2}\cos(2\pi) = 6{,}0\times10^{-2}\ \text{m}'
             note: "cos(2 pi) = 1 : a t1 = 0,5 s = T0/2, le solide est revenu a l'extremum oppose, ici +Xm."
           - math: 'E_{pe1} = \frac{1}{2}K\,x(t_1)^2 = \frac{1}{2}\times35\times(6{,}0\times10^{-2})^2'
             note: "Formule du chapitre 6, Epe = (1/2) K x^2, appliquee a x(t1)."
           - math: '\boxed{E_{pe1} \approx 6{,}3\times10^{-2}\ \text{J}}'
-            note: "Application numerique."
+            note: "Application numérique."
       - id: q3
         stem: |-
           **(0,75 pt)** Calculer le travail $W_{AB}(\vec{F})$ de la force de rappel, lorsque le centre d'inertie $G$ se déplace de la position A d'abscisse $x_A = X_m$ à la position B d'abscisse $x_B = -X_m$.
@@ -233,11 +233,11 @@ entries:
           Chapitre R5 : A et B sont tous les deux à l'écart maximal, donc tous les deux des points où le solide s'arrête un instant — $\dot x=0$ en A comme en B, exactement le second cas décrit au chapitre 6 (« Quand $x=\pm X_m$ ... $\dot x=0$ ... toute l'énergie est dans le ressort »). Le lien entre le travail d'une force conservative et la variation de son énergie potentielle associée, $W_{AB}(\vec F)=E_{pe}(A)-E_{pe}(B)$, appartient au chapitre Aspects énergétiques (signalé par le chapitre 6 lui-même) — on l'emprunte ici pour conclure. Comme $|x_A|=|x_B|=X_m$, les deux énergies potentielles élastiques sont égales, donc leur différence est nulle.
         steps:
           - math: 'E_{pe}(A) = \frac12 K x_A^2 = \frac12 K X_m^2 \qquad E_{pe}(B) = \frac12 K x_B^2 = \frac12 K X_m^2'
-            note: "A et B sont les deux extrema, |xA| = |xB| = Xm (chapitre 6) : meme energie potentielle elastique aux deux points."
+            note: "A et B sont les deux extrema, |xA| = |xB| = Xm (chapitre 6) : même énergie potentielle élastique aux deux points."
           - math: 'W_{AB}(\vec F) = E_{pe}(A) - E_{pe}(B)'
-            note: "Travail d'une force conservative entre A et B = la perte d'energie potentielle correspondante."
+            note: "Travail d'une force conservative entre A et B = la perte d'énergie potentielle correspondante."
           - math: '\boxed{W_{AB}(\vec F) = 0\ \text{J}}'
-            note: "La difference est nulle : coherent avec le theoreme de l'energie cinetique, qui donne aussi Delta Ec = 0 entre A et B (vA = vB = 0)."
+            note: "La différence est nulle : coherent avec le théorème de l'énergie cinétique, qui donne aussi Delta Ec = 0 entre A et B (vA = vB = 0)."
 
   # ── bk-2022-r-x4b — 2022 R, Exercice 4 (Partie 2) : pendule elastique horizontal,
   #    la lecture la plus directe des quatre - periode lue sans ambiguite,
@@ -341,7 +341,7 @@ entries:
           - math: 'x(t) = X_m\cos(\omega_0 t + \varphi)'
             note: "Forme de la solution de l'oscillateur harmonique (chapitre 2) : la courbe cosinus de la figure 4 en est la signature."
           - math: '\boxed{\text{mouvement rectiligne sinusoidal (harmonique), non amorti}}'
-            note: "Rectiligne : G reste sur l'axe (O,i). Amplitude constante d'un maximum au suivant : sans frottement, regime periodique (chapitre 7)."
+            note: "Rectiligne : G reste sur l'axe (O,i). Amplitude constante d'un maximum au suivant : sans frottement, régime périodique (chapitre 7)."
       - id: q2
         part: "2 — Le modèle, établi et non récité"
         stem: |-
@@ -370,9 +370,9 @@ entries:
           **Le piège nommé de cette question.** **Faire figurer le poids dans l'équation projetée**, par réflexe venu du plan incliné. Ici le plan est horizontal, le poids est perpendiculaire à l'axe du mouvement, sa projection est nulle, et l'écrire est une faute, pas une précaution.
         steps:
           - math: '\vec P + \vec N + \vec F_{rappel} = m\vec a_G \qquad \text{avec} \qquad \vec F_{rappel} = -k\,x\,\vec i'
-            note: "Deuxieme loi de Newton, bilan du chapitre 2 (poids, reaction normale, force de rappel)."
+            note: "Deuxième loi de Newton, bilan du chapitre 2 (poids, réaction normale, force de rappel)."
           - math: '-k\,x = m\,\ddot x'
-            note: "Projection sur l'axe horizontal : poids et reaction normale sont verticaux, leur projection est nulle."
+            note: "Projection sur l'axe horizontal : poids et réaction normale sont verticaux, leur projection est nulle."
           - math: '\boxed{\ddot x + \frac{k}{m}\,x = 0}'
             note: "Forme standard de l'oscillateur harmonique (chapitre 2)."
       - id: q3
@@ -403,11 +403,11 @@ entries:
           **Le piège nommé de cette question.** **Oublier d'élever $T_0$ au carré**, en écrivant directement $k = 4\pi^2 m / T_0$ — ce qui donnerait ici la même valeur numérique par pure coïncidence ($T_0=1$), un piège qui ne se révèle qu'en changeant les nombres. Reconstruis toujours la relation depuis $T_0 = 2\pi\sqrt{m/k}$ plutôt que de mémoriser une formule à trous.
         steps:
           - math: 'T_0 = 1\ \text{s}'
-            note: "Lecture directe sur la figure 4, d'un maximum au suivant : pas d'ambiguite ici, contrairement aux deux autres pendules elastiques les plus proches de cette banque."
+            note: "Lecture directe sur la figure 4, d'un maximum au suivant : pas d'ambiguïté ici, contrairement aux deux autres pendules elastiques les plus proches de cette banque."
           - math: 'k = \frac{4\pi^2\,m}{T_0^2}'
             note: "On retourne T0 = 2.pi.racine(m/k) (chapitre 2)."
           - math: 'k = \frac{4\times10\times0{,}5}{1^2} = \frac{20}{1}'
-            note: "Application numerique, avec pi^2 = 10 impose par l'enonce."
+            note: "Application numérique, avec pi^2 = 10 impose par l'énoncé."
           - math: '\boxed{k = 20\ \text{N.m}^{-1}}'
             note: "Raideur du ressort."
 
@@ -478,11 +478,11 @@ entries:
           L'énergie potentielle de pesanteur, $E_{pp}=mgz$ (chapitre 6, définition générale renvoyée au chapitre Aspects énergétiques), demande ici la hauteur $z$ de $G$ au-dessus de sa position d'équilibre $G_0$ — un calcul de géométrie du cercle que ni R3 ni R5 ne détaillent pas à pas (chapitre 4 travaille avec les forces et les moments, pas les hauteurs). $G$ est à distance $\ell$ du pivot $O$ ; quand la tige fait l'angle $\theta$ avec la verticale, $G$ est à une profondeur $\ell\cos\theta$ sous $O$, contre $\ell$ (profondeur maximale) à l'équilibre — la différence de hauteur par rapport à $G_0$ est donc $z=\ell-\ell\cos\theta=\ell(1-\cos\theta)$. On substitue ensuite l'approximation des petites oscillations donnée dans les données, $\cos\theta\approx1-\theta^2/2$, exactement l'approximation du chapitre 4.
         steps:
           - math: 'z = \ell - \ell\cos\theta = \ell(1-\cos\theta)'
-            note: "Hauteur de G au-dessus de sa position d'equilibre G0 : geometrie du cercle de rayon ell (ni R3 ni R5 ne detaille ce calcul pas a pas, il est ponte ici)."
+            note: "Hauteur de G au-dessus de sa position d'équilibre G0 : géométrie du cercle de rayon ell (ni R3 ni R5 ne detaille ce calcul pas a pas, il est ponte ici)."
           - math: 'E_{pp} = mgz = mg\ell(1-\cos\theta)'
-            note: "Formule generale Epp = mgz (chapitre 6, renvoyee au chapitre Aspects energetiques), appliquee a cette hauteur."
+            note: "Formule générale Epp = mgz (chapitre 6, renvoyee au chapitre Aspects énergétiques), appliquee a cette hauteur."
           - math: '1-\cos\theta \approx 1-\left(1-\frac{\theta^2}{2}\right) = \frac{\theta^2}{2}'
-            note: "Approximation des petites oscillations du chapitre 4 (donnee aussi dans l'enonce)."
+            note: "Approximation des petites oscillations du chapitre 4 (donnée aussi dans l'énoncé)."
           - math: '\boxed{E_{pp} \approx \frac{1}{2}mg\ell\theta^2}'
             note: "On substitue : c'est bien la forme demandee."
       - id: q2a
@@ -493,13 +493,13 @@ entries:
           La conservation de l'énergie mécanique (chapitre 6, principe des deux réservoirs, ici transposé de l'énergie élastique à l'énergie de pesanteur comme le chapitre 6 le signale explicitement en fin du chapitre) relie l'état de lâcher et le passage par l'équilibre. Au lâcher ($\theta=\theta_0$), $\dot\theta=0$ : toute l'énergie est potentielle, $E_m=E_{pp}(\theta_0)$ (question précédente). Au passage par l'équilibre ($\theta=0$), $E_{pp}=0$ : toute l'énergie est cinétique, $E_m=E_c$. Il faut ici l'énergie cinétique de ROTATION, $E_c=\frac12J_\Delta\dot\theta^2$ — une formule vue au chapitre sur la rotation d'un solide autour d'un axe fixe (le même chapitre auquel le chapitre 4 renvoie déjà pour la loi $J_\Delta\ddot\theta=\sum M_\Delta$), jamais redonnée sous cette forme énergétique dans ce cours-ci, qui ne traite l'énergie cinétique que sous sa forme de translation $\frac12mv^2$ (chapitre 6). On égalise les deux expressions de $E_m$ et on isole $\dot\theta_{max}$.
         steps:
           - math: 'E_m = E_{pp}(\theta_0) + 0 = \frac12mg\ell\theta_0^2'
-            note: "Au lachage, theta point = 0 (chapitre 6) : toute l'energie est potentielle."
+            note: "Au lachage, theta point = 0 (chapitre 6) : toute l'énergie est potentielle."
           - math: 'E_m = 0 + \frac12 J_\Delta\dot\theta_{max}^2 = \frac12 m\ell^2\dot\theta_{max}^2'
-            note: "Au passage par l'equilibre, Epp = 0 (chapitre 6) : toute l'energie est cinetique de rotation, Ec = (1/2) J_Delta.theta_point^2 (chapitre rotation d'un solide, deja mobilise au chapitre 4 pour la loi des moments)."
+            note: "Au passage par l'équilibre, Epp = 0 (chapitre 6) : toute l'énergie est cinétique de rotation, Ec = (1/2) J_Delta.theta_point^2 (chapitre rotation d'un solide, déjà mobilise au chapitre 4 pour la loi des moments)."
           - math: '\frac12 m\ell^2\dot\theta_{max}^2 = \frac12mg\ell\theta_0^2 \implies \dot\theta_{max} = \theta_0\sqrt{\frac{g}{\ell}}'
-            note: "Conservation de l'energie mecanique (chapitre 6) : on egalise les deux expressions et on isole theta point max ; la masse m se simplifie."
+            note: "Conservation de l'énergie mécanique (chapitre 6) : on egalise les deux expressions et on isole theta point max ; la masse m se simplifie."
           - math: '\dot\theta_{max} = \left(9\times\frac{\pi}{180}\right)\sqrt{\frac{10}{2{,}4}} = 0{,}157\times2{,}04'
-            note: "Application numerique : theta0 = 9 degres converti en radians."
+            note: "Application numérique : theta0 = 9 degrés converti en radians."
           - math: '\boxed{\dot\theta_{max} \approx 0{,}32\ \text{rad.s}^{-1}}'
             note: "Coherent avec l'ordre de grandeur d'une vraie balancoire."
       - id: q2b
@@ -509,11 +509,11 @@ entries:
           On revient à la méthode directe du chapitre 4 (pendule pesant) : $J_\Delta\ddot\theta=\sum M_\Delta(\vec F_{ext})$, seul le poids produit un moment non nul (la réaction en $O$ passe par l'axe), à une distance $d=\Delta G=\ell$ ici (le centre d'inertie $G$ est à l'extrémité de la tige de longueur $\ell$). On substitue $J_\Delta=m\ell^2$ (donnée) et $d=\ell$, puis on applique l'approximation des petites oscillations, exactement comme au chapitre 4.
         steps:
           - math: 'J_\Delta\ddot\theta = -mg\ell\sin\theta'
-            note: "Loi des moments (chapitre 4), avec d = Delta G = ell (G est a l'extremite de la tige)."
+            note: "Loi des moments (chapitre 4), avec d = Delta G = ell (G est a l'extrémité de la tige)."
           - math: 'm\ell^2\ddot\theta = -mg\ell\sin\theta \approx -mg\ell\theta'
-            note: "On substitue J_Delta = m.ell^2 (donnee), puis l'approximation des petites oscillations sin(theta) ~ theta (chapitre 4)."
+            note: "On substitue J_Delta = m.ell^2 (donnée), puis l'approximation des petites oscillations sin(theta) ~ theta (chapitre 4)."
           - math: '\boxed{\ddot\theta + \frac{g}{\ell}\theta = 0}'
-            note: "On simplifie par m.ell (chapitre 4) : meme forme que pour le pendule simple, coherent avec la question suivante."
+            note: "On simplifie par m.ell (chapitre 4) : même forme que pour le pendule simple, coherent avec la question suivante."
       - id: q3
         stem: |-
           **(0,5 pt)** Calculer la période propre de ce pendule sachant qu'il est analogue à un pendule simple de longueur $\ell$ et de masse $m$.
@@ -521,7 +521,7 @@ entries:
           L'énoncé confirme ce que le chapitre 4 démontre dans sa « Vérification de cohérence » : avec $J_\Delta=m\ell^2$ et $d=\ell$, ce pendule pesant se comporte exactement comme un pendule simple de longueur $\ell$. On applique donc directement la formule $T_0=2\pi\sqrt{\ell/g}$ du chapitre 4.
         steps:
           - math: 'T_0 = 2\pi\sqrt{\frac{\ell}{g}} = 2\pi\sqrt{\frac{2{,}4}{10}}'
-            note: "Formule du pendule simple (chapitre 4), applicable ici car J_Delta = m.ell^2 et d = ell (verification de coherence deja etablie au chapitre 4)."
+            note: "Formule du pendule simple (chapitre 4), applicable ici car J_Delta = m.ell^2 et d = ell (vérification de cohérence déjà etablie au chapitre 4)."
           - math: '\boxed{T_0 \approx 3{,}1\ \text{s}}'
             note: "Ordre de grandeur d'une vraie balancoire."
 
@@ -773,13 +773,13 @@ entries:
           **Les deux pièges nommés de cette question.** Le premier : **oublier de convertir les centimètres en mètres**. L'expression $\frac{1}{2}kx^2$ ne donne des joules que si $k$ est en $\text{N.m}^{-1}$ et $x$ en mètres. Avec $x$ en centimètres on obtiendrait $75\ \text{J}$, soit dix mille fois trop — et le facteur $10\,000$ vient du carré, ce qui rend l'erreur d'autant plus violente. Le second : **inverser la différence** et annoncer $-7{,}5\times10^{-3}\ \text{J}$. Une variation se lit toujours « final moins initial » ; le signe négatif décrirait un ressort qui se détend alors qu'il se tend.
         steps:
           - math: '\Delta E_{pe} = E_{pe}(t_1) - E_{pe}(t_0) = \frac{1}{2}k\left(x^2(t_1) - x^2(0)\right)'
-            note: "Une variation, c'est final moins initial. On factorise pour n'ecrire qu'une fois le facteur."
+            note: "Une variation, c'est final moins initial. On factorise pour n'écrire qu'une fois le facteur."
           - math: 'x(0) = 1\ \text{cm} = 1\times10^{-2}\ \text{m} \quad;\quad x(t_1) = X_m = 2\times10^{-2}\ \text{m}'
-            note: "t1 repere le premier MAXIMUM sur la figure 3 : l'abscisse y vaut l'amplitude. Conversion en metres obligatoire."
+            note: "t1 repère le premier MAXIMUM sur la figure 3 : l'abscisse y vaut l'amplitude. Conversion en mètres obligatoire."
           - math: '\Delta E_{pe} = \frac{1}{2}\times50\times\left[4\times10^{-4} - 1\times10^{-4}\right] = 25 \times 3\times10^{-4}'
-            note: "k = 50 N.m-1, valeur verifiee a la question 3."
+            note: "k = 50 N.m-1, valeur vérifiée a la question 3."
           - math: '\boxed{\Delta E_{pe} = 7{,}5\times10^{-3}\ \text{J}}'
-            note: "Positif : le ressort s'est charge. Sans frottement, c'est exactement l'energie cinetique perdue par le solide."
+            note: "Positif : le ressort s'est charge. Sans frottement, c'est exactement l'énergie cinétique perdue par le solide."
 
   # ── bk-2025-n-x4b — 2025 N, Exercice 4 (Partie 2) : pendule élastique, lecture d'un graphe de vitesse ──
   - id: bk-2025-n-x4b
@@ -867,7 +867,7 @@ entries:
           C'est exactement le système du chapitre 2 (solide-ressort horizontal, sans frottement) : on applique la même méthode — système, référentiel galiléen, bilan (poids, réaction normale, force de rappel), deuxième loi, projection sur l'axe horizontal.
         steps:
           - math: '\vec P + \vec N + \vec F_{rappel} = m\vec a_G \qquad \text{avec} \qquad \vec F_{rappel} = -K\,x\,\vec i'
-            note: "Deuxieme loi de Newton, exactement le bilan du chapitre 2 (poids, reaction normale, force de rappel)."
+            note: "Deuxième loi de Newton, exactement le bilan du chapitre 2 (poids, réaction normale, force de rappel)."
           - math: '-K\,x = m\,\ddot x'
             note: "Projection sur l'axe horizontal (O, i) : seule la force de rappel a une composante horizontale (chapitre 2)."
           - math: '\boxed{\ddot x + \frac{K}{m}\,x = 0}'
@@ -880,13 +880,13 @@ entries:
           Différence avec le sujet 2018 ci-dessus : ici la courbe donnée est celle de la VITESSE $v_x(t)$, pas de la position $x(t)$. le chapitre 3 le permet directement — $T_0$ reste la durée au bout de laquelle $x$, $\dot x$ ET $\ddot x$ reprennent les mêmes valeurs, donc se lit tout aussi bien sur $v_x(t)=\dot x(t)$ : deux maxima consécutifs de $v_x$, séparés de 2 divisions, avec 1 division $=1\ \text{s}$ (l'étalon donné par la double flèche, PAS la période elle-même — un piège de lecture détaillé dans la note de sourcing). Pour $X_m$, il faut passer par la relation $v(t)=-X_m\omega_0\sin(\omega_0t+\varphi)$ des chapitres 2 et 3 : l'amplitude de $v_x$ vaut $X_m\omega_0$, donc $X_m=v_{x,max}/\omega_0$ — on ne peut pas la lire directement en ordonnée comme au sujet 2018. Pour $\varphi$, l'énoncé donne directement le lâcher : écart positif, sans vitesse initiale — exactement le « Premier lancer » du chapitre 3, qui donne $\varphi=0$ ; la courbe le confirme ($v_x(0)=0$ et décroissante juste après, cohérent avec $v_x(t)=-X_m\omega_0\sin(\omega_0t)<0$ pour $t$ petit positif).
         steps:
           - math: 'T_0 = 2\times(\text{1 division}) = 2\times1\ \text{s} = 2\ \text{s}'
-            note: "Deux maxima consecutifs de v_x (chapitre 3) separes de 2 divisions ; 1 division = 1 s est l'etalon de l'axe (la double fleche imprimee), PAS la periode directement."
+            note: "Deux maxima consecutifs de v_x (chapitre 3) séparés de 2 divisions ; 1 division = 1 s est l'etalon de l'axe (la double fleche imprimée), PAS la période directement."
           - math: 'v_{x,max} = 12{,}5\times10^{-2}\ \text{m.s}^{-1} \qquad \omega_0 = \frac{2\pi}{T_0} = \pi\ \text{rad.s}^{-1}'
-            note: "Vitesse maximale lue en ordonnee (tangente aux traits du cadre) ; pulsation deduite de T0 (chapitre 3)."
+            note: "Vitesse maximale lue en ordonnée (tangente aux traits du cadre) ; pulsation déduite de T0 (chapitre 3)."
           - math: 'X_m = \frac{v_{x,max}}{\omega_0} = \frac{0{,}125}{\pi} \approx 3{,}98\times10^{-2}\ \text{m}'
             note: "v(t) = -Xm.omega0.sin(...) (chapitres 2 et 3) : l'amplitude de v_x vaut Xm.omega0, donc Xm = v_max / omega0."
           - math: '\boxed{T_0 = 2\ \text{s} \qquad X_m \approx 4{,}0\times10^{-2}\ \text{m} \qquad \varphi = 0}'
-            note: "Phi = 0 : lacher sans vitesse depuis l'ecart positif (enonce), le cas Premier lancer du chapitre 3 - confirme par v_x(0) = 0 decroissante sur la courbe."
+            note: "Phi = 0 : lacher sans vitesse depuis l'écart positif (énoncé), le cas Premier lancer du chapitre 3 - confirme par v_x(0) = 0 décroissante sur la courbe."
       - id: q2b
         stem: |-
           **2-2.** (0,5 pt) Déduire la valeur de la raideur $K$ (On prend $\pi^2 = 10$).
@@ -896,7 +896,7 @@ entries:
           - math: 'K = m\,\omega_0^2 = m\left(\frac{2\pi}{T_0}\right)^2'
             note: "On isole K dans omega0^2 = K/m (chapitre 2)."
           - math: 'K = 0{,}250\times\pi^2 = 0{,}250\times10'
-            note: "Application numerique avec pi^2 = 10 (donne par l'enonce) et T0 = 2 s."
+            note: "Application numérique avec pi^2 = 10 (donne par l'énoncé) et T0 = 2 s."
           - math: '\boxed{K = 2{,}5\ \text{N.m}^{-1}}'
             note: "Raideur du ressort."
       - id: q3
@@ -910,9 +910,9 @@ entries:
           - math: 'E_{pe}(1) = \frac12KX_m^2 \qquad E_{pe}(2{,}5) = 0'
             note: "Formule du chapitre 6, Epe = (1/2) K x^2, appliquee aux deux positions."
           - math: '\Delta E_{pe} = E_{pe}(2{,}5) - E_{pe}(1) = -\frac12KX_m^2 = -\frac12\times2{,}5\times(4{,}0\times10^{-2})^2'
-            note: "Variation entre les deux instants : on retranche l'etat initial (t=1s) de l'etat final (t=2,5s)."
+            note: "Variation entre les deux instants : on retranche l'état initial (t=1s) de l'état final (t=2,5s)."
           - math: '\boxed{\Delta E_{pe} \approx -2{,}0\times10^{-3}\ \text{J}}'
-            note: "L'energie potentielle elastique diminue : coherent, le solide passe de l'extremite opposee (toute l'energie dans le ressort) a l'equilibre (aucune energie dans le ressort)."
+            note: "L'énergie potentielle élastique diminue : coherent, le solide passe de l'extrémité opposee (toute l'énergie dans le ressort) a l'équilibre (aucune énergie dans le ressort)."
 
   # ── bk-2025-r-x4b — 2025 R, Exercice 4 (§2) : pendule de torsion, RFD de
   #    rotation, T0 et theta_m lus sur une courbe de VITESSE ANGULAIRE, C,
@@ -1054,7 +1054,7 @@ entries:
           **Le piège nommé de cette question.** Oublier de justifier pourquoi le poids et la réaction du fil ne contribuent pas — les citer sans dire qu'ils passent par l'axe, c'est laisser un trou dans le bilan des moments que le correcteur sanctionne, même si l'équation finale est juste.
         steps:
           - math: '\mathcal M_\Delta(\vec P) = \mathcal M_\Delta(\vec R_{fil}) = 0'
-            note: "Le poids et la reaction du fil sont verticaux et passent par l'axe (Delta) : leur moment par rapport a cet axe est nul."
+            note: "Le poids et la réaction du fil sont verticaux et passent par l'axe (Delta) : leur moment par rapport a cet axe est nul."
           - math: 'J_\Delta\,\ddot\theta = \sum \mathcal M_\Delta(\vec F_{ext}) = M_{rappel} = -C\,\theta'
             note: "Relation fondamentale de la dynamique de rotation (chapitre Rotation autour d'un axe fixe), avec le seul moment non nul : le rappel du fil."
           - math: '\boxed{\ddot\theta + \frac{C}{J_\Delta}\theta = 0}'
@@ -1062,7 +1062,7 @@ entries:
       - id: q2a
         part: '2. La solution de cette équation différentielle s''écrit sous la forme $\theta(t) = \theta_m\cos\left(\dfrac{2\pi}{T_0}t\right)$, avec $T_0$ la période propre de l''oscillateur.'
         stem: |-
-          **2-1.** (0,5 pt) Etablir que : $T_0 = 2\pi\sqrt{\dfrac{J_\Delta}{C}}$.
+          **2-1.** (0,5 pt) Établir que : $T_0 = 2\pi\sqrt{\dfrac{J_\Delta}{C}}$.
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** On vérifie qu'une solution proposée satisfait bien l'équation différentielle établie à la question précédente — la méthode « on devine, puis on vérifie » du chapitre 2, reprise telle quelle au chapitre 5 pour le pendule de torsion.
 
@@ -1089,7 +1089,7 @@ entries:
           - math: '\ddot\theta(t) = -\left(\frac{2\pi}{T_0}\right)^2\theta(t)'
             note: "On derive deux fois la solution proposee."
           - math: '-\left(\frac{2\pi}{T_0}\right)^2\theta + \frac{C}{J_\Delta}\theta = 0 \implies \left(\frac{2\pi}{T_0}\right)^2 = \frac{C}{J_\Delta}'
-            note: "On substitue dans l'equation de la question 1, puis on simplifie par theta(t), non identiquement nul."
+            note: "On substitue dans l'équation de la question 1, puis on simplifie par theta(t), non identiquement nul."
           - math: '\boxed{T_0 = 2\pi\sqrt{\frac{J_\Delta}{C}}}'
             note: "On isole T0."
       - id: q2b
@@ -1115,11 +1115,11 @@ entries:
           **Le piège nommé de cette question.** Lire $\theta_m$ directement comme $0{,}25$, l'amplitude de la courbe donnée — en confondant l'amplitude de $\dot\theta$ (en rad/s) avec l'amplitude de $\theta$ (en rad). Ce ne sont pas la même grandeur, et elles ne partagent même pas l'unité : $0{,}25$ n'est pas un angle.
         steps:
           - math: 'T_0 = 3-1 = 5-3 = 7-5 = 4{,}0\ \text{s}'
-            note: "Ecart entre minima consecutifs de theta-point(t), sur la figure 3."
+            note: "Écart entre minima consecutifs de theta-point(t), sur la figure 3."
           - math: '\dot\theta_{max} = \theta_m\,\frac{2\pi}{T_0} \implies \theta_m = \dot\theta_{max}\,\frac{T_0}{2\pi}'
-            note: "L'amplitude de theta-point n'est pas theta_m : c'est theta_m fois 2pi/T0 (derivee, question 2-1)."
+            note: "L'amplitude de theta-point n'est pas theta_m : c'est theta_m fois 2pi/T0 (dérivée, question 2-1)."
           - math: '\theta_m = 0{,}25\times\frac{4{,}0}{2\pi} \approx \boxed{0{,}16\ \text{rad}}'
-            note: "Application numerique, avec theta-point_max = 0,25 rad/s lu sur la figure 3."
+            note: "Application numérique, avec theta-point_max = 0,25 rad/s lu sur la figure 3."
       - id: q2c
         stem: |-
           **2-3.** (0,5 pt) Calculer $C$ (on prend $\pi^2 = 10$).
@@ -1143,7 +1143,7 @@ entries:
           - math: 'C = \frac{4\pi^2\,J_\Delta}{T_0^2}'
             note: "On retourne T0 = 2.pi.racine(J_Delta/C) de la question 2-1."
           - math: 'C = \frac{4\times10\times6{,}67\times10^{-3}}{16} = \frac{0{,}2668}{16}'
-            note: "Application numerique, avec pi^2=10 impose par l'enonce et T0=4,0 s (question 2-2)."
+            note: "Application numérique, avec pi^2=10 impose par l'énoncé et T0=4,0 s (question 2-2)."
           - math: '\boxed{C \approx 1{,}7\times10^{-2}\ \text{N.m.rad}^{-1}}'
             note: "Constante de torsion du fil."
       - id: q3a
@@ -1168,11 +1168,11 @@ entries:
           **Le piège nommé de cette question.** Prendre $\frac12J_\Delta\dot\theta_{max}^2$ pour une énergie **cinétique** seulement, et croire qu'il manque le terme potentiel pour avoir $E_m$. Au point $\theta=0$ précisément, le terme potentiel est nul — ce n'est pas oublié, c'est zéro par construction du point choisi.
         steps:
           - math: 'E_m = \frac12 J_\Delta\,\dot\theta_{max}^2'
-            note: "Au passage par theta=0, l'energie potentielle de torsion est nulle : toute l'energie mecanique est cinetique (chapitre 7, aspects energetiques)."
+            note: "Au passage par theta=0, l'énergie potentielle de torsion est nulle : toute l'énergie mécanique est cinétique (chapitre 7, aspects énergétiques)."
           - math: 'E_m = \frac12\times6{,}67\times10^{-3}\times(0{,}25)^2'
-            note: "Application numerique, avec theta-point_max = 0,25 rad/s lu sur la figure 3."
+            note: "Application numérique, avec theta-point_max = 0,25 rad/s lu sur la figure 3."
           - math: '\boxed{E_m \approx 2{,}1\times10^{-4}\ \text{J}}'
-            note: "Energie mecanique du pendule de torsion."
+            note: "Énergie mécanique du pendule de torsion."
       - id: q3b
         stem: |-
           **3-2.** (0,75 pt) Déterminer $W_C$ le travail du couple de torsion entre les instants $t_1 = 0\ \text{s}$ et $t_2 = 3{,}4\ \text{s}$.
@@ -1194,11 +1194,11 @@ entries:
           **Le piège nommé de cette question.** Utiliser $\dot\theta_{max}=0{,}25\ \text{rad.s}^{-1}$ (la valeur de la question 2-2) au lieu de relire la courbe exactement à $t_2=3{,}4\ \text{s}$, qui n'est PAS l'instant du maximum ($t=3\ \text{s}$, question 2-2) mais un instant légèrement postérieur, où $\dot\theta$ est redescendue à $0{,}20\ \text{rad.s}^{-1}$. Confondre les deux fait déborder l'erreur d'environ $50\ \%$ sur $W_C$ (le carré amplifie l'écart).
         steps:
           - math: 'W_C = E_c(t_2) - E_c(t_1) = \frac12J_\Delta\dot\theta^2(t_2) - \frac12J_\Delta\dot\theta^2(t_1)'
-            note: "TEC applique au couple de rappel (chapitre 7, aspects energetiques) : seul moment qui travaille, sans frottement."
+            note: "TEC applique au couple de rappel (chapitre 7, aspects énergétiques) : seul moment qui travaille, sans frottement."
           - math: '\dot\theta(t_1) = 0 \implies W_C = \frac12 J_\Delta\,\dot\theta^2(t_2)'
-            note: "La barre est lachee sans vitesse initiale a t1=0 (enonce) : le premier terme s'annule."
+            note: "La barre est lachee sans vitesse initiale a t1=0 (énoncé) : le premier terme s'annule."
           - math: 'W_C = \frac12\times6{,}67\times10^{-3}\times(0{,}20)^2'
-            note: "Lecture de theta-point a t2=3,4 s sur la figure 3 (juste apres le maximum de t=3s), PAS theta-point_max."
+            note: "Lecture de theta-point a t2=3,4 s sur la figure 3 (juste après le maximum de t=3s), PAS theta-point_max."
           - math: '\boxed{W_C \approx 1{,}3\times10^{-4}\ \text{J}}'
             note: "Travail du couple de torsion entre t1=0 et t2=3,4 s."
 
@@ -1293,13 +1293,13 @@ entries:
           $$\Delta E_{pe} = E_{pe}(t_1) - E_{pe}(t_0) = \frac12k\,x_1^2 - \frac12k\,x_0^2 = \frac12k\left(x_1^2-x_0^2\right)$$
         steps:
           - math: 'x_0 = 2{,}50\ \text{cm} = 0{,}0250\ \text{m} \qquad x_1 = 1{,}00\ \text{cm} = 0{,}0100\ \text{m}'
-            note: "Positions lues sur la figure 3 aux instants t0 et t1, converties en metres."
+            note: "Positions lues sur la figure 3 aux instants t0 et t1, converties en mètres."
           - math: '\Delta E_{pe} = \frac12k\left(x_1^2-x_0^2\right) = \frac12\times20\times(0{,}0100^2-0{,}0250^2)'
             note: "Chapitre R5 (Epe = 1/2 k x^2), applique aux deux instants."
           - math: '\boxed{\Delta E_{pe} \approx -5{,}25\times10^{-3}\ \text{J} = -5{,}25\ \text{mJ}}'
-            note: "L'energie potentielle elastique diminue : x1 est plus proche de l'equilibre que x0."
+            note: "L'énergie potentielle élastique diminue : x1 est plus proche de l'équilibre que x0."
           - math: 'W(\vec F) = -\Delta E_{pe}'
-            note: "Travail de la force de rappel = oppose de la variation d'energie potentielle associee (chapitre Aspects energetiques, chapitre 6 de cette lecon-ci le signale sans le demontrer)."
+            note: "Travail de la force de rappel = oppose de la variation d'énergie potentielle associee (chapitre Aspects énergétiques, chapitre 6 de cette lecon-ci le signale sans le démontrer)."
           - math: '\boxed{W(\vec F) \approx +5{,}25\times10^{-3}\ \text{J} = +5{,}25\ \text{mJ}}'
             note: "Travail positif : le ressort, en se detendant de x0 vers x1, fournit du travail moteur."
       - id: q3
@@ -1312,20 +1312,20 @@ entries:
 
           **L'explication demandée.** Le chapitre « Aspects énergétiques » (chapitre 5) établit que, dès qu'un frottement est présent, $\Delta E_m = W(\vec f) < 0$ — l'énergie mécanique DIMINUE, dissipée sous forme de chaleur par le frottement fluide. C'est très exactement le mécanisme du chapitre 7 de cette leçon-ci : le régime pseudo-périodique identifié à la question 1 EST la signature visible de cette fuite d'énergie, cycle après cycle — l'amplitude qui décroît d'un maximum au suivant sur la figure 3 est la trace directe de ce $\Delta E_m$ négatif.
 
-          $$\boxed{\Delta E_m \approx -5{,}25\times10^{-3}\ \text{J} < 0 \implies \text{energie dissipee par le frottement fluide (regime pseudo-periodique, chapitre 7)}}$$
+          $$\boxed{\Delta E_m \approx -5{,}25\times10^{-3}\ \text{J} < 0 \implies \text{énergie dissipée par le frottement fluide (régime pseudo-periodique, chapitre 7)}}$$
 
           **Le piège de cette question.** Croire qu'il faut recalculer une énergie cinétique aux deux instants, alors que la lecture graphique (question 1, la pseudo-période) dit directement que $t_0$ et $t_1$ sont deux extrema — donc deux instants de vitesse nulle. Chercher $\dot x(t_1)$ par un calcul serait, ici, un détour inutile : c'est la régularité du rythme, pas une formule, qui établit $E_c(t_1)=0$.
         steps:
           - math: '\dot x(t_0)=0 \text{ (lache sans vitesse initiale)} \qquad \dot x(t_1)=0 \text{ (t1 = 3e maximum, pseudo-periode)}'
             note: "t0 et t1 sont tous deux des extrema de x(t) (figure 3, question 1) : vitesse nulle aux deux bornes."
           - math: '\Delta E_c = E_c(t_1)-E_c(t_0) = 0-0 = 0'
-            note: "Consequence directe : la variation d'energie cinetique est nulle."
+            note: "Conséquence directe : la variation d'énergie cinétique est nulle."
           - math: '\Delta E_m = \Delta E_c + \Delta E_{pe} = 0 + \Delta E_{pe}'
-            note: "Pendule d'energie (chapitre 6) : Em = Ec + Epe, pas de terme de pesanteur (mouvement horizontal)."
+            note: "Pendule d'énergie (chapitre 6) : Em = Ec + Epe, pas de terme de pesanteur (mouvement horizontal)."
           - math: '\boxed{\Delta E_m \approx -5{,}25\times10^{-3}\ \text{J}}'
             note: "Identique a Delta Epe de la question 2 : coherent, puisque Delta Ec = 0."
-          - math: '\boxed{\Delta E_m < 0 \implies \text{dissipation par frottement fluide (rung R4, aspects energetiques\,; rung R6, regime pseudo-periodique)}}'
-            note: "Explication physique du signe negatif."
+          - math: '\boxed{\Delta E_m < 0 \implies \text{dissipation par frottement fluide (rung R4, aspects énergétiques\,; rung R6, régime pseudo-periodique)}}'
+            note: "Explication physique du signe négatif."
 
   # ── bk-2011-r-x4b — 2011 R, Exercice Mécanique — 2ème situation : oscillateur solide-ressort ──
   # Sœur de bk-2011-r-x1 (content/pc/rotation-axe-fixe/bank.yaml, 1ère
@@ -1435,7 +1435,7 @@ entries:
           - math: 'T_0 = 2\pi\sqrt{\frac{m_2}{K}} \implies K = \frac{4\pi^2\,m_2}{T_0^2}'
             note: "On retourne la relation du chapitre 2."
           - math: 'K = \frac{4\pi^2\times0{,}182}{(0{,}60)^2}'
-            note: "Application numerique : m2=182 g=0,182 kg, T0=0,60 s (question 2-1)."
+            note: "Application numérique : m2=182 g=0,182 kg, T0=0,60 s (question 2-1)."
           - math: '\boxed{K \approx 19{,}96 \approx 20\ \text{N.m}^{-1}}'
             note: "Valeur ronde : conforte les trois lectures graphiques de la question 2-1."
       - id: q2-3a
@@ -1450,11 +1450,11 @@ entries:
           $E_m$ étant constante à tout instant $t$ (conservation), on l'égale à sa forme générale $E_C(t) + \frac{K}{2}x^2(t)$ et on isole $E_C$.
         steps:
           - math: 'E_m = E_C + E_{pe} = E_C + \frac{K}{2}x^2 \qquad \text{(constante, sans frottement)}'
-            note: "Pendule d'energie (Aspects energetiques, chapitre 6) : Em = Ec + Epe, conservee."
+            note: "Pendule d'énergie (Aspects énergétiques, chapitre 6) : Em = Ec + Epe, conservee."
           - math: 'E_m = \frac{K}{2}X_m^2 \qquad \text{(evaluee a un extremum, ou } E_C=0\text{)}'
-            note: "Aux positions extremes x=+-Xm, la vitesse s'annule : toute l'energie y est elastique."
+            note: "Aux positions extrêmes x=+-Xm, la vitesse s'annule : toute l'énergie y est élastique."
           - math: '\boxed{E_C = E_m - \frac{K}{2}x^2 = \frac{K}{2}X_m^2 - \frac{K}{2}x^2 = \frac{K}{2}\left(X_m^2 - x^2\right)}'
-            note: "On isole Ec, en egalant les deux expressions de l'energie mecanique constante."
+            note: "On isole Ec, en egalant les deux expressions de l'énergie mécanique constante."
       - id: q2-3b
         stem: |-
           **(1 pt)** **2-3-b-** Trouver l'expression de l'énergie mécanique $E_m$ du système {solide $(S_2)$ – ressort} en fonction de $X_m$ et $K$, et déduire la valeur de la vitesse $V_{G2}$ au passage de $G_2$ à la position d'équilibre dans le sens positif.
@@ -1476,10 +1476,10 @@ entries:
           Le piège nommé de cette question. Réutiliser $x$ (variable générale) au lieu de $X_m$ dans $E_m$ : l'énergie MÉCANIQUE est une CONSTANTE du mouvement, elle ne dépend d'aucun $x$ particulier — c'est justement pour cela qu'on peut l'évaluer une fois pour toutes, à l'extremum où le calcul est le plus simple, puis la réutiliser à n'importe quel autre instant, ici à $x=0$.
         steps:
           - math: '\boxed{E_m = \frac{K}{2}\,X_m^2}'
-            note: "Energie mecanique, constante (sans frottement), evaluee a un extremum (question 2-3-a)."
+            note: "Énergie mécanique, constante (sans frottement), evaluee a un extremum (question 2-3-a)."
           - math: '\frac12m_2\,V_{G2}^2 = \frac{K}{2}X_m^2 \implies V_{G2} = X_m\sqrt{\frac{K}{m_2}}'
-            note: "A x=0, Epe=0 : toute l'energie mecanique est cinetique (chapitre 6, aspects energetiques)."
+            note: "A x=0, Epe=0 : toute l'énergie mécanique est cinétique (chapitre 6, aspects énergétiques)."
           - math: 'V_{G2} = 4{,}0\times10^{-2}\times\sqrt{\frac{20}{0{,}182}}'
-            note: "Application numerique : Xm=0,04 m, K=20 N/m (question 2-2), m2=0,182 kg."
+            note: "Application numérique : Xm=0,04 m, K=20 N/m (question 2-2), m2=0,182 kg."
           - math: '\boxed{V_{G2} \approx +0{,}42\ \text{m.s}^{-1}}'
-            note: "Signe positif : passage dans le sens de i (impose par l'enonce, sens positif)."
+            note: "Signe positif : passage dans le sens de i (impose par l'énoncé, sens positif)."

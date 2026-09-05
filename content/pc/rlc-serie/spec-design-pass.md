@@ -31,16 +31,16 @@
 ## D0. The boundary guard — reproduced verbatim, applies to every beat in this addendum
 
 **No new beat, figure, motion clip, Veo clip, or checkpoint may cross §0.4.** Restated so no
-Phase-C producer can miss it while building the experience layer:
+Phase-C producer can miss it while building the expérience layer:
 
 - **Damped case → ESTABLISH the ODE only.** No closed-form damped solution, no pseudo-période as
   `f(R,L,C)`, no damping coefficient / λ / α / facteur de qualité / décrément logarithmique, no
-  closed-form `e^{−αt}` envelope. The damped regimes are **qualitative + energetic + experimental**.
+  closed-form `e^{−αt}` envelope. The damped régimes are **qualitative + energetic + expérimental**.
 - **Closed form ONLY undamped (LC, R négligeable):** `q(t)=Q_max·cos(2πt/T₀+φ)`, `T₀=2π√(LC)`.
-- **Entretien = Joule-loss compensation** restoring the **FREE** regime at `T₀` (`u_G=k·i`, `k=R`
-  cancels the damping term). Never framed as a forced/driven regime.
+- **Entretien = Joule-loss compensation** restoring the **FREE** régime at `T₀` (`u_G=k·i`, `k=R`
+  cancels the damping term). Never framed as a forced/driven régime.
 - **EXCLUSIONS — never enter:** résonance forcée, impédance, déphasage, **phaseurs**, notation
-  complexe, puissance en régime alternatif. No AC-sweep, no résonance curve, no impedance readout —
+  complexe, puissance en régime alternatif. No AC-sweep, no résonance curve, no impédance readout —
   **in figures, in motion, in Veo, in the interactive, in checkpoints.**
 
 This is the spine of correctness; the review gate (§D6) bounces any drift.
@@ -49,7 +49,7 @@ This is the spine of correctness; the review gate (§D6) bounces any drift.
 
 ## D1. Derive-with-the-figure beats — equations built term-by-term ON the picture
 
-The reviewer's remark (brief #4, #5): *equations are asserted, not visibly derived* — and
+The reviewer's remark (brief #4, #5): *équations are asserted, not visibly derived* — and
 specifically *where does `u_C = q/C` come from?* The wave-1 lesson asserts `u_C=q/C`,
 `i=dq/dt`, `u_L=L·di/dt` as "known from RC/RL" (lesson R2 lines 104–108). The design pass keeps
 that brevity for the *full* re-derivation (we do NOT re-teach RC/RL) but adds a **fuller intuition explanation** (editorial: *go deeper on origins*) for each constitutive relation and **builds the loi des mailles term-by-term on
@@ -59,25 +59,25 @@ a labelled schematic** at R2.
 
 This is the headline of the design pass. At R2 the lesson currently writes `u_C+u_L=0`, substitutes,
 and arrives at `L·q''+q/C=0` in flat prose. Replace the static `[[figure:rlc-schema]]` here with a
-**labelled, progressively-built schematic on which the equation assembles term by term**, so the
-student sees *what each symbol is on the circuit* as it enters the equation.
+**labelled, progressively-built schematic on which the équation assembles term by term**, so the
+student sees *what each symbol is on the circuit* as it enters the équation.
 
-- **The figure (structural, exact — coded):** a single series LC loop in convention récepteur, the
+- **The figure (structural, exact — coded):** a single séries LC loop in convention récepteur, the
   same topology as the existing `rlc-schema`, with **`u_C` across the condensateur, `u_L` across the
   bobine, the current `i` and its arrow** all marked **on the components themselves** (labels beside
   the marks, no split-attention — DESIGN-BIBLE §6).
-- **The build, as a 4-step reveal synchronised figure↔equation** (this is the
-  `loi-des-mailles-build` motion callout, D3.3 — coded, so the equation is exact):
-  1. **Step 1 — the loop, highlight `u_C`.** Soft-highlight the condensateur; the equation line shows
+- **The build, as a 4-step reveal synchronised figure↔équation** (this is the
+  `loi-des-mailles-build` motion callout, D3.3 — coded, so the équation is exact):
+  1. **Step 1 — the loop, highlight `u_C`.** Soft-highlight the condensateur; the équation line shows
      only `u_C`. Caption ties `u_C` to *the tension across the condensateur you see highlighted*.
-  2. **Step 2 — add `u_L`.** Highlight the bobine; `u_C + u_L` appears. The series loop with no source
-     ⇒ the two tensions sum to zero around the mesh: `u_C + u_L = 0`.
+  2. **Step 2 — add `u_L`.** Highlight the bobine; `u_C + u_L` appears. The séries loop with no source
+     ⇒ the two tensions sum to zéro around the mesh: `u_C + u_L = 0`.
   3. **Step 3 — substitute the constitutive relations** (each with its origin chip — D1.2):
-     `u_C → q/C`, `u_L → L·d²q/dt²` (via `i=dq/dt`). Equation becomes `q/C + L·d²q/dt² = 0`.
+     `u_C → q/C`, `u_L → L·d²q/dt²` (via `i=dq/dt`). Équation becomes `q/C + L·d²q/dt² = 0`.
   4. **Step 4 — reorder + the R-is-absent beat.** `L·q'' + q/C = 0`, then signal **R is nowhere in
-     this equation** (the M4 confrontation, lesson lines 118 / spec §1 M4). The figure shows no
+     this équation** (the M4 confrontation, lesson lines 118 / spec §1 M4). The figure shows no
      resistor in the ideal loop — *that absence is the point*, made visible.
-- **Why on the picture:** the M7 confusion (which element stores/relates to which variable) and the
+- **Why on the picture:** the M7 confusion (which élément stores/relates to which variable) and the
   M4 confusion (R in the period) are both *spatial* confusions. Seeing `u_C` sit on the condensateur
   and `R` be physically absent from the ideal loop is the cleanest confrontation.
 
@@ -94,7 +94,7 @@ chapters or turn R2 into a full capacitor/inductor lesson.
 |---|---|---|---|
 | `u_C = q/C` | R2 | A capacitor *stores charge*; the more charge `q` packed on the plates, the harder they push back — that push is the tension `u_C`. Make the proportionality felt (double the charge → double the tension), name `C` as the constant of proportionality (charge held per volt), arrive at `q = C·u_C` ⇒ `u_C = q/C`. Concrete, a few sentences. | A **dedicated** capacitor visual: charge accumulating on the plates, `u_C` rising in step (short coded reveal/animation welcome). `type: structural-diagram` / `tool: svg+katex` (+ optional `css` motion). |
 | `i = dq/dt` | R1 | Current as the *flow rate of charge* — how much charge passes a point per second — and why that is exactly the rate of change of `q`: `i = dq/dt`. Anchor it physically (a crowd through a doorway per second). A few sentences. | Inline KaTeX + a soft animated arrow on the loop showing charge leaving the plate; may reuse the R1 schematic, but give the idea its own moment. |
-| `u_L = L·di/dt` | R2 | Self-induction at intuition level: a coil *opposes changes* in current (inertia for current); the faster the current changes, the harder it pushes back, so its tension is proportional to the *rate of change* of current: `u_L = L·di/dt`, with `L` the strength of that opposition. A few sentences; **no flux integrals**. | A small dedicated visual: current ramping and the coil reacting (short coded reveal). |
+| `u_L = L·di/dt` | R2 | Self-induction at intuition level: a coil *opposés changes* in current (inertia for current); the faster the current changes, the harder it pushes back, so its tension is proportional to the *rate of change* of current: `u_L = L·di/dt`, with `L` the strength of that opposition. A few sentences; **no flux integrals**. | A small dedicated visual: current ramping and the coil reacting (short coded reveal). |
 
 **Rule for content-author (D1.2, updated per the editorial "go deeper" decision):** give each relation a
 genuine **origin explanation** — a short passage (≈3–5 sentences), Crash-Course/TED register, with its
@@ -110,7 +110,7 @@ derive-out-loud beat. The design pass adds: **reuse the R2 loi-des-mailles figur
 now present** so the student sees the `u_R = R·i` term *appear physically* (the resistor is now in
 the loop) and then watches the `R·q'` term be the one residue that won't cancel. This is the
 `loi-des-mailles-build` figure's *damped variant* (one extra reveal step: add the resistor, add the
-`u_R` term). It makes M6 (the boundary-tripwire misconception) a *visible* consequence: the term
+`u_R` term). It makes M6 (the boundary-tripwire misconception) a *visible* conséquence: the term
 that breaks the closed form is the term that corresponds to the component you just added.
 
 ---
@@ -139,22 +139,22 @@ R2 build figure D1.1):
 3. **Step 3 — add the tensions.** `u_C` and `u_L` labelled on their components, convention récepteur
    marked. Idea: *the two tensions we will write the loop law with.*
 
-The **resistor R / internal resistance r** is **withheld until R3** (where R is the subject) — at R0/R1
+The **resistor R / internal résistance r** is **withheld until R3** (where R is the subject) — at R0/R1
 the ideal loop has no visible resistor, which is *correct* and reduces clutter. When R3 introduces R,
 a 4th reveal adds the resistor + `u_R` to the loop. (This also tightens the M1 confrontation: R is
 literally a *later addition* to the picture, not the thing that was making it oscillate.)
 
 ### D2.2 — `regimes-uc` (the three traces) — currently three panels at once
 
-**Problem:** the three `u_C(t)` regime traces (périodique / pseudo-périodique / apériodique) are shown
+**Problem:** the three `u_C(t)` régime traces (périodique / pseudo-périodique / apériodique) are shown
 together; at R0 only the périodique panel is referenced (lesson line 21), yet a three-panel figure
-invites the student to decode all three before the concept of "regime" exists.
+invites the student to decode all three before the concept of "régime" exists.
 
 **Decompose into a reveal that matches the lesson's own pacing:**
 1. **At R0 — périodique ALONE.** Only the undamped sinusoid, against the student's "it just decays"
-   prediction. One idea: *it doesn't stop — it swings.* (The hook's payoff; the other two panels do
+   prédiction. One idea: *it doesn't stop — it swings.* (The hook's payoff; the other two panels do
    not exist yet for the student.)
-2. **At R3/R4 — the three reveal IN SEQUENCE, tied to R rising.** périodique (R≈0) → pseudo-périodique
+2. **At R3/R4 — the three reveal IN SÉQUENCE, tied to R rising.** périodique (R≈0) → pseudo-périodique
    (R modérée) → apériodique (R grande), each appearing as R is described as increasing. One panel per
    step; the **pseudo-période `T` marker** appears only on the pseudo-périodique panel, only when R4
    introduces the pseudo-période. Idea per step: *more R changes the shape, in this order.*
@@ -162,7 +162,7 @@ invites the student to decode all three before the concept of "regime" exists.
    the `T = t_{n+1} − t_n` read-off). Idea: *how you measure `T` off a trace.* The other two panels are
    not needed for the measurement beat — show only the one being measured.
 
-**Net effect:** the same three traces, but the student never decodes more than one regime at the moment
+**Net effect:** the same three traces, but the student never decodes more than one régime at the moment
 it is being taught. The "synthèse" table (lesson lines 258–262) remains as the *consolidation* after
 all three are seen — that table is the right place for all-three-at-once, because by then the student
 has met each.
@@ -175,9 +175,9 @@ marked — spec §3 C3). Shown whole, it is the figure most likely to overwhelm.
 
 **Decompose into a 4-step progressive reveal:**
 1. **Step 1 — `E_C` alone.** The condensateur's energy `E_C = ½q²/C`, maximal when `u_C` is max,
-   zero when `u_C=0`. One curve. Idea: *the condensateur's energy rises and falls.*
+   zéro when `u_C=0`. One curve. Idea: *the condensateur's energy rises and falls.*
 2. **Step 2 — add `E_L` in antiphase.** The bobine's `E_L = ½Li²`, drawn so its maxima fall exactly
-   where `E_C` is zero. Idea (the M2/M7 core): *when one is full, the other is empty — they trade.*
+   where `E_C` is zéro. Idea (the M2/M7 core): *when one is full, the other is empty — they trade.*
    Mark the two key instants (`u_C` max / `i=0`; `u_C=0` / `i` max) here, not before.
 3. **Step 3 — the sum, ideal.** `E_C + E_L` drawn as the **flat line**. Idea: *the total is conserved —
    the energy is not consumed, it moves* (M2 confrontation).
@@ -185,7 +185,7 @@ marked — spec §3 C3). Shown whole, it is the figure most likely to overwhelm.
    destination: *not gone — turned to heat in R by effet Joule* (M2 in the amorti case, spec §1 M2).
    The antiphase exchange continues *inside* the shrinking envelope.
 
-Steps 1–3 sit at R1 (the ideal mechanism); step 4 is recalled at R4 (the damped regime). This staging
+Steps 1–3 sit at R1 (the ideal mechanism); step 4 is recalled at R4 (the damped régime). This staging
 exactly matches the lesson's own order (R1 ideal → R4 damped), so the figure reveals in lockstep with
 the prose — no figure showing more than the prose has reached.
 
@@ -203,7 +203,7 @@ figure is the floor, the motion is the enhancement.
 > **Note on the wave-1 "NO Manim" decision (spec §3).** `spec.md §3` declined a Manim energy clip
 > because the *manipulable* (C2) delivers the C↔L exchange interactively and better. The design pass
 > **revisits this narrowly**, per the brief (#2: "figures should move; static figures stall"). The
-> resolution: motion is added **to the figures that the student READS (not manipulates)** — the
+> résolution: motion is added **to the figures that the student READS (not manipulates)** — the
 > energy *diagram* and the loi-des-mailles *build* — where there is no manipulation to begin with, so
 > motion is not redundant with C2. The manipulable still owns the *parameter-driven* exploration
 > (R3). This keeps the bias-toward-not honest: motion appears only where reading-a-static-figure
@@ -215,7 +215,7 @@ figure is the floor, the motion is the enhancement.
 - **Behaviour (one line):** over one period, the energy bar/curve fills the condensateur as `E_C`
   rises and empties it into the bobine as `E_L` rises, in strict antiphase, with the running total
   shown — flat (ideal) then, in a second pass with R on, a slowly shrinking envelope.
-- **Serves:** **M2** (energy exchanged, not consumed) and **M7** (which element stores what, when) —
+- **Serves:** **M2** (energy exchanged, not consumed) and **M7** (which élément stores what, when) —
   the antiphase is the exact thing `spec.md §3` flagged as the *one future candidate* the human might
   ask for. The design pass commissions it, scoped to the energy *diagram* (read, not manipulated).
 - **Placement:** R1 (ideal antiphase, total flat) and recalled at R4 (R on, envelope shrinks → "heat
@@ -232,7 +232,7 @@ figure is the floor, the motion is the enhancement.
   shrinking peaks, the apériodique drawing as a single monotonic return.
 - **Serves:** **M3** (oscillations *decay* faster vs *oscillate* faster — seeing the peaks shrink
   while their *spacing stays equal* as the trace draws is the cleanest separation of decay from rate)
-  and regime recognition (Utilisation). It animates D2.2.
+  and régime recognition (Utilisation). It animates D2.2.
 - **Placement:** R3/R4, tied to R rising (the trace redraws as R increases). Optional at R6 as the
   trace being measured.
 - **Boundary guard:** peak *spacing* is shown constant **by eye**; the pseudo-période is **measured**,
@@ -243,14 +243,14 @@ figure is the floor, the motion is the enhancement.
 - **Type:** `motion`  **Tool:** `manim` (exact KaTeX-quality glyphs + circuit must be coded — ADR
   0017: generation cannot render exact equations/structure).
 - **Behaviour (one line):** the 4-step (R2 ideal) / 5-step (R5 damped) build from D1.1/D1.3 plays as a
-  reveal — each component highlights on the schematic as its term slides into the equation line.
+  reveal — each component highlights on the schematic as its term slides into the équation line.
 - **Serves:** **M4** (R-absent-from-the-ideal-equation, made visible — the resistor isn't in the loop,
   so it can't be in `T₀`) and **M7** (each `u` sits on its component); at R5, **M6** (the `R·q'` term
   appears with the physically-added resistor and is the one residue that won't cancel).
 - **Placement:** R2 (ideal build) and R5 (damped build + the failed-verification residue).
 - **Boundary guard:** R5 shows the residue **does not cancel** and **stops** — it does **not** proceed
-  to solve the damped equation (§0.4 LIMITE 1 / D0). The build never introduces a damping coefficient.
-- **Reduced-motion fallback:** the D1.1 static labelled schematic with the equation shown fully built,
+  to solve the damped équation (§0.4 LIMITE 1 / D0). The build never introduces a damping coefficient.
+- **Reduced-motion fallback:** the D1.1 static labelled schematic with the équation shown fully built,
   plus a step control to walk the terms manually.
 
 ### V-1 — `balancement` — the felt intuition before the math (GENERATED, intuition only)
@@ -259,12 +259,12 @@ figure is the floor, the motion is the enhancement.
   single pendulum swinging, or an abstract "energy passing between two vessels" motif — mood and
   metaphor **only**.
 - **Serves:** the **R0 hook's felt intuition** — the "balancement" *before* any circuit, trace, or
-  equation. It primes the energy-pendulum analogy (M2's mechanical anchor) at the level of *feeling*,
+  équation. It primes the energy-pendulum analogy (M2's mechanical anchor) at the level of *feeling*,
   not information.
 - **Placement:** R0 hook only — the animated form of the wave-1 C4 optional hook image. If V-1 ships,
   it **replaces** C4 (do not run both; one mood asset per hook).
-- **HARD LINE (ADR 0021 / D0), non-negotiable:** **ZERO circuit structure, zero numbers, zero labels,
-  no oscilloscope, no equations, no trace.** The instant anything exact is needed, that is M-1/M-3/the
+- **HARD LINE (ADR 0021 / D0), non-negotiable:** **ZÉRO circuit structure, zéro numbers, zéro labels,
+  no oscilloscope, no équations, no trace.** The instant anything exact is needed, that is M-1/M-3/the
   coded figures' job. V-1 is **never load-bearing** — the hook works fully on prose + M-1 + the
   interactive without it; V-1 is a mood, removable with no loss of correctness. **At most this one Veo
   clip** in the notion (the brief allows 1–2; one suffices here, V-2 below is held, not built).
@@ -293,16 +293,16 @@ figure is the floor, the motion is the enhancement.
 
 The brief (#7): interleave a few checkpoints *inside* the lesson so the student practices as he
 climbs, rather than meeting all items at the end. These are **formative** — one focused probe right
-after the beat that earns it, with immediate per-action feedback (DESIGN-BIBLE §7). They are **NOT**
+after the beat that earns it, with immédiate per-action feedback (DESIGN-BIBLE §7). They are **NOT**
 the end bank: the ≥3-per-misconception coverage floor (spec §5, ≥24 items) is unchanged and still
 lives at the end. Checkpoints are a **subset/preview**, placed for *timing*, not coverage.
 
 **Design rules for the checkpoints (carry to item-author):**
 - **2–4 checkpoints total** — enough to break the read with active recall, few enough to keep calm
   (anti-microlearning, §D5). **Specified here: 4**, one after each of the highest-leverage beats.
-- Each is a **single MCQ**, ≤30s, with immediate feedback that *names the wrong model* on a wrong pick
+- Each is a **single MCQ**, ≤30s, with immédiate feedback that *names the wrong model* on a wrong pick
   (the diagnostic-not-just-wrong rule, VISION).
-- **Reuse an existing end-bank item where one fits** (reference its eventual id by misconception +
+- **Reuse an existing end-bank item where one fits** (référence its eventual id by misconception +
   framing); the checkpoint and the end-bank item may be the *same* item surfaced once inline and again
   in the bank — item-author decides whether to clone or share. Where no existing framing fits the
   *inline* moment, specify a **new lightweight checkpoint** (still tagged to its misconception).
@@ -313,8 +313,8 @@ lives at the end. Checkpoints are a **subset/preview**, placed for *timing*, not
 |---|---|---|---|---|
 | **CP-1** | **R3** (R is the brake, not the motor) — the single most important beat (spec §2) | **M1** (R drives) — primary; brushes **M3** (R→rate) | R3 is *the* confrontation; a checkpoint immediately after locks the rupture ("R→0 ⇒ oscillations *persist*, not stop") before the energy picture buries it. Catching M1 here, while the predict-then-reveal is fresh, is worth more than catching it at the end. | **Reuse M1's `distinguishing_mcq_stem`** (spec §1 M1: "on diminue R jusqu'à négligeable… que deviennent les oscillations?", correct A). It is the exact R3 rupture in MCQ form. |
 | **CP-2** | **R2** (establish ideal ODE + `T₀`) | **M4** (`T₀` depends on R) — primary | R2 ends on "R n'apparaît pas — donc `T₀` n'en dépend pas." A checkpoint here, picking the correct `T₀=2π√(LC)` against the `2π√(RC)` leak, converts the asserted point into a *retrieved* one at the moment it is made. Also a gentle Utilisation rep (apply the formula). | **Reuse M4's `distinguishing_mcq_stem`** (spec §1 M4: which expression is `T₀`?, correct A `2π√(LC)`, trigger B `2π√(RC)`). |
-| **CP-3** | **R4** (the three regimes + pseudo-période introduced) | **M5** (pseudo-période vs `T₀`; "no period at all") — primary | R4 is where the pseudo-période first appears and where M5 (either "no period" or "exactly equals `T₀`") is most likely to form. A checkpoint here tests "the spacing is regular even though amplitude decays, and `T ≈ T₀` only for weak damping" right as the idea lands. | **New lightweight checkpoint** (or reuse M5's stem trimmed): a single MCQ on a pseudo-périodique panel — "the time between two successive maxima: A) exists and ≈ `T₀` for faible amortissement [correct]; B) doesn't exist because amplitude decays [M5 trigger]". Tag `document_experimental`. |
-| **CP-4** | **R7** (entretien) | **M8** (entretien = forced regime) — primary | R7 is the last beat and the boundary's most seductive crossing (entretien read as "imposing a frequency"). A checkpoint here — "the generator compensates Joule loss; the period is still `T₀=2π√(LC)`, set by L and C, not by k" — seals the boundary and closes the R0→R7 arc on an *active* note rather than a passive read. | **Reuse M8's `distinguishing_mcq_stem`** (spec §1 M8: role of `u_G=k·i` + period of entretenu oscillations; correct A, trigger B "régime forcé"). Tag `entretien`. |
+| **CP-3** | **R4** (the three régimes + pseudo-période introduced) | **M5** (pseudo-période vs `T₀`; "no period at all") — primary | R4 is where the pseudo-période first appears and where M5 (either "no period" or "exactly equals `T₀`") is most likely to form. A checkpoint here tests "the spacing is regular even though amplitude decays, and `T ≈ T₀` only for weak damping" right as the idea lands. | **New lightweight checkpoint** (or reuse M5's stem trimmed): a single MCQ on a pseudo-périodique panel — "the time between two successive maxima: A) exists and ≈ `T₀` for faible amortissement [correct]; B) doesn't exist because amplitude decays [M5 trigger]". Tag `document_experimental`. |
+| **CP-4** | **R7** (entretien) | **M8** (entretien = forced régime) — primary | R7 is the last beat and the boundary's most seductive crossing (entretien read as "imposing a frequency"). A checkpoint here — "the generator compensates Joule loss; the period is still `T₀=2π√(LC)`, set by L and C, not by k" — seals the boundary and closes the R0→R7 arc on an *active* note rather than a passive read. | **Reuse M8's `distinguishing_mcq_stem`** (spec §1 M8: rôle of `u_G=k·i` + period of entretenu oscillations; correct A, trigger B "régime forcé"). Tag `entretien`. |
 
 **Placement rationale (one line):** checkpoints sit after **R2, R3, R4, R7** — the four beats where a
 misconception *forms or is confronted* and where catching it in-flow beats catching it at the end.
@@ -335,10 +335,10 @@ so the coverage tally is not double-counted.
 
 **State, explicitly and for the record:** this design pass adds **craft, motion, and in-flow
 practice**. It does **not** shorten depth, and it does **not** turn the décortiquer's beats into
-shallow swipe-cards. **The Imprint reference is for figure-craft and one-idea-per-moment, NOT for
+shallow swipe-cards. **The Imprint référence is for figure-craft and one-idea-per-moment, NOT for
 chunk-size.** Our depth — the full mechanism (R1), the full ideal derivation with the guess-then-verify
 (R2), the full predict-then-reveal on R (R3), the establish-and-STOP boundary lesson (R5), the
-trace-reading procedure (R6), the entretien derivation and arc-closure (R7) — **stays at length.**
+trace-reading procédure (R6), the entretien derivation and arc-closure (R7) — **stays at length.**
 
 The line, concretely:
 
@@ -382,16 +382,16 @@ still applies in full):
   pseudo-période as `f(R,L,C)`, résonance, impédance, phaseurs, complex notation, or AC power. The R5
   damped build (M-3) **stops at the non-cancelling residue**; the energy envelope (M-1) shrinks
   **qualitatively** only.
-- **Coded vs generated split honoured (ADR 0021 hard line):** every exact thing (equations,
+- **Coded vs generated split honoured (ADR 0021 hard line):** every exact thing (équations,
   schematics, traces, energy curves, labels) is **coded** (manim/css/svg+katex), **never Veo/Gemini**.
-  V-1 carries **zero** structure/number/label/equation. No generated asset is load-bearing.
+  V-1 carries **zéro** structure/number/label/equation. No generated asset is load-bearing.
 - **Progressive figures are reveals of the SAME content (D2), not shallower figures:** depth and all
   labels survive; only per-moment density drops. The consolidation table (R4) and full labelled R2
-  build still show everything, once the student has met each piece.
+  build still show everything, once the student has met each pièce.
 - **Origin explanations (D1.2)** genuinely explain where each relation comes from (Crash-Course/TED
   register, per the editorial *go deeper* decision) with a small dedicated visual each; still
   **bounded** — origin intuition only, **not** a full RC/RL re-derivation or flux integrals.
-- **Checkpoints (D4) are calm-core formative probes:** 2–4 total, immediate model-naming feedback, **no
+- **Checkpoints (D4) are calm-core formative probes:** 2–4 total, immédiate model-naming feedback, **no
   score/streak/tally/animation**; the end-bank ≥3-per-misconception floor is **unchanged** and not
   reduced by checkpoints; clones are labelled so coverage isn't double-counted.
 - **Anti-microlearning (D5):** no beat severed into shallow cards; no mechanism/reasoning trimmed to
@@ -421,7 +421,7 @@ still applies in full):
    fuller Crash-Course/TED explanations (≈3–5 sentences + a dedicated visual each), bounded to origin
    intuition (no full RC/RL re-derivation, no flux integrals). D1.2 updated accordingly.
 5. **PhET fit (cross-ref ADR 0021 / brief #6).** The interactive swap (Falstad → PhET POC) is the
-   interactive-author's task; flagged here only because the C2 references in `spec.md §3/§7` predate
+   interactive-author's task; flagged here only because the C2 références in `spec.md §3/§7` predate
    ADR 0021. supabase/frontend boundary-guard config for the PhET embed is confirmed at render (Phase D).
 
 ---

@@ -117,7 +117,7 @@ entries:
         steps:
           - math: 'm_1\,a_{G_1} = T - m_1\,g'
             note: >-
-              Deuxieme loi de Newton sur le solide (S1), projete sur l'axe
+              Deuxième loi de Newton sur le solide (S1), projete sur l'axe
               ascendant : poids et tension du fil sont les deux seules
               forces qui s'exercent sur lui.
           - math: 'J_\Delta\,\ddot\theta = \mathcal{M} - T\cdot r'
@@ -128,21 +128,21 @@ entries:
           - math: '\ddot\theta = \frac{a_{G_1}}{r}'
             note: >-
               Condition de non-glissement du fil sur la gorge de la
-              poulie : relie l'acceleration lineaire de (S1) a
-              l'acceleration angulaire de la poulie.
+              poulie : relie l'accélération linéaire de (S1) a
+              l'accélération angulaire de la poulie.
           - math: 'T = \frac{\mathcal{M}}{r} - \frac{J_\Delta\,a_{G_1}}{r^2}'
             note: >-
               On isole la tension T dans la relation fondamentale, en y
-              remplacant l'acceleration angulaire par a_G1 / r.
+              remplaçant l'accélération angulaire par a_G1 / r.
           - math: 'm_1\,a_{G_1} = \frac{\mathcal{M}}{r} - \frac{J_\Delta\,a_{G_1}}{r^2} - m_1\,g'
             note: >-
-              On substitue cette expression de la tension dans l'equation
+              On substitue cette expression de la tension dans l'équation
               de Newton ecrite sur (S1) : la tension a disparu.
           - math: 'a_{G_1}\left(m_1 + \frac{J_\Delta}{r^2}\right) = \frac{\mathcal{M}}{r} - m_1\,g'
-            note: "On regroupe tous les termes en a_G1 d'un meme cote."
+            note: "On regroupe tous les termes en a_G1 d'un même cote."
           - math: '\boxed{a_{G_1} = \dfrac{\mathcal{M}\cdot r - m_1\cdot g\cdot r^2}{m_1\cdot r^2 + J_\Delta}}'
             note: >-
-              On multiplie numerateur et denominateur par r carre : on
+              On multiplie numérateur et dénominateur par r carré : on
               retrouve exactement la forme demandee.
       - id: q2
         stem: |-
@@ -154,19 +154,19 @@ entries:
         steps:
           - math: 'a_{G_1} = 2\times 0{,}2 = 0{,}4\ \text{m}\cdot\text{s}^{-2}'
             note: >-
-              Identification par comparaison avec la forme generale d'un
-              mouvement uniformement accelere partant du repos, z(t) =
+              Identification par comparaison avec la forme générale d'un
+              mouvement uniformément accelere partant du repos, z(t) =
               (1/2) a t^2.
           - math: 'J_\Delta = \dfrac{\mathcal{M}\cdot r - m_1\cdot g\cdot r^2}{a_{G_1}} - m_1\cdot r^2'
             note: >-
               On repart de la relation de la question 1 et on isole cette
               fois J_Delta au lieu de a_G1.
           - math: '\mathcal{M}\cdot r = 104{,}2\times 0{,}20 = 20{,}84 \qquad\qquad m_1\cdot g\cdot r^2 = 50\times 10\times 0{,}20^2 = 20{,}0'
-            note: "Calcul separe des deux termes du numerateur."
+            note: "Calcul separe des deux termes du numérateur."
           - math: 'J_\Delta = \dfrac{20{,}84 - 20{,}0}{0{,}4} - 50\times 0{,}20^2 = \dfrac{0{,}84}{0{,}4} - 2{,}0 = 2{,}1 - 2{,}0'
             note: >-
-              Le quotient donne la somme (m1 r carre + J_Delta) ; on
-              retranche ensuite m1 r carre pour isoler J_Delta seul.
+              Le quotient donne la somme (m1 r carré + J_Delta) ; on
+              retranche ensuite m1 r carré pour isoler J_Delta seul.
           - math: '\boxed{J_\Delta = 0{,}10\ \text{kg}\cdot\text{m}^2}'
             note: "Moment d'inertie de la poulie par rapport a son axe (Delta)."
 
@@ -238,16 +238,16 @@ entries:
           Le câble est inextensible et ne glisse pas sur le cylindre — exactement comme le fil de l'exemple du manège (chapitre 2) : un point de sa surface, à la distance $r$ de l'axe, se déplace comme la charge $(C)$ qu'il tire. Sa vitesse vaut donc $r$ fois la vitesse angulaire du cylindre (chapitre 2, $v = d\,\omega$), et son accélération tangentielle vaut $r$ fois l'accélération angulaire (chapitre 5, $a_{tan} = d\,\ddot\theta$) — c'est aussi, par le lien rigide du câble, l'accélération $a_G$ de $G$. D'où $a_G = r\,\ddot\theta$.
         steps:
           - math: '\theta(t) = 20\,t^2 \implies \dot\theta = 40\,t \implies \ddot\theta = 40\ \text{rad}\cdot\text{s}^{-2}'
-            note: "On derive deux fois l'equation horaire : acceleration angulaire constante."
+            note: "On derive deux fois l'équation horaire : accélération angulaire constante."
           - math: 'a_G = r\,\ddot\theta'
             note: >-
-              Cable inextensible sans glissement sur le cylindre : meme
-              relation qu'au chapitre 2 (v = d omega), derivee une fois de
+              Cable inextensible sans glissement sur le cylindre : même
+              relation qu'au chapitre 2 (v = d omega), dérivée une fois de
               plus (chapitre 5).
           - math: 'a_G = 0{,}10\times 40'
-            note: "Application numerique, r = 10 cm = 0,10 m."
+            note: "Application numérique, r = 10 cm = 0,10 m."
           - math: '\boxed{a_G = 4\ \text{m/s}^2}'
-            note: "Valeur donnee par l'enonce, bien verifiee."
+            note: "Valeur donnée par l'énoncé, bien vérifiée."
       - id: q2
         stem: |-
           **(0,75 pt)** **1-2.** Déterminer la distance $d$ parcourue par $G$ pendant les deux premières secondes.
@@ -256,12 +256,12 @@ entries:
         steps:
           - math: 'x(t) = \frac{1}{2}\,a_G\,t^2'
             note: >-
-              Mouvement uniformement accelere a partir du repos, avec
-              a_G = 4 m/s^2 (question precedente).
+              Mouvement uniformément accelere a partir du repos, avec
+              a_G = 4 m/s^2 (question précédente).
           - math: 'd = x(2) = \frac{1}{2}\times 4\times 2^2'
             note: "Distance parcourue par G entre t = 0 et t = 2 s."
           - math: '\boxed{d = 8\ \text{m}}'
-            note: "Distance parcourue pendant les deux premieres secondes."
+            note: "Distance parcourue pendant les deux premières secondes."
       - id: q3
         part: "2- Mouvement d'un système mécanique : bilan des actions et moment moteur"
         stem: |-
@@ -279,7 +279,7 @@ entries:
         steps:
           - math: 'm\,a_G = T - m\,g\sin\alpha'
             note: >-
-              Deuxieme loi de Newton sur la charge (C), projetee sur l'axe
+              Deuxième loi de Newton sur la charge (C), projetee sur l'axe
               de la pente oriente vers le haut : poids projete
               (m g sin alpha) et tension du cable.
           - math: 'J_\Delta\,\ddot\theta = \mathcal{M} - T\cdot r'
@@ -288,29 +288,29 @@ entries:
               cylindre : le moment moteur entraine, le moment de la
               tension du cable (bras de levier r) freine.
           - math: '\ddot\theta = \frac{a_G}{r}'
-            note: "Condition de non-glissement du cable, deja utilisee a la question 1-1."
+            note: "Condition de non-glissement du cable, déjà utilisée a la question 1-1."
           - math: 'T = m\,a_G + m\,g\sin\alpha'
-            note: "On isole la tension a partir de l'equation de Newton sur la charge."
+            note: "On isole la tension a partir de l'équation de Newton sur la charge."
           - math: 'J_\Delta\,\frac{a_G}{r} = \mathcal{M} - r\left(m\,a_G + m\,g\sin\alpha\right)'
             note: >-
-              On substitue la tension et l'acceleration angulaire dans la
+              On substitue la tension et l'accélération angulaire dans la
               relation fondamentale.
           - math: '\mathcal{M} = J_\Delta\,\frac{a_G}{r} + m\,a_G\,r + m\,g\,r\sin\alpha'
             note: "On isole M."
           - math: '\boxed{\mathcal{M} = \frac{a_G}{r}\left(J_\Delta + m\,r^2\right) + m\,g\,r\sin\alpha}'
             note: >-
-              On factorise a_G/r : m a_G r = (a_G/r)(m r carre), on
+              On factorise a_G/r : m a_G r = (a_G/r)(m r carré), on
               retrouve exactement la forme demandee.
           - math: '\frac{a_G}{r} = \frac{4}{0{,}10} = 40\ \text{s}^{-2}'
-            note: "Application numerique du premier facteur."
+            note: "Application numérique du premier facteur."
           - math: 'J_\Delta + m\,r^2 = 2\times10^{-2} + 100\times0{,}10^2 = 0{,}02+1{,}0 = 1{,}02\ \text{kg}\cdot\text{m}^2'
-            note: "Somme entre parentheses, avec J_Delta et m r carre donnes."
+            note: "Somme entre parenthèses, avec J_Delta et m r carré donnes."
           - math: '\frac{a_G}{r}\left(J_\Delta+m\,r^2\right) = 40\times 1{,}02 = 40{,}8\ \text{N}\cdot\text{m}'
             note: "Premier terme de M."
           - math: 'm\,g\,r\sin\alpha = 100\times10\times0{,}10\times\sin45^\circ \approx 100\times10\times0{,}10\times0{,}707 \approx 70{,}7\ \text{N}\cdot\text{m}'
-            note: "Second terme de M, avec sin 45 degres environ 0,707."
+            note: "Second terme de M, avec sin 45 degrés environ 0,707."
           - math: '\boxed{\mathcal{M} = 40{,}8+70{,}7 \approx 111{,}5\ \text{N}\cdot\text{m}}'
-            note: "Moment moteur necessaire, coherent avec la physique re-derivee en sourcing."
+            note: "Moment moteur nécessaire, coherent avec la physique re-derivee en sourcing."
 
   # ── bk-2013-r-x4 — 2013 R, Mécanique : mouvement d'un pendule pesant (balancier d'horloge) ──
   #
@@ -416,7 +416,7 @@ entries:
       year: 2013
       session: rattrapage
       filiere: "SPC"
-      exercise_label: "Mécanique — Etude dynamique et énergétique d'un pendule pesant"
+      exercise_label: "Mécanique — Étude dynamique et énergétique d'un pendule pesant"
     bareme_total: 5.5
     duration_min: 33
     sourcing:
@@ -493,7 +493,7 @@ entries:
         « les hologes », « plusieurs types tel que », « jusqu'à ce que le
         savant Huygens inventa » (le subjonctif est attendu), « On admet
         que dans le cas des petites oscillations que » (« que » redoublé),
-        « la periode propre », « l'énrgie mécanique », « le pendule simple
+        « la période propre », « l'énrgie mécanique », « le pendule simple
         synchrone au pendule pesant » — registre complet en
         docs/sujets/_incoming/pc-2013-r.md §5.1 et V.9. TRAIT DU SUJET, PAS
         DÉFAUT : la numérotation des figures repart à 1 dans l'exercice de
@@ -531,7 +531,7 @@ entries:
 
       ---
 
-      **2- Etude énergétique du pendule pesant** *(données communes aux questions 2-1 et 2-2)* **:**
+      **2- Étude énergétique du pendule pesant** *(données communes aux questions 2-1 et 2-2)* **:**
 
       On choisit le plan horizontal contenant le point $G_0$, position du centre de gravité *(l'original arabe écrit « centre d'**inertie** » ; pour une barre homogène les deux points coïncident, la lecture n'est pas ambiguë)* $G$ de la barre à la position d'équilibre stable, comme état de référence de l'énergie potentielle de pesanteur ($E_{PP} = 0$).
 
@@ -546,7 +546,7 @@ entries:
       - **les deux lectures dont tu auras besoin**, mesurées sur le tracé : les extrémités de la parabole sont à $E_{pp}(\pm\theta_m) \approx 22{,}7\ \text{mJ}$ *(un peu au-dessus de la ligne intermédiaire $22{,}5$)*, et $E_{pp}\!\left(\pm\tfrac{2}{3}\theta_m\right) \approx 10{,}1\ \text{mJ}$ *(pratiquement sur la ligne fine $10$)*.
     questions:
       - id: q1
-        part: "1- Etude dynamique du pendule pesant"
+        part: "1- Étude dynamique du pendule pesant"
         stem: |-
           **1-1-** (1 pt) Par application de la relation fondamentale de la dynamique de rotation, établir l'équation différentielle du mouvement du pendule.
         reasoning: |-
@@ -576,18 +576,18 @@ entries:
           **Les deux pièges de cette question.** D'abord, oublier de justifier que le moment de la réaction de l'axe est nul : c'est un point de barème, pas une évidence. Ensuite, prendre $\ell$ comme bras de levier au lieu de $\ell/2$ : le poids s'applique en $G$, au milieu de la barre, pas en $B$. *(Et remarque que $J_\Delta = \frac13 m\ell^2$ — la valeur « tige, axe à une extrémité » du chapitre 4 — est bien celle que l'énoncé donne : elle est cohérente avec la géométrie décrite.)*
         steps:
           - math: '\mathcal{M}_\Delta(\vec R) = 0'
-            note: "La reaction de l'axe passe par (Delta) : bras de levier nul, donc moment nul (chapitre 3). A justifier, pas a omettre."
+            note: "La réaction de l'axe passe par (Delta) : bras de levier nul, donc moment nul (chapitre 3). A justifier, pas a omettre."
           - math: '\mathcal{M}_\Delta(\vec P) = -\,m\,g\,\frac{\ell}{2}\,\sin\theta'
-            note: "Moment du poids applique en G, milieu de la barre homogene. Signe negatif : le moment ramene toujours vers l'equilibre."
+            note: "Moment du poids applique en G, milieu de la barre homogène. Signe négatif : le moment ramene toujours vers l'équilibre."
           - math: 'J_\Delta\,\ddot\theta = \sum\mathcal{M}_\Delta \implies \frac{1}{3}m\ell^2\,\ddot\theta = -\,m\,g\,\frac{\ell}{2}\sin\theta'
             note: "Relation fondamentale de la dynamique de rotation (chapitre 5), avec le seul moment non nul."
           - math: '\sin\theta \approx \theta \implies \frac{1}{3}\ell\,\ddot\theta = -\frac{g}{2}\,\theta'
-            note: "Approximation des petites oscillations, autorisee par l'enonce. La masse et une longueur se simplifient."
+            note: "Approximation des petites oscillations, autorisee par l'énoncé. La masse et une longueur se simplifient."
           - math: '\boxed{\ddot\theta + \frac{3g}{2\ell}\,\theta = 0}'
-            note: "Equation differentielle du mouvement : celle d'un oscillateur harmonique, de pulsation propre au carre 3g/2l."
+            note: "Équation différentielle du mouvement : celle d'un oscillateur harmonique, de pulsation propre au carré 3g/2l."
       - id: q2
         stem: |-
-          **1-2-** (1 pt) Préciser la nature du mouvement du pendule pesant, et écrire son équation horaire $\theta(t)$ en fonction de $t$, $\theta_m$ et la periode *(sic)* propre $T_0$.
+          **1-2-** (1 pt) Préciser la nature du mouvement du pendule pesant, et écrire son équation horaire $\theta(t)$ en fonction de $t$, $\theta_m$ et la période *(sic)* propre $T_0$.
         reasoning: |-
           **La nature du mouvement se lit sur la forme de l'équation, pas sur le dessin.** L'équation de la question 1-1 est $\ddot\theta + \omega_0^2\theta = 0$ avec $\omega_0^2 = \dfrac{3g}{2\ell}$ : c'est la signature d'un **oscillateur harmonique**. Le mouvement est donc un **mouvement de rotation oscillatoire sinusoïdal**, de pulsation propre $\omega_0 = \sqrt{\dfrac{3g}{2\ell}}$ — et il est *isochrone*, c'est-à-dire que sa période ne dépend pas de l'amplitude $\theta_m$ (tant que celle-ci reste petite). C'est précisément la propriété qui a permis à Huygens d'en faire une horloge.
 
@@ -610,15 +610,15 @@ entries:
           **Le piège de cette question.** Écrire un **sinus**. Un sinus vaut $0$ à $t = 0$ : cela décrirait un pendule lâché **depuis la verticale avec une vitesse**, ce qui n'est pas l'expérience décrite. Le choix cosinus/sinus n'est jamais une question de goût : il est imposé par les conditions initiales. Second piège : laisser $\varphi$ dans la réponse alors que la consigne demande $\theta(t)$ **en fonction de $t$, $\theta_m$ et $T_0$** — trois symboles, et pas un de plus.
         steps:
           - math: '\ddot\theta + \omega_0^2\,\theta = 0 \qquad \omega_0 = \sqrt{\frac{3g}{2\ell}}'
-            note: "Forme de l'equation etablie a la question 1-1 : oscillateur harmonique."
+            note: "Forme de l'équation etablie a la question 1-1 : oscillateur harmonique."
           - math: '\theta(t) = \theta_{max}\cos\!\left(\frac{2\pi}{T_0}t + \varphi\right)'
-            note: "Solution generale ; deux constantes a fixer avec les deux conditions initiales."
+            note: "Solution générale ; deux constantes a fixer avec les deux conditions initiales."
           - math: '\dot\theta(0) = 0 \implies \sin\varphi = 0 \implies \varphi = 0'
             note: "Lache sans vitesse initiale : la phase est nulle."
           - math: '\theta(0) = \theta_m \implies \theta_{max} = \theta_m'
-            note: "Lache depuis l'ecart maximal : l'amplitude est theta_m."
+            note: "Lache depuis l'écart maximal : l'amplitude est theta_m."
           - math: '\boxed{\theta(t) = \theta_m\cos\!\left(\frac{2\pi}{T_0}\,t\right)}'
-            note: "Equation horaire, en fonction de t, theta_m et T0 seulement, comme la consigne le demande."
+            note: "Équation horaire, en fonction de t, theta_m et T0 seulement, comme la consigne le demande."
       - id: q3
         stem: |-
           **1-3-** (1 pt) Montrer que l'expression de la période propre $T_0$ est : $T_0 = 2\pi\sqrt{\dfrac{2\,\ell}{3g}}$.
@@ -656,13 +656,13 @@ entries:
           **Le piège de cette question.** Écrire $T_0 = 2\pi\sqrt{\dfrac{3g}{2\ell}}$ en oubliant que la période est l'**inverse** de la pulsation à $2\pi$ près. Le contrôle d'homogénéité l'attrape immédiatement.
         steps:
           - math: '\theta(t) = \theta_m\cos\!\left(\frac{2\pi}{T_0}t\right) \implies \ddot\theta = -\theta_m\left(\frac{2\pi}{T_0}\right)^{2}\cos\!\left(\frac{2\pi}{T_0}t\right)'
-            note: "Derivee seconde de l'equation horaire etablie a la question 1-2."
+            note: "Dérivée seconde de l'équation horaire etablie a la question 1-2."
           - math: '\theta_m\cos\!\left(\frac{2\pi}{T_0}t\right)\left[\frac{3g}{2\ell} - \left(\frac{2\pi}{T_0}\right)^{2}\right] = 0'
-            note: "Report de theta et theta point point dans l'equation differentielle, puis factorisation."
+            note: "Report de theta et theta point point dans l'équation différentielle, puis factorisation."
           - math: '\theta_m\cos\!\left(\frac{2\pi}{T_0}t\right) \neq 0 \implies \left(\frac{2\pi}{T_0}\right)^{2} = \frac{3g}{2\ell}'
-            note: "L'egalite vaut a tout instant et le facteur n'est pas identiquement nul : c'est le crochet qui s'annule. C'est l'argument qui vaut le point."
+            note: "L'égalité vaut a tout instant et le facteur n'est pas identiquement nul : c'est le crochet qui s'annule. C'est l'argument qui vaut le point."
           - math: '\boxed{T_0 = 2\pi\sqrt{\frac{2\ell}{3g}}}'
-            note: "Expression demandee. Controle : racine de (longueur / acceleration) est bien un temps."
+            note: "Expression demandee. Controle : racine de (longueur / accélération) est bien un temps."
       - id: q4
         stem: |-
           **1-4-** (0,75 pt) Calculer la valeur de la longueur $L$ du pendule simple synchrone au *(sic, pour « synchrone **du** » ou « synchrone **avec le** »)* pendule pesant étudié.
@@ -690,15 +690,15 @@ entries:
           **Le piège de cette question.** Répondre $L = \ell/2 = 0{,}75\ \text{m}$ « puisque le centre d'inertie est au milieu ». Le centre d'inertie fixe le **moment du poids**, mais pas le moment d'inertie : les deux entrent dans la période, et leur combinaison donne $2\ell/3$, pas $\ell/2$. Un pendule pesant n'est jamais équivalent à un pendule simple placé en son centre d'inertie.
         steps:
           - math: 'T = 2\pi\sqrt{\frac{L}{g}} \qquad\text{(pendule simple de longueur } L)'
-            note: "Periode du pendule simple, du chapitre Systemes oscillants."
+            note: "Période du pendule simple, du chapitre Systèmes oscillants."
           - math: '2\pi\sqrt{\frac{L}{g}} = 2\pi\sqrt{\frac{2\ell}{3g}}'
-            note: "Condition de synchronisme : memes periodes."
+            note: "Condition de synchronisme : mêmes périodes."
           - math: '\frac{L}{g} = \frac{2\ell}{3g} \implies L = \frac{2\ell}{3}'
-            note: "L'intensite de pesanteur se simplifie : le resultat ne depend pas de g, que le sujet ne donne pas."
+            note: "L'intensité de pesanteur se simplifie : le résultat ne dépend pas de g, que le sujet ne donne pas."
           - math: '\boxed{L = \frac{2\times 1{,}5}{3} = 1{,}0\ \text{m}}'
-            note: "Longueur equivalente du pendule pesant. Resultat exact, sans arrondi."
+            note: "Longueur equivalente du pendule pesant. Résultat exact, sans arrondi."
       - id: q5
-        part: "2- Etude énergétique du pendule pesant (par exploitation du diagramme d'énergie)"
+        part: "2- Étude énergétique du pendule pesant (par exploitation du diagramme d'énergie)"
         stem: |-
           **2-1-** (0,75 pt) Par exploitation du diagramme d'énergie (figure 2), donner la valeur de l'énrgie *(sic, pour « énergie »)* mécanique $E_m$ du pendule. *(L'original arabe écrit « **détermine** la valeur » ; la consigne française est affaiblie en « Donner » — c'est la seule consigne affaiblie des 33 du sujet.)*
         reasoning: |-
@@ -723,13 +723,13 @@ entries:
           **Le piège de cette question.** Chercher $E_m$ ailleurs qu'aux extrémités, par exemple en $\theta = 0$ — là où $E_{pp} = 0$ mais où $E_c$ est maximale et **illisible sur ce diagramme**, qui ne trace que l'énergie potentielle. Le diagramme ne donne accès à $E_m$ qu'aux points où la vitesse s'annule.
         steps:
           - math: 'E_m = E_c + E_{pp} = \text{constante}'
-            note: "Mouvement sans frottements : l'energie mecanique se conserve."
+            note: "Mouvement sans frottements : l'énergie mécanique se conserve."
           - math: '\theta = \theta_m \implies \dot\theta = 0 \implies E_c = 0'
-            note: "A l'ecart maximal le pendule s'arrete avant de repartir : toute l'energie y est potentielle."
+            note: "A l'écart maximal le pendule s'arrete avant de repartir : toute l'énergie y est potentielle."
           - math: 'E_m = E_{pp}(\theta_m)'
-            note: "L'energie mecanique se lit donc directement a l'extremite de la parabole."
+            note: "L'énergie mécanique se lit donc directement a l'extrémité de la parabole."
           - math: '\boxed{E_m \approx 22{,}7\ \text{mJ}}'
-            note: "Lecture des extremites de la parabole sur la figure 2. Une lecture a 22,5 mJ (ligne intermediaire) est recevable et donne le meme resultat en 2-2."
+            note: "Lecture des extrémités de la parabole sur la figure 2. Une lecture a 22,5 mJ (ligne intermédiaire) est recevable et donne le même résultat en 2-2."
           - math: 'E_{pp}\!\left(\tfrac{2}{3}\theta_m\right) \times \left(\tfrac{3}{2}\right)^{2} = 10{,}1\times 2{,}25 \approx 22{,}7\ \text{mJ}'
             note: "Controle interne : la courbe est une parabole exacte, les deux lectures se confirment l'une l'autre."
       - id: q6
@@ -773,12 +773,12 @@ entries:
           - math: 'E_{pp}\!\left(\tfrac{2}{3}\theta_m\right) \approx 10{,}1\ \text{mJ}'
             note: "Lecture sur la figure 2 a l'abscisse deux tiers de theta_m : la parabole passe pratiquement sur la ligne 10."
           - math: 'E_c = E_m - E_{pp} = 22{,}7 - 10{,}1 = 12{,}6\ \text{mJ} = 12{,}6\times10^{-3}\ \text{J}'
-            note: "Conservation de l'energie mecanique (mouvement sans frottements). Conversion en joules faite tout de suite."
+            note: "Conservation de l'énergie mécanique (mouvement sans frottements). Conversion en joules faite tout de suite."
           - math: 'J_\Delta = \frac{1}{3}m\ell^2 = \frac{1}{3}\times 0{,}203\times 1{,}5^2 = 0{,}15225\ \text{kg}\cdot\text{m}^2'
-            note: "Moment d'inertie donne par l'enonce, applique aux valeurs numeriques."
+            note: "Moment d'inertie donne par l'énoncé, applique aux valeurs numériques."
           - math: 'E_c = \frac{1}{2}J_\Delta\,\dot\theta^{\,2} \implies |\dot\theta| = \sqrt{\frac{2E_c}{J_\Delta}} = \sqrt{\frac{6\,E_c}{m\,\ell^2}}'
-            note: "Energie cinetique de ROTATION (chapitre 6) : le solide tourne, il ne se translate pas."
+            note: "Énergie cinétique de ROTATION (chapitre 6) : le solide tourne, il ne se translate pas."
           - math: '|\dot\theta| = \sqrt{\frac{6\times 12{,}6\times10^{-3}}{0{,}203\times 2{,}25}} = \sqrt{\frac{0{,}0756}{0{,}45675}} = \sqrt{0{,}1655}'
-            note: "Application numerique."
+            note: "Application numérique."
           - math: '\boxed{|\dot\theta| \approx 0{,}41\ \text{rad.s}^{-1}}'
-            note: "Valeur re-derivee par la verification : 0,4073 rad par seconde. Une lecture E_m = 22,5 mJ donnerait 0,404 : meme reponse a deux chiffres."
+            note: "Valeur re-derivee par la vérification : 0,4073 rad par seconde. Une lecture E_m = 22,5 mJ donnerait 0,404 : même réponse a deux chiffres."

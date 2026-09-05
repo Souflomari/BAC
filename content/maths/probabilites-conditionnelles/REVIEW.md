@@ -35,7 +35,7 @@
 - Edges carry the correct labels: `P(A)=0,6`, `P(Ā)=0,4`, and the four **conditional** second-level edges `P(B|A)=0,5`, `P(B̄|A)=0,5`, `P(B|Ā)=0,2`, `P(B̄|Ā)=0,8`.
 - Four leaves each show intersection + product value (`A∩B = 0,6×0,5 = 0,30`, etc.), summing to 1,00.
 - The two B-leaves carry the accent stroke + "feuille B" tag, and the caption states both readings ("multiplier le long d'une branche" / "P(B) = 0,30 + 0,08 = 0,38"). This supports the R4 total-probability and R5 reversal readings as spec C1 required.
-- The lesson references `[[ARBRE_PONDERE]]` at R2, R4, and R5 — the three placements the spec mandated. The garbled `_media-test` Gemini PNGs are not used.
+- The lesson références `[[ARBRE_PONDERE]]` at R2, R4, and R5 — the three placements the spec mandated. The garbled `_media-test` Gemini PNGs are not used.
 - **Minor note (not a bounce):** the SVG hard-codes glyphs as text (`Ω`, `B̄` via combining overline) rather than KaTeX. Spec C1 said "KaTeX for every probability glyph." For a static SVG this is an acceptable rendering choice (the labels are legible and correct, which was the whole reason for coding it), but flag for the human/renderer owner whether the platform wants KaTeX-in-SVG (foreignObject) or accepts text glyphs. Correctness is intact either way — this is the opposite of the Gemini failure mode and meets the load-bearing requirement.
 
 ### 5. Hook→reversal arc closed (R0 disease-test resolved at R5)
@@ -45,7 +45,7 @@
 
 ### 6. Everything student-facing French, voice-ready, KaTeX
 **PARTIAL — PASS on language/voice/KaTeX, but see issue #7 below for the code-leak defect.**
-- All student-facing prose, stems, choices, feedback, and solutions are in French. Math is KaTeX (`$…$`, `$$…$$`), never images of equations. Both notations `P(B|A)` and `P_A(B)` appear (spec §0.1), with the primacy question correctly left open for the human.
+- All student-facing prose, stems, choices, feedback, and solutions are in French. Math is KaTeX (`$…$`, `$$…$$`), never images of équations. Both notations `P(B|A)` and `P_A(B)` appear (spec §0.1), with the primacy question correctly left open for the human.
 - Voice-ready register is good ("Prends une seconde. Note mentalement ta réponse."; "On va construire les outils qu'il faut, pièce par pièce.").
 - **However**, the student-facing text is contaminated by internal codes — see the dedicated finding below. That is what knocks this criterion from clean PASS to a required fix.
 
@@ -91,7 +91,7 @@ Occurrences to strip (all in `lesson.md`):
 
 **D1 — `skill_code` typo, PC-M8-2 (items.yaml L1285).** Reads `sma_prob_conditionnelles` (trailing "s") vs the correct `sma_prob_conditionnelle` used by all 23 other items. This will mis-route the item at encode time (skill FK will not resolve — exactly the ADR 0011 join failure the spec §0.4 warns about). **Fix: drop the trailing "s".**
 
-**D2 — Malformed/confusing feedback, PC-M6-1 choice C (items.yaml L930–933).** The feedback reads: "Ce choix retourne $P(B|A)-P(A)=0{,}4-0{,}6=-0{,}2$... ou $P(A)-P(B|A)=0{,}2$, une différence …". Showing a student a negative "probability" mid-sentence and then a self-correction ("… ou …") is confusing and not voice-ready. **Fix: state the intended diagnosis cleanly** — choice C (0,2) is the difference `P(A) − P(B|A) = 0,6 − 0,4 = 0,2`; drop the negative-then-flip detour. (Distractor C is a non-misconception noise choice, so no tagging change — only the prose.)
+**D2 — Malformed/confusing feedback, PC-M6-1 choice C (items.yaml L930–933).** The feedback reads: "Ce choix retourne $P(B|A)-P(A)=0{,}4-0{,}6=-0{,}2$... ou $P(A)-P(B|A)=0{,}2$, une différence …". Showing a student a négative "probability" mid-sentence and then a self-correction ("… ou …") is confusing and not voice-ready. **Fix: state the intended diagnosis cleanly** — choice C (0,2) is the différence `P(A) − P(B|A) = 0,6 − 0,4 = 0,2`; drop the negative-then-flip detour. (Distractor C is a non-misconception noise choice, so no tagging change — only the prose.)
 
 **D3 — Diagnostic-isolation drift on M1 (spec §1 co-attribution note / §5 "diagnostic isolation").** The spec said M1's **primary** item should sit on a *pure two-event stem* so M1 is isolable from M8 ("M1's primary is on a pure two-event stem"). As built, **all three M1 items (PC-M1-1, PC-M1-2, PC-M1-3) are full reversal scenarios** (disease test, two procédés, spam filter) — the same surface as the M8 items. The dual-tagging keeps them *attributable*, so this is not a correctness defect, but it weakens M1's diagnostic isolation: a student who misses PC-M1-1.B could be running M1 or M8, and there is no pure-conditional M1 stem to separate them. **Recommended fix (low cost):** convert one M1 item (e.g. PC-M1-1 stays as the hook callback, but add/retool a variant) to a pure two-event transposition stem, e.g. "On donne P(A∩B)=0,2, P(A)=0,5, P(B)=0,8. Un élève répond P(A|B)=0,4 alors qu'on demandait P(B|A). Que vaut réellement P(B|A)?" — isolating the transposition without the reversal machinery. If the human judges the reversal-only framing acceptable for M1, this can be waived — flag for the gate.
 

@@ -270,9 +270,9 @@ entries:
           **Le piège de cette question.** Utiliser $\lambda_j = 355\ \text{nm}$ (la valeur dans le prisme) à la place de $\lambda_{0j}$. La formule $\lambda_0 = c/\nu$ n'est valable QUE dans le vide (ou l'air, assimilé au vide) : $c$ y est la vitesse réelle. Dans le prisme, la vitesse est plus faible ($v_j < c$, question 3), et diviser $c$ par $\lambda_j$ donnerait une fréquence fausse, plus grande que la vraie. La donnée $\lambda_j$ n'est pas inutile pour autant : c'est elle qu'il faut mobiliser à la question suivante, une fois $\nu_j$ en poche.
         steps:
           - math: '\nu_j = \dfrac{c}{\lambda_{0j}}'
-            note: "Dans le vide, lambda = v/nu avec v = c ; on isole la frequence."
+            note: "Dans le vide, lambda = v/nu avec v = c ; on isole la fréquence."
           - math: '\nu_j = \dfrac{3\times10^{8}}{589\times10^{-9}} \approx 5{,}09\times10^{14}\ \text{Hz}'
-            note: "Application numerique : lambda_0j = 589 nm convertie en metres."
+            note: "Application numérique : lambda_0j = 589 nm convertie en mètres."
       - id: q3
         stem: |-
           **(0,5 pt)** Calculer les célérités $v_j$ et $v_r$ des radiations jaune et rouge dans le prisme.
@@ -302,7 +302,7 @@ entries:
           - math: 'v_j = \lambda_j\,\nu_j = 355\times10^{-9}\times 5{,}09\times10^{14} \approx 1{,}81\times10^{8}\ \text{m.s}^{-1}'
             note: "On prend lambda_j (dans le prisme) et nu_j (question 2)."
           - math: 'v_r = \lambda_r\,\nu_r = 474\times10^{-9}\times 3{,}91\times10^{14} \approx 1{,}85\times10^{8}\ \text{m.s}^{-1}'
-            note: "On prend lambda_r (dans le prisme) et nu_r (donnee)."
+            note: "On prend lambda_r (dans le prisme) et nu_r (donnée)."
       - id: q4
         stem: |-
           **(0,25 pt)** Quelle propriété du prisme est mise en évidence par les résultats de la question 2.2 ?
@@ -417,9 +417,9 @@ entries:
           **Le piège de cette question.** Réutiliser $D = 120\ \text{cm}$ (le point de lecture de la question 6) au lieu de la nouvelle distance $D_i = 2\ \text{m}$ donnée ICI. Les deux $D$ n'ont rien à voir : $D = 120\ \text{cm}$ n'était qu'UN point particulier lu sur le graphe de la question 6 pour en extraire une pente, alors que $D_i = 2\ \text{m}$ est la distance RÉELLE de ce nouveau montage. Confondre les deux donnerait un diamètre faux, sans qu'aucun signal n'alerte forcément — d'où l'intérêt de toujours vérifier quelle donnée appartient à quelle expérience avant de l'injecter dans une formule.
         steps:
           - math: 'd = \dfrac{2\lambda D_i}{L_i}'
-            note: "Meme loi que pour la fente, avec le diametre d a la place de a ; on isole d."
+            note: "Même loi que pour la fente, avec le diamètre d a la place de a ; on isole d."
           - math: 'd = \dfrac{2\times 600\times10^{-9}\times 2}{3\times10^{-2}} = 8\times10^{-5}\ \text{m} = 80\ \mu\text{m} = 0{,}08\ \text{mm}'
-            note: "Application numerique : lambda = 600 nm, D_i = 2 m, L_i = 3 cm = 0,03 m."
+            note: "Application numérique : lambda = 600 nm, D_i = 2 m, L_i = 3 cm = 0,03 m."
 
   # ── bk-2023-r-x2 — 2023 R, Exercice 2 : diffraction (largeur de fente),
   #    changement de radiation, puis vitesse et longueur d'onde dans n = 1,5 ──
@@ -481,7 +481,7 @@ entries:
 
       **Donnée :** on prend la célérité d'une onde lumineuse dans le vide et dans l'air $c = 3\cdot10^{8}\ \text{m.s}^{-1}$.
 
-      **Figure (schéma, sans numéro — « figure ci-contre »).** Le dispositif de diffraction est vu en perspective. À gauche, une flèche horizontale épaisse étiquetée « Source lumineuse » pointe vers un petit plan incliné (parallélogramme) étiqueté « Fente » ; la fente elle-même est tracée — un court trait horizontal au milieu du parallélogramme, exactement là où arrive la flèche. Depuis ce point, deux droites divergent, l'une vers le haut, l'autre vers le bas, jusqu'à un grand plan incliné à droite étiqueté « Ecran ». Sur l'écran, cinq taches dessinées en aplat noir (ellipses verticales pleines — c'est la convention typographique du sujet : ce sont bien les taches *lumineuses*) sont alignées sur une même verticale : deux au-dessus, la tache centrale, deux au-dessous. La tache centrale est nettement plus allongée que les quatre autres, et les deux droites issues de la fente viennent en toucher précisément l'extrémité haute et l'extrémité basse. Un axe horizontal en pointillés joint la fente au centre de l'écran ; l'angle $\theta$ est marqué par un petit arc entre cet axe et la droite supérieure, près de l'écran. Une double flèche verticale, placée à droite de la tache centrale, en mesure la hauteur et porte l'étiquette « $L_j$ ». En bas, une double flèche horizontale étiquetée « $D$ » court de la verticale en pointillés abaissée sous la fente jusqu'au plan de l'écran (sa pointe droite remonte obliquement rejoindre le bas de la colonne de taches).
+      **Figure (schéma, sans numéro — « figure ci-contre »).** Le dispositif de diffraction est vu en perspective. À gauche, une flèche horizontale épaisse étiquetée « Source lumineuse » pointe vers un petit plan incliné (parallélogramme) étiqueté « Fente » ; la fente elle-même est tracée — un court trait horizontal au milieu du parallélogramme, exactement là où arrive la flèche. Depuis ce point, deux droites divergent, l'une vers le haut, l'autre vers le bas, jusqu'à un grand plan incliné à droite étiqueté « Écran ». Sur l'écran, cinq taches dessinées en aplat noir (ellipses verticales pleines — c'est la convention typographique du sujet : ce sont bien les taches *lumineuses*) sont alignées sur une même verticale : deux au-dessus, la tache centrale, deux au-dessous. La tache centrale est nettement plus allongée que les quatre autres, et les deux droites issues de la fente viennent en toucher précisément l'extrémité haute et l'extrémité basse. Un axe horizontal en pointillés joint la fente au centre de l'écran ; l'angle $\theta$ est marqué par un petit arc entre cet axe et la droite supérieure, près de l'écran. Une double flèche verticale, placée à droite de la tache centrale, en mesure la hauteur et porte l'étiquette « $L_j$ ». En bas, une double flèche horizontale étiquetée « $D$ » court de la verticale en pointillés abaissée sous la fente jusqu'au plan de l'écran (sa pointe droite remonte obliquement rejoindre le bas de la colonne de taches).
     questions:
       - id: q1
         part: "Ce qui identifie une radiation — et ce qui dépend du milieu"
@@ -836,15 +836,15 @@ entries:
           **Le piège nommé de cette question.** Écrire $n_L = \dfrac{L'}{L} = 0{,}75$. Un indice de réfraction est **toujours supérieur ou égal à $1$** : une valeur inférieure à $1$ signifierait une lumière plus rapide que dans le vide. Le sens du rapport se retrouve par le raisonnement — dans le liquide, $\lambda$ **diminue**, donc la tache **rétrécit**, donc $L' < L$, donc $n_L = L/L' > 1$ — mais aussi, en secours, par ce simple contrôle de bon sens.
         steps:
           - math: '\lambda_L = \frac{\lambda_a}{n_L}'
-            note: "La frequence est invariante (question 1, proposition D) ; seule la vitesse change, donc lambda avec elle."
+            note: "La fréquence est invariante (question 1, proposition D) ; seule la vitesse change, donc lambda avec elle."
           - math: 'L = \frac{2\lambda_a D}{a} \qquad\text{et}\qquad L'' = \frac{2\lambda_L D}{a} = \frac{2\lambda_a D}{n_L\,a}'
-            note: "Meme fente, meme distance : a et D sont identiques dans les deux experiences."
+            note: "Même fente, même distance : a et D sont identiques dans les deux expériences."
           - math: '\frac{L}{L''} = n_L'
-            note: "lambda_a, a et D s'eliminent tous les trois. C'est tout l'interet du rapport."
+            note: "lambda_a, a et D s'eliminent tous les trois. C'est tout l'intérêt du rapport."
           - math: 'n_L = \frac{2{,}4}{1{,}8} = \frac{4}{3} = 1{,}3333'
             note: "Le rapport tombe sur une fraction EXACTE : les deux longueurs sont choisies pour cela."
           - math: '\boxed{n_L \simeq 1{,}33}'
-            note: "C'est l'indice de l'eau. Un indice est toujours superieur a 1 : L/L'' et non l'inverse."
+            note: "C'est l'indice de l'eau. Un indice est toujours supérieur a 1 : L/L'' et non l'inverse."
       - id: q3b
         stem: |-
           **3-2.** (0,5 pt) Déduire $v_L$ la vitesse de propagation de la lumière du laser dans ce liquide.
@@ -959,9 +959,9 @@ entries:
           $$\boxed{\text{B}}$$
         steps:
           - math: '\tau = 5{,}0\ \text{div}\times S_H = 5{,}0\times0{,}2'
-            note: "Lecture du decalage entre les deux fronts montants sur la figure 2, multiplie par la sensibilite horizontale."
+            note: "Lecture du decalage entre les deux fronts montants sur la figure 2, multiplie par la sensibilité horizontale."
           - math: '\boxed{\tau = 1{,}0\ \mu\text{s}}'
-            note: "Retard temporel entre les chapitres 2 et 3 - reponse B."
+            note: "Retard temporel entre les chapitres 2 et 3 - réponse B."
       - id: q2
         stem: |-
           **2-** (0,5 pt) Sachant que la célérité de propagation de l'onde lumineuse à l'intérieur du cœur de la fibre optique est $v = 1{,}87\times10^{8}\ \text{m.s}^{-1}$, l'indice de réfraction $n$ du milieu transparent constituant le cœur de la fibre optique est :
@@ -986,7 +986,7 @@ entries:
           - math: 'n = \frac{c}{v} = \frac{3\times10^{8}}{1{,}87\times10^{8}}'
             note: "Chapitre R2 : n = c/v, avec c dans le vide et v dans le coeur de la fibre."
           - math: '\boxed{n \approx 1{,}6}'
-            note: "Indice de refraction du coeur de la fibre - reponse C."
+            note: "Indice de réfraction du coeur de la fibre - réponse C."
       - id: q3
         stem: |-
           **3-** (0,5 pt) Sachant que la longueur d'onde de l'onde lumineuse issue du laser est $\lambda = 530\ \text{nm}$, l'énergie d'un photon dans cette radiation (en J) est :
@@ -1013,9 +1013,9 @@ entries:
           $$\boxed{\text{B}}$$
         steps:
           - math: 'E = \frac{hc}{\lambda} = \frac{6{,}63\times10^{-34}\times3\times10^{8}}{530\times10^{-9}}'
-            note: "Energie d'un photon (hors chapitres de cette lecon), avec lambda converti en metres avant division."
+            note: "Énergie d'un photon (hors chapitres de cette leçon), avec lambda converti en mètres avant division."
           - math: '\boxed{E \approx 3{,}75\times10^{-19}\ \text{J}}'
-            note: "Reponse B."
+            note: "Réponse B."
 
   # ── bk-2012-r-x2 — 2012 R, Les ondes : étude du phénomène de diffraction de la lumière ──
   #
@@ -1079,7 +1079,7 @@ entries:
       year: 2012
       session: rattrapage
       filiere: "SPC"
-      exercise_label: "Les ondes — Etude du phénomène de diffraction de la lumière"
+      exercise_label: "Les ondes — Étude du phénomène de diffraction de la lumière"
     bareme_total: 2.5
     duration_min: 15
     sourcing:
@@ -1112,7 +1112,7 @@ entries:
         re-examinée DEPUIS L'IMAGE (bitmap 638 × 465 à 216 dpi extrait du
         PDF) : boîte « Laser » avec sa sortie grise, faisceau horizontal,
         parallélogramme « Plaque » portant une fente verticale grise,
-        parallélogramme « Ecran », une grande ellipse noire pleine encadrée
+        parallélogramme « Écran », une grande ellipse noire pleine encadrée
         de quatre petites alignées sur l'oblique descendante, double flèche
         L₁ couvrant la tache centrale, pointillé d'axe portant θ, double
         flèche D entre deux verticales en pointillés. Le soupçon d'un motif
@@ -1180,7 +1180,7 @@ entries:
       - à gauche, un **rectangle horizontal étiqueté « Laser »**, terminé à droite par un petit rectangle gris — la sortie du faisceau ;
       - un **trait gras horizontal** part de cette sortie vers la droite : le faisceau incident ;
       - au centre, un **parallélogramme** vu en perspective (côtés gauche et droit verticaux, bords haut et bas obliques descendant vers la droite), étiqueté **« Plaque »** ; il porte en son milieu un **trait vertical gris fin** — la fente ;
-      - à droite, un **second parallélogramme plus grand**, même perspective, étiqueté **« Ecran »** ;
+      - à droite, un **second parallélogramme plus grand**, même perspective, étiqueté **« Écran »** ;
       - sur l'écran, la **figure de diffraction** : une grande **ellipse noire pleine** — la tache centrale — et **quatre ellipses plus petites**, deux au-dessus-gauche et deux au-dessous-droite, toutes alignées avec la grande sur une **oblique descendante vers la droite**. Cette oblique *est* la direction horizontale de l'écran dans cette perspective : le motif est donc bien **perpendiculaire à la fente verticale**, comme la physique l'exige ;
       - une **double flèche** parallèle à cette oblique, étiquetée $L_1$, couvre exactement la grande ellipse ;
       - depuis la fente partent **deux traits fins** délimitant l'ouverture du faisceau diffracté jusqu'aux bords de la tache centrale ; un **trait horizontal en pointillés** prolonge l'axe du laser jusqu'à l'écran, et l'angle entre ce pointillé et le trait supérieur porte l'étiquette $\theta$ ;
@@ -1244,13 +1244,13 @@ entries:
           **Les deux pièges de cette question.** Le premier : **oublier le facteur $2$** et écrire $\tan\theta = L_1/D$, ce qui double $\lambda$ et donne $1400\ \text{nm}$ — de l'infrarouge, invisible. Le contrôle de vraisemblance l'attrape immédiatement. Le second : **mélanger les unités**, laisser $a$ en millimètres ou $L_1$ en centimètres ; le résultat sort alors décalé d'un facteur $10$, $100$ ou $1000$ sans que le calcul proteste.
         steps:
           - math: '\tan\theta = \frac{L_1/2}{D} = \frac{L_1}{2D} \approx \theta'
-            note: "Geometrie du triangle : L1 est la largeur TOTALE de la tache, l'angle theta n'en couvre que la moitie. D'ou le facteur 2."
+            note: "Géométrie du triangle : L1 est la largeur TOTALE de la tache, l'angle theta n'en couvre que la moitié. D'ou le facteur 2."
           - math: '\theta = \frac{\lambda}{a}'
-            note: "Ecart angulaire de diffraction (chapitre 4) : il ne depend que de lambda et de a."
+            note: "Écart angulaire de diffraction (chapitre 4) : il ne dépend que de lambda et de a."
           - math: '\boxed{\lambda = \frac{a\,L_1}{2D}}'
-            note: "Les deux relations decrivent le meme angle : on les egale et on isole lambda."
+            note: "Les deux relations décrivent le même angle : on les egale et on isole lambda."
           - math: '\lambda = \frac{6\times10^{-5} \times 3{,}5\times10^{-2}}{2 \times 1{,}5} = \frac{2{,}1\times10^{-6}}{3}'
-            note: "Application numerique, toutes les grandeurs converties en unites SI au prealable."
+            note: "Application numérique, toutes les grandeurs converties en unités SI au préalable."
           - math: '\boxed{\lambda = 7{,}0\times10^{-7}\ \text{m} = 700\ \text{nm}}'
             note: "Un rouge de laser : la valeur tombe bien dans le visible, ce qui ferme le controle de vraisemblance."
       - id: q4
@@ -1274,10 +1274,10 @@ entries:
           **Le piège de cette question.** Recalculer $\lambda$ à partir de $L_2$ au lieu de calculer $d$ — c'est-à-dire réutiliser la formule de la question 3 sans changer l'inconnue. La longueur d'onde est **fixée par le laser**, elle est la donnée reprise de la question précédente ; l'inconnue est $d$.
         steps:
           - math: '\frac{\lambda}{d} = \frac{L_2}{2D}'
-            note: "Principe de Babinet : un fil de diametre d diffracte comme une fente de largeur d. La relation de la question 3 se reutilise telle quelle."
+            note: "Principe de Babinet : un fil de diamètre d diffracte comme une fente de largeur d. La relation de la question 3 se reutilise telle quelle."
           - math: '\boxed{d = \frac{2\lambda D}{L_2}}'
-            note: "Expression litterale, demandee avant l'application numerique (consigne de la page 1 du sujet)."
+            note: "Expression littérale, demandee avant l'application numérique (consigne de la page 1 du sujet)."
           - math: 'd = \frac{2 \times 7{,}0\times10^{-7} \times 1{,}5}{2{,}8\times10^{-2}} = \frac{2{,}1\times10^{-6}}{2{,}8\times10^{-2}}'
-            note: "Lambda et D sont inchanges : meme laser, meme ecran. Seule la largeur de tache a change."
+            note: "Lambda et D sont inchanges : même laser, même écran. Seule la largeur de tache a change."
           - math: '\boxed{d = 7{,}5\times10^{-5}\ \text{m} = 75\ \mu\text{m}}'
             note: "Controle : la tache est plus etroite (2,8 contre 3,5 cm) donc l'obstacle est plus large (75 contre 60 micrometres). Le rapport 3,5/2,8 = 1,25 est bien l'inverse de 75/60."
