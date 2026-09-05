@@ -1666,45 +1666,135 @@ items:
 # OND-DIF-1 (cp-r5-diffraction), OND-DISP-1 (cp-r6-dispersif). All three meet
 # the >=3 floor → gated_floor_met: true.
 # ──────────────────────────────────────────────────────────────────────────────
+  # Ajouté le 2026-09-05 : OND-DP-2 (période et longueur d'onde confondues)
+  # siégeait à 2 items du banc, donc sous le plancher de 3 — inévaluable par le
+  # modèle apprenant. Surface volontairement différente de OMPP-2, qui fait
+  # LIRE une distance sur une photographie : ici on critique un raisonnement
+  # chiffré, où la confusion produit un nombre juste au mauvais endroit.
+  - id: OMPP-25
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, periodicite_spatiale, relation_lambda_ct]
+    stem: >
+      Une onde progressive périodique se propage à
+      $c = 2{,}0\ \text{m}\cdot\text{s}^{-1}$ le long d'une corde ; sa
+      fréquence vaut $f = 5{,}0\ \text{Hz}$. Un élève écrit : « la période
+      vaut $T = 0{,}20\ \text{s}$, donc la longueur d'onde vaut
+      $\lambda = 0{,}20\ \text{m}$ ». Que penser de ce raisonnement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La période est juste, la conclusion non : il faut multiplier par la
+          célérité, $\lambda = cT = 2{,}0 \times 0{,}20 = 0{,}40\ \text{m}$
+        correct: true
+      - id: B
+        text: >-
+          Le raisonnement est correct : $T$ et $\lambda$ sont la même grandeur,
+          mesurée en secondes d'un côté et en mètres de l'autre
+        correct: false
+        misconception: OND-DP-2
+        feedback: >
+          Une durée et une distance n'ont pas la même dimension : aucune
+          convention d'unité ne transforme l'une en l'autre. $T$ est la période
+          TEMPORELLE (ce que voit un point fixe du milieu), $\lambda$ la période
+          SPATIALE (ce que montre une photographie instantanée) ; le pont entre
+          les deux est la célérité, $\lambda = cT$.
+      - id: C
+        text: >-
+          La période est juste, mais la longueur d'onde vaut
+          $\lambda = c/T = 2{,}0/0{,}20 = 10\ \text{m}$
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          La relation est $\lambda = cT$, pas $c/T$. Le contrôle qui la
+          retrouve sans l'apprendre : pendant une période, l'onde avance
+          d'exactement une longueur d'onde, donc distance = célérité × durée.
+          Divisez, et vous obtenez $10\ \text{m}$ pour une corde de laboratoire.
+      - id: D
+        text: >-
+          On ne peut pas conclure : la période et la longueur d'onde varient
+          indépendamment l'une de l'autre, il faudrait mesurer $\lambda$ sur une
+          photographie
+        correct: false
+        misconception: OND-DP-1
+        feedback: >
+          Les deux périodicités ne sont pas indépendantes : c'est justement ce
+          que dit $\lambda = cT$. Le milieu recopie fidèlement la source, et la
+          célérité du milieu fixe le pas spatial de cette copie. Connaître $c$
+          et $T$ suffit — la photographie servirait à vérifier, pas à conclure.
+    correct_feedback: >
+      $T = 1/f = 0{,}20\ \text{s}$ est bien la période. Mais la longueur d'onde
+      est la distance parcourue par l'onde PENDANT une période :
+      $\lambda = cT = 2{,}0 \times 0{,}20 = 0{,}40\ \text{m}$. Le nombre
+      $0{,}20$ est juste — c'est la grandeur qui est fausse.
+    solution: |
+      $$T = \frac{1}{f} = \frac{1}{5{,}0} = 0{,}20\ \text{s}$$
+      Pendant une période, l'onde avance d'exactement une longueur d'onde :
+      $$\lambda = c\,T = 2{,}0 \times 0{,}20 = 0{,}40\ \text{m}$$
+      Le contrôle d'homogénéité tranche à lui seul :
+      $\text{m}\cdot\text{s}^{-1} \times \text{s} = \text{m}$. Écrire
+      $\lambda = T$ reviendrait à égaler des secondes et des mètres ; écrire
+      $\lambda = c/T$ donnerait des $\text{m}\cdot\text{s}^{-2}$.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, et l'ancien avait bien travaillé : il déclarait
+# franchement `floor_met: false` et NOMMAIT la seule famille en dessous —
+# OND-DP-2 ($T$ et $\lambda$ confondues), à 2 items — en précisant que la
+# refermer demandait « un troisième énoncé réellement distinct, pas un clone
+# mémorisable de OMPP-1/2 ». C'est fait : OMPP-25 fait critiquer un
+# raisonnement chiffré au lieu de faire lire une distance sur une photographie.
+# Le tableau est désormais GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# scripts/resume-couverture.mjs.
 coverage_summary:
-  method: "item-level, by distractor-presence (an item covers a misconception if >=1 distractor carries it)"
-  total_items: 24
-  floor: 3
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    OND-DP-1: 3    # OMPP-7, 8, 9                      (GATED)
-    OND-DP-2: 2    # OMPP-1, 2                          (UNDER FLOOR — honest, not padded)
-    OND-FR-1: 4    # OMPP-3, 4, 15, 17
-    OND-NAT-1: 4   # OMPP-3, 10, 14, 15
-    OND-CALC-1: 6  # OMPP-5, 6, 12, 13, 16, 18
-    OND-PH-2: 5    # OMPP-6, 11, 13, 16, 17
-    OND-PH-3: 3    # OMPP-10, 11, 16
-    OND-DIF-1: 3   # OMPP-19, 20, 21                    (GATED)
-    OND-DIF-2: 3   # OMPP-19, 20, 21
-    OND-DIF-3: 3   # OMPP-19, 20, 21
-    OND-DISP-1: 3  # OMPP-22, 23, 24                    (GATED)
-    OND-DISP-2: 3  # OMPP-22, 23, 24
-    OND-DISP-3: 3  # OMPP-22, 23, 24
+    OND-DIF-1:  { count: 3, items: [OMPP-19, OMPP-20, OMPP-21] }
+    OND-DIF-2:  { count: 3, items: [OMPP-19, OMPP-20, OMPP-21] }
+    OND-DIF-3:  { count: 3, items: [OMPP-19, OMPP-20, OMPP-21] }
+    OND-DISP-1: { count: 3, items: [OMPP-22, OMPP-23, OMPP-24] }
+    OND-DISP-2: { count: 3, items: [OMPP-22, OMPP-23, OMPP-24] }
+    OND-DISP-3: { count: 3, items: [OMPP-22, OMPP-23, OMPP-24] }
+    OND-DP-1:   { count: 4, items: [OMPP-7, OMPP-8, OMPP-9, OMPP-25] }
+    OND-DP-2:   { count: 3, items: [OMPP-1, OMPP-2, OMPP-25] }
+    OND-FR-1:   { count: 4, items: [OMPP-3, OMPP-4, OMPP-15, OMPP-17] }
+    OND-NAT-1:  { count: 4, items: [OMPP-3, OMPP-10, OMPP-14, OMPP-15] }
+    OND-CALC-1: { count: 7, items: [OMPP-5, OMPP-6, OMPP-12, OMPP-13, OMPP-16, OMPP-18, OMPP-25] }
+    OND-PH-2:   { count: 5, items: [OMPP-6, OMPP-11, OMPP-13, OMPP-16, OMPP-17] }
+    OND-PH-3:   { count: 3, items: [OMPP-10, OMPP-11, OMPP-16] }
+  total_items: 25
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 3
+    R2: 4
+    R3: 3
+    R4: 3
+    R5: 3
+    R6: 3
+    R7: 3
   gated_misconceptions:
+    # Les trois familles sondées par un checkpoint de la leçon — un ÉCHO
+    # formatif du banc, jamais un substitut : les checkpoints ne comptent pas
+    # dans le tableau ci-dessus.
     - OND-DP-1
     - OND-DIF-1
     - OND-DISP-1
   gated_floor: 3
   gated_floor_met: true
-  floor_met: false
-  under_floor_non_gated:
-    OND-DP-2: 2    # T/λ confondues — only OMPP-1, OMPP-2 center it; see §6 note
-  note: >
-    GATED FLOOR MET: the three checkpoint-gated misconceptions each reach >=3
-    items — OND-DP-1 (double périodicité) via OMPP-7/8/9, OND-DIF-1 (condition
-    de diffraction a ≲ λ) via OMPP-19/20/21, OND-DISP-1 (célérité constante)
-    via OMPP-22/23/24. None padded: each sits exactly at 3 or above on genuinely
-    distinct stems.
-    floor_met is FALSE overall, disclosed honestly per SUMMIT-CONVERSION-RECIPE
-    §6 (never fake counts): ONE non-gated misconception stays under the floor —
-    OND-DP-2 (T et λ confondues comme même grandeur / mauvais graphique) sits at
-    2 items (OMPP-1, OMPP-2), the only two stems that center it. Closing it with
-    a genuinely distinct third stem (not a memorizable clone of OMPP-1/2) is left
-    for a follow-up item pass; it is flagged, not padded. NB it is nonetheless
-    well covered at the DISTRACTOR level (6 distractor tags).
-    Scope guard held: no item uses θ = λ/a or tests light diffraction (both
-    reserved for propagation-onde-lumineuse per spec-extension.md §0).
+  scope_note: >-
+    Garde-fou de périmètre tenu : aucun item n'utilise $\theta = \lambda/a$ ni
+    ne teste la diffraction de la LUMIÈRE — les deux sont réservés à
+    propagation-onde-lumineuse (spec-extension.md §0).
+  honest_state: >-
+    Les treize misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Huit y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

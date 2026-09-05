@@ -1292,48 +1292,204 @@ items:
 # padded — flagged for a follow-up item pass. Counts below are ITEM-LEVEL (each
 # item counted once, by its `primary_misconception`).
 # ──────────────────────────────────────────────────────────────────────────────
+  # Ajoutés le 2026-09-05 : deux familles sous le plancher de 3 items du banc —
+  # `sens-courant-electrons` (1 item) et `bilan-matiere-electrodes` (2).
+  # ELECTROLYSE-23 les vise ensemble sur l'électrolyse de l'eau, où le rapport
+  # des volumes et le sens de circulation se lisent dans la même expérience ;
+  # ELECTROLYSE-24 isole le sens du courant sur le fil, sans chimie.
+  - id: ELECTROLYSE-23
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_electrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_electrolyse.bilan-matiere-electrodes
+    stem: >
+      On électrolyse de l'eau acidulée. À la cathode se dégage du dihydrogène
+      selon $2\,H^+ + 2\,e^- \rightarrow H_2$, à l'anode du dioxygène selon
+      $2\,H_2O \rightarrow O_2 + 4\,H^+ + 4\,e^-$. On recueille
+      $30\ \text{mL}$ de dihydrogène. Quel volume de dioxygène recueille-t-on
+      dans les mêmes conditions, et dans quel sens les électrons circulent-ils
+      dans le fil qui relie l'anode au générateur ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $15\ \text{mL}$ de dioxygène ; et les électrons vont de l'anode vers
+          la borne $+$ du générateur, donc à contresens du courant conventionnel
+        correct: true
+      - id: B
+        text: >-
+          $30\ \text{mL}$ de dioxygène : le même nombre d'électrons traverse les
+          deux électrodes, donc les deux gaz se forment en quantités égales
+        correct: false
+        misconception: mc.physics.pc_electrolyse.bilan-matiere-electrodes
+        feedback: >
+          Le nombre d'électrons est bien le même — c'est le seul point commun.
+          Mais chaque gaz coûte un nombre d'électrons DIFFÉRENT : deux électrons
+          par $H_2$, quatre par $O_2$. Pour la même quantité d'électricité, on
+          obtient donc deux fois moins de dioxygène que de dihydrogène.
+      - id: C
+        text: >-
+          $15\ \text{mL}$ de dioxygène ; et les électrons circulent dans le même
+          sens que le courant conventionnel, de la borne $+$ vers l'anode
+        correct: false
+        misconception: mc.physics.pc_electrolyse.sens-courant-electrons
+        feedback: >
+          Le volume est juste, le sens ne l'est pas. Le courant conventionnel a
+          été défini avant qu'on connaisse l'électron, et il se trouve orienté à
+          l'INVERSE de son déplacement réel. À l'anode, l'oxydation LIBÈRE des
+          électrons, que la borne $+$ aspire : ils vont de l'anode vers le
+          générateur, tandis que le courant conventionnel va du générateur vers
+          l'anode.
+      - id: D
+        text: >-
+          $60\ \text{mL}$ de dioxygène : la demi-équation de l'anode fait
+          intervenir quatre électrons contre deux, donc deux fois plus de gaz
+        correct: false
+        misconception: mc.physics.pc_electrolyse.bilan-matiere-electrodes
+        feedback: >
+          Le rapport est lu à l'envers. Quatre électrons par molécule de $O_2$
+          signifie que le dioxygène coûte PLUS cher en électrons, donc qu'il
+          s'en forme MOINS. Le raisonnement sûr passe par les moles d'électrons :
+          $n(e^-) = 2\,n(H_2) = 4\,n(O_2)$, d'où $n(O_2) = n(H_2)/2$.
+    correct_feedback: >
+      $15\ \text{mL}$. La même quantité d'électrons traverse les deux
+      électrodes, mais $H_2$ en coûte deux et $O_2$ en coûte quatre :
+      $n(O_2) = n(H_2)/2$. Et les électrons quittent l'anode vers la borne $+$,
+      à contresens du courant conventionnel — comme partout ailleurs dans un
+      conducteur métallique.
+    solution: |
+      **Le bilan de matière.** Les deux électrodes sont en SÉRIE : la même
+      quantité d'électricité les traverse, donc la même quantité de matière
+      d'électrons.
+      $$n(e^-) = 2\,n(H_2) = 4\,n(O_2)
+      \quad\Longrightarrow\quad n(O_2) = \frac{n(H_2)}{2}$$
+      Dans les mêmes conditions de température et de pression, les volumes sont
+      proportionnels aux quantités de matière :
+      $$V(O_2) = \frac{V(H_2)}{2} = \frac{30}{2} = 15\ \text{mL}$$
+      **Le sens de circulation.** À l'anode se produit l'oxydation, qui libère
+      des électrons ; la borne $+$ du générateur les capte. Les électrons vont
+      donc de l'anode vers le générateur. Le courant conventionnel, lui, est
+      orienté à l'inverse du déplacement réel des électrons : il va du
+      générateur vers l'anode.
+
+  - id: ELECTROLYSE-24
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_electrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_electrolyse.sens-courant-electrons
+    stem: >
+      Une cellule d'électrolyse fonctionne. On s'intéresse au fil métallique
+      qui relie la borne $-$ du générateur à la cathode. Dans quel sens s'y
+      déplacent les électrons, et dans quel sens y circule le courant
+      conventionnel ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les électrons vont de la borne $-$ vers la cathode, et le courant
+          conventionnel circule en sens inverse, de la cathode vers la borne $-$
+        correct: true
+      - id: B
+        text: >-
+          Les deux vont dans le même sens, de la borne $-$ vers la cathode : le
+          courant électrique EST le déplacement des électrons
+        correct: false
+        misconception: mc.physics.pc_electrolyse.sens-courant-electrons
+        feedback: >
+          Le courant conventionnel a été orienté au XIXe siècle, avant la
+          découverte de l'électron, comme un déplacement de charges POSITIVES.
+          On sait depuis que ce sont les électrons, négatifs, qui bougent dans
+          un métal : les deux sens sont donc opposés, par accident historique.
+          La convention n'a pas été changée parce qu'elle ne change aucun calcul.
+      - id: C
+        text: >-
+          Le sens conventionnel n'a pas de sens dans une électrolyse : seul
+          compte le déplacement réel des électrons, imposé par le générateur
+        correct: false
+        misconception: mc.physics.pc_electrolyse.sens-courant-electrons
+        feedback: >
+          La convention est la même partout — pile, électrolyse, circuit
+          quelconque : le courant sort par la borne $+$ du générateur et y
+          rentre par la borne $-$. Ce qui change en électrolyse, c'est le
+          RÔLE des électrodes, pas la définition du courant.
+      - id: D
+        text: >-
+          Les électrons vont de la cathode vers la borne $-$, puisque la
+          cathode est le siège d'une réduction et libère des électrons
+        correct: false
+        misconception: mc.physics.pc_electrolyse.polarite-comme-pile
+        feedback: >
+          Une réduction CONSOMME des électrons, elle n'en libère pas — c'est
+          l'oxydation qui en libère, et elle se produit à l'anode. La cathode
+          est donc alimentée en électrons par la borne $-$ : ils y arrivent, ils
+          n'en partent pas.
+    correct_feedback: >
+      Les électrons vont de la borne $-$ vers la cathode, où la réduction les
+      consomme. Le courant conventionnel, orienté à l'inverse du déplacement
+      réel des porteurs négatifs, circule donc de la cathode vers la borne $-$.
+    solution: |
+      **Ce qui bouge réellement.** Dans un fil métallique, seuls les électrons
+      se déplacent. La borne $-$ du générateur les pousse vers la cathode, où
+      la réduction les consomme : $Ox + n\,e^- \rightarrow Red$.
+
+      **Ce qu'on appelle courant.** La convention date d'avant la découverte de
+      l'électron : le courant est compté comme un déplacement de charges
+      POSITIVES. Il est donc orienté à l'opposé du déplacement des électrons —
+      ici de la cathode vers la borne $-$, ce qui revient à dire que le courant
+      sort du générateur par sa borne $+$ et y rentre par sa borne $-$.
+
+      Cette convention vaut dans TOUT circuit ; ce que l'électrolyse inverse,
+      c'est le lien entre polarité et rôle chimique (anode = borne $+$), pas la
+      définition du courant.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05. L'ancien déclarait franchement `floor_met: false` et
+# nommait trois familles sous le plancher — mais il comptait au
+# `primary_misconception`, pas au distracteur comme le fait la chaîne. Sous la
+# convention de la chaîne, `faraday-calcul-unites` était déjà au plancher ; il
+# restait `sens-courant-electrons` (1 item) et `bilan-matiere-electrodes` (2).
+# ELECTROLYSE-23 et 24 les referment, avec des énoncés distincts et non des
+# clones mémorisables des items existants. Tableau GÉNÉRÉ, gardé par
+# scripts/resume-couverture.mjs.
 coverage_summary:
-  method: "item-level, by primary_misconception (one item = one count)"
-  total_items: 22
-  floor: 3
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.physics.pc_electrolyse.sens-force-vs-spontane: 4              # 7, 8, 9, 20
-    mc.physics.pc_electrolyse.polarite-comme-pile: 4                 # 1, 2, 11, 21
-    mc.physics.pc_electrolyse.electrolyse-source-energie: 3          # 3, 4, 22
-    mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique: 4 # 5, 6, 18, 19
-    mc.physics.pc_electrolyse.seuil-tension-continu: 3               # 12, 13, 14
-    mc.physics.pc_electrolyse.faraday-calcul-unites: 1               # 15
-    mc.physics.pc_electrolyse.sens-courant-electrons: 1              # 10
-    mc.physics.pc_electrolyse.bilan-matiere-electrodes: 2            # 16, 17
+    mc.physics.pc_electrolyse.sens-force-vs-spontane:              { count: 4, items: [ELECTROLYSE-7, ELECTROLYSE-8, ELECTROLYSE-9, ELECTROLYSE-20] }
+    mc.physics.pc_electrolyse.polarite-comme-pile:                 { count: 5, items: [ELECTROLYSE-1, ELECTROLYSE-2, ELECTROLYSE-11, ELECTROLYSE-21, ELECTROLYSE-24] }
+    mc.physics.pc_electrolyse.electrolyse-source-energie:          { count: 3, items: [ELECTROLYSE-3, ELECTROLYSE-4, ELECTROLYSE-22] }
+    mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique: { count: 6, items: [ELECTROLYSE-5, ELECTROLYSE-6, ELECTROLYSE-15, ELECTROLYSE-18, ELECTROLYSE-19, ELECTROLYSE-21] }
+    mc.physics.pc_electrolyse.faraday-calcul-unites:               { count: 4, items: [ELECTROLYSE-5, ELECTROLYSE-6, ELECTROLYSE-15, ELECTROLYSE-19] }
+    mc.physics.pc_electrolyse.seuil-tension-continu:               { count: 7, items: [ELECTROLYSE-7, ELECTROLYSE-8, ELECTROLYSE-9, ELECTROLYSE-12, ELECTROLYSE-13, ELECTROLYSE-14, ELECTROLYSE-20] }
+    mc.physics.pc_electrolyse.sens-courant-electrons:              { count: 3, items: [ELECTROLYSE-10, ELECTROLYSE-23, ELECTROLYSE-24] }
+    mc.physics.pc_electrolyse.bilan-matiere-electrodes:            { count: 3, items: [ELECTROLYSE-16, ELECTROLYSE-17, ELECTROLYSE-23] }
+  total_items: 24
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 4
+    R2: 4
+    R3: 3
+    R4: 4
+    R5: 3
+    R6: 3
   gated_misconceptions:
+    # Les quatre familles sondées par un checkpoint de la leçon — un ÉCHO
+    # formatif du banc, jamais un substitut : elles ne comptent pas deux fois.
     - mc.physics.pc_electrolyse.sens-force-vs-spontane
     - mc.physics.pc_electrolyse.polarite-comme-pile
     - mc.physics.pc_electrolyse.electrolyse-source-energie
     - mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
+  gated_floor: 3
   gated_floor_met: true
-  floor_met: false
-  under_floor_non_gated:
-    mc.physics.pc_electrolyse.faraday-calcul-unites: 1
-    mc.physics.pc_electrolyse.sens-courant-electrons: 1
-    mc.physics.pc_electrolyse.bilan-matiere-electrodes: 2
-  ramp_coverage:
-    R0: 3   # 7, 8, 9
-    R1: 4   # 3, 4, 10, 22
-    R2: 3   # 1, 2, 11
-    R3: 3   # 12, 13, 14
-    R4: 3   # 5, 6, 15
-    R5: 3   # 16, 17, 18
-    R6: 3   # 19, 20, 21
-  note: >
-    Gated floor MET: the four checkpoint-gated models each have >=3 items
-    (electrolyse-source-energie closed 2->3 by the new ELECTROLYSE-22, a fresh
-    "use the cell as a pile" framing, not a restatement of ELECTROLYSE-3/4).
-    Per-distractor misconception tags added to all of ELECTROLYSE-1…21
-    (additive; no existing stem, feedback, or solution changed).
-    floor_met is FALSE overall: three NON-gated models stay under the item-level
-    >=3 floor — faraday-calcul-unites (1), sens-courant-electrons (1),
-    bilan-matiere-electrodes (2). These are disclosed, not padded
-    (SUMMIT-CONVERSION-RECIPE §6): closing them with genuinely distinct stems
-    (not memorizable clones of existing items) is left for a follow-up item
-    pass. NB: faraday-calcul-unites, though item-level 1, is heavily covered at
-    the DISTRACTOR level (tagged on 5C, 5D, 6C, 15C, 15D, 19C, 19D).
+  honest_state: >-
+    Les huit misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Trois y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

@@ -1377,51 +1377,150 @@ items:
 # added, no counts edited. The in-lesson checkpoints (checkpoints.yaml) surface
 # clones inline and are NOT counted against this end-bank floor.
 
-# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
-# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
-# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
-# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
-# (web/scripts/lib/couverture-compte.mjs) et gardé par
-# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
-# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
-# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+  # ── loi-modulaire-mal-calculee ─────────────────────────────────────────
+  # Ajoutés le 2026-09-05 : cette famille siégeait à UN seul item du banc,
+  # donc très en dessous du plancher de 3. Deux énoncés distincts — calculer
+  # dans la loi (SA-25), puis chercher un symétrique qui oblige à y revenir
+  # (SA-26) — plutôt que deux clones du même geste.
+  - id: SA-25
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, loi_modulaire]
+    stem: >
+      Sur le cadran d'une horloge, on note $E=\{0,1,\dots,11\}$ l'ensemble des
+      heures affichées et l'on définit la loi $\oplus$ par : « ajouter les deux
+      durées, puis lire l'heure que l'aiguille indique ». Que vaut
+      $9 \oplus 7$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$16$ : la somme se calcule comme d'habitude, et l'horloge affiche $16$"
+        correct: false
+        misconception: mc.math.structures_algebriques.loi-modulaire-mal-calculee
+        feedback: >
+          $16$ n'est pas dans $E$ : aucune horloge à douze heures n'affiche
+          $16$. La loi $\oplus$ n'est pas l'addition usuelle — elle est
+          l'addition SUIVIE du retour dans l'ensemble. Sans cette seconde
+          étape, le résultat sort de $E$ et la loi cesse d'être interne.
+      - id: B
+        text: "$4$ : on calcule $9+7=16$, puis $16 = 12 + 4$, donc l'aiguille indique $4$"
+        correct: true
+      - id: C
+        text: "$-4$ : on retranche la somme au tour complet, $12 - 16 = -4$"
+        correct: false
+        misconception: mc.math.structures_algebriques.loi-modulaire-mal-calculee
+        feedback: >
+          Le retour dans $E$ se fait en retranchant des tours complets AU
+          résultat, pas l'inverse : $16 - 12 = 4$, et non $12 - 16$. Un
+          nombre négatif n'est pas davantage une heure affichable que $16$ :
+          les deux erreurs sont la même, au signe près.
+      - id: D
+        text: >-
+          Aucune valeur : la loi n'est pas interne sur $E$, puisque $9+7=16$
+          n'appartient pas à $E$
+        correct: false
+        misconception: mc.math.structures_algebriques.loi-modulaire-mal-calculee
+        feedback: >
+          C'est confondre une ÉTAPE du calcul avec son résultat. La loi
+          $\oplus$ comprend le retour dans $E$ ; son résultat est $4$, qui
+          appartient bien à $E$. La loi est donc parfaitement interne — c'est
+          même exactement ce que le passage au reste garantit.
+    correct_feedback: >
+      $9 \oplus 7 = 4$. La loi de l'horloge, c'est l'addition PUIS le retour
+      dans $E$ : $9+7 = 16$, et $16 - 12 = 4$. Cette seconde étape n'est pas
+      un détail de présentation — c'est elle qui fait de $\oplus$ une loi
+      interne sur $E$.
+    solution: |
+      $$9 + 7 = 16 = 1\times 12 + 4$$
+      Le reste de la division euclidienne de $16$ par $12$ vaut $4$, donc
+      $$9 \oplus 7 = 4$$
+      Autrement dit $16 \equiv 4 \pmod{12}$. Le contrôle est immédiat : le
+      résultat d'une loi interne sur $E$ appartient à $E$. Tout résultat hors
+      de $\{0,1,\dots,11\}$ signale qu'on a oublié de revenir dans l'ensemble.
+
+  - id: SA-26
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, symetrique, loi_modulaire]
+    stem: >
+      Dans le groupe $(\mathbb{Z}/7\mathbb{Z}, +)$, dont les éléments sont les
+      classes $\{0,1,2,3,4,5,6\}$ et dont le neutre est $0$, quel est le
+      symétrique de $5$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-5$, l'opposé de $5$"
+        correct: false
+        misconception: mc.math.structures_algebriques.loi-modulaire-mal-calculee
+        feedback: >
+          $-5$ n'est pas un élément de $\mathbb{Z}/7\mathbb{Z}$ : les seuls
+          éléments sont $0$ à $6$. L'opposé usuel n'est qu'une étape — il faut
+          le ramener dans l'ensemble : $-5 + 7 = 2$. C'est la même exigence que
+          pour l'addition : tout calcul se termine par un retour dans $E$.
+      - id: B
+        text: "$0$, puisque $0$ est le neutre du groupe"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          Le neutre et le symétrique sont deux rôles distincts. Le neutre $0$
+          est unique et ne change rien à personne ; le symétrique de $5$ est
+          l'élément qui, AJOUTÉ à $5$, redonne le neutre. Or $5 + 0 = 5 \neq 0$.
+      - id: C
+        text: "$2$, car $5 + 2 = 7 \\equiv 0 \\pmod 7$"
+        correct: true
+      - id: D
+        text: "$1$, car $5 + 1 = 6$ et $6$ a pour reste $0$ dans la division par $6$"
+        correct: false
+        misconception: mc.math.structures_algebriques.loi-modulaire-mal-calculee
+        feedback: >
+          Le module est $7$, pas $6$ : c'est $\mathbb{Z}/7\mathbb{Z}$. Réduire
+          modulo un autre entier donne un résultat qui n'a plus rien à voir avec
+          la loi étudiée. Ici $6 = 0\times 7 + 6$, donc $6 \equiv 6$, pas $0$.
+    correct_feedback: >
+      Le symétrique de $5$ est $2$ : $5 + 2 = 7 \equiv 0 \pmod 7$, et le neutre
+      est bien $0$. Le réflexe qui l'obtient sans tâtonner : le symétrique de
+      $x$ dans $(\mathbb{Z}/n\mathbb{Z},+)$ est $n - x$, ramené dans
+      l'ensemble.
+    solution: |
+      On cherche $x'$ tel que $5 + x' \equiv 0 \pmod 7$, avec
+      $x' \in \{0,\dots,6\}$ :
+      $$5 + x' = 7 \quad\Longrightarrow\quad x' = 2$$
+      Vérification dans les deux sens : $5 + 2 = 7 \equiv 0$ et
+      $2 + 5 = 7 \equiv 0$. Le symétrique de $5$ est donc $2$.
+      Règle générale : dans $(\mathbb{Z}/n\mathbb{Z},+)$, le symétrique de $x$
+      non nul est $n - x$. Pour $x = 0$, le symétrique est $0$ lui-même.
+
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
-    apprenant est bâti sur le banc de fin seul.
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.math.structures_algebriques.loi-modulaire-mal-calculee: { count: 1, items: [SA-7] }
-    mc.math.structures_algebriques.neutre-vs-symetrique:       { count: 8, items: [SA-1, SA-2, SA-8, SA-12, SA-14, SA-20, SA-23, SA-24] }
+    mc.math.structures_algebriques.loi-modulaire-mal-calculee: { count: 3, items: [SA-7, SA-25, SA-26] }
+    mc.math.structures_algebriques.neutre-vs-symetrique:       { count: 9, items: [SA-1, SA-2, SA-8, SA-12, SA-14, SA-20, SA-23, SA-24, SA-26] }
     mc.math.structures_algebriques.axiome-oublie:              { count: 3, items: [SA-3, SA-4, SA-22] }
     mc.math.structures_algebriques.groupe-anneau:              { count: 6, items: [SA-5, SA-6, SA-18, SA-19, SA-20, SA-21] }
     mc.math.structures_algebriques.cloture-non-verifiee:       { count: 8, items: [SA-3, SA-6, SA-7, SA-8, SA-10, SA-11, SA-12, SA-18] }
     mc.math.structures_algebriques.assoc-commut-confusion:     { count: 6, items: [SA-9, SA-11, SA-13, SA-15, SA-16, SA-17] }
     mc.math.structures_algebriques.generalisation-hative:      { count: 7, items: [SA-13, SA-14, SA-15, SA-16, SA-17, SA-18, SA-20] }
     mc.math.structures_algebriques.groupe-implique-commutatif: { count: 3, items: [SA-15, SA-17, SA-22] }
-  total_items: 24
+  total_items: 26
   floor: 3
-  floor_met: false
+  floor_met: true
   ramp_coverage:
     R0: 3
-    R1: 3
-    R2: 3
+    R1: 4
+    R2: 4
     R3: 3
     R4: 3
     R5: 3
     R6: 3
     R7: 3
-  under_floor:
-    # Déclarées, et INÉVALUABLES : sous 3 items du banc, le modèle apprenant
-    # les laisse « unassessed » à jamais — ni détectées, ni écartées.
-    # `manquants` = nombre d'items à écrire pour franchir le plancher.
-    # « sondée en leçon » = un checkpoint la vise, ce qui NE COMPTE PAS : le
-    # modèle est bâti sur le banc de fin seul (pas de double comptage).
-    mc.math.structures_algebriques.loi-modulaire-mal-calculee: { items: 1, manquants: 2 }
   honest_state: >-
-    Une des huit misconceptions déclarées siège SOUS le
-    plancher : le modèle apprenant ne peut pas les évaluer.
-    Il manque deux items au total pour les y amener — dette NOMMÉE,
-    pas dette masquée.
+    Les huit misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Trois y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

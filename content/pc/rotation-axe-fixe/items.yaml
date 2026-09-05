@@ -1944,50 +1944,140 @@ items:
       sans moment résultant, pas de changement de vitesse angulaire, ni
       ralentissement ni accélération.
 
+  # Ajouté le 2026-09-05 : deux familles siégeaient à 2 items du banc, donc
+  # sous le plancher de 3 — `cinematique-angulaire-derivees-confondues` et
+  # `moment-inertie-additivite-erronee`. Un seul item les vise toutes les deux,
+  # parce qu'un système composite mis en rotation les fait apparaître ensemble :
+  # il faut ADDITIONNER les contributions, puis DÉRIVER l'abscisse angulaire.
+  - id: ROT-25
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_inertie, systeme_composite, cinematique_angulaire]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee
+    stem: >
+      Un disque homogène de moment d'inertie $J_0 = 0{,}20\ \text{kg}\cdot
+      \text{m}^2$ tourne autour de son axe. On y fixe une petite masse
+      ponctuelle $m = 0{,}50\ \text{kg}$ à la distance $r = 0{,}40\ \text{m}$
+      de l'axe. L'abscisse angulaire de l'ensemble s'écrit alors
+      $\theta(t) = 6{,}0\,t$ (en radians, $t$ en secondes). Que valent le
+      moment d'inertie du système et sa vitesse angulaire ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $J_\Delta = J_0 + mr^2 = 0{,}28\ \text{kg}\cdot\text{m}^2$ et
+          $\omega = \dot\theta = 6{,}0\ \text{rad}\cdot\text{s}^{-1}$, constante
+        correct: true
+      - id: B
+        text: >-
+          $J_\Delta = J_0 \times mr^2 = 0{,}016\ \text{kg}\cdot\text{m}^2$ et
+          $\omega = 6{,}0\ \text{rad}\cdot\text{s}^{-1}$
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee
+        feedback: >
+          Les moments d'inertie s'ADDITIONNENT, ils ne se multiplient pas :
+          $J_\Delta = \sum m_i r_i^2$ est une somme sur toutes les masses du
+          système, donc ajouter une masse ne peut qu'augmenter $J_\Delta$. Ici
+          la multiplication le fait au contraire chuter à $0{,}016$, soit dix
+          fois MOINS que le disque seul — un système alourdi qui deviendrait
+          plus facile à mettre en rotation.
+      - id: C
+        text: >-
+          $J_\Delta = 0{,}28\ \text{kg}\cdot\text{m}^2$, et
+          $\omega = \theta(t) = 6{,}0\,t$ : la vitesse angulaire augmente donc
+          avec le temps
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.cinematique-angulaire-derivees-confondues
+        feedback: >
+          $\theta(t)$ est la POSITION angulaire, $\omega$ son taux de variation :
+          $\omega = \dot\theta$. Dériver $\theta(t) = 6{,}0\,t$ donne la
+          constante $6{,}0\ \text{rad}\cdot\text{s}^{-1}$ — l'angle croît, la
+          vitesse angulaire ne bouge pas. C'est le mouvement de rotation
+          UNIFORME, exactement comme $x(t) = vt$ décrit une translation à
+          vitesse constante.
+      - id: D
+        text: >-
+          $J_\Delta = J_0 = 0{,}20\ \text{kg}\cdot\text{m}^2$, la masse
+          ponctuelle étant trop petite pour compter, et
+          $\omega = 6{,}0\ \text{rad}\cdot\text{s}^{-1}$
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee
+        feedback: >
+          Ce n'est pas la masse qui décide, c'est $mr^2$ : ici
+          $0{,}50 \times 0{,}40^2 = 0{,}080\ \text{kg}\cdot\text{m}^2$, soit
+          40 % du disque entier. Une petite masse placée LOIN de l'axe pèse
+          lourd dans un moment d'inertie — c'est tout le principe du volant
+          d'inertie, dont la matière est concentrée sur la jante.
+    correct_feedback: >
+      $J_\Delta = J_0 + mr^2 = 0{,}20 + 0{,}50 \times 0{,}40^2 =
+      0{,}28\ \text{kg}\cdot\text{m}^2$ : les contributions s'additionnent. Et
+      $\omega = \dot\theta = 6{,}0\ \text{rad}\cdot\text{s}^{-1}$ : la dérivée
+      d'une fonction affine du temps est une constante.
+    solution: |
+      **Le moment d'inertie.** Il se construit comme une somme :
+      $$J_\Delta = \sum_i m_i r_i^2 = J_0 + m r^2$$
+      $$J_\Delta = 0{,}20 + 0{,}50 \times (0{,}40)^2 = 0{,}20 + 0{,}080
+      = 0{,}28\ \text{kg}\cdot\text{m}^2$$
+      Contrôle : ajouter de la matière ne peut qu'AUGMENTER la résistance au
+      changement de rotation. Tout résultat inférieur à $J_0$ est faux d'avance.
+
+      **La vitesse angulaire.** Elle est la dérivée de l'abscisse angulaire :
+      $$\omega = \dot\theta = \frac{\mathrm{d}}{\mathrm{d}t}(6{,}0\,t)
+      = 6{,}0\ \text{rad}\cdot\text{s}^{-1}$$
+      constante : la rotation est uniforme. $\theta$ croît, $\omega$ non,
+      $\ddot\theta = 0$.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05. L'ancien déclarait franchement `floor_met: false` et
+# nommait ce qui manquait — mais il comptait au `primary_misconception` (une
+# tête d'affiche par item), pas au distracteur comme le fait la chaîne. Les
+# deux conventions sont légitimes ; elles ne donnent simplement pas le même
+# chiffre, et c'est celle de la chaîne qui décide de ce que le modèle apprenant
+# peut évaluer. Sous cette convention, deux familles seulement restaient sous
+# le plancher : `cinematique-angulaire-derivees-confondues` et
+# `moment-inertie-additivite-erronee`, à 2 items chacune. ROT-25 les vise
+# ensemble. Tableau GÉNÉRÉ, gardé par scripts/resume-couverture.mjs.
 coverage_summary:
-  method: "item-level, by primary_misconception (one item = one count)"
-  total_items: 24
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise: 5       # ROT-3, ROT-4, ROT-7, ROT-8, ROT-23
-    mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier: 4     # ROT-1, ROT-2, ROT-12, ROT-22
-    mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable: 3        # ROT-5, ROT-6, ROT-11
-    mc.physics.pc_rotation_axe_fixe.cinematique-angulaire-derivees-confondues: 1  # ROT-10
-    mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee: 3  # ROT-14, ROT-15, ROT-24
-    mc.physics.pc_rotation_axe_fixe.energie-cinetique-rotation-formule-fausse: 2  # ROT-16, ROT-17
-    mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee: 2   # ROT-13, ROT-18
-    mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones: 3  # ROT-19, ROT-20, ROT-21
-    mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort: 1  # ROT-9
+    mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise:                   { count: 6, items: [ROT-3, ROT-4, ROT-7, ROT-8, ROT-22, ROT-23] }
+    mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier:                 { count: 4, items: [ROT-1, ROT-2, ROT-12, ROT-22] }
+    mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable:                     { count: 3, items: [ROT-5, ROT-6, ROT-11] }
+    mc.physics.pc_rotation_axe_fixe.cinematique-angulaire-derivees-confondues:        { count: 3, items: [ROT-10, ROT-22, ROT-25] }
+    mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee:              { count: 3, items: [ROT-14, ROT-15, ROT-24] }
+    mc.physics.pc_rotation_axe_fixe.energie-cinetique-rotation-formule-fausse:        { count: 3, items: [ROT-16, ROT-17, ROT-18] }
+    mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee:                { count: 3, items: [ROT-13, ROT-18, ROT-25] }
+    mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones: { count: 3, items: [ROT-19, ROT-20, ROT-21] }
+    mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort: { count: 12, items: [ROT-1, ROT-3, ROT-5, ROT-6, ROT-7, ROT-8, ROT-9, ROT-11, ROT-14, ROT-15, ROT-16, ROT-23] }
+  total_items: 25
   floor: 3
-  floor_met: false
+  floor_met: true
   ramp_coverage:
-    R0: 3   # ROT-7, ROT-8, ROT-9
-    R1: 4   # ROT-5, ROT-6, ROT-10, ROT-11
-    R2: 3   # ROT-1, ROT-2, ROT-12
-    R3: 3   # ROT-3, ROT-4, ROT-13
-    R4: 2   # ROT-14, ROT-15
-    R5: 3   # ROT-16, ROT-17, ROT-18
-    R6: 3   # ROT-19, ROT-20, ROT-21
-    R7: 3   # ROT-22, ROT-23, ROT-24
-  note: >-
-    Honest, not padded: this end bank (ROT-1…ROT-24) was authored before the
-    misconception inventory existed, with populated `tags:` but no
-    `primary_misconception` and no per-distractor `misconception:` field.
-    This pass backfills both, additively, without altering any existing
-    stem/choice/feedback/solution text. Five of the nine models clear the
-    floor of 3 (repartition-masse-mal-comprise,
-    moment-force-sans-bras-de-levier, omega-uniforme-vs-v-variable,
-    relation-fondamentale-mal-appliquee, pendule-pesant-bras-de-levier-et-
-    periode-errones). Four fall short and are flagged, not papered over, for
-    a follow-up item pass: cinematique-angulaire-derivees-confondues (1 —
-    only ROT-10 makes it the item's headline test; it also appears as a
-    secondary distractor tag on ROT-22.A), energie-cinetique-rotation-
-    formule-fausse (2 — ROT-16, ROT-17; also appears as a distractor tag on
-    ROT-18.C), moment-inertie-additivite-erronee (2 — ROT-13, ROT-18; also
-    tagged on distractors of ROT-13/ROT-18 beyond their primaries), and
-    mecanisme-alternatif-ou-donnees-invoquees-a-tort (1 as a PRIMARY —
-    ROT-9 — though it is the single most-used tag at the distractor level,
-    appearing on 17 individual distractors across nearly every item, since
-    "invents an unstated variable/mechanism" is the recurring third-
-    distractor shape in this legacy bank; no item besides ROT-9 makes it
-    the item's own headline test). No item was invented and no count was
-    rounded up to reach 3.
+    R0: 3
+    R1: 3
+    R2: 3
+    R3: 4
+    R4: 3
+    R5: 3
+    R6: 3
+    R7: 3
+  note_banc_herite: >-
+    Le banc ROT-1…ROT-24 a été écrit AVANT que l'inventaire de misconceptions
+    existe : il portait des `tags:` mais aucun `primary_misconception` ni aucun
+    `misconception:` par distracteur. Une passe ultérieure les a ajoutés de
+    façon additive, sans toucher un seul énoncé, choix, retour ou corrigé.
+    `mecanisme-alternatif-ou-donnees-invoquees-a-tort` y est le tag le plus
+    fréquent au niveau du distracteur — « inventer une variable ou un mécanisme
+    dont l'énoncé ne parle pas » est la forme récurrente du troisième
+    distracteur dans ce banc hérité — alors qu'un seul item en fait sa tête
+    d'affiche.
+  honest_state: >-
+    Les neuf misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Six y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

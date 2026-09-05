@@ -1578,6 +1578,13 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "SA-24": [
       "mc.math.structures_algebriques.neutre-vs-symetrique"
     ],
+    "SA-25": [
+      "mc.math.structures_algebriques.loi-modulaire-mal-calculee"
+    ],
+    "SA-26": [
+      "mc.math.structures_algebriques.loi-modulaire-mal-calculee",
+      "mc.math.structures_algebriques.neutre-vs-symetrique"
+    ],
     "SA-3": [
       "mc.math.structures_algebriques.axiome-oublie",
       "mc.math.structures_algebriques.cloture-non-verifiee"
@@ -2629,6 +2636,14 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "ELECTROLYSE-22": [
       "mc.physics.pc_electrolyse.electrolyse-source-energie"
     ],
+    "ELECTROLYSE-23": [
+      "mc.physics.pc_electrolyse.bilan-matiere-electrodes",
+      "mc.physics.pc_electrolyse.sens-courant-electrons"
+    ],
+    "ELECTROLYSE-24": [
+      "mc.physics.pc_electrolyse.polarite-comme-pile",
+      "mc.physics.pc_electrolyse.sens-courant-electrons"
+    ],
     "ELECTROLYSE-3": [
       "mc.physics.pc_electrolyse.electrolyse-source-energie"
     ],
@@ -3381,6 +3396,11 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "OND-DISP-1",
       "OND-DISP-2",
       "OND-DISP-3"
+    ],
+    "OMPP-25": [
+      "OND-CALC-1",
+      "OND-DP-1",
+      "OND-DP-2"
     ],
     "OMPP-3": [
       "OND-FR-1",
@@ -4231,6 +4251,10 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "ROT-24": [
       "mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee"
+    ],
+    "ROT-25": [
+      "mc.physics.pc_rotation_axe_fixe.cinematique-angulaire-derivees-confondues",
+      "mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee"
     ],
     "ROT-3": [
       "mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort",
