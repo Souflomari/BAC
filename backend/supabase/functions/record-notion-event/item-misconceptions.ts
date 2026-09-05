@@ -206,6 +206,20 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "CI-30": [
       "mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee"
     ],
+    "CI-31": [
+      "mc.math.maths_calcul_integral.primitive-vs-derivee"
+    ],
+    "CI-32": [
+      "mc.math.maths_calcul_integral.chasles-mal-appliquee",
+      "mc.math.maths_calcul_integral.linearite-abusive",
+      "mc.math.maths_calcul_integral.primitive-vs-derivee"
+    ],
+    "CI-33": [
+      "mc.math.maths_calcul_integral.conversion-unites-aire"
+    ],
+    "CI-34": [
+      "mc.math.maths_calcul_integral.conversion-unites-aire"
+    ],
     "CI-4": [
       "mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee"
     ],
@@ -2758,6 +2772,15 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal",
       "mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau"
     ],
+    "EH-27": [
+      "mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret",
+      "mc.physics.pc_esterification_hydrolyse.obstacle-physique-invente"
+    ],
+    "EH-28": [
+      "mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret",
+      "mc.physics.pc_esterification_hydrolyse.obstacle-physique-invente",
+      "mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0"
+    ],
     "EH-3": [
       "mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester"
     ],
@@ -2875,6 +2898,16 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "EE-25": [
       "mc.physics.pc_etat_equilibre.k-depend-etat-initial"
+    ],
+    "EE-26": [
+      "mc.physics.pc_etat_equilibre.k-depend-etat-initial",
+      "mc.physics.pc_etat_equilibre.k-independant-temperature",
+      "mc.physics.pc_etat_equilibre.qr-croit-par-nature"
+    ],
+    "EE-27": [
+      "mc.physics.pc_etat_equilibre.critere-evolution-errone",
+      "mc.physics.pc_etat_equilibre.k-independant-temperature",
+      "mc.physics.pc_etat_equilibre.qr-croit-par-nature"
     ],
     "EE-3": [
       "mc.physics.pc_etat_equilibre.confond-qr-et-k"
@@ -5199,6 +5232,11 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "HIST-24": [
       "mc.philo.histoire.auteurs-echanges"
     ],
+    "HIST-25": [
+      "mc.philo.histoire.infrastructure-superstructure-inversees",
+      "mc.philo.histoire.memoire-sacralisee-ou-disqualifiee",
+      "mc.philo.histoire.ruse-de-la-raison-durcie-en-determinisme"
+    ],
     "HIST-3": [
       "mc.philo.histoire.auteurs-echanges"
     ],
@@ -5909,6 +5947,15 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "BON-21": [
       "mc.philo.bonheur.methode-de-dissertation-mal-comprise"
+    ],
+    "BON-22": [
+      "mc.philo.bonheur.bonheur-suspendu-aux-circonstances",
+      "mc.philo.bonheur.doctrines-echangees",
+      "mc.philo.bonheur.finalite-de-la-chaine-mal-comprise"
+    ],
+    "BON-23": [
+      "mc.philo.bonheur.doctrines-echangees",
+      "mc.philo.bonheur.finalite-de-la-chaine-mal-comprise"
     ],
     "BON-3": [
       "mc.philo.bonheur.doctrines-echangees"

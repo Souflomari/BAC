@@ -1198,52 +1198,183 @@ items:
       **L'erreur de l'élève :** remplacer ce mouvement par une affirmation
       de conclusion.
 
+  # Ajoutés le 2026-09-05 : deux familles sous le plancher de 3 items du banc —
+  # `bonheur-suspendu-aux-circonstances` (2 items) et
+  # `finalite-de-la-chaine-mal-comprise` (1). BON-22 travaille le retournement
+  # stoïcien, BON-23 l'argument aristotélicien de la chaîne des fins : deux
+  # gestes distincts, pas deux formulations du même.
+  - id: BON-22
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_bonheur
+    tags: [stoiciens, ce-qui-depend-de-nous, jugement]
+    stem: >
+      Un élève écrit : « Pour les stoïciens, être heureux, c'est faire en sorte
+      que les choses se passent comme on veut. » Quelle correction cette phrase
+      appelle-t-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La formule est exactement retournée : les stoïciens invitent à vouloir les choses comme elles se passent, l'effort portant sur le jugement, non sur le cours des événements."
+        correct: true
+      - id: B
+        text: "Aucune correction n'est nécessaire : le bonheur suppose bien de maîtriser le cours des choses, ce qui explique d'ailleurs pourquoi si peu d'hommes y parviennent durablement."
+        correct: false
+        misconception: mc.philo.bonheur.bonheur-suspendu-aux-circonstances
+        feedback: >
+          C'est déplacer le problème vers l'extérieur, alors que tout l'effort
+          stoïcien consiste à le ramener au-dedans. Le partage entre ce qui
+          dépend de nous — nos jugements, nos désirs, nos refus — et ce qui n'en
+          dépend pas — la santé, la fortune, l'opinion d'autrui — n'est pas un
+          constat résigné : c'est la condition d'un bonheur qui ne soit pas
+          suspendu à ce qu'on ne gouverne pas.
+      - id: C
+        text: "La correction porte ailleurs : ce que les stoïciens contestent, c'est qu'il existe une fin dernière de l'existence, chaque désir satisfait en appelant aussitôt un autre, sans terme possible."
+        correct: false
+        misconception: mc.philo.bonheur.finalite-de-la-chaine-mal-comprise
+        feedback: >
+          Aucun des auteurs du chapitre ne soutient cela — et surtout pas les
+          stoïciens, pour qui la vie conforme à la raison EST la fin dernière.
+          L'idée d'une chaîne de désirs sans terme est une objection possible à
+          Aristote, pas une thèse stoïcienne ; et l'erreur de la phrase de
+          départ ne porte pas sur la finalité, mais sur le lieu de l'effort.
+      - id: D
+        text: "La formule décrit en réalité la doctrine d'Épicure, pour qui le bonheur consiste à obtenir le plus grand nombre de plaisirs possibles au cours d'une vie, en écartant ce qui les contrarie."
+        correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
+        feedback: >
+          Double erreur. Épicure ne dit pas cela — son plaisir se CALCULE, se
+          trie, et culmine dans l'absence de trouble, pas dans l'accumulation.
+          Et la phrase de départ ne décrit pas davantage Épicure que les
+          stoïciens : elle décrit la croyance ordinaire que le bonheur se joue
+          dehors, que les deux doctrines combattent chacune à sa manière.
+    correct_feedback: >
+      La formule est retournée. « Ne demande pas que les choses arrivent comme
+      tu le veux, mais veuille les choses comme elles arrivent » : le partage
+      entre ce qui dépend de nous et ce qui n'en dépend pas déplace l'effort du
+      cours des événements vers le jugement, seul lieu où notre pouvoir est
+      entier.
+    solution: |
+      L'erreur de la phrase est un DÉPLACEMENT : elle situe le bonheur dans la
+      maîtrise du cours des choses, c'est-à-dire dans ce qui ne dépend pas de
+      nous.
+
+      Le stoïcisme opère le partage inverse. Ce qui dépend de nous — le
+      jugement, le désir, l'aversion — est le seul terrain où notre pouvoir
+      soit entier ; ce qui n'en dépend pas — le corps, les biens, la réputation
+      — nous est étranger, non parce qu'il serait sans valeur, mais parce que
+      lui suspendre notre bonheur revient à le remettre au hasard.
+
+      D'où la formule d'Épictète, qui est la phrase de l'élève exactement
+      retournée : « ne demande pas que les choses arrivent comme tu le veux,
+      mais veuille les choses comme elles arrivent ».
+
+  - id: BON-23
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: philo_bonheur
+    tags: [aristote, souverain-bien, chaine-des-fins]
+    stem: >
+      Aristote observe qu'on veut la richesse en vue de la santé, la santé en
+      vue de pouvoir agir, et ainsi de suite ; il en conclut qu'il existe une
+      fin dernière, voulue pour elle-même et jamais en vue d'autre chose. Un
+      élève objecte : « rien n'empêche la chaîne de se poursuivre
+      indéfiniment ». Que répond l'argument d'Aristote ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que si la chaîne ne s'arrêtait nulle part, aucun désir n'aurait de raison d'être : vouloir A en vue de B, B en vue de C, sans terme, c'est ne rien vouloir du tout."
+        correct: true
+      - id: B
+        text: "Que les fins intermédiaires — la richesse, la santé — sont en réalité de faux biens, dont le sage doit apprendre à se détourner pour ne viser que la fin dernière."
+        correct: false
+        misconception: mc.philo.bonheur.finalite-de-la-chaine-mal-comprise
+        feedback: >
+          L'argument de la chaîne est un argument de STRUCTURE, pas un jugement
+          de valeur sur les moyens. Aristote ne dévalorise pas la santé ou la
+          richesse : il observe seulement qu'on ne les veut pas pour elles-mêmes,
+          et que cette dépendance ne peut pas se poursuivre sans fin. Les fins
+          intermédiaires sont de vrais biens — simplement pas le souverain bien.
+      - id: C
+        text: "Qu'il n'existe en effet aucune fin dernière, et que le mot « bonheur » ne désigne rien d'autre que cette poursuite indéfinie, jamais achevée, de fins toujours nouvelles."
+        correct: false
+        misconception: mc.philo.bonheur.finalite-de-la-chaine-mal-comprise
+        feedback: >
+          C'est accorder l'objection au lieu d'y répondre — et c'est le
+          contraire de la thèse d'Aristote. Si aucune fin n'était voulue pour
+          elle-même, la chaîne entière serait suspendue dans le vide : chaque
+          désir tiendrait sa raison d'un autre, aucun n'en aurait à lui seul.
+          C'est précisément l'absurdité que l'argument met en évidence.
+      - id: D
+        text: "Que la fin dernière est le plaisir, et que le bonheur n'est rien d'autre que la somme des plaisirs accumulés au cours d'une vie humaine, une fois retranchées les peines."
+        correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
+        feedback: >
+          C'est prêter à Aristote une thèse hédoniste qui n'est pas la sienne —
+          et qui n'est même pas exactement celle d'Épicure, dont le plaisir se
+          calcule au lieu de s'accumuler. Pour Aristote, la fin dernière est
+          l'activité de l'âme conforme à sa vertu propre ; le plaisir
+          l'accompagne, il ne la définit pas.
+    correct_feedback: >
+      L'argument est structurel : une chaîne de fins sans terme ne peut donner
+      de raison à aucun de ses maillons. Puisque nous voulons effectivement des
+      choses, il existe une fin voulue pour elle-même — et Aristote la nomme
+      bonheur, ce que tous poursuivent sans jamais le poursuivre en vue
+      d'autre chose.
+    solution: |
+      **La forme de l'argument.** Chaque maillon de la chaîne tient sa raison
+      d'être du maillon suivant : la richesse vaut par la santé, la santé par
+      l'action. Si la série ne s'arrêtait jamais, aucun maillon ne recevrait
+      jamais sa raison — le désir tout entier resterait sans fondement. Or nous
+      désirons effectivement. Donc la série s'arrête.
+
+      **Ce que l'argument ne dit pas.** Il ne dit pas que les fins
+      intermédiaires soient sans valeur (choix B) : elles sont de vrais biens,
+      seulement subordonnés. Il ne dit pas non plus qu'aucune fin dernière
+      n'existe (choix C) : c'est l'objection, pas la réponse.
+
+      **Ce que l'argument établit.** Il existe un bien voulu pour lui-même et
+      jamais en vue d'autre chose — le souverain bien. Aristote en donne le nom
+      d'emblée : le bonheur. Reste à en donner le contenu, ce que fait la suite
+      du chapitre avec l'activité de l'âme conforme à la vertu.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
-# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
-# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
-# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
-# (web/scripts/lib/couverture-compte.mjs) et gardé par
-# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
-# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
-# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+# RÉÉCRIT le 2026-09-05, après BON-22 et BON-23. Le résumé précédent, généré le
+# même jour, nommait les deux familles sous le plancher :
+# `bonheur-suspendu-aux-circonstances` (2 items) et
+# `finalite-de-la-chaine-mal-comprise` (1). Les deux nouveaux items travaillent
+# deux gestes distincts — le retournement stoïcien, l'argument aristotélicien de
+# la chaîne des fins — plutôt que deux formulations du même. Tableau GÉNÉRÉ,
+# gardé par scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
-    apprenant est bâti sur le banc de fin seul.
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.philo.bonheur.doctrines-echangees:                  { count: 11, items: [BON-1, BON-2, BON-3, BON-4, BON-5, BON-6, BON-11, BON-14, BON-17, BON-18, BON-20] }
+    mc.philo.bonheur.doctrines-echangees:                  { count: 13, items: [BON-1, BON-2, BON-3, BON-4, BON-5, BON-6, BON-11, BON-14, BON-17, BON-18, BON-20, BON-22, BON-23] }
     mc.philo.bonheur.renoncement-radical-prete-aux-sages:  { count: 8, items: [BON-1, BON-2, BON-4, BON-5, BON-6, BON-11, BON-13, BON-15] }
     mc.philo.bonheur.plaisir-reduit-a-lintensite:          { count: 4, items: [BON-2, BON-10, BON-12, BON-13] }
-    mc.philo.bonheur.bonheur-suspendu-aux-circonstances:   { count: 2, items: [BON-4, BON-15] }
+    mc.philo.bonheur.bonheur-suspendu-aux-circonstances:   { count: 3, items: [BON-4, BON-15, BON-22] }
     mc.philo.bonheur.kant-mal-lu:                          { count: 3, items: [BON-5, BON-15, BON-16] }
     mc.philo.bonheur.accroche-lue-comme-une-preuve:        { count: 3, items: [BON-7, BON-8, BON-9] }
     mc.philo.bonheur.critere-etranger-a-la-question:       { count: 5, items: [BON-1, BON-6, BON-7, BON-8, BON-9] }
-    mc.philo.bonheur.finalite-de-la-chaine-mal-comprise:   { count: 1, items: [BON-10] }
+    mc.philo.bonheur.finalite-de-la-chaine-mal-comprise:   { count: 3, items: [BON-10, BON-22, BON-23] }
     mc.philo.bonheur.methode-de-dissertation-mal-comprise: { count: 3, items: [BON-19, BON-20, BON-21] }
-  total_items: 21
+  total_items: 23
   floor: 3
-  floor_met: false
+  floor_met: true
   ramp_coverage:
     R0: 3
-    R1: 3
+    R1: 4
     R2: 3
-    R3: 3
+    R3: 4
     R4: 3
     R5: 3
     R6: 3
-  under_floor:
-    # Déclarées, et INÉVALUABLES : sous 3 items du banc, le modèle apprenant
-    # les laisse « unassessed » à jamais — ni détectées, ni écartées.
-    # `manquants` = nombre d'items à écrire pour franchir le plancher.
-    # « sondée en leçon » = un checkpoint la vise, ce qui NE COMPTE PAS : le
-    # modèle est bâti sur le banc de fin seul (pas de double comptage).
-    mc.philo.bonheur.finalite-de-la-chaine-mal-comprise:   { items: 1, manquants: 2 }
-    mc.philo.bonheur.bonheur-suspendu-aux-circonstances:   { items: 2, manquants: 1 }
   honest_state: >-
-    Deux des neuf misconceptions déclarées siègent SOUS le
-    plancher : le modèle apprenant ne peut pas les évaluer.
-    Il manque trois items au total pour les y amener — dette NOMMÉE,
-    pas dette masquée.
+    Les neuf misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Cinq y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

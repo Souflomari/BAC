@@ -1865,63 +1865,307 @@ items:
 # chasles-mal-appliquee, integrale-signee-vs-aire, ipp-mauvais-choix-ou-signe)
 # and the predict-gate model (aire-naive-geometrique) all meet the ≥3 floor.
 # Three models do NOT yet meet it — surfaced here, not padded (see §6).
-coverage_summary:
-  total_items: 30
-  per_rung:
-    R0: 3   # CI-7, CI-8, CI-9
-    R1: 3   # CI-1, CI-10, CI-11
-    R2: 3   # CI-2, CI-12, CI-13
-    R3: 3   # CI-14, CI-15, CI-16
-    R4: 3   # CI-3, CI-17, CI-18
-    R5: 3   # CI-19, CI-20, CI-21
-    R6: 3   # CI-4, CI-22, CI-23
-    R7: 3   # CI-5, CI-24, CI-25
-    R8: 3   # CI-6, CI-26, CI-27
-    R9: 3   # CI-28, CI-29, CI-30
-  per_misconception:
-    mc.math.maths_calcul_integral.primitive-vs-derivee: 0            # FLOOR NOT MET — see §6
-    mc.math.maths_calcul_integral.constante-et-bornes: 2             # CI-1, CI-10 — FLOOR NOT MET
-    mc.math.maths_calcul_integral.linearite-abusive: 3              # CI-2, CI-12, CI-13 (rupture gate cp-lin-chasles)
-    mc.math.maths_calcul_integral.chasles-mal-appliquee: 3          # CI-14, CI-15, CI-16 (rupture gate cp-lin-chasles)
-    mc.math.maths_calcul_integral.integrale-signee-vs-aire: 4       # CI-6, CI-11, CI-26, CI-28 (rupture gate cp-aire-signe)
-    mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe: 3     # CI-5, CI-24, CI-25 (rupture gate cp-ipp)
-    mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee: 4  # CI-4, CI-22, CI-23, CI-30
-    mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur: 3 # CI-19, CI-20, CI-21
-    mc.math.maths_calcul_integral.hypothese-non-verifiee: 4         # CI-3, CI-17, CI-18, CI-29
-    mc.math.maths_calcul_integral.aire-naive-geometrique: 3         # CI-7, CI-8, CI-9 (predict gate cp-r0-predict)
-    mc.math.maths_calcul_integral.conversion-unites-aire: 1         # CI-27 — FLOOR NOT MET
-  floor_met: false   # 8 of 11 models meet ≥3; 3 do not (§6). All GATED models (the 4 ruptures + predict) DO meet it.
+  # Ajoutés le 2026-09-05 : quatre familles sous le plancher de 3 items du banc —
+  # `primitive-vs-derivee` (1 item), `conversion-unites-aire` (1),
+  # `linearite-abusive` (2), `chasles-mal-appliquee` (2). Quatre items, quatre
+  # gestes distincts : vérifier une primitive, combiner linéarité et Chasles sur
+  # des intégrales données, puis deux conversions d'unités d'aire — celle où les
+  # deux échelles diffèrent, celle où elles coïncident.
+  - id: CI-31
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [primitive]
+    primary_misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+    stem: >
+      On veut vérifier qu'une fonction $F$ est bien une primitive de $f$ sur un
+      intervalle $I$. Quel calcul faut-il faire ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Dériver $F$, et vérifier que $F'(x) = f(x)$ pour tout $x$ de $I$"
+        correct: true
+      - id: B
+        text: "Dériver $f$, et vérifier que $f'(x) = F(x)$ pour tout $x$ de $I$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+        feedback: >
+          Les deux rôles sont intervertis. « $F$ est une primitive de $f$ »
+          signifie que $f$ est la dérivée de $F$, pas l'inverse. Le test rapide :
+          $F$ est la fonction « la plus compliquée », celle dont on redescend en
+          dérivant ; c'est donc elle qu'on dérive.
+      - id: C
+        text: "Intégrer $F$ sur $I$, et vérifier qu'on retrouve $f$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+        feedback: >
+          Intégrer $F$ ferait remonter d'un cran de plus, dans la mauvaise
+          direction — et on obtiendrait une primitive de $F$, pas $f$. Vérifier
+          une primitive se fait toujours en DÉRIVANT : c'est l'opération dont on
+          sait qu'elle est mécanique et sans ambiguïté.
+      - id: D
+        text: "Vérifier que $F$ et $f$ prennent la même valeur en au moins un point de $I$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+        feedback: >
+          Une primitive n'est pas une fonction qui « ressemble » à $f$ ni qui la
+          croise : c'est une fonction dont la DÉRIVÉE vaut $f$ partout sur $I$.
+          $F(x) = x^2$ et $f(x) = 2x$ se croisent en $0$ et en $2$, mais c'est
+          $F' = f$ qui fait de $F$ une primitive, pas ces rencontres.
+    correct_feedback: >
+      On dérive $F$ et on vérifie $F' = f$ sur $I$. C'est la définition même :
+      $F$ est une primitive de $f$ lorsque $F$ est dérivable sur $I$ et que sa
+      dérivée y vaut $f$.
+    solution: |
+      **La définition.** $F$ est une primitive de $f$ sur $I$ lorsque $F$ est
+      dérivable sur $I$ et que
+      $$F'(x) = f(x) \quad \text{pour tout } x \in I$$
 
-  # §6 — Honest state / follow-up (do not pad; surfacing the gap IS the deliverable)
-  honest_state:
-    per_distractor_tagging: >-
-      This bank predates per-distractor tagging. The summit-conversion pass set
-      item-level primary_misconception on ALL 30 items and added per-distractor
-      `misconception` tags on the four cleanly-mapping rupture-gate canonicals
-      (CI-2 linéarité, CI-6 signe, CI-16 Chasles, CI-25 IPP). The predict-gate
-      model's per-distractor tags live in checkpoints.yaml (cp-r0-predict, all
-      three distractors tagged). Full per-distractor dual-tagging of the
-      remaining computational items (and of the heterogeneous R0 accroche
-      distractors CI-7/8/9, whose wrong reasons do not all reduce to a single
-      model) is a flagged FOLLOW-UP ITEM PASS.
-    floor_gaps:
-      - misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
-        count: 0
-        note: >-
-          NEW rupture introduced by the r-bac summit (Part A asks to verify a
-          primitive by DIFFERENTIATING). The formative gate cp-r1-primitive
-          ships in checkpoints.yaml, but the end bank has no dedicated item yet.
-          Follow-up: author ≥3 items (verify-primitive-by-differentiating;
-          integrate-vs-differentiate direction; F' = h vs h' = F).
-      - misconception: mc.math.maths_calcul_integral.constante-et-bornes
-        count: 2
-        note: >-
-          CI-1 (constant of the primitive) and CI-10 (F(b−a) vs F(b)−F(a)).
-          Follow-up: add ≥1 item on order-of-bounds / F(b) alone to reach 3.
-      - misconception: mc.math.maths_calcul_integral.conversion-unites-aire
-        count: 1
-        note: >-
-          CI-27 only (u.a. → cm²). A narrow, real bac skill. Follow-up: add ≥2
-          items (différent scales; convert-before-vs-after-the-integral) to
-          reach 3, or fold into a broader area-computation model if preferred at
-          review.
+      **Pourquoi on vérifie dans ce sens-là.** Dériver est mécanique : les
+      formules s'appliquent sans choix à faire. Primitiver ne l'est pas — il
+      faut reconnaître une forme. Une vérification doit passer par l'opération
+      sûre, donc par la dérivation.
+
+      **Exemple.** $f(x) = 2x\,e^{x^2}$ et $F(x) = e^{x^2}$ : on dérive $F$,
+      $F'(x) = 2x\,e^{x^2} = f(x)$, c'est vérifié. Toute fonction
+      $F(x) = e^{x^2} + k$ convient aussi : les primitives d'une fonction ne
+      diffèrent que d'une constante.
+
+  - id: CI-32
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [linearite, chasles]
+    primary_misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
+    stem: >
+      On donne $\displaystyle\int_0^2 f(x)\,\mathrm{d}x = 3$ et
+      $\displaystyle\int_2^5 f(x)\,\mathrm{d}x = 4$. Soit $g$ la fonction
+      définie par $g(x) = 2f(x) + 1$. Que vaut
+      $\displaystyle\int_0^5 g(x)\,\mathrm{d}x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$19$, soit $2 \\times 7$ pour la partie en $2f$, plus $5$ pour le terme constant"
+        correct: true
+      - id: B
+        text: "$15$, le terme constant $+1$ ajoutant une unité au résultat"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: >
+          Le terme constant ne s'ajoute pas tel quel : il s'INTÈGRE, donc il se
+          multiplie par la longueur de l'intervalle.
+          $\int_0^5 1\,\mathrm{d}x = 5 - 0 = 5$, pas $1$. Géométriquement,
+          c'est l'aire d'un rectangle de hauteur $1$ et de largeur $5$.
+      - id: C
+        text: "$7$, en calculant d'abord $\\int_0^5 f = 4 - 3 = 1$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
+        feedback: >
+          La relation de Chasles ADDITIONNE les morceaux consécutifs :
+          $\int_0^5 f = \int_0^2 f + \int_2^5 f = 3 + 4 = 7$. La soustraction
+          n'apparaît que lorsqu'on renverse une borne
+          ($\int_b^a = -\int_a^b$), ce qui n'est pas le cas ici : les deux
+          intervalles se suivent, de $0$ à $2$ puis de $2$ à $5$.
+      - id: D
+        text: "$14$, l'intégrale du terme constant étant nulle puisque la dérivée d'une constante est nulle"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+        feedback: >
+          C'est la DÉRIVÉE d'une constante qui est nulle ; son intégrale, elle,
+          ne l'est pas — une primitive de $1$ est $x$. Les deux opérations sont
+          inverses l'une de l'autre : ce qui disparaît en dérivant réapparaît en
+          intégrant.
+    correct_feedback: >
+      $\int_0^5 f = 3 + 4 = 7$ par Chasles, puis
+      $\int_0^5 g = 2\times 7 + 1\times(5-0) = 14 + 5 = 19$ par linéarité — le
+      terme constant s'intégrant sur toute la longueur de l'intervalle.
+    solution: |
+      **Chasles**, pour recoller les deux morceaux :
+      $$\int_0^5 f(x)\,\mathrm{d}x = \int_0^2 f(x)\,\mathrm{d}x
+      + \int_2^5 f(x)\,\mathrm{d}x = 3 + 4 = 7$$
+
+      **Linéarité**, pour traiter $g = 2f + 1$ :
+      $$\int_0^5 g(x)\,\mathrm{d}x = 2\int_0^5 f(x)\,\mathrm{d}x
+      + \int_0^5 1\,\mathrm{d}x$$
+      $$= 2 \times 7 + (5-0) = 14 + 5 = 19$$
+
+      Le point qui coûte le plus de points en épreuve est le second terme :
+      $\int_a^b k\,\mathrm{d}x = k(b-a)$, jamais $k$ tout seul.
+
+  - id: CI-33
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [aire, unites_daire]
+    primary_misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+    stem: >
+      Dans un repère orthogonal, l'unité vaut $2\ \text{cm}$ sur l'axe des
+      abscisses et $3\ \text{cm}$ sur celui des ordonnées. L'aire d'un domaine
+      situé sous une courbe vaut $5$ unités d'aire. Quelle est cette aire en
+      $\text{cm}^2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$10\\ \\text{cm}^2$, en multipliant par l'échelle des abscisses"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+        feedback: >
+          Une aire se mesure dans DEUX directions : convertir n'en compte
+          qu'une. L'unité d'aire est le rectangle bâti sur les deux unités
+          d'axe, donc $1\ \text{u.a.} = 2 \times 3 = 6\ \text{cm}^2$. Le
+          contrôle des dimensions suffit à voir l'erreur : multiplier par une
+          seule longueur donnerait des centimètres, pas des centimètres carrés.
+      - id: B
+        text: "$30\\ \\text{cm}^2$, l'unité d'aire valant $2 \\times 3 = 6\\ \\text{cm}^2$"
+        correct: true
+      - id: C
+        text: "$25\\ \\text{cm}^2$, en multipliant par la somme des deux échelles"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+        feedback: >
+          Les échelles se MULTIPLIENT, elles ne s'additionnent pas : l'aire d'un
+          rectangle est le produit de ses côtés, pas leur somme. Ici
+          $1\ \text{u.a.} = 2 \times 3 = 6\ \text{cm}^2$, et non $2 + 3 = 5$.
+      - id: D
+        text: "$5\\ \\text{cm}^2$ : l'aire ne change pas, seule l'unité dans laquelle on l'exprime change"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+        feedback: >
+          L'aire du domaine ne change pas, en effet — mais le NOMBRE qui la
+          mesure change avec l'unité, exactement comme une même longueur vaut
+          $1\ \text{m}$ ou $100\ \text{cm}$. Ici l'unité d'aire vaut
+          $6\ \text{cm}^2$, donc $5$ u.a. font $30\ \text{cm}^2$.
+    correct_feedback: >
+      $1\ \text{u.a.} = 2 \times 3 = 6\ \text{cm}^2$ : c'est l'aire du rectangle
+      construit sur les deux unités d'axe. Donc
+      $5\ \text{u.a.} = 5 \times 6 = 30\ \text{cm}^2$.
+    solution: |
+      **L'unité d'aire.** C'est l'aire du rectangle bâti sur une unité
+      d'abscisse et une unité d'ordonnée :
+      $$1\ \text{u.a.} = 2\ \text{cm} \times 3\ \text{cm} = 6\ \text{cm}^2$$
+
+      **La conversion.**
+      $$\mathcal{A} = 5\ \text{u.a.} = 5 \times 6 = 30\ \text{cm}^2$$
+
+      **Le réflexe qui protège.** Une aire est un produit de DEUX longueurs :
+      toute conversion d'aire fait donc intervenir les deux échelles. Si les
+      deux unités d'axe sont égales à $k$ cm, la conversion se fait en
+      multipliant par $k^2$ — jamais par $k$, jamais par $2k$.
+
+  - id: CI-34
+    rung: "R8"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [aire, unites_daire]
+    primary_misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+    stem: >
+      Dans un repère orthonormé où l'unité vaut $1{,}5\ \text{cm}$ sur les deux
+      axes, l'aire d'un domaine vaut $4$ unités d'aire. Combien cela fait-il de
+      $\text{cm}^2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$6\\ \\text{cm}^2$, en multipliant l'aire par $1{,}5$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+        feedback: >
+          Multiplier une fois par l'échelle convertit une LONGUEUR, pas une
+          aire. L'unité d'aire est un carré de côté $1{,}5\ \text{cm}$, donc
+          elle vaut $1{,}5^2 = 2{,}25\ \text{cm}^2$ : la conversion se fait par
+          le CARRÉ de l'échelle.
+      - id: B
+        text: "$9\\ \\text{cm}^2$, l'unité d'aire valant $1{,}5^2 = 2{,}25\\ \\text{cm}^2$"
+        correct: true
+      - id: C
+        text: "$12\\ \\text{cm}^2$, en multipliant par $1{,}5$ pour chacun des deux axes, soit par $3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+        feedback: >
+          « Une fois pour chaque axe » se traduit par une MULTIPLICATION des
+          deux facteurs, pas par leur somme : $1{,}5 \times 1{,}5 = 2{,}25$, et
+          non $1{,}5 + 1{,}5 = 3$. L'aire d'un carré est le produit de ses
+          côtés.
+      - id: D
+        text: "$4\\ \\text{cm}^2$, l'unité d'aire valant par définition un centimètre carré"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+        feedback: >
+          L'unité d'aire n'est pas fixée d'avance : elle dépend du repère
+          choisi. Ici elle vaut $1{,}5^2 = 2{,}25\ \text{cm}^2$ ; dans un repère
+          où l'unité vaut $1\ \text{cm}$ sur les deux axes, elle vaudrait
+          effectivement $1\ \text{cm}^2$ — mais ce n'est qu'un cas particulier.
+    correct_feedback: >
+      $1\ \text{u.a.} = 1{,}5^2 = 2{,}25\ \text{cm}^2$, donc
+      $4\ \text{u.a.} = 4 \times 2{,}25 = 9\ \text{cm}^2$. Une aire se convertit
+      par le CARRÉ de l'échelle.
+    solution: |
+      L'unité d'aire est le carré construit sur l'unité des deux axes :
+      $$1\ \text{u.a.} = (1{,}5)^2 = 2{,}25\ \text{cm}^2$$
+      d'où
+      $$\mathcal{A} = 4 \times 2{,}25 = 9\ \text{cm}^2$$
+
+      **La règle générale.** Si l'unité vaut $a$ cm en abscisse et $b$ cm en
+      ordonnée, alors $1\ \text{u.a.} = ab\ \text{cm}^2$. Dans un repère
+      orthonormé d'unité $k$, cela se réduit à $k^2$.
+
+      **Le contrôle par les dimensions.** Une longueur se convertit avec un
+      facteur d'échelle, une aire avec son carré, un volume avec son cube. Une
+      conversion d'aire qui ne fait apparaître l'échelle qu'une seule fois est
+      fausse avant même le calcul.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05. L'ancien déclarait `floor_met: false` et demandait
+# nommément la suite : « écrire au moins 3 items sur primitive-vs-derivee —
+# vérifier une primitive en DÉRIVANT, le sens intégrer/dériver, $F' = h$ contre
+# $h' = F$ ». C'est exactement ce que fait CI-31, et CI-32 y ajoute le piège de
+# la constante dont on croit l'intégrale nulle « puisque la dérivée d'une
+# constante l'est ». CI-33 et CI-34 referment la conversion d'unités d'aire.
+# Tableau GÉNÉRÉ contre la convention de la chaîne, gardé par
+# scripts/resume-couverture.mjs.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.math.maths_calcul_integral.primitive-vs-derivee:            { count: 3, items: [CI-11, CI-31, CI-32] }
+    mc.math.maths_calcul_integral.constante-et-bornes:             { count: 5, items: [CI-1, CI-10, CI-13, CI-15, CI-17] }
+    mc.math.maths_calcul_integral.linearite-abusive:               { count: 3, items: [CI-2, CI-12, CI-32] }
+    mc.math.maths_calcul_integral.chasles-mal-appliquee:           { count: 3, items: [CI-14, CI-16, CI-32] }
+    mc.math.maths_calcul_integral.integrale-signee-vs-aire:        { count: 5, items: [CI-6, CI-11, CI-17, CI-26, CI-28] }
+    mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe:      { count: 3, items: [CI-5, CI-24, CI-25] }
+    mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee:   { count: 4, items: [CI-4, CI-22, CI-23, CI-30] }
+    mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur: { count: 4, items: [CI-19, CI-20, CI-21, CI-29] }
+    mc.math.maths_calcul_integral.hypothese-non-verifiee:          { count: 8, items: [CI-3, CI-11, CI-12, CI-17, CI-18, CI-21, CI-23, CI-29] }
+    mc.math.maths_calcul_integral.aire-naive-geometrique:          { count: 3, items: [CI-7, CI-8, CI-9] }
+    mc.math.maths_calcul_integral.conversion-unites-aire:          { count: 3, items: [CI-27, CI-33, CI-34] }
+  total_items: 34
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 4
+    R2: 3
+    R3: 4
+    R4: 3
+    R5: 3
+    R6: 3
+    R7: 3
+    R8: 5
+    R9: 3
+  note_tagage_par_distracteur: >-
+    Ce banc est antérieur au marquage par distracteur. La passe de conversion du
+    sommet a posé un `primary_misconception` sur les 30 items d'origine, puis
+    des tags par distracteur sur les quatre canoniques des portes de rupture
+    (CI-2 linéarité, CI-6 signe, CI-16 Chasles, CI-25 intégration par parties).
+    Le marquage par distracteur du RESTE des items de calcul — et des
+    distracteurs hétérogènes de l'accroche CI-7/8/9, dont les raisons d'erreur
+    ne se ramènent pas toutes à un modèle unique — reste une passe à faire. Les
+    items ajoutés depuis (CI-31 à CI-34) portent, eux, un tag sur chaque
+    distracteur.
+  honest_state: >-
+    Les onze misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Six y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

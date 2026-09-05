@@ -1392,33 +1392,111 @@ items:
 
       **Erreur à éviter :** inverser les deux camps, ou nier toute tension.
 
+  # Ajouté le 2026-09-05 : TROIS familles siégeaient à 2 items du banc, donc
+  # sous le plancher de 3 — les déformations de Hegel, de Marx et de Ricœur.
+  # Un item de synthèse les vise ensemble : c'est le geste du barreau 7 (choisir
+  # entre quatre résumés d'auteurs), et il ne double aucun item existant, qui
+  # travaillent chacun un auteur isolément.
+  - id: HIST-25
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: philo_histoire
+    tags: [synthese, hegel, marx, ricoeur, aron]
+    stem: >
+      Quatre élèves résument chacun un auteur du chapitre. Un seul de ces
+      résumés est FIDÈLE à l'auteur qu'il prétend résumer. Lequel ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Aron : l'Histoire est contingente, ce qui ne veut pas dire qu'elle soit sans causes, mais qu'aucune loi connue d'avance ne garantissait qu'elle se déroule ainsi plutôt qu'autrement."
+        correct: true
+      - id: B
+        text: "Hegel : la ruse de la raison signifie que les hommes sont les instruments passifs d'un plan qui les traverse, sans passions propres ni initiative véritable."
+        correct: false
+        misconception: mc.philo.histoire.ruse-de-la-raison-durcie-en-determinisme
+        feedback: >
+          Le mécanisme hégélien tient sur DEUX termes, et ce résumé en supprime
+          un. Les individus poursuivent bel et bien leurs passions propres, avec
+          une initiative réelle — c'est même leur énergie qui fait avancer
+          l'Histoire. Ce qu'ils ignorent, c'est le résultat d'ensemble auquel
+          leurs actions concourent. Supprimer leur liberté en fait des
+          marionnettes ; supprimer leur ignorance en ferait des calculateurs
+          conscients de la fin de l'Histoire. Ni l'un ni l'autre n'est Hegel.
+      - id: C
+        text: "Marx : ce sont les idées dominantes d'une époque — sa religion, son droit, sa philosophie — qui déterminent en dernière instance ses rapports de production."
+        correct: false
+        misconception: mc.philo.histoire.infrastructure-superstructure-inversees
+        feedback: >
+          C'est exactement le renversement que Marx opère, pris à l'envers.
+          Pour lui, l'infrastructure — les rapports de production — détermine
+          en dernière instance la superstructure — droit, religion,
+          philosophie. Les idées d'une époque sont l'effet de son organisation
+          économique avant d'en être la cause. Inverser les deux termes revient
+          à revenir à ce que Marx critique.
+      - id: D
+        text: "Ricœur : le devoir de mémoire commande de commémorer chaque événement du passé au même titre, aucune sélection n'étant légitime."
+        correct: false
+        misconception: mc.philo.histoire.memoire-sacralisee-ou-disqualifiee
+        feedback: >
+          Ricœur ne demande pas de tout retenir — une mémoire totale ne serait
+          plus une mémoire, seulement un stock. Il pense au contraire le travail
+          par lequel une collectivité fait le tri, ce qui suppose que la mémoire
+          soit faillible et révisable, donc justiciable du travail de
+          l'historien. Sacraliser la mémoire et la disqualifier sont deux
+          manières symétriques de manquer ce point.
+    correct_feedback: >
+      Seul le résumé d'Aron est fidèle. Contingence ne veut pas dire absence de
+      causes : chaque événement en a, et de nombreuses. Elle veut dire qu'aucune
+      nécessité connaissable d'avance ne commandait ce déroulement-là — c'est
+      cette nécessité que les idéologies du sens de l'Histoire croient tenir.
+    solution: |
+      Les trois résumés faux le sont chacun par une déformation caractéristique.
+
+      **Hegel (chapitre 2).** La ruse de la raison articule deux choses : les
+      individus agissent LIBREMENT, poussés par leurs passions, et ils IGNORENT
+      le résultat d'ensemble auquel ils contribuent. Retirer la liberté en fait
+      des marionnettes, retirer l'ignorance en fait des exécutants conscients :
+      dans les deux cas, il n'y a plus de ruse.
+
+      **Marx (chapitre 3).** Le matérialisme historique renverse l'idéalisme :
+      l'infrastructure économique détermine la superstructure idéologique, et
+      non l'inverse. Le résumé C rétablit précisément ce que Marx renverse.
+
+      **Ricœur (chapitre 6).** Le devoir de mémoire n'est ni l'obligation de
+      tout conserver, ni le soupçon généralisé contre le souvenir. C'est un
+      TRAVAIL — de sélection, de rectification, de confrontation aux traces —
+      qui suppose la mémoire faillible, donc perfectible.
+
+      **Aron (chapitre 4).** La contingence n'est pas le hasard : elle nie la
+      nécessité connue d'avance, pas la causalité.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
-# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
-# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
-# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
-# (web/scripts/lib/couverture-compte.mjs) et gardé par
-# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
-# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
-# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+# RÉÉCRIT le 2026-09-05, après HIST-25. Le résumé précédent, généré le même
+# jour, déclarait `floor_met: false` et nommait les trois familles sous le
+# plancher : les déformations de Hegel, de Marx et de Ricœur, à 2 items
+# chacune. Un item de synthèse — choisir, entre quatre résumés d'auteurs, le
+# seul fidèle — les referme ensemble. Tableau GÉNÉRÉ contre la convention de
+# la chaîne (web/scripts/lib/couverture-compte.mjs), gardé par
+# scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
-    apprenant est bâti sur le banc de fin seul.
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
     mc.philo.histoire.auteurs-echanges:                         { count: 13, items: [HIST-2, HIST-3, HIST-4, HIST-6, HIST-9, HIST-12, HIST-13, HIST-15, HIST-16, HIST-17, HIST-22, HIST-23, HIST-24] }
-    mc.philo.histoire.ruse-de-la-raison-durcie-en-determinisme: { count: 2, items: [HIST-2, HIST-13] }
+    mc.philo.histoire.ruse-de-la-raison-durcie-en-determinisme: { count: 3, items: [HIST-2, HIST-13, HIST-25] }
     mc.philo.histoire.contingence-lue-comme-absurdite:          { count: 4, items: [HIST-4, HIST-9, HIST-12, HIST-13] }
     mc.philo.histoire.objectivite-tout-ou-rien:                 { count: 3, items: [HIST-5, HIST-18, HIST-19] }
     mc.philo.histoire.memoire-histoire-passe-confondus:         { count: 4, items: [HIST-1, HIST-10, HIST-11, HIST-21] }
-    mc.philo.histoire.memoire-sacralisee-ou-disqualifiee:       { count: 2, items: [HIST-6, HIST-20] }
+    mc.philo.histoire.memoire-sacralisee-ou-disqualifiee:       { count: 3, items: [HIST-6, HIST-20, HIST-25] }
     mc.philo.histoire.objection-du-chapitre-1-mal-lue:          { count: 3, items: [HIST-7, HIST-8, HIST-9] }
-    mc.philo.histoire.infrastructure-superstructure-inversees:  { count: 2, items: [HIST-14, HIST-15] }
-  total_items: 24
+    mc.philo.histoire.infrastructure-superstructure-inversees:  { count: 3, items: [HIST-14, HIST-15, HIST-25] }
+  total_items: 25
   floor: 3
-  floor_met: false
+  floor_met: true
   ramp_coverage:
     R0: 3
     R1: 3
@@ -1427,18 +1505,8 @@ coverage_summary:
     R4: 3
     R5: 3
     R6: 3
-    R7: 3
-  under_floor:
-    # Déclarées, et INÉVALUABLES : sous 3 items du banc, le modèle apprenant
-    # les laisse « unassessed » à jamais — ni détectées, ni écartées.
-    # `manquants` = nombre d'items à écrire pour franchir le plancher.
-    # « sondée en leçon » = un checkpoint la vise, ce qui NE COMPTE PAS : le
-    # modèle est bâti sur le banc de fin seul (pas de double comptage).
-    mc.philo.histoire.infrastructure-superstructure-inversees:  { items: 2, manquants: 1 }
-    mc.philo.histoire.memoire-sacralisee-ou-disqualifiee:       { items: 2, manquants: 1 }
-    mc.philo.histoire.ruse-de-la-raison-durcie-en-determinisme: { items: 2, manquants: 1 }
+    R7: 4
   honest_state: >-
-    Trois des huit misconceptions déclarées siègent SOUS le
-    plancher : le modèle apprenant ne peut pas les évaluer.
-    Il manque trois items au total pour les y amener — dette NOMMÉE,
-    pas dette masquée.
+    Les huit misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Cinq y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

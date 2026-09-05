@@ -1469,63 +1469,209 @@ items:
 # item was deleted, weakened, or had its correct answer, stem, feedback, or
 # rung altered — additive only.
 # ──────────────────────────────────────────────────────────────────────────────
+  # Ajoutés le 2026-09-05 : trois familles sous le plancher de 3 items du banc —
+  # `equilibre-percu-comme-arret` (1 item), `obstacle-physique-invente` (1) et
+  # `tau-depend-de-n0` (2). Les deux items les visent ensemble : ce qui se passe
+  # à l'échelle des molécules quand plus rien ne bouge (EH-27), puis ce que
+  # devient $\tau$ quand on triple les quantités engagées (EH-28).
+  - id: EH-27
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret
+    stem: >
+      Un mélange d'acide éthanoïque et d'éthanol a atteint son état
+      d'équilibre : les quantités de chacune des quatre espèces ne varient
+      plus. Que se passe-t-il alors à l'échelle des molécules ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les deux réactions continuent à se produire, à des vitesses égales :
+          il se forme autant d'ester qu'il s'en hydrolyse à chaque instant
+        correct: true
+      - id: B
+        text: >-
+          Plus rien ne se produit : les deux réactions se sont arrêtées, ce qui
+          est précisément ce que signifie « état d'équilibre »
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret
+        feedback: >
+          L'équilibre chimique est DYNAMIQUE, pas statique. Ce qui est constant,
+          ce sont les quantités globales ; les molécules, elles, continuent de
+          réagir dans les deux sens. La preuve expérimentale existe : en
+          remplaçant l'oxygène de l'alcool par un isotope, on le retrouve dans
+          l'ester bien après que les quantités ont cessé de bouger.
+      - id: C
+        text: >-
+          L'eau formée s'est accumulée autour des molécules d'acide et les
+          empêche désormais de rencontrer physiquement l'alcool
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.obstacle-physique-invente
+        feedback: >
+          Aucun obstacle matériel n'intervient : les molécules continuent de se
+          rencontrer et de réagir. Ce qui limite la transformation n'est pas un
+          encombrement, c'est l'existence de la réaction INVERSE — l'hydrolyse
+          de l'ester par l'eau formée. C'est une compétition entre deux
+          réactions, pas un embouteillage.
+      - id: D
+        text: >-
+          L'estérification s'est arrêtée et seule l'hydrolyse continue, ce qui
+          explique que les quantités ne bougent plus
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret
+        feedback: >
+          Si seule l'hydrolyse continuait, l'ester disparaîtrait peu à peu : les
+          quantités bougeraient, et dans un sens bien précis. Que rien ne varie
+          exige au contraire que les DEUX réactions se poursuivent, et
+          exactement à la même vitesse.
+    correct_feedback: >
+      À l'équilibre, les deux réactions se poursuivent à vitesses égales :
+      autant d'ester se forme qu'il s'en hydrolyse. Les quantités globales sont
+      figées, l'activité moléculaire ne l'est pas — c'est ce qu'on appelle un
+      équilibre dynamique.
+    solution: |
+      **Ce qui est constant.** Les quantités de matière des quatre espèces :
+      acide, alcool, ester, eau. C'est ce que mesure l'expérimentateur.
+
+      **Ce qui ne l'est pas.** L'activité moléculaire. L'estérification se
+      poursuit à la vitesse $v_1$, l'hydrolyse à la vitesse $v_2$, et
+      l'équilibre est exactement l'état où $v_1 = v_2$ : chaque molécule d'ester
+      formée est compensée par une molécule d'ester hydrolysée.
+
+      **La vérification expérimentale.** En marquant l'oxygène de l'alcool par
+      un isotope $^{18}\text{O}$, on le retrouve progressivement dans l'ester
+      bien après que les quantités ont cessé de varier. Rien ne bouge en
+      apparence, tout bouge en réalité.
+
+      **Ce qui limite la transformation** n'est donc ni un manque de réactifs,
+      ni un obstacle physique : c'est la réaction inverse.
+
+  - id: EH-28
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0
+    stem: >
+      On mélange $1{,}0\ \text{mol}$ d'acide éthanoïque et $1{,}0\ \text{mol}$
+      d'éthanol : le taux d'avancement final vaut $\tau \approx 0{,}67$. On
+      recommence avec $3{,}0\ \text{mol}$ de chacun, à la même température. Que
+      vaut alors $\tau$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Environ $0{,}67$ encore : tripler les deux quantités à proportions
+          égales multiplie de la même façon l'avancement final et l'avancement
+          maximal
+        correct: true
+      - id: B
+        text: >-
+          Nettement plus, proche de $1$ : avec trois fois plus de réactifs, les
+          rencontres sont plus nombreuses et la réaction va donc plus loin
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0
+        feedback: >
+          Plus de rencontres, c'est une réaction plus RAPIDE, pas une réaction
+          qui va plus loin. $\tau$ mesure la position de l'équilibre, fixée par
+          la constante $K$ : tripler les deux quantités triple aussi bien
+          l'avancement final que l'avancement maximal, et leur rapport ne bouge
+          pas.
+      - id: C
+        text: >-
+          Moins que $0{,}67$ : l'eau formée est trois fois plus abondante et
+          gêne d'autant la rencontre des molécules d'acide et d'alcool
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.obstacle-physique-invente
+        feedback: >
+          L'eau formée agit bien, mais chimiquement, pas physiquement : elle
+          hydrolyse l'ester. Or elle est ici trois fois plus abondante face à
+          trois fois plus d'ester — la compétition entre les deux sens est
+          exactement la même qu'avant. Aucun encombrement matériel n'entre en
+          jeu.
+      - id: D
+        text: >-
+          On ne peut pas le prévoir : les réactions s'arrêtent à l'équilibre, et
+          le moment de cet arrêt dépend des quantités engagées au départ
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret
+        feedback: >
+          Rien ne s'arrête à l'équilibre : les deux réactions s'y poursuivent à
+          vitesses égales. Et l'état d'équilibre est parfaitement prévisible —
+          il est fixé par $K$, qui ne dépend que de la température. C'est même
+          pour cette raison que $\tau \approx 2/3$ est un repère du chapitre.
+    correct_feedback: >
+      $\tau \approx 0{,}67$ à nouveau. Tripler les deux quantités à proportions
+      égales triple $x_f$ et $x_{max}$ dans le même rapport : leur quotient,
+      donc $\tau$, ne change pas. Seule la température peut déplacer cet
+      équilibre.
+    solution: |
+      Le taux d'avancement final est un RAPPORT :
+      $$\tau = \frac{x_f}{x_{max}}$$
+      Partir de $3{,}0\ \text{mol}$ au lieu de $1{,}0$, en gardant les mêmes
+      proportions, multiplie $x_{max}$ par 3. La constante d'équilibre $K$,
+      elle, est inchangée — elle ne dépend que de la température — donc l'état
+      d'équilibre se situe au même endroit relatif : $x_f$ est lui aussi
+      multiplié par 3.
+
+      Le rapport reste donc $\approx 0{,}67$, soit le repère $2/3$ du mélange
+      équimolaire acide + alcool primaire.
+
+      **Ce qui déplacerait vraiment l'équilibre** : changer les PROPORTIONS
+      (un excès d'un réactif), retirer l'un des produits au fur et à mesure, ou
+      changer la température. Pas la simple mise à l'échelle.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05. L'ancien déclarait franchement `floor_met: false` et
+# nommait quatre familles non gatées sous le plancher — au décompte par
+# `primary_misconception`. Sous la convention de la chaîne (au distracteur),
+# il en restait trois : `equilibre-percu-comme-arret` (1 item),
+# `obstacle-physique-invente` (1) et `tau-depend-de-n0` (2). EH-27 et EH-28 les
+# referment. Tableau GÉNÉRÉ, gardé par scripts/resume-couverture.mjs.
 coverage_summary:
-  method: "item-level, by primary_misconception (one item = one count) — mirrors content/pc/rc-charge/items.yaml"
-  total_items: 26
-  gated:
-    # The four misconceptions named in checkpoints.yaml's summit-conversion
-    # campaign (cp-r0-predict, cp-r2-limitee, cp-r3-avancement,
-    # cp-r4-catalyseur, cp-r5-deplacement). Floor = 3, honestly met for all
-    # four.
-    mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement: 3   # EH-1, EH-4, EH-17
-    mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement: 3    # EH-2, EH-9, EH-22
-    mc.physics.pc_esterification_hydrolyse.esterification-totale: 3           # EH-7, EH-13, EH-23
-    mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal: 3  # EH-24, EH-25, EH-26
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement:        { count: 7, items: [EH-1, EH-4, EH-7, EH-9, EH-13, EH-17, EH-23] }
+    mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement:         { count: 4, items: [EH-2, EH-4, EH-9, EH-22] }
+    mc.physics.pc_esterification_hydrolyse.esterification-totale:                { count: 4, items: [EH-4, EH-7, EH-13, EH-23] }
+    mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal:       { count: 3, items: [EH-24, EH-25, EH-26] }
+    mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester:        { count: 3, items: [EH-3, EH-8, EH-11] }
+    mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses:       { count: 3, items: [EH-6, EH-10, EH-19] }
+    mc.physics.pc_esterification_hydrolyse.confond-k-et-qr:                      { count: 4, items: [EH-5, EH-9, EH-18, EH-21] }
+    mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret:          { count: 3, items: [EH-12, EH-27, EH-28] }
+    mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau:                 { count: 5, items: [EH-14, EH-16, EH-20, EH-24, EH-26] }
+    mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0:                     { count: 3, items: [EH-14, EH-15, EH-28] }
+    mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues: { count: 6, items: [EH-1, EH-2, EH-5, EH-18, EH-21, EH-22] }
+    mc.physics.pc_esterification_hydrolyse.obstacle-physique-invente:            { count: 3, items: [EH-13, EH-27, EH-28] }
+  total_items: 28
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 3
+    R2: 5
+    R3: 5
+    R4: 4
+    R5: 3
+    R6: 5
+  gated_misconceptions:
+    # Les familles nommées par les portes de conversion du sommet
+    # (cp-r0-predict, cp-r2-limitee, cp-r3-avancement, cp-r4-catalyseur,
+    # cp-r5-deplacement) — écho formatif, jamais recompté ici.
+    - mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+    - mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+    - mc.physics.pc_esterification_hydrolyse.esterification-totale
+    - mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
   gated_floor: 3
   gated_floor_met: true
-  other_misconceptions:
-    # Surfaced honestly while tagging every existing distractor against what
-    # each stem actually diagnoses. NOT part of the summit-conversion gate,
-    # so NOT padded to the floor per working rules ("do not pad"). Three
-    # already clear 3 for free; four remain under floor and are flagged, not
-    # padded, per §6.
-    mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester: 3        # EH-3, EH-8, EH-11 (floor met)
-    mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses: 3       # EH-6, EH-10, EH-19 (floor met)
-    mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau: 3                 # EH-14, EH-16, EH-20 (floor met)
-    mc.physics.pc_esterification_hydrolyse.confond-k-et-qr: 2                      # EH-5, EH-18 — UNDER FLOOR (honest, not padded)
-    mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret: 1          # EH-12 — UNDER FLOOR (honest, not padded)
-    mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0: 1                     # EH-15 — UNDER FLOOR (honest, not padded)
-    mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues: 1 # EH-21 — UNDER FLOOR (honest, not padded)
-    mc.physics.pc_esterification_hydrolyse.obstacle-physique-invente: 0            # surfaced only as a secondary distractor tag (EH-13 choice C); no item centers it as primary — UNDER FLOOR (honest, not padded)
-  ramp_coverage:
-    R0: 3   # EH-7, EH-8, EH-9
-    R1: 3   # EH-6, EH-10, EH-11
-    R2: 4   # EH-3, EH-12, EH-13, EH-25
-    R3: 4   # EH-14, EH-15, EH-16, EH-24
-    R4: 4   # EH-1, EH-2, EH-17, EH-22
-    R5: 3   # EH-4, EH-5, EH-18
-    R6: 5   # EH-19, EH-20, EH-21, EH-23, EH-26
-  note: >
-    Floor-closing pass for esterification-hydrolyse's end bank, mirroring
-    content/pc/rc-charge/items.yaml's backfill. Per-distractor `misconception:`
-    tags added to every correct:false choice across EH-1…EH-21 (additive
-    only — no stem, feedback, solution, correct answer, or rung was altered
-    or removed). Five new items (EH-22…EH-26) close the ≥3 floor for the
-    three gated misconceptions the original 21-item bank under-covered:
-    chauffage-augmente-rendement (2→3, EH-22), esterification-totale (2→3,
-    EH-23), and avancement-final-egale-maximal (0→3, EH-24/25/26 — this
-    misconception previously existed only in checkpoints.yaml's
-    cp-r3-avancement, with zéro end-bank coverage). Each new item is a fresh
-    stem (not a memorizable restatement of cp-r3-avancement or of any
-    existing EH item), spans R2/R3/R4/R6 to keep the ramp populated, and
-    varies the correct-choice letter (B, C, D, B, C respectively for
-    EH-22…EH-26). No spec.md exists for this notion (per the original file's
-    note, unchanged); this inventory was built by tagging every existing
-    distractor honestly against checkpoints.yaml's four gated ids plus
-    whatever additional error patterns the existing stems actually diagnose
-    — not invented ahead of the items. Four non-gated misconceptions remain
-    under the 3-item floor (confond-k-et-qr: 2, equilibre-percu-comme-arret:
-    1, tau-depend-de-n0: 1, cinetique-thermodynamique-confondues: 1,
-    obstacle-physique-invente: 0 primary / 1 secondary-only) — disclosed
-    here rather than padded with weak items, per working rules §"do not
-    pad".
+  honest_state: >-
+    Les douze misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Six y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.
