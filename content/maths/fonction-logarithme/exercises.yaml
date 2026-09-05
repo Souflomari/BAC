@@ -221,7 +221,7 @@ exercises:
         reasoning: |-
           Récurrence classique d'encadrement pour une suite $u_{n+1}=f(u_n)$. **Initialisation :** $u_0 = 1$ vérifie $1 \le 1 \le e$. **Hérédité :** on suppose $1 \le u_n \le e$ et on veut $1 \le u_{n+1} \le e$. On exploite que $f$ est **croissante sur $[1,+\infty[$** (question 3c), donc sur $[1,e]$ : appliquée à l'encadrement, la croissance donne $f(1) \le f(u_n) \le f(e)$. Or $f(1) = \dfrac32$ et $f(e) = e + \dfrac12 - 1 + \dfrac12 = e$. Donc $\dfrac32 \le u_{n+1} \le e$, et comme $\dfrac32 \ge 1$, l'encadrement $1 \le u_{n+1} \le e$ est acquis.
         steps:
-          - math: '\text{Initialisation : } u_0 = 1, \quad 1 \le 1 \le e \ \checkmark'
+          - math: '\text{Initialisation\,: } u_0 = 1, \quad 1 \le 1 \le e \ \checkmark'
             note: "Le rang 0 vérifie l'encadrement."
           - math: 'f \text{ croissante sur } [1,e] \ \Rightarrow\ 1 \le u_n \le e \ \Rightarrow\ f(1) \le f(u_n) \le f(e)'
             note: "On applique la monotonie de f (question 3c) à l'hypothèse de récurrence."
@@ -378,7 +378,7 @@ exercises:
         reasoning: |-
           **Initialisation :** $u_0 = e^2$ vérifie $e \le e^2 \le e^2$. **Hérédité :** on suppose $e \le u_n \le e^2$. Comme $f$ est **strictement croissante** (question 4), $f(e) \le f(u_n) \le f(e^2)$. Or $f(e) = e$ (point fixe, car $\ln e = 1$) et $f(e^2) = e^2 - (2-1)^2 = e^2 - 1$. Donc $e \le u_{n+1} \le e^2 - 1 \le e^2$ : l'encadrement se transmet.
         steps:
-          - math: '\text{Initialisation : } u_0 = e^2, \quad e \le e^2 \le e^2 \ \checkmark'
+          - math: '\text{Initialisation\,: } u_0 = e^2, \quad e \le e^2 \le e^2 \ \checkmark'
             note: "Vrai au rang 0."
           - math: 'f \text{ croissante} \ \Rightarrow\ e \le u_n \le e^2 \ \Rightarrow\ f(e) \le u_{n+1} \le f(e^2)'
             note: "On applique la stricte croissance de f à l'hypothèse."

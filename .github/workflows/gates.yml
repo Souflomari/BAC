@@ -162,6 +162,22 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           node scripts/impression.mjs --porte $routes / /examens /matieres/pc
 
+      # PORTE TYPOGRAPHIE (2026-09-05). `remarkFrenchTypography` normalise la
+      # PROSE des leçons ; il ne voyait rien du reste — et le reste est
+      # visible. Mesuré : le corps d'une leçon écrivait « le pendule
+      # d’énergie » et le rail des chapitres, à trois centimètres, « le
+      # pendule d'énergie ». ~1 100 écarts hors prose (figures, \text{} des
+      # formules, titres, libellés du programme), tous corrigés À LEUR SOURCE.
+      # La porte lit le texte RENDU, chapitres dépliés, et attribue chaque
+      # écart au site de rendu — donc à l'endroit où le corriger.
+      - name: Porte typographie française
+        run: |
+          routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
+          test -n "$routes"
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/typo-francaise.mjs --porte $routes / /examens \
+            /matieres/pc /matieres/maths /matieres/svt /matieres/philo /commencer
+
       - name: Model-id hygiene gate
         working-directory: .
         run: |

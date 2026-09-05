@@ -24,6 +24,8 @@
  * function (the two operate on different intermediate representations).
  */
 
+import { frenchTypography } from "@/lib/frenchTypography";
+
 const HEADING_LINE_RE = /^##\s+(.+?)\s*$/;
 const RUNG_PREFIX_RE = /^(R\d+)\s*[-—]\s*(.+)$/;
 
@@ -84,8 +86,11 @@ export function sansLatex(texte: string): string {
  * headings keep their text — this function does nothing rung-specific).
  */
 export function shortTitleOf(title: string): string {
+  // La découpe se fait AVANT la normalisation typographique : après elle, le
+  // séparateur n'est plus « espace deux-points espace » mais une insécable
+  // fine, et le `split(" : ")` ne mordrait plus. L'ordre compte.
   const cut = title.split(" : ")[0].split(" (")[0].trim();
-  return sansLatex(cut.length > 0 ? cut : title);
+  return frenchTypography(sansLatex(cut.length > 0 ? cut : title));
 }
 
 /**
@@ -100,10 +105,18 @@ export function extractChapterHeadings(markdown: string): ChapterHeadingInfo[] {
     if (!m) continue;
     const fullText = m[1].trim();
     const rungMatch = fullText.match(RUNG_PREFIX_RE);
-    const title = sansLatex(rungMatch ? rungMatch[2].trim() : fullText);
+    const brut = sansLatex(rungMatch ? rungMatch[2].trim() : fullText);
+    // TYPOGRAPHIE FRANÇAISE ICI, à la source des titres de chapitre — pas
+    // dans chaque composant qui les affiche. Mesuré le 2026-09-05 : le corps
+    // de la leçon disait « le pendule d’énergie » et le rail, juste à côté,
+    // « le pendule d'énergie ». Deux apostrophes différentes pour le même
+    // titre, à trois centimètres l'une de l'autre. Ce fichier est la source
+    // unique que le rail ET la page lisent : normaliser ici les met d'accord
+    // par construction, et non par vigilance.
+    const title = frenchTypography(brut);
     out.push({
       title,
-      shortTitle: shortTitleOf(title),
+      shortTitle: shortTitleOf(brut),
       rung: rungMatch ? rungMatch[1] : undefined,
     });
   }

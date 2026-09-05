@@ -1,6 +1,6 @@
 <svg style="text-anchor:middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img"
      font-family="'IBM Plex Sans', system-ui, sans-serif"
-     aria-label="Pourquoi on divise par p factorielle : les 6 arrangements ordonnés d'Amine, Sara et Karim (à gauche) se regroupent, via une accolade, en une seule combinaison non ordonnée — Amine, Sara, Karim — à droite. En bas, le même mécanisme appliqué au comité de 3 parmi 8 de la leçon : A huit trois égale 336 arrangements, divisé par 3 factorielle égale 6, donne 56 combinaisons C huit trois.">
+     aria-label="Pourquoi on divise par p factorielle : les 6 arrangements ordonnés d’Amine, Sara et Karim (à gauche) se regroupent, via une accolade, en une seule combinaison non ordonnée — Amine, Sara, Karim — à droite. En bas, le même mécanisme appliqué au comité de 3 parmi 8 de la leçon : A huit trois égale 336 arrangements, divisé par 3 factorielle égale 6, donne 56 combinaisons C huit trois.">
   <title>Arrangement vs combinaison — pourquoi diviser par p!</title>
 
   <!--
@@ -60,7 +60,7 @@
        STEP 1 — panneau gauche : les 6 arrangements ordonnés
        ══════════════════════════════════════════════════════ -->
   <g id="step-1">
-    <text class="aec-title" x="170" y="22">Arrangements — l'ordre compte</text>
+    <text class="aec-title" x="170" y="22">Arrangements — l’ordre compte</text>
     <text class="aec-sub"   x="170" y="38">les 3! = 6 façons de classer Amine, Sara, Karim</text>
 
     <rect class="aec-box" x="40" y="52"  width="260" height="48" rx="12"/>
@@ -86,7 +86,7 @@
        STEP 2 — panneau droit : l'accolade ÷3! effondre les 6 en 1 combinaison
        ══════════════════════════════════════════════════════ -->
   <g id="step-2">
-    <text class="aec-title" x="570" y="22">Combinaison — l'ordre ne compte plus</text>
+    <text class="aec-title" x="570" y="22">Combinaison — l’ordre ne compte plus</text>
     <text class="aec-sub"   x="570" y="38">le même groupe, une seule fois</text>
 
     <path class="aec-brace" d="M310,52 C332,52 332,202 350,216 C332,230 332,380 310,380"/>
@@ -95,14 +95,14 @@
 
     <rect class="aec-combobox" x="440" y="186" width="260" height="60" rx="14"/>
     <text class="aec-combolabel" x="570" y="214">{Amine, Sara, Karim}</text>
-    <text class="aec-combosub" x="570" y="234">1 seul groupe (l'ordre est oublié)</text>
+    <text class="aec-combosub" x="570" y="234">1 seul groupe (l’ordre est oublié)</text>
   </g><!-- /step-2 -->
 
   <!-- ══════════════════════════════════════════════════════
        STEP 3 — le pont vers les nombres réels du comité de 3 parmi 8
        ══════════════════════════════════════════════════════ -->
   <g id="step-3">
-    <text class="aec-bridge1" x="400" y="430">Même mécanisme pour choisir 3 personnes parmi 8 :</text>
+    <text class="aec-bridge1" x="400" y="430">Même mécanisme pour choisir 3 personnes parmi 8 :</text>
     <text class="aec-bridge2" x="400" y="452"><tspan font-style="italic">A</tspan><tspan dy="4" font-size="65%">8</tspan><tspan dy="-9" font-size="65%">3</tspan><tspan dy="5"> = 336 → 336 ÷ 3! = 56 = </tspan><tspan font-style="italic">C</tspan><tspan dy="4" font-size="65%">8</tspan><tspan dy="-9" font-size="65%">3</tspan></text>
   </g><!-- /step-3 -->
 

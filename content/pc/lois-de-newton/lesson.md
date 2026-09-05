@@ -280,7 +280,7 @@ On lâche un objet sans vitesse initiale depuis une hauteur $h = 19{,}6\ \text{m
 
 $$v_G(t) = g\,t \qquad (\text{car } v_G(0) = 0)$$
 
-$$x(t) = \frac{1}{2}g\,t^2 \qquad (\text{en prenant l'origine des positions au point de lâcher})$$
+$$x(t) = \frac{1}{2}g\,t^2 \qquad (\text{en prenant l’origine des positions au point de lâcher})$$
 
 On cherche l'instant $t_{sol}$ où $x(t_{sol}) = h$ :
 

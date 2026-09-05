@@ -1998,7 +1998,7 @@ entries:
 
           Sur la figure 4, la courbe $(a)$ part de son maximum à $t=0$ : c'est donc $E_C$. La courbe $(b)$ part de zéro à $t=0$ : c'est donc $E_L$.
 
-          $$\boxed{(b)\ \text{correspond à l'énergie emmagasinée dans la bobine}}$$
+          $$\boxed{(b)\ \text{correspond à l’énergie emmagasinée dans la bobine}}$$
 
           Le piège nommé de cette question. Chercher à distinguer les deux courbes par leur PÉRIODE ou leur AMORTISSEMENT — elles ont la même pseudo-période et le même taux de décroissance (chapitre 4 : c'est $r$ seul qui gouverne l'amortissement, identique pour les deux formes d'énergie). Ce qui les distingue, c'est uniquement la CONDITION INITIALE — laquelle des deux vaut zéro à $t=0$ — et cette condition vient directement de la phrase « condensateur totalement chargé », pas du dessin.
       - id: q3
@@ -2177,7 +2177,7 @@ entries:
         reasoning: |-
           Le chapitre 8 de cette leçon répond exactement à cette question, pour ce montage même : sans entretien, $R$ dissipe de l'énergie par effet Joule à chaque cycle, et les oscillations s'amortissent (c'est ce que montre la figure 3). L'appareil d'entretien restitue, à chaque cycle, une énergie électrique EXACTEMENT égale à celle que $R$ vient de dissiper.
 
-          $$\boxed{\text{L'appareil d'entretien compense exactement l'énergie dissipée par effet Joule dans } R \text{ à chaque cycle}}$$
+          $$\boxed{\text{L’appareil d’entretien compense exactement l’énergie dissipée par effet Joule dans } R \text{ à chaque cycle}}$$
 
           Il ne « donne pas le rythme » : c'est toujours $L$ et $C'$ qui fixent la fréquence propre — le générateur d'entretien ne fait que combler la fuite, pour que l'amplitude cesse de décroître.
       - id: q3-2
@@ -2349,7 +2349,7 @@ entries:
           - l'énergie totale du circuit, $\mathcal{E} = \frac{1}{2}C\,u_C^2 + \frac{1}{2}L\,i^2$, **diminue au cours du temps** — la question 2-4 vient de le chiffrer ($\approx 1{,}7\times10^{-3}\ \text{J}$ à $t=0$, $4{,}2\times10^{-4}\ \text{J}$ à $36\ \text{ms}$) — parce que la résistance totale $R + r$ dissipe de l'énergie **par effet Joule** à chaque instant où un courant circule ;
           - mais cette dissipation est assez lente pour que l'échange d'énergie entre le condensateur et la bobine (le balancement du chapitre 2) se poursuive : le système oscille encore, chaque balancement rendant un peu moins que le précédent — d'où des extrema de plus en plus faibles, à pseudo-période constante.
 
-          $$\boxed{\text{Dissipation par effet Joule dans } R + r \implies \text{amplitude décroissante : régime pseudo-périodique}}$$
+          $$\boxed{\text{Dissipation par effet Joule dans } R + r \implies \text{amplitude décroissante\,: régime pseudo-périodique}}$$
 
           Le piège nommé de cette question. Répondre « l'énergie se conserve en passant du condensateur à la bobine » : c'est le circuit IDÉAL du chapitre 3. Ici la conservation est précisément ce qui est PERDU — et c'est la décroissance de l'enveloppe, pas l'oscillation elle-même, que la question demande de justifier.
 
@@ -3141,7 +3141,7 @@ entries:
 
           **Le piège de cette question.** Faire intervenir $R$ dans un pont diviseur, ou retrancher une chute de tension. En régime permanent le courant est nul, donc $u_R = R \times 0 = 0$ : le résistor ne « prend » rien. Il n'aurait servi qu'à ralentir la charge — et l'énoncé, en disant « jusqu'à ce que le condensateur soit chargé complètement », nous dispense justement d'en tenir compte.
         steps:
-          - math: '\text{Fin de la charge (position 1) : régime permanent} \Rightarrow i = 0 \Rightarrow u_R = 0 \Rightarrow u_C = E'
+          - math: '\text{Fin de la charge (position 1)\,: régime permanent} \Rightarrow i = 0 \Rightarrow u_R = 0 \Rightarrow u_C = E'
             note: "En regime permanent aucun courant ne circule : le resistor ne prend aucune tension. R ne fixe que la duree de la charge."
           - math: 'q = C\,u_C \quad\text{et}\quad q(0) = Q_m \quad\text{(le basculement se fait condensateur pleinement chargé)}'
             note: "Definition de la capacite, appliquee a l'instant du basculement. Coherent avec q(t) = Qm cos(omega0 t), qui vaut Qm en t = 0."

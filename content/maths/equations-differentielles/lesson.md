@@ -265,7 +265,7 @@ La figure ci-dessus rend visible ce que le chapitre 2 avait déjà annoncé : l'
 
 Jusqu'ici, l'équation portait sur $y'$ seule. Voici une équation différente, qui porte sur la dérivée **seconde** $y''$ : pour $\omega$ un réel strictement positif fixé (appelé **pulsation**),
 
-$$y''(x) + \omega^2\,y(x) = 0 \qquad \text{c'est-à-dire} \qquad y''(x) = -\omega^2\,y(x)$$
+$$y''(x) + \omega^2\,y(x) = 0 \qquad \text{c’est-à-dire} \qquad y''(x) = -\omega^2\,y(x)$$
 
 Cette équation dit : la dérivée seconde de $y$ est proportionnelle à $-y$ elle-même. C'est le signe **moins** qui change tout par rapport à un simple $y''=ky$ ($k>0$, qu'on ne traite pas dans ce chapitre) : ici, quand $y$ est positif, $y''$ est négatif — la courbe se recourbe **vers** l'axe, jamais en s'en éloignant indéfiniment. C'est exactement la signature d'un mouvement qui **oscille**, sans jamais s'échapper vers l'infini.
 

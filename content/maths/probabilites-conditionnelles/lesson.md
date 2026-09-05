@@ -234,9 +234,9 @@ L'indépendance ne supprime pas l'intersection. Elle en fixe la **valeur** : le 
 
 Résumons les deux formules qui coexistent dans cette leçon :
 
-$$\text{Événements incompatibles :} \quad P(A \cup B) = P(A) + P(B)$$
+$$\text{Événements incompatibles\,:} \quad P(A \cup B) = P(A) + P(B)$$
 
-$$\text{Événements indépendants :} \quad P(A \cap B) = P(A) \cdot P(B)$$
+$$\text{Événements indépendants\,:} \quad P(A \cap B) = P(A) \cdot P(B)$$
 
 Ce sont deux formules pour deux relations différentes et deux opérations ensemblistes différentes ($\cup$ vs $\cap$). Il ne faut pas mélanger les deux.
 

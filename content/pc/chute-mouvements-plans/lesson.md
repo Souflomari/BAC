@@ -660,7 +660,7 @@ Précision importante avant d'aller plus loin : le programme ne demande de **cal
 
 Deux expressions de la vitesse orbitale $v$, pour un satellite en orbite circulaire de rayon $r$ et de période $T$ : celle établie au chapitre 10 à partir de la deuxième loi, et celle, purement géométrique, du périmètre du cercle parcouru en une période :
 
-$$v = \sqrt{\frac{GM}{r}} \qquad \text{(chapitre 10)} \qquad \qquad v = \frac{2\pi r}{T} \qquad \text{(MCU : périmètre / période)}$$
+$$v = \sqrt{\frac{GM}{r}} \qquad \text{(chapitre 10)} \qquad \qquad v = \frac{2\pi r}{T} \qquad \text{(MCU\,: périmètre / période)}$$
 
 Ces deux expressions désignent la même vitesse : on peut les égaler.
 

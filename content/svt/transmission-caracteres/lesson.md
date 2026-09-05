@@ -271,13 +271,13 @@ D'abord, nommons les allèles : $N$ (plumage noir, dominant) et $n$ (plumage bla
 
 Regardons les proportions observées sur les 186 poussins :
 
-$$\text{noir-simple : } \frac{49}{186} \approx 0{,}26$$
+$$\text{noir-simple\,: } \frac{49}{186} \approx 0{,}26$$
 
-$$\text{noir-frisée : } \frac{45}{186} \approx 0{,}24$$
+$$\text{noir-frisée\,: } \frac{45}{186} \approx 0{,}24$$
 
-$$\text{blanc-simple : } \frac{47}{186} \approx 0{,}25$$
+$$\text{blanc-simple\,: } \frac{47}{186} \approx 0{,}25$$
 
-$$\text{blanc-frisée : } \frac{45}{186} \approx 0{,}24$$
+$$\text{blanc-frisée\,: } \frac{45}{186} \approx 0{,}24$$
 
 Les quatre classes sont sensiblement égales, chacune proche de $\frac{1}{4}$ (la valeur théorique exacte serait $\frac{186}{4} = 46{,}5$ poussins par classe — les petits écarts observés sont la variation normale d'un tirage réel, pas un signal d'erreur).
 

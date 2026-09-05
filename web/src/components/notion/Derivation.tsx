@@ -28,6 +28,7 @@ import type { DerivationStep } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import { TransportButton } from "./TransportButton";
+import { frenchTypography } from "@/lib/frenchTypography";
 
 /** Inline-capable markdown for notes; display math for step equations. */
 function Note({ children }: { children: string }) {
@@ -96,7 +97,7 @@ export function Derivation({
     >
       {title && (
         <p className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
-          {title}
+          {frenchTypography(title)}
         </p>
       )}
 

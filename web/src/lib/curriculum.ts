@@ -90,7 +90,7 @@ export interface Filiere {
 const MATHS: Subject = {
   id: "maths",
   label: "Mathématiques",
-  blurb: "Analyse, nombres complexes, probabilités et géométrie dans l'espace.",
+  blurb: "Analyse, nombres complexes, probabilités et géométrie dans l’espace.",
   source: "programme-standard",
   units: [
     {
@@ -122,7 +122,7 @@ const MATHS: Subject = {
     {
       title: "Géométrie",
       chapters: [
-        { slug: "geometrie-espace", title: "Géométrie dans l'espace" },
+        { slug: "geometrie-espace", title: "Géométrie dans l’espace" },
       ],
     },
     {
@@ -146,7 +146,7 @@ const PC: Subject = {
       chapters: [
         { slug: "ondes-mecaniques-progressives", title: "Ondes mécaniques progressives" },
         { slug: "ondes-mecaniques-periodiques", title: "Ondes mécaniques progressives périodiques" },
-        { slug: "propagation-onde-lumineuse", title: "Propagation d'une onde lumineuse" },
+        { slug: "propagation-onde-lumineuse", title: "Propagation d’une onde lumineuse" },
       ],
     },
     {
@@ -162,7 +162,7 @@ const PC: Subject = {
         { slug: "rc-charge", title: "Dipôle RC" },
         { slug: "dipole-rl", title: "Dipôle RL" },
         { slug: "rlc-serie", title: "Oscillations libres dans un circuit RLC série" },
-        { slug: "ondes-em-modulation", title: "Ondes électromagnétiques — modulation d'amplitude" },
+        { slug: "ondes-em-modulation", title: "Ondes électromagnétiques — modulation d’amplitude" },
       ],
     },
     {
@@ -170,7 +170,7 @@ const PC: Subject = {
       chapters: [
         { slug: "lois-de-newton", title: "Lois de Newton" },
         { slug: "chute-mouvements-plans", title: "Chute libre et mouvements plans" },
-        { slug: "rotation-axe-fixe", title: "Rotation autour d'un axe fixe" },
+        { slug: "rotation-axe-fixe", title: "Rotation autour d’un axe fixe" },
         { slug: "systemes-oscillants", title: "Systèmes oscillants" },
         { slug: "aspects-energetiques", title: "Aspects énergétiques" },
         { slug: "atome-mecanique-newton", title: "Atome et mécanique de Newton" },
@@ -180,27 +180,27 @@ const PC: Subject = {
       title: "Chimie — Cinétique",
       chapters: [
         { slug: "transformations-lentes-rapides", title: "Transformations lentes et rapides" },
-        { slug: "suivi-temporel-vitesse", title: "Suivi temporel d'une transformation — vitesse" },
+        { slug: "suivi-temporel-vitesse", title: "Suivi temporel d’une transformation — vitesse" },
       ],
     },
     {
       title: "Chimie — Équilibres",
       chapters: [
         { slug: "transformations-deux-sens", title: "Transformations dans les deux sens" },
-        { slug: "etat-equilibre", title: "État d'équilibre d'un système chimique" },
+        { slug: "etat-equilibre", title: "État d’équilibre d’un système chimique" },
         { slug: "reactions-acido-basiques", title: "Réactions acido-basiques" },
       ],
     },
     {
-      title: "Chimie — Sens d'évolution",
+      title: "Chimie — Sens d’évolution",
       chapters: [
-        { slug: "evolution-spontanee", title: "Évolution spontanée d'un système" },
-        { slug: "piles", title: "Piles et récupération de l'énergie" },
+        { slug: "evolution-spontanee", title: "Évolution spontanée d’un système" },
+        { slug: "piles", title: "Piles et récupération de l’énergie" },
         { slug: "electrolyse", title: "Transformations forcées — électrolyse" },
       ],
     },
     {
-      title: "Chimie — Contrôle de l'évolution",
+      title: "Chimie — Contrôle de l’évolution",
       chapters: [
         { slug: "esterification-hydrolyse", title: "Estérification et hydrolyse" },
         { slug: "controle-catalyse", title: "Contrôle par un réactif ou par catalyse" },
@@ -212,13 +212,13 @@ const PC: Subject = {
 const SVT: Subject = {
   id: "svt",
   label: "Sciences de la Vie et de la Terre",
-  blurb: "Flux d'énergie, génétique, immunologie et tectonique des plaques.",
+  blurb: "Flux d’énergie, génétique, immunologie et tectonique des plaques.",
   source: "programme-standard",
   units: [
     {
-      title: "Consommation de la matière organique et flux d'énergie",
+      title: "Consommation de la matière organique et flux d’énergie",
       chapters: [
-        { slug: "liberation-energie-matiere-organique", title: "La libération de l'énergie emmagasinée dans la matière organique" },
+        { slug: "liberation-energie-matiere-organique", title: "La libération de l’énergie emmagasinée dans la matière organique" },
         { slug: "role-enzymes", title: "Le rôle des enzymes dans la digestion" },
       ],
     },
@@ -234,7 +234,7 @@ const SVT: Subject = {
       title: "Immunologie",
       chapters: [
         { slug: "soi-non-soi", title: "Le soi et le non-soi" },
-        { slug: "moyens-de-defense", title: "Les moyens de défense de l'organisme" },
+        { slug: "moyens-de-defense", title: "Les moyens de défense de l’organisme" },
         { slug: "dysfonctionnements-immunitaires", title: "Dysfonctionnements et aides du système immunitaire" },
       ],
     },
@@ -252,7 +252,7 @@ const SVT: Subject = {
 const PHILO: Subject = {
   id: "philo",
   label: "Philosophie",
-  blurb: "Les grands axes du programme : la condition humaine, la politique, la morale et la connaissance.",
+  blurb: "Les grands axes du programme : la condition humaine, la politique, la morale et la connaissance.",
   source: "programme-standard",
   units: [
     {
@@ -260,13 +260,13 @@ const PHILO: Subject = {
       chapters: [
         { slug: "la-personne", title: "La personne" },
         { slug: "autrui", title: "Autrui" },
-        { slug: "l-histoire", title: "L'histoire" },
+        { slug: "l-histoire", title: "L’histoire" },
       ],
     },
     {
       title: "La politique",
       chapters: [
-        { slug: "l-etat", title: "L'État" },
+        { slug: "l-etat", title: "L’État" },
         { slug: "le-droit-la-justice", title: "Le droit et la justice" },
         { slug: "la-violence", title: "La violence" },
       ],
@@ -283,13 +283,13 @@ const PHILO: Subject = {
       title: "La connaissance",
       chapters: [
         { slug: "la-verite", title: "La vérité" },
-        { slug: "theorie-experience", title: "La théorie et l'expérience" },
+        { slug: "theorie-experience", title: "La théorie et l’expérience" },
       ],
     },
     {
-      title: "Méthode de l'épreuve",
+      title: "Méthode de l’épreuve",
       chapters: [
-        { slug: "analyse-de-texte", title: "Méthode de l'analyse de texte philosophique" },
+        { slug: "analyse-de-texte", title: "Méthode de l’analyse de texte philosophique" },
       ],
     },
   ],
@@ -297,7 +297,7 @@ const PHILO: Subject = {
 
 const SI: Subject = {
   id: "si",
-  label: "Sciences de l'ingénieur",
+  label: "Sciences de l’ingénieur",
   blurb: "Programme spécifique à la filière Sciences Mathématiques B — chapitres à venir.",
   source: "stub",
   units: [],
@@ -330,7 +330,7 @@ export const FILIERES: Filiere[] = [
     id: "sm-b",
     name: "Sciences Mathématiques B",
     short: "SM-B",
-    blurb: "Mathématiques et physique, avec les sciences de l'ingénieur.",
+    blurb: "Mathématiques et physique, avec les sciences de l’ingénieur.",
     subjects: [
       { id: "maths", coefficient: 9 },
       { id: "pc", coefficient: 7 },

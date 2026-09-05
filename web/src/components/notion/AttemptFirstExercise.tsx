@@ -37,6 +37,7 @@ import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import { Derivation } from "./Derivation";
 import { useAttemptRecorder } from "./AttemptEvents";
+import { frenchTypography } from "@/lib/frenchTypography";
 
 /** Block-level markdown + KaTeX renderer (stems and reasoning are prose).
  *  Exported so the bank card's intro renders identically (BANK-SPEC §3). */
@@ -91,7 +92,7 @@ function Question({
     <>
       {part && (
         <p className="mt-8 mb-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
-          {part}
+          {frenchTypography(part)}
         </p>
       )}
       <div className="py-5 border-b border-subtle last:border-b-0">

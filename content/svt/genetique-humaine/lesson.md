@@ -69,9 +69,9 @@ Reprends la définition du chapitre précédent : un allèle **dominant** s'expr
 
 ### Le test
 
-$$\text{Enfant atteint, DEUX parents phénotypiquement sains} \;\Longrightarrow\; \text{l'allèle ne peut pas être dominant}$$
+$$\text{Enfant atteint, DEUX parents phénotypiquement sains} \;\Longrightarrow\; \text{l’allèle ne peut pas être dominant}$$
 
-$$\Longrightarrow \text{l'allèle est récessif, et les deux parents sont hétérozygotes (porteurs sains)}$$
+$$\Longrightarrow \text{l’allèle est récessif, et les deux parents sont hétérozygotes (porteurs sains)}$$
 
 C'est un raisonnement par élimination, pas une supposition : si l'allèle était dominant, l'un des deux parents devrait être atteint, puisqu'il porterait forcément cet allèle pour le transmettre. Comme aucun des deux ne l'est, l'hypothèse dominante est directement contredite par l'observation — il ne reste que l'hypothèse récessive.
 
@@ -240,7 +240,7 @@ Construisons l'échiquier $X^{H}X^{h}$ (II-1) $\times$ $X^{H}Y$ (II-2) :
 
 On sait déjà que III-1 est un **fils** — cette information restreint l'échiquier aux deux cases où l'enfant reçoit un Y du père : $X^{H}Y$ (sain) et $X^{h}Y$ (atteint), chacune de proportion $\frac14$ dans l'échiquier complet, donc à parts égales ($\frac12$ chacune) une fois restreint aux seuls fils.
 
-$$P(\text{III-1 atteint} \mid \text{c'est un fils}) = \frac{1/4}{1/4 + 1/4} = \frac{1}{2}$$
+$$P(\text{III-1 atteint} \mid \text{c’est un fils}) = \frac{1/4}{1/4 + 1/4} = \frac{1}{2}$$
 
 **Conclusion :** II-1 est certainement porteuse ($X^{H}X^{h}$), et III-1 a une probabilité $\frac12$ d'être atteint d'hémophilie.
 

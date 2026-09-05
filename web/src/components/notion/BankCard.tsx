@@ -33,6 +33,7 @@ import { AttemptFirstQuestions, MdBlock } from "./AttemptFirstExercise";
 import { useExerciseRevealIds, revealKey } from "@/lib/student-state";
 import { ExplicationPlayer } from "./ExplicationPlayer";
 import type { ExplicationResolue, ExplicationInteractive } from "@/lib/explications";
+import { frenchTypography } from "@/lib/frenchTypography";
 
 function sessionLabel(session: string): string {
   if (session === "normale") return "Normale";
@@ -148,7 +149,7 @@ export function BankCard({
 
           {entry.source.exerciseLabel && (
             <p className="mt-1.5 text-caption text-tertiary">
-              {entry.source.exerciseLabel}
+              {frenchTypography(entry.source.exerciseLabel)}
             </p>
           )}
         </div>

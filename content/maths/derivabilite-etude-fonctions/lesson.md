@@ -452,7 +452,7 @@ Il reste le troisième temps, celui qui se paie en points : dériver $f^{-1}$ en
 
 **Théorème.** Soit $f$ une bijection d'un intervalle $I$ sur $J$, dérivable en un point $a$ de $I$, et $b=f(a)$. Si $f'(a) \neq 0$, alors $f^{-1}$ est dérivable en $b$ et
 
-$$\left(f^{-1}\right)'(b) = \frac{1}{f'(a)} \qquad \text{c'est-à-dire} \qquad \left(f^{-1}\right)'(b) = \frac{1}{f'\!\left(f^{-1}(b)\right)}$$
+$$\left(f^{-1}\right)'(b) = \frac{1}{f'(a)} \qquad \text{c’est-à-dire} \qquad \left(f^{-1}\right)'(b) = \frac{1}{f'\!\left(f^{-1}(b)\right)}$$
 
 **Pourquoi ce $1$ sur la pente, avec l'image de la tangente :** la tangente à la courbe de $f$ au point $(a,b)$ a pour pente $f'(a)$ ; elle avance de $1$ horizontalement pendant qu'elle monte de $f'(a)$. Symétrise cette droite par rapport à $y=x$ : elle devient la tangente à la courbe de $f^{-1}$ au point $(b,a)$, et la symétrie échange justement l'horizontal et le vertical. Le déplacement qui valait "$1$ à droite, $f'(a)$ vers le haut" devient "$f'(a)$ à droite, $1$ vers le haut" : la nouvelle pente est $\dfrac{1}{f'(a)}$.
 

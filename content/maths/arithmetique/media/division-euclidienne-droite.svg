@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 420" role="img"
      font-family="'IBM Plex Sans', system-ui, sans-serif"
-     aria-label="Deux droites graduées aux multiples de 12. Sur la première, 157 tombe dans la cellule [156, 168) : quotient 13, reste 1. Sur la seconde, -157 tombe dans la cellule [-168, -156) : quotient -14, reste 11 — le quotient -13, qui placerait -157 hors de sa cellule et forcerait un reste négatif, est barré comme erreur fréquente.">
+     aria-label="Deux droites graduées aux multiples de 12. Sur la première, 157 tombe dans la cellule [156, 168) : quotient 13, reste 1. Sur la seconde, -157 tombe dans la cellule [-168, -156) : quotient -14, reste 11 — le quotient -13, qui placerait -157 hors de sa cellule et forcerait un reste négatif, est barré comme erreur fréquente.">
   <title>Division euclidienne de 157 puis de -157 par 12 — la droite des multiples</title>
   <!--
     division-euclidienne-droite.svg — StagedFigure, R1 de arithmetique/lesson.md.
@@ -111,14 +111,14 @@
 
     <!-- le piège : q = -13 (tentant, faux) -->
     <text x="410" y="272" text-anchor="middle" font-size="12" fill="var(--figure-ink-soft)"><tspan
-          font-style="italic">q</tspan> = -13 ?</text>
+          font-style="italic">q</tspan> = -13 ?</text>
     <!-- data-rature : ce trait BARRE « q = -13 ? » exprès — c'est le piège de
          la figure, et la rature est ce qui dit qu'il est faux. La sonde de
          figure-preview signale les tracés qui traversent un texte ; cet
          attribut lui dit que celui-là est voulu. -->
     <line data-rature="1" x1="386" y1="266" x2="434" y2="278" stroke="var(--figure-ink)" stroke-width="1.6"/>
     <text x="410" y="396" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">12&#215;(-13) = -156 &gt; -157</text>
-    <text x="410" y="410" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">&#8594; -157 hors de sa cellule, reste &lt; 0 : interdit</text>
+    <text x="410" y="410" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">&#8594; -157 hors de sa cellule, reste &lt; 0 : interdit</text>
   </g>
 
 </svg>

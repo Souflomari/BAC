@@ -244,7 +244,7 @@ Encadre $\displaystyle\int_0^1 e^x\,\mathrm{d}x$ sans la calculer, à l'aide de 
 
 **Ce qu'on cherche et pourquoi ce geste :** on a besoin du minimum et du maximum de $e^x$ sur $[0,1]$. La fonction exponentielle est strictement croissante (chapitre "Fonction exponentielle"), donc sur $[0,1]$ son minimum est atteint en $x=0$ et son maximum en $x=1$ :
 
-$$e^0 \leq e^x \leq e^1 \quad \text{pour } x \in [0,1] \qquad \text{c'est-à-dire} \qquad 1 \leq e^x \leq e$$
+$$e^0 \leq e^x \leq e^1 \quad \text{pour } x \in [0,1] \qquad \text{c’est-à-dire} \qquad 1 \leq e^x \leq e$$
 
 Applique l'inégalité de la moyenne avec $m=1$, $M=e$, $b-a=1$ :
 

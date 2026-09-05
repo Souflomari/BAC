@@ -584,7 +584,7 @@ entries:
         reasoning: |-
           Récurrence d'encadrement classique pour $u_{n+1}=f(u_n)$ (chapitre « Suites numériques »). Initialisation : $u_0=1$ vérifie $1\le1\le e$. Hérédité : on suppose $1\le u_n\le e$, et on exploite que $f$ est croissante sur $[1,e]$ (établi dans le tableau de variations, valable car $[1,e]\subset[1,+\infty[$) : $f(1)\le f(u_n)\le f(e)$. Avec $f(1)=\frac32$ et $f(e)=e+\frac12-1+\frac12=e$, on obtient $\frac32\le u_{n+1}\le e$, et comme $\frac32\ge1$, l'encadrement passe au rang $n+1$.
         steps:
-          - math: '\text{Initialisation : } u_0=1, \quad 1\le1\le e \ \checkmark'
+          - math: '\text{Initialisation\,: } u_0=1, \quad 1\le1\le e \ \checkmark'
             note: "Rang 0."
           - math: 'f \text{ croissante sur } [1,e] \implies f(1)\le f(u_n)\le f(e)'
             note: "Monotonie de f appliquee a l'hypothese de recurrence."
@@ -1067,7 +1067,7 @@ entries:
             note: "Taux d'accroissement, simplification par x."
           - math: '\lim_{x\to0^-} (x^2+3) = 3'
             note: "Limite finie : h derivable a gauche en 0."
-          - math: '\text{Interpretation : } (C_h) \text{ admet en } (0,0) \text{ une demi-tangente a gauche de coefficient directeur } 3'
+          - math: '\text{Interpretation\,: } (C_h) \text{ admet en } (0,0) \text{ une demi-tangente a gauche de coefficient directeur } 3'
             note: "Interpretation geometrique de la derivabilite a gauche."
       - id: q17
         stem: |-
@@ -2397,7 +2397,7 @@ entries:
           **Le point de départ.** Par définition, $\alpha_{n+1}$ est le zéro de $f_{n+1}$ dans $]1,2[$ :
 
           $$f_{n+1}(\alpha_{n+1}) = 0
-          \qquad\text{c'est-à-dire}\qquad
+          \qquad\text{c’est-à-dire}\qquad
           \alpha_{n+1} - \alpha_{n+1}^{\,n+1}\ln \alpha_{n+1} = 0$$
 
           soit, en isolant :
@@ -3138,7 +3138,7 @@ entries:
 
           Or $0 \in\, ]-\infty,1]$ : il existe donc un **unique** $x_0 \in [0,+\infty[$ tel que $\psi(x_0)=0$. Comme $\psi(0)=1\ne 0$, ce $x_0$ n'est pas $0$ : il appartient à $]0,+\infty[$. Note-le $\alpha$.
 
-          $$\boxed{\text{L'équation } f(x)=3x \text{ admet une unique solution } \alpha \text{ dans } ]0,+\infty[}$$
+          $$\boxed{\text{L’équation } f(x)=3x \text{ admet une unique solution } \alpha \text{ dans } ]0,+\infty[}$$
 
           **Le piège nommé de cette question.** Invoquer le TVI et s'arrêter là. Le TVI donne l'**existence**, jamais l'unicité — une fonction continue peut valoir $0$ en plusieurs points. C'est la stricte décroissance qui interdit un second passage par $0$. Les deux arguments sont complémentaires, et la rédaction doit les faire apparaître **séparément**, comme ci-dessus.
         steps:
@@ -3177,9 +3177,9 @@ entries:
         steps:
           - math: 'f \text{ strictement decroissante sur } [0,+\infty[ \text{, de } f(0)=1 \text{ vers une limite } 0 \text{ jamais atteinte} \ \Longrightarrow\ f(x)>0 \ \forall x\ge 0'
             note: "Fait prealable, tire du tableau de variations complet (question 5-a)."
-          - math: '\text{Initialisation : } u_0 = \beta \ge 0 \quad (\beta \in \mathbb{R}^{+})'
+          - math: '\text{Initialisation\,: } u_0 = \beta \ge 0 \quad (\beta \in \mathbb{R}^{+})'
             note: "R plus inclut 0 : c'est pourquoi le glyphe casse a ete adjuge R plus et non R plus etoile."
-          - math: '\text{Heredite : } u_n \ge 0 \ \Longrightarrow\ f(u_n) > 0 \ \Longrightarrow\ u_{n+1} = \frac13 f(u_n) > 0 \ge 0'
+          - math: '\text{Heredite\,: } u_n \ge 0 \ \Longrightarrow\ f(u_n) > 0 \ \Longrightarrow\ u_{n+1} = \frac13 f(u_n) > 0 \ge 0'
             note: "u_n dans le domaine de f (positif), donc f(u_n) strictement positif par le fait prealable."
           - math: '\boxed{\forall n \in \mathbb{N}\ ;\ u_n \ge 0} \quad (\text{recurrence, initialisation + heredite})'
             note: "Principe de recurrence : les deux etapes etablies separement suffisent pour tout rang n."
@@ -3213,7 +3213,7 @@ entries:
 
           **Le piège nommé de cette question.** Appliquer le TAF sans vérifier ses deux hypothèses (continuité sur le fermé, dérivabilité sur l'ouvert) — ici elles sont vraies, mais elles ne le sont que parce que les questions 2-a et 3 les ont établies plus haut ; les admettre sans les citer prive la démonstration de son fondement.
         steps:
-          - math: 'F(x) = \frac13 f(x), \qquad F(\alpha) = \frac13 f(\alpha) = \frac13(3\alpha) = \alpha \quad (\text{question 1 : } f(\alpha)=3\alpha)'
+          - math: 'F(x) = \frac13 f(x), \qquad F(\alpha) = \frac13 f(\alpha) = \frac13(3\alpha) = \alpha \quad (\text{question 1\,: } f(\alpha)=3\alpha)'
             note: "Alpha est le point fixe de F : c'est ce qui relie la question 1 a celle-ci."
           - math: '\exists\, c \text{ entre } u_n \text{ et } \alpha \ (c>0), \quad F(u_n)-F(\alpha) = F''(c)(u_n-\alpha) \quad (\text{TAF, F continue sur le ferme, derivable sur l ouvert})'
             note: "Theoreme des accroissements finis, hors socle de cette lecon (domaine derivabilite), enonce et applique ici."
@@ -3251,9 +3251,9 @@ entries:
 
           **Le piège nommé de cette question.** Appliquer la question 2-b directement à $|u_n-\alpha|$ au lieu de $|u_{n+1}-\alpha|$ — confondre le rang qu'on **suppose** connu (HR, au rang $n$) et celui qu'on **cherche** à établir (au rang $n+1$) fait s'effondrer toute la chaîne d'inégalités. Il faut toujours partir de $|u_{n+1}-\alpha|$, lui appliquer 2-b, puis **seulement ensuite** invoquer HR sur le $|u_n-\alpha|$ qui apparaît.
         steps:
-          - math: '\text{Initialisation : } |u_0-\alpha| = |\beta-\alpha| = \frac{1}{2^0}|\beta-\alpha| \quad (\text{egalite au rang } 0)'
+          - math: '\text{Initialisation\,: } |u_0-\alpha| = |\beta-\alpha| = \frac{1}{2^0}|\beta-\alpha| \quad (\text{egalite au rang } 0)'
             note: "u_0 = beta par definition. Egalite exacte au rang 0 : c'est elle qui force le symbole a etre <= et non <."
-          - math: '\text{HR : } |u_n-\alpha| \le \frac{1}{2^n}|\beta-\alpha| \quad \text{(hypothese, rang } n\text{)}'
+          - math: '\text{HR\,: } |u_n-\alpha| \le \frac{1}{2^n}|\beta-\alpha| \quad \text{(hypothese, rang } n\text{)}'
             note: "Ce qu'on suppose connu, a un rang n fixe quelconque."
           - math: '|u_{n+1}-\alpha| \le \frac12|u_n-\alpha| \ (\text{question 2-b}) \ \le\ \frac12\cdot\frac{1}{2^n}|\beta-\alpha| \ (\text{HR}) \ =\ \frac{1}{2^{n+1}}|\beta-\alpha|'
             note: "Heredite : question 2-b d'abord, puis HR appliquee au terme qui en resulte."
@@ -3409,7 +3409,7 @@ entries:
         steps:
           - math: 'f(x) = \dfrac{\ln x}{(x-1)(x+1)} = \dfrac{\ln x - \ln 1}{x-1} \times \dfrac{1}{x+1}'
             note: "Factorisation du denominateur, pour faire apparaitre un taux d'accroissement."
-          - math: '\lim_{x\to 1} \dfrac{\ln x - \ln 1}{x-1} = \ln''(1) = 1 \quad (\text{R3 : ln derivable en 1})'
+          - math: '\lim_{x\to 1} \dfrac{\ln x - \ln 1}{x-1} = \ln''(1) = 1 \quad (\text{R3\,: ln derivable en 1})'
             note: "Taux d'accroissement de ln en 1, egal a la derivee de ln en 1."
           - math: '\lim_{x\to 1^+} f(x) = 1 \times \dfrac{1}{1+1} = \dfrac12 = f(1)'
             note: "Produit des deux limites : f continue a droite en 1."
@@ -3818,7 +3818,7 @@ entries:
 
           **La conclusion, par le corollaire du TVI.** $h$ continue et strictement décroissante sur $[1,2]$, avec $h(1)>0>h(2)$ : $h$ réalise une bijection de $[1,2]$ sur $[h(2),h(1)]$, et $0$ appartient à cet intervalle. Il existe donc un **unique** $a\in[1,2]$ tel que $h(a)=0$. Comme $h(1)=\dfrac12\ne0$ et $h(2)\ne0$, $a\ne1$ et $a\ne2$ : $a\in\,]1,2[$.
 
-          $$\boxed{\text{L'equation } f(x)=x-1 \text{ admet une unique solution } a \text{ dans } ]1,2[}$$
+          $$\boxed{\text{L’equation } f(x)=x-1 \text{ admet une unique solution } a \text{ dans } ]1,2[}$$
 
           **Le piège nommé de cette question.** Invoquer seulement le changement de signe entre $h(1)$ et $h(2)$ (un simple TVI) sans mentionner la stricte monotonie — cela donnerait l'existence, jamais l'unicité, et la question demande explicitement les deux.
         steps:
@@ -3861,9 +3861,9 @@ entries:
 
           **Le piège nommé de cette question.** Oublier de vérifier $a_n\ge1$ avant d'appliquer le TAF sur $]1,+\infty[$, l'intervalle où la formule de $f'$ (question 5-c/d) est établie — sans ce préalable, rien ne garantit que le TAF s'applique dans le bon domaine.
         steps:
-          - math: '\text{Recurrence : } a_0\ge1, \quad a_n\ge1 \implies f(a_n)\ge0 \implies a_{n+1}=1+f(a_n)\ge1'
+          - math: '\text{Recurrence\,: } a_0\ge1, \quad a_n\ge1 \implies f(a_n)\ge0 \implies a_{n+1}=1+f(a_n)\ge1'
             note: "Prealable : a_n reste dans le domaine [1, plus infini[ de f pour tout n."
-          - math: '\varphi(x)=1+f(x), \qquad \varphi(a) = 1+f(a) = a \quad (\text{question 7 : } f(a)=a-1)'
+          - math: '\varphi(x)=1+f(x), \qquad \varphi(a) = 1+f(a) = a \quad (\text{question 7\,: } f(a)=a-1)'
             note: "a est le point fixe de phi : c'est ce qui relie la question 7 a celle-ci."
           - math: '\exists\, c \text{ entre } a_n \text{ et } a\ (c\ge1),\quad a_{n+1}-a = \varphi(a_n)-\varphi(a) = f''(c)(a_n-a) \quad (\text{TAF, deja enonce a la question 3-b})'
             note: "Reutilisation du theoreme des accroissements finis, hors socle de cette lecon."
@@ -3895,9 +3895,9 @@ entries:
 
           **Le piège nommé de cette question.** Appliquer directement la question 8-a à $|a_n-a|$ au lieu de partir de $|a_{n+1}-a|$ — il faut toujours partir du terme au rang $n+1$, lui appliquer 8-a, puis invoquer HR sur le terme au rang $n$ qui en résulte, jamais l'inverse.
         steps:
-          - math: '\text{Initialisation : } |a_0-a| = \left(\dfrac12\right)^0|a_0-a| \quad (\text{egalite au rang } 0)'
+          - math: '\text{Initialisation\,: } |a_0-a| = \left(\dfrac12\right)^0|a_0-a| \quad (\text{egalite au rang } 0)'
             note: "Membres de gauche et de droite egaux au rang 0."
-          - math: '\text{HR : } |a_n-a| \le \left(\dfrac12\right)^n|a_0-a| \quad \text{(hypothese, rang } n\text{)}'
+          - math: '\text{HR\,: } |a_n-a| \le \left(\dfrac12\right)^n|a_0-a| \quad \text{(hypothese, rang } n\text{)}'
             note: "Ce qu'on suppose connu, a un rang n fixe quelconque."
           - math: '|a_{n+1}-a| \le \dfrac12|a_n-a| \ (\text{question 8-a}) \ \le\ \dfrac12\times\left(\dfrac12\right)^n|a_0-a| \ (\text{HR}) \ = \left(\dfrac12\right)^{n+1}|a_0-a|'
             note: "Heredite : question 8-a d'abord, puis HR appliquee au terme qui en resulte."

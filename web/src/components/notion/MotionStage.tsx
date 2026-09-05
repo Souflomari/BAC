@@ -53,6 +53,7 @@ import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import { TransportButton } from "./TransportButton";
 import type { MotionSpec, BeatTween } from "@/lib/motion-spec";
+import { frenchTypography } from "@/lib/frenchTypography";
 
 interface MotionStageProps {
   /** Raw SVG string from media/<slug>.motion.svg. */
@@ -562,7 +563,7 @@ export function MotionStage({ svg, spec, label, className }: MotionStageProps) {
           )}
           aria-live="polite"
         >
-          {currentCaption}
+          {frenchTypography(currentCaption)}
         </figcaption>
       )}
     </figure>

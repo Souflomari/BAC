@@ -214,9 +214,9 @@ Si la chaîne respiratoire s'arrête, la glycolyse elle-même est menacée : rap
 | **Fermentation lactique** | Réduction directe | Acide lactique (lactate) | Non | Cellules musculaires en effort intense, bactéries lactiques (yaourt) |
 | **Fermentation alcoolique** | Décarboxylation puis réduction | Éthanol + $CO_2$ | Oui | Levures (pain, vin, bière) |
 
-$$\text{Fermentation lactique : } C_6H_{12}O_6 \rightarrow 2\,C_3H_6O_3 + \text{énergie (2 ATP)}$$
+$$\text{Fermentation lactique\,: } C_6H_{12}O_6 \rightarrow 2\,C_3H_6O_3 + \text{énergie (2 ATP)}$$
 
-$$\text{Fermentation alcoolique : } C_6H_{12}O_6 \rightarrow 2\,C_2H_5OH + 2\,CO_2 + \text{énergie (2 ATP)}$$
+$$\text{Fermentation alcoolique\,: } C_6H_{12}O_6 \rightarrow 2\,C_2H_5OH + 2\,CO_2 + \text{énergie (2 ATP)}$$
 
 **Un repère simple pour les distinguer expérimentalement :** la fermentation alcoolique dégage du $CO_2$ (détectable), la fermentation lactique n'en dégage aucun — toute la chaîne carbonée du glucose reste piégée dans l'acide lactique produit.
 

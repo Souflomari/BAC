@@ -160,9 +160,9 @@ Quatre cases sont marquées **forme indéterminée (FI)** : $+\infty - \infty$, 
 
 $$\lim_{x \to +\infty} (x^2 - x) = +\infty \qquad \text{(le terme } x^2 \text{ écrase } x\text{)}$$
 
-$$\lim_{x \to +\infty} (x - x^2) = -\infty \qquad \text{(cette fois c'est } -x^2 \text{ qui écrase)}$$
+$$\lim_{x \to +\infty} (x - x^2) = -\infty \qquad \text{(cette fois c’est } -x^2 \text{ qui écrase)}$$
 
-$$\lim_{x \to +\infty} \big((x+5) - x\big) = 5 \qquad \text{(les deux termes s'annulent presque, il ne reste qu'une constante)}$$
+$$\lim_{x \to +\infty} \big((x+5) - x\big) = 5 \qquad \text{(les deux termes s’annulent presque, il ne reste qu’une constante)}$$
 
 Trois expressions, une seule forme apparente ("$\infty - \infty$"), et trois réponses différentes : $+\infty$, $-\infty$, et un nombre fini. C'est exactement ça, une forme indéterminée : le symbole ne code pas assez d'information pour trancher. Il faut regarder les fonctions *elles-mêmes*, pas juste l'étiquette "$\infty-\infty$" qu'on leur colle.
 

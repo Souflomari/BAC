@@ -139,9 +139,9 @@ La preuve suit exactement le même moule (à toi de la refaire : initialisation 
 
 Deux formules à connaître (admises ici — elles se prouvent aussi par récurrence, mais ce n'est pas l'objet de cette leçon) :
 
-$$\text{Arithmétique :} \quad S_n = u_0 + u_1 + \cdots + u_n = (n+1) \times \frac{u_0 + u_n}{2}$$
+$$\text{Arithmétique\,:} \quad S_n = u_0 + u_1 + \cdots + u_n = (n+1) \times \frac{u_0 + u_n}{2}$$
 
-$$\text{Géométrique (}q \neq 1\text{) :} \quad S_n = u_0 + u_1 + \cdots + u_n = u_0 \times \frac{1 - q^{\,n+1}}{1-q}$$
+$$\text{Géométrique (}q \neq 1\text{)\,:} \quad S_n = u_0 + u_1 + \cdots + u_n = u_0 \times \frac{1 - q^{\,n+1}}{1-q}$$
 
 Ce qu'il faut retenir de la formule arithmétique : c'est **(nombre de termes) × (moyenne du premier et du dernier)**. Ce qu'il faut retenir de la formule géométrique : elle échoue si $q=1$ (division par 0) — mais dans ce cas la suite est constante, donc $S_n = (n+1)\,u_0$ directement, sans avoir besoin de la formule.
 

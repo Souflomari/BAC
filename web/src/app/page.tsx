@@ -62,7 +62,7 @@ export default function HomePage() {
           Une ligne calme APRÈS le programme : la répétition d'examen vient
           quand les notions sont travaillées, pas avant (§8 périphérie). */}
       <p className="mt-10 text-body text-secondary">
-        Prêt à te tester en conditions réelles ?{" "}
+        Prêt à te tester en conditions réelles ?{" "}
         <Link
           href="/examens"
           data-lien-examens

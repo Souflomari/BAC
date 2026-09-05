@@ -581,7 +581,7 @@ entries:
             note: "On réutilise 1+j+j²=0, donc j+j²=−1."
           - math: 'z_2 = \dfrac{m(j-1-j^2)}{2}; \quad j^2=-1-j \implies j-1-j^2 = j-1-(-1-j)=2j \implies z_2=mj'
             note: "Même identité, réinjectée pour isoler j²."
-          - math: 'z_1=m, \qquad z_2=mj \qquad (\text{contrôle : } z_1+z_2=m(1+j)=-mj^2\ \checkmark,\ z_1z_2=m^2j\ \checkmark)'
+          - math: 'z_1=m, \qquad z_2=mj \qquad (\text{contrôle\,: } z_1+z_2=m(1+j)=-mj^2\ \checkmark,\ z_1z_2=m^2j\ \checkmark)'
             note: "Vérification par les relations coefficients-racines (Viète) sur (E_m)."
       - id: q3
         stem: |-
@@ -1322,7 +1322,7 @@ entries:
             note: "On réutilise la valeur de cos(π/12) déjà identifiée."
           - math: '\dfrac{2\sqrt2}{1+\sqrt3} = \dfrac{2\sqrt2(\sqrt3-1)}{(\sqrt3+1)(\sqrt3-1)} = \dfrac{2\sqrt2(\sqrt3-1)}{2} = \sqrt2(\sqrt3-1) = \sqrt6-\sqrt2'
             note: "Méthode du conjugué ; √2×√3=√6."
-          - math: 'u = (\sqrt6-\sqrt2)\,e^{i\pi/12}, \qquad \text{et de façon équivalente : } u = \dfrac{e^{i\pi/12}}{\cos(\pi/12)}'
+          - math: 'u = (\sqrt6-\sqrt2)\,e^{i\pi/12}, \qquad \text{et de façon équivalente\,: } u = \dfrac{e^{i\pi/12}}{\cos(\pi/12)}'
             note: "Les deux écritures de u seront réutilisées : la première ici, la seconde à la question 2b."
       - id: q2a
         part: "Deux suites $(x_n)_{n\\in\\mathbb{N}}$ et $(y_n)_{n\\in\\mathbb{N}}$ : $x_0=1$, $y_0=0$, et pour tout $n\\in\\mathbb{N}$, $x_{n+1}=x_n-(2-\\sqrt3)y_n$ et $y_{n+1}=(2-\\sqrt3)x_n+y_n$"
@@ -1331,13 +1331,13 @@ entries:
         reasoning: |-
           Récurrence classique. L'initialisation se lit directement sur $x_0,y_0$. Pour l'hérédité, le geste clé est de reconnaître que les deux formules de récurrence sur $x_{n+1}$ et $y_{n+1}$ sont exactement les parties réelle et imaginaire du produit $(x_n+iy_n)\times u$ — une fois qu'on développe ce produit, on retombe terme à terme sur les deux formules données.
         steps:
-          - math: '\text{Initialisation : } x_0+iy_0 = 1+i\times0 = 1 = u^0'
+          - math: '\text{Initialisation\,: } x_0+iy_0 = 1+i\times0 = 1 = u^0'
             note: "n=0 : vrai par les valeurs initiales."
           - math: '(x_n+iy_n)\times u = (x_n+iy_n)\big(1+(2-\sqrt3)i\big) = \big[x_n-(2-\sqrt3)y_n\big] + i\big[(2-\sqrt3)x_n+y_n\big]'
             note: "On développe le produit ; on reconnaît les formules de x_{n+1} et y_{n+1} dans les deux crochets."
           - math: '(x_n+iy_n)\times u = x_{n+1}+iy_{n+1}'
             note: "Les deux crochets sont exactement x_{n+1} et y_{n+1} (définition des suites)."
-          - math: '\text{Hérédité : si } x_n+iy_n=u^n,\ \text{alors } x_{n+1}+iy_{n+1} = u^n\times u = u^{n+1}'
+          - math: '\text{Hérédité\,: si } x_n+iy_n=u^n,\ \text{alors } x_{n+1}+iy_{n+1} = u^n\times u = u^{n+1}'
             note: "Hypothèse de récurrence injectée dans l'égalité précédente."
           - math: '\forall n\in\mathbb{N},\ x_n+iy_n=u^n'
             note: "Initialisation + hérédité : la propriété est vraie pour tout n (principe de récurrence)."
@@ -2034,5 +2034,5 @@ entries:
             note: "M voit [M1M2] sous un angle droit exactement quand M, A, B sont alignes."
           - math: 'M=\Omega \implies m=\dfrac{1+i}{2}\ (\text{milieu de}\ [AB],\ \text{sur}\ (AB)) \implies \text{a exclure (seulement 3 points distincts)}'
             note: "Cas degenere a retirer de la droite."
-          - math: '\text{Ensemble cherche : la droite}\ (AB)\ \text{privee du point}\ \Omega'
+          - math: '\text{Ensemble cherche\,: la droite}\ (AB)\ \text{privee du point}\ \Omega'
             note: "Omega, M, M1, M2 cocycliques exactement quand M est sur la droite (AB), prive du point Omega."

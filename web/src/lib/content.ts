@@ -25,6 +25,13 @@ import path from "path";
 import yaml from "js-yaml";
 import { parseMotionSpec, type MotionSpec } from "./motion-spec";
 import { parseRetenir, type RetenirEntry } from "./retenir";
+// TYPOGRAPHIE FRANÇAISE À LA SOURCE. Les titres et intros lus dans les YAML
+// sont affichés tels quels par les cartes ; sans normalisation, la même
+// langue s'écrivait de deux façons dans la même page — « l'énergie » sur une
+// carte d'exercice, « l’énergie » dans le paragraphe juste au-dessus.
+// Mesuré le 2026-09-05 : 35 apostrophes droites et espaces manquantes sur
+// trois leçons témoins, rien que dans les titres de carte.
+import { frenchTypography } from "./frenchTypography";
 
 // ── Path helpers ──────────────────────────────────────────────────────────────
 
@@ -373,7 +380,10 @@ function dirExists(dirPath: string): boolean {
 function extractTitle(lessonMd: string | null, slug: string): string {
   if (!lessonMd) return slug;
   const match = lessonMd.match(/^#\s+(.+)$/m);
-  return match ? match[1].trim() : slug;
+  // Normalisé ICI : ce titre part au masthead, au fil d'Ariane, à l'onglet du
+  // navigateur et aux métadonnées. Le laisser brut, c'est écrire « L'énergie »
+  // en gros au-dessus d'un corps qui écrit « l’énergie ».
+  return match ? frenchTypography(match[1].trim()) : slug;
 }
 
 /**
@@ -588,8 +598,8 @@ export function loadNotion(id: string): NotionContent | null {
           if (questions.length > 0) {
             exercises[ex.id] = {
               id: ex.id,
-              title: typeof ex.title === "string" ? ex.title : ex.id,
-              intro: typeof ex.intro === "string" ? ex.intro : undefined,
+              title: frenchTypography(typeof ex.title === "string" ? ex.title : ex.id),
+              intro: typeof ex.intro === "string" ? frenchTypography(ex.intro) : undefined,
               questions,
             };
           }
@@ -649,7 +659,7 @@ export function loadNotion(id: string): NotionContent | null {
           if (questions.length === 0) continue;
           entries.push({
             id: e.id,
-            title: typeof e.title === "string" ? e.title : e.id,
+            title: frenchTypography(typeof e.title === "string" ? e.title : e.id),
             source: {
               year: src.year,
               session: src.session,

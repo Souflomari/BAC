@@ -50,6 +50,7 @@ import { cn } from "@/lib/utils";
 import { largeurNaturelle } from "./MediaDiagram";
 import { Icon } from "@/components/ui/Icon";
 import { TransportButton } from "./TransportButton";
+import { frenchTypography } from "@/lib/frenchTypography";
 
 interface MotionDiagramProps {
   /** Raw SVG string loaded from media/<slug>.motion.svg */
@@ -281,7 +282,7 @@ export function MotionDiagram({ svg, label, className }: MotionDiagramProps) {
             "text-center max-w-reading mx-auto"
           )}
         >
-          {label}
+          {frenchTypography(label)}
         </figcaption>
       )}
     </figure>

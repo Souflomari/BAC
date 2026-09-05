@@ -1361,7 +1361,7 @@ entries:
 
           Pour que cette égalité tienne À CHAQUE INSTANT, le terme constant et le terme en $e^{-\alpha t}$ doivent s'identifier séparément : le terme constant donne $A$, le terme exponentiel (qui doit s'annuler tout seul) donne $\alpha$.
         steps:
-          - math: '\text{terme constant : } \frac{A}{C_0} = E \implies \boxed{A = E\,C_0}'
+          - math: '\text{terme constant\,: } \frac{A}{C_0} = E \implies \boxed{A = E\,C_0}'
             note: "Le terme sans exponentielle doit egaler E a lui seul."
           - math: '\text{terme en } e^{-\alpha t} : R\,A\,\alpha - \frac{A}{C_0} = 0 \implies \alpha = \frac{1}{RC_0}'
             note: "Le terme exponentiel doit s'annuler identiquement : ceci fixe alpha."
@@ -1545,9 +1545,9 @@ entries:
 
           Pour que cette égalité tienne à chaque instant, le terme constant et le terme en $e^{-t/\tau}$ doivent s'identifier séparément — exactement comme au chapitre 3 : le terme constant donne $A$, le terme exponentiel (qui doit s'annuler tout seul) fixe la relation entre $\tau$, $R$ et $C$, et la condition initiale $u_C(0)=0$ (condensateur déchargé à la fermeture de $K$) donne $B$.
         steps:
-          - math: '\text{terme constant : } A = E'
+          - math: '\text{terme constant\,: } A = E'
             note: "Le terme sans exponentielle doit egaler E a lui seul (chapitre 3)."
-          - math: '\text{condition initiale : } u_C(0) = A + B = 0 \implies B = -A = -E'
+          - math: '\text{condition initiale\,: } u_C(0) = A + B = 0 \implies B = -A = -E'
             note: "Le condensateur est decharge a la fermeture de K (chapitre 2)."
           - math: '\boxed{A = E = 6\ \text{V} \qquad B = -E = -6\ \text{V}}'
             note: "Meme forme que u_C(t) = E(1-e^{-t/tau}) du chapitre 3, ecrite ici A + B.e^{-t/tau}."
@@ -1667,7 +1667,7 @@ entries:
         reasoning: |-
           Le dispositif de décharge (chapitre 5) est le plus simple possible : PAS de générateur — celui qui a chargé le condensateur en amont a été débranché — seulement le condensateur $C$, déjà chargé, et le conducteur ohmique $R$, refermés en une seule boucle par l'interrupteur. Le sens du courant s'inverse par rapport à la charge : c'est le condensateur qui, désormais, alimente $R$, et non l'inverse.
 
-          $$\boxed{\text{Une seule maille : condensateur } C \text{ (initialement charge) en serie avec le conducteur ohmique } R, \text{ boucle fermee par l'interrupteur a } t=0}$$
+          $$\boxed{\text{Une seule maille\,: condensateur } C \text{ (initialement charge) en serie avec le conducteur ohmique } R, \text{ boucle fermee par l’interrupteur a } t=0}$$
 
           Le piège nommé de cette question. Laisser un générateur dans le schéma, par réflexe venu du montage de charge. En décharge, le générateur est absent (débranché ou court-circuité) : c'est justement ce qui distingue les deux régimes (chapitres 2 et 5) — sans lui, il n'y a plus de tension imposée « à viser », seulement la tension déjà stockée qui s'évacue dans $R$.
       - id: q1-2
@@ -1827,7 +1827,7 @@ entries:
         steps:
           - math: 'E = u_R + u_C \qquad u_R = R\,i'
             note: "Loi des mailles sur la boucle E-R-C (K ferme), loi d Ohm pour R."
-          - math: 'i = C\,\frac{du_C}{dt} \quad \text{(P relache et entree du composant sans courant : tout le courant de R charge C)}'
+          - math: 'i = C\,\frac{du_C}{dt} \quad \text{(P relache et entree du composant sans courant\,: tout le courant de R charge C)}'
             note: "Definition de la capacite (chapitre 2) : aucune derivation de courant vers P ni vers le composant."
           - math: '\boxed{u_C + RC\,\frac{du_C}{dt} = E}'
             note: "Substitution dans la loi des mailles : l equation demandee."
@@ -1842,7 +1842,7 @@ entries:
 
           $$A\left(1-e^{-t/\tau}\right) + \frac{RC\,A}{\tau}\,e^{-t/\tau} = E \iff A + A\,e^{-t/\tau}\left(\frac{RC}{\tau} - 1\right) = E$$
         steps:
-          - math: '\text{terme constant : } A = E'
+          - math: '\text{terme constant\,: } A = E'
             note: "Le terme sans exponentielle doit egaler E a lui seul."
           - math: '\text{terme en } e^{-t/\tau} : \frac{RC}{\tau} - 1 = 0 \implies \tau = RC'
             note: "Le terme exponentiel doit s annuler identiquement, a chaque instant."
@@ -1872,9 +1872,9 @@ entries:
 
           **$R$, en isolant dans $\tau = RC$.**
         steps:
-          - math: '\boxed{A = 25\ \text{V}} \quad \text{(niveau de l asymptote ; et } A = E \text{, question 1-2 : la f.e.m. est recoltee ici)}'
+          - math: '\boxed{A = 25\ \text{V}} \quad \text{(niveau de l asymptote\,; et } A = E \text{, question 1-2\,: la f.e.m. est recoltee ici)}'
             note: "Lecture du palier de la courbe (chapitre 4). E = 25 V servira aux questions 2-2 et 2-3."
-          - math: '\boxed{\tau = 40\ \text{s}} \quad \text{(tangente a l origine coupant le niveau de l asymptote ; controle 63 \% concordant)}'
+          - math: '\boxed{\tau = 40\ \text{s}} \quad \text{(tangente a l origine coupant le niveau de l asymptote\,; controle 63 \% concordant)}'
             note: "Methode de la tangente a l origine (chapitre 4), recoupee par la methode des 63 %."
           - math: 'R = \frac{\tau}{C} = \frac{40}{220\times10^{-6}}'
             note: "On isole R dans tau = RC (question 1-2), avec C = 220 microfarads."

@@ -76,8 +76,11 @@ export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRail
   // A FRESH practice entry per render (never a module-level constant mutated in
   // place): the honest count is derived from `bankCount` at call time.
   const practiceEntry: RailEntry = {
-    title: "S'entraîner",
-    shortTitle: "S'entraîner",
+    // Apostrophe TYPOGRAPHIQUE : cette entrée est écrite en dur, donc elle
+    // échappait à la normalisation des titres de chapitre — et se retrouvait
+    // seule, avec son apostrophe droite, au bas d'un rail par ailleurs juste.
+    title: "S\u2019entraîner",
+    shortTitle: "S\u2019entraîner",
     count: bankCount,
   };
   const entries: RailEntry[] = hasItems ? [...realEntries, practiceEntry] : realEntries;
@@ -292,8 +295,11 @@ export function ChapterMenuCompact({
 
   const realEntries: RailEntry[] = headings.length > 0 ? headings : [FALLBACK_ENTRY];
   const practiceEntry: RailEntry = {
-    title: "S'entraîner",
-    shortTitle: "S'entraîner",
+    // Apostrophe TYPOGRAPHIQUE : cette entrée est écrite en dur, donc elle
+    // échappait à la normalisation des titres de chapitre — et se retrouvait
+    // seule, avec son apostrophe droite, au bas d'un rail par ailleurs juste.
+    title: "S\u2019entraîner",
+    shortTitle: "S\u2019entraîner",
     count: bankCount,
   };
   const entries: RailEntry[] = hasItems ? [...realEntries, practiceEntry] : realEntries;
