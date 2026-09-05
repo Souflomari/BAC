@@ -393,6 +393,55 @@ export function isChapterAvailable(subjectId: string, slug: string, builtIds: Se
 }
 
 /**
+ * Le RANG d'un chapitre dans le programme de sa matière, ou `Infinity` pour un
+ * identifiant que le cadre ne connaît pas (il part alors en fin de liste).
+ *
+ * Pourquoi cette fonction existe (2026-09-05). Une TROISIÈME surface répondait
+ * de son côté à « dans quel ordre va le programme » : la carte « Le programme »
+ * du tableau de bord triait ses 62 chapitres par `title.localeCompare`. Sur la
+ * MÊME page, la carte de session proposait « Limites et continuité » et la
+ * ligne du dessous « ensuite : Dérivabilité » — les deux justes, toutes deux
+ * tirées du cadre — pendant que la carte du programme ouvrait sur
+ * « Arithmétique », rang 13 sur 14, le dernier bloc de l'année. Et `/matieres/
+ * maths`, à un clic de là, listait les MÊMES chapitres dans le bon ordre.
+ *
+ * Mesuré au moment du correctif : 59 chapitres sur 62 changeaient de rang
+ * entre les deux ordres. Trois seulement coïncidaient.
+ *
+ * Le tri alphabétique n'était pas seulement un autre ordre, il n'en était pas
+ * un : « La… » passait avant « Le… » avant « Les… », donc l'ordre dépendait de
+ * l'ARTICLE. En SVT, il plaçait « Dysfonctionnements et aides du système
+ * immunitaire » (rang 8) avant « Le soi et le non-soi » (rang 6) et « Les
+ * moyens de défense » (rang 7) — la conclusion de l'immunologie avant ses
+ * prémisses.
+ */
+export function chapterRank(id: string): number {
+  const subject = SUBJECTS[id.split("/")[0] as SubjectId];
+  if (!subject) return Number.POSITIVE_INFINITY;
+  const i = subjectChapterIds(subject).indexOf(id);
+  return i < 0 ? Number.POSITIVE_INFINITY : i;
+}
+
+/**
+ * Trie une liste de notions dans l'ordre du programme de leur matière.
+ *
+ * `chapterRank` est le fait ; ceci est la seule façon de l'appliquer à une
+ * liste, pour qu'une quatrième surface n'invente pas la sienne. Le repli
+ * alphabétique ne sert qu'à départager deux chapitres également inconnus du
+ * cadre — il n'ordonne jamais le programme lui-même.
+ */
+export function sortByProgramme<T extends { subject: string; slug: string; title: string }>(
+  notions: T[]
+): T[] {
+  return [...notions].sort((a, b) => {
+    const ra = chapterRank(`${a.subject}/${a.slug}`);
+    const rb = chapterRank(`${b.subject}/${b.slug}`);
+    if (ra !== rb) return ra - rb;
+    return a.title.localeCompare(b.title, "fr");
+  });
+}
+
+/**
  * L'ordre des matières quand aucune filière n'est choisie — la seule source
  * partagée entre les surfaces qui recommandent quelque chose (le « quoi
  * étudier ensuite » du tableau de bord et la fin de leçon). Deux surfaces qui

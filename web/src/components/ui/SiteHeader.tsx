@@ -31,7 +31,13 @@ import { cn } from "@/lib/utils";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { useAuth } from "@/lib/auth/provider";
 import { SUBJECT_ORDER, subjectHref, subjectLabel, notionHref } from "@/lib/subjects";
-import { getFiliere, getSubject, subjectChapterCount, subjectAvailableCount } from "@/lib/curriculum";
+import {
+  getFiliere,
+  getSubject,
+  subjectChapterCount,
+  subjectAvailableCount,
+  sortByProgramme,
+} from "@/lib/curriculum";
 import { useFiliere } from "@/lib/useFiliere";
 import { FontSizeStepper } from "./FontSizeStepper";
 import { ThemeToggle } from "./ThemeToggle";
@@ -156,7 +162,14 @@ function PanneauNotions({
           >
             <div className="grid grid-cols-2 gap-1">
               {sujets.map((id) => {
-                const liste = notions.filter((n) => n.subject === id);
+                // Les QUATRE raccourcis du panneau sont les quatre PREMIERS
+                // chapitres du programme — pas les quatre premiers dossiers.
+                // `listNotions()` rend l'ordre de `readdirSync`, c'est-à-dire
+                // l'alphabet des SLUGS : le menu offrait « Arithmétique »
+                // (rang 13 sur 14 en maths) comme première entrée dans
+                // l'année. Même source que la carte de session et la fin de
+                // leçon — trois surfaces, un seul ordre.
+                const liste = sortByProgramme(notions.filter((n) => n.subject === id));
                 // Une matière sans la moindre notion construite (SI
                 // aujourd'hui) n'a rien à offrir dans un panneau de
                 // NAVIGATION — l'afficher « 0/0 » serait du remplissage.

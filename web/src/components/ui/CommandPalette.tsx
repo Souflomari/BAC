@@ -23,6 +23,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useTransitionRouter } from "next-view-transitions";
 import { Command } from "cmdk";
 import { subjectLabel, notionHref, subjectHref } from "@/lib/subjects";
+import { sortByProgramme } from "@/lib/curriculum";
 import { Icon } from "./Icon";
 
 export interface NotionPourPalette {
@@ -92,9 +93,14 @@ export function CommandPalette({ notions }: { notions: NotionPourPalette[] }) {
     [router]
   );
 
+  // Palette vide (aucune frappe) : cmdk affiche la liste TELLE QU'ON LA
+  // DONNE. Sans tri, c'était l'ordre de `readdirSync` — l'alphabet des slugs —
+  // et ⌘K s'ouvrait sur « Arithmétique », dernier bloc de l'année en maths.
+  // Une fois une lettre tapée, c'est le score de cmdk qui ordonne, et c'est
+  // très bien : cet ordre-ci ne gouverne que le parcours à blanc.
   const parMatiere = ORDRE_MATIERES.map((m) => ({
     id: m,
-    notions: notions.filter((n) => n.subject === m),
+    notions: sortByProgramme(notions.filter((n) => n.subject === m)),
   })).filter((g) => g.notions.length > 0);
 
   return (

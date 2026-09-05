@@ -79,8 +79,14 @@ export default function EpreuvePage({ params }: { params: { id: string } }) {
         </h1>
         <p className="mt-2 text-body-sm text-secondary">
           {filiereLabel(ep.filiere)} ·{" "}
+          {/* « 10,5 pts » nu se lit « épreuve sur 10,5 ». Le sous-titre de
+              l'index le dit déjà (« sur 20 disponibles ») ; le masthead de
+              la page, lui, ne le disait qu'un panneau plus bas. La seule
+              épreuve partielle du corpus (SM 2020) portait donc, en tête de
+              page, un nombre dont le sens n'arrivait qu'après. */}
           <span className="mono-inline tabular-nums">
             {String(ep.pts).replace(".", ",")} pts
+            {!ep.complete && " sur 20 disponibles"}
           </span>{" "}
           · {ep.dureeOfficielleMin / 60} h
         </p>

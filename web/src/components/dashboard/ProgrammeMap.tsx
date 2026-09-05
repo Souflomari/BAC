@@ -32,6 +32,7 @@ import {
   isNotionInFiliere,
   subjectChapterCount,
   subjectAvailableCount,
+  sortByProgramme,
 } from "@/lib/curriculum";
 import { useFiliere } from "@/lib/useFiliere";
 import type { NotionMeta } from "@/lib/content";
@@ -61,13 +62,20 @@ export function ProgrammeMap({ notions }: { notions: NotionMeta[] }) {
 
       <div className="mt-6 grid gap-4 bp-large:grid-cols-2">
         {ordre.map((id) => {
-          const liste = notions
-            .filter(
+          // L'ORDRE DU PROGRAMME, jamais l'alphabet. Cette carte annonce
+          // « couverture du cadre officiel » : un élève y lit l'ordre de son
+          // année. Trié par titre, elle ouvrait maths sur « Arithmétique »
+          // (rang 13 sur 14) pendant que la carte de session, deux blocs plus
+          // haut sur la même page, proposait « Limites et continuité » — et
+          // que /matieres/maths, à un clic, donnait le bon ordre. Voir
+          // `sortByProgramme` pour la mesure (59 chapitres sur 62 déplacés).
+          const liste = sortByProgramme(
+            notions.filter(
               (n) =>
                 n.subject === id &&
                 (!filiereActive || isNotionInFiliere(`${n.subject}/${n.slug}`, filiereActive.id))
             )
-            .sort((a, b) => a.title.localeCompare(b.title, "fr"));
+          );
           if (liste.length === 0) return null;
           const sujet = getSubject(id as Parameters<typeof getSubject>[0]);
           const total = sujet ? subjectChapterCount(sujet) : liste.length;

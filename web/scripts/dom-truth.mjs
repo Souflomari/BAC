@@ -81,6 +81,24 @@ function domTruthShuffledChoices(choices, seedKey) {
 // an interactive-figure sweep's "expected" values come from THE SAME module
 // StagedFigure imports at runtime, never a hand-duplicated expectation that
 // could silently drift from the real math (INTERACTIVE-FIGURE-SPEC.md §6).
+/**
+ * Le CADRE et l'INVENTAIRE, chargés depuis les mêmes modules que l'app.
+ *
+ * Les portes « ordre du programme » comparent ce que le DOM rend à ce que
+ * `lib/curriculum.ts` dit. Recopier l'ordre attendu dans ce fichier en ferait
+ * une seconde source, exactement le défaut que ces portes surveillent.
+ */
+function loadCurriculum() {
+  const jiti = jitiFactory(fileURLToPath(import.meta.url), {
+    interopDefault: true,
+    alias: { "@": path.join(WEB, "src") },
+  });
+  return {
+    CURRICULUM: jiti(path.join(WEB, "src/lib/curriculum.ts")),
+    listNotions: jiti(path.join(WEB, "src/lib/content.ts")).listNotions,
+  };
+}
+
 function loadInteractiveFigureModel(slug) {
   const jiti = jitiFactory(fileURLToPath(import.meta.url), { interopDefault: true });
   const mod = jiti(path.join(WEB, "src/lib/interactive-figures", `${slug}.ts`));
@@ -857,6 +875,90 @@ try {
     else if (prog.pourcentAffiche) failures += fail("programme: un « % » s'affiche — la couverture doit rester un fait M/N, jamais un score");
     else if (prog.coversDansProgramme > 0) failures += fail(`programme: ${prog.coversDansProgramme} Cover décoratif(s) — les motifs répétés devaient disparaître`);
     else console.log(`  ✓ ${prog.nb} matières, couvertures ${prog.couvertures.join(" · ")} — factuelles, sans %, sans Cover`);
+  }
+
+  // (2026-09-05) L'ORDRE DU PROGRAMME EST RENDU, PAS SEULEMENT CALCULÉ.
+  //
+  // Pourquoi cette porte existe. « Dans quel ordre va le programme » est la
+  // question à laquelle QUATRE surfaces répondaient chacune de leur côté :
+  // la carte de session (corrigée le matin), la ligne « ensuite dans le
+  // parcours », la carte « Le programme » du tableau de bord — qui triait
+  // par `title.localeCompare` — et les quatre raccourcis du menu « Notions »
+  // du header, qui prenaient les quatre premiers DOSSIERS. Résultat visible
+  // sur la page d'accueil : la carte proposait « Limites et continuité » et
+  // le bloc juste en dessous ouvrait maths sur « Arithmétique », rang 13
+  // sur 14 — le dernier bloc de l'année. 59 chapitres sur 62 changeaient de
+  // rang entre les deux ordres.
+  //
+  // Le contrat vérifié ici est RENDU : on lit les liens dans le DOM et on
+  // les compare à l'ordre du cadre, matière par matière. Une régression au
+  // tri (n'importe lequel des quatre) rouvre la porte.
+  {
+    console.log(`\n[/] SWEEP: la carte « Le programme » suit l'ordre du cadre, pas l'alphabet`);
+    const opage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await opage.goto(`${BASE}/`, { waitUntil: "networkidle" });
+    const rendu = await opage.evaluate(() =>
+      Object.fromEntries(
+        [...document.querySelectorAll("[data-programme-matiere]")].map((sec) => [
+          sec.getAttribute("data-programme-matiere"),
+          [...sec.querySelectorAll("a[data-mastery-token][href^='/notions/']")].map((a) =>
+            a.getAttribute("href").replace("/notions/", "")
+          ),
+        ])
+      )
+    );
+    await opage.close();
+
+    const { CURRICULUM, listNotions } = loadCurriculum();
+    const construits = new Set(listNotions().map((n) => `${n.subject}/${n.slug}`));
+    for (const [sujetId, rendus] of Object.entries(rendu)) {
+      const sujet = CURRICULUM.getSubject(sujetId);
+      if (!sujet) continue;
+      const attendu = CURRICULUM.subjectChapterIds(sujet).filter((id) => construits.has(id));
+      checks++;
+      const i = rendus.findIndex((id, k) => id !== attendu[k]);
+      if (rendus.length !== attendu.length)
+        failures += fail(`programme/${sujetId}: ${rendus.length} chapitre(s) rendu(s) pour ${attendu.length} construit(s)`);
+      else if (i >= 0)
+        failures += fail(
+          `programme/${sujetId}: rang ${i + 1} — rendu « ${rendus[i]} », le cadre dit « ${attendu[i]} » (tri alphabétique revenu ?)`
+        );
+      else console.log(`  ✓ ${sujetId}: ${rendus.length} chapitres dans l'ordre du cadre (1er : ${attendu[0]})`);
+    }
+  }
+
+  // Le menu « Notions » du header offre QUATRE raccourcis par matière : ce
+  // doivent être les quatre PREMIERS du programme — c'est là qu'on commence
+  // l'année. Ils venaient de `readdirSync`, donc de l'alphabet des slugs.
+  {
+    console.log(`\n[header] SWEEP: les 4 raccourcis du menu « Notions » sont les 4 premiers du cadre`);
+    const hpage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await hpage.goto(`${BASE}/`, { waitUntil: "networkidle" });
+    await hpage.click("[data-menu-notions], button:has-text('Notions')").catch(() => {});
+    await hpage.waitForTimeout(300);
+    const liens = await hpage.evaluate(() =>
+      [...document.querySelectorAll("[role='menu'] a[href^='/notions/'], [data-radix-popper-content-wrapper] a[href^='/notions/']")].map(
+        (a) => a.getAttribute("href").replace("/notions/", "")
+      )
+    );
+    await hpage.close();
+    const { CURRICULUM, listNotions } = loadCurriculum();
+    const construits2 = new Set(listNotions().map((n) => `${n.subject}/${n.slug}`));
+    checks++;
+    if (liens.length === 0) {
+      failures += fail("header: aucun raccourci de notion lu dans le menu — le sélecteur ou le menu a changé");
+    } else {
+      const mauvais = [];
+      for (const sujetId of new Set(liens.map((id) => id.split("/")[0]))) {
+        const sujet = CURRICULUM.getSubject(sujetId);
+        if (!sujet) continue;
+        const attendu = CURRICULUM.subjectChapterIds(sujet).filter((id) => construits2.has(id)).slice(0, 4);
+        const vus = liens.filter((id) => id.startsWith(sujetId + "/"));
+        if (vus.join("|") !== attendu.join("|")) mauvais.push(`${sujetId}: rendu [${vus.join(", ")}] ≠ cadre [${attendu.join(", ")}]`);
+      }
+      if (mauvais.length) failures += fail(`header/Notions: ${mauvais.join(" ; ")}`);
+      else console.log(`  ✓ ${liens.length} raccourcis — les 4 premiers du cadre pour chaque matière`);
+    }
   }
 
   // (Filière-gating) MASTERY MAP NARROWS BY FILIÈRE, NEVER GATES (ADR 0025

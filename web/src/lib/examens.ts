@@ -321,7 +321,15 @@ export function listEpreuves(): Epreuve[] {
 
   epreuves.sort((a, b) => {
     if (a.complete !== b.complete) return a.complete ? -1 : 1;
-    return b.year - a.year || a.filiere.localeCompare(b.filiere);
+    // Le départage par SESSION est explicite (normale avant rattrapage —
+    // l'ordre du calendrier, juin puis juillet). Sans lui, deux épreuves de
+    // la même année et de la même filière restaient dans l'ordre où la
+    // `Map` les avait rencontrées, c'est-à-dire l'ordre de lecture des
+    // banques : mesuré le 2026-09-05, SPC 2015 listait le rattrapage AVANT
+    // la normale, seule année sur vingt-deux à le faire. Un ordre instable
+    // ne se voit que le jour où il se trompe.
+    const sess = (e: Epreuve) => (e.session === "normale" ? 0 : 1);
+    return b.year - a.year || a.filiere.localeCompare(b.filiere) || sess(a) - sess(b);
   });
   return epreuves;
 }
