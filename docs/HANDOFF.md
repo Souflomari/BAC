@@ -2968,7 +2968,49 @@ vérification du cosinus, au chapitre 3 ») : un identifiant n'a rien à faire
 dans une phrase lue par un élève, et la typographie française y insérait en
 plus une insécable avant le « : », ce qui le mangeait comme référence.
 
-### 11.15 Deux soupçons re-mesurés, et déjà traités
+### 11.15 Des phrases françaises enfermées dans des boîtes de maths
+
+Troisième instrument pointé sur les épreuves : **l'impression**. Un élève
+imprime un sujet pour le faire au stylo — c'est l'usage le plus naturel de
+cette page. La porte impression tourne en CI depuis des semaines ; elle ne
+portait pas les 39 sujets, et les aurait passés sans rien mesurer, pour la
+raison désormais familière (l'énoncé n'entre dans le DOM qu'après
+« Commencer »).
+
+Ouverte pour de bon : **7 sujets sur 39 débordaient la colonne imprimable**
+(717 px), le pire à **1 147 px**. Tous pour la même cause :
+
+    $$\boxed{\text{Une seule maille\,: condensateur } C \text{ (initialement
+    chargé) en série avec le conducteur ohmique } R, \text{ boucle fermée par
+    l'interrupteur a } t=0}$$
+
+**Une formule KaTeX ne se coupe pas.** Une phrase de 127 caractères enfermée
+dans `\boxed{\text{…}}` est une seule ligne indivisible. Conséquences, toutes
+mesurées :
+
+- sur papier, la fin de la phrase est **coupée par le bord de la feuille** ;
+- la phrase perd la typographie française (l'apostrophe droite reste droite,
+  aucune insécable) — `remarkFrenchTypography` ne traverse pas KaTeX ;
+- elle perd ses accents quand l'auteur a contourné l'échappement : le corpus
+  écrivait « tangente a l origine », « controle 63 % », « boucle fermee » ;
+- le lecteur d'écran l'annonce comme une **formule**, pas comme une phrase ;
+- et elle n'est ni sélectionnable proprement, ni trouvable par ⌘F.
+
+**14 blocs de ≥ 70 caractères, ramenés à zéro** — plus 5 autres trouvés en
+re-mesurant. Le corpus avait déjà sa forme pour cela : `**Conclusion.**`,
+employée 23 fois. Les conclusions en prose la prennent ; les boîtes MIXTES
+gardent la formule dans la boîte et sortent la phrase ; les gloses coincées
+dans un champ `math:` rejoignent le `note:` d'à côté, ce qui leur rend au
+passage leurs accents et leurs apostrophes.
+
+Un morceau de jargon interne partait avec : « rung R4 », « rung R6 » — des
+identifiants de barreau, rendus en maths au milieu d'une phrase, remplacés par
+les numéros de chapitre.
+
+Après : **impression 0 défaut sur 104 pages** (62 leçons + 39 épreuves + 3),
+les deux thèmes.
+
+### 11.16 Deux soupçons re-mesurés, et déjà traités
 
 Deux mesures lancées ce jour-là ont retrouvé un terrain déjà couvert, et il
 faut le dire pour que personne ne le refasse une troisième fois.

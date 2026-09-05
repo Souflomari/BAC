@@ -73,9 +73,7 @@ Reprends la définition du chapitre précédent : un allèle **dominant** s'expr
 
 ### Le test
 
-$$\text{Enfant atteint, DEUX parents phénotypiquement sains} \;\Longrightarrow\; \text{l’allèle ne peut pas être dominant}$$
-
-$$\Longrightarrow \text{l’allèle est récessif, et les deux parents sont hétérozygotes (porteurs sains)}$$
+**Enfant atteint, deux parents phénotypiquement sains** ⟹ l’allèle ne peut pas être dominant ⟹ **l’allèle est récessif**, et les deux parents sont hétérozygotes (porteurs sains).
 
 C'est un raisonnement par élimination, pas une supposition : si l'allèle était dominant, l'un des deux parents devrait être atteint, puisqu'il porterait forcément cet allèle pour le transmettre. Comme aucun des deux ne l'est, l'hypothèse dominante est directement contredite par l'observation — il ne reste que l'hypothèse récessive.
 

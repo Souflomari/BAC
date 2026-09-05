@@ -106,6 +106,18 @@ for (const route of routes) {
     await page.evaluate((d) => {
       document.documentElement.classList.toggle("dark", d);
     }, sombre);
+    // LES ÉPREUVES S'OUVRENT EN DEUX TEMPS (2026-09-05). Un élève imprime un
+    // sujet pour le faire au stylo — c'est même l'usage le plus naturel de
+    // cette page. Mais `EpreuveShell` démarre au « seuil » : sans les deux
+    // clics, la porte impression mesurait le masthead et déclarait la page
+    // propre. Même angle mort que les portes accents et typographie.
+    const commencer = page.getByRole("button", { name: /Commencer l.épreuve/i });
+    if (await commencer.count()) {
+      await commencer.first().click();
+      await page.waitForSelector("[data-exam-exo]", { timeout: 10000 });
+      const terminer = page.getByRole("button", { name: /Terminer l.épreuve/i });
+      if (await terminer.count()) { await terminer.first().click(); await page.waitForTimeout(300); }
+    }
     await page.emulateMedia({ media: "print" });
     await page.waitForTimeout(300);
 

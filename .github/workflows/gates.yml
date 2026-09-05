@@ -238,7 +238,16 @@ jobs:
           routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
           test -n "$routes"
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
-          node scripts/impression.mjs --porte $routes / /examens /matieres/pc
+          # LES 39 ÉPREUVES (2026-09-05). Un élève imprime un sujet pour le
+          # faire au stylo — c'est l'usage le plus naturel de cette page. Elle
+          # n'était pas dans la liste, et l'aurait passée sans rien mesurer :
+          # l'énoncé n'entre dans le DOM qu'après « Commencer ». Ouverte pour
+          # de bon : 7 sujets sur 39 débordaient la colonne imprimable, tous à
+          # cause de PHRASES françaises enfermées dans `\boxed{\text{…}}` —
+          # une formule KaTeX ne se coupe pas, 1 147 px sur une colonne de 717.
+          examens=$(node scripts/routes-examens.mjs)
+          test -n "$examens"
+          node scripts/impression.mjs --porte $routes $examens / /examens /matieres/pc
 
       # PORTE TYPOGRAPHIE (2026-09-05). `remarkFrenchTypography` normalise la
       # PROSE des leçons ; il ne voyait rien du reste — et le reste est

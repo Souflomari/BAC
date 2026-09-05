@@ -1562,7 +1562,7 @@ entries:
 
           **L'influence de la température.** Les trois courbes de la figure 2 se lisent ensemble : `205°C` (la plus raide) a le $\tau$ le plus PETIT ; `175°C` (la plus molle) a le $\tau$ le plus GRAND. Puisque $\tau = RC$ (chapitre 2) et que $C$ est fixe (le même condensateur pour les trois courbes), c'est la résistance $R$ de la thermistance qui doit diminuer quand la température monte, pour que $\tau$ diminue avec elle.
 
-          $$\boxed{\text{Une élévation de température RACCOURCIT la durée de charge du condensateur}}$$
+          **Conclusion.** Une élévation de température **raccourcit** la durée de charge du condensateur.
 
           — le signe exact opposé de ce qu'on observerait avec un conducteur ohmique ordinaire, dont la résistance ne dépend pas de $\theta$ (une thermistance de ce type est dite « à coefficient de température négatif »).
 
@@ -1667,7 +1667,7 @@ entries:
         reasoning: |-
           Le dispositif de décharge (chapitre 5) est le plus simple possible : PAS de générateur — celui qui a chargé le condensateur en amont a été débranché — seulement le condensateur $C$, déjà chargé, et le conducteur ohmique $R$, refermés en une seule boucle par l'interrupteur. Le sens du courant s'inverse par rapport à la charge : c'est le condensateur qui, désormais, alimente $R$, et non l'inverse.
 
-          $$\boxed{\text{Une seule maille\,: condensateur } C \text{ (initialement chargé) en série avec le conducteur ohmique } R, \text{ boucle fermée par l’interrupteur a } t=0}$$
+          **Conclusion.** Une seule maille : le condensateur $C$, initialement chargé, en série avec le conducteur ohmique $R$ — la boucle est fermée par l’interrupteur à $t = 0$.
 
           Le piège nommé de cette question. Laisser un générateur dans le schéma, par réflexe venu du montage de charge. En décharge, le générateur est absent (débranché ou court-circuité) : c'est justement ce qui distingue les deux régimes (chapitres 2 et 5) — sans lui, il n'y a plus de tension imposée « à viser », seulement la tension déjà stockée qui s'évacue dans $R$.
       - id: q1-2
@@ -1827,8 +1827,8 @@ entries:
         steps:
           - math: 'E = u_R + u_C \qquad u_R = R\,i'
             note: "Loi des mailles sur la boucle E-R-C (K ferme), loi d Ohm pour R."
-          - math: 'i = C\,\frac{du_C}{dt} \quad \text{(P relache et entrée du composant sans courant\,: tout le courant de R charge C)}'
-            note: "Définition de la capacité (chapitre 2) : aucune dérivation de courant vers P ni vers le composant."
+          - math: 'i = C\,\frac{du_C}{dt}'
+            note: "Définition de la capacité (chapitre 2) : P est relâché et l'entrée du composant ne consomme aucun courant, donc tout le courant qui traverse R charge C — aucune dérivation vers P ni vers le composant."
           - math: '\boxed{u_C + RC\,\frac{du_C}{dt} = E}'
             note: "Substitution dans la loi des mailles : l équation demandee."
       - id: q2
@@ -1872,10 +1872,10 @@ entries:
 
           **$R$, en isolant dans $\tau = RC$.**
         steps:
-          - math: '\boxed{A = 25\ \text{V}} \quad \text{(niveau de l asymptote\,; et } A = E \text{, question 1-2\,: la f.e.m. est recoltee ici)}'
-            note: "Lecture du palier de la courbe (chapitre 4). E = 25 V servira aux questions 2-2 et 2-3."
-          - math: '\boxed{\tau = 40\ \text{s}} \quad \text{(tangente a l origine coupant le niveau de l asymptote\,; controle 63 \% concordant)}'
-            note: "Méthode de la tangente a l origine (chapitre 4), recoupee par la méthode des 63 %."
+          - math: '\boxed{A = 25\ \text{V}} = E'
+            note: "Lecture du palier de la courbe (chapitre 4) : A est le niveau de l'asymptote, et A = E d'après la question 1-2 — c'est ici que la f.é.m. se récolte. E = 25 V servira aux questions 2-2 et 2-3."
+          - math: '\boxed{\tau = 40\ \text{s}}'
+            note: "Méthode de la tangente à l'origine (chapitre 4) : elle coupe le niveau de l'asymptote à t = τ. Recoupée par la méthode des 63 %, qui donne la même valeur."
           - math: 'R = \frac{\tau}{C} = \frac{40}{220\times10^{-6}}'
             note: "On isole R dans tau = RC (question 1-2), avec C = 220 microfarads."
           - math: '\boxed{R \approx 1{,}8\times10^{5}\ \Omega}'
