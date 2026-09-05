@@ -1,8 +1,5 @@
 # La violence
 
-> **Notion :** La violence — Philosophie · 2ème Bac (axe : la politique)
-> **Repère :** analyse de notion, problématisation, méthode de la dissertation
-
 ---
 
 ## R0 — Accroche : la nuit où le quartier s'est fait justice

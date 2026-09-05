@@ -1,8 +1,5 @@
 # La personne
 
-> **Notion :** La personne — Philosophie · 2ème Bac (axe : la condition humaine)
-> **Repère :** analyse de notion, problématisation, méthode de la dissertation
-
 ---
 
 ## R0 — Accroche : la boîte à chaussures

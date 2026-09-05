@@ -3447,7 +3447,11 @@ try {
       "g",
     );
     let fautifs = 0;
-    for (const route of routesLecons) {
+    // Les pages HORS LEÇON comptent autant : l'atelier portait
+    // « MATHÉMATIQUES · 2ÈME BAC » en surtitre, et la leçon d'à côté
+    // « 2ᵉ Bac » dans son masthead. Une porte ne juge que ce qu'on lui donne.
+    const routesJugees = [...routesLecons, "/", "/atelier", "/examens", "/commencer", "/connexion"];
+    for (const route of routesJugees) {
       const html = await (await fetch(`${BASE}${route}`)).text();
       const texte = html
         .replace(/<script[\s\S]*?<\/script>/g, " ")
@@ -3481,8 +3485,29 @@ try {
           // met pas à l'épreuve n'est pas une mesure.
           ...(texte.match(/\b(?:rupture-gate|cross-list|block scalar|sidecar)\b/g) ?? []),
           ...(texte.match(/(?<![\wÀ-ÿ'’-])(?:gate|items?|ramp|floor|distractors?|misconception|coverage|spanning)(?![\wÀ-ÿ'’-])/gi) ?? []),
+          // QUATRIÈME VAGUE (2026-09-05). Trois mots de plus, trouvés en
+          // REGARDANT le haut d'une leçon plutôt qu'en cherchant une liste
+          // connue : quatorze leçons ouvraient sur un bloc de métadonnées
+          // d'atelier que les 48 autres n'avaient pas. On y lisait
+          // « **Skill :** `sma_suites_numeriques` (code proposé — à confirmer
+          // par supabase-architect) » — un code de base de données et le NOM
+          // D'UN AGENT interne, sous les yeux de l'élève — et, en philo,
+          // « texte-spine : Bakounine ; summit : Kant ».
+          //
+          // Le nom d'un agent du roster dans une page est toujours une fuite :
+          // aucun de ces noms n'a de sens pour un élève, et aucun ne peut
+          // apparaître par accident dans une phrase française.
+          ...(texte.match(/\b(?:supabase-architect|pedagogy-architect|content-author|item-author|diagram-author|motion-author|interactive-author|research-lead|research-challenger|frontend-builder|pr-reviewer)\b/gi) ?? []),
+          ...(texte.match(/(?<![\wÀ-ÿ'’-])(?:spine|summit|scaffold|frontmatter|placeholder)(?![\wÀ-ÿ'’-])/gi) ?? []),
         ]),
       ];
+
+      // CINQUIÈME CLASSE : l'ordinal français abrégé. « 2ème » n'est pas une
+      // abréviation française — c'est « 2ᵉ », et c'est ce que le masthead de
+      // chaque leçon écrit déjà, trois lignes plus haut. Quinze pages
+      // portaient les deux orthographes du MÊME fait à 120 px d'écart.
+      const ordinaux = [...new Set(texte.match(/\b\d+\s*(?:ème|éme|eme)\b/gi) ?? [])];
+
       // TROISIÈME CLASSE, ARMÉE LE 2026-09-04 : les codes de barreau et le mot
       // « rung ». 529 étaient visibles le matin ; il n'en reste aucun hors
       // figure. Le seul survivant du corpus est le résistor « R0 » du schéma
@@ -3499,7 +3524,7 @@ try {
           ...(texte.match(/\brungs?\b/gi) ?? []),
         ]),
       ];
-      if (!trouves.length && !depot.length && !barreaux.length) continue;
+      if (!trouves.length && !depot.length && !barreaux.length && !ordinaux.length) continue;
       fautifs++;
       if (trouves.length) {
         failures += fail(
@@ -3514,6 +3539,12 @@ try {
             `Une vraie résistance s'écrit \`$R_1$\`.)`
         );
       }
+      if (ordinaux.length) {
+        failures += fail(
+          `${route} : ordinal non français dans le texte rendu — ${ordinaux.slice(0, 4).join(", ")} ` +
+            `(l'abréviation française est « 2ᵉ », jamais « 2ème » ; le masthead de la page l'écrit déjà comme ça)`
+        );
+      }
       if (depot.length) {
         failures += fail(
           `${route} : vocabulaire de rédaction dans le texte rendu — ${depot.slice(0, 4).join(", ")} ` +
@@ -3524,7 +3555,7 @@ try {
       }
     }
     if (!fautifs) {
-      console.log(`  ✓ ${routesLecons.length} leçons · ${slugs.length} slugs cherchés, 0 trouvé · 0 nom de fichier, 0 chemin de dépôt · 0 code de barreau, 0 « rung »`);
+      console.log(`  ✓ ${routesJugees.length} pages (${routesLecons.length} leçons + 5 hors leçon) · ${slugs.length} slugs cherchés, 0 trouvé · 0 nom de fichier, 0 chemin de dépôt · 0 code de barreau, 0 « rung » · 0 nom d'agent, 0 ordinal « Nème »`);
     }
   }
 

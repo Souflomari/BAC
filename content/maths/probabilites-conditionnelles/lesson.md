@@ -1,8 +1,5 @@
 # Probabilités conditionnelles
 
-> **Notion :** Probabilités conditionnelles — SM · 2ème Bac
-> **Skill :** `sma_prob_conditionnelle` (code proposé — à confirmer par supabase-architect)
-
 ---
 
 ## R0 — Le déclencheur : une question qui va te surprendre

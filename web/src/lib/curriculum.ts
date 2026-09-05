@@ -318,7 +318,7 @@ export const FILIERES: Filiere[] = [
     id: "sm-a",
     name: "Sciences Mathématiques A",
     short: "SM-A",
-    blurb: "Le mathématiques au centre, avec une physique exigeante.",
+    blurb: "Les mathématiques au centre, avec une physique exigeante.",
     subjects: [
       { id: "maths", coefficient: 9 },
       { id: "pc", coefficient: 7 },

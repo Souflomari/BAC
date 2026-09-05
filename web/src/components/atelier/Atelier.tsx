@@ -220,7 +220,7 @@ export function Atelier() {
               ce qu’il va voir. La page reste non indexée par son metadata ;
               c’est là que l’information a sa place. */}
           <p className="text-caption font-medium uppercase tracking-eyebrow text-accent">
-            Mathématiques · 2ème bac
+            Mathématiques · 2ᵉ Bac
           </p>
           <h1 className="mt-2 font-display text-h1 font-semibold text-primary">
             Les dérivées

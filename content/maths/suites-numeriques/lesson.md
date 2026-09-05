@@ -1,8 +1,5 @@
 # Suites numériques
 
-> **Notion :** Suites numériques — SM · 2ème Bac
-> **Skill :** `sma_suites_numeriques` (code proposé — à confirmer par supabase-architect)
-
 ---
 
 ## R0 — Accroche : le réservoir qui ne se vide jamais (et ne déborde jamais)

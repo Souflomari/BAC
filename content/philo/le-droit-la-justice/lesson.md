@@ -1,8 +1,5 @@
 # Le droit et la justice
 
-> **Notion :** Le droit et la justice — Philosophie · 2ème Bac (axe : la politique)
-> **Repère :** analyse de notion, problématisation, méthode de la dissertation
-
 ---
 
 ## R0 — Accroche : l'usine, la rivière et le tribunal qui n'a rien à redire

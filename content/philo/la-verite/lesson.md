@@ -1,8 +1,5 @@
 # La vérité
 
-> **Notion :** La vérité — Philosophie · 2ème Bac (axe : la connaissance)
-> **Repère :** analyse de notion, problématisation, méthode de la dissertation
-
 ---
 
 ## R0 — Accroche : la soirée de samedi

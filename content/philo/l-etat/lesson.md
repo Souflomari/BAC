@@ -1,8 +1,5 @@
 # L'État
 
-> **Notion :** L'État — Philosophie · 2ème Bac (axe : la politique)
-> **Repère :** analyse de notion, problématisation, méthode de la dissertation
-
 ---
 
 ## R0 — Accroche : la ville dans le noir

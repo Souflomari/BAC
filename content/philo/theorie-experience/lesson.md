@@ -1,8 +1,5 @@
 # La théorie et l'expérience
 
-> **Notion :** La théorie et l'expérience — Philosophie · 2ème Bac (axe : la connaissance)
-> **Repère :** empirisme, rationalisme, critique de l'induction, méthode expérimentale, falsifiabilité — chapitre de clôture du module « La connaissance »
-
 ---
 
 ## R0 — Accroche : le remède de grand-mère

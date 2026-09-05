@@ -1,8 +1,5 @@
 # La liberté
 
-> **Notion :** La liberté — Philosophie · 2ème Bac (axe : la morale / la politique)
-> **Repère :** analyse de notion, problématisation, méthode de la dissertation
-
 ---
 
 ## R0 — Accroche : le portable et la promesse rompue

@@ -1,8 +1,5 @@
 # Le bonheur
 
-> **Notion :** Le bonheur — Philosophie · 2ème Bac (axe : la morale)
-> **Repère :** analyse de notion, problématisation, méthode de la dissertation
-
 ---
 
 ## R0 — Accroche : la meilleure note, et le lendemain qui déçoit

@@ -1,12 +1,5 @@
 # La méthode de l'analyse de texte
 
-> **Méthode (savoir-faire transversal) — نص مذيّل بمطلب :** تحليل النص الفلسفي —
-> Philosophie · 2ème Bac · toutes filières scientifiques (SM-A, SM-B, Sciences
-> Physiques, SVT) · nouvelle unité « Méthode de l'épreuve »
-> **Repère :** حلّل (ي) النص و ناقشه (يه) — les 4 moments notés sur 20 (تأطير،
-> تحليل، مناقشة، تركيب) ; texte-spine : Bakounine (*La Liberté*) ; summit :
-> Kant (*Fondements de la métaphysique des mœurs*) et un texte sur la vérité
-
 ---
 
 ## R0 — Accroche : paraphraser n'est pas analyser

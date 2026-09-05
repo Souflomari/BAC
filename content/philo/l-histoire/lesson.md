@@ -1,8 +1,5 @@
 # L'histoire
 
-> **Notion :** L'histoire — Philosophie · 2ème Bac (axe : la condition humaine)
-> **Repère :** analyse de notion, problématisation, méthode de la dissertation
-
 ---
 
 ## R0 — Accroche : la sécheresse que racontait ta grand-mère

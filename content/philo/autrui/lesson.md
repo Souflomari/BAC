@@ -1,8 +1,5 @@
 # Autrui
 
-> **Notion :** Autrui — Philosophie · 2ème Bac (axe : la condition humaine)
-> **Repère :** analyse de notion, problématisation, méthode de la dissertation
-
 ---
 
 ## R0 — Accroche : le regard qui entre sans prévenir

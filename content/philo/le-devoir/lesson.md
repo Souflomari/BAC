@@ -1,8 +1,5 @@
 # Le devoir
 
-> **Notion :** Le devoir — Philosophie · 2ème Bac (axe : la morale)
-> **Repère :** analyse de notion, problématisation, méthode de la dissertation
-
 ---
 
 ## R0 — Accroche : le surveillant qui sort de la salle
