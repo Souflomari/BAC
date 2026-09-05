@@ -5368,12 +5368,26 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ]
   },
   "svt/chaines-de-montagnes": {
-    "CDM-1": [],
-    "CDM-2": [],
-    "CDM-3": [],
-    "CDM-4": [],
-    "CDM-5": [],
-    "CDM-6": []
+    "CDM-1": [
+      "mc.svt.svt_chaines_montagnes.subduction-collision-confondues"
+    ],
+    "CDM-2": [
+      "mc.svt.svt_chaines_montagnes.subduction-collision-confondues"
+    ],
+    "CDM-3": [
+      "mc.svt.svt_chaines_montagnes.roche-mal-identifiee"
+    ],
+    "CDM-4": [
+      "mc.svt.svt_chaines_montagnes.deformation-mal-interpretee"
+    ],
+    "CDM-5": [
+      "mc.svt.svt_chaines_montagnes.histoire-de-la-chaine-mal-reconstituee",
+      "mc.svt.svt_chaines_montagnes.pression-metamorphique-mal-situee"
+    ],
+    "CDM-6": [
+      "mc.svt.svt_chaines_montagnes.histoire-de-la-chaine-mal-reconstituee",
+      "mc.svt.svt_chaines_montagnes.subduction-collision-confondues"
+    ]
   },
   "svt/dysfonctionnements-immunitaires": {
     "DI-1": [
@@ -5446,11 +5460,23 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ]
   },
   "svt/granitisation-deformation": {
-    "GRD-1": [],
-    "GRD-2": [],
-    "GRD-3": [],
-    "GRD-4": [],
-    "GRD-5": []
+    "GRD-1": [
+      "mc.svt.svt_granitisation.cassant-ductile-inverses",
+      "mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause"
+    ],
+    "GRD-2": [
+      "mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause",
+      "mc.svt.svt_granitisation.transformation-attribuee-a-lerosion"
+    ],
+    "GRD-3": [
+      "mc.svt.svt_granitisation.fusion-mal-expliquee"
+    ],
+    "GRD-4": [
+      "mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire"
+    ],
+    "GRD-5": [
+      "mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause"
+    ]
   },
   "svt/liberation-energie-matiere-organique": {
     "LIB-1": [
@@ -5552,19 +5578,48 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ]
   },
   "svt/theorie-tectonique-plaques": {
-    "TTP-1": [],
-    "TTP-2": [],
-    "TTP-3": [],
-    "TTP-4": [],
-    "TTP-5": [],
-    "TTP-6": []
+    "TTP-1": [
+      "mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise"
+    ],
+    "TTP-2": [
+      "mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise"
+    ],
+    "TTP-3": [
+      "mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus",
+      "mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers"
+    ],
+    "TTP-4": [
+      "mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus"
+    ],
+    "TTP-5": [
+      "mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus"
+    ],
+    "TTP-6": [
+      "mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers",
+      "mc.svt.svt_tectonique_plaques.repartition-uniforme-des-seismes"
+    ]
   },
   "svt/transmission-caracteres": {
-    "TC-1": [],
-    "TC-2": [],
-    "TC-3": [],
-    "TC-4": [],
-    "TC-5": []
+    "TC-1": [
+      "mc.svt.svt_transmission_caracteres.dominance-mal-appliquee",
+      "mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus"
+    ],
+    "TC-2": [
+      "mc.svt.svt_transmission_caracteres.dominance-mal-appliquee",
+      "mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue"
+    ],
+    "TC-3": [
+      "mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus",
+      "mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue"
+    ],
+    "TC-4": [
+      "mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees",
+      "mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue"
+    ],
+    "TC-5": [
+      "mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus",
+      "mc.svt.svt_transmission_caracteres.test-cross-mal-compris"
+    ]
   }
 };
 

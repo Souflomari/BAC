@@ -1,6 +1,68 @@
 notion: granitisation-deformation
 skill_code: svt_granitisation
-misconceptions: []
+misconceptions:
+  # Inventaire écrit le 2026-09-05, tiré des feedbacks déjà présents.
+  - id: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
+    label: "« Ce gradient s'explique par l'âge, la composition ou la chronologie — pas par la profondeur ni par le temps d'exhumation »"
+    description: >
+      Devant une série qui varie avec la profondeur (faille puis pli ; schiste,
+      gneiss, migmatite) ou avec le temps d'érosion (granite affleurant dans les
+      chaînes anciennes), l'élève cherche la cause ailleurs : nature chimique de
+      la roche, âge des échantillons, ordre chronologique des structures,
+      collision qui « s'intensifierait », chaîne jeune « trop froide ».
+    contradicts_principle: >
+      C'est la PROFONDEUR au moment de la déformation qui commande : la
+      température et la pression de confinement augmentent avec elle, faisant
+      passer une même roche du cassant au ductile, et une même pélite du schiste
+      au gneiss puis à la migmatite. Et une chaîne jeune produit déjà du granite
+      en profondeur : ce qui lui manque, ce sont les dizaines de millions
+      d'années d'érosion nécessaires pour le mettre à l'affleurement.
+
+  - id: mc.svt.svt_granitisation.cassant-ductile-inverses
+    label: "« Une faille est une déformation ductile, un pli une déformation cassante »"
+    description: >
+      L'élève intervertit les deux définitions.
+    contradicts_principle: >
+      Une FAILLE est une cassure nette : déformation CASSANTE. Un PLI est une
+      courbure continue sans rupture : déformation DUCTILE.
+
+  - id: mc.svt.svt_granitisation.transformation-attribuee-a-lerosion
+    label: "« La migmatite est un schiste plus érodé »"
+    description: >
+      L'élève explique une recristallisation profonde par une altération de
+      surface.
+    contradicts_principle: >
+      L'érosion use et fragmente la roche en surface ; elle ne recristallise
+      aucun minéral. La migmatite résulte d'un enfouissement très profond où la
+      roche a commencé à FONDRE partiellement.
+
+  - id: mc.svt.svt_granitisation.fusion-mal-expliquee
+    label: "« La roche fond parce qu'elle est enfouie depuis longtemps, ou parce qu'un magma venu d'ailleurs l'a atteinte »"
+    description: >
+      L'élève fait de l'anatexie une affaire de durée, ou une infiltration : un
+      manteau réservoir de magma liquide, ou de l'eau de pluie descendue à des
+      dizaines de kilomètres.
+    contradicts_principle: >
+      Une roche reste enfouie indéfiniment sans fondre tant que la température
+      locale reste sous son SOLIDUS — c'est tout le métamorphisme, qui se fait à
+      l'état solide. Le manteau est essentiellement solide, pas un réservoir de
+      magma. Et l'anatexie est une fusion partielle produite SUR PLACE, aidée
+      par l'eau déjà piégée dans les micas, jamais par une eau venue de la
+      surface.
+
+  - id: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
+    label: "« Le granite est une roche volcanique, ou une accumulation de cendres — et la taille des cristaux vient de la composition »"
+    description: >
+      L'élève situe la formation du granite en surface (lave refroidie à l'air
+      libre, cendres compactées) ou attribue sa texture grenue à la chimie du
+      magma plutôt qu'à la vitesse de refroidissement.
+    contradicts_principle: >
+      Une lave refroidie à l'air libre perd sa chaleur en quelques heures : elle
+      donne un grain FIN. Les gros cristaux du granite exigent un
+      refroidissement très lent, possible seulement en PROFONDEUR, où la roche
+      encaissante isole le magma. La composition détermine la NATURE des
+      minéraux ; la vitesse de refroidissement détermine leur TAILLE.
+
 items:
   - id: GRD-1
     rung: "R1"
@@ -31,6 +93,7 @@ items:
           réalité une accumulation de petites fractures que rien ne distingue à l'œil
           nu).
         correct: false
+        misconception: mc.svt.svt_granitisation.cassant-ductile-inverses
         feedback: >
           C'est l'inverse des définitions : une faille est justement le nom
           d'une cassure nette (déformation cassante), et un pli est
@@ -43,6 +106,7 @@ items:
           certaines roches se plissent, d'autres se cassent, indépendamment de la
           profondeur ou des conditions physiques régnant à cet endroit.
         correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
         feedback: >
           La même roche peut se plisser en profondeur et se casser plus
           haut dans la même coupe : ce n'est donc pas une propriété fixe du
@@ -55,6 +119,7 @@ items:
           ce que l'on observe ici est un stade chronologique différent d'un même
           épisode, et non un effet de la profondeur.
         correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
         feedback: >
           Rien n'indique ici un décalage dans le temps : les deux structures
           coexistent dans la même coupe, à la même étape de la collision.
@@ -107,6 +172,7 @@ items:
           roche la plus ancienne et la migmatite la plus récente, chacune s'étant formée
           à son époque sans lien avec la profondeur de prélèvement.
         correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
         feedback: >
           Schiste, gneiss et migmatite sont une seule et même roche de
           départ, prise à des profondeurs croissantes d'un seul et même
@@ -120,6 +186,7 @@ items:
           différents, et la profondeur n'intervient ni dans leur formation ni dans leur
           aspect actuel.
         correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
         feedback: >
           L'énoncé précise que les quatre échantillons proviennent de la
           MÊME pélite de départ. Leur transformation progressive ne peut
@@ -132,6 +199,7 @@ items:
           : ce n'est pas un effet de la profondeur d'enfouissement mais de l'altération
           subie une fois la roche revenue en surface.
         correct: false
+        misconception: mc.svt.svt_granitisation.transformation-attribuee-a-lerosion
         feedback: >
           L'érosion est un phénomène de surface qui use et fragmente la
           roche ; elle ne recristallise pas ses minéraux. La migmatite
@@ -185,6 +253,7 @@ items:
           température, et les roches situées plus haut, enfouies depuis moins longtemps,
           fondront elles aussi avec le temps.
         correct: false
+        misconception: mc.svt.svt_granitisation.fusion-mal-expliquee
         feedback: >
           Une roche peut rester enfouie très longtemps sans jamais fondre,
           tant que la température locale reste sous son solidus : c'est le
@@ -198,6 +267,7 @@ items:
           de magma liquide en permanence, et parce qu'un peu de ce magma s'infiltre dans
           la roche environnante en la portant à sa propre température.
         correct: false
+        misconception: mc.svt.svt_granitisation.fusion-mal-expliquee
         feedback: >
           Le manteau n'est pas un réservoir de magma liquide préexistant :
           il est essentiellement solide. L'anatexie n'est pas une
@@ -210,6 +280,7 @@ items:
           l'infiltration d'eau de pluie depuis l'extérieur : l'eau chaude circulant dans
           les fractures dissout les minéraux et donne l'aspect d'une roche fondue.
         correct: false
+        misconception: mc.svt.svt_granitisation.fusion-mal-expliquee
         feedback: >
           À des dizaines de kilomètres de profondeur, l'eau de pluie ne
           s'infiltre pas : l'eau en cause ici est celle déjà piégée dans la
@@ -259,6 +330,7 @@ items:
           lave refroidit lentement à l'air libre, après une éruption, et la texture
           grenue est la signature de ce refroidissement de surface.
         correct: false
+        misconception: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
         feedback: >
           C'est l'inverse : une lave qui refroidit à l'air libre perd sa
           chaleur en quelques heures ou quelques jours, un temps bien trop
@@ -272,6 +344,7 @@ items:
           riche en silice donne toujours de gros cristaux, qu'il refroidisse en
           profondeur ou à l'air libre.
         correct: false
+        misconception: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
         feedback: >
           La composition chimique influence la nature des minéraux formés,
           mais c'est bien la vitesse de refroidissement qui détermine la
@@ -283,6 +356,7 @@ items:
           compactées au sommet d'un volcan, les grains visibles étant les fragments
           soudés les uns aux autres par la pression.
         correct: false
+        misconception: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
         feedback: >
           Une accumulation de cendres compactées donnerait une roche
           volcanique fragmentaire à grain fin ou variable, jamais un
@@ -332,6 +406,7 @@ items:
           parce que la collision s'intensifie avec le temps et finit par produire assez
           de magma pour former de vastes massifs.
         correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
         feedback: >
           Rien n'indique que la collision « s'intensifie » avec l'âge d'une
           chaîne. L'anatexie se produit dès que la croûte est assez
@@ -344,6 +419,7 @@ items:
           ce qui explique qu'on ne le trouve jamais dans une chaîne encore active : sa
           présence signe une chaîne définitivement éteinte.
         correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
         feedback: >
           L'anatexie se produit PENDANT la collision elle-même, dès que
           l'épaississement crustal rend certaines roches assez profondes et
@@ -356,6 +432,7 @@ items:
           faut attendre que la chaîne vieillisse pour que sa base s'échauffe
           suffisamment et que la fusion des roches devienne possible.
         correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
         feedback: >
           Une chaîne de collision jeune possède déjà, dès le début de son
           épaississement, une croûte très épaisse et donc des profondeurs

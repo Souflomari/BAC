@@ -1,6 +1,68 @@
 notion: transmission-caracteres
 skill_code: svt_transmission_caracteres
-misconceptions: []
+misconceptions:
+  # Inventaire écrit le 2026-09-05, tiré des feedbacks déjà présents.
+  - id: mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus
+    label: "« Même phénotype, même génotype » — et l'inverse : le phénotype des parents fixerait celui des petits"
+    description: >
+      L'élève lit le génotype dans l'apparence : deux individus semblables
+      auraient forcément les mêmes allèles, deux parents gris ne pourraient pas
+      donner un petit blanc, un individu gris serait homozygote. Variante : il
+      intervertit purement les deux définitions.
+    contradicts_principle: >
+      Le GÉNOTYPE est la paire d'allèles portée, le PHÉNOTYPE l'aspect
+      observable qui en résulte. Dès qu'un allèle domine, un même phénotype
+      recouvre DEUX génotypes ($G//G$ et $G//g$) : un parent gris peut porter
+      $g$ sans le montrer, et deux parents gris peuvent donner un petit blanc.
+
+  - id: mc.svt.svt_transmission_caracteres.dominance-mal-appliquee
+    label: "« Deux allèles différents donnent un phénotype intermédiaire » / « le récessif masque le dominant »"
+    description: >
+      L'élève mélange les deux allèles d'un hétérozygote au lieu de laisser le
+      dominant s'exprimer seul, ou inverse le sens de la domination annoncé par
+      l'énoncé.
+    contradicts_principle: >
+      Chez un hétérozygote, UN SEUL des deux allèles s'exprime — le dominant —
+      et il masque complètement l'autre. Il n'y a ni mélange, ni phénotype
+      intermédiaire, et un allèle récessif ne masque jamais un allèle dominant.
+
+  - id: mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue
+    label: "« On applique à ce croisement le rapport d'un autre croisement »"
+    description: >
+      L'élève transporte un rapport connu (1:1, 3:1, 3/4, 1/2) vers un
+      croisement auquel il ne correspond pas : rapport de F2 appliqué à la F1,
+      proportion de gamètes d'un seul parent prise pour une proportion de
+      descendants, classe dominante confondue avec la classe récessive.
+    contradicts_principle: >
+      Chaque rapport a son croisement. Deux lignées PURES ne produisent chacune
+      qu'UN type de gamète : la F1 est uniforme. Le 3:1 est le rapport de la F2
+      (hétérozygote × hétérozygote), où $1/4$ est la classe récessive et $3/4$
+      la classe dominante. Une proportion de gamètes chez un parent n'est jamais
+      une proportion de descendants : il faut que les DEUX parents transmettent.
+
+  - id: mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees
+    label: "« Deux caractères récessifs à la fois : on additionne les probabilités »"
+    description: >
+      En dihybridisme, l'élève additionne $1/4 + 1/4$, ou mélange une fraction
+      de génotype avec une fraction de gamète.
+    contradicts_principle: >
+      Deux gènes indépendants : la probabilité que les DEUX caractères récessifs
+      apparaissent chez le même individu est le PRODUIT des deux probabilités,
+      $1/4 \\times 1/4 = 1/16$. Une addition répondrait à « l'un OU l'autre »,
+      pas à « l'un ET l'autre ».
+
+  - id: mc.svt.svt_transmission_caracteres.test-cross-mal-compris
+    label: "« Le testeur devrait porter le phénotype dominant, ou peut transmettre un allèle caché »"
+    description: >
+      L'élève choisit mal le partenaire du test-cross, ou prête à un homozygote
+      récessif la capacité de transmettre l'allèle dominant.
+    contradicts_principle: >
+      Le testeur doit être homozygote RÉCESSIF, précisément pour ne produire
+      qu'un seul type de gamète et n'ajouter aucune ambiguïté. Un $g//g$ ne
+      porte que $g$ sur ses deux chromosomes : il ne peut transmettre que $g$.
+      C'est la RÉPARTITION des phénotypes chez les petits qui révèle le
+      génotype inconnu.
+
 items:
   - id: TC-1
     rung: "R1"
@@ -18,6 +80,7 @@ items:
       - id: B
         text: "Elles ont nécessairement le même génotype, puisqu'elles ont le même phénotype : deux souris grises portent forcément les mêmes allèles."
         correct: false
+        misconception: mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus
         feedback: >
           C'est l'erreur inverse de ce que montre la leçon : le même phénotype
           peut correspondre à deux génotypes différents dès qu'un allèle est
@@ -28,6 +91,7 @@ items:
       - id: C
         text: "La souris $G//g$ doit avoir un pelage différent de celui de la souris $G//G$, car elle porte deux allèles différents à ce locus."
         correct: false
+        misconception: mc.svt.svt_transmission_caracteres.dominance-mal-appliquee
         feedback: >
           C'est oublier ce que fait la dominance : porter deux allèles
           différents ne produit pas un phénotype intermédiaire ou mélangé —
@@ -37,6 +101,7 @@ items:
       - id: D
         text: "Le phénotype désigne ici les allèles portés, tandis que le génotype désigne l'aspect visible du pelage de l'animal."
         correct: false
+        misconception: mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus
         feedback: >
           C'est une inversion des deux définitions. Le génotype est la paire
           d'allèles portée par l'individu (son patrimoine génétique) ; le
@@ -74,6 +139,7 @@ items:
       - id: B
         text: "Toutes vertes, car le caractère vert masque le caractère jaune chez l'hybride."
         correct: false
+        misconception: mc.svt.svt_transmission_caracteres.dominance-mal-appliquee
         feedback: >
           L'énoncé précise que jaune est dominant sur vert — c'est donc
           l'allèle $J$ qui s'exprime chez l'hétérozygote $J//j$, jamais
@@ -82,6 +148,7 @@ items:
       - id: C
         text: "La moitié jaunes, la moitié vertes, car chaque parent ne transmet qu'un type de gamète et le mélange donne 50 % - 50 %."
         correct: false
+        misconception: mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue
         feedback: >
           Ce rapport 1:1 n'apparaît pas ici. Chaque parent, étant homozygote,
           ne produit qu'UN SEUL type de gamète ($J$ pour l'un, $j$ pour
@@ -91,6 +158,7 @@ items:
       - id: D
         text: "$\\frac{3}{4}$ jaunes et $\\frac{1}{4}$ vertes, comme pour un croisement F1 $\\times$ F1."
         correct: false
+        misconception: mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue
         feedback: >
           Ce rapport 3:1 est celui de la génération F2 (croisement de deux
           hétérozygotes, chapitre 4), pas celui de la F1. Ici, on croise deux lignées
@@ -126,6 +194,7 @@ items:
       - id: B
         text: "$\\frac{1}{2}$"
         correct: false
+        misconception: mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue
         feedback: >
           Ce chiffre correspond à la proportion de gamètes $g$ produits par
           UN SEUL parent, pas à la proportion de petits blancs. Pour obtenir
@@ -136,6 +205,7 @@ items:
       - id: C
         text: "$0$, car les deux parents sont gris."
         correct: false
+        misconception: mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus
         feedback: >
           C'est le piège du chapitre 2 : un parent au phénotype gris peut être
           hétérozygote et porter, sans le montrer, l'allèle $g$. Le
@@ -145,6 +215,7 @@ items:
       - id: D
         text: "$\\frac{3}{4}$"
         correct: false
+        misconception: mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue
         feedback: >
           $\frac{3}{4}$ est la fraction de petits GRIS (le phénotype
           dominant, obtenu par $G//G$ ou $G//g$), pas la fraction de
@@ -185,6 +256,7 @@ items:
       - id: B
         text: "$\\frac{1}{2}$"
         correct: false
+        misconception: mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees
         feedback: >
           Ce résultat vient d'une addition : $\frac{1}{4} + \frac{1}{4} =
           \frac{1}{2}$. Mais on cherche la probabilité que DEUX caractères
@@ -194,6 +266,7 @@ items:
       - id: C
         text: "$\\frac{1}{8}$"
         correct: false
+        misconception: mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees
         feedback: >
           Ce calcul mélange une fraction de génotype ($\frac{1}{4}$, la
           probabilité d'être $c//c$) avec une fraction de gamète
@@ -204,6 +277,7 @@ items:
       - id: D
         text: "$\\frac{3}{16}$"
         correct: false
+        misconception: mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue
         feedback: >
           $\frac{3}{16}$ est la probabilité d'une classe MIXTE (un caractère
           récessif et l'autre dominant, par exemple noir ET ailes longues),
@@ -246,6 +320,7 @@ items:
       - id: B
         text: "Elle est homozygote ($G//G$), puisqu'elle est phénotypiquement grise."
         correct: false
+        misconception: mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus
         feedback: >
           C'est retomber dans le piège que le test-cross sert justement à
           éviter : le phénotype gris seul ne permet pas de conclure sur le
@@ -255,6 +330,7 @@ items:
       - id: C
         text: "On ne peut rien conclure, car le partenaire testeur devrait lui aussi être gris."
         correct: false
+        misconception: mc.svt.svt_transmission_caracteres.test-cross-mal-compris
         feedback: >
           C'est l'inverse du principe du test-cross : le testeur doit être
           homozygote RÉCESSIF, précisément pour ne transmettre qu'un seul
@@ -264,6 +340,7 @@ items:
       - id: D
         text: "Elle est hétérozygote, mais le partenaire blanc a aussi transmis un allèle gris caché."
         correct: false
+        misconception: mc.svt.svt_transmission_caracteres.test-cross-mal-compris
         feedback: >
           C'est impossible par construction : un individu homozygote
           récessif ($g//g$) ne porte que l'allèle $g$ sur ses deux
