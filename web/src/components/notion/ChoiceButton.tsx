@@ -37,6 +37,7 @@
  * not change.
  */
 
+import { memo } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import remarkFrenchTypography from "@/lib/remarkFrenchTypography";
@@ -47,7 +48,12 @@ import { cn } from "@/lib/utils";
 import { ResultIcon } from "@/components/ui/Icon";
 
 // ── Math-aware text renderer ──────────────────────────────────────────────────
-export function MathText({
+// `memo` (2026-09-05, HANDOFF §11.23) : ce composant fait passer sa chaîne par
+// remark + KaTeX À CHAQUE rendu du parent. Un QCM se re-rend à chaque clic de
+// réponse (état local) — et re-parsait son énoncé et ses quatre choix. Deux
+// props, des chaînes : identiques ⇒ rien à refaire. Même défaut, même remède
+// que `MdBlock` (§11.20).
+export const MathText = memo(function MathText({
   children,
   className,
 }: {
@@ -68,7 +74,7 @@ export function MathText({
       </ReactMarkdown>
     </span>
   );
-}
+});
 
 // ── Choice state ──────────────────────────────────────────────────────────────
 type ChoiceState = "idle" | "selected-correct" | "selected-incorrect";
