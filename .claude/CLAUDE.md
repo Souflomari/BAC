@@ -47,8 +47,10 @@ Read the right document for the task at hand:
   l'ADR 0016. `known-issues.md` porte désormais une ÉTIQUETTE DE STATUT
   vérifiée : six entrées re-mesurées contre le dépôt (une résolue, une
   toujours vraie mais morte, une à moitié, une devenue sans objet), le reste
-  laissé au jugement du propriétaire. `schema-reconciliation.md` reste
-  STALE, avec sa proposition dans `docs/reestablish-state/`.]**
+  laissé au jugement du propriétaire. `schema-reconciliation.md` porte lui aussi une ÉTIQUETTE
+  DE STATUT vérifiée : son JUGEMENT était juste et a été exécuté ; ce qui a
+  vieilli est le temps des verbes, et le §6 (la pile frontend) est tranché
+  par l'ADR 0016.]**
 - **`docs/decisions/*.md`** — *what we decided and why.* The ADR trail.
   Numbered, append-only history. Referenced for context on past
   decisions. **ADR 0025 consolidates the July-2026 sprint's first arc**

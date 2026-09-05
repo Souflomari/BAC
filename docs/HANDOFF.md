@@ -2032,3 +2032,51 @@ script lui-même nommait deux chemins d'exemple qui n'existent pas. Les deux
 sont réparés — le second en faisant porter à l'instrument son propre
 marqueur `CHEMIN DISPARU:`. **Une sonde qui s'exempterait silencieusement
 serait la première à mentir.**
+
+### 10.15 Les deux autres documents d'ancrage : ce qui était encore vrai, et ce qui ne l'était plus
+
+Après `architecture.md` (§10.14), les deux autres documents de
+`docs/grounding/` portaient la même étiquette collective « STALE — en
+attente de revue humaine ». Une étiquette collective ne distingue plus rien :
+elle range sous le même mot un document dont le jugement était juste et un
+autre dont la prémisse a changé. Les deux ont été re-mesurés, sans être
+réécrits.
+
+**`schema-reconciliation.md` avait RAISON.** Sa conclusion — « le modèle de
+données est récupérable par extensions successives, aucune partie n'est à
+réécrire » — et l'ordre qu'il recommandait (RLS → arêtes de prérequis →
+schéma de misconceptions) sont exactement ce qui a été exécuté. Ce qui a
+vieilli n'est pas le jugement, **c'est le temps des verbes** : il dit encore
+« il faudra » de choses livrées depuis. Sept lignes re-vérifiées contre le
+dépôt, dont deux qui restent vraies (aucune migration descendante ; la table
+`units` jamais livrée — et probablement sans objet, le curriculum vivant en
+fichiers). Sa §6, « la pile frontend : l'audit ne peut pas trancher », est
+tranchée par l'ADR 0016 — **le même blocage périmé que celui du §10.14, dans
+un second document.**
+
+**`known-issues.md` décrit un produit retiré, et reste utile.** C'est le
+backlog de l'audit de juin 2026, celui de l'application Flutter. Les griefs
+et leurs causes ont largement survécu au changement de pile ; les libellés
+d'agents (`nextjs-frontend`, `pedagogy-auditor`) désignent un roster
+remplacé. Six entrées mécaniquement vérifiables ont été re-mesurées : une
+résolue (la RLS du curriculum, migration 040), une toujours vraie mais morte
+(`get_user_weak_areas` casse, et n'est appelée par rien), une à moitié (le
+test sur branche existe, les migrations descendantes non), une interdite
+depuis sans être automatisée, une toujours vraie et désormais assumée
+(pas de PostHog ni de Sentry — le produit s'instrumente par balayages du
+dépôt, pas par télémétrie d'élève), une devenue sans objet (le bucket de PDF
+d'annales : les annales vivent en fichiers).
+
+**Les entrées A–F n'ont PAS été triées, et c'est délibéré.** Ce sont des
+griefs produit — « les explications de maths n'adressent pas le pourquoi »,
+« la progression interne d'un chapitre semble aléatoire ». Dire lesquels
+sont clos est un jugement pédagogique, pas une mesure. Un balayage qui se
+permettrait ce verdict-là ferait exactement ce que ce projet reproche aux
+tableaux écrits à la main : affirmer sans réexécuter.
+
+> **La règle que les trois documents d'ancrage ajoutent ensemble.** Une
+> étiquette de statut doit être POSÉE PAR DOCUMENT, et dire ce qui a été
+> vérifié. « Stale, en attente de revue » sur trois documents à la fois a
+> tenu quatre mois et cachait trois situations différentes : une prémisse
+> périmée, un jugement juste au mauvais temps, et un backlog d'une autre ère
+> encore largement valable.

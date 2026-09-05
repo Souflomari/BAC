@@ -37,7 +37,9 @@ Current-state documents, reconciled against the actual repo:
   qui produit chaque chiffre. La version d'avant décrivait l'application
   Flutter et vit désormais dans `docs/archive/`.
 - `schema-reconciliation.md` — the database state and migration path.
-  **STALE.**
+  **Son jugement était juste et a été exécuté ; ce qui a vieilli est le
+  temps des verbes. Étiquette de statut vérifiée en tête du document
+  (2026-09-05).**
 - `known-issues.md` — the catalogued, severity-scored issue list.
   **Backlog de l'ère Flutter, conservé pour ce qu'il DIT ; six entrées
   re-vérifiées contre le dépôt le 2026-09-05 (l'étiquette en tête du
