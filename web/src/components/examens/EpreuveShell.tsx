@@ -22,6 +22,14 @@
  * Barème par question : le tag « (x,xx pt) » des stems quand il existe
  * (transcrit du scan), sinon répartition égale du barème de l'exercice —
  * la note est étiquetée « indicative » précisément pour ça.
+ *
+ * RÉVÉLATION PROGRESSIVE (2026-09-05, HANDOFF §11.20). Tout se rend côté
+ * client ; rendu d'un coup, le sujet gelait un téléphone bon marché 3 à 15 s
+ * au « Commencer » et 3 à 30 s au « Terminer ». Les questions se révèlent
+ * par lots (budget ~80 formules), chaque lot dans une transition ; le sujet
+ * finit toujours avant que le corrigé ne commence ; la racine porte
+ * `data-sujet-complet` puis `data-corrige-complet` — les instruments les
+ * attendent au lieu d'un délai (INSTRUMENTS, « protocole d'ouverture »).
  */
 
 import { memo, useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";

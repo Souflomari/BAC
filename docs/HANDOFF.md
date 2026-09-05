@@ -3278,15 +3278,17 @@ l'épreuve, le parent se re-rend à chaque seconde du chrono.
 - `MdBlock` est mémoïsé (`React.memo`) : deux chaînes en props, inchangées,
   rien à refaire. Cela vaut pour les 62 leçons aussi (cartes d'exercice,
   points d'arrêt), pas seulement pour l'épreuve.
-- `EpreuveShell` révèle les exercices UN PAR UN, chacun dans une transition
-  React (`useTransition`) : le rendu d'une transition est découpé en
-  tranches, le fil d'exécution redevient libre entre deux, et chaque exercice
+- `EpreuveShell` révèle les questions PAR LOTS, chaque lot dans une
+  transition React (`useTransition`) : le rendu d'une transition est découpé
+  en tranches, le fil d'exécution redevient libre entre deux, et chaque lot
   est validé (commit) avant que le suivant ne commence — le premier énoncé,
-  puis le premier corrigé, apparaissent en une fraction du temps total. Les
-  coquilles d'exercice (en-tête, points) sont là d'emblée ; les énoncés déjà
-  rendus restent en place pendant la correction (deux compteurs, un par
-  phase). La racine porte `data-sujet-complet` puis `data-corrige-complet`
-  quand le dernier exercice de la phase est rendu.
+  puis le premier corrigé, apparaissent en une fraction du temps total. La
+  taille du lot est un budget de formules (~80), arrivé à la quatrième
+  version après trois mesures (récit ci-dessous). Les coquilles d'exercice
+  (en-tête, points) sont là d'emblée ; les énoncés déjà rendus restent en
+  place pendant la correction (deux compteurs, un par phase). La racine porte
+  `data-sujet-complet` puis `data-corrige-complet` quand la dernière question
+  de la phase est rendue.
 
 **LA PREMIÈRE VERSION, ET CE QU'ELLE A APPRIS.** La révélation a d'abord
 été faite par EXERCICE. Mesurée sur 12 sujets (processeur ×6) : le premier

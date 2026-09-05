@@ -75,7 +75,8 @@ ouvrent les 39 sujets (`routes-examens.mjs` les liste) :
 1. cliquer « Commencer l'épreuve » (rôle `button`) ;
 2. attendre `[data-sujet-complet]` — PAS `[data-exam-exo]`, et PAS un délai :
    depuis la révélation progressive, les coquilles d'exercice sont là
-   d'emblée mais les énoncés arrivent exercice par exercice ;
+   d'emblée mais les énoncés arrivent par lots de questions (un budget
+   d'environ 80 formules par commit) ;
 3. cliquer « Terminer l'épreuve », puis attendre `[data-corrige-complet]`.
 
 Un `waitForTimeout(400)` à la place du marqueur mesurait une page à moitié
