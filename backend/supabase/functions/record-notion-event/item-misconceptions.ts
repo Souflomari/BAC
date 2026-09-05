@@ -5952,6 +5952,10 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "CDM-1": [
       "mc.svt.svt_chaines_montagnes.subduction-collision-confondues"
     ],
+    "CDM-10": [
+      "mc.svt.svt_chaines_montagnes.deformation-mal-interpretee",
+      "mc.svt.svt_chaines_montagnes.pression-metamorphique-mal-situee"
+    ],
     "CDM-2": [
       "mc.svt.svt_chaines_montagnes.subduction-collision-confondues"
     ],
@@ -5966,6 +5970,18 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.svt.svt_chaines_montagnes.pression-metamorphique-mal-situee"
     ],
     "CDM-6": [
+      "mc.svt.svt_chaines_montagnes.histoire-de-la-chaine-mal-reconstituee",
+      "mc.svt.svt_chaines_montagnes.subduction-collision-confondues"
+    ],
+    "CDM-7": [
+      "mc.svt.svt_chaines_montagnes.deformation-mal-interpretee",
+      "mc.svt.svt_chaines_montagnes.roche-mal-identifiee"
+    ],
+    "CDM-8": [
+      "mc.svt.svt_chaines_montagnes.pression-metamorphique-mal-situee",
+      "mc.svt.svt_chaines_montagnes.roche-mal-identifiee"
+    ],
+    "CDM-9": [
       "mc.svt.svt_chaines_montagnes.histoire-de-la-chaine-mal-reconstituee",
       "mc.svt.svt_chaines_montagnes.subduction-collision-confondues"
     ]
@@ -6103,6 +6119,23 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "GRD-5": [
       "mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause"
+    ],
+    "GRD-6": [
+      "mc.svt.svt_granitisation.cassant-ductile-inverses",
+      "mc.svt.svt_granitisation.fusion-mal-expliquee",
+      "mc.svt.svt_granitisation.transformation-attribuee-a-lerosion"
+    ],
+    "GRD-7": [
+      "mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire",
+      "mc.svt.svt_granitisation.transformation-attribuee-a-lerosion"
+    ],
+    "GRD-8": [
+      "mc.svt.svt_granitisation.fusion-mal-expliquee",
+      "mc.svt.svt_granitisation.transformation-attribuee-a-lerosion"
+    ],
+    "GRD-9": [
+      "mc.svt.svt_granitisation.cassant-ductile-inverses",
+      "mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire"
     ]
   },
   "svt/liberation-energie-matiere-organique": {
@@ -6286,6 +6319,16 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus"
     ],
     "TTP-6": [
+      "mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers",
+      "mc.svt.svt_tectonique_plaques.repartition-uniforme-des-seismes"
+    ],
+    "TTP-7": [
+      "mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise",
+      "mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers",
+      "mc.svt.svt_tectonique_plaques.repartition-uniforme-des-seismes"
+    ],
+    "TTP-8": [
+      "mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise",
       "mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers",
       "mc.svt.svt_tectonique_plaques.repartition-uniforme-des-seismes"
     ]

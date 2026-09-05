@@ -435,3 +435,122 @@ items:
       **Ce que ça prouve ensemble :** la tectonique des plaques n'est pas
       seulement une reconstitution du passé ; c'est un phénomène mesurable,
       actif aujourd'hui.
+
+  # ── DEUX ITEMS AJOUTÉS LE 2026-09-05 ───────────────────────────────────────
+  # Motif : trois des quatre erreurs déclarées étaient sous le plancher de 3
+  # items du banc, donc inévaluables. Périmètre : lesson.md, R1 à R8.
+  - id: TTP-7
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: svt_tectonique_plaques
+    tags: [seismes_volcans, frontieres_de_plaques, preuves_modernes]
+    stem: >
+      Sur une carte mondiale des épicentres de séismes, les points ne
+      couvrent pas la surface du globe : ils dessinent des lignes fines et
+      continues, longues de milliers de kilomètres. Que vaut cette
+      observation comme preuve ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle dessine directement les frontières de plaques : c'est là que deux plaques rigides se rencontrent et libèrent des contraintes, l'intérieur des plaques restant comparativement calme."
+        correct: true
+      - id: B
+        text: "Elle montre que l'activité sismique se répartit de façon homogène sur toute la surface du globe, les lignes observées ne traduisant que la densité inégale des stations de mesure selon les régions."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.repartition-uniforme-des-seismes
+        feedback: >
+          La concentration est réelle, pas un artefact d'observation : elle se
+          retrouve à toutes les échelles et sur toutes les époques
+          enregistrées. Et c'est justement cette CONCENTRATION, non une
+          répartition uniforme, qui dessine les plaques.
+      - id: C
+        text: "Elle prouve que les séismes sont la cause du mouvement des plaques : c'est la libération répétée d'énergie le long de ces lignes qui met peu à peu les plaques en mouvement les unes par rapport aux autres."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+        feedback: >
+          La causalité est inversée. C'est la convection mantellique qui
+          entraîne les plaques ; leur mouvement produit ensuite, à leurs
+          frontières, séismes et volcanisme. Les séismes sont une conséquence
+          en surface, jamais le moteur.
+      - id: D
+        text: "Elle ne prouve rien de plus que la dérive des continents de Wegener, qui avait déjà décrit ces alignements en 1912 et en avait fait le principal de ses quatre arguments en faveur de sa théorie."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: >
+          Les quatre arguments de Wegener sont la concordance des côtes, les
+          fossiles, les structures géologiques et les traces climatiques — pas
+          la sismicité mondiale, dont les relevés systématiques sont bien
+          postérieurs et appartiennent aux preuves MODERNES.
+    correct_feedback: >
+      Séismes et volcans se concentrent le long de lignes fines : les
+      frontières de plaques. C'est cette concentration, observable en temps
+      réel et indépendamment de toute reconstitution du passé, qui fait la
+      force de la preuve.
+    solution: |
+      **Ce que l'observation montre.** Une répartition très inégale : des
+      lignes actives, de vastes intérieurs calmes.
+
+      **Ce qu'on en déduit.** Que la lithosphère est découpée en morceaux
+      rigides — les plaques — dont les bords seuls sont le siège de
+      contraintes libérées brutalement.
+
+      **Le sens de la causalité.** Convection mantellique → mouvement des
+      plaques → séismes et volcanisme aux frontières. Jamais l'inverse.
+
+  - id: TTP-8
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: svt_tectonique_plaques
+    tags: [gps, convection, preuves_modernes, moteur]
+    stem: >
+      Des mesures GPS montrent que l'Amérique du Sud et l'Afrique s'écartent
+      d'environ $3\ \text{cm}$ par an. Que mesure-t-on exactement, et que
+      peut-on en conclure sur le moteur du mouvement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "On mesure le déplacement de points situés à la surface des plaques ; le moteur, lui, reste en profondeur et n'est pas directement accessible à une mesure de position."
+        correct: true
+      - id: B
+        text: "On mesure directement la vitesse de la convection mantellique, le GPS donnant accès au mouvement des cellules de convection elles-mêmes à travers celui des points de surface."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+        feedback: >
+          Le GPS ne mesure que des POSITIONS en surface. La convection se
+          produit dans le manteau, en profondeur : on l'infère, on ne la relève
+          pas. Confondre les deux, c'est prendre l'effet mesuré pour la cause
+          supposée.
+      - id: C
+        text: "On mesure une dérive qui se répartit de façon égale sur toute la surface du globe : chaque point de la croûte s'écarte de ses voisins à peu près à la même vitesse, sans zone privilégiée."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.repartition-uniforme-des-seismes
+        feedback: >
+          Les vitesses relevées par GPS ne sont pas uniformes : elles varient
+          fortement selon la plaque et la frontière considérée, et l'intérieur
+          d'une plaque se déforme très peu. C'est cette structure inégale qui
+          révèle le découpage en plaques rigides.
+      - id: D
+        text: "On mesure la confirmation directe de l'hypothèse que Wegener avait formulée dès 1912, laquelle avait été rejetée précisément parce que ses preuves étaient jugées insuffisantes par ses contemporains."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: >
+          Le rejet de 1912 ne portait pas sur les preuves de Wegener — elles
+          n'ont jamais été invalidées — mais sur l'absence d'un MÉCANISME
+          physiquement plausible. Ce que le GPS apporte est une mesure du
+          mouvement, pas une réhabilitation de preuves qui tenaient déjà.
+    correct_feedback: >
+      Le GPS mesure le déplacement de points à la surface des plaques — en
+      temps réel, indépendamment de toute reconstitution du passé. Le moteur,
+      la convection mantellique, se déduit de ce mouvement ; il ne se mesure
+      pas directement.
+    solution: |
+      **Ce que l'instrument relève.** Des positions, donc des déplacements de
+      surface, avec une précision millimétrique.
+
+      **Ce que ces déplacements établissent.** Que les plaques bougent
+      aujourd'hui, à des vitesses de quelques centimètres par an — le fait que
+      Wegener ne pouvait pas mesurer.
+
+      **Ce qu'ils n'établissent pas directement.** Le moteur. La convection
+      mantellique est une inférence, appuyée sur d'autres arguments
+      (tomographie, flux de chaleur), non une lecture d'écran GPS.

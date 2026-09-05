@@ -460,3 +460,240 @@ items:
       la dernière pièce du raisonnement qui remonte du présent (les roches
       observables aujourd'hui) au passé (l'océan disparu, sa fermeture, la
       collision).
+
+  # ── TROIS ITEMS AJOUTÉS LE 2026-09-05 ──────────────────────────────────────
+  # Motif : quatre des cinq erreurs déclarées étaient sous le plancher de 3
+  # items du banc, donc inévaluables. Périmètre : lesson.md.
+  - id: CDM-7
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_chaines_montagnes
+    tags: [plis, chevauchements, raccourcissement, ophiolites]
+    stem: >
+      Sur un même transect de chaîne, on relève : des plis serrés, un
+      chevauchement empilant du gneiss ancien sur du grès plus jeune, et un
+      massif montrant basaltes en coussins, gabbro puis péridotite. Que
+      raconte, ensemble, cet assemblage ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Un raccourcissement horizontal important — plis et chevauchement en sont deux expressions, l'une ductile l'autre cassante — et la fermeture d'un ancien océan, dont le massif est un fragment de lithosphère océanique."
+        correct: true
+      - id: B
+        text: "Un étirement de la croûte à cet endroit : les couches ont glissé les unes sur les autres le long du plan de faille, ce qui a produit à la fois l'empilement observé et le plissement des couches voisines."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.deformation-mal-interpretee
+        feedback: >
+          Un chevauchement empile de l'ancien SUR du plus jeune : c'est la
+          signature d'une COMPRESSION. Un étirement produit au contraire des
+          failles normales, qui abaissent un bloc au lieu de l'empiler.
+      - id: C
+        text: "Une succession de dépôts sédimentaires ordinaires : le gneiss s'est simplement formé avant le grès dans cet environnement, et le massif sombre est une coulée volcanique continentale intercalée entre les deux."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.roche-mal-identifiee
+        feedback: >
+          Deux choses ne collent pas. Un dépôt normal place toujours l'ancien
+          EN DESSOUS. Et la séquence basalte en coussins / gabbro / péridotite
+          n'est pas une coulée continentale : c'est la structure de la
+          lithosphère océanique, avec une signature sous-marine (les coussins).
+      - id: D
+        text: "Une déformation purement locale et sans portée : plis, faille et massif sombre relèvent de trois histoires géologiques indépendantes, que rien n'autorise à réunir dans un même récit."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.deformation-mal-interpretee
+        feedback: >
+          Plis et chevauchements accommodent le MÊME raccourcissement, l'un de
+          façon ductile, l'autre cassante : ils racontent la même histoire.
+          Et une ophiolite coincée entre deux blocs continentaux ne s'y trouve
+          pas par hasard.
+    correct_feedback: >
+      Trois indices, une seule histoire : une convergence qui a raccourci la
+      croûte (plis en régime ductile, chevauchement en régime cassant) après
+      avoir refermé un océan, dont l'ophiolite est le fragment préservé.
+    solution: |
+      **Les plis et le chevauchement.** Deux façons d'accommoder un
+      raccourcissement horizontal, selon la profondeur au moment de la
+      déformation : ductile en profondeur, cassant plus haut.
+
+      **Le sens du chevauchement.** Ancien SUR plus jeune, le long d'un plan
+      incliné : compression, jamais extension.
+
+      **Le massif sombre.** Basaltes en coussins (refroidissement sous l'eau),
+      gabbro, péridotite : la séquence complète de la lithosphère océanique.
+      Coincée entre deux blocs continentaux, elle marque un océan disparu.
+
+  - id: CDM-8
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: svt_chaines_montagnes
+    tags: [metamorphisme, pression, exhumation, ophiolites]
+    stem: >
+      Un même affleurement de haute montagne livre deux échantillons : un
+      schiste bleu, dont l'assemblage minéral exige une pression très élevée
+      pour une température modérée, et un fragment de gabbro à texture
+      océanique. Comment lire cet affleurement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Ces roches ont été enfouies profondément — la haute pression vient du poids des roches sus-jacentes — puis ramenées en surface par l'érosion ; le gabbro trahit un ancien plancher océanique subducté puis préservé."
+        correct: true
+      - id: B
+        text: "La haute pression enregistrée vient de l'altitude de l'affleurement : c'est le poids de la colonne rocheuse de la montagne, sous le sommet, qui a imposé aux minéraux les conditions qu'ils enregistrent."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.pression-metamorphique-mal-situee
+        feedback: >
+          Une montagne de quelques kilomètres ne produit pas les pressions d'un
+          enfouissement à des dizaines de kilomètres. Ce qui recristallise une
+          roche, c'est le poids de KILOMÈTRES de roche empilée AU-DESSUS
+          d'elle, en profondeur — pas son altitude actuelle.
+      - id: C
+        text: "Le gabbro est un granite particulièrement métamorphisé, transformé par cette même haute pression au point d'acquérir une composition et une texture qui évoquent celles d'une roche océanique."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.roche-mal-identifiee
+        feedback: >
+          Le métamorphisme change la TEXTURE d'une roche — elle devient
+          feuilletée, rubanée — mais pas sa composition chimique de départ. Un
+          granite métamorphisé reste chimiquement un granite, jamais un gabbro.
+      - id: D
+        text: "L'altitude actuelle prouve que ces roches n'ont jamais été enfouies : leur assemblage minéral renseigne sur leur âge et sur la nature du sédiment d'origine, pas sur une profondeur passée."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.pression-metamorphique-mal-situee
+        feedback: >
+          Un assemblage minéral métamorphique enregistre les conditions de
+          PRESSION et de TEMPÉRATURE subies, ce qui permet précisément
+          d'estimer une profondeur d'enfouissement passée. Ce n'est pas un
+          indicateur d'âge.
+    correct_feedback: >
+      Deux lectures superposées. Le schiste bleu enregistre un enfouissement
+      profond, suivi d'une exhumation par érosion — sinon il ne serait pas
+      observable en surface. Le gabbro océanique signe un plancher subducté
+      puis préservé lors de la fermeture de l'océan.
+    solution: |
+      **D'où vient la pression.** Du poids des roches SUS-JACENTES. Trente
+      kilomètres de roche au-dessus, pas quatre kilomètres d'altitude
+      au-dessous.
+
+      **Ce que l'observation en surface implique.** Enfouissement PUIS
+      exhumation : sans remontée, la roche resterait inaccessible.
+
+      **Ce que le gabbro ajoute.** Une roche de plancher océanique, arrivée là
+      par la fermeture d'un océan — pas par transformation d'un granite, dont
+      la composition chimique ne peut pas devenir océanique.
+
+  - id: CDM-9
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: svt_chaines_montagnes
+    tags: [suture, reconstitution_histoire, chevauchements]
+    stem: >
+      Dans une chaîne ancienne fortement érodée, une bande large de quelques
+      kilomètres concentre les ophiolites, les chevauchements les plus
+      intenses et les roches ayant subi le métamorphisme le plus profond.
+      Qu'est-ce qui justifie d'y voir une SUTURE plutôt qu'une coïncidence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le fait que les trois indices racontent le même événement au même endroit : la fermeture d'un océan y a mis en contact deux marges continentales, en y concentrant déformation et enfouissement."
+        correct: true
+      - id: B
+        text: "Le fait que cette bande soit plus érodée que le reste de la chaîne : l'érosion y a simplement dégagé des niveaux structuraux plus profonds, ce qui suffit à expliquer la concentration observée."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.histoire-de-la-chaine-mal-reconstituee
+        feedback: >
+          Une érosion différentielle expose des niveaux plus profonds, mais
+          elle ne fabrique pas d'ophiolites là où il n'y en avait pas. Trouver
+          réunis les trois indices les plus caractéristiques d'une fermeture
+          océanique n'est pas un effet de creusement.
+      - id: C
+        text: "Le fait qu'une chaîne de subduction active s'y trouve encore aujourd'hui : la bande correspond à la fosse océanique, où une plaque continue de plonger sous l'autre en arrachant des fragments de plancher."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.subduction-collision-confondues
+        feedback: >
+          Une fosse marque une subduction ACTIVE, avec volcanisme et foyers
+          profonds. Ici, ophiolites et roches très déformées signent un océan
+          déjà entièrement refermé : c'est une collision achevée, pas une
+          subduction en cours.
+      - id: D
+        text: "Le fait que la croûte continentale s'y soit formée à l'origine : la suture marque le point de naissance des deux blocs continentaux, avant même l'ouverture de l'océan qui les a ensuite séparés."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.histoire-de-la-chaine-mal-reconstituee
+        feedback: >
+          La suture ne marque pas une naissance mais une FERMETURE : celle d'un
+          océan ouvert puis disparu entre deux blocs continentaux déjà
+          existants, bien plus anciens qu'elle.
+    correct_feedback: >
+      Une suture est la ligne où deux marges continentales, autrefois séparées
+      par un océan, se sont soudées. Ophiolites (reste du plancher),
+      déformation maximale (contact des deux blocs) et métamorphisme le plus
+      profond (enfouissement le plus poussé) sont trois traces du même
+      événement.
+    solution: |
+      **Pourquoi trois indices valent mieux qu'un.** Chacun pris seul pourrait
+      s'expliquer autrement. Réunis sur la même bande étroite, ils désignent un
+      événement unique.
+
+      **L'événement en question.** La fermeture d'un océan : son plancher est
+      subducté, un fragment échappe à l'engloutissement (l'ophiolite), les
+      deux marges entrent en contact et la déformation s'y concentre.
+
+      **Ce que la suture n'est pas.** Ni une vallée d'érosion, ni une fosse
+      active, ni le lieu de naissance de la croûte continentale.
+
+  - id: CDM-10
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_chaines_montagnes
+    tags: [plis, metamorphisme, profondeur, deformation]
+    stem: >
+      Dans une même couche de calcaire suivie sur plusieurs kilomètres, on
+      observe des fractures nettes vers l'affleurement et des plis continus,
+      sans cassure, dans les parties qui étaient les plus profondes au moment
+      de la déformation. Comment expliquer que la même roche, sous la même
+      compression, se comporte différemment ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La température et la pression de confinement augmentent avec la profondeur : en surface la roche casse, en profondeur elle flue — deux réponses à une seule et même compression."
+        correct: true
+      - id: B
+        text: "La partie profonde a subi une extension pendant que la partie superficielle subissait une compression : ce sont donc deux contraintes opposées, appliquées au même moment sur la même couche."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.deformation-mal-interpretee
+        feedback: >
+          Plis et fractures accommodent ici la MÊME compression : un pli n'est
+          pas la signature d'une extension. Ce qui change entre les deux
+          parties n'est pas la contrainte, mais les conditions physiques du
+          milieu.
+      - id: C
+        text: "Les plis profonds ont été produits par le seul poids de la colonne rocheuse qui les surmonte, indépendamment de toute compression horizontale : c'est le poids, et non la convergence, qui plisse une couche."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.pression-metamorphique-mal-situee
+        feedback: >
+          Le poids des roches sus-jacentes exerce une pression de
+          CONFINEMENT, qui rend la roche ductile — il ne raccourcit rien à lui
+          seul. Ce qui plisse la couche, c'est bien une compression
+          horizontale, liée à la convergence.
+      - id: D
+        text: "Le calcaire de surface et celui de profondeur sont deux roches chimiquement différentes malgré leur apparence : certaines roches se plissent et d'autres se cassent, indépendamment des conditions."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.deformation-mal-interpretee
+        feedback: >
+          L'énoncé précise qu'il s'agit d'UNE MÊME couche suivie sur plusieurs
+          kilomètres. Le comportement ductile ou cassant n'est donc pas une
+          propriété fixe du type de roche : ce sont la température et la
+          pression de confinement qui décident.
+    correct_feedback: >
+      Une même roche, sous une même compression, casse près de la surface et
+      flue en profondeur : température et pression de confinement, toutes deux
+      croissantes avec la profondeur, font passer du comportement cassant au
+      comportement ductile.
+    solution: |
+      **La variable cachée.** Pas la roche, pas la contrainte : la
+      PROFONDEUR au moment de la déformation.
+
+      **Ce qu'elle change.** Plus on descend, plus la température monte et plus
+      la pression de confinement augmente — deux facteurs qui rendent la roche
+      capable de se déformer sans rompre.
+
+      **Ce que le poids fait, et ne fait pas.** Il confine (donc il rend
+      ductile). Il ne raccourcit pas : le raccourcissement vient de la
+      compression horizontale, liée à la convergence des plaques.
