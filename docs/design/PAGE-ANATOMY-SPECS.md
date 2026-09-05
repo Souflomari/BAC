@@ -80,8 +80,17 @@ edges, content stays on the spine), `bg-[var(--color-surface-container-low)]`,
 `border-b border-[var(--color-border-subtle)]`. Inside, on the spine:
 breadcrumb nav → `<h1 font-serif font-bold text-display-lg max-w-[26ch]>` →
 metadata line (`mt-4 text-body-sm` secondary: level chip · `N min de lecture`
-· `mis à jour <mois année>` — computed facts only, from
-`NotionMeta.readingMinutes/updatedAt` in `web/src/lib/content.ts`).
+— computed facts only, from `NotionMeta.readingMinutes` in
+`web/src/lib/content.ts`).
+
+> **`mis à jour <mois année>` a été RETIRÉ le 2026-09-05**, et c'est la
+> règle « computed facts only » appliquée à la lettre. La date venait du
+> `mtime` de `lesson.md` : après un clone frais — donc à chaque déploiement
+> — tous les fichiers portent l'instant du checkout. Mesuré avant retrait :
+> **les 62 leçons affichaient « mis à jour septembre 2026 »**, la même date,
+> celle du dernier `git clone`. Ce n'était pas un fait calculé, c'était un
+> fait fabriqué. Si une date de mise à jour revient, elle sera un champ
+> AUTORÉ dans le contenu — un fait éditorial, pas une propriété d'inode.
 
 **Invariants.** `[data-band='masthead']` present with background ==
 `var(--color-surface-container-low)`; h1 computed 56px/1.06/700/serif;

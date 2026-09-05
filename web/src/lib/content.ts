@@ -61,11 +61,25 @@ export interface NotionMeta {
   title: string;
   /** Estimated reading time in minutes (word count / 180 wpm, French prose). */
   readingMinutes?: number;
-  /** Last content update — lesson.md file mtime, formatted "juillet 2026". */
-  updatedAt?: string;
-  /** Raw lesson.md mtime (ms) — for deterministic "most recent" ordering. */
-  updatedAtMs?: number;
 }
+
+/*
+ * `updatedAt` et `updatedAtMs` ont été RETIRÉS le 2026-09-05. Tous deux
+ * venaient du `mtime` de `lesson.md`, et une date de fichier n'est pas un
+ * fait sur le contenu : après un clone frais — donc à chaque déploiement —
+ * elle vaut l'instant du checkout pour les 62 notions à la fois.
+ *
+ * Les deux avaient déjà coûté un défaut chacun, le même jour :
+ *   · `updatedAtMs` ordonnait l'action principale du tableau de bord et la
+ *     suggestion de fin de leçon (HANDOFF §10.12 et §10.21) — le pick
+ *     retombait sur l'ordre du système de fichiers ;
+ *   · `updatedAt` s'affichait dans le masthead de chaque leçon, où les 62
+ *     annonçaient « mis à jour septembre 2026 ».
+ *
+ * Ne pas les réintroduire pour ordonner ou dater du contenu. L'ordre vient
+ * du programme (`lib/curriculum.ts`) ; une date de mise à jour, si elle
+ * revient un jour, sera un champ AUTORÉ dans le contenu.
+ */
 
 export interface NotionChoice {
   id: string;
@@ -455,23 +469,16 @@ function readingMinutesOf(lessonMd: string | null): number | undefined {
   return Math.max(1, Math.round(words / 180));
 }
 
-const FRENCH_MONTHS = [
-  "janvier", "février", "mars", "avril", "mai", "juin",
-  "juillet", "août", "septembre", "octobre", "novembre", "décembre",
-];
-
-/** "mise à jour" date from the lesson file's mtime — month + year is honest
- *  (day-level precision would suggest an editorial cadence we don't have). */
-function updatedAtOf(dir: string): string | undefined {
-  try {
-    const st = fs.statSync(path.join(dir, "lesson.md"));
-    const d = st.mtime;
-    return `${FRENCH_MONTHS[d.getMonth()]} ${d.getFullYear()}`;
-  } catch {
-    return undefined;
-  }
-}
-
+/**
+ * L'inventaire des notions construites — l'ordre est celui du système de
+ * fichiers, et RIEN ne doit s'y fier pour classer : l'ordre du produit vient
+ * du programme (`lib/curriculum.ts`, `premiereDuParcours` / `nextInParcours`).
+ *
+ * Le tableau `FRENCH_MONTHS` et le commentaire « mise à jour — month + year
+ * est honnête » vivaient ici. Ils ne le sont plus depuis le 2026-09-05 : le
+ * mois d'un `mtime` n'est pas honnête après un clone, il est faux pour les
+ * 62 notions à la fois. Voir le bloc de retrait au-dessus de `NotionMeta`.
+ */
 export function listNotions(): NotionMeta[] {
   const root = contentRoot();
   if (!dirExists(root)) return [];
@@ -497,20 +504,12 @@ export function listNotions(): NotionMeta[] {
       const lessonMd = safeReadFile(path.join(dir, "lesson.md"));
       const title = extractTitle(lessonMd, slug);
 
-      let updatedAtMs: number | undefined;
-      try {
-        updatedAtMs = fs.statSync(path.join(dir, "lesson.md")).mtimeMs;
-      } catch {
-        updatedAtMs = undefined;
-      }
-
       results.push({
         id: `${subject}/${slug}`,
         subject,
         slug,
         title,
         readingMinutes: readingMinutesOf(lessonMd),
-        updatedAtMs,
       });
     }
   }
@@ -965,7 +964,6 @@ export function loadNotion(id: string): NotionContent | null {
   const meta: NotionMeta = {
     id, subject, slug, title,
     readingMinutes: readingMinutesOf(lessonMd),
-    updatedAt: updatedAtOf(dir),
   };
   const renderedLessonMd = stripLeadingTitle(stripAuthoringComments(lessonMd));
 

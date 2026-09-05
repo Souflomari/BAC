@@ -71,16 +71,30 @@ function Breadcrumb({ subject, title }: { subject: string; title: string }) {
 // Level chip · reading time · updated date. Sans, secondary, quiet. The level
 // is app-wide truth today ("2ᵉ Bac · Sciences"); per-notion filière detail
 // needs a small content-meta file — ledgered as a Day-5 content-schema item.
-function MastheadMeta({
-  readingMinutes,
-  updatedAt,
-}: {
-  readingMinutes?: number;
-  updatedAt?: string;
-}) {
+/**
+ * La ligne de métadonnées du masthead — des faits CALCULÉS uniquement
+ * (PAGE-ANATOMY-SPECS §masthead).
+ *
+ * « mis à jour <mois année> » a été RETIRÉ le 2026-09-05, et c'est
+ * l'application stricte de cette règle-là. La date venait du `mtime` de
+ * `lesson.md` : après un clone frais — donc à chaque déploiement Vercel —
+ * tous les fichiers portent l'instant du checkout, et les 62 leçons
+ * auraient annoncé la même « mise à jour », celle du déploiement. Mesuré
+ * ici même avant retrait : les 62 affichaient « septembre 2026 ».
+ *
+ * Ce n'était donc pas un fait calculé mais un fait FABRIQUÉ — la chose que
+ * la règle d'état honnête interdit. Et la date ne suivait même pas le
+ * contenu : une campagne qui réécrit `items.yaml` sans toucher `lesson.md`
+ * ne la bougeait pas d'un jour.
+ *
+ * Le chemin de retour, s'il en faut un : un champ AUTORÉ dans le contenu
+ * (« revu le … », comme `retenir.json` est autoré), pas une horloge de
+ * système de fichiers. Une date vraie est un fait éditorial, pas une
+ * propriété d'inode.
+ */
+function MastheadMeta({ readingMinutes }: { readingMinutes?: number }) {
   const parts: string[] = ["2ᵉ Bac · Sciences"];
   if (readingMinutes) parts.push(`${readingMinutes} min de lecture`);
-  if (updatedAt) parts.push(`mis à jour ${updatedAt}`);
   return (
     <p className="mt-4 text-body-sm text-secondary">
       {parts.join("  ·  ")}
@@ -212,7 +226,6 @@ export function NotionPageView({
         </h1>
         <MastheadMeta
           readingMinutes={meta.readingMinutes}
-          updatedAt={meta.updatedAt}
         />
       </header>
     </>

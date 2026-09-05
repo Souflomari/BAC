@@ -2328,3 +2328,40 @@ ancre, les deux lignes nommaient la même notion — « commence ici X » puis
 > savoir quelque chose qu'il ignore. **Quand un produit doit ordonner son
 > contenu, l'ordre doit venir du contenu** — ici, le programme officiel, qui
 > ne dépend d'aucune horloge.
+
+### 10.22 Les 62 leçons annonçaient « mis à jour septembre 2026 »
+
+En retirant l'usage de `updatedAtMs` (§10.21), il restait son jumeau :
+`updatedAt`, la date affichée dans le masthead de CHAQUE leçon —
+« 2ᵉ Bac · Sciences · 32 min de lecture · **mis à jour septembre 2026** ».
+
+Elle vient du même endroit : le `mtime` de `lesson.md`. Mesuré avant
+retrait : **les 62 notions affichaient le même mois.** Et sur Vercel ce
+serait pire encore — après un clone frais à chaque déploiement, toutes les
+leçons annonceraient la date du déploiement, quel que soit leur âge réel.
+
+Deux raisons de le retirer plutôt que de le réparer :
+
+1. **Ce n'était pas un fait calculé mais un fait FABRIQUÉ.** Le spec du
+   masthead exige « computed facts only » ; une horloge d'inode n'en est pas
+   un. C'est la même règle que la zone « à retenir », qui préfère le vide au
+   remplissage.
+2. **La date ne suivait même pas le contenu.** Une campagne qui réécrit
+   `items.yaml`, `checkpoints.yaml` ou une figure sans toucher `lesson.md` ne
+   la bougeait pas d'un jour — et c'est exactement ce que la journée
+   d'aujourd'hui a fait sur 32 notions.
+
+Réparer par `git log` n'aurait pas sauvé grand-chose : les déploiements
+clonent en profondeur 1, et tout le dépôt porterait alors la date du HEAD.
+**Le chemin de retour, s'il en faut un, est un champ AUTORÉ** (« revu le… »,
+comme `retenir.json` est autoré) : une date de révision est un fait
+éditorial, pas une propriété de fichier.
+
+`updatedAt`, `updatedAtMs` et la table `FRENCH_MONTHS` sont supprimés, avec
+un bloc de retrait dans `content.ts` qui dit pourquoi et interdit leur retour
+pour ordonner ou dater. Deux `statSync` par notion disparaissent au passage.
+
+> **La règle, définitivement : une date de fichier n'est un fait sur le
+> contenu qu'aussi longtemps que personne ne clone le dépôt.** Elle a coûté
+> trois défauts en une journée — l'ordre de la fin de leçon, l'action
+> principale du tableau de bord, et cette date affichée sur 62 pages.
