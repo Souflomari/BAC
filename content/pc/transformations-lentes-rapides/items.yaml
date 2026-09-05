@@ -1134,62 +1134,719 @@ items:
 # by the r-bac sujet + checkpoints.yaml; the legacy end bank predates them and
 # carries ZERO items for them — an honest 0, flagged for the same follow-up pass.
 # ------------------------------------------------------------------------------
+  # Ajoutés le 2026-09-05 : douze familles sous le plancher de 3 items du banc,
+  # dont TROIS sans aucun item — conductance-nombre-d-ions, t-demi-mauvaise-def
+  # et vitesse-pente-mauvaise, sondées en leçon seulement. Huit items,
+  # vingt-deux places.
+  - id: TLR-19
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def
+    stem: >
+      Comment définit-on le temps de demi-réaction $t_{1/2}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La durée au bout de laquelle l'avancement atteint la moitié de son
+          avancement final
+        correct: true
+      - id: B
+        text: >-
+          La moitié de la durée totale de la transformation, mesurée jusqu'à son
+          arrêt
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def
+        feedback: >
+          $t_{1/2}$ se définit par l'AVANCEMENT atteint, pas par un partage de la
+          durée. Et la « durée totale » est rarement définissable : la courbe
+          s'approche de son palier sans jamais l'atteindre exactement, ce qui
+          rend la moitié de cette durée inexploitable.
+      - id: C
+        text: >-
+          L'instant précis où la réaction s'arrête complètement, la moitié des
+          réactifs ayant disparu
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def
+        feedback: >
+          Deux confusions. La réaction ne s'arrête pas à $t_{1/2}$ : elle y a
+          seulement parcouru la moitié de son chemin. Et « la moitié des
+          réactifs » n'équivaut à la moitié de l'avancement que si la
+          transformation est totale — ce qui n'est pas garanti.
+      - id: D
+        text: >-
+          La durée après laquelle la transformation devient trop rapide pour être
+          suivie, une transformation rapide étant plus facile à observer
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.suivi-consequence-inversee
+        feedback: >
+          La conséquence est inversée : c'est une transformation LENTE qui se
+          laisse suivre pendant son déroulement, parce qu'on a le temps de
+          prélever, doser, mesurer. Une transformation rapide est terminée avant
+          la première mesure — d'où l'intérêt des techniques de trempe.
+    correct_feedback: >
+      $t_{1/2}$ est la durée au bout de laquelle $x$ atteint $x_f/2$. La
+      définition passe par l'AVANCEMENT, jamais par un partage de la durée
+      totale — laquelle n'est d'ailleurs pas définissable, la courbe tendant
+      vers son palier sans l'atteindre.
+    solution: |
+      **La définition.**
+      $$x(t_{1/2}) = \frac{x_f}{2}$$
+      où $x_f$ est l'avancement final — celui du palier, total ou non.
+
+      **Comment on le lit.** Sur la courbe $x(t)$ : on repère $x_f$, on prend sa
+      moitié en ordonnée, on redescend sur l'axe des temps.
+
+      **Pourquoi il est utile.** C'est une durée caractéristique : elle permet de
+      comparer deux transformations sans dépendre du moment où l'on décide que
+      « c'est fini ».
+
+  - id: TLR-20
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+    stem: >
+      Sur la courbe $x(t)$ d'une transformation, comment lit-on la vitesse
+      volumique de réaction à un instant donné ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Par la PENTE de la tangente à cet instant, divisée par le volume : elle
+          décroît à mesure que la courbe s'aplatit
+        correct: true
+      - id: B
+        text: >-
+          Par l'ordonnée $x(t)$ elle-même : plus la quantité formée est grande,
+          plus la vitesse est grande
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+        feedback: >
+          $x(t)$ mesure ce qui a été formé, la vitesse mesure à quelle allure
+          cela se forme. Ce sont deux grandeurs distinctes : au palier, $x$ est
+          maximal et la vitesse est NULLE — la courbe est horizontale. Confondre
+          les deux, c'est confondre la distance parcourue et la vitesse.
+      - id: C
+        text: >-
+          Par une valeur constante : la vitesse d'une transformation ne varie pas
+          au cours du temps
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+        feedback: >
+          La courbe $x(t)$ n'est pas une droite : elle est raide au début, puis
+          s'infléchit. La vitesse décroît donc continûment, à mesure que les
+          réactifs se raréfient — c'est justement pour cela que la concentration
+          est un facteur cinétique.
+      - id: D
+        text: >-
+          Par $t_{1/2}$, qui vaut la moitié de la durée totale de la
+          transformation
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def
+        feedback: >
+          $t_{1/2}$ n'est pas une vitesse, et sa définition n'est pas celle-là :
+          c'est la durée au bout de laquelle l'AVANCEMENT atteint la moitié de sa
+          valeur finale. Il caractérise la transformation dans son ensemble, pas
+          un instant particulier.
+    correct_feedback: >
+      La vitesse se lit sur la PENTE de la tangente à $x(t)$, divisée par le
+      volume : $v = \frac{1}{V}\frac{\mathrm{d}x}{\mathrm{d}t}$. Elle est
+      maximale au départ, où la courbe est la plus raide, et nulle au palier, où
+      la courbe est horizontale.
+    solution: |
+      **La définition.**
+      $$v = \frac{1}{V}\,\frac{\mathrm{d}x}{\mathrm{d}t}$$
+      La dérivée, donc la pente de la tangente.
+
+      **Ce que la courbe montre.** Raide au début : vitesse maximale, réactifs
+      abondants. De plus en plus plate : vitesse décroissante. Horizontale au
+      palier : vitesse nulle, la transformation est achevée.
+
+      **La confusion à éviter.** $x(t)$ croît quand la vitesse décroît : la
+      quantité formée et l'allure à laquelle elle se forme varient en sens
+      inverse sur toute la seconde moitié de la courbe.
+
+  - id: TLR-21
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+    stem: >
+      On suit par conductimétrie une réaction où des ions $H_3O^{+}$ sont
+      remplacés, à nombre égal, par des ions $Na^{+}$. La conductivité diminue
+      nettement. Pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que les ions n'ont pas la même conductivité molaire : celle de
+          $H_3O^{+}$ est bien plus grande que celle de $Na^{+}$
+        correct: true
+      - id: B
+        text: >-
+          Parce que le nombre total d'ions en solution diminue : des ions
+          disparaissent au cours de la réaction
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+        feedback: >
+          L'énoncé précise que le remplacement se fait à nombre égal : le
+          décompte d'ions ne change pas. Ce qui change, c'est leur NATURE — et
+          chaque ion contribue à la conductivité selon sa conductivité molaire
+          propre, très élevée pour $H_3O^{+}$ en raison de son mode de
+          déplacement particulier dans l'eau.
+      - id: C
+        text: >-
+          Parce que la vitesse de la réaction diminue, et que la conductivité est
+          la valeur de $x(t)$ à chaque instant
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+        feedback: >
+          La conductivité mesure l'ÉTAT du mélange à un instant, pas la vitesse à
+          laquelle il évolue — et $x(t)$ n'est pas davantage une vitesse. La
+          vitesse se lit sur la pente de la courbe, jamais sur son ordonnée.
+      - id: D
+        text: >-
+          Parce qu'il faudrait augmenter la température pour ralentir la
+          réaction, ce qui rétablirait la conductivité
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.facteur-mauvais-sens
+        feedback: >
+          Le sens est inversé : augmenter la température ACCÉLÈRE une réaction,
+          elle ne la ralentit pas. Et la question porte sur la conductivité, dont
+          la variation s'explique par la nature des ions présents, non par un
+          réglage de vitesse.
+    correct_feedback: >
+      À nombre d'ions constant, seule leur nature compte. La conductivité molaire
+      de $H_3O^{+}$ est plusieurs fois supérieure à celle de $Na^{+}$ : les
+      échanger fait chuter la conductivité sans qu'aucun ion ne disparaisse.
+    solution: |
+      **La relation.**
+      $$\sigma = \sum_i \lambda_i\,[X_i]$$
+      Chaque ion contribue selon sa CONDUCTIVITÉ MOLAIRE $\lambda_i$, qui dépend
+      de sa nature.
+
+      **Le cas de $H_3O^{+}$.** Sa conductivité molaire est exceptionnellement
+      grande : il ne se déplace pas comme les autres ions, mais par transfert de
+      proton de proche en proche entre molécules d'eau.
+
+      **La conséquence.** Une réaction qui consomme des $H_3O^{+}$ en libérant
+      d'autres cations fait chuter $\sigma$ — c'est ce qui rend la conductimétrie
+      utilisable pour suivre l'avancement.
+
+  - id: TLR-22
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+    stem: >
+      Au cours d'un suivi conductimétrique, la conductivité augmente alors que
+      le nombre total d'ions reste constant. Est-ce possible ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Oui : si les ions formés ont une conductivité molaire supérieure à
+          celle des ions consommés
+        correct: true
+      - id: B
+        text: >-
+          Non : la conductivité suit le nombre d'ions, donc elle ne peut pas
+          varier à nombre constant
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+        feedback: >
+          La conductivité est une SOMME PONDÉRÉE : $\sigma = \sum \lambda_i
+          [X_i]$. Le décompte ne suffit pas — remplacer un ion par un autre, à
+          nombre égal, change $\sigma$ dès que leurs conductivités molaires
+          diffèrent. C'est même ce qui rend la méthode intéressante.
+      - id: C
+        text: >-
+          Non : la conductivité est proportionnelle à $x(t)$, donc elle ne peut
+          qu'augmenter, jamais varier librement
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+        feedback: >
+          La conductivité n'est pas $x(t)$ : elle est une grandeur MESURÉE, dont
+          on déduit $x$ ensuite. Selon les ions en jeu, elle peut croître,
+          décroître, ou rester quasi constante — c'est le calcul qui relie les
+          deux, pas une proportionnalité automatique.
+      - id: D
+        text: >-
+          Oui, mais seulement si l'on refroidit le mélange, le froid diminuant la
+          concentration des espèces
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.froid-baisse-concentration
+        feedback: >
+          Le froid ne change pas les concentrations : il ralentit les chocs. Ce
+          sont deux facteurs cinétiques distincts — la température agit sur
+          l'énergie des rencontres, la concentration sur leur fréquence.
+          Confondre leurs mécanismes rend la trempe incompréhensible.
+    correct_feedback: >
+      Oui. $\sigma = \sum \lambda_i [X_i]$ : la conductivité pondère chaque ion
+      par sa conductivité molaire. À nombre d'ions constant, remplacer des ions
+      peu conducteurs par des ions très conducteurs la fait monter.
+    solution: |
+      **Le principe.** La conductivité n'est pas un décompte : chaque ion y
+      contribue selon $\lambda_i$, propre à sa nature.
+
+      **Les deux sens possibles.** $\sigma$ monte si les ions formés conduisent
+      mieux, descend s'ils conduisent moins bien — à nombre égal dans les deux
+      cas.
+
+      **Ce qu'il faut vérifier avant d'interpréter un suivi.** Quels ions
+      apparaissent, lesquels disparaissent, et avec quelles conductivités
+      molaires. Le sens de variation en découle, et jamais l'inverse.
+
+  - id: TLR-23
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.variable-non-isolee
+    stem: >
+      Deux béchers : le premier contient une solution concentrée à
+      $20\,^\circ\text{C}$, le second une solution diluée à
+      $50\,^\circ\text{C}$. Le premier réagit plus vite. Que peut-on conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Rien sur l'effet d'un facteur isolé : deux conditions ont changé à la
+          fois, et leurs effets se mêlent
+        correct: true
+      - id: B
+        text: >-
+          Que la concentration accélère la réaction, puisque le bécher le plus
+          concentré est le plus rapide
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.variable-non-isolee
+        feedback: >
+          La conclusion est peut-être vraie, mais l'expérience ne l'établit pas :
+          la température a changé en même temps, et dans le sens contraire. Pour
+          conclure sur un facteur, il faut le faire varier SEUL, toutes autres
+          conditions égales.
+      - id: C
+        text: >-
+          Que le froid a détruit une partie des espèces réactives du second
+          bécher, ce qui explique sa lenteur
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.froid-detruit-especes
+        feedback: >
+          Le froid ne détruit rien : il ralentit. Les molécules sont toujours là,
+          en même nombre ; elles se rencontrent moins souvent et avec moins
+          d'énergie. C'est d'ailleurs ce qui rend la trempe réversible — réchauffé,
+          le mélange repart.
+      - id: D
+        text: >-
+          Que $t_{1/2}$ du premier bécher vaut la moitié de la durée totale de sa
+          transformation
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def
+        feedback: >
+          $t_{1/2}$ se définit par l'AVANCEMENT — la durée au bout de laquelle
+          $x$ atteint $x_f/2$ — et non par un partage de la durée totale, qui
+          n'est du reste pas définissable. Et cette grandeur ne répond pas à la
+          question posée.
+    correct_feedback: >
+      Rien. Deux variables ont changé simultanément, et dans des sens opposés :
+      la concentration favorise le premier bécher, la température le second.
+      Isoler un facteur exige de ne faire varier que lui.
+    solution: |
+      **Le protocole nécessaire.** Pour établir l'effet de la concentration :
+      deux béchers à la MÊME température, avec des concentrations différentes.
+      Pour la température : même concentration, deux températures.
+
+      **Ce que l'expérience décrite montre.** Que la combinaison
+      « concentré + froid » va plus vite que « dilué + chaud ». C'est un fait,
+      mais il ne se décompose pas.
+
+      **Pourquoi cela compte.** Toute la démarche expérimentale du chapitre 3
+      repose sur cette exigence : un facteur à la fois.
+
+  - id: TLR-24
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.choc-une-seule-condition
+    stem: >
+      À quelles conditions un choc entre deux entités réactives est-il
+      efficace ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          À deux conditions simultanées : une énergie suffisante ET une
+          orientation favorable des entités au moment du choc
+        correct: true
+      - id: B
+        text: >-
+          À une seule : que l'énergie du choc soit suffisante, l'orientation
+          n'ayant pas d'influence
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.choc-une-seule-condition
+        feedback: >
+          L'énergie ne suffit pas : deux molécules peuvent se heurter violemment
+          par le mauvais côté, et se séparer sans avoir réagi. Les liaisons à
+          rompre et à former sont situées : l'orientation décide de ce que le
+          choc peut atteindre.
+      - id: C
+        text: >-
+          À aucune condition particulière : toute rencontre entre entités
+          réactives déclenche la réaction
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.tout-choc-suffit
+        feedback: >
+          Si toute rencontre suffisait, les réactions seraient toutes
+          instantanées : dans un liquide, chaque molécule subit des milliards de
+          chocs par seconde. C'est justement la rareté des chocs EFFICACES qui
+          explique qu'une transformation prenne du temps.
+      - id: D
+        text: >-
+          À une seule : que la température soit élevée, la température agissant
+          exactement comme la concentration sur la fréquence des rencontres
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.temperature-concentration-confusion
+        feedback: >
+          Les deux facteurs n'agissent pas de la même façon. La CONCENTRATION
+          augmente la fréquence des rencontres ; la TEMPÉRATURE augmente leur
+          énergie — donc la proportion de chocs assez violents pour être
+          efficaces. Elle accroît aussi la fréquence, mais ce n'est pas son
+          effet principal.
+    correct_feedback: >
+      Deux conditions, toutes deux nécessaires : assez d'énergie pour rompre les
+      liaisons, et la bonne orientation pour que le contact se fasse au bon
+      endroit. C'est la rareté de cette conjonction qui explique la durée d'une
+      transformation.
+    solution: |
+      **Les deux conditions.**
+      - *Énergétique* : le choc doit apporter au moins l'énergie d'activation.
+      - *Géométrique* : les entités doivent se présenter dans une orientation
+        qui met en contact les atomes concernés.
+
+      **L'ordre de grandeur qui rend la chose parlante.** Une molécule en
+      solution subit des milliards de chocs par seconde ; une infime fraction
+      d'entre eux est efficace.
+
+      **Comment les facteurs agissent.** La concentration augmente le NOMBRE de
+      chocs ; la température augmente la proportion de chocs assez ÉNERGÉTIQUES.
+
+  - id: TLR-25
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+    stem: >
+      Équilibrer la demi-équation du couple $MnO_4^{-}/Mn^{2+}$ en milieu acide.
+      Quelle écriture est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $MnO_4^{-} + 8H^{+} + 5e^{-} \rightarrow Mn^{2+} + 4H_2O$ : éléments
+          puis charge, les deux conservations sont vérifiées
+        correct: true
+      - id: B
+        text: >-
+          $MnO_4^{-} + 8H^{+} \rightarrow Mn^{2+} + 4H_2O$, sans électrons : les
+          éléments sont conservés, cela suffit
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+        feedback: >
+          Les éléments sont bien conservés, mais pas la CHARGE : $-1 + 8 = +7$ à
+          gauche contre $+2$ à droite. L'écart de cinq charges positives est
+          exactement ce que comblent les cinq électrons. Les deux conservations
+          sont exigées, dans cet ordre : éléments d'abord, charge ensuite.
+      - id: C
+        text: >-
+          $MnO_4^{-} + 5e^{-} \rightarrow Mn^{2+} + 4H_2O$, les ions $H^{+}$
+          n'ayant pas à figurer
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+        feedback: >
+          L'oxygène n'est plus conservé : quatre atomes à gauche dans
+          $MnO_4^{-}$, et quatre molécules d'eau à droite qui en réclament autant
+          — mais l'hydrogène de ces molécules doit bien venir de quelque part.
+          En milieu acide, il vient des ions $H^{+}$, qu'on ajoute pour cela.
+      - id: D
+        text: >-
+          Peu importe l'équilibrage : ce qui compte est que toute rencontre entre
+          les entités déclenche la réaction
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.tout-choc-suffit
+        feedback: >
+          Deux questions différentes, et la seconde est fausse. L'équilibrage
+          relève du bilan de matière ; l'efficacité des chocs, de la cinétique.
+          Et toute rencontre ne déclenche rien : il y faut l'énergie et
+          l'orientation.
+    correct_feedback: >
+      $MnO_4^{-} + 8H^{+} + 5e^{-} \rightarrow Mn^{2+} + 4H_2O$. On conserve
+      d'abord les éléments — l'oxygène par l'eau, l'hydrogène par les $H^{+}$ —
+      puis la charge par les électrons : $+7$ à gauche moins $5$ donne $+2$,
+      comme à droite.
+    solution: |
+      **La méthode, dans l'ordre.**
+      1. Élément principal : $Mn$ des deux côtés. ✓
+      2. Oxygène, par des molécules d'eau : $4\,H_2O$ à droite.
+      3. Hydrogène, par des ions $H^{+}$ (milieu acide) : $8\,H^{+}$ à gauche.
+      4. Charge, par des électrons : à gauche $-1 + 8 = +7$, à droite $+2$ ;
+         il faut donc $5\,e^{-}$ à gauche.
+
+      **Le contrôle final.** Charges : $-1 + 8 - 5 = +2$ ✓. Éléments : $Mn$, $O$
+      et $H$ comptés des deux côtés ✓.
+
+  - id: TLR-26
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+    stem: >
+      Un élève écrit la demi-équation $I^{-} \rightarrow I_2 + e^{-}$. Que faut-il
+      corriger ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les deux conservations : $2I^{-} \rightarrow I_2 + 2e^{-}$, l'iode et la
+          charge devant être équilibrés
+        correct: true
+      - id: B
+        text: >-
+          Rien : les éléments sont présents des deux côtés, ce qui suffit à
+          valider l'écriture
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+        feedback: >
+          Être présent ne suffit pas : il faut être en même NOMBRE. Un iode à
+          gauche contre deux à droite, et une charge $-1$ à gauche contre $-1$ à
+          droite alors que le nombre d'iodes diffère : les deux conservations
+          échouent.
+      - id: C
+        text: >-
+          Seulement la charge : $I^{-} \rightarrow I_2 + 2e^{-}$ suffit à
+          rétablir l'équilibre
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+        feedback: >
+          L'ordre des opérations est inversé. On équilibre d'abord les ÉLÉMENTS —
+          il faut deux $I^{-}$ pour former un $I_2$ — puis la charge par les
+          électrons. Corriger la charge sur une équation dont les éléments ne
+          sont pas conservés donne une écriture doublement fausse.
+      - id: D
+        text: >-
+          Rien dans l'écriture, mais il faudrait refroidir pour que la réaction
+          ait lieu, le froid augmentant l'énergie des chocs
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.temperature-concentration-confusion
+        feedback: >
+          Le froid DIMINUE l'énergie des chocs, il ne l'augmente pas — c'est pour
+          cela qu'il ralentit une transformation, et qu'on l'emploie pour la
+          bloquer lors d'une trempe. Et la question portait sur le bilan de
+          matière, non sur la cinétique.
+    correct_feedback: >
+      $2I^{-} \rightarrow I_2 + 2e^{-}$. Deux ions iodure sont nécessaires pour
+      former une molécule de diiode ; la charge suit : $-2$ à gauche, $0 - 2$ à
+      droite.
+    solution: |
+      **Étape 1 — les éléments.** $I_2$ contient deux atomes d'iode, il faut donc
+      $2\,I^{-}$ à gauche.
+
+      **Étape 2 — la charge.** À gauche $2\times(-1) = -2$ ; à droite $0$ pour
+      $I_2$. Il faut donc $2\,e^{-}$ à droite pour rétablir l'égalité.
+
+      $$2I^{-} \rightarrow I_2 + 2e^{-}$$
+
+      **La règle d'ordre.** Toujours les éléments d'abord, la charge ensuite —
+      l'inverse conduit à des écritures où les deux conservations échouent
+      simultanément.
+
+  - id: TLR-27
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.choc-une-seule-condition
+    stem: >
+      Un élève propose : « pour prouver que l'orientation compte dans un choc,
+      il suffit de comparer deux expériences, l'une à froid et diluée, l'autre à
+      chaud et concentrée ». Que penser de cette proposition ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le protocole ne prouve rien : deux facteurs varient à la fois, et ni
+          l'un ni l'autre ne mesure l'orientation des chocs
+        correct: true
+      - id: B
+        text: >-
+          Le protocole convient : il suffit qu'une des deux expériences aille
+          plus vite pour conclure, la condition d'énergie étant la seule qui
+          compte dans un choc
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.choc-une-seule-condition
+        feedback: >
+          Deux conditions gouvernent l'efficacité d'un choc : une énergie
+          suffisante ET une orientation favorable. Retenir la première seule fait
+          disparaître la question posée — et l'orientation ne se mesure pas en
+          comparant des vitesses globales.
+      - id: C
+        text: >-
+          Le protocole convient, à condition d'admettre qu'une seule mesure
+          suffit pour conclure sur l'effet d'un facteur
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.variable-non-isolee
+        feedback: >
+          Une mesure unique ne conclut sur rien : il faut comparer deux
+          expériences identiques SAUF sur le facteur étudié. Ici deux conditions
+          changent ensemble — leurs effets s'ajoutent ou se compensent sans qu'on
+          puisse les démêler.
+      - id: D
+        text: >-
+          Le protocole convient si l'on choisit une transformation rapide, plus
+          facile à suivre pendant son déroulement qu'une transformation lente
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.suivi-consequence-inversee
+        feedback: >
+          C'est l'inverse : une transformation LENTE se laisse suivre — on a le
+          temps de prélever, de doser, de mesurer. Une transformation rapide est
+          achevée avant la première mesure, et c'est pour cela qu'on recourt à la
+          trempe pour la figer.
+    correct_feedback: >
+      Le protocole échoue deux fois : il fait varier deux facteurs à la fois, et
+      aucun des deux ne teste l'orientation des chocs. Isoler une variable exige
+      deux expériences identiques sauf sur ce point.
+    solution: |
+      **Ce qu'exige une conclusion causale.** Deux expériences identiques en
+      tout, sauf sur le facteur étudié. Ici la température ET la concentration
+      changent ensemble.
+
+      **Ce que l'orientation demanderait.** Elle ne se lit pas dans une vitesse
+      globale : c'est une interprétation microscopique, appuyée sur le fait
+      qu'une fraction seulement des chocs assez énergétiques est efficace.
+
+      **Et le choix de la transformation.** Pour suivre un déroulement, on choisit
+      une transformation LENTE — c'est la condition pratique de toute mesure
+      cinétique.
+
+  - id: TLR-28
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+    stem: >
+      Pourquoi la conductimétrie permet-elle de suivre l'avancement d'une
+      réaction en solution ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que la conductivité dépend de la nature et de la concentration
+          des ions présents, qui changent avec l'avancement
+        correct: true
+      - id: B
+        text: >-
+          Parce qu'elle compte les ions : la conductivité est proportionnelle au
+          nombre total d'ions en solution
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+        feedback: >
+          $\sigma = \sum \lambda_i [X_i]$ : chaque ion pèse selon sa conductivité
+          molaire, très différente d'une espèce à l'autre. Un simple décompte
+          prédirait une conductivité constante dans toute réaction qui remplace
+          un ion par un autre — alors que c'est justement là qu'elle varie le
+          plus.
+      - id: C
+        text: >-
+          Parce que le froid, appliqué au prélèvement, détruit les espèces
+          réactives et fige ainsi la mesure
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.froid-detruit-especes
+        feedback: >
+          La trempe ne détruit rien : elle RALENTIT la réaction au point de la
+          rendre négligeable pendant la mesure. Les espèces sont toutes
+          présentes — c'est d'ailleurs indispensable, puisqu'on veut les doser.
+          Et la conductimétrie a précisément l'avantage de se pratiquer en
+          continu, sans prélèvement.
+      - id: D
+        text: >-
+          Parce que la conductivité mesurée est la vitesse de la réaction à
+          chaque instant
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+        feedback: >
+          La conductivité décrit l'ÉTAT du mélange, comme $x(t)$ ; la vitesse est
+          la dérivée de cet état. On obtient donc la vitesse en dérivant la
+          courbe — c'est-à-dire en lisant sa pente — jamais en lisant l'ordonnée.
+    correct_feedback: >
+      La conductivité vaut $\sigma = \sum \lambda_i [X_i]$ : elle dépend à la fois
+      de la CONCENTRATION et de la NATURE des ions. Comme la réaction modifie les
+      deux, la mesure suit l'avancement — et sans prélèvement, en continu.
+    solution: |
+      **La relation.**
+      $$\sigma = \sum_i \lambda_i\,[X_i]$$
+
+      **Ce qui rend la méthode utile.** Elle est non destructive et continue :
+      la sonde reste dans le mélange, aucune trempe n'est nécessaire.
+
+      **Ce qu'il faut établir avant de l'utiliser.** La relation entre $\sigma$ et
+      l'avancement $x$, en écrivant les concentrations de chaque ion en fonction
+      de $x$. Le sens de variation en découle — il peut être croissant ou
+      décroissant selon les conductivités molaires en jeu.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après TLR-19 à TLR-28. Douze familles siégeaient sous
+# le plancher de 3 items du banc, dont TROIS sans aucun item de banc —
+# `conductance-nombre-d-ions`, `t-demi-mauvaise-def` et
+# `vitesse-pente-mauvaise`, sondées en leçon seulement, ce qui ne compte pas
+# dans le modèle apprenant. Tableau GÉNÉRÉ contre
+# web/scripts/lib/couverture-compte.mjs, gardé par
+# scripts/resume-couverture.mjs.
 coverage_summary:
-  method: "item-level, by primary_misconception (one item = one count); distractor reach in comments"
-  total_items: 18
-  floor: 3
-  floor_met: false
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.physics.pc_transformations_lentes_rapides.famille-fixe-vitesse: 1                # TLR-7 — distractor reach: TLR-1, 7, 8
-    mc.physics.pc_transformations_lentes_rapides.rapide-lente-absolu: 1                 # TLR-10 — distractor reach: TLR-1, 7, 9, 10
-    mc.physics.pc_transformations_lentes_rapides.critere-temps-inverse: 1               # TLR-1 — distractor reach: TLR-1, 13, 18
-    mc.physics.pc_transformations_lentes_rapides.suivi-consequence-inversee: 1          # TLR-11 — distractor reach: TLR-11
-    mc.physics.pc_transformations_lentes_rapides.changer-condition-change-nature: 2     # TLR-9, TLR-18 — distractor reach: TLR-3, 9, 10, 18
-    mc.physics.pc_transformations_lentes_rapides.facteur-mauvais-sens: 2                # TLR-3, TLR-14 — distractor reach: TLR-3, 14
-    mc.physics.pc_transformations_lentes_rapides.facteur-sans-effet: 0                  # distractor-only: TLR-3, 4, 15, 18
-    mc.physics.pc_transformations_lentes_rapides.froid-detruit-especes: 2               # TLR-4, TLR-17 — distractor reach: TLR-4, 17
-    mc.physics.pc_transformations_lentes_rapides.froid-baisse-concentration: 0          # distractor-only: TLR-4, 17
-    mc.physics.pc_transformations_lentes_rapides.tout-choc-suffit: 1                    # TLR-15 — distractor reach: TLR-5, 15
-    mc.physics.pc_transformations_lentes_rapides.choc-une-seule-condition: 1            # TLR-5 — distractor reach: TLR-5
-    mc.physics.pc_transformations_lentes_rapides.temperature-concentration-confusion: 1 # TLR-6 — distractor reach: TLR-6, 17
-    mc.physics.pc_transformations_lentes_rapides.variable-non-isolee: 1                 # TLR-8 — distractor reach: TLR-8
-    mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte: 1       # TLR-12 — distractor reach: TLR-12
-    mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte: 3        # TLR-2, TLR-13, TLR-16 — FLOOR MET
-    mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions: 0           # checkpoint + r-bac only (cp-r5-conductimetrie)
-    mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def: 0                 # checkpoint + r-bac only (cp-r5-t-demi)
-    mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise: 0              # checkpoint + r-bac only (cp-r5-vitesse-pente)
+    mc.physics.pc_transformations_lentes_rapides.famille-fixe-vitesse:                { count: 3, items: [TLR-1, TLR-7, TLR-8] }
+    mc.physics.pc_transformations_lentes_rapides.rapide-lente-absolu:                 { count: 4, items: [TLR-1, TLR-7, TLR-9, TLR-10] }
+    mc.physics.pc_transformations_lentes_rapides.critere-temps-inverse:               { count: 3, items: [TLR-1, TLR-13, TLR-18] }
+    mc.physics.pc_transformations_lentes_rapides.suivi-consequence-inversee:          { count: 3, items: [TLR-11, TLR-19, TLR-27] }
+    mc.physics.pc_transformations_lentes_rapides.changer-condition-change-nature:     { count: 4, items: [TLR-3, TLR-9, TLR-10, TLR-18] }
+    mc.physics.pc_transformations_lentes_rapides.facteur-mauvais-sens:                { count: 3, items: [TLR-3, TLR-14, TLR-21] }
+    mc.physics.pc_transformations_lentes_rapides.facteur-sans-effet:                  { count: 4, items: [TLR-3, TLR-4, TLR-15, TLR-18] }
+    mc.physics.pc_transformations_lentes_rapides.froid-detruit-especes:               { count: 4, items: [TLR-4, TLR-17, TLR-23, TLR-28] }
+    mc.physics.pc_transformations_lentes_rapides.froid-baisse-concentration:          { count: 3, items: [TLR-4, TLR-17, TLR-22] }
+    mc.physics.pc_transformations_lentes_rapides.tout-choc-suffit:                    { count: 4, items: [TLR-5, TLR-15, TLR-24, TLR-25] }
+    mc.physics.pc_transformations_lentes_rapides.choc-une-seule-condition:            { count: 3, items: [TLR-5, TLR-24, TLR-27] }
+    mc.physics.pc_transformations_lentes_rapides.temperature-concentration-confusion: { count: 4, items: [TLR-6, TLR-17, TLR-24, TLR-26] }
+    mc.physics.pc_transformations_lentes_rapides.variable-non-isolee:                 { count: 3, items: [TLR-8, TLR-23, TLR-27] }
+    mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte:       { count: 3, items: [TLR-12, TLR-25, TLR-26] }
+    mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte:        { count: 3, items: [TLR-2, TLR-13, TLR-16] }
+    mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions:           { count: 3, items: [TLR-21, TLR-22, TLR-28] }
+    mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def:                 { count: 3, items: [TLR-19, TLR-20, TLR-23] }
+    mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise:              { count: 4, items: [TLR-20, TLR-21, TLR-22, TLR-28] }
+  total_items: 28
+  floor: 3
+  floor_met: true
   ramp_coverage:
-    R0: 3   # TLR-7, TLR-8, TLR-9
-    R1: 3   # TLR-1, TLR-10, TLR-11
-    R2: 3   # TLR-2, TLR-12, TLR-13
-    R3: 3   # TLR-3, TLR-4, TLR-14
-    R4: 3   # TLR-5, TLR-6, TLR-15
-    R5: 3   # TLR-16, TLR-17, TLR-18
-  needs_item_pass:
-    below_floor_lesson_core:
-      - famille-fixe-vitesse   # 1 -> 3
-      - rapide-lente-absolu   # 1 -> 3
-      - critere-temps-inverse   # 1 -> 3
-      - suivi-consequence-inversee   # 1 -> 3
-      - changer-condition-change-nature   # 2 -> 3
-      - facteur-mauvais-sens   # 2 -> 3
-      - facteur-sans-effet   # 0 -> 3
-      - froid-detruit-especes   # 2 -> 3
-      - froid-baisse-concentration   # 0 -> 3
-      - tout-choc-suffit   # 1 -> 3
-      - choc-une-seule-condition   # 1 -> 3
-      - temperature-concentration-confusion   # 1 -> 3
-      - variable-non-isolee   # 1 -> 3
-      - redox-conservation-incorrecte   # 1 -> 3
-    zero_items_suivi_temporel:
-      - conductance-nombre-d-ions   # 0 -> 3 (checkpoint + r-bac cover it now)
-      - t-demi-mauvaise-def   # 0 -> 3 (checkpoint + r-bac cover it now)
-      - vitesse-pente-mauvaise   # 0 -> 3 (checkpoint + r-bac cover it now)
-  note: >
-    Per-distractor tags and item-level primary_misconception added additively to
-    TLR-1...TLR-18 (no stem, choice, feedback, or solution altered). The bank was
-    built for an even R0-R5 ramp, not for misconception saturation, so only
-    redox-combinaison-incorrecte meets the >=3 floor at primary level; the rest are
-    surfaced honestly as debt for a follow-up item pass. The three suivi-temporel
-    models are exercised in checkpoints.yaml and the r-bac sujet but carry no
-    end-bank items yet — an honest zéro, not a padded count.
+    R0: 3
+    R1: 6
+    R2: 4
+    R3: 6
+    R4: 6
+    R5: 3
+  honest_state: >-
+    Les dix-huit misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Onze y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

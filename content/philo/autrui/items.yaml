@@ -1505,86 +1505,582 @@ items:
       **L'auteur le plus pertinent :** Husserl (chapitre 2) -- l'aprésentation, un
       accès seulement indirect, jamais une preuve absolue.
 
+  # Ajoutés le 2026-09-05 : seize familles sous le plancher de 3 items du banc,
+  # dont `maitre-satisfait-par-reconnaissance` sans AUCUN item — sondée en leçon
+  # seulement. Neuf items, vingt-six places. Les clés sont volontairement
+  # brèves : en philosophie, énoncer la thèse ET sa justification dans le
+  # libellé du choix rend la bonne réponse repérable sans la lire (porte
+  # indice-longueur). La justification vit dans le retour.
+  - id: AUT-25
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: philo_autrui
+    tags: [hegel, reconnaissance, maitre-esclave]
+    stem: >
+      Dans la dialectique hégélienne, le maître sort vainqueur de la lutte et
+      se fait reconnaître par l'esclave. Cette reconnaissance le satisfait-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : elle vient d'une conscience qu'il a lui-même réduite au rang d'instrument, donc d'un être dont le jugement ne vaut plus rien à ses yeux."
+        correct: true
+      - id: B
+        text: "Oui : il a obtenu ce qu'il cherchait — être reconnu — et sa position de maître le lui garantit durablement."
+        correct: false
+        misconception: mc.philo.autrui.maitre-satisfait-par-reconnaissance
+        feedback: >
+          C'est l'impasse que Hegel met au jour. Une reconnaissance ne vaut que
+          si elle émane d'une conscience libre ; or le maître a précisément ôté
+          à l'esclave cette liberté. Il obtient donc la forme de la
+          reconnaissance et en perd la substance — tandis que l'esclave, par le
+          travail, transforme le monde et s'y reconnaît.
+      - id: C
+        text: "La question ne se pose pas : cette dialectique décrit un rapport social de domination économique, non une structure de la conscience."
+        correct: false
+        misconception: mc.philo.autrui.dialectique-maitre-esclave-mal-comprise
+        feedback: >
+          Hegel décrit une structure de la CONSCIENCE de soi : comment une
+          conscience en vient à avoir besoin d'une autre pour se savoir
+          elle-même. Les lectures sociales et économiques viendront après lui, et
+          d'autres auteurs ; les réduire l'une à l'autre fait perdre ce que le
+          chapitre établit.
+      - id: D
+        text: "Oui, et Sartre reprendra ce point sans le modifier : le regard d'autrui produit chez lui exactement la reconnaissance hégélienne."
+        correct: false
+        misconception: mc.philo.autrui.sartre-reduit-hegel
+        feedback: >
+          Sartre déplace la question. Chez Hegel, il s'agit d'une reconnaissance
+          à conquérir ; chez Sartre, le regard d'autrui me RÉVÈLE une dimension
+          de moi — le moi-pour-autrui — que nulle introspection n'atteindrait.
+          Autrui n'y est pas un rival à vaincre mais un médiateur indispensable.
+      # Note d'auteur : les trois distracteurs visent trois familles distinctes,
+      # ce qui est la contrainte de couverture ; ils restent cependant chacun
+      # une erreur réelle et documentée du chapitre.
+    correct_feedback: >
+      La reconnaissance obtenue est vide : elle vient d'une conscience que le
+      maître a lui-même réduite au rang de chose. C'est l'échec du maître — et
+      c'est l'esclave qui, par le travail, se reconnaîtra dans le monde qu'il
+      transforme.
+    solution: |
+      **Ce que la lutte cherche.** Non pas la domination pour elle-même, mais la
+      RECONNAISSANCE : être tenu pour une conscience libre par une autre
+      conscience libre.
+
+      **Pourquoi la victoire échoue.** Le maître obtient la reconnaissance d'un
+      être qu'il a réduit à l'instrument. Une reconnaissance qui ne vient pas
+      d'une liberté ne vaut rien : elle a la forme du but sans en avoir la
+      substance.
+
+      **Le renversement.** L'esclave, lui, travaille — et dans l'objet qu'il
+      façonne, il voit sa propre activité déposée. C'est par là qu'il accède à
+      la conscience de soi que le maître a manquée.
+
+  - id: AUT-26
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: philo_autrui
+    tags: [hegel, accroche, revelation]
+    stem: >
+      Le chapitre d'ouverture pose deux questions sur autrui. Lesquelles, et
+      comment se rapportent-elles à la dialectique de la reconnaissance ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Son statut — semblable ou inaccessible — et son rapport à ma liberté ; Hegel travaille surtout la seconde, sans dissoudre la première."
+        correct: true
+      - id: B
+        text: "Il n'y en a qu'une, en réalité : celle de savoir si je peux connaître autrui, dont tout le reste découle."
+        correct: false
+        misconception: mc.philo.autrui.double-question-reduite
+        feedback: >
+          Les deux volets ne se ramènent pas l'un à l'autre. Le premier est
+          épistémologique — puis-je accéder à une autre conscience ? Le second
+          est pratique — que devient ma liberté en présence de la sienne ? On
+          peut répondre au premier (Husserl) sans avoir touché au second
+          (Sartre).
+      - id: C
+        text: "Une seule également, et la lutte la tranche : le maître obtient la reconnaissance qu'il cherchait, et la question est close."
+        correct: false
+        misconception: mc.philo.autrui.maitre-satisfait-par-reconnaissance
+        feedback: >
+          La lutte ne clôt rien : elle échoue. La reconnaissance obtenue d'un
+          être réduit à l'instrument ne satisfait pas celui qui la reçoit — c'est
+          le ressort même de la suite, où l'esclave accède par le travail à ce
+          que le maître a manqué.
+      - id: D
+        text: "Deux, mais elles se contredisent : autrui ne peut pas à la fois me révéler à moi-même et me figer dans une image que je n'ai pas choisie."
+        correct: false
+        misconception: mc.philo.autrui.revelation-objectivation-opposees
+        feedback: >
+          Les deux vont ensemble chez Sartre, et c'est ce qui fait la force de
+          l'analyse : le même regard me révèle une dimension de moi (le
+          moi-pour-autrui) ET me fige dans une image que je ne choisis pas. La
+          révélation a pour prix l'objectivation ; il n'y a pas contradiction
+          mais tension.
+    correct_feedback: >
+      Deux questions distinctes : le STATUT d'autrui — semblable accessible ou
+      radicalement autre — et son rapport à MA LIBERTÉ. Hegel travaille surtout
+      la seconde ; Husserl la première. Les confondre fait perdre la moitié du
+      chapitre.
+    solution: |
+      **Les deux volets.**
+      1. *Épistémologique* : autrui m'est-il accessible ? Comment sais-je qu'il
+         y a là une conscience et non un automate ?
+      2. *Pratique* : que devient ma liberté quand une autre liberté est là ?
+
+      **Leur indépendance.** Husserl répond au premier par l'aprésentation ;
+      Sartre travaille le second par le regard. Une réponse à l'un ne donne pas
+      la réponse à l'autre.
+
+      **Ce que Hegel apporte.** Sur le second volet : autrui n'est pas seulement
+      un obstacle, il est la condition pour que je me sache moi-même.
+
+  - id: AUT-27
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: philo_autrui
+    tags: [sartre, honte, moi-pour-autrui]
+    stem: >
+      Sartre décrit l'homme surpris à regarder par le trou d'une serrure. Que
+      révèle la honte qu'il éprouve ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Une dimension de lui-même — le moi-pour-autrui — que l'introspection la plus rigoureuse ne lui aurait pas livrée."
+        correct: true
+      - id: B
+        text: "Une simple crainte d'être puni par la personne qui l'a surpris, sentiment social ordinaire sans portée philosophique."
+        correct: false
+        misconception: mc.philo.autrui.honte-mal-comprise
+        feedback: >
+          La honte sartrienne n'est pas une peur de sanction : elle survient même
+          si le témoin est un inconnu qui passera son chemin, et même s'il n'y a
+          aucune punition possible. Ce qu'elle révèle n'est pas un risque, c'est
+          un ÊTRE — je suis quelqu'un qui, vu du dehors, est cela.
+      - id: C
+        text: "Rien qu'il ne puisse atteindre seul : une introspection assez rigoureuse lui donnerait le même contenu, sans témoin."
+        correct: false
+        misconception: mc.philo.autrui.moi-pour-autrui-seul
+        feedback: >
+          C'est précisément ce que Sartre conteste. Je peux m'observer autant que
+          je veux : je ne me verrai jamais comme un objet dans le monde de
+          quelqu'un d'autre. Il y faut un regard EFFECTIF — autrui est le
+          médiateur indispensable entre moi et moi-même.
+      - id: D
+        text: "Que le maître de Hegel avait tort de se croire insatisfait : la reconnaissance obtenue par la force suffit à révéler qui l'on est."
+        correct: false
+        misconception: mc.philo.autrui.maitre-satisfait-par-reconnaissance
+        feedback: >
+          Deux erreurs. Le maître hégélien n'obtient pas de reconnaissance
+          valable, puisqu'elle émane d'une conscience qu'il a asservie. Et la
+          révélation sartrienne ne passe pas par la force : le regard le plus
+          anodin suffit, celui d'un passant qui ne demande rien.
+    correct_feedback: >
+      La honte révèle le MOI-POUR-AUTRUI : ce que je suis en tant qu'objet dans
+      le monde d'une autre conscience. Nulle introspection ne l'atteint —
+      j'aurais beau m'observer, je ne me verrais jamais comme autrui me voit.
+    solution: |
+      **La scène.** Absorbé par ce qu'il regarde, l'homme n'est que son acte. Un
+      bruit dans le couloir : quelqu'un le voit.
+
+      **Ce qui change.** Il ne se découvre pas une faute — il la connaissait —
+      mais un ÊTRE : « je suis un voyeur ». Cette qualification lui vient du
+      dehors, et il ne peut ni la produire ni la refuser seul.
+
+      **La thèse.** Autrui est le médiateur indispensable entre moi et moi-même.
+      Une part de ce que je suis ne m'est accessible que par un regard effectif.
+
+  - id: AUT-28
+    rung: "R1"
+    difficulty_level: 4
+    skill_code: philo_autrui
+    tags: [husserl, aprésentation, alter-ego]
+    stem: >
+      Comment Husserl rend-il compte de l'accès à la conscience d'autrui ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Par l'aprésentation : le corps d'autrui me donne, avec ce que je perçois, ce que je ne perçois pas — sa vie intérieure, visée sans être vue."
+        correct: true
+      - id: B
+        text: "Par une perception directe : je vois la conscience d'autrui aussi immédiatement que je vois son visage."
+        correct: false
+        misconception: mc.philo.autrui.apresentation-mal-comprise
+        feedback: >
+          Si la conscience d'autrui m'était directement perceptible, elle serait
+          mienne — et il n'y aurait plus d'autrui. L'aprésentation nomme
+          exactement ce statut intermédiaire : une visée qui ACCOMPAGNE la
+          perception du corps sans se réduire à elle, et sans jamais devenir une
+          perception au sens propre.
+      - id: C
+        text: "Par une inférence probable : autrui n'étant qu'un objet parmi les objets, je lui prête une vie intérieure par simple analogie commode."
+        correct: false
+        misconception: mc.philo.autrui.alter-ego-mal-compris
+        feedback: >
+          L'alter ego n'est ni un pur objet ni un double de moi. Husserl tient
+          les deux : autrui m'est donné comme un ego — une conscience — et comme
+          ALTER — inaccessible en première personne. Le réduire à un objet auquel
+          je prête une intériorité manque la moitié du concept.
+      - id: D
+        text: "La question ne se pose pas : elle se ramène à celle du rapport entre sa liberté et la mienne."
+        correct: false
+        misconception: mc.philo.autrui.double-question-reduite
+        feedback: >
+          Les deux questions du chapitre 1 sont distinctes. Celle de l'ACCÈS —
+          comment sais-je qu'il y a là une conscience ? — précède celle du
+          rapport des libertés, et Husserl traite la première sans préjuger de
+          la seconde.
+    correct_feedback: >
+      L'aprésentation : le corps d'autrui me donne, en même temps que ce que je
+      perçois, ce que je ne percevrai jamais — sa vie intérieure. Elle est
+      VISÉE avec la perception, sans être elle-même perçue.
+    solution: |
+      **Le problème.** Je perçois un corps, des gestes, une voix. Rien de tout
+      cela n'est une conscience. Comment y a-t-il pour moi de l'autre ?
+
+      **La réponse husserlienne.** L'aprésentation : une visée qui accompagne la
+      perception et donne, en creux, ce qui ne peut pas se donner en personne.
+      Comme la face cachée d'un objet est co-visée avec sa face visible.
+
+      **Le juste milieu du concept d'alter ego.** Autrui est un EGO — une
+      conscience, non un automate — et il est ALTER — jamais accessible comme la
+      mienne. Retirer l'un des deux termes fait disparaître le problème.
+
+  - id: AUT-29
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: philo_autrui
+    tags: [methode, problematisation]
+    stem: >
+      Un élève traite le sujet « Autrui est-il un obstacle à ma liberté ? » en
+      commençant par : « Autrui est-il un obstacle à ma liberté ? Nous verrons
+      qu'il l'est, puis qu'il ne l'est pas. » Que corriger ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Une problématique n'est pas la répétition du sujet, et une annonce de plan n'est pas la juxtaposition de deux réponses contraires."
+        correct: true
+      - id: B
+        text: "Rien : reformuler le sujet à l'identique EST la problématisation, et annoncer deux thèses opposées EST le plan dialectique."
+        correct: false
+        misconception: mc.philo.autrui.methode-dissertation-mal-appliquee
+        feedback: >
+          Problématiser, c'est faire apparaître la TENSION que le sujet
+          dissimule : ici, qu'autrui semble limiter ma liberté et qu'il paraît
+          en même temps nécessaire à sa reconnaissance. Et un plan dialectique
+          n'aligne pas deux réponses : sa troisième partie déplace la question au
+          lieu d'arbitrer.
+      - id: C
+        text: "Il faudrait ajouter que l'aprésentation husserlienne prouve l'existence d'autrui, ce qui réglerait le sujet dès l'introduction."
+        correct: false
+        misconception: mc.philo.autrui.apresentation-mal-comprise
+        feedback: >
+          L'aprésentation ne PROUVE rien : elle décrit comment autrui se donne à
+          moi, sans jamais m'en livrer la conscience. Et elle relève du volet
+          épistémologique, alors que le sujet porte sur le rapport des libertés —
+          un autre volet.
+      - id: D
+        text: "Il faudrait préciser qu'autrui est un pur objet du monde tant que je ne lui ai pas prêté une intériorité."
+        correct: false
+        misconception: mc.philo.autrui.alter-ego-mal-compris
+        feedback: >
+          C'est manquer le concept d'alter ego : autrui n'est pas d'abord un
+          objet auquel j'ajouterais ensuite une conscience. Il se donne d'emblée
+          comme un autre soi, inaccessible mais visé comme conscience — et cette
+          nuance est ce que le chapitre 1 sert à établir.
+    correct_feedback: >
+      Deux gestes sont manqués. Problématiser, c'est dégager la tension du sujet,
+      pas le répéter. Et annoncer un plan, ce n'est pas aligner deux réponses
+      opposées : la troisième partie doit déplacer la question, non trancher
+      entre les deux premières.
+    solution: |
+      **Ce qu'est une problématique.** La mise au jour d'une tension : autrui
+      limite mon champ d'action, et il est pourtant ce sans quoi je ne me
+      saurais pas moi-même. La question du sujet devient alors : à quelles
+      conditions cette limitation est-elle autre chose qu'un obstacle ?
+
+      **Ce qu'est un plan.** Trois moments qui avancent : la thèse spontanée, ce
+      qui la met en défaut, puis un déplacement — chez Sartre, l'idée que la
+      liberté d'autrui est ce qui donne à la mienne un monde à partager.
+
+      **Le défaut le plus fréquent.** Traiter le plan comme un catalogue
+      d'opinions au lieu d'une progression.
+
+  - id: AUT-30
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: philo_autrui
+    tags: [sartre, revelation, objectivation]
+    stem: >
+      Le regard d'autrui me révèle une part de moi-même, et il me fige dans une
+      image que je n'ai pas choisie. Ces deux effets sont-ils contradictoires ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : ce sont les deux faces d'un même acte — la révélation a pour prix l'objectivation."
+        correct: true
+      - id: B
+        text: "Si : on ne peut pas à la fois recevoir d'autrui une vérité sur soi et être trahi par l'image qu'il en donne."
+        correct: false
+        misconception: mc.philo.autrui.revelation-objectivation-opposees
+        feedback: >
+          Ce sont deux descriptions du même événement. Le regard me livre une
+          dimension réelle de moi — le moi-pour-autrui — et il me la livre sous
+          une forme arrêtée, que je n'ai pas choisie. C'est cette ambivalence qui
+          fait le prix de l'analyse sartrienne, non une incohérence.
+      - id: C
+        text: "Si, et la honte le prouve : elle n'est qu'une crainte de sanction, donc un effet, jamais une révélation."
+        correct: false
+        misconception: mc.philo.autrui.honte-mal-comprise
+        feedback: >
+          La honte n'est pas une peur de punition : elle survient devant un
+          inconnu qui n'a aucun pouvoir sur moi, et même après coup. Ce qu'elle
+          manifeste, c'est un ÊTRE que je découvre — pas un risque que
+          j'anticipe.
+      - id: D
+        text: "Non, mais parce que je pourrais obtenir seul, par introspection, ce que le regard prétend m'apprendre."
+        correct: false
+        misconception: mc.philo.autrui.moi-pour-autrui-seul
+        feedback: >
+          L'introspection ne donne jamais le moi-pour-autrui : je ne peux pas me
+          voir de l'extérieur. C'est précisément ce qui rend autrui INDISPENSABLE
+          chez Sartre — non un supplément d'information, mais le seul accès à une
+          dimension de mon être.
+    correct_feedback: >
+      Les deux effets sont un seul. En me révélant tel que je suis pour un autre,
+      le regard me donne accès à une part de moi — et me la donne figée, dans une
+      image que je n'ai pas choisie. La révélation a pour prix l'objectivation.
+    solution: |
+      **Ce que le regard donne.** Le moi-pour-autrui : ce que je suis comme objet
+      dans le monde d'une conscience. Inaccessible seul.
+
+      **Ce qu'il coûte.** Cette dimension m'est donnée ARRÊTÉE — « un voyeur »,
+      « un maladroit » — alors que je me vis, du dedans, comme une liberté
+      indéterminée.
+
+      **Pourquoi ce n'est pas une contradiction.** Un même acte peut ouvrir et
+      fermer : c'est parce que le regard me saisit du dehors qu'il m'apprend
+      quelque chose, et c'est pour la même raison qu'il me fige.
+
+  - id: AUT-31
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: philo_autrui
+    tags: [sartre, conflit, enfer, levinas]
+    stem: >
+      « L'enfer, c'est les autres. » Comment faut-il lire cette formule de
+      Sartre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Comme la description d'un rapport où chacun se voit figé par le regard de l'autre, sans que la solitude y change rien."
+        correct: true
+      - id: B
+        text: "Comme une plainte ordinaire sur le caractère pénible de la compagnie, à laquelle la solitude offrirait un remède."
+        correct: false
+        misconception: mc.philo.autrui.enfer-mal-interprete
+        feedback: >
+          Sartre a lui-même écarté cette lecture. La formule est prononcée par un
+          personnage enfermé avec deux autres pour l'éternité : ce qui fait
+          l'enfer n'est pas leur désagrément, mais l'impossibilité d'échapper à
+          l'image qu'ils ont de lui. La solitude n'y remédierait pas — le
+          moi-pour-autrui, une fois constitué, ne s'efface plus.
+      - id: C
+        text: "Comme l'énoncé d'une hiérarchie naturelle : dans toute rencontre, l'un est sujet et l'autre objet, une fois pour toutes."
+        correct: false
+        misconception: mc.philo.autrui.conflit-libertes-mal-compris
+        feedback: >
+          Le conflit sartrien n'est pas une hiérarchie fixe : les positions
+          s'échangent sans cesse, chacun étant tour à tour celui qui regarde et
+          celui qui est vu. C'est cette instabilité même — et non une
+          domination établie — qui rend le rapport conflictuel.
+      - id: D
+        text: "Comme la formule du visage lévinassien, qui produit exactement le même effet que le regard sartrien."
+        correct: false
+        misconception: mc.philo.autrui.visage-regard-confondus
+        feedback: >
+          Les deux notions s'opposent presque terme à terme. Le regard sartrien
+          m'objective et engendre le conflit ; le visage lévinassien m'OBLIGE,
+          avant tout choix, et fonde la responsabilité. L'un me fige, l'autre
+          m'appelle.
+    correct_feedback: >
+      L'enfer n'est pas la compagnie désagréable : c'est l'impossibilité
+      d'échapper à l'image qu'autrui a de moi. La solitude n'y changerait rien —
+      le moi-pour-autrui, une fois constitué par un regard, ne se dissout plus.
+    solution: |
+      **Le contexte.** Trois personnages enfermés ensemble sans issue. Il n'y a
+      ni bourreau ni flammes : chacun est l'enfer des deux autres, en les tenant
+      dans une image dont ils ne peuvent pas sortir.
+
+      **Ce que la formule dit.** Que ma liberté rencontre, en autrui, une autre
+      liberté qui me saisit du dehors et me qualifie. Je ne peux ni contrôler ce
+      qu'il voit, ni l'effacer.
+
+      **Ce qu'elle ne dit pas.** Que la compagnie soit pénible, ni qu'il faille
+      fuir les autres — Sartre a explicitement refusé cette lecture.
+
+  - id: AUT-32
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: philo_autrui
+    tags: [levinas, responsabilite, conflit]
+    stem: >
+      La responsabilité dont parle Levinas est-elle réciproque, comme la
+      reconnaissance hégélienne ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : elle est asymétrique — je réponds d'autrui sans attendre qu'il réponde de moi, et sans l'avoir choisi."
+        correct: true
+      - id: B
+        text: "Oui : elle se construit à deux, chacun s'obligeant envers l'autre à mesure que l'autre s'oblige envers lui."
+        correct: false
+        misconception: mc.philo.autrui.responsabilite-symetrisee
+        feedback: >
+          Ce serait un contrat, et Levinas écarte précisément ce modèle. L'appel
+          du visage m'oblige AVANT tout accord et sans contrepartie : ma
+          responsabilité ne dépend pas de ce qu'autrui fait pour moi. Elle est
+          première, non négociée — c'est ce qui la distingue de la reconnaissance
+          hégélienne.
+      - id: C
+        text: "Oui, et c'est ce qui met fin au conflit sartrien : la réciprocité rétablit une hiérarchie stable entre les consciences."
+        correct: false
+        misconception: mc.philo.autrui.conflit-libertes-mal-compris
+        feedback: >
+          Le conflit sartrien n'est pas une hiérarchie à stabiliser : c'est
+          l'alternance instable de deux libertés qui se saisissent l'une l'autre.
+          Et Levinas n'y répond pas par la réciprocité, mais par un déplacement
+          — l'obligation précède la rencontre des libertés.
+      - id: D
+        text: "Non, mais parce que « l'enfer, c'est les autres » signifie qu'aucune obligation envers eux n'est possible."
+        correct: false
+        misconception: mc.philo.autrui.enfer-mal-interprete
+        feedback: >
+          La formule de Sartre ne prononce aucune impossibilité morale : elle
+          décrit ce que fait le regard, pas ce qu'il faut faire. Et la lire comme
+          un rejet d'autrui est justement le contresens que Sartre a démenti.
+    correct_feedback: >
+      Non : elle est ASYMÉTRIQUE. Le visage m'oblige avant tout choix et sans
+      contrepartie — je réponds d'autrui sans attendre qu'il réponde de moi.
+      Une responsabilité négociée serait un contrat, non une éthique.
+    solution: |
+      **L'asymétrie.** Chez Levinas, l'obligation ne se distribue pas également :
+      elle me vient du visage d'autrui, et elle est mienne indépendamment de ce
+      qu'il fait.
+
+      **Pourquoi elle ne se négocie pas.** Un devoir conditionné à la réciprocité
+      cesserait dès que l'autre manque à sa part — ce qui laisserait sans
+      protection exactement ceux qui ne peuvent rien rendre.
+
+      **Le contraste avec Hegel.** La reconnaissance hégélienne est mutuelle et à
+      conquérir ; la responsabilité lévinassienne est unilatérale et déjà là.
+
+  - id: AUT-33
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: philo_autrui
+    tags: [levinas, kant, visage, morale]
+    stem: >
+      Que faut-il entendre par le « visage » chez Levinas, et comment se
+      rapporte-t-il à la formule kantienne sur l'humanité ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le visage n'est pas l'apparence physique mais un appel qui m'oblige ; Kant, lui, interdit de traiter autrui SEULEMENT comme un moyen."
+        correct: true
+      - id: B
+        text: "Le visage désigne les traits, l'expression, ce que je peux décrire — et Kant interdit tout usage d'autrui comme moyen."
+        correct: false
+        misconception: mc.philo.autrui.visage-apparence-physique
+        feedback: >
+          Le visage lévinassien n'est pas descriptible : dès que je le décris —
+          couleur des yeux, âge, catégorie sociale — j'en fais un objet et je
+          manque ce qui l'y soustrait, l'appel qu'il m'adresse. C'est un concept
+          éthique, non une donnée perceptive.
+      - id: C
+        text: "Le visage est un appel qui m'oblige, et Kant interdit tout usage d'autrui comme moyen, même le plus banal."
+        correct: false
+        misconception: mc.philo.autrui.kant-formule-mal-comprise
+        feedback: >
+          La formule kantienne comporte un mot décisif : « jamais SEULEMENT comme
+          un moyen ». Demander l'heure à un passant, c'est l'utiliser comme moyen
+          — et c'est légitime, tant qu'on le traite en même temps comme une fin,
+          c'est-à-dire comme un être libre qui peut refuser.
+      - id: D
+        text: "Le visage est un appel qui m'oblige, et cette obligation est mutuelle : chacun répond de l'autre à parts égales."
+        correct: false
+        misconception: mc.philo.autrui.responsabilite-symetrisee
+        feedback: >
+          L'obligation lévinassienne est asymétrique : elle m'engage sans
+          contrepartie et sans que je l'aie choisie. La rendre mutuelle en ferait
+          un contrat — exactement le modèle que Levinas écarte, parce qu'il
+          abandonnerait ceux qui ne peuvent rien rendre.
+    correct_feedback: >
+      Le visage n'est pas ce que je vois mais ce qui m'appelle : il m'oblige
+      avant tout choix. Et la formule kantienne dit « jamais SEULEMENT comme un
+      moyen » — l'usage réciproque et consenti est permis, la réduction à
+      l'instrument ne l'est pas.
+    solution: |
+      **Le visage.** Non un ensemble de traits, mais ce par quoi autrui échappe
+      à toute description et m'adresse une exigence — « tu ne tueras point » —
+      antérieure à toute délibération.
+
+      **La formule kantienne, exactement.** « Agis de telle sorte que tu traites
+      l'humanité, en ta personne comme en celle d'autrui, toujours en même temps
+      comme une fin, et jamais SIMPLEMENT comme un moyen. »
+
+      **Ce que le mot « simplement » change.** Toute vie sociale suppose qu'on
+      s'utilise mutuellement — le boulanger, le médecin, le passant à qui l'on
+      demande l'heure. Ce qui est interdit, c'est de réduire quelqu'un à cet
+      usage, en effaçant qu'il est aussi une fin.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après AUT-25 à AUT-33. Seize familles sous le plancher
+# — c'était la notion la plus creuse du corpus —, dont
+# `maitre-satisfait-par-reconnaissance` sans AUCUN item de banc. Neuf items,
+# vingt-six places : Hegel, Husserl, Sartre (regard, honte, conflit), Levinas
+# et la formule kantienne. Tableau GÉNÉRÉ, gardé par
+# scripts/resume-couverture.mjs.
 coverage_summary:
-  # Computed by loading this file with js-yaml and tallying every
-  # choices[].misconception value per item -- an item counts once per
-  # misconception if ANY of its distractors carries that id (house
-  # convention, matching content/philo/la-liberte/items.yaml and
-  # content/philo/analyse-de-texte/items.yaml). Re-verified programmatically
-  # (grep -o "misconception: mc.philo.autrui.[a-z-]*" | sort | uniq -c)
-  # against the per_misconception tallies below before this file was closed
-  # out -- not hand-counted.
-  #
-  # This is a LEGACY end-bank (AUT-1..AUT-24 predate per-distractor
-  # tagging -- misconceptions: [] and no misconception: field on any
-  # distractor, this pass's starting state) retrofitted here: every one of
-  # the 72 distractors across the 24 items now carries a real misconception
-  # id (no null tags), stricter than the house default. Per the recipe's
-  # "Honest coverage" judgment call, floor gaps below are reported
-  # truthfully rather than padded.
-  total_items: 24
-  floor: 3
-  floor_met: false
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.philo.autrui.gene-sociale-reduction: 7
-    mc.philo.autrui.double-question-reduite: 2
-    mc.philo.autrui.apresentation-mal-comprise: 2
-    mc.philo.autrui.alter-ego-mal-compris: 3
-    mc.philo.autrui.dialectique-maitre-esclave-mal-comprise: 6
-    mc.philo.autrui.maitre-satisfait-par-reconnaissance: 0
-    mc.philo.autrui.honte-mal-comprise: 2
-    mc.philo.autrui.sartre-reduit-hegel: 2
-    mc.philo.autrui.moi-pour-autrui-seul: 3
-    mc.philo.autrui.revelation-objectivation-opposees: 3
-    mc.philo.autrui.conflit-libertes-mal-compris: 3
-    mc.philo.autrui.enfer-mal-interprete: 2
-    mc.philo.autrui.visage-regard-confondus: 3
-    mc.philo.autrui.visage-apparence-physique: 3
-    mc.philo.autrui.responsabilite-symetrisee: 3
-    mc.philo.autrui.kant-formule-mal-comprise: 4
-    mc.philo.autrui.questions-auteurs-confondues: 14
-    mc.philo.autrui.auteurs-mal-attribues: 6
-    mc.philo.autrui.methode-dissertation-mal-appliquee: 4
-  notes: >-
-    Every distractor across the 24 legacy items now carries a real
-    misconception id (no null tags) -- the from-scratch inventory build this
-    pass exists to make (the file previously had misconceptions: [] and zéro
-    tags). 13 of 19 models clear the >=3 floor. SIX do not, and floor_met is
-    reported honestly rather than padded: apresentation-mal-comprise (2,
-    AUT-10), honte-mal-comprise (2, AUT-3), sartre-reduit-hegel (2, AUT-3/
-    AUT-14), enfer-mal-interprete (2, AUT-4), double-question-reduite (2,
-    AUT-8) are real but thin in the legacy bank -- a follow-up item pass
-    should add 1-2 items each. maitre-satisfait-par-reconnaissance (0) is
-    the one model with ZÉRO item-bank coverage: the "erreur à éviter" box in
-    R2 names it explicitly ("ne dis pas que le maître obtient ce qu'il
-    voulait"), and AUT-2's own CORRECT choice states the corrected model,
-    but no legacy distractor restates the naive belief itself as a wrong
-    answer -- it is covered instead by checkpoints.yaml's cp-r2-rupture
-    (checkpoints do not count toward this floor, per house convention, but
-    give every student in-lesson exposure regardless), and flagged here as
-    the clearest item-authoring gap for a follow-up pass. Two further models
-    that ARE central to a boxed "erreur à éviter" surface only at the STEM
-    level of their anchor item rather than as a tagged distractor
-    (apresentation-mal-comprise's "perception directe" and "imagination
-    libre" readings are the literal premise AUT-1's and AUT-10's stems test,
-    corrected by the choice marked correct rather than restated by a wrong
-    one) -- same honest-gap logic, same follow-up-pass flag.
-    questions-auteurs-confondues (14) is, by a wide margin, the most-tested
-    model in this bank -- deliberately so: with seven authors across R0-R6,
-    conflating what two différent authors are each actually asking is this
-    notion's single most recurring failure mode (R2-vs-R1, R3-vs-R2, R6-vs-
-    the-other-four, and every R7 method item that asks which author suits
-    which sub-question all cash out to the same underlying model), not an
-    artifact of lazy tagging -- see individual item feedback for the
-    specific author pair being distinguished each time.
-    Length rebalance (recipe's philo addendum, mandatory -- verified
-    programmatically with a js-yaml length-check script, not eyeballed): the
-    legacy bank's correct answer was the STRICT-LONGEST option in 18/24
-    items before this pass (the campaign's cited ~97% tell, again live).
-    Distractors were enriched with additional philosophical substance --
-    a named premise, a spelled-out conséquence, a qualifying clause -- never
-    by trimming the correct answer's content, so the correct choice is
-    strict-longest in 0/24 after this pass: 2nd-longest in 12/24, 3rd in
-    9/24, and shortest (4th) in 3/24 -- genuinely varied, not a monotonic
-    "always longest" pattern, and not simply shifted into a new "always
-    2nd-longest" tell either.
+    mc.philo.autrui.gene-sociale-reduction:                  { count: 3, items: [AUT-7, AUT-8, AUT-9] }
+    mc.philo.autrui.double-question-reduite:                 { count: 3, items: [AUT-8, AUT-26, AUT-28] }
+    mc.philo.autrui.apresentation-mal-comprise:              { count: 3, items: [AUT-10, AUT-28, AUT-29] }
+    mc.philo.autrui.alter-ego-mal-compris:                   { count: 4, items: [AUT-1, AUT-10, AUT-28, AUT-29] }
+    mc.philo.autrui.dialectique-maitre-esclave-mal-comprise: { count: 3, items: [AUT-2, AUT-12, AUT-25] }
+    mc.philo.autrui.maitre-satisfait-par-reconnaissance:     { count: 3, items: [AUT-25, AUT-26, AUT-27] }
+    mc.philo.autrui.honte-mal-comprise:                      { count: 3, items: [AUT-3, AUT-27, AUT-30] }
+    mc.philo.autrui.sartre-reduit-hegel:                     { count: 3, items: [AUT-3, AUT-14, AUT-25] }
+    mc.philo.autrui.moi-pour-autrui-seul:                    { count: 3, items: [AUT-15, AUT-27, AUT-30] }
+    mc.philo.autrui.revelation-objectivation-opposees:       { count: 3, items: [AUT-17, AUT-26, AUT-30] }
+    mc.philo.autrui.conflit-libertes-mal-compris:            { count: 3, items: [AUT-16, AUT-31, AUT-32] }
+    mc.philo.autrui.enfer-mal-interprete:                    { count: 3, items: [AUT-4, AUT-31, AUT-32] }
+    mc.philo.autrui.visage-regard-confondus:                 { count: 3, items: [AUT-5, AUT-18, AUT-31] }
+    mc.philo.autrui.visage-apparence-physique:               { count: 3, items: [AUT-5, AUT-18, AUT-33] }
+    mc.philo.autrui.responsabilite-symetrisee:               { count: 3, items: [AUT-19, AUT-32, AUT-33] }
+    mc.philo.autrui.kant-formule-mal-comprise:               { count: 3, items: [AUT-6, AUT-20, AUT-33] }
+    mc.philo.autrui.questions-auteurs-confondues:            { count: 5, items: [AUT-11, AUT-13, AUT-21, AUT-23, AUT-24] }
+    mc.philo.autrui.auteurs-mal-attribues:                   { count: 5, items: [AUT-1, AUT-4, AUT-6, AUT-14, AUT-20] }
+    mc.philo.autrui.methode-dissertation-mal-appliquee:      { count: 3, items: [AUT-22, AUT-23, AUT-29] }
+  total_items: 33
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 4
+    R2: 5
+    R3: 5
+    R4: 4
+    R5: 4
+    R6: 4
+    R7: 4
+  honest_state: >-
+    Les dix-neuf misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Seize y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.
