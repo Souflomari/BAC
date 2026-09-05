@@ -16,7 +16,7 @@ toucher (avec ancres), et les critères de vérification.
 1. **Pagination** — une leçon cesse d'être une longue page : chaque section
    du rail devient une *vue de chapitre*, une seule à l'écran, avec un
    mouvement calme entre elles. (Réalise DESIGN-BIBLE §7 : « one idea or one
-   task per screen/step » — `docs/Product/DESIGN-BIBLE.md:345-348`.)
+   task per screen/step » — `docs/product/DESIGN-BIBLE.md:345-348`.)
 2. **StagedFigure** — la grammaire des beats (MotionStage) est généralisée
    aux SVG statiques : les figures se révèlent étape par étape, au rythme de
    l'élève, jamais tout d'un coup pour les graphes.
@@ -374,20 +374,45 @@ Nouvelles entrées BATTERY + SWEEP (structure : BATTERY duck-typed
 
 ## 6. Défauts adjacents constatés (non corrigés ici, consignés)
 
-- `LessonEnd` next = `listNotions().filter(...)[0]` — ordre filesystem, pas
-  récence, contrairement au commentaire (`NotionPageView.tsx:121-122`).
-- `LessonRenderer` par segment ⇒ compteur d'unicité `rehype-slug` remis à
-  zéro par segment — risque d'ids dupliqués entre segments.
-- `validate-content.mjs` : la garde lexicale laisse passer « À FAIRE » /
-  « asset-pending » (`:132-137`) ; `[[video:]]` avertit au lieu d'échouer
-  contrairement à son en-tête (`:109-110` vs `:14`).
-- `COMPONENT-STATES.md:277` décrit encore un scroll-spy IntersectionObserver
-  (périmé depuis Day 3) — de toute façon remplacé par le rail-navigateur.
-- `.claude/CLAUDE.md` cite `docs/product/` ; le répertoire réel est
-  `docs/Product/`.
-- `arbre-pondere.svg` n'a AUCUN groupe step malgré ses 3 placements — il
-  rend 3 fois la même figure ; sa mise en étapes est dans la table de
-  migration.
+> **TRIÉ ET SOLDÉ le 2026-09-05** (HANDOFF §10.12–10.13). Chaque entrée a été
+> MESURÉE avant d'être crue : deux étaient déjà réparées sans que cette liste
+> le sache, une était une contradiction de documentation, trois étaient
+> réelles — dont deux visibles par l'élève (la fin de leçon proposait la même
+> notion partout ; sept ancres « § » sur huit renvoyaient à la mauvaise
+> section). Le détail par entrée est annoté ci-dessous.
+
+
+- ~~`LessonEnd` next = `listNotions().filter(...)[0]` — ordre filesystem, pas
+  récence, contrairement au commentaire.~~ **RÉEL, CORRIGÉ** (2026-09-05) :
+  une seule suggestion distincte pour les 62 leçons. Remplacé par l'ordre du
+  PROGRAMME (`nextInParcours`, lib/curriculum.ts) — 60 suggestions distinctes.
+  Trier par date de fichier aurait été une fabrication : après un clone frais,
+  toutes les dates sont celles du checkout.
+- ~~`LessonRenderer` par segment ⇒ compteur d'unicité `rehype-slug` remis à
+  zéro par segment — risque d'ids dupliqués entre segments.~~ **RÉEL, ET PAS
+  UN RISQUE : un fait.** Huit titres « L'erreur à repérer » avec le même id
+  dans `maths/suites-numeriques` ; sept ancres « § » sur huit renvoyaient à la
+  première. Corrigé par un compteur PARTAGÉ
+  (`web/src/lib/rehypeSlugPartage.ts`), porte `ancres-uniques --porte`.
+- ~~`validate-content.mjs` : la garde lexicale laisse passer « À FAIRE » /
+  « asset-pending ».~~ **DÉJÀ RÉPARÉ** — les deux sont dans le lexique.
+  Quant à `[[video:]]` qui avertit au lieu d'échouer : c'est l'EN-TÊTE qui
+  mentait. `NotionBody` rend `null` sur ce marqueur par décision de brief
+  (omission gracieuse), le corpus en porte UN, assumé par un commentaire.
+  L'en-tête dit désormais ce que le code fait, et pourquoi.
+- ~~`COMPONENT-STATES.md:277` décrit encore un scroll-spy
+  IntersectionObserver.~~ **RÉEL, CORRIGÉ** : il n'y a plus une seule
+  occurrence d'`IntersectionObserver` dans `web/src/`. Le §5 décrit maintenant
+  le rail-navigateur et son épine de progression.
+- ~~`.claude/CLAUDE.md` cite un répertoire de vision qui n'existe pas sous
+  cette casse.~~ **RÉEL, ET BIEN PLUS GRAND QUE ÇA** : les DEUX répertoires
+  existaient — VISION.md et DESIGN-BIBLE.md sous la casse capitale, trois
+  autres documents sous la minuscule — et 23 renvois, dont ceux de CLAUDE.md,
+  du README, du HANDOFF et de NEUF agents, ne menaient nulle part. Fusionné
+  vers `docs/product/` ; porte `liens-fichiers --porte`. Voir HANDOFF §10.13.
+- ~~`arbre-pondere.svg` n'a AUCUN groupe step malgré ses 3 placements.~~
+  **DÉJÀ RÉPARÉ** — la figure porte ses groupes d'étapes et son sidecar
+  `.stages.json`.
 
 ## Retraits et corrections
 

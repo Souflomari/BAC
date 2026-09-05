@@ -1,0 +1,114 @@
+/**
+ * ancres-uniques.mjs — deux sections ne peuvent pas porter la même ancre.
+ *
+ * POURQUOI. Chaque titre d'une leçon porte une ancre « § » (audit U5) : un
+ * élève peut copier un lien profond vers la section qu'il lit, pour y revenir
+ * ou l'envoyer à quelqu'un. Cette promesse repose entièrement sur l'unicité
+ * de l'`id` du titre.
+ *
+ * LE DÉFAUT QUE CET INSTRUMENT A TROUVÉ (2026-09-05 ; consigné en juillet
+ * dans LESSON-EXPERIENCE-SPEC §6 et jamais repris). Depuis la pagination,
+ * `LessonRenderer` est appelé une fois par SEGMENT de prose, et `rehype-slug`
+ * remet son compteur d'unicité à zéro à chaque passe. Résultat mesuré :
+ * `maths/suites-numeriques` portait HUIT titres « L'erreur à repérer » avec
+ * le même id — sept ancres sur huit renvoyaient à la première.
+ *
+ * CE QU'IL JUGE, ET CE QU'IL NE JUGE PAS. Uniquement les ids de TITRES
+ * (h1–h6) : ce sont eux que l'ancre « § » publie. Les ids internes des SVG
+ * (`step-1`, un dégradé, un `clipPath`) sont eux aussi dupliqués dans le
+ * document — une même figure peut être posée plusieurs fois — mais c'est sans
+ * effet ici, vérifié deux fois : `MediaDiagram` masque les étapes en
+ * réécrivant le MARKUP de chaque figure (jamais par `getElementById`), et un
+ * balayage statique du corpus n'a trouvé AUCUN identifiant défini
+ * DIFFÉREMMENT par deux figures d'une même notion tout en étant déréférencé
+ * par `url(#…)`. Armer une porte sur « aucun id dupliqué » aurait donc été
+ * rouge sur un fait inoffensif — et aurait fini désarmée.
+ *
+ *   node scripts/ancres-uniques.mjs [routes…]           → le rapport
+ *   node scripts/ancres-uniques.mjs --porte [routes…]   → la porte (CI)
+ *
+ * Sans routes, toutes les leçons du corpus.
+ */
+import { chromium } from "playwright-core";
+import { spawn } from "node:child_process";
+import fs from "node:fs";
+import path from "node:path";
+
+const ICI = path.dirname(new URL(import.meta.url).pathname);
+const WEB = path.resolve(ICI, "..");
+const REPO = path.resolve(WEB, "..");
+const PORTE = process.argv.includes("--porte");
+const PORT = Number(process.env.PORT ?? 3497);
+const AUTONOME = !process.env.BASE;
+const BASE = process.env.BASE ?? `http://127.0.0.1:${PORT}`;
+
+let routes = process.argv.slice(2).filter((a) => a.startsWith("/"));
+if (!routes.length) {
+  routes = [];
+  for (const m of fs.readdirSync(path.join(REPO, "content"))) {
+    const d = path.join(REPO, "content", m);
+    if (!fs.statSync(d).isDirectory()) continue;
+    for (const s of fs.readdirSync(d))
+      if (fs.existsSync(path.join(d, s, "lesson.md"))) routes.push(`/notions/${m}/${s}`);
+  }
+  routes.sort();
+}
+
+let serveur = null;
+if (AUTONOME) {
+  serveur = spawn("npx", ["next", "start", "-p", String(PORT)], { cwd: WEB, stdio: "ignore", detached: true });
+  let pret = false;
+  for (let i = 0; i < 60; i++) {
+    await new Promise((r) => setTimeout(r, 1000));
+    try { if ((await fetch(`${BASE}/`)).ok) { pret = true; break; } } catch { /* pas encore */ }
+  }
+  if (!pret) { console.error("✗ serveur absent — rien n'est mesuré"); try { process.kill(-serveur.pid); } catch {} process.exit(1); }
+}
+process.on("exit", () => { if (serveur?.pid) { try { process.kill(-serveur.pid); } catch {} } });
+
+const nav = await chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium" });
+const page = await nav.newPage();
+const fautifs = [];
+let titresVus = 0;
+
+for (const r of routes) {
+  await page.goto(`${BASE}${r}`, { waitUntil: "domcontentloaded", timeout: 120000 });
+  const { doublons, n } = await page.evaluate(() => {
+    const compte = new Map();
+    for (const h of document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]")) {
+      const e = compte.get(h.id) ?? { k: 0, textes: [] };
+      e.k++;
+      if (e.textes.length < 3) e.textes.push((h.textContent || "").replace(/\s+/g, " ").trim().slice(0, 60));
+      compte.set(h.id, e);
+    }
+    return {
+      n: [...compte.values()].reduce((s, e) => s + e.k, 0),
+      doublons: [...compte].filter(([, e]) => e.k > 1).map(([id, e]) => ({ id, k: e.k, textes: e.textes })),
+    };
+  });
+  titresVus += n;
+  if (doublons.length) fautifs.push({ r, doublons });
+  if (!PORTE)
+    console.log(`  ${doublons.length ? "✗" : "✓"} ${r.padEnd(46)} ${String(n).padStart(3)} titres` +
+      (doublons.length ? ` — ${doublons.length} ancre(s) dupliquée(s)` : ""));
+}
+await nav.close();
+
+if (fautifs.length) {
+  console.error("\n━━ porte ancres-uniques : ROMPUE ━━");
+  for (const { r, doublons } of fautifs) {
+    console.error(`   ${r}`);
+    for (const d of doublons) console.error(`      #${d.id} ×${d.k} — « ${d.textes.join(" » / « ")} »`);
+  }
+  console.error(
+    "\n   Deux titres qui partagent une ancre, c'est un lien profond qui ment :\n" +
+      "   l'élève copie le lien de la section qu'il lit et retombe sur la première\n" +
+      "   homonyme. Le compteur d'unicité doit être PARTAGÉ par les segments\n" +
+      "   (web/src/lib/rehypeSlugPartage.ts), jamais remis à zéro par segment."
+  );
+  process.exit(1);
+}
+
+console.log(
+  `\nancres-uniques : porte tenue — ${routes.length} leçons, ${titresVus} titres, 0 ancre dupliquée ✓`
+);

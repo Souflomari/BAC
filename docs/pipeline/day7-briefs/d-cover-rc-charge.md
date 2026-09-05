@@ -13,7 +13,7 @@ rc-charge-specific cover.
    in language from the existing set.
 2. `web/src/components/covers/Cover.tsx` — the coded starter set and the
    motif registry you are extending (read its header comment).
-3. `docs/Product/DESIGN-BIBLE.md` §6 (the generated-visual language the
+3. `docs/product/DESIGN-BIBLE.md` §6 (the generated-visual language the
    spec applies).
 
 **Design constraints (from the spec — restated here only as scope, the spec

@@ -22,13 +22,22 @@ import remarkGfm from "remark-gfm";
 import remarkFrenchTypography from "@/lib/remarkFrenchTypography";
 import rehypeKatexHtml from "@/lib/rehypeKatexHtml";
 import { KatexSpan } from "./KatexSpan";
-import rehypeSlug from "rehype-slug";
+import { rehypeSlugPartage, GithubSlugger } from "@/lib/rehypeSlugPartage";
 import rehypeDirectionRtl from "@/lib/rehypeDirectionRtl";
 import { cn } from "@/lib/utils";
 
 interface LessonRendererProps {
   markdown: string;
   className?: string;
+  /**
+   * Le compteur d'unicité des ancres, PARTAGÉ par tous les segments d'une
+   * même page (voir lib/rehypeSlugPartage.ts). Sans lui, chaque appel repart
+   * de zéro et deux sections homonymes de deux chapitres différents portent
+   * le même id — l'ancre « § » de la seconde renvoyant alors à la première.
+   * Absent (usage hors page de leçon) : un compteur neuf, comportement
+   * d'avant.
+   */
+  slugger?: GithubSlugger;
 }
 
 
@@ -122,7 +131,8 @@ function SubHeading({ children, ...props }: ComponentPropsWithoutRef<"h3">) {
   );
 }
 
-export function LessonRenderer({ markdown, className }: LessonRendererProps) {
+export function LessonRenderer({ markdown, className, slugger }: LessonRendererProps) {
+  const compteur = slugger ?? new GithubSlugger();
   return (
     <article
       className={cn(
@@ -134,7 +144,7 @@ export function LessonRenderer({ markdown, className }: LessonRendererProps) {
       <ReactMarkdown
         remarkPlugins={[remarkMath, remarkGfm, remarkFrenchTypography]}
         rehypePlugins={[
-          rehypeSlug,
+          rehypeSlugPartage(compteur),
           [rehypeKatexHtml, { strict: false, trust: false }],
           rehypeDirectionRtl,
         ]}

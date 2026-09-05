@@ -1853,3 +1853,126 @@ ils existaient et ne s'exécutaient que localement, donc en pratique quand
 quelqu'un y pensait. Les deux sont désormais des étapes de `gates.yml`,
 placées en tête parce qu'elles sont rapides et sans navigateur. Une suite de
 tests qui ne tourne pas dans la CI est une suite qui ne tourne pas.
+
+### 10.12 Les six défauts « adjacents » consignés en juillet — trois étaient réels, et deux se voyaient
+
+`docs/design/LESSON-EXPERIENCE-SPEC.md` §6 listait six défauts « constatés,
+non corrigés ici, consignés ». Ils y dormaient depuis juillet. Chacun a été
+MESURÉ avant d'être cru — et le tri a compté autant que les correctifs.
+
+**Deux étaient déjà réparés, sans que la liste le sache.** La garde lexicale
+de `validate-content` laisse bien passer… plus rien : `À FAIRE` et
+`asset-pending` sont dans son lexique. Et `arbre-pondere.svg` a désormais ses
+groupes d'étapes ET son sidecar `.stages.json`. Une liste de dette qui ne
+sait pas ce qui a été payé fait perdre du temps deux fois : à la lire, et à
+la vérifier.
+
+**Un était une contradiction de documentation, pas de code.** L'en-tête de
+`validate-content` annonçait « `[[video:slug]]` → ALWAYS fails » ; le code
+avertit. Le corpus porte UN marqueur vidéo, dans `pc/rlc-serie`, précédé d'un
+commentaire qui l'assume comme slot d'amélioration, et `NotionBody` rend
+`null` dessus par décision de brief (omission gracieuse, jamais de
+placeholder d'erreur). C'est donc l'EN-TÊTE qui mentait : il dit maintenant
+ce que le code fait, et pourquoi.
+
+**Trois étaient réels. Deux se voient depuis le siège de l'élève.**
+
+**(1) La fin de chaque leçon proposait la même chose.** Le code lisait
+`listNotions().filter(…)[0]` — l'ordre de `readdirSync` — sous un commentaire
+affirmant « la notion la plus récemment mise à jour ». Résultat : **une seule
+suggestion distincte pour les 62 leçons.** Trier par date de fichier n'aurait
+rien sauvé — après un clone frais (donc à chaque déploiement Vercel) toutes
+les dates sont celles du checkout, et « la plus récente » aurait été une
+fabrication au sens de la règle d'état honnête. L'ordre du PROGRAMME, lui,
+existe et ne dépend d'aucune horloge : `nextInParcours` (lib/curriculum.ts)
+rend le chapitre construit suivant dans la matière, puis les matières
+suivantes, puis boucle. Mesuré après : **60 suggestions distinctes sur 62
+leçons, aucune nulle, aucune pointant sur elle-même, 58 restant dans la même
+matière.** L'ordre des matières est désormais défini UNE fois
+(`DEFAULT_SUBJECT_ORDER`) et partagé avec le « quoi étudier ensuite » du
+tableau de bord — ce que le commentaire de `NextUp` réclamait déjà.
+
+**(2) Sept ancres sur huit renvoyaient au mauvais endroit.** Chaque titre
+porte une ancre « § » qui permet de copier un lien profond. Depuis la
+pagination, `LessonRenderer` est appelé une fois par SEGMENT et `rehype-slug`
+remet son compteur d'unicité à zéro à chaque passe : dans
+`maths/suites-numeriques`, **huit titres « L'erreur à repérer » portaient le
+même id**. L'élève copiait le lien de la section qu'il lisait et retombait
+sur la première. 95 titres au libellé répété existent dans 32 leçons. Le
+compteur est maintenant PARTAGÉ par les segments
+(`web/src/lib/rehypeSlugPartage.ts`) : les ids produits sont exactement ceux
+qu'aurait donnés un rendu en une passe, donc **la première occurrence garde
+son id nu et les liens déjà partagés survivent.** Porte armée :
+`ancres-uniques --porte`, 62 leçons, 2 190 titres, 0 doublon.
+
+> **Le tri qui a évité une porte inutile.** Le même document portait AUSSI 29
+> ids SVG dupliqués (`step-1`, un dégradé, `circuit-state-0`). Tentant d'armer
+> « aucun id dupliqué ». Vérifié deux fois avant : `MediaDiagram` masque les
+> étapes en réécrivant le MARKUP de chaque figure, jamais par
+> `getElementById` ; et aucun identifiant du corpus n'est défini DIFFÉREMMENT
+> par deux figures d'une même notion tout en étant déréférencé par `url(#…)`.
+> La porte aurait été rouge sur un fait sans conséquence, et désarmée la
+> semaine suivante. **Elle ne juge que les ids de titres.**
+
+**(3) Deux pointeurs de documentation périmés** — le rail décrit comme piloté
+par un `IntersectionObserver` qui n'existe plus nulle part dans `web/src/`, et
+`.claude/CLAUDE.md` pointant `docs/product/`. Le second a ouvert bien plus
+grand que prévu, voir §10.13.
+
+### 10.13 `docs/Product/` et `docs/product/` existaient tous les deux
+
+Le plus petit des six défauts consignés était « `.claude/CLAUDE.md` cite
+`docs/product/` ; le répertoire réel est `docs/Product/` ». En le vérifiant,
+**les deux répertoires existaient.**
+
+- `docs/Product/` contenait `VISION.md` et `DESIGN-BIBLE.md` ;
+- `docs/product/` contenait `NORTH-STAR-V2.md`, `OUTILLAGE.md`,
+  `REFONTE-STUDIO.md` ;
+- **23 renvois** pointaient `docs/product/VISION.md` ou
+  `docs/product/DESIGN-BIBLE.md` — c'est-à-dire nulle part sur un système de
+  fichiers sensible à la casse. Parmi eux : `.claude/CLAUDE.md` (« Read
+  `docs/product/VISION.md` before making any product decision »), le README,
+  `docs/README-docs.md`, le HANDOFF lui-même, et **neuf définitions
+  d'agents** — `pedagogy-architect`, `pedagogy-critic`, `content-author`,
+  `frontend-builder`, `diagram-author`, `interactive-author`,
+  `visual-design-critic`, `calm-load-critic`, `ergonomics-flow-critic`.
+
+**Chaque agent à qui l'on disait « lis la vision d'abord » lisait le vide.**
+Et sur la machine du propriétaire — Windows, insensible à la casse, comme
+l'atteste `scripts/branch-test.ps1` — les deux répertoires entrent en
+collision au checkout.
+
+Réparé en fusionnant vers la casse que citait la majorité des renvois
+(`docs/product/`, cohérente avec `docs/audits`, `docs/decisions`,
+`docs/design`, `docs/pipeline`) : deux fichiers déplacés, 13 fichiers
+réécrits, **38 renvois qui résolvent tous.**
+
+**La porte qui en est née.** `liens-fichiers.mjs` vérifie que tout chemin de
+fichier cité dans le dépôt mène quelque part, résolu depuis la racine, depuis
+`web/` (la convention d'exécution des scripts) ou depuis le répertoire qui le
+cite. Deux zones, et c'est la seule façon honnête de l'armer :
+
+- **zone VIVANTE** — orientation, agents, compétences, vision, règles, specs,
+  runbooks, code, contenu, CI. **Porte franche** : un renvoi mort y est
+  toujours un défaut.
+- **zone d'ARCHIVE** — ADR, registres d'audit, CHANGELOG, rapports de
+  reprise, ancrage déclaré périmé. Ces textes NOMMENT délibérément ce qui
+  n'existe plus : un ADR qui acte la suppression d'un agent doit pouvoir
+  écrire son chemin. Exiger qu'ils résolvent reviendrait à réécrire
+  l'histoire. Comptés (13), jamais gardés.
+
+Et l'exception vit dans le fichier, en NOMMANT son chemin —
+`CHEMIN DISPARU: scripts/gemini_media.py — remplacé par le MCP gemini-image` —
+exactement comme `RECOUVREMENT ASSUMÉ:` pour la sonde de contraste. Un
+marqueur qui vaudrait pour tout un fichier ferait taire l'instrument pour le
+renvoi cassé qu'on y introduira demain.
+
+**Six renvois morts de plus, trouvés du même coup**, dont un qui comptait :
+le runbook de bascule PRODUCTION demandait de copier des migrations depuis
+`docs/drafts/migrations/`, répertoire disparu depuis que les brouillons ont
+été promus en `048/049/050`. **Une étape introuvable dans un runbook de
+bascule production est le pire endroit où laisser pourrir un chemin.**
+
+> **La règle que cet arc ajoute.** Un renvoi est une INSTRUCTION. Un renvoi
+> mort est une instruction qu'on croit avoir donnée — et personne ne s'en
+> aperçoit, parce que c'est le lecteur suivant qui paie, en silence.

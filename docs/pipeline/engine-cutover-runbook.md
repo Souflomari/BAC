@@ -52,11 +52,16 @@
 
 ## Sitting 2 — staging: migrate, deploy, prove the loop end-to-end (~1–2 h)
 
-1. **Promote the drafts** (session prepares, owner reviews the diff):
-   copy `docs/drafts/migrations/draft-048…/049…/050….sql` →
-   `backend/supabase/migrations/048_…/049_…/050_….sql` (naming per the
-   existing files; content byte-identical to the reviewed drafts —
-   promotion is a move, never an edit).
+1. **Promote the drafts — DÉJÀ FAIT, ne pas rejouer.** Cette étape était
+   « copier `docs/drafts/migrations/draft-048…/049…/050….sql` vers
+   `backend/supabase/migrations/` ». La promotion a eu lieu :
+   `backend/supabase/migrations/048_user_events_and_notion_progress.sql`,
+   `049_user_notion_misconception_states.sql` et
+   `050_staging_close_auth_trigger_gap.sql` sont dans l'arbre, et
+   `docs/drafts/` n'existe plus. Reprendre à l'étape 2. (Corrigé le
+   2026-09-05 : le pas nommait un répertoire disparu, et une étape
+   introuvable dans un runbook de bascule PRODUCTION est le pire endroit
+   où laisser pourrir un chemin.)
 2. Owner applies to **staging**; the migrations' own verify blocks must
    pass (cardinality + grant assertions — they raise on failure).
 3. `scripts/branch-test.ps1` green on the owner's machine against staging.

@@ -9,7 +9,7 @@ until we get 18 or 19 on everything."* This ADR settles **which Material Design 
 mechanisms we adopted, which identity we protected, and why**, so the Hybrid
 position is not re-litigated.
 
-**Relates to.** VISION, RULES, `docs/Product/DESIGN-BIBLE.md`, ADR 0023
+**Relates to.** VISION, RULES, `docs/product/DESIGN-BIBLE.md`, ADR 0023
 (warm-editorial typography + palette — **extended, not superseded**), ADR 0022
 (tokens + motion stack — the elevation scale, easing curves, beat-spec engine all
 stand), ADR 0017 (coded-figure rule — reaffirmed). Living references updated

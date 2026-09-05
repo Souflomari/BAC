@@ -9,7 +9,7 @@
 > **Method.** Four independent read-only ground-truth passes over the *current*
 > repo (content coverage per subject; the adaptive-tutor/persistence stack —
 > built vs live vs dark; exam fidelity per subject; the student journey + the
-> QA harness), read against the full `docs/Product/VISION.md`, the July-11
+> QA harness), read against the full `docs/product/VISION.md`, the July-11
 > evaluation (`ux-bac-readiness-evaluation-2026-07.md`), and `HANDOFF.md`.
 > The single load-bearing surprise (the client write-path has zero callers)
 > was verified by hand. This is an assessment only — nothing was changed.

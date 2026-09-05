@@ -22,6 +22,7 @@
 
 import { notFound } from "next/navigation";
 import { loadNotion, listNotions } from "@/lib/content";
+import { nextInParcours } from "@/lib/curriculum";
 import type { NotionItem } from "@/lib/content";
 import { realChapterCount } from "@/lib/chapters";
 import { cartesParChapitre } from "@/lib/retenir";
@@ -142,12 +143,18 @@ export function NotionPageView({
     (itemsByRung[key] ??= []).push(item);
   }
 
-  // LessonEnd next-suggestion: deterministic + honest — the most recently
-  // updated OTHER notion (interleaving another subject beats repeating this
-  // one). No fabricated ordering; if no other notion exists, LessonEnd offers
-  // only the return-home path.
-  const others = listNotions().filter((n) => n.id !== id);
-  const nextNotion = others.length > 0 ? others[0] : null;
+  // LessonEnd next-suggestion: l'ordre du PROGRAMME, pas celui du système de
+  // fichiers. Ce bloc lisait `listNotions().filter(…)[0]` — l'ordre de
+  // `readdirSync` — tout en affirmant en commentaire « la notion la plus
+  // récemment mise à jour ». Résultat : la MÊME suggestion à la fin de toutes
+  // les leçons. `nextInParcours` (lib/curriculum.ts) rend le chapitre
+  // construit qui suit dans la matière, puis les matières suivantes, puis
+  // boucle — déterministe, sans horloge, et fidèle au parcours de l'élève.
+  const toutes = listNotions();
+  const construites = new Set(toutes.map((n) => n.id));
+  const suivanteId = nextInParcours(id, construites);
+  const nextNotion =
+    (suivanteId ? toutes.find((n) => n.id === suivanteId) : undefined) ?? null;
 
   const hasAnyContent =
     !!lessonMd ||

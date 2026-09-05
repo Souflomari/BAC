@@ -263,19 +263,32 @@ The card that wraps the question, options, and feedback.
 
 ---
 
-## 5. Margin Rail Rungs
+## 5. Margin Rail — les entrées du navigateur de chapitres
 
-Small sticky anchor links in the left rail. Touch target: ≥48px height per rung.
+Boutons collants dans le rail de gauche. Cible tactile : ≥48 px de hauteur
+par entrée.
 
-| State | Indicator | Text | Transition |
+| État | Indicateur | Texte | Transition |
 |---|---|---|---|
-| rest | Small dot or rung mark, `text-tertiary` | `text-tertiary`, `text-caption` | — |
-| hover | Dot slightly larger / accent color | `text-secondary` | 150ms `ease-enter` |
-| focus-visible | `.focus-ring` outline | `text-secondary` | — |
-| active (in-view section) | Dot filled, `accent` color | `text-primary` | 250ms `ease-between` (scroll-spy fires this) |
+| repos | Petit point, `text-tertiary` | `text-tertiary`, `text-caption` | — |
+| survol | Point légèrement plus grand / couleur d'accent | `text-secondary` | 150ms `ease-enter` |
+| focus-visible | Contour `.focus-ring` | `text-secondary` | — |
+| actif (chapitre courant) | Point plein, couleur `accent` | `text-primary` | 250ms `ease-between` |
 
-The active rung is set by IntersectionObserver (scroll-spy), not by click.
-The transition is CSS on the scroll-spy class toggle, 250ms `ease-between`.
+**Corrigé le 2026-09-05.** Ce paragraphe décrivait encore un scroll-spy
+`IntersectionObserver` qui calculait l'entrée active à partir de la position
+de défilement. Ce code n'existe plus depuis que la pagination par chapitres a
+atterri (LESSON-EXPERIENCE-SPEC §1.4 : « le code spy est retiré du chemin
+paginé… il meurt »), et il n'y a plus une seule occurrence
+d'`IntersectionObserver` dans `web/src/`. Le rail n'est plus un indicateur
+passif : **c'est un navigateur.** Un clic ACTIVE un chapitre via le contexte
+de `ChapterShell`, et l'entrée active est simplement `current` poussé depuis
+ce contexte — jamais mesuré. La transition reste du CSS sur le changement de
+classe.
+
+Une épine de progression (ligne verticale) traverse les entrées : la portion
+au-dessus de l'entrée active — celle-ci comprise — est peinte en accent, le
+reste en `border-subtle`. Aucune animation : un dégradé CSS lu sur `current`.
 
 ---
 

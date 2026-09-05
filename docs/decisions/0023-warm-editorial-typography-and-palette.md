@@ -6,7 +6,7 @@ objective, especially the UI part; the UI needs to be SOTA, something clean, but
 elegant, extremely elegant."* This ADR settles the typeface, palette, and the
 signature accent so they are not re-litigated.
 
-**Relates to.** VISION, RULES, `docs/Product/DESIGN-BIBLE.md` (§2 color, §3
+**Relates to.** VISION, RULES, `docs/product/DESIGN-BIBLE.md` (§2 color, §3
 typography — updated by this ADR), ADR 0022 (design-system tokens + motion stack
 — **partially superseded**, see Retractions), ADR 0017 (coded-figure rule —
 reaffirmed). Living references updated alongside: `docs/design/TOKENS.md`,

@@ -8,7 +8,7 @@
  * plain fixture, exactly as §8 requires ("La classification A/C/U est du
  * code pur (lecture) → tests unitaires sur table de cas, pas dom-truth").
  * The three input shapes below mirror the draft schemas byte-for-byte
- * (`docs/drafts/migrations/draft-048_user_events_and_notion_progress.sql`,
+ * (`backend/supabase/migrations/048_user_events_and_notion_progress.sql`,
  * `draft-049_user_notion_misconception_states.sql`) — camelCased, nothing
  * renamed beyond that. Nothing here writes anything; the write path (RPCs,
  * edge functions) stays untouched and stays the only place clearing facts

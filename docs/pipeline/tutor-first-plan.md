@@ -75,7 +75,12 @@ owner-gated cutover is one short, scripted session.
 ### E1 — wire the write path (autonomous, this session)
 
 - `web/src/lib/events/attempt-context.tsx` (new): provider + hook + the
-  single shared payload builder.
+  single shared payload builder. **ATTERRI AILLEURS** (2026-09-05, note de
+  relecture) : le provider et le hook vivent dans
+  `web/src/components/notion/AttemptEvents.tsx`, le constructeur de charge
+  utile dans `web/src/lib/events/payload.ts` et le transport dans
+  `web/src/lib/events/emitter.ts`.
+  <!-- CHEMIN DISPARU: web/src/lib/events/attempt-context.tsx — nom prévu par ce plan, jamais créé sous ce chemin. -->
 - `NotionPageView.tsx`: mount the provider; add a chapter-visit recorder
   (emits on every chapter activation incl. the initial one, with
   `chapters_total` = ChapterShell's total).

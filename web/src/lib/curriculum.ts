@@ -392,6 +392,64 @@ export function isChapterAvailable(subjectId: string, slug: string, builtIds: Se
   return builtIds.has(`${subjectId}/${slug}`);
 }
 
+/**
+ * L'ordre des matières quand aucune filière n'est choisie — la seule source
+ * partagée entre les surfaces qui recommandent quelque chose (le « quoi
+ * étudier ensuite » du tableau de bord et la fin de leçon). Deux surfaces qui
+ * définiraient chacune « l'ordre du programme » finiraient par se contredire
+ * devant le même élève.
+ */
+export const DEFAULT_SUBJECT_ORDER: SubjectId[] = ["maths", "pc", "svt", "philo"];
+
+/**
+ * La notion CONSTRUITE qui suit `currentId` dans l'ordre du programme.
+ *
+ * Pourquoi cette fonction existe (2026-09-05). La fin de leçon proposait
+ * `listNotions().filter(…)[0]` — c'est-à-dire l'ordre de `readdirSync`, donc
+ * la MÊME notion à la fin de TOUTES les leçons, et un ordre que rien ne
+ * garantit. Le commentaire du code affirmait pourtant « la notion la plus
+ * récemment mise à jour » : il décrivait une intention, pas le code. Trier par
+ * date de fichier n'aurait pas sauvé grand-chose — après un clone frais (donc
+ * sur Vercel, à chaque déploiement) toutes les dates sont celles du checkout,
+ * et « la plus récente » aurait été une fabrication au sens de la règle d'état
+ * honnête.
+ *
+ * L'ordre du PROGRAMME, lui, existe vraiment et ne dépend d'aucune horloge :
+ *   1. le chapitre construit suivant DANS LA MÊME MATIÈRE ;
+ *   2. sinon, le premier chapitre construit des matières suivantes ;
+ *   3. sinon, en bouclant, le premier chapitre construit de la matière
+ *      courante — pour qu'une dernière leçon propose toujours quelque chose.
+ *
+ * Pas de narrowing par filière ici : la règle d'or (ADR 0025 §2.11) est que la
+ * filière NARROWS, jamais GATES, et cette fonction tourne côté serveur, où la
+ * préférence de l'appareil n'est pas lisible. Proposer un chapitre hors
+ * filière est le comportement déjà admis pour une URL directe.
+ */
+export function nextInParcours(currentId: string, builtIds: Set<string>): string | null {
+  const subjectId = currentId.split("/")[0] as SubjectId;
+  const courante = SUBJECTS[subjectId];
+
+  if (courante) {
+    const ids = subjectChapterIds(courante);
+    const i = ids.indexOf(currentId);
+    if (i >= 0) {
+      for (const id of ids.slice(i + 1)) if (builtIds.has(id)) return id;
+    }
+  }
+
+  for (const s of DEFAULT_SUBJECT_ORDER) {
+    if (s === subjectId) continue;
+    const sujet = SUBJECTS[s];
+    if (!sujet) continue;
+    for (const id of subjectChapterIds(sujet)) if (builtIds.has(id)) return id;
+  }
+
+  if (courante) {
+    for (const id of subjectChapterIds(courante)) if (builtIds.has(id) && id !== currentId) return id;
+  }
+  return null;
+}
+
 // ── Filière narrowing (ADR 0025 §2.11 golden rule) ─────────────────────────────
 //
 // The filière preference NARROWS the view; it never GATES: a chapter with no

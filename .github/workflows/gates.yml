@@ -61,6 +61,23 @@ jobs:
           npm run test-learner-model
           npm run test-attempt-events
 
+      # PORTE LIENS (2026-09-05). Ce projet se pilote par ses documents :
+      # `.claude/CLAUDE.md` envoie vers la vision, la vision vers les règles,
+      # les agents vers la bible de design, un runbook de bascule vers des
+      # migrations. Chacun de ces renvois est une INSTRUCTION, et un renvoi
+      # qui ne mène nulle part est une instruction qu'on croit avoir donnée.
+      # Trouvé en armant la porte : `docs/Product/` ET `docs/product/`
+      # existaient tous les deux — VISION.md et DESIGN-BIBLE.md dans le
+      # premier, 23 renvois vers le second, dont ceux de CLAUDE.md, du README,
+      # du HANDOFF et de NEUF agents. Chaque agent à qui l'on disait « lis la
+      # vision d'abord » lisait le vide ; et sur une machine insensible à la
+      # casse (Windows, cf. branch-test.ps1) les deux répertoires entrent en
+      # collision. Deux zones : la zone VIVANTE est franche, la zone d'ARCHIVE
+      # (ADR, registres, CHANGELOG) nomme délibérément le disparu et n'est que
+      # comptée. L'exception vit dans le fichier : `CHEMIN DISPARU: <chemin>`.
+      - name: Porte liens (un renvoi mène quelque part)
+        run: node scripts/liens-fichiers.mjs --porte
+
       - name: validate-content (strict, every notion)
         run: |
           dirs=$(find ../content -mindepth 2 -maxdepth 2 -type d -not -path '*_media-test*' | sed 's|^\.\./||' | sort)
@@ -277,6 +294,24 @@ jobs:
       # préchargement passerait le contrôle « rien sans geste » en rendant la
       # navigation plus lente partout. Elle exige donc AUSSI que le survol
       # précharge, et que l'économiseur de données soit honoré.
+      # PORTE ANCRES (2026-09-05). Chaque titre de leçon porte une ancre « § »
+      # qui permet à l'élève de copier un lien profond vers la section qu'il
+      # lit. Depuis la pagination par chapitres, `LessonRenderer` est appelé
+      # une fois par SEGMENT et `rehype-slug` remet son compteur d'unicité à
+      # zéro à chaque passe : deux sections homonymes de deux chapitres
+      # différents recevaient le MÊME id. Mesuré : huit titres « L'erreur à
+      # repérer » avec le même id dans maths/suites-numeriques — sept ancres
+      # sur huit renvoyaient à la première. Le compteur est désormais PARTAGÉ
+      # (web/src/lib/rehypeSlugPartage.ts) et la première occurrence garde son
+      # id nu, donc les liens déjà partagés survivent.
+      # La porte ne juge QUE les ids de titres : les ids internes des SVG sont
+      # dupliqués eux aussi (une même figure posée plusieurs fois) mais sans
+      # effet — vérifié deux fois, cf. l'en-tête du script.
+      - name: Porte ancres (deux sections ne partagent pas un lien profond)
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/ancres-uniques.mjs --porte
+
       - name: Porte données (défiler une liste ne coûte rien au forfait)
         run: |
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"

@@ -14,7 +14,7 @@ le mode d'échec documenté du sprint.
 
 ## Lectures obligatoires (dans cet ordre)
 
-1. `docs/Product/DESIGN-BIBLE.md` — la loi. §0 cœur calme · §5 motion ·
+1. `docs/product/DESIGN-BIBLE.md` — la loi. §0 cœur calme · §5 motion ·
    §7 une-idée-par-écran · §8 périphérie fonctionnelle · §10 le test du
    regard · §11 codes rungs jamais visibles (data-attributes) ·
    §12–13 rendered/deployed-truth.

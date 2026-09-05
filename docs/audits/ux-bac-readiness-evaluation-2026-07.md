@@ -7,7 +7,7 @@
 > himself ready for the baccalauréat — or not?"
 >
 > **Method.** Seven independent read-only critic passes against the VISION
-> (`docs/Product/VISION.md`) and the cadre (`docs/cadre/cadre.yaml` +
+> (`docs/product/VISION.md`) and the cadre (`docs/cadre/cadre.yaml` +
 > `docs/cadre/curriculum/pc-physique-chimie.yaml`), each verifying — not
 > inheriting — the D9.5 audit's priors against the *current* files: PC fidelity
 > (×2, corroborating), maths/svt/philo fidelity, fundamental-understanding

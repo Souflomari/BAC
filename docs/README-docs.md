@@ -18,7 +18,7 @@ works, how it should feel. The north star the entire project serves. It is
 never to accommodate a build constraint. Every other document and every
 agent answers to this one.
 
-### `docs/RULES.md` — *how we work*
+### `docs/Rules/RULES.md` — *how we work*
 The build discipline and rules of work: cadence, how agents operate, the
 content pipeline, production safety as operating procedure. It **evolves**
 as the build is figured out. Kept separate from the vision so that changing

@@ -14,7 +14,7 @@ such question in your report.
 
 1. `docs/design/PAGE-ANATOMY-SPECS.md` — §LessonEnd (purpose, anatomy, data
    contract, invariants) and the ground rules at the top of the file.
-2. `docs/Product/DESIGN-BIBLE.md` §8 (periphery/session close), §11 (page
+2. `docs/product/DESIGN-BIBLE.md` §8 (periphery/session close), §11 (page
    anatomy), §13 (rendered truth).
 3. `docs/design/COMPONENT-STATES.md` — the state-layer / focus-ring
    conventions every interactive element carries.

@@ -9,7 +9,8 @@
 > **Roster of record.** This file — together with the `.claude/agents/*.md`
 > files it describes and the roster ADR — IS the record. The old
 > `docs/architecture/agent-workflow-v2.mermaid` diagram is retired (it named
-> agents that no longer exist); do not resurrect it. `docs/pipeline/pipeline.md`
+> agents that no longer exist); do not resurrect it.
+> <!-- CHEMIN DISPARU: docs/architecture/agent-workflow-v2.mermaid — retiré, nommé ici pour qu'on ne le ressuscite pas. --> `docs/pipeline/pipeline.md`
 > is superseded by this file for the cast/routing.
 >
 > **v2 (2026-08-05).** Refreshed for the 5-family model era (Fable 5 / Opus 5 /

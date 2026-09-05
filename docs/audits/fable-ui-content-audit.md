@@ -279,7 +279,7 @@ the owner's verdict: nothing in "AI slop" indicts calmness itself.
 
 ## 3. Content root-cause diagnosis
 
-Graded against VISION's notion anatomy (`docs/Product/VISION.md:48-96,117-143`).
+Graded against VISION's notion anatomy (`docs/product/VISION.md:48-96,117-143`).
 Headline: **the content is materially closer to the bar than the UI** — the
 prose voice, hook, and misconception machinery are genuinely strong; the
 failures are concentrated at the ramp summit, in grounding, and in pipeline

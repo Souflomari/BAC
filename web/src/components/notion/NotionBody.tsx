@@ -66,6 +66,7 @@ import type { MotionSpec } from "@/lib/motion-spec";
 import { minutesForText } from "@/lib/chapters";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { LessonRenderer } from "./LessonRenderer";
+import { GithubSlugger } from "@/lib/rehypeSlugPartage";
 import { MediaDiagramFigure } from "./MediaDiagram";
 import { MotionDiagram } from "./MotionDiagram";
 import { MotionStage } from "./MotionStage";
@@ -589,6 +590,14 @@ export function NotionBody({
   // on why this must stay a single counter across ALL chapters (ledger 11.2).
   const figureOccurrenceCount: Record<string, number> = {};
 
+  // Le compteur d'unicité des ancres de titre, PARTAGÉ par tous les segments
+  // de cette page (lib/rehypeSlugPartage.ts). Même raison que le compteur
+  // d'occurrences de figures juste au-dessus : la pagination a découpé la
+  // prose en segments, et tout compteur remis à zéro par segment produit des
+  // collisions entre chapitres. Créé ICI, à chaque rendu — un état de module
+  // survivrait d'une leçon à l'autre côté serveur.
+  const slugger = new GithubSlugger();
+
   // One segment → one rendered node. Extracted to a named function (rather
   // than an inline map callback) purely so it can be called once per chapter
   // below instead of once over one flat array — every branch is UNCHANGED
@@ -601,7 +610,7 @@ export function NotionBody({
       return (
         // notion-prose: max-width 65ch + mx-auto (centered in content band)
         <div key={key} className="notion-prose">
-          <LessonRenderer markdown={trimmed} />
+          <LessonRenderer markdown={trimmed} slugger={slugger} />
         </div>
       );
     }

@@ -7,7 +7,7 @@
 > tranche de référence construite en R2/R3/R4. Ce document dit exactement
 > QUOI construire, avec QUELS jetons et QUELLES classes ; la discipline
 > (cœur calme, honest-state, vérité rendue) reste dans
-> `docs/Product/DESIGN-BIBLE.md`, qui prime en cas de conflit.
+> `docs/product/DESIGN-BIBLE.md`, qui prime en cas de conflit.
 >
 > **La tranche de référence EST le spec exécutable.** En cas de doute entre
 > ce texte et le code de la tranche (`SiteHeader.tsx`, `CommandPalette.tsx`,

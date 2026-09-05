@@ -18,7 +18,7 @@ Standing constraints carried by every brief (from RULES.md / DESIGN-BIBLE):
 - **Content-lane only.** No production-touching work, no migrations, no
   deploys. The working branch is the only target.
 - **Orient first:** `.claude/CLAUDE.md` → `docs/product/VISION.md` →
-  `docs/Rules/RULES.md`; design work answers to `docs/Product/DESIGN-BIBLE.md`
+  `docs/Rules/RULES.md`; design work answers to `docs/product/DESIGN-BIBLE.md`
   and the specs in `docs/design/`; content work to `docs/pipeline/`.
 - **Tokens only; the U1 rule** (a new custom Tailwind key registers in
   `web/src/lib/utils.ts` classGroups in the same commit).

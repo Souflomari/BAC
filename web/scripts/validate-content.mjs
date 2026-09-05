@@ -14,7 +14,14 @@
  *       [[motion:slug]]  → media/<slug>.motion.svg    MUST exist (+ warn if no .motion.json)
  *       [[embed:slug]]   → media/<slug>.json          optional (missing → honest "à venir" placeholder)
  *       [[checkpoint|exercise|derivation:id]] → id present in the matching YAML
- *       [[video:slug]]   → ALWAYS fails (dead marker: NotionBody hard-stubs it to null)
+ *       [[video:slug]]   → AVERTIT, ne bloque pas — et c'est délibéré depuis le
+ *                          2026-09-05, où l'en-tête a été corrigé pour dire ce que le
+ *                          code fait. `NotionBody` rend `null` sur ce marqueur (omission
+ *                          gracieuse voulue par le brief : jamais de placeholder d'erreur),
+ *                          et le corpus en porte UN — le clip « balancement » de
+ *                          pc/rlc-serie, précédé d'un commentaire qui l'assume comme slot
+ *                          d'amélioration. Échouer casserait le build sur une décision
+ *                          prise ; se taire perdrait la trace. On avertit.
  *   - no authoring lexicon leaks in rendered prose (a stray inline `[[`, TODO,
  *     SLOT, À SOURCER … — comments are stripped first)
  *   - STAGED FIGURES (LESSON-EXPERIENCE-SPEC §2.7) — a directory-level scan of
@@ -652,7 +659,10 @@ for (const dir of dirs) {
         console.error(`  ⚠ ${dir}: [[embed:${slug}]] has no media/${slug}.json — shows the "à venir" placeholder`);
       }
     } else if (type === "video") {
-      console.error(`  ⚠ ${dir}: [[video:${slug}]] is a DEAD marker (NotionBody hard-stubs it to null) — renders nothing; prefer removing it`);
+      console.error(
+        `  ⚠ ${dir}: [[video:${slug}]] ne rend RIEN (NotionBody rend null sur tout marqueur vidéo) — ` +
+          `slot d'amélioration assumé, à retirer si l'asset ne viendra jamais`
+      );
     } else {
       // checkpoint | exercise | derivation → id must exist in the matching YAML
       const file = { checkpoint: "checkpoints.yaml", exercise: "exercises.yaml", derivation: "derivations.yaml" }[type];

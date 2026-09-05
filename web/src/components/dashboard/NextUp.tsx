@@ -41,7 +41,9 @@
 "use client";
 
 import { Link } from "@/components/ui/Lien";
-import { getFiliere, SUBJECTS, chapterInFiliere, type SubjectId, type FiliereId } from "@/lib/curriculum";
+import { getFiliere, SUBJECTS, chapterInFiliere, type SubjectId, type FiliereId,
+  DEFAULT_SUBJECT_ORDER,
+} from "@/lib/curriculum";
 import { useFiliere } from "@/lib/useFiliere";
 import { useStudentState } from "@/lib/student-state";
 import type { NextUpPick } from "@/lib/learner-model";
@@ -84,7 +86,11 @@ function recoParts(pick: NextUpPick): { before: string; after: string } {
 /** Subject scan order when no filière is chosen — mirrors Dashboard.tsx's
  *  DEFAULT_ORDER so the two surfaces never disagree about "the" curriculum
  *  order in the absence of a filière preference. */
-const DEFAULT_ORDER: SubjectId[] = ["maths", "pc", "svt", "philo"];
+// Une seule définition, dans lib/curriculum.ts — c'est exactement ce que le
+// commentaire ci-dessus demandait (« les deux surfaces ne doivent jamais être
+// en désaccord sur l'ordre du programme »), et la fin de leçon la partage
+// désormais aussi via `nextInParcours`.
+const DEFAULT_ORDER: SubjectId[] = DEFAULT_SUBJECT_ORDER;
 
 function subjectOrder(filiereId: string | null): SubjectId[] {
   const f = getFiliere(filiereId);

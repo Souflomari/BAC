@@ -83,7 +83,7 @@ const FRONTS = [
   {
     key: 'Adaptive-responsive',
     look: `${SITE}/home-compact-light-fold.png, ${SITE}/home-medium-light-fold.png, ${SITE}/home-expanded-light-fold.png, ${SITE}/notion-compact-light-fold.png, ${SITE}/notion-medium-light-fold.png, ${SITE}/notion-expanded-light-fold.png, ${SITE}/404-medium-light-fold.png`,
-    code: `web/src/app/globals.css (the @media 600/840 ladder for .notion-page-grid/.notion-rail/.notion-content), web/tailwind.config.ts (screens bp-medium/bp-expanded), web/src/components/notion/SiteHeader.tsx`,
+    code: `web/src/app/globals.css (the @media 600/840 ladder for .notion-page-grid/.notion-rail/.notion-content), web/tailwind.config.ts (screens bp-medium/bp-expanded), web/src/components/ui/SiteHeader.tsx`,
     focus: `M3 window-size classes (compact <600 / medium 600–840 / expanded 840+); reflow-not-hide; a REAL medium/tablet layout (not the bare compact layout stretched); list-detail rail+content. Check all three widths actually differ and none breaks.`,
   },
   {
@@ -107,7 +107,7 @@ const FRONTS = [
   {
     key: 'Interaction-states',
     look: `${COMP}/checkpoint-light.png, ${COMP}/checkpoint-dark.png, ${COMP}/embed-light.png, ${COMP}/focus-primary.png`,
-    code: `web/src/app/globals.css (.state-layer + ::after, .state-disabled, .btn-primary::after, --state-* opacities), web/src/components/notion/ChoiceButton.tsx, web/src/components/notion/MotionStage.tsx + MotionDiagram.tsx (btnBase), web/src/components/notion/SiteHeader.tsx, web/src/components/ui/FontSizeStepper.tsx, web/src/app/page.tsx (NotionCard)`,
+    code: `web/src/app/globals.css (.state-layer + ::after, .state-disabled, .btn-primary::after, --state-* opacities), web/src/components/notion/ChoiceButton.tsx, web/src/components/notion/MotionStage.tsx + MotionDiagram.tsx (btnBase), web/src/components/ui/SiteHeader.tsx, web/src/components/ui/FontSizeStepper.tsx, web/src/app/page.tsx (NotionCard)`,
     focus: `a SYSTEMATIC state-layer model applied CONSISTENTLY across EVERY interactive control (buttons, options, rail, stepper, header links, embed, cards, transport, primary btn). Hover/focus/pressed/disabled defined and uniform. Hunt for any interactive element STILL missing .state-layer. Overlay+shadow, never ripple.`,
   },
   {

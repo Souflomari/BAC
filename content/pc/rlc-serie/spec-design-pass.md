@@ -433,6 +433,6 @@ still applies in full):
 - **Unchanged foundation:** `content/pc/rlc-serie/spec.md` (§0.4 boundary, M1–M8, R0→R9 ramp, coverage
   floor, habileté mix) and `content/pc/rlc-serie/lesson.md` (the converged R0→R9 prose this layer
   dresses).
-- **Standard:** `docs/Product/VISION.md` (notion anatomy; PC confront-the-model profile),
-  `docs/Product/DESIGN-BIBLE.md` (§0 calm-core/no-engagement-theater, §5 motion, §6 visual language,
+- **Standard:** `docs/product/VISION.md` (notion anatomy; PC confront-the-model profile),
+  `docs/product/DESIGN-BIBLE.md` (§0 calm-core/no-engagement-theater, §5 motion, §6 visual language,
   §7 the sacred learning core, §8 periphery).
