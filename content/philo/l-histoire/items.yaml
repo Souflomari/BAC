@@ -1,6 +1,118 @@
 notion: l-histoire
 skill_code: philo_histoire
-misconceptions: []
+misconceptions:
+  # Inventaire écrit le 2026-09-05. Les 24 items existaient, chacun avec son
+  # feedback, mais aucun distracteur ne portait de tag : la notion était
+  # AVEUGLE pour le modèle apprenant.
+  - id: mc.philo.histoire.auteurs-echanges
+    label: "« Les thèses des auteurs sont interchangeables : on prête à l'un ce que soutient l'autre »"
+    description: >
+      L'erreur dominante de la leçon : la ruse de la raison attribuée à Marx, le
+      matérialisme historique à Hegel, la nécessité unique à Aron, la critique
+      des sources à Ricœur, le devoir de mémoire à Bloch — ou l'un des auteurs
+      convoqué pour répondre à une question qui n'est pas la sienne.
+    contradicts_principle: >
+      Chaque auteur occupe une position PROPRE. Hegel : l'Esprit parvient à la
+      conscience de sa liberté, les passions individuelles servant sans le
+      savoir une fin qui les dépasse. Marx : ce sont les rapports de production
+      qui déterminent les idées, non l'inverse. Aron : contre l'un et l'autre,
+      la pluralité des causes contingentes, et le danger d'une idéologie qui
+      prétend détenir la clé du sens. Bloch : les conditions d'une objectivité
+      historique malgré l'absence d'accès direct. Ricœur : la juste mémoire,
+      entre l'oubli et la commémoration figée.
+
+  - id: mc.philo.histoire.ruse-de-la-raison-durcie-en-determinisme
+    label: "« La ruse de la raison fait des individus des marionnettes, ou des calculateurs conscients »"
+    description: >
+      L'élève supprime l'un des deux termes du mécanisme : soit la liberté
+      réelle des passions individuelles (les hommes seraient programmés), soit
+      l'ignorance dans laquelle ils agissent (ils poursuivraient sciemment la
+      fin de l'Histoire).
+    contradicts_principle: >
+      Le mécanisme tient précisément aux DEUX à la fois : ce sont de VRAIES
+      passions, librement poursuivies pour elles-mêmes (l'ambition d'un César),
+      qui servent malgré tout une fin que leur auteur n'a jamais visée. Ni
+      marionnette, ni stratège.
+
+  - id: mc.philo.histoire.contingence-lue-comme-absurdite
+    label: "« Si l'Histoire est contingente, c'est qu'elle est absurde : rien n'a de cause, tout est hasard »"
+    description: >
+      L'élève lit la contingence comme une absence de causalité, ou comme
+      l'impossibilité d'en rien dire, ou comme un pur chaos sans lien.
+    contradicts_principle: >
+      La contingence ne nie pas que chaque événement ait des causes réelles et
+      nombreuses : elle nie qu'une nécessité UNIQUE gouverne l'ensemble du cours
+      historique. Des causes multiples, entrecroisées, dont aucune ne suffit
+      seule — cela reste parfaitement analysable.
+
+  - id: mc.philo.histoire.objectivite-tout-ou-rien
+    label: "« Ou l'historien accède directement au passé, ou aucune objectivité n'est possible »"
+    description: >
+      Faute d'accès direct, l'élève bascule : soit il prête à l'historien une
+      observation directe et reproductible comme au laboratoire, soit il conclut
+      que rien ne peut jamais être établi, soit il choisit une source pour sa
+      seule ancienneté, son institution, ou parce qu'elle lui donne raison.
+    contradicts_principle: >
+      L'historien ne dispose que de traces incomplètes et non neutres — et c'est
+      justement pourquoi il les soumet à la CRITIQUE DES SOURCES : interroger
+      l'origine du document, son auteur, le but dans lequel il a été produit, et
+      le confronter à d'autres traces indépendantes. Une objectivité construite,
+      ni donnée ni impossible.
+
+  - id: mc.philo.histoire.memoire-histoire-passe-confondus
+    label: "« Mémoire, histoire, Histoire et passé désignent la même chose »"
+    description: >
+      L'élève écrase les quatre notions les unes sur les autres, ou intervertit
+      leurs définitions, ou fait du passé lui-même une construction du souvenir
+      ou du récit.
+    contradicts_principle: >
+      Quatre choses distinctes. Le PASSÉ : tout ce qui a eu lieu, révolu et
+      immuable — inaccessible, mais sans problème philosophique propre. La
+      MÉMOIRE : une trace vécue et subjective, individuelle ou collective.
+      L'HISTOIRE (discipline) : le récit critique que l'historien construit à
+      partir des traces. L'HISTOIRE (processus) : le devenir collectif de
+      l'humanité, dont on demande s'il a un sens.
+
+  - id: mc.philo.histoire.memoire-sacralisee-ou-disqualifiee
+    label: "« Il faut tout retenir » — ou « la mémoire ne vaut rien »"
+    description: >
+      Sur Ricœur, l'élève choisit un extrême : commémorer tout événement au même
+      titre, ou juger qu'aucun passé ne mérite d'être retenu, ou tenir la
+      mémoire collective pour incorruptible, ou ne lui trouver qu'un intérêt
+      identitaire.
+    contradicts_principle: >
+      La « juste mémoire » tient les deux bouts : oublier purement et simplement
+      un crime de grande ampleur reviendrait à effacer une seconde fois ses
+      victimes ; mais une mémoire sans critique peut être manipulée pour
+      légitimer une position présente ou entretenir un ressentiment. Ni tout
+      retenir, ni figer le souvenir en légende.
+
+  - id: mc.philo.histoire.objection-du-chapitre-1-mal-lue
+    label: "« L'objection de l'accroche tranche entre les deux récits »"
+    description: >
+      L'élève transforme une objection en verdict : la variation entre familles
+      prouverait que la grand-mère se trompe, ou que le manuel a raison, ou
+      qu'on ne peut rien savoir ; la convergence entre pays serait une
+      coïncidence, ou disqualifierait le témoignage.
+    contradicts_principle: >
+      Les deux objections travaillent en tenaille et ne tranchent RIEN : si le
+      mouvement d'ensemble était nécessaire, le détail de chaque décision ne
+      devrait pas varier autant d'une famille à l'autre ; et si tout se réduisait
+      à des choix individuels, une même convergence ne se retrouverait pas dans
+      des pays si différents. C'est cette tension qui pose le double problème de
+      la leçon.
+
+  - id: mc.philo.histoire.infrastructure-superstructure-inversees
+    label: "« Ce sont les idées qui déterminent les rapports de production »"
+    description: >
+      L'élève inverse le renversement de Marx, ou intervertit les deux termes,
+      ou les rend indépendants l'un de l'autre.
+    contradicts_principle: >
+      L'INFRASTRUCTURE (les rapports de production) détermine la SUPERSTRUCTURE
+      (droit, religion, idées dominantes) — et non l'inverse. Un discours sur
+      « la modernisation » n'est donc pas une cause : c'est une idée de
+      superstructure, une manière d'habiller après coup un mouvement économique.
+
 
 items:
   - id: HIST-1
@@ -17,6 +129,7 @@ items:
       - id: A
         text: "Ce sont trois mots pour une seule et même réalité : la mémoire d'un témoin, le récit d'un historien et le devenir collectif réel de l'humanité coïncident nécessairement et se recouvrent, puisqu'ils portent tous, au fond, sur le même passé unique et parfaitement identique."
         correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
         feedback: >
           La leçon distingue justement ces trois réalités : un témoignage
           vécu (mémoire) peut contredire un récit d'historien (histoire),
@@ -26,6 +139,7 @@ items:
       - id: B
         text: "« L'histoire », comme discipline, désigne le devenir collectif réel de l'humanité ; « l'Histoire », avec une majuscule, désigne seulement le récit qu'on en fait dans un manuel scolaire."
         correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
         feedback: >
           C'est l'inverse de la distinction posée dans la leçon : l'histoire
           (discipline) est le récit construit par l'historien ; l'Histoire
@@ -34,6 +148,7 @@ items:
       - id: C
         text: "« La mémoire » désigne exclusivement les souvenirs personnels d'un individu, jamais ceux d'un groupe ou d'un peuple."
         correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
         feedback: >
           La leçon définit la mémoire comme une trace vécue du passé, chez
           un individu OU chez un groupe (une famille, un peuple peuvent se
@@ -76,6 +191,7 @@ items:
       - id: A
         text: "Elle manque le fait que la ruse de la raison est en réalité une thèse de Marx sur les rapports de production, et non une thèse de Hegel."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est une erreur d'attribution : la ruse de la raison est un
           concept hégélien (chapitre 3), qui porte sur la réalisation de l'Esprit
@@ -88,6 +204,7 @@ items:
       - id: C
         text: "Elle manque le fait que, pour Hegel, aucun individu particulier -- ni César, ni Alexandre, ni Napoléon -- n'a jamais joué le moindre rôle réel dans la réalisation de l'Histoire, qui se passerait entièrement des actions et des passions humaines concrètes, aussi grandes fussent-elles."
         correct: false
+        misconception: mc.philo.histoire.ruse-de-la-raison-durcie-en-determinisme
         feedback: >
           C'est l'inverse : Hegel prend justement ces grands individus
           historiques comme exemples -- leurs passions bien réelles et
@@ -96,6 +213,7 @@ items:
       - id: D
         text: "Elle manque le fait que la ruse de la raison désigne un calcul conscient et délibéré, mené par les grands hommes eux-mêmes, en vue de réaliser sciemment la marche de la liberté."
         correct: false
+        misconception: mc.philo.histoire.ruse-de-la-raison-durcie-en-determinisme
         feedback: >
           C'est le contraire : le mécanisme repose précisément sur le fait
           que les individus n'ont PAS conscience de servir une fin plus
@@ -133,6 +251,7 @@ items:
       - id: A
         text: "Le matérialisme historique est une thèse hégélienne, que Marx se serait contenté de reprendre et de renommer sans rien y changer."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est une mauvaise attribution, et la confusion la plus fréquente
           sur ce point du programme : c'est Hegel qui fait de l'Histoire la
@@ -143,6 +262,7 @@ items:
       - id: B
         text: "Pour Marx, l'Histoire avance par la seule évolution pacifique des idées politiques et religieuses, sans qu'aucun conflit économique n'y joue de rôle déterminant."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est l'inverse de la thèse marxiste : les contradictions entre
           rapports de production et forces productives ne se résolvent
@@ -155,6 +275,7 @@ items:
       - id: D
         text: "Le matérialisme historique soutiendrait que seules des circonstances matérielles purement contingentes -- un puits creusé là, une lettre égarée, une dispute de hasard -- expliquent tout le cours de l'Histoire, sans qu'aucun rapport de classe n'y intervienne jamais de façon déterminante."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est confondre le matérialisme historique de Marx (chapitre 4), qui
           identifie un moteur structurel -- les rapports de production et
@@ -200,6 +321,7 @@ items:
       - id: B
         text: "Elle manque le fait qu'Aron, comme Hegel et Marx, défend au contraire l'existence d'une nécessité unique qui gouvernerait tout le cours de l'Histoire."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est l'inverse de la thèse d'Aron : il conteste précisément la
           nécessité unique que Hegel (chapitre 3) et Marx (chapitre 4) affirment chacun à
@@ -208,6 +330,7 @@ items:
       - id: C
         text: "Elle manque le fait que la critique de la contingence appartiendrait en réalité au seul matérialisme historique de Marx, qui aurait, le premier, insisté sur le rôle décisif du pur hasard et de l'accident imprévisible dans le cours entier de l'histoire humaine et de ses grandes révolutions."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est une mauvaise attribution : Marx (chapitre 4) affirme au contraire
           une nécessité -- la lutte des classes fait nécessairement passer
@@ -216,6 +339,7 @@ items:
       - id: D
         text: "Elle manque le fait qu'Aron réserve sa critique aux seuls événements très anciens, mais admet une nécessité stricte pour tous les événements historiques récents."
         correct: false
+        misconception: mc.philo.histoire.contingence-lue-comme-absurdite
         feedback: >
           Rien, dans la critique d'Aron, ne limite la contingence à une
           période historique particulière : son objection porte sur la
@@ -253,6 +377,7 @@ items:
       - id: A
         text: "Puisque l'historien n'observe jamais directement le passé lui-même, Bloch en conclurait que l'objectivité en histoire n'est qu'un mot vide de sens, et que tout récit historique en vaudrait finalement bien un autre, sans critère de départage ni de vérité possible."
         correct: false
+        misconception: mc.philo.histoire.objectivite-tout-ou-rien
         feedback: >
           C'est l'inverse de la position de Bloch : il ne renonce jamais à
           l'exigence d'objectivité -- il la redéfinit comme une méthode
@@ -261,6 +386,7 @@ items:
       - id: B
         text: "Bloch soutient au contraire que l'historien, comme le physicien en laboratoire, peut observer et reproduire directement les événements du passé qu'il étudie."
         correct: false
+        misconception: mc.philo.histoire.objectivite-tout-ou-rien
         feedback: >
           C'est exactement le point que Bloch conteste : à la différence du
           physicien, l'historien n'a jamais accès au phénomène lui-même,
@@ -269,6 +395,7 @@ items:
       - id: C
         text: "Bloch réserve ce problème d'accès indirect aux seuls témoignages oraux, comme celui d'un grand-parent -- les documents écrits, eux, donneraient un accès direct et complet au passé."
         correct: false
+        misconception: mc.philo.histoire.objectivite-tout-ou-rien
         feedback: >
           La leçon ne fait pas cette distinction : pour Bloch, aucune trace
           -- écrite ou orale -- ne donne un accès direct au passé lui-même ;
@@ -307,6 +434,7 @@ items:
       - id: A
         text: "Parce que, pour Ricœur, aucun événement du passé, aussi grave soit-il, ne mériterait réellement d'être retenu par la mémoire collective des peuples, l'oubli étant à ses yeux toujours préférable au souvenir."
         correct: false
+        misconception: mc.philo.histoire.memoire-sacralisee-ou-disqualifiee
         feedback: >
           C'est le contraire de la thèse de Ricœur : il part au contraire
           de l'idée que certains passés -- des crimes de grande ampleur --
@@ -318,6 +446,7 @@ items:
       - id: C
         text: "Parce que le devoir de mémoire, selon Ricœur, se confondrait exactement avec le travail critique de reconstitution des faits mené par l'historien et décrit au chapitre 6 -- les deux ne formeraient, au fond, qu'une seule et même exigence, sans aucune différence réelle de nature ni de méthode."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           La leçon distingue les deux : le devoir de mémoire est une
           exigence morale de ne pas oublier certains passés ; le travail de
@@ -327,6 +456,7 @@ items:
       - id: D
         text: "Parce que la mémoire collective, à la différence de la mémoire individuelle, ne pourrait jamais être ni manipulée, ni instrumentalisée par quiconque."
         correct: false
+        misconception: mc.philo.histoire.memoire-sacralisee-ou-disqualifiee
         feedback: >
           C'est l'inverse du risque que Ricœur identifie : la mémoire
           collective peut au contraire être mobilisée sélectivement à des
@@ -365,6 +495,7 @@ items:
       - id: B
         text: "Il s'agit uniquement de savoir si l'exode était nécessaire ou non -- la question de savoir lequel des deux récits est le plus fiable relèverait, elle, de la seule méthode de l'historien et non d'un vrai problème philosophique."
         correct: false
+        misconception: mc.philo.histoire.objection-du-chapitre-1-mal-lue
         feedback: >
           Cela ne retient que la moitié du problème : la leçon annonce
           explicitement DEUX questions liées -- le sens de l'Histoire ET la
@@ -373,6 +504,7 @@ items:
       - id: C
         text: "Il s'agit uniquement de vérifier quelles dates et quels détails matériels sont exacts dans chacun des deux récits, sans qu'aucune question sur une éventuelle direction de l'Histoire ne soit ici en jeu d'une manière ou d'une autre."
         correct: false
+        misconception: mc.philo.histoire.objection-du-chapitre-1-mal-lue
         feedback: >
           Cela ne retient, à l'inverse, que l'autre moitié du problème : la
           question d'une direction nécessaire fait tout autant partie du
@@ -380,6 +512,7 @@ items:
       - id: D
         text: "En réalité, les deux récits pourraient simplement s'additionner sans la moindre contradiction véritable, ce qui rendrait la question posée par le chapitre 1 purement rhétorique, sans le moindre enjeu philosophique réel."
         correct: false
+        misconception: mc.philo.histoire.objection-du-chapitre-1-mal-lue
         feedback: >
           Le texte du chapitre 1 construit au contraire une tension réelle : chaque
           position se heurte à une objection sérieuse dès qu'on la prend au
@@ -413,6 +546,7 @@ items:
       - id: A
         text: "Elle montrerait que le témoignage de la grand-mère est faux, puisque d'autres familles, exposées aux mêmes conditions, ont fait un choix différent du sien."
         correct: false
+        misconception: mc.philo.histoire.objection-du-chapitre-1-mal-lue
         feedback: >
           C'est un contresens : l'objection ne vise pas la véracité du
           témoignage, mais la solidité de l'idée d'une nécessité qui
@@ -423,6 +557,7 @@ items:
       - id: C
         text: "Elle montrerait au contraire que le manuel a complètement raison, puisqu'elle confirme que la sécheresse a touché, de façon uniforme, toutes les familles du douar."
         correct: false
+        misconception: mc.philo.histoire.objection-du-chapitre-1-mal-lue
         feedback: >
           C'est l'inverse de ce que l'objection établit : des familles
           exposées à la même sécheresse ayant réagi différemment fragilise,
@@ -430,6 +565,7 @@ items:
       - id: D
         text: "Elle montrerait qu'aucun historien ne pourra jamais rien savoir de fiable sur cet épisode, la contradiction entre familles rendant toute connaissance historique définitivement impossible."
         correct: false
+        misconception: mc.philo.histoire.objection-du-chapitre-1-mal-lue
         feedback: >
           Cela déborde la portée de l'objection, qui porte sur le sens et la
           nécessité de l'Histoire (première question du chapitre 1), pas sur la
@@ -463,6 +599,7 @@ items:
       - id: A
         text: "Elle prouverait définitivement que la thèse hégélienne de la ruse de la raison est exacte, et réglerait ainsi, dès le chapitre 1, la question du sens de l'Histoire."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est aller trop vite : Le chapitre 1 se contente de POSER le problème --
           c'est seulement au chapitre 3 que la leçon présente la thèse précise de
@@ -470,6 +607,7 @@ items:
       - id: B
         text: "Elle montrerait que le témoignage de la grand-mère est sans valeur et doit être entièrement écarté au profit du seul résumé du manuel."
         correct: false
+        misconception: mc.philo.histoire.objection-du-chapitre-1-mal-lue
         feedback: >
           L'objection ne discrédite pas le témoignage : elle questionne
           seulement l'idée que tout se réduirait à des hasards purement
@@ -480,6 +618,7 @@ items:
       - id: D
         text: "Elle montrerait que cette convergence entre pays n'est qu'une pure coïncidence sans aucune signification philosophique, chaque histoire nationale étant entièrement indépendante des autres."
         correct: false
+        misconception: mc.philo.histoire.contingence-lue-comme-absurdite
         feedback: >
           C'est précisément ce que l'objection refuse de prendre pour
           argent comptant : une convergence répétée entre pays différents
@@ -511,6 +650,7 @@ items:
       - id: A
         text: "Le témoignage de la grand-mère relèverait de l'histoire comme discipline, puisqu'il rapporte des faits vérifiables ; le manuel relèverait, lui, de la mémoire collective de la nation."
         correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
         feedback: >
           C'est l'inverse : le témoignage vécu de la grand-mère relève de la
           MÉMOIRE ; le résumé du manuel, construit à partir d'autres
@@ -518,6 +658,7 @@ items:
       - id: B
         text: "Les deux relèveraient également de l'Histoire comme processus, puisqu'ils porteraient tous deux, directement et sans médiation, sur le devenir collectif réel du pays."
         correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
         feedback: >
           Aucun des deux ne donne un accès direct au devenir collectif réel
           : l'un est un vécu subjectif (mémoire), l'autre une
@@ -525,6 +666,7 @@ items:
       - id: C
         text: "Le témoignage de la grand-mère relèverait du passé lui-même, dans son détail exact et total, puisqu'elle l'a vécu directement et s'en souvient parfaitement."
         correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
         feedback: >
           C'est confondre mémoire et passé : une mémoire est toujours
           partielle, sélective, façonnée par l'émotion -- jamais un
@@ -560,6 +702,7 @@ items:
       - id: B
         text: "Parce que le passé se confondrait, selon la leçon, avec la mémoire que chaque individu en garde -- il changerait donc selon ce que chacun choisit de s'en souvenir ou d'en oublier."
         correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
         feedback: >
           C'est confondre passé et mémoire, alors que le chapitre 2 les distingue
           explicitement : la mémoire est une trace subjective et partielle
@@ -567,6 +710,7 @@ items:
       - id: C
         text: "Parce que le passé se confondrait, selon la leçon, avec le récit que l'historien en construit -- il n'existerait donc qu'à travers le travail des historiens."
         correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
         feedback: >
           C'est confondre passé et histoire (discipline) : le passé EST ce
           qui a eu lieu, indépendamment de tout récit qu'on en fait après
@@ -574,6 +718,7 @@ items:
       - id: D
         text: "Parce que rien, selon la leçon, n'aurait en réalité jamais eu lieu de façon déterminée -- le passé lui-même serait, par nature, contingent et incertain."
         correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
         feedback: >
           Cela déplace, prématurément, la thèse de la contingence d'Aron
           (chapitre 5, sur le cours de l'Histoire) vers la définition neutre du
@@ -604,6 +749,7 @@ items:
       - id: A
         text: "L'Histoire universelle serait, pour Hegel, entièrement déterminée par les rapports de production et par la lutte entre les classes qui en profitent ou en souffrent."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est attribuer à Hegel la thèse de Marx (chapitre 4) : c'est Marx qui
           fait des rapports de production le moteur de l'Histoire ; pour
@@ -615,6 +761,7 @@ items:
       - id: C
         text: "L'Histoire universelle ne serait, pour Hegel, qu'un chaos d'événements sans lien entre eux, dont on ne pourrait dégager aucune direction ni aucune signification d'ensemble, quel que soit le point de vue adopté."
         correct: false
+        misconception: mc.philo.histoire.contingence-lue-comme-absurdite
         feedback: >
           C'est l'exact inverse de la thèse de Hegel, qui affirme au
           contraire, avec la plus grande rigueur systématique, que
@@ -622,6 +769,7 @@ items:
       - id: D
         text: "L'Histoire universelle suivrait, pour Hegel, une pluralité de causes contingentes, dont rien ne garantirait, par avance, ni la combinaison ni l'issue."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est attribuer à Hegel la thèse de la contingence d'Aron (chapitre 5) --
           une thèse qui conteste précisément la nécessité d'ensemble que
@@ -653,6 +801,7 @@ items:
       - id: A
         text: "Hegel dirait que ce sont, en réalité, les rapports de production agricole devenus intenables qui expliquent seuls cet exode, indépendamment de toute idée de liberté ou d'Esprit."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est la lecture matérialiste de Marx (chapitre 4), pas celle de Hegel :
           pour Hegel, ce qui se réalise à travers l'Histoire est une fin
@@ -661,6 +810,7 @@ items:
       - id: B
         text: "Hegel dirait que cet exode ne prouve rien de particulier, puisque rien ne garantissait à l'avance que les familles partent plutôt qu'elles ne restent -- un pur assemblage de causes contingentes, sans direction d'ensemble."
         correct: false
+        misconception: mc.philo.histoire.contingence-lue-comme-absurdite
         feedback: >
           C'est la critique d'Aron (chapitre 5), qui conteste justement l'idée
           d'une direction nécessaire -- Hegel affirme au contraire qu'un
@@ -672,6 +822,7 @@ items:
       - id: D
         text: "Hegel dirait que ces familles n'avaient, en réalité, aucune liberté véritable dans leur décision de partir, entièrement programmées de l'extérieur par un plan déjà écrit d'avance."
         correct: false
+        misconception: mc.philo.histoire.ruse-de-la-raison-durcie-en-determinisme
         feedback: >
           C'est réduire la ruse de la raison à un déterminisme mécanique --
           exactement l'erreur que la leçon signale : ce sont de VRAIES
@@ -705,6 +856,7 @@ items:
       - id: A
         text: "La superstructure déterminerait l'infrastructure : ce seraient les idées dominantes d'une époque -- le droit, la religion -- qui expliqueraient la manière dont une société organise sa production."
         correct: false
+        misconception: mc.philo.histoire.infrastructure-superstructure-inversees
         feedback: >
           C'est exactement le schéma hégélien que Marx retourne : Marx
           reproche à Hegel de faire descendre le monde matériel d'une Idée
@@ -713,6 +865,7 @@ items:
       - id: B
         text: "L'infrastructure et la superstructure évolueraient, selon Marx, de façon totalement indépendante l'une de l'autre, sans qu'aucune ne détermine jamais l'autre."
         correct: false
+        misconception: mc.philo.histoire.infrastructure-superstructure-inversees
         feedback: >
           Cela viderait de son sens le renversement marxiste, qui affirme
           au contraire une détermination précise et orientée : l'être
@@ -720,6 +873,7 @@ items:
       - id: C
         text: "L'infrastructure désignerait, chez Marx, les idées et les institutions d'une époque, tandis que la superstructure désignerait les rapports de production qui les sous-tendent."
         correct: false
+        misconception: mc.philo.histoire.infrastructure-superstructure-inversees
         feedback: >
           C'est inverser les deux définitions : l'infrastructure est la
           base économique (les rapports de production) ; la superstructure
@@ -757,6 +911,7 @@ items:
       - id: B
         text: "Marx dirait que c'est bien cette idée de modernisation, présente dans les esprits, qui a matériellement causé le départ des familles vers les villes."
         correct: false
+        misconception: mc.philo.histoire.infrastructure-superstructure-inversees
         feedback: >
           C'est une inversion idéaliste, exactement ce que Marx reproche à
           Hegel : pour Marx, ce ne sont jamais les idées qui causent le
@@ -764,6 +919,7 @@ items:
       - id: C
         text: "Marx approuverait entièrement le résumé du manuel, puisque les deux décrivent également une transition économique nécessaire, sans qu'aucun désaccord de méthode ne vienne les séparer, ni sur le fond ni sur la forme du propos."
         correct: false
+        misconception: mc.philo.histoire.infrastructure-superstructure-inversees
         feedback: >
           Cela manque la critique propre à Marx : le manuel présente la
           modernisation comme une IDÉE explicative en soi, quand Marx y
@@ -771,6 +927,7 @@ items:
       - id: D
         text: "Marx expliquerait cet exode par la ruse de la raison, les familles ayant servi, sans le savoir, la réalisation progressive de la liberté de l'Esprit."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est attribuer à Marx le mécanisme de Hegel (chapitre 3) : la ruse de la
           raison, l'Esprit et la liberté n'appartiennent pas au vocabulaire
@@ -801,6 +958,7 @@ items:
       - id: A
         text: "Il leur reprocherait d'avoir inversé leurs thèses respectives -- Aron accuserait Hegel de matérialisme, et Marx d'idéalisme."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est une erreur d'attribution : Hegel affirme une nécessité
           spirituelle (l'Esprit), Marx une nécessité matérielle (les
@@ -812,12 +970,14 @@ items:
       - id: C
         text: "Sa critique viserait seulement Marx, la thèse de Hegel sur la liberté de l'Esprit échappant, selon lui, à toute discussion possible."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           La leçon est explicite : Aron conteste ce geste commun « chez
           l'un comme chez l'autre » -- sa critique ne se limite pas à Marx.
       - id: D
         text: "Il leur reprocherait, au contraire, de sous-estimer le rôle de la lutte des classes dans le cours historique, et chercherait à le renforcer plutôt qu'à le remettre en question, quitte à durcir encore la thèse marxiste sur ce point précis."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est l'inverse de la position d'Aron : il ne cherche pas à
           renforcer une nécessité historique, il conteste l'idée même d'une
@@ -848,6 +1008,7 @@ items:
       - id: A
         text: "L'expression désignerait simplement une préférence personnelle et sans conséquence politique d'Aron pour le scepticisme plutôt que pour l'optimisme historique."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           Cela trivialise la portée de l'expression : Aron vise un danger
           POLITIQUE précis -- la justification, au nom d'une prétendue
@@ -855,6 +1016,7 @@ items:
       - id: B
         text: "Ce danger serait celui que Hegel lui-même dénoncerait, à travers le mécanisme de la ruse de la raison, contre toute prétention à connaître le sens de l'Histoire à l'avance et à agir publiquement au nom de ce savoir supposé définitivement acquis."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est une mauvaise attribution : c'est Hegel qui affirme une
           nécessité connaissable (la marche de la liberté) -- c'est
@@ -865,6 +1027,7 @@ items:
       - id: D
         text: "Ce danger désignerait le risque, identifié par Bloch (chapitre 6), qu'un historien trop proche affectivement de son sujet perde toute objectivité méthodologique."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est confondre deux critiques distinctes : celle d'Aron (chapitre 5) est
           politique, contre les idéologies du sens nécessaire ; celle de
@@ -894,6 +1057,7 @@ items:
       - id: A
         text: "Il retient systématiquement le document le plus ancien qu'il trouve comme le plus fiable, sans avoir besoin de le confronter à d'autres sources."
         correct: false
+        misconception: mc.philo.histoire.objectivite-tout-ou-rien
         feedback: >
           C'est une méthode naïve : Bloch exige au contraire de croiser
           chaque trace avec d'autres sources indépendantes, quelle que soit
@@ -901,6 +1065,7 @@ items:
       - id: B
         text: "Il choisit, parmi les sources disponibles, celle qui confirme le mieux ses propres convictions personnelles, et laisse délibérément de côté toutes celles qui viendraient les contredire."
         correct: false
+        misconception: mc.philo.histoire.objectivite-tout-ou-rien
         feedback: >
           C'est l'inverse d'une démarche objective : la critique des
           sources sert justement à corriger les présupposés du chercheur,
@@ -908,6 +1073,7 @@ items:
       - id: C
         text: "Il se limite à vérifier la grammaire et le style d'un document, sans avoir à examiner son contenu ni le contexte de sa production."
         correct: false
+        misconception: mc.philo.histoire.objectivite-tout-ou-rien
         feedback: >
           Cela réduit la critique des sources à un contrôle purement
           formel, alors qu'elle porte sur l'origine, l'auteur et le but du
@@ -943,6 +1109,7 @@ items:
       - id: B
         text: "Il choisirait le témoignage de la grand-mère plutôt que le manuel, un vécu direct étant toujours, par nature, plus fiable qu'un document administratif."
         correct: false
+        misconception: mc.philo.histoire.objectivite-tout-ou-rien
         feedback: >
           C'est confondre mémoire vécue et connaissance historique fiable :
           pour Bloch, aucune trace -- vécue ou écrite -- ne donne un accès
@@ -950,6 +1117,7 @@ items:
       - id: C
         text: "Il s'en tiendrait au seul résumé du manuel scolaire, comme source institutionnelle, sans avoir besoin de le confronter à aucune autre trace."
         correct: false
+        misconception: mc.philo.histoire.objectivite-tout-ou-rien
         feedback: >
           C'est l'inverse de la critique des sources, qui exige de croiser
           systématiquement chaque trace, y compris institutionnelle, avec
@@ -957,6 +1125,7 @@ items:
       - id: D
         text: "Il conclurait que, faute d'accès direct au passé, aucun des deux récits ne peut jamais être jugé plus solide que l'autre, et que la question doit rester définitivement sans réponse, quelles que soient les traces retrouvées."
         correct: false
+        misconception: mc.philo.histoire.objectivite-tout-ou-rien
         feedback: >
           C'est un relativisme que Bloch récuse explicitement : l'absence
           d'accès direct impose une méthode plus rigoureuse, pas un
@@ -985,6 +1154,7 @@ items:
       - id: A
         text: "Parce que l'oubli rendrait, selon lui, toute reconstitution historique techniquement impossible pour l'historien, indépendamment de toute question morale."
         correct: false
+        misconception: mc.philo.histoire.memoire-sacralisee-ou-disqualifiee
         feedback: >
           Cela réduit l'argument moral de Ricœur à une simple question de
           méthode historienne (chapitre 6, Bloch) -- ce n'est pas ce qu'il vise :
@@ -995,6 +1165,7 @@ items:
       - id: C
         text: "Parce que Ricœur penserait que tout événement du passé, sans exception, mérite objectivement d'être commémoré au même titre."
         correct: false
+        misconception: mc.philo.histoire.memoire-sacralisee-ou-disqualifiee
         feedback: >
           C'est une généralisation abusive : Ricœur vise des crimes de
           grande ampleur, pas n'importe quel événement -- et il insiste par
@@ -1003,6 +1174,7 @@ items:
       - id: D
         text: "Parce qu'un peuple qui oublie son passé perdrait, selon Ricœur, toute identité nationale -- seule raison qu'il invoquerait pour ne rien oublier."
         correct: false
+        misconception: mc.philo.histoire.memoire-sacralisee-ou-disqualifiee
         feedback: >
           La leçon n'invoque pas un argument identitaire : la raison donnée
           par Ricœur est morale -- ne pas achever, par l'oubli, l'injustice
@@ -1031,6 +1203,7 @@ items:
       - id: A
         text: "Ils seraient rigoureusement identiques, la « juste mémoire » n'étant qu'un autre nom pour la critique des sources."
         correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
         feedback: >
           La leçon distingue les deux : le devoir de mémoire est une
           exigence morale de ne pas oublier ; le travail de l'historien est
@@ -1038,6 +1211,7 @@ items:
       - id: B
         text: "Le devoir de mémoire remplacerait entièrement le travail de l'historien, rendant la critique des sources inutile dès qu'un événement est reconnu comme un crime grave."
         correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
         feedback: >
           C'est l'inverse de ce que soutient la leçon : sans la critique
           historienne, la mémoire risque justement de dégénérer en légende
@@ -1048,6 +1222,7 @@ items:
       - id: D
         text: "Ils seraient en réalité incompatibles, le devoir moral de mémoire interdisant par principe toute remise en question critique d'un récit déjà établi."
         correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
         feedback: >
           C'est une fausse opposition : la leçon affirme au contraire
           qu'ils se corrigent mutuellement, chacun compensant ce que
@@ -1077,6 +1252,7 @@ items:
       - id: A
         text: "Hegel et Marx, puisque leurs deux thèses, bien qu'opposées entre elles sur le moteur de l'Histoire, se contrediraient déjà suffisamment pour former, à elles seules, une antithèse."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           Le plan de la leçon range Hegel et Marx tous deux dans la partie
           I (la thèse d'un sens nécessaire), malgré leur désaccord sur le
@@ -1084,6 +1260,7 @@ items:
       - id: B
         text: "Bloch (chapitre 6), puisque sa critique des sources réfuterait directement l'idée d'une direction nécessaire de l'Histoire."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est une confusion de catégories : Bloch traite la question de
           la CONNAISSANCE historique, distincte de celle du SENS de
@@ -1092,6 +1269,7 @@ items:
       - id: C
         text: "Ricœur (chapitre 7), puisque son devoir de mémoire réfuterait directement la nécessité affirmée par Hegel et par Marx."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           Le devoir de mémoire de Ricœur relève du registre moral du
           dépassement (partie III), pas d'une réfutation de la nécessité
@@ -1129,6 +1307,7 @@ items:
       - id: B
         text: "Hegel, puisque le mécanisme de la ruse de la raison répondrait directement à la question de savoir si l'on peut connaître objectivement le passé, et fournirait du même coup sa méthode à l'historien."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est une confusion de catégories : la thèse de Hegel porte sur
           le sens et la direction de l'Histoire, pas sur la méthode par
@@ -1136,6 +1315,7 @@ items:
       - id: C
         text: "Marx, puisque le matérialisme historique expliquerait, selon la même logique, comment se produit la connaissance historique elle-même et ce qui la rend fiable ou non."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           Le matérialisme historique explique ce qui fait avancer
           l'Histoire (rapports de production, lutte des classes), pas la
@@ -1143,6 +1323,7 @@ items:
       - id: D
         text: "Ricœur, puisque son devoir de mémoire équivaudrait directement à une connaissance objective du passé, la fidélité au souvenir tenant lieu de méthode critique."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est confondre mémoire (vécu subjectif, chapitre 2) et connaissance
           historique rigoureuse (chapitre 6) -- l'erreur exacte que le chapitre 2 met en
@@ -1174,6 +1355,7 @@ items:
       - id: A
         text: "Thèse -- Aron : les individus seraient de purs spectateurs, puisque rien n'est nécessaire et que nul ne maîtrise l'enchaînement réel des causes. Antithèse -- Hegel et Marx : les individus seraient de véritables acteurs libres, puisqu'une nécessité rationnelle garantirait le sens de leurs actions."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est inverser les deux positions : c'est Aron qui, en niant
           toute nécessité garantie d'avance, laisse aux individus une
@@ -1185,6 +1367,7 @@ items:
       - id: C
         text: "Thèse -- Bloch : les historiens seraient les seuls véritables acteurs de l'Histoire, puisqu'eux seuls établissent objectivement ce qui s'est passé."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est appliquer hors de propos le thème de Bloch (chapitre 6, la
           connaissance du passé) à une question distincte, celle du rôle
@@ -1193,6 +1376,7 @@ items:
       - id: D
         text: "Il n'y aurait, en réalité, aucune tension véritable sur ce sujet, Hegel, Marx et Aron s'accordant tous à dire que les individus ne sont jamais que de purs spectateurs sans la moindre influence réelle."
         correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
         feedback: >
           C'est un faux consensus : Aron s'oppose justement à Hegel et
           Marx sur ce point, et même la ruse de la raison hégélienne

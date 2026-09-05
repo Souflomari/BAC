@@ -1,6 +1,128 @@
 notion: le-bonheur
 skill_code: philo_bonheur
-misconceptions: []
+misconceptions:
+  # Inventaire écrit le 2026-09-05. Les 21 items existaient, chacun avec son
+  # feedback, mais aucun distracteur ne portait de tag : la notion était
+  # AVEUGLE pour le modèle apprenant. Les erreurs ci-dessous sont tirées des
+  # distracteurs eux-mêmes, pas plaquées de l'extérieur.
+  - id: mc.philo.bonheur.doctrines-echangees
+    label: "« Les doctrines sont interchangeables : on prête à un auteur la thèse d'un autre »"
+    description: >
+      L'erreur la plus fréquente de la leçon, sous toutes ses formes :
+      l'hédonisme attribué aux stoïciens, l'eudémonisme à Épicure, le calcul
+      utilitariste à Kant, l'indifférence stoïcienne à Aristote, l'engagement
+      politique à Épicure, ou la thèse de Schopenhauer prêtée à un stoïcien.
+    contradicts_principle: >
+      Chaque école tient une position PROPRE et repérable : l'hédonisme fait du
+      plaisir le critère du bonheur ; l'eudémonisme le fonde sur la raison et la
+      vertu. Aristote exige un minimum de biens extérieurs et fait de l'homme un
+      « animal politique » ; les stoïciens tiennent la vertu pour le seul bien
+      et tout le reste pour indifférent ; Épicure conseille de se retirer de la
+      cité ; Kant refuse au bonheur le pouvoir de fonder la morale.
+
+  - id: mc.philo.bonheur.renoncement-radical-prete-aux-sages
+    label: "« Le sage ne désire plus rien, ne jouit de rien, renonce à tout »"
+    description: >
+      L'élève radicalise les doctrines de la maîtrise : ne plus rien désirer ni
+      agir sur rien (stoïciens), condamner le plaisir comme un mal (Épicure,
+      Aristote), renoncer au bonheur comme immoral (Kant), fuir toute douleur y
+      compris celle qui ouvre sur un plaisir plus grand.
+    contradicts_principle: >
+      Aucune de ces écoles ne prêche l'extinction du désir. Les stoïciens
+      RÈGLENT le désir sur ce qui dépend de nous et accueillent le reste avec
+      égalité d'âme — ce qui suppose d'agir. Épicure appelle plaisir l'ataraxie
+      et accepte une douleur temporaire si elle ouvre sur un bien durable.
+      Aristote tient le plaisir pour l'accompagnement naturel de l'activité
+      vertueuse. Kant ne condamne pas la recherche du bonheur : il lui refuse
+      seulement de fonder la loi morale.
+
+  - id: mc.philo.bonheur.plaisir-reduit-a-lintensite
+    label: "« Chercher le plaisir, c'est chercher le plus intense, tout de suite, sans limite »"
+    description: >
+      L'élève lit l'hédonisme comme une maximisation de sensations : tout désir
+      mérite d'être satisfait, l'intensité immédiate prime sur les conséquences,
+      et les catégories de désirs ne servent à rien.
+    contradicts_principle: >
+      Le plaisir véritable, chez Épicure, est l'ATARAXIE — l'absence durable de
+      trouble — et non l'intensité. D'où deux outils : le tri des désirs
+      (naturels et nécessaires, naturels non nécessaires, vains — ces derniers
+      naissant d'une opinion et n'ayant par nature aucune limite) et le calcul
+      des plaisirs, qui pèse les conséquences avant de céder à une sensation.
+
+  - id: mc.philo.bonheur.bonheur-suspendu-aux-circonstances
+    label: "« Le bonheur se joue dehors : il suffit de maîtriser les circonstances, ou bien tout nous échappe »"
+    description: >
+      L'élève déplace le problème vers l'extérieur : il faudrait contrôler le
+      cours des choses pour être heureux, ou bien le bonheur dépendrait
+      entièrement de circonstances hors de notre volonté.
+    contradicts_principle: >
+      Le partage stoïcien passe précisément entre ce qui dépend de nous
+      (jugements, actions propres) et ce qui n'en dépend pas. La voie du bonheur
+      n'est ni de maîtriser les circonstances — impossible — ni de s'en remettre
+      à elles, mais de régler le désir sur la première catégorie.
+
+  - id: mc.philo.bonheur.kant-mal-lu
+    label: "« Chez Kant, la vertu produit le bonheur, ou le bonheur récompense la vertu »"
+    description: >
+      L'élève rétablit entre morale et bonheur le lien de production que Kant
+      refuse : la vertu rendrait heureux, ou le bonheur serait le but ultime de
+      la morale une fois mérité, ou encore la vertu produirait le malheur.
+    contradicts_principle: >
+      La vertu ne produit pas mécaniquement le bonheur — un homme vertueux peut
+      souffrir, un malhonnête prospérer. Elle rend seulement DIGNE d'être
+      heureux. Et le bonheur, trop indéterminé, ne peut fournir aucune loi
+      universelle : voilà pourquoi il ne fonde pas la morale.
+
+  - id: mc.philo.bonheur.accroche-lue-comme-une-preuve
+    label: "« L'accroche démontre déjà la thèse — ou bien elle ne sert à rien »"
+    description: >
+      L'élève lit le texte d'ouverture comme une conclusion déjà acquise, comme
+      la réfutation définitive d'une position, ou au contraire comme une simple
+      anecdote sans portée. Variante : il tient les deux réponses spontanées
+      pour équivalentes.
+    contradicts_principle: >
+      Une accroche montre que deux réponses spontanées, raisonnables en
+      apparence, sont chacune INSUFFISANTES — et pose ainsi le problème. Elle
+      n'établit aucune thèse, mais elle n'est pas décorative non plus : elle
+      ouvre la tension que la leçon va travailler.
+
+  - id: mc.philo.bonheur.critere-etranger-a-la-question
+    label: "« On juge la thèse sur un critère qui n'est pas celui du problème »"
+    description: >
+      Au lieu d'examiner l'argument, l'élève invoque un critère hors sujet :
+      l'injustice sociale d'une richesse, le devoir moral d'obtenir une bonne
+      note, l'absence de citation d'auteur, le manque d'exemple concret, ou
+      l'impossibilité empirique d'enchaîner les bonnes notes.
+    contradicts_principle: >
+      La question posée porte sur la FINALITÉ (un bien recherché pour lui-même),
+      sur la STRUCTURE d'un argument ou sur la MÉTHODE d'un devoir. Un critère
+      juste ailleurs — moral, social, empirique, formel — ne répond pas à cette
+      question-là.
+
+  - id: mc.philo.bonheur.finalite-de-la-chaine-mal-comprise
+    label: "« Les fins intermédiaires sont mauvaises, ou aucune fin ultime n'existe »"
+    description: >
+      L'élève transforme l'argument de la chaîne des fins en jugement de valeur
+      sur les moyens, ou en régression sans terme assumée.
+    contradicts_principle: >
+      L'argument est logique, pas moral : si chaque but n'était jamais qu'un
+      moyen en vue d'un autre, la chaîne n'aurait pas de terme et la poursuite
+      serait vide. Les biens intermédiaires (santé, argent) ne sont pas
+      mauvais — ils sont simplement recherchés en vue d'autre chose.
+
+  - id: mc.philo.bonheur.methode-de-dissertation-mal-comprise
+    label: "« Une problématique est une question fermée, et une introduction annonce sa conclusion »"
+    description: >
+      Sur les items de méthode, l'élève confond problématique et reformulation
+      du sujet, ou question d'auteur ; il ouvre son introduction par la thèse à
+      démontrer ; il place mal les auteurs dans le plan dialectique.
+    contradicts_principle: >
+      Une PROBLÉMATIQUE met en tension deux positions également légitimes en
+      apparence, auxquelles le devoir devra répondre. Une INTRODUCTION accroche,
+      définit les termes, fait apparaître la tension, puis annonce le plan —
+      jamais la conclusion. Et l'ANTITHÈSE regroupe les auteurs qui limitent la
+      thèse, pas ceux qui la prolongent.
+
 
 items:
   - id: BON-1
@@ -16,6 +138,7 @@ items:
       - id: A
         text: "Parce que la richesse dépend presque entièrement du hasard et des circonstances, et ne dépend donc pas de nous."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           C'est un critère stoïcien (ce qui dépend de nous / ce qui n'en
           dépend pas), pas l'argument d'Aristote. Aristote raisonne ici sur
@@ -24,6 +147,7 @@ items:
       - id: B
         text: "Parce que la richesse procure un plaisir, et le plaisir, selon Aristote, est un mal moral qu'il faut éviter."
         correct: false
+        misconception: mc.philo.bonheur.renoncement-radical-prete-aux-sages
         feedback: >
           Aristote ne juge pas le plaisir mauvais en soi : il l'écarte
           seulement comme critère ULTIME du bonheur, parce qu'il est commun
@@ -35,6 +159,7 @@ items:
       - id: D
         text: "Parce que la richesse n'est accessible qu'à une minorité de personnes, ce qui la rend injuste et socialement inégalitaire, et donc irrecevable comme fondement du bonheur."
         correct: false
+        misconception: mc.philo.bonheur.critere-etranger-a-la-question
         feedback: >
           Ce n'est pas l'argument d'Aristote : il ne s'agit pas d'une
           question de justice ou d'accessibilité sociale, mais de la nature
@@ -72,6 +197,7 @@ items:
       - id: A
         text: "Elle manque le fait qu'Épicure, en réalité, condamne tout plaisir comme moralement suspect."
         correct: false
+        misconception: mc.philo.bonheur.renoncement-radical-prete-aux-sages
         feedback: >
           C'est l'inverse de la position d'Épicure : le plaisir est, chez
           lui, le principe et la fin même de la vie heureuse -- il ne le
@@ -83,6 +209,7 @@ items:
       - id: C
         text: "Elle manque le fait qu'Épicure est en réalité un eudémoniste, pour qui seule la vertu compte, indépendamment du plaisir."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           C'est confondre hédonisme et eudémonisme. Épicure reste hédoniste
           de bout en bout : la raison et la mesure des désirs sont chez lui
@@ -92,6 +219,7 @@ items:
       - id: D
         text: "Elle manque le fait qu'Épicure recommande de satisfaire indifféremment tous les désirs, naturels ou non, du moment qu'ils procurent une sensation agréable, sans jamais opérer le moindre tri entre eux."
         correct: false
+        misconception: mc.philo.bonheur.plaisir-reduit-a-lintensite
         feedback: >
           C'est ignorer précisément le tri qu'Épicure demande d'opérer entre
           désirs naturels et nécessaires, désirs naturels non nécessaires, et
@@ -132,6 +260,7 @@ items:
       - id: A
         text: "L'hédonisme et l'eudémonisme désignent la même doctrine, sous deux noms différents forgés par des traducteurs différents."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           Ce ne sont pas des synonymes : les deux répondent à la même
           question (en quoi consiste le bonheur ?) avec des critères
@@ -140,6 +269,7 @@ items:
       - id: B
         text: "L'hédonisme est la doctrine des stoïciens ; l'eudémonisme est celle d'Épicure."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           C'est inverser les attributions. Les stoïciens sont eudémonistes
           (ils radicalisent même la position d'Aristote : seule la vertu
@@ -147,6 +277,7 @@ items:
       - id: C
         text: "L'hédonisme juge les actions à leurs conséquences sur la société entière ; l'eudémonisme juge les actions à la pureté de l'intention individuelle."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           Cette opposition (conséquences / intention) est celle qui sépare
           l'utilitarisme du kantisme dans une autre leçon -- pas la
@@ -190,6 +321,7 @@ items:
       - id: B
         text: "Ne plus rien désirer du tout, ni agir sur rien, pour éviter toute déception possible."
         correct: false
+        misconception: mc.philo.bonheur.renoncement-radical-prete-aux-sages
         feedback: >
           C'est confondre la doctrine stoïcienne avec un fatalisme passif.
           Le stoïcien continue d'agir de toutes ses forces sur ce qui dépend
@@ -198,6 +330,7 @@ items:
       - id: C
         text: "Rechercher un plaisir stable et mesuré, en calculant les conséquences de chaque désir."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           C'est la méthode d'Épicure (le calcul des plaisirs), pas le
           critère proprement stoïcien, qui porte sur la distinction entre ce
@@ -206,6 +339,7 @@ items:
       - id: D
         text: "Essayer de maîtriser autant que possible les circonstances extérieures et le cours des choses, pour qu'ils produisent toujours, quoi qu'il arrive, le résultat souhaité."
         correct: false
+        misconception: mc.philo.bonheur.bonheur-suspendu-aux-circonstances
         feedback: >
           C'est l'inverse de la doctrine : les stoïciens enseignent à cesser
           de vouloir maîtriser ce qui est extérieur (le corps, la fortune,
@@ -240,6 +374,7 @@ items:
       - id: A
         text: "Pour Kant, le bonheur est le but ultime de la morale, à condition de le mériter d'abord par la vertu."
         correct: false
+        misconception: mc.philo.bonheur.kant-mal-lu
         feedback: >
           C'est exactement l'inverse de la position de Kant, et une des
           confusions les plus fréquentes sur cet auteur. Pour Kant, la
@@ -249,6 +384,7 @@ items:
       - id: B
         text: "Pour Kant, rechercher le bonheur est immoral, et le sage doit y renoncer entièrement."
         correct: false
+        misconception: mc.philo.bonheur.renoncement-radical-prete-aux-sages
         feedback: >
           Kant ne condamne pas le bonheur comme immoral : il nie seulement
           qu'il puisse FONDER la morale. Rien, chez lui, n'interdit de
@@ -260,6 +396,7 @@ items:
       - id: D
         text: "Pour Kant, comme pour les utilitaristes, une action est morale si elle produit, au final, le plus de bonheur possible pour le plus grand nombre, ses conséquences seules décidant de sa valeur."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           C'est la position utilitariste, que Kant rejette précisément : il
           juge la moralité d'une action au seul motif (la maxime peut-elle
@@ -297,6 +434,7 @@ items:
       - id: A
         text: "Aucune forme de satisfaction n'est jamais possible, et il ne sert donc à rien de chercher à être heureux."
         correct: false
+        misconception: mc.philo.bonheur.renoncement-radical-prete-aux-sages
         feedback: >
           C'est faire dire à ces auteurs bien plus qu'ils n'affirment. Leur
           thèse porte sur la difficulté structurelle d'un bonheur INTÉGRAL et
@@ -308,6 +446,7 @@ items:
       - id: C
         text: "Le bonheur est parfaitement accessible à qui sait maîtriser ses désirs, comme le soutiennent également les stoïciens."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           Cela efface la différence entre les stoïciens (une maîtrise du
           désir rend le bonheur accessible) et Schopenhauer/Freud (une limite
@@ -317,6 +456,7 @@ items:
       - id: D
         text: "Le problème qu'ils posent ne concerne que la vie en société ; un individu parfaitement isolé du monde social atteindrait, selon eux, un bonheur complet et sans la moindre ombre, la structure du désir n'y jouant alors aucun rôle."
         correct: false
+        misconception: mc.philo.bonheur.critere-etranger-a-la-question
         feedback: >
           Cela ignore l'argument de Schopenhauer, qui porte sur la structure
           du désir en général, indépendamment de toute vie sociale -- même
@@ -355,6 +495,7 @@ items:
       - id: A
         text: "Aucune : l'exemple confirme au contraire que l'euphorie dure aussi longtemps que la préparation a été sérieuse, comme le voudrait précisément cette thèse."
         correct: false
+        misconception: mc.philo.bonheur.accroche-lue-comme-une-preuve
         feedback: >
           C'est l'inverse : le texte utilise cet exemple pour METTRE EN
           DIFFICULTÉ cette thèse, pas pour la confirmer.
@@ -364,6 +505,7 @@ items:
       - id: C
         text: "La thèse est fausse parce qu'obtenir une bonne note est d'abord un devoir moral que l'on accomplit, et non un plaisir que l'on rechercherait pour lui-même."
         correct: false
+        misconception: mc.philo.bonheur.critere-etranger-a-la-question
         feedback: >
           Le texte n'introduit aucune catégorie morale à ce stade : la
           difficulté qu'il pointe est logique (l'addition ne laisse pas de
@@ -371,6 +513,7 @@ items:
       - id: D
         text: "La thèse est fausse parce qu'aucun élève ne peut obtenir plusieurs bonnes notes de suite, et qu'aucun total de plaisirs ne peut donc jamais se constituer."
         correct: false
+        misconception: mc.philo.bonheur.critere-etranger-a-la-question
         feedback: >
           Ce n'est pas l'argument du texte, qui ne porte pas sur la
           fréquence des bonnes notes mais sur le fait que le plaisir ne
@@ -400,6 +543,7 @@ items:
       - id: A
         text: "Elle est réfutée par l'exemple : le lendemain démontre qu'aucun bonheur stable n'existe jamais."
         correct: false
+        misconception: mc.philo.bonheur.accroche-lue-comme-une-preuve
         feedback: >
           Le texte ne réfute rien : il laisse la question ouverte pour la
           construire tout au long de la leçon, il ne conclut pas déjà à
@@ -407,6 +551,7 @@ items:
       - id: B
         text: "Elle revient au fond au même que la première réponse : les deux affirment qu'additionner des plaisirs suffit à faire le bonheur."
         correct: false
+        misconception: mc.philo.bonheur.accroche-lue-comme-une-preuve
         feedback: >
           C'est l'inverse : le texte présente ces deux réponses comme
           distinctes, la seconde rejetant justement l'idée que le bonheur
@@ -417,6 +562,7 @@ items:
       - id: D
         text: "Elle est incomplète seulement parce qu'elle ne cite pas explicitement Aristote comme auteur de référence."
         correct: false
+        misconception: mc.philo.bonheur.critere-etranger-a-la-question
         feedback: >
           Le texte de l'accroche ne nomme encore aucun philosophe : le
           problème qu'il pointe est de contenu (que dit-on du bonheur ?),
@@ -448,6 +594,7 @@ items:
       - id: B
         text: "Elle démontre déjà, de façon définitive, que le bonheur est une activité de l'âme conforme à la vertu, ce qui rend inutile la suite de la démonstration."
         correct: false
+        misconception: mc.philo.bonheur.accroche-lue-comme-une-preuve
         feedback: >
           C'est anticiper sur le chapitre 2 : l'accroche ne nomme aucun philosophe et
           ne tranche rien -- elle ouvre le problème, elle ne le résout pas
@@ -455,12 +602,14 @@ items:
       - id: C
         text: "Elle prouve que le bonheur ne dépend jamais des circonstances extérieures, mais uniquement de notre volonté, et tranche ainsi la question dès l'ouverture."
         correct: false
+        misconception: mc.philo.bonheur.accroche-lue-comme-une-preuve
         feedback: >
           C'est anticiper sur le chapitre 4 (les stoïciens) : rien dans le texte de
           l'accroche ne porte encore sur ce qui dépend ou non de nous.
       - id: D
         text: "Elle se contente d'illustrer une anecdote plaisante, sans aucune portée argumentative pour la suite de la leçon, qui aurait pu commencer sans elle."
         correct: false
+        misconception: mc.philo.bonheur.critere-etranger-a-la-question
         feedback: >
           C'est l'inverse : le texte annonce explicitement que « c'est
           exactement ce problème... que cette leçon va construire, pièce
@@ -492,6 +641,7 @@ items:
       - id: B
         text: "Parce que les buts intermédiaires -- la santé, l'argent -- sont mauvais en eux-mêmes et doivent être dépassés au profit d'une fin d'une tout autre nature."
         correct: false
+        misconception: mc.philo.bonheur.finalite-de-la-chaine-mal-comprise
         feedback: >
           Aristote ne juge pas les moyens mauvais : il constate seulement
           qu'ils ne sont pas des fins ultimes, pas qu'ils seraient
@@ -499,12 +649,14 @@ items:
       - id: C
         text: "Parce que ce bien ultime est le plaisir, seule fin que tout être vivant recherche naturellement et sans exception, quelles que soient ses circonstances."
         correct: false
+        misconception: mc.philo.bonheur.plaisir-reduit-a-lintensite
         feedback: >
           C'est la position d'Épicure (chapitre 3), pas celle d'Aristote, qui
           écarte au contraire le plaisir du rang de souverain bien.
       - id: D
         text: "Parce qu'aucune fin ultime ne peut jamais être atteinte, ce qui oblige à viser toujours plus loin sans jamais s'arrêter sur un bien définitif."
         correct: false
+        misconception: mc.philo.bonheur.finalite-de-la-chaine-mal-comprise
         feedback: >
           C'est l'inverse de la conclusion d'Aristote : il rejette
           justement l'idée d'une poursuite sans terme, il ne l'accepte pas.
@@ -534,17 +686,20 @@ items:
       - id: A
         text: "Rien : ce résumé correspond exactement à la position d'Aristote, pour qui la vertu se suffit à elle-même et rend indifférent tout le reste des conditions de vie."
         correct: false
+        misconception: mc.philo.bonheur.renoncement-radical-prete-aux-sages
         feedback: >
           Le texte corrige explicitement ce résumé -- il ne l'endosse pas.
       - id: B
         text: "Aristote méprise en effet le plaisir comme un mal moral dont le sage doit se détourner entièrement, mais accepte en revanche les biens extérieurs comme des conditions utiles au bonheur de l'homme accompli."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           Aristote ne juge pas le plaisir mauvais : l'activité vertueuse
           s'accompagne, dit le texte, du plaisir le plus véritable qui soit.
       - id: C
         text: "C'est l'inverse qu'il faut dire : pour Aristote, seul le plaisir compte réellement, la vertu n'étant qu'un moyen accessoire pour se le procurer plus sûrement."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           C'est transposer la structure épicurienne (chapitre 3) sur Aristote, qui
           fait au contraire de la vertu le cœur du bonheur.
@@ -577,12 +732,14 @@ items:
       - id: A
         text: "Un désir naturel et nécessaire, car la reconnaissance sociale est indispensable au bien-être selon Épicure."
         correct: false
+        misconception: mc.philo.bonheur.plaisir-reduit-a-lintensite
         feedback: >
           Épicure range dans les désirs naturels et nécessaires manger,
           se loger, se reposer -- pas la reconnaissance sociale.
       - id: B
         text: "Un désir naturel mais non nécessaire, comparable au choix d'un repas raffiné plutôt qu'un repas simple."
         correct: false
+        misconception: mc.philo.bonheur.plaisir-reduit-a-lintensite
         feedback: >
           Un désir naturel non nécessaire reste limité et son absence ne
           cause aucune souffrance réelle -- la reconnaissance sociale
@@ -593,6 +750,7 @@ items:
       - id: D
         text: "Peu importe la catégorie : Épicure recommande de satisfaire tout désir dès lors qu'il procure une sensation agréable."
         correct: false
+        misconception: mc.philo.bonheur.plaisir-reduit-a-lintensite
         feedback: >
           C'est ignorer le tri des désirs qu'Épicure demande précisément
           d'opérer avant tout choix.
@@ -621,6 +779,7 @@ items:
       - id: A
         text: "Le rechercher quand même : l'intensité immédiate d'une sensation prime toujours sur ses conséquences à venir, quelle que soit leur ampleur."
         correct: false
+        misconception: mc.philo.bonheur.plaisir-reduit-a-lintensite
         feedback: >
           C'est exactement l'hédonisme débridé qu'Épicure rejette : le
           critère n'est jamais l'intensité immédiate, mais les conséquences
@@ -631,6 +790,7 @@ items:
       - id: C
         text: "L'éviter, ainsi que toute douleur temporaire en général, même lorsqu'elle ouvrirait sur un plaisir plus grand, plus stable et plus durable."
         correct: false
+        misconception: mc.philo.bonheur.renoncement-radical-prete-aux-sages
         feedback: >
           C'est manquer la moitié de la méthode : une douleur temporaire
           qui ouvre sur un plaisir plus grand et stable doit, elle, être
@@ -638,6 +798,7 @@ items:
       - id: D
         text: "Vérifier d'abord s'il s'agit d'un désir naturel et nécessaire : si oui, la douleur future qu'il entraîne importe peu et ne change rien au choix."
         correct: false
+        misconception: mc.philo.bonheur.plaisir-reduit-a-lintensite
         feedback: >
           C'est confondre deux outils distincts : le tri des désirs et le
           calcul des plaisirs, qui pèse les conséquences indépendamment de
@@ -667,6 +828,7 @@ items:
       - id: A
         text: "Aristote rejette lui aussi tout bien extérieur comme étranger au bonheur ; la différence entre les deux écoles ne serait alors qu'une question de vocabulaire, sans portée réelle."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           Aristote exige au contraire un minimum de biens extérieurs pour
           un bonheur complet -- ce n'est pas une différence de vocabulaire.
@@ -676,6 +838,7 @@ items:
       - id: C
         text: "Les stoïciens exigent, comme Aristote, un minimum de biens extérieurs pour être heureux -- leur seul apport propre serait la formule « ce qui dépend de nous », qui reformule sans rien changer au fond de la doctrine."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           C'est sous-estimer la radicalisation stoïcienne : rien
           d'extérieur à la vertu n'est requis pour eux, alors qu'Aristote,
@@ -683,6 +846,7 @@ items:
       - id: D
         text: "Les stoïciens jugent les biens extérieurs comme des maux qu'il faudrait combattre activement, alors qu'Aristote les tiendrait pour parfaitement neutres et sans effet sur le bonheur."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           C'est inverser les deux positions : « indifférent » chez les
           stoïciens ne signifie pas « mauvais », et c'est Aristote, pas les
@@ -714,6 +878,7 @@ items:
       - id: B
         text: "Parce que le bonheur, selon Kant, est un concept purement inventé par la raison, qui ne correspond à aucune réalité psychologique réellement vécue par qui que ce soit."
         correct: false
+        misconception: mc.philo.bonheur.kant-mal-lu
         feedback: >
           Kant ne nie pas la réalité du bonheur ressenti : il dit seulement
           que son CONTENU varie trop d'un individu à l'autre pour fonder
@@ -721,12 +886,14 @@ items:
       - id: C
         text: "Parce que rechercher le bonheur est, en soi, contraire au devoir, et donc immoral par nature."
         correct: false
+        misconception: mc.philo.bonheur.renoncement-radical-prete-aux-sages
         feedback: >
           Kant ne condamne pas le bonheur comme immoral : il nie seulement
           qu'il puisse FONDER la morale.
       - id: D
         text: "Parce que le bonheur dépend entièrement des circonstances extérieures, qui échappent en totalité à notre volonté."
         correct: false
+        misconception: mc.philo.bonheur.bonheur-suspendu-aux-circonstances
         feedback: >
           C'est le critère stoïcien (ce qui dépend / ne dépend pas de
           nous), pas l'argument de Kant, qui porte sur l'indétermination
@@ -756,12 +923,14 @@ items:
       - id: A
         text: "Rien : c'est exactement la position de Kant, résumée ici sans la moindre déformation de son propos."
         correct: false
+        misconception: mc.philo.bonheur.kant-mal-lu
         feedback: >
           Le texte corrige explicitement cette confusion, l'une des plus
           fréquentes sur Kant -- il ne l'endosse pas.
       - id: B
         text: "Le texte corrige seulement l'ordre des mots : c'est en réalité le bonheur qui produit la vertu, l'homme heureux devenant naturellement meilleur."
         correct: false
+        misconception: mc.philo.bonheur.kant-mal-lu
         feedback: >
           Chez Kant, ni le bonheur ne produit la vertu, ni la vertu ne
           produit mécaniquement le bonheur -- les deux restent
@@ -772,6 +941,7 @@ items:
       - id: D
         text: "Le texte corrige le fait que, pour Kant, la vertu produirait systématiquement le malheur et jamais le bonheur, la moralité se payant toujours d'une souffrance."
         correct: false
+        misconception: mc.philo.bonheur.kant-mal-lu
         feedback: >
           C'est remplacer une erreur par une autre tout aussi fausse :
           Kant n'affirme aucun lien mécanique, ni positif ni négatif, entre
@@ -801,6 +971,7 @@ items:
       - id: A
         text: "Aristote rejette l'amitié comme non nécessaire au bonheur, contrairement à Épicure qui en fait le seul bien véritable et le cœur de sa doctrine."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           C'est l'inverse : l'amitié occupe, chez Aristote, une place
           considérable parmi les conditions du bonheur.
@@ -810,6 +981,7 @@ items:
       - id: C
         text: "Les deux auteurs prônent, de façon rigoureusement identique, un engagement politique actif et permanent dans la cité comme condition nécessaire du bonheur de chacun, sans divergence sur ce point."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           Cela ignore le retrait des affaires publiques qu'Épicure
           recommande explicitement, à l'inverse de l'engagement politique
@@ -817,6 +989,7 @@ items:
       - id: D
         text: "Épicure exige, comme Aristote, une pleine participation à la vie de la cité -- seul le nombre d'amis recommandé diffère réellement entre les deux doctrines."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           Épicure recommande au contraire de se tenir à l'écart des
           affaires publiques, sources d'agitation, ce qui l'oppose
@@ -848,6 +1021,7 @@ items:
       - id: B
         text: "La note n'est qu'un plaisir isolé ; le bonheur se juge à une vie entière menée conformément à la vertu et à la raison, non à un épisode heureux."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           C'est l'analyse d'Aristote (chapitre 2), pas celle des stoïciens : elle
           porte sur la vertu d'une vie entière, pas sur ce qui dépend ou
@@ -855,6 +1029,7 @@ items:
       - id: C
         text: "Aucune note, aussi excellente soit-elle, ne dit rien de la valeur morale de l'élève -- seule la qualité de sa volonté compte, indépendamment des résultats obtenus et de leur reconnaissance."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           C'est l'analyse de Kant (chapitre 5), centrée sur la dignité d'être
           heureux, pas la distinction stoïcienne entre ce qui dépend ou non
@@ -862,6 +1037,7 @@ items:
       - id: D
         text: "Ce cycle de désir et de satisfaction brève n'est pas un défaut personnel de l'élève, mais la structure même du désir humain, que rien ne peut modifier."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           C'est l'analyse de Schopenhauer et Freud (chapitre 6), qui porte sur la
           structure du désir, pas sur la distinction stoïcienne.
@@ -890,6 +1066,7 @@ items:
       - id: A
         text: "Le bonheur dépend-il de nous, oui ou non ?"
         correct: false
+        misconception: mc.philo.bonheur.methode-de-dissertation-mal-comprise
         feedback: >
           C'est une simple répétition du sujet, pas une problématique :
           elle ne fait apparaître aucune tension entre deux positions
@@ -900,6 +1077,7 @@ items:
       - id: C
         text: "Qu'est-ce que le bonheur ?"
         correct: false
+        misconception: mc.philo.bonheur.methode-de-dissertation-mal-comprise
         feedback: >
           Cette question, trop large, abandonne la partie « dépend-il de
           nous » du sujet -- une problématique doit rester ancrée dans les
@@ -907,6 +1085,7 @@ items:
       - id: D
         text: "Aristote a-t-il raison de penser que le bonheur est une activité de l'âme conforme à la vertu, et cette définition suffit-elle, à elle seule, à décider si le bonheur dépend ou ne dépend pas de nous et de nos efforts ?"
         correct: false
+        misconception: mc.philo.bonheur.methode-de-dissertation-mal-comprise
         feedback: >
           C'est substituer une question de cours sur un auteur au sujet
           réellement posé, qui porte sur la dépendance du bonheur à notre
@@ -939,12 +1118,14 @@ items:
       - id: B
         text: "Les stoïciens et Épicure, dont la maîtrise du désir garantirait, selon le plan, un bonheur total et sans aucune limite."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           Ce sont les auteurs mobilisés pour la THÈSE, pas pour
           l'antithèse, qui vient au contraire objecter à leur position.
       - id: C
         text: "Kant seul, puisqu'il serait le seul auteur de la leçon à nier toute possibilité de bonheur."
         correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
         feedback: >
           Kant sert au dépassement (partie III), pas à l'antithèse -- et
           il ne nie jamais la possibilité du bonheur, seulement sa capacité
@@ -952,6 +1133,7 @@ items:
       - id: D
         text: "Aristote seul ; Schopenhauer et Freud appartiennent en réalité au dépassement (partie III), pas à l'antithèse."
         correct: false
+        misconception: mc.philo.bonheur.methode-de-dissertation-mal-comprise
         feedback: >
           Le plan du chapitre 7 mobilise bien Schopenhauer et Freud dans
           l'antithèse, aux côtés d'Aristote -- c'est Kant, non eux, qui sert
@@ -981,6 +1163,7 @@ items:
       - id: A
         text: "Rien : une bonne introduction doit annoncer sa conclusion dès la première phrase, afin d'informer immédiatement le correcteur de la direction prise par le devoir."
         correct: false
+        misconception: mc.philo.bonheur.methode-de-dissertation-mal-comprise
         feedback: >
           C'est défendre précisément la pratique fautive : une
           dissertation ne répond jamais « oui » d'entrée de jeu, avant
@@ -991,6 +1174,7 @@ items:
       - id: C
         text: "Elle manque uniquement une citation d'auteur en ouverture ; pour le reste, la démarche suivie est correcte et l'introduction remplit bien son office."
         correct: false
+        misconception: mc.philo.bonheur.methode-de-dissertation-mal-comprise
         feedback: >
           Cela sous-estime largement le problème : ce n'est pas une
           citation qui manque, c'est l'ensemble du mouvement
@@ -998,6 +1182,7 @@ items:
       - id: D
         text: "Elle manque un exemple concret comme celui de la note excellente ; la problématisation elle-même n'est pas nécessaire dès lors que l'exemple choisi est parlant, bien amené et suffisamment développé dans la suite du devoir."
         correct: false
+        misconception: mc.philo.bonheur.methode-de-dissertation-mal-comprise
         feedback: >
           Un exemple concret ne remplace pas la problématisation : le
           modèle d'introduction du chapitre 7 utilise l'exemple ET pose ensuite une
