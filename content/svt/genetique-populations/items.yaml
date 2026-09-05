@@ -449,3 +449,125 @@ items:
       à une population qui s'autoféconde systématiquement (en réalité,
       l'autofécondation répétée augmente au contraire la proportion
       d'homozygotes au fil des générations, au détriment des hétérozygotes).
+
+  # ── DEUX ITEMS AJOUTÉS LE 2026-09-05 ───────────────────────────────────────
+  # Motif : deux erreurs déclarées étaient sous le plancher de 3 items du banc.
+  # Périmètre : lesson.md, R2 à R5.
+  - id: GP-7
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: svt_genetique_pop
+    tags: [selection_naturelle, heterozygote, frequence_allelique]
+    stem: >
+      Dans une population où l'allèle récessif $a$ est létal à l'état
+      homozygote, on suit sa fréquence pendant vingt générations : elle passe
+      de $0{,}10$ à $0{,}08$. Un élève juge ce résultat contradictoire, « la
+      sélection éliminant pourtant tous les $a//a$ à chaque génération ».
+      Comment lever la contradiction ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il n'y a pas de contradiction : la sélection n'atteint que les rares homozygotes ($q^2 = 1\\,\\%$ au départ), alors que la quasi-totalité des exemplaires de $a$ est abritée chez des hétérozygotes sains, qui se reproduisent normalement."
+        correct: true
+      - id: B
+        text: "Il n'y a pas de contradiction, parce que la sélection naturelle n'agit jamais sur les fréquences alléliques : elle ne fait que trier des phénotypes, la baisse observée venant nécessairement d'une autre cause."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.selection-sans-effet-sur-les-frequences
+        feedback: >
+          C'est une sur-correction. Une sélection contre un génotype FAIT
+          baisser la fréquence de l'allèle associé — c'est précisément ce
+          qu'on observe ici, de $0{,}10$ à $0{,}08$. L'effet n'est pas nul, il
+          est seulement lent.
+      - id: C
+        text: "La contradiction est réelle : avec une élimination systématique à chaque génération, $q$ aurait dû tomber à zéro bien avant la vingtième, et la mesure comporte donc nécessairement une erreur."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.allele-recessif-condamne
+        feedback: >
+          Un allèle récessif ne disparaît pas rapidement, même sous sélection
+          forte : plus $q$ diminue, plus la part cachée chez les hétérozygotes
+          domine (car $q^2$ s'écrase bien plus vite que $q$), et moins la
+          sélection a de prise.
+      - id: D
+        text: "La contradiction se lève parce que de nouveaux allèles $a$ apparaissent par mutation à chaque génération, en quantité suffisante pour compenser presque exactement ceux que la sélection élimine."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.conditions-hw-mal-maniees
+        feedback: >
+          Le taux de mutation est bien trop faible pour compenser une
+          sélection à cette échelle : une mutation ne déplace $p$ et $q$ que
+          d'une quantité minuscule par génération. L'explication est ailleurs,
+          dans le réservoir hétérozygote.
+    correct_feedback: >
+      Sous Hardy-Weinberg, avec $q = 0{,}10$, les homozygotes $a//a$ ne
+      représentent que $1\,\%$ de la population, tandis que les hétérozygotes
+      en représentent $18\,\%$ : l'immense majorité des exemplaires de $a$ est
+      hors d'atteinte de la sélection, qui ne mord donc que très lentement.
+    solution: |
+      **Compter où vit l'allèle.** Avec $q = 0{,}10$ : $q^2 = 0{,}01$ des
+      individus sont $a//a$, et $2pq = 0{,}18$ sont $A//a$. Sur cent
+      individus, les exemplaires de $a$ se répartissent entre 2 (chez les
+      homozygotes) et 18 (chez les hétérozygotes).
+
+      **Ce que la sélection atteint.** Les 2, pas les 18.
+
+      **Pourquoi la baisse ralentit.** Plus $q$ diminue, plus $q^2$ s'écrase
+      vite : la part exposée devient de plus en plus petite. La disparition
+      complète, elle, n'arrive jamais.
+
+  - id: GP-8
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_genetique_pop
+    tags: [selection_naturelle, equilibre, interpretation]
+    stem: >
+      Dans une population d'insectes, un insecticide est utilisé pendant dix
+      ans : la fréquence de l'allèle de résistance passe de $0{,}02$ à
+      $0{,}45$. L'usage cesse ; dix ans plus tard, la fréquence est retombée à
+      $0{,}30$. Que montre cette séquence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que la sélection modifie bel et bien les fréquences alléliques, dans un sens puis dans l'autre selon l'avantage ou le coût que l'allèle confère dans le milieu du moment."
+        correct: true
+      - id: B
+        text: "Que la sélection n'a joué aucun rôle : elle trie des phénotypes sans toucher au pool génique, et ces variations de fréquence ne peuvent donc s'expliquer que par des fluctuations d'échantillonnage."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.selection-sans-effet-sur-les-frequences
+        feedback: >
+          En triant des phénotypes, la sélection trie les génotypes qui les
+          produisent — donc les allèles qu'ils portent. Une variation de
+          $0{,}02$ à $0{,}45$ en dix ans est bien trop ample et trop orientée
+          pour relever du hasard d'échantillonnage.
+      - id: C
+        text: "Que l'allèle de résistance, une fois devenu majoritaire, ne pouvait plus que se fixer définitivement dans la population : la baisse observée après l'arrêt du traitement est donc anormale."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.allele-recessif-condamne
+        feedback: >
+          Aucun allèle n'est condamné à disparaître ni promis à se fixer : sa
+          fréquence suit l'avantage qu'il procure DANS LE MILIEU DU MOMENT.
+          Sans insecticide, la résistance peut avoir un coût, d'où le reflux.
+      - id: D
+        text: "Que la population n'était pas en équilibre de Hardy-Weinberg pendant les dix premières années, mais qu'elle l'est redevenue ensuite, ce qui explique à soi seul le retour partiel vers la valeur de départ."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.conditions-hw-mal-maniees
+        feedback: >
+          Hardy-Weinberg décrit la STABILITÉ des fréquences en l'absence de
+          sélection : y « revenir » ne ramène aucune fréquence vers sa valeur
+          passée. Le reflux observé demande une cause active — un coût de la
+          résistance —, pas un retour à l'équilibre.
+    correct_feedback: >
+      La sélection agit sur les phénotypes, et par eux sur les fréquences
+      alléliques : elle a fait monter la résistance tant que l'insecticide la
+      rendait avantageuse, puis reculer quand son coût est redevenu visible
+      dans un milieu sans traitement.
+    solution: |
+      **Première phase.** L'insecticide rend le phénotype résistant nettement
+      avantageux : les porteurs survivent et se reproduisent davantage, la
+      fréquence de l'allèle monte.
+
+      **Seconde phase.** Sans insecticide, l'avantage disparaît ; s'il subsiste
+      un coût (croissance plus lente, par exemple), le phénotype sensible
+      redevient favorisé et la fréquence redescend.
+
+      **Ce que la séquence établit.** Que l'une des quatre conditions de
+      Hardy-Weinberg — l'absence de sélection — n'était pas remplie. C'est
+      précisément l'ÉCART au modèle qui sert de diagnostic.

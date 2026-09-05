@@ -6038,6 +6038,19 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "GH-6": [
       "mc.svt.svt_genetique_humaine.dominance-mal-deduite",
       "mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree"
+    ],
+    "GH-7": [
+      "mc.svt.svt_genetique_humaine.autosomes-gonosomes-confondus",
+      "mc.svt.svt_genetique_humaine.probabilite-non-conditionnee"
+    ],
+    "GH-8": [
+      "mc.svt.svt_genetique_humaine.autosomes-gonosomes-confondus",
+      "mc.svt.svt_genetique_humaine.axes-de-decision-melanges",
+      "mc.svt.svt_genetique_humaine.dominance-mal-deduite"
+    ],
+    "GH-9": [
+      "mc.svt.svt_genetique_humaine.autosomes-gonosomes-confondus",
+      "mc.svt.svt_genetique_humaine.probabilite-non-conditionnee"
     ]
   },
   "svt/genetique-populations": {
@@ -6061,6 +6074,16 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "GP-6": [
       "mc.svt.svt_genetique_pop.conditions-hw-mal-maniees",
       "mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique"
+    ],
+    "GP-7": [
+      "mc.svt.svt_genetique_pop.allele-recessif-condamne",
+      "mc.svt.svt_genetique_pop.conditions-hw-mal-maniees",
+      "mc.svt.svt_genetique_pop.selection-sans-effet-sur-les-frequences"
+    ],
+    "GP-8": [
+      "mc.svt.svt_genetique_pop.allele-recessif-condamne",
+      "mc.svt.svt_genetique_pop.conditions-hw-mal-maniees",
+      "mc.svt.svt_genetique_pop.selection-sans-effet-sur-les-frequences"
     ]
   },
   "svt/granitisation-deformation": {
@@ -6127,6 +6150,19 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "MD-M3-2": [
       "mc.svt.svt_moyens_defense.confond-lb-lt"
+    ],
+    "MD-M4-1": [
+      "mc.svt.svt_moyens_defense.anticorps-detruisent-directement",
+      "mc.svt.svt_moyens_defense.confond-innee-adaptative",
+      "mc.svt.svt_moyens_defense.inflammation-reduite-a-un-phenomene-vasculaire"
+    ],
+    "MD-M4-2": [
+      "mc.svt.svt_moyens_defense.confond-lb-lt",
+      "mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee"
+    ],
+    "MD-M4-3": [
+      "mc.svt.svt_moyens_defense.inflammation-reduite-a-un-phenomene-vasculaire",
+      "mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee"
     ]
   },
   "svt/role-enzymes": {
