@@ -3047,6 +3047,8 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | `reseau-malade` | 5 scènes sous latence et pertes injectées | toutes tenues (6 requêtes perdues sur 155, par construction) |
 | `cls-sweep` | 70 pages, réseau libre | 0,000 à 0,010 partout sauf **`/examens/<id>` à 0,320** — le décalage du bouton « Commencer » à l'échange de fonte, déjà mesuré et porté à l'arbitrage propriétaire (§8.5) : inchangé |
 | `poids-sweep` | 70 routes, processeur bridé | la page la plus lourde du produit est `/notions/pc/rlc-serie` : 30 280 nœuds, 4,5 s de tâches longues sous bridage ×6, réactive après 3,4 s — un FAIT à garder en tête pour la vidéo et les figures, pas un défaut mesuré contre un seuil |
+| `gel-epreuve` (nouveau) | 39 épreuves, processeur ×6 | 3–15 s de gel au « Commencer », 3–30 s au « Terminer » → révélation progressive, §11.20 |
+| `gel-lecon` (nouveau) | 62 leçons, processeur ×6 | aucune tâche ≥ 1 s ; page réactive 1,9–7,3 s après la navigation, 16 leçons > 5 s, §11.21 |
 
 **Ce qui est connu et reste au propriétaire** — re-mesuré à l'identique, pas
 redécouvert : `horsligne-sweep` (une leçon déjà visitée, cliquée hors ligne,
@@ -3339,8 +3341,14 @@ part de chaque cause n'a pas été mesurée séparément.
 exercice mettait 2,7 s à apparaître parce que le premier lot était plein —
 80 formules, l'intro comprise — alors qu'une question seule en demande une
 fraction. Le premier lot de chaque phase est donc une seule question ; les
-suivants gardent le budget. Elle est bâtie et se mesure à la suite de la
-quatrième, sur les mêmes 39 sujets ; le tableau ci-dessous sera le sien.
+suivants gardent le budget. Mesurée sur les 39 sujets : au « Commencer »,
+le gain est net — le premier exercice apparaît en 0,8 à 2,0 s (médiane 1,4 s,
+contre 2,7 s à la quatrième version et 10 s avant) ; au « Terminer », il n'y en
+a pas (premier corrigé 0,8 s de médiane contre 0,6 s : du bruit) — le premier
+corrigé était déjà borné par la part fixe du commit de changement de phase, pas
+par la taille du lot. Tout le reste est inchangé au-delà du bruit : sujet
+complet 4,7 s, corrigé complet 7,8 s, tâche la plus longue 0,7 s (1,6 s au
+pire, les mêmes quatre rattrapages). C'est la version en place.
 
 Et dom-truth a trouvé un défaut de la première version avant qu'elle ne soit
 mesurée : il appuie sur « Terminer » une centaine de millisecondes après
@@ -3358,6 +3366,67 @@ garde-fou de fraîcheur du build — deux commits faits pendant qu'il tournait.)
 Refait sur la cinquième version : 262 vérifications, zéro rouge, en local
 (empreinte = HEAD) comme dans la CI (run 469, 4 min 32 s).
 
+**LE TABLEAU — 39 sujets, processeur bridé ×6, avant (un seul rendu par
+phase) → après (cinquième version).** Les colonnes « après » donnent le délai
+jusqu'au PREMIER exercice ou corrigé affiché, puis jusqu'au marqueur de phase
+complète ; « avant », il n'y avait qu'un seul instant, celui où tout
+apparaissait. Produit par `gel-epreuve.mjs` (`CPU=6`), trié par gel au
+« Terminer » décroissant.
+
+| sujet | formules énoncé / corrigé | « Commencer » : gel avant → 1er exercice / complet après | « Terminer » : gel avant → 1er corrigé / complet après | tâche la plus longue avant → après |
+|---|---|---|---|---|
+| `spc-2024-rattrapage` | 409 / 1357 | 13.4 s → 1.5 s / 5.8 s | 30.4 s → 1.1 s / 22.8 s | 13.2 s → 0.9 s |
+| `spc-2022-rattrapage` | 433 / 1175 | 14.8 s → 1.5 s / 6.3 s | 29.8 s → 0.9 s / 15.8 s | 10.3 s → 1.0 s |
+| `sm-2023-normale` | 184 / 1152 | 13.2 s → 1.3 s / 5.7 s | 27.8 s → 0.7 s / 20.6 s | 14.9 s → 1.0 s |
+| `spc-2023-rattrapage` | 279 / 1154 | 12.3 s → 1.5 s / 5.2 s | 26.8 s → 0.8 s / 18.8 s | 12.0 s → 1.3 s |
+| `spc-2025-rattrapage` | 375 / 1104 | 12.9 s → 1.6 s / 6.5 s | 26.6 s → 1.0 s / 16.8 s | 10.3 s → 1.4 s |
+| `sm-2024-rattrapage` | 201 / 1668 | 9.5 s → 1.3 s / 4.9 s | 25.8 s → 0.9 s / 30.2 s | 15.9 s → 1.6 s |
+| `spc-2021-rattrapage` | 401 / 1147 | 13.6 s → 2.0 s / 6.5 s | 25.3 s → 0.8 s / 16.2 s | 13.2 s → 0.8 s |
+| `sm-2023-rattrapage` | 183 / 1569 | 12.9 s → 1.9 s / 5.1 s | 24.4 s → 0.7 s / 23.9 s | 15.4 s → 0.8 s |
+| `sm-2022-normale` | 199 / 1075 | 11.2 s → 1.9 s / 4.7 s | 21.8 s → 0.8 s / 15.6 s | 9.9 s → 0.8 s |
+| `spc-2013-rattrapage` | 252 / 906 | 11.9 s → 1.4 s / 4.4 s | 21.4 s → 0.8 s / 14.8 s | 10.5 s → 1.4 s |
+| `sm-2025-normale` | 145 / 820 | 9.6 s → 1.2 s / 3.9 s | 20.8 s → 0.8 s / 11.8 s | 10.5 s → 0.8 s |
+| `sm-2024-normale` | 172 / 936 | 10.0 s → 1.5 s / 4.9 s | 20.1 s → 0.6 s / 15.6 s | 10.4 s → 0.9 s |
+| `spc-2010-normale` | 235 / 626 | 11.2 s → 1.6 s / 4.6 s | 19.2 s → 0.8 s / 8.2 s | 7.5 s → 0.7 s |
+| `spc-2017-normale` | 259 / 662 | 10.5 s → 1.5 s / 5.3 s | 18.9 s → 1.0 s / 8.5 s | 7.4 s → 0.7 s |
+| `spc-2012-rattrapage` | 186 / 711 | 9.0 s → 1.4 s / 4.0 s | 18.6 s → 0.7 s / 10.7 s | 7.7 s → 0.9 s |
+| `spc-2015-normale` | 263 / 650 | 12.4 s → 1.4 s / 5.4 s | 18.6 s → 0.8 s / 6.7 s | 5.8 s → 0.6 s |
+| `spc-2015-rattrapage` | 263 / 680 | 10.0 s → 1.6 s / 5.0 s | 18.5 s → 0.7 s / 7.8 s | 6.8 s → 0.7 s |
+| `sm-2017-normale` | 162 / 764 | 8.6 s → 1.6 s / 4.2 s | 18.4 s → 0.8 s / 11.4 s | 8.2 s → 1.0 s |
+| `spc-2021-normale` | 282 / 657 | 11.7 s → 1.6 s / 5.5 s | 17.8 s → 0.8 s / 7.6 s | 6.4 s → 0.8 s |
+| `sm-2019-normale` | 152 / 815 | 7.8 s → 1.3 s / 3.7 s | 17.3 s → 0.7 s / 9.0 s | 8.0 s → 0.5 s |
+| `spc-2022-normale` | 295 / 514 | 13.2 s → 1.5 s / 6.5 s | 17.3 s → 1.0 s / 4.8 s | 4.4 s → 0.8 s |
+| `spc-2023-normale` | 281 / 521 | 11.8 s → 1.2 s / 4.7 s | 17.3 s → 0.7 s / 5.5 s | 5.1 s → 0.7 s |
+| `spc-2020-normale` | 252 / 494 | 10.0 s → 1.1 s / 4.4 s | 17.0 s → 0.7 s / 5.6 s | 5.4 s → 0.7 s |
+| `spc-2019-normale` | 229 / 582 | 9.5 s → 1.2 s / 4.9 s | 16.7 s → 0.7 s / 6.6 s | 5.6 s → 0.7 s |
+| `spc-2011-rattrapage` | 266 / 582 | 9.9 s → 1.6 s / 4.8 s | 16.3 s → 0.8 s / 7.2 s | 5.1 s → 0.7 s |
+| `spc-2012-normale` | 251 / 616 | 9.9 s → 1.7 s / 5.0 s | 16.0 s → 0.6 s / 7.8 s | 5.2 s → 0.7 s |
+| `spc-2024-normale` | 291 / 486 | 12.4 s → 1.5 s / 5.7 s | 15.7 s → 0.8 s / 4.6 s | 3.6 s → 0.6 s |
+| `sm-2021-normale` | 129 / 762 | 6.8 s → 1.4 s / 3.5 s | 15.3 s → 0.5 s / 10.3 s | 7.9 s → 0.7 s |
+| `spc-2011-normale` | 288 / 520 | 9.7 s → 1.5 s / 4.5 s | 14.5 s → 0.8 s / 4.6 s | 4.1 s → 0.6 s |
+| `spc-2025-normale` | 270 / 489 | 10.2 s → 1.5 s / 4.7 s | 13.9 s → 0.8 s / 5.0 s | 4.9 s → 0.7 s |
+| `spc-2018-normale` | 254 / 440 | 9.7 s → 1.3 s / 4.6 s | 13.4 s → 0.8 s / 3.8 s | 3.2 s → 0.6 s |
+| `sexp-2023-normale` | 182 / 534 | 7.6 s → 1.4 s / 4.1 s | 11.4 s → 0.7 s / 5.3 s | 3.8 s → 0.6 s |
+| `sexp-2022-normale` | 158 / 538 | 7.4 s → 1.2 s / 3.4 s | 11.1 s → 0.5 s / 5.6 s | 4.3 s → 0.7 s |
+| `sexp-2020-normale` | 131 / 526 | 7.0 s → 1.3 s / 3.6 s | 10.9 s → 0.7 s / 6.2 s | 5.1 s → 0.8 s |
+| `sexp-2024-normale` | 165 / 482 | 7.2 s → 0.8 s / 3.1 s | 10.8 s → 0.6 s / 5.7 s | 4.4 s → 0.6 s |
+| `sexp-2021-normale` | 128 / 431 | 4.1 s → 1.1 s / 3.1 s | 10.7 s → 0.6 s / 4.0 s | 4.3 s → 0.5 s |
+| `sexp-2019-normale` | 130 / 404 | 7.1 s → 1.3 s / 3.3 s | 10.6 s → 0.5 s / 4.2 s | 3.4 s → 0.5 s |
+| `sexp-2018-normale` | 159 / 520 | 7.3 s → 1.3 s / 3.8 s | 10.4 s → 0.6 s / 5.0 s | 4.1 s → 0.4 s |
+| `sm-2020-normale` | 66 / 256 | 3.1 s → 1.4 s / 2.7 s | 3.4 s → 0.5 s / 2.9 s | 2.6 s → 0.4 s |
+
+**CE QUE LE TABLEAU DIT.** Médianes sur 39 sujets : « Commencer » 10,0 s →
+premier exercice 1,4 s, sujet complet 4,7 s ; « Terminer » 17,3 s → premier
+corrigé 0,8 s, corrigé complet 7,8 s ; tâche la plus longue 6,4 s → 0,7 s.
+L'élève voit le premier énoncé en 1 à 2 s et le premier corrigé en moins
+d'une seconde sur toute la banque, et plus aucun sujet ne bloque le fil plus
+de 1,7 s d'un coup. Ce qui reste : les quatre corrigés les plus denses (SM
+2024 R, SPC 2024 R, SM 2023 N et R) mettent encore 20 à 30 s à finir de se
+rendre — lisibles et réactifs pendant ce temps ; c'est le travail total, que
+la révélation progressive ne réduit pas. La mesure est un bridage émulé ×6
+sur la machine de la session, pas un téléphone : les rapports avant/après
+sont plus fiables que les valeurs absolues.
+
 **CE QUE ÇA CHANGE POUR LES INSTRUMENTS.** Dix instruments ouvrent les 39
 sujets ; ils attendaient `[data-exam-exo]` puis un délai de 250 à 500 ms. Avec
 la révélation progressive, ce délai mesurerait une page à moitié rendue — et
@@ -3372,3 +3441,80 @@ que le reste se prépare. Le levier suivant — ne rendre que ce qui est près
 de l'écran — a été écarté : les instruments qui lisent le DOM après
 « Terminer » perdraient leur portée, et un élève qui imprime son corrigé
 aussi.
+
+### 11.21 Le silence des leçons, mesuré sur les 62 — et ce n'est pas un gel
+
+Le §8.7 avait mesuré trois leçons denses et un témoin : `reactions-acido-basiques` « ne répond à aucun appui pendant 6,7 s » à ×6. INSTRUMENTS listait
+depuis « le gel des LEÇONS au même protocole que les épreuves » comme portée
+manquante de `gel-epreuve.mjs`. Fait cette nuit : `web/scripts/gel-lecon.mjs`,
+les 62 leçons, viewport 390, processeur bridé ×6, observateur de tâches
+longues posé AVANT la navigation, lecture après deux secondes de calme.
+
+**LE FAIT.** Aucune leçon ne bloque le fil plus d'une seconde d'un coup : la
+tâche la plus longue va de 0,3 à 1,0 s (médiane 0,5 s ; le 1,0 s est
+`pc/rlc-serie`). Le blocage total (somme des tâches longues au-delà de 50 ms)
+va de 0,6 à 2,8 s (médiane 1,0 s), sur 9 tâches en médiane. Ce qui est long,
+c'est le temps avant que la page ne RÉPONDE : la dernière tâche longue finit
+1,9 à 7,3 s après le début de la navigation (médiane 3,5 s). Seize leçons
+au-dessus de 5 s — onze de maths sur quatorze, cinq de physique-chimie ;
+vingt-quatre au-dessus de 4 s (13 des 14 de maths, 11 des 25 de PC, aucune
+de SVT ni de philo) ; quatorze sous 2,5 s (9 des 11 de SVT, 5 des 12 de
+philo). Par matière, médiane : maths 5,3 s, PC 3,8 s, philo 2,6 s, SVT 2,3 s.
+Les cinq pires : `pc/rlc-serie` 7,3 s, `maths/geometrie-espace` 6,8 s,
+`pc/reactions-acido-basiques` 6,4 s, `maths/suites-numeriques` 6,1 s,
+`maths/nombres-complexes-2` 6,1 s.
+
+**CE QUE ÇA CONFIRME, ET CE QUE ÇA CORRIGE.** Sur les trois leçons denses du
+§8, les deux mesures se recoupent à 0,3–0,4 s près (6,4 s ici contre
+« réactif après 6,7 s » ; 6,1 contre 6,05 ; 7,3 contre 7,7). Les origines
+diffèrent — ici le début de la navigation, là l'événement `load` — et cela se
+voit sur le témoin léger : `svt/moyens-de-defense` fait 2,1 s ici contre
+0,8 s là, l'écart étant le réseau et l'analyse du HTML (~1 s), qui pèsent
+en proportion quand il n'y a presque rien à hydrater. Ce que le §8 appelait
+« ignorer le doigt pendant 6,7 s » n'est donc PAS un fil gelé : c'est une
+hydratation en une dizaine de tâches d'une demi-seconde, entre lesquelles la
+page défile, mais pendant laquelle aucun gestionnaire React n'est encore
+attaché — un appui sur la flèche de chapitre ou sur un bouton de QCM ne fait
+rien. Le défaut est réel ; sa forme est autre : pas un gel, un silence. Le
+§8 est laissé tel quel (il dit ce qu'il a mesuré, avec sa méthode), cette
+section porte la correction.
+
+**LE CHIFFRE QUI COMPTE POUR LES ÉPREUVES.** À ×6, une formule de leçon
+coûte ~1 ms de blocage au client (régression grossière sur les 62 : 0,7 s
++ 1,0 ms par formule) ; une formule de corrigé d'épreuve en coûtait ~16 ms
+(§11.20). Seize fois plus, parce que la leçon rend KaTeX au build et le
+client n'hydrate que du HTML, quand l'épreuve rend KaTeX dans le navigateur.
+C'est le prix du « rien du corrigé dans le DOM avant la tentative » — payé
+sciemment, et connu maintenant.
+
+**CE QUE ÇA NE CHANGE PAS.** L'arbitrage du §8.7 reste entier et reste au
+propriétaire : ne pas servir les 14 chapitres d'un coup vaut ~85 % du
+silence, au prix de quatre propriétés. Il a maintenant sa distribution
+complète — seize leçons au-dessus de 5 s, toutes de maths ou de PC — au lieu
+de trois témoins. Rien du produit n'a été modifié dans cette section.
+
+**LA MESURE.** `BASE=http://127.0.0.1:3911 CPU=6 node scripts/gel-lecon.mjs`
+depuis `web/`, machine à froid, ~12 s par leçon, build de HEAD servi par
+`next start` (les deux feuilles de style vérifiées à 200 — le piège n° 4).
+Un bridage émulé, pas un téléphone : les rapports comptent plus que les
+valeurs. Ce qu'il ne mesure pas : un vrai appareil.
+
+**TROUVÉ EN CHEMIN : LE CHANGEMENT DE CHAPITRE, LUI, GÈLE.** La même sonde,
+prolongée d'une flèche → une fois la page calme (`gel-chapitre`, 62 leçons,
+×6) : le chapitre change 0,4 à 3,4 s après l'appui (médiane 1,3 s), en UNE
+tâche de 0,4 à 2,8 s (médiane 1,2 s) — 36 leçons au-dessus d'une seconde,
+10 au-dessus de deux, toutes de maths ou de PC (médianes : maths 2,0 s, PC
+1,4 s, philo 0,7 s, SVT 0,45 s). C'est le geste le plus fréquent de la
+lecture, et c'est le seul vrai gel de la leçon. Décomposé sur `pc/rlc-serie`
+(2,7 s) : démasquer le chapitre et le mettre en page coûte 0,85 s (0,57 s la
+seconde fois), l'animation d'entrée 0,15 s, le focus du titre force cette
+même mise en page (0,86 s de `focus` au profil, ce n'est pas un coût en
+plus) — et **~1,4 s de JavaScript** : React DOM 0,5 s, le pipeline markdown
+0,46 s, KaTeX 0,41 s. Or rien ne devrait se PARSER à un changement de
+chapitre. La cause : `useAttemptRecorder()` — le crochet que chaque QCM,
+chaque point d'arrêt et chaque exercice appellent pour dater leurs
+événements du chapitre courant — lit `useChapter()`, donc **tous les items
+de toute la leçon, chapitres masqués compris, se re-rendent à chaque
+flèche**, et ceux qui rendent leurs formules au rendu les re-parsent. Le
+correctif (un contexte STABLE dont l'index se lit au moment de l'événement,
+pas au rendu) et sa mesure sont dans la section suivante.

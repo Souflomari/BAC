@@ -55,6 +55,12 @@ jobs:
     # cliquets, ancres, données, model-id) coûtaient ~4 min sur le run 451.
     # Le budget de 50 min tient toujours ; le prochain run VERT donnera le
     # total de bout en bout.
+    # RE-MESURÉ la nuit du 2026-09-05, run 470, le premier VERT avec la porte
+    # zoom : 38 min 12 s de bout en bout (job démarré à +18 s). Par étape :
+    # build 2 min 19 s · dom-truth 4 min 32 s · figures 52 s + 52 s ·
+    # presse-papier 8 min 59 s · impression 6 min 30 s · typographie 2 min 58 s
+    # · accents 2 min 45 s · zoom 3 min 06 s · formules + cliquets + ancres +
+    # données + model-id ≈ 3 min 49 s. Reste ~12 min sous le budget de 50 min.
     timeout-minutes: 50
     defaults:
       run:
