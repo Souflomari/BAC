@@ -3049,6 +3049,7 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | `poids-sweep` | 70 routes, processeur bridé | la page la plus lourde du produit est `/notions/pc/rlc-serie` : 30 280 nœuds, 4,5 s de tâches longues sous bridage ×6, réactive après 3,4 s — un FAIT à garder en tête pour la vidéo et les figures, pas un défaut mesuré contre un seuil |
 | `gel-epreuve` (nouveau) | 39 épreuves, processeur ×6 | 3–15 s de gel au « Commencer », 3–30 s au « Terminer » → révélation progressive, §11.20 |
 | `gel-lecon` (nouveau) | 62 leçons, processeur ×6 | aucune tâche ≥ 1 s ; page réactive 1,9–7,3 s après la navigation, 16 leçons > 5 s, §11.21 |
+| `gel-chapitre` (nouveau) | 62 leçons, processeur ×6 | une tâche de 1,2 s en médiane au changement de chapitre (36 leçons ≥ 1 s) → 0,4 s (2 leçons ≥ 1 s) après correctif, §11.22 |
 
 **Ce qui est connu et reste au propriétaire** — re-mesuré à l'identique, pas
 redécouvert : `horsligne-sweep` (une leçon déjà visitée, cliquée hors ligne,
@@ -3518,3 +3519,123 @@ de toute la leçon, chapitres masqués compris, se re-rendent à chaque
 flèche**, et ceux qui rendent leurs formules au rendu les re-parsent. Le
 correctif (un contexte STABLE dont l'index se lit au moment de l'événement,
 pas au rendu) et sa mesure sont dans la section suivante.
+
+### 11.22 Le changement de chapitre : le seul gel de la leçon, et sa cause dans un crochet
+
+**LE FAIT.** Le §11.21 l'a trouvé en prolongeant la sonde d'une flèche : une
+fois la leçon calme, ArrowRight gelait le fil 0,4 à 2,8 s d'un coup (médiane
+1,2 s), 36 leçons sur 62 au-dessus d'une seconde — sur le geste le plus
+fréquent de la lecture.
+
+**LA CAUSE, PROUVÉE AU PROFIL.** Profil d'échantillonnage CDP (500 µs) sur
+`pc/rlc-serie` à ×6 pendant la flèche (2,8 s) : `focus` 0,86 s — la mise en
+page du chapitre démasqué, forcée par le focus du titre, la même que mesurée
+seule (0,84 s), pas un coût en plus ; `(program)` 1,56 s — style, mise en
+page, peinture ; et **1,4 s de JavaScript** : le morceau React DOM 0,50 s,
+le morceau remark/micromark 0,46 s, le morceau KaTeX 0,41 s. Du markdown et
+du KaTeX s'exécutaient à un changement de chapitre, où rien ne devrait se
+parser. `useAttemptRecorder()` — appelé par `McqItem`, `CheckpointItem` et
+`AttemptFirstExercise` pour dater leurs événements du chapitre courant —
+lisait `useChapter()` ; ce contexte change à chaque flèche ; tous les items
+de la leçon, chapitres masqués compris, se re-rendaient, et `MathText`
+re-parsait ses formules au rendu.
+
+**LE CORRECTIF.** `ChapterShell` expose un second contexte, STABLE :
+`{ total, goTo, getCurrent }` — `goTo` est un `useCallback` qui lit une ref,
+`getCurrent()` lit la même ref ; l'objet ne change qu'avec `total`.
+`useAttemptRecorder()` s'y abonne et lit `getCurrent()` au moment de
+l'événement : le `chapterIndex` des payloads est le même qu'avant, lu plus
+tard. Les consommateurs qui DOIVENT se re-rendre à la flèche — le rail, le
+« Chapitre n / N », la carte « à retenir », `ChapterVisitRecorder` — gardent
+`useChapter()`. tsc, lint et les 20 tests attempt-events : verts ; dom-truth : vert dans la CI sur ce commit exact (run 472, 4 min 05 s ; la re-mesure locale de dom-truth tourne encore au moment d'écrire, avec le seul rouge attendu du garde-fou de fraîcheur — le correctif a été commité pendant son build).
+
+**LA MESURE, AVANT → APRÈS.** Sur les 62 leçons, même machine, même serveur local, avant → après : le
+chapitre change 1,3 s → 0,5 s après l'appui (médiane ; étendue 0,4–3,4 s →
+0,2–2,0 s) ; la tâche la plus longue 1,19 s → 0,41 s (0,4–2,8 s → 0,1–1,4 s) ;
+leçons avec une tâche ≥ 1 s : **36 → 2** (`maths/probabilites-conditionnelles`
+1,45 s, `pc/systemes-oscillants` 1,12 s), ≥ 2 s : 10 → 0, ≥ 0,5 s : 54 → 22 ;
+18 leçons sous 0,2 s. Par matière (tâche la plus longue, médiane) : maths
+2,01 → 0,67 s, PC 1,40 → 0,50 s, philo 0,67 → 0,17 s, SVT 0,45 → 0,18 s. La
+somme des tâches longues du geste : 1,40 → 0,56 s de médiane. Le tableau,
+trié par gel avant décroissant :
+
+| leçon | chap. | formules | chapitre changé après : avant → après | tâche la plus longue : avant → après |
+|---|---:|---:|---|---|
+| `maths/probabilites-conditionnelles` | 7 | 802 | 3.4 s → 2.0 s | 2.81 s → 1.45 s |
+| `maths/geometrie-espace` | 12 | 1133 | 2.9 s → 0.8 s | 2.75 s → 0.67 s |
+| `maths/limites-continuite` | 9 | 1051 | 2.7 s → 1.0 s | 2.41 s → 0.79 s |
+| `pc/rlc-serie` | 11 | 641 | 2.6 s → 1.2 s | 2.38 s → 0.99 s |
+| `maths/equations-differentielles` | 8 | 783 | 2.5 s → 0.9 s | 2.30 s → 0.78 s |
+| `pc/reactions-acido-basiques` | 14 | 1027 | 2.4 s → 0.6 s | 2.29 s → 0.47 s |
+| `maths/calcul-integral` | 11 | 814 | 2.4 s → 0.9 s | 2.23 s → 0.70 s |
+| `pc/systemes-oscillants` | 10 | 715 | 2.3 s → 1.3 s | 2.10 s → 1.11 s |
+| `maths/derivabilite-etude-fonctions` | 8 | 1118 | 2.2 s → 1.0 s | 2.03 s → 0.76 s |
+| `maths/nombres-complexes-2` | 9 | 816 | 2.2 s → 1.0 s | 2.02 s → 0.80 s |
+| `maths/suites-numeriques` | 13 | 946 | 2.1 s → 0.6 s | 1.99 s → 0.46 s |
+| `maths/nombres-complexes-1` | 10 | 881 | 2.1 s → 0.8 s | 1.97 s → 0.67 s |
+| `pc/rc-charge` | 7 | 677 | 2.2 s → 1.0 s | 1.91 s → 0.79 s |
+| `maths/fonction-exponentielle` | 10 | 868 | 1.9 s → 0.6 s | 1.85 s → 0.48 s |
+| `pc/chute-mouvements-plans` | 13 | 844 | 1.9 s → 0.8 s | 1.81 s → 0.66 s |
+| `maths/arithmetique` | 10 | 872 | 1.7 s → 0.7 s | 1.57 s → 0.56 s |
+| `pc/aspects-energetiques` | 10 | 823 | 1.6 s → 0.6 s | 1.56 s → 0.50 s |
+| `pc/atome-mecanique-newton` | 6 | 232 | 1.7 s → 0.8 s | 1.55 s → 0.71 s |
+| `pc/rotation-axe-fixe` | 9 | 601 | 1.7 s → 0.7 s | 1.54 s → 0.58 s |
+| `pc/lois-de-newton` | 10 | 413 | 1.7 s → 0.6 s | 1.53 s → 0.48 s |
+| `pc/controle-catalyse` | 7 | 203 | 1.7 s → 0.9 s | 1.51 s → 0.70 s |
+| `pc/decroissance-radioactive` | 8 | 428 | 1.6 s → 0.7 s | 1.48 s → 0.55 s |
+| `pc/evolution-spontanee` | 8 | 338 | 1.6 s → 0.6 s | 1.46 s → 0.52 s |
+| `maths/structures-algebriques` | 11 | 1130 | 1.5 s → 0.5 s | 1.43 s → 0.45 s |
+| `pc/esterification-hydrolyse` | 8 | 327 | 1.5 s → 0.6 s | 1.40 s → 0.48 s |
+| `pc/ondes-em-modulation` | 8 | 337 | 1.5 s → 0.7 s | 1.38 s → 0.58 s |
+| `pc/ondes-mecaniques-periodiques` | 9 | 525 | 1.5 s → 0.6 s | 1.38 s → 0.50 s |
+| `pc/dipole-rl` | 7 | 452 | 1.4 s → 0.5 s | 1.36 s → 0.42 s |
+| `maths/fonction-logarithme` | 9 | 736 | 1.4 s → 0.6 s | 1.34 s → 0.48 s |
+| `pc/etat-equilibre` | 9 | 475 | 1.3 s → 0.5 s | 1.25 s → 0.38 s |
+| `pc/piles` | 9 | 369 | 1.3 s → 0.4 s | 1.19 s → 0.35 s |
+| `svt/genetique-populations` | 7 | 321 | 1.3 s → 0.8 s | 1.19 s → 0.68 s |
+| `pc/noyaux-masse-energie` | 7 | 253 | 1.3 s → 0.6 s | 1.18 s → 0.53 s |
+| `pc/transformations-lentes-rapides` | 7 | 155 | 1.2 s → 0.5 s | 1.10 s → 0.40 s |
+| `maths/denombrement` | 10 | 330 | 1.1 s → 0.4 s | 1.07 s → 0.35 s |
+| `pc/electrolyse` | 8 | 219 | 1.1 s → 0.3 s | 1.01 s → 0.27 s |
+| `philo/analyse-de-texte` | 8 | 0 | 0.9 s → 0.3 s | 0.88 s → 0.22 s |
+| `philo/la-violence` | 9 | 0 | 0.9 s → 0.3 s | 0.87 s → 0.19 s |
+| `pc/transformations-deux-sens` | 6 | 140 | 0.9 s → 0.4 s | 0.86 s → 0.33 s |
+| `pc/ondes-mecaniques-progressives` | 7 | 252 | 0.9 s → 0.3 s | 0.84 s → 0.28 s |
+| `pc/propagation-onde-lumineuse` | 8 | 326 | 0.9 s → 0.2 s | 0.83 s → 0.15 s |
+| `pc/suivi-temporel-vitesse` | 7 | 338 | 0.9 s → 0.3 s | 0.81 s → 0.23 s |
+| `philo/theorie-experience` | 8 | 0 | 0.8 s → 0.2 s | 0.73 s → 0.20 s |
+| `philo/l-etat` | 8 | 0 | 0.8 s → 0.3 s | 0.72 s → 0.21 s |
+| `philo/la-verite` | 10 | 0 | 0.7 s → 0.2 s | 0.70 s → 0.15 s |
+| `philo/le-droit-la-justice` | 8 | 0 | 0.7 s → 0.2 s | 0.68 s → 0.17 s |
+| `philo/autrui` | 8 | 0 | 0.7 s → 0.2 s | 0.67 s → 0.18 s |
+| `svt/transmission-caracteres` | 7 | 291 | 0.7 s → 0.3 s | 0.66 s → 0.22 s |
+| `svt/liberation-energie-matiere-organique` | 9 | 115 | 0.7 s → 0.4 s | 0.64 s → 0.33 s |
+| `philo/la-personne` | 8 | 0 | 0.7 s → 0.2 s | 0.62 s → 0.17 s |
+| `philo/l-histoire` | 8 | 0 | 0.6 s → 0.2 s | 0.56 s → 0.16 s |
+| `philo/le-bonheur` | 7 | 0 | 0.6 s → 0.2 s | 0.55 s → 0.17 s |
+| `philo/le-devoir` | 5 | 0 | 0.6 s → 0.2 s | 0.55 s → 0.16 s |
+| `svt/genetique-humaine` | 7 | 156 | 0.6 s → 0.3 s | 0.54 s → 0.26 s |
+| `philo/la-liberte` | 5 | 0 | 0.5 s → 0.2 s | 0.50 s → 0.17 s |
+| `svt/dysfonctionnements-immunitaires` | 8 | 0 | 0.5 s → 0.2 s | 0.48 s → 0.17 s |
+| `svt/soi-non-soi` | 7 | 0 | 0.5 s → 0.2 s | 0.45 s → 0.12 s |
+| `svt/theorie-tectonique-plaques` | 9 | 1 | 0.5 s → 0.2 s | 0.44 s → 0.18 s |
+| `svt/moyens-de-defense` | 10 | 20 | 0.5 s → 0.2 s | 0.43 s → 0.17 s |
+| `svt/granitisation-deformation` | 7 | 0 | 0.5 s → 0.3 s | 0.43 s → 0.19 s |
+| `svt/role-enzymes` | 8 | 5 | 0.4 s → 0.2 s | 0.41 s → 0.14 s |
+| `svt/chaines-de-montagnes` | 8 | 0 | 0.4 s → 0.2 s | 0.39 s → 0.17 s |
+
+**CE QUI RESTE.** Ce qui reste est la mise en page du chapitre démasqué — quelques
+milliers de nœuds de KaTeX qui passent de `display:none` à visibles — 0,3 à
+0,8 s sur les leçons denses à ×6, 1,45 s sur `probabilites-conditionnelles`
+(7 chapitres, donc des chapitres plus longs) et 1,12 s sur
+`systemes-oscillants`. C'est le coût intrinsèque du « tout dans le DOM, un
+chapitre visible » ; le levier relève de l'arbitrage du §8.7 — moins de
+chapitres servis d'un coup, ou un `content-visibility` qui conserverait
+l'état de rendu des chapitres masqués (hypothèse, non mesurée) — pas d'un
+défaut de code. Les 36 leçons qui gelaient plus d'une seconde par un défaut
+de code ne sont plus que deux, par leur poids.
+
+**LA MESURE.** `BASE=http://127.0.0.1:3911 CPU=6 node scripts/gel-chapitre.mjs`
+depuis `web/`, machine à froid ; avant et après sur le même serveur local,
+build de HEAD, feuilles de style vérifiées à 200. Un bridage émulé, pas un
+téléphone : les rapports comptent plus que les valeurs.
