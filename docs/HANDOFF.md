@@ -1166,3 +1166,84 @@ presse-papier, impression, typographie. Toutes avec leur test négatif joué.
   produit. Rattrapé au `git diff`, avant tout commit.
 - *Vérifier l'outil AVANT d'éditer le corpus.* KaTeX refuse U+202F ; on l'a su
   en le lui demandant, pas en cassant 35 fichiers.
+
+---
+
+## 9. Addendum du 2026-09-05 — l'arc « ce que l'item dit sans le dire »
+
+> Deux défauts, tous deux dans le CONTENU plutôt que dans le code, tous deux
+> invisibles pour tous les instruments existants, tous deux mesurés puis clos
+> puis gardés. Ils partagent un trait qui vaut d'être retenu : **le harnais
+> les avait sous les yeux et ne les regardait pas.**
+
+### 9.1 L'indice de longueur — le défaut que l'outil annonçait lui-même
+
+`item-stats.mjs` mesurait depuis toujours deux biais de la clé de correction.
+Le premier, la POSITION, est réglé par un mélange déterministe. Le second, la
+LONGUEUR, ne l'est pas — et le script le disait dans sa propre documentation :
+*« length-tell is NOT fixed by shuffling order — reported for visibility. »*
+La colonne s'affichait à chaque exécution (svt 92 %, pc 53 %, maths 36 %) et
+personne ne s'en était emparé.
+
+**Mesuré :** 1 465 items QCM éligibles, **38 %** où la clé est strictement la
+plus longue, **24 %** où l'avance se VOIT (≥ 20 caractères ET ≥ 20 % de la
+deuxième). Onze notions de SVT à **100 %**. Pire item : 331 caractères contre
+157.
+
+**Fait :** ~1 100 choix réécrits sur 340 items. **Les 62 notions sont à zéro.**
+
+**Gardé :** `web/scripts/indice-longueur.mjs --porte`, scellé à 0/1 456. Il a
+commencé sa vie en CLIQUET (une notion en dette ne peut pas s'aggraver, une
+notion neuve naît sous plafond), parce qu'exiger 25 % partout aurait échoué au
+premier commit ; la campagne l'a amené à zéro, ce qui en fait aujourd'hui une
+porte franche.
+
+**À lire avant de reprendre :** `docs/audits/indice-longueur.md` — notamment
+les TROIS remèdes et comment choisir entre eux, et les deux cas où
+l'instrument doit céder devant la pédagogie (`BON-19`, où les mauvaises
+réponses sont courtes PARCE QUE c'est ce qui les rend mauvaises).
+
+**Reste ouvert :** l'indice INVERSE (clé strictement la plus COURTE), mesuré
+et affiché — 15 % du corpus, jusqu'à 52 % sur `pc/aspects-energetiques` — mais
+non gardé. Et la valeur diagnostique réelle des distracteurs allongés, que
+rien ici ne mesure : c'est une relecture de la voie pédagogie.
+
+### 9.2 Les accents perdus — un produit qui enseigne l'orthographe qu'il écrit
+
+`typo-francaise.mjs` vérifie la PONCTUATION du texte rendu. Il ne regarde pas
+les LETTRES. Le corpus contenait, à côté d'une prose soignée, des passages
+entiers désaccentués : « Reduction au meme denominateur », « L'eleve croit que
+la recurrence d'Euler resout exactement l'equation differentielle ».
+
+**Mesuré au rendu :** 128 occurrences sur 65 pages, dans les libellés d'items
+et les titres d'exercices. **Fait :** 4 060 accents rendus à la source en cinq
+vagues. **Gardé :** `web/scripts/accents-manquants.mjs --porte`, zéro.
+
+**Trois pièges, tous attrapés avant écriture**, et tous détaillés dans
+`docs/audits/accents-francais.md` : les identifiants (`mc.philo.etat.…`), le
+POINT qui sépare un identifiant ET termine une phrase, et les formules à
+cheval sur deux lignes d'un bloc plié YAML.
+
+**Un effet de bord qui vaut un avertissement général :** la régénération de
+`lectures-graphiques.md` après la campagne fait remonter une entrée de 16 à 17
+mentions — un « d'apres la figure » devenu détectable. **Un corpus mal
+accentué rend aveugles les outils qui cherchent du français.** L'inventaire de
+l'exposition K-8 comptait par défaut, et rien ne pouvait le signaler.
+
+**Reste ouvert :** la source non rendue (champs `description` des
+misconceptions, notes de banque hors page) reste partiellement désaccentuée.
+Dette bornée, connue, sans effet sur l'élève.
+
+### 9.3 La règle de méthode que ces deux arcs ajoutent
+
+**Un instrument qui SIGNALE sans GARDER finit par ne plus être lu.**
+`item-stats` disait la vérité depuis des mois, dans un format qui n'obligeait
+personne. Ce qui a changé n'est pas la mesure — c'est qu'elle casse
+maintenant le build.
+
+Corollaire pratique : quand une sonde et une réparation existent en deux
+langages, **elles lisent la même liste**, exportée par l'une pour l'autre. Au
+premier test négatif, la sonde des accents connaissait 130 formes quand la
+réparation en connaissait 600 : sur trois mots sabotés volontairement, elle
+n'en voyait qu'un. Une porte plus étroite que la réparation déclare propre ce
+qu'elle ne sait pas voir.
