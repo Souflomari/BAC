@@ -2132,3 +2132,33 @@ main : le SVG serait réécrit à la prochaine exécution.**
 > classe ; il ne la documente pas. La question utile n'est pas « combien de
 > cas restent » mais **« combien ont été REGARDÉS »** — et cette
 > distinction-là ne se lit pas dans un total, seulement fichier par fichier.
+
+### 10.17 « 767 évaluables » ne veut pas dire « richement couvert »
+
+Une fois le plancher atteint partout (§10.9), la question suivante est la
+MARGE. Mesurée :
+
+> **459 misconceptions sur 767 — soixante pour cent — sont exactement au
+> plancher de trois items du banc.** 161 en ont quatre, 54 en ont cinq, et la
+> queue va jusqu'à 22.
+
+Ce n'est pas un défaut : c'est la forme attendue d'une campagne qui a écrit
+trois items là où il y en avait zéro, un ou deux. Mais c'est une forme
+FRAGILE, et il vaut mieux l'écrire que la découvrir : sur ces 459 familles,
+**retirer ou retaguer UN seul item les fait retomber sous le plancher** — et
+sous le plancher, une misconception n'est pas « moins bien couverte », elle
+est INÉVALUABLE, son état reste « unassessed » à jamais.
+
+Ce qui protège cette forme existe déjà : le cliquet de
+`couverture-diagnostique` interdit à `plancher` de descendre, notion par
+notion. Une réécriture d'item qui déplacerait un tag casse donc
+l'intégration au lieu de dégrader le produit en silence. **C'est la
+justification rétrospective d'un cliquet scellé par notion plutôt que
+globalement** — un total ne bougerait pas si une notion perdait ce qu'une
+autre gagne.
+
+Ce que ce chiffre ne dit PAS : qu'il faut un quatrième item partout. Trois
+est le seuil que la chaîne exige pour CONCLURE ; au-delà, chaque item ajoute
+de la preuve, pas une capacité. Où mettre le prochain item — approfondir une
+famille déjà évaluable, ou écrire ce qui manque ailleurs — est un arbitrage
+pédagogique, pas une conséquence du tableau.

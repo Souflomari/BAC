@@ -286,6 +286,49 @@ et que le périmètre du fichier a doublé après. C'est le sujet de
 `web/scripts/resume-couverture.mjs`, qui partage désormais la convention de
 comptage de CET instrument via `web/scripts/lib/couverture-compte.mjs`.
 
+## « Évaluable » n'est pas « richement couvert » — la forme du corpus
+
+Mesuré le 2026-09-05, une fois le plancher atteint partout. Le nombre d'items
+du banc par misconception :
+
+| items du banc | misconceptions |
+|---:|---:|
+| **3** (pile au plancher) | **459** |
+| 4 | 161 |
+| 5 | 54 |
+| 6 | 45 |
+| 7 | 16 |
+| 8 | 13 |
+| 9 | 7 |
+| 10 | 4 |
+| 12 | 4 |
+| 13 | 2 |
+| 17 | 1 |
+| 22 | 1 |
+
+**Soixante pour cent des misconceptions du corpus sont exactement au
+plancher.** Ce n'est pas un défaut : c'est la forme attendue après une
+campagne qui a écrit trois items là où il y en avait zéro, un ou deux. Mais
+c'est une forme FRAGILE, et il vaut mieux le dire que le découvrir :
+
+> **Sur 459 familles, retirer ou retaguer UN seul item les fait retomber
+> sous le plancher — et une misconception sous le plancher n'est pas
+> « moins bien couverte », elle est INÉVALUABLE : son état reste
+> « unassessed » à jamais.**
+
+Ce qui protège cette forme est le cliquet de ce document : `plancher` ne peut
+que MONTER, par notion. Une réécriture d'item qui déplacerait un tag casse
+donc l'intégration au lieu de dégrader le produit en silence. C'est
+exactement le travail qu'on attend d'un cliquet, et c'est la raison pour
+laquelle il est scellé par notion et pas globalement.
+
+Ce que ce chiffre NE dit pas : qu'il faudrait un quatrième item partout. Le
+plancher de trois est le seuil que la chaîne exige pour CONCLURE ; au-delà,
+chaque item ajoute de la preuve, pas une capacité nouvelle. Décider où
+mettre le prochain item — approfondir une famille déjà évaluable, ou écrire
+la leçon qui manque — est un arbitrage pédagogique, pas une conséquence de
+ce tableau.
+
 ## Le plancher est atteint partout (2026-09-05)
 
 La campagne a fermé les **32 notions** encore partiellement aveugles, avec
