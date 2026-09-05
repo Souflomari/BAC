@@ -1171,8 +1171,8 @@ presse-papier, impression, typographie. Toutes avec leur test négatif joué.
 
 ## 9. Addendum du 2026-09-05 — l'arc « ce que l'item dit sans le dire »
 
-> Deux défauts, tous deux dans le CONTENU plutôt que dans le code, tous deux
-> invisibles pour tous les instruments existants, tous deux mesurés puis clos
+> Trois défauts, tous dans le CONTENU plutôt que dans le code, tous
+> invisibles pour tous les instruments existants, tous mesurés puis clos
 > puis gardés. Ils partagent un trait qui vaut d'être retenu : **le harnais
 > les avait sous les yeux et ne les regardait pas.**
 
@@ -1243,7 +1243,42 @@ l'exposition K-8 comptait par défaut, et rien ne pouvait le signaler.
 misconceptions, notes de banque hors page) reste partiellement désaccentuée.
 Dette bornée, connue, sans effet sur l'élève.
 
-### 9.3 La règle de méthode que ces deux arcs ajoutent
+### 9.3 L'indice de l'absolu — la deuxième chose que l'item dit sans le dire
+
+Tous les manuels de stratégie de QCM enseignent la même règle : **« barre les
+réponses qui contiennent toujours, jamais, uniquement, aucun »**. Elle marche
+parce qu'un rédacteur fabrique ses distracteurs en poussant une idée jusqu'à
+l'excès, et que l'excès s'écrit avec ces mots-là.
+
+**Mesuré :** sur 1 619 items éligibles, **106** où éliminer tout ce qui
+sur-affirme ne laisse qu'UNE réponse debout — et dans **54** cas c'est la
+bonne. **51 %**, contre 25 % au hasard. Un élève qui n'a rien révisé doublait
+sa note sur ces items-là.
+
+**Fait :** 54 items, ramenés à **0**. Quand la stratégie tranche encore (52
+items), elle désigne désormais un distracteur.
+
+**Gardé :** `web/scripts/indice-absolu.mjs --porte`, en CI, scellé à 0 direct
+et 70 inverse.
+
+**Les deux remèdes, et celui qu'il ne faut surtout pas prendre.** Le remède
+interdit est de désarmer les distracteurs : dans la quasi-totalité des cas,
+l'absolu d'un distracteur **est ce qui le rend faux** (« une transformation
+spontanée est *toujours* rapide »). Le retirer détruit l'erreur que l'item
+diagnostique. Les deux remèdes légitimes sont (1) **rendre à la clé l'absolu
+VRAI qu'elle a le droit de porter** — une loi, une définition, un théorème
+s'énoncent absolument, et les écrire ainsi est plus juste, pas moins : 50 des
+54 items ; (2) retirer l'absolu **gratuit** d'un distracteur, celui dont
+l'erreur est ailleurs : les 4 autres.
+
+**Pourquoi l'inverse n'est pas ramené à zéro :** sur les 424 items où un seul
+choix porte un absolu, c'est la clé 70 fois — **17 %, sous le hasard**. La
+stratégie symétrique fait perdre des points ; il n'y a rien à corriger, il y a
+seulement à empêcher que ça grandisse, et le cliquet le fait.
+
+**À lire :** `docs/audits/indice-absolu.md`.
+
+### 9.4 La règle de méthode que ces trois arcs ajoutent
 
 **Un instrument qui SIGNALE sans GARDER finit par ne plus être lu.**
 `item-stats` disait la vérité depuis des mois, dans un format qui n'obligeait
@@ -1256,3 +1291,11 @@ premier test négatif, la sonde des accents connaissait 130 formes quand la
 réparation en connaissait 600 : sur trois mots sabotés volontairement, elle
 n'en voyait qu'un. Une porte plus étroite que la réparation déclare propre ce
 qu'elle ne sait pas voir.
+
+**Second corollaire, venu de l'indice de l'absolu : deux portes qui gardent
+la même surface s'attrapent l'une l'autre, et c'est le signe qu'aucune ne
+suffit.** En allongeant la clé de `CI-17` pour lui rendre son « toujours », la
+campagne des absolus a fait sonner la porte des LONGUEURS : la clé était
+devenue visiblement la plus longue. Le correctif d'un défaut de forme est le
+plus souvent un autre défaut de forme, et seul un harnais qui garde les deux
+le voit.

@@ -213,6 +213,17 @@ jobs:
       - name: Cliquet indice-longueur (la clé ne se dénonce pas par sa taille)
         run: node scripts/indice-longueur.mjs --porte
 
+      # CLIQUET INDICE-ABSOLU (2026-09-05). L'autre chose qu'un item dit sans
+      # le dire. Tous les manuels de stratégie de QCM enseignent la même règle :
+      # « barre les réponses qui contiennent toujours, jamais, uniquement,
+      # aucun ». Elle marchait ici : sur 106 items, éliminer tout ce qui
+      # sur-affirme ne laissait qu'UNE réponse debout, et c'était la bonne 54
+      # fois — 51 % contre 25 % au hasard. Ramené à 0 ; le cliquet garde les
+      # deux sens, car le remède (rendre à la clé l'absolu VRAI qui lui revient)
+      # crée le défaut symétrique s'il est appliqué sans regarder.
+      - name: Cliquet indice-absolu (la clé n'est pas la seule à ne pas sur-affirmer)
+        run: node scripts/indice-absolu.mjs --porte
+
       - name: Model-id hygiene gate
         working-directory: .
         run: |
