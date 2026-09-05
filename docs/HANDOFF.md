@@ -2943,6 +2943,23 @@ Ce qu'elle ne dit pas, et il faut l'écrire : **elle dit qu'une formule est
 LISIBLE, pas qu'elle est JUSTE.** Une formule fausse mais bien formée passe
 ici sans un mot.
 
+**La porte a DEUX directions, et aucune ne suffit seule.** La moitié « rendu »
+ne peut pas ouvrir ce que l'élève n'ouvre pas non plus : les 49
+`exercises.yaml` — l'exercice sommet de chaque leçon — ne se révèlent qu'après
+une TENTATIVE, et aucun instrument ne sait répondre à une question. Une
+seconde passe fait donc l'inverse : elle prend chaque `$…$` et `$$…$$` du
+corpus, tel qu'il est écrit, et le donne à KaTeX. **71 174 formules ; une
+seule refusée** — `$90^\\circ$`, une contre-oblique de trop dans un scalaire
+YAML non quoté, à trois cents lignes d'un voisin quoté qui écrivait la même
+chose correctement.
+
+Et cette passe-là est AVEUGLE au défaut qui précède : chacune des 49 formules
+cassées était, prise seule, du LaTeX parfaitement valide. Le défaut n'existait
+qu'à la couture entre le markdown et KaTeX. Deux passes, deux angles morts
+complémentaires — vérifiées rouges chacune de son côté : un bloc remis dans
+l'ancienne forme pour le rendu, une formule invalide glissée dans un
+`exercises.yaml` pour la source.
+
 Trois défauts trouvés au passage dans le `\text{}` des formules, invisibles à
 la porte accents tant que le corrigé restait fermé : « qu'a l'etablissement »,
 « une espece chimique », « initialement charge ». Et deux renvois
