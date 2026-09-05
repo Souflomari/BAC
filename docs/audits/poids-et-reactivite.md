@@ -186,3 +186,17 @@ arbre `"className":"katex"` = base, chaîne `<span class="katex-mathml"`
   sa FACTURE**, et il arrête de compter exactement là où le préchargement
   commence. Un chiffre cité de mémoire dans la colonne « ce qu'on ne mesure
   pas » n'est pas une mesure — il n'a jamais été réexécuté par personne.
+
+- **La page d'ÉPREUVE — MESURÉE le soir du 2026-09-05, et c'était le pire
+  gel du produit.** Ce balayage ne l'ouvrait pas : la page se rend en trois
+  temps (seuil, « Commencer », « Terminer ») et ses passes n'en jouaient
+  aucun. `web/scripts/gel-epreuve.mjs` les joue, processeur bridé ×6, sur les
+  39 sujets : **3 à 15 s de gel au « Commencer »** (médiane 10 s) et **3 à
+  30 s au « Terminer »** (médiane 17 s), en une seule tâche de 2,6 à 15,9 s —
+  tout se rend côté client, d'un coup, par le pipeline markdown + KaTeX de
+  chaque bloc. Le levier que le §« Ce qui reste » ci-dessus laisse au
+  propriétaire pour les LEÇONS — ne pas tout rendre d'un coup — ne casse rien
+  sur l'épreuve : les exercices se révèlent maintenant question par question,
+  chacune dans une transition React, et `MdBlock` est mémoïsé (il repassait
+  par le pipeline entier à chaque seconde du chrono). Chiffres avant/après et
+  récit : HANDOFF §11.20.
