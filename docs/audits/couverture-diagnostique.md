@@ -224,6 +224,39 @@ les plus creuses : `maths/geometrie-espace` (23 erreurs inévaluables),
 `philo/la-violence` (18), `philo/autrui` (16). Ce n'est plus une zone d'ombre :
 c'est une file d'attente chiffrée, notion par notion.
 
+## Une seconde disparité, plus grande, découverte en cherchant la suite (2026-09-05)
+
+En prospectant la suite de la campagne SVT, une commande d'inventaire a
+répondu à une question que personne n'avait posée : quels fichiers existent,
+notion par notion ?
+
+| Matière | Notions | `checkpoints.yaml` | `exercises.yaml` | `bank.yaml` |
+|---|---|---|---|---|
+| maths | 14 | 14 | 14 | 14 |
+| pc | 25 | 25 | 25 | 24 |
+| philo | 12 | 10 | 10 | 0 |
+| svt | 11 | **0** | **0** | **0** |
+
+La pauvreté d'items mesurée plus haut n'était donc que la moitié visible du
+problème. **Onze leçons de SVT n'avaient aucun point d'arrêt** — aucune
+question posée pendant la lecture, aucun engagement demandé, donc aucun signal
+envoyé au modèle apprenant avant le banc de fin. `philo/l-histoire` et
+`philo/le-bonheur` étaient dans le même cas.
+
+Ce manque-là a été refermé le jour même : 90 points d'arrêt écrits (75 en SVT,
+15 en philo), les 64 notions du corpus en portent désormais, 363 marqueurs au
+total. La contrainte tenue tout du long concerne directement cet audit :
+**aucune misconception nouvelle n'a été déclarée**, les 270 distracteurs se
+répartissant sur les inventaires existants. Le rapport est inchangé — 458
+misconceptions évaluables, 0 fantôme, 111 distracteurs sans tag, tous des
+`null` explicites. Ajouter des sondes n'a pas rouvert la dette qu'on venait de
+fermer.
+
+Ce qui reste ouvert, et qui n'est pas de l'ordre de l'écriture : la SVT n'a ni
+banc d'entraînement (`bank.yaml`) ni exercice de sommet (`exercises.yaml`),
+faute d'une banque d'annales — `docs/sujets/` n'a jamais eu de dossier `svt/`.
+Voir HANDOFF §10.6 pour la liste complète de ce qui reste et à qui.
+
 ## Lancer l'instrument
 
 ```bash

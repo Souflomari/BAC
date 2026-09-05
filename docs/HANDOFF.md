@@ -1370,3 +1370,142 @@ campagne des absolus a fait sonner la porte des LONGUEURS : la clé était
 devenue visiblement la plus longue. Le correctif d'un défaut de forme est le
 plus souvent un autre défaut de forme, et seul un harnais qui garde les deux
 le voit.
+
+---
+
+## 10. Addendum du 2026-09-05 — l'arc « la leçon qui ne demande jamais rien »
+
+### 10.1 Le fait, mesuré avant d'être cru
+
+La question de départ n'était pas une intuition mais une commande : compter,
+notion par notion, quels fichiers existent. Le résultat tenait en quatre
+lignes.
+
+| Matière | Notions | `checkpoints.yaml` | `exercises.yaml` | `bank.yaml` |
+|---|---|---|---|---|
+| maths | 14 | 14 | 14 | 14 |
+| pc | 25 | 25 | 25 | 24 |
+| philo | 12 | 10 | 10 | 0 |
+| svt | 11 | **0** | **0** | **0** |
+
+Traduit en expérience d'élève : sur les 64 notions du produit, 51 arrêtaient
+le lecteur cinq à huit fois par leçon pour lui demander de s'engager, puis lui
+nommaient son modèle faux quand il se trompait. **Les treize autres — les onze
+notions de SVT, plus `philo/l-histoire` et `philo/le-bonheur` — se
+traversaient d'un bout à l'autre sans qu'on lui demande une seule fois de
+prendre position.** La leçon leur parlait ; elles n'avaient aucun moyen de
+répondre.
+
+Ce n'est pas un défaut cosmétique. Le moteur du produit est un modèle
+apprenant qui se nourrit de ce que l'élève coche ; une leçon sans point
+d'arrêt ne lui envoie rien, et le premier signal arrive au banc de fin,
+c'est-à-dire trop tard pour changer la lecture en cours.
+
+### 10.2 La moitié séparable — ce qui bloquait, et ce qui ne bloquait pas
+
+La recette de conversion du sommet
+(`docs/pipeline/SUMMIT-CONVERSION-RECIPE.md`) traite `exercises.yaml` et
+`checkpoints.yaml` comme les deux moitiés d'un même geste. Pour ces treize
+notions, cette solidarité était précisément le blocage — et elle n'est pas
+nécessaire.
+
+`exercises.yaml` exige une annale nationale vérifiée. Or :
+
+- **La SVT n'a pas de banque de sujets du tout** : `docs/sujets/` contient
+  `maths/`, `pc/`, `philo/` — et rien pour la SVT. Ce n'est pas un oubli de
+  cette session, c'est un chantier jamais ouvert.
+- **Les deux notions de philo sont documentées comme non sourçables**, et pour
+  une raison de périmètre : السعادة n'est pas au programme de la مجزوءة
+  الأخلاق des filières scientifiques, et التاريخ n'est jamais examiné dans la
+  مجزوءة الوضع البشري scientifique. Les deux fiches remontent au décideur un
+  arbitrage curriculaire — ces leçons relèvent-elles d'un choix pédagogique
+  assumé, ou d'une filière littéraire ? Il reste ouvert.
+
+`checkpoints.yaml`, lui, n'exige rien qu'une annale : il s'écrit à partir de
+la leçon et de son propre inventaire d'erreurs. **Séparer les deux moitiés
+débloque immédiatement la seule des deux qui manque à chaque lecture**, et
+laisse l'autre là où elle doit rester — entre les mains de l'humain.
+
+### 10.3 Ce qui a été fait
+
+**90 points d'arrêt**, sur les treize notions : 75 en SVT (6 à 8 par notion),
+15 sur les deux notions de philo. Les 64 notions du corpus en portent
+désormais, pour **363 marqueurs** au total.
+
+Chacun suit la même anatomie que les 273 existants : une porte d'engagement
+qui transforme le « prends position » rhétorique du premier chapitre en
+engagement réel, posée entre la question et sa révélation ; puis une porte de
+rupture par chapitre, à l'endroit où la leçon vient d'écarter une erreur
+classique. Aucun score, aucune série, aucun décompte — et le plancher du banc
+de fin n'est pas touché : ces sondes sont affichées en ligne, jamais
+recomptées.
+
+**Deux cas méritent d'être signalés pour ce qu'ils apprennent.**
+
+`chaines-de-montagnes` posait DÉJÀ, au milieu de son deuxième chapitre, un
+« prends position » sur l'Himalaya, et donnait la réponse trois lignes plus
+bas : « si tu as répondu oui, c'est une prédiction logique. Elle est fausse. »
+L'auteur avait écrit la sonde ; il lui manquait le moyen de recueillir la
+réponse. Cinq autres leçons portaient la même trace. **Quand une leçon
+interpelle et répond à elle-même, la conversion ne crée rien : elle rend
+effectif ce qui était déjà voulu.**
+
+`philo/le-bonheur` et `philo/l-histoire` étaient bloquées, en apparence, par
+un arbitrage de périmètre. Elles l'étaient pour `exercises.yaml`, pas pour
+leurs points d'arrêt. **Un blocage réel sur une moitié d'un livrable ne
+justifie pas de tenir l'autre moitié en otage** — à condition de le dire, et
+l'en-tête de chaque fichier porte l'explication pour que le prochain lecteur
+ne prenne pas l'absence d'exercices pour un oubli.
+
+### 10.4 La contrainte qui a façonné les énoncés
+
+Une règle, tenue sur les 90 sondes : **n'utiliser que les identifiants
+d'erreur déjà déclarés dans `items.yaml`.** Il aurait été plus commode
+d'inventer une erreur par question — chaque distracteur aurait eu son étiquette
+sur mesure. C'eût été rouvrir, le lendemain de sa fermeture, la dette de
+couverture du §9.4 : une misconception déclarée sans trois items de banc n'est
+jamais évaluable, et la SVT venait tout juste de passer à zéro
+sous-plancher. Les 270 distracteurs se répartissent donc sur les inventaires
+existants, et pas un de plus. `couverture-diagnostique` est inchangé : 458
+misconceptions évaluables, 0 fantôme.
+
+### 10.5 Les deux portes de forme, à l'épreuve d'une campagne neuve
+
+Les instruments du §9.1 et du §9.3 balaient aussi `checkpoints.yaml`. Sur 90
+items neufs écrits avec l'intention de les respecter, **ils ont mordu onze
+fois** — dont une où ils se sont contredits l'un l'autre : en enrichissant la
+clé trop courte de `genetique-populations/cp-r0-predict` (105 caractères
+contre 133 au choix suivant, 27 % d'écart, repérable sans lire), le mot
+ajouté — « alors qu'aucun d'entre eux ne montre le moindre signe » — a fait
+d'elle le seul choix à sur-affirmer, et sonner la porte des absolus. C'est le
+troisième cas de ce genre depuis qu'elles sont armées ensemble, et il confirme
+la règle du §9.5 : le correctif d'un défaut de forme est le plus souvent un
+autre défaut de forme.
+
+La leçon d'écriture qui en sort est stable et vaut d'être notée : **on ne
+désarme jamais un distracteur ; on arme celui dont l'absolu EST l'erreur.**
+« Une élévation de température accélère toujours une transformation
+chimique », « le substrat occupe les sites actifs sans jamais en ressortir »,
+« aucun de ses arguments n'a résisté à la vérification » — dans les trois cas,
+le mot absolu ajouté n'est pas un rembourrage : c'est exactement la règle
+fausse que l'élève applique.
+
+### 10.6 Ce qui reste, et à qui
+
+Les points d'arrêt sont posés partout. **Les deux autres couches ne le sont
+pas, et leur blocage n'est pas technique.**
+
+1. **La SVT n'a ni `exercises.yaml` ni `bank.yaml`, sur ses onze notions** —
+   parce qu'aucune banque de sujets SVT n'existe. Ouvrir `docs/sujets/svt/`
+   est un chantier d'extraction en soi (transcription et vérification
+   d'annales nationales), du même ordre que ce qui a été fait pour la PC et la
+   philo. C'est le plus gros manque restant du produit, et il se chiffre :
+   onze sommets encore imprimés, onze bancs d'entraînement absents.
+2. **La philo n'a aucun `bank.yaml`**, sur ses douze notions. À trancher :
+   est-ce un manque, ou la banque n'a-t-elle pas de sens pour une épreuve de
+   dissertation ? La question n'a jamais été posée explicitement.
+3. **`pc/atome-mecanique-newton` n'a pas de `bank.yaml`** — seule notion de PC
+   dans ce cas, probablement un simple trou à combler.
+4. **`philo/le-bonheur` et `philo/l-histoire` n'ont pas d'`exercices`**, et
+   n'en auront pas tant que l'arbitrage curriculaire du §10.2 n'est pas rendu.
+

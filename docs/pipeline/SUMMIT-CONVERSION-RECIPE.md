@@ -173,6 +173,59 @@
     follow-up item-authoring target rather than silently absorbing it into
     an unrelated tag to avoid an uncomfortable zero.
 
+## Les deux moitiés sont SÉPARABLES (2026-09-05)
+
+La recette ci-dessus décrit `exercises.yaml` et `checkpoints.yaml` comme les
+deux moitiés d'un même geste, dans cet ordre. C'est le bon ordre quand une
+annale existe. **Ce n'est pas une dépendance.**
+
+- `exercises.yaml` exige un sujet vérifié : sans banque d'annales pour la
+  matière, ou sans arbitrage rendu sur le périmètre curriculaire de la notion,
+  il est bloqué — et le blocage n'est pas technique, il appartient à l'humain.
+- `checkpoints.yaml` n'exige rien d'autre que la leçon elle-même et son
+  inventaire d'erreurs. Il se rédige, se valide et se garde sans aucune source
+  externe.
+
+Le validateur suit déjà cette séparation : le **contrat de leçon convertie**
+(marqueur `[[exercise:]]` obligatoire, titres hérités interdits) ne se
+déclenche QUE si `exercises.yaml` existe. Poser des points d'arrêt sans
+toucher au sommet est donc licite, et ne demande aucune chirurgie de
+`lesson.md` au-delà des marqueurs.
+
+**Règle : quand la moitié « sommet » est bloquée, livrer la moitié « points
+d'arrêt » et écrire le blocage dans l'en-tête du fichier livré.** Un blocage
+réel sur une moitié ne justifie pas de tenir l'autre en otage ; mais un
+lecteur qui trouve `checkpoints.yaml` sans `exercises.yaml` doit savoir, sans
+enquêter, si c'est un choix ou un oubli. Voir `content/philo/le-bonheur/` et
+`content/philo/l-histoire/` pour la forme de cet en-tête, et HANDOFF §10.2
+pour l'arbitrage qu'ils portent.
+
+## Addendum SVT (campagne du 2026-09-05, onze notions)
+
+- **Pas de `steps[]` non plus qu'en philo, mais pour une autre raison** : les
+  raisonnements de SVT sont des chaînes de causes, pas des dérivations. Ce qui
+  remplace le pas calculé, c'est la **sonde contrefactuelle** — bloquer une
+  étape et demander ce qu'il reste. « On bloque l'ATP synthase : combien d'ATP
+  par glucose ? » fait sentir la répartition (4 sur 38) bien mieux qu'un total
+  récité. Même méthode pour l'enzyme dénaturée qu'on ramène à 37 °C, pour le
+  sérum administré six mois plus tôt, pour les deux tubes de levures.
+- **N'utiliser QUE les identifiants d'erreur déjà déclarés dans `items.yaml`.**
+  Inventer une misconception par question est plus facile et rouvre aussitôt
+  la dette de couverture (`docs/audits/couverture-diagnostique.md` : une erreur
+  déclarée sous trois items de banc n'est jamais évaluable). Si un énoncé
+  n'entre dans aucun modèle déclaré, changer l'énoncé — pas l'inventaire.
+- **Chercher dans la leçon les « prends position » déjà écrits.** Six des onze
+  leçons interpellaient l'élève au milieu d'un chapitre puis répondaient
+  elles-mêmes trois lignes plus bas. Le point d'arrêt s'y insère tel quel, et
+  la sonde est déjà rédigée par l'auteur — voir `chaines-de-montagnes`
+  (l'Himalaya, fin du chapitre 2).
+- **Placement**: la porte d'engagement se pose ENTRE le « prends position » et
+  sa révélation ; les portes de rupture, juste après l'encadré « erreur
+  classique à éviter » ou la « vérification rapide » qui clôt le chapitre.
+  L'outil de pose (une insertion par numéro de ligne, marqueur seul sur sa
+  ligne, lignes vides autour, invariants vérifiés) évite les marqueurs collés
+  à une prose ou posés deux fois.
+
 ## Unsourceable lessons
 
 Ship `sourcing: {status: unsourced}` + an honest note, on the ledger's named
