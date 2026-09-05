@@ -24,7 +24,7 @@ items:
         text: "Non - la coexistence durable d'acide, d'alcool, d'ester et d'eau signale une transformation non totale (limitée) ; attendre plus longtemps ne fera pas disparaître le reste d'acide et d'alcool."
         correct: true
       - id: B
-        text: "Oui - toute réaction chimique finit toujours par consommer entièrement ses réactifs si on lui laisse assez de temps."
+        text: "Oui - toute réaction chimique finit toujours par consommer entièrement ses réactifs si on lui laisse assez de temps ; ici, quelques jours n'ont simplement pas suffi."
         correct: false
         feedback: >
           C'est l'erreur centrale à éviter dans ce chapitre : croire qu'une
@@ -35,7 +35,7 @@ items:
           que soit le temps écoulé. Le temps seul ne fait pas disparaître un
           réactif dans une transformation non totale.
       - id: C
-        text: "Oui, mais seulement si on ajoute encore du catalyseur - le temps seul ne suffit jamais."
+        text: "Oui, mais seulement si on ajoute encore du catalyseur - le temps seul ne suffit jamais à consommer entièrement l'acide et l'alcool présents dans le ballon."
         correct: false
         feedback: >
           Un catalyseur accélère la vitesse à laquelle le mélange atteint son
@@ -44,7 +44,7 @@ items:
           acide et alcool coexistent avec ester et eau : la transformation
           reste non totale.
       - id: D
-        text: "Non, car il faudrait changer complètement d'équation chimique pour que la réaction devienne totale."
+        text: "Non, car il faudrait changer complètement d'équation chimique pour que la réaction devienne totale : celle-ci ne peut pas dépasser l'avancement déjà observé."
         correct: false
         feedback: >
           Ce n'est pas l'équation qu'il faut changer, mais les conditions
@@ -139,7 +139,7 @@ items:
         text: "Elle est fausse : la double flèche indique que la transformation est non totale (les deux sens coexistent), pas qu'elle est lente ou rapide - la vitesse est une question complètement différente."
         correct: true
       - id: B
-        text: "Elle est vraie : une double flèche signale toujours une transformation lente, jamais rapide."
+        text: "Elle est vraie : une double flèche signale toujours une transformation lente, jamais rapide - c'est précisément le rôle de cette notation dans une équation chimique."
         correct: false
         feedback: >
           C'est confondre deux questions indépendantes. La double flèche
@@ -147,7 +147,7 @@ items:
           transformation, jamais sur sa vitesse. De nombreuses réactions
           non totales s'installent au contraire très rapidement.
       - id: C
-        text: "Elle est vraie, mais seulement pour les réactions organiques comme l'estérification."
+        text: "Elle est vraie, mais seulement pour les réactions organiques comme l'estérification, où la lenteur est la règle et justifie à elle seule cette écriture particulière."
         correct: false
         feedback: >
           La double flèche a la même signification quelle que soit la
@@ -156,7 +156,7 @@ items:
           vitesse. Restreindre la règle à un seul type de réaction ne la
           rend pas vraie pour autant.
       - id: D
-        text: "Elle est fausse, car la double flèche signifie en réalité que la réaction est instantanée."
+        text: "Elle est fausse, car la double flèche signifie en réalité que la réaction est instantanée : elle atteint son état final dès l'instant où les réactifs sont mélangés."
         correct: false
         feedback: >
           Ce choix remplace une affirmation fausse sur la vitesse par une
@@ -193,10 +193,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Non - une transformation totale peut tout à fait être lente (la rouille, par exemple), et une transformation limitée peut être quasi instantanée ; la vitesse et le caractère totale/limitée sont deux propriétés indépendantes d'une réaction."
+        text: "Non - une transformation totale peut tout à fait être lente (la rouille, par exemple), et une transformation limitée peut être quasi instantanée : la vitesse et le caractère total ou limité sont deux propriétés indépendantes."
         correct: true
       - id: B
-        text: "Si, cette règle est toujours vraie : c'est justement ce qui distingue les deux notations."
+        text: "Si, cette règle est toujours vraie : c'est justement ce qui distingue les deux notations, la flèche simple étant réservée aux réactions rapides et la double flèche aux réactions lentes et progressives."
         correct: false
         feedback: >
           Le type de flèche ne renseigne jamais sur la vitesse. Il existe des
@@ -205,7 +205,7 @@ items:
           fraction de seconde. La flèche décrit uniquement si un réactif
           disparaît totalement ou non.
       - id: C
-        text: "Non, mais seulement dans un sens : une flèche simple peut être lente, mais une double flèche signale toujours une réaction lente."
+        text: "Non, mais seulement dans un sens : une flèche simple peut correspondre à une réaction lente, tandis qu'une double flèche signale toujours, elle, une réaction lente et jamais rapide."
         correct: false
         feedback: >
           Les deux moitiés de la règle sont fausses, pas une seule. Une
@@ -214,7 +214,7 @@ items:
           leur état stabilisé, avec réactifs et produits coexistant, en une
           fraction de seconde.
       - id: D
-        text: "On ne peut rien dire sans connaître la formule chimique exacte des réactifs."
+        text: "On ne peut rien dire sans connaître la formule chimique exacte des réactifs : c'est leur nature, et non la notation employée pour les écrire, qui détermine la vitesse de la réaction."
         correct: false
         feedback: >
           Il n'est pas nécessaire de connaître la formule exacte : le critère
@@ -249,10 +249,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle est fausse : une quantité notable d'ester et d'eau se forme réellement ; « non totale » signifie seulement que la transformation s'arrête avant que l'acide et l'alcool aient totalement disparu, pas qu'elle n'a pas eu lieu."
+        text: "Elle est fausse : une quantité notable d'ester et d'eau se forme réellement ; « non totale » signifie seulement que la transformation s'arrête avant la disparition complète de l'acide et de l'alcool."
         correct: true
       - id: B
-        text: "Elle est vraie : une transformation non totale, par définition, ne produit aucun changement observable."
+        text: "Elle est vraie : une transformation non totale, par définition, ne produit aucun changement observable dans le mélange, et le test ne devrait révéler que les réactifs du départ."
         correct: false
         feedback: >
           « Non totale » ne veut pas dire « rien ne se passe » : ça veut dire
@@ -262,7 +262,7 @@ items:
           Les deux réactions, directe et inverse, se sont bel et bien
           produites.
       - id: C
-        text: "Elle est vraie seulement si le mélange n'a pas été chauffé."
+        text: "Elle est vraie seulement si le mélange n'a pas été chauffé : sans apport d'énergie, la transformation reste au point de départ et aucun ester ne peut se former dans le ballon."
         correct: false
         feedback: >
           Le chauffage change la vitesse à laquelle le mélange atteint son
@@ -270,7 +270,7 @@ items:
           Même sans chauffage - plus lentement - de l'ester et de l'eau
           finiraient par apparaître en quantité détectable.
       - id: D
-        text: "Elle est fausse, mais seulement parce qu'il y a un catalyseur dans le mélange."
+        text: "Elle est fausse, mais seulement parce qu'il y a un catalyseur dans le mélange : sans lui, la mention « non totale » signifierait bien qu'aucun produit ne s'est formé du tout."
         correct: false
         feedback: >
           Le catalyseur accélère la réaction, il ne crée pas, à lui seul, la
@@ -309,7 +309,7 @@ items:
         text: "C'est faux : une quantité réellement mesurable de $NH_4^+$ et de $HO^-$ s'est formée ; la transformation a bien eu lieu et a produit ces ions - elle s'est seulement arrêtée avant de convertir tout le $NH_3$."
         correct: true
       - id: B
-        text: "C'est vrai : si $NH_3$ n'a pas totalement disparu, on peut considérer que la transformation ne s'est presque pas produite."
+        text: "C'est vrai : si $NH_3$ n'a pas totalement disparu, on peut considérer que la transformation ne s'est presque pas produite et que les ions détectés sont négligeables."
         correct: false
         feedback: >
           Le fait qu'il reste du $NH_3$ intact ne veut pas dire que rien ne
@@ -318,7 +318,7 @@ items:
           lieu - elle s'est seulement arrêtée avant la disparition complète
           du $NH_3$.
       - id: C
-        text: "C'est faux, mais uniquement parce que $NH_3$ est une base forte qui réagit toujours complètement avec l'eau."
+        text: "C'est faux, mais uniquement parce que $NH_3$ est une base forte qui réagit toujours complètement avec l'eau : la fraction non transformée provient nécessairement d'une erreur de mesure."
         correct: false
         feedback: >
           C'est l'inverse : c'est précisément parce que $NH_3$ ne réagit
@@ -326,7 +326,7 @@ items:
           $NH_3$ réagissait toujours complètement, la transformation serait
           totale, pas limitée.
       - id: D
-        text: "C'est vrai seulement si la quantité de $NH_4^+$ formée est plus petite que celle de $NH_3$ restant."
+        text: "C'est vrai seulement si la quantité de $NH_4^+$ formée est plus petite que celle de $NH_3$ restant : c'est ce rapport qui décide si la transformation a eu lieu."
         correct: false
         feedback: >
           Comparer les quantités relatives de produit et de réactif restant
@@ -362,7 +362,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Oui - c'est vrai pour toute réaction chimique, il suffit d'attendre assez longtemps."
+        text: "Oui - c'est vrai pour toute réaction chimique : il suffit d'attendre assez longtemps pour que les réactifs finissent par disparaître entièrement."
         correct: false
         feedback: >
           C'est l'erreur à éviter : le test chimique montrera au contraire
@@ -371,13 +371,13 @@ items:
         text: "Rien ne permet de l'affirmer à l'avance : certaines transformations laissent coexister indéfiniment des réactifs avec les produits, quel que soit le temps attendu."
         correct: true
       - id: C
-        text: "Oui, car un chauffage prolongé fournit toujours assez d'énergie pour consommer la totalité des réactifs."
+        text: "Oui, car un chauffage prolongé fournit toujours assez d'énergie pour consommer la totalité des réactifs présents au départ dans le ballon."
         correct: false
         feedback: >
           Le chauffage accélère la réaction, il ne change pas le fait que ce
           mélange laisse coexister acide et alcool avec l'ester et l'eau.
       - id: D
-        text: "Non, mais seulement parce qu'il n'y a pas assez de catalyseur dans ce mélange."
+        text: "Non, mais seulement parce qu'il n'y a pas assez de catalyseur dans ce mélange pour mener la transformation jusqu'à son terme."
         correct: false
         feedback: >
           Ce n'est pas une question de quantité de catalyseur : même avec
@@ -405,13 +405,13 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Il est valide : plus une réaction est lente, plus elle a de chances d'être totale."
+        text: "Il est valide : plus une réaction est lente, plus elle a de chances d'être totale, car elle dispose de davantage de temps pour consommer ses réactifs."
         correct: false
         feedback: >
           C'est confondre deux axes indépendants : la vitesse et le
           caractère totale/limitée n'ont aucun lien logique.
       - id: B
-        text: "Il est valide, mais seulement parce qu'il y a un catalyseur dans ce mélange."
+        text: "Il est valide, mais seulement parce qu'il y a un catalyseur dans ce mélange : sans lui, la lenteur ne dirait rien du caractère total de la réaction."
         correct: false
         feedback: >
           Le catalyseur ne change que la vitesse d'installation de l'état
@@ -420,7 +420,7 @@ items:
         text: "Il est invalide : la durée que met une réaction à se stabiliser ne renseigne en rien sur le fait qu'elle soit totale ou limitée - ce sont deux questions indépendantes."
         correct: true
       - id: D
-        text: "Il est invalide, car en réalité cette réaction est rapide, pas lente."
+        text: "Il est invalide, car en réalité cette réaction est rapide et non lente : l'odeur met des heures à se stabiliser pour de tout autres raisons."
         correct: false
         feedback: >
           Le problème n'est pas la vitesse réelle de cette réaction, mais le
@@ -448,19 +448,19 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle est correcte : la présence persistante des réactifs prouve qu'aucune réaction n'a eu lieu."
+        text: "Elle est correcte : la présence persistante des réactifs prouve qu'aucune réaction n'a eu lieu dans le ballon, et l'odeur perçue vient nécessairement d'ailleurs."
         correct: false
         feedback: >
           L'odeur fruitée qui se développe est la preuve sensible qu'une
           transformation réelle a eu lieu, malgré les réactifs restants.
       - id: B
-        text: "Elle est correcte, mais seulement parce que le mélange n'a pas assez chauffé."
+        text: "Elle est correcte, mais seulement parce que le mélange n'a pas assez chauffé : avec un chauffage plus fort, les réactifs auraient fini par disparaître entièrement."
         correct: false
         feedback: >
           Chauffer davantage changerait la vitesse d'installation de l'état
           stabilisé, pas le fait qu'une odeur d'ester s'est déjà développée.
       - id: C
-        text: "On ne peut rien dire sans mesurer précisément les quantités en présence."
+        text: "On ne peut rien dire sans mesurer précisément les quantités en présence : la seule détection d'acide et d'alcool ne permet aucune conclusion sur la transformation."
         correct: false
         feedback: >
           L'odeur perceptible suffit déjà à indiquer qu'un produit nouveau
@@ -494,22 +494,22 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle est peu probable : le fait que le test donne exactement le même résultat à deux heures d'intervalle signale que le mélange a déjà atteint son état stabilisé - attendre une semaine de plus ne changera rien à la présence d'acide et d'alcool."
+        text: "Elle est peu probable : le test donnant exactement le même résultat à deux heures d'intervalle, le mélange a déjà atteint son état stabilisé - attendre une semaine de plus ne changera rien à la présence d'acide et d'alcool."
         correct: true
       - id: B
-        text: "Elle est probable : plus on attend, plus la quantité de réactifs restants diminue, jusqu'à disparaître complètement."
+        text: "Elle est probable : plus on attend, plus la quantité de réactifs restants diminue, jusqu'à disparaître complètement ; deux heures sont une durée bien trop courte pour une transformation de ce type."
         correct: false
         feedback: >
           Un test répété qui donne le même résultat est au contraire le
           signe que l'état est stabilisé : rien ne disparaîtra de plus.
       - id: C
-        text: "On ne peut rien conclure du test répété : deux résultats identiques ne prouvent rien, il faudrait changer de méthode de test pour être sûr."
+        text: "On ne peut rien conclure du test répété : deux résultats identiques ne prouvent rien, il faudrait changer complètement de méthode de test pour savoir si le mélange évolue encore ou non."
         correct: false
         feedback: >
           Deux résultats identiques à deux heures d'intervalle sont au
           contraire le critère même utilisé pour reconnaître un état stabilisé.
       - id: D
-        text: "Elle est probable, mais seulement si on ajoute davantage de catalyseur avant de refaire le test."
+        text: "Elle est probable, mais seulement si on ajoute davantage de catalyseur avant de refaire le test : sans cet ajout, la transformation resterait effectivement bloquée là où elle en est aujourd'hui."
         correct: false
         feedback: >
           Le catalyseur change la vitesse d'atteinte de l'état stabilisé,
@@ -541,7 +541,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle est correcte : pour qu'on puisse dire qu'une transformation a eu lieu, la quantité de produit formé doit dépasser celle des réactifs restants."
+        text: "Elle est correcte : pour qu'on puisse dire qu'une transformation a eu lieu, la quantité de produit formé doit dépasser celle des réactifs restants, faute de quoi le mélange reste celui du départ."
         correct: false
         feedback: >
           Rien n'impose qu'un produit dépasse en quantité les réactifs
@@ -550,13 +550,13 @@ items:
         text: "Elle est fausse : même minoritaire face aux réactifs restants, la quantité d'ester détectée prouve qu'une transformation réelle a eu lieu ; cette comparaison ne définit ni le caractère totale ou limité, ni le fait que la réaction se soit produite."
         correct: true
       - id: C
-        text: "Elle est correcte, à moins que l'ester formé ne dépasse la moitié de la quantité initiale d'acide."
+        text: "Elle est correcte, à moins que l'ester formé ne dépasse la moitié de la quantité initiale d'acide : c'est ce seuil, et lui seul, qui décide si la transformation compte réellement pour quelque chose dans le bilan."
         correct: false
         feedback: >
           Il n'existe aucun seuil de proportion à atteindre : dès qu'une
           quantité détectable de produit apparaît, la transformation a eu lieu.
       - id: D
-        text: "Elle est correcte, car le trop petit volume de catalyseur a empêché la réaction de vraiment démarrer."
+        text: "Elle est correcte, car le trop petit volume de catalyseur a empêché la réaction de vraiment démarrer : avec davantage de catalyseur, l'ester serait devenu largement majoritaire dans le ballon."
         correct: false
         feedback: >
           Un catalyseur en faible quantité ralentit l'installation de l'état
@@ -587,23 +587,23 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle est fausse : c'est en réalité toujours le sens direct qui domine au départ, quelle que soit la composition initiale."
+        text: "Elle est fausse : c'est en réalité toujours le sens direct qui domine au départ, quelle que soit la composition initiale du mélange, car c'est le sens dans lequel l'équation a été écrite."
         correct: false
         feedback: >
           Ce n'est pas vrai non plus en toute généralité : l'expérience B du
           cours (ester et eau purs) montre le contraire quand la composition
           initiale est inversée.
       - id: B
-        text: "On ne peut rien affirmer sans calculer précisément les concentrations de chaque espèce."
+        text: "On ne peut rien affirmer sans calculer précisément les concentrations de chaque espèce présente : la seule liste des espèces initiales ne permet jamais de prévoir le sens qui va dominer."
         correct: false
         feedback: >
           Le raisonnement qualitatif suffit ici : comparer les quantités
           relatives de chaque couple permet déjà de prédire le sens dominant.
       - id: C
-        text: "Elle est fausse : ce n'est pas la simple présence d'ester et d'eau qui compte, mais la quantité relative de chaque couple - ici, l'acide et l'alcool sont largement majoritaires, donc le sens direct devrait au contraire dominer au départ, comme dans l'expérience A."
+        text: "Elle est fausse : ce n'est pas la simple présence d'ester et d'eau qui compte, mais la quantité relative de chaque couple - ici l'acide et l'alcool sont largement majoritaires, donc le sens direct devrait au contraire dominer au départ."
         correct: true
       - id: D
-        text: "On ne peut rien prédire : puisque les deux sens coexistent toujours en même temps, aucun des deux ne peut dominer l'autre, même au tout début."
+        text: "On ne peut rien prédire : puisque les deux sens coexistent toujours en même temps dans ce type de transformation, aucun des deux ne peut dominer l'autre, même au tout début, quelles que soient les quantités introduites."
         correct: false
         feedback: >
           Les deux sens coexistent en permanence, mais l'un peut dominer
@@ -633,19 +633,19 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le sens direct va dominer, car $NH_4Cl$ est le solide qu'on vient d'ajouter au mélange."
+        text: "Le sens direct va dominer, car $NH_4Cl$ est le solide qu'on vient d'ajouter au mélange, et c'est toujours l'espèce introduite en dernier qui impose le sens de la réaction dans le milieu."
         correct: false
         feedback: >
           $NH_4^+$ est un produit de la réaction directe, pas son réactif :
           sa présence abondante pousse au contraire vers le sens inverse.
       - id: B
-        text: "Le sens direct va dominer, comme dans toute solution contenant de l'ammoniac, quelle que soit sa composition initiale."
+        text: "Le sens direct va dominer, comme dans toute solution contenant de l'ammoniac, quelle que soit sa composition initiale et quelles que soient les espèces déjà présentes."
         correct: false
         feedback: >
           Le sens n'est pas une propriété fixe attachée à l'ammoniac : il
           dépend de la composition initiale de ce mélange précis.
       - id: C
-        text: "Impossible à prédire sans connaître les concentrations exactes de chaque espèce."
+        text: "Impossible à prédire sans connaître les concentrations exactes de chaque espèce : les seules indications « riche » et « pauvre » ne suffisent jamais à trancher."
         correct: false
         feedback: >
           Un raisonnement qualitatif suffit : comparer ce qui est abondant
@@ -681,19 +681,19 @@ items:
         text: "C'est faux : une quantité réelle de propanoate de méthyle et d'eau s'est formée, détectable par le test ; « limitée » signifie seulement que l'acide et le méthanol n'ont pas totalement disparu, pas que la réaction n'a pas eu lieu."
         correct: true
       - id: B
-        text: "C'est vrai : une transformation limitée, par définition, ne produit pas de changement mesurable."
+        text: "C'est vrai : une transformation limitée, par définition, ne produit pas de changement mesurable, et le test ne peut détecter que les réactifs restés en place dans le ballon."
         correct: false
         feedback: >
           « Limitée » ne veut pas dire « rien ne se passe » : le test
           détecte bel et bien du propanoate de méthyle et de l'eau formés.
       - id: C
-        text: "C'est vrai, dans le sens où l'ester formé n'est pas un vrai produit tant que la réaction n'est pas totale."
+        text: "C'est vrai, dans le sens où l'ester formé n'est pas un vrai produit tant que la réaction n'est pas totale : il faut attendre la disparition des réactifs pour parler véritablement de produit formé."
         correct: false
         feedback: >
           L'ester formé est un produit tout aussi réel, qu'il soit issu
           d'une transformation totale ou limitée.
       - id: D
-        text: "C'est vrai, mais seulement parce que le chauffage n'a pas été assez long pour que la réaction avance vraiment."
+        text: "C'est vrai, mais seulement parce que le chauffage n'a pas été assez long pour que la réaction avance vraiment : quelques heures de chauffage de plus auraient tout changé."
         correct: false
         feedback: >
           Chauffer plus longtemps changerait la vitesse d'installation de
@@ -724,23 +724,23 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le sens direct va dominer, car c'est le solide qu'on vient de dissoudre qui pilote toujours le sens de la réaction."
+        text: "Le sens direct va dominer, car c'est le solide qu'on vient de dissoudre qui pilote toujours le sens de la réaction, indépendamment des espèces déjà présentes en solution."
         correct: false
         feedback: >
           Ce solide libère justement les deux produits de la réaction, ce
           qui pousse au contraire vers le sens inverse.
       - id: B
-        text: "Le sens inverse va dominer : le mélange ne contient au départ que les produits ($CH_3COO^-$, $NH_4^+$) et aucun réactif libre ($CH_3COOH$, $NH_3$), donc ces ions réagissent entre eux pour reformer l'acide et l'ammoniac, exactement comme dans l'expérience B du cours."
+        text: "Le sens inverse va dominer : le mélange ne contient au départ que les produits ($CH_3COO^-$, $NH_4^+$) et aucun réactif libre, donc ces ions réagissent entre eux pour reformer l'acide et l'ammoniac."
         correct: true
       - id: C
-        text: "Aucun sens ne peut dominer, car il n'y a aucun réactif libre au départ pour amorcer la réaction."
+        text: "Aucun sens ne peut dominer, car il n'y a aucun réactif libre au départ pour amorcer la réaction : le mélange reste tel quel tant qu'on n'y ajoute pas d'acide éthanoïque ou d'ammoniac."
         correct: false
         feedback: >
           Rien n'empêche le sens inverse de démarrer : $CH_3COO^-$ et
           $NH_4^+$ peuvent réagir entre eux pour reformer $CH_3COOH$ et
           $NH_3$, même sans réactif libre au départ.
       - id: D
-        text: "Le sens direct va dominer quand même, car c'est le sens qui domine par défaut dans toute réaction acido-basique."
+        text: "Le sens direct va dominer quand même, car c'est le sens qui domine par défaut dans toute réaction acido-basique, quel que soit le contenu initial du mélange préparé."
         correct: false
         feedback: >
           Il n'existe pas de sens « par défaut » : le sens qui domine dépend
