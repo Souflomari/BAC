@@ -29,6 +29,7 @@
 | `web/scripts/liens-fichiers.mjs` | LES RENVOIS : tout chemin de fichier cité dans un fichier suivi par git (markdown, YAML, TS, MJS, workflows) mène-t-il quelque part ? Un chemin est résolu depuis la racine, depuis `web/` (la convention d'exécution des scripts) ou depuis le répertoire qui le cite. DEUX ZONES : la zone VIVANTE — orientation, agents, compétences, vision, règles, specs, runbooks, code, contenu, CI — est une PORTE FRANCHE ; la zone d'ARCHIVE — ADR, registres d'audit, CHANGELOG, rapports de reprise, ancrage périmé — nomme délibérément ce qui n'existe plus et n'est que comptée. L'exception vit dans le fichier et NOMME son chemin (`CHEMIN DISPARU:`), comme `RECOUVREMENT ASSUMÉ:`. Mesuré à l'armement : `docs/Product/` ET `docs/product/` coexistaient — VISION.md et DESIGN-BIBLE.md dans le premier, 23 renvois vers le second, dont ceux de `.claude/CLAUDE.md`, du README, du HANDOFF et de NEUF agents. Chaque agent à qui l'on disait « lis la vision d'abord » lisait le vide, et sur la machine de l'owner (Windows, insensible à la casse) les deux répertoires entrent en collision | Si le document CIBLE dit encore ce que le renvoi prétend. Un chemin qui résout peut pointer un texte périmé — c'est le travail des humains et des documents de réconciliation |
 | `web/scripts/ancres-uniques.mjs` | LES ANCRES « § » : deux titres d'une même leçon peuvent-ils partager un `id` ? C'est la promesse d'un lien profond — l'élève copie le lien de la section qu'il lit. Mesuré à l'armement : depuis la pagination, `LessonRenderer` est appelé une fois par SEGMENT et `rehype-slug` remet son compteur d'unicité à zéro à chaque passe ; `maths/suites-numeriques` portait HUIT titres « L'erreur à repérer » avec le même id — sept ancres sur huit renvoyaient à la première. 95 titres au libellé répété existent dans 32 leçons. Corrigé par un compteur PARTAGÉ (`web/src/lib/rehypeSlugPartage.ts`), la première occurrence gardant son id nu pour que les liens déjà partagés survivent. PORTE FRANCHE : 62 leçons, 2 190 titres, 0 doublon | Les ids INTERNES des SVG, dupliqués eux aussi quand une figure est posée plusieurs fois. Vérifié inoffensif deux fois — `MediaDiagram` masque les étapes en réécrivant le markup de chaque figure, jamais par `getElementById`, et aucun identifiant n'est défini DIFFÉREMMENT par deux figures d'une notion tout en étant déréférencé par `url(#…)`. Armer sur « aucun id dupliqué » aurait été rouge sur un fait sans conséquence |
 | `web/scripts/portee-corpus.mjs` | LA PORTÉE d'un mécanisme : sur combien de pages du corpus une fonctionnalité livrée a réellement quelque chose à montrer. Compte, par notion et par matière, les points d'arrêt, figures, figures étagées, mouvements, embarqués, interactives, dérivations, exercices, et les chapitres portant une carte « à retenir ». Mesuré à l'armement (62 notions, 491 chapitres) : points d'arrêt **62/62**, figures **51/62**, exercices **49/62**, « à retenir » **44/62**, mouvements **6/62**, interactives **5/62**, embarqués **4/62**, dérivations **1/62**. La philosophie : 92 chapitres, 4 figures (toutes dans une seule notion), zéro de tout le reste. `--resume` pour les totaux seuls | SI LA PORTÉE EST BONNE. Une dérivation dépliable n'a de sens que là où il y a une dérivation ; une figure absente sur toute une matière est peut-être une dette, peut-être une décision. Le tableau est un fait, le verdict est pédagogique |
+| `web/scripts/liens-internes.mjs` | UN LIEN DU PRODUIT MÈNE-T-IL QUELQUE PART ? `liens-fichiers` garde les renvois des DOCUMENTS ; celui-ci pose la même question du côté de l'élève — de tous les `<a href="/…">` que le site rend, combien répondent autre chose qu'un 200 ? Déplie les `<details>` d'abord (les chapitres sont présents-mais-masqués). Mesuré à l'écriture : **74 pages, 108 cibles distinctes, 0 morte**. ⚠️ à lancer depuis `web/`, avec `BASE=…` | **PAS DE PORTE, délibérément.** Le job CI venait d'être mesuré à ~30 min pour un budget de 30 ; y ajouter ~180 navigations aurait aggravé le défaut qu'on venait de constater. L'armement attend l'assainissement du budget (portes navigateur parallélisées, ou serveur partagé) |
 | `web/scripts/portee-hors-lecon.mjs` | LA PORTÉE des surfaces HORS leçon — la seconde moitié de la même question. Compte, par épreuve : morceaux servis, questions, questions portant un raisonnement expert, questions dont la correction DÉROULE l'algèbre (par `steps` OU par des blocs `$$…$$`), et les renvois visuels de l'énoncé. Mesuré à l'armement : **39 épreuves, 247 morceaux, 1 472 questions**, 100 % avec raisonnement, **94 % dont la correction déroule l'algèbre** (1 132 par `steps`, 247 par des blocs `$$…$$` seuls), et l'atelier à **1 notion sur 62**. ⚠️ à lancer depuis `web/`. `--resume` pour les totaux seuls | SI L'ALGÈBRE MONTRÉE EST BONNE, et si son contenant est le bon. Et l'ORPHELINAT d'un renvoi visuel : la colonne « sans description » est un MAJORANT, parce que le corpus emploie cinq conventions de description et que « décrit en ligne » ne se distingue pas de « orphelin » sans juger le sens. Les 16 du premier tour ont été ouverts un par un : aucun défaut |
 | `web/scripts/test-attempt-events.mjs` | LE CHEMIN D'ÉCRITURE, côté client : les constructeurs de charge utile, la forme du fil telle que le validateur de l'edge function l'accepte, et — depuis le 2026-09-05 — le chemin de PERTE (échec, réessai unique à 4 s, borne de 20, 401, coupure réseau, visite de chapitre). 20 tests, minuteries simulées. `npm run test-attempt-events` | Le SERVEUR : idempotence de `record-notion-event`, double envoi, écritures concurrentes. Et le TAUX de perte réel, qui dépend du réseau de l'élève — les tests établissent la sémantique, pas la fréquence |
 
@@ -194,6 +195,63 @@ son panneau », nommé le 2026-09-03 et non instrumenté — a été mesuré et
 fermé le lendemain : 9 cas, 4 débordements voulus déclarés
 `data-hors-panneau`, 5 défauts corrigés, porte armée en CI. C'est
 exactement l'usage prévu de cette liste.)*
+
+## Trois façons dont une porte cesse de mesurer sans jamais rougir
+
+Relevées le 2026-09-05, en regardant un run de CI jusqu'au bout plutôt qu'en
+lisant sa pastille.
+
+1. **Une route de la liste n'existe plus.** `/options` figurait dans la liste
+   CI de la porte typographie ; il rend un 404 depuis la purge des bancs
+   d'options. La porte mesurait la page « Page introuvable », la trouvait
+   propre, et annonçait « **✓ /options** ». **La liste de routes EST la portée
+   d'une porte** : une entrée fautive l'ampute en silence. Les quatre portes à
+   liste (typographie, accents, impression, presse-papier) refusent désormais
+   tout statut HTTP ≠ 200 et tombent.
+
+2. **Deux portes se disputent un port.** `copie-maths` et `ancres-uniques`
+   réclamaient toutes deux 3497 ; `donnees-sweep` et `accents-manquants`,
+   3496. Chacune lance son propre `next start` détaché — et tuer l'enveloppe
+   `npx` ORPHELINE l'enfant `next-server`, défaut écrit noir sur blanc dans
+   l'en-tête de `dom-truth` depuis des mois, avec son remède (`3200 +
+   process.pid % 500`). Les portes écrites après lui sont revenues aux ports
+   fixes. Le remède est repris dans les six.
+
+3. **Une porte FINIT son travail et ne rend jamais la main.**
+   `ancres-uniques` imprimait « porte tenue ✓ », puis restait en vie jusqu'à
+   ce que la limite de 30 min du job la tue — emportant les DEUX portes
+   suivantes (données, hygiène model-id), qui n'ont jamais tourné.
+
+   La cause tient en un mot : un enfant `spawn`é garde un handle sur la
+   boucle d'événements du parent tant qu'il n'est pas `unref()`. Le serveur
+   `next start` empêchait donc Node de sortir — et le crochet `process.on
+   ("exit")` censé tuer ce serveur attendait la sortie que le serveur
+   empêchait. Boucle fermée. Le chemin d'ÉCHEC s'en tirait (`process.exit(1)`
+   est brutal) ; c'est le chemin de SUCCÈS qui pendait. Corrigé par
+   `serveur.unref()` + un arrêt explicite ; même défaut latent réparé dans la
+   branche rapport de `donnees-sweep`. **Le travail réel de cette porte prend
+   24 secondes** (serveur froid, chronométré après le correctif) : les huit
+   minutes que la CI lui voyait passer étaient de l'attente pure.
+
+   **La classe a été balayée en entier**, pas seulement le cas trouvé : les
+   NEUF instruments qui lancent leur propre `next start` ont été relus.
+   `dom-truth` et `wide-measure` tuent le groupe de processus dans un
+   `finally` — corrects par construction. `typo-francaise`,
+   `accents-manquants`, `impression`, `copie-maths` et `polices-de-repli`
+   appellent un arrêt explicite avant de rendre la main. Restaient les deux
+   réparés ci-dessus. **Un défaut trouvé sans que sa classe soit balayée
+   n'est qu'une anecdote.**
+
+   **Et le mot du verdict trompait.** La pastille affichait « cancelled » —
+   exactement ce que produit aussi `cancel-in-progress: true` quand une
+   poussée en remplace une autre. Deux causes, un seul mot. La première
+   lecture a été la mauvaise : j'ai d'abord conclu « le budget est trop
+   court » et relevé la limite, avant de voir le processus pendre sur cette
+   machine, log complet à l'appui. Le budget relevé reste (une marge n'a
+   jamais nui), mais **ce n'était pas la cause**.
+
+> **Une pastille verte dit que rien n'a échoué, pas que tout a été mesuré.**
+> Les trois cas ci-dessus produisent exactement la même couleur qu'un succès.
 
 ## Un contrôle qui ne peut pas devenir rouge n'est pas un contrôle
 

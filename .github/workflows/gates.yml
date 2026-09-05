@@ -16,7 +16,27 @@ concurrency:
 jobs:
   gates:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # MARGE, pas remède (2026-09-05). Le run 442 a été tué par la limite de
+    # 30 min au milieu de la porte ancres, emportant les deux étapes suivantes
+    # (données, hygiène model-id) — mais la CAUSE n'était pas le budget : la
+    # porte ancres avait FINI son travail et ne rendait pas la main (un
+    # `next start` non-`unref()` gardait la boucle d'événements en vie).
+    # C'est réparé dans `scripts/ancres-uniques.mjs`. Le budget relevé reste
+    # comme marge pour un runner lent, pas comme correctif.
+    #
+    # Le résultat s'affichait « cancelled » — le mot exact que produit aussi
+    # `cancel-in-progress: true` ci-dessus. Deux causes, un seul mot : devant
+    # un « cancelled », vérifier les ÉTAPES avant de conclure.
+    #
+    # Découpage relevé sur ce run (ubuntu-latest, cache chaud) :
+    #   install + chromium  74 s · build 148 s · dom-truth 276 s
+    #   figures clair 53 s · figures sombre 52 s · presse-papier 360 s
+    #   impression 171 s · typo 94 s · accents 85 s · cliquets ~1 s
+    #   ancres ≥ 489 s (tuée avant la fin)
+    #
+    # Total observé jusqu'à la coupe : ~30 min. 50 min laisse la marge d'un
+    # runner lent sans masquer un blocage réel.
+    timeout-minutes: 50
     defaults:
       run:
         working-directory: web
@@ -210,7 +230,7 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           node scripts/typo-francaise.mjs --porte $routes / /examens \
             /matieres/pc /matieres/maths /matieres/svt /matieres/philo /commencer \
-            /atelier /connexion /options /examens/spc-2023-normale
+            /atelier /connexion /options/wide/m1 /examens/spc-2023-normale
 
       # PORTE ACCENTS (2026-09-05). Le corpus contenait, à côté d'une prose
       # soignée, des passages entiers écrits sans le moindre accent —

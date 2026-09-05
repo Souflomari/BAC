@@ -66,7 +66,9 @@ Read the right document for the task at hand:
   in a document carries the command that produces it; status labels are
   per-document; a cross-reference is an instruction — the live/archive
   link gate; a mechanism's REACH is measured separately from whether it
-  works; a gate has two directions when one alone can be gamed).
+  works; a gate has two directions when one alone can be gamed; **a gate
+  must be able to go RED — a green badge says nothing failed, not that
+  everything was measured**).
 - **`docs/HANDOFF.md`** — *start here after the July-2026 sprint.* The
   open-gates list (owner decisions pending), the external-audit triage,
   and the "how not to regress this" invariants — written as the sprint's

@@ -2533,3 +2533,55 @@ Commises toutes deux aujourd'hui, consignées dans `INSTRUMENTS.md` :
    annoncé « 0 épreuve » avec le même aplomb que « 39 », deux fois. **Un
    total de zéro se suspecte comme un total absurdement grand.**
 2. **`innerText` ne voit pas les chapitres masqués** (§11.3).
+
+### 11.7 La CI était verte sur des portes qui ne tournaient pas
+
+Le run 442 a été regardé étape par étape plutôt que par sa pastille. Il en
+sort trois défauts, tous de la même famille : **une porte qui a cessé de
+mesurer sans jamais rougir.**
+
+**Une route morte dans la liste.** `/options` était dans la liste CI de la
+porte typographie. Il rend un 404 depuis la purge des bancs d'options. La
+porte chargeait la page « Page introuvable », la trouvait typographiquement
+propre, et imprimait « **✓ /options** ». La liste de routes EST la portée
+d'une porte ; une entrée fautive l'ampute en silence. Les quatre portes à
+liste refusent désormais tout statut ≠ 200 — vérifié rouge sur les quatre.
+
+**Deux portes sur le même port.** `copie-maths` et `ancres-uniques`
+réclamaient 3497 ; `donnees-sweep` et `accents-manquants`, 3496. Chacune
+lance son `next start` détaché, et tuer l'enveloppe `npx` orpheline l'enfant
+`next-server` — un défaut décrit dans l'en-tête de `dom-truth`, avec son
+remède (`3200 + process.pid % 500`), depuis des mois. Les portes écrites
+APRÈS lui sont revenues aux ports fixes. Le remède est repris dans les six.
+
+**Une porte finissait son travail et ne rendait jamais la main.**
+`ancres-uniques` imprimait « porte tenue ✓ » puis restait en vie jusqu'à ce
+que la limite de 30 min du job la tue — **emportant les deux portes suivantes
+(données, hygiène model-id), qui n'ont jamais tourné**.
+
+La cause : un enfant `spawn`é garde un handle sur la boucle d'événements tant
+qu'il n'est pas `unref()`. Le `next start` empêchait Node de sortir, et le
+crochet `process.on("exit")` censé tuer ce serveur attendait la sortie que le
+serveur empêchait. Le chemin d'ÉCHEC s'en tirait — `process.exit(1)` est
+brutal ; c'est le chemin de SUCCÈS qui pendait. `serveur.unref()` + arrêt
+explicite ; même défaut latent réparé dans la branche rapport de
+`donnees-sweep`. **Le travail réel de cette porte prend 24 secondes**, serveur
+froid, chronométré après le correctif : les huit minutes que la CI lui voyait
+passer étaient de l'attente pure.
+
+**ET J'AI D'ABORD LU LA MAUVAISE CAUSE.** La pastille disait « cancelled » —
+le mot exact que produit aussi `cancel-in-progress: true` quand une poussée
+en remplace une autre. J'ai conclu « le budget est trop court », relevé la
+limite à 50 min et écrit le découpage mesuré dans le YAML. C'est en voyant le
+processus pendre sur cette machine, log complet à l'appui, que la vraie cause
+est apparue. Le budget relevé reste — une marge n'a jamais nui — mais il ne
+répare rien, et les documents le disent maintenant.
+
+> **Une pastille verte dit que rien n'a échoué, pas que tout a été mesuré.**
+
+Ce que le run a confirmé, en revanche, et qui comptait : les sept portes
+ajoutées aujourd'hui — les cinq d'ordre du programme, l'en-tête d'exercice,
+le titre d'exercice — passent en CI, avec le chargement jiti de
+`curriculum.ts` / `examens.ts` / `content.ts` depuis `dom-truth`. Ainsi que
+la nouvelle suite `test-typographie` et la porte typographie avec l'espace
+insécable nombre-unité.

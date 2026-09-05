@@ -38,7 +38,18 @@ const ICI = path.dirname(new URL(import.meta.url).pathname);
 const WEB = path.resolve(ICI, "..");
 const REPO = path.resolve(WEB, "..");
 const PORTE = process.argv.includes("--porte");
-const PORT = Number(process.env.PORT ?? 3497);
+// PORT UNIQUE PAR EXÉCUTION (2026-09-05). Les ports fixes se marchaient
+// dessus : `copie-maths` et `ancres-uniques` réclamaient tous deux 3497,
+// `donnees-sweep` et `accents-manquants` tous deux 3496. Chaque porte lance
+// son propre `next start` détaché et le tue en fin de course — mais tuer
+// l'enveloppe `npx` ORPHELINE son enfant `next-server`, défaut déjà écrit en
+// toutes lettres dans l'en-tête de dom-truth. Une porte qui trouve le port
+// occupé sonde alors le serveur d'une AUTRE porte : au mieux elle mesure un
+// build voisin, au pire elle attend.
+//
+// C'est le motif de dom-truth, mot pour mot : l'espace 3200-3699 est assez
+// large pour que deux exécutions simultanées ne se croisent pas.
+const PORT = Number(process.env.PORT ?? 3200 + (process.pid % 500));
 const AUTONOME = !process.env.BASE;
 const BASE = process.env.BASE ?? `http://127.0.0.1:${PORT}`;
 
@@ -64,7 +75,20 @@ if (AUTONOME) {
   }
   if (!pret) { console.error("✗ serveur absent — rien n'est mesuré"); try { process.kill(-serveur.pid); } catch {} process.exit(1); }
 }
-process.on("exit", () => { if (serveur?.pid) { try { process.kill(-serveur.pid); } catch {} } });
+// LE CROCHET « exit » NE SUFFIT PAS, ET C'EST CE QUI A TRONQUÉ LA CI
+// (mesuré le 2026-09-05). Un enfant `spawn`é garde un handle sur la boucle
+// d'événements du parent tant qu'il n'est pas `unref()`. Sans ça, Node ne
+// décide JAMAIS de sortir — et le crochet « exit », qui devait tuer le
+// serveur, attend un événement que le serveur empêche. Boucle fermée.
+//
+// Le chemin d'ÉCHEC s'en sortait (`process.exit(1)` est brutal) ; le chemin
+// de SUCCÈS imprimait « porte tenue ✓ » puis restait en vie. Sur le run CI
+// 442 : la porte a fini son travail à ~15:03, et le job a été tué à 15:10:43
+// par la limite de 30 min, emportant les DEUX portes suivantes (données,
+// hygiène model-id) qui n'ont jamais tourné. La pastille disait « cancelled ».
+serveur?.unref();
+const arreter = () => { if (serveur?.pid) { try { process.kill(-serveur.pid); } catch {} } };
+process.on("exit", arreter);
 
 const nav = await chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium" });
 const page = await nav.newPage();
@@ -112,3 +136,5 @@ if (fautifs.length) {
 console.log(
   `\nancres-uniques : porte tenue — ${routes.length} leçons, ${titresVus} titres, 0 ancre dupliquée ✓`
 );
+arreter();
+process.exit(0);

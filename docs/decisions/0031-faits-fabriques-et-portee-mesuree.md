@@ -95,6 +95,28 @@ notions sur 62, les dérivations dépliables sur **une**.
    navigation plus lente partout. Même logique que les deux cliquets
    d'indices.
 
+9. **Une porte doit pouvoir devenir ROUGE, et une pastille verte ne dit pas
+   que tout a été mesuré.** Ajouté en fin de journée, après trois cas trouvés
+   dans le système de portes lui-même :
+
+   - une ROUTE MORTE dans une liste (`/options`, 404 depuis la purge des
+     bancs) : quatre portes chargeaient la page « Page introuvable », la
+     trouvaient propre, et imprimaient un ✓. **La liste de routes EST la
+     portée** ; toute route ≠ 200 fait désormais tomber la porte ;
+   - une porte qui FINIT son travail et ne rend jamais la main
+     (`ancres-uniques` : 24 s de travail, puis une attente infinie parce
+     qu'un enfant `spawn`é non-`unref()` garde la boucle d'événements). Elle
+     a emporté les deux portes suivantes, qui n'ont plus tourné du tout ;
+   - une porte écrite pour garder une invariant **inatteignable** (aucune
+     vidéo sans geste — mais la vidéo dort derrière trois portes fermées,
+     donc le contrôle ne pouvait qu'être vert). Non armée, et la raison
+     écrite.
+
+   Le corollaire opératoire : **le test rouge ne sert pas à confirmer qu'on a
+   raison, il sert à découvrir ce que le contrôle mesure vraiment.** Il a
+   contredit l'auteur trois fois aujourd'hui — deux fois en passant quand il
+   aurait dû tomber, une fois en tombant sur un cas non prévu.
+
 ## Ce qui est remplacé, ce qui tient
 
 - **Remplacé** : le tri par `updatedAtMs` (fin de leçon, carte de
@@ -146,6 +168,15 @@ notions sur 62, les dérivations dépliables sur **une**.
   mesure une habitude de rédaction, pas ce que l'élève reçoit** — c'est la
   neuvième décision de cet arc, et elle est née d'une erreur, pas d'un défaut
   du produit.
+- **Une cause diagnostiquée à l'envers, corrigée dans l'heure.** Devant un
+  run de CI tronqué et une pastille « cancelled », j'ai conclu « le budget de
+  30 min est trop court », relevé la limite à 50 et écrit le découpage mesuré
+  dans le YAML. La vraie cause était une porte qui pendait après avoir fini
+  (voir la décision 9) : son travail prend 24 secondes. « cancelled » est
+  aussi le mot que produit `cancel-in-progress` quand une poussée en remplace
+  une autre — deux causes, un seul mot. **Devant un « cancelled », regarder
+  les ÉTAPES avant de conclure.** Le budget relevé reste comme marge ; les
+  trois documents qui l'annonçaient comme un correctif sont corrigés.
 - **Un correctif défait par la mesure.** Le pire croisement tracé/étiquette
   du corpus (29 %) a d'abord été « corrigé » en montant l'étiquette de
   28 px : la mesure a montré un recouvrement à 56 % avec le squelette —

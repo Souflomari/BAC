@@ -40,7 +40,18 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const WEB = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const PORT = Number(process.env.PORT_ACCENTS ?? 3496);
+// PORT UNIQUE PAR EXÉCUTION (2026-09-05). Les ports fixes se marchaient
+// dessus : `copie-maths` et `ancres-uniques` réclamaient tous deux 3497,
+// `donnees-sweep` et `accents-manquants` tous deux 3496. Chaque porte lance
+// son propre `next start` détaché et le tue en fin de course — mais tuer
+// l'enveloppe `npx` ORPHELINE son enfant `next-server`, défaut déjà écrit en
+// toutes lettres dans l'en-tête de dom-truth. Une porte qui trouve le port
+// occupé sonde alors le serveur d'une AUTRE porte : au mieux elle mesure un
+// build voisin, au pire elle attend.
+//
+// C'est le motif de dom-truth, mot pour mot : l'espace 3200-3699 est assez
+// large pour que deux exécutions simultanées ne se croisent pas.
+const PORT = Number(process.env.PORT_ACCENTS ?? 3200 + (process.pid % 500));
 const AUTONOME = !process.env.BASE;
 const BASE = process.env.BASE ?? `http://127.0.0.1:${PORT}`;
 const routes = process.argv.slice(2).filter((a) => !a.startsWith("--"));
@@ -92,7 +103,18 @@ const parMot = {};
 const exemples = [];
 
 for (const route of routes) {
-  await page.goto(`${BASE}${route}`, { waitUntil: "networkidle" });
+  const reponse = await page.goto(`${BASE}${route}`, { waitUntil: "networkidle" });
+  // UNE ROUTE QUI N'EXISTE PAS N'EST PAS UNE ROUTE PROPRE (2026-09-05).
+  // La liste de routes EST la portée de cette porte, et une entrée fautive
+  // l'amputait en silence : `/options` figurait dans la liste CI de la porte
+  // typographie et rend un 404 depuis que les bancs d'options ont été purgés.
+  // La porte mesurait la page « Page introuvable » et annonçait « ✓ /options ».
+  // Un contrôle qui ne peut pas devenir rouge n'est pas un contrôle.
+  if (reponse && reponse.status() !== 200) {
+    console.error(`✗ ${route} — HTTP ${reponse.status()} : cette route n'existe pas, la porte ne mesure rien.`);
+    process.exitCode = 1;
+    continue;
+  }
   await page.waitForTimeout(200);
   const r = await page.evaluate((motif) => {
     const racine = document.querySelector("main");
@@ -153,6 +175,13 @@ if (total > 0) {
 }
 await nav.close();
 arreter();
+// Une route absente a déjà posé process.exitCode = 1 : la porte doit tomber
+// même si toutes les pages RÉELLEMENT visitées sont propres. La liste de
+// routes EST la portée ; une entrée fautive l'ampute sans rien dire.
+if (porte && process.exitCode === 1) {
+  console.error("\n━━ porte ROMPUE — une route de la liste n'existe pas (voir le ✗ ci-dessus) ━━");
+  process.exit(1);
+}
 if (porte && total > 0) {
   console.error(
     "\n━━ porte accents : le produit enseigne aussi l'orthographe qu'il écrit ━━\n" +

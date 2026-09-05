@@ -22,7 +22,18 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const WEB = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const PORT = Number(process.env.PORT_TYPO ?? 3499);
+// PORT UNIQUE PAR EXÉCUTION (2026-09-05). Les ports fixes se marchaient
+// dessus : `copie-maths` et `ancres-uniques` réclamaient tous deux 3497,
+// `donnees-sweep` et `accents-manquants` tous deux 3496. Chaque porte lance
+// son propre `next start` détaché et le tue en fin de course — mais tuer
+// l'enveloppe `npx` ORPHELINE son enfant `next-server`, défaut déjà écrit en
+// toutes lettres dans l'en-tête de dom-truth. Une porte qui trouve le port
+// occupé sonde alors le serveur d'une AUTRE porte : au mieux elle mesure un
+// build voisin, au pire elle attend.
+//
+// C'est le motif de dom-truth, mot pour mot : l'espace 3200-3699 est assez
+// large pour que deux exécutions simultanées ne se croisent pas.
+const PORT = Number(process.env.PORT_TYPO ?? 3200 + (process.pid % 500));
 const AUTONOME = !process.env.BASE;
 const BASE = process.env.BASE ?? `http://127.0.0.1:${PORT}`;
 const routes = process.argv.slice(2).filter((a) => !a.startsWith("--"));
@@ -59,7 +70,18 @@ const exemples = [];
 const parSite = {};
 
 for (const route of routes) {
-  await page.goto(`${BASE}${route}`, { waitUntil: "networkidle" });
+  const reponse = await page.goto(`${BASE}${route}`, { waitUntil: "networkidle" });
+  // UNE ROUTE QUI N'EXISTE PAS N'EST PAS UNE ROUTE PROPRE (2026-09-05).
+  // La liste de routes EST la portée de cette porte, et une entrée fautive
+  // l'amputait en silence : `/options` figurait dans la liste CI de la porte
+  // typographie et rend un 404 depuis que les bancs d'options ont été purgés.
+  // La porte mesurait la page « Page introuvable » et annonçait « ✓ /options ».
+  // Un contrôle qui ne peut pas devenir rouge n'est pas un contrôle.
+  if (reponse && reponse.status() !== 200) {
+    console.error(`✗ ${route} — HTTP ${reponse.status()} : cette route n'existe pas, la porte ne mesure rien.`);
+    process.exitCode = 1;
+    continue;
+  }
   await page.waitForTimeout(250);
   const r = await page.evaluate(() => {
     const racine = document.querySelector("main");
@@ -119,9 +141,13 @@ for (const route of routes) {
 }
 
 const n = total.haute + total.guillemets + total.apostrophe;
+// `routes.length` compterait les routes DEMANDÉES ; une route morte n'a pas été
+// mesurée, et l'annoncer comme tenue serait exactement le mensonge que le
+// garde-fou ci-dessus est là pour empêcher.
+const mesurees = routes.length - (process.exitCode === 1 ? 1 : 0);
 console.log(
-  n === 0
-    ? `\nLa typographie française tient sur ${routes.length} page(s) : aucune apostrophe droite, ` +
+  n === 0 && process.exitCode !== 1
+    ? `\nLa typographie française tient sur ${mesurees} page(s) : aucune apostrophe droite, ` +
       `aucune espace manquante devant une ponctuation haute.`
     : `\n${n} écart(s) : ${total.haute} espace(s) manquante(s) devant une ponctuation haute, ` +
       `${total.guillemets} guillemet(s) mal espacé(s), ${total.apostrophe} apostrophe(s) droite(s).`
@@ -135,6 +161,19 @@ if (n > 0) {
 }
 await nav.close();
 arreter();
+// Une route absente a déjà posé process.exitCode = 1 plus haut : la porte doit
+// tomber même si toutes les pages REELLEMENT visitées sont propres. Sinon la
+// liste de routes peut rétrécir en silence — le défaut que ce garde-fou existe
+// pour empêcher.
+if (porte && process.exitCode === 1) {
+  console.error(
+    "\n━━ porte typographie : ROMPUE — une route de la liste n'existe pas ━━\n" +
+    "   La liste de routes EST la portée de cette porte. Une entrée fautive\n" +
+    "   l'ampute sans rien dire : la page 404 est propre, et la porte annonce\n" +
+    "   un ✓ pour une page que personne ne lit."
+  );
+  process.exit(1);
+}
 if (porte && n > 0) {
   console.error(
     "\n━━ porte typographie : le français du produit s'écrit d'une seule façon ━━\n" +

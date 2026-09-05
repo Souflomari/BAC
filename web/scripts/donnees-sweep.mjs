@@ -67,7 +67,18 @@ import { spawn } from "node:child_process";
 import path from "node:path";
 
 const PORTE = process.argv.includes("--porte");
-const PORT = Number(process.env.PORT ?? 3496);
+// PORT UNIQUE PAR EXÉCUTION (2026-09-05). Les ports fixes se marchaient
+// dessus : `copie-maths` et `ancres-uniques` réclamaient tous deux 3497,
+// `donnees-sweep` et `accents-manquants` tous deux 3496. Chaque porte lance
+// son propre `next start` détaché et le tue en fin de course — mais tuer
+// l'enveloppe `npx` ORPHELINE son enfant `next-server`, défaut déjà écrit en
+// toutes lettres dans l'en-tête de dom-truth. Une porte qui trouve le port
+// occupé sonde alors le serveur d'une AUTRE porte : au mieux elle mesure un
+// build voisin, au pire elle attend.
+//
+// C'est le motif de dom-truth, mot pour mot : l'espace 3200-3699 est assez
+// large pour que deux exécutions simultanées ne se croisent pas.
+const PORT = Number(process.env.PORT ?? 3200 + (process.pid % 500));
 const AUTONOME = !process.env.BASE;
 const BASE = process.env.BASE ?? `http://127.0.0.1:${PORT}`;
 const WEB = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
@@ -420,3 +431,9 @@ console.log("\n=== PASSE D — l'élève a activé l'économiseur de données\n"
 
 await nav.close();
 console.log("");
+// Même défaut latent que celui trouvé dans `ancres-uniques` : sans `unref()`,
+// le `next start` détaché garde la boucle d'événements en vie et le script ne
+// rend jamais la main. La branche `--porte` s'en tirait par un
+// `process.exit(0)` explicite ; la branche RAPPORT, non.
+if (serveur?.pid) { try { process.kill(-serveur.pid); } catch {} }
+process.exit(0);
