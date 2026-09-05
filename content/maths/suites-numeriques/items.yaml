@@ -387,7 +387,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Oui, car l'écart entre les deux suites tend vers 0."
+        text: "Oui, car l'écart entre les deux suites tend vers 0, ce qui est exactement la condition demandée par la définition des suites adjacentes."
         correct: false
         feedback: >
           L'écart qui tend vers 0 n'est qu'une des trois conditions requises
@@ -398,7 +398,7 @@ items:
         text: "Non : $(u_n)$ et $(v_n)$ ne convergent même pas — elles tendent toutes les deux vers $+\\infty$ — donc elles ne peuvent pas être adjacentes malgré un écart qui tend vers 0."
         correct: true
       - id: C
-        text: "Oui, car $(u_n)$ est croissante et $(v_n)$ est décroissante."
+        text: "Oui, car $(u_n)$ est croissante et $(v_n)$ est décroissante, ce qui suffit à établir l'adjacence dès lors que leur écart tend vers zéro."
         correct: false
         feedback: >
           C'est factuellement faux ici : $(v_n)$ est elle aussi croissante
@@ -407,7 +407,7 @@ items:
           supposer — aurait révélé que la deuxième condition de la
           définition n'est pas remplie.
       - id: D
-        text: "Non, car il faudrait que les deux suites soient positives."
+        text: "Non, car il faudrait en plus que les deux suites soient positives à partir d'un certain rang pour que la définition puisse s'appliquer."
         correct: false
         feedback: >
           La positivité n'est pas une condition de la définition des suites
@@ -616,7 +616,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Aucune erreur : c'est exactement la bonne façon de formuler l'hérédité."
+        text: "Aucune erreur : c'est exactement la bonne façon de formuler l'étape d'hérédité dans une démonstration par récurrence bien rédigée."
         correct: false
         feedback: >
           C'est justement l'erreur : supposer $P(n)$ vraie POUR TOUT $n$
@@ -624,7 +624,7 @@ items:
           prouver. L'hérédité correcte suppose $P(n)$ vraie pour un seul
           rang $n$ fixé, pas pour tous les rangs à la fois.
       - id: B
-        text: "Il manque l'initialisation : sans elle, l'hérédité seule ne suffit jamais."
+        text: "Il manque l'initialisation : sans elle, l'hérédité seule ne suffit jamais à établir la propriété, quelle que soit la qualité de sa rédaction."
         correct: false
         feedback: >
           C'est un vrai type d'erreur en récurrence (voir un autre exemple),
@@ -632,7 +632,7 @@ items:
           sur une initialisation absente, mais sur la façon dont l'hérédité
           elle-même est formulée — un raisonnement circulaire.
       - id: C
-        text: "Il faudrait vérifier l'hérédité séparément pour chaque valeur de $n$, et pas une fois pour toutes."
+        text: "Il faudrait vérifier l'hérédité séparément pour chaque valeur de $n$, et non une fois pour toutes, faute de quoi la démonstration ne couvre pas tous les rangs."
         correct: false
         feedback: >
           C'est l'inverse de ce qu'exige la récurrence : l'hérédité se
@@ -681,7 +681,7 @@ items:
         text: "L'étape est incorrecte : en multipliant par $-2$ (un nombre négatif), le sens de l'inégalité doit s'inverser. On aurait dû obtenir $-2u_n \\geq -10$, pas $\\leq -10$."
         correct: true
       - id: B
-        text: "L'étape est correcte : multiplier une inégalité par un nombre quelconque conserve toujours son sens."
+        text: "L'étape est correcte : multiplier les deux membres d'une inégalité par un nombre quelconque en conserve toujours le sens, quel que soit le signe de ce nombre."
         correct: false
         feedback: >
           C'est faux en général : multiplier une inégalité par un nombre
@@ -689,7 +689,7 @@ items:
           donne $-2u_n \geq -10$, pas $-2u_n \leq -10$. Confondre les deux
           conduit à une conclusion fausse sur $u_{n+1}$.
       - id: C
-        text: "L'étape est incorrecte : il fallait multiplier par $-2$ l'ÉGALITÉ $u_{n+1}=-2u_n+3$, pas l'inégalité $u_n\\leq5$."
+        text: "L'étape est incorrecte : il fallait multiplier par $-2$ l'ÉGALITÉ de récurrence $u_{n+1}=-2u_n+3$, et non l'inégalité $u_n\\leq5$ que l'on suppose vraie."
         correct: false
         feedback: >
           Ce n'est pas là que se situe l'erreur : multiplier l'hypothèse
@@ -698,7 +698,7 @@ items:
           c'est le SENS de l'inégalité après multiplication par un nombre
           négatif qui a été mal traité.
       - id: D
-        text: "L'étape est incorrecte, mais seulement parce qu'il manque l'initialisation à ce stade du raisonnement."
+        text: "L'étape est incorrecte, mais uniquement parce qu'il manque l'initialisation à ce stade du raisonnement, l'hérédité elle-même étant correctement conduite."
         correct: false
         feedback: >
           L'initialisation est une étape séparée et distincte, qui n'est
@@ -909,7 +909,7 @@ items:
         text: "C'est incorrect : un majorant n'est ni unique, ni nécessairement le plus petit possible (si $M$ majore la suite, $M+1$ aussi) ; rien ne garantit non plus que la suite se rapproche de $10$."
         correct: true
       - id: B
-        text: "C'est correct : un majorant trouvé par démonstration est toujours le plus petit possible."
+        text: "C'est correct : un majorant obtenu par une démonstration en bonne et due forme est toujours le plus petit majorant possible de la suite étudiée."
         correct: false
         feedback: >
           C'est faux : si $M$ est un majorant de $(u_n)$, alors $M+1$,
@@ -917,7 +917,7 @@ items:
           » ne dit rien sur le fait que 10 soit LE plus petit majorant — il
           pourrait très bien y avoir un majorant plus serré, ou pas.
       - id: C
-        text: "C'est incorrect : $10$ ne peut pas être un majorant, car un majorant doit toujours être atteint par au moins un terme de la suite."
+        text: "C'est incorrect : $10$ ne peut pas être un majorant de cette suite, car un majorant doit toujours être atteint par au moins un terme de la suite qu'il majore."
         correct: false
         feedback: >
           Un majorant n'a pas besoin d'être atteint par la suite. « $u_n\leq
@@ -925,7 +925,7 @@ items:
           $u_n=M$ exactement — la suite peut rester strictement en dessous
           de $M$ pour toujours.
       - id: D
-        text: "C'est correct, car toute suite majorée converge nécessairement vers son majorant le plus petit."
+        text: "C'est correct, car toute suite majorée converge nécessairement vers le plus petit de ses majorants, qui est donc bien la limite cherchée ici."
         correct: false
         feedback: >
           Être majorée seule ne garantit même pas la convergence (il faut
@@ -963,7 +963,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Oui, car les termes calculés se rapprochent de plus en plus de $50$ sans le dépasser, donc la tendance se confirmera indéfiniment."
+        text: "Oui, car les termes calculés se rapprochent de plus en plus de $50$ sans jamais le dépasser, si bien que la tendance observée se confirmera indéfiniment."
         correct: false
         feedback: >
           Observer que quelques termes restent en dessous de 50 ne prouve
@@ -972,10 +972,10 @@ items:
           la vérifier plus loin — c'est exactement ce que la récurrence est
           faite pour couvrir rigoureusement.
       - id: B
-        text: "Non : vérifier quelques termes ne prouve rien pour l'infinité des rangs restants. Il faut un raisonnement par récurrence (initialisation puis hérédité) pour couvrir tous les $n$ d'un coup."
+        text: "Non : vérifier quelques termes ne prouve rien pour l'infinité des rangs restants. Il faut un raisonnement par récurrence (initialisation puis hérédité) pour couvrir tous les $n$."
         correct: true
       - id: C
-        text: "Oui, car la suite étant croissante, elle ne peut que se rapprocher de $50$, jamais le dépasser."
+        text: "Oui, car la suite étant croissante, elle ne peut que se rapprocher de $50$ sans jamais le dépasser, ce que les quatre premiers termes suffisent à établir."
         correct: false
         feedback: >
           Être croissante n'implique par elle-même AUCUN majorant précis :
@@ -984,7 +984,7 @@ items:
           dépasser. La monotonie et la majoration sont deux propriétés
           indépendantes qu'il faut établir séparément.
       - id: D
-        text: "Non, car il faudrait calculer une infinité de termes pour être sûr, ce qui est impossible — la propriété ne peut donc jamais être démontrée."
+        text: "Non, car il faudrait calculer une infinité de termes pour en être sûr, ce qui est impossible — la propriété ne peut donc jamais être démontrée pour tout $n$."
         correct: false
         feedback: >
           C'est une sur-correction : la récurrence permet justement de
@@ -1024,7 +1024,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "La conclusion est valide : on voit clairement que les termes diminuent."
+        text: "La conclusion est valide : on voit clairement que les termes diminuent les uns après les autres, et rien n'indique que cette tendance puisse s'inverser plus loin."
         correct: false
         feedback: >
           Voir une tendance sur quatre termes n'est pas une preuve pour
@@ -1032,7 +1032,7 @@ items:
           sur ses premiers termes puis se remettre à croître ensuite — il
           faut étudier le signe de $u_{n+1}-u_n$ de façon générale.
       - id: B
-        text: "La conclusion est valide, car quatre termes suffisent toujours à établir une propriété pour une suite."
+        text: "La conclusion est valide, car quatre termes consécutifs suffisent toujours à établir une propriété de monotonie pour l'ensemble des rangs d'une suite."
         correct: false
         feedback: >
           C'est faux en général : quatre termes ne couvrent qu'un nombre
@@ -1040,10 +1040,10 @@ items:
           tous les $n$ » ne peut se déduire d'un nombre fini de calculs,
           aussi grand soit-il.
       - id: C
-        text: "La conclusion n'est pas justifiée : observer une tendance sur quelques termes n'est pas une preuve pour tous les rangs. Il faut étudier le signe de $u_{n+1}-u_n$ (ou $f(x)-x$) de façon générale, valable pour tout $n$."
+        text: "La conclusion n'est pas justifiée : observer une tendance sur quelques termes n'est pas une preuve pour tous les rangs. Il faut étudier le signe de $u_{n+1}-u_n$ de façon générale, valable pour tout $n$."
         correct: true
       - id: D
-        text: "La conclusion n'est pas justifiée, car il faudrait au contraire d'abord vérifier que la suite est bornée avant de parler de monotonie."
+        text: "La conclusion n'est pas justifiée, car il faudrait au contraire commencer par vérifier que la suite est bornée avant de pouvoir parler de sa monotonie sur l'ensemble des rangs."
         correct: false
         feedback: >
           Bornée et monotone sont deux propriétés indépendantes (voir le chapitre 4) :
@@ -1079,7 +1079,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "L'affirmation est correcte : un quotient inférieur à 1 signifie toujours que la suite décroît."
+        text: "L'affirmation est correcte : un quotient $u_{n+1}/u_n$ inférieur à 1 signifie toujours que la suite décroît, quels que soient les signes des termes en jeu."
         correct: false
         feedback: >
           Faux dans ce cas précis : avec $u_n=-100\times0{,}5^n$, on a
@@ -1088,7 +1088,7 @@ items:
           $0{,}5<1$. La méthode du quotient ne s'applique que si tous les
           $u_n$ sont strictement positifs.
       - id: C
-        text: "L'affirmation est correcte, car un quotient constant signifie automatiquement que la suite est géométrique, donc monotone."
+        text: "L'affirmation est correcte, car un quotient constant signifie automatiquement que la suite est géométrique, et toute suite géométrique est monotone."
         correct: false
         feedback: >
           Le fait qu'une suite soit géométrique (quotient constant) ne dit
@@ -1097,7 +1097,7 @@ items:
           géométrique de raison $0{,}5$, et pourtant elle est croissante,
           pas décroissante.
       - id: D
-        text: "L'affirmation n'est pas justifiée, car un quotient ne peut jamais servir à étudier la monotonie ; seule la différence $u_{n+1}-u_n$ le permet."
+        text: "L'affirmation n'est pas justifiée, car un quotient ne peut jamais servir à étudier la monotonie d'une suite ; seule la différence $u_{n+1}-u_n$ le permet réellement."
         correct: false
         feedback: >
           C'est une sur-correction : la méthode du quotient EST valide,
@@ -1105,7 +1105,7 @@ items:
           n'est pas que le quotient « ne sert jamais », c'est qu'il faut
           vérifier la positivité avant de l'utiliser.
       - id: B
-        text: "L'affirmation n'est pas justifiée : la méthode du quotient (comparer $u_{n+1}/u_n$ à 1) ne s'applique que si tous les $u_n$ sont strictement positifs ; ici, certains termes étant négatifs, on ne peut pas conclure ainsi."
+        text: "L'affirmation n'est pas justifiée : la méthode du quotient (comparer $u_{n+1}/u_n$ à 1) ne s'applique que si tous les $u_n$ sont strictement positifs ; or ici certains termes sont négatifs."
         correct: true
     correct_feedback: >
       Comparer $u_{n+1}/u_n$ à 1 pour conclure sur la monotonie exige que
@@ -1144,7 +1144,7 @@ items:
         text: "Non : le signe de $f(x)-x$ doit être étudié sur l'intervalle où vivent réellement les $u_n$ — ici $x>20$ (d'après le chapitre 2), pas $x<20$. Sur cet intervalle, $f(x)-x=10-0{,}5x<0$ : la suite est en réalité décroissante."
         correct: true
       - id: B
-        text: "Oui, le calcul de $f(x)-x$ montre bien que la suite est croissante."
+        text: "Oui, le calcul de $f(x)-x$ montre bien que la suite est croissante, et il n'y a rien à ajouter à ce raisonnement pour conclure."
         correct: false
         feedback: >
           Le calcul $f(x)-x>0$ pour $x<20$ est vrai en lui-même, mais il ne
@@ -1152,7 +1152,7 @@ items:
           l'intervalle $x>20$ (d'après le chapitre 2), pas $x<20$. Sur $x>20$, c'est
           l'inverse : $f(x)-x<0$, donc la suite est décroissante.
       - id: C
-        text: "Non, car la méthode $f(x)-x$ ne s'applique jamais aux suites récurrentes de la forme $u_{n+1}=f(u_n)$ ; seule la différence $u_{n+1}-u_n$ calculée directement est valable."
+        text: "Non, car la méthode consistant à étudier $f(x)-x$ ne s'applique jamais aux suites récurrentes de la forme $u_{n+1}=f(u_n)$ ; seule la différence $u_{n+1}-u_n$ calculée directement est valable."
         correct: false
         feedback: >
           C'est une sur-correction : la méthode $f(x)-x$ EST valide et
@@ -1160,7 +1160,7 @@ items:
           Le chapitre 5 pour deviner le sens de variation. Le problème n'est pas la
           méthode elle-même, mais l'intervalle sur lequel on l'applique.
       - id: D
-        text: "Oui, car le signe de $f(x)-x=10-0{,}5x$ est le même quel que soit $x$ considéré."
+        text: "Oui, car le signe de $f(x)-x=10-0{,}5x$ est le même quel que soit le réel $x$ considéré, ce qui rend inutile toute restriction d'intervalle."
         correct: false
         feedback: >
           C'est factuellement faux : $10-0{,}5x$ change de signe en $x=20$
@@ -1204,7 +1204,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "L'affirmation est correcte : une forme $+\\infty+(-\\infty)$ n'a jamais de limite déterminable, quel que soit l'exemple."
+        text: "L'affirmation est correcte : une forme $+\\infty+(-\\infty)$ n'a jamais de limite déterminable, quel que soit l'exemple choisi et quelles que soient les suites en jeu."
         correct: false
         feedback: >
           C'est justement l'erreur classique : « forme indéterminée » ne
@@ -1212,10 +1212,10 @@ items:
           l'expression avant de conclure ». Ici, en développant,
           $u_n+v_n=3n$, dont la limite EXISTE et vaut $+\infty$.
       - id: B
-        text: "L'affirmation est incorrecte : $u_n+v_n = 3n$ après simplification, dont la limite est $+\\infty$. Une forme indéterminée signifie qu'il faut transformer l'expression avant de conclure, pas que la limite n'existe jamais."
+        text: "L'affirmation est incorrecte : $u_n+v_n = 3n$ après simplification, dont la limite est $+\\infty$. Une forme indéterminée oblige à transformer l'expression, elle n'interdit pas la limite."
         correct: true
       - id: C
-        text: "L'affirmation est incorrecte : il suffisait d'additionner les limites directement, $(+\\infty)+(-\\infty)=0$."
+        text: "L'affirmation est incorrecte : il suffisait d'additionner directement les deux limites, ce qui donne $(+\\infty)+(-\\infty)=0$ et clôt immédiatement la question."
         correct: false
         feedback: >
           $(+\infty)+(-\infty)$ n'est PAS égal à 0 par une règle générale —
@@ -1223,7 +1223,7 @@ items:
           dépend de la façon précise dont chaque suite tend vers l'infini.
           Ici, il vaut $+\infty$ (pas 0), une fois l'expression simplifiée.
       - id: D
-        text: "L'affirmation est correcte, et de plus $\\lim(u_n+v_n)$ ne peut être déterminée que si $u_n$ et $v_n$ convergent toutes les deux vers une limite finie."
+        text: "L'affirmation est correcte, et de plus $\\lim(u_n+v_n)$ ne peut être déterminée que dans le cas où $u_n$ et $v_n$ convergent toutes les deux vers une limite finie."
         correct: false
         feedback: >
           C'est une exigence inventée et fausse : de nombreuses sommes de
@@ -1376,10 +1376,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "La conclusion est incorrecte : le théorème des gendarmes exige un encadrement à DEUX bornes ($u_n \\leq w_n \\leq v_n$) qui convergent toutes deux vers la même limite. Une seule majoration ne suffit pas — $w_n$ pourrait très bien tendre vers $-\\infty$."
+        text: "La conclusion est incorrecte : le théorème des gendarmes exige un encadrement à DEUX bornes ($u_n \\leq w_n \\leq v_n$) convergeant vers la même limite. Une seule majoration ne suffit pas."
         correct: true
       - id: B
-        text: "La conclusion est correcte : une seule borne qui tend vers $0$ suffit à appliquer le théorème des gendarmes."
+        text: "La conclusion est correcte : une seule borne qui tend vers $0$ suffit à appliquer le théorème des gendarmes, dès lors que l'inégalité est vraie pour tout $n$."
         correct: false
         feedback: >
           Le théorème des gendarmes a besoin de DEUX bornes, une en
@@ -1388,14 +1388,14 @@ items:
           sans minoration, $w_n$ pourrait très bien tendre vers $-\infty$
           (par exemple $w_n=-n$ vérifie aussi $w_n\leq\frac{2}{n+1}$).
       - id: C
-        text: "La conclusion est incorrecte, car il faudrait que $w_n$ soit positive pour tout $n$ pour appliquer le théorème des gendarmes."
+        text: "La conclusion est incorrecte, car il faudrait que $w_n$ soit positive pour tout $n$ afin de pouvoir appliquer le théorème des gendarmes à cette majoration."
         correct: false
         feedback: >
           La positivité n'est pas une condition du théorème des gendarmes.
           La vraie condition manquante ici est l'absence d'une deuxième
           borne (une minoration) qui convergerait aussi vers 0.
       - id: D
-        text: "La conclusion est correcte, car toute suite majorée par une suite convergente est automatiquement convergente vers la même limite."
+        text: "La conclusion est correcte, car toute suite majorée par une suite convergente est automatiquement convergente, et vers la même limite que celle qui la majore."
         correct: false
         feedback: >
           C'est faux : être majorée par une suite qui converge ne garantit
@@ -1486,7 +1486,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "C'est correct : le théorème donne directement la valeur de la limite, qui est toujours le minorant utilisé."
+        text: "C'est correct : le théorème de la limite monotone donne directement la valeur de la limite, qui est toujours le minorant utilisé dans la démonstration."
         correct: false
         feedback: >
           C'est le point capital à ne pas confondre : le théorème de la
@@ -1495,7 +1495,7 @@ items:
           plancher que la suite ne franchit pas — souvent bien en dessous
           de la vraie limite.
       - id: D
-        text: "C'est correct, à condition que $3$ soit le plus petit minorant possible."
+        text: "C'est correct, à la seule condition que $3$ soit bien le plus petit minorant possible de la suite, ce que l'énoncé laisse ici entendre."
         correct: false
         feedback: >
           Même si $3$ était le plus petit minorant possible (la « borne
@@ -1507,7 +1507,7 @@ items:
           tightness du minorant ne détermine pas la valeur de la limite par
           principe.
       - id: C
-        text: "C'est incorrect : une suite décroissante et minorée ne converge pas forcément, il faudrait en plus qu'elle soit majorée."
+        text: "C'est incorrect : une suite décroissante et minorée ne converge pas forcément, il faudrait en plus qu'elle soit majorée pour que le théorème s'applique."
         correct: false
         feedback: >
           C'est une condition superflue : une suite décroissante est
@@ -1516,7 +1516,7 @@ items:
           suffit déjà pleinement à garantir la convergence, sans condition
           supplémentaire.
       - id: B
-        text: "C'est incorrect : le théorème garantit seulement que $(u_n)$ CONVERGE (vers une limite $L \\geq 3$), pas que cette limite vaut exactement $3$. La valeur de $3$ n'est en général pas la limite, juste un plancher."
+        text: "C'est incorrect : le théorème garantit seulement que $(u_n)$ CONVERGE, vers une limite $L \\geq 3$, et non que cette limite vaille exactement $3$ — qui n'est ici qu'un plancher."
         correct: true
     correct_feedback: >
       Le théorème de la limite monotone donne l'EXISTENCE d'une limite $L$
@@ -1549,7 +1549,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Oui, car le théorème de la limite monotone s'applique à toute suite bornée, monotone ou non."
+        text: "Oui, car le théorème de la limite monotone s'applique à toute suite bornée, qu'elle soit monotone ou non, la bornitude étant sa seule véritable hypothèse."
         correct: false
         feedback: >
           Le nom du théorème le dit : il exige la MONOTONIE (croissante ou
@@ -1557,7 +1557,7 @@ items:
           seule ne suffit pas — c'est justement le piège que le chapitre 4 met en
           garde : bornée et monotone sont deux propriétés indépendantes.
       - id: C
-        text: "Oui, car toute suite bornée converge nécessairement, qu'elle soit monotone ou non."
+        text: "Oui, car toute suite bornée converge nécessairement, qu'elle soit monotone ou non, et le théorème ne fait ici que confirmer ce résultat général."
         correct: false
         feedback: >
           C'est faux : par exemple $u_n=(-1)^n$ est bornée ($-1\leq
@@ -1565,7 +1565,7 @@ items:
           se stabiliser — elle ne converge pas du tout. Bornée ne suffit
           jamais à garantir la convergence, sans la monotonie.
       - id: D
-        text: "Non, car il faudrait d'abord démontrer qu'elle est arithmétique ou géométrique avant d'utiliser un théorème de convergence."
+        text: "Non, car il faudrait d'abord démontrer que la suite est arithmétique ou géométrique avant de pouvoir utiliser le moindre théorème de convergence à son sujet."
         correct: false
         feedback: >
           Le théorème de la limite monotone ne demande rien de tel : il
@@ -1573,7 +1573,7 @@ items:
           décroissante-minorée, qu'elle soit arithmétique, géométrique, ou
           d'un tout autre type.
       - id: B
-        text: "Non : le théorème exige à la fois la monotonie (croissante ou décroissante) ET la majoration/minoration correspondante. Une suite bornée mais non monotone peut très bien ne pas converger (elle peut osciller indéfiniment)."
+        text: "Non : le théorème exige à la fois la monotonie ET la majoration ou minoration correspondante. Une suite bornée mais non monotone peut très bien ne pas converger, en oscillant indéfiniment."
         correct: true
     correct_feedback: >
       Le théorème de la limite monotone a besoin des DEUX conditions
@@ -1606,7 +1606,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "C'est incorrect : $L=f(L)$ donne seulement la valeur QUE PRENDRAIT la limite SI elle existait — ce n'est pas une preuve de convergence. Ici, la suite oscille en s'amplifiant ($0,3,-3,9,-15,\\ldots$) et ne converge pas du tout, malgré l'existence formelle d'une solution $L=1$."
+        text: "C'est incorrect : $L=f(L)$ donne seulement la valeur QUE PRENDRAIT la limite SI elle existait — ce n'est pas une preuve de convergence. Ici la suite oscille en s'amplifiant ($0,3,-3,9,-15,\\ldots$) et ne converge pas."
         correct: true
       - id: B
         text: "C'est correct : $L=1$ est bien LA limite de la suite, la résolution de $L=f(L)$ suffit toujours à la trouver."
@@ -1627,7 +1627,7 @@ items:
           fait de croire que trouver un point fixe suffit à prouver la
           convergence.
       - id: D
-        text: "C'est correct, car dès qu'une fonction $f$ admet un point fixe, la suite $u_{n+1}=f(u_n)$ converge automatiquement vers ce point fixe, quelle que soit la fonction."
+        text: "C'est correct, car dès qu'une fonction $f$ admet un point fixe, la suite définie par $u_{n+1}=f(u_n)$ converge automatiquement vers ce point fixe, quelle que soit la fonction considérée."
         correct: false
         feedback: >
           C'est faux en général — et ce contre-exemple le montre : $f$ a
@@ -1676,7 +1676,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Il n'y a pas d'erreur : la raison est bien $0{,}3u_n$."
+        text: "Il n'y a aucune erreur dans ce raisonnement : la raison de la suite géométrique obtenue est bien l'expression $0{,}3u_n$, qui dépend du rang considéré."
         correct: false
         feedback: >
           Une raison géométrique doit TOUJOURS être un nombre fixe, jamais
@@ -1684,10 +1684,10 @@ items:
           pas une raison valable — il manque l'étape de factorisation qui
           révèle la vraie constante.
       - id: B
-        text: "L'erreur est de s'arrêter avant de factoriser : $0{,}3u_n - 3 = 0{,}3(u_n-10) = 0{,}3\\,v_n$. La raison est la constante $0{,}3$, pas une expression dépendant de $u_n$ — une raison géométrique doit toujours être un nombre fixe."
+        text: "L'erreur est de s'arrêter avant de factoriser : $0{,}3u_n - 3 = 0{,}3(u_n-10) = 0{,}3\\,v_n$. La raison est la constante $0{,}3$, et une raison géométrique est toujours un nombre fixe."
         correct: true
       - id: C
-        text: "L'erreur est d'avoir soustrait $10$ : il fallait poser $v_n = u_n+10$ pour obtenir une suite géométrique."
+        text: "L'erreur est d'avoir soustrait $10$ : il fallait poser $v_n = u_n+10$ pour obtenir une suite géométrique, la limite devant être ajoutée et non retranchée."
         correct: false
         feedback: >
           C'est l'inverse : c'est bien $v_n=u_n-10$ (soustraire le point
@@ -1695,7 +1695,7 @@ items:
           Poser $v_n=u_n+10$ ne ferait PAS apparaître de raison constante en
           poursuivant le calcul.
       - id: D
-        text: "L'erreur est que la suite $(v_n)$ ne peut pas être géométrique ici, car $(u_n)$ elle-même n'est ni arithmétique ni géométrique."
+        text: "L'erreur est que la suite $(v_n)$ ne peut pas être géométrique ici, puisque la suite $(u_n)$ dont elle est issue n'est elle-même ni arithmétique ni géométrique."
         correct: false
         feedback: >
           C'est justement l'intérêt de la technique de la suite auxiliaire
@@ -1741,7 +1741,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Oui : l'écart tend vers $0$ et les deux suites convergent, c'est suffisant pour l'adjacence."
+        text: "Oui : l'écart tend vers $0$ et les deux suites convergent vers la même limite, ce qui est exactement ce que demande la définition des suites adjacentes."
         correct: false
         feedback: >
           Ce n'est pas suffisant : la définition des suites adjacentes
@@ -1749,7 +1749,7 @@ items:
           Ici, les deux suites sont en fait CROISSANTES toutes les deux —
           la condition de monotonie opposée n'est pas remplie.
       - id: B
-        text: "Non, car pour être adjacentes, il faudrait que $u_n \\geq v_n$ pour tout $n$, alors qu'ici c'est l'inverse."
+        text: "Non, car pour être adjacentes il faudrait que $u_n \\geq v_n$ pour tout $n$, alors qu'ici c'est l'inverse qui se produit à chacun des rangs considérés."
         correct: false
         feedback: >
           Ce n'est pas la bonne raison : l'ordre $u_n\leq v_n$ (comme c'est
@@ -1758,10 +1758,10 @@ items:
           vrai problème est ailleurs : ici, aucune des deux suites n'est
           décroissante.
       - id: C
-        text: "Non : $(u_n)$ ET $(v_n)$ sont en réalité toutes les deux CROISSANTES ici (aucune des deux n'est décroissante), donc la définition des suites adjacentes — qui exige que l'une croisse pendant que l'autre décroît — n'est pas respectée, même si elles convergent vers la même limite."
+        text: "Non : $(u_n)$ ET $(v_n)$ sont en réalité toutes les deux CROISSANTES ici, alors que la définition des suites adjacentes exige que l'une croisse pendant que l'autre décroît."
         correct: true
       - id: D
-        text: "Oui, car deux suites qui convergent vers la même limite sont automatiquement adjacentes."
+        text: "Oui, car deux suites qui convergent vers une même limite sont automatiquement adjacentes, l'écart entre elles tendant nécessairement vers zéro."
         correct: false
         feedback: >
           C'est faux : converger vers la même limite ne dit rien sur la
@@ -1805,7 +1805,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "C'est correct : la limite commune est toujours exactement la moyenne des deux termes à un rang donné."
+        text: "C'est correct : pour deux suites adjacentes, la limite commune est toujours exactement la moyenne des deux termes pris à un même rang quelconque."
         correct: false
         feedback: >
           C'est faux en général : le théorème des suites adjacentes garantit
@@ -1813,7 +1813,7 @@ items:
           $L$ soit exactement au milieu de cet intervalle. $L$ pourrait être
           n'importe quelle valeur entre $4{,}97$ et $5{,}03$.
       - id: C
-        text: "C'est incorrect, car on ne peut rien dire sur $L$ tant qu'on n'a pas calculé $u_n$ et $v_n$ pour TOUS les $n$."
+        text: "C'est incorrect, car on ne peut rien affirmer sur $L$ tant qu'on n'a pas calculé les termes $u_n$ et $v_n$ pour TOUS les rangs $n$, ce qui est hors de portée."
         correct: false
         feedback: >
           C'est une sur-correction : l'encadrement $u_{10}\leq L\leq v_{10}$
@@ -1821,7 +1821,7 @@ items:
           rang — pas besoin de calculer tous les termes pour en tirer un
           encadrement de $L$, seulement pour en connaître la valeur exacte.
       - id: D
-        text: "C'est correct, car pour des suites adjacentes, $(u_n+v_n)/2$ est constante et égale à $L$ pour tout $n$."
+        text: "C'est correct, car pour deux suites adjacentes la quantité $(u_n+v_n)/2$ est constante et vaut exactement $L$ à chaque rang, ce qui donne la limite d'un coup."
         correct: false
         feedback: >
           C'est un invariant inventé et faux : rien dans la définition des
@@ -1829,7 +1829,7 @@ items:
           constante d'un rang à l'autre. Seul l'ÉCART $v_n-u_n$ est garanti
           de tendre vers 0, pas la moyenne d'être constante.
       - id: B
-        text: "C'est incorrect : le théorème garantit seulement l'encadrement $u_{10} \\leq L \\leq v_{10}$, c'est-à-dire $4{,}97 \\leq L \\leq 5{,}03$. Rien ne garantit que $L$ soit exactement au milieu de cet intervalle — $L$ pourrait être $4{,}98$, $5{,}02$, ou toute autre valeur dans cet intervalle."
+        text: "C'est incorrect : le théorème garantit seulement l'encadrement $u_{10} \\leq L \\leq v_{10}$, soit $4{,}97 \\leq L \\leq 5{,}03$. Rien ne dit que $L$ soit exactement au milieu de cet intervalle."
         correct: true
     correct_feedback: >
       Le théorème des suites adjacentes garantit que, pour tout $n$,
@@ -1870,7 +1870,7 @@ items:
         text: "Il manque la démonstration que $(u_n)$ est majorée (par exemple par $15$) : le théorème de la limite monotone exige croissante ET majorée, pas la croissance seule."
         correct: true
       - id: B
-        text: "Rien : croissante suffit à elle seule pour garantir la convergence par le théorème de la limite monotone."
+        text: "Rien ne manque : la croissance suffit à elle seule à garantir la convergence par le théorème de la limite monotone, sans autre hypothèse à vérifier."
         correct: false
         feedback: >
           Le théorème de la limite monotone exige les DEUX conditions
@@ -1878,7 +1878,7 @@ items:
           majorée diverge vers $+\infty$ (elle ne converge pas) — la
           croissance seule ne suffit jamais à garantir la convergence.
       - id: C
-        text: "Il manque de calculer d'abord la limite $L$ par point fixe, avant de pouvoir invoquer le théorème de la limite monotone."
+        text: "Il manque de calculer d'abord la limite $L$ par la méthode du point fixe, avant de pouvoir invoquer le théorème de la limite monotone pour conclure."
         correct: false
         feedback: >
           C'est l'ordre inverse de la bonne démarche : le point fixe ($R8$)
@@ -1886,7 +1886,7 @@ items:
           la limite monotone), jamais avant. Résoudre $L=f(L)$ ne prouve
           jamais, à lui seul, que la suite converge.
       - id: D
-        text: "Il manque de vérifier que $u_0=2$ est bien inférieur à $u_1$, sinon le théorème ne peut jamais s'appliquer."
+        text: "Il manque de vérifier que $u_0=2$ est bien inférieur à $u_1$, faute de quoi le théorème de la limite monotone ne peut jamais s'appliquer à cette suite."
         correct: false
         feedback: >
           Vérifier un seul pas ($u_0<u_1$) ne prouve rien pour l'infinité

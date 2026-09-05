@@ -284,7 +284,7 @@ items:
           $10^{39}$) ; c'est elle qui retient l'électron.
         correct: true
       - id: B
-        text: "Oui : les deux particules ont une masse, donc la gravitation s'applique en premier."
+        text: "Oui : les deux particules possèdent une masse, donc la gravitation s'applique en premier lieu, la force électrostatique ne venant qu'ensuite la corriger légèrement."
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
         feedback: >
@@ -296,8 +296,9 @@ items:
           masse.
       - id: C
         text: >-
-          Oui : la force électrostatique ne s'applique qu'à des charges
-          libres, pas à des particules liées dans un atome.
+          Oui : la force électrostatique ne s'applique qu'à des charges libres, et non à
+          des particules déjà liées entre elles au sein d'un atome, où seule la
+          gravitation subsiste.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.force-electrostatique-mal-identifiee
         feedback: >
@@ -306,8 +307,9 @@ items:
           atome — c'est au contraire elle qui y domine entièrement.
       - id: D
         text: >-
-          Aucune des deux ne s'applique : seule une force nucléaire retient
-          l'électron autour du noyau.
+          Aucune des deux ne s'applique ici : c'est une force nucléaire, de même nature
+          que celle qui tient les nucléons ensemble, qui retient l'électron autour du
+          noyau.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.force-electrostatique-mal-identifiee
         feedback: >
@@ -411,7 +413,7 @@ items:
           instant même si sa norme reste constante.
         correct: true
       - id: B
-        text: "$\\vec{a}_G = \\vec{0}$, car le mouvement est uniforme, donc la vitesse ne change pas."
+        text: "$\\vec{a}_G = \\vec{0}$, car le mouvement est uniforme : la vitesse ne change pas, et une accélération nulle en découle directement."
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle
         feedback: >
@@ -421,8 +423,9 @@ items:
           suffit à produire une accélération non nulle.
       - id: C
         text: >-
-          $\vec{a}_G \neq \vec{0}$, mais elle est purement tangentielle,
-          dans le sens du mouvement.
+          $\vec{a}_G \neq \vec{0}$, mais elle est purement tangentielle, dirigée dans le
+          sens du mouvement, puisque c'est le long de la trajectoire que l'électron
+          avance.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.confond-composante-tangentielle-et-normale
         feedback: >
@@ -432,8 +435,8 @@ items:
           (centripète), liée au changement de direction, pas de norme.
       - id: D
         text: >-
-          $\vec{a}_G$ change de norme à chaque instant, en plus de changer de
-          direction.
+          $\vec{a}_G$ change de norme à chaque instant, en plus de changer de direction,
+          la vitesse étant plus grande sur certaines portions de l'orbite.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante
         feedback: >
@@ -475,8 +478,9 @@ items:
         correct: true
       - id: B
         text: >-
-          Oui : « uniforme » veut dire vitesse constante, donc accélération
-          nulle, donc somme des forces nulle par la deuxième loi.
+          Oui : « uniforme » veut dire que la vitesse est constante, donc que
+          l'accélération est nulle, donc que la somme des forces l'est aussi d'après la
+          deuxième loi.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle
         feedback: >
@@ -486,8 +490,8 @@ items:
           impose alors $\sum \vec{F}_{ext} \neq \vec{0}$.
       - id: C
         text: >-
-          Oui, car la force de Coulomb et le poids de l'électron se
-          compensent exactement.
+          Oui, car la force de Coulomb exercée par le noyau et le poids de l'électron se
+          compensent exactement à cette distance, laissant une résultante nulle.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
         feedback: >
@@ -498,7 +502,7 @@ items:
       - id: D
         text: >-
           Non, mais seulement parce qu'il faudrait aussi inclure la force
-          gravitationnelle du noyau dans le bilan.
+          gravitationnelle exercée par le noyau dans le bilan des forces extérieures.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
         feedback: >
@@ -544,8 +548,8 @@ items:
         correct: true
       - id: B
         text: >-
-          L'électron reste indéfiniment sur son orbite, exactement comme une
-          planète autour du Soleil, sans aucune perte d'énergie.
+          L'électron reste indéfiniment sur son orbite, exactement comme une planète
+          autour du Soleil, sans la moindre perte d'énergie au fil du temps.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite
         feedback: >
@@ -558,8 +562,8 @@ items:
           supplémentaire.
       - id: C
         text: >-
-          L'électron s'échapperait du noyau, car la force de Coulomb
-          diminue avec le temps.
+          L'électron finirait par s'échapper du noyau, car la force de Coulomb qui le
+          retient diminue progressivement avec le temps qui passe.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.confond-cause-et-consequence-effondrement
         feedback: >
@@ -569,8 +573,8 @@ items:
           augmenter la force), pas l'inverse.
       - id: D
         text: >-
-          La mécanique de Newton prédit directement la quantification des
-          niveaux d'énergie observée expérimentalement.
+          La mécanique de Newton prédit directement la quantification des niveaux
+          d'énergie que l'on observe expérimentalement dans les spectres atomiques.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite
         feedback: >
@@ -745,8 +749,8 @@ items:
     choices:
       - id: A
         text: >-
-          Une orbite instable, qui s'effondre presque immédiatement, dès la
-          seule mécanique de Newton.
+          Une orbite instable, qui s'effondre presque immédiatement sur le noyau, et
+          cela dès l'application de la seule mécanique de Newton, sans rien y ajouter.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux
         feedback: >
@@ -762,8 +766,8 @@ items:
         correct: true
       - id: C
         text: >-
-          Aucune prédiction n'est possible, car la mécanique de Newton ne
-          s'applique pas à une particule chargée comme l'électron.
+          Aucune prédiction n'est possible, car la mécanique de Newton ne s'applique
+          tout simplement pas à une particule chargée comme l'électron de l'atome.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.mecanique-jugee-inapplicable-aux-charges
         feedback: >
@@ -773,8 +777,8 @@ items:
           que ce calcul sera fait, et qu'il sera correct.
       - id: D
         text: >-
-          Le rayon de l'orbite augmente progressivement avec le temps,
-          jusqu'à ce que l'électron s'échappe du noyau.
+          Le rayon de l'orbite augmente progressivement avec le temps, jusqu'à ce que
+          l'électron finisse par s'échapper complètement de l'attraction du noyau.
         correct: false
         misconception: null
         feedback: >
@@ -868,8 +872,9 @@ items:
     choices:
       - id: A
         text: >-
-          Parce que toute force électrostatique est nécessairement
-          attractive, tout comme la force gravitationnelle.
+          Parce que toute force électrostatique est nécessairement attractive,
+          exactement comme l'est la force gravitationnelle entre deux masses
+          quelconques.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.coulomb-toujours-attractive-comme-gravitation
         feedback: >
@@ -880,7 +885,8 @@ items:
           attractive.
       - id: B
         text: >-
-          Parce que le noyau est beaucoup plus massif que l'électron.
+          Parce que le noyau est beaucoup plus massif que l'électron, et que c'est
+          toujours le corps le plus massif qui attire l'autre vers lui.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
         feedback: >
@@ -890,8 +896,8 @@ items:
           pas des masses.
       - id: C
         text: >-
-          Parce que l'électron est très proche du noyau, à l'échelle
-          atomique.
+          Parce que l'électron est très proche du noyau, à l'échelle atomique, et qu'à
+          si courte distance toute interaction devient attractive.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.distance-confondue-avec-signe-charge
         feedback: >
@@ -1009,9 +1015,8 @@ items:
       - id: B
         text: >-
           Non : le calcul du chapitre 3 reste correct comme description instantanée
-          d'une orbite à rayon fixe ; ce qui manque, c'est un ingrédient
-          extérieur à la mécanique (le rayonnement d'une charge accélérée),
-          qui empêche ce rayon de rester constant dans le temps.
+          d'une orbite à rayon fixe ; ce qui manque, c'est un ingrédient extérieur à la
+          mécanique, le rayonnement d'une charge accélérée.
         correct: true
       - id: C
         text: >-
@@ -1026,7 +1031,8 @@ items:
       - id: D
         text: >-
           Non, mais uniquement parce que le chapitre 3 aurait dû utiliser une
-          trajectoire elliptique plutôt que circulaire.
+          trajectoire elliptique plutôt que circulaire, ce qui modifie les expressions
+          obtenues pour la vitesse et pour la période.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.trajectoire-elliptique-supposee-necessaire
         feedback: >
@@ -1068,8 +1074,9 @@ items:
     choices:
       - id: A
         text: >-
-          L'énergie de l'atome reste continue, comme le prédit la mécanique
-          de Newton, mais elle est bornée par une valeur minimale.
+          L'énergie de l'atome reste continue, comme le prédit la mécanique de Newton,
+          mais elle est bornée par une valeur minimale en dessous de laquelle elle ne
+          peut pas descendre.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee
         feedback: >
@@ -1079,8 +1086,9 @@ items:
           borné.
       - id: B
         text: >-
-          L'énergie de l'atome ne dépend plus du tout de la configuration de
-          l'électron autour du noyau.
+          L'énergie de l'atome ne dépend plus du tout de la configuration de l'électron
+          autour du noyau, ce que le modèle classique du chapitre 3 ne pouvait pas
+          prévoir.
         correct: false
         misconception: null
         feedback: >
@@ -1096,8 +1104,8 @@ items:
         correct: true
       - id: D
         text: >-
-          L'énergie de l'atome varie de façon continue, exactement comme le
-          prédit le chapitre 3, mais uniquement pour l'atome d'hydrogène.
+          L'énergie de l'atome varie de façon continue, exactement comme le prédit le
+          chapitre 3, mais uniquement dans le cas particulier de l'atome d'hydrogène.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee
         feedback: >
@@ -1197,8 +1205,9 @@ items:
         correct: true
       - id: B
         text: >-
-          Parce que la quantification empêche toute charge accélérée de
-          rayonner de l'énergie électromagnétique.
+          Parce que la quantification de l'énergie empêche purement et simplement toute
+          charge accélérée de rayonner de l'énergie électromagnétique, quel que soit le
+          mouvement qu'elle décrit.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris
         feedback: >
@@ -1209,8 +1218,8 @@ items:
           lui-même.
       - id: C
         text: >-
-          Parce que la force de Coulomb devient nulle lorsque l'électron
-          s'approche suffisamment du noyau.
+          Parce que la force de Coulomb exercée par le noyau devient nulle lorsque
+          l'électron s'en approche suffisamment, ce qui interrompt sa chute.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris
         feedback: >
@@ -1220,8 +1229,8 @@ items:
           l'atome.
       - id: D
         text: >-
-          Parce que l'électron cesse totalement d'accélérer une fois la
-          quantification prise en compte.
+          Parce que l'électron cesse totalement d'accélérer une fois la quantification
+          de l'énergie prise en compte dans la description de son mouvement.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris
         feedback: >
@@ -1333,9 +1342,9 @@ items:
           l'électron et le noyau.
       - id: B
         text: >-
-          Oui, car pour un ion plus lourd que l'hydrogène, la masse du noyau
-          devient comparable à celle de l'électron, ce qui rend la
-          gravitation non négligeable.
+          Oui, car pour un ion nettement plus lourd que l'hydrogène, la masse du noyau
+          devient comparable à celle de l'électron, ce qui rend la gravitation non
+          négligeable dans le bilan des forces.
         correct: false
         misconception: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
         feedback: >
